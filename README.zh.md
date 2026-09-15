@@ -520,6 +520,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | AGPL-3.0 | C（6/6） | [中](categories/video-production/open-montage.zh.md) · [EN](categories/video-production/open-montage.md) |
+| **HyperFrames** | 当你需要确定性、代码形态的视频——HTML composition 在 CI 里渲染成 MP4——并希望 agent skill 覆盖整条生产回路时用它；它是渲染引擎，不是生成式视频模型。 | Apache-2.0 | B（6/6） | [中](categories/video-production/hyperframes.zh.md) · [EN](categories/video-production/hyperframes.md) |
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（4/6） | [中](categories/media-processing/video-audio/claude-video.zh.md) · [EN](categories/media-processing/video-audio/claude-video.md) |
 
 ### llm-chat-ui

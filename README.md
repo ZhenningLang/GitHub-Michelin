@@ -523,6 +523,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **OpenMontage** | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. | AGPL-3.0 | C (6/6) | [EN](categories/video-production/open-montage.md) · [中](categories/video-production/open-montage.zh.md) |
+| **HyperFrames** | Use it when you need deterministic, code-form video — HTML compositions rendered to MP4 in CI — with agent skills covering the production loop; it is a rendering engine, not a generative video model. | Apache-2.0 | B (6/6) | [EN](categories/video-production/hyperframes.md) · [中](categories/video-production/hyperframes.zh.md) |
 | **claude-video** | Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude. | MIT | C (4/6) | [EN](categories/media-processing/video-audio/claude-video.md) · [中](categories/media-processing/video-audio/claude-video.zh.md) |
 
 ### llm-chat-ui
