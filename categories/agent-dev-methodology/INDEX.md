@@ -19,6 +19,7 @@
 | **QUAD Framework** | Study its four-Circles organization and deployment corpus only under legal review; the software is proprietary, inactive, and its public installer/submodule path is incomplete. | D (3/6) | [→](quad.md) |
 | **LTBL Experiment** | Use it only as an unfinished map of three context-quality implementation groups; it is not runnable software, a scored benchmark, or published evidence of a winner. | D (4/6) | [→](ltbl-experiment.md) |
 | **PURE** | Use it when coding-agent intent lineage must live in Git-tracked specs, schemas, registries, phase gates, and tested Shell scripts; it is an early single-maintainer v0.1 framework. | C (5/6) | [→](pure-agentic.md) |
+| **Learn Claude Code** | Use it when you want to learn how a Claude Code–style agent harness works by rebuilding all 17 mechanisms yourself in runnable Python — but it's a course, not a library or production CLI. | B (5/6) | [→](learn-claude-code.md) |
 
 ## Comparison matrix
 
@@ -36,6 +37,7 @@
 | [QUAD Framework](quad.md) | ✅ | D (3/6) | Broad four-Circles organization and deployment reference, but the software is proprietary, inactive, and publicly incomplete. |
 | [LTBL Experiment](ltbl-experiment.md) | ✅ | D (4/6) | An unfinished experiment index rather than runnable software, a scored benchmark, or evidence that one methodology wins. |
 | [PURE](pure-agentic.md) | ✅ | C (5/6) | Git-native intent, schema, registry, handoff, and phase-gate machinery; more executable than prose-only methods, but still early. |
+| [Learn Claude Code](learn-claude-code.md) | ✅ | B (5/6) | A 17-lesson build-along that re-implements a Claude Code–style harness mechanism by mechanism; teaches internals, but is a course, not a dependency or product. |
 | BMAD Method / Agent OS / SWE-bench / LTBL implementation groups / Beam | 未收录 | — | Role-heavy methods, benchmark infrastructure, and implementation repositories named across the pages. |
 
 ## What belongs here

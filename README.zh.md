@@ -229,6 +229,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **QUAD Framework** | 仅当你要研究文档优先的四 Circles 运营模型与部署蓝图时使用——项目已不活跃、采用专有许可，且部分组件不可访问。 | Proprietary | D（3/6） | [中](categories/agent-dev-methodology/quad.zh.md) · [EN](categories/agent-dev-methodology/quad.md) |
 | **LTBL Experiment** | 仅把它当作三个 agent 上下文实验实现的索引——自身没有可运行代码、实验结果或许可授权。 | NOASSERTION | D（4/6） | [中](categories/agent-dev-methodology/ltbl-experiment.zh.md) · [EN](categories/agent-dev-methodology/ltbl-experiment.md) |
 | **PURE** | 当 intent 追溯需要 Git 原生 schema、registry、phase gate 和 Shell 检查时用它——结构明确，但非常年轻。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/pure-agentic.zh.md) · [EN](categories/agent-dev-methodology/pure-agentic.md) |
+| **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/learn-claude-code.zh.md) · [EN](categories/agent-dev-methodology/learn-claude-code.md) |
 
 ### ai-design-generation
 

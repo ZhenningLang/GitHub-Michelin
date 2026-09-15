@@ -232,6 +232,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **QUAD Framework** | Use it only to study a docs-first four-Circles operating model and deployment blueprint — it is inactive, proprietary, and partly inaccessible. | Proprietary | D (3/6) | [EN](categories/agent-dev-methodology/quad.md) · [中](categories/agent-dev-methodology/quad.zh.md) |
 | **LTBL Experiment** | Use it only as an index to three agent-context experiment implementations — it has no runnable code, results, or license grant. | NOASSERTION | D (4/6) | [EN](categories/agent-dev-methodology/ltbl-experiment.md) · [中](categories/agent-dev-methodology/ltbl-experiment.zh.md) |
 | **PURE** | Use it when intent traceability needs Git-native schemas, registries, phase gates, and Shell checks — structured, but very young. | MIT | C (5/6) | [EN](categories/agent-dev-methodology/pure-agentic.md) · [中](categories/agent-dev-methodology/pure-agentic.zh.md) |
+| **Learn Claude Code** | Use it when you want to learn how a Claude Code–style agent harness works by rebuilding all 17 mechanisms yourself in runnable Python — but it's a course, not a library or production CLI. | MIT | B (5/6) | [EN](categories/agent-dev-methodology/learn-claude-code.md) · [中](categories/agent-dev-methodology/learn-claude-code.zh.md) |
 
 ### ai-design-generation
 
