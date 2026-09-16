@@ -370,6 +370,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Anthropic Cybersecurity Skills** | A large (~817 skill) cybersecurity skill pack of SKILL.md runbooks cross-mapped to MITRE ATT&CK, NIST CSF, ATLAS, D3FEND, NIST AI RMF and MITRE F3, loaded on demand into a coding agent. | Apache-2.0 | B (4/6) | [EN](categories/agent-skills/security/anthropic-cybersecurity-skills.md) · [中](categories/agent-skills/security/anthropic-cybersecurity-skills.zh.md) |
+| **reverse-skill** | Use it when your AI coding client needs a router to 45 RE/pentest/CTF playbooks with an authorization gate and evidence-chain reporting — dual-use content that trips AV and requires trusting third-party agent-executable instructions. | MIT | B (4/6) | [EN](categories/agent-skills/security/reverse-skill.md) · [中](categories/agent-skills/security/reverse-skill.zh.md) |
 
 #### agent-skills / context-engineering
 
