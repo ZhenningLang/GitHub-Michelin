@@ -16,6 +16,7 @@
 | **Open Deep Research** | 当你需要在 `deep-research` 分类中评估 Open Deep Research 时用它。 | ?（0/6） | [→](open-deep-research.zh.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | ?（0/6） | [→](storm.zh.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | ?（0/6） | [→](node-deepresearch.zh.md) |
+| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | B（5/6） | [→](hyperresearch.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [Local Deep Research](local-deep-research.zh.md) | ✅ | B（6/6） | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | B（5/6） | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 |
 | [MiroThinker](mirothinker.zh.md) | ✅ | C（6/6） | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 |
+| [Hyperresearch](hyperresearch.zh.md) | ✅ | B（5/6） | 锁死 Claude Code 的 16 步研究流水线，带对抗式 critic、引用核验和持久 vault；pre-1.0 churn 明显，且榜单领先宣称是自测 projection。 |
 | GPT Researcher / Perplexity / OpenAI Deep Research | 未收录 | — | 各页对比里点到的其他深度研究 agent / 服务。 |
 
 ## 什么该放这里

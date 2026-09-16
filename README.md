@@ -177,6 +177,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Open Deep Research** | Use it when you need Open Deep Research in the deep-research area. | MIT | ? (0/6) | [EN](categories/deep-research/open-deep-research.md) · [中](categories/deep-research/open-deep-research.zh.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | MIT | ? (0/6) | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | Apache-2.0 | ? (0/6) | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
+| **Hyperresearch** | Use it when you're in Claude Code and need a high-stakes, citation-audited research report — a 16-step adversarial pipeline plus a persistent source vault; heavy on time and tokens, Claude-Code-only. | MIT | B (5/6) | [EN](categories/deep-research/hyperresearch.md) · [中](categories/deep-research/hyperresearch.zh.md) |
 
 ### ai-code-review
 

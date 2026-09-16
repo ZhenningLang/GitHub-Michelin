@@ -16,6 +16,7 @@
 | **Open Deep Research** | Use it when you need Open Deep Research for the deep-research category. | ? (0/6) | [→](open-deep-research.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | ? (0/6) | [→](storm.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | ? (0/6) | [→](node-deepresearch.md) |
+| **Hyperresearch** | Use it when you're in Claude Code and need a high-stakes, citation-audited research report — a 16-step adversarial pipeline plus a persistent source vault; heavy on time and tokens, Claude-Code-only. | B (5/6) | [→](hyperresearch.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [Local Deep Research](local-deep-research.md) | ✅ | B (6/6) | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. |
 | [Agent-Reach](agent-reach.md) | ✅ | B (5/6) | Use it when your agent needs to read and search web plus social platforms without paid APIs. |
 | [MiroThinker](mirothinker.md) | ✅ | C (6/6) | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. |
+| [Hyperresearch](hyperresearch.md) | ✅ | B (5/6) | Claude-Code-locked 16-step research pipeline with adversarial critics, cite-checking, and a persistent vault; pre-1.0 churn and its leaderboard claim is a self-run projection. |
 | GPT Researcher / Perplexity / OpenAI Deep Research | 未收录 | — | Other deep-research agents/services named across the pages. |
 
 ## What belongs here

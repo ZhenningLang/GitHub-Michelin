@@ -174,6 +174,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Open Deep Research** | 当你需要在 deep-research 方向评估 Open Deep Research 时用它。 | MIT | ?（0/6） | [EN](categories/deep-research/open-deep-research.md) · [中](categories/deep-research/open-deep-research.zh.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | MIT | ?（0/6） | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | Apache-2.0 | ?（0/6） | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
+| **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/hyperresearch.zh.md) · [EN](categories/deep-research/hyperresearch.md) |
 
 ### ai-code-review
 
