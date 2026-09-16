@@ -18,6 +18,7 @@
 | **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | ?（0/6） | [→](playwright.zh.md) |
 | **Puppeteer** | JavaScript API for Chrome and Firefox | ?（0/6） | [→](puppeteer.zh.md) |
 | **nodriver** | 当你需要 Python-first 的异步直接 CDP 控制、且不想依赖 WebDriver 时用它；它仅支持 Chromium、采用 AGPL-3.0，反检测也只是尽力而为，不是稳定绕过契约。 | C（5/6） | [→](nodriver.zh.md) |
+| **Playwright MCP** | 当支持 MCP 的 agent 需要厂商官方、基于无障碍树快照的确定性浏览器自动化时用它——适合有状态的探索式回路；微软自家 README 把高吞吐 coding agent 引向它的 CLI 兄弟。 | A（6/6） | [→](playwright-mcp.zh.md) |
 
 
 ## 对比矩阵
@@ -34,6 +35,7 @@
 | [Playwright](playwright.zh.md) | ✅ | ?（0/6） | 带完整 runner 与 trace 能力的跨浏览器测试和自动化；当前索引条目仍需要补齐选型边界。 |
 | [Puppeteer](puppeteer.zh.md) | ✅ | ?（0/6） | Chrome-first 的 JavaScript 自动化；当前索引条目仍需要补齐选型边界。 |
 | [nodriver](nodriver.zh.md) | ✅ | C（5/6） | 不依赖 WebDriver 的 Python 异步直接 CDP 控制，代价是没有跨浏览器覆盖、许可不宽松，反检测也仅为尽力而为。 |
+| [Playwright MCP](playwright-mcp.zh.md) | ✅ | A（6/6） | 微软官方 MCP 浏览器：AX 树快照、跨浏览器、客户端兼容最广；比微软自己引导 coding agent 使用的 CLI 兄弟更费 token。 |
 | undetected-chromedriver / SeleniumBase | 未收录 | — | nodriver 页面提到的 Selenium 兼容 stealth 工具与开箱即用 Python 浏览器测试框架。 |
 
 ## 什么该放这里

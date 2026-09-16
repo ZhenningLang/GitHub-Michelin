@@ -18,6 +18,7 @@
 | **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | ? (0/6) | [→](playwright.md) |
 | **Puppeteer** | JavaScript API for Chrome and Firefox | ? (0/6) | [→](puppeteer.md) |
 | **nodriver** | Use it for Python-first async control of Chromium over direct CDP without WebDriver; it is Chromium-only, AGPL-3.0, and its anti-detection behavior is best-effort rather than a stable bypass. | C (5/6) | [→](nodriver.md) |
+| **Playwright MCP** | Use it when an MCP-capable agent needs vendor-official, deterministic browser automation via accessibility-tree snapshots — for stateful exploratory loops; Microsoft's own README steers high-throughput coding agents to its CLI sibling. | A (6/6) | [→](playwright-mcp.md) |
 
 
 ## Comparison matrix
@@ -34,6 +35,7 @@
 | [Playwright](playwright.md) | ✅ | ? (0/6) | Cross-browser testing and automation with a full runner and tracing surface; its index entry still needs a selection-oriented boundary review. |
 | [Puppeteer](puppeteer.md) | ✅ | ? (0/6) | Chrome-first JavaScript automation; its index entry still needs a selection-oriented boundary review. |
 | [nodriver](nodriver.md) | ✅ | C (5/6) | Direct async Python CDP control without WebDriver, trading away cross-browser coverage and permissive licensing; anti-detection is best-effort. |
+| [Playwright MCP](playwright-mcp.md) | ✅ | A (6/6) | Microsoft's official MCP browser: AX-tree snapshots, cross-browser, widest client support; token-heavier than the CLI sibling Microsoft steers coding agents toward. |
 | undetected-chromedriver / SeleniumBase | 未收录 | — | Selenium-compatible stealth tooling and a batteries-included Python browser-testing framework named on the nodriver page. |
 
 ## What belongs here
