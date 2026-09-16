@@ -6,19 +6,19 @@ category: agent-tooling
 tags: [mcp, context-window, tool-output-sandbox, session-memory, hooks, fts5, multi-platform, source-available]
 language: TypeScript
 license: Elastic-2.0
-maturity: v1.0.x line, very active; latest v1.0.166 (2026-06-23), pushed 2026-06-25 — source-available (ELv2), not OSI open source
-last_verified: 2026-06-26
+maturity: v1.0.x line; latest release v1.0.169 (2026-06-29), main active to 2026-09-15 — source-available (ELv2), not OSI open source
+last_verified: 2026-09-15
 type: tool
 upstream:
-  pushed_at: 2026-06-29T07:36:17Z
+  pushed_at: 2026-09-15T12:06:28Z
   default_branch: main
-  default_branch_sha: 608584b4ab57354743a793d16412b77d23bd86ca
+  default_branch_sha: 4f30f8efb63eb5dbc3fb6cff16efe2e831eaa8d4
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:03Z
+  computed_at: 2026-09-15T15:56:11Z
   overall: D
-  overall_score: 2.17
+  overall_score: 2.33
   scored_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NOASSERTION"
@@ -28,38 +28,40 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 70.9
-        qualifying_issues: 28
+        median_ttfr_hours: 158.3
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
       grade: C
       raw:
         registry: npmjs.org
         canonical_package: context-mode
         dependent_repos_count: 0
-        downloads_last_month: 111042
+        downloads_last_month: 73979
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 130
-        last_commit_age_days: 1
+        repo_age_days: 204
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.787
-        top3_share: 0.833
+        top1_share: 0.788
+        top3_share: 0.834
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -73,7 +75,7 @@ health:
 
 # Context Mode
 
-An MCP server that keeps raw tool output out of an agent's context window — it runs reads/fetches/log-crunching in a sandboxed subprocess (only stdout returns), indexes session events into SQLite FTS5 so the agent survives compaction, and uses hooks to *route* heavy tool calls into the sandbox across ~17 agent platforms.
+An MCP server that keeps raw tool output out of an agent's context window — it runs reads/fetches/log-crunching in a sandboxed subprocess (only stdout returns), indexes session events into SQLite FTS5 so the agent survives compaction, and uses hooks to *route* heavy tool calls into the sandbox across ~18 agent platforms.
 
 ![context-mode — health radar](../../assets/health/context-mode.svg)
 
@@ -109,7 +111,7 @@ So you install Context Mode as an MCP server (a `/plugin` install on Claude Code
 - **Runtime:** Node.js ≥ 22.5 or Bun; 12 sandbox runtimes for `ctx_execute` (JS, TS, Python, Shell, Ruby, Go, Rust, PHP, Perl, R, Elixir, C#).
 - **Storage / search:** SQLite with **FTS5** full-text index, **BM25** ranking (+ Porter stemming, trigram substring, reciprocal-rank-fusion reranking); backend auto-selected — `bun:sqlite`, `node:sqlite` (Node ≥ 22.5), else `better-sqlite3`.
 - **Integration:** Model Context Protocol (MCP) server exposing 11 `ctx_*` tools; agent **hooks** (PreToolUse/PostToolUse/UserPromptSubmit/PreCompact/SessionStart/Stop) for routing + session capture.
-- **Surface:** ~17 platform adapters (Claude Code, Gemini/Qwen/Kimi CLI, VS Code & JetBrains Copilot, Copilot CLI, Cursor, OpenCode, KiloCode, OpenClaw/Pi, Codex CLI, Antigravity IDE+CLI, Kiro, Zed, OMP).
+- **Surface:** ~18 platform adapters (Claude Code, Gemini/Qwen/Kimi CLI, VS Code & JetBrains Copilot, Copilot CLI, Cursor, OpenCode, KiloCode, OpenClaw/Pi, Codex CLI, Antigravity IDE+CLI, Kiro, Zed, Pi Agent, OMP).
 
 ## Dependencies
 
@@ -124,18 +126,18 @@ So you install Context Mode as an MCP server (a `/plugin` install on Claude Code
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 70.9 hours across 28 qualifying issues/PRs.
-- **Maintenance** — last push 2026-06 with a very rapid 1.0.x cadence (latest v1.0.166, 2026-06-23, as of 2026-06): clearly active, even hyperactive. The flip side is churn — frequent point releases and many open platform-integration issues mean specifics go stale fast. [推断]
-- **Governance / bus factor** — `[推断]` single-author (`User`-owned) project; ~18k stars on a one-maintainer repo is a bus-factor flag. There's a hosted "Insight" dashboard at context-mode.com, hinting at a commercial intent behind it, but no foundation or team governance to point to — roadmap is one person's.
-- **Age & Lindy** — created 2026-02, so only months old as of 2026-06 despite the v1.0.x label and a #1 Hacker News moment: unproven on Lindy grounds. Treat the stars/HN buzz as attention, not durability.
+- **Responsiveness**: Grade A — median first-response time 158.3 hours across 4 qualifying issues/PRs (relaxed solo-maintainer band, 2026-09).
+- **Maintenance** — commits remain hyperactive (latest push 2026-09-15, 100+ commits since late June), but the release channel has stalled: latest release/npm version is still v1.0.169 (2026-06-29), ~2.5 months behind `main` (as of 2026-09). Churn risk cuts both ways — fast-moving main, and users on the npm line no longer tracking it.
+- **Governance / bus factor** — `[推断]` single-author (`User`-owned) project; ~23k stars on a one-maintainer repo is a bus-factor flag. There's a hosted "Insight" dashboard at context-mode.com, hinting at a commercial intent behind it, but no foundation or team governance to point to — roadmap is one person's.
+- **Age & Lindy** — created 2026-02, so ~7 months old as of 2026-09 despite the v1.0.x label and a #1 Hacker News moment: unproven on Lindy grounds. Treat the stars/HN buzz as attention, not durability.
 - **Risk flags** — **relicense/open-core risk is the headline**: it's **Elastic License 2.0 (source-available, not OSI open source)** — you can't offer it as a hosted service or relicense, a hard stop if you need permissive OSS. Also note arbitrary-code-execution by design (`ctx_execute`) and a hosted analytics surface alongside the "nothing leaves your machine" core claim. [未验证]
 
 ## Caveats (unverified)
 
-- **Stars / adoption** — `[未验证]` `gh` reported ~18.2k stars (2026-06-26); GitHub stars are unreliable and date-sensitive. The README's "Used across teams at Microsoft/Google/Meta…" badges are logo-only with no cited source — treat as marketing, not verified deployments.
+- **Stars / adoption** — `[未验证]` `gh` reported ~23.0k stars / 1.7k forks (2026-09-15); GitHub stars are unreliable and date-sensitive. The README's "Used across teams at Microsoft/Google/Meta…" badges are logo-only with no cited source — treat as marketing, not verified deployments.
 - **License classification** — `[推断]` SPDX `Elastic-2.0`; ELv2 is source-available, **not** an OSI-approved open-source license. The repo's own README calls it "source-available." Confirm against your org's policy before depending on it.
 - **Savings / longevity benchmarks** — `[未验证]` the 98% reduction, "315 KB → 5.4 KB," and "~30 min → ~3 hours" figures are the project's own benchmarks; real savings depend on workload and whether hooks are active (instruction-file-only ≈ 60%).
 - **"Nothing leaves your machine" claim** — `[未验证]` the README states no telemetry/cloud sync for the core, yet ships a hosted `ctx_insight` org-analytics dashboard at `context-mode.com/insight`; the core's local-only behavior is the project's assertion, not independently audited.
-- **Platform capability matrix** — `[未验证]` per-platform hook coverage, "Full/High/Partial" session-continuity ratings, and "~17 platforms" come from the README and shift release-to-release; verify your specific client + version before relying on a given capability.
-- **Latest version / dates** — `[未验证]` v1.0.166 (2026-06-23) and pushed 2026-06-25 per `gh` on 2026-06-26; the rapid 1.0.x cadence means specifics go stale fast.
+- **Platform capability matrix** — `[未验证]` per-platform hook coverage, "Full/High/Partial" session-continuity ratings, and the platform count (~18 as of 2026-09) come from the README and shift release-to-release; verify your specific client + version before relying on a given capability.
+- **Latest version / dates** — `[未验证]` v1.0.169 (2026-06-29) per npm/GitHub releases and main active to 2026-09-15 per `gh` on 2026-09-15; the release stall vs. commit activity divergence may itself resolve quickly (a new release would invalidate it).
 - **Maturity** — `[推断]` despite the v1.0.x label and a #1 Hacker News moment, the project is young and fast-moving (frequent point releases, many open platform-integration issues); treat single-maintainer / churn risk as non-trivial for workflows you can't re-tool.

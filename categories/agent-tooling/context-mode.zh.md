@@ -6,19 +6,19 @@ category: agent-tooling
 tags: [mcp, context-window, tool-output-sandbox, session-memory, hooks, fts5, multi-platform, source-available]
 language: TypeScript
 license: Elastic-2.0
-maturity: v1.0.x line, very active; latest v1.0.166 (2026-06-23), pushed 2026-06-25 — source-available (ELv2), not OSI open source
-last_verified: 2026-06-26
+maturity: v1.0.x line; latest release v1.0.169 (2026-06-29), main active to 2026-09-15 — source-available (ELv2), not OSI open source
+last_verified: 2026-09-15
 type: tool
 upstream:
-  pushed_at: 2026-06-29T07:36:17Z
+  pushed_at: 2026-09-15T12:06:28Z
   default_branch: main
-  default_branch_sha: 608584b4ab57354743a793d16412b77d23bd86ca
+  default_branch_sha: 4f30f8efb63eb5dbc3fb6cff16efe2e831eaa8d4
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:03Z
+  computed_at: 2026-09-15T15:56:11Z
   overall: D
-  overall_score: 2.17
+  overall_score: 2.33
   scored_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NOASSERTION"
@@ -28,38 +28,40 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 70.9
-        qualifying_issues: 28
+        median_ttfr_hours: 158.3
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
       grade: C
       raw:
         registry: npmjs.org
         canonical_package: context-mode
         dependent_repos_count: 0
-        downloads_last_month: 111042
+        downloads_last_month: 73979
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 130
-        last_commit_age_days: 1
+        repo_age_days: 204
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.787
-        top3_share: 0.833
+        top1_share: 0.788
+        top3_share: 0.834
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -73,7 +75,7 @@ health:
 
 # Context Mode
 
-一个 MCP server，把工具的原始输出挡在 agent 上下文窗口之外：它在隔离子进程里跑读取/抓取/日志处理（只有 stdout 回到上下文），把会话事件索引进 SQLite FTS5 让 agent 熬过 compaction，并用 hooks 把重量级工具调用「路由」进沙箱——覆盖约 17 个 agent 平台。
+一个 MCP server，把工具的原始输出挡在 agent 上下文窗口之外：它在隔离子进程里跑读取/抓取/日志处理（只有 stdout 回到上下文），把会话事件索引进 SQLite FTS5 让 agent 熬过 compaction，并用 hooks 把重量级工具调用「路由」进沙箱——覆盖约 18 个 agent 平台。
 
 ![context-mode — 健康度雷达](../../assets/health/context-mode.zh.svg)
 
@@ -109,7 +111,7 @@ health:
 - **运行时：** Node.js ≥ 22.5 或 Bun；`ctx_execute` 提供 12 种沙箱运行时（JS、TS、Python、Shell、Ruby、Go、Rust、PHP、Perl、R、Elixir、C#）。
 - **存储 / 检索：** SQLite 配 **FTS5** 全文索引、**BM25** 排序（外加 Porter 词干、trigram 子串、reciprocal-rank-fusion 重排）；后端自动选择——`bun:sqlite`、`node:sqlite`（Node ≥ 22.5），否则 `better-sqlite3`。
 - **集成：** Model Context Protocol（MCP）server，暴露 11 个 `ctx_*` 工具；agent **hooks**（PreToolUse/PostToolUse/UserPromptSubmit/PreCompact/SessionStart/Stop）做路由与会话捕获。
-- **接入面：** 约 17 个平台适配器（Claude Code、Gemini/Qwen/Kimi CLI、VS Code 与 JetBrains Copilot、Copilot CLI、Cursor、OpenCode、KiloCode、OpenClaw/Pi、Codex CLI、Antigravity IDE+CLI、Kiro、Zed、OMP）。
+- **接入面：** 约 18 个平台适配器（Claude Code、Gemini/Qwen/Kimi CLI、VS Code 与 JetBrains Copilot、Copilot CLI、Cursor、OpenCode、KiloCode、OpenClaw/Pi、Codex CLI、Antigravity IDE+CLI、Kiro、Zed、Pi Agent、OMP）。
 
 ## 依赖
 
@@ -124,18 +126,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 70.9 小时，基于 28 个 qualifying issues/PRs。
-- **维护** —— 截至 2026-06 最后 push 在 2026-06，1.0.x 节奏极快（最新 v1.0.166，2026-06-23）：明显活跃，甚至过度活跃。另一面是高 churn——频繁的 point release 和大量未关的平台集成 issue，意味着具体细节很快过时。[推断]
-- **治理 / 巴士因子** —— `[推断]` 单作者（`User` 所有）项目；一人维护的仓库却有约 1.8 万 star，是巴士因子警示。它在 context-mode.com 提供托管的「Insight」看板，暗示背后有商业意图，但没有可指认的基金会或团队治理——路线图由一个人定。
-- **年龄与 Lindy** —— 创建于 2026-02，截至 2026-06 仅数月，尽管挂着 v1.0.x 标号、还拿过一次 Hacker News 第一：在 Lindy 视角下未经检验。把 star / HN 热度当作关注度，而非持久性。
+- **响应速度**：Grade A——中位首次响应时间 158.3 小时，基于 4 个 qualifying issues/PRs（单维护者放宽档，2026-09）。
+- **维护** —— commit 仍然过度活跃（最近 push 2026-09-15，6 月底以来 100+ commit），但发布渠道已停滞：最新 release／npm 版本仍停在 v1.0.169（2026-06-29），落后 `main` 约 2.5 个月（截至 2026-09）。churn 风险双向存在——main 跑得快，而守在 npm 线上的用户已经不再跟得上它。
+- **治理 / 巴士因子** —— `[推断]` 单作者（`User` 所有）项目；一人维护的仓库却有约 2.3 万 star，是巴士因子警示。它在 context-mode.com 提供托管的「Insight」看板，暗示背后有商业意图，但没有可指认的基金会或团队治理——路线图由一个人定。
+- **年龄与 Lindy** —— 创建于 2026-02，截至 2026-09 约 7 个月，尽管挂着 v1.0.x 标号、还拿过一次 Hacker News 第一：在 Lindy 视角下未经检验。把 star / HN 热度当作关注度，而非持久性。
 - **风险旗标** —— **重新授权 / open-core 风险是头条**：它是 **Elastic License 2.0（源码可见，非 OSI 开源）**——不能作为托管服务对外提供、不能重新授权，若你需要宽松开源协议，这是硬性卡点。另需注意它在设计上允许任意代码执行（`ctx_execute`），且在「数据不出本机」的核心宣称之外又带一个托管分析面。[未验证]
 
 ## 存疑（未验证）
 
-- **stars / 采用度** — `[未验证]` `gh` 报告约 18.2k stars（2026-06-26）；GitHub stars 不可靠且对日期敏感。README 里「Used across teams at Microsoft/Google/Meta…」的徽章只有 logo、无引用来源——当作营销，而非已验证的部署。
+- **stars / 采用度** — `[未验证]` `gh` 报告约 23.0k stars／1.7k forks（2026-09-15）；GitHub stars 不可靠且对日期敏感。README 里「Used across teams at Microsoft/Google/Meta…」的徽章只有 logo、无引用来源——当作营销，而非已验证的部署。
 - **协议归类** — `[推断]` SPDX `Elastic-2.0`；ELv2 是 source-available，**不是** OSI 认证的开源协议。仓库 README 自己也称其 "source-available"。依赖前先对照你组织的合规政策。
 - **节省 / 续航 benchmark** — `[未验证]` 98% 削减、「315 KB → 5.4 KB」、「~30 分钟 → ~3 小时」都是项目自家 benchmark；实际节省取决于工作负载以及 hooks 是否启用（仅指令文件 ≈ 60%）。
 - **「Nothing leaves your machine」声明** — `[未验证]` README 称核心无 telemetry/云同步，但又提供托管的 `ctx_insight` 组织分析看板（`context-mode.com/insight`）；核心的本地化行为是项目自述，未经独立审计。
-- **平台能力矩阵** — `[未验证]` 各平台 hook 覆盖、「Full/High/Partial」会话连续性评级、以及「~17 平台」均来自 README，且会随版本变动；依赖某项能力前请核对你具体的客户端 + 版本。
-- **最新版本 / 日期** — `[未验证]` v1.0.166（2026-06-23）、pushed 2026-06-25，据 2026-06-26 的 `gh`；1.0.x 快节奏意味着具体值很快过时。
+- **平台能力矩阵** — `[未验证]` 各平台 hook 覆盖、「Full/High/Partial」会话连续性评级、以及平台数量（截至 2026-09 约 18 个）均来自 README，且会随版本变动；依赖某项能力前请核对你具体的客户端 + 版本。
+- **最新版本 / 日期** — `[未验证]` v1.0.169（2026-06-29），据 npm／GitHub releases；main 活跃至 2026-09-15，据当日 `gh`；「发布停滞 vs commit 活跃」的分歧本身可能很快消解（一发新版即失效）。
 - **成熟度** — `[推断]` 尽管有 v1.0.x 标号和一次 Hacker News #1 时刻，项目仍年轻且高速演进（频繁 point release、大量未关的平台集成 issue）；对你无法重新换装的工作流，应把单维护者 / churn 风险视为不可忽视。
