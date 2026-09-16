@@ -19,6 +19,8 @@
 | **Puppeteer** | JavaScript API for Chrome and Firefox | ? (0/6) | [→](puppeteer.md) |
 | **nodriver** | Use it for Python-first async control of Chromium over direct CDP without WebDriver; it is Chromium-only, AGPL-3.0, and its anti-detection behavior is best-effort rather than a stable bypass. | C (5/6) | [→](nodriver.md) |
 | **Playwright MCP** | Use it when an MCP-capable agent needs vendor-official, deterministic browser automation via accessibility-tree snapshots — for stateful exploratory loops; Microsoft's own README steers high-throughput coding agents to its CLI sibling. | A (6/6) | [→](playwright-mcp.md) |
+| **Playwright CLI** | Use it when a coding agent (Claude Code, Copilot) needs cheap, token-efficient browser commands with SKILLs installed — Microsoft's own recommended path for coding agents; v0.1.x, freshly repositioned. | A (5/6) | [→](playwright-cli.md) |
+| **OpenCLI** | Use it when an agent must operate sites behind *your* login — it bridges your already-logged-in Chrome via extension+daemon and freezes site workflows into reusable CLI commands; expect adapter churn and a real trust surface. | B (6/6) | [→](opencli.md) |
 
 
 ## Comparison matrix
@@ -36,6 +38,8 @@
 | [Puppeteer](puppeteer.md) | ✅ | ? (0/6) | Chrome-first JavaScript automation; its index entry still needs a selection-oriented boundary review. |
 | [nodriver](nodriver.md) | ✅ | C (5/6) | Direct async Python CDP control without WebDriver, trading away cross-browser coverage and permissive licensing; anti-detection is best-effort. |
 | [Playwright MCP](playwright-mcp.md) | ✅ | A (6/6) | Microsoft's official MCP browser: AX-tree snapshots, cross-browser, widest client support; token-heavier than the CLI sibling Microsoft steers coding agents toward. |
+| [Playwright CLI](playwright-cli.md) | ✅ | A (5/6) | Microsoft's token-efficient CLI+SKILLs path for coding agents; v0.1.x and freshly repositioned, so expect contract churn. |
+| [OpenCLI](opencli.md) | ✅ | B (6/6) | Bridges your logged-in Chrome so agents never touch login flows, plus reusable site adapters; Chromium-only, adapter churn is structural, and the extension+daemon inherits all your sessions. |
 | undetected-chromedriver / SeleniumBase | 未收录 | — | Selenium-compatible stealth tooling and a batteries-included Python browser-testing framework named on the nodriver page. |
 
 ## What belongs here
