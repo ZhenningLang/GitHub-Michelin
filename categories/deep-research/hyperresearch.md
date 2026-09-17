@@ -83,10 +83,10 @@ Pick this over the other deep-research options when the deciding factor is **ver
 ## When NOT to use
 
 - **Routine engineering selection questions.** "Is this library maintained / A vs B for my scale" needs 10–20 sources and half an hour, not a 16-step pipeline — the citation-audit apparatus is overkill. Use a light manual pass (repo metadata + issue sampling) or [GPT Researcher](gpt-researcher.md) for a cheaper generic agent.
-- **You're not on Claude Code.** The whole pipeline activates through Claude Code's Skill/subagent machinery; there is no standalone agent runtime. For any-LLM or other-harness research use [GPT Researcher](gpt-researcher.md) (framework) or [Local Deep Research](local-deep-research.md) (self-hosted) instead.
+- **You're not on Claude Code.** The whole pipeline activates through Claude Code's Skill/subagent machinery; there is no standalone agent runtime, and the README explicitly invites a Codex port via PR — i.e. Codex support does not exist today. For any-LLM or other-harness research use [GPT Researcher](gpt-researcher.md) (framework) or [Local Deep Research](local-deep-research.md) (self-hosted) instead.
 - **Tight token or time budget.** Even the `light` tier is ~30–40 minutes; `full` runs 1.5–2.5 h and `premier` gear 3–5 h with 100–130+ sources, all billed to your Claude usage (a past token-overconsumption bug, #83, was fixed but the design is inherently heavy). For a fast cited answer, a SaaS deep-research product (OpenAI / Gemini Deep Research, 未收录) is one click.
 - **Queries must stay fully on your own infrastructure.** It fetches the live web and runs on Anthropic models through Claude Code. For fully-local inference and queries that never leave your machine, use [Local Deep Research](local-deep-research.md).
-- **You're choosing it because it "leads DeepResearch-Bench."** That claim is the project's own stratified-pilot projection with third-party validation still pending (stated in its own README footnote) — treat it as marketing until independently replicated. [未验证]
+- **You're choosing it because it "leads DeepResearch-Bench."** That claim does not survive contact with the source: hyperresearch does **not appear on the official leaderboard** (both `data/` and `data_gpt55/` CSVs of the muset-ai HF space checked 2026-09-17), and its own README footnote calls it a "forward-looking projection from a stratified pilot." Treat it as marketing until an official submission appears.
 - **You need stable interfaces today.** Pre-1.0 with fast churn — three releases landed on 2026-09-11 alone, and open issues document contradictory prompt contracts and duplicated config constants (#101/#102). Pin a version and re-read the docs after upgrades.
 
 ## Comparison
@@ -120,14 +120,13 @@ Python 3.11–3.13 package (typer/rich/pydantic/jinja2 CLI) that installs step-s
 - **Governance / bus factor:** `User`-owned repo (jordan-gibbs) with 15 contributors — more than a solo project, but roadmap and quality bar remain owner-centric. [推断]
 - **Age & Lindy (2026-09):** created 2026-04-09, ~5 months old — young; the elaborate 16-step design has not yet survived a year of upstream Claude Code behavior changes. Adopt for current value, not longevity.
 - **Adoption:** ~3.3k stars / 325 forks (2026-09-16), published on PyPI; Hacker News traction minimal (one 2026-04 submission, 2 points). Issue tracker quality is unusually high — deep, root-caused reports with many fixes shipped (#72 stored XSS, #83 token overconsumption, #88 contract audit) — a better signal than stars. [推断]
-- **Risk flags:** the headline "leads DeepResearch-Bench" is a self-run projection, third-party validation pending (its own footnote). MIT license — no relicense exposure. Security posture is proactive (untrusted-content fencing against prompt injection), but the attack surface (fetching arbitrary web content into agent context) is inherent to the category. [未验证]
+- **Risk flags:** the headline "leads DeepResearch-Bench" is a self-run projection — verified absent from the official leaderboard CSVs as of 2026-09-17. MIT license — no relicense exposure. Security posture is proactive (untrusted-content fencing against prompt injection), but the attack surface (fetching arbitrary web content into agent context) is inherent to the category.
 
 ## Caveats (unverified)
 
 - [未验证] Stars (~3.3k) / forks (325) / contributor count (15) per GitHub API on 2026-09-16; date-sensitive.
-- [未验证] The DeepResearch-Bench RACE leaderboard claim is a self-run "stratified pilot" projection per the README footnote; no independent replication found.
+- Claude-Code-only is **verified** (README invites a Codex port via PR); the "leads DeepResearch-Bench" claim is **verified absent** from the official leaderboard space (both `data/` and `data_gpt55/` CSVs, checked 2026-09-17) — kept here as the page's audit trail.
 - [未验证] Tier runtimes (light ~30–40 min, full 1.5–2.5 h, dissertation 4–8 h), source counts (55–450), and word targets are the author's own numbers.
-- [未验证] Claude-Code-only support is per the README; no Codex/other-harness path documented as of 2026-09-16.
 - [未验证] HN traction assessment is based on one Algolia query (single 2026-04 submission, 2 points) — a thin sample.
 - [推断] The 15-contributor count suggests some review surface, but merge rights and decision structure are unpublished; effective bus factor may be 1.
 - [推断] Vault compounding value depends on repeatedly researching one domain; one-off users won't realize it.

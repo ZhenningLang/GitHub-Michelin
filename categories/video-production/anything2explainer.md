@@ -97,7 +97,7 @@ Pick this over the broader agentic-video pipelines when what you want is a *gove
 - **Maintenance (2026-09):** hyper-new but active — created 2026-09-08, last push 2026-09-13, ~20 commits, no releases or tags yet. Too young to have a cadence; treat every claim as a snapshot.
 - **Governance / bus factor:** single-author (`User`-owned) repo, 2 contributors total. The roadmap, style rules, and QC criteria are one person's distilled workflow — a bus-factor flag, and also why the internal quality bar is unusually coherent. [推断]
 - **Age & Lindy (2026-09):** 8 days old as of verification — the worst possible Lindy position. ~1.4k stars in the first week is attention, not validation; there are no third-party reproduction reports yet (the only open issue is one user testing it inside another harness). Adopt for learning or one-off use, not as infrastructure.
-- **Risk flags:** **PolyForm Noncommercial 1.0 — not OSI open source.** Videos you produce belong to you, but commercial use of the toolkit needs the author's authorization; two licensing-inquiry issues were closed without a published commercial-licensing path. [未验证] Bundled fonts are separately SIL OFL-1.1. English TTS defaults pin fragile dependencies (edge-tts pinned to 7.2.8 because it tracks a Microsoft endpoint; kokoro is hard to install on ARM).
+- **Risk flags:** **PolyForm Noncommercial 1.0 — not OSI open source.** Videos you produce belong to you, but commercial use of the toolkit needs the author's authorization; two licensing-inquiry issues (#5, #6) were closed with the author's answer being "email me with your scope" — a contact channel exists, but no published pricing or terms. Bundled fonts are separately SIL OFL-1.1. English TTS defaults pin fragile dependencies (edge-tts pinned to 7.2.8 because it tracks a Microsoft endpoint; kokoro is hard to install on ARM).
 - **Adoption & ecosystem:** README documents macOS verification and a Raspberry Pi 5 Linux path; Windows untested. No package-registry presence, no community plugins, no HN discussion found as of 2026-09-16. [未验证]
 
 ## Caveats (unverified)
@@ -106,6 +106,6 @@ Pick this over the broader agentic-video pipelines when what you want is a *gove
 - [未验证] Harness support (Claude Code and Codex skill loading) is from the README; activation fidelity not independently confirmed.
 - [未验证] Linux/ARM support (Raspberry Pi 5, chromium executable override, piper/kokoro-onnx fallbacks) is author-reported; no third-party confirmation.
 - [未验证] Wall-clock (≈1–3 h), disk (≈2–3 GB), and parallel-agent counts per film are the author's own measurements from the reference production, not benchmarked independently.
-- [未验证] The two closed commercial-licensing issues (#5, #6) were closed without a public resolution statement; whether a commercial license is obtainable is unknown.
+- Verified (2026-09-17): commercial licensing goes through emailing the author (his reply on issue #5: `vincentwei1021@gmail.com`); no published pricing or terms.
 - [推断] The fixed visual style is explicitly inspired by a Douyin creator (@图灵宇宙) per the README acknowledgment; frames are code-drawn originals, but style-parity claims are the author's own.
 - [推断] Single-author coherence is a strength now and a continuity risk later; with ~20 commits there is no evidence yet of how the project handles external contributions.

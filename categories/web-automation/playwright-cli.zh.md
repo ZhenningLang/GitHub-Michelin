@@ -118,7 +118,7 @@ JavaScript，Node.js ≥ 18，架在 Playwright 引擎上（Chromium/Firefox/Web
 
 - **维护（2026-09）：** 活跃——v0.1.20 于 2026-09-14 发布并当日 push；2026 年重新定位后节奏很快。
 - **治理 / 背书：** `Organization` 所有，归属微软，13 个 contributor；与 Playwright 本体同组织——背书强，巴士因子风险极小。
-- **年龄与 Lindy（2026-09）：** *仓库*可追溯至 2020-06，但 agent-CLI 这一 incarnation 只有数月 [推断]——约 13.3k star 部分继承了旧 CLI 的历史，别把 star 数当作新方向的验证。「coding agent 用 CLI 而非 MCP」这个概念本身年轻且未经大规模检验。
+- **年龄与 Lindy（2026-09）：** 仓库 tag 历史证实了这次重新定位：旧版 Playwright CLI 一路发到 v0.180.0（当前 release 源里最早到 2026-01-31），随后 agent-CLI 线在 2026 年从 v0.1.x 重启版本号。因此约 13.3k star 部分继承自旧 CLI 的历史——别把它读作新方向的验证。「coding agent 用 CLI 而非 MCP」这个概念本身年轻且未经大规模检验。
 - **采用：** npm 包 `@playwright/cli` 在线（v0.1.20）；采用遥测未独立测量。[未验证]
 - **风险标记：** Apache-2.0，许可证无虞。战略标记：2026 年的 CLI 对 MCP 分家刚发生——微软仍可能重排两个表面，且 v0.1.x 期间 skill 格式大概率会 churn。[推断]
 
@@ -127,5 +127,5 @@ JavaScript，Node.js ≥ 18，架在 Playwright 引擎上（Chromium/Firefox/Web
 - [未验证] star（约 13.3k）/ contributor（13）来自 2026-09-16 的 GitHub API；star 数包含该仓库 2026 年前作为另一款 Playwright CLI 存在时的历史。
 - [未验证] 相对 MCP 的 token 效率优势是微软在两个 README 里的自述；无独立基准引用。
 - [未验证] Claude Code / GitHub Copilot 之外的 agent 兼容性为厂商自述。
-- [推断] 2026 年重新定位的时间点是从 README 表述与发版节奏推断，非 changelog 公告。
+- 已核实 tag 历史（2026-09-17）：旧版 tag 发到 v0.180.0，agent-CLI 线从 v0.1.x 重启——重新定位是事实而非推断。
 - [推断] 会话语义（默认内存态、`--persistent` 可选）在 v0.1.x 各版本间仍可能变动。

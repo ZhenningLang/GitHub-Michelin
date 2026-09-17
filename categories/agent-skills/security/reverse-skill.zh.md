@@ -93,25 +93,25 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Anthropic Cybersecurity Skills](anthropic-cybersecurity-skills.zh.md) | ✅ | 要厂商撰写、框架映射（MITRE/NIST）、来自可问责组织的安全 runbook 时选 Anthropic 的包；要面向实战 RE/渗透的任务路由器、授权闸门、建档与证据链报告时选 reverse-skill。 | Anthropic 的是广度（约 817 个 runbook）加厂商治理，但没有路由/建档机器；reverse-skill 是能跑实战流程的 harness，来自单作者且 payload 语料会触发 AV。 |
-| PentestGPT（未收录） | ❌ | 想研究学术式自动渗透 agent 设计时选 PentestGPT；要持续维护、CI 校验、覆盖 45 个域的路由时选 reverse-skill。 | PentestGPT 是有论文血统的研究原型但代码陈旧；reverse-skill 维护活跃但缺学术文档。[未验证] |
-| HexStrike AI（未收录） | ❌ | 需求是把大量安全工具经 MCP 接给 agent 执行时选 HexStrike AI；方法论选择、范围闸门和证据报告比工具数量更重要时选 reverse-skill。 | HexStrike 优化工具执行覆盖面；reverse-skill 优化工作流治理——手段重叠，重心不同。[未验证] |
+| PentestGPT（未收录） | ❌ | 想研究学术式自动渗透 agent 设计时选 PentestGPT（有论文血统，约 15.5k star，截至 2026-07 仍有更新）；要 CI 校验、覆盖 45 个域、带完整实战流程的路由时选 reverse-skill。 | PentestGPT 是有论文的研究原型但 harness 单薄；reverse-skill 工作流完备但缺学术文档。 |
+| HexStrike AI（未收录） | ❌ | 需求是把大量安全工具经 MCP 接给 agent 执行时选 HexStrike AI（约 11.9k star，MIT，2026-08 仍活跃）；方法论选择、范围闸门和证据报告比工具数量更重要时选 reverse-skill。 | HexStrike 优化工具执行覆盖面；reverse-skill 优化工作流治理——手段重叠，重心不同。 |
 | Kali + 手工 playbook（未收录） | ❌ | 你已经知道每个任务该用哪个工具、且不信任 agent 执行第三方指令时走手工路线；路由与经验复用确实是你的瓶颈时选 reverse-skill。 | 手工路线每件任务花专家时间但没有 agent 供应链风险；本包省下这些时间，代价是信任它的脚本与提示层。 |
 
 ## 健康度与可持续性
 
-- **维护（2026-09）：** 活跃——最近 push 2026-09-03，单个 release v1.0.1，CHANGELOG 在维护。175 例路由回归基准跑在 Windows+Ubuntu CI 上；但 macOS 测试路径当前是坏的（#135 未关闭）。
+- **维护（2026-09）：** 活跃——最近 push 2026-09-03，单个 release v1.0.1，CHANGELOG 在维护。路由基准已在仓内核实：`skills/config/routing.json` 含 44 条 priority 规则，`skills/tests/routing-benchmark.json` 恰含 175 例，跑在 Windows+Ubuntu CI 上；但 macOS 测试路径当前是坏的（#135 未关闭）。
 - **治理 / 巴士因子：** `User` 所有（zhaoxuya520），12 个 contributor，有商业赞助（UCloud AstraFlow、Atlas Cloud、Kite AI）覆盖「路由验证与文档」。赞助是背书，但也说明项目在将关注度变现——路线图问责仍系于 owner 一人。[推断]
 - **年龄与 Lindy（2026-09）：** 创建于 2026-05-13——约 4 个月龄却有约 36k star 与约 5k fork。这种速度是**风险标记而非证明**：没有多年存续记录，也没有证据表明 playbook 内容经过安全社区同行评审。[推断]
-- **风险标记（本页最关键的一段）：** （1）双用途 payload 语料——WAF/EDR 绕过材料被 Defender 判为恶意软件（#125），zip 触发病毒警告（#82）；（2）未关闭的 agent 安全争议——`README_AI.md` 诱导首读即自动执行/自我注入（#134）；（3）客户端策略摩擦——有案可查的 AI 客户端拒绝（#86、#127）；（4）安装路径事故——bootstrap 曾把非 ASCII 路径的 Codex 配置写坏（#98，已修）。MIT 许可证，无再许可风险。这些对实验室工具都不算致命；对不受管的企业推广，每一条都是否决项。
+- **风险标记（本页最关键的一段）：** （1）双用途 payload 语料——WAF 绕过 payload 文件 `skills/pentest-tools/src-hunter/references/payloader/waf-bypass.md` 已确认存在于仓库树（`payloader/` 下共 58 个文件），有用户报告 Defender 将其判为 `Backdoor:PHP/ImagePHPBackdoor.A`（#125）；release zip 触发过病毒警告（#82）；（2）未关闭的 agent 安全争议——`README_AI.md` 诱导首读即自动执行/自我注入（#134）；（3）客户端策略摩擦——有案可查的 AI 客户端拒绝（#86、#127）；（4）安装路径事故——bootstrap 曾把非 ASCII 路径的 Codex 配置写坏（#98，已修）。MIT 许可证，无再许可风险。这些对实验室工具都不算致命；对不受管的企业推广，每一条都是否决项。
 - **采用：** star/fork 数相对年龄极端（hype 驱动 [推断]）；issue 显示真实的国际化使用（俄语、中文、英语报告）。截至 2026-09-16 未找到 HN 首页讨论。[未验证]
 
 ## 存疑（未验证）
 
 - [未验证] star（约 36k）/ fork（约 5k）/ contributor（12）来自 2026-09-16 的 GitHub API；速度类数字对日期敏感。
-- [未验证] 44 条规则 / 175 例基准的数字来自项目 README；基准内容未独立审计。
+- 已在仓内核实（2026-09-17）：44 条路由规则（`skills/config/routing.json`）、175 例基准（`skills/tests/routing-benchmark.json`）、被点名的 payload 文件 `skills/pentest-tools/src-hunter/references/payloader/waf-bypass.md` 均存在——留此条作为审计轨迹。
 - [未验证] 客户端兼容列表（Claude Code、Codex、Cursor、OpenCode、Kiro、Cline）为作者自述；两个已关闭 issue 记录了客户端拒绝配合的案例（#86、#127）。
 - [未验证] 赞助关系（UCloud AstraFlow、Atlas Cloud、Kite AI）以 README 展示为准；它们在治理中的实际角色未公开。
-- [未验证] issue #125 的 Defender 检出（`Backdoor:PHP/ImagePHPBackdoor.A`）是单个用户对 payload 语料文件的报告；此处未做独立 AV 扫描，但仓内存在 WAF 绕过 payload 材料这一事实可由文件路径本身确认。
+- [未验证] issue #125 的具体 Defender 签名（`Backdoor:PHP/ImagePHPBackdoor.A`）是单个用户的报告；payload 语料存在本身已核实，AV 判定未独立复现。
 - [未验证] 对比表中 PentestGPT 与 HexStrike AI 的刻画来自一般认知，未为本页重新核实。
 - [推断] 「自进化经验库」（field-journal）是让 agent 追加经验总结的约定；其质量完全取决于操作者的评审纪律。
 - [推断] Linux/macOS 有 bash 对齐脚本，但 #135 未关闭，实际非 Windows 支持弱于 README 的暗示。

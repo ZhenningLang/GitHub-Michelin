@@ -91,7 +91,7 @@ health:
 - **干净会话、CI 或跨浏览器自动化。** 整个设计就是你前台的已登录 Chrome；一次性/无头/跨浏览器需求用 [Playwright MCP](playwright-mcp.zh.md)、[Playwright CLI](playwright-cli.zh.md) 或 [Playwright](playwright.zh.md) 框架。
 - **在风控敏感平台上批量操作。** 用登录态自动化第三方账号会招来风控——仓库自己的 umbrella issue（#2470）就在跟踪针对小红书风控的加固；账号被限制的代价 README 不会替你付。批量抓取请用专门的 `web-scraping` 工具。
 - **不能接受这个信任面。** 桥进你已登录浏览器的 agent 继承你所有会话，经由本地 daemon+扩展。如果你的威胁模型不允许，用干净自动化浏览器（[Agent Browser](agent-browser.zh.md)、[Playwright MCP](playwright-mcp.zh.md)）并接受登录摩擦。
-- **讨厌维护跑步机。** 站点改 DOM，适配器就坏——open issue 流（截至 2026-09 有 269 个）由 YouTube、小红书、LinkedIn、ChatGPT、淘宝的适配器损坏主导。`autofix` skill 的存在本身就说明这个 churn；把它计入成本。[推断]
+- **讨厌维护跑步机。** 站点改 DOM，适配器就坏：约 269 个 open issue（2026-09-16）中约三分之一是站点适配器损坏报告（单一最大聚类，超过核心/浏览器 bug），涉及 YouTube、小红书、LinkedIn、ChatGPT、淘宝等。`autofix` skill 的存在本身就说明这个 churn；把它计入成本。
 - **零安装或受管环境。** 需要 Node ≥ 20.18.1（npm 路径）、一个 Chrome 扩展和一个本地 daemon；在扩展被禁的受管机器上这套装不上——改用自带浏览器的 [Playwright CLI](playwright-cli.zh.md)。
 
 ## 横向对比
@@ -129,8 +129,8 @@ JavaScript/Node.js（npm 路径需 ≥ 20.18.1）CLI（`@jackwener/opencli`）�
 ## 存疑（未验证）
 
 - [未验证] star（约 29.3k）/ fork（约 2.9k）/ contributor（30）来自 2026-09-16 的 GitHub API；npm 下载（上月约 8.4 万）来自 npm API；商店用户（9 万）与评分（5.0/11 条）来自商店页面——全部对日期敏感。
-- [未验证] 内置适配器覆盖面（B 站、知乎、小红书、Reddit、HN、Twitter/X、Electron 应用……）为 README 自述；单个适配器健康度随站点 DOM 天天变。
+- 已在仓内核实（2026-09-17）：`clis/` 树下有 **182 个适配器目录**（从 bilibili/小红书到 bloomberg、cnki、boss、coupang）——比 README 的简短列表暗示的宽得多。
+- [未验证] 单个适配器健康度随站点 DOM 天天变；issue 构成（约 269 个 open 中约三分之一为适配器损坏）是对全部 open issue 标题分类的估计，非全量分诊。
 - [未验证] 厂商扩展对比（Kimi/Qoder 对第三方 agent 封闭）是从商店描述推断；未见公开 API 文档。
 - [未验证] 桌面 OpenCLIApp 的行为（托盘、登录保活）来自 README；未独立测试。
-- [推断] issue 流构成（适配器损坏主导）是从 open issue 标题采样推断，非全量分诊。
 - [推断] 「登录态继承」是设计中心，但风控结果因平台、因账号历史而异。

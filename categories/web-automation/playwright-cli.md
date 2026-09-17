@@ -118,7 +118,7 @@ JavaScript on Node.js ≥ 18 over the Playwright engine (Chromium/Firefox/WebKit
 
 - **Maintenance (2026-09):** active — v0.1.20 released and pushed 2026-09-14; rapid cadence since the 2026 repositioning.
 - **Governance / backing:** `Organization`-owned by Microsoft, 13 contributors; same org as Playwright proper — strong backing, minimal bus-factor risk.
-- **Age & Lindy (2026-09):** the *repo* dates to 2020-06, but the agent-CLI incarnation is months old [推断] — its ~13.3k stars partly inherit the older CLI's history, so don't read the star count as validation of the new direction. The concept (CLI over MCP for coding agents) is young and unproven at scale.
+- **Age & Lindy (2026-09):** the repo's tag history confirms the repositioning: the older Playwright CLI line ran to v0.180.0 (releases back to 2026-01-31 in the current feed), then the agent-CLI incarnation restarted versioning at v0.1.x in 2026. Its ~13.3k stars therefore partly inherit the old CLI's history — don't read them as validation of the new direction. The concept (CLI over MCP for coding agents) is young and unproven at scale.
 - **Adoption:** npm package `@playwright/cli` live (v0.1.20); adoption telemetry not independently measured. [未验证]
 - **Risk flags:** Apache-2.0, no license concerns. Strategic flag: the 2026 CLI-vs-MCP split is fresh — Microsoft could still reshuffle the two surfaces, and skills-format churn is likely while v0.1.x. [推断]
 
@@ -127,5 +127,5 @@ JavaScript on Node.js ≥ 18 over the Playwright engine (Chromium/Firefox/WebKit
 - [未验证] Stars (~13.3k) / contributors (13) per GitHub API on 2026-09-16; the star count includes history from the repo's pre-2026 incarnation as a different Playwright CLI.
 - [未验证] The token-efficiency advantage over MCP is Microsoft's own claim in both READMEs; no independent benchmark cited.
 - [未验证] Skill compatibility with specific agents beyond Claude Code / GitHub Copilot is vendor-stated.
-- [推断] The 2026 repositioning date is inferred from README framing and release cadence, not from a changelog announcement.
+- Verified via tag history (2026-09-17): legacy tags run to v0.180.0 and the agent-CLI line restarts at v0.1.x — the repositioning is factual, not inferred.
 - [推断] Session semantics (in-memory default, `--persistent` opt-in) may still change across v0.1.x releases.

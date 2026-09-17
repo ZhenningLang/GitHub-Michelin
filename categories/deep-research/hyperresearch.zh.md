@@ -83,10 +83,10 @@ health:
 ## 何时不用
 
 - **日常工程选型问题。**「这个库还在维护吗 / A 和 B 哪个适合我的规模」要的是 10–20 个源加半小时，不是 16 步流水线——引用审计装置在这里纯属 overkill。用轻量手动流程（仓库元数据+issue 采样）或 [GPT Researcher](gpt-researcher.zh.md) 这类更便宜的通用 agent。
-- **不在 Claude Code 上。** 整条流水线靠 Claude Code 的 Skill/subagent 机制激活，没有独立 agent 运行时。要任意 LLM 或其它 harness，用 [GPT Researcher](gpt-researcher.zh.md)（框架）或 [Local Deep Research](local-deep-research.zh.md)（自托管）。
+- **不在 Claude Code 上。** 整条流水线靠 Claude Code 的 Skill/subagent 机制激活，没有独立 agent 运行时；README 明确说「想移植到 Codex 请提 PR」——即 Codex 支持今天不存在。要任意 LLM 或其它 harness，用 [GPT Researcher](gpt-researcher.zh.md)（框架）或 [Local Deep Research](local-deep-research.zh.md)（自托管）。
 - **token 或时间预算紧张。** 即使 light 档也要约 30–40 分钟；full 档 1.5–2.5 小时、premier 档 3–5 小时、100–130+ 源，全部计入你的 Claude 用量（曾有 token 过度消耗的 bug，#83，已修，但设计本身就重）。要快速拿到带引用的答案，OpenAI / Gemini Deep Research 这类 SaaS（未收录）一键就有。
 - **查询必须完全留在自己的基础设施上。** 它抓的是活网页、跑在 Anthropic 模型上。要全本地推理、查询不出本机，用 [Local Deep Research](local-deep-research.zh.md)。
-- **冲着「DeepResearch-Bench 领先」来的。** 这个宣称是项目自己的分层试点 projection，第三方验证仍在 pending（README 脚注自己写明）——在独立复现之前按营销处理。[未验证]
+- **冲着「DeepResearch-Bench 领先」来的。** 这个宣称经不起对源：hyperresearch **不在官方榜单上**（2026-09-17 核查 muset-ai 官方 space 的 `data/` 与 `data_gpt55/` 两份 CSV 均无），且其 README 脚注自称「分层试点的 forward-looking projection」。在官方榜单出现提交记录前按营销处理。
 - **今天就需要稳定接口。** pre-1.0 且 churn 快——光 2026-09-11 一天就发了三个 release，open issue 里记载着 prompt 契约互相矛盾、配置常量写两处（#101/#102）。用就 pin 版本，升级后重读文档。
 
 ## 横向对比
@@ -120,14 +120,13 @@ Python 3.11–3.13 包（typer/rich/pydantic/jinja2 CLI），负责把 step-skil
 - **治理 / 巴士因子：** `User` 所有仓库（jordan-gibbs），15 个 contributor——超出纯单人项目，但路线图与质量标准仍是以 owner 为中心。[推断]
 - **年龄与 Lindy（2026-09）：** 创建于 2026-04-09，约 5 个月——年轻；这套精巧的 16 步设计还没经历过一年的 Claude Code 上游行为变迁。按当前价值采用，别按寿命押注。
 - **采用：** 约 3.3k star / 325 fork（2026-09-16），已上 PyPI；Hacker News 声量极小（2026-04 一次 submission，2 分）。issue 质量异常高——带根因的深度报告多、修复落地多（#72 stored XSS、#83 token 过度消耗、#88 契约审计）——这比 star 更可信。[推断]
-- **风险标记：** 头条宣称「领跑 DeepResearch-Bench」是自测 projection，第三方验证 pending（其自家脚注写明）。MIT 许可证——无再许可风险。安全姿态主动（对抓取内容做 untrusted 围栏防提示注入），但「把任意网页内容喂进 agent 上下文」的攻击面是该品类固有的。[未验证]
+- **风险标记：** 头条宣称「领跑 DeepResearch-Bench」是自测 projection——已核实其不在官方榜单 CSV 上（2026-09-17）。MIT 许可证——无再许可风险。安全姿态主动（对抓取内容做 untrusted 围栏防提示注入），但「把任意网页内容喂进 agent 上下文」的攻击面是该品类固有的。
 
 ## 存疑（未验证）
 
 - [未验证] star（约 3.3k）/ fork（325）/ contributor 数（15）来自 2026-09-16 的 GitHub API；对日期敏感。
-- [未验证] DeepResearch-Bench RACE 榜单宣称是项目自测的「分层试点」projection（README 脚注）；未找到独立复现。
+- 仅支持 Claude Code 已**核实**（README 写明「想移植 Codex 请提 PR」）；「领跑 DeepResearch-Bench」已**核实不在**官方榜单（2026-09-17 查官方 space 两份 CSV）——留此条作为本页审计轨迹。
 - [未验证] 各档运行时长（light 约 30–40 分、full 1.5–2.5 小时、dissertation 4–8 小时）、源数量（55–450）、字数目标均为作者自述。
-- [未验证] 仅支持 Claude Code 的说法来自 README；截至 2026-09-16 未见 Codex/其它 harness 路径。
 - [未验证] HN 声量判断基于一次 Algolia 查询（仅 2026-04 一条 submission、2 分）——样本很薄。
 - [推断] 15 个 contributor 说明有一定评审面，但合并权限与决策结构未公开；有效巴士因子可能仍是 1。
 - [推断] vault 的复利价值取决于是否在同一领域反复调研；一次性用户拿不到这个价值。

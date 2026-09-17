@@ -91,7 +91,7 @@ The deciding tradeoff vs. the agent-browser field: OpenCLI's edge is **your real
 - **Clean-session, CI, or cross-browser automation.** The whole design is your foreground logged-in Chrome; for disposable/headless/cross-browser runs use [Playwright MCP](playwright-mcp.md), [Playwright CLI](playwright-cli.md), or the [Playwright](playwright.md) framework.
 - **Anti-bot-sensitive platforms at volume.** Automating logged-in third-party accounts invites risk-control response — the repo's own umbrella issue (#2470) tracks hardening against Xiaohongshu risk control; account restriction is a real cost the README won't pay for you. For bulk scraping, use dedicated `web-scraping` tooling instead.
 - **You can't accept the trust surface.** An agent bridged into your logged-in browser inherits every session you have, via a local daemon + extension. If your threat model forbids that, use a clean automation browser ([Agent Browser](agent-browser.md), [Playwright MCP](playwright-mcp.md)) and accept the login friction.
-- **You dislike maintenance treadmills.** Site adapters break when sites change their DOM — the open-issue stream (269 open as of 2026-09) is dominated by adapter breakage across YouTube, Xiaohongshu, LinkedIn, ChatGPT, Taobao. The `autofix` skill exists precisely because of this churn; budget for it. [推断]
+- **You dislike maintenance treadmills.** Site adapters break when sites change their DOM: of ~269 open issues (2026-09-16), roughly a third are site-adapter breakage reports (the single largest cluster, ahead of core/browser bugs) across YouTube, Xiaohongshu, LinkedIn, ChatGPT, Taobao and others. The `autofix` skill exists precisely because of this churn; budget for it.
 - **Zero-install or locked-down environments.** Requires Node ≥ 20.18.1 (npm path), a Chrome extension, and a local daemon; on managed machines where extensions are blocked, this stack won't load — use [Playwright CLI](playwright-cli.md) with its own bundled browsers instead.
 
 ## Comparison
@@ -129,8 +129,8 @@ JavaScript/Node.js (≥ 20.18.1 via npm) CLI (`@jackwener/opencli`), Chrome Web 
 ## Caveats (unverified)
 
 - [未验证] Stars (~29.3k) / forks (~2.9k) / contributors (30) per GitHub API on 2026-09-16; npm downloads (~84k/last month) per npm API; Chrome store users (90k) and rating (5.0/11 reviews) per the store listing — all date-sensitive.
-- [未验证] Built-in adapter coverage (Bilibili, Zhihu, Xiaohongshu, Reddit, HN, Twitter/X, Electron apps…) is README-stated; individual adapter health changes daily with site DOMs.
+- Verified in-repo (2026-09-17): the `clis/` tree contains **182 adapter directories** (from bilibili/xiaohongshu to bloomberg, cnki, boss, coupang) — broader than the README's short list implies.
+- [未验证] Built-in adapter health changes daily with site DOMs; issue-stream composition (~one third of ~269 open issues are adapter breakage) is estimated from title classification of all open issues, not a full triage.
 - [未验证] Vendor-extension comparison (Kimi/Qoder closed to third-party agents) is inferred from store descriptions; no public API documented.
 - [未验证] Desktop OpenCLIApp behavior (tray, keepalive) is from the README; not independently tested.
-- [推断] The issue-stream composition (adapter breakage dominant) is inferred from titles of the top open issues, not a full triage.
 - [推断] "Logged-in session inheritance" is the design center, but risk-control outcomes vary per platform and per account history.
