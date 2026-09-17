@@ -26,6 +26,17 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    language, deps, latest version, age — each dated) from **judgment**. Anything you can't confirm
    from a source → label `[未验证]` / `[推断]`, never assert it.
 
+   **`[未验证]` is a last resort, not a convenience.** Before writing any unverified claim into a
+   page, attempt verification with the tools at hand: `gh api` (metadata, issues, release/tag
+   history), raw file reads from the repo tree (does the claimed config/benchmark/file actually
+   exist? count it), package registries (npm/PyPI download numbers), the referenced external source
+   itself (if a page claims a leaderboard position, fetch the leaderboard), and issue/PR bodies
+   (what did the maintainer actually answer?). Classify each candidate claim:
+   - *Verifiable now* → verify it, then write it as a dated fact (no label needed).
+   - *Not verifiable without a reproduction environment* (author-reported runtimes/costs, AV
+     verdicts, internal governance) → keep the label **and** state why it can't be checked.
+   A Caveats ledger full of claims you never tried to verify is unfinished work.
+
 3. **Classify.** Pick the single best **primary** category (= directory under `categories/`).
    Cross-cutting traits go in `tags`, not extra categories. Only create a new category if it
    genuinely doesn't fit — then also add a row to root `INDEX.md` **and** `INDEX.zh.md`.
@@ -41,6 +52,13 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      `"When NOT to use" names substitutes`).
    - **Comparison** — 3–5 real substitutes, `未收录` for unindexed ones; verdicts per §2
      `Verdict quality contract` (no template/vague verdicts).
+   - **Close the loop on comparisons.** Every **real repository** named as a comparison
+     alternative must itself get an entry in the same batch (its own bilingual page, wired into
+     INDEX/README) — do not leave `未收录` dangling for something addable. `未收录` remains
+     legitimate only for **non-repos** (closed SaaS like Runway, commercial NLEs, services) and
+     for alternatives you explicitly justify as out-of-scope, with the reason recorded in the
+     commit/PR summary. The obligation covers the 3–5 named direct substitutes, not transitive
+     alternatives-of-alternatives.
    - **Health & viability** — required for all types; dated, labeled judgment per §7.
    - **Truth labeling + Caveats ledger** (§3) — inline labels only on the load-bearing few;
      everything unverified gets a ledger bullet.
