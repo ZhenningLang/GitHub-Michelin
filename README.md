@@ -365,6 +365,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | MIT | B (4/6) | [EN](categories/agent-skills/writing/baoyu-skills.md) · [中](categories/agent-skills/writing/baoyu-skills.zh.md) |
+| **translate-book** | Agent skill for Codex, Claude Code, and OpenClaw that translates entire books (PDF/DOCX/EPUB) into any language using parallel subagents. | MIT | B (4/6) | [EN](categories/agent-skills/writing/translate-book.md) · [中](categories/agent-skills/writing/translate-book.zh.md) |
+| **claude_translater** | Shell-script + Claude CLI document translation toolbox (PDF/DOCX/EPUB/PPTX); the unmaintained, unlicensed inspiration for translate-book. | NOASSERTION | D (4/6) | [EN](categories/agent-skills/writing/claude-translater.md) · [中](categories/agent-skills/writing/claude-translater.zh.md) |
 | **Humanizer-zh** | A single Chinese Claude Code skill that rewrites text to strip ~24 tell-tale AI-writing patterns; a localization of blader/humanizer. | MIT | C (4/6) | [EN](categories/agent-skills/de-ai-writing/humanizer-zh.md) · [中](categories/agent-skills/de-ai-writing/humanizer-zh.zh.md) |
 | **Webnovel Writer** | Use it when a Claude Code serial novel needs chapters, facts, retrieval, reviews, and summaries to stay consistent over a long run. | GPL-3.0 | B (5/6) | [EN](categories/agent-skills/writing/webnovel-writer.md) · [中](categories/agent-skills/writing/webnovel-writer.zh.md) |
 
@@ -754,6 +756,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **NetNewsWire** | Use it when you read many feeds on Mac/iPhone and want a fast, ad-free native RSS client you own — but only on Apple platforms, never elsewhere. | MIT | B (5/6) | [EN](categories/reading-tools/netnewswire.md) · [中](categories/reading-tools/netnewswire.zh.md) |
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | Unlicensed (EULA) | D (6/6) | [EN](categories/reading-tools/just-read.md) · [中](categories/reading-tools/just-read.zh.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | AGPL-3.0 | ? (0/6) | [EN](categories/reading-tools/freshrss.md) · [中](categories/reading-tools/freshrss.zh.md) |
+| **Bilingual Book Maker** | Make bilingual epub books Using AI translate | MIT | A (5/6) | [EN](categories/reading-tools/bilingual-book-maker.md) · [中](categories/reading-tools/bilingual-book-maker.zh.md) |
 
 ### speech
 
