@@ -15,6 +15,7 @@
 | **writing** | 翻译、长文写作流程、编辑与发布流水线。 | [→](writing/INDEX.zh.md) |
 | **security** | 安全评审、威胁建模、网络安全 playbook。 | [→](security/INDEX.zh.md) |
 | **context-engineering** | 组织、压缩、路由 agent 所读的内容。 | [→](context-engineering/INDEX.zh.md) |
+| **prompt-engineering** | 为任意 AI 工具编写、生成、收集提示词——生成器 skill、社区提示词库与知识库。 | [→](prompt-engineering/INDEX.zh.md) |
 | **vendor-collections** | 官方 / 厂商发布的第一方技能与插件捆绑包。 | [→](vendor-collections/INDEX.zh.md) |
 | **subagent-collections** | 成套现成的 subagent 定义 / 人设，直接塞进 harness。 | [→](subagent-collections/INDEX.zh.md) |
 | **personal-collections** | 长尾：某个作者策展的技能、subagent 或 harness 配置。 | [→](personal-collections/INDEX.zh.md) |

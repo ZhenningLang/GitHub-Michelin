@@ -384,6 +384,14 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Agent Skills for Context Engineering** | A 15-skill Claude Code plugin pack teaching context-engineering discipline: fundamentals, degradation, compression, multi-agent coordination, memory, tool design, evaluation, and harness engineering. | MIT | B (4/6) | [EN](categories/agent-skills/context-engineering/context-engineering-skills.md) · [中](categories/agent-skills/context-engineering/context-engineering-skills.zh.md) |
 | **NotebookLM Claude Code Skill** | A Claude Code skill that drives real Chrome to query your Google NotebookLM notebooks, returning source-grounded, citation-backed answers from your own docs instead of file-reading or hallucinating. | MIT | C (4/6) | [EN](categories/agent-skills/context-engineering/notebooklm-skill.md) · [中](categories/agent-skills/context-engineering/notebooklm-skill.zh.md) |
 
+#### agent-skills / prompt-engineering
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **prompt-master** | A Claude skill that generates one-shot optimized prompts for 30+ AI tools (LLMs, coding agents, image/video/voice AI) via intent extraction, template routing, and a 37-pattern anti-pattern checklist. | MIT | B (4/6) | [EN](categories/agent-skills/prompt-engineering/prompt-master.md) · [中](categories/agent-skills/prompt-engineering/prompt-master.zh.md) |
+| **prompts.chat** | Self-hostable community platform for sharing, discovering, and collecting ready-made prompts (f.k.a. Awesome ChatGPT Prompts). | MIT (code) + CC0 (prompt content) | A (4/6) | [EN](categories/agent-skills/prompt-engineering/prompts-chat.md) · [中](categories/agent-skills/prompt-engineering/prompts-chat.zh.md) |
+| **Prompt Engineering Guide** | Reference knowledge base (guides, papers, notebooks) for learning prompt/context engineering, RAG, and agent techniques. | MIT | C (4/6) | [EN](categories/agent-skills/prompt-engineering/prompt-engineering-guide.md) · [中](categories/agent-skills/prompt-engineering/prompt-engineering-guide.zh.md) |
+
 #### agent-skills / vendor-collections
 
 | Project | Use when | License | Health | Page |

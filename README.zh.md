@@ -381,6 +381,14 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Agent Skills for Context Engineering** | 一个 15 个 skill 的 Claude Code 插件包，灌输上下文工程纪律：基础原理、退化、压缩、多 agent 协同、记忆、工具设计、评估与 harness 工程。 | MIT | B（4/6） | [中](categories/agent-skills/context-engineering/context-engineering-skills.zh.md) · [EN](categories/agent-skills/context-engineering/context-engineering-skills.md) |
 | **NotebookLM Claude Code Skill** | 一个 Claude Code skill：用真实 Chrome 驱动查询你的 Google NotebookLM 笔记本，从你自己上传的文档取回有来源依据、带引用的答案，而非逐文件读取或凭空编造。 | MIT | C（4/6） | [中](categories/agent-skills/context-engineering/notebooklm-skill.zh.md) · [EN](categories/agent-skills/context-engineering/notebooklm-skill.md) |
 
+#### agent-skills / prompt-engineering
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **prompt-master** | 一个 Claude skill：通过意图提取、模板路由和 37 条反模式清单，为 30+ AI 工具（LLM、编码 agent、图像/视频/语音 AI）生成一次性优化提示词。 | MIT | B（4/6） | [中](categories/agent-skills/prompt-engineering/prompt-master.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompt-master.md) |
+| **prompts.chat** | 可自托管的社区提示词平台：分享、发现、收集现成提示词（前身是 Awesome ChatGPT Prompts）。 | MIT（代码）+ CC0（提示词内容） | A（4/6） | [中](categories/agent-skills/prompt-engineering/prompts-chat.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompts-chat.md) |
+| **Prompt Engineering Guide** | 提示词/上下文工程、RAG 与 agent 技术的参考知识库（指南、论文、notebook）。 | MIT | C（4/6） | [中](categories/agent-skills/prompt-engineering/prompt-engineering-guide.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompt-engineering-guide.md) |
+
 #### agent-skills / vendor-collections
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

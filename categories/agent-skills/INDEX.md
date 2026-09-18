@@ -15,6 +15,7 @@
 | **writing** | Translation, long-form writing workflows, editorial and publishing pipelines. | [→](writing/INDEX.md) |
 | **security** | Security review, threat modeling, cybersecurity playbooks. | [→](security/INDEX.md) |
 | **context-engineering** | Structuring, compressing, and routing what an agent reads. | [→](context-engineering/INDEX.md) |
+| **prompt-engineering** | Writing, generating, and collecting prompts for any AI tool — generator skills, community prompt libraries, and knowledge bases. | [→](prompt-engineering/INDEX.md) |
 | **vendor-collections** | Official / vendor-published first-party skill & plugin bundles. | [→](vendor-collections/INDEX.md) |
 | **subagent-collections** | Ready-made subagent definitions / personas to drop into a harness. | [→](subagent-collections/INDEX.md) |
 | **personal-collections** | The long tail: one author's curated skills, subagents, or harness config. | [→](personal-collections/INDEX.md) |
