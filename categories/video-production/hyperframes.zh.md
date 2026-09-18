@@ -89,7 +89,7 @@ health:
 
 - **你需要写实或真人感的画面。** HyperFrames 渲染的是浏览器排版——文字版式、图表、UI 巡演、动效图形——不是神经网络像素。当**画面本身**必须靠幻觉生成时，请用视频生成模型（SeedDance、Sora、Runway，均未收录），因为再多 HTML 也变不出逼真的人或物理场景。
 - **你只要一条一次性的、手工精修的电影感片子。** 请用 DaVinci Resolve 或 Premiere Pro（未收录）配人类剪辑师；代码优先的确定性流水线只有在视频被重复、参数化、反复重新生成时才回本——单条大片只会多一套工具链，省不了时间。
-- **你的团队是 React 优先、且已经投入 Remotion 生态。** Remotion（未收录）有更成熟的云渲染（Remotion Lambda）和更大的生态；HyperFrames 的 HTML 创作模型是它自己的赌注，且 Remotion composition 迁移过来是单向的。注意许可证反转：Remotion 是 source-available、超过收入阈值要付费，HyperFrames 是 Apache-2.0——要生态深度选 Remotion，要许可证自由和 agent 人体工学选 HyperFrames。
+- **你的团队是 React 优先、且已经投入 Remotion 生态。** [Remotion](remotion.zh.md) 有更成熟的云渲染（Remotion Lambda）和更大的生态；HyperFrames 的 HTML 创作模型是它自己的赌注，且 Remotion composition 迁移过来是单向的。注意许可证反转：Remotion 是 source-available、超过收入阈值要付费，HyperFrames 是 Apache-2.0——要生态深度选 Remotion，要许可证自由和 agent 人体工学选 HyperFrames。
 - **你想要整条生产管线被编排好——调研、脚本、素材生成、预算闸门。** HyperFrames 是渲染引擎加 agent skill，不是带治理的流水线；[OpenMontage](open-montage.zh.md) 把这类引擎嵌进端到端的 agent 驱动工作流，带审批闸门。
 - **你的运行时装不下 Node 22+、FFmpeg 和 headless Chrome。** 轻量边缘／serverless HTTP 处理器放不下这个组合；如果只需要服务端纯拼接／滤镜、不要浏览器，直接驱动 FFmpeg 或用云渲染 API（未收录），因为 Chrome seek-render 这一步是整个设计的核心。
 
@@ -97,7 +97,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Remotion | 未收录 | 如果你的团队本来就以 React 组件思考、且要最成熟的 Lambda 渲染，选 Remotion；如果你想要无构建步骤、agent 能可靠编辑的 HTML，以及没有收入阈值的 Apache-2.0 许可证，选 HyperFrames，因为 Remotion 的 source-available 许可证和打包器要求正是 HyperFrames 设计要去掉的两个成本。 | Remotion 给生态深度和被验证的云渲染；HyperFrames 给更简单的创作模型和许可证，但它是 pre-1.0，catalog 更年轻。 |
+| [Remotion](remotion.zh.md) | ✅ | 如果你的团队本来就以 React 组件思考、且要最成熟的 Lambda 渲染，选 Remotion；如果你想要无构建步骤、agent 能可靠编辑的 HTML，以及没有收入阈值的 Apache-2.0 许可证，选 HyperFrames，因为 Remotion 的 source-available 许可证和打包器要求正是 HyperFrames 设计要去掉的两个成本。 | Remotion 给生态深度和被验证的云渲染；HyperFrames 给更简单的创作模型和许可证，但它是 pre-1.0，catalog 更年轻。 |
 | [OpenMontage](open-montage.zh.md) | ✅ | 如果你要一条带治理的端到端管线（调研→脚本→素材→渲染、带审批闸门），选 OpenMontage；如果你已有 agent 工作流、只缺渲染引擎加生产技能，直接用 HyperFrames，因为 OpenMontage 是把这类引擎嵌入其中，而不是替代它们。 | OpenMontage 在引擎之上加编排与闸门；直接用 HyperFrames 保留完全控制，但管线纪律要自己扛。 |
 | Motion Canvas | 未收录 | 如果你想要 TSX／Canvas 的编程动画工具、带可视化编辑器来手工打磨动效作品，选 Motion Canvas；如果产出量和 agent 创作比可视化编辑器更重要，选 HyperFrames，因为纯 HTML composition 正是 coding agent 本来就写得溜的东西。 | Motion Canvas 给专用编辑器和 canvas API；HyperFrames 给确定性、skill 体系和 Lambda 渲染，但没有可视化时间线编辑器（其 Studio 还在演进）。 |
 | Runway／Pika（SaaS） | 未收录 | 如果你要零代码的生成式画面（人、场景、物理），选生成式 SaaS；如果每个像素都必须可控、可在 CI 里重渲染，选 HyperFrames，因为 prompt 摇出来的片段保证不了你的字幕文字，也扛不住一次数据修正——只能整段重生成。 | SaaS 生成即时且写实，但不可控、按次计费；HyperFrames 完全可控、渲染免费，但只产出图形动画风格的视频。 |

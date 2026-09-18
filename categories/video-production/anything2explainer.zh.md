@@ -76,7 +76,7 @@ health:
 
 - **任何未经作者授权的商用。** 许可证是 PolyForm Noncommercial 1.0——工具包仅非商用免费，商用需事先取得作者授权；已有两个咨询商业授权的 issue 开了又关。需要商用安全默认选 Apache-2.0 的 [HyperFrames](hyperframes.zh.md)（引擎+技能）或 AGPL-3.0 的 [OpenMontage](open-montage.zh.md)（copyleft 但允许商用），因为 PolyForm 的非商用闸门针对工具包本身，与你复用多少无关。
 - **需要生成式画面、真人出镜或实拍素材。** 每一帧都是代码绘制的线条画，且只有一种固定视觉风格；要写实或数字人产出就用 Runway、HeyGen 这类闭源 SaaS（未收录），它们用流水线可控性换一键生成。
-- **需要自己的视觉品牌。** 视觉是刻意固定的（黑底、星点或点阵波幕底、白线条+紫色重点、44px 字幕）；要定制品牌就直接写 Remotion（未收录）组件，跳过这个 skill。
+- **需要自己的视觉品牌。** 视觉是刻意固定的（黑底、星点或点阵波幕底、白线条+紫色重点、44px 字幕）；要定制品牌就直接写 [Remotion](remotion.zh.md) 组件，跳过这个 skill。
 - **不在 Claude Code 或 Codex 上。** 它靠这两个 harness 的 skill 加载机制激活；其它 agent 上 markdown 本身不会自动触发——要 harness 无关的路径就把 Remotion 或 HyperFrames 当库用。
 - **只有 Windows 环境。** 脚本是 zsh + Python 3，在 macOS 上开发验证；Linux（含树莓派 5）有文档，Windows 明确未测试——Windows 上优先 HyperFrames 的 npm 工具链。
 - **只要一条快剪短片而不是一部片子。** 流水线面向 2–8 分钟视频，墙钟约 1–3 小时、4–14 个并行构建 agent、每片约 2–3 GB 磁盘；做 30 秒素材纯属 overhead——直接用 Remotion 模板或 SaaS 生成器。
@@ -88,7 +88,7 @@ health:
 |---|---|---|---|
 | [OpenMontage](open-montage.zh.md) | ✅ | 需要更宽的 prompt 到成片题材（预告片、纪录蒙太奇）或 AGPL 的商用许可时选 OpenMontage；固定 MG 讲解风格加人工确认点和量化 QC 恰好就是你要的活儿时选 anything2explainer。 | OpenMontage 题材覆盖更广且有治理流水线，但带 AGPL-3.0 copyleft 和更重的工具链；anything2explainer 更窄、接入更轻（软链安装），但被 PolyForm 非商用卡住。 |
 | [HyperFrames](hyperframes.zh.md) | ✅ | 想要一个确定性的 HTML 到 MP4 渲染引擎来搭自己的流水线、或需要 Apache-2.0 时选 HyperFrames；想要整套制作方法——调研、解说词、分镜、QC——都已经趟好时选 anything2explainer。 | HyperFrames 是引擎层，带 20 个 agent 技能和宽松许可证但没有端到端成片方法论；anything2explainer 打包了方法论，却把你锁进一种视觉体系和一个非商用许可证。 |
-| Remotion（未收录） | ❌ | 需要完全掌控画面与合成、愿意自己写组件时直接用 Remotion；anything2explainer 本就架在 Remotion 上，采用它即接受其固定风格。 | 直接用 Remotion 视觉自由度无限，但它自身也是 source-available（有营收门槛），且调研/配音/QC 流水线要你自己搭。 |
+| [Remotion](remotion.zh.md) | ✅ | 需要完全掌控画面与合成、愿意自己写组件时直接用 Remotion；anything2explainer 本就架在 Remotion 上，采用它即接受其固定风格。 | 直接用 Remotion 视觉自由度无限，但它自身也是 source-available（有营收门槛），且调研/配音/QC 流水线要你自己搭。 |
 | Manim（未收录） | ❌ | 内容是数学/算法动画、想要有十年社区积累的经典程序化场景库时选 Manim；想让 agent 跑完包括配音和分镜在内的整个制作时选 anything2explainer。 | Manim 是 MIT 许可的成熟引擎、生态深厚，但没有 agent 流水线、TTS 和 QC——编排全靠你自己。 |
 | Runway / HeyGen（未收录） | ❌ | 需要一键生成式画面或数字人、且不需要源码级控制时选这些闭源 SaaS；要求产出可复现、可代码审查、本地渲染时选 anything2explainer。 | SaaS 生成器出第一帧更快，但闭源、按次计费、不可定制；skill-pack 更慢（数小时）但完全透明、可重跑。 |
 

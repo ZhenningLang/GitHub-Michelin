@@ -96,7 +96,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Open Design](../ai-design-generation/open-design.zh.md) | ✅ | 需要更轻量的 local-first 桌面路径来做快速 HTML→MP4 原型时，选 Open Design。 | Open Design 是桌面 studio，适合快速原型；OpenMontage 是完整管线系统，含研究、脚本和 12 条生产管线。 |
-| Remotion | 未收录 | 只需要程序化 React 视频合成、不需要 Agent 编排时，直接选 Remotion。 | OpenMontage 将 Remotion 内嵌为两个渲染后端之一；若只需要程序化 React 视频合成，可直接用 Remotion。 |
+| [Remotion](remotion.zh.md) | ✅ | 只需要程序化 React 视频合成、不需要 Agent 编排时，直接选 Remotion。 | OpenMontage 将 Remotion 内嵌为两个渲染后端之一；若只需要程序化 React 视频合成，可直接用 Remotion。 |
 | HeyGen / Runway / Pika | 未收录 | 单个生成片段的速度比管线控制和开源扩展性更重要时，选闭源 SaaS。 | 单片段生成更快，但无管线定制、无 Agent 审批门、无开源扩展性，且需持续订阅费用。 |
 | [FFmpeg](../media-processing/video-audio/ffmpeg.zh.md) | ✅ | 需要底层媒体处理 CLI，而不是端到端生产管线时，选 FFmpeg。 | OpenMontage 依赖 FFmpeg 做编码与后期；FFmpeg 适合需要底层媒体操作而非端到端生产管线的场景。 |
 | [ComfyUI](../on-device-ml/comfyui.zh.md) | ✅ | 自定义节点式扩散工作流和本地 GPU 推理比 Agent 化生产治理更重要时，选 ComfyUI。 | 在自定义扩散管线与本地 GPU 推理上更灵活，但缺乏 Agent 编排、研究、脚本撰写和预算治理。 |
