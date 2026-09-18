@@ -95,8 +95,11 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
 8. **Re-score the health radar.** Health grades go stale like any
    fact — re-run the scorer when you re-verify:
    `python3 tools/health.py --page <page> --write && python3 tools/health_card.py <page>`
-   This recomputes the 6 axes from live data, rewrites the identical `health:` block into both
-   siblings (bumping its `computed_at`), and regenerates the card. See `docs/health-rubric.md`.
+    This recomputes the 6 axes from live data, rewrites the identical `health:` block into both
+    siblings (bumping its `computed_at`), and regenerates the card. See `docs/health-rubric.md`.
+    Then re-project the new grade into the index rows — the `Health` / `健康度` cell in the
+    category `INDEX.md`/`INDEX.zh.md` + READMEs is a machine projection of the page block, never
+    hand-edited: `python3 tools/sync_index_health.py --apply` (lint.py ERRORs on any drift).
    The scorer prints a `grade changes vs previous block` diff to stderr — if any grade moved,
    reconcile the hand-written `## Health & viability` prose (both languages) with the new radar,
    and re-check the abandonment flag (step 5) when maintenance/overall dropped. This applies on

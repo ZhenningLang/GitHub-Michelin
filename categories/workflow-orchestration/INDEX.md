@@ -10,11 +10,11 @@
 | **Apache Airflow** | Use it when you orchestrate scheduled batch data pipelines as Python DAGs with a UI — not low-latency or event-driven flows. | A (6/6) | [→](airflow.md) |
 | **Gaia** | Use it when studying the "pipelines-as-compiled-plugins" design as a read-only reference — the repo is archived and abandoned, never pick it for new production work. | D (5/6) | [→](gaia.md) |
 | **Airflow Maintenance DAGs** | Use it when self-managed Airflow needs proven copy-in DAGs to clean metadata-DB rows and stale logs — they run destructive DELETEs tied to version-specific internals, so dry-run and back up first. | D (4/6) | [→](airflow-maintenance-dags.md) |
-| **n8n** | Use it when you need a visual-first workflow automation platform with 400+ integrations, native AI capabilities, and the option to self-host — but not for sub-second real-time streaming or fully unrestricted open-source use. | ? (0/6) | [→](n8n.md) |
-| **Argo Workflows** | Workflow Engine for Kubernetes | ? (0/6) | [→](argo-workflows.md) |
-| **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | ? (0/6) | [→](prefect.md) |
-| **Dagster** | An orchestration platform for the development, production, and observation of data assets. | ? (0/6) | [→](dagster.md) |
-| **Temporal** | Temporal service | ? (0/6) | [→](temporal.md) |
+| **n8n** | Use it when you need a visual-first workflow automation platform with 400+ integrations, native AI capabilities, and the option to self-host — but not for sub-second real-time streaming or fully unrestricted open-source use. | A (4/6) | [→](n8n.md) |
+| **Argo Workflows** | Workflow Engine for Kubernetes | A (4/6) | [→](argo-workflows.md) |
+| **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | A (6/6) | [→](prefect.md) |
+| **Dagster** | An orchestration platform for the development, production, and observation of data assets. | A (6/6) | [→](dagster.md) |
+| **Temporal** | Temporal service | A (5/6) | [→](temporal.md) |
 
 
 ## Comparison matrix
@@ -24,7 +24,7 @@
 | [Apache Airflow](airflow.md) | ✅ | A (6/6) | Use it when you orchestrate scheduled batch data pipelines as Python DAGs with a UI — not low-latency or event-driven flows. |
 | [Gaia](gaia.md) | ✅ | D (5/6) | Use it when studying the "pipelines-as-compiled-plugins" design as a read-only reference — the repo is archived and abandoned, never pick it for new production work. |
 | [Airflow Maintenance DAGs](airflow-maintenance-dags.md) | ✅ | D (4/6) | Use it when self-managed Airflow needs proven copy-in DAGs to clean metadata-DB rows and stale logs — they run destructive DELETEs tied to version-specific internals, so dry-run and back up first. |
-| [n8n](n8n.md) | ✅ | ? (0/6) | Visual-first workflow automation with 400+ integrations and native AI; self-hostable but fair-code licensed and not for real-time streaming. |
+| [n8n](n8n.md) | ✅ | A (4/6) | Visual-first workflow automation with 400+ integrations and native AI; self-hostable but fair-code licensed and not for real-time streaming. |
 | Prefect / Dagster / Argo Workflows / Temporal | 未收录 | — | Other workflow orchestrators named across the pages. |
 
 ## What belongs here

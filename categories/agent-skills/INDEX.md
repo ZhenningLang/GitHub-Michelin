@@ -23,14 +23,14 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **book-to-skill** | Use it when you want to turn technical book PDFs (and other document formats) into installable agent skills for Claude Code, Copilot CLI, or Amp. | ? (0/6) | [→](book-to-skill.md) |
+| **book-to-skill** | Use it when you want to turn technical book PDFs (and other document formats) into installable agent skills for Claude Code, Copilot CLI, or Amp. | B (6/6) | [→](book-to-skill.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [book-to-skill](book-to-skill.md) | ✅ | ? (0/6) | Converts technical books and documents into installable agent skills; batch tool, not a live RAG system. |
-| [Docling](../document-parsing/docling.md) | ✅ | A (5/6) | General document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
+| [book-to-skill](book-to-skill.md) | ✅ | B (6/6) | Converts technical books and documents into installable agent skills; batch tool, not a live RAG system. |
+| [Docling](../document-parsing/docling.md) | ✅ | A (6/6) | General document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.md) | ✅ | C (4/6) | Queries an external Google service; book-to-skill works on local PDFs with no external dependency. |
 | LlamaIndex / RAG pipelines | 未收录 | — | Full RAG with embeddings and dynamic retrieval; more infrastructure than a static skill generator. |
 

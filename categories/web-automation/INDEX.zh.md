@@ -14,9 +14,9 @@
 | **Selenium** | 当你需要跨浏览器、跨语言的 WebDriver 自动化时用它——现代单浏览器体验 Playwright/Cypress 更顺手。 | B（6/6） | [→](selenium.zh.md) |
 | **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | D（5/6） | [→](phantomjs.zh.md) |
 | **Selenium Wire** | 当遗留的 Selenium 测试套件需要读取或改写浏览器后台 HTTP 流量时用它——但它已归档，新项目应改用 Selenium 4 原生 CDP/BiDi 或 Playwright。 | D（5/6） | [→](selenium-wire.zh.md) |
-| **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | ?（0/6） | [→](browser-use.zh.md) |
-| **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | ?（0/6） | [→](playwright.zh.md) |
-| **Puppeteer** | JavaScript API for Chrome and Firefox | ?（0/6） | [→](puppeteer.zh.md) |
+| **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | B（6/6） | [→](browser-use.zh.md) |
+| **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | A（5/6） | [→](playwright.zh.md) |
+| **Puppeteer** | JavaScript API for Chrome and Firefox | A（5/6） | [→](puppeteer.zh.md) |
 | **nodriver** | 当你需要 Python-first 的异步直接 CDP 控制、且不想依赖 WebDriver 时用它；它仅支持 Chromium、采用 AGPL-3.0，反检测也只是尽力而为，不是稳定绕过契约。 | C（5/6） | [→](nodriver.zh.md) |
 | **Playwright MCP** | 当支持 MCP 的 agent 需要厂商官方、基于无障碍树快照的确定性浏览器自动化时用它——适合有状态的探索式回路；微软自家 README 把高吞吐 coding agent 引向它的 CLI 兄弟。 | A（6/6） | [→](playwright-mcp.zh.md) |
 | **Playwright CLI** | 当 coding agent（Claude Code、Copilot）需要便宜、token 高效的浏览器命令并装好 SKILLs 时用它——微软自己推荐给 coding agent 的路径；v0.1.x，刚重新定位。 | A（5/6） | [→](playwright-cli.zh.md) |
@@ -34,8 +34,8 @@
 | [Selenium](selenium.zh.md) | ✅ | B（6/6） | 当你需要跨浏览器、跨语言的 WebDriver 自动化时用它——现代单浏览器体验 Playwright/Cypress 更顺手。 |
 | [PhantomJS](phantomjs.zh.md) | ✅ | D（5/6） | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 |
 | [Selenium Wire](selenium-wire.zh.md) | ✅ | D（5/6） | 当遗留的 Selenium 测试套件需要读取或改写浏览器后台 HTTP 流量时用它——但它已归档，新项目应改用 Selenium 4 原生 CDP/BiDi 或 Playwright。 |
-| [Playwright](playwright.zh.md) | ✅ | ?（0/6） | 带完整 runner 与 trace 能力的跨浏览器测试和自动化；当前索引条目仍需要补齐选型边界。 |
-| [Puppeteer](puppeteer.zh.md) | ✅ | ?（0/6） | Chrome-first 的 JavaScript 自动化；当前索引条目仍需要补齐选型边界。 |
+| [Playwright](playwright.zh.md) | ✅ | A（5/6） | 带完整 runner 与 trace 能力的跨浏览器测试和自动化；当前索引条目仍需要补齐选型边界。 |
+| [Puppeteer](puppeteer.zh.md) | ✅ | A（5/6） | Chrome-first 的 JavaScript 自动化；当前索引条目仍需要补齐选型边界。 |
 | [nodriver](nodriver.zh.md) | ✅ | C（5/6） | 不依赖 WebDriver 的 Python 异步直接 CDP 控制，代价是没有跨浏览器覆盖、许可不宽松，反检测也仅为尽力而为。 |
 | [Playwright MCP](playwright-mcp.zh.md) | ✅ | A（6/6） | 微软官方 MCP 浏览器：AX 树快照、跨浏览器、客户端兼容最广；比微软自己引导 coding agent 使用的 CLI 兄弟更费 token。 |
 | [Playwright CLI](playwright-cli.zh.md) | ✅ | A（5/6） | 微软面向 coding agent 的 token 高效 CLI+SKILLs 路径；v0.1.x 且刚重新定位，预期契约会 churn。 |

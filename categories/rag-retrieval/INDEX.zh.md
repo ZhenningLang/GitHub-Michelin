@@ -14,9 +14,9 @@
 | **Understand-Anything** | 当你想把任意代码库变成可探索、可提问的知识图谱给 agent 用时用它——比 graphify 更年轻、未经检验。 | B（6/6） | [→](understand-anything.zh.md) |
 | **FAISS** | 当你需要一个快速的进程内 ANN 向量索引来检索 embedding 时用它——是库，不是托管向量数据库。 | A（6/6） | [→](faiss.zh.md) |
 | **text2vec** | 当你要为中文语义检索或 FAQ 匹配快速拿到句向量、只想一行 pip 装好时用它——它只是编码器，向量索引（FAISS／Milvus）得自己配。 | C（5/6） | [→](text2vec.zh.md) |
-| **SCIP** | SCIP Code Intelligence Protocol | ?（0/6） | [→](scip.zh.md) |
-| **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | ?（0/6） | [→](milvus.zh.md) |
-| **Sourcegraph** | Code AI platform with Code Search & Cody | ?（0/6） | [→](sourcegraph.zh.md) |
+| **SCIP** | SCIP Code Intelligence Protocol | A（6/6） | [→](scip.zh.md) |
+| **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A（4/6） | [→](milvus.zh.md) |
+| **Sourcegraph** | Code AI platform with Code Search & Cody | E（3/6） | [→](sourcegraph.zh.md) |
 
 
 ## 对比矩阵

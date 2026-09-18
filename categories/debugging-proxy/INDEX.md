@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **whistle** | Use it when a web/mobile dev must capture, inspect, rewrite, and mock HTTP(S)/WebSocket traffic via a rule-based web UI — a dev proxy, not a production gateway or scraping pool. | B (6/6) | [→](whistle.md) |
 | **AnyProxy** | Use it when you want a scriptable Node.js MITM proxy to inspect and rewrite HTTP/HTTPS traffic in plain JS rules — but master is frozen since 2020, so prefer whistle for new work. | C (4/6) | [→](anyproxy.md) |
-| **mitmproxy** | An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers. | ? (0/6) | [→](mitmproxy.md) |
+| **mitmproxy** | An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers. | A (6/6) | [→](mitmproxy.md) |
 
 
 ## Comparison matrix

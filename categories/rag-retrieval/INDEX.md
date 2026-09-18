@@ -14,9 +14,9 @@
 | **Understand-Anything** | Use it when you want any codebase turned into an explorable, queryable knowledge graph for an agent — younger and less proven than graphify. | B (6/6) | [→](understand-anything.md) |
 | **FAISS** | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. | A (6/6) | [→](faiss.md) |
 | **text2vec** | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). | C (5/6) | [→](text2vec.md) |
-| **SCIP** | SCIP Code Intelligence Protocol | ? (0/6) | [→](scip.md) |
-| **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | ? (0/6) | [→](milvus.md) |
-| **Sourcegraph** | Code AI platform with Code Search & Cody | ? (0/6) | [→](sourcegraph.md) |
+| **SCIP** | SCIP Code Intelligence Protocol | A (6/6) | [→](scip.md) |
+| **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A (4/6) | [→](milvus.md) |
+| **Sourcegraph** | Code AI platform with Code Search & Cody | E (3/6) | [→](sourcegraph.md) |
 
 
 ## Comparison matrix

@@ -98,7 +98,10 @@ The schema is the contract: **`tools/schema.md`**. In short:
 - After writing, update its category `INDEX.md` + `INDEX.zh.md` (and parent/root `INDEX` files for a
   new category) **and the README master listing** (`README.md` + `README.zh.md`), then run the
   linter. If a category overflows (lint WARNs), run `refactor-index`. The linter ERRORs if a page is
-  missing from its `INDEX` **or** from the README listing, so neither can silently drift.
+  missing from its `INDEX` **or** from the README listing, so neither can silently drift. The
+  `Health`/`健康度` column in those tables is **machine-synced, never hand-graded**: run
+  `python3 tools/sync_index_health.py --apply` after scoring a page's `health:` block (lint
+  ERRORs on any row that drifts from the page frontmatter).
 
 Skills: `.claude/skills/add-project/` (author a new entry), `.claude/skills/sync-entry/`
 (re-verify a stale entry), `.claude/skills/refactor-index/` (rebalance the tree — split overflowing

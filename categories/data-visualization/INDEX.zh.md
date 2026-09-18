@@ -8,8 +8,8 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Apache Superset** | 当你想要在数据仓库之上自托管 SQL BI 看板与探索时用它——不是基础设施指标/可观测性。 | A（6/6） | [→](superset.zh.md) |
-| **Evidence** | Business intelligence as code: build fast, interactive data visualizations in SQL and markdown | ?（0/6） | [→](evidence.zh.md) |
-| **Metabase** | The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart: | ?（0/6） | [→](metabase.zh.md) |
+| **Evidence** | Business intelligence as code: build fast, interactive data visualizations in SQL and markdown | B（5/6） | [→](evidence.zh.md) |
+| **Metabase** | The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart: | A（4/6） | [→](metabase.zh.md) |
 
 
 ## 对比矩阵

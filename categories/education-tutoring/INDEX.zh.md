@@ -7,14 +7,14 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | ?（0/6） | [→](deeptutor.zh.md) |
+| **DeepTutor** | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. | B（5/6） | [→](deeptutor.zh.md) |
 
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [DeepTutor](deeptutor.zh.md) | ✅ | ?（0/6） | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. |
+| [DeepTutor](deeptutor.zh.md) | ✅ | B（5/6） | DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/. |
 
 
 ## 什么该放这里

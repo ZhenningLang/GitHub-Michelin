@@ -12,7 +12,7 @@
 | **memory-analyzer** | Use it when you need a one-shot per-type memory snapshot of a live Python 3 process via GDB — but Meta **archived** it (last code 2021, targets EOL 3.6/3.7), so prefer a maintained tool like memray/tracemalloc. | D (5/6) | [→](memory-analyzer.md) |
 | **gophernotes** | Use it when you want interactive Go cells in a Jupyter notebook for exploration or tutorials — but it's stalled since 2023 and runs an interpreter, not standard Go. | D (3/6) | [→](gophernotes.md) |
 | **GRequests** | Use it when you want to make existing synchronous `requests` code concurrent with minimal diff via `map()` — but gevent monkeypatches the stdlib and can collide with your stack. | C (4/6) | [→](grequests.md) |
-| **uv** | Use it when you want an extremely fast Python package manager and project tool that replaces pip, poetry, and pyenv with a single Rust binary and universal lockfile — but it's only ~3 years old and some edge cases in dependency resolution are still being ironed out. | ? (0/6) | [→](uv.md) |
+| **uv** | Use it when you want an extremely fast Python package manager and project tool that replaces pip, poetry, and pyenv with a single Rust binary and universal lockfile — but it's only ~3 years old and some edge cases in dependency resolution are still being ironed out. | A (6/6) | [→](uv.md) |
 
 ## Comparison matrix
 
@@ -23,7 +23,7 @@
 | [memory-analyzer](memory-analyzer.md) | ✅ | D (5/6) | Use it when you need a one-shot per-type memory snapshot of a live Python 3 process via GDB — but Meta **archived** it (last code 2021, targets EOL 3.6/3.7), so prefer a maintained tool like memray/tracemalloc. |
 | [gophernotes](gophernotes.md) | ✅ | D (3/6) | Use it when you want interactive Go cells in a Jupyter notebook for exploration or tutorials — but it's stalled since 2023 and runs an interpreter, not standard Go. |
 | [GRequests](grequests.md) | ✅ | C (4/6) | Use it when you want to make existing synchronous `requests` code concurrent with minimal diff via `map()` — but gevent monkeypatches the stdlib and can collide with your stack. |
-| [uv](uv.md) | ✅ | ? (0/6) | Extremely fast Python package manager written in Rust; replaces pip, poetry, pyenv with a single tool and universal lockfile — but only ~3 years old with some edge cases still being resolved. |
+| [uv](uv.md) | ✅ | A (6/6) | Extremely fast Python package manager written in Rust; replaces pip, poetry, pyenv with a single tool and universal lockfile — but only ~3 years old with some edge cases still being resolved. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

@@ -66,7 +66,8 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    Model the negative-space writing on the golden examples listed in §2.
 
 5. **Wire it in.** Add the project to its `categories/<category>/INDEX.md` **and** `INDEX.zh.md`
-   (one-liner + comparison-matrix row in each, including `Health` / `健康度`) **and to the README
+   (one-liner + comparison-matrix row in each; put `—` in the `Health` / `健康度` cell — it is a
+   machine projection filled in step 7, never hand-graded) **and to the README
    master listing** (`README.md` + `README.zh.md`). If new category, also add it to root `INDEX.md` +
    `INDEX.zh.md`. The linter ERRORs if a page is missing from its INDEX or from either README, so
    nothing drifts silently.
@@ -83,10 +84,14 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      block into **both** the `.md` and `.zh.md` frontmatter. Never hand-author the grades.
     - `python3 tools/health_card.py categories/<category>/<slug>.md categories/<category>/<slug>.zh.md`
       — regenerates both `assets/health/<slug>.svg` and `assets/health/<slug>.zh.svg` from that block.
-   - Embed the card once in **each** page, right after the TL;DR line:
-      `![<name> — health radar](../../assets/health/<slug>.svg)` (EN) /
-      `![<name> — 健康度雷达](../../assets/health/<slug>.zh.svg)` (ZH).
-   See `docs/health-rubric.md` for the rubric (A–E + `?`; `?` is first-class, never a low score).
+    - Embed the card once in **each** page, right after the TL;DR line:
+       `![<name> — health radar](../../assets/health/<slug>.svg)` (EN) /
+       `![<name> — 健康度雷达](../../assets/health/<slug>.zh.svg)` (ZH).
+    - Project the grade into the index rows written in step 5:
+      `python3 tools/sync_index_health.py --apply` — it rewrites every `Health` / `健康度` cell in
+      the category INDEXes + READMEs from the page frontmatter (the SSOT). Never hand-edit those
+      cells; lint.py ERRORs on drift.
+    See `docs/health-rubric.md` for the rubric (A–E + `?`; `?` is first-class, never a low score).
 
 8. **Validate.** Run structural lint, then run a scoped or changed-only quality scan for the pages
    just written:

@@ -9,12 +9,12 @@
 | --- | --- | --- | --- |
 | **DSPy** | 你有评测数据和指标、想让优化器编译提示词而非手工调时。 | A（6/6） | [→](dspy.zh.md) |
 | **SkillOpt** | 当你要针对可打分基准、为冻结的 LLM 优化 Agent 的自然语言技能文档时用它——但没有可靠评测来把关每次编辑，方法就毫无信号，且它还是全新的 v0.1.0。 | B（6/6） | [→](skillopt.zh.md) |
-| **AutoGPT** | 当你需要一个用于创建、部署和管理持续运行 AI 智能体以自动化复杂工作流的平台时用它——但它未声明许可，且自托管需要大量资源。 | ?（0/6） | [→](autogpt.zh.md) |
-| **Dify** | 当你想要一个生产就绪的、用于构建 agentic 工作流的低代码可视化平台，内置 RAG 与 MCP 支持时用它——但商用前请核实许可。 | ?（0/6） | [→](dify.zh.md) |
-| **LangChain** | 当你需要一个代码优先的框架来组合 LLM agent、工具与记忆，并拥有庞大的集成生态时用它——但简单单 prompt 应用别用它。 | ?（0/6） | [→](langchain.zh.md) |
-| **Langflow** | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 | ?（0/6） | [→](langflow.zh.md) |
-| **LlamaIndex** | LlamaIndex is the leading document agent and OCR platform | ?（0/6） | [→](llamaindex.zh.md) |
-| **Flowise** | Build AI Agents, Visually | ?（0/6） | [→](flowise.zh.md) |
+| **AutoGPT** | 当你需要一个用于创建、部署和管理持续运行 AI 智能体以自动化复杂工作流的平台时用它——但它未声明许可，且自托管需要大量资源。 | A（5/6） | [→](autogpt.zh.md) |
+| **Dify** | 当你想要一个生产就绪的、用于构建 agentic 工作流的低代码可视化平台，内置 RAG 与 MCP 支持时用它——但商用前请核实许可。 | B（5/6） | [→](dify.zh.md) |
+| **LangChain** | 当你需要一个代码优先的框架来组合 LLM agent、工具与记忆，并拥有庞大的集成生态时用它——但简单单 prompt 应用别用它。 | A（6/6） | [→](langchain.zh.md) |
+| **Langflow** | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 | A（6/6） | [→](langflow.zh.md) |
+| **LlamaIndex** | LlamaIndex is the leading document agent and OCR platform | A（6/6） | [→](llamaindex.zh.md) |
+| **Flowise** | Build AI Agents, Visually | A（4/6） | [→](flowise.zh.md) |
 
 
 ## 对比矩阵
@@ -23,10 +23,10 @@
 | --- | --- | --- | --- |
 | [DSPy](dspy.zh.md) | ✅ | A（6/6） | 你有评测数据和指标、想让优化器编译提示词而非手工调时。 |
 | [SkillOpt](skillopt.zh.md) | ✅ | B（6/6） | 当你要针对可打分基准、为冻结的 LLM 优化 Agent 的自然语言技能文档时用它——但没有可靠评测来把关每次编辑，方法就毫无信号，且它还是全新的 v0.1.0。 |
-| [AutoGPT](autogpt.zh.md) | ✅ | ?（0/6） | 当你需要一个用于创建、部署和管理持续运行 AI 智能体以自动化复杂工作流的平台时用它——但它未声明许可，且自托管需要大量资源。 |
-| [Dify](dify.zh.md) | ✅ | ?（0/6） | 当你想要一个生产就绪的、用于构建 agentic 工作流的低代码可视化平台，内置 RAG 与 MCP 支持时用它——但商用前请核实许可。 |
-| [LangChain](langchain.zh.md) | ✅ | ?（0/6） | 当你需要一个代码优先的框架来组合 LLM agent、工具与记忆，并拥有庞大的集成生态时用它——但简单单 prompt 应用别用它。 |
-| [Langflow](langflow.zh.md) | ✅ | ?（0/6） | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 |
+| [AutoGPT](autogpt.zh.md) | ✅ | A（5/6） | 当你需要一个用于创建、部署和管理持续运行 AI 智能体以自动化复杂工作流的平台时用它——但它未声明许可，且自托管需要大量资源。 |
+| [Dify](dify.zh.md) | ✅ | B（5/6） | 当你想要一个生产就绪的、用于构建 agentic 工作流的低代码可视化平台，内置 RAG 与 MCP 支持时用它——但商用前请核实许可。 |
+| [LangChain](langchain.zh.md) | ✅ | A（6/6） | 当你需要一个代码优先的框架来组合 LLM agent、工具与记忆，并拥有庞大的集成生态时用它——但简单单 prompt 应用别用它。 |
+| [Langflow](langflow.zh.md) | ✅ | A（6/6） | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 |
 
 ## 什么该放这里
 

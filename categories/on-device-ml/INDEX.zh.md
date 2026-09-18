@@ -12,9 +12,9 @@
 | **Google AI Edge Gallery** | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 | A（5/6） | [→](ai-edge-gallery.zh.md) |
 | **TimesFM** | 当你需要在本地 CPU/GPU 上对时间序列做零样本预测、又不想逐数据集训练时用它。 | B（5/6） | [→](timesfm.zh.md) |
 | **MiniCPM-V** | 当你需要小体积、可在端侧/边缘运行的多模态（图像+视频）理解时用它——注意逐权重许可。 | A（4/6） | [→](minicpm-v.zh.md) |
-| **Stable Diffusion WebUI** | 当你想在自有 GPU 上用本地 Web GUI 进行 Stable Diffusion 图像生成、编辑和超分时用它——但需要技术 setup 和 NVIDIA GPU。 | ?（0/6） | [→](stable-diffusion-webui.zh.md) |
-| **ComfyUI** | 当你想要一个模块化的节点图界面来在本地构建复杂扩散模型工作流时用它——但学习曲线陡峭，且需要大量 GPU 资源。 | ?（0/6） | [→](comfyui.zh.md) |
-| **MLX / mlx-lm** | Run LLMs with MLX | ?（0/6） | [→](mlx-mlx-lm.zh.md) |
+| **Stable Diffusion WebUI** | 当你想在自有 GPU 上用本地 Web GUI 进行 Stable Diffusion 图像生成、编辑和超分时用它——但需要技术 setup 和 NVIDIA GPU。 | C（4/6） | [→](stable-diffusion-webui.zh.md) |
+| **ComfyUI** | 当你想要一个模块化的节点图界面来在本地构建复杂扩散模型工作流时用它——但学习曲线陡峭，且需要大量 GPU 资源。 | B（5/6） | [→](comfyui.zh.md) |
+| **MLX / mlx-lm** | Run LLMs with MLX | B（6/6） | [→](mlx-mlx-lm.zh.md) |
 
 
 ## 对比矩阵
@@ -26,8 +26,8 @@
 | [Google AI Edge Gallery](ai-edge-gallery.zh.md) | ✅ | A（5/6） | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 |
 | [TimesFM](timesfm.zh.md) | ✅ | B（5/6） | 当你需要在本地 CPU/GPU 上对时间序列做零样本预测、又不想逐数据集训练时用它。 |
 | [MiniCPM-V](minicpm-v.zh.md) | ✅ | A（4/6） | 当你需要小体积、可在端侧/边缘运行的多模态（图像+视频）理解时用它——注意逐权重许可。 |
-| [Stable Diffusion WebUI](stable-diffusion-webui.zh.md) | ✅ | ?（0/6） | 本地 Web GUI，用于在自有 GPU 上进行 Stable Diffusion 图像生成、编辑和超分；需要技术 setup 和 NVIDIA GPU。 |
-| [ComfyUI](comfyui.zh.md) | ✅ | ?（0/6） | 模块化节点图界面，用于在本地构建复杂扩散模型工作流；学习曲线陡峭，需要大量 GPU 资源。 |
+| [Stable Diffusion WebUI](stable-diffusion-webui.zh.md) | ✅ | C（4/6） | 本地 Web GUI，用于在自有 GPU 上进行 Stable Diffusion 图像生成、编辑和超分；需要技术 setup 和 NVIDIA GPU。 |
+| [ComfyUI](comfyui.zh.md) | ✅ | B（5/6） | 模块化节点图界面，用于在本地构建复杂扩散模型工作流；学习曲线陡峭，需要大量 GPU 资源。 |
 | llama.cpp / Ollama / MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时。 |
 
 ## 什么该放这里

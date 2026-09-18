@@ -8,10 +8,10 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Grafana** | Use it when you need one dashboard + alerting layer over Prometheus/Loki/Elasticsearch and other sources — it visualizes, it doesn't store. | B (5/6) | [→](grafana.md) |
-| **Prometheus** | The Prometheus monitoring system and time series database. | ? (0/6) | [→](prometheus.md) |
-| **OpenTelemetry Collector** | OpenTelemetry Collector | ? (0/6) | [→](opentelemetry-collector.md) |
-| **Loki** | Like Prometheus, but for logs. | ? (0/6) | [→](loki.md) |
-| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | ? (0/6) | [→](jaeger.md) |
+| **Prometheus** | The Prometheus monitoring system and time series database. | A (6/6) | [→](prometheus.md) |
+| **OpenTelemetry Collector** | OpenTelemetry Collector | A (5/6) | [→](opentelemetry-collector.md) |
+| **Loki** | Like Prometheus, but for logs. | B (6/6) | [→](loki.md) |
+| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | A (5/6) | [→](jaeger.md) |
 
 
 ## Comparison matrix

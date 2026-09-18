@@ -248,7 +248,7 @@ gate). Detection is automatic (lint); the restructure is run via the skill, not 
 
 ## 6. Chinese punctuation & README parity (lint-enforced)
 
-Two more machine-checkable rules the linter enforces:
+Three more machine-checkable rules the linter enforces:
 
 - **Chinese punctuation in `.zh.md`.** Chinese-language bodies use **fullwidth** punctuation
   (`，；：！？（）“”……`), not the Western ASCII forms. The most common mistake is a half-width comma
@@ -265,6 +265,14 @@ Two more machine-checkable rules the linter enforces:
   from its README. This makes the human-facing master listing impossible to silently drift out of
   sync with the `categories/` tree — when you add a page, add its row to both READMEs (and both
   `INDEX` files) or lint fails.
+
+- **Health column projection (never hand-edit).** The `Health` / `健康度` cell of every summary row
+  in the category `INDEX.md`/`INDEX.zh.md` and the two READMEs is a **projection** of the linked
+  page's frontmatter `health:` block, rendered `overall (scored_axes/6)` (ZH: fullwidth parens).
+  The page block is the SSOT; the linter **ERRORs** on any row whose cell differs from it, and
+  `python3 tools/sync_index_health.py --apply` rewrites all rows mechanically (dry-run by default).
+  So adding/re-scoring a page never requires hand-grading index cells — write `—` as placeholder,
+  run the scorer, run the sync.
 
 ## 7. `Health & viability` — the signal checklist (required section)
 

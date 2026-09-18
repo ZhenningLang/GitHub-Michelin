@@ -13,7 +13,7 @@
 | **Pair Translate** | 当你想要更轻量的双语网页翻译器，支持 direct provider requests、LLM 模板和 Chrome／Firefox／Edge 分发时用它。 | C（5/6） | [→](pair-translate.zh.md) |
 | **NetNewsWire** | 当你在 Mac／iPhone 上读大量订阅、想要一个快速无广告、数据自己掌控的原生 RSS 客户端时用它——但它仅限 Apple 平台，别处一概不支持。 | B（5/6） | [→](netnewswire.zh.md) |
 | **Just Read** | 当你想在浏览器里按自己的方式清掉文章的广告与杂乱、还能按站点记忆选择器时用它——但它是 EULA 授权的源码，并非真正的开源。 | D（6/6） | [→](just-read.zh.md) |
-| **FreshRSS** | A free, self-hostable news aggregator… | ?（0/6） | [→](freshrss.zh.md) |
+| **FreshRSS** | A free, self-hostable news aggregator… | B（5/6） | [→](freshrss.zh.md) |
 | **Bilingual Book Maker** | 当你想要一个可脚本化的 CLI，把 epub/txt/md/srt/pdf 经 LLM/MT API 做成双语对照书，带断点续跑和 PyPI 打包时用它——不是 agent 流水线。 | A（5/6） | [→](bilingual-book-maker.zh.md) |
 
 

@@ -8,10 +8,10 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Grafana** | 当你需要在 Prometheus/Loki/Elasticsearch 等多数据源之上加一层统一看板和告警时用它——它做可视化，不做存储。 | B（5/6） | [→](grafana.zh.md) |
-| **Prometheus** | The Prometheus monitoring system and time series database. | ?（0/6） | [→](prometheus.zh.md) |
-| **OpenTelemetry Collector** | OpenTelemetry Collector | ?（0/6） | [→](opentelemetry-collector.zh.md) |
-| **Loki** | Like Prometheus, but for logs. | ?（0/6） | [→](loki.zh.md) |
-| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | ?（0/6） | [→](jaeger.zh.md) |
+| **Prometheus** | The Prometheus monitoring system and time series database. | A（6/6） | [→](prometheus.zh.md) |
+| **OpenTelemetry Collector** | OpenTelemetry Collector | A（5/6） | [→](opentelemetry-collector.zh.md) |
+| **Loki** | Like Prometheus, but for logs. | B（6/6） | [→](loki.zh.md) |
+| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | A（5/6） | [→](jaeger.zh.md) |
 
 
 ## 对比矩阵

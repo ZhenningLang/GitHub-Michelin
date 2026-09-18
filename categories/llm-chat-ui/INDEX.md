@@ -7,18 +7,18 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **NextChat** | Use it when you want a private, self-deployable multi-provider AI chat UI across web/desktop/mobile — not a multi-user RBAC team platform. | B (5/6) | [→](nextchat.md) |
-| **Open WebUI** | Use it when you want a self-hosted AI chat platform with built-in RAG, Ollama support, and offline operation — but it's single-user-shaped by default. | ? (0/6) | [→](open-webui.md) |
-| **LibreChat** | Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active | ? (0/6) | [→](librechat.md) |
+| **NextChat** | Use it when you want a private, self-deployable multi-provider AI chat UI across web/desktop/mobile — not a multi-user RBAC team platform. | A (5/6) | [→](nextchat.md) |
+| **Open WebUI** | Use it when you want a self-hosted AI chat platform with built-in RAG, Ollama support, and offline operation — but it's single-user-shaped by default. | B (6/6) | [→](open-webui.md) |
+| **LibreChat** | Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active | B (6/6) | [→](librechat.md) |
 
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [NextChat](nextchat.md) | ✅ | B (5/6) | Light, cross-platform, one-click-deploy chat UI; single-user-shaped, not RBAC/quota team admin. |
-| [Open WebUI](open-webui.md) | ✅ | ? (0/6) | Self-hosted AI chat platform with built-in RAG and Ollama support; offline-capable but single-user-shaped by default. |
-| [HiveChat](../team-chat/hivechat.md) | ✅ | C (3/6) | Admin-managed multi-user team chat with per-group model access and token quotas. |
+| [NextChat](nextchat.md) | ✅ | A (5/6) | Light, cross-platform, one-click-deploy chat UI; single-user-shaped, not RBAC/quota team admin. |
+| [Open WebUI](open-webui.md) | ✅ | B (6/6) | Self-hosted AI chat platform with built-in RAG and Ollama support; offline-capable but single-user-shaped by default. |
+| [HiveChat](../team-chat/hivechat.md) | ✅ | B (4/6) | Admin-managed multi-user team chat with per-group model access and token quotas. |
 | LibreChat / Lobe Chat | 未收录 | — | Other self-hosted chat UIs named across the pages (some with multi-user/RBAC). |
 
 ## What belongs here

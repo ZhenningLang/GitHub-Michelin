@@ -298,6 +298,84 @@ def check_summary_health_columns(path: Path, rep: Report) -> None:
                 rep.error(path, f"summary table must include '{required}' column")
 
 
+def page_health_label(page_path: Path, zh: bool) -> str | None:
+    """Render a page's `health:` frontmatter SSOT as its index label: `B (5/6)` / `B（5/6）`."""
+    try:
+        text = page_path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    if not text.startswith("---"):
+        return None
+    end = text.find("\n---", 3)
+    if end == -1:
+        return None
+    block = text[3:end]
+    overall = re.search(r"(?m)^\s+overall:\s*(\S+)\s*$", block)
+    if not overall:
+        return None
+    axes = re.search(r"(?m)^\s+scored_axes:\s*(\d+)\s*$", block)
+    if axes:
+        return f"{overall.group(1)} ({axes.group(1)}/6)" if not zh else f"{overall.group(1)}（{axes.group(1)}/6）"
+    return overall.group(1)
+
+
+def health_parity_rows(path: Path, root: Path) -> list[tuple[int, str, str, Path]]:
+    """Summary-table rows in an INDEX/README whose Health cell must equal the linked page's SSOT.
+
+    A row qualifies when it carries a Health/健康度 column and links exactly ONE page of the
+    table's language (EN tables read .md, ZH tables read .zh.md; the README lines carry both —
+    the sibling is filtered by suffix). Composite rows (several pages) and 未收录 rows (no page)
+    are skipped: there is no single SSOT to compare against.
+    Returns (drifts, malformed): drifts are (line_no_1based, current_cell, expected, page_path)
+    for every row whose Health cell differs from the linked page's SSOT; malformed are
+    (line_no_1based, n_row_cells, n_header_cells, snippet) for rows whose column count does not
+    match the header (a missing Health cell would otherwise silently re-align the projection).
+    """
+    zh = path.name.endswith(ZH_SUFFIX)
+    required = "健康度" if zh else "Health"
+    drifts: list[tuple[int, str, str, Path]] = []
+    malformed: list[tuple[int, int, int, str]] = []
+    lines = path.read_text(encoding="utf-8").splitlines()
+    for i, line in enumerate(lines[:-1]):
+        header = line.strip()
+        if not (header.startswith("|") and header.endswith("|") and is_table_separator(lines[i + 1])):
+            continue
+        cells = table_cells(header)
+        if required not in cells:
+            continue
+        hcol = cells.index(required)
+        for j in range(i + 2, len(lines)):
+            rs = lines[j].strip()
+            if not (rs.startswith("|") and rs.endswith("|")):
+                break
+            rcells = table_cells(rs)
+            if len(rcells) != len(cells):
+                malformed.append((j + 1, len(rcells), len(cells), rs[:60]))
+                continue
+            pages: list[Path] = []
+            for l in LINK_RE.findall(rs):
+                if l.startswith(("http://", "https://", "#", "mailto:")):
+                    continue
+                p = (path.parent / l.split("#", 1)[0]).resolve()
+                try:
+                    rel = p.relative_to(root)
+                except ValueError:
+                    continue
+                if not str(rel).startswith("categories/") or not is_page(p.name):
+                    continue
+                if p.name.endswith(ZH_SUFFIX) != zh:
+                    continue
+                pages.append(p)
+            uniq = list(dict.fromkeys(pages))
+            if len(uniq) != 1:
+                continue
+            want = page_health_label(uniq[0], zh)
+            if want is None or rcells[hcol] == want:
+                continue
+            drifts.append((j + 1, rcells[hcol], want, uniq[0]))
+    return drifts, malformed
+
+
 def check_health_block(path: Path, text: str, base: str, zh: bool, root: Path, duplicate_bases: set[str], rep: Report, today: dt.date) -> None:
     """Validate a frontmatter `health:` radar block + its SVG card, if present.
 
@@ -587,6 +665,14 @@ def main() -> int:
     for summary in [root / "README.md", root / "README.zh.md", *sorted(categories_dir.rglob("INDEX.md")), *sorted(categories_dir.rglob("INDEX.zh.md"))]:
         if summary.exists():
             check_summary_health_columns(summary, rep)
+            drifts, malformed = health_parity_rows(summary, root)
+            for line_no, got, want, page in drifts:
+                rep.error(f"{summary}:{line_no}",
+                          f"health column drift: {page.name} frontmatter says '{want}', row says '{got}' "
+                          f"(run tools/sync_index_health.py --apply)")
+            for line_no, n_row, n_head, snippet in malformed:
+                rep.error(f"{summary}:{line_no}",
+                          f"summary table row has {n_row} columns, header has {n_head}: {snippet}…")
 
     # Chinese punctuation: fullwidth in CJK context across every .zh.md (pages, INDEX, README).
     for zh in sorted(root.rglob("*.zh.md")):

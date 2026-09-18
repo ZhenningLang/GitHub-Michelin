@@ -13,7 +13,7 @@
 | **OpenHands** | 🙌 OpenHands: AI-Driven Development | A (4/6) | [→](openhands.md) |
 | **RTK** | A high-performance CLI proxy that filters and compresses command outputs before they reach your LLM context, reducing token consumption by 60–90% on common dev commands with sub-10ms overhead. | B (5/6) | [→](rtk.md) |
 | **SWE-agent** | SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice. It can also be employed for offensive cybersecurity or competitive coding challenges. [NeurIPS 2024] | A (5/6) | [→](swe-agent.md) |
-| **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | ? (0/6) | [→](background-agents.md) |
+| **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | B (5/6) | [→](background-agents.md) |
 
 ## What belongs here
 
