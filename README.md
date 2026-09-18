@@ -934,3 +934,13 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **OASIS** | CAMEL-AI's pip-installable social-media simulation framework (Twitter/Reddit-like, up to a claimed 1M agents) for code-first studies of information spread and polarization. | Apache-2.0 | B (6/6) | [EN](categories/social-simulation/oasis.md) · [中](categories/social-simulation/oasis.zh.md) |
 | **AgentSociety** | Tsinghua FIB-Lab's LLM-native social-science simulation platform with Ray distribution, experiment replay, and DuckDB tracing. | Apache-2.0 | B (6/6) | [EN](categories/social-simulation/agentsociety.md) · [中](categories/social-simulation/agentsociety.zh.md) |
 | **generative_agents** | The original 2023 Stanford "Smallville" research prototype (memory stream / reflection / planning) — study the founding architecture, don't build on it. | Apache-2.0 | D (3/6) | [EN](categories/social-simulation/generative-agents.md) · [中](categories/social-simulation/generative-agents.zh.md) |
+
+### osint
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **holehe** | Email→registered-account probing across 120+ sites via register/forgot-password endpoints without alerting the target — unmaintained since 2024-09, so absorb the methodology/module table or fork and re-verify. | GPL-3.0 | D (5/6) | [EN](categories/osint/holehe.md) · [中](categories/osint/holehe.zh.md) |
+| **socialscan** | Accurate available/taken checks for emails and usernames by querying platform registration endpoints directly — only ~11 platforms, sporadic releases. | MPL-2.0 | D (4/6) | [EN](categories/osint/socialscan.md) · [中](categories/osint/socialscan.zh.md) |
+| **Maigret** | Username→dossier across 3000+ sites with ID extraction, recursive search, and HTML/PDF/XMind reports — the most actively maintained pick in the category. | MIT | B (6/6) | [EN](categories/osint/maigret.md) · [中](categories/osint/maigret.zh.md) |
+| **Sherlock** | Simple, battle-tested username existence checks across 480+ social networks with org governance and a huge community — coarser profile-page signals, no dossier extraction. | MIT | A (6/6) | [EN](categories/osint/sherlock.md) · [中](categories/osint/sherlock.zh.md) |
+| **GHunt** | Authenticated deep-dive OSINT on Google accounts (Gmail→profile, Gaia ID, Drive, BSSID) using your own Google session — powerful, AGPL-3.0, highest ToS/legal risk. | AGPL-3.0 | B (5/6) | [EN](categories/osint/ghunt.md) · [中](categories/osint/ghunt.zh.md) |
