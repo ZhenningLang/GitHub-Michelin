@@ -916,3 +916,13 @@ python3 tools/lint.py    # 唯一的门；没有单元测试（这是内容仓�
 | **OASIS** | CAMEL-AI 出品的 pip 可装社交媒体模拟框架（类 Twitter/Reddit，号称最高百万 agent），用代码研究信息传播与极化。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/oasis.zh.md) · [EN](categories/social-simulation/oasis.md) |
 | **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/agentsociety.zh.md) · [EN](categories/social-simulation/agentsociety.md) |
 | **generative_agents** | 2023 年斯坦福「Smallville」原版研究原型（memory stream / reflection / planning）——学开创性架构用，别在上面盖楼。 | Apache-2.0 | D（3/6） | [中](categories/social-simulation/generative-agents.zh.md) · [EN](categories/social-simulation/generative-agents.md) |
+
+### osint
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **holehe** | 通过注册/找回密码端点探测一个邮箱在 120+ 站点是否有账号（不提醒目标）——2024-09 起停止维护，应吸收其方法论与模块表，或 fork 后逐模块复验。 | GPL-3.0 | D（5/6） | [中](categories/osint/holehe.zh.md) · [EN](categories/osint/holehe.md) |
+| **socialscan** | 直接查询平台注册端点，拿到干净的邮箱/用户名「可用或已占用」判定——只覆盖约 11 个平台，发版零星。 | MPL-2.0 | D（4/6） | [中](categories/osint/socialscan.zh.md) · [EN](categories/osint/socialscan.md) |
+| **Maigret** | 跨 3000+ 站点建立用户名档案：ID 提取、递归搜索、HTML/PDF/XMind 报告——本类目维护最活跃的选择。 | MIT | B（6/6） | [中](categories/osint/maigret.zh.md) · [EN](categories/osint/maigret.md) |
+| **Sherlock** | 在 480+ 社交网络做简单、久经考验的用户名存在性核查，组织治理、社区庞大——个人页信号较粗，不做档案提取。 | MIT | A（6/6） | [中](categories/osint/sherlock.zh.md) · [EN](categories/osint/sherlock.md) |
+| **GHunt** | 用你自己的 Google 会话对 Google 账户做认证式深挖 OSINT（Gmail→资料、Gaia ID、Drive、BSSID）——能力强，AGPL-3.0，ToS/法律风险最高。 | AGPL-3.0 | B（5/6） | [中](categories/osint/ghunt.zh.md) · [EN](categories/osint/ghunt.md) |
