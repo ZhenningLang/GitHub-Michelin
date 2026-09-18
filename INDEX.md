@@ -34,6 +34,7 @@
 | **data-visualization** | Self-hosted BI / data-exploration dashboards over SQL warehouses. | [→](categories/data-visualization/INDEX.md) |
 | **ocr** | Optical character recognition engines — image/scan to text. | [→](categories/ocr/INDEX.md) |
 | **document-parsing** | Parse/convert documents (PDF/DOCX/…) into structured Markdown/JSON for gen-AI ingestion. | [→](categories/document-parsing/INDEX.md) |
+| **office-automation** | Programmatically create, read, and edit native Office documents (.docx/.xlsx/.pptx) — the authoring side, for scripts and agents. | [→](categories/office-automation/INDEX.md) |
 | **diagramming** | Generate diagrams from text (diagrams-as-code) for Markdown, docs, and the web. | [→](categories/diagramming/INDEX.md) |
 | **media-download** | Download video/audio from streaming sites via CLI or library. | [→](categories/media-download/INDEX.md) |
 | **media-processing** | Decode/encode/transcode/filter audio & video (media frameworks & toolchains). | [→](categories/media-processing/INDEX.md) |

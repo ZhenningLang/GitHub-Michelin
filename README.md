@@ -492,6 +492,16 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Bella Domify** | Use it when a Python RAG pipeline needs detailed PDF/Office DOM trees and optional vision OCR — license conflict and provider/infrastructure coupling raise adoption cost. | GPL-2.0-only | D (5/6) | [EN](categories/document-parsing/bella-domify.md) · [中](categories/document-parsing/bella-domify.zh.md) |
 | **MinerU Skill** | Use it when an agent needs one-command cloud document-to-Markdown with batch, resume, and delivery — files leave your environment and quality depends on MinerU. | MIT | C (5/6) | [EN](categories/document-parsing/mineru-skill.md) · [中](categories/document-parsing/mineru-skill.zh.md) |
 
+### office-automation
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **OfficeCLI** | Use it when an agent must read, edit, and create all three Office formats on a machine with no Python and no Office, and needs to *see* the rendered result — but it is 6 months old, 98% single-author, has no public test suite, and auto-updates plus rewrites your agent skill dirs by default. | Apache-2.0 | B (6/6) | [EN](categories/office-automation/officecli.md) · [中](categories/office-automation/officecli.zh.md) |
+| **python-docx** | Use it when a Python service must create or edit Word `.docx` in place, with a pinnable MIT dependency that has survived 13 years — but there is no rendering, and footnotes/endnotes have been unimplemented since 2014. | MIT | B (5/6) | [EN](categories/office-automation/python-docx.md) · [中](categories/office-automation/python-docx.zh.md) |
+| **python-pptx** | Use it when you must generate or edit native `.pptx` from Python and the deliverable has to open in PowerPoint — but it has not shipped since 2024-08-07, and animations (2017) and SmartArt (2014) were never implemented. | MIT | C (4/6) | [EN](categories/office-automation/python-pptx.md) · [中](categories/office-automation/python-pptx.zh.md) |
+| **XlsxWriter** | Use it when a Python service generates new `.xlsx` files from data and you want zero dependencies plus 13 years of stability — but it is write-only, cannot open an existing workbook, and does not calculate formulas. | BSD-2-Clause | B (6/6) | [EN](categories/office-automation/xlsxwriter.md) · [中](categories/office-automation/xlsxwriter.zh.md) |
+| **Office-Word-MCP-Server** | Use it only when an existing LLM integration is already bound to its ~55 Word tool schemas — the repo was archived 2025-12-31 and its author mass-archived ~15 MCP servers; for new work use OfficeCLI or wrap python-docx yourself. | MIT | C (6/6) | [EN](categories/office-automation/office-word-mcp-server.md) · [中](categories/office-automation/office-word-mcp-server.zh.md) |
+
 ### diagramming
 
 | Project | Use when | License | Health | Page |

@@ -489,6 +489,16 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Bella Domify** | 当 Python RAG 管线需要细粒度 PDF／Office DOM tree 和可选视觉 OCR 时用它——许可证冲突与 provider／基础设施耦合会抬高采用成本。 | GPL-2.0-only | D（5/6） | [中](categories/document-parsing/bella-domify.zh.md) · [EN](categories/document-parsing/bella-domify.md) |
 | **MinerU Skill** | 当 agent 需要一条命令完成云端文档转 Markdown、批处理、续跑和投递时用它——文件会离开本地，质量取决于 MinerU。 | MIT | C（5/6） | [中](categories/document-parsing/mineru-skill.zh.md) · [EN](categories/document-parsing/mineru-skill.md) |
 
+### office-automation
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **OfficeCLI** | 当 agent 必须在一台没有 Python 也没有 Office 的机器上读写、创建全部三个 Office 格式，并且需要**看见**渲染结果时用它——但它只有 6 个月、98% 单人作者、没有公开测试套件，且默认开启自动更新并会改写你的 agent skill 目录。 | Apache-2.0 | B（6/6） | [中](categories/office-automation/officecli.zh.md) · [EN](categories/office-automation/officecli.md) |
+| **python-docx** | 当 Python 服务需要就地创建或编辑 Word `.docx`、且要一个能锁版本、已存活 13 年的 MIT 依赖时用它——但没有渲染能力，且脚注／尾注自 2014 年起一直未实现。 | MIT | B（5/6） | [中](categories/office-automation/python-docx.zh.md) · [EN](categories/office-automation/python-docx.md) |
+| **python-pptx** | 当你必须用 Python 生成或编辑原生 `.pptx`、且交付物要能在 PowerPoint 里打开时用它——但它自 2024-08-07 起未再发版，动画（2017）和 SmartArt（2014）从未实现。 | MIT | C（4/6） | [中](categories/office-automation/python-pptx.zh.md) · [EN](categories/office-automation/python-pptx.md) |
+| **XlsxWriter** | 当 Python 服务从数据生成新的 `.xlsx`、且你要零依赖加 13 年稳定性时用它——但它只写，无法打开已有工作簿，也不计算公式。 | BSD-2-Clause | B（6/6） | [中](categories/office-automation/xlsxwriter.zh.md) · [EN](categories/office-automation/xlsxwriter.md) |
+| **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | MIT | C（6/6） | [中](categories/office-automation/office-word-mcp-server.zh.md) · [EN](categories/office-automation/office-word-mcp-server.md) |
+
 ### diagramming
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
