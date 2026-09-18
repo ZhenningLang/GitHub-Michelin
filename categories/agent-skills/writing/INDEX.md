@@ -13,6 +13,8 @@
 | **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (4/6) | [→](writing-agent.md) |
 | **marketingskills** | Broad marketing skill pack for product marketing, CRO, copywriting, SEO, analytics, lifecycle email, ads, and growth execution. | B (4/6) | [→](marketingskills.md) |
 | **open-seo** | Self-hostable SEO app plus MCP and Agent Skills for keyword research, rank tracking, competitors, backlinks, audits, and AI visibility. | B (5/6) | [→](open-seo.md) |
+| **translate-book** | Agent skill (Codex/Claude Code/OpenClaw) that translates entire books (PDF/DOCX/EPUB) with parallel subagents, glossary pinning, and neighbor-context consistency. | B (4/6) | [→](translate-book.md) |
+| **claude_translater** | Minimal shell + Claude CLI scripts that translate PDF/DOCX/EPUB (and PPTX) — the unmaintained, unlicensed inspiration for translate-book. | D (4/6) | [→](claude-translater.md) |
 
 
 ## Comparison matrix
@@ -25,6 +27,8 @@
 | [writing-agent](writing-agent.md) | ✅ | B (4/6) | Strict Chinese article production line; heavier than modular creator/writing skills. |
 | [marketingskills](marketingskills.md) | ✅ | B (4/6) | Best for SaaS/growth marketing work; not a general article-writing pipeline. |
 | [open-seo](open-seo.md) | ✅ | B (5/6) | Best when SEO workflows need a self-hosted app, MCP, and paid DataForSEO-backed data. |
+| [translate-book](translate-book.md) | ✅ | B (4/6) | Whole-book translation as an agent skill: parallel subagents, glossary, resume, multi-format output — but young, single-maintainer, and Calibre/Pandoc-bound. |
+| [claude_translater](claude-translater.md) | ✅ | D (4/6) | The shell-script origin of translate-book; only pick it for raw hackable scripts or PPTX translation — no license, unmaintained. |
 
 
 ## What belongs here
