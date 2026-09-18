@@ -901,3 +901,11 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft's public-preview governance toolkit for production AI agents: policy-gated tool calls, identity/trust, audit/compliance, MCP security gateway, SRE controls, and multi-language SDKs around agent frameworks. | MIT | B (6/6) | [EN](categories/agent-governance/agent-governance-toolkit.md) · [中](categories/agent-governance/agent-governance-toolkit.zh.md) |
 | **SkillSpector** | NVIDIA's security scanner for AI agent skills: pre-install CLI/MCP scanning for prompt injection, exfiltration, dangerous scripts, MCP poisoning, dependencies, and SARIF/JSON evidence. | Apache-2.0 | B (6/6) | [EN](categories/agent-governance/skillspector.md) · [中](categories/agent-governance/skillspector.zh.md) |
+### social-simulation
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **MiroFish** | Packaged upload→simulate→report "swarm intelligence" prediction app: seed a document, get a prediction report and an interactive simulated world. | AGPL-3.0 | C (5/6) | [EN](categories/social-simulation/mirofish.md) · [中](categories/social-simulation/mirofish.zh.md) |
+| **OASIS** | CAMEL-AI's pip-installable social-media simulation framework (Twitter/Reddit-like, up to a claimed 1M agents) for code-first studies of information spread and polarization. | Apache-2.0 | B (6/6) | [EN](categories/social-simulation/oasis.md) · [中](categories/social-simulation/oasis.zh.md) |
+| **AgentSociety** | Tsinghua FIB-Lab's LLM-native social-science simulation platform with Ray distribution, experiment replay, and DuckDB tracing. | Apache-2.0 | B (6/6) | [EN](categories/social-simulation/agentsociety.md) · [中](categories/social-simulation/agentsociety.zh.md) |
+| **generative_agents** | The original 2023 Stanford "Smallville" research prototype (memory stream / reflection / planning) — study the founding architecture, don't build on it. | Apache-2.0 | D (3/6) | [EN](categories/social-simulation/generative-agents.md) · [中](categories/social-simulation/generative-agents.zh.md) |

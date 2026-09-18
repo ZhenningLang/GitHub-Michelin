@@ -65,6 +65,7 @@
 | **education-tutoring** | AI tutoring, learning assistants, and education-focused agent systems. | [→](categories/education-tutoring/INDEX.md) |
 | **agent-governance** | Governance, policy enforcement, identity, sandboxing, and reliability controls for AI agents. | [→](categories/agent-governance/INDEX.md) |
 | **blockchain-dev-infrastructure** | EVM and blockchain development-network faucets, local chains, and supporting development infrastructure. | [→](categories/blockchain-dev-infrastructure/INDEX.md) |
+| **social-simulation** | Simulate societies of LLM agents — social-media worlds, opinion dynamics, and rehearsal sandboxes. | [→](categories/social-simulation/INDEX.md) |
 
 
 
