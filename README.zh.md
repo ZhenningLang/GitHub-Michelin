@@ -583,18 +583,18 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **Modular Platform (MAX + Mojo)** | 当你想要高性能 GPU/CPU 推理平台（MAX）加 Mojo 系统语言、并接受单厂商绑定与部分非生产许可时用它。 | Apache-2.0 (mixed) | B（5/6） | [中](categories/llm-inference/modular.zh.md) · [EN](categories/llm-inference/modular.md) |
+| **Modular Platform (MAX + Mojo)** | 当你想要高性能 GPU/CPU 推理平台（MAX）加 Mojo 系统语言、并接受单厂商绑定与部分非生产许可时用它。 | Apache-2.0 (mixed) | B（6/6） | [中](categories/llm-inference/modular.zh.md) · [EN](categories/llm-inference/modular.md) |
 | **omlx** | 当你想在 Mac（Apple Silicon）上用 MLX 跑带 SSD 分层 KV 缓存的本地 LLM 推理服务时用它——年轻的单人仓库，star 数存疑。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/omlx.zh.md) · [EN](categories/llm-inference/omlx.md) |
 | **MTPLX** | 当你想让模型自带的 MTP 头在 Mac 上以精确投机解码把 Qwen 3.8 跑出约 2 倍速、并要 OpenAI/Anthropic 服务器与应用形态时用它——接受约五个月大、作者主导的仓库与产品内署名条款。 | Apache-2.0（含署名 NOTICE） | B（6/6） | [中](categories/llm-inference/mtplx.zh.md) · [EN](categories/llm-inference/mtplx.md) |
-| **TensorRT-LLM** | 当你需要在 NVIDIA GPU 上榨取最大 LLM 推理吞吐、并愿意接受仅限 NVIDIA 的绑定、复杂的构建/engine 编译流程以及闭源内核时用它。 | Apache-2.0 | — | [中](categories/llm-inference/tensorrt-llm.zh.md) · [EN](categories/llm-inference/tensorrt-llm.md) |
-| **vLLM** | 当你想要事实上的开源 LLM 服务引擎，带 PagedAttention、连续批处理和 OpenAI 兼容 API 时用它——接受 NVIDIA 主导的 GPU 运维和快速迭代的代码库。 | Apache-2.0 | — | [中](categories/llm-inference/vllm.zh.md) · [EN](categories/llm-inference/vllm.md) |
-| **SGLang** | 当你需要带 RadixAttention 前缀缓存和结构化生成的快速 LLM 服务引擎——适合工具调用型 agent 和 JSON 模式 API——并接受比 vLLM 更年轻、更小的生态时用它。 | Apache-2.0 | — | [中](categories/llm-inference/sglang.zh.md) · [EN](categories/llm-inference/sglang.md) |
-| **Ray Serve** | 当你需要通用、可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容时用它——但要接受 Ray 的运维复杂性和学习曲线。 | Apache-2.0 | — | [中](categories/llm-inference/ray-serve.zh.md) · [EN](categories/llm-inference/ray-serve.md) |
-| **llama.cpp** | LLM inference in C/C++ | MIT | ?（0/6） | [EN](categories/llm-inference/llama-cpp.md) · [中](categories/llm-inference/llama-cpp.zh.md) |
-| **Ollama** | Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models. | MIT | ?（0/6） | [EN](categories/llm-inference/ollama.md) · [中](categories/llm-inference/ollama.zh.md) |
-| **BentoML** | The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more! | Apache-2.0 | ?（0/6） | [EN](categories/llm-inference/bentoml.md) · [中](categories/llm-inference/bentoml.zh.md) |
-| **LMDeploy** | LMDeploy is a toolkit for compressing, deploying, and serving LLMs. | Apache-2.0 | ?（0/6） | [EN](categories/llm-inference/lmdeploy.md) · [中](categories/llm-inference/lmdeploy.zh.md) |
-| **Text Generation Inference (TGI)** | Large Language Model Text Generation Inference | Apache-2.0 | ?（0/6） | [EN](categories/llm-inference/text-generation-inference.md) · [中](categories/llm-inference/text-generation-inference.zh.md) |
+| **TensorRT-LLM** | 当你需要在 NVIDIA GPU 上榨取最大 LLM 推理吞吐、并愿意接受仅限 NVIDIA 的绑定、复杂的构建/engine 编译流程以及闭源内核时用它。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/tensorrt-llm.zh.md) · [EN](categories/llm-inference/tensorrt-llm.md) |
+| **vLLM** | 当你想要事实上的开源 LLM 服务引擎，带 PagedAttention、连续批处理和 OpenAI 兼容 API 时用它——接受 NVIDIA 主导的 GPU 运维和快速迭代的代码库。 | Apache-2.0 | A（5/6） | [中](categories/llm-inference/vllm.zh.md) · [EN](categories/llm-inference/vllm.md) |
+| **SGLang** | 当你需要带 RadixAttention 前缀缓存和结构化生成的快速 LLM 服务引擎——适合工具调用型 agent 和 JSON 模式 API——并接受比 vLLM 更年轻、更小的生态时用它。 | Apache-2.0 | A（5/6） | [中](categories/llm-inference/sglang.zh.md) · [EN](categories/llm-inference/sglang.md) |
+| **Ray Serve** | 当你需要通用、可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容时用它——但要接受 Ray 的运维复杂性和学习曲线。 | Apache-2.0 | A（6/6） | [中](categories/llm-inference/ray-serve.zh.md) · [EN](categories/llm-inference/ray-serve.md) |
+| **llama.cpp** | LLM inference in C/C++ | MIT | B（6/6） | [EN](categories/llm-inference/llama-cpp.md) · [中](categories/llm-inference/llama-cpp.zh.md) |
+| **Ollama** | Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models. | MIT | A（5/6） | [EN](categories/llm-inference/ollama.md) · [中](categories/llm-inference/ollama.zh.md) |
+| **BentoML** | The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more! | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/bentoml.md) · [中](categories/llm-inference/bentoml.zh.md) |
+| **LMDeploy** | LMDeploy is a toolkit for compressing, deploying, and serving LLMs. | Apache-2.0 | A（6/6） | [EN](categories/llm-inference/lmdeploy.md) · [中](categories/llm-inference/lmdeploy.zh.md) |
+| **Text Generation Inference (TGI)** | Large Language Model Text Generation Inference | Apache-2.0 | C（6/6） | [EN](categories/llm-inference/text-generation-inference.md) · [中](categories/llm-inference/text-generation-inference.zh.md) |
 
 ### task-queue
 
