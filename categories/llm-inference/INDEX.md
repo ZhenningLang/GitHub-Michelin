@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Modular Platform (MAX + Mojo)** | Use it when you want a high-performance GPU/CPU inference platform (MAX) plus the Mojo systems language — accepting single-vendor lock-in and partly non-production licensing. | B (5/6) | [→](modular.md) |
 | **omlx** | Use it when you want a Mac (Apple Silicon) local LLM inference server on MLX with SSD-tiered KV caching — a young single-maintainer repo with a suspicious star count. | B (5/6) | [→](omlx.md) |
+| **MTPLX** | Use it when you want the model's own MTP heads to exact-speculatively decode Qwen 3.8 at ~2x plain speed on a Mac with an OpenAI/Anthropic server and app — accepting a ~5-month-old, author-dominated repo and an in-product attribution NOTICE. | B (6/6) | [→](mtplx.md) |
 | **TensorRT-LLM** | Use it when you need maximum LLM inference throughput on NVIDIA GPUs and are willing to accept NVIDIA-only lock-in, complex build/engine-compile workflow, and closed-source kernels. | — | [→](tensorrt-llm.md) |
 | **vLLM** | Use it when you want the de-facto open-source LLM serving engine with PagedAttention, continuous batching, and an OpenAI-compatible API — accepting NVIDIA-centric GPU ops and a fast-moving codebase. | — | [→](vllm.md) |
 | **SGLang** | Use it when you need a fast LLM serving engine with RadixAttention prefix caching and structured generation — ideal for tool-using agents and JSON-mode APIs — accepting a younger, smaller ecosystem than vLLM. | — | [→](sglang.md) |
@@ -27,6 +28,7 @@
 | [TensorRT-LLM](tensorrt-llm.md) | ✅ | — | Use it when you need maximum LLM inference throughput on NVIDIA GPUs and are willing to accept NVIDIA-only lock-in, complex build/engine-compile workflow, and closed-source kernels. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | B (5/6) | Use it when you want a high-performance GPU/CPU inference platform (MAX) plus the Mojo systems language — accepting single-vendor lock-in and partly non-production licensing. |
 | [omlx](omlx.md) | ✅ | B (5/6) | Use it when you want a Mac (Apple Silicon) local LLM inference server on MLX with SSD-tiered KV caching — a young single-maintainer repo with a suspicious star count. |
+| [MTPLX](mtplx.md) | ✅ | B (6/6) | Mac-native exact MTP speculative decode for Qwen 3.8 (~2x plain decode, author-measured); young, author-dominant, attribution NOTICE in license; non-Qwen models fall back to AR-only. |
 | [vLLM](vllm.md) | ✅ | — | The de-facto open-source LLM serving engine (PagedAttention, continuous batching), huge community and model coverage; NVIDIA-first, fast-moving codebase. |
 | [SGLang](sglang.md) | ✅ | — | Fast LLM serving engine with RadixAttention prefix caching and structured generation; younger ecosystem than vLLM, ideal for tool-using agents. |
 | [Ray Serve](ray-serve.md) | ✅ | — | General-purpose scalable Python model-serving framework with multi-model composition and autoscaling; built on Ray, operationally demanding. |
