@@ -64,6 +64,7 @@
 | **education-tutoring** | AI 辅导、学习助手与教育场景 agent 系统。 | [→](categories/education-tutoring/INDEX.zh.md) |
 | **agent-governance** | AI agent 的治理、策略执行、身份、沙箱与可靠性控制。 | [→](categories/agent-governance/INDEX.zh.md) |
 | **blockchain-dev-infrastructure** | EVM 与区块链开发网络的 faucet、本地链及配套开发基础设施。 | [→](categories/blockchain-dev-infrastructure/INDEX.zh.md) |
+| **social-simulation** | 模拟由 LLM agent 组成的社会——社交媒体世界、舆论动力学与推演沙盒。 | [→](categories/social-simulation/INDEX.zh.md) |
 
 
 

@@ -883,3 +883,11 @@ python3 tools/lint.py    # 唯一的门；没有单元测试（这是内容仓�
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft 面向生产 AI agent 的 public-preview 治理工具包：策略门控 tool call、身份 / 信任、审计 / 合规、MCP security gateway、SRE 控制，以及围绕 agent framework 的多语言 SDK。 | MIT | B（6/6） | [中](categories/agent-governance/agent-governance-toolkit.zh.md) · [EN](categories/agent-governance/agent-governance-toolkit.md) |
 | **SkillSpector** | NVIDIA 的 AI agent skill 安全扫描器：安装前通过 CLI/MCP 检查 prompt injection、外传、危险脚本、MCP poisoning、依赖，并输出 SARIF/JSON 证据。 | Apache-2.0 | B（6/6） | [中](categories/agent-governance/skillspector.zh.md) · [EN](categories/agent-governance/skillspector.md) |
+### social-simulation
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **MiroFish** | 打包好的「上传→模拟→报告」群体智能预测应用：喂一份文档，拿回预测报告和可交互的模拟世界。 | AGPL-3.0 | C（5/6） | [中](categories/social-simulation/mirofish.zh.md) · [EN](categories/social-simulation/mirofish.md) |
+| **OASIS** | CAMEL-AI 出品的 pip 可装社交媒体模拟框架（类 Twitter/Reddit，号称最高百万 agent），用代码研究信息传播与极化。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/oasis.zh.md) · [EN](categories/social-simulation/oasis.md) |
+| **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | Apache-2.0 | B（6/6） | [中](categories/social-simulation/agentsociety.zh.md) · [EN](categories/social-simulation/agentsociety.md) |
+| **generative_agents** | 2023 年斯坦福「Smallville」原版研究原型（memory stream / reflection / planning）——学开创性架构用，别在上面盖楼。 | Apache-2.0 | D（3/6） | [中](categories/social-simulation/generative-agents.zh.md) · [EN](categories/social-simulation/generative-agents.md) |
