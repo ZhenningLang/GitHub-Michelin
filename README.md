@@ -158,6 +158,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **OpenHands** | 🙌 OpenHands: AI-Driven Development | NOASSERTION | A (4/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) |
 | **T3 Code** | Use it when one local GUI should drive already authenticated Codex, Claude, Cursor, and OpenCode CLIs. | MIT | B (6/6) | [EN](categories/agent-frameworks/coding-agents/terminal-agents/t3code.md) · [中](categories/agent-frameworks/coding-agents/terminal-agents/t3code.zh.md) |
 | **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | MIT | B (5/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.zh.md) |
+| **SwarmForge** | Use it when you want a self-hosted role pipeline (spec→code→clean→architect→harden→QA) over your own repo, each role in its own git worktree with commit-based handoffs — but it ships no license and no tagged releases. | NONE (no LICENSE file — all rights reserved) | D (6/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.zh.md) |
 
 ### agent-memory
 
