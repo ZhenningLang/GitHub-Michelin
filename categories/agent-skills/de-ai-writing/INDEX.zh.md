@@ -20,7 +20,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Humanizer-zh](humanizer-zh.zh.md) | ✅ | C（4/6） | 中文优先的去 AI 味 skill；作为当前索引里的基线使用。 |
-| [Baoyu Skills](../writing/baoyu-skills.zh.md) | ✅ | B（4/6） | 更宽的中文内容 / 发布套件；Humanizer-zh 更窄，聚焦去 AI 味改写。 |
+| [Baoyu Skills](../writing/content-production/baoyu-skills.zh.md) | ✅ | B（4/6） | 更宽的中文内容 / 发布套件；Humanizer-zh 更窄，聚焦去 AI 味改写。 |
 | 自写 voice guide | 未收录 | — | 更适合一个私有作者或品牌 voice；但不如公共 skill 可复用。 |
 | [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | C（4/6） | 更重的中文 writer-booster 流程；适合作者风格复现，许可证清晰度和中性表达是风险。 |
 | [shuorenhua](shuorenhua.zh.md) | ✅ | B（4/6） | 当前更适合作为中文优先、保事实去 AI 味的候选，尤其需要多 harness 复用和 protected spans 时。 |

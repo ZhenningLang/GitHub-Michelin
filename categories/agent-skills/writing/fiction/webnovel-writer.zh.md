@@ -2,7 +2,7 @@
 name: Webnovel Writer
 slug: webnovel-writer
 repo: https://github.com/lingfengQAQ/webnovel-writer
-category: writing
+category: fiction
 tags: [claude-code, novel-writing, long-form-writing, rag, continuity, story-memory]
 language: Python
 license: GPL-3.0
@@ -72,7 +72,7 @@ health:
 
 一个运行在 Claude Code 内的长篇中文网文创作插件：把故事事实、章节提交、检索、审查和只读面板串成连续性工作流，而非一次性续写提示词。
 
-![Webnovel Writer — 健康度雷达](../../../assets/health/webnovel-writer.zh.svg)
+![Webnovel Writer — 健康度雷达](../../../../assets/health/webnovel-writer.zh.svg)
 
 ## 何时使用
 
@@ -92,8 +92,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Humanizer-zh](../de-ai-writing/humanizer-zh.zh.md) | ✅ | 长篇故事事实和章节连续性失控时选 Webnovel Writer；只需润色中文文案时选 Humanizer-zh。 | Webnovel Writer 维护项目状态并跑多阶段写作流程；Humanizer-zh 是轻量的建议式改写技能。 |
-| [Baoyu Skills](baoyu-skills.zh.md) | ✅ | 要小说专用、带状态的连载流程时选 Webnovel Writer；要宽泛的写作与排版技能集合时选 Baoyu Skills。 | 聚焦插件带来合同、索引与审查开销；通用技能包更轻，但不提供小说连续性系统。 |
+| [Humanizer-zh](../../de-ai-writing/humanizer-zh.zh.md) | ✅ | 长篇故事事实和章节连续性失控时选 Webnovel Writer；只需润色中文文案时选 Humanizer-zh。 | Webnovel Writer 维护项目状态并跑多阶段写作流程；Humanizer-zh 是轻量的建议式改写技能。 |
+| [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | 要小说专用、带状态的连载流程时选 Webnovel Writer；要宽泛的写作与排版技能集合时选 Baoyu Skills。 | 聚焦插件带来合同、索引与审查开销；通用技能包更轻，但不提供小说连续性系统。 |
 | novelWriter | 未收录 | 必须使用跨平台、本地桌面编辑器时选 novelWriter；希望 Claude Code 主动规划、起草并核对连载时选本页项目。 | novelWriter 避开模型、提供商和插件耦合；Webnovel Writer 加入 agent 驱动的检索与审查。 |
 | Manuskript | 未收录 | 想要独立大纲与写作应用时选 Manuskript；章节事实必须进入 agent 可读状态系统时选本页项目。 | Manuskript 保持桌面作者工作流；Webnovel Writer 依赖 Claude Code 与 Python 工具。 |
 

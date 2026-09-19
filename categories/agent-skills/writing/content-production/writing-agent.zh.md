@@ -2,7 +2,7 @@
 name: writing-agent
 slug: writing-agent
 repo: https://github.com/dongbeixiaohuo/writing-agent
-category: writing
+category: content-production
 tags: [agent-skill, writing, writing-agent, skill-pack]
 language: JavaScript
 license: MIT
@@ -66,7 +66,7 @@ health:
 
 🚀 一个基于 Claude Code (Skills + Subagents) 的“去AI味”全栈写作系统。不仅防套路，更通过专属规则强制注入人类观点与细节，搭配读者测试评估与自动图文排版。全面支持 DeepSeek / 智谱GLM / MiniMax 等国产低成本大模型，提供从选题、风格建模到审稿发布的高维全自动写作工作流。
 
-![writing-agent — 健康度雷达](../../../assets/health/writing-agent.zh.svg)
+![writing-agent — 健康度雷达](../../../../assets/health/writing-agent.zh.svg)
 
 ## 何时使用
 
@@ -79,7 +79,7 @@ health:
 - **你只要一篇短文的一次性草稿。** 这个项目刻意偏重；简单 prompt 或小型写作 skill 更便宜。
 - **你不能保留中间文件或证据账本。** 价值来自 theme、evidence ledger、drafts、reviews、fact-check reports 和 final clean output 等 artifacts。
 - **你不用 Claude Code 或兼容项目工作流。** 完整路径依赖项目 runtime structure、agents、workflows 和 scripts。
-- **你需要英文营销 / copy workflow。** [marketingskills](marketingskills.zh.md) 对 SaaS marketing、CRO、SEO 和 lifecycle execution 更宽。
+- **你需要英文营销 / copy workflow。** [marketingskills](../marketing-seo/marketingskills.zh.md) 对 SaaS marketing、CRO、SEO 和 lifecycle execution 更宽。
 - **你不愿意提供真实素材。** 上游强调真实经历 / 证据，并拦截无依据事实；泛泛输入会削弱管线。
 
 ## 横向对比
@@ -88,7 +88,7 @@ health:
 |---|---|---|---|
 | [huashu-skills](huashu-skills.zh.md) | ✅ | 需要更宽的中文创作者工具箱：选题、调研、编辑、视频大纲、配图时选 huashu-skills。 | huashu-skills 是 toolkit collection；writing-agent 是更严格的端到端写作生产线。 |
 | [Baoyu Skills](baoyu-skills.zh.md) | ✅ | 需要翻译、排版、字幕、网页抓取和媒体工具时选 Baoyu Skills。 | 工具更宽，长文写作 pipeline 没有 writing-agent 这么有主张。 |
-| [marketingskills](marketingskills.zh.md) | ✅ | Marketing / CRO / SEO / growth 任务选 marketingskills。 | 营销执行 vs 中文长文生产。 |
+| [marketingskills](../marketing-seo/marketingskills.zh.md) | ✅ | Marketing / CRO / SEO / growth 任务选 marketingskills。 | 营销执行 vs 中文长文生产。 |
 | 自写编辑流程 | 未收录 | 刊物已有固定阶段、reviewer 或合规规则时自写。 | 更贴一个组织，但维护成本更高。 |
 
 

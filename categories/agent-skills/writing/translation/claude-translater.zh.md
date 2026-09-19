@@ -2,7 +2,7 @@
 name: claude_translater
 slug: claude-translater
 repo: https://github.com/wizlijun/claude_translater
-category: writing
+category: translation
 tags: [book-translation, claude-code, shell, calibre, pptx]
 language: Python
 license: NOASSERTION
@@ -70,13 +70,13 @@ health:
 
 一个 shell 脚本＋Claude CLI 的文档翻译工具箱：PDF/DOCX/EPUB 经 Calibre HTMLZ 转成 Markdown 分块，由 Claude CLI 逐步骤翻译，再合并回 HTML；另有一个独立脚本翻译 PPTX。它是 [translate-book](translate-book.zh.md) 的直接灵感来源。
 
-![claude_translater — 健康度雷达](../../../assets/health/claude-translater.zh.svg)
+![claude_translater — 健康度雷达](../../../../assets/health/claude-translater.zh.svg)
 
 ## 何时使用
 
 你是一个 Claude Code 用户，想要“能跑就行”的最简方案：clone 一个仓库，跑 `./translatebook.sh book.pdf`，让七步 shell 流水线（Calibre 转换→分块→Claude CLI 翻译→合并→HTML→目录→格式转换）干完剩下的活——不装 skill，不学 manifest schema，不需要理解编排规则。而且你手上还有一份 PPT 要翻，这是那些更 fancy 的继任者不碰的：`pptxtrans.py` 通过 python-pptx 处理 PPTX。
 
-你选它而不是 [translate-book](translate-book.zh.md)，只发生在你特别想要几分钟就能读完、随手可改的透明 shell 脚本，或者确实需要 PPTX 翻译时；作为交换，你放弃了并行、断点续跑和术语一致性机制。你选它而不是 [bilingual_book_maker](../../reading-tools/bilingual-book-maker.zh.md)，是因为你想直接消耗自己的 Claude Code 订阅，而不是去配 API key。
+你选它而不是 [translate-book](translate-book.zh.md)，只发生在你特别想要几分钟就能读完、随手可改的透明 shell 脚本，或者确实需要 PPTX 翻译时；作为交换，你放弃了并行、断点续跑和术语一致性机制。你选它而不是 [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.zh.md)，是因为你想直接消耗自己的 Claude Code 订阅，而不是去配 API key。
 
 ## 何时不用
 
@@ -91,8 +91,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [translate-book](translate-book.zh.md) | ✅ | 任何真实的翻书任务都选 translate-book：它把同一条 Calibre→分块→翻译流水线重构成了可移植 skill，带并行 subagent、断点续跑和术语反馈环。 | claude_translater 给你透明、随手可改的 shell 脚本和一个 PPTX 翻译器；translate-book 给你维护中的并行一致版——但需要支持 skill 的 harness，且不覆盖 PPTX。 |
-| [bilingual_book_maker](../../reading-tools/bilingual-book-maker.zh.md) | ✅ | 要有发布、有断点续跑、多模型后端、双语输出的打包 CLI 时选 bilingual_book_maker；只有当你就要 Claude CLI 原生的极简时才选 claude_translater。 | bilingual_book_maker 更老、MIT、有 PyPI 包、适合无人值守；claude_translater 是单人的薄脚本集，无许可无发布流程，但只要你已有 Claude Code 就零 API key 配置。 |
-| [Baoyu Skills](baoyu-skills.zh.md) | ✅ | 在更大的内容工作流里翻文章／文本时选 Baoyu Skills；只有要 shell 方式的文件级书籍／PPTX 翻译时才选 claude_translater。 | Baoyu 的翻译 skill 是维护中的多模式文本翻译（带术语表），不是文件流水线；claude_translater 端到端处理 PDF/DOCX/EPUB/PPTX 文件，但已不维护且仅限 Claude。 |
+| [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.zh.md) | ✅ | 要有发布、有断点续跑、多模型后端、双语输出的打包 CLI 时选 bilingual_book_maker；只有当你就要 Claude CLI 原生的极简时才选 claude_translater。 | bilingual_book_maker 更老、MIT、有 PyPI 包、适合无人值守；claude_translater 是单人的薄脚本集，无许可无发布流程，但只要你已有 Claude Code 就零 API key 配置。 |
+| [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | 在更大的内容工作流里翻文章／文本时选 Baoyu Skills；只有要 shell 方式的文件级书籍／PPTX 翻译时才选 claude_translater。 | Baoyu 的翻译 skill 是维护中的多模式文本翻译（带术语表），不是文件流水线；claude_translater 端到端处理 PDF/DOCX/EPUB/PPTX 文件，但已不维护且仅限 Claude。 |
 
 ## 技术栈
 

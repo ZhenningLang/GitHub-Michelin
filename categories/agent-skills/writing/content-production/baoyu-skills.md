@@ -2,7 +2,7 @@
 name: Baoyu Skills
 slug: baoyu-skills
 repo: https://github.com/JimLiu/baoyu-skills
-category: writing
+category: content-production
 tags: [agent-skills, translation, markdown, content-creation, claude-code, codex]
 language: TypeScript
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 A 20+ skill pack from "宝玉" (Baoyu) for coding agents — translation, markdown/HTML formatting, transcript and URL capture, plus image/diagram/slide generation — installable into Claude Code, Codex, and other skill-capable harnesses.
 
-![baoyu-skills — health radar](../../../assets/health/baoyu-skills.svg)
+![baoyu-skills — health radar](../../../../assets/health/baoyu-skills.svg)
 
 ## When to use
 
@@ -88,7 +88,7 @@ Baoyu Skills gives you exactly that for the writing/translation slice: `baoyu-tr
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Humanizer-zh](../de-ai-writing/humanizer-zh.md) | ✅ | Choose Humanizer-zh when focused Chinese de-AI/voice work is the only job. | A focused Chinese AI-text humanizing skill — narrow and single-purpose (de-AI / voice), where Baoyu Skills is a broad content/publishing bundle whose translation skill is one of 20+. Reach for the focused one if all you want is humanizing; reach for Baoyu if you want the whole translate→format→publish pipeline. |
+| [Humanizer-zh](../../de-ai-writing/humanizer-zh.md) | ✅ | Choose Humanizer-zh when focused Chinese de-AI/voice work is the only job. | A focused Chinese AI-text humanizing skill — narrow and single-purpose (de-AI / voice), where Baoyu Skills is a broad content/publishing bundle whose translation skill is one of 20+. Reach for the focused one if all you want is humanizing; reach for Baoyu if you want the whole translate→format→publish pipeline. |
 | Hand-written project skills | 未收录 | Choose hand-written skills when full control and zero third-party surface matter most. | Writing your own `SKILL.md` for translate/format gives full control and zero third-party surface, but you rebuild and maintain the three-mode workflow, glossary handling, and HTML theming yourself. |
 | Single de-AI / translation prompt | 未收录 | Choose a one-off prompt when the task does not need persistence, versioning, or named loading. | A one-off prompt is the lightest possible option for one task, but it doesn't persist, version, or load by name across sessions the way an installed skill does. |
 | Built-in agent skill ecosystems | 未收录 | Choose built-in marketplace skills when native harness equivalents should avoid third-party overlap. | The harness's own marketplace skills; Baoyu is a third-party curated bundle layered on top, so it can overlap or conflict with native equivalents. |

@@ -30,7 +30,7 @@
 | [Stable Diffusion WebUI](stable-diffusion-webui.zh.md) | ✅ | C（4/6） | 本地 Web GUI，用于在自有 GPU 上进行 Stable Diffusion 图像生成、编辑和超分；需要技术 setup 和 NVIDIA GPU。 |
 | [ComfyUI](comfyui.zh.md) | ✅ | B（5/6） | 模块化节点图界面，用于在本地构建复杂扩散模型工作流；学习曲线陡峭，需要大量 GPU 资源。 |
 | [Needle](needle.zh.md) | ✅ | B（4/6） | 端侧 2-bit 工具调用 + 结构化抽取 + 嵌入模型，解码受 grammar 约束。 |
-| llama.cpp / Ollama / MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时。 |
+| MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时（llama.cpp 与 Ollama 已收录在 `llm-inference`）。 |
 
 ## 什么该放这里
 

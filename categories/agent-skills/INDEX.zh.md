@@ -12,7 +12,7 @@
 | **slides-ppt** | 面向演示文稿与幻灯片 deck 的 agent 生成技能。 | [→](slides-ppt/INDEX.zh.md) |
 | **visual-content** | 社交卡片、文章配图、封面和其他视觉内容技能。 | [→](visual-content/INDEX.zh.md) |
 | **de-ai-writing** | 去 AI 味、消除机器腔、让文本更像真人写作。 | [→](de-ai-writing/INDEX.zh.md) |
-| **writing** | 翻译、长文写作流程、编辑与发布流水线。 | [→](writing/INDEX.zh.md) |
+| **writing** | 虚构写作、整书翻译、中文内容生产、营销／SEO——按子任务细分的写作技能。 | [→](writing/INDEX.zh.md) |
 | **security** | 安全评审、威胁建模、网络安全 playbook。 | [→](security/INDEX.zh.md) |
 | **context-engineering** | 组织、压缩、路由 agent 所读的内容。 | [→](context-engineering/INDEX.zh.md) |
 | **prompt-engineering** | 为任意 AI 工具编写、生成、收集提示词——生成器 skill、社区提示词库与知识库。 | [→](prompt-engineering/INDEX.zh.md) |

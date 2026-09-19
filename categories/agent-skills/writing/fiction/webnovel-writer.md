@@ -2,7 +2,7 @@
 name: Webnovel Writer
 slug: webnovel-writer
 repo: https://github.com/lingfengQAQ/webnovel-writer
-category: writing
+category: fiction
 tags: [claude-code, novel-writing, long-form-writing, rag, continuity, story-memory]
 language: Python
 license: GPL-3.0
@@ -72,7 +72,7 @@ health:
 
 A Claude Code plugin for long-running Chinese web-novel projects: it turns story facts, chapter commits, retrieval, review, and a read-only dashboard into a continuity workflow rather than a one-shot drafting prompt.
 
-![Webnovel Writer — health radar](../../../assets/health/webnovel-writer.svg)
+![Webnovel Writer — health radar](../../../../assets/health/webnovel-writer.svg)
 
 ## When to use
 
@@ -92,8 +92,8 @@ You accept its Claude Code plugin workflow, initialize a book, and use its `init
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Humanizer-zh](../de-ai-writing/humanizer-zh.md) | ✅ | Choose Webnovel Writer when long-running story facts and chapter continuity are the failure mode; choose Humanizer-zh when polishing Chinese prose is the only job. | Webnovel Writer maintains project state and runs a multi-stage writing workflow; Humanizer-zh is a lightweight advisory rewrite skill. |
-| [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Webnovel Writer for a novel-specific, stateful serial workflow; choose Baoyu Skills for a broad collection of writing and formatting tasks. | The focused plugin brings contracts, indexes, and review overhead; the general pack is lighter but does not provide a novel continuity system. |
+| [Humanizer-zh](../../de-ai-writing/humanizer-zh.md) | ✅ | Choose Webnovel Writer when long-running story facts and chapter continuity are the failure mode; choose Humanizer-zh when polishing Chinese prose is the only job. | Webnovel Writer maintains project state and runs a multi-stage writing workflow; Humanizer-zh is a lightweight advisory rewrite skill. |
+| [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | Choose Webnovel Writer for a novel-specific, stateful serial workflow; choose Baoyu Skills for a broad collection of writing and formatting tasks. | The focused plugin brings contracts, indexes, and review overhead; the general pack is lighter but does not provide a novel continuity system. |
 | novelWriter | not indexed | Choose novelWriter when a cross-platform, local desktop editor is required; choose this page when Claude Code should actively plan, draft, and reconcile a serial. | novelWriter avoids model/provider and plugin coupling; Webnovel Writer adds agent-driven retrieval and review. |
 | Manuskript | not indexed | Choose Manuskript when you want a standalone outlining and writing application; choose this page when chapter facts must feed an agent-readable state system. | Manuskript keeps the author in a desktop workflow; Webnovel Writer depends on Claude Code and Python tooling. |
 

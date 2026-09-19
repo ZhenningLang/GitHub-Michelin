@@ -2,7 +2,7 @@
 name: claude_translater
 slug: claude-translater
 repo: https://github.com/wizlijun/claude_translater
-category: writing
+category: translation
 tags: [book-translation, claude-code, shell, calibre, pptx]
 language: Python
 license: NOASSERTION
@@ -70,13 +70,13 @@ health:
 
 A shell-script + Claude CLI document translation toolbox: PDF/DOCX/EPUB go through Calibre HTMLZ to Markdown chunks, get translated by the Claude CLI step by step, and are merged back to HTML; a separate script translates PPTX. It is the direct inspiration for [translate-book](translate-book.md).
 
-![claude_translater — health radar](../../../assets/health/claude-translater.svg)
+![claude_translater — health radar](../../../../assets/health/claude-translater.svg)
 
 ## When to use
 
 You're a Claude Code user who wants the simplest possible thing that works: clone one repo, run `./translatebook.sh book.pdf`, and let a seven-step shell pipeline (Calibre convert → split → Claude CLI translate → merge → HTML → TOC → format conversion) do the rest — no skill installation, no manifest schemas, no orchestration rules to learn. You also have a PowerPoint deck to translate, which the fancier successors don't touch: `pptxtrans.py` handles PPTX via python-pptx.
 
-You pick it over [translate-book](translate-book.md) only when you specifically want raw, hackable shell scripts you can read end-to-end in minutes and bend to your own workflow, or when you need PPTX translation; you accept that in exchange you give up parallelism, resume, and term-consistency machinery. You pick it over [bilingual_book_maker](../../reading-tools/bilingual-book-maker.md) when you want to spend your Claude Code subscription instead of setting up API keys.
+You pick it over [translate-book](translate-book.md) only when you specifically want raw, hackable shell scripts you can read end-to-end in minutes and bend to your own workflow, or when you need PPTX translation; you accept that in exchange you give up parallelism, resume, and term-consistency machinery. You pick it over [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.md) when you want to spend your Claude Code subscription instead of setting up API keys.
 
 ## When NOT to use
 
@@ -91,8 +91,8 @@ You pick it over [translate-book](translate-book.md) only when you specifically 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [translate-book](translate-book.md) | ✅ | Choose translate-book for any real book-translation job: it is this same Calibre→chunk→translate pipeline restructured as a portable skill with parallel subagents, resume, and glossary feedback. | claude_translater gives you transparent, trivially hackable shell scripts and a PPTX translator; translate-book gives you the maintained, parallel, consistency-aware version — but requires a skill-capable harness and drops PPTX. |
-| [bilingual_book_maker](../../reading-tools/bilingual-book-maker.md) | ✅ | Choose bilingual_book_maker when you want a packaged CLI with releases, resume, many model backends, and bilingual output; choose claude_translater only for its Claude-CLI-native simplicity. | bilingual_book_maker is older, MIT-licensed, PyPI-packaged, and unattended-friendly; claude_translater is a thin personal script set with no license and no release process, but zero API-key setup if you already have Claude Code. |
-| [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Baoyu Skills when you translate articles/text inside a broader content workflow; choose claude_translater only for file-based book/PPTX translation via shell. | Baoyu's translate skill is maintained text translation with modes and glossary support, not a file pipeline; claude_translater handles PDF/DOCX/EPUB/PPTX files end-to-end but is unmaintained and Claude-only. |
+| [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.md) | ✅ | Choose bilingual_book_maker when you want a packaged CLI with releases, resume, many model backends, and bilingual output; choose claude_translater only for its Claude-CLI-native simplicity. | bilingual_book_maker is older, MIT-licensed, PyPI-packaged, and unattended-friendly; claude_translater is a thin personal script set with no license and no release process, but zero API-key setup if you already have Claude Code. |
+| [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | Choose Baoyu Skills when you translate articles/text inside a broader content workflow; choose claude_translater only for file-based book/PPTX translation via shell. | Baoyu's translate skill is maintained text translation with modes and glossary support, not a file pipeline; claude_translater handles PDF/DOCX/EPUB/PPTX files end-to-end but is unmaintained and Claude-only. |
 
 ## Tech stack
 

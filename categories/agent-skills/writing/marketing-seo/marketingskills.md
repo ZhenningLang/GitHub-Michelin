@@ -2,7 +2,7 @@
 name: marketingskills
 slug: marketingskills
 repo: https://github.com/coreyhaines31/marketingskills
-category: writing
+category: marketing-seo
 tags: [agent-skill, writing, marketingskills, skill-pack]
 language: JavaScript
 license: MIT
@@ -66,7 +66,7 @@ health:
 
 Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.
 
-![marketingskills — health radar](../../../assets/health/marketingskills.svg)
+![marketingskills — health radar](../../../../assets/health/marketingskills.svg)
 
 ## When to use
 
@@ -76,8 +76,8 @@ The upstream pack is organized around `product-marketing` as shared context, wit
 
 ## When NOT to use
 
-- **You only need prose style or de-AI cleanup.** Use [humanizer](../de-ai-writing/humanizer.md), [shuorenhua](../de-ai-writing/shuorenhua.md), or a voice guide; marketingskills is a marketing strategy/execution pack.
-- **You need long-form editorial production for articles.** [writing-agent](writing-agent.md) or [Webnovel Writer](webnovel-writer.md) are more writing-pipeline oriented.
+- **You only need prose style or de-AI cleanup.** Use [humanizer](../../de-ai-writing/humanizer.md), [shuorenhua](../../de-ai-writing/shuorenhua.md), or a voice guide; marketingskills is a marketing strategy/execution pack.
+- **You need long-form editorial production for articles.** [writing-agent](../content-production/writing-agent.md) or [Webnovel Writer](../fiction/webnovel-writer.md) are more writing-pipeline oriented.
 - **You do not have product positioning context.** Many skills depend on `product-marketing`; without product, audience, and positioning inputs, outputs become generic.
 - **You need deterministic analytics implementation only.** Treat analytics skills as guidance; still verify event names, consent, privacy, and production instrumentation in code.
 - **You want a small local prompt.** This is a large multi-skill marketing pack with cross-skill dependencies and upgrade/migration concerns.
@@ -86,9 +86,9 @@ The upstream pack is organized around `product-marketing` as shared context, wit
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Baoyu Skills for broader writing, formatting, media, and utility workflows. | Baoyu is general-purpose; marketingskills is much deeper on marketing categories. |
-| [writing-agent](writing-agent.md) | ✅ | Choose writing-agent for Chinese long-form article production with staged evidence, review, and publishing outputs. | writing-agent is a content production line; marketingskills is marketing strategy/execution support. |
-| [huashu-skills](huashu-skills.md) | ✅ | Choose huashu-skills for Chinese creator workflows across articles, video outlines, images, and research. | huashu-skills is creator-content oriented; marketingskills is SaaS/growth marketing oriented. |
+| [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | Choose Baoyu Skills for broader writing, formatting, media, and utility workflows. | Baoyu is general-purpose; marketingskills is much deeper on marketing categories. |
+| [writing-agent](../content-production/writing-agent.md) | ✅ | Choose writing-agent for Chinese long-form article production with staged evidence, review, and publishing outputs. | writing-agent is a content production line; marketingskills is marketing strategy/execution support. |
+| [huashu-skills](../content-production/huashu-skills.md) | ✅ | Choose huashu-skills for Chinese creator workflows across articles, video outlines, images, and research. | huashu-skills is creator-content oriented; marketingskills is SaaS/growth marketing oriented. |
 | Custom marketing playbook | 未收录 | Choose a private playbook when company-specific positioning, channels, and metrics are non-negotiable. | Better fit to one business; less reusable than the public skill pack. |
 
 

@@ -2,7 +2,7 @@
 name: Baoyu Skills
 slug: baoyu-skills
 repo: https://github.com/JimLiu/baoyu-skills
-category: writing
+category: content-production
 tags: [agent-skills, translation, markdown, content-creation, claude-code, codex]
 language: TypeScript
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 宝玉出品的 20+ 个 coding agent 技能合集——翻译、markdown/HTML 排版、字幕与网页抓取，外加图片/图表/幻灯片生成——可装入 Claude Code、Codex 等支持 skill 的 harness。
 
-![baoyu-skills — 健康度雷达](../../../assets/health/baoyu-skills.zh.svg)
+![baoyu-skills — 健康度雷达](../../../../assets/health/baoyu-skills.zh.svg)
 
 ## 何时使用
 
@@ -88,7 +88,7 @@ Baoyu Skills 正好覆盖了写作/翻译这一片：`baoyu-translate` 跑三档
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Humanizer-zh](../de-ai-writing/humanizer-zh.zh.md) | ✅ | 只需要聚焦中文去机器味和 voice 调整时，选 Humanizer-zh。 | 一个聚焦的中文 AI 文本去机器味技能——窄而单一（去 AI / voice），而 Baoyu Skills 是宽口径的内容/发布套件，其翻译技能只是 20+ 之一。只想去机器味就选聚焦的那个；想要整条 翻译→排版→发布 流水线就选 Baoyu。 |
+| [Humanizer-zh](../../de-ai-writing/humanizer-zh.zh.md) | ✅ | 只需要聚焦中文去机器味和 voice 调整时，选 Humanizer-zh。 | 一个聚焦的中文 AI 文本去机器味技能——窄而单一（去 AI / voice），而 Baoyu Skills 是宽口径的内容/发布套件，其翻译技能只是 20+ 之一。只想去机器味就选聚焦的那个；想要整条 翻译→排版→发布 流水线就选 Baoyu。 |
 | 手写项目技能 | 未收录 | 完全控制和零第三方表面积最重要时，选手写项目技能。 | 自己写 `SKILL.md` 做翻译/排版能拿到完全控制权、零第三方表面积，但三档工作流、术语表处理、HTML 主题都得你自建自维护。 |
 | 单条去 AI / 翻译 prompt | 未收录 | 任务不需要持久化、版本化或按名加载时，选一次性 prompt。 | 一次性 prompt 是单任务下最轻的选择，但它不会像已安装技能那样跨会话持久化、版本化、按名加载。 |
 | harness 自带技能生态 | 未收录 | 想优先用原生 harness 等价技能、避免第三方重叠时，选自带技能生态。 | harness 自家市场里的技能；Baoyu 是叠在其上的第三方合集，可能与原生等价物重叠或冲突。 |

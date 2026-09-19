@@ -78,12 +78,12 @@ health:
 
 你是一名读者，手上有一本 EPUB（或 txt/md/srt/pdf），想读双语对照版——原文和译文逐段并排——而且你要的是一个 boring、可脚本化的工具，不是一场 agent 会话。你 `pip install bbook_maker`，一条命令加一个 API key（或本地 Ollama 模型、或 Codex 额度）指向文件，它就把整本书流式翻完，`--resume` 兜住中断，最后吐出 `${book_name}_bilingual.epub`。它能进 cron、能批量跑目录、能进 CI——这是 agent 编排式流水线做不到的。
 
-你选它而不是 [translate-book](../agent-skills/writing/translate-book.zh.md)，是因为你要无人值守的 CLI、双语对照输出、以及自由选后端（包括便宜的 MT 引擎），而不是一个必须活在 coding-agent harness 里、只产出单语成书的 skill；你选它而不是 [Read Frog](read-frog.zh.md) 这类浏览器扩展，是因为你要的是一个能发到 Kindle 的**文件**，不是网页上的原地覆盖层。
+你选它而不是 [translate-book](../agent-skills/writing/translation/translate-book.zh.md)，是因为你要无人值守的 CLI、双语对照输出、以及自由选后端（包括便宜的 MT 引擎），而不是一个必须活在 coding-agent harness 里、只产出单语成书的 skill；你选它而不是 [Read Frog](read-frog.zh.md) 这类浏览器扩展，是因为你要的是一个能发到 Kindle 的**文件**，不是网页上的原地覆盖层。
 
 ## 何时不用
 
-- **你要把跨章节术语一致性当一等公民。** 它是段落流式翻译，可选会话上下文（`--use_context session`，按 token 预算压缩）——没有人工整理的术语表、没有逐块术语注入、没有选择性重翻。长书的专有名词漂移是主要痛点时，用 [translate-book](../agent-skills/writing/translate-book.zh.md)。
-- **你想让翻译默认跑在 coding-agent 订阅上。** 它的原生路径是 API key（虽有 Codex 路由）。如果你唯一的“LLM 入口”是 Claude Code/Codex harness，用 translate-book 或 [claude_translater](../agent-skills/writing/claude-translater.zh.md)。
+- **你要把跨章节术语一致性当一等公民。** 它是段落流式翻译，可选会话上下文（`--use_context session`，按 token 预算压缩）——没有人工整理的术语表、没有逐块术语注入、没有选择性重翻。长书的专有名词漂移是主要痛点时，用 [translate-book](../agent-skills/writing/translation/translate-book.zh.md)。
+- **你想让翻译默认跑在 coding-agent 订阅上。** 它的原生路径是 API key（虽有 Codex 路由）。如果你唯一的“LLM 入口”是 Claude Code/Codex harness，用 translate-book 或 [claude_translater](../agent-skills/writing/translation/claude-translater.zh.md)。
 - **你只读网页。** 浏览器内阅读加双语覆盖，用 [Read Frog](read-frog.zh.md) 或 [FluentRead](fluentread.zh.md)——不需要文件流水线。
 - **你的输入是复杂 PDF。** PDF 输入会退化为双语 `.txt`（会尝试建 EPUB 但可能失败），版式信息丢失。PDF 优先且在意 DOCX/EPUB/PDF 输出保真时，用基于 Calibre 的 translate-book。
 - **你没有素材的翻译权利。** 项目自己的免责声明把用途限定在你有权翻译的作品上——受版权保护的商业电子书，请用有授权的翻译服务（未收录，非 repo）。
@@ -92,8 +92,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [translate-book](../agent-skills/writing/translate-book.zh.md) | ✅ | 整书的术语／代词一致性是决定性需求、且你活在 coding-agent harness 里时选 translate-book；要可脚本化的 CLI 批量跑、双语输出、后端自由时选 Bilingual Book Maker。 | BBM 更老（2023）、有打包、MIT、能无人值守地跑任何 OpenAI/Anthropic/MT 端点；translate-book 多了术语表＋相邻上下文机制和多格式输出，但要装 Calibre、Pandoc 和一个交互式 agent。 |
-| [claude_translater](../agent-skills/writing/claude-translater.zh.md) | ✅ | 几乎任何情况都选 Bilingual Book Maker 而不是 claude_translater：同是“翻一本书的文件”，但它有许可、有打包、能续跑、还在持续发布。 | claude_translater 仅剩的优势是 Claude CLI 原生的极简和一个 PPTX 翻译器；BBM 覆盖更多输入格式，有真正的发布流程和断点续跑。 |
+| [translate-book](../agent-skills/writing/translation/translate-book.zh.md) | ✅ | 整书的术语／代词一致性是决定性需求、且你活在 coding-agent harness 里时选 translate-book；要可脚本化的 CLI 批量跑、双语输出、后端自由时选 Bilingual Book Maker。 | BBM 更老（2023）、有打包、MIT、能无人值守地跑任何 OpenAI/Anthropic/MT 端点；translate-book 多了术语表＋相邻上下文机制和多格式输出，但要装 Calibre、Pandoc 和一个交互式 agent。 |
+| [claude_translater](../agent-skills/writing/translation/claude-translater.zh.md) | ✅ | 几乎任何情况都选 Bilingual Book Maker 而不是 claude_translater：同是“翻一本书的文件”，但它有许可、有打包、能续跑、还在持续发布。 | claude_translater 仅剩的优势是 Claude CLI 原生的极简和一个 PPTX 翻译器；BBM 覆盖更多输入格式，有真正的发布流程和断点续跑。 |
 | [Read Frog](read-frog.zh.md) | ✅ | 阅读发生在浏览器里、要沉浸式覆盖层时选 Read Frog；要一本翻完的双语电子书文件时选 Bilingual Book Maker。 | Read Frog 在网页／字幕上原地翻译（BYOK provider），永远不产出 EPUB；BBM 永远不碰网页。 |
 | [FluentRead](fluentread.zh.md) | ✅ | 中文优先的浏览器内翻译、多引擎时选 FluentRead；自有电子书文件和字幕（srt）翻译时选 Bilingual Book Maker。 | FluentRead 活在浏览器标签页里；BBM 是产文件的本地 CLI——两者解的是“跨语言阅读”的两种不同形态。 |
 

@@ -20,7 +20,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Humanizer-zh](humanizer-zh.md) | ✅ | C (4/6) | Chinese-first AI-text humanizing skill; use it as the current in-index baseline. |
-| [Baoyu Skills](../writing/baoyu-skills.md) | ✅ | B (4/6) | Broader Chinese content/publishing bundle; Humanizer-zh is narrower and focused on de-AI rewriting. |
+| [Baoyu Skills](../writing/content-production/baoyu-skills.md) | ✅ | B (4/6) | Broader Chinese content/publishing bundle; Humanizer-zh is narrower and focused on de-AI rewriting. |
 | Custom voice guide | 未收录 | — | Better for one private author or brand voice; less reusable than a public skill. |
 | [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](de-ai-prompt-enhancer-writer-booster-skill.md) | ✅ | C (4/6) | Heavier Chinese writer-booster workflow; useful for author-style reconstruction, risky when license clarity or neutrality matters. |
 | [shuorenhua](shuorenhua.md) | ✅ | B (4/6) | Best current Chinese-first, fact-preserving de-AI skill when multi-harness reuse and protected spans matter. |
