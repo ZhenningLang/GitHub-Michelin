@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:54Z
-  overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  computed_at: 2026-09-19T08:47:03Z
+  overall: C
+  overall_score: 2.0
+  scored_axes: 3
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -52,15 +52,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
-      raw:
-        spdx_id: Apache-2.0
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: type_na }
     adoption: { reason: no_package_structural }
+    risk_license: { reason: license_unparsed }
 ---
 
 # 12-Factor Agents

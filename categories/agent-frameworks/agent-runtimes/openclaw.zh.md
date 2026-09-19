@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:56Z
+  computed_at: 2026-09-19T08:47:15Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.25
+  scored_axes: 4
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
-      raw:
-        spdx_id: MIT
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
+    risk_license: { reason: license_unparsed }
 ---
 # OpenClaw
 
@@ -118,7 +115,7 @@ health:
 - **采用广度**：Grade A——npmjs.org 上月下载量 14,326,323（包名：openclaw）。
 - **长青度**：Grade C——仓库已创建 221 天。尚无经受长期考验的记录，Lindy 先验弱。
 - **治理集中度**：Grade B——前三贡献者占比 75.2%，存在集中度风险；top-1 占 52.8%，若核心维护者退出可能显著影响项目节奏。
-- **许可风险**：Grade A——MIT 许可证。[已验证] 2026-07-03：GitHub API 返回 `NOASSERTION`，但 LICENSE 文件正文为标准 MIT 许可证（"Permission is hereby granted..." 完整段落），识别失败是因为文件末尾附加了第三方声明指针。无重新授权历史。
+- **许可风险**：`?`（license_unparsed）——2026-07-03 已验证：GitHub 返回 `NOASSERTION`，但 LICENSE 正文是标准 MIT（`Permission is hereby granted...` 完整段落）；识别失败是因为末尾附加了第三方声明指针，且无重新授权历史。
 
 ## 存疑（未验证）
 

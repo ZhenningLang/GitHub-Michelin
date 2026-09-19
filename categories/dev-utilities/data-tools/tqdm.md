@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:15:22Z
+  computed_at: 2026-09-19T08:50:34Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 4
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
-      raw:
-        spdx_id: MIT
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
+    risk_license: { reason: license_unparsed }
 ---
 
 # tqdm

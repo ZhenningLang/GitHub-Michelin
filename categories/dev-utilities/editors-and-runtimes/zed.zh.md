@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:16:47Z
+  computed_at: 2026-09-19T08:50:49Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.75
+  scored_axes: 4
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
-      raw:
-        spdx_id: Apache-2.0
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
+    risk_license: { reason: license_unparsed }
 ---
 
 # Zed
@@ -120,7 +117,7 @@ health:
 - **采用广度**：Grade B——crates.io 上月下载量 812,610（包名：zed_extension_api）。
 - **长青度**：Grade A——仓库已创建 1960 天。
 - **治理集中度**：Grade A——前三贡献者占比 18.9%（?）。
-- **许可风险**：Grade A——Apache-2.0 许可证。
+- **许可风险**：`?`（license_unparsed）——GitHub 报 `NOASSERTION`，机器该轴无法归类；README 声明社区版为 GPL-3.0-or-later，而仓库同时含品牌/专有内容，因此请按版本复核许可，不要当作稳定的宽松授权。
 ## 存疑（未验证）
 
 - [未验证] GPUI 在老旧集成显卡上的确切 GPU 要求尚未在所有平台上测试。

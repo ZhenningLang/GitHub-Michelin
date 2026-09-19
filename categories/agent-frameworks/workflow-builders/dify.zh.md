@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:27:30Z
+  computed_at: 2026-09-19T08:47:26Z
   overall: B
-  overall_score: 3.4
+  overall_score: 3.2
   scored_axes: 5
   capped: false
   cap_reason: null
@@ -66,7 +66,7 @@ health:
       grade: "?"
       raw: {}
   unknowns:
-    risk_license: { reason: custom_modified_license }
+    risk_license: { reason: license_unparsed }
 ---
 
 # Dify

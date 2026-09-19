@@ -8,7 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **youtube-dl** | Use it when you need a battle-tested CLI/library to download video & audio from YouTube and 1000+ sites — but prefer the active yt-dlp fork for hot sites. | B (6/6) | [→](youtube-dl.md) |
-| **you-get** | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. | C (4/6) | [→](you-get.md) |
+| **you-get** | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. | D (3/6) | [→](you-get.md) |
 | **cobalt** | Use it when you want a clean self-hostable web-UI + API media saver with no ads/trackers — not a scriptable CLI. | B (5/6) | [→](cobalt.md) |
 | **lux** | Use it when you want a fast single-binary Go downloader, strong on Chinese video sites — smaller coverage and slower updates than yt-dlp. | B (5/6) | [→](lux.md) |
 | **youtube-transcript-api** | Use it when you need timestamped YouTube transcripts key-free for a RAG/summarization pipeline — but it rides an undocumented endpoint that can break anytime, and cloud/datacenter IPs now require paid residential proxies. | A (6/6) | [→](youtube-transcript-api.md) |
@@ -22,7 +22,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [youtube-dl](youtube-dl.md) | ✅ | B (6/6) | Battle-tested extractor for 1000+ sites; upstream has slowed, so treat yt-dlp as the live fork for YouTube. |
-| [you-get](you-get.md) | ✅ | C (4/6) | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. |
+| [you-get](you-get.md) | ✅ | D (3/6) | Use it when you want a tiny Python CLI to grab video/audio from YouTube and many Chinese sites (Bilibili/Youku) — lighter than yt-dlp. |
 | [cobalt](cobalt.md) | ✅ | B (5/6) | Use it when you want a clean self-hostable web-UI + API media saver with no ads/trackers — not a scriptable CLI. |
 | [lux](lux.md) | ✅ | B (5/6) | Use it when you want a fast single-binary Go downloader, strong on Chinese video sites — smaller coverage and slower updates than yt-dlp. |
 | [youtube-transcript-api](youtube-transcript-api.md) | ✅ | A (6/6) | Use it when you need timestamped YouTube transcripts key-free for a RAG/summarization pipeline — but it rides an undocumented endpoint that can break anytime, and cloud/datacenter IPs now require paid residential proxies. |

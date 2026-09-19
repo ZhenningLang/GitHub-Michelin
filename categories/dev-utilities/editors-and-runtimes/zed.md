@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:16:47Z
+  computed_at: 2026-09-19T08:50:49Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.75
+  scored_axes: 4
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
-      raw:
-        spdx_id: Apache-2.0
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
+    risk_license: { reason: license_unparsed }
 ---
 
 # Zed
@@ -120,7 +117,7 @@ You're choosing a code editor and raw performance, modern UX, and team collabora
 - **Adoption**: Grade B — 812,610 monthly downloads via crates.io (package: zed_extension_api).
 - **Longevity**: Grade A — 1960 days old.
 - **Governance**: Grade A — top-3 contributor share 18.9% (?).
-- **Risk / License**: Grade A — Apache-2.0 license.
+- **Risk / License**: `?` (license_unparsed) — GitHub reports `NOASSERTION` and the machine axis cannot classify it; the README states GPL-3.0-or-later for the community edition while the repo also ships branded/proprietary content, so review the license per release rather than treating it as a stable permissive grant.
 ## Caveats (unverified)
 
 - [未验证] The exact GPU requirements for GPUI on older integrated graphics have not been tested across all platforms.

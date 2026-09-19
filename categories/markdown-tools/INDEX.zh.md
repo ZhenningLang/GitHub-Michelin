@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **CommonMark** | 当你需要规范合规、可遍历 AST 的 Markdown 官方参考实现时用它——但它不以速度见长，也不支持 GFM 或插件生态。 | B（5/6） | [→](commonmark.zh.md) |
 | **Markdown Here** | 当你想用浏览器/Thunderbird 扩展把邮件用 Markdown 写好、发送前渲染成 HTML 时用它——注意维护已放缓。 | C（4/6） | [→](markdown-here.zh.md) |
-| **marked** | 当你需要一个快速、底层的 JS Markdown→HTML 解析器时用它——但你得自己做 XSS 消毒，且不要求严格 CommonMark。 | A（6/6） | [→](marked.zh.md) |
+| **marked** | 当你需要一个快速、底层的 JS Markdown→HTML 解析器时用它——但你得自己做 XSS 消毒，且不要求严格 CommonMark。 | A（5/6） | [→](marked.zh.md) |
 | **remark** | 当你需要完整的 mdast AST 管线来解析、变换、lint 和序列化 Markdown 时用它——但它是工具链，不是一次调用的渲染器。 | A（6/6） | [→](remark.zh.md) |
 | **markdown-it** | 当你需要一个严格遵循 CommonMark/GFM、可插拔的 JS Markdown→HTML 解析器时用它——但插件生态会增加体积，且处理不受信任内容时仍需消毒。 | A（6/6） | [→](markdown-it.zh.md) |
 | **micromark** | 当你需要一个低层、面向流式处理的 JS CommonMark/GFM 分词器时用它——remark 的底层引擎——但渲染层要你自己搭。 | B（4/6） | [→](micromark.zh.md) |
@@ -23,7 +23,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Markdown Here](markdown-here.zh.md) | ✅ | C（4/6） | 当你想用浏览器/Thunderbird 扩展把邮件用 Markdown 写好、发送前渲染成 HTML 时用它——注意维护已放缓。 |
-| [marked](marked.zh.md) | ✅ | A（6/6） | 当你需要一个快速、底层的 JS Markdown→HTML 解析器时用它——但你得自己做 XSS 消毒，且不要求严格 CommonMark。 |
+| [marked](marked.zh.md) | ✅ | A（5/6） | 当你需要一个快速、底层的 JS Markdown→HTML 解析器时用它——但你得自己做 XSS 消毒，且不要求严格 CommonMark。 |
 | [remark](remark.zh.md) | ✅ | A（6/6） | 当你需要完整的 mdast AST 管线来解析、变换、lint 和序列化 Markdown 时用它——但它是工具链，不是一次调用的渲染器。 |
 | [markdown-it](markdown-it.zh.md) | ✅ | A（6/6） | 当你需要一个严格遵循 CommonMark/GFM、可插拔的 JS Markdown→HTML 解析器时用它——但插件生态会增加体积，且处理不受信任内容时仍需消毒。 |
 | [CommonMark](commonmark.zh.md) | ✅ | B（5/6） | 当你需要规范合规、可遍历 AST 的 Markdown 官方参考实现时用它——但它不以速度见长，也不支持 GFM 或插件生态。 |

@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **boilerpipe** | A Java library for boilerplate removal and full-text extraction from HTML — the classic, algorithm-driven approach (shallow text features, link density, tag ratios) that pulls the article out and drops navigation, ads, and surrounding clutter. | D (3/6) | [→](boilerpipe.md) |
+| **boilerpipe** | A Java library for boilerplate removal and full-text extraction from HTML — the classic, algorithm-driven approach (shallow text features, link density, tag ratios) that pulls the article out and drops navigation, ads, and surrounding clutter. | "?" (2/6) | [→](boilerpipe.md) |
 | **dragnet** | A machine-learning approach to web content extraction — trained models pull the main article (and optionally user comments) out of a page's HTML, using diverse text/markup features rather than hand-tuned heuristics. | D (4/6) | [→](dragnet.md) |
 | **newspaper** | A Python library that takes a news/article URL, downloads it, and pulls out the clean article text, title, authors, publish date, top image, and (optionally) NLP keywords/summary — boilerplate stripped, no per-site scraping rules to write. | B (5/6) | [→](newspaper.md) |
 | **python-readability** | A fast, lxml-based Python port of arc90's Readability — hand it an HTML document and it returns the cleaned main body (`summary()`) and the title (`title()`), stripping nav, ads, and boilerplate. | B (3/6) | [→](python-readability.md) |

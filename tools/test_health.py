@@ -233,6 +233,36 @@ class HealthMechanismTest(unittest.TestCase):
         self.assertEqual(axis.grade, "D")
         self.assertEqual(axis.raw["permissiveness"], "strong_network_copyleft")
 
+    def test_noassertion_composite_license_degrades_to_unknown(self) -> None:
+        repo = FakeRepo("app")
+        license_result = health.GhResult(
+            200,
+            health.json.dumps({
+                "license": {"spdx_id": "NOASSERTION", "key": "other"},
+                "path": "LICENSE.txt",
+            }),
+        )
+        # Composite file shape (Mattermost's LICENSE.txt): preamble grants
+        # MIT-for-binaries / AGPL-or-commercial-for-source, then embeds the full
+        # Apache-2.0 text as the Admin Tools sub-license. The embedded template
+        # must NOT be promoted to a permissive grade.
+        composite_blob = (
+            "Mattermost Licensing\n\n"
+            "You are licensed to use compiled versions under an MIT LICENSE.\n"
+            "You may be licensed to use source code under the GNU AGPL v3.0 "
+            "or a commercial license.\n\n"
+            "Apache License\nVersion 2.0, January 2004\n"
+            "Licensed under the Apache License, Version 2.0\n"
+            "http://www.apache.org/licenses/LICENSE-2.0\n"
+        )
+
+        with mock.patch("health.gh_api", return_value=license_result), \
+                mock.patch("health._fetch_license_blob", return_value=composite_blob):
+            axis = health.axis_risk_license(repo)
+
+        self.assertEqual(axis.grade, "?")
+        self.assertEqual(axis.reason, "license_unparsed")
+
     def test_permissiveness_scores_lgpl_library_condition_as_weak_copyleft(self) -> None:
         conditions = ["disclose-source", "same-license--library", "state-changes"]
 

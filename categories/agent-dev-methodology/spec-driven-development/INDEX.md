@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **12-Factor Agents** | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. | B (4/6) | [→](12-factor-agents.md) |
+| **12-Factor Agents** | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. | C (3/6) | [→](12-factor-agents.md) |
 | **Get Shit Done (GSD)** | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. | C (6/6) | [→](get-shit-done.md) |
 | **PURE** | Use it when coding-agent intent lineage must live in Git-tracked specs, schemas, registries, phase gates, and tested Shell scripts; it is an early single-maintainer v0.1 framework. | C (5/6) | [→](pure-agentic.md) |
 | **Spec-Anchored Agentic Development** | Use it when permanent capability specs and continuous spec-to-code conformance matter more than broad harness support; the bundle is Claude Code-specific and only days old. | B (3/6) | [→](spec-anchored-agentic-development.md) |
@@ -18,7 +18,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [12-Factor Agents](12-factor-agents.md) | ✅ | B (4/6) | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. |
+| [12-Factor Agents](12-factor-agents.md) | ✅ | C (3/6) | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. |
 | [Get Shit Done (GSD)](get-shit-done.md) | ✅ | C (6/6) | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. |
 | [PURE](pure-agentic.md) | ✅ | C (5/6) | Git-native intent, schema, registry, handoff, and phase-gate machinery; more executable than prose-only methods, but still early. |
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.md) | ✅ | B (3/6) | Permanent capability specs and continuous spec-to-code conformance, with a Claude Code-specific bundle and almost no adoption history. |

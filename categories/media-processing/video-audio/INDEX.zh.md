@@ -12,7 +12,7 @@
 | **ffsubsync** | 一个语言无关的命令行工具，把时间轴对不上的字幕文件自动重新对齐到视频（或一份参考字幕）上，靠 FFT 互相关来对齐语音段。 | B（5/6） | [→](ffsubsync.zh.md) |
 | **GStreamer** | 面向实时音视频处理应用的管线式多媒体框架——不是 CLI 工具，而是一个由可插拔元素在代码中串联而成的图（graph）。 | A（4/6） | [→](gstreamer.zh.md) |
 | **HandBrake** | 开源视频转码器，用于将几乎任意格式的视频转换为现代广泛支持的编解码器——基于 FFmpeg、x264 和 x265 构建，带有预设驱动的 GUI 和配套的 `HandBrakeCLI` 命令行工具。 | A（4/6） | [→](handbrake.zh.md) |
-| **m3u8** | 一个面向 HLS（HTTP Live Streaming）`.m3u8` 播放列表的 Python 解析器与序列化器——把来自 URL、文件或字符串的播放列表加载成一个类型化对象模型，查看/修改 segment 与变体，再 dump 回去（RFC 8216）。 | C（4/6） | [→](m3u8.zh.md) |
+| **m3u8** | 一个面向 HLS（HTTP Live Streaming）`.m3u8` 播放列表的 Python 解析器与序列化器——把来自 URL、文件或字符串的播放列表加载成一个类型化对象模型，查看/修改 segment 与变体，再 dump 回去（RFC 8216）。 | C（3/6） | [→](m3u8.zh.md) |
 | **MLT** | 用于构建非线性视频编辑器（NLE）的多媒体框架——支持时间线轨道、片段、转场、滤镜与合成，底层实际的编解码工作全部委托给 FFmpeg/libav 完成。它不是独立的剪辑软件，而是 Shotcut 和 Kdenlive 的底层引擎。 | B（5/6） | [→](mlt.zh.md) |
 | **MoviePy** | 一个用于程序化视频编辑的 Python 库——剪辑、拼接、合成、文字叠加、特效——在底层拼装 FFmpeg 命令，但对外提供更高层、更友好的 API。 | B（5/6） | [→](moviepy.zh.md) |
 | **PyAV** | 面向 FFmpeg 的 libav* 库的 Pythonic 绑定——在进程内完成解码/编码，可逐帧访问 NumPy 数组和 Python bytes，无需生成子进程。 | A（6/6） | [→](pyav.zh.md) |

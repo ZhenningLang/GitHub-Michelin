@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:51:07Z
-  overall: D
-  overall_score: 1.33
-  scored_axes: 3
+  computed_at: 2026-09-19T08:53:27Z
+  overall: "?"
+  overall_score: null
+  scored_axes: 2
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -47,16 +47,13 @@ health:
       grade: "?"
       raw: {}
     risk_license:
-      grade: A
-      raw:
-        spdx_id: MIT
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
     adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
+    risk_license: { reason: license_unparsed }
 ---
 
 # TaskMatrix

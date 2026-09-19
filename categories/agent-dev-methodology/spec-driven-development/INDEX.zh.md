@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | B（4/6） | [→](12-factor-agents.zh.md) |
+| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | C（3/6） | [→](12-factor-agents.zh.md) |
 | **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | C（6/6） | [→](get-shit-done.zh.md) |
 | **PURE** | 当 coding-agent intent lineage 必须落进 Git 跟踪的 spec、schema、registry、phase gate 和带测试 Shell 脚本时用它；它仍是单维护者的早期 v0.1 框架。 | C（5/6） | [→](pure-agentic.zh.md) |
 | **Spec-Anchored Agentic Development** | 当永久 capability spec 和持续 spec-to-code conformance 比广泛 harness 支持更重要时用它；bundle 仅面向 Claude Code，而且项目只有十多天历史。 | B（3/6） | [→](spec-anchored-agentic-development.zh.md) |
@@ -18,7 +18,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [12-Factor Agents](12-factor-agents.zh.md) | ✅ | B（4/6） | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 |
+| [12-Factor Agents](12-factor-agents.zh.md) | ✅ | C（3/6） | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 |
 | [Get Shit Done (GSD)](get-shit-done.zh.md) | ✅ | C（6/6） | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 |
 | [PURE](pure-agentic.zh.md) | ✅ | C（5/6） | 原生存入 Git 的 intent、schema、registry、handoff 与 phase-gate 机制；比纯文字方法更可执行，但仍很早期。 |
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.zh.md) | ✅ | B（3/6） | 永久 capability spec 加持续 spec-to-code conformance，但 bundle 仅面向 Claude Code，几乎没有采用历史。 |

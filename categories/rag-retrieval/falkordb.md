@@ -16,12 +16,12 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:31Z
-  overall: D
-  overall_score: 3.0
-  scored_axes: 5
-  capped: true
-  cap_reason: "source-available/no-license: NOASSERTION"
+  computed_at: 2026-09-19T08:54:16Z
+  overall: A
+  overall_score: 3.75
+  scored_axes: 4
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
@@ -56,14 +56,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NOASSERTION
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     adoption: { reason: ambiguous }
+    risk_license: { reason: license_unparsed }
 ---
 
 # FalkorDB

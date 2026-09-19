@@ -13,7 +13,7 @@
 | **Ragas** | Supercharge Your LLM Application Evaluations 🚀 | B (6/6) | [→](ragas.md) |
 | **garak** | the LLM vulnerability scanner | A (6/6) | [→](garak.md) |
 | **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | B (6/6) | [→](giskard.md) |
-| **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | A (5/6) | [→](langfuse.md) |
+| **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | A (4/6) | [→](langfuse.md) |
 | **chatgpt-comparison-detection** | Human ChatGPT Comparison Corpus (HC3), detectors, and related AI-text detection resources. | E (4/6) | [→](chatgpt-comparison-detection.md) |
 
 
