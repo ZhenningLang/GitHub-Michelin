@@ -94,7 +94,7 @@ health:
 | [FalkorDB](falkordb.zh.md) | ✅ | 需要 GraphRAG 的持久化属性图，而不是单文档推理树时，选 FalkorDB。 | 面向 GraphRAG 的属性图数据库（向量 + 多跳遍历）；PageIndex 是单文档推理树，不是图存储——检索原语不同。 |
 | [graphify](graphify.zh.md) | ✅ | 目标是代码/文档知识图谱，而不是单篇文档的目录树时，选 graphify。 | 从代码/文档构建知识图谱；PageIndex 为单篇文档构建层级目录树并在其上推理——没有实体图。 |
 | [code-review-graph](code-review-graph.zh.md) | ✅ | 目标是专门的 code-review 图时，选 code-review-graph。 | 专做 code-review 的图工具；与文档树检索正交。 |
-| LlamaIndex | 未收录 | 需要包含多种索引类型的通用 RAG 框架，而不是单一无向量推理索引时，选 LlamaIndex。 | 通用 RAG 框架，含多种索引（包括树/摘要索引）；覆盖广得多且以嵌入为中心，而 PageIndex 是聚焦的无向量推理索引。 |
+| [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.zh.md) | ✅ | 需要包含多种索引类型的通用 RAG 框架，而不是单一无向量推理索引时，选 LlamaIndex。 | 通用 RAG 框架，含多种索引（包括树/摘要索引）；覆盖广得多且以嵌入为中心，而 PageIndex 是聚焦的无向量推理索引。 |
 | RAPTOR | 未收录 | 需要递归聚类 + 摘要树，并在查询时仍走嵌入检索时，选 RAPTOR。 | 递归聚类 + 摘要构建检索树，但查询时仍靠嵌入检索；PageIndex 改为用 LLM 推理导航这棵树，而非向量搜索。 |
 | pgvector / Qdrant | 未收录 | 经典嵌入 + ANN 向量检索已经足够、且更重视规模成本时，选向量库。 | 经典的嵌入 + ANN 向量检索；在规模与广度上更便宜，但正是 PageIndex 要规避的“相似 ≠ 相关”失败模式。 |
 

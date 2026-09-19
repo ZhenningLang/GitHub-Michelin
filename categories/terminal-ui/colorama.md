@@ -93,7 +93,7 @@ It's the de-facto compatibility shim under a huge slice of Python CLIs and is bu
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| Rich (Textualize) | 未收录 | Choose Rich when you need a full styled-output toolkit for color, tables, markdown, progress, and tracebacks. | Full styled-output toolkit (color, tables, markdown, progress, traceback) — vastly more capable, but a large library; overkill if you only need cross-platform color. |
+| [Rich (Textualize)](rich.md) | ✅ | Choose Rich when you need a full styled-output toolkit for color, tables, markdown, progress, and tracebacks. | Full styled-output toolkit (color, tables, markdown, progress, traceback) — vastly more capable, but a large library; overkill if you only need cross-platform color. |
 | termcolor / colored | 未收录 | Choose termcolor / colored when you need tiny ANSI color helpers with friendly APIs but no legacy-Windows ANSI translation. | Tiny ANSI color helpers with friendly APIs, but don't translate ANSI on legacy Windows — often paired *with* colorama for that. |
 | click.style (Click) | 未收录 | Choose click.style when you need convenient styling inside the Click CLI framework. | Convenient styling within the Click CLI framework; Click itself historically depended on colorama for the Windows shim. |
 | blessed / blessings | 未收录 | Choose blessed / blessings when you need terminfo-based terminal capability plus cursor and styling control. | Terminal capability + cursor/styling library (terminfo-based) — richer terminal control, heavier, less focused on the Windows-ANSI gap. |

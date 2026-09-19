@@ -98,7 +98,7 @@ health:
 | [markdown-it](markdown-it.zh.md) | ✅ | 需要 CommonMark 严格、可插拔、插件目录庞大且 API 更简单时，选 markdown-it。 | CommonMark 严格、可插拔、插件目录庞大；API 比 remark 简单，但仍缺乏 unified 的完整 AST 变换工具链。 |
 | [micromark](micromark.zh.md) | ✅ | 需要 remark 底层的流式分词器并自建渲染/变换层时，选 micromark。 | remark 底下那个低层流式分词器；正确且快速，但渲染和变换层要你自己搭建。 |
 | [CommonMark](commonmark.zh.md) | ✅ | 需要规范自己的参考实现来做一致性测试时，选 CommonMark。 | 规范自己的参考实现；是一致性标尺，但无插件生态，也未针对生产渲染做优化。 |
-| Pandoc | 未收录 | 需要跨 Word、LaTeX、PDF 等几十种格式的通用文档转换器时，选 Pandoc。 | 跨几十种格式的通用文档转换器；是重型二进制，不是 JS 工具链，若只需操纵 Markdown 则杀鸡用牛刀。 |
+| [Pandoc](pandoc.zh.md) | ✅ | 需要跨 Word、LaTeX、PDF 等几十种格式的通用文档转换器时，选 Pandoc。 | 跨几十种格式的通用文档转换器；是重型二进制，不是 JS 工具链，若只需操纵 Markdown 则杀鸡用牛刀。 |
 
 ## 技术栈
 

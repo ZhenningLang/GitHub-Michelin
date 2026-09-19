@@ -98,7 +98,7 @@ You're building a media pipeline, archiving content, or need to grab a video or 
 | [you-get](you-get.md) | ✅ | Tiny Python CLI focused on Chinese sites. | Lighter and simpler than yt-dlp, but a smaller extractor catalog and less active maintenance. |
 | [lux](lux.md) | ✅ | Fast single-binary Go downloader. | No Python runtime needed, but a narrower site list and slower extractor updates than yt-dlp. |
 | [cobalt](cobalt.md) | ✅ | Self-hostable web-UI + API media saver. | Browser-friendly service, not a scriptable CLI for automation pipelines. |
-| gallery-dl | 未收录 | Specialized in image and gallery sites. | Complementary rather than a substitute for video/audio extraction. |
+| [gallery-dl](gallery-dl.md) | ✅ | Specialized in image and gallery sites. | Complementary rather than a substitute for video/audio extraction. |
 
 ## Tech stack
 

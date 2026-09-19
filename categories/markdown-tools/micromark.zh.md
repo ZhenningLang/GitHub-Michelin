@@ -92,8 +92,8 @@ health:
 | [markdown-it](markdown-it.zh.md) | ✅ | 需要严格遵循 CommonMark/GFM、可插拔、插件生态丰富的 Markdown→HTML 解析器时，选 markdown-it。 | CommonMark 严格、可插拔架构，插件生态丰富；API 比 marked 重，但当规范一致和插件重要时它是首选。 |
 | [remark](remark.zh.md) | ✅ | 需要完整的 mdast AST 管线，能解析、变换、lint、序列化 Markdown 时，选 remark。 | 在 micromark 之上构建的完整 mdast AST 管线；强大得多也重得多——是工具链，不是原始分词器。 |
 | [CommonMark](commonmark.zh.md) | ✅ | 需要规范参考实现，而不是 remark 使用的 tokenizer 层时，选 CommonMark。 | 规范自己的参考实现；是一致性标尺，但 GFM 便利特性更少，也未针对生产分词做优化。 |
-| Pandoc | 未收录 | 需要跨数十种格式的通用文档转换器时，选 Pandoc。 | 通用文档转换器；不是 JS 库，如果你只需要 Markdown 分词，用它过度。 |
-| Goldmark | 未收录 | 需要 Go 里快速、可扩展的 Markdown 解析器时，选 Goldmark。 | 快速、可扩展的 Go Markdown 解析器；不是 JavaScript，所以为 Go 项目选它，而非 JS/浏览器栈。 |
+| [Pandoc](pandoc.zh.md) | ✅ | 需要跨数十种格式的通用文档转换器时，选 Pandoc。 | 通用文档转换器；不是 JS 库，如果你只需要 Markdown 分词，用它过度。 |
+| [Goldmark](goldmark.zh.md) | ✅ | 需要 Go 里快速、可扩展的 Markdown 解析器时，选 Goldmark。 | 快速、可扩展的 Go Markdown 解析器；不是 JavaScript，所以为 Go 项目选它，而非 JS/浏览器栈。 |
 
 ## 技术栈
 

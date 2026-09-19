@@ -97,7 +97,7 @@ health:
 | django-allauth | 未收录 | 当 Django 应用想把社交和本地认证接进 Django 用户/会话模型时，选 django-allauth；当框架无关嵌入比 Django 开箱能力更重要时，选 Authomatic。 | Django 专属的社交 + 本地认证，与 Django 用户/会话模型集成；Django 上开箱即用，但非框架无关。 |
 | requests-oauthlib / oauthlib | 未收录 | 当你想自己掌控更底层的单个 OAuth 流程时，选 requests-oauthlib 或 oauthlib；当 provider 预设和规范化社交登录包装能省更多事时，选 Authomatic。 | 更底层的 OAuth 客户端积木；流程你自己接——比 Authomatic 的 provider 预设更可控、更不便利。 |
 | python-social-auth | 未收录 | 当后端覆盖面和多框架社交认证优先时，选 python-social-auth；当你要更小的进程内客户端且能接受较低活跃度时，选 Authomatic。 | 多框架社交认证、后端众多；provider 列表更广，但更重、每次集成与框架耦合。 |
-| Keycloak / Auth0（IdP） | 未收录 | 当你需要带 SSO、MFA、后台或 SAML 的身份平台时，选 Keycloak 或 Auth0；只有应用内 OAuth/OpenID 登录客户端职责才交给 Authomatic。 | 完整身份提供方（托管或自建）——SSO、MFA、后台、SAML；是平台而非客户端库——范围完全不同。 |
+| [Keycloak](keycloak.zh.md) / Auth0（IdP） | 部分已收录 | 当你需要带 SSO、MFA、后台或 SAML 的身份平台时，选 Keycloak 或 Auth0；只有应用内 OAuth/OpenID 登录客户端职责才交给 Authomatic。 | 完整身份提供方（托管或自建）——SSO、MFA、后台、SAML；是平台而非客户端库——范围完全不同。 |
 
 ## 技术栈
 

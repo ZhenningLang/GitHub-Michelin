@@ -95,7 +95,7 @@ health:
 | [local-deep-research](local-deep-research.zh.md) | ✅ | 需要 Python、本地优先、可离线研究本地语料时，选 local-deep-research。 | Python，偏本地优先，能离线对本地语料做研究；Vane 始终经 SearxNG 触达实时网页，并以打磨过的 Web 应用形态交付。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | 你其实需要 reach/触达式自动化而不是应答引擎时，选 Agent-Reach。 | 不同细分（agent reach / 触达式自动化）；不是 SearxNG 应答引擎。只有把两者混淆时才需对比。 |
 | Perplexica | 未收录 | 需要 Vane 的同作者直接前身时，选 Perplexica。 | Vane 的直接前身，同一作者，同样的 SearxNG+RAG 内核。选 Vane = 选被维护的续作。 |
-| GPT Researcher | 未收录 | 需要会写长报告的 Python 自治研究 agent 时，选 GPT Researcher。 | Python 自治研究 agent，产出长报告；更偏报告生成、少交互式带引用应答体验，无内建聊天产品。 |
+| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要会写长报告的 Python 自治研究 agent 时，选 GPT Researcher。 | Python 自治研究 agent，产出长报告；更偏报告生成、少交互式带引用应答体验，无内建聊天产品。 |
 | Morphic / Perplexity（托管） | 未收录 | 需要托管/闭源应答引擎时，选 Morphic 或 Perplexity。 | 托管/闭源应答引擎；无自托管、无 provider 选择，与 Vane 的隐私/自托管主张正相反。 |
 
 ## 技术栈

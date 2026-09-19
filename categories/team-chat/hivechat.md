@@ -88,7 +88,7 @@ HiveChat is built for exactly this shape. You deploy it once (Docker Compose wit
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| LibreChat | 未收录 | Choose LibreChat when you need a more mature, larger feature surface with RAG, assistants, code interpreter, and many auth backends. | MIT-licensed and broader, but heavier to operate and less opinionated toward HiveChat's small-team admin-quota flow. |
+| [LibreChat](../llm-chat-ui/librechat.md) | ✅ | Choose LibreChat when you need a more mature, larger feature surface with RAG, assistants, code interpreter, and many auth backends. | MIT-licensed and broader, but heavier to operate and less opinionated toward HiveChat's small-team admin-quota flow. |
 | [Open WebUI](../llm-chat-ui/open-webui.md) | ✅ | Choose Open WebUI when local-model serving, RBAC, and pipelines matter more than multi-cloud provider quotas. | Broader and more active, but its sweet spot is Ollama/local-model serving rather than HiveChat's per-group quota framing. |
 | Lobe Chat | 未收录 | Choose Lobe Chat when you need a polished multi-provider UI with plugins and self-hosting for personal/prosumer use. | Less centered on centralized admin-managed team governance with token quotas. |
 | Chatbox / Cherry Studio | 未收录 | Choose desktop clients when each person brings their own key and central governance is unnecessary. | No central admin, groups, quotas, or shared server. |

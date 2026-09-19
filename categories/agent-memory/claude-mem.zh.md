@@ -98,8 +98,8 @@ health:
 | [Mem0](mem0.zh.md) | ✅ | 应用内嵌、模型无关的记忆 API 比编程 agent hook 更重要时，选 Mem0。 | 你嵌进自己 agent 代码的模型无关记忆**库/API**（Python/TS，任意 LLM）；为应用内嵌用户记忆而建。claude-mem 是面向编程 agent 的工作站 hook 工具，不是你调用的库。 |
 | [Memori](memori.zh.md) | ✅ | SQL 优先、包裹 LLM client 的应用记忆形态更合适时，选 Memori。 | 你用它包裹自己 LLM client 的 SQL 优先记忆引擎；框架无关，带云/BYODB 之分。claude-mem 纯本地、hook 驱动，范围限于编程 agent 会话而非应用记忆。 |
 | [Claude Subconscious](claude-subconscious.zh.md) | ✅ | Letta 支撑的 Claude Code hook 记忆实验正好贴合时，选 Claude Subconscious。 | 形态最接近：同样是做跨会话记忆的 Claude Code hook 插件——但它是 Letta 支撑的 *demo*，作者明示“不用于生产”，且只支持 Claude Code。claude-mem 是本地存储（SQLite+Chroma）、多 agent，定位为正式安装的工具。 |
-| Letta (MemGPT) | 未收录 | 想让有状态 runtime 接管 agent 循环和记忆 OS 时，选 Letta。 | 有状态的 agent runtime，带自编辑记忆 OS 和服务端；接管 agent 主循环。claude-mem 通过 hook 嵌在你现有 agent 之下，而非替换它们。 |
-| Zep / Graphiti | 未收录 | 时序知识图谱记忆和显式事实失效是核心时，选 Zep 或 Graphiti。 | 带显式事实失效的时序知识图记忆服务；面向应用记忆的托管/自托管后端，不是每开发者一份的编程 agent hook 层。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | 想让有状态 runtime 接管 agent 循环和记忆 OS 时，选 Letta。 | 有状态的 agent runtime，带自编辑记忆 OS 和服务端；接管 agent 主循环。claude-mem 通过 hook 嵌在你现有 agent 之下，而非替换它们。 |
+| [Zep](zep.zh.md) / [Graphiti](graphiti.zh.md) | ✅ | 时序知识图谱记忆和显式事实失效是核心时，选 Zep 或 Graphiti。 | 带显式事实失效的时序知识图记忆服务；面向应用记忆的托管/自托管后端，不是每开发者一份的编程 agent hook 层。 |
 
 ## 技术栈
 

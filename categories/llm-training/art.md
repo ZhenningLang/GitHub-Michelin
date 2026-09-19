@@ -95,8 +95,8 @@ ART is built for exactly this. You keep your agent code in Python and route its 
 | [agent-lightning](agent-lightning.md) | ✅ | Choose agent-lightning when minimal-code-change RL for existing agents is more important than ART's bundled RULER reward path. | Closest conceptual sibling: both train agents from execution, but they differ in integration model and reward tooling. |
 | [LLaMA-Factory](llamafactory.md) | ✅ | Choose LLaMA-Factory for broad SFT/DPO/PPO model fine-tuning through config and UI workflows. | Stronger for general fine-tuning breadth; weaker for ART's deployed multi-step-agent rollout loop. |
 | HF TRL | 未收录 | Choose HF TRL when you want the lower-level GRPO/PPO/DPO trainer and can wire the agent rollout loop yourself. | More control and generality, but you assemble rewards, inference serving, and orchestration. |
-| verl | 未收录 | Choose verl when high-throughput distributed RLHF/RL at larger training scale is the main requirement. | Scales further but is heavier to operate and less focused on single-engineer agent instrumentation. |
-| torchtune | 未收录 | Choose torchtune when PyTorch-native fine-tuning/RL recipes are enough and an agent-RL framework would be too opinionated. | A building block in this ecosystem, not a complete agent-rollout training framework. |
+| [verl](verl.md) | ✅ | Choose verl when high-throughput distributed RLHF/RL at larger training scale is the main requirement. | Scales further but is heavier to operate and less focused on single-engineer agent instrumentation. |
+| [torchtune](torchtune.md) | ✅ | Choose torchtune when PyTorch-native fine-tuning/RL recipes are enough and an agent-RL framework would be too opinionated. | A building block in this ecosystem, not a complete agent-rollout training framework. |
 
 ## Tech stack
 

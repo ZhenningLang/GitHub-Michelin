@@ -100,7 +100,7 @@ health:
 | [you-get](you-get.zh.md) | ✅ | 想要更简单的 Python 下载器，并接受更窄的站点目录时，选 you-get。 | Python 下载器，自带站点列表；UX 更简单，但 extractor 目录比 youtube-dl/yt-dlp 更小、跟进更不积极。 |
 | [lux](lux.zh.md) | ✅ | Go 单二进制比 Python 生态和 extractor 广度更重要时，选 lux。 | Go 写的单二进制下载器（原名 annie）；无需 Python 运行时、速度快，但站点列表更窄、收录取向不同。 |
 | [cobalt](cobalt.zh.md) | ✅ | 想要自托管 Web/API 服务，而不是本地 CLI 时，选 cobalt。 | 以 Web/API 为先的下载器（可自托管的服务）；浏览器友好、UX 干净，但它是一个要跑的服务，不是可 pip 安装、便于脚本化的 CLI。 |
-| gallery-dl | 未收录 | 目标是图片/图集站点，而不是视频抽取时，选 gallery-dl。 | 专攻*图片/图集*站点（booru、社交媒体图集），而非视频；与视频抽取互补，不是替代。 |
+| [gallery-dl](gallery-dl.zh.md) | ✅ | 目标是图片/图集站点，而不是视频抽取时，选 gallery-dl。 | 专攻*图片/图集*站点（booru、社交媒体图集），而非视频；与视频抽取互补，不是替代。 |
 
 ## 技术栈
 

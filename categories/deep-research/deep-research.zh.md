@@ -91,8 +91,8 @@ health:
 | [Vane](vane.zh.md) | ✅ | 需要可用产品/UI 形态的 TypeScript 问答引擎时，选 Vane。 | 同为 TypeScript 的 AI 问答引擎，目标是做成可用的产品/UI;deep-research 是约 500 行、供你 fork 的裸 agent，而非可直接当服务跑。 |
 | [local-deep-research](local-deep-research.zh.md) | ✅ | 需要 Python、本地优先且加密的研究助手时，选 local-deep-research。 | Python，本地优先且加密，10+ 搜索后端（含本地文档），可完全跑在本地 LLM 上；deep-research 默认是云 LLM + Firecrawl，范围也小得多。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | 需要读社交/网络平台而非综合研究时，选 Agent-Reach。 | Python CLI，专注「读」社交/网络平台（Twitter/Reddit/YouTube/GitHub）且号称「零 API 费」；不是做迭代式综合的研究 agent。 |
-| GPT Researcher | 未收录 | 需要功能面更大的 Python 研究 agent、报告类型和 Web UI 时，选 GPT Researcher。 | Python，功能面大得多（多检索器、多报告类型、Web UI）;deep-research 用全部这些广度换来一个可读的极简内核。 |
-| Open Deep Research(LangChain / HF) | 未收录 | 框架背书、生态和工具链更重要时，选 Open Deep Research。 | 有框架背书的参考 agent，生态与工具链更大；比这个近乎单文件的实现更难读、更难改造。 |
+| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要功能面更大的 Python 研究 agent、报告类型和 Web UI 时，选 GPT Researcher。 | Python，功能面大得多（多检索器、多报告类型、Web UI）;deep-research 用全部这些广度换来一个可读的极简内核。 |
+| [Open Deep Research(LangChain / HF)](open-deep-research.zh.md) | ✅ | 框架背书、生态和工具链更重要时，选 Open Deep Research。 | 有框架背书的参考 agent，生态与工具链更大；比这个近乎单文件的实现更难读、更难改造。 |
 
 ## 技术栈
 

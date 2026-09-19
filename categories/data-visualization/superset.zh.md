@@ -96,7 +96,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Metabase | 未收录 | 当简单部署和无 SQL 问题构建器比图表深度更重要时，选 Metabase；当数仓 BI 团队能接受多服务栈时，选 Superset。 | 开源 BI，部署简单得多（单 jar / 容器），无 SQL 的问题构建器更友好；对非技术用户更易上手，但语义 / 定制能力更轻、原始 SQL 与图表深度不如 Superset。 |
+| [Metabase](metabase.zh.md) | ✅ | 当简单部署和无 SQL 问题构建器比图表深度更重要时，选 Metabase；当数仓 BI 团队能接受多服务栈时，选 Superset。 | 开源 BI，部署简单得多（单 jar / 容器），无 SQL 的问题构建器更友好；对非技术用户更易上手，但语义 / 定制能力更轻、原始 SQL 与图表深度不如 Superset。 |
 | [Grafana](../observability/grafana.zh.md) | ✅ | 当目标是可观测性看板、时序指标、日志和告警时，选 Grafana；当目标是 SQL 数仓探索和 BI 看板时，选 Superset。 | 以可观测性为先，面向时序 / 指标 / 日志（Prometheus、Loki、InfluxDB）做看板，告警能力强；也能查 SQL，但它是为监控面板而生，不是数仓式的临时 BI 探索。 |
 | Redash | 未收录 | 当你要更轻的 saved SQL 加看板查询工作流时，选 Redash；当可视化广度、治理和更完整 BI 表面值得运维成本时，选 Superset。 | 以查询为中心：写 SQL、存查询、再据此搭看板；模型更简单、比 Superset 更轻，但可视化集更窄、语义 / 治理层更弱。 |
 | Tableau / Power BI | 未收录 | 当成熟商业可视化、数据准备和企业支持足以抵消成本与锁定时，选 Tableau 或 Power BI；当要自托管开源 BI 时，选 Superset。 | 专有商业 BI，可视化、数据准备和企业支持成熟；打磨和生态更强，但有授权成本、厂商绑定，以及（Power BI 的）微软栈引力——不是自托管开源。 |

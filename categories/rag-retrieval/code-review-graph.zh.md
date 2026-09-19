@@ -99,7 +99,7 @@ health:
 | [FalkorDB](falkordb.zh.md) | ✅ | 需要真正基于 Redis、带 Cypher 和向量搜索的属性图数据库时，选 FalkorDB。 | 一个真正基于 Redis 的属性图数据库，带 Cypher + 向量搜索，你直接查询它；是*底座*而非开箱即用的代码上下文工具。code-review-graph 给你整条 AST→图→MCP 流水线，但建在它自己固定的 SQLite 存储上。 |
 | [graphify](graphify.zh.md) | ✅ | 需要另一个面向 agent 检索的代码库建图工具时，选 graphify。 | 同样把代码库变成图供 agent 检索；意图有重叠。code-review-graph 重压在 blast-radius/评审 + 一个 MCP server、宽语言覆盖和一个 CI Action 上。请直接对比 scope/成熟度。 |
 | [PageIndex](pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 面向*文档*（PDF、长文本）的、基于推理的层级检索，无向量库；输入领域不同——散文而非源码 AST。 |
-| Sourcegraph / SCIP | 未收录 | 需要成熟、规模化的多仓库代码智能时，选 Sourcegraph 或 SCIP。 | 成熟、规模化的多仓库代码智能与索引；基础设施更重，不是面向 agent token 预算的本地单二进制 MCP 上下文压缩器。 |
+| [Sourcegraph](sourcegraph.zh.md) / [SCIP](scip.zh.md) | ✅ | 需要成熟、规模化的多仓库代码智能时，选 Sourcegraph 或 SCIP。 | 成熟、规模化的多仓库代码智能与索引；基础设施更重，不是面向 agent token 预算的本地单二进制 MCP 上下文压缩器。 |
 | Serena (MCP) | 未收录 | 需要面向 agent 的 LSP 语义代码 MCP server 时，选 Serena。 | 面向 agent 的、基于 LSP 的语义代码 MCP server；以符号/LSP 驱动，而非带 blast-radius + 社区/风险分析的持久化 Tree-sitter 图。 |
 | GraphRAG (Microsoft) | 未收录 | 需要 LLM 构建的实体/社区图来做文档 RAG 时，选 GraphRAG。 | LLM 构建的实体/社区图，用于文档 RAG；面向非结构化语料，而非确定性的 AST 派生代码图。 |
 

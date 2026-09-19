@@ -89,9 +89,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | [Apache Airflow](airflow.zh.md) | ✅ | 工作流是代码优先的 Python 数据管线，而不是可视化业务自动化时，选 Airflow。 | Airflow 是代码优先、面向批处理数据管线；n8n 是可视化优先、面向集成，自带 400 余个预置节点。 |
-| Prefect | 未收录 | Python 开发者体验比可视化构建器和成套 SaaS 集成更重要时，选 Prefect。 | Prefect 是代码优先；n8n 额外提供可视化构建器和 400 余个预置集成。 |
+| [Prefect](prefect.zh.md) | ✅ | Python 开发者体验比可视化构建器和成套 SaaS 集成更重要时，选 Prefect。 | Prefect 是代码优先；n8n 额外提供可视化构建器和 400 余个预置集成。 |
 | Zapier | 未收录 | 零自托管和托管 SaaS 便利性比代码逃生舱更重要时，选 Zapier。 | Zapier 无需配置，但专有、仅限云端、按任务计费；n8n 可自托管且支持代码扩展。 |
-| Argo Workflows | 未收录 | 工作流单元是 Kubernetes 容器、CI/CD 作业或 ML 流水线时，选 Argo。 | Argo 面向 K8s 上的容器化 CI/CD 与 ML 流水线；n8n 面向 API 集成与业务自动化。 |
+| [Argo Workflows](argo-workflows.zh.md) | ✅ | 工作流单元是 Kubernetes 容器、CI/CD 作业或 ML 流水线时，选 Argo。 | Argo 面向 K8s 上的容器化 CI/CD 与 ML 流水线；n8n 面向 API 集成与业务自动化。 |
 | Make（Integromat） | 未收录 | 想要专有云端可视化自动化产品，且不需要自托管时，选 Make。 | Make 仅限云端且专有；n8n 提供自托管与代码扩展能力。 |
 
 ## 技术栈

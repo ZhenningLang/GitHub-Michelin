@@ -95,10 +95,10 @@ health:
 |---|---|---|---|
 | [Docling](docling.zh.md) | ✅ | 富文档解析，将版面 + 表格解析成结构化 Markdown/JSON。 | Docling 是依赖本地模型与启发式的版面感知解析器；olmOCR 明确基于 VLM，对复杂文档的语义理解更深。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | 轻量级 Python 库，将办公文档转为 Markdown。 | MarkItDown 更简单、更快、更便宜，适合基础文档；olmOCR 能处理 MarkItDown 无法应对的复杂版面、公式和手写体。 |
-| Marker | 未收录 | 面向学术论文优化的快速 PDF 转 Markdown 工具。 | Marker 专攻学术论文，使用规则式启发式；olmOCR 用 VLM 覆盖更广文档类型，但计算成本更高。 |
+| [Marker](marker.zh.md) | ✅ | 面向学术论文优化的快速 PDF 转 Markdown 工具。 | Marker 专攻学术论文，使用规则式启发式；olmOCR 用 VLM 覆盖更广文档类型，但计算成本更高。 |
 | LlamaParse | 未收录 | LlamaIndex 出品的解析服务，托管 API。 | 基于云端，需 API key，无需 GPU；olmOCR 是自托管开源方案，但需要 GPU 基础设施。 |
 | [Tesseract](../ocr/tesseract.zh.md) / OCRmyPDF | 部分已收录 | 只需要普通文本提取，版面语义不是重点时，选传统 OCR 引擎。 | 纯 OCR 工具只提取文本，不理解版面、表格或阅读顺序；olmOCR 的 VLM 提供语义理解。OCRmyPDF 未单独收录。 |
-| PyMuPDF | 未收录 | 底层 Python PDF 库，用于提取和操控。 | 直接 PDF 页面操控库，非高级 Markdown 转换器；更强大但需要更多代码，且不理解语义。 |
+| [PyMuPDF](../pdf-tools/pymupdf.zh.md) | ✅ | 底层 Python PDF 库，用于提取和操控。 | 直接 PDF 页面操控库，非高级 Markdown 转换器；更强大但需要更多代码，且不理解语义。 |
 
 ## 技术栈
 

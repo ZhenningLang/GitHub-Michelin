@@ -95,7 +95,7 @@ health:
 |---|---|---|---|
 | [PDF.js](pdfjs.zh.md) | ✅ | 需在浏览器/Node 里渲染或读取 PDF 时选 PDF.js；需要创建或修改 PDF 时选 pdf-lib。 | 在浏览器/Node 里渲染和读取 PDF——与 pdf-lib 互补而非替代；pdf-lib 是「写」端，PDF.js 是「读」端。 |
 | [jsPDF](jspdf.zh.md) | ✅ | 需要更简单、API 更轻、包更小的客户端 PDF 生成时选 jsPDF；需要做深度 PDF 操控（表单、合并、嵌入字体、底层对象访问）时选 pdf-lib。 | 客户端 JS PDF 生成；更轻更简单，但复杂文档手术和字体处理能力较弱。 |
-| PyMuPDF / pdfplumber | 未收录 | 需要快速的 Python 服务端 PDF 操控和文本/表格提取时选 PyMuPDF / pdfplumber；必须留在 JS/TS 生态时选 pdf-lib。 | Python 服务端渲染 + 文本/表格提取库；批量任务更快，但无法在浏览器里使用。 |
+| [PyMuPDF](pymupdf.zh.md) / [pdfplumber](pdfplumber.zh.md) | ✅ | 需要快速的 Python 服务端 PDF 操控和文本/表格提取时选 PyMuPDF / pdfplumber；必须留在 JS/TS 生态时选 pdf-lib。 | Python 服务端渲染 + 文本/表格提取库；批量任务更快，但无法在浏览器里使用。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | 需要版面感知的文档解析（供 AI/RAG）时选 Docling；需要程序化创建或编辑 PDF 时选 pdf-lib。 | 版面感知解析器，输出结构化 Markdown/JSON 供 AI 消费——目标不同，侧重语义提取而非文档创作。 |
 | 原生 `<embed>` / 浏览器 PDF 插件 | 未收录 | 零成本查看 PDF 时用原生插件；需要程序化控制 PDF 创建或修改时用 pdf-lib。 | 零依赖、浏览器内置，但仅限查看——无法创建、编辑或程序化访问。 |
 

@@ -99,9 +99,9 @@ You're building a static site generator, a documentation system, or a content pl
 | [remark](remark.md) | ✅ | Choose remark when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown or MDX. | Full mdast AST pipeline for parsing, transforming, linting, and serializing (Markdown, MDX); far more powerful and far heavier — a toolchain, not a one-call renderer. |
 | [micromark](micromark.md) | ✅ | Choose micromark when you need the low-level CommonMark/GFM tokenizer underneath remark. | The low-level CommonMark/GFM tokenizer underneath remark; correct and streaming-oriented, but you build the rendering layer yourself. |
 | [CommonMark](commonmark.md) | ✅ | Choose CommonMark when you need the spec's own reference implementation rather than a production renderer with plugins. | The spec's own reference implementation; the conformance yardstick, but fewer GFM niceties and not optimized as a production renderer. |
-| Pandoc | 未收录 | Choose Pandoc when you need a universal document converter across dozens of formats, not just Markdown→HTML. | Haskell-based universal doc converter across dozens of formats; far heavier and not embeddable in a JS app. |
+| [Pandoc](pandoc.md) | ✅ | Choose Pandoc when you need a universal document converter across dozens of formats, not just Markdown→HTML. | Haskell-based universal doc converter across dozens of formats; far heavier and not embeddable in a JS app. |
 | Showdown | 未收录 | Choose Showdown only when maintaining legacy code that already depends on it. | Older JS markdown converter; less active, less spec-compliant, and generally superseded by markdown-it or marked. |
-| Goldmark | 未收录 | Choose Goldmark when you're in the Go ecosystem, for example Hugo. | Go's markdown parser, used in Hugo; not available in JS. |
+| [Goldmark](goldmark.md) | ✅ | Choose Goldmark when you're in the Go ecosystem, for example Hugo. | Go's markdown parser, used in Hugo; not available in JS. |
 
 ## Tech stack
 

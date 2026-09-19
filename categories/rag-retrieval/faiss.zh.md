@@ -99,7 +99,7 @@ Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠�
 | [FalkorDB](falkordb.zh.md) | ✅ | 需要带向量和全文索引的持久化 GraphRAG 图数据库时，选 FalkorDB。 | 图数据库（Redis 模块），带向量 + 全文索引做 GraphRAG；是一个带遍历能力的持久化多查询*服务*。FAISS 只是进程内的 ANN 索引——没有图、没有服务、没有 metadata 存储。 |
 | [PageIndex](pageindex.zh.md) | ✅ | 需要单篇文档的无向量推理树检索时，选 PageIndex。 | 对单篇文档做「无向量」推理树检索，是完全不同的检索原语（LLM 在 ToC 树上导航，无 embedding/ANN）。FAISS 正是 PageIndex 刻意回避的那条 embedding+ANN 路径。 |
 | Qdrant | 未收录 | 需要带 payload 过滤和持久化的 Rust 向量数据库时，选 Qdrant。 | Rust 写的向量*数据库*，带 payload 过滤、持久化、gRPC/REST API、分片/复制；开箱即运维，而 FAISS 是你要自己包装并运维的裸库。 |
-| Milvus | 未收录 | 需要带水平扩展、metadata 和控制平面的分布式向量数据库时，选 Milvus。 | 分布式向量数据库（底层常嵌 FAISS/HNSW 引擎），带水平扩展、metadata 和控制平面；跑起来更重，但 sharding/持久化不用你造。 |
+| [Milvus](milvus.zh.md) | ✅ | 需要带水平扩展、metadata 和控制平面的分布式向量数据库时，选 Milvus。 | 分布式向量数据库（底层常嵌 FAISS/HNSW 引擎），带水平扩展、metadata 和控制平面；跑起来更重，但 sharding/持久化不用你造。 |
 | hnswlib | 未收录 | 只需要很小的 HNSW-only C++/Python 库时，选 hnswlib。 | 极小的纯头文件 C++/Python HNSW-only 库；比 FAISS 还轻、易嵌入，但单算法，没有 GPU / PQ / 聚类这些广度。 |
 | ScaNN（Google） | 未收录 | Google 的各向异性量化 ANN 库适合你的 CPU workload 时，选 ScaNN。 | Google 的各向异性量化 ANN 库，CPU 上召回/延迟很强；索引菜单和生态比 FAISS 窄，也没有一等的 GPU 构建。 |
 | pgvector | 未收录 | 需要在 Postgres 内部用 SQL、事务和 metadata 过滤做向量检索时，选 pgvector。 | 在 Postgres *内部*做向量检索（IVFFlat/HNSW），白送 SQL、事务和 metadata 过滤；如果数据本就在 Postgres 里更简单，但在大规模下比调好的 FAISS 索引更慢、更不灵活。 |

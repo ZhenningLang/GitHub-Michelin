@@ -95,12 +95,12 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| DeepEval | 未收录 | 当你要 Python 原生、pytest 风格 eval 和更深的 RAG 指标时，选 DeepEval；当语言无关 YAML 套件、模型矩阵和集成红队更重要时，选 promptfoo。 | Python 原生评测框架（pytest 风格，G-Eval/faithfulness 等指标）；更适合 Python 团队和 RAG 指标深度。promptfoo 胜在语言无关的 YAML 配置、并排模型矩阵和集成红队。 |
-| Langfuse | 未收录 | 当生产追踪、数据集、趋势历史和可自托管 UI 是主要平台需求时，选 Langfuse；当只要更轻的 CLI 优先 CI 回归/红队闸门时，选 promptfoo。 | 追踪/可观测性 + 评测平台（可自托管，带 UI 和数据集后端）；强在生产监控和趋势历史。promptfoo 更轻、CLI 优先、偏红队，而非可观测性后端。 |
+| [DeepEval](deepeval.zh.md) | ✅ | 当你要 Python 原生、pytest 风格 eval 和更深的 RAG 指标时，选 DeepEval；当语言无关 YAML 套件、模型矩阵和集成红队更重要时，选 promptfoo。 | Python 原生评测框架（pytest 风格，G-Eval/faithfulness 等指标）；更适合 Python 团队和 RAG 指标深度。promptfoo 胜在语言无关的 YAML 配置、并排模型矩阵和集成红队。 |
+| [Langfuse](langfuse.zh.md) | ✅ | 当生产追踪、数据集、趋势历史和可自托管 UI 是主要平台需求时，选 Langfuse；当只要更轻的 CLI 优先 CI 回归/红队闸门时，选 promptfoo。 | 追踪/可观测性 + 评测平台（可自托管，带 UI 和数据集后端）；强在生产监控和趋势历史。promptfoo 更轻、CLI 优先、偏红队，而非可观测性后端。 |
 | LangSmith | 未收录 | 当你要托管的 LangChain 中心 eval 和可观测性时，选 LangSmith；当开源、local-first 运行和框架无关 provider 是硬要求时，选 promptfoo。 | 托管的 LangChain 评测/可观测性 SaaS;LangChain 集成深、看板托管，但闭源、以云为中心。promptfoo 开源、local-first、框架无关。 |
 | Braintrust | 未收录 | 当商业实验平台、托管打分、日志和打磨过的团队流程值得引入托管依赖时，选 Braintrust；当你要开放、自跑的 CLI 时，选 promptfoo。 | 商业评测/实验平台，托管打分与日志；团队 UX 打磨好。promptfoo 用开放、自跑的 CLI 换掉这套托管平台。 |
-| Garak | 未收录 | 当任务只是专门的 Python 红队扫描时，选 Garak；当红队检查需要和通用 eval 断言放在同一工作流里时，选 promptfoo。 | 专门的 LLM 漏洞扫描器（只做红队，Python）。与 promptfoo 的 `redteam` 范围重叠，但不是通用评测/断言 harness。 |
-| Giskard | 未收录 | 当你要更广的 ML+LLM 测试和 Python 中心扫描报告模型时，选 Giskard；当 prompt 和 CI 回归工作流是中心时，选 promptfoo。 | 面向 ML+LLM 的开源测试/红队，扫描-报告模式；ML 范围更广、以 Python 为中心。promptfoo 更聚焦 prompt/CI 工作流。 |
+| [Garak](garak.zh.md) | ✅ | 当任务只是专门的 Python 红队扫描时，选 Garak；当红队检查需要和通用 eval 断言放在同一工作流里时，选 promptfoo。 | 专门的 LLM 漏洞扫描器（只做红队，Python）。与 promptfoo 的 `redteam` 范围重叠，但不是通用评测/断言 harness。 |
+| [Giskard](giskard.zh.md) | ✅ | 当你要更广的 ML+LLM 测试和 Python 中心扫描报告模型时，选 Giskard；当 prompt 和 CI 回归工作流是中心时，选 promptfoo。 | 面向 ML+LLM 的开源测试/红队，扫描-报告模式；ML 范围更广、以 Python 为中心。promptfoo 更聚焦 prompt/CI 工作流。 |
 
 ## 技术栈
 

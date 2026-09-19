@@ -97,9 +97,9 @@ health:
 |---|---|---|---|
 | [Mem0](mem0.zh.md) | ✅ | 显式 add/search API 和更广的自托管路径更重要时，选 Mem0。 | 被引用最多的 agent 记忆层；在向量库之上提供 add/search API，自托管能力广。Memori 偏向自动客户端拦截 + 结构化 entity/process 状态加一个有主张的 cloud，而 Mem0 召回更显式、datastore 更灵活。 |
 | [claude-subconscious](claude-subconscious.zh.md) | ✅ | 明确想要 Claude/Letta 血统的后台记忆实验时，选 claude-subconscious。 | 一个 Claude 专属的后台记忆实验（Letta 血统）；范围比 Memori 的多 provider、多 framework 基础设施窄。 |
-| Letta (MemGPT) | 未收录 | 需要把记忆管理 OS 放进有状态 agent runtime 时，选 Letta。 | 带记忆管理 OS 的 agent runtime（分层 context、自编辑记忆）；是更重的有状态 agent 服务，不是即插即用的客户端包裹器。 |
-| Zep | 未收录 | 时序知识图谱记忆是主要架构下注时，选 Zep。 | 基于时序知识图谱的记忆服务，自托管/OSS 核心很强；结构化记忆的野心相当，但模型是图优先的。 |
-| LangMem (LangChain) | 未收录 | 记忆工具需要绑定在 LangGraph/LangChain 栈内时，选 LangMem。 | 绑在 LangGraph/LangChain 栈上的记忆工具；独立性不如 Memori 的 framework-无关定位。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | 需要把记忆管理 OS 放进有状态 agent runtime 时，选 Letta。 | 带记忆管理 OS 的 agent runtime（分层 context、自编辑记忆）；是更重的有状态 agent 服务，不是即插即用的客户端包裹器。 |
+| [Zep](zep.zh.md) | ✅ | 时序知识图谱记忆是主要架构下注时，选 Zep。 | 基于时序知识图谱的记忆服务，自托管/OSS 核心很强；结构化记忆的野心相当，但模型是图优先的。 |
+| [LangMem (LangChain)](langmem.zh.md) | ✅ | 记忆工具需要绑定在 LangGraph/LangChain 栈内时，选 LangMem。 | 绑在 LangGraph/LangChain 栈上的记忆工具；独立性不如 Memori 的 framework-无关定位。 |
 | 普通向量库（pgvector / Chroma） | 未收录 | 自己掌控 schema 和召回比 augmentation 功能更重要时，选普通向量库。 | schema 和召回都你自己掌控；没有 augmentation、没有 entity 模型、没有 cloud——掌控最大，接线也最多。 |
 
 ## 技术栈

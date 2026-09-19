@@ -97,7 +97,7 @@ Mozilla 出品的纯 JavaScript PDF 渲染与解析库，驱动着 Firefox 内�
 |---|---|---|---|
 | pdf-lib | ✅ | 若更看重“**创建和修改** PDF 的 JS 库（表单、合并、绘制）”，请选 [pdf-lib](pdf-lib.zh.md)。 | **创建和修改** PDF 的 JS 库（表单、合并、绘制）——正是 PDF.js 不覆盖的写一侧；它不是渲染器/阅读器。 |
 | [jsPDF](jspdf.zh.md) | ✅ | 需要在浏览器端用 JavaScript 生成 PDF 时，选 jsPDF。 | 客户端用 JS **生成** PDF；是互补而非替代——它造文档，PDF.js 显示文档。 |
-| PyMuPDF / pdfplumber | 未收录 | 做服务端渲染、文本抽取或表格抽取批处理时，选这些 Python 库。 | Python 库，服务端快速渲染 + 文本/表格抽取；后端批量作业更合适，但不是浏览器阅读器。 |
+| [PyMuPDF](pymupdf.zh.md) / [pdfplumber](pdfplumber.zh.md) | ✅ | 做服务端渲染、文本抽取或表格抽取批处理时，选这些 Python 库。 | Python 库，服务端快速渲染 + 文本/表格抽取；后端批量作业更合适，但不是浏览器阅读器。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | 需要把文档解析成 AI/RAG 用的结构化输入，而不是做浏览器 PDF 阅读器时，选 Docling。 | 版面感知的文档解析器，产出结构化结果（阅读顺序、表格）供 AI/RAG；目标不同——要的是语义结构，不是像素级忠实显示。 |
 | 原生 `<embed>` / 浏览器 PDF 插件 | 未收录 | 只有在零依赖比跨浏览器一致性和程序化访问更重要时，才选原生嵌入。 | 零依赖、浏览器自带，但跨浏览器表现不一致、不可控，也给不了你程序化的文本/渲染访问。 |
 

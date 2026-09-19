@@ -91,7 +91,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| LibreChat | 未收录 | 需要完整多用户平台，而不是轻量单次部署客户端时，选 LibreChat。 | 账号、多种鉴权后端、RAG、assistants、代码解释器；能力强得多，也重得多。NextChat 是更轻的客户端，不是团队平台。 |
+| [LibreChat](librechat.zh.md) | ✅ | 需要完整多用户平台，而不是轻量单次部署客户端时，选 LibreChat。 | 账号、多种鉴权后端、RAG、assistants、代码解释器；能力强得多，也重得多。NextChat 是更轻的客户端，不是团队平台。 |
 | Lobe Chat | 未收录 | 需要精致的多服务商 UI、插件、知识库和可选多用户模式时，选 Lobe Chat。 | 功能面更宽，开启 cloud/DB 功能后更重。NextChat 保持极简、浏览器本地。 |
 | [Open WebUI](open-webui.zh.md) | ✅ | Ollama/本地模型服务、RBAC、用户和 pipelines 比静态/Vercel 式客户端更重要时，选 Open WebUI。 | 它是强本地模型场景的自部署 UI，但需要服务器和数据库。NextChat 用这些能力换来了更简单的部署和更少后端运维。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | 需要管理员托管的团队聊天、按组模型权限、token 配额和 Postgres 用户账号时，选 HiveChat。 | HiveChat 正是 NextChat 社区版有意不去做的团队治理答案。 |

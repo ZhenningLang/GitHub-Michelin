@@ -100,8 +100,8 @@ health:
 | [Mem0](mem0.zh.md) | ✅ | 成熟、LLM 无关的记忆 API，采用度高，带云服务。 | 托管 API 优先的记忆服务，生态支持更广；不如 ByteRover 聚焦本地 CLI 和 git 式版本控制。 |
 | [Memori](memori.zh.md) | ✅ | 轻量级包装器，为现有 LLM 客户端添加持久记忆。 | 更易采用——包裹现有客户端，无需新 CLI 或上下文树；结构不如 ByteRover 丰富。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | 接入 Claude Code 会话生命周期的 hook/MCP 记忆。 | 与 Claude Code 紧耦合；不是像 ByteRover 这样通用的跨 agent 记忆层。 |
-| MemGPT / Letta | 未收录 | 学术研究项目转商业化，用于 LLM 记忆管理。 | 在 LLM 记忆管理上有深厚的研究根基；商业服务和集成模式不同。 |
-| Cognee | 未收录 | 面向 AI agent 的开源记忆层，基于图召回。 | 基于图的记忆，抽象不同；比 Mem0 更年轻、更未经检验。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | 学术研究项目转商业化，用于 LLM 记忆管理。 | 在 LLM 记忆管理上有深厚的研究根基；商业服务和集成模式不同。 |
+| [Cognee](cognee.zh.md) | ✅ | 面向 AI agent 的开源记忆层，基于图召回。 | 基于图的记忆，抽象不同；比 Mem0 更年轻、更未经检验。 |
 
 ## 技术栈
 

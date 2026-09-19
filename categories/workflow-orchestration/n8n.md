@@ -89,9 +89,9 @@ You're a technical team that needs to automate internal processes — pulling da
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
 | [Apache Airflow](airflow.md) | ✅ | Pick Airflow when workflows are code-first Python data pipelines rather than visual business automation. | Airflow is code-first and batch-data-pipeline focused; n8n is visual-first and integration-focused with 400+ pre-built nodes. |
-| Prefect | 未收录 | Pick Prefect when Python developer experience matters more than a visual builder and packaged SaaS integrations. | Prefect is code-first; n8n adds a visual builder and 400+ pre-built integrations. |
+| [Prefect](prefect.md) | ✅ | Pick Prefect when Python developer experience matters more than a visual builder and packaged SaaS integrations. | Prefect is code-first; n8n adds a visual builder and 400+ pre-built integrations. |
 | Zapier | 未收录 | Pick Zapier when zero self-hosting and managed SaaS convenience matter more than code escape hatches. | Zapier requires no setup but is proprietary, cloud-only, and charges per task; n8n is self-hostable and code-extensible. |
-| Argo Workflows | 未收录 | Pick Argo when the workflow unit is a Kubernetes container, CI/CD job, or ML pipeline. | Argo is for containerized CI/CD and ML pipelines on K8s; n8n is for API integrations and business automation. |
+| [Argo Workflows](argo-workflows.md) | ✅ | Pick Argo when the workflow unit is a Kubernetes container, CI/CD job, or ML pipeline. | Argo is for containerized CI/CD and ML pipelines on K8s; n8n is for API integrations and business automation. |
 | Make (Integromat) | 未收录 | Pick Make when you want a proprietary cloud visual automation product and do not need self-hosting. | Make is cloud-only and proprietary; n8n offers self-hosting and code extensibility. |
 
 ## Tech stack

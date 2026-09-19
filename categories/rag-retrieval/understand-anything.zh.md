@@ -102,7 +102,7 @@ health:
 | [code-review-graph](code-review-graph.zh.md) | ✅ | 需要聚焦代码评审/爆炸半径的管线时，选 code-review-graph。 | 窄域的代码评审/爆炸半径管线（AST→SQLite→MCP），带风险评分 CI Action 和代码不出网的 runner 方案。Understand-Anything 是通用探索/查询工具，不是 PR 评审闸门。 |
 | [PageIndex](pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 基于推理的*文档*层级检索（无代码 AST/调用图）；检索原语不同——prose 目录树 vs 代码/实体图。 |
 | [FalkorDB](falkordb.zh.md) | ✅ | 需要真正的持久化属性图后端时，选 FalkorDB。 | 真正的持久化属性图数据库（Redis 模块、OpenCypher、向量索引），你在它上面建应用；Understand-Anything 是开箱即用的抽取-查询工具，不是图后端。 |
-| Sourcegraph / SCIP | 未收录 | 需要工业级、规模化的精确代码智能时，选 Sourcegraph 或 SCIP。 | 工业级精确代码智能（跨仓、language server、规模化）；基础设施更重，不是 agent 插件形态的即插即用工具。Understand-Anything 更轻、有 LLM 增强，但未经证明。 |
+| [Sourcegraph](sourcegraph.zh.md) / [SCIP](scip.zh.md) | ✅ | 需要工业级、规模化的精确代码智能时，选 Sourcegraph 或 SCIP。 | 工业级精确代码智能（跨仓、language server、规模化）；基础设施更重，不是 agent 插件形态的即插即用工具。Understand-Anything 更轻、有 LLM 增强，但未经证明。 |
 
 ## 技术栈
 

@@ -97,7 +97,7 @@ health:
 | Kibana | 未收录 | 技术栈明确围绕 Elasticsearch/OpenSearch 时，选 Kibana。 | 与 Elasticsearch/OpenSearch 紧耦合；做日志搜索和 Elastic 栈极强，但作为多后端看板工具，比 Grafana 数据源中立的模型窄。 |
 | Datadog / Grafana Cloud | 未收录 | 想让采集、存储、看板和告警都由托管套件代管时，选托管方案。 | 托管一体化（采集+存储+看板+告警）；零基础设施，但按主机/按指标计费且厂商绑定，对比自托管 Grafana 自己跑后端。 |
 | Apache Superset | 未收录 | 任务是面向数仓和关系库的 BI/SQL 分析时，选 Superset。 | 面向数仓和 SQL 库的 BI/SQL 分析看板；探索式报表和图表更强，运维时序、日志/追踪关联和值班告警更弱。 |
-| Metabase | 未收录 | 业务用户需要友好的自助 SQL BI，而不是运维遥测时，选 Metabase。 | 给业务用户用的自助 BI，查 SQL 源很友好；不是为运维时序、日志/追踪关联或 PromQL/LogQL 类后端设计的。 |
+| [Metabase](../data-visualization/metabase.zh.md) | ✅ | 业务用户需要友好的自助 SQL BI，而不是运维遥测时，选 Metabase。 | 给业务用户用的自助 BI，查 SQL 源很友好；不是为运维时序、日志/追踪关联或 PromQL/LogQL 类后端设计的。 |
 
 ## 技术栈
 

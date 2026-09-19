@@ -97,7 +97,7 @@ You are a Python developer building an AI application that needs to connect LLMs
 | [DSPy](dspy.md) | ✅ | Prompt optimization via metrics. | DSPy optimizes prompts/weights against a metric; LangChain is a general composition framework for agents, chains, and tools. |
 | [AutoGPT](autogpt.md) | ✅ | Platform for autonomous workflow automation. | AutoGPT is a higher-level platform with a web UI and deployment model; LangChain is a lower-level framework you build on. |
 | [smolagents](../agent-runtimes/smolagents.md) | ✅ | Tiny transparent agent loop from Hugging Face. | smolagents is minimal and transparent; LangChain is comprehensive and integration-rich. |
-| LlamaIndex | 未收录 | RAG-first data framework for LLMs. | LlamaIndex specializes in retrieval and data ingestion; LangChain is broader, covering agents, chains, tools, and orchestration. |
+| [LlamaIndex](llamaindex.md) | ✅ | RAG-first data framework for LLMs. | LlamaIndex specializes in retrieval and data ingestion; LangChain is broader, covering agents, chains, tools, and orchestration. |
 
 ## Tech stack
 

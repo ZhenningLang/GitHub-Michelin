@@ -91,8 +91,8 @@ health:
 |---|---|---|---|
 | django-guardian | 未收录 | 当对象授权是由后台或 API 分配、撤销的数据时，选 django-guardian；当权限来自代码谓词且不想增加权限表时，选 django-rules。 | 把逐对象权限存为数据库行（可通过后台/API 分配）；当授予是*数据*时是对的工具，但加表、加查询、加同步——比“规则即逻辑”更重。 |
 | Django 内置权限 | 未收录 | 当你只需要模型级、数据库支撑、后台可管理的角色权限时，选 Django 内置权限；当缺口是无需额外存储的逐对象逻辑时，选 django-rules。 | 模型级、靠数据库、后台管理；不额外做事就没有逐对象粒度——django-rules 正好补这个缺口。 |
-| Casbin（pycasbin） | 未收录 | 当你需要通用 RBAC/ABAC 策略引擎和外部策略存储时，选 Casbin；当需求只是轻量的 Django 进程内谓词时，选 django-rules。 | 策略引擎，支持多种模型（RBAC/ABAC）和外部策略存储；更通用、框架无关，但比谓词函数要更多搭建。 |
-| OPA / OpenFGA | 未收录 | 当你需要跨服务、语言无关、可规模化的授权时，选 OPA 或 OpenFGA；当策略只属于一个 Django 应用且应留在进程内时，选 django-rules。 | 外部、语言无关的策略/授权服务（Rego / Zanzibar 风格关系）；规模化和跨服务很强，但比进程内 Django 库重得多。 |
+| [Casbin（pycasbin）](casbin.zh.md) | ✅ | 当你需要通用 RBAC/ABAC 策略引擎和外部策略存储时，选 Casbin；当需求只是轻量的 Django 进程内谓词时，选 django-rules。 | 策略引擎，支持多种模型（RBAC/ABAC）和外部策略存储；更通用、框架无关，但比谓词函数要更多搭建。 |
+| OPA / [OpenFGA](openfga.zh.md) | 部分已收录 | 当你需要跨服务、语言无关、可规模化的授权时，选 OPA 或 OpenFGA；当策略只属于一个 Django 应用且应留在进程内时，选 django-rules。 | 外部、语言无关的策略/授权服务（Rego / Zanzibar 风格关系）；规模化和跨服务很强，但比进程内 Django 库重得多。 |
 | 临时 `if` 检查 | 未收录 | 只有一次性且极简单的场景才保留临时检查；当同一套授权逻辑需要命名、组合、复用和测试时，选 django-rules。 | django-rules 要取代的现状——无依赖，但散落、无测试、容易出微妙错误。 |
 
 ## 技术栈

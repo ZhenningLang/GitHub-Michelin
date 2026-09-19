@@ -102,7 +102,7 @@ So you `ralph-enable` (or `ralph-import requirements.md`) in your repo, drop you
 | [Entire](entire-cli.md) | ✅ | Choose Entire when you need a broader agent-workflow CLI. | A broader agent-workflow CLI; overlaps on driving an agent but with a different orchestration model than Ralph's single-prompt Bash loop. |
 | [Context Mode](context-mode.md) | ✅ | Choose Context Mode when you need context/memory shaping rather than an autonomous completion loop. | Focuses on context/memory shaping for the agent rather than an autonomous completion loop with exit detection. |
 | Geoffrey Huntley's original Ralph (`while :; claude -p ...`) | 未收录 | Choose the original Ralph loop when you only need the raw one-line shell technique. | The raw technique is a one-line shell loop; this project is that idea plus exit gating, rate limits, circuit breaker, monitoring, backups, and sandboxing — i.e. the safety scaffolding the bare loop lacks. |
-| Aider `--auto` / OpenHands / SWE-agent | 未收录 | Choose Aider, OpenHands, or SWE-agent when you need general autonomous coding agents with their own loops. | General autonomous coding agents with their own models/loops; not Claude-Code-CLI wrappers and not built around the dual-condition `EXIT_SIGNAL` gate. |
+| Aider `--auto` / [OpenHands](../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) / [SWE-agent](../agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md) | 部分已收录 | Choose Aider, OpenHands, or SWE-agent when you need general autonomous coding agents with their own loops. | General autonomous coding agents with their own models/loops; not Claude-Code-CLI wrappers and not built around the dual-condition `EXIT_SIGNAL` gate. |
 
 ## Tech stack
 

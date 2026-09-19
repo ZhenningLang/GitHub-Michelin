@@ -97,9 +97,9 @@ Mem0 正是为此而生。一轮对话后你调用 `m.add(messages, user_id=...)
 |---|---|---|---|
 | [Memori](memori.zh.md) | ✅ | 数据库原生的可审计性比即插即用向量记忆更重要时，选 Memori。 | SQL-first / 数据库原生记忆（可查询、可审计、不强制向量库）；Mem0 偏向向量 + LLM 抽取，更“即插即用”但更不可审视。 |
 | [claude-subconscious](claude-subconscious.zh.md) | ✅ | 想要 Claude 专属 hook 记忆实验时，选 claude-subconscious。 | Claude 专属的潜意识/反思记忆实验；Mem0 是通用、跨多家 provider 的 LLM 无关方案。 |
-| Zep / Graphiti | 未收录 | 时序图记忆和显式失效是核心时，选 Zep 或 Graphiti。 | 时序知识图谱记忆，带双时态边和显式失效；在事实演化/相互矛盾的场景更强，而 Mem0 的 ADD-only 模型只会累积。 |
-| Letta (MemGPT) | 未收录 | 需要有状态 agent runtime 而不只是记忆库时，选 Letta。 | 带自编辑记忆 + 有状态 server 的 agent 运行时，而不只是一个库；更重，接管 agent 循环而非塞在你的循环下面。 |
-| LangMem (LangChain) | 未收录 | 记忆层需要留在 LangChain/LangGraph 生态内时，选 LangMem。 | 绑定 LangChain/LangGraph 生态的记忆工具；Mem0 与框架无关。 |
+| [Zep](zep.zh.md) / [Graphiti](graphiti.zh.md) | ✅ | 时序图记忆和显式失效是核心时，选 Zep 或 Graphiti。 | 时序知识图谱记忆，带双时态边和显式失效；在事实演化/相互矛盾的场景更强，而 Mem0 的 ADD-only 模型只会累积。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | 需要有状态 agent runtime 而不只是记忆库时，选 Letta。 | 带自编辑记忆 + 有状态 server 的 agent 运行时，而不只是一个库；更重，接管 agent 循环而非塞在你的循环下面。 |
+| [LangMem (LangChain)](langmem.zh.md) | ✅ | 记忆层需要留在 LangChain/LangGraph 生态内时，选 LangMem。 | 绑定 LangChain/LangGraph 生态的记忆工具；Mem0 与框架无关。 |
 | 自建 pgvector + 自写抽取 | 未收录 | 完全控制 schema 和召回比 Mem0 的打包层更重要时，选自建 pgvector。 | 完全可控、无额外依赖或平台；但 Mem0 开箱即给你的抽取 prompt、schema 和检索，都要你自己搭和维护。 |
 
 ## 技术栈

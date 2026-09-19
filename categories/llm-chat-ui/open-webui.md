@@ -94,7 +94,7 @@ You're a privacy-conscious developer or small team who wants a self-hosted chat 
 | --- | --- | --- | --- |
 | [NextChat](nextchat.md) | ✅ | Lightweight self-deployable chat UI. | NextChat is simpler and faster to deploy; Open WebUI is heavier but has built-in RAG and more features. |
 | [HiveChat](../team-chat/hivechat.md) | ✅ | Admin-managed team chat with quotas. | HiveChat is for RBAC team admin; Open WebUI is for personal/small-group use. |
-| LibreChat | 未收录 | Another self-hosted chat UI. | LibreChat has a broader plugin ecosystem but is not indexed here. |
+| [LibreChat](librechat.md) | ✅ | Another self-hosted chat UI. | LibreChat has a broader plugin ecosystem but is not indexed here. |
 | Lobe Chat | 未收录 | Design-focused chat UI. | Lobe Chat emphasizes visual polish and plugin market; Open WebUI emphasizes offline operation. |
 | ChatGPT / Claude web apps | 未收录 | Closed-source cloud chat. | Proprietary and require cloud; Open WebUI is self-hosted and works offline. |
 

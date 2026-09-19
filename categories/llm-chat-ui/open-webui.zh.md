@@ -94,7 +94,7 @@ health:
 | --- | --- | --- | --- |
 | [NextChat](nextchat.zh.md) | ✅ | 轻量、可自部署的聊天前端。 | NextChat 更轻、部署更快；Open WebUI 更重，但内置 RAG 且功能更多。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | 管理员统管的团队聊天，带配额。 | HiveChat 面向 RBAC 团队管理；Open WebUI 面向个人 / 小团体使用。 |
-| LibreChat | 未收录 | 另一款自托管聊天前端。 | LibreChat 插件生态更广，但尚未收录。 |
+| [LibreChat](librechat.zh.md) | ✅ | 另一款自托管聊天前端。 | LibreChat 插件生态更广，但尚未收录。 |
 | Lobe Chat | 未收录 | 设计优先的聊天前端。 | Lobe Chat 强调视觉精致与插件市场；Open WebUI 强调离线运行。 |
 | ChatGPT / Claude 网页版 | 未收录 | 闭源云端聊天。 | 专有且需联网；Open WebUI 可自托管、支持离线。 |
 

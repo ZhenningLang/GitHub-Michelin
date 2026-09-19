@@ -99,7 +99,7 @@ health:
 | [deep-research](deep-research.zh.md) | ✅ | 需要可嵌入、端到端自己掌控的极简 TypeScript 脚本时，选 deep-research。 | 极简 TypeScript 脚本，端到端自己嵌、自己掌控；LLM+搜索 key 你自己接。比 LDR 轻得多，但没有 UI、没有本地 LLM/隐私套件、没有学术源连接器或加密多用户存储。 |
 | [Vane](vane.zh.md) | ✅ | 需要另一个自托管研究/搜索 agent 时，选 Vane。 | 另一个自托管研究/搜索 agent;“自己跑”的目标有重叠。按源连接器、本地 LLM 支持和报告质量在你的栈上比较。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | 交付物是 web/social 触达而非带引用报告时，选 Agent-Reach。 | 聚焦在面向 web 来源的 agent 触达/reach；相邻但交付物与 LDR 的带引用研究报告不同。 |
-| GPT Researcher | 未收录 | 需要带 Web UI 和报告导出的流行 Python 深度研究 agent 时，选 GPT Researcher。 | 流行的 Python 深度研究 agent，带 Web UI 和报告导出；默认云端 LLM 优先。LDR 更彻底地押注全本地 + 加密 + 学术源连接器。 |
+| [GPT Researcher](gpt-researcher.zh.md) | ✅ | 需要带 Web UI 和报告导出的流行 Python 深度研究 agent 时，选 GPT Researcher。 | 流行的 Python 深度研究 agent，带 Web UI 和报告导出；默认云端 LLM 优先。LDR 更彻底地押注全本地 + 加密 + 学术源连接器。 |
 | Perplexity / OpenAI Deep Research | 未收录 | 质量和零运维高于隐私/本地控制时，选托管研究 SaaS。 | 托管 SaaS，质量强、零运维——但你的查询和上下文会离开你的机器，与 LDR 的前提正相反。 |
 
 ## 技术栈

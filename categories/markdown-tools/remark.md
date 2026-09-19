@@ -98,7 +98,7 @@ You're building a documentation pipeline or a static site generator that needs m
 | [markdown-it](markdown-it.md) | ✅ | Choose markdown-it when you need a CommonMark-strict, pluggable parser with a large plugin catalog and a simpler API than remark. | CommonMark-strict, pluggable parser with a large plugin catalog; simpler API than remark but still lacks the full AST-transform toolchain of unified. |
 | [micromark](micromark.md) | ✅ | Choose micromark when you need the low-level streaming tokenizer underneath remark, for example for a custom renderer. | The low-level streaming tokenizer underneath remark; correct and fast, but you build the entire rendering and transform layer yourself. |
 | [CommonMark](commonmark.md) | ✅ | Choose CommonMark when you need the spec's reference implementation for conformance testing. | The spec's own reference implementation; the conformance yardstick, but no plugin ecosystem and not optimized for production rendering. |
-| Pandoc | 未收录 | Choose Pandoc when you need a universal document converter across dozens of formats such as Word, LaTeX, or PDF. | Universal document converter across dozens of formats; a heavyweight binary, not a JS toolchain, and overkill if you only need Markdown manipulation. |
+| [Pandoc](pandoc.md) | ✅ | Choose Pandoc when you need a universal document converter across dozens of formats such as Word, LaTeX, or PDF. | Universal document converter across dozens of formats; a heavyweight binary, not a JS toolchain, and overkill if you only need Markdown manipulation. |
 
 ## Tech stack
 

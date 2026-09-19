@@ -89,9 +89,9 @@ You also reach for it when you want the *fun* layer: scrolling banners, sprites,
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| Textual | 未收录 | Choose Textual when you need a modern async, CSS-styled, mouse-first TUI framework. | Modern async, CSS-styled, mouse-first TUI framework (Textualize); much richer widget/styling model and active backing, but heavier and a different programming model than asciimatics' curses-like API. |
+| [Textual](textual.md) | ✅ | Choose Textual when you need a modern async, CSS-styled, mouse-first TUI framework. | Modern async, CSS-styled, mouse-first TUI framework (Textualize); much richer widget/styling model and active backing, but heavier and a different programming model than asciimatics' curses-like API. |
 | urwid | 未收录 | Choose urwid when you need a long-established Python console UI library with flexible widgets and layouts. | Long-established Python console UI library with a flexible widget/layout system; Unix-focused (weaker Windows story) and no animation engine. |
-| rich | 未收录 | Choose rich when you need styled terminal *output* such as tables, markup, progress, or syntax highlighting. | Styled terminal *output* (tables, markup, progress, syntax) — not a full-screen UI/event loop; complementary, not a substitute for interactive screens. |
+| [rich](rich.md) | ✅ | Choose rich when you need styled terminal *output* such as tables, markup, progress, or syntax highlighting. | Styled terminal *output* (tables, markup, progress, syntax) — not a full-screen UI/event loop; complementary, not a substitute for interactive screens. |
 | blessed / curses (stdlib) | 未收录 | Choose blessed or curses when you need lower-level terminal control instead of a widget/animation framework. | Lower-level terminal control; `curses` is Unix-only, `blessed` is a friendlier wrapper — neither ships widgets or an animation framework. |
 | prompt_toolkit | 未收录 | Choose prompt_toolkit when you need powerful interactive prompts, REPLs, or input-heavy full-screen apps. | Powerful for interactive prompts/REPLs and some full-screen apps; strong line-editing, but a different focus (input) and no ASCII-effects engine. |
 

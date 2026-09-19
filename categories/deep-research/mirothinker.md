@@ -95,9 +95,9 @@ You're an ML engineer at a research-tooling team and you want a self-hosted, ope
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | OpenAI / Gemini "Deep Research" | 未收录 | Choose hosted Deep Research products when turnkey quality and no GPU matter most. | Hosted, turnkey, strong quality, no GPU to run; but closed, paid per use, no self-hosting or model control — the opposite tradeoff to MiroThinker. |
-| GPT-Researcher | 未收录 | Choose GPT-Researcher when you need a lightweight open agent over LLM APIs and web tools. | Lightweight open research agent that orchestrates a frozen LLM API + web tools; far cheaper to run (no self-hosted weights) but not its own fine-tuned models or benchmark-tuned framework. |
+| [GPT-Researcher](gpt-researcher.md) | ✅ | Choose GPT-Researcher when you need a lightweight open agent over LLM APIs and web tools. | Lightweight open research agent that orchestrates a frozen LLM API + web tools; far cheaper to run (no self-hosted weights) but not its own fine-tuned models or benchmark-tuned framework. |
 | [smolagents](../agent-frameworks/agent-runtimes/smolagents.md) / LangGraph + tools | 部分已收录 | Choose smolagents or LangGraph when you want to assemble the research loop yourself. | General agent frameworks you'd assemble a research loop on; more flexible and model-agnostic, but you build the research pipeline and provide tuning yourself. |
-| Open Deep Research (HF) | 未收录 | Choose Open Deep Research when you need an API-model reproduction of a deep-research agent. | Open reproduction of a deep-research agent over an API model; similar open spirit, different stack and (usually) no self-hosted fine-tuned weights. |
+| [Open Deep Research (HF)](open-deep-research.md) | ✅ | Choose Open Deep Research when you need an API-model reproduction of a deep-research agent. | Open reproduction of a deep-research agent over an API model; similar open spirit, different stack and (usually) no self-hosted fine-tuned weights. |
 
 ## Tech stack
 

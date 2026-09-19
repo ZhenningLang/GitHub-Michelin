@@ -100,7 +100,7 @@ You also use it when the source isn't YouTube at all — the value is the extrac
 | [you-get](you-get.md) | ✅ | Pick you-get when you want a simpler Python downloader with its own narrower site catalog. | Python downloader with its own site list; simpler UX, smaller/less-actively-tracked extractor catalog than youtube-dl/yt-dlp. |
 | [lux](lux.md) | ✅ | Pick lux when a Go single binary matters more than youtube-dl's Python ecosystem and extractor breadth. | Go single-binary downloader (formerly annie); no Python runtime, fast, but a narrower and differently-curated site list. |
 | [cobalt](cobalt.md) | ✅ | Pick cobalt when you want a self-hosted web/API service rather than a local CLI. | Web/API-first downloader (self-hostable service); browser-friendly and clean UX, but it's a service to run, not a pip-installable CLI for scripting. |
-| gallery-dl | 未收录 | Pick gallery-dl when the target is image/gallery sites rather than video extraction. | Specializes in *image/gallery* sites (boorus, social media galleries) rather than video; complementary, not a substitute for video extraction. |
+| [gallery-dl](gallery-dl.md) | ✅ | Pick gallery-dl when the target is image/gallery sites rather than video extraction. | Specializes in *image/gallery* sites (boorus, social media galleries) rather than video; complementary, not a substitute for video extraction. |
 
 ## Tech stack
 
