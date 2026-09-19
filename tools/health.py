@@ -1312,45 +1312,17 @@ def _risk_noassertion(repo: RepoData, lic_path: str | None) -> Axis:
         return Axis("E", {"spdx_id": "NOASSERTION", "permissiveness": "source_available",
                           "relicense_36mo": False, "content_license": None},
                     evidence="NOASSERTION blob matches Elastic License -> E")
-    # High-confidence template match: GitHub's licensee failed because of trailing
-    # addenda, but the core text is a standard OSI license.
-    if _matches_mit_template(low):
-        return Axis("A", {"spdx_id": "MIT", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches MIT template (licensee failed)")
-    if _matches_apache2_template(low):
-        return Axis("A", {"spdx_id": "Apache-2.0", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches Apache-2.0 template (licensee failed)")
-    if _matches_bsd3_template(low):
-        return Axis("A", {"spdx_id": "BSD-3-Clause", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches BSD-3-Clause template (licensee failed)")
-
-    # Fallback: looks like OSI but template match was inconclusive -> ? for human review.
-    if any(k in low for k in ("mit license", "apache license", "bsd ", "gnu general public",
-                              "mozilla public license", "isc license")):
-        return Axis.unknown("license_unparsed",
-                            evidence="? NOASSERTION blob looks OSI but template match inconclusive (manual review)")
-    return Axis.unknown("license_unparsed",
-                        evidence="? NOASSERTION blob unclassifiable (manual review)")
-
-
-# High-confidence template match: GitHub's licensee failed because of trailing
-# addenda, but the core text is a standard OSI license.
-    if _matches_mit_template(low):
-        return Axis("A", {"spdx_id": "MIT", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches MIT template (licensee failed)")
-    if _matches_apache2_template(low):
-        return Axis("A", {"spdx_id": "Apache-2.0", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches Apache-2.0 template (licensee failed)")
-    if _matches_bsd3_template(low):
-        return Axis("A", {"spdx_id": "BSD-3-Clause", "permissiveness": "permissive",
-                          "relicense_36mo": False, "content_license": None},
-                    evidence="NOASSERTION but blob matches BSD-3-Clause template (licensee failed)")
-
+    # A NOASSERTION blob is NOT a verifiable permissive verdict. Even a
+    # high-confidence OSI template hit can be a composite file: the preamble may
+    # grant AGPL/commercial (Mattermost's LICENSE.txt) or split CE/EE terms
+    # (Rocket.Chat's LICENSE) while embedding the OSI text as a sub-license or
+    # appendix. Promoting that to A silently understates the real restrictions.
+    # Rubric §2.6: OSI-looking NOASSERTION -> ? (license_unparsed) + caveats bullet.
+    if _matches_mit_template(low) or _matches_apache2_template(low) or _matches_bsd3_template(low):
+        return Axis.unknown(
+            "license_unparsed",
+            evidence="? NOASSERTION blob contains an OSI template but the file may be "
+                     "composite/multi-licensed (manual review)")
     # Fallback: looks like OSI but template match was inconclusive -> ? for human review.
     if any(k in low for k in ("mit license", "apache license", "bsd ", "gnu general public",
                               "mozilla public license", "isc license")):
