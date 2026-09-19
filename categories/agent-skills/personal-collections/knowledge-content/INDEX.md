@@ -12,6 +12,7 @@
 | **ljg-skills** | Li Jigang's personal Claude Code skills for Chinese knowledge work: reading, paper/book deconstruction, concept analysis, plain-language rewriting, and PNG cards. | C (4/6) | [→](ljg-skills.md) |
 | **canghe-skills** | Canghe's personal Claude Code skills marketplace for content publishing, media generation backends, business intelligence, extraction utilities, Obsidian helpers, and document parsing. | D (4/6) | [→](canghe-skills.md) |
 | **skills** | Sahil Lavingia's Claude Code skill pack translating The Minimalist Entrepreneur journey into 10 business-building commands. | C (4/6) | [→](slavingia-skills.md) |
+| **patent-disclosure-skill** | A Chinese-first, eight-skill pack that drafts patent disclosures and application documents, searches CNIPA records, and explains patents into an Obsidian vault. | B (4/6) | [→](patent-disclosure-skill.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [ljg-skills](ljg-skills.md) | ✅ | C (4/6) | Strongest fit for Chinese knowledge-work reading, explanation, rewriting, and visual cards. |
 | [canghe-skills](canghe-skills.md) | ✅ | D (4/6) | Broadest operator toolbox, but license and external-service surfaces need careful governance. |
 | [skills](slavingia-skills.md) | ✅ | C (4/6) | Narrow book-derived founder journey; useful for a specific business philosophy, not general research. |
+| [patent-disclosure-skill](patent-disclosure-skill.md) | ✅ | B (4/6) | Deep Chinese-patent workflow (drafting, CNIPA search, Obsidian reading/map); single-maintainer, CNIPA-scraping and Obsidian dependencies, and no legal-quality gate. |
 
 ## What belongs here
 

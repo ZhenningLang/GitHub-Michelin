@@ -12,6 +12,7 @@
 | **ljg-skills** | 李继刚的个人 Claude Code skill，面向中文知识工作：阅读、论文／拆书、概念分析、大白话改写和 PNG 卡片。 | C（4/6） | [→](ljg-skills.zh.md) |
 | **canghe-skills** | 苍何个人 Claude Code skills marketplace，覆盖内容发布、媒体生成后端、商业情报、提取工具、Obsidian helper 和文档解析。 | D（4/6） | [→](canghe-skills.zh.md) |
 | **skills** | Sahil Lavingia 的 Claude Code skill 包，把《The Minimalist Entrepreneur》旅程变成 10 个商业构建命令。 | C（4/6） | [→](slavingia-skills.zh.md) |
+| **patent-disclosure-skill** | 中文优先的八技能包：撰写专利交底书与申请文件，检索国知局记录，并把专利解读进 Obsidian 库。 | B（4/6） | [→](patent-disclosure-skill.zh.md) |
 
 ## 对比矩阵
 
@@ -22,6 +23,7 @@
 | [ljg-skills](ljg-skills.zh.md) | ✅ | C（4/6） | 最适合中文知识工作中的阅读、解释、改写和视觉卡片。 |
 | [canghe-skills](canghe-skills.zh.md) | ✅ | D（4/6） | 最宽的操作者工具箱，但许可证和外部服务表面需要谨慎治理。 |
 | [skills](slavingia-skills.zh.md) | ✅ | C（4/6） | 窄而明确的书籍来源 founder journey；适合特定商业哲学，不是通用调研工具。 |
+| [patent-disclosure-skill](patent-disclosure-skill.zh.md) | ✅ | B（4/6） | 深度中文专利工作流（起草、国知局检索、Obsidian 解读／地图）；单人维护、依赖国知局抓取与 Obsidian，且没有法律质量门禁。 |
 
 ## 什么该放这里
 
