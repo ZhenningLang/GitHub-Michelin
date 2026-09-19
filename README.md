@@ -808,6 +808,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | Apache-2.0 | A (4/6) | [EN](categories/speech/speechbrain.md) · [中](categories/speech/speechbrain.zh.md) |
+| **Voicebox** | Use it when you want a self-hosted voice I/O studio — cloned-voice TTS, hotkey Whisper dictation, and MCP/REST agent speech in one MIT app — but it's a young single-maintainer project with a stalled release cadence and macOS-only auto-paste today. | MIT | B (5/6) | [EN](categories/speech/voicebox.md) · [中](categories/speech/voicebox.zh.md) |
 
 ### terminal-ui
 
