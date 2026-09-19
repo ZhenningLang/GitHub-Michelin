@@ -30,7 +30,7 @@
 | [Stable Diffusion WebUI](stable-diffusion-webui.md) | ✅ | C (4/6) | Local web-based GUI for Stable Diffusion image generation, editing, and upscaling on your own GPU; requires technical setup and an NVIDIA GPU. |
 | [ComfyUI](comfyui.md) | ✅ | B (5/6) | Modular node-graph interface for building complex diffusion-model workflows locally; steep learning curve and significant GPU resources required. |
 | [Needle](needle.md) | ✅ | B (4/6) | On-device 2-bit tool-calling + structured extraction + embedding model with grammar-constrained decoding. |
-| llama.cpp / Ollama / MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages. |
+| MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages (llama.cpp and Ollama are indexed under `llm-inference`). |
 
 ## What belongs here
 

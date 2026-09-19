@@ -12,6 +12,7 @@
 | **agent-tooling** | Infrastructure for AI coding agents — task/work tracking, persistent memory, agent state. | [→](categories/agent-tooling/INDEX.md) |
 | **document-management** | Ingest, OCR, tag, and full-text-search scanned documents / paperwork. | [→](categories/document-management/INDEX.md) |
 | **on-device-ml** | Run ML / LLM inference locally on edge devices (phone, laptop, IoT) instead of in the cloud. | [→](categories/on-device-ml/INDEX.md) |
+| **function-calling** | Turn natural-language requests into schema-constrained tool/function calls — function-calling models and their serving stacks. | [→](categories/function-calling/INDEX.md) |
 | **web-automation** | Drive or automate a web UI — browser automation, or an in-page natural-language GUI agent. | [→](categories/web-automation/INDEX.md) |
 | **llm-training** | Fine-tune or reinforcement-train LLMs and multi-step agents. | [→](categories/llm-training/INDEX.md) |
 | **agent-frameworks** | Build and run multi-step or multi-agent systems — agent frameworks and agent operating systems. | [→](categories/agent-frameworks/INDEX.md) |
