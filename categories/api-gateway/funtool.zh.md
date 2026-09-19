@@ -94,9 +94,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| LiteLLM | 未收录 | 需要可审查、供应商无关的团队代理时，选 LiteLLM；只有预打包 Windows NVIDIA 通道比源码访问更重要时，才选 Funtool。 | LiteLLM 增加 Python 部署与配置工作，但公开网关逻辑并覆盖更多供应商；Funtool 降低窄场景的启动成本，代价是信任二进制。 |
-| claude-code-router | 未收录 | 需要跨平台、配置驱动的 Claude Code 路由时，选 claude-code-router；只有外部文档描述的 Windows 二进制流程完全命中任务时，才选 Funtool。 | claude-code-router 更容易审查和自动化；Funtool 打包了更多目标流程，却无法从已发布仓库独立重建。 |
-| CLIProxyAPI | 未收录 | 需要把多个 CLI 账号变成可复用 API 门面时，选 CLIProxyAPI；任务明确是让 Claude Code 访问其支持的 NVIDIA 通道时，才选 Funtool。 | CLIProxyAPI 解决更宽的账号转 API 问题，也带来更多服务配置；Funtool 更窄，并偏桌面使用。 |
+| [LiteLLM](litellm.zh.md) | 已收录 | 需要可审查、供应商无关的团队代理时，选 LiteLLM；只有预打包 Windows NVIDIA 通道比源码访问更重要时，才选 Funtool。 | LiteLLM 增加 Python 部署与配置工作，但公开网关逻辑并覆盖更多供应商；Funtool 降低窄场景的启动成本，代价是信任二进制。 |
+| [claude-code-router](claude-code-router.zh.md) | 已收录 | 需要跨平台、配置驱动的 Claude Code 路由时，选 claude-code-router；只有外部文档描述的 Windows 二进制流程完全命中任务时，才选 Funtool。 | claude-code-router 更容易审查和自动化；Funtool 打包了更多目标流程，却无法从已发布仓库独立重建。 |
+| [CLIProxyAPI](cliproxyapi.zh.md) | 已收录 | 需要把多个 CLI 账号变成可复用 API 门面时，选 CLIProxyAPI；任务明确是让 Claude Code 访问其支持的 NVIDIA 通道时，才选 Funtool。 | CLIProxyAPI 解决更宽的账号转 API 问题，也带来更多服务配置；Funtool 更窄，并偏桌面使用。 |
 | New API | 未收录 | 需要用户、额度、渠道和管理控制的共享网关时，选 New API；只做单机 Windows 配置且不需要治理时，才考虑 Funtool。 | New API 的服务与数据库运维面更大，但提供团队控制；Funtool 表面基础设施更少，运作透明度也低得多。 |
 | [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) | 已收录 | 需要可视化切换 coding agent 供应商和凭据时，选 CC Switch；请求必须经过 Funtool 的 NVIDIA 代理路径时，才选 Funtool。 | CC Switch 是配置管理器，不是 API 网关；Funtool 改变请求路由，却把不可审计 EXE 引入信任边界。 |
 
