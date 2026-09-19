@@ -30,6 +30,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no
 A blocking Lua Redis client (redis-lua),categories/nginx-modules/lua-resty-redis.md,,no
 A custom userscript/proxy,categories/reading-tools/margin-read.md,,no
+A DIY CLI wrapper + `SKILL.md` kept in-house,categories/agent-tooling/cli-anything.md,,no
 ack,categories/dev-utilities/data-tools/ripgrep.md,,no
 acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
 ad-hoc `if` checks,categories/auth/django-rules.md,,no
@@ -350,6 +351,7 @@ Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
 Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
+Hand-written MCP server,categories/agent-tooling/cli-anything.md,,no
 Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
 Hand-written project skills,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -742,6 +744,7 @@ texify,categories/ocr/latex-ocr.md,,no
 TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
 textract,categories/document-parsing/markitdown.md,,no
 TGI,categories/llm-inference/INDEX.md,,no
+"The app's native scripting backend, driven directly",categories/agent-tooling/cli-anything.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
