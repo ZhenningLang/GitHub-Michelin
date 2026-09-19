@@ -1,0 +1,812 @@
+alternative,first_page,indexed_hits,resolves_to_indexed
+(alternatives named across the pages),categories/auth/INDEX.md,,no
+1Password / LastPass,categories/dev-utilities/ops-infra/vaultwarden.md,,no
+2captcha-python,categories/captcha/buster.md,,no
+@ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
+[Cipher](https://github.com/campfirein/cipher),categories/agent-memory/claude-subconscious.md,,no
+"`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+`bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
+`bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
+`bdeansrowe/ltbl-force`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
+`bdeansrowe/ltbl-ignorance`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
+`blader/humanizer` (upstream),categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+`cake` / SQM (OpenWrt),categories/networking/wondershaper.md,,no
+`diffusers` (Hugging Face),categories/ml-research/pytorch-gan.md,,no
+`dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
+`elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+`getdns` Python bindings,categories/networking/dnspython.md,,no
+`MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
+`openilink-sdk-go`,categories/im-automation/openilink-hub.md,,no
+`openilink-tg`,categories/im-automation/openilink-hub.md,,no
+`opensearch-py` / opensearch-dsl-py,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+`redis-cli --bigkeys` / `--memkeys`,categories/databases/database-clients/rdr.md,,no
+`requests` + `concurrent.futures`,categories/python-tooling/grequests.md,,no
+`socket.getaddrinfo` (stdlib),categories/networking/dnspython.md,,no
+`subprocess` + `ssh`,categories/networking/sshtunnel.md,,no
+`subprocess` + system `ssh`,categories/networking/paramiko.md,,no
+`tcconfig` (Python),categories/networking/wondershaper.md,,no
+`trickle`,categories/networking/wondershaper.md,,no
+`woff2`/`sfnt2woff` CLIs,categories/dev-utilities/data-tools/fonttools.md,,no
+`zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no
+A blocking Lua Redis client (redis-lua),categories/nginx-modules/lua-resty-redis.md,,no
+A custom userscript/proxy,categories/reading-tools/margin-read.md,,no
+ack,categories/dev-utilities/data-tools/ripgrep.md,,no
+acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
+ad-hoc `if` checks,categories/auth/django-rules.md,,no
+AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
+AI-Scientist (Sakana),categories/ml-research/autoresearch.md,,no
+Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
+aio-pika,categories/task-queue/kombu.md,,no
+aiodns / pycares,categories/networking/dnspython.md,,no
+aiohttp,categories/python-tooling/grequests.md,,no
+aiokafka,categories/kafka-tools/kafka-python.md,,no
+airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
+AKHQ,categories/kafka-tools/kafka-ui.md,,no
+AKShare,categories/web-scraping/crawling-tools/gopup.md,,no
+alass,categories/media-processing/video-audio/ffsubsync.md,,no
+Alfred,categories/dev-utilities/data-tools/flashlight.md,,no
+alive-progress,categories/dev-utilities/data-tools/tqdm.md,,no
+Altcha,categories/captcha/capjs.md,,no
+Angular CDK stepper,categories/web-ui/product-tours/shepherd-js.md,,no
+Ansible / Salt / Puppet,categories/dev-utilities/ops-infra/cockpit.md,,no
+"antfu/skills, Dimillian/Skills, gstack, khazix-skills, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,antfu-skills;dimillian-skills;khazix-skills,partial
+"Anthropic ""Building effective agents"" guide",categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
+Anthropic / built-in agent skills,categories/agent-skills/design/taste-skill.md,,no
+Anthropic / built-in agent skills and slash commands,categories/agent-skills/design/ui-ux-pro-max.md,,no
+Anthropic Console prompt improver,categories/agent-skills/prompt-engineering/prompt-master.md,,no
+Anthropic Cookbook,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
+Anthropic's built-in skills / native slash commands,categories/agent-skills/personal-collections/engineering-workflows/pua.md,,no
+Anthropic's built-in skills / slash commands,categories/agent-skills/engineering/waza.md,,no
+Anthropic's built-in subagent docs / hand-rolled agents,categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
+Anthropic's example/built-in agents,categories/agent-skills/subagent-collections/agency-agents.md,,no
+Anthropic's official / built-in Agent Skills,categories/agent-skills/personal-collections/knowledge-content/khazix-skills.md,,no
+Anthropic's official Claude Code skills / built-in commands,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md,,no
+Anthropic's official skills / built-in slash commands,categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md,,no
+Anthropic's own context-engineering guidance / built-in skills,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
+Anubis,categories/captcha/capjs.md,,no
+AnyDesk,categories/dev-utilities/ops-infra/rustdesk.md,,no
+Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md,,no
+Apache APISIX,categories/api-gateway/kong.md,,no
+Apache Avro,categories/networking/thriftpy.md,,no
+Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
+Apache Superset,categories/observability/grafana.md,,no
+Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
+Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
+Appcues / Userflow / Userpilot,categories/web-ui/product-tours/driver-js.md,,no
+Appium,categories/im-automation/douyin-bot.md,,no
+Apple Core ML / Foundation Models,categories/on-device-ml/litert-lm.md,,no
+Application framework upload handlers,categories/nginx-modules/nginx-upload-module.md,,no
+Application framework upload handling (Django/Rails/Express),categories/nginx-modules/tusd.md,,no
+Appwrite,categories/databases/database-engines/supabase.md,,no
+Arcade,categories/game-dev/pygame.md,,no
+ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
+ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
+arq,categories/task-queue/celery.md,,no
+ascii-magic,categories/terminal-ui/asciify.md,,no
+ascii-magic / cowsay,categories/terminal-ui/art.md,,no
+Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
+AsyncSSH,categories/networking/paramiko.md,,no
+AsyncSSH (forwarding API),categories/networking/sshtunnel.md,,no
+Austin,categories/python-tooling/pyrasite.md,,no
+Authlib,categories/auth/authomatic.md,,no
+AutoHotkey,categories/desktop-automation/pyautogui.md,,no
+AUTOMATIC1111 WebUI (img2img / sketch tab),categories/ai-design-generation/sdpaint.md,,no
+AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+AVQT / proprietary metrics,categories/media-processing/quality-metrics/vmaf.md,,no
+AWS Elemental MediaConvert,categories/media-processing/video-audio/gstreamer.md,,no
+AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/ffmpeg.md,,no
+AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
+axolotl / torchtune / HF TRL / verl,categories/llm-training/INDEX.md,axolotl;torchtune,partial
+Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/whisper.md,,no
+baostock,categories/web-scraping/crawling-tools/gopup.md,,no
+bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
+Bazarr,categories/media-processing/video-audio/ffsubsync.md,,no
+Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-agent-skills.md,,no
+Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+BGE / FlagEmbedding (BAAI),categories/rag-retrieval/text2vec.md,,no
+Biome,categories/ai-code-review/react-doctor.md,,no
+blessed / blessings,categories/terminal-ui/colorama.md,,no
+blessed / curses (stdlib),categories/terminal-ui/asciimatics.md,,no
+BLIP / BLIP-2,categories/ml-research/clip.md,,no
+BLOSC / blosc2,categories/dev-utilities/data-tools/openzl.md,,no
+BMAD / GSD,categories/agent-skills/engineering/mattpocock-skills.md,,no
+BMAD Method,categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md,,no
+BMAD Method / Agent OS / SWE-bench / LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
+BMAD-METHOD,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md,,no
+Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,,no
+Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
+Braintrust,categories/llm-eval/promptfoo.md,,no
+Brotli,categories/dev-utilities/data-tools/openzl.md,,no
+Browser built-in translation,categories/reading-tools/pair-translate.md,,no
+Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-frameworks/selenium-wire.md,,no
+Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
+Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
+Browserless,categories/media-processing/image-processing/INDEX.md,,no
+Building your own commands from scratch,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no
+"Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/context-mode.md,,no
+Built-in agent skill ecosystems,categories/agent-skills/writing/baoyu-skills.md,,no
+Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
+Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+Butteraugli,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+Caddy (automatic HTTPS),categories/dev-utilities/ops-infra/certbot.md,,no
+Caddy + plugins (Go),categories/nginx-modules/lua-nginx-module.md,,no
+Canal (Alibaba),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
+Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.md,,no
+CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
+CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
+capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
+Caveman Code,categories/agent-skills/engineering/caveman.md,,no
+ccusage / token-cost CLIs,categories/agent-tooling/agentsview.md,,no
+Cedar / Cedarling,categories/agent-governance/agent-governance-toolkit.md,,no
+Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
+cffi / ctypes,categories/python-tooling/cython.md,,no
+chafa,categories/terminal-ui/asciify.md,,no
+Chance.js,categories/dev-utilities/data-tools/faker-js.md,,no
+Character role-play prompt,categories/agent-skills/context-engineering/soul-md.md,,no
+Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
+Charles,categories/debugging-proxy/whistle.md,,no
+Charles / Fiddler,categories/debugging-proxy/anyproxy.md,,no
+Charles / Fiddler / mitmproxy / anyproxy,categories/debugging-proxy/INDEX.md,anyproxy;mitmproxy,partial
+Chatbox / Cherry Studio,categories/team-chat/hivechat.md,,no
+ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
+ChatGPT / Claude.ai (commercial SaaS),categories/llm-chat-ui/nextchat.md,,no
+ChatGPT Team / Claude Team (SaaS),categories/team-chat/hivechat.md,,no
+Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
+Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
+Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+ClashX / ClashX Pro,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+Claude / ChatGPT native apps,categories/agent-frameworks/agent-runtimes/openclaw.md,,no
+Claude Code,categories/agent-frameworks/coding-agents/terminal-agents/codex.md,,no
+Claude Code (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
+Claude Code / Claude Desktop,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
+Claude Code / similar vendor coding-CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
+Claude Code GitHub Action (general),categories/ai-code-review/claude-code-security-review.md,,no
+Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/vercel-skills.md,,no
+Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
+Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
+"Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
+claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md,,no
+claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
+CLAUDE.md (built-in),categories/agent-memory/claude-subconscious.md,,no
+click.style (Click),categories/terminal-ui/colorama.md,,no
+Cloud function calling (OpenAI / Gemini),categories/on-device-ml/needle.md,,no
+Cloudflare Turnstile,categories/captcha/capjs.md,,no
+CodeRabbit,categories/ai-code-review/open-code-review.md,,no
+CodeRabbit / PR-Agent (Qodo) / Greptile,categories/ai-code-review/INDEX.md,pr-agent,partial
+Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
+collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
+Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
+"Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
+Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
+Conda,categories/python-tooling/uv.md,,no
+Conductor / Crystal / Claude Squad,categories/agent-tooling/agent-orchestrator.md,,no
+Conduktor,categories/kafka-tools/kafka-ui.md,,no
+Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
+confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
+ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
+CowAgent,categories/im-automation/wechat-bot.md,,no
+Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
+cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
+CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
+crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
+CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
+Cursor,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
+Cursor / Windsurf,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
+Custom creator toolkit,categories/agent-skills/writing/huashu-skills.md,,no
+Custom DataForSEO scripts,categories/agent-skills/writing/open-seo.md,,no
+Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,no
+Custom editorial checklist,categories/agent-skills/de-ai-writing/stop-slop.md,,no
+Custom editorial workflow,categories/agent-skills/writing/writing-agent.md,,no
+Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
+Custom implementation,categories/document-parsing/any2html.md,,no
+Custom marketing playbook,categories/agent-skills/writing/marketingskills.md,,no
+Custom middleware,categories/agent-governance/agent-governance-toolkit.md,,no
+Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
+Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
+Custom shell wrappers,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
+Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
+Custom terse-response rule,categories/agent-skills/engineering/caveman.md,,no
+Custom unpack scripts,categories/im-automation/wxappunpacker.md,,no
+Custom voice guide,categories/agent-skills/context-engineering/soul-md.md,,no
+Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
+CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
+Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
+D2,categories/diagramming/mermaid.md,,no
+Darts,categories/ml-research/lstm-time-series.md,,no
+Datadog / Grafana Cloud,categories/observability/grafana.md,,no
+Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
+DaVinci Resolve,categories/media-processing/video-audio/mlt.md,,no
+DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
+Daytona,categories/agent-tooling/opensandbox.md,,no
+dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
+ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
+DEAP,categories/ml-research/pymoo.md,,no
+DeepEval / Ragas / OpenAI Evals / Giskard,categories/llm-eval/INDEX.md,deepeval;giskard,partial
+DeepKE,categories/ml-research/agriculture-knowledge-graph.md,,no
+DeepL / Google Translate browser features,categories/reading-tools/fluentread.md,,no
+DeepSpeech (Mozilla),categories/media-processing/video-audio/whisper.md,,no
+DeepSpeed,categories/llm-training/colossalai.md,,no
+dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
+Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
+Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/symphony.md,,no
+DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
+Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
+DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
+Dify-on-WeChat,categories/im-automation/dify-enterprise-wechat-bot.md,,no
+Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
+DirectShow / Media Foundation,categories/media-processing/video-audio/gstreamer.md,,no
+Distroless (GoogleContainerTools),categories/dev-utilities/ops-infra/slim.md,,no
+Django built-in permissions,categories/auth/django-rules.md,,no
+django-allauth,categories/auth/authomatic.md,,no
+django-guardian,categories/auth/django-rules.md,,no
+django-simple-captcha,categories/captcha/lepture-captcha.md,,no
+dmn-js / form-js (bpmn.io),categories/diagramming/bpmn-js.md,,no
+Docker `docker build --squash` / layer flattening,categories/dev-utilities/ops-infra/slim.md,,no
+DockerSlim (predecessor),categories/dev-utilities/ops-infra/slim.md,,no
+Docspell,categories/document-management/paperless-ngx.md,,no
+docTR,categories/ocr/tesseract.md,,no
+Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
+dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
+Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
+Dramatiq,categories/task-queue/celery.md,,no
+draw.io (diagrams.net),categories/diagramming/excalidraw.md,,no
+draw.io / diagrams.net,categories/agent-skills/design/archify.md,,no
+DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
+DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+E2B (firecracker sandboxes),categories/agent-tooling/opensandbox.md,,no
+E2B / Daytona (dev sandboxes),categories/web-automation/agent-browser-tools/cua.md,,no
+Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
+EasyOCR,categories/ocr/tesseract.md,,no
+Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
+Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
+Envoy,categories/api-gateway/kong.md,,no
+Envoy + Lua/Wasm filters,categories/nginx-modules/lua-nginx-module.md,,no
+ESLint + a11y plugins (eslint-plugin-jsx-a11y),categories/ai-design-generation/impeccable.md,,no
+eslint-plugin-react-hooks / react,categories/ai-code-review/react-doctor.md,,no
+ESPnet,categories/speech/speechbrain.md,,no
+Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
+EVA-CLIP,categories/ml-research/clip.md,,no
+Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
+Fabric,categories/networking/paramiko.md,,no
+FastAPI + Uvicorn,categories/llm-inference/ray-serve.md,,no
+faster-whisper,categories/media-processing/video-audio/whisper.md,,no
+FaucetETH (upstream: FaucETH),categories/blockchain-dev-infrastructure/INDEX.md,,no
+FaucETH,categories/blockchain-dev-infrastructure/powfaucet.md,,no
+Feedly / Inoreader,categories/reading-tools/netnewswire.md,,no
+Fiddler,categories/debugging-proxy/whistle.md,,no
+figlet / toilet (CLI),categories/terminal-ui/art.md,,no
+Figma,categories/diagramming/excalidraw.md,,no
+Figma + plugins,categories/agent-skills/visual-content/guizang-social-card.md,,no
+Figma / Penpot,categories/ai-design-generation/open-design.md,,no
+Figma / visual design tool,categories/agent-skills/design/huashu-design.md,,no
+Filebrowser,categories/document-management/copyparty.md,,no
+Fine-tuning / LoRA stacks,categories/ml-research/llm-circuit-finder.md,,no
+Firebase,categories/databases/database-engines/supabase.md,,no
+Flink CDC,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
+Fluent Bit / Fluentd,categories/dev-utilities/ops-infra/telegraf.md,,no
+Flutter,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
+Fooocus,categories/on-device-ml/comfyui.md,,no
+Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
+FPDI,categories/pdf-tools/sapp.md,,no
+FPDI / OpenPDFSign / pyHanko,categories/pdf-tools/INDEX.md,,no
+FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
+FriendlyCaptcha,categories/captcha/capjs.md,,no
+Functionary,categories/on-device-ml/needle.md,,no
+FunctionGemma (Google),categories/on-device-ml/needle.md,,no
+Gamma / Tome,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
+GDAL/OGR,categories/geospatial/qgis.md,,no
+Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
+Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/ralph-claude-code.md,,no
+GeoPandas / Shapely,categories/geospatial/qgis.md,,no
+GeoServer,categories/geospatial/qgis.md,,no
+Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
+git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
+git submodule / manual `cp`,categories/agent-tooling/vercel-skills.md,,no
+GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/graphify.md,,no
+GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/symphony.md,,no
+GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
+GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md,,no
+GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
+GitHub Copilot,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
+GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
+GitHub Issues (+ `gh` CLI),categories/agent-tooling/beads.md,,no
+GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/ccpm.md,,no
+glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
+GluonTS,categories/ml-research/lstm-time-series.md,,no
+Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
+Go Playground / `go run`,categories/python-tooling/gophernotes.md,,no
+go-mysql (library),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
+Godot,categories/game-dev/pygame.md,,no
+GoJS / mxGraph (draw.io),categories/diagramming/bpmn-js.md,,no
+gomacro (REPL),categories/python-tooling/gophernotes.md,,no
+Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
+Google Photos,categories/document-management/immich.md,,no
+Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
+Google Search Console alone,categories/agent-skills/writing/open-seo.md,,no
+Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
+Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
+GPT Researcher / Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,gpt-researcher,partial
+GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
+GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
+Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
+GraphRAG (Microsoft),categories/rag-retrieval/code-review-graph.md,,no
+Graphviz / DOT,categories/diagramming/mermaid.md,,no
+Graphviz / PlantUML / D2 / draw.io / Excalidraw,categories/diagramming/INDEX.md,excalidraw,partial
+Graphviz / Viz.js,categories/diagramming/flowchart-js.md,,no
+GRASS GIS,categories/geospatial/qgis.md,,no
+grep,categories/dev-utilities/data-tools/ripgrep.md,,no
+grep over `~/.claude` / session dirs,categories/agent-tooling/agentsview.md,,no
+gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
+GSAP (GreenSock),categories/frontend-animation/anime.md,,no
+GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
+Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/parlant.md,,no
+"guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
+gVisor / Kata / Firecracker (alone),categories/agent-tooling/opensandbox.md,,no
+Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
+Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
+Hand-rolled integration,categories/agent-frameworks/agent-runtimes/autogen.md,,no
+Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.md,,no
+Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
+Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
+Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
+Hand-written project skills,categories/agent-skills/writing/baoyu-skills.md,,no
+HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
+harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
+Hasura,categories/databases/database-engines/supabase.md,,no
+Haystack / django-elasticsearch-dsl,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+hCaptcha,categories/captcha/capjs.md,,no
+hCaptcha / Cloudflare Turnstile / Friendly Captcha / Altcha,categories/captcha/INDEX.md,,no
+hcaptcha-challenger,categories/captcha/buster.md,,no
+Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
+Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
+Helicone,categories/llm-eval/pezzo.md,,no
+Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
+HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
+HF TRL,categories/llm-training/art.md,,no
+hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
+hnswlib,categories/rag-retrieval/faiss.md,,no
+httpx,categories/python-tooling/grequests.md,,no
+httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
+Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
+Hugging Face sentiment models,categories/ml-research/senta.md,,no
+Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
+HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
+imageio-ffmpeg,categories/media-processing/video-audio/pyav.md,,no
+imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
+Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
+IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
+InvokeAI,categories/on-device-ml/comfyui.md,,no
+It-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
+itchat-uos (community fork),categories/im-automation/itchat.md,,no
+iTerm2,categories/terminal-ui/alacritty.md,,no
+JACK / PulseAudio,categories/media-processing/video-audio/gstreamer.md,,no
+Java/Scala official client,categories/kafka-tools/kafka-python.md,,no
+jBPM / Flowable web modelers,categories/diagramming/bpmn-js.md,,no
+Jenkins,categories/workflow-orchestration/gaia.md,,no
+JetBrains stock keymap,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
+jMetal (Java/Py),categories/ml-research/pymoo.md,,no
+jp2a,categories/terminal-ui/asciify.md,,no
+JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
+Jupyter Kernel Gateway / nsjail,categories/agent-tooling/opensandbox.md,,no
+Jupyter polyglot kernels (e.g. for Rust/JS),categories/python-tooling/gophernotes.md,,no
+kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
+Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
+kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
+Kaldi,categories/speech/speechbrain.md,,no
+Kdenlive,categories/media-processing/video-audio/mlt.md,,no
+KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
+Keras official RNN tutorials,categories/ml-research/lstm-time-series.md,,no
+KeyDB,categories/databases/database-engines/pikiwidb.md,,no
+Kibana,categories/observability/grafana.md,,no
+Kibana / Datadog / Apache Superset,categories/observability/INDEX.md,,no
+Kitty,categories/terminal-ui/alacritty.md,,no
+Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
+KrakenD,categories/api-gateway/kong.md,,no
+Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
+KServe,categories/llm-inference/ray-serve.md,,no
+Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
+LangChain agents,categories/ml-research/taskmatrix.md,,no
+LangSmith,categories/llm-eval/promptfoo.md,,no
+LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
+LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
+Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
+lego,categories/dev-utilities/ops-infra/certbot.md,,no
+Letta (MemGPT) / Zep / Cognee,categories/agent-memory/INDEX.md,,no
+Letta Code,categories/agent-memory/claude-subconscious.md,,no
+libav (avconv),categories/media-processing/video-audio/ffmpeg.md,,no
+LibreChat / Lobe Chat,categories/llm-chat-ui/INDEX.md,librechat,partial
+LibreChat / Lobe Chat / Open WebUI,categories/team-chat/INDEX.md,librechat;open-webui,partial
+LibreOffice headless / Aspose / Apache POI,categories/office-automation/INDEX.md,,no
+LibrePhotos,categories/document-management/immich.md,,no
+libssh2 / ssh2-python,categories/networking/paramiko.md,,no
+Lighthouse / axe-core,categories/ai-design-generation/impeccable.md,,no
+Lighthouse CI / WebPageTest,categories/agent-skills/engineering/addyosmani-web-quality.md,,no
+Linear / Jira,categories/agent-tooling/beads.md,,no
+Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
+llama.cpp + a small instruct GGUF model,categories/on-device-ml/needle.md,,no
+llama.cpp / Ollama / MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,llama-cpp,partial
+LlamaIndex / RAG pipelines,categories/agent-skills/INDEX.md,llamaindex,partial
+LlamaParse,categories/document-parsing/docling.md,,no
+LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
+LLaVA,categories/on-device-ml/minicpm-v.md,,no
+LM Studio,categories/llm-inference/omlx.md,,no
+lm-evaluation-harness,categories/ml-research/llm-circuit-finder.md,,no
+Lobe Chat,categories/llm-chat-ui/nextchat.md,,no
+"Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+Logstash JDBC input,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
+Looker,categories/data-visualization/superset.md,,no
+lua-resty-redis-cluster,categories/nginx-modules/lua-resty-redis.md,,no
+lucidrains' implementations,categories/ml-research/pytorch-gan.md,,no
+Luigi,categories/workflow-orchestration/airflow.md,,no
+macOS Spotlight (built-in),categories/dev-utilities/data-tools/flashlight.md,,no
+Make (Integromat),categories/workflow-orchestration/n8n.md,,no
+manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
+Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
+Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt.md,,no
+Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
+Manual review checklist,categories/agent-governance/skillspector.md,,no
+Manus / hosted autonomous-agent products,categories/agent-tooling/planning-with-files.md,,no
+Manuskript,categories/agent-skills/writing/webnovel-writer.md,,no
+MapServer,categories/geospatial/qgis.md,,no
+Marigold (SD-based),categories/ml-research/depth-anything-v2.md,,no
+Markdown Here Revival (fork/successor),categories/markdown-tools/markdown-here.md,,no
+markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
+markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
+Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Mathpix,categories/ocr/latex-ocr.md,,no
+Mattermost Cloud,categories/team-chat/mattermost.md,,no
+Maxwell's Daemon,categories/databases/data-sync/python-mysql-replication.md,,no
+Mayan EDMS,categories/document-management/paperless-ngx.md,,no
+Mayan EDMS / Docspell / Nextcloud,categories/document-management/INDEX.md,,no
+mCaptcha,categories/captcha/capjs.md,,no
+mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
+Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
+MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
+MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no
+Megatron-LM,categories/llm-training/colossalai.md,,no
+Memgraph,categories/rag-retrieval/falkordb.md,,no
+memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
+Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
+Metabase / Redash / Tableau / Looker,categories/data-visualization/INDEX.md,metabase,partial
+Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
+MiDaS / DPT (Intel ISL),categories/ml-research/depth-anything-v2.md,,no
+Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
+Miniflux,categories/reading-tools/netnewswire.md,,no
+MinIO,categories/document-management/copyparty.md,,no
+MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+mlx-lm (`mlx_lm.server`),categories/llm-inference/omlx.md,,no
+Mockaroo,categories/dev-utilities/data-tools/faker-js.md,,no
+Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/taskmatrix.md,,no
+Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/taskmatrix.md,,no
+Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
+Morphic / Perplexity (hosted),categories/deep-research/vane.md,,no
+Motion / Framer Motion,categories/frontend-animation/anime.md,,no
+Motion Canvas,categories/video-production/hyperframes.md,,no
+Motion One,categories/frontend-animation/anime.md,,no
+Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
+Mozilla Readability (library),categories/reading-tools/just-read.md,,no
+Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
+mypyc,categories/python-tooling/cython.md,,no
+nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
+nanochat,categories/ml-research/autoresearch.md,,no
+nanoGPT,categories/ml-research/autoresearch.md,,no
+nanoGPT / TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
+nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
+Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
+Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
+native `ssh -L` / `autossh`,categories/networking/sshtunnel.md,,no
+"Native agent memory (`CLAUDE.md`, Cursor rules, Codex `AGENTS.md`)",categories/agent-tooling/planning-with-files.md,,no
+Native Query DSL,categories/databases/database-clients/elasticsearch-sql.md,,no
+NATS / Redis Streams (direct),categories/task-queue/kombu.md,,no
+NeMo (NVIDIA),categories/speech/speechbrain.md,,no
+Neo4j,categories/rag-retrieval/falkordb.md,,no
+Neo4j (direct),categories/ml-research/agriculture-knowledge-graph.md,,no
+Neo4j / LlamaIndex / LightRAG / Weaviate,categories/rag-retrieval/INDEX.md,llamaindex,partial
+Neovim,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+Neptune (AWS),categories/rag-retrieval/falkordb.md,,no
+Netflix VMAF cloud/SaaS scorers,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+Nethereum.Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
+Neutralinojs,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+New API,categories/api-gateway/funtool.md,,no
+NewsBlur,categories/reading-tools/netnewswire.md,,no
+newspaper3k / goose3,categories/web-scraping/article-extraction/python-readability.md,,no
+newspaper4k,categories/web-scraping/article-extraction/newspaper.md,,no
+Nextcloud,categories/document-management/copyparty.md,,no
+Nextcloud Photos,categories/document-management/immich.md,,no
+NGINX `client_body_*` buffering + app handling,categories/nginx-modules/nginx-upload-module.md,,no
+nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
+njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
+Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
+notebooklm-mcp (same author),categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+novelWriter,categories/agent-skills/writing/webnovel-writer.md,,no
+npm / pnpm packaging a skill dir,categories/agent-tooling/vercel-skills.md,,no
+Numba,categories/python-tooling/cython.md,,no
+Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
+objgraph,categories/python-tooling/memory-analyzer.md,,no
+Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
+Office-PowerPoint-MCP-Server,categories/office-automation/INDEX.md,,no
+Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
+"Official paper repos (StyleGAN, CycleGAN, …)",categories/ml-research/pytorch-gan.md,,no
+Official WeChat (no plugin),categories/im-automation/wechatplugin-macos.md,,no
+Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
+One API,categories/api-gateway/cliproxyapi.md,,no
+One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
+ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
+Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
+OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
+OpenAI / Cohere embedding APIs,categories/rag-retrieval/text2vec.md,,no
+"OpenAI / Gemini ""Deep Research""",categories/deep-research/mirothinker.md,,no
+OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
+OpenAI Operator / Anthropic computer use,categories/web-automation/agent-browser-tools/cua.md,,no
+OpenAI Whisper,categories/media-processing/video-audio/ffsubsync.md,,no
+OpenCLIP,categories/ml-research/clip.md,,no
+OpenCV,categories/media-processing/video-audio/moviepy.md,,no
+OpenDocMan,categories/document-management/paperless-ngx.md,,no
+OpenKG / CN-DBpedia,categories/ml-research/agriculture-knowledge-graph.md,,no
+OpenPDFSign,categories/pdf-tools/sapp.md,,no
+openpyxl,categories/office-automation/INDEX.md,,no
+OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
+OpenRouter,categories/api-gateway/claude-code-router.md,,no
+OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md,,no
+OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
+OpenTimelineIO,categories/media-processing/video-audio/mlt.md,,no
+Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no
+OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
+osint.industries,categories/osint/ghunt.md,,no
+OSWorld / WebArena (benchmarks),categories/web-automation/agent-browser-tools/cua.md,,no
+Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
+Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wxappunpacker.md,,no
+oxlint,categories/ai-code-review/react-doctor.md,,no
+PaddleNLP / ERNIE,categories/ml-research/senta.md,,no
+PaddleOCR,categories/ocr/laravel-ocr.md,,no
+PaddleOCR / EasyOCR / TrOCR / Cloud Vision / Textract,categories/ocr/INDEX.md,,no
+"Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
+Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
+pandas-datareader,categories/web-scraping/crawling-tools/gopup.md,,no
+pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
+Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
+Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
+Paste-your-own prompt,categories/agent-skills/de-ai-writing/ai-flavor-remover.md,,no
+pdm,categories/python-tooling/uv.md,,no
+"Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/agentsview.md,,no
+Perplexica,categories/deep-research/vane.md,,no
+Perplexity / OpenAI Deep Research,categories/deep-research/local-deep-research.md,,no
+pgvector,categories/rag-retrieval/faiss.md,,no
+pgvector / Qdrant,categories/rag-retrieval/pageindex.md,,no
+Phi-3.5-vision (Microsoft),categories/on-device-ml/minicpm-v.md,,no
+PhotoPrism,categories/document-management/immich.md,,no
+Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
+Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
+pip,categories/python-tooling/uv.md,,no
+Plain `MEMORY.md` / `TODO.md`,categories/agent-tooling/ccpm.md,,no
+Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/planning-with-files.md,,no
+Plain ADB + a script,categories/im-automation/douyin-bot.md,,no
+Plain Docker / containerd,categories/agent-tooling/opensandbox.md,,no
+Plain Git + agent's own session logs,categories/agent-tooling/entire-cli.md,,no
+plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
+Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/beads.md,,no
+Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
+plain PyTorch (+ Triton),categories/llm-inference/modular.md,,no
+Plain tmux + `git worktree` scripts,categories/agent-tooling/agent-orchestrator.md,,no
+plain vector DB (pgvector / Chroma),categories/agent-memory/memori.md,,no
+PlantUML,categories/diagramming/flowchart-js.md,,no
+Platform retention (MWAA/Composer settings),categories/workflow-orchestration/airflow-maintenance-dags.md,,no
+Platypus,categories/ml-research/pymoo.md,,no
+pnpm / Yarn,categories/dev-utilities/editors-and-runtimes/bun.md,,no
+Pocket / Instapaper / Wallabag,categories/reading-tools/just-read.md,,no
+Poetry,categories/python-tooling/uv.md,,no
+Polling (SQLAlchemy / cron),categories/databases/data-sync/python-mysql-replication.md,,no
+Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
+Portkey Gateway,categories/api-gateway/kong.md,,no
+Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
+PowerJob,categories/task-queue/xxl-job.md,,no
+Premiere Pro,categories/media-processing/video-audio/mlt.md,,no
+Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
+Private voice guide,categories/agent-skills/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
+progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
+Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
+Prompt-only safety rules,categories/agent-governance/agent-governance-toolkit.md,,no
+prompt_toolkit,categories/terminal-ui/asciimatics.md,,no
+PromptBreeder / APE / OPRO,categories/agent-frameworks/workflow-builders/skillopt.md,,no
+PromptLayer,categories/llm-eval/pezzo.md,,no
+Prophet,categories/ml-research/lstm-time-series.md,,no
+Proxifier,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+ProxyBroker / scylla / paid residential proxies,categories/proxy-pool/INDEX.md,proxybroker,partial
+Proxyman,categories/debugging-proxy/anyproxy.md,,no
+PSAW / Pushshift clients,categories/web-scraping/crawling-tools/praw.md,,no
+PSNR / SSIM (standalone),categories/media-processing/quality-metrics/ssimulacra2.md,,no
+Pushshift dumps / PRAW scripts,categories/media-download/bulk-downloader-for-reddit.md,,no
+py-amqp / pika,categories/task-queue/kombu.md,,no
+py-spy,categories/python-tooling/pyrasite.md,,no
+pyannote.audio,categories/media-processing/video-audio/whisper.md,,no
+pybind11 / nanobind,categories/python-tooling/cython.md,,no
+pyfiglet,categories/terminal-ui/art.md,,no
+pygame-ce (community edition),categories/game-dev/pygame.md,,no
+pyglet,categories/game-dev/pygame.md,,no
+pyHanko,categories/pdf-tools/sapp.md,,no
+Pympler,categories/python-tooling/memory-analyzer.md,,no
+pynput,categories/desktop-automation/pyautogui.md,,no
+PyPy,categories/python-tooling/cython.md,,no
+pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
+Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
+Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
+python-social-auth,categories/auth/authomatic.md,,no
+PyTorch FSDP,categories/llm-training/colossalai.md,,no
+pywinauto,categories/desktop-automation/pyautogui.md,,no
+Qdrant,categories/rag-retrieval/faiss.md,,no
+Quartz,categories/task-queue/xxl-job.md,,no
+Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
+qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,,no
+"RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no
+RAPTOR,categories/rag-retrieval/pageindex.md,,no
+Rasa,categories/agent-frameworks/agent-runtimes/parlant.md,,no
+raw `tc` (iproute2),categories/networking/wondershaper.md,,no
+raw ANSI escape codes,categories/terminal-ui/colorama.md,,no
+Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
+Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
+Raylib (+ python bindings),categories/game-dev/pygame.md,,no
+readability-lxml,categories/web-scraping/article-extraction/newspaper.md,,no
+Reader View extensions (various),categories/reading-tools/just-read.md,,no
+Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
+Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
+reCAPTCHA (Google),categories/captcha/capjs.md,,no
+Redash,categories/data-visualization/superset.md,,no
+redditdownloader (shadowmoose),categories/media-download/bulk-downloader-for-reddit.md,,no
+Redis,categories/databases/database-engines/pikiwidb.md,,no
+redis-rdb-tools (sripathikrishnan),categories/databases/database-clients/rdr.md,,no
+RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
+Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
+Reeder,categories/reading-tools/netnewswire.md,,no
+Reflog / `git stash` + manual snapshots,categories/agent-tooling/entire-cli.md,,no
+reload/restart with logging,categories/python-tooling/pyrasite.md,,no
+Remix,categories/web-ui/frameworks/nextjs.md,,no
+requests + BeautifulSoup,categories/web-scraping/crawling-tools/requests-html.md,,no
+requests-futures,categories/python-tooling/grequests.md,,no
+requests-oauthlib / oauthlib,categories/auth/authomatic.md,,no
+resty.redis via OpenResty bundle,categories/nginx-modules/lua-resty-redis.md,,no
+Resumable.js,categories/nginx-modules/tusd.md,,no
+rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
+Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
+Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
+Roo Code,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
+RQ (Redis Queue),categories/task-queue/celery.md,,no
+RQ / Dramatiq / arq / Quartz / PowerJob,categories/task-queue/INDEX.md,,no
+Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
+Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
+Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
+Rust + PyO3,categories/python-tooling/cython.md,,no
+RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-research/llm-circuit-finder.md,,no
+SAGA GIS,categories/geospatial/qgis.md,,no
+Sarama (Go),categories/kafka-tools/kafka-python.md,,no
+ScaNN (Google),categories/rag-retrieval/faiss.md,,no
+SciPy / OR-Tools / Gurobi,categories/ml-research/pymoo.md,,no
+Scrapy,categories/web-scraping/crawling-tools/fuck-login.md,,no
+Scrapy + custom,categories/web-scraping/article-extraction/newspaper.md,,no
+scrapy-rotating-proxies,categories/proxy-pool/proxy-pool.md,,no
+scrapy-rotating-proxies / proxy middlewares,categories/proxy-pool/proxybroker.md,,no
+ScrapydWeb,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
+ScrapydWeb / Gerapy,categories/web-scraping/crawling-tools/scrapyd.md,,no
+Seafile,categories/document-management/copyparty.md,,no
+Security MCP servers (e.g. tool-wrapping SIEM/scanner MCPs),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+selectolax,categories/web-scraping/crawling-tools/requests-html.md,,no
+SeleniumBase,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
+Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/document-management/paperless-ngx.md,,no
+Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
+Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
+Semgrep,categories/agent-governance/skillspector.md,,no
+Semrush / Ahrefs,categories/agent-skills/writing/open-seo.md,,no
+sentence-transformers (SBERT),categories/rag-retrieval/text2vec.md,,no
+Serena (MCP),categories/rag-retrieval/code-review-graph.md,,no
+Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
+Shotcut,categories/media-processing/video-audio/mlt.md,,no
+Showdown,categories/markdown-tools/markdown-it.md,,no
+Sidekiq / BullMQ,categories/task-queue/celery.md,,no
+SigLIP,categories/ml-research/clip.md,,no
+SikuliX,categories/desktop-automation/pyautogui.md,,no
+sing-box,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+Single de-AI / translation prompt,categories/agent-skills/writing/baoyu-skills.md,,no
+Slack / Discord,categories/team-chat/zulip.md,,no
+Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
+Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
+Slidev,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Slidev / Marp,categories/agent-skills/slides-ppt/INDEX.md,,no
+SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
+SnowNLP / cnsenti,categories/ml-research/senta.md,,no
+Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
+Solid.js,categories/web-ui/frameworks/svelte.md,,no
+Specstory / agent transcript exporters,categories/agent-tooling/entire-cli.md,,no
+Spring Batch,categories/task-queue/xxl-job.md,,no
+SSDB,categories/databases/database-engines/pikiwidb.md,,no
+Stencil,categories/web-ui/frameworks/lit.md,,no
+Stitch MCP server itself (`stitch.withgoogle.com`),categories/agent-skills/design/stitch-skills.md,,no
+streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/m3u8.md,,no
+Stylelint,categories/ai-design-generation/impeccable.md,,no
+Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+subprocess + raw ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
+Subtitle Edit (sync features),categories/media-processing/video-audio/ffsubsync.md,,no
+Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
+SWE-bench,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
+Swift (ModelScope),categories/llm-training/llamafactory.md,,no
+Tabby,categories/terminal-ui/warp.md,,no
+Tableau / Power BI,categories/data-visualization/superset.md,,no
+Taskmaster (claude-task-master),categories/agent-tooling/ccpm.md,,no
+Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/INDEX.md,,no
+Taskwarrior,categories/agent-tooling/beads.md,,no
+TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
+Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
+termcolor / colored,categories/terminal-ui/colorama.md,,no
+texify,categories/ocr/latex-ocr.md,,no
+TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
+textract,categories/document-parsing/markitdown.md,,no
+TGI / BentoML,categories/llm-inference/INDEX.md,bentoml,partial
+The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
+Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
+Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
+thriftpy2,categories/networking/thriftpy.md,,no
+TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
+TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
+tldraw,categories/diagramming/excalidraw.md,,no
+Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/context-mode.md,,no
+torchgan,categories/ml-research/pytorch-gan.md,,no
+Tour of Go / interactive docs,categories/python-tooling/gophernotes.md,,no
+tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
+Traefik,categories/api-gateway/kong.md,,no
+Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
+TrOCR,categories/ocr/tesseract.md,,no
+tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
+Tushare,categories/web-scraping/crawling-tools/gopup.md,,no
+Tyk,categories/api-gateway/kong.md,,no
+Tyk / KrakenD / Envoy / APISIX / New API,categories/api-gateway/INDEX.md,,no
+UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
+undetected-chromedriver,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
+undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no
+unstructured.io,categories/document-parsing/docling.md,,no
+Uppy,categories/nginx-modules/tusd.md,,no
+urwid,categories/terminal-ui/asciimatics.md,,no
+v0 (Vercel),categories/ai-design-generation/open-design.md,,no
+v0 / Lovable / other AI UI generators,categories/agent-skills/design/stitch-skills.md,,no
+v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
+Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
+Velocity.js,categories/frontend-animation/anime.md,,no
+Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
+Vibe Kanban,categories/agent-tooling/agent-orchestrator.md,,no
+VLC,categories/media-processing/video-audio/gstreamer.md,,no
+vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
+VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
+VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
+Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/whisper.md,,no
+Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no
+Webmin,categories/dev-utilities/ops-infra/cockpit.md,,no
+WeChat Official Account / Mini-Program server APIs,categories/im-automation/itchat.md,,no
+WeChatFerry,categories/im-automation/wechat-bot.md,,no
+WeChatTweak-macOS (Sunnyyoung fork/successor),categories/im-automation/wechatplugin-macos.md,,no
+Wechaty,categories/im-automation/chatgpt-wechat-bot.md,,no
+wechaty,categories/im-automation/itchat.md,,no
+Wechaty / WeCom official APIs / CowAgent / WeChatFerry / Dify-on-WeChat / OpeniLink SDKs,categories/im-automation/INDEX.md,,no
+WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechatplugin-macos.md,,no
+WeCom / Official WeChat APIs,categories/im-automation/chatgpt-wechat-bot.md,,no
+WeCom / Official WeChat Work API,categories/im-automation/itchat.md,,no
+WezTerm,categories/terminal-ui/alacritty.md,,no
+whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
+"Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+Windows Terminal,categories/terminal-ui/alacritty.md,,no
+WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
+Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no
+Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.md,,no
+YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
+Zapier,categories/workflow-orchestration/n8n.md,,no
+zkui / zk-web,categories/databases/database-clients/prettyzoo.md,,no
+ZoeDepth,categories/ml-research/depth-anything-v2.md,,no
+ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
+zstd,categories/dev-utilities/data-tools/openzl.md,,no
+Zulip Cloud,categories/team-chat/zulip.md,,no
+Zyte Scrapy Cloud,categories/web-scraping/crawling-tools/scrapyd.md,,no
