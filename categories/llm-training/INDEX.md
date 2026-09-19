@@ -3,6 +3,12 @@
 > Category node. Fine-tune or reinforcement-train LLMs and multi-step agents.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
+## Sub-categories
+
+| Sub-category | Enter when | Route |
+|---|---|---|
+| **Study & Experiments** | You want to learn how LLM training actually works by reading or re-running a from-scratch implementation, rather than adopting a trainer as a dependency. | [→](study-and-experiments/INDEX.md) |
+
 ## Projects in this category
 
 | Project | Use when | Health | Page |
@@ -33,3 +39,5 @@
 
 Tools and frameworks whose primary job is to **train, fine-tune, or RL-optimize** LLMs or agents.
 Not inference runtimes (see `on-device-ml`), not agent build/run frameworks (see `agent-frameworks`).
+Teaching material — courses and from-scratch reference implementations you read rather than depend on —
+goes in **Study & Experiments**, not in the project table above.
