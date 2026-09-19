@@ -3,6 +3,12 @@
 > 分类节点。微调或强化训练 LLM 与多步 agent。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
+## 子分类
+
+| 子分类 | 何时进入 | 路由 |
+|---|---|---|
+| **Study & Experiments** | 当你想通过读一遍或重跑一遍从零实现来搞懂 LLM 训练到底怎么做，而不是把某个训练器当作依赖引入时。 | [→](study-and-experiments/INDEX.zh.md) |
+
 ## 本分类项目
 
 | 项目 | 何时用 | 健康度 | 页面 |
@@ -33,3 +39,4 @@
 
 主要职责是**训练、微调或 RL 优化** LLM 或 agent 的工具与框架。
 不含推理运行时（见 `on-device-ml`），不含 agent 构建/运行框架（见 `agent-frameworks`）。
+教学材料——可以读但不能依赖的课程与从零参考实现——放 **Study & Experiments**，不进上面的项目表。

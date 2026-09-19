@@ -119,6 +119,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **torchtune** | PyTorch native post-training library | BSD-3-Clause | B (5/6) | [EN](categories/llm-training/torchtune.md) · [中](categories/llm-training/torchtune.zh.md) |
 | **Axolotl** | Go ahead and axolotl questions | Apache-2.0 | B (6/6) | [EN](categories/llm-training/axolotl.md) · [中](categories/llm-training/axolotl.zh.md) |
 | **verl** | verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework | Apache-2.0 | B (6/6) | [EN](categories/llm-training/verl.md) · [中](categories/llm-training/verl.zh.md) |
+| **MiniMind** | Train a 64M LLM end to end — tokenizer, pretrain, SFT, LoRA, MoE, DPO/GRPO, tool-call and agentic RL — in ~3.2k hand-written PyTorch lines you can read in an afternoon; it is a course, so the model it produces is a teaching artifact, not a usable one. | Apache-2.0 | A (5/6) | [EN](categories/llm-training/study-and-experiments/minimind.md) · [中](categories/llm-training/study-and-experiments/minimind.zh.md) |
 
 ### agent-frameworks
 

@@ -116,6 +116,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **torchtune** | PyTorch native post-training library | BSD-3-Clause | B（5/6） | [EN](categories/llm-training/torchtune.md) · [中](categories/llm-training/torchtune.zh.md) |
 | **Axolotl** | Go ahead and axolotl questions | Apache-2.0 | B（6/6） | [EN](categories/llm-training/axolotl.md) · [中](categories/llm-training/axolotl.zh.md) |
 | **verl** | verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework | Apache-2.0 | B（6/6） | [EN](categories/llm-training/verl.md) · [中](categories/llm-training/verl.zh.md) |
+| **MiniMind** | 用约 3.2k 行手写 PyTorch 把 64M LLM 端到端训一遍（分词器、预训练、SFT、LoRA、MoE、DPO/GRPO、Tool Call 与 Agentic RL），一下午能读完；它是课程，产出的模型是教学产物而非可用模型。 | Apache-2.0 | A（5/6） | [中](categories/llm-training/study-and-experiments/minimind.zh.md) · [EN](categories/llm-training/study-and-experiments/minimind.md) |
 
 ### agent-frameworks
 
