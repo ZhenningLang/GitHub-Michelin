@@ -317,6 +317,40 @@ class QualityScanTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("generic-comparison-template", result.stdout)
 
+    def test_repo_wide_gate_exits_nonzero_for_gated_finding(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/demo.md", "Use this page for its stated niche.\n")
+
+            result = run_quality_scan_cli(root, "--fail-on-gated")
+
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("generic-comparison-template", result.stdout)
+
+    def test_repo_wide_gate_exits_zero_without_gated_finding(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/demo.md", "## Comparison\n")
+
+            result = run_quality_scan_cli(root, "--fail-on-gated")
+
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_repo_wide_gate_ignores_non_gated_finding(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(
+                root,
+                "categories/demo/demo.md",
+                "## Comparison\n",
+                sha="0000000000000000000000000000000000000000",
+            )
+
+            result = run_quality_scan_cli(root, "--fail-on-gated")
+
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("zero-placeholder-upstream-sha", result.stdout)
+
     def test_detects_generic_templates_truncation_and_zero_sha(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
