@@ -96,7 +96,8 @@ health:
 | Envoy | 未收录 | 当你需要 xDS 数据面或 service mesh 代理时，选 Envoy；当你要开箱即用的 API 管理和 AI 网关插件，而不是自建控制面时，选 Kong。 | CNCF 毕业的 C++ L4/L7 代理，是事实上的 service mesh 数据面（xDS）；层级低得多——你得自带控制面，而非开箱即用的 API 管理插件。 |
 | Traefik | 未收录 | 当 Kubernetes/容器自动发现和轻量文件/CRD 配置胜过插件广度时，选 Traefik；当你要更重的可编程策略网关时，选 Kong。 | Go 反向代理，容器/Kubernetes 自动发现强、配置走文件/CRD；跑起来更轻，但策略/AI 网关插件叙事更薄。 |
 | KrakenD | 未收录 | 当你要单配置文件声明的无状态 API 聚合时，选 KrakenD；当边界层需要插件生态、Admin API 和更丰富运行时策略时，选 Kong。 | 无状态 Go 网关，聚焦单配置文件声明的 API 聚合/编排；无数据库，但不是插件丰富的可编程边界。 |
-| LiteLLM / portkey 式 LLM 代理 | 未收录 | 当所有流量只是模型供应商路由和模型策略时，选专用 LLM 代理；当 LLM 路由要和更广的 HTTP/API 策略共用同一网关时，选 Kong。 | 专门做 LLM 流量的多供应商路由器，只覆盖 LLM 这一段；比 Kong 的 HTTP+AI 双网关窄，但若你只要 LLM 路由则更轻。 |
+| [LiteLLM](litellm.zh.md) | 已收录 | 当所有流量只是模型供应商路由和模型策略时，选专用 LLM 代理；当 LLM 路由要和更广的 HTTP/API 策略共用同一网关时，选 Kong。 | 专门做 LLM 流量的多供应商路由，只覆盖 LLM 这一段；比 Kong 的 HTTP+AI 双网关窄，但若你只要 LLM 路由则更轻。 |
+| Portkey Gateway | 未收录 | 想要把 guardrails 与可观测做成一等能力的 LLM 网关时，选 Portkey；同一边界还要承载通用 HTTP/API 策略时，选 Kong。 | Portkey 是 LLM 原生网关，open-core 姿态不同；Kong 是通用数据面网关，没有原生 token 计费。 |
 
 ## 技术栈
 

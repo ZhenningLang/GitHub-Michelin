@@ -295,6 +295,9 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Kong Gateway** | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 | Apache-2.0 | A（5/6） | [中](categories/api-gateway/kong.zh.md) · [EN](categories/api-gateway/kong.md) |
 | **Funtool** | 只有“Windows＋Claude Code＋NVIDIA”这条精确代理路径命中任务时才用它——当前可执行文件不透明，也无法从公开源码重建。 | MIT | C（5/6） | [中](categories/api-gateway/funtool.zh.md) · [EN](categories/api-gateway/funtool.md) |
 | **HarnessRouter** | 把 Codex、Claude Code、Hermes 等 harness 统一跑在一个 OpenAI Responses 兼容 API 之后的自托管网关——但它仅约 6 周历史，UHP 标准由单一厂商维护。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/harnessrouter.zh.md) · [EN](categories/api-gateway/harnessrouter.md) |
+| **LiteLLM** | 覆盖 100 多家供应商的可部署 LLM 网关与 SDK，带虚拟密钥、预算、花费追踪与故障转移——但需要 PostgreSQL/Redis 运维，且有 `enterprise/` 商业边界。 | MIT（核心）+ enterprise/ 商业目录 | A（4/6） | [中](categories/api-gateway/litellm.zh.md) · [EN](categories/api-gateway/litellm.md) |
+| **Claude Code Router** | 本地控制面：从桌面/CLI 界面用条件规则与 fallback，让 Claude Code 等 coding agent 跨模型供应商路由。 | MIT | B（6/6） | [中](categories/api-gateway/claude-code-router.zh.md) · [EN](categories/api-gateway/claude-code-router.md) |
+| **CLIProxyAPI** | 把消费级 CLI/OAuth 登录态包装成 OpenAI/Gemini/Claude 兼容 API 供其他工具调用——代价是固化的服务条款/账号风险与主机上的 token 存储。 | MIT | B（5/6） | [中](categories/api-gateway/cliproxyapi.zh.md) · [EN](categories/api-gateway/cliproxyapi.md) |
 
 ### geospatial
 

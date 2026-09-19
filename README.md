@@ -298,6 +298,9 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Kong Gateway** | OpenResty/Nginx API gateway whose plugin layer makes one reverse-proxy a programmable edge for REST/microservice traffic and, since 3.x, LLM/MCP traffic. | Apache-2.0 | A (5/6) | [EN](categories/api-gateway/kong.md) · [中](categories/api-gateway/kong.zh.md) |
 | **Funtool** | Use it only for the exact Windows + Claude Code + NVIDIA proxy path — the current executable is opaque and cannot be rebuilt from the published source. | MIT | C (5/6) | [EN](categories/api-gateway/funtool.md) · [中](categories/api-gateway/funtool.zh.md) |
 | **HarnessRouter** | A self-hosted gateway that runs Codex, Claude Code, Hermes and other harnesses behind one OpenAI Responses-compatible API — but it is about six weeks old and the UHP standard is single-vendor. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/harnessrouter.md) · [中](categories/api-gateway/harnessrouter.zh.md) |
+| **LiteLLM** | A deployable LLM gateway and SDK over 100+ providers with virtual keys, budgets, spend tracking and failover — but PostgreSQL/Redis ops and a commercial `enterprise/` boundary. | MIT (core) + enterprise/ carve-out | A (4/6) | [EN](categories/api-gateway/litellm.md) · [中](categories/api-gateway/litellm.zh.md) |
+| **Claude Code Router** | A local control plane that routes Claude Code and other coding agents across model providers with conditional rules and fallback, from a desktop/CLI UI. | MIT | B (6/6) | [EN](categories/api-gateway/claude-code-router.md) · [中](categories/api-gateway/claude-code-router.zh.md) |
+| **CLIProxyAPI** | Wraps consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs for other tools — at the cost of inherent ToS/account risk and tokens stored on the host. | MIT | B (5/6) | [EN](categories/api-gateway/cliproxyapi.md) · [中](categories/api-gateway/cliproxyapi.zh.md) |
 
 ### geospatial
 

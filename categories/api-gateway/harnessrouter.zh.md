@@ -94,9 +94,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| claude-code-router | 未收录 | 任务只是用文本配置把 Claude Code 指向别的模型端点时，选 claude-code-router；需要把“整只 harness 的执行 + 会话 + 文件 + 取消”收进一个 API 时，才选 HarnessRouter。 | claude-code-router 是半小时就能读完的轻量请求路由器；HarnessRouter 用它换掉的是一个有状态的多进程产品，你得部署、备份、升级它。 |
-| CLIProxyAPI | 未收录 | 任务是把多个 CLI 登录态变成可复用 API 门面时，选 CLIProxyAPI；交付物是产品里能跑 agent 任务的功能、而不是账号共享网关时，才选 HarnessRouter。 | CLIProxyAPI 面更小更透明，但会话、文件和工作区生命周期都留给你；HarnessRouter 把这些全接过去，也就接走了更多运维风险。 |
-| LiteLLM | 未收录 | 要的是与厂商无关的模型路由、预算与密钥管理时，选 LiteLLM；HarnessRouter 解决的是另一层，而且本身就要求你提供 LiteLLM 式的 provider 配置。 | LiteLLM 的 provider 覆盖面和上线历史都长得多，但没有 harness/会话模型；HarnessRouter 补上这层模型，代价是把 provider 收窄到它测过的范围。 |
+| [claude-code-router](claude-code-router.zh.md) | 已收录 | 任务只是用文本配置把 Claude Code 指向别的模型端点时，选 claude-code-router；需要把“整只 harness 的执行 + 会话 + 文件 + 取消”收进一个 API 时，才选 HarnessRouter。 | claude-code-router 是半小时就能读完的轻量请求路由器；HarnessRouter 用它换掉的是一个有状态的多进程产品，你得部署、备份、升级它。 |
+| [CLIProxyAPI](cliproxyapi.zh.md) | 已收录 | 任务是把多个 CLI 登录态变成可复用 API 门面时，选 CLIProxyAPI；交付物是产品里能跑 agent 任务的功能、而不是账号共享网关时，才选 HarnessRouter。 | CLIProxyAPI 面更小更透明，但会话、文件和工作区生命周期都留给你；HarnessRouter 把这些全接过去，也就接走了更多运维风险。 |
+| [LiteLLM](litellm.zh.md) | 已收录 | 要的是与厂商无关的模型路由、预算与密钥管理时，选 LiteLLM；HarnessRouter 解决的是另一层，而且本身就要求你提供 LiteLLM 式的 provider 配置。 | LiteLLM 的 provider 覆盖面和上线历史都长得多，但没有 harness/会话模型；HarnessRouter 补上这层模型，代价是把 provider 收窄到它测过的范围。 |
 | [Funtool](funtool.zh.md) | 已收录 | 只需要“Windows + Claude Code + 指定厂商端点”这条路径、且接受预打包二进制时，选 Funtool；需要服务端、多 harness、可审计的部署时，选 HarnessRouter。 | Funtool 是没有服务端面的工作站捷径，产物不透明；HarnessRouter 是源码可见的基础设施，也带来实打实的运维职责。 |
 | [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) | 已收录 | 单个开发者想从桌面 UI 切换 coding agent 的供应商与凭据时，选 CC Switch；产品后端要以编程方式调用 agent 时，才用 HarnessRouter。 | CC Switch 只管本地配置、从不进入请求链路；HarnessRouter 把网络服务放进产品与模型之间，而这个服务必须一直活着。 |
 
