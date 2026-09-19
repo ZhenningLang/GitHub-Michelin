@@ -337,6 +337,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **book-to-skill** | Use it when you want to turn technical book PDFs (and other document formats) into installable agent skills for Claude Code, Copilot CLI, or Amp. | MIT | B (6/6) | [EN](categories/agent-skills/book-to-skill.md) · [中](categories/agent-skills/book-to-skill.zh.md) |
+| **distilly** | Use it when you want to distill one person's chat logs, documents, and interviews into an installable agent skill that answers in their judgment and voice. | MIT | B (4/6) | [EN](categories/agent-skills/distilly.md) · [中](categories/agent-skills/distilly.zh.md) |
 
 #### agent-skills / engineering
 

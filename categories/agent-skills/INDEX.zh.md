@@ -25,6 +25,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **book-to-skill** | 当你想把技术书籍 PDF（及其他文档格式）转成可安装的 agent 技能以用于 Claude Code、Copilot CLI 或 Amp 时用它。 | B（6/6） | [→](book-to-skill.zh.md) |
+| **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | B（4/6） | [→](distilly.zh.md) |
 
 ## 对比矩阵
 
@@ -34,6 +35,7 @@
 | [Docling](../document-parsing/docling.zh.md) | ✅ | A（6/6） | 面向 RAG 流水线的通用文档解析器；book-to-skill 是专门针对 agent harness 的技能生成器。 |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.zh.md) | ✅ | C（4/6） | 查询外部 Google 服务；book-to-skill 处理本地 PDF，无外部依赖。 |
 | LlamaIndex / RAG 管线 | 未收录 | — | 带嵌入和动态检索的完整 RAG；基础设施比静态技能生成器更重。 |
+| [distilly](distilly.zh.md) | ✅ | B（4/6） | 从你的私有材料生成某一具体人物的 work/persona 技能；没有检索层，唯一的自动保真门只有关键词级别。 |
 
 ## 什么该放这里
 

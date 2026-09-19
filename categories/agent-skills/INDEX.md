@@ -25,6 +25,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **book-to-skill** | Use it when you want to turn technical book PDFs (and other document formats) into installable agent skills for Claude Code, Copilot CLI, or Amp. | B (6/6) | [→](book-to-skill.md) |
+| **distilly** | Use it when you want to distill one person's chat logs, documents, and interviews into an installable agent skill that answers in their judgment and voice. | B (4/6) | [→](distilly.md) |
 
 ## Comparison matrix
 
@@ -34,6 +35,7 @@
 | [Docling](../document-parsing/docling.md) | ✅ | A (6/6) | General document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.md) | ✅ | C (4/6) | Queries an external Google service; book-to-skill works on local PDFs with no external dependency. |
 | LlamaIndex / RAG pipelines | 未收录 | — | Full RAG with embeddings and dynamic retrieval; more infrastructure than a static skill generator. |
+| [distilly](distilly.md) | ✅ | B (4/6) | Generates a person-specific work/persona skill from your private source material; no retrieval layer, and its only automated fidelity gate is keyword-level. |
 
 ## What belongs here
 
