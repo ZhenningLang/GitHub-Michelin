@@ -124,7 +124,7 @@ Browserbase / hosted browser services,categories/agent-skills/engineering/browse
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
 Building your own commands from scratch,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/context-mode.md,,no
-Built-in agent skill ecosystems,categories/agent-skills/writing/baoyu-skills.md,,no
+Built-in agent skill ecosystems,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
 Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Butteraugli,categories/media-processing/quality-metrics/ssimulacra2.md,,no
@@ -169,7 +169,7 @@ claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/cod
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 CLAUDE.md (built-in),categories/agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
-Cloud function calling (OpenAI / Gemini),categories/on-device-ml/needle.md,,no
+Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
 Cloudflare Turnstile,categories/captcha/capjs.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / PR-Agent (Qodo) / Greptile,categories/ai-code-review/INDEX.md,pr-agent,partial
@@ -192,14 +192,14 @@ crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-a
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
 Cursor,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
 Cursor / Windsurf,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
-Custom creator toolkit,categories/agent-skills/writing/huashu-skills.md,,no
-Custom DataForSEO scripts,categories/agent-skills/writing/open-seo.md,,no
+Custom creator toolkit,categories/agent-skills/writing/content-production/huashu-skills.md,,no
+Custom DataForSEO scripts,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
 Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,no
 Custom editorial checklist,categories/agent-skills/de-ai-writing/stop-slop.md,,no
-Custom editorial workflow,categories/agent-skills/writing/writing-agent.md,,no
+Custom editorial workflow,categories/agent-skills/writing/content-production/writing-agent.md,,no
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 Custom implementation,categories/document-parsing/any2html.md,,no
-Custom marketing playbook,categories/agent-skills/writing/marketingskills.md,,no
+Custom marketing playbook,categories/agent-skills/writing/marketing-seo/marketingskills.md,,no
 Custom middleware,categories/agent-governance/agent-governance-toolkit.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
@@ -293,8 +293,8 @@ FPDI,categories/pdf-tools/sapp.md,,no
 FPDI / OpenPDFSign / pyHanko,categories/pdf-tools/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
-Functionary,categories/on-device-ml/needle.md,,no
-FunctionGemma (Google),categories/on-device-ml/needle.md,,no
+FunctionGemma (Google),categories/function-calling/functionary.md,,no
+FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Gamma / Tome,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
@@ -325,7 +325,7 @@ gomacro (REPL),categories/python-tooling/gophernotes.md,,no
 Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
 Google Photos,categories/document-management/immich.md,,no
 Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
-Google Search Console alone,categories/agent-skills/writing/open-seo.md,,no
+Google Search Console alone,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 GPT Researcher / Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,gpt-researcher,partial
@@ -353,7 +353,7 @@ Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collecti
 Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
 Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
-Hand-written project skills,categories/agent-skills/writing/baoyu-skills.md,,no
+Hand-written project skills,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Hasura,categories/databases/database-engines/supabase.md,,no
@@ -428,8 +428,6 @@ Lighthouse / axe-core,categories/ai-design-generation/impeccable.md,,no
 Lighthouse CI / WebPageTest,categories/agent-skills/engineering/addyosmani-web-quality.md,,no
 Linear / Jira,categories/agent-tooling/beads.md,,no
 Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
-llama.cpp + a small instruct GGUF model,categories/on-device-ml/needle.md,,no
-llama.cpp / Ollama / MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,llama-cpp,partial
 LlamaIndex / RAG pipelines,categories/agent-skills/INDEX.md,llamaindex,partial
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
@@ -451,7 +449,7 @@ Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt
 Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
 Manus / hosted autonomous-agent products,categories/agent-tooling/planning-with-files.md,,no
-Manuskript,categories/agent-skills/writing/webnovel-writer.md,,no
+Manuskript,categories/agent-skills/writing/fiction/webnovel-writer.md,,no
 MapServer,categories/geospatial/qgis.md,,no
 Marigold (SD-based),categories/ml-research/depth-anything-v2.md,,no
 Markdown Here Revival (fork/successor),categories/markdown-tools/markdown-here.md,,no
@@ -479,6 +477,7 @@ Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
 Miniflux,categories/reading-tools/netnewswire.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/omlx.md,,no
 Mockaroo,categories/dev-utilities/data-tools/faker-js.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/taskmatrix.md,,no
@@ -523,7 +522,7 @@ nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
 notebooklm-mcp (same author),categories/agent-skills/context-engineering/notebooklm-skill.md,,no
-novelWriter,categories/agent-skills/writing/webnovel-writer.md,,no
+novelWriter,categories/agent-skills/writing/fiction/chinese-novelist-skill.md,,no
 npm / pnpm packaging a skill dir,categories/agent-tooling/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
@@ -700,7 +699,7 @@ Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/d
 Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
 Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
 Semgrep,categories/agent-governance/skillspector.md,,no
-Semrush / Ahrefs,categories/agent-skills/writing/open-seo.md,,no
+Semrush / Ahrefs,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
 sentence-transformers (SBERT),categories/rag-retrieval/text2vec.md,,no
 Serena (MCP),categories/rag-retrieval/code-review-graph.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
@@ -711,7 +710,7 @@ Sidekiq / BullMQ,categories/task-queue/celery.md,,no
 SigLIP,categories/ml-research/clip.md,,no
 SikuliX,categories/desktop-automation/pyautogui.md,,no
 sing-box,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
-Single de-AI / translation prompt,categories/agent-skills/writing/baoyu-skills.md,,no
+Single de-AI / translation prompt,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
@@ -753,6 +752,7 @@ thriftpy2,categories/networking/thriftpy.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
+tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no
 Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/context-mode.md,,no
 torchgan,categories/ml-research/pytorch-gan.md,,no
 Tour of Go / interactive docs,categories/python-tooling/gophernotes.md,,no

@@ -11,7 +11,7 @@ as `未收录`; nothing else about them is asserted.
 
 - Named-but-unindexed alternatives: 811
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
-- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 15
+- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 14
 - Raw machine list: `reports/unindexed-project-mentions.csv`
 - Repo -> page reverse index: `reports/repo-page-index.csv`
 
@@ -31,7 +31,6 @@ Remove the indexed names from the row, or split the row.
 | Graphviz / PlantUML / D2 / draw.io / Excalidraw | excalidraw | `categories/diagramming/INDEX.md` |
 | LibreChat / Lobe Chat | librechat | `categories/llm-chat-ui/INDEX.md` |
 | LibreChat / Lobe Chat / Open WebUI | librechat, open-webui | `categories/team-chat/INDEX.md` |
-| llama.cpp / Ollama / MLC LLM / ONNX Runtime | llama-cpp | `categories/on-device-ml/INDEX.md` |
 | LlamaIndex / RAG pipelines | llamaindex | `categories/agent-skills/INDEX.md` |
 | Metabase / Redash / Tableau / Looker | metabase | `categories/data-visualization/INDEX.md` |
 | Neo4j / LlamaIndex / LightRAG / Weaviate | llamaindex | `categories/rag-retrieval/INDEX.md` |
