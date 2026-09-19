@@ -80,20 +80,20 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | MIT | B（6/6） | [中](categories/web-automation/page-agent.zh.md) · [EN](categories/web-automation/page-agent.md) |
-| **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/chrome-devtools-mcp.zh.md) · [EN](categories/web-automation/chrome-devtools-mcp.md) |
-| **Cua** | 当 agent 需要在隔离 VM 沙箱里用视觉操作整台桌面系统（而非仅网页）时使用。 | MIT | B（6/6） | [中](categories/web-automation/cua.zh.md) · [EN](categories/web-automation/cua.md) |
-| **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/agent-browser.zh.md) · [EN](categories/web-automation/agent-browser.md) |
-| **Selenium** | 当你需要跨浏览器、跨语言的 WebDriver 自动化时用它——现代单浏览器体验 Playwright/Cypress 更顺手。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/selenium.zh.md) · [EN](categories/web-automation/selenium.md) |
-| **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | BSD-3-Clause | D（5/6） | [中](categories/web-automation/phantomjs.zh.md) · [EN](categories/web-automation/phantomjs.md) |
-| **Selenium Wire** | 当遗留的 Selenium 测试套件需要读取或改写浏览器后台 HTTP 流量时用它——但它已归档，新项目应改用 Selenium 4 原生 CDP/BiDi 或 Playwright。 | MIT | D（5/6） | [中](categories/web-automation/selenium-wire.zh.md) · [EN](categories/web-automation/selenium-wire.md) |
-| **nodriver** | 当 Python 异步代码需要绕过 WebDriver、直接控制 Chromium CDP 时用它——只支持 Chromium、采用 AGPL-3.0，且不是完整测试框架。 | AGPL-3.0 | C（5/6） | [中](categories/web-automation/nodriver.zh.md) · [EN](categories/web-automation/nodriver.md) |
-| **Playwright MCP** | 当支持 MCP 的 agent 需要厂商官方、基于无障碍树快照的确定性浏览器自动化时用它——适合有状态的探索式回路；微软自家 README 把高吞吐 coding agent 引向它的 CLI 兄弟。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/playwright-mcp.zh.md) · [EN](categories/web-automation/playwright-mcp.md) |
-| **Playwright CLI** | 当 coding agent（Claude Code、Copilot）需要便宜、token 高效的浏览器命令并装好 SKILLs 时用它——微软自己推荐给 coding agent 的路径；v0.1.x，刚重新定位。 | Apache-2.0 | A（5/6） | [中](categories/web-automation/playwright-cli.zh.md) · [EN](categories/web-automation/playwright-cli.md) |
-| **OpenCLI** | 当 agent 必须操作藏在你登录态后面的站点时用它——经扩展+daemon 桥接你已登录的 Chrome，并把站点工作流固化成可复用 CLI 命令；要预期适配器 churn 和真实的信任面。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/opencli.zh.md) · [EN](categories/web-automation/opencli.md) |
-| **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | MIT | B（6/6） | [EN](categories/web-automation/browser-use.md) · [中](categories/web-automation/browser-use.zh.md) |
-| **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | Apache-2.0 | A（5/6） | [EN](categories/web-automation/playwright.md) · [中](categories/web-automation/playwright.zh.md) |
-| **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A（5/6） | [EN](categories/web-automation/puppeteer.md) · [中](categories/web-automation/puppeteer.zh.md) |
+| **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) · [EN](categories/web-automation/agent-browser-tools/page-agent.md) |
+| **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) |
+| **Cua** | 当 agent 需要在隔离 VM 沙箱里用视觉操作整台桌面系统（而非仅网页）时使用。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/cua.zh.md) · [EN](categories/web-automation/agent-browser-tools/cua.md) |
+| **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/agent-browser.md) |
+| **Selenium** | 当你需要跨浏览器、跨语言的 WebDriver 自动化时用它——现代单浏览器体验 Playwright/Cypress 更顺手。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/browser-driver-frameworks/selenium.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/selenium.md) |
+| **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | BSD-3-Clause | D（5/6） | [中](categories/web-automation/browser-driver-frameworks/phantomjs.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/phantomjs.md) |
+| **Selenium Wire** | 当遗留的 Selenium 测试套件需要读取或改写浏览器后台 HTTP 流量时用它——但它已归档，新项目应改用 Selenium 4 原生 CDP/BiDi 或 Playwright。 | MIT | D（5/6） | [中](categories/web-automation/browser-driver-frameworks/selenium-wire.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/selenium-wire.md) |
+| **nodriver** | 当 Python 异步代码需要绕过 WebDriver、直接控制 Chromium CDP 时用它——只支持 Chromium、采用 AGPL-3.0，且不是完整测试框架。 | AGPL-3.0 | C（5/6） | [中](categories/web-automation/browser-driver-frameworks/nodriver.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/nodriver.md) |
+| **Playwright MCP** | 当支持 MCP 的 agent 需要厂商官方、基于无障碍树快照的确定性浏览器自动化时用它——适合有状态的探索式回路；微软自家 README 把高吞吐 coding agent 引向它的 CLI 兄弟。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/playwright-family/playwright-mcp.zh.md) · [EN](categories/web-automation/playwright-family/playwright-mcp.md) |
+| **Playwright CLI** | 当 coding agent（Claude Code、Copilot）需要便宜、token 高效的浏览器命令并装好 SKILLs 时用它——微软自己推荐给 coding agent 的路径；v0.1.x，刚重新定位。 | Apache-2.0 | A（5/6） | [中](categories/web-automation/playwright-family/playwright-cli.zh.md) · [EN](categories/web-automation/playwright-family/playwright-cli.md) |
+| **OpenCLI** | 当 agent 必须操作藏在你登录态后面的站点时用它——经扩展+daemon 桥接你已登录的 Chrome，并把站点工作流固化成可复用 CLI 命令；要预期适配器 churn 和真实的信任面。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/agent-browser-tools/opencli.zh.md) · [EN](categories/web-automation/agent-browser-tools/opencli.md) |
+| **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | MIT | B（6/6） | [EN](categories/web-automation/agent-browser-tools/browser-use.md) · [中](categories/web-automation/agent-browser-tools/browser-use.zh.md) |
+| **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | Apache-2.0 | A（5/6） | [EN](categories/web-automation/playwright-family/playwright.md) · [中](categories/web-automation/playwright-family/playwright.zh.md) |
+| **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A（5/6） | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
 
 ### llm-training
 
@@ -221,19 +221,19 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | CC-BY-SA-4.0 (content) / Apache-2.0 (code examples) | B（4/6） | [中](categories/agent-dev-methodology/12-factor-agents.zh.md) · [EN](categories/agent-dev-methodology/12-factor-agents.md) |
-| **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/superpowers.zh.md) · [EN](categories/agent-dev-methodology/superpowers.md) |
-| **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/superclaude.zh.md) · [EN](categories/agent-dev-methodology/superclaude.md) |
-| **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | MIT | C（6/6） | [中](categories/agent-dev-methodology/get-shit-done.zh.md) · [EN](categories/agent-dev-methodology/get-shit-done.md) |
-| **Compound Engineering** | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/compound-engineering.zh.md) · [EN](categories/agent-dev-methodology/compound-engineering.md) |
-| **ECC** | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 | MIT | B（6/6） | [中](categories/agent-dev-methodology/ecc.zh.md) · [EN](categories/agent-dev-methodology/ecc.md) |
-| **Spec Kit** | GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论——但它极其年轻，且与 GitHub 生态深度绑定。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/spec-kit.zh.md) · [EN](categories/agent-dev-methodology/spec-kit.md) |
-| **Spec-Anchored Agentic Development** | 当永久 capability spec 必须持续充当代码一致性判定器时用它——仅面向 Claude Code，而且问世只有数天。 | MIT | B（3/6） | [中](categories/agent-dev-methodology/spec-anchored-agentic-development.zh.md) · [EN](categories/agent-dev-methodology/spec-anchored-agentic-development.md) |
-| **USDAD** | 当你想手工改造一套文字优先的多 agent 规格与上下文方法时用它——没有 CLI 或可执行约束。 | MIT | C（4/6） | [中](categories/agent-dev-methodology/usdad.zh.md) · [EN](categories/agent-dev-methodology/usdad.md) |
-| **QUAD Framework** | 仅当你要研究文档优先的四 Circles 运营模型与部署蓝图时使用——项目已不活跃、采用专有许可，且部分组件不可访问。 | Proprietary | D（4/6） | [中](categories/agent-dev-methodology/quad.zh.md) · [EN](categories/agent-dev-methodology/quad.md) |
-| **LTBL Experiment** | 仅把它当作三个 agent 上下文实验实现的索引——自身没有可运行代码、实验结果或许可授权。 | NOASSERTION | D（4/6） | [中](categories/agent-dev-methodology/ltbl-experiment.zh.md) · [EN](categories/agent-dev-methodology/ltbl-experiment.md) |
-| **PURE** | 当 intent 追溯需要 Git 原生 schema、registry、phase gate 和 Shell 检查时用它——结构明确，但非常年轻。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/pure-agentic.zh.md) · [EN](categories/agent-dev-methodology/pure-agentic.md) |
-| **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/learn-claude-code.zh.md) · [EN](categories/agent-dev-methodology/learn-claude-code.md) |
+| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | CC-BY-SA-4.0 (content) / Apache-2.0 (code examples) | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md) |
+| **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.md) |
+| **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md) |
+| **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | MIT | C（6/6） | [中](categories/agent-dev-methodology/spec-driven-development/get-shit-done.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/get-shit-done.md) |
+| **Compound Engineering** | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md) |
+| **ECC** | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 | MIT | B（6/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/ecc.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/ecc.md) |
+| **Spec Kit** | GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论——但它极其年轻，且与 GitHub 生态深度绑定。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/spec-kit.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/spec-kit.md) |
+| **Spec-Anchored Agentic Development** | 当永久 capability spec 必须持续充当代码一致性判定器时用它——仅面向 Claude Code，而且问世只有数天。 | MIT | B（3/6） | [中](categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md) |
+| **USDAD** | 当你想手工改造一套文字优先的多 agent 规格与上下文方法时用它——没有 CLI 或可执行约束。 | MIT | C（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/usdad.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/usdad.md) |
+| **QUAD Framework** | 仅当你要研究文档优先的四 Circles 运营模型与部署蓝图时使用——项目已不活跃、采用专有许可，且部分组件不可访问。 | Proprietary | D（4/6） | [中](categories/agent-dev-methodology/study-and-experiments/quad.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/quad.md) |
+| **LTBL Experiment** | 仅把它当作三个 agent 上下文实验实现的索引——自身没有可运行代码、实验结果或许可授权。 | NOASSERTION | D（4/6） | [中](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md) |
+| **PURE** | 当 intent 追溯需要 Git 原生 schema、registry、phase gate 和 Shell 检查时用它——结构明确，但非常年轻。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/pure-agentic.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/pure-agentic.md) |
+| **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md) |
 
 ### ai-design-generation
 

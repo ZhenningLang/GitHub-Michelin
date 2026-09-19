@@ -98,7 +98,7 @@ You're building an AI agent or data pipeline that needs to ingest web content at
 | [newspaper](../article-extraction/newspaper.md) | ✅ | Article text extraction from news URLs. | newspaper is Python-only and article-focused; Firecrawl is a full-service API with search, scrape, and interaction. |
 | [Readability.js](../article-extraction/readability-js.md) | ✅ | Firefox Reader View article extraction. | Readability.js is a browser library for article extraction; Firecrawl is a scalable API with search and interaction. |
 | [PRAW](praw.md) | ✅ | Reddit-specific API wrapper. | PRAW is Reddit-only; Firecrawl is general-purpose web scraping. |
-| Scrapy / [Playwright](../../web-automation/playwright.md) | partly indexed | Lower-level scraping frameworks. | Scrapy and Playwright give full control but require building and maintaining crawler infrastructure. |
+| Scrapy / [Playwright](../../web-automation/playwright-family/playwright.md) | partly indexed | Lower-level scraping frameworks. | Scrapy and Playwright give full control but require building and maintaining crawler infrastructure. |
 
 ## Tech stack
 

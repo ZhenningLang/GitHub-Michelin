@@ -90,7 +90,7 @@ health:
 | [wshobson/agents](wshobson-agents.zh.md) | ✅ | 需要另一套大型 Claude Code subagent 合集时，选 wshobson/agents。 | 另一套大型 Claude Code subagent 合集。按各自覆盖的角色、frontmatter 约定、以及每个 persona 提示的主张强度来比——两者都是“丢进 `~/.claude/agents/`”的包，所以按覆盖面和提示质量选，而不是按格式。 |
 | antfu/skills、[Dimillian/Skills](../personal-collections/engineering-workflows/dimillian-skills.zh.md)、gstack、khazix-skills…… | 部分已收录 | 需要个人 skill 合集而不是 subagent persona 时，选对应个人集合。 | 个人 *skill* 合集（`Skill` 工具格式），不是 subagent persona。消费单元不同——skill 是按需加载的流程，subagent 是被委派的子对话。想把行为加载进主 agent 用前者，想要独立的委派专家用本项目。 |
 | Anthropic 内置 subagent 文档 / 自己手写的 agent | 未收录 | 需要自己创作 subagent 的原生方式时，选内置文档或手写 agent。 | 自己创作 subagent 的原生方式。本 repo 是叠在同一机制上的第三方起步集，因此可能与你已写的 agent 重复或冲突。 |
-| [Superpowers](../../agent-dev-methodology/superpowers.zh.md) / SDLC 方法论包 | 部分已收录 | 需要给单个 agent 加 brainstorm→plan→TDD→verify 工作流纪律时，选 Superpowers 或同类方法论包。 | 那类包给单个 agent 装的是*工作流纪律*（brainstorm→plan→TDD→verify）；本项目装的是一*组角色专家*。正交——可以同时用，但解决的是不同问题。 |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) / SDLC 方法论包 | 部分已收录 | 需要给单个 agent 加 brainstorm→plan→TDD→verify 工作流纪律时，选 Superpowers 或同类方法论包。 | 那类包给单个 agent 装的是*工作流纪律*（brainstorm→plan→TDD→verify）；本项目装的是一*组角色专家*。正交——可以同时用，但解决的是不同问题。 |
 
 ## 健康度与可持续性
 

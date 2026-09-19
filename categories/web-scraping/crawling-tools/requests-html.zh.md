@@ -84,7 +84,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | httpx + BeautifulSoup / parsel | 未收录 | 想用仍在维护的 HTTP 客户端加专用解析器这一主流拆分时，选 httpx 加 BeautifulSoup/parsel。 | 主流的现代拆分：一个仍在活跃维护、支持异步的 HTTP 客户端，加一个专用 parser（bs4 容错解析 HTML，parsel 走 Scrapy 风格的 CSS/XPath）。是两个 import 而非一个，但两者都在维护、各块你都可控——纯 HTML 抓取的推荐替代。 |
-| [Playwright](../../web-automation/playwright.zh.md)（Python） | ✅ | 需要维护中的真实浏览器自动化来处理重 JS 页面时，选 Playwright。 | 真正在维护的无头浏览器自动化（Chromium/Firefox/WebKit），面向重 JS 页面；比 `requests-html` 的 pyppeteer `render()` 稳健得多，但更重、是另一套（驱动浏览器的）心智模型。配 selectolax/bs4 做解析。 |
+| [Playwright](../../web-automation/playwright-family/playwright.zh.md)（Python） | ✅ | 需要维护中的真实浏览器自动化来处理重 JS 页面时，选 Playwright。 | 真正在维护的无头浏览器自动化（Chromium/Firefox/WebKit），面向重 JS 页面；比 `requests-html` 的 pyppeteer `render()` 稳健得多，但更重、是另一套（驱动浏览器的）心智模型。配 selectolax/bs4 做解析。 |
 | Scrapy | 未收录 | 需要完整异步爬虫框架时，选 Scrapy。 | 一个完整的异步爬虫框架——并发、调度、中间件、pipeline、重试；当你要规模化爬取时它才对，对一个 40 行的一次性脚本则杀鸡用牛刀。 |
 | selectolax | 未收录 | 需要很快的 C 后端 HTML parser 和 CSS 选择器时，选 selectolax。 | 很快的 C 后端（Modest/lexbor）HTML parser，带 CSS 选择器；只做解析（HTTP 客户端自带），但大文档场景的速度之选——恰是 `requests-html` 所不是的。 |
 | requests + BeautifulSoup | 未收录 | 经典同步抓取组合仍够用时，选 requests + BeautifulSoup。 | 经典、至今够用的同步抓取组合；`requests-html` 本质就是这套再加 PyQuery 选择器和一个可选的 JS 渲染外挂，只是没了活跃维护。 |

@@ -93,7 +93,7 @@ It's also the natural reach when you want a *visible*, human-mimicking robot —
 | pywinauto | 未收录 | Choose pywinauto when you are Windows-only and need the UI Automation / Win32 accessibility tree. | Element-aware and far more robust than pixels, but not cross-platform and a steeper API. |
 | AutoHotkey | 未收录 | Choose AutoHotkey when you need a Windows-first scripting language purpose-built for hotkeys, macros, and GUI automation. | Very mature for Windows automation, but it is its own language and has no native cross-platform/Python story. |
 | SikuliX | 未收录 | Choose SikuliX when Java-based image recognition automation with OCR and template matching is acceptable. | Cross-platform like PyAutoGUI but heavier because of the JVM and more IDE-centric. |
-| [Selenium](../web-automation/selenium.md) / Playwright | 部分已收录 | Choose Selenium or Playwright when the target is a web page and DOM-level browser automation matters more than desktop pixels. | Browser automation can inspect DOM state and wait on page events; PyAutoGUI is the fallback for native desktop surfaces and pixel-level control. |
+| [Selenium](../web-automation/browser-driver-frameworks/selenium.md) / Playwright | 部分已收录 | Choose Selenium or Playwright when the target is a web page and DOM-level browser automation matters more than desktop pixels. | Browser automation can inspect DOM state and wait on page events; PyAutoGUI is the fallback for native desktop surfaces and pixel-level control. |
 | pynput | 未收录 | Choose pynput when you need lower-level cross-platform input control or global hotkey monitoring. | No screenshot/image-locate layer; it is smaller in scope than PyAutoGUI and focuses on input events. |
 
 ## Tech stack

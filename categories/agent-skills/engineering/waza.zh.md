@@ -87,8 +87,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Superpowers](../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要更大、方法论优先的 brainstorm→plan→TDD→subagent→verify 库时，选 Superpowers。 | 更大、方法论优先的 skills 库（brainstorm→plan→TDD→subagent→verify），面向多 harness；Waza 是更小、面向习惯的八个具名命令的集合，更轻便上手，但不构成完整的 SDLC 主干。 |
-| [SuperClaude Framework](../../agent-dev-methodology/superclaude.zh.md) | ✅ | 想要 persona、命令和 MCP 配置框架，而不是轻量习惯包时，选 SuperClaude。 | persona/命令/MCP 配置框架，面更大、安装更重；Waza 更精简，围绕具体工程套路而非 persona 体系。 |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要更大、方法论优先的 brainstorm→plan→TDD→subagent→verify 库时，选 Superpowers。 | 更大、方法论优先的 skills 库（brainstorm→plan→TDD→subagent→verify），面向多 harness；Waza 是更小、面向习惯的八个具名命令的集合，更轻便上手，但不构成完整的 SDLC 主干。 |
+| [SuperClaude Framework](../../agent-dev-methodology/coding-agent-harnesses/superclaude.zh.md) | ✅ | 想要 persona、命令和 MCP 配置框架，而不是轻量习惯包时，选 SuperClaude。 | persona/命令/MCP 配置框架，面更大、安装更重；Waza 更精简，围绕具体工程套路而非 persona 体系。 |
 | [addyosmani/agent-skills](addyosmani-agent-skills.zh.md) | ✅ | 需要更宽的工程 skill 集合与更多生命周期覆盖时，选 Addy Osmani 的大包。 | 本叶子里的同类 skill 集合；按各自实际提供的工程习惯与 harness 覆盖度比较。 |
 | [web-quality-skills（addyosmani）](addyosmani-web-quality.zh.md) | ✅ | 任务明确是 web 性能或质量审计时，选 web-quality-skills。 | 聚焦 web 性能/质量的 skill；领域比 Waza 的通用工程习惯更窄。 |
 | [vercel-labs/agent-skills](vercel-agent-skills.zh.md) | ✅ | 厂商策划的 React/Vercel 规则比通用习惯更重要时，选 Vercel Agent Skills。 | 厂商策划的 skill 集合；比较来源与所面向的 agent。 |

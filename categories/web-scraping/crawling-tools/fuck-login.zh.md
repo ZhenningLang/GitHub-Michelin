@@ -94,7 +94,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Playwright / [Selenium](../../web-automation/selenium.zh.md) | 部分已收录 | 需要真实浏览器处理 JS 和现代鉴权时，选 Playwright 或 Selenium。 | 驱动真实浏览器登录，而非重放裸 HTTP；更重，但在现代站点上更可行。Playwright 未单独收录。 |
+| Playwright / [Selenium](../../web-automation/browser-driver-frameworks/selenium.zh.md) | 部分已收录 | 需要真实浏览器处理 JS 和现代鉴权时，选 Playwright 或 Selenium。 | 驱动真实浏览器登录，而非重放裸 HTTP；更重，但在现代站点上更可行。Playwright 未单独收录。 |
 | Scrapy | 未收录 | 需要有维护、带登录 middleware 范式的爬取框架时，选 Scrapy。 | 有维护的爬取框架，自带登录 middleware 范式；鉴权要自己写，但周边一切都是生产级。 |
 | [requests-html](requests-html.zh.md) | ✅ | 需要 requests + JS 渲染的爬取构件时，选 requests-html。 | requests + JS 渲染的爬取库，是真正的构件；而 fuck-login 只是示例脚本。 |
 | [newspaper](../article-extraction/newspaper.zh.md) | ✅ | 需要正文抽取而不是登录自动化时，选 newspaper。 | 做正文抽取，不是登录自动化——活儿不同；列在这里展示本分类里有维护的成员。 |

@@ -89,7 +89,7 @@ health:
 |---|---|---|---|
 | [antfu/skills](antfu-skills.zh.md) | ✅ | 需要广谱工具型个人 skill 合集，而不是“坚持”人设覆盖层时，选 antfu/skills。 | 一位维护者的个人通用 skill 合集；偏广谱工具型 skill，没有人设 / 加压主题。PUA 是单一目的：只加一层「坚持」人设，不是工具箱。 |
 | [awesome-claude-code-subagents](../../subagent-collections/awesome-claude-code-subagents.zh.md) | ✅ | 需要按角色分发任务的专家目录时，选 awesome-claude-code-subagents。 | 一个庞大的按角色分发任务的 subagent 目录。PUA 不是专家名册——它是改变单个 agent「怎么坚持」的行为覆盖层。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要完整 brainstorm→plan→TDD→verify SDLC 方法论包时，选 Superpowers。 | 完整的 brainstorm→plan→TDD→verify SDLC 方法论包；其 `verification-before-completion` / `systematic-debugging` 与 PUA 的红线重叠，但交付的是整套生命周期，而 PUA 只是带人设外皮的「坚持 / 反放弃」层。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要完整 brainstorm→plan→TDD→verify SDLC 方法论包时，选 Superpowers。 | 完整的 brainstorm→plan→TDD→verify SDLC 方法论包；其 `verification-before-completion` / `systematic-debugging` 与 PUA 的红线重叠，但交付的是整套生命周期，而 PUA 只是带人设外皮的「坚持 / 反放弃」层。 |
 | 平台内置 skills / 原生 slash 命令 | 未收录 | 优先使用平台维护的原生 skill 面时，选内置 slash 命令。 | 平台自身的 skill 面；PUA 是叠在上面的第三方人设包，可能与原生行为重复或冲突。 |
 
 ## 健康度与可持续性

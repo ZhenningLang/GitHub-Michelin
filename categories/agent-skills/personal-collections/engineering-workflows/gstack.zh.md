@@ -88,7 +88,7 @@ Garry Tan 的私人 Claude Code 配置：约 23 个带强烈个人主张的 slas
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要跨 harness 的 SDLC 技能库，而不是单个创始人的角色循环时，选 Superpowers。 | 可组合的 SDLC 技能库（brainstorm → plan → TDD → verify），以跨 harness 插件形式分发。更偏 TDD/测试先行的纪律，且走 marketplace 安装；gstack 是某位创始人*基于角色*的命令集（CEO/设计师/QA 等 persona），为他每天的工厂量身调过，而非通用方法论。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要跨 harness 的 SDLC 技能库，而不是单个创始人的角色循环时，选 Superpowers。 | 可组合的 SDLC 技能库（brainstorm → plan → TDD → verify），以跨 harness 插件形式分发。更偏 TDD/测试先行的纪律，且走 marketplace 安装；gstack 是某位创始人*基于角色*的命令集（CEO/设计师/QA 等 persona），为他每天的工厂量身调过，而非通用方法论。 |
 | [antfu/skills](antfu-skills.zh.md) | ✅ | 需要另一份个人 Claude Code 技能集，且其工作流假设更贴近你时，选 antfu/skills。 | 另一份私人 Claude Code 技能集；按各自作者编排了什么工作流、对你环境假设多少来比较。 |
 | [Dimillian/Skills](dimillian-skills.zh.md) | ✅ | 作者品味和命令路由方式更合适时，选 Dimillian/Skills。 | 私人技能集；按作者品味与命令的路由方式来选。 |
 | [wshobson/agents](../../subagent-collections/wshobson-agents.zh.md) | ✅ | 需要更宽的 subagent/persona 目录时，选 wshobson/agents。 | 体量较大的 subagent/persona 集合；目录更广，对比 gstack 更聚焦的创始人主张工厂闭环。 |

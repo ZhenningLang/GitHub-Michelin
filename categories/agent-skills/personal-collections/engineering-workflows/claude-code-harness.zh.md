@@ -89,7 +89,7 @@ health:
 |---|---|---|---|
 | [gstack](gstack.zh.md) | ✅ | 想要 Garry Tan 的 persona 命令体系，而不是显式 spec/plan 契约时，选 gstack。 | Garry Tan 的个人 Claude Code 配置，驱动一个类似的 plan → build → review → ship 循环，但靠 ~23 个角色扮演 persona 命令（CEO/设计师/QA/安全官）。claude-code-harness 是更少、命名清晰的动词，带显式的 `spec.md`/`Plans.md` 契约和一个 Go `doctor` 工具；gstack 更依赖 persona 而非契约产物。 |
 | [shaping-skills](shaping-skills.zh.md) | ✅ | 只需要 Shape Up 式“定义要造什么”的前端塑形环节时，选 shaping-skills。 | Ryan Singer 的 Shape Up「shaping」包只覆盖*定义要造什么*这个前端环节。本 harness 覆盖完整的 定义→实现→review→发布 脊柱，因此二者互补而非互替。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要跨 harness 的 brainstorm/plan→TDD→verify 方法论包时，选 Superpowers。 | 跨 harness 的 skills 库，具备相同的 brainstorm/plan→TDD→verify 脊柱，并打包给多种 agent（Claude、Codex、Cursor、Kimi、OpenCode、Pi）。claude-code-harness 以 Claude Code 为中心，加了显式的 spec/plan 契约文件和一个 Go 诊断 CLI；Superpowers 是更精简的方法论、更广的 harness 覆盖。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要跨 harness 的 brainstorm/plan→TDD→verify 方法论包时，选 Superpowers。 | 跨 harness 的 skills 库，具备相同的 brainstorm/plan→TDD→verify 脊柱，并打包给多种 agent（Claude、Codex、Cursor、Kimi、OpenCode、Pi）。claude-code-harness 以 Claude Code 为中心，加了显式的 spec/plan 契约文件和一个 Go 诊断 CLI；Superpowers 是更精简的方法论、更广的 harness 覆盖。 |
 | harness-mem（可选配套） | 未收录 | 需要跨会话记忆插件，而不是工作流替代品时，才看 harness-mem。 | 本项目引用的一个可选跨会话记忆插件；属于另一关切（agent 记忆），不是工作流替代品。 |
 | Claude Code 原生 skills / 内置 slash 命令 | 未收录 | 优先使用平台维护的原生命令生态时，选 Claude Code 内置能力。 | 平台自带的 skill 生态；本项目是叠在其上的第三方 bundle，可能与原生命令重复或冲突。 |
 
