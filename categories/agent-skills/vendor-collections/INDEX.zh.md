@@ -12,6 +12,7 @@
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | B（4/6） | [→](claude-plugins-official.zh.md) |
 | **MiniMax Skills** | MiniMax 官方约 16 个 Agent Skill 成包（前端/移动端/shader 开发，外加 pdf/docx/xlsx/pptx、音乐与多模态生成），经插件市场装进 Claude Code 等编码 agent。 | B（4/6） | [→](minimax-skills.zh.md) |
 | **Anthropic Knowledge Work Plugins** | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 | B（4/6） | [→](knowledge-work-plugins.zh.md) |
+| **Remotion Agent Skills** | Remotion 官方的 12 个 skill 捆绑包：教编码 agent（Claude Code、Codex、Cursor、Kimi Code）写出正确的 Remotion React 视频代码——经 `npx skills add remotion-dev/skills` 安装，版本与框架同步锁定。 | C（4/6） | [→](remotion-skills.zh.md) |
 
 ## 对比矩阵
 
@@ -22,6 +23,7 @@
 | [Claude Plugins (Official)](claude-plugins-official.zh.md) | ✅ | B（4/6） | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 |
 | [MiniMax Skills](minimax-skills.zh.md) | ✅ | B（4/6） | MiniMax 官方约 16 个 Agent Skill 成包（前端/移动端/shader 开发，外加 pdf/docx/xlsx/pptx、音乐与多模态生成），经插件市场装进 Claude Code 等编码 agent。 |
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.zh.md) | ✅ | B（4/6） | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 |
+| [Remotion Agent Skills](remotion-skills.zh.md) | ✅ | C（4/6） | 厂商权威、版本锁定的 React 视频创作指导；不在带 skill 加载器的 harness 上、或不用 Remotion 就没价值，且内容许可未声明。 |
 
 ## 什么该放这里
 
