@@ -15,6 +15,7 @@
 | **Stable Diffusion WebUI** | Use it when you want a local web-based GUI for Stable Diffusion image generation, editing, and upscaling on your own GPU — but it requires technical setup and an NVIDIA GPU. | C (4/6) | [→](stable-diffusion-webui.md) |
 | **ComfyUI** | Use it when you want a modular node-graph interface for building complex diffusion-model workflows locally — but it has a steep learning curve and requires significant GPU resources. | B (5/6) | [→](comfyui.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | B (6/6) | [→](mlx-mlx-lm.md) |
+| **Needle** | On-device 2-bit, 8–29 MB tool-calling/extraction/embedding model with schema grammar-constrained decoding and a confidence score. | B (4/6) | [→](needle.md) |
 
 
 ## Comparison matrix
@@ -28,6 +29,7 @@
 | [MiniCPM-V](minicpm-v.md) | ✅ | A (4/6) | Use it when you need efficient on-device/edge multimodal (image+video) understanding with a small footprint — verify the per-weight license. |
 | [Stable Diffusion WebUI](stable-diffusion-webui.md) | ✅ | C (4/6) | Local web-based GUI for Stable Diffusion image generation, editing, and upscaling on your own GPU; requires technical setup and an NVIDIA GPU. |
 | [ComfyUI](comfyui.md) | ✅ | B (5/6) | Modular node-graph interface for building complex diffusion-model workflows locally; steep learning curve and significant GPU resources required. |
+| [Needle](needle.md) | ✅ | B (4/6) | On-device 2-bit tool-calling + structured extraction + embedding model with grammar-constrained decoding. |
 | llama.cpp / Ollama / MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages. |
 
 ## What belongs here

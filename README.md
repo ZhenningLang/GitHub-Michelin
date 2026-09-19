@@ -78,6 +78,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Stable Diffusion WebUI** | Use it when you want a local web-based GUI for Stable Diffusion image generation, editing, and upscaling on your own GPU — but it requires technical setup and an NVIDIA GPU. | AGPL-3.0 | C (4/6) | [EN](categories/on-device-ml/stable-diffusion-webui.md) · [中](categories/on-device-ml/stable-diffusion-webui.zh.md) |
 | **ComfyUI** | The most powerful and modular diffusion model GUI with a node-graph interface for building complex workflows locally — but it has a steep learning curve and requires significant GPU resources. | GPL-3.0 | B (5/6) | [EN](categories/on-device-ml/comfyui.md) · [中](categories/on-device-ml/comfyui.zh.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B (6/6) | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
+| **Needle** | Use it when a tiny on-device model must do tool calling, typed extraction and embeddings offline — it trades general chat for 8–29 MB task accuracy. | Apache-2.0 | B (4/6) | [EN](categories/on-device-ml/needle.md) · [中](categories/on-device-ml/needle.zh.md) |
 
 ### web-automation
 

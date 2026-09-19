@@ -75,6 +75,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Stable Diffusion WebUI** | 当你想在自有 GPU 上用本地 Web GUI 进行 Stable Diffusion 图像生成、编辑和超分时用它——但需要技术 setup 和 NVIDIA GPU。 | AGPL-3.0 | C（4/6） | [中](categories/on-device-ml/stable-diffusion-webui.zh.md) · [EN](categories/on-device-ml/stable-diffusion-webui.md) |
 | **ComfyUI** | 最强大、最模块化的扩散模型 GUI，带节点图界面，用于在本地构建复杂工作流——但学习曲线陡峭，需要大量 GPU 资源。 | GPL-3.0 | B（5/6） | [中](categories/on-device-ml/comfyui.zh.md) · [EN](categories/on-device-ml/comfyui.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
+| **Needle** | 当需要一个小体积端侧模型离线完成工具调用、类型化抽取与嵌入时用它——它用通用聊天换取 8–29 MB 的任务准确率。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 
 ### web-automation
 
