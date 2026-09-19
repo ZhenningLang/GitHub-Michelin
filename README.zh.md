@@ -287,6 +287,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | --- | --- | --- | --- | --- |
 | **Kong Gateway** | 基于 OpenResty/Nginx 的 API 网关，插件层把一个反向代理变成可编程边界：既管 REST/微服务，也从 3.x 起管 LLM/MCP 流量。 | Apache-2.0 | A（5/6） | [中](categories/api-gateway/kong.zh.md) · [EN](categories/api-gateway/kong.md) |
 | **Funtool** | 只有“Windows＋Claude Code＋NVIDIA”这条精确代理路径命中任务时才用它——当前可执行文件不透明，也无法从公开源码重建。 | MIT | C（5/6） | [中](categories/api-gateway/funtool.zh.md) · [EN](categories/api-gateway/funtool.md) |
+| **HarnessRouter** | 把 Codex、Claude Code、Hermes 等 harness 统一跑在一个 OpenAI Responses 兼容 API 之后的自托管网关——但它仅约 6 周历史，UHP 标准由单一厂商维护。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/harnessrouter.zh.md) · [EN](categories/api-gateway/harnessrouter.md) |
 
 ### geospatial
 
