@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | B (4/6) | [→](baoyu-skills.md) |
 | **Webnovel Writer** | Claude Code plugin for long-running serial fiction: chapter facts, retrieval, reviews, summaries, and continuity state. | B (5/6) | [→](webnovel-writer.md) |
+| **chinese-novelist-skill** | Pure-prompt MIT skill pack that turns a coding agent into a chaptered Chinese-novel pipeline (Q&A → outline → per-chapter drafting → word-count validation), with no runtime or retrieval layer. | B (4/6) | [→](chinese-novelist-skill.md) |
 | **huashu-skills** | Chinese creator toolkit with 21 skills for articles, topics, research, video outlines, images, PDF export, and creator workflows. | D (4/6) | [→](huashu-skills.md) |
 | **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (4/6) | [→](writing-agent.md) |
 | **marketingskills** | Broad marketing skill pack for product marketing, CRO, copywriting, SEO, analytics, lifecycle email, ads, and growth execution. | B (4/6) | [→](marketingskills.md) |
@@ -23,6 +24,7 @@
 | --- | --- | --- | --- |
 | [Baoyu Skills](baoyu-skills.md) | ✅ | B (4/6) | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. |
 | [Webnovel Writer](webnovel-writer.md) | ✅ | B (5/6) | Best for long serial-fiction continuity; GPL-3.0 and Claude Code coupling are the key tradeoffs. |
+| [chinese-novelist-skill](chinese-novelist-skill.md) | ✅ | B (4/6) | Lightweight zero-runtime Chinese novel pipeline; trades Webnovel Writer's indexed continuity for install simplicity and MIT licensing. |
 | [huashu-skills](huashu-skills.md) | ✅ | D (4/6) | Broad Chinese creator toolkit; license ambiguity and per-skill install paths make it riskier. |
 | [writing-agent](writing-agent.md) | ✅ | B (4/6) | Strict Chinese article production line; heavier than modular creator/writing skills. |
 | [marketingskills](marketingskills.md) | ✅ | B (4/6) | Best for SaaS/growth marketing work; not a general article-writing pipeline. |

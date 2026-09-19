@@ -379,6 +379,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **claude_translater** | shell 脚本＋Claude CLI 的文档翻译工具箱（PDF/DOCX/EPUB/PPTX）；translate-book 的灵感来源，但已不维护且无许可证。 | NOASSERTION | D（4/6） | [中](categories/agent-skills/writing/claude-translater.zh.md) · [EN](categories/agent-skills/writing/claude-translater.md) |
 | **Humanizer-zh** | 一个简体中文 Claude Code 单技能，按约 24 条清单改写掉文本里的 AI 痕迹，是 blader/humanizer 的本地化版。 | MIT | C（4/6） | [中](categories/agent-skills/de-ai-writing/humanizer-zh.zh.md) · [EN](categories/agent-skills/de-ai-writing/humanizer-zh.md) |
 | **Webnovel Writer** | 当 Claude Code 连载小说需要让章节、事实、检索、审查和摘要在长期写作中保持一致时用它。 | GPL-3.0 | B（5/6） | [中](categories/agent-skills/writing/webnovel-writer.zh.md) · [EN](categories/agent-skills/writing/webnovel-writer.md) |
+| **chinese-novelist-skill** | 纯提示词、MIT 的中文小说流水线技能包（三层问答、大纲与人物档案、逐章创作、字数校验），无运行时、无检索层。 | MIT | B（4/6） | [中](categories/agent-skills/writing/chinese-novelist-skill.zh.md) · [EN](categories/agent-skills/writing/chinese-novelist-skill.md) |
 
 #### agent-skills / security
 

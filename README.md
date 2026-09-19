@@ -382,6 +382,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **claude_translater** | Shell-script + Claude CLI document translation toolbox (PDF/DOCX/EPUB/PPTX); the unmaintained, unlicensed inspiration for translate-book. | NOASSERTION | D (4/6) | [EN](categories/agent-skills/writing/claude-translater.md) · [中](categories/agent-skills/writing/claude-translater.zh.md) |
 | **Humanizer-zh** | A single Chinese Claude Code skill that rewrites text to strip ~24 tell-tale AI-writing patterns; a localization of blader/humanizer. | MIT | C (4/6) | [EN](categories/agent-skills/de-ai-writing/humanizer-zh.md) · [中](categories/agent-skills/de-ai-writing/humanizer-zh.zh.md) |
 | **Webnovel Writer** | Use it when a Claude Code serial novel needs chapters, facts, retrieval, reviews, and summaries to stay consistent over a long run. | GPL-3.0 | B (5/6) | [EN](categories/agent-skills/writing/webnovel-writer.md) · [中](categories/agent-skills/writing/webnovel-writer.zh.md) |
+| **chinese-novelist-skill** | A pure-prompt MIT skill pack that turns a coding agent into a chaptered Chinese-novel pipeline (three-layer Q&A, outline and character files, per-chapter drafting, word-count validation) with no runtime or retrieval layer. | MIT | B (4/6) | [EN](categories/agent-skills/writing/chinese-novelist-skill.md) · [中](categories/agent-skills/writing/chinese-novelist-skill.zh.md) |
 
 #### agent-skills / security
 

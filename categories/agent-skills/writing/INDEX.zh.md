@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Baoyu Skills** | 宝玉出品的 20+ 个 coding agent 技能合集（翻译、markdown/HTML 排版、字幕与网页抓取、图片/图表/幻灯片生成），可装入 Claude Code、Codex 等支持 skill 的 harness。 | B（4/6） | [→](baoyu-skills.zh.md) |
 | **Webnovel Writer** | 面向长篇连载小说的 Claude Code plugin：章节事实、检索、审稿、摘要和连续性状态。 | B（5/6） | [→](webnovel-writer.zh.md) |
+| **chinese-novelist-skill** | 纯提示词、MIT 的中文小说流水线技能包（问答 → 大纲 → 逐章创作 → 字数校验），无运行时、无检索层。 | B（4/6） | [→](chinese-novelist-skill.zh.md) |
 | **huashu-skills** | 中文创作者工具箱，含 21 个文章、选题、调研、视频大纲、配图、PDF 导出和创作流程 skill。 | D（4/6） | [→](huashu-skills.zh.md) |
 | **writing-agent** | 中文长文生产线，包含分阶段策划、证据账本、审稿、去 AI 味、事实核查闸门和最终 clean text。 | B（4/6） | [→](writing-agent.zh.md) |
 | **marketingskills** | 面向 product marketing、CRO、copywriting、SEO、analytics、lifecycle email、ads 和 growth execution 的宽营销 skill pack。 | B（4/6） | [→](marketingskills.zh.md) |
@@ -23,6 +24,7 @@
 | --- | --- | --- | --- |
 | [Baoyu Skills](baoyu-skills.zh.md) | ✅ | B（4/6） | 宝玉出品的 20+ 个 coding agent 技能合集（翻译、markdown/HTML 排版、字幕与网页抓取、图片/图表/幻灯片生成），可装入 Claude Code、Codex 等支持 skill 的 harness。 |
 | [Webnovel Writer](webnovel-writer.zh.md) | ✅ | B（5/6） | 最适合长篇连载连续性；GPL-3.0 和 Claude Code 绑定是主要取舍。 |
+| [chinese-novelist-skill](chinese-novelist-skill.zh.md) | ✅ | B（4/6） | 轻量零运行时的中文小说流水线；用安装简单和 MIT 换来 Webnovel Writer 的可索引连续性。 |
 | [huashu-skills](huashu-skills.zh.md) | ✅ | D（4/6） | 宽中文创作者工具箱；许可证不清和 per-skill 安装路径让风险更高。 |
 | [writing-agent](writing-agent.zh.md) | ✅ | B（4/6） | 严格中文文章生产线；比模块化 creator / writing skills 更重。 |
 | [marketingskills](marketingskills.zh.md) | ✅ | B（4/6） | 最适合 SaaS / growth marketing；不是通用文章写作 pipeline。 |
