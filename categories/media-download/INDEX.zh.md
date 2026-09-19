@@ -28,7 +28,7 @@
 | [youtube-transcript-api](youtube-transcript-api.zh.md) | ✅ | A（6/6） | 当你想免密钥地为 RAG／摘要管线取回带时间戳的 YouTube 字幕时用它——但它依赖未公开接口、随时可能失效，且云端／机房 IP 现已必须配付费住宅代理。 |
 | [bulk-downloader-for-reddit](bulk-downloader-for-reddit.zh.md) | ✅ | D（4/6） | 当你想通过 OAuth 做可脚本化、可复现的 Reddit 文件加元数据归档时用它——但 Reddit 约 1000 帖的列表上限无法绕过，且发布自 2023 年初已停滞（GPL-3.0）。 |
 | [yt-dlp](yt-dlp.zh.md) | ✅ | A（6/6） | 活跃维护的 CLI，用于从 YouTube 和数千站点下载音视频；youtube-dl 的事实继任者，提取器修复更快、功能更现代。 |
-| gallery-dl | 未收录 | — | 各页对比里点到的更活跃分叉与其他下载器。 |
+| 其他下载器 / 更活跃的分叉 | 未收录 | — | 各页对比里点到的其他下载器与分叉。 |
 
 ## 什么该放这里
 

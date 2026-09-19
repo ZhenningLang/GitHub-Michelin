@@ -25,7 +25,6 @@
 | [Gaia](gaia.md) | ✅ | D (5/6) | Use it when studying the "pipelines-as-compiled-plugins" design as a read-only reference — the repo is archived and abandoned, never pick it for new production work. |
 | [Airflow Maintenance DAGs](airflow-maintenance-dags.md) | ✅ | D (4/6) | Use it when self-managed Airflow needs proven copy-in DAGs to clean metadata-DB rows and stale logs — they run destructive DELETEs tied to version-specific internals, so dry-run and back up first. |
 | [n8n](n8n.md) | ✅ | A (4/6) | Visual-first workflow automation with 400+ integrations and native AI; self-hostable but fair-code licensed and not for real-time streaming. |
-| Prefect / Dagster / Argo Workflows / Temporal | 未收录 | — | Other workflow orchestrators named across the pages. |
 
 ## What belongs here
 

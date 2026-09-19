@@ -28,7 +28,7 @@
 | [youtube-transcript-api](youtube-transcript-api.md) | ✅ | A (6/6) | Use it when you need timestamped YouTube transcripts key-free for a RAG/summarization pipeline — but it rides an undocumented endpoint that can break anytime, and cloud/datacenter IPs now require paid residential proxies. |
 | [bulk-downloader-for-reddit](bulk-downloader-for-reddit.md) | ✅ | D (4/6) | Use it when you want a scriptable, reproducible Reddit archive of files plus metadata via OAuth — but Reddit's ~1000-post listing cap is unbypassable, and releases have stalled since early 2023 (GPL-3.0). |
 | [yt-dlp](yt-dlp.md) | ✅ | A (6/6) | Actively maintained CLI for downloading video/audio from YouTube and thousands of sites; de-facto successor to youtube-dl with faster extractor fixes and modern features. |
-| gallery-dl | 未收录 | — | More-active forks and alternative downloaders named across the pages. |
+| Other downloaders / more-active forks | 未收录 | — | Alternative downloaders and forks named across the pages. |
 
 ## What belongs here
 
