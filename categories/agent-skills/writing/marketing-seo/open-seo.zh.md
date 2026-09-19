@@ -2,7 +2,7 @@
 name: open-seo
 slug: open-seo
 repo: https://github.com/every-app/open-seo
-category: writing
+category: marketing-seo
 tags: [seo, marketing, mcp, agent-skill, app]
 language: TypeScript
 license: MIT
@@ -71,7 +71,7 @@ health:
 
 Open source alternative to Semrush and Ahrefs
 
-![open-seo — 健康度雷达](../../../assets/health/open-seo.zh.svg)
+![open-seo — 健康度雷达](../../../../assets/health/open-seo.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ Open source alternative to Semrush and Ahrefs
 - **你今天就需要成熟 Semrush / Ahrefs 替代品。** OpenSEO 很年轻且更聚焦；成熟商业套件仍有更宽的数据集、dashboard 和支持。
 - **你不能自托管或管理 secrets。** Docker / Cloudflare 部署、DataForSEO credentials、可选 Google OAuth 和可选 OpenRouter key 都是运维责任。
 - **你只需要 marketing copy skills。** 文案、CRO、lifecycle 和更宽 marketing execution 用 [marketingskills](marketingskills.zh.md)。
-- **你要设计 / UI 品味指导。** OpenSEO 已从 `agent-skills/design` 移出；设计任务用 [Hallmark](../design/hallmark.zh.md) 或 [Taste-Skill](../design/taste-skill.zh.md)。
+- **你要设计 / UI 品味指导。** OpenSEO 已从 `agent-skills/design` 移出；设计任务用 [Hallmark](../../design/hallmark.zh.md) 或 [Taste-Skill](../../design/taste-skill.zh.md)。
 
 ## 横向对比
 

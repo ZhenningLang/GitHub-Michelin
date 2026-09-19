@@ -2,7 +2,7 @@
 name: huashu-skills
 slug: huashu-skills
 repo: https://github.com/alchaincyf/huashu-skills
-category: writing
+category: content-production
 tags: [agent-skill, writing, huashu-skills, skill-pack]
 language: Python
 license: NOASSERTION
@@ -66,7 +66,7 @@ health:
 
 花叔的内容创作 Skills 合集 - AI审校、选题生成、视频大纲、素材搜索等 11 个实用技能
 
-![huashu-skills — 健康度雷达](../../../assets/health/huashu-skills.zh.svg)
+![huashu-skills — 健康度雷达](../../../../assets/health/huashu-skills.zh.svg)
 
 ## 何时使用
 
@@ -78,7 +78,7 @@ health:
 
 - **许可证必须清晰。** 本次 README 没看到 license 段，`LICENSE` 返回 404；复用时应保守处理。
 - **你需要一条严格端到端文章生产线。** [writing-agent](writing-agent.zh.md) 更流程化，也有 evidence gate。
-- **你需要英文 SaaS marketing 或 growth execution。** [marketingskills](marketingskills.zh.md) 更专门覆盖 CRO、SEO、analytics 和 sales enablement。
+- **你需要英文 SaaS marketing 或 growth execution。** [marketingskills](../marketing-seo/marketingskills.zh.md) 更专门覆盖 CRO、SEO、analytics 和 sales enablement。
 - **你不能按子 skill 安装。** README 的安装模型是 per skill path，不是清晰版本化 package contract。
 - **你需要审计过的输出质量声明。** AI 检测率降低、图片管线或报告质量等声明仍需本地验证。
 
@@ -88,7 +88,7 @@ health:
 |---|---|---|---|
 | [writing-agent](writing-agent.zh.md) | ✅ | 单篇文章必须走严格 staged production 和 fact-check workflow 时选 writing-agent。 | writing-agent 更深更重；huashu-skills 更宽、更模块化。 |
 | [Baoyu Skills](baoyu-skills.zh.md) | ✅ | 需要翻译、排版、抓取和媒体等宽 coding-agent 工具时选 Baoyu Skills。 | Baoyu 更偏通用工具；huashu-skills 面向中文创作者流程。 |
-| [marketingskills](marketingskills.zh.md) | ✅ | SaaS / growth marketing 选 marketingskills。 | marketingskills 更营销专门；huashu-skills 更 creator-content。 |
+| [marketingskills](../marketing-seo/marketingskills.zh.md) | ✅ | SaaS / growth marketing 选 marketingskills。 | marketingskills 更营销专门；huashu-skills 更 creator-content。 |
 | 自写 creator toolkit | 未收录 | 内容渠道、图床和编辑风格固定时自写。 | 更贴本地，但每个 skill 都要自己维护。 |
 
 

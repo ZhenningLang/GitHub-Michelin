@@ -2,7 +2,7 @@
 name: translate-book
 slug: translate-book
 repo: https://github.com/deusyu/translate-book
-category: writing
+category: translation
 tags: [agent-skills, book-translation, epub, claude-code, codex, parallel-subagents]
 language: Python
 license: MIT
@@ -67,18 +67,18 @@ health:
 
 An agent skill for Codex, Claude Code, and OpenClaw that translates entire books (PDF/DOCX/EPUB) into another language using parallel subagents, with a glossary + neighbor-context machinery aimed at cross-chapter term and pronoun consistency.
 
-![translate-book — health radar](../../../assets/health/translate-book.svg)
+![translate-book — health radar](../../../../assets/health/translate-book.svg)
 
 ## When to use
 
 You're a technical reader (or engineer) with a whole ebook — say a 300-page English EPUB or PDF — that you want to read in Chinese, and you already run a skill-capable coding agent (Codex, Claude Code, OpenClaw). Pasting chapters into a chat window loses consistency by chapter ten: the same proper noun comes back translated three different ways, and a "he" flips gender mid-book. You install translate-book (`npx skills add deusyu/translate-book`), point the agent at the file, and it runs a full pipeline: Calibre converts to Markdown chunks (~6000 chars), a pre-built `glossary.json` pins canonical translations that get injected into every chunk's prompt as hard constraints, each chunk sees short read-only excerpts of its neighbors for pronoun/entity resolution, and eight parallel subagents translate with manifest hash validation and resumable state before merging into HTML/DOCX/EPUB/PDF.
 
-You pick it over [bilingual_book_maker](../../reading-tools/bilingual-book-maker.md) when you want the translation done *by your agent subscription* (no separate API key setup) with deliberate term-consistency machinery, rather than a scriptable CLI that streams through an LLM API and emits bilingual side-by-side ebooks; you pick it over [claude_translater](claude-translater.md) — the project it was inspired by — because it restructures the same pipeline as a portable skill with parallel subagents, manifest validation, and selective re-translation instead of sequential shell scripts.
+You pick it over [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.md) when you want the translation done *by your agent subscription* (no separate API key setup) with deliberate term-consistency machinery, rather than a scriptable CLI that streams through an LLM API and emits bilingual side-by-side ebooks; you pick it over [claude_translater](claude-translater.md) — the project it was inspired by — because it restructures the same pipeline as a portable skill with parallel subagents, manifest validation, and selective re-translation instead of sequential shell scripts.
 
 ## When NOT to use
 
-- **You want a scriptable, unattended CLI.** If you need a one-command batch job that calls an LLM/MT API directly (OpenAI, Anthropic, DeepL, local Ollama, …) without driving an agent loop, use [bilingual_book_maker](../../reading-tools/bilingual-book-maker.md) instead — translate-book requires an interactive agent harness orchestrating subagents, which is harder to schedule and supervise.
-- **You only translate webpages or short articles.** If your reading is in the browser, use [Read Frog](../../reading-tools/read-frog.md) or [FluentRead](../../reading-tools/fluentread.md) instead — they translate in place as you read, with no file pipeline at all.
+- **You want a scriptable, unattended CLI.** If you need a one-command batch job that calls an LLM/MT API directly (OpenAI, Anthropic, DeepL, local Ollama, …) without driving an agent loop, use [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.md) instead — translate-book requires an interactive agent harness orchestrating subagents, which is harder to schedule and supervise.
+- **You only translate webpages or short articles.** If your reading is in the browser, use [Read Frog](../../../reading-tools/read-frog.md) or [FluentRead](../../../reading-tools/fluentread.md) instead — they translate in place as you read, with no file pipeline at all.
 - **You can't install Calibre and Pandoc.** Both are hard prerequisites (input conversion and output building). If you want a pure-Python install, bilingual_book_maker needs only `pip` and an API key.
 - **You need bilingual (side-by-side) output.** translate-book produces a single target-language book. For bilingual epub/txt/srt output, use bilingual_book_maker instead.
 - **You need publication-grade or legally safe translation.** For books you will publish or sell, use professional CAT tooling (e.g. Trados — 未收录, commercial) and human translators instead; this is an LLM pipeline with heuristic consistency checks, not a certified workflow.
@@ -88,10 +88,10 @@ You pick it over [bilingual_book_maker](../../reading-tools/bilingual-book-maker
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [bilingual_book_maker](../../reading-tools/bilingual-book-maker.md) | ✅ | Choose bilingual_book_maker when you want a scriptable CLI that talks straight to LLM/MT APIs and emits bilingual ebooks; choose translate-book when the translation should run inside your coding-agent subscription with explicit glossary/neighbor-context consistency machinery. | bilingual_book_maker is older (2023), PyPI-packaged, backend-agnostic, and unattended-friendly; translate-book gives per-chunk term tables, pronoun context, and selective re-translation, but only inside an agent harness and with Calibre+Pandoc installed. |
+| [bilingual_book_maker](../../../reading-tools/bilingual-book-maker.md) | ✅ | Choose bilingual_book_maker when you want a scriptable CLI that talks straight to LLM/MT APIs and emits bilingual ebooks; choose translate-book when the translation should run inside your coding-agent subscription with explicit glossary/neighbor-context consistency machinery. | bilingual_book_maker is older (2023), PyPI-packaged, backend-agnostic, and unattended-friendly; translate-book gives per-chunk term tables, pronoun context, and selective re-translation, but only inside an agent harness and with Calibre+Pandoc installed. |
 | [claude_translater](claude-translater.md) | ✅ | Choose translate-book over its inspiration in almost every case: it keeps the same Calibre→chunk→translate pipeline but adds parallel subagents, manifest validation, resume, and a glossary feedback loop. | claude_translater is the earlier shell-script version (Claude CLI only, sequential, no tagged releases, no LICENSE file); translate-book is the restructured, actively maintained successor — but claude_translater also ships a PPTX translator, which translate-book does not. |
-| [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Baoyu Skills when translation is one task among many in a content pipeline (format, publish, images); choose translate-book when the job is specifically a whole book. | Baoyu's `baoyu-translate` is a three-mode text-translation skill with glossary support, not a book-length pipeline with chunking, manifest validation, and ebook output — installing the 20+ skill pack for one book job is the wrong shape. |
-| [Read Frog](../../reading-tools/read-frog.md) | ✅ | Choose Read Frog when the reading happens in the browser and you want in-place bilingual overlays; choose translate-book when you own an ebook file and want a finished translated artifact. | Read Frog is a browser extension for webpages and subtitles with BYOK providers — it never produces a translated EPUB/DOCX/PDF you can keep or send to a Kindle. |
+| [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | Choose Baoyu Skills when translation is one task among many in a content pipeline (format, publish, images); choose translate-book when the job is specifically a whole book. | Baoyu's `baoyu-translate` is a three-mode text-translation skill with glossary support, not a book-length pipeline with chunking, manifest validation, and ebook output — installing the 20+ skill pack for one book job is the wrong shape. |
+| [Read Frog](../../../reading-tools/read-frog.md) | ✅ | Choose Read Frog when the reading happens in the browser and you want in-place bilingual overlays; choose translate-book when you own an ebook file and want a finished translated artifact. | Read Frog is a browser extension for webpages and subtitles with BYOK providers — it never produces a translated EPUB/DOCX/PDF you can keep or send to a Kindle. |
 
 ## Health & viability
 

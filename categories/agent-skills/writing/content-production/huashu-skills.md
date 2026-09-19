@@ -2,7 +2,7 @@
 name: huashu-skills
 slug: huashu-skills
 repo: https://github.com/alchaincyf/huashu-skills
-category: writing
+category: content-production
 tags: [agent-skill, writing, huashu-skills, skill-pack]
 language: Python
 license: NOASSERTION
@@ -66,7 +66,7 @@ health:
 
 花叔的内容创作 Skills 合集 - AI审校、选题生成、视频大纲、素材搜索等 11 个实用技能
 
-![huashu-skills — health radar](../../../assets/health/huashu-skills.svg)
+![huashu-skills — health radar](../../../../assets/health/huashu-skills.svg)
 
 ## When to use
 
@@ -78,7 +78,7 @@ The upstream README describes 21 practical skills, including end-to-end workflow
 
 - **License clarity is required.** The README did not expose a license section in this pass and `LICENSE` returned 404; keep reuse conservative.
 - **You need one strict end-to-end article production line.** [writing-agent](writing-agent.md) is more process-heavy and evidence-gated.
-- **You need English SaaS marketing or growth execution.** [marketingskills](marketingskills.md) is more specialized for CRO, SEO, analytics, and sales enablement.
+- **You need English SaaS marketing or growth execution.** [marketingskills](../marketing-seo/marketingskills.md) is more specialized for CRO, SEO, analytics, and sales enablement.
 - **You cannot install individual subskills.** The README's installation model is per skill path, not one clearly versioned package contract.
 - **You require audited output quality claims.** Claims such as AI-detection reduction, image pipelines, or report quality still require local validation.
 
@@ -88,7 +88,7 @@ The upstream README describes 21 practical skills, including end-to-end workflow
 |---|---|---|---|
 | [writing-agent](writing-agent.md) | ✅ | Choose writing-agent when one article must move through a strict staged production and fact-check workflow. | writing-agent is deeper and heavier; huashu-skills is broader and modular. |
 | [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Baoyu Skills for broad coding-agent utilities across translation, formatting, capture, and media. | Baoyu is more utility-oriented; huashu-skills targets Chinese creator workflows. |
-| [marketingskills](marketingskills.md) | ✅ | Choose marketingskills for SaaS/growth marketing. | marketingskills is marketing-specialized; huashu-skills is creator-content oriented. |
+| [marketingskills](../marketing-seo/marketingskills.md) | ✅ | Choose marketingskills for SaaS/growth marketing. | marketingskills is marketing-specialized; huashu-skills is creator-content oriented. |
 | Custom creator toolkit | 未收录 | Choose custom when your content channels, image hosts, and editorial style are fixed. | Better local fit, but you must maintain every skill yourself. |
 
 

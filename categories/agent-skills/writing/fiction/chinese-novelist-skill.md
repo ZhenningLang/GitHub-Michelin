@@ -2,7 +2,7 @@
 name: chinese-novelist-skill
 slug: chinese-novelist-skill
 repo: https://github.com/PenglongHuang/chinese-novelist-skill
-category: writing
+category: fiction
 tags: [agent-skill, novel-writing, chinese, long-form-writing, skill-pack]
 language: Markdown
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 A pure prompt-and-reference skill pack that walks a coding agent through Q&A → outline → chapter-by-chapter drafting of a 10–50 chapter Chinese novel, with cross-session preference memory, resume-after-interruption, and a word-count validation loop.
 
-![chinese-novelist-skill — health radar](../../../assets/health/chinese-novelist-skill.svg)
+![chinese-novelist-skill — health radar](../../../../assets/health/chinese-novelist-skill.svg)
 
 ## When to use
 
@@ -78,9 +78,9 @@ Pick this over [Webnovel Writer](webnovel-writer.md) when what you want is a **l
 ## When NOT to use
 
 - **You need continuity that survives dozens of chapters and can be queried or audited.** Use [Webnovel Writer](webnovel-writer.md) instead, because it maintains explicit story contracts plus a searchable index, while this pack relies on outline summaries the agent must re-read every chapter — and its own issue tracker carries reports of repeated paragraph blocks (`#31`, `#25`), loops (`#32`), and broken resume (`#22`).
-- **Your task is non-fiction or article production with a fact-check gate.** Use [writing-agent](writing-agent.md) instead; this pack is a fiction generator with no evidence ledger, citation step, or factual gate.
-- **You want a broad multi-task skill bundle, not a single-purpose novel generator.** Use [Baoyu Skills](baoyu-skills.md) or [huashu-skills](huashu-skills.md) instead; they cover translation, formatting, images, and publishing alongside writing, while this pack only produces a novel project folder.
-- **Prose de-AI-ing is a separate, reusable step you run on arbitrary text.** Use a dedicated de-AI skill such as [Humanizer-zh](../de-ai-writing/humanizer-zh.md) instead; here the "remove AI flavor" pass is a bullet list baked into the chapter flow, with no standalone rewriting entry point.
+- **Your task is non-fiction or article production with a fact-check gate.** Use [writing-agent](../content-production/writing-agent.md) instead; this pack is a fiction generator with no evidence ledger, citation step, or factual gate.
+- **You want a broad multi-task skill bundle, not a single-purpose novel generator.** Use [Baoyu Skills](../content-production/baoyu-skills.md) or [huashu-skills](../content-production/huashu-skills.md) instead; they cover translation, formatting, images, and publishing alongside writing, while this pack only produces a novel project folder.
+- **Prose de-AI-ing is a separate, reusable step you run on arbitrary text.** Use a dedicated de-AI skill such as [Humanizer-zh](../../de-ai-writing/humanizer-zh.md) instead; here the "remove AI flavor" pass is a bullet list baked into the chapter flow, with no standalone rewriting entry point.
 - **You are not inside a skill-capable coding agent, or you write in a language other than Chinese.** Use a standalone desktop editor such as novelWriter (not indexed) or a plain chat workflow instead; this pack has no runtime of its own and its prompts, templates, and examples are Chinese-first.
 
 ## Comparison
@@ -88,9 +88,9 @@ Pick this over [Webnovel Writer](webnovel-writer.md) when what you want is a **l
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Webnovel Writer](webnovel-writer.md) | ✅ | Choose chinese-novelist-skill when you want a zero-runtime, MIT, harness-portable prompt pack; choose Webnovel Writer when a long serial needs queryable continuity state and review gates. | The light pack installs anywhere and stays readable/editable, but gives up retrieval, chapter commits, and an audit trail — its continuity is only as good as the agent's outline re-reads. |
-| [writing-agent](writing-agent.md) | ✅ | Choose chinese-novelist-skill for fiction chapters with hooks and character consistency; choose writing-agent when the deliverable is a fact-checked Chinese article with an evidence ledger. | Fiction vs. non-fiction: the pack optimizes suspense, dialogue ratio, and 3000–5000-character chapters; writing-agent optimizes sourced claims and de-AI editorial gates. |
-| [Baoyu Skills](baoyu-skills.md) | ✅ | Choose chinese-novelist-skill when the whole job is a chaptered novel; choose Baoyu Skills when you need a general Chinese content/formatting toolbox and will assemble the novel flow yourself. | Narrow and opinionated vs. broad and composable: the pack gives a ready chapter pipeline, Baoyu gives many smaller skills with no novel-specific state. |
-| [huashu-skills](huashu-skills.md) | ✅ | Choose chinese-novelist-skill for a focused, permissively licensed novel generator; choose huashu-skills only if you accept its license ambiguity and want an all-in-one creator toolkit. | License clarity and scope: MIT and one job here, vs. NOASSERTION and a wider but heavier skill set there. |
+| [writing-agent](../content-production/writing-agent.md) | ✅ | Choose chinese-novelist-skill for fiction chapters with hooks and character consistency; choose writing-agent when the deliverable is a fact-checked Chinese article with an evidence ledger. | Fiction vs. non-fiction: the pack optimizes suspense, dialogue ratio, and 3000–5000-character chapters; writing-agent optimizes sourced claims and de-AI editorial gates. |
+| [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | Choose chinese-novelist-skill when the whole job is a chaptered novel; choose Baoyu Skills when you need a general Chinese content/formatting toolbox and will assemble the novel flow yourself. | Narrow and opinionated vs. broad and composable: the pack gives a ready chapter pipeline, Baoyu gives many smaller skills with no novel-specific state. |
+| [huashu-skills](../content-production/huashu-skills.md) | ✅ | Choose chinese-novelist-skill for a focused, permissively licensed novel generator; choose huashu-skills only if you accept its license ambiguity and want an all-in-one creator toolkit. | License clarity and scope: MIT and one job here, vs. NOASSERTION and a wider but heavier skill set there. |
 | novelWriter | not indexed | Choose novelWriter when you want a standalone, cross-platform desktop app to write and organize a novel with no LLM involved; choose chinese-novelist-skill when an agent should generate the draft. | Local editor control and no model cost vs. automated drafting that depends on your agent, model budget, and context window. |
 
 ## Health & viability

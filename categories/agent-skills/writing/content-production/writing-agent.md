@@ -2,7 +2,7 @@
 name: writing-agent
 slug: writing-agent
 repo: https://github.com/dongbeixiaohuo/writing-agent
-category: writing
+category: content-production
 tags: [agent-skill, writing, writing-agent, skill-pack]
 language: JavaScript
 license: MIT
@@ -66,7 +66,7 @@ health:
 
 🚀 一个基于 Claude Code (Skills + Subagents) 的“去AI味”全栈写作系统。不仅防套路，更通过专属规则强制注入人类观点与细节，搭配读者测试评估与自动图文排版。全面支持 DeepSeek / 智谱GLM / MiniMax 等国产低成本大模型，提供从选题、风格建模到审稿发布的高维全自动写作工作流。
 
-![writing-agent — health radar](../../../assets/health/writing-agent.svg)
+![writing-agent — health radar](../../../../assets/health/writing-agent.svg)
 
 ## When to use
 
@@ -79,7 +79,7 @@ It fits users willing to run a full Claude Code project workflow, inspect interm
 - **You want a short, one-shot draft.** This project is intentionally heavy; a simple prompt or smaller writing skill is cheaper.
 - **You cannot keep intermediate files or evidence ledgers.** The value comes from artifacts such as theme files, evidence ledger, drafts, reviews, fact-check reports, and final clean output.
 - **You do not use Claude Code or a compatible project workflow.** The full path depends on project runtime structure, agents, workflows, and scripts.
-- **You need English marketing/copy workflows.** [marketingskills](marketingskills.md) is broader for SaaS marketing, CRO, SEO, and lifecycle execution.
+- **You need English marketing/copy workflows.** [marketingskills](../marketing-seo/marketingskills.md) is broader for SaaS marketing, CRO, SEO, and lifecycle execution.
 - **You are unwilling to provide real material.** Upstream emphasizes true experiences/evidence and blocks unsupported facts; generic inputs weaken the pipeline.
 
 ## Comparison
@@ -88,7 +88,7 @@ It fits users willing to run a full Claude Code project workflow, inspect interm
 |---|---|---|---|
 | [huashu-skills](huashu-skills.md) | ✅ | Choose huashu-skills for a broader Chinese creator toolkit: topics, research, editing, video outlines, and images. | huashu-skills is a toolkit collection; writing-agent is a stricter end-to-end writing production line. |
 | [Baoyu Skills](baoyu-skills.md) | ✅ | Choose Baoyu Skills for general translation, formatting, transcript, webpage capture, and media utilities. | Broader utilities, less opinionated long-form writing pipeline. |
-| [marketingskills](marketingskills.md) | ✅ | Choose marketingskills for marketing/CRO/SEO/growth tasks. | Marketing execution versus Chinese long-form article production. |
+| [marketingskills](../marketing-seo/marketingskills.md) | ✅ | Choose marketingskills for marketing/CRO/SEO/growth tasks. | Marketing execution versus Chinese long-form article production. |
 | Custom editorial workflow | 未收录 | Choose custom when your publication has fixed stages, reviewers, or compliance rules. | More exact to one org, but more maintenance work. |
 
 

@@ -2,7 +2,7 @@
 name: chinese-novelist-skill
 slug: chinese-novelist-skill
 repo: https://github.com/PenglongHuang/chinese-novelist-skill
-category: writing
+category: fiction
 tags: [agent-skill, novel-writing, chinese, long-form-writing, skill-pack]
 language: Markdown
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 一个纯提示词与参考文档的技能包：让 coding agent 按「问答 → 大纲 → 逐章创作」生成 10–50 章中文小说，并带跨会话偏好记忆、中断续写和字数校验循环。
 
-![chinese-novelist-skill — 健康度雷达](../../../assets/health/chinese-novelist-skill.zh.svg)
+![chinese-novelist-skill — 健康度雷达](../../../../assets/health/chinese-novelist-skill.zh.svg)
 
 ## 何时使用
 
@@ -78,9 +78,9 @@ health:
 ## 何时不用
 
 - **你需要能撑过几十章、且可查询可审计的连续性。** 改用 [Webnovel Writer](webnovel-writer.zh.md)，因为它维护显式的故事契约加上可检索索引，而本技能包依赖 agent 每章重读大纲摘要——它自己的 issue 列表里就有段落重复（`#31`、`#25`）、陷入循环（`#32`）和续写失效（`#22`）的报告。
-- **你的任务是非虚构写作或带事实核查闸门的文章生产。** 改用 [writing-agent](writing-agent.zh.md)；本技能包是小说生成器，没有证据账本、引用步骤或事实闸门。
-- **你要的是一套多任务技能合集，而不是单一用途的小说生成器。** 改用 [Baoyu Skills](baoyu-skills.zh.md) 或 [huashu-skills](huashu-skills.zh.md)；它们除了写作还覆盖翻译、排版、配图和发布，而本技能包只产出一个小说项目文件夹。
-- **去 AI 味是你对任意文本单独跑的、可复用的一步。** 改用专门去 AI 味的技能，例如 [Humanizer-zh](../de-ai-writing/humanizer-zh.zh.md)；本技能包里的「去 AI 味」只是嵌在逐章流程里的一段要点清单，没有独立的重写入口。
+- **你的任务是非虚构写作或带事实核查闸门的文章生产。** 改用 [writing-agent](../content-production/writing-agent.zh.md)；本技能包是小说生成器，没有证据账本、引用步骤或事实闸门。
+- **你要的是一套多任务技能合集，而不是单一用途的小说生成器。** 改用 [Baoyu Skills](../content-production/baoyu-skills.zh.md) 或 [huashu-skills](../content-production/huashu-skills.zh.md)；它们除了写作还覆盖翻译、排版、配图和发布，而本技能包只产出一个小说项目文件夹。
+- **去 AI 味是你对任意文本单独跑的、可复用的一步。** 改用专门去 AI 味的技能，例如 [Humanizer-zh](../../de-ai-writing/humanizer-zh.zh.md)；本技能包里的「去 AI 味」只是嵌在逐章流程里的一段要点清单，没有独立的重写入口。
 - **你不在 skill-capable 的 coding agent 里工作，或你要写的不是中文。** 改用独立桌面编辑器（如 novelWriter，未收录）或普通对话模型；本技能包自身没有运行时，提示词、模板和示例都以中文为先。
 
 ## 横向对比
@@ -88,9 +88,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Webnovel Writer](webnovel-writer.zh.md) | ✅ | 想要零运行时、MIT、可跨 harness 搬运的提示词包，选 chinese-novelist-skill；长篇连载需要可查询的连续性状态和审稿闸门，选 Webnovel Writer。 | 轻包哪里都能装、可读可改，但放弃检索、章节提交和审计轨迹——它的连贯性只取决于 agent 每次重读大纲的质量。 |
-| [writing-agent](writing-agent.zh.md) | ✅ | 要带钩子、人物一致的分章小说选 chinese-novelist-skill；要一篇带证据账本、经事实核查的中文文章，选 writing-agent。 | 虚构对非虚构：本包优化悬念、对话占比和 3000–5000 字章节；writing-agent 优化有出处的断言和去 AI 味编辑闸门。 |
-| [Baoyu Skills](baoyu-skills.zh.md) | ✅ | 整个任务就是一本分章小说，选 chinese-novelist-skill；需要通用中文内容与排版工具箱、自己拼装小说流程，选 Baoyu Skills。 | 窄而专断对宽而可组合：本包给现成分章流水线，Baoyu 给许多小技能但没有小说专用状态。 |
-| [huashu-skills](huashu-skills.zh.md) | ✅ | 要聚焦、许可宽松的小说生成器，选 chinese-novelist-skill；只有能接受其许可含糊、且想要一站式创作者工具箱时，才选 huashu-skills。 | 许可清晰度与范围：这里 MIT 且只做一件事，那边是 NOASSERTION 且更宽也更重。 |
+| [writing-agent](../content-production/writing-agent.zh.md) | ✅ | 要带钩子、人物一致的分章小说选 chinese-novelist-skill；要一篇带证据账本、经事实核查的中文文章，选 writing-agent。 | 虚构对非虚构：本包优化悬念、对话占比和 3000–5000 字章节；writing-agent 优化有出处的断言和去 AI 味编辑闸门。 |
+| [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | 整个任务就是一本分章小说，选 chinese-novelist-skill；需要通用中文内容与排版工具箱、自己拼装小说流程，选 Baoyu Skills。 | 窄而专断对宽而可组合：本包给现成分章流水线，Baoyu 给许多小技能但没有小说专用状态。 |
+| [huashu-skills](../content-production/huashu-skills.zh.md) | ✅ | 要聚焦、许可宽松的小说生成器，选 chinese-novelist-skill；只有能接受其许可含糊、且想要一站式创作者工具箱时，才选 huashu-skills。 | 许可清晰度与范围：这里 MIT 且只做一件事，那边是 NOASSERTION 且更宽也更重。 |
 | novelWriter | 未收录 | 想要不涉及 LLM 的独立跨平台桌面应用来写作和组织小说，选 novelWriter；要让 agent 生成初稿，选 chinese-novelist-skill。 | 本地编辑器可控、无模型成本，对上自动写作依赖你的 agent、模型预算和上下文窗口。 |
 
 ## 健康度与可持续性

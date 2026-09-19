@@ -12,7 +12,7 @@
 | **slides-ppt** | Presentation and slide-deck skills for agent-generated decks. | [→](slides-ppt/INDEX.md) |
 | **visual-content** | Social cards, article illustrations, covers, and other visual-content skills. | [→](visual-content/INDEX.md) |
 | **de-ai-writing** | Humanizing AI text, removing AI tells, and enforcing human-sounding prose. | [→](de-ai-writing/INDEX.md) |
-| **writing** | Translation, long-form writing workflows, editorial and publishing pipelines. | [→](writing/INDEX.md) |
+| **writing** | Fiction, whole-document translation, Chinese content production, and marketing/SEO — writing skills split by sub-task. | [→](writing/INDEX.md) |
 | **security** | Security review, threat modeling, cybersecurity playbooks. | [→](security/INDEX.md) |
 | **context-engineering** | Structuring, compressing, and routing what an agent reads. | [→](context-engineering/INDEX.md) |
 | **prompt-engineering** | Writing, generating, and collecting prompts for any AI tool — generator skills, community prompt libraries, and knowledge bases. | [→](prompt-engineering/INDEX.md) |
