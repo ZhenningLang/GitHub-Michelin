@@ -33,7 +33,8 @@ The fastest path is the `add-project` skill (`.claude/skills/add-project/`). By 
    most valuable section is `When NOT to use` — be concrete and honest, not nice.
 5. In `Comparison`, name real substitutes. Mark ones not in the index `未收录`; link ones that are.
 6. Add the project to its category `INDEX.md` **and** `INDEX.zh.md` (one-liner + comparison row).
-7. Set `last_verified` to today; run `tools/lint.py`.
+7. Set `last_verified` to today; run `tools/lint.py` and `tools/reverse_index.py --check`
+   (regenerate the committed `reports/` with `tools/reverse_index.py --write`).
 
 ## Updating / de-staling
 
@@ -46,16 +47,20 @@ live repo when an entry is older than the staleness threshold, and flags abandon
 (default 12) the linter WARNs — that's the signal to **split** it into sub-categories; thin or
 overlapping categories should be **merged**. Use the `refactor-index` skill
 (`.claude/skills/refactor-index/`): additive-first, `git mv` to preserve history, repairs links,
-ends on a clean `tools/lint.py`.
+ends on a clean `tools/lint.py` + `tools/reverse_index.py --check`.
 
 ## Before you commit
 
 ```bash
 python3 tools/lint.py
+python3 tools/reverse_index.py --check
+python3 tools/quality_scan.py --fail-on-gated
+# or: make gates
 ```
 
-Fix every ERROR. WARNINGs (e.g. staleness) should be addressed or explained. CI runs the same
-linter on every PR.
+Fix every ERROR. WARNINGs (e.g. staleness) should be addressed or explained. CI runs the same gates
+on every PR (`.github/workflows/lint.yml`: `structural-lint` = lint + reverse-index check;
+`quality-gate` = gated quality scan).
 
 ## Tone
 

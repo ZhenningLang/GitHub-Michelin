@@ -107,6 +107,8 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
 9. **Validate**: run structural lint, then run a scoped or changed-only quality scan for the pages
    updated in this sync:
    - `python3 tools/lint.py`.
+   - `python3 tools/reverse_index.py --check` — regenerate with `--write` and commit `reports/` when
+     the sync changed which alternatives a page names, or added/removed/renamed pages.
    - Either scope the exact bilingual pair:
      `python3 tools/quality_scan.py --scope categories/<cat>/<slug>.md --scope categories/<cat>/<slug>.zh.md --fail-on-any-scoped`
    - Or, when the updated pages are the relevant markdown changes in the worktree, use changed-only:

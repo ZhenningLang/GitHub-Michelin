@@ -95,8 +95,11 @@ For each justified move:
    ```
 5. **Normalize tags** if you touched tag drift: pick the canonical spelling and apply it across
    every affected page.
-6. **Lint** — `python3 tools/lint.py` must be **0 errors** before you stop. It catches orphans,
-   dead links, `category != dir`, and missing INDEX files.
+6. **Lint + refresh the reverse index** — `python3 tools/lint.py` must be **0 errors** before you
+   stop. It catches orphans, dead links, `category != dir`, and missing INDEX files. Moves and
+   renames also change the committed reverse index, so run `python3 tools/reverse_index.py --write`
+   and commit `reports/` (`python3 tools/reverse_index.py --check` is what CI's `structural-lint`
+   job runs).
 
 ## Discipline — don't make it worse
 
@@ -116,7 +119,7 @@ For each justified move:
 
 ## Stop criteria
 
-- `tools/lint.py` is clean (0 errors).
+- `tools/lint.py` is clean (0 errors) and `tools/reverse_index.py --check` is current.
 - Every category's "what belongs here" is distinct from its siblings.
 - No category is wildly imbalanced without a stated reason; no near-duplicate categories.
 - Report what changed: moved / renamed / merged / split, and which links were repaired.

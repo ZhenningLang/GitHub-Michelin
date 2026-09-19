@@ -2,7 +2,9 @@
 # oss-atlas pre-commit hook — OFFLINE only (no network; safe and fast).
 #   1. regenerate the health radar SVG cards from each staged page's `health:` block
 #      (keeps the image == its SSOT — scoring itself lives in tools/health.py / skills),
-#   2. run the linter and block the commit on any error.
+#   2. regenerate the committed reverse-index reports when the tree shape changed
+#      (keeps reports/ == the pages — the second CI structural-lint check),
+#   3. run the linter and the reverse-index freshness check, and block the commit on any error.
 # Install once with:  make install-hooks   (sets core.hooksPath to scripts/hooks)
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
@@ -18,5 +20,17 @@ if [ -n "$staged" ]; then
   fi
 fi
 
-# 2. lint gate (the real guard)
+# 2. refresh the committed reverse-index reports when page/tree shape is staged (offline)
+# (reports are SSOT — tools/reverse_index.py --check fails when they drift from the pages)
+engine=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(categories/|reports/|INDEX\.md$)' || true)
+if [ -n "$engine" ]; then
+  python3 tools/reverse_index.py --write >/dev/null
+  if ! git diff --quiet -- reports 2>/dev/null; then
+    git add reports
+    echo "pre-commit: refreshed reverse-index reports from the pages and staged them"
+  fi
+fi
+
+# 3. gates (the real guard): lint + committed-report freshness
 python3 tools/lint.py
+python3 tools/reverse_index.py --check
