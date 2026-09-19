@@ -122,21 +122,26 @@ dropping entries.
 
 ## Lint (the structural gate — no tests)
 
-This is a content repo with no runtime logic, so there are **no unit tests**. The structural
-linter is the quality gate:
+This is a content repo with no runtime logic. The pre-merge gates are the structural linter plus the
+deterministic quality gate:
 
 ```bash
-python3 tools/lint.py
+python3 tools/lint.py                        # structural: shape, routing, dead links, fanout
+python3 tools/quality_scan.py --fail-on-gated   # deterministic triage categories (whole repo)
 ```
 
-ERROR = exit non-zero (CI fails). WARNING = printed (e.g. an entry is stale). Run it before
-committing. CI runs it on every PR (`.github/workflows/lint.yml`).
+ERROR = exit non-zero (CI fails). WARNING = printed (e.g. an entry is stale). Run both before
+committing. CI runs them on every PR and every push to `main` (`.github/workflows/lint.yml`, jobs
+`structural-lint` and `quality-gate`).
 
-**Lint is a *structural* gate, not a *semantic* review.** It enforces shape: frontmatter keys,
-bilingual pair + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats
-ledger, fanout. It cannot judge whether `When to use` is a real User Story, whether `Comparison`
-compares real substitutes, or whether prose is accurate — `lint clean` ≠ content reviewed. Those
-remain agent/human judgment per `tools/schema.md`.
+**Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
++ frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.
+`quality_scan.py --fail-on-gated` fails only on its **gated** deterministic categories
+(`generic-comparison-template`, `indexed-page-marked-not-indexed`,
+`composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`); run it
+without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
+User Story, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
+run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.
 
 ## Conventions
 

@@ -76,7 +76,7 @@ health:
 
 ## 何时不用
 
-- **你需要确定性的浏览器测试。** 用 [Playwright](../../web-automation/playwright.zh.md) 做 CI 测试、trace viewer、fixture 和 code-first 浏览器自动化；BrowserAct 更偏 agent session。
+- **你需要确定性的浏览器测试。** 用 [Playwright](../../web-automation/playwright-family/playwright.zh.md) 做 CI 测试、trace viewer、fixture 和 code-first 浏览器自动化；BrowserAct 更偏 agent session。
 - **你不能接受托管服务或付费功能耦合。** README 说核心自动化免费，但超过前 5 个 stealth browser 和 managed proxy 属于付费；如果这个边界不可接受，选 Playwright 或自托管浏览器栈。
 - **目标网站禁止抓取或自动化。** 使用官方 API 或先拿明确授权，而不是用 BrowserAct；反阻断能力不消除法律、合同或伦理约束。
 - **你不希望触碰用户浏览器状态。** 用 Playwright 隔离 profile 或一次性浏览器环境；BrowserAct 支持复用 Chrome 登录态和导入 profile，必须认真治理。
@@ -86,8 +86,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Playwright](../../web-automation/playwright.zh.md) | ✅ | 做测试套件和开发者手写自动化时选 Playwright；需要索引动作、handoff 和 stealth 模式的 agent session 时选 BrowserAct Skills。 | BrowserAct 增加 agent UX 和服务功能；Playwright 更标准，在 CI 中更容易推理。 |
-| [Puppeteer](../../web-automation/puppeteer.zh.md) | ✅ | 简单 Node.js 浏览器脚本用 Puppeteer 可能足够；需要 agent-readable state、session 命名或人工接管时选 BrowserAct。 | Puppeteer 更轻、更熟悉；BrowserAct 的工作流和外部功能边界更多。 |
+| [Playwright](../../web-automation/playwright-family/playwright.zh.md) | ✅ | 做测试套件和开发者手写自动化时选 Playwright；需要索引动作、handoff 和 stealth 模式的 agent session 时选 BrowserAct Skills。 | BrowserAct 增加 agent UX 和服务功能；Playwright 更标准，在 CI 中更容易推理。 |
+| [Puppeteer](../../web-automation/browser-driver-frameworks/puppeteer.zh.md) | ✅ | 简单 Node.js 浏览器脚本用 Puppeteer 可能足够；需要 agent-readable state、session 命名或人工接管时选 BrowserAct。 | Puppeteer 更轻、更熟悉；BrowserAct 的工作流和外部功能边界更多。 |
 | Browserbase / hosted browser services | 未收录 | 如果要托管浏览器基础设施，评估 Browserbase 类服务；如果 BrowserAct 的 skill/CLI 工作流和免费本地模式更合适，选本页项目。 | 托管浏览器减少本地设置，但带来更强 vendor dependency。 |
 | 自定义站点抓取 skill | 未收录 | 目标站稳定且 API 已知时，自写定制 skill；想让 agent 探索并打包抓取流程时，选 BrowserAct Skill Forge。 | 定制抓取器更窄、更易审计；Skill Forge 更适合探索式抽取。 |
 

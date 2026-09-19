@@ -89,7 +89,7 @@ Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 gril
 | [Waza](waza.zh.md) | ✅ | 如果只要八个轻量工程习惯，选 Waza；如果要更大的 repo setup、issue/ticket flow 和 TDD/review 循环，选 mattpocock/skills。 | Waza 更轻；mattpocock/skills 给出更多编排和设置表面。 |
 | [Agent Skills（addyosmani）](addyosmani-agent-skills.zh.md) | ✅ | 如果要生产质量、安全、性能、API、发布命令，选 addyosmani 包；如果要需求 grilling、domain modeling、TDD 和 code review 工作流，选 mattpocock/skills。 | addyosmani 更像生产 checklist；mattpocock 更偏流程与设计。 |
 | [Vercel Agent Skills](vercel-agent-skills.zh.md) | ✅ | Vercel/Next.js 部署指导选 Vercel 官方包；跨技术栈工程仪式选 mattpocock/skills。 | Vercel 有一方产品适配；mattpocock 跨栈迁移性更好。 |
-| [Spec Kit](../../agent-dev-methodology/spec-kit.zh.md) | ✅ | 如果你要完整的 spec-driven 开发工作流，评估 Spec Kit；如果要较小、可组合、可改的 skill，选 mattpocock/skills。 | Spec Kit 轨道更强；mattpocock/skills 更容易逐个 skill 覆盖。 |
+| [Spec Kit](../../agent-dev-methodology/spec-driven-development/spec-kit.zh.md) | ✅ | 如果你要完整的 spec-driven 开发工作流，评估 Spec Kit；如果要较小、可组合、可改的 skill，选 mattpocock/skills。 | Spec Kit 轨道更强；mattpocock/skills 更容易逐个 skill 覆盖。 |
 | BMAD / GSD | 未收录 | 如果你要完整 SDLC 框架接管流程，评估这些；如果只要较轻的工程仪式，选 mattpocock/skills。 | 框架可提供更多编排，但更难调试或覆盖。 |
 
 

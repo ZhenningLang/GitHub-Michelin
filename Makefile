@@ -1,4 +1,4 @@
-.PHONY: lint cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-changed quality-batch install-hooks help
+.PHONY: lint cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
 
 help:
 	@echo "oss-atlas make targets:"
@@ -12,6 +12,7 @@ help:
 	@echo "  make upstream-check PAGE=…  compare stored upstream snapshot with GitHub without writing"
 	@echo "  make test           run stdlib tool tests"
 	@echo "  make quality-scan   run all-repo quality scan in report-only mode"
+	@echo "  make quality-scan-gated  all-repo quality scan that fails on gated categories (the CI gate)"
 	@echo "  make quality-scan-changed  run changed-only quality scan as a local gate"
 	@echo "  make quality-batch SCOPE=... REPORT=... [FULL=1]  verify scoped quality batch"
 	@echo "  make install-hooks  point git at scripts/hooks (offline pre-commit: refresh cards + lint)"
@@ -48,6 +49,9 @@ test:
 
 quality-scan:
 	python3 tools/quality_scan.py
+
+quality-scan-gated:
+	python3 tools/quality_scan.py --fail-on-gated
 
 quality-scan-changed:
 	python3 tools/quality_scan.py --changed-only --fail-on-any-scoped

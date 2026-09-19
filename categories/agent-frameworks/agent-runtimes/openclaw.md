@@ -115,7 +115,7 @@ You are a privacy-conscious professional who wants a single AI assistant that fo
 - **Adoption**: Grade A — 14,326,323 monthly downloads via npmjs.org (package: openclaw).
 - **Longevity**: Grade C — 221 days old. No proven long-term track record; weak Lindy prior.
 - **Governance**: Grade B — top-3 contributor share 75.2%, concentration risk exists; top-1 at 52.8%, so a core maintainer departure could significantly slow the project.
-- **Risk / License**: Grade A — MIT license. [已验证] 2026-07-03: GitHub API returns `NOASSERTION`, but the LICENSE file body is standard MIT ("Permission is hereby granted..." complete paragraph). Recognition failure caused by a trailing third-party notice pointer. No relicense history.
+- **Risk / License**: `?` (license_unparsed) — verified 2026-07-03: GitHub returns `NOASSERTION` but the LICENSE body is standard MIT (`Permission is hereby granted...` complete paragraph); recognition fails because of a trailing third-party notice pointer, and there is no relicense history.
 
 ## Caveats (unverified)
 

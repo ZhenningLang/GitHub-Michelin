@@ -93,7 +93,7 @@ health:
 | [Telegraf](../ops-infra/telegraf.zh.md) | ✅ | 需要面向可观测性管线的指标/事件采集 agent 时，选 Telegraf。 | 面向可观测性管线的指标/事件采集 agent；不是交互式开发工具箱。 |
 | It-Tools | 未收录 | 需要可自托管、工具杂烩与 DevToys 类似的 Web 应用时，选 It-Tools。 | 可自托管的 Web 应用，工具杂烩与 DevToys 高度相似；任意浏览器 / Docker 即可跑。DevToys 是原生桌面 + 离线 + CLI；It-Tools 是 HTTP 上零安装。 |
 | DevUtils(macOS) | 未收录 | 需要打磨精良的仅 macOS 原生等价物且接受付费时，选 DevUtils。 | 打磨精良的仅 macOS 原生等价物（付费）；DevToys 免费、MIT、跨平台。 |
-| `jq` / `xxd` / `openssl`(CLI) | 未收录 | 需要可脚本化、无 GUI 的 Unix 原语管线时，选 jq、xxd 或 openssl。 | 可脚本化的 Unix 原语，无 GUI；更适合管线，不适合「我就想瞄一眼这玩意」。 |
+| [`jq`](jq.zh.md) / `xxd` / `openssl`(CLI) | 部分已收录 | 需要可脚本化、无 GUI 的 Unix 原语管线时，选 jq、xxd 或 openssl。 | 可脚本化的 Unix 原语，无 GUI；更适合管线，不适合「我就想瞄一眼这玩意」。 |
 
 ## 技术栈
 

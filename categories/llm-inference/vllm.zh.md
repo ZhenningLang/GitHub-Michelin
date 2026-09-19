@@ -98,11 +98,11 @@ health:
 |---|---|---|---|
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 当你需要事实上的开放服务引擎、巨大模型覆盖和 Python 原生栈时选 vLLM；当你需要厂商构建的跨厂商编译器+语言平台及其内核语言时选 MAX。 | 厂商构建的跨厂商 GPU/CPU 服务引擎 + Mojo 内核语言；单厂商绑定，社区更年轻，模型覆盖不如 vLLM。 |
 | [oMLX](omlx.zh.md) | ✅ | 数据中心 NVIDIA GPU 服务选 vLLM；Mac（Apple Silicon）本地推理服务带 SSD 分层 KV 缓存时选 oMLX。 | 仅限 Mac 的 Apple Silicon 本地服务器，带 Swift 菜单栏应用；不是数据中心多 GPU 引擎。 |
-| Text Generation Inference (TGI) | 未收录 | 当你需要更大社区和 PagedAttention 时选 vLLM；当你需要 Hugging Face 的生产服务器及其紧密的 HF 生态集成时选 TGI。 | Hugging Face 的生产服务器，紧密的 HF 生态集成；许可证历史曾波动（Apache→HFOIL→Apache），社区规模小于 vLLM。 |
+| [Text Generation Inference (TGI)](text-generation-inference.zh.md) | ✅ | 当你需要更大社区和 PagedAttention 时选 vLLM；当你需要 Hugging Face 的生产服务器及其紧密的 HF 生态集成时选 TGI。 | Hugging Face 的生产服务器，紧密的 HF 生态集成；许可证历史曾波动（Apache→HFOIL→Apache），社区规模小于 vLLM。 |
 | [TensorRT-LLM](tensorrt-llm.zh.md) | ✅ | 需要 NVIDIA 自有引擎、并在 NVIDIA 硬件上压低延迟时，选 TensorRT-LLM。 | NVIDIA 自有引擎，在 NVIDIA 硬件上顶级延迟；深度绑定 NVIDIA，构建/引擎编译流程更重，动态模型切换能力较弱。 |
 | [Ray Serve](ray-serve.zh.md) | ✅ | 当你需要专用 LLM 推理引擎时选 vLLM；当你需要跨多种模型类型的通用 Python 模型服务编排与扩缩容时选 Ray Serve。 | 通用 Python 模型服务/编排框架，用于扩展和组合服务；不是手工调优的单模型推理引擎。 |
 | [SGLang](sglang.zh.md) | ✅ | 当你需要经过验证、采用最广泛的引擎时选 vLLM；当你特别需要 RadixAttention 前缀缓存和结构化生成优化时选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；更新、生态更小、模型覆盖不如 vLLM。 |
-| Ollama / llama.cpp | 未收录 | 数据中心吞吐服务选 vLLM；轻量级本地/边缘 CPU 或消费级 GPU 推理选 Ollama/llama.cpp。 | 可移植的 C/C++ 推理引擎（GGUF），可在 Mac 和手机等任何地方运行；不是数据中心多 GPU 吞吐引擎。 |
+| [Ollama](ollama.zh.md) / [llama.cpp](llama-cpp.zh.md) | ✅ | 数据中心吞吐服务选 vLLM；轻量级本地/边缘 CPU 或消费级 GPU 推理选 Ollama/llama.cpp。 | 可移植的 C/C++ 推理引擎（GGUF），可在 Mac 和手机等任何地方运行；不是数据中心多 GPU 吞吐引擎。 |
 
 ## 技术栈
 

@@ -91,7 +91,7 @@ You also reach for it as a shareable team deployment in the cheap-and-cheerful s
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| LibreChat | 未收录 | Choose LibreChat when you need a full multi-user platform rather than a lightweight single-deploy client. | Accounts, many auth backends, RAG, assistants, and code interpreter; far more capable and far heavier to run. NextChat is a lighter client, not a team platform. |
+| [LibreChat](librechat.md) | ✅ | Choose LibreChat when you need a full multi-user platform rather than a lightweight single-deploy client. | Accounts, many auth backends, RAG, assistants, and code interpreter; far more capable and far heavier to run. NextChat is a lighter client, not a team platform. |
 | Lobe Chat | 未收录 | Choose Lobe Chat when you want a polished multi-provider UI with plugins, knowledge base, and optional multi-user modes. | Broader feature surface and heavier once cloud/DB features are enabled. NextChat stays minimal and browser-local. |
 | [Open WebUI](open-webui.md) | ✅ | Choose Open WebUI when Ollama/local-model serving, RBAC, users, and pipelines matter more than a static/Vercel-style client. | Strong self-hosted UI for local models, but it needs a server and database. NextChat trades those features for simpler deployment and less backend operation. |
 | [HiveChat](../team-chat/hivechat.md) | ✅ | Choose HiveChat when you need admin-managed team chat with per-group model access, token quotas, and Postgres-backed user accounts. | HiveChat is the team-governance answer NextChat's community edition deliberately is not. |

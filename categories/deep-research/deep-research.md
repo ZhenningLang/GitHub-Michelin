@@ -91,8 +91,8 @@ You're also a good fit if you already have a Firecrawl key and an OpenAI-compati
 | [Vane](vane.md) | ✅ | Choose Vane when you need a usable TypeScript answering product/UI. | TypeScript AI answering engine aimed at being a usable product/UI; deep-research is a bare ~500-LOC agent you fork, not run as a service. |
 | [local-deep-research](local-deep-research.md) | ✅ | Choose local-deep-research when you need a Python local-first encrypted research assistant. | Python, local-first & encrypted, 10+ search backends incl. local docs, runs fully on local LLMs; deep-research is cloud-LLM + Firecrawl by default and far smaller in scope. |
 | [Agent-Reach](agent-reach.md) | ✅ | Choose Agent-Reach when you need social/web platform reading rather than synthesis. | Python CLI focused on *reading* social/web platforms (Twitter/Reddit/YouTube/GitHub) with "zero API fees"; not an iterative-synthesis research agent. |
-| GPT Researcher | 未收录 | Choose GPT Researcher when you need a larger Python feature surface with reports and UI. | Python, much larger feature surface (multiple retrievers, report types, web UI); deep-research trades all that breadth for a readable minimal core. |
-| Open Deep Research (LangChain / HF) | 未收录 | Choose Open Deep Research when framework-backed reference agents and ecosystem matter more. | Framework-backed reference agents with bigger ecosystems and tooling; heavier to read and adapt than this single-file-ish implementation. |
+| [GPT Researcher](gpt-researcher.md) | ✅ | Choose GPT Researcher when you need a larger Python feature surface with reports and UI. | Python, much larger feature surface (multiple retrievers, report types, web UI); deep-research trades all that breadth for a readable minimal core. |
+| [Open Deep Research (LangChain / HF)](open-deep-research.md) | ✅ | Choose Open Deep Research when framework-backed reference agents and ecosystem matter more. | Framework-backed reference agents with bigger ecosystems and tooling; heavier to read and adapt than this single-file-ish implementation. |
 
 ## Tech stack
 

@@ -93,7 +93,7 @@ health:
 | [gstack](gstack.zh.md) | ✅ | 需要个人 Claude Code harness 配置集，而不是认知方法主干时，选 gstack。 | 个人 harness 配置集；同 leaf、不同意图——配置/工具 vs. 一条认知方法主干。 |
 | [wshobson/agents](../../subagent-collections/wshobson-agents.zh.md) | ✅ | 需要大型角色专家 subagent 库时，选 wshobson/agents。 | 大型 subagent 人格库（角色专家）。Qiushi 是一小组*思维方法*，不是一排领域 agent——宜组合而非二选一。 |
 | [awesome-claude-code-subagents](../../subagent-collections/awesome-claude-code-subagents.zh.md) | ✅ | 需要广度优先的 subagent 目录时，选 awesome-claude-code-subagents。 | 广度优先的 subagent 目录；Qiushi 在单一方法论上做深度。按你需要「多人格」还是「一条有纪律的循环」来选。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要 brainstorm→plan→TDD→verify 的通用 SDLC 方法论包时，选 Superpowers。 | brainstorm→plan→TDD→verify 类方法论插件占据同一个「把纪律做成 skill」的位置；Qiushi 的不同在于以矛盾分析与优先级排序打头，而非测试先行的生命周期。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要 brainstorm→plan→TDD→verify 的通用 SDLC 方法论包时，选 Superpowers。 | brainstorm→plan→TDD→verify 类方法论插件占据同一个「把纪律做成 skill」的位置；Qiushi 的不同在于以矛盾分析与优先级排序打头，而非测试先行的生命周期。 |
 
 ## 健康度与可持续性
 

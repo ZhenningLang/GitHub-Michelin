@@ -10,7 +10,7 @@
 | **LlamaFactory** | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 | B（6/6） | [→](llamafactory.zh.md) |
 | **Unsloth** | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 | A（6/6） | [→](unsloth.zh.md) |
 | **ART (Agent Reinforcement Trainer)** | 通过客户端-服务端循环用 GRPO 强化学习训练多步 LLM agent，并用 RULER（LLM 充当裁判）实现零标注奖励生成。 | B（5/6） | [→](art.zh.md) |
-| **Agent Lightning** | 微软出品的强化学习/优化训练器，把 agent 执行与训练后端解耦，几乎零改动地优化任意框架（LangChain、AutoGen、OpenAI SDK 等）构建的 agent。 | C（4/6） | [→](agent-lightning.zh.md) |
+| **Agent Lightning** | 微软出品的强化学习/优化训练器，把 agent 执行与训练后端解耦，几乎零改动地优化任意框架（LangChain、AutoGen、OpenAI SDK 等）构建的 agent。 | B（5/6） | [→](agent-lightning.zh.md) |
 | **Colossal-AI** | 当你需要用张量/流水线/ZeRO 并行在多 GPU 上训练/微调大模型时用它——单卡 LoRA 用它是杀鸡用牛刀。 | B（5/6） | [→](colossalai.zh.md) |
 | **Hugging Face TRL** | Train transformer language models with reinforcement learning. | A（6/6） | [→](trl.zh.md) |
 | **torchtune** | PyTorch native post-training library | B（5/6） | [→](torchtune.zh.md) |
@@ -25,7 +25,7 @@
 | [LlamaFactory](llamafactory.zh.md) | ✅ | B（6/6） | 面向 100+ LLM/VLM 的零代码统一微调框架，自带 Gradio Web UI(LlamaBoard)，覆盖 LoRA/QLoRA/全量微调及 SFT→RLHF 全链路。 |
 | [Unsloth](unsloth.zh.md) | ✅ | A（6/6） | 基于自定义 Triton kernel 的单卡 LoRA/QLoRA/RL 微调工具，号称在 500+ 开源 LLM 上约 2x 提速并大幅省显存。 |
 | [ART (Agent Reinforcement Trainer)](art.zh.md) | ✅ | B（5/6） | 通过客户端-服务端循环用 GRPO 强化学习训练多步 LLM agent，并用 RULER（LLM 充当裁判）实现零标注奖励生成。 |
-| [Agent Lightning](agent-lightning.zh.md) | ✅ | C（4/6） | 微软出品的强化学习/优化训练器，把 agent 执行与训练后端解耦，几乎零改动地优化任意框架（LangChain、AutoGen、OpenAI SDK 等）构建的 agent。 |
+| [Agent Lightning](agent-lightning.zh.md) | ✅ | B（5/6） | 微软出品的强化学习/优化训练器，把 agent 执行与训练后端解耦，几乎零改动地优化任意框架（LangChain、AutoGen、OpenAI SDK 等）构建的 agent。 |
 | [Colossal-AI](colossalai.zh.md) | ✅ | B（5/6） | 当你需要用张量/流水线/ZeRO 并行在多 GPU 上训练/微调大模型时用它——单卡 LoRA 用它是杀鸡用牛刀。 |
 | axolotl / torchtune / HF TRL / verl | 未收录 | — | 各页里点到的其他微调 / RL 训练器 |
 

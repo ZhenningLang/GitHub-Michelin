@@ -95,8 +95,8 @@ ART 正是为这种场景而生。你把 agent 代码继续留在 Python 里，�
 | [agent-lightning](agent-lightning.zh.md) | ✅ | 给现有 agent 做最小代码改动的 RL 比 ART 内置 RULER 奖励路径更重要时，选 agent-lightning。 | 它是概念上最接近的同类：都从执行中训练 agent，但集成方式和奖励工具不同。 |
 | [LLaMA-Factory](llamafactory.zh.md) | ✅ | 想通过配置和 UI 工作流覆盖广泛模型的 SFT/DPO/PPO 微调时，选 LLaMA-Factory。 | 通用微调广度更强；在 ART 专精的已部署多步 agent rollout 循环上更弱。 |
 | HF TRL | 未收录 | 想要底层 GRPO/PPO/DPO trainer，且能自己接 agent rollout 循环时，选 HF TRL。 | 控制力和通用性更强，但奖励、推理服务和编排都要自己拼。 |
-| verl | 未收录 | 大规模训练下的高吞吐分布式 RLHF/RL 是主需求时，选 verl。 | 扩展性更强但运维更重，也不聚焦单工程师给 agent 埋点的易用性。 |
-| torchtune | 未收录 | PyTorch 原生微调／RL 配方已经足够，完整 agent-RL 框架反而过重时，选 torchtune。 | 它是这个生态里的构件，而不是完整的 agent-rollout 训练框架。 |
+| [verl](verl.zh.md) | ✅ | 大规模训练下的高吞吐分布式 RLHF/RL 是主需求时，选 verl。 | 扩展性更强但运维更重，也不聚焦单工程师给 agent 埋点的易用性。 |
+| [torchtune](torchtune.zh.md) | ✅ | PyTorch 原生微调／RL 配方已经足够，完整 agent-RL 框架反而过重时，选 torchtune。 | 它是这个生态里的构件，而不是完整的 agent-rollout 训练框架。 |
 
 ## 技术栈
 

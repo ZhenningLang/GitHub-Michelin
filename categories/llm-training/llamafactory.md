@@ -99,8 +99,8 @@ It's also a strong fit when the people doing the tuning aren't full-time trainin
 | [Unsloth](unsloth.md) | ✅ | Choose Unsloth when single-GPU speed and VRAM savings matter more than broad model/method coverage. | Narrower workflow and weaker multi-GPU story, but stronger for custom-kernel LoRA/QLoRA efficiency. |
 | [ART](art.md) | ✅ | Choose ART when the target is agentic RL with GRPO-style rollouts rather than SFT or preference tuning. | Different problem: training agents from rollouts, not a general fine-tuning workbench. |
 | [Agent Lightning](agent-lightning.md) | ✅ | Choose Agent Lightning when existing agents should be trained from their own execution traces. | Agent-RL infrastructure, not a general SFT/LoRA toolbox. |
-| axolotl | 未收录 | Choose axolotl for YAML-driven, multi-GPU-first production runs with FSDP/DeepSpeed out of the box. | More reproducibility-oriented; LlamaFactory adds web UI and a broader zero-code surface. |
-| torchtune | 未收录 | Choose torchtune when lean native-PyTorch recipes you own end-to-end are preferable to a large framework. | Less batteries-included and no web UI, but easier to reason about. |
+| [axolotl](axolotl.md) | ✅ | Choose axolotl for YAML-driven, multi-GPU-first production runs with FSDP/DeepSpeed out of the box. | More reproducibility-oriented; LlamaFactory adds web UI and a broader zero-code surface. |
+| [torchtune](torchtune.md) | ✅ | Choose torchtune when lean native-PyTorch recipes you own end-to-end are preferable to a large framework. | Less batteries-included and no web UI, but easier to reason about. |
 | HF TRL | 未收录 | Choose HF TRL when you want the lower-level SFT/DPO/PPO trainer and can do the wiring yourself. | More control and less abstraction than LlamaFactory, but more integration work. |
 | Swift (ModelScope) | 未收录 | Choose Swift when the ModelScope ecosystem is the stronger fit for a broad fine-tuning framework. | Broadly overlapping scope; ecosystem preference is the deciding tradeoff. |
 

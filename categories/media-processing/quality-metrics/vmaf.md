@@ -125,7 +125,7 @@ You also use it when you need *more than one* metric from a single, optimized im
 - **Adoption**: Grade D — 97,260 monthly downloads via formulae.brew.sh (package: libvmaf).
 - **Longevity**: Grade A — 3798 days old.
 - **Governance**: Grade C — top-3 contributor share 85.9% (?).
-- **Risk / License**: Grade A — BSD-3-Clause license.
+- **Risk / License**: BSD-2-Clause-Patent (permissive) — the health radar records this axis as `?` because GitHub reports NOASSERTION for the repository, so the license is taken from the page frontmatter rather than the machine block.
 
 ## Caveats (unverified)
 

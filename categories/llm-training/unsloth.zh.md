@@ -99,8 +99,8 @@ health:
 | [LLaMA-Factory](llamafactory.zh.md) | ✅ | 广泛方法／模型覆盖、YAML、Web UI 和多卡比单卡速度更重要时，选 LLaMA-Factory。 | 它甚至可把 Unsloth 当后端；Unsloth 范围更窄，但单卡更快。 |
 | [ART](art.zh.md) | ✅ | 训练问题是多步 agent GRPO，包含任务、奖励和 rollout 编排时，选 ART。 | ART 是 agent-first；Unsloth 是通用微调／RL 加速层。 |
 | [Agent Lightning](agent-lightning.zh.md) | ✅ | 现有 agent 需要以最小代码改动从执行轨迹中做 RL 时，选 Agent Lightning。 | 它解耦 agent 执行与训练；Unsloth 优化 kernel，而不是 agent 编排。 |
-| Axolotl | 未收录 | 超出单卡后需要一等公民式多卡 FSDP/DeepSpeed 和多模态支持时，选 Axolotl。 | 它更适合横向扩展工作流；Unsloth 胜在单卡速度和显存。 |
-| torchtune | 未收录 | 原生 PyTorch recipe 和显式 `torch.compile` 控制是优先项时，选 torchtune。 | 它更显式、更底层，但模型覆盖窄于 Unsloth 的精选快速路径。 |
+| [Axolotl](axolotl.zh.md) | ✅ | 超出单卡后需要一等公民式多卡 FSDP/DeepSpeed 和多模态支持时，选 Axolotl。 | 它更适合横向扩展工作流；Unsloth 胜在单卡速度和显存。 |
+| [torchtune](torchtune.zh.md) | ✅ | 原生 PyTorch recipe 和显式 `torch.compile` 控制是优先项时，选 torchtune。 | 它更显式、更底层，但模型覆盖窄于 Unsloth 的精选快速路径。 |
 | HF TRL | 未收录 | Hugging Face 参考 SFT/DPO/GRPO trainer 比加速包装层更合适时，选 HF TRL。 | Unsloth 构建在 TRL 之上并用自定义 kernel 加速它。 |
 
 ## 技术栈

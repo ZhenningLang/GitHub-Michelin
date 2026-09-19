@@ -78,18 +78,18 @@ health:
 ## 何时不用
 
 - **任何互联网用户或租户都能提交 HTML。** 改用 Browserless，或使用带认证、逐任务隔离和网络策略的加固 Playwright worker；本服务接受任意 HTML，而且 API key 检查已禁用。
-- **待渲染 HTML 可能引用攻击者控制的 URL 或内网地址。** 改用带请求拦截和显式目标 allowlist 的 [Playwright](../../web-automation/playwright.zh.md)；[推断] 任意远程资源加载会在浏览器可达网络中形成 SSRF 路径。
+- **待渲染 HTML 可能引用攻击者控制的 URL 或内网地址。** 改用带请求拦截和显式目标 allowlist 的 [Playwright](../../web-automation/playwright-family/playwright.zh.md)；[推断] 任意远程资源加载会在浏览器可达网络中形成 SSRF 路径。
 - **你需要带并发和 session 控制的托管认证浏览器池。** 改用 Browserless；本仓库只是启用 CORS `*` 的最小 endpoint，不是多租户浏览器平台。
 - **你只做已有图片的缩放、裁剪、合成或格式转换。** 改用 [sharp](sharp.zh.md)；为纯位图处理启动 Chromium 会浪费内存并扩大攻击面。
 - **你主要把 HTML 或 Office 文档转成 PDF。** 改用 Gotenberg；它提供文档转换 API 和面向容器的部署方式，本服务聚焦 PNG、JPEG 和 WebP 截图。
-- **你要求可复现的依赖解析和受维护的应用生命周期。** 在自己的 lockfile 管理服务中嵌入 [Puppeteer](../../web-automation/puppeteer.zh.md) 或 Playwright；本仓库没有 lockfile，采用证据也很少。
+- **你要求可复现的依赖解析和受维护的应用生命周期。** 在自己的 lockfile 管理服务中嵌入 [Puppeteer](../../web-automation/browser-driver-frameworks/puppeteer.zh.md) 或 Playwright；本仓库没有 lockfile，采用证据也很少。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Playwright](../../web-automation/playwright.zh.md) | 已收录 | 处理不可信或需要网络策略的渲染时，应构建带请求拦截和隔离 browser context 的 Playwright worker；只有输入可信且外部控制已补齐时，才选 Screenshot Service。 | Playwright 需要自行编写应用和生命周期控制，但提供更完整的浏览器自动化与网络控制；本服务 endpoint 更小，默认值却不安全。 |
-| [Puppeteer](../../web-automation/puppeteer.zh.md) | 已收录 | Node.js 应用需要自己掌控渲染和依赖锁定时，直接用 Puppeteer；只有明确需要独立最小 HTTP 进程作为边界时，才选 Screenshot Service。 | 直接使用 Puppeteer 少一层 wrapper，也能在进程内实现认证和限制；本服务节省胶水代码，却继承公开 API 的设计风险。 |
+| [Playwright](../../web-automation/playwright-family/playwright.zh.md) | 已收录 | 处理不可信或需要网络策略的渲染时，应构建带请求拦截和隔离 browser context 的 Playwright worker；只有输入可信且外部控制已补齐时，才选 Screenshot Service。 | Playwright 需要自行编写应用和生命周期控制，但提供更完整的浏览器自动化与网络控制；本服务 endpoint 更小，默认值却不安全。 |
+| [Puppeteer](../../web-automation/browser-driver-frameworks/puppeteer.zh.md) | 已收录 | Node.js 应用需要自己掌控渲染和依赖锁定时，直接用 Puppeteer；只有明确需要独立最小 HTTP 进程作为边界时，才选 Screenshot Service。 | 直接使用 Puppeteer 少一层 wrapper，也能在进程内实现认证和限制；本服务节省胶水代码，却继承公开 API 的设计风险。 |
 | [sharp](sharp.zh.md) | 已收录 | 处理已有位图时，选 sharp；只有浏览器排版 HTML 和 CSS 是硬需求时，才选 Screenshot Service。 | sharp 轻得多，也不需要浏览器，但无法渲染任意 Web 布局；Screenshot Service 换来浏览器保真度，同时承担明显的运行时与安全成本。 |
 | Browserless | 未收录 | 需要共享认证浏览器 API、池化和运维控制时，选 Browserless；只有小型隔离内部 worker 且准备自行加固时，才选 Screenshot Service。 | Browserless 平台和部署面更大，但处理并发与浏览器运维；本服务更简单，也把这些控制全部留给运营者。 |
 | Gotenberg | 未收录 | 需要文档和 HTML 转 PDF 时，选 Gotenberg；直接输出 PNG、JPEG 或 WebP 是决定条件时，才选 Screenshot Service。 | Gotenberg 是更宽的容器化文档转换服务；Screenshot Service 更窄，却在没有同等加固的情况下暴露浏览器渲染风险。 |

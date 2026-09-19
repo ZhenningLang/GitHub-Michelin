@@ -90,7 +90,7 @@ Anthropic 官方公开的 Agent Skills 合集——一组自包含的 `SKILL.md`
 | [Claude plugins（官方）](claude-plugins-official.zh.md) | ✅ | 需要 Anthropic 更大的官方插件/市场面时，选 Claude plugins。 | Anthropic 更大的官方插件/市场面；本 `skills` 仓库专指 Agent Skills 合集（文档 + 示例 skill），而非完整插件目录。按“只要 skill 还是要更广的插件集”来选。 |
 | [AWS Labs agent plugins](aws-agent-plugins.zh.md) | ✅ | 需要带 AWS 生态深度的 vendor 合集时，选 AWS Labs agent plugins。 | 另一家厂商发布的合集，带 AWS 生态色彩；按你的云/工具栈倾向来选。格式与 loader 兼容性各异。 |
 | [MiniMax skills](minimax-skills.zh.md) | ✅ | 需要另一家厂商的模型/媒体 skill 成包时，选 MiniMax skills。 | 另一家厂商的 skill 合集；同样是“官方起步 skill”目标，但绑定其模型/harness。混用前先核对格式兼容性。 |
-| 第三方社区 skill 包（如 [Superpowers](../../agent-dev-methodology/superpowers.zh.md)） | 部分已收录 | 方法论/SDLC 强观点比第一方参考 skill 更重要时，选社区包。 | 偏方法论/SDLC 的强观点合集，叠在 agent 之上。本仓库更窄、且是第一方：参考任务 skill + 编写规范，而非完整工作流方法论。 |
+| 第三方社区 skill 包（如 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)） | 部分已收录 | 方法论/SDLC 强观点比第一方参考 skill 更重要时，选社区包。 | 偏方法论/SDLC 的强观点合集，叠在 agent 之上。本仓库更窄、且是第一方：参考任务 skill + 编写规范，而非完整工作流方法论。 |
 | 自己写 `SKILL.md` skill | 不适用 | 最高贴合度和零外部依赖高于厂商基线时，选自写 skill。 | 贴合度最高、零外部依赖，但放弃厂商经过验证的文档生成 skill 与权威 spec/template。很多人就是从这里 fork 当基线。 |
 
 ## 健康度与可持续性

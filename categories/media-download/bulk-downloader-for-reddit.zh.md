@@ -90,7 +90,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| gallery-dl | 未收录 | 需要包含 Reddit 的广谱多站点媒体下载器时，选 gallery-dl。 | 面广的多站点媒体下载器（Reddit 只是其一）；跨网的*文件*下载很强，但在 Reddit 专属的元数据/评论归档和「下载/归档/克隆」三模式上更弱。 |
+| [gallery-dl](gallery-dl.zh.md) | ✅ | 需要包含 Reddit 的广谱多站点媒体下载器时，选 gallery-dl。 | 面广的多站点媒体下载器（Reddit 只是其一）；跨网的*文件*下载很强，但在 Reddit 专属的元数据/评论归档和「下载/归档/克隆」三模式上更弱。 |
 | redditdownloader（shadowmoose） | 未收录 | 需要另一个带网页 UI 的专用 Reddit 下载器时，选 redditdownloader。 | 另一个专用 Reddit 下载器，带网页 UI；对非 CLI 用户更友好，但 BDFR 可脚本化的 CLI + YAML 配置更适合自动化。[未验证] |
 | Pushshift 转储 / PRAW 脚本 | 未收录 | 想绕开工具、直接用数据转储或 API 自建时，选 Pushshift 转储或 PRAW 脚本。 | 直接上数据转储或自己调 API，绕开工具和约 1000 上限（转储），但都得自己造——BDFR 帮你打包好了解析器、去重、命名和日志。 |
 | [yt-dlp](yt-dlp.zh.md)（直接用） | ✅ | 只需要下载单个宿主媒体链接时，选 yt-dlp 直接调用。 | BDFR 底层*用* yt-dlp 处理宿主媒体；直接调 yt-dlp 对单条链接有效，但缺少 Reddit 来源枚举、元数据归档和去重。 |

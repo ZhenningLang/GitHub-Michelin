@@ -100,8 +100,8 @@ You're a developer who runs AI coding agents across multiple sessions and keeps 
 | [Mem0](mem0.md) | ✅ | Mature, LLM-agnostic memory API with strong adoption and cloud service. | A hosted API-first memory service with broader ecosystem support; less focus on local CLI and git-like versioning than ByteRover. |
 | [Memori](memori.md) | ✅ | Lightweight wrapper for adding persistent memory to existing LLM clients. | Simpler to adopt — wraps your existing client without a new CLI or context tree; less structured than ByteRover's approach. |
 | [claude-mem](claude-mem.md) | ✅ | Hook/MCP memory wired into Claude Code's session lifecycle. | Tightly coupled to Claude Code; not a general-purpose cross-agent memory layer like ByteRover. |
-| MemGPT / Letta | 未收录 | Academic research project turned commercial for LLM memory management. | Deep research roots in memory management for LLMs; commercial service with a different pricing and integration model. |
-| Cognee | 未收录 | Open-source memory layer for AI agents with graph-based recall. | Graph-based memory with a different abstraction; younger and less proven than Mem0. |
+| [Letta (MemGPT)](letta.md) | ✅ | Academic research project turned commercial for LLM memory management. | Deep research roots in memory management for LLMs; commercial service with a different pricing and integration model. |
+| [Cognee](cognee.md) | ✅ | Open-source memory layer for AI agents with graph-based recall. | Graph-based memory with a different abstraction; younger and less proven than Mem0. |
 
 ## Tech stack
 

@@ -91,7 +91,7 @@ Ryan Singer 的个人 Claude Code 技能包，把 Shape Up 的「shaping（塑�
 | [antfu/skills](antfu-skills.zh.md) | ✅ | 需要 Vue/Vite 前端实现栈规则，而不是上游问题塑形时，选 antfu/skills。 | 同为个人精选 Claude Code 技能集，但面向 Vue/Vite 前端*实现*栈（测试写法、ESLint、UnoCSS）。两者正交：shaping-skills 在代码上游（问题/方案定义），antfu/skills 在下游（代码怎么写）。 |
 | [Dimillian/Skills](dimillian-skills.zh.md) | ✅ | 任务偏实现或平台约定，而非产品塑形时，选 Dimillian/Skills。 | 另一位个人开发者的 Claude Code 技能集；按领域对比——Dimillian 偏实现/平台约定，shaping-skills 偏产品塑形与文档产出。 |
 | [gstack](gstack.zh.md) | ✅ | 需要个人 harness/persona 配置，而不是 Shape Up 塑形词汇时，选 gstack。 | 本叶子下的个人 harness/技能集，侧重点不同。交叉确认各自塑形 vs 构建的生命周期阶段。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要完整 SDLC 技能库的 brainstorm 和计划环节时，选 Superpowers。 | 一个完整 SDLC 技能库，其前端（拷问想法、写计划）与 shaping 意图重叠，但框成通用软件头脑风暴，而非 Shape Up 的「问题/方案/breadboard」词汇体系。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要完整 SDLC 技能库的 brainstorm 和计划环节时，选 Superpowers。 | 一个完整 SDLC 技能库，其前端（拷问想法、写计划）与 shaping 意图重叠，但框成通用软件头脑风暴，而非 Shape Up 的「问题/方案/breadboard」词汇体系。 |
 | Shape Up 原书 / BaseCamp 官方材料 | 未收录 | 需要源方法论文本、不是可安装 agent skill 时，选原书或官方材料。 | 作为文字的源方法论，不是可安装的 agent 技能——这个包是某个人把它在 Claude Code 里落地的实现。 |
 
 ## 健康度与可持续性

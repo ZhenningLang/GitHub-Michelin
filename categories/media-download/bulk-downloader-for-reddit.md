@@ -90,7 +90,7 @@ It's the right reach when you want a *scriptable, reproducible* Reddit archive �
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| gallery-dl | 未收录 | Choose gallery-dl when you need a broad multi-site media downloader that includes Reddit. | Broad multi-site media downloader (Reddit among many); strong for *files* across the web, but weaker at Reddit-specific metadata/comment archiving and the three-mode download/archive/clone model. |
+| [gallery-dl](gallery-dl.md) | ✅ | Choose gallery-dl when you need a broad multi-site media downloader that includes Reddit. | Broad multi-site media downloader (Reddit among many); strong for *files* across the web, but weaker at Reddit-specific metadata/comment archiving and the three-mode download/archive/clone model. |
 | redditdownloader (shadowmoose) | 未收录 | Choose redditdownloader when you need another dedicated Reddit downloader with a web UI. | Another dedicated Reddit downloader with a web UI; more approachable for non-CLI users, but BDFR's scriptable CLI + YAML config suits automation better. [未验证] |
 | Pushshift dumps / PRAW scripts | 未收录 | Choose Pushshift dumps or PRAW scripts when you want to bypass tooling and build directly on data/API access. | Going straight to data dumps or the API yourself bypasses tooling and the ~1000 cap (dumps) but is roll-your-own — BDFR packages resolvers, dedup, naming, and logging for you. |
 | [yt-dlp](yt-dlp.md) (directly) | ✅ | Choose yt-dlp directly when you only need to download individual hosted-media links. | BDFR *uses* yt-dlp under the hood for hosted media; calling yt-dlp directly works for individual links but lacks Reddit-source enumeration, metadata archiving, and dedup. |

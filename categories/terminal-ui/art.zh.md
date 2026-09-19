@@ -92,7 +92,7 @@ health:
 | pyfiglet | 未收录 | 需要 FIGlet 的纯 Python 移植和标准 figlet 字体集时，选 pyfiglet。 | FIGlet 的纯 Python 移植，带标准 figlet 字体集；若你专门要 FIGlet 字体/兼容性这是标准选择，范围更窄（无装饰/艺术片段目录）。 |
 | figlet / toilet（CLI） | 未收录 | 需要从 shell 脚本调用经典 C 横幅生成器时，选 figlet / toilet。 | 经典 C 横幅生成器；需要系统二进制，不是 Python API——shell 用没问题，嵌入则别扭。 |
 | [asciify](asciify.zh.md) | ✅ | 输入是*图片*且要转成 ASCII 时，选 asciify。 | 把*图片*转成 ASCII——输入完全不同（位图而非文字）；互补而非替代。 |
-| rich（figlet/标记） | 未收录 | 大字渲染只是更大终端样式输出工具集的一部分时，选 rich。 | 样式库，可作为更大工具集的一部分渲染大字和带样式输出；更广但若只要艺术文字则更重。 |
+| [rich（figlet/标记）](rich.zh.md) | ✅ | 大字渲染只是更大终端样式输出工具集的一部分时，选 rich。 | 样式库，可作为更大工具集的一部分渲染大字和带样式输出；更广但若只要艺术文字则更重。 |
 | ascii-magic / cowsay | 未收录 | 需要图片艺术或对话气泡角色这类小众艺术生成器时，选 ascii-magic / cowsay。 | 小众艺术生成器（图片 / 对话气泡字符）；更窄、风格特定。 |
 
 ## 技术栈

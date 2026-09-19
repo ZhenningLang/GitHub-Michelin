@@ -99,8 +99,8 @@ It shines when your constraint is one GPU and your goal is fast, cheap iteration
 | [LLaMA-Factory](llamafactory.md) | ✅ | Choose LLaMA-Factory when broad method/model coverage, YAML, web UI, and multi-GPU matter more than single-GPU speed. | It can use Unsloth as a backend; Unsloth stays narrower but faster on one GPU. |
 | [ART](art.md) | ✅ | Choose ART when the training problem is multi-step agent GRPO with tasks, rewards, and rollout orchestration. | ART is agent-first; Unsloth is a general fine-tuning/RL acceleration layer. |
 | [Agent Lightning](agent-lightning.md) | ✅ | Choose Agent Lightning when existing agents need RL from execution traces with minimal code changes. | It decouples agent execution from training; Unsloth optimizes kernels rather than agent orchestration. |
-| Axolotl | 未收录 | Choose Axolotl when first-class multi-GPU FSDP/DeepSpeed and multimodal support matter after outgrowing one GPU. | Stronger for scale-out workflows; Unsloth wins on single-GPU speed and VRAM. |
-| torchtune | 未收录 | Choose torchtune when native PyTorch recipes with explicit `torch.compile` control are the priority. | More explicit and lower-level, but with narrower model coverage than Unsloth's curated fast path. |
+| [Axolotl](axolotl.md) | ✅ | Choose Axolotl when first-class multi-GPU FSDP/DeepSpeed and multimodal support matter after outgrowing one GPU. | Stronger for scale-out workflows; Unsloth wins on single-GPU speed and VRAM. |
+| [torchtune](torchtune.md) | ✅ | Choose torchtune when native PyTorch recipes with explicit `torch.compile` control are the priority. | More explicit and lower-level, but with narrower model coverage than Unsloth's curated fast path. |
 | HF TRL | 未收录 | Choose HF TRL when Hugging Face reference SFT/DPO/GRPO trainers are preferable to an accelerated wrapper. | Unsloth builds on TRL and accelerates it with custom kernels. |
 
 ## Tech stack

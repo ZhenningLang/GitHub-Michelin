@@ -82,7 +82,7 @@ health:
 |---|---|---|---|
 | glow | 未收录 | 需要 Go 单二进制 Markdown 渲染器，并带 TUI 浏览器/pager 和主题时，选 glow。 | Go 单二进制 Markdown 渲染器，带 TUI 浏览器/pager 和主题（Charm）；维护活跃、无 Python 运行时——通常是终端读 Markdown 的现代默认选择。 |
 | bat | 未收录 | 需要带语法高亮和分页的 `cat` 替代品时，选 bat。 | 带语法高亮和分页的 `cat` 替代；显示的是高亮后的 Markdown *源码*而非渲染结果，但无处不在且快。 |
-| rich（Markdown） | 未收录 | Markdown 渲染只是更大 Python 终端样式输出工具集的一部分时，选 rich。 | Python 库，作为更大工具集的一部分把 Markdown 渲染成带样式的终端输出；库优先，不是独立 CLI。 |
+| [rich（Markdown）](rich.zh.md) | ✅ | Markdown 渲染只是更大 Python 终端样式输出工具集的一部分时，选 rich。 | Python 库，作为更大工具集的一部分把 Markdown 渲染成带样式的终端输出；库优先，不是独立 CLI。 |
 | mdcat | 未收录 | 需要 Rust CLI 把 Markdown 渲染到终端，且支持终端内联图片时，选 mdcat。 | Rust CLI，把 Markdown 渲染到终端，在支持的终端上还能内联显示图片；单二进制、活跃。 |
 | pandoc + pager | 未收录 | 需要跨多种格式的重量级通用转换时，选 pandoc + pager。 | 把 Markdown 转成多种格式（重量级、通用）；对“只想在终端里看这份 .md”来说是杀鸡用牛刀。 |
 

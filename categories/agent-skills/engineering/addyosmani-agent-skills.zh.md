@@ -92,7 +92,7 @@ health:
 | [scientific-agent-skills](scientific-agent-skills.zh.md) | ✅ | 任务是科研或科学计算工程，而非通用软件工程时，选 Scientific Agent Skills。 | 面向科研/科学计算工程工作流的技能包；领域不同。按你的工作是通用软件工程还是科学计算来选。 |
 | [Waza](waza.zh.md) | ✅ | 想要更小的工程习惯集合、少一些完整 SDLC 结构时，选 Waza。 | 本 leaf 内另一个面向工程的技能集合；对比各自实际定义了哪些生命周期阶段、工作流多强制。 |
 | [vercel-labs/agent-skills](vercel-agent-skills.zh.md) | ✅ | 真正需要厂商策划的 React/Vercel 规则时，选 Vercel Agent Skills。 | 厂商精选的技能集；对比覆盖广度（本包是完整 SDLC vs. 厂商范围）、harness 覆盖与维护节奏。 |
-| [Superpowers](../../agent-dev-methodology/superpowers.zh.md) | ✅ | 重心是 brainstorm→plan→TDD→verify 的方法论纪律时，选 Superpowers。 | 方法论优先的包，围绕 brainstorm→plan→TDD→verify 纪律；本包则以具体工程实践域（质量/安全/性能/API/发布）和生命周期斜杠命令为中心，而非 TDD/subagent 主脊。目标重叠，重心不同。 |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 重心是 brainstorm→plan→TDD→verify 的方法论纪律时，选 Superpowers。 | 方法论优先的包，围绕 brainstorm→plan→TDD→verify 纪律；本包则以具体工程实践域（质量/安全/性能/API/发布）和生命周期斜杠命令为中心，而非 TDD/subagent 主脊。目标重叠，重心不同。 |
 | 各 agent 内置技能 / 斜杠命令 | 未收录 | 想用平台原生、平台负责维护的命令生态时，选内置技能。 | 平台自带的技能生态；本包是叠加其上的第三方 bundle，可能与原生技能重复或冲突。 |
 
 ## 健康度与可持续性

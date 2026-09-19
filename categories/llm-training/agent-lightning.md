@@ -3,52 +3,58 @@ name: Agent Lightning
 slug: agent-lightning
 repo: https://github.com/microsoft/agent-lightning
 category: llm-training
-tags: [rl, agent-training, grpo, ppo, framework-agnostic, prompt-optimization, sft, verl, microsoft]
+tags: [rl, agent-training, grpo, framework-agnostic, coding-agent, kubernetes, verl, microsoft]
 language: Python
 license: MIT
-maturity: v0.3.0, active (2026-06)
-last_verified: 2026-06-26
+maturity: v1.0.1, active (2026-09)
+last_verified: 2026-09-19
 type: framework
 upstream:
-  pushed_at: 2026-04-29T06:32:24Z
+  pushed_at: 2026-09-17T12:52:02Z
   default_branch: main
-  default_branch_sha: 0b40cb724a0ad4f944810f8514884051777bb38b
+  default_branch_sha: ff9457587fb6ec900e16e93be9ad2d77409afa08
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:43:04Z
-  overall: C
-  overall_score: 2.25
-  scored_axes: 4
+  computed_at: 2026-09-19T07:59:19Z
+  overall: B
+  overall_score: 3.4
+  scored_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 65
-        active_weeks_13: 1
+        last_commit_age_days: 2
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 28.0
+        qualifying_issues: 14
+        band: default
+        window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
       grade: "?"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 380
-        last_commit_age_days: 65
+        repo_age_days: 458
+        last_commit_age_days: 2
         cohort: framework
     governance:
-      grade: D
+      grade: B
       raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.811
-        top3_share: 0.852
+        active_maintainers_12mo: 45
+        top1_share: 0.506
+        top3_share: 0.846
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -59,29 +65,28 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
     adoption: { reason: ambiguous }
 ---
 
 # Agent Lightning
 
-A Microsoft framework that trains and optimizes AI agents — built in *any* framework — with reinforcement learning, prompt optimization, or SFT, by decoupling agent execution from the training backend so existing agent code needs almost no changes.
+A Microsoft framework for *harnessed* agentic RL: it trains the policy behind an existing agent — tools, context, control flow and environment kept in the loop — through an OpenAI-compatible proxy, so the agent's own code needs no changes.
 
 ![agent-lightning — health radar](../../assets/health/agent-lightning.svg)
 
 ## When to use
 
-You're an engineer who already shipped a multi-step agent — say a LangChain or AutoGen pipeline that calls tools, retrieves context, and reasons over several turns. It works, but it's *static*: the underlying model never improves from the trajectories your agent actually produces in your domain. You want to fine-tune the policy model on real agent rollouts using RL (e.g. GRPO over end-to-end task reward), but every RL stack you've looked at (verl, TRL) assumes you'll rewrite your agent as a monolithic generation loop, and your agent has branching, tool calls, and multiple LLM steps that don't fit that mold.
+You're an engineer who already shipped a multi-step agent — a coding agent, a search/retrieval loop, an AutoGen or LangChain pipeline that calls tools and reasons over several turns. It works, but it's *static*: the underlying model never improves from the trajectories your agent actually produces in your domain. You want RL on real rollouts, but the RL stacks you've looked at assume you'll rewrite the agent as a monolithic generation loop, and yours has branching, tool calls and multiple LLM steps.
 
-Agent Lightning is built for exactly this. It models agent execution as a Markov decision process and uses a hierarchical credit-assignment scheme (LightningRL) to decompose a full multi-step trajectory into per-step training transitions, so you can keep your agent in its native framework. A client/server split runs your agent against an OpenAI-compatible endpoint while the training server (VERL by default, instrumenting vLLM/SGLang for token-level signals) updates the model — letting you turn an existing agent into a trainable one with near-zero code change, and optionally optimize only selected agents in a multi-agent system. If you don't need full RL, it also exposes automatic prompt optimization (APO) and SFT paths over the same traced rollouts.
+v1.0 is built exactly for this, and it is deliberately small (~3,500 LOC). Three components do the work: an **API Gateway** that fronts your model endpoint as an OpenAI-compatible proxy and records each call's prompt/response token IDs and log-probs, a **Rollout Controller** that launches agent executions as local subprocesses or Kubernetes Jobs, and a **Trainer** that runs verl + vLLM and turns the captured rollouts into policy updates (GRPO with rollout-level advantage aggregation). Because the rollout ID is baked into the proxy URL, every model call is attributed to the right execution — so an existing agent becomes trainable by *pointing its base URL at the Gateway*, nothing else. Training and agent execution can also live on separate machines or clusters and scale independently. [推断] If your agent is already an OpenAI-compatible client, integration cost is close to zero.
 
 ## When NOT to use
 
 - **You just want to fine-tune a single model on a dataset.** If there's no multi-step agent/tool-use loop, a plain SFT/LoRA trainer ([LLaMA-Factory](llamafactory.md), [Unsloth](unsloth.md), HF TRL) is simpler and lighter.
-- **No GPU / no RL infra.** RL training leans on VERL + vLLM/SGLang and meaningful GPU capacity; this is heavyweight compared to single-GPU LoRA SFT. Exact GPU/VRAM minimums vary by model and backend.
-- **You want a managed, hosted RL training service.** This is a self-hosted framework, not a SaaS; [ART](art.md) leans more toward an ergonomic batteries-included loop, and Tinker (a supported backend) is the managed option.
-- **Early-stage maturity / churn risk.** It's at v0.x with rapidly changing APIs, a preview dashboard, and multiple swappable backends (VERL/Tinker, AgentOps/Weave tracers, MongoDB store). Expect breaking changes and pin versions.
-- **You need a single-vendor, fully-integrated path.** The framework-agnostic, multi-backend design means you assemble pieces (tracer + store + training backend + serving) yourself.
+- **No GPU / no RL infra.** The framework itself is light, but policy inference and GRPO updates still need the verl + vLLM GPU stack — the quick start asks for one A100. That is heavyweight next to single-GPU LoRA SFT; exact VRAM minimums vary by model.
+- **You want a managed, hosted RL training service.** This is self-hosted, not SaaS; [ART](art.md) offers a more batteries-included single-loop experience for the same job.
+- **You depend on v0.x-era integrations.** v1.0 is a full rewrite, with the pre-1.0 code parked on the `v0.x` branch; the older Tinker backend, AgentOps/Weave tracers, MongoDB rollout store and automatic prompt optimization do not appear in the v1.0 package, docs or dependency list. Porting a v0.x setup means reading the v1.0 architecture fresh. [推断]
+- **You need a single-vendor, fully-integrated path.** You still assemble pieces yourself (Gateway + Controller + verl trainer) rather than getting one opaque product.
 
 ## Comparison
 
@@ -89,43 +94,47 @@ Agent Lightning is built for exactly this. It models agent execution as a Markov
 |---|---|---|---|
 | [LLaMA-Factory](llamafactory.md) | ✅ | Choose LLaMA-Factory when you need broad SFT/DPO/PPO fine-tuning over datasets with a unified config/UI. | Broad dataset fine-tuning, not live multi-step agent rollouts. |
 | [Unsloth](unsloth.md) | ✅ | Choose Unsloth when fast, memory-efficient single-GPU SFT/LoRA is the bottleneck. | An optimization *kernel/trainer*, not an agent-rollout RL orchestrator. |
-| [ART](art.md) | ✅ | Choose ART when you also need RL for agents, but prefer a more opinionated single-loop experience. | Agent Lightning emphasizes framework-agnostic decoupling plus pluggable backends; ART optimizes for ergonomics. |
-| verl | 未收录 | Choose verl when you need the underlying distributed RL engine Agent Lightning builds on. | Powerful, but expects you to express training as its generation loop rather than wrap a native agent. |
-| HF TRL | 未收录 | Choose HF TRL when you need a mature PPO/GRPO/DPO library for dataset- or loop-centric training. | No agent-execution decoupling or multi-step credit assignment out of the box. |
+| [ART](art.md) | ✅ | Choose ART when you want an agent-RL loop that is opinionated and batteries-included; choose Agent Lightning when you must keep a production agent harness byte-for-byte and train it behind an OpenAI-compatible proxy. | ART buys ergonomics; Agent Lightning buys framework-agnostic decoupling and horizontal separation of training and agent execution (local or Kubernetes). |
+| [verl](verl.md) | ✅ | Choose verl when you need the distributed RL engine itself and are willing to express training as its generation loop; Agent Lightning is the layer that lets a native agent harness feed that engine unmodified. | Building on verl gives you GRPO/PPO scale, but you own the agent-to-training plumbing unless you take this wrapper. |
+| [HF TRL](trl.md) | ✅ | Choose HF TRL when you need a mature PPO/GRPO/DPO library for dataset- or loop-centric training. | No agent-execution decoupling or multi-step credit assignment out of the box. |
 | OpenAI Agents SDK / [LangChain](../agent-frameworks/workflow-builders/langchain.md) (alone) | 部分已收录 | Choose agent frameworks alone when you only need to build and run agents, not train the underlying model from rollouts. | Agent Lightning sits on top of agent execution to make rollouts trainable; plain frameworks stop at orchestration. OpenAI Agents SDK is not indexed separately. |
 
 ## Tech stack
 
-- **Language:** Python (with a TypeScript/JS dashboard frontend).
-- **Training backends:** VERL (default, distributed RL); Tinker (managed RL backend, added in v0.3.0); Azure OpenAI for inference/SFT.
-- **Serving:** vLLM and SGLang, wrapped behind an async LLM-server abstraction and instrumented for token-level signals.
-- **Algorithms:** RL (GRPO/PPO-style via the backend), LightningRL credit assignment, automatic prompt optimization (APO), SFT.
-- **Tracing/store:** OpenTelemetry semantic conventions for agents; AgentOps or Weave tracer; Lightning Store (in-process or MongoDB backend) for rollouts.
-- **Agent integrations:** LangChain, OpenAI Agents SDK, AutoGen, CrewAI, Microsoft Agent Framework, AgentScope, or raw Python OpenAI calls.
+- **Language:** Python 3.12+; v1.0 core is ~3,500 LOC.
+- **Three components:** API Gateway (FastAPI/uvicorn — OpenAI-compatible model proxy plus rollout/event store), Rollout Controller (local process pool or Kubernetes Jobs via `kr8s`), Trainer (wraps `verl`'s `ppo_trainer`).
+- **Serving/training:** vLLM through verl; GPU stack with Ray and torch.
+- **Algorithms:** RL via verl (GRPO), with rollout/trajectory-level advantage aggregation (`algorithm.enable_rollout_level_advantage`); trajectory vs transition trace aggregation.
+- **Config:** Hydra + OmegaConf, structured logging via structlog.
+- **Agent integrations:** any OpenAI-compatible client — the examples cover AutoGen, coding-agent harnesses, Search-R1, sandboxes, and multimodal QA.
+- **Coding-agent optimization:** v1.0.1 also ships an Agent Lightning *Skill* (`gh skill install microsoft/agent-lightning agent-lightning`) that lets Claude Code / Codex / GitHub Copilot iterate on another agent's prompts, tools and workflows.
 
 ## Dependencies
 
-- `pip install agentlightning` (nightly builds via Test PyPI).
-- For RL training: a training backend (VERL or Tinker), a serving engine (vLLM/SGLang), and GPU(s).
-- Optional: MongoDB (Lightning Store), AgentOps/Weave (tracing), Azure OpenAI (inference/SFT path).
-- The client side (your agent) only needs to talk to an OpenAI-compatible endpoint, so the heavy training deps stay on the server side.
+- `pip install agentlightning`; requires Python >= 3.12.
+- Core deps are deliberately small: fastapi, uvicorn, pydantic, httpx, hydra-core, omegaconf, structlog, jinja2, kr8s, pyyaml.
+- Training needs the `verl` GPU stack (`verl>=0.7.1,<0.9.0` — the upper bound is deliberate), plus vLLM, Ray, torch and CUDA; the repo bootstraps it with `uv sync` + `scripts/setup_verl.sh`.
+- Kubernetes is optional (k8s runner); the local runner is the lighter path.
+- Your agent only needs to point at an OpenAI-compatible base URL, so heavy training deps stay server-side.
 
 ## Ops difficulty
 
-**High.** A full RL setup composes several moving parts — VERL/Tinker training backend, vLLM/SGLang serving, a tracer, a rollout store, and GPU orchestration — plus the client/server split. The decoupling is what makes adoption low-friction for *agent code*, but it shifts complexity into *infra assembly and tuning*. For the lighter APO/SFT paths or a single-node setup, effective difficulty is **medium**. [推断]
+**High for a full RL run, medium for a single-node quick start.** v1.0 shrank the framework surface to three components, but you still stand up the verl/vLLM GPU stack, orchestrate rollouts (local processes or Kubernetes Jobs), and tune the gateway/controller/trainer configuration. The decoupling keeps *agent code* untouched while pushing complexity into *infra assembly*. [推断]
 
 ## Health & viability
 
-- **Maintenance**: Grade C — 1/13 active weeks in trailing 13; last commit 65 days ago.
-- **Responsiveness**: Cannot be scored — no_traffic.
+- **Maintenance**: Grade A — 7/13 active weeks in trailing 13; last commit 2 days ago.
+- **Responsiveness**: Grade A — median time to first response 28h over 14 qualifying issues.
 - **Adoption**: Cannot be scored — ambiguous.
-- **Longevity**: Grade C — 380 days old.
-- **Governance**: Grade D — top-3 contributor share 85.2% (?).
+- **Longevity**: Grade C — repo is 458 days old.
+- **Governance**: Grade B — 45 active maintainers in 12 months, top-3 contributor share 84.6% (Microsoft-led).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)
 
-- [未验证] Star count: reported on the order of ~17k GitHub stars (2026-06); star figures in this ecosystem are unreliable and should not drive selection.
-- [未验证] v0.3.0 release timing is reported around late December 2025; confirm exact date on the GitHub releases page.
-- [未验证] Minimum GPU/VRAM, supported model families, and exact dependency versions vary by backend and are not asserted here.
-- [推断] As a v0.x project with multiple swappable backends and a preview dashboard, expect API churn and breaking changes between minor versions.
+- [未验证] Star count: ~18.4k GitHub stars (2026-09-19); star figures in this ecosystem are unreliable and should not drive selection.
+- [推断] The v1.0 rewrite drops v0.x-era features (Tinker backend, AgentOps/Weave tracers, MongoDB store, automatic prompt optimization): they are absent from the v1.0 package, docs and dependency list, and the README points to a `v0.x` branch for "legacy releases". If you need one of them, verify on that branch before assuming it is gone.
+- [未验证] The coding-agent benchmark claim (Qwen3.5-9B improving SWE-bench Verified from 41.8% to 56.4% on 6K samples) is Microsoft's own reported figure and has not been independently reproduced here.
+- [未验证] Minimum GPU/VRAM, supported model families, and exact dependency versions vary by model and backend; the docs' quick start states one A100 for the Calc-X example.
+- [未验证] The `adoption` health axis remains unscored (`ambiguous`); the B overall grade reflects five axes, not adoption breadth.
+- [推断] v1.0.x is a fresh, light codebase with an explicit semver 1.x signal, but a full rewrite still means integration details (gateway/controller/verl config) may shift between minor releases.

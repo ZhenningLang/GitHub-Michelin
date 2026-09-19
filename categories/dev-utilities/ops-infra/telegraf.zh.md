@@ -92,7 +92,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | Prometheus + node_exporter | 未收录 | 需要拉模式抓取、自带 TSDB 和查询语言时，选 Prometheus + node_exporter。 | 拉模式抓取，自带 TSDB 和查询语言；云原生指标极强，但 exporter 各管一摊，不是面向日志/工业协议的通用推送采集器。 |
-| OpenTelemetry Collector | 未收录 | 需要厂商中立地路由 metrics、traces 和 logs 时，选 OpenTelemetry Collector。 | 厂商中立、CNCF 治理，路由指标**与** traces/logs，receiver/exporter 生态广；配置模型更重，追踪能力更强，指标范围有重叠。 |
+| [OpenTelemetry Collector](../../observability/opentelemetry-collector.zh.md) | ✅ | 需要厂商中立地路由 metrics、traces 和 logs 时，选 OpenTelemetry Collector。 | 厂商中立、CNCF 治理，路由指标**与** traces/logs，receiver/exporter 生态广；配置模型更重，追踪能力更强，指标范围有重叠。 |
 | Fluent Bit / Fluentd | 未收录 | 首要载荷是日志与事件时，选 Fluent Bit 或 Fluentd。 | 首先是日志与事件 shipper（Fluent Bit 也是极小的 C 二进制）；指标面比 Telegraf 的 300+ 插件窄。 |
 | Vector(Datadog) | 未收录 | 需要 Rust 可观测性管线和强变换 DSL 时，选 Vector。 | Rust 写的可观测性管线（日志/指标），变换 DSL（VRL）很强；同为单二进制路由，对冷门输入的插件目录更小。 |
 | collectd | 未收录 | 需要老牌轻量 C 指标守护进程且接受偏老生态时，选 collectd。 | 老牌轻量 C 指标守护进程；成熟但插件生态更小、偏老，现代集成较弱。 |

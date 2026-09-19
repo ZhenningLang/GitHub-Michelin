@@ -99,7 +99,7 @@ health:
 | [claude-code-security-review](claude-code-security-review.zh.md) | ✅ | 需要 Anthropic 的 PR 原生安全审查 GitHub Action 时，选 claude-code-security-review。 | Anthropic 的 GitHub Action，聚焦*安全*发现、走 Claude；更窄（只安全）但 PR 原生。Open Code Review 更宽（通用质量 + 少量安全规则）、CLI 优先，不自动回贴。 |
 | [react-doctor](react-doctor.zh.md) | ✅ | 需要针对 React 单一框架的健康诊断时，选 react-doctor。 | 针对 React 单一框架的健康/诊断；Open Code Review 跨 ~10+ 语言、与语言无关，不为某框架精调。 |
 | CodeRabbit | 未收录 | 需要托管 SaaS 在 PR 上自动评论且召回广时，选 CodeRabbit。 | 托管 SaaS，在 PR 上自动评论、召回广；Open Code Review 自托管/CLI、偏精确率，LLM key 和回贴胶水都你自己掌控。 |
-| PR-Agent(Qodo) | 未收录 | 需要 OSS PR 助手直接往 GitHub/GitLab MR 发评论、摘要和问答时，选 PR-Agent。 | OSS 的 PR 助手，直接往 GitHub/GitLab MR 发评论、做摘要和问答；Open Code Review 输出结构化发现，靠确定性定位层而非 MR 集成。 |
+| [PR-Agent(Qodo)](pr-agent.zh.md) | ✅ | 需要 OSS PR 助手直接往 GitHub/GitLab MR 发评论、摘要和问答时，选 PR-Agent。 | OSS 的 PR 助手，直接往 GitHub/GitLab MR 发评论、做摘要和问答；Open Code Review 输出结构化发现，靠确定性定位层而非 MR 集成。 |
 | Semgrep | 未收录 | 需要无 LLM 的确定性规则/AST 扫描器时，选 Semgrep。 | 确定性规则/AST 扫描器（无 LLM），安全规则库庞大；单次更快、免费但没有 agent 推理或自然语言行级评论。 |
 
 ## 技术栈

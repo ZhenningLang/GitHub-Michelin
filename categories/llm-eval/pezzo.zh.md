@@ -87,7 +87,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Langfuse | 未收录 | 新建开源 LLM 可观测性、prompt 管理和 eval 平台时，选 Langfuse；只有已有 Pezzo 自托管栈且愿意自己接手维护时，才保留 Pezzo。 | 开源的 LLM 可观测性 + prompt 管理 + eval，维护活跃、社区强；大体上是当下 Pezzo 这一生态位更健康的接棒者。 |
+| [Langfuse](langfuse.zh.md) | ✅ | 新建开源 LLM 可观测性、prompt 管理和 eval 平台时，选 Langfuse；只有已有 Pezzo 自托管栈且愿意自己接手维护时，才保留 Pezzo。 | 开源的 LLM 可观测性 + prompt 管理 + eval，维护活跃、社区强；大体上是当下 Pezzo 这一生态位更健康的接棒者。 |
 | Helicone | 未收录 | 当日志、成本追踪、缓存和代理式接入是主需求时，选 Helicone；只有 Pezzo 的 prompt 版本 UI 已经契合且能接受停滞风险时，才保留 Pezzo。 | 开源的 LLM 可观测性/代理，聚焦日志、成本和缓存；采用更轻（基于代理），prompt 管理叙事更窄。 |
 | LangSmith（LangChain） | 未收录 | 当托管追踪、eval、prompt hub 和 LangChain 集成比自托管 OSS 更重要时，选 LangSmith；只有不能用 SaaS 且能自维护时，才保留 Pezzo。 | 托管的追踪 + eval + prompt hub，深度集成 LangChain；托管且功能丰富，但闭源/SaaS，不能自托管 OSS。 |
 | PromptLayer | 未收录 | 当你要托管的 prompt 注册表和请求日志时，选 PromptLayer；只有明确需要自托管 prompt 管理且接受疑似停滞代码库时，才保留 Pezzo。 | prompt 注册表 + 请求日志；prompt 管理范围有重叠，托管为先。 |

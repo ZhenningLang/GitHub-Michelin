@@ -85,7 +85,7 @@ HiveChat 正是为这个形态设计的。你部署一次（Docker Compose 自�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| LibreChat | 未收录 | 需要更成熟、更大功能面，包括 RAG、assistants、代码解释器和多种认证后端时，选 LibreChat。 | MIT 许可且功能更广，但运维更重，也不如 HiveChat 专注小团队管理员-配额流程。 |
+| [LibreChat](../llm-chat-ui/librechat.zh.md) | ✅ | 需要更成熟、更大功能面，包括 RAG、assistants、代码解释器和多种认证后端时，选 LibreChat。 | MIT 许可且功能更广，但运维更重，也不如 HiveChat 专注小团队管理员-配额流程。 |
 | [Open WebUI](../llm-chat-ui/open-webui.zh.md) | ✅ | 本地模型服务、RBAC 和 pipelines 比多云供应商配额更重要时，选 Open WebUI。 | 更广也更活跃，但甜点区是 Ollama/本地模型服务，而不是 HiveChat 的按组配额定位。 |
 | Lobe Chat | 未收录 | 需要面向个人/进阶玩家的精致多服务商 UI、插件和自托管时，选 Lobe Chat。 | 不那么围绕 token 配额做集中式管理员团队治理。 |
 | Chatbox / Cherry Studio | 未收录 | 每个人各自带 key，且不需要中心治理时，选桌面客户端。 | 没有中心管理员、分组、配额或共享服务端。 |

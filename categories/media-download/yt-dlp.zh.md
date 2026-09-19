@@ -98,7 +98,7 @@ health:
 | [you-get](you-get.zh.md) | ✅ | 面向中文站点的极简 Python CLI。 | 比 yt-dlp 更轻更简单，但提取器目录更小、维护活跃度更低。 |
 | [lux](lux.zh.md) | ✅ | 快速的单二进制 Go 下载器。 | 无需 Python 运行时，但站点列表更窄、提取器更新慢于 yt-dlp。 |
 | [cobalt](cobalt.zh.md) | ✅ | 可自托管的 Web UI + API 媒体下载器。 | 面向浏览器的友好服务，不是用于自动化管线的可脚本化 CLI。 |
-| gallery-dl | 未收录 | 专注于图像和图库站点。 | 与视频/音频提取互补，而非替代品。 |
+| [gallery-dl](gallery-dl.zh.md) | ✅ | 专注于图像和图库站点。 | 与视频/音频提取互补，而非替代品。 |
 
 ## 技术栈
 

@@ -97,11 +97,11 @@ So you reach for BitNet. You pick a **ternary** model that was actually trained 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| llama.cpp | 未收录 | Choose llama.cpp when you need the upstream general-purpose GGUF runtime. | The general-purpose CPU/GPU GGUF runtime BitNet forks; runs *any* quantized model and is far more mature, but its generic 1.5/2-bit quant doesn't match BitNet's purpose-built ternary kernels for natively-1.58-bit models. |
+| [llama.cpp](../llm-inference/llama-cpp.md) | ✅ | Choose llama.cpp when you need the upstream general-purpose GGUF runtime. | The general-purpose CPU/GPU GGUF runtime BitNet forks; runs *any* quantized model and is far more mature, but its generic 1.5/2-bit quant doesn't match BitNet's purpose-built ternary kernels for natively-1.58-bit models. |
 | [LiteRT-LM](litert-lm.md) | ✅ | Choose LiteRT-LM when you need Google's mobile-first on-device LLM runtime. | Google's mobile-first on-device LLM runtime (Gemma-centric, Android/iOS/NPU). Better mobile SDK and accelerator story; not specialized for ternary 1-bit models and CPU energy efficiency the way BitNet is. |
 | [Google AI Edge Gallery](ai-edge-gallery.md) | ✅ | Choose Google AI Edge Gallery when you need a demo app/catalog, not a CPU inference engine. | A demo app / catalog for trying on-device models on Android, not a CPU inference engine — different layer entirely; complementary, not a substitute for a runtime. |
 | Microsoft T-MAC | 未收录 | Choose T-MAC when you need the low-bit CPU kernel library beneath BitNet. | The low-bit CPU kernel library whose lookup-table method BitNet builds on; a kernel/library layer, whereas BitNet is the packaged end-to-end ternary inference framework. |
-| MLX / mlx-lm (Apple) | 未收录 | Choose MLX when you need fast Apple-silicon inference with Python/Swift ergonomics. | Fast Apple-silicon inference with clean Python/Swift ergonomics and broad model support, but Apple-only and not specialized for ternary 1-bit weights. |
+| [MLX / mlx-lm (Apple)](mlx-mlx-lm.md) | ✅ | Choose MLX when you need fast Apple-silicon inference with Python/Swift ergonomics. | Fast Apple-silicon inference with clean Python/Swift ergonomics and broad model support, but Apple-only and not specialized for ternary 1-bit weights. |
 | [Unsloth](../llm-training/unsloth.md) / GPTQ-AWQ stacks | 部分已收录 | Choose Unsloth or GPTQ/AWQ when you need post-hoc 4-bit quantization for normal models. | Post-hoc quantize normal models to 4-bit; broadly applicable but can't reach 1.58-bit-native efficiency — different quantization philosophy (compress-after vs train-ternary). |
 
 ## Tech stack

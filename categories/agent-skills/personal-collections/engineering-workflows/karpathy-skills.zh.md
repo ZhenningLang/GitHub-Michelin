@@ -90,7 +90,7 @@ health:
 | [shaping-skills](shaping-skills.zh.md) | ✅ | 需要的纪律明确是 Shape Up 式“先塑形、再写代码”时，选 shaping-skills。 | 同样是单作者的 Claude Code 纪律包，但范围限于*塑形*（Shape Up，先框定问题再写代码）；本包更宽，是通用的编码卫生原则，而非产品定义工作流。 |
 | [TÂCHES CC Resources](taches-cc-resources.zh.md) | ✅ | 想要一整套个人扩展包，而不是一份极小原则文件时，选 TÂCHES。 | 一整套个人扩展包（命令、元技能、子 agent、hooks）。Karpathy-skills 是另一极端：一份极小的原则文件，没有命令或生成器。要广度选 TÂCHES，要极简基础层选本包。 |
 | [antfu/skills](antfu-skills.zh.md) | ✅ | 缺的是 Vue/Vite/Nuxt 框架知识，且希望 CLI 自动应用时，选 antfu/skills。 | 栈特定（Vue/Vite/Nuxt）、经 CLI 自动应用的技能。本包是与技术栈无关的行为指引，不是框架知识。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要一整套 SDLC 方法论图，而不是几条轻量行为原则时，选 Superpowers。 | 一整套 SDLC 方法论库（brainstorm→plan→TDD→verify），含众多可组合技能与各 harness 的清单。Karpathy-skills 用四行覆盖类似的“让 agent 更有纪律”目标，而非一张技能图——轻得多，也克制得多。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要一整套 SDLC 方法论图，而不是几条轻量行为原则时，选 Superpowers。 | 一整套 SDLC 方法论库（brainstorm→plan→TDD→verify），含众多可组合技能与各 harness 的清单。Karpathy-skills 用四行覆盖类似的“让 agent 更有纪律”目标，而非一张技能图——轻得多，也克制得多。 |
 | 你自己的全局 `CLAUDE.md` / Anthropic 内置指引 | 未收录 | 如果已有全局 agent 指令覆盖同一行为，就不要再叠加本包。 | 如果你已经维护着有主见的全局 agent 指令，那就是同一块表面；本包只是争夺同一段上下文的附加散文。 |
 
 ## 健康度与可持续性

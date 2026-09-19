@@ -97,8 +97,8 @@ health:
 |---|---|---|---|
 | unstructured.io | 未收录 | 想要更大的 RAG loader 生态，并能接受开源核心 + 商业服务层切分时，选 unstructured.io。 | 面向 RAG 摄取、广受欢迎的多格式文档加载器，partitioner 众多；开源核心 + 商用 API/服务层——能力切分与授权方式都和 Docling 的单一 MIT 库不同。 |
 | LlamaParse | 未收录 | 可以接受 SaaS 定价和数据边界取舍，且需要复杂 PDF/表格托管解析时，选 LlamaParse。 | 托管解析服务（LlamaIndex），在复杂 PDF/表格上很强；但它是按量计费的 SaaS、数据会出你的边界，而 Docling 完全本地/进程内运行。 |
-| Marker | 未收录 | PDF→Markdown 和 DL 版面模型已足够、不需要 Docling 更广输入范围时，选 Marker。 | 同样用深度学习版面模型的 PDF→Markdown 转换器；gen-AI 目标相近，但输入格式范围比 Docling 的 PDF/Office/HTML/图片更窄。 |
-| PyMuPDF / pdfplumber | 未收录 | 速度和轻量体积比内建版面/表格保真更重要时，选底层 PDF 库。 | 快、轻、无重模型的底层 PDF 文本/几何抽取；版面/表格逻辑得你自己写——开箱保真度更低，但体积小得多。 |
+| [Marker](marker.zh.md) | ✅ | PDF→Markdown 和 DL 版面模型已足够、不需要 Docling 更广输入范围时，选 Marker。 | 同样用深度学习版面模型的 PDF→Markdown 转换器；gen-AI 目标相近，但输入格式范围比 Docling 的 PDF/Office/HTML/图片更窄。 |
+| [PyMuPDF](../pdf-tools/pymupdf.zh.md) / [pdfplumber](../pdf-tools/pdfplumber.zh.md) | ✅ | 速度和轻量体积比内建版面/表格保真更重要时，选底层 PDF 库。 | 快、轻、无重模型的底层 PDF 文本/几何抽取；版面/表格逻辑得你自己写——开箱保真度更低，但体积小得多。 |
 | [PageIndex](../rag-retrieval/pageindex.zh.md) | ✅ | 需要在已解析文档之上做检索/推理，而不是解析本身时，选 PageIndex。 | 是文档之上的检索/推理层，不是解析器——互补而非替代；Docling 产出的正是它建索引的结构化文本。 |
 
 ## 技术栈

@@ -93,7 +93,7 @@ health:
 | [youtube-dl](youtube-dl.zh.md) | ✅ | 需要本地 Python CLI / 库流程，而不是托管 Web/API 服务时，选 youtube-dl。 | Python CLI / 库，靠约 1000 个按站点划分的 extractor 驱动；为脚本和流水线而生、没有服务要跑——但它是命令行工具而非浏览器 UI，且上游发布节奏已放缓（yt-dlp 才是活跃继任者）。 |
 | [yt-dlp](yt-dlp.zh.md) | ✅ | 抽取广度和更新速度比浏览器 UI 更重要时，选 yt-dlp。 | youtube-dl 的活跃维护分叉；YouTube 抽取事实上的 CLI，站点支持最广、更新最快。是可脚本化的二进制，而非 cobalt 那样的托管 UI/API 服务。 |
 | [you-get](you-get.zh.md) | ✅ | 想要更简单的 Python CLI 和它自己的站点目录时，选 you-get。 | Python 命令行下载器，自带站点列表；UX 比 yt-dlp 简单，但 extractor 目录更小、跟进更不积极——同样是 CLI，不是 Web 服务。 |
-| gallery-dl | 未收录 | 目标是图片/图集站点，而不是视频/音频 Web 下载时，选 gallery-dl。 | 专攻*图片/图集*站点（booru、社交媒体图集），而非视频/音频；与 cobalt 互补，不是替代。 |
+| [gallery-dl](gallery-dl.zh.md) | ✅ | 目标是图片/图集站点，而不是视频/音频 Web 下载时，选 gallery-dl。 | 专攻*图片/图集*站点（booru、社交媒体图集），而非视频/音频；与 cobalt 互补，不是替代。 |
 
 ## 技术栈
 

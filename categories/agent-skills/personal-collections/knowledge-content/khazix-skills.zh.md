@@ -92,7 +92,7 @@ health:
 | [Dimillian/Skills](../engineering-workflows/dimillian-skills.zh.md) | ✅ | 任务偏 Apple/Swift 开发时，选 Dimillian/Skills。 | 个人合集偏 Apple/Swift 开发。和卡兹克的重叠很小——领域和语言都不同。 |
 | [ljg-skills](ljg-skills.zh.md) | ✅ | 更匹配 ljg-skills 自动化的具体杂务和触发语言时，选它。 | 本叶子下的同类个人合集；按各作者自动化了哪些具体杂务、触发语言是否匹配你来选。 |
 | [qiushi-skill](../engineering-workflows/qiushi-skill.zh.md) | ✅ | 需要中文思维方法和推理纪律，而不是杂务工具箱时，选 qiushi-skill。 | 另一份中文个人 skill 集；按和你实际任务的重叠度来选。 |
-| [Superpowers](../../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要 TDD/subagent 纪律完整工作流框架时，选 Superpowers。 | 一个有主张的 SDLC*方法论*包（TDD/subagent 纪律）——消费单元不同。卡兹克的是各自独立的实用 skill，不是工作流框架。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要 TDD/subagent 纪律完整工作流框架时，选 Superpowers。 | 一个有主张的 SDLC*方法论*包（TDD/subagent 纪律）——消费单元不同。卡兹克的是各自独立的实用 skill，不是工作流框架。 |
 | Anthropic 官方 / 内置 Agent Skills | 未收录 | 优先使用平台维护的一方 skill 生态时，选内置 Agent Skills。 | 平台自带的一方 skill 生态；卡兹克的是叠在其上的第三方个人合集，可能与原生 skill 重复或冲突。 |
 
 ## 健康度与可持续性

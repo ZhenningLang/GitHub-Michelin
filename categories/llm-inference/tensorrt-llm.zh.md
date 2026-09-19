@@ -91,12 +91,12 @@ NVIDIA 基于 TensorRT 优化的 LLM 推理引擎，通过定制 CUDA 内核、F
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [vLLM](vllm.zh.md) | ✅ | 需要 NVIDIA 硬件上最大吞吐时用 TensorRT-LLM；需要开源灵活性、庞大社区和动态模型加载时选 vLLM。 | 事实上的开源 LLM 服务引擎（PagedAttention、连续批处理），庞大社区与模型覆盖；NVIDIA 优先，在相同硬件上峰值吞吐低于 TensorRT-LLM。 |
-| Text Generation Inference（TGI） | 未收录 | 需要 NVIDIA 专属峰值吞吐时用 TensorRT-LLM；需要 Hugging Face 生产服务器和紧密 HF 生态集成时选 TGI。 | Hugging Face 的生产服务器，紧密 HF 生态集成；许可证历史有过摇摆（Apache→HFOIL→Apache），NVIDIA 专属调优不如 TensorRT-LLM。 |
+| [Text Generation Inference（TGI）](text-generation-inference.zh.md) | ✅ | 需要 NVIDIA 专属峰值吞吐时用 TensorRT-LLM；需要 Hugging Face 生产服务器和紧密 HF 生态集成时选 TGI。 | Hugging Face 的生产服务器，紧密 HF 生态集成；许可证历史有过摇摆（Apache→HFOIL→Apache），NVIDIA 专属调优不如 TensorRT-LLM。 |
 | [Modular Platform（MAX + Mojo）](modular.zh.md) | ✅ | 需要 NVIDIA 自家引擎和最大吞吐时用 TensorRT-LLM；需要跨厂商编译器+语言平台及其内核语言时选 MAX。 | 厂商构建的跨厂商 GPU/CPU 服务引擎 + Mojo 内核语言；单厂商绑定，社区更年轻，NVIDIA 专属调优不如 TensorRT-LLM。 |
 | [oMLX](omlx.zh.md) | ✅ | 数据中心 NVIDIA GPU 服务用 TensorRT-LLM；需要 Mac（Apple Silicon）本地推理服务带 SSD 分层 KV 缓存时选 oMLX。 | 仅限 Mac 的 Apple Silicon 本地服务器，带 Swift 菜单栏应用；不是数据中心多 GPU 引擎。 |
 | [Ray Serve](ray-serve.zh.md) | ✅ | 需要专用 LLM 推理引擎时用 TensorRT-LLM；需要通用 Python 模型服务编排和跨多种模型类型扩缩容时选 Ray Serve。 | 通用 Python 模型服务/编排框架，用于扩缩容和组合服务；不是手调的单模型推理引擎。 |
 | [SGLang](sglang.zh.md) | ✅ | 需要 NVIDIA 编译引擎峰值吞吐时用 TensorRT-LLM；需要 RadixAttention 前缀缓存和结构化生成优化时选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；更新、更小生态，NVIDIA 专属调优不如 TensorRT-LLM。 |
-| Ollama / llama.cpp | 未收录 | 数据中心吞吐服务用 TensorRT-LLM；需要轻量本地/边缘 CPU 或消费级 GPU 推理时选 Ollama/llama.cpp。 | 可移植 C/C++ 推理引擎（GGUF），到处运行包括 Mac 和手机；不是数据中心多 GPU 吞吐引擎。 |
+| [Ollama](ollama.zh.md) / [llama.cpp](llama-cpp.zh.md) | ✅ | 数据中心吞吐服务用 TensorRT-LLM；需要轻量本地/边缘 CPU 或消费级 GPU 推理时选 Ollama/llama.cpp。 | 可移植 C/C++ 推理引擎（GGUF），到处运行包括 Mac 和手机；不是数据中心多 GPU 吞吐引擎。 |
 
 ## 技术栈
 

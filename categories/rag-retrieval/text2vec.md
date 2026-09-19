@@ -96,7 +96,7 @@ You also reach for it when you want to *fine-tune* a sentence embedder on your o
 | sentence-transformers (SBERT) | 未收录 | Choose sentence-transformers when you need the upstream library text2vec builds on. | The upstream library text2vec builds on; broader model zoo and English/multilingual coverage, but less Chinese-curated out of the box and no bundled BM25/Word2Vec convenience. |
 | BGE / FlagEmbedding (BAAI) | 未收录 | Choose BGE/FlagEmbedding when you need the canonical home for newer open embedding checkpoints and rerankers. | State-of-the-art open embedding models (incl. strong Chinese); text2vec can load BGE, but FlagEmbedding is the canonical home for the latest checkpoints and rerankers. |
 | [FAISS](faiss.md) | ✅ | Choose FAISS when you need an in-process vector index, not an encoder. | Vector index, not encoder — complementary, not a substitute; you still need an embedder like text2vec in front. |
-| Milvus | 未收录 | Choose Milvus when you need a distributed vector database rather than a local embedding library. | Vector database, not encoder — complementary, not a substitute; you still need an embedder like text2vec in front. |
+| [Milvus](milvus.md) | ✅ | Choose Milvus when you need a distributed vector database rather than a local embedding library. | Vector database, not encoder — complementary, not a substitute; you still need an embedder like text2vec in front. |
 | OpenAI / Cohere embedding APIs | 未收录 | Choose hosted embedding APIs when no self-hosting/GPU and strong managed quality matter most. | Hosted, no self-hosting or GPU, strong quality — but paid, network-dependent, and sends text to a third party; text2vec runs fully local. |
 
 ## Tech stack

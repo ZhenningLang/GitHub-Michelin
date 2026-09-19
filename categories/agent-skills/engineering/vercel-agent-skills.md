@@ -92,7 +92,7 @@ You run `npx skills add vercel-labs/agent-skills` and the agent gains a menu of 
 | [web-quality-skills](addyosmani-web-quality.md) | ✅ | Pick web-quality-skills for vendor-neutral performance, accessibility, and quality auditing. | Dedicated web-quality/perf/accessibility skills; narrower than Vercel's broader bundle (deploy + optimize + React patterns) but vendor-neutral, so it travels off Vercel. |
 | [Waza](waza.md) | ✅ | Pick Waza when general engineering habits matter more than React/Vercel platform rules. | Another engineering skill pack in this leaf; compare on domain coverage and which workflows each actually encodes. |
 | [Scientific Agent Skills](scientific-agent-skills.md) | ✅ | Pick Scientific Agent Skills for research/data workflows outside web/frontend engineering. | Scientific/eng-workflow skills — different domain (research/data) than web/frontend engineering; complementary, not a substitute. |
-| [Superpowers](../../agent-dev-methodology/superpowers.md) | ✅ | Pick methodology packs when you need planning/TDD discipline rather than React/Vercel domain rules. | General SDLC/methodology skill packs shape *how* the agent works (TDD, planning); Vercel's pack supplies *domain* rules for React/Vercel. Often run together, not either/or. |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | Pick methodology packs when you need planning/TDD discipline rather than React/Vercel domain rules. | General SDLC/methodology skill packs shape *how* the agent works (TDD, planning); Vercel's pack supplies *domain* rules for React/Vercel. Often run together, not either/or. |
 
 ## Health & viability
 

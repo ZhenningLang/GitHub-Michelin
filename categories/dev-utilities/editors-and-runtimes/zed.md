@@ -117,7 +117,7 @@ You're choosing a code editor and raw performance, modern UX, and team collabora
 - **Adoption**: Grade B — 812,610 monthly downloads via crates.io (package: zed_extension_api).
 - **Longevity**: Grade A — 1960 days old.
 - **Governance**: Grade A — top-3 contributor share 18.9% (?).
-- **Risk / License**: Grade A — Apache-2.0 license.
+- **Risk / License**: `?` (license_unparsed) — GitHub reports `NOASSERTION` and the machine axis cannot classify it; the README states GPL-3.0-or-later for the community edition while the repo also ships branded/proprietary content, so review the license per release rather than treating it as a stable permissive grant.
 ## Caveats (unverified)
 
 - [未验证] The exact GPU requirements for GPUI on older integrated graphics have not been tested across all platforms.

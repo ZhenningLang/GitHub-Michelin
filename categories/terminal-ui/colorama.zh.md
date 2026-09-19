@@ -93,7 +93,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Rich（Textualize） | 未收录 | 需要颜色、表格、Markdown、进度和 traceback 等完整带样式输出工具包时，选 Rich。 | 完整的带样式输出工具包（颜色、表格、markdown、进度、traceback）——能力强太多，但是个大库；只要跨平台颜色就是杀鸡用牛刀。 |
+| [Rich（Textualize）](rich.zh.md) | ✅ | 需要颜色、表格、Markdown、进度和 traceback 等完整带样式输出工具包时，选 Rich。 | 完整的带样式输出工具包（颜色、表格、markdown、进度、traceback）——能力强太多，但是个大库；只要跨平台颜色就是杀鸡用牛刀。 |
 | termcolor / colored | 未收录 | 需要极小、API 友好的 ANSI 颜色助手，且不需要老式 Windows ANSI 翻译时，选 termcolor / colored。 | 极小的 ANSI 颜色助手，API 友好，但不在老式 Windows 上翻译 ANSI——常和 colorama *搭配*以补这点。 |
 | click.style（Click） | 未收录 | 需要 Click CLI 框架内方便的样式能力时，选 click.style。 | Click CLI 框架内方便的样式；Click 自身历史上为 Windows 垫片依赖 colorama。 |
 | blessed / blessings | 未收录 | 需要基于 terminfo 的终端能力、光标和样式控制时，选 blessed / blessings。 | 终端能力 + 光标/样式库（基于 terminfo）——终端控制更丰富、更重，对 Windows-ANSI 缺口不那么聚焦。 |

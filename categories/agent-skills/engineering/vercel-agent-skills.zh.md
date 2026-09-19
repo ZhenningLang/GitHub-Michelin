@@ -92,7 +92,7 @@ Vercel 官方的 agent skill 集合——按需安装的 React、Next.js、Verce
 | [web-quality-skills](addyosmani-web-quality.zh.md) | ✅ | 需要厂商中立的性能、可访问性和质量审计时，选 web-quality-skills。 | 专注 web 质量/性能/可访问性的 skill；比 Vercel 的大杂烩（部署 + 优化 + React 模式）更窄，但厂商中立，能脱离 Vercel 使用。 |
 | [Waza](waza.zh.md) | ✅ | 通用工程习惯比 React/Vercel 平台规则更重要时，选 Waza。 | 本 leaf 下另一个工程 skill 包；按领域覆盖面和各自实际编码了哪些工作流来对比。 |
 | [Scientific Agent Skills](scientific-agent-skills.zh.md) | ✅ | 任务是 Web/前端工程以外的研究或数据工作流时，选 Scientific Agent Skills。 | 科学/工程工作流 skill——领域不同（研究/数据），与 web/前端工程互补而非替代。 |
-| [Superpowers](../../agent-dev-methodology/superpowers.zh.md) | ✅ | 需要规划/TDD 方法论纪律、而不是 React/Vercel 领域规则时，选方法论包。 | 通用 SDLC/方法论 skill 包塑造 agent *怎么干活*（TDD、规划）；Vercel 这套提供 React/Vercel 的*领域*规则。通常一起用，不是二选一。 |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 需要规划/TDD 方法论纪律、而不是 React/Vercel 领域规则时，选方法论包。 | 通用 SDLC/方法论 skill 包塑造 agent *怎么干活*（TDD、规划）；Vercel 这套提供 React/Vercel 的*领域*规则。通常一起用，不是二选一。 |
 
 ## 健康度与可持续性
 

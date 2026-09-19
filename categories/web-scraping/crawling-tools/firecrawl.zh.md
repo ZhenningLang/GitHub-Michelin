@@ -98,7 +98,7 @@ health:
 | [newspaper](../article-extraction/newspaper.zh.md) | ✅ | 从新闻 URL 提取文章正文。 | newspaper 仅限 Python 且聚焦文章；Firecrawl 是全功能 API，支持搜索、抓取与交互。 |
 | [Readability.js](../article-extraction/readability-js.zh.md) | ✅ | Firefox 阅读视图文章提取。 | Readability.js 是浏览器库，用于文章提取；Firecrawl 是可扩展 API，支持搜索与交互。 |
 | [PRAW](praw.zh.md) | ✅ | Reddit 专用 API 封装。 | PRAW 仅限 Reddit；Firecrawl 是通用网页抓取。 |
-| Scrapy / [Playwright](../../web-automation/playwright.zh.md) | 部分已收录 | 底层抓取框架。 | Scrapy 和 Playwright 提供完全控制，但需要自建和维护爬虫基础设施。 |
+| Scrapy / [Playwright](../../web-automation/playwright-family/playwright.zh.md) | 部分已收录 | 底层抓取框架。 | Scrapy 和 Playwright 提供完全控制，但需要自建和维护爬虫基础设施。 |
 
 ## 技术栈
 

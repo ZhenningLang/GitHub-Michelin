@@ -99,9 +99,9 @@ health:
 | [remark](remark.zh.md) | ✅ | 需要完整的 mdast AST 流水线来解析、转换、lint、序列化 Markdown 或 MDX 时，选 remark。 | 完整的 mdast AST 流水线，用于解析、转换、lint、序列化（Markdown、MDX）；功能强大得多，也重得多——是工具链，不是一次调用渲染器。 |
 | [micromark](micromark.zh.md) | ✅ | 需要 remark 底层低层 CommonMark/GFM 分词器时，选 micromark。 | 底层 CommonMark/GFM 分词器，支撑 remark；正确且面向流式，但渲染层需自己搭建。 |
 | [CommonMark](commonmark.zh.md) | ✅ | 需要规范自身的参考实现，而不是带插件的生产级渲染器时，选 CommonMark。 | 规范自身的参考实现，是合规性标尺；但 GFM 便利功能较少，未针对生产渲染优化。 |
-| Pandoc | 未收录 | 需要跨几十种格式的通用文档转换器，而不只是 Markdown→HTML 时，选 Pandoc。 | 基于 Haskell 的通用文档转换器，跨几十种格式；体积大得多，无法嵌入 JS 应用。 |
+| [Pandoc](pandoc.zh.md) | ✅ | 需要跨几十种格式的通用文档转换器，而不只是 Markdown→HTML 时，选 Pandoc。 | 基于 Haskell 的通用文档转换器，跨几十种格式；体积大得多，无法嵌入 JS 应用。 |
 | Showdown | 未收录 | 仅在维护已依赖它的遗留代码时，选 Showdown。 | 较老的 JS Markdown 转换器；活跃度较低，规范合规性较弱，总体已被 markdown-it 或 marked 取代。 |
-| Goldmark | 未收录 | 在 Go 生态（如 Hugo）中需要 Markdown 解析器时，选 Goldmark。 | Go 的 Markdown 解析器，Hugo 在用；JS 环境不可用。 |
+| [Goldmark](goldmark.zh.md) | ✅ | 在 Go 生态（如 Hugo）中需要 Markdown 解析器时，选 Goldmark。 | Go 的 Markdown 解析器，Hugo 在用；JS 环境不可用。 |
 
 ## 技术栈
 

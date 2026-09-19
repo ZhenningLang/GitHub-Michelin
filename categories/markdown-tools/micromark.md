@@ -92,8 +92,8 @@ You're building a custom Markdown processor — maybe a linting tool, a syntax h
 | [markdown-it](markdown-it.md) | ✅ | Choose markdown-it when you need a strict CommonMark/GFM-compliant, pluggable Markdown→HTML parser with a rich plugin ecosystem. | CommonMark-strict, pluggable architecture with a rich plugin ecosystem; heavier API than marked, but the choice when spec conformance and plugins matter. |
 | [remark](remark.md) | ✅ | Choose remark when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown. | Full mdast AST pipeline built on top of micromark; far more powerful and far heavier — a toolchain, not a raw tokenizer. |
 | [CommonMark](commonmark.md) | ✅ | Choose CommonMark when you need the spec's reference implementation instead of the tokenizer layer remark uses. | The spec's own reference implementation; the conformance yardstick, but fewer GFM niceties and not optimized as a production tokenizer. |
-| Pandoc | 未收录 | Choose Pandoc when you need a universal document converter across dozens of formats. | Universal document converter; not a JS library, and overkill if you only need Markdown tokenization. |
-| Goldmark | 未收录 | Choose Goldmark when you need a fast, extensible Markdown parser in Go. | Fast, extensible Markdown parser in Go; not JavaScript, so choose it for Go projects, not JS/browser stacks. |
+| [Pandoc](pandoc.md) | ✅ | Choose Pandoc when you need a universal document converter across dozens of formats. | Universal document converter; not a JS library, and overkill if you only need Markdown tokenization. |
+| [Goldmark](goldmark.md) | ✅ | Choose Goldmark when you need a fast, extensible Markdown parser in Go. | Fast, extensible Markdown parser in Go; not JavaScript, so choose it for Go projects, not JS/browser stacks. |
 
 ## Tech stack
 

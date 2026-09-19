@@ -99,7 +99,7 @@ health:
 |---|---|---|---|
 | [PDF.js](pdfjs.zh.md) | ✅ | 需要渲染或读取已有 PDF 时，选 PDF.js。 | 渲染器/查看器，不是生成器——互补关系。PDF.js 显示 PDF；jsPDF 构建 PDF。 |
 | [pdf-lib](pdf-lib.zh.md) | ✅ | 需要在 JS 中创建且修改 PDF（表单、合并、绘制）且不引入原生依赖时，选 pdf-lib。 | JS 库，可创建并修改 PDF——覆盖 jsPDF 不处理的编辑/修改场景。 |
-| PyMuPDF / pdfplumber | 未收录 | 需要快速服务端 PDF 文本/表格提取或渲染时，选 PyMuPDF / pdfplumber。 | Python 库，用于服务端 PDF 处理；不是浏览器生成器。 |
+| [PyMuPDF](pymupdf.zh.md) / [pdfplumber](pdfplumber.zh.md) | ✅ | 需要快速服务端 PDF 文本/表格提取或渲染时，选 PyMuPDF / pdfplumber。 | Python 库，用于服务端 PDF 处理；不是浏览器生成器。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | 需要把文档解析成结构化输出供 AI/RAG 时，选 Docling。 | 解析器，不是生成器——它把文档读成结构化 Markdown/JSON，从不创建 PDF。 |
 | 原生 `<embed>` / 浏览器 PDF 插件 | 未收录 | 只需要零集成地显示已有 PDF 时，选原生嵌入。 | 零依赖展示，但无法生成、无法程序化控制，且各浏览器表现不一致。 |
 

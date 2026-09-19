@@ -16,6 +16,16 @@ jobs:
       - name: Structural lint (the gate — schema conformance, routing, dead links)
         run: python3 tools/lint.py
 
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Deterministic quality gate (gated triage categories, whole repo)
+        run: python3 tools/quality_scan.py --fail-on-gated
+
   markdown-lint:
     runs-on: ubuntu-latest
     steps:

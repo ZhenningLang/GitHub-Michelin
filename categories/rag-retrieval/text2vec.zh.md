@@ -96,7 +96,7 @@ health:
 | sentence-transformers（SBERT） | 未收录 | 需要 text2vec 所基于的上游库时，选 sentence-transformers。 | text2vec 所基于的上游库；模型库更广、英文/多语覆盖更全，但中文开箱筛选更少，且不带 BM25/Word2Vec 便利封装。 |
 | BGE / FlagEmbedding（BAAI） | 未收录 | 需要较新的开源 embedding checkpoints 和 reranker 正统出处时，选 BGE/FlagEmbedding。 | 最先进的开源 embedding 模型（含强中文）；text2vec 可加载 BGE，但 FlagEmbedding 才是最新检查点与 reranker 的正统出处。 |
 | [FAISS](faiss.zh.md) | ✅ | 需要进程内向量索引而不是编码器时，选 FAISS。 | 向量索引，不是编码器——互补而非替代；你前面仍需要一个像 text2vec 的 embedder。 |
-| Milvus | 未收录 | 需要分布式向量数据库而不是本地 embedding 库时，选 Milvus。 | 向量数据库，不是编码器——互补而非替代；你前面仍需要一个像 text2vec 的 embedder。 |
+| [Milvus](milvus.zh.md) | ✅ | 需要分布式向量数据库而不是本地 embedding 库时，选 Milvus。 | 向量数据库，不是编码器——互补而非替代；你前面仍需要一个像 text2vec 的 embedder。 |
 | OpenAI / Cohere embedding API | 未收录 | 需要托管 embedding API 且不想自建/GPU 时，选 OpenAI 或 Cohere。 | 托管、无需自建或 GPU、质量强——但要付费、依赖网络，且把文本发给第三方；text2vec 全程本地运行。 |
 
 ## 技术栈

@@ -97,12 +97,12 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [vLLM](vllm.zh.md) | ✅ | 需要多模型编排和自动扩缩容时选 Ray Serve；需要专用高吞吐 LLM 推理引擎时选 vLLM。 | 事实上的开源 LLM 服务引擎（PagedAttention、连续批处理），社区庞大；NVIDIA 优先，不是编排框架。 |
-| Text Generation Inference (TGI) | 未收录 | 需要通用模型服务编排时选 Ray Serve；需要 Hugging Face 生产级 LLM 服务器及其紧密生态集成时选 TGI。 | Hugging Face 的生产服务器，HF 生态集成紧密；许可证历史有波动（Apache→HFOIL→Apache），不是通用服务框架。 |
+| [Text Generation Inference (TGI)](text-generation-inference.zh.md) | ✅ | 需要通用模型服务编排时选 Ray Serve；需要 Hugging Face 生产级 LLM 服务器及其紧密生态集成时选 TGI。 | Hugging Face 的生产服务器，HF 生态集成紧密；许可证历史有波动（Apache→HFOIL→Apache），不是通用服务框架。 |
 | [TensorRT-LLM](tensorrt-llm.zh.md) | ✅ | 需要跨多种模型类型做编排时选 Ray Serve；需要 NVIDIA 自有引擎在 NVIDIA 硬件上榨取最大吞吐时选 TensorRT-LLM。 | NVIDIA 自有引擎，NVIDIA 硬件上吞吐顶级；深度绑定 NVIDIA，构建流程更重，不是编排层。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 需要通用 Python 模型服务框架及多模型组合时选 Ray Serve；需要厂商构建的跨厂商编译器+语言平台及其自有内核语言时选 MAX。 | 厂商构建的跨厂商 GPU/CPU 服务引擎 + Mojo 内核语言；单厂商绑定，不是通用模型服务编排框架。 |
 | [oMLX](omlx.zh.md) | ✅ | 数据中心多模型服务选 Ray Serve；需要 Mac（Apple Silicon）本地推理服务器带 SSD 分层 KV 缓存时选 oMLX。 | 仅限 Mac（Apple Silicon）的本地服务器，带 Swift 菜单栏应用；不是数据中心多模型编排框架。 |
 | [SGLang](sglang.zh.md) | ✅ | 需要 RadixAttention 前缀缓存和结构化生成优化时，选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；较新、生态较小，不是编排框架。 |
-| BentoML / OpenLLM | 未收录 | 需要 Ray 原生分布式扩缩容和部署图时选 Ray Serve；需要更轻量的容器原生模型服务框架时选 BentoML。 | 更轻量的容器原生模型服务框架；生态比 Ray 小，在超大规模下的验证较少。 |
+| [BentoML](bentoml.zh.md) / OpenLLM | 部分已收录 | 需要 Ray 原生分布式扩缩容和部署图时选 Ray Serve；需要更轻量的容器原生模型服务框架时选 BentoML。 | 更轻量的容器原生模型服务框架；生态比 Ray 小，在超大规模下的验证较少。 |
 | KServe | 未收录 | 需要 Python 优先、代码驱动的服务框架时选 Ray Serve；需要 Kubernetes 原生模型服务及标准 CRD、紧密 Kubeflow 集成时选 KServe。 | Kubernetes 原生模型服务，带标准 CRD 和紧密 Kubeflow 集成；更偏重 YAML/配置，不如 Ray Serve 原生 Python。 |
 | FastAPI + Uvicorn | 未收录 | 需要分布式自动扩缩容、多模型组合和生产级服务时选 Ray Serve；需要极简轻量 API 框架做简单服务时选 FastAPI。 | 极简轻量 API 框架；不是模型服务专用，没有内置自动扩缩容或分布式执行。 |
 

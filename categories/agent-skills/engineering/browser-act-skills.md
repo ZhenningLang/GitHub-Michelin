@@ -76,7 +76,7 @@ The deciding tradeoff versus plain Playwright is that BrowserAct optimizes for a
 
 ## When NOT to use
 
-- **You need deterministic browser tests.** Use [Playwright](../../web-automation/playwright.md) for CI tests, trace viewer, fixtures, and code-first browser automation; BrowserAct is shaped for agent-driven sessions.
+- **You need deterministic browser tests.** Use [Playwright](../../web-automation/playwright-family/playwright.md) for CI tests, trace viewer, fixtures, and code-first browser automation; BrowserAct is shaped for agent-driven sessions.
 - **You cannot accept managed-service or paid-feature coupling.** The README says core automation is free, but stealth browsers beyond the first five and managed proxies are paid; choose Playwright or a self-hosted browser stack if that boundary is unacceptable.
 - **Your target site forbids scraping or automation.** Use the site's official API or seek explicit permission instead of BrowserAct; anti-blocking features do not remove legal, contractual, or ethical constraints.
 - **You do not want user browser state touched.** Use privacy-mode Playwright profiles or a disposable browser environment; BrowserAct supports Chrome login reuse and profile import, which must be governed carefully.
@@ -86,8 +86,8 @@ The deciding tradeoff versus plain Playwright is that BrowserAct optimizes for a
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Playwright](../../web-automation/playwright.md) | ✅ | For test suites and developer-authored automation, pick Playwright; for agent sessions that need indexed actions, handoff, and stealth modes, pick BrowserAct Skills. | BrowserAct adds agent UX and service features; Playwright is more standard and easier to reason about in CI. |
-| [Puppeteer](../../web-automation/puppeteer.md) | ✅ | For simple Node.js browser scripts, Puppeteer may be enough; pick BrowserAct when agent-readable state, session naming, or human handoff matter. | Puppeteer is lighter and familiar; BrowserAct has more workflow surface and external feature boundaries. |
+| [Playwright](../../web-automation/playwright-family/playwright.md) | ✅ | For test suites and developer-authored automation, pick Playwright; for agent sessions that need indexed actions, handoff, and stealth modes, pick BrowserAct Skills. | BrowserAct adds agent UX and service features; Playwright is more standard and easier to reason about in CI. |
+| [Puppeteer](../../web-automation/browser-driver-frameworks/puppeteer.md) | ✅ | For simple Node.js browser scripts, Puppeteer may be enough; pick BrowserAct when agent-readable state, session naming, or human handoff matter. | Puppeteer is lighter and familiar; BrowserAct has more workflow surface and external feature boundaries. |
 | Browserbase / hosted browser services | 未收录 | For hosted browser infrastructure, evaluate Browserbase-style services; pick BrowserAct when its skill/CLI workflow and free local modes fit better. | Hosted browsers reduce local setup but introduce stronger vendor dependency. |
 | Custom site scraper skill | 未收录 | For one stable target with known APIs, write a custom skill; pick BrowserAct Skill Forge when you want an agent to discover and package the scraping flow. | Custom scrapers are narrower and easier to audit; Skill Forge is faster for exploratory extraction. |
 

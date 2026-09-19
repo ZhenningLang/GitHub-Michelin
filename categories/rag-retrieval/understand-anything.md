@@ -102,7 +102,7 @@ It fits best when the same graph should serve *whatever agent you already use* �
 | [code-review-graph](code-review-graph.md) | ✅ | Choose code-review-graph when you need a focused code-review/blast-radius pipeline. | Narrow code-review/blast-radius pipeline (AST→SQLite→MCP) with a risk-scoring CI Action and no-egress runner story. Understand-Anything is a general explore/query tool, not a PR-review gate. |
 | [PageIndex](pageindex.md) | ✅ | Choose PageIndex when you need reasoning-based hierarchical retrieval over documents. | Reasoning-based hierarchical retrieval over *documents* (no code AST/call graph); different retrieval primitive — prose tree vs code/entity graph. |
 | [FalkorDB](falkordb.md) | ✅ | Choose FalkorDB when you need a real persistent property-graph backend. | A real persistent property-graph DB (Redis module, OpenCypher, vector index) you build apps on; Understand-Anything is a turnkey extract-and-query tool, not a graph backend. |
-| Sourcegraph / SCIP | 未收录 | Choose Sourcegraph or SCIP when you need industrial precise code intelligence at scale. | Industrial precise code intelligence (cross-repo, language servers, scale); heavier infra, not an agent-plugin-shaped drop-in. Understand-Anything is lighter and LLM-augmented but unproven. |
+| [Sourcegraph](sourcegraph.md) / [SCIP](scip.md) | ✅ | Choose Sourcegraph or SCIP when you need industrial precise code intelligence at scale. | Industrial precise code intelligence (cross-repo, language servers, scale); heavier infra, not an agent-plugin-shaped drop-in. Understand-Anything is lighter and LLM-augmented but unproven. |
 
 ## Tech stack
 

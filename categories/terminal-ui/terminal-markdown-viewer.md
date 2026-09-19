@@ -82,7 +82,7 @@ You reach for it when the job is specifically *one-shot, read-only rendering of 
 |---|---|---|---|
 | glow | 未收录 | Choose glow when you need a Go single-binary Markdown renderer with a TUI browser/pager and themes. | Go single-binary Markdown renderer with a TUI browser/pager and themes (Charm); actively maintained, no Python runtime — generally the modern default for terminal Markdown reading. |
 | bat | 未收录 | Choose bat when you need a `cat` clone with syntax highlighting and paging. | A `cat` clone with syntax highlighting and paging; shows Markdown *source* highlighted rather than rendering it, but ubiquitous and fast. |
-| rich (Markdown) | 未收录 | Choose rich when Markdown rendering is part of a larger Python styled-terminal-output toolkit. | Python library that renders Markdown to styled terminal output as part of a larger toolkit; library-first, not a standalone CLI. |
+| [rich (Markdown)](rich.md) | ✅ | Choose rich when Markdown rendering is part of a larger Python styled-terminal-output toolkit. | Python library that renders Markdown to styled terminal output as part of a larger toolkit; library-first, not a standalone CLI. |
 | mdcat | 未收录 | Choose mdcat when you need a Rust CLI that renders Markdown to the terminal, including inline images on supporting terminals. | Rust CLI that renders Markdown to the terminal, including inline images on supporting terminals; single binary, active. |
 | pandoc + pager | 未收录 | Choose pandoc + pager when you need heavyweight general-purpose conversion across many formats. | Converts Markdown to many formats (heavyweight, general-purpose); overkill for "just show this .md in my terminal". |
 

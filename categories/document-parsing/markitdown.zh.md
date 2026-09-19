@@ -96,8 +96,8 @@ health:
 | [Docling](docling.zh.md) | ✅ | 富文档解析，将版面 + 表格解析成结构化 Markdown/JSON。 | Docling 模型依赖更重，聚焦结构化输出；MarkItDown 更轻更简单，专为 LLM 摄入构建。 |
 | unstructured.io | 未收录 | 企业级文档解析，带分块和嵌入管线。 | 生态更成熟，有云服务；依赖更重，企业功能可能产生许可费用。 |
 | LlamaParse | 未收录 | LlamaIndex 出品的解析服务，托管 API。 | 基于云端，需 API key，对复杂 PDF 表现好；MarkItDown 本地、免费且开源。 |
-| Marker | 未收录 | 面向学术论文优化的快速 PDF 转 Markdown 工具。 | 专攻 PDF，声称对研究论文精度高；MarkItDown 覆盖更多格式（Office、音频、HTML 等）。 |
-| PyMuPDF | 未收录 | 用于提取和操控的底层 Python PDF 库。 | 直接 PDF 页面操控库，非高级 Markdown 转换器；更强大但需要更多代码。 |
+| [Marker](marker.zh.md) | ✅ | 面向学术论文优化的快速 PDF 转 Markdown 工具。 | 专攻 PDF，声称对研究论文精度高；MarkItDown 覆盖更多格式（Office、音频、HTML 等）。 |
+| [PyMuPDF](../pdf-tools/pymupdf.zh.md) | ✅ | 用于提取和操控的底层 Python PDF 库。 | 直接 PDF 页面操控库，非高级 Markdown 转换器；更强大但需要更多代码。 |
 | textract | 未收录 | 从多种格式提取文本的 Python 库。 | 更老的项目，格式支持更广，但对 LLM 的 Markdown 结构保留关注较少。 |
 
 ## 技术栈

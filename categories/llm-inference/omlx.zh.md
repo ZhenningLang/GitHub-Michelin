@@ -90,12 +90,12 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Ollama | 未收录 | 需要默认的跨平台本地 LLM 运行器和庞大模型库时，选 Ollama。 | 默认的 Mac/跨平台本地 LLM 运行器（基于 llama.cpp），生态和模型库极大；OS 支持更广，但没有 Apple-MLX 后端，缓存机制也比 oMLX 的热/冷分层 KV 缓存简单。 |
+| [Ollama](ollama.zh.md) | ✅ | 需要默认的跨平台本地 LLM 运行器和庞大模型库时，选 Ollama。 | 默认的 Mac/跨平台本地 LLM 运行器（基于 llama.cpp），生态和模型库极大；OS 支持更广，但没有 Apple-MLX 后端，缓存机制也比 oMLX 的热/冷分层 KV 缓存简单。 |
 | LM Studio | 未收录 | 需要带 OpenAI 兼容服务器的精致桌面应用时，选 LM Studio。 | 打磨精良的本地模型桌面应用（Mac/Win/Linux），带 OpenAI 兼容服务器；GUI 闭源，不是 Apple-MLX 原生的开源服务器。 |
 | mlx-lm（`mlx_lm.server`） | 未收录 | 需要 Apple 自家 MLX LLM 工具包和极简服务器时，选 mlx-lm。 | Apple 自家的 MLX LLM 工具包，带一个极简 OpenAI 兼容服务器——oMLX 正是**建在** mlx-lm 的 BatchGenerator 之上；mlx-lm 更底层，没有菜单栏应用、分层 SSD 缓存、多模型 LRU 和 admin 面板。 |
-| llama.cpp | 未收录 | 需要可移植的 C/C++ GGUF 推理引擎、并希望靠 Metal 跑 Mac 时，选 llama.cpp。 | 可移植的 C/C++ 推理引擎（GGUF），靠 Metal 也能在 Mac 上跑、到处都能跑；可移植性和成熟度都顶，但不是 MLX 原生，也没有内建的 macOS 菜单栏/admin 管理层。 |
+| [llama.cpp](llama-cpp.zh.md) | ✅ | 需要可移植的 C/C++ GGUF 推理引擎、并希望靠 Metal 跑 Mac 时，选 llama.cpp。 | 可移植的 C/C++ 推理引擎（GGUF），靠 Metal 也能在 Mac 上跑、到处都能跑；可移植性和成熟度都顶，但不是 MLX 原生，也没有内建的 macOS 菜单栏/admin 管理层。 |
 | [vLLM](vllm.zh.md) | ✅ | 需要事实标准的数据中心 LLM 服务引擎，而不是 Mac 本地服务器时，选 vLLM。 | 事实标准的数据中心 LLM 服务引擎（PagedAttention、continuous batching），社区庞大；偏 NVIDIA/Linux——不是 Mac/Apple Silicon 本地服务器。 |
-| Text Generation Inference (TGI) | 未收录 | 需要 Hugging Face 生产服务器、紧密 HF 集成和规模验证时，选 TGI。 | Hugging Face 的生产服务器，与 HF 贴合紧密、在规模上久经检验；面向服务器 GPU，不是 Mac 本地栈。 |
+| [Text Generation Inference (TGI)](text-generation-inference.zh.md) | ✅ | 需要 Hugging Face 生产服务器、紧密 HF 集成和规模验证时，选 TGI。 | Hugging Face 的生产服务器，与 HF 贴合紧密、在规模上久经检验；面向服务器 GPU，不是 Mac 本地栈。 |
 | [SGLang](sglang.zh.md) | ✅ | 需要面向服务器 GPU 的高吞吐服务和 RadixAttention 前缀缓存时，选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；面向服务器 GPU、运维更复杂，不是单 Mac 菜单栏应用。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 需要服务器级跨厂商引擎和 Mojo kernel 语言时，选 Modular Platform。 | 厂商自建的跨厂商 GPU/CPU 服务引擎 + Mojo kernel 语言；一个大得多、服务器级、单一厂商的平台——与 Mac 本地服务器是不同的层和量级。 |
 | [Ray Serve](ray-serve.zh.md) | ✅ | 需要可扩展 Python 模型服务、多模型组合和自动扩缩容时，选 Ray Serve。 | 通用可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容；基于 Ray，运维要求高，不是 Mac 本地服务器。 |

@@ -730,6 +730,12 @@ def main() -> int:
         action="store_true",
         help="Exit non-zero for scoped or changed-only scans with gated deterministic findings.",
     )
+    parser.add_argument(
+        "--fail-on-gated",
+        action="store_true",
+        help="Exit non-zero when any gated deterministic category has findings, in any mode "
+        "(including a whole-repo scan) — the CI gate.",
+    )
     args = parser.parse_args()
 
     if args.scope and args.changed_only:
@@ -745,7 +751,7 @@ def main() -> int:
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(report, encoding="utf-8")
     print(report)
-    if args.fail_on_any_scoped and has_gated_findings(result):
+    if (args.fail_on_any_scoped or args.fail_on_gated) and has_gated_findings(result):
         return 1
     return 0
 

@@ -93,7 +93,7 @@ It also fits when you want the same conveniences in automation: DevToys ships a 
 | [Telegraf](../ops-infra/telegraf.md) | ✅ | Choose Telegraf when you need a metrics/event collection agent for observability pipelines. | Metrics/event collection agent for observability pipelines; not an interactive devtools box. |
 | It-Tools | 未收录 | Choose It-Tools when you need a self-hostable web app with a similar grab-bag of dev utilities. | Self-hostable web app with a very similar grab-bag of dev utilities; runs in any browser / Docker. DevToys is native desktop + offline + a CLI; It-Tools is zero-install over HTTP. |
 | DevUtils (macOS) | 未收录 | Choose DevUtils when you need a polished native macOS-only equivalent and accept a paid app. | Polished native macOS-only equivalent (paid); DevToys is free, MIT, and cross-platform. |
-| `jq` / `xxd` / `openssl` (CLI) | 未收录 | Choose Unix CLI primitives when you need scriptable pipelines with no GUI. | Scriptable Unix primitives, no GUI; better for pipelines, worse for "I just need to eyeball this once." |
+| [`jq`](jq.md) / `xxd` / `openssl` (CLI) | 部分已收录 | Choose Unix CLI primitives when you need scriptable pipelines with no GUI. | Scriptable Unix primitives, no GUI; better for pipelines, worse for "I just need to eyeball this once." |
 
 ## Tech stack
 

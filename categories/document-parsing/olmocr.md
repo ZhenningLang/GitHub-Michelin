@@ -95,10 +95,10 @@ You're a machine learning researcher or data engineer preparing a large-scale co
 |---|---|---|---|
 | [Docling](docling.md) | ✅ | Rich-document parsing with layout + tables to structured Markdown/JSON. | Docling is a layout-aware parser using local models and heuristics; olmOCR is explicitly VLM-based for higher semantic understanding of complex documents. |
 | [MarkItDown](markitdown.md) | ✅ | Lightweight Python library converting office documents to Markdown. | MarkItDown is simpler, faster, and cheaper for basic documents; olmOCR handles complex layouts, equations, and handwriting that MarkItDown cannot. |
-| Marker | 未收录 | Fast PDF-to-Markdown converter optimized for academic papers. | Marker specializes in academic papers with rule-based heuristics; olmOCR uses a VLM for broader document types but at higher compute cost. |
+| [Marker](marker.md) | ✅ | Fast PDF-to-Markdown converter optimized for academic papers. | Marker specializes in academic papers with rule-based heuristics; olmOCR uses a VLM for broader document types but at higher compute cost. |
 | LlamaParse | 未收录 | Hosted document parsing API from LlamaIndex. | Cloud-based, API-key required, no GPU needed; olmOCR is self-hosted and open-source but requires GPU infrastructure. |
 | [Tesseract](../ocr/tesseract.md) / OCRmyPDF | 部分已收录 | Choose traditional OCR engines when plain text extraction is enough and layout semantics are secondary. | Pure OCR tools extract text but do not understand layout, tables, or reading order; olmOCR's VLM provides semantic understanding. OCRmyPDF is not indexed separately. |
-| PyMuPDF | 未收录 | Low-level Python PDF library for extraction and manipulation. | A library for direct PDF page manipulation, not a high-level Markdown converter; more powerful but requires more code and does not understand semantics. |
+| [PyMuPDF](../pdf-tools/pymupdf.md) | ✅ | Low-level Python PDF library for extraction and manipulation. | A library for direct PDF page manipulation, not a high-level Markdown converter; more powerful but requires more code and does not understand semantics. |
 
 ## Tech stack
 
