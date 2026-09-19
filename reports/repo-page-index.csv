@@ -82,6 +82,7 @@ https://github.com/PenglongHuang/chinese-novelist-skill,chinese-novelist-skill,f
 https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engineering,categories/agent-skills/context-engineering/notebooklm-skill.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
 https://github.com/PyAV-Org/PyAV,pyav,video-audio,categories/media-processing/video-audio/pyav.md
+https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
 https://github.com/RameshAditya/asciify,asciify,terminal-ui,categories/terminal-ui/asciify.md
 https://github.com/Ranchero-Software/NetNewsWire,netnewswire,reading-tools,categories/reading-tools/netnewswire.md
 https://github.com/RightNow-AI/openfang,openfang,agent-runtimes,categories/agent-frameworks/agent-runtimes/openfang.md
@@ -260,6 +261,7 @@ https://github.com/hylarucoder/ai-flavor-remover,ai-flavor-remover,de-ai-writing
 https://github.com/hypit-ai/hypit,hypit,video-production,categories/video-production/hypit.md
 https://github.com/iOfficeAI/OfficeCLI,officecli,office-automation,categories/office-automation/officecli.md
 https://github.com/iawia002/lux,lux,media-download,categories/media-download/lux.md
+https://github.com/idiap/coqui-ai-TTS,coqui-ai-tts,speech,categories/speech/coqui-ai-tts.md
 https://github.com/immich-app/immich,immich,document-management,categories/document-management/immich.md
 https://github.com/imputnet/cobalt,cobalt,media-download,categories/media-download/cobalt.md
 https://github.com/influxdata/telegraf,telegraf,ops-infra,categories/dev-utilities/ops-infra/telegraf.md

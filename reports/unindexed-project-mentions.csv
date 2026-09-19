@@ -183,7 +183,6 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
-"Coqui XTTS (idiap fork, `idiap/coqui-ai-TTS`)",categories/speech/voicebox.md,,no
 CowAgent,categories/im-automation/wechat-bot.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
@@ -258,7 +257,7 @@ Each agent's built-in skills / slash commands,categories/agent-skills/engineerin
 EasyOCR,categories/ocr/tesseract.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
-ElevenLabs,categories/speech/voicebox.md,,no
+ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 Envoy,categories/api-gateway/kong.md,,no
 Envoy + Lua/Wasm filters,categories/nginx-modules/lua-nginx-module.md,,no
@@ -331,7 +330,6 @@ Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
-GPT-SoVITS,categories/speech/voicebox.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-review-graph.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no

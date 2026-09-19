@@ -809,6 +809,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **SpeechBrain** | Use it when you need to train and adapt speech models (ASR, speaker ID, separation) on one coherent PyTorch recipe codebase — but it's research-and-training-first, so production serving and cross-version API stability are your job. | Apache-2.0 | A (4/6) | [EN](categories/speech/speechbrain.md) · [中](categories/speech/speechbrain.zh.md) |
 | **Voicebox** | Use it when you want a self-hosted voice I/O studio — cloned-voice TTS, hotkey Whisper dictation, and MCP/REST agent speech in one MIT app — but it's a young single-maintainer project with a stalled release cadence and macOS-only auto-paste today. | MIT | B (5/6) | [EN](categories/speech/voicebox.md) · [中](categories/speech/voicebox.zh.md) |
+| **GPT-SoVITS** | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. | MIT | A (5/6) | [EN](categories/speech/gpt-sovits.md) · [中](categories/speech/gpt-sovits.zh.md) |
+| **Coqui TTS (idiap fork)** | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. | MPL-2.0 | C (3/6) | [EN](categories/speech/coqui-ai-tts.md) · [中](categories/speech/coqui-ai-tts.zh.md) |
 
 ### terminal-ui
 
