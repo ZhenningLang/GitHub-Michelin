@@ -291,6 +291,7 @@ https://github.com/kangarooking/cangjie-skill,cangjie-skill,context-engineering,
 https://github.com/karpathy/autoresearch,autoresearch,ml-research,categories/ml-research/autoresearch.md
 https://github.com/kenn-io/agentsview,agentsview,agent-tooling,categories/agent-tooling/agentsview.md
 https://github.com/keycloak/keycloak,keycloak,auth,categories/auth/keycloak.md
+https://github.com/khoj-ai/khoj,khoj,knowledge-base,categories/knowledge-base/khoj.md
 https://github.com/kkroening/ffmpeg-python,ffmpeg-python,video-audio,categories/media-processing/video-audio/ffmpeg-python.md
 https://github.com/kohlschutter/boilerpipe,boilerpipe,article-extraction,categories/web-scraping/article-extraction/boilerpipe.md
 https://github.com/langchain-ai/langchain,langchain,workflow-builders,categories/agent-frameworks/workflow-builders/langchain.md
@@ -310,6 +311,7 @@ https://github.com/lingfengQAQ/webnovel-writer,webnovel-writer,fiction,categorie
 https://github.com/lit/lit,lit,frameworks,categories/web-ui/frameworks/lit.md
 https://github.com/littlecodersh/ItChat,itchat,im-automation,categories/im-automation/itchat.md
 https://github.com/lmacken/pyrasite,pyrasite,python-tooling,categories/python-tooling/pyrasite.md
+https://github.com/logseq/logseq,logseq,knowledge-base,categories/knowledge-base/logseq.md
 https://github.com/lovell/sharp,sharp,image-processing,categories/media-processing/image-processing/sharp.md
 https://github.com/lukas-blecher/LaTeX-OCR,latex-ocr,ocr,categories/ocr/latex-ocr.md
 https://github.com/luolin-ai/Dify-Enterprise-WeChat-bot,dify-enterprise-wechat-bot,im-automation,categories/im-automation/dify-enterprise-wechat-bot.md
@@ -357,6 +359,7 @@ https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering,context-e
 https://github.com/musistudio/claude-code-router,claude-code-router,api-gateway,categories/api-gateway/claude-code-router.md
 https://github.com/mxrch/GHunt,ghunt,osint,categories/osint/ghunt.md
 https://github.com/n8n-io/n8n,n8n,workflow-orchestration,categories/workflow-orchestration/n8n.md
+https://github.com/nashsu/llm_wiki,llm-wiki,knowledge-base,categories/knowledge-base/llm-wiki.md
 https://github.com/nextlevelbuilder/ui-ux-pro-max-skill,ui-ux-pro-max,design,categories/agent-skills/design/ui-ux-pro-max.md
 https://github.com/nexu-io/html-anything,html-anything,ai-design-generation,categories/ai-design-generation/html-anything.md
 https://github.com/nexu-io/open-design,open-design,ai-design-generation,categories/ai-design-generation/open-design.md
@@ -413,6 +416,7 @@ https://github.com/ray-project/ray,ray-serve,llm-inference,categories/llm-infere
 https://github.com/remarkjs/remark,remark,markdown-tools,categories/markdown-tools/remark.md
 https://github.com/remotion-dev/remotion,remotion,video-production,categories/video-production/remotion.md
 https://github.com/remotion-dev/skills,remotion-skills,vendor-collections,categories/agent-skills/vendor-collections/remotion-skills.md
+https://github.com/reorproject/reor,reor,knowledge-base,categories/knowledge-base/reor.md
 https://github.com/rjs/shaping-skills,shaping-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md
 https://github.com/router-for-me/CLIProxyAPI,cliproxyapi,api-gateway,categories/api-gateway/cliproxyapi.md
 https://github.com/rthalley/dnspython,dnspython,networking,categories/networking/dnspython.md
@@ -430,6 +434,7 @@ https://github.com/shareAI-lab/learn-claude-code,learn-claude-code,study-and-exp
 https://github.com/sherlock-project/sherlock,sherlock,osint,categories/osint/sherlock.md
 https://github.com/shibing624/text2vec,text2vec,rag-retrieval,categories/rag-retrieval/text2vec.md
 https://github.com/shipshapecode/shepherd,shepherd-js,product-tours,categories/web-ui/product-tours/shepherd-js.md
+https://github.com/siyuan-note/siyuan,siyuan,knowledge-base,categories/knowledge-base/siyuan.md
 https://github.com/slavingia/skills,slavingia-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md
 https://github.com/slimtoolkit/slim,slim,ops-infra,categories/dev-utilities/ops-infra/slim.md
 https://github.com/smacke/ffsubsync,ffsubsync,video-audio,categories/media-processing/video-audio/ffsubsync.md

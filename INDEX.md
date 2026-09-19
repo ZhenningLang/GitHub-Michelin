@@ -69,6 +69,7 @@
 | **blockchain-dev-infrastructure** | EVM and blockchain development-network faucets, local chains, and supporting development infrastructure. | [→](categories/blockchain-dev-infrastructure/INDEX.md) |
 | **social-simulation** | Simulate societies of LLM agents — social-media worlds, opinion dynamics, and rehearsal sandboxes. | [→](categories/social-simulation/INDEX.md) |
 | **osint** | OSINT reconnaissance — account-existence probes, username dossiers, and platform-specific investigation from emails/usernames (authorization-first). | [→](categories/osint/INDEX.md) |
+| **knowledge-base** | Personal knowledge bases and second-brain apps — accumulate, link, and query your own document corpus, optionally LLM-maintained. | [→](categories/knowledge-base/INDEX.md) |
 
 
 

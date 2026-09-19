@@ -976,3 +976,13 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **Maigret** | Username→dossier across 3000+ sites with ID extraction, recursive search, and HTML/PDF/XMind reports — the most actively maintained pick in the category. | MIT | B (6/6) | [EN](categories/osint/maigret.md) · [中](categories/osint/maigret.zh.md) |
 | **Sherlock** | Simple, battle-tested username existence checks across 480+ social networks with org governance and a huge community — coarser profile-page signals, no dossier extraction. | MIT | A (6/6) | [EN](categories/osint/sherlock.md) · [中](categories/osint/sherlock.zh.md) |
 | **GHunt** | Authenticated deep-dive OSINT on Google accounts (Gmail→profile, Gaia ID, Drive, BSSID) using your own Google session — powerful, AGPL-3.0, highest ToS/legal risk. | AGPL-3.0 | B (5/6) | [EN](categories/osint/ghunt.md) · [中](categories/osint/ghunt.zh.md) |
+
+### knowledge-base
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **LLM Wiki** | Use it when you want your own documents compiled once into an interlinked local wiki the LLM keeps current, instead of re-deriving answers with RAG on every query. | GPL-3.0 | B (4/6) | [EN](categories/knowledge-base/llm-wiki.md) · [中](categories/knowledge-base/llm-wiki.zh.md) |
+| **Logseq** | Use it when you want a local-first outliner you author yourself and query with Datalog, with LLM features left to plugins. | AGPL-3.0 | B (5/6) | [EN](categories/knowledge-base/logseq.md) · [中](categories/knowledge-base/logseq.zh.md) |
+| **SiYuan** | Use it when you want a self-hosted block-level knowledge workspace where humans and AI agents co-edit — but some features are paywalled (open-core). | AGPL-3.0 | B (5/6) | [EN](categories/knowledge-base/siyuan.md) · [中](categories/knowledge-base/siyuan.zh.md) |
+| **Khoj** | Use it when you want a self-hostable AI second brain that answers from your docs and the web across browser/desktop/Obsidian, with local or online LLMs. | AGPL-3.0 | C (6/6) | [EN](categories/knowledge-base/khoj.md) · [中](categories/knowledge-base/khoj.zh.md) |
+| **Reor** | Use it as a pattern source for local-first AI note-taking; it is archived (2025-05), so do not bet production on it. | AGPL-3.0 | E (4/6) | [EN](categories/knowledge-base/reor.md) · [中](categories/knowledge-base/reor.zh.md) |

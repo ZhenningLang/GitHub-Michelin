@@ -958,3 +958,13 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Maigret** | 跨 3000+ 站点建立用户名档案：ID 提取、递归搜索、HTML/PDF/XMind 报告——本类目维护最活跃的选择。 | MIT | B（6/6） | [中](categories/osint/maigret.zh.md) · [EN](categories/osint/maigret.md) |
 | **Sherlock** | 在 480+ 社交网络做简单、久经考验的用户名存在性核查，组织治理、社区庞大——个人页信号较粗，不做档案提取。 | MIT | A（6/6） | [中](categories/osint/sherlock.zh.md) · [EN](categories/osint/sherlock.md) |
 | **GHunt** | 用你自己的 Google 会话对 Google 账户做认证式深挖 OSINT（Gmail→资料、Gaia ID、Drive、BSSID）——能力强，AGPL-3.0，ToS/法律风险最高。 | AGPL-3.0 | B（5/6） | [中](categories/osint/ghunt.zh.md) · [EN](categories/osint/ghunt.md) |
+
+### knowledge-base
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **LLM Wiki** | 当你希望自己的文档被一次性编译成一份本地互链维基、由 LLM 持续保鲜，而不是每次查询都用 RAG 重新推导时用它。 | GPL-3.0 | B（4/6） | [中](categories/knowledge-base/llm-wiki.zh.md) · [EN](categories/knowledge-base/llm-wiki.md) |
+| **Logseq** | 当你想要一个本地优先、由你自己撰写并用 Datalog 查询的大纲笔记工具、且 LLM 能力交给插件时用它。 | AGPL-3.0 | B（5/6） | [中](categories/knowledge-base/logseq.zh.md) · [EN](categories/knowledge-base/logseq.md) |
+| **SiYuan** | 当你想要一个自托管、块级引用的知识工作空间、让人与 AI 智能体共同编辑时用它——但部分功能需付费（open-core）。 | AGPL-3.0 | B（5/6） | [中](categories/knowledge-base/siyuan.zh.md) · [EN](categories/knowledge-base/siyuan.md) |
+| **Khoj** | 当你想要一个可自托管的 AI 第二大脑、从你的文档与网络取答案、并覆盖浏览器／桌面／Obsidian、模型可选本地或在线时用它。 | AGPL-3.0 | C（6/6） | [中](categories/knowledge-base/khoj.zh.md) · [EN](categories/knowledge-base/khoj.md) |
+| **Reor** | 当你需要一份「本地优先 AI 笔记」的模式参考时用它；它已归档（2025-05），不要把生产押在它上面。 | AGPL-3.0 | E（4/6） | [中](categories/knowledge-base/reor.zh.md) · [EN](categories/knowledge-base/reor.md) |
