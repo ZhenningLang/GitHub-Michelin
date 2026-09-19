@@ -95,8 +95,8 @@ health:
 |---|---|---|---|
 | ElevenLabs | 未收录 | 想要云端级 TTS 质量和音色广度、且不想上本地硬件时，选 ElevenLabs；当音频必须留在本机、且你还要听写和 agent 语音输出时，选 Voicebox。 | 托管意味着免 GPU、完成度高，但按字符计费、数据离开本机，且没有本地克隆与 agent 回路。 |
 | WisprFlow | 未收录 | 要开箱即用的跨平台听写，选 WisprFlow；只有当你还需要 TTS/agent 那一半、或拒绝把音频送到云端时，才选 Voicebox。 | SaaS 听写完成度高且跨平台；Voicebox 两个方向都包，但自动粘贴仅限 macOS。 |
-| GPT-SoVITS | 未收录 | 想要一个专注本地小样本声音克隆、自带 WebUI 的 TTS 时，选 GPT-SoVITS；当你还要听写、效果和 MCP/agent 输出链路时，选 Voicebox。 | GPT-SoVITS 更窄、更聚焦克隆质量；Voicebox 是一整个工作室，活动部件更多、技术栈更重。 |
-| Coqui XTTS（idiap 分支，`idiap/coqui-ai-TTS`） | 未收录 | 想把克隆 TTS 作为 Python 库嵌进自己的管线时，选 Coqui XTTS；想要带界面和 HTTP/MCP 接口的成品时，选 Voicebox。 | 用库换来完全控制且没有应用外壳，但服务、界面、队列和效果都得你自己搭。 |
+| [GPT-SoVITS](gpt-sovits.zh.md) | ✅ | 想要一个专注本地小样本声音克隆、自带 WebUI 的 TTS 时，选 GPT-SoVITS；当你还要听写、效果和 MCP/agent 输出链路时，选 Voicebox。 | GPT-SoVITS 更窄、更聚焦克隆质量；Voicebox 是一整个工作室，活动部件更多、技术栈更重。 |
+| [Coqui TTS（idiap 分支）](coqui-ai-tts.zh.md) | ✅ | 想把克隆 TTS 作为 Python 库嵌进自己的管线时，选 Coqui TTS；想要带界面和 HTTP/MCP 接口的成品时，选 Voicebox。 | 用库换来完全控制且没有应用外壳，但服务、界面、队列和效果都得你自己搭。 |
 | [Whisper](../media-processing/video-audio/whisper.zh.md) | ✅ | 转写就是全部任务时，单选 Whisper；需要把转写接进语音 I/O 应用（热键听写 + TTS + agent 发声）时，选 Voicebox。 | Whisper 正是 Voicebox 自己用的 STT 组件——更轻更专，但没有听写界面、TTS 和 MCP。 |
 
 ## 技术栈
