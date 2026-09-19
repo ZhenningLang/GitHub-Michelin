@@ -12,6 +12,7 @@
 | **Claude Plugins (Official)** | Anthropic's first-party Claude Code plugin marketplace: a curated directory of installable plugins (commands, agents, skills, MCP servers) installed by name via the native /plugin system. | B (4/6) | [→](claude-plugins-official.md) |
 | **MiniMax Skills** | MiniMax's official ~16-skill Agent Skills bundle (frontend/mobile/shader dev plus pdf/docx/xlsx/pptx, music & multimodal generation), installable into Claude Code and other coding agents via plugin marketplace. | B (4/6) | [→](minimax-skills.md) |
 | **Anthropic Knowledge Work Plugins** | Use it when you want Anthropic's official open-source plugins aimed at knowledge work (docs, comms, research) for Claude — very young. | B (4/6) | [→](knowledge-work-plugins.md) |
+| **Remotion Agent Skills** | Remotion's official 12-skill bundle that teaches a coding agent (Claude Code, Codex, Cursor, Kimi Code) to write correct Remotion React video code — installable with `npx skills add remotion-dev/skills`, version-locked to the framework. | C (4/6) | [→](remotion-skills.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [Claude Plugins (Official)](claude-plugins-official.md) | ✅ | B (4/6) | Anthropic's first-party Claude Code plugin marketplace: a curated directory of installable plugins (commands, agents, skills, MCP servers) installed by name via the native /plugin system. |
 | [MiniMax Skills](minimax-skills.md) | ✅ | B (4/6) | MiniMax's official ~16-skill Agent Skills bundle (frontend/mobile/shader dev plus pdf/docx/xlsx/pptx, music & multimodal generation), installable into Claude Code and other coding agents via plugin marketplace. |
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.md) | ✅ | B (4/6) | Use it when you want Anthropic's official open-source plugins aimed at knowledge work (docs, comms, research) for Claude — very young. |
+| [Remotion Agent Skills](remotion-skills.md) | ✅ | C (4/6) | Vendor-canonical, version-locked guidance for agents authoring React video; useless if you are not on a skill-loading harness or not using Remotion, and its content license is undeclared. |
 
 ## What belongs here
 
