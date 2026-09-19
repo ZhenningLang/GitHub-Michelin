@@ -805,6 +805,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **SpeechBrain** | 当你需要在一套统一的 PyTorch recipe 代码库上训练和适配语音模型（ASR、说话人识别、语音分离）时用它——但它以研究和训练为先，生产部署和跨版本 API 稳定性得你自己负责。 | Apache-2.0 | A（4/6） | [中](categories/speech/speechbrain.zh.md) · [EN](categories/speech/speechbrain.md) |
+| **Voicebox** | 当你想要一个自托管的语音 I/O 工作室——克隆音色 TTS、热键 Whisper 听写、MCP/REST 让 agent 发声三合一，且是 MIT——时用它；但它是年轻的单人项目，发布节奏已停滞、自动粘贴目前仅 macOS。 | MIT | B（5/6） | [中](categories/speech/voicebox.zh.md) · [EN](categories/speech/voicebox.md) |
 
 ### terminal-ui
 
