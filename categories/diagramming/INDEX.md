@@ -20,7 +20,7 @@
 | [flowchart.js](flowchart-js.md) | ✅ | B (5/6) | Use it when you want simple flowcharts authored as git-diffable text and rendered to SVG in the browser — but it only renders, depends on aging Raphael.js, and chokes on complex diagrams. |
 | [bpmn-js](bpmn-js.md) | ✅ | A (5/6) | Use it when business analysts must author or view standards-correct BPMN 2.0 diagrams inside your web app — but its license mandates a non-removable bpmn.io watermark, so confirm terms before white-labeling. |
 | [Excalidraw](excalidraw.md) | ✅ | A (6/6) | Hand-drawn-style collaborative whiteboard for sketching diagrams and wireframes; stores JSON not plain text, so not diffable in Git. |
-| Graphviz / PlantUML / D2 / draw.io / Excalidraw | 未收录 | — | Other diagram engines / editors named across the pages (more layout control or WYSIWYG). |
+| Graphviz / PlantUML / D2 / draw.io | 未收录 | — | Other diagram engines / editors named across the pages (more layout control or WYSIWYG). |
 
 ## What belongs here
 

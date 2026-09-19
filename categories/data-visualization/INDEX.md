@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | [Apache Superset](superset.md) | ✅ | A (6/6) | Self-hosted SQL BI + exploration over warehouses; heavier multi-service deploy than Metabase. |
 | [Grafana](../observability/grafana.md) | ✅ | B (5/6) | Metrics/logs/traces observability dashboards — not warehouse BI; different audience. |
-| Metabase / Redash / Tableau / Looker | 未收录 | — | Other BI/analytics tools named across the pages. |
+| Redash / Tableau / Looker | 未收录 | — | Other BI/analytics tools named across the pages. |
 
 ## What belongs here
 

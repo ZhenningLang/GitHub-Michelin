@@ -9,33 +9,11 @@ as `未收录`; nothing else about them is asserted.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 811
+- Named-but-unindexed alternatives: 806
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
-- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 14
+- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
 - Repo -> page reverse index: `reports/repo-page-index.csv`
-
-## Partly-indexed rows
-
-These composite rows name at least one alternative that already has a page.
-Remove the indexed names from the row, or split the row.
-
-| Alternative | Indexed names | First page |
-|---|---|---|
-| antfu/skills, Dimillian/Skills, gstack, khazix-skills, … | antfu-skills, dimillian-skills, khazix-skills | `categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md` |
-| axolotl / torchtune / HF TRL / verl | axolotl, torchtune | `categories/llm-training/INDEX.md` |
-| Charles / Fiddler / mitmproxy / anyproxy | anyproxy, mitmproxy | `categories/debugging-proxy/INDEX.md` |
-| CodeRabbit / PR-Agent (Qodo) / Greptile | pr-agent | `categories/ai-code-review/INDEX.md` |
-| DeepEval / Ragas / OpenAI Evals / Giskard | deepeval, giskard | `categories/llm-eval/INDEX.md` |
-| GPT Researcher / Perplexity / OpenAI Deep Research | gpt-researcher | `categories/deep-research/INDEX.md` |
-| Graphviz / PlantUML / D2 / draw.io / Excalidraw | excalidraw | `categories/diagramming/INDEX.md` |
-| LibreChat / Lobe Chat | librechat | `categories/llm-chat-ui/INDEX.md` |
-| LibreChat / Lobe Chat / Open WebUI | librechat, open-webui | `categories/team-chat/INDEX.md` |
-| LlamaIndex / RAG pipelines | llamaindex | `categories/agent-skills/INDEX.md` |
-| Metabase / Redash / Tableau / Looker | metabase | `categories/data-visualization/INDEX.md` |
-| Neo4j / LlamaIndex / LightRAG / Weaviate | llamaindex | `categories/rag-retrieval/INDEX.md` |
-| ProxyBroker / scylla / paid residential proxies | proxybroker | `categories/proxy-pool/INDEX.md` |
-| TGI / BentoML | bentoml | `categories/llm-inference/INDEX.md` |
 
 ## Top 30 named alternatives
 

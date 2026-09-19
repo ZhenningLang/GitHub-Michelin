@@ -32,7 +32,7 @@
 | [SGLang](sglang.zh.md) | ✅ | A（5/6） | 快速 LLM 服务引擎，带 RadixAttention 前缀缓存和结构化生成；比 vLLM 更年轻的生态，适合工具调用型 agent。 |
 | [Ray Serve](ray-serve.zh.md) | ✅ | A（6/6） | 通用可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容；基于 Ray，运维要求高。 |
 | [TensorRT-LLM](tensorrt-llm.zh.md) | ✅ | B（4/6） | 当你需要在 NVIDIA GPU 上榨取最大 LLM 推理吞吐、并愿意接受仅限 NVIDIA 的绑定、复杂的构建/engine 编译流程以及闭源内核时用它。 |
-| TGI / BentoML | 未收录 | — | 各页对比里点到的其他 LLM 推理/服务引擎。 |
+| TGI | 未收录 | — | 各页对比里点到的其他 LLM 推理/服务引擎。 |
 
 ## 什么该放这里
 

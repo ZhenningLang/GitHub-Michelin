@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | [whistle](whistle.zh.md) | ✅ | B（6/6） | 当 web/移动开发者要通过规则化 Web UI 抓取、检查、改写并 mock HTTP(S)/WebSocket 流量时用它——是开发调试代理，不是生产网关或爬虫代理池。 |
 | [AnyProxy](anyproxy.zh.md) | ✅ | C（4/6） | 当你想用纯 JS 规则脚本化地拦截并改写 HTTP/HTTPS 流量、需要一个 Node.js MITM 代理时用它——但 master 自 2020 年已冻结，新项目请优先选 whistle。 |
-| Charles / Fiddler / mitmproxy / anyproxy | 未收录 | — | 各页对比里点到的其他调试代理。 |
+| Charles / Fiddler | 未收录 | — | 各页对比里点到的其他调试代理。 |
 
 ## 什么该放这里
 

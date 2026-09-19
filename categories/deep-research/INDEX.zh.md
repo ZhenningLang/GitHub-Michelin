@@ -29,7 +29,7 @@
 | [Agent-Reach](agent-reach.zh.md) | ✅ | B（4/6） | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 |
 | [MiroThinker](mirothinker.zh.md) | ✅ | C（6/6） | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 |
 | [Hyperresearch](hyperresearch.zh.md) | ✅ | B（5/6） | 锁死 Claude Code 的 16 步研究流水线，带对抗式 critic、引用核验和持久 vault；pre-1.0 churn 明显，且榜单领先宣称是自测 projection。 |
-| GPT Researcher / Perplexity / OpenAI Deep Research | 未收录 | — | 各页对比里点到的其他深度研究 agent / 服务。 |
+| Perplexity / OpenAI Deep Research | 未收录 | — | 各页对比里点到的其他深度研究 agent / 服务。 |
 
 ## 什么该放这里
 

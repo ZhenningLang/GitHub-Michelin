@@ -29,7 +29,7 @@
 | [Agent-Reach](agent-reach.md) | ✅ | B (4/6) | Use it when your agent needs to read and search web plus social platforms without paid APIs. |
 | [MiroThinker](mirothinker.md) | ✅ | C (6/6) | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. |
 | [Hyperresearch](hyperresearch.md) | ✅ | B (5/6) | Claude-Code-locked 16-step research pipeline with adversarial critics, cite-checking, and a persistent vault; pre-1.0 churn and its leaderboard claim is a self-run projection. |
-| GPT Researcher / Perplexity / OpenAI Deep Research | 未收录 | — | Other deep-research agents/services named across the pages. |
+| Perplexity / OpenAI Deep Research | 未收录 | — | Other deep-research agents/services named across the pages. |
 
 ## What belongs here
 

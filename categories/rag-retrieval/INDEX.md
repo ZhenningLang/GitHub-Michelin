@@ -30,7 +30,7 @@
 | [Understand-Anything](understand-anything.md) | ✅ | B (6/6) | Code → explorable knowledge graph an agent can query; younger than graphify, with an unverified star count and egress boundary. |
 | [FAISS](faiss.md) | ✅ | A (6/6) | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. |
 | [text2vec](text2vec.md) | ✅ | C (5/6) | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). |
-| Neo4j / LlamaIndex / LightRAG / Weaviate | 未收录 | — | Other graph/RAG retrieval stacks named across the pages. |
+| Neo4j / LightRAG / Weaviate | 未收录 | — | Other graph/RAG retrieval stacks named across the pages. |
 
 ## What belongs here
 

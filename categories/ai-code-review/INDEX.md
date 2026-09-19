@@ -22,7 +22,7 @@
 | [Open Code Review](open-code-review.md) | ✅ | B (6/6) | Use it when you want precise, line-level LLM review comments on Git diffs in CI without PR noise. |
 | [Claude Code Security Review](claude-code-security-review.md) | ✅ | C (5/6) | Use it when you want LLM-driven, context-aware security review on trusted PRs via a GitHub Action. |
 | [React Doctor](react-doctor.md) | ✅ | B (5/6) | Use it when a coding agent writes React and you want deterministic, repeatable checks for React-specific anti-patterns. |
-| CodeRabbit / PR-Agent (Qodo) / Greptile | 未收录 | — | Other LLM code-review tools named across the pages. |
+| CodeRabbit / Greptile | 未收录 | — | Other LLM code-review tools named across the pages. |
 
 ## What belongs here
 

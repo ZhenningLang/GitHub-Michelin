@@ -22,7 +22,7 @@
 | [Rocket.Chat](rocket-chat.zh.md) | ✅ | A（5/6） | 扩展面最丰富（市场、全渠道、联邦），代价是 MongoDB + NATS + 微服务运维与 EE 功能切分。 |
 | [Buzz](buzz.zh.md) | ✅ | B（3/6） | 唯一让 agent 成为与人同处一条签名日志的持钥成员，但项目仅约 6 个月、pre-1.0，且需要 Postgres + Redis + S3。 |
 | [HiveChat](hivechat.zh.md) | ✅ | C（3/6） | 管理员统管、带配额的多 LLM 团队聊天；与上面几个通信平台不是同一类任务。 |
-| LibreChat / Lobe Chat / Open WebUI | 未收录 | — | 各页面点到的其他自托管聊天界面。 |
+| Lobe Chat | 未收录 | — | 各页面点到的其他自托管聊天界面。 |
 | Slack / Discord / Microsoft Teams | 未收录 | — | 各页面点到的托管 SaaS 团队聊天。 |
 
 ## 什么该放这里

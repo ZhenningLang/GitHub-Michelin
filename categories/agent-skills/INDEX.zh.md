@@ -34,7 +34,6 @@
 | [book-to-skill](book-to-skill.zh.md) | ✅ | B（6/6） | 将技术书籍和文档转成可安装的 agent 技能；批处理工具，不是 live RAG 系统。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | A（6/6） | 面向 RAG 流水线的通用文档解析器；book-to-skill 是专门针对 agent harness 的技能生成器。 |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.zh.md) | ✅ | C（4/6） | 查询外部 Google 服务；book-to-skill 处理本地 PDF，无外部依赖。 |
-| LlamaIndex / RAG 管线 | 未收录 | — | 带嵌入和动态检索的完整 RAG；基础设施比静态技能生成器更重。 |
 | [distilly](distilly.zh.md) | ✅ | B（4/6） | 从你的私有材料生成某一具体人物的 work/persona 技能；没有检索层，唯一的自动保真门只有关键词级别。 |
 
 ## 什么该放这里

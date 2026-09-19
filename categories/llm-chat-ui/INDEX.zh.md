@@ -19,7 +19,7 @@
 | [NextChat](nextchat.zh.md) | ✅ | A（5/6） | 轻量、跨平台、一键部署的聊天前端；偏单用户，不做 RBAC/配额团队管理。 |
 | [Open WebUI](open-webui.zh.md) | ✅ | B（5/6） | 自托管 AI 聊天平台，内置 RAG 且支持 Ollama；可离线运行，但默认偏单用户。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | C（3/6） | 管理员统管的多用户团队聊天，带分组模型权限和 token 配额。 |
-| LibreChat / Lobe Chat | 未收录 | — | 各页对比里点到的其他自托管聊天前端（部分带多用户/RBAC）。 |
+| Lobe Chat | 未收录 | — | 各页对比里点到的其他自托管聊天前端（部分带多用户/RBAC）。 |
 
 ## 什么该放这里
 

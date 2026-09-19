@@ -19,7 +19,7 @@
 | [NextChat](nextchat.md) | ✅ | A (5/6) | Light, cross-platform, one-click-deploy chat UI; single-user-shaped, not RBAC/quota team admin. |
 | [Open WebUI](open-webui.md) | ✅ | B (5/6) | Self-hosted AI chat platform with built-in RAG and Ollama support; offline-capable but single-user-shaped by default. |
 | [HiveChat](../team-chat/hivechat.md) | ✅ | C (3/6) | Admin-managed multi-user team chat with per-group model access and token quotas. |
-| LibreChat / Lobe Chat | 未收录 | — | Other self-hosted chat UIs named across the pages (some with multi-user/RBAC). |
+| Lobe Chat | 未收录 | — | Other self-hosted chat UIs named across the pages (some with multi-user/RBAC). |
 
 ## What belongs here
 
