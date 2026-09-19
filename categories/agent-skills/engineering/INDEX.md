@@ -14,7 +14,7 @@
 | **Waza** | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. | B (4/6) | [→](waza.md) |
 | **mattpocock/skills** | Matt Pocock's engineering skill pack for Claude Code and skills.sh: grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. | B (4/6) | [→](mattpocock-skills.md) |
 | **BrowserAct Skills** | Agent-facing browser automation skill pack for BrowserAct: indexed browser control, stealth/private sessions, remote human handoff, and Skill Forge scraping workflows. | B (4/6) | [→](browser-act-skills.md) |
-| **caveman** | Prompt and installer pack that makes many coding agents answer in deliberately terse "caveman" style while preserving code, commands, and errors. | B (4/6) | [→](caveman.md) |
+| **caveman** | Prompt and installer pack that makes many coding agents answer in deliberately terse "caveman" style while preserving code, commands, and errors. | C (4/6) | [→](caveman.md) |
 
 
 ## Comparison matrix
@@ -28,7 +28,7 @@
 | [Waza](waza.md) | ✅ | B (4/6) | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. |
 | [mattpocock/skills](mattpocock-skills.md) | ✅ | B (4/6) | Engineering process pack for requirements grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. |
 | [BrowserAct Skills](browser-act-skills.md) | ✅ | B (4/6) | Agent browser automation layer with indexed actions, stealth/private sessions, remote handoff, and Skill Forge; use Playwright for deterministic tests. |
-| [caveman](caveman.md) | ✅ | B (4/6) | Brevity overlay for existing agents; changes response style, not engineering process or context design. |
+| [caveman](caveman.md) | ✅ | C (4/6) | Brevity overlay for existing agents; changes response style, not engineering process or context design. |
 
 
 ## What belongs here

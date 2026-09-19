@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:46:56Z
-  overall: C
-  overall_score: 1.5
-  scored_axes: 4
+  computed_at: 2026-09-19T08:52:32Z
+  overall: D
+  overall_score: 0.67
+  scored_axes: 3
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -54,15 +54,12 @@ health:
       grade: "?"
       raw: {}
     risk_license:
-      grade: A
-      raw:
-        spdx_id: MIT
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: issues_disabled }
     governance: { reason: unattributable }
+    risk_license: { reason: license_unparsed }
 ---
 
 # you-get

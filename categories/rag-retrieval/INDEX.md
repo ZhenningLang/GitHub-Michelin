@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | D (5/6) | [→](falkordb.md) |
+| **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | A (4/6) | [→](falkordb.md) |
 | **graphify** | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. | B (6/6) | [→](graphify.md) |
 | **code-review-graph** | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. | B (6/6) | [→](code-review-graph.md) |
 | **PageIndex** | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. | B (5/6) | [→](pageindex.md) |
@@ -23,7 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [FalkorDB](falkordb.md) | ✅ | D (5/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
+| [FalkorDB](falkordb.md) | ✅ | A (4/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
 | [graphify](graphify.md) | ✅ | B (6/6) | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. |
 | [code-review-graph](code-review-graph.md) | ✅ | B (6/6) | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. |
 | [PageIndex](pageindex.md) | ✅ | B (5/6) | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. |

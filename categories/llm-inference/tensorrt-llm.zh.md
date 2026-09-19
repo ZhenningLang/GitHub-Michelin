@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:20:26Z
+  computed_at: 2026-09-19T08:52:11Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 4
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -58,14 +58,11 @@ health:
       grade: "?"
       raw: {}
     risk_license:
-      grade: A
-      raw:
-        spdx_id: MIT
-        permissiveness: permissive
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     governance: { reason: empty_or_gated }
+    risk_license: { reason: license_unparsed }
 ---
 
 # TensorRT-LLM

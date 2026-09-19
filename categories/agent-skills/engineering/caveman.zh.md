@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T11:03:40Z
-  overall: B
-  overall_score: 3.0
+  computed_at: 2026-09-19T08:48:14Z
+  overall: C
+  overall_score: 2.0
   scored_axes: 4
   capped: false
   cap_reason: null
@@ -52,10 +52,10 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: A
+      grade: E
       raw:
-        spdx_id: MIT
-        permissiveness: permissive
+        spdx_id: NOASSERTION
+        permissiveness: source_available
         relicense_36mo: false
         content_license: null
   unknowns:

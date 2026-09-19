@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | B（4/6） | [→](12-factor-agents.zh.md) |
+| **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | C（3/6） | [→](12-factor-agents.zh.md) |
 | **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | B（4/6） | [→](superpowers.zh.md) |
 | **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | B（4/6） | [→](superclaude.zh.md) |
 | **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | C（6/6） | [→](get-shit-done.zh.md) |
@@ -25,7 +25,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [12-Factor Agents](12-factor-agents.zh.md) | ✅ | B（4/6） | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 |
+| [12-Factor Agents](12-factor-agents.zh.md) | ✅ | C（3/6） | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 |
 | [Superpowers](superpowers.zh.md) | ✅ | B（4/6） | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 |
 | [SuperClaude Framework](superclaude.zh.md) | ✅ | B（4/6） | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 |
 | [Get Shit Done (GSD)](get-shit-done.zh.md) | ✅ | C（6/6） | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 |

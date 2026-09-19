@@ -25,7 +25,7 @@
 | **frontend-animation** | 面向 Web 的 JavaScript 动画引擎与运动库。 | [→](categories/frontend-animation/INDEX.zh.md) |
 | **api-gateway** | 路由、保护、限流并治理服务与 LLM 流量的 API / AI 网关。 | [→](categories/api-gateway/INDEX.zh.md) |
 | **geospatial** | 地理信息系统（GIS）——查看、编辑、分析空间数据。 | [→](categories/geospatial/INDEX.zh.md) |
-| **team-chat** | 可自托管的团队聊天 / 多 LLM 聊天机器人应用。 | [→](categories/team-chat/INDEX.zh.md) |
+| **team-chat** | 可自托管的团队聊天 / 协作平台、agent 增强工作区与多 LLM 团队聊天。 | [→](categories/team-chat/INDEX.zh.md) |
 | **captcha** | CAPTCHA / 机器人检测挑战（工作量证明、点击、行为式）。 | [→](categories/captcha/INDEX.zh.md) |
 | **ml-research** | 小而自洽的 ML 研究 demo 与参考实现。 | [→](categories/ml-research/INDEX.zh.md) |
 | **agent-skills** | 成体系的 agent 技能、提示词、subagent 人设与 harness 配置合集——按用途领域拆分。 | [→](categories/agent-skills/INDEX.zh.md) |

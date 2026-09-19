@@ -12,7 +12,7 @@
 | **Tauri** | Use it when you want to build small, fast, secure cross-platform desktop and mobile apps with a web frontend using Rust and native OS webviews instead of Electron. | A (6/6) | [→](tauri.md) |
 | **Deno** | Use it when you want a modern JavaScript/TypeScript runtime with secure defaults, built-in tooling, and native TypeScript support without node_modules. | A (6/6) | [→](deno.md) |
 | **Bun** | Use it when you want an all-in-one, incredibly fast JavaScript/TypeScript toolkit (runtime, bundler, test runner, package manager) in a single binary — but verify the license before commercial use. | A (5/6) | [→](bun.md) |
-| **Zed** | Use it when you want a high-performance, native code editor with real-time multiplayer collaboration — but its extension ecosystem is far smaller than VS Code's and it's only ~4 years old. | A (5/6) | [→](zed.md) |
+| **Zed** | Use it when you want a high-performance, native code editor with real-time multiplayer collaboration — but its extension ecosystem is far smaller than VS Code's and it's only ~4 years old. | A (4/6) | [→](zed.md) |
 
 ## Comparison matrix
 
@@ -23,7 +23,7 @@
 | [Tauri](tauri.md) | ✅ | A (6/6) | Use it when you want to build small, fast, secure cross-platform desktop and mobile apps with a web frontend using Rust and native OS webviews instead of Electron. |
 | [Deno](deno.md) | ✅ | A (6/6) | Use it when you want a modern JavaScript/TypeScript runtime with secure defaults, built-in tooling, and native TypeScript support without node_modules. |
 | [Bun](bun.md) | ✅ | A (5/6) | Use it when you want an all-in-one, incredibly fast JavaScript/TypeScript toolkit (runtime, bundler, test runner, package manager) in a single binary — but verify the license before commercial use. |
-| [Zed](zed.md) | ✅ | A (5/6) | Use it when you want a high-performance, native code editor with real-time multiplayer collaboration — but its extension ecosystem is far smaller than VS Code's and it's only ~4 years old. |
+| [Zed](zed.md) | ✅ | A (4/6) | Use it when you want a high-performance, native code editor with real-time multiplayer collaboration — but its extension ecosystem is far smaller than VS Code's and it's only ~4 years old. |
 
 ## What belongs here
 

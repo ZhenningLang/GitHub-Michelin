@@ -8,7 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Angular** | 用于构建移动端和桌面端 Web 应用的综合性开发平台。基于 TypeScript，由 Google 构建和维护，专注于企业级应用。 | A（6/6） | [→](angular.zh.md) |
-| **Astro** | The web framework for content-driven websites. ⭐️ Star to support our work! | A（6/6） | [→](astro.zh.md) |
+| **Astro** | The web framework for content-driven websites. ⭐️ Star to support our work! | A（5/6） | [→](astro.zh.md) |
 | **Lit** | 一个由 Google 出品的轻量级库，用于构建快速、可互操作的 Web Components。基于 Web Components 标准，无虚拟 DOM，运行时体积极小（lit-html 约 3 KB）。 | A（6/6） | [→](lit.zh.md) |
 | **Next.js** | 全栈 React 框架的默认选择，由 Vercel 创建并维护。内置 App Router、React Server Components、自动静态优化、ISR 和内置 API 层——与 Vercel 深度集成是「happy path」。 | A（5/6） | [→](nextjs.zh.md) |
 | **Nuxt** | the full-stack Vue framework | A（6/6） | [→](nuxt.zh.md) |

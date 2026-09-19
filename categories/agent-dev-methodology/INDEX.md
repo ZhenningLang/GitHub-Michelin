@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **12-Factor Agents** | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. | B (4/6) | [→](12-factor-agents.md) |
+| **12-Factor Agents** | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. | C (3/6) | [→](12-factor-agents.md) |
 | **Superpowers** | Use it when you want a drop-in brainstorm→plan→TDD→verify SDLC methodology installed into your coding agent. | B (4/6) | [→](superpowers.md) |
 | **SuperClaude Framework** | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. | B (4/6) | [→](superclaude.md) |
 | **Get Shit Done (GSD)** | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. | C (6/6) | [→](get-shit-done.md) |
@@ -25,7 +25,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [12-Factor Agents](12-factor-agents.md) | ✅ | B (4/6) | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. |
+| [12-Factor Agents](12-factor-agents.md) | ✅ | C (3/6) | Use it when you want production-agent design principles to guide a hand-rolled or thinly-framed agent. |
 | [Superpowers](superpowers.md) | ✅ | B (4/6) | Use it when you want a drop-in brainstorm→plan→TDD→verify SDLC methodology installed into your coding agent. |
 | [SuperClaude Framework](superclaude.md) | ✅ | B (4/6) | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. |
 | [Get Shit Done (GSD)](get-shit-done.md) | ✅ | C (6/6) | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. |
