@@ -148,6 +148,7 @@ Charles / Fiddler,categories/debugging-proxy/INDEX.md,,no
 Chatbox / Cherry Studio,categories/team-chat/hivechat.md,,no
 ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
 ChatGPT / Claude.ai (commercial SaaS),categories/llm-chat-ui/nextchat.md,,no
+ChatGPT Projects / Claude Projects,categories/knowledge-base/khoj.md,,no
 ChatGPT Team / Claude Team (SaaS),categories/team-chat/hivechat.md,,no
 Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
@@ -519,12 +520,16 @@ NGINX `client_body_*` buffering + app handling,categories/nginx-modules/nginx-up
 nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
+NotebookLM,categories/knowledge-base/khoj.md,,no
+NotebookLM / Obsidian,categories/knowledge-base/INDEX.md,,no
 notebooklm-mcp (same author),categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+Notion,categories/knowledge-base/logseq.md,,no
 novelWriter,categories/agent-skills/writing/fiction/chinese-novelist-skill.md,,no
 npm / pnpm packaging a skill dir,categories/agent-tooling/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
+Obsidian,categories/knowledge-base/llm-wiki.md,,no
 Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
 Office-PowerPoint-MCP-Server,categories/office-automation/INDEX.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
