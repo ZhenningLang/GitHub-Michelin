@@ -87,9 +87,9 @@ health:
 
 ## 何时不用
 
-- **上下文预算紧张的 coding agent。** 微软 README 自己就建议这类场景去用 CLI+SKILLs 兄弟（microsoft/playwright-cli，未收录）——MCP 工具 schema 加每步的无障碍树在上下文里实打实更贵。如果你的 agent 主要在改代码、偶尔碰浏览器，走 CLI 路径或 CLI-first 的 [Agent Browser](agent-browser.zh.md)。
+- **上下文预算紧张的 coding agent。** 微软 README 自己就建议这类场景去用 [Playwright CLI](playwright-cli.zh.md) 兄弟（CLI+SKILLs）——MCP 工具 schema 加每步的无障碍树在上下文里实打实更贵。如果你的 agent 主要在改代码、偶尔碰浏览器，走 CLI 路径或 CLI-first 的 [Agent Browser](agent-browser.zh.md)。
 - **需要 DevTools 级诊断**——performance trace、Core Web Vitals、网络瀑布、source-mapped 的 console 报错。Playwright MCP 暴露的是浏览器*自动化*面，不是 DevTools 协议面；诊断页面慢/内存泄漏用 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)。
-- **需要你日常登录的那个浏览器。** 它拉起的是 Playwright 管理的浏览器实例（`--user-data-dir` 持久 profile 和 `--cdp-endpoint` attach 存在，但默认是自动化浏览器，不是你带着 cookie、2FA 会话和风控信誉的日常 Chrome）。必须操作真实登录会话的场景，OpenCLI（未收录）或 [Agent Browser](agent-browser.zh.md) 的会话持久更贴近。
+- **需要你日常登录的那个浏览器。** 它拉起的是 Playwright 管理的浏览器实例（`--user-data-dir` 持久 profile 和 `--cdp-endpoint` attach 存在，但默认是自动化浏览器，不是你带着 cookie、2FA 会话和风控信誉的日常 Chrome）。必须操作真实登录会话的场景，[OpenCLI](opencli.zh.md) 或 [Agent Browser](agent-browser.zh.md) 的会话持久更贴近。
 - **像素级或 canvas 重度交互。** 整个设计就是「不用截图」——canvas 应用、按像素拖拽、视觉验证都出界；这类交给 vision 系 agent（browser-use 一类）。
 - **非 MCP 的 harness。** 它是 MCP server；你的 agent 不说 MCP 就没有东西可调——直接用 [Playwright](playwright.zh.md) 框架本身或 CLI 包装。
 
@@ -97,7 +97,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| playwright-cli（未收录） | ❌ | 消费方是 coding agent 且 token 效率重要时选 playwright-cli——微软自家 README 就把 coding agent 往那边引；持久状态与内省回路更重要时选本 MCP。 | 同一 Playwright 引擎、同一厂商；CLI+SKILLs 把上下文负载压到最低，MCP 把会话连续性与内省深度拉到最高。 |
+| [Playwright CLI](playwright-cli.zh.md) | ✅ | 消费方是 coding agent 且 token 效率重要时选 Playwright CLI——微软自家 README 就把 coding agent 往那边引；持久状态与内省回路更重要时选本 MCP。 | 同一 Playwright 引擎、同一厂商；CLI+SKILLs 把上下文负载压到最低，MCP 把会话连续性与内省深度拉到最高。 |
 | [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | ✅ | 任务是诊断页面（trace、CWV、网络、console）时选 Chrome DevTools MCP；任务是操作页面（多步表单、流程、探索）时选 Playwright MCP。 | DevTools MCP 有诊断面但只支持 Chromium 且为诊断塑形；Playwright MCP 是跨浏览器自动化塑形但没有性能工具。 |
 | [Agent Browser](agent-browser.zh.md) | ✅ | 要 CLI-first 控制、快照 refs、常驻 Rust daemon、保存登录会话时选 Agent Browser；要厂商官方 MCP 路径与最广客户端兼容列表时选 Playwright MCP。 | Agent Browser shell 调用更快且带会话持久，但是一家厂商较年轻的工具；Playwright MCP 吃着微软的维护与 Playwright 引擎的成熟度。 |
 | [browser-use](browser-use.zh.md) | ✅ | 要开箱即用的 Python agent 回路（带 vision 兜底）时选 browser-use；已有 agent、只差一个确定性浏览器工具面时选 Playwright MCP。 | browser-use 自带 LLM 回路（更重、有视觉能力）；Playwright MCP 是自带 agent 前提下的确定性 AX 树定位。 |
