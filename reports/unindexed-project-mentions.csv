@@ -172,6 +172,7 @@ CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
 Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
+"Commercial patent SaaS (智慧芽 PatSnap, incoPat, 专利之星)",categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
 "Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
@@ -295,6 +296,7 @@ Gamma / Tome,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
+Generic LLM chat / hand-written prompt,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/ralph-claude-code.md,,no
 GeoPandas / Shapely,categories/geospatial/qgis.md,,no
 GeoServer,categories/geospatial/qgis.md,,no
