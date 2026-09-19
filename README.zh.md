@@ -77,6 +77,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成工具调用、类型化抽取与嵌入时用它——它用通用聊天换取 8–29 MB 的任务准确率。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 
+### function-calling
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Functionary** | 只把它当作开源 JSON Schema 函数调用的历史参考——它已废弃；生产环境请用 vLLM/SGLang 服务当前模型，或走端侧 Needle。 | MIT | B（3/6） | [中](categories/function-calling/functionary.zh.md) · [EN](categories/function-calling/functionary.md) |
+
 ### web-automation
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

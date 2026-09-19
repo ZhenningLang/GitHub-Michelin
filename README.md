@@ -80,6 +80,12 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B (6/6) | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | Use it when a tiny on-device model must do tool calling, typed extraction and embeddings offline — it trades general chat for 8–29 MB task accuracy. | Apache-2.0 | B (4/6) | [EN](categories/on-device-ml/needle.md) · [中](categories/on-device-ml/needle.zh.md) |
 
+### function-calling
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Functionary** | Use it only as the historical reference for open JSON-Schema function calling — it is deprecated; for production serve a current model on vLLM/SGLang or go on-device with Needle. | MIT | B (3/6) | [EN](categories/function-calling/functionary.md) · [中](categories/function-calling/functionary.zh.md) |
+
 ### web-automation
 
 | Project | Use when | License | Health | Page |
