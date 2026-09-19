@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | [Apache Superset](superset.zh.md) | ✅ | A（6/6） | 在仓库之上自托管 SQL BI + 探索；部署比 Metabase 更重（多服务）。 |
 | [Grafana](../observability/grafana.zh.md) | ✅ | B（5/6） | 面向指标/日志/追踪的可观测性看板——非仓库 BI，受众不同。 |
-| Metabase / Redash / Tableau / Looker | 未收录 | — | 各页对比里点到的其他 BI/分析工具。 |
+| Redash / Tableau / Looker | 未收录 | — | 各页对比里点到的其他 BI/分析工具。 |
 
 ## 什么该放这里
 

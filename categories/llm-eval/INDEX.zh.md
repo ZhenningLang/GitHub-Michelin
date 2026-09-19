@@ -23,7 +23,7 @@
 | --- | --- | --- | --- |
 | [promptfoo](promptfoo.zh.md) | ✅ | A（6/6） | 当你要用声明式 YAML 给自己的 LLM 应用做评测+红队并接进 CI 时用它。 |
 | [Pezzo](pezzo.zh.md) | ✅ | C（4/6） | 当小团队想要一个自托管的统一控制台来做 prompt 版本管理加成本／延迟可观测时用它——但它自 2025 年中起疑似停更，请做好自己维护的准备。 |
-| DeepEval / Ragas / OpenAI Evals / Giskard | 未收录 | — | 各页对比里点到的其他 LLM 评测 / 红队框架。 |
+| Ragas / OpenAI Evals | 未收录 | — | 各页对比里点到的其他 LLM 评测 / 红队框架。 |
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.zh.md) | ✅ | E（4/6） | 面向 AI 文本对比的数据集 / 检测器资源；需要维护中的测试 runner 时选 eval framework。 |
 
 

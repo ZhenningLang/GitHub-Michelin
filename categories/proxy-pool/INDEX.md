@@ -20,7 +20,7 @@
 | [ProxyBroker](proxybroker.md) | ✅ | D (4/6) | Use it when you need a throwaway pool of free public proxies for a low-stakes prototype via a single rotating local endpoint — but it's effectively frozen since ~2018 and widely breaks on modern Python without pinning. |
 | [Scylla](scylla.md) | ✅ | C (3/6) | Use it when you want an always-on, self-hosted free-proxy pool with a JSON API, quality scoring, and dashboard via one Docker command — but its forward proxy can't do HTTPS, and releases stalled since 2022. |
 | [haipproxy](haipproxy.md) | ✅ | D (3/6) | Use it when you genuinely need a distributed, high-availability free-proxy pool for large multi-machine crawls on Scrapy+Redis — but it's dormant since 2022, runs 2018-era Py2/3 code, and is the heaviest pool to operate. |
-| ProxyBroker / scylla / paid residential proxies | 未收录 | — | Other proxy pools & paid proxy services named across the pages. |
+| scylla / paid residential proxies | 未收录 | — | Other proxy pools & paid proxy services named across the pages. |
 
 ## What belongs here
 

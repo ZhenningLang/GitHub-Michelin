@@ -20,7 +20,7 @@
 | [ProxyBroker](proxybroker.zh.md) | ✅ | D（4/6） | 当你想为低风险原型用一个本地轮换端点临时凑一批免费公共代理时用它——但它自约 2018 年起实质冻结，在新版 Python 上不锁版本普遍跑不起来。 |
 | [Scylla](scylla.zh.md) | ✅ | C（3/6） | 当你想用一条 Docker 命令跑一个常驻自托管、带 JSON API、质量打分与面板的免费代理池时用它——但其正向代理不支持 HTTPS，且发布自 2022 年起停滞。 |
 | [haipproxy](haipproxy.zh.md) | ✅ | D（3/6） | 当你确实需要为多机大规模爬取搭一个基于 Scrapy＋Redis 的分布式高可用免费代理池时用它——但它自 2022 年起休眠、跑的是 2018 年代 Py2／3 代码，且是最难运维的代理池。 |
-| ProxyBroker / scylla / paid residential proxies | 未收录 | — | 各页对比里点到的其他代理池与付费代理服务。 |
+| scylla / paid residential proxies | 未收录 | — | 各页对比里点到的其他代理池与付费代理服务。 |
 
 ## 什么该放这里
 

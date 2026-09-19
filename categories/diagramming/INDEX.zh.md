@@ -20,7 +20,7 @@
 | [flowchart.js](flowchart-js.zh.md) | ✅ | B（5/6） | 当你想把简单流程图写成可 git diff 的文本、在浏览器里渲成 SVG 时用它——它只渲染不编辑，依赖老旧的 Raphael.js，复杂图会力不从心。 |
 | [bpmn-js](bpmn-js.zh.md) | ✅ | A（5/6） | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 |
 | [Excalidraw](excalidraw.zh.md) | ✅ | A（6/6） | 手绘风格协作白板，用于画草图和线框；存为 JSON 而非纯文本，不能在 Git 里 diff。 |
-| Graphviz / PlantUML / D2 / draw.io / Excalidraw | 未收录 | — | 各页对比里点到的其他图引擎/编辑器（布局更可控或所见即所得）。 |
+| Graphviz / PlantUML / D2 / draw.io | 未收录 | — | 各页对比里点到的其他图引擎/编辑器（布局更可控或所见即所得）。 |
 
 ## 什么该放这里
 

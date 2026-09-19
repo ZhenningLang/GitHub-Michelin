@@ -23,7 +23,7 @@
 | [Rocket.Chat](rocket-chat.md) | ✅ | A (5/6) | Richest extension surface (marketplace, omnichannel, federation), at the cost of MongoDB + NATS + microservices operations and an EE feature split. |
 | [Buzz](buzz.md) | ✅ | B (3/6) | Only option where agents are key-holding members in the same signed log as humans, but it is ~6 months old, pre-1.0, and needs Postgres + Redis + S3. |
 | [HiveChat](hivechat.md) | ✅ | C (3/6) | Admin-managed multi-LLM team chat with quotas; different job from the comms platforms above. |
-| LibreChat / Lobe Chat / Open WebUI | 未收录 | — | Other self-hosted chat UIs named on the pages. |
+| Lobe Chat | 未收录 | — | Other self-hosted chat UIs named on the pages. |
 | Slack / Discord / Microsoft Teams | 未收录 | — | Hosted SaaS team chat named across the pages. |
 
 ## What belongs here

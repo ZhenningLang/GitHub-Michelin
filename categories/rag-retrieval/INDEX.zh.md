@@ -30,7 +30,7 @@
 | [Understand-Anything](understand-anything.zh.md) | ✅ | B（6/6） | 把代码变成 agent 可查询的可探索知识图谱；比 graphify 年轻，star 数与数据外发边界均存疑。 |
 | [FAISS](faiss.zh.md) | ✅ | A（6/6） | 当你需要一个快速的进程内 ANN 向量索引来检索 embedding 时用它——是库，不是托管向量数据库。 |
 | [text2vec](text2vec.zh.md) | ✅ | C（5/6） | 当你要为中文语义检索或 FAQ 匹配快速拿到句向量、只想一行 pip 装好时用它——它只是编码器，向量索引（FAISS／Milvus）得自己配。 |
-| Neo4j / LlamaIndex / LightRAG / Weaviate | 未收录 | — | 各页对比里点到的其他图 / RAG 检索方案。 |
+| Neo4j / LightRAG / Weaviate | 未收录 | — | 各页对比里点到的其他图 / RAG 检索方案。 |
 
 ## 什么该放这里
 

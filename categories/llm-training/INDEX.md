@@ -27,7 +27,7 @@
 | [ART (Agent Reinforcement Trainer)](art.md) | ✅ | B (5/6) | Train multi-step LLM agents on real tasks with GRPO reinforcement learning via a client-server loop, using RULER (LLM-as-judge) for zero-label reward generation. |
 | [Agent Lightning](agent-lightning.md) | ✅ | B (5/6) | Microsoft RL/optimization trainer that improves agents built in any framework (LangChain, AutoGen, OpenAI SDK…) with near-zero code changes by decoupling agent execution from the training backend. |
 | [Colossal-AI](colossalai.md) | ✅ | B (5/6) | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. |
-| axolotl / torchtune / HF TRL / verl | 未收录 | — | other fine-tuning / RL trainers named in the pages |
+| HF TRL / verl | 未收录 | — | other fine-tuning / RL trainers named in the pages |
 
 ## What belongs here
 

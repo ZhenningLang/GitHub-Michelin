@@ -32,7 +32,7 @@
 | [vLLM](vllm.md) | ✅ | A (5/6) | The de-facto open-source LLM serving engine (PagedAttention, continuous batching), huge community and model coverage; NVIDIA-first, fast-moving codebase. |
 | [SGLang](sglang.md) | ✅ | A (5/6) | Fast LLM serving engine with RadixAttention prefix caching and structured generation; younger ecosystem than vLLM, ideal for tool-using agents. |
 | [Ray Serve](ray-serve.md) | ✅ | A (6/6) | General-purpose scalable Python model-serving framework with multi-model composition and autoscaling; built on Ray, operationally demanding. |
-| TGI / BentoML | 未收录 | — | Other LLM inference/serving engines named across the pages. |
+| TGI | 未收录 | — | Other LLM inference/serving engines named across the pages. |
 
 ## What belongs here
 
