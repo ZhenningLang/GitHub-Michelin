@@ -1,4 +1,4 @@
-.PHONY: lint cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
+.PHONY: lint gates reverse-index reverse-index-check cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
 
 help:
 	@echo "oss-atlas make targets:"
@@ -14,8 +14,11 @@ help:
 	@echo "  make quality-scan   run all-repo quality scan in report-only mode"
 	@echo "  make quality-scan-gated  all-repo quality scan that fails on gated categories (the CI gate)"
 	@echo "  make quality-scan-changed  run changed-only quality scan as a local gate"
+	@echo "  make reverse-index  regenerate committed reports/ from the pages (tools/reverse_index.py --write)"
+	@echo "  make reverse-index-check  fail if reports/ drift from the pages (CI structural-lint runs this)"
+	@echo "  make gates          run the full CI gate set: lint + reverse-index-check + quality-scan-gated"
 	@echo "  make quality-batch SCOPE=... REPORT=... [FULL=1]  verify scoped quality batch"
-	@echo "  make install-hooks  point git at scripts/hooks (offline pre-commit: refresh cards + lint)"
+	@echo "  make install-hooks  point git at scripts/hooks (offline pre-commit: refresh cards + reports + lint)"
 
 lint:
 	python3 tools/lint.py
@@ -60,6 +63,17 @@ quality-batch:
 	@test -n "$(SCOPE)" || { echo "usage: make quality-batch SCOPE=categories/<cat-or-page> REPORT=/tmp/quality-batch.md [FULL=1]"; exit 2; }
 	@test -n "$(REPORT)" || { echo "usage: make quality-batch SCOPE=categories/<cat-or-page> REPORT=/tmp/quality-batch.md [FULL=1]"; exit 2; }
 	python3 tools/verify_quality_batch.py --scope "$(SCOPE)" --report "$(REPORT)" $(if $(FULL),--full,)
+
+gates:
+	python3 tools/lint.py
+	python3 tools/reverse_index.py --check
+	python3 tools/quality_scan.py --fail-on-gated
+
+reverse-index:
+	python3 tools/reverse_index.py --write
+
+reverse-index-check:
+	python3 tools/reverse_index.py --check
 
 install-hooks:
 	git config core.hooksPath scripts/hooks

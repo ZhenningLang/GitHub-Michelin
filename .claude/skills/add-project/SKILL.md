@@ -96,6 +96,9 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
 8. **Validate.** Run structural lint, then run a scoped or changed-only quality scan for the pages
    just written:
    - `python3 tools/lint.py` — fix every ERROR before finishing.
+   - `python3 tools/reverse_index.py --check` — the new page changes the committed reverse index;
+     if it fails, run `python3 tools/reverse_index.py --write` and commit the regenerated
+     `reports/` in the same change (CI's `structural-lint` job runs this check).
    - Either scope the exact bilingual pair:
      `python3 tools/quality_scan.py --scope categories/<category>/<slug>.md --scope categories/<category>/<slug>.zh.md --fail-on-any-scoped`
    - Or, when the new pages are the relevant markdown changes in the worktree, use changed-only:

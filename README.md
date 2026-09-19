@@ -910,12 +910,18 @@ added: non-repos (hosted SaaS, landing pages, articles), exact duplicates, empty
 [CONTRIBUTING.md](CONTRIBUTING.md) and [tools/schema.md](tools/schema.md).
 
 ```bash
-python3 tools/lint.py    # the structural gate; no unit tests (it's a content repo)
+python3 tools/lint.py                        # structural: shape, routing, dead links, fanout
+python3 tools/reverse_index.py --check       # committed reports/ must match the pages
+python3 tools/quality_scan.py --fail-on-gated   # deterministic triage categories
+# or: make gates
 ```
 
-Lint is a **structural** gate (frontmatter keys + bilingual parity, required/forbidden sections per
-`type`, H1, links, Caveats ledger, fanout) — not a **semantic** one. `lint clean` means the shape is
-right, not that the prose was reviewed for accuracy or selection quality.
+Adding, renaming, or moving pages changes the committed reverse index — regenerate `reports/` with
+`python3 tools/reverse_index.py --write` in the same change.
+
+The gates are **structural/deterministic** (frontmatter keys + bilingual parity, required/forbidden
+sections per `type`, H1, links, Caveats ledger, fanout, report freshness) — not **semantic**. `clean`
+means the shape is right, not that the prose was reviewed for accuracy or selection quality.
 
 ## License
 

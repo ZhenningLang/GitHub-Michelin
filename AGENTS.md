@@ -122,17 +122,25 @@ dropping entries.
 
 ## Lint (the structural gate — no tests)
 
-This is a content repo with no runtime logic. The pre-merge gates are the structural linter plus the
-deterministic quality gate:
+This is a content repo with no runtime logic. The pre-merge gates are the structural linter, the
+committed-report freshness check, and the deterministic quality gate:
 
 ```bash
 python3 tools/lint.py                        # structural: shape, routing, dead links, fanout
+python3 tools/reverse_index.py --check       # reports/ must match the pages (SSOT)
 python3 tools/quality_scan.py --fail-on-gated   # deterministic triage categories (whole repo)
+# or: make gates   (runs all three, same as CI)
 ```
 
-ERROR = exit non-zero (CI fails). WARNING = printed (e.g. an entry is stale). Run both before
-committing. CI runs them on every PR and every push to `main` (`.github/workflows/lint.yml`, jobs
-`structural-lint` and `quality-gate`).
+ERROR = exit non-zero (CI fails). WARNING = printed (e.g. an entry is stale). Run all three before
+committing. CI runs them on every PR and every push to `main` (`.github/workflows/lint.yml`): the
+`structural-lint` job is `lint.py` + `reverse_index.py --check`; `quality-gate` is
+`quality_scan.py --fail-on-gated`.
+
+**Touch the tree shape → refresh the reports.** Adding, renaming, moving, or deleting pages changes
+the reverse index (and the named-but-unindexed backlog). `reports/` are committed SSOT, so regenerate
+them with `python3 tools/reverse_index.py --write` in the same change — the pre-commit hook does this
+automatically for staged `categories/` changes, and CI fails if you forget.
 
 **Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
 + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.

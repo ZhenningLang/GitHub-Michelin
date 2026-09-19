@@ -898,8 +898,14 @@ categories/<分类>/<子类>/INDEX.md …           # 更深的节点 —— 树
 见 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [tools/schema.md](tools/schema.md)。
 
 ```bash
-python3 tools/lint.py    # 唯一的门；没有单元测试（这是内容仓库）
+python3 tools/lint.py                        # 结构：形状、路由、死链、fanout
+python3 tools/reverse_index.py --check       # committed 的 reports/ 必须与页面一致
+python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
+# 或：make gates
 ```
+
+新增、重命名或移动页面会改变 committed 的反向索引——用 `python3 tools/reverse_index.py --write`
+在同一次改动里重新生成 `reports/`。
 
 ## 许可证
 

@@ -207,6 +207,7 @@ internal `add-project` skill and pass the repo URL plus the reviewed category de
 ```bash
 cd {workspace}
 python3 tools/lint.py
+python3 tools/reverse_index.py --check   # regenerate with --write and commit reports/ if it drifts
 ```
 
 Fix any errors (missing INDEX entries, missing README rows, broken links, ASCII punctuation in `.zh.md` bodies, etc.).
