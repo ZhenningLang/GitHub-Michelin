@@ -176,6 +176,7 @@ https://github.com/campfirein/byterover-cli,byterover,agent-memory,categories/ag
 https://github.com/cbailes/awesome-deep-trading,awesome-deep-trading,investment-finance,categories/investment-finance/awesome-deep-trading.md
 https://github.com/celery/celery,celery,task-queue,categories/task-queue/celery.md
 https://github.com/celery/kombu,kombu,task-queue,categories/task-queue/kombu.md
+https://github.com/ceph/ceph,ceph,object-storage,categories/object-storage/ceph.md
 https://github.com/certbot/certbot,certbot,ops-infra,categories/dev-utilities/ops-infra/certbot.md
 https://github.com/chakra-ui/chakra-ui,chakra-ui,component-libraries,categories/web-ui/component-libraries/chakra-ui.md
 https://github.com/chenfei-wu/TaskMatrix,taskmatrix,ml-research,categories/ml-research/taskmatrix.md
@@ -203,6 +204,7 @@ https://github.com/dee1024/pytorch-captcha-recognition,pytorch-captcha-recogniti
 https://github.com/denoland/deno,deno,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/deno.md
 https://github.com/dessant/buster,buster,captcha,categories/captcha/buster.md
 https://github.com/deusyu/translate-book,translate-book,translation,categories/agent-skills/writing/translation/translate-book.md
+https://github.com/deuxfleurs-org/garage,garage,object-storage,categories/object-storage/garage.md
 https://github.com/dfunckt/django-rules,django-rules,auth,categories/auth/django-rules.md
 https://github.com/docling-project/docling,docling,document-parsing,categories/document-parsing/docling.md
 https://github.com/dongbeixiaohuo/writing-agent,writing-agent,content-production,categories/agent-skills/writing/content-production/writing-agent.md
@@ -369,6 +371,7 @@ https://github.com/mikf/gallery-dl,gallery-dl,media-download,categories/media-do
 https://github.com/milanvarady/Applite,applite,package-manager-gui,categories/dev-utilities/package-manager-gui/applite.md
 https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories/ai-code-review/react-doctor.md
 https://github.com/milvus-io/milvus,milvus,rag-retrieval,categories/rag-retrieval/milvus.md
+https://github.com/minio/minio,minio,object-storage,categories/object-storage/minio.md
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md
 https://github.com/mksglu/context-mode,context-mode,agent-tooling,categories/agent-tooling/context-mode.md
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
@@ -421,6 +424,7 @@ https://github.com/paramiko/paramiko,paramiko,networking,categories/networking/p
 https://github.com/pbakaus/impeccable,impeccable,ai-design-generation,categories/ai-design-generation/impeccable.md
 https://github.com/peterbrittain/asciimatics,asciimatics,terminal-ui,categories/terminal-ui/asciimatics.md
 https://github.com/pezzolabs/pezzo,pezzo,llm-eval,categories/llm-eval/pezzo.md
+https://github.com/pgsty/silo,silo,object-storage,categories/object-storage/silo.md
 https://github.com/pingdotgg/t3code,t3code,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md
 https://github.com/pk910/PoWFaucet,powfaucet,blockchain-dev-infrastructure,categories/blockchain-dev-infrastructure/powfaucet.md
 https://github.com/praw-dev/praw,praw,crawling-tools,categories/web-scraping/crawling-tools/praw.md
@@ -454,6 +458,7 @@ https://github.com/safishamsi/graphify,graphify,rag-retrieval,categories/rag-ret
 https://github.com/scanny/python-pptx,python-pptx,office-automation,categories/office-automation/python-pptx.md
 https://github.com/scip-code/scip,scip,rag-retrieval,categories/rag-retrieval/scip.md
 https://github.com/scrapy/scrapyd,scrapyd,crawling-tools,categories/web-scraping/crawling-tools/scrapyd.md
+https://github.com/seaweedfs/seaweedfs,seaweedfs,object-storage,categories/object-storage/seaweedfs.md
 https://github.com/sepandhaghighi/art,art,terminal-ui,categories/terminal-ui/art.md
 https://github.com/sgl-project/sglang,sglang,serving-engines,categories/llm-inference/serving-engines/sglang.md
 https://github.com/shadcn-ui/ui,shadcn-ui,component-libraries,categories/web-ui/component-libraries/shadcn-ui.md

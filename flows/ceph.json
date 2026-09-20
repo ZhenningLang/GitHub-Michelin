@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Ceph does", "zh": "Ceph 做的"},
+  "steps": [
+    {"lane": "you", "en": "Bootstrap the first host into a cluster with cephadm", "zh": "用 cephadm 把第一台机器引导成集群", "code": "cephadm bootstrap --mon-ip <mon-ip>"},
+    {"lane": "them", "en": "Creates the MON and MGR daemons and writes the cluster config and admin keyring", "zh": "建起 MON 与 MGR 守护进程，写出集群配置与 admin keyring"},
+    {"lane": "you", "en": "Hand every free disk to the cluster as an OSD", "zh": "把每块空闲磁盘交给集群当 OSD", "code": "ceph orch apply osd --all-available-devices"},
+    {"lane": "you", "en": "Deploy the S3 gateway daemons", "zh": "部署 S3 网关守护进程", "code": "ceph orch apply rgw foo"},
+    {"lane": "them", "en": "RGW answers the S3 API while CRUSH spreads objects across the OSDs", "zh": "RGW 应答 S3 请求，CRUSH 把对象铺到各 OSD 上"},
+    {"lane": "you", "en": "Create an S3 user and point clients at the RGW endpoint", "zh": "建一个 S3 用户，让客户端指向 RGW 端点", "code": "radosgw-admin user create"}
+  ],
+  "value": {"en": "Object, block and file storage from one foundation-governed cluster — you stop running three separate storage systems, and start operating a storage cluster", "zh": "一个基金会治理的集群同时提供对象、块与文件存储：不用再维护三套存储，代价是要真正运维一个存储集群"},
+  "sources": [
+    "https://docs.ceph.com/en/latest/cephadm/install/ (cephadm bootstrap --mon-ip <mon-ip>; creates MON and MGR, /etc/ceph/ceph.conf and client.admin keyring)",
+    "https://docs.ceph.com/en/latest/cephadm/install/ (ceph orch apply osd --all-available-devices)",
+    "https://docs.ceph.com/en/latest/cephadm/services/rgw/ (ceph orch apply rgw <name>; RGW daemons serve the S3 API)",
+    "https://docs.ceph.com/en/latest/radosgw/admin/ (radosgw-admin user create --uid={username} --display-name=\"{display-name}\" creates the S3 access key and secret key)",
+    "https://github.com/ceph/ceph#readme (Ceph is a distributed object, block, and file storage platform)"
+  ]
+}

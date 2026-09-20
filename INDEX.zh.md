@@ -54,6 +54,7 @@
 
 | **auth** | 认证与授权库——登录提供方与权限规则。 | [→](categories/auth/INDEX.zh.md) |
 | **databases** | 数据库与数据库工具——客户端、GUI、同步，以及 Redis/ES 兼容存储。 | [→](categories/databases/INDEX.zh.md) |
+| **object-storage** | 你自建的 S3 兼容对象存储服务端。 | [→](categories/object-storage/INDEX.zh.md) |
 | **desktop-automation** | 程序化桌面 GUI 自动化（鼠标/键盘/屏幕）。 | [→](categories/desktop-automation/INDEX.zh.md) |
 | **game-dev** | 游戏开发库与引擎。 | [→](categories/game-dev/INDEX.zh.md) |
 | **kafka-tools** | Apache Kafka 客户端与管理界面。 | [→](categories/kafka-tools/INDEX.zh.md) |
