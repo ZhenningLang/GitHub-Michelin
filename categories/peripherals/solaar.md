@@ -95,12 +95,10 @@ Solaar is a Python/GTK application that assumes it can talk to your Logitech rec
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Install Solaar from your distribution's package — `sudo apt install solaar`
-2. **You**: Launch the desktop application — `solaar`
-3. **Solaar**: Discovers supported receivers and HID++ devices through udev
-4. **You**: Pair a compatible device, or change a device setting in the GUI
-5. **Solaar**: Saves the settings and restores them whenever the device reconnects — `~/.config/solaar/config.yaml`
-6. **You**: Inspect the detected device and its capabilities from the CLI — `solaar show`
+1. **You**: Install Solaar from your distro and start it — `sudo apt install solaar`
+2. **Solaar**: Discovers supported receivers and HID++ devices over udev
+3. **You**: Pair a device or change its settings in the window
+4. **Solaar**: Persists the settings and restores them whenever the device reconnects — `~/.config/solaar/config.yaml`
 
 **Value**: Pairing, device state and persistent HID++ settings are managed on Linux without vendor software
 

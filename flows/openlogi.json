@@ -1,16 +1,42 @@
 {
   "schema": 1,
-  "them": {"en": "OpenLogi does", "zh": "OpenLogi 做的"},
+  "them": {
+    "en": "OpenLogi does",
+    "zh": "OpenLogi 做的"
+  },
   "steps": [
-    {"lane": "you", "en": "Install it from the package manager for your OS", "zh": "用系统包管理器安装", "code": "brew install --cask openlogi"},
-    {"lane": "you", "en": "Enable the per-user agent service", "zh": "启用用户级 agent 服务", "code": "systemctl --user enable --now openlogi-agent.service"},
-    {"lane": "them", "en": "Claims the HID++ and camera handles, then enumerates your devices", "zh": "接管 HID++ 与摄像头句柄，枚举设备"},
-    {"lane": "you", "en": "Declare what each button does in one TOML file", "zh": "在一个 TOML 里声明每个按键做什么", "code": "per_app_bindings"},
-    {"lane": "them", "en": "Diverts the bound control and injects the replacement action", "zh": "接管已绑定的控件并注入替代动作"},
-    {"lane": "them", "en": "Swaps the action overlay when the frontmost app changes", "zh": "前台应用切换时换用对应动作叠加层"},
-    {"lane": "you", "en": "Check state from the CLI, or never open the GUI at all", "zh": "用 CLI 查状态，或干脆不开图形界面", "code": "openlogi list"}
+    {
+      "lane": "you",
+      "en": "Install it and enable the resident agent (the GUI is only an editor)",
+      "zh": "安装并启用常驻 agent（GUI 只是编辑器）",
+      "code": "brew install --cask openlogi · openlogi-agent.service"
+    },
+    {
+      "lane": "them",
+      "en": "Takes the HID++ and camera handles and enumerates your devices",
+      "zh": "接管 HID++ 与摄像头句柄，枚举设备"
+    },
+    {
+      "lane": "you",
+      "en": "Declare what each button does in one TOML file",
+      "zh": "在一个 TOML 里声明每个按键做什么",
+      "code": "config.toml — bindings / per_app_bindings"
+    },
+    {
+      "lane": "them",
+      "en": "Diverts the bound controls and injects the replacement action",
+      "zh": "接管已绑定的控件并注入替代动作"
+    },
+    {
+      "lane": "them",
+      "en": "Swaps in the matching overlay when the foreground app changes",
+      "zh": "前台应用切换时换用对应动作叠加层"
+    }
   ],
-  "value": {"en": "Buttons, per-app profiles and camera settings live in one TOML file and survive without the vendor app", "zh": "按键、按应用 profile 与摄像头设置都落在同一个 TOML 里，不依赖厂商应用"},
+  "value": {
+    "en": "Buttons, per-app profiles and camera settings live in one TOML file and survive without the vendor app",
+    "zh": "按键、按应用 profile 与摄像头设置都落在同一个 TOML 里，不依赖厂商应用"
+  },
   "sources": [
     "README.md Install (brew install --cask openlogi, dpkg/rpm/pacman, systemctl --user enable --now openlogi-agent.service, Windows GUI+agent pair)",
     "README.md Features (button remapping via the OS input hook, per-application profile overlays, Litra lights, UVC webcam controls)",

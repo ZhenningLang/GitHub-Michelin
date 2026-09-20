@@ -85,13 +85,11 @@ logiops splits into a daemon and a config file, with no GUI in between. You inst
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Build the daemon in release configuration — `cmake -DCMAKE_BUILD_TYPE=Release ..`
-2. **You**: Install the binary and its system service — `sudo make install`
-3. **You**: Write the device configuration at the default path — `/etc/logid.cfg`
-4. **You**: Declare the control id and the action it maps to — `cid: 0xc3;`
-5. **You**: Enable and start the daemon — `sudo systemctl enable --now logid`
-6. **logiops**: Reads the config once and discovers HID++ devices through hidraw
-7. **logiops**: Diverts matching button events and emits the configured keypress — `type: "Keypress";`
+1. **You**: Install logid (distro package, or cmake + make install) — `cmake -DCMAKE_BUILD_TYPE=Release .. && sudo make install`
+2. **You**: Describe each device's buttons in the config file: a control id and the action it maps to — `/etc/logid.cfg — cid: 0xc3; type: "Keypress";`
+3. **You**: Enable and start the daemon — `sudo systemctl enable --now logid`
+4. **logiops**: Reads the config once at startup, finds HID++ devices over udev/hidraw
+5. **logiops**: Diverts the mapped controls and emits the configured action through a virtual uinput device
 
 **Value**: Button, gesture, DPI and SmartShift mappings stay active through the logid background service
 

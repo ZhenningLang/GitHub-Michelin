@@ -90,12 +90,11 @@ Mouser 是一个本地 Python 应用，PySide6／QML 窗口常驻系统托盘或
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：下载对应平台便携包并直接运行 — `Mouser-macOS.zip`
-2. **你**：授予输入钩子所需的系统权限 — `Accessibility`
-3. **Mouser**：找到已配对的 HID++ 鼠标并打开映射页 — `Mouse & Profiles`
-4. **你**：点击按键热点，指派或录制一个动作
-5. **Mouser**：保存映射并重载回调，不断开 HID 连接 — `setProfileMapping`
-6. **Mouser**：常驻托盘，按下该键时发出对应动作 — `config.json`
+1. **你**：下载对应平台便携包运行，并授予输入钩子权限 — `Mouser-macOS.zip · Accessibility`
+2. **Mouser**：找到已配对的 HID++ 鼠标，打开对应的映射页
+3. **你**：点击按键热点，指派或录制一个动作
+4. **Mouser**：保存映射并热重载，不断开 HID 连接 — `config.json`
+5. **Mouser**：常驻托盘，按下该键时发出对应动作
 
 **价值**：无需运行 Options+，重映射的鼠标按键靠本地配置文件持续生效
 

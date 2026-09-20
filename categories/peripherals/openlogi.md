@@ -91,13 +91,11 @@ OpenLogi runs as two cooperating processes that share one config file. The **GUI
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Install it from the package manager for your OS — `brew install --cask openlogi`
-2. **You**: Enable the per-user agent service — `systemctl --user enable --now openlogi-agent.service`
-3. **OpenLogi**: Claims the HID++ and camera handles, then enumerates your devices
-4. **You**: Declare what each button does in one TOML file — `per_app_bindings`
-5. **OpenLogi**: Diverts the bound control and injects the replacement action
-6. **OpenLogi**: Swaps the action overlay when the frontmost app changes
-7. **You**: Check state from the CLI, or never open the GUI at all — `openlogi list`
+1. **You**: Install it and enable the resident agent (the GUI is only an editor) — `brew install --cask openlogi · openlogi-agent.service`
+2. **OpenLogi**: Takes the HID++ and camera handles and enumerates your devices
+3. **You**: Declare what each button does in one TOML file — `config.toml — bindings / per_app_bindings`
+4. **OpenLogi**: Diverts the bound controls and injects the replacement action
+5. **OpenLogi**: Swaps in the matching overlay when the foreground app changes
 
 **Value**: Buttons, per-app profiles and camera settings live in one TOML file and survive without the vendor app
 

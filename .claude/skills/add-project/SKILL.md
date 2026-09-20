@@ -77,6 +77,10 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    - Write `flows/<slug>.json` (stem = slug; category-prefixed only for a duplicated slug):
      two lanes (`you` / `them`), 3–9 **linear** steps, bilingual `en`/`zh` per step, a `value`
      payoff, and `sources` naming where each command/API was seen.
+   - **Granularity** (schema §2 has the full rules): collapse generic setup (build/install/permission)
+     into one step; stop at the step where the value lands — no inspection commands or optional
+     features; if one lane runs 4+ steps in a row while the other is empty, you have a checklist, not
+     a handoff. `code` is what the user types or writes, never an internal function/class name.
    - **Every `code` value must appear verbatim in a source you actually read.** If you cannot find
      the command/annotation/API, write the step generically ("call its query API") — an invented
      command inside a diagram reads as authoritative and is worse than no command.

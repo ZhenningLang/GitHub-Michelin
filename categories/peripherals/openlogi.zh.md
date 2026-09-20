@@ -91,13 +91,11 @@ OpenLogi 由两个协作进程组成，共享同一份配置文件。**GUI**（`
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：用系统包管理器安装 — `brew install --cask openlogi`
-2. **你**：启用用户级 agent 服务 — `systemctl --user enable --now openlogi-agent.service`
-3. **OpenLogi**：接管 HID++ 与摄像头句柄，枚举设备
-4. **你**：在一个 TOML 里声明每个按键做什么 — `per_app_bindings`
-5. **OpenLogi**：接管已绑定的控件并注入替代动作
-6. **OpenLogi**：前台应用切换时换用对应动作叠加层
-7. **你**：用 CLI 查状态，或干脆不开图形界面 — `openlogi list`
+1. **你**：安装并启用常驻 agent（GUI 只是编辑器） — `brew install --cask openlogi · openlogi-agent.service`
+2. **OpenLogi**：接管 HID++ 与摄像头句柄，枚举设备
+3. **你**：在一个 TOML 里声明每个按键做什么 — `config.toml — bindings / per_app_bindings`
+4. **OpenLogi**：接管已绑定的控件并注入替代动作
+5. **OpenLogi**：前台应用切换时换用对应动作叠加层
 
 **价值**：按键、按应用 profile 与摄像头设置都落在同一个 TOML 里，不依赖厂商应用
 
