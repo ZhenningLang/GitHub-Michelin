@@ -495,6 +495,7 @@ https://github.com/vercel-labs/agent-browser,agent-browser,agent-browser-tools,c
 https://github.com/vercel-labs/agent-skills,vercel-agent-skills,engineering,categories/agent-skills/engineering/vercel-agent-skills.md
 https://github.com/vercel-labs/openreview,openreview,ai-code-review,categories/ai-code-review/openreview.md
 https://github.com/vercel-labs/skills,vercel-skills,agent-tooling,categories/agent-tooling/vercel-skills.md
+https://github.com/vercel/eve,eve,agent-runtimes,categories/agent-frameworks/agent-runtimes/eve.md
 https://github.com/vercel/next.js,nextjs,frameworks,categories/web-ui/frameworks/nextjs.md
 https://github.com/verl-project/verl,verl,llm-training,categories/llm-training/verl.md
 https://github.com/vibrantlabsai/ragas,ragas,llm-eval,categories/llm-eval/ragas.md

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="757" viewBox="0 0 880 757" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="757" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="621" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="621" rx="10"/>
+<rect class="pillT" x="474" y="40" width="96.0" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">eve 做的</text>
+<path class="edge" d="M62,145 L62,169" marker-end="url(#a)"/>
+<path class="edge" d="M62,285 L62,309" marker-end="url(#a)"/>
+<path class="hand" d="M408,347.5 C439.0,347.5 439.0,371 470,371" marker-end="url(#a)"/>
+<path class="hand" d="M472,383.0 C441.0,383.0 441.0,434 410,434" marker-end="url(#a)"/>
+<path class="hand" d="M408,446.5 C439.0,446.5 439.0,470 470,470" marker-end="url(#a)"/>
+<path class="edge" d="M494,496 L494,520" marker-end="url(#a)"/>
+<path class="hand" d="M472,558.0 C441.0,558.0 441.0,582 410,582" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">脚手架出项目并装好依赖</text>
+<text class="c" x="82" y="125">npx eve@latest init my-agent</text>
+<rect class="card" x="40" y="171" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="171" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="195" r="10"/>
+<text class="num" x="62" y="199" text-anchor="middle">2</text>
+<text class="t" x="82" y="200">把 agent 写成文件：指令、带类型的工具、一</text>
+<text class="t" x="82" y="222">个渠道</text>
+<text class="c" x="82" y="246">agent/instructions.md ·</text>
+<text class="c" x="82" y="265">agent/tools/get_weather.ts</text>
+<rect class="card" x="40" y="311" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="311" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="335" r="10"/>
+<text class="num" x="62" y="339" text-anchor="middle">3</text>
+<text class="t" x="82" y="340">本地跑起来，在终端里跟它对话</text>
+<text class="c" x="82" y="364">npm run dev</text>
+<rect class="cardT" x="472" y="347" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="347" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="371" r="10"/>
+<text class="num" x="494" y="375" text-anchor="middle">4</text>
+<text class="t" x="514" y="376">把这些文件编译成一个带会话运行时的 HTT</text>
+<text class="t" x="514" y="398">P 服务</text>
+<rect class="card" x="40" y="410" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="410" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="434" r="10"/>
+<text class="num" x="62" y="438" text-anchor="middle">5</text>
+<text class="t" x="82" y="439">标出哪些工具调用必须有人批准</text>
+<text class="c" x="82" y="463">approval: always()</text>
+<rect class="cardT" x="472" y="446" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="446" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="470" r="10"/>
+<text class="num" x="494" y="474" text-anchor="middle">6</text>
+<text class="t" x="514" y="475">把这一轮持久地停住，等答复——等几天也行</text>
+<rect class="cardT" x="472" y="522" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="522" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="546" r="10"/>
+<text class="num" x="494" y="550" text-anchor="middle">7</text>
+<text class="t" x="514" y="551">崩溃或重新部署后，从最后一个完成的 ste</text>
+<text class="t" x="514" y="573">p 接着跑</text>
+<rect class="card" x="40" y="558" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="558" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="582" r="10"/>
+<text class="num" x="62" y="586" text-anchor="middle">8</text>
+<text class="t" x="82" y="587">把它作为服务发布</text>
+<text class="c" x="82" y="611">eve build · eve start</text>
+<rect class="val" x="28" y="663" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="687">价值</text>
+<text class="valT" x="48" y="711">你只写文件，换来一个能等好几天、能崩能重发、还能在 Slack 应答的后端 agent</text>
+</svg>
