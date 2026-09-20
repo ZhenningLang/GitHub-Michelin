@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="813" viewBox="0 0 880 813" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="813" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="655" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="655" rx="10"/>
+<rect class="pillT" x="474" y="40" width="224.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Jianying Headless 做的</text>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="edge" d="M62,285 L62,309" marker-end="url(#a)"/>
+<path class="hand" d="M408,357.0 C439.0,357.0 439.0,381 470,381" marker-end="url(#a)"/>
+<path class="hand" d="M472,393.0 C441.0,393.0 441.0,453 410,453" marker-end="url(#a)"/>
+<path class="hand" d="M408,475.0 C439.0,475.0 439.0,499 470,499" marker-end="url(#a)"/>
+<path class="hand" d="M472,511.0 C441.0,511.0 441.0,571 410,571" marker-end="url(#a)"/>
+<path class="hand" d="M408,593.0 C439.0,593.0 439.0,617 470,617" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">对着本机已安装的剪映编译 codec 桥接，再核</text>
+<text class="t" x="82" y="123">对应用版本与库哈希</text>
+<text class="c" x="82" y="147">python3 tools/build_native_codec.py ·</text>
+<text class="c" x="82" y="166">headless_draft.py doctor</text>
+<rect class="card" x="40" y="212" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">把剪辑写成一份 JSON 计划：轨道、片段、时间</text>
+<text class="c" x="82" y="265">examples/basic.plan.json</text>
+<rect class="card" x="40" y="311" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="311" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="335" r="10"/>
+<text class="num" x="62" y="339" text-anchor="middle">3</text>
+<text class="t" x="82" y="340">把草稿构建到独立的工作目录</text>
+<text class="c" x="82" y="364">headless_draft.py build --plan plan.json</text>
+<text class="c" x="82" y="383">--out work/new-build</text>
+<rect class="cardT" x="472" y="357" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="357" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="381" r="10"/>
+<text class="num" x="494" y="385" text-anchor="middle">4</text>
+<text class="t" x="514" y="386">加密写出剪映原生草稿文件、复制素材，并逐个</text>
+<text class="t" x="514" y="408">文件对照计划校验</text>
+<rect class="card" x="40" y="429" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="429" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="453" r="10"/>
+<text class="num" x="62" y="457" text-anchor="middle">5</text>
+<text class="t" x="82" y="458">完全退出剪映，再把草稿登记进本机首页列表</text>
+<text class="c" x="82" y="482">headless_draft.py publish --build</text>
+<text class="c" x="82" y="501">work/new-build --audit work/audit</text>
+<rect class="cardT" x="472" y="475" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="475" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="499" r="10"/>
+<text class="num" x="494" y="503" text-anchor="middle">6</text>
+<text class="t" x="514" y="504">草稿在剪映里打开，就是一个普通可编辑</text>
+<text class="t" x="514" y="526">的多轨工程</text>
+<rect class="card" x="40" y="547" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="547" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="571" r="10"/>
+<text class="num" x="62" y="575" text-anchor="middle">7</text>
+<text class="t" x="82" y="576">需要成片时再要一条 MP4</text>
+<text class="c" x="82" y="600">headless_draft.py export --build</text>
+<text class="c" x="82" y="619">work/new-build --out work/new-export</text>
+<rect class="cardT" x="472" y="593" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="593" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="617" r="10"/>
+<text class="num" x="494" y="621" text-anchor="middle">8</text>
+<text class="t" x="514" y="622">应用自己的引擎在禁网沙箱里渲染出</text>
+<text class="t" x="514" y="644">H.264／AAC</text>
+<rect class="val" x="28" y="697" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="721">价值</text>
+<text class="valT" x="48" y="745">一份 JSON 计划换来可继续编辑的剪映多轨工程，需要时再出原生 MP4：时间线拼装被自动化，最后一公里仍</text>
+<text class="valT" x="48" y="767">可手工精修</text>
+</svg>

@@ -571,6 +571,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Screenshot Service** | 仅适合作为隔离的内部 HTML 转图片 worker——API 鉴权已禁用，Chromium 还关闭了 sandbox 与 Web 安全。 | NOASSERTION | D（4/6） | [中](categories/media-processing/image-processing/screenshot-service.zh.md) · [EN](categories/media-processing/image-processing/screenshot-service.md) |
 | **Concat** | 当你需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 视频编辑器时用它——但它是仅有约 25 天历史的 0.2.x beta、只有一位维护者，且专业能力（遮罩、跟踪、关键帧曲线）仍在路线图上。 | AGPL-3.0-or-later | C（5/6） | [中](categories/media-processing/video-editing/concat.zh.md) · [EN](categories/media-processing/video-editing/concat.md) |
 | **OpenCut** | 仅当你打算跟进或基于浏览器／WASM 重写架构开发时用它——其仓库正在重写、不接受外部贡献、不产出可用版本，能用的 classic 版本在已归档仓库里。 | MIT | B（5/6） | [中](categories/media-processing/video-editing/opencut.zh.md) · [EN](categories/media-processing/video-editing/opencut.md) |
+| **Jianying Headless** | 当 macOS 上的剪映工作流需要 agent 生成**可编辑**草稿——真实多轨工程，并可用应用自己的引擎原生导出 MP4——时用它；代价是仅 5 天历史、单一维护者、绑定某一个应用版本、且仅限非商用。 | Personal Learning and Non-Commercial Use License（NOASSERTION，非 OSI） | D（4/6） | [中](categories/media-processing/nle-automation/jianying-headless.zh.md) · [EN](categories/media-processing/nle-automation/jianying-headless.md) |
 
 ### video-production
 
