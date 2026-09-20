@@ -16,7 +16,7 @@
 | **Pandoc** | Universal markup converter | B（6/6） | [→](pandoc.zh.md) |
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | B（4/6） | [→](goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | A（6/6） | [→](markdownlint.zh.md) |
-| **Quarkdown** | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 | B（5/6） | [→](quarkdown.zh.md) |
+| **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | B（5/6） | [→](mdx.zh.md) |
 
 
 ## 对比矩阵

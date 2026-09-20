@@ -598,7 +598,16 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Pandoc** | Universal markup converter | GPL-2.0 | B（6/6） | [EN](categories/markdown-tools/pandoc.md) · [中](categories/markdown-tools/pandoc.zh.md) |
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | MIT | B（4/6） | [EN](categories/markdown-tools/goldmark.md) · [中](categories/markdown-tools/goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A（6/6） | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
-| **Quarkdown** | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 | GPL-3.0 / AGPL-3.0 | B（5/6） | [中](categories/markdown-tools/quarkdown.zh.md) · [EN](categories/markdown-tools/quarkdown.md) |
+| **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | MIT | B（5/6） | [中](categories/markdown-tools/mdx.zh.md) · [EN](categories/markdown-tools/mdx.md) |
+
+### typesetting
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Asciidoctor** | 当技术文档需要从纯文本源发布成 HTML、DocBook、EPUB 或 man page 时用它——但你需要排版引擎或印刷级 PDF 时不要用。 | MIT | C（4/6） | [中](categories/typesetting/asciidoctor.zh.md) · [EN](categories/typesetting/asciidoctor.md) |
+| **LaTeX** | 当投稿方的 class 文件、几十年的宏包积累、或几十年稳定的源语言决定结果时用它——但没人愿意维护 `\begin{}` 脚手架、或你需要从同一份文件出 HTML 时不要用。 | LPPL-1.3c | B（6/6） | [中](categories/typesetting/latex.zh.md) · [EN](categories/typesetting/latex.md) |
+| **Quarkdown** | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 | GPL-3.0 / AGPL-3.0 | B（5/6） | [中](categories/typesetting/quarkdown.zh.md) · [EN](categories/typesetting/quarkdown.md) |
+| **Typst** | 当你能自己选源语言，想要学习曲线短、Apache-2.0 许可的印刷级 PDF 时用它——但投稿方指定 LaTeX class 文件、或源必须保持 Markdown 时不要用。 | Apache-2.0 | A（6/6） | [中](categories/typesetting/typst.zh.md) · [EN](categories/typesetting/typst.md) |
 
 ### pdf-tools
 

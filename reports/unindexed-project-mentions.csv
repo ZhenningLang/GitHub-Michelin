@@ -84,7 +84,6 @@ ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
 arq,categories/task-queue/celery.md,,no
 ascii-magic,categories/terminal-ui/asciify.md,,no
 ascii-magic / cowsay,categories/terminal-ui/art.md,,no
-Asciidoctor,categories/markdown-tools/quarkdown.md,,no
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
 AsyncSSH,categories/networking/paramiko.md,,no
 AsyncSSH (forwarding API),categories/networking/sshtunnel.md,,no
@@ -417,7 +416,6 @@ Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
 LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
-LaTeX,categories/markdown-tools/quarkdown.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
@@ -458,6 +456,7 @@ Manuskript,categories/agent-skills/writing/fiction/webnovel-writer.md,,no
 MapServer,categories/geospatial/qgis.md,,no
 Marigold (SD-based),categories/ml-research/depth-anything-v2.md,,no
 Markdown Here Revival (fork/successor),categories/markdown-tools/markdown-here.md,,no
+Markdown plus a hand-rolled template layer,categories/markdown-tools/mdx.md,,no
 markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
 markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
 Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
@@ -468,7 +467,6 @@ Mayan EDMS,categories/document-management/paperless-ngx.md,,no
 Mayan EDMS / Docspell / Nextcloud,categories/document-management/INDEX.md,,no
 mCaptcha,categories/captcha/capjs.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
-MDX,categories/markdown-tools/quarkdown.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
 MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
 MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no
@@ -774,7 +772,6 @@ tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Tushare,categories/web-scraping/crawling-tools/gopup.md,,no
 Tyk,categories/api-gateway/kong.md,,no
 Tyk / KrakenD / Envoy / APISIX / New API,categories/api-gateway/INDEX.md,,no
-Typst,categories/markdown-tools/quarkdown.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
 undetected-chromedriver,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
 undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no

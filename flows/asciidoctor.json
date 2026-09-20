@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Asciidoctor does",
+    "zh": "Asciidoctor 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the gem, or use a distro package, Homebrew, MacPorts or the Docker image",
+      "zh": "安装 gem，或用发行版包、Homebrew、Docker 镜像",
+      "code": "gem install asciidoctor"
+    },
+    {
+      "lane": "you",
+      "en": "Write the document in AsciiDoc: attributes plus block markup",
+      "zh": "用 AsciiDoc 写文档：属性加块级标记",
+      "code": "= Document Title · :release-version: 2.0.22"
+    },
+    {
+      "lane": "them",
+      "en": "Parses the source into a document model, resolving attributes and cross-references",
+      "zh": "把源解析成文档模型，解析属性与交叉引用"
+    },
+    {
+      "lane": "you",
+      "en": "Convert it, picking the output directory if you want one",
+      "zh": "执行转换，需要的话指定输出目录",
+      "code": "asciidoctor README.adoc · asciidoctor -D output README.adoc"
+    },
+    {
+      "lane": "them",
+      "en": "Writes the converted document — HTML5 by default",
+      "zh": "写出转换结果，默认 HTML5"
+    }
+  ],
+  "value": {
+    "en": "One .adoc source — plain text you can diff — becomes published documentation, with PDF and EPUB a companion converter away",
+    "zh": "一份可以 diff 的纯文本 .adoc 源变成可发布的文档，PDF 与 EPUB 只差一个配套转换器"
+  },
+  "sources": [
+    "README.adoc Installation (gem install asciidoctor, apk add asciidoctor, pacman -S asciidoctor, RVM user-space advice, Docker, Bundler)",
+    "README.adoc Usage (asciidoctor --version, 'asciidoctor README.adoc' writes an .html file derived from the source name, asciidoctor -D output README.adoc)",
+    "README.adoc intro (parses AsciiDoc into a document model and converts to HTML 5, DocBook 5, manual pages, PDF, EPUB 3; Ruby API, AsciidoctorJ on the JVM, Asciidoctor.js)",
+    "README.adoc header attributes (:source-language: ruby, :release-version: 2.0.22) as a real example of the attribute syntax",
+    "LICENSE (MIT License)"
+  ]
+}

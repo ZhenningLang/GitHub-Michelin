@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Typst does",
+    "zh": "Typst 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the compiler from a package manager, an archive, cargo or Docker",
+      "zh": "从包管理器、压缩包、cargo 或 Docker 安装编译器",
+      "code": "brew install typst · cargo install --locked typst-cli"
+    },
+    {
+      "lane": "you",
+      "en": "Write the document in .typ: markup, # expressions, and set rules for layout",
+      "zh": "用 .typ 写文档：标记、# 表达式，以及负责版式的 set 规则",
+      "code": "= Heading · #set page(width: 10cm, height: auto)"
+    },
+    {
+      "lane": "them",
+      "en": "Parses the markup, evaluates the embedded scripting and lays the document out",
+      "zh": "解析标记、求值内嵌脚本，并完成文档布局"
+    },
+    {
+      "lane": "you",
+      "en": "Compile it once, or leave a watch running while you edit",
+      "zh": "编译一次，或者开着 watch 边改边看",
+      "code": "typst compile file.typ · typst watch file.typ"
+    },
+    {
+      "lane": "them",
+      "en": "Writes the output, rebuilding only the parts that changed",
+      "zh": "写出产物，并且只重建改动过的部分"
+    }
+  ],
+  "value": {
+    "en": "One .typ source becomes a typeset PDF — or PNG, SVG, HTML — in a single command, with no TeX installation behind it",
+    "zh": "一份 .typ 源在一条命令内变成排好版的 PDF——或 PNG、SVG、HTML——背后不需要装 TeX"
+  },
+  "sources": [
+    "README.md Installation (brew install typst, winget install --id Typst.Typst, cargo install --locked typst-cli, nix, docker run ghcr.io/typst/typst, typst update)",
+    "README.md Usage (typst compile file.typ, typst compile path/to/source.typ path/to/output.pdf, typst watch file.typ, --font-path, TYPST_FONT_PATHS, typst fonts)",
+    "README.md Example (set rules vs show rules, '= Heading' markup, '$ ... $' math, '#let' definitions and '#f(x)' calls, incremental compilation)",
+    "crates/ layout (typst-syntax -> typst-eval -> typst-realize/typst-layout -> typst-pdf, typst-svg, typst-render, typst-html)"
+  ]
+}

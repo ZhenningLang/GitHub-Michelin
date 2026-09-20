@@ -601,7 +601,16 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Pandoc** | Universal markup converter | GPL-2.0 | B (6/6) | [EN](categories/markdown-tools/pandoc.md) · [中](categories/markdown-tools/pandoc.zh.md) |
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | MIT | B (4/6) | [EN](categories/markdown-tools/goldmark.md) · [中](categories/markdown-tools/goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A (6/6) | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
-| **Quarkdown** | Use it when one Markdown-legible source must compile to a web page, a print PDF, reveal.js slides and a docs site — but not when the deliverable must be Word, the license must be permissive, or print fidelity is the hard requirement. | GPL-3.0 / AGPL-3.0 | B (5/6) | [EN](categories/markdown-tools/quarkdown.md) · [中](categories/markdown-tools/quarkdown.zh.md) |
+| **MDX** | Use it when the docs live inside a React/Preact/Vue app and the prose must import and render your own components — not when the deliverable is a standalone PDF, book or publishable document. | MIT | B (5/6) | [EN](categories/markdown-tools/mdx.md) · [中](categories/markdown-tools/mdx.zh.md) |
+
+### typesetting
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Asciidoctor** | Use it when technical documentation must publish from a plain-text source to HTML, DocBook, EPUB or man pages — not when you need a typesetting engine or print-grade PDF. | MIT | C (4/6) | [EN](categories/typesetting/asciidoctor.md) · [中](categories/typesetting/asciidoctor.zh.md) |
+| **LaTeX** | Use it when a venue's class file, decades of packages, or a source language stable for decades decide the outcome — not when nobody will maintain `\begin{}` scaffolding or you need HTML from the same file. | LPPL-1.3c | B (6/6) | [EN](categories/typesetting/latex.md) · [中](categories/typesetting/latex.zh.md) |
+| **Quarkdown** | Use it when one Markdown-legible source must compile to a web page, a print PDF, reveal.js slides and a docs site — but not when the deliverable must be Word, the license must be permissive, or print fidelity is the hard requirement. | GPL-3.0 / AGPL-3.0 | B (5/6) | [EN](categories/typesetting/quarkdown.md) · [中](categories/typesetting/quarkdown.zh.md) |
+| **Typst** | Use it when you can choose the source language and want print-quality PDF with a short learning curve and an Apache-2.0 toolchain — not when a venue mandates LaTeX class files or the source must stay Markdown. | Apache-2.0 | A (6/6) | [EN](categories/typesetting/typst.md) · [中](categories/typesetting/typst.zh.md) |
 
 ### pdf-tools
 
