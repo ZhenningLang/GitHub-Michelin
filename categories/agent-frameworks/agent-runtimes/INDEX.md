@@ -19,6 +19,7 @@
 | **AutoGen** | A programming framework for agentic AI | C (6/6) | [→](autogen.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A (5/6) | [→](pydantic-ai.md) |
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | A (6/6) | [→](openai-agents-sdk.md) |
+| **eve** | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. | A (6/6) | [→](eve.md) |
 
 
 ## Comparison matrix
@@ -32,6 +33,7 @@
 | [Parlant](parlant.md) | ✅ | B (6/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |
 | [OpenClaw](openclaw.md) | ✅ | B (4/6) | Use it when you want a personal AI assistant that runs on your own devices and answers you across 20+ messaging channels — but it's extremely young with no Lindy track record. |
 | [Hermes Agent](hermes-agent.md) | ✅ | B (5/6) | Use it when you want a self-improving AI agent with a learning loop that creates skills from experience and runs on a $5 VPS — but it's under a year old and the learning-loop stability is unproven. |
+| [eve](eve.md) | ✅ | A (6/6) | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. |
 
 ## What belongs here
 

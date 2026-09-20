@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "eve does", "zh": "eve 做的"},
+  "steps": [
+    {"lane": "you", "en": "Scaffold a project and install its dependencies", "zh": "脚手架出项目并装好依赖", "code": "npx eve@latest init my-agent"},
+    {"lane": "you", "en": "Write the agent as files: instructions, typed tools, a channel", "zh": "把 agent 写成文件：指令、带类型的工具、一个渠道", "code": "agent/instructions.md · agent/tools/get_weather.ts"},
+    {"lane": "you", "en": "Run it and talk to it in the terminal", "zh": "本地跑起来，在终端里跟它对话", "code": "npm run dev"},
+    {"lane": "them", "en": "Compiles those files into an HTTP service with a session runtime", "zh": "把这些文件编译成一个带会话运行时的 HTTP 服务"},
+    {"lane": "you", "en": "Mark which tool calls a person must approve", "zh": "标出哪些工具调用必须有人批准", "code": "approval: always()"},
+    {"lane": "them", "en": "Parks that turn durably while it waits for the answer — days if needed", "zh": "把这一轮持久地停住，等答复——等几天也行"},
+    {"lane": "them", "en": "After a crash or a redeploy, resumes from the last completed step", "zh": "崩溃或重新部署后，从最后一个完成的 step 接着跑"},
+    {"lane": "you", "en": "Ship it as a service", "zh": "把它作为服务发布", "code": "eve build · eve start"}
+  ],
+  "value": {
+    "en": "You write files; you get a backend agent that waits days, survives redeploys, and answers on Slack — queue, state machine, sandbox and webhooks included",
+    "zh": "你只写文件，换来一个能等好几天、能崩能重发、还能在 Slack 应答的后端 agent"
+  },
+  "sources": [
+    "https://github.com/vercel/eve README quick start (npx eve@latest init my-agent, agent/instructions.md, agent/tools/get_weather.ts, npm run dev)",
+    "docs/concepts/execution-model-and-durability.mdx (one durable workflow per session, checkpoint at step boundaries, parked work)",
+    "docs/tools/human-in-the-loop.md (approval: always()/once()/auto() from eve/tools/approval; parks durably until answered)",
+    "docs/guides/deployment/self-hosting.md (eve build, eve start, .output/)"
+  ]
+}

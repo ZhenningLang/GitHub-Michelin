@@ -19,6 +19,7 @@
 | **AutoGen** | A programming framework for agentic AI | C（6/6） | [→](autogen.zh.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A（5/6） | [→](pydantic-ai.zh.md) |
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | A（6/6） | [→](openai-agents-sdk.zh.md) |
+| **eve** | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 | A（6/6） | [→](eve.zh.md) |
 
 
 ## 对比矩阵
@@ -32,6 +33,7 @@
 | [Parlant](parlant.zh.md) | ✅ | B（6/6） | 当你要构建一个必须靠行为准则严格守规的对客 agent 时用它——简单或自由式 agent 用它过重。 |
 | [OpenClaw](openclaw.zh.md) | ✅ | B（4/6） | 当你想要一款在自有设备上运行、跨 20 余条消息渠道应答你的个人 AI 助手时用它——但它极其年轻，毫无 Lindy 记录。 |
 | [Hermes Agent](hermes-agent.zh.md) | ✅ | B（5/6） | 当你想要一个带学习循环、能从经验中创建技能、可在 5 美元 VPS 上运行的自我改进 AI 智能体时用它——但它不足一岁，学习循环的稳定性未经检验。 |
+| [eve](eve.zh.md) | ✅ | A（6/6） | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 |
 
 ## 什么该放这里
 
