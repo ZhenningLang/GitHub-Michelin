@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Knative Serving does",
+    "zh": "Knative Serving 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the Serving CRDs and the core controllers into the cluster",
+      "zh": "把 Serving 的 CRD 与核心控制器装进集群",
+      "code": "serving-crds.yaml · serving-core.yaml"
+    },
+    {
+      "lane": "you",
+      "en": "Add a networking layer and a default domain",
+      "zh": "加一层网络与默认域名",
+      "code": "Kourier"
+    },
+    {
+      "lane": "you",
+      "en": "Declare one Knative Service instead of a Deployment plus Ingress",
+      "zh": "只声明一个 Knative Service 即可"
+    },
+    {
+      "lane": "them",
+      "en": "Expands it into a Configuration, immutable Revisions and a Route",
+      "zh": "派生 Configuration、Revision 与 Route"
+    },
+    {
+      "lane": "them",
+      "en": "Scales replicas to zero when idle and activates them on request",
+      "zh": "空闲时把副本缩到零，请求进来再激活"
+    },
+    {
+      "lane": "them",
+      "en": "Shifts traffic between revisions for gradual rollouts",
+      "zh": "在 revision 之间切流量做灰度发布"
+    }
+  ],
+  "value": {
+    "en": "HTTP services scale to zero and back without you running an autoscaler or adopting a FaaS platform",
+    "zh": "HTTP 服务自动缩到零再拉起，你不用自己跑扩缩器，也不用搭一套 FaaS 平台"
+  },
+  "sources": [
+    "https://github.com/knative/serving#readme (middleware primitives; autoscaling to zero; routing; point-in-time snapshots of code and config)",
+    "https://github.com/knative/docs/blob/main/docs/versioned/install/yaml-install/serving/install-serving-with-yaml.md (serving-crds.yaml then serving-core.yaml; Kourier networking layer)",
+    "https://www.cncf.io/projects/knative/ (CNCF Incubating 2022-03-02; Graduated 2025-09-11)"
+  ]
+}

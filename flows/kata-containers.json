@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Kata Containers does", "zh": "Kata Containers 做的"},
+  "steps": [
+    {"lane": "you", "en": "Check the host can actually run Kata sandboxes", "zh": "先确认宿主机能跑 Kata 沙箱", "code": "kata-runtime check"},
+    {"lane": "you", "en": "Put the runtime artifacts on every node that should host Kata pods", "zh": "把运行时铺到每个要跑 Kata pod 的节点", "code": "kata-deploy"},
+    {"lane": "you", "en": "Select the runtime per pod in the manifest", "zh": "在 manifest 里按 pod 选中这个运行时", "code": "runtimeClassName: kata-qemu-runtime-rs"},
+    {"lane": "them", "en": "Boots a lightweight VM with its own guest kernel for that pod", "zh": "为该 pod 启动一台带独立客户机内核的轻量虚拟机"},
+    {"lane": "them", "en": "Runs the workload's containers inside the VM via an in-guest agent", "zh": "在虚拟机里由 guest agent 拉起工作负载的容器"},
+    {"lane": "them", "en": "Drives the VM through the selected hypervisor", "zh": "用选定的 hypervisor 驱动这台虚拟机"}
+  ],
+  "value": {"en": "Hypervisor-grade isolation while you keep pods, images and CRI — you never build a container runtime", "zh": "拿到 hypervisor 级隔离，同时保留 pod、镜像与 CRI——不用自己造容器运行时"},
+  "sources": [
+    "https://github.com/kata-containers/kata-containers/blob/main/docs/quick-start-guide.md (kata-runtime check; kata-deploy Helm install; runtimeClassName: kata-qemu-runtime-rs; kata-quickstart.yaml)",
+    "https://github.com/kata-containers/kata-containers#introduction (lightweight VMs that feel like containers; runtime + agent + hypervisors)"
+  ]
+}

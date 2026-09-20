@@ -9,6 +9,8 @@
 | 分类 | 何时进来 | 路由 |
 |---|---|---|
 | **agent-tooling** | 为 AI 编码 agent 选「任务/工作追踪、持久记忆、agent 状态」基建。 | [→](categories/agent-tooling/INDEX.zh.md) |
+| **sandboxing** | 隔离不可信代码与 agent 生成代码——虚拟机／内核级隔离运行时，以及建在其上的沙箱平台。 | [→](categories/sandboxing/INDEX.zh.md) |
+| **serverless** | 自己运维的 Kubernetes 原生 serverless／缩容到零服务层。 | [→](categories/serverless/INDEX.zh.md) |
 | **document-management** | 选「文档归档/OCR/打标签/全文检索」系统。 | [→](categories/document-management/INDEX.zh.md) |
 | **on-device-ml** | 选「在端侧/边缘设备（手机、笔记本、IoT）本地跑模型」的运行时。 | [→](categories/on-device-ml/INDEX.zh.md) |
 | **function-calling** | 选「把自然语言请求变成受 schema 约束的工具/函数调用」的模型与服务栈。 | [→](categories/function-calling/INDEX.zh.md) |

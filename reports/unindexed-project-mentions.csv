@@ -95,6 +95,7 @@ AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 AVQT / proprietary metrics,categories/media-processing/quality-metrics/vmaf.md,,no
 AWS Elemental MediaConvert,categories/media-processing/video-audio/gstreamer.md,,no
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/ffmpeg.md,,no
+"AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
@@ -217,7 +218,7 @@ Datadog / Grafana Cloud,categories/observability/grafana.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
 DaVinci Resolve,categories/media-processing/video-audio/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
-Daytona,categories/agent-tooling/opensandbox.md,,no
+Daytona,categories/sandboxing/opensandbox.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
 ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
 DEAP,categories/ml-research/pymoo.md,,no
@@ -252,7 +253,6 @@ draw.io (diagrams.net),categories/diagramming/excalidraw.md,,no
 draw.io / diagrams.net,categories/agent-skills/design/archify.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
-E2B (firecracker sandboxes),categories/agent-tooling/opensandbox.md,,no
 E2B / Daytona (dev sandboxes),categories/web-automation/agent-browser-tools/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 EasyOCR,categories/ocr/tesseract.md,,no
@@ -345,8 +345,6 @@ GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.m
 "gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
-gVisor / Kata / Firecracker (alone),categories/agent-tooling/opensandbox.md,,no
-gVisor / Kata Containers / Firecracker (alone),categories/agent-tooling/substrate.md,,no
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/autogen.md,,no
@@ -373,7 +371,6 @@ HF TRL,categories/llm-training/art.md,,no
 HF TRL / verl,categories/llm-training/INDEX.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
-"Hosted sandbox APIs (E2B, Modal)",categories/agent-tooling/substrate.md,,no
 httpx,categories/python-tooling/grequests.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
@@ -398,12 +395,11 @@ JetBrains stock keymap,categories/dev-utilities/editors-and-runtimes/ideavim.md,
 jMetal (Java/Py),categories/ml-research/pymoo.md,,no
 jp2a,categories/terminal-ui/asciify.md,,no
 JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
-Jupyter Kernel Gateway / nsjail,categories/agent-tooling/opensandbox.md,,no
+Jupyter Kernel Gateway / nsjail,categories/sandboxing/opensandbox.md,,no
 Jupyter polyglot kernels (e.g. for Rust/JS),categories/python-tooling/gophernotes.md,,no
 kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
-kagent (CNCF Sandbox),categories/agent-tooling/substrate.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
 Kdenlive,categories/media-processing/video-audio/mlt.md,,no
 KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -416,6 +412,7 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/kong.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
+Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
 LangSmith,categories/llm-eval/promptfoo.md,,no
@@ -450,6 +447,7 @@ lucidrains' implementations,categories/ml-research/pytorch-gan.md,,no
 Luigi,categories/workflow-orchestration/airflow.md,,no
 macOS Spotlight (built-in),categories/dev-utilities/data-tools/flashlight.md,,no
 Make (Integromat),categories/workflow-orchestration/n8n.md,,no
+"Managed container apps platforms (Cloud Run, Azure Container Apps, AWS App Runner)",categories/serverless/knative-serving.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
 Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt.md,,no
@@ -513,6 +511,7 @@ Neo4j (direct),categories/ml-research/agriculture-knowledge-graph.md,,no
 Neo4j / LightRAG / Weaviate,categories/rag-retrieval/INDEX.md,,no
 Neovim,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Neptune (AWS),categories/rag-retrieval/falkordb.md,,no
+Nested Kubernetes clusters / VM-per-tenant infrastructure,categories/sandboxing/kata-containers.md,,no
 Netflix VMAF cloud/SaaS scorers,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 Nethereum.Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 Neutralinojs,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
@@ -592,11 +591,12 @@ Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
 pip,categories/python-tooling/uv.md,,no
 Plain `MEMORY.md` / `TODO.md`,categories/agent-tooling/ccpm.md,,no
+Plain `runc` / containerd / Docker defaults,categories/sandboxing/gvisor.md,,no
 Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/planning-with-files.md,,no
 Plain ADB + a script,categories/im-automation/douyin-bot.md,,no
-Plain Docker / containerd,categories/agent-tooling/opensandbox.md,,no
+Plain container runtimes (`runc` → Kubernetes default),categories/sandboxing/kata-containers.md,,no
+Plain Docker / containerd,categories/sandboxing/opensandbox.md,,no
 Plain Git + agent's own session logs,categories/agent-tooling/entire-cli.md,,no
-Plain Kubernetes Pods + HPA / Knative,categories/agent-tooling/substrate.md,,no
 plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
 Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/beads.md,,no
 Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
@@ -647,6 +647,7 @@ python-social-auth,categories/auth/authomatic.md,,no
 PyTorch FSDP,categories/llm-training/colossalai.md,,no
 pywinauto,categories/desktop-automation/pyautogui.md,,no
 Qdrant,categories/rag-retrieval/faiss.md,,no
+QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
 Quartz,categories/task-queue/xxl-job.md,,no
 Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,,no
@@ -704,6 +705,7 @@ ScrapydWeb,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 ScrapydWeb / Gerapy,categories/web-scraping/crawling-tools/scrapyd.md,,no
 scylla / paid residential proxies,categories/proxy-pool/INDEX.md,,no
 Seafile,categories/document-management/copyparty.md,,no
+seccomp / AppArmor / SELinux hardening,categories/sandboxing/gvisor.md,,no
 Security MCP servers (e.g. tool-wrapping SIEM/scanner MCPs),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 selectolax,categories/web-scraping/crawling-tools/requests-html.md,,no
 SeleniumBase,categories/web-automation/browser-driver-frameworks/nodriver.md,,no

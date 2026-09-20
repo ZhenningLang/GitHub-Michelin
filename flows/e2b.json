@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "E2B does", "zh": "E2B 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK in the language you are building the agent in", "zh": "按 agent 的语言装 SDK", "code": "pip install e2b · npm i e2b"},
+    {"lane": "you", "en": "Authenticate the SDK with your API key", "zh": "用 API key 让 SDK 通过认证", "code": "E2B_API_KEY=e2b_***"},
+    {"lane": "you", "en": "Create a sandbox and run a command in it", "zh": "创建沙箱并在里面跑一条命令", "code": "Sandbox.create() · sandbox.commands.run(...)"},
+    {"lane": "them", "en": "Allocates an isolated sandbox and returns stdout like a remote shell", "zh": "分配隔离沙箱，像远程 shell 一样回传 stdout"},
+    {"lane": "you", "en": "Add the interpreter or desktop SDK when the agent needs code or GUI control", "zh": "需要跑代码或控桌面时加装对应 SDK", "code": "pip install e2b-code-interpreter · e2b-desktop"},
+    {"lane": "them", "en": "Owns the sandbox fleet, isolation and lifecycle — or runs in your own cloud via Terraform", "zh": "负责沙箱机群、隔离与生命周期，或用 Terraform 跑在你自己的云里"}
+  ],
+  "value": {"en": "Isolated, disposable sandboxes for AI-generated code in minutes — hosted by default, self-hosted on AWS/GCP when it must live in your own account", "zh": "几分钟内拿到隔离、用完即弃的沙箱；默认托管，必须落在自己账号时用 Terraform 自托管到 AWS／GCP"},
+  "sources": [
+    "https://github.com/e2b-dev/E2B#run-your-first-sandbox (pip install e2b / npm i e2b; E2B_API_KEY; Sandbox.create(); sandbox.commands.run)",
+    "https://github.com/e2b-dev/E2B#4-code-execution-with-code-interpreter (pip install e2b-code-interpreter, runCode)",
+    "https://github.com/e2b-dev/E2B#self-hosting (Terraform self-host on AWS/GCP; Azure and general Linux unchecked)"
+  ]
+}

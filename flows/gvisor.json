@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "gVisor does", "zh": "gVisor 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install runsc on the node and register it as a container runtime", "zh": "在节点上装 runsc 并注册成容器运行时", "code": "sudo runsc install"},
+    {"lane": "you", "en": "Restart the container manager so it picks up the new runtime", "zh": "重启容器管理器，让它识别新运行时"},
+    {"lane": "you", "en": "Run the workload with the runsc runtime selected", "zh": "选用 runsc 运行时来跑工作负载", "code": "docker run --runtime=runsc --rm hello-world"},
+    {"lane": "them", "en": "Starts a sandbox and intercepts the workload's system calls", "zh": "启动 sandbox，拦截工作负载的系统调用"},
+    {"lane": "them", "en": "Answers them from the Sentry userspace kernel instead of the host kernel", "zh": "由用户态 Sentry 内核应答，而不是宿主内核"},
+    {"lane": "them", "en": "Keeps most of the host kernel behind a filtered surface", "zh": "把宿主内核暴露面挡在自己的过滤之后"}
+  ],
+  "value": {"en": "Untrusted containers on a shared host lose their direct path to the host kernel — without running a VM", "zh": "共享宿主机上的不可信容器失去直通宿主内核的路径——而且不用跑虚拟机"},
+  "sources": [
+    "https://github.com/google/gvisor#what-is-gvisor (application kernel, runsc OCI runtime, not a syscall filter nor a VM)",
+    "https://github.com/google/gvisor/blob/master/g3doc/user_guide/quick_start/docker.md (sudo runsc install; docker run --runtime=runsc --rm hello-world)"
+  ]
+}

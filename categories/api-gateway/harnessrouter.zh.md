@@ -83,7 +83,7 @@ health:
 ## 何时不用
 
 - **只需要调一个 harness。** 直接用那家 harness 自己的 SDK 或 CLI；HarnessRouter 会为了到达同一个模型而多出容器、登录门、API key 和一层协议。
-- **必须隔离不可信的多租户 agent 代码。** 改用按会话开沙箱的方案，例如 [OpenSandbox](../agent-tooling/opensandbox.zh.md)，或用 HarnessRouter **Cloud**（serverless 隔离沙箱）；社区版把所有会话放进**同一个**容器、只按操作系统用户隔离，那是权限边界，不是容器边界。
+- **必须隔离不可信的多租户 agent 代码。** 改用按会话开沙箱的方案，例如 [OpenSandbox](../sandboxing/opensandbox.zh.md)，或用 HarnessRouter **Cloud**（serverless 隔离沙箱）；社区版把所有会话放进**同一个**容器、只按操作系统用户隔离，那是权限边界，不是容器边界。
 - **需要能随时迁走的多厂商标准。** 直接用各 provider 的 OpenAI Responses API，或用与厂商无关的代理（LiteLLM）；UHP 由 HarnessRouter 自己维护、自己定版本、自己持有商标，“符合 UHP”是单一厂商的契约，不是独立标准。
 - **需要高可用或横向扩容。** 用托管 runner 或 K8s 原生执行平台；社区版就是一个容器，turn 并发默认等于机器核数，文档也承认它无法按需扩展沙箱。
 - **不愿让 agent CLI 代表你在宿主机上跑 shell、git 和网络。** 选沙箱化平台；社区版默认 `HR_SANDBOX_TRUST=owner`，即把 agent 当作可信方并给它真实的 POSIX 工作区。按会话分用户挡得住它读别的会话，挡不住它以你的身份行事。
