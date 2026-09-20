@@ -110,7 +110,7 @@ health:
 - **你要的是从主题直接出成片，而不是可编辑工程。** 用 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md) 或 [Hypit](../../video-production/hypit.zh.md)；这里的交付物就是草稿本身，而单条精致视频在剪映里手剪更省。
 - **你让剪映自动更新，或者要同时支持多个版本。** 导出路径依赖逐版本固定的函数偏移、结构体布局和引擎日志字符串；没被审查过的版本会被拒绝而不是勉强跑。请优先选不依赖闭源 ABI 的工具。
 - **你需要 Linux 服务器上无人值守的批量生产。** 它没有服务端组件，也没有无头应用——这是桌面 macOS 集成，登记草稿前还要求你完全退出剪映。参见 [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md)。
-- **你只需要写出草稿文件，并且装不了那个应用。** pyJianYingDraft 可以用 Python 写出剪映／CapCut 的草稿结构，再由你自己打开编辑器（本索引中 `未收录`，见横向对比）。
+- **你只需要写出草稿文件，并且装不了那个应用。** pyJianYingDraft 可以用 Python 写出剪映／CapCut 的草稿结构，再由你自己打开编辑器——见 [pyJianYingDraft](pyjianyingdraft.zh.md)。
 - **你需要在线模板、云工程、账号权益或付费特效缓存。** 这些按设计就不在范围内；引用了已下线效果的计划会被明确报错，不会静默降级。
 - **你要做复合片段，或对图片／GIF 时间线做严格帧数校验。** 嵌套片段只支持实验性的离线构建与冻结快照导出，图片／GIF 素材还挂着一个偶发少一帧的未解问题——帧数检查会拒绝这种输出，而不是把它交付出去。
 
@@ -121,7 +121,7 @@ health:
 | [Hypit](../../video-production/hypit.zh.md) | ✅ | 当你的事实源头是“把这条爆款视频克隆成一批变体”时选 Hypit；当交付物必须是人在剪映里继续编辑的时间线时选 Jianying Headless，因为 Hypit 的产出是渲染好的视频加它自己的 SVML workflow，不是剪映工程。 | Hypit 跨平台、agent 优先，但用自己的 Chromium／FFmpeg 链路渲染且要付生成费；Jianying Headless 继承剪映的渲染生态，代价是只能绑在某个 macOS 版本上。 |
 | [MoneyPrinterTurbo](../../video-production/moneyprinter-turbo.zh.md) | ✅ | 当你想要主题直出、边际成本近零、且没人会再剪的短片时选 MoneyPrinterTurbo；当必须有真人剪辑师收尾时选 Jianying Headless，因为库存素材幻灯片拼出来的成片没法当作可编辑的剪映时间线交出去。 | MPT 是 MIT、可自托管、对 Linux 友好；Jianying Headless 非商用、绑 macOS，但交出的是可编辑工程而不只是成片。 |
 | [Concat](../video-editing/concat.zh.md) | ✅ | 当编辑器本身必须开源、离线、跨平台时选 Concat；当留在剪映的特效与字体生态里比许可自由更重要时选 Jianying Headless，因为 Concat 是替换剪映，而这个项目是自动化剪映。 | Concat 是 AGPL，自带 FFmpeg／Whisper 链路但特效远少；Jianying Headless 能拿到剪映级别的输出，代价是驱动一套闭源 ABI。 |
-| pyJianYingDraft | 未收录 | 当你只需要用 Python **写出**剪映／CapCut 草稿文件、编辑器自己开时选 pyJianYingDraft；当你还要求应用自己的引擎来渲染，或者你的剪映版本把草稿加密了、纯写文件这条路覆盖不了时，选 Jianying Headless。 | pyJianYingDraft 是 Apache-2.0 且不依赖应用；Jianying Headless 增加了原生导出与哈希钉死的兼容性，代价是应用、macOS 26 和非商用许可。 |
+| [pyJianYingDraft](pyjianyingdraft.zh.md) | ✅ | 当你只需要用 Python **写出**剪映／CapCut 草稿文件、编辑器自己开时选 pyJianYingDraft；当你还要求应用自己的引擎来渲染，或者你的剪映版本把草稿加密了、纯写文件这条路覆盖不了时，选 Jianying Headless。 | pyJianYingDraft 是 Apache-2.0 且不依赖应用；Jianying Headless 增加了原生导出与哈希钉死的兼容性，代价是应用、macOS 26 和非商用许可。 |
 | 剪映专业版／CapCut（闭源应用） | 未收录 | 如果人本来就会手动点时间线，那就直接用剪映；只有当同一套结构需要被反复生成或由 agent 生成时，才选 Jianying Headless，因为该应用没有官方支持的自动化接口。 | 应用免费、打磨成熟、由字节维护；这个桥是非官方、单一维护者，且会因未审查的更新而失效。 |
 
 ## 技术栈

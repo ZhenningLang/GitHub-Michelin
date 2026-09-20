@@ -8,13 +8,14 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Jianying Headless** | 当 macOS 上的剪映工作流需要 agent 生成**可编辑**草稿——真实多轨工程，并可用应用自己的引擎原生导出 MP4——时用它；代价是仅 5 天历史、单一维护者、绑定某一个应用版本、且仅限非商用。 | D（4/6） | [→](jianying-headless.zh.md) |
+| **pyJianYingDraft** | 当 Python 管线需要产出可编辑剪映草稿时用它——跨平台、Apache-2.0、构建机上不需要装编辑器；代价是新版剪映草稿已加密、它不替你渲染、自带导出只在 Windows 加剪映 6 及更早版本上可用。 | C（5/6） | [→](pyjianyingdraft.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.zh.md) | ✅ | D（4/6） | agent 写出可编辑剪映草稿，并用应用自己的引擎原生导出；代价是 macOS 26 加某个固定剪映版本、逐机器编译的桥接，以及非商用许可。 |
-| pyJianYingDraft | 未收录 | — | 纯 Python 写草稿、不依赖应用；但它不能渲染，也覆盖不了加密的草稿格式。 |
+| [pyJianYingDraft](pyjianyingdraft.zh.md) | ✅ | C（5/6） | 在任何操作系统上用 Python 写剪映草稿，Apache-2.0；代价是碰不了加密草稿、不负责渲染，自带导出只支持 Windows 加剪映 6 及更早版本。 |
 | 剪映专业版／CapCut（闭源应用） | 未收录 | — | 厂商打磨到位的手工剪辑；没有官方支持的自动化接口。 |
 
 ## 什么该放这里

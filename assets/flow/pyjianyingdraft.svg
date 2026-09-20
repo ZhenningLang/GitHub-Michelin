@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="884" viewBox="0 0 880 884" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="884" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="726" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="726" rx="10"/>
+<rect class="pillT" x="474" y="40" width="211.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">pyJianYingDraft does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="edge" d="M62,288 L62,312" marker-end="url(#a)"/>
+<path class="hand" d="M408,382.0 C439.0,382.0 439.0,406 470,406" marker-end="url(#a)"/>
+<path class="hand" d="M472,429.0 C441.0,429.0 441.0,500 410,500" marker-end="url(#a)"/>
+<path class="edge" d="M62,548 L62,572" marker-end="url(#a)"/>
+<path class="hand" d="M408,642.0 C439.0,642.0 439.0,666 470,666" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the package into your Python</text>
+<text class="t" x="82" y="123">pipeline</text>
+<text class="c" x="82" y="147">pip install pyJianYingDraft</text>
+<rect class="card" x="40" y="193" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Point it at the 剪映 draft folder on</text>
+<text class="t" x="82" y="244">the machine that will open the project</text>
+<text class="c" x="82" y="268">draft.DraftFolder(r&quot;&lt;草稿文件夹&gt;&quot;)</text>
+<rect class="card" x="40" y="314" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="314" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="338" r="10"/>
+<text class="num" x="62" y="342" text-anchor="middle">3</text>
+<text class="t" x="82" y="343">Create the draft, describe tracks,</text>
+<text class="t" x="82" y="365">segments, text, effects and</text>
+<text class="t" x="82" y="387">transitions, then save</text>
+<text class="c" x="82" y="411">draft_folder.create_draft(&quot;demo&quot;, 1920,</text>
+<text class="c" x="82" y="430">1080) · script.save()</text>
+<rect class="cardT" x="472" y="382" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="382" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="406" r="10"/>
+<text class="num" x="494" y="410" text-anchor="middle">4</text>
+<text class="t" x="514" y="411">Fills its bundled templates and writes</text>
+<text class="t" x="514" y="433">draft_content.json and</text>
+<text class="t" x="514" y="455">draft_meta_info.json into the folder</text>
+<rect class="card" x="40" y="476" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="476" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="500" r="10"/>
+<text class="num" x="62" y="504" text-anchor="middle">5</text>
+<text class="t" x="82" y="505">Open 剪映 and pick the draft (refresh</text>
+<text class="t" x="82" y="527">the list if it has not appeared)</text>
+<rect class="card" x="40" y="574" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="574" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="598" r="10"/>
+<text class="num" x="62" y="602" text-anchor="middle">6</text>
+<text class="t" x="82" y="603">On Windows with 剪映 6 or older, ask it</text>
+<text class="t" x="82" y="625">to export through the editor&#x27;s own</text>
+<text class="t" x="82" y="647">controls</text>
+<text class="c" x="82" y="671">ctrl.export_draft(&quot;要导出的草稿名称&quot;, &quot;&lt;导出路</text>
+<text class="c" x="82" y="690">径&gt;&quot;)</text>
+<rect class="cardT" x="472" y="642" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="642" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="666" r="10"/>
+<text class="num" x="494" y="670" text-anchor="middle">7</text>
+<text class="t" x="514" y="671">Moves the cursor, clicks the editor&#x27;s</text>
+<text class="t" x="514" y="693">export UI, then renames the file into</text>
+<text class="t" x="514" y="715">the target path</text>
+<rect class="val" x="28" y="768" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="792">VALUE</text>
+<text class="valT" x="48" y="816">An editable 剪映 draft written from Python — plus an exported MP4 on the legacy Windows setup</text>
+<text class="valT" x="48" y="838">— with no human building the timeline</text>
+</svg>

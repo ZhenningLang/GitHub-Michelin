@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "pyJianYingDraft does",
+    "zh": "pyJianYingDraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package into your Python pipeline",
+      "zh": "把包装进你的 Python 管线",
+      "code": "pip install pyJianYingDraft"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at the 剪映 draft folder on the machine that will open the project",
+      "zh": "把它指向将来打开这个工程的机器上的剪映草稿目录",
+      "code": "draft.DraftFolder(r\"<草稿文件夹>\")"
+    },
+    {
+      "lane": "you",
+      "en": "Create the draft, describe tracks, segments, text, effects and transitions, then save",
+      "zh": "创建草稿，用代码描述轨道、片段、文字、特效与转场，然后保存",
+      "code": "draft_folder.create_draft(\"demo\", 1920, 1080) · script.save()"
+    },
+    {
+      "lane": "them",
+      "en": "Fills its bundled templates and writes draft_content.json and draft_meta_info.json into the folder",
+      "zh": "用内置模板填好字段，写出这个草稿的 JSON 文件"
+    },
+    {
+      "lane": "you",
+      "en": "Open 剪映 and pick the draft (refresh the list if it has not appeared)",
+      "zh": "打开剪映，找到那个草稿（没出现就先刷新列表）"
+    },
+    {
+      "lane": "you",
+      "en": "On Windows with 剪映 6 or older, ask it to export through the editor's own controls",
+      "zh": "在装有剪映 6 及更早版本的 Windows 上，让它通过编辑器自己的控件导出",
+      "code": "ctrl.export_draft(\"要导出的草稿名称\", \"<导出路径>\")"
+    },
+    {
+      "lane": "them",
+      "en": "Moves the cursor, clicks the editor's export UI, then renames the file into the target path",
+      "zh": "移动光标点击编辑器的导出界面，再把渲染好的文件改名到目标路径"
+    }
+  ],
+  "value": {
+    "en": "An editable 剪映 draft written from Python — plus an exported MP4 on the legacy Windows setup — with no human building the timeline",
+    "zh": "用 Python 写出一份可编辑的剪映草稿，在旧的 Windows 组合下还能顺带导出 MP4，不需要人搭时间线"
+  },
+  "sources": [
+    "https://github.com/GuanYixuan/pyJianYingDraft README 安装 (pip install pyJianYingDraft, Python 3.8/3.11 推荐, 跨平台兼容性)",
+    "README 快速上手 / 用法文档 (draft.DraftFolder(\"<剪映草稿文件夹>\"), script.save(), 草稿列表需刷新)",
+    "README 批量导出草稿 (JianyingController, ctrl.export_draft(\"要导出的草稿名称\", \"<导出路径>\"), 仅 Windows + 剪映6及以下, uiautomation, 导出结束后重命名)",
+    "demo.py (draft.DraftFolder, draft_folder.create_draft(\"demo\", 1920, 1080, allow_replace=True)) 与 requirements.txt (pymediainfo, imageio, uiautomation>=2)"
+  ]
+}
