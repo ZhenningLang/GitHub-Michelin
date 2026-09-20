@@ -192,7 +192,10 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   annotation, a config key or path, an API call, a package coordinate. It is **not** an internal
   symbol — a function name, class or module path the reader never types is mechanism-paragraph
   material, not card material (`setProfileMapping` in someone's `ui/backend.py` tells a user nothing).
-  Two related tokens may share one value (`magnitude hardware · catalog recommendations`).
+  Two or three tokens of the **same kind** may share one value — alternatives, or a pair that is
+  typed together — separated by a space-padded middot: `brew install typst · cargo install --locked typst-cli`,
+  `TeX Live · MacTeX · MiKTeX`. Three is the ceiling (the card wraps, and a fourth means the step is
+  a list, not a step). Do not mix kinds in one value, and do not use `,`, `/` or `|` as the separator.
   **Every `code` value must be traceable to `sources`** — if you cannot find it in the README, docs or
   source, write the step generically ("call its query API") instead of guessing. An invented command
   in a diagram looks authoritative; that is worse than no command.
