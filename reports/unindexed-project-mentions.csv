@@ -637,6 +637,7 @@ pyfiglet,categories/terminal-ui/art.md,,no
 pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
 pyHanko,categories/pdf-tools/sapp.md,,no
+pyJianYingDraft,categories/media-processing/nle-automation/INDEX.md,,no
 Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
 PyPy,categories/python-tooling/cython.md,,no
@@ -828,3 +829,4 @@ ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
 zstd,categories/dev-utilities/data-tools/openzl.md,,no
 Zulip Cloud,categories/team-chat/zulip.md,,no
 Zyte Scrapy Cloud,categories/web-scraping/crawling-tools/scrapyd.md,,no
+剪映专业版 / CapCut (closed app),categories/media-processing/nle-automation/INDEX.md,,no

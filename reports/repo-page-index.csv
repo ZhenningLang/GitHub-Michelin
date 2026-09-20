@@ -54,6 +54,7 @@ https://github.com/Kong/kong,kong,api-gateway,categories/api-gateway/kong.md
 https://github.com/LearningCircuit/local-deep-research,local-deep-research,deep-research,categories/deep-research/local-deep-research.md
 https://github.com/Leonxlnx/taste-skill,taste-skill,design,categories/agent-skills/design/taste-skill.md
 https://github.com/LianjiaTech/bella-domify,bella-domify,document-parsing,categories/document-parsing/bella-domify.md
+https://github.com/MakazhanAlpamys/Soup,soup,llm-training,categories/llm-training/soup.md
 https://github.com/MeetKai/functionary,functionary,function-calling,categories/function-calling/functionary.md
 https://github.com/MemoriLabs/Memori,memori,agent-memory,categories/agent-memory/memori.md
 https://github.com/MgArcher/Text_select_captcha,text-select-captcha,captcha,categories/captcha/text-select-captcha.md
@@ -342,6 +343,7 @@ https://github.com/markedjs/marked,marked,markdown-tools,categories/markdown-too
 https://github.com/mattermost/mattermost,mattermost,team-chat,categories/team-chat/mattermost.md
 https://github.com/mattpocock/skills,mattpocock-skills,engineering,categories/agent-skills/engineering/mattpocock-skills.md
 https://github.com/mayaramyadav/laravel-ocr,laravel-ocr,ocr,categories/ocr/laravel-ocr.md
+https://github.com/mcncarl/jianying-headless,jianying-headless,nle-automation,categories/media-processing/nle-automation/jianying-headless.md
 https://github.com/mdx-js/mdx,mdx,markdown-tools,categories/markdown-tools/mdx.md
 https://github.com/megadose/holehe,holehe,osint,categories/osint/holehe.md
 https://github.com/mem0ai/mem0,mem0,agent-memory,categories/agent-memory/mem0.md

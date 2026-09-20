@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="934" viewBox="0 0 880 934" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="934" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="776" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="776" rx="10"/>
+<rect class="pillT" x="474" y="40" width="230.3" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Jianying Headless does</text>
+<path class="edge" d="M62,208 L62,232" marker-end="url(#a)"/>
+<path class="edge" d="M62,329 L62,353" marker-end="url(#a)"/>
+<path class="hand" d="M408,412.0 C439.0,412.0 439.0,436 470,436" marker-end="url(#a)"/>
+<path class="hand" d="M472,459.0 C441.0,459.0 441.0,519 410,519" marker-end="url(#a)"/>
+<path class="hand" d="M408,552.0 C439.0,552.0 439.0,576 470,576" marker-end="url(#a)"/>
+<path class="hand" d="M472,588.0 C441.0,588.0 441.0,659 410,659" marker-end="url(#a)"/>
+<path class="hand" d="M408,692.0 C439.0,692.0 439.0,716 470,716" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Build the codec bridge against the</text>
+<text class="t" x="82" y="123">copy of 剪映 already on your Mac, then</text>
+<text class="t" x="82" y="145">check the app version and library hash</text>
+<text class="c" x="82" y="169">python3 tools/build_native_codec.py ·</text>
+<text class="c" x="82" y="188">headless_draft.py doctor</text>
+<rect class="card" x="40" y="234" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="234" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="258" r="10"/>
+<text class="num" x="62" y="262" text-anchor="middle">2</text>
+<text class="t" x="82" y="263">Describe the edit as one JSON plan:</text>
+<text class="t" x="82" y="285">tracks, segments, timings</text>
+<text class="c" x="82" y="309">examples/basic.plan.json</text>
+<rect class="card" x="40" y="355" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="355" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="379" r="10"/>
+<text class="num" x="62" y="383" text-anchor="middle">3</text>
+<text class="t" x="82" y="384">Build the draft into an isolated work</text>
+<text class="t" x="82" y="406">directory</text>
+<text class="c" x="82" y="430">headless_draft.py build --plan plan.json</text>
+<text class="c" x="82" y="449">--out work/new-build</text>
+<rect class="cardT" x="472" y="412" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="412" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="436" r="10"/>
+<text class="num" x="494" y="440" text-anchor="middle">4</text>
+<text class="t" x="514" y="441">Encrypts and writes 剪映&#x27;s native draft</text>
+<text class="t" x="514" y="463">files, copies the media, and verifies</text>
+<text class="t" x="514" y="485">every file against the plan</text>
+<rect class="card" x="40" y="495" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="495" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="519" r="10"/>
+<text class="num" x="62" y="523" text-anchor="middle">5</text>
+<text class="t" x="82" y="524">Quit 剪映 completely, then register the</text>
+<text class="t" x="82" y="546">draft on the local home list</text>
+<text class="c" x="82" y="570">headless_draft.py publish --build</text>
+<text class="c" x="82" y="589">work/new-build --audit work/audit</text>
+<rect class="cardT" x="472" y="552" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="552" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="576" r="10"/>
+<text class="num" x="494" y="580" text-anchor="middle">6</text>
+<text class="t" x="514" y="581">The draft opens in 剪映 as a normal,</text>
+<text class="t" x="514" y="603">editable multi-track project</text>
+<rect class="card" x="40" y="635" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="635" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="659" r="10"/>
+<text class="num" x="62" y="663" text-anchor="middle">7</text>
+<text class="t" x="82" y="664">Ask for a finished MP4 when you need</text>
+<text class="t" x="82" y="686">one</text>
+<text class="c" x="82" y="710">headless_draft.py export --build</text>
+<text class="c" x="82" y="729">work/new-build --out work/new-export</text>
+<rect class="cardT" x="472" y="692" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="692" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="716" r="10"/>
+<text class="num" x="494" y="720" text-anchor="middle">8</text>
+<text class="t" x="514" y="721">The app&#x27;s own engine renders H.264/AAC</text>
+<text class="t" x="514" y="743">in a sandbox that denies network</text>
+<text class="t" x="514" y="765">access</text>
+<rect class="val" x="28" y="818" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="842">VALUE</text>
+<text class="valT" x="48" y="866">An editable multi-track 剪映 project — plus a native MP4 when asked — from one JSON plan:</text>
+<text class="valT" x="48" y="888">timeline assembly is automated, the last mile stays hand-editable</text>
+</svg>

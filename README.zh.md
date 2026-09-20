@@ -133,6 +133,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **torchtune** | PyTorch native post-training library | BSD-3-Clause | B（5/6） | [EN](categories/llm-training/torchtune.md) · [中](categories/llm-training/torchtune.zh.md) |
 | **Axolotl** | Go ahead and axolotl questions | Apache-2.0 | B（6/6） | [EN](categories/llm-training/axolotl.md) · [中](categories/llm-training/axolotl.zh.md) |
 | **verl** | verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework | Apache-2.0 | B（6/6） | [EN](categories/llm-training/verl.md) · [中](categories/llm-training/verl.zh.md) |
+| **Soup** | 当一份 YAML 要把微调从 JSONL 一路带到可服务、可导出的模型，而底座装不进你的显卡时用它——当配置契约必须跨版本稳定、或模型本就装得下且要追求速度时不用。 | Apache-2.0 | B（6/6） | [中](categories/llm-training/soup.zh.md) · [EN](categories/llm-training/soup.md) |
 | **MiniMind** | 用约 3.2k 行手写 PyTorch 把 64M LLM 端到端训一遍（分词器、预训练、SFT、LoRA、MoE、DPO/GRPO、Tool Call 与 Agentic RL），一下午能读完；它是课程，产出的模型是教学产物而非可用模型。 | Apache-2.0 | A（5/6） | [中](categories/llm-training/study-and-experiments/minimind.zh.md) · [EN](categories/llm-training/study-and-experiments/minimind.md) |
 | **nanoGPT** | 最经典的极简 GPT 训练参考——约 670 行可读代码、支持 MPS/CPU、checkpoint 与 OpenAI 的 GPT-2 互通；但它只到预训练，没有 SFT 与 RL，且 README 自己已宣布被 nanochat 取代。 | MIT | C（4/6） | [中](categories/llm-training/study-and-experiments/nanogpt.zh.md) · [EN](categories/llm-training/study-and-experiments/nanogpt.md) |
 
@@ -588,6 +589,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Screenshot Service** | 仅适合作为隔离的内部 HTML 转图片 worker——API 鉴权已禁用，Chromium 还关闭了 sandbox 与 Web 安全。 | NOASSERTION | D（4/6） | [中](categories/media-processing/image-processing/screenshot-service.zh.md) · [EN](categories/media-processing/image-processing/screenshot-service.md) |
 | **Concat** | 当你需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 视频编辑器时用它——但它是仅有约 25 天历史的 0.2.x beta、只有一位维护者，且专业能力（遮罩、跟踪、关键帧曲线）仍在路线图上。 | AGPL-3.0-or-later | C（5/6） | [中](categories/media-processing/video-editing/concat.zh.md) · [EN](categories/media-processing/video-editing/concat.md) |
 | **OpenCut** | 仅当你打算跟进或基于浏览器／WASM 重写架构开发时用它——其仓库正在重写、不接受外部贡献、不产出可用版本，能用的 classic 版本在已归档仓库里。 | MIT | B（5/6） | [中](categories/media-processing/video-editing/opencut.zh.md) · [EN](categories/media-processing/video-editing/opencut.md) |
+| **Jianying Headless** | 当 macOS 上的剪映工作流需要 agent 生成**可编辑**草稿——真实多轨工程，并可用应用自己的引擎原生导出 MP4——时用它；代价是仅 5 天历史、单一维护者、绑定某一个应用版本、且仅限非商用。 | Personal Learning and Non-Commercial Use License（NOASSERTION，非 OSI） | D（4/6） | [中](categories/media-processing/nle-automation/jianying-headless.zh.md) · [EN](categories/media-processing/nle-automation/jianying-headless.md) |
 
 ### video-production
 

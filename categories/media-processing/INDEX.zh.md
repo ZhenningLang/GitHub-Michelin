@@ -9,6 +9,7 @@
 |---|---|---|
 | **video-audio** | 音视频解码、编码、转码、封装、字幕与管线工具。 | [→](video-audio/INDEX.zh.md) |
 | **video-editing** | 面向最终用户的非线性视频编辑器（NLE 应用）——图形化时间线剪辑，位于编解码工具链之上的应用层。 | [→](video-editing/INDEX.zh.md) |
+| **nle-automation** | 对已安装的视频编辑器做程序化控制——生成、修改并经由编辑器自身引擎无界面导出它的原生工程／草稿文件。 | [→](nle-automation/INDEX.zh.md) |
 | **image-processing** | 图像处理、转换、缩放与格式工具。 | [→](image-processing/INDEX.zh.md) |
 | **quality-metrics** | 感知媒体质量指标与基准测试工具。 | [→](quality-metrics/INDEX.zh.md) |
 
