@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "BrowserSkill does", "zh": "BrowserSkill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI, load the extension, and install its skill into your harness", "zh": "装好 CLI、加载扩展，再把 skill 装进你的 harness", "code": "bsk install-skill"},
+    {"lane": "you", "en": "Start a session and keep the session id the agent gets back", "zh": "开一个 session，agent 拿到 session_id", "code": "bsk session start --json"},
+    {"lane": "them", "en": "The daemon routes each command to your extension, which runs it in a separate Agent Window", "zh": "daemon 把命令转给扩展，在独立 Agent Window 里跑"},
+    {"lane": "you", "en": "Observe the page for fresh @eN refs, then click or fill by ref", "zh": "先 observe 拿到 @eN 引用，再用引用点击、填表", "code": "bsk observe --session <id> · bsk click @e3 --session <id>"},
+    {"lane": "them", "en": "To touch a tab you already have open, it asks you first, borrows it, and leaves your windows alone", "zh": "要动你已经开着的页签时，先向你确认再借走，你原来的窗口不受影响", "code": "bsk tab borrow <tab-id>"},
+    {"lane": "them", "en": "On login or CAPTCHA it hands control back to you, then resumes where it stopped", "zh": "遇到登录或验证码，就把控制权交还给你，你处理完它接着跑", "code": "bsk request-help --session <id> --prompt \"Please complete sign-in\""},
+    {"lane": "them", "en": "When the task ends it returns the borrowed tab and stops the session", "zh": "任务结束时归还借走的页签，并关闭 session", "code": "bsk session stop <id>"}
+  ],
+  "value": {"en": "Your real, logged-in browser does the work while you keep using it — no separate test account, no login replay", "zh": "用你真正登录着的浏览器干活，且不耽误你自己用它；不用另建测试账号，也不必重放登录"},
+  "sources": [
+    "README.md Quick Start + Updating (bsk install-skill, bsk doctor, bsk update; install.sh / install.ps1)",
+    "skill/SKILL.md Task workflow (bsk session start --json, bsk navigate, bsk observe, bsk click @e3 --session <id>, bsk session stop <id>)",
+    "skill/SKILL.md Borrowing (bsk tab list --scope user, bsk tab borrow <tab-id>, bsk tab return <tab-id>)",
+    "skill/SKILL.md Human steps (bsk request-help --session <id> --prompt \"…\" --target @e3)",
+    "docs/architecture.md (CLI and daemon exchange JSON Lines over UDS, daemon and extension over loopback WebSocket, Agent Window)"
+  ]
+}
