@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Substrate does", "zh": "Agent Substrate 做的"},
+  "steps": [
+    {"lane": "you", "en": "Stand up a cluster and install the Substrate system", "zh": "起一个集群并装上 Substrate 系统", "code": "hack/install-ate-kind.sh --deploy-ate-system"},
+    {"lane": "you", "en": "Declare a worker pool, then define the actor template", "zh": "声明 worker 池，再定义 actor 模板", "code": "WorkerPool · kubectl ate create actor-template"},
+    {"lane": "you", "en": "Create an actor and send traffic with the routing header", "zh": "建 actor，请求带上路由头", "code": "ate-target-actor: <atespace>/<actor>"},
+    {"lane": "them", "en": "Resolves the target actor and resumes it onto a free worker", "zh": "识别目标 actor，从快照恢复到空闲 worker"},
+    {"lane": "them", "en": "Restores the snapshot so memory and filesystem state continue", "zh": "恢复快照，让内存和文件状态原地续上"},
+    {"lane": "them", "en": "When the actor goes idle, checkpoints it and frees the slot", "zh": "actor 闲置时存档，把槽位让给下一个"}
+  ],
+  "value": {"en": "Many stateful agents ride on a handful of warm pods — you stop paying for idle sandboxes and stop hand-rolling state restore", "zh": "众多有状态 agent 挤在少数预热 pod 上：既不为空闲沙箱占机器，也不用自己写状态恢复"},
+  "sources": [
+    "https://github.com/agent-substrate/substrate#quickstart-development (hack/install-ate-kind.sh --deploy-ate-system, WorkerPool, port-forward atenet-router)",
+    "https://github.com/agent-substrate/substrate/blob/main/demos/counter/README.md (kubectl ate create actor-template, ate-target-actor header, suspend/resume keeping both counters)",
+    "https://github.com/agent-substrate/substrate/blob/main/docs/glossary.md (Worker hosts at most one Actor at a time; Actor routing header; Suspend frees the Worker)",
+    "https://github.com/agent-substrate/substrate/blob/main/docs/architecture.md (pre-started long-running worker Pods; assign then resume)"
+  ]
+}
