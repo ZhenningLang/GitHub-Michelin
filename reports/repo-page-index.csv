@@ -491,6 +491,7 @@ https://github.com/temporalio/temporal,temporal,workflow-orchestration,categorie
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
 https://github.com/thedotmack/claude-mem,claude-mem,agent-memory,categories/agent-memory/claude-mem.md
 https://github.com/tiagozip/cap,capjs,captcha,categories/captcha/capjs.md
+https://github.com/tinyhumansai/openhuman,openhuman,agent-runtimes,categories/agent-frameworks/agent-runtimes/openhuman.md
 https://github.com/tirth8205/code-review-graph,code-review-graph,rag-retrieval,categories/rag-retrieval/code-review-graph.md
 https://github.com/titanwings/distilly,distilly,agent-skills,categories/agent-skills/distilly.md
 https://github.com/topoteretes/cognee,cognee,agent-memory,categories/agent-memory/cognee.md

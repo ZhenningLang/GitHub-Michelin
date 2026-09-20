@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenHuman does", "zh": "OpenHuman 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app with your platform's package manager", "zh": "用系统的包管理器装上桌面应用", "code": "brew install --cask openhuman"},
+    {"lane": "you", "en": "Connect the accounts whose context you want it to know", "zh": "把你希望它了解上下文的数据源接进去"},
+    {"lane": "them", "en": "One scheduler ticks every twenty minutes and syncs each connection", "zh": "一个调度器每二十分钟走一遍，逐个同步你接的连接"},
+    {"lane": "them", "en": "Compresses what changed into scored Markdown trees + an Obsidian vault on your machine", "zh": "把新增内容压成 Markdown 记忆树并镜像成 Obsidian 库", "code": "SQLite"},
+    {"lane": "you", "en": "Ask a question about your own work", "zh": "问你自己的工作上的事"},
+    {"lane": "them", "en": "Answers from memory it already built, and proposes automations you review on a canvas", "zh": "用已经建好的记忆作答，并把自动化提议成你能在画布上审的工作流"},
+    {"lane": "them", "en": "Fires scheduled runs behind your approval gate, resuming after restarts", "zh": "在审批闸门后按计划触发运行，重启后接着跑"}
+  ],
+  "value": {
+    "en": "Your assistant starts day one with compressed context of your inbox, repos, docs and chats — instead of weeks of re-briefing a cold agent",
+    "zh": "助手第一天就带着你的邮件、仓库、文档与聊天上下文开工，不用花几周从冷启动教它"
+  },
+  "sources": [
+    "https://github.com/tinyhumansai/openhuman README (OAuth integrations feeding the brain, auto-fetch every 20 minutes, Memory Tree + Obsidian wiki as scored Markdown in SQLite, workflows proposed by the agent and reviewed on a canvas, durable trigger-driven approval-gated runs)",
+    "INSTALL.md — macOS Homebrew Cask section (brew install --cask openhuman); .deb / AUR / MSI / AppImage paths",
+    "gitbooks/features/obsidian-wiki/auto-fetch.md (single 20-minute tick walks every active integration; per-connection sync_state: cursor, last sync, daily budget, dedup set)",
+    "gitbooks/features/channels.md (channel = two-way conversation surface, distinct from a read-only integration)"
+  ]
+}

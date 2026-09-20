@@ -14,6 +14,7 @@
 | **Parlant** | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. | B (6/6) | [→](parlant.md) |
 | **OpenClaw** | Use it when you want a personal AI assistant that runs on your own devices and answers you across 20+ messaging channels — but it's extremely young with no Lindy track record. | B (4/6) | [→](openclaw.md) |
 | **Hermes Agent** | Use it when you want a self-improving AI agent with a learning loop that creates skills from experience and runs on a $5 VPS — but it's under a year old and the learning-loop stability is unproven. | B (5/6) | [→](hermes-agent.md) |
+| **OpenHuman** | Use it when you want a local-first personal assistant that ingests your mail, calendar and repos into Markdown memory on a 20-minute loop and can be forced offline in its Rust core — but it's 7 months old, one author holds most commits, and it's GPL-3.0-only. | B (5/6) | [→](openhuman.md) |
 | **CrewAI** | Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks. | A (6/6) | [→](crewai.md) |
 | **LangGraph** | Build resilient agents. | A (6/6) | [→](langgraph.md) |
 | **AutoGen** | A programming framework for agentic AI | C (6/6) | [→](autogen.md) |
@@ -33,6 +34,7 @@
 | [Parlant](parlant.md) | ✅ | B (6/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |
 | [OpenClaw](openclaw.md) | ✅ | B (4/6) | Use it when you want a personal AI assistant that runs on your own devices and answers you across 20+ messaging channels — but it's extremely young with no Lindy track record. |
 | [Hermes Agent](hermes-agent.md) | ✅ | B (5/6) | Use it when you want a self-improving AI agent with a learning loop that creates skills from experience and runs on a $5 VPS — but it's under a year old and the learning-loop stability is unproven. |
+| [OpenHuman](openhuman.md) | ✅ | B (5/6) | Local-first desktop assistant that buys context by ingesting your accounts on a 20-minute loop instead of waiting for a learning loop; GPL-3.0-only, heavy build, vendor account by default. |
 | [eve](eve.md) | ✅ | A (6/6) | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. |
 
 ## What belongs here

@@ -14,6 +14,7 @@
 | **Parlant** | 当你要构建一个必须靠行为准则严格守规的对客 agent 时用它——简单或自由式 agent 用它过重。 | B（6/6） | [→](parlant.zh.md) |
 | **OpenClaw** | 当你想要一款在自有设备上运行、跨 20 余条消息渠道应答你的个人 AI 助手时用它——但它极其年轻，毫无 Lindy 记录。 | B（4/6） | [→](openclaw.zh.md) |
 | **Hermes Agent** | 当你想要一个带学习循环、能从经验中创建技能、可在 5 美元 VPS 上运行的自我改进 AI 智能体时用它——但它不足一岁，学习循环的稳定性未经检验。 | B（5/6） | [→](hermes-agent.zh.md) |
+| **OpenHuman** | 当你想要一个本地优先、每 20 分钟把邮件、日历、仓库灌成本机 Markdown 记忆、并且能在 Rust 内核里强制断网的个人助手时用它——但它只有 7 个月，绝大多数提交来自一个人，而且许可是 GPL-3.0-only。 | B（5/6） | [→](openhuman.zh.md) |
 | **CrewAI** | Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks. | A（6/6） | [→](crewai.zh.md) |
 | **LangGraph** | Build resilient agents. | A（6/6） | [→](langgraph.zh.md) |
 | **AutoGen** | A programming framework for agentic AI | C（6/6） | [→](autogen.zh.md) |
@@ -33,6 +34,7 @@
 | [Parlant](parlant.zh.md) | ✅ | B（6/6） | 当你要构建一个必须靠行为准则严格守规的对客 agent 时用它——简单或自由式 agent 用它过重。 |
 | [OpenClaw](openclaw.zh.md) | ✅ | B（4/6） | 当你想要一款在自有设备上运行、跨 20 余条消息渠道应答你的个人 AI 助手时用它——但它极其年轻，毫无 Lindy 记录。 |
 | [Hermes Agent](hermes-agent.zh.md) | ✅ | B（5/6） | 当你想要一个带学习循环、能从经验中创建技能、可在 5 美元 VPS 上运行的自我改进 AI 智能体时用它——但它不足一岁，学习循环的稳定性未经检验。 |
+| [OpenHuman](openhuman.zh.md) | ✅ | B（5/6） | 靠每 20 分钟灌入你的账号来买上下文的本地优先桌面助手，而不是等学习循环；代价是 GPL-3.0-only、构建重、默认要厂商账号。 |
 | [eve](eve.zh.md) | ✅ | A（6/6） | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 |
 
 ## 什么该放这里
