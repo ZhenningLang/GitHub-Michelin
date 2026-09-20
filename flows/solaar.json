@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Solaar does", "zh": "Solaar 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Solaar from your distribution's package", "zh": "从发行版软件包安装 Solaar", "code": "sudo apt install solaar"},
+    {"lane": "you", "en": "Launch the desktop application", "zh": "启动桌面应用", "code": "solaar"},
+    {"lane": "them", "en": "Discovers supported receivers and HID++ devices through udev", "zh": "通过 udev 发现受支持的接收器与 HID++ 设备"},
+    {"lane": "you", "en": "Pair a compatible device, or change a device setting in the GUI", "zh": "在图形界面配对设备或修改设置"},
+    {"lane": "them", "en": "Saves the settings and restores them whenever the device reconnects", "zh": "保存设置，并在设备重连时恢复", "code": "~/.config/solaar/config.yaml"},
+    {"lane": "you", "en": "Inspect the detected device and its capabilities from the CLI", "zh": "用命令行查看设备及其能力", "code": "solaar show"}
+  ],
+  "value": {"en": "Pairing, device state and persistent HID++ settings are managed on Linux without vendor software", "zh": "在 Linux 上管理配对、设备状态与持久化 HID++ 设置，不需要厂商软件"},
+  "sources": [
+    "docs/debian.md (sudo apt install solaar)",
+    "share/applications/solaar.desktop (Exec=solaar)",
+    "docs/usage.md (GUI discovers devices, restores settings on reconnect, pairing flow)",
+    "docs/implementation.md (udev-based discovery of USB, Bluetooth and receiver-connected HID++ devices)",
+    "lib/solaar/configuration.py (config.yaml in XDG_CONFIG_HOME, legacy config.json read and converted)",
+    "lib/solaar/cli/__init__.py (show / probe / config / profiles / pair / unpair subcommands)"
+  ]
+}

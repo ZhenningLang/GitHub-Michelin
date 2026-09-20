@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Mouser does", "zh": "Mouser 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the portable archive for your platform and run it", "zh": "下载对应平台便携包并直接运行", "code": "Mouser-macOS.zip"},
+    {"lane": "you", "en": "Grant the OS permission its input hook needs", "zh": "授予输入钩子所需的系统权限", "code": "Accessibility"},
+    {"lane": "them", "en": "Finds the already-paired HID++ mouse and opens the mapping page", "zh": "找到已配对的 HID++ 鼠标并打开映射页", "code": "Mouse & Profiles"},
+    {"lane": "you", "en": "Click a button hotspot and assign or record an action", "zh": "点击按键热点，指派或录制一个动作"},
+    {"lane": "them", "en": "Stores the mapping and reloads callbacks without dropping the HID connection", "zh": "保存映射并重载回调，不断开 HID 连接", "code": "setProfileMapping"},
+    {"lane": "them", "en": "Stays in the tray and emits the action when that button is pressed", "zh": "常驻托盘，按下该键时发出对应动作", "code": "config.json"}
+  ],
+  "value": {"en": "Your remapped mouse buttons keep working from a local config file with Options+ closed", "zh": "无需运行 Options+，重映射的鼠标按键靠本地配置文件持续生效"},
+  "sources": [
+    "README.md Download & Run (Mouser-macOS.zip / Mouser-macOS-intel.zip / Mouser-Windows.zip / Mouser-Linux.zip, run after extract)",
+    "README.md First-time notes (macOS asks for Accessibility permission; settings window opens to the device-aware Mouse & Profiles page; config.json paths per OS; can't run with Options+)",
+    "README.md Limitations (global profile mappings, app detection on X11 and KDE Wayland only)",
+    "ui/backend.py (setProfileMapping)",
+    "core/engine.py (button events blocked or passed through, platform key/mouse emulation)",
+    "core/config.py (config.json location per platform)"
+  ]
+}

@@ -990,3 +990,12 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **SiYuan** | Use it when you want a self-hosted block-level knowledge workspace where humans and AI agents co-edit — but some features are paywalled (open-core). | AGPL-3.0 | B (5/6) | [EN](categories/knowledge-base/siyuan.md) · [中](categories/knowledge-base/siyuan.zh.md) |
 | **Khoj** | Use it when you want a self-hostable AI second brain that answers from your docs and the web across browser/desktop/Obsidian, with local or online LLMs. | AGPL-3.0 | C (6/6) | [EN](categories/knowledge-base/khoj.md) · [中](categories/knowledge-base/khoj.zh.md) |
 | **Reor** | Use it as a pattern source for local-first AI note-taking; it is archived (2025-05), so do not bet production on it. | AGPL-3.0 | E (4/6) | [EN](categories/knowledge-base/reor.md) · [中](categories/knowledge-base/reor.zh.md) |
+
+### peripherals
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **OpenLogi** | Use it when you want the Options+ feature set — per-app profiles, gestures, keyboard remapping, static RGB, webcam controls — on macOS, Linux and Windows from one TOML config, and you accept a pre-1.0, months-old project with no receiver pairing. | MIT OR Apache-2.0 | C (5/6) | [EN](categories/peripherals/openlogi.md) · [中](categories/peripherals/openlogi.zh.md) |
+| **Solaar** | Use it on Linux when the job is device management rather than remapping: pair and unpair receivers, read battery and device state, change HID++ settings — backed by 14 years of still-shipping history, at the cost of Linux-only scope and no camera or RGB. | GPL-2.0-or-later | B (6/6) | [EN](categories/peripherals/solaar.md) · [中](categories/peripherals/solaar.zh.md) |
+| **Mouser** | Use it when you want to remap a Logitech HID++ mouse per application from a portable ZIP on Windows/macOS/Linux, with no installer, account or service — and you don't need pairing, keyboards, cameras or per-device mappings. | MIT | B (5/6) | [EN](categories/peripherals/mouser.md) · [中](categories/peripherals/mouser.zh.md) |
+| **logiops** | Use it on Linux when you want a root systemd daemon reading one declarative `/etc/logid.cfg` instead of a GUI — accepting HID++ 2.0+ mice only, no app awareness, and development that has effectively stopped since 2024. | GPL-3.0-or-later | C (4/6) | [EN](categories/peripherals/logiops.md) · [中](categories/peripherals/logiops.zh.md) |

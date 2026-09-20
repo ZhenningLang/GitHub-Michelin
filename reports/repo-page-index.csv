@@ -5,6 +5,7 @@ https://github.com/AI4Finance-Foundation/FinRL,finrl,investment-finance,categori
 https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,on-device-ml,categories/on-device-ml/stable-diffusion-webui.md
 https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,agent-tooling,categories/agent-tooling/agent-orchestrator.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
+https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals/openlogi.md
 https://github.com/AutumnWhj/ChatGPT-wechat-bot,chatgpt-wechat-bot,im-automation,categories/im-automation/chatgpt-wechat-bot.md
 https://github.com/BerriAI/litellm,litellm,api-gateway,categories/api-gateway/litellm.md
 https://github.com/Bistutu/FluentRead,fluentread,reading-tools,categories/reading-tools/fluentread.md
@@ -79,6 +80,7 @@ https://github.com/OthmanAdi/planning-with-files,planning-with-files,agent-tooli
 https://github.com/Owl-Listener/designer-skills,designer-skills,design,categories/agent-skills/design/designer-skills.md
 https://github.com/Panniantong/Agent-Reach,agent-reach,deep-research,categories/deep-research/agent-reach.md
 https://github.com/PenglongHuang/chinese-novelist-skill,chinese-novelist-skill,fiction,categories/agent-skills/writing/fiction/chinese-novelist-skill.md
+https://github.com/PixlOne/logiops,logiops,peripherals,categories/peripherals/logiops.md
 https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engineering,categories/agent-skills/context-engineering/notebooklm-skill.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
 https://github.com/PyAV-Org/PyAV,pyav,video-audio,categories/media-processing/video-audio/pyav.md
@@ -98,6 +100,7 @@ https://github.com/Textualize/rich,rich,terminal-ui,categories/terminal-ui/rich.
 https://github.com/Textualize/textual,textual,terminal-ui,categories/terminal-ui/textual.md
 https://github.com/The-PR-Agent/pr-agent,pr-agent,ai-code-review,categories/ai-code-review/pr-agent.md
 https://github.com/Thriftpy/thriftpy,thriftpy,networking,categories/networking/thriftpy.md
+https://github.com/TomBadash/Mouser,mouser,peripherals,categories/peripherals/mouser.md
 https://github.com/Unstructured-IO/unstructured,unstructured,document-parsing,categories/document-parsing/unstructured.md
 https://github.com/VectifyAI/PageIndex,pageindex,rag-retrieval,categories/rag-retrieval/pageindex.md
 https://github.com/Vincentwei1021/anything2explainer,anything2explainer,video-production,categories/video-production/anything2explainer.md
@@ -406,6 +409,7 @@ https://github.com/promptfoo/promptfoo,promptfoo,llm-eval,categories/llm-eval/pr
 https://github.com/provectus/kafka-ui,kafka-ui,kafka-tools,categories/kafka-tools/kafka-ui.md
 https://github.com/psf/requests-html,requests-html,crawling-tools,categories/web-scraping/crawling-tools/requests-html.md
 https://github.com/puppeteer/puppeteer,puppeteer,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/puppeteer.md
+https://github.com/pwr-Solaar/Solaar,solaar,peripherals,categories/peripherals/solaar.md
 https://github.com/pydantic/pydantic-ai,pydantic-ai,agent-runtimes,categories/agent-frameworks/agent-runtimes/pydantic-ai.md
 https://github.com/pygame/pygame,pygame,game-dev,categories/game-dev/pygame.md
 https://github.com/pymupdf/PyMuPDF,pymupdf,pdf-tools,categories/pdf-tools/pymupdf.md

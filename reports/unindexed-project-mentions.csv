@@ -436,6 +436,9 @@ LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/ml-research/llm-circuit-finder.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+Logitech G HUB (official),categories/peripherals/openlogi.md,,no
+Logitech Options+ (official),categories/peripherals/logiops.md,,no
+Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no
 Logstash JDBC input,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Looker,categories/data-visualization/superset.md,,no
 lua-resty-redis-cluster,categories/nginx-modules/lua-resty-redis.md,,no

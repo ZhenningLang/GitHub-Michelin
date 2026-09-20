@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "logiops does", "zh": "logiops 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the daemon in release configuration", "zh": "以 release 配置构建守护进程", "code": "cmake -DCMAKE_BUILD_TYPE=Release .."},
+    {"lane": "you", "en": "Install the binary and its system service", "zh": "安装二进制与系统服务", "code": "sudo make install"},
+    {"lane": "you", "en": "Write the device configuration at the default path", "zh": "在默认路径写设备配置", "code": "/etc/logid.cfg"},
+    {"lane": "you", "en": "Declare the control id and the action it maps to", "zh": "声明控件 ID 与它映射的动作", "code": "cid: 0xc3;"},
+    {"lane": "you", "en": "Enable and start the daemon", "zh": "启用并启动守护进程", "code": "sudo systemctl enable --now logid"},
+    {"lane": "them", "en": "Reads the config once and discovers HID++ devices through hidraw", "zh": "读取一次配置，经 hidraw 发现 HID++ 设备"},
+    {"lane": "them", "en": "Diverts matching button events and emits the configured keypress", "zh": "接管匹配的按键事件并发出配置的按键", "code": "type: \"Keypress\";"}
+  ],
+  "value": {"en": "Button, gesture, DPI and SmartShift mappings stay active through the logid background service", "zh": "按键、手势、DPI 与 SmartShift 映射由 logid 后台服务持续生效"},
+  "sources": [
+    "README.md Building (mkdir build; cmake -DCMAKE_BUILD_TYPE=Release ..; make; sudo make install; sudo systemctl enable --now logid)",
+    "README.md Configuration (default config location /etc/logid.cfg, -c to override)",
+    "README.md Dependencies (C++20 compiler, cmake, libevdev, libudev, glib, libconfig)",
+    "logid.example.cfg (cid: 0xc3; action types Gestures/Keypress/CycleDPI/ToggleSmartshift; dpi, smartshift, hiresscroll blocks)",
+    "src/logid/Configuration.cpp (reads the config file once at startup)",
+    "src/logid/backend/raw/DeviceMonitor.cpp (udev/hidraw device discovery)",
+    "src/logid/features/RemapButton.cpp and src/logid/InputDevice.cpp (button diversion and uinput event emission)"
+  ]
+}

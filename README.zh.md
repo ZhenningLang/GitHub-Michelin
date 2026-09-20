@@ -972,3 +972,12 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **SiYuan** | 当你想要一个自托管、块级引用的知识工作空间、让人与 AI 智能体共同编辑时用它——但部分功能需付费（open-core）。 | AGPL-3.0 | B（5/6） | [中](categories/knowledge-base/siyuan.zh.md) · [EN](categories/knowledge-base/siyuan.md) |
 | **Khoj** | 当你想要一个可自托管的 AI 第二大脑、从你的文档与网络取答案、并覆盖浏览器／桌面／Obsidian、模型可选本地或在线时用它。 | AGPL-3.0 | C（6/6） | [中](categories/knowledge-base/khoj.zh.md) · [EN](categories/knowledge-base/khoj.md) |
 | **Reor** | 当你需要一份「本地优先 AI 笔记」的模式参考时用它；它已归档（2025-05），不要把生产押在它上面。 | AGPL-3.0 | E（4/6） | [中](categories/knowledge-base/reor.zh.md) · [EN](categories/knowledge-base/reor.md) |
+
+### peripherals
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **OpenLogi** | 当你想要 Options+ 那套功能——按应用 profile、手势、键盘重映射、静态 RGB、摄像头控制——在 macOS、Linux、Windows 上用同一份 TOML 配置拿到，并且能接受一个尚未 1.0、只有几个月历史、没有接收器配对的项目时用它。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/peripherals/openlogi.zh.md) · [EN](categories/peripherals/openlogi.md) |
+| **Solaar** | 在 Linux 上当任务本身是设备管理而不是重映射时用它：配对与解绑接收器、读取电量与设备状态、修改 HID++ 设置——背后是 14 年仍在发版的记录；代价是仅限 Linux，且没有摄像头与 RGB。 | GPL-2.0-or-later | B（6/6） | [中](categories/peripherals/solaar.zh.md) · [EN](categories/peripherals/solaar.md) |
+| **Mouser** | 当你想要在 Windows／macOS／Linux 上用便携压缩包按应用重映射罗技 HID++ 鼠标，不需要安装器、账号或服务，并且不要求配对、键盘、摄像头或按设备映射时用它。 | MIT | B（5/6） | [中](categories/peripherals/mouser.zh.md) · [EN](categories/peripherals/mouser.md) |
+| **logiops** | 在 Linux 上，当你想要一个读单份声明式 `/etc/logid.cfg` 的 root systemd 守护进程而不是 GUI 时用它——接受只支持 HID++ 2.0+ 鼠标、没有应用感知，且开发自 2024 年起实际已停。 | GPL-3.0-or-later | C（4/6） | [中](categories/peripherals/logiops.zh.md) · [EN](categories/peripherals/logiops.md) |
