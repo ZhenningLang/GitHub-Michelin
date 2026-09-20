@@ -85,11 +85,11 @@ You are a developer or team that needs to automate complex, multi-step tasks wit
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Hermes Agent](../agent-runtimes/hermes-agent.md) | ✅ | Self-improving agent with a learning loop. | Hermes focuses on skill evolution and memory; AutoGPT focuses on workflow automation and deployment. |
-| [OpenClaw](../agent-runtimes/openclaw.md) | ✅ | Personal multi-channel assistant. | OpenClaw is a conversational assistant; AutoGPT is a task-automation platform with a web UI. |
+| [Hermes Agent](../agent-runtimes/personal-assistants/hermes-agent.md) | ✅ | Self-improving agent with a learning loop. | Hermes focuses on skill evolution and memory; AutoGPT focuses on workflow automation and deployment. |
+| [OpenClaw](../agent-runtimes/personal-assistants/openclaw.md) | ✅ | Personal multi-channel assistant. | OpenClaw is a conversational assistant; AutoGPT is a task-automation platform with a web UI. |
 | [OpenCode](../coding-agents/terminal-agents/opencode.md) | ✅ | Model-agnostic terminal coding agent. | OpenCode is a coding tool; AutoGPT is a general-purpose agent framework with continuous execution. |
 | [LangChain](langchain.md) | ✅ | Lower-level framework for building agent pipelines. | LangChain is a library you integrate into your code; AutoGPT is a higher-level platform with a UI and deployment model. |
-| [CrewAI](../agent-runtimes/crewai.md) | ✅ | Multi-agent orchestration framework. | CrewAI focuses on multi-agent teams; AutoGPT focuses on single-agent continuous execution. |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.md) | ✅ | Multi-agent orchestration framework. | CrewAI focuses on multi-agent teams; AutoGPT focuses on single-agent continuous execution. |
 
 ## Tech stack
 

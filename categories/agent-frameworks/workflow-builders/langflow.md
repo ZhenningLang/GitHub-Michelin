@@ -97,7 +97,7 @@ You're a developer or AI engineer who needs to prototype and deploy LLM-powered 
 | [n8n](../../workflow-orchestration/n8n.md) | ✅ | Pick n8n when broad workflow automation and integrations matter more than LLM-native flow composition. | n8n is general-purpose automation with AI bolted on; Langflow is purpose-built for LLM/agent workflows with deeper model and vector-DB integration. |
 | [Dify](dify.md) | ✅ | Pick Dify when production platform features, RBAC, and cloud options outweigh Langflow's MIT/community customization. | Similar visual builder with stronger enterprise RBAC and cloud offering; Langflow is fully MIT-licensed and more open to community-driven customization. |
 | [AutoGPT](autogpt.md) | ✅ | Pick AutoGPT when the target is autonomous continuous task execution. | AutoGPT targets autonomous task execution; Langflow targets composed, interactive workflows with human oversight. |
-| [CrewAI](../agent-runtimes/crewai.md) | ✅ | Pick CrewAI when code-first role-based multi-agent teams are the core abstraction. | CrewAI is code-first role-based multi-agent orchestration; Langflow is visual flow-based orchestration. |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.md) | ✅ | Pick CrewAI when code-first role-based multi-agent teams are the core abstraction. | CrewAI is code-first role-based multi-agent orchestration; Langflow is visual flow-based orchestration. |
 | [Flowise](flowise.md) | ✅ | Pick Flowise when you want a similar visual LLM builder and its ecosystem fits your stack better. | Very similar feature set; Langflow has a larger community and more active GitHub presence as of 2026-07. |
 
 ## Tech stack

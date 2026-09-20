@@ -96,7 +96,7 @@ health:
 |---|---|---|---|
 | OpenAI / Gemini "Deep Research" | 未收录 | 需要托管、开箱即用、无需 GPU 的强质量方案时，选 OpenAI/Gemini Deep Research。 | 托管、开箱即用、质量强、无需自己跑 GPU；但闭源、按用量付费、不能自托管或控制模型——与 MiroThinker 取舍相反。 |
 | [GPT-Researcher](gpt-researcher.zh.md) | ✅ | 需要轻量开源 agent 编排 LLM API 和网络工具时，选 GPT-Researcher。 | 轻量的开源研究 agent，编排一个冻结的 LLM API + 网络工具；跑起来便宜得多（无自托管权重），但没有自己的微调模型或基准调优框架。 |
-| [smolagents](../agent-frameworks/agent-runtimes/smolagents.zh.md) / LangGraph + 工具 | 部分已收录 | 想自行组装研究循环时，选 smolagents 或 LangGraph。 | 你在其上自行组装研究循环的通用 agent 框架；更灵活、模型无关，但研究管线和调优要你自己搭。 |
+| [smolagents](../agent-frameworks/agent-runtimes/agent-sdks/smolagents.zh.md) / LangGraph + 工具 | 部分已收录 | 想自行组装研究循环时，选 smolagents 或 LangGraph。 | 你在其上自行组装研究循环的通用 agent 框架；更灵活、模型无关，但研究管线和调优要你自己搭。 |
 | [Open Deep Research（HF）](open-deep-research.zh.md) | ✅ | 需要 API 模型上的 deep-research agent 开源复现时，选 Open Deep Research。 | 在 API 模型上对 deep-research agent 的开源复现；开源精神相近，但栈不同，且（通常）没有自托管的微调权重。 |
 
 ## 技术栈

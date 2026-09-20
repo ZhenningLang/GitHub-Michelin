@@ -97,7 +97,7 @@ health:
 | [n8n](../../workflow-orchestration/n8n.zh.md) | ✅ | 广泛工作流自动化和集成比 LLM 原生流程编排更重要时，选 n8n。 | n8n 是通用自动化加 AI 能力；Langflow 专为 LLM/智能体工作流设计，模型和向量库集成更深。 |
 | [Dify](dify.zh.md) | ✅ | 生产平台能力、RBAC 和云选项比 Langflow 的 MIT/社区定制更重要时，选 Dify。 | 类似的可视化构建器，企业 RBAC 和云服务更强；Langflow 是完全 MIT 许可，更开放于社区驱动的定制。 |
 | [AutoGPT](autogpt.zh.md) | ✅ | 目标是自主、持续的任务执行时，选 AutoGPT。 | AutoGPT 面向自主任务执行；Langflow 面向组合式、可交互、带人工监督的工作流。 |
-| [CrewAI](../agent-runtimes/crewai.zh.md) | ✅ | 核心抽象是代码优先、基于角色的多 agent 团队时，选 CrewAI。 | CrewAI 是代码优先、基于角色的多智能体编排；Langflow 是可视化流式编排。 |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.zh.md) | ✅ | 核心抽象是代码优先、基于角色的多 agent 团队时，选 CrewAI。 | CrewAI 是代码优先、基于角色的多智能体编排；Langflow 是可视化流式编排。 |
 | [Flowise](flowise.zh.md) | ✅ | 想要相近的可视化 LLM 构建器，且其生态更适配你的栈时，选 Flowise。 | 功能集非常相似；截至 2026-07，Langflow 社区更大、GitHub 更活跃。 |
 
 ## 技术栈

@@ -93,9 +93,9 @@ health:
 |---|---|---|---|
 | [oh-my-claudecode](oh-my-claudecode.zh.md) | ✅ | 需要 Claude Code 增强层，但不需要多模型评审核心时，选 oh-my-claudecode。 | 同样是 Claude Code 增强层（配置/skills/体验优化），但不围绕多模型扇出 + 共识构建；Octopus 的整个前提是让*其他*模型来评审 Claude。 |
 | [DSPy](../../workflow-builders/dspy.zh.md) | ✅ | 需要模型无关、库形态的程序化 prompt / pipeline 优化框架时，选 DSPy。 | 程序化 prompt / pipeline 优化框架，模型无关、库形态；你写 Python 而非斜杠命令。层次完全不同——是编译，而非 harness 内的评审小组。 |
-| [AgentScope](../../agent-runtimes/agentscope.zh.md) | ✅ | 需要通用多 agent 运行时/库来构建应用时，选 AgentScope。 | 通用多 agent 运行时 / 库，你在其上构建应用；不绑 Claude Code，也不对“盲点共识”持立场。 |
-| [Symphony](../../agent-runtimes/symphony.zh.md) | ✅ | 需要由跟踪器驱动的 coding-agent 运行编排时，选 Symphony。 | OpenAI 的多 agent 编排；锚定在 OpenAI 而非 Claude，是框架不是插件。 |
-| [openfang](../../agent-runtimes/openfang.zh.md) | ✅ | 需要编排模型不同的同类 agent 框架时，选 openfang。 | 同类 agent 框架，编排模型不同；选型前先比范围。 |
+| [AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 需要通用多 agent 运行时/库来构建应用时，选 AgentScope。 | 通用多 agent 运行时 / 库，你在其上构建应用；不绑 Claude Code，也不对“盲点共识”持立场。 |
+| [Symphony](../../agent-runtimes/agent-services/symphony.zh.md) | ✅ | 需要由跟踪器驱动的 coding-agent 运行编排时，选 Symphony。 | OpenAI 的多 agent 编排；锚定在 OpenAI 而非 Claude，是框架不是插件。 |
+| [openfang](../../agent-runtimes/agent-services/openfang.zh.md) | ✅ | 需要编排模型不同的同类 agent 框架时，选 openfang。 | 同类 agent 框架，编排模型不同；选型前先比范围。 |
 | crystal / claude-squad | 未收录 | 需要并行跑多个 Claude Code 会话/worktree 时，选 crystal 或 claude-squad。 | 并行跑多个 Claude Code *会话/worktree*；并行发生在多个 Claude 实例之间，而非*不同厂商模型*评审同一个任务。 |
 
 ## 技术栈

@@ -83,7 +83,7 @@ health:
 ## 何时不用
 
 - **你今天就要一个能用的编程 agent CLI，而不是想学内部原理。** 课程代码是教学级 harness——权限检查极简、没有加固沙箱。请直接用 Claude Code 本体，或同一实验室的生产级 CLI Kode-CLI（未收录），因为课程 runtime 为了可读性牺牲了健壮性。
-- **你想要一个能 import 进自己应用的库或 SDK。** 各章是独立脚本，不是可依赖的包。要极简 agent 库请用 [smolagents](../../agent-frameworks/agent-runtimes/smolagents.zh.md)，要嵌入式 SDK 请用同门的 kode-agent-sdk（未收录），因为把课程代码拷进生产会连它有意的简化一起继承。
+- **你想要一个能 import 进自己应用的库或 SDK。** 各章是独立脚本，不是可依赖的包。要极简 agent 库请用 [smolagents](../../agent-frameworks/agent-runtimes/agent-sdks/smolagents.zh.md)，要嵌入式 SDK 请用同门的 kode-agent-sdk（未收录），因为把课程代码拷进生产会连它有意的简化一起继承。
 - **你想要精炼的设计原则，而不是 17 章的动手课。** 请用 [12-Factor Agents](../spec-driven-development/12-factor-agents.zh.md)——一份短方法论文档；当你只需要一个下午建立共同词汇和检查清单，而不是花多天上一门课时选它。
 - **你需要权威官方的 Claude Code 内部资料。** 本课程是 shareAI-lab 的独立复刻，不是 Anthropic 官方材料 [未验证]。要厂商指导请用 Anthropic 官方文档和 cookbook（未收录），因为 Claude Code 是闭源的，本课程对其内部机制的映射只是作者的解读 [推断]。
 - **你的技术栈不是 Python + Anthropic API。** 课程代码是构建在 `anthropic` SDK 上的 Python 脚本；换模型供应商要自己重写客户端层，多语言团队更适合读 12-Factor Agents 这种供应商中立的材料。
@@ -93,7 +93,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [12-Factor Agents](../spec-driven-development/12-factor-agents.zh.md) | ✅ | 如果你需要一份一次读完的原则清单来评审既有 agent 设计，选 12-Factor Agents；如果你需要动手把每个机制**造出来**并跑通，选本课程，因为原则本身不会告诉你上下文压缩和权限管线实际如何咬合。 | 12-factor 是几小时读完、没有代码可跑的理论；本课程是数天的动手量，产出可运行的 harness 代码。 |
-| [smolagents](../../agent-frameworks/agent-runtimes/smolagents.zh.md) | ✅ | 如果你想要一个有人维护、可 import 直接交付 agent 的极简库，选 smolagents；如果目标是把 harness 内部机制吃透到自己能写，选本课程，因为 import 的库恰好把本课程要暴露的机制全藏了起来。 | smolagents 省掉构建时间，但你始终是其设计取舍的消费者；本课程花掉几天，留下的是你自己的实现。 |
+| [smolagents](../../agent-frameworks/agent-runtimes/agent-sdks/smolagents.zh.md) | ✅ | 如果你想要一个有人维护、可 import 直接交付 agent 的极简库，选 smolagents；如果目标是把 harness 内部机制吃透到自己能写，选本课程，因为 import 的库恰好把本课程要暴露的机制全藏了起来。 | smolagents 省掉构建时间，但你始终是其设计取舍的消费者；本课程花掉几天，留下的是你自己的实现。 |
 | [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 如果你想阅读或扩展一个生产级开源编程 agent，选 OpenHands；如果生产代码库对初学者太大、学不动，选本课程，因为 OpenHands 的真实机制（沙箱、评测、集成）会遮住核心 loop。 | OpenHands 是有真实复杂度的真家伙；本课程是刻意简化、迟早会毕业的模型。 |
 | Anthropic Cookbook | 未收录 | 如果你想要厂商官方的 API 模式（tool use、prompt caching、RAG）而不是完整 harness 构建，选 cookbook；如果你需要的是 agent **runtime** 本身——loop、权限、记忆、团队——而这些恰是厂商 cookbook 刻意留给你的部分，选本课程。 | cookbook 片段权威但机制分散；本课程非官方但给出连贯的端到端 runtime。 |
 | Kode-CLI | 未收录 | 如果你想要同一实验室出品的可用开源编程 CLI（支持 GLM／DeepSeek／MiniMax），选 Kode-CLI；如果目标是学会构建而不是采用工具，选本课程，因为 CLI 是课程作者的生产答案，把教学过程藏了起来。 | Kode-CLI 是终点产品；本课程是解释它由来的路径。 |

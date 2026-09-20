@@ -76,7 +76,7 @@ Kubernetes 原生的 agent 框架：把 agent、它可用的工具、以及模�
 
 ## 何时使用
 
-你是平台团队，Kubernetes 是系统的唯一事实源，而 agent 正作为又一种工作负载进来——要求和其他负载一样：配置声明式进 Git、RBAC、命名空间、可审计、可升级，以及值班工程师有办法看清它在干什么。Kubernetes 之外的 agent 框架把这些留给你自己接；kagent 把 agent 本身变成 Kubernetes 对象。你装上 CRD 与控制器，然后声明 `Agent`（系统提示、LLM 配置、工具）、`ModelConfig`（供应商：OpenAI、Anthropic、Vertex、Ollama 或经 AI 网关接入）以及 `ToolServer`（MCP 工具）——项目自带的工具服务器覆盖 Kubernetes、Istio、Helm、Argo、Prometheus、Grafana 与 Cilium，所以 agent 很快就能接到你自己的运维栈上。与 [LangGraph](../agent-runtimes/langgraph.zh.md) 这类通用框架的决定性取舍在「agent 的生命周期住在哪」：用 kagent，它住在集群的 reconcile 循环里，于是你得到 `kubectl` 形态的操作、发布语义和平台团队既有的护栏——代价是也要接受 Kubernetes 的约束，而且你不再身处 Python notebook。与 [Agent Substrate](../../sandboxing/substrate.zh.md) 相比，kagent 回答「我怎么在 Kubernetes 上**运营** agent」，Substrate 回答「我怎么便宜地跑**大量有状态** agent」——两者可以叠加。
+你是平台团队，Kubernetes 是系统的唯一事实源，而 agent 正作为又一种工作负载进来——要求和其他负载一样：配置声明式进 Git、RBAC、命名空间、可审计、可升级，以及值班工程师有办法看清它在干什么。Kubernetes 之外的 agent 框架把这些留给你自己接；kagent 把 agent 本身变成 Kubernetes 对象。你装上 CRD 与控制器，然后声明 `Agent`（系统提示、LLM 配置、工具）、`ModelConfig`（供应商：OpenAI、Anthropic、Vertex、Ollama 或经 AI 网关接入）以及 `ToolServer`（MCP 工具）——项目自带的工具服务器覆盖 Kubernetes、Istio、Helm、Argo、Prometheus、Grafana 与 Cilium，所以 agent 很快就能接到你自己的运维栈上。与 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) 这类通用框架的决定性取舍在「agent 的生命周期住在哪」：用 kagent，它住在集群的 reconcile 循环里，于是你得到 `kubectl` 形态的操作、发布语义和平台团队既有的护栏——代价是也要接受 Kubernetes 的约束，而且你不再身处 Python notebook。与 [Agent Substrate](../../sandboxing/substrate.zh.md) 相比，kagent 回答「我怎么在 Kubernetes 上**运营** agent」，Substrate 回答「我怎么便宜地跑**大量有状态** agent」——两者可以叠加。
 
 ## 怎么用起来
 
@@ -103,7 +103,7 @@ kagent 有四个组件：watch 自定义资源并创建运行所需资源的 **c
 ## 何时不用
 
 - **你需要把大量有状态 agent 挤在少数机器上。** kagent 把 agent 当工作负载调度，不做「快照—恢复」来回收空闲容量。想要带内存状态暂停／恢复的密度，用 [Agent Substrate](../../sandboxing/substrate.zh.md)。
-- **你不在 Kubernetes 上，或不能安装 CRD 与 operator。** kagent 的全部价值就是集群原生。离开 Kubernetes，请用代码优先的框架，如 [LangGraph](../agent-runtimes/langgraph.zh.md) 或 [AgentScope](../agent-runtimes/agentscope.zh.md)。
+- **你不在 Kubernetes 上，或不能安装 CRD 与 operator。** kagent 的全部价值就是集群原生。离开 Kubernetes，请用代码优先的框架，如 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) 或 [AgentScope](../agent-runtimes/agent-sdks/agentscope.zh.md)。
 - **你需要隔离边界来承载恶意的 agent 代码。** 这里配置的 agent 会带着你给的凭据去调工具，隔离是另一个问题——请在下面垫一个沙箱运行时（[gVisor](../../sandboxing/gvisor.zh.md)、[Kata Containers](../../sandboxing/kata-containers.zh.md)）或沙箱平台（[OpenSandbox](../../sandboxing/opensandbox.zh.md)），不要假设框架本身提供了隔离。
 - **你今天就要一个成熟、无变动的 API。** 项目年轻（创建于 2025-01）且在活跃开发中，有自己的路线图看板；请把它的 CRD 面当作还在动。想要更老、更广的 agent 框架生态，请用 `agent-runtimes` 里的条目。
 - **你的 agent 只是给一个人用的一个脚本。** 为此装 CRD、控制器和 UI 是过度堆料；框架的回报出现在多个 agent、多个操作者和治理需求上。
@@ -114,8 +114,8 @@ kagent 有四个组件：watch 自定义资源并创建运行所需资源的 **c
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Agent Substrate](../../sandboxing/substrate.zh.md) | ✅ | agent 必须以 Kubernetes 对象形式被声明、治理与观测，选 kagent；问题是大量空闲有状态 agent 的算力密度，选 Substrate。 | kagent 是 agent 即工作负载的**声明式控制**层；Substrate 是用快照恢复做多路复用的执行层。kagent 自家文档也把 Substrate 这一类运行时定位在它下面。 |
-| [LangGraph](../agent-runtimes/langgraph.zh.md) | ✅ | agent 逻辑本身就是产品、想要 Python 图 API 与最大控制力，选 LangGraph；问题在于 agent 的**运维**（部署、配置、工具、追踪），选 kagent。 | LangGraph 给你进程内的编程式控制流，对集群没有主张；kagent 给你 CRD、控制器和 UI，但对运行循环的控制更少。 |
-| [AgentScope](../agent-runtimes/agentscope.zh.md) | ✅ | 想要带自研运行时与沙箱方案的全功能多 agent 框架（代码形态），选 AgentScope；运行时本身就应该是 Kubernetes，选 kagent。 | AgentScope 是你要部署的框架；kagent 是把 agent 作为集群对象部署、并接受 Kubernetes 运维模型的一条路。 |
+| [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) | ✅ | agent 逻辑本身就是产品、想要 Python 图 API 与最大控制力，选 LangGraph；问题在于 agent 的**运维**（部署、配置、工具、追踪），选 kagent。 | LangGraph 给你进程内的编程式控制流，对集群没有主张；kagent 给你 CRD、控制器和 UI，但对运行循环的控制更少。 |
+| [AgentScope](../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 想要带自研运行时与沙箱方案的全功能多 agent 框架（代码形态），选 AgentScope；运行时本身就应该是 Kubernetes，选 kagent。 | AgentScope 是你要部署的框架；kagent 是把 agent 作为集群对象部署、并接受 Kubernetes 运维模型的一条路。 |
 | [OpenSandbox](../../sandboxing/opensandbox.zh.md) | ✅ | 需求是给 agent 生成的代码一个隔离执行环境，选 OpenSandbox；需求是声明式管理有哪些 agent、能用哪些工具，选 kagent。 | 正交的两层：kagent 决定 agent 的配置与生命周期，OpenSandbox 决定它的代码在哪跑、能碰到什么。 |
 | 通用 operator 框架／其他项目的 agent CRD 栈 | 未收录 | 你在自己写 controller，选通用 operator 框架；想要 agent CRD、引擎、工具服务器与 UI 都已经做好，选 kagent。 | 通用框架（Kubebuilder、Operator SDK）是没有任何 agent 语义的工具箱；kagent 交付了语义，但也把你的设计约束在它的资源模型里。这里按范围外处理：工具箱与产品的对比是另一个选型题。 |
 

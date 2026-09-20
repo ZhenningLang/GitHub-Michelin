@@ -94,7 +94,7 @@ You're a product team that needs to ship AI-powered workflows fast without writi
 | [n8n](../../workflow-orchestration/n8n.md) | ✅ | Pick n8n when the workflow is broader business automation with some AI nodes. | n8n is broader business-process automation; Dify is purpose-built for LLM and agent workflows. |
 | [LangFlow](langflow.md) | ✅ | Pick LangFlow when a Python-first MIT visual builder is preferred over Dify's fuller platform/RBAC stack. | Similar visual approach; LangFlow is Python-first and MIT-licensed, while Dify has more mature deployment and RBAC features. |
 | [AutoGPT](autogpt.md) | ✅ | Pick AutoGPT when the goal is fully autonomous long-running agents rather than designed workflows. | AutoGPT targets fully autonomous long-running agents; Dify focuses on orchestrated, human-designed workflows. |
-| [CrewAI](../agent-runtimes/crewai.md) / LlamaIndex | partly indexed | Pick specialized frameworks when you want multi-agent teams or RAG-first plumbing without Dify's bundled platform. | CrewAI is multi-agent team-oriented; LlamaIndex is RAG-first. Dify bundles both concerns into one platform. |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.md) / LlamaIndex | partly indexed | Pick specialized frameworks when you want multi-agent teams or RAG-first plumbing without Dify's bundled platform. | CrewAI is multi-agent team-oriented; LlamaIndex is RAG-first. Dify bundles both concerns into one platform. |
 
 ## Tech stack
 

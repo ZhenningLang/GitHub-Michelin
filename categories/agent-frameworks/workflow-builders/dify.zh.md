@@ -94,7 +94,7 @@ health:
 | [n8n](../../workflow-orchestration/n8n.zh.md) | ✅ | 工作流是更广泛的业务自动化，只顺带使用 AI 节点时，选 n8n。 | n8n 面向更广泛的业务流程自动化；Dify 专为 LLM 和 agent 工作流打造。 |
 | [LangFlow](langflow.zh.md) | ✅ | 偏好 Python-first、MIT 许可的可视化构建器，而不是更完整的平台/RBAC 栈时，选 LangFlow。 | 两者都走可视化路线；LangFlow 偏 Python 优先且 MIT 许可，Dify 的部署功能和 RBAC 更成熟。 |
 | [AutoGPT](autogpt.zh.md) | ✅ | 目标是完全自主、长时间运行的 agent，而不是人工设计的工作流时，选 AutoGPT。 | AutoGPT 面向完全自主的长期运行 agent；Dify 聚焦有人参与设计的编排式工作流。 |
-| [CrewAI](../agent-runtimes/crewai.zh.md) / LlamaIndex | 部分已收录 | 想要多 agent 团队或 RAG-first 管道，且不需要 Dify 的整合平台时，选这些专项框架。 | CrewAI 偏重多 agent 团队协作；LlamaIndex 偏重 RAG。Dify 把两者整合到一个平台。 |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.zh.md) / LlamaIndex | 部分已收录 | 想要多 agent 团队或 RAG-first 管道，且不需要 Dify 的整合平台时，选这些专项框架。 | CrewAI 偏重多 agent 团队协作；LlamaIndex 偏重 RAG。Dify 把两者整合到一个平台。 |
 
 ## 技术栈
 

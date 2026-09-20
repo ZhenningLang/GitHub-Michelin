@@ -96,7 +96,7 @@ agent 工程平台——通过组合可互操作组件与第三方集成，构�
 | [Dify](dify.zh.md) | ✅ | agentic 工作流可视化平台。 | Dify 是带内置 RAG 与部署能力的低代码平台；LangChain 是构建自定义 agent 的代码优先库，提供完全控制。 |
 | [DSPy](dspy.zh.md) | ✅ | 通过指标优化 prompt。 | DSPy 按指标优化 prompt/权重；LangChain 是用于 agent、chain 和 tool 的通用组合框架。 |
 | [AutoGPT](autogpt.zh.md) | ✅ | 用于自主工作流自动化的平台。 | AutoGPT 是带 Web UI 和部署模型的高级平台；LangChain 是需在其上构建的底层框架。 |
-| [smolagents](../agent-runtimes/smolagents.zh.md) | ✅ | Hugging Face 出品的极简透明 agent 循环。 | smolagents 极简透明；LangChain 全面且集成丰富。 |
+| [smolagents](../agent-runtimes/agent-sdks/smolagents.zh.md) | ✅ | Hugging Face 出品的极简透明 agent 循环。 | smolagents 极简透明；LangChain 全面且集成丰富。 |
 | [LlamaIndex](llamaindex.zh.md) | ✅ | 面向 LLM 的 RAG 优先数据框架。 | LlamaIndex 专长于检索与数据摄入；LangChain 更广义，涵盖 agent、chain、tool 和编排。 |
 
 ## 技术栈
