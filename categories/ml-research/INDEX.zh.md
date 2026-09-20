@@ -32,7 +32,7 @@
 | [Senta (SKEP)](senta.zh.md) | ✅ | D（3/6） | 当身处 PaddlePaddle／ERNIE 生态、需要带论文方法的 SKEP 情感分析 checkpoint 时用它——它锁定 EOL 的 PaddlePaddle 1.6.3，环境复原难以避免。 |
 | [Depth Anything V2](depth-anything-v2.zh.md) | ✅ | B（4/6） | 当需要当下默认的单目深度基础模型从单张图估深度（PyTorch／Transformers）时用它——仅 Small 权重为 Apache-2.0，Base／Large／Giant 是 CC-BY-NC-4.0（非商用）。 |
 | [pymoo](pymoo.zh.md) | ✅ | C（6/6） | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 |
-| nanoGPT / TransformerLens / minGPT | 未收录 | — | 各页对比里点到的其他研究 demo / 可解释性库。 |
+| TransformerLens / minGPT | 未收录 | — | 各页对比里点到的其他研究 demo / 可解释性库。 |
 
 ## 什么该放这里
 

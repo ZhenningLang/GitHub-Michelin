@@ -8,12 +8,14 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **MiniMind** | Use it when you want to train a 64M LLM end to end — tokenizer, pretrain, SFT, LoRA, MoE, DPO/GRPO and tool-call RL — in ~3.2k hand-written PyTorch lines you can read in an afternoon, and accept that the resulting model is a teaching artifact rather than a usable one. | A (5/6) | [→](minimind.md) |
+| **nanoGPT** | Use it when you want the canonical minimal GPT-2 training reference — ~670 readable lines, MPS/CPU paths, checkpoints that interoperate with OpenAI's GPT-2 weights — and accept that it stops at pretraining and is deprecated upstream in favour of nanochat. | C (4/6) | [→](nanogpt.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [MiniMind](minimind.md) | ✅ | A (5/6) | The whole pretrain→SFT→RL chain hand-written and cheap enough to actually run; but 64M and Chinese-first means no usable output, and two breaking rewrites mean you pin a commit. |
+| [nanoGPT](nanogpt.md) | ✅ | C (4/6) | Read it to learn GPT training from the reference everything else is measured against, and to load real GPT-2 weights; but it is deprecated, single-maintainer, DDP-only, and has no SFT or RL. |
 
 ## What belongs here
 

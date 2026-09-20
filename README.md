@@ -120,6 +120,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Axolotl** | Go ahead and axolotl questions | Apache-2.0 | B (6/6) | [EN](categories/llm-training/axolotl.md) · [中](categories/llm-training/axolotl.zh.md) |
 | **verl** | verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework | Apache-2.0 | B (6/6) | [EN](categories/llm-training/verl.md) · [中](categories/llm-training/verl.zh.md) |
 | **MiniMind** | Train a 64M LLM end to end — tokenizer, pretrain, SFT, LoRA, MoE, DPO/GRPO, tool-call and agentic RL — in ~3.2k hand-written PyTorch lines you can read in an afternoon; it is a course, so the model it produces is a teaching artifact, not a usable one. | Apache-2.0 | A (5/6) | [EN](categories/llm-training/study-and-experiments/minimind.md) · [中](categories/llm-training/study-and-experiments/minimind.zh.md) |
+| **nanoGPT** | The canonical minimal GPT training reference — ~670 readable lines, MPS/CPU paths, checkpoints interoperable with OpenAI's GPT-2 — but it stops at pretraining, has no SFT/RL, and its own README declares it deprecated in favour of nanochat. | MIT | C (4/6) | [EN](categories/llm-training/study-and-experiments/nanogpt.md) · [中](categories/llm-training/study-and-experiments/nanogpt.zh.md) |
 
 ### agent-frameworks
 

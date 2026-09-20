@@ -32,7 +32,7 @@
 | [Senta (SKEP)](senta.md) | ✅ | D (3/6) | Use it when working inside PaddlePaddle/ERNIE and needing SKEP sentiment checkpoints with a published method — pinned to EOL PaddlePaddle 1.6.3, so environment archaeology is unavoidable. |
 | [Depth Anything V2](depth-anything-v2.md) | ✅ | B (4/6) | Use it as the current default monocular-depth foundation model for single-image depth in PyTorch/Transformers — only the Small weights are Apache-2.0; Base/Large/Giant are CC-BY-NC-4.0 (non-commercial). |
 | [pymoo](pymoo.md) | ✅ | C (6/6) | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. |
-| nanoGPT / TransformerLens / minGPT | 未收录 | — | Other research demos / interpretability libs named across the pages. |
+| TransformerLens / minGPT | 未收录 | — | Other research demos / interpretability libs named across the pages. |
 
 ## What belongs here
 
