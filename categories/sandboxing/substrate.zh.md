@@ -2,7 +2,7 @@
 name: Agent Substrate
 slug: substrate
 repo: https://github.com/agent-substrate/substrate
-category: agent-tooling
+category: sandboxing
 tags: [agent-runtime, sandbox, kubernetes, snapshot-restore, suspend-resume, gvisor, microvm, gke]
 language: Go
 license: Apache-2.0
@@ -112,10 +112,12 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenSandbox](opensandbox.zh.md) | ✅ | 目标是「给 agent 一个沙箱和一套跑代码的 API」就选 OpenSandbox（多语言 SDK、Code Interpreter、凭证保险库、出口管控）；目标是「把很多**有状态** agent 会话挤在更少的机器上、按需唤醒」才选 Agent Substrate。 | Substrate 的全部增量是暂停／恢复的快照生命周期外加围绕它的调度；OpenSandbox 的增量是跨语言跨运行时的统一沙箱 API。两者只在「sandbox」这个词上重叠。 |
-| 托管沙箱 API（E2B、Modal） | 未收录 | 想要沙箱或 serverless 容器用托管服务、且不打算碰 Kubernetes，就选 E2B／Modal；要求 agent 的记忆与状态留在自己集群和自己桶里，才选 Agent Substrate。 | 托管把运维负担整个拿走——连密度问题也一并拿走（由服务商按量计费）——代价是放弃自托管、节点级控制权，以及把暂停／恢复状态放在自己对象存储里的能力。 |
-| gVisor／Kata Containers／Firecracker（直接用） | 未收录 | 只需要隔离原语、愿意自己写生命周期，就直接用沙箱运行时；想要生命周期、调度、快照与路由都已经建在这些原语之上，才用 Agent Substrate。 | Substrate 的隔离层恰恰依赖它们（今天默认 gVisor，microVM 走 cloud-hypervisor 或 Kata），所以这是拿「一个组件」比「一套系统」：原语本身不解决多租户密度和唤醒延迟。 |
-| 普通 Kubernetes Pod + HPA／Knative | 未收录 | 会话数量少、长期常驻、或者算力账单可以接受，用普通 Pod；账单主要被空闲沙箱和冷启动吃掉时，才用 Agent Substrate。 | Pod 是无聊、受支持、所有人都懂的路径，不需要引入新控制面；你要付的代价是一个会话一个 pod 和唤醒延迟——正是 Substrate 想解决的那两件事。 |
-| kagent（CNCF Sandbox） | 未收录 | 想要一个 Kubernetes 原生**框架**来构建和运营 agent 工作负载，选 kagent；已经有 agent、只缺下面那层运行时来多路复用有状态沙箱，才选 Agent Substrate。 | kagent 消费这一层而不是与之竞争（它自己的材料就描述了在 Substrate 上跑沙箱化的有状态 agent 负载），两者是叠放关系；kagent 给你 agent CRD 与编排，不给暂停／恢复式的密度。 |
+| [E2B](e2b.zh.md) | ✅ | 沙箱应该是可托管也可自托管的 SDK、负载是「现在就把这段代码跑掉」，选 E2B；会话长生命周期、大部分时间闲置、且必须带着内存恢复，才选 Agent Substrate。 | E2B 优化的是「第一次开出沙箱」的时间，并允许把运行时自托管到 AWS／GCP；Substrate 优化的是每台机器上装多少有状态会话。一次性执行与可恢复状态是分界线。 |
+| [Modal 客户端 SDK](modal-client.zh.md) | ✅ | 想要 serverless 容器、GPU 与沙箱、且什么都不打算运维，选 Modal；状态必须留在自己集群与对象存储里，才选 Agent Substrate。 | Modal 把运维负担整体拿走，也把密度问题一并拿走（由服务商计费），代价是不能自托管、不能审视边界、也不能把暂停／恢复状态放在自己的桶里。 |
+| [gVisor](gvisor.zh.md) | ✅ | 只在自建编排下要一层隔离原语，选 gVisor；想要生命周期、调度、快照与路由都已建在它之上，才用 Agent Substrate。 | gVisor 是 Substrate 这类系统会选的运行时组件；直接用它意味着生命周期、调度与快照是你的开发工作，而且一层系统调用拦截不解决多租户密度。 |
+| [Kata Containers](kata-containers.zh.md) | ✅ | 想在现有 Kubernetes 里给每个 pod 一台虚拟机级隔离，选 Kata；真正的问题是大量闲置的**有状态**会话而不是隔离强度，才用 Agent Substrate。 | Kata 是 Substrate 微虚拟机类可以使用的隔离运行时；它解决沙箱边界，但不解决多路复用，所以是更下层而不是替代品。 |
+| [Knative Serving](../serverless/knative-serving.zh.md) | ✅ | 负载是应该缩到零的无状态 HTTP 服务，选 Knative；负载是必须在空闲期间保住内存的有状态 agent 会话，才选 Agent Substrate。 | Knative 的缩容到零按设计就会丢掉进程；Substrate 的暂停／恢复会保住它。是否有状态就是分界线。 |
+| [kagent](../agent-frameworks/kubernetes-agents/kagent.zh.md) | ✅ | 想让 agent 以 Kubernetes 对象形式被声明与治理，选 kagent；已经有 agent、只缺下面那层运行时来多路复用有状态沙箱，才选 Agent Substrate。 | kagent 是 agent 即工作负载的声明式控制面，消费的是 Substrate 这类运行时；那条对比里的「普通 Pod + HPA」基线在本库没有单独页面，因为 Kubernetes 是 Substrate 的运行平台，不是同层替代品。 |
 
 ## 技术栈
 

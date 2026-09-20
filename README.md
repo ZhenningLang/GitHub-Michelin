@@ -54,11 +54,27 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Context Mode** | Use it when a coding agent burns context on raw tool output and you want sandboxed execution plus compaction-surviving session memory. | Elastic-2.0 | D (6/6) | [EN](categories/agent-tooling/context-mode.md) · [中](categories/agent-tooling/context-mode.zh.md) |
 | **Planning with Files** | Use it when a long agent run keeps losing its plan to /clear, compaction, or crashes. | MIT | B (4/6) | [EN](categories/agent-tooling/planning-with-files.md) · [中](categories/agent-tooling/planning-with-files.zh.md) |
 | **Vercel Skills** | Use it when you want an npm-style CLI to install, find, and update SKILL.md packs across many coding agents. | MIT | D (6/6) | [EN](categories/agent-tooling/vercel-skills.md) · [中](categories/agent-tooling/vercel-skills.zh.md) |
-| **OpenSandbox** | Use it when you must self-host isolated sandboxes to run untrusted agent-generated code at K8s scale with egress controls and a credential vault — but the repo is only months old (created 2025-12), so its API and Lindy track record are unproven. | Apache-2.0 | B (5/6) | [EN](categories/agent-tooling/opensandbox.md) · [中](categories/agent-tooling/opensandbox.zh.md) |
 | **AgentsView** | Use it when you run several coding agents and want local-first cross-agent session search and token/cost analytics — but it's months-old and pre-1.0, expect churn. | MIT | B (6/6) | [EN](categories/agent-tooling/agentsview.md) · [中](categories/agent-tooling/agentsview.zh.md) |
 | **Agent Orchestrator** | Use it when you supervise several parallel coding agents on real branches and want a desktop control plane that isolates each in a git worktree and auto-routes CI/review/conflict feedback — but it's ~4.5 months old, pre-1.0, single-User-owned, with a loopback-no-auth daemon. | Apache-2.0 | B (5/6) | [EN](categories/agent-tooling/agent-orchestrator.md) · [中](categories/agent-tooling/agent-orchestrator.zh.md) |
 | **CLI-Anything** | Use it when you want a coding agent to drive GUI-only software through a generated CLI harness backed by the app's own engine — but it's pre-1.0 and each harness is community-maintained. | Apache-2.0 | B (6/6) | [EN](categories/agent-tooling/cli-anything.md) · [中](categories/agent-tooling/cli-anything.zh.md) |
-| **Agent Substrate** | Use it when a large fleet of stateful agent sessions sits idle most of the time and you want them multiplexed onto fewer warm Kubernetes pods by checkpointing idle agents and resuming them on demand — but it's pre-1.0 with unstable APIs and no security hardening yet. | Apache-2.0 | B (4/6) | [EN](categories/agent-tooling/substrate.md) · [中](categories/agent-tooling/substrate.zh.md) |
+### sandboxing
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **gVisor** | Use it when untrusted containers must be isolated from the host kernel without running a VM — it needs no KVM and keeps your container workflow. | Apache-2.0 | A (5/6) | [EN](categories/sandboxing/gvisor.md) · [中](categories/sandboxing/gvisor.zh.md) |
+| **Kata Containers** | Use it when every pod should get a real guest kernel in a lightweight VM, while Kubernetes keeps its normal RuntimeClass workflow. | Apache-2.0 | A (5/6) | [EN](categories/sandboxing/kata-containers.md) · [中](categories/sandboxing/kata-containers.zh.md) |
+| **Firecracker** | Use it when you are building the sandbox layer yourself and want a minimal KVM microVM primitive with a control API — not a container runtime. | Apache-2.0 | A (5/6) | [EN](categories/sandboxing/firecracker.md) · [中](categories/sandboxing/firecracker.zh.md) |
+| **OpenSandbox** | Use it when you must self-host isolated sandboxes to run untrusted agent-generated code at K8s scale with egress controls and a credential vault — but the repo is only months old (created 2025-12), so its API and Lindy track record are unproven. | Apache-2.0 | B (5/6) | [EN](categories/sandboxing/opensandbox.md) · [中](categories/sandboxing/opensandbox.zh.md) |
+| **E2B** | Use it when an agent needs to run AI-generated code and you want the sandbox as an SDK — hosted by default, Terraform-self-hosted on AWS/GCP when it must live in your own account. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/e2b.md) · [中](categories/sandboxing/e2b.zh.md) |
+| **Agent Substrate** | Use it when a large fleet of stateful agent sessions sits idle most of the time and you want them multiplexed onto fewer warm Kubernetes pods by checkpointing idle agents and resuming them on demand — but it's pre-1.0 with unstable APIs and no security hardening yet. | Apache-2.0 | B (4/6) | [EN](categories/sandboxing/substrate.md) · [中](categories/sandboxing/substrate.zh.md) |
+| **Modal client SDK** | Use it when you want serverless containers, GPUs and sandboxes without operating anything — the client SDK is open source, the platform is closed and hosted-only. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/modal-client.md) · [中](categories/sandboxing/modal-client.zh.md) |
+
+### serverless
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Knative Serving** | Use it when HTTP services sit idle most of the day and you want revisioned rollouts plus autoscaling to zero without adopting a FaaS product. | Apache-2.0 | B (5/6) | [EN](categories/serverless/knative-serving.md) · [中](categories/serverless/knative-serving.zh.md) |
+
 ### document-management
 
 | Project | Use when | License | Health | Page |
@@ -164,6 +180,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **T3 Code** | Use it when one local GUI should drive already authenticated Codex, Claude, Cursor, and OpenCode CLIs. | MIT | B (6/6) | [EN](categories/agent-frameworks/coding-agents/terminal-agents/t3code.md) · [中](categories/agent-frameworks/coding-agents/terminal-agents/t3code.zh.md) |
 | **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | MIT | B (5/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.zh.md) |
 | **SwarmForge** | Use it when you want a self-hosted role pipeline (spec→code→clean→architect→harden→QA) over your own repo, each role in its own git worktree with commit-based handoffs — but it ships no license and no tagged releases. | NONE (no LICENSE file — all rights reserved) | D (6/6) | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.zh.md) |
+
+| **kagent** | Use it when agents should be Kubernetes objects — declared in YAML, run by a controller and engine, with model config, MCP tool servers and OpenTelemetry tracing. | Apache-2.0 | — | [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) · [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) |
 
 ### agent-memory
 

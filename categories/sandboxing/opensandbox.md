@@ -2,7 +2,7 @@
 name: OpenSandbox
 slug: opensandbox
 repo: https://github.com/opensandbox-group/OpenSandbox
-category: agent-tooling
+category: sandboxing
 tags: [sandbox, agent-runtime, code-execution, isolation, kubernetes, docker, microvm]
 language: Python
 license: Apache-2.0
@@ -90,11 +90,14 @@ You also reach for it when isolation strength is the requirement, not an afterth
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| E2B (firecracker sandboxes) | 未收录 | Choose E2B when you need a popular hosted-plus-OSS sandbox SDK for agent code execution. | Popular hosted+OSS sandbox SDK for agent code execution; managed cloud is turnkey, but self-hosting and multi-runtime breadth differ — OpenSandbox foregrounds K8s-scale + multiple secure runtimes. |
-| Daytona | 未收录 | Choose Daytona when you need a dev-environment/sandbox runtime for agents. | Dev-environment/sandbox runtime for agents; overlapping use case, different orchestration and feature emphasis. |
-| gVisor / Kata / Firecracker (alone) | 未收录 | Choose gVisor, Kata, or Firecracker directly when you only need isolation primitives. | The isolation primitives themselves — OpenSandbox orchestrates these; using them directly means building the sandbox lifecycle/API/scheduling yourself. |
-| Plain Docker / containerd | 未收录 | Choose Docker or containerd when ubiquitous containers are enough. | Ubiquitous and trusted, but gives you a container, not a sandbox protocol, credential vault, egress policy, or multi-language SDK surface. |
-| Jupyter Kernel Gateway / nsjail | 未收录 | Choose Jupyter Kernel Gateway or nsjail when you need narrower code-execution/isolation tools. | Narrower, single-purpose code-execution/isolation tools; less of an agent-oriented platform. |
+| [E2B](e2b.md) | ✅ | Choose E2B when you want the sandbox as a hosted-or-self-hosted SDK with an interpreter and desktop surfaces; choose OpenSandbox when the platform itself must be self-hosted and extensible. | E2B leads with a polished hosted product and Terraform self-hosting on AWS/GCP; OpenSandbox leads with a self-host-first platform and an extendable sandbox protocol. Both hide the same problem — which sandbox technology to run — behind different bets on who operates it. |
+| [Agent Substrate](substrate.md) | ✅ | Choose Substrate when the agents are long-lived and idle-heavy and the cost problem is pod density with snapshot resume; choose OpenSandbox when the job is "run this code in isolation, now". | Substrate multiplexes stateful sessions with suspend/resume; OpenSandbox exposes disposable execution sandboxes. Overlap is only the isolation layer — density versus on-demand execution. |
+| [gVisor](gvisor.md) | ✅ | Choose gVisor when you want syscall-level isolation without a VM and will build the sandbox lifecycle yourself; choose OpenSandbox when you want that lifecycle, SDKs and policy delivered. | A userspace kernel used as a runtime class; it is the isolation primitive OpenSandbox-style platforms can drive, not a platform. |
+| [Kata Containers](kata-containers.md) | ✅ | Choose Kata when your Kubernetes should give each pod a real kernel in a lightweight VM; choose OpenSandbox when you want a sandbox API instead of a runtime class. | Kata is node-level VM isolation with full container-manager integration; OpenSandbox is the API/lifecycle layer above runtimes like it. |
+| [Firecracker](firecracker.md) | ✅ | Choose Firecracker when you are building the sandbox layer and want the minimal KVM microVM primitive; choose OpenSandbox when you want sandboxes as a product. | Firecracker stops at the microVM boundary; OpenSandbox must solve images, scheduling, lifecycle and policy on top of some such primitive. |
+| Daytona | 未收录 | Choose Daytona when the need is a hosted-first dev-environment/sandbox platform for agents; choose OpenSandbox when you must self-host the platform. | Adjacent product shape (dev environments rather than an agent code-execution protocol); not indexed in this batch — tracked as backlog rather than justified out of scope by capability. |
+| Plain Docker / containerd | 未收录 | Choose Docker or containerd when ubiquitous containers are enough; choose OpenSandbox when the workload is untrusted and needs a sandbox protocol, credential vault and egress policy. | The baseline you are replacing (containerd/runc selection is out of scope here): you get a container, not a sandbox platform. |
+| Jupyter Kernel Gateway / nsjail | 未收录 | Choose these when you need narrow, single-purpose code-execution or isolation plumbing; choose OpenSandbox when you want the agent-facing platform around it. | Single-purpose primitives with no multi-tenant platform layer; out of scope for this node rather than addable peers. |
 
 ## Tech stack
 

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Firecracker does", "zh": "Firecracker 做的"},
+  "steps": [
+    {"lane": "you", "en": "Prepare a KVM-capable Linux host and get the binaries", "zh": "备好带 KVM 的 Linux 主机与二进制", "code": "sudo setfacl -m u:${USER}:rw /dev/kvm · tools/devtool build"},
+    {"lane": "you", "en": "Start the VMM and expose its control API socket", "zh": "启动 VMM，暴露控制 API socket", "code": "sudo ./firecracker --api-sock \"${API_SOCKET}\" --enable-pci"},
+    {"lane": "you", "en": "Configure kernel, rootfs, vCPUs and network over the REST API", "zh": "用 REST API 配内核、rootfs、vCPU 与网络", "code": "curl -X PUT --unix-socket \"${API_SOCKET}\""},
+    {"lane": "them", "en": "Boots the microVM on KVM with demand-fault paging and CPU oversubscription on", "zh": "在 KVM 上启动 microVM，默认开按需分页与 CPU 超卖"},
+    {"lane": "them", "en": "Applies per-thread seccomp filters, and the jailer barrier in production", "zh": "施加线程级 seccomp，生产环境再加 jailer 隔离屏障"},
+    {"lane": "them", "en": "Adds or resizes virtual disks and NICs over the API while it runs", "zh": "运行期经 API 增删或调整虚拟磁盘与网卡"}
+  ],
+  "value": {"en": "A minimal-surface microVM primitive that boots in milliseconds — the scheduler, images and multi-tenant control plane stay yours to build", "zh": "一个设备面极小、毫秒级启动的 microVM 原语——调度、镜像与多租户控制面仍归你写"},
+  "sources": [
+    "https://github.com/firecracker-microvm/firecracker/blob/main/docs/getting-started.md (setfacl on /dev/kvm; tools/devtool build; ./firecracker --api-sock; curl -X PUT --unix-socket; jailer)",
+    "https://github.com/firecracker-microvm/firecracker#features--capabilities (single VMM process, API endpoint, demand-fault paging and CPU oversubscription, jailer)"
+  ]
+}

@@ -2,7 +2,7 @@
 name: OpenSandbox
 slug: opensandbox
 repo: https://github.com/opensandbox-group/OpenSandbox
-category: agent-tooling
+category: sandboxing
 tags: [sandbox, agent-runtime, code-execution, isolation, kubernetes, docker, microvm]
 language: Python
 license: Apache-2.0
@@ -90,11 +90,14 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| E2B（firecracker 沙箱） | 未收录 | 需要流行的托管加开源 agent 代码执行沙箱 SDK 时，选 E2B。 | 流行的托管+开源沙箱 SDK，做 agent 代码执行；托管云开箱即用，但自托管与多运行时广度有别——OpenSandbox 更突出 K8s 规模 + 多种安全运行时。 |
-| Daytona | 未收录 | 需要面向 agent 的开发环境/沙箱运行时时，选 Daytona。 | 面向 agent 的开发环境/沙箱运行时；用例重叠，编排和功能侧重不同。 |
-| gVisor / Kata / Firecracker（单用） | 未收录 | 只需要隔离原语本身时，选 gVisor、Kata 或 Firecracker。 | 隔离原语本身——OpenSandbox 在其之上做编排；直接用它们意味着沙箱生命周期/API/调度都得你自己搭。 |
-| 普通 Docker / containerd | 未收录 | 普通容器已经够用时，选 Docker 或 containerd。 | 无处不在且可信，但给你的是一个容器，不是沙箱协议、凭据保险库、出口策略或多语言 SDK 面。 |
-| Jupyter Kernel Gateway / nsjail | 未收录 | 需要更窄的代码执行/隔离工具时，选 Jupyter Kernel Gateway 或 nsjail。 | 更窄、单一用途的代码执行/隔离工具；不太算面向 agent 的平台。 |
+| [E2B](e2b.zh.md) | ✅ | 想要沙箱以「可托管也可自托管」的 SDK 形态交付、还带解释器与桌面能力，选 E2B；平台本身必须自托管且可扩展，选 OpenSandbox。 | E2B 主打打磨过的托管产品与 AWS／GCP 的 Terraform 自托管；OpenSandbox 主打自托管优先的平台与可扩展的沙箱协议。两者都把「底下跑哪种沙箱技术」藏起来，只是押注谁来运维它。 |
+| [Agent Substrate](substrate.zh.md) | ✅ | agent 长生命周期、大量时间闲置、成本问题在 pod 密度与快照恢复，选 Substrate；任务是「现在就把这段代码隔离跑掉」，选 OpenSandbox。 | Substrate 用暂停／恢复多路复用有状态会话；OpenSandbox 暴露一次性执行沙箱。重叠只在隔离层——密度与按需执行之别。 |
+| [gVisor](gvisor.zh.md) | ✅ | 想要不依赖虚拟机的系统调用级隔离、并自己写沙箱生命周期，选 gVisor；想要那套生命周期、SDK 与策略一起交付，选 OpenSandbox。 | 作为 runtime class 使用的用户态内核；它是 OpenSandbox 这类平台可以驱动的隔离原语，不是平台。 |
+| [Kata Containers](kata-containers.zh.md) | ✅ | 想让 Kubernetes 给每个 pod 一台轻量虚拟机里的真内核，选 Kata；想要沙箱 API 而不是 runtime class，选 OpenSandbox。 | Kata 是节点级虚拟机隔离加完整的容器管理器集成；OpenSandbox 是它这类运行时之上的 API／生命周期层。 |
+| [Firecracker](firecracker.zh.md) | ✅ | 你在自建沙箱层、想要极简的 KVM microVM 原语，选 Firecracker；想要以产品形态拿到沙箱，选 OpenSandbox。 | Firecracker 止步于 microVM 边界；OpenSandbox 必须在某个此类原语之上解决镜像、调度、生命周期与策略。 |
+| Daytona | 未收录 | 需要面向 agent 的托管优先开发环境／沙箱平台，选 Daytona；平台必须自托管，选 OpenSandbox。 | 相邻产品形态（开发环境而非 agent 代码执行协议）；本批未收录——按待办记录，而不是以能力为由判为范围外。 |
+| 普通 Docker／containerd | 未收录 | 普通容器够用时选 Docker 或 containerd；负载不可信、需要沙箱协议、凭据保险库与出口策略时选 OpenSandbox。 | 你正在替换的基线（containerd／runc 的选型不在本页范围）：你拿到的是一个容器，不是沙箱平台。 |
+| Jupyter Kernel Gateway／nsjail | 未收录 | 需要窄而单一用途的代码执行或隔离管线时选它们；想要它外面那层面向 agent 的平台，选 OpenSandbox。 | 单一用途原语，没有多租户平台层；对本分类属范围外，而不是可收录的同层项目。 |
 
 ## 技术栈
 

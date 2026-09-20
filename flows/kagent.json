@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "kagent does", "zh": "kagent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the agent custom resource definitions", "zh": "安装 agent 的自定义资源定义", "code": "helm install kagent-crds ./helm/kagent-crds/ --namespace kagent"},
+    {"lane": "you", "en": "Install the controller and point it at an LLM provider", "zh": "装控制器并指明 LLM 供应商", "code": "helm install kagent ./helm/kagent/ --namespace kagent"},
+    {"lane": "you", "en": "Declare an agent, its model config and the tools it may use", "zh": "声明 agent、它的模型配置与可用工具"},
+    {"lane": "them", "en": "Reconciles the Agent resource into the workload that runs it", "zh": "把 Agent 资源 reconcile 成实际运行它的负载"},
+    {"lane": "them", "en": "Runs the agent on the ADK engine and calls tools over MCP tool servers", "zh": "用 ADK 引擎运行 agent，经 MCP 工具服务器调工具"},
+    {"lane": "them", "en": "Traces every agent and tool call with OpenTelemetry for inspection", "zh": "用 OpenTelemetry 追踪每次 agent 与工具调用"}
+  ],
+  "value": {"en": "Agents become Kubernetes objects your platform team can deploy, observe and govern with the tooling it already runs", "zh": "agent 变成 Kubernetes 对象，平台团队用既有工具就能部署、观测与治理"},
+  "sources": [
+    "https://github.com/kagent-dev/kagent/blob/main/helm/README.md (helm install kagent-crds ./helm/kagent-crds/ --namespace kagent; helm install kagent ./helm/kagent/ --namespace kagent with provider flags)",
+    "https://github.com/kagent-dev/kagent#technical-details (Agent/ModelConfig/ToolServer CRDs; controller + UI + engine on ADK + CLI; MCP tool servers; OpenTelemetry)",
+    "https://github.com/kagent-dev/kagent (CNCF project)"
+  ]
+}

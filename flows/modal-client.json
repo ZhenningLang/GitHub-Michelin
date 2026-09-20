@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Modal does", "zh": "Modal 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the client and authenticate once", "zh": "装客户端并认证一次", "code": "uv pip install modal · modal setup"},
+    {"lane": "you", "en": "Describe the workload as Python: image, resources, secrets", "zh": "用 Python 描述负载：镜像、资源、密钥", "code": "@app.function()"},
+    {"lane": "you", "en": "Run or deploy that file from your machine", "zh": "在本机运行或部署这个文件", "code": "modal run path/to/file.py"},
+    {"lane": "them", "en": "Builds the container, schedules it in the cloud and streams results back", "zh": "构建容器、在云里调度执行并把结果流回来"},
+    {"lane": "them", "en": "Scales with traffic and back down, with no cluster for you to run", "zh": "随流量扩缩，你这边没有集群要运维"},
+    {"lane": "them", "en": "Creates Sandboxes on request for AI-generated code", "zh": "按需创建 Sandbox 执行 AI 生成的代码", "code": "modal.Sandbox"}
+  ],
+  "value": {"en": "Serverless containers, GPUs and sandboxes you never operate — you write Python and accept a closed, hosted platform", "zh": "serverless 容器、GPU 与沙箱都不用你运维——只写 Python，也接受一个闭源托管平台"},
+  "sources": [
+    "https://github.com/modal-labs/modal-client (uv pip install modal; JS/Go SDKs use Sandboxes and invoke Functions; modal skills install)",
+    "https://modal.com/docs/guide (pip install modal; modal setup; modal run path/to/file.py; Sandboxes; everything is code; we host everything)"
+  ]
+}
