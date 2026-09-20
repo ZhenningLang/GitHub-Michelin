@@ -633,11 +633,11 @@ py-amqp / pika,categories/task-queue/kombu.md,,no
 py-spy,categories/python-tooling/pyrasite.md,,no
 pyannote.audio,categories/media-processing/video-audio/whisper.md,,no
 pybind11 / nanobind,categories/python-tooling/cython.md,,no
+pyCapCut,categories/media-processing/nle-automation/pyjianyingdraft.md,,no
 pyfiglet,categories/terminal-ui/art.md,,no
 pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
 pyHanko,categories/pdf-tools/sapp.md,,no
-pyJianYingDraft,categories/media-processing/nle-automation/INDEX.md,,no
 Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
 PyPy,categories/python-tooling/cython.md,,no
