@@ -346,6 +346,7 @@ GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.m
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 gVisor / Kata / Firecracker (alone),categories/agent-tooling/opensandbox.md,,no
+gVisor / Kata Containers / Firecracker (alone),categories/agent-tooling/substrate.md,,no
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/autogen.md,,no
@@ -372,6 +373,7 @@ HF TRL,categories/llm-training/art.md,,no
 HF TRL / verl,categories/llm-training/INDEX.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
+"Hosted sandbox APIs (E2B, Modal)",categories/agent-tooling/substrate.md,,no
 httpx,categories/python-tooling/grequests.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
@@ -401,6 +403,7 @@ Jupyter polyglot kernels (e.g. for Rust/JS),categories/python-tooling/gophernote
 kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
+kagent (CNCF Sandbox),categories/agent-tooling/substrate.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
 Kdenlive,categories/media-processing/video-audio/mlt.md,,no
 KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -593,6 +596,7 @@ Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/p
 Plain ADB + a script,categories/im-automation/douyin-bot.md,,no
 Plain Docker / containerd,categories/agent-tooling/opensandbox.md,,no
 Plain Git + agent's own session logs,categories/agent-tooling/entire-cli.md,,no
+Plain Kubernetes Pods + HPA / Knative,categories/agent-tooling/substrate.md,,no
 plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
 Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/beads.md,,no
 Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no

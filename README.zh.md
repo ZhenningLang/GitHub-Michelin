@@ -55,6 +55,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **AgentsView** | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 | MIT | B（6/6） | [中](categories/agent-tooling/agentsview.zh.md) · [EN](categories/agent-tooling/agentsview.md) |
 | **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI／review／冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | Apache-2.0 | B（5/6） | [中](categories/agent-tooling/agent-orchestrator.zh.md) · [EN](categories/agent-tooling/agent-orchestrator.md) |
 | **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/cli-anything.zh.md) · [EN](categories/agent-tooling/cli-anything.md) |
+| **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | Apache-2.0 | B（4/6） | [中](categories/agent-tooling/substrate.zh.md) · [EN](categories/agent-tooling/substrate.md) |
 ### document-management
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
