@@ -141,6 +141,7 @@ https://github.com/apache/superset,superset,data-visualization,categories/data-v
 https://github.com/argoproj/argo-workflows,argo-workflows,workflow-orchestration,categories/workflow-orchestration/argo-workflows.md
 https://github.com/ariya/phantomjs,phantomjs,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/phantomjs.md
 https://github.com/arm/metis,metis,ai-code-review,categories/ai-code-review/metis.md
+https://github.com/asciidoctor/asciidoctor,asciidoctor,typesetting,categories/typesetting/asciidoctor.md
 https://github.com/assafelovic/gpt-researcher,gpt-researcher,deep-research,categories/deep-research/gpt-researcher.md
 https://github.com/astral-sh/uv,uv,python-tooling,categories/python-tooling/uv.md
 https://github.com/asweigart/pyautogui,pyautogui,desktop-automation,categories/desktop-automation/pyautogui.md
@@ -263,7 +264,7 @@ https://github.com/humanlayer/12-factor-agents,12-factor-agents,spec-driven-deve
 https://github.com/hylarucoder/ai-flavor-remover,ai-flavor-remover,de-ai-writing,categories/agent-skills/de-ai-writing/ai-flavor-remover.md
 https://github.com/hypit-ai/hypit,hypit,video-production,categories/video-production/hypit.md
 https://github.com/iOfficeAI/OfficeCLI,officecli,office-automation,categories/office-automation/officecli.md
-https://github.com/iamgio/quarkdown,quarkdown,markdown-tools,categories/markdown-tools/quarkdown.md
+https://github.com/iamgio/quarkdown,quarkdown,typesetting,categories/typesetting/quarkdown.md
 https://github.com/iawia002/lux,lux,media-download,categories/media-download/lux.md
 https://github.com/idiap/coqui-ai-TTS,coqui-ai-tts,speech,categories/speech/coqui-ai-tts.md
 https://github.com/immich-app/immich,immich,document-management,categories/document-management/immich.md
@@ -307,6 +308,7 @@ https://github.com/langchain-ai/open_deep_research,open-deep-research,deep-resea
 https://github.com/langflow-ai/langflow,langflow,workflow-builders,categories/agent-frameworks/workflow-builders/langflow.md
 https://github.com/langfuse/langfuse,langfuse,llm-eval,categories/llm-eval/langfuse.md
 https://github.com/langgenius/dify,dify,workflow-builders,categories/agent-frameworks/workflow-builders/dify.md
+https://github.com/latex3/latex2e,latex,typesetting,categories/typesetting/latex.md
 https://github.com/lepture/captcha,lepture-captcha,captcha,categories/captcha/lepture-captcha.md
 https://github.com/letta-ai/claude-subconscious,claude-subconscious,agent-memory,categories/agent-memory/claude-subconscious.md
 https://github.com/letta-ai/letta,letta,agent-memory,categories/agent-memory/letta.md
@@ -328,6 +330,7 @@ https://github.com/markedjs/marked,marked,markdown-tools,categories/markdown-too
 https://github.com/mattermost/mattermost,mattermost,team-chat,categories/team-chat/mattermost.md
 https://github.com/mattpocock/skills,mattpocock-skills,engineering,categories/agent-skills/engineering/mattpocock-skills.md
 https://github.com/mayaramyadav/laravel-ocr,laravel-ocr,ocr,categories/ocr/laravel-ocr.md
+https://github.com/mdx-js/mdx,mdx,markdown-tools,categories/markdown-tools/mdx.md
 https://github.com/megadose/holehe,holehe,osint,categories/osint/holehe.md
 https://github.com/mem0ai/mem0,mem0,agent-memory,categories/agent-memory/mem0.md
 https://github.com/mementum/backtrader,backtrader,investment-finance,categories/investment-finance/backtrader.md
@@ -473,6 +476,7 @@ https://github.com/tsinghua-fib-lab/AgentSociety,agentsociety,social-simulation,
 https://github.com/tt-a1i/archify,archify,design,categories/agent-skills/design/archify.md
 https://github.com/tus/tusd,tusd,nginx-modules,categories/nginx-modules/tusd.md
 https://github.com/tw93/Waza,waza,engineering,categories/agent-skills/engineering/waza.md
+https://github.com/typst/typst,typst,typesetting,categories/typesetting/typst.md
 https://github.com/ultrafunkamsterdam/nodriver,nodriver,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/nodriver.md
 https://github.com/unclebob/swarm-forge,swarm-forge,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md
 https://github.com/unslothai/unsloth,unsloth,llm-training,categories/llm-training/unsloth.md

@@ -71,6 +71,7 @@
 | **osint** | OSINT reconnaissance — account-existence probes, username dossiers, and platform-specific investigation from emails/usernames (authorization-first). | [→](categories/osint/INDEX.md) |
 | **knowledge-base** | Personal knowledge bases and second-brain apps — accumulate, link, and query your own document corpus, optionally LLM-maintained. | [→](categories/knowledge-base/INDEX.md) |
 | **peripherals** | Configure and drive desktop peripherals — Logitech mice, keyboards, receivers, lights and webcams — over HID++ and UVC. | [→](categories/peripherals/INDEX.md) |
+| **typesetting** | Compile a plain-text markup source into a finished typeset document — print PDF, web pages, slides, books or docs. | [→](categories/typesetting/INDEX.md) |
 
 
 

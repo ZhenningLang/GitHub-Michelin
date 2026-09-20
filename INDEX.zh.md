@@ -70,6 +70,7 @@
 | **osint** | OSINT 侦察——由邮箱/用户名做账户存在性探测、身份档案收集与平台专项调查（授权优先）。 | [→](categories/osint/INDEX.zh.md) |
 | **knowledge-base** | 个人知识库与「第二大脑」应用——积累、互链并查询你自己的文档语料，可选由 LLM 维护。 | [→](categories/knowledge-base/INDEX.zh.md) |
 | **peripherals** | 配置并驱动桌面外设——罗技鼠标、键盘、接收器、灯与摄像头——通过 HID++ 与 UVC。 | [→](categories/peripherals/INDEX.zh.md) |
+| **typesetting** | 把纯文本标记源编译成排版成品——印刷 PDF、网页、幻灯片、书或文档集。 | [→](categories/typesetting/INDEX.zh.md) |
 
 
 

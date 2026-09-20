@@ -3,7 +3,7 @@ name: Quarkdown
 slug: quarkdown
 repo: https://github.com/iamgio/quarkdown
 homepage: https://quarkdown.com
-category: markdown-tools
+category: typesetting
 tags: [markdown, typesetting, document-generation, pdf, slides, static-site, docs-site, scripting, kotlin, jvm]
 language: Kotlin
 license: GPL-3.0 (core) / AGPL-3.0 (CLI and LSP)
@@ -79,7 +79,7 @@ health:
 
 你以写技术文档为生——一份设计文档同时还要变成幻灯片，一个内部 wiki，一篇你想直接发给别人 PDF 的文章——而你之所以选 Markdown，是因为 LaTeX 那套 `\begin{}` 脚手架根本维护不动；可纯 Markdown 又给不了分页版式、主题、图表编号，也没有跨文档复用段落的手段。你需要一份源同时服务好几拨读者。
 
-当**文档本身**才是交付物、源文件又应当保持 Markdown 那样可读时，选 Quarkdown；当「一次编写、多目标产出」是决定性的功能时，也选它：`.doctype {plain}` 得到连续流网页，`{paged}` 得到印刷版式，`{slides}` 得到 reveal.js 演示，`{docs}` 得到 wiki 并附带客户端搜索索引与面向 agent 的 `llms.txt`——一行切换，内容不动。这正是它与近邻的分界线：[Pandoc](pandoc.zh.md) 只做格式转换，没有文档语言也没有版式模型；Typst 与 LaTeX 能拿到更高的印刷保真度，代价是你要学习和维护一门不是 Markdown 的标记语言；Asciidoctor 同样保留纯文本源，但既无脚本层，导出 PDF 与幻灯片还得再拼装额外组件。你为此付出的代价是：你的 PDF 走的是浏览器打印流水线，而不是专门的排版引擎。
+当**文档本身**才是交付物、源文件又应当保持 Markdown 那样可读时，选 Quarkdown；当「一次编写、多目标产出」是决定性的功能时，也选它：`.doctype {plain}` 得到连续流网页，`{paged}` 得到印刷版式，`{slides}` 得到 reveal.js 演示，`{docs}` 得到 wiki 并附带客户端搜索索引与面向 agent 的 `llms.txt`——一行切换，内容不动。这正是它与近邻的分界线：[Pandoc](../markdown-tools/pandoc.zh.md) 只做格式转换，没有文档语言也没有版式模型；[Typst](typst.zh.md) 与 [LaTeX](latex.zh.md) 能拿到更高的印刷保真度，代价是你要学习和维护一门不是 Markdown 的标记语言；[Asciidoctor](asciidoctor.zh.md) 同样保留纯文本源，但既无脚本层，导出 PDF 与幻灯片还得再拼装额外组件。你为此付出的代价是：你的 PDF 走的是浏览器打印流水线，而不是专门的排版引擎。
 
 ## 怎么用起来
 
@@ -105,23 +105,23 @@ health:
 
 ## 何时不用
 
-- **交付物是别人还要接着改的 Word `.docx`。** Quarkdown 有文档记载的目标只有 HTML、PDF、GFM Markdown 和纯文本，没有 Word 写出器。改用 [Pandoc](pandoc.zh.md) 把 Markdown 转成 `.docx`，或者用 OOXML 生成库自己构建。
-- **你要把渲染器嵌进闭源产品，或把 CLI 作为托管服务对外提供。** 核心是 **GPL-3.0**，而 `quarkdown-cli` 与 `quarkdown-lsp` 是 **AGPL-3.0**（读自仓库自带的 `LICENSE` 文件），而普通用户实际调用的入口正是 CLI。`[推断]` 这个组合会同时触及再分发与网络服务两种用法。若宽松许可不可让步，请改用 Typst（Apache-2.0）、Asciidoctor（MIT）或 MDX（MIT）。
-- **印刷保真度是硬要求——期刊投稿、camera-ready、大量交叉引用。** 改用 Typst 或 LaTeX：Quarkdown 的 PDF 在文档里被定义为「HTML 输出内容」交给 Chrome 打印，所以分页质量就是 paged.js 的质量，而 2.6.x 的发布说明仍在修 `paged` 模式下表格跨页丢行、代码块被裁切、表行被切掉这类问题。这是一个还在收敛的引擎，不是已经解决的方案。
-- **你只需要格式转换。** 用 [Pandoc](pandoc.zh.md)：几十年的格式覆盖与模板生态，胜过为不需要的文档语言付学习成本。
+- **交付物是别人还要接着改的 Word `.docx`。** Quarkdown 有文档记载的目标只有 HTML、PDF、GFM Markdown 和纯文本，没有 Word 写出器。改用 [Pandoc](../markdown-tools/pandoc.zh.md) 把 Markdown 转成 `.docx`，或者用 OOXML 生成库自己构建。
+- **你要把渲染器嵌进闭源产品，或把 CLI 作为托管服务对外提供。** 核心是 **GPL-3.0**，而 `quarkdown-cli` 与 `quarkdown-lsp` 是 **AGPL-3.0**（读自仓库自带的 `LICENSE` 文件），而普通用户实际调用的入口正是 CLI。`[推断]` 这个组合会同时触及再分发与网络服务两种用法。若宽松许可不可让步，请改用 [Typst](typst.zh.md)（Apache-2.0）、[Asciidoctor](asciidoctor.zh.md)（MIT）或 [MDX](../markdown-tools/mdx.zh.md)（MIT）。
+- **印刷保真度是硬要求——期刊投稿、camera-ready、大量交叉引用。** 改用 [Typst](typst.zh.md) 或 [LaTeX](latex.zh.md)：Quarkdown 的 PDF 在文档里被定义为「HTML 输出内容」交给 Chrome 打印，所以分页质量就是 paged.js 的质量，而 2.6.x 的发布说明仍在修 `paged` 模式下表格跨页丢行、代码块被裁切、表行被切掉这类问题。这是一个还在收敛的引擎，不是已经解决的方案。
+- **你只需要格式转换。** 用 [Pandoc](../markdown-tools/pandoc.zh.md)：几十年的格式覆盖与模板生态，胜过为不需要的文档语言付学习成本。
 - **你的 Markdown 必须保持可移植。** 文件里一旦出现 `.func {arg}` 调用，它就不再是 Markdown——不跑 Quarkdown 编译器的 GitHub、Obsidian、IDE 和流水线只会把原始调用显示出来。若可移植性不可让步，就继续用纯 Markdown，在边上做转换。
-- **你需要单一静态二进制，或极瘦的 CI 镜像。** Quarkdown 是 JVM 应用，PDF 路径还要求同一台机器上有 Chromium 系浏览器。如果构建镜像装不下 JVM 加浏览器，请选 Typst（Rust，单二进制），或只用 [markdown-it](markdown-it.zh.md) 产出 HTML。
+- **你需要单一静态二进制，或极瘦的 CI 镜像。** Quarkdown 是 JVM 应用，PDF 路径还要求同一台机器上有 Chromium 系浏览器。如果构建镜像装不下 JVM 加浏览器，请选 [Typst](typst.zh.md)（Rust，单二进制），或只用 [markdown-it](../markdown-tools/markdown-it.zh.md) 产出 HTML。
 - **你需要超出个人的治理结构。** 见「健康度与可持续性」：如果「维护者停手」是你打算用十年的格式不可接受的单点故障，就选有基金会或更大核心团队的项目，并把 Quarkdown 当作「等它的输出已经够用之后再迁过去」的快迭代选项。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Pandoc](pandoc.zh.md) | ✅ | 当你手上已有各种格式、只需互转、且格式矩阵比版式控制更重要时选 Pandoc；当你需要一份源不经内容分叉就变成主题化网页、印刷 PDF 与幻灯片时选 Quarkdown。 | Pandoc 换来格式广度、长期发布历史与模板生态；代价是没有文档语言——没有变量、没有函数、没有按类型的版式模型——所以版式落在你要另行维护的模板里。 |
-| Typst | 未收录 | 当印刷级 PDF 与宽松许可是硬约束、并且你能接受学习它的语言时选 Typst；当「源保持 Markdown、同一份文件还能出 HTML／幻灯片／文档站」比排版保真度更重要时选 Quarkdown。 | Typst 换来专门打造的排版引擎（分页与数学更强）、Apache-2.0 许可与单一 Rust 二进制；代价是一门你和协作者都得学的专有语言，且没有直接的 Markdown 书写路径。 |
-| LaTeX | 未收录 | 当投稿方指定 class 文件、或你需要几十年的宏包积累与完整排版控制时选 LaTeX；当没人愿意维护 `\begin{}` 脚手架、而且还需要网页版本时选 Quarkdown。 | LaTeX 换来无可比拟的印刷成熟度、期刊模板与庞大宏包库；代价是陡峭的学习曲线、难读的报错，以及几乎无法从同一份源产出 HTML 或幻灯片。 |
-| Asciidoctor | 未收录 | 当你想要一门 MIT 许可下成熟、纯文本的写作语言并自带文档站工具链时选 Asciidoctor；当你需要脚本能力，或不想再拼装额外组件就要从同一份源出 PDF 与幻灯片时选 Quarkdown。 | Asciidoctor 换来成熟度、MIT 许可与广泛的扩展生态（PDF、图表、EPUB）；代价是没有图灵完备的脚本层，且幻灯片与 PDF 输出依赖额外组件。 |
-| MDX | 未收录 | 当目标是 React 应用、组件本身就是重点时选 MDX；当目标是排版成品、且完全不涉及 JS 框架时选 Quarkdown。 | MDX 换来与 JS／React 构建流水线的原生集成和整个 npm 生态；代价是 Node／React 运行时要求，以及自身完全没有印刷、分页或幻灯片模型。 |
+| [Pandoc](../markdown-tools/pandoc.zh.md) | ✅ | 当你手上已有各种格式、只需互转、且格式矩阵比版式控制更重要时选 Pandoc；当你需要一份源不经内容分叉就变成主题化网页、印刷 PDF 与幻灯片时选 Quarkdown。 | Pandoc 换来格式广度、长期发布历史与模板生态；代价是没有文档语言——没有变量、没有函数、没有按类型的版式模型——所以版式落在你要另行维护的模板里。 |
+| [Typst](typst.zh.md) | ✅ | 当印刷级 PDF 与宽松许可是硬约束、并且你能接受学习它的语言时选 Typst；当「源保持 Markdown、同一份文件还能出 HTML／幻灯片／文档站」比排版保真度更重要时选 Quarkdown。 | Typst 换来专门打造的排版引擎（分页与数学更强）、Apache-2.0 许可与单一 Rust 二进制；代价是一门你和协作者都得学的专有语言，且没有直接的 Markdown 书写路径。 |
+| [LaTeX](latex.zh.md) | ✅ | 当投稿方指定 class 文件、或你需要几十年的宏包积累与完整排版控制时选 LaTeX；当没人愿意维护 `\begin{}` 脚手架、而且还需要网页版本时选 Quarkdown。 | LaTeX 换来无可比拟的印刷成熟度、期刊模板与庞大宏包库；代价是陡峭的学习曲线、难读的报错，以及几乎无法从同一份源产出 HTML 或幻灯片。 |
+| [Asciidoctor](asciidoctor.zh.md) | ✅ | 当你想要一门 MIT 许可下成熟、纯文本的写作语言并自带文档站工具链时选 Asciidoctor；当你需要脚本能力，或不想再拼装额外组件就要从同一份源出 PDF 与幻灯片时选 Quarkdown。 | Asciidoctor 换来成熟度、MIT 许可与广泛的扩展生态（PDF、图表、EPUB）；代价是没有图灵完备的脚本层，且幻灯片与 PDF 输出依赖额外组件。 |
+| [MDX](../markdown-tools/mdx.zh.md) | ✅ | 当目标是 React 应用、组件本身就是重点时选 MDX；当目标是排版成品、且完全不涉及 JS 框架时选 Quarkdown。 | MDX 换来与 JS／React 构建流水线的原生集成和整个 npm 生态；代价是 Node／React 运行时要求，以及自身完全没有印刷、分页或幻灯片模型。 |
 
 ## 技术栈
 

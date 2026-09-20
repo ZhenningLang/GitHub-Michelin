@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "MDX does",
+    "zh": "MDX 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the compiler, or the integration for the bundler you already use",
+      "zh": "安装编译器，或你已在用的打包器对应的集成",
+      "code": "npm install @mdx-js/mdx"
+    },
+    {
+      "lane": "you",
+      "en": "Write .mdx: Markdown plus imports, exports and JSX in the prose",
+      "zh": "写 .mdx：Markdown 加 import、export 与 JSX",
+      "code": "import {Chart} from './snowfall.js' · <Chart year={year} color=\"#fcb32c\" />"
+    },
+    {
+      "lane": "them",
+      "en": "remark-mdx parses the MDX syntax and the document becomes an AST",
+      "zh": "remark-mdx 解析 MDX 语法，文档变成一棵 AST"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles that AST into a JavaScript module",
+      "zh": "把这棵 AST 编译成一个 JavaScript 模块"
+    },
+    {
+      "lane": "you",
+      "en": "Build it through your bundler, or evaluate it directly",
+      "zh": "经由你的打包器构建，或者直接求值",
+      "code": "compile() · evaluate() · @mdx-js/rollup"
+    },
+    {
+      "lane": "them",
+      "en": "Your framework renders it with the components you imported",
+      "zh": "由你的框架用你 import 进来的组件完成渲染"
+    }
+  ],
+  "value": {
+    "en": "Prose and live application components compile into one tree, with no parallel copy of the content to maintain",
+    "zh": "正文与实时的应用组件编译进同一棵树，不必再维护一份平行内容"
+  },
+  "sources": [
+    "readme.md (MDX example: import {Chart} from './snowfall.js', export const year = 2013, '{year}', <Chart year={year} color=\"#fcb32c\" />; 'an authorable format that lets you seamlessly write JSX in your markdown documents'; packages for compiling to JavaScript, integrating with webpack and Rollup, and using it with React, Preact and Vue)",
+    "packages/mdx/readme.md (npm install @mdx-js/mdx; ESM only, Node 16+; compile/compileSync/createProcessor/evaluate/evaluateSync/run/runSync API list; 'if you're using a bundler ... you're better off using an integration')",
+    "packages/ directory listing (esbuild, loader, mdx, node-loader, preact, react, remark-mdx, rollup, vue)"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "LaTeX does",
+    "zh": "LaTeX 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install a TeX distribution — not this repository, which the project says is not an install source",
+      "zh": "安装一个 TeX 发行版——不是本仓库，项目明确说它不是安装源",
+      "code": "TeX Live · MacTeX · MiKTeX"
+    },
+    {
+      "lane": "you",
+      "en": "Write a .tex file, declaring the document class and the packages you need",
+      "zh": "写一个 .tex 文件，声明文档类与需要的宏包",
+      "code": "\\documentclass{article} · \\usepackage[T1]{fontenc}"
+    },
+    {
+      "lane": "them",
+      "en": "The LaTeX kernel loads that class and resolves every requested package",
+      "zh": "LaTeX 内核加载该文档类，并逐个解析所请求的宏包"
+    },
+    {
+      "lane": "you",
+      "en": "Process the file with the TeX engine your distribution ships",
+      "zh": "用发行版自带的 TeX 引擎加工这个文件"
+    },
+    {
+      "lane": "them",
+      "en": "Expands the macros and typesets the document to its output format",
+      "zh": "做宏展开，并把文档排成目标输出格式"
+    }
+  ],
+  "value": {
+    "en": "Your source compiles on a stack whose language has been stable for four decades and that every journal template already targets",
+    "zh": "你的源文件跑在一套语言稳定了四十年、且每一份期刊模板都已适配的栈上"
+  },
+  "sources": [
+    "README.md (the kernel repo is unpackaged source; building from it 'is a non-trivial exercise'; obtain LaTeX from CTAN or via TeXLive, MacTeX, MiKTeX; repo components base, doc, required: tools/graphics/amsmath/firstaid/latex-lab)",
+    "https://www.latex-project.org/get/ (distributions by OS, CTAN as the primary distribution source, 'The repository is not meant to be used as an install source for users')",
+    "https://www.latex-project.org/help/documentation/ (standard classes article, report, book; source2e; LaTeX News)",
+    "base/doc/ltnews.tex (\\documentclass{ltnews}, \\usepackage{lua-unicode-math}, \\NeedsTeXFormat{LaTeX2e})",
+    "base/doc/usrguide.tex (\\documentclass{ltxguide}, \\usepackage[T1]{fontenc}, \\usepackage{csquotes})",
+    "base/ltvers.dtx (\\fmtversion {2026-11-01}, \\patch@level {-2}; the file's own comment: a negative patch level is a candidate release that is not distributed)",
+    "NOTE: no TeX engine invocation (pdflatex/lualatex/latexmk) appears in any source read, so step 4 deliberately carries no code token."
+  ]
+}
