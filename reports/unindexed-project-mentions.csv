@@ -770,6 +770,7 @@ thriftpy2,categories/networking/thriftpy.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
+tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
 tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no
 Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/context-mode.md,,no
 torchgan,categories/ml-research/pytorch-gan.md,,no

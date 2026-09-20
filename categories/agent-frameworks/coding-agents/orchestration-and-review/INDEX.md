@@ -15,6 +15,7 @@
 | **SWE-agent** | SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice. It can also be employed for offensive cybersecurity or competitive coding challenges. [NeurIPS 2024] | A (5/6) | [→](swe-agent.md) |
 | **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | B (5/6) | [→](background-agents.md) |
 | **SwarmForge** | Use it when you want a self-hosted role pipeline (spec→code→clean→architect→harden→QA) over your own repo, with each role in its own git worktree and commit-based handoffs — but it ships no license and no tagged releases. | D (6/6) | [→](swarm-forge.md) |
+| **OpenChamber** | Use it when you run OpenCode and want a cross-device operator workspace — goal-audited sessions, up to five models per prompt with optional worktrees, a diff walkthrough, and the git/PR surface beside the chat — accepting a 12-month-old, single-maintainer app locked to one agent runtime. | C (5/6) | [→](openchamber.md) |
 
 ## What belongs here
 
