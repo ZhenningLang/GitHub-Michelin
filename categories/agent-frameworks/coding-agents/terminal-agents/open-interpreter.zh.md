@@ -92,7 +92,7 @@ health:
 - **你正打算在一台要紧的机器上跑 LLM 编码 agent——先搞清楚执行风险。** 这是一个会根据模型输出执行 shell 命令、改文件的 agent。它带「原生沙箱」和一层权限/审批，但沙箱 + 审批是缓解，不是豁免：被提示注入的、或单纯出错的模型输出，仍可能在你批准的范围内删文件、外泄密钥、跑破坏性命令。把它当 Codex / Claude Code 对待——审它做了什么、限制它的访问范围、绝不把生产凭据交给它，并在信任它之前读一遍[沙箱与审批文档](https://www.openinterpreter.com/docs/terminal/sandbox)。这个风险是*agentic 代码执行的固有属性*，不是能等它修掉的 bug。[推断]
 - **你想要的是老的 Python「对你的电脑说话」REPL。** 它已经从这个仓库消失了（见上面那段）。指望在 `openinterpreter/open-interpreter` 上用 Python `interpreter` 包 / API 来构建，会直接崩——那套 API 属于社区 fork，不属于这个仓库。
 - **你需要*这套代码*有稳定 API 或生产业绩。** Rust 重写处在 `rust-v0.0.17`（2026-06）——一条 `0.0.x`、刚出几周的线。请预期变动、破坏性改动和毛刺；尽管仓库 star 很高，它并不是一个冻结、久经沙场的版本（那些 star 是*Python* 项目挣来的）。[推断]
-- **你想要一个用来*构建*多 agent 系统的库 / SDK。** 这是一个终端编码 agent（外加一层 ACP / SDK 接口），不是用来以图、消息传递、持久状态组合多个 agent 的编排框架。要那个，去找像 [AgentScope](../../agent-runtimes/agentscope.zh.md) 或 LangGraph 这样的运行时，而不是它。
+- **你想要一个用来*构建*多 agent 系统的库 / SDK。** 这是一个终端编码 agent（外加一层 ACP / SDK 接口），不是用来以图、消息传递、持久状态组合多个 agent 的编排框架。要那个，去找像 [AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md) 或 LangGraph 这样的运行时，而不是它。
 - **你更愿意用规范的上游。** 既然它是 Codex 的 fork，如果你并不特别需要那套低成本模型 harness 模拟，OpenAI 自家的 Codex CLI（或 Claude Code）才是上游，团队更大、主线更快——Open Interpreter 骑在它们的 `main` 上，再加一层。
 - **模型在循环里的成本/延迟仍会咬人——只是轻一点。** 它的前提是用更便宜的模型来压低单 token 成本，但一个会迭代的 agent（跑 → 观察 → 改 → 再跑）仍要花很多次调用；便宜模型还可能需要*更多*步才收敛，吃掉一部分节省，而 agentic 代码生成依旧非确定、时常出错。
 - **你需要浏览器 / 原生应用 QA 模式可靠。** OS / 电脑控制、以及借外部工具（agent-browser、trycua）驱动应用，天然在 OS 版本、应用更新、屏幕状态之间脆弱；好用，但别在没有自己护栏的情况下，把关键工作流压在它上面。[未验证]
@@ -104,7 +104,7 @@ health:
 | OpenAI Codex CLI | 未收录 | 想要 Open Interpreter fork 的规范上游时，选 OpenAI Codex CLI。 | Open Interpreter fork 的**上游**。规范、团队更大、主线更快；为 OpenAI 模型调优。Open Interpreter 在其上加了可切换的低成本模型 harness 层，并跟踪 Codex 的 `main`。 |
 | Claude Code / 类似厂商编码 CLI | 未收录 | 需要打磨良好、绑定特定模型家族的厂商终端编码 agent 时，选 Claude Code 或同类 CLI。 | 打磨良好、有厂商背书的终端编码 agent，绑定特定模型家族；更开箱即用，但并不围绕「为任意便宜 / 开源模型模拟 harness」来设计。 |
 | [aider](aider.zh.md) | ✅ | 需要成熟、模型无关、git 感知的终端结对编程工具时，选 aider。 | 成熟、模型无关的终端结对编程工具，聚焦多 provider 下 git 感知的编辑；更轻、更长寿，但不是 Codex 衍生的沙箱化、可切 harness 的运行时。 |
-| [smolagents](../../agent-runtimes/smolagents.zh.md) | ✅ | 需要构建“代码动作”agent 的极小*库*，且由你内嵌和掌控时，选 smolagents。 | 一个用来构建「代码动作」agent 的极小*库*，由你内嵌并据为己有——光谱的另一端：你写循环，而 Open Interpreter 是一个完整的终端编码 agent 应用。 |
+| [smolagents](../../agent-runtimes/agent-sdks/smolagents.zh.md) | ✅ | 需要构建“代码动作”agent 的极小*库*，且由你内嵌和掌控时，选 smolagents。 | 一个用来构建「代码动作」agent 的极小*库*，由你内嵌并据为己有——光谱的另一端：你写循环，而 Open Interpreter 是一个完整的终端编码 agent 应用。 |
 | endolith/open-interpreter（老的 Python OI） | 未收录 | 需要原版 Python“自然语言操作电脑”REPL 时，选老的 Python Open Interpreter。 | **原版** Python「自然语言操作电脑」REPL，现由社区维护。如果你真正想要的是这个老 Python 工具就选它；预期社区节奏的维护。 |
 
 ## 技术栈

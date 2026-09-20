@@ -85,8 +85,8 @@ You're a developer who juggles multiple AI coding agents and assistants across y
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenClaw](../../agent-runtimes/openclaw.md) | ✅ | Personal multi-channel AI assistant. | OpenClaw is a self-hosted assistant across messaging apps; CC Switch is a desktop manager for coding agents, not a conversational bot. |
-| [Hermes Agent](../../agent-runtimes/hermes-agent.md) | ✅ | Self-improving AI agent with a learning loop. | Hermes Agent is an autonomous agent; CC Switch is a management layer for other agents, not an agent itself. |
+| [OpenClaw](../../agent-runtimes/personal-assistants/openclaw.md) | ✅ | Personal multi-channel AI assistant. | OpenClaw is a self-hosted assistant across messaging apps; CC Switch is a desktop manager for coding agents, not a conversational bot. |
+| [Hermes Agent](../../agent-runtimes/personal-assistants/hermes-agent.md) | ✅ | Self-improving AI agent with a learning loop. | Hermes Agent is an autonomous agent; CC Switch is a management layer for other agents, not an agent itself. |
 | [OpenCode](../terminal-agents/opencode.md) | ✅ | Open-source terminal coding agent. | OpenCode is one of the tools CC Switch manages; they complement rather than compete. |
 | Claude Code / Claude Desktop | 未收录 | Official Anthropic desktop IDE integration. | First-party, closed-source; CC Switch adds multi-provider unification but at the cost of a third-party abstraction layer. |
 | Cursor / Windsurf | 未收录 | AI-native IDEs with built-in multi-model support. | These are full editors with agent features; CC Switch is a meta-manager, not a code editor. |

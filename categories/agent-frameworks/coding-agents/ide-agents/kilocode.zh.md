@@ -85,7 +85,7 @@ health:
 
 ## 何时不用
 
-- **你想要一个用来搭自己 agent 的框架。** 这是最锋利的判别：Kilo Code 是个**最终用户编码 agent**，不是库/SDK。如果你在搭一个定制的多 agent 应用、或你自己的 agent 运行时，你该选框架（[DSPy](../../workflow-builders/dspy.zh.md)、[AgentScope](../../agent-runtimes/agentscope.zh.md)），而不是一个成品 VS Code 扩展。这里没有一个可以 import 的供应商无关「agent 内核」。
+- **你想要一个用来搭自己 agent 的框架。** 这是最锋利的判别：Kilo Code 是个**最终用户编码 agent**，不是库/SDK。如果你在搭一个定制的多 agent 应用、或你自己的 agent 运行时，你该选框架（[DSPy](../../workflow-builders/dspy.zh.md)、[AgentScope](../../agent-runtimes/agent-sdks/agentscope.zh.md)），而不是一个成品 VS Code 扩展。这里没有一个可以 import 的供应商无关「agent 内核」。
 - **你不在受支持的 IDE 里。** 它是 VS Code / JetBrains 扩展。在这些编辑器之外（或纯终端/CI 流程里），在 IDE 内的价值就消失了——要 headless/CLI 用法，你该选一个 CLI 形态的 agent。
 - **你需要一个稳定、慢节奏的表面。** 项目发版极猛（当前是 v7.x，新版常在几天内落地；2025-03 才创建）。这种速度对出特性是福音，但你要把团队标准化在它上面的话，耦合的就是这份 churn。
 - **你想要成本被完全托管、可预测。** BYOK 意味着*你自己*承担供应商成本管理——token 花销取决于你选哪个模型、agent 干得多狠。一个带统一订阅价的封闭产品会消掉这个变量；Kilo 刻意不这么做。

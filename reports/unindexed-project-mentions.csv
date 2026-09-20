@@ -157,7 +157,7 @@ Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
 Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 ClashX / ClashX Pro,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
-Claude / ChatGPT native apps,categories/agent-frameworks/agent-runtimes/openclaw.md,,no
+Claude / ChatGPT native apps,categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md,,no
 Claude Code,categories/agent-frameworks/coding-agents/terminal-agents/codex.md,,no
 Claude Code (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 Claude Code / Claude Desktop,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
@@ -166,7 +166,7 @@ Claude Code GitHub Action (general),categories/ai-code-review/claude-code-securi
 Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
-Claude Cowork,categories/agent-frameworks/agent-runtimes/openhuman.md,,no
+Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
 claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
@@ -231,7 +231,7 @@ DeepSpeech (Mozilla),categories/media-processing/video-audio/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
-Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/symphony.md,,no
+Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
 DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
@@ -310,7 +310,7 @@ Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 git submodule / manual `cp`,categories/agent-tooling/vercel-skills.md,,no
 GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/graphify.md,,no
-GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/symphony.md,,no
+GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
 GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md,,no
 GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
@@ -346,11 +346,11 @@ gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
 "gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
-Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/parlant.md,,no
+Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
-Hand-rolled integration,categories/agent-frameworks/agent-runtimes/autogen.md,,no
+Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
 Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.md,,no
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
 Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
@@ -658,7 +658,7 @@ qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no
 Ragas / OpenAI Evals,categories/llm-eval/INDEX.md,,no
 RAPTOR,categories/rag-retrieval/pageindex.md,,no
-Rasa,categories/agent-frameworks/agent-runtimes/parlant.md,,no
+Rasa,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 raw `tc` (iproute2),categories/networking/wondershaper.md,,no
 raw ANSI escape codes,categories/terminal-ui/colorama.md,,no
 Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl-py.md,,no

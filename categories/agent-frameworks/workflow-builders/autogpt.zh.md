@@ -85,11 +85,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Hermes Agent](../agent-runtimes/hermes-agent.zh.md) | ✅ | 带学习循环的自我改进智能体。 | Hermes 聚焦技能进化与记忆；AutoGPT 聚焦工作流自动化与部署。 |
-| [OpenClaw](../agent-runtimes/openclaw.zh.md) | ✅ | 个人多渠道助手。 | OpenClaw 是对话助手；AutoGPT 是带 Web UI 的任务自动化平台。 |
+| [Hermes Agent](../agent-runtimes/personal-assistants/hermes-agent.zh.md) | ✅ | 带学习循环的自我改进智能体。 | Hermes 聚焦技能进化与记忆；AutoGPT 聚焦工作流自动化与部署。 |
+| [OpenClaw](../agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 个人多渠道助手。 | OpenClaw 是对话助手；AutoGPT 是带 Web UI 的任务自动化平台。 |
 | [OpenCode](../coding-agents/terminal-agents/opencode.zh.md) | ✅ | 模型无关的终端编码智能体。 | OpenCode 是编码工具；AutoGPT 是带持续执行的通用智能体框架。 |
 | [LangChain](langchain.zh.md) | ✅ | 构建智能体管线的底层框架。 | LangChain 是需集成到代码中的库；AutoGPT 是带 UI 和部署模型的高级平台。 |
-| [CrewAI](../agent-runtimes/crewai.zh.md) | ✅ | 多智能体编排框架。 | CrewAI 聚焦多智能体团队；AutoGPT 聚焦单智能体持续执行。 |
+| [CrewAI](../agent-runtimes/agent-sdks/crewai.zh.md) | ✅ | 多智能体编排框架。 | CrewAI 聚焦多智能体团队；AutoGPT 聚焦单智能体持续执行。 |
 
 ## 技术栈
 

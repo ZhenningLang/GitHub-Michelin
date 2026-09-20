@@ -85,7 +85,7 @@ You reach for it specifically when you want an *open-source*, in-IDE coding agen
 
 ## When NOT to use
 
-- **You want a framework to build your own agents on.** This is the sharpest filter: Kilo Code is an **end-user coding agent**, not a library/SDK. If you're building a custom multi-agent application or your own agent runtime, you want a framework ([DSPy](../../workflow-builders/dspy.md), [AgentScope](../../agent-runtimes/agentscope.md)), not a finished VS Code extension. There's no provider-agnostic "agent core" you import.
+- **You want a framework to build your own agents on.** This is the sharpest filter: Kilo Code is an **end-user coding agent**, not a library/SDK. If you're building a custom multi-agent application or your own agent runtime, you want a framework ([DSPy](../../workflow-builders/dspy.md), [AgentScope](../../agent-runtimes/agent-sdks/agentscope.md)), not a finished VS Code extension. There's no provider-agnostic "agent core" you import.
 - **You're not in a supported IDE.** It's a VS Code / JetBrains extension. Outside those editors (or in a pure-terminal/CI workflow) the in-IDE value evaporates — for headless/CLI use you'd want a CLI-shaped agent instead.
 - **You need a stable, slow-moving surface.** The project ships extremely aggressively (current release is v7.x, with releases landing within days; created only ~2025-03). That velocity is great for features but is churn you'd be coupling to if you standardize a team on it.
 - **You want costs fully managed/predictable for you.** BYOK means *you* own provider-cost management — token spend tracks whatever model you pick and how hard the agent works. A closed product with a flat subscription removes that variable; Kilo deliberately doesn't.

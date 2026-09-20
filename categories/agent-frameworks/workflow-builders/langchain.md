@@ -96,7 +96,7 @@ You are a Python developer building an AI application that needs to connect LLMs
 | [Dify](dify.md) | ✅ | Visual platform for agentic workflows. | Dify is a low-code platform with built-in RAG and deployment; LangChain is a code-first library for building custom agents with full control. |
 | [DSPy](dspy.md) | ✅ | Prompt optimization via metrics. | DSPy optimizes prompts/weights against a metric; LangChain is a general composition framework for agents, chains, and tools. |
 | [AutoGPT](autogpt.md) | ✅ | Platform for autonomous workflow automation. | AutoGPT is a higher-level platform with a web UI and deployment model; LangChain is a lower-level framework you build on. |
-| [smolagents](../agent-runtimes/smolagents.md) | ✅ | Tiny transparent agent loop from Hugging Face. | smolagents is minimal and transparent; LangChain is comprehensive and integration-rich. |
+| [smolagents](../agent-runtimes/agent-sdks/smolagents.md) | ✅ | Tiny transparent agent loop from Hugging Face. | smolagents is minimal and transparent; LangChain is comprehensive and integration-rich. |
 | [LlamaIndex](llamaindex.md) | ✅ | RAG-first data framework for LLMs. | LlamaIndex specializes in retrieval and data ingestion; LangChain is broader, covering agents, chains, tools, and orchestration. |
 
 ## Tech stack

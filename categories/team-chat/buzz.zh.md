@@ -74,7 +74,7 @@ health:
 ## 何时不用
 
 - **你只需要自托管团队聊天。** 用 [Mattermost](mattermost.zh.md) 或 [Zulip](zulip.zh.md)——两者都有十年生产打磨、庞大的集成生态和成熟运维文档。Buzz 是 pre-1.0，聊天只是它更大、也更未经验证的赌注中的一个面。
-- **你要的是个人跨渠道助手。** 用 [OpenClaw](../agent-frameworks/agent-runtimes/openclaw.zh.md)；Buzz 是组织工作区，不是某个人跨消息应用的助手。
+- **你要的是个人跨渠道助手。** 用 [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md)；Buzz 是组织工作区，不是某个人跨消息应用的助手。
 - **你今天就需要细粒度 RBAC、真正落地的限流或端到端加密。** 访问控制只有频道成员资格（是成员即可读写），且项目自己的 `ARCHITECTURE.md` 写明限流器尚未实现、私信的端到端加密只是未来考虑。需要按角色划分能力时，选 Mattermost 或 Zulip。
 - **你需要能抗住数据库攻击者的审计链。** 哈希链日志是「可发现篡改」，不是「抗篡改」：安全文档说，有数据库写权限的攻击者可以重算整条链。受监管的审计请留在专用系统。
 - **你要的是经过验证的 forge 替代品**（分支即 PR、合并列车、issue 跟踪）。这些在文档里标的是 Designed，不是已交付：NIP-34 issue 渲染、项目绑定、合并协调器都还没建。那类需求用 GitHub/GitLab，把 Buzz 的 git 托管当附赠。
@@ -89,7 +89,7 @@ health:
 | [Zulip](zulip.zh.md) | ✅ | 若话题式线程和异步优先的文化比 agent 成员身份更重要，选 Zulip；若你要的差异化是「人、agent 与 git 共用一条签名日志」，选 Buzz。 | Zulip 的会话模型和发布纪律一流，但没有 agent 主体模型，也没有内置 git/workflow 底座。 |
 | [Rocket.Chat](rocket-chat.zh.md) | ✅ | 需要应用市场、全渠道客服和联邦时选 Rocket.Chat；协议优先的工作区比生态广度更重要时选 Buzz。 | Rocket.Chat 扩展面最丰富，但带来 MongoDB + NATS + 微服务运维，且功能被 EE 授权切分。 |
 | Slack / Discord / Microsoft Teams | 未收录 | 零运维和庞大集成目录胜过数据自有时，选托管 SaaS；自托管和一条可审计日志本身就是目的时，选 Buzz。 | SaaS 免去全部基础设施负担，但底座不属于你，其中的 agent 是持有受限 token 的应用，不是持钥成员。 |
-| [OpenClaw](../agent-frameworks/agent-runtimes/openclaw.zh.md) | ✅ | 要跨个人消息应用的个人助手，选 OpenClaw；要多个真人加多个 agent 协作的共享组织工作区，选 Buzz。 | 作用域不同：OpenClaw 是单个运营者的助手；Buzz 是有频道、角色和审计的多成员工作区。 |
+| [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 要跨个人消息应用的个人助手，选 OpenClaw；要多个真人加多个 agent 协作的共享组织工作区，选 Buzz。 | 作用域不同：OpenClaw 是单个运营者的助手；Buzz 是有频道、角色和审计的多成员工作区。 |
 
 ## 技术栈
 

@@ -85,8 +85,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [OpenClaw](../../agent-runtimes/openclaw.zh.md) | ✅ | 跨多渠道的个人 AI 助手。 | OpenClaw 是自托管的跨消息应用助手；CC Switch 是编码智能体的桌面管理器，不是对话机器人。 |
-| [Hermes Agent](../../agent-runtimes/hermes-agent.zh.md) | ✅ | 带学习循环的自我改进 AI 智能体。 | Hermes Agent 是自治智能体；CC Switch 是其他智能体的管理层，本身不是智能体。 |
+| [OpenClaw](../../agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | 跨多渠道的个人 AI 助手。 | OpenClaw 是自托管的跨消息应用助手；CC Switch 是编码智能体的桌面管理器，不是对话机器人。 |
+| [Hermes Agent](../../agent-runtimes/personal-assistants/hermes-agent.zh.md) | ✅ | 带学习循环的自我改进 AI 智能体。 | Hermes Agent 是自治智能体；CC Switch 是其他智能体的管理层，本身不是智能体。 |
 | [OpenCode](../terminal-agents/opencode.zh.md) | ✅ | 开源终端编码智能体。 | OpenCode 是 CC Switch 管理的工具之一，两者互补而非竞争。 |
 | Claude Code / Claude Desktop | 未收录 | Anthropic 官方桌面 IDE 集成。 | 第一方闭源工具；CC Switch 增加了多提供商统一能力，但代价是第三方抽象层。 |
 | Cursor / Windsurf | 未收录 | 内置多模型支持的 AI 原生 IDE。 | 这些是带智能体功能的完整编辑器；CC Switch 是元管理器，不是代码编辑器。 |
