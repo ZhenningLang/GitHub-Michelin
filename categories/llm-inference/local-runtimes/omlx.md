@@ -2,7 +2,7 @@
 name: oMLX
 slug: omlx
 repo: https://github.com/jundot/omlx
-category: llm-inference
+category: local-runtimes
 tags: [llm-serving, inference-server, apple-silicon, mlx, kv-cache, openai-api, macos]
 language: Python
 license: Apache-2.0
@@ -70,7 +70,7 @@ health:
 
 An Apple-Silicon-only LLM inference server (built on Apple's MLX) with continuous batching and a tiered hot-RAM/cold-SSD KV cache, managed from the macOS menu bar — aimed at making local models practical for everyday coding agents like Claude Code.
 
-![omlx — health radar](../../assets/health/omlx.svg)
+![omlx — health radar](../../../assets/health/omlx.svg)
 
 ## When to use
 
@@ -80,7 +80,7 @@ You also reach for it when you want one Mac-local server that handles text LLMs,
 
 ## When NOT to use
 
-- **You need production-grade, battle-tested serving — this is a very young, single-maintainer project.** Created 2026-02 (~4 months old as of 2026-06) with one dominant author; it is **unproven** and has a thin track record. For anything you must rely on, prefer mature stacks: **vLLM**, **TGI**, or **[Modular MAX](modular.md)**. Treat oMLX as promising-but-early. [推断]
+- **You need production-grade, battle-tested serving — this is a very young, single-maintainer project.** Created 2026-02 (~4 months old as of 2026-06) with one dominant author; it is **unproven** and has a thin track record. For anything you must rely on, prefer mature stacks: **vLLM**, **TGI**, or **[Modular MAX](../serving-engines/modular.md)**. Treat oMLX as promising-but-early. [推断]
 - **You're not on Apple Silicon.** oMLX is **macOS-only** and **Apple-Silicon-only** (requires macOS 15.0+ and an M-series chip), built on Apple's MLX. There is no Linux/NVIDIA/AMD path — for server GPUs use vLLM / TGI / TensorRT-LLM / MAX.
 - **You're serving at cluster / multi-node scale.** This is a single-machine, single-Mac server with LRU model eviction and a RAM cap — not a horizontally-scaled, multi-GPU fleet engine with autoscaling.
 - **SSD-offload caching has tradeoffs you can't accept.** Restoring KV blocks from disk is faster than recompute *on a cache hit*, but it adds I/O latency and SSD wear, and the win depends on prefix-hit rates; on a cold/novel prompt you pay normal prefill. Don't assume the cache is free.
@@ -94,11 +94,11 @@ You also reach for it when you want one Mac-local server that handles text LLMs,
 | LM Studio | 未收录 | Choose LM Studio when you need a polished desktop app with an OpenAI-compatible server. | Polished desktop app for local models on Mac/Win/Linux with an OpenAI-compatible server; closed-source GUI, not an Apple-MLX-native open-source server. |
 | mlx-lm (`mlx_lm.server`) | 未收录 | Choose mlx-lm when you need Apple's own MLX LLM toolkit with a minimal server. | Apple's own MLX LLM toolkit with a minimal OpenAI-compatible server — oMLX is built **on** mlx-lm's BatchGenerator; mlx-lm is lower-level and lacks the menu-bar app, tiered SSD cache, multi-model LRU, and admin dashboard. |
 | [llama.cpp](llama-cpp.md) | ✅ | Choose llama.cpp when you need a portable C/C++ GGUF engine that runs broadly, including Macs via Metal. | The portable C/C++ inference engine (GGUF) running everywhere incl. Macs via Metal; maximally portable and mature, but not MLX-native and no built-in macOS menu-bar/admin management layer. |
-| [vLLM](vllm.md) | ✅ | Choose vLLM when you need the de-facto datacenter LLM serving engine, not a Mac-local server. | The de-facto data-center LLM serving engine (PagedAttention, continuous batching), huge community; NVIDIA/Linux-first — not a Mac/Apple-Silicon local server. |
-| [Text Generation Inference (TGI)](text-generation-inference.md) | ✅ | Choose TGI when you need Hugging Face's production server and tight HF integration at scale. | Hugging Face's production server, tight HF integration and battle-tested at scale; server-GPU oriented, not an on-Mac local stack. |
-| [SGLang](sglang.md) | ✅ | Choose SGLang when you need high-throughput server-GPU serving with RadixAttention prefix caching. | High-throughput serving engine with RadixAttention prefix caching; server-GPU oriented and more complex to operate, not a single-Mac menu-bar app. |
-| [Modular Platform (MAX + Mojo)](modular.md) | ✅ | Choose Modular Platform when you need a server-class cross-vendor engine plus Mojo kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; a far larger, server-class, single-vendor platform — different layer and scale from a Mac-local server. |
-| [Ray Serve](ray-serve.md) | ✅ | Choose Ray Serve when you need scalable Python model serving with multi-model composition and autoscaling. | General-purpose scalable Python model-serving framework with multi-model composition and autoscaling; built on Ray, operationally demanding, not a Mac-local server. |
+| [vLLM](../serving-engines/vllm.md) | ✅ | Choose vLLM when you need the de-facto datacenter LLM serving engine, not a Mac-local server. | The de-facto data-center LLM serving engine (PagedAttention, continuous batching), huge community; NVIDIA/Linux-first — not a Mac/Apple-Silicon local server. |
+| [Text Generation Inference (TGI)](../serving-engines/text-generation-inference.md) | ✅ | Choose TGI when you need Hugging Face's production server and tight HF integration at scale. | Hugging Face's production server, tight HF integration and battle-tested at scale; server-GPU oriented, not an on-Mac local stack. |
+| [SGLang](../serving-engines/sglang.md) | ✅ | Choose SGLang when you need high-throughput server-GPU serving with RadixAttention prefix caching. | High-throughput serving engine with RadixAttention prefix caching; server-GPU oriented and more complex to operate, not a single-Mac menu-bar app. |
+| [Modular Platform (MAX + Mojo)](../serving-engines/modular.md) | ✅ | Choose Modular Platform when you need a server-class cross-vendor engine plus Mojo kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; a far larger, server-class, single-vendor platform — different layer and scale from a Mac-local server. |
+| [Ray Serve](../serving-engines/ray-serve.md) | ✅ | Choose Ray Serve when you need scalable Python model serving with multi-model composition and autoscaling. | General-purpose scalable Python model-serving framework with multi-model composition and autoscaling; built on Ray, operationally demanding, not a Mac-local server. |
 
 ## Tech stack
 

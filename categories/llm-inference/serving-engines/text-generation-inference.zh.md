@@ -2,7 +2,7 @@
 name: Text Generation Inference (TGI)
 slug: text-generation-inference
 repo: https://github.com/huggingface/text-generation-inference
-category: llm-inference
+category: serving-engines
 tags: [llm-inference, serving, text-generation-inference, service]
 language: Python
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 Large Language Model Text Generation Inference GitHub 将它标为 archived，因此新生产项目不应把它当默认方案，而应先当作遗留或模式参考。
 
-![Text Generation Inference (TGI) — 健康度雷达](../../assets/health/text-generation-inference.zh.svg)
+![Text Generation Inference (TGI) — 健康度雷达](../../../assets/health/text-generation-inference.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ Large Language Model Text Generation Inference GitHub 将它标为 archived，�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [BentoML](bentoml.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Text Generation Inference (TGI) 对照。 | Text Generation Inference (TGI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [llama.cpp](llama-cpp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Text Generation Inference (TGI) 对照。 | Text Generation Inference (TGI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [llama.cpp](../local-runtimes/llama-cpp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Text Generation Inference (TGI) 对照。 | Text Generation Inference (TGI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [LMDeploy](lmdeploy.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Text Generation Inference (TGI) 对照。 | Text Generation Inference (TGI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Text Generation Inference (TGI) 对照。 | Text Generation Inference (TGI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Text Generation Inference (TGI) 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |

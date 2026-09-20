@@ -2,7 +2,7 @@
 name: TensorRT-LLM
 slug: tensorrt-llm
 repo: https://github.com/NVIDIA/TensorRT-LLM
-category: llm-inference
+category: serving-engines
 tags: [llm-serving, inference-engine, nvidia, tensorrt, gpu, cuda, python, c++, quantization, fp8]
 language: Python / C++
 license: Apache-2.0
@@ -71,7 +71,7 @@ health:
 NVIDIA's optimized LLM inference engine, built on **TensorRT** — delivering maximum throughput on NVIDIA GPUs through custom CUDA kernels, FP8/INT8 quantization, and aggressive kernel fusion. The Python orchestration layer is open-source (Apache-2.0), but the performance-critical CUDA kernels are closed-source binary blobs.
 
 
-![TensorRT-LLM — health radar](../../assets/health/tensorrt-llm.svg)
+![TensorRT-LLM — health radar](../../../assets/health/tensorrt-llm.svg)
 
 ## When to use
 
@@ -93,10 +93,10 @@ You're an ML infrastructure engineer serving a high-traffic LLM API on a fleet o
 | [vLLM](vllm.md) | ✅ | Use TensorRT-LLM when you need maximum throughput on NVIDIA hardware; choose vLLM when you want open-source flexibility, huge community, and dynamic model loading. | The de-facto open-source LLM serving engine (PagedAttention, continuous batching), huge community and model coverage; NVIDIA-first, less peak-throughput than TensorRT-LLM on identical hardware. |
 | [Text Generation Inference (TGI)](text-generation-inference.md) | ✅ | Use TensorRT-LLM when you need NVIDIA-specific peak throughput; choose TGI when you want Hugging Face's production server with tight HF ecosystem integration. | Hugging Face's production server, tight HF ecosystem integration; license history has wobbled (Apache→HFOIL→Apache), less NVIDIA-specific tuning than TensorRT-LLM. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | Use TensorRT-LLM when you need NVIDIA's own engine and maximum throughput on NVIDIA GPUs; choose MAX when you want a cross-vendor compiler+language platform with its own kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; single-vendor lock-in, younger community, less NVIDIA-specific tuning than TensorRT-LLM. |
-| [oMLX](omlx.md) | ✅ | Use TensorRT-LLM for datacenter NVIDIA GPU serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
+| [oMLX](../local-runtimes/omlx.md) | ✅ | Use TensorRT-LLM for datacenter NVIDIA GPU serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
 | [Ray Serve](ray-serve.md) | ✅ | Use TensorRT-LLM when you need a dedicated LLM inference engine; choose Ray Serve when you need general Python model-serving orchestration and scaling across many model types. | General Python model-serving/orchestration framework for scaling and composing services; not a hand-tuned single-model inference engine. |
 | [SGLang](sglang.md) | ✅ | Use TensorRT-LLM when you want NVIDIA's compiled-engine peak throughput; choose SGLang when you specifically need RadixAttention prefix caching and structured-generation optimizations. | High-throughput serving engine with RadixAttention prefix caching; newer, smaller ecosystem, less NVIDIA-specific tuning than TensorRT-LLM. |
-| [Ollama](ollama.md) / [llama.cpp](llama-cpp.md) | ✅ | Use TensorRT-LLM for datacenter throughput serving; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
+| [Ollama](../local-runtimes/ollama.md) / [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | Use TensorRT-LLM for datacenter throughput serving; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
 
 ## Tech stack
 

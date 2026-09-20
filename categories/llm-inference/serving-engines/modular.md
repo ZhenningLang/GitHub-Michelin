@@ -2,7 +2,7 @@
 name: Modular Platform (MAX + Mojo)
 slug: modular
 repo: https://github.com/modular/modular
-category: llm-inference
+category: serving-engines
 tags: [llm-serving, inference-engine, mojo, max, gpu, ai-compiler, openai-compatible]
 language: Mojo
 license: Apache-2.0 WITH LLVM-exception
@@ -73,7 +73,7 @@ health:
 
 A vendor-built AI stack in one repo: **MAX** — a high-performance inference/serving engine that runs popular open models on GPU and CPU behind an OpenAI-compatible endpoint — plus **Mojo**, a Python-superset systems language for writing the high-performance kernels underneath.
 
-![modular — health radar](../../assets/health/modular.svg)
+![modular — health radar](../../../assets/health/modular.svg)
 
 ## When to use
 

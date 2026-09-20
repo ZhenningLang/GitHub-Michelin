@@ -2,7 +2,7 @@
 name: Text Generation Inference (TGI)
 slug: text-generation-inference
 repo: https://github.com/huggingface/text-generation-inference
-category: llm-inference
+category: serving-engines
 tags: [llm-inference, serving, text-generation-inference, service]
 language: Python
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 
 Large Language Model Text Generation Inference It is archived on GitHub, so treat it as a legacy or pattern-source option rather than a default for new production work.
 
-![Text Generation Inference (TGI) — health radar](../../assets/health/text-generation-inference.svg)
+![Text Generation Inference (TGI) — health radar](../../../assets/health/text-generation-inference.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ This first-pass page exists because Text Generation Inference (TGI) was repeated
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [BentoML](bentoml.md) | ✅ | When you need the established in-index option for this category, compare it against Text Generation Inference (TGI) before switching. | Text Generation Inference (TGI) is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Text Generation Inference (TGI) only after verifying the repo-specific caveats below. |
-| [llama.cpp](llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against Text Generation Inference (TGI) before switching. | Text Generation Inference (TGI) is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Text Generation Inference (TGI) only after verifying the repo-specific caveats below. |
+| [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against Text Generation Inference (TGI) before switching. | Text Generation Inference (TGI) is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Text Generation Inference (TGI) only after verifying the repo-specific caveats below. |
 | [LMDeploy](lmdeploy.md) | ✅ | When you need the established in-index option for this category, compare it against Text Generation Inference (TGI) before switching. | Text Generation Inference (TGI) is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Text Generation Inference (TGI) only after verifying the repo-specific caveats below. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | When you need the established in-index option for this category, compare it against Text Generation Inference (TGI) before switching. | Text Generation Inference (TGI) is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Text Generation Inference (TGI) only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |

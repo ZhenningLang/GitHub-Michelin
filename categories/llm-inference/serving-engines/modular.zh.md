@@ -2,7 +2,7 @@
 name: Modular Platform (MAX + Mojo)
 slug: modular
 repo: https://github.com/modular/modular
-category: llm-inference
+category: serving-engines
 tags: [llm-serving, inference-engine, mojo, max, gpu, ai-compiler, openai-compatible]
 language: Mojo
 license: Apache-2.0 WITH LLVM-exception
@@ -73,7 +73,7 @@ health:
 
 一个厂商自建、垂直整合的 AI 栈，全装在一个仓库里：**MAX**——一个高性能推理/服务引擎，在 GPU 和 CPU 上跑主流开源模型，对外暴露 OpenAI 兼容端点；外加 **Mojo**——一门 Python 超集系统级语言，用来写底层那些高性能 kernel。
 
-![modular — 健康度雷达](../../assets/health/modular.zh.svg)
+![modular — 健康度雷达](../../../assets/health/modular.zh.svg)
 
 ## 何时使用
 

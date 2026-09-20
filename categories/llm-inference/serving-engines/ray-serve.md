@@ -2,7 +2,7 @@
 name: Ray Serve
 slug: ray-serve
 repo: https://github.com/ray-project/ray
-category: llm-inference
+category: serving-engines
 tags: [model-serving, ml-serving, llm, python, distributed, scaling, anyscale, multi-model, autoscaling]
 language: Python
 license: Apache-2.0
@@ -77,7 +77,7 @@ health:
 A scalable, general-purpose model serving framework built on Ray — designed for composing multiple models (LLMs, sklearn, XGBoost, and more) into distributed deployment graphs with autoscaling, multi-model routing, and Python-native APIs.
 
 
-![Ray Serve — health radar](../../assets/health/ray-serve.svg)
+![Ray Serve — health radar](../../../assets/health/ray-serve.svg)
 
 ## When to use
 
@@ -100,7 +100,7 @@ You're an ML platform engineer at a company that serves a mix of models — not 
 | [Text Generation Inference (TGI)](text-generation-inference.md) | ✅ | Use Ray Serve when you need general model-serving orchestration; choose TGI when you want Hugging Face's production LLM server with tight HF ecosystem integration. | Hugging Face's production server, tight HF integration; license history wobbled (Apache→HFOIL→Apache), not a general-purpose serving framework. |
 | [TensorRT-LLM](tensorrt-llm.md) | ✅ | Use Ray Serve when you need orchestration across many model types; choose TensorRT-LLM when you need NVIDIA's own engine for maximum throughput on NVIDIA hardware. | NVIDIA's own engine, top-tier throughput on NVIDIA hardware; deeply NVIDIA-locked, heavier build workflow, not an orchestration layer. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | Use Ray Serve when you want a general Python model-serving framework with multi-model composition; choose MAX when you want a vendor-built cross-vendor compiler+language platform with its own kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; single-vendor lock-in, not a general-purpose model-serving orchestration framework. |
-| [oMLX](omlx.md) | ✅ | Use Ray Serve for datacenter multi-model serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-model orchestration framework. |
+| [oMLX](../local-runtimes/omlx.md) | ✅ | Use Ray Serve for datacenter multi-model serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-model orchestration framework. |
 | [SGLang](sglang.md) | ✅ | Choose SGLang when you specifically need RadixAttention prefix caching and structured-generation optimizations. | High-throughput serving engine with RadixAttention prefix caching; newer, smaller ecosystem, not an orchestration framework. |
 | [BentoML](bentoml.md) / OpenLLM | 部分已收录 | Use Ray Serve when you need Ray-native distributed scaling and deployment graphs; choose BentoML when you want a lighter, container-native model-serving framework. | Lighter, container-native model-serving framework; smaller ecosystem than Ray, less proven at very large scale. |
 | KServe | 未收录 | Use Ray Serve when you want a Python-first, code-centric serving framework; choose KServe when you need Kubernetes-native model serving with standard CRDs and tight Kubeflow integration. | Kubernetes-native model serving with standard CRDs and tight Kubeflow integration; more YAML/config-heavy, less Python-native than Ray Serve. |

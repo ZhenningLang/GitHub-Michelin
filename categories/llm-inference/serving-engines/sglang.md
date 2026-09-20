@@ -2,7 +2,7 @@
 name: SGLang
 slug: sglang
 repo: https://github.com/sgl-project/sglang
-category: llm-inference
+category: serving-engines
 tags: [llm-serving, inference-engine, structured-generation, radix-attention, gpu, python, c++, openai-compatible]
 language: Python / C++
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 A fast LLM serving engine built around **RadixAttention** — efficient KV cache reuse for multi-turn conversations and structured generation — with strong performance on tool-using agents and structured-output workloads.
 
 
-![SGLang — health radar](../../assets/health/sglang.svg)
+![SGLang — health radar](../../../assets/health/sglang.svg)
 
 ## When to use
 
@@ -98,9 +98,9 @@ You're a backend engineer building an AI agent platform that needs to serve LLMs
 | [Text Generation Inference (TGI)](text-generation-inference.md) | ✅ | Use SGLang when you need structured generation and multi-turn KV cache reuse; choose TGI for Hugging Face's production server with tight HF ecosystem integration. | Hugging Face's production server, tight HF ecosystem integration; license history has wobbled (Apache→HFOIL→Apache), smaller community than vLLM. |
 | [TensorRT-LLM](tensorrt-llm.md) | ✅ | Choose TensorRT-LLM when maximum NVIDIA throughput with compiled static graphs matters most. | NVIDIA's own engine, top-tier latency on NVIDIA hardware; deeply NVIDIA-locked, complex build/engine-compile workflow, less dynamic model switching. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | Use SGLang for a Python-native open-source serving engine with structured generation; choose MAX when you want a vendor-built cross-vendor compiler+language platform with Mojo kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; single-vendor lock-in, younger community, smaller model coverage than vLLM. |
-| [oMLX](omlx.md) | ✅ | Use SGLang for datacenter NVIDIA GPU serving with structured generation; choose oMLX for Apple-Silicon Mac local inference with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
+| [oMLX](../local-runtimes/omlx.md) | ✅ | Use SGLang for datacenter NVIDIA GPU serving with structured generation; choose oMLX for Apple-Silicon Mac local inference with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
 | [Ray Serve](ray-serve.md) | ✅ | Choose Ray Serve for general Python model-serving orchestration and scaling across model types. | General Python model-serving/orchestration framework for scaling and composing services; not a hand-tuned single-model inference engine. |
-| [Ollama](ollama.md) / [llama.cpp](llama-cpp.md) | ✅ | Use SGLang for datacenter throughput serving with structured generation; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
+| [Ollama](../local-runtimes/ollama.md) / [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | Use SGLang for datacenter throughput serving with structured generation; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
 
 ## Tech stack
 

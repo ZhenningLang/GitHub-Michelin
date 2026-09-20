@@ -269,7 +269,7 @@ Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 EVA-CLIP,categories/ml-research/clip.md,,no
 Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
 Fabric,categories/networking/paramiko.md,,no
-FastAPI + Uvicorn,categories/llm-inference/ray-serve.md,,no
+FastAPI + Uvicorn,categories/llm-inference/serving-engines/ray-serve.md,,no
 faster-whisper,categories/media-processing/video-audio/whisper.md,,no
 FaucetETH (upstream: FaucETH),categories/blockchain-dev-infrastructure/INDEX.md,,no
 FaucETH,categories/blockchain-dev-infrastructure/powfaucet.md,,no
@@ -411,7 +411,7 @@ Kitty,categories/terminal-ui/alacritty.md,,no
 Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 KrakenD,categories/api-gateway/kong.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
-KServe,categories/llm-inference/ray-serve.md,,no
+KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
 LangSmith,categories/llm-eval/promptfoo.md,,no
@@ -432,7 +432,7 @@ Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
-LM Studio,categories/llm-inference/omlx.md,,no
+LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/ml-research/llm-circuit-finder.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
@@ -477,7 +477,7 @@ Miniflux,categories/reading-tools/netnewswire.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
-mlx-lm (`mlx_lm.server`),categories/llm-inference/omlx.md,,no
+mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no
 Mockaroo,categories/dev-utilities/data-tools/faker-js.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/taskmatrix.md,,no
@@ -591,7 +591,7 @@ Plain Git + agent's own session logs,categories/agent-tooling/entire-cli.md,,no
 plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
 Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/beads.md,,no
 Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
-plain PyTorch (+ Triton),categories/llm-inference/modular.md,,no
+plain PyTorch (+ Triton),categories/llm-inference/serving-engines/modular.md,,no
 Plain tmux + `git worktree` scripts,categories/agent-tooling/agent-orchestrator.md,,no
 plain vector DB (pgvector / Chroma),categories/agent-memory/memori.md,,no
 PlantUML,categories/diagramming/flowchart-js.md,,no
@@ -747,7 +747,6 @@ termcolor / colored,categories/terminal-ui/colorama.md,,no
 texify,categories/ocr/latex-ocr.md,,no
 TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
 textract,categories/document-parsing/markitdown.md,,no
-TGI,categories/llm-inference/INDEX.md,,no
 "The app's native scripting backend, driven directly",categories/agent-tooling/cli-anything.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
