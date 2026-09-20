@@ -78,6 +78,29 @@ health:
 
 你把 XXL-JOB 的**调度中心**装上（一个有数据库背书的 Spring Boot Web 应用），给每个服务加上 executor starter，再用 `@XxlJob("...")` 注解处理方法。现在调度就活在一个可视化控制台里：你集中定义任务，调度中心按 cron 触发，把每次触发路由到某个执行器实例（轮询、一致性 hash、failover、busyover，或**分片**——让 N 个实例各处理自己那 1/N 份），你还能拿到每次执行的日志、失败重试、超时控制，以及一个手动「执行一次」的按钮。对一个已经长大到 crontab 装不下、但又还不需要完整数据管线引擎的 Java 团队来说，它就是那个集中管理、可视化的调度器。
 
+## 怎么用起来
+
+XXL-JOB 分两块：**调度中心**是一个独立部署的管理服务（带网页，状态存在 MySQL），负责「什么时候跑哪个任务、派给哪台机器、失败了重不重试」；**执行器**是一个 jar 包，引入到你自己的 Spring Boot 应用里。你只需要写一个普通的业务方法，贴上 `@XxlJob("名字")` 注解。应用启动后执行器自动去调度中心报到；你在网页上建任务、填 cron 和这个名字，到点后调度中心通过 HTTP 叫你的应用执行这个方法，并把执行日志和结果收回来展示。定时、分派、重试、日志这些都由 XXL-JOB 包了，你只写「任务本身干什么」。
+
+![xxl-job — 主干用户故事](../../assets/flow/xxl-job.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/xxl-job.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：部署调度中心 + MySQL — `docker: xuxueli/xxl-job-admin`
+2. **你**：应用里加 maven 依赖，配调度中心地址 — `com.xuxueli:xxl-job-core`
+3. **你**：写一个普通方法，贴上注解 — `@XxlJob("demoJobHandler")`
+4. **XXL-JOB**：应用启动时，执行器自动向调度中心注册
+5. **你**：在网页上建任务，填 cron 和 handler 名
+6. **XXL-JOB**：到点挑一台执行器，通过 HTTP 触发
+7. **XXL-JOB**：调用你的方法，收回日志与结果，失败自动重试 — `XxlJobHelper.log(...)`
+
+**价值**：业务代码里只剩「任务本身干什么」；定时、分派、重试、日志都不用自己写
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你交付的是闭源/专有软件，且在意许可证。** XXL-JOB 是 **GPL-3.0**（强 copyleft）。把它嵌进你对外分发的产品，可能在你自己的代码上触发 copyleft 义务——先过法务，或者换一个宽松许可的调度器。这是最锋利的劝退点。[未验证]

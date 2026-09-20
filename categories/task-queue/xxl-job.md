@@ -78,6 +78,29 @@ You run a fleet of Java/Spring (Boot) services and you've accumulated a pile of 
 
 You drop the XXL-JOB **admin** in (one Spring Boot web app backed by a database), add the executor starter to each of your services, and annotate handler methods with `@XxlJob("...")`. Now scheduling lives in a visual console: you define jobs centrally, the dispatcher fires them on a cron, routes each trigger to an executor instance (round-robin, consistent-hash, failover, busyover, or **sharded** so each of N instances processes its 1/N slice), and you get per-execution logs, retry-on-failure, timeout, and a manual "run once" button. It's the centrally-managed, visual scheduler for a Java shop that has outgrown crontab but doesn't need a full data-pipeline engine.
 
+## How it works
+
+XXL-JOB has two halves. The **scheduling center** is a separately deployed admin service (with a web console, state in MySQL) that decides *when* each job runs, *which machine* gets it, and whether to retry. The **executor** is a jar you add to your own Spring Boot app. All you write is an ordinary business method with an `@XxlJob("name")` annotation. When your app starts, the executor registers itself with the scheduling center; you create a job in the console with a cron expression and that name, and when it's due the center calls your app over HTTP to run the method, then collects its logs and result. Scheduling, dispatch, retries and logs are XXL-JOB's job — yours is only what the task itself does.
+
+![xxl-job — backbone user story](../../assets/flow/xxl-job.svg)
+
+<!-- flow-steps:begin (generated from flows/xxl-job.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Deploy the scheduling center (admin) + MySQL — `docker: xuxueli/xxl-job-admin`
+2. **You**: Add the maven dependency to your app and point it at the admin — `com.xuxueli:xxl-job-core`
+3. **You**: Write a plain method and annotate it — `@XxlJob("demoJobHandler")`
+4. **XXL-JOB**: On app startup the embedded executor registers itself with the admin
+5. **You**: Create a job in the web console: cron + handler name
+6. **XXL-JOB**: When due, picks one executor and triggers it over HTTP
+7. **XXL-JOB**: Invokes your method, collects logs and result, retries on failure — `XxlJobHelper.log(...)`
+
+**Value**: Your code only says what the job does; scheduling, dispatch, retries and logs come for free
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You ship proprietary/closed-source software and license matters.** XXL-JOB is **GPL-3.0** (strong copyleft). Embedding it in a product you distribute can trigger copyleft obligations on your own code — get legal sign-off, or pick a permissively-licensed scheduler. This is the sharpest disqualifier. [未验证]

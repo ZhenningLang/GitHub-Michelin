@@ -39,14 +39,21 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - README.md / README.zh.md master listing stays in parity with the indexed pages
     (every EN page listed in README.md, every ZH page in README.zh.md) -> ERROR on drift
   - README/category INDEX project summary tables include Health / 健康度 -> ERROR if absent
+  - How it works / 怎么用起来 (backbone user-story flow, SSOT flows/<stem>.json):
+    absent -> ERROR when the page's last_verified >= OSS_ATLAS_FLOW_REQUIRED_FROM (new + re-synced
+    pages are authored under the contract), otherwise one aggregate backfill WARNING;
+    present -> ERROR on: wrong position (must sit between When to use and When NOT to use), no
+    mechanism prose, missing/invalid spec, missing/stale card, card not embedded, generated
+    step list drifting from the spec; a spec without a page section, or with no page -> ERROR
 
 NOTE: this linter is a STRUCTURAL gate, not a semantic review. It cannot judge whether a
-"When to use" is a real User Story, whether a Comparison compares real substitutes, or whether
+"When to use" is a real trigger scenario, whether a Comparison compares real substitutes, or whether
 prose is accurate — those stay human/agent judgment (see tools/schema.md).
 
 Pure stdlib. Usage:  python3 tools/lint.py [--root .]
 Env: OSS_ATLAS_STALE_DAYS (default 90), OSS_ATLAS_MAX_FANOUT (default 12),
-     OSS_ATLAS_PROSE_LABEL_MAX (default 3)
+     OSS_ATLAS_PROSE_LABEL_MAX (default 3), OSS_ATLAS_REQUIRE_FLOW (default 0),
+     OSS_ATLAS_FLOW_REQUIRED_FROM (default 2026-09-20)
 """
 from __future__ import annotations
 
@@ -56,6 +63,8 @@ import os
 import re
 import sys
 from pathlib import Path
+
+import flow_card
 
 REQUIRED_KEYS = ["name", "slug", "repo", "category", "tags", "language", "license", "maturity", "last_verified", "type"]
 ALLOWED_TYPES = {"tool", "library", "app", "framework", "service", "model", "skill-pack"}
@@ -73,6 +82,11 @@ ZH_SUFFIX = ".zh.md"
 STALE_DAYS = int(os.environ.get("OSS_ATLAS_STALE_DAYS", "90"))
 MAX_FANOUT = int(os.environ.get("OSS_ATLAS_MAX_FANOUT", "12"))
 PROSE_LABEL_MAX = int(os.environ.get("OSS_ATLAS_PROSE_LABEL_MAX", "3"))
+REQUIRE_FLOW = os.environ.get("OSS_ATLAS_REQUIRE_FLOW", "0") == "1"
+# Pages verified on/after this date were authored under the How-it-works contract, so the section is
+# required for them (add-project writes it; sync-entry bumps last_verified only after re-checking it).
+# Older pages are the backfill backlog: one aggregate WARNING, not 1000 errors.
+FLOW_REQUIRED_FROM = os.environ.get("OSS_ATLAS_FLOW_REQUIRED_FROM", "2026-09-20")
 
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 # Caveats ledger heading — tolerant prefix match (the parenthetical varies: (unverified)/（未验证）).
@@ -106,6 +120,8 @@ class Report:
     def __init__(self) -> None:
         self.errors: list[str] = []
         self.warnings: list[str] = []
+        self.flow_missing: list[Path] = []   # pages still lacking How it works (backfill tally)
+        self.flow_stems: set[str] = set()    # stems referenced by some page (orphan-spec check)
 
     def error(self, where: Path | str, msg: str) -> None:
         self.errors.append(f"ERROR  {where}: {msg}")
@@ -450,6 +466,77 @@ def check_health_block(path: Path, text: str, base: str, zh: bool, root: Path, d
         rep.error(path, "health: card must appear before the first H2 section")
 
 
+def flow_required(last_verified: object) -> bool:
+    """A page is on the hook for How it works once it was (re)verified under the contract."""
+    if REQUIRE_FLOW:
+        return True
+    try:
+        return dt.date.fromisoformat(str(last_verified)) >= dt.date.fromisoformat(FLOW_REQUIRED_FROM)
+    except ValueError:
+        return False
+
+
+def check_flow_section(path: Path, text: str, zh: bool, root: Path, duplicate_bases: set[str],
+                       rep: Report, last_verified: object = "") -> None:
+    """How it works / 怎么用起来: mechanism prose + backbone flow card + generated text twin."""
+    lang = "zh" if zh else "en"
+    stem = flow_card.flow_stem(path, root, duplicate_bases)
+    rep.flow_stems.add(stem)
+    spec_path = root / "flows" / f"{stem}.json"
+    span = flow_card.section_bounds(text, lang)
+    if span is None:
+        if spec_path.exists():
+            rep.error(path, f"flows/{stem}.json exists but the page has no '{flow_card.SECTION[lang]}' section")
+        elif flow_required(last_verified):
+            rep.error(path, f"missing required section: {flow_card.SECTION[lang]} "
+                            f"(required for pages with last_verified >= {FLOW_REQUIRED_FROM}; see tools/schema.md)")
+        else:
+            rep.flow_missing.append(path)
+        return
+
+    # position: right after When to use, right before When NOT to use
+    h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
+    want_prev, want_next = ("## 何时使用", "## 何时不用") if zh else ("## When to use", "## When NOT to use")
+    i = h2.index(flow_card.SECTION[lang])
+    if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
+        rep.error(path, f"{flow_card.SECTION[lang]} must sit between '{want_prev}' and '{want_next}'")
+
+    body = text[span[0]:span[1]]
+    card_ref = flow_card.card_rel(path, root, stem, lang)
+    img_at = body.find(f"]({card_ref})")
+    if img_at == -1:
+        rep.error(path, f"flow card not embedded in {flow_card.SECTION[lang]}: {card_ref}")
+    else:
+        prose = body[: body.rfind("![", 0, img_at)] if "![" in body[:img_at] else body[:img_at]
+        if not prose.strip():
+            rep.error(path, f"{flow_card.SECTION[lang]}: plain-language mechanism paragraph missing before the flow card")
+
+    if not spec_path.exists():
+        rep.error(path, f"{flow_card.SECTION[lang]} present but flows/{stem}.json is missing")
+        return
+    try:
+        spec = flow_card.load_spec(spec_path)
+    except (ValueError, OSError) as exc:
+        rep.error(spec_path, f"unreadable flow spec: {exc}")
+        return
+    problems = flow_card.validate_spec(spec)
+    if problems:
+        for prob in problems:
+            rep.error(spec_path, prob)
+        return
+    card = root / "assets" / "flow" / flow_card.card_name(stem, lang)
+    if not card.exists():
+        rep.error(path, f"flow card missing: assets/flow/{card.name} (run tools/flow_card.py)")
+    elif card.read_text(encoding="utf-8") != flow_card.render(spec, lang):
+        rep.error(path, f"flow card stale vs flows/{stem}.json: assets/flow/{card.name} (run tools/flow_card.py)")
+    m = flow_card.BLOCK_RE.search(body)
+    want = flow_card.steps_block(spec, lang, stem, flow_card.page_name(text, stem))
+    if not m:
+        rep.error(path, "flow text list (<!-- flow-steps:begin … end -->) missing (run tools/flow_card.py)")
+    elif m.group(0) != want:
+        rep.error(path, f"flow text list drifted from flows/{stem}.json — never hand-edit it (run tools/flow_card.py)")
+
+
 def check_upstream_block(path: Path, text: str, rep: Report) -> None:
     if not text.startswith("---"):
         return
@@ -557,6 +644,7 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)
+    check_flow_section(path, text, zh, root, duplicate_bases, rep, fm.get("last_verified", ""))
 
     for link in md_links(text):
         if link.startswith(("http://", "https://", "#", "mailto:")):
@@ -697,6 +785,19 @@ def main() -> int:
             target = (rel[: -len(".md")] + ZH_SUFFIX) if want_zh else rel
             if target not in body:
                 rep.error(rp, f"indexed page not listed in {readme_name}: {target}")
+
+    # flows/: every spec must belong to a page (no orphans); backfill progress is ONE line, not 1000.
+    flows_dir = root / "flows"
+    if flows_dir.is_dir():
+        for spec in sorted(flows_dir.glob("*.json")):
+            if spec.stem not in rep.flow_stems:
+                rep.error(spec, "orphan flow spec: no page resolves to this stem")
+    if rep.flow_missing:
+        total = len([p for p in categories_dir.rglob("*.md") if is_page(p.name)])
+        rep.warn("how-it-works", f"{len(rep.flow_missing)}/{total} pages still lack "
+                                 f"'## How it works' / '## 怎么用起来' (backfill backlog; pages with "
+                                 f"last_verified >= {FLOW_REQUIRED_FROM} already ERROR, and "
+                                 f"OSS_ATLAS_REQUIRE_FLOW=1 makes every one an ERROR)")
 
     for w in rep.warnings:
         print(w)

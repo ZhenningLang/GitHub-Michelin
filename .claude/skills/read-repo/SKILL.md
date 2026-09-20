@@ -25,16 +25,22 @@ page's required sections are evidence-backed — not when you've read everything
    release date + cadence) and `.../contributors?per_page=10` (bus factor signal).
 2. **README + docs** — what it claims to do, install path, supported scope, explicit limitations.
    Treat superlatives as unverified marketing until corroborated.
-3. **Repo layout & entry points** — the file tree, `src/`/package layout, the CLI/lib entry, the
+3. **The usage path (how a developer actually puts it to work)** — the README quick start plus a
+   real sample (`examples/`, `samples/`, `demo/`, an integration test, or the docs "getting
+   started"). Extract: install/deploy command, the one hook/API/config the user writes, what the
+   project does on its own afterwards, and where the value lands. This is the evidence for the
+   page's `How it works` backbone flow — every command or annotation you put in that flow must come
+   from here verbatim, never from memory of similar projects.
+4. **Repo layout & entry points** — the file tree, `src/`/package layout, the CLI/lib entry, the
    dependency manifest (`package.json` / `pyproject.toml` / `go.mod` / `Cargo.toml`). This tells you
    the real tech stack and runtime deps (not the marketing list) and the actual surface area.
-4. **Health & governance sources** — `CONTRIBUTING`, `GOVERNANCE`, `CODEOWNERS`, `SECURITY.md`,
+5. **Health & governance sources** — `CONTRIBUTING`, `GOVERNANCE`, `CODEOWNERS`, `SECURITY.md`,
    org/foundation (Apache/CNCF/LF) vs single-maintainer; `CHANGELOG`/releases for cadence & breaking
    changes; recent issues/PRs for responsiveness; `LICENSE` (read the file — GitHub's API often says
    `NOASSERTION`; relicense history matters: Grafana→AGPL, Redis→SSPL, Elastic, etc.).
-5. **Tests & examples** — presence/shape of tests and examples corroborates production-readiness and
+6. **Tests & examples** — presence/shape of tests and examples corroborates production-readiness and
    reveals intended use. Skim, don't audit.
-6. **Source — only as needed** — read source to *settle a specific question* a claim raised (does it
+7. **Source — only as needed** — read source to *settle a specific question* a claim raised (does it
    really do X offline? is there a hidden service dependency / egress? is the parallelism real?).
    Read the relevant module, not the repo. If you couldn't confirm, label `[未验证]`, don't assert.
 
@@ -52,6 +58,9 @@ unverified claim. Don't deep-read for its own sake.
 
 ## Turn reading into the page
 
+- **Usage path → `How it works`** — a plain-language mechanism paragraph that draws the line between
+  *what the project does for you* and *what you do*, plus the backbone flow spec (`flows/<slug>.json`,
+  rendered by `tools/flow_card.py`). See `tools/schema.md` §2.
 - **Facts → frontmatter** (`maturity`, dated) and **Health & viability** bullets (also dated).
 - **Disqualifiers → `When NOT to use`** — the sharpest section. Sources of real "don'ts": scale
   ceilings in issues, license/relicense traps in LICENSE, single-maintainer/abandonment from
@@ -65,6 +74,8 @@ unverified claim. Don't deep-read for its own sake.
 ## Anti-patterns
 
 - Paraphrasing the README's pitch as if verified. Marketing ≠ facts.
+- Writing a `How it works` flow from how *similar* projects work. If the command isn't in this
+  repo's docs/samples, it doesn't go in the flow.
 - Reading lots of source to look thorough while leaving `When NOT to use` thin. Wrong budget.
 - Asserting maintenance/health from stars alone — high stars on a young or stale repo is a *risk
   flag*, not social proof (treat anomalies as `[未验证]`).

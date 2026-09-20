@@ -84,6 +84,29 @@ You're choosing open-source infrastructure for a task that falls into `media-pro
 
 This first-pass page exists because sharp was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
 
+## How it works
+
+sharp is a Node package; the pixel work is done underneath by the C library **libvips**, which sharp wraps in a chainable JavaScript API. `npm install` downloads a prebuilt binary for your platform, so most macOS / Windows / Linux machines need nothing else installed. Your part is small: hand an image (a file path or an in-memory Buffer) to `sharp()`, chain what you want done (resize, convert format, rotate), and say whether the result goes to a file or a Buffer; decoding, resizing and encoding are all sharp's. There is no service and no config — it is just a function library.
+
+![sharp — backbone user story](../../../assets/flow/sharp.svg)
+
+<!-- flow-steps:begin (generated from flows/sharp.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install; a prebuilt binary for your platform is downloaded — `npm install sharp`
+2. **You**: Hand sharp an image: a file path or an in-memory Buffer — `sharp('input.jpg')`
+3. **You**: Chain the operations you want — `.resize({ width: 200 }).jpeg({ mozjpeg: true })`
+4. **You**: Say where the output goes — `.toFile('out.webp') / .toBuffer()`
+5. **sharp**: libvips decodes the source image
+6. **sharp**: Resizes and converts, handling colour spaces and alpha correctly
+7. **sharp**: Encodes to the target format and returns a file or Buffer
+
+**Value**: A few lines turn large images into small web-friendly ones; the README claims 4–5x faster resizing than ImageMagick
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.

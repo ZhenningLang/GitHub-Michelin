@@ -2,6 +2,7 @@
 # oss-atlas pre-commit hook — OFFLINE only (no network; safe and fast).
 #   1. regenerate the health radar SVG cards from each staged page's `health:` block
 #      (keeps the image == its SSOT — scoring itself lives in tools/health.py / skills),
+#   1b. regenerate How-it-works flow cards + in-page step lists from flows/*.json,
 #   2. regenerate the committed reverse-index reports when the tree shape changed
 #      (keeps reports/ == the pages — the second CI structural-lint check),
 #   3. run the linter and the reverse-index freshness check, and block the commit on any error.
@@ -17,6 +18,21 @@ if [ -n "$staged" ]; then
   if ! git diff --quiet -- assets/health 2>/dev/null; then
     git add assets/health
     echo "pre-commit: refreshed health radar card(s) from frontmatter and staged them"
+  fi
+fi
+
+# 1b. refresh How-it-works flow cards + generated step lists when a page or a flow spec is staged
+#     (flows/<stem>.json is the SSOT; the SVGs and the in-page text list are derived)
+flowish=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^(categories/.*\.md|flows/.*\.json)$' || true)
+if [ -n "$flowish" ]; then
+  synced=$(python3 tools/flow_card.py --all | sed -n 's/^synced //p')
+  if [ -n "$synced" ]; then
+    echo "$synced" | xargs git add
+    echo "pre-commit: re-synced flow step list(s) in: $(echo $synced | tr '\n' ' ')"
+  fi
+  if [ -n "$(git status --porcelain -- assets/flow 2>/dev/null)" ]; then
+    git add assets/flow
+    echo "pre-commit: refreshed flow card(s) from flows/ and staged them"
   fi
 fi
 

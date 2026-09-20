@@ -75,6 +75,27 @@ health:
 
 当决定因素是生态与稳定度而不是峰值吞吐时，选 Ollama：它是一个三年多、MIT 许可、由公司支持的项目，有 600 多位贡献者、官方 Python 与 JavaScript 库、第一方模型库、可用于无头部署的 Docker 镜像、仓库内的桌面应用，并且在 Apple Silicon 上除 llama.cpp 之外还多了一条 MLX 路径。当你宁愿用一些控制权换取托管的模型仓库与稳定客户端库时，选它而不是 [llama.cpp](llama-cpp.zh.md)；当你已经知道要跑哪个模型、需要的是广度（模型库规模、ROCm、SDK、云服务）而不是一个适配评估向导时，选它而不是 [Magnitude](magnitude.zh.md)。
 
+## 怎么用起来
+
+Ollama 相当于本地模型的「包管理器 + 常驻服务」。你装一个应用，它在后台运行，管着一个本地模型仓库，第一次用某个模型时从它自己的模型库拉取——`ollama run <模型>` 会自动下载缺的权重、加载起来，然后直接进入对话。底层跑的是 llama.cpp（在 Apple Silicon 上还有一个 MLX runner），但那些参数由它来定，不用你操心。产品里其余的东西都是通往这个服务的入口：本地 REST API、OpenAI / Anthropic 兼容端点、官方的 Python 和 JavaScript 库，以及一条命令就把编程 agent 指过来的集成。你负责的只是报出一个模型名字，从这个名字到一个能调用的运行中端点，中间全是它的事。
+
+![ollama — 主干用户故事](../../../assets/flow/ollama.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ollama.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上应用，或用官方 Docker 镜像跑起来 — `ollama`
+2. **你**：从模型库拉一个模型，直接开聊 — `ollama run gemma4`
+3. **Ollama**：后台常驻服务：拉取权重、管理本地模型仓库、按需加载
+4. **你**：把 agent 接上去：一条命令的现成集成，或填一个兼容的 base URL — `ollama launch claude`
+5. **Ollama**：提供本地 REST API 和 OpenAI 兼容端点，供应用和 SDK 调用 — `POST localhost:11434/api/chat`
+
+**价值**：一条命令就把本地模型放到一个稳定接口后面，agent 和代码照着现成方式调用
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **如果你需要最大吞吐或面向大量并发请求的服务调度，改用 [vLLM](../serving-engines/vllm.zh.md) 或 [SGLang](../serving-engines/sglang.zh.md)**，因为 Ollama 是面向单用户本地的运行时：它不提供 PagedAttention 级别的批处理，也没有多节点服务能力。

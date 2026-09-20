@@ -75,6 +75,31 @@ health:
 
 当你想要一套有主张、经实战检验的工作流，而不是从零搭自己的 skill 栈时，就该用它——尤其是当你希望同一套方法论能跨 harness 跟着你走。仓库自带各 agent 的插件清单（Claude `.claude-plugin`、Codex、Cursor、Kimi、OpenCode、Pi），因此无论今天的任务跑在 Claude Code 还是 Codex CLI，头脑风暴-计划-TDD-验证这条主轴都保持一致。通过你 agent 的 marketplace 安装一次，方法论就会经由各平台原生的 skill 加载机制激活。
 
+## 怎么用起来
+
+superpowers 本质是一组用 Markdown 写的「工作规程」（skill），再加一段初始指令，要求 agent **每次干活前先检查有没有该用的 skill**。所以装上之后你不用记任何命令，照常提需求；agent 会自己按一条固定流水线走：先问清楚你到底要什么并写成设计 → 开一个隔离的 git worktree → 把工作拆成几分钟一个的小任务 → 每个任务派一个子 agent 按「先写失败测试再写代码」实现，做完一个审一个 → 最后跑测试，问你合并、提 PR 还是丢弃。你负责的只是在两个节点点头：设计确认、开始执行。
+
+![superpowers — 主干用户故事](../../../assets/flow/superpowers.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/superpowers.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装插件 — `/plugin install superpowers@claude-plugins-official`
+2. **Superpowers**：附带初始指令：让 agent 干活前先查有没有该用的 skill
+3. **你**：照常提需求
+4. **Superpowers**：追问真实需求，把设计分段给你看 — `brainstorming`
+5. **你**：确认设计
+6. **Superpowers**：开隔离 worktree，拆成 2–5 分钟的小任务 — `using-git-worktrees · writing-plans`
+7. **你**：说 go
+8. **Superpowers**：每个任务派子 agent 按 TDD 实现，做完就 review — `subagent-driven-development`
+9. **Superpowers**：跑测试，问你合并、提 PR 还是丢弃 — `finishing-a-development-branch`
+
+**价值**：agent 按有纪律的流程自主干几个小时而不跑偏
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你已经有一套自己信任的 skill/command 体系。** Superpowers 有强主张、强约束（强制先写失败测试、写代码前先 brainstorm）。把它叠在现有方法论栈之上，容易产生指令冲突和重复路由——只选一个事实源。

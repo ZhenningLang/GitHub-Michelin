@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "superpowers makes the agent do",
+    "zh": "superpowers 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the plugin",
+      "zh": "安装插件",
+      "code": "/plugin install superpowers@claude-plugins-official"
+    },
+    {
+      "lane": "them",
+      "en": "Ships initial instructions that make the agent check for a relevant skill before any task",
+      "zh": "附带初始指令：让 agent 干活前先查有没有该用的 skill"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for what you want, as usual",
+      "zh": "照常提需求"
+    },
+    {
+      "lane": "them",
+      "en": "Probes what you really want and shows the design in short chunks",
+      "zh": "追问真实需求，把设计分段给你看",
+      "code": "brainstorming"
+    },
+    {
+      "lane": "you",
+      "en": "Approve the design",
+      "zh": "确认设计"
+    },
+    {
+      "lane": "them",
+      "en": "Opens an isolated worktree and splits work into 2–5 minute tasks",
+      "zh": "开隔离 worktree，拆成 2–5 分钟的小任务",
+      "code": "using-git-worktrees · writing-plans"
+    },
+    {
+      "lane": "you",
+      "en": "Say go",
+      "zh": "说 go"
+    },
+    {
+      "lane": "them",
+      "en": "Dispatches a subagent per task with TDD, reviewing after each",
+      "zh": "每个任务派子 agent 按 TDD 实现，做完就 review",
+      "code": "subagent-driven-development"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the tests and asks: merge, open a PR, or discard",
+      "zh": "跑测试，问你合并、提 PR 还是丢弃",
+      "code": "finishing-a-development-branch"
+    }
+  ],
+  "value": {
+    "en": "The agent follows a disciplined process and works autonomously for hours without drifting",
+    "zh": "agent 按有纪律的流程自主干几个小时而不跑偏"
+  },
+  "sources": [
+    "https://github.com/obra/superpowers README How it works + The Basic Workflow (skill names, 2-5 minute tasks, autonomy)",
+    "README Installation / Claude Code (/plugin install superpowers@claude-plugins-official)"
+  ]
+}

@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import copy
+import json
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import flow_card
+import lint
+from test_lint import page_text
+
+SPEC = {
+    "schema": 1,
+    "them": {"en": "Demo does", "zh": "Demo 做的"},
+    "steps": [
+        {"lane": "you", "en": "Install it", "zh": "安装", "code": "pip install demo"},
+        {"lane": "them", "en": "Registers a hook", "zh": "注册钩子"},
+        {"lane": "you", "en": "Call the API", "zh": "调用接口", "code": "demo.run()"},
+        {"lane": "them", "en": "Does the work", "zh": "完成工作"},
+    ],
+    "value": {"en": "Less code to write", "zh": "少写代码"},
+    "sources": ["README#usage"],
+}
+
+
+def with_flow_section(text: str, zh: bool, section: str | None = None) -> str:
+    heading = "## 怎么用起来" if zh else "## How it works"
+    para = "它会替你完成工作。" if zh else "It does the work for you."
+    img = f"![demo — {'主干用户故事' if zh else 'backbone user story'}](../../assets/flow/demo{'.zh' if zh else ''}.svg)"
+    block = section if section is not None else f"{heading}\n\n{para}\n\n{img}\n\n"
+    nxt = "## 何时不用" if zh else "## When NOT to use"
+    return text.replace(nxt, block + nxt, 1)
+
+
+class FlowSpecTest(unittest.TestCase):
+    def test_valid_spec_passes(self) -> None:
+        self.assertEqual(flow_card.validate_spec(SPEC), [])
+
+    def test_rejects_bad_lane_step_count_single_lane_and_missing_sources(self) -> None:
+        bad = copy.deepcopy(SPEC)
+        bad["steps"][0]["lane"] = "platform"
+        self.assertTrue(any("lane must be" in e for e in flow_card.validate_spec(bad)))
+
+        short = copy.deepcopy(SPEC)
+        short["steps"] = short["steps"][:2]
+        self.assertTrue(any("3–9 items" in e for e in flow_card.validate_spec(short)))
+
+        one_lane = copy.deepcopy(SPEC)
+        for st in one_lane["steps"]:
+            st["lane"] = "you"
+        self.assertTrue(any("both lanes" in e for e in flow_card.validate_spec(one_lane)))
+
+        nosrc = copy.deepcopy(SPEC)
+        nosrc["sources"] = []
+        self.assertTrue(any("sources" in e for e in flow_card.validate_spec(nosrc)))
+
+    def test_rejects_missing_translation_and_overlong_step(self) -> None:
+        bad = copy.deepcopy(SPEC)
+        del bad["steps"][1]["zh"]
+        bad["steps"][2]["en"] = "x" * 200
+        errs = flow_card.validate_spec(bad)
+        self.assertTrue(any("steps[2].zh" in e for e in errs))
+        self.assertTrue(any("steps[3].en is 200 chars" in e for e in errs))
+
+    def test_render_is_deterministic_and_escapes(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][2]["code"] = '@Hook("<x>")'
+        a, b = flow_card.render(spec, "en"), flow_card.render(spec, "en")
+        self.assertEqual(a, b)
+        self.assertIn("&lt;x&gt;", a)
+        self.assertNotIn('("<x>")', a)
+        self.assertIn("prefers-color-scheme: dark", a)
+
+    def test_wrap_keeps_cjk_lines_within_width_and_avoids_orphans(self) -> None:
+        lines = flow_card.wrap("按顺序跑这条路由上的插件，任一不放行就直接拒绝", 15, 300)
+        self.assertGreater(len(lines), 1)
+        self.assertGreater(len(lines[-1]), 2)
+        self.assertTrue(all(flow_card.text_w(ln, 15) <= 300 + 15 * 3 for ln in lines))
+
+    def test_wrap_never_starts_a_line_with_cjk_trailing_punctuation(self) -> None:
+        lines = flow_card.wrap("给你的机器做硬件画像，按估算的 tok/s、精度、内存给模型排名", 15, 300)
+        self.assertGreater(len(lines), 1)
+        self.assertFalse(any(ln[0] in "、，。；：！？）" for ln in lines[1:]), lines)
+
+    def test_steps_block_uses_page_name_as_actor(self) -> None:
+        block = flow_card.steps_block(SPEC, "zh", "demo", "Demo")
+        self.assertIn("2. **Demo**：注册钩子", block)
+        self.assertIn("1. **你**：安装 — `pip install demo`", block)
+        self.assertIn("**价值**：少写代码", block)
+
+
+class FlowLintTest(unittest.TestCase):
+    def _setup(self, root: Path, zh: bool = False, section: str | None = None, spec: dict | None = SPEC) -> Path:
+        page = root / "categories" / "demo" / ("demo.zh.md" if zh else "demo.md")
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(with_flow_section(page_text(zh=zh), zh, section), encoding="utf-8")
+        (root / "assets" / "health").mkdir(parents=True, exist_ok=True)
+        (root / "assets" / "health" / ("demo.zh.svg" if zh else "demo.svg")).write_text("<svg />", encoding="utf-8")
+        if spec is not None:
+            (root / "flows").mkdir(exist_ok=True)
+            (root / "flows" / "demo.json").write_text(json.dumps(spec, ensure_ascii=False), encoding="utf-8")
+            lang = "zh" if zh else "en"
+            (root / "assets" / "flow").mkdir(parents=True, exist_ok=True)
+            (root / "assets" / "flow" / flow_card.card_name("demo", lang)).write_text(
+                flow_card.render(spec, lang), encoding="utf-8")
+            flow_card.sync_page(page, root, spec, "demo")
+        return page
+
+    def _lint(self, page: Path, root: Path) -> lint.Report:
+        rep = lint.Report()
+        lint.check_flow_section(page, page.read_text(encoding="utf-8"), page.name.endswith(".zh.md"), root, set(), rep)
+        return rep
+
+    def test_complete_section_is_clean_in_both_languages(self) -> None:
+        for zh in (False, True):
+            with tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                page = self._setup(root, zh=zh)
+                rep = self._lint(page, root)
+                self.assertEqual(rep.errors, [], rep.errors)
+                self.assertIn("<!-- flow-steps:begin", page.read_text(encoding="utf-8"))
+
+    def test_missing_section_is_only_tallied_during_backfill(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            page.write_text(page_text(), encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertEqual(rep.errors, [])
+            self.assertEqual(rep.flow_missing, [page])
+
+    def test_missing_section_is_an_error_for_a_freshly_verified_page(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            page.write_text(page_text(), encoding="utf-8")
+            rep = lint.Report()
+            lint.check_flow_section(page, page.read_text(encoding="utf-8"), False, root, set(), rep,
+                                    lint.FLOW_REQUIRED_FROM)
+            self.assertTrue(any("missing required section: ## How it works" in e for e in rep.errors))
+
+            older = lint.Report()
+            lint.check_flow_section(page, page.read_text(encoding="utf-8"), False, root, set(), older, "2026-06-29")
+            self.assertEqual(older.errors, [])
+            self.assertEqual(older.flow_missing, [page])
+
+    def test_spec_without_section_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            page.write_text(page_text(), encoding="utf-8")
+            (root / "flows").mkdir()
+            (root / "flows" / "demo.json").write_text(json.dumps(SPEC), encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertTrue(any("has no '## How it works' section" in e for e in rep.errors))
+
+    def test_hand_edited_step_list_is_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = self._setup(root)
+            page.write_text(page.read_text(encoding="utf-8").replace("Registers a hook", "Registers two hooks"),
+                            encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertTrue(any("drifted from flows/demo.json" in e for e in rep.errors))
+
+    def test_stale_card_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = self._setup(root)
+            (root / "assets" / "flow" / "demo.svg").write_text("<svg />", encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertTrue(any("flow card stale" in e for e in rep.errors))
+
+    def test_section_in_wrong_position_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = self._setup(root)
+            text = page.read_text(encoding="utf-8")
+            start = text.index("## How it works")
+            end = text.index("## When NOT to use")
+            section = text[start:end]
+            text = text[:start] + text[end:]
+            text = text.replace("## Comparison", section + "## Comparison", 1)
+            page.write_text(text, encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertTrue(any("must sit between" in e for e in rep.errors))
+
+    def test_missing_mechanism_prose_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            img = "![demo — backbone user story](../../assets/flow/demo.svg)"
+            page = self._setup(root, section=f"## How it works\n\n{img}\n\n")
+            rep = self._lint(page, root)
+            self.assertTrue(any("mechanism paragraph missing" in e for e in rep.errors))
+
+    def test_invalid_spec_is_reported_on_the_spec_file(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = self._setup(root)
+            bad = copy.deepcopy(SPEC)
+            bad["sources"] = []
+            (root / "flows" / "demo.json").write_text(json.dumps(bad), encoding="utf-8")
+            rep = self._lint(page, root)
+            self.assertTrue(any("demo.json" in e and "sources" in e for e in rep.errors))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -46,8 +46,10 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    follow it, don't re-derive from memory. Checklist of its load-bearing parts:
    - **Frontmatter** (§1) — identical in both siblings, incl. the `upstream:` and `health:` blocks;
      `type` decides which H2 sections are required (§2 table). Each file is monolingual.
-   - **When to use** — a User Story that defines the choice against substitutes (§2
-     `"When to use" is a User Story`).
+   - **When to use** — the trigger scenario that defines the choice against substitutes (§2
+     `"When to use" is the trigger scenario`).
+   - **How it works** — the mechanism paragraph only (§2 `"How it works" is the backbone user
+     story`); its flow card is generated in step 5.
    - **When NOT to use** — the strongest section; each anti-pattern names a substitute (§2
      `"When NOT to use" names substitutes`).
    - **Comparison** — 3–5 real substitutes, `未收录` for unindexed ones; verdicts per §2
@@ -65,19 +67,40 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    - **Chinese punctuation** in `.zh.md` (§6) — fullwidth next to 汉字; lint ERRORs on violations.
    Model the negative-space writing on the golden examples listed in §2.
 
-5. **Wire it in.** Add the project to its `categories/<category>/INDEX.md` **and** `INDEX.zh.md`
+5. **Backbone flow card (generated — do not hand-draw).** The `How it works` section's diagram is
+   rendered from a spec; the contract is `tools/schema.md` §2 `"How it works" is the backbone user
+   story`. Author it while the sources from step 2 are still open:
+   - **Find the backbone in the sources, don't invent it.** The path is usually spelled out by the
+     README quick start plus a real sample (`examples/`, `samples/`, `demo/`, the integration test,
+     or the docs "getting started"). Keep the shortest path by which a developer gets the core
+     value, and note who does each step — the project or the user.
+   - Write `flows/<slug>.json` (stem = slug; category-prefixed only for a duplicated slug):
+     two lanes (`you` / `them`), 3–9 **linear** steps, bilingual `en`/`zh` per step, a `value`
+     payoff, and `sources` naming where each command/API was seen.
+   - **Every `code` value must appear verbatim in a source you actually read.** If you cannot find
+     the command/annotation/API, write the step generically ("call its query API") — an invented
+     command inside a diagram reads as authoritative and is worse than no command.
+   - Render + wire: `python3 tools/flow_card.py categories/<category>/<slug>.md` (does both
+     siblings). Embed the card in each page inside `How it works`, right after the mechanism
+     paragraph: `![<slug> — backbone user story](../../assets/flow/<slug>.svg)` (EN) /
+     `![<slug> — 主干用户故事](../../assets/flow/<slug>.zh.svg)` (ZH), then re-run the command so it
+     writes the generated text twin under the card. Never hand-edit that block.
+   - Sanity-check the rendered SVG (`open assets/flow/<slug>.svg`): the lanes must read as
+     "what I do" vs "what it does for me", and the value line must say what you no longer do.
+
+6. **Wire it in.** Add the project to its `categories/<category>/INDEX.md` **and** `INDEX.zh.md`
    (one-liner + comparison-matrix row in each; put `—` in the `Health` / `健康度` cell — it is a
-   machine projection filled in step 7, never hand-graded) **and to the README
+   machine projection filled in step 8, never hand-graded) **and to the README
    master listing** (`README.md` + `README.zh.md`). If new category, also add it to root `INDEX.md` +
    `INDEX.zh.md`. The linter ERRORs if a page is missing from its INDEX or from either README, so
    nothing drifts silently.
 
-6. **Upstream snapshot.** Record the cheap stale-check snapshot before finishing:
+7. **Upstream snapshot.** Record the cheap stale-check snapshot before finishing:
    `python3 tools/upstream_snapshot.py --page categories/<category>/<slug>.md --apply --yes`.
    This writes the same `upstream:` block into both siblings; `sync-entry` uses it to skip full
    rereads when a stale page's upstream default-branch state has not changed.
 
-7. **Health radar (automated — do not hand-grade).** Compute the 6-axis viability radar and embed
+8. **Health radar (automated — do not hand-grade).** Compute the 6-axis viability radar and embed
    its card:
    - `python3 tools/health.py --page categories/<category>/<slug>.md --write` — scores the repo from
      GitHub + package registries (via the authenticated `gh` CLI) and writes the identical `health:`
@@ -87,13 +110,13 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
     - Embed the card once in **each** page, right after the TL;DR line:
        `![<name> — health radar](../../assets/health/<slug>.svg)` (EN) /
        `![<name> — 健康度雷达](../../assets/health/<slug>.zh.svg)` (ZH).
-    - Project the grade into the index rows written in step 5:
+    - Project the grade into the index rows written in step 6:
       `python3 tools/sync_index_health.py --apply` — it rewrites every `Health` / `健康度` cell in
       the category INDEXes + READMEs from the page frontmatter (the SSOT). Never hand-edit those
       cells; lint.py ERRORs on drift.
     See `docs/health-rubric.md` for the rubric (A–E + `?`; `?` is first-class, never a low score).
 
-8. **Validate.** Run structural lint, then run a scoped or changed-only quality scan for the pages
+9. **Validate.** Run structural lint, then run a scoped or changed-only quality scan for the pages
    just written:
    - `python3 tools/lint.py` — fix every ERROR before finishing.
    - `python3 tools/reverse_index.py --check` — the new page changes the committed reverse index;

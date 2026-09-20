@@ -26,7 +26,9 @@ The fastest path is the `add-project` skill (`.claude/skills/add-project/`). By 
    required sections for that `type` (skill-packs omit `Tech stack / Dependencies / Ops difficulty`),
    plus a `Caveats (unverified)` / `存疑（未验证）` ledger on every page.
 3. Each file is **monolingual** — English page uses the English headings, Chinese page the Chinese
-   ones. The `When to use` section is a **User Story** (second-person scenario).
+   ones. The `When to use` section is the **trigger scenario** (second-person: when to think of it);
+   `How it works` is the **backbone user story** — a plain-language mechanism paragraph + a flow card
+   generated from `flows/<slug>.json` by `tools/flow_card.py` (see tools/schema.md).
 4. **Separate facts from judgment.** Label anything unverified `[未验证]` / `[推断]` — but keep inline
    labels to the load-bearing few (≤3 before the Caveats ledger; the linter WARNs above that) and
    collect every unverified fact as a bullet in the page's final `Caveats (unverified)` ledger. The

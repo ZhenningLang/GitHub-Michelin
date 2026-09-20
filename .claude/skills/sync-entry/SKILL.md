@@ -90,6 +90,10 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    scenario, the choice, and the decisive tradeoff. Do not keep or introduce template verdicts such
    as `Use this page for its stated niche.` / `当前页用于它的主场景。` or vague claims such as `best`,
    `good choice`, or `open-source alternative`.
+   **How it works**: if the page has `flows/<stem>.json`, re-check every `code` value against the
+   refetched README/source (renamed commands, new install path, removed APIs) and fix the spec +
+   mechanism paragraph; then `python3 tools/flow_card.py <page>`. If the page lacks the section,
+   add it per `tools/schema.md` while you have the sources open.
 7. **Update `upstream` and bump `last_verified` to today.** Only after actually re-checking — never
    bump blindly.
 8. **Re-score the health radar.** Health grades go stale like any

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "sharp + libvips do", "zh": "sharp + libvips 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install; a prebuilt binary for your platform is downloaded", "zh": "安装，自动下载适配本机的预编译二进制", "code": "npm install sharp"},
+    {"lane": "you", "en": "Hand sharp an image: a file path or an in-memory Buffer", "zh": "把图片交给 sharp：文件路径或内存 Buffer", "code": "sharp('input.jpg')"},
+    {"lane": "you", "en": "Chain the operations you want", "zh": "链式写出要做什么", "code": ".resize({ width: 200 }).jpeg({ mozjpeg: true })"},
+    {"lane": "you", "en": "Say where the output goes", "zh": "说明输出到哪里", "code": ".toFile('out.webp') / .toBuffer()"},
+    {"lane": "them", "en": "libvips decodes the source image", "zh": "libvips 解码原图"},
+    {"lane": "them", "en": "Resizes and converts, handling colour spaces and alpha correctly", "zh": "缩放、转换，正确处理色彩空间和透明通道"},
+    {"lane": "them", "en": "Encodes to the target format and returns a file or Buffer", "zh": "编码成目标格式，交回文件或 Buffer"}
+  ],
+  "value": {"en": "A few lines turn large images into small web-friendly ones; the README claims 4–5x faster resizing than ImageMagick", "zh": "几行代码把大图转成小而适合网页的图；README 称缩放比 ImageMagick 快 4–5 倍"},
+  "sources": [
+    "https://github.com/lovell/sharp README (npm install sharp, libvips, Examples: resize/jpeg/toFile/toBuffer, 4x-5x faster claim, colour spaces/alpha)"
+  ]
+}

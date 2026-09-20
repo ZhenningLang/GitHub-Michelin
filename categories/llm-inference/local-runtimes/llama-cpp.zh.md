@@ -84,6 +84,27 @@ health:
 
 当决定因素是**控制权与覆盖面**时选 llama.cpp：它是上游引擎本体（MIT、基于 ggml 的纯 C/C++、无运行时依赖），暴露本分类里最全的后端列表——CUDA、AMD 的 HIP、Metal、Vulkan、SYCL、CANN、MUSA、OpenCL、WebGPU、ZenDNN、Hexagon，外加 CPU+GPU 混合卸载和 RPC 后端；而且 `llama cli -hf` / `llama serve -hf` 现在不需要任何包装层就能下载并运行 Hugging Face 上的 GGUF。当你不想等包装层的参数子集时选它而不是 [Ollama](ollama.zh.md)；当你不是纯 NVIDIA、也不需要服务调度器时选它而不是 [vLLM](../serving-engines/vllm.zh.md)；当吞吐与后端广度比下载前估算更重要时选它而不是 [Magnitude](magnitude.zh.md)。
 
+## 怎么用起来
+
+llama.cpp 就是推理引擎本身，而不是包在引擎外面的管理层：纯 C/C++ 写在 ggml 之上，编译成一个自带依赖的二进制（也可以作为库链接进你的程序）。它读 **GGUF** 文件——一种把量化信息一并带上的单文件权重格式——然后在你编译或下载的后端上跑：CUDA、Metal、Vulkan、HIP、SYCL、纯 CPU 等等，模型塞不进显存时还能 CPU 和 GPU 混合分担。这里没有任何东西被包装层藏起来：量化方式、对话模板、上下文长度、KV cache 都由你自己定，这正是它存在的意义。新的入口也省掉了过去的麻烦——`llama cli -hf` 和 `llama serve -hf` 直接从 Hugging Face 拉 GGUF——而服务端讲的是 OpenAI 兼容接口，所以你既可以把库嵌进自己的进程，也可以把它当本地服务跑。
+
+![llama-cpp — 主干用户故事](../../../assets/flow/llama-cpp.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/llama-cpp.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：拿到二进制：安装器、release、Docker，或从源码编译
+2. **你**：直接跑 Hugging Face 上的 GGUF 模型 — `llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF`
+3. **llama.cpp**：下载 GGUF，按你指定的量化和对话模板，在你选的后端上跑起来
+4. **你**：要给自己的程序用，就起服务而不是命令行 — `llama serve -hf <hf-repo>`
+5. **llama.cpp**：暴露 OpenAI 兼容接口；也可链接 libllama 进你的进程
+
+**价值**：推理始终是你自己掌控的实现细节：同一条代码路径，从 RTX 机器到 Mac 再到纯 CPU 笔记本
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **如果你想要模型仓库、GUI 和自动更新，而不是 flag 与 GGUF 文件，改用 [Ollama](ollama.zh.md) 或 LM Studio**，因为 llama.cpp 交付的是引擎与工具，不是带模型库和生命周期命令的托管式本地模型产品。
