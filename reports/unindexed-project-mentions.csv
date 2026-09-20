@@ -378,6 +378,7 @@ Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
 Hugging Face sentiment models,categories/ml-research/senta.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
+Hugo,categories/web-ui/frameworks/astro.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
@@ -785,6 +786,7 @@ Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vibe Kanban,categories/agent-tooling/agent-orchestrator.md,,no
+VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
@@ -806,6 +808,7 @@ WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
 "Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
+Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no

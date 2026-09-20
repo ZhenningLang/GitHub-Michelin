@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Docusaurus does",
+    "zh": "Docusaurus 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a site with the classic preset",
+      "zh": "用 classic 预设生成站点骨架",
+      "code": "npx create-docusaurus@latest my-website classic"
+    },
+    {
+      "lane": "you",
+      "en": "Write the documentation and blog as Markdown or MDX files",
+      "zh": "用 Markdown 或 MDX 文件写文档与博客",
+      "code": "docs/ · blog/ · src/pages/"
+    },
+    {
+      "lane": "you",
+      "en": "Configure the site and the sidebar order",
+      "zh": "配置站点与侧边栏顺序",
+      "code": "docusaurus.config.js · sidebars.js"
+    },
+    {
+      "lane": "them",
+      "en": "Turns that file tree into routes and applies the docs layout",
+      "zh": "把文件树变成路由，并套上文档版式"
+    },
+    {
+      "lane": "you",
+      "en": "Preview it locally while you write",
+      "zh": "写作时本地预览",
+      "code": "npm run start"
+    },
+    {
+      "lane": "them",
+      "en": "Builds a static site into a directory you can host anywhere",
+      "zh": "构建出可托管到任何地方的静态站点目录",
+      "code": "npm run build"
+    }
+  ],
+  "value": {
+    "en": "Markdown files in a folder become a versioned, searchable documentation site",
+    "zh": "一个文件夹里的 Markdown 变成带版本、可搜索的文档站"
+  },
+  "sources": [
+    "README.md (Introduction, Installation: 'npm init docusaurus@latest'; the repo is a project for building, deploying and maintaining open source project websites)",
+    "https://docusaurus.io/docs/installation (requirements Node 20+; 'npx create-docusaurus@latest my-website classic'; generated tree with /blog, /docs, /src/pages, /static, docusaurus.config.js, sidebars.js; 'cd my-website && npm run start' on localhost:3000; 'npm run build' writing to /build)",
+    "https://docusaurus.io/docs/installation project structure rundown (/src/pages files become website pages, /docs ordering via sidebars.js, /blog contains blog Markdown)",
+    "README.md feature list (localization via Crowdin, blog and docs sections, customizable pages)"
+  ]
+}

@@ -110,7 +110,7 @@ health:
 - **你本来就不在 JavaScript 项目里。** 只为写文档而引入 Node、打包器和组件运行时是很差的交换——[Quarkdown](../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../typesetting/asciidoctor.zh.md) 能用纯文本源产出站点或 PDF。
 - **你需要文件就地渲染——GitHub、编辑器预览、wiki。** `.mdx` 在通用工具里不会按 Markdown 渲染；若就地渲染是硬需求，就继续用纯 Markdown，让站点生成器去转换。
 - **内容来自不可信的作者。** MDX 编译成 JavaScript，所以一份 MDX 文档就是可执行代码；项目专门维护了一页 Security 说明，原因正在于此。若读者可以投稿内容，请改用纯 Markdown 加会消毒的渲染器。`[推断]`
-- **你需要完整的站点生成器——路由、版本、搜索、i18n。** MDX 是编译器加打包器集成，不是文档框架；请选建立在它之上的站点生成器（Docusaurus、Nextra、Astro 的 MDX 集成——在本索引里均为 `未收录`），并改为评估那个产品。
+- **你需要完整的站点生成器——路由、版本、搜索、i18n。** MDX 是编译器加打包器集成，不是文档框架；请选建立在它之上的站点生成器——[Docusaurus](../web-ui/frameworks/docusaurus.zh.md)、[Nextra](../web-ui/frameworks/nextra.zh.md) 或 [Astro](../web-ui/frameworks/astro.zh.md)——并改为评估那个产品。
 - **你需要频繁的版本化发布。** 发布线很慢：3.1.1（2025-08-29）、3.1.0（2024-10-18）、3.0.1（2024-02-12）。API 稳定、未关闭 issue 极少，但不要指望一个快速迭代的依赖。
 - **你只是想把手上的文档转成另一种格式。** 改用 [Pandoc](pandoc.zh.md)——它能把 MDX 当输入格式处理，不需要你引入整套 JS 工具链。
 
