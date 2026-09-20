@@ -785,6 +785,16 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A (4/6) | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A (5/6) | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
 
+### object-storage
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Silo** | Use it when you already run MinIO and upstream's community edition has ended — Silo keeps the S3 API, on-disk format and `MINIO_*` names alive, but the executable/packages/image rename to `silo` and it is a single-maintainer fork of one codebase. | AGPL-3.0 | B (4/6) | [EN](categories/object-storage/silo.md) · [中](categories/object-storage/silo.zh.md) |
+| **MinIO** | Use this page to decide what to do about MinIO you already run: the community repository is archived (2026-04) and unmaintained, so the choice is an exit to a maintained fork or another store — not a new deployment. | AGPL-3.0 | D (5/6) | [EN](categories/object-storage/minio.md) · [中](categories/object-storage/minio.zh.md) |
+| **Garage** | Use it when you want one S3 endpoint over a few cheap machines in different places, replicating across sites and surviving one being offline — but its S3 surface is deliberately partial (no ACL/policy semantics). | AGPL-3.0 | B (4/6) | [EN](categories/object-storage/garage.md) · [中](categories/object-storage/garage.zh.md) |
+| **SeaweedFS** | Use it when the real constraint is object count — billions of small files — and you want one `weed` binary serving S3, a filesystem and a table layer, growing capacity by adding volume servers. | Apache-2.0 | B (5/6) | [EN](categories/object-storage/seaweedfs.md) · [中](categories/object-storage/seaweedfs.zh.md) |
+| **Ceph** | Use it when you need object, block and file from one foundation-governed platform and can staff a real storage cluster — overkill if all you need is one S3 bucket. | LGPL-2.1 | A (3/6) | [EN](categories/object-storage/ceph.md) · [中](categories/object-storage/ceph.zh.md) |
+
 ### desktop-automation
 
 | Project | Use when | License | Health | Page |

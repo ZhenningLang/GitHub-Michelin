@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Garage does", "zh": "Garage 做的"},
+  "steps": [
+    {"lane": "you", "en": "Write a config file on each node: directories, shared rpc_secret, S3 bind address", "zh": "每台机器写一份配置：目录、共享 rpc_secret、S3 监听地址", "code": "garage.toml"},
+    {"lane": "you", "en": "Start the daemon on each machine that should hold data", "zh": "在每台要存数据的机器上启动守护进程", "code": "garage server"},
+    {"lane": "them", "en": "Nodes find each other over their rpc addresses and act as one cluster", "zh": "各节点通过 rpc 地址互相发现，组成同一个集群"},
+    {"lane": "you", "en": "Assign every node a zone and capacity, then apply the layout", "zh": "给每个节点指定 zone 与容量，再应用布局", "code": "garage layout assign · garage layout apply"},
+    {"lane": "them", "en": "Places copies across zones and keeps serving when a node is unreachable", "zh": "把副本铺到不同 zone，某节点失联时照常服务"},
+    {"lane": "you", "en": "Create a bucket and a key, then point any S3 client at :3900", "zh": "建桶、建密钥，任意 S3 客户端指向 :3900", "code": "garage key create · garage bucket allow"}
+  ],
+  "value": {"en": "Multi-site S3 storage from cheap, heterogeneous machines — you stop needing a datacenter or a heavyweight storage cluster", "zh": "用便宜、异构的机器拼出跨站点 S3：不必有数据中心，也不必运维重型存储集群"},
+  "sources": [
+    "https://git.deuxfleurs.fr/Deuxfleurs/garage/src/branch/main-v2/doc/book/quick-start/_index.md (garage.toml with metadata_dir/data_dir/rpc_secret/rpc_bind_addr/[s3_api]; garage server --single-node --default-bucket; S3 on :3900, admin API on :3903)",
+    "https://git.deuxfleurs.fr/Deuxfleurs/garage/src/branch/main-v2/doc/book/quick-start/_index.md (manual configuration: garage layout assign -z dc1 -c 1G <node_id>; garage layout apply --version 1; garage bucket create; garage key create; garage bucket allow --read --write --owner)",
+    "https://github.com/deuxfleurs-org/garage#readme (S3-compatible distributed object storage for self-hosting at small-to-medium scale; replicates at different physical locations, stays available when servers are unreachable)"
+  ]
+}

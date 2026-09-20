@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SeaweedFS does", "zh": "SeaweedFS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Unpack the single binary and start a ready-to-use S3 store", "zh": "解开单个二进制，直接起一个可用的 S3 服务", "code": "weed mini -dir=./data"},
+    {"lane": "them", "en": "Runs master, volume server, filer, S3 gateway and admin UI in one process", "zh": "在一个进程里跑 master、卷服务、filer、S3 网关与管理界面"},
+    {"lane": "you", "en": "Point any S3 client at :8333 and start uploading", "zh": "任意 S3 客户端指向 :8333 就能上传", "code": "aws --endpoint-url http://localhost:8333 s3 cp README.md s3://my-bucket/"},
+    {"lane": "them", "en": "Packs small files into append-only volumes with a 16-byte in-memory index per blob", "zh": "小文件打包进追加写卷，每个 blob 在内存里只留 16 字节索引"},
+    {"lane": "you", "en": "Add capacity by starting another volume server against the master", "zh": "容量不够时，再起一个卷服务指向 master", "code": "weed volume -dir=/data -master=<host>:9333"}
+  ],
+  "value": {"en": "Billions of small objects at one disk read each — you stop paying a per-file metadata tax or reshuffling data to add capacity", "zh": "十亿级小对象、每个只读一次盘：不再为每个文件付元数据税，扩容量也不用搬数据"},
+  "sources": [
+    "https://github.com/seaweedfs/seaweedfs#one-command (weed mini -dir=./data starts an S3 object store; endpoint http://localhost:8333; aws --endpoint-url http://localhost:8333 s3 cp README.md s3://my-bucket/)",
+    "https://github.com/seaweedfs/seaweedfs#scale-out (weed volume -dir=/data -master=<master_host>:9333; capacity is a volume server, gateways are stateless)",
+    "https://github.com/seaweedfs/seaweedfs#fast (one disk read per blob; 16-byte in-memory index entry per blob; 40 bytes of metadata per file; append-only volume files)",
+    "https://github.com/seaweedfs/seaweedfs#one-command (the same process also runs the master, a volume server, the filer, WebDAV, the Iceberg REST catalog, and the Admin UI)"
+  ]
+}

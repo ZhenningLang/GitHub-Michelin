@@ -782,6 +782,16 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A（4/6） | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A（5/6） | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
 
+### object-storage
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Silo** | 你已经在跑 MinIO、而上游社区版已经终结时用它——Silo 让 S3 API、落盘格式与 `MINIO_*` 命名继续可用；代价是可执行文件／软件包／镜像改名为 `silo`，且它是单一维护者对单一代码库的 fork。 | AGPL-3.0 | B（4/6） | [中](categories/object-storage/silo.zh.md) · [EN](categories/object-storage/silo.md) |
+| **MinIO** | 用这一页决定你手上已经跑着的 MinIO 怎么办：社区仓库已归档（2026-04）且无人维护，所以这是“迁到在维护的 fork 或别的存储”的选择，而不是新部署的选项。 | AGPL-3.0 | D（5/6） | [中](categories/object-storage/minio.zh.md) · [EN](categories/object-storage/minio.md) |
+| **Garage** | 想用几台分散各地、便宜的机器拼出一个 S3 端点、跨站点复制、其中一台离线仍可用时用它——但它的 S3 能力面刻意不完整（没有 ACL／策略语义）。 | AGPL-3.0 | B（4/6） | [中](categories/object-storage/garage.zh.md) · [EN](categories/object-storage/garage.md) |
+| **SeaweedFS** | 真正的约束是对象数量——十亿级小文件——且你想要一个 `weed` 二进制同时提供 S3、文件系统与表层、靠加卷服务扩容量时用它。 | Apache-2.0 | B（5/6） | [中](categories/object-storage/seaweedfs.zh.md) · [EN](categories/object-storage/seaweedfs.md) |
+| **Ceph** | 你需要基金会治理的同一平台提供对象、块与文件、且养得起一个真正的存储集群时用它——只需要一个 S3 桶时属于过量的工具。 | LGPL-2.1 | A（3/6） | [中](categories/object-storage/ceph.zh.md) · [EN](categories/object-storage/ceph.md) |
+
 ### desktop-automation
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

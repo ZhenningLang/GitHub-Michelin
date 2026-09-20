@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Silo does", "zh": "Silo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the Silo container (or package) over your existing data directory", "zh": "用容器或软件包把 Silo 跑起来，数据目录沿用原来的", "code": "docker.io/pgsty/silo:latest"},
+    {"lane": "them", "en": "Serves the S3 API on :9000 and the Silo Console on :9001", "zh": "在 :9000 提供 S3 API，在 :9001 提供 Web 控制台"},
+    {"lane": "you", "en": "Point your existing S3 client or SDK at the endpoint, unchanged", "zh": "原有的 S3 客户端或 SDK 照旧指向这个端点", "code": "mcli alias set local http://127.0.0.1:9000"},
+    {"lane": "you", "en": "Keep creating buckets and writing objects the way you did on MinIO", "zh": "像在 MinIO 上那样建桶、读写对象", "code": "mcli mb local/demo · mcli ls local"},
+    {"lane": "them", "en": "Stores objects in the unchanged MinIO layout — .minio.sys and erasure metadata included", "zh": "用不变的 MinIO 布局落盘：.minio.sys 与纠删码元数据都不动"},
+    {"lane": "them", "en": "Keeps honoring MINIO_* env vars, x-minio-* headers and minio_* metrics", "zh": "继续认 MINIO_* 环境变量、x-minio-* 头与 minio_* 指标"}
+  ],
+  "value": {"en": "A maintained S3 server with no data migration: your disks, config namespace and SDK clients carry over — only the delivery artifacts changed name", "zh": "换到一个仍在维护的 S3 服务端，且不用迁数据：磁盘、配置命名空间和 SDK 客户端照旧，只有交付物改了名字"},
+  "sources": [
+    "https://github.com/pgsty/silo#quick-start (docker run pgsty/silo:latest server /data --console-address \":9001\"; console on 9001, S3 API on 9000; mcli alias set / mcli mb / mcli ls)",
+    "https://github.com/pgsty/silo#compatibility (preserves S3 and storage-format compatibility: existing MINIO_* variables, minio_* metrics, x-minio-* headers, /minio/* routes and .minio.sys data)",
+    "https://silo.pgsty.com/compatibility/migration/ (reuses existing object data and volumes without an object-by-object export/import; Docker image replacement; MINIO_* unchanged)"
+  ]
+}

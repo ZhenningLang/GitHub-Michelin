@@ -42,6 +42,7 @@ aiodns / pycares,categories/networking/dnspython.md,,no
 aiohttp,categories/python-tooling/grequests.md,,no
 aiokafka,categories/kafka-tools/kafka-python.md,,no
 airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
+AIStor Free / Enterprise,categories/object-storage/minio.md,,no
 AKHQ,categories/kafka-tools/kafka-ui.md,,no
 AKShare,categories/web-scraping/crawling-tools/gopup.md,,no
 alass,categories/media-processing/video-audio/ffsubsync.md,,no
@@ -97,6 +98,7 @@ AWS Elemental MediaConvert,categories/media-processing/video-audio/gstreamer.md,
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
+AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no

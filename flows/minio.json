@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "MinIO does", "zh": "MinIO 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the server from source — community binaries are no longer published", "zh": "从源码构建服务端——社区预编译二进制已不再发布", "code": "go install github.com/minio/minio@latest"},
+    {"lane": "you", "en": "Start it on an empty directory of your choice", "zh": "选一个空目录把它跑起来", "code": "minio server /data"},
+    {"lane": "them", "en": "Serves the S3 API on :9000 and an embedded web console", "zh": "在 :9000 提供 S3 API 与内嵌 Web 控制台"},
+    {"lane": "you", "en": "Point any S3 client at it and start writing objects", "zh": "任意 S3 客户端指向它就能建桶、读写对象", "code": "mc alias set local http://localhost:9000 minioadmin minioadmin"},
+    {"lane": "them", "en": "Stores objects in the erasure-coded MinIO layout that a maintained fork can still read", "zh": "用纠删码的 MinIO 布局落盘，维护中的 fork 仍能直接读"}
+  ],
+  "value": {"en": "The self-hosted S3 server a generation of stacks was built on — still runnable from source, but every future fix now comes from you or a fork", "zh": "一代自建栈的 S3 底座——仍可从源码运行，但以后每个修复都得靠你自己或某个 fork"},
+  "sources": [
+    "https://github.com/minio/minio#readme (THIS REPOSITORY IS NO LONGER MAINTAINED; source-only distribution, no pre-compiled community binaries)",
+    "https://github.com/minio/minio#install-from-source (go install github.com/minio/minio@latest; minio server PATH; default minioadmin:minioadmin; console on :9000)",
+    "https://github.com/minio/minio#test-using-minio-client-mc (mc alias set local http://localhost:9000 minioadmin minioadmin)"
+  ]
+}
