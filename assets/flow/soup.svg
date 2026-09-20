@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1016" viewBox="0 0 880 1016" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1016" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="858" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="858" rx="10"/>
+<rect class="pillT" x="474" y="40" width="110.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Soup does</text>
+<path class="edge" d="M62,208 L62,232" marker-end="url(#a)"/>
+<path class="hand" d="M408,281.5 C439.0,281.5 439.0,305 470,305" marker-end="url(#a)"/>
+<path class="edge" d="M494,398 L494,422" marker-end="url(#a)"/>
+<path class="edge" d="M494,541 L494,565" marker-end="url(#a)"/>
+<path class="hand" d="M472,614.5 C441.0,614.5 441.0,638 410,638" marker-end="url(#a)"/>
+<path class="edge" d="M62,728 L62,752" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the CLI with the training</text>
+<text class="t" x="82" y="123">extra and scaffold a config from a</text>
+<text class="t" x="82" y="145">template</text>
+<text class="c" x="82" y="169">pipx install &quot;soup-cli[train]&quot; · soup init</text>
+<text class="c" x="82" y="188">--template chat</text>
+<rect class="card" x="40" y="234" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="234" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="258" r="10"/>
+<text class="num" x="62" y="262" text-anchor="middle">2</text>
+<text class="t" x="82" y="263">Fill in the one config — base model,</text>
+<text class="t" x="82" y="285">task, data file, LoRA shape</text>
+<text class="c" x="82" y="309">base · task · data.train</text>
+<rect class="cardT" x="472" y="281" width="368" height="117" rx="8"/>
+<rect class="accT" x="472" y="281" width="4" height="117" rx="2"/>
+<circle class="accT" cx="494" cy="305" r="10"/>
+<text class="num" x="494" y="309" text-anchor="middle">3</text>
+<text class="t" x="514" y="310">Reads the config and fills in the run</text>
+<text class="t" x="514" y="332">for you — GPU detection, batch size,</text>
+<text class="t" x="514" y="354">quantization</text>
+<text class="c" x="514" y="378">training.batch_size: auto</text>
+<rect class="cardT" x="472" y="424" width="368" height="117" rx="8"/>
+<rect class="accT" x="472" y="424" width="4" height="117" rx="2"/>
+<circle class="accT" cx="494" cy="448" r="10"/>
+<text class="num" x="494" y="452" text-anchor="middle">4</text>
+<text class="t" x="514" y="453">Streams the frozen base one layer at a</text>
+<text class="t" x="514" y="475">time from host RAM instead of holding</text>
+<text class="t" x="514" y="497">it in VRAM</text>
+<text class="c" x="514" y="521">stream_layers: true</text>
+<rect class="cardT" x="472" y="567" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="567" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="591" r="10"/>
+<text class="num" x="494" y="595" text-anchor="middle">5</text>
+<text class="t" x="514" y="596">Trains and writes a standard PEFT</text>
+<text class="t" x="514" y="618">adapter plus its metrics</text>
+<text class="c" x="514" y="642">soup train --config soup.yaml</text>
+<rect class="card" x="40" y="614" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="614" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="638" r="10"/>
+<text class="num" x="62" y="642" text-anchor="middle">6</text>
+<text class="t" x="82" y="643">Talk to the result, or serve it over</text>
+<text class="t" x="82" y="665">an OpenAI-compatible API</text>
+<text class="c" x="82" y="689">soup chat --model ./output · soup serve</text>
+<text class="c" x="82" y="708">--model ./output</text>
+<rect class="card" x="40" y="754" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="754" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="778" r="10"/>
+<text class="num" x="62" y="782" text-anchor="middle">7</text>
+<text class="t" x="82" y="783">Merge the adapter into the base, or</text>
+<text class="t" x="82" y="805">export it for your runtime</text>
+<text class="c" x="82" y="829">soup merge --adapter ./output · soup</text>
+<text class="c" x="82" y="848">export --model ./output --format gguf</text>
+<rect class="val" x="28" y="900" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="924">VALUE</text>
+<text class="valT" x="48" y="948">One YAML takes you from a JSONL file to a model you can chat with, serve and export — batch</text>
+<text class="valT" x="48" y="970">size, quantization and the VRAM workaround are decided for you</text>
+</svg>

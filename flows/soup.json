@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Soup does",
+    "zh": "Soup 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI with the training extra and scaffold a config from a template",
+      "zh": "装好带训练 extra 的 CLI，并从模板生成一份配置",
+      "code": "pipx install \"soup-cli[train]\" · soup init --template chat"
+    },
+    {
+      "lane": "you",
+      "en": "Fill in the one config — base model, task, data file, LoRA shape",
+      "zh": "填好那一份配置——底座模型、任务、数据文件、LoRA 形状",
+      "code": "base · task · data.train"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the config and fills in the run for you — GPU detection, batch size, quantization",
+      "zh": "读这份配置替你定下运行方式——GPU 探测、批大小、量化",
+      "code": "training.batch_size: auto"
+    },
+    {
+      "lane": "them",
+      "en": "Streams the frozen base one layer at a time from host RAM instead of holding it in VRAM",
+      "zh": "把冻结底座从主机内存一层层流进显存，而不是整块留在显存里",
+      "code": "stream_layers: true"
+    },
+    {
+      "lane": "them",
+      "en": "Trains and writes a standard PEFT adapter plus its metrics",
+      "zh": "训练，并写出标准 PEFT adapter 与对应的指标",
+      "code": "soup train --config soup.yaml"
+    },
+    {
+      "lane": "you",
+      "en": "Talk to the result, or serve it over an OpenAI-compatible API",
+      "zh": "和结果对话，或用 OpenAI 兼容接口把它服务起来",
+      "code": "soup chat --model ./output · soup serve --model ./output"
+    },
+    {
+      "lane": "you",
+      "en": "Merge the adapter into the base, or export it for your runtime",
+      "zh": "把 adapter 合并回底座，或按你的运行时导出",
+      "code": "soup merge --adapter ./output · soup export --model ./output --format gguf"
+    }
+  ],
+  "value": {
+    "en": "One YAML takes you from a JSONL file to a model you can chat with, serve and export — batch size, quantization and the VRAM workaround are decided for you",
+    "zh": "一份 YAML 把你从 JSONL 文件带到可对话、可服务、可导出的模型——批大小、量化与显存绕行都由它替你决定"
+  },
+  "sources": [
+    "README.md Quick Start (pipx install \"soup-cli[train]\", soup init --template chat, soup train --config soup.yaml, soup chat --model ./output, soup merge --adapter ./output, soup export --model ./output --format gguf, soup push --model ./output --repo you/my-model)",
+    "README.md Configuration (complete soup.yaml: base, task: sft, data.train, data.format, training.batch_size: auto, training.lora.r/alpha, training.quantization: 4bit, output)",
+    "README.md top section (layer streaming opt-in stream_layers: true, BETA, 8B NF4 on an RTX 3050 Laptop 4 GB)",
+    "README.md Web UI (soup ui serves the local dashboard on http://127.0.0.1:7860)",
+    "docs/performance-and-quantization.md Layer Streaming section (training.stream_layers: true, stream_source, stream_buffers, stream_vram_override; 'LoRA adapters + their gradients + optimizer state stay resident in VRAM … the frozen base lives in CPU RAM … each decoder layer is copied into one of two pre-allocated VRAM buffers')",
+    "docs/performance-and-quantization.md Multi-GPU section (soup train --config soup.yaml --deepspeed zero2 / --fsdp full_shard)",
+    "docs/training.md (task coverage: SFT, DPO/GRPO/PPO/KTO/ORPO/SimPO/IPO/BCO, PRM, pre-training, distillation, classification, vision/audio/TTS, unlearning, RAFT/RA-DIT)",
+    "examples/configs/sft_basic.yaml, examples/configs/dpo_chat.yaml, examples/data/alpaca_tiny.jsonl (worked config + data examples)"
+  ]
+}
