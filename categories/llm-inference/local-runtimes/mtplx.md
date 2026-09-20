@@ -3,7 +3,7 @@ name: MTPLX
 slug: mtplx
 repo: https://github.com/youssofal/MTPLX
 homepage: https://mtplx.com
-category: llm-inference
+category: local-runtimes
 tags: [llm-serving, inference-server, apple-silicon, mlx, speculative-decoding, mtp, openai-api, anthropic-api, macos]
 language: Python
 license: Apache-2.0
@@ -78,7 +78,7 @@ health:
 
 Local LLM inference on Apple Silicon that uses the model's own MTP heads for exact speculative decoding, shipped as a macOS app plus an OpenAI/Anthropic-compatible server.
 
-![MTPLX — health radar](../../assets/health/mtplx.svg)
+![MTPLX — health radar](../../../assets/health/mtplx.svg)
 
 ## When to use
 
@@ -86,10 +86,10 @@ You're a developer on a 32–128 GB Apple Silicon Mac driving a coding agent (Op
 
 ## When NOT to use
 
-- **Any non-Apple-Silicon target** → use [vLLM](vllm.md) or llm-metal-family stacks; MTPLX is MLX/Metal-only with a darwin+arm64 dependency gate, and the author says so ("for Linux, use vLLM").
-- **Models outside the verified Qwen/Gemma pack catalog** → use Ollama or [llama.cpp](llama-cpp.md): MTPLX's advantage is native MTP heads, which today only the Qwen 3.5+/Gemma 4 packs it publishes have; on anything else it degrades to AR-only mode where [mlx-lm](../on-device-ml/mlx-mlx-lm.md) is the leaner pick.
+- **Any non-Apple-Silicon target** → use [vLLM](../serving-engines/vllm.md) or llm-metal-family stacks; MTPLX is MLX/Metal-only with a darwin+arm64 dependency gate, and the author says so ("for Linux, use vLLM").
+- **Models outside the verified Qwen/Gemma pack catalog** → use Ollama or [llama.cpp](llama-cpp.md): MTPLX's advantage is native MTP heads, which today only the Qwen 3.5+/Gemma 4 packs it publishes have; on anything else it degrades to AR-only mode where [mlx-lm](../../on-device-ml/mlx-mlx-lm.md) is the leaner pick.
 - **Embedding the engine in a commercial product** → check the license first: Apache-2.0 plus a NOTICE that **requires a visible in-product "Powered by MTPLX" attribution** (verified in-repo, 2026-09-18). If a credits-in-product clause is unacceptable, use mlx-lm or llama.cpp (no such clause).
-- **Shared/team serving, GPU clusters, multi-tenant batching** → use [vLLM](vllm.md) or [SGLang](sglang.md); MTPLX's scheduler targets one Mac, one resident model.
+- **Shared/team serving, GPU clusters, multi-tenant batching** → use [vLLM](../serving-engines/vllm.md) or [SGLang](../serving-engines/sglang.md); MTPLX's scheduler targets one Mac, one resident model.
 - **You refuse any passwordless-sudo surface** → `mtplx max --install` installs a sudoers rule for its fan-control helper (ThermalForge); [omlx](omlx.md) and LM Studio (not indexed, closed-source) need nothing like it.
 - **Low-risk production bets** → the public repo is ~5 months old (created 2026-05-02, API-verified) and ~78% of commits come from one author; treat it as an early-adopting tool, not infrastructure.
 
@@ -97,11 +97,11 @@ You're a developer on a 32–128 GB Apple Silicon Mac driving a coding agent (Op
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [mlx-lm](../on-device-ml/mlx-mlx-lm.md) | ✅ | When you just want to run any MLX model on a Mac with minimal moving parts, pick mlx-lm; pick MTPLX when decode latency of Qwen MTP-capable models is the problem, since its own-MTP-head speculation is roughly 2x faster at the cost of a much bigger, attribution-bearing app-stack. | MTPLX: speed + polished server/app; mlx-lm: breadth, upstream-MLX stability, tiny surface. |
+| [mlx-lm](../../on-device-ml/mlx-mlx-lm.md) | ✅ | When you just want to run any MLX model on a Mac with minimal moving parts, pick mlx-lm; pick MTPLX when decode latency of Qwen MTP-capable models is the problem, since its own-MTP-head speculation is roughly 2x faster at the cost of a much bigger, attribution-bearing app-stack. | MTPLX: speed + polished server/app; mlx-lm: breadth, upstream-MLX stability, tiny surface. |
 | [omlx](omlx.md) | ✅ | Both are young Mac/MLX OpenAI servers; pick omlx for SSD-tiered KV caching with a lighter footprint, pick MTPLX when you need the exact MTP speculative decode and packaged Qwen 3.8 weights — its differentiator is the decoder, not the cache. | MTPLX buys speed with a heavier install (fan control, bundled engine); omlx stays closer to plain mlx-lm. |
 | [llama.cpp](llama-cpp.md) | ✅ | Pick llama.cpp for hardware breadth (CUDA/ROCm/CPU, any GGUF) and decade-proven longevity; pick MTPLX only for the Apple-Silicon-native MTP lane, where llama.cpp's mainline MTP speculation landed only in May 2026 (PR merge, API-verified) while MTPLX ships tuned model packs itself. | llama.cpp: portability + Lindy; MTPLX: Metal-native speed + one-click Mac UX. |
 | [Ollama](ollama.md) | ✅ | For "pull and chat" simplicity across platforms with the largest model catalog, Ollama wins; MTPLX is for Mac users who benchmarked Ollama's decode and want the measured ~1.6–2.2x on Qwen 3.8 specifically. | Ollama: catalog + cross-OS; MTPLX: narrow model set, faster on it. |
-| [vLLM](vllm.md) | ✅ | Server-grade continuous batching, PagedAttention, multi-GPU — vLLM; single-Mac desk-side agent loop — MTPLX. Choosing vLLM for a laptop means CUDA tax or Metal-provenance games. | vLLM: throughput at scale; MTPLX: latency-per-watt on one Mac. |
+| [vLLM](../serving-engines/vllm.md) | ✅ | Server-grade continuous batching, PagedAttention, multi-GPU — vLLM; single-Mac desk-side agent loop — MTPLX. Choosing vLLM for a laptop means CUDA tax or Metal-provenance games. | vLLM: throughput at scale; MTPLX: latency-per-watt on one Mac. |
 
 ## Tech stack
 

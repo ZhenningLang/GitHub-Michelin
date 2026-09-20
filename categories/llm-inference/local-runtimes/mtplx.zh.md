@@ -3,7 +3,7 @@ name: MTPLX
 slug: mtplx
 repo: https://github.com/youssofal/MTPLX
 homepage: https://mtplx.com
-category: llm-inference
+category: local-runtimes
 tags: [llm-serving, inference-server, apple-silicon, mlx, speculative-decoding, mtp, openai-api, anthropic-api, macos]
 language: Python
 license: Apache-2.0
@@ -78,7 +78,7 @@ health:
 
 在 Apple Silicon 上用模型自带的 MTP 头做精确投机解码的本地推理引擎，以 macOS 应用加 OpenAI/Anthropic 兼容服务器的形态交付。
 
-![MTPLX — 健康度雷达](../../assets/health/mtplx.zh.svg)
+![MTPLX — 健康度雷达](../../../assets/health/mtplx.zh.svg)
 
 ## 何时使用
 
@@ -86,10 +86,10 @@ health:
 
 ## 何时不用
 
-- **任何非 Apple Silicon 目标**——用 [vLLM](vllm.zh.md) 等；MTPLX 是 MLX/Metal 专属，依赖清单里就写死 darwin+arm64 门槛，作者自己也说“Linux 请用 vLLM”。
-- **不在已验证 Qwen/Gemma 包目录内的模型**——用 Ollama 或 [llama.cpp](llama-cpp.zh.md)：MTPLX 的优势来自原生 MTP 头，目前只有它发布的 Qwen 3.5+/Gemma 4 包具备；其余模型退化为纯 AR 模式，那时 [mlx-lm](../on-device-ml/mlx-mlx-lm.zh.md) 更轻更合适。
+- **任何非 Apple Silicon 目标**——用 [vLLM](../serving-engines/vllm.zh.md) 等；MTPLX 是 MLX/Metal 专属，依赖清单里就写死 darwin+arm64 门槛，作者自己也说“Linux 请用 vLLM”。
+- **不在已验证 Qwen/Gemma 包目录内的模型**——用 Ollama 或 [llama.cpp](llama-cpp.zh.md)：MTPLX 的优势来自原生 MTP 头，目前只有它发布的 Qwen 3.5+/Gemma 4 包具备；其余模型退化为纯 AR 模式，那时 [mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) 更轻更合适。
 - **要把引擎嵌进商业产品**——先看清许可：Apache-2.0 之外，NOTICE 强制要求产品内可见位置的 “Powered by MTPLX” 署名（2026-09-18 已在仓库内核验原文）；不能接受产品内署名条款就用 mlx-lm 或 llama.cpp（均无此条款）。
-- **团队共享服务、GPU 集群、多租户批量**——用 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md)；MTPLX 的调度器面向一台 Mac 驻留一个模型。
+- **团队共享服务、GPU 集群、多租户批量**——用 [vLLM](../serving-engines/vllm.zh.md) 或 [SGLang](../serving-engines/sglang.zh.md)；MTPLX 的调度器面向一台 Mac 驻留一个模型。
 - **拒绝任何免密 sudo 面**——`mtplx max --install` 为风扇控制助手（ThermalForge）写入 sudoers 规则；[omlx](omlx.zh.md) 和 LM Studio（未收录，闭源）不需要这类东西。
 - **求稳的生产押注**——公开仓库 2026-05-02 创建（API 核验），至今约五个月，约 78% 提交来自单一作者；当尝鲜工具，别当基础设施。
 
@@ -97,11 +97,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [mlx-lm](../on-device-ml/mlx-mlx-lm.zh.md) | ✅ | 只想在 Mac 上以最少活动零件跑任意 MLX 模型，选 mlx-lm；问题出在 Qwen 系 MTP 可解码模型的延迟时才选 MTPLX，因为自带 MTP 头投机约 2 倍提速，代价是一个大得多且带署名条款的应用栈。 | MTPLX 买到速度与打磨好的服务器/应用；mlx-lm 换来覆盖面、上游 MLX 的稳定性与极小暴露面。 |
+| [mlx-lm](../../on-device-ml/mlx-mlx-lm.zh.md) | ✅ | 只想在 Mac 上以最少活动零件跑任意 MLX 模型，选 mlx-lm；问题出在 Qwen 系 MTP 可解码模型的延迟时才选 MTPLX，因为自带 MTP 头投机约 2 倍提速，代价是一个大得多且带署名条款的应用栈。 | MTPLX 买到速度与打磨好的服务器/应用；mlx-lm 换来覆盖面、上游 MLX 的稳定性与极小暴露面。 |
 | [omlx](omlx.zh.md) | ✅ | 两者都是年轻的 Mac/MLX OpenAI 服务器；要 SSD 分层 KV 缓存且足迹更轻选 omlx，要精确 MTP 投机解码和打包好的 Qwen 3.8 权重选 MTPLX——它的差异点在解码器不在缓存。 | MTPLX 用更重的安装（风扇控制、自带引擎）换速度；omlx 更接近朴素的 mlx-lm。 |
 | [llama.cpp](llama-cpp.zh.md) | ✅ | 要硬件广度（CUDA/ROCm/CPU、任意 GGUF）和十年验证的长寿性选 llama.cpp；只有走 Apple Silicon 原生 MTP 这条道才选 MTPLX——llama.cpp 主线的 MTP 投机解码 2026 年 5 月才合入（PR 合入时间，API 核验），而 MTPLX 连模型包都是自己供的。 | llama.cpp：可移植性与 Lindy；MTPLX：Metal 原生速度加一键 Mac 体验。 |
 | [Ollama](ollama.zh.md) | ✅ | 跨平台“拉了就用”的极简体验和最大模型目录，Ollama 赢；MTPLX 适合在 Mac 上实测过 Ollama 解码、就是要 Qwen 3.8 上那 1.6–2.2 倍的人。 | Ollama：目录与跨系统；MTPLX：模型集合窄，但在其上更快。 |
-| [vLLM](vllm.zh.md) | ✅ | 服务器级的连续批处理、PagedAttention、多 GPU 选 vLLM；单台 Mac 桌边的 agent 环路选 MTPLX；给笔记本硬上 vLLM 意味着 CUDA 税或 Metal 移植的不确定性。 | vLLM：规模化吞吐；MTPLX：一台 Mac 上的每瓦延迟。 |
+| [vLLM](../serving-engines/vllm.zh.md) | ✅ | 服务器级的连续批处理、PagedAttention、多 GPU 选 vLLM；单台 Mac 桌边的 agent 环路选 MTPLX；给笔记本硬上 vLLM 意味着 CUDA 税或 Metal 移植的不确定性。 | vLLM：规模化吞吐；MTPLX：一台 Mac 上的每瓦延迟。 |
 
 ## 技术栈
 

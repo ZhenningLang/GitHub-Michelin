@@ -78,9 +78,9 @@ health:
 ## 何时不用
 
 - **你想要通用聊天/助手。** Needle 明确用通用聊天能力换小体积上的任务准确率。如果任务是开放式对话或推理，改用通用小指令模型（如 Qwen2.5-0.5B/1.5B、SmolLM2）配 llama.cpp 或 Ollama——本页的模型聊天更弱。
-- **你要在 GPU 上服务大量并发用户。** 这是按设备部署的模型加 SDK，没有批处理服务端。托管服务改用 [vLLM](../llm-inference/vllm.zh.md) 或 [TGI](../llm-inference/text-generation-inference.zh.md)（或直接调用云端 API）配更大的函数调用模型。
-- **你要一个能承载任意模型的运行时。** Needle 只提供单一模型族，不是通用推理引擎。如果优先考虑模型选择，用 [llama.cpp](../llm-inference/llama-cpp.zh.md)、[Ollama](../llm-inference/ollama.zh.md) 或 [LiteRT-LM](litert-lm.zh.md)。
-- **你要在困难或模糊请求上追求最高工具调用准确率。** 当准确率是硬约束且能接受一次网络往返时，改用云端前沿函数调用（OpenAI / Gemini）。要自托管就不要再选 [Functionary](../function-calling/functionary.zh.md)——它已废弃；改用 [vLLM](../llm-inference/vllm.zh.md) 或 [SGLang](../llm-inference/sglang.zh.md) 跑一个当前的函数调用模型。
+- **你要在 GPU 上服务大量并发用户。** 这是按设备部署的模型加 SDK，没有批处理服务端。托管服务改用 [vLLM](../llm-inference/serving-engines/vllm.zh.md) 或 [TGI](../llm-inference/serving-engines/text-generation-inference.zh.md)（或直接调用云端 API）配更大的函数调用模型。
+- **你要一个能承载任意模型的运行时。** Needle 只提供单一模型族，不是通用推理引擎。如果优先考虑模型选择，用 [llama.cpp](../llm-inference/local-runtimes/llama-cpp.zh.md)、[Ollama](../llm-inference/local-runtimes/ollama.zh.md) 或 [LiteRT-LM](litert-lm.zh.md)。
+- **你要在困难或模糊请求上追求最高工具调用准确率。** 当准确率是硬约束且能接受一次网络往返时，改用云端前沿函数调用（OpenAI / Gemini）。要自托管就不要再选 [Functionary](../function-calling/functionary.zh.md)——它已废弃；改用 [vLLM](../llm-inference/serving-engines/vllm.zh.md) 或 [SGLang](../llm-inference/serving-engines/sglang.zh.md) 跑一个当前的函数调用模型。
 - **你要求只靠源码仓库就能完全自包含。** 仓库里是 SDK 和训练/导出链路；原生引擎二进制和 `.cact` 权重在首次使用时从 Hugging Face 拉取，缓存在 `~/.cache/cactus-needle`。要真正自包含的产物，就把引擎和权重一并 vendor，或改用 llama.cpp 配一个打包好的 GGUF。
 - **遥测必须完全不可能。** 匿名使用统计默认开启（用 `NEEDLE_TELEMETRY=0` 或 `DO_NOT_TRACK=1` 关闭）。如果策略禁止任何回连，选择没有遥测的模型/运行时。
 - **你要最好的通用嵌入。** 嵌入头是为本地搜索/匹配/路由与任务模型一起调优的。高质量检索请改用专用嵌入模型（BGE、sentence-transformers）。
@@ -90,7 +90,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [llama.cpp](../llm-inference/llama-cpp.zh.md) + 小指令模型 GGUF | ✅ | 需要一个运行时承载任意小模型、并要 grammar 约束输出与完整平台控制时，选 llama.cpp；希望工具调用、grammar 和 confidence 行为开箱即得、而不是自己拼装时，选 Needle。 | 通用运行时，模型选择极多且本地可控；但 prompt、tool schema、解析器和 grammar 都要自己拼，也没有校准过的 confidence 和 grounding 校验。 |
+| [llama.cpp](../llm-inference/local-runtimes/llama-cpp.zh.md) + 小指令模型 GGUF | ✅ | 需要一个运行时承载任意小模型、并要 grammar 约束输出与完整平台控制时，选 llama.cpp；希望工具调用、grammar 和 confidence 行为开箱即得、而不是自己拼装时，选 Needle。 | 通用运行时，模型选择极多且本地可控；但 prompt、tool schema、解析器和 grammar 都要自己拼，也没有校准过的 confidence 和 grounding 校验。 |
 | [LiteRT-LM](litert-lm.zh.md) | ✅ | 在 Android/iOS 上部署 Gemma 级模型、想让 Google 运行时接管 NPU/GPU 加速时，选 LiteRT-LM；需要模型本身就是任务专用的工具调用模型、而非通用 Gemma 时，选 Needle。 | 一方提供的移动端加速器与 Google 背书；但它是推理运行时，函数调用模型和工具管线仍要你自己提供。 |
 | FunctionGemma（Google） | 未收录 | 想要 Google 专为端侧函数调用做的模型族（270M 及其微调版）、并接受用 Hugging Face 权重配 LiteRT/llama.cpp 时，选 FunctionGemma；想用一个小模型同时拿到工具调用、类型化抽取和嵌入，外加一方提供的 Python SDK 时，选 Needle。 | 同样的端侧工具调用生态位，且有 Google 发布的权重；但没有统一的 SDK/grammar/confidence 契约，运行时和解析要自己接线，且它以模型卡而非代码仓库形式发布。 |
 | [Functionary](../function-calling/functionary.zh.md) | ✅ | 只把 Functionary 当作开源函数调用的历史谱系参考——它已废弃（README 有明确声明）；要自托管维护中的工具调用，用 vLLM/SGLang 跑当前模型；模型必须端侧运行时选 Needle。 | JSON schema 工具调用的模板，但已停止维护——没有安全与模型更新——且体积比端侧模型大几个数量级。 |

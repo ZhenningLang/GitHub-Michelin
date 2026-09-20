@@ -2,7 +2,7 @@
 name: BentoML
 slug: bentoml
 repo: https://github.com/bentoml/BentoML
-category: llm-inference
+category: serving-engines
 tags: [llm-inference, serving, bentoml, service]
 language: Python
 license: Apache-2.0
@@ -76,7 +76,7 @@ health:
 
 The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more!
 
-![BentoML — 健康度雷达](../../assets/health/bentoml.zh.svg)
+![BentoML — 健康度雷达](../../../assets/health/bentoml.zh.svg)
 
 ## 何时使用
 
@@ -95,10 +95,10 @@ The easiest way to serve AI apps and models - Build Model Inference APIs, Job qu
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [llama.cpp](llama-cpp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [llama.cpp](../local-runtimes/llama-cpp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Ollama](ollama.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [oMLX](omlx.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Ollama](../local-runtimes/ollama.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [oMLX](../local-runtimes/omlx.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 BentoML 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

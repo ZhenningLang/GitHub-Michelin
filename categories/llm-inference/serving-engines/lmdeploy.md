@@ -2,7 +2,7 @@
 name: LMDeploy
 slug: lmdeploy
 repo: https://github.com/InternLM/lmdeploy
-category: llm-inference
+category: serving-engines
 tags: [llm-inference, serving, lmdeploy, tool]
 language: Python
 license: Apache-2.0
@@ -76,7 +76,7 @@ health:
 
 LMDeploy is a toolkit for compressing, deploying, and serving LLMs.
 
-![LMDeploy — health radar](../../assets/health/lmdeploy.svg)
+![LMDeploy — health radar](../../../assets/health/lmdeploy.svg)
 
 ## When to use
 
@@ -96,9 +96,9 @@ This first-pass page exists because LMDeploy was repeatedly useful as a comparis
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [BentoML](bentoml.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
-| [llama.cpp](llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
+| [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
-| [Ollama](ollama.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
+| [Ollama](../local-runtimes/ollama.md) | ✅ | When you need the established in-index option for this category, compare it against LMDeploy before switching. | LMDeploy is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LMDeploy only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

@@ -2,7 +2,7 @@
 name: vLLM
 slug: vllm
 repo: https://github.com/vllm-project/vllm
-category: llm-inference
+category: serving-engines
 tags: [llm-serving, inference-engine, pagedattention, gpu, cuda, python, openai-compatible, throughput]
 language: Python (with CUDA C++ kernels)
 license: Apache-2.0
@@ -75,7 +75,7 @@ health:
 The most popular open-source LLM serving engine, built around **PagedAttention** — a memory-efficient KV cache manager that virtualizes attention state into fixed-size blocks, enabling continuous batching and high GPU utilization for throughput-oriented serving.
 
 
-![vLLM — health radar](../../assets/health/vllm.svg)
+![vLLM — health radar](../../../assets/health/vllm.svg)
 
 ## When to use
 
@@ -97,12 +97,12 @@ You also reach for vLLM when you need tensor-parallel or pipeline-parallel multi
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | Use vLLM when you want the de-facto open serving engine, huge model coverage, and a Python-native stack; choose MAX when you want a vendor-built cross-vendor compiler+language platform with its own kernel language. | Vendor-built cross-vendor GPU/CPU serving engine + Mojo kernel language; single-vendor lock-in, younger community, smaller model coverage than vLLM. |
-| [oMLX](omlx.md) | ✅ | Use vLLM for datacenter NVIDIA GPU serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
+| [oMLX](../local-runtimes/omlx.md) | ✅ | Use vLLM for datacenter NVIDIA GPU serving; choose oMLX when you want a Mac (Apple Silicon) local inference server with SSD-tiered KV caching. | Mac-only local server on Apple Silicon with a Swift menu-bar app; not a datacenter multi-GPU engine. |
 | [Text Generation Inference (TGI)](text-generation-inference.md) | ✅ | Use vLLM when you want the larger community and PagedAttention; choose TGI when you want Hugging Face's production server with tight HF ecosystem integration. | Hugging Face's production server, tight HF ecosystem integration; license history has wobbled (Apache→HFOIL→Apache), smaller community than vLLM. |
 | [TensorRT-LLM](tensorrt-llm.md) | ✅ | Use vLLM when you want open-source Python flexibility and dynamic model loading; choose TensorRT-LLM when you need NVIDIA's own engine, top-tier latency on NVIDIA hardware. | NVIDIA's own engine, top-tier latency on NVIDIA hardware; deeply NVIDIA-locked, heavier build/engine-compile workflow, less dynamic model switching. |
 | [Ray Serve](ray-serve.md) | ✅ | Use vLLM when you need a dedicated LLM inference engine; choose Ray Serve when you need general Python model-serving orchestration and scaling across many model types. | General Python model-serving/orchestration framework for scaling and composing services; not a hand-tuned single-model inference engine. |
 | [SGLang](sglang.md) | ✅ | Use vLLM when you want the proven, widest-adopted engine; choose SGLang when you specifically need RadixAttention prefix caching and structured-generation optimizations. | High-throughput serving engine with RadixAttention prefix caching; newer, smaller ecosystem, less model coverage than vLLM. |
-| [Ollama](ollama.md) / [llama.cpp](llama-cpp.md) | ✅ | Use vLLM for datacenter throughput serving; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
+| [Ollama](../local-runtimes/ollama.md) / [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | Use vLLM for datacenter throughput serving; choose Ollama/llama.cpp for lightweight local/edge inference on CPU or consumer GPUs. | Portable C/C++ inference engine (GGUF) running everywhere including Macs and phones; not a datacenter multi-GPU throughput engine. |
 
 ## Tech stack
 

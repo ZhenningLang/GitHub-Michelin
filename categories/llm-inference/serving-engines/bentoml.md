@@ -2,7 +2,7 @@
 name: BentoML
 slug: bentoml
 repo: https://github.com/bentoml/BentoML
-category: llm-inference
+category: serving-engines
 tags: [llm-inference, serving, bentoml, service]
 language: Python
 license: Apache-2.0
@@ -76,7 +76,7 @@ health:
 
 The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more!
 
-![BentoML — health radar](../../assets/health/bentoml.svg)
+![BentoML — health radar](../../../assets/health/bentoml.svg)
 
 ## When to use
 
@@ -95,10 +95,10 @@ This first-pass page exists because BentoML was repeatedly useful as a compariso
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [llama.cpp](llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
+| [llama.cpp](../local-runtimes/llama-cpp.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
-| [Ollama](ollama.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
-| [oMLX](omlx.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
+| [Ollama](../local-runtimes/ollama.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
+| [oMLX](../local-runtimes/omlx.md) | ✅ | When you need the established in-index option for this category, compare it against BentoML before switching. | BentoML is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose BentoML only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

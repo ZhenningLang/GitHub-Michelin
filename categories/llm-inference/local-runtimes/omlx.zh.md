@@ -2,7 +2,7 @@
 name: oMLX
 slug: omlx
 repo: https://github.com/jundot/omlx
-category: llm-inference
+category: local-runtimes
 tags: [llm-serving, inference-server, apple-silicon, mlx, kv-cache, openai-api, macos]
 language: Python
 license: Apache-2.0
@@ -70,7 +70,7 @@ health:
 
 一个只跑在 Apple Silicon 上的 LLM 推理服务器（基于 Apple 的 MLX），带 continuous batching 和「热内存 + 冷 SSD」分层 KV 缓存，从 macOS 菜单栏管理——目标是让本地模型在 Claude Code 这类日常编码 agent 上真正可用。
 
-![omlx — 健康度雷达](../../assets/health/omlx.zh.svg)
+![omlx — 健康度雷达](../../../assets/health/omlx.zh.svg)
 
 ## 何时使用
 
@@ -80,7 +80,7 @@ health:
 
 ## 何时不用
 
-- **你需要生产级、久经检验的服务——而这是一个非常年轻、单一维护者的项目。** 2026-02 创建（截至 2026-06 约 4 个月），由一位主导作者撑起，**未经证明**、track record 很薄。任何你必须依赖的场景，都该优先选成熟栈：**vLLM**、**TGI** 或 **[Modular MAX](modular.zh.md)**。把 oMLX 当作「有潜力但很早期」。[推断]
+- **你需要生产级、久经检验的服务——而这是一个非常年轻、单一维护者的项目。** 2026-02 创建（截至 2026-06 约 4 个月），由一位主导作者撑起，**未经证明**、track record 很薄。任何你必须依赖的场景，都该优先选成熟栈：**vLLM**、**TGI** 或 **[Modular MAX](../serving-engines/modular.zh.md)**。把 oMLX 当作「有潜力但很早期」。[推断]
 - **你不在 Apple Silicon 上。** oMLX **仅限 macOS**、**仅限 Apple Silicon**（要求 macOS 15.0+ 和 M 系列芯片），基于 Apple 的 MLX。没有 Linux/NVIDIA/AMD 路径——服务器 GPU 请用 vLLM / TGI / TensorRT-LLM / MAX。
 - **你要在集群 / 多节点规模上服务。** 这是单机、单 Mac 的服务器，带 LRU 模型淘汰和内存上限——不是横向扩展、多 GPU 机群、带自动扩缩的引擎。
 - **SSD 卸载缓存的取舍你接受不了。** 从磁盘恢复 KV 块**在命中时**比重算快，但它带来 I/O 延迟和 SSD 磨损，且收益取决于前缀命中率；遇到冷的/全新的 prompt 你照样付正常 prefill。别把这个缓存当成免费的。
@@ -94,11 +94,11 @@ health:
 | LM Studio | 未收录 | 需要带 OpenAI 兼容服务器的精致桌面应用时，选 LM Studio。 | 打磨精良的本地模型桌面应用（Mac/Win/Linux），带 OpenAI 兼容服务器；GUI 闭源，不是 Apple-MLX 原生的开源服务器。 |
 | mlx-lm（`mlx_lm.server`） | 未收录 | 需要 Apple 自家 MLX LLM 工具包和极简服务器时，选 mlx-lm。 | Apple 自家的 MLX LLM 工具包，带一个极简 OpenAI 兼容服务器——oMLX 正是**建在** mlx-lm 的 BatchGenerator 之上；mlx-lm 更底层，没有菜单栏应用、分层 SSD 缓存、多模型 LRU 和 admin 面板。 |
 | [llama.cpp](llama-cpp.zh.md) | ✅ | 需要可移植的 C/C++ GGUF 推理引擎、并希望靠 Metal 跑 Mac 时，选 llama.cpp。 | 可移植的 C/C++ 推理引擎（GGUF），靠 Metal 也能在 Mac 上跑、到处都能跑；可移植性和成熟度都顶，但不是 MLX 原生，也没有内建的 macOS 菜单栏/admin 管理层。 |
-| [vLLM](vllm.zh.md) | ✅ | 需要事实标准的数据中心 LLM 服务引擎，而不是 Mac 本地服务器时，选 vLLM。 | 事实标准的数据中心 LLM 服务引擎（PagedAttention、continuous batching），社区庞大；偏 NVIDIA/Linux——不是 Mac/Apple Silicon 本地服务器。 |
-| [Text Generation Inference (TGI)](text-generation-inference.zh.md) | ✅ | 需要 Hugging Face 生产服务器、紧密 HF 集成和规模验证时，选 TGI。 | Hugging Face 的生产服务器，与 HF 贴合紧密、在规模上久经检验；面向服务器 GPU，不是 Mac 本地栈。 |
-| [SGLang](sglang.zh.md) | ✅ | 需要面向服务器 GPU 的高吞吐服务和 RadixAttention 前缀缓存时，选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；面向服务器 GPU、运维更复杂，不是单 Mac 菜单栏应用。 |
-| [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 需要服务器级跨厂商引擎和 Mojo kernel 语言时，选 Modular Platform。 | 厂商自建的跨厂商 GPU/CPU 服务引擎 + Mojo kernel 语言；一个大得多、服务器级、单一厂商的平台——与 Mac 本地服务器是不同的层和量级。 |
-| [Ray Serve](ray-serve.zh.md) | ✅ | 需要可扩展 Python 模型服务、多模型组合和自动扩缩容时，选 Ray Serve。 | 通用可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容；基于 Ray，运维要求高，不是 Mac 本地服务器。 |
+| [vLLM](../serving-engines/vllm.zh.md) | ✅ | 需要事实标准的数据中心 LLM 服务引擎，而不是 Mac 本地服务器时，选 vLLM。 | 事实标准的数据中心 LLM 服务引擎（PagedAttention、continuous batching），社区庞大；偏 NVIDIA/Linux——不是 Mac/Apple Silicon 本地服务器。 |
+| [Text Generation Inference (TGI)](../serving-engines/text-generation-inference.zh.md) | ✅ | 需要 Hugging Face 生产服务器、紧密 HF 集成和规模验证时，选 TGI。 | Hugging Face 的生产服务器，与 HF 贴合紧密、在规模上久经检验；面向服务器 GPU，不是 Mac 本地栈。 |
+| [SGLang](../serving-engines/sglang.zh.md) | ✅ | 需要面向服务器 GPU 的高吞吐服务和 RadixAttention 前缀缓存时，选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；面向服务器 GPU、运维更复杂，不是单 Mac 菜单栏应用。 |
+| [Modular Platform (MAX + Mojo)](../serving-engines/modular.zh.md) | ✅ | 需要服务器级跨厂商引擎和 Mojo kernel 语言时，选 Modular Platform。 | 厂商自建的跨厂商 GPU/CPU 服务引擎 + Mojo kernel 语言；一个大得多、服务器级、单一厂商的平台——与 Mac 本地服务器是不同的层和量级。 |
+| [Ray Serve](../serving-engines/ray-serve.zh.md) | ✅ | 需要可扩展 Python 模型服务、多模型组合和自动扩缩容时，选 Ray Serve。 | 通用可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容；基于 Ray，运维要求高，不是 Mac 本地服务器。 |
 
 ## 技术栈
 
