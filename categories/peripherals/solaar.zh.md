@@ -95,12 +95,10 @@ Solaar 是一个 Python／GTK 应用，前提是它能直接跟你的罗技接�
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：从发行版软件包安装 Solaar — `sudo apt install solaar`
-2. **你**：启动桌面应用 — `solaar`
-3. **Solaar**：通过 udev 发现受支持的接收器与 HID++ 设备
-4. **你**：在图形界面配对设备或修改设置
-5. **Solaar**：保存设置，并在设备重连时恢复 — `~/.config/solaar/config.yaml`
-6. **你**：用命令行查看设备及其能力 — `solaar show`
+1. **你**：从发行版安装 Solaar 并启动 — `sudo apt install solaar`
+2. **Solaar**：经 udev 发现受支持的接收器与 HID++ 设备
+3. **你**：在界面里配对设备，或修改它的设置
+4. **Solaar**：把设置持久化，设备重连时自动恢复 — `~/.config/solaar/config.yaml`
 
 **价值**：在 Linux 上管理配对、设备状态与持久化 HID++ 设置，不需要厂商软件
 

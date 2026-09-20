@@ -177,11 +177,25 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   Both must appear — the handoff is the point.
 - **Backbone only**: 3–9 **linear** steps, no branches, no optional paths. Pick the one path by which
   a typical developer gets the core value (e.g. add the maven dep → implement the hook → the framework
-  calls you back). One short sentence per step (≤ 40 ZH chars / ≤ 110 EN chars).
-- **`code`** (optional, language-neutral) names the concrete command / annotation / API / config key
-  the step touches. **Every `code` value must be traceable to `sources`** — if you cannot find it in
-  the README, docs or source, write the step generically ("call its query API") instead of guessing.
-  An invented command in a diagram looks authoritative; that is worse than no command.
+  calls you back). One short sentence per step (≤ 40 ZH chars / ≤ 110 EN chars). Three rules keep the
+  granularity honest (all three came out of real pages that drifted):
+  - **Collapse the generic setup.** Build, install, start the service, grant a permission — steps that
+    look the same for every project in the language/ecosystem — are **one** step, not four. Spend the
+    steps on what is specific to *this* project. (`cmake … && sudo make install` is one step.)
+  - **Stop at the payoff.** The last step is the one where the value lands. Inspection commands,
+    optional features and day-2 operations do not belong in the backbone. Test each tail step with
+    "if I skip this, does the core value still happen?" — if yes, cut it.
+  - **Keep both lanes alive.** If one lane runs 4+ consecutive steps while the other has almost
+    nothing, the granularity is off (usually un-collapsed setup) — the card is meant to show a
+    handoff, not a checklist.
+- **`code`** (optional, language-neutral) is **what the user types or writes**: a command, an
+  annotation, a config key or path, an API call, a package coordinate. It is **not** an internal
+  symbol — a function name, class or module path the reader never types is mechanism-paragraph
+  material, not card material (`setProfileMapping` in someone's `ui/backend.py` tells a user nothing).
+  Two related tokens may share one value (`magnitude hardware · catalog recommendations`).
+  **Every `code` value must be traceable to `sources`** — if you cannot find it in the README, docs or
+  source, write the step generically ("call its query API") instead of guessing. An invented command
+  in a diagram looks authoritative; that is worse than no command.
 - **`value`** is the payoff the flow ends on — what you no longer have to do / now get.
 - `en` and `zh` are translations of the same step; structure (`lane`, `code`, order) is shared, so the
   pair cannot drift. ZH strings follow the fullwidth-punctuation rule (§6).

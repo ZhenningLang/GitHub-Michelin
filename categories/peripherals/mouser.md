@@ -90,12 +90,11 @@ Mouser is a single local Python application with a PySide6/QML window that lives
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Download the portable archive for your platform and run it — `Mouser-macOS.zip`
-2. **You**: Grant the OS permission its input hook needs — `Accessibility`
-3. **Mouser**: Finds the already-paired HID++ mouse and opens the mapping page — `Mouse & Profiles`
-4. **You**: Click a button hotspot and assign or record an action
-5. **Mouser**: Stores the mapping and reloads callbacks without dropping the HID connection — `setProfileMapping`
-6. **Mouser**: Stays in the tray and emits the action when that button is pressed — `config.json`
+1. **You**: Download the portable build for your platform, run it, and grant the input-hook permission — `Mouser-macOS.zip · Accessibility`
+2. **Mouser**: Finds your paired HID++ mouse and opens the mapping page for it
+3. **You**: Click a button hotspot and assign or record an action
+4. **Mouser**: Saves the mapping and reloads it live, without dropping the HID connection — `config.json`
+5. **Mouser**: Stays in the tray and emits that action when the button is pressed
 
 **Value**: Your remapped mouse buttons keep working from a local config file with Options+ closed
 

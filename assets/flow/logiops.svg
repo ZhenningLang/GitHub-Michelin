@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="911" viewBox="0 0 880 911" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="728" viewBox="0 0 880 728" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -27,67 +27,54 @@
 }
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="911" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="775" rx="10"/>
+<rect class="bg" width="880" height="728" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="592" rx="10"/>
 <rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">You do</text>
-<rect class="laneT" x="460" y="28" width="392" height="775" rx="10"/>
+<rect class="laneT" x="460" y="28" width="392" height="592" rx="10"/>
 <rect class="pillT" x="474" y="40" width="138.3" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">logiops does</text>
-<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
-<path class="edge" d="M62,288 L62,312" marker-end="url(#a)"/>
-<path class="edge" d="M62,409 L62,433" marker-end="url(#a)"/>
-<path class="edge" d="M62,530 L62,554" marker-end="url(#a)"/>
-<path class="hand" d="M408,592.5 C439.0,592.5 439.0,616 470,616" marker-end="url(#a)"/>
-<path class="edge" d="M494,664 L494,688" marker-end="url(#a)"/>
-<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="edge" d="M62,348 L62,372" marker-end="url(#a)"/>
+<path class="hand" d="M408,410.5 C439.0,410.5 439.0,434 470,434" marker-end="url(#a)"/>
+<path class="edge" d="M494,482 L494,506" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
-<text class="t" x="82" y="101">Build the daemon in release</text>
-<text class="t" x="82" y="123">configuration</text>
-<text class="c" x="82" y="147">cmake -DCMAKE_BUILD_TYPE=Release ..</text>
-<rect class="card" x="40" y="193" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="193" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="217" r="10"/>
-<text class="num" x="62" y="221" text-anchor="middle">2</text>
-<text class="t" x="82" y="222">Install the binary and its system</text>
-<text class="t" x="82" y="244">service</text>
-<text class="c" x="82" y="268">sudo make install</text>
-<rect class="card" x="40" y="314" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="314" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="338" r="10"/>
-<text class="num" x="62" y="342" text-anchor="middle">3</text>
-<text class="t" x="82" y="343">Write the device configuration at the</text>
-<text class="t" x="82" y="365">default path</text>
-<text class="c" x="82" y="389">/etc/logid.cfg</text>
-<rect class="card" x="40" y="435" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="435" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="459" r="10"/>
-<text class="num" x="62" y="463" text-anchor="middle">4</text>
-<text class="t" x="82" y="464">Declare the control id and the action</text>
-<text class="t" x="82" y="486">it maps to</text>
-<text class="c" x="82" y="510">cid: 0xc3;</text>
-<rect class="card" x="40" y="556" width="368" height="73" rx="8"/>
-<rect class="accY" x="40" y="556" width="4" height="73" rx="2"/>
-<circle class="accY" cx="62" cy="580" r="10"/>
-<text class="num" x="62" y="584" text-anchor="middle">5</text>
-<text class="t" x="82" y="585">Enable and start the daemon</text>
-<text class="c" x="82" y="609">sudo systemctl enable --now logid</text>
-<rect class="cardT" x="472" y="592" width="368" height="72" rx="8"/>
-<rect class="accT" x="472" y="592" width="4" height="72" rx="2"/>
-<circle class="accT" cx="494" cy="616" r="10"/>
-<text class="num" x="494" y="620" text-anchor="middle">6</text>
-<text class="t" x="514" y="621">Reads the config once and discovers</text>
-<text class="t" x="514" y="643">HID++ devices through hidraw</text>
-<rect class="cardT" x="472" y="690" width="368" height="95" rx="8"/>
-<rect class="accT" x="472" y="690" width="4" height="95" rx="2"/>
-<circle class="accT" cx="494" cy="714" r="10"/>
-<text class="num" x="494" y="718" text-anchor="middle">7</text>
-<text class="t" x="514" y="719">Diverts matching button events and</text>
-<text class="t" x="514" y="741">emits the configured keypress</text>
-<text class="c" x="514" y="765">type: &quot;Keypress&quot;;</text>
-<rect class="val" x="28" y="817" width="824" height="66" rx="10"/>
-<text class="valK" x="48" y="841">VALUE</text>
-<text class="valT" x="48" y="865">Button, gesture, DPI and SmartShift mappings stay active through the logid background service</text>
+<text class="t" x="82" y="101">Install logid (distro package, or</text>
+<text class="t" x="82" y="123">cmake + make install)</text>
+<text class="c" x="82" y="147">cmake -DCMAKE_BUILD_TYPE=Release .. &amp;&amp;</text>
+<text class="c" x="82" y="166">sudo make install</text>
+<rect class="card" x="40" y="212" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">Describe each device&#x27;s buttons in the</text>
+<text class="t" x="82" y="263">config file: a control id and the</text>
+<text class="t" x="82" y="285">action it maps to</text>
+<text class="c" x="82" y="309">/etc/logid.cfg — cid: 0xc3; type:</text>
+<text class="c" x="82" y="328">&quot;Keypress&quot;;</text>
+<rect class="card" x="40" y="374" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="374" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="398" r="10"/>
+<text class="num" x="62" y="402" text-anchor="middle">3</text>
+<text class="t" x="82" y="403">Enable and start the daemon</text>
+<text class="c" x="82" y="427">sudo systemctl enable --now logid</text>
+<rect class="cardT" x="472" y="410" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="410" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="434" r="10"/>
+<text class="num" x="494" y="438" text-anchor="middle">4</text>
+<text class="t" x="514" y="439">Reads the config once at startup,</text>
+<text class="t" x="514" y="461">finds HID++ devices over udev/hidraw</text>
+<rect class="cardT" x="472" y="508" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="508" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="532" r="10"/>
+<text class="num" x="494" y="536" text-anchor="middle">5</text>
+<text class="t" x="514" y="537">Diverts the mapped controls and emits</text>
+<text class="t" x="514" y="559">the configured action through a</text>
+<text class="t" x="514" y="581">virtual uinput device</text>
+<rect class="val" x="28" y="634" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="658">VALUE</text>
+<text class="valT" x="48" y="682">Button, gesture, DPI and SmartShift mappings stay active through the logid background service</text>
 </svg>

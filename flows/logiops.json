@@ -1,16 +1,43 @@
 {
   "schema": 1,
-  "them": {"en": "logiops does", "zh": "logiops 做的"},
+  "them": {
+    "en": "logiops does",
+    "zh": "logiops 做的"
+  },
   "steps": [
-    {"lane": "you", "en": "Build the daemon in release configuration", "zh": "以 release 配置构建守护进程", "code": "cmake -DCMAKE_BUILD_TYPE=Release .."},
-    {"lane": "you", "en": "Install the binary and its system service", "zh": "安装二进制与系统服务", "code": "sudo make install"},
-    {"lane": "you", "en": "Write the device configuration at the default path", "zh": "在默认路径写设备配置", "code": "/etc/logid.cfg"},
-    {"lane": "you", "en": "Declare the control id and the action it maps to", "zh": "声明控件 ID 与它映射的动作", "code": "cid: 0xc3;"},
-    {"lane": "you", "en": "Enable and start the daemon", "zh": "启用并启动守护进程", "code": "sudo systemctl enable --now logid"},
-    {"lane": "them", "en": "Reads the config once and discovers HID++ devices through hidraw", "zh": "读取一次配置，经 hidraw 发现 HID++ 设备"},
-    {"lane": "them", "en": "Diverts matching button events and emits the configured keypress", "zh": "接管匹配的按键事件并发出配置的按键", "code": "type: \"Keypress\";"}
+    {
+      "lane": "you",
+      "en": "Install logid (distro package, or cmake + make install)",
+      "zh": "装上 logid：发行版包，或 cmake 构建后安装",
+      "code": "cmake -DCMAKE_BUILD_TYPE=Release .. && sudo make install"
+    },
+    {
+      "lane": "you",
+      "en": "Describe each device's buttons in the config file: a control id and the action it maps to",
+      "zh": "在配置文件里按设备写按键映射：控件 ID 加动作",
+      "code": "/etc/logid.cfg — cid: 0xc3; type: \"Keypress\";"
+    },
+    {
+      "lane": "you",
+      "en": "Enable and start the daemon",
+      "zh": "启用并启动守护进程",
+      "code": "sudo systemctl enable --now logid"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the config once at startup, finds HID++ devices over udev/hidraw",
+      "zh": "启动时读一次配置，经 udev/hidraw 发现 HID++ 设备"
+    },
+    {
+      "lane": "them",
+      "en": "Diverts the mapped controls and emits the configured action through a virtual uinput device",
+      "zh": "接管映射过的控件，经虚拟 uinput 设备发出配置的动作"
+    }
   ],
-  "value": {"en": "Button, gesture, DPI and SmartShift mappings stay active through the logid background service", "zh": "按键、手势、DPI 与 SmartShift 映射由 logid 后台服务持续生效"},
+  "value": {
+    "en": "Button, gesture, DPI and SmartShift mappings stay active through the logid background service",
+    "zh": "按键、手势、DPI 与 SmartShift 映射由 logid 后台服务持续生效"
+  },
   "sources": [
     "README.md Building (mkdir build; cmake -DCMAKE_BUILD_TYPE=Release ..; make; sudo make install; sudo systemctl enable --now logid)",
     "README.md Configuration (default config location /etc/logid.cfg, -c to override)",

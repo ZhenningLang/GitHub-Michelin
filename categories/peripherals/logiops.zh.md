@@ -85,13 +85,11 @@ logiops 分成守护进程加配置文件，中间没有 GUI。你安装 `logid`
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：以 release 配置构建守护进程 — `cmake -DCMAKE_BUILD_TYPE=Release ..`
-2. **你**：安装二进制与系统服务 — `sudo make install`
-3. **你**：在默认路径写设备配置 — `/etc/logid.cfg`
-4. **你**：声明控件 ID 与它映射的动作 — `cid: 0xc3;`
-5. **你**：启用并启动守护进程 — `sudo systemctl enable --now logid`
-6. **logiops**：读取一次配置，经 hidraw 发现 HID++ 设备
-7. **logiops**：接管匹配的按键事件并发出配置的按键 — `type: "Keypress";`
+1. **你**：装上 logid：发行版包，或 cmake 构建后安装 — `cmake -DCMAKE_BUILD_TYPE=Release .. && sudo make install`
+2. **你**：在配置文件里按设备写按键映射：控件 ID 加动作 — `/etc/logid.cfg — cid: 0xc3; type: "Keypress";`
+3. **你**：启用并启动守护进程 — `sudo systemctl enable --now logid`
+4. **logiops**：启动时读一次配置，经 udev/hidraw 发现 HID++ 设备
+5. **logiops**：接管映射过的控件，经虚拟 uinput 设备发出配置的动作
 
 **价值**：按键、手势、DPI 与 SmartShift 映射由 logid 后台服务持续生效
 
