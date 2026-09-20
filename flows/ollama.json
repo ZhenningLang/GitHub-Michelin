@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Ollama does",
+    "zh": "Ollama 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the app (or run the official Docker image) and start it",
+      "zh": "装上应用，或用官方 Docker 镜像跑起来",
+      "code": "ollama"
+    },
+    {
+      "lane": "you",
+      "en": "Pull a model from the library and chat with it",
+      "zh": "从模型库拉一个模型，直接开聊",
+      "code": "ollama run gemma4"
+    },
+    {
+      "lane": "them",
+      "en": "Runs as a background service: fetches weights, owns the local model store, loads on demand",
+      "zh": "后台常驻服务：拉取权重、管理本地模型仓库、按需加载"
+    },
+    {
+      "lane": "you",
+      "en": "Point your agent at it — a one-command integration, or a compatible base URL",
+      "zh": "把 agent 接上去：一条命令的现成集成，或填一个兼容的 base URL",
+      "code": "ollama launch claude"
+    },
+    {
+      "lane": "them",
+      "en": "Serves a local REST API plus OpenAI/Anthropic-compatible endpoints for apps and SDKs",
+      "zh": "提供本地 REST API 和 OpenAI 兼容端点，供应用和 SDK 调用",
+      "code": "POST localhost:11434/api/chat"
+    }
+  ],
+  "value": {
+    "en": "One command puts a local model behind a stable API your agents and code already know how to call",
+    "zh": "一条命令就把本地模型放到一个稳定接口后面，agent 和代码照着现成方式调用"
+  },
+  "sources": [
+    "https://github.com/ollama/ollama README Get started / Coding / Chat with a model / REST API (ollama, ollama launch claude, ollama run gemma4, localhost:11434/api/chat)",
+    "README Libraries (ollama-python, ollama-js)"
+  ]
+}

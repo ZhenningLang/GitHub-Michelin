@@ -84,6 +84,27 @@ You are shipping a product or an internal tool and inference has to be an implem
 
 Reach for llama.cpp when the deciding factor is **control and reach**: it is the upstream engine (MIT, plain C/C++ over ggml, no runtime dependencies), it exposes the widest backend list in this category — CUDA, HIP for AMD, Metal, Vulkan, SYCL, CANN, MUSA, OpenCL, WebGPU, ZenDNN, Hexagon, plus hybrid CPU+GPU offload and an RPC backend — and its `llama cli -hf` / `llama serve -hf` paths now download and run a Hugging Face GGUF without a wrapper. Choose it over [Ollama](ollama.md) when you refuse to wait for a wrapper's flag subset, over [vLLM](../serving-engines/vllm.md) when you are not NVIDIA-only and do not need a serving scheduler, and over [Magnitude](magnitude.md) when throughput and backend breadth matter more than a pre-download fit estimate.
 
+## How it works
+
+llama.cpp is the engine itself, not a manager around one: plain C/C++ over ggml, compiled into a self-contained binary (or a library you link). It reads **GGUF** files — a single-file weight format carrying the quantization — and runs them through whichever backend you built or downloaded: CUDA, Metal, Vulkan, HIP, SYCL, CPU, and more, including hybrid CPU+GPU offload when a model doesn't fit in VRAM. Nothing is hidden behind a wrapper: quantization, chat template, context length and KV cache are yours to set, which is the whole point. The modern entry points cut the old friction — `llama cli -hf` and `llama serve -hf` pull a GGUF straight from Hugging Face — and the server speaks an OpenAI-compatible API, so you can either embed the library in your own process or run it as a local service.
+
+![llama-cpp — backbone user story](../../../assets/flow/llama-cpp.svg)
+
+<!-- flow-steps:begin (generated from flows/llama-cpp.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Get a binary: installer, GitHub release, Docker — or build from source for your backend
+2. **You**: Run a GGUF model straight from Hugging Face — `llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF`
+3. **llama.cpp**: Downloads the GGUF and runs it on your chosen backend with the quantization and template you set
+4. **You**: To serve your own app, start the server instead of the CLI — `llama serve -hf <hf-repo>`
+5. **llama.cpp**: Exposes an OpenAI-compatible API; or link libllama and call it inside your process
+
+**Value**: Inference stays an implementation detail you own — same code path from an RTX box to a Mac to a CPU laptop
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **If you want a model store, GUI and auto-updates rather than flags and GGUF files, use [Ollama](ollama.md) or LM Studio instead**, because llama.cpp ships an engine and tools, not a managed local-model product with a model library and lifecycle commands.

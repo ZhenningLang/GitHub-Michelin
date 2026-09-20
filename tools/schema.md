@@ -87,7 +87,8 @@ required `##` sections below — **which ones are required depends on `type`** (
 
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
-| `## When to use` | `## 何时使用` | **all types** | a **User Story** (see below) — a concrete second-person scenario, not a feature list |
+| `## When to use` | `## 何时使用` | **all types** | the **trigger scenario** (see below) — the concrete situation in which you should think of this project, and why it beats its substitutes there |
+| `## How it works` | `## 怎么用起来` | **all types** (backfill in progress — see below) | the **backbone user story**: a plain-language mechanism paragraph + a generated two-lane flow card (you do / it does) — how you actually put it to work once chosen |
 | `## When NOT to use` | `## 何时不用` | **all types** | anti-patterns, scale ceilings, lock-in, maintenance risk — **the most valuable section** |
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
 | `## Tech stack` | `## 技术栈` | non-`skill-pack` | languages, frameworks, datastores it is built on |
@@ -110,24 +111,94 @@ per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden se
 inferred fact gets one `[未验证]` / `[推断]` bullet. This is the single place uncertainty is collected;
 the linter ERRORs if it is missing. See §3 for how it interacts with inline labels.
 
-### "When to use" is a User Story
+### "When to use" is the trigger scenario
 
-Write this section as a **User Story**, not a feature list — a concrete, second-person scenario:
+This section answers **"when should I think of this project?"** — the *pre-selection* angle. (How you
+actually use it after choosing it is `How it works`, below; keep the two apart.) Write it as a
+concrete, second-person scenario, not a feature list:
 
 - WHO you are (a believable role / persona)
 - WHAT you're working on (the real task / context)
 - the PROBLEM / pain you hit
 - HOW you reach for this tool and what it does to resolve it
 
-English uses "You're a …"; Chinese uses "你是…". 1–2 tight paragraphs. The persona/scenario is
-illustrative, but the tool's role in it must be accurate — never invent capabilities the page
-doesn't otherwise support. "When NOT to use" stays a sharp bulleted list (it's the decisive
-filter); only "When to use" is narrative.
+Write it in the **second person** ("you"/"你"), 1–2 tight paragraphs. There is **no required opening
+formula** — "You're a platform engineer…", "You support a small team…" and "You are shipping a
+product that…" are all fine; what matters is that the situation is concrete and the reader can tell
+whether it is theirs. (A 2026-09-20 measurement of the whole index found only 251/511 EN pages
+opening with "You're a …" and 264/511 ZH pages with "你是…", while reading no worse for it — the
+literal form was never the load-bearing part.) The persona/scenario is illustrative, but the tool's
+role in it must be accurate — never invent capabilities the page doesn't otherwise support.
+"When NOT to use" stays a sharp bulleted list (it's the decisive filter); only "When to use" and the
+`How it works` mechanism paragraph are narrative.
 
-**Crucially, the User Story must define the choice against alternatives** — explain *why you pick
+**Crucially, the scenario must define the choice against alternatives** — explain *why you pick
 this over its closest substitutes*, stating the deciding tradeoff (e.g. model-agnostic vs.
 vendor-locked, self-hosted vs. SaaS, code-first vs. no-code). Generic claims like "fast" or
 "open-source" are insufficient — every competitor can say that.
+
+### "How it works" is the backbone user story
+
+This section answers **"I've chosen it — how do I put it to work, and what does it do for me?"** —
+the *post-selection* angle, and the one a reader cannot get from `When to use`. It has exactly two
+authored parts, in this order, placed **between `When to use` and `When NOT to use`**:
+
+1. **A plain-language mechanism paragraph** (3–6 sentences). Explain how it works underneath in the
+   simplest terms (plain words; when a term is unavoidable, gloss it in passing). It **must draw the
+   line between what the project does for you and what you do** — that boundary is what a developer
+   actually wants to know. Example: "The door *and* a whole set of ready-made plugins ship with Kong —
+   you only declare which route gets which plugins."
+2. **The flow card**, embedded as `![<slug> — backbone user story](<rel>/assets/flow/<stem>.svg)`
+   (ZH: `主干用户故事`, `<stem>.zh.svg`). Directly under it, `tools/flow_card.py` writes a collapsed,
+   agent-readable text twin between `<!-- flow-steps:begin … -->` and `<!-- flow-steps:end -->` —
+   **never hand-edit it**; the linter ERRORs on drift.
+
+The card is **generated, not drawn**: its SSOT is `flows/<stem>.json` (stem = slug, category-prefixed
+only for a duplicated slug, exactly like health cards). Mermaid is not used — its layout is not
+controllable and renders poorly. Spec shape:
+
+```json
+{
+  "schema": 1,
+  "them":  {"en": "XXL-JOB does", "zh": "XXL-JOB 做的"},
+  "steps": [
+    {"lane": "you",  "en": "Write a plain method and annotate it", "zh": "写一个普通方法，贴上注解",
+     "code": "@XxlJob(\"demoJobHandler\")"},
+    {"lane": "them", "en": "When due, triggers one executor over HTTP", "zh": "到点挑一台执行器，通过 HTTP 触发"}
+  ],
+  "value": {"en": "…", "zh": "…"},
+  "sources": ["<README section / source path / docs URL where each command or API was verified>"]
+}
+```
+
+Rules (the linter + `validate_spec` enforce the mechanical ones):
+
+- **Two lanes only**: `you` (what the developer does) and `them` (what the project does for you).
+  Both must appear — the handoff is the point.
+- **Backbone only**: 3–9 **linear** steps, no branches, no optional paths. Pick the one path by which
+  a typical developer gets the core value (e.g. add the maven dep → implement the hook → the framework
+  calls you back). One short sentence per step (≤ 40 ZH chars / ≤ 110 EN chars).
+- **`code`** (optional, language-neutral) names the concrete command / annotation / API / config key
+  the step touches. **Every `code` value must be traceable to `sources`** — if you cannot find it in
+  the README, docs or source, write the step generically ("call its query API") instead of guessing.
+  An invented command in a diagram looks authoritative; that is worse than no command.
+- **`value`** is the payoff the flow ends on — what you no longer have to do / now get.
+- `en` and `zh` are translations of the same step; structure (`lane`, `code`, order) is shared, so the
+  pair cannot drift. ZH strings follow the fullwidth-punctuation rule (§6).
+- Unverified mechanism claims get a Caveats bullet like any other prose; do not put `[未验证]` inside
+  the card.
+
+Run `python3 tools/flow_card.py <page>` (or `make flows`) after editing a spec; the pre-commit hook
+does it for staged pages/specs. **Golden examples**: `kong` (service — deploy + declare, it runs at
+request time), `xxl-job` (framework — maven dep + annotated hook, it calls you back), `sharp`
+(library — call a chain API), `claude-mem` (tool — install once, it captures/stores/injects),
+`superpowers` (skill-pack — install, the agent follows it).
+
+**Backfill status.** Pages written or re-verified under this contract — `last_verified` on/after
+`OSS_ATLAS_FLOW_REQUIRED_FROM` (default `2026-09-20`) — **must** have the section: missing is an
+ERROR. Older pages are the backfill backlog: one aggregate lint WARNING until they are filled in.
+Once a page has the section, every rule above is an ERROR regardless of date. `OSS_ATLAS_REQUIRE_FLOW=1`
+requires it everywhere (the default flips when the backfill finishes).
 
 ### "When NOT to use" names substitutes
 

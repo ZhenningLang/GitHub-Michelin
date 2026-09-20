@@ -79,7 +79,9 @@ The schema is the contract: **`tools/schema.md`**. In short:
 - `type` ∈ `tool | library | app | framework | service | model | skill-pack` and decides which body
   sections are required.
 - Required body sections — **all types**: `When to use`, `When NOT to use`, `Comparison` (Chinese:
-  `何时使用`, `何时不用`, `横向对比`). **Non-`skill-pack` types also require**: `Tech stack`,
+  `何时使用`, `何时不用`, `横向对比`). `When to use` is the *trigger scenario* (when to think of it);
+  `How it works` / `怎么用起来` (between those two; backfill in progress) is the *backbone user story* —
+  plain-language mechanism + a flow card generated from `flows/<stem>.json` by `tools/flow_card.py`. **Non-`skill-pack` types also require**: `Tech stack`,
   `Dependencies`, `Ops difficulty` (`技术栈`, `依赖`, `运维难度`). A `skill-pack` (prompt/skill
   collection) omits those three — don't pad them with "N/A". **Every page (all types) also has a**
   `Health & viability` / `健康度与可持续性` **section** — a dated, labeled viability verdict
@@ -148,7 +150,7 @@ automatically for staged `categories/` changes, and CI fails if you forget.
 (`generic-comparison-template`, `indexed-page-marked-not-indexed`,
 `composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`); run it
 without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
-User Story, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
+trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
 run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.
 
 ## Conventions

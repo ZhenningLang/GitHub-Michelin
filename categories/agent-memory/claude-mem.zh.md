@@ -83,6 +83,29 @@ health:
 
 当你想要的是*跨工具*而非绑定单一 agent 的记忆时，它就合适：同一套记忆后端通过 hook 和 MCP 接口（`search`、`timeline`、`get_observations`）同时服务 Claude Code、Codex、Gemini、Copilot、OpenClaw、Hermes 和 OpenCode，所有内容都存在本地 SQLite（FTS5）加 Chroma 向量索引里。如果你要把捕获的历史留在自己机器上、且可查询——并且你能接受跑一个本地 HTTP 服务以及它依赖的 Bun/uv 工具链——那它就是跨会话 agent 记忆里本地优先的那个选项。
 
+## 怎么用起来
+
+claude-mem 挂在编程 agent（如 Claude Code）的生命周期钩子上——会话开始、你发消息、agent 每次调完工具、会话结束时都会被触发。它把 agent 干过的事交给一个 LLM 压缩成简短的「观察记录」，存进本地 **SQLite**（另配一个 **Chroma** 向量库，用来按意思而不只是按关键词搜），这些都由一个本地 worker 服务管理。下次开新会话时，它自动把相关历史摘要塞进上下文；要查细节时，agent 通过它提供的搜索工具分三步查：先搜出简短索引，再看前后时间线，最后只取需要的那几条全文。你做的只有一条安装命令，外加安装时选用哪个模型来做压缩，之后正常干活即可。
+
+![claude-mem — 主干用户故事](../../assets/flow/claude-mem.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/claude-mem.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：一条命令安装，选定压缩记忆用的模型 — `npx claude-mem install`
+2. **claude-mem**：注册生命周期钩子，启动本地 worker 服务
+3. **你**：照常用 Claude Code 干活
+4. **claude-mem**：钩子捕获会话里的消息和每一次工具调用
+5. **claude-mem**：交给 LLM 压缩成简短观察记录，存进本地库 — `SQLite + Chroma vector index`
+6. **你**：开新会话，或问起以前做过的事
+7. **claude-mem**：自动注入相关摘要；要细节时分三步查 — `search → timeline → get_observations`
+
+**价值**：跨会话记得项目上下文，不用每次重新交代
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要的是嵌进自己应用的记忆，而不是嵌进编程 agent。** claude-mem 是接在 agent hook 上的*开发者工作站*工具。如果你要把用户记忆嵌进你交付的应用（聊天机器人、客服 agent），模型无关的记忆**库/API**——如 [Mem0](mem0.zh.md) 或 [Memori](memori.zh.md)——才是对的形态；claude-mem 没有供你在业务代码里调用的 SDK。

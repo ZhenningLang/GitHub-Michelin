@@ -78,6 +78,28 @@ You're a platform engineer at a company running dozens of internal microservices
 
 The newer reason to reach for Kong is the AI Gateway path. Your teams are calling OpenAI, Anthropic, Bedrock, and Gemini directly from app code, and you have no central place to enforce keys, rate limits, cost controls, prompt logging, or semantic caching. The `ai-proxy` family of plugins gives you one OpenAI-compatible endpoint that fans out to multiple LLM providers, plus MCP traffic governance — letting you put the same kind of policy edge in front of LLM/agent traffic that Kong already gave you for HTTP APIs, reusing the plugin and observability machinery you already run.
 
+## How it works
+
+Kong is a door that sits in front of all your backend services. **The door and a whole set of ready-made plugins (auth, rate limiting, metrics, request rewriting) ship with Kong** — you don't write the handling logic, you only *declare* which route goes to which backend, which plugins hang on it, and with what parameters. When a request comes in, Kong runs that route's plugins in order and only forwards it if every plugin lets it through; any plugin can reject it on the spot. Those declarations live either in PostgreSQL (edited via the Admin API) or in one YAML file you keep in git (DB-less mode). You only write a plugin yourself when the bundled ones don't cover your case.
+
+![kong — backbone user story](../../assets/flow/kong.svg)
+
+<!-- flow-steps:begin (generated from flows/kong.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Deploy Kong in front of all your backend services — `docker-compose --profile database up`
+2. **You**: Declare a Service + Route: which path goes to which backend — `Admin API :8001 or decK YAML`
+3. **You**: Attach bundled plugins to the route and set their parameters — `key-auth · rate-limiting · prometheus`
+4. **Kong Gateway**: A request enters on :8000 and is matched to a route
+5. **Kong Gateway**: Runs that route's plugins in order; any plugin can reject the request
+6. **Kong Gateway**: If all pass, proxies to the backend and records metrics
+
+**Value**: Auth, rate limiting and monitoring happen once at the door — backends stop reimplementing them
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You want a single self-contained binary with no moving parts.** Kong's traditional mode needs PostgreSQL; even DB-less mode runs the full OpenResty stack. A Go gateway (Tyk, Traefik) or a config-file-only proxy is lighter to operate if you don't need Kong's plugin breadth.

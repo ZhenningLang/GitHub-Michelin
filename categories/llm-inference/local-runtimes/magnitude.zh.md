@@ -85,6 +85,28 @@ health:
 
 你选择 Magnitude，是因为它把**决策本身**做成了产品：桌面应用（或 `magnitude catalog recommendations`）先给硬件画像，在下载之前按估算的 tokens/秒、精度、智能程度和内存给 catalog 模型排序，为选中的模型准备好投机解码与上下文长度，再一键把该模型写进目标 harness 的配置。当决定性取舍是“我们不知道这台硬件能跑什么、也不想手调 flag”而不是原始吞吐时，选它而不是 Ollama 或 llama.cpp——同时要接受：这个产品当前最不可信的恰恰是估算层（见下）。
 
+## 怎么用起来
+
+Magnitude 的卖点是**帮你选**模型，而不只是把模型跑起来。桌面 App（内含 `magnitude` 命令行）先给你的机器做一次画像——显卡与驱动、内存、CPU——并在你下载任何东西**之前**估算出目录里每个模型在这台机器上的 tok/s，所以你面对的候选列表已经过滤成「这台机器真能跑的」。选定之后，它负责下载权重，并替你把跟硬件相关的旋钮调好（上下文长度、投机解码），不用你去记命令行参数。之后它作为本地推理服务常驻后台，对外提供 OpenAI 和 Anthropic 兼容端点，agent 要用时才加载模型，内存吃紧时自动卸载。你的 agent 不需要知道这些：在 Connections 里接一下，它就把对应配置写进那个 agent 自己的配置文件。
+
+![magnitude — 主干用户故事](../../../assets/flow/magnitude.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/magnitude.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装并打开桌面 App，它自带 magnitude 命令行
+2. **Magnitude**：给你的机器做硬件画像，按估算的 tok/s、精度、内存给模型排名 — `magnitude hardware · catalog recommendations`
+3. **你**：在 Discover 里挑一个推荐模型并下载 — `magnitude catalog pull`
+4. **Magnitude**：按你的硬件调好上下文长度与投机解码
+5. **你**：在 Connections 里接上你已经在用的 agent — `magnitude connections add`
+6. **Magnitude**：本地起 OpenAI / Anthropic 兼容端点，按需加载和卸载模型 — `127.0.0.1:10100`
+
+**价值**：不用再猜这台机器能跑哪个模型，现有 agent 也不用手改配置就能用上
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **如果决定因素是 Apple Silicon 上的吞吐，改用 [llama.cpp](llama-cpp.zh.md)（`llama serve`）或 [Ollama](ollama.zh.md)**，因为 issue #82（自 2026-09-06 起仍开放）在同一个 GGUF、同一台 Mac 上实测内置引擎 9.05 tok/s，而 llama.cpp 达到 55.71 tok/s；维护者“升到 0.0.13 就修复”的说法至今没得到报告者确认。

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Magnitude does", "zh": "Magnitude 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and open the desktop app (the magnitude CLI ships with it)", "zh": "安装并打开桌面 App，它自带 magnitude 命令行"},
+    {"lane": "them", "en": "Profiles your machine and ranks catalog models by estimated tok/s, accuracy and memory", "zh": "给你的机器做硬件画像，按估算的 tok/s、精度、内存给模型排名", "code": "magnitude hardware · catalog recommendations"},
+    {"lane": "you", "en": "Pick a recommended model in Discover and download it", "zh": "在 Discover 里挑一个推荐模型并下载", "code": "magnitude catalog pull"},
+    {"lane": "them", "en": "Tunes context size and speculative decoding for your hardware", "zh": "按你的硬件调好上下文长度与投机解码"},
+    {"lane": "you", "en": "Connect the agent you already use, in Connections", "zh": "在 Connections 里接上你已经在用的 agent", "code": "magnitude connections add"},
+    {"lane": "them", "en": "Serves it locally on OpenAI- and Anthropic-compatible endpoints, loading models on demand", "zh": "本地起 OpenAI / Anthropic 兼容端点，按需加载和卸载模型", "code": "127.0.0.1:10100"}
+  ],
+  "value": {"en": "You stop guessing which model fits this machine — and your existing agent runs on it without hand-edited config", "zh": "不用再猜这台机器能跑哪个模型，现有 agent 也不用手改配置就能用上"},
+  "sources": [
+    "https://github.com/magnitudedev/magnitude README Get started + Why Magnitude (desktop app, Discover, Connections, bundled CLI, tok/s estimates, speculative decoding, on-demand load/unload)",
+    "cli/src/commands/inference.ts (magnitude hardware, catalog recommendations, catalog pull)",
+    "cli/src/commands/connections.ts (connections add/sync/list)",
+    "docs/integrations/custom-apps.mdx (local endpoint on 127.0.0.1:10100)"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "llama.cpp does",
+    "zh": "llama.cpp 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Get a binary: installer, GitHub release, Docker — or build from source for your backend",
+      "zh": "拿到二进制：安装器、release、Docker，或从源码编译"
+    },
+    {
+      "lane": "you",
+      "en": "Run a GGUF model straight from Hugging Face",
+      "zh": "直接跑 Hugging Face 上的 GGUF 模型",
+      "code": "llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF"
+    },
+    {
+      "lane": "them",
+      "en": "Downloads the GGUF and runs it on your chosen backend with the quantization and template you set",
+      "zh": "下载 GGUF，按你指定的量化和对话模板，在你选的后端上跑起来"
+    },
+    {
+      "lane": "you",
+      "en": "To serve your own app, start the server instead of the CLI",
+      "zh": "要给自己的程序用，就起服务而不是命令行",
+      "code": "llama serve -hf <hf-repo>"
+    },
+    {
+      "lane": "them",
+      "en": "Exposes an OpenAI-compatible API; or link libllama and call it inside your process",
+      "zh": "暴露 OpenAI 兼容接口；也可链接 libllama 进你的进程"
+    }
+  ],
+  "value": {
+    "en": "Inference stays an implementation detail you own — same code path from an RTX box to a Mac to a CPU laptop",
+    "zh": "推理始终是你自己掌控的实现细节：同一条代码路径，从 RTX 机器到 Mac 再到纯 CPU 笔记本"
+  },
+  "sources": [
+    "https://github.com/ggml-org/llama.cpp README Quick start (install paths; llama cli -hf; llama serve -hf; OpenAI-compatible server)",
+    "README Acknowledgements + lib llama API / llama-server REST API links (libllama embedding, server surface)"
+  ]
+}

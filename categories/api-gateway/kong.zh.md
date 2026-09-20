@@ -78,6 +78,28 @@ health:
 
 更新的理由是 AI Gateway 这条路。你的团队正从应用代码里直接调 OpenAI、Anthropic、Bedrock、Gemini，却没有一个集中处去管 key、限流、成本、prompt 日志或语义缓存。`ai-proxy` 系列插件给你一个 OpenAI 兼容的端点，向后扇出到多家 LLM 供应商，再加上 MCP 流量治理——让你能把当年给 HTTP API 装的那套策略边界，照样装到 LLM/agent 流量前面，复用你已经在跑的插件和可观测性机制。
 
+## 怎么用起来
+
+Kong 是站在你所有后端服务前面的一道门。**门本身和一整套现成插件（鉴权、限流、指标、改写请求）都是 Kong 自带的**——你不写处理逻辑，只**声明**「哪条路由转给哪个后端、挂哪些插件、参数是多少」。请求进门后，Kong 按顺序把这条路由上的插件跑一遍，全部放行才转给后端，任一插件不放行就直接拒绝。这些声明要么存进 PostgreSQL（通过 Admin API 改），要么写成一份 YAML 放进 git（DB-less 模式）。只有现成插件不够用时，你才需要自己写插件。
+
+![kong — 主干用户故事](../../assets/flow/kong.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/kong.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：部署 Kong，放在所有后端服务前面 — `docker-compose --profile database up`
+2. **你**：声明 Service + Route：哪条路径转给哪个后端 — `Admin API :8001 or decK YAML`
+3. **你**：给路由挂上现成插件，填参数 — `key-auth · rate-limiting · prometheus`
+4. **Kong Gateway**：请求从 :8000 进门，匹配到路由
+5. **Kong Gateway**：按顺序跑这条路由上的插件，任一不放行就直接拒绝
+6. **Kong Gateway**：全部放行后转发给后端，同时记下指标
+
+**价值**：鉴权、限流、监控在门口统一做掉，后端服务不用各写一份
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你想要一个无外部依赖的自包含单二进制。** Kong 传统模式需要 PostgreSQL；就算 DB-less 模式也要跑整套 OpenResty。如果你不需要 Kong 的插件广度，Go 系网关（Tyk、Traefik）或纯配置文件代理运维起来更轻。

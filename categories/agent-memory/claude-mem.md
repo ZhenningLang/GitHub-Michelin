@@ -83,6 +83,29 @@ You're a Claude Code (or Codex / Gemini / Copilot / OpenCode) power user who bur
 
 It fits when you want this *across* tools, not bound to one agent: the same memory backend serves Claude Code, Codex, Gemini, Copilot, OpenClaw, Hermes, and OpenCode through hooks and an MCP interface (`search`, `timeline`, `get_observations`), with everything stored locally in SQLite (FTS5) plus a Chroma vector index. If you want the captured history kept on your machine and queryable — and you're comfortable running a local HTTP service and the Bun/uv toolchain it depends on — this is the local-first option for cross-session agent memory.
 
+## How it works
+
+claude-mem hooks into your coding agent's lifecycle (e.g. Claude Code): it fires when a session starts, when you send a prompt, after every tool call, and when the session ends. It hands what the agent did to an LLM that compresses it into short "observations", stored in a local **SQLite** database (plus a **Chroma** vector index so you can search by meaning, not just keywords), all managed by a local worker service. When you open a new session it injects relevant past summaries into the context automatically; when the agent needs details it searches in three steps — a compact index first, then the surrounding timeline, then full text only for the few records it needs. Your part is one install command plus choosing which model does the compression; after that you just work.
+
+![claude-mem — backbone user story](../../assets/flow/claude-mem.svg)
+
+<!-- flow-steps:begin (generated from flows/claude-mem.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install with one command and pick the model that compresses memories — `npx claude-mem install`
+2. **claude-mem**: Registers lifecycle hooks and starts a local worker service
+3. **You**: Work in Claude Code as usual
+4. **claude-mem**: Hooks capture your prompts and every tool call in the session
+5. **claude-mem**: An LLM compresses them into short observations stored locally — `SQLite + Chroma vector index`
+6. **You**: Open a new session, or ask about earlier work
+7. **claude-mem**: Injects relevant summaries; for details, a 3-step search — `search → timeline → get_observations`
+
+**Value**: Project context survives across sessions — no re-explaining every time
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need memory inside your own application, not your coding agent.** claude-mem is a *developer-workstation* tool wired into agent hooks. If you're embedding user memory into an app you ship (a chatbot, a support agent), a model-agnostic memory **library/API** like [Mem0](mem0.md) or [Memori](memori.md) is the right shape — claude-mem has no SDK you call from product code.

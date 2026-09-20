@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Kong does", "zh": "Kong 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy Kong in front of all your backend services", "zh": "部署 Kong，放在所有后端服务前面", "code": "docker-compose --profile database up"},
+    {"lane": "you", "en": "Declare a Service + Route: which path goes to which backend", "zh": "声明 Service + Route：哪条路径转给哪个后端", "code": "Admin API :8001 or decK YAML"},
+    {"lane": "you", "en": "Attach bundled plugins to the route and set their parameters", "zh": "给路由挂上现成插件，填参数", "code": "key-auth · rate-limiting · prometheus"},
+    {"lane": "them", "en": "A request enters on :8000 and is matched to a route", "zh": "请求从 :8000 进门，匹配到路由"},
+    {"lane": "them", "en": "Runs that route's plugins in order; any plugin can reject the request", "zh": "按顺序跑这条路由上的插件，任一不放行就直接拒绝"},
+    {"lane": "them", "en": "If all pass, proxies to the backend and records metrics", "zh": "全部放行后转发给后端，同时记下指标"}
+  ],
+  "value": {"en": "Auth, rate limiting and monitoring happen once at the door — backends stop reimplementing them", "zh": "鉴权、限流、监控在门口统一做掉，后端服务不用各写一份"},
+  "sources": [
+    "https://github.com/Kong/kong#getting-started (docker-compose, :8000 proxy, :8001 Admin API / decK)",
+    "https://docs.konghq.com/hub/ (bundled plugins: key-auth, rate-limiting, prometheus)"
+  ]
+}

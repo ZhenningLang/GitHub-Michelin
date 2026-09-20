@@ -75,6 +75,27 @@ You are the person who ends up supporting local models for a team, and you want 
 
 Reach for Ollama when the deciding factor is ecosystem and steadiness rather than peak throughput: it is a three-year-old, MIT-licensed project backed by a company, with 600+ contributors, official Python and JavaScript libraries, a first-party model library, Docker images for headless deployment, an in-repo desktop app, and now an MLX runner alongside its llama.cpp one on Apple Silicon. Choose it over [llama.cpp](llama-cpp.md) when you would rather trade some control for a managed model store and stable client libraries, and over [Magnitude](magnitude.md) when you already know which model you want and need breadth (library size, ROCm, SDKs, cloud tier) instead of a fit-estimation wizard.
 
+## How it works
+
+Ollama is the local-model equivalent of a package manager plus a always-on service. You install one app; it runs in the background, owns a local model store, and pulls weights from its own model library on first use — `ollama run <model>` downloads what's missing, loads it, and drops you into a chat. Underneath it runs llama.cpp (and an MLX runner on Apple Silicon), but the flags are its decision, not yours. Everything else in the product is a way to reach that service: a local REST API, OpenAI/Anthropic-compatible endpoints, first-party Python and JavaScript libraries, and one-command integrations that point a coding agent at it. Your side of the deal is picking a model name; its side is everything between that name and a running, callable endpoint.
+
+![ollama — backbone user story](../../../assets/flow/ollama.svg)
+
+<!-- flow-steps:begin (generated from flows/ollama.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the app (or run the official Docker image) and start it — `ollama`
+2. **You**: Pull a model from the library and chat with it — `ollama run gemma4`
+3. **Ollama**: Runs as a background service: fetches weights, owns the local model store, loads on demand
+4. **You**: Point your agent at it — a one-command integration, or a compatible base URL — `ollama launch claude`
+5. **Ollama**: Serves a local REST API plus OpenAI/Anthropic-compatible endpoints for apps and SDKs — `POST localhost:11434/api/chat`
+
+**Value**: One command puts a local model behind a stable API your agents and code already know how to call
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **If you need maximum throughput or a serving scheduler for many concurrent requests, use [vLLM](../serving-engines/vllm.md) or [SGLang](../serving-engines/sglang.md) instead**, because Ollama is a single-user-focused local runtime: it does not offer PagedAttention-class batching or multi-node serving.

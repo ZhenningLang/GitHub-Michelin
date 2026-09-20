@@ -891,7 +891,8 @@ labeled (`[未验证]` / `[推断]`), never asserted as eternal truth.
 
 | Section (EN / 中) | Required for | What it carries |
 |---|---|---|
-| `When to use` / `何时使用` | all types | a **User Story** — a concrete second-person scenario, not a feature list |
+| `When to use` / `何时使用` | all types | the **trigger scenario** — when you should think of this project, and why it beats substitutes there |
+| `How it works` / `怎么用起来` | all types (backfilling) | the **backbone user story** — a plain-language mechanism + a generated two-lane flow card (you do / it does) |
 | `When NOT to use` / `何时不用` | all types | the decisive filter: anti-patterns, scale ceilings, lock-in, maintenance risk |
 | `Comparison` / `横向对比` | all types | a table vs real substitutes (`未收录` when an alternative isn't indexed yet) |
 | `Tech stack` / `技术栈` | non-`skill-pack` | languages, frameworks, datastores it's built on |

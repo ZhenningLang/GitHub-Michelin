@@ -84,6 +84,29 @@ High performance Node.js image processing, the fastest module to resize JPEG, PN
 
 这个首版页面存在，是因为 sharp 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
 
+## 怎么用起来
+
+sharp 是一个 Node 包，真正处理像素的是底下的 C 库 **libvips**；sharp 把它包成一串可以链式调用的 JS 方法。`npm install` 时会自动下载适配你系统的预编译二进制，大多数 macOS / Windows / Linux 机器不需要再装别的。你做的事只有：把图片（文件路径或内存里的 Buffer）交给 `sharp()`，链式写出要做什么（缩放、转格式、旋转），最后说输出到文件还是 Buffer；解码、缩放、编码都由 sharp 完成。没有服务、没有配置，就是一个函数库。
+
+![sharp — 主干用户故事](../../../assets/flow/sharp.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/sharp.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装，自动下载适配本机的预编译二进制 — `npm install sharp`
+2. **你**：把图片交给 sharp：文件路径或内存 Buffer — `sharp('input.jpg')`
+3. **你**：链式写出要做什么 — `.resize({ width: 200 }).jpeg({ mozjpeg: true })`
+4. **你**：说明输出到哪里 — `.toFile('out.webp') / .toBuffer()`
+5. **sharp**：libvips 解码原图
+6. **sharp**：缩放、转换，正确处理色彩空间和透明通道
+7. **sharp**：编码成目标格式，交回文件或 Buffer
+
+**价值**：几行代码把大图转成小而适合网页的图；README 称缩放比 ImageMagick 快 4–5 倍
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。

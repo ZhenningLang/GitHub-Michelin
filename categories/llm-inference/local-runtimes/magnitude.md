@@ -85,6 +85,28 @@ You support a small team whose machines are deliberately non-uniform — two App
 
 You reach for Magnitude because it makes the *decision* the product: the desktop app (or `magnitude catalog recommendations`) profiles the hardware, ranks catalog models by estimated tokens/second, accuracy, intelligence and memory before anything is downloaded, prepares speculative decoding and context size for the chosen model, and writes that model into the selected harness's configuration with one click. Choose it over Ollama and llama.cpp when the deciding tradeoff is "we do not know what this hardware can run and we do not want to hand-tune flags" rather than raw throughput — and accept that the estimate layer is currently the least trustworthy part of the product (see below).
 
+## How it works
+
+Magnitude's pitch is that **choosing** the model is the product, not just running it. The desktop app (which bundles the `magnitude` CLI) first profiles your machine — GPU/driver, memory, CPU — and estimates tokens/second for each model in its catalog *before* you download anything, so the list you pick from is already filtered to what this box can actually run. Once you pick one, it downloads the weights and sets the hardware-dependent knobs for you (context size, speculative decoding) instead of leaving them as flags. It then runs in the background as a local inference service on OpenAI- and Anthropic-compatible endpoints, loading a model when an agent asks for it and unloading it when memory gets tight. Your agent doesn't need to know any of this: connecting it writes the right entry into that harness's own config.
+
+![magnitude — backbone user story](../../../assets/flow/magnitude.svg)
+
+<!-- flow-steps:begin (generated from flows/magnitude.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install and open the desktop app (the magnitude CLI ships with it)
+2. **Magnitude**: Profiles your machine and ranks catalog models by estimated tok/s, accuracy and memory — `magnitude hardware · catalog recommendations`
+3. **You**: Pick a recommended model in Discover and download it — `magnitude catalog pull`
+4. **Magnitude**: Tunes context size and speculative decoding for your hardware
+5. **You**: Connect the agent you already use, in Connections — `magnitude connections add`
+6. **Magnitude**: Serves it locally on OpenAI- and Anthropic-compatible endpoints, loading models on demand — `127.0.0.1:10100`
+
+**Value**: You stop guessing which model fits this machine — and your existing agent runs on it without hand-edited config
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **If Apple Silicon throughput decides the choice, run [llama.cpp](llama-cpp.md) (`llama serve`) or [Ollama](ollama.md) instead of Magnitude**, because issue #82 (open since 2026-09-06) measures the bundled engine at 9.05 tok/s where llama.cpp reaches 55.71 tok/s on the same GGUF and the same Mac; the maintainer's "upgrade to 0.0.13" fix was never confirmed by the reporter.

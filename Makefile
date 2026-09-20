@@ -1,9 +1,10 @@
-.PHONY: lint gates reverse-index reverse-index-check cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
+.PHONY: lint flows gates reverse-index reverse-index-check cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
 
 help:
 	@echo "oss-atlas make targets:"
 	@echo "  make lint           run the index linter (tools/lint.py)"
 	@echo "  make cards          regenerate ALL health radar SVGs from frontmatter (offline)"
+	@echo "  make flows          regenerate ALL How-it-works flow SVGs + page step lists from flows/*.json (offline)"
 	@echo "  make health PAGE=…  (re)score one page via GitHub/registry APIs and write its health: block"
 	@echo "                      e.g. make health PAGE=categories/python-tooling/memory-analyzer.md"
 	@echo "  make health-audit   offline audit of all '?' radar axes (reason distribution + flags)"
@@ -25,6 +26,9 @@ lint:
 
 cards:
 	python3 tools/health_card.py --all
+
+flows:
+	python3 tools/flow_card.py --all
 
 # Network step (GitHub + package registries via the already-authenticated gh CLI).
 # Scores the page, writes the health: block to BOTH siblings, then regenerates its card.
@@ -48,7 +52,7 @@ upstream-check:
 	python3 tools/upstream_snapshot.py --page "$(PAGE)" --check
 
 test:
-	python3 -m unittest tools/test_health.py tools/test_health_audit.py tools/test_health_backfill.py tools/test_lint.py tools/test_quality_scan.py tools/test_upstream_snapshot.py tools/test_verify_quality_batch.py
+	python3 -m unittest tools/test_health.py tools/test_health_audit.py tools/test_health_backfill.py tools/test_lint.py tools/test_quality_scan.py tools/test_upstream_snapshot.py tools/test_verify_quality_batch.py tools/test_flow_card.py
 
 quality-scan:
 	python3 tools/quality_scan.py

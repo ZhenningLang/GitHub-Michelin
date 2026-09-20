@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "XXL-JOB does", "zh": "XXL-JOB 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the scheduling center (admin) + MySQL", "zh": "部署调度中心 + MySQL", "code": "docker: xuxueli/xxl-job-admin"},
+    {"lane": "you", "en": "Add the maven dependency to your app and point it at the admin", "zh": "应用里加 maven 依赖，配调度中心地址", "code": "com.xuxueli:xxl-job-core"},
+    {"lane": "you", "en": "Write a plain method and annotate it", "zh": "写一个普通方法，贴上注解", "code": "@XxlJob(\"demoJobHandler\")"},
+    {"lane": "them", "en": "On app startup the embedded executor registers itself with the admin", "zh": "应用启动时，执行器自动向调度中心注册"},
+    {"lane": "you", "en": "Create a job in the web console: cron + handler name", "zh": "在网页上建任务，填 cron 和 handler 名"},
+    {"lane": "them", "en": "When due, picks one executor and triggers it over HTTP", "zh": "到点挑一台执行器，通过 HTTP 触发"},
+    {"lane": "them", "en": "Invokes your method, collects logs and result, retries on failure", "zh": "调用你的方法，收回日志与结果，失败自动重试", "code": "XxlJobHelper.log(...)"}
+  ],
+  "value": {"en": "Your code only says what the job does; scheduling, dispatch, retries and logs come for free", "zh": "业务代码里只剩「任务本身干什么」；定时、分派、重试、日志都不用自己写"},
+  "sources": [
+    "https://github.com/xuxueli/xxl-job README (features: 调度中心/执行器, Cron 触发, 失败重试; docker xuxueli/xxl-job-admin; maven com.xuxueli:xxl-job-core)",
+    "xxl-job-executor-samples/xxl-job-executor-sample-springboot/src/main/java/com/xxl/job/executor/jobhandler/SampleXxlJob.java (@XxlJob, XxlJobHelper.log)",
+    "xxl-job-executor-samples/xxl-job-executor-sample-springboot/src/main/resources/application.properties (xxl.job.admin.addresses)"
+  ]
+}
