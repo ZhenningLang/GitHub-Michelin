@@ -699,7 +699,9 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Chakra UI** | Chakra UI is a component system for building SaaS products with speed ⚡️ | MIT | B (5/6) | [EN](categories/web-ui/component-libraries/chakra-ui.md) · [中](categories/web-ui/component-libraries/chakra-ui.zh.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | MIT | B (5/6) | [EN](categories/web-ui/component-libraries/radix-ui.md) · [中](categories/web-ui/component-libraries/radix-ui.zh.md) |
 | **Nuxt** | the full-stack Vue framework | MIT | A (6/6) | [EN](categories/web-ui/frameworks/nuxt.md) · [中](categories/web-ui/frameworks/nuxt.zh.md) |
-| **Astro** | The web framework for content-driven websites. ⭐️ Star to support our work! | NOASSERTION | A (5/6) | [EN](categories/web-ui/frameworks/astro.md) · [中](categories/web-ui/frameworks/astro.zh.md) |
+| **Astro** | Use it when the site is a content collection that needs a few interactive widgets — not when the deliverable is a versioned docs site or the site is a full-stack application. | MIT | A (5/6) | [EN](categories/web-ui/frameworks/astro.md) · [中](categories/web-ui/frameworks/astro.zh.md) |
+| **Docusaurus** | Use it when a versioned, searchable, i18n-capable documentation site must exist from day one — not when the site is a general content site or when you would rather assemble the docs furniture yourself. | MIT | B (6/6) | [EN](categories/web-ui/frameworks/docusaurus.md) · [中](categories/web-ui/frameworks/docusaurus.zh.md) |
+| **Nextra** | Use it when the docs must live inside an existing Next.js app and a thin MDX layer is enough — not when you need versioned docs, or a project with a large maintainer team behind it. | MIT | B (6/6) | [EN](categories/web-ui/frameworks/nextra.md) · [中](categories/web-ui/frameworks/nextra.zh.md) |
 
 ### proxy-pool
 

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Nextra does",
+    "zh": "Nextra 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install Next.js, React and Nextra",
+      "zh": "安装 Next.js、React 与 Nextra",
+      "code": "npm i next react react-dom nextra nextra-theme-docs"
+    },
+    {
+      "lane": "you",
+      "en": "Wrap your Next config once so Markdown is handled",
+      "zh": "把 Next 配置包一层，让它处理 Markdown",
+      "code": "withNextra({...}) · next.config.mjs"
+    },
+    {
+      "lane": "you",
+      "en": "Write the site shell once, feeding it the page map",
+      "zh": "写一次站点外壳，把 page map 交给它",
+      "code": "app/layout.jsx · getPageMap()"
+    },
+    {
+      "lane": "them",
+      "en": "Treats each Markdown/MDX file as a page and derives the sidebar",
+      "zh": "把每个 Markdown／MDX 文件当成页面，并推导出侧边栏"
+    },
+    {
+      "lane": "you",
+      "en": "Run the Next.js dev server",
+      "zh": "启动 Next.js 开发服务器",
+      "code": "npm run dev"
+    },
+    {
+      "lane": "them",
+      "en": "Builds the site with Next.js",
+      "zh": "用 Next.js 构建站点",
+      "code": "npm run build"
+    }
+  ],
+  "value": {
+    "en": "Every new Markdown file is a page in a Next.js app — the docs layer is four packages, not a preset",
+    "zh": "每个新的 Markdown 文件都是 Next.js 应用里的一个页面——文档层是四个包，不是一套预设"
+  },
+  "sources": [
+    "https://nextra.site/docs/docs-theme/start (Install: 'npm i next react react-dom nextra nextra-theme-docs'; package.json scripts dev/build/start as next / next build / next start; next.config.mjs with 'import nextra from nextra' and withNextra({...}); app/layout.jsx using Footer, Layout, Navbar from nextra-theme-docs, getPageMap from nextra/page-map, and importing nextra-theme-docs/style.css; 'npm run dev' to run the project)",
+    "https://nextra.site/docs/file-conventions (page.mdx file convention, content directory, _meta.js for ordering)",
+    "README.md ('Simple, powerful and flexible site generation framework with everything you love from Next.js')"
+  ]
+}

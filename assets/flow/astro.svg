@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="702" viewBox="0 0 880 702" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="702" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="544" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="544" rx="10"/>
+<rect class="pillT" x="474" y="40" width="119.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Astro does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="edge" d="M62,288 L62,312" marker-end="url(#a)"/>
+<path class="hand" d="M408,361.5 C439.0,361.5 439.0,385 470,385" marker-end="url(#a)"/>
+<path class="hand" d="M472,408.0 C441.0,408.0 441.0,459 410,459" marker-end="url(#a)"/>
+<path class="hand" d="M408,482.5 C439.0,482.5 439.0,506 470,506" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Scaffold a project with the wizard,</text>
+<text class="t" x="82" y="123">adding any UI integration you need</text>
+<text class="c" x="82" y="147">npm create astro@latest · --add react</text>
+<rect class="card" x="40" y="193" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Write pages as .astro components under</text>
+<text class="t" x="82" y="244">src/pages</text>
+<text class="c" x="82" y="268">src/pages/index.astro</text>
+<rect class="card" x="40" y="314" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="314" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="338" r="10"/>
+<text class="num" x="62" y="342" text-anchor="middle">3</text>
+<text class="t" x="82" y="343">Add Markdown and MDX as content when</text>
+<text class="t" x="82" y="365">you need it</text>
+<text class="c" x="82" y="389">@astrojs/mdx</text>
+<rect class="cardT" x="472" y="361" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="361" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="385" r="10"/>
+<text class="num" x="494" y="389" text-anchor="middle">4</text>
+<text class="t" x="514" y="390">Builds every component to HTML and</text>
+<text class="t" x="514" y="412">CSS, stripping client-side JavaScript</text>
+<text class="t" x="514" y="434">by default</text>
+<rect class="card" x="40" y="435" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="435" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="459" r="10"/>
+<text class="num" x="62" y="463" text-anchor="middle">5</text>
+<text class="t" x="82" y="464">Mark only the components that must be</text>
+<text class="t" x="82" y="486">interactive</text>
+<text class="c" x="82" y="510">client:load · client:visible</text>
+<rect class="cardT" x="472" y="482" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="482" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="506" r="10"/>
+<text class="num" x="494" y="510" text-anchor="middle">6</text>
+<text class="t" x="514" y="511">Bundles JavaScript for those islands</text>
+<text class="t" x="514" y="533">alone and writes the static site</text>
+<rect class="val" x="28" y="586" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="610">VALUE</text>
+<text class="valT" x="48" y="634">A content site that ships HTML by default and JavaScript only where you opted in — from any</text>
+<text class="valT" x="48" y="656">UI framework</text>
+</svg>

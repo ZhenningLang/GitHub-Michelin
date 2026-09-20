@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Astro does",
+    "zh": "Astro 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a project with the wizard, adding any UI integration you need",
+      "zh": "用向导生成项目，顺便加上需要的 UI 集成",
+      "code": "npm create astro@latest · --add react"
+    },
+    {
+      "lane": "you",
+      "en": "Write pages as .astro components under src/pages",
+      "zh": "在 src/pages 下用 .astro 组件写页面",
+      "code": "src/pages/index.astro"
+    },
+    {
+      "lane": "you",
+      "en": "Add Markdown and MDX as content when you need it",
+      "zh": "需要时把 Markdown 与 MDX 作为内容加进来",
+      "code": "@astrojs/mdx"
+    },
+    {
+      "lane": "them",
+      "en": "Builds every component to HTML and CSS, stripping client-side JavaScript by default",
+      "zh": "把每个组件构建成 HTML 与 CSS，默认剥离客户端 JavaScript"
+    },
+    {
+      "lane": "you",
+      "en": "Mark only the components that must be interactive",
+      "zh": "只标注那些必须可交互的组件",
+      "code": "client:load · client:visible"
+    },
+    {
+      "lane": "them",
+      "en": "Bundles JavaScript for those islands alone and writes the static site",
+      "zh": "只为这些 island 打包 JavaScript，并写出静态站点"
+    }
+  ],
+  "value": {
+    "en": "A content site that ships HTML by default and JavaScript only where you opted in — from any UI framework",
+    "zh": "内容站默认只发 HTML，只有你主动开启的地方才带 JavaScript——而且 UI 框架任选"
+  },
+  "sources": [
+    "README.md Install ('npm create astro@latest' recommended, 'npm install astro' manual; 'Astro is a website build tool for the modern web')",
+    "https://docs.astro.build/en/install-and-setup/ (prerequisites Node v22.12.0+, odd-numbered versions unsupported; astro must be installed locally, not globally; scripts dev/build/preview as 'astro dev' / 'astro build' / 'astro preview'; src/pages/index.astro; astro.config.mjs with defineConfig; integrations imported there; 'npm create astro@latest -- --add react --add partytown')",
+    "https://docs.astro.build/en/concepts/islands/ (components render to HTML with no client-side runtime by default; 'stripping out all client-side JavaScript automatically'; client:* directives client:load, client:idle, client:visible; server:defer for server islands; multiple UI frameworks supported)",
+    "packages/ listing (astro, create-astro, markdown, integrations/* including @astrojs/mdx, adapters for node/vercel/netlify/cloudflare, telemetry, language-tools)",
+    "README.md integrations table (@astrojs/react, preact, solid-js, svelte, vue, node, vercel, cloudflare, sitemap, mdx)"
+  ]
+}

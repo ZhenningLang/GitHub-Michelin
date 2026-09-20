@@ -696,7 +696,9 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Chakra UI** | Chakra UI is a component system for building SaaS products with speed ⚡️ | MIT | B（5/6） | [EN](categories/web-ui/component-libraries/chakra-ui.md) · [中](categories/web-ui/component-libraries/chakra-ui.zh.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | MIT | B（5/6） | [EN](categories/web-ui/component-libraries/radix-ui.md) · [中](categories/web-ui/component-libraries/radix-ui.zh.md) |
 | **Nuxt** | the full-stack Vue framework | MIT | A（6/6） | [EN](categories/web-ui/frameworks/nuxt.md) · [中](categories/web-ui/frameworks/nuxt.zh.md) |
-| **Astro** | The web framework for content-driven websites. ⭐️ Star to support our work! | NOASSERTION | A（5/6） | [EN](categories/web-ui/frameworks/astro.md) · [中](categories/web-ui/frameworks/astro.zh.md) |
+| **Astro** | 当站点是内容集合、只需少数交互组件时用它——但交付物是带版本的文档站、或站点本质是全栈应用时不要用。 | MIT | A（5/6） | [中](categories/web-ui/frameworks/astro.zh.md) · [EN](categories/web-ui/frameworks/astro.md) |
+| **Docusaurus** | 当需要第一天就有带版本、可搜索、支持 i18n 的文档站时用它——但站点是通用内容站、或你宁愿自己组装文档那套家具时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/docusaurus.zh.md) · [EN](categories/web-ui/frameworks/docusaurus.md) |
+| **Nextra** | 当文档必须活在既有 Next.js 应用里、一层薄 MDX 就够了时用它——但你需要版本化文档、或需要背后有较大维护团队的项目时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/nextra.zh.md) · [EN](categories/web-ui/frameworks/nextra.md) |
 
 ### proxy-pool
 
