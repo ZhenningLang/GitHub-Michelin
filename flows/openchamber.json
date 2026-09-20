@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenChamber does", "zh": "OpenChamber 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and start it — the desktop release, or the CLI install script", "zh": "装上并启动：桌面版安装包，或 CLI 安装脚本", "code": "openchamber --ui-password be-creative-here"},
+    {"lane": "them", "en": "Starts and supervises OpenCode for you, lists your projects, and listens on localhost only", "zh": "替你启动并托管 OpenCode，列出项目，只监听本机"},
+    {"lane": "you", "en": "Start a session and give it a finish line instead of a one-shot prompt", "zh": "开一个会话，给它一个终点，而不是一问一答"},
+    {"lane": "them", "en": "After every turn it audits the result and keeps the agent working until done, blocked, or out of budget", "zh": "每轮结束后审计结果，让 agent 一直干到完成、卡住或超出预算"},
+    {"lane": "you", "en": "Hand the same task to up to five models at once", "zh": "把同一个任务同时交给最多五个模型"},
+    {"lane": "them", "en": "Gives each run its own session and optional worktree, so you pick the best or fuse the strongest parts", "zh": "每个 run 一条会话、可选独立 worktree，你挑最好的那个"},
+    {"lane": "you", "en": "Review the change as ordered stops, or point at a live element to send its styles and errors", "zh": "按有序的 stop 读改动，或指着页面元素把样式和报错发给它"},
+    {"lane": "you", "en": "Pair another device with a one-time QR code", "zh": "用一次性二维码把另一台设备配对进来", "code": "openchamber connect-url --qr"},
+    {"lane": "them", "en": "Relays the session end-to-end encrypted, so you answer from anywhere without opening a port", "zh": "端到端加密地中转会话，你在任何地方都能接着答，不用开端口"}
+  ],
+  "value": {
+    "en": "You keep control of agent work from any device — sessions keep going while you are away, and review, git, and the PR sit beside the chat",
+    "zh": "你在任何设备上都能掌控 agent 的工作：你不在时它继续跑，评审、git 和 PR 就在对话旁边"
+  },
+  "sources": [
+    "README.md quick start and common operations (openchamber --ui-password be-creative-here, openchamber connect-url --qr, scripts/install.sh one-liner)",
+    "packages/docs/content/docs/install.mdx (OpenCode is a prerequisite; desktop / PWA / VS Code are three ways in)",
+    "packages/docs/content/docs/session-goals.mdx (a small model audits every turn; keeps going while you are away; token budget and continuation caps; the loop runs in the server, not the browser tab)",
+    "packages/docs/content/docs/multi-run.mdx (one launcher, up to five models per group, isolate runs gives each its own worktree and branch)",
+    "packages/docs/content/docs/walkthrough.mdx (diff regrouped into ordered stops; explains, does not judge)",
+    "packages/docs/content/docs/desktop-browser.mdx (annotate element/region/draw; the agent can drive the panel; desktop-only)",
+    "packages/docs/content/docs/private-relay.mdx (the server dials outbound; E2EE; no open port; pairing is one-time and revocable)",
+    "packages/docs/content/docs/security.mdx (defaults to 127.0.0.1; UI password; per-device tokens)",
+    "Dockerfile (oven/bun:1.4.2, Node 22, installs git/openssh-client/python3)"
+  ]
+}
