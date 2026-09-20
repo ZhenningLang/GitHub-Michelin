@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="633" viewBox="0 0 880 633" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="633" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="475" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="475" rx="10"/>
+<rect class="pillT" x="474" y="40" width="129.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Solaar does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="hand" d="M408,229.5 C439.0,229.5 439.0,253 470,253" marker-end="url(#a)"/>
+<path class="hand" d="M472,265.0 C441.0,265.0 441.0,316 410,316" marker-end="url(#a)"/>
+<path class="hand" d="M408,328.0 C439.0,328.0 439.0,352 470,352" marker-end="url(#a)"/>
+<path class="hand" d="M472,375.5 C441.0,375.5 441.0,414 410,414" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install Solaar from your</text>
+<text class="t" x="82" y="123">distribution&#x27;s package</text>
+<text class="c" x="82" y="147">sudo apt install solaar</text>
+<rect class="card" x="40" y="193" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Launch the desktop application</text>
+<text class="c" x="82" y="246">solaar</text>
+<rect class="cardT" x="472" y="229" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="229" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="253" r="10"/>
+<text class="num" x="494" y="257" text-anchor="middle">3</text>
+<text class="t" x="514" y="258">Discovers supported receivers and</text>
+<text class="t" x="514" y="280">HID++ devices through udev</text>
+<rect class="card" x="40" y="292" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="292" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="316" r="10"/>
+<text class="num" x="62" y="320" text-anchor="middle">4</text>
+<text class="t" x="82" y="321">Pair a compatible device, or change a</text>
+<text class="t" x="82" y="343">device setting in the GUI</text>
+<rect class="cardT" x="472" y="328" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="328" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="352" r="10"/>
+<text class="num" x="494" y="356" text-anchor="middle">5</text>
+<text class="t" x="514" y="357">Saves the settings and restores them</text>
+<text class="t" x="514" y="379">whenever the device reconnects</text>
+<text class="c" x="514" y="403">~/.config/solaar/config.yaml</text>
+<rect class="card" x="40" y="390" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="390" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="414" r="10"/>
+<text class="num" x="62" y="418" text-anchor="middle">6</text>
+<text class="t" x="82" y="419">Inspect the detected device and its</text>
+<text class="t" x="82" y="441">capabilities from the CLI</text>
+<text class="c" x="82" y="465">solaar show</text>
+<rect class="val" x="28" y="517" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="541">VALUE</text>
+<text class="valT" x="48" y="565">Pairing, device state and persistent HID++ settings are managed on Linux without vendor</text>
+<text class="valT" x="48" y="587">software</text>
+</svg>
