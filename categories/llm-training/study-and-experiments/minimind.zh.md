@@ -78,7 +78,7 @@ health:
 
 你是一名已经在产品里调用 LLM、也微调过一两个 checkpoint 的工程师，但「预训练 → SFT → RLHF」对你仍是一张从未亲手跑通的流程图。你想自己在租来的机器上跑完每个阶段——成本大约一杯咖啡——并且逐行读完做这件事的代码，而不是调用 `trainer.train()` 然后信任一个库。直接读 `transformers`/`trl` 源码在这件事上是无解的：它们为真实模型服务，核心循环被并行封装、配置装配和向后兼容埋得很深。你的做法是租一张 24GB 显卡，下载 1.2GB 与 1.6GB 两个 mini 数据集，依次跑 `train_pretrain.py`、`train_full_sft.py` 和几个 RL 脚本，看着 loss 曲线对应到你真正读过的某一行代码。
 
-相对最近的替代品，决定性的取舍是：nanoGPT 演示了预训练那一半，但止步于 SFT，且是英文 / GPT-2 血统，没有 MoE、没有 RL、没有 Tool Call；torchtune 是持续维护的 PyTorch 原生后训练库，但它是拿来**用**的而不是拿来重造的，其 recipe 面向真实模型（Llama/Qwen/DeepSeek 家族），而不是一个你能彻底推导的单一产物。MiniMind 是唯一把**整条链路**——包括分词器训练——都保持手写、且小到每个阶段约一小时跑完的项目：中文优先的数据，加上 MoE、Tool Call 与 Agentic RL 这几个其他教学仓库完全没覆盖的阶段。
+相对最近的替代品，决定性的取舍是：nanoGPT 演示了预训练那一半——而且它现在已宣布废弃——但它止步于 GPT-2 预训练加领域微调，是英文 / GPT-2 血统，没有 MoE、没有 RL、没有 Tool Call；torchtune 是持续维护的 PyTorch 原生后训练库，但它是拿来**用**的而不是拿来重造的，其 recipe 面向真实模型（Llama/Qwen/DeepSeek 家族），而不是一个你能彻底推导的单一产物。MiniMind 是唯一把**整条链路**——包括分词器训练——都保持手写、且小到每个阶段约一小时跑完的项目：中文优先的数据，加上 MoE、Tool Call 与 Agentic RL 这几个其他教学仓库完全没覆盖的阶段。
 
 ## 何时不用
 
@@ -97,7 +97,7 @@ health:
 | [Unsloth](../unsloth.zh.md) | ✅ | 当交付物是单卡微调好的真实模型时，选 Unsloth；当交付物是你自己的理解时选 MiniMind，因为 Unsloth 的 Triton kernel 优化的正是一条你不该去改内部的流水线。 | Unsloth 用透明度换真实模型上约 2x 的速度；MiniMind 在 64M 尺度上用任何可用产出换完全透明。 |
 | [LlamaFactory](../llamafactory.zh.md) | ✅ | 当团队需要覆盖 100+ 模型、带 Web UI 的配置化 SFT→RLHF 流水线时，选 LlamaFactory；当一名工程师需要看清每个阶段的 loss 到底由什么构成时选 MiniMind，因为零代码训练器教不了它抽象掉的机制。 | LlamaFactory 更快拿到可用模型、模型覆盖更广；MiniMind 到任何产出都更慢，但它是两者中唯一能从自身源码完整推导的那一个。 |
 | [autoresearch](../../ml-research/autoresearch.zh.md) | ✅ | 当你想让 agent 以 validation bits-per-byte 为评分自动跑单卡训练实验时，选 autoresearch；当你想**学会**各阶段而不是自动化搜索时选 MiniMind，因为 autoresearch 假定你已经知道它的循环在做什么。 | autoresearch 自动化了迭代但只是一个窄 harness；MiniMind 覆盖完整阶段谱系（MoE、RL、Tool Use）但没有实验自动化。 |
-| nanoGPT（karpathy） | 未收录 | 当英文 GPT-2 预训练加 SFT 已足够、且你要最小的标准参考实现时，选 nanoGPT；当你需要中文数据路径、MoE、Tool Call SFT 与 RL/RLAIF 阶段时选 MiniMind，因为 nanoGPT 止步的地方正是 MiniMind 有意思的那一半开始的地方。 | nanoGPT 作为预训练参考更小更干净；MiniMind 是两者中唯一走到 RLHF、MoE 与 Agentic RL 的，代价是表面积大得多。 |
+| [nanoGPT](nanogpt.zh.md) | ✅ | 当你要最经典的最小 GPT-2 参考实现、且接受它已被上游废弃、止步于预训练时，选 nanoGPT；当你需要中文数据路径、MoE、Tool Call SFT 与 RL/RLAIF 阶段时选 MiniMind，因为那些全都在 nanoGPT 结束之处的下游。 | nanoGPT 更小更干净、能产出真实 GPT-2 权重，但已冻结且单人维护；MiniMind 仍在维护、覆盖完整阶段谱系，代价是 64M 的产出没法用于任何其他用途。 |
 
 ## 技术栈
 

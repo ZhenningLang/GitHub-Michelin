@@ -492,9 +492,6 @@ Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
 nanochat,categories/ml-research/autoresearch.md,,no
-nanoGPT,categories/ml-research/autoresearch.md,,no
-nanoGPT (karpathy),categories/llm-training/study-and-experiments/minimind.md,,no
-nanoGPT / TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
 Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
@@ -765,6 +762,7 @@ torchgan,categories/ml-research/pytorch-gan.md,,no
 Tour of Go / interactive docs,categories/python-tooling/gophernotes.md,,no
 tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
 Traefik,categories/api-gateway/kong.md,,no
+TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/tesseract.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
