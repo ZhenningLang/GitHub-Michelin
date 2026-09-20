@@ -16,6 +16,7 @@
 | **Pandoc** | Universal markup converter | B (6/6) | [→](pandoc.md) |
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | B (4/6) | [→](goldmark.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | A (6/6) | [→](markdownlint.md) |
+| **Quarkdown** | Use it when one Markdown-legible source must compile to a web page, a print PDF, reveal.js slides and a docs site — but not when the deliverable must be Word, the license must be permissive, or print fidelity is the hard requirement. | B (5/6) | [→](quarkdown.md) |
 
 
 ## Comparison matrix

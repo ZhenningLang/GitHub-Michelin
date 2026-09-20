@@ -601,6 +601,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Pandoc** | Universal markup converter | GPL-2.0 | B (6/6) | [EN](categories/markdown-tools/pandoc.md) · [中](categories/markdown-tools/pandoc.zh.md) |
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | MIT | B (4/6) | [EN](categories/markdown-tools/goldmark.md) · [中](categories/markdown-tools/goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A (6/6) | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
+| **Quarkdown** | Use it when one Markdown-legible source must compile to a web page, a print PDF, reveal.js slides and a docs site — but not when the deliverable must be Word, the license must be permissive, or print fidelity is the hard requirement. | GPL-3.0 / AGPL-3.0 | B (5/6) | [EN](categories/markdown-tools/quarkdown.md) · [中](categories/markdown-tools/quarkdown.zh.md) |
 
 ### pdf-tools
 

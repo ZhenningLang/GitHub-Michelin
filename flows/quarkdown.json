@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Quarkdown does",
+    "zh": "Quarkdown 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it (script, Homebrew, Scoop or the platform zip)",
+      "zh": "安装（脚本、Homebrew、Scoop 或平台 zip）",
+      "code": "brew install quarkdown-labs/quarkdown/quarkdown"
+    },
+    {
+      "lane": "you",
+      "en": "Scaffold a project and declare the output type in the source",
+      "zh": "生成项目骨架，并在源文件里声明输出类型",
+      "code": "quarkdown create mydoc · .doctype {paged}"
+    },
+    {
+      "lane": "them",
+      "en": "Parses the Markdown plus function calls and expands the standard library into its document model",
+      "zh": "解析 Markdown 与函数调用，把标准库展开进自己的文档模型"
+    },
+    {
+      "lane": "you",
+      "en": "Compile the root file, adding live preview if you want it",
+      "zh": "编译根文件，需要的话加上实时预览",
+      "code": "quarkdown c main.qd -p -w"
+    },
+    {
+      "lane": "them",
+      "en": "Renders that type to HTML, copying only the libraries it needs into the output's lib directory",
+      "zh": "按该类型渲染成 HTML，只把需要的库拷进产物的 lib 目录"
+    },
+    {
+      "lane": "them",
+      "en": "With PDF output asked for, prints that same HTML through headless Chromium",
+      "zh": "要求 PDF 时，把同一份 HTML 交给无头 Chromium 打印",
+      "code": "--pdf"
+    }
+  ],
+  "value": {
+    "en": "One .qd source yields a web page, a print PDF and slides — the content never forks",
+    "zh": "一份 .qd 源产出网页、印刷 PDF 与幻灯片——内容不必分叉"
+  },
+  "sources": [
+    "README.md About / Targets / Getting started (.doctype {plain|paged|slides|docs}, quarkdown create [directory], quarkdown c file.qd, -p/--preview, -w/--watch, --pdf, quarkdown repl)",
+    "README.md Comparison (LaTeX-vs-Quarkdown source sample: .tableofcontents, .center, .row alignment:{spacebetween})",
+    "skills/quarkdown/SKILL.md (bundled agent skill: quarkdown c <main>.qd --strict --out /tmp/quarkdown-verify; quarkdown doctor get install-dir)",
+    "docs/pdf-export.qd (--pdf needs a Chromium-family browser, defaults to chrome-headless-shell, --chrome-path, QD_CHROME_PATH)",
+    "docs/cli-compiler.qd (permission model: defaults + allowed - denied; --allow process)",
+    "quarkdown-html/src/main/kotlin/com/quarkdown/rendering/html/post/resources/ThirdPartyPostRendererResource.kt (bundles required third-party scripts, styles and fonts into the output lib/ directory, 'enabling fully offline HTML rendering')",
+    "quarkdown-html/package.json (pagedjs, reveal.js, katex, highlight.js, mermaid, minisearch, fontsource)"
+  ]
+}
