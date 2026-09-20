@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "CaskHub does",
+    "zh": "CaskHub 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it with the cask or the release ZIP and open it",
+      "zh": "用 cask 或 release 压缩包装上并打开",
+      "code": "brew install --cask caskhub"
+    },
+    {
+      "lane": "them",
+      "en": "Fetches the catalogue from formulae.brew.sh and reads your Caskroom for what is installed",
+      "zh": "从 formulae.brew.sh 取目录，读 Caskroom 看已装项",
+      "code": "$HOMEBREW_PREFIX/Caskroom"
+    },
+    {
+      "lane": "you",
+      "en": "Browse the shelves or search, then click Install",
+      "zh": "逛分类货架或搜索，然后点安装"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the real brew install, with a native password dialog for pkg-based casks",
+      "zh": "跑真正的 brew install，pkg 类 cask 弹原生密码框"
+    },
+    {
+      "lane": "you",
+      "en": "Adopt an app you installed outside Homebrew so brew manages it in place",
+      "zh": "把 Homebrew 之外装的 App 收编，让 brew 就地接管",
+      "code": "Adopt Apps"
+    }
+  ],
+  "value": {
+    "en": "An App Store front end whose installs stay fully manageable from the brew command line, and vice versa",
+    "zh": "一个应用商店式前端，装出来的东西在 brew 命令行里照样能管，反之亦然"
+  },
+  "sources": [
+    "README.md Install (brew install --cask caskhub; release ZIP)",
+    "README.md How It Works (catalog and analytics from formulae.brew.sh; installed detection reads $HOMEBREW_PREFIX/Caskroom; installs, updates and uninstalls run through your real brew binary)",
+    "README.md Features (Adopt Apps, guided Homebrew setup with custom install paths, native password prompts for pkg casks, popularity charts, Sparkle updates)",
+    "README.md Requirements (macOS 15.6 or later; Homebrew required for install/update/uninstall)",
+    "README.md Architecture (SwiftUI + MVVM; dependencies Sparkle, Sentry, TelemetryDeck)",
+    "homebrew-cask Casks/c/caskhub.rb (depends_on macos: :sequoia)"
+  ]
+}

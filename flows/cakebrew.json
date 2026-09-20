@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Cakebrew does",
+    "zh": "Cakebrew 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Drag the downloaded Cakebrew.app into Applications and open it",
+      "zh": "把下载的 Cakebrew.app 拖进应用程序并打开",
+      "code": "Cakebrew.app"
+    },
+    {
+      "lane": "them",
+      "en": "Reads your existing Homebrew installation through its Objective-C wrapper",
+      "zh": "通过 Objective-C 封装读取你已装好的 Homebrew"
+    },
+    {
+      "lane": "you",
+      "en": "Search formulae and press Install, Uninstall or Upgrade",
+      "zh": "搜索 formula，点安装、卸载或升级"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the brew command and refreshes the list in the window",
+      "zh": "执行 brew 命令并刷新窗口里的列表"
+    },
+    {
+      "lane": "you",
+      "en": "Tap or untap a repo, or run cleanup from the tools list",
+      "zh": "tap 或 untap 仓库，或在工具列表里跑 cleanup",
+      "code": "brew cleanup"
+    }
+  ],
+  "value": {
+    "en": "Formulae, taps and cleanup driven from one window instead of the terminal — on an app with no release since 2021",
+    "zh": "用窗口而不是终端来管 formula、tap 和 cleanup——但这个应用自 2021 年起没再发版"
+  },
+  "sources": [
+    "README.md About (search formulae; install, uninstall and upgrade formulae; tap and untap repos; update Homebrew; run the brew cleanup tool)",
+    "README.md Download (app from cakebrew.com; the cask command printed there does not resolve — no cakebrew cask exists in homebrew-cask as of 2026-09-20)",
+    "README.md Localizations (English, Portuguese, German, Chinese Simplified)",
+    "GitHub API repos/brunophilipe/Cakebrew (default-branch HEAD 2021-03-06; single release v1.3 on 2021-03-12; language Objective-C)",
+    "Cakebrew.xcodeproj/project.pbxproj (MACOSX_DEPLOYMENT_TARGET 10.10 / 10.15)"
+  ]
+}

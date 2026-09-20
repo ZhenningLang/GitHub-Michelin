@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "BrewUI does",
+    "zh": "BrewUI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it from the official cask and launch it",
+      "zh": "用官方 cask 安装并启动",
+      "code": "brew install --cask homebrew-app"
+    },
+    {
+      "lane": "them",
+      "en": "Locates your brew binary and runs every command through /bin/zsh with a clean environment",
+      "zh": "定位你的 brew，用 /bin/zsh 干净环境执行每条命令",
+      "code": "/bin/zsh --no-rcs"
+    },
+    {
+      "lane": "you",
+      "en": "Search the catalogue and pick a package to install",
+      "zh": "在目录里搜索并挑一个包安装"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the real brew command and streams that command line plus its output into the Console",
+      "zh": "跑真正的 brew，把命令行与输出流式打进 Console"
+    },
+    {
+      "lane": "them",
+      "en": "Refreshes the installed inventory and dependency graph so the package shows as installed",
+      "zh": "刷新已安装清单与依赖图，让该包显示为已安装"
+    }
+  ],
+  "value": {
+    "en": "Package management without the terminal, with every Homebrew operation still visible in a console you can copy from",
+    "zh": "不用终端也能装包，而且每一步 Homebrew 操作都能在可复制的控制台里看见"
+  },
+  "sources": [
+    "README.md Installation (brew install --cask homebrew-app)",
+    "ARCHITECTURE.md Homebrew configuration (/bin/zsh, --no-rcs --no-global-rcs, brew.env)",
+    "ARCHITECTURE.md Command execution (SerialBrewCommandCenter, copyable Terminal commands, parsing-only flags omitted)",
+    "ARCHITECTURE.md Data and storage (installed repository owns the inventory and dependency graph, refresh after mutations)",
+    "homebrew-cask Casks/h/homebrew-app.rb (depends_on macos: :tahoe)"
+  ]
+}

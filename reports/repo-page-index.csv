@@ -36,6 +36,7 @@ https://github.com/HandBrake/HandBrake,handbrake,video-audio,categories/media-pr
 https://github.com/HarnessRouter/harnessrouter,harnessrouter,api-gateway,categories/api-gateway/harnessrouter.md
 https://github.com/Hello-SimpleAI/chatgpt-comparison-detection,chatgpt-comparison-detection,llm-eval,categories/llm-eval/chatgpt-comparison-detection.md
 https://github.com/HiveNexus/HiveChat,hivechat,team-chat,categories/team-chat/hivechat.md
+https://github.com/Homebrew/BrewUI,brewui,package-manager-gui,categories/dev-utilities/package-manager-gui/brewui.md
 https://github.com/Hopding/pdf-lib,pdf-lib,pdf-tools,categories/pdf-tools/pdf-lib.md
 https://github.com/HughYau/qiushi-skill,qiushi-skill,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.md
 https://github.com/ImageMagick/ImageMagick,imagemagick,image-processing,categories/media-processing/image-processing/imagemagick.md
@@ -125,6 +126,7 @@ https://github.com/alchaincyf/nuwa-skill,nuwa-skill,context-engineering,categori
 https://github.com/alibaba/anyproxy,anyproxy,debugging-proxy,categories/debugging-proxy/anyproxy.md
 https://github.com/alibaba/open-code-review,open-code-review,ai-code-review,categories/ai-code-review/open-code-review.md
 https://github.com/alibaba/page-agent,page-agent,agent-browser-tools,categories/web-automation/agent-browser-tools/page-agent.md
+https://github.com/alielsokary/CaskHub,caskhub,package-manager-gui,categories/dev-utilities/package-manager-gui/caskhub.md
 https://github.com/allenai/olmocr,olmocr,document-parsing,categories/document-parsing/olmocr.md
 https://github.com/angular/angular,angular,frameworks,categories/web-ui/frameworks/angular.md
 https://github.com/anomalyco/opencode,opencode,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/opencode.md
@@ -161,6 +163,8 @@ https://github.com/bpmn-io/bpmn-js,bpmn-js,diagramming,categories/diagramming/bp
 https://github.com/bradautomates/claude-video,claude-video,video-audio,categories/media-processing/video-audio/claude-video.md
 https://github.com/browser-act/skills,browser-act-skills,engineering,categories/agent-skills/engineering/browser-act-skills.md
 https://github.com/browser-use/browser-use,browser-use,agent-browser-tools,categories/web-automation/agent-browser-tools/browser-use.md
+https://github.com/brunophilipe/Cakebrew,cakebrew,package-manager-gui,categories/dev-utilities/package-manager-gui/cakebrew.md
+https://github.com/buresdv/Cork,cork,package-manager-gui,categories/dev-utilities/package-manager-gui/cork.md
 https://github.com/buriy/python-readability,python-readability,article-extraction,categories/web-scraping/article-extraction/python-readability.md
 https://github.com/cactus-compute/needle,needle,on-device-ml,categories/on-device-ml/needle.md
 https://github.com/calesthio/OpenMontage,open-montage,video-production,categories/video-production/open-montage.md
@@ -349,6 +353,7 @@ https://github.com/microsoft/playwright-mcp,playwright-mcp,playwright-family,cat
 https://github.com/microsoft/qlib,qlib,investment-finance,categories/investment-finance/qlib.md
 https://github.com/microsoft/vscode,vscode,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/vscode.md
 https://github.com/mikf/gallery-dl,gallery-dl,media-download,categories/media-download/gallery-dl.md
+https://github.com/milanvarady/Applite,applite,package-manager-gui,categories/dev-utilities/package-manager-gui/applite.md
 https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories/ai-code-review/react-doctor.md
 https://github.com/milvus-io/milvus,milvus,rag-retrieval,categories/rag-retrieval/milvus.md
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md

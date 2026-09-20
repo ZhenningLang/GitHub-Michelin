@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Applite does",
+    "zh": "Applite 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the DMG or the cask and open it",
+      "zh": "装 DMG 或 cask，然后打开它",
+      "code": "brew install --cask applite"
+    },
+    {
+      "lane": "them",
+      "en": "On first launch downloads its own Homebrew into Application Support and runs it in API mode",
+      "zh": "首启把自带 Homebrew 装进应用支持目录，以 API 模式运行"
+    },
+    {
+      "lane": "you",
+      "en": "Browse the handpicked gallery or search the whole cask catalogue",
+      "zh": "逛精选画廊或搜索全部 cask 目录"
+    },
+    {
+      "lane": "them",
+      "en": "Installs the cask through that brew copy and reports progress in place",
+      "zh": "用它那份 brew 安装该 cask 并就地显示进度"
+    },
+    {
+      "lane": "you",
+      "en": "Export a Brewfile so the same apps come back on the next Mac",
+      "zh": "导出 Brewfile，换机时把同一批应用装回来",
+      "code": "Brewfile"
+    }
+  ],
+  "value": {
+    "en": "An App Store experience on a Mac that has never had Terminal or the Xcode Command Line Tools installed",
+    "zh": "在一台从没装过终端或 Xcode 命令行工具的 Mac 上，也能像逛商店一样装应用"
+  },
+  "sources": [
+    "README.md What Sets Applite Apart (brings its own Homebrew, downloads a tarball into Application Support, API mode behind a git shim, uses an existing prefix if present)",
+    "README.md Key Features (one-click install/update/uninstall, self-contained Homebrew, handpicked gallery plus FTS5 search, Brewfile import and export, custom-tap casks)",
+    "README.md Built With (SQLite via GRDB; two-stage load: SQLite then brew list --cask / brew outdated --cask)",
+    "README.md Development and AI (sole maintainer; AI assistance disclosed from v1.4)",
+    "CLAUDE.md (HomebrewBootstrap; CaskDataLoader; custom taps via a brew ruby script)"
+  ]
+}

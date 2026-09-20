@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Cork does",
+    "zh": "Cork 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Buy a licence for 25€, or compile the source yourself for free",
+      "zh": "花 25€ 买授权，或自行免费编译源码"
+    },
+    {
+      "lane": "them",
+      "en": "Loads your installed packages with its own loader rather than through brew",
+      "zh": "用自带的加载器读取已安装包，而不是走 brew"
+    },
+    {
+      "lane": "you",
+      "en": "Tag packages, update only the ones you pick, add taps, manage services",
+      "zh": "给包打标签、只更新你挑的那些、加 tap、管理 services"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the brew operations and refreshes the package list afterwards",
+      "zh": "执行 brew 操作，随后刷新包列表"
+    },
+    {
+      "lane": "them",
+      "en": "Keeps updating from the menu bar while the main window is closed",
+      "zh": "主窗口关着也能从菜单栏继续更新"
+    }
+  ],
+  "value": {
+    "en": "Tagging, services, proxy-aware downloads and menu-bar updates that brew itself does not give you",
+    "zh": "标签、services、遵守系统代理的下载和菜单栏更新——brew 本身给不了这些"
+  },
+  "sources": [
+    "README.md Advantages of Cork (system proxy, clearing cached downloads, menu-bar updates, tagging, faster package listing, leaves detection, dependency views, services management, adding taps)",
+    "README.md Getting Cork (25€ pre-built with all future versions, or free self-compiled; contributor route)",
+    "README.md Compiling Cork (macOS Ventura or newer, Xcode 16 or newer, Tuist)",
+    "Project.swift (deploymentTargets .macOS(\"14.0.0\"))",
+    "homebrew-cask Casks/c/cork.rb (brew install --cask cork, depends_on macos: :sonoma)",
+    "LICENSE.md (Commons Clause-based provisional licence; inspection and contribution allowed, competing products and redistribution not)"
+  ]
+}
