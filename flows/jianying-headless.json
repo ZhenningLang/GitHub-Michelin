@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Jianying Headless does", "zh": "Jianying Headless 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the codec bridge against the copy of 剪映 already on your Mac, then check the app version and library hash", "zh": "对着本机已安装的剪映编译 codec 桥接，再核对应用版本与库哈希", "code": "python3 tools/build_native_codec.py · headless_draft.py doctor"},
+    {"lane": "you", "en": "Describe the edit as one JSON plan: tracks, segments, timings", "zh": "把剪辑写成一份 JSON 计划：轨道、片段、时间", "code": "examples/basic.plan.json"},
+    {"lane": "you", "en": "Build the draft into an isolated work directory", "zh": "把草稿构建到独立的工作目录", "code": "headless_draft.py build --plan plan.json --out work/new-build"},
+    {"lane": "them", "en": "Encrypts and writes 剪映's native draft files, copies the media, and verifies every file against the plan", "zh": "加密写出剪映原生草稿文件、复制素材，并逐个文件对照计划校验"},
+    {"lane": "you", "en": "Quit 剪映 completely, then register the draft on the local home list", "zh": "完全退出剪映，再把草稿登记进本机首页列表", "code": "headless_draft.py publish --build work/new-build --audit work/audit"},
+    {"lane": "them", "en": "The draft opens in 剪映 as a normal, editable multi-track project", "zh": "草稿在剪映里打开，就是一个普通可编辑的多轨工程"},
+    {"lane": "you", "en": "Ask for a finished MP4 when you need one", "zh": "需要成片时再要一条 MP4", "code": "headless_draft.py export --build work/new-build --out work/new-export"},
+    {"lane": "them", "en": "The app's own engine renders H.264/AAC in a sandbox that denies network access", "zh": "应用自己的引擎在禁网沙箱里渲染出 H.264／AAC"}
+  ],
+  "value": {"en": "An editable multi-track 剪映 project — plus a native MP4 when asked — from one JSON plan: timeline assembly is automated, the last mile stays hand-editable", "zh": "一份 JSON 计划换来可继续编辑的剪映多轨工程，需要时再出原生 MP4：时间线拼装被自动化，最后一公里仍可手工精修"},
+  "sources": [
+    "https://github.com/mcncarl/jianying-headless README 快速开始 (python3 tools/build_native_codec.py; headless_draft.py doctor/build/verify-build/publish/export)",
+    "README 核心流程 (素材与剪辑计划 → 可编辑剪映草稿 → 原生引擎导出) 与 运行环境 (版本/哈希校验、干净机器安装未验收)",
+    "README Agent Skill (JIANYING_HEADLESS_ROOT) 与 examples/basic.plan.json 的轨道/片段字段",
+    "engine/native_export.py sandbox_profile (deny network*, deny file-write*) 与 README 导出说明 (隔离进程、默认不联网)"
+  ]
+}
