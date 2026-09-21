@@ -405,6 +405,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Taste-Skill** | 一套可移植、与框架无关的 agent skill 包，给 coding agent 注入审美，阻止千篇一律的 AI-slop 前端，转而产出有意图的布局、排版、动效与留白。 | MIT | B（4/6） | [中](categories/agent-skills/design/taste-skill.zh.md) · [EN](categories/agent-skills/design/taste-skill.md) |
 | **UI UX Pro Max Skill** | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 | MIT | B（4/6） | [中](categories/agent-skills/design/ui-ux-pro-max.zh.md) · [EN](categories/agent-skills/design/ui-ux-pro-max.md) |
 | **Hallmark** | 当 Claude Code、Cursor、Codex agent 需要有主张的反 AI 味设计 brief、审计、重设计或研究流程时用它。 | MIT | C（4/6） | [中](categories/agent-skills/design/hallmark.zh.md) · [EN](categories/agent-skills/design/hallmark.md) |
+| **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | MIT | B（4/6） | [中](categories/agent-skills/design/drawio-skill.zh.md) · [EN](categories/agent-skills/design/drawio-skill.md) |
 
 #### agent-skills / writing
 

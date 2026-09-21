@@ -17,6 +17,7 @@
 | **archify** | 面向架构、工作流、时序、数据流和生命周期图的 agent skill，输出自包含图表并带主题切换和导出控制。 | B（4/6） | [→](archify.zh.md) |
 | **ai-website-cloner-template** | 面向获授权网站重建的 AI coding agent template：截图、设计 token、资产、组件规格、并行 builder 和视觉 QA。 | B（4/6） | [→](ai-website-cloner-template.zh.md) |
 | **huashu-design** | 面向原型、slide deck、可编辑 PPTX、动画 / MP4 / GIF、信息图和视觉 artifact 生成的 HTML-native design skill。 | B（4/6） | [→](huashu-design.zh.md) |
+| **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | B（4/6） | [→](drawio-skill.zh.md) |
 
 
 ## 对比矩阵
@@ -33,6 +34,7 @@
 | [archify](archify.zh.md) | ✅ | B（4/6） | 最适合技术图表；需要 WYSIWYG 编辑时用人工图表编辑器。 |
 | [ai-website-cloner-template](ai-website-cloner-template.zh.md) | ✅ | B（4/6） | 最适合获授权网站重建；不适合 phishing、impersonation 或无授权设计复制。 |
 | [huashu-design](huashu-design.zh.md) | ✅ | B（4/6） | 最适合 agent 生成 HTML 视觉 artifact；实现交接看 Stitch，轻量 UI 审美指导看 Taste-Skill。 |
+| [drawio-skill](drawio-skill.zh.md) | ✅ | B（4/6） | 交付物是可编辑、且要跟着真实源走的 `.drawio` 时最合适；图要保持纯文本用 Mermaid，不能装 draw.io 用 archify。 |
 
 
 ## 什么该放这里

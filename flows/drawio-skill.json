@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "drawio-skill does",
+    "zh": "drawio-skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent",
+      "zh": "把 skill 装进你的 agent",
+      "code": "npx skills add Agents365-ai/drawio-skill -g"
+    },
+    {
+      "lane": "them",
+      "en": "Ships one SKILL.md whose routing table picks the workflow for your request",
+      "zh": "自带一份 SKILL.md，路由表会挑出该走的工作流"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at a real source instead of describing the diagram",
+      "zh": "别描述图，直接把它指向真实源",
+      "code": "python3 scripts/diagramctl.py build ./infra --from terraform --group"
+    },
+    {
+      "lane": "them",
+      "en": "Extracts the declared architecture into Diagram IR, then lays it out and writes a validated .drawio",
+      "zh": "把架构抽成 Diagram IR，布局、校验后写出可编辑的 .drawio"
+    },
+    {
+      "lane": "you",
+      "en": "Open the .drawio and hand-tune the layout",
+      "zh": "用 draw.io 打开，手工微调版式"
+    },
+    {
+      "lane": "them",
+      "en": "Next time the source changes, re-syncs only what changed and keeps your coordinates",
+      "zh": "源再变时只同步变化项，保留你调好的坐标",
+      "code": "python3 scripts/diagramctl.py sync architecture.drawio ./infra --from terraform"
+    }
+  ],
+  "value": {
+    "en": "You stop redrawing the architecture every time the source moves — the .drawio stays editable and stays in sync",
+    "zh": "代码一改就得重画的循环结束：图始终可编辑，也始终跟得上"
+  },
+  "sources": [
+    "https://github.com/Agents365-ai/drawio-skill docs/INSTALL_SKILL.md (npx skills add Agents365-ai/drawio-skill -g)",
+    "https://github.com/Agents365-ai/drawio-skill skills/drawio-skill/SKILL.md lines 16-62 (routing table; diagramctl build/sync command forms)",
+    "https://github.com/Agents365-ai/drawio-skill skills/drawio-skill/references/toolbox.md sections 1 and 5 (extractor -> autolayout -> validate -> .drawio pipeline; sync preserves manual geometry)",
+    "https://github.com/Agents365-ai/drawio-skill skills/drawio-skill/references/diagram-ir.md (IR separates meaning, provenance and geometry)",
+    "local verification run 2026-09-21 in a shallow clone: python3 -m unittest discover -s tests (218 tests OK); diagramctl build/sync --help"
+  ]
+}

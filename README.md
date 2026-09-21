@@ -408,6 +408,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Taste-Skill** | A portable, framework-agnostic agent skill pack that gives coding agents visual taste — stopping generic AI-slop frontends and pushing intentional layout, typography, motion, and spacing. | MIT | B (4/6) | [EN](categories/agent-skills/design/taste-skill.md) · [中](categories/agent-skills/design/taste-skill.zh.md) |
 | **UI UX Pro Max Skill** | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. | MIT | B (4/6) | [EN](categories/agent-skills/design/ui-ux-pro-max.md) · [中](categories/agent-skills/design/ui-ux-pro-max.zh.md) |
 | **Hallmark** | Use it when a Claude Code, Cursor, or Codex agent needs an opinionated anti-slop design brief, audit, redesign, or study workflow. | MIT | C (4/6) | [EN](categories/agent-skills/design/hallmark.md) · [中](categories/agent-skills/design/hallmark.zh.md) |
+| **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | MIT | B (4/6) | [EN](categories/agent-skills/design/drawio-skill.md) · [中](categories/agent-skills/design/drawio-skill.zh.md) |
 
 #### agent-skills / writing
 
