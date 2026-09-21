@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **OpenMontage** | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. | C (6/6) | [→](open-montage.md) |
+| **OpenMontage** | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. | B (5/6) | [→](open-montage.md) |
 | **HyperFrames** | Use it when you need deterministic, code-form video — HTML compositions rendered to MP4 in CI — with agent skills covering the production loop; it is a rendering engine, not a generative video model. | B (6/6) | [→](hyperframes.md) |
 | **anything2explainer** | Use it when you want a Claude Code / Codex skill to turn a topic into a narrated motion-graphics explainer video (Chinese or English) through a governed 9-stage multi-agent pipeline with human checkpoints and quantitative QC — fixed black-canvas style, PolyForm noncommercial license. | C (3/6) | [→](anything2explainer.md) |
 | **Hypit** | Use it when your agent should clone a specific viral video into an editable, word-anchored SVML workflow and ship batch variants by swapping face/words/B-roll — agent-first, non-OSI license, very young. | B (3/6) | [→](hypit.md) |
@@ -20,7 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [OpenMontage](open-montage.md) | ✅ | C (6/6) | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. |
+| [OpenMontage](open-montage.md) | ✅ | B (5/6) | Use it when you want an AI coding assistant to produce full videos — explainers, trailers, animations, or documentary montages — from a plain-language prompt through research, scripting, asset generation, and render. |
 | [HyperFrames](hyperframes.md) | ✅ | B (6/6) | Deterministic HTML-to-MP4 rendering with 20 agent skills and Apache-2.0 licensing; the engine layer, not a governed pipeline and not generative footage. |
 | [anything2explainer](anything2explainer.md) | ✅ | C (3/6) | A Claude Code / Codex skill-pack with a full explainer-film method (research → narration → storyboard → parallel build → QC) and a reference film as the quality bar; fixed MG style, 8 days old, PolyForm noncommercial. |
 | [Remotion](remotion.md) | ✅ | A (4/6) | React-component authoring and a mature Lambda renderer, under a source-available license with a company-size threshold; OpenMontage embeds engines of this class. |

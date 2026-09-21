@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | C（6/6） | [→](open-montage.zh.md) |
+| **OpenMontage** | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 | B（5/6） | [→](open-montage.zh.md) |
 | **HyperFrames** | 当你需要确定性、代码形态的视频——HTML composition 在 CI 里渲染成 MP4——并希望 agent skill 覆盖整条生产回路时用它；它是渲染引擎，不是生成式视频模型。 | B（6/6） | [→](hyperframes.zh.md) |
 | **anything2explainer** | 当你想让 Claude Code / Codex skill 把一个主题做成带配音的 MG 科普讲解视频（中文或英文）时用它——9 阶段多 agent 流水线带人工确认点和量化 QC；固定黑底风格，PolyForm 非商用许可。 | C（3/6） | [→](anything2explainer.zh.md) |
 | **Hypit** | 当你想让 agent 把某条特定爆款视频克隆成可编辑、词锚定的 SVML workflow，并通过换脸/换词/换 B-roll 批量出变体时用它——agent 优先、非 OSI 许可证、非常年轻。 | B（3/6） | [→](hypit.zh.md) |
@@ -20,7 +20,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [OpenMontage](open-montage.zh.md) | ✅ | C（6/6） | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 |
+| [OpenMontage](open-montage.zh.md) | ✅ | B（5/6） | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 |
 | [HyperFrames](hyperframes.zh.md) | ✅ | B（6/6） | 确定性的 HTML 转 MP4 渲染，带 20 个 agent skill，Apache-2.0 许可；它是引擎层，不是带治理的管线，也不是生成式画面。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | C（3/6） | Claude Code / Codex skill-pack，带完整讲解片制作方法（调研→解说词→分镜→并行构建→QC）和一条样片作质量标尺；固定 MG 风格，仅 8 天龄，PolyForm 非商用许可。 |
 | [Remotion](remotion.zh.md) | ✅ | A（4/6） | React 组件式创作加成熟的 Lambda 渲染，但采用 source-available 许可、超公司规模阈值需付费；OpenMontage 内嵌的正是这一类引擎。 |
