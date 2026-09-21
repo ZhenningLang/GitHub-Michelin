@@ -90,7 +90,7 @@ It is strongest for architecture overviews, CI/CD workflows, request sequences, 
 | [Stitch Skills](stitch-skills.md) | ✅ | Choose Stitch when the target is UI screen generation or code/design handoff through Google's Stitch MCP. | Stitch targets product UI; archify targets architecture and workflow communication. |
 | [Mermaid](../../diagramming/mermaid.md) | ✅ | Choose Mermaid when diagrams must remain plain-text, diffable, and Markdown-native. | Mermaid is portable and compact; archify gives richer artifacts and export controls. |
 | [Excalidraw](../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when humans need hand-drawn collaborative whiteboarding. | Excalidraw is better for manual sketching; archify is faster for agent-produced technical diagrams. |
-| draw.io / diagrams.net | not indexed | Choose draw.io when a full WYSIWYG diagramming canvas is required. | Manual editors have better hand-tuning; archify keeps diagrams agent-generated and export-ready. |
+| [draw.io](../../diagramming/drawio.md) | ✅ | Choose draw.io when a full WYSIWYG diagramming canvas is required. | Manual editors have better hand-tuning; archify keeps diagrams agent-generated and export-ready. |
 
 
 ## Health & viability

@@ -565,6 +565,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **flowchart.js** | Use it when you want simple flowcharts authored as git-diffable text and rendered to SVG in the browser — but it only renders, depends on aging Raphael.js, and chokes on complex diagrams. | MIT | B (5/6) | [EN](categories/diagramming/flowchart-js.md) · [中](categories/diagramming/flowchart-js.zh.md) |
 | **bpmn-js** | Use it when business analysts must author or view standards-correct BPMN 2.0 diagrams inside your web app — but its license mandates a non-removable bpmn.io watermark, so confirm terms before white-labeling. | MIT + bpmn.io watermark clause | A (5/6) | [EN](categories/diagramming/bpmn-js.md) · [中](categories/diagramming/bpmn-js.zh.md) |
 | **Excalidraw** | A virtual whiteboard for sketching hand-drawn style diagrams — collaborative and end-to-end encrypted, but stores JSON not plain text, so it is not diffable in Git. | MIT | A (6/6) | [EN](categories/diagramming/excalidraw.md) · [中](categories/diagramming/excalidraw.zh.md) |
+| **draw.io** | A full WYSIWYG diagramming application whose `.drawio` files are plain-text mxGraph XML: official cloud/UML/BPMN shape libraries, offline desktop app, and a file that diffs in Git. | Apache-2.0 (icons/stencils carry an extra restriction) | B (6/6) | [EN](categories/diagramming/drawio.md) · [中](categories/diagramming/drawio.zh.md) |
 ### media-download
 
 | Project | Use when | License | Health | Page |

@@ -562,6 +562,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **flowchart.js** | 当你想把简单流程图写成可 git diff 的文本、在浏览器里渲成 SVG 时用它——它只渲染不编辑，依赖老旧的 Raphael.js，复杂图会力不从心。 | MIT | B（5/6） | [中](categories/diagramming/flowchart-js.zh.md) · [EN](categories/diagramming/flowchart-js.md) |
 | **bpmn-js** | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 | MIT + bpmn.io watermark clause | A（5/6） | [中](categories/diagramming/bpmn-js.zh.md) · [EN](categories/diagramming/bpmn-js.md) |
 | **Excalidraw** | 手绘风格的虚拟白板，支持协作和端到端加密——但存为 JSON 而非纯文本，不能在 Git 里 diff。 | MIT | A（6/6） | [中](categories/diagramming/excalidraw.zh.md) · [EN](categories/diagramming/excalidraw.md) |
+| **draw.io** | 完整的所见即所得绘图应用，`.drawio` 文件是纯文本 mxGraph XML：官方云／UML／BPMN 形状库、可离线运行的桌面版，文件还能进 Git diff。 | Apache-2.0（图标／stencil 另有附加限制） | B（6/6） | [中](categories/diagramming/drawio.zh.md) · [EN](categories/diagramming/drawio.md) |
 ### media-download
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
