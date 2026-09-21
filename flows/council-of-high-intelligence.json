@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "the council does",
+    "zh": "council 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it into your host",
+      "zh": "装进你用的宿主",
+      "code": "/plugin install council@council-of-high-intelligence"
+    },
+    {
+      "lane": "them",
+      "en": "Drops in the /council coordinator plus 18 persona agents",
+      "zh": "装入 /council 协调器与 18 个 persona agent"
+    },
+    {
+      "lane": "you",
+      "en": "Convene it on one genuinely hard decision",
+      "zh": "拿一个真正难的决定召集它",
+      "code": "/council --triad strategy Where is our defensible advantage?"
+    },
+    {
+      "lane": "them",
+      "en": "Selects the panel and locks the 1.5x domain-weight seat before any analysis",
+      "zh": "选定面板，并在任何人发言前锁定 1.5 倍领域加权席",
+      "code": "--members · --triad · --profile"
+    },
+    {
+      "lane": "them",
+      "en": "Round 1: every member restates the problem first, surfacing a framing clash to you",
+      "zh": "第 1 轮：每位成员先复述问题，框架冲突会浮给你看"
+    },
+    {
+      "lane": "you",
+      "en": "Confirm or correct the framing",
+      "zh": "确认或修正问题框架"
+    },
+    {
+      "lane": "them",
+      "en": "Round 2: relays peer positions anonymized, and each member must defend or name the flaw",
+      "zh": "第 2 轮：匿名转发同伴立场，每人必须辩护或点出自己论证的缺陷"
+    },
+    {
+      "lane": "them",
+      "en": "Tallies each final STANCE line at confidence weight against a 2/3 bar",
+      "zh": "按置信度给每条最终 STANCE 计权，对 2/3 门槛计票"
+    },
+    {
+      "lane": "them",
+      "en": "A separate chairman writes the verdict: unresolved questions, kill criteria, one next step",
+      "zh": "由独立的 chairman 写出裁决：未解问题、失效条件、一个具体下一步",
+      "code": "--chairman gemini"
+    }
+  ],
+  "value": {
+    "en": "You get an auditable verdict that keeps dissent and unresolved questions, instead of one model's confident answer",
+    "zh": "你拿到的是一份保留异议与未解问题、可审计的裁决，而不是某个模型自信的一段话"
+  },
+  "sources": [
+    "https://github.com/0xNyk/council-of-high-intelligence README 'Try a council' (/plugin marketplace add + /plugin install council@council-of-high-intelligence)",
+    "README 'Choose a mode' (/council --triad strategy Where is our defensible advantage?)",
+    "SKILL.md Flags table (--members, --triad, --profile, --chairman)",
+    "SKILL.md STEP 0 (domain-weight seat locked before analysis), STEP 1.5 (restate gate), STEP 3 (anonymized cross-examination), STEP 6 (confidence-weighted 2/3 tally), STEP 7 (chairman synthesis)"
+  ]
+}

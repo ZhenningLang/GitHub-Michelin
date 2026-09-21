@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="872" viewBox="0 0 880 872" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="872" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="736" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="736" rx="10"/>
+<rect class="pillT" x="474" y="40" width="132.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">council 做的</text>
+<path class="hand" d="M408,118.0 C439.0,118.0 439.0,142 470,142" marker-end="url(#a)"/>
+<path class="hand" d="M472,154.0 C441.0,154.0 441.0,214 410,214" marker-end="url(#a)"/>
+<path class="hand" d="M408,236.0 C439.0,236.0 439.0,260 470,260" marker-end="url(#a)"/>
+<path class="edge" d="M494,331 L494,355" marker-end="url(#a)"/>
+<path class="hand" d="M472,393.0 C441.0,393.0 441.0,417 410,417" marker-end="url(#a)"/>
+<path class="hand" d="M408,418.0 C439.0,418.0 439.0,479 470,479" marker-end="url(#a)"/>
+<path class="edge" d="M494,527 L494,551" marker-end="url(#a)"/>
+<path class="edge" d="M494,625 L494,649" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装进你用的宿主</text>
+<text class="c" x="82" y="125">/plugin install</text>
+<text class="c" x="82" y="144">council@council-of-high-intelligence</text>
+<rect class="cardT" x="472" y="118" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="118" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="142" r="10"/>
+<text class="num" x="494" y="146" text-anchor="middle">2</text>
+<text class="t" x="514" y="147">装入 /council 协调器与 18 个 persona</text>
+<text class="t" x="514" y="169">agent</text>
+<rect class="card" x="40" y="190" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="190" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="214" r="10"/>
+<text class="num" x="62" y="218" text-anchor="middle">3</text>
+<text class="t" x="82" y="219">拿一个真正难的决定召集它</text>
+<text class="c" x="82" y="243">/council --triad strategy Where is our</text>
+<text class="c" x="82" y="262">defensible advantage?</text>
+<rect class="cardT" x="472" y="236" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="236" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="260" r="10"/>
+<text class="num" x="494" y="264" text-anchor="middle">4</text>
+<text class="t" x="514" y="265">选定面板，并在任何人发言前锁定 1.5 倍领域</text>
+<text class="t" x="514" y="287">加权席</text>
+<text class="c" x="514" y="311">--members · --triad · --profile</text>
+<rect class="cardT" x="472" y="357" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="357" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="381" r="10"/>
+<text class="num" x="494" y="385" text-anchor="middle">5</text>
+<text class="t" x="514" y="386">第 1 轮：每位成员先复述问题，框架冲突</text>
+<text class="t" x="514" y="408">会浮给你看</text>
+<rect class="card" x="40" y="393" width="368" height="50" rx="8"/>
+<rect class="accY" x="40" y="393" width="4" height="50" rx="2"/>
+<circle class="accY" cx="62" cy="417" r="10"/>
+<text class="num" x="62" y="421" text-anchor="middle">6</text>
+<text class="t" x="82" y="422">确认或修正问题框架</text>
+<rect class="cardT" x="472" y="455" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="455" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="479" r="10"/>
+<text class="num" x="494" y="483" text-anchor="middle">7</text>
+<text class="t" x="514" y="484">第 2 轮：匿名转发同伴立场，每人必须辩护或点</text>
+<text class="t" x="514" y="506">出自己论证的缺陷</text>
+<rect class="cardT" x="472" y="553" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="553" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="577" r="10"/>
+<text class="num" x="494" y="581" text-anchor="middle">8</text>
+<text class="t" x="514" y="582">按置信度给每条最终 STANCE 计权，对 2/3 门</text>
+<text class="t" x="514" y="604">槛计票</text>
+<rect class="cardT" x="472" y="651" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="651" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="675" r="10"/>
+<text class="num" x="494" y="679" text-anchor="middle">9</text>
+<text class="t" x="514" y="680">由独立的 chairman 写出裁决：未解问题、失效</text>
+<text class="t" x="514" y="702">条件、一个具体下一步</text>
+<text class="c" x="514" y="726">--chairman gemini</text>
+<rect class="val" x="28" y="778" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="802">价值</text>
+<text class="valT" x="48" y="826">你拿到的是一份保留异议与未解问题、可审计的裁决，而不是某个模型自信的一段话</text>
+</svg>
