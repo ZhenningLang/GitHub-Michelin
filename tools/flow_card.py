@@ -27,7 +27,9 @@ language-neutral (a command / annotation / API that the step touches) and must b
 `phase` is optional and marks a step as opening a new stage of the lifecycle ("Build" then
 "Every turn"; "Write" then "Recall"). It is a LABEL, not a branch: the stage runs until the next
 marker, so steps stay linear. Use it only when the card otherwise hides a real stage boundary —
-at most 3 phases, contiguous, the first step labeled, and never to restate a lane.
+at most 3 phases, contiguous (a closed stage never reopens), the first step labeled, and never to
+restate a lane. The last one is a WARNING rather than an error (`advisories`): a `phase` that
+changes exactly where the lane changes shows the reader nothing the two columns did not.
 
 Outputs (one per LANGUAGE, like health cards):
   assets/flow/<stem>.svg      English card
@@ -218,22 +220,32 @@ def validate_spec(spec: object) -> list[str]:
         errs.append("steps must use both lanes ('you' and 'them') — the flow shows the handoff")
 
     # A phase is a label on a stage, not a branch: markers open a stage that runs to the next
-    # marker. Repeating one back-to-back is markup noise; more than MAX_PHASES is a checklist.
+    # marker. Repeating one back-to-back is markup noise; reopening a closed one is a loop, not a
+    # backbone; more than MAX_PHASES is a checklist. Checked per LANGUAGE — the labels are prose and
+    # drift independently, so an `en` that transitions while `zh` repeats renders a Chinese card
+    # whose stage never changes.
     markers = [(i, st["phase"]) for i, st in enumerate(steps, 1)
                if isinstance(st, dict) and isinstance(st.get("phase"), dict)]
     if markers:
         if markers[0][0] != 1:
             errs.append("steps[1] must carry a 'phase' when any step does — the first stage would be unlabeled")
-        order: list[str] = []
+        seqs: dict[str, list[str]] = {lang: [] for lang in LANGS}
         for i, ph in markers:
-            label = ph.get("en")
-            if not isinstance(label, str):
-                continue
-            if order and label == order[-1]:
-                errs.append(f"steps[{i}].phase repeats the stage already open ('{label}') — mark the transition only")
-            order.append(label)
-        if len(set(order)) > MAX_PHASES:
-            errs.append(f"at most {MAX_PHASES} phases per flow (backbone only), found {len(set(order))}")
+            for lang in LANGS:
+                label = ph.get(lang)
+                if not isinstance(label, str):
+                    continue
+                seq = seqs[lang]
+                if seq and label == seq[-1]:
+                    errs.append(f"steps[{i}].phase.{lang} repeats the stage already open "
+                                f"('{label}') — mark the transition only")
+                elif label in seq:
+                    errs.append(f"steps[{i}].phase.{lang} reopens a stage that already closed "
+                                f"('{label}') — stages are contiguous, a backbone does not loop")
+                seq.append(label)
+        n_stages = max(len(set(seq)) for seq in seqs.values())
+        if n_stages > MAX_PHASES:
+            errs.append(f"at most {MAX_PHASES} phases per flow (backbone only), found {n_stages}")
 
     sources = spec.get("sources")
     if not isinstance(sources, list) or not sources or not all(isinstance(s, str) and s.strip() for s in sources):
@@ -256,6 +268,36 @@ def phases_of(spec: dict) -> list[dict | None]:
         if isinstance(st.get("phase"), dict):
             current = st["phase"]
         out.append(current)
+    return out
+
+
+def advisories(spec: dict) -> list[str]:
+    """Non-blocking smells: shapes that pass `validate_spec` but buy the card nothing.
+
+    `phase` exists to show a boundary the lanes cannot — "this once" beside "this every turn".
+    When its transitions land exactly on the lane changes it carries no structure the reader did
+    not already have from the two columns, and the card gets a label per step for free. That is a
+    WARNING, not an error: the fix is editorial (say the timing in the mechanism paragraph, or
+    redraw the steps), and only a human can pick which.
+    """
+    out: list[str] = []
+    steps = spec.get("steps")
+    if not isinstance(steps, list) or not steps:
+        return out
+    phases = phases_of(spec)
+    if not all(isinstance(ph, dict) for ph in phases):
+        return out
+    labels = [ph["en"] for ph in phases]
+    lanes = [st["lane"] for st in steps]
+    breaks = {i for i in range(1, len(steps)) if labels[i] != labels[i - 1]}
+    lane_breaks = {i for i in range(1, len(steps)) if lanes[i] != lanes[i - 1]}
+    if not breaks:
+        out.append(f"'phase' labels every step '{labels[0]}' and marks no transition — "
+                   "one stage is a title, not a stage; drop it")
+    elif breaks == lane_breaks:
+        out.append("'phase' changes exactly where the lane changes — it restates the handoff the "
+                   "two columns already show, rather than adding a stage the reader cannot see; "
+                   "put the timing in the mechanism paragraph, or redraw so a stage spans both lanes")
     return out
 
 
@@ -482,9 +524,13 @@ def main(argv: list[str]) -> int:
     if argv[0] == "--check-spec":
         rc = 0
         for a in argv[1:]:
-            problems = validate_spec(load_spec(Path(a)))
+            spec = load_spec(Path(a))
+            problems = validate_spec(spec)
             for p in problems:
                 print(f"{a}: {p}")
+            if not problems:
+                for note in advisories(spec):
+                    print(f"{a}: WARN {note}")
             rc |= bool(problems)
         return rc
     if argv[0] == "--all":
