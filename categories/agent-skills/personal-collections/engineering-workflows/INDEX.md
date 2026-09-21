@@ -10,7 +10,7 @@
 | **antfu/skills** | Anthony Fu's personal curated agent-skill collection for the Vue/Vite/Nuxt stack (his ESLint/pnpm/Vitest/UnoCSS prefs + generated/vendored framework skills), installed via the skills CLI. | B (4/6) | [→](antfu-skills.md) |
 | **claude-code-harness** | A personal Claude Code harness that installs a governed plan → work → review → release loop as a plugin, with a Go-native doctor CLI for diagnosing plugin-cache and skill drift. | B (4/6) | [→](claude-code-harness.md) |
 | **Dimillian Skills** | One developer's personal collection of 16 self-contained Codex skills, heavily focused on Apple-platform work plus generic review/refactor swarms. | C (4/6) | [→](dimillian-skills.md) |
-| **gstack** | Garry Tan's personal Claude Code setup: opinionated slash-command skills that role-play a virtual engineering team across a plan-build-review-ship-retro loop. | B (4/6) | [→](gstack.md) |
+| **gstack** | Garry Tan's personal Claude Code harness: 54 skills — about half role personas (CEO, eng manager, designer, QA, security officer, release engineer), half utility commands — plus a real browser the agent drives, across one plan → build → review → ship → retro sprint. | B (4/6) | [→](gstack.md) |
 | **andrej-karpathy-skills** | A behavioral-guidelines pack distilling Karpathy's four LLM-coding principles into Claude Code / Cursor. | C (4/6) | [→](karpathy-skills.md) |
 | **PUA** | A high-agency persona skill pack that uses corporate-PUA/PIP rhetoric to push a coding agent to exhaust debugging approaches. | C (4/6) | [→](pua.md) |
 | **Qiushi-Skill** | A methodology skill pack arming a coding agent with “seek truth from facts” plus dialectical-materialist thinking tools. | B (4/6) | [→](qiushi-skill.md) |
@@ -24,7 +24,7 @@
 | [antfu/skills](antfu-skills.md) | ✅ | B (4/6) | Best when your stack matches Anthony Fu's Vue/Vite/Nuxt conventions. |
 | [claude-code-harness](claude-code-harness.md) | ✅ | B (4/6) | Best when you want a governed Claude Code harness with doctor tooling. |
 | [Dimillian Skills](dimillian-skills.md) | ✅ | C (4/6) | Best for Apple-platform Codex workflows and personal review/refactor swarms. |
-| [gstack](gstack.md) | ✅ | B (4/6) | Best when you want Garry Tan's virtual engineering-team slash-command loop. |
+| [gstack](gstack.md) | ✅ | B (4/6) | Best when you want one operator's whole sprint loop — role skills plus a driven browser — rather than parts to assemble. |
 | [andrej-karpathy-skills](karpathy-skills.md) | ✅ | C (4/6) | Best as a compact behavior guideline pack, not a full harness. |
 | [PUA](pua.md) | ✅ | C (4/6) | Best when you deliberately want a high-pressure persona prompt, not neutral process policy. |
 | [Qiushi-Skill](qiushi-skill.md) | ✅ | B (4/6) | Best when “seek truth from facts” and dialectical investigation are the desired reasoning style. |

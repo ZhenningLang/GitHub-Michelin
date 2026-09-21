@@ -87,6 +87,52 @@ class FlowSpecTest(unittest.TestCase):
         self.assertGreater(len(lines), 1)
         self.assertFalse(any(ln[0] in "、，。；：！？）" for ln in lines[1:]), lines)
 
+    def test_component_is_optional_and_validated(self) -> None:
+        self.assertEqual(flow_card.validate_spec(copy.deepcopy(SPEC)), [])
+
+        with_component = copy.deepcopy(SPEC)
+        with_component["steps"][0]["component"] = {"en": "executor", "zh": "执行器"}
+        self.assertEqual(flow_card.validate_spec(with_component), [])
+
+        bad = copy.deepcopy(with_component)
+        del bad["steps"][0]["component"]["zh"]
+        self.assertTrue(any("steps[1].component.zh" in e for e in flow_card.validate_spec(bad)))
+
+        overlong = copy.deepcopy(with_component)
+        overlong["steps"][0]["component"]["en"] = "x" * 200
+        self.assertTrue(any("steps[1].component.en is 200 chars" in e
+                            for e in flow_card.validate_spec(overlong)))
+
+        empty = copy.deepcopy(with_component)
+        empty["steps"][0]["component"]["zh"] = "   "
+        self.assertTrue(any("steps[1].component.zh" in e for e in flow_card.validate_spec(empty)))
+
+    def test_render_and_steps_block_carry_component(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["component"] = {"en": "executor", "zh": "执行器"}
+        spec["steps"][1]["component"] = {"en": 'a<b>', "zh": "被<a>转义"}
+
+        en_svg = flow_card.render(spec, "en")
+        self.assertIn("component: executor", en_svg)
+        self.assertIn("component: a&lt;b&gt;", en_svg)
+        self.assertNotIn("component: a<b>", en_svg)
+
+        zh_svg = flow_card.render(spec, "zh")
+        self.assertIn("组件：执行器", zh_svg)
+        self.assertIn("组件：被&lt;a&gt;转义", zh_svg)
+
+        block = flow_card.steps_block(spec, "zh", "demo", "Demo")
+        self.assertIn("1. **你**：安装 — `pip install demo` — 组件：`执行器`", block)
+        # angle brackets must sit inside a code span so GitHub does not parse them as HTML
+        self.assertIn("2. **Demo**：注册钩子 — 组件：`被<a>转义`", block)
+        self.assertNotIn("组件：被<a>", block)
+
+    def test_steps_without_component_render_unchanged(self) -> None:
+        svg = flow_card.render(SPEC, "en")
+        self.assertNotIn("component:", svg)
+        self.assertNotIn(".comp", svg)
+        self.assertNotIn("component:", flow_card.steps_block(SPEC, "en", "demo", "Demo"))
+
     def test_steps_block_uses_page_name_as_actor(self) -> None:
         block = flow_card.steps_block(SPEC, "zh", "demo", "Demo")
         self.assertIn("2. **Demo**：注册钩子", block)

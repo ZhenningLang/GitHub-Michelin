@@ -163,7 +163,7 @@ controllable and renders poorly. Spec shape:
   "them":  {"en": "XXL-JOB does", "zh": "XXL-JOB 做的"},
   "steps": [
     {"lane": "you",  "en": "Write a plain method and annotate it", "zh": "写一个普通方法，贴上注解",
-     "code": "@XxlJob(\"demoJobHandler\")"},
+     "code": "@XxlJob(\"demoJobHandler\")", "component": {"en": "executor", "zh": "执行器"}},
     {"lane": "them", "en": "When due, triggers one executor over HTTP", "zh": "到点挑一台执行器，通过 HTTP 触发"}
   ],
   "value": {"en": "…", "zh": "…"},
@@ -212,6 +212,14 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   **Every `code` value must be traceable to `sources`** — if you cannot find it in the README, docs or
   source, write the step generically ("call its query API") instead of guessing. An invented command
   in a diagram looks authoritative; that is worse than no command.
+- **`component`** (optional, bilingual) names **the part of the project that performs that step** —
+  installer script, daemon, skill, subagent, CLI binary, state file — rendered as a small `component: …`
+  line at the foot of the step's card and carried into the generated text twin. It answers "what am I
+  actually installing, and who does what in one run" without opening a second artifact, and it is how a
+  page whose `type` omits `Dependencies`/`Ops difficulty` can still show its real component surface.
+  Keep it to a name, not a sentence (≤ 34 EN / ≤ 26 ZH chars; the renderer wraps rather than clips);
+  **omit it whenever there is no single honest answer** — an invented component name is worse than none,
+  and a component that no `sources` entry supports is a claim like any other.
 - **`value`** is the payoff the flow ends on — what you no longer have to do / now get.
 - `en` and `zh` are translations of the same step; structure (`lane`, `code`, `phase`, order) is
   shared, so the pair cannot drift. ZH strings follow the fullwidth-punctuation rule (§6).

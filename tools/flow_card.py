@@ -12,7 +12,7 @@ with per-step bilingual text:
     "them":  {"en": "XXL-JOB does", "zh": "XXL-JOB 做的"},
     "steps": [
       {"lane": "you",  "en": "…", "zh": "…", "code": "@XxlJob(\"demoJobHandler\")",
-       "phase": {"en": "Build", "zh": "搭建"}},
+       "phase": {"en": "Build", "zh": "搭建"}, "component": {"en": "executor", "zh": "执行器"}},
       {"lane": "them", "en": "…", "zh": "…"}
     ],
     "value": {"en": "…", "zh": "…"},
@@ -22,7 +22,10 @@ with per-step bilingual text:
 Two lanes only — "you" (what the developer does) and "them" (what the project does for you).
 Steps are LINEAR (the backbone, no branches); a lane change is a handoff. `code` is optional and
 language-neutral (a command / annotation / API that the step touches) and must be traceable to
-`sources`.
+`sources`. `component` is optional and bilingual: it names the part of the project that performs
+that step (installer, daemon, skill, subagent, CLI, state file…), so the card doubles as a
+component-participation view of one run. Omit it when a step has no single honest answer — an
+invented component name is worse than none.
 
 `phase` is optional and marks a step as opening a new stage of the lifecycle ("Build" then
 "Every turn"; "Write" then "Recall"). It is a LABEL, not a branch: the stage runs until the next
@@ -58,7 +61,7 @@ LANES = ("you", "them")
 LANGS = ("en", "zh")
 MIN_STEPS, MAX_STEPS = 3, 9
 MAX_LEN = {"en": 110, "zh": 40, "code": 80, "value_en": 160, "value_zh": 60, "them_en": 40, "them_zh": 24,
-           "phase_en": 24, "phase_zh": 12}
+           "phase_en": 24, "phase_zh": 12, "component_en": 34, "component_zh": 26}
 MAX_PHASES = 3            # a backbone stages into at most three stages, or it is a checklist
 PHASE_LH = 17             # the phase label's own line inside a card (only when the spec uses phases)
 
@@ -67,6 +70,8 @@ YOU_LABEL = {"en": "You do", "zh": "你做的"}
 VALUE_LABEL = {"en": "VALUE", "zh": "价值"}
 ALT = {"en": "backbone user story", "zh": "主干用户故事"}
 STEPS_SUMMARY = {"en": "Text version of the flow", "zh": "流程文字版"}
+COMPONENT_LABEL = {"en": "component", "zh": "组件"}
+COMPONENT_SEP = {"en": ": ", "zh": "："}
 YOU_WORD = {"en": "You", "zh": "你"}
 BEGIN = "<!-- flow-steps:begin (generated from flows/{stem}.json by tools/flow_card.py — do not edit) -->"
 END = "<!-- flow-steps:end -->"
@@ -92,6 +97,12 @@ MONO = "'SF Mono',Menlo,Consolas,monospace"
 PHASE_CSS = """
 .ph{font:600 10px %(f)s;fill:#6e7781;letter-spacing:.1em}
 @media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+"""
+
+# Same deal for the component captions: appended only when a spec names components.
+COMPONENT_CSS = """
+.comp{font:600 %(fc)spx %(m)s;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
 """
 
 CSS = """
@@ -192,7 +203,7 @@ def validate_spec(spec: object) -> list[str]:
         if not isinstance(st, dict):
             errs.append(f"steps[{i}] must be an object")
             continue
-        extra = set(st) - {"lane", "en", "zh", "code", "phase"}
+        extra = set(st) - {"lane", "en", "zh", "code", "phase", "component"}
         if extra:
             errs.append(f"steps[{i}] has unknown key(s): {sorted(extra)}")
         lane = st.get("lane")
@@ -214,6 +225,9 @@ def validate_spec(spec: object) -> list[str]:
         phase = st.get("phase")
         if phase is not None:
             bilingual(f"steps[{i}].phase", phase, "phase")
+        component = st.get("component")
+        if component is not None:
+            bilingual(f"steps[{i}].component", component, "component")
     if steps and lanes_seen != set(LANES):
         errs.append("steps must use both lanes ('you' and 'them') — the flow shows the handoff")
 
@@ -294,13 +308,22 @@ def wrap(s: str, fs: float, maxw: float, mono: bool = False) -> list[str]:
 
 
 # ---------------------------------------------------------------- SVG
+def component_line(st: dict, lang: str) -> str | None:
+    """The step's `component: X` caption, or None when the step declares no component."""
+    component = st.get("component")
+    return f"{COMPONENT_LABEL[lang]}{COMPONENT_SEP[lang]}{component[lang]}" if component else None
+
+
 def render(spec: dict, lang: str) -> str:
     font = FONT[lang]
     phases = phases_of(spec)
     has_phases = any(phases)
+    has_component = any(st.get("component") for st in spec["steps"])
     css = CSS % {"f": font, "m": MONO, "ft": FS_T, "fc": FS_C}
     if has_phases:
         css += PHASE_CSS % {"f": font}
+    if has_component:
+        css += COMPONENT_CSS % {"fc": FS_C, "m": MONO}
     inner = LANE_W - 2 * CARD_PX - 30
     lane_x = {"you": PAD, "them": PAD + LANE_W + GAP}
     out: list[str] = []
@@ -311,7 +334,11 @@ def render(spec: dict, lang: str) -> str:
     for i, st in enumerate(spec["steps"], 1):
         tl = wrap(st[lang], FS_T, inner)
         cl = wrap(st["code"], FS_C, inner, mono=True) if st.get("code") else []
-        h = CARD_PY * 2 + len(tl) * LH_T + (len(cl) * LH_C + 4 if cl else 0) + (PHASE_LH if has_phases else 0)
+        compl = wrap(component_line(st, lang), FS_C, inner, mono=True) if st.get("component") else []
+        h = (CARD_PY * 2 + len(tl) * LH_T
+             + (len(cl) * LH_C + 4 if cl else 0)
+             + (len(compl) * LH_C + 6 if compl else 0)
+             + (PHASE_LH if has_phases else 0))
         lane = st["lane"]
         if prev is None:
             y0 = top
@@ -376,6 +403,12 @@ def render(spec: dict, lang: str) -> str:
         for ln in cl:
             out.append(f'<text class="c" x="{tx}" y="{ty}">{escape(ln)}</text>')
             ty += LH_C
+        component = st.get("component")
+        if component:
+            ty += 4
+            for ln in wrap(component_line(st, lang), FS_C, inner, mono=True):
+                out.append(f'<text class="comp" x="{tx}" y="{ty}">{escape(ln)}</text>')
+                ty += LH_C
 
     out.append(f'<rect class="val" x="{PAD}" y="{val_y}" width="{W - 2 * PAD}" height="{val_h}" rx="10"/>')
     out.append(f'<text class="valK" x="{PAD + 20}" y="{val_y + 24}">{escape(VALUE_LABEL[lang])}</text>')
@@ -402,7 +435,10 @@ def steps_block(spec: dict, lang: str, stem: str, name: str) -> str:
         if phase:
             mark = f"（{phase[lang]}）" if lang == "zh" else f" ({phase[lang]})"
         code = f" — `{st['code']}`" if st.get("code") else ""
-        lines.append(f"{i}. **{who}**{mark}{sep}{st[lang]}{code}")
+        component = st.get("component")
+        comp = (f" — {COMPONENT_LABEL[lang]}{COMPONENT_SEP[lang]}`{component[lang]}`"
+                if component else "")
+        lines.append(f"{i}. **{who}**{mark}{sep}{st[lang]}{code}{comp}")
     lines += ["", f"**{VALUE_LABEL[lang] if lang == 'zh' else 'Value'}**{sep}{spec['value'][lang]}", "", "</details>", END]
     return "\n".join(lines)
 

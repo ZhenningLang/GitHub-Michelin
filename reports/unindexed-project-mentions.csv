@@ -125,7 +125,6 @@ Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-f
 Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
-Building your own commands from scratch,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/context-mode.md,,no
 Built-in agent skill ecosystems,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
@@ -826,6 +825,7 @@ WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no
+Your own hand-written slash commands,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no
 Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.md,,no
 YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
 Zapier,categories/workflow-orchestration/n8n.md,,no

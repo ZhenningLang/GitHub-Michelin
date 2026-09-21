@@ -10,7 +10,7 @@
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | B（4/6） | [→](antfu-skills.zh.md) |
 | **claude-code-harness** | 一套个人化 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环，并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | B（4/6） | [→](claude-code-harness.zh.md) |
 | **Dimillian Skills** | 某开发者个人精选的 16 个自包含 Codex skill，重心压在 Apple 平台，外加通用评审／重构 swarm。 | C（4/6） | [→](dimillian-skills.zh.md) |
-| **gstack** | Garry Tan 的私人 Claude Code 配置：带强烈主张的 slash-command 技能，扮演虚拟工程团队并驱动 plan-build-review-ship-retro 循环。 | B（4/6） | [→](gstack.zh.md) |
+| **gstack** | Garry Tan 的私人 Claude Code harness：54 个 skill——约一半是角色人设（CEO、工程经理、设计师、QA、安全官、发布工程师），另一半是工具命令——外加一个 agent 真正驱动的浏览器，串成一条「规划 → 构建 → 评审 → 发布 → 复盘」冲刺流程。 | B（4/6） | [→](gstack.zh.md) |
 | **andrej-karpathy-skills** | 一个行为准则包，把 Karpathy 关于 LLM 编码的四条原则注入 Claude Code / Cursor。 | C（4/6） | [→](karpathy-skills.zh.md) |
 | **PUA** | 一个高能动性人设 skill 包，用职场 PUA/PIP 话术逼 coding agent 穷尽调试路径。 | C（4/6） | [→](pua.zh.md) |
 | **Qiushi-Skill** | 一套方法论 skill 包，用“实事求是”加唯物辩证法思维工具武装 coding agent。 | B（4/6） | [→](qiushi-skill.zh.md) |
@@ -24,7 +24,7 @@
 | [antfu/skills](antfu-skills.zh.md) | ✅ | B（4/6） | 当你的技术栈匹配 Anthony Fu 的 Vue/Vite/Nuxt 约定时最合适。 |
 | [claude-code-harness](claude-code-harness.zh.md) | ✅ | B（4/6） | 需要带 doctor 工具的受治理 Claude Code harness 时最合适。 |
 | [Dimillian Skills](dimillian-skills.zh.md) | ✅ | C（4/6） | 适合 Apple 平台 Codex 工作流和个人评审／重构 swarm。 |
-| [gstack](gstack.zh.md) | ✅ | B（4/6） | 想要 Garry Tan 式虚拟工程团队 slash-command 循环时最合适。 |
+| [gstack](gstack.zh.md) | ✅ | B（4/6） | 想要某位操作者的整套冲刺闭环（角色技能加真浏览器驱动）而不是自己拼零件时最合适。 |
 | [andrej-karpathy-skills](karpathy-skills.zh.md) | ✅ | C（4/6） | 适合作为紧凑行为准则包，而不是完整 harness。 |
 | [PUA](pua.zh.md) | ✅ | C（4/6） | 适合刻意使用高压人设 prompt，而不是中性流程政策。 |
 | [Qiushi-Skill](qiushi-skill.zh.md) | ✅ | B（4/6） | 当你想要“实事求是”和调查式推理风格时最合适。 |
