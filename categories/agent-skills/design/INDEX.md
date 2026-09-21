@@ -17,6 +17,7 @@
 | **archify** | Agent skill for self-contained architecture, workflow, sequence, data-flow, and lifecycle diagrams with theme toggle and export controls. | B (4/6) | [→](archify.md) |
 | **ai-website-cloner-template** | Authorized website reconstruction template for AI coding agents: screenshots, design tokens, assets, component specs, parallel builders, and visual QA. | B (4/6) | [→](ai-website-cloner-template.md) |
 | **huashu-design** | HTML-native design skill for prototypes, slide decks, editable PPTX, animation/MP4/GIF, infographics, and visual artifact generation. | B (4/6) | [→](huashu-design.md) |
+| **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | B (4/6) | [→](drawio-skill.md) |
 
 
 ## Comparison matrix
@@ -33,6 +34,7 @@
 | [archify](archify.md) | ✅ | B (4/6) | Best for technical diagrams; choose human diagram editors when WYSIWYG editing is required. |
 | [ai-website-cloner-template](ai-website-cloner-template.md) | ✅ | B (4/6) | Best for authorized site rebuilds; not for phishing, impersonation, or unlicensed design copying. |
 | [huashu-design](huashu-design.md) | ✅ | B (4/6) | Best for agent-generated HTML artifacts; choose Stitch for implementation handoff or Taste-Skill for lightweight UI taste guidance. |
+| [drawio-skill](drawio-skill.md) | ✅ | B (4/6) | Best when the deliverable is an editable `.drawio` that must track a real source; choose Mermaid when the diagram should stay plain text, or archify when no draw.io install is acceptable. |
 
 
 ## What belongs here
