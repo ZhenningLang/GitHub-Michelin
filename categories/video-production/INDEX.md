@@ -13,6 +13,7 @@
 | **Hypit** | Use it when your agent should clone a specific viral video into an editable, word-anchored SVML workflow and ship batch variants by swapping face/words/B-roll — agent-first, non-OSI license, very young. | B (3/6) | [→](hypit.md) |
 | **Remotion** | Use it when a React-first team needs proven programmatic video — compositions as React components with a mature Lambda cloud renderer — under a source-available license free for ≤3-employee companies. | A (4/6) | [→](remotion.md) |
 | **MoneyPrinterTurbo** | Use it when you need a self-hosted MIT appliance (WebUI + API) that turns topics into narrated stock-footage shorts at near-zero marginal cost — no cloning, no agent required. | A (4/6) | [→](moneyprinter-turbo.md) |
+| **video-shotcraft** | Use it when a coding agent should turn your product's real screenshots into a 30–60 s cinematic promo — ~157 shot recipe cards, a validated 36-second template, SFX/BGM and a post-delivery workbench, Apache-2.0 — but the pack is two months old and Remotion's own licence carries a company-size threshold. | B (4/6) | [→](video-shotcraft.md) |
 
 
 ## Comparison matrix
@@ -25,6 +26,7 @@
 | [Remotion](remotion.md) | ✅ | A (4/6) | React-component authoring and a mature Lambda renderer, under a source-available license with a company-size threshold; OpenMontage embeds engines of this class. |
 | [Hypit](hypit.md) | ✅ | B (3/6) | Agent-first viral-video cloning into word-anchored SVML workflows with pluggable generation providers; non-OSI license, 7 weeks old at verification, generation runs bill to paid model APIs. |
 | [MoneyPrinterTurbo](moneyprinter-turbo.md) | ✅ | A (4/6) | Topic → narrated stock-footage shorts as a MIT WebUI/API appliance; near-zero marginal cost, generic output, single-maintainer bus factor. |
+| [video-shotcraft](video-shotcraft.md) | ✅ | B (4/6) | Pick it when the film must look designed and be cut to music and the shots must stay editable afterwards; pick Remotion or a SaaS when you want unlimited visual freedom or generative footage, because this pack fixes a shot vocabulary and pins its own Remotion version. |
 | Runway / Pika / HeyGen | 未收录 | — | Closed-source SaaS — faster one-click generation but no pipeline customization, no agent approval gates, no open-source extensibility. |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | Professional NLEs — human editors, not agent-driven; the right tool when you need frame-level manual control and a traditional post-production team. |
 

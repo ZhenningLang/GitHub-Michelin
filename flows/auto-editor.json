@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Auto-Editor does",
+    "zh": "Auto-Editor 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI — Homebrew, the AUR, or an official binary",
+      "zh": "装好 CLI：Homebrew、AUR 或官方二进制",
+      "code": "brew install auto-editor"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at the footage; there is no project file to create",
+      "zh": "一条命令指向素材，不需要先建工程",
+      "code": "auto-editor video.mp4"
+    },
+    {
+      "lane": "them",
+      "en": "Measures loudness over time and labels each moment silent (0) or active (1)",
+      "zh": "逐段测响度，把每一刻标成静音（0）或有效（1）"
+    },
+    {
+      "lane": "them",
+      "en": "Cuts the silent stretches, keeps 0.2 s of margin, writes video_ALTERED.mp4",
+      "zh": "剪掉静音，两边各留 0.2 秒，写出 video_ALTERED.mp4"
+    },
+    {
+      "lane": "you",
+      "en": "When a human should finish the cut, export a timeline instead of a file",
+      "zh": "要人工收尾时，导出时间线而不是成片",
+      "code": "auto-editor video.mp4 --export resolve"
+    },
+    {
+      "lane": "them",
+      "en": "Writes an editor project referencing the original media, so nothing is re-encoded",
+      "zh": "写出引用原素材的工程文件，不重新编码"
+    }
+  ],
+  "value": {
+    "en": "A dead-air-free cut without listening through the footage — or a timeline a professional editor picks up",
+    "zh": "不用把素材听一遍就得到无冷场的成片，或直接交给剪辑师一条可编辑时间线"
+  },
+  "sources": [
+    "README (npx skills add WyattBlue/auto-editor; --margin 0.2sec 默认; --edit audio:threshold=0.04 默认; --export premiere/resolve/final-cut-pro/shotcut/kdenlive/clip-sequence)",
+    "https://auto-editor.com/docs/cookbook (auto-editor video.mp4 → video_ALTERED.mp4; -o trimmed.mp4; --preview; --edit motion:threshold=2%)",
+    "https://auto-editor.com/installing (官方二进制; brew install auto-editor; yay -S auto-editor; pip 渠道已停止发布; nimble makeff / nimble make 源码构建; yt-dlp 可选)",
+    "README 的 Labels 段 (label 0 = silent 默认剪掉, label 1 = active 保留)"
+  ]
+}

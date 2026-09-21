@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "jianying-editor does",
+    "zh": "jianying-editor 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the skill into the folder your agent loads skills from",
+      "zh": "把 skill 克隆进 agent 读技能的目录",
+      "code": "git clone <repo> .claude/skills/jianying-editor"
+    },
+    {
+      "lane": "you",
+      "en": "Install the Python side once, including the browser for web capture",
+      "zh": "装一次 Python 依赖和网页抓取用的浏览器",
+      "code": "pip install -r requirements.txt · playwright install chromium"
+    },
+    {
+      "lane": "you",
+      "en": "Describe the video in plain language — footage folder, style, title",
+      "zh": "用自然语言说清素材目录、风格和标题"
+    },
+    {
+      "lane": "them",
+      "en": "Finds the 剪映 draft folder and writes a draft with tracks, captions and voiceover aligned",
+      "zh": "找到剪映草稿目录，写出轨道、字幕和配音对齐的草稿"
+    },
+    {
+      "lane": "you",
+      "en": "Restart 剪映 so the new draft appears in the project list",
+      "zh": "重启剪映，新草稿才会出现在工程列表里"
+    },
+    {
+      "lane": "them",
+      "en": "On Windows with 剪映 5.9 or older it also clicks through the export UI",
+      "zh": "在 Windows 配剪映 5.9 及更早版本上，还能自动点完导出"
+    }
+  ],
+  "value": {
+    "en": "A 剪映 timeline assembled from one sentence, which you can keep editing by hand in the app",
+    "zh": "一句话换来一条可继续手改的剪映时间线"
+  },
+  "sources": [
+    "README 快速开始 (git clone ... .claude/skills/jianying-editor 等各 harness 安装路径; Windows 一键脚本 irm is.gd/rpb65M | iex)",
+    "README 环境准备 (pip install -r requirements.txt; playwright install chromium; 草稿目录 Windows/macOS 默认路径)",
+    "README 平台支持状态表 (Windows 支持草稿生成/素材导入/字幕/配音/云端素材/录屏/自动导出; macOS 仅草稿生成; CapCut 国际版与手机端不支持)",
+    "README FAQ 1 (剪映不会实时刷新草稿列表，需要重启剪映或点进旧草稿再退出)",
+    "README 做不到什么 (自动导出依赖 Windows UI 自动化，剪映 5.9 及以下最稳)"
+  ]
+}

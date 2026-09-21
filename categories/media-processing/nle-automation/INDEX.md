@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Jianying Headless** | Use it when a macOS 剪映 professional workflow needs agent-generated *editable* drafts — real multi-track projects, plus native MP4 export from the app's own engine — but it is 5 days old, single-maintainer, tied to one app build, and non-commercial only. | D (4/6) | [→](jianying-headless.md) |
 | **pyJianYingDraft** | Use it when a Python pipeline must emit editable 剪映 drafts — cross-platform, Apache-2.0, no editor needed on the build machine — accepting that newer 剪映 drafts are encrypted, nothing renders for you, and batch export needs Windows with 剪映 6 or older. | C (5/6) | [→](pyjianyingdraft.md) |
+| **Jianying Editor Skill** | Use it when an agent should assemble an editable 剪映 Pro timeline from natural language — B-roll, TTS narration, aligned captions, effects — but it is an eight-month-old single-maintainer skill on a vendored fork, and unattended export needs Windows with 剪映 5.9 or older. | C (5/6) | [→](jianying-editor-skill.md) |
 
 ## Comparison matrix
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.md) | ✅ | D (4/6) | Agent-written editable 剪映 drafts plus native export through the app's own engine; paid for with macOS 26 + one pinned 剪映 build, a per-machine compiled bridge, and a non-commercial license. |
 | [pyJianYingDraft](pyjianyingdraft.md) | ✅ | C (5/6) | Python-side draft authoring for 剪映 on any OS under Apache-2.0; it cannot touch encrypted drafts, does not render, and its own export is Windows + 剪映 6 or older only. |
+| [Jianying Editor Skill](jianying-editor-skill.md) | ✅ | C (5/6) | Pick it when the pipeline should be driven by an agent from natural language and 剪映 must stay hand-editable; pick pyJianYingDraft when you need the maintained upstream library, because this skill's core is a vendored fork with a thin test suite. |
 | 剪映专业版 / CapCut (closed app) | 未收录 | — | Manual timeline craft with the vendor's own polish; no supported automation surface. |
 
 ## What belongs here

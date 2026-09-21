@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "video-shotcraft does",
+    "zh": "video-shotcraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your coding agent",
+      "zh": "把 skill 装进你的编码 agent",
+      "code": "npx skills add Vincentwei1021/video-shotcraft"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at your product and say what the film is for",
+      "zh": "告诉它产品是什么、这支片子给谁看",
+      "code": "Use video-shotcraft to create a promo for my desktop product."
+    },
+    {
+      "lane": "them",
+      "en": "Checks the product read-only, maps shot cards, and storyboards the promo",
+      "zh": "只读地看一遍产品，挑镜头卡，出分镜"
+    },
+    {
+      "lane": "them",
+      "en": "Writes Remotion compositions: 2.5D camera moves, captions, SFX on the beat",
+      "zh": "写出 Remotion 组件：2.5D 运镜、字幕、卡点音效"
+    },
+    {
+      "lane": "you",
+      "en": "Render the film from the bundled template",
+      "zh": "用自带模板渲染成片",
+      "code": "npm run render"
+    },
+    {
+      "lane": "them",
+      "en": "Opens a workbench where shots can still be retimed and copy edited",
+      "zh": "打开工作台，让你继续改镜头时长和文案",
+      "code": "node workbench/scripts/open.mjs <project>"
+    }
+  ],
+  "value": {
+    "en": "A cinematic product film from screenshots and one brief, with the shots still editable afterwards",
+    "zh": "一份截图加一句话，得到还能继续改镜头的电影感宣传片"
+  },
+  "sources": [
+    "README Quick start (npx skills add Vincentwei1021/video-shotcraft; git clone + symlink; 示例指令 Use video-shotcraft to create a promo for my desktop product.)",
+    "README Motion Workbench (node workbench/scripts/open.mjs <project>; 剪辑点/字幕/音效轨道可继续编辑后经 Remotion 导出)",
+    "template/package.json (scripts.render = remotion render src/index.ts AiflPromo out/promo.mp4)",
+    "SKILL.md (三种模式：模板 / 自主自由创作 / 共同创作；先做只读的产品检查再询问模式；单镜头模式从 references/shots/ 选卡)",
+    "README What's included 表 (157 张镜头配方卡、214 个动效预览、Ink Press 模板、JianYing 工程导出、Motion workbench)"
+  ]
+}
