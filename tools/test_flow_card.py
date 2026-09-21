@@ -266,11 +266,60 @@ class FlowPhaseTest(unittest.TestCase):
         self.assertEqual(svg.count(">Every turn<"), 2)
         self.assertIn(".ph{", svg)
 
+    def test_a_stage_that_reopens_after_closing_is_rejected(self) -> None:
+        # Build → Run → Build is a loop, not a backbone; only the back-to-back case was caught before.
+        spec = copy.deepcopy(SPEC)
+        for st, label in zip(spec["steps"], ("Build", "Run", "Build", "Run")):
+            st["phase"] = {"en": label, "zh": label}
+        errs = flow_card.validate_spec(spec)
+        self.assertTrue(any("reopens a stage that already closed" in e for e in errs), errs)
+
+    def test_a_stage_repeated_on_one_side_only_is_rejected(self) -> None:
+        # The pair drifts per language: `en` transitions, `zh` does not, so the Chinese card shows
+        # one stage over all four steps while the English card shows two.
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        spec["steps"][2]["phase"] = {"en": "Every turn", "zh": "搭建"}
+        errs = flow_card.validate_spec(spec)
+        self.assertTrue(any("phase.zh repeats the stage already open" in e for e in errs), errs)
+        self.assertEqual([e for e in errs if ".en " in e], [])
+
     def test_steps_block_carries_the_stage_on_every_step(self) -> None:
         block = flow_card.steps_block(self._phased(), "zh", "demo", "Demo")
         self.assertIn("1. **你**（搭建）：安装", block)
         self.assertIn("2. **Demo**（搭建）：注册钩子", block)
         self.assertIn("4. **Demo**（每轮运行）：完成工作", block)
+
+
+class FlowAdvisoryTest(unittest.TestCase):
+    """`advisories` is the editorial WARNING channel: shapes that validate but earn nothing."""
+
+    def test_phase_tracking_the_lane_exactly_is_flagged(self) -> None:
+        # The commerce-agents shape: you, you | them, them with Build | Every turn on the same seam.
+        spec = copy.deepcopy(SPEC)
+        for st, lane in zip(spec["steps"], ("you", "you", "them", "them")):
+            st["lane"] = lane
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        spec["steps"][2]["phase"] = {"en": "Every turn", "zh": "每轮运行"}
+        self.assertEqual(flow_card.validate_spec(spec), [])
+        self.assertTrue(any("restates the handoff" in a for a in flow_card.advisories(spec)))
+
+    def test_a_single_stage_over_the_whole_card_is_flagged(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        self.assertEqual(flow_card.validate_spec(spec), [])
+        self.assertTrue(any("marks no transition" in a for a in flow_card.advisories(spec)))
+
+    def test_a_stage_spanning_both_lanes_is_not_flagged(self) -> None:
+        # Build covers steps 1-2 (you, them), so the boundary is not the lane boundary.
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        spec["steps"][2]["phase"] = {"en": "Every turn", "zh": "每轮运行"}
+        self.assertEqual(flow_card.validate_spec(spec), [])
+        self.assertEqual(flow_card.advisories(spec), [])
+
+    def test_a_phase_less_spec_raises_nothing(self) -> None:
+        self.assertEqual(flow_card.advisories(SPEC), [])
 
 
 if __name__ == "__main__":

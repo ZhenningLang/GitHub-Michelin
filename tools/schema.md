@@ -199,8 +199,16 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   stage that runs until the next marker (write/recall and round-1/round-2 are the same shape). It is
   a **label, not a branch** — the steps stay linear. Rules: at most **3** phases; the **first step
   must carry one** (an unlabeled leading stage reads as an accident); a marker may not repeat the
-  stage already open; it never restates the lane; ≤ 24 EN / 12 ZH chars. Omit it when the flow has no
-  real stage boundary — most specs do not.
+  stage already open, nor reopen one that closed (a backbone does not loop); ≤ 24 EN / 12 ZH chars.
+  Both rules are checked **per language** — the labels are prose and drift independently, so an `en`
+  that transitions while `zh` repeats is an ERROR, not a near-miss. Omit it when the flow has no real
+  stage boundary — most specs do not.
+  - **It must not restate the lane.** If the stage changes exactly where the lane changes, the label
+    tells the reader nothing the two columns did not; the lint WARNs (`flow_card.advisories`). A
+    `phase` earns its line only when a stage **spans** the handoff — "Build" covering your setup
+    *and* its registration, then "Every turn" covering the loop. Otherwise say the timing in the
+    mechanism paragraph and drop the field. `commerce-agents` currently trips this warning: it is
+    the open example, not the model to copy.
 - **`code`** (optional, language-neutral) is **what the user types or writes**: a command, an
   annotation, a config key or path, an API call, a package coordinate. It is **not** an internal
   symbol — a function name, class or module path the reader never types is mechanism-paragraph
@@ -222,8 +230,9 @@ Run `python3 tools/flow_card.py <page>` (or `make flows`) after editing a spec; 
 does it for staged pages/specs. **Golden examples**: `kong` (service — deploy + declare, it runs at
 request time), `xxl-job` (framework — maven dep + annotated hook, it calls you back), `sharp`
 (library — call a chain API), `claude-mem` (tool — install once, it captures/stores/injects),
-`superpowers` (skill-pack — install, the agent follows it), `commerce-agents` (framework — the one
-spec that uses `phase`: Build once, then Every turn).
+`superpowers` (skill-pack — install, the agent follows it). `commerce-agents` is the one spec that
+uses `phase` (Build once, then Every turn) — read it as the open question above, not as a golden
+example: its stage boundary sits exactly on its lane boundary.
 
 **Backfill status.** Pages written or re-verified under this contract — `last_verified` on/after
 `OSS_ATLAS_FLOW_REQUIRED_FROM` (default `2026-09-20`) — **must** have the section: missing is an

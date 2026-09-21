@@ -33,6 +33,8 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - pages/sub-categories linked from their node INDEX; root INDEX links the top categories
   - recursive: sub-categories validated to any depth
   - leaf category with > MAX_FANOUT pages -> WARNING (self-balancing: split via refactor-index)
+  - a flow spec whose 'phase' transitions land exactly on its lane changes -> WARNING
+    (the label restates the handoff; flow_card.advisories)
   - internal relative links resolve
   - .zh.md bodies use fullwidth Chinese punctuation: ASCII , ; ! ? : ( ) " adjacent to a CJK char
     -> ERROR (frontmatter / code / links / URLs are exempt; facts stay language-neutral)
@@ -524,6 +526,9 @@ def check_flow_section(path: Path, text: str, zh: bool, root: Path, duplicate_ba
         for prob in problems:
             rep.error(spec_path, prob)
         return
+    if lang == "en":  # one spec, two pages — report the editorial smell once
+        for note in flow_card.advisories(spec):
+            rep.warn(spec_path, note)
     card = root / "assets" / "flow" / flow_card.card_name(stem, lang)
     if not card.exists():
         rep.error(path, f"flow card missing: assets/flow/{card.name} (run tools/flow_card.py)")
