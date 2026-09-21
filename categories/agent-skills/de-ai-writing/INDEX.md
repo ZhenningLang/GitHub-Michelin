@@ -13,6 +13,7 @@
 | **ai-flavor-remover** | Single-file Chinese prompt snippet for removing AI flavor; author-tested only on Gemini 2.5 Pro, not an installable skill pack. | D (4/6) | [→](ai-flavor-remover.md) |
 | **humanizer** | English upstream Claude Code skill for removing signs of AI-generated writing, with plugin/install docs and MIT licensing. | B (4/6) | [→](humanizer.md) |
 | **stop-slop** | Compact English prose de-slop skill with hard rules and references; best for fast cleanup, not nuanced formal prose. | B (4/6) | [→](stop-slop.md) |
+| **avoid-ai-writing** | English-first de-AI skill that ships a runnable zero-dependency npm detector, a CI/pre-commit gate on finding count, and a human-control corpus publishing its own false-positive rate. | B (5/6) | [→](avoid-ai-writing.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [ai-flavor-remover](ai-flavor-remover.md) | ✅ | D (4/6) | Treat as a Gemini-tested prompt specimen, not as an OSS dependency or Agent Skills package. |
 | [humanizer](humanizer.md) | ✅ | B (4/6) | Strong English upstream baseline with install docs; use Chinese-localized options for Chinese prose. |
 | [stop-slop](stop-slop.md) | ✅ | B (4/6) | Shortest hard-rules English de-slop rubric; more likely to over-edit formal prose. |
+| [avoid-ai-writing](avoid-ai-writing.md) | ✅ | B (5/6) | Most engineered English option: pick it when the de-AI pass must produce a CI-gateable finding count, not when you need a score to label authorship. |
 
 
 ## What belongs here
