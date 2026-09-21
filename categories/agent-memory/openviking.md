@@ -8,7 +8,7 @@ tags: [agent-memory, context-database, agentic-rag, coding-agent, claude-code, o
 language: Python
 license: AGPL-3.0
 maturity: v0.4.21, active (2026-09-20); 38.2k stars / 3.0k forks / 86 releases, created 2026-01-05, relicensed Apache-2.0 → AGPL-3.0 on 2026-03-30 (API-verified), ~8.5-month-old repo
-last_verified: 2026-09-22
+last_verified: 2026-09-21
 type: service
 upstream:
   pushed_at: 2026-09-21T14:37:57Z
