@@ -10,6 +10,9 @@ __pycache__/
 
 # Node (only used transiently by markdownlint in CI)
 node_modules/
+
+# Per-branch git worktrees (the main checkout stays on main; work happens in .worktrees/<slug>)
+.worktrees/
 memory_telemetry.jsonl
 .agent-state/
 .health-backfill/
