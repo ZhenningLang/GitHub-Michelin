@@ -2,7 +2,7 @@
 name: HandBrake
 slug: handbrake
 repo: https://github.com/HandBrake/HandBrake
-category: video-audio
+category: transcoding-and-pipelines
 tags: [video, transcoding, h264, h265, gui, cli, dvd, bluray, ffmpeg]
 language: C
 license: GPL-2.0-or-later
@@ -69,7 +69,7 @@ health:
 Open-source video transcoder for converting video from nearly any format to modern, widely supported codecs — built on FFmpeg, x264, and x265 with a preset-driven GUI and a matching `HandBrakeCLI` command-line tool.
 
 
-![HandBrake — health radar](../../../assets/health/handbrake.svg)
+![HandBrake — health radar](../../../../assets/health/handbrake.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ You're a media archivist with a stack of DVDs and Blu-rays to convert into a mod
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [FFmpeg](ffmpeg.md) | ✅ | Choose FFmpeg when you need the universal codec/format swiss-army-knife, library embedding, or custom filtergraphs. | The universal codec/format swiss-army-knife with limitless filtergraphs and library embedding; far steeper learning curve and no built-in GUI, but you control every knob. |
-| [MLT](mlt.md) / Shotcut | 部分已收录 | Choose MLT/Shotcut when you need a timeline-based non-linear video editor or compositing framework. | Timeline-based NLE/compositing framework; sits above FFmpeg for actual codec work. Reach for it when you need editing, not just transcoding. |
+| [MLT](../editing-and-cutting/mlt.md) / Shotcut | 部分已收录 | Choose MLT/Shotcut when you need a timeline-based non-linear video editor or compositing framework. | Timeline-based NLE/compositing framework; sits above FFmpeg for actual codec work. Reach for it when you need editing, not just transcoding. |
 | [GStreamer](gstreamer.md) | ✅ | Choose GStreamer when you need a composable pipeline framework for app-embedded or live-streaming media. | Composable pipeline framework for app-embedded or live-streaming media; steeper programming model, but more flexible for real-time and device pipelines than a file-to-file transcoder. |
 | AWS Elemental MediaConvert / cloud transcoders | 未收录 | Choose cloud transcoders when you need elastic, managed, pay-per-minute transcoding without ops burden. | Managed, pay-per-minute transcoding services; zero ops and elastic scale, but vendor lock-in, per-minute cost, and a SaaS — not a repository you self-host. |
 | VLC | 未收录 | Choose VLC when you need a media player with occasional conversion features, not a dedicated transcoder. | Primarily a media player; its conversion/export features are a side dish, not the main course. Use it for occasional one-off exports, not batch archival workflows. |

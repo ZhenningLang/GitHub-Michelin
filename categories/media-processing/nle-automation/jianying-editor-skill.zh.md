@@ -109,7 +109,7 @@ health:
 ## 何时不用
 
 - **你剪的是 CapCut 国际版或手机端。** README 写得很清楚：只适配国内版桌面剪映专业版，CapCut 国际版与手机端都不支持。国际版 CapCut 目前没有仍在维护的宽松许可路线——pyCapCut 那个变体连许可文件都没有，且自 2025-09-12 起没有提交（见 [pyJianYingDraft](pyjianyingdraft.zh.md)），所以先按「国际版只能手动剪」来规划。
-- **你要的是不需要人参与就出 MP4。** 自动导出仅限 Windows，而且文档说明在剪映 **5.9 及更早版本**上最稳；macOS 上只能生成草稿后手动导出。完全不该有人碰剪映、或者交付物只是文件时，改用 [MoviePy](../video-audio/moviepy.zh.md) 或 [FFmpeg](../video-audio/ffmpeg.zh.md) 渲染。
+- **你要的是不需要人参与就出 MP4。** 自动导出仅限 Windows，而且文档说明在剪映 **5.9 及更早版本**上最稳；macOS 上只能生成草稿后手动导出。完全不该有人碰剪映、或者交付物只是文件时，改用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md) 或 [FFmpeg](../video-audio/transcoding-and-pipelines/ffmpeg.zh.md) 渲染。
 - **你在 macOS 上想要原生导出。** 用 [Jianying Headless](jianying-headless.zh.md)：它在锁定的剪映版本上无头驱动剪映自家引擎，代价是 macOS 26、要编译的桥接层与非商用许可。
 - **你的剪映会自己更新。** 未关 issue 里已经有「无法阻止剪映自动更新」的报告，还有一个修复「七处静默产出错误成片」的 PR。请给渲染机上的剪映版本打指纹；或者干脆别自动化最后一公里：优先用 [pyJianYingDraft](pyjianyingdraft.zh.md)，至少它的版本支持矩阵写在文档里，并且发布前人工确认产出。
 - **你需要一条经过测试、可审计的管线。** 更新日志写着「完善全套测试覆盖与回归验证」，但仓里的测试只有 `tests/test_wrapper.py` 一个文件（19 个测试函数），CI 也只对一份手写白名单脚本跑 lint——覆盖度远低于那句措辞给人的印象。要有真实 pytest 套件的库，用 [pyJianYingDraft](pyjianyingdraft.zh.md)。

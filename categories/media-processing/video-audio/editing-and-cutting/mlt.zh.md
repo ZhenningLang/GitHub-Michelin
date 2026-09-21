@@ -2,7 +2,7 @@
 name: MLT
 slug: mlt
 repo: https://github.com/mltframework/mlt
-category: video-audio
+category: editing-and-cutting
 tags: [video, editing, nle, timeline, compositing, c++, ffmpeg, kdenlive, shotcut]
 language: C++
 license: LGPL-2.1-or-later
@@ -71,10 +71,10 @@ health:
 
 用于构建非线性视频编辑器（NLE）的多媒体框架——支持时间线轨道、片段、转场、滤镜与合成，底层实际的编解码工作全部委托给 FFmpeg/libav 完成。它不是独立的剪辑软件，而是 Shotcut 和 Kdenlive 的底层引擎。
 
-![mlt — 健康度雷达](../../../assets/health/mlt.zh.svg)
+![mlt — 健康度雷达](../../../../assets/health/mlt.zh.svg)
 
 
-![MLT — health radar](../../../assets/health/mlt.zh.svg)
+![MLT — health radar](../../../../assets/health/mlt.zh.svg)
 
 ## 何时使用
 
@@ -83,7 +83,7 @@ health:
 ## 何时不用
 
 - **你需要一个开箱即用的视频剪辑软件。** MLT 是框架，不是应用。如果你想打开就能剪辑，直接用 Shotcut、Kdenlive 或其他 NLE，而不是直接使用 MLT。
-- **你只需要批量转码或格式转换。** MLT 会增加你根本不需要的时间线复杂度。对于纯解码/编码/转码，直接用 [FFmpeg](ffmpeg.zh.md)——它更快、更简单，社区支持也广得多。
+- **你只需要批量转码或格式转换。** MLT 会增加你根本不需要的时间线复杂度。对于纯解码/编码/转码，直接用 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)——它更快、更简单，社区支持也广得多。
 - **你需要实时流处理或持久化媒体管线。** MLT 面向离线/顺序时间线渲染，而非实时流处理。实时管线请考虑 GStreamer。
 - **你想要一个原生 Python、友好的视频编辑 API。** MLT 的主要接口是 C++ 加 XML 项目描述。如果以 Python 优先的编程化剪辑为目标，考虑 MoviePy 或 PyAV。
 - **你在构建专有闭源产品，需要对 LGPL 链接边界有绝对把握。** MLT 采用 LGPL-2.1+；虽然以库形式链接通常被 LGPL 允许，但动态链接与静态链接的边界以及插件-滤镜组合必须针对你的具体分发模式进行审查。若许可纯净度是硬约束，请先与法务核实。 [未验证]
@@ -93,11 +93,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.zh.md) | ✅ | 用 FFmpeg 做原始解码/编码/转码/滤镜管线；用 MLT 当需要在其之上叠加时间线语义时。 | 通用媒体瑞士军刀；API 陡峭，且有 LGPL/GPL 构建授权陷阱。MLT 坐在它之上，提供编辑级时间线语义。 |
-| [GStreamer](gstreamer.zh.md) | ✅ | 用 GStreamer 做实时、持久化、嵌入应用的管线；用 MLT 做离线时间线式剪辑/合成。 | 面向实时/流媒体与嵌入应用的管线/元件图框架；编程模型更重，但实时场景更灵活。 |
-| [HandBrake](handbrake.zh.md) | ✅ | 用 HandBrake 做终端用户预设驱动转码；用 MLT 做程序化时间线编辑。 | 预设驱动的 GUI 与 CLI，用于翻录/转码为现代 MP4/MKV；终端用户应用，不是库，远比原生 FFmpeg 窄。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 用 FFmpeg 做原始解码/编码/转码/滤镜管线；用 MLT 当需要在其之上叠加时间线语义时。 | 通用媒体瑞士军刀；API 陡峭，且有 LGPL/GPL 构建授权陷阱。MLT 坐在它之上，提供编辑级时间线语义。 |
+| [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md) | ✅ | 用 GStreamer 做实时、持久化、嵌入应用的管线；用 MLT 做离线时间线式剪辑/合成。 | 面向实时/流媒体与嵌入应用的管线/元件图框架；编程模型更重，但实时场景更灵活。 |
+| [HandBrake](../transcoding-and-pipelines/handbrake.zh.md) | ✅ | 用 HandBrake 做终端用户预设驱动转码；用 MLT 做程序化时间线编辑。 | 预设驱动的 GUI 与 CLI，用于翻录/转码为现代 MP4/MKV；终端用户应用，不是库，远比原生 FFmpeg 窄。 |
 | [MoviePy](moviepy.zh.md) | ✅ | 用 MoviePy 做友好的 Python API 批量视频编辑；用 MLT 做需要编辑精度的 C++ 时间线框架。 | 友好的 Python API 用于程序化视频编辑——剪辑、合成、文字、特效——但纯离线批处理，对大文件比原生 FFmpeg 慢。 |
-| [PyAV](pyav.zh.md) | ✅ | 用 PyAV 做 Pythonic 的 FFmpeg 绑定；用 MLT 做时间线模型与编辑语义。 | Pythonic 绑定到 FFmpeg 的 libav*；给你 Python 里的编解码级控制，但无时间线或 NLE 抽象。 |
+| [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 用 PyAV 做 Pythonic 的 FFmpeg 绑定；用 MLT 做时间线模型与编辑语义。 | Pythonic 绑定到 FFmpeg 的 libav*；给你 Python 里的编解码级控制，但无时间线或 NLE 抽象。 |
 | Shotcut | 未收录 | Shotcut 基于 MLT 构建。需要开箱即用的开源 NLE 时选 Shotcut；需要嵌入或扩展引擎时直接用 MLT。 | 基于 MLT 构建的开源 NLE；需要编辑器而非框架时选它。 |
 | Kdenlive | 未收录 | Kdenlive 基于 MLT 构建。需要 KDE 集成 NLE 时选 Kdenlive；需要引擎时直接用 MLT。 | 另一款基于 MLT 构建的开源 NLE；KDE/Qt 集成，某些方面功能比 Shotcut 多，但仍是应用而非库。 |
 | DaVinci Resolve | 未收录 | 用 DaVinci Resolve 做专业级调色、特效与剪辑——它是商业 NLE，不是开源框架。 | 专业商业 NLE，带世界级调色；有免费版但非开源，也不能作为库嵌入。 |

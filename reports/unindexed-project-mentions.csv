@@ -45,7 +45,7 @@ airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
 AIStor Free / Enterprise,categories/object-storage/minio.md,,no
 AKHQ,categories/kafka-tools/kafka-ui.md,,no
 AKShare,categories/web-scraping/crawling-tools/gopup.md,,no
-alass,categories/media-processing/video-audio/ffsubsync.md,,no
+alass,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Alfred,categories/dev-utilities/data-tools/flashlight.md,,no
 alive-progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Altcha,categories/captcha/capjs.md,,no
@@ -94,15 +94,15 @@ AutoHotkey,categories/desktop-automation/pyautogui.md,,no
 AUTOMATIC1111 WebUI (img2img / sketch tab),categories/ai-design-generation/sdpaint.md,,no
 AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 AVQT / proprietary metrics,categories/media-processing/quality-metrics/vmaf.md,,no
-AWS Elemental MediaConvert,categories/media-processing/video-audio/gstreamer.md,,no
-AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/ffmpeg.md,,no
+AWS Elemental MediaConvert,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
+AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
-Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/whisper.md,,no
+Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
-Bazarr,categories/media-processing/video-audio/ffsubsync.md,,no
+Bazarr,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-agent-skills.md,,no
 Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/text2vec.md,,no
@@ -212,14 +212,14 @@ Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills
 Custom terse-response rule,categories/agent-skills/engineering/caveman.md,,no
 Custom unpack scripts,categories/im-automation/wxappunpacker.md,,no
 Custom voice guide,categories/agent-skills/context-engineering/soul-md.md,,no
-Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
+Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 D2,categories/diagramming/mermaid.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
 Datadog / Grafana Cloud,categories/observability/grafana.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
-DaVinci Resolve,categories/media-processing/video-audio/mlt.md,,no
+DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
@@ -227,18 +227,18 @@ ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
 DEAP,categories/ml-research/pymoo.md,,no
 DeepKE,categories/ml-research/agriculture-knowledge-graph.md,,no
 DeepL / Google Translate browser features,categories/reading-tools/fluentread.md,,no
-DeepSpeech (Mozilla),categories/media-processing/video-audio/whisper.md,,no
+DeepSpeech (Mozilla),categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
-Descript (closed SaaS),categories/media-processing/video-audio/auto-editor.md,,no
+Descript (closed SaaS),categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
 Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
 DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
 Dify-on-WeChat,categories/im-automation/dify-enterprise-wechat-bot.md,,no
 Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
-DirectShow / Media Foundation,categories/media-processing/video-audio/gstreamer.md,,no
+DirectShow / Media Foundation,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 Distroless (GoogleContainerTools),categories/dev-utilities/ops-infra/slim.md,,no
 Django built-in permissions,categories/auth/django-rules.md,,no
 django-allauth,categories/auth/authomatic.md,,no
@@ -274,7 +274,7 @@ EVA-CLIP,categories/ml-research/clip.md,,no
 Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
 Fabric,categories/networking/paramiko.md,,no
 FastAPI + Uvicorn,categories/llm-inference/serving-engines/ray-serve.md,,no
-faster-whisper,categories/media-processing/video-audio/whisper.md,,no
+faster-whisper,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 FaucetETH (upstream: FaucETH),categories/blockchain-dev-infrastructure/INDEX.md,,no
 FaucETH,categories/blockchain-dev-infrastructure/powfaucet.md,,no
 Feedly / Inoreader,categories/reading-tools/netnewswire.md,,no
@@ -352,7 +352,7 @@ Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-serv
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
-Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.md,,no
+Hand-rolled regex / manual parsing,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
 Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
@@ -373,7 +373,7 @@ Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
 HF TRL / verl,categories/llm-training/INDEX.md,,no
-hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
+hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
 httpx,categories/python-tooling/grequests.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
@@ -382,8 +382,8 @@ Hugging Face sentiment models,categories/ml-research/senta.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/astro.md,,no
-imageio-ffmpeg,categories/media-processing/video-audio/pyav.md,,no
-imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
+imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
+imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
@@ -391,7 +391,7 @@ InvokeAI,categories/on-device-ml/comfyui.md,,no
 It-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
 itchat-uos (community fork),categories/im-automation/itchat.md,,no
 iTerm2,categories/terminal-ui/alacritty.md,,no
-JACK / PulseAudio,categories/media-processing/video-audio/gstreamer.md,,no
+JACK / PulseAudio,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 Java/Scala official client,categories/kafka-tools/kafka-python.md,,no
 jBPM / Flowable web modelers,categories/diagramming/bpmn-js.md,,no
 Jenkins,categories/workflow-orchestration/gaia.md,,no
@@ -405,7 +405,7 @@ kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
-Kdenlive,categories/media-processing/video-audio/mlt.md,,no
+Kdenlive,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Keras official RNN tutorials,categories/ml-research/lstm-time-series.md,,no
 KeyDB,categories/databases/database-engines/pikiwidb.md,,no
@@ -426,7 +426,7 @@ Lean Startup / other startup frameworks,categories/agent-skills/personal-collect
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta (MemGPT) / Zep / Cognee,categories/agent-memory/INDEX.md,,no
 Letta Code,categories/agent-memory/claude-subconscious.md,,no
-libav (avconv),categories/media-processing/video-audio/ffmpeg.md,,no
+libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreOffice headless / Aspose / Apache POI,categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
@@ -554,9 +554,9 @@ OpenAI / Cohere embedding APIs,categories/rag-retrieval/text2vec.md,,no
 "OpenAI / Gemini ""Deep Research""",categories/deep-research/mirothinker.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Operator / Anthropic computer use,categories/web-automation/agent-browser-tools/cua.md,,no
-OpenAI Whisper,categories/media-processing/video-audio/ffsubsync.md,,no
+OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 OpenCLIP,categories/ml-research/clip.md,,no
-OpenCV,categories/media-processing/video-audio/moviepy.md,,no
+OpenCV,categories/media-processing/video-audio/editing-and-cutting/moviepy.md,,no
 OpenDocMan,categories/document-management/paperless-ngx.md,,no
 OpenKG / CN-DBpedia,categories/ml-research/agriculture-knowledge-graph.md,,no
 OpenPDFSign,categories/pdf-tools/sapp.md,,no
@@ -565,7 +565,7 @@ OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
 OpenRouter,categories/api-gateway/claude-code-router.md,,no
 OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md,,no
 OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
-OpenTimelineIO,categories/media-processing/video-audio/mlt.md,,no
+OpenTimelineIO,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no
 OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 osint.industries,categories/osint/ghunt.md,,no
@@ -618,7 +618,7 @@ Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
 Portkey Gateway,categories/api-gateway/kong.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
 PowerJob,categories/task-queue/xxl-job.md,,no
-Premiere Pro,categories/media-processing/video-audio/mlt.md,,no
+Premiere Pro,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
 Private voice guide,categories/agent-skills/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
@@ -635,7 +635,7 @@ PSNR / SSIM (standalone),categories/media-processing/quality-metrics/ssimulacra2
 Pushshift dumps / PRAW scripts,categories/media-download/bulk-downloader-for-reddit.md,,no
 py-amqp / pika,categories/task-queue/kombu.md,,no
 py-spy,categories/python-tooling/pyrasite.md,,no
-pyannote.audio,categories/media-processing/video-audio/whisper.md,,no
+pyannote.audio,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 pybind11 / nanobind,categories/python-tooling/cython.md,,no
 pyCapCut,categories/media-processing/nle-automation/pyjianyingdraft.md,,no
 pyfiglet,categories/terminal-ui/art.md,,no
@@ -723,7 +723,7 @@ sentence-transformers (SBERT),categories/rag-retrieval/text2vec.md,,no
 Serena (MCP),categories/rag-retrieval/code-review-graph.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
-Shotcut,categories/media-processing/video-audio/mlt.md,,no
+Shotcut,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
 SigLIP,categories/ml-research/clip.md,,no
@@ -744,11 +744,11 @@ Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
 Stencil,categories/web-ui/frameworks/lit.md,,no
 Stitch MCP server itself (`stitch.withgoogle.com`),categories/agent-skills/design/stitch-skills.md,,no
-streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/m3u8.md,,no
+streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 Stylelint,categories/ai-design-generation/impeccable.md,,no
 Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
-subprocess + raw ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
-Subtitle Edit (sync features),categories/media-processing/video-audio/ffsubsync.md,,no
+subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
+Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
 SWE-bench,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
@@ -799,12 +799,12 @@ Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vibe Kanban,categories/agent-tooling/agent-orchestrator.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
-VLC,categories/media-processing/video-audio/gstreamer.md,,no
+VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
-Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/whisper.md,,no
+Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no
 Webmin,categories/dev-utilities/ops-infra/cockpit.md,,no
 WeChat Official Account / Mini-Program server APIs,categories/im-automation/itchat.md,,no
@@ -817,7 +817,7 @@ WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechatplug
 WeCom / Official WeChat APIs,categories/im-automation/chatgpt-wechat-bot.md,,no
 WeCom / Official WeChat Work API,categories/im-automation/itchat.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
-whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
+whisper.cpp,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 "Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no

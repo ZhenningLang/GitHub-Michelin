@@ -84,18 +84,18 @@ health:
 
 - **付费客户项目需要稳定性。** Concat 是只有 25 天历史的 0.2.x beta，公开 issue 里已经有 Linux／rpm 版卡顿到几乎不可用、Android 无法导入媒体的报告。改用 DaVinci Resolve（未收录），或等一个稳定的 tagged 版本，因为项目中途崩溃的代价高于你想省下的订阅费。
 - **你现在就要专业特效栈——可跟踪遮罩、关键帧曲线编辑器、调整图层、速度曲线。** 这些在 Concat 自己的 roadmap 上全部未打勾。要已经发布的遮罩与曲线编辑器，去看 OpenCut v0.3.0 的功能集或商业 NLE（未收录）。
-- **你只需要脚本化、可重复渲染，不需要交互式剪辑。** 图形编辑器是错的形态——批量管线用 [MoviePy](../video-audio/moviepy.zh.md)，需要在 CI 里渲染确定性组件时用 [Remotion](../../video-production/remotion.zh.md)。
-- **你要自建编辑器或无头剪辑服务。** 不要为了时间线模型去 fork 一个年轻 beta；用 [MLT](../video-audio/mlt.zh.md)，也就是 Shotcut、Kdenlive 底下的 LGPL 引擎，因为它给你时间线语义，而不会让你背上一个 AGPL 应用。
+- **你只需要脚本化、可重复渲染，不需要交互式剪辑。** 图形编辑器是错的形态——批量管线用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md)，需要在 CI 里渲染确定性组件时用 [Remotion](../../video-production/remotion.zh.md)。
+- **你要自建编辑器或无头剪辑服务。** 不要为了时间线模型去 fork 一个年轻 beta；用 [MLT](../video-audio/editing-and-cutting/mlt.zh.md)，也就是 Shotcut、Kdenlive 底下的 LGPL 引擎，因为它给你时间线语义，而不会让你背上一个 AGPL 应用。
 - **你的组织无法接受 AGPL-3.0 义务，或无法接受发行包里的许可组合。** Concat 本体是 AGPL-3.0-or-later 加插件例外，而分发出去的 bundle 里还带 FFmpeg（GPL，含 x264）、sherpa-onnx 与 espeak-ng（GPL-3.0），以及以 GPL-3.0 选项使用的 Slint。AGPL 是硬约束时，改用 MIT 许可的编辑器，例如 [OpenCut](opencut.zh.md)。
-- **剪辑只是更大管线里的一个通用环节。** Concat 没有文档化的无头渲染模式；直接驱动 [FFmpeg](../video-audio/ffmpeg.zh.md) 更合适，因为桌面应用无法当作批处理任务来调度。
+- **剪辑只是更大管线里的一个通用环节。** Concat 没有文档化的无头渲染模式；直接驱动 [FFmpeg](../video-audio/transcoding-and-pipelines/ffmpeg.zh.md) 更合适，因为桌面应用无法当作批处理任务来调度。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenCut](opencut.zh.md) | ✅ | 想要最大的开源社区、MIT 许可与规划中的插件／MCP 架构时选 OpenCut；需要今天就能离线安装运行的原生二进制时选 Concat，因为 OpenCut 仓库正在重写、不接受外部贡献，且自 2026-04 起没有发布。 | Concat：可运行的原生 beta 加自动化接口，单人维护，AGPL。OpenCut：更大的社区与宽松许可，当前没有可下载的构建。 |
-| [MLT](../video-audio/mlt.zh.md) | ✅ | 你要造编辑器而不是剪辑时选 MLT；想要一个成品应用、通过 API 脚本化它的时间线而不必自己实现时选 Concat，因为 MLT 是无界面框架，且把所有编解码工作交给 FFmpeg。 | MLT：可嵌入可扩展的 LGPL 引擎，应用要你自己写。Concat：完整的 AGPL 应用，你只做脚本化。 |
-| [MoviePy](../video-audio/moviepy.zh.md) | ✅ | 剪辑是可重复的 Python 批处理任务时选 MoviePy；需要人看到时间线并交互式迭代时选 Concat，因为 MoviePy 没有界面也没有预览，且维护强度已从峰值回落。 | MoviePy：可脚本化、无头，没有交互预览。Concat：有交互界面也有 API，但桌面依赖更重。 |
+| [MLT](../video-audio/editing-and-cutting/mlt.zh.md) | ✅ | 你要造编辑器而不是剪辑时选 MLT；想要一个成品应用、通过 API 脚本化它的时间线而不必自己实现时选 Concat，因为 MLT 是无界面框架，且把所有编解码工作交给 FFmpeg。 | MLT：可嵌入可扩展的 LGPL 引擎，应用要你自己写。Concat：完整的 AGPL 应用，你只做脚本化。 |
+| [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md) | ✅ | 剪辑是可重复的 Python 批处理任务时选 MoviePy；需要人看到时间线并交互式迭代时选 Concat，因为 MoviePy 没有界面也没有预览，且维护强度已从峰值回落。 | MoviePy：可脚本化、无头，没有交互预览。Concat：有交互界面也有 API，但桌面依赖更重。 |
 | CapCut（字节跳动） | 未收录 | 想要免费、打磨成熟、带云端 AI 特效且不在意账号时选 CapCut；素材不能离开本机、编辑器必须开源时选 Concat，因为 CapCut 闭源、绑定账号，并把 4K 与 AI 放在 Pro 后面。 | CapCut：特效与模板成熟，无法自托管，受云端条款约束。Concat：离线开源，特效远少。 |
 | DaVinci Resolve／Premiere Pro | 未收录 | 专业剪辑师需要可跟踪遮罩、调色与成熟关键帧编辑器来完成交付时选商业 NLE；需要离线、可脚本化、免许可费地剪短视频时选 Concat，因为商业工具闭源，且其免费档是功能阉割的。 | 商业 NLE：深度与稳定。Concat：原生、离线、可自动化，但不成熟。 |
 

@@ -2,7 +2,7 @@
 name: ffmpeg-python
 slug: ffmpeg-python
 repo: https://github.com/kkroening/ffmpeg-python
-category: video-audio
+category: transcoding-and-pipelines
 tags: [ffmpeg, python, bindings, filter-graph, video, audio, transcoding]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 FFmpeg 的 Python 绑定，让你把复杂的滤镜图写成链式 Python 表达式，而不必手搓 `-filter_complex` 字符串——它替你拼出 FFmpeg 命令行，再去调用 `ffmpeg` 二进制。
 
-![ffmpeg-python — 健康度雷达](../../../assets/health/ffmpeg-python.zh.svg)
+![ffmpeg-python — 健康度雷达](../../../../assets/health/ffmpeg-python.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ FFmpeg 的 Python 绑定，让你把复杂的滤镜图写成链式 Python 表达
 |---|---|---|---|
 | [FFmpeg](ffmpeg.zh.md)（CLI 本身） | ✅ | 需要底层引擎，且能直接管理 filtergraph 字符串时，选 FFmpeg 本身。 | 底层引擎；能力最大、是权威参照，但复杂图的 `-filter_complex` 字符串不可读——这正是本库要包的东西。 |
 | [PyAV](pyav.zh.md) | ✅ | 需要对 libav* 库的 Pythonic 绑定时，选 PyAV。 | 对 libav* 库的 Pythonic 绑定——进程内解/编码与按帧访问，不靠外部进程；安装更重、比建 CLI 图更底层。 |
-| [MoviePy](moviepy.zh.md) | ✅ | 需要更高层 Python 视频编辑、特效、合成、文字和友好 API 时，选 MoviePy。 | 更高层的 Python 视频编辑（特效、合成、文字），API 更友好；适合剪辑，不太是对 FFmpeg 图的薄映射。 |
+| [MoviePy](../editing-and-cutting/moviepy.zh.md) | ✅ | 需要更高层 Python 视频编辑、特效、合成、文字和友好 API 时，选 MoviePy。 | 更高层的 Python 视频编辑（特效、合成、文字），API 更友好；适合剪辑，不太是对 FFmpeg 图的薄映射。 |
 | subprocess + 裸 ffmpeg | 未收录 | 需要零依赖和完全可控时，选 subprocess + 裸 ffmpeg。 | 零依赖、完全可控，但 `-filter_complex` 字符串得你自己拼和转义——这正是本库消除的痛。 |
 | imageio-ffmpeg / fluent-ffmpeg | 未收录 | 需要其他语言或更窄范围的 FFmpeg 封装时，选 imageio-ffmpeg 或 fluent-ffmpeg。 | 别的语言或更窄范围的 FFmpeg 封装（Node 的 fluent-ffmpeg、Python imageio 垫片）；同为外部进程模型，体验不同。 |
 

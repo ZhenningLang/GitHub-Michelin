@@ -2,7 +2,7 @@
 name: Auto-Editor
 slug: auto-editor
 repo: https://github.com/WyattBlue/auto-editor
-category: video-audio
+category: editing-and-cutting
 tags: [video-editing, silence-removal, rough-cut, transcription, subtitle, nle-export, cli, nim]
 language: Nim
 license: Unlicense
@@ -77,7 +77,7 @@ health:
 
 A command-line first-pass editor: point it at footage and it cuts the dead air by measuring loudness (or motion, or your own subtitle text), then writes a trimmed file or an importable timeline for Premiere / Resolve / Final Cut / Shotcut / Kdenlive.
 
-![Auto-Editor — health radar](../../../assets/health/auto-editor.svg)
+![Auto-Editor — health radar](../../../../assets/health/auto-editor.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ Reach for auto-editor because one command with no project file turns an hour of 
 
 Auto-Editor reads the media's audio stream (the default method is `--edit audio:threshold=0.04`), measures loudness over time, and gives every moment an integer **label** — `0` for silent, `1` for active — then applies an action per label (cut, keep, speed). You control the rule, not the individual cuts: thresholds in percent or dB, `motion` instead of audio for silent screen recordings, extra label classes up to 255 with `--edit:N` / `--when:N`, and `--margin` padding so cuts don't clip consonants. The output side is deliberately two-headed: it either writes a new media file through its own FFmpeg-backed encoder, or emits a project file that references the source media — which is why handing off to a human editor costs no re-encode and loses nothing. What stays your job: choosing the threshold that matches your room tone, and deciding whether the deliverable is a file or a timeline.
 
-![auto-editor — backbone user story](../../../assets/flow/auto-editor.svg)
+![auto-editor — backbone user story](../../../../assets/flow/auto-editor.svg)
 
 <!-- flow-steps:begin (generated from flows/auto-editor.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,21 +109,21 @@ Auto-Editor reads the media's audio stream (the default method is `--edit audio:
 
 ## When NOT to use
 
-- **The cut is creative, not mechanical.** auto-editor has no timeline UI, no preview playback, no multicam, no colour — it decides keep/cut by a numeric rule. Use [Concat](../video-editing/concat.md) or [OpenCut](../video-editing/opencut.md) for a GUI, or a commercial NLE (未收录) when a human must judge every frame.
-- **The edit is one step inside a Python pipeline you already own.** Reach for [MoviePy](moviepy.md) or [FFmpeg](ffmpeg.md) directly: auto-editor is a binary with a CLI, not a library, so embedding it means shelling out and parsing output. If you need frame-level access, use [PyAV](pyav.md).
+- **The cut is creative, not mechanical.** auto-editor has no timeline UI, no preview playback, no multicam, no colour — it decides keep/cut by a numeric rule. Use [Concat](../../video-editing/concat.md) or [OpenCut](../../video-editing/opencut.md) for a GUI, or a commercial NLE (未收录) when a human must judge every frame.
+- **The edit is one step inside a Python pipeline you already own.** Reach for [MoviePy](moviepy.md) or [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) directly: auto-editor is a binary with a CLI, not a library, so embedding it means shelling out and parsing output. If you need frame-level access, use [PyAV](../transcoding-and-pipelines/pyav.md).
 - **You want hosted, collaborative text-based editing.** That is [Descript](https://descript.com) (未收录) or similar SaaS, at the cost of the footage leaving your machine; auto-editor runs offline and has no web UI or review workflow.
 - **`pip install auto-editor` is part of your deployment.** The author has **stopped publishing the CLI on PyPI** — the installing page says so explicitly — so pin the Homebrew formula, the AUR package or a release binary instead.
-- **You need transcription quality guarantees or speaker diarization.** The `whisper` subcommand bundles whisper.cpp targets only (Whisper GGML models, NVIDIA Parakeet GGUF, or Apple's on-device transcriber on macOS 26+); for word-level diarization, translation-heavy workflows or a managed API, use [OpenAI Whisper](whisper.md) yourself or a cloud ASR.
+- **You need transcription quality guarantees or speaker diarization.** The `whisper` subcommand bundles whisper.cpp targets only (Whisper GGML models, NVIDIA Parakeet GGUF, or Apple's on-device transcriber on macOS 26+); for word-level diarization, translation-heavy workflows or a managed API, use [OpenAI Whisper](../speech-and-subtitles/whisper.md) yourself or a cloud ASR.
 - **The footage is huge and the disk is not.** The default path writes a *new* file rather than trimming in place; run `--preview` first when you only need to know what would be cut.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [FFmpeg](ffmpeg.md) | ✅ | When you are already building a filter graph and only need silence *detection*, pick FFmpeg's `silencedetect`; pick auto-editor when you want the cut decision plus the output written for you, because `silencedetect` prints timestamps that you then have to turn into segments and an encode yourself. | FFmpeg is the universal engine with no opinion about your edit; auto-editor is an opinionated wrapper that also emits Premiere/Resolve/FCP/FCPXML-class projects. |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | When you are already building a filter graph and only need silence *detection*, pick FFmpeg's `silencedetect`; pick auto-editor when you want the cut decision plus the output written for you, because `silencedetect` prints timestamps that you then have to turn into segments and an encode yourself. | FFmpeg is the universal engine with no opinion about your edit; auto-editor is an opinionated wrapper that also emits Premiere/Resolve/FCP/FCPXML-class projects. |
 | [MoviePy](moviepy.md) | ✅ | When the edit is programmatic and you know the timeline you want, pick MoviePy; pick auto-editor when the timeline itself is the unknown (where are the silences?), because MoviePy executes your decision while auto-editor derives it from the media. | MoviePy: Python API, in-process, renders anywhere; auto-editor: binary CLI with its own label/action model and NLE hand-off. |
-| [OpenAI Whisper](whisper.md) | ✅ | When you need transcription alone, pick Whisper (or a cloud ASR); pick auto-editor when the transcript is an *input to cutting* — `auto-editor whisper … --format srt` plus `--edit word:question` cuts on spoken content, which Whisper cannot do on its own. | Whisper: best-in-class ASR, no editing model, you script everything; auto-editor: one bundled GGML/Parakeet path plus the edit model, but no diarization and no quality knobs beyond the bundled models. |
-| [Concat](../video-editing/concat.md) | ✅ | When a person must see and adjust the cut, pick Concat or a commercial NLE; pick auto-editor when the first pass is mechanical and only the finishing should be manual, because Concat is a full AGPL editor you operate while auto-editor is a pre-pass you script. | Concat: interactive, renders everywhere, immature beta; auto-editor: one-shot, no UI, and it feeds the editor you already use. |
+| [OpenAI Whisper](../speech-and-subtitles/whisper.md) | ✅ | When you need transcription alone, pick Whisper (or a cloud ASR); pick auto-editor when the transcript is an *input to cutting* — `auto-editor whisper … --format srt` plus `--edit word:question` cuts on spoken content, which Whisper cannot do on its own. | Whisper: best-in-class ASR, no editing model, you script everything; auto-editor: one bundled GGML/Parakeet path plus the edit model, but no diarization and no quality knobs beyond the bundled models. |
+| [Concat](../../video-editing/concat.md) | ✅ | When a person must see and adjust the cut, pick Concat or a commercial NLE; pick auto-editor when the first pass is mechanical and only the finishing should be manual, because Concat is a full AGPL editor you operate while auto-editor is a pre-pass you script. | Concat: interactive, renders everywhere, immature beta; auto-editor: one-shot, no UI, and it feeds the editor you already use. |
 | Descript (closed SaaS) | 未收录 | When editing by transcript in a browser with team review matters more than locality, pick Descript; pick auto-editor when the footage cannot leave the machine or must run in CI, because Descript is account-bound, per-seat priced and closed. | Descript: polished text-based editing and collaboration; auto-editor: offline, free, scriptable, no transcription UI or review workflow. |
 
 ## Tech stack

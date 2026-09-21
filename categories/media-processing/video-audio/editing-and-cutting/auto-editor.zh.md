@@ -2,7 +2,7 @@
 name: Auto-Editor
 slug: auto-editor
 repo: https://github.com/WyattBlue/auto-editor
-category: video-audio
+category: editing-and-cutting
 tags: [video-editing, silence-removal, rough-cut, transcription, subtitle, nle-export, cli, nim]
 language: Nim
 license: Unlicense
@@ -77,7 +77,7 @@ health:
 
 命令行版「一遍粗剪」工具：把素材交给它，它靠响度（也可换成运动或你自己的字幕文本）判断哪里是冷场，直接剪掉，然后输出成片，或者输出一份 Premiere / Resolve / Final Cut / Shotcut / Kdenlive 能直接打开的工程。
 
-![Auto-Editor — 健康度雷达](../../../assets/health/auto-editor.zh.svg)
+![Auto-Editor — 健康度雷达](../../../../assets/health/auto-editor.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 Auto-Editor 读素材的音轨（默认方法就是 `--edit audio:threshold=0.04`），按时间测响度，给每一刻打一个整数**标签**——`0` 表示静音、`1` 表示有效——再按标签执行动作（剪掉、保留、变速）。你控制的是规则而不是每一个切点：阈值可以用百分比或 dB，静音录屏可以把 audio 换成 `motion`，还能用 `--edit:N` / `--when:N` 加到 255 个标签类，用 `--margin` 给切点留余量避免削掉辅音。输出端刻意做成两头：要么用自带的 FFmpeg 编码写出新的媒体文件，要么写出一份引用原始素材的工程文件——所以交给人工剪辑收尾时不用重编码，也不会损失任何信息。留给你自己的是两件事：挑一个匹配你现场底噪的阈值，以及决定交付物是文件还是工程。
 
-![auto-editor — 主干用户故事](../../../assets/flow/auto-editor.zh.svg)
+![auto-editor — 主干用户故事](../../../../assets/flow/auto-editor.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/auto-editor.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,21 +109,21 @@ Auto-Editor 读素材的音轨（默认方法就是 `--edit audio:threshold=0.04
 
 ## 何时不用
 
-- **这次的剪辑是创作而不是机械活。** Auto-Editor 没有时间线界面、没有回放预览、不做多机位、不做调色——它只按数值规则决定留或剪。要界面就用 [Concat](../video-editing/concat.zh.md) 或 [OpenCut](../video-editing/opencut.zh.md)，需要人逐帧判断就用商业 NLE（未收录）。
-- **这一步要嵌进你自己的 Python 管线。** 直接用 [MoviePy](moviepy.zh.md) 或 [FFmpeg](ffmpeg.zh.md)：Auto-Editor 是带 CLI 的二进制程序，不是库，嵌进去意味着 shell 调用加解析输出。需要帧级访问就用 [PyAV](pyav.zh.md)。
+- **这次的剪辑是创作而不是机械活。** Auto-Editor 没有时间线界面、没有回放预览、不做多机位、不做调色——它只按数值规则决定留或剪。要界面就用 [Concat](../../video-editing/concat.zh.md) 或 [OpenCut](../../video-editing/opencut.zh.md)，需要人逐帧判断就用商业 NLE（未收录）。
+- **这一步要嵌进你自己的 Python 管线。** 直接用 [MoviePy](moviepy.zh.md) 或 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)：Auto-Editor 是带 CLI 的二进制程序，不是库，嵌进去意味着 shell 调用加解析输出。需要帧级访问就用 [PyAV](../transcoding-and-pipelines/pyav.zh.md)。
 - **你要托管式的多人文本剪辑。** 那是 [Descript](https://descript.com)（未收录）一类 SaaS，代价是素材要离开本机；Auto-Editor 全离线，没有 Web 界面也没有审阅流程。
 - **部署脚本里写着 `pip install auto-editor`。** 作者已经**停止在 PyPI 发布 CLI**，安装页写得很明确——请改成固定 Homebrew formula、AUR 包或 release 二进制。
-- **你对转写质量有硬要求，或者需要说话人分离。** `whisper` 子命令只内置 whisper.cpp 这条路（Whisper GGML 模型、NVIDIA Parakeet GGUF，或 macOS 26+ 的 Apple 端上转写）；需要说话人分离、以翻译为主的工作流或托管 API，就自己上 [OpenAI Whisper](whisper.zh.md) 或云端 ASR。
+- **你对转写质量有硬要求，或者需要说话人分离。** `whisper` 子命令只内置 whisper.cpp 这条路（Whisper GGML 模型、NVIDIA Parakeet GGUF，或 macOS 26+ 的 Apple 端上转写）；需要说话人分离、以翻译为主的工作流或托管 API，就自己上 [OpenAI Whisper](../speech-and-subtitles/whisper.zh.md) 或云端 ASR。
 - **素材很大而磁盘不够。** 默认路径是写出**新文件**而不是原地剪；只想知道会剪掉哪些片段时，先跑 `--preview`。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [FFmpeg](ffmpeg.zh.md) | ✅ | 如果你已经在写滤镜图、只需要**检测**静音，选 FFmpeg 的 `silencedetect`；如果你要的是「连切点和输出一起搞定」，选 Auto-Editor，因为 `silencedetect` 只打印时间戳，把它们变成片段和一次编码仍是你的活。 | FFmpeg 是万能引擎、对你的剪辑不持任何观点；Auto-Editor 是有观点的封装，还能产出 Premiere / Resolve / FCP 一类的工程文件。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 如果你已经在写滤镜图、只需要**检测**静音，选 FFmpeg 的 `silencedetect`；如果你要的是「连切点和输出一起搞定」，选 Auto-Editor，因为 `silencedetect` 只打印时间戳，把它们变成片段和一次编码仍是你的活。 | FFmpeg 是万能引擎、对你的剪辑不持任何观点；Auto-Editor 是有观点的封装，还能产出 Premiere / Resolve / FCP 一类的工程文件。 |
 | [MoviePy](moviepy.zh.md) | ✅ | 如果剪辑是程序化的、你清楚要什么时间线，选 MoviePy；如果**时间线本身就是未知量**（静音在哪），选 Auto-Editor，因为 MoviePy 执行你的决定，Auto-Editor 从素材里推导这个决定。 | MoviePy：Python API、进程内、到处能渲染；Auto-Editor：二进制 CLI，自带标签/动作模型并能交棒给 NLE。 |
-| [OpenAI Whisper](whisper.zh.md) | ✅ | 如果只要转写，选 Whisper（或云端 ASR）；如果转写是**用来剪的输入**，选 Auto-Editor，因为 `auto-editor whisper … --format srt` 加 `--edit word:question` 能按说话内容剪，而 Whisper 自己做不到。 | Whisper：顶尖 ASR，没有剪辑模型，一切靠你写脚本；Auto-Editor：内置 GGML/Parakeet 一条路加剪辑模型，但不做说话人分离，质量旋钮也只有内置模型那几个。 |
-| [Concat](../video-editing/concat.zh.md) | ✅ | 如果需要人来看和调整切点，选 Concat 或商业 NLE；如果第一遍是机械活、只有收尾需要人工，选 Auto-Editor，因为 Concat 是你要去操作的完整 AGPL 编辑器，而 Auto-Editor 是你脚本里的一道前置工序。 | Concat：可交互、全平台渲染、还是 beta；Auto-Editor：一次成型、没有界面，并且喂给你已经在用的编辑器。 |
+| [OpenAI Whisper](../speech-and-subtitles/whisper.zh.md) | ✅ | 如果只要转写，选 Whisper（或云端 ASR）；如果转写是**用来剪的输入**，选 Auto-Editor，因为 `auto-editor whisper … --format srt` 加 `--edit word:question` 能按说话内容剪，而 Whisper 自己做不到。 | Whisper：顶尖 ASR，没有剪辑模型，一切靠你写脚本；Auto-Editor：内置 GGML/Parakeet 一条路加剪辑模型，但不做说话人分离，质量旋钮也只有内置模型那几个。 |
+| [Concat](../../video-editing/concat.zh.md) | ✅ | 如果需要人来看和调整切点，选 Concat 或商业 NLE；如果第一遍是机械活、只有收尾需要人工，选 Auto-Editor，因为 Concat 是你要去操作的完整 AGPL 编辑器，而 Auto-Editor 是你脚本里的一道前置工序。 | Concat：可交互、全平台渲染、还是 beta；Auto-Editor：一次成型、没有界面，并且喂给你已经在用的编辑器。 |
 | Descript（闭源 SaaS） | 未收录 | 如果在浏览器里按文稿剪辑、还要团队审阅，且不在意素材上云，选 Descript；如果素材不能离开本机或必须跑在 CI 里，选 Auto-Editor，因为 Descript 绑账号、按席位收费且闭源。 | Descript：成熟的文本剪辑与协作；Auto-Editor：离线、免费、可脚本化，但没有转写界面和审阅流程。 |
 
 ## 技术栈

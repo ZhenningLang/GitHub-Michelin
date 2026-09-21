@@ -2,7 +2,7 @@
 name: FFmpeg
 slug: ffmpeg
 repo: https://github.com/FFmpeg/FFmpeg
-category: video-audio
+category: transcoding-and-pipelines
 tags: [video, audio, transcoding, codecs, muxing, filtering, multimedia, cli, libav]
 language: C
 license: LGPL-2.1-or-later
@@ -64,7 +64,7 @@ health:
 
 通用音视频框架——`ffmpeg`/`ffprobe`/`ffplay` 命令行工具，加上 `libav*` 系列库，几乎能解码、编码、转码、封装、解封装、滤镜处理世面上一切媒体格式。
 
-![ffmpeg — 健康度雷达](../../../assets/health/ffmpeg.zh.svg)
+![ffmpeg — 健康度雷达](../../../../assets/health/ffmpeg.zh.svg)
 
 ## 何时使用
 
@@ -88,7 +88,7 @@ health:
 | [GStreamer](gstreamer.zh.md) | ✅ | 需要面向实时流和应用内嵌媒体的管线/元件图框架时，选 GStreamer。 | 管线/元件图框架，面向实时流和应用内嵌媒体；做实时应用和设备管线时更可组合，但编程模型比“调一个命令行”重得多——而且它底层往往照样用 FFmpeg/libav。 |
 | libav(avconv) | 未收录 | 只有在维护仍带 `avconv` 的旧系统时，才考虑 libav。 | 2011 年从 FFmpeg 分出的历史分叉；后来合并回去、基本已死。老发行版带 `avconv`；任何新工作都用 FFmpeg，别用 libav。 |
 | [HandBrake](handbrake.zh.md) | ✅ | 需要面向终端用户的 GUI/CLI 转码应用时，选 HandBrake。 | 面向终端用户的转码应用（GUI + `HandBrakeCLI`），建在 FFmpeg/x264/x265 之上；预设驱动的“把这个转成 MP4/MKV”体验很好，但格式/滤镜面比裸 FFmpeg 窄得多，且不是库。 |
-| [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 需要带时间线模型的编辑/合成多媒体框架时，选 MLT/Shotcut。 | 带时间线模型、做编辑/合成的多媒体*框架*；真正的编解码活仍交给底下的 FFmpeg——当你要的是编辑器/NLE 而非转码器时才选它。 |
+| [MLT](../editing-and-cutting/mlt.zh.md) / Shotcut | 部分已收录 | 需要带时间线模型的编辑/合成多媒体框架时，选 MLT/Shotcut。 | 带时间线模型、做编辑/合成的多媒体*框架*；真正的编解码活仍交给底下的 FFmpeg——当你要的是编辑器/NLE 而非转码器时才选它。 |
 | AWS Elemental MediaConvert / 云转码 | 未收录 | 需要零运维、弹性伸缩且接受按分钟付费时，选云转码。 | 托管、按分钟计费的转码服务（内部常源自 FFmpeg）；零运维、弹性扩展，但有厂商锁定、按分钟成本，且是 SaaS——不是你能自托管的仓库。 |
 
 ## 技术栈

@@ -2,7 +2,7 @@
 name: OpenAI Whisper
 slug: whisper
 repo: https://github.com/openai/whisper
-category: video-audio
+category: speech-and-subtitles
 tags: [speech-recognition, asr, transcription, translation, audio, python, pytorch, openai, multilingual]
 language: Python
 license: MIT
@@ -75,7 +75,7 @@ health:
 OpenAI's general-purpose automatic speech recognition model that transcribes and translates audio to English across 99 languages, with multiple size/quality tradeoffs.
 
 
-![OpenAI Whisper — health radar](../../../assets/health/whisper.svg)
+![OpenAI Whisper — health radar](../../../../assets/health/whisper.svg)
 
 ## When to use
 

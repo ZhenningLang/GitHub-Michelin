@@ -98,7 +98,7 @@ health:
 | [yt-dlp](yt-dlp.zh.md)（`--write-auto-subs`） | ✅ | 需要更广谱且也能拉字幕轨道的下载器时，选 yt-dlp。 | 这个重量级下载器也能拉字幕轨道；面广得多（多站点的媒体 + 字幕）但更重、偏 CLI——本库是聚焦、进程内、只取转写的 Python 调用。 |
 | YouTube Data API v3（Captions） | 未收录 | 需要官方契约 API 且具备所需所有权/OAuth 时，选 YouTube Data API captions。 | 官方且有契约，但需要 OAuth，且字幕*下载*要频道所有权——你一般取不到任意第三方的字幕文本，而这正是本库的生态位。 |
 | [Selenium](../web-automation/browser-driver-frameworks/selenium.zh.md) / Playwright 爬取 | 部分已收录 | 必须驱动真实播放器，且能接受成本和脆弱性时，选浏览器爬取。 | 真实浏览器能扛住一些播放器本身能扛的变更，但慢、吃资源、脆。本库完全绕开浏览器。Playwright 未单独收录。 |
-| [Whisper](../media-processing/video-audio/whisper.zh.md)（转写音频） | ✅ | 没有字幕轨道、需要从音频生成转写时，选 Whisper。 | 当没有字幕轨道时从音频*生成*转写；算力大得多，也不与 YouTube 自家字幕时间戳对齐，但能处理关掉字幕的视频。 |
+| [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md)（转写音频） | ✅ | 没有字幕轨道、需要从音频生成转写时，选 Whisper。 | 当没有字幕轨道时从音频*生成*转写；算力大得多，也不与 YouTube 自家字幕时间戳对齐，但能处理关掉字幕的视频。 |
 
 ## 技术栈
 

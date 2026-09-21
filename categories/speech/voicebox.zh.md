@@ -82,7 +82,7 @@ health:
 
 ## 何时不用
 
-- **你要交付一个稳定的生产级 TTS/STT API。** Voicebox 是一个年轻、单人维护的应用：`main` 停在 2026-07，最新 release 是 v0.5.0（2026-04），约 699 个 issue/PR 未关。要维护一个长期在线服务，应自托管专用引擎——STT 用 [Whisper](../media-processing/video-audio/whisper.zh.md)，TTS 用库级的 Coqui XTTS 或 Kokoro，包在你自己的封装后面——API 契约由你自己承担。
+- **你要交付一个稳定的生产级 TTS/STT API。** Voicebox 是一个年轻、单人维护的应用：`main` 停在 2026-07，最新 release 是 v0.5.0（2026-04），约 699 个 issue/PR 未关。要维护一个长期在线服务，应自托管专用引擎——STT 用 [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md)，TTS 用库级的 Coqui XTTS 或 Kokoro，包在你自己的封装后面——API 契约由你自己承担。
 - **你只需要开箱即用的云端级 TTS 且没有 GPU。** 用 ElevenLabs 或其他托管 TTS：几次 API 调用、无需本地硬件、音色和语种覆盖广；代价是按字符计费、音频离开你的机器。
 - **你只需要听写。** 专用听写工具的面更小：WisprFlow（SaaS）提供跨平台的开箱粘贴；而 Voicebox 的自动粘贴**目前仅 macOS**（Windows/Linux 粘贴仍在路线图上）。若只需转写，直接用 Whisper。
 - **你没有 GPU 又需要长文本或高质量生成。** 官方文档把 CPU 生成标为比 GPU 慢约 5–50 倍。此时应改用对 CPU 友好的小引擎（Kokoro、LuxTTS），或通过官方 Remote Mode 把重活卸载到远端 GPU。
@@ -97,7 +97,7 @@ health:
 | WisprFlow | 未收录 | 要开箱即用的跨平台听写，选 WisprFlow；只有当你还需要 TTS/agent 那一半、或拒绝把音频送到云端时，才选 Voicebox。 | SaaS 听写完成度高且跨平台；Voicebox 两个方向都包，但自动粘贴仅限 macOS。 |
 | [GPT-SoVITS](gpt-sovits.zh.md) | ✅ | 想要一个专注本地小样本声音克隆、自带 WebUI 的 TTS 时，选 GPT-SoVITS；当你还要听写、效果和 MCP/agent 输出链路时，选 Voicebox。 | GPT-SoVITS 更窄、更聚焦克隆质量；Voicebox 是一整个工作室，活动部件更多、技术栈更重。 |
 | [Coqui TTS（idiap 分支）](coqui-ai-tts.zh.md) | ✅ | 想把克隆 TTS 作为 Python 库嵌进自己的管线时，选 Coqui TTS；想要带界面和 HTTP/MCP 接口的成品时，选 Voicebox。 | 用库换来完全控制且没有应用外壳，但服务、界面、队列和效果都得你自己搭。 |
-| [Whisper](../media-processing/video-audio/whisper.zh.md) | ✅ | 转写就是全部任务时，单选 Whisper；需要把转写接进语音 I/O 应用（热键听写 + TTS + agent 发声）时，选 Voicebox。 | Whisper 正是 Voicebox 自己用的 STT 组件——更轻更专，但没有听写界面、TTS 和 MCP。 |
+| [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | ✅ | 转写就是全部任务时，单选 Whisper；需要把转写接进语音 I/O 应用（热键听写 + TTS + agent 发声）时，选 Voicebox。 | Whisper 正是 Voicebox 自己用的 STT 组件——更轻更专，但没有听写界面、TTS 和 MCP。 |
 
 ## 技术栈
 

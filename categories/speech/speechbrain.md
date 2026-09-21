@@ -91,7 +91,7 @@ You also reach for it when you want pretrained models you can both *use* and *re
 | ESPnet | 未收录 | Choose ESPnet when you need end-to-end speech processing with deep ASR/TTS recipe coverage and research lineage. | Powerful, but historically steeper and more Kaldi-flavored than SpeechBrain. |
 | Hugging Face Transformers (audio) | 未收录 | Choose Transformers audio models when using or fine-tuning pretrained Whisper/Wav2Vec2-style models is enough. | Excellent model access, but not a full recipe/training framework spanning separation, enhancement, and diarization. |
 | Kaldi | 未收录 | Choose Kaldi when you need the classic, highly optimized ASR toolkit and accept C++/shell-heavy workflows. | Maximizes control, not ergonomics; it is far steeper and not PyTorch-native. |
-| faster-whisper / [Whisper](../media-processing/video-audio/whisper.md) | 部分已收录 | Choose inference-focused Whisper stacks when transcription is the job, not multi-task speech training. | Excellent if you only transcribe, but not a multi-task training toolkit. faster-whisper is not indexed separately. |
+| faster-whisper / [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.md) | 部分已收录 | Choose inference-focused Whisper stacks when transcription is the job, not multi-task speech training. | Excellent if you only transcribe, but not a multi-task training toolkit. faster-whisper is not indexed separately. |
 
 ## Tech stack
 

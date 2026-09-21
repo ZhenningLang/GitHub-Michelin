@@ -91,7 +91,7 @@ health:
 | ESPnet | 未收录 | 需要端到端语音处理、深 ASR/TTS recipe 覆盖和研究血统时，选 ESPnet。 | 很强，但历来学习曲线更陡，也更带 Kaldi 味。 |
 | Hugging Face Transformers（音频） | 未收录 | 使用或微调 Whisper/Wav2Vec2 这类预训练音频模型已经足够时，选 Transformers 音频模型。 | 模型获取极方便，但不是横跨分离、增强、说话人分割的完整 recipe/训练框架。 |
 | Kaldi | 未收录 | 需要经典、高度优化的 ASR 工具箱，并能接受 C++/shell-heavy 工作流时，选 Kaldi。 | 它追求极致控制而非易用；学习曲线陡，且不是 PyTorch 原生。 |
-| faster-whisper / [Whisper](../media-processing/video-audio/whisper.zh.md) | 部分已收录 | 只做转写而非多任务语音训练时，选聚焦推理的 Whisper 技术栈。 | 只转写时极佳，但不是多任务训练工具箱。faster-whisper 未单独收录。 |
+| faster-whisper / [Whisper](../media-processing/video-audio/speech-and-subtitles/whisper.zh.md) | 部分已收录 | 只做转写而非多任务语音训练时，选聚焦推理的 Whisper 技术栈。 | 只转写时极佳，但不是多任务训练工具箱。faster-whisper 未单独收录。 |
 
 ## 技术栈
 

@@ -2,7 +2,7 @@
 name: ffsubsync
 slug: ffsubsync
 repo: https://github.com/smacke/ffsubsync
-category: video-audio
+category: speech-and-subtitles
 tags: [subtitles, video, synchronization, srt, ffmpeg, vad, cli]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 一个语言无关的命令行工具，把时间轴对不上的字幕文件自动重新对齐到视频（或一份参考字幕）上，靠 FFT 互相关来对齐语音段。
 
-![ffsubsync — 健康度雷达](../../../assets/health/ffsubsync.zh.svg)
+![ffsubsync — 健康度雷达](../../../../assets/health/ffsubsync.zh.svg)
 
 ## 何时使用
 
