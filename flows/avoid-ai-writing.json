@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "avoid-ai-writing does",
+    "zh": "avoid-ai-writing 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the skill into your agent's skills directory",
+      "zh": "把 skill 克隆进 agent 的 skills 目录",
+      "code": "~/.claude/skills/avoid-ai-writing"
+    },
+    {
+      "lane": "them",
+      "en": "Ships SKILL.md plus the pattern catalog it must read before auditing anything",
+      "zh": "自带 SKILL.md 和审计前必须先读完的模式目录",
+      "code": "references/patterns.md"
+    },
+    {
+      "lane": "you",
+      "en": "Hand it a draft, or point it at a prose file",
+      "zh": "把草稿交给它，或指定一个 prose 文件",
+      "code": "remove AI-isms · audit for AI tells"
+    },
+    {
+      "lane": "them",
+      "en": "Flags matches by pattern and severity, separating real problems from judgment calls",
+      "zh": "按模式与严重度列出命中项，区分真问题和判断题"
+    },
+    {
+      "lane": "them",
+      "en": "Applies up to two passes and stops when no justified in-scope edit remains",
+      "zh": "最多做两轮修改，没有正当的范围内改动就停"
+    },
+    {
+      "lane": "you",
+      "en": "Optionally gate prose in CI or pre-commit",
+      "zh": "可选：在 CI 或 pre-commit 里给 prose 设门禁",
+      "code": "conorbronsdon/avoid-ai-writing@v3.35.0"
+    },
+    {
+      "lane": "them",
+      "en": "Fails the build when a file's finding count crosses your threshold",
+      "zh": "某个文件的命中数超过阈值就让构建失败",
+      "code": "threshold · glob · context"
+    },
+    {
+      "lane": "them",
+      "en": "Returns one final version, a changes summary, and the verification report",
+      "zh": "返回唯一一版终稿、改动摘要和验证报告"
+    }
+  ],
+  "value": {
+    "en": "One audited final version comes back, with a finding count you can gate in CI instead of a vibe check",
+    "zh": "拿回唯一一版过了审计的终稿，外加一个能在 CI 里设门禁的命中数，而不是凭感觉"
+  },
+  "sources": [
+    "https://github.com/conorbronsdon/avoid-ai-writing README — Install (git clone … ~/.claude/skills/avoid-ai-writing), trigger phrases, three modes (rewrite/detect/edit), --iterate 1|2 pass ceiling",
+    "README — Gate prose in GitHub Actions (uses: conorbronsdon/avoid-ai-writing@v3.35.0 with glob/threshold/context) and .pre-commit-hooks.yaml",
+    "README — npx --package avoid-ai-writing-detector avoid-ai-writing draft.md (runs bin/avoid-ai-writing.js; verified locally: JSON result with score + issues)",
+    "SKILL.md frontmatter + reference-loading note requiring references/patterns.md in full (size verified locally: 103,947 bytes)",
+    "corpus/README.md and PROOF.md — self-measured false-positive table and the CI-gated self-scan (verified locally: node scripts/self-scan.js, node scripts/run-tests.js → 20 passed)"
+  ]
+}

@@ -13,6 +13,7 @@
 | **ai-flavor-remover** | 中文单文件 prompt 片段；作者标注只在 Gemini 2.5 Pro 上测试过，不是可安装 skill-pack。 | D（4/6） | [→](ai-flavor-remover.zh.md) |
 | **humanizer** | 英文上游 Claude Code skill，用于清理 AI 写作痕迹，带 plugin / install 文档和 MIT 许可证。 | B（4/6） | [→](humanizer.zh.md) |
 | **stop-slop** | 短小强硬的英文 prose 去机器腔 skill，适合快速清理，不适合细腻正式文体。 | B（4/6） | [→](stop-slop.zh.md) |
+| **avoid-ai-writing** | 英文优先的去 AI 味 skill：自带零依赖 npm 检测器、按命中数卡的 CI / pre-commit 门禁，以及一份公开自身误报率的人控语料。 | B（5/6） | [→](avoid-ai-writing.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [ai-flavor-remover](ai-flavor-remover.zh.md) | ✅ | D（4/6） | 作为 Gemini 测过的 prompt 标本看待，不要当成 OSS 依赖或 Agent Skills 包。 |
 | [humanizer](humanizer.zh.md) | ✅ | B（4/6） | 英文上游基线较强且有安装文档；中文 prose 优先看中文本地化方案。 |
 | [stop-slop](stop-slop.zh.md) | ✅ | B（4/6） | 最短的英文强规则去机器腔清单；正式 prose 更容易被过度编辑。 |
+| [avoid-ai-writing](avoid-ai-writing.zh.md) | ✅ | B（5/6） | 英文档里工程化程度最高：需要去 AI 味流程产出可设 CI 门禁的命中数时选它，而不是拿它的分数去判定作者身份。 |
 
 
 ## 什么该放这里
