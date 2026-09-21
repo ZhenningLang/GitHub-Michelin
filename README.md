@@ -1047,6 +1047,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **SiYuan** | Use it when you want a self-hosted block-level knowledge workspace where humans and AI agents co-edit — but some features are paywalled (open-core). | AGPL-3.0 | B (5/6) | [EN](categories/knowledge-base/siyuan.md) · [中](categories/knowledge-base/siyuan.zh.md) |
 | **Khoj** | Use it when you want a self-hostable AI second brain that answers from your docs and the web across browser/desktop/Obsidian, with local or online LLMs. | AGPL-3.0 | C (6/6) | [EN](categories/knowledge-base/khoj.md) · [中](categories/knowledge-base/khoj.zh.md) |
 | **Reor** | Use it as a pattern source for local-first AI note-taking; it is archived (2025-05), so do not bet production on it. | AGPL-3.0 | E (4/6) | [EN](categories/knowledge-base/reor.md) · [中](categories/knowledge-base/reor.zh.md) |
+| **OpenKB** | Use it when you want long documents compiled once by an LLM into a persistent, cross-linked Markdown wiki you then query — headless CLI, no vector DB. | Apache-2.0 | B (6/6) | [EN](categories/knowledge-base/openkb.md) · [中](categories/knowledge-base/openkb.zh.md) |
 
 ### peripherals
 
