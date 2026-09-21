@@ -17,6 +17,7 @@
 | **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | B (6/6) | [→](graphiti.md) |
 | **LangMem** | Use it when you need LangMem for the agent-memory category. | B (5/6) | [→](langmem.md) |
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A (6/6) | [→](cognee.md) |
+| **OpenViking** | Use it when several coding agents or a team must share one context store holding both your documents and their long-term memory, and you can run a server — but the main project is AGPL-3.0 and the repo self-labels alpha. | B (6/6) | [→](openviking.md) |
 
 
 ## Comparison matrix
@@ -29,6 +30,7 @@
 | [claude-mem](claude-mem.md) | ✅ | B (6/6) | Hook/MCP memory wired into a coding agent's session lifecycle (not a model-agnostic app memory API); reported star count is unverified. |
 | [ByteRover CLI](byterover.md) | ✅ | D (6/6) | Portable structured memory for coding agents with git-like versioning and cloud sync; extremely young (2025-06) and license ambiguity (NOASSERTION vs Elastic 2.0). |
 | Letta (MemGPT) / Zep / Cognee | 未收录 | — | Other agent-memory layers named across the pages. |
+| [OpenViking](openviking.md) | ✅ | B (6/6) | Self-hosted context database that unifies document RAG and session memory behind one `viking://` tree with per-user isolation; costs a server, two model dependencies and AGPL-3.0. |
 
 ## What belongs here
 

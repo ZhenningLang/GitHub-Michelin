@@ -201,6 +201,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | Apache-2.0 | B（6/6） | [EN](categories/agent-memory/graphiti.md) · [中](categories/agent-memory/graphiti.zh.md) |
 | **LangMem** | 当你需要在 agent-memory 方向评估 LangMem 时用它。 | MIT | B（5/6） | [EN](categories/agent-memory/langmem.md) · [中](categories/agent-memory/langmem.zh.md) |
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | Apache-2.0 | A（6/6） | [EN](categories/agent-memory/cognee.md) · [中](categories/agent-memory/cognee.zh.md) |
+| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | AGPL-3.0 | B（6/6） | [EN](categories/agent-memory/openviking.md) · [中](categories/agent-memory/openviking.zh.md) |
 
 ### deep-research
 

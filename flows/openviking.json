@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenViking does", "zh": "OpenViking 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and start the server, wiring an embedding model and a VLM", "zh": "装好服务端并起进程，接上 embedding 与视觉模型", "code": "pip install openviking --upgrade · openviking-server init", "component": {"en": "openviking-server", "zh": "openviking-server"}},
+    {"lane": "you", "en": "Feed it the repositories and documents you want it to hold", "zh": "把要长期留住的仓库与文档喂进去", "code": "ov add-resource https://github.com/volcengine/OpenViking", "component": {"en": "ov CLI", "zh": "ov 命令行"}},
+    {"lane": "them", "en": "Parses, builds the directory tree, writes L0/L1 summaries, indexes it", "zh": "解析、建目录树、后台写 L0/L1 摘要、建索引", "code": ".abstract.md · .overview.md", "component": {"en": "SemanticQueue", "zh": "SemanticQueue"}},
+    {"lane": "you", "en": "Install the memory plugin into the coding agent you already use", "zh": "给你已经在用的编码 agent 装上记忆插件", "code": "install.sh --harness claude", "component": {"en": "memory-plugin-shared", "zh": "memory-plugin-shared"}},
+    {"lane": "them", "en": "Recalls memories before each prompt; captures each finished turn", "zh": "每次提问先召回并注入记忆，每轮回答后捕获", "component": {"en": "hooks + MCP proxy", "zh": "hooks + MCP 代理"}},
+    {"lane": "them", "en": "Archives the session, extracts memories, merges or drops them", "zh": "归档会话，把对话抽成记忆，与旧记忆去重合并", "component": {"en": "session commit", "zh": "session commit"}}
+  ],
+  "value": {"en": "You stop hand-writing memory files and re-explaining context every session", "zh": "你不用再手写记忆文件，也不用每次重新交代背景"},
+  "sources": [
+    "README Quick start (pip install openviking --upgrade, openviking-server init, ov add-resource, ov tree/find)",
+    "docs.openviking.ai Concepts → Architecture Overview (Parse/TreeBuilder/SemanticQueue pipeline; Storage layer AGFS + vector index)",
+    "docs.openviking.ai Concepts → Storage Architecture (AGFS/vector split, .abstract.md / .overview.md directory structure, VikingDB backend)",
+    "docs.openviking.ai Concepts → Sessions (session commit → compress → archive → memory extraction)",
+    "docs.openviking.ai Agent Integrations → Capability Reference §3.1.1 (install.sh --harness claude) and §1.2 (auto-recall / auto-capture hook surface)",
+    "docs.openviking.ai Agent Integrations → Claude Code (hooks recall before every prompt, capture after each response, commit before compaction and on session end)"
+  ]
+}

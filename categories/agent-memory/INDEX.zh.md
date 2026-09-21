@@ -17,6 +17,7 @@
 | **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | B（6/6） | [→](graphiti.zh.md) |
 | **LangMem** | 当你需要在 `agent-memory` 分类中评估 LangMem 时用它。 | B（5/6） | [→](langmem.zh.md) |
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A（6/6） | [→](cognee.zh.md) |
+| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
 
 
 ## 对比矩阵
@@ -29,6 +30,7 @@
 | [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
 | [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 面向编码 agent 的可移植结构化记忆，带 git 式版本控制和云同步；极其年轻（2025-06 创建），许可模糊（NOASSERTION 与 Elastic 2.0）。 |
 | Letta (MemGPT) / Zep / Cognee | 未收录 | — | 各页对比里点到的其他 agent 记忆层。 |
+| [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
 
 ## 什么该放这里
 

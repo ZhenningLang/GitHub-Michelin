@@ -529,6 +529,7 @@ https://github.com/verl-project/verl,verl,llm-training,categories/llm-training/v
 https://github.com/vibrantlabsai/ragas,ragas,llm-eval,categories/llm-eval/ragas.md
 https://github.com/virgiliojr94/book-to-skill,book-to-skill,agent-skills,categories/agent-skills/book-to-skill.md
 https://github.com/vllm-project/vllm,vllm,serving-engines,categories/llm-inference/serving-engines/vllm.md
+https://github.com/volcengine/OpenViking,openviking,agent-memory,categories/agent-memory/openviking.md
 https://github.com/vran-dev/PrettyZoo,prettyzoo,database-clients,categories/databases/database-clients/prettyzoo.md
 https://github.com/vuejs/core,vue,frameworks,categories/web-ui/frameworks/vue.md
 https://github.com/w00fx/spec-anchored-agentic-development,spec-anchored-agentic-development,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md

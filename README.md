@@ -204,6 +204,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | Apache-2.0 | B (6/6) | [EN](categories/agent-memory/graphiti.md) · [中](categories/agent-memory/graphiti.zh.md) |
 | **LangMem** | Use it when you need LangMem in the agent-memory area. | MIT | B (5/6) | [EN](categories/agent-memory/langmem.md) · [中](categories/agent-memory/langmem.zh.md) |
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | Apache-2.0 | A (6/6) | [EN](categories/agent-memory/cognee.md) · [中](categories/agent-memory/cognee.zh.md) |
+| **OpenViking** | Use it when several coding agents or a team must share one context store holding both your documents and their long-term memory, and you can run a server — but the main project is AGPL-3.0 and the repo self-labels alpha. | AGPL-3.0 | B (6/6) | [EN](categories/agent-memory/openviking.md) · [中](categories/agent-memory/openviking.zh.md) |
 
 ### deep-research
 
