@@ -212,5 +212,66 @@ class FlowLintTest(unittest.TestCase):
             self.assertTrue(any("demo.json" in e and "sources" in e for e in rep.errors))
 
 
+class FlowPhaseTest(unittest.TestCase):
+    """`phase` labels a lifecycle stage; it must never read as a branch or as extra lanes."""
+
+    def _phased(self) -> dict:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        spec["steps"][2]["phase"] = {"en": "Every turn", "zh": "每轮运行"}
+        return spec
+
+    def test_valid_phases_pass_and_inherit_until_the_next_marker(self) -> None:
+        spec = self._phased()
+        self.assertEqual(flow_card.validate_spec(spec), [])
+        self.assertEqual([p["en"] if p else None for p in flow_card.phases_of(spec)],
+                         ["Build", "Build", "Every turn", "Every turn"])
+
+    def test_a_marker_off_the_first_step_is_rejected(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][1]["phase"] = {"en": "Run", "zh": "运行"}
+        self.assertTrue(any("first stage would be unlabeled" in e for e in flow_card.validate_spec(spec)))
+
+    def test_repeating_the_open_stage_is_rejected(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        spec["steps"][0]["phase"] = {"en": "Build", "zh": "搭建"}
+        spec["steps"][1]["phase"] = {"en": "Build", "zh": "搭建"}
+        self.assertTrue(any("repeats the stage already open" in e for e in flow_card.validate_spec(spec)))
+
+    def test_more_than_three_stages_and_bad_labels_are_rejected(self) -> None:
+        spec = copy.deepcopy(SPEC)
+        for st, label in zip(spec["steps"], ("A", "B", "C", "D")):
+            st["phase"] = {"en": label, "zh": label}
+        self.assertTrue(any("at most 3 phases" in e for e in flow_card.validate_spec(spec)))
+
+        long_en = self._phased()
+        long_en["steps"][0]["phase"] = {"en": "x" * 25, "zh": "搭建"}
+        self.assertTrue(any("phase.en is 25 chars" in e for e in flow_card.validate_spec(long_en)))
+
+        not_bilingual = self._phased()
+        not_bilingual["steps"][0]["phase"] = "Build"
+        self.assertTrue(any("phase must be an object" in e for e in flow_card.validate_spec(not_bilingual)))
+
+    def test_a_phase_less_spec_renders_byte_identical_to_the_pre_phase_renderer(self) -> None:
+        # Backward compatibility: 53 specs predate the field, so adding it must not touch them.
+        for lang in ("en", "zh"):
+            svg = flow_card.render(SPEC, lang)
+            self.assertNotIn(".ph{", svg)
+            self.assertNotIn('class="ph"', svg)
+
+    def test_phased_render_labels_every_card_of_the_stage(self) -> None:
+        svg = flow_card.render(self._phased(), "en")
+        self.assertEqual(svg.count('class="ph"'), len(SPEC["steps"]))
+        self.assertEqual(svg.count(">Build<"), 2)
+        self.assertEqual(svg.count(">Every turn<"), 2)
+        self.assertIn(".ph{", svg)
+
+    def test_steps_block_carries_the_stage_on_every_step(self) -> None:
+        block = flow_card.steps_block(self._phased(), "zh", "demo", "Demo")
+        self.assertIn("1. **你**（搭建）：安装", block)
+        self.assertIn("2. **Demo**（搭建）：注册钩子", block)
+        self.assertIn("4. **Demo**（每轮运行）：完成工作", block)
+
+
 if __name__ == "__main__":
     unittest.main()
