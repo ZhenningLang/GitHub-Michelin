@@ -35,7 +35,8 @@
 | [Agent Lightning](agent-lightning.zh.md) | ✅ | B（5/6） | 微软出品的强化学习/优化训练器，把 agent 执行与训练后端解耦，几乎零改动地优化任意框架（LangChain、AutoGen、OpenAI SDK 等）构建的 agent。 |
 | [Colossal-AI](colossalai.zh.md) | ✅ | B（5/6） | 当你需要用张量/流水线/ZeRO 并行在多 GPU 上训练/微调大模型时用它——单卡 LoRA 用它是杀鸡用牛刀。 |
 | [Soup](soup.zh.md) | ✅ | B（6/6） | 当一份 YAML 要把微调从 JSONL 一路带到可服务、可导出的模型，而底座装不进你的显卡时用它——当配置契约必须跨版本稳定、或模型本就装得下且要追求速度时不用。 |
-| HF TRL / verl | 未收录 | — | 各页里点到的其他微调 / RL 训练器 |
+| [Hugging Face TRL](trl.zh.md) | ✅ | A（6/6） | 接入 transformers 技术栈的 SFT / DPO / GRPO 训练器；管线本来就在 Hugging Face 生态里时优先选它。 |
+| [verl](verl.zh.md) | ✅ | B（6/6） | 面向大规模 RL 后训练的框架（HybridFlow），核心是把 rollout 与训练分开；不是开箱即用的 SFT 训练器。 |
 
 ## 什么该放这里
 

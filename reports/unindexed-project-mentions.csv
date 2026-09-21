@@ -383,7 +383,6 @@ Helicone,categories/llm-eval/pezzo.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
-HF TRL / verl,categories/llm-training/INDEX.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
@@ -424,7 +423,6 @@ KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Keras official RNN tutorials,categories/ml-research/lstm-time-series.md,,no
 KeyDB,categories/databases/database-engines/pikiwidb.md,,no
 Kibana,categories/observability/grafana.md,,no
-Kibana / Datadog / Apache Superset,categories/observability/INDEX.md,,no
 Kitty,categories/terminal-ui/alacritty.md,,no
 Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 KrakenD,categories/api-gateway/kong.md,,no
@@ -438,7 +436,6 @@ LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
-Letta (MemGPT) / Zep / Cognee,categories/agent-memory/INDEX.md,,no
 Letta Code,categories/agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
@@ -597,6 +594,7 @@ PaddleOCR,categories/ocr/laravel-ocr.md,,no
 PaddleOCR / EasyOCR / TrOCR / Cloud Vision / Textract,categories/ocr/INDEX.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
+paid residential proxies,categories/proxy-pool/INDEX.md,,no
 pandas-datareader,categories/web-scraping/crawling-tools/gopup.md,,no
 pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
@@ -677,7 +675,6 @@ Quartz,categories/task-queue/xxl-job.md,,no
 Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no
-Ragas / OpenAI Evals,categories/llm-eval/INDEX.md,,no
 RAPTOR,categories/rag-retrieval/pageindex.md,,no
 Rasa,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 raw `tc` (iproute2),categories/networking/wondershaper.md,,no
@@ -729,7 +726,6 @@ scrapy-rotating-proxies,categories/proxy-pool/proxy-pool.md,,no
 scrapy-rotating-proxies / proxy middlewares,categories/proxy-pool/proxybroker.md,,no
 ScrapydWeb,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 ScrapydWeb / Gerapy,categories/web-scraping/crawling-tools/scrapyd.md,,no
-scylla / paid residential proxies,categories/proxy-pool/INDEX.md,,no
 Seafile,categories/document-management/copyparty.md,,no
 seccomp / AppArmor / SELinux hardening,categories/sandboxing/gvisor.md,,no
 Security MCP servers (e.g. tool-wrapping SIEM/scanner MCPs),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no

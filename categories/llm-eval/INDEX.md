@@ -23,7 +23,7 @@
 | --- | --- | --- | --- |
 | [promptfoo](promptfoo.md) | ✅ | A (6/6) | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. |
 | [Pezzo](pezzo.md) | ✅ | C (4/6) | Use it when a small team wants one self-hosted control plane for prompt versioning plus cost/latency observability — but it looks stalled since mid-2025, so assume you'll maintain it yourself. |
-| Ragas / OpenAI Evals | 未收录 | — | Other LLM eval / red-team frameworks named across the pages. |
+| Ragas / OpenAI Evals | partly indexed | — | Other LLM eval / red-team frameworks named across the pages; Ragas is indexed in this category, OpenAI Evals is not. |
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.md) | ✅ | E (4/6) | Dataset/detector resources for AI-text comparison; use eval frameworks when you need a maintained test runner. |
 
 

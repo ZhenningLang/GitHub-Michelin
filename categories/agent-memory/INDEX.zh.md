@@ -29,7 +29,9 @@
 | [Claude Subconscious](claude-subconscious.zh.md) | ✅ | C（6/6） | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
 | [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 面向编码 agent 的可移植结构化记忆，带 git 式版本控制和云同步；极其年轻（2025-06 创建），许可模糊（NOASSERTION 与 Elastic 2.0）。 |
-| Letta (MemGPT) / Zep / Cognee | 未收录 | — | 各页对比里点到的其他 agent 记忆层。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | B（5/6） | 有状态 agent 平台，记忆 OS 由运行时自己掌管；适合让 Letta 接管 agent 循环，不适合只想给现有 harness 加上下文。 |
+| [Zep](zep.zh.md) | ✅ | A（4/6） | 面向用户事实的时间知识图谱记忆，事实会过期或被取代；是应用记忆的后端，不是编码 agent 的钩子层。 |
+| [Cognee](cognee.zh.md) | ✅ | A（6/6） | 自托管的知识图谱记忆引擎，面向文档形态的 agent 记忆；比文件或 SQLite 存储更重。 |
 | [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
 
 ## 什么该放这里

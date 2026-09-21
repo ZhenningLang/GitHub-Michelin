@@ -20,7 +20,7 @@
 | --- | --- | --- | --- |
 | [Grafana](grafana.md) | ✅ | B (5/6) | Unified dashboard/alerting over many datasources; a visualization layer, not a datastore (AGPL-3.0). |
 | [Telegraf](../dev-utilities/ops-infra/telegraf.md) | ✅ | A (5/6) | Plugin-driven collection/routing agent that feeds the backends Grafana reads — different job. |
-| Kibana / Datadog / Apache Superset | 未收录 | — | Other dashboard/observability/BI stacks named across the pages. |
+| Kibana / Datadog / Apache Superset | partly indexed | — | Other dashboard/observability/BI stacks named across the pages; Apache Superset is indexed under data-visualization, Kibana and Datadog are not. |
 
 ## What belongs here
 

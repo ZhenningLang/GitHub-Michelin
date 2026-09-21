@@ -35,7 +35,8 @@
 | [Agent Lightning](agent-lightning.md) | ✅ | B (5/6) | Microsoft RL/optimization trainer that improves agents built in any framework (LangChain, AutoGen, OpenAI SDK…) with near-zero code changes by decoupling agent execution from the training backend. |
 | [Colossal-AI](colossalai.md) | ✅ | B (5/6) | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. |
 | [Soup](soup.md) | ✅ | B (6/6) | Use it when one YAML must take a fine-tune from JSONL to a served, exported model and the base does not fit your GPU — not when the config contract must stay stable across upgrades or the model already fits resident and you want speed. |
-| HF TRL / verl | 未收录 | — | other fine-tuning / RL trainers named in the pages |
+| [Hugging Face TRL](trl.md) | ✅ | A (6/6) | SFT / DPO / GRPO trainers that plug into the transformers stack; pick it when the rest of your pipeline is already Hugging Face. |
+| [verl](verl.md) | ✅ | B (6/6) | RL post-training framework (HybridFlow) built around separating rollout from training at scale; not a drop-in SFT trainer. |
 
 ## What belongs here
 

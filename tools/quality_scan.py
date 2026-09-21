@@ -301,6 +301,72 @@ def is_boundary(text: str, index: int) -> bool:
     return index < 0 or index >= len(text) or not text[index].isalnum()
 
 
+SUMMARY_MATRIX_HEADINGS = ("## Comparison matrix", "## 对比矩阵")
+
+
+def audit_summary_matrix_rows(root: Path, indexed_targets: set[Path], indexed_slug_set: set[str]) -> list[Finding]:
+    """Audit the comparison matrix inside category/root INDEX files.
+
+    The per-page loop never sees these: `is_project_page` skips `INDEX.md`/`INDEX.zh.md`, so a
+    matrix row could keep calling an already-indexed project `未收录` indefinitely. That is exactly
+    how Letta / Zep / Cognee, Ragas, TRL / verl, Superset and Scylla sat stale until 2026-09-22 —
+    the defect class was real, the scan just could not look there. Same two deterministic
+    categories as the page scan, so it stays inside the existing gated set.
+    """
+    findings: list[Finding] = []
+    for matrix in sorted(root.glob("categories/**/INDEX*.md")):
+        if not matrix.is_file():
+            continue
+        rel = relpath(matrix, root)
+        text = matrix.read_text(encoding="utf-8")
+        rows: list[tuple[int, str]] = []
+        for heading in SUMMARY_MATRIX_HEADINGS:
+            rows.extend(section_lines(text, heading))
+        for line_no, line in rows:
+            if not line.strip().startswith("|") or is_table_separator(line):
+                continue
+            cells = table_cells(line)
+            if len(cells) < 2:
+                continue
+            status = cells[1]
+            if (
+                any(marker in status for marker in NOT_INDEXED_MARKERS)
+                and not any(marker in status for marker in INDEXED_MARKERS)
+                and not any(marker in status for marker in PARTIALLY_INDEXED_MARKERS)
+            ):
+                linked_indexed = any(
+                    (target := resolve_markdown_target(matrix, href)) and canonical_target(target) in indexed_targets
+                    for _label, href in LINK_RE.findall(line)
+                )
+                plain_indexed = any(
+                    is_indexed_plain_candidate(matrix, slug, indexed_targets, indexed_slug_set)
+                    for slug in alternative_candidate_slugs(cells[0])
+                )
+                if linked_indexed or plain_indexed:
+                    findings.append(
+                        Finding(
+                            "indexed-page-marked-not-indexed",
+                            "high",
+                            rel,
+                            line_no,
+                            "Summary matrix row marks an existing indexed page as not indexed.",
+                            line.strip(),
+                        )
+                    )
+            if detects_partly_indexed_composite(matrix, cells, indexed_targets, indexed_slug_set):
+                findings.append(
+                    Finding(
+                        "composite-alternative-partly-indexed",
+                        "high",
+                        rel,
+                        line_no,
+                        "Summary matrix row marks an only-partly indexed alternative as indexed.",
+                        line.strip(),
+                    )
+                )
+    return findings
+
+
 def truncation_fragments_in_line(line: str) -> list[str]:
     hits: list[str] = []
     for fragment in TRUNCATION_FRAGMENTS:
@@ -626,6 +692,11 @@ def scan(root: Path | str, *, scope_paths: list[Path | str] | tuple[Path | str, 
                         line.strip(),
                     )
                 )
+
+    # Whole-repo mode also audits the category/root INDEX matrices (see audit_summary_matrix_rows).
+    # Scoped and changed-only runs stay page-scoped: a scoped run must report only its own pages.
+    if scan_mode == "all":
+        findings.extend(audit_summary_matrix_rows(root, indexed_targets, indexed_slug_set))
 
     return ScanResult(
         findings=sorted(findings, key=lambda f: (f.severity, f.category, f.path, f.line, f.evidence)),

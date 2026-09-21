@@ -20,7 +20,7 @@
 | --- | --- | --- | --- |
 | [Grafana](grafana.zh.md) | ✅ | B（5/6） | 多数据源之上的统一看板/告警；是可视化层而非存储（AGPL-3.0）。 |
 | [Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) | ✅ | A（5/6） | 插件驱动的采集/路由 agent，负责把数据喂给 Grafana 读取的后端——分工不同。 |
-| Kibana / Datadog / Apache Superset | 未收录 | — | 各页对比里点到的其他看板/可观测/BI 方案。 |
+| Kibana / Datadog / Apache Superset | 部分已收录 | — | 各页对比里点到的其他看板/可观测/BI 方案；其中 Apache Superset 收录在 data-visualization 分类下，Kibana 与 Datadog 尚未收录。 |
 
 ## 什么该放这里
 

@@ -944,5 +944,50 @@ class QualityScanTest(unittest.TestCase):
             self.assertIn("weak or non-second-person `When to use` signals", report)
 
 
+    def test_summary_matrix_row_marking_indexed_page_not_indexed_is_found(self) -> None:
+        """INDEX matrices are user-visible claims; the page scan skips them (it only reads pages).
+
+        Regression: `Letta (MemGPT) / Zep / Cognee | 未收录` in categories/agent-memory/INDEX.md sat
+        stale while all three had their own pages, because is_project_page() excludes INDEX files.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md", "## Comparison\n")
+            write_page(root, "categories/demo/beta.md", "## Comparison\n")
+            (root / "categories" / "demo" / "INDEX.md").write_text(
+                "## Comparison matrix\n\n"
+                "| Option | Indexed | Health | One-line tradeoff |\n"
+                "| --- | --- | --- | --- |\n"
+                "| alpha / beta | 未收录 | — | Both are named in the pages. |\n"
+                "| [alpha](alpha.md) | ✅ | — | Fine: it points at a page. |\n"
+                "| Other / alpha | partly indexed | — | Fine: the status says partly. |\n",
+                encoding="utf-8",
+            )
+
+            result = quality_scan.scan(root)
+
+            stale = [f for f in result.findings if f.category == "indexed-page-marked-not-indexed"]
+            self.assertEqual(len(stale), 1)
+            self.assertEqual(stale[0].path, "categories/demo/INDEX.md")
+            self.assertEqual(stale[0].severity, "high")
+            self.assertIn("alpha / beta", stale[0].evidence)
+
+    def test_summary_matrix_row_without_pages_is_not_flagged(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md", "## Comparison\n")
+            (root / "categories" / "demo" / "INDEX.md").write_text(
+                "## Comparison matrix\n\n"
+                "| Option | Indexed | Health | One-line tradeoff |\n"
+                "| --- | --- | --- | --- |\n"
+                "| Kibana / Datadog | 未收录 | — | Not repositories, so out of scope. |\n",
+                encoding="utf-8",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.path.endswith("INDEX.md") for f in result.findings))
+
+
 if __name__ == "__main__":
     unittest.main()
