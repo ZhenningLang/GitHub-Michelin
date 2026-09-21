@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "draw.io does",
+    "zh": "draw.io 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop build (or just open the hosted editor in a browser)",
+      "zh": "装桌面版（或直接在浏览器开托管编辑器）",
+      "code": "brew install --cask drawio"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the entire editor locally as an Electron app; no diagram data leaves the machine",
+      "zh": "整个编辑器本地跑（Electron），图数据不外传"
+    },
+    {
+      "lane": "you",
+      "en": "Draw shapes and connections, pulling icons from the built-in shape libraries",
+      "zh": "在画布上拖形状、连关系，图标从内置库取"
+    },
+    {
+      "lane": "them",
+      "en": "Writes every element as an mxCell — geometry plus a style string — inside mxGraph XML",
+      "zh": "把每个元素写成 mxCell：几何加一条 style 串"
+    },
+    {
+      "lane": "you",
+      "en": "Save the .drawio file (plain-text XML) or export a picture for the document",
+      "zh": "存成 .drawio（纯文本 XML）或导出图片"
+    },
+    {
+      "lane": "them",
+      "en": "Exports by rendering with its own bundled Chromium — no server compiles the diagram",
+      "zh": "导出用自带 Chromium 本地渲染，不经过服务器",
+      "code": "drawio -x -f png -e -s 2 -o diagram.drawio.png diagram.drawio"
+    }
+  ],
+  "value": {
+    "en": "You get an editable, git-diffable diagram file that renders entirely offline — and no diagram data leaves your machine",
+    "zh": "拿到一份可编辑、可 diff 的图文件，全程离线渲染，图数据不外传"
+  },
+  "sources": [
+    "https://github.com/jgraph/drawio-desktop README (Apache-2.0 free use; 'designed to be completely isolated from the Internet'; 'No diagram data is ever sent externally')",
+    "https://github.com/jgraph/drawio README (mxGraph XML file format; no copyright claim on diagrams you create; no real-time collaboration in this version; not an SVG editor)",
+    "https://github.com/jgraph/drawio-desktop/blob/dev/.gitmodules (the editor is vendored into the desktop repo as the `drawio` submodule)",
+    "https://github.com/Homebrew/homebrew-cask/blob/master/Casks/d/drawio.rb (brew install --cask drawio; version 31.4.5; installs a `drawio` command wrapper)",
+    "Agents365-ai/drawio-skill skills/drawio-skill/SKILL.md lines 106-117 (the exact `drawio -x -f png -e -s 2 -o ...` export command form)",
+    "local inspection 2026-09-21 of an xml produced by draw.io tooling: root elements are mxfile > diagram > mxGraphModel > root > mxCell, each mxCell carrying a style=\"...\" string"
+  ]
+}

@@ -11,6 +11,7 @@
 | **flowchart.js** | 当你想把简单流程图写成可 git diff 的文本、在浏览器里渲成 SVG 时用它——它只渲染不编辑，依赖老旧的 Raphael.js，复杂图会力不从心。 | B（5/6） | [→](flowchart-js.zh.md) |
 | **bpmn-js** | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 | A（5/6） | [→](bpmn-js.zh.md) |
 | **Excalidraw** | 当你想要手绘风格的协作白板来画草图、线框和架构流程时用它——但它存为 JSON 而非纯文本，所以不能在 Git 里 diff。 | A（6/6） | [→](excalidraw.zh.md) |
+| **draw.io** | 图需要精确摆放、需要官方云／UML／BPMN 形状库、产物还要交给同事编辑时用它——`.drawio` 是纯文本 XML，能进 git diff，应用可完全离线运行。 | B（6/6） | [→](drawio.zh.md) |
 
 ## 对比矩阵
 
@@ -20,7 +21,8 @@
 | [flowchart.js](flowchart-js.zh.md) | ✅ | B（5/6） | 当你想把简单流程图写成可 git diff 的文本、在浏览器里渲成 SVG 时用它——它只渲染不编辑，依赖老旧的 Raphael.js，复杂图会力不从心。 |
 | [bpmn-js](bpmn-js.zh.md) | ✅ | A（5/6） | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 |
 | [Excalidraw](excalidraw.zh.md) | ✅ | A（6/6） | 手绘风格协作白板，用于画草图和线框；存为 JSON 而非纯文本，不能在 Git 里 diff。 |
-| Graphviz / PlantUML / D2 / draw.io | 未收录 | — | 各页对比里点到的其他图引擎/编辑器（布局更可控或所见即所得）。 |
+| [draw.io](drawio.zh.md) | ✅ | B（6/6） | 摆放必须精确、形状要用官方云／UML 形状集、产物还要交给别人改时选它；图要保持文本用 Mermaid，要的就是草稿观感用 Excalidraw。 |
+| Graphviz / PlantUML / D2 | 未收录 | — | 各页对比里点到的其他图引擎（比 mermaid 更多的版式控制）。 |
 
 ## 什么该放这里
 

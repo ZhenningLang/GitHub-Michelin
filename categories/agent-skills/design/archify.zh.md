@@ -90,7 +90,7 @@ Any agent Skill: generate beautiful architecture diagrams with dark/light theme 
 | [Stitch Skills](stitch-skills.zh.md) | ✅ | 目标是通过 Stitch MCP 生成 UI screen 或 code/design handoff 时选 Stitch。 | Stitch 面向产品 UI；archify 面向架构和工作流沟通。 |
 | [Mermaid](../../diagramming/mermaid.zh.md) | ✅ | 图表必须保持纯文本、可 diff、Markdown 原生时选 Mermaid。 | Mermaid 更便携更紧凑；archify artifact 更精致，导出控制更强。 |
 | [Excalidraw](../../diagramming/excalidraw.zh.md) | ✅ | 人类需要手绘风协作白板时选 Excalidraw。 | Excalidraw 更适合手工草图；archify 更适合 agent 快速产出技术图。 |
-| draw.io / diagrams.net | 未收录 | 需要完整 WYSIWYG 图表画布时选 draw.io。 | 手工编辑器更适合细调；archify 保持 agent-generated 和 export-ready。 |
+| [draw.io（diagrams.net）](../../diagramming/drawio.zh.md) | ✅ | 需要完整 WYSIWYG 图表画布时选 draw.io。 | 手工编辑器更适合细调；archify 保持 agent-generated 和 export-ready。 |
 
 
 ## 健康度与可持续性

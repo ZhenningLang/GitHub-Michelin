@@ -96,7 +96,7 @@ health:
 |---|---|---|---|
 | [Mermaid](mermaid.zh.md) | ✅ | 需要手绘风格、协作白板时选 Excalidraw；需要把图表写成纯文本、在 Git 里 diff、在 Markdown 里渲染时，再选 Mermaid。 | 纯文本、可 diff 的图表，在 Markdown 和文档里渲染；以视觉风格换取版本控制的可移植性。 |
 | [flowchart.js](flowchart-js.zh.md) | ✅ | 需要手绘风格、协作白板时选 Excalidraw；需要浏览器里极简轻量的流程图渲染器时，再选 flowchart.js。 | 只做流程图的窄 JS 渲染器；Mermaid 覆盖更多类型、宿主支持更广。 |
-| draw.io（diagrams.net） | 未收录 | 需要轻量、手绘风格草图白板时选 Excalidraw；需要完整 WYSIWYG 画布、丰富图形和集成时，再选 draw.io。 | 全功能 WYSIWYG 画布编辑器，支持 Google Drive／OneDrive／GitHub 集成；比 Excalidraw 更重、更正式。 |
+| [draw.io（diagrams.net）](drawio.zh.md) | ✅ | 需要轻量、手绘风格草图白板时选 Excalidraw；需要完整 WYSIWYG 画布、丰富图形和集成时，再选 draw.io。 | 全功能 WYSIWYG 画布编辑器，支持 Google Drive／OneDrive／GitHub 集成；比 Excalidraw 更重、更正式。 |
 | tldraw | 未收录 | 需要开源界手绘风格白板的事实标准时选 Excalidraw；需要更新的、对开发者 API 更友好的可扩展白板库时，再选 tldraw。 | 较新的白板库，程序 API 强大；生态更小，但对自定义应用更灵活。 |
 | Figma | 未收录 | 需要快速、非正式草图白板时选 Excalidraw；需要高保真 UI 设计、原型和设计系统管理时，再选 Figma。 | UI/UX 行业标准设计工具；不是草图白板，完整功能需付费团队版。 |
 

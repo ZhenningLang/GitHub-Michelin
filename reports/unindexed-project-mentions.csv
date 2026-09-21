@@ -254,8 +254,7 @@ Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 Dramatiq,categories/task-queue/celery.md,,no
-draw.io (diagrams.net),categories/diagramming/excalidraw.md,,no
-draw.io / diagrams.net,categories/agent-skills/design/archify.md,,no
+draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (dev sandboxes),categories/web-automation/agent-browser-tools/cua.md,,no
@@ -339,7 +338,7 @@ GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-review-graph.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no
-Graphviz / PlantUML / D2 / draw.io,categories/diagramming/INDEX.md,,no
+Graphviz / PlantUML / D2,categories/diagramming/INDEX.md,,no
 Graphviz / Viz.js,categories/diagramming/flowchart-js.md,,no
 GRASS GIS,categories/geospatial/qgis.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
