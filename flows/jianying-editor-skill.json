@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The skill does",
+    "zh": "这个 skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Drop the repo into your AI editor's skills directory",
+      "zh": "把仓库放进 AI 编辑器的 skills 目录",
+      "code": ".claude/skills/jianying-editor"
+    },
+    {
+      "lane": "you",
+      "en": "Say what you want in plain language — footage, narration, subtitles, music",
+      "zh": "用自然语言说清要什么——素材、旁白、字幕、配乐",
+      "code": "帮我随便剪一个视频看看效果"
+    },
+    {
+      "lane": "them",
+      "en": "Writes a Python script into your project root that imports the wrapper",
+      "zh": "在你项目根目录写一个 Python 脚本，导入那个封装",
+      "code": "from jy_wrapper import JyProject"
+    },
+    {
+      "lane": "them",
+      "en": "Lays media, TTS voiceover, subtitles and music onto tracks and saves a real 剪映 draft",
+      "zh": "把素材、配音、字幕、配乐铺到轨道上，存成真实剪映草稿",
+      "code": "project.save()"
+    },
+    {
+      "lane": "you",
+      "en": "Open 剪映专业版 and render the assembled timeline there",
+      "zh": "打开剪映专业版，检查时间轴并在剪映里导出"
+    }
+  ],
+  "value": {
+    "en": "A multi-track 剪映 timeline assembled from one sentence, with subtitles and voiceover already aligned",
+    "zh": "一句话换来一条搭好的多轨剪映时间轴，字幕和配音已经对齐"
+  },
+  "sources": [
+    "README.md Quick Start: `git clone https://github.com/luoluoluo22/jianying-editor-skill.git .claude/skills/jianying-editor` (also .agent/skills, .trae/skills, skills/ variants)",
+    "README.md 试试这样跟 AI 说: 「帮我随便剪一个视频看看效果」",
+    "README.md 平台支持状态: 草稿生成支持 Windows 与 macOS 桌面版；自动导出依赖 Windows UI Automation，在剪映 5.9 或更低版本上最稳；macOS 需在剪映里手动导出",
+    "README.md 做不到什么: 最终渲染仍靠剪映本身；不能调用剪映的实时特效",
+    "rules/setup.md Recommended Bootstrap (Mandatory): `from jy_wrapper import JyProject`",
+    "rules/core.md Saving: `project.save()` is mandatory and refreshes the draft on disk",
+    "examples/my_first_vlog.py: JyProject(project_name=..., overwrite=True) then add_media_safe / add_audio_safe / add_text_simple then project.save()"
+  ]
+}

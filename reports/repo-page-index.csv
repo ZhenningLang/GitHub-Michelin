@@ -108,7 +108,9 @@ https://github.com/TomBadash/Mouser,mouser,peripherals,categories/peripherals/mo
 https://github.com/Unstructured-IO/unstructured,unstructured,document-parsing,categories/document-parsing/unstructured.md
 https://github.com/VectifyAI/PageIndex,pageindex,rag-retrieval,categories/rag-retrieval/pageindex.md
 https://github.com/Vincentwei1021/anything2explainer,anything2explainer,video-production,categories/video-production/anything2explainer.md
+https://github.com/Vincentwei1021/video-shotcraft,video-shotcraft,video-production,categories/video-production/video-shotcraft.md
 https://github.com/VoltAgent/awesome-claude-code-subagents,awesome-claude-code-subagents,subagent-collections,categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md
+https://github.com/WyattBlue/auto-editor,auto-editor,video-audio,categories/media-processing/video-audio/auto-editor.md
 https://github.com/Yeachan-Heo/oh-my-claudecode,oh-my-claudecode,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md
 https://github.com/ZachSaucier/Just-Read,just-read,reading-tools,categories/reading-tools/just-read.md
 https://github.com/Zulko/moviepy,moviepy,video-audio,categories/media-processing/video-audio/moviepy.md
@@ -341,6 +343,7 @@ https://github.com/logseq/logseq,logseq,knowledge-base,categories/knowledge-base
 https://github.com/lovell/sharp,sharp,image-processing,categories/media-processing/image-processing/sharp.md
 https://github.com/lukas-blecher/LaTeX-OCR,latex-ocr,ocr,categories/ocr/latex-ocr.md
 https://github.com/luolin-ai/Dify-Enterprise-WeChat-bot,dify-enterprise-wechat-bot,im-automation,categories/im-automation/dify-enterprise-wechat-bot.md
+https://github.com/luoluoluo22/jianying-editor-skill,jianying-editor-skill,nle-automation,categories/media-processing/nle-automation/jianying-editor-skill.md
 https://github.com/magnific0/wondershaper,wondershaper,networking,categories/networking/wondershaper.md
 https://github.com/magnitudedev/magnitude,magnitude,local-runtimes,categories/llm-inference/local-runtimes/magnitude.md
 https://github.com/markdown-it/markdown-it,markdown-it,markdown-tools,categories/markdown-tools/markdown-it.md

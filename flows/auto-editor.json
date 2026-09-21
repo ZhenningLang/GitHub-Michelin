@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Auto-Editor does",
+    "zh": "Auto-Editor 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Get the official binary onto your PATH",
+      "zh": "把官方二进制装到 PATH 上",
+      "code": "brew install auto-editor"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at the recording you do not want to scrub through",
+      "zh": "把命令指向那段你不想逐帧拖的录制",
+      "code": "auto-editor path/to/your/video.mp4"
+    },
+    {
+      "lane": "them",
+      "en": "Scores every moment by loudness and labels it silent or active",
+      "zh": "按响度给每个时间点打分，标成静音或有效"
+    },
+    {
+      "lane": "them",
+      "en": "Cuts the silent spans, leaving a margin around speech so cuts feel natural",
+      "zh": "剪掉静音段，语音前后留一点缓冲，剪口不突兀"
+    },
+    {
+      "lane": "them",
+      "en": "Writes the edited file itself — no editor window, no timeline session",
+      "zh": "自己写出剪好的文件——不开编辑器窗口，不进时间轴"
+    },
+    {
+      "lane": "you",
+      "en": "When you still want to finish by hand, export the timeline instead",
+      "zh": "还想手工细剪时，改成导出时间线",
+      "code": "auto-editor example.mp4 --export premiere"
+    },
+    {
+      "lane": "them",
+      "en": "Emits a timeline file the NLE imports as an editable sequence",
+      "zh": "生成 Premiere、Resolve、Final Cut 等可导入的时间线"
+    }
+  ],
+  "value": {
+    "en": "The boring first pass over a long recording — done before you open an editor",
+    "zh": "长素材的第一遍粗剪，在你打开编辑器之前就做完了"
+  },
+  "sources": [
+    "README.md Quick start: `auto-editor path/to/your/video.mp4`; the 'dead space' / 'first pass' framing",
+    "README.md Methods for Making Automatic Cuts: `--edit audio:threshold=0.04,stream=all` is the default; labels 0 silent / 1 active",
+    "README.md Cutting: `--margin` default `0.2s`",
+    "README.md Exporting to Editors: `auto-editor example.mp4 --export premiere`, plus resolve, final-cut-pro, shotcut, kdenlive, clip-sequence",
+    "README.md Skills: `npx skills add WyattBlue/auto-editor`",
+    "auto-editor.com/installing: Method 2 recommends `brew install auto-editor`; 'The auto-editor cli is no longer being published on pip'"
+  ]
+}

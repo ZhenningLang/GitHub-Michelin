@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "video-shotcraft does",
+    "zh": "video-shotcraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into Claude Code or Codex",
+      "zh": "把 skill 装进 Claude Code 或 Codex",
+      "code": "npx skills add Vincentwei1021/video-shotcraft"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at your product and ask for a promo, optionally naming shot cards",
+      "zh": "把产品交给它并要一支宣传片，可以点名镜头卡",
+      "code": "Use video-shotcraft to create a promo for my desktop product."
+    },
+    {
+      "lane": "them",
+      "en": "Runs a read-only product check and offers three modes: template, autonomous, co-creation",
+      "zh": "先做一次只读的产品检查，给出三种模式：模板、自主自由创作、共同创作"
+    },
+    {
+      "lane": "you",
+      "en": "Pick a mode; the template route means swapping your assets into the Ink Press film",
+      "zh": "选一种模式；模板路线就是把你的素材替换进 Ink Press 这支片子里",
+      "code": "template/TEMPLATE.md"
+    },
+    {
+      "lane": "them",
+      "en": "Builds each shot as a Remotion component — real page captures, 2.5D camera moves, beat-pinned SFX",
+      "zh": "把每个镜头做成 Remotion 组件：真实截图、2.5D 运镜、卡点音效"
+    },
+    {
+      "lane": "them",
+      "en": "Renders the finished film to MP4 on your machine",
+      "zh": "在你本机把成片渲染成 MP4",
+      "code": "npx remotion render src/index.ts AiflPromo out/promo.mp4"
+    }
+  ],
+  "value": {
+    "en": "A cinematic product film with real screenshots and choreographed motion, without hand-keyframing it in After Effects",
+    "zh": "一支有真实产品截图、运镜编排到位的电影感宣传片，不用在 After Effects 里手 K 关键帧"
+  },
+  "sources": [
+    "README.md Quick start: `Install this skill for me: https://github.com/Vincentwei1021/video-shotcraft`, `npx skills add Vincentwei1021/video-shotcraft`, symlinks into ~/.claude/skills or ~/.codex/skills",
+    "README.md Quick start example requests: 'Use video-shotcraft to create a promo for my desktop product.' / 'Use the deck-deal-flyin and row-embed shot cards to present this feature.'",
+    "SKILL.md 调用时先判断模式: three modes (template / autonomous / co-creation), read-only product check first, asks the user to confirm before producing",
+    "SKILL.md 四种用法 + 直接使用模板: 读 `template/TEMPLATE.md`",
+    "README.md Ink Press: 36.2s validated template, 10 shots, 2.5D real-page camera moves; 'real page captures, 2.5D camera moves, beat-synced cuts, and film-grade SFX'",
+    "template/TEMPLATE.md 跑起来: `npx remotion render src/index.ts AiflPromo out/promo.mp4`; `npx remotion studio src/index.ts` for preview",
+    "template/package.json scripts: render / dev / still"
+  ]
+}

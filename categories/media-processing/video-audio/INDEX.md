@@ -18,12 +18,14 @@
 | **PyAV** | Pythonic bindings to FFmpeg's `libav*` libraries — in-process decode/encode with frame-by-frame access to NumPy arrays and Python bytes, no subprocess spawning. | A (6/6) | [→](pyav.md) |
 | **OpenAI Whisper** | OpenAI's general-purpose automatic speech recognition model that transcribes and translates audio to English across 99 languages, with multiple size/quality tradeoffs. | B (5/6) | [→](whisper.md) |
 | **claude-video** | Agent-facing `/watch` workflow that downloads videos, extracts frames, gets captions/transcripts, and hands visual/audio evidence to Claude or another skill host. | C (4/6) | [→](claude-video.md) |
+| **Auto-Editor** | A CLI first-pass editor that labels every moment by loudness (or motion), cuts the silent stretches with a margin, and can export an importable timeline for Premiere/Resolve/Final Cut/ShotCut/Kdenlive instead of a rendered file. | B (6/6) | [→](auto-editor.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [claude-video](claude-video.md) | ✅ | C (4/6) | Video-understanding helper for agents; choose FFmpeg/MoviePy for production editing or Whisper for transcription-only work. |
+| [Auto-Editor](auto-editor.md) | ✅ | B (6/6) | Pick it when the recurring job is "delete the dead air and hand me a timeline"; FFmpeg costs you the decision logic, HandBrake cannot detect silence at all, and MoviePy is a library you would have to program. |
 
 
 ## What belongs here
