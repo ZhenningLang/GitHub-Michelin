@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Claude Commerce Agents** | You are building the assistant inside a product that sells something and want the shopping/merchant agent layer — prompt, guardrails, UI fill-in, approval — already decided, as a blueprint you read and vendor. | C (5/6) | [→](commerce-agents.md) |
 | **eve** | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. | A (6/6) | [→](eve.md) |
 | **OpenFang** | You want autonomous agents that run on a schedule from one self-hosted Rust binary. | B (5/6) | [→](openfang.md) |
 | **Parlant** | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. | B (6/6) | [→](parlant.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Claude Commerce Agents](commerce-agents.md) | ✅ | C (5/6) | Anthropic's reference blueprint for a shopping agent plus a merchant agent over three runtimes; read and vendor it — it is unmaintained and not on any package index. |
 | [eve](eve.md) | ✅ | A (6/6) | Your agent must wait days for a human or a webhook, survive redeploys, and answer on Slack/Discord/Teams — as one deployable TypeScript service. |
 | [OpenFang](openfang.md) | ✅ | B (5/6) | You want autonomous agents that run on a schedule from one self-hosted Rust binary. |
 | [Parlant](parlant.md) | ✅ | B (6/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |

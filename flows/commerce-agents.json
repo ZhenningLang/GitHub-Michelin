@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "the reference does", "zh": "这份参考实现做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the seven packages from the repo and run the bundled retail vertical", "zh": "从仓库装上这七个包，跑一遍内置的零售样例", "code": "pip install -r requirements.txt · python scripts/run_demo.py retail"},
+    {"lane": "them", "en": "Boots the API, the storefront and the merchant portal over mock backends", "zh": "用 mock 后端起 API、店铺与商家后台"},
+    {"lane": "you", "en": "Implement the role interface over your catalog, cart and orders", "zh": "用你的目录、购物车、订单实现角色接口", "code": "StorefrontBackend"},
+    {"lane": "you", "en": "Build the agent with your backend and the shipped skill flows", "zh": "用你的 backend 和自带 skill 流程构造 agent", "code": "ShoppingAgent(backend=…, skills_dir=…)"},
+    {"lane": "you", "en": "Expose the two routes your app calls", "zh": "在你的应用里暴露两个路由", "code": "POST /api/session · POST /api/chat"},
+    {"lane": "them", "en": "Runs the turn loop: tools dispatch, gates check provenance, card values are joined from your records", "zh": "跑 turn loop：工具分发、来源闸门校验、卡片值由你的记录回填"},
+    {"lane": "them", "en": "Streams the turn back as events your UI renders", "zh": "把这一轮以事件流回吐给你的 UI 渲染", "code": "ui · cart_update · turn_complete"}
+  ],
+  "value": {
+    "en": "You get a working commerce agent — prompt, guardrails, UI fill-in and turn loop included — wired to your own systems",
+    "zh": "你得到一个能跑的商业 agent——prompt、护栏、UI 回填和 turn loop 都现成——接在你自己的系统上"
+  },
+  "sources": [
+    "README 'Quick start: run the demos' (pip install -r requirements.txt, python scripts/run_demo.py retail, ports 8000 / 3000 / 3100)",
+    "README 'Three ways to run an agent' (ShoppingAgent(backend=your_backend, skills_dir=Path(\"shopping-agent/skills\"), config=ShoppingAgentConfig(brand_name=\"Your Store\")); hosts take the session id in an X-Session-Id header; events text_delta, tool_call, ui, cart_update, turn_complete)",
+    "README 'The two agents' (a deployment implements StorefrontBackend over catalog/cart/order/policy and MerchantBackend over analytics/catalog/inventory/pricing/campaigns)",
+    "examples/demo_common/storefront.py (build_storefront_host: @app.post(\"/api/session\"), @app.post(\"/api/chat\"))",
+    "docs/safety.md (rules enforced inside the tool call hold on all three paths; cart provenance, server-authored disclosures, host approval for merchant writes)"
+  ]
+}
