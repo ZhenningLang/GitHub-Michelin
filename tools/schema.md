@@ -188,6 +188,19 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   - **Keep both lanes alive.** If one lane runs 4+ consecutive steps while the other has almost
     nothing, the granularity is off (usually un-collapsed setup) — the card is meant to show a
     handoff, not a checklist.
+  - **One backbone, not two paths.** A project you can enter two ways — see-it-run vs. build-with-it,
+    a customer surface vs. an operator surface, a library's CLI vs. its embedded API — still gets
+    **one** card. Keep the path that reaches the core *value*; move the other into the mechanism
+    paragraph above the card. The test: if your steps split into two groups with different goals
+    ("run the demo" beside "wire it into my system"), you have two flows — as one card it reads as a
+    checklist and the handoff is lost.
+- **`phase`** (optional) labels a **stage** of the lifecycle, so a card can show "this once" beside
+  "this every turn" without branching: `"phase": {"en": "Build", "zh": "搭建"}` on a step opens a
+  stage that runs until the next marker (write/recall and round-1/round-2 are the same shape). It is
+  a **label, not a branch** — the steps stay linear. Rules: at most **3** phases; the **first step
+  must carry one** (an unlabeled leading stage reads as an accident); a marker may not repeat the
+  stage already open; it never restates the lane; ≤ 24 EN / 12 ZH chars. Omit it when the flow has no
+  real stage boundary — most specs do not.
 - **`code`** (optional, language-neutral) is **what the user types or writes**: a command, an
   annotation, a config key or path, an API call, a package coordinate. It is **not** an internal
   symbol — a function name, class or module path the reader never types is mechanism-paragraph
@@ -200,8 +213,8 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
   source, write the step generically ("call its query API") instead of guessing. An invented command
   in a diagram looks authoritative; that is worse than no command.
 - **`value`** is the payoff the flow ends on — what you no longer have to do / now get.
-- `en` and `zh` are translations of the same step; structure (`lane`, `code`, order) is shared, so the
-  pair cannot drift. ZH strings follow the fullwidth-punctuation rule (§6).
+- `en` and `zh` are translations of the same step; structure (`lane`, `code`, `phase`, order) is
+  shared, so the pair cannot drift. ZH strings follow the fullwidth-punctuation rule (§6).
 - Unverified mechanism claims get a Caveats bullet like any other prose; do not put `[未验证]` inside
   the card.
 
@@ -209,7 +222,8 @@ Run `python3 tools/flow_card.py <page>` (or `make flows`) after editing a spec; 
 does it for staged pages/specs. **Golden examples**: `kong` (service — deploy + declare, it runs at
 request time), `xxl-job` (framework — maven dep + annotated hook, it calls you back), `sharp`
 (library — call a chain API), `claude-mem` (tool — install once, it captures/stores/injects),
-`superpowers` (skill-pack — install, the agent follows it).
+`superpowers` (skill-pack — install, the agent follows it), `commerce-agents` (framework — the one
+spec that uses `phase`: Build once, then Every turn).
 
 **Backfill status.** Pages written or re-verified under this contract — `last_verified` on/after
 `OSS_ATLAS_FLOW_REQUIRED_FROM` (default `2026-09-20`) — **must** have the section: missing is an

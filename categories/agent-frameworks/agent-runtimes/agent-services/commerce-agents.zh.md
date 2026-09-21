@@ -84,7 +84,7 @@ Anthropic 的参考蓝图：两个 commerce agent——面向顾客的**购物 a
 
 ## 怎么用起来
 
-它把 agent 交给你，只要你实现一个接口。你对着自己的系统实现 `StorefrontBackend`（目录搜索、购物车、订单、政策）或 `MerchantBackend`（指标、商品、库存、价格、活动），用这个 backend 加自带的 skills 目录构造 agent，再暴露应用调用的两个路由；包本身提供 system prompt、工具契约、每个角色五个流程和 turn loop。这个循环里**它替你做的事**才是值得读的部分：第三方文本在模型读到之前先脱敏并围栏；购物车写入只在商品 ID 是本会话工具返回过的时候才放行；UI 卡片上的每个字段都由你的记录回填，而不是模型写的；商家写入只有在你的宿主应用把暂存变更标为已批准之后才真正生效。接口背后的东西全归你——业务规则、凭据、认证授权，以及模型自己的 eval——仓库自己也这么说：`docs/safety.md` 把规则分成 20 条代码强制、5 条仍靠模型自觉、9 项必须由部署方补齐。
+它把 agent 交给你，只要你实现一个接口。它也能独立跑起来——一条命令用 mock 数据起一个零售店、把两个 agent 都拉起来，让你先看清形状——但价值落在下面这条路上，而不在那一眼上：接口背后接你自己的系统。你对着自己的系统实现 `StorefrontBackend`（目录搜索、购物车、订单、政策）或 `MerchantBackend`（指标、商品、库存、价格、活动），用这个 backend 加自带的 skills 目录构造 agent，再暴露应用调用的两个路由；包本身提供 system prompt、工具契约、每个角色五个流程和 turn loop。这个循环里**它替你做的事**才是值得读的部分：第三方文本在模型读到之前先脱敏并围栏；购物车写入只在商品 ID 是本会话工具返回过的时候才放行；UI 卡片上的每个字段都由你的记录回填，而不是模型写的；商家写入只有在你的宿主应用把暂存变更标为已批准之后才真正生效。接口背后的东西全归你——业务规则、凭据、认证授权，以及模型自己的 eval——仓库自己也这么说：`docs/safety.md` 把规则分成 20 条代码强制、5 条仍靠模型自觉、9 项必须由部署方补齐。
 
 ![commerce-agents — 主干用户故事](../../../../assets/flow/commerce-agents.zh.svg)
 
@@ -92,15 +92,14 @@ Anthropic 的参考蓝图：两个 commerce agent——面向顾客的**购物 a
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：从仓库装上这七个包，跑一遍内置的零售样例 — `pip install -r requirements.txt · python scripts/run_demo.py retail`
-2. **Claude Commerce Agents**：用 mock 后端起 API、店铺与商家后台
-3. **你**：用你的目录、购物车、订单实现角色接口 — `StorefrontBackend`
-4. **你**：用你的 backend 和自带 skill 流程构造 agent — `ShoppingAgent(backend=…, skills_dir=…)`
-5. **你**：在你的应用里暴露两个路由 — `POST /api/session · POST /api/chat`
-6. **Claude Commerce Agents**：跑 turn loop：工具分发、来源闸门校验、卡片值由你的记录回填
-7. **Claude Commerce Agents**：把这一轮以事件流回吐给你的 UI 渲染 — `ui · cart_update · turn_complete`
+1. **你**（搭建）：从仓库装上这七个包 — `pip install -r requirements.txt`
+2. **你**（搭建）：用你的目录、购物车、订单实现角色接口 — `StorefrontBackend`
+3. **你**（搭建）：用你的 backend 和自带 skill 流程构造 agent — `ShoppingAgent(backend=…, skills_dir=…)`
+4. **你**（搭建）：在你的应用里暴露两个路由 — `POST /api/session · POST /api/chat`
+5. **Claude Commerce Agents**（每轮运行）：跑 turn loop：工具分发、来源闸门校验、卡片值由你的记录回填
+6. **Claude Commerce Agents**（每轮运行）：把这一轮以事件流回吐给你的 UI 渲染 — `ui · cart_update · turn_complete`
 
-**价值**：你得到一个能跑的商业 agent——prompt、护栏、UI 回填和 turn loop 都现成——接在你自己的系统上
+**价值**：你只搭一次；之后每一轮对话都白拿 prompt、护栏、UI 回填和 turn loop
 
 </details>
 <!-- flow-steps:end -->

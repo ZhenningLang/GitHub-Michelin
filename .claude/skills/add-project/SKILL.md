@@ -81,6 +81,11 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      into one step; stop at the step where the value lands — no inspection commands or optional
      features; if one lane runs 4+ steps in a row while the other is empty, you have a checklist, not
      a handoff. `code` is what the user types or writes, never an internal function/class name.
+     **One backbone, not two paths**: a project enterable two ways (run-the-demo vs wire-it-in, a
+     customer surface vs an operator surface) still gets one card — keep the path to the core value,
+     move the other into the mechanism paragraph. **`phase`** (optional, ≤3, first step labeled) may
+     label real lifecycle stages ("Build" then "Every turn"; write then recall) when the card would
+     otherwise hide that boundary; it is a label, not a branch.
    - **Every `code` value must appear verbatim in a source you actually read.** If you cannot find
      the command/annotation/API, write the step generically ("call its query API") — an invented
      command inside a diagram reads as authoritative and is worse than no command.

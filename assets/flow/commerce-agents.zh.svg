@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="743" viewBox="0 0 880 743" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="818" viewBox="0 0 880 818" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -25,65 +25,67 @@
 .edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
 .val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
 }
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="743" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="607" rx="10"/>
+<rect class="bg" width="880" height="818" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="682" rx="10"/>
 <rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">你做的</text>
-<rect class="laneT" x="460" y="28" width="392" height="607" rx="10"/>
+<rect class="laneT" x="460" y="28" width="392" height="682" rx="10"/>
 <rect class="pillT" x="474" y="40" width="152.8" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">这份参考实现做的</text>
-<path class="hand" d="M408,118.0 C439.0,118.0 439.0,142 470,142" marker-end="url(#a)"/>
-<path class="hand" d="M472,143.0 C441.0,143.0 441.0,214 410,214" marker-end="url(#a)"/>
-<path class="edge" d="M62,263 L62,287" marker-end="url(#a)"/>
-<path class="edge" d="M62,384 L62,408" marker-end="url(#a)"/>
-<path class="hand" d="M408,446.5 C439.0,446.5 439.0,470 470,470" marker-end="url(#a)"/>
-<path class="edge" d="M494,518 L494,542" marker-end="url(#a)"/>
-<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
-<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<path class="edge" d="M62,162 L62,186" marker-end="url(#a)"/>
+<path class="edge" d="M62,278 L62,302" marker-end="url(#a)"/>
+<path class="edge" d="M62,416 L62,440" marker-end="url(#a)"/>
+<path class="hand" d="M408,487.0 C439.0,487.0 439.0,511 470,511" marker-end="url(#a)"/>
+<path class="edge" d="M494,576 L494,600" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="90" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
-<text class="t" x="82" y="101">从仓库装上这七个包，跑一遍内置的零售样例</text>
-<text class="c" x="82" y="125">pip install -r requirements.txt · python</text>
-<text class="c" x="82" y="144">scripts/run_demo.py retail</text>
-<rect class="cardT" x="472" y="118" width="368" height="50" rx="8"/>
-<rect class="accT" x="472" y="118" width="4" height="50" rx="2"/>
-<circle class="accT" cx="494" cy="142" r="10"/>
-<text class="num" x="494" y="146" text-anchor="middle">2</text>
-<text class="t" x="514" y="147">用 mock 后端起 API、店铺与商家后台</text>
-<rect class="card" x="40" y="190" width="368" height="73" rx="8"/>
-<rect class="accY" x="40" y="190" width="4" height="73" rx="2"/>
-<circle class="accY" cx="62" cy="214" r="10"/>
-<text class="num" x="62" y="218" text-anchor="middle">3</text>
-<text class="t" x="82" y="219">用你的目录、购物车、订单实现角色接口</text>
-<text class="c" x="82" y="243">StorefrontBackend</text>
-<rect class="card" x="40" y="289" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="289" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="313" r="10"/>
-<text class="num" x="62" y="317" text-anchor="middle">4</text>
-<text class="t" x="82" y="318">用你的 backend 和自带 skill 流程构造</text>
-<text class="t" x="82" y="340">agent</text>
-<text class="c" x="82" y="364">ShoppingAgent(backend=…, skills_dir=…)</text>
-<rect class="card" x="40" y="410" width="368" height="73" rx="8"/>
-<rect class="accY" x="40" y="410" width="4" height="73" rx="2"/>
-<circle class="accY" cx="62" cy="434" r="10"/>
-<text class="num" x="62" y="438" text-anchor="middle">5</text>
-<text class="t" x="82" y="439">在你的应用里暴露两个路由</text>
-<text class="c" x="82" y="463">POST /api/session · POST /api/chat</text>
-<rect class="cardT" x="472" y="446" width="368" height="72" rx="8"/>
-<rect class="accT" x="472" y="446" width="4" height="72" rx="2"/>
-<circle class="accT" cx="494" cy="470" r="10"/>
-<text class="num" x="494" y="474" text-anchor="middle">6</text>
-<text class="t" x="514" y="475">跑 turn loop：工具分发、来源闸门校验、卡片</text>
-<text class="t" x="514" y="497">值由你的记录回填</text>
-<rect class="cardT" x="472" y="544" width="368" height="73" rx="8"/>
-<rect class="accT" x="472" y="544" width="4" height="73" rx="2"/>
-<circle class="accT" cx="494" cy="568" r="10"/>
-<text class="num" x="494" y="572" text-anchor="middle">7</text>
-<text class="t" x="514" y="573">把这一轮以事件流回吐给你的 UI 渲染</text>
-<text class="c" x="514" y="597">ui · cart_update · turn_complete</text>
-<rect class="val" x="28" y="649" width="824" height="66" rx="10"/>
-<text class="valK" x="48" y="673">价值</text>
-<text class="valT" x="48" y="697">你得到一个能跑的商业 agent——prompt、护栏、UI 回填和 turn loop 都现成——接在你自己的系统上</text>
+<text class="ph" x="82" y="101">搭建</text>
+<text class="t" x="82" y="118">从仓库装上这七个包</text>
+<text class="c" x="82" y="142">pip install -r requirements.txt</text>
+<rect class="card" x="40" y="188" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="188" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="212" r="10"/>
+<text class="num" x="62" y="216" text-anchor="middle">2</text>
+<text class="ph" x="82" y="217">搭建</text>
+<text class="t" x="82" y="234">用你的目录、购物车、订单实现角色接口</text>
+<text class="c" x="82" y="258">StorefrontBackend</text>
+<rect class="card" x="40" y="304" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="304" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="328" r="10"/>
+<text class="num" x="62" y="332" text-anchor="middle">3</text>
+<text class="ph" x="82" y="333">搭建</text>
+<text class="t" x="82" y="350">用你的 backend 和自带 skill 流程构造</text>
+<text class="t" x="82" y="372">agent</text>
+<text class="c" x="82" y="396">ShoppingAgent(backend=…, skills_dir=…)</text>
+<rect class="card" x="40" y="442" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="442" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="466" r="10"/>
+<text class="num" x="62" y="470" text-anchor="middle">4</text>
+<text class="ph" x="82" y="471">搭建</text>
+<text class="t" x="82" y="488">在你的应用里暴露两个路由</text>
+<text class="c" x="82" y="512">POST /api/session · POST /api/chat</text>
+<rect class="cardT" x="472" y="487" width="368" height="89" rx="8"/>
+<rect class="accT" x="472" y="487" width="4" height="89" rx="2"/>
+<circle class="accT" cx="494" cy="511" r="10"/>
+<text class="num" x="494" y="515" text-anchor="middle">5</text>
+<text class="ph" x="514" y="516">每轮运行</text>
+<text class="t" x="514" y="533">跑 turn loop：工具分发、来源闸门校验、卡片</text>
+<text class="t" x="514" y="555">值由你的记录回填</text>
+<rect class="cardT" x="472" y="602" width="368" height="90" rx="8"/>
+<rect class="accT" x="472" y="602" width="4" height="90" rx="2"/>
+<circle class="accT" cx="494" cy="626" r="10"/>
+<text class="num" x="494" y="630" text-anchor="middle">6</text>
+<text class="ph" x="514" y="631">每轮运行</text>
+<text class="t" x="514" y="648">把这一轮以事件流回吐给你的 UI 渲染</text>
+<text class="c" x="514" y="672">ui · cart_update · turn_complete</text>
+<rect class="val" x="28" y="724" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="748">价值</text>
+<text class="valT" x="48" y="772">你只搭一次；之后每一轮对话都白拿 prompt、护栏、UI 回填和 turn loop</text>
 </svg>

@@ -11,7 +11,8 @@ with per-step bilingual text:
     "schema": 1,
     "them":  {"en": "XXL-JOB does", "zh": "XXL-JOB 做的"},
     "steps": [
-      {"lane": "you",  "en": "…", "zh": "…", "code": "@XxlJob(\"demoJobHandler\")"},
+      {"lane": "you",  "en": "…", "zh": "…", "code": "@XxlJob(\"demoJobHandler\")",
+       "phase": {"en": "Build", "zh": "搭建"}},
       {"lane": "them", "en": "…", "zh": "…"}
     ],
     "value": {"en": "…", "zh": "…"},
@@ -22,6 +23,11 @@ Two lanes only — "you" (what the developer does) and "them" (what the project 
 Steps are LINEAR (the backbone, no branches); a lane change is a handoff. `code` is optional and
 language-neutral (a command / annotation / API that the step touches) and must be traceable to
 `sources`.
+
+`phase` is optional and marks a step as opening a new stage of the lifecycle ("Build" then
+"Every turn"; "Write" then "Recall"). It is a LABEL, not a branch: the stage runs until the next
+marker, so steps stay linear. Use it only when the card otherwise hides a real stage boundary —
+at most 3 phases, contiguous, the first step labeled, and never to restate a lane.
 
 Outputs (one per LANGUAGE, like health cards):
   assets/flow/<stem>.svg      English card
@@ -51,7 +57,10 @@ ZH_SUFFIX = ".zh.md"
 LANES = ("you", "them")
 LANGS = ("en", "zh")
 MIN_STEPS, MAX_STEPS = 3, 9
-MAX_LEN = {"en": 110, "zh": 40, "code": 80, "value_en": 160, "value_zh": 60, "them_en": 40, "them_zh": 24}
+MAX_LEN = {"en": 110, "zh": 40, "code": 80, "value_en": 160, "value_zh": 60, "them_en": 40, "them_zh": 24,
+           "phase_en": 24, "phase_zh": 12}
+MAX_PHASES = 3            # a backbone stages into at most three stages, or it is a checklist
+PHASE_LH = 17             # the phase label's own line inside a card (only when the spec uses phases)
 
 SECTION = {"en": "## How it works", "zh": "## 怎么用起来"}
 YOU_LABEL = {"en": "You do", "zh": "你做的"}
@@ -77,6 +86,13 @@ FONT = {
     "en": "-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif",
 }
 MONO = "'SF Mono',Menlo,Consolas,monospace"
+
+# Appended to a card's stylesheet only when the spec uses phases, so a spec without them renders
+# byte-identical to what it rendered before the phase field existed.
+PHASE_CSS = """
+.ph{font:600 10px %(f)s;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+"""
 
 CSS = """
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
@@ -176,7 +192,7 @@ def validate_spec(spec: object) -> list[str]:
         if not isinstance(st, dict):
             errs.append(f"steps[{i}] must be an object")
             continue
-        extra = set(st) - {"lane", "en", "zh", "code"}
+        extra = set(st) - {"lane", "en", "zh", "code", "phase"}
         if extra:
             errs.append(f"steps[{i}] has unknown key(s): {sorted(extra)}")
         lane = st.get("lane")
@@ -195,8 +211,29 @@ def validate_spec(spec: object) -> list[str]:
             errs.append(f"steps[{i}].code must be a non-empty string when present")
         elif isinstance(code, str) and len(code) > MAX_LEN["code"]:
             errs.append(f"steps[{i}].code is {len(code)} chars (> {MAX_LEN['code']})")
+        phase = st.get("phase")
+        if phase is not None:
+            bilingual(f"steps[{i}].phase", phase, "phase")
     if steps and lanes_seen != set(LANES):
         errs.append("steps must use both lanes ('you' and 'them') — the flow shows the handoff")
+
+    # A phase is a label on a stage, not a branch: markers open a stage that runs to the next
+    # marker. Repeating one back-to-back is markup noise; more than MAX_PHASES is a checklist.
+    markers = [(i, st["phase"]) for i, st in enumerate(steps, 1)
+               if isinstance(st, dict) and isinstance(st.get("phase"), dict)]
+    if markers:
+        if markers[0][0] != 1:
+            errs.append("steps[1] must carry a 'phase' when any step does — the first stage would be unlabeled")
+        order: list[str] = []
+        for i, ph in markers:
+            label = ph.get("en")
+            if not isinstance(label, str):
+                continue
+            if order and label == order[-1]:
+                errs.append(f"steps[{i}].phase repeats the stage already open ('{label}') — mark the transition only")
+            order.append(label)
+        if len(set(order)) > MAX_PHASES:
+            errs.append(f"at most {MAX_PHASES} phases per flow (backbone only), found {len(set(order))}")
 
     sources = spec.get("sources")
     if not isinstance(sources, list) or not sources or not all(isinstance(s, str) and s.strip() for s in sources):
@@ -209,6 +246,17 @@ def validate_spec(spec: object) -> list[str]:
 
 def load_spec(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def phases_of(spec: dict) -> list[dict | None]:
+    """The effective phase of each step: a marker opens a stage that runs until the next one."""
+    out: list[dict | None] = []
+    current: dict | None = None
+    for st in spec["steps"]:
+        if isinstance(st.get("phase"), dict):
+            current = st["phase"]
+        out.append(current)
+    return out
 
 
 # ---------------------------------------------------------------- text layout
@@ -248,7 +296,11 @@ def wrap(s: str, fs: float, maxw: float, mono: bool = False) -> list[str]:
 # ---------------------------------------------------------------- SVG
 def render(spec: dict, lang: str) -> str:
     font = FONT[lang]
+    phases = phases_of(spec)
+    has_phases = any(phases)
     css = CSS % {"f": font, "m": MONO, "ft": FS_T, "fc": FS_C}
+    if has_phases:
+        css += PHASE_CSS % {"f": font}
     inner = LANE_W - 2 * CARD_PX - 30
     lane_x = {"you": PAD, "them": PAD + LANE_W + GAP}
     out: list[str] = []
@@ -259,7 +311,7 @@ def render(spec: dict, lang: str) -> str:
     for i, st in enumerate(spec["steps"], 1):
         tl = wrap(st[lang], FS_T, inner)
         cl = wrap(st["code"], FS_C, inner, mono=True) if st.get("code") else []
-        h = CARD_PY * 2 + len(tl) * LH_T + (len(cl) * LH_C + 4 if cl else 0)
+        h = CARD_PY * 2 + len(tl) * LH_T + (len(cl) * LH_C + 4 if cl else 0) + (PHASE_LH if has_phases else 0)
         lane = st["lane"]
         if prev is None:
             y0 = top
@@ -313,6 +365,10 @@ def render(spec: dict, lang: str) -> str:
         out.append(f'<circle class="{acc}" cx="{cx0 + 22}" cy="{y0 + CARD_PY + 10}" r="10"/>')
         out.append(f'<text class="num" x="{cx0 + 22}" y="{y0 + CARD_PY + 14}" text-anchor="middle">{i}</text>')
         tx, ty = cx0 + 42, y0 + CARD_PY + 15
+        phase = phases[i - 1] if has_phases else None
+        if phase:
+            out.append(f'<text class="ph" x="{tx}" y="{ty}">{escape(phase[lang])}</text>')
+            ty += PHASE_LH
         for ln in tl:
             out.append(f'<text class="t" x="{tx}" y="{ty}">{escape(ln)}</text>')
             ty += LH_T
@@ -339,10 +395,14 @@ def steps_block(spec: dict, lang: str, stem: str, name: str) -> str:
     """
     sep = "：" if lang == "zh" else ": "
     lines = [BEGIN.format(stem=stem), "<details>", f"<summary>{STEPS_SUMMARY[lang]}</summary>", ""]
-    for i, st in enumerate(spec["steps"], 1):
+    phases = phases_of(spec)
+    for i, (st, phase) in enumerate(zip(spec["steps"], phases), 1):
         who = YOU_WORD[lang] if st["lane"] == "you" else name
+        mark = ""
+        if phase:
+            mark = f"（{phase[lang]}）" if lang == "zh" else f" ({phase[lang]})"
         code = f" — `{st['code']}`" if st.get("code") else ""
-        lines.append(f"{i}. **{who}**{sep}{st[lang]}{code}")
+        lines.append(f"{i}. **{who}**{mark}{sep}{st[lang]}{code}")
     lines += ["", f"**{VALUE_LABEL[lang] if lang == 'zh' else 'Value'}**{sep}{spec['value'][lang]}", "", "</details>", END]
     return "\n".join(lines)
 

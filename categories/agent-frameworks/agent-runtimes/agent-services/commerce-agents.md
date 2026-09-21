@@ -84,7 +84,7 @@ Reach for this repo when you would rather that whole layer arrived already decid
 
 ## How it works
 
-The repo hands you the agent and asks you to implement one interface. You write a `StorefrontBackend` (catalogue search, cart, orders, policies) or a `MerchantBackend` (metrics, listings, inventory, pricing, campaigns) against your own systems, build the agent with that backend plus the shipped skills directory, and expose the two routes your app calls; the packages supply the system prompt, the tool contracts, the five flows per role, and the turn loop. What the project does for you inside that loop is the part worth reading: third-party text is sanitised and fenced before the model reads it, a cart write is refused unless the product id came back from a tool in this session, every field on a UI card is joined from your records rather than written by the model, and a merchant write only becomes real after your host application marks the staged change approved. You own everything behind the interface — business rules, credentials, auth, and the model's own evals — and the repo says so itself: `docs/safety.md` splits its rules into 20 enforced in code, 5 still asked of the model, and 9 a deployment must add.
+The repo hands you the agent and asks you to implement one interface. It also runs standalone over mock fixtures — one command boots a retailer with both agents so you can see the shape before wiring anything — but the value lands on the path below, not on that look: your systems behind the interface. You write a `StorefrontBackend` (catalogue search, cart, orders, policies) or a `MerchantBackend` (metrics, listings, inventory, pricing, campaigns) against your own systems, build the agent with that backend plus the shipped skills directory, and expose the two routes your app calls; the packages supply the system prompt, the tool contracts, the five flows per role, and the turn loop. What the project does for you inside that loop is the part worth reading: third-party text is sanitised and fenced before the model reads it, a cart write is refused unless the product id came back from a tool in this session, every field on a UI card is joined from your records rather than written by the model, and a merchant write only becomes real after your host application marks the staged change approved. You own everything behind the interface — business rules, credentials, auth, and the model's own evals — and the repo says so itself: `docs/safety.md` splits its rules into 20 enforced in code, 5 still asked of the model, and 9 a deployment must add.
 
 ![commerce-agents — backbone user story](../../../../assets/flow/commerce-agents.svg)
 
@@ -92,15 +92,14 @@ The repo hands you the agent and asks you to implement one interface. You write 
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Install the seven packages from the repo and run the bundled retail vertical — `pip install -r requirements.txt · python scripts/run_demo.py retail`
-2. **Claude Commerce Agents**: Boots the API, the storefront and the merchant portal over mock backends
-3. **You**: Implement the role interface over your catalog, cart and orders — `StorefrontBackend`
-4. **You**: Build the agent with your backend and the shipped skill flows — `ShoppingAgent(backend=…, skills_dir=…)`
-5. **You**: Expose the two routes your app calls — `POST /api/session · POST /api/chat`
-6. **Claude Commerce Agents**: Runs the turn loop: tools dispatch, gates check provenance, card values are joined from your records
-7. **Claude Commerce Agents**: Streams the turn back as events your UI renders — `ui · cart_update · turn_complete`
+1. **You** (Build): Install the seven packages from the repo — `pip install -r requirements.txt`
+2. **You** (Build): Implement the role interface over your catalog, cart and orders — `StorefrontBackend`
+3. **You** (Build): Build the agent with your backend and the shipped skill flows — `ShoppingAgent(backend=…, skills_dir=…)`
+4. **You** (Build): Expose the two routes your app calls — `POST /api/session · POST /api/chat`
+5. **Claude Commerce Agents** (Every turn): Runs the turn loop: tools dispatch, gates check provenance, card values are joined from your records
+6. **Claude Commerce Agents** (Every turn): Streams the turn back as events your UI renders — `ui · cart_update · turn_complete`
 
-**Value**: You get a working commerce agent — prompt, guardrails, UI fill-in and turn loop included — wired to your own systems
+**Value**: You build once; every turn afterwards gets prompt, guardrails, UI fill-in and turn loop for free
 
 </details>
 <!-- flow-steps:end -->
