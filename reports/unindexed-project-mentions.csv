@@ -183,6 +183,7 @@ Commercial solving services (打码平台),categories/captcha/text-select-captch
 "Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda,categories/python-tooling/uv.md,,no
+Conductor (Mac app),categories/agent-tooling/claudecodeui.md,,no
 Conductor / Crystal / Claude Squad,categories/agent-tooling/agent-orchestrator.md,,no
 Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no

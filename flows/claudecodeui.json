@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "CloudCLI does", "zh": "CloudCLI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it on the machine where your coding CLI is already logged in", "zh": "装在你的 coding CLI 已经登录好的那台机器上", "code": "npm install -g @cloudcli-ai/cloudcli"},
+    {"lane": "them", "en": "Starts a local server and discovers every existing session and project by itself", "zh": "起一个本地服务，自己发现全部已有会话和项目", "code": "cloudcli · http://localhost:3001"},
+    {"lane": "you", "en": "Turn on the tools you want — every one is disabled until you do", "zh": "逐个打开你要的工具——不动手就全是关的", "code": "Settings > Tools"},
+    {"lane": "them", "en": "Brings the terminal, the file tree and the git diff into the browser over a socket", "zh": "把终端、文件树、git diff 通过 socket 接进浏览器"},
+    {"lane": "you", "en": "From your phone, open a running session, send a follow-up or review its diff", "zh": "在手机上打开一个正跑着的会话，追加指令或审它的 diff"},
+    {"lane": "them", "en": "Runs the turn through the local CLI and writes back to that CLI's own on-disk state", "zh": "用本机 CLI 跑这一轮，写回该 CLI 自己的磁盘状态"}
+  ],
+  "value": {
+    "en": "The agent already on your workstation becomes reachable from any device, on its own sessions",
+    "zh": "工位上那个 agent 变成任何设备都能开的，且开的是它自己的会话"
+  },
+  "sources": [
+    "README 'Self-Hosted (Open source) > npm' (npx @cloudcli-ai/cloudcli, or npm install -g @cloudcli-ai/cloudcli then `cloudcli`; requires Node.js v22+)",
+    "README 'Open http://localhost:3001 — all your existing sessions are discovered automatically.'",
+    "README 'Security & Tools Configuration' (all Claude Code tools are disabled by default; enable selectively via the gear icon / Tools Settings, preferences saved locally)",
+    "README 'Features' and page Tech stack (Node/Express with node-pty for real PTYs, `ws` WebSocket data plane, CodeMirror editor, xterm.js terminals, git diff surfaces)",
+    "README intro (fronts the locally installed Claude Code / Codex / Cursor CLI agents and their on-disk state rather than re-implementing them)"
+  ]
+}
