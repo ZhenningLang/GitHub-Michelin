@@ -428,6 +428,7 @@ https://github.com/openinterpreter/open-interpreter,open-interpreter,terminal-ag
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
+https://github.com/outsourc-e/hermes-workspace,hermes-workspace,agent-tooling,categories/agent-tooling/hermes-workspace.md
 https://github.com/oven-sh/bun,bun,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/bun.md
 https://github.com/pahaz/sshtunnel,sshtunnel,networking,categories/networking/sshtunnel.md
 https://github.com/paperless-ngx/paperless-ngx,paperless-ngx,document-management,categories/document-management/paperless-ngx.md
@@ -479,6 +480,7 @@ https://github.com/sherlock-project/sherlock,sherlock,osint,categories/osint/she
 https://github.com/shibing624/text2vec,text2vec,rag-retrieval,categories/rag-retrieval/text2vec.md
 https://github.com/shipshapecode/shepherd,shepherd-js,product-tours,categories/web-ui/product-tours/shepherd-js.md
 https://github.com/shuding/nextra,nextra,frameworks,categories/web-ui/frameworks/nextra.md
+https://github.com/siteboon/claudecodeui,claudecodeui,agent-tooling,categories/agent-tooling/claudecodeui.md
 https://github.com/siyuan-note/siyuan,siyuan,knowledge-base,categories/knowledge-base/siyuan.md
 https://github.com/slavingia/skills,slavingia-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md
 https://github.com/slimtoolkit/slim,slim,ops-infra,categories/dev-utilities/ops-infra/slim.md

@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Hermes Workspace does", "zh": "Hermes Workspace 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the workspace on the box already running hermes-agent", "zh": "在已跑着 hermes-agent 的机器上装 workspace", "code": "pnpm install"},
+    {"lane": "you", "en": "Point it at the gateway and the dashboard your agent already serves", "zh": "把它指向 agent 已经在服务的 gateway 和 dashboard", "code": "HERMES_API_URL=…:8642 · HERMES_DASHBOARD_URL=…:9119"},
+    {"lane": "them", "en": "Probes those endpoints and lights up only the panes your agent actually exposes", "zh": "探测这些端点，只点亮 agent 真的暴露的面板"},
+    {"lane": "you", "en": "Open it in a browser or install the PWA on your phone", "zh": "用浏览器打开，或在手机上装成 PWA", "code": "pnpm dev · HERMES_PASSWORD"},
+    {"lane": "them", "en": "Renders the agent's own state: sessions, memory, skills, jobs, MCP, and a live PTY", "zh": "渲染 agent 自己的状态：会话、记忆、技能、任务、MCP、实时终端"},
+    {"lane": "them", "en": "In Swarm mode, dispatches work to tmux workers by role and tracks it on a kanban board", "zh": "Swarm 模式下按角色把活派给 tmux worker，用看板跟踪"}
+  ],
+  "value": {
+    "en": "Your agent's own state becomes a phone-reachable console — no ssh, no fork of the agent",
+    "zh": "agent 自己的状态变成手机可达的控制台——不用 ssh，也不用 fork agent"
+  },
+  "sources": [
+    "README 'Already running hermes-agent? Attach the workspace to it' (pnpm install; echo 'HERMES_API_URL=http://127.0.0.1:8642' >> .env; echo 'HERMES_DASHBOARD_URL=http://127.0.0.1:9119' >> .env; pnpm dev -> http://localhost:3000)",
+    "README 'Requirements' (API_SERVER_ENABLED=true so the gateway serves core APIs on :8642; `hermes dashboard` on :9119 provides config, sessions, skills and jobs APIs for zero-fork installs)",
+    "README v2 zero-fork note (Chat, sessions, memory, skills, jobs, MCP, terminal, dashboard, Agent View and Operations in vanilla parity; Conductor falls back to Workspace-native Swarm dispatch when the dashboard endpoint is absent)",
+    "README 'Swarm Mode' and docs/swarm/ (persistent tmux workers, role-based dispatch, kanban task board)",
+    "README remote-access section (HERMES_PASSWORD is required off-loopback; Tailscale addresses for HERMES_API_URL / HERMES_DASHBOARD_URL)"
+  ]
+}
