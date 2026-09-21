@@ -13,6 +13,7 @@
 | **Hypit** | 当你想让 agent 把某条特定爆款视频克隆成可编辑、词锚定的 SVML workflow，并通过换脸/换词/换 B-roll 批量出变体时用它——agent 优先、非 OSI 许可证、非常年轻。 | B（3/6） | [→](hypit.zh.md) |
 | **Remotion** | 当 React 优先的团队需要久经验证的程序化视频——composition 即 React 组件、带成熟 Lambda 云渲染——且接受 source-available 许可证（3 人以下公司免费）时用它。 | A（4/6） | [→](remotion.zh.md) |
 | **MoneyPrinterTurbo** | 当你需要一台可自托管的 MIT 家电（WebUI + API），把主题变成近零边际成本的口播库存素材短视频时用它——不做克隆，不需要 agent。 | A（4/6） | [→](moneyprinter-turbo.zh.md) |
+| **video-shotcraft** | 当 coding agent 应该把你的产品或网页做成电影感宣传片——150+ 张镜头配方卡、一支已验收的 36.2 秒 Remotion 模板、真实页面截图、2.5D 运镜与卡点音效——并在本机渲染时用它；仅约 2 个月历史、无 tagged release，且面向 Remotion 那个带资格门槛的许可。 | B（4/6） | [→](video-shotcraft.zh.md) |
 
 
 ## 对比矩阵
@@ -22,6 +23,7 @@
 | [OpenMontage](open-montage.zh.md) | ✅ | C（6/6） | 当你想让 AI 编程助手从一句自然语言描述出发，完成研究、脚本、素材生成、合成与渲染，产出完整视频（解说、预告片、动画、纪录片蒙太奇）时使用。 |
 | [HyperFrames](hyperframes.zh.md) | ✅ | B（6/6） | 确定性的 HTML 转 MP4 渲染，带 20 个 agent skill，Apache-2.0 许可；它是引擎层，不是带治理的管线，也不是生成式画面。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | C（3/6） | Claude Code / Codex skill-pack，带完整讲解片制作方法（调研→解说词→分镜→并行构建→QC）和一条样片作质量标尺；固定 MG 风格，仅 8 天龄，PolyForm 非商用许可。 |
+| [video-shotcraft](video-shotcraft.zh.md) | ✅ | B（4/6） | 当成片是用真实界面截图做成的产品宣传片、且希望审美来自一套镜头库时选它——但产出的是 Remotion composition，引擎那个「3 人以上需付费」的许可门槛会跟着你的交付物走，而且它没有任何 tag。 |
 | [Remotion](remotion.zh.md) | ✅ | A（4/6） | React 组件式创作加成熟的 Lambda 渲染，但采用 source-available 许可、超公司规模阈值需付费；OpenMontage 内嵌的正是这一类引擎。 |
 | [Hypit](hypit.zh.md) | ✅ | B（3/6） | agent 优先的爆款视频克隆，产出词锚定 SVML workflow、生成层可插拔；非 OSI 许可证，验证时仅 7 周龄，生成按付费模型 API 计费。 |
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | A（4/6） | 主题→口播库存素材短视频的 MIT WebUI/API 家电；边际成本近零、画面通用、单维护者 bus factor。 |

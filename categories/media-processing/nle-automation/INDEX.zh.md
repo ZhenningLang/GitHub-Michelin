@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Jianying Headless** | 当 macOS 上的剪映工作流需要 agent 生成**可编辑**草稿——真实多轨工程，并可用应用自己的引擎原生导出 MP4——时用它；代价是仅 5 天历史、单一维护者、绑定某一个应用版本、且仅限非商用。 | D（4/6） | [→](jianying-headless.zh.md) |
 | **pyJianYingDraft** | 当 Python 管线需要产出可编辑剪映草稿时用它——跨平台、Apache-2.0、构建机上不需要装编辑器；代价是新版剪映草稿已加密、它不替你渲染、自带导出只在 Windows 加剪映 6 及更早版本上可用。 | C（5/6） | [→](pyjianyingdraft.zh.md) |
+| **JianYing Editor Skill** | 当 coding agent 应该把一句自然语言需求变成真实剪映时间轴——素材、TTS 配音、对齐字幕、配乐与具名特效——而由你自己在剪映里判断并导出时用它；代价是没有 tagged release、无人值守导出只在 Windows、且会接管屏幕。 | C（3/6） | [→](jianying-editor-skill.zh.md) |
 
 ## 对比矩阵
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.zh.md) | ✅ | D（4/6） | agent 写出可编辑剪映草稿，并用应用自己的引擎原生导出；代价是 macOS 26 加某个固定剪映版本、逐机器编译的桥接，以及非商用许可。 |
 | [pyJianYingDraft](pyjianyingdraft.zh.md) | ✅ | C（5/6） | 在任何操作系统上用 Python 写剪映草稿，Apache-2.0；代价是碰不了加密草稿、不负责渲染，自带导出只支持 Windows 加剪映 6 及更早版本。 |
+| [JianYing Editor Skill](jianying-editor-skill.zh.md) | ✅ | C（3/6） | 当需求本身就是对话式的、且时间轴要组装配音／字幕／配乐时选它——它是同一批草稿文件之上的 agent 层，但没有 tagged release、macOS 不能自动导出、只有一位维护者。 |
 | 剪映专业版／CapCut（闭源应用） | 未收录 | — | 厂商打磨到位的手工剪辑；没有官方支持的自动化接口。 |
 
 ## 什么该放这里
