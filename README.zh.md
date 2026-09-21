@@ -1026,6 +1026,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **SiYuan** | 当你想要一个自托管、块级引用的知识工作空间、让人与 AI 智能体共同编辑时用它——但部分功能需付费（open-core）。 | AGPL-3.0 | B（5/6） | [中](categories/knowledge-base/siyuan.zh.md) · [EN](categories/knowledge-base/siyuan.md) |
 | **Khoj** | 当你想要一个可自托管的 AI 第二大脑、从你的文档与网络取答案、并覆盖浏览器／桌面／Obsidian、模型可选本地或在线时用它。 | AGPL-3.0 | C（6/6） | [中](categories/knowledge-base/khoj.zh.md) · [EN](categories/knowledge-base/khoj.md) |
 | **Reor** | 当你需要一份「本地优先 AI 笔记」的模式参考时用它；它已归档（2025-05），不要把生产押在它上面。 | AGPL-3.0 | E（4/6） | [中](categories/knowledge-base/reor.zh.md) · [EN](categories/knowledge-base/reor.md) |
+| **OpenKB** | 当你希望长文档被 LLM 一次性编译成一份可持久、互相链接的 Markdown 维基、之后再对这份维基提问时用它——无头 CLI，不需要向量库。 | Apache-2.0 | B（6/6） | [中](categories/knowledge-base/openkb.zh.md) · [EN](categories/knowledge-base/openkb.md) |
 
 ### peripherals
 

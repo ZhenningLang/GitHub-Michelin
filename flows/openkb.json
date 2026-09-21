@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenKB does",
+    "zh": "OpenKB 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it and initialize a knowledge base",
+      "zh": "安装并初始化一个知识库",
+      "code": "pip install openkb · openkb init"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at material — a file, a folder, or a URL",
+      "zh": "投喂素材——单个文件、一个目录或一个 URL",
+      "code": "openkb add paper.pdf"
+    },
+    {
+      "lane": "them",
+      "en": "Converts short docs to Markdown and tree-indexes long PDFs",
+      "zh": "短文档转成 Markdown，长 PDF 建成树索引"
+    },
+    {
+      "lane": "them",
+      "en": "An LLM pass writes a summary page and updates concept and entity pages",
+      "zh": "一轮 LLM 编译写出摘要页，并更新概念页与实体页"
+    },
+    {
+      "lane": "you",
+      "en": "Ask a question over the compiled wiki",
+      "zh": "对编译好的维基提问",
+      "code": "openkb query \"What are the main findings?\""
+    },
+    {
+      "lane": "them",
+      "en": "Answers with citations from the wiki instead of a fresh retrieval pass",
+      "zh": "从维基给出带引用的答案，而不是重新检索一遍"
+    }
+  ],
+  "value": {
+    "en": "Your documents accrete into one cross-linked Markdown wiki instead of being re-derived on every query",
+    "zh": "你的文档积累成一份互相链接的 Markdown 维基，而不是每次提问都重新推导"
+  },
+  "sources": [
+    "README.md quick start: `pip install openkb`; `openkb init`; `openkb add paper.pdf`; `openkb add ~/papers/`; `openkb add https://arxiv.org/pdf/2509.11420`; `openkb query \"What are the main findings?\"`; `openkb chat`",
+    "README.md 'Short vs Long Document Handling': short documents -> markitdown -> Markdown, LLM reads full text; long PDFs (>= 20 pages) -> PageIndex tree index + summaries",
+    "README.md 'Knowledge Compilation': the LLM generates a summary page, reads existing concept and entity pages, creates or updates them with cross-document synthesis, then updates the index and log; 'a single source might touch 10--15 wiki pages'",
+    "skills/openkb/SKILL.md: the wiki holds concept pages at wiki/concepts/*.md, entity pages at wiki/entities/*.md, summary pages at wiki/summaries/*.md and source files at wiki/sources/*",
+    "examples/commands/README.md: `openkb query \"...\" --save` writes the answer to wiki/explorations/<slug>.md; supported formats list; long vs short PDFs split by `pageindex_threshold`",
+    "config.yaml.example: `model`, `language`, `pageindex_threshold` keys live in .openkb/config.yaml"
+  ]
+}

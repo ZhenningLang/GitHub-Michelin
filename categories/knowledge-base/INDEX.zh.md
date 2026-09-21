@@ -12,6 +12,7 @@
 | **SiYuan** | 当你想要一个自托管、块级引用的知识工作空间、让人与 AI 智能体共同编辑时用它——但部分功能需付费（open-core）。 | B（5/6） | [→](siyuan.zh.md) |
 | **Khoj** | 当你想要一个可自托管的 AI 第二大脑、从你的文档与网络取答案、并覆盖浏览器／桌面／Obsidian、模型可选本地或在线时用它。 | C（6/6） | [→](khoj.zh.md) |
 | **Reor** | 当你需要一份「本地优先 AI 笔记」的模式参考时用它；它已归档（2025-05），不要把生产押在它上面。 | E（4/6） | [→](reor.zh.md) |
+| **OpenKB** | 当你希望长文档被 LLM 一次性编译成一份可持久、互相链接的 Markdown 维基、之后再对这份维基提问时用它——无头 CLI，不需要向量库。 | B（6/6） | [→](openkb.zh.md) |
 
 
 ## 对比矩阵
@@ -23,6 +24,7 @@
 | [SiYuan](siyuan.zh.md) | ✅ | B（5/6） | 块级引用、Go 内核、支持 Docker 自托管——但有 open-core 付费墙和单一厂商生态。 |
 | [Khoj](khoj.zh.md) | ✅ | C（6/6） | 第二大脑触面最广（网页／桌面／Obsidian／WhatsApp）、支持多种 LLM——但 Python + pgvector 运维更重，发布线停滞。 |
 | [Reor](reor.zh.md) | ✅ | E（4/6） | 与 LLM Wiki 最直接的同型竞品（本地 embedding + Ollama + LanceDB）——但已归档，只能当模式参考。 |
+| [OpenKB](openkb.zh.md) | ✅ | B（6/6） | LLM Wiki 的无头对照版：CLI + 可选 API、PageIndex 无向量检索、更多产出面（agent skill／幻灯片／图谱）——但它是 5.5 个月大的 v0.x，公开合并节奏在 2026-07 停了。 |
 | NotebookLM / Obsidian | 未收录 | — | 各页点到的托管 SaaS 与专有免费软件：不是可收录的仓库。 |
 
 ## 什么该放这里
