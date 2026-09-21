@@ -18,12 +18,14 @@
 | **PyAV** | 面向 FFmpeg 的 libav* 库的 Pythonic 绑定——在进程内完成解码/编码，可逐帧访问 NumPy 数组和 Python bytes，无需生成子进程。 | A（6/6） | [→](pyav.zh.md) |
 | **OpenAI Whisper** | OpenAI 的通用自动语音识别模型，支持 99 种语言的转写与英译，提供多种尺寸/质量权衡。 | B（5/6） | [→](whisper.zh.md) |
 | **claude-video** | 面向 agent 的 `/watch` 工作流：下载视频、抽帧、获取字幕 / 转录，并把视觉 / 音频证据交给 Claude 或其他 skill host。 | C（4/6） | [→](claude-video.zh.md) |
+| **Auto-Editor** | 命令行粗剪工具：按响度（或画面运动）给每个时间点打标签，带缓冲地剪掉静音段；也可以不输出成片，而是导出 Premiere／Resolve／Final Cut／ShotCut／Kdenlive 可导入的时间线。 | B（6/6） | [→](auto-editor.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [claude-video](claude-video.zh.md) | ✅ | C（4/6） | 面向 agent 的视频理解 helper；视频生产 / 剪辑看 FFmpeg / MoviePy，只转录看 Whisper。 |
+| [Auto-Editor](auto-editor.zh.md) | ✅ | B（6/6） | 当反复出现的任务是「删掉冷场、给我一条时间线」时选它；用 FFmpeg 要自己写判断逻辑，HandBrake 根本检测不了静音，MoviePy 则是要你编程的库。 |
 
 
 ## 什么该放这里
