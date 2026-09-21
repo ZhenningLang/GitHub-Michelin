@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "gstack does",
+    "zh": "gstack 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo into your agent's skills directory and run its setup",
+      "zh": "把仓库克隆进 agent 的 skills 目录，跑它的 setup",
+      "code": "./setup",
+      "component": {"en": "setup script", "zh": "setup 脚本"}
+    },
+    {
+      "lane": "them",
+      "en": "Registers the whole role command set and a headless browser the agent drives",
+      "zh": "注册整套角色命令，并配一个 agent 能驱动的无头浏览器",
+      "component": {"en": "skills dir + browse daemon", "zh": "skills 目录 + browse 守护进程"}
+    },
+    {
+      "lane": "you",
+      "en": "Point the product interview at your idea",
+      "zh": "拿产品拷问对准你的想法",
+      "code": "/office-hours",
+      "component": {"en": "skill", "zh": "技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Challenges your framing and writes the design doc the later skills read",
+      "zh": "质疑你的框架，写出后续技能会读的设计文档",
+      "component": {"en": "main agent", "zh": "主 agent"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask for a plan that has already been reviewed",
+      "zh": "要一份已经过评审的计划",
+      "code": "/autoplan",
+      "component": {"en": "skill", "zh": "技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Runs the CEO review, then design and DX if in scope, then eng; only taste calls come back",
+      "zh": "先 CEO 评审，命中范围才跑设计与 DX，最后工程；只把品味抉择交回",
+      "component": {"en": "subagent + outside CLI", "zh": "subagent + 外部 CLI"}
+    },
+    {
+      "lane": "you",
+      "en": "Approve, and let it implement",
+      "zh": "确认后让它动手实现",
+      "component": {"en": "main agent", "zh": "主 agent"}
+    },
+    {
+      "lane": "them",
+      "en": "Hunts the bugs CI misses: /review fixes what it can, /qa drives a real browser",
+      "zh": "找 CI 漏掉的 bug：/review 修能修的，/qa 开真浏览器跑一遍",
+      "code": "/review · /qa",
+      "component": {"en": "review army + browse binary", "zh": "专家 subagent + 浏览器"}
+    },
+    {
+      "lane": "them",
+      "en": "/ship syncs main, runs the tests, pushes and opens the PR",
+      "zh": "/ship 同步 main、跑测试、推送并开 PR",
+      "code": "/ship",
+      "component": {"en": "skill + bin/gstack-* CLIs", "zh": "技能 + bin/gstack-* 工具"}
+    }
+  ],
+  "value": {
+    "en": "You run a team's sprint sequence, each step reading the last one's artifact, instead of retyping prompts",
+    "zh": "你走的是一支团队的冲刺顺序，每步读上一步的产物，而不是重打 prompt"
+  },
+  "sources": [
+    "README.md Quick start + The sprint (command names and order; /office-hours writes a design doc that downstream skills read)",
+    "AGENTS.md Available skills (role groupings: plan-mode reviews, implementation, release, operational, browser, iOS, safety)",
+    "ARCHITECTURE.md:7-56 (Aside-first browsing, bundled headless Chromium daemon as the fallback engine)",
+    "setup (single-file installer: clone into skills dir, register the commands per host)",
+    "scripts/resolvers/review-army.ts + review/specialists/ (parallel specialist subagents dispatched by /review and /ship)",
+    "scripts/resolvers/constants.ts:164-174 (plan reviews dispatch a subagent) + scripts/resolvers/index.ts:101 CODEX_PLAN_REVIEW -> generateCodexPlanReview (or the outside Codex/Claude CLI)",
+    "bin/ (gstack-diff-scope, gstack-evidence, gstack-pr-title-rewrite.sh) and package.json bin (browse, make-pdf)",
+    "docs/skills.md (55 documented skills) + VERSION/CHANGELOG.md (1.87.4.0)"
+  ]
+}
