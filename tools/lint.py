@@ -20,7 +20,10 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - each page starts with an H1 title (`# <name>`) -> ERROR if absent
   - bilingual pair frontmatter is identical (facts are language-neutral) -> ERROR on any drift
   - skill-pack pages must OMIT Tech stack / Dependencies / Ops difficulty (not pad them) -> ERROR if present
-  - last_verified parses; staleness > STALE_DAYS -> WARNING
+  - last_verified parses; staleness > STALE_DAYS -> WARNING; a date ahead of UTC today -> ERROR
+  - dates are compared against UTC today, never the runner's local clock (CI is UTC; a machine
+    ahead of UTC must not be able to write a page that the gate then calls "in the future").
+    See today_utc().
   - every page has a health radar frontmatter block + card embed -> ERROR if absent/malformed
   - health computed_at parses; staleness > STALE_DAYS -> WARNING (time-decay axes rot even
     when upstream is unchanged — a quiet repo decays while its SHA never moves)
@@ -89,6 +92,19 @@ REQUIRE_FLOW = os.environ.get("OSS_ATLAS_REQUIRE_FLOW", "0") == "1"
 # required for them (add-project writes it; sync-entry bumps last_verified only after re-checking it).
 # Older pages are the backfill backlog: one aggregate WARNING, not 1000 errors.
 FLOW_REQUIRED_FROM = os.environ.get("OSS_ATLAS_FLOW_REQUIRED_FROM", "2026-09-20")
+
+
+def today_utc() -> dt.date:
+    """The date every freshness check compares against, in UTC.
+
+    Not dt.date.today(): that reads the runner's local clock. CI runs in UTC while a developer
+    8 hours ahead can write `last_verified: <local tomorrow>` after local midnight and pass
+    locally, only to have CI reject it as "in the future" (observed 2026-09-22 on a page written
+    at 00:05 UTC+8). Fixing the clock removes the environment-dependent verdict; facts elsewhere
+    in the schema (upstream.pushed_at, health.computed_at) are UTC too, so this matches them.
+    """
+    return dt.datetime.now(dt.timezone.utc).date()
+
 
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 # Caveats ledger heading — tolerant prefix match (the parenthetical varies: (unverified)/（未验证）).
@@ -602,7 +618,8 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
             if age > STALE_DAYS:
                 rep.warn(path, f"stale: last_verified {lv} is {age}d old (> {STALE_DAYS}); run sync-entry")
             if d > today:
-                rep.error(path, f"last_verified {lv} is in the future")
+                rep.error(path, f"last_verified {lv} is in the future (UTC today is {today}); "
+                                f"write the UTC date, not a local date ahead of it")
         except ValueError:
             rep.error(path, f"last_verified '{lv}' is not a valid YYYY-MM-DD date")
 
@@ -737,7 +754,7 @@ def main() -> int:
     args = ap.parse_args()
     root = Path(args.root).resolve()
     rep = Report()
-    today = dt.date.today()
+    today = today_utc()
 
     categories_dir = root / "categories"
     if not categories_dir.is_dir():

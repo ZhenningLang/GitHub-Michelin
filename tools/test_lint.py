@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import contextlib
+import io
 import tempfile
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -235,6 +238,51 @@ class LintContractTest(unittest.TestCase):
             lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
 
             self.assertTrue(any("Comparison table row has 3 columns, expected 4" in e for e in rep.errors))
+
+
+    def test_future_last_verified_is_an_error(self) -> None:
+        """A date ahead of the comparison clock is an error, not a warning."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            rep = lint.Report()
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            page.write_text(page_text().replace("last_verified: 2026-06-29", "last_verified: 2026-06-30"), encoding="utf-8")
+            (root / "assets" / "health").mkdir(parents=True)
+            (root / "assets" / "health" / "demo.svg").write_text("<svg />", encoding="utf-8")
+
+            lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
+
+            self.assertTrue(any("last_verified 2026-06-30 is in the future" in e for e in rep.errors))
+
+    def test_today_utc_is_the_clock_the_gate_uses(self) -> None:
+        """main() must read the UTC date, not the runner's local date.
+
+        Regression: a page written at 00:05 UTC+8 carried `last_verified: <local tomorrow>`,
+        passed locally and failed CI (`is in the future`). Patching today_utc to one day before
+        the page's date must therefore fail the run.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            page.write_text(page_text(), encoding="utf-8")
+            (root / "assets" / "health").mkdir(parents=True)
+            (root / "assets" / "health" / "demo.svg").write_text("<svg />", encoding="utf-8")
+
+            out = io.StringIO()
+            with mock.patch.object(lint, "today_utc", lambda: lint.dt.date(2026, 6, 28)), \
+                 mock.patch.object(sys, "argv", ["lint.py", "--root", str(root)]), \
+                 contextlib.redirect_stdout(out):
+                code = lint.main()
+
+            self.assertEqual(code, 1)
+            self.assertIn("last_verified 2026-06-29 is in the future (UTC today is 2026-06-28)", out.getvalue())
+
+    def test_today_utc_ignores_a_local_clock_ahead_of_utc(self) -> None:
+        """The helper is UTC-based, so it cannot inherit a local clock ahead of UTC."""
+        utc_today = lint.dt.datetime.now(lint.dt.timezone.utc).date()
+        self.assertEqual(lint.today_utc(), utc_today)
 
 
 if __name__ == "__main__":

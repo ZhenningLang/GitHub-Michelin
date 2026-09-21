@@ -89,7 +89,9 @@ The schema is the contract: **`tools/schema.md`**. In short:
   — **and ends with a** `Caveats (unverified)` / `存疑（未验证）` **ledger** — the uncertainty list.
 - **Bilingual**: the two files are monolingual mirrors — do NOT mix languages inside one file.
 - **Truth labeling**: anything not confirmed from a source is `[未验证]` / `[推断]`. Date your
-  facts (`maturity`, `last_verified`). Never assert opinion as fact — an agent will act on it. Keep
+  facts (`maturity`, `last_verified`) — **dates are UTC**, and the gate compares `last_verified`
+  against UTC today, so a local date ahead of UTC (writing just after midnight at UTC+8) is an
+  ERROR. Never assert opinion as fact — an agent will act on it. Keep
   inline labels in the prose to the load-bearing/contested few (≤3 before the Caveats ledger — the
   linter WARNs above that); every unverified fact still gets a bullet in the Caveats ledger.
 - **Chinese punctuation**: in `.zh.md` bodies, use fullwidth Chinese punctuation (`，；：！？（）“”`),

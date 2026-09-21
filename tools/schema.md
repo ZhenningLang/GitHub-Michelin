@@ -65,6 +65,12 @@ Rules enforced by the linter:
 - `tags` is a non-empty inline list.
 - `type` is one of `tool | library | app | framework | service | model | skill-pack`. It decides which body sections are required (§2).
 - `last_verified` parses as `YYYY-MM-DD`.
+- **Dates are UTC dates.** The gate compares `last_verified` against **UTC today**
+  (`lint.today_utc()`), never the writer's local clock — CI runners are UTC, so a page written
+  just after local midnight in a zone ahead of UTC (e.g. UTC+8) would otherwise carry a date the
+  runner calls "in the future" and fail while passing locally. A date ahead of UTC today is an
+  ERROR; write the UTC date. The same convention already applies to `upstream.pushed_at` and
+  `health.computed_at`.
 - **Staleness**: if `today - last_verified > STALE_DAYS` (default 90), the linter prints a **WARNING** (not an error). Run the `sync-entry` skill to re-verify and bump the date.
 
 ## 2. Files — a bilingual pair
