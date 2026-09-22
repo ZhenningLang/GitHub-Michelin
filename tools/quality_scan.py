@@ -5,7 +5,8 @@ This tool is intentionally separate from tools/lint.py. It catches deterministic
 weak-model artifacts and audit signals, but it does not claim semantic approval.
 
 Env: OSS_ATLAS_STUB_BLOCKED_FROM (default 2026-09-22) — a page carrying batch-intake
-placeholder prose fails the gate once its last_verified reaches this date.
+placeholder prose, duplicated judgment prose, or an untranslated lead line fails the gate
+once its last_verified reaches this date.
 """
 from __future__ import annotations
 
@@ -77,6 +78,22 @@ DUP_SECTIONS = {
 # Scales every threshold above, for tightening or loosening the whole check at once.
 DUP_THRESHOLD_SCALE = float(os.environ.get("OSS_ATLAS_DUP_THRESHOLD_SCALE", "1.0"))
 DUP_MIN_CHARS = 120          # shorter sections are too small for the ratio to mean anything
+# The line under the H1 is the one sentence every reader reads (schema.md, "The lead line is the
+# problem, not the definition"). On a `.zh.md` page it must be authored in Chinese; the cheapest
+# thing a generator can put there instead is the upstream README tagline, which arrives in English
+# with its marketing adjectives and emoji intact ("🐢 Open-Source Evaluation & Testing library for
+# LLM Agents"). That is detectable without judging prose: measure how much of the lead is CJK.
+# Fullwidth punctuation counts as Chinese: it is what a real ZH lead uses (schema.md requires it)
+# and what an English tagline never has, so including it pushes the two clusters further apart.
+# A 2026-09-22 census of all 588 ZH pages found them cleanly separated: the 102 untranslated
+# upstream taglines top out at 7.7%, while the most English-heavy *real* Chinese lead — a skill
+# page whose name and subject are both English — sits at 16.4%, and ordinary leads run 40–60%.
+# 0.12 is the midpoint of that empty band, so no borderline page is being adjudicated. (Counting
+# CJK ideographs alone put that real floor at 11%, inside the gate — hence the punctuation range.)
+ZH_LEAD_MIN_CJK_RATIO = 0.12
+# Below this length a lead is too short for the ratio to mean anything (a bare command, a name).
+# Defensive only — no page in the 2026-09-22 census has a lead this short.
+ZH_LEAD_MIN_LENGTH = 12
 SHINGLE_K = 9
 SHINGLE_STEP = 3
 SHINGLE_SAMPLE = 4           # keep ~1/4 of shingles: same ratios, a quarter of the postings
@@ -95,6 +112,8 @@ KNOWN_CATEGORIES = [
     "non-repo-status-legacy-form",
     "truncation-fragment",
     "zero-placeholder-upstream-sha",
+    "zh-lead-not-chinese",
+    "zh-lead-not-chinese-reverified",
     "zh-link-to-english-sibling",
 ]
 GATED_DETERMINISTIC_CATEGORIES = {
@@ -105,6 +124,7 @@ GATED_DETERMINISTIC_CATEGORIES = {
     "indexed-page-marked-not-indexed",
     "intake-stub-page-reverified",
     "truncation-fragment",
+    "zh-lead-not-chinese-reverified",
     "zh-link-to-english-sibling",
 }
 NOT_INDEXED_MARKERS = ["not indexed", "未收录"]
@@ -258,6 +278,50 @@ def detect_intake_stub(text: str, rel: str) -> list[Finding]:
                         f">= {STUB_BLOCKED_FROM}; rewrite the placeholder sections (sync-entry).", evidence)]
     return [Finding("intake-stub-page", "medium", rel, line_number(text, offset),
                     "First-pass intake page: facts are machine-read, judgment sections are placeholders.", evidence)]
+
+
+def is_chinese_char(ch: str) -> bool:
+    """A CJK ideograph, or the fullwidth punctuation a Chinese body is required to use."""
+    code = ord(ch)
+    return (0x4E00 <= code <= 0x9FFF) or (0x3000 <= code <= 0x303F) or (0xFF01 <= code <= 0xFF60)
+
+
+def lead_line(text: str) -> tuple[str, int] | None:
+    """The first non-empty, non-image line after the H1 — the page's lead. None if there is none."""
+    offset = 0
+    seen_h1 = False
+    for raw in text.split("\n"):
+        line = raw.strip()
+        if seen_h1 and line and not line.startswith("!["):
+            return line, offset
+        if raw.startswith("# "):
+            seen_h1 = True
+        offset += len(raw) + 1
+    return None
+
+
+def detect_zh_lead_not_chinese(text: str, rel: str) -> list[Finding]:
+    """A ZH page whose lead line was never translated — almost always the upstream README tagline."""
+    found = lead_line(text)
+    if found is None:
+        return []
+    lead, offset = found
+    if len(lead) < ZH_LEAD_MIN_LENGTH:
+        return []
+    ratio = sum(1 for ch in lead if is_chinese_char(ch)) / len(lead)
+    if ratio >= ZH_LEAD_MIN_CJK_RATIO:
+        return []
+    evidence = lead if len(lead) <= 70 else lead[:70] + "…"
+    verified = last_verified_of(text)
+    line = line_number(text, offset)
+    if verified and verified >= STUB_BLOCKED_FROM:
+        return [Finding("zh-lead-not-chinese-reverified", "high", rel, line,
+                        f"Chinese page opens with a {ratio:.0%}-CJK lead but claims last_verified "
+                        f"{verified} >= {STUB_BLOCKED_FROM}; write the lead in Chinese, as the "
+                        "problem it solves rather than the upstream tagline (schema.md).", evidence)]
+    return [Finding("zh-lead-not-chinese", "medium", rel, line,
+                    f"Chinese page opens with a {ratio:.0%}-CJK lead — the upstream English tagline "
+                    "was left in place instead of a Chinese lead stating the problem.", evidence)]
 
 
 def is_project_page(path: Path) -> bool:
@@ -843,6 +907,8 @@ def scan(root: Path | str, *, scope_paths: list[Path | str] | tuple[Path | str, 
             )
 
         findings.extend(detect_intake_stub(text, rel))
+        if page.name.endswith(ZH_SUFFIX):
+            findings.extend(detect_zh_lead_not_chinese(text, rel))
 
         health_unknowns.update(unknown_health_axes(text))
         findings.extend(detect_health_prose_grade_drift(page, text, root))

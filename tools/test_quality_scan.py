@@ -1045,6 +1045,69 @@ class QualityScanTest(unittest.TestCase):
             self.assertEqual(legacy[0].severity, "low")
             self.assertNotIn("non-repo-status-legacy-form", quality_scan.GATED_DETERMINISTIC_CATEGORIES)
 
+    def test_zh_lead_left_as_english_tagline_is_reported(self) -> None:
+        """The cheapest thing a generator puts under the H1 is the upstream README tagline."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.zh.md",
+                       "\U0001F422 Open-Source Evaluation & Testing library for LLM Agents\n\n## 横向对比\n")
+
+            result = quality_scan.scan(root)
+
+            leads = [f for f in result.findings if f.category == "zh-lead-not-chinese"]
+            self.assertEqual(len(leads), 1)
+            self.assertEqual(leads[0].severity, "medium")
+            self.assertNotIn("zh-lead-not-chinese", quality_scan.GATED_DETERMINISTIC_CATEGORIES)
+
+    def test_zh_lead_with_english_proper_nouns_is_not_flagged(self) -> None:
+        """An ordinary Chinese lead is held under 100% CJK by names it cannot translate."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.zh.md",
+                       "JetBrains \u7cfb IDE\uff08IntelliJ IDEA\u3001PyCharm\u3001GoLand\u3001WebStorm\uff09"
+                       "\u7684 Vim \u6a21\u62df\u63d2\u4ef6\u3002\n\n## \u6a2a\u5411\u5bf9\u6bd4\n")
+
+            result = quality_scan.scan(root)
+
+            self.assertEqual([f for f in result.findings if f.category.startswith("zh-lead-not-chinese")], [])
+
+    def test_english_page_lead_is_never_flagged(self) -> None:
+        """The rule is about an untranslated mirror, so it only applies to `.zh.md`."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md",
+                       "The grammar-constrained decoding engine most stacks already run.\n\n## Comparison\n")
+
+            result = quality_scan.scan(root)
+
+            self.assertEqual([f for f in result.findings if f.category.startswith("zh-lead-not-chinese")], [])
+
+    def test_zh_lead_not_chinese_is_gated_once_reverified(self) -> None:
+        """Re-verifying a page is when the untranslated lead has to be written."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = write_page(root, "categories/demo/alpha.zh.md",
+                              "Download market data from Yahoo! Finance's API\n\n## \u6a2a\u5411\u5bf9\u6bd4\n")
+            page.write_text(page.read_text(encoding="utf-8").replace(
+                "last_verified: 2026-07-04", f"last_verified: {quality_scan.STUB_BLOCKED_FROM}"), encoding="utf-8")
+
+            result = quality_scan.scan(root)
+
+            gated = [f for f in result.findings if f.category == "zh-lead-not-chinese-reverified"]
+            self.assertEqual(len(gated), 1)
+            self.assertEqual(gated[0].severity, "high")
+            self.assertIn("zh-lead-not-chinese-reverified", quality_scan.GATED_DETERMINISTIC_CATEGORIES)
+
+    def test_short_zh_lead_is_not_flagged(self) -> None:
+        """Too short for the ratio to mean anything — do not adjudicate it."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.zh.md", "`qpdf`\n\n## \u6a2a\u5411\u5bf9\u6bd4\n")
+
+            result = quality_scan.scan(root)
+
+            self.assertEqual([f for f in result.findings if f.category.startswith("zh-lead-not-chinese")], [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -186,14 +186,22 @@ catches boilerplate someone already wrote, so there are two checks that do not d
   backlog, gated as `duplicated-section-prose-reverified` once the page claims a fresh
   `last_verified` — the same cutoff as the intake stubs.
 
-Neither catches a *single* page of fluent, project-agnostic prose; that still needs a reader.
+- `quality_scan.py` reports `zh-lead-not-chinese` when a `.zh.md` page's lead line — the one
+  sentence under the H1 that every reader reads — is still the upstream English README tagline
+  (102 pages, emoji and all). The lead has a contract in `tools/schema.md` ("The lead line is the
+  problem, not the definition"): state the symptom the reader can picture, then the one-clause
+  mechanism; never the upstream description. Report-only, gated as `zh-lead-not-chinese-reverified`
+  at the same `last_verified` cutoff as the other two.
+
+None of the three catches a *single* page of fluent, project-agnostic prose; that still needs a reader.
 
 **Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
 + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.
 `quality_scan.py --fail-on-gated` fails only on its **gated** deterministic categories
 (`generic-comparison-template`, `indexed-page-marked-non-repo`, `indexed-page-marked-not-indexed`,
 `composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`,
-`intake-stub-page-reverified`, `duplicated-section-prose-reverified`); run it without the flag for
+`intake-stub-page-reverified`, `duplicated-section-prose-reverified`, `zh-lead-not-chinese-reverified`);
+run it without the flag for
 the full report-only triage. Neither can judge whether `When to use` is a real
 trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
 run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.

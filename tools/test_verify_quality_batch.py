@@ -22,6 +22,8 @@ REQUIRED_GATED_CATEGORIES = {
     "composite-alternative-partly-indexed",
     "truncation-fragment",
     "intake-stub-page-reverified",
+    "duplicated-section-prose-reverified",
+    "zh-lead-not-chinese-reverified",
 }
 
 
