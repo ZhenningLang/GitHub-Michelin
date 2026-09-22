@@ -3,10 +3,14 @@
 
 This tool is intentionally separate from tools/lint.py. It catches deterministic
 weak-model artifacts and audit signals, but it does not claim semantic approval.
+
+Env: OSS_ATLAS_STUB_BLOCKED_FROM (default 2026-09-22) — a page carrying batch-intake
+placeholder prose fails the gate once its last_verified reaches this date.
 """
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import subprocess
 from collections import Counter
@@ -18,6 +22,32 @@ ZH_SUFFIX = ".zh.md"
 ZERO_SHA = "0000000000000000000000000000000000000000"
 GENERIC_TEMPLATES = ["Use this page for its stated niche", "当前页用于它的主场景"]
 TRUNCATION_FRAGMENTS = ["trac.", "(Node.", "and.", "per-har.", "before co."]
+# Verbatim prose emitted by the batch intake generators (tools/intake_queue_apply.py,
+# tools/agent_skills_intake.py). Those scripts mass-create pages from a backlog of names with
+# machine-read facts and placeholder judgment: `When to use` describes choosing software in
+# general rather than this project's trigger, and Dependencies / Ops difficulty / Health say only
+# that nobody has looked yet. lint.py passes them (the sections exist) and a reader cannot tell
+# them apart from a researched page, so they are detected here and carried as backlog until
+# sync-entry rewrites them.
+INTAKE_STUB_MARKERS = [
+    "This first-pass page exists because",
+    "when its upstream description matches the job",
+    "an untracked name from a backlog",
+    "not exhaustively verified in this intake pass",
+    "Unknown to medium until the upstream docs are reread",
+    "Unknown to medium until deeper review",
+    "这个首版页面存在，是因为",
+    "首版 intake 页面",
+    "本首版页面尚未穷尽读取所有依赖清单",
+    "本次 intake 未穷尽核验",
+    "本次 intake 未完整复核",
+    "在重读上游文档前，按未知到中等处理",
+]
+# A page may keep stub prose (backlog, report-only) but must not also claim a fresh verification
+# date: re-verifying a page is exactly when the placeholder prose has to be replaced. Pages whose
+# last_verified is on or after this date fail the gate. Mirrors lint.py's FLOW_REQUIRED_FROM.
+STUB_BLOCKED_FROM = os.environ.get("OSS_ATLAS_STUB_BLOCKED_FROM", "2026-09-22")
+LAST_VERIFIED_RE = re.compile(r"^last_verified:\s*['\"]?(\d{4}-\d{2}-\d{2})", re.MULTILINE)
 KNOWN_CATEGORIES = [
     "composite-alternative-partly-indexed",
     "generic-comparison-template",
@@ -25,6 +55,8 @@ KNOWN_CATEGORIES = [
     "health-prose-raw-drift",
     "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
+    "intake-stub-page",
+    "intake-stub-page-reverified",
     "non-repo-status-legacy-form",
     "truncation-fragment",
     "zero-placeholder-upstream-sha",
@@ -35,6 +67,7 @@ GATED_DETERMINISTIC_CATEGORIES = {
     "generic-comparison-template",
     "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
+    "intake-stub-page-reverified",
     "truncation-fragment",
     "zh-link-to-english-sibling",
 }
@@ -97,6 +130,27 @@ class ScanResult:
     scan_mode: str = "all"
     scope_paths: tuple[str, ...] = ()
     changed_candidate_count: int = 0
+
+
+def last_verified_of(text: str) -> str | None:
+    match = LAST_VERIFIED_RE.search(text)
+    return match.group(1) if match else None
+
+
+def detect_intake_stub(text: str, rel: str) -> list[Finding]:
+    """One finding per page, not per marker: the whole page is the stub, not each sentence."""
+    hits = [marker for marker in INTAKE_STUB_MARKERS if marker in text]
+    if not hits:
+        return []
+    offset = min(text.find(marker) for marker in hits)
+    verified = last_verified_of(text)
+    evidence = f"{hits[0]} (+{len(hits) - 1} more)" if len(hits) > 1 else hits[0]
+    if verified and verified >= STUB_BLOCKED_FROM:
+        return [Finding("intake-stub-page-reverified", "high", rel, line_number(text, offset),
+                        f"Page carries first-pass intake prose but claims last_verified {verified} "
+                        f">= {STUB_BLOCKED_FROM}; rewrite the placeholder sections (sync-entry).", evidence)]
+    return [Finding("intake-stub-page", "medium", rel, line_number(text, offset),
+                    "First-pass intake page: facts are machine-read, judgment sections are placeholders.", evidence)]
 
 
 def is_project_page(path: Path) -> bool:
@@ -680,6 +734,8 @@ def scan(root: Path | str, *, scope_paths: list[Path | str] | tuple[Path | str, 
                 Finding("zero-placeholder-upstream-sha", "medium", rel, line_number(text, offset), "Placeholder zero upstream SHA found.", ZERO_SHA)
             )
 
+        findings.extend(detect_intake_stub(text, rel))
+
         health_unknowns.update(unknown_health_axes(text))
         findings.extend(detect_health_prose_grade_drift(page, text, root))
         findings.extend(detect_health_prose_raw_drift(page, text, root))
@@ -820,7 +876,12 @@ def render_report(result: ScanResult, root: Path | str) -> str:
     lines += ["", "### By category", ""]
     for category in KNOWN_CATEGORIES:
         lines.append(f"- {category}: {category_counts[category]}")
+    stub_pages = sum(1 for f in result.findings if f.category.startswith("intake-stub-page") and not f.path.endswith(ZH_SUFFIX))
     lines += [
+        "",
+        f"Intake-stub backlog: {stub_pages}/{result.english_canonical_page_count} English canonical pages "
+        f"still carry batch-intake placeholder judgment (report-only; each becomes an ERROR once its "
+        f"last_verified reaches {STUB_BLOCKED_FROM} — re-verifying a page is when the prose must be rewritten).",
         "",
         f"Zero placeholder upstream SHA count (page-level): {zero_sha_count}",
         f"Zero placeholder upstream SHA count (English canonical): {zero_sha_english_count}",

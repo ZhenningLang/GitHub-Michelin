@@ -96,6 +96,11 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    add it per `tools/schema.md` while you have the sources open.
 7. **Update `upstream` and bump `last_verified` to today.** Only after actually re-checking — never
    bump blindly.
+   If the page is a **first-pass intake stub** (`quality_scan.py` reports it as `intake-stub-page`;
+   its `When to use` describes picking software in general and Dependencies / Ops difficulty say
+   "not exhaustively verified in this intake pass"), bumping the date without rewriting that prose
+   turns it into a gated `intake-stub-page-reverified` ERROR. That is the point: a re-verified page
+   may not still say nobody has looked. Rewrite those sections from the sources you just read.
 8. **Re-score the health radar.** Health grades go stale like any
    fact — re-run the scorer when you re-verify:
    `python3 tools/health.py --page <page> --write && python3 tools/health_card.py <page>`

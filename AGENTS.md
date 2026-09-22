@@ -157,12 +157,24 @@ the reverse index (and the named-but-unindexed backlog). `reports/` are committe
 them with `python3 tools/reverse_index.py --write` in the same change — the pre-commit hook does this
 automatically for staged `categories/` changes, and CI fails if you forget.
 
+**First-pass intake pages are backlog, not finished pages.** 96 English pages (plus their mirrors)
+were mass-created from a name backlog by `tools/intake_queue_apply.py` /
+`tools/agent_skills_intake.py`: the facts are machine-read from the GitHub API, but `When to use`
+describes picking software in general rather than *this* project's trigger, and `Dependencies` /
+`Ops difficulty` / `Health & viability` say only that nobody has looked yet. `lint.py` passes them —
+the sections exist — so `quality_scan.py` reports them as `intake-stub-page` (report-only, with a
+backlog count in its summary) and a reader should treat such a page as a lead, not a verdict.
+Re-verifying one is exactly when the placeholder prose has to be rewritten, so a page that still
+carries it while claiming `last_verified >= 2026-09-22` fails the gate as
+`intake-stub-page-reverified` (`OSS_ATLAS_STUB_BLOCKED_FROM` moves the date). Rewrite with
+`sync-entry`.
+
 **Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
 + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.
 `quality_scan.py --fail-on-gated` fails only on its **gated** deterministic categories
 (`generic-comparison-template`, `indexed-page-marked-non-repo`, `indexed-page-marked-not-indexed`,
-`composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`); run it
-without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
+`composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`,
+`intake-stub-page-reverified`); run it without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
 trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
 run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.
 
