@@ -247,6 +247,7 @@ django-allauth,categories/auth/authomatic.md,,no
 django-guardian,categories/auth/django-rules.md,,no
 django-simple-captcha,categories/captcha/lepture-captcha.md,,no
 dmn-js / form-js (bpmn.io),categories/diagramming/bpmn-js.md,,no
+Docker / containerd,categories/sandboxing/microsandbox.md,,no
 Docker `docker build --squash` / layer flattening,categories/dev-utilities/ops-infra/slim.md,,no
 DockerSlim (predecessor),categories/dev-utilities/ops-infra/slim.md,,no
 Docspell,categories/document-management/paperless-ngx.md,,no
