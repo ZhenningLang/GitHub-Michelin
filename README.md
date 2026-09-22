@@ -1079,3 +1079,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Rebalancer** | Use it when the job is "re-place these objects under these policies" at shard/host scale — capacity, balance, failure-domain spread, minimize-movement — and you would rather declare named specs plus a tuned local search than write a linear program. | Apache-2.0 | B (5/6) | [EN](categories/optimization-solvers/rebalancer.md) · [中](categories/optimization-solvers/rebalancer.zh.md) |
+
+### cad
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **FreeCAD** | Use it when you need an editable parametric history over a real solid model — sketch, constrain, pad/pocket, then re-dimension and let the part rebuild — on local files, with a Python API and no seat license. | LGPL-2.1-or-later | B (5/6) | [EN](categories/cad/freecad.md) · [中](categories/cad/freecad.zh.md) |

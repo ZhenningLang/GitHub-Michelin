@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "FreeCAD does", "zh": "FreeCAD 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install FreeCAD from the official installer, your distro, or the AppImage", "zh": "用官方安装包、发行版仓库或 AppImage 装好 FreeCAD", "component": {"en": "installer", "zh": "安装包"}},
+    {"lane": "them", "en": "Ships the Qt UI, the Coin3D 3D view and the OpenCASCADE kernel in one app", "zh": "自带 Qt 界面、Coin3D 视图与 OpenCASCADE 内核", "component": {"en": "FreeCAD application", "zh": "FreeCAD 应用"}},
+    {"lane": "you", "en": "Switch to the PartDesign workbench", "zh": "切到 PartDesign 工作台", "code": "View → Workbench → PartDesign", "component": {"en": "PartDesign workbench", "zh": "PartDesign 工作台"}},
+    {"lane": "you", "en": "Create a Body and a new Sketch on a base plane", "zh": "新建 Body，在基准面上新建草图", "component": {"en": "Sketcher workbench", "zh": "Sketcher 工作台"}},
+    {"lane": "them", "en": "Solves your constraints and drives the degrees of freedom to 0", "zh": "求解约束，把自由度压到 0", "component": {"en": "constraint solver", "zh": "约束求解器"}},
+    {"lane": "you", "en": "Pad the sketch into a solid — Pocket subtracts another", "zh": "把草图拉成实体——Pocket 做减料", "code": "Pad · Pocket", "component": {"en": "PartDesign workbench", "zh": "PartDesign 工作台"}},
+    {"lane": "you", "en": "Edit a dimension on any sketch still in the tree", "zh": "改动文档树里任一草图的尺寸", "component": {"en": "document tree", "zh": "文档树"}},
+    {"lane": "them", "en": "Recomputes the feature history and rebuilds the part", "zh": "重算历史，把零件重建出来", "component": {"en": "recompute engine", "zh": "重算引擎"}}
+  ],
+  "value": {"en": "You re-dimension one sketch and the whole part rebuilds from its own history — no redrawing", "zh": "改一个草图的尺寸，整件零件就按自己的历史重建，不用重画"},
+  "sources": [
+    "README → Overview (parametric modeling; 'Underlying technology' lists OpenCASCADE, Coin3D, Python and Qt)",
+    "README → Installing (stable packages from the releases page; most Linux distributions also ship FreeCAD; weekly development releases)",
+    "wiki Download (1.1.3 published 2026-07-25; 64-bit installer / portable .7z, macOS ARM and Intel disk images, x86_64 and aarch64 AppImage; distro repos, Chocolatey, snap edge channel)",
+    "wiki Getting started → Foreword ('3D parametric modeling application ... with precision and control over modeling history') and Exploring the interface (Tree View 'showing the hierarchy and construction history of objects'; Python Console)",
+    "wiki PartDesign Workbench → Introduction ('feature based methodology. A component is represented by the Body object container'; 'the Pad tool adds the extruded sketch to the developing solid, the Pocket tool subtracts the extruded sketch')",
+    "wiki Creating a simple part with PartDesign → 'Using Part Design workbench, tracing the sketch' (switch via the View → Workbench menu; Create body; New sketch on XZ_Plane; Constrain horizontal distance / Constrain vertical distance; 'the number of degrees of freedom reduced to 0') and 'Using Pad and Pocket features'",
+    "wiki Headless FreeCAD → Via the FreeCAD Python Console (launched with FreeCAD -c or FreeCADCmd; 'The core FreeCAD module is built-in') — the scripting path kept in the mechanism paragraph, not in this card"
+  ]
+}
