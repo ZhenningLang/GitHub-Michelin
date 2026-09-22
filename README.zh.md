@@ -854,6 +854,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **GRequests** | 当你想用 `map()` 以最小改动让现有同步 `requests` 代码并发时用它——但 gevent 会猴补丁标准库，可能与你的技术栈冲突。 | BSD-2-Clause | C（4/6） | [中](categories/python-tooling/grequests.zh.md) · [EN](categories/python-tooling/grequests.md) |
 | **memory-analyzer** | 当你需要经 GDB 对一个活的 Python 3 进程做一次性按类型内存快照时用它——但 Meta 已归档它（代码停在 2021，目标是 EOL 的 3.6／3.7），优先选 memray／tracemalloc 这类有维护的工具。 | MIT | D（5/6） | [中](categories/python-tooling/memory-analyzer.zh.md) · [EN](categories/python-tooling/memory-analyzer.md) |
 | **uv** | 用 Rust 编写的极速 Python 包与项目管理器，以单一工具和通用锁文件替代 pip、poetry 和 pyenv——但仅约 3 年历史，部分边缘情况仍在解决。 | Apache-2.0 | A（6/6） | [中](categories/python-tooling/uv.zh.md) · [EN](categories/python-tooling/uv.md) |
+| **curl_cffi** | 当 Python 客户端被 TLS／JA3 指纹识别拦下、而你需要一个能伪装真实浏览器的 `requests` 风格 API 时用它——但它随包带原生 libcurl，并非纯 Python。 | MIT | A（6/6） | [中](categories/python-tooling/curl-cffi.zh.md) · [EN](categories/python-tooling/curl-cffi.md) |
 
 ### reading-tools
 

@@ -857,6 +857,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **GRequests** | Use it when you want to make existing synchronous `requests` code concurrent with minimal diff via `map()` — but gevent monkeypatches the stdlib and can collide with your stack. | BSD-2-Clause | C (4/6) | [EN](categories/python-tooling/grequests.md) · [中](categories/python-tooling/grequests.zh.md) |
 | **memory-analyzer** | Use it when you need a one-shot per-type memory snapshot of a live Python 3 process via GDB — but Meta archived it (last code 2021, targets EOL 3.6/3.7), so prefer a maintained tool like memray/tracemalloc. | MIT | D (5/6) | [EN](categories/python-tooling/memory-analyzer.md) · [中](categories/python-tooling/memory-analyzer.zh.md) |
 | **uv** | An extremely fast Python package and project manager written in Rust, replacing pip, poetry, and pyenv with a single tool and universal lockfile — but only ~3 years old with some edge cases still being resolved. | Apache-2.0 | A (6/6) | [EN](categories/python-tooling/uv.md) · [中](categories/python-tooling/uv.zh.md) |
+| **curl_cffi** | Use it when a Python client gets blocked by TLS/JA3 fingerprinting and you need a `requests`-like API that impersonates a real browser — but it ships a native libcurl, so it isn't pure-Python. | MIT | A (6/6) | [EN](categories/python-tooling/curl-cffi.md) · [中](categories/python-tooling/curl-cffi.zh.md) |
 
 ### reading-tools
 
