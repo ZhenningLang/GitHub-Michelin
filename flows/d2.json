@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "D2 does", "zh": "D2 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the D2 executable for your workstation or build runner", "zh": "为工作站或构建 runner 安装 D2", "code": "curl -fsSL https://d2lang.com/install.sh | sh -s --", "component": {"en": "D2 CLI", "zh": "D2 CLI"}},
+    {"lane": "you", "en": "Describe nodes, containers, connections, and styles in a text file", "zh": "在文本文件中描述节点、容器、连接和样式", "code": "in.d2", "component": {"en": "D2 source", "zh": "D2 源码"}},
+    {"lane": "you", "en": "Compile the source and keep a live preview open while editing", "zh": "编译源码，并在编辑时保持实时预览", "code": "d2 --watch in.d2 out.svg", "component": {"en": "D2 CLI", "zh": "D2 CLI"}},
+    {"lane": "them", "en": "Parses the language and lays out the graph with the selected engine", "zh": "解析语言，并用选定引擎完成图布局", "component": {"en": "compiler + layout engine", "zh": "编译器与布局引擎"}},
+    {"lane": "them", "en": "Renders the SVG and reloads the browser preview after source changes", "zh": "渲染 SVG，并在源码变化后刷新浏览器预览", "component": {"en": "renderer + watcher", "zh": "渲染器与 watcher"}}
+  ],
+  "value": {"en": "A reviewable text file repeatedly produces an automatically laid-out diagram artifact", "zh": "一份可评审文本可反复生成自动布局的图表产物"},
+  "sources": [
+    "README.md: What does D2 look like?, Quickstart, Install, Export file types, Language tooling, Layout engines, and FAQ",
+    "go.mod: Go version and linked implementation dependencies",
+    "d2lsp/d2lsp.go: language-tooling helpers for IDE clients"
+  ]
+}

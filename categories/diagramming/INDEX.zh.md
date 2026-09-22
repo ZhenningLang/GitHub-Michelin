@@ -12,6 +12,8 @@
 | **bpmn-js** | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 | A（5/6） | [→](bpmn-js.zh.md) |
 | **Excalidraw** | 当你想要手绘风格的协作白板来画草图、线框和架构流程时用它——但它存为 JSON 而非纯文本，所以不能在 Git 里 diff。 | A（6/6） | [→](excalidraw.zh.md) |
 | **draw.io** | 图需要精确摆放、需要官方云／UML／BPMN 形状库、产物还要交给同事编辑时用它——`.drawio` 是纯文本 XML，能进 git diff，应用可完全离线运行。 | B（6/6） | [→](drawio.zh.md) |
+| **D2** | 当版本化的文本图要在 CI 里用你指定的布局引擎渲染时用它——MPL-2.0 是文件级 copyleft，而且没有宿主平台替你渲染。 | B（5/6） | [→](d2.zh.md) |
+| **PlantUML** | 当 DSL 必须覆盖多种 UML 与非 UML 图型、且能接受 Java 或服务端渲染时用它——再分发前先看 `LICENSES.md`。 | B（6/6） | [→](plantuml.zh.md) |
 
 ## 对比矩阵
 
@@ -22,7 +24,9 @@
 | [bpmn-js](bpmn-js.zh.md) | ✅ | A（5/6） | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 |
 | [Excalidraw](excalidraw.zh.md) | ✅ | A（6/6） | 手绘风格协作白板，用于画草图和线框；存为 JSON 而非纯文本，不能在 Git 里 diff。 |
 | [draw.io](drawio.zh.md) | ✅ | B（6/6） | 摆放必须精确、形状要用官方云／UML 形状集、产物还要交给别人改时选它；图要保持文本用 Mermaid，要的就是草稿观感用 Excalidraw。 |
-| Graphviz / PlantUML / D2 | 未收录 | — | 各页对比里点到的其他图引擎（比 mermaid 更多的版式控制）。 |
+| [D2](d2.zh.md) | ✅ | B（5/6） | 声明式图语言，布局引擎可换、输出格式多；MPL-2.0 是文件级 copyleft，宿主平台内建渲染远少于 Mermaid。 |
+| [PlantUML](plantuml.zh.md) | ✅ | B（6/6） | 文本 DSL 覆盖广而严的 UML，通常由 Java 或服务端渲染；注意 `LICENSES.md`——API 标 LGPL-3.0，而上游默认是 GPL-3.0-or-later 另加若干宽松构建选项。 |
+| Graphviz | 未收录 | — | 布局引擎本体（dot／neato）真实且活跃（16.1.0，2026-09-04），但规范仓库在 GitLab；`tools/upstream_snapshot.py` 与 `tools/health.py` 只读 GitHub，因此按现行契约拿不到上游快照和健康度雷达。 |
 
 ## 什么该放这里
 

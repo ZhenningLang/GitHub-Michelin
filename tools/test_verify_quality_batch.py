@@ -21,6 +21,7 @@ REQUIRED_GATED_CATEGORIES = {
     "zh-link-to-english-sibling",
     "composite-alternative-partly-indexed",
     "truncation-fragment",
+    "intake-stub-page-reverified",
 }
 
 
