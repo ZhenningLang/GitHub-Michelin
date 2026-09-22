@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenCreator does",
+    "zh": "OpenCreator 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the Desktop app from the latest release (macOS or Windows)",
+      "zh": "从最新 Release 安装桌面应用（macOS 或 Windows）",
+      "code": "https://github.com/krillinai/OpenCreator/releases/latest",
+      "component": {"en": "Desktop installer", "zh": "桌面安装包"}
+    },
+    {
+      "lane": "them",
+      "en": "Starts the local Runtime and prepares a default project",
+      "zh": "拉起本机 Runtime，并准备好一个默认项目",
+      "component": {"en": "Local Runtime", "zh": "本机 Runtime"}
+    },
+    {
+      "lane": "you",
+      "en": "Complete a valid Codex login — required for real model tasks",
+      "zh": "完成有效的 Codex 登录——真实模型任务必须有",
+      "component": {"en": "Codex CLI", "zh": "Codex CLI"}
+    },
+    {
+      "lane": "you",
+      "en": "Open Video Translation (or type the job in the composer) and give it a video",
+      "zh": "打开视频翻译（或在对话框里下任务），丢进一条视频"
+    },
+    {
+      "lane": "them",
+      "en": "Transcribes, segments, translates, optionally dubs, and exports SRT, audio, or video",
+      "zh": "转录、断句、翻译，可选配音，导出 SRT、音频或视频",
+      "component": {"en": "KrillinAI + media toolchain", "zh": "KrillinAI 与媒体工具链"}
+    },
+    {
+      "lane": "them",
+      "en": "Keeps the conversation and visual workspace on the same versioned task",
+      "zh": "让对话和可视化工作区盯着同一条带版本的任务",
+      "component": {"en": "Collaboration core", "zh": "协作核心"}
+    }
+  ],
+  "value": {
+    "en": "Subtitled, dubbed, or generated media in one local project, without bouncing between a coding-agent terminal and a pile of SaaS tabs",
+    "zh": "字幕、配音或生成的媒体都落在同一个本机项目里，不用在 coding-agent 终端和一堆 SaaS 标签之间来回跳"
+  },
+  "sources": [
+    "README.md Quick Start / Install the Desktop App: download from https://github.com/krillinai/OpenCreator/releases/latest (macOS Apple Silicon, macOS Intel, or Windows x64); Desktop includes Codex CLI; real model tasks require a valid Codex login; first launch starts the local Runtime and prepares a default project",
+    "README.md Quick Start / Run Web from Source: `pnpm web:dev`, open http://127.0.0.1:19861/",
+    "README.md Creator Tools / Video Translation: import local or public videos; transcribe; LLM segmentation/alignment/translation; bilingual subtitles, dubbing; export SRT, audio, or video",
+    "README.md OpenCreator System Architecture: workspace and Agent conversation are synchronized projections of one workflow state; revisions create new versions; daemon owns process lifecycle; Codex remains the execution source of truth",
+    "README.md Related Projects: Codex, yt-dlp, FFmpeg, Whisper family, Fastify, Electron, SQLite"
+  ]
+}
