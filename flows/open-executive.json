@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Executive does", "zh": "Open Executive 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy the env file and add a model-provider key",
+      "zh": "复制环境文件，填入模型提供商密钥",
+      "code": "cp .env.example .env",
+      "phase": {"en": "Once", "zh": "一次性"}
+    },
+    {
+      "lane": "you",
+      "en": "Start the API and the web UI together",
+      "zh": "一起拉起 API 和 Web 界面",
+      "code": "make dev"
+    },
+    {
+      "lane": "them",
+      "en": "Serves the UI on :3000 and the API on :8000",
+      "zh": "在 :3000 提供界面，在 :8000 提供 API"
+    },
+    {
+      "lane": "you",
+      "en": "Walk the company onboarding wizard in the browser",
+      "zh": "在浏览器里走完公司入职向导",
+      "code": "http://localhost:3000"
+    },
+    {
+      "lane": "them",
+      "en": "Writes company/profile.yaml and seeds the local vector index",
+      "zh": "写出 company/profile.yaml，并灌入本地向量索引"
+    },
+    {
+      "lane": "you",
+      "en": "Ask an executive question in chat or on Slack",
+      "zh": "在聊天或 Slack 里问一个高管问题",
+      "phase": {"en": "Every turn", "zh": "每一轮"}
+    },
+    {
+      "lane": "them",
+      "en": "Calls specialists in parallel and answers in one executive voice",
+      "zh": "并行咨询专家，再用同一个高管声音作答"
+    }
+  ],
+  "value": {
+    "en": "You deploy an app and onboard a company profile; you get one executive voice that remembers decisions, not eight agents to wire yourself",
+    "zh": "你部署一个应用并录入公司档案，换来一个记得决策的高管声音，而不是自己去接八个 agent"
+  },
+  "sources": [
+    "https://github.com/SenteLabsAI/OpenExecutive/blob/main/README.md Quick Start (cp .env.example .env, make dev, http://localhost:3000, API :8000 / UI :3000)",
+    "https://github.com/SenteLabsAI/OpenExecutive/blob/main/Makefile (dev recipe: uvicorn :8000 and npm run dev)",
+    "https://github.com/SenteLabsAI/OpenExecutive/blob/main/docs/architecture.md (Executive orchestrator, parallel specialist calls, company/profile.yaml, ChromaDB seed, Slack)",
+    "https://github.com/SenteLabsAI/OpenExecutive/blob/main/docs/deployment.md (two containers, /data volume, single-instance API)"
+  ]
+}
