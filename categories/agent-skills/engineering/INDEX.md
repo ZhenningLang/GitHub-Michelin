@@ -15,6 +15,7 @@
 | **mattpocock/skills** | Matt Pocock's engineering skill pack for Claude Code and skills.sh: grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. | B (4/6) | [→](mattpocock-skills.md) |
 | **BrowserAct Skills** | Agent-facing browser automation skill pack for BrowserAct: indexed browser control, stealth/private sessions, remote human handoff, and Skill Forge scraping workflows. | B (4/6) | [→](browser-act-skills.md) |
 | **caveman** | Prompt and installer pack that makes many coding agents answer in deliberately terse "caveman" style while preserving code, commands, and errors. | C (4/6) | [→](caveman.md) |
+| **i-have-adhd** | A 10-rule response-style skill that makes a coding agent lead with the action, number steps, restate progress every turn, and drop the preamble and closer — one ruleset across roughly 15 harnesses. | A (4/6) | [→](i-have-adhd.md) |
 
 
 ## Comparison matrix
@@ -29,6 +30,7 @@
 | [mattpocock/skills](mattpocock-skills.md) | ✅ | B (4/6) | Engineering process pack for requirements grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. |
 | [BrowserAct Skills](browser-act-skills.md) | ✅ | B (4/6) | Agent browser automation layer with indexed actions, stealth/private sessions, remote handoff, and Skill Forge; use Playwright for deterministic tests. |
 | [caveman](caveman.md) | ✅ | C (4/6) | Brevity overlay for existing agents; changes response style, not engineering process or context design. |
+| [i-have-adhd](i-have-adhd.md) | ✅ | A (4/6) | Overlay for a reader with a short working memory; shapes how the agent talks, not what it knows — pick caveman when token spend is the problem. |
 
 
 ## What belongs here

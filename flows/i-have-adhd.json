@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "i-have-adhd does",
+    "zh": "i-have-adhd 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it into your agent",
+      "zh": "装进你的 agent",
+      "code": "npx skills add ayghri/i-have-adhd"
+    },
+    {
+      "lane": "you",
+      "en": "Turn it on for this session",
+      "zh": "为本次会话打开它",
+      "code": "/i-have-adhd"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the ten rules and keeps applying them for the rest of the session",
+      "zh": "加载这十条规则，并在余下会话里持续生效",
+      "component": { "en": "SKILL.md", "zh": "SKILL.md" }
+    },
+    {
+      "lane": "you",
+      "en": "Ask for what you want, as usual",
+      "zh": "照常提需求"
+    },
+    {
+      "lane": "them",
+      "en": "Answers action-first: numbered steps, progress restated, no preamble or closer",
+      "zh": "动作先行地回答：编号步骤、复述进度，无铺垫无收尾"
+    },
+    {
+      "lane": "you",
+      "en": "Say stop when you want your normal style back",
+      "zh": "想恢复原样时说一句 stop",
+      "code": "stop adhd mode"
+    },
+    {
+      "lane": "them",
+      "en": "Confirms in one line and reverts for the session",
+      "zh": "一句话确认，本会话恢复默认风格"
+    }
+  ],
+  "value": {
+    "en": "The answer is in the first line, and you stop re-reading replies to find the one thing you can act on",
+    "zh": "答案就在第一行，不必为了找那一句可执行的话把整条回复再读一遍"
+  },
+  "sources": [
+    "https://github.com/ayghri/i-have-adhd INSTALL.md — `npx skills add ayghri/i-have-adhd`, `/i-have-adhd`, `stop adhd mode`, and the 'How activation works' section",
+    "https://github.com/ayghri/i-have-adhd skills/i-have-adhd/SKILL.md — the ten numbered rules, the Persistence clause, and the Pre-send check",
+    "https://github.com/ayghri/i-have-adhd hooks/hooks.json + hooks/always-on.mjs — SessionStart hook that only fires when the opt-in flag file exists"
+  ]
+}

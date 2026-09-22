@@ -15,6 +15,7 @@
 | **mattpocock/skills** | Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程。 | B（4/6） | [→](mattpocock-skills.zh.md) |
 | **BrowserAct Skills** | 面向 BrowserAct 的 agent 浏览器自动化技能包：索引式浏览器控制、stealth/private session、远程人工接管，以及 Skill Forge 抓取工作流。 | B（4/6） | [→](browser-act-skills.zh.md) |
 | **caveman** | 一个 prompt 与安装器技能包，让多种 coding agent 用刻意简短的“caveman”风格回答，同时保留代码、命令和错误信息。 | C（4/6） | [→](caveman.zh.md) |
+| **i-have-adhd** | 一份 10 条规则的回复风格技能：让 coding agent 每轮先说动作、把步骤编号、复述进度，并删掉铺垫与收尾；一套规则覆盖约 15 种 harness。 | A（4/6） | [→](i-have-adhd.zh.md) |
 
 
 ## 对比矩阵
@@ -29,6 +30,7 @@
 | [mattpocock/skills](mattpocock-skills.zh.md) | ✅ | B（4/6） | 面向需求 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程的工程过程包。 |
 | [BrowserAct Skills](browser-act-skills.zh.md) | ✅ | B（4/6） | 带索引动作、stealth/private session、远程接管和 Skill Forge 的 agent 浏览器自动化层；确定性测试仍用 Playwright。 |
 | [caveman](caveman.zh.md) | ✅ | C（4/6） | 给现有 agent 加简短表达覆盖层；改变回复风格，不改变工程流程或上下文设计。 |
+| [i-have-adhd](i-have-adhd.zh.md) | ✅ | A（4/6） | 给工作记忆短的读者用的表达覆盖层；改变 agent 的说话方式而非它知道什么——痛点是 token 花销时选 caveman。 |
 
 
 ## 什么该放这里
