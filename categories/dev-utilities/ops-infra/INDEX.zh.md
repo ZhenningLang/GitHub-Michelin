@@ -14,6 +14,7 @@
 | **Clash Verge Rev** | 当你想要一款现代化的跨平台 GUI 代理客户端，支持基于规则的路由、内置 mihomo 内核和 TUN 模式时用它——但仅限桌面端且为 GPL-3.0 许可。 | B（5/6） | [→](clash-verge-rev.zh.md) |
 | **RustDesk** | 当你需要一款开源、自托管的跨平台远程桌面来访问自己的机器时用它——但需要自己管理中继服务器或接受 P2P 局限。 | B（5/6） | [→](rustdesk.zh.md) |
 | **Vaultwarden** | 当你想要一款自托管的、Rust 编写的 Bitwarden 兼容密码管理器时用它——但它是非官方实现，AGPL-3.0 许可，且核心维护者为单人。 | B（6/6） | [→](vaultwarden.zh.md) |
+| **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | B（5/6） | [→](descheduler.zh.md) |
 
 ## 对比矩阵
 
@@ -26,7 +27,8 @@
 | [Clash Verge Rev](clash-verge-rev.zh.md) | ✅ | B（5/6） | 当你想要一款现代化的跨平台 GUI 代理客户端，支持基于规则的路由、内置 mihomo 内核和 TUN 模式时用它——但仅限桌面端且为 GPL-3.0 许可。 |
 | [RustDesk](rustdesk.zh.md) | ✅ | B（5/6） | 当你需要一款开源、自托管的跨平台远程桌面来访问自己的机器时用它——但需要自己管理中继服务器或接受 P2P 局限。 |
 | [Vaultwarden](vaultwarden.zh.md) | ✅ | B（6/6） | 当你想要一款自托管的、Rust 编写的 Bitwarden 兼容密码管理器时用它——但它是非官方实现，AGPL-3.0 许可，且核心维护者为单人。 |
+| [Descheduler](descheduler.zh.md) | ✅ | B（5/6） | 定期驱逐违反 `DeschedulerPolicy` 的 Kubernetes Pod，让 kube-scheduler 重新安置——集群内漂移纠正，不是算出来的 placement 计划。 |
 
 ## 什么该放这里
 
-面向服务器、指标、TLS、镜像、代理、远程访问与密码管理的可自托管基础设施和运维工具。
+面向服务器、指标、TLS、镜像、代理、远程访问、密码管理，以及 Kubernetes descheduler 这类集群内维护控制器的可自托管基础设施和运维工具。

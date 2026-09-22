@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "OptaPlanner does", "zh": "OptaPlanner 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the planner BOM and annotate the domain classes you want planned", "zh": "加上 planner BOM，并给要规划的领域类打注解", "code": "@PlanningEntity · @PlanningVariable · @PlanningSolution"},
+    {"lane": "you", "en": "Declare the business rules as constraints over those classes", "zh": "把业务规则写成基于这些类的约束", "code": "implements ConstraintProvider · penalize(HardSoftScore.ONE_HARD)"},
+    {"lane": "you", "en": "Build a solver from config and hand it the problem", "zh": "按配置建出求解器，把问题交给它", "code": "SolverFactory.create(…) · buildSolver() · solver.solve(problem)", "component": {"en": "org.optaplanner.core", "zh": "org.optaplanner.core"}},
+    {"lane": "them", "en": "Construction heuristics build a first feasible plan", "zh": "构造启发式先给出一份可行的初始方案"},
+    {"lane": "them", "en": "Local search swaps and moves entities, re-scoring each move incrementally instead of from scratch", "zh": "局部搜索不断换位置、移动对象，每一步增量算分而不是重算", "component": {"en": "ConstraintStreams score", "zh": "ConstraintStreams 算分"}},
+    {"lane": "them", "en": "Returns the best plan found before the termination limit, with its HardSoftScore", "zh": "在终止时限前返回找到的最好方案，以及它的 HardSoftScore"}
+  ],
+  "value": {"en": "The historical OptaPlanner workflow — annotations plus a score-based rules DSL — which is why existing 9.x projects and OptaPy scripts still read this way", "zh": "注解加算分规则 DSL 这套 OptaPlanner 工作流——现存 9.x 项目与 OptaPy 脚本仍是这个样子"},
+  "sources": [
+    "optaplanner-quickstarts hello-world/README.adoc and src (`org.optaplanner.core.api.solver.SolverFactory`, `org.optaplanner.core.config.solver.SolverConfig`, `.withSolutionClass(TimeTable.class).withEntityClasses(Lesson.class).withConstraintProviderClass(TimeTableConstraintProvider.class).withTerminationSpentLimit(Duration.ofSeconds(5))`, `solverFactory.buildSolver()`, `solver.solve(problem)`)",
+    "apache/incubator-kie-optaplanner README (\"OplaPlanner has moved to https://github.com/apache/incubator-kie-drools. This repository is archived.\"; Maven coordinates `org.optaplanner/optaplanner-bom`; `mvn clean install -Dquickly`)",
+    "optaplanner-quickstarts hello-world/src/.../domain (the same `@PlanningEntity` / `@PlanningVariable` / `@PlanningSolution` annotation set later inherited by Timefold Solver)"
+  ]
+}

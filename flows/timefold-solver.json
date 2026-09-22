@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Timefold does", "zh": "Timefold 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the solver BOM and annotate the domain classes you want planned", "zh": "加上求解器 BOM，并给要规划的领域类打注解", "code": "@PlanningEntity · @PlanningVariable · @PlanningSolution"},
+    {"lane": "you", "en": "Declare the business rules as constraints over those classes", "zh": "把业务规则写成基于这些类的约束", "code": "implements ConstraintProvider · penalize(HardSoftScore.ONE_HARD)"},
+    {"lane": "you", "en": "Build a solver from config and hand it the problem", "zh": "按配置建出求解器，把问题交给它", "code": "SolverFactory.create(…) · buildSolver() · solver.solve(problem)"},
+    {"lane": "them", "en": "Construction heuristics build a first feasible plan", "zh": "构造启发式先给出一份可行的初始方案", "component": {"en": "Construction Heuristics", "zh": "构造启发式"}},
+    {"lane": "them", "en": "Local search swaps and moves entities, re-scoring each move incrementally instead of from scratch", "zh": "局部搜索不断换位置、移动对象，每一步增量算分而不是重算", "component": {"en": "ConstraintStreams score", "zh": "ConstraintStreams 算分"}},
+    {"lane": "them", "en": "Returns the best plan found before the termination limit, with its HardSoftScore", "zh": "在终止时限前返回找到的最好方案，以及它的 HardSoftScore"}
+  ],
+  "value": {"en": "You get a feasible plan scored against business rules you can rewrite in plain Java — no numeric model to force the rules into", "zh": "你拿到一份按业务规则打分的可行方案，规则可用普通 Java 重写，不用硬塞进数值模型"},
+  "sources": [
+    "README (\"Timefold Solver is an AI constraint solver for Java and Kotlin\"; Java 21+ badge; \"Timefold Solver was forked on 20 April 2023 from OptaPlanner\"; Community Edition Apache-2.0 vs non-open-source Enterprise Edition)",
+    "timefold-quickstarts getting-started/hello-world/pom.xml (`ai.timefold.solver` / `timefold-solver-bom` v2.6.0 imported in dependencyManagement; `maven.compiler.release` 21)",
+    "timefold-quickstarts .../domain/Lesson.java (`@PlanningEntity`, `@PlanningId`, `@PlanningVariable` on `Timeslot` and `Room`)",
+    "timefold-quickstarts .../domain/Timetable.java (`@PlanningSolution`, `@ProblemFactCollectionProperty`, `@ValueRangeProvider`, `@PlanningEntityCollectionProperty`, `@PlanningScore private HardSoftScore score`)",
+    "timefold-quickstarts .../solver/TimetableConstraintProvider.java (`implements ConstraintProvider`, `public Constraint[] defineConstraints(ConstraintFactory constraintFactory)`, `forEachUniquePair(Lesson.class, Joiners.equal(Lesson::getTimeslot), ...)`, `.penalize(HardSoftScore.ONE_HARD)`, `.asConstraint(\"Room conflict\")`)",
+    "timefold-quickstarts .../TimetableApp.java (`SolverFactory.create(new SolverConfig().withSolutionClass(Timetable.class).withEntityClasses(Lesson.class).withConstraintProviderClass(TimetableConstraintProvider.class).withTerminationSpentLimit(Duration.ofSeconds(5)))`; `solverFactory.buildSolver()`; `solver.solve(problem)`)"
+  ]
+}
