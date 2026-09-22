@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "arq does", "zh": "arq 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install arq and run Redis", "zh": "安装 arq 并运行 Redis", "code": "pip install arq", "component": {"en": "application environment", "zh": "应用环境"}},
+    {"lane": "you", "en": "Define an async job and register it in worker settings", "zh": "定义异步作业，并登记到 worker 配置", "code": "functions = [download_content]", "component": {"en": "WorkerSettings", "zh": "WorkerSettings"}},
+    {"lane": "you", "en": "Start and supervise the configured worker", "zh": "启动并托管已配置的 worker", "code": "arq demo.WorkerSettings", "component": {"en": "arq CLI", "zh": "arq 命令行"}},
+    {"lane": "them", "en": "Loads registered functions and polls the Redis queue", "zh": "加载已登记函数，轮询 Redis 队列", "component": {"en": "Worker", "zh": "Worker"}},
+    {"lane": "you", "en": "Connect a pool and enqueue the job by its registered name", "zh": "连接池，按登记名称把作业入队", "code": "await redis.enqueue_job('download_content', url)", "component": {"en": "ArqRedis", "zh": "ArqRedis"}},
+    {"lane": "them", "en": "Runs the coroutine concurrently and records its result", "zh": "并发运行 coroutine，并记录结果", "component": {"en": "Worker + Job", "zh": "Worker + Job"}}
+  ],
+  "value": {"en": "Async background work runs outside the request path while keeping the coroutine programming model", "zh": "异步后台工作离开请求路径，同时保留 coroutine 编程模型"},
+  "sources": [
+    "docs/index.rst: Install, Usage, Simple Usage, Job Results, and Synchronous Jobs",
+    "docs/examples/main_demo.py: WorkerSettings, create_pool, enqueue_job, and async job example",
+    "pyproject.toml: project.scripts and runtime dependencies"
+  ]
+}

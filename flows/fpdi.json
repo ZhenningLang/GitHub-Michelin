@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "FPDI does", "zh": "FPDI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add FPDI and one supported PDF writer to the PHP application", "zh": "把 FPDI 与一个受支持的 PDF writer 加入 PHP 应用", "code": "setasign/fpdi · setasign/fpdf", "component": {"en": "Composer dependencies", "zh": "Composer 依赖"}},
+    {"lane": "you", "en": "Create the FPDI class and select a source page", "zh": "创建 FPDI 类并选择一个源页面", "code": "new Fpdi() · importPage(1)", "component": {"en": "application code", "zh": "应用代码"}},
+    {"lane": "them", "en": "Parses the page and imports its content as a reusable template", "zh": "解析页面，把内容导入为可复用模板", "component": {"en": "FPDI parser", "zh": "FPDI 解析器"}},
+    {"lane": "you", "en": "Place the template and draw any new document content", "zh": "放置模板并绘制新的文档内容", "code": "useTemplate($tplId, 10, 10, 100)", "component": {"en": "FPDF-family writer", "zh": "FPDF 系 writer"}},
+    {"lane": "them", "en": "Writes the composed pages as a newly generated PDF", "zh": "把组合后的页面写成新生成的 PDF", "component": {"en": "FPDF-family writer", "zh": "FPDF 系 writer"}}
+  ],
+  "value": {"en": "Existing PDF pages become reusable building blocks in a PHP-generated document", "zh": "现有 PDF 页面成为 PHP 生成文档中的可复用构件"},
+  "sources": [
+    "README.md: Installation with Composer and Example and Documentation",
+    "src/FpdiTrait.php: setSourceFile(), importPage(), and useImportedPage()",
+    "FPDI v2 manual: The Fpdi Class and Limitations"
+  ]
+}

@@ -118,8 +118,8 @@ You install RQ, connect a `Queue` to Redis or Valkey, and enqueue an importable 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Celery](celery.md) | ✅ | Choose RQ for a Python application already committed to Redis/Valkey when a smaller queue-and-worker model matters most; choose Celery when broker choice, richer routing, and composition primitives justify more machinery. | RQ removes broker abstraction and much of Celery's configuration surface, but also gives up that flexibility and ecosystem breadth. |
-| Dramatiq | 未收录 | Choose Dramatiq when a compact Python task processor still needs a supported choice between RabbitMQ and Redis; choose RQ when direct enqueueing of ordinary functions and Redis-only operation are the simpler fit. | Dramatiq adds broker choice and actor-based messaging; RQ keeps the datastore and programming model narrower. |
-| arq | 未收录 | Choose arq for an asyncio-native Python service whose jobs and worker hooks should be async; choose RQ for a synchronous codebase or when RQ's job registries, scheduling, and established ecosystem matter more. | arq aligns with asyncio and Redis but is in maintenance-only mode; RQ remains actively releasing and centers ordinary callable jobs. |
+| [Dramatiq](dramatiq.md) | ✅ | Choose Dramatiq when a compact Python task processor still needs a supported choice between RabbitMQ and Redis; choose RQ when direct enqueueing of ordinary functions and Redis-only operation are the simpler fit. | Dramatiq adds broker choice and actor-based messaging; RQ keeps the datastore and programming model narrower. |
+| [arq](arq.md) | ✅ | Choose arq for an asyncio-native Python service whose jobs and worker hooks should be async; choose RQ for a synchronous codebase or when RQ's job registries, scheduling, and established ecosystem matter more. | arq aligns with asyncio and Redis but is in maintenance-only mode; RQ remains actively releasing and centers ordinary callable jobs. |
 
 ## Tech stack
 

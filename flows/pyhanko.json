@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "pyHanko does", "zh": "pyHanko 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library and CLI with the signing extras you need", "zh": "安装库与 CLI，并选择所需签名扩展", "code": "pip install 'pyHanko[pkcs11,image-support,opentype,qr]' pyhanko-cli", "component": {"en": "Python environment", "zh": "Python 环境"}},
+    {"lane": "you", "en": "Provide a PDF, signature field, certificate, and private key", "zh": "提供 PDF、签名字段、证书和私钥", "code": "pyhanko sign addsig --field Sig1 pkcs12 input.pdf output.pdf secrets.pfx", "component": {"en": "pyhanko CLI", "zh": "pyhanko CLI"}},
+    {"lane": "them", "en": "Hashes the PDF and creates the CMS signature container", "zh": "计算 PDF 摘要并创建 CMS 签名容器", "component": {"en": "signing pipeline", "zh": "签名流水线"}},
+    {"lane": "them", "en": "Writes an incremental revision that preserves earlier signed bytes", "zh": "写入增量修订，保留先前已签名字节", "component": {"en": "incremental PDF writer", "zh": "增量 PDF writer"}}
+  ],
+  "value": {"en": "The PDF carries a certificate-backed signature without rewriting its prior revisions", "zh": "PDF 获得证书签名，同时不重写先前修订"},
+  "sources": [
+    "README.md: Installing and Features",
+    "docs/cli-guide/signing.rst: Signing a PDF file using key material on disk",
+    "docs/lib-guide/signing.rst: General API design and A simple example"
+  ]
+}

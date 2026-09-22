@@ -94,8 +94,8 @@ Python 事实标准的分布式任务队列：通过消息 broker（RabbitMQ/Red
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [RQ（Redis Queue）](rq.zh.md) | ✅ | Redis-only 极简比 broker 可选、路由、调度和吞吐调优更重要时，选 RQ。 | 上手和读代码都简单，但比 Celery 的 broker/backend 与工作流能力窄。 |
-| Dramatiq | 未收录 | 想要现代 Python 任务队列、支持 RabbitMQ/Redis，并减少 Celery 历史包袱时，选 Dramatiq。 | 生态更小，canvas/工作流原语也少于 Celery。 |
-| arq | 未收录 | 应用已经 asyncio-first，且轻量 Redis 队列足够时，选 arq。 | async 体验好，但功能集相对 Celery 的路由、beat 和 canvas 偏少。 |
+| [Dramatiq](dramatiq.zh.md) | ✅ | 想要现代 Python 任务队列、支持 RabbitMQ/Redis，并减少 Celery 历史包袱时，选 Dramatiq。 | 生态更小，canvas/工作流原语也少于 Celery。 |
+| [arq](arq.zh.md) | ✅ | 应用已经 asyncio-first，且轻量 Redis 队列足够时，选 arq。 | async 体验好，但功能集相对 Celery 的路由、beat 和 canvas 偏少。 |
 | [Airflow](../workflow-orchestration/airflow.zh.md) | ✅ | 带依赖的多步 DAG **工作流**、血缘、回填和 UI 比低延迟任务卸载更重要时，选 Airflow。 | 它做数据管线编排，不是直接的后台任务队列。 |
 | [XXL-JOB](xxl-job.zh.md) | ✅ | 需要 JVM/Spring 分布式调度器且自带管理看板时，选 XXL-JOB。 | 它是 Java 世界的调度器答案，不自然适配 Python 代码库。 |
 | Sidekiq / BullMQ | 未收录 | 同样的后台 job 问题发生在 Ruby 或 Node，而不是 Python 时，选 Sidekiq 或 BullMQ。 | 问题形状相同，只是语言生态不同。 |

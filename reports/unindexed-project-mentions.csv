@@ -85,7 +85,6 @@ Appwrite,categories/databases/database-engines/supabase.md,,no
 Arcade,categories/game-dev/pygame.md,,no
 ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
 ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
-arq,categories/task-queue/celery.md,,no
 ascii-magic,categories/terminal-ui/asciify.md,,no
 ascii-magic / cowsay,categories/terminal-ui/art.md,,no
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
@@ -260,8 +259,6 @@ docTR,categories/ocr/tesseract.md,,no
 Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
-Dramatiq,categories/task-queue/celery.md,,no
-Dramatiq / arq / Quartz / PowerJob,categories/task-queue/INDEX.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
@@ -271,6 +268,7 @@ EasyOCR,categories/ocr/tesseract.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
+endesive,categories/pdf-tools/pyhanko.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 Envoy,categories/api-gateway/kong.md,,no
 Envoy + Lua/Wasm filters,categories/nginx-modules/lua-nginx-module.md,,no
@@ -301,8 +299,6 @@ Flutter,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
 Fooocus,categories/on-device-ml/comfyui.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
-FPDI,categories/pdf-tools/sapp.md,,no
-FPDI / OpenPDFSign / pyHanko,categories/pdf-tools/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
@@ -573,7 +569,7 @@ OpenCLIP,categories/ml-research/clip.md,,no
 OpenCV,categories/media-processing/video-audio/moviepy.md,,no
 OpenDocMan,categories/document-management/paperless-ngx.md,,no
 OpenKG / CN-DBpedia,categories/ml-research/agriculture-knowledge-graph.md,,no
-OpenPDFSign,categories/pdf-tools/sapp.md,,no
+OpenPDFSign,categories/pdf-tools/INDEX.md,,no
 openpyxl,categories/office-automation/INDEX.md,,no
 OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
 OpenRouter,categories/api-gateway/claude-code-router.md,,no
@@ -634,7 +630,6 @@ Polling (SQLAlchemy / cron),categories/databases/data-sync/python-mysql-replicat
 Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
 Portkey Gateway,categories/api-gateway/kong.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
-PowerJob,categories/task-queue/xxl-job.md,,no
 Premiere Pro,categories/media-processing/video-audio/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
 Private voice guide,categories/agent-skills/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
@@ -659,7 +654,6 @@ pycurl,categories/python-tooling/curl-cffi.md,,no
 pyfiglet,categories/terminal-ui/art.md,,no
 pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
-pyHanko,categories/pdf-tools/sapp.md,,no
 Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
 PyPy,categories/python-tooling/cython.md,,no
@@ -671,7 +665,7 @@ PyTorch FSDP,categories/llm-training/colossalai.md,,no
 pywinauto,categories/desktop-automation/pyautogui.md,,no
 Qdrant,categories/rag-retrieval/faiss.md,,no
 QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
-Quartz,categories/task-queue/xxl-job.md,,no
+Quartz,categories/task-queue/INDEX.md,,no
 Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no

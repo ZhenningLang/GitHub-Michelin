@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "PowerJob does", "zh": "PowerJob 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the scheduling server with a relational database", "zh": "用关系型数据库部署调度 server", "component": {"en": "powerjob-server", "zh": "powerjob-server"}},
+    {"lane": "you", "en": "Add the worker starter and configure its app name and server addresses", "zh": "加入 worker starter，配置应用名与 server 地址", "code": "tech.powerjob:powerjob-worker-spring-boot-starter", "component": {"en": "worker starter", "zh": "worker starter"}},
+    {"lane": "you", "en": "Implement the business task as a processor", "zh": "把业务任务实现为 processor", "code": "BasicProcessor", "component": {"en": "application processor", "zh": "应用 processor"}},
+    {"lane": "them", "en": "Registers the worker and reports its availability", "zh": "注册 worker 并上报可用状态", "component": {"en": "powerjob-worker", "zh": "powerjob-worker"}},
+    {"lane": "you", "en": "Create a job in the console with timing, execution mode, and processor", "zh": "在控制台配置定时策略、执行模式与 processor", "component": {"en": "web console", "zh": "Web 控制台"}},
+    {"lane": "them", "en": "Dispatches the instance, runs the processor, and records logs and status", "zh": "派发实例，执行 processor，记录日志与状态", "component": {"en": "server + worker", "zh": "server + worker"}}
+  ],
+  "value": {"en": "Application jobs gain central scheduling, distributed execution, and one operational view", "zh": "应用作业获得统一调度、分布式执行与集中运维视图"},
+  "sources": [
+    "README.md: Introduction, Features, and Applicable scenes",
+    "README_zhCN.md: 主要特性, 适用场景, and 设计目标",
+    "pom.xml and powerjob-worker-spring-boot-starter/pom.xml: Maven coordinate and modules",
+    "powerjob-worker-samples/src/main/resources/application.properties: app-name and server-address configuration",
+    "powerjob-worker-samples/src/main/java/tech/powerjob/samples/processors/StandaloneProcessorDemo.java: BasicProcessor implementation"
+  ]
+}

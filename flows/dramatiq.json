@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Dramatiq does", "zh": "Dramatiq 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Dramatiq and run RabbitMQ or Redis", "zh": "安装 Dramatiq，运行 RabbitMQ 或 Redis", "code": "pip install 'dramatiq[rabbitmq, watch]'", "component": {"en": "application environment", "zh": "应用环境"}},
+    {"lane": "you", "en": "Decorate a Python function as an actor", "zh": "把 Python 函数装饰成 actor", "code": "@dramatiq.actor", "component": {"en": "actor module", "zh": "actor 模块"}},
+    {"lane": "you", "en": "Start supervised workers that import the actor module", "zh": "启动并托管导入 actor 模块的 worker", "code": "dramatiq example", "component": {"en": "dramatiq CLI", "zh": "dramatiq 命令行"}},
+    {"lane": "you", "en": "Send the actor arguments from application code", "zh": "从应用代码发送 actor 参数", "code": "count_words.send(sys.argv[1])", "component": {"en": "producer", "zh": "生产者"}},
+    {"lane": "them", "en": "JSON-encodes a message and puts it on the broker", "zh": "把消息编码为 JSON 并放入 broker", "component": {"en": "actor + broker", "zh": "actor + broker"}},
+    {"lane": "them", "en": "Consumes the message, runs the actor, and retries failures", "zh": "消费消息、运行 actor，并重试失败任务", "component": {"en": "worker + middleware", "zh": "worker + middleware"}}
+  ],
+  "value": {"en": "Durable Python work leaves the request path and runs in a separately scaled worker fleet", "zh": "持久 Python 工作离开请求路径，在独立扩展的 worker 集群中运行"},
+  "sources": [
+    "README.md: Installation and Quickstart",
+    "docs/source/guide.rst: Actors, Workers, Error Handling, and Message Brokers",
+    "docs/source/best_practices.rst: Retriable Actors and Simple Messages"
+  ]
+}

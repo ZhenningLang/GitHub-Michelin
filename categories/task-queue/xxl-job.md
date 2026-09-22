@@ -118,7 +118,7 @@ XXL-JOB has two halves. The **scheduling center** is a separately deployed admin
 | Quartz | 未收录 | Choose Quartz when you need an embeddable Java scheduler library inside your app, not a management platform. | Powerful cron/trigger model but **no out-of-the-box admin UI, no distributed dispatcher, no run console**. XXL-JOB is closer to "Quartz + a management platform" in spirit. |
 | Elastic-Job (ShardingSphere ElasticJob) | 未收录 | Choose Elastic-Job when Java distributed scheduling with strong **sharding** and ZooKeeper coordination is the hard requirement. | Decentralized, but heavier infra dependency and steeper setup than XXL-JOB's DB-backed admin. |
 | Spring Batch | 未收录 | Choose Spring Batch when the need is chunked read/process/write batch processing and restartability, not scheduling. | Complementary, not a substitute; you still need something to trigger it. |
-| PowerJob | 未收录 | Choose PowerJob when a newer Java distributed scheduler/compute platform with richer workflow/DAG and map-reduce-style execution is worth a smaller install base. | Often pitched as a more modern XXL-JOB alternative, but adoption is smaller. [未验证] |
+| [PowerJob](powerjob.md) | ✅ | Choose PowerJob when a newer Java distributed scheduler/compute platform with richer workflow/DAG and map-reduce-style execution is worth a smaller install base. | Often pitched as a more modern XXL-JOB alternative, but adoption is smaller. [未验证] |
 
 ## Tech stack
 

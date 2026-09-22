@@ -96,9 +96,9 @@ health:
 |---|---|---|---|
 | [qpdf](qpdf.zh.md) | ✅ | 需要加密、结构转换、检查和可靠命令行处理时选 qpdf；PHP 应用需要增量对象操作和内嵌签名时选 SAPP。 | qpdf 是更成熟的原生工具/库，PDF 转换覆盖更广；SAPP 提供 PHP 原生签名工作流，但支持的 PDF 规范范围更窄。 |
 | [pdf-lib](pdf-lib.zh.md) | ✅ | 需要跨 JavaScript runtime 创建和编辑 PDF 时选 pdf-lib；需要 PHP 侧增量签名和访问现有文档对象时选 SAPP。 | pdf-lib 支持浏览器和 JavaScript runtime，许可证宽松；SAPP 仅支持 PHP 且为 LGPL，但设计中心是保留 PDF 修订。 |
-| FPDI | 未收录 | 真正任务是把已有 PDF 页面导入新组成的 PHP 文档时选 FPDI；重新创建页面会丢失签名或修订语义时选 SAPP。 | FPDI 成熟且为 MIT，但把页面当作模板；SAPP 更贴近原始对象图，也承担更多解析器责任。 |
+| [FPDI](fpdi.zh.md) | ✅ | 真正任务是把已有 PDF 页面导入新组成的 PHP 文档时选 FPDI；重新创建页面会丢失签名或修订语义时选 SAPP。 | FPDI 成熟且为 MIT，但把页面当作模板；SAPP 更贴近原始对象图，也承担更多解析器责任。 |
 | OpenPDFSign | 未收录 | 需要独立 Java 命令行签名器时选 OpenPDFSign；签名和 PDF 对象修改必须由 PHP 代码统一编排时选 SAPP。 | OpenPDFSign 用进程边界隔离签名；SAPP 避免这个边界，但宿主应用要负责 PHP 扩展和解析兼容性。 |
-| pyHanko | 未收录 | Python 集成与明确记录的高级签名 profile 更重要时选 pyHanko；需要小型 PHP 原生对象模型和增量签名流程时选 SAPP。 | pyHanko 是更广的签名专用栈；SAPP 更容易嵌进 PHP，但本次研究得到的独立一致性证据更少。 |
+| [pyHanko](pyhanko.zh.md) | ✅ | Python 集成与明确记录的高级签名 profile 更重要时选 pyHanko；需要小型 PHP 原生对象模型和增量签名流程时选 SAPP。 | pyHanko 是更广的签名专用栈；SAPP 更容易嵌进 PHP，但本次研究得到的独立一致性证据更少。 |
 
 ## 技术栈
 

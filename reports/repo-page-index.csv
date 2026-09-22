@@ -11,6 +11,7 @@ https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals
 https://github.com/AutumnWhj/ChatGPT-wechat-bot,chatgpt-wechat-bot,im-automation,categories/im-automation/chatgpt-wechat-bot.md
 https://github.com/BerriAI/litellm,litellm,api-gateway,categories/api-gateway/litellm.md
 https://github.com/Bistutu/FluentRead,fluentread,reading-tools,categories/reading-tools/fluentread.md
+https://github.com/Bogdanp/dramatiq,dramatiq,task-queue,categories/task-queue/dramatiq.md
 https://github.com/BurntSushi/ripgrep,ripgrep,data-tools,categories/dev-utilities/data-tools/ripgrep.md
 https://github.com/Chachamaru127/claude-code-harness,claude-code-harness,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md
 https://github.com/ChatGPTNextWeb/NextChat,nextchat,llm-chat-ui,categories/llm-chat-ui/nextchat.md
@@ -60,6 +61,7 @@ https://github.com/LearningCircuit/local-deep-research,local-deep-research,deep-
 https://github.com/Leonxlnx/taste-skill,taste-skill,design,categories/agent-skills/design/taste-skill.md
 https://github.com/LianjiaTech/bella-domify,bella-domify,document-parsing,categories/document-parsing/bella-domify.md
 https://github.com/MakazhanAlpamys/Soup,soup,llm-training,categories/llm-training/soup.md
+https://github.com/MatthiasValvekens/pyHanko,pyhanko,pdf-tools,categories/pdf-tools/pyhanko.md
 https://github.com/MeetKai/functionary,functionary,function-calling,categories/function-calling/functionary.md
 https://github.com/MemoriLabs/Memori,memori,agent-memory,categories/agent-memory/memori.md
 https://github.com/MgArcher/Text_select_captcha,text-select-captcha,captcha,categories/captcha/text-select-captcha.md
@@ -89,6 +91,7 @@ https://github.com/Panniantong/Agent-Reach,agent-reach,deep-research,categories/
 https://github.com/PenglongHuang/chinese-novelist-skill,chinese-novelist-skill,fiction,categories/agent-skills/writing/fiction/chinese-novelist-skill.md
 https://github.com/PixlOne/logiops,logiops,peripherals,categories/peripherals/logiops.md
 https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engineering,categories/agent-skills/context-engineering/notebooklm-skill.md
+https://github.com/PowerJob/PowerJob,powerjob,task-queue,categories/task-queue/powerjob.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
 https://github.com/PyAV-Org/PyAV,pyav,video-audio,categories/media-processing/video-audio/pyav.md
 https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
@@ -99,6 +102,7 @@ https://github.com/RocketChat/Rocket.Chat,rocket-chat,team-chat,categories/team-
 https://github.com/SWE-agent/SWE-agent,swe-agent,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
+https://github.com/Setasign/FPDI,fpdi,pdf-tools,categories/pdf-tools/fpdi.md
 https://github.com/Significant-Gravitas/AutoGPT,autogpt,workflow-builders,categories/agent-frameworks/workflow-builders/autogpt.md
 https://github.com/SpiderClub/haipproxy,haipproxy,proxy-pool,categories/proxy-pool/haipproxy.md
 https://github.com/SuperClaude-Org/SuperClaude_Framework,superclaude,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md
@@ -460,6 +464,7 @@ https://github.com/pwr-Solaar/Solaar,solaar,peripherals,categories/peripherals/s
 https://github.com/pydantic/pydantic-ai,pydantic-ai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md
 https://github.com/pygame/pygame,pygame,game-dev,categories/game-dev/pygame.md
 https://github.com/pymupdf/PyMuPDF,pymupdf,pdf-tools,categories/pdf-tools/pymupdf.md
+https://github.com/python-arq/arq,arq,task-queue,categories/task-queue/arq.md
 https://github.com/python-openxml/python-docx,python-docx,office-automation,categories/office-automation/python-docx.md
 https://github.com/qgis/QGIS,qgis,geospatial,categories/geospatial/qgis.md
 https://github.com/qpdf/qpdf,qpdf,pdf-tools,categories/pdf-tools/qpdf.md

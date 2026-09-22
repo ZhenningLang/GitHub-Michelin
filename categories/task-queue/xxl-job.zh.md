@@ -118,7 +118,7 @@ XXL-JOB 分两块：**调度中心**是一个独立部署的管理服务（带�
 | Quartz | 未收录 | 需要嵌进应用里的 Java 调度库，而不是管理平台时，选 Quartz。 | cron/trigger 模型强大，但**没有开箱即用的 admin UI、没有分布式调度器、没有运行控制台**。XXL-JOB 在精神上更像「Quartz + 一个管理平台」。 |
 | Elastic-Job（ShardingSphere ElasticJob） | 未收录 | Java 分布式调度、强**分片**和 ZooKeeper 协调是硬需求时，选 Elastic-Job。 | 它去中心化，但基础设施依赖更重，搭建比 XXL-JOB 的 DB 背书 admin 更陡。 |
 | Spring Batch | 未收录 | 需求是分块 read/process/write 批处理和可重启性，而不是调度时，选 Spring Batch。 | 它是互补，不是替代；你仍需要别的东西来触发它。 |
-| PowerJob | 未收录 | 较新的 Java 分布式调度/计算平台、更多工作流/DAG 和 map-reduce 式执行，值得用更小装机量交换时，选 PowerJob。 | 它常被定位成更现代的 XXL-JOB 替代，但采用面更小。[未验证] |
+| [PowerJob](powerjob.zh.md) | ✅ | 较新的 Java 分布式调度/计算平台、更多工作流/DAG 和 map-reduce 式执行，值得用更小装机量交换时，选 PowerJob。 | 它常被定位成更现代的 XXL-JOB 替代，但采用面更小。[未验证] |
 
 ## 技术栈
 

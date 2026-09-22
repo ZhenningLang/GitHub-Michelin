@@ -118,8 +118,8 @@ RQ 对小团队尤其直观：用队列名表达优先级，用更多 worker 换
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Celery](celery.zh.md) | ✅ | Python 应用已经绑定 Redis/Valkey，且更看重更小的队列加 worker 模型时选 RQ；当 broker 选择、更丰富的路由和组合原语值得额外复杂度时选 Celery。 | RQ 去掉 broker 抽象和 Celery 的大量配置表面，同时也放弃了相应的灵活性与生态广度。 |
-| Dramatiq | 未收录 | 紧凑的 Python 任务处理器仍需在 RabbitMQ 和 Redis 之间选择时选 Dramatiq；直接把普通函数入队、只用 Redis 更合适时选 RQ。 | Dramatiq 增加 broker 选择和 actor 消息模型；RQ 把数据存储和编程模型收得更窄。 |
-| arq | 未收录 | asyncio-native Python 服务希望作业与 worker hook 都异步时选 arq；同步代码库，或更看重 RQ 的作业 registry、调度和既有生态时选 RQ。 | arq 贴合 asyncio 与 Redis，但已进入 maintenance-only 模式；RQ 仍在活跃发版，并以普通 callable 作业为中心。 |
+| [Dramatiq](dramatiq.zh.md) | ✅ | 紧凑的 Python 任务处理器仍需在 RabbitMQ 和 Redis 之间选择时选 Dramatiq；直接把普通函数入队、只用 Redis 更合适时选 RQ。 | Dramatiq 增加 broker 选择和 actor 消息模型；RQ 把数据存储和编程模型收得更窄。 |
+| [arq](arq.zh.md) | ✅ | asyncio-native Python 服务希望作业与 worker hook 都异步时选 arq；同步代码库，或更看重 RQ 的作业 registry、调度和既有生态时选 RQ。 | arq 贴合 asyncio 与 Redis，但已进入 maintenance-only 模式；RQ 仍在活跃发版，并以普通 callable 作业为中心。 |
 
 ## 技术栈
 

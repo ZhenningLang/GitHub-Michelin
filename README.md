@@ -668,6 +668,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **OCRmyPDF** | OCRmyPDF adds an OCR text layer to scanned PDF files, allowing them to be searched | MPL-2.0 | B (6/6) | [EN](categories/pdf-tools/ocrmypdf.md) · [中](categories/pdf-tools/ocrmypdf.zh.md) |
 | **qpdf** | qpdf: A content-preserving PDF document transformer | Apache-2.0 | B (6/6) | [EN](categories/pdf-tools/qpdf.md) · [中](categories/pdf-tools/qpdf.zh.md) |
 | **SAPP** | Use it when a PHP app must append PKCS#12 signatures without destroying existing PDF revisions — coverage is narrow and encrypted PDFs are unsupported. | LGPL-3.0-or-later | B (5/6) | [EN](categories/pdf-tools/sapp.md) · [中](categories/pdf-tools/sapp.zh.md) |
+| **FPDI** | Use it when a PHP app built on FPDF/TCPDF/tFPDF must import pages from an existing PDF as templates — the free parser rejects encrypted files and compressed cross-reference streams. | MIT | A (5/6) | [EN](categories/pdf-tools/fpdi.md) · [中](categories/pdf-tools/fpdi.zh.md) |
+| **pyHanko** | Use it when Python must create or validate PDF signatures with documented PAdES/LTV workflows — upstream still labels the project beta. | MIT | A (6/6) | [EN](categories/pdf-tools/pyhanko.md) · [中](categories/pdf-tools/pyhanko.zh.md) |
 
 ### workflow-orchestration
 
@@ -709,6 +711,9 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Kombu** | Use it when a Python service must publish/consume messages across swappable brokers (RabbitMQ, Redis, SQS) — virtual transports emulate AMQP imperfectly, so "swap the URL" is not identical behavior. | BSD-3-Clause | A (5/6) | [EN](categories/task-queue/kombu.md) · [中](categories/task-queue/kombu.zh.md) |
 | **Flower** | Use it when a production Celery cluster needs a live dashboard to inspect and control workers and export Prometheus metrics — it can revoke tasks, so never expose it unauthenticated. | BSD-3-Clause | B (4/6) | [EN](categories/task-queue/flower.md) · [中](categories/task-queue/flower.zh.md) |
 | **RQ** | Use it when a Python app already has Redis or Valkey and needs a small, readable queue-and-worker model — accepting Redis-only transport and separate worker operations. | BSD-2-Clause | B (5/6) | [EN](categories/task-queue/rq.md) · [中](categories/task-queue/rq.zh.md) |
+| **Dramatiq** | Use it when a Python service wants actor-style background processing with a real choice between RabbitMQ and Redis — and you can live with LGPL-3.0 distribution duties. | LGPL-3.0-or-later | B (6/6) | [EN](categories/task-queue/dramatiq.md) · [中](categories/task-queue/dramatiq.zh.md) |
+| **arq** | Use it when the app is already asyncio-first and a small Redis-backed coroutine queue is enough — the README calls the project maintenance-only, so expect stability rather than new features. | MIT | B (6/6) | [EN](categories/task-queue/arq.md) · [中](categories/task-queue/arq.zh.md) |
+| **PowerJob** | Use it when a JVM shop needs a central scheduler with a web console, DAG and map-reduce execution modes — the stable line has not shipped since 2025-08. | Apache-2.0 | C (4/6) | [EN](categories/task-queue/powerjob.md) · [中](categories/task-queue/powerjob.zh.md) |
 ### im-automation
 
 | Project | Use when | License | Health | Page |
