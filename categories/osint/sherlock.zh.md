@@ -90,6 +90,7 @@ health:
 - **你要的是档案，不是命中清单。** 用 [Maigret](maigret.zh.md)——ID 提取（socid-extractor）、递归搜索、HTML/PDF/XMind 报告、3000+ 站点。Sherlock 到「找到账户」为止。
 - **不能容忍假阳性。** Sherlock 的个人页启发式（HTTP 状态码/错误文本匹配）在保留名和被删/被封账户上会失手——这正是 socialscan 的注册端点方法要修的问题。要在其覆盖的约 11 个平台拿「可用/已占用」判定，用 [socialscan](socialscan.zh.md)；查其他站点的存在性，用 Maigret 的结果和 Sherlock 交叉验证。
 - **你的输入是邮箱。** 先用 [socialscan](socialscan.zh.md) 或复验过的 [holehe](holehe.zh.md) fork。
+- **你手里的 handle 不是对方在别处用的那个。** Sherlock 把整轮扫描押在一个完全相同的字符串上，所以它只能覆盖「这个字符串被复用」的那部分站点；目标在别处另起了名字的那些平台，它看不见，而且加多少站点覆盖也修不了这一点。这时该换的是**键**，不是工具：改用 [socialscan](socialscan.zh.md)（约 11 个平台的服务端「可用/已占用」判定）或复验过的 [holehe](holehe.zh.md)（120+ 站点）去探邮箱，因为换到新平台还继续沿用的概率，地址远高于 handle。[推断]
 - **你需要 Google 生态深度。** 用 [GHunt](ghunt.zh.md)。
 - **你指望单 IP 安静地无人值守批量扫描。** Sherlock 没有自动更新的站点库，除了 Tor/代理参数外没有绕封锁机制；重度使用需要代理池（`proxy-pool` 类目），且 347 个 open issue 说明站点失效报告会排队。
 - **对目标 handle 没有授权。** 与全类目相同的法律/ToS 边界。
@@ -99,7 +100,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Maigret](maigret.zh.md) | 已收录 | 交付物是档案（提取的 ID、递归、报告、3000+ 站点、Tor/I2P）时选 Maigret；交付物是跨 481 站点快速、简单、可审计的存在性清单时选 Sherlock。 | Maigret 用重 poetry 依赖栈和更慢的扫描换深度；Sherlock 用更粗的个人页信号和零提取换简单。 |
-| [socialscan](socialscan.zh.md) | 已收录 | 需要在约 11 个平台拿注册级「可用/已占用」准确度时选 socialscan；要 481 站点的广度优先存在性核查时选 Sherlock。 | socialscan 的注册端点方法消除了 Sherlock 的假阳性类别，但覆盖站点少 40 倍。 |
+| [socialscan](socialscan.zh.md) | 已收录 | 能拿到邮箱、或需要约 11 个平台的注册级「可用/已占用」判定时选 socialscan；只有用户名、且要看这个字符串在 481 个站点哪里被复用时选 Sherlock。 | socialscan 用平台自己的判定替代个人页猜测，且接受邮箱这个跨平台更稳定的键；代价是覆盖平台少 40 倍。 |
 | [holehe](holehe.zh.md) | 已收录 | 标识符是邮箱时选 holehe 系工具；是用户名时选 Sherlock——互补阶段，不是替代品。 | holehe 以邮箱为键且已弃养（2024-09）；Sherlock 以用户名为键、组织治理、发版活跃。 |
 | [GHunt](ghunt.zh.md) | 已收录 | 要做认证式 Google 账户调查时选 GHunt；要做无认证宽域扫描时选 Sherlock。 | GHunt 用你的 cookie 看进单一生态内部（ToS 风险）；Sherlock 只看多站点的公开个人页表面。 |
 
@@ -134,4 +135,5 @@ health:
 - [未验证] 「被安全发行版打包」（如 Kali）未对照发行版软件包列表核实。
 - [未验证] 未逐站实测模块健康度——只对 master 分支 `sherlock_project/resources/data.json` 点过 481 条总数。该文件顶层共 482 个键，其中一个是 `$schema` 元数据键，不是站点。
 - [推断] 依据 socialscan 文档化的批评，保留名/被删名上的假阳性是个人页方法的结构性问题；Sherlock 当前确切错误率未测量。
+- [推断] 「换到新平台还继续沿用的概率，地址远高于 handle」是从注册/找回密码端点以地址为键推断出的机制结论，不是实测比率——未找到可核对的逐平台 handle 复用率数据。
 - [未验证] open issue 积压是否实质拖慢站点库修复，未评估。
