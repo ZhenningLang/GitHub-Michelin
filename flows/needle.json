@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Needle does", "zh": "Needle 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK; the engine and weights are fetched once", "zh": "装好 SDK，引擎与权重首次使用时拉取一次", "code": "pip install cactus-needle", "component": {"en": "cactus-needle SDK", "zh": "cactus-needle SDK"}},
+    {"lane": "you", "en": "Declare the tools your app exposes", "zh": "声明你的 App 要暴露的工具", "code": "@needle.tool", "component": {"en": "tool schema", "zh": "工具 schema"}},
+    {"lane": "them", "en": "Fetches your platform's sub-1 MB engine and loads the 2-bit weights", "zh": "取回你所在平台的亚 1 MB 引擎，加载 2-bit 权重", "component": {"en": "native engine", "zh": "原生引擎"}},
+    {"lane": "them", "en": "Compiles your schemas into a byte-level grammar that constrains every token", "zh": "把你的 schema 编成逐 token 约束的 grammar", "component": {"en": "grammar decoder", "zh": "grammar 解码器"}},
+    {"lane": "them", "en": "Sends the sentence to the model and returns calls, reasoning and a confidence score", "zh": "把英文送给模型，返回调用、reasoning 与 confidence", "code": "agent.run(\"...\")", "component": {"en": "function_calls envelope", "zh": "function_calls envelope"}},
+    {"lane": "them", "en": "Calls your Python functions with those arguments and feeds the results back", "zh": "用这些参数调用你的 Python 函数，并把结果回喂", "component": {"en": "run() loop", "zh": "run() 循环"}},
+    {"lane": "you", "en": "Read results, and treat empty function_calls as a refusal", "zh": "读 results，把空的 function_calls 当作拒绝", "code": "[\"results\"]", "component": {"en": "your app", "zh": "你的应用"}}
+  ],
+  "value": {"en": "One English sentence becomes a schema-valid tool call executed on-device, with no prompt-and-parse plumbing and no network call", "zh": "一句英文在设备本地变成可执行、符合 schema 的工具调用，不用自己拼 prompt 和解析器，也不走网络"},
+  "sources": [
+    "README.md: Get started (pip install, @needle.tool, agent.run), Deploy (needle build --platform)",
+    "needle/__init__.py: Needle.complete / Needle.run loop and the JSON envelope fields",
+    "needle/agent/tools.py: build_schema compiles decorated functions into the tool schema",
+    "needle/agent/fetch.py: PLATFORMS, engine and .cact weight fetch from Hugging Face",
+    "llms.txt: Core API, Response shape, Behaviour contract"
+  ]
+}
