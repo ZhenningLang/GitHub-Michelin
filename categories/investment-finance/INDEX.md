@@ -13,6 +13,7 @@
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | B (5/6) | [→](qlib.md) |
 | **backtrader** | Python Backtesting library for trading strategies | D (4/6) | [→](backtrader.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | A (6/6) | [→](yfinance.md) |
+| **HiThink Financial-API** | One API key for official Tonghuashun A-share quotes, statements, index/fund/futures data over CLI, MCP, REST or Python, with long history in a local DuckDB | B (6/6) | [→](financial-api.md) |
 
 
 ## Comparison matrix
@@ -25,6 +26,7 @@
 | [qlib](qlib.md) | ✅ | B (5/6) | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. |
 | [backtrader](backtrader.md) | ✅ | D (4/6) | Python Backtesting library for trading strategies |
 | [yfinance](yfinance.md) | ✅ | A (6/6) | Download market data from Yahoo! Finance's API |
+| [financial-api](financial-api.md) | ✅ | B (6/6) | Official Tonghuashun A-share data clients — CLI, MCP, REST and Python over one API key, plus a local DuckDB of market history |
 
 
 ## What belongs here

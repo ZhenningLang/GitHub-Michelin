@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "The hosted service + CLI do", "zh": "托管服务与 CLI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get one API key on the vendor site, install the CLI, hand it the key", "zh": "在官网建一把 API Key，装好 CLI 并把 Key 交给它", "code": "hithink-finance auth login", "component": {"en": "CLI + OS keyring", "zh": "CLI + 系统凭据库"}},
+    {"lane": "you", "en": "Ask for one security's data by name or code", "zh": "用名称或代码发起一次取数", "code": "hithink-finance market snapshot --thscodes 600519.SH", "component": {"en": "CLI", "zh": "CLI"}},
+    {"lane": "them", "en": "Resolves the name to the unique thscode and routes to the right REST/MCP endpoint", "zh": "把名称消歧成唯一 thscode，路由到对应的 REST/MCP 接口", "component": {"en": "hosted data service", "zh": "托管数据服务"}},
+    {"lane": "them", "en": "Returns one normalized envelope that preserves nulls; oversized results go to disk", "zh": "返回统一信封并保留空值，超大结果落盘", "component": {"en": "hosted data service", "zh": "托管数据服务"}},
+    {"lane": "you", "en": "When you need long history, initialise the local database", "zh": "需要长历史时，初始化本地库", "code": "hithink-finance data init", "component": {"en": "local DuckDB", "zh": "本地 DuckDB"}},
+    {"lane": "them", "en": "Downloads the full-market Parquet dump, then applies incremental updates", "zh": "下载全市场 Parquet 全量包，再按增量写入", "component": {"en": "CLI data pipeline", "zh": "CLI 数据管线"}},
+    {"lane": "you", "en": "Run SQL against the local copy instead of refetching", "zh": "直接对本地副本跑 SQL，不必再远端取数", "code": "hithink-finance db query --sql \"SELECT * FROM v_daily_qfq LIMIT 10\"", "component": {"en": "local DuckDB", "zh": "本地 DuckDB"}}
+  ],
+  "value": {"en": "You stop maintaining scrapers and field maps: one key buys contractual A-share fields over four surfaces, and history becomes a local table you can SQL", "zh": "不用再自己维护爬虫和字段映射：一把 Key 在四个入口上拿到有契约的 A 股字段，长历史落成本地表可直接 SQL 查"},
+  "sources": [
+    "README.md#快速开始 (npm install -g @hithink-tech/hithink-finance-cli; hithink-finance auth login; hithink-finance market snapshot --thscodes 600519.SH --format json; hithink-finance data init --format json; hithink-finance db query --sql \"SELECT * FROM v_daily_qfq LIMIT 10\" --format json)",
+    "hithink-finance-cli/README.md (command list: auth login, market snapshot, symbol search, data init/sync/status/validate, db query/describe, db export)",
+    "skills/hithink-finance/SKILL.md (path selection CLI/MCP/REST, thscode disambiguation, oversized results must be written to disk)",
+    "python/README.md (marketdb auto-sync for incremental local updates)"
+  ]
+}
