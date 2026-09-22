@@ -150,7 +150,11 @@ python3 tools/quality_scan.py --fail-on-gated   # deterministic triage categorie
 ERROR = exit non-zero (CI fails). WARNING = printed (e.g. an entry is stale). Run all three before
 committing. CI runs them on every PR and every push to `main` (`.github/workflows/lint.yml`): the
 `structural-lint` job is `lint.py` + `reverse_index.py --check`; `quality-gate` is
-`quality_scan.py --fail-on-gated`.
+`quality_scan.py --fail-on-gated`; `unit-tests` is `make test` (the tools' own unit suite). The unit
+job was added after two gated-category additions reached `main` with a red `make test`, invisible
+because nothing ran it — keep the three list-shaped contracts (`AGENTS.md`, `quality_scan.py`,
+`verify_quality_batch.py`) in step; `test_verify_quality_batch.py` reads the gated list out of this
+file, so a mismatch fails there.
 
 **Touch the tree shape → refresh the reports.** Adding, renaming, moving, or deleting pages changes
 the reverse index (and the named-but-unindexed backlog). `reports/` are committed SSOT, so regenerate
