@@ -270,6 +270,23 @@ alternative. This is the section agents most need.
 - The table must carry the index's own judgment as a first-class column. English pages use
   `| Alternative | In index | Our verdict | Tradeoff |`; Chinese pages use
   `| 替代品 | 是否收录 | 我们的评价 | 取舍 |`.
+- **Status vocabulary — `未收录` and `非仓库` are different claims.** The `In index` / `是否收录`
+  cell answers "can an agent act on this by reading a page here?" and carries exactly one of:
+
+  | Status | Claim | Consequence |
+  |---|---|---|
+  | `✅` / `已收录` | it is in the index | link the page (it is a repository) |
+  | `未收录` / `not indexed` | it is a **real repository** not yet added | backlog debt — what the intake sweep drains |
+  | `非仓库` / `not a repo` | it is **not a repository at all** (hosted SaaS, closed-source app, commercial product, paid service, article, or not a project name) | out of scope by shape, **no debt**; put the reason in the tradeoff cell |
+  | `部分已收录` / `partly indexed` | composite row mixing indexed and unindexed members | name which member has a page |
+
+  Pick the status that matches the *thing itself*, not your policy about it: a real repository you
+  decided not to add is still `未收录` (say why in the tradeoff cell), and a closed product you wish
+  were open is still `非仓库`. `非仓库` must never point at something that has a page — that would
+  contradict the page's existence; `quality_scan.py` gates it as `indexed-page-marked-non-repo`.
+  The combined form `未收录（非仓库）` still reads correctly but is the legacy spelling: write the
+  standalone `非仓库` / `not a repo`, and the scanner reports the old form as
+  `non-repo-status-legacy-form` (report-only) so the sweep can normalize it.
 - GitHub Markdown tables are **not sortable** by a header syntax. The separator row only controls
   alignment (`:---`, `:---:`, `---:`); do not invent pseudo-sortable Markdown attributes.
 

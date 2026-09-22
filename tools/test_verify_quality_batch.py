@@ -16,6 +16,7 @@ from test_quality_scan import commit_all, init_git_repo, write_page
 
 REQUIRED_GATED_CATEGORIES = {
     "generic-comparison-template",
+    "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
     "zh-link-to-english-sibling",
     "composite-alternative-partly-indexed",

@@ -190,7 +190,6 @@ Commercial solving services (打码平台),categories/captcha/text-select-captch
 "Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda,categories/python-tooling/uv.md,,no
-Conductor (Mac app),categories/agent-tooling/claudecodeui.md,,no
 Conductor / Crystal / Claude Squad,categories/agent-tooling/agent-orchestrator.md,,no
 Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
@@ -760,7 +759,6 @@ Specstory / agent transcript exporters,categories/agent-tooling/entire-cli.md,,n
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
 Stencil,categories/web-ui/frameworks/lit.md,,no
-Stitch MCP server itself (`stitch.withgoogle.com`),categories/agent-skills/design/stitch-skills.md,,no
 streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/m3u8.md,,no
 Stylelint,categories/ai-design-generation/impeccable.md,,no
 Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no

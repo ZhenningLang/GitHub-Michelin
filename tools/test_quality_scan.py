@@ -989,5 +989,62 @@ class QualityScanTest(unittest.TestCase):
             self.assertFalse(any(f.path.endswith("INDEX.md") for f in result.findings))
 
 
+    def test_indexed_page_marked_non_repo_is_gated(self) -> None:
+        """`非仓库` claims the alternative is not a repository; a page proves otherwise."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md", "## Comparison\n")
+            (root / "categories" / "demo" / "INDEX.md").write_text(
+                "## Comparison matrix\n\n"
+                "| Option | Indexed | Health | One-line tradeoff |\n"
+                "| --- | --- | --- | --- |\n"
+                "| [alpha](alpha.md) | 非仓库 | — | Wrong: it has a page. |\n",
+                encoding="utf-8",
+            )
+
+            result = quality_scan.scan(root)
+
+            contradictions = [f for f in result.findings if f.category == "indexed-page-marked-non-repo"]
+            self.assertEqual(len(contradictions), 1)
+            self.assertEqual(contradictions[0].severity, "high")
+
+    def test_non_repo_row_without_a_page_is_not_flagged(self) -> None:
+        """A hosted service marked `非仓库` is the correct status — out of scope, not debt."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md", "## Comparison\n")
+            (root / "categories" / "demo" / "INDEX.md").write_text(
+                "## Comparison matrix\n\n"
+                "| Option | Indexed | Health | One-line tradeoff |\n"
+                "| --- | --- | --- | --- |\n"
+                "| Kibana / Datadog | 非仓库 | — | Hosted dashboards, not repositories. |\n",
+                encoding="utf-8",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.path.endswith("INDEX.md") for f in result.findings))
+
+    def test_legacy_combined_non_repo_status_is_report_only(self) -> None:
+        """`未收录（非仓库）` still reads correctly; it is normalized by the sweep, not gated."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page(root, "categories/demo/alpha.md", "## Comparison\n")
+            (root / "categories" / "demo" / "INDEX.md").write_text(
+                "## Comparison matrix\n\n"
+                "| Option | Indexed | Health | One-line tradeoff |\n"
+                "| --- | --- | --- | --- |\n"
+                "| Conductor | 未收录（非仓库） | — | Closed macOS app. |\n",
+                encoding="utf-8",
+            )
+
+            result = quality_scan.scan(root)
+
+            legacy = [f for f in result.findings if f.category == "non-repo-status-legacy-form"]
+            self.assertEqual(len(legacy), 1)
+            self.assertEqual(legacy[0].severity, "low")
+            self.assertNotIn("non-repo-status-legacy-form", quality_scan.GATED_DETERMINISTIC_CATEGORIES)
+
+
 if __name__ == "__main__":
     unittest.main()

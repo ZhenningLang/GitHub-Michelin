@@ -23,7 +23,9 @@ KNOWN_CATEGORIES = [
     "generic-comparison-template",
     "health-prose-grade-drift",
     "health-prose-raw-drift",
+    "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
+    "non-repo-status-legacy-form",
     "truncation-fragment",
     "zero-placeholder-upstream-sha",
     "zh-link-to-english-sibling",
@@ -31,6 +33,7 @@ KNOWN_CATEGORIES = [
 GATED_DETERMINISTIC_CATEGORIES = {
     "composite-alternative-partly-indexed",
     "generic-comparison-template",
+    "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
     "truncation-fragment",
     "zh-link-to-english-sibling",
@@ -38,6 +41,12 @@ GATED_DETERMINISTIC_CATEGORIES = {
 NOT_INDEXED_MARKERS = ["not indexed", "未收录"]
 INDEXED_MARKERS = ["✅", "已收录"]
 PARTIALLY_INDEXED_MARKERS = ["partly indexed", "partially indexed", "部分已收录"]
+# `非仓库` / `not a repo` is a STATUS, not a flavour of `未收录` (schema §2): `未收录` claims the
+# alternative is a real repository we have not added yet (backlog debt); `非仓库` claims it is not
+# a repository at all (hosted SaaS, closed app, paid service, article) and therefore out of scope.
+# Writers had been hand-rolling the difference as `未收录（非仓库）`; 22 files still carry that
+# combined form, which is detected here only so the sweep can normalize it (report-only).
+NON_REPO_MARKERS = ["非仓库", "not a repository", "not a repo", "non-repo"]
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 MIN_GLOBAL_PLAIN_SLUG_LENGTH = 7
 HEALTH_AXES = ["maintenance", "responsiveness", "adoption", "longevity", "governance", "risk_license"]
@@ -222,11 +231,49 @@ def is_indexed_plain_candidate(source: Path, candidate_slug: str, indexed_target
     return len(candidate_slug) >= MIN_GLOBAL_PLAIN_SLUG_LENGTH and candidate_slug in indexed_slug_set
 
 
+def non_repo_status(status: str) -> bool:
+    """True when the status cell claims the alternative is not a repository at all.
+
+    `非仓库` / `not a repo` is out-of-scope-by-shape (hosted SaaS, closed app, paid service,
+    article), which is a different claim from `未收录` = a real repository we have not added yet.
+    """
+    return any(marker in status for marker in NON_REPO_MARKERS)
+
+
+def legacy_non_repo_status(status: str) -> bool:
+    """`未收录（非仓库）` / `not indexed (non-repo)`: the hand-rolled combined form.
+
+    Writers used it before the standalone status existed (22 files as of 2026-09-22). It still
+    reads correctly, so this is report-only: the sweep normalizes it to `非仓库` / `not a repo`.
+    """
+    return non_repo_status(status) and any(marker in status for marker in NOT_INDEXED_MARKERS)
+
+
+def row_resolves_to_indexed(source: Path, line: str, cells: list[str], indexed_targets: set[Path], indexed_slug_set: set[str]) -> bool:
+    """True when a comparison row's alternative column resolves to a page already in the index.
+
+    Links win anywhere in the row; a plain-text alternative is resolved by same-directory sibling
+    first, then by a global slug long enough to be unambiguous.
+    """
+    if any(
+        (target := resolve_markdown_target(source, href)) and canonical_target(target) in indexed_targets
+        for _label, href in LINK_RE.findall(line)
+    ):
+        return True
+    if len(cells) >= 2 and LINK_RE.search(cells[0]):
+        return False
+    return any(
+        is_indexed_plain_candidate(source, slug, indexed_targets, indexed_slug_set)
+        for slug in alternative_candidate_slugs(cells[0])
+    )
+
+
 def split_composite_label(label: str) -> list[str]:
     plain = re.sub(r"`([^`]+)`", r"\1", label).strip()
     plain = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", plain).strip()
     parts = [part.strip() for part in re.split(r"\s+/\s+", plain) if part.strip()]
     return parts if len(parts) > 1 else []
+
 
 
 def resolve_markdown_target(source: Path, href: str) -> Path | None:
@@ -329,30 +376,47 @@ def audit_summary_matrix_rows(root: Path, indexed_targets: set[Path], indexed_sl
             if len(cells) < 2:
                 continue
             status = cells[1]
+            resolves_to_indexed = row_resolves_to_indexed(matrix, line, cells, indexed_targets, indexed_slug_set)
+            if non_repo_status(status):
+                if resolves_to_indexed:
+                    findings.append(
+                        Finding(
+                            "indexed-page-marked-non-repo",
+                            "high",
+                            rel,
+                            line_no,
+                            "Summary matrix row calls an indexed page a non-repo — it has a page, so it is a repository.",
+                            line.strip(),
+                        )
+                    )
+                elif legacy_non_repo_status(status):
+                    findings.append(
+                        Finding(
+                            "non-repo-status-legacy-form",
+                            "low",
+                            rel,
+                            line_no,
+                            "Combined `未收录（非仓库）` status: use the standalone non-repo status.",
+                            line.strip(),
+                        )
+                    )
             if (
                 any(marker in status for marker in NOT_INDEXED_MARKERS)
                 and not any(marker in status for marker in INDEXED_MARKERS)
                 and not any(marker in status for marker in PARTIALLY_INDEXED_MARKERS)
+                and not non_repo_status(status)
+                and resolves_to_indexed
             ):
-                linked_indexed = any(
-                    (target := resolve_markdown_target(matrix, href)) and canonical_target(target) in indexed_targets
-                    for _label, href in LINK_RE.findall(line)
-                )
-                plain_indexed = any(
-                    is_indexed_plain_candidate(matrix, slug, indexed_targets, indexed_slug_set)
-                    for slug in alternative_candidate_slugs(cells[0])
-                )
-                if linked_indexed or plain_indexed:
-                    findings.append(
-                        Finding(
-                            "indexed-page-marked-not-indexed",
-                            "high",
-                            rel,
-                            line_no,
-                            "Summary matrix row marks an existing indexed page as not indexed.",
-                            line.strip(),
-                        )
+                findings.append(
+                    Finding(
+                        "indexed-page-marked-not-indexed",
+                        "high",
+                        rel,
+                        line_no,
+                        "Summary matrix row marks an existing indexed page as not indexed.",
+                        line.strip(),
                     )
+                )
             if detects_partly_indexed_composite(matrix, cells, indexed_targets, indexed_slug_set):
                 findings.append(
                     Finding(
@@ -665,22 +729,38 @@ def scan(root: Path | str, *, scope_paths: list[Path | str] | tuple[Path | str, 
                         line.strip(),
                     )
                 )
+            status_cell = cells[1] if len(cells) >= 2 else ""
+            resolves_to_indexed = row_resolves_to_indexed(page, line, cells, indexed_targets, indexed_slug_set)
+            if non_repo_status(status_cell):
+                if resolves_to_indexed:
+                    findings.append(
+                        Finding(
+                            "indexed-page-marked-non-repo",
+                            "high",
+                            rel,
+                            line_no,
+                            "Comparison row calls an indexed page a non-repo — it has a page, so it is a repository.",
+                            line.strip(),
+                        )
+                    )
+                elif legacy_non_repo_status(status_cell):
+                    findings.append(
+                        Finding(
+                            "non-repo-status-legacy-form",
+                            "low",
+                            rel,
+                            line_no,
+                            "Combined `未收录（非仓库）` status: use the standalone non-repo status.",
+                            line.strip(),
+                        )
+                    )
             if not any(marker in line for marker in NOT_INDEXED_MARKERS):
                 continue
-            linked_indexed_targets = [
-                target for _label, href in LINK_RE.findall(line) if (target := resolve_markdown_target(page, href)) and canonical_target(target) in indexed_targets
-            ]
-            indexed_plain_target = False
-            if len(cells) >= 2 and not LINK_RE.search(cells[0]):
-                for candidate_slug in alternative_candidate_slugs(cells[0]):
-                    if is_indexed_plain_candidate(page, candidate_slug, indexed_targets, indexed_slug_set):
-                        indexed_plain_target = True
-                        break
-            status_cell = cells[1] if len(cells) >= 2 else ""
             if (
-                (linked_indexed_targets or indexed_plain_target)
+                resolves_to_indexed
                 and any(marker in status_cell for marker in NOT_INDEXED_MARKERS)
                 and not any(marker in status_cell for marker in INDEXED_MARKERS)
+                and not non_repo_status(status_cell)
             ):
                 findings.append(
                     Finding(

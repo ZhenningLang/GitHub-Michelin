@@ -5,11 +5,14 @@ regenerate after comparison tables change and commit the diff.
 
 This is a maintainer backlog, not a canonical selection page and not a
 claim that a candidate is verified. Alternatives here are named by pages
-as `未收录`; nothing else about them is asserted.
+as `未收录` — meaning a real repository the index has not added yet, which
+is the debt this backlog tracks. Alternatives a page marks `非仓库` /
+`not a repo` (hosted SaaS, closed apps, paid services) are out of scope by
+shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 856
+- Named-but-unindexed alternatives: 854
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`

@@ -52,15 +52,18 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      story`); its flow card is generated in step 5.
    - **When NOT to use** — the strongest section; each anti-pattern names a substitute (§2
      `"When NOT to use" names substitutes`).
-   - **Comparison** — 3–5 real substitutes, `未收录` for unindexed ones; verdicts per §2
-     `Verdict quality contract` (no template/vague verdicts).
+   - **Comparison** — 3–5 real substitutes; status per §2 `Status vocabulary` — `未收录` means a
+     real repository you did not add (debt), `非仓库` / `not a repo` means it is not a repository at
+     all (hosted SaaS, closed app, paid service, article) and is out of scope by shape; verdicts per
+     §2 `Verdict quality contract` (no template/vague verdicts).
    - **Close the loop on comparisons.** Every **real repository** named as a comparison
      alternative must itself get an entry in the same batch (its own bilingual page, wired into
-     INDEX/README) — do not leave `未收录` dangling for something addable. `未收录` remains
-     legitimate only for **non-repos** (closed SaaS like Runway, commercial NLEs, services) and
-     for alternatives you explicitly justify as out-of-scope, with the reason recorded in the
-     commit/PR summary. The obligation covers the 3–5 named direct substitutes, not transitive
-     alternatives-of-alternatives.
+     INDEX/README) — do not leave `未收录` dangling for something addable. `非仓库` is the status
+     that closes a row without a page, and it is a factual claim about the alternative, not a
+     preference: use it for closed SaaS like Runway, commercial NLEs, paid services and hosted
+     APIs, and record the reason in the tradeoff cell. A repository you deliberately skip stays
+     `未收录` with the reason in the tradeoff cell and in the commit/PR summary. The obligation
+     covers the 3–5 named direct substitutes, not transitive alternatives-of-alternatives.
    - **Health & viability** — required for all types; dated, labeled judgment per §7.
    - **Truth labeling + Caveats ledger** (§3) — inline labels only on the load-bearing few;
      everything unverified gets a ledger bullet.

@@ -43,7 +43,9 @@ Procedure when you have a task and need to pick a project:
    **Lindy** prior: a long-lived *still-active* project is a safer bet than a young hyped one
    (high stars on a young/stale repo is a risk flag, not proof). See "Selection heuristics" below.
 4. Recommend with the *tradeoff that decided it*. If the best fit is named in a `## Comparison`
-   but is **not yet indexed** (`未收录`), say so — do not pretend the index is complete.
+   but is **not yet indexed** (`未收录`), say so — do not pretend the index is complete. `非仓库` /
+   `not a repo` is a *different* status: it means the alternative is not a repository at all
+   (hosted SaaS, closed app, paid service), so it is out of scope by shape rather than missing.
 
 There is a skill for this: **`skills/select-oss/`** — a dual-mode navigator that reads the index
 locally when you're inside a clone, or fetches the public raw files otherwise. It installs into any
@@ -149,7 +151,7 @@ automatically for staged `categories/` changes, and CI fails if you forget.
 **Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
 + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.
 `quality_scan.py --fail-on-gated` fails only on its **gated** deterministic categories
-(`generic-comparison-template`, `indexed-page-marked-not-indexed`,
+(`generic-comparison-template`, `indexed-page-marked-non-repo`, `indexed-page-marked-not-indexed`,
 `composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`); run it
 without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
 trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean

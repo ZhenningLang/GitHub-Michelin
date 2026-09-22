@@ -44,6 +44,10 @@ REPO_INDEX_PATH = "reports/repo-page-index.csv"
 UNINDEXED_PATH = "reports/unindexed-project-mentions.csv"
 BACKLOG_PATH = "reports/project-intake-backlog.md"
 NOT_INDEXED_MARKERS = ("未收录", "not indexed")
+# `非仓库` / `not a repo` is a status of its own (schema §2): the alternative is not a repository at
+# all (hosted SaaS, closed app, paid service), so it is out of scope by shape — not backlog debt.
+# This backlog counts only real repositories the index has not added yet.
+NON_REPO_MARKERS = ("非仓库", "not a repository", "not a repo", "non-repo")
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 MIN_PLAIN_SLUG_LENGTH = 7
 BACKLOG_TOP_N = 30
@@ -177,6 +181,8 @@ def scan_mentions(root: Path, pages: list[Page], indexed_slugs: set[str]) -> lis
                 continue
             if not any(marker in cells[1] for marker in NOT_INDEXED_MARKERS):
                 continue
+            if any(marker in cells[1] for marker in NON_REPO_MARKERS):
+                continue
             alternative = cells[0]
             if not alternative:
                 continue
@@ -235,7 +241,10 @@ def render_backlog(mentions: list[Mention]) -> str:
         "",
         "This is a maintainer backlog, not a canonical selection page and not a",
         "claim that a candidate is verified. Alternatives here are named by pages",
-        "as `未收录`; nothing else about them is asserted.",
+        "as `未收录` — meaning a real repository the index has not added yet, which",
+        "is the debt this backlog tracks. Alternatives a page marks `非仓库` /",
+        "`not a repo` (hosted SaaS, closed apps, paid services) are out of scope by",
+        "shape and are deliberately excluded here.",
         "",
         "## Summary",
         "",
