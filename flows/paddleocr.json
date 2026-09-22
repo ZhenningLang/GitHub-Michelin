@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "PaddleOCR does", "zh": "PaddleOCR 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the base OCR package and a compatible inference engine", "zh": "安装基础 OCR 包和兼容的推理引擎", "code": "pip install paddleocr", "component": {"en": "Python environment", "zh": "Python 环境"}},
+    {"lane": "you", "en": "Choose an OCR pipeline, models, input, and target device", "zh": "选择 OCR 产线、模型、输入和目标设备", "component": {"en": "application", "zh": "应用代码"}},
+    {"lane": "them", "en": "Downloads missing official model artifacts or loads your local copies", "zh": "下载缺失的官方模型制品，或加载本地副本", "component": {"en": "PaddleX model loader", "zh": "PaddleX 模型加载器"}},
+    {"lane": "them", "en": "Preprocesses pages, detects regions, and recognizes their content", "zh": "预处理页面，检测区域并识别内容", "component": {"en": "PP-OCR pipeline", "zh": "PP-OCR 产线"}},
+    {"lane": "them", "en": "Returns structured result objects with text, scores, and coordinates", "zh": "返回含文字、分数与坐标的结构化结果对象", "component": {"en": "result objects", "zh": "结果对象"}}
+  ],
+  "value": {"en": "Images and PDFs become application-ready OCR results under your own deployment", "zh": "图片和 PDF 在自有部署中变成可供应用消费的 OCR 结果"},
+  "sources": [
+    "README.md: Key Features and Quick Start",
+    "docs/version3.x/installation.en.md: install paddleocr, optional dependency groups, and inference engines",
+    "docs/version3.x/pipeline_usage/OCR.en.md: pipeline modules, environment preparation, CLI and Python integration"
+  ]
+}

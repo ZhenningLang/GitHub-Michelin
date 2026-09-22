@@ -169,12 +169,32 @@ carries it while claiming `last_verified >= 2026-09-22` fails the gate as
 `intake-stub-page-reverified` (`OSS_ATLAS_STUB_BLOCKED_FROM` moves the date). Rewrite with
 `sync-entry`.
 
+**Prose nobody earned is a defect, and it is caught two ways.** A phrase blacklist only ever
+catches boilerplate someone already wrote, so there are two checks that do not depend on wording:
+
+- `lint.py` **ERRORs** on `<!-- oss-atlas:unresearched -->`. The batch generators
+  (`tools/intake_queue_apply.py`, `tools/agent_skills_intake.py`) now emit that marker for the
+  sections they cannot fill — `When to use`, `When NOT to use`, `Dependencies`, `Ops difficulty` —
+  instead of writing plausible prose over the hole. A scaffolded page therefore cannot merge until
+  someone reads the sources. Do not delete the marker without writing the section: that is claiming
+  research that did not happen.
+- `quality_scan.py` reports `duplicated-section-prose` when a judgment section is near-identical to
+  the same section on another page — prose written without reading *this* project says the same
+  thing about every project, whatever words it uses. Thresholds are per section and per language,
+  each set above what researched pages actually reach (`tools/quality_scan.py`, `DUP_SECTIONS`);
+  `OSS_ATLAS_DUP_THRESHOLD_SCALE` tightens or loosens them together. Report-only for the existing
+  backlog, gated as `duplicated-section-prose-reverified` once the page claims a fresh
+  `last_verified` — the same cutoff as the intake stubs.
+
+Neither catches a *single* page of fluent, project-agnostic prose; that still needs a reader.
+
 **Neither gate is a *semantic* review.** `lint.py` enforces shape: frontmatter keys, bilingual pair
 + frontmatter parity, required/forbidden sections per `type`, H1, links, the Caveats ledger, fanout.
 `quality_scan.py --fail-on-gated` fails only on its **gated** deterministic categories
 (`generic-comparison-template`, `indexed-page-marked-non-repo`, `indexed-page-marked-not-indexed`,
 `composite-alternative-partly-indexed`, `truncation-fragment`, `zh-link-to-english-sibling`,
-`intake-stub-page-reverified`); run it without the flag for the full report-only triage. Neither can judge whether `When to use` is a real
+`intake-stub-page-reverified`, `duplicated-section-prose-reverified`); run it without the flag for
+the full report-only triage. Neither can judge whether `When to use` is a real
 trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
 run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.
 

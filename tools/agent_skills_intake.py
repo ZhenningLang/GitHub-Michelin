@@ -292,34 +292,27 @@ def page_en(item: dict, sha: str) -> str:
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect upstream manifests and docs before production use.
-- **External services:** not exhaustively verified; check whether it needs API keys, data vendors, browsers, model providers, GPUs, databases, or queues.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## Ops difficulty
 
-**Unknown to medium until deeper review.** Treat this page as an intake-backed starting point, not a full runbook. Library-style projects may be easy to try but still need version pinning, while apps/frameworks can hide data, service, and deployment requirements.
-"""
-    return frontmatter(item, sha) + f"""
-# {name}
-
-{desc}
-
-{card_line(item, False)}
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## When to use
 
-You're evaluating a task in the `{item['suggested_category']}` area and want a real repository in the oss-atlas shortlist rather than an untracked name from a backlog. Reach for {name} when the upstream description matches the job, when its license and maintenance profile are acceptable after verification, and when adopting a public project is preferable to writing a local one-off.
-
-This is a first-pass intake page for a user-requested backlog item. Use it to route selection and compare nearby options, then reread the upstream README, license, examples, and release history before relying on it for high-stakes work.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## When NOT to use
 
-- **You need a deeply reviewed atlas page today.** Prefer an older in-index page from the comparison table until this entry has had a full semantic review.
-- **License is a hard constraint.** GitHub reported `{gh.get('license') or 'NOASSERTION'}`; inspect the repository license files before commercial use, redistribution, or vendoring.
-- **Maintenance risk is unacceptable.** If the project is young, single-maintainer, low-star, unversioned, or quiet, choose a more established substitute in the same category.
-- **Your task needs a narrower substitute.** If another page's `When NOT to use` section names your exact constraint, prefer that page over this first-pass entry.
-- **You cannot verify the upstream workflow.** Do not install, run, or vendor this repo before checking its README, scripts, dependencies, and any external API requirements.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## Comparison
 
@@ -357,34 +350,23 @@ def page_zh(item: dict, sha: str) -> str:
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单和文档。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要 API key、数据供应商、浏览器、模型供应商、GPU、数据库或队列。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 运维难度
 
-**深度复核前按未知到中等处理。** 请把本页当作有 intake 依据的起点，而不是完整 runbook。library 可能容易试用但仍要 pin 版本；app / framework 可能隐藏数据、服务和部署要求。
-"""
-    return frontmatter(item, sha) + f"""
-# {name}
-
-{desc}
-
-{card_line(item, True)}
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 何时使用
 
-你正在评估 `{item['suggested_category']}` 方向的任务，需要把一个真实仓库纳入 oss-atlas 候选，而不是只在 backlog 里看到一个名字。当上游描述贴合任务、许可证和维护画像经核验后可接受，并且采用公共项目比自写一次性方案更合适时，可以把 {name} 纳入候选。
-
-这是用户指定 backlog 的首版 intake 页面。用它来完成路由和邻近方案对比；在高风险场景依赖它之前，请重新阅读上游 README、许可证、示例和 release 历史。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 何时不用
 
-- **你今天就需要深度审过的 atlas 页面。** 在本页完成完整语义复核前，优先选横向对比表里更早收录、约束更清楚的页面。
-- **许可证是硬约束。** GitHub 返回 `{gh.get('license') or 'NOASSERTION'}`；商用、再分发或 vendoring 前必须检查仓库内许可证文件。
-- **维护风险不可接受。** 如果项目很年轻、单人维护、star 少、没有版本线或长期安静，请选同分类里更成熟的替代品。
-- **你的任务需要更窄的替代品。** 如果另一个页面的“何时不用”已经点名你的约束，优先用那个页面，而不是这个首版入口。
-- **你无法核验上游工作流。** 在检查 README、脚本、依赖和外部 API 要求前，不要安装、运行或 vendor 这个仓库。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 横向对比
 

@@ -219,7 +219,6 @@ Custom voice guide,categories/agent-skills/context-engineering/soul-md.md,,no
 Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
-D2,categories/diagramming/mermaid.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
 Datadog / Grafana Cloud,categories/observability/grafana.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
@@ -254,7 +253,7 @@ Docker / containerd,categories/sandboxing/microsandbox.md,,no
 Docker `docker build --squash` / layer flattening,categories/dev-utilities/ops-infra/slim.md,,no
 DockerSlim (predecessor),categories/dev-utilities/ops-infra/slim.md,,no
 Docspell,categories/document-management/paperless-ngx.md,,no
-docTR,categories/ocr/tesseract.md,,no
+docTR,categories/ocr/easyocr.md,,no
 Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
@@ -263,7 +262,6 @@ DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (dev sandboxes),categories/web-automation/agent-browser-tools/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
-EasyOCR,categories/ocr/tesseract.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
@@ -340,8 +338,8 @@ GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-review-graph.md,,no
+Graphviz,categories/diagramming/INDEX.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no
-Graphviz / PlantUML / D2,categories/diagramming/INDEX.md,,no
 Graphviz / Viz.js,categories/diagramming/flowchart-js.md,,no
 GRASS GIS,categories/geospatial/qgis.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
@@ -350,6 +348,7 @@ gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
 "gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
+Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 Gurobi / FICO Xpress,categories/optimization-solvers/highs.md,,no
@@ -583,10 +582,9 @@ osint.industries,categories/osint/ghunt.md,,no
 OSWorld / WebArena (benchmarks),categories/web-automation/agent-browser-tools/cua.md,,no
 Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wxappunpacker.md,,no
+Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
 PaddleNLP / ERNIE,categories/ml-research/senta.md,,no
-PaddleOCR,categories/ocr/laravel-ocr.md,,no
-PaddleOCR / EasyOCR / TrOCR / Cloud Vision / Textract,categories/ocr/INDEX.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
 paid residential proxies,categories/proxy-pool/INDEX.md,,no
@@ -619,7 +617,6 @@ Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
 plain PyTorch (+ Triton),categories/llm-inference/serving-engines/modular.md,,no
 Plain tmux + `git worktree` scripts,categories/agent-tooling/agent-orchestrator.md,,no
 plain vector DB (pgvector / Chroma),categories/agent-memory/memori.md,,no
-PlantUML,categories/diagramming/flowchart-js.md,,no
 Platform retention (MWAA/Composer settings),categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Platypus,categories/ml-research/pymoo.md,,no
 pnpm / Yarn,categories/dev-utilities/editors-and-runtimes/bun.md,,no
@@ -787,7 +784,7 @@ tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
 Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
-TrOCR,categories/ocr/tesseract.md,,no
+TrOCR,categories/ocr/INDEX.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Tushare,categories/web-scraping/crawling-tools/gopup.md,,no
 Tyk,categories/api-gateway/apisix.md,,no

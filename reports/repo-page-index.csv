@@ -49,6 +49,7 @@ https://github.com/ImageMagick/ImageMagick,imagemagick,image-processing,categori
 https://github.com/InternLM/lmdeploy,lmdeploy,serving-engines,categories/llm-inference/serving-engines/lmdeploy.md
 https://github.com/ItzCrazyKns/Vane,vane,deep-research,categories/deep-research/vane.md
 https://github.com/JCodesMore/ai-website-cloner-template,ai-website-cloner-template,design,categories/agent-skills/design/ai-website-cloner-template.md
+https://github.com/JaidedAI/EasyOCR,easyocr,ocr,categories/ocr/easyocr.md
 https://github.com/JetBrains/ideavim,ideavim,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/ideavim.md
 https://github.com/JimLiu/baoyu-skills,baoyu-skills,content-production,categories/agent-skills/writing/content-production/baoyu-skills.md
 https://github.com/JonB32/pure-agentic,pure-agentic,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/pure-agentic.md
@@ -87,6 +88,7 @@ https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,catego
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
 https://github.com/OthmanAdi/planning-with-files,planning-with-files,agent-tooling,categories/agent-tooling/planning-with-files.md
 https://github.com/Owl-Listener/designer-skills,designer-skills,design,categories/agent-skills/design/designer-skills.md
+https://github.com/PaddlePaddle/PaddleOCR,paddleocr,ocr,categories/ocr/paddleocr.md
 https://github.com/Panniantong/Agent-Reach,agent-reach,deep-research,categories/deep-research/agent-reach.md
 https://github.com/PenglongHuang/chinese-novelist-skill,chinese-novelist-skill,fiction,categories/agent-skills/writing/fiction/chinese-novelist-skill.md
 https://github.com/PixlOne/logiops,logiops,peripherals,categories/peripherals/logiops.md
@@ -213,6 +215,7 @@ https://github.com/constverum/ProxyBroker,proxybroker,proxy-pool,categories/prox
 https://github.com/coreyhaines31/marketingskills,marketingskills,marketing-seo,categories/agent-skills/writing/marketing-seo/marketingskills.md
 https://github.com/crewAIInc/crewAI,crewai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/crewai.md
 https://github.com/cython/cython,cython,python-tooling,categories/python-tooling/cython.md
+https://github.com/d2lang/d2,d2,diagramming,categories/diagramming/d2.md
 https://github.com/dagster-io/dagster,dagster,workflow-orchestration,categories/workflow-orchestration/dagster.md
 https://github.com/dair-ai/Prompt-Engineering-Guide,prompt-engineering-guide,prompt-engineering,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md
 https://github.com/dani-garcia/vaultwarden,vaultwarden,ops-infra,categories/dev-utilities/ops-infra/vaultwarden.md
@@ -406,6 +409,7 @@ https://github.com/minio/minio,minio,object-storage,categories/object-storage/mi
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md
 https://github.com/mksglu/context-mode,context-mode,agent-tooling,categories/agent-tooling/context-mode.md
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
+https://github.com/mlc-ai/xgrammar,xgrammar,structured-generation,categories/llm-inference/structured-generation/xgrammar.md
 https://github.com/mltframework/mlt,mlt,video-audio,categories/media-processing/video-audio/mlt.md
 https://github.com/modal-labs/modal-client,modal-client,sandboxing,categories/sandboxing/modal-client.md
 https://github.com/modular/modular,modular,serving-engines,categories/llm-inference/serving-engines/modular.md
@@ -460,6 +464,7 @@ https://github.com/pezzolabs/pezzo,pezzo,llm-eval,categories/llm-eval/pezzo.md
 https://github.com/pgsty/silo,silo,object-storage,categories/object-storage/silo.md
 https://github.com/pingdotgg/t3code,t3code,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md
 https://github.com/pk910/PoWFaucet,powfaucet,blockchain-dev-infrastructure,categories/blockchain-dev-infrastructure/powfaucet.md
+https://github.com/plantuml/plantuml,plantuml,diagramming,categories/diagramming/plantuml.md
 https://github.com/praw-dev/praw,praw,crawling-tools,categories/web-scraping/crawling-tools/praw.md
 https://github.com/prometheus/prometheus,prometheus,observability,categories/observability/prometheus.md
 https://github.com/promptfoo/promptfoo,promptfoo,llm-eval,categories/llm-eval/promptfoo.md

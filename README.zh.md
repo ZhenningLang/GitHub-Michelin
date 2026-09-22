@@ -540,6 +540,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Tesseract** | 当你需要离线、可嵌入、覆盖 100+ 语言、面向清晰印刷文本的 OCR 时用它——不适合野外照片或手写。 | Apache-2.0 | A（5/6） | [中](categories/ocr/tesseract.zh.md) · [EN](categories/ocr/tesseract.md) |
 | **LaTeX-OCR (pix2tex)** | 当你要把数学公式图片转成 LaTeX（pix2tex）时用它——只管公式、已放缓，VLM 可能更强。 | MIT | C（3/6） | [中](categories/ocr/latex-ocr.zh.md) · [EN](categories/ocr/latex-ocr.md) |
 | **Laravel OCR** | 当 Laravel 应用需要统一接入本地与云 OCR，并用模板抽取字段时用它——PDF／版面处理较浅，仓库也缺少许可证文件。 | NOASSERTION | D（5/6） | [中](categories/ocr/laravel-ocr.zh.md) · [EN](categories/ocr/laravel-ocr.md) |
+| **PaddleOCR** | 当杂乱输入需要现代 detection+recognition、中日韩强项或表格／版式结构，而你能背负 PaddleX、推理引擎与模型下载时用它。 | Apache-2.0 | A（5/6） | [中](categories/ocr/paddleocr.zh.md) · [EN](categories/ocr/paddleocr.md) |
+| **EasyOCR** | 当 PyTorch OCR 栈加不错的场景文字默认效果比自己搭预处理更省事时用它——项目最近一次实质发版是 2024-09。 | Apache-2.0 | B（5/6） | [中](categories/ocr/easyocr.zh.md) · [EN](categories/ocr/easyocr.md) |
 
 ### document-parsing
 
@@ -574,6 +576,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **bpmn-js** | 当业务分析师需要在你的 Web 应用里编辑或查看合规的 BPMN 2.0 流程图时用它——但其许可证强制保留不可移除的 bpmn.io 水印，白标前务必先确认条款。 | MIT + bpmn.io watermark clause | A（5/6） | [中](categories/diagramming/bpmn-js.zh.md) · [EN](categories/diagramming/bpmn-js.md) |
 | **Excalidraw** | 手绘风格的虚拟白板，支持协作和端到端加密——但存为 JSON 而非纯文本，不能在 Git 里 diff。 | MIT | A（6/6） | [中](categories/diagramming/excalidraw.zh.md) · [EN](categories/diagramming/excalidraw.md) |
 | **draw.io** | 完整的所见即所得绘图应用，`.drawio` 文件是纯文本 mxGraph XML：官方云／UML／BPMN 形状库、可离线运行的桌面版，文件还能进 Git diff。 | Apache-2.0（图标／stencil 另有附加限制） | B（6/6） | [中](categories/diagramming/drawio.zh.md) · [EN](categories/diagramming/drawio.md) |
+| **D2** | 当版本化的文本图要在 CI 里用你指定的布局引擎渲染时用它——MPL-2.0 是文件级 copyleft，而且没有宿主平台替你渲染。 | MPL-2.0 | B（5/6） | [中](categories/diagramming/d2.zh.md) · [EN](categories/diagramming/d2.md) |
+| **PlantUML** | 当 DSL 必须覆盖多种 UML 与非 UML 图型、且能接受 Java 或服务端渲染时用它——再分发前先看 `LICENSES.md`。 | LGPL-3.0 | B（6/6） | [中](categories/diagramming/plantuml.zh.md) · [EN](categories/diagramming/plantuml.md) |
 ### media-download
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
@@ -704,6 +708,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **LMDeploy** | LMDeploy is a toolkit for compressing, deploying, and serving LLMs. | Apache-2.0 | A（6/6） | [EN](categories/llm-inference/serving-engines/lmdeploy.md) · [中](categories/llm-inference/serving-engines/lmdeploy.zh.md) |
 | **Text Generation Inference (TGI)** | 只把它当模式参考或用于已 pin 住的既有部署，因为仓库已归档——要维护中的服务端选 vLLM 或 SGLang，要本地用选 llama.cpp 或 Ollama。 | Apache-2.0 | C（6/6） | [EN](categories/llm-inference/serving-engines/text-generation-inference.md) · [中](categories/llm-inference/serving-engines/text-generation-inference.zh.md) |
 | **Magnitude** | 当机器能力未知、你要下载前的速度与内存估算加一键接入已有 coding harness 时用它——接受一个两个月大、单厂商所有、且在 Apple Silicon 上报告比 llama.cpp 慢约 6 倍的仓库。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/magnitude.md) · [中](categories/llm-inference/local-runtimes/magnitude.zh.md) |
+| **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 
 ### task-queue
 

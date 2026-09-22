@@ -96,7 +96,7 @@ It's a good fit when the diagrams are *simple and few* — onboarding flows, a s
 | [Mermaid](mermaid.md) | ✅ | Pick Mermaid when you need broad Markdown-native text diagrams, not just flowcharts. | Far broader (flowchart, sequence, class, state, gantt, ER...), Markdown-native, actively developed and themed; heavier and its own syntax, but the de-facto standard for text-to-diagram today. |
 | [bpmn-js](bpmn-js.md) | ✅ | Pick bpmn-js when you need full BPMN 2.0 modeling and interactive editing in the browser. | Full BPMN 2.0 modeling + interactive editing in-browser; a standards-based process modeler, not a lightweight text-to-SVG renderer — much larger scope and footprint. |
 | Graphviz / Viz.js | 未收录 | Pick Graphviz/Viz.js when strong automatic layout for arbitrary node-link graphs matters more than flowchart-shaped semantics. | DOT language with strong automatic graph layout for arbitrary node-link graphs; better layout engine, less flowchart-shaped semantics and styling. |
-| PlantUML | 未收录 | Pick PlantUML when the DSL must cover many UML and flowchart types and server/Java rendering is acceptable. | Text DSL covering many UML + flowchart types, usually server/Java-rendered; richer diagram catalog but not a browser-native JS library. |
+| [PlantUML](plantuml.md) | ✅ | Pick PlantUML when the DSL must cover many UML and flowchart types and server/Java rendering is acceptable. | Text DSL covering many UML + flowchart types, usually server/Java-rendered; richer diagram catalog but not a browser-native JS library. |
 
 ## Tech stack
 

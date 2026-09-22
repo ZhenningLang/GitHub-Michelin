@@ -203,16 +203,15 @@ def page_en(item: dict, sha: str, cat_dir: Path) -> str:
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `{Path(item['category_path']).name}` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for {item['name']} when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
-
-This first-pass page exists because {item['name']} was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on {item['name']}.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## Comparison
 
@@ -227,13 +226,15 @@ This first-pass page exists because {item['name']} was repeatedly useful as a co
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
 ## Health & viability
 
@@ -263,16 +264,13 @@ def page_zh(item: dict, sha: str, cat_dir: Path) -> str:
 
 ## 何时使用
 
-你正在为一个落在 `{Path(item['category_path']).name}` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 {item['name']} 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
-
-这个首版页面存在，是因为 {item['name']} 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 {item['name']}。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 横向对比
 
@@ -287,13 +285,13 @@ def page_zh(item: dict, sha: str, cat_dir: Path) -> str:
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
 ## 健康度与可持续性
 

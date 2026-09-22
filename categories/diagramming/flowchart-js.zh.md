@@ -96,7 +96,7 @@ health:
 | [Mermaid](mermaid.zh.md) | ✅ | 需要广泛的 Markdown 原生文本图，而不只是流程图时，选 Mermaid。 | 范围广得多（flowchart、sequence、class、state、gantt、ER……），Markdown 原生，开发与主题化都活跃；更重、有自己的语法，但已是当下文本转图的事实标准。 |
 | [bpmn-js](bpmn-js.zh.md) | ✅ | 需要浏览器内完整 BPMN 2.0 建模和交互编辑时，选 bpmn-js。 | 浏览器内完整的 BPMN 2.0 建模 + 交互式编辑；一个基于标准的流程建模器，而非轻量文本转 SVG 渲染器——范围与体积都大得多。 |
 | Graphviz / Viz.js | 未收录 | 任意节点-连线图的强自动布局比流程图语义更重要时，选 Graphviz/Viz.js。 | DOT 语言，对任意节点-连线图有强自动布局；布局引擎更好，但流程图语义和样式更弱。 |
-| PlantUML | 未收录 | DSL 必须覆盖多种 UML 和流程图，且可以接受服务端/Java 渲染时，选 PlantUML。 | 覆盖多种 UML + 流程图类型的文本 DSL，通常服务端/Java 渲染；图目录更丰富，但不是浏览器原生的 JS 库。 |
+| [PlantUML](plantuml.zh.md) | ✅ | DSL 必须覆盖多种 UML 和流程图，且可以接受服务端/Java 渲染时，选 PlantUML。 | 覆盖多种 UML + 流程图类型的文本 DSL，通常服务端/Java 渲染；图目录更丰富，但不是浏览器原生的 JS 库。 |
 
 ## 技术栈
 

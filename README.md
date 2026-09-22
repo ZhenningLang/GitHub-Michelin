@@ -543,6 +543,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Tesseract** | Use it when you need offline, embeddable OCR over clean printed text in 100+ languages — not wild photos or handwriting. | Apache-2.0 | A (5/6) | [EN](categories/ocr/tesseract.md) · [中](categories/ocr/tesseract.zh.md) |
 | **LaTeX-OCR (pix2tex)** | Use it when you must convert images of math equations into LaTeX (pix2tex) — equations only, idle/coasting, and VLMs may beat it. | MIT | C (3/6) | [EN](categories/ocr/latex-ocr.md) · [中](categories/ocr/latex-ocr.zh.md) |
 | **Laravel OCR** | Use it when a Laravel app needs one wrapper for local and cloud OCR plus template field extraction — PDF/layout handling is shallow and the repo lacks a license file. | NOASSERTION | D (5/6) | [EN](categories/ocr/laravel-ocr.md) · [中](categories/ocr/laravel-ocr.zh.md) |
+| **PaddleOCR** | Use it when messy input needs modern detection-plus-recognition, CJK strength, or layout/table structure — and you can carry PaddleX, inference engines and model downloads. | Apache-2.0 | A (5/6) | [EN](categories/ocr/paddleocr.md) · [中](categories/ocr/paddleocr.zh.md) |
+| **EasyOCR** | Use it when a PyTorch OCR stack with good scene-text defaults beats building preprocessing yourself — the project's last real release was 2024-09. | Apache-2.0 | B (5/6) | [EN](categories/ocr/easyocr.md) · [中](categories/ocr/easyocr.zh.md) |
 
 ### document-parsing
 
@@ -577,6 +579,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **bpmn-js** | Use it when business analysts must author or view standards-correct BPMN 2.0 diagrams inside your web app — but its license mandates a non-removable bpmn.io watermark, so confirm terms before white-labeling. | MIT + bpmn.io watermark clause | A (5/6) | [EN](categories/diagramming/bpmn-js.md) · [中](categories/diagramming/bpmn-js.zh.md) |
 | **Excalidraw** | A virtual whiteboard for sketching hand-drawn style diagrams — collaborative and end-to-end encrypted, but stores JSON not plain text, so it is not diffable in Git. | MIT | A (6/6) | [EN](categories/diagramming/excalidraw.md) · [中](categories/diagramming/excalidraw.zh.md) |
 | **draw.io** | A full WYSIWYG diagramming application whose `.drawio` files are plain-text mxGraph XML: official cloud/UML/BPMN shape libraries, offline desktop app, and a file that diffs in Git. | Apache-2.0 (icons/stencils carry an extra restriction) | B (6/6) | [EN](categories/diagramming/drawio.md) · [中](categories/diagramming/drawio.zh.md) |
+| **D2** | Use it when a versioned text diagram should render in CI with a layout engine you choose — MPL-2.0 is file-level copyleft, and no host platform renders it for you. | MPL-2.0 | B (5/6) | [EN](categories/diagramming/d2.md) · [中](categories/diagramming/d2.zh.md) |
+| **PlantUML** | Use it when the DSL must cover many UML and non-UML diagram types and Java or server-side rendering is acceptable — check `LICENSES.md` before redistributing. | LGPL-3.0 | B (6/6) | [EN](categories/diagramming/plantuml.md) · [中](categories/diagramming/plantuml.zh.md) |
 ### media-download
 
 | Project | Use when | License | Health | Page |
@@ -707,6 +711,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **LMDeploy** | LMDeploy is a toolkit for compressing, deploying, and serving LLMs. | Apache-2.0 | A (6/6) | [EN](categories/llm-inference/serving-engines/lmdeploy.md) · [中](categories/llm-inference/serving-engines/lmdeploy.zh.md) |
 | **Text Generation Inference (TGI)** | Use it only as a pattern source or for an existing pinned deployment, because the repository is archived — for maintained serving pick vLLM or SGLang, and for local use pick llama.cpp or Ollama. | Apache-2.0 | C (6/6) | [EN](categories/llm-inference/serving-engines/text-generation-inference.md) · [中](categories/llm-inference/serving-engines/text-generation-inference.zh.md) |
 | **Magnitude** | Use it when the machine's capability is unknown and you want a pre-download speed/memory estimate plus one-click wiring into an existing coding harness — accepting a two-month-old single-vendor repo that reports ~6x slower than llama.cpp on Apple Silicon. | Apache-2.0 | B (6/6) | [EN](categories/llm-inference/local-runtimes/magnitude.md) · [中](categories/llm-inference/local-runtimes/magnitude.zh.md) |
+| **XGrammar** | Use it when you control the model's logits and must guarantee parseable output — a JSON Schema, regex, grammar, or tool call — with the tightest mask latency; skip it if you only call a hosted API or already serve on an engine that embeds it. | Apache-2.0 | B (6/6) | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 
 ### task-queue
 
