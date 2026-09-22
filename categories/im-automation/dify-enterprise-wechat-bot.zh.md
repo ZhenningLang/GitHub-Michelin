@@ -85,8 +85,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Dify-on-WeChat | 未收录 | 需要源码可检查的 Dify 到微信桥接时，先评估 Dify-on-WeChat；只有必须复用本项目精确的 Windows 企业微信 helper 流程时，才选本项目。 | Dify-on-WeChat 使用不同的通道和部署面，仍需审查平台风险；本项目更贴近桌面客户端，却包含闭源 helper。 |
-| Wechaty | 未收录 | 需要可复用、跨平台的消息 bot framework 时，选 Wechaty；只有固定 Windows 企业微信与 Dify 集成命中任务时，才选本项目。 | Wechaty 要自行实现 Dify adapter，并承担 puppet 风险；本应用提供更窄的现成流程，代价是绑定固定客户端版本。 |
+| [Dify-on-WeChat](dify-on-wechat.zh.md) | ✅ | 需要源码可检查的 Dify 到微信桥接时，先评估 Dify-on-WeChat；只有必须复用本项目精确的 Windows 企业微信 helper 流程时，才选本项目。 | Dify-on-WeChat 使用不同的通道和部署面，仍需审查平台风险；本项目更贴近桌面客户端，却包含闭源 helper。 |
+| [Wechaty](wechaty.zh.md) | ✅ | 需要可复用、跨平台的消息 bot framework 时，选 Wechaty；只有固定 Windows 企业微信与 Dify 集成命中任务时，才选本项目。 | Wechaty 要自行实现 Dify adapter，并承担 puppet 风险；本应用提供更窄的现成流程，代价是绑定固定客户端版本。 |
 | [n8n](../workflow-orchestration/n8n.zh.md) | 已收录 | 需要围绕官方企业微信事件和 Dify API 建立可审查 workflow 时，选 n8n；只有桌面客户端自动化是不可回避的兼容需求时，才选本项目。 | n8n 增加 workflow 服务和显式 adapter 工作，但不依赖闭源桌面 helper；本项目起步更窄，也继承客户端版本脆弱性。 |
 | [Dify](../agent-frameworks/workflow-builders/dify.zh.md) | 已收录 | 需要仍维护的 AI 应用和 Workflow 后端时，选 Dify 并连接受支持的消息 adapter；本项目只适合作为 Windows 特定客户端桥。 | Dify 是后端，不是企业微信机器人，仍需集成工作；本仓库提供桥接，却留下未完成 Workflow 和二进制信任问题。 |
 

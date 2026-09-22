@@ -16,6 +16,11 @@
 | **ChatGPT-wechat-bot** | 只把它当作 2022 至 2023 年的精简 Wechaty／ChatGPT 参考；项目已停更、模型路径陈旧，个人微信号仍承担非官方 puppet 风险。 | D（3/6） | [→](chatgpt-wechat-bot.zh.md) |
 | **OpeniLink Hub** | 当多个接入 iLink 的微信 Bot 需要自托管控制面、持久化、trace 和 App 时用它；项目很年轻，并明确声明与 iLink 官方团队没有关联或背书。 | B（5/6） | [→](openilink-hub.zh.md) |
 | **Dify Enterprise WeChat Bot** | 只用于固定企业微信客户端版本的隔离 Windows 原型；消息链路含闭源二进制，Workflow 支持未完成，项目也已停滞。 | C（3/6） | [→](dify-enterprise-wechat-bot.zh.md) |
+| **Wechaty** | 当你想用 TS／Python／Go／Java 自己掌控个人号机器人的 adapter 与命令层时用它——先确认各 provider 的现状，并接受 puppet 风险。 | C（5/6） | [→](wechaty.zh.md) |
+| **CowAgent** | 当你要 Python-first、多通道、模型后端可插拔的助手时用它；它就是更名后的 `zhayujie/chatgpt-on-wechat`，当前通道走 iLink，而不是已被删除的个人号路径。 | A（5/6） | [→](cowagent.zh.md) |
+| **WeChatFerry** | 不要部署——维护者已归档仓库，发版钉在旧版 Windows 微信上，整套方案是客户端注入；只适合受控的遗留复现。 | D（5/6） | [→](wechatferry.zh.md) |
+| **Dify on WeChat** | 当 Dify 到微信的桥接必须端到端可源码审查时用它；但要权衡它自 2025-04 起没有代码变更，且仍承担个人号通道风险。 | B（3/6） | [→](dify-on-wechat.zh.md) |
+| **OpeniLink Go SDK** | 当你需要把原始 iLink 传输层嵌进现有 Go 服务，并愿意用最小信任边界换掉控制面时用它；持久化、认证、重试与运维随后都由你承担。 | C（4/6） | [→](openilink-sdk-go.zh.md) |
 
 ## 对比矩阵
 
@@ -30,7 +35,12 @@
 | [ChatGPT-wechat-bot](chatgpt-wechat-bot.zh.md) | ✅ | D（3/6） | 小型历史 Wechaty／ChatGPT 示例，已经停更，仍依赖不受支持的个人号通道。 |
 | [OpeniLink Hub](openilink-hub.zh.md) | ✅ | B（5/6） | 带持久化、trace 和 App 的年轻多 Bot 控制面，但没有 iLink 官方关联或背书。 |
 | [Dify Enterprise WeChat Bot](dify-enterprise-wechat-bot.zh.md) | ✅ | C（3/6） | 固定版本 Windows 企业微信到 Dify 的桥接，helper 为闭源二进制，Workflow 通道也未完成。 |
-| Wechaty / 企业微信官方 API / CowAgent / WeChatFerry / Dify-on-WeChat / OpeniLink SDK | 未收录 | — | 各页提到的 framework、官方通道、客户端注入与专用 SDK 替代方案。 |
+| [Wechaty](wechaty.zh.md) | ✅ | C（5/6） | 许多个人号机器人背后的多语言可复用框架：想自己掌控 adapter 与状态就选它，但押注某条通道前先看它的 provider 现状。 |
+| [CowAgent](cowagent.zh.md) | ✅ | A（5/6） | `zhayujie/chatgpt-on-wechat` 更名后的同一血缘，现为多通道助手、支持多种模型后端——仓库没变，别把旧名字当成另一个项目。 |
+| [WeChatFerry](wechatferry.zh.md) | ✅ | D（5/6） | 已归档的 Windows 客户端注入 + RPC 钩子：只作参考或受控的遗留复现，维护者已停更，发版也钉在旧版微信上。 |
+| [Dify-on-WeChat](dify-on-wechat.zh.md) | ✅ | B（3/6） | 源码可审查的 Dify 到微信桥接，值得优先于闭源 helper 方案评估——但要按「正在漂移」读：2025-04 之后没有代码变更。 |
+| [OpeniLink SDK (Go)](openilink-sdk-go.zh.md) | ✅ | C（4/6） | 已收录 Hub 之下的 Go 版原始 iLink 传输层：信任边界最小，但持久化、认证、重试与运维都要自己扛。 |
+| 企业微信官方 API | 非仓库 | — | 腾讯托管的 WeCom 服务端 API：没有仓库，是必须规避个人号 puppet 风险时的官方通道路线。 |
 
 ## 什么该放这里
 

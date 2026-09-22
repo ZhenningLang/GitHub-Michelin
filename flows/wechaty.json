@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Wechaty does",
+    "zh": "Wechaty 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the framework and select a compatible Puppet provider",
+      "zh": "安装 framework，并选择兼容的 Puppet provider",
+      "code": "npm install wechaty",
+      "component": {
+        "en": "bot project",
+        "zh": "bot 项目"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Loads that Puppet behind the normalized messaging API",
+      "zh": "把该 Puppet 接到归一化消息 API 后面",
+      "component": {
+        "en": "Puppet layer",
+        "zh": "Puppet 层"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Register handlers for scan, login, and incoming messages",
+      "zh": "为扫码、登录与收到消息注册 handler",
+      "code": ".on('message',",
+      "component": {
+        "en": "bot code",
+        "zh": "bot code"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Logs in through the provider and emits platform events as common objects",
+      "zh": "经 provider 登录，把平台 event 发成通用 object",
+      "component": {
+        "en": "Wechaty runtime",
+        "zh": "Wechaty runtime"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Handle the message and send a reply through the same API",
+      "zh": "处理消息，再通过同一 API 回复",
+      "code": "msg.say('dong')",
+      "component": {
+        "en": "message handler",
+        "zh": "消息 handler"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your bot logic stays above provider-specific IM protocols",
+    "zh": "bot 逻辑不再直接绑定某一种 IM provider 协议"
+  },
+  "sources": [
+    "wechaty/wechaty README.md — World's Shortest ChatBot Code, Getting Started, and Switch Protocol (Puppet)",
+    "wechaty/wechaty examples/ding-dong-bot.ts — WechatyBuilder, event handlers, and msg.say reply"
+  ]
+}

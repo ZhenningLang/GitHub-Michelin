@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "WeChatFerry does", "zh": "WeChatFerry 做的"},
+  "steps": [
+    {"lane": "you", "en": "Freeze an isolated Windows lab on the matching WeChat client", "zh": "把隔离的 Windows 实验环境固定在配套微信版本", "code": "WeChat 3.9.12.51"},
+    {"lane": "you", "en": "Install the matching Python client package", "zh": "安装配套 Python 客户端包", "code": "pip install --upgrade wcferry"},
+    {"lane": "you", "en": "Create the local client and enable incoming messages", "zh": "创建本地客户端并开启消息接收", "code": "Wcf(debug=True) · enable_receiving_msg()"},
+    {"lane": "them", "en": "Injects its spy DLL into WeChat and starts local RPC", "zh": "把 spy DLL 注入微信并启动本地 RPC", "component": {"en": "sdk.dll + spy.dll", "zh": "sdk.dll 与 spy.dll"}},
+    {"lane": "them", "en": "Bridges client-internal messages and commands to the Python queue", "zh": "把客户端内部消息和命令桥接到 Python 队列", "component": {"en": "NNG RPC bridge", "zh": "NNG RPC 桥"}},
+    {"lane": "you", "en": "Consume messages or send a controlled test command", "zh": "消费消息或发送受控测试命令", "code": "get_msg() · send_text()"}
+  ],
+  "value": {"en": "You can inspect the frozen desktop-hook architecture without rebuilding its injection and RPC layers", "zh": "无需重写注入与 RPC 层，就能检查这套冻结的桌面 hook 架构"},
+  "sources": [
+    "https://github.com/lich0821/WeChatFerry/releases/tag/v39.5.2 (WeChat 3.9.12.51 pairing)",
+    "https://github.com/lich0821/WeChatFerry/blob/master/README.MD (pip install --upgrade wcferry)",
+    "https://github.com/lich0821/WeChatFerry/blob/master/clients/python/test.py (Wcf, enable_receiving_msg, get_msg, send_text)",
+    "https://github.com/lich0821/WeChatFerry/blob/master/WeChatFerry/sdk/injector.cpp (remote DLL injection)",
+    "https://github.com/lich0821/WeChatFerry/blob/master/clients/python/wcferry/client.py (local NNG RPC bridge)"
+  ]
+}

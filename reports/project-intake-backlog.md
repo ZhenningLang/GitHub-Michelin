@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 843
+- Named-but-unindexed alternatives: 842
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -38,17 +38,17 @@ shape and are deliberately excluded here.
 | `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
 | `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
+| `lich0821/wcfLink` | `categories/im-automation/wechatferry.md` |
 | `MEMORY USAGE` / `MEMORY DOCTOR` | `categories/databases/database-clients/rdr.md` |
-| `openilink-sdk-go` | `categories/im-automation/openilink-hub.md` |
+| `openilink-sdk-node` | `categories/im-automation/openilink-sdk-go.md` |
+| `openilink-sdk-php` | `categories/im-automation/openilink-sdk-go.md` |
+| `openilink-sdk-python` | `categories/im-automation/openilink-sdk-go.md` |
 | `openilink-tg` | `categories/im-automation/openilink-hub.md` |
 | `opensearch-py` / opensearch-dsl-py | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
+| `python-wechaty` | `categories/im-automation/wechaty.md` |
 | `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
 | `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
 | `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |
 | `subprocess` + `ssh` | `categories/networking/sshtunnel.md` |
 | `subprocess` + system `ssh` | `categories/networking/paramiko.md` |
 | `tcconfig` (Python) | `categories/networking/wondershaper.md` |
-| `trickle` | `categories/networking/wondershaper.md` |
-| `woff2`/`sfnt2woff` CLIs | `categories/dev-utilities/data-tools/fonttools.md` |
-| `zkCli.sh` (built-in) | `categories/databases/database-clients/prettyzoo.md` |
-| A blocking Lua Redis client (redis-lua) | `categories/nginx-modules/lua-resty-redis.md` |

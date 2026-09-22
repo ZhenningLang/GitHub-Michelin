@@ -289,6 +289,7 @@ https://github.com/grafana/loki,loki,observability,categories/observability/loki
 https://github.com/gsd-build/get-shit-done,get-shit-done,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md
 https://github.com/halloffamer11/USDAD,usdad,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/usdad.md
 https://github.com/handsomestWei/patent-disclosure-skill,patent-disclosure-skill,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md
+https://github.com/hanfangyuan4396/dify-on-wechat,dify-on-wechat,im-automation,categories/im-automation/dify-on-wechat.md
 https://github.com/hardikpandya/stop-slop,stop-slop,de-ai-writing,categories/agent-skills/de-ai-writing/stop-slop.md
 https://github.com/harry0703/MoneyPrinterTurbo,moneyprinter-turbo,video-production,categories/video-production/moneyprinter-turbo.md
 https://github.com/helloianneo/ian-xiaohei-illustrations,ian-illustrations,visual-content,categories/agent-skills/visual-content/ian-illustrations.md
@@ -361,6 +362,7 @@ https://github.com/letta-ai/claude-subconscious,claude-subconscious,agent-memory
 https://github.com/letta-ai/letta,letta,agent-memory,categories/agent-memory/letta.md
 https://github.com/lewislulu/html-ppt-skill,html-ppt-skill,slides-ppt,categories/agent-skills/slides-ppt/html-ppt-skill.md
 https://github.com/lexiforest/curl_cffi,curl-cffi,python-tooling,categories/python-tooling/curl-cffi.md
+https://github.com/lich0821/WeChatFerry,wechatferry,im-automation,categories/im-automation/wechatferry.md
 https://github.com/lijigang/ljg-skills,ljg-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md
 https://github.com/linagora/twake-drive,twake-drive,document-management,categories/document-management/twake-drive.md
 https://github.com/lingfengQAQ/webnovel-writer,webnovel-writer,fiction,categories/agent-skills/writing/fiction/webnovel-writer.md
@@ -449,6 +451,7 @@ https://github.com/openchamber/openchamber,openchamber,orchestration-and-review,
 https://github.com/openclaw/openclaw,openclaw,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md
 https://github.com/openfga/openfga,openfga,auth,categories/auth/openfga.md
 https://github.com/openilink/openilink-hub,openilink-hub,im-automation,categories/im-automation/openilink-hub.md
+https://github.com/openilink/openilink-sdk-go,openilink-sdk-go,im-automation,categories/im-automation/openilink-sdk-go.md
 https://github.com/openinterpreter/open-interpreter,open-interpreter,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
@@ -566,6 +569,7 @@ https://github.com/w0lfschild/Flashlight,flashlight,data-tools,categories/dev-ut
 https://github.com/wangrongding/wechat-bot,wechat-bot,im-automation,categories/im-automation/wechat-bot.md
 https://github.com/wangshub/Douyin-Bot,douyin-bot,im-automation,categories/im-automation/douyin-bot.md
 https://github.com/warpdotdev/warp,warp,terminal-ui,categories/terminal-ui/warp.md
+https://github.com/wechaty/wechaty,wechaty,im-automation,categories/im-automation/wechaty.md
 https://github.com/withastro/astro,astro,frameworks,categories/web-ui/frameworks/astro.md
 https://github.com/withmargin/margin-read,margin-read,reading-tools,categories/reading-tools/margin-read.md
 https://github.com/wizlijun/claude_translater,claude-translater,translation,categories/agent-skills/writing/translation/claude-translater.md
@@ -585,5 +589,6 @@ https://github.com/yuin/goldmark,goldmark,markdown-tools,categories/markdown-too
 https://github.com/zarazhangrui/frontend-slides,frontend-slides,slides-ppt,categories/agent-skills/slides-ppt/frontend-slides.md
 https://github.com/zed-industries/zed,zed,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/zed.md
 https://github.com/zhaoxuya520/reverse-skill,reverse-skill,security,categories/agent-skills/security/reverse-skill.md
+https://github.com/zhayujie/CowAgent,cowagent,im-automation,categories/im-automation/cowagent.md
 https://github.com/zulip/zulip,zulip,team-chat,categories/team-chat/zulip.md
 https://gitlab.freedesktop.org/gstreamer/gstreamer,gstreamer,video-audio,categories/media-processing/video-audio/gstreamer.md
