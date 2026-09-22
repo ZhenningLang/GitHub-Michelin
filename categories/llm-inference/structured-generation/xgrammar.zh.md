@@ -93,7 +93,7 @@ health:
 
 ## 怎么用起来
 
-模型每次只写一个 **token**（一个词或半个词，从固定词表里挑），挑的方式是给词表里每个候选打分，再从高分里抽一个——那些原始分数叫 **logits**，这一抽叫**采样**。XGrammar 就卡在这个缝隙里：每一步它先算出「按你要的结构，哪些 token 写下去仍然合法」，把其余的分数全部抹平再抽——这层过滤叫**掩码**。模型不是写完了被纠正，而是那条错路压根没出现在选项里。打个比方：不是写完作文再批改，而是这个键盘物理上就敲不出病句。你把结构描述一次、把模型的 tokenizer 交给它，它针对这个确切词表预编译出合法 token 集合；这件事对每一对「语法 + 模型」只做一次并缓存，所以重复或共享的 schema 几乎不花代价。运行期它只维护一个很小的书签，记住你走到结构的哪一步：收下刚抽出的 token，交出下一步的掩码，循环往复。你与它的分工很干净——**prompt、模型和生成循环归你**（而且你仍应在 prompt 里写清所需结构，因为掩码只作用于采样阶段，没法让模型真心想给对答案），**语法编译、token 掩码和保持输出不越界的状态机归它**。如果你通过 vLLM、SGLang、TensorRT-LLM 或 MLC-LLM 提供服务，就不必自己接：这些引擎在它们各自的结构化输出选项背后调用 XGrammar。
+模型每次只写一个 **token**（一个词或半个词，从固定词表里挑），挑的方式是给词表里每个候选打分，再从高分里抽一个——那些原始分数叫 **logits**，这一抽叫**采样**。XGrammar 就卡在这个缝隙里：每一步它先算出「按你要的结构，哪些 token 写下去仍然存在一条走到合法终点的推导」，把其余的分数全部抹平再抽——这层过滤叫**掩码**。判据是「**还存在走到合法终点的推导吗**」，而不是「这段文本现在合法吗」——像 `<a` 或 `{"na` 这种写了一半的前缀，因此不会被误判成错误。模型不是写完了被纠正，而是那条错路压根没出现在选项里。打个比方：不是写完作文再批改，而是这个键盘物理上就敲不出病句。你把结构描述一次、把模型的 tokenizer 交给它，它针对这个确切词表预编译出合法 token 集合；这件事对每一对「语法 + 模型」只做一次并缓存，所以重复或共享的 schema 几乎不花代价；而且必须按 token 而非按字符来算，因为一个 token 可能横跨好几个字符。运行期它只维护一个很小的书签，记住你走到结构的哪一步：收下刚抽出的 token，交出下一步的掩码，循环往复。你与它的分工很干净——**prompt、模型、生成循环和停止条件都归你**（而且你仍应在 prompt 里写清所需结构，因为掩码只作用于采样阶段，没法让模型真心想给对答案），**语法编译、token 掩码和保持输出不越界的状态机归它**。如果你通过 vLLM、SGLang、TensorRT-LLM 或 MLC-LLM 提供服务，就不必自己接：这些引擎在它们各自的结构化输出选项背后调用 XGrammar。
 
 ![xgrammar — 主干用户故事](../../../assets/flow/xgrammar.zh.svg)
 
@@ -119,6 +119,8 @@ health:
 - **你已经用 vLLM、SGLang、TensorRT-LLM、OpenVINO GenAI 或 Modular MAX 提供服务。** 这些引擎已经集成了 XGrammar，打开它们的结构化输出开关就行，不要再装一份——先查引擎的选项，因为单独加进去的版本可能与引擎 pin 住的版本冲突。
 - **你要的是纯 Python 依赖、不想引入 C++/二进制工具链和构建步骤。** 改用 Outlines（`未收录`，真实仓库，留给后续批次）——它是 transformers 原生的 Python，更好读也更好改；代价是在服务规模下掩码生成明显更慢。
 - **你的问题是编排，而不是一次受约束的输出。** 需要把循环、分支、工具调用写成一段作用于模型的程序时，改用 Guidance（`未收录`，真实仓库，留给后续批次）；XGrammar 只约束一次生成，不负责编排控制流。
+- **你需要内容正确，而不只是形状正确。** XGrammar 保证的是结构而非语义：`<age>三十五</age>` 和 `{"end": 1, "start": 9}` 都完全合法，而「end 必须大于 start」这种约束没有任何语法能表达。把语法能装下的部分（枚举、范围、正则）写进语法，其余交给应用层校验——比如对解析出来的对象跑 pydantic validator——别指望掩码去管跨字段或业务规则。
+- **你要输出 XML、HTML，或任何没有内置前端的格式。** 开箱只有 JSON/JSON Schema、正则、EBNF、Lark 和 Structural Tag，所以 XML 意味着你得自己用 EBNF 或 Lark 写并维护这份语法。如果你的打算是从现成语法改起，[llama.cpp](../local-runtimes/llama-cpp.zh.md) 里有一些可直接移植的 GBNF 语法样例（XGrammar 的 EBNF 与 GBNF 兼容）；XGrammar 的优势是引擎集成和掩码速度，不是语法库。
 - **你已在本地用 [llama.cpp](../local-runtimes/llama-cpp.zh.md) 跑，只需要简单语法。** 它内置的 GBNF 语法支持就在你已经运行的运行时里，除非你要 JSON Schema、Structural Tag 或引擎级速度，否则加 XGrammar 得不到额外收益。
 - **你在 Python 3.8 上。** 包元数据写 `>=3.8`，而安装文档写「Python 3.9 and later」；不要只凭元数据规划 3.8 部署，因为这次审查没有消除这处不一致。
 
@@ -136,7 +138,8 @@ health:
 
 - **核心。** C++17（`cpp/`、`include/xgrammar/`），用 CMake 加 Ninja 构建成静态库；Python wheel 由 `scikit-build-core` 构建，版本由 `setuptools-scm` 从 Git tag 生成。
 - **语言绑定。** 一等公民的 Python 包（`import xgrammar as xgr`）、C++ API、JavaScript API（`web/`）、Swift 包（`Package.swift`）；社区 Rust 绑定是独立的 `xgrammar-rs` 项目。
-- **语法前端。** 内置 JSON、JSON Schema、正则、EBNF、Lark 和 Structural Tag（其请求形状兼容 OpenAI 的 `response_format`）；语法还可以序列化与缓存。
+- **语法前端。** 内置 JSON、JSON Schema、正则、EBNF、Lark 和 Structural Tag（其请求形状兼容 OpenAI 的 `response_format`）；语法还可以序列化与缓存。EBNF 是所有其他前端转换到的公共中间表示，语法兼容 llama.cpp 的 GBNF 并带扩展（重复区间、宏）。**没有内置的 XML 或 HTML 前端**——这类格式要你自己用 EBNF 或 Lark 写语法。
+- **掩码怎么预编译。** 对规则内的某个位置，编译器把词表切成三类：这层一定能接受的、一定能拒绝的，以及「能否接受取决于父层规则」的 *uncertain* 集合；运行时只重算 uncertain 那部分，这是单步开销能压住的原因（见 `cpp/grammar_matcher.cc` 的注释）。
 - **数值与 FFI。** 用 `apache-tvm-ffi` 跨 C++ 边界，用 `torch`/`numpy` 承载 logits 与 `int32` bitset token 掩码，在 GPU 上用 CUDA kernel 施加掩码；编译和批量匹配都是多线程的（`BatchGrammarMatcher`）。
 - **Tokenizer。** HuggingFace fast tokenizer、`tiktoken` 和 SentencePiece，统一包成 `TokenizerInfo`；当模型 logits 的填充尺寸与 tokenizer 词表不一致时，可以显式传入。
 
@@ -170,3 +173,7 @@ health:
 - [推断]「默认后端」的措辞依据 README 与广为人知的集成；具体哪个引擎无需显式开启就默认使用它，未在本修订版逐一查各引擎源码确认。
 - [未验证] 本修订版的仓库目录树里没有 `SECURITY.md`；仓库之外是否存在私密漏洞上报渠道未获确认。
 - [推断] Outlines 和 Guidance 是本次改动刻意不收录的真实仓库（不在单项目审查范围内）；它们的能力描述来自公开定位，而非本页读过的选型页。
+- [推断]「写了一半的前缀不会被误判」依据的是编译期掩码的三分法（一定接受 / 一定拒绝 / uncertain，见 `cpp/grammar_matcher.cc`）这一成文设计；本次没有实际运行库去复现该行为。
+- [推断]「保证结构而非语义」是对约束解码的通行读法（项目只声称结构正确、未做语义保证），这个区分是我的表述，不是项目原话。
+- [未验证]「没有内置 XML/HTML 前端」读自本修订版的仓库目录树与 `docs/defining_structures/` 列表；XML 可以用 EBNF/Lark 表达，但别处是否已有维护中的现成 XML 语法未做核查。
+- [未验证]「撞到 `max_new_tokens` 可能留下结构不完整的输出」是从「掩码只管 token 合法性、不管停止条件」推出来的，未实际复现。
