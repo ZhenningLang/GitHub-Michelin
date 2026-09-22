@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Octop does", "zh": "Octop 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install into an isolated ~/.octop venv (one-liner or PyPI)", "zh": "装进隔离的 ~/.octop 虚拟环境（一键脚本或 PyPI）", "code": "pip install octop"},
+    {"lane": "you", "en": "Bootstrap the admin account, JWT secret and SQLite file", "zh": "初始化管理员账号、JWT 密钥和 SQLite 库", "code": "octop init"},
+    {"lane": "you", "en": "Start the single process", "zh": "拉起这一个进程", "code": "octop run"},
+    {"lane": "them", "en": "Serves dashboard, CLI, IM and cron on one port; rebuilds from SQLite", "zh": "同一端口提供控制台、IM 和 cron，重启从 SQLite 重建"},
+    {"lane": "you", "en": "Create an agent, attach a model, connect Feishu or WeCom", "zh": "建一个 Agent，接上模型，再挂飞书或企微"},
+    {"lane": "them", "en": "Routes Web, IM and cron through one in-process processor", "zh": "把 Web、IM、cron 送进同一条处理管线"}
+  ],
+  "value": {
+    "en": "A household or small team shares local agents on the IM they already use, without standing up a queue or a second service",
+    "zh": "家里或小团队能在已有的 IM 上共用本机 Agent，不用另起队列或第二个服务"
+  },
+  "sources": [
+    "https://github.com/TencentCloud/Octop/blob/main/README.md Quick Start (pip install octop, octop init, octop run, ~/.octop/, Feishu/WeCom channels)",
+    "https://github.com/TencentCloud/Octop/blob/main/docs/architecture.md (single process, WebSocket/IM/cron share the agent runtime, SQLite/PostgreSQL control plane)",
+    "https://github.com/TencentCloud/Octop/blob/main/docs/adr/001-single-process-model.md (no Redis, no worker, no external queue)",
+    "https://github.com/TencentCloud/Octop/blob/main/pyproject.toml (project.scripts octop = octop.cli.main:cli; orcakit-harness-agent / harness-gateway / harness-memory / harness-browser)"
+  ]
+}
