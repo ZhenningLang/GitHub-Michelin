@@ -72,7 +72,7 @@ health:
 
 你整天开着一个 coding agent，回复是碎片化读的：夹在两件事之间、在手机上、被打断之后。回复技术上没毛病，只是写给错的读者——开头先声明「我准备做什么」，中间三段背景，真正能跑的命令夹在当中，结尾再问一句「还需要我继续深入吗」。你得滚动屏幕去找那一行可执行的命令，而下一轮回来时已经忘了自己走到五步里的第几步。i-have-adhd 用一份 142 行的规则文件重塑这条回复：第一行就是动作，多步工作编号列出，每轮复述进度（“第 3 步 / 共 5 步”），报错直接给位置＋原因＋修法，列表封顶五项。它覆盖的是整个会话而不只是单条回复，仓库还为大约 15 种 harness（Claude Code、Codex、Grok、Gemini CLI、Copilot、Cursor、Zed、OpenCode、Pi 等）各配了适配层，所以同一套形状能跟着你换工具。
 
-选它而不是近邻替代品，各有一条理由：相比 [caveman](caveman.zh.md)，这里的约束是你的工作记忆而不是 token 账单——它要复述进度、把完成的部分显式亮出来，而简短风格覆盖层不做这件事；相比你自己往 `AGENTS.md` 里抄一条规则，它给了每种 harness 的接线（会话启动 hook 或插件）、可选的常驻开关，以及一份你能固定版本、能 diff 的规则文件；相比 [stop-slop](../de-ai-writing/stop-slop.zh.md) 这类去 AI 味的写作技能，那些是清理你要发布的文稿，这个改的是你当下要读的对话。
+选它而不是近邻替代品，各有一条理由：相比 [caveman](caveman.zh.md)，这里的约束是你的工作记忆而不是 token 账单——它要复述进度、把完成的部分显式亮出来，而简短风格覆盖层不做这件事；相比你自己往 `AGENTS.md` 里抄一条规则，它给了每种 harness 的接线（会话启动 hook 或插件）、可选的常驻开关，以及一份你能固定版本、能 diff 的规则文件；相比 [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md) 这类去 AI 味的写作技能，那些是清理你要发布的文稿，这个改的是你当下要读的对话。
 
 ## 怎么用起来
 
@@ -101,7 +101,7 @@ health:
 
 - **你只跑 Claude Code，且唯一的不满就是铺垫。** 它内置的 **Concise** output style 已经做到：先给结果、跳过铺垫与叙述、默认把回复压短，同时在你要求解释时仍完整回答，并保留报错全文与破坏性操作的确认——也就是规则 1 与规则 10 追求的效果，而且零依赖。规则 5–7（每轮复述进度、给具体时间估计、把完成的部分亮出来）和跨 harness 可移植性才是你额外获得的东西。来源：Claude Code output-styles 官方文档，2026-09-22 核对。
 - **你的痛点是 token 花销，不是可读性。** 目标是明显减少输出 token 就用 [caveman](caveman.zh.md)，并接受它自己声明的 benchmark 保留意见。i-have-adhd 的列表上限规则明确只约束呈现（不得限制分析、检索、工具结果、候选生成），所以它不是成本合同——而常驻模式还会反复注入规则，反而增加输入 token。
-- **你要去 AI 味的是要发布的文档。** 用 [stop-slop](../de-ai-writing/stop-slop.zh.md) 或 [humanizer](../de-ai-writing/humanizer.zh.md)。那些作用于文稿，这个作用于对话回复，两者不能互相替代。
+- **你要去 AI 味的是要发布的文档。** 用 [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md) 或 [humanizer](../ai-writing/de-ai-writing/humanizer.zh.md)。那些作用于文稿，这个作用于对话回复，两者不能互相替代。
 - **你需要 agent 自己动手，而不是把改动推回给你。** 用带真实自主性的方法学 harness，例如 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。这个仓库自己的评测支撑不了这条主张：`agent-owned-edit` 这条 case 因为 runner 剥掉了工具而谁都过不了，`RESULTS.md` 自己写明了。
 - **你的报错必须诚实表达不确定，而不是干脆利落。** 规则 8 要求「原因＋修法」，却没有「原因尚未确定」这一支；项目自己的评测记录了一次回归（`partial-success`，3 次试验均值 −0.63），评分者的评语是模型在毫无证据时把某个原因断言成了定论。如果校准过的不确定性比一条漂亮报错更重要，自己补上这一支，或换别的技能。
 - **你的 harness 可能无视 `disable-model-invocation`。** 这个技能默认保持按需启用，但它的安装文档承认部分 harness 会在启动时加载所有技能描述并自行激活——那种情况下每条回复都会在你没要求时改变形状。如果确认不了自己的 harness 是否尊重该标记，就把规则写进你自己的 `AGENTS.md`。
@@ -112,8 +112,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [caveman](caveman.zh.md) | ✅ | 痛点是回复形状、读者工作记忆短，选 i-have-adhd；痛点是普遍的可见 token 花销，选 caveman。 | i-have-adhd 多出跨轮行为（复述进度、显式亮出成果、保留真实的不确定性措辞），代价是规则更长，常驻时增加输入 token；caveman 是更短、覆盖面更宽的风格覆盖层。 |
-| [stop-slop](../de-ai-writing/stop-slop.zh.md) | ✅ | 产物是你将要发布的文档，选 stop-slop；产物是 agent 自己的回复，选 i-have-adhd。 | 去 AI 味规则就地把文稿改一遍，对正式文体可能改过头；i-have-adhd 不碰你的文件，改的是 agent 跟你说话的方式。 |
-| [humanizer](../de-ai-writing/humanizer.zh.md) | ✅ | 与 stop-slop 同轴、偏英文：两者都用于书面产出，不用于聊天回复。 | humanizer 针对已发布文稿里的 AI 痕迹，带插件与安装文档；i-have-adhd 针对实时对话，那里的 AI 痕迹是铺垫和收尾客套。 |
+| [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md) | ✅ | 产物是你将要发布的文档，选 stop-slop；产物是 agent 自己的回复，选 i-have-adhd。 | 去 AI 味规则就地把文稿改一遍，对正式文体可能改过头；i-have-adhd 不碰你的文件，改的是 agent 跟你说话的方式。 |
+| [humanizer](../ai-writing/de-ai-writing/humanizer.zh.md) | ✅ | 与 stop-slop 同轴、偏英文：两者都用于书面产出，不用于聊天回复。 | humanizer 针对已发布文稿里的 AI 痕迹，带插件与安装文档；i-have-adhd 针对实时对话，那里的 AI 痕迹是铺垫和收尾客套。 |
 | Claude Code 内置的 output style（`/output-style`，含 **Concise**） | 非仓库 | 只跑 Claude Code 且问题就是铺垫，直接用内置的 Concise，不必安装；还需要跨轮行为或想让同一形状覆盖其它 harness，选 i-have-adhd。 | 内建在闭源 CLI 里，不是仓库：没有多 harness 可移植性，也没有可 fork、可固定版本的规则文件——但 Concise 已经覆盖「先给结果、去掉铺垫、被要求解释时完整回答」，且零依赖。 |
 | 你自己往 `AGENTS.md` 里写的一条规则 | 非仓库 | 只要一种 harness、要求措辞精确、不想引入依赖，就自己写；想要跨 harness 跟着走并附带评测，选 i-have-adhd。 | 这不是仓库而是一种做法。漂移由你自己负责，每种工具都要重抄一遍；换来的是措辞完全可控、零依赖。 |
 

@@ -80,7 +80,7 @@ health:
 - **你需要查新结论或自由实施（FTO）的确定性。** 委托专业查新／FTO 检索，或用商业专利数据库，因为本包只是一词一页的浏览器辅助查新，不是召回完备的检索；它自己的文档也警告结果不得冒充完整查新。
 - **你需要批量专利分析或可编程的专利数据。** 改用专利数据 API／客户端或分析平台，因为本包的检索把结果落成给人读的 Markdown 报告，不是数据仓库，且默认刻意不翻完所有结果分页。
 - **你的环境跑不了 Python、浏览器或 Obsidian。** 如果不能 `pip install`、没有 Chrome／Edge 给 Playwright 用，或不愿维护 Obsidian 库，就改用纯 prompt／Markdown 流程，因为 Word 导出、线稿、国知局查新以及解读／地图库都依赖这套本地工具链，缺了就退化甚至跑不通。
-- **你只需要通用的中文写作或知识工作技能，而不是专利工作。** 写文章用 [writing-agent](../../writing/content-production/writing-agent.zh.md)，读论文／拆书和大白话改写用 [ljg-skills](ljg-skills.zh.md)，因为本包的 prompt 是专利领域专用的，它的默认语言和文件结构会妨碍通用内容工作。
+- **你只需要通用的中文写作或知识工作技能，而不是专利工作。** 写文章用 [writing-agent](../../ai-writing/content-production/writing-agent.zh.md)，读论文／拆书和大白话改写用 [ljg-skills](ljg-skills.zh.md)，因为本包的 prompt 是专利领域专用的，它的默认语言和文件结构会妨碍通用内容工作。
 - **你想要一个点开就用的专用 App，而不是装进 harness 的技能。** 改用独立的专利起草应用，因为这里是一棵 `SKILL.md` prompt 加本地脚本的文件树，只能在支持 skill 的 coding agent 里运转。
 
 ## 横向对比
@@ -88,7 +88,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Scientific Agent Skills](../../engineering/scientific-agent-skills.zh.md) | ✅ | 领域是生物／化学／医药、且每个 skill 包着一个真实科研库时，选 Scientific Agent Skills；领域是中国专利实务、价值在国知局检索加国知局式文档模板时，选 patent-disclosure-skill。 | Scientific Agent Skills 是约 147 个窄技能的大型精选库；patent-disclosure-skill 是八个更粗的工作流技能，本地工具链更重（Word／OMML、浏览器、Obsidian）。 |
-| [writing-agent](../../writing/content-production/writing-agent.zh.md) | ✅ | 交付物是可发布的中文文章、还要去 AI 味与事实核查时，选 writing-agent；交付物是必须满足专利文件结构并配查新的交底书或申请文件时，选 patent-disclosure-skill。 | writing-agent 优化文笔和读者测试；patent-disclosure-skill 优化文档结构、附图和检索，行文是刻意法条化的专利文体。 |
+| [writing-agent](../../ai-writing/content-production/writing-agent.zh.md) | ✅ | 交付物是可发布的中文文章、还要去 AI 味与事实核查时，选 writing-agent；交付物是必须满足专利文件结构并配查新的交底书或申请文件时，选 patent-disclosure-skill。 | writing-agent 优化文笔和读者测试；patent-disclosure-skill 优化文档结构、附图和检索，行文是刻意法条化的专利文体。 |
 | [ljg-skills](ljg-skills.zh.md) | ✅ | 要把论文／书读成大白话中文时，选 ljg-skills；要专门把专利权利要求和国知局记录读进带地图的 Obsidian 专利库时，选 patent-disclosure-skill。 | ljg-skills 是轻量、通用的阅读／改写包；patent-disclosure-skill 多了专利解析、引证／术语图谱和一个本机服务，代价是安装体量大得多、且依赖 Obsidian。 |
 | 商业专利 SaaS（智慧芽 PatSnap、incoPat、专利之星） | 未收录 | 需要召回完备的检索、法律状态数据和持续维护的数据库时，选商业 SaaS；需要起草／解读留在本地、可脚本化、产出可进 Git 版本管理的文件时，选 patent-disclosure-skill。 | SaaS 胜在数据覆盖、时效和法律状态；本包胜在本地化、成本与可编辑产出物，但检索浅，数据就是公开站点当下展示的那些。 |
 | 通用 LLM 对话／手写 prompt | 未收录 | 一次性草稿用对话模型或你自己的 prompt；一旦这件事变成需要图纸、Word 公式、国知局检索和多版本迭代的可重复流水线，就换 patent-disclosure-skill。 | 对话 prompt 零安装、灵活；本包是更重、更有主张的流水线，用灵活性换可重复性和产出物保真度。 |

@@ -32,7 +32,7 @@ shape and are deliberately excluded here.
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-force` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-ignorance` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `blader/humanizer` (upstream) | `categories/agent-skills/de-ai-writing/humanizer-zh.md` |
+| `blader/humanizer` (upstream) | `categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md` |
 | `cake` / SQM (OpenWrt) | `categories/networking/wondershaper.md` |
 | `diffusers` (Hugging Face) | `categories/ml-research/pytorch-gan.md` |
 | `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
