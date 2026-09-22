@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "CowAgent does",
+    "zh": "CowAgent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run the installer for your operating system",
+      "zh": "运行对应操作系统的安装脚本",
+      "code": "bash <(curl -fsSL https://cdn.link-ai.tech/code/cow/run.sh)",
+      "component": {
+        "en": "installer",
+        "zh": "安装脚本"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Starts the service and local Web console",
+      "zh": "启动服务与本地 Web console",
+      "code": "http://localhost:9899",
+      "component": {
+        "en": "Web console",
+        "zh": "Web console"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Choose a model, channel, permissions, and skills",
+      "zh": "选择模型、通道、权限与 skill",
+      "component": {
+        "en": "configuration",
+        "zh": "配置"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Routes each message through planning, tools, memory, and knowledge",
+      "zh": "把消息交给规划、工具、记忆与知识库",
+      "component": {
+        "en": "Agent core",
+        "zh": "Agent core"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Returns the completed result through the originating channel",
+      "zh": "从原通道发回完成结果",
+      "component": {
+        "en": "channel bridge",
+        "zh": "通道 bridge"
+      }
+    }
+  ],
+  "value": {
+    "en": "One configured agent can act, remember, and reply across your chosen channels without custom glue for each turn.",
+    "zh": "一个配置好的 Agent 能在所选通道行动、记忆并回复，不必为每轮任务重写胶水。"
+  },
+  "sources": [
+    "README.md — Quick Start, Architecture, Models, Channels, Tools & Skills",
+    "docs/guide/quick-start.mdx — installer behavior and local Web console URL",
+    "docs/intro/architecture.mdx — Agent Mode Workflow and component boundaries"
+  ]
+}

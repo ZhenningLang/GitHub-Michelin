@@ -15,10 +15,14 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
+`lich0821/wcfLink`,categories/im-automation/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
-`openilink-sdk-go`,categories/im-automation/openilink-hub.md,,no
+`openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
+`openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
+`openilink-sdk-python`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-tg`,categories/im-automation/openilink-hub.md,,no
 `opensearch-py` / opensearch-dsl-py,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+`python-wechaty`,categories/im-automation/wechaty.md,,no
 `redis-cli --bigkeys` / `--memkeys`,categories/databases/database-clients/rdr.md,,no
 `requests` + `concurrent.futures`,categories/python-tooling/grequests.md,,no
 `socket.getaddrinfo` (stdlib),categories/networking/dnspython.md,,no
@@ -192,7 +196,6 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
-CowAgent,categories/im-automation/wechat-bot.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
@@ -240,7 +243,6 @@ Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-serv
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
 DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
-Dify-on-WeChat,categories/im-automation/dify-enterprise-wechat-bot.md,,no
 Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
 DirectShow / Media Foundation,categories/media-processing/video-audio/gstreamer.md,,no
 Distroless (GoogleContainerTools),categories/dev-utilities/ops-infra/slim.md,,no
@@ -423,6 +425,7 @@ Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
 Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
+LangBot,categories/im-automation/dify-on-wechat.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
 LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
@@ -814,11 +817,7 @@ Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/whisper.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no
 Webmin,categories/dev-utilities/ops-infra/cockpit.md,,no
 WeChat Official Account / Mini-Program server APIs,categories/im-automation/itchat.md,,no
-WeChatFerry,categories/im-automation/wechat-bot.md,,no
 WeChatTweak-macOS (Sunnyyoung fork/successor),categories/im-automation/wechatplugin-macos.md,,no
-Wechaty,categories/im-automation/chatgpt-wechat-bot.md,,no
-wechaty,categories/im-automation/itchat.md,,no
-Wechaty / WeCom official APIs / CowAgent / WeChatFerry / Dify-on-WeChat / OpeniLink SDKs,categories/im-automation/INDEX.md,,no
 WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechatplugin-macos.md,,no
 WeCom / Official WeChat APIs,categories/im-automation/chatgpt-wechat-bot.md,,no
 WeCom / Official WeChat Work API,categories/im-automation/itchat.md,,no

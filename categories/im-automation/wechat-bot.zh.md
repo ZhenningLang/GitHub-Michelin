@@ -93,9 +93,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Wechaty | 未收录 | 如果要底层多语言 bot framework，并准备自己设计 provider 与命令，选 Wechaty；如果现成 CLI、模型 adapter 和分析流程正好匹配任务，选 WeChat Bot。 | Wechaty 更可复用、观点更少；WeChat Bot 更快落成助手，但继承 Wechaty 后又扩大了依赖与隐私面。 |
-| CowAgent | 未收录 | 如果 Python-first AI chatbot 生态是决定条件，选 CowAgent；如果更看重飞书、Telegram、WhatsApp、Pi 和 OpenCLI 集成，选 WeChat Bot。 | CowAgent 提供另一种语言生态和更广的 chatbot 产品方向；WeChat Bot 是专注的 Node CLI，并强化本地微信数据命令。 |
-| WeChatFerry | 未收录 | 只有在必须使用 Windows 客户端注入和本地 RPC 时，才评估仍维护的 WeChatFerry 分叉；Web/UOS puppet 加多 IM adapter 则选 WeChat Bot。 | WeChatFerry 接入的是另一种客户端面，但原仓库已归档且强依赖版本；WeChat Bot 可移植性更好，却承担 Web 协议账号风险。 |
+| [Wechaty](wechaty.zh.md) | ✅ | 如果要底层多语言 bot framework，并准备自己设计 provider 与命令，选 Wechaty；如果现成 CLI、模型 adapter 和分析流程正好匹配任务，选 WeChat Bot。 | Wechaty 更可复用、观点更少；WeChat Bot 更快落成助手，但继承 Wechaty 后又扩大了依赖与隐私面。 |
+| [CowAgent](cowagent.zh.md) | ✅ | 如果 Python-first AI chatbot 生态是决定条件，选 CowAgent；如果更看重飞书、Telegram、WhatsApp、Pi 和 OpenCLI 集成，选 WeChat Bot。 | CowAgent 提供另一种语言生态和更广的 chatbot 产品方向；WeChat Bot 是专注的 Node CLI，并强化本地微信数据命令。 |
+| [WeChatFerry](wechatferry.zh.md) | ✅ | 只有在必须使用 Windows 客户端注入和本地 RPC 时，才评估仍维护的 WeChatFerry 分叉；Web/UOS puppet 加多 IM adapter 则选 WeChat Bot。 | WeChatFerry 接入的是另一种客户端面，但原仓库已归档且强依赖版本；WeChat Bot 可移植性更好，却承担 Web 协议账号风险。 |
 | [ItChat](itchat.zh.md) | 已收录 | 只在研究旧网页微信机器人代码时使用 ItChat；需要当前仍维护的多通道应用时，选 WeChat Bot。 | ItChat 更简单，也影响过一代生态，但现代账号基本不可用；WeChat Bot 活跃且更广，却仍无法把非官方个人微信接入变安全。 |
 | [wxpy](wxpy.zh.md) | 已收录 | 只把 wxpy 当作旧对象 API 参考；需要当前命令、provider 和非微信通道时，选 WeChat Bot。 | wxpy 的旧 Python API 很优雅，但已归档且依赖失效协议；WeChat Bot 运维面更大，也继续承担协议风险。 |
 

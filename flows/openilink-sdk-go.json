@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpeniLink Go SDK does",
+    "zh": "OpeniLink Go SDK 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the module and create a client in your Go service",
+      "zh": "在 Go 服务中加入 module 并创建 client",
+      "code": "go get github.com/openilink/openilink-sdk-go",
+      "component": {
+        "en": "host service",
+        "zh": "宿主服务"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs QR login and updates the client token and endpoint",
+      "zh": "执行扫码登录并更新 client token 与 endpoint",
+      "component": {
+        "en": "login client",
+        "zh": "登录 client"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start Monitor with your handler, saved cursor, and callbacks",
+      "zh": "传入处理器、已存游标与回调，启动 Monitor",
+      "component": {
+        "en": "host service",
+        "zh": "宿主服务"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Long-polls with backoff, advances the cursor, and calls your handler",
+      "zh": "长轮询并退避，更新游标后调用处理器",
+      "component": {
+        "en": "monitor loop",
+        "zh": "monitor loop"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Persist the cursor and decide the application reply",
+      "zh": "持久化 cursor，并决定应用回复",
+      "component": {
+        "en": "host service",
+        "zh": "宿主服务"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Uses the cached context token to send the reply",
+      "zh": "使用缓存的 context token 发出回复",
+      "component": {
+        "en": "message client",
+        "zh": "消息 client"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your service owns bot behavior without reimplementing iLink transport and media details.",
+    "zh": "服务自己控制 Bot 行为，不必重写 iLink transport 与 media 细节。"
+  },
+  "sources": [
+    "https://github.com/openilink/openilink-sdk-go/blob/main/README.md#快速开始",
+    "https://github.com/openilink/openilink-sdk-go/blob/main/README.md#接收消息",
+    "https://github.com/openilink/openilink-sdk-go/blob/main/example/echo-bot/main.go"
+  ]
+}

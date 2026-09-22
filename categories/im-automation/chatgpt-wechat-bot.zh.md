@@ -86,7 +86,7 @@ health:
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.zh.md) | 已收录 | 如果要仍在维护的多通道 CLI 和多个模型后端，选 WeChat Bot；只有当小型历史示例本身就是研究对象时，才保留 ChatGPT-wechat-bot。 | WeChat Bot 的依赖面与隐私面更大，但仍有当前 provider 和通道工作；ChatGPT-wechat-bot 更容易读，却很难再证明运行价值。 |
 | [OpeniLink Hub](openilink-hub.zh.md) | 已收录 | 如果需要多 Bot 管理、消息追踪、App 分发与持久化存储，选 OpeniLink Hub；只有一次性单进程演示才选 ChatGPT-wechat-bot。 | OpeniLink Hub 增加数据库、Web 控制面、认证和 Registry 信任边界；ChatGPT-wechat-bot 组件更少，但已经停更，并绑定旧个人微信 puppet。 |
-| Wechaty | 未收录 | 如果正在新建个人号机器人，并接受非官方 puppet 风险，直接选 Wechaty，以便自行选择当前 adapter 和状态管理；不要为了省事继承这个停更 wrapper。 | Wechaty 要求自己完成模型与应用层，但能避开本项目冻结的模型选择、proxy 默认值和上下文状态缺陷。 |
+| [Wechaty](wechaty.zh.md) | ✅ | 如果正在新建个人号机器人，并接受非官方 puppet 风险，直接选 Wechaty，以便自行选择当前 adapter 和状态管理；不要为了省事继承这个停更 wrapper。 | Wechaty 要求自己完成模型与应用层，但能避开本项目冻结的模型选择、proxy 默认值和上下文状态缺陷。 |
 | 企业微信／微信官方 API | 未收录 | 如果账号安全、厂商支持与生产契约更重要，选腾讯官方 API；只有个人号行为值得一次不受支持的实验时，才使用 ChatGPT-wechat-bot。 | 官方 API 面向企业或公众账号，无法复刻任意个人号自动化，但能移除非官方 Web puppet 依赖。 |
 
 ## 技术栈

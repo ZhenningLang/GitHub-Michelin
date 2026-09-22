@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Dify on WeChat does",
+    "zh": "Dify on WeChat 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy the template and choose one channel and Dify application",
+      "zh": "复制模板，选择一种通道与 Dify 应用",
+      "code": "cp config-template.json config.json",
+      "component": {
+        "en": "config.json",
+        "zh": "config.json"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start the Python bridge after the channel credentials are ready",
+      "zh": "通道凭据就绪后启动 Python bridge",
+      "code": "python3 app.py",
+      "component": {
+        "en": "app.py",
+        "zh": "app.py"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The selected adapter converts each incoming event into a common message context",
+      "zh": "把通道事件转成统一消息",
+      "component": {
+        "en": "channel adapter",
+        "zh": "channel adapter"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The bridge calls the configured Dify chatbot, agent, Chatflow, or Workflow API",
+      "zh": "调用 Dify 应用 API",
+      "component": {
+        "en": "Dify adapter",
+        "zh": "Dify adapter"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "It parses the answer, keeps conversation state, and sends the channel reply",
+      "zh": "解析答案、保存会话，再由通道回复",
+      "component": {
+        "en": "bridge and channel",
+        "zh": "bridge 与 channel"
+      }
+    }
+  ],
+  "value": {
+    "en": "You inspect and adapt one bridge instead of writing Dify and channel glue from scratch.",
+    "zh": "你可以检查并修改一套 bridge，不必从零编写 Dify 与通道 glue。"
+  },
+  "sources": [
+    "https://github.com/hanfangyuan4396/dify-on-wechat/blob/master/README.md#快速开始",
+    "https://github.com/hanfangyuan4396/dify-on-wechat/blob/master/app.py",
+    "https://github.com/hanfangyuan4396/dify-on-wechat/blob/master/channel/channel_factory.py",
+    "https://github.com/hanfangyuan4396/dify-on-wechat/blob/master/bot/dify/dify_bot.py"
+  ]
+}

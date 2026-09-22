@@ -736,6 +736,11 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/chatgpt-wechat-bot.md) |
 | **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | B（5/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
 | **Dify Enterprise WeChat Bot** | 仅用于维持固定 Windows 企业微信到 Dify 的桌面集成——项目已停滞、包含闭源 helper，Workflow 支持也未完成。 | NOASSERTION | C（3/6） | [中](categories/im-automation/dify-enterprise-wechat-bot.zh.md) · [EN](categories/im-automation/dify-enterprise-wechat-bot.md) |
+| **Wechaty** | 许多个人号机器人背后的多语言可复用框架：adapter 与命令层要自己掌控，押注某条通道前先确认各 provider 现状。 | Apache-2.0 | C（5/6） | [中](categories/im-automation/wechaty.zh.md) · [EN](categories/im-automation/wechaty.md) |
+| **CowAgent** | Python-first、多通道、模型后端可插拔的助手；即更名后的 `zhayujie/chatgpt-on-wechat`，通道已换成 iLink，而非被删除的个人号路径。 | MIT | A（5/6） | [中](categories/im-automation/cowagent.zh.md) · [EN](categories/im-automation/cowagent.md) |
+| **WeChatFerry** | 不要部署：维护者已归档，发版钉在旧版 Windows 微信上，整套方案是客户端注入。 | MIT | D（5/6） | [中](categories/im-automation/wechatferry.zh.md) · [EN](categories/im-automation/wechatferry.md) |
+| **Dify on WeChat** | 端到端可源码审查的 Dify 到微信桥接——但自 2025-04 起没有代码变更，且仍带个人号通道风险。 | MIT | B（3/6） | [中](categories/im-automation/dify-on-wechat.zh.md) · [EN](categories/im-automation/dify-on-wechat.md) |
+| **OpeniLink Go SDK** | 嵌进现有 Go 服务的原始 iLink 传输层：信任边界最小，持久化、认证、重试与运维由你承担。 | MIT | C（4/6） | [中](categories/im-automation/openilink-sdk-go.zh.md) · [EN](categories/im-automation/openilink-sdk-go.md) |
 ### web-ui
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
