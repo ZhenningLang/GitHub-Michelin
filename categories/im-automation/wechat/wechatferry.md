@@ -2,7 +2,7 @@
 name: WeChatFerry
 slug: wechatferry
 repo: https://github.com/lich0821/WeChatFerry
-category: im-automation
+category: wechat
 tags: [wechat, personal-account, windows, dll-injection, rpc, python, archived, version-pinned]
 language: C++
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 An archived Windows WeChat-client hook and local RPC library. Treat the original repository as a study and compatibility snapshot, not as a maintained dependency for a new deployment.
 
-![WeChatFerry — health radar](../../assets/health/wechatferry.svg)
+![WeChatFerry — health radar](../../../assets/health/wechatferry.svg)
 
 > **Archived:** GitHub reports the repository read-only as of 2026-09-22. The maintainer previously replaced the whole tree with “因为不抗因素，停止维护。” (“maintenance stopped because of uncontrollable factors”) in the 2025-05-25 `final commit`; that destructive commit was reverted on 2026-03-21 and `v39.5.2` was published afterward, but the repository was later archived without naming a successor. The exact archive date is not exposed by the GitHub repository API.
 
@@ -84,7 +84,7 @@ Choose this snapshot over [wxpy](wxpy.md) or [ItChat](itchat.md) only when the o
 
 The Python package loads `sdk.dll`, which opens the Windows WeChat process and uses a remote thread to load the project's spy DLL. That injected component reads and calls version-specific client internals, then serves commands and incoming messages over local NNG RPC; your Python process creates `Wcf`, enables reception, and consumes its queue. You write the bot logic, while WeChatFerry owns injection and the RPC bridge. The final release bundles this path for WeChat `3.9.12.51`; a different client build can invalidate its offsets.
 
-![wechatferry — backbone user story](../../assets/flow/wechatferry.svg)
+![wechatferry — backbone user story](../../../assets/flow/wechatferry.svg)
 
 <!-- flow-steps:begin (generated from flows/wechatferry.json by tools/flow_card.py — do not edit) -->
 <details>

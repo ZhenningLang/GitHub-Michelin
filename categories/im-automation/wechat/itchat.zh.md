@@ -2,7 +2,7 @@
 name: ItChat
 slug: itchat
 repo: https://github.com/littlecodersh/ItChat
-category: im-automation
+category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account]
 language: Python
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 面向微信**个人号**的优雅 Python API——历史上用来在网页版（`wx.qq.com`）微信协议之上搭聊天机器人和 IM 自动化。**话说白了：这个项目已基本废弃（最后 push 约 2023-09），而它依赖的微信网页协议早已被大面积关停，所以对绝大多数账号而言，ItChat 已经登不上、跑不起来了。** 它如今主要还有意义的地方在于作为参考代码，而不是你今天能拿来交付的工具。
 
-![itchat — 健康度雷达](../../assets/health/itchat.zh.svg)
+![itchat — 健康度雷达](../../../assets/health/itchat.zh.svg)
 
 ## 何时使用
 

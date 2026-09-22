@@ -38,14 +38,14 @@ shape and are deliberately excluded here.
 | `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
 | `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
-| `lich0821/wcfLink` | `categories/im-automation/wechatferry.md` |
+| `lich0821/wcfLink` | `categories/im-automation/wechat/wechatferry.md` |
 | `MEMORY USAGE` / `MEMORY DOCTOR` | `categories/databases/database-clients/rdr.md` |
 | `openilink-sdk-node` | `categories/im-automation/openilink-sdk-go.md` |
 | `openilink-sdk-php` | `categories/im-automation/openilink-sdk-go.md` |
 | `openilink-sdk-python` | `categories/im-automation/openilink-sdk-go.md` |
 | `openilink-tg` | `categories/im-automation/openilink-hub.md` |
 | `opensearch-py` / opensearch-dsl-py | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
-| `python-wechaty` | `categories/im-automation/wechaty.md` |
+| `python-wechaty` | `categories/im-automation/wechat/wechaty.md` |
 | `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
 | `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
 | `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |

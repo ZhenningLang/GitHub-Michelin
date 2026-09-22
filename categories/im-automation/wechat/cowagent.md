@@ -4,7 +4,7 @@ slug: cowagent
 repo: https://github.com/zhayujie/CowAgent
 homepage: https://cowagent.ai
 aka: chatgpt-on-wechat
-category: im-automation
+category: wechat
 tags: [ai-agent, multi-channel, wechat, ilink, multi-model, skills, memory, self-hosted]
 language: Python
 license: MIT
@@ -74,7 +74,7 @@ health:
 
 A self-hosted Python agent harness that connects one tool-using, memory-bearing assistant to a web console and twelve documented IM channel surfaces; it is the renamed continuation of `zhayujie/chatgpt-on-wechat`, not a new repository or a duplicate of the separately indexed `AutumnWhj/ChatGPT-wechat-bot`.
 
-![CowAgent — health radar](../../assets/health/cowagent.svg)
+![CowAgent — health radar](../../../assets/health/cowagent.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ Choose CowAgent over a focused message-to-LLM relay when its agent runtime, mult
 
 The installer creates a local service and opens the Web console, where you select model credentials, channels, permissions, skills, and agent workspaces. Incoming channel messages enter a common bridge; the agent core plans a turn and may call tools, skills, memory, knowledge, or delegated agents before the originating channel sends the result back. CowAgent supplies that runtime and the adapters, while you remain responsible for credentials, channel-side registration, model cost, permission scope, and the host it can control. The default web surface is local-only, but server and Docker deployments can expose it when you deliberately configure authentication and network access.
 
-![cowagent — backbone user story](../../assets/flow/cowagent.svg)
+![cowagent — backbone user story](../../../assets/flow/cowagent.svg)
 
 <!-- flow-steps:begin (generated from flows/cowagent.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,7 +108,7 @@ The installer creates a local service and opens the Web console, where you selec
 - **You need a Tencent-supported production contract rather than a project-integrated personal assistant.** Use a registered WeCom app, WeCom bot, WeChat Official Account, or WeChat Customer Service API instead; CowAgent can connect several of those official-channel routes, while the direct WeChat iLink route has different one-to-one bot behavior and its long-term policy contract was not independently established here.
 - **You cannot accept any uncertainty around personal-WeChat account policy.** Deploy CowAgent through WeCom, an Official Account, Feishu, Telegram, Slack, or another platform-approved bot route instead of the direct WeChat channel; the old lineage once disabled an earlier `wx` implementation to avoid bans, even though that implementation was removed before the current iLink adapter was added.
 - **You only need a thin multi-channel LLM relay.** Use [WeChat Bot](wechat-bot.md) or a platform SDK instead; CowAgent adds autonomous tools, workspaces, multi-agent state, memory, knowledge, skills, a web application, and a much larger security and upgrade surface.
-- **You need a dedicated multi-bot iLink control plane with persisted traces, Webhooks, Apps, and PostgreSQL/S3 growth paths.** Use [OpeniLink Hub](openilink-hub.md); CowAgent centers the assistant and its agent runtime rather than fleet administration and message-platform observability.
+- **You need a dedicated multi-bot iLink control plane with persisted traces, Webhooks, Apps, and PostgreSQL/S3 growth paths.** Use [OpeniLink Hub](../openilink-hub.md); CowAgent centers the assistant and its agent runtime rather than fleet administration and message-platform observability.
 - **The assistant must not execute on its host.** Use a read-only chat application or isolate CowAgent in a container with a restricted workspace; the shipped config enables agent mode and `full-access`, and its terminal, file, browser, MCP, scheduler, and skill surfaces make host permissions a primary design decision.
 - **You need a small embeddable Python library.** Use a provider SDK plus the official channel SDK, or an agent framework designed for embedding; CowAgent is an application with a service, web UI, local state layout, plugins, channel adapters, and operational lifecycle.
 
@@ -117,7 +117,7 @@ The installer creates a local service and opens the Web console, where you selec
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.md) | ✅ | Choose WeChat Bot when a narrower Node.js CLI for direct model routing and local WeChat analysis is enough; choose CowAgent when tools, memory, knowledge, multi-agent teams, skills, and its broader assistant runtime decide the task. | WeChat Bot has a smaller conceptual surface but uses an unofficial Wechaty path for personal WeChat; CowAgent is substantially heavier, while its current direct-WeChat adapter uses the newer iLink bot endpoint and only supports one-to-one chats. |
-| [OpeniLink Hub](openilink-hub.md) | ✅ | Choose OpeniLink Hub to operate several iLink bots with users, traces, Apps, Webhooks, and durable platform state; choose CowAgent when the bot should itself plan, use tools, remember, and delegate work. | Hub makes message control-plane operations explicit and adds database/auth/registry burden; CowAgent supplies the agent brain and many channel adapters but is not a specialized iLink fleet console. |
+| [OpeniLink Hub](../openilink-hub.md) | ✅ | Choose OpeniLink Hub to operate several iLink bots with users, traces, Apps, Webhooks, and durable platform state; choose CowAgent when the bot should itself plan, use tools, remember, and delegate work. | Hub makes message control-plane operations explicit and adds database/auth/registry burden; CowAgent supplies the agent brain and many channel adapters but is not a specialized iLink fleet console. |
 | [ChatGPT-wechat-bot](chatgpt-wechat-bot.md) | ✅ | Use ChatGPT-wechat-bot only for archaeology of a small 2022-era Wechaty/ChatGPT demo; choose CowAgent for the actively released continuation of a different repository lineage with current models, channels, and agent capabilities. | The old demo is easier to read but stale and operationally unsafe; CowAgent is maintained and far more capable, at the cost of a much larger codebase and trust boundary. |
 | [Wechaty](wechaty.md) | ✅ | Choose Wechaty when you need an embeddable event API and want to own bot logic above a replaceable Puppet provider; choose CowAgent when a finished assistant with models, tools, memory, skills, and channel setup is the requirement. | Wechaty is less opinionated and keeps the application yours, but provider selection and operations are also yours; CowAgent reaches an agent assistant faster and carries a much larger runtime and trust boundary. |
 

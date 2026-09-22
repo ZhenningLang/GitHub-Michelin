@@ -2,7 +2,7 @@
 name: wxappUnpacker
 slug: wxappunpacker
 repo: https://github.com/xdmjun/wxappUnpacker
-category: im-automation
+category: wechat
 tags: [wechat, miniprogram, wxapkg, decompiler, reverse-engineering, nodejs]
 language: JavaScript
 license: GPL-3.0-or-later
@@ -70,7 +70,7 @@ health:
 
 一个微信小程序 `.wxapkg` 反编译/解包工具——只不过*这个具体的 fork* 已被清空：`xdmjun/wxappUnpacker` 仓库如今只剩一个 `README.md`，内容就是字符串 `del`。它是一座墓碑，真正能用的代码只活在各个 fork 里。
 
-![wxappunpacker — 健康度雷达](../../assets/health/wxappunpacker.zh.svg)
+![wxappunpacker — 健康度雷达](../../../assets/health/wxappunpacker.zh.svg)
 
 ## 何时使用
 

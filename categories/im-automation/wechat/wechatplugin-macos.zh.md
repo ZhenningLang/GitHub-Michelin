@@ -2,7 +2,7 @@
 name: WeChatPlugin-MacOS
 slug: wechatplugin-macos
 repo: https://github.com/TKkk-iOSer/WeChatPlugin-MacOS
-category: im-automation
+category: wechat
 tags: [wechat, macos, im-automation, anti-revoke, auto-reply, objective-c, binary-patch, deprecated]
 language: Objective-C
 license: MIT
@@ -63,7 +63,7 @@ health:
 
 一个 macOS 微信**客户端魔改插件**（微信小助手）——消息防撤回、自动回复、远程控制、微信多开，以及一堆界面便利功能——做法是**把插件注入到 macOS 上的 WeChat.app 里**。**话说白了：它靠对*特定*微信版本的客户端二进制打补丁来工作，所以微信一更新它就坏；仓库已沉寂约 2 年（最后 push 于 2024-06）、针对的是老版本微信，因此在当前微信上几乎可以肯定已经跑不起来了。**
 
-![wechatplugin-macos — 健康度雷达](../../assets/health/wechatplugin-macos.zh.svg)
+![wechatplugin-macos — 健康度雷达](../../../assets/health/wechatplugin-macos.zh.svg)
 
 ## 何时使用
 

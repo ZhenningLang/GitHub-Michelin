@@ -3,7 +3,7 @@ name: Wechaty
 slug: wechaty
 repo: https://github.com/wechaty/wechaty
 homepage: https://wechaty.js.org
-category: im-automation
+category: wechat
 tags: [chatbot, conversational-rpa, wechat, whatsapp, puppet, provider-abstraction, typescript]
 language: TypeScript
 license: Apache-2.0
@@ -74,7 +74,7 @@ health:
 
 一个 TypeScript conversational-RPA framework，用统一事件 API 和可替换的 Puppet provider 层承接微信、WhatsApp、企业微信等 IM backend；抽象已经成熟，但 provider 可用性和个人账号处置风险必须分别核查。
 
-![Wechaty — 健康度雷达](../../assets/health/wechaty.zh.svg)
+![Wechaty — 健康度雷达](../../../assets/health/wechaty.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ health:
 
 你的 bot 导入 Wechaty，为扫码、登录和消息等事件注册 handler，再通过 framework 的 `Message`、`Contact` 与 `Room` object 回复。Puppet 负责平台特有 transport，可以进程内运行，也可以通过 gRPC Puppet Service 连接；选择与运营 provider 是你的责任。Wechaty 把 provider event 归一为同一套 API，但不会让非官方 provider 自动获得授权或稳定性。
 
-![wechaty — 主干用户故事](../../assets/flow/wechaty.zh.svg)
+![wechaty — 主干用户故事](../../../assets/flow/wechaty.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/wechaty.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,7 +106,7 @@ health:
 ## 何时不用
 
 - **你需要腾讯官方支持的生产通道，或不能承受个人号风险。** 改用企业微信、微信公众号或小程序 API；腾讯微信协议禁止通过未经授权的第三方软件执行自动化操作，并允许对违约账号警告、限制、封禁或注销。
-- **你期望 framework 自带当前可靠的个人微信 transport。** 改用腾讯官方入口；若评估 [OpeniLink Hub](openilink-hub.zh.md)，也必须接受它明确披露的非官方关系与协议风险。Wechaty 的 Web Puppet 文档称 UOS workaround 自 2022 年已无法登录，2025 至 2026 年 issue 还记录了扫码登录受限与封号报告。
+- **你期望 framework 自带当前可靠的个人微信 transport。** 改用腾讯官方入口；若评估 [OpeniLink Hub](../openilink-hub.zh.md)，也必须接受它明确披露的非官方关系与协议风险。Wechaty 的 Web Puppet 文档称 UOS workaround 自 2022 年已无法登录，2025 至 2026 年 issue 还记录了扫码登录受限与封号报告。
 - **你要的是开箱即用的多通道 AI 助手，而不是 SDK。** 当 [WeChat Bot](wechat-bot.zh.md) 的模型 adapter、allowlist、本地留存与分析命令正好匹配任务时选它；Wechaty 提供 primitive 与 event，prompt、存储、路由和运维仍由应用承担。
 - **你只需要一个官方 WhatsApp 集成。** 改用 Meta 官方 WhatsApp Cloud API 与 SDK；Wechaty 文档中的 WhatsApp Puppet 仍是 alpha，只实现有限功能，仓库最后 push 为 2024-01。
 - **你要求 provider 提供已发布的 SLA、隐私政策与当前兼容性证明。** 改与官方平台 provider 签约；Wechaty 的部分 service 文档仍把这些字段写成待补充，多个 provider 仓库自 2022 至 2024 年后就没有活动。
@@ -117,7 +117,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.zh.md) | 已收录 | 需要可复用 event API 与可替换 provider 边界时选 Wechaty；现成 CLI、LLM adapter 与聊天分析流程就是目标产品时选 WeChat Bot。 | Wechaty 观点更少，更容易嵌入；WeChat Bot 更快落成助手，却扩大依赖与隐私面。 |
-| [OpeniLink Hub](openilink-hub.zh.md) | 已收录 | 多个 iLink bot 需要持久化 web 控制面、用户、trace 与 App 时选 OpeniLink Hub；bot 行为属于代码，而且 transport 可替换性更重要时选 Wechaty。 | Hub 提供运维与持久化，却集中更多敏感状态；Wechaty 把应用边界留给你，也要求你自行组装和运营。 |
+| [OpeniLink Hub](../openilink-hub.zh.md) | 已收录 | 多个 iLink bot 需要持久化 web 控制面、用户、trace 与 App 时选 OpeniLink Hub；bot 行为属于代码，而且 transport 可替换性更重要时选 Wechaty。 | Hub 提供运维与持久化，却集中更多敏感状态；Wechaty 把应用边界留给你，也要求你自行组装和运营。 |
 | `python-wechaty` | 未收录 | Python 是硬约束，并且能接受 Puppet Service 边界时选 `python-wechaty`；需要 canonical Node API 与更深的历史实现基础时选本 TypeScript 仓库。 | Python SDK 适合 Python service，但仍依赖兼容 Puppet；TypeScript core 历史最深，当前发布节奏却很慢。 |
 | 企业微信／微信官方 API | 非仓库 | 生产合规、文档化 credential 与账号支持决定选择时，用腾讯官方 API；只有跨平台抽象值得逐个独立核验 provider 时才选 Wechaty。 | 官方 API 面向企业、公众号与小程序流程，不提供任意个人号自动化；Wechaty 跨 IM 更统一，却不能赋予平台授权。 |
 

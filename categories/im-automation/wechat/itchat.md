@@ -2,7 +2,7 @@
 name: ItChat
 slug: itchat
 repo: https://github.com/littlecodersh/ItChat
-category: im-automation
+category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account]
 language: Python
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 A graceful Python API for WeChat **personal** accounts — historically used to build chatbots and IM automation on top of the web (`wx.qq.com`) WeChat protocol. **Read this plainly: the project is effectively abandoned (last pushed ~2023-09) and the WeChat web protocol it depends on has been largely shut down, so for most accounts ItChat no longer logs in or works at all.** It remains interesting mainly as reference code, not as a tool you can ship today.
 
-![itchat — health radar](../../assets/health/itchat.svg)
+![itchat — health radar](../../../assets/health/itchat.svg)
 
 ## When to use
 

@@ -2,7 +2,7 @@
 name: WeChat Bot
 slug: wechat-bot
 repo: https://github.com/wangrongding/wechat-bot
-category: im-automation
+category: wechat
 tags: [wechat, wechaty, im-agent, lark, telegram, whatsapp, multi-model, chat-analysis]
 language: JavaScript
 license: MIT
@@ -72,7 +72,7 @@ health:
 
 A Node.js CLI that routes WeChat, Lark, Telegram, and WhatsApp messages to multiple LLM or coding-agent backends and can analyze locally captured WeChat data; its personal-WeChat path remains unofficial and account-risky.
 
-![WeChat Bot — health radar](../../assets/health/wechat-bot.svg)
+![WeChat Bot — health radar](../../../assets/health/wechat-bot.svg)
 
 ## When to use
 

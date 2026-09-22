@@ -2,7 +2,7 @@
 name: WeChat Bot
 slug: wechat-bot
 repo: https://github.com/wangrongding/wechat-bot
-category: im-automation
+category: wechat
 tags: [wechat, wechaty, im-agent, lark, telegram, whatsapp, multi-model, chat-analysis]
 language: JavaScript
 license: MIT
@@ -72,7 +72,7 @@ health:
 
 一个 Node.js CLI，把微信、飞书、Telegram、WhatsApp 消息路由到多种 LLM 或 coding-agent 后端，也能分析本地捕获的微信数据；个人微信通道仍是非官方协议，并伴随账号风险。
 
-![WeChat Bot — 健康度雷达](../../assets/health/wechat-bot.zh.svg)
+![WeChat Bot — 健康度雷达](../../../assets/health/wechat-bot.zh.svg)
 
 ## 何时使用
 

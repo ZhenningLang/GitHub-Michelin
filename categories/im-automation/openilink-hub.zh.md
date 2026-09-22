@@ -96,7 +96,7 @@ health:
 |---|---|---|---|
 | [openilink-sdk-go](openilink-sdk-go.zh.md) | ✅ | 如果只要把 iLink transport 嵌入现有 Go 服务，选 SDK；如果用户、多 Bot、trace、App 和 Web 控制面都是需求，选 OpeniLink Hub。 | SDK 保持较小的进程与信任边界，但持久化、认证、routing 和运维都要自己实现；Hub 提供这些层，也把它们变成你的运维责任。 |
 | `openilink-tg` | 未收录 | 如果任务只是专用微信到 Telegram relay，选 `openilink-tg`；如果多个 destination、可安装 App 与集中管理足以支撑一个平台，选 Hub。 | 专用 bridge 更容易审计和运行，却没有 Hub 的 routing 与 marketplace 广度；Hub 能力更完整，复杂度也明显更高。 |
-| [WeChat Bot](wechat-bot.zh.md) | 已收录 | 如果要开发者自己操作的 CLI，把多个 IM 通道直接接到多个 LLM backend，选 WeChat Bot；如果更看重持久化多用户管理和 App 分发，选 OpeniLink Hub。 | WeChat Bot 是较轻的 assistant application，但个人微信走非官方 Wechaty 路径；Hub 控制面更广，并承担 iLink、数据库和认证风险。 |
+| [WeChat Bot](wechat/wechat-bot.zh.md) | 已收录 | 如果要开发者自己操作的 CLI，把多个 IM 通道直接接到多个 LLM backend，选 WeChat Bot；如果更看重持久化多用户管理和 App 分发，选 OpeniLink Hub。 | WeChat Bot 是较轻的 assistant application，但个人微信走非官方 Wechaty 路径；Hub 控制面更广，并承担 iLink、数据库和认证风险。 |
 | 企业微信／微信官方 API | 未收录 | 如果官方支持、企业 identity 与有文档的生产契约决定选型，使用企业微信或其他官方 API；只有 iLink Bot 行为与自托管 App plane 的价值高于无官方关联风险时，才选 Hub。 | 官方 API 面向不同的企业或公众账号 workflow，可能限制个人 Bot 行为；Hub routing 更灵活，却继承协议、bootstrap 与 ecosystem 风险。 |
 
 ## 技术栈

@@ -2,7 +2,7 @@
 name: ChatGPT-wechat-bot
 slug: chatgpt-wechat-bot
 repo: https://github.com/AutumnWhj/ChatGPT-wechat-bot
-category: im-automation
+category: wechat
 tags: [wechat, chatgpt, wechaty, personal-account, llm-bot, stale]
 language: TypeScript
 license: MIT
@@ -63,7 +63,7 @@ health:
 
 A compact TypeScript demo that connects a personal WeChat account to ChatGPT through Wechaty; useful as 2022–2023 reference code, but its default branch has not changed since 2023-07 and should not anchor a current production bot.
 
-![ChatGPT-wechat-bot — health radar](../../assets/health/chatgpt-wechat-bot.svg)
+![ChatGPT-wechat-bot — health radar](../../../assets/health/chatgpt-wechat-bot.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ Choose ChatGPT-wechat-bot over a larger control plane such as OpeniLink Hub only
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.md) | ✅ | For a currently maintained, multi-channel CLI with several model backends, choose WeChat Bot; keep ChatGPT-wechat-bot only when the small historical example is itself the artifact you need. | WeChat Bot has a much wider dependency and privacy surface, but it has current provider and channel work; ChatGPT-wechat-bot is easier to read and much harder to justify running. |
-| [OpeniLink Hub](openilink-hub.md) | ✅ | When you need multi-bot management, message tracing, App distribution, and persistent storage, choose OpeniLink Hub; choose ChatGPT-wechat-bot only for a throwaway single-process demonstration. | OpeniLink Hub adds a database, web control plane, auth, and registry trust boundary; ChatGPT-wechat-bot has fewer moving parts but is stale and tied to an old personal-WeChat puppet. |
+| [OpeniLink Hub](../openilink-hub.md) | ✅ | When you need multi-bot management, message tracing, App distribution, and persistent storage, choose OpeniLink Hub; choose ChatGPT-wechat-bot only for a throwaway single-process demonstration. | OpeniLink Hub adds a database, web control plane, auth, and registry trust boundary; ChatGPT-wechat-bot has fewer moving parts but is stale and tied to an old personal-WeChat puppet. |
 | [Wechaty](wechaty.md) | ✅ | When you are building a new personal-account bot and accept unofficial puppet risk, choose Wechaty directly so you can select current adapters and state management; do not inherit this stale wrapper for convenience. | Wechaty requires you to build the model and application layer, but avoids this project's frozen model choice, proxy default, and context-state bug. |
 | WeCom / Official WeChat APIs | not indexed | When account safety, vendor support, and a production contract matter, choose an official Tencent API; use ChatGPT-wechat-bot only when personal-account behavior is worth an unsupported experiment. | Official APIs expose different enterprise or public-account surfaces and cannot reproduce arbitrary personal-account automation, but they remove the unofficial Web-puppet dependency. |
 

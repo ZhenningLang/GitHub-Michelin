@@ -2,7 +2,7 @@
 name: wxpy
 slug: wxpy
 repo: https://github.com/youfou/wxpy
-category: im-automation
+category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account, itchat]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 面向微信**个人号**的优雅 Python API——它是在 [ItChat](itchat.zh.md) 网页版微信协议之上更友好、更高层的封装，历史上用来搭聊天机器人和账号自动化。**话说白了：这个仓库已于 2019-07 被 archive（只读、废弃），而它依赖的微信网页版（`wx.qq.com`）登录协议——和 ItChat 用的是同一套——早已被大面积关停，所以对绝大多数账号而言，wxpy 已经登不上、跑不起来了。** 它如今只作为参考代码和怀旧物存在，而不是你今天能拿来交付的工具。
 
-![wxpy — 健康度雷达](../../assets/health/wxpy.zh.svg)
+![wxpy — 健康度雷达](../../../assets/health/wxpy.zh.svg)
 
 ## 何时使用
 

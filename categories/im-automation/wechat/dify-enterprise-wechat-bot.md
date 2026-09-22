@@ -2,7 +2,7 @@
 name: Dify Enterprise WeChat Bot
 slug: dify-enterprise-wechat-bot
 repo: https://github.com/luolin-ai/Dify-Enterprise-WeChat-bot
-category: im-automation
+category: wechat
 tags: [dify, enterprise-wechat, wecom, windows, desktop-automation, binary-helper]
 language: Unknown
 license: NOASSERTION
@@ -64,7 +64,7 @@ health:
 
 A stale Windows application that binds a fixed Enterprise WeChat desktop-client version to the Dify API through a closed `dify_helper.exe`, with unfinished Workflow support and a custom license.
 
-![Dify Enterprise WeChat Bot — health radar](../../assets/health/dify-enterprise-wechat-bot.svg)
+![Dify Enterprise WeChat Bot — health radar](../../../assets/health/dify-enterprise-wechat-bot.svg)
 
 ## When to use
 
@@ -74,9 +74,9 @@ You choose this project over a Wechaty framework or an official WeCom API workfl
 
 ## When NOT to use
 
-- **You need a Tencent-supported production integration that survives desktop-client upgrades.** Use [n8n](../workflow-orchestration/n8n.md) or a small service against the official WeCom API instead; this project depends on Windows and a fixed Enterprise WeChat client version.
+- **You need a Tencent-supported production integration that survives desktop-client upgrades.** Use [n8n](../../workflow-orchestration/n8n.md) or a small service against the official WeCom API instead; this project depends on Windows and a fixed Enterprise WeChat client version.
 - **Every executable in the message path must be source-reviewable.** Evaluate Dify-on-WeChat instead; this project's `dify_helper.exe` is closed, so the repository cannot provide a complete implementation audit.
-- **You need completed Dify Workflow support.** Use [Dify](../agent-frameworks/workflow-builders/dify.md) behind an official WeCom adapter, or orchestrate the API call with n8n; this repository marks its Workflow path as unfinished.
+- **You need completed Dify Workflow support.** Use [Dify](../../agent-frameworks/workflow-builders/dify.md) behind an official WeCom adapter, or orchestrate the API call with n8n; this repository marks its Workflow path as unfinished.
 - **You need macOS, Linux, containers, or a reusable bot framework.** Use Wechaty instead; this project is coupled to a Windows desktop client and helper executable.
 - **Your redistribution or commercial-use policy requires a standard, clearly scoped open-source license.** Choose Dify-on-WeChat or Wechaty only after confirming their current licenses; this repository uses a custom license and GitHub reports `NOASSERTION`.
 - **The repository itself must be free of environment, database, CSV, and log artifacts before entering your supply chain.** Use a minimal official WeCom adapter around Dify or an n8n workflow; this repository requires an explicit sensitive-file review before cloning it into a trusted build context.
@@ -87,8 +87,8 @@ You choose this project over a Wechaty framework or an official WeCom API workfl
 |---|---|---|---|
 | [Dify-on-WeChat](dify-on-wechat.md) | ✅ | For a Dify-to-WeChat bridge where source inspection matters, evaluate Dify-on-WeChat first; choose this project only when its exact Windows Enterprise WeChat helper workflow is required. | Dify-on-WeChat has a different channel and deployment surface that still needs platform-risk review; this project is more specific to the desktop client but includes a closed helper. |
 | [Wechaty](wechaty.md) | ✅ | For a reusable, cross-platform messaging-bot framework, choose Wechaty; choose this project only for its pinned Windows Enterprise WeChat and Dify integration. | Wechaty requires you to build the Dify adapter and manage its puppet risks, while this app provides a narrower ready-made flow tied to a fixed client version. |
-| [n8n](../workflow-orchestration/n8n.md) | ✅ | For an auditable workflow around official WeCom events and Dify API calls, choose n8n; choose this project only when desktop-client automation is an unavoidable compatibility requirement. | n8n adds a workflow service and explicit adapter work but avoids dependence on a closed desktop helper; this project starts narrower and inherits client-version fragility. |
-| [Dify](../agent-frameworks/workflow-builders/dify.md) | ✅ | For the maintained AI application and Workflow backend, choose Dify and connect it through a supported messaging adapter; choose this project only as a Windows-specific client bridge. | Dify is the backend rather than an Enterprise WeChat bot, so integration work remains; this repository supplies that bridge but leaves Workflow incomplete and adds binary trust. |
+| [n8n](../../workflow-orchestration/n8n.md) | ✅ | For an auditable workflow around official WeCom events and Dify API calls, choose n8n; choose this project only when desktop-client automation is an unavoidable compatibility requirement. | n8n adds a workflow service and explicit adapter work but avoids dependence on a closed desktop helper; this project starts narrower and inherits client-version fragility. |
+| [Dify](../../agent-frameworks/workflow-builders/dify.md) | ✅ | For the maintained AI application and Workflow backend, choose Dify and connect it through a supported messaging adapter; choose this project only as a Windows-specific client bridge. | Dify is the backend rather than an Enterprise WeChat bot, so integration work remains; this repository supplies that bridge but leaves Workflow incomplete and adds binary trust. |
 
 ## Tech stack
 

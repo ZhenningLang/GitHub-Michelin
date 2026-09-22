@@ -2,7 +2,7 @@
 name: Dify on WeChat
 slug: dify-on-wechat
 repo: https://github.com/hanfangyuan4396/dify-on-wechat
-category: im-automation
+category: wechat
 tags: [dify, wechat, wecom, official-account, chatbot, channel-adapters]
 language: Python
 license: MIT
@@ -63,7 +63,7 @@ health:
 
 一个源码可审查的 Python 桥，把 Dify 接到多种微信或企业微信 channel adapter；但它不是个人微信全链路开源方案，因为原先推荐的 Gewechat 服务已停止，且从未公开完整服务端实现。
 
-![Dify on WeChat — 健康度雷达](../../assets/health/dify-on-wechat.zh.svg)
+![Dify on WeChat — 健康度雷达](../../../assets/health/dify-on-wechat.zh.svg)
 
 ## 何时使用
 
@@ -75,7 +75,7 @@ health:
 
 你复制配置模板，选择 channel，再填入 Dify application 的 API endpoint、key 和类型。所选 channel adapter 把平台事件转换成统一 message context，bridge 再把 context 分派给 Dify bot。Dify adapter 调用 chatbot、agent、Chatflow 或 Workflow API，解析文本与文件响应，并保留返回的 conversation identifier，最后由 channel 发回回复。Dify deployment、channel credential、plugin 与 channel-specific runtime 由你负责；本仓库只负责 Python routing 与 adapter。
 
-![dify-on-wechat — 主干用户故事](../../assets/flow/dify-on-wechat.zh.svg)
+![dify-on-wechat — 主干用户故事](../../../assets/flow/dify-on-wechat.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/dify-on-wechat.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -99,7 +99,7 @@ health:
 - **你需要持续演进、广泛支持的 multi-channel bot platform。** 改评估 LangBot；Dify on WeChat 最新 release `0.1.26` 发布于 2025-04-13，最后一次 code change 是 2025-04-12，2026-04-03 的 default-branch push 只改了 README。
 - **你要的是 upstream 当前的通用 agent 方向，而不是 Dify-specific bridge。** 评估 CowAgent；GitHub 记录它是本仓库的 4.7 万 star upstream。本 fork 仍聚焦较旧的 Dify 到微信架构，adoption signal 也小得多。
 - **你必须复现开箱即用的 Windows 企业微信桌面原型，并接受 closed helper。** 用 [Dify Enterprise WeChat Bot](dify-enterprise-wechat-bot.zh.md) 走它的精确 compatibility path；Dify on WeChat 暴露了更多源码与 channel 选择，但 `wework` 通道同样依赖旧客户端与外部 `ntwork` wheel。
-- **你要的是运维承诺，而不只是可检查源码。** 围绕腾讯官方 API 建一个窄 integration，必要时用 [n8n](../workflow-orchestration/n8n.zh.md) 编排；这个 drifting repository 有 125 个 open issue，2025-04 后没有 code release。
+- **你要的是运维承诺，而不只是可检查源码。** 围绕腾讯官方 API 建一个窄 integration，必要时用 [n8n](../../workflow-orchestration/n8n.zh.md) 编排；这个 drifting repository 有 125 个 open issue，2025-04 后没有 code release。
 
 ## 横向对比
 

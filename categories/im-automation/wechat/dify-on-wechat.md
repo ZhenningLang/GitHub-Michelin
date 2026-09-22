@@ -2,7 +2,7 @@
 name: Dify on WeChat
 slug: dify-on-wechat
 repo: https://github.com/hanfangyuan4396/dify-on-wechat
-category: im-automation
+category: wechat
 tags: [dify, wechat, wecom, official-account, chatbot, channel-adapters]
 language: Python
 license: MIT
@@ -63,7 +63,7 @@ health:
 
 A source-reviewable Python bridge between Dify and several WeChat or WeCom channel adapters, but not a fully open personal-WeChat stack: its formerly recommended Gewechat service has stopped and never published its complete server implementation.
 
-![Dify on WeChat — health radar](../../assets/health/dify-on-wechat.svg)
+![Dify on WeChat — health radar](../../../assets/health/dify-on-wechat.svg)
 
 ## When to use
 
@@ -75,7 +75,7 @@ Choose the channel before choosing the project. Its source-visible official-acco
 
 You copy the configuration template, select a channel, and provide the chosen Dify application's API endpoint, key, and type. The selected channel adapter turns each incoming platform event into a common message context, and the bridge dispatches that context to the Dify bot. The Dify adapter calls the chatbot, agent, Chatflow, or Workflow API, parses text and file responses, and keeps the returned conversation identifier before the channel sends the reply. You own the Dify deployment, channel credentials, plugins, and channel-specific runtime; this repository owns only the Python routing and adapters.
 
-![dify-on-wechat — backbone user story](../../assets/flow/dify-on-wechat.svg)
+![dify-on-wechat — backbone user story](../../../assets/flow/dify-on-wechat.svg)
 
 <!-- flow-steps:begin (generated from flows/dify-on-wechat.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -99,7 +99,7 @@ You copy the configuration template, select a channel, and provide the chosen Di
 - **You need an actively evolving, broadly supported multi-channel bot platform.** Evaluate LangBot instead; Dify on WeChat's last release was `0.1.26` on 2025-04-13, its last code change was 2025-04-12, and the 2026-04-03 default-branch push changed only the README.
 - **You want the upstream project's current general-purpose agent direction rather than a Dify-specific bridge.** Evaluate CowAgent, the 47k-star upstream from which GitHub records this repository as a fork; this fork remains focused on the older Dify-to-WeChat architecture and has a much smaller adoption signal.
 - **You require a turnkey Windows Enterprise WeChat desktop prototype and accept a closed helper.** Use [Dify Enterprise WeChat Bot](dify-enterprise-wechat-bot.md) for that exact compatibility path; Dify on WeChat exposes more source and channel choice, but its `wework` route also depends on an old client and an external `ntwork` wheel.
-- **You need an operational promise rather than source to evaluate.** Build a narrow integration on official Tencent APIs, optionally orchestrated with [n8n](../workflow-orchestration/n8n.md); this drifting repository has 125 open issues and no code release after 2025-04.
+- **You need an operational promise rather than source to evaluate.** Build a narrow integration on official Tencent APIs, optionally orchestrated with [n8n](../../workflow-orchestration/n8n.md); this drifting repository has 125 open issues and no code release after 2025-04.
 
 ## Comparison
 

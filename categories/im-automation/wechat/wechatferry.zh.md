@@ -2,7 +2,7 @@
 name: WeChatFerry
 slug: wechatferry
 repo: https://github.com/lich0821/WeChatFerry
-category: im-automation
+category: wechat
 tags: [wechat, personal-account, windows, dll-injection, rpc, python, archived, version-pinned]
 language: C++
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 一个已经归档的 Windows 微信客户端 hook 与本地 RPC 库。原仓库只应当作研究和兼容性快照，不应作为新部署的在维护依赖。
 
-![WeChatFerry — 健康度雷达](../../assets/health/wechatferry.zh.svg)
+![WeChatFerry — 健康度雷达](../../../assets/health/wechatferry.zh.svg)
 
 > **已经归档：** 截至 2026-09-22，GitHub 报告该仓库已变为只读。维护者曾在 2025-05-25 的 `final commit` 中把整个代码树替换为“因为不抗因素，停止维护。”；这次破坏性提交在 2026-03-21 被回滚，此后又发布了 `v39.5.2`，但仓库后来仍被归档，且没有点名后继项目。GitHub 仓库 API 不提供确切归档日期。
 
@@ -84,7 +84,7 @@ health:
 
 Python 包会加载 `sdk.dll`，由它打开 Windows 微信进程，并通过远程线程加载项目的 spy DLL。注入组件读取并调用与版本绑定的客户端内部能力，再通过本地 NNG RPC 提供命令和入站消息；你的 Python 进程创建 `Wcf`、开启消息接收并消费队列。你负责编写机器人逻辑，WeChatFerry 负责注入和 RPC 桥接。最终发布版把这条路径绑定到微信 `3.9.12.51`，换一个客户端构建就可能让偏移失效。
 
-![wechatferry — 主干用户故事](../../assets/flow/wechatferry.zh.svg)
+![wechatferry — 主干用户故事](../../../assets/flow/wechatferry.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/wechatferry.json by tools/flow_card.py — do not edit) -->
 <details>

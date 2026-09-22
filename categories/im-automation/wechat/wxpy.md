@@ -2,7 +2,7 @@
 name: wxpy
 slug: wxpy
 repo: https://github.com/youfou/wxpy
-category: im-automation
+category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account, itchat]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 An elegant Python API for WeChat **personal** accounts — a friendly, higher-level wrapper over [ItChat](itchat.md)'s web-WeChat protocol, historically used to build chatbots and account automation. **Read this plainly: the repo was archived in 2019-07 (read-only, abandoned), and the WeChat web (`wx.qq.com`) login protocol it relies on — the very same one ItChat uses — has been largely shut down, so for most accounts wxpy no longer logs in or works at all.** It survives as reference code and nostalgia, not as a tool you can ship today.
 
-![wxpy — health radar](../../assets/health/wxpy.svg)
+![wxpy — health radar](../../../assets/health/wxpy.svg)
 
 ## When to use
 

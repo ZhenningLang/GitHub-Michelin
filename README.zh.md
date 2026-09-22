@@ -727,19 +727,19 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **ItChat** | 仅作为旧版微信机器人代码学习——已停更，且其依赖的网页协议已失效，基本不可用。 | MIT | C（4/6） | [中](categories/im-automation/itchat.zh.md) · [EN](categories/im-automation/itchat.md) |
-| **WeChatPlugin-MacOS** | 当前微信别用——一个 patch macOS 微信客户端二进制的小助手，每次微信更新就失效、已 ~2 年没动；有封号与安全风险。 | MIT | D（3/6） | [中](categories/im-automation/wechatplugin-macos.zh.md) · [EN](categories/im-automation/wechatplugin-macos.md) |
-| **wxpy** | 仅作为旧版微信机器人代码学习——2019 年起已归档，且基于已失效的微信网页协议，基本不可用。 | MIT | D（5/6） | [中](categories/im-automation/wxpy.zh.md) · [EN](categories/im-automation/wxpy.md) |
-| **wxappUnpacker** | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 | GPL-3.0-or-later | E（4/6） | [中](categories/im-automation/wxappunpacker.zh.md) · [EN](categories/im-automation/wxappunpacker.md) |
+| **ItChat** | 仅作为旧版微信机器人代码学习——已停更，且其依赖的网页协议已失效，基本不可用。 | MIT | C（4/6） | [中](categories/im-automation/wechat/itchat.zh.md) · [EN](categories/im-automation/wechat/itchat.md) |
+| **WeChatPlugin-MacOS** | 当前微信别用——一个 patch macOS 微信客户端二进制的小助手，每次微信更新就失效、已 ~2 年没动；有封号与安全风险。 | MIT | D（3/6） | [中](categories/im-automation/wechat/wechatplugin-macos.zh.md) · [EN](categories/im-automation/wechat/wechatplugin-macos.md) |
+| **wxpy** | 仅作为旧版微信机器人代码学习——2019 年起已归档，且基于已失效的微信网页协议，基本不可用。 | MIT | D（5/6） | [中](categories/im-automation/wechat/wxpy.zh.md) · [EN](categories/im-automation/wechat/wxpy.md) |
+| **wxappUnpacker** | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 | GPL-3.0-or-later | E（4/6） | [中](categories/im-automation/wechat/wxappunpacker.zh.md) · [EN](categories/im-automation/wechat/wxappunpacker.md) |
 | **Douyin-Bot** | 仅当你想要一份 ADB 屏幕坐标手机自动化的历史示例时用它——切勿部署，2018 年的硬编码坐标与失效的腾讯人脸 API 意味着它早已跑不通。 | MIT | D（3/6） | [中](categories/im-automation/douyin-bot.zh.md) · [EN](categories/im-automation/douyin-bot.md) |
-| **WeChat Bot** | 当一个 Node CLI 必须把微信、飞书、Telegram 与 WhatsApp 接到多个 LLM 时用它——个人微信仍走非官方通道，并伴随账号风险。 | MIT | B（5/6） | [中](categories/im-automation/wechat-bot.zh.md) · [EN](categories/im-automation/wechat-bot.md) |
-| **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/chatgpt-wechat-bot.md) |
+| **WeChat Bot** | 当一个 Node CLI 必须把微信、飞书、Telegram 与 WhatsApp 接到多个 LLM 时用它——个人微信仍走非官方通道，并伴随账号风险。 | MIT | B（5/6） | [中](categories/im-automation/wechat/wechat-bot.zh.md) · [EN](categories/im-automation/wechat/wechat-bot.md) |
+| **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/wechat/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/chatgpt-wechat-bot.md) |
 | **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | B（5/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
-| **Dify Enterprise WeChat Bot** | 仅用于维持固定 Windows 企业微信到 Dify 的桌面集成——项目已停滞、包含闭源 helper，Workflow 支持也未完成。 | NOASSERTION | C（3/6） | [中](categories/im-automation/dify-enterprise-wechat-bot.zh.md) · [EN](categories/im-automation/dify-enterprise-wechat-bot.md) |
-| **Wechaty** | 许多个人号机器人背后的多语言可复用框架：adapter 与命令层要自己掌控，押注某条通道前先确认各 provider 现状。 | Apache-2.0 | C（5/6） | [中](categories/im-automation/wechaty.zh.md) · [EN](categories/im-automation/wechaty.md) |
-| **CowAgent** | Python-first、多通道、模型后端可插拔的助手；即更名后的 `zhayujie/chatgpt-on-wechat`，通道已换成 iLink，而非被删除的个人号路径。 | MIT | A（5/6） | [中](categories/im-automation/cowagent.zh.md) · [EN](categories/im-automation/cowagent.md) |
-| **WeChatFerry** | 不要部署：维护者已归档，发版钉在旧版 Windows 微信上，整套方案是客户端注入。 | MIT | D（5/6） | [中](categories/im-automation/wechatferry.zh.md) · [EN](categories/im-automation/wechatferry.md) |
-| **Dify on WeChat** | 端到端可源码审查的 Dify 到微信桥接——但自 2025-04 起没有代码变更，且仍带个人号通道风险。 | MIT | B（3/6） | [中](categories/im-automation/dify-on-wechat.zh.md) · [EN](categories/im-automation/dify-on-wechat.md) |
+| **Dify Enterprise WeChat Bot** | 仅用于维持固定 Windows 企业微信到 Dify 的桌面集成——项目已停滞、包含闭源 helper，Workflow 支持也未完成。 | NOASSERTION | C（3/6） | [中](categories/im-automation/wechat/dify-enterprise-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/dify-enterprise-wechat-bot.md) |
+| **Wechaty** | 许多个人号机器人背后的多语言可复用框架：adapter 与命令层要自己掌控，押注某条通道前先确认各 provider 现状。 | Apache-2.0 | C（5/6） | [中](categories/im-automation/wechat/wechaty.zh.md) · [EN](categories/im-automation/wechat/wechaty.md) |
+| **CowAgent** | Python-first、多通道、模型后端可插拔的助手；即更名后的 `zhayujie/chatgpt-on-wechat`，通道已换成 iLink，而非被删除的个人号路径。 | MIT | A（5/6） | [中](categories/im-automation/wechat/cowagent.zh.md) · [EN](categories/im-automation/wechat/cowagent.md) |
+| **WeChatFerry** | 不要部署：维护者已归档，发版钉在旧版 Windows 微信上，整套方案是客户端注入。 | MIT | D（5/6） | [中](categories/im-automation/wechat/wechatferry.zh.md) · [EN](categories/im-automation/wechat/wechatferry.md) |
+| **Dify on WeChat** | 端到端可源码审查的 Dify 到微信桥接——但自 2025-04 起没有代码变更，且仍带个人号通道风险。 | MIT | B（3/6） | [中](categories/im-automation/wechat/dify-on-wechat.zh.md) · [EN](categories/im-automation/wechat/dify-on-wechat.md) |
 | **OpeniLink Go SDK** | 嵌进现有 Go 服务的原始 iLink 传输层：信任边界最小，持久化、认证、重试与运维由你承担。 | MIT | C（4/6） | [中](categories/im-automation/openilink-sdk-go.zh.md) · [EN](categories/im-automation/openilink-sdk-go.md) |
 ### web-ui
 

@@ -2,7 +2,7 @@
 name: WeChatPlugin-MacOS
 slug: wechatplugin-macos
 repo: https://github.com/TKkk-iOSer/WeChatPlugin-MacOS
-category: im-automation
+category: wechat
 tags: [wechat, macos, im-automation, anti-revoke, auto-reply, objective-c, binary-patch, deprecated]
 language: Objective-C
 license: MIT
@@ -63,7 +63,7 @@ health:
 
 A macOS WeChat **client tweak** (微信小助手) — anti-revoke, auto-reply, remote control, multi-instance, and assorted UI conveniences — by **injecting a plugin into WeChat.app on macOS**. **Read this plainly: it works by patching the WeChat client binary against a *specific* WeChat version, so it breaks whenever WeChat updates; the repo has been idle ~2 years (last pushed 2024-06) and targets old WeChat builds, so on a current WeChat it is almost certainly non-functional.**
 
-![wechatplugin-macos — health radar](../../assets/health/wechatplugin-macos.svg)
+![wechatplugin-macos — health radar](../../../assets/health/wechatplugin-macos.svg)
 
 ## When to use
 

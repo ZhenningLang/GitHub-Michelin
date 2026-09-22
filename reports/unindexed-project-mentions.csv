@@ -15,14 +15,14 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
-`lich0821/wcfLink`,categories/im-automation/wechatferry.md,,no
+`lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
 `openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-python`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-tg`,categories/im-automation/openilink-hub.md,,no
 `opensearch-py` / opensearch-dsl-py,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
-`python-wechaty`,categories/im-automation/wechaty.md,,no
+`python-wechaty`,categories/im-automation/wechat/wechaty.md,,no
 `redis-cli --bigkeys` / `--memkeys`,categories/databases/database-clients/rdr.md,,no
 `requests` + `concurrent.futures`,categories/python-tooling/grequests.md,,no
 `socket.getaddrinfo` (stdlib),categories/networking/dnspython.md,,no
@@ -217,7 +217,7 @@ Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cybe
 Custom shell wrappers,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
 Custom terse-response rule,categories/agent-skills/engineering/caveman.md,,no
-Custom unpack scripts,categories/im-automation/wxappunpacker.md,,no
+Custom unpack scripts,categories/im-automation/wechat/wxappunpacker.md,,no
 Custom voice guide,categories/agent-skills/context-engineering/soul-md.md,,no
 Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
@@ -395,7 +395,7 @@ IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
 InvokeAI,categories/on-device-ml/comfyui.md,,no
 It-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
-itchat-uos (community fork),categories/im-automation/itchat.md,,no
+itchat-uos (community fork),categories/im-automation/wechat/itchat.md,,no
 iTerm2,categories/terminal-ui/alacritty.md,,no
 JACK / PulseAudio,categories/media-processing/video-audio/gstreamer.md,,no
 Java/Scala official client,categories/kafka-tools/kafka-python.md,,no
@@ -425,7 +425,7 @@ Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
 Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
-LangBot,categories/im-automation/dify-on-wechat.md,,no
+LangBot,categories/im-automation/wechat/dify-on-wechat.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
 LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
@@ -554,7 +554,7 @@ Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,n
 Office-PowerPoint-MCP-Server,categories/office-automation/INDEX.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 "Official paper repos (StyleGAN, CycleGAN, …)",categories/ml-research/pytorch-gan.md,,no
-Official WeChat (no plugin),categories/im-automation/wechatplugin-macos.md,,no
+Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.md,,no
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
 One API,categories/api-gateway/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
@@ -584,7 +584,7 @@ OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-
 osint.industries,categories/osint/ghunt.md,,no
 OSWorld / WebArena (benchmarks),categories/web-automation/agent-browser-tools/cua.md,,no
 Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
-Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wxappunpacker.md,,no
+Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
 PaddleNLP / ERNIE,categories/ml-research/senta.md,,no
@@ -666,7 +666,7 @@ Qdrant,categories/rag-retrieval/faiss.md,,no
 QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
 Quartz,categories/task-queue/INDEX.md,,no
 Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
-qwerty472123/wxappUnpacker (upstream),categories/im-automation/wxappunpacker.md,,no
+qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no
 RAPTOR,categories/rag-retrieval/pageindex.md,,no
 Rasa,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
@@ -816,11 +816,11 @@ Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
 Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/whisper.md,,no
 Web Animations API (WAAPI),categories/frontend-animation/anime.md,,no
 Webmin,categories/dev-utilities/ops-infra/cockpit.md,,no
-WeChat Official Account / Mini-Program server APIs,categories/im-automation/itchat.md,,no
-WeChatTweak-macOS (Sunnyyoung fork/successor),categories/im-automation/wechatplugin-macos.md,,no
-WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechatplugin-macos.md,,no
-WeCom / Official WeChat APIs,categories/im-automation/chatgpt-wechat-bot.md,,no
-WeCom / Official WeChat Work API,categories/im-automation/itchat.md,,no
+WeChat Official Account / Mini-Program server APIs,categories/im-automation/wechat/itchat.md,,no
+WeChatTweak-macOS (Sunnyyoung fork/successor),categories/im-automation/wechat/wechatplugin-macos.md,,no
+WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechat/wechatplugin-macos.md,,no
+WeCom / Official WeChat APIs,categories/im-automation/openilink-hub.md,,no
+WeCom / Official WeChat Work API,categories/im-automation/wechat/itchat.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
 "Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/de-ai-writing/humanizer-zh.md,,no

@@ -4,7 +4,7 @@ slug: cowagent
 repo: https://github.com/zhayujie/CowAgent
 homepage: https://cowagent.ai
 aka: chatgpt-on-wechat
-category: im-automation
+category: wechat
 tags: [ai-agent, multi-channel, wechat, ilink, multi-model, skills, memory, self-hosted]
 language: Python
 license: MIT
@@ -74,7 +74,7 @@ health:
 
 一个自托管 Python agent harness，把带工具、记忆与知识库的助手接到 Web console 和十二种已记录的 IM 通道；它是 `zhayujie/chatgpt-on-wechat` 更名后的延续，不是新仓库，也不与已收录的 `AutumnWhj/ChatGPT-wechat-bot` 重复。
 
-![CowAgent — 健康度雷达](../../assets/health/cowagent.zh.svg)
+![CowAgent — 健康度雷达](../../../assets/health/cowagent.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ health:
 
 安装脚本建立本地服务并打开 Web console，你在其中选择模型凭据、通道、权限、skill 与 Agent workspace。通道消息进入统一 bridge 后，agent core 会规划本轮任务，并可调用工具、skill、记忆、知识库或委派其他 Agent，最后由原通道发回结果。CowAgent 提供 runtime 与 adapter；凭据、通道侧注册、模型费用、权限范围和它能控制的主机仍由你负责。Web 默认只监听本机，但 server 与 Docker 部署可在你明确配置认证和网络后对外开放。
 
-![cowagent — 主干用户故事](../../assets/flow/cowagent.zh.svg)
+![cowagent — 主干用户故事](../../../assets/flow/cowagent.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/cowagent.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,7 +108,7 @@ health:
 - **你需要腾讯支持的生产契约，而不是项目集成的个人助手。** 改用已注册的企业微信应用、企业微信 bot、微信公众号或微信客服 API；CowAgent 能连接其中多种官方通道，而微信直连 iLink 路径是不同的单聊 bot 形态，本页没有独立确认其长期政策契约。
 - **你不能接受任何个人微信账号政策不确定性。** 不要启用微信直连通道，改让 CowAgent 通过企业微信、公众号、飞书、Telegram、Slack 或其他平台批准的 bot 路径服务；这条仓库血缘曾停用较早的 `wx` 实现来规避封号，尽管旧实现已在当前 iLink adapter 加入前删除。
 - **你只需要轻量多通道 LLM relay。** 改用 [WeChat Bot](wechat-bot.zh.md) 或平台 SDK；CowAgent 还带自治工具、workspace、多 Agent 状态、记忆、知识库、skill 和 Web 应用，安全面与升级面大得多。
-- **你需要专门管理多个 iLink bot，并要求持久 trace、Webhook、App 与 PostgreSQL／S3 扩展路径。** 改用 [OpeniLink Hub](openilink-hub.zh.md)；CowAgent 以助手及其 agent runtime 为中心，不是 fleet administration 和消息平台可观测性系统。
+- **你需要专门管理多个 iLink bot，并要求持久 trace、Webhook、App 与 PostgreSQL／S3 扩展路径。** 改用 [OpeniLink Hub](../openilink-hub.zh.md)；CowAgent 以助手及其 agent runtime 为中心，不是 fleet administration 和消息平台可观测性系统。
 - **助手绝不能在宿主机上执行操作。** 改用只读 chat application，或把 CowAgent 隔离在受限 workspace 的 container 中；随仓库提供的配置启用了 agent mode 与 `full-access`，terminal、file、browser、MCP、scheduler 和 skill 都让宿主权限成为首要设计问题。
 - **你需要小型、可嵌入的 Python library。** 改用 provider SDK 加官方 channel SDK，或选择为嵌入设计的 agent framework；CowAgent 是完整应用，包含 service、Web UI、本地状态布局、plugin、channel adapter 和运行生命周期。
 
@@ -117,7 +117,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.zh.md) | ✅ | 如果更窄的 Node.js CLI、直接模型路由与本地微信分析已经够用，选 WeChat Bot；如果工具、记忆、知识库、多 Agent 团队、skill 与更完整的助手 runtime 决定任务，选 CowAgent。 | WeChat Bot 概念面更小，但个人微信使用非官方 Wechaty 路径；CowAgent 重得多，当前微信直连使用较新的 iLink bot endpoint，并且只支持一对一聊天。 |
-| [OpeniLink Hub](openilink-hub.zh.md) | ✅ | 如果要用用户、trace、App、Webhook 和持久平台状态运营多个 iLink bot，选 OpeniLink Hub；如果 bot 本身要规划、用工具、记忆和委派任务，选 CowAgent。 | Hub 明确提供消息 control plane，也增加数据库、认证和 registry 运维；CowAgent 提供 agent brain 与多通道 adapter，却不是专门的 iLink fleet console。 |
+| [OpeniLink Hub](../openilink-hub.zh.md) | ✅ | 如果要用用户、trace、App、Webhook 和持久平台状态运营多个 iLink bot，选 OpeniLink Hub；如果 bot 本身要规划、用工具、记忆和委派任务，选 CowAgent。 | Hub 明确提供消息 control plane，也增加数据库、认证和 registry 运维；CowAgent 提供 agent brain 与多通道 adapter，却不是专门的 iLink fleet console。 |
 | [ChatGPT-wechat-bot](chatgpt-wechat-bot.zh.md) | ✅ | 只在考古小型 2022 年 Wechaty／ChatGPT demo 时使用 ChatGPT-wechat-bot；需要另一条仓库血缘中持续发布、支持当前模型与通道的 agent application 时，选 CowAgent。 | 旧 demo 更容易读，却已陈旧且不适合运行；CowAgent 维护活跃、能力广得多，代价是代码库和信任边界也大得多。 |
 | [Wechaty](wechaty.zh.md) | ✅ | 如果需要可嵌入的 event API，并希望在可替换 Puppet provider 之上自行控制 bot logic，选 Wechaty；如果需求是已经集成模型、工具、记忆、skill 与通道配置的完整助手，选 CowAgent。 | Wechaty 观点更少，应用归你控制，但 provider 选择与运维也归你承担；CowAgent 更快落成 agent assistant，同时带来大得多的 runtime 与信任边界。 |
 

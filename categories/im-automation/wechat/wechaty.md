@@ -3,7 +3,7 @@ name: Wechaty
 slug: wechaty
 repo: https://github.com/wechaty/wechaty
 homepage: https://wechaty.js.org
-category: im-automation
+category: wechat
 tags: [chatbot, conversational-rpa, wechat, whatsapp, puppet, provider-abstraction, typescript]
 language: TypeScript
 license: Apache-2.0
@@ -74,7 +74,7 @@ health:
 
 A TypeScript conversational-RPA framework that puts WeChat, WhatsApp, WeCom, and other IM backends behind one event-driven API and replaceable Puppet provider layer; the abstraction is mature, but provider viability and personal-account enforcement risk must be checked separately.
 
-![Wechaty — health radar](../../assets/health/wechaty.svg)
+![Wechaty — health radar](../../../assets/health/wechaty.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ Choose Wechaty over [WeChat Bot](wechat-bot.md) when the reusable framework and 
 
 Your bot imports Wechaty, registers handlers for events such as scan, login, and message, and replies through the framework's `Message`, `Contact`, and `Room` objects. A Puppet implements the platform-specific transport, either in-process or behind the gRPC Puppet Service interface; you choose and operate that provider. Wechaty normalizes the provider's events into one API, but it does not make an unofficial provider authorized or stable.
 
-![wechaty — backbone user story](../../assets/flow/wechaty.svg)
+![wechaty — backbone user story](../../../assets/flow/wechaty.svg)
 
 <!-- flow-steps:begin (generated from flows/wechaty.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,7 +106,7 @@ Your bot imports Wechaty, registers handlers for events such as scan, login, and
 ## When NOT to use
 
 - **You need a Tencent-supported production channel or cannot risk a personal account.** Use WeCom, WeChat Official Account, or Mini Program APIs instead; Tencent's Weixin agreement forbids automated operations and access through unauthorized third-party software, and permits warnings, restrictions, bans, or account cancellation for breaches.
-- **You expect the framework to supply a currently reliable personal-WeChat transport.** Use an official Tencent surface, or evaluate [OpeniLink Hub](openilink-hub.md) only after accepting its explicit non-affiliation and protocol risks; Wechaty's documented Web Puppet says the UOS workaround stopped logging in in 2022, while 2025–2026 issue reports describe scan-login restrictions and bans.
+- **You expect the framework to supply a currently reliable personal-WeChat transport.** Use an official Tencent surface, or evaluate [OpeniLink Hub](../openilink-hub.md) only after accepting its explicit non-affiliation and protocol risks; Wechaty's documented Web Puppet says the UOS workaround stopped logging in in 2022, while 2025–2026 issue reports describe scan-login restrictions and bans.
 - **You want a ready-made multi-channel AI assistant rather than an SDK.** Use [WeChat Bot](wechat-bot.md) when its model adapters, allowlists, local capture, and analysis commands fit; Wechaty gives you primitives and events, leaving prompts, storage, routing, and operations to your application.
 - **You need one official WhatsApp integration.** Use Meta's official WhatsApp Cloud API and SDKs instead; the documented Wechaty WhatsApp Puppet is alpha, implements only a narrow feature subset, and its repository was last pushed in 2024-01.
 - **You require a provider with a published SLA, privacy policy, and current compatibility proof.** Contract directly with an official platform provider instead; Wechaty's service documentation still leaves these fields unfinished for some providers, and several provider repositories have not moved since 2022–2024.
@@ -117,7 +117,7 @@ Your bot imports Wechaty, registers handlers for events such as scan, login, and
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [WeChat Bot](wechat-bot.md) | ✅ | Choose Wechaty when you need a reusable event API and swappable provider boundary; choose WeChat Bot when its CLI, LLM adapters, and chat-analysis workflow are the product you want. | Wechaty is less opinionated and more embeddable; WeChat Bot reaches a working assistant faster but adds a broader dependency and privacy surface. |
-| [OpeniLink Hub](openilink-hub.md) | ✅ | Choose OpeniLink Hub when several iLink-connected bots need a persistent web control plane, users, traces, and Apps; choose Wechaty when bot behavior belongs in code and transport interchangeability matters more. | Hub supplies operations and persistence but centralizes more sensitive state; Wechaty keeps the application boundary yours but makes you assemble and operate it. |
+| [OpeniLink Hub](../openilink-hub.md) | ✅ | Choose OpeniLink Hub when several iLink-connected bots need a persistent web control plane, users, traces, and Apps; choose Wechaty when bot behavior belongs in code and transport interchangeability matters more. | Hub supplies operations and persistence but centralizes more sensitive state; Wechaty keeps the application boundary yours but makes you assemble and operate it. |
 | `python-wechaty` | not indexed | Choose `python-wechaty` when Python is non-negotiable and you accept the Puppet Service boundary; choose this TypeScript repository for the canonical Node API and its larger historical implementation base. | The Python SDK fits Python services but still depends on a compatible Puppet; the TypeScript core has the deepest history yet a slow current release cadence. |
 | WeCom / official WeChat APIs | not a repo | Choose an official Tencent API for production compliance, documented credentials, and account support; choose Wechaty only when its cross-platform abstraction is worth independently validating every provider. | Official APIs cover enterprise, public-account, and Mini Program workflows rather than arbitrary personal-account automation; Wechaty is more uniform across IMs but cannot confer platform authorization. |
 
