@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "Prime Agent does", "zh": "Prime Agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install, then start it in a clone you can restore", "zh": "装上，在可还原的克隆里启动", "code": "prime-agent", "phase": {"en": "Set up", "zh": "搭建"}},
+    {"lane": "them", "en": "Starts the TUI, a daemon worker, and a persistent Python kernel", "zh": "拉起 TUI、daemon worker 和持久 Python 内核", "component": {"en": "daemon + kernel", "zh": "daemon 与内核"}},
+    {"lane": "you", "en": "Authenticate a subscription or API-key provider", "zh": "登录订阅或填入 API key", "code": "/login"},
+    {"lane": "them", "en": "Stores tokens in ~/.prime/agent/auth.json", "zh": "把令牌写进 ~/.prime/agent/auth.json", "component": {"en": "auth.json", "zh": "auth.json"}},
+    {"lane": "you", "en": "Give a long coding or research task", "zh": "丢给它一个长编码或研究任务", "phase": {"en": "Each task", "zh": "每个任务"}},
+    {"lane": "them", "en": "The model inspects files in Python and spawns child agents in code", "zh": "模型用 Python 翻文件，并用代码派子 agent", "code": "rlm.spawn(...)", "component": {"en": "Python kernel", "zh": "Python 内核"}},
+    {"lane": "them", "en": "Keeps the session running after you detach; reattach later", "zh": "你断开后会话继续跑，之后可再挂上", "code": "prime-agent attach <agent>", "component": {"en": "session worker", "zh": "会话 worker"}}
+  ],
+  "value": {
+    "en": "You no longer stuff the whole working set into the chat window: the model programs over it, and the session survives a closed terminal",
+    "zh": "你不用再把整份工作材料塞进对话窗口：模型对着它写程序，关掉终端会话也还在"
+  },
+  "sources": [
+    "README.md Install + Getting Started (curl --proto '=https' --proto-redir '=https' -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh; cd /path/to/project; prime-agent; /login; warning that workers/kernels are not a security sandbox; prime-agent attach <agent>)",
+    "packages/coding-agent/docs/index.md (same install command; ANTHROPIC_API_KEY before launch; npm workspace names are implementation details, not the public install path)",
+    "packages/coding-agent/docs/providers.md (/login subscriptions; tokens in ~/.prime/agent/auth.json; PI_OFFLINE=1 skips network model-list refresh)",
+    "packages/coding-agent/docs/rlm.md (one built-in model tool is the persistent Python kernel; rlm.spawn(...) returns an admission handle; results via agent_message or files)",
+    "packages/coding-agent/docs/architecture.md (TUI client → AgentConnection → daemon supervisor → session worker with AgentSession + Python kernel + child runtimes; workers/kernels are not sandboxes)"
+  ]
+}
