@@ -236,6 +236,7 @@ https://github.com/f/prompts.chat,prompts-chat,prompt-engineering,categories/age
 https://github.com/facebook/docusaurus,docusaurus,frameworks,categories/web-ui/frameworks/docusaurus.md
 https://github.com/facebook/openzl,openzl,data-tools,categories/dev-utilities/data-tools/openzl.md
 https://github.com/facebook/react,react,frameworks,categories/web-ui/frameworks/react.md
+https://github.com/facebook/rebalancer,rebalancer,optimization-solvers,categories/optimization-solvers/rebalancer.md
 https://github.com/facebookarchive/memory-analyzer,memory-analyzer,python-tooling,categories/python-tooling/memory-analyzer.md
 https://github.com/facebookresearch/faiss,faiss,rag-retrieval,categories/rag-retrieval/faiss.md
 https://github.com/faker-js/faker,faker-js,data-tools,categories/dev-utilities/data-tools/faker-js.md
