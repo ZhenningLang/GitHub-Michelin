@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 import tempfile
@@ -14,15 +15,18 @@ import verify_quality_batch
 from test_quality_scan import commit_all, init_git_repo, write_page
 
 
-REQUIRED_GATED_CATEGORIES = {
-    "generic-comparison-template",
-    "indexed-page-marked-non-repo",
-    "indexed-page-marked-not-indexed",
-    "zh-link-to-english-sibling",
-    "composite-alternative-partly-indexed",
-    "truncation-fragment",
-    "intake-stub-page-reverified",
-}
+def documented_gated_categories() -> set[str]:
+    """The gated list as AGENTS.md documents it.
+
+    The set used to be hand-copied here as a third literal, which drifted twice in one session
+    when a new gate was added to the scanner and to AGENTS.md but not to this file. Reading the
+    documented list instead makes the contract in AGENTS.md the single source of truth and turns
+    any divergence between doc and code into a test failure.
+    """
+    agents_md = Path(__file__).resolve().parents[1] / "AGENTS.md"
+    match = re.search(r"deterministic categories\s*\(([^)]*)\)", agents_md.read_text(encoding="utf-8"))
+    assert match, "AGENTS.md no longer documents the gated deterministic categories"
+    return set(re.findall(r"`([^`]+)`", match.group(1)))
 
 
 def run_verifier(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
@@ -94,9 +98,9 @@ class VerifyQualityBatchTest(unittest.TestCase):
                 self.assertIn("0 project pages scanned", completed.stdout)
                 self.assertIn("Final: FAIL", completed.stdout)
 
-    def test_required_gated_categories_match_scanner_constant(self) -> None:
-        self.assertEqual(quality_scan.GATED_DETERMINISTIC_CATEGORIES, REQUIRED_GATED_CATEGORIES)
-        self.assertEqual(verify_quality_batch.GATED_CATEGORIES, REQUIRED_GATED_CATEGORIES)
+    def test_gated_categories_match_documented_contract(self) -> None:
+        self.assertEqual(quality_scan.GATED_DETERMINISTIC_CATEGORIES, documented_gated_categories())
+        self.assertEqual(verify_quality_batch.GATED_CATEGORIES, documented_gated_categories())
 
     def test_diff_check_failure_under_scope_fails_verifier(self) -> None:
         with tempfile.TemporaryDirectory() as td:
