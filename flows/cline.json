@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "Cline does", "zh": "Cline 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it where you work — editor extension, terminal CLI, or desktop app", "zh": "装在你干活的地方：编辑器扩展、终端 CLI 或桌面端", "code": "npm i -g cline"},
+    {"lane": "you", "en": "Point it at a model — your own provider key, a gateway, or a local model", "zh": "接上一个模型：自己的 key、网关或本地模型", "code": "Anthropic · Bedrock · OpenRouter · Ollama"},
+    {"lane": "you", "en": "Describe the job in Plan mode, and write down the project rules it must follow", "zh": "在 Plan 模式里说清任务，写下它必须遵守的项目规则", "code": ".clinerules"},
+    {"lane": "them", "en": "Reads the repo, asks its questions, and lays out a strategy — changing nothing yet", "zh": "读仓库、提问、给出方案——此时一个文件都不改"},
+    {"lane": "you", "en": "Switch to Act mode and approve each edit and command it proposes", "zh": "切到 Act 模式，逐条批准它提议的改动和命令"},
+    {"lane": "them", "en": "Edits across files, runs your tests and build, and fixes the linter errors it caused", "zh": "跨文件改代码、跑测试和构建，并修掉自己引发的报错"},
+    {"lane": "them", "en": "Checkpoints every step, so you can review any diff or roll the whole run back", "zh": "每一步都打 checkpoint，diff 可回看，整轮可回滚"}
+  ],
+  "value": {
+    "en": "Agent-speed edits without handing over the keyboard — every file write and command is one you saw, and any step can be undone",
+    "zh": "拿到 agent 速度的改动，但键盘没交出去：每次写文件和跑命令你都看过，任何一步都能撤销"
+  },
+  "sources": [
+    "README.md install table (VS Code marketplace itemName=saoudrizwan.claude-dev, JetBrains plugin, npm i -g cline, desktop app, @cline/sdk)",
+    "README.md 'Works With Every Model' (Anthropic, OpenAI, Google, OpenRouter, Bedrock, Vertex, Cerebras/Groq, Ollama/LM Studio, any OpenAI-compatible API)",
+    "README.md 'Plan and Act' (Plan mode explores and asks; Act mode executes; every file edit and terminal command requires approval unless auto-approve is on)",
+    "README.md 'Rules and Skills' (.clinerules files picked up by the CLI, VS Code extension and JetBrains plugin)",
+    "README.md 'Edits Code Across Your Project' (monitors linter and compiler errors and fixes the issues it caused; checkpoints track all changes)"
+  ]
+}
