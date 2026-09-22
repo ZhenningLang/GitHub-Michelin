@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="757" viewBox="0 0 880 757" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="757" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="621" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="621" rx="10"/>
+<rect class="pillT" x="474" y="40" width="169.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Prime Agent 做的</text>
+<path class="hand" d="M408,117.0 C439.0,117.0 439.0,141 470,141" marker-end="url(#a)"/>
+<path class="hand" d="M472,174.0 C441.0,174.0 441.0,212 410,212" marker-end="url(#a)"/>
+<path class="hand" d="M408,233.0 C439.0,233.0 439.0,281 470,281" marker-end="url(#a)"/>
+<path class="hand" d="M472,303.0 C441.0,303.0 441.0,328 410,328" marker-end="url(#a)"/>
+<path class="hand" d="M408,337.5 C439.0,337.5 439.0,399 470,399" marker-end="url(#a)"/>
+<path class="edge" d="M494,490 L494,514" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">搭建</text>
+<text class="t" x="82" y="118">装上，在可还原的克隆里启动</text>
+<text class="c" x="82" y="142">prime-agent</text>
+<rect class="cardT" x="472" y="117" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="117" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="141" r="10"/>
+<text class="num" x="494" y="145" text-anchor="middle">2</text>
+<text class="ph" x="514" y="146">搭建</text>
+<text class="t" x="514" y="163">拉起 TUI、daemon worker 和持久 Pytho</text>
+<text class="t" x="514" y="185">n 内核</text>
+<text class="comp" x="514" y="213">组件：daemon 与内核</text>
+<rect class="card" x="40" y="188" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="188" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="212" r="10"/>
+<text class="num" x="62" y="216" text-anchor="middle">3</text>
+<text class="ph" x="82" y="217">搭建</text>
+<text class="t" x="82" y="234">登录订阅或填入 API key</text>
+<text class="c" x="82" y="258">/login</text>
+<rect class="cardT" x="472" y="257" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="257" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="281" r="10"/>
+<text class="num" x="494" y="285" text-anchor="middle">4</text>
+<text class="ph" x="514" y="286">搭建</text>
+<text class="t" x="514" y="303">把令牌写进 ~/.prime/agent/auth.json</text>
+<text class="comp" x="514" y="331">组件：auth.json</text>
+<rect class="card" x="40" y="304" width="368" height="67" rx="8"/>
+<rect class="accY" x="40" y="304" width="4" height="67" rx="2"/>
+<circle class="accY" cx="62" cy="328" r="10"/>
+<text class="num" x="62" y="332" text-anchor="middle">5</text>
+<text class="ph" x="82" y="333">每个任务</text>
+<text class="t" x="82" y="350">丢给它一个长编码或研究任务</text>
+<rect class="cardT" x="472" y="375" width="368" height="115" rx="8"/>
+<rect class="accT" x="472" y="375" width="4" height="115" rx="2"/>
+<circle class="accT" cx="494" cy="399" r="10"/>
+<text class="num" x="494" y="403" text-anchor="middle">6</text>
+<text class="ph" x="514" y="404">每个任务</text>
+<text class="t" x="514" y="421">模型用 Python 翻文件，并用代码派子 agent</text>
+<text class="c" x="514" y="445">rlm.spawn(...)</text>
+<text class="comp" x="514" y="468">组件：Python 内核</text>
+<rect class="cardT" x="472" y="516" width="368" height="115" rx="8"/>
+<rect class="accT" x="472" y="516" width="4" height="115" rx="2"/>
+<circle class="accT" cx="494" cy="540" r="10"/>
+<text class="num" x="494" y="544" text-anchor="middle">7</text>
+<text class="ph" x="514" y="545">每个任务</text>
+<text class="t" x="514" y="562">你断开后会话继续跑，之后可再挂上</text>
+<text class="c" x="514" y="586">prime-agent attach &lt;agent&gt;</text>
+<text class="comp" x="514" y="609">组件：会话 worker</text>
+<rect class="val" x="28" y="663" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="687">价值</text>
+<text class="valT" x="48" y="711">你不用再把整份工作材料塞进对话窗口：模型对着它写程序，关掉终端会话也还在</text>
+</svg>
