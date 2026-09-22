@@ -1110,3 +1110,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/cad/freecad.zh.md) · [EN](categories/cad/freecad.md) |
+
+### desktop-launchers
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Tinycast** | 想要一个开源、完全原生、还能直接跑你现有 Raycast 扩展的 macOS 命令面板时用它——但要求 macOS 26+，且项目只有三个月历史、巴士系数为一。 | AGPL-3.0 | B（4/6） | [中](categories/desktop-launchers/tinycast.zh.md) · [EN](categories/desktop-launchers/tinycast.md) |

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Tinycast does", "zh": "Tinycast 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "一次性设置"}, "en": "Install with Homebrew and open the app", "zh": "用 Homebrew 装上并打开应用", "code": "brew install --cask tinycast"},
+    {"lane": "them", "en": "Sits in the menu bar, under 100 MB of RAM", "zh": "常驻菜单栏，内存占用不到 100 MB"},
+    {"lane": "you", "en": "Record one global shortcut in Settings", "zh": "在设置里录一个全局快捷键", "code": "Settings → General"},
+    {"lane": "you", "phase": {"en": "Every summon", "zh": "每次唤出"}, "en": "Press the shortcut anywhere, type a few letters", "zh": "在任何应用里按下快捷键，敲几个字母"},
+    {"lane": "them", "en": "The palette fuzzy-filters apps, commands and clipboard history", "zh": "面板对应用、命令和剪贴板历史做模糊过滤", "component": {"en": "palette", "zh": "命令面板"}},
+    {"lane": "you", "en": "Hit ↵ on the top hit", "zh": "回车选中榜首项", "code": "↵"},
+    {"lane": "them", "en": "Launches it — an app, quicklink, snippet or a Raycast extension", "zh": "启动它——应用、快捷链接、片段或 Raycast 扩展"}
+  ],
+  "value": {"en": "Everything you reach for all day answers to one hotkey — no Dock hunting, no per-app menus, no separate clipboard app", "zh": "全天要用的东西都归一个快捷键管——不用翻 Dock、不用记各应用的菜单、也不用再装一个剪贴板工具"},
+  "sources": [
+    "https://github.com/abue-ammar/tinycast README — Install (brew install --cask tinycast)",
+    "https://github.com/abue-ammar/tinycast README — Using it (Settings → General; ↵ to launch)",
+    "https://github.com/abue-ammar/tinycast README headline (under 100 MB of RAM)"
+  ]
+}

@@ -77,6 +77,7 @@
 | **decision-models** | 自托管的小模型——把一段文本变成带类型、概率可用的判定：是/否、单选、按档打分。 | [→](categories/decision-models/INDEX.zh.md) |
 | **optimization-solvers** | 分配问题、LP／MIP 与约束最优化的求解器与建模 DSL——声明模型，让求解器去搜。 | [→](categories/optimization-solvers/INDEX.zh.md) |
 | **cad** | 自己跑的计算机辅助设计——参数化三维实体建模、二维制图，以及其下的几何内核。 | [→](categories/cad/INDEX.zh.md) |
+| **desktop-launchers** | 键盘驱动的桌面启动器／命令面板——应用启动、剪贴板历史、片段、快捷链接、窗口管理，一个快捷键全管。 | [→](categories/desktop-launchers/INDEX.zh.md) |
 
 
 

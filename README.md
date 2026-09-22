@@ -1128,3 +1128,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **FreeCAD** | Use it when you need an editable parametric history over a real solid model — sketch, constrain, pad/pocket, then re-dimension and let the part rebuild — on local files, with a Python API and no seat license. | LGPL-2.1-or-later | B (5/6) | [EN](categories/cad/freecad.md) · [中](categories/cad/freecad.zh.md) |
+
+### desktop-launchers
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Tinycast** | Use it when you want an open-source, fully native macOS palette that runs your existing Raycast extensions — but it requires macOS 26+ and is three months old with a bus factor of one. | AGPL-3.0 | B (4/6) | [EN](categories/desktop-launchers/tinycast.md) · [中](categories/desktop-launchers/tinycast.zh.md) |
