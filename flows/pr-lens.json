@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "PR Lens does", "zh": "PR Lens 做的"},
+  "steps": [
+    {"lane": "you", "en": "Point the CLI at the two commits the change lives between", "zh": "让 CLI 读改动所在的那两次提交", "code": "npx @coldtea/pr-lens-cli analyze --base origin/main", "component": {"en": "pr-lens CLI", "zh": "pr-lens CLI"}},
+    {"lane": "them", "en": "Reads the diff and asks your model for one graph document", "zh": "读 diff，向你的模型要一份图文档", "component": {"en": "analyze + a provider", "zh": "analyze 与模型服务"}},
+    {"lane": "them", "en": "Checks the document against the schema and returns errors to the model once", "zh": "按 schema 校验，报错退回模型改一次", "component": {"en": "schema validator", "zh": "schema 校验器"}},
+    {"lane": "you", "en": "Render the document to SVGs on your own machine", "zh": "把图文档渲染成本地 SVG", "code": "npx @coldtea/pr-lens-cli render .pr-lens/graph.json", "component": {"en": "renderer", "zh": "渲染器"}},
+    {"lane": "them", "en": "Draws a light and a dark SVG with the motion written into the markup", "zh": "输出明暗一对 SVG，动画写在标记里", "component": {"en": "renderer + manifest", "zh": "渲染器与 manifest"}},
+    {"lane": "you", "en": "Attach the diagram to the pull request with gh pr create --attach", "zh": "用 gh pr create --attach 把图附到 PR 上", "component": {"en": "GitHub CLI", "zh": "GitHub CLI"}}
+  ],
+  "value": {"en": "No scroll through two thousand changed lines to find where a change starts — the picture arrives with the pull request", "zh": "不用先滚两千行 diff 找入口，改动的形状随 PR 一起到手"},
+  "sources": [
+    "README.md: Features, Configuration, Other ways to run it (coding agent / Action / CLI / terminal), Packages, Contributing",
+    "packages/cli/README.md: Bring your own key, Where the files go, The commands (analyze / render / comment / validate / export / canvas)",
+    "skills/pr-lens/SKILL.md: operating manual, attach rules for gh pr create --attach",
+    "packages/schema/README.md: the four documents, the two lenses, walkthroughs"
+  ]
+}

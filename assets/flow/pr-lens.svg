@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="722" viewBox="0 0 880 722" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="722" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="564" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="564" rx="10"/>
+<rect class="pillT" x="474" y="40" width="138.3" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">PR Lens does</text>
+<path class="hand" d="M408,141.5 C439.0,141.5 439.0,165 470,165" marker-end="url(#a)"/>
+<path class="edge" d="M494,238 L494,262" marker-end="url(#a)"/>
+<path class="hand" d="M472,312.5 C441.0,312.5 441.0,336 410,336" marker-end="url(#a)"/>
+<path class="hand" d="M408,381.5 C439.0,381.5 439.0,411 470,411" marker-end="url(#a)"/>
+<path class="hand" d="M472,435.5 C441.0,435.5 441.0,501 410,501" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Point the CLI at the two commits the</text>
+<text class="t" x="82" y="123">change lives between</text>
+<text class="c" x="82" y="147">npx @coldtea/pr-lens-cli analyze --base</text>
+<text class="c" x="82" y="166">origin/main</text>
+<text class="comp" x="82" y="189">component: pr-lens CLI</text>
+<rect class="cardT" x="472" y="141" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="141" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="165" r="10"/>
+<text class="num" x="494" y="169" text-anchor="middle">2</text>
+<text class="t" x="514" y="170">Reads the diff and asks your model for</text>
+<text class="t" x="514" y="192">one graph document</text>
+<text class="comp" x="514" y="220">component: analyze + a provider</text>
+<rect class="cardT" x="472" y="264" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="264" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="288" r="10"/>
+<text class="num" x="494" y="292" text-anchor="middle">3</text>
+<text class="t" x="514" y="293">Checks the document against the schema</text>
+<text class="t" x="514" y="315">and returns errors to the model once</text>
+<text class="comp" x="514" y="343">component: schema validator</text>
+<rect class="card" x="40" y="312" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="312" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="336" r="10"/>
+<text class="num" x="62" y="340" text-anchor="middle">4</text>
+<text class="t" x="82" y="341">Render the document to SVGs on your</text>
+<text class="t" x="82" y="363">own machine</text>
+<text class="c" x="82" y="387">npx @coldtea/pr-lens-cli render</text>
+<text class="c" x="82" y="406">.pr-lens/graph.json</text>
+<text class="comp" x="82" y="429">component: renderer</text>
+<rect class="cardT" x="472" y="387" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="387" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="411" r="10"/>
+<text class="num" x="494" y="415" text-anchor="middle">5</text>
+<text class="t" x="514" y="416">Draws a light and a dark SVG with the</text>
+<text class="t" x="514" y="438">motion written into the markup</text>
+<text class="comp" x="514" y="466">component: renderer + manifest</text>
+<rect class="card" x="40" y="477" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="477" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="501" r="10"/>
+<text class="num" x="62" y="505" text-anchor="middle">6</text>
+<text class="t" x="82" y="506">Attach the diagram to the pull request</text>
+<text class="t" x="82" y="528">with gh pr create --attach</text>
+<text class="comp" x="82" y="556">component: GitHub CLI</text>
+<rect class="val" x="28" y="606" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="630">VALUE</text>
+<text class="valT" x="48" y="654">No scroll through two thousand changed lines to find where a change starts — the picture</text>
+<text class="valT" x="48" y="676">arrives with the pull request</text>
+</svg>

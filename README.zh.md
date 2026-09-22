@@ -586,6 +586,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **draw.io** | 完整的所见即所得绘图应用，`.drawio` 文件是纯文本 mxGraph XML：官方云／UML／BPMN 形状库、可离线运行的桌面版，文件还能进 Git diff。 | Apache-2.0（图标／stencil 另有附加限制） | B（6/6） | [中](categories/diagramming/drawio.zh.md) · [EN](categories/diagramming/drawio.md) |
 | **D2** | 当版本化的文本图要在 CI 里用你指定的布局引擎渲染时用它——MPL-2.0 是文件级 copyleft，而且没有宿主平台替你渲染。 | MPL-2.0 | B（5/6） | [中](categories/diagramming/d2.zh.md) · [EN](categories/diagramming/d2.md) |
 | **PlantUML** | 当 DSL 必须覆盖多种 UML 与非 UML 图型、且能接受 Java 或服务端渲染时用它——再分发前先看 `LICENSES.md`。 | LGPL-3.0 | B（6/6） | [中](categories/diagramming/plantuml.zh.md) · [EN](categories/diagramming/plantuml.md) |
+| **PR Lens** | 当 agent 写的 diff 大到靠滚动无法建立方向感时用它——让改动被画出来，并在每次 push 时重画，直接落在 PR 里。 | MIT | C（6/6） | [中](categories/diagramming/pr-lens.zh.md) · [EN](categories/diagramming/pr-lens.md) |
 ### media-download
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

@@ -14,6 +14,7 @@
 | **draw.io** | 图需要精确摆放、需要官方云／UML／BPMN 形状库、产物还要交给同事编辑时用它——`.drawio` 是纯文本 XML，能进 git diff，应用可完全离线运行。 | B（6/6） | [→](drawio.zh.md) |
 | **D2** | 当版本化的文本图要在 CI 里用你指定的布局引擎渲染时用它——MPL-2.0 是文件级 copyleft，而且没有宿主平台替你渲染。 | B（5/6） | [→](d2.zh.md) |
 | **PlantUML** | 当 DSL 必须覆盖多种 UML 与非 UML 图型、且能接受 Java 或服务端渲染时用它——再分发前先看 `LICENSES.md`。 | B（6/6） | [→](plantuml.zh.md) |
+| **PR Lens** | 当 agent 写的 diff 大到靠滚动无法建立方向感时用它——让改动被画出来，并在每次 push 时重画，直接落在 PR 里。 | C（6/6） | [→](pr-lens.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [draw.io](drawio.zh.md) | ✅ | B（6/6） | 摆放必须精确、形状要用官方云／UML 形状集、产物还要交给别人改时选它；图要保持文本用 Mermaid，要的就是草稿观感用 Excalidraw。 |
 | [D2](d2.zh.md) | ✅ | B（5/6） | 声明式图语言，布局引擎可换、输出格式多；MPL-2.0 是文件级 copyleft，宿主平台内建渲染远少于 Mermaid。 |
 | [PlantUML](plantuml.zh.md) | ✅ | B（6/6） | 文本 DSL 覆盖广而严的 UML，通常由 Java 或服务端渲染；注意 `LICENSES.md`——API 标 LGPL-3.0，而上游默认是 GPL-3.0-or-later 另加若干宽松构建选项。 |
+| [PR Lens](pr-lens.zh.md) | ✅ | C（6/6） | 从 diff 推导并贴在 PR 评论里的图，每次 push 重画；代价是每次 push 一次模型调用，且图源不能手编。 |
 | Graphviz | 未收录 | — | 布局引擎本体（dot／neato）真实且活跃（16.1.0，2026-09-04），但规范仓库在 GitLab；`tools/upstream_snapshot.py` 与 `tools/health.py` 只读 GitHub，因此按现行契约拿不到上游快照和健康度雷达。 |
 
 ## 什么该放这里
