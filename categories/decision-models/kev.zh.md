@@ -6,7 +6,7 @@ category: decision-models
 tags: [decision-model, classification, calibration, structured-output, lora, qwen, self-hosted, fine-tuning, llm-judge, fastapi]
 language: Python
 license: Apache-2.0
-maturity: v0.1.0 / `kev-family` release (2026-09-17 / 2026-09-20); pre-1.0 (pyproject self-labels `Development Status :: 3 - Alpha`), very active; ~2.0k stars / 102 forks / 7 open issues, created 2026-09-17 (5 days old as of 2026-09-21)
+maturity: "v0.1.0 / `kev-family` release (2026-09-17 / 2026-09-20); pre-1.0 (pyproject self-labels `Development Status :: 3 - Alpha`), very active; ~2.0k stars / 102 forks / 7 open issues, created 2026-09-17 (5 days old as of 2026-09-21)"
 last_verified: 2026-09-21
 type: model
 upstream:
