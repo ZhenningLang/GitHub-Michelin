@@ -201,7 +201,6 @@ cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
-Cursor,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
 Cursor / Windsurf,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
 Custom creator toolkit,categories/agent-skills/writing/content-production/huashu-skills.md,,no
 Custom DataForSEO scripts,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
@@ -318,7 +317,7 @@ GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agen
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
 GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md,,no
 GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
-GitHub Copilot,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
+GitHub Copilot,categories/agent-frameworks/coding-agents/terminal-agents/codex.md,,no
 GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/ccpm.md,,no
@@ -701,7 +700,6 @@ Resumable.js,categories/nginx-modules/tusd.md,,no
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
-Roo Code,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
 Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no

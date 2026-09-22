@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "them": {"en": "Roo Code does", "zh": "Roo Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension and pick the model behind it", "zh": "装上扩展，选好背后的模型", "code": "RooVeterinaryInc.roo-cline"},
+    {"lane": "you", "en": "Pick the mode that matches the role you need right now", "zh": "按当下需要的角色挑一个模式", "code": "Code · Architect · Ask · Debug"},
+    {"lane": "them", "en": "Loads that mode's role prompt and its allowed tool groups into the same chat", "zh": "把该模式的角色提示词和允许的工具组装进同一会话"},
+    {"lane": "you", "en": "Describe the job; save a repeated convention as a custom mode", "zh": "说清任务；要复用的约定就存成自定义模式", "code": ".roomodes"},
+    {"lane": "them", "en": "Reads the workspace and proposes edits and commands, waiting for your approval", "zh": "读工作区，提出改动和命令，等你批准"},
+    {"lane": "you", "en": "Switch modes mid-task as the job changes — plan, then implement, then debug", "zh": "任务性质变了就中途换模式：先规划，再实现，再排查"},
+    {"lane": "them", "en": "Swaps the role and tools behind one continuing conversation", "zh": "在同一个持续会话背后换掉角色和工具"}
+  ],
+  "value": {
+    "en": "One conversation can plan, implement and debug without re-explaining the task to a fresh agent",
+    "zh": "一个会话里就能规划、实现、排查，不用把任务重讲给一个新 agent"
+  },
+  "sources": [
+    "README.md 'Modes' (Code Mode, Architect Mode, Ask Mode, Debug Mode, Custom Modes)",
+    "README.md marketplace badge (itemName=RooVeterinaryInc.roo-cline; VS Code Marketplace v3.54.0 last updated 2026-05-15)",
+    "schemas/roomodes.json (custom mode fields: slug, name, roleDefinition, customInstructions, groups = read/edit/command/mcp/modes/browser)",
+    "CHANGELOG.md 3.52.1 (JSON schema for .roomodes configuration files)",
+    "repository tree at the default branch (.roomodes, .roo, .rooignore present)",
+    "GitHub API repos/RooCodeInc/Roo-Code (archived=true, pushed_at 2026-05-15, latest release v3.54.0)"
+  ]
+}

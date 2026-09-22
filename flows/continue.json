@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Continue does", "zh": "Continue 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a surface — the editor extension, or the cn command-line agent", "zh": "装一个入口：编辑器扩展，或 cn 命令行 agent", "code": "npm i -g @continuedev/cli"},
+    {"lane": "you", "en": "Declare models, rules and MCP servers once, and commit the file with the repo", "zh": "把模型、规则和 MCP server 声明一遍，随仓库提交", "code": "config.yaml"},
+    {"lane": "them", "en": "Every surface reads the same config, so the editor and the CLI behave identically", "zh": "所有入口读同一份配置，编辑器和命令行行为一致"},
+    {"lane": "you", "en": "Hand it a task in the editor, or run it headless from a script or CI job", "zh": "在编辑器里派活，或在脚本和 CI 里无界面运行", "code": "cn -p \"Review changes\""},
+    {"lane": "them", "en": "Edits with the configured model and shows a diff you accept or reject", "zh": "用配置好的模型改代码，给出 diff 让你接受或拒绝"},
+    {"lane": "them", "en": "In headless mode it answers as JSON, so the pipeline can read the result", "zh": "无界面模式下以 JSON 作答，流水线能直接解析", "code": "--format json"}
+  ],
+  "value": {
+    "en": "One checked-in config defines the agent wherever it runs — the editor, the terminal, or CI",
+    "zh": "一份入库的配置定义了 agent 在哪儿都一样的表现：编辑器、终端、CI"
+  },
+  "sources": [
+    "README.md (surfaces: VS Code extension Continue.continue, JetBrains plugin, CLI @continuedev/cli; repository is read-only and no longer actively maintained)",
+    "extensions/cli/README.md installation (npm i -g @continuedev/cli, Node.js 20+) and usage (cn, cn -p \"Review changes\" --format json)",
+    "extensions/cli/README.md headless mode (-p, --format json, TTY-less support for CI/Docker/editor terminals)",
+    "README.md 2.0.0 release notes (anonymous telemetry removed, authentication pulled out)",
+    "repository tree at the default branch (core/, extensions/, gui/, CLA.md, .continue/)"
+  ]
+}

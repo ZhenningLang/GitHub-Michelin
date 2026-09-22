@@ -101,6 +101,7 @@ https://github.com/RameshAditya/asciify,asciify,terminal-ui,categories/terminal-
 https://github.com/Ranchero-Software/NetNewsWire,netnewswire,reading-tools,categories/reading-tools/netnewswire.md
 https://github.com/RightNow-AI/openfang,openfang,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/openfang.md
 https://github.com/RocketChat/Rocket.Chat,rocket-chat,team-chat,categories/team-chat/rocket-chat.md
+https://github.com/RooCodeInc/Roo-Code,roo-code,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/roo-code.md
 https://github.com/SWE-agent/SWE-agent,swe-agent,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md
 https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/swe-bench.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
@@ -212,6 +213,7 @@ https://github.com/commonmark/commonmark.js,commonmark,markdown-tools,categories
 https://github.com/confident-ai/deepeval,deepeval,llm-eval,categories/llm-eval/deepeval.md
 https://github.com/conorbronsdon/avoid-ai-writing,avoid-ai-writing,de-ai-writing,categories/agent-skills/de-ai-writing/avoid-ai-writing.md
 https://github.com/constverum/ProxyBroker,proxybroker,proxy-pool,categories/proxy-pool/proxybroker.md
+https://github.com/continuedev/continue,continue,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/continue.md
 https://github.com/coreyhaines31/marketingskills,marketingskills,marketing-seo,categories/agent-skills/writing/marketing-seo/marketingskills.md
 https://github.com/crewAIInc/crewAI,crewai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/crewai.md
 https://github.com/cython/cython,cython,python-tooling,categories/python-tooling/cython.md
