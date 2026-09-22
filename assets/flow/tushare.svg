@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="851" viewBox="0 0 880 851" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="851" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="693" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="693" rx="10"/>
+<rect class="pillT" x="474" y="40" width="285.4" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The tushare.pro service does</text>
+<path class="edge" d="M62,169 L62,193" marker-end="url(#a)"/>
+<path class="edge" d="M62,334 L62,358" marker-end="url(#a)"/>
+<path class="hand" d="M408,439.0 C439.0,439.0 439.0,463 470,463" marker-end="url(#a)"/>
+<path class="edge" d="M494,558 L494,582" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Register at tushare.pro and copy the</text>
+<text class="t" x="82" y="123">token from the personal centre</text>
+<text class="comp" x="82" y="151">component: tushare.pro account</text>
+<rect class="card" x="40" y="195" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="195" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="219" r="10"/>
+<text class="num" x="62" y="223" text-anchor="middle">2</text>
+<text class="t" x="82" y="224">Install the SDK, save the token once</text>
+<text class="t" x="82" y="246">and open the Pro API</text>
+<text class="c" x="82" y="270">ts.set_token(&#x27;your token here&#x27;) · pro =</text>
+<text class="c" x="82" y="289">ts.pro_api()</text>
+<text class="comp" x="82" y="312">component: PyPI SDK</text>
+<rect class="card" x="40" y="360" width="368" height="158" rx="8"/>
+<rect class="accY" x="40" y="360" width="4" height="158" rx="2"/>
+<circle class="accY" cx="62" cy="384" r="10"/>
+<text class="num" x="62" y="388" text-anchor="middle">3</text>
+<text class="t" x="82" y="389">Call an interface by name with your</text>
+<text class="t" x="82" y="411">window</text>
+<text class="c" x="82" y="435">pro.trade_cal(exchange=&#x27;&#x27;,</text>
+<text class="c" x="82" y="454">start_date=&#x27;20180901&#x27;,</text>
+<text class="c" x="82" y="473">end_date=&#x27;20181001&#x27;)</text>
+<text class="comp" x="82" y="496">component: PyPI SDK</text>
+<rect class="cardT" x="472" y="439" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="439" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="463" r="10"/>
+<text class="num" x="494" y="467" text-anchor="middle">4</text>
+<text class="t" x="514" y="468">Validates the token, enforces the</text>
+<text class="t" x="514" y="490">points tier&#x27;s per-minute and row caps,</text>
+<text class="t" x="514" y="512">runs the query</text>
+<text class="comp" x="514" y="540">component: api.tushare.pro</text>
+<rect class="cardT" x="472" y="584" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="584" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="608" r="10"/>
+<text class="num" x="494" y="612" text-anchor="middle">5</text>
+<text class="t" x="514" y="613">Returns a documented-field DataFrame;</text>
+<text class="t" x="514" y="635">envelope code=2002 means your tier</text>
+<text class="t" x="514" y="657">cannot open that interface</text>
+<text class="comp" x="514" y="685">component: api.tushare.pro</text>
+<rect class="val" x="28" y="735" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="759">VALUE</text>
+<text class="valT" x="48" y="783">You stop parsing pages and chasing unannounced field changes — the price model is points and</text>
+<text class="valT" x="48" y="805">separate licences, not support tickets</text>
+</svg>

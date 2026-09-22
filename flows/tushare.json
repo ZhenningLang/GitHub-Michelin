@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "The tushare.pro service does", "zh": "tushare.pro 服务端做的"},
+  "steps": [
+    {"lane": "you", "en": "Register at tushare.pro and copy the token from the personal centre", "zh": "在 tushare.pro 注册，从个人中心复制 token", "component": {"en": "tushare.pro account", "zh": "tushare.pro 账号"}},
+    {"lane": "you", "en": "Install the SDK, save the token once and open the Pro API", "zh": "安装 SDK，把 token 存一次，初始化 Pro 接口", "code": "ts.set_token('your token here') · pro = ts.pro_api()", "component": {"en": "PyPI SDK", "zh": "PyPI SDK"}},
+    {"lane": "you", "en": "Call an interface by name with your window", "zh": "按名调用接口，带上时间窗", "code": "pro.trade_cal(exchange='', start_date='20180901', end_date='20181001')", "component": {"en": "PyPI SDK", "zh": "PyPI SDK"}},
+    {"lane": "them", "en": "Validates the token, enforces the points tier's per-minute and row caps, runs the query", "zh": "校验 token，按积分档执行频次与行数上限，跑查询", "component": {"en": "api.tushare.pro", "zh": "api.tushare.pro"}},
+    {"lane": "them", "en": "Returns a documented-field DataFrame; envelope code=2002 means your tier cannot open that interface", "zh": "返回有文档字段的 DataFrame；2002 即积分档不够", "component": {"en": "api.tushare.pro", "zh": "api.tushare.pro"}}
+  ],
+  "value": {"en": "You stop parsing pages and chasing unannounced field changes — the price model is points and separate licences, not support tickets", "zh": "不用再解析网页、追着无预告的字段变更跑——代价模型是积分与单独授权，而不是支持工单"},
+  "sources": [
+    "https://tushare.pro/document/1?doc_id=39 (token copied from 个人中心 → 账号与TOKEN; refresh revokes the old token)",
+    "https://tushare.pro/document/1?doc_id=40 (import tushare as ts; ts.set_token('your token here'); pro = ts.pro_api(); df = pro.trade_cal(exchange='', start_date='20180901', end_date='20181001', fields=...); HTTP POST to api.tushare.pro with {api_name, token, params, fields}; code 2002 = 权限问题)",
+    "https://tushare.pro/document/1?doc_id=290 (积分与频次权限对应表: 120 points = non-adjusted daily, 50/min, 8000/day; 2000+ = 200/min, 100k/day; separate licences for minute/news/US-HK)",
+    "waditu/tushare tushare/pro/client.py (DataApi.query POSTs {api_name, token, params, fields} to api.tushare.pro)"
+  ]
+}

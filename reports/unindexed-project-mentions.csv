@@ -52,7 +52,6 @@ aiokafka,categories/kafka-tools/kafka-python.md,,no
 airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
 AIStor Free / Enterprise,categories/object-storage/minio.md,,no
 AKHQ,categories/kafka-tools/kafka-ui.md,,no
-AKShare,categories/investment-finance/financial-api.md,,no
 alass,categories/media-processing/video-audio/ffsubsync.md,,no
 Alfred,categories/dev-utilities/data-tools/flashlight.md,,no
 alive-progress,categories/dev-utilities/data-tools/tqdm.md,,no
@@ -788,7 +787,6 @@ TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
-Tushare,categories/investment-finance/financial-api.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no

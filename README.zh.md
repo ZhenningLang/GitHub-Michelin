@@ -1033,6 +1033,8 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **backtrader** | Python Backtesting library for trading strategies | NOASSERTION | D（4/6） | [中](categories/investment-finance/backtrader.zh.md) · [EN](categories/investment-finance/backtrader.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | NOASSERTION | A（6/6） | [中](categories/investment-finance/yfinance.zh.md) · [EN](categories/investment-finance/yfinance.md) |
 | **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股行情、财报、指数/基金/期货数据，CLI、MCP、REST、Python 四种入口，长历史落本地 DuckDB | MIT | B（6/6） | [中](categories/investment-finance/financial-api.zh.md) · [EN](categories/investment-finance/financial-api.md) |
+| **AKShare** | 免 Key 的 Python 库，把中国市场的公开财经页面封装成一次调用返回 pandas DataFrame | MIT | A（6/6） | [中](categories/investment-finance/akshare.zh.md) · [EN](categories/investment-finance/akshare.md) |
+| **Tushare** | Python SDK 加托管 tushare.pro 服务，凭 token 与积分档取 A 股数据 | BSD-3-Clause | D（5/6） | [中](categories/investment-finance/tushare.zh.md) · [EN](categories/investment-finance/tushare.md) |
 
 ### education-tutoring
 
