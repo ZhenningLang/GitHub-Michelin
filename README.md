@@ -1048,6 +1048,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | NOASSERTION | B (5/6) | [EN](categories/investment-finance/qlib.md) · [中](categories/investment-finance/qlib.zh.md) |
 | **backtrader** | Python Backtesting library for trading strategies | NOASSERTION | D (4/6) | [EN](categories/investment-finance/backtrader.md) · [中](categories/investment-finance/backtrader.zh.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | NOASSERTION | A (6/6) | [EN](categories/investment-finance/yfinance.md) · [中](categories/investment-finance/yfinance.zh.md) |
+| **HiThink Financial-API** | One API key for official Tonghuashun A-share quotes, statements, index/fund/futures data over CLI, MCP, REST or Python, with long history in a local DuckDB | MIT | B (6/6) | [EN](categories/investment-finance/financial-api.md) · [中](categories/investment-finance/financial-api.zh.md) |
 
 ### education-tutoring
 

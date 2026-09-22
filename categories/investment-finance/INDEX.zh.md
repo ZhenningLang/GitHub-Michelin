@@ -13,6 +13,7 @@
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | B（5/6） | [→](qlib.zh.md) |
 | **backtrader** | Python Backtesting library for trading strategies | D（4/6） | [→](backtrader.zh.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | A（6/6） | [→](yfinance.zh.md) |
+| **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股行情、财报、指数/基金/期货数据，CLI、MCP、REST、Python 四种入口，长历史落本地 DuckDB | B（6/6） | [→](financial-api.zh.md) |
 
 
 ## 对比矩阵
@@ -25,6 +26,7 @@
 | [qlib](qlib.zh.md) | ✅ | B（5/6） | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. |
 | [backtrader](backtrader.zh.md) | ✅ | D（4/6） | Python Backtesting library for trading strategies |
 | [yfinance](yfinance.zh.md) | ✅ | A（6/6） | Download market data from Yahoo! Finance's API |
+| [financial-api](financial-api.zh.md) | ✅ | B（6/6） | 同花顺官方 A 股数据客户端——CLI、MCP、REST、Python 共用一把 API Key，另有本地 DuckDB 存市场历史 |
 
 
 ## 什么该放这里
