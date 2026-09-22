@@ -20,7 +20,7 @@
 | [Work State](work-state/INDEX.md) | Sub-category | beads, CCPM, Ralph, Context Mode, Planning with Files — the agent keeps working because its tasks, plan and context live outside the chat window. |
 | [Session History](session-history/INDEX.md) | Sub-category | AgentsView, Entire — capture and query what already ran; read-side and replay, with no say over the next step. |
 | [Supervision Surfaces](supervision-surfaces/INDEX.md) | Sub-category | Plannotator, CloudCLI, Agent Orchestrator, Hermes Workspace — the human's screen: annotation gates and cockpits, at the cost of another local service to run. |
-| [Harness Extensions](harness-extensions/INDEX.md) | Sub-category | Vercel Skills, CLI-Anything — widen the agent's reach (skill installers, generated CLI harnesses) rather than managing its work. |
+| [Harness Extensions](harness-extensions/INDEX.md) | Sub-category | Vercel Skills, CLI-Anything, codex-chatgpt-web — widen the agent's reach (skill installers, generated CLI harnesses, model-backend bridges) rather than managing its work. |
 
 ## What belongs here
 

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "codex-chatgpt-web does", "zh": "codex-chatgpt-web 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop launcher with the platform script", "zh": "用平台脚本安装桌面 launcher", "code": "install-launcher.sh · install-launcher.ps1", "component": {"en": "installer script", "zh": "安装脚本"}},
+    {"lane": "them", "en": "Verifies checksums and sets up the bundled browser and Bun runtime", "zh": "校验校验和，部署自带的浏览器与 Bun 运行时", "component": {"en": "launcher", "zh": "启动器"}},
+    {"lane": "you", "en": "Sign in to ChatGPT in the launcher's embedded browser", "zh": "在 launcher 内嵌浏览器里登录 ChatGPT"},
+    {"lane": "them", "en": "Keeps the session in a private profile and runs the browser smoke test", "zh": "把会话存进私有 profile，跑浏览器冒烟测试", "component": {"en": "Electron partition", "zh": "Electron 分区"}},
+    {"lane": "you", "en": "Install the models, restart Codex, pick a ChatGPT Web row", "zh": "安装模型，重启 Codex，选中一条 ChatGPT Web 模型"},
+    {"lane": "them", "en": "Serves the catalog on loopback; each turn streams through a ChatGPT Temporary Chat back into Codex", "zh": "在 loopback 服务模型目录；每回合经临时对话流回 Codex", "component": {"en": "Responses daemon", "zh": "Responses daemon"}}
+  ],
+  "value": {"en": "Codex tasks run on your ChatGPT web allowance — Codex quota untouched", "zh": "Codex 任务跑在 ChatGPT 网页额度上——Codex 配额分毫未动"},
+  "sources": [
+    "https://github.com/miuuyy/codex-chatgpt-web README Get started (install-launcher.sh / .ps1, sign in + smoke test, install models, restart Codex, choose a ChatGPT Web model)",
+    "https://github.com/miuuyy/codex-chatgpt-web docs/architecture.md (loopback Responses daemon, Electron partition sign-in, Temporary Chat turn streaming, bundled browser/runtime)"
+  ]
+}

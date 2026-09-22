@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="556" viewBox="0 0 880 556" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="556" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="420" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="420" rx="10"/>
+<rect class="pillT" x="474" y="40" width="224.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">codex-chatgpt-web 做的</text>
+<path class="hand" d="M408,121.0 C439.0,121.0 439.0,145 470,145" marker-end="url(#a)"/>
+<path class="hand" d="M472,158.5 C441.0,158.5 441.0,220 410,220" marker-end="url(#a)"/>
+<path class="hand" d="M408,221.0 C439.0,221.0 439.0,256 470,256" marker-end="url(#a)"/>
+<path class="hand" d="M472,269.5 C441.0,269.5 441.0,296 410,296" marker-end="url(#a)"/>
+<path class="hand" d="M408,308.0 C439.0,308.0 439.0,357 470,357" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="98" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="98" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">用平台脚本安装桌面 launcher</text>
+<text class="c" x="82" y="125">install-launcher.sh · install-launcher.ps1</text>
+<text class="comp" x="82" y="148">组件：安装脚本</text>
+<rect class="cardT" x="472" y="121" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="121" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="145" r="10"/>
+<text class="num" x="494" y="149" text-anchor="middle">2</text>
+<text class="t" x="514" y="150">校验校验和，部署自带的浏览器与 Bun 运行时</text>
+<text class="comp" x="514" y="178">组件：启动器</text>
+<rect class="card" x="40" y="196" width="368" height="50" rx="8"/>
+<rect class="accY" x="40" y="196" width="4" height="50" rx="2"/>
+<circle class="accY" cx="62" cy="220" r="10"/>
+<text class="num" x="62" y="224" text-anchor="middle">3</text>
+<text class="t" x="82" y="225">在 launcher 内嵌浏览器里登录 ChatGPT</text>
+<rect class="cardT" x="472" y="232" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="232" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="256" r="10"/>
+<text class="num" x="494" y="260" text-anchor="middle">4</text>
+<text class="t" x="514" y="261">把会话存进私有 profile，跑浏览器冒烟测试</text>
+<text class="comp" x="514" y="289">组件：Electron 分区</text>
+<rect class="card" x="40" y="272" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="272" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="296" r="10"/>
+<text class="num" x="62" y="300" text-anchor="middle">5</text>
+<text class="t" x="82" y="301">安装模型，重启 Codex，选中一条 ChatGPT</text>
+<text class="t" x="82" y="323">Web 模型</text>
+<rect class="cardT" x="472" y="333" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="333" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="357" r="10"/>
+<text class="num" x="494" y="361" text-anchor="middle">6</text>
+<text class="t" x="514" y="362">在 loopback 服务模型目录；每回合经临时对话</text>
+<text class="t" x="514" y="384">流回 Codex</text>
+<text class="comp" x="514" y="412">组件：Responses daemon</text>
+<rect class="val" x="28" y="462" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="486">价值</text>
+<text class="valT" x="48" y="510">Codex 任务跑在 ChatGPT 网页额度上——Codex 配额分毫未动</text>
+</svg>

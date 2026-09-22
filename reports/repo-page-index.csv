@@ -422,6 +422,7 @@ https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories
 https://github.com/milvus-io/milvus,milvus,rag-retrieval,categories/rag-retrieval/milvus.md
 https://github.com/minio/minio,minio,object-storage,categories/object-storage/minio.md
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md
+https://github.com/miuuyy/codex-chatgpt-web,codex-chatgpt-web,harness-extensions,categories/agent-tooling/harness-extensions/codex-chatgpt-web.md
 https://github.com/mksglu/context-mode,context-mode,work-state,categories/agent-tooling/work-state/context-mode.md
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
 https://github.com/mlc-ai/xgrammar,xgrammar,structured-generation,categories/llm-inference/structured-generation/xgrammar.md
