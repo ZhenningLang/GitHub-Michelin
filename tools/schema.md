@@ -88,8 +88,9 @@ file is `beads.zh.md`. The linter also requires each page to **open with an H1**
 
 ### Required body sections (exact H2 headings)
 
-Both pages start with `# <name>` and a one-line TL;DR (in that page's language). Then the
-required `##` sections below — **which ones are required depends on `type`** (note after the table):
+Both pages start with `# <name>` and a **lead line** (in that page's language) — see "The lead
+line is the problem, not the definition" below; it is the one sentence every reader reads, so it has
+its own contract. Then the required `##` sections below — **which ones are required depends on `type`** (note after the table):
 
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
@@ -117,6 +118,46 @@ per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden se
 inferred fact gets one `[未验证]` / `[推断]` bullet. This is the single place uncertainty is collected;
 the linter ERRORs if it is missing. See §3 for how it interacts with inline labels.
 
+### The lead line is the problem, not the definition
+
+The line under the H1 is the only sentence **every** reader reads — an agent scanning a category
+`INDEX`, and a human who has never heard of this project. It must answer **"what problem is this
+for?"**, not "what category of thing is this?".
+
+The default failure is writing a *definition* — accurate, dense, and readable only by someone who
+already knows the field. A 2026-09-22 sample of 8 pages found 8/8 opening this way, two of them
+lifted straight from the upstream README (`open-webui`: "extensible, feature-rich, user-friendly
+self-hosted AI platform"; `qpdf`: the English tagline, untranslated on the `.zh.md` page). That is
+the marketing copy this index exists to replace — the upstream description is the *last* place to
+look for a lead line, not the first.
+
+Write **1–2 sentences** covering, in this order:
+
+1. **The symptom** — what breaks, hurts, or costs you today, stated in words the reader can picture
+   without knowing the field's vocabulary.
+2. **What this does about it** — the one-clause mechanism, in the plainest terms that stay true.
+
+Rules:
+
+- **No upstream tagline.** Never paste or lightly paraphrase the GitHub repo description / README
+  headline. If your lead line survives a find-replace of the project name with a competitor's, it is
+  a category definition, not a lead.
+- **Jargon costs a gloss.** A term the reader must already know (`constrained decoding`, `logits`,
+  `reconciliation loop`, `CRDT`) either gets glossed in the same sentence or does not appear here.
+  Save the precise vocabulary for `Tech stack` and `How it works`.
+- **Both languages are authored, neither is a copy.** The `.zh.md` lead is written in Chinese, not
+  translated word-for-word from the English — and never left in English.
+
+Worked example — the same project, before and after (`xgrammar`):
+
+> ❌ "多数开源 LLM 服务栈已经在底层运行的语法约束解码引擎：把 JSON Schema、正则、EBNF 或 Lark 语法按模型的
+> tokenizer 编译一次，然后在每一步采样时掩掉不符合语法的 token。"
+> — every clause presumes you already know what constrained decoding, tokenizers and masking are.
+>
+> ✅ "你让大模型吐一段 JSON，它时不时给你一个少个括号、数字写成中文的残次品，你只能解析失败后重试。XGrammar
+> 把检查挪进生成过程本身：不合语法的下一个字根本不可能被写出来。"
+> — the symptom is visible before any vocabulary is required.
+
 ### "When to use" is the trigger scenario
 
 This section answers **"when should I think of this project?"** — the *pre-selection* angle. (How you
@@ -143,6 +184,13 @@ this over its closest substitutes*, stating the deciding tradeoff (e.g. model-ag
 vendor-locked, self-hosted vs. SaaS, code-first vs. no-code). Generic claims like "fast" or
 "open-source" are insufficient — every competitor can say that.
 
+**The PROBLEM must be visible, not merely named.** "Parse failures are unacceptable", "config drift
+is painful", "the queue backs up" are *labels* for a pain — the reader nods without picturing
+anything. Show at least one concrete thing: the malformed output itself, the error line, the command
+that fails, the number that is too big. One line of it is enough, and it is what makes the difference
+between a reader who agrees and a reader who recognizes their own situation.
+
+
 ### "How it works" is the backbone user story
 
 This section answers **"I've chosen it — how do I put it to work, and what does it do for me?"** —
@@ -150,10 +198,19 @@ the *post-selection* angle, and the one a reader cannot get from `When to use`. 
 authored parts, in this order, placed **between `When to use` and `When NOT to use`**:
 
 1. **A plain-language mechanism paragraph** (3–6 sentences). Explain how it works underneath in the
-   simplest terms (plain words; when a term is unavoidable, gloss it in passing). It **must draw the
-   line between what the project does for you and what you do** — that boundary is what a developer
-   actually wants to know. Example: "The door *and* a whole set of ready-made plugins ship with Kong —
-   you only declare which route gets which plugins."
+   simplest terms. It **must draw the line between what the project does for you and what you do** —
+   that boundary is what a developer actually wants to know. Example: "The door *and* a whole set of
+   ready-made plugins ship with Kong — you only declare which route gets which plugins."
+   Two habits keep this paragraph readable by someone outside the field:
+   - **Gloss every term on first use, in place.** Not "masks the logits" but "masks the logits — the
+     raw scores the model assigns to each possible next word". A paragraph that uses `token`,
+     `sampling`, `mask` and `state machine` without glossing any of them is written for people who
+     did not need the paragraph. This is the most-violated rule on the page; check it explicitly
+     before you commit.
+   - **An analogy is worth a paragraph of precision.** One concrete comparison to something outside
+     software ("not proofreading the essay afterwards — the keyboard just won't type the bad
+     sentence") lands the mechanism faster than another accurate clause. Optional, but reach for it
+     whenever the mechanism is inherently abstract.
 2. **The flow card**, embedded as `![<slug> — backbone user story](<rel>/assets/flow/<stem>.svg)`
    (ZH: `主干用户故事`, `<stem>.zh.svg`). Directly under it, `tools/flow_card.py` writes a collapsed,
    agent-readable text twin between `<!-- flow-steps:begin … -->` and `<!-- flow-steps:end -->` —

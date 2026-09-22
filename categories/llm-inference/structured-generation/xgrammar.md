@@ -75,19 +75,25 @@ health:
 
 # XGrammar
 
-The grammar-constrained decoding engine most open LLM serving stacks already run underneath: compile a JSON Schema, regex, EBNF or Lark grammar once against your model's tokenizer, then mask every sampling step so the output cannot leave the structure.
+You ask a model for JSON and it hands back something with a missing brace or `"age": "thirty-five"`, so your parser throws and you retry. XGrammar moves the check inside generation itself: a next word that would break the structure simply cannot be written. Most open LLM serving stacks already run it underneath.
 
 ![xgrammar — health radar](../../../assets/health/xgrammar.svg)
 
 ## When to use
 
-You are building an agent or a service that must emit machine-parseable output — a JSON object for a downstream API, a tool call in the model's own chat template, a DSL or code fragment — and you control the model's logits, because you run the model yourself (HuggingFace `transformers`, or a serving engine such as [vLLM](../serving-engines/vllm.md) or [SGLang](../serving-engines/sglang.md)). Retry-until-it-parses is not acceptable: it burns tokens, adds latency, and still occasionally hands you a malformed payload at the worst moment.
+You are building an agent or a service that must emit machine-parseable output — a JSON object for a downstream API, a tool call in the model's own chat template, a DSL or code fragment — and you control the model's logits, because you run the model yourself (HuggingFace `transformers`, or a serving engine such as [vLLM](../serving-engines/vllm.md) or [SGLang](../serving-engines/sglang.md)). A model predicts one word at a time under rules that only keep it *plausible*, never *valid*, so what comes back is this:
+
+```json
+{"name": "Ada Lovelace", "age": "thirty-five", }
+```
+
+`age` should be a number and there is a trailing comma — `json.loads` throws, and your only move is to paste the error back and generate again. Retry-until-it-parses is not acceptable here: it burns tokens, adds latency, and still occasionally hands you a malformed payload at the worst moment.
 
 Reach for XGrammar when the deciding factor is **overhead inside the decoding loop plus breadth of structure**. It compiles the grammar against the model's exact vocabulary up front and keeps a cached token mask, which is why its JSON path is the one engines reach for when structured output must not visibly slow generation; and it covers more shapes than a JSON-only tool — JSON Schema, regex, EBNF, Lark, and its own Structural Tag language for outputs that mix free-form reasoning with tool calls in a model-specific wrapper. Choose it over a pure-Python constraining library when you are wiring into an engine or need a C++-speed mask; choose your provider's hosted structured-output mode instead when you do not own the logits at all.
 
 ## How it works
 
-XGrammar decides, at every decoding step, which tokens are still legal given the structure you asked for, and removes every other token from consideration before sampling — so the model can only ever emit text that fits the grammar. You describe the structure once, hand it the model's tokenizer, and it precompiles the set of legal tokens for that exact vocabulary; that compile is done once per grammar-and-model pair and cached, so a repeated or shared schema is nearly free. At run time the state machine is small and stateful: accept the last sampled token, ask for the next mask, apply the mask to the logits, sample again. The line between you and it is clean — **you own the prompt, the model and the generation loop** (and should still describe the required structure in the prompt, since the mask only touches the sampling stage and cannot make the model *want* the right answer), while **XGrammar owns grammar compilation, the token mask and the state machine** that keeps the output inside the structure. If you serve through vLLM, SGLang, TensorRT-LLM or MLC-LLM you do not wire this yourself: those engines call XGrammar behind their structured-output option.
+A model writes one *token* at a time — a token being a word or word-fragment it picks from a fixed vocabulary — and it picks by scoring every candidate in that vocabulary and drawing one of the high scorers (those raw scores are the *logits*; the draw is *sampling*). XGrammar sits in that gap: at every step it works out which tokens would still keep the output legal under the structure you asked for, and zeroes out all the others before the draw — a *mask*. The model is not corrected afterwards; the illegal continuation is never on the table. It is the difference between proofreading an essay and a keyboard that physically cannot type the bad sentence. You describe the structure once, hand it the model's tokenizer, and it precompiles the legal-token sets for that exact vocabulary; that compile happens once per grammar-and-model pair and is cached, so a repeated or shared schema is nearly free. At run time it keeps a tiny bookmark of where you are in the structure: accept the token just sampled, hand back the next mask, repeat. The line between you and it is clean — **you own the prompt, the model and the generation loop** (and should still describe the required structure in the prompt, since the mask only touches the sampling stage and cannot make the model *want* the right answer), while **XGrammar owns grammar compilation, the token mask and the state machine** that keeps the output inside the structure. If you serve through vLLM, SGLang, TensorRT-LLM or MLC-LLM you do not wire this yourself: those engines call XGrammar behind their structured-output option.
 
 ![xgrammar — backbone user story](../../../assets/flow/xgrammar.svg)
 
