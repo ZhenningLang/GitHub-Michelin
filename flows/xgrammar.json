@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "XGrammar does",
+    "zh": "XGrammar 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it next to your model stack",
+      "zh": "装在你的模型栈旁边",
+      "code": "pip install xgrammar"
+    },
+    {
+      "lane": "you",
+      "en": "Describe the output structure you need",
+      "zh": "描述你需要的输出结构",
+      "code": "xgr.Grammar.from_json_schema(schema)"
+    },
+    {
+      "lane": "you",
+      "en": "Hand it the model's tokenizer",
+      "zh": "把模型的 tokenizer 交给它",
+      "code": "xgr.TokenizerInfo.from_huggingface(tokenizer)"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles the grammar against that vocabulary into a cached token mask",
+      "zh": "按该词表把语法编译成可缓存的 token 掩码",
+      "component": {
+        "en": "GrammarCompiler",
+        "zh": "GrammarCompiler"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Attach the compiled grammar to generation",
+      "zh": "把编译好的语法接到生成过程",
+      "code": "xgr.contrib.hf.LogitsProcessor(compiled_grammar)"
+    },
+    {
+      "lane": "them",
+      "en": "Masks the logits at each step, so only grammar-valid tokens can be sampled",
+      "zh": "每一步掩掉 logits，只有符合语法的 token 才可能被采样",
+      "component": {
+        "en": "GrammarMatcher",
+        "zh": "GrammarMatcher"
+      }
+    }
+  ],
+  "value": {
+    "en": "Every response is valid JSON or a well-formed tool call by construction — no retry loop, no repair parser",
+    "zh": "每条回复天然就是合法 JSON 或格式正确的工具调用——不用重试循环，也不用修复解析器"
+  },
+  "sources": [
+    "README.md Get Started: `pip install xgrammar`; `import xgrammar as xgr`",
+    "docs/start/quick_start.md: `xgr.TokenizerInfo.from_huggingface(...)`, `compile_json_schema`, `xgr.contrib.hf.LogitsProcessor(compiled_grammar)`",
+    "docs/start/workflow_of_xgrammar.md: `xgr.Grammar.from_json_schema(...)`, GrammarCompiler, GrammarMatcher.accept_token/fill_next_token_bitmask, apply_token_bitmask_inplace, is_terminated"
+  ]
+}
