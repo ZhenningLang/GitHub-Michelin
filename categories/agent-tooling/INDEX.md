@@ -1,6 +1,6 @@
 # agent-tooling
 
-> Category node. Infrastructure for AI coding agents — task/work tracking, persistent memory, agent state.
+> Category node. Infrastructure for AI coding agents — task/work tracking, persistent memory, agent state, and the human review/approval surfaces where the agent hands control back to you.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
 ## Projects in this category
@@ -19,6 +19,7 @@
 | **CLI-Anything** | Use it when you want a coding agent to drive GUI-only software through a generated CLI harness backed by the app's own engine — but it's pre-1.0 and each harness is community-maintained. | B (6/6) | [→](cli-anything.md) |
 | **Hermes Workspace** | Use it when you run Nous's hermes-agent and want its state as a web console — chat, memory, skills, terminal, tmux swarm dispatch, phone via PWA/Tailscale — but its enhanced panes are keyed to the Hermes gateway/dashboard APIs and it's ~6 months old. | B (5/6) | [→](hermes-workspace.md) |
 | **CloudCLI (Claude Code UI)** | Use it when your brain is Claude Code / Codex / Cursor CLI and you want a browser/mobile cockpit for those sessions (files, terminal, git) — but it's AGPL-3.0-or-later and single-operator shaped. | C (5/6) | [→](claudecodeui.md) |
+| **Plannotator** | Use it when a human must annotate or approve what the agent produced — a plan, a diff, an HTML artifact — and send that markup back as the agent's next instruction. | B (6/6) | [→](plannotator.md) |
 
 ## Comparison matrix
 
@@ -36,8 +37,9 @@
 | [CLI-Anything](cli-anything.md) | ✅ | B (6/6) | Generated CLI harnesses that drive the app's real backend — broad reach across GUI software, but pre-1.0 and community-maintained. |
 | [Hermes Workspace](hermes-workspace.md) | ✅ | B (5/6) | Use it when you run Nous's hermes-agent and want its state as a web console — chat, memory, skills, terminal, tmux swarm dispatch, phone via PWA/Tailscale — but its enhanced panes are keyed to the Hermes gateway/dashboard APIs and it's ~6 months old. |
 | [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | C (5/6) | Use it when your brain is Claude Code / Codex / Cursor CLI and you want a browser/mobile cockpit for those sessions (files, terminal, git) — but it's AGPL-3.0-or-later and single-operator shaped. |
+| [Plannotator](plannotator.md) | ✅ | B (6/6) | Choose it when the agent must wait on a human's line-level annotations before continuing — plan review in the browser, feedback returned through the hook protocol; the cost is a 9-month-old pre-1.0 single-maintainer project. |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | Other task/work-tracking backends for agents named across the pages. |
 
 ## What belongs here
 
-Infrastructure an AI **coding agent** uses to track work and carry state — task/issue graphs, session capture, planning / context plumbing. Not LLM-agnostic memory libraries (see `agent-memory`), not agent runtimes (see `agent-frameworks`).
+Infrastructure an AI **coding agent** uses to track work, carry state, and hand control back to you — task/issue graphs, session capture, planning / context plumbing, review-and-approval surfaces. Not LLM-agnostic memory libraries (see `agent-memory`), not agent runtimes (see `agent-frameworks`), not LLM-authored code review (see `ai-code-review`).

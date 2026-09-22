@@ -375,6 +375,7 @@ hcaptcha-challenger,categories/captcha/buster.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
+herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no

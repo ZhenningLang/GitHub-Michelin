@@ -1,6 +1,6 @@
 # agent-tooling
 
-> 分类节点。面向 AI 编码 agent 的基础设施——任务/工作追踪、持久记忆、agent 状态。
+> 分类节点。面向 AI 编码 agent 的基础设施——任务/工作追踪、持久记忆、agent 状态，以及 agent 把控制权交还给你的人审/批准界面。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
 ## 本分类项目
@@ -19,6 +19,7 @@
 | **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | B（6/6） | [→](cli-anything.zh.md) |
 | **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | B（5/6） | [→](hermes-workspace.zh.md) |
 | **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | C（5/6） | [→](claudecodeui.zh.md) |
+| **Plannotator** | 当 agent 的产出（计划、diff、HTML 产物）必须由人批注或批准、并把批注当作 agent 下一条指令发回去时用它。 | B（6/6） | [→](plannotator.zh.md) |
 
 ## 对比矩阵
 
@@ -36,8 +37,9 @@
 | [CLI-Anything](cli-anything.zh.md) | ✅ | B（6/6） | 生成式 CLI harness，驱动应用自身真实后端——对 GUI 软件覆盖面广，但仍在 1.0 之前且由社区维护。 |
 | [Hermes Workspace](hermes-workspace.zh.md) | ✅ | B（5/6） | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 |
 | [CloudCLI (Claude Code UI)](claudecodeui.zh.md) | ✅ | C（5/6） | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 |
+| [Plannotator](plannotator.zh.md) | ✅ | B（6/6） | agent 必须停下来等人给出逐行批注才能继续时选它——计划在浏览器里评审、反馈经 hook 协议回传；代价是只有 9 个月大、pre-1.0、单人维护。 |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | 各页对比里点到的其他 agent 任务/工作追踪后端。 |
 
 ## 什么该放这里
 
-AI **编码 agent** 用来追踪工作、承载状态的基础设施——任务/issue 图、会话捕获、规划/上下文管线。不含与 LLM 无关的记忆库（见 `agent-memory`），不含 agent 运行时（见 `agent-frameworks`）。
+AI **编码 agent** 用来追踪工作、承载状态、并在需要时把控制权交还给你的基础设施——任务/issue 图、会话捕获、规划/上下文管线、评审与批准界面。不含与 LLM 无关的记忆库（见 `agent-memory`），不含 agent 运行时（见 `agent-frameworks`），也不含 LLM 自动产出的代码评审（见 `ai-code-review`）。

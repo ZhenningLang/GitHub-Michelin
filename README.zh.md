@@ -56,6 +56,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/cli-anything.zh.md) · [EN](categories/agent-tooling/cli-anything.md) |
 | **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/hermes-workspace.zh.md) · [EN](categories/agent-tooling/hermes-workspace.md) |
 | **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | AGPL-3.0-or-later | C（5/6） | [中](categories/agent-tooling/claudecodeui.zh.md) · [EN](categories/agent-tooling/claudecodeui.md) |
+| **Plannotator** | 当 agent 的产出（计划、diff、HTML 产物）必须由人批注或批准、并把批注当作 agent 的下一条指令发回去时用它——但它只有 9 个月大、pre-1.0、单人维护，且开源版的团队分享路线正被托管产品取代。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-tooling/plannotator.zh.md) · [EN](categories/agent-tooling/plannotator.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

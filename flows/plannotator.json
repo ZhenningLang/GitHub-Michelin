@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Plannotator does",
+    "zh": "Plannotator 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run one installer that detects your agents and wires their hooks, commands and skills",
+      "zh": "一条安装命令识别本机 agent，写好其 hook、命令与 skills",
+      "code": "curl -fsSL https://plannotator.ai/install.sh | bash",
+      "component": {
+        "en": "install.sh",
+        "zh": "install.sh"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "When your agent reaches plan approval, the registered hook catches that call",
+      "zh": "agent 走到计划批准时，已注册的 hook 接住这次调用",
+      "component": {
+        "en": "hook (ExitPlanMode)",
+        "zh": "hook（ExitPlanMode）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Starts a short-lived local server and opens the plan in your browser",
+      "zh": "起一个用完即走的本地服务器，把计划在浏览器里打开",
+      "component": {
+        "en": "local server",
+        "zh": "本地服务器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Read the rendered plan and annotate the exact lines you want changed",
+      "zh": "读渲染好的计划，逐条标注你要改的地方"
+    },
+    {
+      "lane": "them",
+      "en": "Blocks until you decide: approve passes silently, annotations return as a block reason",
+      "zh": "阻塞到你做决定：批准就静默放行，批注以 block 理由返回",
+      "code": "{\"decision\":\"block\",\"reason\":\"…\"}"
+    },
+    {
+      "lane": "them",
+      "en": "On your next plan, shows a diff of what changed since the version you reviewed",
+      "zh": "下次提交同一计划时，给出与你上轮所审版本的差异"
+    }
+  ],
+  "value": {
+    "en": "Your review lands inside the agent loop — no pasting the plan into chat, no explaining which line you meant",
+    "zh": "评审直接落在 agent 循环里——不用把计划贴回聊天，也不用解释你指的是哪一行"
+  },
+  "sources": [
+    "README.md Install: `curl -fsSL https://plannotator.ai/install.sh | bash`; Commands: `/plannotator-review`, `/plannotator-annotate`, `/plannotator-last`, `plannotator sessions`",
+    "README.md How it works -> Plan review: ExitPlanMode -> PermissionRequest hook -> local server reads the plan -> browser review UI -> approve/deny -> feedback to agent -> plan diff on resubmission",
+    "apps/hook/README.md: `PermissionRequest` matcher `ExitPlanMode`, command `plannotator`, timeout 345600",
+    "apps/marketing/src/content/docs/guides/hook-integration.md: `--hook` decision matrix — approve/close = empty stdout, Send Annotations = `{\"decision\":\"block\",\"reason\":\"<feedback>\"}`, exit code always 0"
+  ]
+}
