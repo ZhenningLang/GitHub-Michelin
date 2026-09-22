@@ -104,6 +104,8 @@ https://github.com/RocketChat/Rocket.Chat,rocket-chat,team-chat,categories/team-
 https://github.com/RooCodeInc/Roo-Code,roo-code,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/roo-code.md
 https://github.com/SWE-agent/SWE-agent,swe-agent,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md
 https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/swe-bench.md
+https://github.com/SakanaAI/AI-Scientist,ai-scientist,ml-research,categories/ml-research/ai-scientist.md
+https://github.com/SamuelSchmidgall/AgentLaboratory,agent-laboratory,ml-research,categories/ml-research/agent-laboratory.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
 https://github.com/Setasign/FPDI,fpdi,pdf-tools,categories/pdf-tools/fpdi.md
@@ -148,6 +150,7 @@ https://github.com/alibaba/open-code-review,open-code-review,ai-code-review,cate
 https://github.com/alibaba/page-agent,page-agent,agent-browser-tools,categories/web-automation/agent-browser-tools/page-agent.md
 https://github.com/alielsokary/CaskHub,caskhub,package-manager-gui,categories/dev-utilities/package-manager-gui/caskhub.md
 https://github.com/allenai/olmocr,olmocr,document-parsing,categories/document-parsing/olmocr.md
+https://github.com/alphaXiv/OpenResearch,openresearch,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md
 https://github.com/angular/angular,angular,frameworks,categories/web-ui/frameworks/angular.md
 https://github.com/anomalyco/opencode,opencode,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/opencode.md
 https://github.com/ant-design/ant-design,ant-design,component-libraries,categories/web-ui/component-libraries/ant-design.md

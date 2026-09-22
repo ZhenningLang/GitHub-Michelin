@@ -43,7 +43,7 @@ ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
-AI-Scientist (Sakana),categories/ml-research/autoresearch.md,,no
+AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/ai-scientist.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no

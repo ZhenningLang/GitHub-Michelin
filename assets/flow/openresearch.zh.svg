@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1012" viewBox="0 0 880 1012" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1012" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="876" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="876" rx="10"/>
+<rect class="pillT" x="474" y="40" width="178.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenResearch 做的</text>
+<path class="hand" d="M408,136.0 C439.0,136.0 439.0,160 470,160" marker-end="url(#a)"/>
+<path class="hand" d="M472,193.0 C441.0,193.0 441.0,250 410,250" marker-end="url(#a)"/>
+<path class="edge" d="M62,335 L62,359" marker-end="url(#a)"/>
+<path class="hand" d="M408,415.5 C439.0,415.5 439.0,439 470,439" marker-end="url(#a)"/>
+<path class="hand" d="M472,472.0 C441.0,472.0 441.0,520 410,520" marker-end="url(#a)"/>
+<path class="edge" d="M62,563 L62,587" marker-end="url(#a)"/>
+<path class="hand" d="M408,634.0 C439.0,634.0 439.0,658 470,658" marker-end="url(#a)"/>
+<path class="edge" d="M494,748 L494,772" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="128" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="128" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">搭建</text>
+<text class="t" x="82" y="118">装上 CLI，打开本地仪表盘</text>
+<text class="c" x="82" y="142">curl -LsSf</text>
+<text class="c" x="82" y="161">https://openresearch.sh/install.sh | sh ·</text>
+<text class="c" x="82" y="180">orx up</text>
+<rect class="cardT" x="472" y="136" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="136" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="160" r="10"/>
+<text class="num" x="494" y="164" text-anchor="middle">2</text>
+<text class="ph" x="514" y="165">搭建</text>
+<text class="t" x="514" y="182">在本机 127.0.0.1:4791 起工作台，数据只在</text>
+<text class="t" x="514" y="204">本地 SQLite</text>
+<text class="comp" x="514" y="232">组件：本地仪表盘</text>
+<rect class="card" x="40" y="226" width="368" height="109" rx="8"/>
+<rect class="accY" x="40" y="226" width="4" height="109" rx="2"/>
+<circle class="accY" cx="62" cy="250" r="10"/>
+<text class="num" x="62" y="254" text-anchor="middle">3</text>
+<text class="ph" x="82" y="255">搭建</text>
+<text class="t" x="82" y="272">导入一个 git 仓库，钉死那条跑实验的命令</text>
+<text class="c" x="82" y="296">orx project edit &lt;id&gt; --run-command</text>
+<text class="c" x="82" y="315">&#x27;&lt;cmd&gt;&#x27;</text>
+<rect class="card" x="40" y="361" width="368" height="109" rx="8"/>
+<rect class="accY" x="40" y="361" width="4" height="109" rx="2"/>
+<circle class="accY" cx="62" cy="385" r="10"/>
+<text class="num" x="62" y="389" text-anchor="middle">4</text>
+<text class="ph" x="82" y="390">每一轮</text>
+<text class="t" x="82" y="407">把这一轮的几个变体建成当前赢家的子节点</text>
+<text class="c" x="82" y="431">orx create-experiment &lt;id&gt; --parent</text>
+<text class="c" x="82" y="450">&lt;winner&gt; --title &quot;LR 2e-5&quot;</text>
+<rect class="cardT" x="472" y="415" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="415" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="439" r="10"/>
+<text class="num" x="494" y="443" text-anchor="middle">5</text>
+<text class="ph" x="514" y="444">每一轮</text>
+<text class="t" x="514" y="461">每个节点开一条 orx/&lt;slug&gt; 分支，继承父节点</text>
+<text class="t" x="514" y="483">的代码与固定命令</text>
+<text class="comp" x="514" y="511">组件：实验树</text>
+<rect class="card" x="40" y="496" width="368" height="67" rx="8"/>
+<rect class="accY" x="40" y="496" width="4" height="67" rx="2"/>
+<circle class="accY" cx="62" cy="520" r="10"/>
+<text class="num" x="62" y="524" text-anchor="middle">6</text>
+<text class="ph" x="82" y="525">每一轮</text>
+<text class="t" x="82" y="542">在该子分支上只改这个想法的代码并提交</text>
+<rect class="card" x="40" y="589" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="589" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="613" r="10"/>
+<text class="num" x="62" y="617" text-anchor="middle">7</text>
+<text class="ph" x="82" y="618">每一轮</text>
+<text class="t" x="82" y="635">在你选的后端上启动这一轮</text>
+<text class="c" x="82" y="659">orx exp run &lt;childId&gt; --backend &lt;b&gt;</text>
+<rect class="cardT" x="472" y="634" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="634" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="658" r="10"/>
+<text class="num" x="494" y="662" text-anchor="middle">8</text>
+<text class="ph" x="514" y="663">每一轮</text>
+<text class="t" x="514" y="680">把该提交做成快照，在那儿跑，日志绑到这个</text>
+<text class="t" x="514" y="702">run</text>
+<text class="comp" x="514" y="730">组件：运行监管进程</text>
+<rect class="cardT" x="472" y="774" width="368" height="112" rx="8"/>
+<rect class="accT" x="472" y="774" width="4" height="112" rx="2"/>
+<circle class="accT" cx="494" cy="798" r="10"/>
+<text class="num" x="494" y="802" text-anchor="middle">9</text>
+<text class="ph" x="514" y="803">每一轮</text>
+<text class="t" x="514" y="820">第一个 run 一结束就返回，你好补位或</text>
+<text class="t" x="514" y="842">晋级赢家</text>
+<text class="c" x="514" y="866">orx exp wait --project &lt;id&gt;</text>
+<rect class="val" x="28" y="918" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="942">价值</text>
+<text class="valT" x="48" y="966">你不用再手工记哪个数字来自哪份代码：每个结果都带着自己的提交、日志和产物，下一轮直接长在赢家上</text>
+</svg>

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenResearch does", "zh": "OpenResearch 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI, then start the local dashboard", "zh": "装上 CLI，打开本地仪表盘", "code": "curl -LsSf https://openresearch.sh/install.sh | sh · orx up", "phase": {"en": "Set up", "zh": "搭建"}},
+    {"lane": "them", "en": "Serves it on 127.0.0.1:4791 from a local SQLite store, so nothing is published", "zh": "在本机 127.0.0.1:4791 起工作台，数据只在本地 SQLite", "component": {"en": "local dashboard", "zh": "本地仪表盘"}},
+    {"lane": "you", "en": "Import a git repo and pin the one command that runs an experiment", "zh": "导入一个 git 仓库，钉死那条跑实验的命令", "code": "orx project edit <id> --run-command '<cmd>'"},
+    {"lane": "you", "en": "Create this round's variants as child nodes of the current winner", "zh": "把这一轮的几个变体建成当前赢家的子节点", "code": "orx create-experiment <id> --parent <winner> --title \"LR 2e-5\"", "phase": {"en": "Each round", "zh": "每一轮"}},
+    {"lane": "them", "en": "Branches one orx/<slug> per node, inheriting the parent's code and fixed command", "zh": "每个节点开一条 orx/<slug> 分支，继承父节点的代码与固定命令", "component": {"en": "experiment tree", "zh": "实验树"}},
+    {"lane": "you", "en": "Edit only that idea's files on the child branch and commit", "zh": "在该子分支上只改这个想法的代码并提交"},
+    {"lane": "you", "en": "Launch the round on the backend you choose", "zh": "在你选的后端上启动这一轮", "code": "orx exp run <childId> --backend <b>"},
+    {"lane": "them", "en": "Snapshots the commit, runs it there, and keeps the log tied to that run", "zh": "把该提交做成快照，在那儿跑，日志绑到这个 run", "component": {"en": "run supervisor", "zh": "运行监管进程"}},
+    {"lane": "them", "en": "Returns on the first completion, so you can refill the slot or promote the winner", "zh": "第一个 run 一结束就返回，你好补位或晋级赢家", "code": "orx exp wait --project <id>"}
+  ],
+  "value": {
+    "en": "You no longer hand-track which code produced which number: every result carries its commit, log, and artifacts, and the next round builds on the winner",
+    "zh": "你不用再手工记哪个数字来自哪份代码：每个结果都带着自己的提交、日志和产物，下一轮直接长在赢家上"
+  },
+  "sources": [
+    "README.md Get started + CLI integration (curl -LsSf https://openresearch.sh/install.sh | sh; orx up opens 127.0.0.1:4791; orx install-skills; orx projects / runs / logs / exp run / discover / paper; local SQLite store; the SSH remote-mode auth warning)",
+    "SKILL.md (orx up owns projects/experiments/runs in a local git repo + local database; orx project edit <projectId> --run-command '<cmd>'; orx create-experiment <projectId> --title '<t>')",
+    "agent-skills/orx-experiment-tree/SKILL.md (a project is a tree of experiment nodes: root baseline + fixed run command; orx create-experiment prints the orx/<slug> branch; orx exp run <childId> --backend <b>; orx exp wait --project <projectId> returns on the first completion; frozen-node and identical-command cardinal rules)",
+    "agent-skills/orx-create/SKILL.md (import an existing git repo through orx up; the first parentless node is the baseline; a child branches from its parent's branch and inherits its run command; commit before launching because runs use an immutable archive of the local commit)",
+    "agent-skills/orx-compute/SKILL.md + references/local.md (each run uses an immutable snapshot of the experiment branch's recorded commit; backends hf / modal / k8s / ssh / slurm / ray / openresearch / tinker / local; local runs share this machine's CPU, RAM and GPU and live under <orx data dir>/local-runs/<runId>/)",
+    "SYSTEM_PROMPT.md (the playbook injected into every agent session through each harness's native channel; each session works in its own git worktree of the project; artifacts directory for reports, figures and PDFs)",
+    "Cargo.toml + src/ tree (Rust CLI, axum/rust-embed dashboard, bundled rusqlite; src/local/harness/{claude,codex,opencode,cursor,antigravity}.rs; src/local/{slurm,k8s,ray,hf,modal,ssh,localrun}.rs; cargo-dist targets and installers)"
+  ]
+}

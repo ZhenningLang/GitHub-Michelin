@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Laboratory does", "zh": "Agent Laboratory 做的"},
+  "steps": [
+    {"lane": "you", "en": "Create a Python 3.12 env and install its long requirement list", "zh": "建 Python 3.12 环境，装它那一长串依赖", "code": "pip install -r requirements.txt", "phase": {"en": "Set up", "zh": "搭建"}},
+    {"lane": "you", "en": "Write your task notes, API key and model backends into the YAML config", "zh": "把你的任务笔记、API key 和模型后端写进 YAML 配置", "code": "llm-backend: \"o3-mini\""},
+    {"lane": "you", "en": "Launch the lab on that config", "zh": "用这份配置启动这个 lab", "code": "python ai_lab_repo.py --yaml-location \"experiment_configs/MATH_agentlab.yaml\"", "phase": {"en": "Each lab", "zh": "每个 lab"}},
+    {"lane": "them", "en": "Runs the literature review and folds what it read into a plan", "zh": "做文献回顾，把读到的收进研究计划", "component": {"en": "literature agents", "zh": "文献 agent"}},
+    {"lane": "you", "en": "In copilot mode, approve or correct each phase before it moves on", "zh": "开 copilot 时，每个阶段先由你确认或纠正再往下", "code": "copilot-mode: True"},
+    {"lane": "them", "en": "Prepares data and runs the experiments, the MLE-solver writing and repairing the code", "zh": "准备数据、跑实验，代码由 MLE-solver 写并自动修", "component": {"en": "MLE-solver", "zh": "MLE-solver"}},
+    {"lane": "them", "en": "Interprets the results and writes the report in LaTeX", "zh": "解读结果，用 LaTeX 写成报告", "component": {"en": "report agents", "zh": "报告 agent"}},
+    {"lane": "them", "en": "Scores the draft and can send the lab back for more experiments", "zh": "给草稿评分，必要时把 lab 打回去补实验", "component": {"en": "paper-solver", "zh": "paper-solver"}}
+  ],
+  "value": {
+    "en": "You stop carrying the whole research loop in your head: the phases run on their own, and in copilot mode each one pauses for your call",
+    "zh": "研究流程不再整个压在你脑子里：各阶段自己往前走，开 copilot 时每个阶段停下来等你拍板"
+  },
+  "sources": [
+    "README.md (three primary phases: literature review, experimentation, report writing; copilot-mode flag; supported models o1/o1-preview/o1-mini/gpt-4o/o3-mini and deepseek-chat with --llm-backend; task_notes_LLM / task-notes for compute facts and style; state_saves checkpoints; pdflatex optional via --compile-latex \"false\"; AgentRxiv upload/retrieve; MIT license)",
+    "experiment_configs/MATH_agentlab.yaml (copilot-mode: True; research-topic; api-key; llm-backend: \"o3-mini\"; num-papers-lit-review; num-papers-to-write; mlesolver-max-steps / papersolver-max-steps; task-notes per phase; load-existing)",
+    "ai_lab_repo.py (the phases list: literature review, plan formulation, data preparation, running experiments, results interpretation, report writing, report refinement; report_refinement can reset the experiment phases and send the lab back)",
+    "mlesolver.py (MLE-solver command interpreter for the experiment phase, with GLOBAL_REPAIR_ATTEMPTS repair loop)",
+    "papersolver.py (paper-solver: arXiv SUMMARY / FULL_TEXT search tools, referee scoring via agents.get_score)",
+    "app.py (the AgentRxiv Flask + SQLite paper repository UI, SECRET_KEY placeholder)"
+  ]
+}
