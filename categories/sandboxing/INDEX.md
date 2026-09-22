@@ -14,6 +14,7 @@
 | **E2B** | Use it when an agent needs to run AI-generated code and you want the sandbox as an SDK — hosted by default, Terraform-self-hosted on AWS/GCP when it must live in your own account. | A (6/6) | [→](e2b.md) |
 | **Agent Substrate** | Use it when a large fleet of stateful agent sessions sits idle most of the time and you want them multiplexed onto fewer warm Kubernetes pods by checkpointing idle agents and resuming them on demand — but it's pre-1.0 with unstable APIs and no security hardening yet. | B (4/6) | [→](substrate.md) |
 | **Modal client SDK** | Use it when you want serverless containers, GPUs and sandboxes without operating anything — the client SDK is open source, the platform is closed and hosted-only. | A (6/6) | [→](modal-client.md) |
+| **Microsandbox** | Use it when the sandbox must run on hardware you already own — one binary or SDK, ordinary OCI images, per-sandbox egress policy and host-side secrets, with no daemon and no cluster — but it needs KVM/Apple Silicon/WHP on the host and is still beta. | A (5/6) | [→](microsandbox.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [E2B](e2b.md) | ✅ | A (6/6) | Fastest path to a working sandbox (hosted SDK first, Terraform self-host later) — self-hosting covers only AWS/GCP. |
 | [Agent Substrate](substrate.md) | ✅ | B (4/6) | Density for *stateful* agents by snapshotting idle ones onto warm pods — pre-1.0, ingress-driven wakeups, no security hardening yet. |
 | [Modal client SDK](modal-client.md) | ✅ | A (6/6) | Serverless containers, GPUs and sandboxes with nothing to operate — no self-hosting, no exit, single vendor. |
+| [Microsandbox](microsandbox.md) | ✅ | A (5/6) | Local-first microVM sandboxes from ordinary OCI images, with Docker-like verbs and no daemon — cross-platform and unprivileged, but it needs hardware virtualization on the host and is beta. |
 
 ## What belongs here
 

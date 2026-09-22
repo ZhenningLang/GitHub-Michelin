@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Microsandbox does", "zh": "Microsandbox 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI or the SDK for your language", "zh": "装 CLI，或按你的语言装 SDK", "code": "curl -fsSL https://install.microsandbox.dev | sh · pip install microsandbox", "component": {"en": "msb CLI + host runtime", "zh": "msb CLI + 宿主运行时"}},
+    {"lane": "you", "en": "Create a sandbox from an ordinary OCI image", "zh": "用普通 OCI 镜像建一个沙箱", "code": "msb run python · Sandbox.create(image=\"python\")"},
+    {"lane": "them", "en": "Pulls the image, lays a copy-on-write root and boots a microVM with its own kernel", "zh": "拉镜像、铺一份写时复制根文件系统，启动带独立内核的 microVM", "component": {"en": "libkrun microVM", "zh": "libkrun microVM"}},
+    {"lane": "them", "en": "Starts the in-guest agent that serves your exec and file calls", "zh": "启动 guest 内的 agent，承接你的 exec 与文件调用", "component": {"en": "agentd", "zh": "agentd"}},
+    {"lane": "you", "en": "Run commands in it and stream the output back", "zh": "在里面跑命令，把输出流回来", "code": "msb exec worker · sb.exec(\"python\", [...])"},
+    {"lane": "them", "en": "Checks each outbound packet against egress policy and substitutes real secrets on the host", "zh": "逐个核对出站包是否符合出口策略，并在宿主侧把占位符换成真 secret", "code": "--net-rule \"allow@public:tcp:443\" · --secret 'GITHUB_TOKEN@api.github.com'", "component": {"en": "host network engine", "zh": "宿主网络引擎"}}
+  ],
+  "value": {"en": "Untrusted code runs behind a hardware boundary on your own machine — the same OCI images, no daemon and no cluster, with credentials kept on the host", "zh": "不可信代码在你自己的机器上跑在硬件边界之后——镜像仍是 OCI，无守护进程、无集群，凭证留在宿主"},
+  "sources": [
+    "https://github.com/superradcompany/microsandbox/blob/main/README.md (install one-liners; msb run debian; macOS Apple Silicon / Linux KVM / Windows WHP requirements)",
+    "https://github.com/superradcompany/microsandbox/blob/main/docs/getting-started/quickstart.mdx (Sandbox.create / msb run; 'What just happened': pull image, copy-on-write filesystem, boot microVM, start guest agent; exec uses the host-guest command channel, not SSH and not the sandbox network)",
+    "https://github.com/superradcompany/microsandbox/blob/main/docs/cli/sandbox-commands.mdx (msb run / create / exec; --net-rule; --secret; --net-default-egress deny)",
+    "https://github.com/superradcompany/microsandbox/blob/main/docs/sandboxes/secrets.mdx (--secret 'GITHUB_TOKEN@api.github.com'; guest holds a placeholder, real value substituted outside the guest)",
+    "https://github.com/superradcompany/microsandbox/blob/main/docs/networking/overview.mdx (host-controlled stack checks every packet against policy; default egress allows public, denies private/loopback/link-local/metadata)"
+  ]
+}
