@@ -92,6 +92,12 @@ REQUIRE_FLOW = os.environ.get("OSS_ATLAS_REQUIRE_FLOW", "0") == "1"
 # required for them (add-project writes it; sync-entry bumps last_verified only after re-checking it).
 # Older pages are the backfill backlog: one aggregate WARNING, not 1000 errors.
 FLOW_REQUIRED_FROM = os.environ.get("OSS_ATLAS_FLOW_REQUIRED_FROM", "2026-09-20")
+# A generator that has not read the upstream sources must say so with this marker instead of
+# writing plausible prose over the hole: prose that nobody earned reads exactly like prose that
+# somebody did, and no wording-based check can tell them apart after the fact. The marker gives the
+# unresearched state a name, and an ERROR here means a page carrying one cannot merge. Evading it
+# requires claiming research that did not happen, which is a different (and visible) problem.
+UNRESEARCHED_MARKER = "<!-- oss-atlas:unresearched -->"
 
 
 def today_utc() -> dt.date:
@@ -630,6 +636,12 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
     for section in required_sections(ptype if ptype in ALLOWED_TYPES else "tool", zh):
         if not re.search(r"(?m)^" + re.escape(section) + r"\s*$", text):
             rep.error(path, f"missing required section: {section}")
+
+    unresearched = text.count(UNRESEARCHED_MARKER)
+    if unresearched:
+        rep.error(path, f"{unresearched} section(s) still carry {UNRESEARCHED_MARKER}: the page was "
+                        f"scaffolded but not researched. Read the upstream sources and write those "
+                        f"sections (sync-entry), or drop the page — do not delete the marker alone.")
     check_comparison_table(path, text, zh, rep)
 
     # skill-pack pages must OMIT the extra sections, not pad them — forbid, don't just not-require.

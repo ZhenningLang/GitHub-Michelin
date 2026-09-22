@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import os
 import re
+import zlib
 import subprocess
 from collections import Counter
 from dataclasses import dataclass
@@ -47,6 +48,38 @@ INTAKE_STUB_MARKERS = [
 # date: re-verifying a page is exactly when the placeholder prose has to be replaced. Pages whose
 # last_verified is on or after this date fail the gate. Mirrors lint.py's FLOW_REQUIRED_FROM.
 STUB_BLOCKED_FROM = os.environ.get("OSS_ATLAS_STUB_BLOCKED_FROM", "2026-09-22")
+# Sections whose whole job is judgment: a generator or a copy-paste has no way to fill these
+# without reading the sources, so they are where boilerplate lands. Compared per language.
+# Thresholds are per section and per language, each set above what researched pages actually reach.
+# `When to use` / `When NOT to use` state why *this* project and not another, so overlap there is a
+# defect: across the current index the most similar researched pair reaches 21% / 28%, while
+# batch-generated pages start at 72%. `Dependencies` / `Ops difficulty` describe facts that can
+# legitimately coincide (python-docx and python-pptx really do both just need lxml), so only
+# near-verbatim reuse counts — at 0.65 the survivors are real copy-paste, e.g. driver-js and
+# intro-js sharing a word-for-word ops paragraph.
+DUP_SECTIONS = {
+    "When to use": 0.40, "When NOT to use": 0.40,
+    # Chinese runs higher for the same semantic distance: a 9-character shingle spans roughly a
+    # clause of CJK but only a word or two of English, so two zh pages that are genuinely different
+    # yet structurally parallel share far more shingles than their en counterparts. Measured: the
+    # most similar researched pair reaches 28% in `When NOT to use` and 48% in `何时不用` — same two
+    # projects, prose written separately (itchat/wxpy, both killed by the same WeChat protocol
+    # shutdown). Thresholds sit above each language's observed ceiling.
+    "何时使用": 0.55, "何时不用": 0.55,
+    "Dependencies": 0.65, "Ops difficulty": 0.65, "依赖": 0.65, "运维难度": 0.65,
+}
+# Phrase blacklists only ever catch boilerplate someone already wrote. What makes boilerplate
+# boilerplate is not its wording but that it repeats: prose written without reading THIS project
+# says the same thing about every project. Measured over the current index, a page's `When to use`
+# overlaps the most similar other page by at most 14% when it was researched and by at least 73%
+# when it came from the batch generators — so any threshold in between separates them without
+# knowing a single phrase in advance. 0.40 sits in that gap.
+# Scales every threshold above, for tightening or loosening the whole check at once.
+DUP_THRESHOLD_SCALE = float(os.environ.get("OSS_ATLAS_DUP_THRESHOLD_SCALE", "1.0"))
+DUP_MIN_CHARS = 120          # shorter sections are too small for the ratio to mean anything
+SHINGLE_K = 9
+SHINGLE_STEP = 3
+SHINGLE_SAMPLE = 4           # keep ~1/4 of shingles: same ratios, a quarter of the postings
 LAST_VERIFIED_RE = re.compile(r"^last_verified:\s*['\"]?(\d{4}-\d{2}-\d{2})", re.MULTILINE)
 KNOWN_CATEGORIES = [
     "composite-alternative-partly-indexed",
@@ -55,6 +88,8 @@ KNOWN_CATEGORIES = [
     "health-prose-raw-drift",
     "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
+    "duplicated-section-prose",
+    "duplicated-section-prose-reverified",
     "intake-stub-page",
     "intake-stub-page-reverified",
     "non-repo-status-legacy-form",
@@ -65,6 +100,7 @@ KNOWN_CATEGORIES = [
 GATED_DETERMINISTIC_CATEGORIES = {
     "composite-alternative-partly-indexed",
     "generic-comparison-template",
+    "duplicated-section-prose-reverified",
     "indexed-page-marked-non-repo",
     "indexed-page-marked-not-indexed",
     "intake-stub-page-reverified",
@@ -130,6 +166,77 @@ class ScanResult:
     scan_mode: str = "all"
     scope_paths: tuple[str, ...] = ()
     changed_candidate_count: int = 0
+
+
+def section_body(text: str, name: str) -> str:
+    match = re.search(rf"##\s+{re.escape(name)}\s*\n(.*?)(\n##\s|\Z)", text, re.S)
+    return match.group(1).strip() if match else ""
+
+
+def shingles(body: str) -> set[str]:
+    flat = re.sub(r"\W+", " ", body.lower()).strip()
+    return {
+        flat[i : i + SHINGLE_K]
+        for i in range(0, max(0, len(flat) - SHINGLE_K), SHINGLE_STEP)
+        if zlib.crc32(flat[i : i + SHINGLE_K].encode()) % SHINGLE_SAMPLE == 0
+    }
+
+
+def detect_duplicated_sections(pages: list[Path], universe: list[Path], root: Path) -> list[Finding]:
+    """Flag a judgment section that is near-identical to the same section on another page.
+
+    Compared against the whole index (`universe`), not just the scanned scope, so a scoped run
+    still sees a match against a page it did not scan.
+    """
+    findings: list[Finding] = []
+    scoped = {page.resolve() for page in pages}
+    for section, base_threshold in DUP_SECTIONS.items():
+        threshold = min(1.0, base_threshold * DUP_THRESHOLD_SCALE)
+        bodies: dict[Path, set[str]] = {}
+        texts: dict[Path, str] = {}
+        for page in universe:
+            text = page.read_text(encoding="utf-8")
+            body = section_body(text, section)
+            if len(body) < DUP_MIN_CHARS:
+                continue
+            grams = shingles(body)
+            if grams:
+                bodies[page] = grams
+                texts[page] = text
+        if len(bodies) < 2:
+            continue
+        posting: dict[str, list[Path]] = {}
+        for page, grams in bodies.items():
+            for gram in grams:
+                posting.setdefault(gram, []).append(page)
+        for page, grams in bodies.items():
+            if page.resolve() not in scoped:
+                continue
+            shared: Counter[Path] = Counter()
+            for gram in grams:
+                for other in posting[gram]:
+                    if other != page:
+                        shared[other] += 1
+            if not shared:
+                continue
+            twin, hits = shared.most_common(1)[0]
+            ratio = hits / len(grams)
+            if ratio < threshold:
+                continue
+            text = texts[page]
+            offset = text.find(f"## {section}")
+            verified = last_verified_of(text)
+            message = (f"`{section}` is {ratio:.0%} the same text as {relpath(twin, root)} — prose "
+                       f"that says the same thing about two projects describes neither.")
+            if verified and verified >= STUB_BLOCKED_FROM:
+                findings.append(Finding("duplicated-section-prose-reverified", "high", relpath(page, root),
+                                        line_number(text, max(offset, 0)),
+                                        message + f" The page claims last_verified {verified} >= "
+                                                  f"{STUB_BLOCKED_FROM}; write it from the sources.", f"{ratio:.0%}"))
+            else:
+                findings.append(Finding("duplicated-section-prose", "medium", relpath(page, root),
+                                        line_number(text, max(offset, 0)), message, f"{ratio:.0%}"))
+    return findings
 
 
 def last_verified_of(text: str) -> str | None:
@@ -710,10 +817,11 @@ def scan(root: Path | str, *, scope_paths: list[Path | str] | tuple[Path | str, 
         scan_mode = "all"
         changed_candidate_count = 0
         rendered_scope_paths = ()
+    findings_dup = detect_duplicated_sections(pages, all_pages, root)
     indexed_targets = {canonical_target(page) for page in all_pages}
     indexed_slug_set = indexed_slugs(all_pages)
     english_canonical_page_count = sum(1 for page in pages if not page.name.endswith(ZH_SUFFIX))
-    findings: list[Finding] = []
+    findings: list[Finding] = list(findings_dup)
     health_unknowns: Counter[tuple[str, str]] = Counter()
 
     for page in pages:
