@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "curl_cffi does", "zh": "curl_cffi 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package; a prebuilt native libcurl comes inside the wheel", "zh": "安装这个包，预编译的原生 libcurl 随 wheel 一起装上", "code": "pip install curl_cffi", "component": {"en": "prebuilt wheel", "zh": "预编译 wheel"}},
+    {"lane": "you", "en": "Make an ordinary request, naming the browser to look like", "zh": "像平常一样发请求，只多指定要模仿哪个浏览器", "code": "impersonate=\"chrome\"", "component": {"en": "requests-like API", "zh": "requests 风格 API"}},
+    {"lane": "them", "en": "Replays that browser's recorded TLS/JA3 and HTTP/2 handshake", "zh": "复现该浏览器录好的 TLS／JA3 与 HTTP/2 握手", "component": {"en": "libcurl-impersonate", "zh": "libcurl-impersonate"}},
+    {"lane": "them", "en": "Returns a requests-style response for you to read", "zh": "返回 requests 风格的响应供你读取", "component": {"en": "Session / Response", "zh": "Session／Response"}}
+  ],
+  "value": {"en": "You stop hand-tuning headers or launching a headless browser just to get past fingerprint-based blocking", "zh": "你不必再手动调 header，也不必为了绕过指纹封锁而拉起无头浏览器"},
+  "sources": [
+    "https://github.com/lexiforest/curl_cffi README (pip install curl_cffi; curl_cffi.get(..., impersonate=\"chrome\"); 'Pre-compiled, so you don't have to compile on your machine'; requests-like API; Session/Response)"
+  ]
+}

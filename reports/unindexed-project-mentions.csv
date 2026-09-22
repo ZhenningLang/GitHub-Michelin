@@ -40,7 +40,7 @@ AI-Scientist (Sakana),categories/ml-research/autoresearch.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no
-aiohttp,categories/python-tooling/grequests.md,,no
+aiohttp,categories/python-tooling/curl-cffi.md,,no
 aiokafka,categories/kafka-tools/kafka-python.md,,no
 airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
 AIStor Free / Enterprise,categories/object-storage/minio.md,,no
@@ -116,6 +116,7 @@ BMAD / GSD,categories/agent-skills/engineering/mattpocock-skills.md,,no
 BMAD Method,categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md,,no
 BMAD Method / Agent OS / SWE-bench / LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
 BMAD-METHOD,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md,,no
+bogdanfinn/tls-client,categories/python-tooling/curl-cffi.md,,no
 Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,,no
 Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
 Braintrust,categories/llm-eval/promptfoo.md,,no
@@ -376,7 +377,7 @@ HF TRL / verl,categories/llm-training/INDEX.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
-httpx,categories/python-tooling/grequests.md,,no
+httpx,categories/python-tooling/curl-cffi.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
 Hugging Face sentiment models,categories/ml-research/senta.md,,no
@@ -642,6 +643,7 @@ py-spy,categories/python-tooling/pyrasite.md,,no
 pyannote.audio,categories/media-processing/video-audio/whisper.md,,no
 pybind11 / nanobind,categories/python-tooling/cython.md,,no
 pyCapCut,categories/media-processing/nle-automation/pyjianyingdraft.md,,no
+pycurl,categories/python-tooling/curl-cffi.md,,no
 pyfiglet,categories/terminal-ui/art.md,,no
 pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
@@ -686,6 +688,7 @@ Reeder,categories/reading-tools/netnewswire.md,,no
 Reflog / `git stash` + manual snapshots,categories/agent-tooling/entire-cli.md,,no
 reload/restart with logging,categories/python-tooling/pyrasite.md,,no
 Remix,categories/web-ui/frameworks/nextjs.md,,no
+requests,categories/python-tooling/curl-cffi.md,,no
 requests + BeautifulSoup,categories/web-scraping/crawling-tools/requests-html.md,,no
 requests-futures,categories/python-tooling/grequests.md,,no
 requests-oauthlib / oauthlib,categories/auth/authomatic.md,,no
