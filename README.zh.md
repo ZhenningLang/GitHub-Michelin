@@ -1046,3 +1046,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Solaar** | 在 Linux 上当任务本身是设备管理而不是重映射时用它：配对与解绑接收器、读取电量与设备状态、修改 HID++ 设置——背后是 14 年仍在发版的记录；代价是仅限 Linux，且没有摄像头与 RGB。 | GPL-2.0-or-later | B（6/6） | [中](categories/peripherals/solaar.zh.md) · [EN](categories/peripherals/solaar.md) |
 | **Mouser** | 当你想要在 Windows／macOS／Linux 上用便携压缩包按应用重映射罗技 HID++ 鼠标，不需要安装器、账号或服务，并且不要求配对、键盘、摄像头或按设备映射时用它。 | MIT | B（5/6） | [中](categories/peripherals/mouser.zh.md) · [EN](categories/peripherals/mouser.md) |
 | **logiops** | 在 Linux 上，当你想要一个读单份声明式 `/etc/logid.cfg` 的 root systemd 守护进程而不是 GUI 时用它——接受只支持 HID++ 2.0+ 鼠标、没有应用感知，且开发自 2024 年起实际已停。 | GPL-3.0-or-later | C（4/6） | [中](categories/peripherals/logiops.zh.md) · [EN](categories/peripherals/logiops.md) |
+
+### decision-models
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Kev** | 当你想要一个自托管、可微调的模型，对一段文本回答带类型的问题（是/否、多选、评分）并给出可用的校准概率时用它——不是托管判定 API，也不是从零训一个分类器。 | Apache-2.0 | C（4/6） | [中](categories/decision-models/kev.zh.md) · [EN](categories/decision-models/kev.md) |

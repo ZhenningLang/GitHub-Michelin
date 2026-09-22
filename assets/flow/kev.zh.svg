@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="774" viewBox="0 0 880 774" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="774" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="638" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="638" rx="10"/>
+<rect class="pillT" x="474" y="40" width="96.0" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Kev 做的</text>
+<path class="hand" d="M408,139.0 C439.0,139.0 439.0,163 470,163" marker-end="url(#a)"/>
+<path class="hand" d="M472,196.0 C441.0,196.0 441.0,256 410,256" marker-end="url(#a)"/>
+<path class="hand" d="M408,277.0 C439.0,277.0 439.0,303 470,303" marker-end="url(#a)"/>
+<path class="edge" d="M494,393 L494,417" marker-end="url(#a)"/>
+<path class="hand" d="M472,463.5 C441.0,463.5 441.0,487 410,487" marker-end="url(#a)"/>
+<path class="hand" d="M408,520.5 C439.0,520.5 439.0,558 470,558" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="134" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="134" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">跑起来</text>
+<text class="t" x="82" y="118">装好 serve extra，在本地起服务</text>
+<text class="c" x="82" y="142">uv sync --extra serve · python -m</text>
+<text class="c" x="82" y="161">kev.serve --run jaredpalmer/kev-4b</text>
+<text class="comp" x="82" y="184">组件：kev.serve</text>
+<rect class="cardT" x="472" y="139" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="139" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="163" r="10"/>
+<text class="num" x="494" y="167" text-anchor="middle">2</text>
+<text class="ph" x="514" y="168">跑起来</text>
+<text class="t" x="514" y="185">下载 Qwen3.5 底座与 LoRA adapter，在</text>
+<text class="t" x="514" y="207">fp32 下合并</text>
+<text class="comp" x="514" y="235">组件：kev.serve</text>
+<rect class="card" x="40" y="232" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="232" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="256" r="10"/>
+<text class="num" x="62" y="260" text-anchor="middle">3</text>
+<text class="ph" x="82" y="261">跑起来</text>
+<text class="t" x="82" y="278">发一个请求：一段正文，加一组带类型的问题</text>
+<text class="c" x="82" y="302">POST /v1/systemone</text>
+<rect class="cardT" x="472" y="279" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="279" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="303" r="10"/>
+<text class="num" x="494" y="307" text-anchor="middle">4</text>
+<text class="ph" x="514" y="308">跑起来</text>
+<text class="t" x="514" y="325">只编码一次正文，用 pointer head 给每个选</text>
+<text class="t" x="514" y="347">项打分</text>
+<text class="comp" x="514" y="375">组件：pointer head</text>
+<rect class="cardT" x="472" y="419" width="368" height="89" rx="8"/>
+<rect class="accT" x="472" y="419" width="4" height="89" rx="2"/>
+<circle class="accT" cx="494" cy="443" r="10"/>
+<text class="num" x="494" y="447" text-anchor="middle">5</text>
+<text class="ph" x="514" y="448">跑起来</text>
+<text class="t" x="514" y="465">每题返回已校准的概率分布；温度参数在加载时</text>
+<text class="t" x="514" y="487">已生效</text>
+<rect class="card" x="40" y="463" width="368" height="115" rx="8"/>
+<rect class="accY" x="40" y="463" width="4" height="115" rx="2"/>
+<circle class="accY" cx="62" cy="487" r="10"/>
+<text class="num" x="62" y="491" text-anchor="middle">6</text>
+<text class="ph" x="82" y="492">让它变成你的</text>
+<text class="t" x="82" y="509">问题不一样时，用你自己的标注做微调</text>
+<text class="c" x="82" y="533">--init_from jaredpalmer/kev-4b</text>
+<text class="comp" x="82" y="556">组件：kev.train</text>
+<rect class="cardT" x="472" y="534" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="534" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="558" r="10"/>
+<text class="num" x="494" y="562" text-anchor="middle">7</text>
+<text class="ph" x="514" y="563">让它变成你的</text>
+<text class="t" x="514" y="580">热启动已发布的 adapter：你的标注是加一个</text>
+<text class="t" x="514" y="602">域，不是从头再训</text>
+<text class="comp" x="514" y="630">组件：kev.train</text>
+<rect class="val" x="28" y="680" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="704">价值</text>
+<text class="valT" x="48" y="728">你拿到可设阈值的逐问题概率，跑在自己的硬件上——不依赖托管判定 API，也不用从零训分类器</text>
+</svg>

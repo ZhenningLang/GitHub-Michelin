@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Kev does", "zh": "Kev 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the serve extra and start the local endpoint", "zh": "装好 serve extra，在本地起服务", "code": "uv sync --extra serve · python -m kev.serve --run jaredpalmer/kev-4b", "component": {"en": "kev.serve", "zh": "kev.serve"}, "phase": {"en": "Run it", "zh": "跑起来"}},
+    {"lane": "them", "en": "Downloads the Qwen3.5 base and the LoRA adapter, merges them in fp32", "zh": "下载 Qwen3.5 底座与 LoRA adapter，在 fp32 下合并", "component": {"en": "kev.serve", "zh": "kev.serve"}},
+    {"lane": "you", "en": "POST one state plus typed questions — noul, choice or score", "zh": "发一个请求：一段正文，加一组带类型的问题", "code": "POST /v1/systemone"},
+    {"lane": "them", "en": "Encodes the text once and scores every option with the pointer head", "zh": "只编码一次正文，用 pointer head 给每个选项打分", "component": {"en": "pointer head", "zh": "pointer head"}},
+    {"lane": "them", "en": "Returns a calibrated distribution per question; the stored temperature is already applied", "zh": "每题返回已校准的概率分布；温度参数在加载时已生效"},
+    {"lane": "you", "en": "Fine-tune on your own labels when your questions differ", "zh": "问题不一样时，用你自己的标注做微调", "code": "--init_from jaredpalmer/kev-4b", "component": {"en": "kev.train", "zh": "kev.train"}, "phase": {"en": "Make it yours", "zh": "让它变成你的"}},
+    {"lane": "them", "en": "Warm-starts the released adapter, so your labels add a domain instead of retraining", "zh": "热启动已发布的 adapter：你的标注是加一个域，不是从头再训", "component": {"en": "kev.train", "zh": "kev.train"}}
+  ],
+  "value": {"en": "You get thresholdable per-question probabilities on your own hardware — no hosted decision API, no from-scratch classifier", "zh": "你拿到可设阈值的逐问题概率，跑在自己的硬件上——不依赖托管判定 API，也不用从零训分类器"},
+  "sources": [
+    "README → Quick Start (`uv sync --extra serve`; `KEV_DTYPE=bf16 uv run --extra serve python -m kev.serve --run jaredpalmer/kev-4b --port 8009`; curl against `localhost:8009/v1/systemone`)",
+    "README → API → `POST /v1/systemone` (one `state` plus typed `questions`: `noul` / `choice` / `score`; answers carry probabilities, `confidence`, `probabilities`; invalid requests return 422)",
+    "README → Serving Performance (\"For the attention-only models the server merges the LoRA weights in fp32 before casting\", state-prefix cache for repeated requests)",
+    "README → How It Works (the pointer head scores each option's `</opt>` hidden state against the question's `<decide>` hidden state; softmax into probabilities; Qwen3.5 hybrid DeltaNet rows isolate each question exactly and the server computes the state once and reuses its cache)",
+    "README → Models (\"Probabilities are calibrated by default. Each checkpoint stores a temperature (about 2.1–2.4) fitted on its in-distribution development set, and the pointer head applies it when the model is loaded.\")",
+    "README → Fine-tuning on your own data (`--init_from` \"loads the adapter and pointer head from the released model before training, so you keep what Kev already knows and add your domain on top\")",
+    "AGENTS.md → Notes (serving path: \"LoRA merged in fp32 then cast (`KEV_MERGE=0` to keep unmerged)\"; state-prefix KV cache; parity tests in tests/test_v3.py)"
+  ]
+}
