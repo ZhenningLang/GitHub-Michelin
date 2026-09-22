@@ -20,7 +20,12 @@
 ## READ ROUTE — how an agent navigates (recursive tree)
 
 `categories/` is a **recursive tree** of arbitrary depth (not a fixed number of levels; large
-categories split into sub-categories). Descend by `INDEX`; do not grep blindly.
+categories split into sub-categories). Descend by `INDEX` — but **search first when the task's
+wording doesn't map onto a category name**: the tree has one parent per page, so a project that sits
+on a different axis than your task (a Python HTTP client that solves an anti-bot problem) is not
+reachable by descent alone. `grep -ri` the task's symptoms across `categories/` and start from the
+hits. What is *not* allowed is answering from memory: every recommendation must come from a page you
+actually opened.
 
 ```
 INDEX.md                              ← root: top-level category route (中文: INDEX.zh.md)
@@ -34,9 +39,13 @@ English (`*.md` / `INDEX.md`) is the **canonical path you read by default**. The
 
 Procedure when you have a task and need to pick a project:
 
-1. Read `INDEX.md`; follow the category that matches your task.
+1. Read `INDEX.md`; follow the category that matches your task. If the task is phrased as a symptom
+   ("my scraper gets 403") rather than a category ("I need a web scraper"), `grep -ri` those symptom
+   words across `categories/` first and descend from the hits instead.
 2. Keep **descending** through sub-category `INDEX.md` files (the tree can be deep) until you reach
    project pages; scan their one-liners + the comparison matrix to shortlist 1–3.
+   Before concluding a task is **not covered**, search for it — a false "not indexed" wastes the whole
+   index, and descent alone produces them.
 3. Read each shortlisted `<slug>.md`. The decisive section is usually **`## When NOT to use`**:
    check it against the task's hard constraints (scale, deps, ops budget, license). Then weigh
    **`## Health & viability`** — is it maintained, well-backed, and likely to last? Apply the

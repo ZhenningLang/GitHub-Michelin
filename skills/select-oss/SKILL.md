@@ -9,7 +9,10 @@ description: Use when a task needs choosing an open-source project — pick a li
 agent can pick OSS for a task **fast and honestly**. Each page is the *opposite of a README* — it
 leads with positive scenarios, **when NOT to use**, a comparison matrix, deps, and ops cost.
 
-Don't grep or guess from memory. **Descend the route.**
+**Never answer from memory** — every recommendation must come from a page you actually opened.
+Descend the route; but when the task reads as a *symptom* rather than a category, **search first and
+descend from the hits** (each page has exactly one parent, so cross-cutting projects are not
+reachable by descent alone).
 
 ## Where the index lives (resolve this first)
 
@@ -46,7 +49,18 @@ English (`*.md` / `INDEX.md`) is the canonical path. The `.zh.md` files are a Ch
    - must-have vs nice-to-have features
 
 2. **Level 1 — category.** Read `INDEX.md`. Match the task to one or more categories by their
-   "use when". If nothing fits, say so — the index may not cover this domain yet.
+   "use when". If the task's words don't map onto any category name, don't force it — search the
+   corpus for the task's symptoms and start from the hits:
+
+   ```bash
+   grep -ril "403\|fingerprint\|anti-bot" categories/     # local clone
+   ```
+
+   Remote-only (no clone): fetch `reports/repo-page-index.csv`, which lists every page's repo, slug,
+   category and path in one file, and scan it before descending.
+
+   Only after searching may you say the index doesn't cover this domain — a false "not indexed" is the
+   worst answer this index can give.
 
 3. **Level 2 — shortlist.** Descend into each candidate category's `INDEX.md` (the tree can be
    deep — keep following sub-category `INDEX.md` files until you reach project pages). Use the
