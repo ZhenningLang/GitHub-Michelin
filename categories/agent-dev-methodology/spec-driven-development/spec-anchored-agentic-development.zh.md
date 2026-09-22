@@ -88,7 +88,7 @@ health:
 | [Superpowers](../coding-agent-harnesses/superpowers.zh.md) | 已收录 | 需要成熟、跨 harness 的 brainstorm、plan、TDD、review 工作流时选 Superpowers；需要 capability spec 和逐值 conformance 组织全生命周期时，选本项目。 | Superpowers 更全面、采用度高得多；本项目更以 spec 为中心，也更依赖 Claude Code。 |
 | [Get Shit Done](get-shit-done.zh.md) | 已收录 | 需要 fresh-context 执行的分阶段交付流程时选 Get Shit Done；spec 在交付后仍必须作为永久判定器时，选本项目。 | GSD 强调 phase 推进和上下文管理；本项目强调持久契约和对照契约做 review。 |
 | [Compound Engineering](../coding-agent-harnesses/compound-engineering.zh.md) | 已收录 | 可复用 workflow automation 和经验累积是主目标时，选 Compound Engineering；最需要暴露 spec drift 时，选本项目。 | 两者都提供可安装的 agent 方法论，但围绕不同 artifact 组织反馈回路。 |
-| BMAD Method | 未收录 | 需要更大的角色化规划与交付系统时选 BMAD Method；想从一份文件起步的轻量 capability-spec 纪律时，选本项目。 | BMAD 有更多角色和流程面；本项目更容易选择性采用，但远没有得到验证。 |
+| [BMAD Method](bmad-method.zh.md) | ✅ | 需要更大的角色化规划与交付系统时选 BMAD Method；想从一份文件起步的轻量 capability-spec 纪律时，选本项目。 | BMAD 有更多角色和流程面；本项目更容易选择性采用，但远没有得到验证。 |
 
 ## 健康度与可持续性
 

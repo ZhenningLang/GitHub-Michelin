@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent OS does", "zh": "Agent OS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Choose a profile and install Agent OS into the project", "zh": "选择 profile，把 Agent OS 安装进项目", "component": {"en": "project installer", "zh": "项目 installer"}},
+    {"lane": "them", "en": "Copies standards, builds their index, and installs agent commands", "zh": "复制 standards、构建索引并安装 agent commands", "component": {"en": "Shell scripts", "zh": "Shell scripts"}},
+    {"lane": "you", "en": "Review codebase conventions proposed by the discovery command", "zh": "review discovery command 提出的代码库约定", "code": "/discover-standards", "component": {"en": "discovery command", "zh": "discovery command"}},
+    {"lane": "you", "en": "Enter plan mode and shape significant work against selected standards", "zh": "进入 plan mode，依据所选 standards 塑造重要工作", "code": "/shape-spec", "component": {"en": "shape-spec command", "zh": "shape-spec command"}},
+    {"lane": "them", "en": "Structures the plan so spec artifacts are saved before implementation", "zh": "组织计划，在实现前保存 spec 产物", "component": {"en": "shape-spec command", "zh": "shape-spec command"}}
+  ],
+  "value": {"en": "The coding agent receives relevant project standards and leaves a reviewable spec trail", "zh": "coding agent 获得相关项目 standards，并留下可 review 的 spec 轨迹"},
+  "sources": [
+    "README.md: Core capabilities and supported AI tools",
+    "scripts/project-install.sh: installation flow, generated standards index, and installed commands",
+    "commands/agent-os/discover-standards.md",
+    "commands/agent-os/shape-spec.md: prerequisites, process, and output structure"
+  ]
+}

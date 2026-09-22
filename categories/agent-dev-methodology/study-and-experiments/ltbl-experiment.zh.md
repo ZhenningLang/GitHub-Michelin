@@ -92,7 +92,7 @@ health:
 | `bdeansrowe/ltbl-brute` | 未收录 | 如果研究对象是“较好起始文档、很少持续方法论”这一条件，读 `ltbl-brute`；不要把它当独立完成的 renderer。 | 它比索引仓库包含更多渲染代码，但解释这些代码必须和另外两组对照，而控制条件没有完整记录。 |
 | `bdeansrowe/ltbl-ignorance` | 未收录 | 如果需要薄文档控制组实现，读 `ltbl-ignorance`；不要把较少上下文本身当成因果结论。 | 它给出控制组代码快照，但没有实验报告证明差异来自上下文，而非模型或会话波动。 |
 | `bdeansrowe/beam` | 未收录 | 如果要作者后来仍可运行的 Rust/WGPU renderer，选 Beam；不要选这个实验索引。 | Beam 更大、更新、采用 MIT；代价是它不再保留 LTBL 唯一有辨识度的三条件比较。 |
-| SWE-bench | 未收录 | 如果需要标准任务和可量化 coding-agent 结果，选 SWE-bench；LTBL 只适合作为平行实现案例的想法来源。 | SWE-bench 放弃共同的 greenfield 游戏场景，换来规模、评分与可复现性；LTBL 有场景，却没有测量装置。 |
+| [SWE-bench](../../llm-eval/swe-bench.zh.md) | ✅ | 如果需要标准任务和可量化 coding-agent 结果，选 SWE-bench；LTBL 只适合作为平行实现案例的想法来源。 | SWE-bench 放弃共同的 greenfield 游戏场景，换来规模、评分与可复现性；LTBL 有场景，却没有测量装置。 |
 
 ## 技术栈
 

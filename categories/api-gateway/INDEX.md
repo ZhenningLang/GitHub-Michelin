@@ -13,6 +13,8 @@
 | **LiteLLM** | Use it when several apps or teams need one OpenAI-compatible endpoint with virtual keys, budgets, spend tracking and failover — but the full feature set is not all MIT (`enterprise/` is commercial). | A (4/6) | [→](litellm.md) |
 | **Claude Code Router** | Use it when a developer wants to route Claude Code and other coding agents across model providers with conditional rules and fallback, from a local desktop/CLI control plane. | B (6/6) | [→](claude-code-router.md) |
 | **CLIProxyAPI** | Use it when you want to reuse consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs — but the terms-of-service and account-ban risk is inherent to that reuse. | B (5/6) | [→](cliproxyapi.md) |
+| **APISIX** | Use it when you want an ASF-governed gateway with etcd-backed live configuration and in-process plugins — you also operate the etcd control plane. | A (5/6) | [→](apisix.md) |
+| **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | A (5/6) | [→](envoy.md) |
 
 ## Comparison matrix
 
@@ -24,7 +26,9 @@
 | [LiteLLM](litellm.md) | ✅ | A (4/6) | The LLM gateway with the richest provider and cost/governance surface, at the price of PostgreSQL + Redis ops and a commercial `enterprise/` boundary. |
 | [Claude Code Router](claude-code-router.md) | ✅ | B (6/6) | Local, config-driven model routing for coding agents with a desktop UI; single-maintainer project, and a local proxy that holds provider credentials. |
 | [CLIProxyAPI](cliproxyapi.md) | ✅ | B (5/6) | Broad multi-protocol API over consumer CLI/OAuth accounts; light to run, but carries inherent ToS/account risk and stores tokens on the host. |
-| Tyk / KrakenD / Envoy / APISIX / New API | 未收录 | — | General API gateways and key-based self-hosted alternatives named across the pages. |
+| [APISIX](apisix.md) | ✅ | A (5/6) | ASF top-level gateway on NGINX/OpenResty with etcd-backed live config and a broad in-process plugin layer; the control plane is a hard dependency you operate. |
+| [Envoy](envoy.md) | ✅ | A (5/6) | CNCF-graduated L4/L7 data plane driven by xDS; you bring the control plane and the API-management policy layer. |
+| Tyk / KrakenD / New API | 未收录 | — | Other self-hosted gateways named across the pages. |
 
 ## What belongs here
 

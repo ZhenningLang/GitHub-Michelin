@@ -102,7 +102,7 @@ health:
 | [12-Factor Agents](12-factor-agents.zh.md) | ✅ | 需要构建可靠 agent 的原则，而不是可安装命令集时，选 12-Factor Agents。 | 关于如何构建可靠 agent 的原则/方法论文档，不是可安装的命令集；读它看*为什么*，用 GSD 拿可执行的*怎么做*。 |
 | [ECC](../coding-agent-harnesses/ecc.zh.md) | ✅ | 需要同类 agent 开发方法论，但想对比另一种编排模型时，选 ECC。 | 同类的 agent 开发方法论，编排模型不同；可直接对比阶段/上下文的处理方式。 |
 | [Spec Kit](spec-kit.zh.md) | ✅ | 需要厂商背书的规格驱动工具包（`/specify`、`/plan`、`/tasks`）时，选 Spec Kit。 | 厂商背书的规格驱动工具包（`/specify`、`/plan`、`/tasks`）；GSD 自我定位更轻、更聚焦上下文工程、仪式更少。 |
-| BMAD-METHOD | 未收录 | 需要带显式 PM/架构/开发/QA 角色的敏捷 agent 框架时，选 BMAD-METHOD。 | 带显式角色（PM/架构/开发/QA）的敏捷 agent 框架；那种“运营一家软件公司”的更重框架，正是 GSD 刻意拒绝的。 |
+| [BMAD-METHOD](bmad-method.zh.md) | ✅ | 需要带显式 PM/架构/开发/QA 角色的敏捷 agent 框架时，选 BMAD-METHOD。 | 带显式角色（PM/架构/开发/QA）的敏捷 agent 框架；那种“运营一家软件公司”的更重框架，正是 GSD 刻意拒绝的。 |
 
 ## 技术栈
 

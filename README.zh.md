@@ -256,6 +256,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **garak** | the LLM vulnerability scanner | Apache-2.0 | A（6/6） | [EN](categories/llm-eval/garak.md) · [中](categories/llm-eval/garak.zh.md) |
 | **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | Apache-2.0 | B（6/6） | [EN](categories/llm-eval/giskard.md) · [中](categories/llm-eval/giskard.zh.md) |
 | **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | NOASSERTION | A（4/6） | [EN](categories/llm-eval/langfuse.md) · [中](categories/llm-eval/langfuse.zh.md) |
+| **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | MIT | B（6/6） | [中](categories/llm-eval/swe-bench.zh.md) · [EN](categories/llm-eval/swe-bench.md) |
 
 ### agent-dev-methodology
 
@@ -274,6 +275,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **LTBL Experiment** | 仅把它当作三个 agent 上下文实验实现的索引——自身没有可运行代码、实验结果或许可授权。 | NOASSERTION | D（4/6） | [中](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md) |
 | **PURE** | 当 intent 追溯需要 Git 原生 schema、registry、phase gate 和 Shell 检查时用它——结构明确，但非常年轻。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/pure-agentic.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/pure-agentic.md) |
 | **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md) |
+| **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/bmad-method.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/bmad-method.md) |
+| **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/agent-os.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/agent-os.md) |
 
 ### ai-design-generation
 
@@ -336,6 +339,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **LiteLLM** | 覆盖 100 多家供应商的可部署 LLM 网关与 SDK，带虚拟密钥、预算、花费追踪与故障转移——但需要 PostgreSQL/Redis 运维，且有 `enterprise/` 商业边界。 | MIT（核心）+ enterprise/ 商业目录 | A（4/6） | [中](categories/api-gateway/litellm.zh.md) · [EN](categories/api-gateway/litellm.md) |
 | **Claude Code Router** | 本地控制面：从桌面/CLI 界面用条件规则与 fallback，让 Claude Code 等 coding agent 跨模型供应商路由。 | MIT | B（6/6） | [中](categories/api-gateway/claude-code-router.zh.md) · [EN](categories/api-gateway/claude-code-router.md) |
 | **CLIProxyAPI** | 把消费级 CLI/OAuth 登录态包装成 OpenAI/Gemini/Claude 兼容 API 供其他工具调用——代价是固化的服务条款/账号风险与主机上的 token 存储。 | MIT | B（5/6） | [中](categories/api-gateway/cliproxyapi.zh.md) · [EN](categories/api-gateway/cliproxyapi.md) |
+| **APISIX** | 当你要 ASF 治理、配置由 etcd 动态驱动、插件在进程内的网关时用它——etcd 控制面也得你自己运维。 | Apache-2.0 | A（5/6） | [中](categories/api-gateway/apisix.zh.md) · [EN](categories/api-gateway/apisix.md) |
+| **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | Apache-2.0 | A（5/6） | [中](categories/api-gateway/envoy.zh.md) · [EN](categories/api-gateway/envoy.md) |
 
 ### geospatial
 

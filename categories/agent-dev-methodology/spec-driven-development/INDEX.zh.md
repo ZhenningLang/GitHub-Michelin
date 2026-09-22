@@ -13,6 +13,8 @@
 | **Spec-Anchored Agentic Development** | 当永久 capability spec 和持续 spec-to-code conformance 比广泛 harness 支持更重要时用它；bundle 仅面向 Claude Code，而且项目只有十多天历史。 | B（3/6） | [→](spec-anchored-agentic-development.zh.md) |
 | **Spec Kit** | 当你想要 GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论时用它——但它极其年轻，且与 GitHub 生态深度绑定。 | B（5/6） | [→](spec-kit.zh.md) |
 | **USDAD** | 当你要可编辑、文字优先的 planner／adversary／architect／executor 方法论原稿时用它；它是单提交文档工件，不是可安装 runtime 或强制执行的工作流。 | C（4/6） | [→](usdad.zh.md) |
+| **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | B（4/6） | [→](bmad-method.zh.md) |
+| **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | B（4/6） | [→](agent-os.zh.md) |
 
 ## 对比矩阵
 
@@ -24,7 +26,10 @@
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.zh.md) | ✅ | B（3/6） | 永久 capability spec 加持续 spec-to-code conformance，但 bundle 仅面向 Claude Code，几乎没有采用历史。 |
 | [Spec Kit](spec-kit.zh.md) | ✅ | B（5/6） | GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论；极其年轻，与 GitHub 生态深度绑定。 |
 | [USDAD](usdad.zh.md) | ✅ | C（4/6） | 可编辑的 planner／adversary／architect／executor 方法论文档，不是可安装 runtime，也不会机械执行流程。 |
-| BMAD Method / Agent OS / SWE-bench / LTBL 实现组 / Beam | 未收录 | — | 各页提到的重角色方法、benchmark 基础设施与实现仓库。 |
+| [BMAD Method](bmad-method.zh.md) | ✅ | B（4/6） | 重角色的端到端方法（analyst／PM／架构／UX／开发／复核），以 skills 与 agent persona 交付；项目很年轻，涨星曲线快到可疑。 |
+| [Agent OS](agent-os.zh.md) | ✅ | B（4/6） | 薄薄的 standards + spec 层，安装项目约定并按需选择性注入；发布线自 v3.0.0（2026-01）后一直很安静。 |
+| [SWE-bench](../../llm-eval/swe-bench.zh.md) | ✅ | B（6/6） | benchmark 基础设施，收录在 `llm-eval` 而不是本类目——它给补丁打分，不是开发方法。 |
+| LTBL 实现组 / Beam | 未收录 | — | `study-and-experiments/` 里点到的 LTBL 实现仓库。`Beam` 刻意不收录：名字搜索命中的是 apache/beam，而各页指的是另一个项目——要先把仓库人工认准。 |
 
 ## 什么该放这里
 

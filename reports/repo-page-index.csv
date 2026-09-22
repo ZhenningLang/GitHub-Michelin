@@ -100,6 +100,7 @@ https://github.com/Ranchero-Software/NetNewsWire,netnewswire,reading-tools,categ
 https://github.com/RightNow-AI/openfang,openfang,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/openfang.md
 https://github.com/RocketChat/Rocket.Chat,rocket-chat,team-chat,categories/team-chat/rocket-chat.md
 https://github.com/SWE-agent/SWE-agent,swe-agent,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md
+https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/swe-bench.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
 https://github.com/Setasign/FPDI,fpdi,pdf-tools,categories/pdf-tools/fpdi.md
@@ -155,6 +156,7 @@ https://github.com/anthropics/knowledge-work-plugins,knowledge-work-plugins,vend
 https://github.com/anthropics/skills,anthropic-skills,vendor-collections,categories/agent-skills/vendor-collections/anthropic-skills.md
 https://github.com/anyoptimization/pymoo,pymoo,ml-research,categories/ml-research/pymoo.md
 https://github.com/apache/airflow,airflow,workflow-orchestration,categories/workflow-orchestration/airflow.md
+https://github.com/apache/apisix,apisix,api-gateway,categories/api-gateway/apisix.md
 https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
 https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
@@ -178,11 +180,13 @@ https://github.com/bkidy/screenshot,screenshot-service,image-processing,categori
 https://github.com/blader/humanizer,humanizer,de-ai-writing,categories/agent-skills/de-ai-writing/humanizer.md
 https://github.com/block/buzz,buzz,team-chat,categories/team-chat/buzz.md
 https://github.com/blockpanda/any2html,any2html,document-parsing,categories/document-parsing/any2html.md
+https://github.com/bmad-code-org/BMAD-METHOD,bmad-method,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/bmad-method.md
 https://github.com/bpmn-io/bpmn-js,bpmn-js,diagramming,categories/diagramming/bpmn-js.md
 https://github.com/bradautomates/claude-video,claude-video,video-audio,categories/media-processing/video-audio/claude-video.md
 https://github.com/browser-act/skills,browser-act-skills,engineering,categories/agent-skills/engineering/browser-act-skills.md
 https://github.com/browser-use/browser-use,browser-use,agent-browser-tools,categories/web-automation/agent-browser-tools/browser-use.md
 https://github.com/brunophilipe/Cakebrew,cakebrew,package-manager-gui,categories/dev-utilities/package-manager-gui/cakebrew.md
+https://github.com/buildermethods/agent-os,agent-os,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/agent-os.md
 https://github.com/buresdv/Cork,cork,package-manager-gui,categories/dev-utilities/package-manager-gui/cork.md
 https://github.com/buriy/python-readability,python-readability,article-extraction,categories/web-scraping/article-extraction/python-readability.md
 https://github.com/cactus-compute/needle,needle,on-device-ml,categories/on-device-ml/needle.md
@@ -236,6 +240,7 @@ https://github.com/elrumordelaluz/reactour,reactour,product-tours,categories/web
 https://github.com/emcie-co/parlant,parlant,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md
 https://github.com/emilkowalski/skills,emilkowalski-skills,design,categories/agent-skills/design/emilkowalski-skills.md
 https://github.com/entireio/cli,entire-cli,agent-tooling,categories/agent-tooling/entire-cli.md
+https://github.com/envoyproxy/envoy,envoy,api-gateway,categories/api-gateway/envoy.md
 https://github.com/eriklindernoren/PyTorch-GAN,pytorch-gan,ml-research,categories/ml-research/pytorch-gan.md
 https://github.com/every-app/open-seo,open-seo,marketing-seo,categories/agent-skills/writing/marketing-seo/open-seo.md
 https://github.com/evidence-dev/evidence,evidence,data-visualization,categories/data-visualization/evidence.md

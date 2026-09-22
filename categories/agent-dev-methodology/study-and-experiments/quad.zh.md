@@ -95,7 +95,7 @@ health:
 | [Superpowers](../coding-agent-harnesses/superpowers.zh.md) | 已收录 | 当你想把 brainstorm、TDD 和验证工作流直接安装进 coding agent 时，选 Superpowers；当你要研究管理、开发、QA 和基础设施角色如何共享文档优先模型时，才选 QUAD。 | Superpowers 聚焦编码生命周期，激活更容易；QUAD 更宽，但流程、平台和依赖面也大得多。 |
 | [ECC](../coding-agent-harnesses/ecc.zh.md) | 已收录 | 当你需要带 hook、memory、安全扫描与跨 runtime 适配器的现成底座时，选 ECC；只有当四 Circles 组织方式与平台蓝图比底座完整度更重要时，才选 QUAD。 | ECC 提供更多集成好的 agent 工具；QUAD 给出更广的运营模型叙事，但其服务图和 submodule 完整性需要另行修复与验证。 |
 | [PURE](../spec-driven-development/pure-agentic.zh.md) | 已收录 | 当 intent、schema、registry 与 handoff 应保持 provider-neutral 且原生存入 Git 时，选 PURE；当 Claude 专用规则与完整产品部署蓝图适合作为参考材料时，选 QUAD。 | PURE 更小、更容易审计，但同样处于早期；QUAD 有更多平台产物，代价是更高的运维与许可成本。 |
-| BMAD Method | 未收录 | 当你需要更广的角色化产品规划与交付系统时，选 BMAD Method；只有在 Management、Development、QA 与 Infrastructure Circle 这套词汇本身最匹配时，才选 QUAD。 | BMAD 强调角色驱动的规划与交付；QUAD 增加了具体 CLI 与基础设施拓扑，但这些部分已不活跃、采用专有许可且部分不可访问。 |
+| [BMAD Method](../spec-driven-development/bmad-method.zh.md) | ✅ | 当你需要更广的角色化产品规划与交付系统时，选 BMAD Method；只有在 Management、Development、QA 与 Infrastructure Circle 这套词汇本身最匹配时，才选 QUAD。 | BMAD 强调角色驱动的规划与交付；QUAD 增加了具体 CLI 与基础设施拓扑，但这些部分已不活跃、采用专有许可且部分不可访问。 |
 
 ## 技术栈
 

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Apache APISIX does", "zh": "Apache APISIX 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start APISIX and its configuration store with the quickstart", "zh": "用 quickstart 启动 APISIX 与配置存储", "code": "curl -sL https://run.api7.ai/apisix/quickstart | sh", "component": {"en": "quickstart", "zh": "quickstart"}},
+    {"lane": "them", "en": "Runs the gateway on port 9080 and stores dynamic configuration in etcd", "zh": "在 9080 端口运行网关，并把动态配置存入 etcd", "component": {"en": "APISIX + etcd", "zh": "APISIX + etcd"}},
+    {"lane": "you", "en": "Declare a route, its upstream nodes, and the plugins that should run", "zh": "声明路由、上游节点和要运行的插件", "code": "PUT /apisix/admin/routes/1", "component": {"en": "Admin API", "zh": "Admin API"}},
+    {"lane": "them", "en": "Watches the configuration and applies route and plugin changes without a restart", "zh": "监听配置，在不重启时应用路由与插件变更", "component": {"en": "configuration watcher", "zh": "配置监听器"}},
+    {"lane": "you", "en": "Send client traffic to the gateway route", "zh": "把客户端流量发到网关路由", "code": "curl http://127.0.0.1:9080/get", "component": {"en": "client", "zh": "客户端"}},
+    {"lane": "them", "en": "Matches the route, runs its plugins, and proxies to a healthy upstream", "zh": "匹配路由、执行插件，并代理到健康上游", "component": {"en": "NGINX/OpenResty data plane", "zh": "NGINX/OpenResty 数据面"}}
+  ],
+  "value": {"en": "Routing and shared API policy change at the gateway without redeploying backend services", "zh": "路由与共享 API 策略在网关生效，无需重新部署后端服务"},
+  "sources": [
+    "README.md: Why APISIX, Get Started, Features / Full Dynamic, and OPS friendly",
+    "docs/en/latest/deployment-modes.md: Traditional, Decoupled, Standalone, and How to configure Plugins",
+    "docs/en/latest/admin-api.md: Route resource"
+  ]
+}

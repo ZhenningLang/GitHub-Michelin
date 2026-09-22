@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="634" viewBox="0 0 880 634" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="634" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="498" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="498" rx="10"/>
+<rect class="pillT" x="474" y="40" width="151.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">SWE-bench 做的</text>
+<path class="edge" d="M62,147 L62,171" marker-end="url(#a)"/>
+<path class="hand" d="M408,231.5 C439.0,231.5 439.0,255 470,255" marker-end="url(#a)"/>
+<path class="edge" d="M494,306 L494,330" marker-end="url(#a)"/>
+<path class="edge" d="M494,407 L494,431" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="75" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="75" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">选择数据集，生成 JSONL patch predictions</text>
+<text class="comp" x="82" y="129">组件：模型或 coding agent</text>
+<rect class="card" x="40" y="173" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="173" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="197" r="10"/>
+<text class="num" x="62" y="201" text-anchor="middle">2</text>
+<text class="t" x="82" y="202">使用唯一 run ID 启动评测</text>
+<text class="c" x="82" y="226">swebench eval verified -p preds.jsonl</text>
+<text class="c" x="82" y="245">--run-id my-run -j 8</text>
+<text class="comp" x="82" y="268">组件：swebench CLI</text>
+<rect class="cardT" x="472" y="231" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="231" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="255" r="10"/>
+<text class="num" x="494" y="259" text-anchor="middle">3</text>
+<text class="t" x="514" y="260">构建或拉取每个任务的隔离 Docker image</text>
+<text class="comp" x="514" y="288">组件：image builder</text>
+<rect class="cardT" x="472" y="332" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="332" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="356" r="10"/>
+<text class="num" x="494" y="360" text-anchor="middle">4</text>
+<text class="t" x="514" y="361">应用每个 patch，执行仓库任务测试</text>
+<text class="comp" x="514" y="389">组件：evaluation harness</text>
+<rect class="cardT" x="472" y="433" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="433" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="457" r="10"/>
+<text class="num" x="494" y="461" text-anchor="middle">5</text>
+<text class="t" x="514" y="462">写入逐项证据和判分汇总</text>
+<text class="comp" x="514" y="490">组件：reporter</text>
+<rect class="val" x="28" y="540" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="564">价值</text>
+<text class="valT" x="48" y="588">coding system 得到由仓库测试和可检查 run artifacts 支撑的可比评分</text>
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="589" viewBox="0 0 880 589" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="589" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="453" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="453" rx="10"/>
+<rect class="pillT" x="474" y="40" width="119.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Envoy does</text>
+<path class="hand" d="M408,120.5 C439.0,120.5 439.0,144 470,144" marker-end="url(#a)"/>
+<path class="hand" d="M472,168.5 C441.0,168.5 441.0,219 410,219" marker-end="url(#a)"/>
+<path class="hand" d="M408,243.5 C439.0,243.5 439.0,267 470,267" marker-end="url(#a)"/>
+<path class="edge" d="M494,340 L494,364" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Deploy Envoy with bootstrap</text>
+<text class="t" x="82" y="123">configuration that names an xDS server</text>
+<text class="comp" x="82" y="151">component: bootstrap config</text>
+<rect class="cardT" x="472" y="120" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="120" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="144" r="10"/>
+<text class="num" x="494" y="148" text-anchor="middle">2</text>
+<text class="t" x="514" y="149">Subscribes for listeners, routes,</text>
+<text class="t" x="514" y="171">clusters, endpoints, and secrets</text>
+<text class="comp" x="514" y="199">component: xDS client</text>
+<rect class="card" x="40" y="195" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="195" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="219" r="10"/>
+<text class="num" x="62" y="223" text-anchor="middle">3</text>
+<text class="t" x="82" y="224">Publish versioned traffic resources</text>
+<text class="t" x="82" y="246">from the control plane</text>
+<text class="comp" x="82" y="274">component: xDS control plane</text>
+<rect class="cardT" x="472" y="243" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="243" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="267" r="10"/>
+<text class="num" x="494" y="271" text-anchor="middle">4</text>
+<text class="t" x="514" y="272">Validates and applies accepted updates</text>
+<text class="t" x="514" y="294">without replacing the proxy</text>
+<text class="comp" x="514" y="322">component: configuration manager</text>
+<rect class="cardT" x="472" y="366" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="366" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="390" r="10"/>
+<text class="num" x="494" y="394" text-anchor="middle">5</text>
+<text class="t" x="514" y="395">Matches traffic, runs filters, and</text>
+<text class="t" x="514" y="417">load-balances it to healthy upstreams</text>
+<text class="comp" x="514" y="445">component: data plane</text>
+<rect class="val" x="28" y="495" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="519">VALUE</text>
+<text class="valT" x="48" y="543">Traffic policy changes centrally while proxy processes keep serving connections</text>
+</svg>

@@ -259,6 +259,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **garak** | the LLM vulnerability scanner | Apache-2.0 | A (6/6) | [EN](categories/llm-eval/garak.md) · [中](categories/llm-eval/garak.zh.md) |
 | **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | Apache-2.0 | B (6/6) | [EN](categories/llm-eval/giskard.md) · [中](categories/llm-eval/giskard.zh.md) |
 | **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | NOASSERTION | A (4/6) | [EN](categories/llm-eval/langfuse.md) · [中](categories/llm-eval/langfuse.zh.md) |
+| **SWE-bench** | Use it when you need to grade coding-agent patches against real GitHub issues and their tests — each evaluation run needs Docker and a lot of disk. | MIT | B (6/6) | [EN](categories/llm-eval/swe-bench.md) · [中](categories/llm-eval/swe-bench.zh.md) |
 
 ### agent-dev-methodology
 
@@ -277,6 +278,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **LTBL Experiment** | Use it only as an index to three agent-context experiment implementations — it has no runnable code, results, or license grant. | NOASSERTION | D (4/6) | [EN](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md) · [中](categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.zh.md) |
 | **PURE** | Use it when intent traceability needs Git-native schemas, registries, phase gates, and Shell checks — structured, but very young. | MIT | C (5/6) | [EN](categories/agent-dev-methodology/spec-driven-development/pure-agentic.md) · [中](categories/agent-dev-methodology/spec-driven-development/pure-agentic.zh.md) |
 | **Learn Claude Code** | Use it when you want to learn how a Claude Code–style agent harness works by rebuilding all 17 mechanisms yourself in runnable Python — but it's a course, not a library or production CLI. | MIT | B (5/6) | [EN](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md) · [中](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.zh.md) |
+| **BMAD Method** | Use it when you want a role-driven end-to-end agentic method (analyst, PM, architect, UX, dev, review) rather than a thin spec pipeline — and treat its very fast star curve as unproven. | MIT | B (4/6) | [EN](categories/agent-dev-methodology/spec-driven-development/bmad-method.md) · [中](categories/agent-dev-methodology/spec-driven-development/bmad-method.zh.md) |
+| **Agent OS** | Use it when you want project standards installed and injected selectively, with plan shaping before implementation — the release line has been quiet since v3.0.0 (2026-01). | MIT | B (4/6) | [EN](categories/agent-dev-methodology/spec-driven-development/agent-os.md) · [中](categories/agent-dev-methodology/spec-driven-development/agent-os.zh.md) |
 
 ### ai-design-generation
 
@@ -339,6 +342,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **LiteLLM** | A deployable LLM gateway and SDK over 100+ providers with virtual keys, budgets, spend tracking and failover — but PostgreSQL/Redis ops and a commercial `enterprise/` boundary. | MIT (core) + enterprise/ carve-out | A (4/6) | [EN](categories/api-gateway/litellm.md) · [中](categories/api-gateway/litellm.zh.md) |
 | **Claude Code Router** | A local control plane that routes Claude Code and other coding agents across model providers with conditional rules and fallback, from a desktop/CLI UI. | MIT | B (6/6) | [EN](categories/api-gateway/claude-code-router.md) · [中](categories/api-gateway/claude-code-router.zh.md) |
 | **CLIProxyAPI** | Wraps consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs for other tools — at the cost of inherent ToS/account risk and tokens stored on the host. | MIT | B (5/6) | [EN](categories/api-gateway/cliproxyapi.md) · [中](categories/api-gateway/cliproxyapi.zh.md) |
+| **APISIX** | Use it when you want an ASF-governed gateway with etcd-backed live configuration and in-process plugins — you also operate the etcd control plane. | Apache-2.0 | A (5/6) | [EN](categories/api-gateway/apisix.md) · [中](categories/api-gateway/apisix.zh.md) |
+| **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | Apache-2.0 | A (5/6) | [EN](categories/api-gateway/envoy.md) · [中](categories/api-gateway/envoy.zh.md) |
 
 ### geospatial
 

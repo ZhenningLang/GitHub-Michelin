@@ -38,6 +38,7 @@ acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
 ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
+AgentBench,categories/llm-eval/swe-bench.md,,no
 AI-Scientist (Sakana),categories/ml-research/autoresearch.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
@@ -116,9 +117,6 @@ blessed / curses (stdlib),categories/terminal-ui/asciimatics.md,,no
 BLIP / BLIP-2,categories/ml-research/clip.md,,no
 BLOSC / blosc2,categories/dev-utilities/data-tools/openzl.md,,no
 BMAD / GSD,categories/agent-skills/engineering/mattpocock-skills.md,,no
-BMAD Method,categories/agent-dev-methodology/spec-driven-development/spec-anchored-agentic-development.md,,no
-BMAD Method / Agent OS / SWE-bench / LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
-BMAD-METHOD,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md,,no
 bogdanfinn/tls-client,categories/python-tooling/curl-cffi.md,,no
 Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,,no
 Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
@@ -270,7 +268,6 @@ Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 endesive,categories/pdf-tools/pyhanko.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
-Envoy,categories/api-gateway/kong.md,,no
 Envoy + Lua/Wasm filters,categories/nginx-modules/lua-nginx-module.md,,no
 ESLint + a11y plugins (eslint-plugin-jsx-a11y),categories/ai-design-generation/impeccable.md,,no
 eslint-plugin-react-hooks / react,categories/ai-code-review/react-doctor.md,,no
@@ -421,7 +418,7 @@ KeyDB,categories/databases/database-engines/pikiwidb.md,,no
 Kibana,categories/observability/grafana.md,,no
 Kitty,categories/terminal-ui/alacritty.md,,no
 Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
-KrakenD,categories/api-gateway/kong.md,,no
+KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
 Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
@@ -446,7 +443,7 @@ LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
-lm-evaluation-harness,categories/ml-research/llm-circuit-finder.md,,no
+lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
@@ -454,6 +451,7 @@ Logitech Options+ (official),categories/peripherals/logiops.md,,no
 Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no
 Logstash JDBC input,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Looker,categories/data-visualization/superset.md,,no
+LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
 lua-resty-redis-cluster,categories/nginx-modules/lua-resty-redis.md,,no
 lucidrains' implementations,categories/ml-research/pytorch-gan.md,,no
 Luigi,categories/workflow-orchestration/airflow.md,,no
@@ -758,7 +756,6 @@ Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/ffmpeg-python.md,,no
 Subtitle Edit (sync features),categories/media-processing/video-audio/ffsubsync.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
-SWE-bench,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no
@@ -768,6 +765,7 @@ Taskwarrior,categories/agent-tooling/beads.md,,no
 TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
 termcolor / colored,categories/terminal-ui/colorama.md,,no
+Terminal-Bench,categories/llm-eval/swe-bench.md,,no
 texify,categories/ocr/latex-ocr.md,,no
 TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
 textract,categories/document-parsing/markitdown.md,,no
@@ -791,8 +789,8 @@ Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/tesseract.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Tushare,categories/web-scraping/crawling-tools/gopup.md,,no
-Tyk,categories/api-gateway/kong.md,,no
-Tyk / KrakenD / Envoy / APISIX / New API,categories/api-gateway/INDEX.md,,no
+Tyk,categories/api-gateway/apisix.md,,no
+Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no
 TypeSafe System One · Jev (hosted),categories/decision-models/simple-jev.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no

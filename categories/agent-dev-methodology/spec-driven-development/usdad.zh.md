@@ -91,7 +91,7 @@ health:
 | [Superpowers](../coding-agent-harnesses/superpowers.zh.md) | 已收录 | 如果要即插即用地驱动 brainstorm、计划、TDD 和验证，选 Superpowers；如果决定性需求是持久项目上下文与对抗式规格审查，选 USDAD。 | Superpowers 更容易装到多种 harness；USDAD 的 requirements/design/tasks/context 结构更显式，却没有 loader。 |
 | [PURE](pure-agentic.zh.md) | 已收录 | 如果 intent schema、registry、phase gate 和测试脚本必须成为可执行控制，选 PURE；如果紧凑的文字型 spec 方法已够用，选 USDAD。 | PURE 的机器治理和运维面更完整；USDAD 更容易读，但落地依赖人工纪律。 |
 | [Get Shit Done](get-shit-done.zh.md) | 已收录 | 如果核心需求是 fresh-context 分阶段执行和已安装命令，选 GSD；但本索引对应的 canonical 仓库已冻结，而 USDAD 从一开始就是静态方法论工件。 | GSD 自动化了更多交付循环，但已收录上游归档；USDAD 不绑运行时，也不提供编排。 |
-| BMAD-METHOD | 未收录 | 如果要覆盖更广的软件组织角色，选 BMAD-METHOD；如果四个明确 persona 和较小上下文层级更容易掌控，选 USDAD。 | BMAD 的生命周期角色更广，代价是流程与提示词面积更大；USDAD 更窄，也更少自动化。 |
+| [BMAD-METHOD](bmad-method.zh.md) | ✅ | 如果要覆盖更广的软件组织角色，选 BMAD-METHOD；如果四个明确 persona 和较小上下文层级更容易掌控，选 USDAD。 | BMAD 的生命周期角色更广，代价是流程与提示词面积更大；USDAD 更窄，也更少自动化。 |
 
 ## 健康度与可持续性
 

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Envoy does", "zh": "Envoy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy Envoy with bootstrap configuration that names an xDS server", "zh": "部署 Envoy，用 bootstrap 配置指定 xDS 服务器", "component": {"en": "bootstrap config", "zh": "bootstrap 配置"}},
+    {"lane": "them", "en": "Subscribes for listeners, routes, clusters, endpoints, and secrets", "zh": "订阅各类 xDS 流量资源", "component": {"en": "xDS client", "zh": "xDS client"}},
+    {"lane": "you", "en": "Publish versioned traffic resources from the control plane", "zh": "从控制面发布带版本的流量资源", "component": {"en": "xDS control plane", "zh": "xDS 控制面"}},
+    {"lane": "them", "en": "Validates and applies accepted updates without replacing the proxy", "zh": "校验并应用接受的更新，无需替换代理", "component": {"en": "configuration manager", "zh": "配置管理器"}},
+    {"lane": "them", "en": "Matches traffic, runs filters, and load-balances it to healthy upstreams", "zh": "匹配流量，运行过滤器，再负载均衡到健康上游", "component": {"en": "data plane", "zh": "数据面"}}
+  ],
+  "value": {"en": "Traffic policy changes centrally while proxy processes keep serving connections", "zh": "集中变更流量策略，代理进程持续服务连接"},
+  "sources": [
+    "README.md: project identity, documentation, and CNCF hosting",
+    "docs/root/intro/arch_overview/operations/dynamic_configuration.rst: xDS configuration API overview",
+    "configs/envoy-demo.yaml: listeners, filters, routes, clusters, and load balancing"
+  ]
+}

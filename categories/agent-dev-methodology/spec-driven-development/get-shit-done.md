@@ -102,7 +102,7 @@ The core bet is structural: each atomic plan is small enough to run in its own c
 | [12-Factor Agents](12-factor-agents.md) | ✅ | Choose 12-Factor Agents when you need principles for building reliable agents, not an installable command set. | Principles/methodology doc for building reliable agents, not an installable command set; read it for the *why*, use GSD for an executable *how*. |
 | [ECC](../coding-agent-harnesses/ecc.md) | ✅ | Choose ECC when you need a sibling agent-dev methodology with a different orchestration model. | Sibling agent-dev methodology with a different orchestration model; compare phase/context handling directly. |
 | [Spec Kit](spec-kit.md) | ✅ | Choose Spec Kit when you need a vendor-backed spec-driven toolkit (`/specify`, `/plan`, `/tasks`). | Vendor-backed spec-driven toolkit (`/specify`, `/plan`, `/tasks`); GSD positions itself as lighter and more context-engineering-focused, less ceremony. |
-| BMAD-METHOD | 未收录 | Choose BMAD-METHOD when you need an agile-agent framework with explicit PM/architect/dev/QA roles. | Agile-agent framework with explicit roles (PM/architect/dev/QA); heavier "run a software org" framing GSD deliberately rejects. |
+| [BMAD-METHOD](bmad-method.md) | ✅ | Choose BMAD-METHOD when you need an agile-agent framework with explicit PM/architect/dev/QA roles. | Agile-agent framework with explicit roles (PM/architect/dev/QA); heavier "run a software org" framing GSD deliberately rejects. |
 
 ## Tech stack
 

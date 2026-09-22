@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "BMAD does", "zh": "BMAD 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install BMAD skills into your coding tool", "zh": "把 BMAD skills 安装进 coding tool", "code": "npx skills add bmad-code-org/BMAD-METHOD", "component": {"en": "Skills CLI", "zh": "Skills CLI"}},
+    {"lane": "you", "en": "Ask the BMAD hub to set up the target project", "zh": "让 BMAD hub 设置目标项目", "code": "bmad setup", "component": {"en": "bmad hub", "zh": "bmad hub"}},
+    {"lane": "them", "en": "Installs the selected method skills and shared project runtime", "zh": "安装选定的方法 skills 与项目共享 runtime", "component": {"en": "setup workflow", "zh": "setup workflow"}},
+    {"lane": "you", "en": "Give bmad-build a change, answer questions, and approve its plan", "zh": "向 bmad-build 提交改动，回答问题并批准计划", "code": "bmad-build", "component": {"en": "developer workflow", "zh": "developer workflow"}},
+    {"lane": "them", "en": "Sizes the path, carries decisions forward, builds, reviews, and verifies", "zh": "确定路径规模，传递决定，再构建、review 与验证", "component": {"en": "role workflows + artifacts", "zh": "角色 workflows 与产物"}}
+  ],
+  "value": {"en": "One role-aware delivery path carries approved intent from planning into verified code", "zh": "一条角色化交付路径把已批准意图从规划带到验证后的代码"},
+  "sources": [
+    "README.md: Start Building, Why BMad, and Documentation",
+    "docs/reference/skills-and-agents.md: What a Skill Is, Agents, and BMad Method Skills",
+    "docs/start/build-your-first-change.md: Build a Mars Rover and You Built It",
+    "docs/plan/choose-a-planning-path.md: Start from the Intent and Run the Path"
+  ]
+}

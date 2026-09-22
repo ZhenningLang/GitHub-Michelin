@@ -13,6 +13,8 @@
 | **Spec-Anchored Agentic Development** | Use it when permanent capability specs and continuous spec-to-code conformance matter more than broad harness support; the bundle is Claude Code-specific and only days old. | B (3/6) | [→](spec-anchored-agentic-development.md) |
 | **Spec Kit** | Use it when you want a spec-driven development methodology from GitHub for AI coding agents — but it is extremely young and tightly coupled to the GitHub ecosystem. | B (5/6) | [→](spec-kit.md) |
 | **USDAD** | Use it when you want editable, prose-first planner/adversary/architect/executor methodology source; it is a one-commit document artifact, not an installable runtime or enforced workflow. | C (4/6) | [→](usdad.md) |
+| **BMAD Method** | Use it when you want a role-driven end-to-end agentic method (analyst, PM, architect, UX, dev, review) rather than a thin spec pipeline — and treat its very fast star curve as unproven. | B (4/6) | [→](bmad-method.md) |
+| **Agent OS** | Use it when you want project standards installed and injected selectively, with plan shaping before implementation — the release line has been quiet since v3.0.0 (2026-01). | B (4/6) | [→](agent-os.md) |
 
 ## Comparison matrix
 
@@ -24,7 +26,10 @@
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.md) | ✅ | B (3/6) | Permanent capability specs and continuous spec-to-code conformance, with a Claude Code-specific bundle and almost no adoption history. |
 | [Spec Kit](spec-kit.md) | ✅ | B (5/6) | Spec-driven development methodology from GitHub for AI coding agents; extremely young and tightly coupled to the GitHub ecosystem. |
 | [USDAD](usdad.md) | ✅ | C (4/6) | Editable planner/adversary/architect/executor methodology documents, not an installable runtime or mechanically enforced workflow. |
-| BMAD Method / Agent OS / SWE-bench / LTBL implementation groups / Beam | 未收录 | — | Role-heavy methods, benchmark infrastructure, and implementation repositories named across the pages. |
+| [BMAD Method](bmad-method.md) | ✅ | B (4/6) | Role-heavy end-to-end method (analyst/PM/architect/UX/dev/review) delivered as skills and agent personas; very young with a suspiciously fast star curve. |
+| [Agent OS](agent-os.md) | ✅ | B (4/6) | Thin standards-and-spec layer that installs project conventions and injects them selectively; the release line has been quiet since v3.0.0 (2026-01). |
+| [SWE-bench](../../llm-eval/swe-bench.md) | ✅ | B (6/6) | Benchmark infrastructure, indexed under `llm-eval` rather than here — it grades patches, it is not a development method. |
+| LTBL implementation groups / Beam | 未收录 | — | The LTBL implementation repos named in `study-and-experiments/`. `Beam` is deliberately unauthored: the name search matched apache/beam, while the pages mean a different project — pin the repository by hand first. |
 
 ## What belongs here
 

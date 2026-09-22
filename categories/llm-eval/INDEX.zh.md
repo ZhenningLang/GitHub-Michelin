@@ -15,6 +15,7 @@
 | **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | B（6/6） | [→](giskard.zh.md) |
 | **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | A（4/6） | [→](langfuse.zh.md) |
 | **chatgpt-comparison-detection** | Human ChatGPT Comparison Corpus（HC3）、检测器和相关 AI 文本检测资源。 | E（4/6） | [→](chatgpt-comparison-detection.zh.md) |
+| **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | B（6/6） | [→](swe-bench.zh.md) |
 
 
 ## 对比矩阵

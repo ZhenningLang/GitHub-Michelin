@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "SWE-bench does", "zh": "SWE-bench 做的"},
+  "steps": [
+    {"lane": "you", "en": "Choose a dataset and produce JSONL patch predictions", "zh": "选择数据集，生成 JSONL patch predictions", "component": {"en": "model or coding agent", "zh": "模型或 coding agent"}},
+    {"lane": "you", "en": "Start an evaluation with a unique run identifier", "zh": "使用唯一 run ID 启动评测", "code": "swebench eval verified -p preds.jsonl --run-id my-run -j 8", "component": {"en": "swebench CLI", "zh": "swebench CLI"}},
+    {"lane": "them", "en": "Builds or pulls each task's isolated Docker image", "zh": "构建或拉取每个任务的隔离 Docker image", "component": {"en": "image builder", "zh": "image builder"}},
+    {"lane": "them", "en": "Applies each patch and runs the repository's task tests", "zh": "应用每个 patch，执行仓库任务测试", "component": {"en": "evaluation harness", "zh": "evaluation harness"}},
+    {"lane": "them", "en": "Writes per-instance evidence and a resolved/unresolved summary", "zh": "写入逐项证据和判分汇总", "component": {"en": "reporter", "zh": "reporter"}}
+  ],
+  "value": {"en": "Coding systems receive comparable scores backed by repository tests and inspectable run artifacts", "zh": "coding system 得到由仓库测试和可检查 run artifacts 支撑的可比评分"},
+  "sources": [
+    "README.md: Overview, Set Up, Usage, Downloads, and resource warning",
+    "docs/guides/evaluation.md: Overview, Prediction Format, and Understanding Evaluation Results",
+    "swebench/cli/cli.py: current swebench eval example"
+  ]
+}

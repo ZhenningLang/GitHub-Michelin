@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="666" viewBox="0 0 880 666" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="666" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="530" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="530" rx="10"/>
+<rect class="pillT" x="474" y="40" width="193.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Apache APISIX does</text>
+<path class="hand" d="M408,141.5 C439.0,141.5 439.0,165 470,165" marker-end="url(#a)"/>
+<path class="hand" d="M472,189.5 C441.0,189.5 441.0,261 410,261" marker-end="url(#a)"/>
+<path class="hand" d="M408,297.0 C439.0,297.0 439.0,321 470,321" marker-end="url(#a)"/>
+<path class="hand" d="M472,356.5 C441.0,356.5 441.0,407 410,407" marker-end="url(#a)"/>
+<path class="hand" d="M408,443.0 C439.0,443.0 439.0,467 470,467" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Start APISIX and its configuration</text>
+<text class="t" x="82" y="123">store with the quickstart</text>
+<text class="c" x="82" y="147">curl -sL</text>
+<text class="c" x="82" y="166">https://run.api7.ai/apisix/quickstart | sh</text>
+<text class="comp" x="82" y="189">component: quickstart</text>
+<rect class="cardT" x="472" y="141" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="141" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="165" r="10"/>
+<text class="num" x="494" y="169" text-anchor="middle">2</text>
+<text class="t" x="514" y="170">Runs the gateway on port 9080 and</text>
+<text class="t" x="514" y="192">stores dynamic configuration in etcd</text>
+<text class="comp" x="514" y="220">component: APISIX + etcd</text>
+<rect class="card" x="40" y="237" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="237" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="261" r="10"/>
+<text class="num" x="62" y="265" text-anchor="middle">3</text>
+<text class="t" x="82" y="266">Declare a route, its upstream nodes,</text>
+<text class="t" x="82" y="288">and the plugins that should run</text>
+<text class="c" x="82" y="312">PUT /apisix/admin/routes/1</text>
+<text class="comp" x="82" y="335">component: Admin API</text>
+<rect class="cardT" x="472" y="297" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="297" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="321" r="10"/>
+<text class="num" x="494" y="325" text-anchor="middle">4</text>
+<text class="t" x="514" y="326">Watches the configuration and applies</text>
+<text class="t" x="514" y="348">route and plugin changes without a</text>
+<text class="t" x="514" y="370">restart</text>
+<text class="comp" x="514" y="398">component: configuration watcher</text>
+<rect class="card" x="40" y="383" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="383" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="407" r="10"/>
+<text class="num" x="62" y="411" text-anchor="middle">5</text>
+<text class="t" x="82" y="412">Send client traffic to the gateway</text>
+<text class="t" x="82" y="434">route</text>
+<text class="c" x="82" y="458">curl http://127.0.0.1:9080/get</text>
+<text class="comp" x="82" y="481">component: client</text>
+<rect class="cardT" x="472" y="443" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="443" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="467" r="10"/>
+<text class="num" x="494" y="471" text-anchor="middle">6</text>
+<text class="t" x="514" y="472">Matches the route, runs its plugins,</text>
+<text class="t" x="514" y="494">and proxies to a healthy upstream</text>
+<text class="comp" x="514" y="522">component: NGINX/OpenResty data plane</text>
+<rect class="val" x="28" y="572" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="596">VALUE</text>
+<text class="valT" x="48" y="620">Routing and shared API policy change at the gateway without redeploying backend services</text>
+</svg>
