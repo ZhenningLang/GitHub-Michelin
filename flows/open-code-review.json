@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Code Review does", "zh": "Open Code Review 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and point it at an LLM endpoint", "zh": "装好 CLI，配上模型端点", "code": "npm install -g @alibaba-group/open-code-review"},
+    {"lane": "you", "en": "Run it on your working tree, a branch range, or one commit", "zh": "对着工作区、分支区间或单个提交跑", "code": "ocr review"},
+    {"lane": "them", "en": "Picks which files to review, bundles related ones, matches a rule per file", "zh": "挑出该审的文件、把相关文件打包、给每个文件匹配规则", "component": {"en": "selection + rule resolver", "zh": "文件筛选 + 规则解析"}},
+    {"lane": "them", "en": "Each bundle goes to the review agent, which reads whole files and searches the repo", "zh": "每个文件包交给 review agent，它可以读整份文件、在仓库里搜", "component": {"en": "review agent", "zh": "review agent"}},
+    {"lane": "them", "en": "A positioning module pins each finding to a real line, then prints text or JSON", "zh": "定位模块把每条发现钉到真实行号，再输出文本或 JSON", "code": "--format json", "component": {"en": "positioning module", "zh": "定位模块"}},
+    {"lane": "you", "en": "In CI, parse the JSON and post the comments to the PR/MR", "zh": "CI 里解析 JSON，把评论贴回 PR/MR", "code": "examples/github_actions/ocr-review.yml"}
+  ],
+  "value": {"en": "You stop coaxing a prompt: findings land on real lines, at the project's reported ~1/9 of a general-purpose agent's tokens", "zh": "不用再哄 prompt：发现落在真实行号上，项目自测的 token 消耗约为通用 agent 的九分之一"},
+  "sources": [
+    "README (install: npm install -g @alibaba-group/open-code-review; ocr review workspace/range/commit; --format json; Git >= 2.41)",
+    "pages/src/content/docs/en/integrations/ci.md (GitHub Actions recipe examples/github_actions/ocr-review.yml: parse JSON, post inline comments)",
+    "pages/src/content/docs/en/review-rules.md (six-gate file filtering, four-layer rule priority chain, positioning/reflection modules)",
+    "pages/src/content/docs/en/cli-reference.md (ocr review modes, --format json, --audience agent)"
+  ]
+}

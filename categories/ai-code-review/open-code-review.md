@@ -2,24 +2,26 @@
 name: Open Code Review
 slug: open-code-review
 repo: https://github.com/alibaba/open-code-review
+homepage: https://open-codereview.ai
 category: ai-code-review
 tags: [code-review, llm-agent, cli, git-diff, ci-cd, repository-level]
+aka: [OpenCodeReview, ocr]
 language: Go
 license: Apache-2.0
-maturity: v1.6.2, active (2026-06)
-last_verified: 2026-06-26
+maturity: v1.12.8, ~39.5k stars, active (2026-09)
+last_verified: 2026-09-22
 type: tool
 upstream:
-  pushed_at: 2026-06-29T09:21:58Z
+  pushed_at: 2026-09-22T11:03:58Z
   default_branch: main
-  default_branch_sha: 403335ef5afe95fd14b0b31c9929a004f557c6c1
+  default_branch_sha: bccbc15f785269400735d5255540c231e6c02b6d
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:48:28Z
+  computed_at: 2026-09-22T11:21:29Z
   overall: B
-  overall_score: 2.67
-  scored_axes: 6
+  overall_score: 2.8
+  scored_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,37 +31,33 @@ health:
       raw:
         archived: false
         last_commit_age_days: 0
-        active_weeks_13: 7
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 4.8
-        qualifying_issues: 37
-        band: relaxed_solo
-        window_offset_days: 8
+      grade: "?"
+      raw: {}
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: npmjs.org
         canonical_package: "@alibaba-group/open-code-review"
         dependent_repos_count: 0
-        downloads_last_month: 12994
+        downloads_last_month: 329386
         graph_tier: E
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
     longevity:
       grade: D
       raw:
-        repo_age_days: 46
+        repo_age_days: 127
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: C
+      grade: B
       raw:
-        active_maintainers_12mo: 42
-        top1_share: 0.681
-        top3_share: 0.769
+        active_maintainers_12mo: 97
+        top1_share: 0.472
+        top3_share: 0.584
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,71 +67,97 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Open Code Review
 
-A CLI that reads your Git diff, hands changed files to a tool-using LLM agent on top of a deterministic file-selection/rule-matching pipeline, and prints line-level review comments tuned for precision over recall.
+An LLM told to review a big diff tends to skim: it reads the first few files, stops, and the comments it does leave point at line numbers that don't match the problem. Open Code Review splits the job — deterministic code picks and bundles the files and pins each comment to a real line, while the model only judges content — so a vague "looks fine" becomes specific file:line findings, at the project's reported ~1/9 of the tokens a general-purpose agent burns.
 
 ![open-code-review — health radar](../../assets/health/open-code-review.svg)
 
 ## When to use
 
-You're a backend engineer on a Java or Go service and your team's review bottleneck is the boring-but-critical stuff: a missed null check, a non-thread-safe singleton, an unescaped string heading into a SQL query. You want a reviewer that runs in CI on every diff and leaves *specific line-level comments* — not a vibes-based "looks good" — and you'd rather it stay quiet than drown the PR in low-confidence noise. You run `ocr review` against the diff, point it at your OpenAI- or Anthropic-compatible endpoint (or an internal gateway), and it bundles related files, matches its fine-tuned ruleset (NPE, thread-safety, XSS, SQL injection) plus any custom JSON rules, and emits findings with file:line precision. The deterministic layer handles file selection and positioning so comments land on the right line; the agent handles the judgment.
+You're a backend engineer on a Java, Go or Python service whose CI runs on every pull request, but where nobody really reads the diff: the LLM skill your team bolted on reviews the first few files and stops, and the comments it leaves point at lines that don't match the problem. You want a reviewer that covers the whole changeset, lands each comment on a real line, and stays quiet rather than padding the PR with low-confidence noise. You install `ocr` and run `ocr review`: a deterministic pass decides which files are worth reviewing, bundles related ones and matches each file to a rule, then a tool-using LLM agent judges the content and a separate positioning module pins every finding to a line. If your team already pays for an AI coding agent on a subscription, delegation mode (`ocr delegate`) lets that agent's own model do the judging, so OCR needs no API key at all.
 
-It also fits when you've inherited an unfamiliar codebase and there's no meaningful diff to review. `ocr scan` reviews whole files directly — a pre-migration sweep or an audit of a directory you didn't write — and `--format json` makes either command parseable in a CI script. Because it ships as a single Go binary (or an npm install) and integrates as a Claude Code / Cursor / Codex plugin, you can drop it into an existing agent workflow without standing up a service.
+It also fits when you've inherited an unfamiliar codebase and there's no meaningful diff to review: `ocr scan` runs the same pipeline over whole files instead of a diff. Both commands emit a JSON envelope, and the repo ships a ready-made GitHub Actions / GitLab CI recipe that posts the findings back to the PR/MR (plus examples for Gerrit, GitFlic and Codeup). Because it is one Go binary — or an npm install — with plugins for Claude Code, Codex, Cursor, Kimi Code and OpenCode and IDE extensions for VS Code and JetBrains, you can drop it into an existing agent workflow without standing up a service.
+
+## How it works
+
+Open Code Review is a single binary you point at a diff. Before any model sees anything, a deterministic pass — plain code, no LLM — decides which files are worth reviewing (skipping binaries, lockfiles, test fixtures and paths that look like secrets), groups files that belong together into one review unit, and resolves which rule text applies to each file from a four-layer chain: a `--rule` flag, the project's `.opencodereview/rule.json`, your global `~/.opencodereview/rule.json`, and a built-in default that ships inside the binary. Each bundle then goes to a tool-using LLM agent — "tool-using" meaning it can read whole files and search the repository, not just the lines in the diff — and a separate positioning module snaps every finding to a real line before printing, so comments don't drift off target the way a pure-prompt reviewer's do. What you supply is an install and an LLM endpoint (or nothing at all in delegation mode, where your coding agent's own subscription does the judging); what OCR supplies is file selection, bundling, rule matching, the agent call, line positioning, and output as text or a JSON envelope your pipeline can parse. If there is no diff to review at all, `ocr scan` runs the same machinery over entire files.
+
+![open-code-review — backbone user story](../../assets/flow/open-code-review.svg)
+
+<!-- flow-steps:begin (generated from flows/open-code-review.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the CLI and point it at an LLM endpoint — `npm install -g @alibaba-group/open-code-review`
+2. **You**: Run it on your working tree, a branch range, or one commit — `ocr review`
+3. **Open Code Review**: Picks which files to review, bundles related ones, matches a rule per file — component: `selection + rule resolver`
+4. **Open Code Review**: Each bundle goes to the review agent, which reads whole files and searches the repo — component: `review agent`
+5. **Open Code Review**: A positioning module pins each finding to a real line, then prints text or JSON — `--format json` — component: `positioning module`
+6. **You**: In CI, parse the JSON and post the comments to the PR/MR — `examples/github_actions/ocr-review.yml`
+
+**Value**: You stop coaxing a prompt: findings land on real lines, at the project's reported ~1/9 of a general-purpose agent's tokens
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You want comments auto-posted to the PR/MR.** It outputs to stdout (text or JSON); it does not post to GitHub/GitLab merge requests on its own. You wire that yourself in CI from the JSON. [推断]
-- **You need high recall / a "find everything" auditor.** The project explicitly trades recall for precision ("its Recall is lower than general-purpose agents — a deliberate trade-off"). If you want a noisy net that surfaces every possible smell, this is the wrong default.
-- **You're chasing security vulnerabilities specifically.** The built-in rules touch a few security classes (XSS, SQL injection) but this is a general review tool, not a dedicated security scanner with taint analysis or a curated CWE catalog — see [claude-code-security-review](claude-code-security-review.md).
-- **Your stack is outside the supported language set.** It targets ~10+ languages (Java, Go, Python, JS/TS, Kotlin, Rust, Ruby, XML, shell); exotic or DSL-heavy codebases get weaker rule coverage.
-- **You want zero per-token cost or fully offline review.** Every review calls an external (or self-hosted) LLM; there's an API-key and inference-cost dependency on every run.
-- **You distrust single-vendor origin / cadence.** It's an Alibaba-originated tool with a fast release train (v1.6.2, many releases); custom-rule format and config surface are coupled to its evolving CLI.
+- **You want the tool itself to comment on the PR/MR.** The CLI prints to stdout (text or JSON) and does not call the GitHub or GitLab API itself. The repo now ships copy-paste CI recipes that include the posting script, but you still supply the write token and maintain that step. If you need posting out of the box, pick [PR-Agent (Qodo)](pr-agent.md) or CodeRabbit instead. [推断]
+- **You need high recall / a "find everything" auditor.** It deliberately trades recall for precision ("its Recall is lower than general-purpose agents — a deliberate trade-off"). If you want a noisy net over every possible smell, run a general-purpose coding agent (Claude Code with a review skill, say) and accept the false positives.
+- **You're chasing security vulnerabilities specifically.** The built-in rules touch a few classes (XSS, SQL injection) but there is no taint analysis and no curated CWE catalog — for a security gate use [claude-code-security-review](claude-code-security-review.md) or Semgrep (not indexed).
+- **Your files are outside the allowlist.** ~113 extensions are reviewable, with dedicated rules for 53 file/language types; anything else falls through to a generic `default.md` rule, and data/DSL-heavy code gets no language-specific guidance — reach for a DSL-specific linter for those files. Run `ocr rules check <file>` to see what your files actually resolve to.
+- **Every run must be free or fully offline.** Default mode calls an external (or self-hosted) LLM on every review — token cost and latency per run, and the diff leaves your machine. If that is a hard constraint, use a deterministic scanner such as Semgrep, or self-host the endpoint. Delegation mode removes OCR's own key, but the content still goes to whatever model your coding agent uses.
+- **You distrust vendor-origin tools or fast churn.** It is Alibaba-originated and on a very fast release train (v1.12.8, releases landing almost daily); the custom-rule format and config surface are coupled to its evolving CLI, and a vendor can re-prioritize a tool like this.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [claude-code-security-review](claude-code-security-review.md) | ✅ | Choose claude-code-security-review when you need Anthropic's PR-native GitHub Action focused on security findings. | Anthropic's GitHub Action focused on *security* findings via Claude; narrower (security) but PR-native. Open Code Review is broader (general quality + a few security rules) and CLI-first, not auto-posting. |
-| [react-doctor](react-doctor.md) | ✅ | Choose react-doctor when you need React-specific diagnostics for one framework. | React-specific health/diagnostics for a single framework; Open Code Review is language-agnostic across ~10+ languages, not framework-tuned. |
-| CodeRabbit | 未收录 | Choose CodeRabbit when you need hosted SaaS that auto-comments on PRs with broad recall. | Hosted SaaS that auto-comments on PRs with broad recall; Open Code Review is self-hosted/CLI, precision-biased, and you own the LLM key and posting glue. |
-| [PR-Agent (Qodo)](pr-agent.md) | ✅ | Choose PR-Agent when you need an OSS assistant that posts summaries, Q&A, and comments directly to GitHub/GitLab MRs. | OSS PR assistant that posts to GitHub/GitLab MRs directly and does summaries/Q&A; Open Code Review prints structured findings and leans on a deterministic positioning layer rather than MR integration. |
-| Semgrep | 未收录 | Choose Semgrep when you need deterministic AST/rule scanning without an LLM. | Deterministic rule/AST scanner (no LLM) with a large security ruleset; faster and free per run but no agent reasoning or natural-language line comments. |
+| [claude-code-security-review](claude-code-security-review.md) | ✅ | Pick claude-code-security-review when the gate is security-only and must run as a Claude-native GitHub Action; pick Open Code Review when the same PR also needs general quality findings. | Security-specific and PR-native vs. general review that covers a few security classes but is not a scanner. |
+| [PR-Agent (Qodo)](pr-agent.md) | ✅ | Pick PR-Agent when you want a bot that posts summaries, Q&A and inline comments to GitHub/GitLab MRs out of the box; pick Open Code Review when line precision and a deterministic selection layer matter more, and you accept running the CI posting recipe yourself. | PR-Agent owns the MR integration; Open Code Review owns the positioning pipeline and stops at JSON. |
+| [react-doctor](react-doctor.md) | ✅ | Pick react-doctor when the codebase is React and you need a repeatable framework-specific rule catalog; pick Open Code Review when you need language-agnostic semantic judgment across a polyglot repo. | Fixed React rules vs. LLM judgment across ~113 file types. |
+| CodeRabbit | not indexed | Pick CodeRabbit when you want hosted SaaS that auto-comments on PRs with broad recall and zero pipeline glue; pick Open Code Review when the diff must stay inside your own runner and you want to own the model and the rules. | Hosted, broad-recall, auto-posting vs. self-hosted, precision-biased, JSON-out. |
+| Semgrep | not indexed | Pick Semgrep when the gate must be deterministic AST/rule matching with no LLM in the loop and no per-run token cost; pick Open Code Review when you need natural-language reasoning about intent. | Fast, free-per-run pattern matching vs. agent reasoning that costs tokens each review. |
 
 ## Tech stack
 
-- **Language:** Go (~60% of repo) for the core CLI/engine; TypeScript (~23%) for UI/extension/viewer pieces. [未验证] percentages from GitHub language bar.
-- **Architecture:** hybrid — a deterministic pipeline (precise file selection, "smart" file bundling with divide-and-conquer, fine-grained rule matching, independent positioning + reflection modules) feeding a tool-using LLM agent with scenario-tuned prompts and toolset.
-- **LLM layer:** OpenAI- and Anthropic-compatible protocols; custom/private gateway endpoints supported.
-- **Rules:** built-in fine-tuned ruleset (NPE, thread-safety, XSS, SQL injection) plus user-defined JSON rules.
-- **Interfaces:** CLI (`ocr review`/`scan`/`config`/`llm`/`rules`/`viewer`), `--format text|json`, `--audience agent`; plugins for Claude Code, Cursor, Codex.
+- **Language:** Go (~63%) is the CLI/engine; JavaScript + TypeScript (~24%) cover the browser session viewer, the VS Code extension and the CI posting scripts; Kotlin (~7%) the JetBrains plugin. Percentages from the repo's GitHub `languages` API (2026-09-22).
+- **Architecture:** hybrid — a deterministic pipeline (six-gate file filtering with built-in secret-path protection, file bundling with divide-and-conquer, four-layer rule resolution, independent positioning and reflection modules) feeding a tool-using LLM agent with review-tuned prompts and toolset.
+- **LLM layer:** any OpenAI- or Anthropic-compatible endpoint, a built-in provider list, custom/private gateways; **delegation mode** hands the judging to the host coding agent's own model.
+- **Rules:** embedded `system_rules.json` default plus per-project and per-user JSON rule files; 53 shipped rule docs for specific file types, `default.md` as fallback.
+- **Interfaces:** CLI (`ocr review`/`scan`/`session`/`viewer`/`rules`/`config`/`llm`/`delegate`), `--format text|json`, `--audience agent`; a local session viewer on `localhost:5483`; VS Code and JetBrains extensions; plugins for Claude Code / Codex / Cursor / Kimi Code / OpenCode; an agent skill; an MCP *client* for extra context tools; OpenTelemetry export.
 
 ## Dependencies
 
-- **Runtime:** a single self-contained Go binary (Windows/macOS/Linux builds), or install via npm `@alibaba-group/open-code-review`.
-- **Required:** Git (it operates on diffs/files) and an LLM API key — an OpenAI- or Anthropic-compatible endpoint, or an internal gateway. No database or server to run.
-- **Config:** `~/.opencodereview/config.json` or environment variables (model, endpoint, key, rules).
-- **CI:** runs in GitHub Actions / GitLab CI; parse `--format json` output in your pipeline.
+- **Runtime:** a single self-contained Go binary (Windows/macOS/Linux), npm `@alibaba-group/open-code-review`, an install script, or a GitHub Release binary.
+- **Required:** **Git >= 2.41** (it uses Git for diff generation and code search) and, in default mode, an LLM endpoint plus key. Delegation mode needs no OCR-side LLM configuration.
+- **Config:** `~/.opencodereview/config.json` (providers, model, MCP servers) and `~/.opencodereview/rule.json`, with an optional per-project `.opencodereview/rule.json` that is safe to commit.
+- **State:** review sessions are JSONL files under `~/.opencodereview/sessions/`; the viewer reads them with no external dependency.
+- **CI:** GitHub Actions and GitLab CI recipes ship in-repo; Gerrit, GitFlic and Codeup posting examples are provided.
 
 ## Ops difficulty
 
-**Low.** There's no service, datastore, or daemon to operate — it's a binary you invoke on a diff in CI or locally. The real operational variables are the LLM dependency (endpoint reachability, API-key/secret management, per-PR token cost and latency) and tuning custom JSON rules + config to your repo. Because output goes to stdout, posting findings into PRs/MRs is glue you maintain, not a built-in. No scaling/HA concerns since each invocation is stateless. [推断]
+**Low.** No service, datastore or daemon: it is a binary you invoke on a diff in CI or locally, and each invocation is stateless, so there is no scaling or HA concern. The real operational variables are the LLM dependency (endpoint reachability, key/secret management, per-PR token cost and latency), the write token your CI posting step needs, tuning JSON rules to your repo, and — only if you expose the session viewer beyond localhost — the `OCR_VIEWER_ALLOWED_HOSTS` allowlist, since the viewer refuses wildcard binds by default. [推断]
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 4.8 hours across 37 qualifying issues/PRs.
-- **Maintenance (2026-06):** [推断] very actively maintained — last push 2026-06, v1.6.2 released 2026-06-26, on a fast release train (many versions). Low open-issue count (~43) relative to ~9.3k stars suggests issues are being closed, not piling up. Momentum is high *right now*.
-- **Governance & backing:** [推断] published under the `alibaba` GitHub org — a large vendor with a long open-source track record (Dubbo, Nacos, Arthas…), which lowers bus-factor risk versus a hobby project. But it's single-vendor, not foundation-governed; the custom-rule format and config surface are coupled to Alibaba's evolving CLI, and vendor-origin tools can be re-prioritized.
-- **Age & Lindy:** [未验证] the repo was created ~2026-05 (public OSS history is ~1 month old as of 2026-06) — **very young; no Lindy support yet.** The project claims "two years internal at Alibaba / tens of thousands of developers," which if true gives real maturity behind the public repo, but that framing is the project's own and unverified (see Caveats). Judge the public artifact as new.
-- **Risk flags:** [推断] precision-over-recall is a deliberate design choice (it will miss things by design); per-run LLM API cost on every review; Apache-2.0 (permissive, no relicense history found). No CVEs or open-core gating observed.
+- **Maintenance:** Grade A — commits land daily (default branch HEAD 2026-09-22) and releases are near-daily (v1.12.8 on 2026-09-21; the repo went public 2026-05-18 and already carries 100+ tags).
+- **Responsiveness — not scored (`?`).** Traffic exists, but the sampled window produced no qualifying issue/PR first-response measurement, so the axis is unknown here — not a good grade. Treat the ~217 open issues (2026-09-22, up from ~43 in 2026-06) as the thing to watch: growing adoption makes a growing queue normal, but it has not been shown to be draining faster than it fills. The radar's `overall` therefore aggregates 5 of 6 axes — read it as an incomplete hexagon, not as a score one axis short of perfect.
+- **Adoption vs. longevity, together:** ~39.5k stars / ~2.8k forks and 329,386 npm downloads in the last month (2026-09) are strong demand signals, and they moved the adoption axis from D to C. The longevity axis stays D because the repo is only ~127 days old: attention is not durability. Read the two axes as "people are betting on it" vs. "it has not existed long enough to be a safe bet".
+- **Governance & backing:** Grade B — published under the `alibaba` GitHub org with a `GOVERNANCE.md` describing component ownership and a contributor ladder; ~97 contributors in the last 12 months with the top contributor at ~47% of commits (bus factor improved, still concentrated), which is why the axis reads B rather than A. It is single-vendor rather than foundation-governed. The project also holds an **OpenSSF Best Practices "Gold"** badge — verified directly against `bestpractices.dev` (2026-09-22), which makes it an externally checkable process signal rather than a self-claim.
+- **Risk flags:** precision-over-recall is deliberate (it will miss real issues by design); a near-daily release train means rule and config surfaces can churn; every default-mode review sends your diff to an LLM and costs tokens; responsiveness is currently unmeasured; the headline benchmark is first-party even though its dataset is public. Apache-2.0, no relicense history, no open-core gating observed.
 
 ## Caveats (unverified)
 
-- [未验证] v1.6.2 published 2026-06-26; ~9.3k GitHub stars as of 2026-06 — star counts are unreliable and date-sensitive; treat as indicative only.
-- [未验证] Language-mix percentages (Go ~60%, TS ~23%) come from the GitHub language bar and shift with the repo over time.
-- [推断] It does not auto-post to GitHub/GitLab MRs — README describes stdout/JSON output and CI parsing, implying you wire posting yourself; verify against the current CLI before relying on it.
-- [推断] "Precision over recall" is the project's own stated trade-off; actual false-negative/false-positive rates depend on model, rules, and language — no first-party benchmark numbers were confirmed here.
-- [未验证] The "tens of thousands of developers / two years internal at Alibaba" maturity claim is the project's own framing, not independently verified.
-- [推断] Supported-language list (~10+) and built-in rule set are README-stated and may change release-to-release; confirm coverage for your stack against the current repo.
+- [未验证] Star (~39.5k), fork (~2.8k) and open-issue (~217) counts are the values fetched on 2026-09-22 and move constantly; on a four-month-old repo, high stars are as much a hype risk flag as a signal.
+- [推断] The "~1/9 of the tokens / higher Precision and F1" benchmark numbers are the project's own measurement with its own harness; the underlying AACR-Bench dataset is public, but the comparison was not independently reproduced here.
+- [推断] "It does not post to PRs/MRs itself" follows from the docs describing a separate posting step over the JSON envelope; confirm against the current CLI before relying on it, since CI integration is an active area (GitLab comment handling was fixed as recently as 2026-09).
+- [推断] The supported-file claim is read from the in-repo allowlist (~113 extensions) and the shipped rule-doc count (53); coverage is not uniform — many file types fall back to `default.md`. Verify your stack with `ocr rules check`.
+- [未验证] The "two years internal at Alibaba / tens of thousands of developers / millions of defects" maturity claim is the project's own framing, not independently verified.
+- [推断] Language percentages come from the GitHub `languages` API (a byte count), not a build analysis, and shift with the repo.
+- [未验证] Delegation mode and the session viewer are described from the project's docs (2026-09); no hands-on run was performed here, so real behaviour and how delegation interacts with each host agent's quota are unconfirmed.

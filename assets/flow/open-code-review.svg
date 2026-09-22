@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="841" viewBox="0 0 880 841" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="841" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="683" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="683" rx="10"/>
+<rect class="pillT" x="474" y="40" width="221.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Open Code Review does</text>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="hand" d="M408,259.5 C439.0,259.5 439.0,283 470,283" marker-end="url(#a)"/>
+<path class="edge" d="M494,356 L494,380" marker-end="url(#a)"/>
+<path class="edge" d="M494,501 L494,525" marker-end="url(#a)"/>
+<path class="hand" d="M472,598.0 C441.0,598.0 441.0,622 410,622" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the CLI and point it at an LLM</text>
+<text class="t" x="82" y="123">endpoint</text>
+<text class="c" x="82" y="147">npm install -g</text>
+<text class="c" x="82" y="166">@alibaba-group/open-code-review</text>
+<rect class="card" x="40" y="212" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">Run it on your working tree, a branch</text>
+<text class="t" x="82" y="263">range, or one commit</text>
+<text class="c" x="82" y="287">ocr review</text>
+<rect class="cardT" x="472" y="259" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="259" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="283" r="10"/>
+<text class="num" x="494" y="287" text-anchor="middle">3</text>
+<text class="t" x="514" y="288">Picks which files to review, bundles</text>
+<text class="t" x="514" y="310">related ones, matches a rule per file</text>
+<text class="comp" x="514" y="338">component: selection + rule resolver</text>
+<rect class="cardT" x="472" y="382" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="382" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="406" r="10"/>
+<text class="num" x="494" y="410" text-anchor="middle">4</text>
+<text class="t" x="514" y="411">Each bundle goes to the review agent,</text>
+<text class="t" x="514" y="433">which reads whole files and searches</text>
+<text class="t" x="514" y="455">the repo</text>
+<text class="comp" x="514" y="483">component: review agent</text>
+<rect class="cardT" x="472" y="527" width="368" height="142" rx="8"/>
+<rect class="accT" x="472" y="527" width="4" height="142" rx="2"/>
+<circle class="accT" cx="494" cy="551" r="10"/>
+<text class="num" x="494" y="555" text-anchor="middle">5</text>
+<text class="t" x="514" y="556">A positioning module pins each finding</text>
+<text class="t" x="514" y="578">to a real line, then prints text or</text>
+<text class="t" x="514" y="600">JSON</text>
+<text class="c" x="514" y="624">--format json</text>
+<text class="comp" x="514" y="647">component: positioning module</text>
+<rect class="card" x="40" y="598" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="598" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="622" r="10"/>
+<text class="num" x="62" y="626" text-anchor="middle">6</text>
+<text class="t" x="82" y="627">In CI, parse the JSON and post the</text>
+<text class="t" x="82" y="649">comments to the PR/MR</text>
+<text class="c" x="82" y="673">examples/github_actions/ocr-review.yml</text>
+<rect class="val" x="28" y="725" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="749">VALUE</text>
+<text class="valT" x="48" y="773">You stop coaxing a prompt: findings land on real lines, at the project&#x27;s reported ~1/9 of a</text>
+<text class="valT" x="48" y="795">general-purpose agent&#x27;s tokens</text>
+</svg>
