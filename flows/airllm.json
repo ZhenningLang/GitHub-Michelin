@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "AirLLM does", "zh": "AirLLM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package into your Python environment", "zh": "把包装进你的 Python 环境", "code": "pip install airllm", "component": {"en": "PyPI package", "zh": "PyPI 包"}},
+    {"lane": "you", "en": "Point AutoModel at a Hugging Face repo id or a local model path", "zh": "用 AutoModel 指向 HF 仓库 id 或本地模型路径", "code": "AutoModel.from_pretrained(\"Qwen/Qwen3-32B\")"},
+    {"lane": "them", "en": "Splits the checkpoint into one shard per layer on disk (first run only)", "zh": "把检查点按层切成一个个分片落盘，仅首次运行", "component": {"en": "layer splitter", "zh": "分层切分器"}},
+    {"lane": "you", "en": "Tokenize the prompt and call generate — the same code as plain transformers", "zh": "照常分词并调 generate，与普通 transformers 写法一致", "code": "model.generate(input_tokens['input_ids'].cuda(), max_new_tokens=20)"},
+    {"lane": "them", "en": "Loads each layer disk to device just before it runs, frees it right after", "zh": "每层轮到它之前才从磁盘载入设备，算完立刻释放", "component": {"en": "streaming hooks", "zh": "流式 hook"}},
+    {"lane": "them", "en": "Lets transformers run the real forward pass and returns the sequence", "zh": "由 transformers 跑真正的前向并返回序列"}
+  ],
+  "value": {"en": "You run a model far larger than your VRAM without quantizing or converting it — paying in disk space and seconds per token", "zh": "不用量化、不用转换格式就能跑远超显存的大模型，代价是磁盘空间与每秒级的等待"},
+  "sources": [
+    "https://github.com/lyogavin/airllm README Quickstart (pip install airllm, AutoModel.from_pretrained, tokenizer, model.generate) and Configurations (layer_shards_saving_path, delete_original, compression)",
+    "air_llm/inference_example.py (the minimum inference script shipped in the repo)",
+    "air_llm/airllm/airllm_base.py class docstring lines 60-70 (per-layer shards on disk, model on the meta device, forward hooks streaming disk->device and freeing after, prefetch on a worker thread)",
+    "air_llm/airllm/airllm_base.py L84-L190 (constructor: device default cuda:0, prefetch executor, compression path)"
+  ]
+}

@@ -232,6 +232,7 @@ DeepKE,categories/ml-research/agriculture-knowledge-graph.md,,no
 DeepL / Google Translate browser features,categories/reading-tools/fluentread.md,,no
 DeepSpeech (Mozilla),categories/media-processing/video-audio/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
+DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
 Descript,categories/media-processing/video-audio/auto-editor.md,,no
