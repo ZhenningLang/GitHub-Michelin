@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1051" viewBox="0 0 880 1051" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1051" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="893" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="893" rx="10"/>
+<rect class="pillT" x="474" y="40" width="221.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The AI Scientist does</text>
+<path class="edge" d="M62,203 L62,227" marker-end="url(#a)"/>
+<path class="hand" d="M408,294.5 C439.0,294.5 439.0,318 470,318" marker-end="url(#a)"/>
+<path class="edge" d="M494,430 L494,454" marker-end="url(#a)"/>
+<path class="edge" d="M494,570 L494,594" marker-end="url(#a)"/>
+<path class="hand" d="M472,653.0 C441.0,653.0 441.0,677 410,677" marker-end="url(#a)"/>
+<path class="edge" d="M62,765 L62,789" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">Set up</text>
+<text class="t" x="82" y="118">Install the Python env and LaTeX, then</text>
+<text class="t" x="82" y="140">run the template&#x27;s baseline yourself</text>
+<text class="c" x="82" y="164">pip install -r requirements.txt · python</text>
+<text class="c" x="82" y="183">experiment.py --out_dir run_0</text>
+<rect class="card" x="40" y="229" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="229" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="253" r="10"/>
+<text class="num" x="62" y="257" text-anchor="middle">2</text>
+<text class="ph" x="82" y="258">One idea</text>
+<text class="t" x="82" y="275">Launch paper generation for one of the</text>
+<text class="t" x="82" y="297">templates on a frontier model</text>
+<text class="c" x="82" y="321">python launch_scientist.py --model</text>
+<text class="c" x="82" y="340">&quot;claude-3-5-sonnet-20241022&quot;</text>
+<rect class="cardT" x="472" y="294" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="294" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="318" r="10"/>
+<text class="num" x="494" y="322" text-anchor="middle">3</text>
+<text class="ph" x="514" y="323">One idea</text>
+<text class="t" x="514" y="340">Generates candidate ideas and checks</text>
+<text class="t" x="514" y="362">each one for novelty against the</text>
+<text class="t" x="514" y="384">literature</text>
+<text class="comp" x="514" y="412">component: idea generator</text>
+<rect class="cardT" x="472" y="456" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="456" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="480" r="10"/>
+<text class="num" x="494" y="484" text-anchor="middle">4</text>
+<text class="ph" x="514" y="485">One idea</text>
+<text class="t" x="514" y="502">Writes the experiment code, runs it on</text>
+<text class="t" x="514" y="524">your GPUs, and plots the results</text>
+<text class="comp" x="514" y="552">component: experiment runner</text>
+<rect class="cardT" x="472" y="596" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="596" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="620" r="10"/>
+<text class="num" x="494" y="624" text-anchor="middle">5</text>
+<text class="ph" x="514" y="625">One idea</text>
+<text class="t" x="514" y="642">Drafts the paper from the template&#x27;s</text>
+<text class="t" x="514" y="664">LaTeX and compiles a PDF</text>
+<text class="comp" x="514" y="692">component: writeup module</text>
+<rect class="card" x="40" y="653" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="653" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="677" r="10"/>
+<text class="num" x="62" y="681" text-anchor="middle">6</text>
+<text class="ph" x="82" y="682">One idea</text>
+<text class="t" x="82" y="699">Score the generated paper with the</text>
+<text class="t" x="82" y="721">bundled LLM reviewer</text>
+<text class="c" x="82" y="745">perform_review(paper_txt, model, client)</text>
+<rect class="card" x="40" y="791" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="791" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="815" r="10"/>
+<text class="num" x="62" y="819" text-anchor="middle">7</text>
+<text class="ph" x="82" y="820">One idea</text>
+<text class="t" x="82" y="837">Keep the paper, or re-run the idea</text>
+<text class="t" x="82" y="859">with the reviewer&#x27;s feedback</text>
+<text class="c" x="82" y="883">--improvement</text>
+<rect class="val" x="28" y="935" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="959">VALUE</text>
+<text class="valT" x="48" y="983">You stop hand-walking idea → code → experiment → write-up: one command turns a template and a</text>
+<text class="valT" x="48" y="1005">frontier model into a compiled paper and a review score</text>
+</svg>

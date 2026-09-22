@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="993" viewBox="0 0 880 993" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="993" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="857" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="857" rx="10"/>
+<rect class="pillT" x="474" y="40" width="215.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Agent Laboratory 做的</text>
+<path class="edge" d="M62,162 L62,186" marker-end="url(#a)"/>
+<path class="edge" d="M62,300 L62,324" marker-end="url(#a)"/>
+<path class="hand" d="M408,380.5 C439.0,380.5 439.0,404 470,404" marker-end="url(#a)"/>
+<path class="hand" d="M472,426.0 C441.0,426.0 441.0,485 410,485" marker-end="url(#a)"/>
+<path class="hand" d="M408,517.0 C439.0,517.0 439.0,541 470,541" marker-end="url(#a)"/>
+<path class="edge" d="M494,631 L494,655" marker-end="url(#a)"/>
+<path class="edge" d="M494,749 L494,773" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">搭建</text>
+<text class="t" x="82" y="118">建 Python 3.12 环境，装它那一长串依赖</text>
+<text class="c" x="82" y="142">pip install -r requirements.txt</text>
+<rect class="card" x="40" y="188" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="188" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="212" r="10"/>
+<text class="num" x="62" y="216" text-anchor="middle">2</text>
+<text class="ph" x="82" y="217">搭建</text>
+<text class="t" x="82" y="234">把你的任务笔记、API key 和模型后端写进</text>
+<text class="t" x="82" y="256">YAML 配置</text>
+<text class="c" x="82" y="280">llm-backend: &quot;o3-mini&quot;</text>
+<rect class="card" x="40" y="326" width="368" height="109" rx="8"/>
+<rect class="accY" x="40" y="326" width="4" height="109" rx="2"/>
+<circle class="accY" cx="62" cy="350" r="10"/>
+<text class="num" x="62" y="354" text-anchor="middle">3</text>
+<text class="ph" x="82" y="355">每个 lab</text>
+<text class="t" x="82" y="372">用这份配置启动这个 lab</text>
+<text class="c" x="82" y="396">python ai_lab_repo.py --yaml-location</text>
+<text class="c" x="82" y="415">&quot;experiment_configs/MATH_agentlab.yaml&quot;</text>
+<rect class="cardT" x="472" y="380" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="380" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="404" r="10"/>
+<text class="num" x="494" y="408" text-anchor="middle">4</text>
+<text class="ph" x="514" y="409">每个 lab</text>
+<text class="t" x="514" y="426">做文献回顾，把读到的收进研究计划</text>
+<text class="comp" x="514" y="454">组件：文献 agent</text>
+<rect class="card" x="40" y="461" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="461" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="485" r="10"/>
+<text class="num" x="62" y="489" text-anchor="middle">5</text>
+<text class="ph" x="82" y="490">每个 lab</text>
+<text class="t" x="82" y="507">开 copilot 时，每个阶段先由你确认或</text>
+<text class="t" x="82" y="529">纠正再往下</text>
+<text class="c" x="82" y="553">copilot-mode: True</text>
+<rect class="cardT" x="472" y="517" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="517" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="541" r="10"/>
+<text class="num" x="494" y="545" text-anchor="middle">6</text>
+<text class="ph" x="514" y="546">每个 lab</text>
+<text class="t" x="514" y="563">准备数据、跑实验，代码由 MLE-solver </text>
+<text class="t" x="514" y="585">写并自动修</text>
+<text class="comp" x="514" y="613">组件：MLE-solver</text>
+<rect class="cardT" x="472" y="657" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="657" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="681" r="10"/>
+<text class="num" x="494" y="685" text-anchor="middle">7</text>
+<text class="ph" x="514" y="686">每个 lab</text>
+<text class="t" x="514" y="703">解读结果，用 LaTeX 写成报告</text>
+<text class="comp" x="514" y="731">组件：报告 agent</text>
+<rect class="cardT" x="472" y="775" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="775" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="799" r="10"/>
+<text class="num" x="494" y="803" text-anchor="middle">8</text>
+<text class="ph" x="514" y="804">每个 lab</text>
+<text class="t" x="514" y="821">给草稿评分，必要时把 lab 打回去补实验</text>
+<text class="comp" x="514" y="849">组件：paper-solver</text>
+<rect class="val" x="28" y="899" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="923">价值</text>
+<text class="valT" x="48" y="947">研究流程不再整个压在你脑子里：各阶段自己往前走，开 copilot 时每个阶段停下来等你拍板</text>
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1155" viewBox="0 0 880 1155" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1155" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="997" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="997" rx="10"/>
+<rect class="pillT" x="474" y="40" width="184.3" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenResearch does</text>
+<path class="hand" d="M408,147.0 C439.0,147.0 439.0,171 470,171" marker-end="url(#a)"/>
+<path class="hand" d="M472,215.0 C441.0,215.0 441.0,272 410,272" marker-end="url(#a)"/>
+<path class="edge" d="M62,379 L62,403" marker-end="url(#a)"/>
+<path class="hand" d="M408,470.5 C439.0,470.5 439.0,494 470,494" marker-end="url(#a)"/>
+<path class="hand" d="M472,538.0 C441.0,538.0 441.0,586 410,586" marker-end="url(#a)"/>
+<path class="edge" d="M62,651 L62,675" marker-end="url(#a)"/>
+<path class="hand" d="M408,733.0 C439.0,733.0 439.0,757 470,757" marker-end="url(#a)"/>
+<path class="edge" d="M494,847 L494,871" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="150" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="150" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">Set up</text>
+<text class="t" x="82" y="118">Install the CLI, then start the local</text>
+<text class="t" x="82" y="140">dashboard</text>
+<text class="c" x="82" y="164">curl -LsSf</text>
+<text class="c" x="82" y="183">https://openresearch.sh/install.sh | sh ·</text>
+<text class="c" x="82" y="202">orx up</text>
+<rect class="cardT" x="472" y="147" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="147" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="171" r="10"/>
+<text class="num" x="494" y="175" text-anchor="middle">2</text>
+<text class="ph" x="514" y="176">Set up</text>
+<text class="t" x="514" y="193">Serves it on 127.0.0.1:4791 from a</text>
+<text class="t" x="514" y="215">local SQLite store, so nothing is</text>
+<text class="t" x="514" y="237">published</text>
+<text class="comp" x="514" y="265">component: local dashboard</text>
+<rect class="card" x="40" y="248" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="248" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="272" r="10"/>
+<text class="num" x="62" y="276" text-anchor="middle">3</text>
+<text class="ph" x="82" y="277">Set up</text>
+<text class="t" x="82" y="294">Import a git repo and pin the one</text>
+<text class="t" x="82" y="316">command that runs an experiment</text>
+<text class="c" x="82" y="340">orx project edit &lt;id&gt; --run-command</text>
+<text class="c" x="82" y="359">&#x27;&lt;cmd&gt;&#x27;</text>
+<rect class="card" x="40" y="405" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="405" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="429" r="10"/>
+<text class="num" x="62" y="433" text-anchor="middle">4</text>
+<text class="ph" x="82" y="434">Each round</text>
+<text class="t" x="82" y="451">Create this round&#x27;s variants as child</text>
+<text class="t" x="82" y="473">nodes of the current winner</text>
+<text class="c" x="82" y="497">orx create-experiment &lt;id&gt; --parent</text>
+<text class="c" x="82" y="516">&lt;winner&gt; --title &quot;LR 2e-5&quot;</text>
+<rect class="cardT" x="472" y="470" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="470" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="494" r="10"/>
+<text class="num" x="494" y="498" text-anchor="middle">5</text>
+<text class="ph" x="514" y="499">Each round</text>
+<text class="t" x="514" y="516">Branches one orx/&lt;slug&gt; per node,</text>
+<text class="t" x="514" y="538">inheriting the parent&#x27;s code and fixed</text>
+<text class="t" x="514" y="560">command</text>
+<text class="comp" x="514" y="588">component: experiment tree</text>
+<rect class="card" x="40" y="562" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="562" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="586" r="10"/>
+<text class="num" x="62" y="590" text-anchor="middle">6</text>
+<text class="ph" x="82" y="591">Each round</text>
+<text class="t" x="82" y="608">Edit only that idea&#x27;s files on the</text>
+<text class="t" x="82" y="630">child branch and commit</text>
+<rect class="card" x="40" y="677" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="677" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="701" r="10"/>
+<text class="num" x="62" y="705" text-anchor="middle">7</text>
+<text class="ph" x="82" y="706">Each round</text>
+<text class="t" x="82" y="723">Launch the round on the backend you</text>
+<text class="t" x="82" y="745">choose</text>
+<text class="c" x="82" y="769">orx exp run &lt;childId&gt; --backend &lt;b&gt;</text>
+<rect class="cardT" x="472" y="733" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="733" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="757" r="10"/>
+<text class="num" x="494" y="761" text-anchor="middle">8</text>
+<text class="ph" x="514" y="762">Each round</text>
+<text class="t" x="514" y="779">Snapshots the commit, runs it there,</text>
+<text class="t" x="514" y="801">and keeps the log tied to that run</text>
+<text class="comp" x="514" y="829">component: run supervisor</text>
+<rect class="cardT" x="472" y="873" width="368" height="134" rx="8"/>
+<rect class="accT" x="472" y="873" width="4" height="134" rx="2"/>
+<circle class="accT" cx="494" cy="897" r="10"/>
+<text class="num" x="494" y="901" text-anchor="middle">9</text>
+<text class="ph" x="514" y="902">Each round</text>
+<text class="t" x="514" y="919">Returns on the first completion, so</text>
+<text class="t" x="514" y="941">you can refill the slot or promote the</text>
+<text class="t" x="514" y="963">winner</text>
+<text class="c" x="514" y="987">orx exp wait --project &lt;id&gt;</text>
+<rect class="val" x="28" y="1039" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="1063">VALUE</text>
+<text class="valT" x="48" y="1087">You no longer hand-track which code produced which number: every result carries its commit,</text>
+<text class="valT" x="48" y="1109">log, and artifacts, and the next round builds on the winner</text>
+</svg>

@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The AI Scientist does",
+    "zh": "The AI Scientist 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the Python env and LaTeX, then run the template's baseline yourself",
+      "zh": "装好 Python 环境与 LaTeX，并自己跑一遍模板基线",
+      "code": "pip install -r requirements.txt · python experiment.py --out_dir run_0",
+      "phase": {
+        "en": "Set up",
+        "zh": "搭建"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Launch paper generation for one of the templates on a frontier model",
+      "zh": "指定模板与前沿模型，启动论文生成",
+      "code": "python launch_scientist.py --model \"claude-3-5-sonnet-20241022\"",
+      "phase": {
+        "en": "One idea",
+        "zh": "单个想法"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Generates candidate ideas and checks each one for novelty against the literature",
+      "zh": "生成候选想法，并逐个到文献里查新",
+      "component": {
+        "en": "idea generator",
+        "zh": "想法生成器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Writes the experiment code, runs it on your GPUs, and plots the results",
+      "zh": "写出实验代码，在你的 GPU 上跑，再出图",
+      "component": {
+        "en": "experiment runner",
+        "zh": "实验执行器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Drafts the paper from the template's LaTeX and compiles a PDF",
+      "zh": "按模板的 LaTeX 起草论文并编译出 PDF",
+      "component": {
+        "en": "writeup module",
+        "zh": "写作模块"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Score the generated paper with the bundled LLM reviewer",
+      "zh": "用内置的 LLM 评审给生成的论文打分",
+      "code": "perform_review(paper_txt, model, client)"
+    },
+    {
+      "lane": "you",
+      "en": "Keep the paper, or re-run the idea with the reviewer's feedback",
+      "zh": "留下论文，或带着评审意见重跑这个想法",
+      "code": "--improvement"
+    }
+  ],
+  "value": {
+    "en": "You stop hand-walking idea → code → experiment → write-up: one command turns a template and a frontier model into a compiled paper and a review score",
+    "zh": "idea 到代码、到实验、到成稿这一整圈不再由你手工走：一条命令把模板和前沿模型变成编译好的论文和一份评审分"
+  },
+  "sources": [
+    "README.md (installation: conda env + sudo apt-get install texlive-full + pip install -r requirements.txt; per-template baseline runs python experiment.py --out_dir run_0; python launch_scientist.py --model \"claude-3-5-sonnet-20241022\" --experiment nanoGPT_lite --num-ideas 2; the reviewer snippet perform_review(paper_txt, model, client, num_reflections=5, ...) and review[\"Decision\"]; FAQ cost <$15 per paper, three maintained templates, ideas restricted to what can be expressed in code; the Caution about executing LLM-written code; containerization via experimental/Dockerfile; License & Responsible Use)",
+    "launch_scientist.py (argparse flags --experiment / --model / --num-ideas / --num-ideas default 50 / --parallel / --gpus / --engine / --improvement / --skip-idea-generation)",
+    "ai_scientist/ module layout (generate_ideas.py, perform_experiments.py, perform_writeup.py, perform_review.py, llm.py)",
+    "requirements.txt (anthropic, openai, aider-chat, google-generativeai, torch, transformers, datasets, wandb, matplotlib, pypdf)",
+    "LICENSE + commit history (Apache-2.0 re-licensed to The AI Scientist Source Code License v1.0 on 2025-12-19; mandatory machine-generation disclosure clause 3.2.e, downstream propagation clause 3.3)"
+  ]
+}

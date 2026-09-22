@@ -17,6 +17,8 @@
 | **Senta (SKEP)** | 当身处 PaddlePaddle／ERNIE 生态、需要带论文方法的 SKEP 情感分析 checkpoint 时用它——它锁定 EOL 的 PaddlePaddle 1.6.3，环境复原难以避免。 | D（3/6） | [→](senta.zh.md) |
 | **Depth Anything V2** | 当需要当下默认的单目深度基础模型从单张图估深度（PyTorch／Transformers）时用它——仅 Small 权重为 Apache-2.0，Base／Large／Giant 是 CC-BY-NC-4.0（非商用）。 | B（4/6） | [→](depth-anything-v2.zh.md) |
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | C（6/6） | [→](pymoo.zh.md) |
+| **The AI Scientist** | 当你想让「想法到论文」这整圈全自动跑完——想法生成、查新、实验代码、作图，最后编译出带 LLM 评审的 LaTeX 论文——时用它，但要接受一条绑死模板、自改许可证后冻结、且限制你发布其产出的流水线。 | D（4/6） | [→](ai-scientist.zh.md) |
+| **Agent Laboratory** | 当你想让一组扮演角色的 LLM agent 跑「文献回顾→计划→实验→报告」、每阶段由你确认，并且要 MIT 条款和可续跑 checkpoint 时用它，但它自 2025-03 起没有代码改动，还挂着一条无人回应的安全披露。 | C（3/6） | [→](agent-laboratory.zh.md) |
 
 ## 对比矩阵
 
@@ -32,8 +34,10 @@
 | [Senta (SKEP)](senta.zh.md) | ✅ | D（3/6） | 当身处 PaddlePaddle／ERNIE 生态、需要带论文方法的 SKEP 情感分析 checkpoint 时用它——它锁定 EOL 的 PaddlePaddle 1.6.3，环境复原难以避免。 |
 | [Depth Anything V2](depth-anything-v2.zh.md) | ✅ | B（4/6） | 当需要当下默认的单目深度基础模型从单张图估深度（PyTorch／Transformers）时用它——仅 Small 权重为 Apache-2.0，Base／Large／Giant 是 CC-BY-NC-4.0（非商用）。 |
 | [pymoo](pymoo.zh.md) | ✅ | C（6/6） | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 |
+| [The AI Scientist](ai-scientist.zh.md) | ✅ | D（4/6） | 当你想让「想法到论文」这整圈全自动跑完——想法生成、查新、实验代码、作图，最后编译出带 LLM 评审的 LaTeX 论文——时用它，但要接受一条绑死模板、自改许可证后冻结、且限制你发布其产出的流水线。 |
+| [Agent Laboratory](agent-laboratory.zh.md) | ✅ | C（3/6） | 当你想让一组扮演角色的 LLM agent 跑「文献回顾→计划→实验→报告」、每阶段由你确认，并且要 MIT 条款和可续跑 checkpoint 时用它，但它自 2025-03 起没有代码改动，还挂着一条无人回应的安全披露。 |
 | TransformerLens / minGPT | 未收录 | — | 各页对比里点到的其他研究 demo / 可解释性库。 |
 
 ## 什么该放这里
 
-小而自洽、用于研读学习而非投产的 **ML 研究 demo** 与参考实现。不含训练框架（见 `llm-training`）。
+小而自洽、用于研读学习而非投产的 **ML 研究 demo** 与参考实现，也包括把研究闭环本身自动化的自主科研流水线（[The AI Scientist](ai-scientist.zh.md)、[Agent Laboratory](agent-laboratory.zh.md)、[autoresearch](autoresearch.zh.md)）。不含训练框架（见 `llm-training`）。
