@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "Simple Jev does", "zh": "Simple Jev 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the server package and start it with an open chat model", "zh": "装好服务端，用任意开源聊天模型起一个进程", "code": "pip install -e './hf-server' · simple-jev --model Qwen/Qwen3.5-0.8B", "component": {"en": "hf-server", "zh": "hf-server"}, "phase": {"en": "Serve it", "zh": "起服务"}},
+    {"lane": "them", "en": "Loads the model and exposes the classifier endpoint", "zh": "加载模型，对外暴露判定接口", "component": {"en": "hf-server", "zh": "hf-server"}},
+    {"lane": "you", "en": "Send one shared context plus typed questions — choice, score or noul", "zh": "发一次请求：一段共享上下文，加一组带类型的问题", "code": "POST /v1/classifier"},
+    {"lane": "them", "en": "Builds one v1 prompt per question, prefills the shared prefix once, reads only the answer-label logits", "zh": "每题生成一条 v1 提示，共享前缀只算一次，然后只读答案标签那几位 logits", "component": {"en": "common", "zh": "common"}},
+    {"lane": "them", "en": "Returns JSON answers with a confidence per question; it never generates a token", "zh": "返回带置信度的逐问题 JSON；它一个 token 都不生成"},
+    {"lane": "you", "en": "Label a few examples and fine-tune the answer tokens when the base model is not good enough", "zh": "底座不够准时，标几条样本，微调答案 token", "code": "python RFDT/prepare.py · torchrun RFDT/train.py", "component": {"en": "RFDT", "zh": "RFDT"}, "phase": {"en": "Make it yours", "zh": "变成你的"}},
+    {"lane": "them", "en": "Merges the adapter and serves it back through the same endpoint", "zh": "合并 adapter，用同一个接口把它服务出去", "code": "python RFDT/export.py", "component": {"en": "RFDT", "zh": "RFDT"}}
+  ],
+  "value": {"en": "You get typed per-question answers with a confidence out of a model you already run — no JSON to parse, no classifier head to train", "zh": "从你已有的模型直接拿到带置信度的逐问题答案——不用解析生成的 JSON，也不用训分类器头"},
+  "sources": [
+    "README → Running the HF Server (`python -m pip install -e './hf-server'`, `python hf-server/hf_server.py --model Qwen/Qwen3.5-0.8B --device cpu --dtype float32`, server listens on `http://127.0.0.1:8000`)",
+    "README → How do I use the API? (`POST /v1/classifier`, alias `/v1/systemone`; one of `state`/`messages`; question `type` is `choice` / `score` / `noul`; answers carry `confidence` and `probabilities`; `usage.output_tokens` is zero)",
+    "README → How shared prompts and prefill-only scoring reduce work (exact common token prefix found after chat-template + tokenize; prefill once, save KV cache, one suffix per question, read the last real token's logits)",
+    "common/README.md → `prepare_prompt(request, version=\"v1\")` returns the cacheable system prefix plus ordered per-question branches; `build_response` turns label logits into answers; \"Scores and confidence are not calibrated\"",
+    "hf-server/README.md → Install and run (`pip install -e './hf-server[test]'`, `simple-jev` console script), Shared-prefix execution, Scope and validation (text only; chat template, copyable cache and single-token labels required)",
+    "RFDT/README.md → Prepare labeled data (`python RFDT/prepare.py`), Train a student (`torchrun --standalone --nproc_per_node=4 RFDT/train.py`), Evaluate and export (`python RFDT/export.py`)",
+    "eval/README.md → SemIf-derived `data/authored144.jsonl` baseline and the pinned SemIf revision; \"No model evaluations have been run for this addition\"",
+    ".github/workflows/deploy-website.yml → the only workflow: it builds the website and runs `node --test` demo checks (the Python test suites are not in CI)"
+  ]
+}

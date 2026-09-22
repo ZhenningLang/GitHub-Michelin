@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="901" viewBox="0 0 880 901" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="901" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="743" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="743" rx="10"/>
+<rect class="pillT" x="474" y="40" width="165.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Simple Jev does</text>
+<path class="hand" d="M408,150.0 C439.0,150.0 439.0,174 470,174" marker-end="url(#a)"/>
+<path class="hand" d="M472,207.0 C441.0,207.0 441.0,278 410,278" marker-end="url(#a)"/>
+<path class="hand" d="M408,310.0 C439.0,310.0 439.0,334 470,334" marker-end="url(#a)"/>
+<path class="edge" d="M494,446 L494,470" marker-end="url(#a)"/>
+<path class="hand" d="M472,527.5 C441.0,527.5 441.0,551 410,551" marker-end="url(#a)"/>
+<path class="hand" d="M408,616.0 C439.0,616.0 439.0,640 470,640" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="156" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="156" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">Serve it</text>
+<text class="t" x="82" y="118">Install the server package and start</text>
+<text class="t" x="82" y="140">it with an open chat model</text>
+<text class="c" x="82" y="164">pip install -e &#x27;./hf-server&#x27; · simple-jev</text>
+<text class="c" x="82" y="183">--model Qwen/Qwen3.5-0.8B</text>
+<text class="comp" x="82" y="206">component: hf-server</text>
+<rect class="cardT" x="472" y="150" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="150" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="174" r="10"/>
+<text class="num" x="494" y="178" text-anchor="middle">2</text>
+<text class="ph" x="514" y="179">Serve it</text>
+<text class="t" x="514" y="196">Loads the model and exposes the</text>
+<text class="t" x="514" y="218">classifier endpoint</text>
+<text class="comp" x="514" y="246">component: hf-server</text>
+<rect class="card" x="40" y="254" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="254" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="278" r="10"/>
+<text class="num" x="62" y="282" text-anchor="middle">3</text>
+<text class="ph" x="82" y="283">Serve it</text>
+<text class="t" x="82" y="300">Send one shared context plus typed</text>
+<text class="t" x="82" y="322">questions — choice, score or noul</text>
+<text class="c" x="82" y="346">POST /v1/classifier</text>
+<rect class="cardT" x="472" y="310" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="310" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="334" r="10"/>
+<text class="num" x="494" y="338" text-anchor="middle">4</text>
+<text class="ph" x="514" y="339">Serve it</text>
+<text class="t" x="514" y="356">Builds one v1 prompt per question,</text>
+<text class="t" x="514" y="378">prefills the shared prefix once, reads</text>
+<text class="t" x="514" y="400">only the answer-label logits</text>
+<text class="comp" x="514" y="428">component: common</text>
+<rect class="cardT" x="472" y="472" width="368" height="111" rx="8"/>
+<rect class="accT" x="472" y="472" width="4" height="111" rx="2"/>
+<circle class="accT" cx="494" cy="496" r="10"/>
+<text class="num" x="494" y="500" text-anchor="middle">5</text>
+<text class="ph" x="514" y="501">Serve it</text>
+<text class="t" x="514" y="518">Returns JSON answers with a confidence</text>
+<text class="t" x="514" y="540">per question; it never generates a</text>
+<text class="t" x="514" y="562">token</text>
+<rect class="card" x="40" y="527" width="368" height="178" rx="8"/>
+<rect class="accY" x="40" y="527" width="4" height="178" rx="2"/>
+<circle class="accY" cx="62" cy="551" r="10"/>
+<text class="num" x="62" y="555" text-anchor="middle">6</text>
+<text class="ph" x="82" y="556">Make it yours</text>
+<text class="t" x="82" y="573">Label a few examples and fine-tune the</text>
+<text class="t" x="82" y="595">answer tokens when the base model is</text>
+<text class="t" x="82" y="617">not good enough</text>
+<text class="c" x="82" y="641">python RFDT/prepare.py · torchrun</text>
+<text class="c" x="82" y="660">RFDT/train.py</text>
+<text class="comp" x="82" y="683">component: RFDT</text>
+<rect class="cardT" x="472" y="616" width="368" height="137" rx="8"/>
+<rect class="accT" x="472" y="616" width="4" height="137" rx="2"/>
+<circle class="accT" cx="494" cy="640" r="10"/>
+<text class="num" x="494" y="644" text-anchor="middle">7</text>
+<text class="ph" x="514" y="645">Make it yours</text>
+<text class="t" x="514" y="662">Merges the adapter and serves it back</text>
+<text class="t" x="514" y="684">through the same endpoint</text>
+<text class="c" x="514" y="708">python RFDT/export.py</text>
+<text class="comp" x="514" y="731">component: RFDT</text>
+<rect class="val" x="28" y="785" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="809">VALUE</text>
+<text class="valT" x="48" y="833">You get typed per-question answers with a confidence out of a model you already run — no JSON</text>
+<text class="valT" x="48" y="855">to parse, no classifier head to train</text>
+</svg>

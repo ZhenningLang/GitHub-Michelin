@@ -1054,6 +1054,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Kev** | 当你想要一个自托管、可微调的模型，对一段文本回答带类型的问题（是/否、多选、评分）并给出可用的校准概率时用它——不是托管判定 API，也不是从零训一个分类器。 | Apache-2.0 | C（4/6） | [中](categories/decision-models/kev.zh.md) · [EN](categories/decision-models/kev.md) |
+| **Simple Jev** | 当你已经在服务一个开源聊天模型、想要 Jev 那套带类型判定接口时用它——一段共享上下文加一组带类型问题进去，概率分布出来，不用解析生成的 JSON；代价是继承底座的判断力与未校准的置信度。 | Apache-2.0 | C（4/6） | [中](categories/decision-models/simple-jev.zh.md) · [EN](categories/decision-models/simple-jev.md) |
 
 ### optimization-solvers
 
