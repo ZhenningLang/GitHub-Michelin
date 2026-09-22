@@ -1060,3 +1060,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Rebalancer** | 当任务是「按这些策略在分片／主机量级重新安置这些对象」——容量、均衡、故障域打散、尽量少搬——而你宁愿声明具名 spec 加一个调好的局部搜索，也不想手写线性规划时用它。 | Apache-2.0 | B（5/6） | [中](categories/optimization-solvers/rebalancer.zh.md) · [EN](categories/optimization-solvers/rebalancer.md) |
+
+### cad
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/cad/freecad.zh.md) · [EN](categories/cad/freecad.md) |

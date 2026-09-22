@@ -77,6 +77,7 @@
 | **typesetting** | Compile a plain-text markup source into a finished typeset document — print PDF, web pages, slides, books or docs. | [→](categories/typesetting/INDEX.md) |
 | **decision-models** | Small self-hosted models that turn one text into typed, calibrated decisions — yes/no, pick-one, rate-on-a-scale. | [→](categories/decision-models/INDEX.md) |
 | **optimization-solvers** | Solvers and modelling DSLs for assignment, LP/MIP and constraint optimization — declare the model, let the solver search. | [→](categories/optimization-solvers/INDEX.md) |
+| **cad** | Computer-aided design you run yourself — parametric 3D solid modeling, 2D drafting, and the geometry kernels behind them. | [→](categories/cad/INDEX.md) |
 
 
 

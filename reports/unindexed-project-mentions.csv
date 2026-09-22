@@ -91,6 +91,7 @@ AsyncSSH,categories/networking/paramiko.md,,no
 AsyncSSH (forwarding API),categories/networking/sshtunnel.md,,no
 Austin,categories/python-tooling/pyrasite.md,,no
 Authlib,categories/auth/authomatic.md,,no
+Autodesk Fusion · Onshape · SolidWorks,categories/cad/freecad.md,,no
 AutoHotkey,categories/desktop-automation/pyautogui.md,,no
 AUTOMATIC1111 WebUI (img2img / sketch tab),categories/ai-design-generation/sdpaint.md,,no
 AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
@@ -108,6 +109,7 @@ Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/
 Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/text2vec.md,,no
 Biome,categories/ai-code-review/react-doctor.md,,no
+Blender,categories/cad/freecad.md,,no
 blessed / blessings,categories/terminal-ui/colorama.md,,no
 blessed / curses (stdlib),categories/terminal-ui/asciimatics.md,,no
 BLIP / BLIP-2,categories/ml-research/clip.md,,no
@@ -133,6 +135,7 @@ Built-in file reading / grep retrieval,categories/agent-skills/context-engineeri
 Butteraugli,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 Caddy (automatic HTTPS),categories/dev-utilities/ops-infra/certbot.md,,no
 Caddy + plugins (Go),categories/nginx-modules/lua-nginx-module.md,,no
+CadQuery / build123d,categories/cad/freecad.md,,no
 Canal (Alibaba),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.md,,no
 CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
@@ -301,6 +304,7 @@ FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
+Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
 Gamma / Tome,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
@@ -436,6 +440,7 @@ lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta (MemGPT) / Zep / Cognee,categories/agent-memory/INDEX.md,,no
 Letta Code,categories/agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/ffmpeg.md,,no
+LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice headless / Aspose / Apache POI,categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
@@ -573,6 +578,8 @@ OpenPDFSign,categories/pdf-tools/sapp.md,,no
 openpyxl,categories/office-automation/INDEX.md,,no
 OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
 OpenRouter,categories/api-gateway/claude-code-router.md,,no
+OpenSCAD,categories/cad/freecad.md,,no
+OpenSCAD · CadQuery · LibreCAD · Blender,categories/cad/INDEX.md,,no
 OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md,,no
 OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
 OpenTimelineIO,categories/media-processing/video-audio/mlt.md,,no
