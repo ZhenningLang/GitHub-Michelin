@@ -100,7 +100,7 @@ health:
 | [OCRmyPDF](../pdf-tools/ocrmypdf.zh.md) | ✅ | 目标是生成可搜索的多页扫描 PDF 时选 OCRmyPDF；OCR 文本要立即进入 Laravel DTO、template、persistence 和业务字段时选 Laravel OCR。 | OCRmyPDF 是 PDF 语义更强的文档处理工具；Laravel OCR 是 PDF 处理更窄的应用 library。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | 需要 layout、table、reading order 和结构化 Markdown/JSON 时选 Docling；需要围绕 OCR provider 和规则型业务抽取的 Laravel-native wrapper 时选 Laravel OCR。 | Docling 的 Python/模型栈更重，但文档理解更深；Laravel OCR 在 PHP 内更容易用，但结构理解较浅。 |
 | [Unstructured](../document-parsing/unstructured.zh.md) | ✅ | 多格式生产 ingestion、partition 和下游 connector 选 Unstructured；invoice/receipt 工作流已经围绕 Laravel model 与 migration 时选 Laravel OCR。 | Unstructured 是更大的 ETL 平台；Laravel OCR 更小，但抽取逻辑更依赖 template 和正则。 |
-| PaddleOCR | 未收录 | 现代 detection-plus-recognition、中日韩重输入、scene text 或 layout/table model 选 PaddleOCR；framework-native PHP integration 比 OCR 深度更重要时选 Laravel OCR。 | PaddleOCR 带 ML runtime 和模型运维；Laravel OCR 可以使用本地 Tesseract 或托管 API，但对视觉模型控制更少。 |
+| [PaddleOCR](paddleocr.zh.md) | ✅ | 现代 detection-plus-recognition、中日韩重输入、scene text 或 layout/table model 选 PaddleOCR；framework-native PHP integration 比 OCR 深度更重要时选 Laravel OCR。 | PaddleOCR 带 ML runtime 和模型运维；Laravel OCR 可以使用本地 Tesseract 或托管 API，但对视觉模型控制更少。 |
 
 ## 技术栈
 

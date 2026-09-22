@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "EasyOCR does", "zh": "EasyOCR 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install EasyOCR and select the languages to recognize", "zh": "安装 EasyOCR，选择要识别的语言", "code": "pip install easyocr", "component": {"en": "Python environment", "zh": "Python 环境"}},
+    {"lane": "you", "en": "Create one Reader for those languages", "zh": "为这些语言创建一个 Reader", "code": "reader = easyocr.Reader(['ch_sim','en'])", "component": {"en": "Reader", "zh": "Reader"}},
+    {"lane": "them", "en": "Selects and downloads the matching model weights", "zh": "选择并下载对应的模型权重", "component": {"en": "model loader", "zh": "模型加载器"}},
+    {"lane": "you", "en": "Pass an image to the loaded reader", "zh": "把图像交给已加载的 reader", "code": "result = reader.readtext('chinese.jpg')", "component": {"en": "application code", "zh": "应用代码"}},
+    {"lane": "them", "en": "Detects text, recognizes each region, and returns boxes, text, and confidence", "zh": "检测文字，识别各区域，返回边界框、文字和置信度", "component": {"en": "detector + recognizer", "zh": "检测器加识别器"}}
+  ],
+  "value": {"en": "One Python call turns an image into localized text results across the selected scripts", "zh": "一次 Python 调用把图像变成所选 script 的定位文字结果"},
+  "sources": [
+    "README.md: Installation, Usage, and Acknowledgement and References",
+    "easyocr/easyocr.py: Reader.__init__ and Reader.readtext",
+    "requirements.txt and setup.py on the master branch"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "PlantUML does", "zh": "PlantUML 做的"},
+  "steps": [
+    {"lane": "you", "en": "Write the diagram in PlantUML's text DSL", "zh": "用 PlantUML 文本 DSL 编写图表", "code": "@startuml · @enduml", "component": {"en": "diagram source", "zh": "图表源码"}},
+    {"lane": "you", "en": "Run the JAR against the source file", "zh": "用 JAR 处理源码文件", "code": "java -jar plantuml.jar sequenceDiagram.txt", "component": {"en": "PlantUML CLI", "zh": "PlantUML CLI"}},
+    {"lane": "them", "en": "Parses the DSL and selects the diagram renderer", "zh": "解析 DSL，并选择对应图表 renderer", "component": {"en": "parser", "zh": "parser"}},
+    {"lane": "them", "en": "Lays out the elements and renders the diagram", "zh": "布局元素并渲染图表", "component": {"en": "layout + renderer", "zh": "布局与 renderer"}},
+    {"lane": "them", "en": "Writes the generated image beside the source", "zh": "把生成的图像写到源码旁", "component": {"en": "output writer", "zh": "output writer"}}
+  ],
+  "value": {"en": "Version-controlled diagram text becomes a repeatable image without manual redrawing", "zh": "版本控制中的图表文本可重复生成图像，无需手工重画"},
+  "sources": [
+    "plantuml/plantuml README.md: About, Supported Diagram Types, Getting Started, Building from Source",
+    "https://plantuml.com/starting: Command Line Operations",
+    "plantuml/plantuml src/main/java/net/sourceforge/plantuml/Run.java and picoweb package"
+  ]
+}
