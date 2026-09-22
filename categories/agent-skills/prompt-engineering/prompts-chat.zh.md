@@ -91,7 +91,7 @@ health:
 |---|---|---|---|
 | [prompt-master](prompt-master.zh.md) | ✅ | 新任务或非聊天类工具选 prompt-master 的生成流水线；常见需求且库里已有投票验证过的提示词时，从 prompts.chat 复制更快。 | 生成能贴合你的具体上下文，但产物是无人复核的一次性输出；库给的是验证过的文本，但不做适配、以聊天 LLM 为中心。 |
 | [Prompt Engineering Guide](prompt-engineering-guide.zh.md) | ✅ | 要沉淀能力选 Guide；「现在就给我一条能用的提示词」选 prompts.chat。 | Guide 产出的是需要你自己应用的知识；prompts.chat 产出工件但不解释为什么有效。 |
-| [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](../de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | 中文文风与去 AI 味的工作选 De-AI 套件；prompts.chat 的语料几乎全是英文、以人格扮演为主。 | De-AI 是单一写作问题的利基 skill；prompts.chat 是广而浅的语料库。 |
+| [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](../ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | 中文文风与去 AI 味的工作选 De-AI 套件；prompts.chat 的语料几乎全是英文、以人格扮演为主。 | De-AI 是单一写作问题的利基 skill；prompts.chat 是广而浅的语料库。 |
 | 厂商提示词画廊（OpenAI/Anthropic 官方示例库） | 未收录 | 要单一平台上厂商调优的示例，用该厂商画廊；要跨模型、社区策展的广度和自托管能力，选 prompts.chat。 | 厂商画廊闭源、绑定单一平台；prompts.chat 开放（内容 CC0）但无厂商背书验证。 |
 
 ## 技术栈

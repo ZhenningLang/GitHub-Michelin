@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "no-ai-slop does",
+    "zh": "no-ai-slop 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill globally into your harness",
+      "zh": "把 skill 全局装进你的 harness",
+      "code": "npx skills add petergyang/no-ai-slop --skill no-ai-slop --global --yes"
+    },
+    {
+      "lane": "you",
+      "en": "Paste your draft with the command",
+      "zh": "带上命令把草稿贴进去",
+      "code": "/no-ai-slop (your writing)"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the SKILL.md rule set and reads the full draft before touching anything",
+      "zh": "加载 SKILL.md 规则集，动手前先通读全文"
+    },
+    {
+      "lane": "them",
+      "en": "Inventories your voice traits, then makes minimum effective edits against the pattern lists",
+      "zh": "盘点你的声音特质，再按模式清单做最小有效修改"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the eval.md pass/fail checks on its own edit and fixes failures",
+      "zh": "对自己的改稿跑 eval.md 的 pass/fail 检查，修掉不合格项"
+    },
+    {
+      "lane": "you",
+      "en": "Read the returned draft plus the What changed list; keep it or push back on specific edits",
+      "zh": "读返回的改后稿和 What changed 清单；收下，或对具体改动提出异议"
+    }
+  ],
+  "value": {
+    "en": "The de-slopped draft still sounds like you, and every change is listed so you accept or reject each one instead of hand-reverting an over-edit",
+    "zh": "去掉机器腔的稿子听起来仍像你本人，且每处改动都列了清单——逐条接受或拒绝，不用再手动撤销过度编辑"
+  },
+  "sources": [
+    "https://github.com/petergyang/no-ai-slop README — Install (npx skills add petergyang/no-ai-slop --skill no-ai-slop --global --yes) and How to use (/no-ai-slop (your writing); /no-ai-slop is this slop? (your writing))",
+    "skills/no-ai-slop/SKILL.md — Two jobs (Edit default / Detect), Workflow steps 1-6 (read full draft; identify core point and voice traits; check edited draft against eval.md; output edited draft + What changed)",
+    "skills/no-ai-slop/eval.md — pass/fail checklist run after the rewrite (editing principles, words to cut, patterns to cut, final read)"
+  ]
+}

@@ -88,7 +88,7 @@ health:
 |---|---|---|---|
 | [prompts.chat](prompts-chat.zh.md) | ✅ | 常见、已被解决的需求（人格、标准格式）直接从 prompts.chat 复制——社区投票是 prompt-master 没有的质量信号；任务新颖或目标工具是非散文方言（Midjourney/SD/ComfyUI）时选 prompt-master。 | prompts.chat 给的是验证过的文本但完全不针对你的具体情况；prompt-master 按请求定制，但生成的提示词是否真的有效没有任何环节复核。 |
 | [Prompt Engineering Guide](prompt-engineering-guide.zh.md) | ✅ | 要沉淀团队自己的提示词能力，读 Guide；只想要现成提示词、不关心怎么造出来的，才选 prompt-master。 | Guide 花的是阅读时间、产出是知识不是工件；prompt-master 花一次 skill 调用、产出工件但不留知识。 |
-| [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](../de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | 中文写作/去 AI 味的提示词工作选 De-AI 套件；跨工具、跨模态（代码、图像、视频、语音、工作流工具）的生成选 prompt-master，中英文皆可。 | De-AI 深耕单一利基（中文文风）；prompt-master 横跨 30+ 工具但每个都浅——各只有几段路由建议。 |
+| [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](../ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | 中文写作/去 AI 味的提示词工作选 De-AI 套件；跨工具、跨模态（代码、图像、视频、语音、工作流工具）的生成选 prompt-master，中英文皆可。 | De-AI 深耕单一利基（中文文风）；prompt-master 横跨 30+ 工具但每个都浅——各只有几段路由建议。 |
 | Anthropic Console prompt improver | 未收录 | 想在厂商 UI 里零安装地改进一条现有提示词，用 Console improver；需要多工具路由、或在 Claude Code/skills 工作流里跑，选 prompt-master。 | 闭源 SaaS、单一厂商、不可脚本化；prompt-master 是 MIT、本地、工具无关，但需要 Claude skill 运行时。 |
 
 ## 健康度与可持续性

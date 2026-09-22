@@ -9,7 +9,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-force`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-ignorance`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
-`blader/humanizer` (upstream),categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+`blader/humanizer` (upstream),categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 `cake` / SQM (OpenWrt),categories/networking/wondershaper.md,,no
 `diffusers` (Hugging Face),categories/ml-research/pytorch-gan.md,,no
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
@@ -132,7 +132,7 @@ Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-to
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/work-state/context-mode.md,,no
-Built-in agent skill ecosystems,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
+Built-in agent skill ecosystems,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
 Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Butteraugli,categories/media-processing/quality-metrics/ssimulacra2.md,,no
@@ -202,14 +202,14 @@ CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
 Cursor / Windsurf,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
-Custom creator toolkit,categories/agent-skills/writing/content-production/huashu-skills.md,,no
-Custom DataForSEO scripts,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
+Custom creator toolkit,categories/agent-skills/ai-writing/content-production/huashu-skills.md,,no
+Custom DataForSEO scripts,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,no
-Custom editorial checklist,categories/agent-skills/de-ai-writing/stop-slop.md,,no
-Custom editorial workflow,categories/agent-skills/writing/content-production/writing-agent.md,,no
+Custom editorial checklist,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md,,no
+Custom editorial workflow,categories/agent-skills/ai-writing/content-production/writing-agent.md,,no
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 Custom implementation,categories/document-parsing/any2html.md,,no
-Custom marketing playbook,categories/agent-skills/writing/marketing-seo/marketingskills.md,,no
+Custom marketing playbook,categories/agent-skills/ai-writing/marketing-seo/marketingskills.md,,no
 Custom middleware,categories/agent-governance/agent-governance-toolkit.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
@@ -217,7 +217,7 @@ Custom shell wrappers,categories/agent-frameworks/coding-agents/orchestration-an
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
 Custom terse-response rule,categories/agent-skills/engineering/caveman.md,,no
 Custom unpack scripts,categories/im-automation/wechat/wxappunpacker.md,,no
-Custom voice guide,categories/agent-skills/context-engineering/soul-md.md,,no
+Custom voice guide,categories/agent-skills/ai-writing/de-ai-writing/INDEX.md,,no
 Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
@@ -332,7 +332,7 @@ gomacro (REPL),categories/python-tooling/gophernotes.md,,no
 Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
 Google Photos,categories/document-management/immich.md,,no
 Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
-Google Search Console alone,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
+Google Search Console alone,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
@@ -359,11 +359,11 @@ Hand-rolled context/memory skills in your own repo,categories/agent-skills/conte
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
 Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.md,,no
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
-Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
 Hand-written MCP server,categories/agent-tooling/harness-extensions/cli-anything.md,,no
 Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
-Hand-written project skills,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
+Hand-written project skills,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Hasura,categories/databases/database-engines/supabase.md,,no
@@ -468,7 +468,7 @@ Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt
 Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
 Manus / hosted autonomous-agent products,categories/agent-tooling/work-state/planning-with-files.md,,no
-Manuskript,categories/agent-skills/writing/fiction/webnovel-writer.md,,no
+Manuskript,categories/agent-skills/ai-writing/fiction/webnovel-writer.md,,no
 MapServer,categories/geospatial/qgis.md,,no
 Marigold (SD-based),categories/ml-research/depth-anything-v2.md,,no
 Markdown Here Revival (fork/successor),categories/markdown-tools/markdown-here.md,,no
@@ -544,7 +544,7 @@ NotebookLM / Google OKF,categories/knowledge-base/openkb.md,,no
 NotebookLM / Obsidian,categories/knowledge-base/INDEX.md,,no
 notebooklm-mcp (same author),categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Notion,categories/knowledge-base/logseq.md,,no
-novelWriter,categories/agent-skills/writing/fiction/chinese-novelist-skill.md,,no
+novelWriter,categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.md,,no
 npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
@@ -595,7 +595,7 @@ pandas-datareader,categories/web-scraping/crawling-tools/gopup.md,,no
 pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
 Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
-Paste-your-own prompt,categories/agent-skills/de-ai-writing/ai-flavor-remover.md,,no
+Paste-your-own prompt,categories/agent-skills/ai-writing/de-ai-writing/ai-flavor-remover.md,,no
 pdm,categories/python-tooling/uv.md,,no
 "Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
@@ -631,7 +631,7 @@ Portkey Gateway,categories/api-gateway/kong.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
 Premiere Pro,categories/media-processing/video-audio/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
-Private voice guide,categories/agent-skills/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
+Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
 Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
 Prompt-only safety rules,categories/agent-governance/agent-governance-toolkit.md,,no
@@ -725,7 +725,7 @@ Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/d
 Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
 Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
 Semgrep,categories/agent-governance/skillspector.md,,no
-Semrush / Ahrefs,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
+Semrush / Ahrefs,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 sentence-transformers (SBERT),categories/rag-retrieval/text2vec.md,,no
 Serena (MCP),categories/rag-retrieval/code-review-graph.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
@@ -736,7 +736,7 @@ Sidekiq / BullMQ,categories/task-queue/celery.md,,no
 SigLIP,categories/ml-research/clip.md,,no
 SikuliX,categories/desktop-automation/pyautogui.md,,no
 sing-box,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
-Single de-AI / translation prompt,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
+Single de-AI / translation prompt,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
@@ -822,7 +822,7 @@ WeCom / Official WeChat APIs,categories/im-automation/openilink-hub.md,,no
 WeCom / Official WeChat Work API,categories/im-automation/wechat/itchat.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
-"Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
+"Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
