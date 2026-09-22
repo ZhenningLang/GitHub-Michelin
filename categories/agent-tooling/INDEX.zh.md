@@ -1,43 +1,27 @@
 # agent-tooling
 
-> 分类节点。面向 AI 编码 agent 的基础设施——任务/工作追踪、持久记忆、agent 状态。
+> 分类节点。面向 AI 编码 agent 的基础设施——任务/工作追踪、持久记忆、agent 状态，以及 agent 把控制权交还给你的人审/批准界面。
+> 按**你在循环的哪一段接线**拆成子分类：运行时保住工作状态、回看已经发生过的事、人评审与干预的那块屏、给 harness 外挂新能力。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
-## 本分类项目
+## 子分类
 
-| 项目 | 何时用 | 健康度 | 页面 |
-| --- | --- | --- | --- |
-| **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | B（6/6） | [→](beads.zh.md) |
-| **CCPM** | 当一个功能大到单次会话装不下、且你想要 PRD 转 GitHub Issues 的规格加上 git worktree 并行 agent 时使用。 | B（4/6） | [→](ccpm.zh.md) |
-| **Entire** | 想把 AI agent 会话以 Git checkpoint 形式与 commit 并列捕获、可搜索可回滚时用它。 | B（5/6） | [→](entire-cli.zh.md) |
-| **Ralph for Claude Code** | 想让 Claude Code 无人值守地啃完 fix_plan.md 清单、又要速率限制/熔断器/双条件退出闸门兜底时用它。 | B（6/6） | [→](ralph-claude-code.zh.md) |
-| **Context Mode** | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 | D（6/6） | [→](context-mode.zh.md) |
-| **Planning with Files** | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 | B（4/6） | [→](planning-with-files.zh.md) |
-| **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | D（6/6） | [→](vercel-skills.zh.md) |
-| **AgentsView** | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 | B（6/6） | [→](agentsview.zh.md) |
-| **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI/review/冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | B（5/6） | [→](agent-orchestrator.zh.md) |
-| **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | B（6/6） | [→](cli-anything.zh.md) |
-| **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | B（5/6） | [→](hermes-workspace.zh.md) |
-| **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | C（5/6） | [→](claudecodeui.zh.md) |
+| 子分类 | 何时进入 | 路由 |
+| --- | --- | --- |
+| **Work State** | agent 总在运行中途丢掉计划、待办或上下文，你需要那份状态落在磁盘上、可被读回时。 | [→](work-state/INDEX.zh.md) |
+| **Session History** | 你想检索、回放或结算已经跑过的会话，而且要跨多个 agent 时。 | [→](session-history/INDEX.zh.md) |
+| **Supervision Surfaces** | 必须由人来看 agent 的活——评审计划或 diff、批准、同时盯多个 agent——而且不只在终端里看时。 | [→](supervision-surfaces/INDEX.zh.md) |
+| **Harness Extensions** | 你在扩展 agent 能触达、能安装的东西——技能包安装器、为只有 GUI 的软件造命令面时。 | [→](harness-extensions/INDEX.zh.md) |
 
 ## 对比矩阵
 
-| 选项 | 是否收录 | 健康度 | 一句话取舍 |
-| --- | --- | --- | --- |
-| [beads](beads.zh.md) | ✅ | B（6/6） | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 |
-| [CCPM](ccpm.zh.md) | ✅ | B（4/6） | 当一个功能大到单次会话装不下、且你想要 PRD 转 GitHub Issues 的规格加上 git worktree 并行 agent 时使用。 |
-| [Entire](entire-cli.zh.md) | ✅ | B（5/6） | 想把 AI agent 会话以 Git checkpoint 形式与 commit 并列捕获、可搜索可回滚时用它。 |
-| [Ralph for Claude Code](ralph-claude-code.zh.md) | ✅ | B（6/6） | 想让 Claude Code 无人值守地啃完 fix_plan.md 清单、又要速率限制/熔断器/双条件退出闸门兜底时用它。 |
-| [Context Mode](context-mode.zh.md) | ✅ | D（6/6） | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 |
-| [Planning with Files](planning-with-files.zh.md) | ✅ | B（4/6） | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 |
-| [Vercel Skills](vercel-skills.zh.md) | ✅ | D（6/6） | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 |
-| [AgentsView](agentsview.zh.md) | ✅ | B（6/6） | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 |
-| [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | B（5/6） | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI/review/冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 |
-| [CLI-Anything](cli-anything.zh.md) | ✅ | B（6/6） | 生成式 CLI harness，驱动应用自身真实后端——对 GUI 软件覆盖面广，但仍在 1.0 之前且由社区维护。 |
-| [Hermes Workspace](hermes-workspace.zh.md) | ✅ | B（5/6） | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 |
-| [CloudCLI (Claude Code UI)](claudecodeui.zh.md) | ✅ | C（5/6） | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 |
-| Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | 各页对比里点到的其他 agent 任务/工作追踪后端。 |
+| 选项 | 类型 | 一句话取舍 |
+| --- | --- | --- |
+| [Work State](work-state/INDEX.zh.md) | 子分类 | beads、CCPM、Ralph、Context Mode、Planning with Files——任务、计划与上下文放在聊天窗口之外，agent 才接得上活。 |
+| [Session History](session-history/INDEX.zh.md) | 子分类 | AgentsView、Entire——捕获并检索跑过的会话；只读与回放，管不到下一步。 |
+| [Supervision Surfaces](supervision-surfaces/INDEX.zh.md) | 子分类 | Plannotator、CloudCLI、Agent Orchestrator、Hermes Workspace——人看的那块屏：批注闸门与驾驶舱，代价是多一个要在本机跑的服务。 |
+| [Harness Extensions](harness-extensions/INDEX.zh.md) | 子分类 | Vercel Skills、CLI-Anything——拓宽 agent 的触达面（技能包安装器、生成的 CLI harness），而不是管理它的活。 |
 
 ## 什么该放这里
 
-AI **编码 agent** 用来追踪工作、承载状态的基础设施——任务/issue 图、会话捕获、规划/上下文管线。不含与 LLM 无关的记忆库（见 `agent-memory`），不含 agent 运行时（见 `agent-frameworks`）。
+AI **编码 agent** 用来追踪工作、承载状态、并在需要时把控制权交还给你的基础设施——任务/issue 图、会话捕获、规划/上下文管线、评审与批准界面、harness 外挂。不含与 LLM 无关的记忆库（见 `agent-memory`），不含 agent 运行时（见 `agent-frameworks`），也不含 LLM 自动产出的代码评审（见 `ai-code-review`）。按**你接的是循环的哪一段**选子分类：工作状态（`work-state`）、事后历史（`session-history`）、人的界面（`supervision-surfaces`），还是新能力（`harness-extensions`）。

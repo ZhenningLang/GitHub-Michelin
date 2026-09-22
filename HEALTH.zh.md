@@ -15,7 +15,7 @@
 
 ## Agent Orchestrator — 总评 B
 
-[![Agent Orchestrator 健康度雷达](assets/health/agent-orchestrator.zh.svg)](categories/agent-tooling/agent-orchestrator.zh.md)
+[![Agent Orchestrator 健康度雷达](assets/health/agent-orchestrator.zh.svg)](categories/agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)
 
 ## memory-analyzer — 总评 D
 

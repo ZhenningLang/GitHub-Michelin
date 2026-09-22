@@ -18,7 +18,7 @@ The full index is backfilled. A `?` axis means the signal is unobtainable or not
 
 ## Agent Orchestrator — overall B
 
-[![Agent Orchestrator health radar](assets/health/agent-orchestrator.svg)](categories/agent-tooling/agent-orchestrator.md)
+[![Agent Orchestrator health radar](assets/health/agent-orchestrator.svg)](categories/agent-tooling/supervision-surfaces/agent-orchestrator.md)
 
 ## memory-analyzer — overall D
 

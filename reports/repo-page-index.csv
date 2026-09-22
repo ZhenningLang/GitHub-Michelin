@@ -4,7 +4,7 @@ https://github.com/666ghj/MiroFish,mirofish,social-simulation,categories/social-
 https://github.com/9001/copyparty,copyparty,document-management,categories/document-management/copyparty.md
 https://github.com/AI4Finance-Foundation/FinRL,finrl,investment-finance,categories/investment-finance/finrl.md
 https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,on-device-ml,categories/on-device-ml/stable-diffusion-webui.md
-https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,agent-tooling,categories/agent-tooling/agent-orchestrator.md
+https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,design,categories/agent-skills/design/drawio-skill.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
 https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals/openlogi.md
@@ -36,7 +36,7 @@ https://github.com/FreshRSS/FreshRSS,freshrss,reading-tools,categories/reading-t
 https://github.com/Giskard-AI/giskard-oss,giskard,llm-eval,categories/llm-eval/giskard.md
 https://github.com/GongRzhe/Office-Word-MCP-Server,office-word-mcp-server,office-automation,categories/office-automation/office-word-mcp-server.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
-https://github.com/HKUDS/CLI-Anything,cli-anything,agent-tooling,categories/agent-tooling/cli-anything.md
+https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
 https://github.com/HKUDS/DeepTutor,deeptutor,education-tutoring,categories/education-tutoring/deeptutor.md
 https://github.com/HandBrake/HandBrake,handbrake,video-audio,categories/media-processing/video-audio/handbrake.md
 https://github.com/HarnessRouter/harnessrouter,harnessrouter,api-gateway,categories/api-gateway/harnessrouter.md
@@ -86,7 +86,7 @@ https://github.com/OpenBMB/MiniCPM-V,minicpm-v,on-device-ml,categories/on-device
 https://github.com/OpenCut-app/OpenCut,opencut,video-editing,categories/media-processing/video-editing/opencut.md
 https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
-https://github.com/OthmanAdi/planning-with-files,planning-with-files,agent-tooling,categories/agent-tooling/planning-with-files.md
+https://github.com/OthmanAdi/planning-with-files,planning-with-files,work-state,categories/agent-tooling/work-state/planning-with-files.md
 https://github.com/Owl-Listener/designer-skills,designer-skills,design,categories/agent-skills/design/designer-skills.md
 https://github.com/PaddlePaddle/PaddleOCR,paddleocr,ocr,categories/ocr/paddleocr.md
 https://github.com/Panniantong/Agent-Reach,agent-reach,deep-research,categories/deep-research/agent-reach.md
@@ -171,12 +171,13 @@ https://github.com/assafelovic/gpt-researcher,gpt-researcher,deep-research,categ
 https://github.com/astral-sh/uv,uv,python-tooling,categories/python-tooling/uv.md
 https://github.com/asweigart/pyautogui,pyautogui,desktop-automation,categories/desktop-automation/pyautogui.md
 https://github.com/authomatic/authomatic,authomatic,auth,categories/auth/authomatic.md
-https://github.com/automazeio/ccpm,ccpm,agent-tooling,categories/agent-tooling/ccpm.md
+https://github.com/automazeio/ccpm,ccpm,work-state,categories/agent-tooling/work-state/ccpm.md
 https://github.com/avwo/whistle,whistle,debugging-proxy,categories/debugging-proxy/whistle.md
 https://github.com/awslabs/agent-plugins,aws-agent-plugins,vendor-collections,categories/agent-skills/vendor-collections/aws-agent-plugins.md
 https://github.com/axiros/terminal_markdown_viewer,terminal-markdown-viewer,terminal-ui,categories/terminal-ui/terminal-markdown-viewer.md
 https://github.com/axolotl-ai-cloud/axolotl,axolotl,llm-training,categories/llm-training/axolotl.md
 https://github.com/ayghri/i-have-adhd,i-have-adhd,engineering,categories/agent-skills/engineering/i-have-adhd.md
+https://github.com/backnotprop/plannotator,plannotator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/plannotator.md
 https://github.com/baidu/Senta,senta,ml-research,categories/ml-research/senta.md
 https://github.com/bdeansrowe/ltbl-experiment,ltbl-experiment,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md
 https://github.com/bentoml/BentoML,bentoml,serving-engines,categories/llm-inference/serving-engines/bentoml.md
@@ -245,7 +246,7 @@ https://github.com/elastic/elasticsearch-dsl-py,elasticsearch-dsl-py,database-cl
 https://github.com/elrumordelaluz/reactour,reactour,product-tours,categories/web-ui/product-tours/reactour.md
 https://github.com/emcie-co/parlant,parlant,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md
 https://github.com/emilkowalski/skills,emilkowalski-skills,design,categories/agent-skills/design/emilkowalski-skills.md
-https://github.com/entireio/cli,entire-cli,agent-tooling,categories/agent-tooling/entire-cli.md
+https://github.com/entireio/cli,entire-cli,session-history,categories/agent-tooling/session-history/entire-cli.md
 https://github.com/envoyproxy/envoy,envoy,api-gateway,categories/api-gateway/envoy.md
 https://github.com/eriklindernoren/PyTorch-GAN,pytorch-gan,ml-research,categories/ml-research/pytorch-gan.md
 https://github.com/every-app/open-seo,open-seo,marketing-seo,categories/agent-skills/writing/marketing-seo/open-seo.md
@@ -265,11 +266,11 @@ https://github.com/featherless-ai/simple-jev,simple-jev,decision-models,categori
 https://github.com/firecracker-microvm/firecracker,firecracker,sandboxing,categories/sandboxing/firecracker.md
 https://github.com/firecrawl/firecrawl,firecrawl,crawling-tools,categories/web-scraping/crawling-tools/firecrawl.md
 https://github.com/fonttools/fonttools,fonttools,data-tools,categories/dev-utilities/data-tools/fonttools.md
-https://github.com/frankbria/ralph-claude-code,ralph-claude-code,agent-tooling,categories/agent-tooling/ralph-claude-code.md
+https://github.com/frankbria/ralph-claude-code,ralph-claude-code,work-state,categories/agent-tooling/work-state/ralph-claude-code.md
 https://github.com/freestylefly/canghe-skills,canghe-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md
 https://github.com/gaia-pipeline/gaia,gaia,workflow-orchestration,categories/workflow-orchestration/gaia.md
 https://github.com/garrytan/gstack,gstack,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/gstack.md
-https://github.com/gastownhall/beads,beads,agent-tooling,categories/agent-tooling/beads.md
+https://github.com/gastownhall/beads,beads,work-state,categories/agent-tooling/work-state/beads.md
 https://github.com/gchq/CyberChef,cyberchef,data-tools,categories/dev-utilities/data-tools/cyberchef.md
 https://github.com/getzep/graphiti,graphiti,agent-memory,categories/agent-memory/graphiti.md
 https://github.com/getzep/zep,zep,agent-memory,categories/agent-memory/zep.md
@@ -345,7 +346,7 @@ https://github.com/kangarooking/cangjie-skill,cangjie-skill,context-engineering,
 https://github.com/karpathy/autoresearch,autoresearch,ml-research,categories/ml-research/autoresearch.md
 https://github.com/karpathy/nanoGPT,nanogpt,study-and-experiments,categories/llm-training/study-and-experiments/nanogpt.md
 https://github.com/kata-containers/kata-containers,kata-containers,sandboxing,categories/sandboxing/kata-containers.md
-https://github.com/kenn-io/agentsview,agentsview,agent-tooling,categories/agent-tooling/agentsview.md
+https://github.com/kenn-io/agentsview,agentsview,session-history,categories/agent-tooling/session-history/agentsview.md
 https://github.com/keycloak/keycloak,keycloak,auth,categories/auth/keycloak.md
 https://github.com/khoj-ai/khoj,khoj,knowledge-base,categories/knowledge-base/khoj.md
 https://github.com/kkroening/ffmpeg-python,ffmpeg-python,video-audio,categories/media-processing/video-audio/ffmpeg-python.md
@@ -413,7 +414,7 @@ https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories
 https://github.com/milvus-io/milvus,milvus,rag-retrieval,categories/rag-retrieval/milvus.md
 https://github.com/minio/minio,minio,object-storage,categories/object-storage/minio.md
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md
-https://github.com/mksglu/context-mode,context-mode,agent-tooling,categories/agent-tooling/context-mode.md
+https://github.com/mksglu/context-mode,context-mode,work-state,categories/agent-tooling/work-state/context-mode.md
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
 https://github.com/mlc-ai/xgrammar,xgrammar,structured-generation,categories/llm-inference/structured-generation/xgrammar.md
 https://github.com/mltframework/mlt,mlt,video-audio,categories/media-processing/video-audio/mlt.md
@@ -459,7 +460,7 @@ https://github.com/openinterpreter/open-interpreter,open-interpreter,terminal-ag
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
-https://github.com/outsourc-e/hermes-workspace,hermes-workspace,agent-tooling,categories/agent-tooling/hermes-workspace.md
+https://github.com/outsourc-e/hermes-workspace,hermes-workspace,supervision-surfaces,categories/agent-tooling/supervision-surfaces/hermes-workspace.md
 https://github.com/oven-sh/bun,bun,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/bun.md
 https://github.com/pahaz/sshtunnel,sshtunnel,networking,categories/networking/sshtunnel.md
 https://github.com/paperless-ngx/paperless-ngx,paperless-ngx,document-management,categories/document-management/paperless-ngx.md
@@ -514,7 +515,7 @@ https://github.com/sherlock-project/sherlock,sherlock,osint,categories/osint/she
 https://github.com/shibing624/text2vec,text2vec,rag-retrieval,categories/rag-retrieval/text2vec.md
 https://github.com/shipshapecode/shepherd,shepherd-js,product-tours,categories/web-ui/product-tours/shepherd-js.md
 https://github.com/shuding/nextra,nextra,frameworks,categories/web-ui/frameworks/nextra.md
-https://github.com/siteboon/claudecodeui,claudecodeui,agent-tooling,categories/agent-tooling/claudecodeui.md
+https://github.com/siteboon/claudecodeui,claudecodeui,supervision-surfaces,categories/agent-tooling/supervision-surfaces/claudecodeui.md
 https://github.com/siyuan-note/siyuan,siyuan,knowledge-base,categories/knowledge-base/siyuan.md
 https://github.com/slavingia/skills,slavingia-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md
 https://github.com/slimtoolkit/slim,slim,ops-infra,categories/dev-utilities/ops-infra/slim.md
@@ -557,7 +558,7 @@ https://github.com/valkey-io/valkey,valkey,database-engines,categories/databases
 https://github.com/vercel-labs/agent-browser,agent-browser,agent-browser-tools,categories/web-automation/agent-browser-tools/agent-browser.md
 https://github.com/vercel-labs/agent-skills,vercel-agent-skills,engineering,categories/agent-skills/engineering/vercel-agent-skills.md
 https://github.com/vercel-labs/openreview,openreview,ai-code-review,categories/ai-code-review/openreview.md
-https://github.com/vercel-labs/skills,vercel-skills,agent-tooling,categories/agent-tooling/vercel-skills.md
+https://github.com/vercel-labs/skills,vercel-skills,harness-extensions,categories/agent-tooling/harness-extensions/vercel-skills.md
 https://github.com/vercel/eve,eve,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/eve.md
 https://github.com/vercel/next.js,nextjs,frameworks,categories/web-ui/frameworks/nextjs.md
 https://github.com/verl-project/verl,verl,llm-training,categories/llm-training/verl.md

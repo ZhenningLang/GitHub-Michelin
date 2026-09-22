@@ -44,18 +44,19 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | MIT | B（6/6） | [中](categories/agent-tooling/beads.zh.md) · [EN](categories/agent-tooling/beads.md) |
-| **CCPM** | 当一个功能大到单次会话装不下、且你想要 PRD 转 GitHub Issues 的规格加上 git worktree 并行 agent 时使用。 | MIT | B（4/6） | [中](categories/agent-tooling/ccpm.zh.md) · [EN](categories/agent-tooling/ccpm.md) |
-| **Entire** | 想把 AI agent 会话以 Git checkpoint 形式与 commit 并列捕获、可搜索可回滚时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/entire-cli.zh.md) · [EN](categories/agent-tooling/entire-cli.md) |
-| **Ralph for Claude Code** | 想让 Claude Code 无人值守地啃完 fix_plan.md 清单、又要速率限制/熔断器/双条件退出闸门兜底时用它。 | MIT | B（6/6） | [中](categories/agent-tooling/ralph-claude-code.zh.md) · [EN](categories/agent-tooling/ralph-claude-code.md) |
-| **Context Mode** | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 | Elastic-2.0 | D（6/6） | [中](categories/agent-tooling/context-mode.zh.md) · [EN](categories/agent-tooling/context-mode.md) |
-| **Planning with Files** | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 | MIT | B（4/6） | [中](categories/agent-tooling/planning-with-files.zh.md) · [EN](categories/agent-tooling/planning-with-files.md) |
-| **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | MIT | D（6/6） | [中](categories/agent-tooling/vercel-skills.zh.md) · [EN](categories/agent-tooling/vercel-skills.md) |
-| **AgentsView** | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 | MIT | B（6/6） | [中](categories/agent-tooling/agentsview.zh.md) · [EN](categories/agent-tooling/agentsview.md) |
-| **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI／review／冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | Apache-2.0 | B（5/6） | [中](categories/agent-tooling/agent-orchestrator.zh.md) · [EN](categories/agent-tooling/agent-orchestrator.md) |
-| **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/cli-anything.zh.md) · [EN](categories/agent-tooling/cli-anything.md) |
-| **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/hermes-workspace.zh.md) · [EN](categories/agent-tooling/hermes-workspace.md) |
-| **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | AGPL-3.0-or-later | C（5/6） | [中](categories/agent-tooling/claudecodeui.zh.md) · [EN](categories/agent-tooling/claudecodeui.md) |
+| **beads** | 当 AI agent 跨会话丢失任务状态、你想在仓库里要一张可版本化、感知依赖的任务图时用它。 | MIT | B（6/6） | [中](categories/agent-tooling/work-state/beads.zh.md) · [EN](categories/agent-tooling/work-state/beads.md) |
+| **CCPM** | 当一个功能大到单次会话装不下、且你想要 PRD 转 GitHub Issues 的规格加上 git worktree 并行 agent 时使用。 | MIT | B（4/6） | [中](categories/agent-tooling/work-state/ccpm.zh.md) · [EN](categories/agent-tooling/work-state/ccpm.md) |
+| **Entire** | 想把 AI agent 会话以 Git checkpoint 形式与 commit 并列捕获、可搜索可回滚时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/session-history/entire-cli.zh.md) · [EN](categories/agent-tooling/session-history/entire-cli.md) |
+| **Ralph for Claude Code** | 想让 Claude Code 无人值守地啃完 fix_plan.md 清单、又要速率限制/熔断器/双条件退出闸门兜底时用它。 | MIT | B（6/6） | [中](categories/agent-tooling/work-state/ralph-claude-code.zh.md) · [EN](categories/agent-tooling/work-state/ralph-claude-code.md) |
+| **Context Mode** | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 | Elastic-2.0 | D（6/6） | [中](categories/agent-tooling/work-state/context-mode.zh.md) · [EN](categories/agent-tooling/work-state/context-mode.md) |
+| **Planning with Files** | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 | MIT | B（4/6） | [中](categories/agent-tooling/work-state/planning-with-files.zh.md) · [EN](categories/agent-tooling/work-state/planning-with-files.md) |
+| **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | MIT | D（6/6） | [中](categories/agent-tooling/harness-extensions/vercel-skills.zh.md) · [EN](categories/agent-tooling/harness-extensions/vercel-skills.md) |
+| **AgentsView** | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 | MIT | B（6/6） | [中](categories/agent-tooling/session-history/agentsview.zh.md) · [EN](categories/agent-tooling/session-history/agentsview.md) |
+| **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI／review／冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | Apache-2.0 | B（5/6） | [中](categories/agent-tooling/supervision-surfaces/agent-orchestrator.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/agent-orchestrator.md) |
+| **CLI-Anything** | 当你想让编码 agent 驱动只有 GUI 的软件、走由应用自身引擎支撑的生成式 CLI harness 时用它——但它仍在 1.0 之前，且每个 harness 由社区维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/harness-extensions/cli-anything.zh.md) · [EN](categories/agent-tooling/harness-extensions/cli-anything.md) |
+| **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/supervision-surfaces/hermes-workspace.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/hermes-workspace.md) |
+| **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | AGPL-3.0-or-later | C（5/6） | [中](categories/agent-tooling/supervision-surfaces/claudecodeui.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/claudecodeui.md) |
+| **Plannotator** | 当 agent 的产出（计划、diff、HTML 产物）必须由人批注或批准、并把批注当作 agent 的下一条指令发回去时用它——但它只有 9 个月大、pre-1.0、单人维护，且开源版的团队分享路线正被托管产品取代。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-tooling/supervision-surfaces/plannotator.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/plannotator.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
