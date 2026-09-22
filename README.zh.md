@@ -318,6 +318,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Bun** | 一款极速一体化 JavaScript/TypeScript 工具集（运行时、打包器、测试运行器、包管理器）集成在单个二进制文件中——但商用前请核实自定义许可证。 | NOASSERTION | A（5/6） | [中](categories/dev-utilities/editors-and-runtimes/bun.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/bun.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | B（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | B（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
+| **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | B（5/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
 
 ### frontend-animation
 
@@ -1061,6 +1062,10 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Rebalancer** | 当任务是「按这些策略在分片／主机量级重新安置这些对象」——容量、均衡、故障域打散、尽量少搬——而你宁愿声明具名 spec 加一个调好的局部搜索，也不想手写线性规划时用它。 | Apache-2.0 | B（5/6） | [中](categories/optimization-solvers/rebalancer.zh.md) · [EN](categories/optimization-solvers/rebalancer.md) |
+| **OR-Tools** | 问题组合性广——路径规划、排程、装箱、指派——而你想要一次安装就同时拿到 CP-SAT、LP／MIP 封装与 routing，并支持 Python／Java／.NET／C++ 时用它。 | Apache-2.0 | A（6/6） | [中](categories/optimization-solvers/or-tools.zh.md) · [EN](categories/optimization-solvers/or-tools.md) |
+| **HiGHS** | 模型已经是矩阵或 MPS／LP 文件，你想用一个无第三方依赖、MIT 许可的 LP／QP／MIP 引擎、且中间不要夹一层建模框架时用它。 | MIT | A（6/6） | [中](categories/optimization-solvers/highs.zh.md) · [EN](categories/optimization-solvers/highs.md) |
+| **Timefold Solver** | JVM 上、计划要在一长串软的、丰富的业务规则下产生——排班、路径、课表——且规则必须一直能以 Java 形式编辑时用它。 | Apache-2.0 | B（6/6） | [中](categories/optimization-solvers/timefold-solver.zh.md) · [EN](categories/optimization-solvers/timefold-solver.md) |
+| **OptaPlanner** | 只在要读懂或迁移已有 9.x 代码库时打开：仓库已归档、代码并入 Apache KIE Drools，新工作应该落在 Timefold Solver。 | Apache-2.0 | C（4/6） | [中](categories/optimization-solvers/optaplanner.zh.md) · [EN](categories/optimization-solvers/optaplanner.md) |
 
 ### cad
 

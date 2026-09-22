@@ -100,7 +100,8 @@ health:
 | Platypus | 未收录 | 需要另一个 Python 多目标 EA 库时，选 Platypus。 | 另一个 Python 多目标 EA 库；范围/社区比 pymoo 的算法加工具广度都小。[推断] |
 | Optuna / Ax（BoTorch） | 未收录 | 需要适合昂贵评估或 HPO 的贝叶斯/代理优化时，选 Optuna 或 Ax。 | 贝叶斯/代理优化，适合昂贵评估和 HPO；范式不同（样本高效，非种群式）——互补而非可直接替换。 |
 | jMetal（Java/Py） | 未收录 | 需要 Java/Python 生态里的老牌多目标元启发式框架时，选 jMetal。 | 老牌多目标元启发式框架；jMetalPy 在 Python 里镜像它——目标相当，生态和 API 风格不同。 |
-| SciPy / OR-Tools / Gurobi | 未收录 | 需要精确、凸优化或 MILP 求解器时，选 SciPy、OR-Tools 或 Gurobi。 | 精确/凸/MILP 求解器；当你的问题有结构（线性/凸/整数规划）时是对的工具，那里 EA 是错的锤子。 |
+| [OR-Tools](../optimization-solvers/or-tools.zh.md) | ✅ | 问题有结构——线性、整数或路径——且你要在同一个 Python 进程里拿到精确解时选 OR-Tools；目标确实互相冲突、你要的是一张权衡前沿而不是单一最优时选 pymoo。 | OR-Tools 给出带界的最优解，但要求问题写成模型；pymoo 接受任意评估函数、交回一组 Pareto 解，没有最优性保证，评估次数也高得多。 |
+| SciPy / Gurobi | 未收录 | 单目标 LP／凸问题用 `scipy.optimize` 就够、且你本来就依赖 SciPy 时选 SciPy；硬 MIP 需要商用性能时选 Gurobi。两者此处都不收录：SciPy 是通用科学计算库而不是最优化求解器，Gurobi 闭源且没有仓库。 | 精确／凸／MILP 求解器；问题有结构时是对的工具，那里 EA 是错的锤子。它们与 pymoo 是互补而非替代——当问题不再是黑箱多目标搜索时，你就该转向它们。 |
 
 ## 技术栈
 

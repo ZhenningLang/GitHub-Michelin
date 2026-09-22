@@ -321,6 +321,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Bun** | An incredibly fast all-in-one JavaScript/TypeScript toolkit (runtime, bundler, test runner, package manager) in a single binary — but verify the custom license before commercial use. | NOASSERTION | A (5/6) | [EN](categories/dev-utilities/editors-and-runtimes/bun.md) · [中](categories/dev-utilities/editors-and-runtimes/bun.zh.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | B (6/6) | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | B (5/6) | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
+| **Descheduler** | Use it when a Kubernetes cluster has drifted out of balance and you want a CronJob that evicts pods violating your policy so the scheduler re-places them — not a computed placement plan. | Apache-2.0 | B (5/6) | [EN](categories/dev-utilities/ops-infra/descheduler.md) · [中](categories/dev-utilities/ops-infra/descheduler.zh.md) |
 
 ### frontend-animation
 
@@ -1079,6 +1080,10 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Rebalancer** | Use it when the job is "re-place these objects under these policies" at shard/host scale — capacity, balance, failure-domain spread, minimize-movement — and you would rather declare named specs plus a tuned local search than write a linear program. | Apache-2.0 | B (5/6) | [EN](categories/optimization-solvers/rebalancer.md) · [中](categories/optimization-solvers/rebalancer.zh.md) |
+| **OR-Tools** | Use it when the problem is combinatorial and broad — routing, scheduling, packing, assignment — and you want one suite covering CP-SAT, LP/MIP wrappers and routing behind Python/Java/.NET/C++ bindings. | Apache-2.0 | A (6/6) | [EN](categories/optimization-solvers/or-tools.md) · [中](categories/optimization-solvers/or-tools.zh.md) |
+| **HiGHS** | Use it when the model already exists as a matrix or an MPS/LP file and you want a dependency-free, MIT-licensed LP/QP/MIP engine with no modelling layer in the way. | MIT | A (6/6) | [EN](categories/optimization-solvers/highs.md) · [中](categories/optimization-solvers/highs.zh.md) |
+| **Timefold Solver** | Use it when the plan is governed by long lists of soft business rules over rich domain entities on the JVM — rostering, routing, timetabling — and the rules must stay editable as Java. | Apache-2.0 | B (6/6) | [EN](categories/optimization-solvers/timefold-solver.md) · [中](categories/optimization-solvers/timefold-solver.zh.md) |
+| **OptaPlanner** | Read it only to understand or migrate an existing 9.x codebase: the repository is archived, its code moved into Apache KIE Drools, and new work belongs on Timefold Solver. | Apache-2.0 | C (4/6) | [EN](categories/optimization-solvers/optaplanner.md) · [中](categories/optimization-solvers/optaplanner.zh.md) |
 
 ### cad
 

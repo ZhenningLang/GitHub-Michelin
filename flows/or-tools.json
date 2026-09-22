@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "OR-Tools does", "zh": "OR-Tools 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the suite and pick the solver family your problem fits", "zh": "装好套件，挑一个匹配你问题的求解器族", "code": "pip install ortools"},
+    {"lane": "you", "en": "Declare the variables, the constraints and the objective in that API", "zh": "在那个 API 里声明变量、约束和目标", "code": "model = cp_model.CpModel() · model.new_int_var(…) · model.add(…)"},
+    {"lane": "them", "en": "Compiles the Python model into the proto the C++ engine consumes", "zh": "把 Python 模型编译成 C++ 引擎消费的 proto", "component": {"en": "cp_model", "zh": "cp_model"}},
+    {"lane": "you", "en": "Hand the model to the solver and ask it to solve", "zh": "把模型交给求解器，让它求解", "code": "solver = cp_model.CpSolver() · solver.solve(model)"},
+    {"lane": "them", "en": "Searches with propagation, clause learning and large-neighbourhood search until optimal or the time limit", "zh": "用传播、子句学习与大邻域搜索一直搜，直到最优或到时间上限", "component": {"en": "CP-SAT engine", "zh": "CP-SAT 引擎"}},
+    {"lane": "them", "en": "Returns the status and one value per variable, so you can read the plan back", "zh": "返回状态与每个变量的取值，让你把方案读回来", "component": {"en": "CpSolver", "zh": "CpSolver"}}
+  ],
+  "value": {"en": "You get a provably optimal or best-found solution from one install that covers CP, LP, MIP, routing and assignment — without shopping for a solver per problem", "zh": "一次安装就覆盖 CP、LP、MIP、路径与指派：你拿到可证明最优或当前最好的解，不用为每类问题各找一套求解器"},
+  "sources": [
+    "README → About OR-Tools (suite contents: \"Two constraint programming solver (CP* and CP-SAT); Two linear programming solvers (Glop and PDLP); Wrappers around commercial and other open source solvers, including mixed integer solvers; ... Algorithms for the Traveling Salesman Problem and Vehicle Routing Problem; Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment)\"; \"We wrote OR-Tools in C++, but provide wrappers in Python, C# and Java.\")",
+    "examples/python/nqueens_sat.py (`from ortools.sat.python import cp_model`; `cp_model.CpSolverSolutionCallback`; `cp_model.IntVar`)",
+    "ortools/sat/python/cp_model.py (`class CpModel`, `def new_int_var(self, lb, ub, name)`, `def add(self, ct)`, `class CpSolver`, `def solve(...)`)",
+    "examples/python/integer_programming.py (`from ortools.linear_solver import pywraplp`; `solver = pywraplp.Solver.CreateSolver(optimization_problem_type)`; `solver.IntVar(0.0, infinity, \"x1\")`; `solver.Minimize(...)`; `solver.Add(3 * x1 + 2 * x2 >= 17)`)",
+    "examples/python/linear_assignment_api.py (`from ortools.graph.python import linear_sum_assignment`; `SimpleLinearSumAssignment()`; `add_arc_with_cost(...)`; `solve()` returns `OPTIMAL`)",
+    "PyPI JSON for `ortools` 9.15.6755 (requires_python >= 3.9; macOS arm64 wheel 20.9 MB)"
+  ]
+}

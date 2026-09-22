@@ -24,6 +24,7 @@ https://github.com/DepthAnything/Depth-Anything-V2,depth-anything-v2,ml-research
 https://github.com/DevToys-app/DevToys,devtoys,data-tools,categories/dev-utilities/data-tools/devtoys.md
 https://github.com/Dimillian/Skills,dimillian-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md
 https://github.com/DormyMo/SpiderKeeper,spiderkeeper,crawling-tools,categories/web-scraping/crawling-tools/spiderkeeper.md
+https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimization-solvers/highs.md
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,rag-retrieval,categories/rag-retrieval/understand-anything.md
 https://github.com/EveryInc/compound-engineering-plugin,compound-engineering,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md
 https://github.com/FFmpeg/FFmpeg,ffmpeg,video-audio,categories/media-processing/video-audio/ffmpeg.md
@@ -107,6 +108,7 @@ https://github.com/Textualize/rich,rich,terminal-ui,categories/terminal-ui/rich.
 https://github.com/Textualize/textual,textual,terminal-ui,categories/terminal-ui/textual.md
 https://github.com/The-PR-Agent/pr-agent,pr-agent,ai-code-review,categories/ai-code-review/pr-agent.md
 https://github.com/Thriftpy/thriftpy,thriftpy,networking,categories/networking/thriftpy.md
+https://github.com/TimefoldAI/timefold-solver,timefold-solver,optimization-solvers,categories/optimization-solvers/timefold-solver.md
 https://github.com/TomBadash/Mouser,mouser,peripherals,categories/peripherals/mouser.md
 https://github.com/Unstructured-IO/unstructured,unstructured,document-parsing,categories/document-parsing/unstructured.md
 https://github.com/VectifyAI/OpenKB,openkb,knowledge-base,categories/knowledge-base/openkb.md
@@ -150,6 +152,7 @@ https://github.com/anthropics/skills,anthropic-skills,vendor-collections,categor
 https://github.com/anyoptimization/pymoo,pymoo,ml-research,categories/ml-research/pymoo.md
 https://github.com/apache/airflow,airflow,workflow-orchestration,categories/workflow-orchestration/airflow.md
 https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
+https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
 https://github.com/argoproj/argo-workflows,argo-workflows,workflow-orchestration,categories/workflow-orchestration/argo-workflows.md
 https://github.com/ariya/phantomjs,phantomjs,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/phantomjs.md
@@ -267,6 +270,7 @@ https://github.com/google-gemini/gemini-cli,gemini-cli,terminal-agents,categorie
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design,categories/agent-skills/design/stitch-skills.md
 https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-device-ml/timesfm.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
+https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
@@ -330,6 +334,7 @@ https://github.com/khoj-ai/khoj,khoj,knowledge-base,categories/knowledge-base/kh
 https://github.com/kkroening/ffmpeg-python,ffmpeg-python,video-audio,categories/media-processing/video-audio/ffmpeg-python.md
 https://github.com/knative/serving,knative-serving,serverless,categories/serverless/knative-serving.md
 https://github.com/kohlschutter/boilerpipe,boilerpipe,article-extraction,categories/web-scraping/article-extraction/boilerpipe.md
+https://github.com/kubernetes-sigs/descheduler,descheduler,ops-infra,categories/dev-utilities/ops-infra/descheduler.md
 https://github.com/langchain-ai/langchain,langchain,workflow-builders,categories/agent-frameworks/workflow-builders/langchain.md
 https://github.com/langchain-ai/langgraph,langgraph,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/langgraph.md
 https://github.com/langchain-ai/langmem,langmem,agent-memory,categories/agent-memory/langmem.md

@@ -115,11 +115,11 @@ Meta 开源的 C++ 库（带 Python 绑定），解决**分配问题（assignmen
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Google OR-Tools（CP-SAT／routing） | 未收录 | 模型是通用的——任意整数／线性约束、调度、VRP——或一个库要覆盖多种问题形状时选 OR-Tools；问题恰好是「按这些策略重新安置这些对象」、规模在分片／主机量级、且你宁愿声明 `BalanceSpec`／`CapacitySpec` 而不是自己搭搜索循环时选 Rebalancer。 | OR-Tools 广得多，有十年的社区、文档与多语言覆盖；Rebalancer 拿这份广度换来分配形状的 DSL、按 rebalancing 调过的搜索引擎和 MIP 兜底，代价是只有三个月历史。 |
-| HiGHS | 未收录 | 你要一个独立、许可宽松的 LP／MIP 求解器、模型自己写时选 HiGHS；你要分配 DSL 加可扩展的启发式、只在小实例最优路径上用 HiGHS 时选 Rebalancer。 | 两者互补而非竞争：HiGHS 是 Rebalancer 内部调用的求解器，接口小而稳定、构建里没有 Meta 工具链；Rebalancer 的价值在 DSL 与局部搜索，而不在 LP 求解。 |
-| Timefold／OptaPlanner | 未收录 | 约束模型实质是一套规则引擎（score 计算、planning entity 与 variable、JVM 上的车间排产）时选 Timefold；模型是对象与容器上的数值维度、技术栈在 C++／Python 时选 Rebalancer。 | 两者底层都是局部搜索式的启发式规划器；Timefold 带来成熟的 constraint-streams DSL 与 JVM 上大量企业实践，Rebalancer 带来更简单的绑定和 MIP 兜底，但 spec 目录窄得多、社区小得多。 |
-| Gurobi／FICO Xpress | 未收录 | 你买的就是可证明最优加商用 SLA（或免费学术／社区许可）时，直接选 Gurobi 或 Xpress；你要的是大规模启发式、只在小实例上用到它们时选 Rebalancer。 | 它们正是 Rebalancer 在 optimal 路径上委派的求解器——商用许可、不做启发式、也没有分配 DSL。直接选它们，模型由你负责；选 Rebalancer，则由你换来一个年轻框架。 |
-| Kubernetes descheduler／scheduler 插件 | 未收录 | 容器就是 Kubernetes Pod、目标只是让 kube-scheduler 自己的决策更好时选集群内方案；你想离线为任何东西（主机、分片、副本、卡车）算出 placement、之后再自己应用时选 Rebalancer。 | 集群内插件留在 scheduler 自己的 predicate 模型里，不需要额外系统；Rebalancer 是外部优化器，策略 DSL 丰富得多、还有调试 UI，但没有集群集成——回写路径和运行期间的漂移都由你负责。 |
+| [OR-Tools](or-tools.zh.md) | ✅ | 模型是通用的——任意整数／线性约束、调度、VRP——或一个库要覆盖多种问题形状时选 OR-Tools；问题恰好是「按这些策略重新安置这些对象」、规模在分片／主机量级、且你宁愿声明 `BalanceSpec`／`CapacitySpec` 而不是自己搭搜索循环时选 Rebalancer。 | OR-Tools 广得多，有十年的社区、文档与多语言覆盖；Rebalancer 拿这份广度换来分配形状的 DSL、按 rebalancing 调过的搜索引擎和 MIP 兜底，代价是只有三个月历史。 |
+| [HiGHS](highs.zh.md) | ✅ | 你要一个独立、许可宽松的 LP／MIP 求解器、模型自己写时选 HiGHS；你要分配 DSL 加可扩展的启发式、只在小实例最优路径上用 HiGHS 时选 Rebalancer。 | 两者互补而非竞争：HiGHS 是 Rebalancer 内部调用的求解器，接口小而稳定、构建里没有 Meta 工具链；Rebalancer 的价值在 DSL 与局部搜索，而不在 LP 求解。 |
+| [Timefold Solver](timefold-solver.zh.md) · [OptaPlanner](optaplanner.zh.md) | ✅ | 约束模型实质是一套规则引擎（score 计算、planning entity 与 variable、JVM 上的车间排产）时选 Timefold；模型是对象与容器上的数值维度、技术栈在 C++／Python 时选 Rebalancer——不要新起项目在 OptaPlanner 上，它已归档。 | 两者底层都是局部搜索式的启发式规划器；Timefold 带来成熟的 constraint-streams DSL 与 JVM 上大量企业实践，Rebalancer 带来更简单的绑定和 MIP 兜底，但 spec 目录窄得多、社区小得多。OptaPlanner 那一条是为了交代血脉与归档状态，不是现役选项。 |
+| Gurobi／FICO Xpress | 未收录 | 你买的就是可证明最优加商用 SLA（或免费学术／社区许可）时，直接选 Gurobi 或 Xpress；你要的是大规模启发式、只在小实例上用到它们时选 Rebalancer。 | 它们正是 Rebalancer 在 optimal 路径上委派的求解器——商用许可、不做启发式、也没有分配 DSL。两者都不是开源、都没有公开仓库，故都不收录；直接选它们，模型由你负责；选 Rebalancer，则由你换来一个年轻框架。 |
+| [Descheduler](../dev-utilities/ops-infra/descheduler.zh.md) | ✅ | 容器就是 Kubernetes Pod、目标是在集群内纠正 placement 漂移时选 Kubernetes 原生的反调度；你想离线为任何东西（主机、分片、副本、卡车）算出 placement、之后再自己应用时选 Rebalancer。 | 集群内反调度不需要模型、能无人值守持续跑，但它只决定**驱逐哪些 Pod**、不承诺目的地；Rebalancer 算出的 placement 可评审、可 diff，代价是回写路径与运行期间的漂移都由你负责。 |
 
 ## 技术栈
 
@@ -159,4 +159,4 @@ Meta 开源的 C++ 库（带 Python 绑定），解决**分配问题（assignmen
 - [推断] OSDI 2024 论文描述的是 Meta 内部在用的系统；公开仓库晚于论文，所以论文里的生产经验不能作为这个代码库成熟度的证据。
 - [推断] 响应速度评级来自 GitHub 的首次响应时间戳；在厂商自营仓库上，它部分衡量的是分诊速度，而不是解决质量。
 - [未验证] Windows 看起来是「不支持」而不只是「没写」：Python 分类器只列 Linux／macOS，README 只写 Ubuntu／Fedora／macOS，v1.0.4 的产物也只有 x86-64 Linux 与 Apple 芯片 macOS——但仓库又带了一个 `check_windows_macros.py` 工具。不要假定 Windows 可构建。
-- [推断] Timefold／OptaPlanner 与 Kubernetes descheduler 两行依据的是它们公开的定位，未与 Rebalancer 做基准对比。
+- [推断] Timefold／OptaPlanner 与 Descheduler 两行依据的是它们公开的定位，未与 Rebalancer 做基准对比。
