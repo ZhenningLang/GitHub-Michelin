@@ -12,6 +12,7 @@
 | **Magnitude** | Use it when the machine's capability is unknown and you want a pre-download speed/memory estimate plus one-click wiring into an existing coding harness — accepting a two-month-old single-vendor repo that reports ~6x slower than llama.cpp on Apple Silicon. | B (6/6) | [→](magnitude.md) |
 | **omlx** | Use it when you want a Mac (Apple Silicon) local LLM inference server on MLX with SSD-tiered KV caching — a young single-maintainer repo with a suspicious star count. | B (5/6) | [→](omlx.md) |
 | **MTPLX** | Use it when you want the model's own MTP heads to exact-speculatively decode Qwen 3.8 at ~2x plain speed on a Mac with an OpenAI/Anthropic server and app — accepting a ~5-month-old, author-dominated repo and an in-product attribution NOTICE. | B (6/6) | [→](mtplx.md) |
+| **AirLLM** | Use it when a model will not fit your card in the form you need and wall-clock time is free — a library that streams the checkpoint off disk one layer at a time so VRAM costs one layer, at seconds-to-minutes per token. | B (6/6) | [→](airllm.md) |
 
 ## Comparison matrix
 
@@ -21,7 +22,8 @@
 | [Ollama](ollama.md) | ✅ | A (4/6) | Managed model store with OpenAI/Anthropic-compatible API, Docker, MLX+llama.cpp runners and the deepest client ecosystem; wrapper flag subset, 4096-token default context. |
 | [Magnitude](magnitude.md) | ✅ | B (6/6) | Pre-download hardware-fit estimates plus one-click harness wiring for mixed-GPU fleets; young single-vendor repo, ~6x slower than llama.cpp on Apple Silicon, loopback only. |
 | [omlx](omlx.md) | ✅ | B (5/6) | Mac-only MLX server with SSD-tiered KV caching; young, effectively single-maintainer. |
-| [MTPLX](mtplx.md) | ✅ | B (6/6) | Mac-only exact MTP speculative decoding for Qwen 3.8; author-dominated, attribution NOTICE, non-Qwen models fall back to AR. |
+| [MTPLX](mtplx.md) | ✅ | B (6/6) | Mac-only exact MTP speculative decoding for Qwen 3.8; author-dominated, attribution NOTICE, non-Qwen models fall back to AR.
+| [AirLLM](airllm.md) | ✅ | — | Layer-streaming library that runs a 70B/671B-class model on a 4–12GB card by keeping one layer on the device; the price is a disk read per token (users report 28.6 s/token on a 3B) and a compression option that measures slower, not faster. | |
 
 ## What belongs here
 
