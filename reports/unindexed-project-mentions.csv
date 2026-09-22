@@ -330,6 +330,7 @@ Godot,categories/game-dev/pygame.md,,no
 GoJS / mxGraph (draw.io),categories/diagramming/bpmn-js.md,,no
 gomacro (REPL),categories/python-tooling/gophernotes.md,,no
 Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
+Google OR-Tools (CP-SAT / routing),categories/optimization-solvers/rebalancer.md,,no
 Google Photos,categories/document-management/immich.md,,no
 Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
 Google Search Console alone,categories/agent-skills/writing/marketing-seo/open-seo.md,,no
@@ -351,6 +352,7 @@ GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.m
 "gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
+Gurobi / FICO Xpress,categories/optimization-solvers/rebalancer.md,,no
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
@@ -375,6 +377,7 @@ Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
 HF TRL / verl,categories/llm-training/INDEX.md,,no
+HiGHS,categories/optimization-solvers/rebalancer.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/m3u8.md,,no
 hnswlib,categories/rag-retrieval/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
@@ -421,6 +424,7 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/kong.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
+Kubernetes descheduler / scheduler plugins,categories/optimization-solvers/rebalancer.md,,no
 Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
@@ -573,6 +577,7 @@ OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md
 OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
 OpenTimelineIO,categories/media-processing/video-audio/mlt.md,,no
 Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no
+OR-Tools · HiGHS · Timefold / OptaPlanner · Gurobi / Xpress,categories/optimization-solvers/INDEX.md,,no
 OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 osint.industries,categories/osint/ghunt.md,,no
 OSWorld / WebArena (benchmarks),categories/web-automation/agent-browser-tools/cua.md,,no
@@ -777,6 +782,7 @@ Third-party / community knowledge-work packs,categories/agent-skills/vendor-coll
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
+Timefold / OptaPlanner,categories/optimization-solvers/rebalancer.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no

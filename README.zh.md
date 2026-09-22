@@ -1054,3 +1054,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Kev** | 当你想要一个自托管、可微调的模型，对一段文本回答带类型的问题（是/否、多选、评分）并给出可用的校准概率时用它——不是托管判定 API，也不是从零训一个分类器。 | Apache-2.0 | C（4/6） | [中](categories/decision-models/kev.zh.md) · [EN](categories/decision-models/kev.md) |
+
+### optimization-solvers
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Rebalancer** | 当任务是「按这些策略在分片／主机量级重新安置这些对象」——容量、均衡、故障域打散、尽量少搬——而你宁愿声明具名 spec 加一个调好的局部搜索，也不想手写线性规划时用它。 | Apache-2.0 | B（5/6） | [中](categories/optimization-solvers/rebalancer.zh.md) · [EN](categories/optimization-solvers/rebalancer.md) |

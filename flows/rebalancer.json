@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Rebalancer does", "zh": "Rebalancer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Describe the objects, the containers, and the starting assignment", "zh": "描述对象、容器，以及初始分配", "code": "set_object_name(\"task\") · set_container_name(\"host\") · set_assignment({…})"},
+    {"lane": "you", "en": "Declare the dimensions, then compose goals and constraints out of named specs", "zh": "声明维度，再用现成的 spec 组合出目标与约束", "code": "BalanceSpec · CapacitySpec · GroupCountSpec"},
+    {"lane": "them", "en": "Compiles those specs into an expression graph — you write no LP formulas", "zh": "把 spec 编译成表达式图——LP 公式一行都不用写", "component": {"en": "expression graph", "zh": "表达式图"}},
+    {"lane": "you", "en": "Pick the algorithm and the move types it may use", "zh": "选求解算法，以及它可用的 move types", "code": "LocalSearchSolverSpec(moveTypeList=[…])"},
+    {"lane": "you", "en": "Call solve()", "zh": "调用 solve()", "code": "solution = solver.solve()"},
+    {"lane": "them", "en": "Applies improving moves until nothing improves or the time limit hits, then returns the best assignment", "zh": "反复应用改进移动，直到再无改进或到达时间上限，返回最佳分配", "component": {"en": "local search solver", "zh": "local search 求解器"}}
+  ],
+  "value": {"en": "You get a constraint-satisfying, goal-optimized assignment map — no linear program to write by hand", "zh": "你拿到一个满足约束、且按目标优化过的分配表——不用手写线性规划"},
+  "sources": [
+    "README → Quick Example (Python): `ProblemSolver(service_name=…, service_scope=…)`; chained `set_object_name(\"task\")`, `set_container_name(\"host\")`, `set_assignment({…})`; `add_object_dimension` / `add_container_dimension`; `add_constraint(ConstraintSpec(capacitySpec=CapacitySpec(…)))`; `add_solver(SolverSpec(localSearchSolverSpec=LocalSearchSolverSpec(moveTypeList=[MoveTypeSpec(singleMoveTypeSpec=SingleMoveTypeSpec()), MoveTypeSpec(swapMoveTypeSpec=SwapMoveTypeSpec())])))`; `solution = solver.solve()`; `solution[\"assignment\"]`",
+    "website/docs/getting-started/first-model.md — tutorial builds objects/containers/initial assignment, dimensions, then `BalanceSpec`, `ToFreeSpec` and a group-count constraint, picks local search, and prints the resulting placement",
+    "website/docs/intro.md → \"An expressive DSL\" / \"A choice of solvers\" (25+ built-in specs; the model is independent of the solver: local search scales, the MIP path gives proven optimality)",
+    "website/docs/solvers/local-search/local-search.md — default solver when unspecified; each iteration evaluates small changes, applies the best improving one, repeats until a local optimum or `solveTime`; `moveTypeList` is required and an empty list is rejected",
+    "website/docs/solvers/overview.md — the optimal solver translates the problem into a linear-programming model and hands it to HiGHS, Gurobi or FICO Xpress (time-limited run possible)"
+  ]
+}

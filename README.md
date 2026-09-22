@@ -1072,3 +1072,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Kev** | Use it when you want a self-hosted, fine-tunable model that answers typed questions (yes/no, choice, rating) about one text and returns calibrated probabilities — not a hosted decision API and not a from-scratch classifier. | Apache-2.0 | C (4/6) | [EN](categories/decision-models/kev.md) · [中](categories/decision-models/kev.zh.md) |
+
+### optimization-solvers
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Rebalancer** | Use it when the job is "re-place these objects under these policies" at shard/host scale — capacity, balance, failure-domain spread, minimize-movement — and you would rather declare named specs plus a tuned local search than write a linear program. | Apache-2.0 | B (5/6) | [EN](categories/optimization-solvers/rebalancer.md) · [中](categories/optimization-solvers/rebalancer.zh.md) |
