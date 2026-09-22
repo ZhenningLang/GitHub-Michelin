@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="683" viewBox="0 0 880 683" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="683" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="525" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="525" rx="10"/>
+<rect class="pillT" x="474" y="40" width="119.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">HiGHS does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="hand" d="M408,250.0 C439.0,250.0 439.0,274 470,274" marker-end="url(#a)"/>
+<path class="edge" d="M494,369 L494,393" marker-end="url(#a)"/>
+<path class="hand" d="M472,443.5 C441.0,443.5 441.0,467 410,467" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Get the solver — a prebuilt binary,</text>
+<text class="t" x="82" y="123">the C++ library, or the Python wrapper</text>
+<text class="c" x="82" y="147">pip install highspy · cmake -S . -B build</text>
+<rect class="card" x="40" y="193" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Hand it a model: an MPS/LP file, or a</text>
+<text class="t" x="82" y="244">matrix built through an API</text>
+<text class="c" x="82" y="268">highs ml.mps · highs --time_limit 60</text>
+<text class="c" x="82" y="287">ml.mps</text>
+<rect class="cardT" x="472" y="250" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="250" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="274" r="10"/>
+<text class="num" x="494" y="278" text-anchor="middle">3</text>
+<text class="t" x="514" y="279">Presolves the model and picks simplex,</text>
+<text class="t" x="514" y="301">interior point or the MIP</text>
+<text class="t" x="514" y="323">branch-and-bound</text>
+<text class="comp" x="514" y="351">component: presolve + simplex/IPM</text>
+<rect class="cardT" x="472" y="395" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="395" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="419" r="10"/>
+<text class="num" x="494" y="423" text-anchor="middle">4</text>
+<text class="t" x="514" y="424">Solves to optimality, or to your time</text>
+<text class="t" x="514" y="446">limit, and reports the model status</text>
+<text class="comp" x="514" y="474">component: highs</text>
+<rect class="card" x="40" y="443" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="443" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="467" r="10"/>
+<text class="num" x="62" y="471" text-anchor="middle">5</text>
+<text class="t" x="82" y="472">Read the solution back and act on it</text>
+<text class="c" x="82" y="496">h.getSolution() ·</text>
+<text class="c" x="82" y="515">h.getInfo().objective_function_value</text>
+<rect class="val" x="28" y="567" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="591">VALUE</text>
+<text class="valT" x="48" y="615">You get LP/QP/MIP solved to optimality by a dependency-free MIT engine — no modelling DSL to</text>
+<text class="valT" x="48" y="637">learn</text>
+</svg>

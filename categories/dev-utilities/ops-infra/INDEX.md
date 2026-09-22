@@ -14,6 +14,7 @@
 | **Clash Verge Rev** | Use it when you want a modern cross-platform GUI proxy client with rule-based routing, built-in mihomo kernel, and TUN mode — but it's desktop-only and GPL-3.0 licensed. | B (5/6) | [→](clash-verge-rev.md) |
 | **RustDesk** | Use it when you need an open-source, self-hosted remote desktop for your own machines across platforms — but it requires managing your own relay server or accepting P2P limitations. | B (5/6) | [→](rustdesk.md) |
 | **Vaultwarden** | Use it when you want a self-hosted, Bitwarden-compatible password manager in Rust — but it is unofficial, AGPL-3.0, and the core maintainer is a single user. | B (6/6) | [→](vaultwarden.md) |
+| **Descheduler** | Use it when a Kubernetes cluster has drifted out of balance and you want a CronJob that evicts pods violating your policy so the scheduler re-places them — not a computed placement plan. | B (5/6) | [→](descheduler.md) |
 
 ## Comparison matrix
 
@@ -26,7 +27,8 @@
 | [Clash Verge Rev](clash-verge-rev.md) | ✅ | B (5/6) | Use it when you want a modern cross-platform GUI proxy client with rule-based routing, built-in mihomo kernel, and TUN mode — but it's desktop-only and GPL-3.0 licensed. |
 | [RustDesk](rustdesk.md) | ✅ | B (5/6) | Use it when you need an open-source, self-hosted remote desktop for your own machines across platforms — but it requires managing your own relay server or accepting P2P limitations. |
 | [Vaultwarden](vaultwarden.md) | ✅ | B (6/6) | Use it when you want a self-hosted, Bitwarden-compatible password manager in Rust — but it is unofficial, AGPL-3.0, and the core maintainer is a single user. |
+| [Descheduler](descheduler.md) | ✅ | B (5/6) | Periodically evicts Kubernetes pods that violate your `DeschedulerPolicy` so kube-scheduler re-places them — in-cluster drift correction, not a computed placement plan. |
 
 ## What belongs here
 
-Self-hostable infrastructure and operational tools for servers, metrics, TLS, images, proxying, remote access, and passwords.
+Self-hostable infrastructure and operational tools for servers, metrics, TLS, images, proxying, remote access, passwords, and in-cluster maintenance controllers such as the Kubernetes descheduler.

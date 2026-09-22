@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="763" viewBox="0 0 880 763" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="763" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="627" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="627" rx="10"/>
+<rect class="pillT" x="474" y="40" width="169.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OptaPlanner 做的</text>
+<path class="edge" d="M62,164 L62,188" marker-end="url(#a)"/>
+<path class="edge" d="M62,282 L62,306" marker-end="url(#a)"/>
+<path class="hand" d="M408,366.5 C439.0,366.5 439.0,390 470,390" marker-end="url(#a)"/>
+<path class="edge" d="M494,416 L494,440" marker-end="url(#a)"/>
+<path class="edge" d="M494,539 L494,563" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">加上 planner BOM，并给要规划的领域类打注解</text>
+<text class="c" x="82" y="125">@PlanningEntity · @PlanningVariable ·</text>
+<text class="c" x="82" y="144">@PlanningSolution</text>
+<rect class="card" x="40" y="190" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="190" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="214" r="10"/>
+<text class="num" x="62" y="218" text-anchor="middle">2</text>
+<text class="t" x="82" y="219">把业务规则写成基于这些类的约束</text>
+<text class="c" x="82" y="243">implements ConstraintProvider ·</text>
+<text class="c" x="82" y="262">penalize(HardSoftScore.ONE_HARD)</text>
+<rect class="card" x="40" y="308" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="308" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="332" r="10"/>
+<text class="num" x="62" y="336" text-anchor="middle">3</text>
+<text class="t" x="82" y="337">按配置建出求解器，把问题交给它</text>
+<text class="c" x="82" y="361">SolverFactory.create(…) · buildSolver() ·</text>
+<text class="c" x="82" y="380">solver.solve(problem)</text>
+<text class="comp" x="82" y="403">组件：org.optaplanner.core</text>
+<rect class="cardT" x="472" y="366" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="366" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="390" r="10"/>
+<text class="num" x="494" y="394" text-anchor="middle">4</text>
+<text class="t" x="514" y="395">构造启发式先给出一份可行的初始方案</text>
+<rect class="cardT" x="472" y="442" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="442" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="466" r="10"/>
+<text class="num" x="494" y="470" text-anchor="middle">5</text>
+<text class="t" x="514" y="471">局部搜索不断换位置、移动对象，每一步增量算</text>
+<text class="t" x="514" y="493">分而不是重算</text>
+<text class="comp" x="514" y="521">组件：ConstraintStreams 算分</text>
+<rect class="cardT" x="472" y="565" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="565" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="589" r="10"/>
+<text class="num" x="494" y="593" text-anchor="middle">6</text>
+<text class="t" x="514" y="594">在终止时限前返回找到的最好方案，以及它的</text>
+<text class="t" x="514" y="616">HardSoftScore</text>
+<rect class="val" x="28" y="669" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="693">价值</text>
+<text class="valT" x="48" y="717">注解加算分规则 DSL 这套 OptaPlanner 工作流——现存 9.x 项目与 OptaPy 脚本仍是这个样子</text>
+</svg>

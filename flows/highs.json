@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "HiGHS does", "zh": "HiGHS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get the solver — a prebuilt binary, the C++ library, or the Python wrapper", "zh": "拿到求解器——预编译二进制、C++ 库，或 Python 封装", "code": "pip install highspy · cmake -S . -B build"},
+    {"lane": "you", "en": "Hand it a model: an MPS/LP file, or a matrix built through an API", "zh": "把模型交进去：MPS／LP 文件，或通过 API 建出的矩阵", "code": "highs ml.mps · highs --time_limit 60 ml.mps"},
+    {"lane": "them", "en": "Presolves the model and picks simplex, interior point or the MIP branch-and-bound", "zh": "先做 presolve，再挑单纯形、内点法或 MIP 的分支定界", "component": {"en": "presolve + simplex/IPM", "zh": "presolve + 单纯形／内点法"}},
+    {"lane": "them", "en": "Solves to optimality, or to your time limit, and reports the model status", "zh": "解到最优或到你的时间上限，并报告模型状态", "component": {"en": "highs", "zh": "highs"}},
+    {"lane": "you", "en": "Read the solution back and act on it", "zh": "把解读回来并使用", "code": "h.getSolution() · h.getInfo().objective_function_value"}
+  ],
+  "value": {"en": "You get LP/QP/MIP solved to optimality by a dependency-free MIT engine — no modelling DSL to learn", "zh": "无需第三方依赖的 MIT 引擎替你解出 LP／QP／MIP 最优解，不必手搓求解器"},
+  "sources": [
+    "README → About HiGHS (\"high performance serial and parallel solver for large scale sparse linear optimization problems\"; \"Thus HiGHS can solve linear programming (LP) problems, convex quadratic programming (QP) problems, and mixed integer programming (MIP) problems. It is mainly written in C++, but also has some C.\"; \"No third-party dependencies are required.\")",
+    "README → Build from source using CMake (`cmake -S . -B build`; `cmake --build build`; installs `bin/highs` and `lib/highs`)",
+    "README → Precompiled binaries (`*-mit` binary packages are MIT-licenced; `*-apache` packages contain HiGHS with HiPO and are Apache-licenced)",
+    "README → Running HiGHS (\"HiGHS can read MPS files and (CPLEX) LP files\"; `highs ml.mps`)",
+    "README → Command line options (`--model_file`, `--options_file`, `--time_limit float  Run time limit (seconds - double)`, `--solution_file`, `--threads`, `--parallel`)",
+    "README → Interfaces → Python (`pip install highspy`; depends on numpy), C, CSharp (`dotnet add package Highs.Native`), Fortran",
+    "examples/minimal.py (`h = highspy.Highs()`; `h.addVariable(lb = -h.inf)`; `h.addConstrs(x2 - x1 >= 2, x1 + x2 >= 0)`; `h.minimize(x2)`)",
+    "examples/call_highs_from_python_highspy.py (`highspy.kHighsInf`; `h.addVars(...)`; `h.addRows(...)`; `h.setOptionValue(\"log_to_console\", False)`; `h.run()`; `h.getSolution()`; `h.getInfo().objective_function_value`; `h.getModelStatus()`)",
+    "PyPI JSON for `highspy` 1.15.1 (requires_python >= 3.9)"
+  ]
+}
