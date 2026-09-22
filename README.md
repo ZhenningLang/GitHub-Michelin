@@ -1064,3 +1064,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **Solaar** | Use it on Linux when the job is device management rather than remapping: pair and unpair receivers, read battery and device state, change HID++ settings — backed by 14 years of still-shipping history, at the cost of Linux-only scope and no camera or RGB. | GPL-2.0-or-later | B (6/6) | [EN](categories/peripherals/solaar.md) · [中](categories/peripherals/solaar.zh.md) |
 | **Mouser** | Use it when you want to remap a Logitech HID++ mouse per application from a portable ZIP on Windows/macOS/Linux, with no installer, account or service — and you don't need pairing, keyboards, cameras or per-device mappings. | MIT | B (5/6) | [EN](categories/peripherals/mouser.md) · [中](categories/peripherals/mouser.zh.md) |
 | **logiops** | Use it on Linux when you want a root systemd daemon reading one declarative `/etc/logid.cfg` instead of a GUI — accepting HID++ 2.0+ mice only, no app awareness, and development that has effectively stopped since 2024. | GPL-3.0-or-later | C (4/6) | [EN](categories/peripherals/logiops.md) · [中](categories/peripherals/logiops.zh.md) |
+
+### decision-models
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Kev** | Use it when you want a self-hosted, fine-tunable model that answers typed questions (yes/no, choice, rating) about one text and returns calibrated probabilities — not a hosted decision API and not a from-scratch classifier. | Apache-2.0 | C (4/6) | [EN](categories/decision-models/kev.md) · [中](categories/decision-models/kev.zh.md) |
