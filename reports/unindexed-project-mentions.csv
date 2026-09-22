@@ -261,6 +261,7 @@ Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 Dramatiq,categories/task-queue/celery.md,,no
+Dramatiq / arq / Quartz / PowerJob,categories/task-queue/INDEX.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
@@ -708,8 +709,6 @@ rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
 Roo Code,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
-RQ (Redis Queue),categories/task-queue/celery.md,,no
-RQ / Dramatiq / arq / Quartz / PowerJob,categories/task-queue/INDEX.md,,no
 Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no

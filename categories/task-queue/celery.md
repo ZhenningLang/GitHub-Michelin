@@ -93,7 +93,7 @@ As the app grows you lean on the rest of the framework: `beat` for cron-like per
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| RQ (Redis Queue) | 未收录 | Choose RQ when Redis-only simplicity matters more than broker choice, routing, scheduling, and throughput tuning. | Dead-simple to run and read, but narrower than Celery's broker/backend and workflow surface. |
+| [RQ (Redis Queue)](rq.md) | ✅ | Choose RQ when Redis-only simplicity matters more than broker choice, routing, scheduling, and throughput tuning. | Dead-simple to run and read, but narrower than Celery's broker/backend and workflow surface. |
 | Dramatiq | 未收录 | Choose Dramatiq when you want a modern Python task queue with RabbitMQ/Redis support and fewer Celery-era foot-guns. | Smaller ecosystem and fewer canvas/workflow primitives than Celery. |
 | arq | 未收录 | Choose arq when your app is already asyncio-first and a lightweight Redis queue is enough. | Good async ergonomics, but minimal compared with Celery's routing, beat, and canvas. |
 | [Airflow](../workflow-orchestration/airflow.md) | ✅ | Choose Airflow when dependency-aware multi-step DAG **workflows**, lineage, backfills, and UI matter more than low-latency task offload. | Data-pipeline orchestration, not a direct background-job queue. |

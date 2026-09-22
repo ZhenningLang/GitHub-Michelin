@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "RQ does", "zh": "RQ 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install RQ and run a trusted Redis or Valkey server", "zh": "安装 RQ，运行可信的 Redis 或 Valkey", "code": "pip install rq", "component": {"en": "application environment", "zh": "应用环境"}},
+    {"lane": "you", "en": "Connect a queue and enqueue an importable Python function", "zh": "连接队列，把可导入的 Python 函数入队", "code": "queue.enqueue(count_words_at_url, 'https://stamps.id')", "component": {"en": "Queue", "zh": "Queue"}},
+    {"lane": "them", "en": "Serializes the call into Redis and returns a Job proxy", "zh": "把调用序列化进 Redis，并返回 Job 代理", "component": {"en": "Queue + Job", "zh": "Queue + Job"}},
+    {"lane": "you", "en": "Start and supervise workers for the queues they should serve", "zh": "启动并托管负责这些队列的 worker", "code": "rq worker --with-scheduler", "component": {"en": "rq CLI", "zh": "rq 命令行"}},
+    {"lane": "them", "en": "Fetches, executes, and records each job's status and result", "zh": "拉取并执行作业，记录状态与结果", "component": {"en": "Worker", "zh": "Worker"}}
+  ],
+  "value": {"en": "Blocking Python work leaves the request path without adding a general-purpose message broker", "zh": "阻塞的 Python 工作离开请求路径，无需引入通用消息 broker"},
+  "sources": [
+    "README: Getting started, The Worker, Installation, and Security",
+    "docs/docs/index.md: Enqueueing Jobs, On the Design, The delayed result, and Considerations for jobs",
+    "docs/docs/workers.md: Starting Workers and Inside the Worker — Worker Lifecycle"
+  ]
+}

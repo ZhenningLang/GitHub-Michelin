@@ -708,6 +708,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Celery** | Use it when a Python app must offload async/background jobs at scale — at the cost of running a broker + workers. | BSD-3-Clause | B (5/6) | [EN](categories/task-queue/celery.md) · [中](categories/task-queue/celery.zh.md) |
 | **Kombu** | Use it when a Python service must publish/consume messages across swappable brokers (RabbitMQ, Redis, SQS) — virtual transports emulate AMQP imperfectly, so "swap the URL" is not identical behavior. | BSD-3-Clause | A (5/6) | [EN](categories/task-queue/kombu.md) · [中](categories/task-queue/kombu.zh.md) |
 | **Flower** | Use it when a production Celery cluster needs a live dashboard to inspect and control workers and export Prometheus metrics — it can revoke tasks, so never expose it unauthenticated. | BSD-3-Clause | B (4/6) | [EN](categories/task-queue/flower.md) · [中](categories/task-queue/flower.zh.md) |
+| **RQ** | Use it when a Python app already has Redis or Valkey and needs a small, readable queue-and-worker model — accepting Redis-only transport and separate worker operations. | BSD-2-Clause | B (5/6) | [EN](categories/task-queue/rq.md) · [中](categories/task-queue/rq.zh.md) |
 ### im-automation
 
 | Project | Use when | License | Health | Page |

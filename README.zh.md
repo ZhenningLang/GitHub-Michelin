@@ -705,6 +705,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Celery** | 当 Python 应用需要把异步/后台任务规模化外包时用它——代价是要跑 broker + worker。 | BSD-3-Clause | B（5/6） | [中](categories/task-queue/celery.zh.md) · [EN](categories/task-queue/celery.md) |
 | **Kombu** | 当 Python 服务要在可替换 broker（RabbitMQ、Redis、SQS）间收发消息时用它——虚拟 transport 对 AMQP 的模拟并不完整，换 URL 不等于行为一致。 | BSD-3-Clause | A（5/6） | [中](categories/task-queue/kombu.zh.md) · [EN](categories/task-queue/kombu.md) |
 | **Flower** | 当生产 Celery 集群需要实时面板查看、控制 worker 并导出 Prometheus 指标时用它——它能撤销任务，绝不能无鉴权暴露。 | BSD-3-Clause | B（4/6） | [中](categories/task-queue/flower.zh.md) · [EN](categories/task-queue/flower.md) |
+| **RQ** | 当 Python 应用已有 Redis 或 Valkey，并需要小而易读的队列加 worker 模型时用它——接受仅 Redis 系传输和另行运维 worker。 | BSD-2-Clause | B（5/6） | [中](categories/task-queue/rq.zh.md) · [EN](categories/task-queue/rq.md) |
 ### im-automation
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
