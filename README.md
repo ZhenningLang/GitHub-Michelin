@@ -70,6 +70,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **E2B** | Use it when an agent needs to run AI-generated code and you want the sandbox as an SDK — hosted by default, Terraform-self-hosted on AWS/GCP when it must live in your own account. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/e2b.md) · [中](categories/sandboxing/e2b.zh.md) |
 | **Agent Substrate** | Use it when a large fleet of stateful agent sessions sits idle most of the time and you want them multiplexed onto fewer warm Kubernetes pods by checkpointing idle agents and resuming them on demand — but it's pre-1.0 with unstable APIs and no security hardening yet. | Apache-2.0 | B (4/6) | [EN](categories/sandboxing/substrate.md) · [中](categories/sandboxing/substrate.zh.md) |
 | **Modal client SDK** | Use it when you want serverless containers, GPUs and sandboxes without operating anything — the client SDK is open source, the platform is closed and hosted-only. | Apache-2.0 | A (6/6) | [EN](categories/sandboxing/modal-client.md) · [中](categories/sandboxing/modal-client.zh.md) |
+| **Microsandbox** | Use it when the sandbox must run on hardware you already own — one binary or SDK, ordinary OCI images, per-sandbox egress policy and host-side secrets, with no daemon and no cluster — but it needs KVM/Apple Silicon/WHP on the host and is still beta. | Apache-2.0 | A (5/6) | [EN](categories/sandboxing/microsandbox.md) · [中](categories/sandboxing/microsandbox.zh.md) |
 
 ### serverless
 

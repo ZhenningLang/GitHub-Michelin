@@ -14,6 +14,7 @@
 | **E2B** | 当 agent 需要跑 AI 生成的代码、你想要把沙箱做成 SDK 时用它——默认托管，必须落在自己账号时用 Terraform 自托管到 AWS／GCP。 | A（6/6） | [→](e2b.zh.md) |
 | **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | B（4/6） | [→](substrate.zh.md) |
 | **Modal client SDK** | 想要 serverless 容器、GPU 与沙箱而什么都不用运维时用它——客户端 SDK 开源，平台闭源且只能托管。 | A（6/6） | [→](modal-client.zh.md) |
+| **Microsandbox** | 沙箱必须跑在你已有的硬件上时用它——一个二进制或一个 SDK、普通 OCI 镜像、每沙箱出口策略与宿主侧 secret，无守护进程、无集群——但宿主需要 KVM／Apple Silicon／WHP，且仍处于 beta。 | A（5/6） | [→](microsandbox.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [E2B](e2b.zh.md) | ✅ | A（6/6） | 最快拿到能用的沙箱（先托管 SDK、后 Terraform 自托管）——自托管只覆盖 AWS／GCP。 |
 | [Agent Substrate](substrate.zh.md) | ✅ | B（4/6） | 靠把闲置的有状态 agent 存成快照、塞进预热 pod 来换密度——1.0 之前、出站轮询唤醒不成立、安全加固未做。 |
 | [Modal client SDK](modal-client.zh.md) | ✅ | A（6/6） | serverless 容器、GPU 与沙箱都不用运维——不能自托管、没有退路、单一厂商。 |
+| [Microsandbox](microsandbox.zh.md) | ✅ | A（5/6） | 从普通 OCI 镜像拉起的本地优先 microVM 沙箱，CLI 动词跟 Docker 同构、无守护进程——跨平台且非特权，但宿主需要硬件虚拟化，且处于 beta。 |
 
 ## 什么该放这里
 
