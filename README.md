@@ -589,6 +589,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **draw.io** | A full WYSIWYG diagramming application whose `.drawio` files are plain-text mxGraph XML: official cloud/UML/BPMN shape libraries, offline desktop app, and a file that diffs in Git. | Apache-2.0 (icons/stencils carry an extra restriction) | B (6/6) | [EN](categories/diagramming/drawio.md) · [中](categories/diagramming/drawio.zh.md) |
 | **D2** | Use it when a versioned text diagram should render in CI with a layout engine you choose — MPL-2.0 is file-level copyleft, and no host platform renders it for you. | MPL-2.0 | B (5/6) | [EN](categories/diagramming/d2.md) · [中](categories/diagramming/d2.zh.md) |
 | **PlantUML** | Use it when the DSL must cover many UML and non-UML diagram types and Java or server-side rendering is acceptable — check `LICENSES.md` before redistributing. | LGPL-3.0 | B (6/6) | [EN](categories/diagramming/plantuml.md) · [中](categories/diagramming/plantuml.zh.md) |
+| **PR Lens** | Use it when an agent-written diff is too large to orient yourself in by scrolling, and the change should be drawn — and redrawn on every push — inside the pull request. | MIT | C (6/6) | [EN](categories/diagramming/pr-lens.md) · [中](categories/diagramming/pr-lens.zh.md) |
 ### media-download
 
 | Project | Use when | License | Health | Page |
