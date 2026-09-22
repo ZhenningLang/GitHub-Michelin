@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "HumanLayer Skills give you",
+    "zh": "HumanLayer Skills 给你的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the bundle from the skills registry",
+      "zh": "从 skills 注册表装上这个包",
+      "code": "npx skills add humanlayer/skills --skill show-me"
+    },
+    {
+      "lane": "them",
+      "en": "Ships six self-contained skills under one Claude Code plugin marketplace",
+      "zh": "用一个插件市场清单装下六个自包含 skill",
+      "component": {
+        "en": "plugin marketplace",
+        "zh": "插件市场"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Invoke one when it fits, or let its description fire",
+      "zh": "需要时手动调起，或让描述自动匹配",
+      "code": "/show-me · /visual-pr · /improve-claude-md"
+    },
+    {
+      "lane": "them",
+      "en": "Supplies the judgment for that narrow job — a method, not a runtime",
+      "zh": "只提供那个窄活的判断力：给方法，不给运行时",
+      "component": {
+        "en": "skill",
+        "zh": "skill"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "For a repeatable job, run the loop designer and answer its interview",
+      "zh": "要把某件事做成循环，就跑循环设计 skill 并答问",
+      "code": "/design-control-loop"
+    },
+    {
+      "lane": "them",
+      "en": "Builds sensor, controller and actuator as locally runnable pieces",
+      "zh": "按模板把传感、控制、执行三段建成本地可跑的件"
+    },
+    {
+      "lane": "you",
+      "en": "Run each piece by hand, then let the workflow run on a schedule",
+      "zh": "先手工逐段跑通，再挂上定时 workflow"
+    },
+    {
+      "lane": "them",
+      "en": "Opens one bounded PR per run with its memory file injected",
+      "zh": "每次最多开一个 PR，并注入记忆文件",
+      "component": {
+        "en": "GitHub Actions loop",
+        "zh": "GitHub Actions 循环"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Comment to steer it — the loop updates the PR and keeps durable feedback",
+      "zh": "用评论调参：循环改 PR，并把长期反馈留下",
+      "code": "/iterate"
+    }
+  ],
+  "value": {
+    "en": "A vendor-maintained set of agent behaviours, plus a bounded loop you can schedule and steer by comment",
+    "zh": "厂商维护的一组 agent 行为，外加一个可定时、可用评论调参的有界循环"
+  },
+  "sources": [
+    "https://github.com/humanlayer/skills README — the six listed skills, the `npx skills add humanlayer/skills --skill <name>` install line, and the per-skill `/…` invocation lines",
+    ".claude-plugin/marketplace.json — the six plugin entries with versions, sources and categories",
+    "plugins/design-control-loop/skills/design-control-loop/SKILL.md — sensor/controller/actuator phases, the run-each-piece-locally rule, the memory file and the /iterate channel",
+    "plugins/build-iterated-agentic-loop/skills/build-iterated-agentic-loop/references/workflow-template.yml — schedule + workflow_dispatch triggers, the one-open-PR bound, memory interpolation"
+  ]
+}

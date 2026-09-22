@@ -301,6 +301,7 @@ https://github.com/huggingface/text-generation-inference,text-generation-inferen
 https://github.com/huggingface/trl,trl,llm-training,categories/llm-training/trl.md
 https://github.com/hugohe3/ppt-master,ppt-master,slides-ppt,categories/agent-skills/slides-ppt/ppt-master.md
 https://github.com/humanlayer/12-factor-agents,12-factor-agents,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md
+https://github.com/humanlayer/skills,humanlayer-skills,vendor-collections,categories/agent-skills/vendor-collections/humanlayer-skills.md
 https://github.com/hylarucoder/ai-flavor-remover,ai-flavor-remover,de-ai-writing,categories/agent-skills/de-ai-writing/ai-flavor-remover.md
 https://github.com/hypit-ai/hypit,hypit,video-production,categories/video-production/hypit.md
 https://github.com/iOfficeAI/OfficeCLI,officecli,office-automation,categories/office-automation/officecli.md
