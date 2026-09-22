@@ -2,7 +2,7 @@
 name: Entire
 slug: entire-cli
 repo: https://github.com/entireio/cli
-category: agent-tooling
+category: session-history
 tags: [ai-agents, session-capture, git-hooks, checkpoints, rewind, transcript, audit, go, cli, multi-agent]
 language: Go
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 A Git-native CLI (`entire`) that hooks into your workflow to capture AI coding-agent sessions — prompts, responses, tool calls, files changed, token usage — and indexes them as checkpoints alongside your commits on a separate `entire/checkpoints/v1` branch, giving you a searchable, rewindable record of *how* code was written. Single Go binary; fully local, no hosted account required for core use.
 
-![entire-cli — health radar](../../assets/health/entire-cli.svg)
+![entire-cli — health radar](../../../assets/health/entire-cli.svg)
 
 ## When to use
 
@@ -83,7 +83,7 @@ So you `entire enable` in the repo and point it at your agent. Now every session
 - **Public repos with sensitive prompts** — transcripts live *in your git repository* on the `entire/checkpoints/v1` branch; if the repo is public, that data is visible to anyone. Secret redaction is the project's own "best-effort" only, and temporary shadow branches used mid-session may hold unredacted data and must not be pushed. Treat this as a real data-exposure surface, not set-and-forget.
 - **Pre-1.0 maturity** — latest release is v0.7.7 (2026-06); commands and on-disk formats can still shift (the `entire checkpoint rewind` command is already marked deprecated). Not the choice when you need stable, frozen interfaces or formal compatibility guarantees.
 - **Rewind on every agent/IDE** — rewind support is uneven: Cursor IDE reportedly doesn't support rewind, Pi lacks subagent capture, and Copilot support is the CLI only (not the VS Code integration). Verify your specific agent before relying on the recovery story.
-- **Task/dependency tracking** — Entire is a *capture & provenance* layer, not a task graph. It records what agents did; it does not model which work blocks which or surface "ready" tasks — that's a different tool ([beads](beads.md)).
+- **Task/dependency tracking** — Entire is a *capture & provenance* layer, not a task graph. It records what agents did; it does not model which work blocks which or surface "ready" tasks — that's a different tool ([beads](../work-state/beads.md)).
 - **Cross-repo / org-wide audit dashboards** — the record is per-repo, git-branch-local, CLI-driven. No hosted web dashboard, cross-repo search, or team analytics view is implied by the core tool.
 - **Non-Git or non-agent workflows** — the entire mechanism is Git hooks + a checkpoints branch; without Git, and without a supported agent emitting sessions, there's nothing to capture.
 
@@ -91,8 +91,8 @@ So you `entire enable` in the repo and point it at your agent. Now every session
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [beads](beads.md) | ✅ | Choose beads when you need the adjacent task-graph/structured-memory layer. | Solves the adjacent problem: a dependency-aware *task graph* / structured agent memory (what to do next, what's blocked), backed by versioned SQL. Entire captures *what already happened* (transcripts/checkpoints) for provenance & rewind — complementary, not substitutes. |
-| [CCPM](ccpm.md) | ✅ | Choose CCPM when you need a Claude-Code project-management workflow over specs/issues/parallel agents. | A Claude-Code project-management workflow (specs/issues/parallel agents via GitHub Issues). Process/coordination layer, not a session-transcript capture-and-rewind layer. |
+| [beads](../work-state/beads.md) | ✅ | Choose beads when you need the adjacent task-graph/structured-memory layer. | Solves the adjacent problem: a dependency-aware *task graph* / structured agent memory (what to do next, what's blocked), backed by versioned SQL. Entire captures *what already happened* (transcripts/checkpoints) for provenance & rewind — complementary, not substitutes. |
+| [CCPM](../work-state/ccpm.md) | ✅ | Choose CCPM when you need a Claude-Code project-management workflow over specs/issues/parallel agents. | A Claude-Code project-management workflow (specs/issues/parallel agents via GitHub Issues). Process/coordination layer, not a session-transcript capture-and-rewind layer. |
 | Plain Git + agent's own session logs | 未收录 | Choose plain Git and native logs when zero extra tooling matters more than unified provenance. | Zero extra tooling, but agent logs are scattered per-tool, not linked to commits, not uniformly rewindable, and clutter or never reach the repo. Entire is the unifying capture/index layer. |
 | Specstory / agent transcript exporters | 未收录 | Choose transcript exporters when exported chat logs are enough. | Other tools also persist agent chat transcripts, but typically as exported files/markdown rather than Git-checkpoint provenance tied to commits with a rewind mechanism. Verify feature parity before substituting. |
 | Reflog / `git stash` + manual snapshots | 未收录 | Choose reflog, git stash, or manual snapshots when native tree-state recovery is enough. | Native recovery primitives you already have, but they capture tree state only — no prompts/responses/tool-call context, no per-session indexing, no agent-aware redaction. |

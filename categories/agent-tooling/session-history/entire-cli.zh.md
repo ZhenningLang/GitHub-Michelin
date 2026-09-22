@@ -2,7 +2,7 @@
 name: Entire
 slug: entire-cli
 repo: https://github.com/entireio/cli
-category: agent-tooling
+category: session-history
 tags: [ai-agents, session-capture, git-hooks, checkpoints, rewind, transcript, audit, go, cli, multi-agent]
 language: Go
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 一个 Git 原生 CLI（`entire`），挂进你的 Git 工作流，自动捕获 AI 编码 agent 的会话——提示、回复、工具调用、改动文件、token 用量——并以 checkpoint 形式索引到一条独立的 `entire/checkpoints/v1` 分支上、与你的 commit 并列，从而得到一份可搜索、可回滚的「代码是怎么写出来的」记录。单一 Go 二进制；核心功能完全本地、无需托管账号。
 
-![entire-cli — 健康度雷达](../../assets/health/entire-cli.zh.svg)
+![entire-cli — 健康度雷达](../../../assets/health/entire-cli.zh.svg)
 
 ## 何时使用
 
@@ -83,7 +83,7 @@ health:
 - **会带敏感提示的公开仓库** —— transcript 是存*在你的 git 仓库里*、落在 `entire/checkpoints/v1` 分支上的；仓库一旦公开，这些数据任何人都能看到。密钥脱敏只是项目自称的「尽力而为（best-effort）」，而且会话中途用的临时 shadow 分支可能含未脱敏数据、绝不能被 push。把它当作一个真实的数据泄露面来对待，而不是装好就不管。
 - **pre-1.0 成熟度** —— 最新 release 是 v0.7.7（2026-06）；命令和落盘格式仍可能变（`entire checkpoint rewind` 命令已被标记 deprecated）。当你需要稳定冻结的接口或正式兼容性保证时，它不是合适选择。
 - **指望每个 agent/IDE 都能回滚** —— 回滚支持参差不齐：Cursor IDE 据称不支持 rewind，Pi 不支持 subagent 捕获，Copilot 只支持 CLI（不含 VS Code 集成）。依赖它的恢复能力前，先核对你具体用的那个 agent。
-- **任务 / 依赖跟踪** —— Entire 是一个*捕获与溯源*层，不是任务图。它记录 agent 做了什么，但不建模哪些工作阻塞哪些、也不给出「就绪」任务——那是另一类工具（[beads](beads.zh.md)）。
+- **任务 / 依赖跟踪** —— Entire 是一个*捕获与溯源*层，不是任务图。它记录 agent 做了什么，但不建模哪些工作阻塞哪些、也不给出「就绪」任务——那是另一类工具（[beads](../work-state/beads.zh.md)）。
 - **跨仓库 / 全组织审计看板** —— 这份记录是按仓库、git 分支本地、CLI 驱动的。核心工具并不暗示有托管 Web 看板、跨仓库搜索或团队分析视图。
 - **非 Git 或非 agent 工作流** —— 整套机制就是 Git hooks + 一条 checkpoints 分支；没有 Git、也没有受支持的 agent 产出会话，就根本没东西可捕获。
 
@@ -91,8 +91,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [beads](beads.zh.md) | ✅ | 需要相邻的任务图/结构化记忆层时，选 beads。 | 解决的是相邻问题：依赖感知的*任务图* / 结构化 agent 记忆（接下来做什么、什么被阻塞），由版本化 SQL 支撑。Entire 捕获的是*已经发生了什么*（transcript/checkpoint）用于溯源与回滚——互补，而非替代。 |
-| [CCPM](ccpm.zh.md) | ✅ | 需要基于 spec/issue/多 agent 并行的 Claude-Code 项目管理流程时，选 CCPM。 | 一套 Claude-Code 项目管理工作流（基于 GitHub Issues 的 spec/issue/多 agent 并行）。属于流程/协调层，不是会话 transcript 的捕获与回滚层。 |
+| [beads](../work-state/beads.zh.md) | ✅ | 需要相邻的任务图/结构化记忆层时，选 beads。 | 解决的是相邻问题：依赖感知的*任务图* / 结构化 agent 记忆（接下来做什么、什么被阻塞），由版本化 SQL 支撑。Entire 捕获的是*已经发生了什么*（transcript/checkpoint）用于溯源与回滚——互补，而非替代。 |
+| [CCPM](../work-state/ccpm.zh.md) | ✅ | 需要基于 spec/issue/多 agent 并行的 Claude-Code 项目管理流程时，选 CCPM。 | 一套 Claude-Code 项目管理工作流（基于 GitHub Issues 的 spec/issue/多 agent 并行）。属于流程/协调层，不是会话 transcript 的捕获与回滚层。 |
 | 裸 Git + agent 自带的会话日志 | 未收录 | 零额外工具比统一溯源更重要时，选裸 Git 加 agent 自带日志。 | 零额外工具，但 agent 日志按工具各自分散、不与 commit 索引、不可统一回滚，要么乱要么根本进不了仓库。Entire 就是那个统一的捕获/索引层。 |
 | Specstory / agent transcript 导出工具 | 未收录 | 导出的聊天记录已经够用时，选 Specstory 或其他 transcript 导出工具。 | 其它工具也能持久化 agent 聊天 transcript，但通常是导出成文件/markdown，而非绑定到 commit 的 Git-checkpoint 溯源、且带回滚机制。替换前先核对功能对齐度。 |
 | Reflog / `git stash` + 手动快照 | 未收录 | 原生工作树状态恢复已经够用时，选 reflog、git stash 或手动快照。 | 你本来就有的原生恢复原语，但它们只捕获工作树状态——没有提示/回复/工具调用上下文、没有按会话索引、没有 agent 感知的脱敏。 |

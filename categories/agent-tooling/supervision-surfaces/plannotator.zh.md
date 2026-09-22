@@ -2,7 +2,7 @@
 name: Plannotator
 slug: plannotator
 repo: https://github.com/backnotprop/plannotator
-category: agent-tooling
+category: supervision-surfaces
 tags: [coding-agents, human-in-the-loop, plan-review, code-review, annotation, hooks, local-first, claude-code]
 language: TypeScript
 license: MIT OR Apache-2.0
@@ -77,7 +77,7 @@ health:
 
 你在终端回滚缓冲区的最后一屏上敲一个键，就算批准了 agent 的计划；三个文件之后你才发现，它对某一段的理解跟你不一样——那份计划其实没被评审过，只是被扫过一眼，而你也无处写下「第 3 步在回填之前就先改了列」。Plannotator 卡住的是这个时刻：把计划（以及之后的 diff）开成本机浏览器里的一页，你圈中具体的段落和行，这些批注就作为 agent 的下一条指令送回去。
 
-![plannotator — 健康度雷达](../../assets/health/plannotator.zh.svg)
+![plannotator — 健康度雷达](../../../assets/health/plannotator.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 安装器是唯一会动你 agent 配置的一步：它识别你装了哪些 agent，逐个写好 hook、命令与 skill 条目。之后的价值全部来自一套 hook 协议。当 agent 即将就计划请求许可时（Claude Code 走的是 `ExitPlanMode`），已注册的命令会起一个短命的本地服务器，把计划渲染进一个懂 Markdown、代码与 HTML 锚点的编辑器，并打开你的浏览器；**你阅读期间，hook 一直阻塞**。你的决定以 stdout 而不是退出码的形式回传——命令永远退出 `0`：点批准就不打印任何内容，hook 放行、agent 继续；点发送批注则打印 `{"decision":"block","reason":"…"}`，这正是 Claude Code 与 Codex 本来就认识的「带反馈阻塞」信号，于是 agent 的这一轮带着你的批注作为理由继续。同一份计划再次提交时，页面给出与你上轮所审版本的计划 diff。你和它的分界很清楚：**服务器、渲染器、批注模型、diff 视图和 hook 协议都归它；判断归你**——哪几行不对、批不批准——另外，要用 Ask AI 和评审 agent，还得配上你自己的模型 provider。
 
-![plannotator — 主干用户故事](../../assets/flow/plannotator.zh.svg)
+![plannotator — 主干用户故事](../../../assets/flow/plannotator.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/plannotator.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ health:
 
 ## 何时不用
 
-- **你想让机器写出评审意见。** Plannotator 是为*你的*批注准备的界面，AI 只是可选辅助。若需求是让 LLM 在 CI 里对 diff 产出逐行评论，请改用 [Open Code Review](../ai-code-review/open-code-review.zh.md)、[PR-Agent](../ai-code-review/pr-agent.zh.md) 或 [Metis](../ai-code-review/metis.zh.md)——它们在没有人类介入的情况下产出 finding，形态正好相反。
+- **你想让机器写出评审意见。** Plannotator 是为*你的*批注准备的界面，AI 只是可选辅助。若需求是让 LLM 在 CI 里对 diff 产出逐行评论，请改用 [Open Code Review](../../ai-code-review/open-code-review.zh.md)、[PR-Agent](../../ai-code-review/pr-agent.zh.md) 或 [Metis](../../ai-code-review/metis.zh.md)——它们在没有人类介入的情况下产出 finding，形态正好相反。
 - **你需要托管的多人在线评审工作区**（指派、审计记录、不在你终端旁的同事也能评论）。这恰是项目自己的方向：开源版的异步链接分享已被文档标注为「转入 deprecated 支持」，托管产品 Workspaces 被写明为主要方向。这种需求请选 GitHub/GitLab 评审加一个托管评审服务（CodeRabbit、Graphite、Reviewable——托管服务，不是仓库），而不是押在一个上游自己称为遗留的功能上。
 - **你的 harness 没有可拦截的生命周期 hook。** 计划拦截依赖 hook：Droid 只有命令、「尚无计划拦截」，Codex 的 hook 在原生 Windows 上仍是实验性。那就手动驱动（`/plannotator-annotate <file>`、`plannotator annotate <file> --hook`），或者继续用 harness 自带的提示。
 - **这台机器不能有任何未经请求的外联。** 每个计划/批注/评审界面在加载时都会查 `api.github.com` 取最新版本，而 README 明说「目前没有关闭该检查的设置」；URL 批注默认经 Jina Reader 抓取；本地 diff 评审可能用 `git ls-remote` 查 `origin`（只有这一项可关）。若你处在隔离网或出口审查下，要么 fork 后剥掉该检查，要么换一个不联网的工具。[未验证]
@@ -122,8 +122,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | harness 内建的计划批准（Claude Code / Codex 的许可提示） | 非仓库 | 计划很短、只需要批准或不批准时，继续用内建提示；需要说清*哪一行*不对而不只是说「不行」时，才换 Plannotator。 | 零安装、始终可用，但没有批注、没有页面、没有计划 diff，也不留决定记录。 |
-| [CloudCLI（Claude Code UI）](../agent-tooling/claudecodeui.zh.md) | 已收录 | 想从浏览器或手机*驱动* agent 会话（文件、终端、git）时选 CloudCLI；任务是评审并批注某个具体产物、且 agent 正等着你的决定时选 Plannotator。 | CloudCLI 是会话形态、覆盖更宽；Plannotator 是产物形态并卡住这一轮——更窄，但那个卡点正是它的价值。 |
-| [Open Code Review](../ai-code-review/open-code-review.zh.md) | 已收录 | 想让每个 diff 在 CI 里自动获得评审 finding 时选 Open Code Review；价值在于*人*对计划或 diff 做出决定、并让 agent 据此行动时选 Plannotator。 | 自动覆盖不需要人类注意力，代价是注意力没有花在爆炸半径最大的地方——两者通常都需要，只是在不同阶段。 |
+| [CloudCLI（Claude Code UI）](claudecodeui.zh.md) | 已收录 | 想从浏览器或手机*驱动* agent 会话（文件、终端、git）时选 CloudCLI；任务是评审并批注某个具体产物、且 agent 正等着你的决定时选 Plannotator。 | CloudCLI 是会话形态、覆盖更宽；Plannotator 是产物形态并卡住这一轮——更窄，但那个卡点正是它的价值。 |
+| [Open Code Review](../../ai-code-review/open-code-review.zh.md) | 已收录 | 想让每个 diff 在 CI 里自动获得评审 finding 时选 Open Code Review；价值在于*人*对计划或 diff 做出决定、并让 agent 据此行动时选 Plannotator。 | 自动覆盖不需要人类注意力，代价是注意力没有花在爆炸半径最大的地方——两者通常都需要，只是在不同阶段。 |
 | herdr-annotate / Plannotator TUI（同一作者的命令行与 TUI 变体） | 未收录 | 浏览器尺度的文档与计划拦截继续用 Plannotator 本体；终端变体是给泡在 Herdr 里或想要 TUI 的人准备的，此处有意不收录，视作同一评审模型的近似重复。 | 终端界面在浏览器不可用的场景（纯 headless 机器）能顶上，但丢掉渲染后的 Markdown/HTML、并排 diff 与 VS Code 集成。 |
 | CodeRabbit / Graphite / Reviewable（托管 PR 评审服务） | 非仓库 | 评审必须社会化——同事在 PR 上评论、要有历史与通知——时选托管评审服务；评审人就是你、agent 在等答案时选 Plannotator。 | 托管服务处理多人流程与审计，但闭源、收费，而且位于本地 agent 循环的下游，而不是循环之内。 |
 

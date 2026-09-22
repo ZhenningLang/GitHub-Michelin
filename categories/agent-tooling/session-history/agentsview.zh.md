@@ -2,7 +2,7 @@
 name: AgentsView
 slug: agentsview
 repo: https://github.com/kenn-io/agentsview
-category: agent-tooling
+category: session-history
 tags: [coding-agents, observability, session-search, token-usage, cost-tracking, local-first, claude-code]
 language: Go
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 一个 local-first 的桌面/CLI 应用，在 40+ 个 agent（Claude Code、Codex、Cursor、Gemini 等）之间发现、搜索并分析你的编码 agent 会话——全文搜索、token 用量分析、成本追踪，全在你本机完成，无需账号。
 
-![agentsview — 健康度雷达](../../assets/health/agentsview.zh.svg)
+![agentsview — 健康度雷达](../../../assets/health/agentsview.zh.svg)
 
 ## 何时使用
 
@@ -97,7 +97,7 @@ health:
 |---|---|---|---|
 | 各 agent 内置历史（Claude Code 的 `/resume` 等） | 未收录 | 原生零安装召回已经够用时，选各 agent 内置历史。 | 原生、零安装，但单 agent 且无跨工具搜索/成本汇总——正是 AgentsView 填的缺口。 |
 | ccusage / token 成本 CLI | 未收录 | 只需要聚焦 agent 成本报告时，选 ccusage 或 token 成本 CLI。 | 聚焦 Claude Code/agent 的 token 成本报告器；范围更窄（成本，常为单 agent），对比 AgentsView 的搜索＋分析＋多 agent。 |
-| [Langfuse](../llm-eval/langfuse.zh.md) / Helicone / 可观测性 SaaS | 部分已收录 | 需要生产级 LLM 可观测性平台时，选 Langfuse 或 Helicone。 | 生产级 LLM 可观测性平台（tracing、evals）；为应用管线而建，通常托管/需埋点，而非对*你自己*编码 agent 会话做 local-first 浏览。 |
+| [Langfuse](../../llm-eval/langfuse.zh.md) / Helicone / 可观测性 SaaS | 部分已收录 | 需要生产级 LLM 可观测性平台时，选 Langfuse 或 Helicone。 | 生产级 LLM 可观测性平台（tracing、evals）；为应用管线而建，通常托管/需埋点，而非对*你自己*编码 agent 会话做 local-first 浏览。 |
 | 对 `~/.claude` / 会话目录做 grep | 未收录 | 零依赖本地搜索已经够用时，选 grep 会话目录。 | 零依赖且完全本地，但没有 UI、没有 token/成本计算、没有跨 agent 归一化。 |
 
 ## 技术栈

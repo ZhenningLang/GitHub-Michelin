@@ -2,7 +2,7 @@
 name: Context Mode
 slug: context-mode
 repo: https://github.com/mksglu/context-mode
-category: agent-tooling
+category: work-state
 tags: [mcp, context-window, tool-output-sandbox, session-memory, hooks, fts5, multi-platform, source-available]
 language: TypeScript
 license: Elastic-2.0
@@ -77,7 +77,7 @@ health:
 
 An MCP server that keeps raw tool output out of an agent's context window — it runs reads/fetches/log-crunching in a sandboxed subprocess (only stdout returns), indexes session events into SQLite FTS5 so the agent survives compaction, and uses hooks to *route* heavy tool calls into the sandbox across ~18 agent platforms.
 
-![context-mode — health radar](../../assets/health/context-mode.svg)
+![context-mode — health radar](../../../assets/health/context-mode.svg)
 
 ## When to use
 

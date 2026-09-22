@@ -2,7 +2,7 @@
 name: Plannotator
 slug: plannotator
 repo: https://github.com/backnotprop/plannotator
-category: agent-tooling
+category: supervision-surfaces
 tags: [coding-agents, human-in-the-loop, plan-review, code-review, annotation, hooks, local-first, claude-code]
 language: TypeScript
 license: MIT OR Apache-2.0
@@ -77,7 +77,7 @@ health:
 
 You approve an agent's plan with one keystroke at the bottom of a terminal scrollback, and three files later you notice it read one paragraph differently than you did — the plan was never really reviewed, just skimmed, and there was nowhere to write "step 3 migrates the column before the backfill". Plannotator intercepts that moment: the plan (and later the diff) opens as a page in your own browser, you mark the exact blocks and lines, and those marks come back to the agent as its next instruction.
 
-![plannotator — health radar](../../assets/health/plannotator.svg)
+![plannotator — health radar](../../../assets/health/plannotator.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ The deciding tradeoff against its substitutes is that the gate lives **inside th
 
 The installer is the only step that touches your agent's configuration: it detects which agents you have installed and writes the hook, command and skill entries for each of them. After that, the value comes from one hook protocol. When the agent is about to ask permission for a plan (Claude Code calls `ExitPlanMode`), the registered command starts a short-lived local web server, renders the plan in an editor that understands Markdown, code and HTML anchors, and opens your browser; **the hook blocks while you read**. Your decision travels back as stdout rather than as an exit code — the command always exits `0`: Approve prints nothing, so the hook passes and the agent proceeds, while Send Annotations prints `{"decision":"block","reason":"…"}`, which is the hook-native "block with feedback" signal Claude Code and Codex already speak, so the agent's turn resumes with your annotations as its reason. Resubmitting the plan shows a diff against the version you reviewed. The line between you and it is clean: **the project owns the server, the renderer, the annotation model, the diff view and the hook protocol; you own the judgment** — which lines are wrong and whether to approve — plus, for Ask AI and review agents, your own configured model provider.
 
-![plannotator — backbone user story](../../assets/flow/plannotator.svg)
+![plannotator — backbone user story](../../../assets/flow/plannotator.svg)
 
 <!-- flow-steps:begin (generated from flows/plannotator.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ The installer is the only step that touches your agent's configuration: it detec
 
 ## When NOT to use
 
-- **You want the machine to write the review findings.** Plannotator is a surface for *your* annotations, with optional AI assistance. If the requirement is LLM-generated line comments on a diff in CI, use [Open Code Review](../ai-code-review/open-code-review.md), [PR-Agent](../ai-code-review/pr-agent.md) or [Metis](../ai-code-review/metis.md) instead — they produce findings without a human in the loop, which is the opposite shape.
+- **You want the machine to write the review findings.** Plannotator is a surface for *your* annotations, with optional AI assistance. If the requirement is LLM-generated line comments on a diff in CI, use [Open Code Review](../../ai-code-review/open-code-review.md), [PR-Agent](../../ai-code-review/pr-agent.md) or [Metis](../../ai-code-review/metis.md) instead — they produce findings without a human in the loop, which is the opposite shape.
 - **You need a hosted, multi-person review workspace** (assignments, audit trail, comments from people who are not at your terminal). That is where the project itself is heading: the open-source asynchronous link sharing is documented as "moving to deprecated support", with the hosted Workspaces product named as the primary direction. For that job pick GitHub/GitLab review plus a hosted reviewer (CodeRabbit, Graphite, Reviewable — hosted services, not repos) rather than depending on a feature the upstream labels legacy.
 - **Your harness has no lifecycle hook to intercept.** Plan interception is hook-based: Droid is commands-only with "no plan interception yet", and Codex hooks on native Windows are still experimental. Drive it manually (`/plannotator-annotate <file>`, `plannotator annotate <file> --hook`) or stay with the harness prompt.
 - **The machine must make no unsolicited network calls.** Every plan/annotate/review surface checks `api.github.com` for the latest release when it loads and, per the README, "there is currently no opt-out setting"; URL annotation fetches through Jina Reader by default; local diff review may query `origin` with `git ls-remote` (that last one *is* disableable). If you are air-gapped or under egress review, either fork and strip the check or choose a tool that stays offline. [未验证]
@@ -122,8 +122,8 @@ The installer is the only step that touches your agent's configuration: it detec
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | Harness built-in plan approval (Claude Code / Codex permission prompt) | not a repo | When a plan is short and you only need yes/no, keep the built-in prompt; reach for Plannotator when you need to say *which* line is wrong, not just *no*. | Zero install and always on, but no annotations, no page, no plan diff, no record of a decision. |
-| [CloudCLI (Claude Code UI)](../agent-tooling/claudecodeui.md) | ✅ | Choose CloudCLI when you want to *drive* agent sessions from a browser or phone (files, terminal, git); choose Plannotator when the job is reviewing and annotating a specific artifact with the agent blocked on your decision. | CloudCLI is session-shaped and broader; Plannotator is artifact-shaped and gates the turn — narrower, but that gate is the point. |
-| [Open Code Review](../ai-code-review/open-code-review.md) | ✅ | Choose Open Code Review when you want review findings produced automatically on every diff in CI; choose Plannotator when the value is a *human* decision on plan or diff that the agent then acts on. | Automatic coverage with no human attention, versus attention spent where blast radius is highest — usually both are wanted, at different stages. |
+| [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | Choose CloudCLI when you want to *drive* agent sessions from a browser or phone (files, terminal, git); choose Plannotator when the job is reviewing and annotating a specific artifact with the agent blocked on your decision. | CloudCLI is session-shaped and broader; Plannotator is artifact-shaped and gates the turn — narrower, but that gate is the point. |
+| [Open Code Review](../../ai-code-review/open-code-review.md) | ✅ | Choose Open Code Review when you want review findings produced automatically on every diff in CI; choose Plannotator when the value is a *human* decision on plan or diff that the agent then acts on. | Automatic coverage with no human attention, versus attention spent where blast radius is highest — usually both are wanted, at different stages. |
 | herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants) | not indexed | Keep Plannotator proper for browser-scale documents and plan interception; the terminal variants exist for people who live inside Herdr or want a TUI, and are deliberately left unindexed here as near-duplicates of the same review model. | Terminal surfaces work where a browser does not (headless boxes), but lose rendered Markdown/HTML, side-by-side diffs and the VS Code integration. |
 | CodeRabbit / Graphite / Reviewable (hosted PR review services) | not a repo | Choose a hosted reviewer when the review must be social — teammates commenting on a PR with history and notifications; choose Plannotator when the reviewer is you and the agent is waiting on the answer. | Hosted handles multi-person workflow and audit, but it is closed, priced, and downstream of the local agent loop rather than inside it. |
 

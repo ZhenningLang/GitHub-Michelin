@@ -2,7 +2,7 @@
 name: AgentsView
 slug: agentsview
 repo: https://github.com/kenn-io/agentsview
-category: agent-tooling
+category: session-history
 tags: [coding-agents, observability, session-search, token-usage, cost-tracking, local-first, claude-code]
 language: Go
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 A local-first desktop/CLI app that discovers, searches, and analyzes your coding-agent sessions across 40+ agents (Claude Code, Codex, Cursor, Gemini, and more) — full-text search, token-usage analytics, and cost tracking, all on your machine without an account.
 
-![agentsview — health radar](../../assets/health/agentsview.svg)
+![agentsview — health radar](../../../assets/health/agentsview.svg)
 
 ## When to use
 
@@ -97,7 +97,7 @@ You reach for it specifically when you want **observability over your own agent 
 |---|---|---|---|
 | Per-agent built-in history (Claude Code `/resume`, etc.) | 未收录 | Choose built-in agent history when native zero-install recall is enough. | Native and zero-install, but single-agent and no cross-tool search/cost rollup — the gap AgentsView fills. |
 | ccusage / token-cost CLIs | 未收录 | Choose ccusage or token-cost CLIs when you only need focused agent cost reporting. | Focused Claude Code/agent token-cost reporters; narrower scope (cost, often one agent) vs. AgentsView's search + analytics + multi-agent. |
-| [Langfuse](../llm-eval/langfuse.md) / Helicone / observability SaaS | 部分已收录 | Choose Langfuse or Helicone when you need production LLM observability platforms. | Production LLM observability platforms (tracing, evals); built for app pipelines and usually hosted/instrumented, not local-first browsing of *your own* coding-agent sessions. |
+| [Langfuse](../../llm-eval/langfuse.md) / Helicone / observability SaaS | 部分已收录 | Choose Langfuse or Helicone when you need production LLM observability platforms. | Production LLM observability platforms (tracing, evals); built for app pipelines and usually hosted/instrumented, not local-first browsing of *your own* coding-agent sessions. |
 | grep over `~/.claude` / session dirs | 未收录 | Choose grep over local session dirs when zero-dependency local search is enough. | Zero-dependency and fully local, but no UI, no token/cost math, no cross-agent normalization. |
 
 ## Tech stack

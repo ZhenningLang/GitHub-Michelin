@@ -2,7 +2,7 @@
 name: Planning with Files
 slug: planning-with-files
 repo: https://github.com/OthmanAdi/planning-with-files
-category: agent-tooling
+category: work-state
 tags: [agent-skill, planning, persistent-memory, context-engineering, completion-gate, multi-agent, claude-code, skill-md]
 language: Python/Shell/PowerShell
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 A SKILL.md-standard skill that makes a coding agent keep `task_plan.md` / `findings.md` / `progress.md` on disk so it survives `/clear`, compaction, and crashes — Manus-style file-based planning, with an opt-in completion gate, plus per-IDE lifecycle hooks.
 
-![planning-with-files — health radar](../../assets/health/planning-with-files.svg)
+![planning-with-files — health radar](../../../assets/health/planning-with-files.svg)
 
 ## When to use
 

@@ -2,7 +2,7 @@
 name: CCPM
 slug: ccpm
 repo: https://github.com/automazeio/ccpm
-category: agent-tooling
+category: work-state
 tags: [spec-driven, project-management, github-issues, git-worktrees, parallel-agents, agent-skill, prd, epics, claude-code, shell]
 language: Shell
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 一个 spec-driven 的项目管理 skill（bash 脚本 + skill 提示词），把 PRD 转成 GitHub Issues，并借助 git worktree 让多个编码 agent 并行干活——项目状态存在 markdown 文件里，而不是聊天记录里。
 
-![ccpm — 健康度雷达](../../assets/health/ccpm.zh.svg)
+![ccpm — 健康度雷达](../../../assets/health/ccpm.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 |---|---|---|---|
 | [beads](beads.zh.md) | ✅ | 需要给 agent 持久记忆的版本化 SQL 任务图时，选 beads。 | 一个版本化 SQL 的任务**图**，给 agent 持久记忆；依赖/就绪检测后端更强，但没有 PRD→epic→GitHub-Issues 的规格流水线，也没有基于 worktree 的并行编排。CCPM 偏流程 + GitHub 原生；beads 偏存储原生的任务引擎。 |
 | [Planning with Files](planning-with-files.zh.md) | ✅ | 需要更轻的 markdown 文件规划模式时，选 Planning with Files。 | 更轻的“用文件做规划”模式（计划以 agent 读写的 markdown 存在）；在“状态存文件、不存聊天”上重叠，但没有 GitHub-Issues 同步、没有强制的 PRD/epic 阶段、没有并行 worktree 扇出。 |
-| [Entire](entire-cli.zh.md) | ✅ | 需要本类目里另一种 agent 工作追踪机制时，选 Entire。 | 本类目里另一种 agent 工作追踪思路；机制不同——若两者都进了候选名单，直接对比。 |
+| [Entire](../session-history/entire-cli.zh.md) | ✅ | 需要本类目里另一种 agent 工作追踪机制时，选 Entire。 | 本类目里另一种 agent 工作追踪思路；机制不同——若两者都进了候选名单，直接对比。 |
 | 手搓 GitHub Projects / Issues + `gh` | 未收录 | 想用同一个 GitHub Issues 后端但不要 CCPM 的规格纪律时，选手搓 GitHub Issues。 | 就是 CCPM 在驱动的同一后端，只是没有那套带主见的 PRD→epic→任务拆解、worktree 准备或 bash 状态脚本——规格纪律和并行约定得你自己手搓。 |
 | Taskmaster（claude-task-master） | 未收录 | 需要另一种流行的 PRD 转任务 agent 工作流时，选 Taskmaster。 | 同样流行的 PRD-转任务 agent 工作流；也把规格解析成任务，但它是自带的任务存储/CLI，而不是把 GitHub Issues + git worktree 当作共享事实源。 |
 | 纯 `MEMORY.md` / `TODO.md` | 未收录 | 零依赖和人类可读性比依赖元数据更重要时，选普通 markdown。 | 零依赖、人可读，但没有依赖元数据、没有 GitHub 同步、没有并行流隔离——正是 CCPM 要替换的无结构基线。 |

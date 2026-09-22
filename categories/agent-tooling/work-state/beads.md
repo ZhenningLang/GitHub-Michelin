@@ -2,7 +2,7 @@
 name: beads
 slug: beads
 repo: https://github.com/gastownhall/beads
-category: agent-tooling
+category: work-state
 tags: [ai-agents, task-graph, agent-memory, dolt, versioned-sql, dependency-graph, cli, go, long-horizon-tasks, multi-agent]
 language: Go
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 A dependency-aware, version-controlled task/issue graph that gives AI coding agents persistent structured memory — backed by Dolt (versioned SQL), shipped as a single Go binary (`bd`). Started by Steve Yegge; repo moved from `steveyegge/beads` to the `gastownhall` org.
 
-![beads — health radar](../../assets/health/beads.svg)
+![beads — health radar](../../../assets/health/beads.svg)
 
 ## When to use
 

@@ -2,7 +2,7 @@
 name: Planning with Files
 slug: planning-with-files
 repo: https://github.com/OthmanAdi/planning-with-files
-category: agent-tooling
+category: work-state
 tags: [agent-skill, planning, persistent-memory, context-engineering, completion-gate, multi-agent, claude-code, skill-md]
 language: Python/Shell/PowerShell
 license: MIT
@@ -67,7 +67,7 @@ health:
 
 一个遵循 SKILL.md 标准的 skill，让编码 agent 把 `task_plan.md` / `findings.md` / `progress.md` 写到磁盘上，从而在 `/clear`、上下文压缩和崩溃中存活——Manus 风格的文件化规划，带一个可选的完成闸（completion gate），外加各 IDE 的生命周期 hook。
 
-![planning-with-files — 健康度雷达](../../assets/health/planning-with-files.zh.svg)
+![planning-with-files — 健康度雷达](../../../assets/health/planning-with-files.zh.svg)
 
 ## 何时使用
 

@@ -2,7 +2,7 @@
 name: Ralph for Claude Code
 slug: ralph-claude-code
 repo: https://github.com/frankbria/ralph-claude-code
-category: agent-tooling
+category: work-state
 tags: [autonomous-loop, claude-code, ralph-technique, exit-detection, bash, circuit-breaker, rate-limiting, tmux-monitor, prd-import, single-provider]
 language: Shell
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 A Bash harness that wraps the Claude Code CLI in an autonomous "Ralph" loop — re-invoking Claude against `.ralph/PROMPT.md` until a dual-condition exit gate fires — with rate limiting, a circuit breaker, and a tmux monitoring dashboard so the loop doesn't run away or burn tokens forever.
 
-![ralph-claude-code — health radar](../../assets/health/ralph-claude-code.svg)
+![ralph-claude-code — health radar](../../../assets/health/ralph-claude-code.svg)
 
 ## When to use
 
@@ -99,10 +99,10 @@ So you `ralph-enable` (or `ralph-import requirements.md`) in your repo, drop you
 |---|---|---|---|
 | [beads](beads.md) | ✅ | Choose beads when you need the persistent dependency-aware task graph that stores what to do. | A persistent dependency-aware *task graph* (the *what to do* store); Ralph is the *loop that does it*. Complementary — Ralph even imports beads tasks — not substitutes. |
 | [CCPM](ccpm.md) | ✅ | Choose CCPM when you need spec/PRD-driven project management on top of Claude Code. | Spec/PRD-driven project management on top of Claude Code with GitHub-issue workflows; heavier on planning structure, less on a hardened unattended run-loop with circuit breaker + rate limiting. |
-| [Entire](entire-cli.md) | ✅ | Choose Entire when you need a broader agent-workflow CLI. | A broader agent-workflow CLI; overlaps on driving an agent but with a different orchestration model than Ralph's single-prompt Bash loop. |
+| [Entire](../session-history/entire-cli.md) | ✅ | Choose Entire when you need a broader agent-workflow CLI. | A broader agent-workflow CLI; overlaps on driving an agent but with a different orchestration model than Ralph's single-prompt Bash loop. |
 | [Context Mode](context-mode.md) | ✅ | Choose Context Mode when you need context/memory shaping rather than an autonomous completion loop. | Focuses on context/memory shaping for the agent rather than an autonomous completion loop with exit detection. |
 | Geoffrey Huntley's original Ralph (`while :; claude -p ...`) | 未收录 | Choose the original Ralph loop when you only need the raw one-line shell technique. | The raw technique is a one-line shell loop; this project is that idea plus exit gating, rate limits, circuit breaker, monitoring, backups, and sandboxing — i.e. the safety scaffolding the bare loop lacks. |
-| Aider `--auto` / [OpenHands](../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) / [SWE-agent](../agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md) | 部分已收录 | Choose Aider, OpenHands, or SWE-agent when you need general autonomous coding agents with their own loops. | General autonomous coding agents with their own models/loops; not Claude-Code-CLI wrappers and not built around the dual-condition `EXIT_SIGNAL` gate. |
+| Aider `--auto` / [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.md) / [SWE-agent](../../agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md) | 部分已收录 | Choose Aider, OpenHands, or SWE-agent when you need general autonomous coding agents with their own loops. | General autonomous coding agents with their own models/loops; not Claude-Code-CLI wrappers and not built around the dual-condition `EXIT_SIGNAL` gate. |
 
 ## Tech stack
 

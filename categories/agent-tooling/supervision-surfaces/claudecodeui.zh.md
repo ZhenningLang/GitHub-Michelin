@@ -2,7 +2,7 @@
 name: CloudCLI (Claude Code UI)
 slug: claudecodeui
 repo: https://github.com/siteboon/claudecodeui
-category: agent-tooling
+category: supervision-surfaces
 tags: [claude-code, codex, cursor-cli, agent-web-ui, mobile-client, terminal, self-hosted]
 language: TypeScript
 license: AGPL-3.0-or-later
@@ -74,11 +74,11 @@ health:
 
 AGPL 许可的自托管 Web + 移动驾驶舱（npm 包 `@cloudcli-ai/cloudcli`，前身为「Claude Code UI」品牌），用来从任意设备驾驶装在你机器上的 CLI 编码 agent——Claude Code、Codex 与 Cursor CLI，2026-09 起还有经 ACP 接入的新 provider：实时会话、项目/文件浏览、浏览器内编辑器、终端与 git diff 界面。
 
-![CloudCLI (Claude Code UI) — 健康度雷达](../../assets/health/claudecodeui.zh.svg)
+![CloudCLI (Claude Code UI) — 健康度雷达](../../../assets/health/claudecodeui.zh.svg)
 
 ## 何时使用
 
-你是主力用 Anthropic Claude Code（或 OpenAI Codex / Cursor CLI）的工程师，agent 跑在工作站或家里服务器上，你想用手机看一眼长任务跑到哪、审一下它挂起的文件改动、或者不回到那台终端就追发一条指令。你选 CloudCLI，因为它是*这个 CLI 家族唯一持续维护的开源 Web 驾驶面*：它前置的是本地安装、本地鉴权好的 agent 进程，而非自己重造 agent，所以会话/项目与 CLI 自己的存储一一对应。对 [Hermes Workspace](hermes-workspace.zh.md) 决策只取决于跑的是哪个大脑——Hermes Workspace 的增强面板只为 Nous 的 hermes-agent gateway/dashboard 亮起；对 [Agent Orchestrator](agent-orchestrator.zh.md) 你选的是「监管*并行异构*多 agent 的桌面 worktree 监工」而不是「远端浏览器里看*自己的* agent 会话」；对 [Open WebUI](../llm-chat-ui/open-webui.zh.md)、[LibreChat](../llm-chat-ui/librechat.zh.md) 你选的是真正的编码 agent 控制面（文件、终端、git），而非模型聊天。
+你是主力用 Anthropic Claude Code（或 OpenAI Codex / Cursor CLI）的工程师，agent 跑在工作站或家里服务器上，你想用手机看一眼长任务跑到哪、审一下它挂起的文件改动、或者不回到那台终端就追发一条指令。你选 CloudCLI，因为它是*这个 CLI 家族唯一持续维护的开源 Web 驾驶面*：它前置的是本地安装、本地鉴权好的 agent 进程，而非自己重造 agent，所以会话/项目与 CLI 自己的存储一一对应。对 [Hermes Workspace](hermes-workspace.zh.md) 决策只取决于跑的是哪个大脑——Hermes Workspace 的增强面板只为 Nous 的 hermes-agent gateway/dashboard 亮起；对 [Agent Orchestrator](agent-orchestrator.zh.md) 你选的是「监管*并行异构*多 agent 的桌面 worktree 监工」而不是「远端浏览器里看*自己的* agent 会话」；对 [Open WebUI](../../llm-chat-ui/open-webui.zh.md)、[LibreChat](../../llm-chat-ui/librechat.zh.md) 你选的是真正的编码 agent 控制面（文件、终端、git），而非模型聊天。
 
 插件系统（自定义标签页，带前端 + 可选 Node 后端，从 git 仓库安装）与 i18n 响应式 UI，补全了把它当个人 agent 座舱自托管的理由。
 
@@ -86,7 +86,7 @@ AGPL 许可的自托管 Web + 移动驾驶舱（npm 包 `@cloudcli-ai/cloudcli`�
 
 它前置的是*进程*，不是模型。那些 CLI agent 本来就装在你机器上、也已经登录过，各自把会话和项目存在磁盘上；CloudCLI 起一个本地 Node 服务去读同一份状态，所以浏览器里的会话就是 CLI 自己存的那个会话——什么都没有重新实现，也没有任何模型 key 经过它（你的花费仍记在你已有的那个厂商登录上）。一条 WebSocket 数据面把真实 PTY（`node-pty`）、文件树和 git diff 送进页面，这才让手机视图有用，而不只是一面聊天镜子。有一处刻意设置的摩擦：agent 能调的每个工具默认都是**关闭**的，所以刚装完只能看不能动，要你一个一个打开。
 
-![CloudCLI (Claude Code UI) — 主干用户故事](../../assets/flow/claudecodeui.zh.svg)
+![CloudCLI (Claude Code UI) — 主干用户故事](../../../assets/flow/claudecodeui.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/claudecodeui.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,7 +108,7 @@ AGPL 许可的自托管 Web + 移动驾驶舱（npm 包 `@cloudcli-ai/cloudcli`�
 
 - **你的 agent 大脑是 hermes-agent。** 改用 [Hermes Workspace](hermes-workspace.zh.md)——CloudCLI 前置的是 Claude 系 CLI，不是 Hermes 网关 API 约定。
 - **你背不动 AGPL-3.0-or-later。** README 自己点明了网络条款：改了它并作为网络服务运行，就要向该服务的用户开放修改后的源码。要嵌进专有产品，MIT 的 [Hermes Workspace](hermes-workspace.zh.md)（或直接裸用 API）形态更安全；纯个人自托管则完全不是问题——这也正是它赢上一条细分的原因。
-- **你想要团队聊天平台。** 多用户 RBAC 不是它的产品形态（见存疑）；要共享鉴权/presets 选 [LibreChat](../llm-chat-ui/librechat.zh.md)，要有人管的聊天前端选 [Open WebUI](../llm-chat-ui/open-webui.zh.md)。
+- **你想要团队聊天平台。** 多用户 RBAC 不是它的产品形态（见存疑）；要共享鉴权/presets 选 [LibreChat](../../llm-chat-ui/librechat.zh.md)，要有人管的聊天前端选 [Open WebUI](../../llm-chat-ui/open-webui.zh.md)。
 - **你需要监管并行多 agent。** N 个异构编码 agent、按 worktree 隔离、自动路由 CI/review 反馈的 GUI 形态，用 [Agent Orchestrator](agent-orchestrator.zh.md)；CloudCLI 本质上是我自己的会话、远程可看。
 - **底座可被抽走。** 它的价值在于前置 vendor CLI 的本地状态/鉴权——Claude Code 的会话格式变了、官方对 wrapper 的 ToS 转向、或 Codex/Cursor CLI 内部改道，都可能让部分面板无补救地坏掉。[推断]
 - **open-core 引力。** 仓库前面站着商业伴生品（cloudcli.ai 托管服务，README 带「CloudCLI Cloud」CTA）——路线图对自托管者的利益对齐不保证。由托管 CTA 推断，非成文政策，[推断]。
@@ -120,8 +120,8 @@ AGPL 许可的自托管 Web + 移动驾驶舱（npm 包 `@cloudcli-ai/cloudcli`�
 |---|---|---|---|
 | [Hermes Workspace](hermes-workspace.zh.md) | ✅ | 机器上的大脑是 hermes-agent 时选 Hermes Workspace（它读的是别的 agent 不提供的 Hermes gateway/dashboard API）；是 Claude Code / Codex / Cursor CLI 时选 CloudCLI。 | 产品形态相同（Web 控制台 + xterm + 文件前置一个 CLI agent），后端生态相反。Hermes Workspace 是 MIT、外加 tmux swarm 派发；CloudCLI 是 AGPL-3.0-or-later、更年长、月月发版、带插件生态与厂商云。 |
 | [Agent Orchestrator](agent-orchestrator.zh.md) | ✅ | 活儿是*监管大量并发*编码 agent、要 worktree 隔离与 CI/review 反馈自动化、且接受桌面应用时，选 Agent Orchestrator。 | 桌面应用 + 本地 Go daemon、23+ agent 适配器、worktree 泳道。CloudCLI：浏览器/移动优先的远程驾驶舱，前置 agent 既有会话，根本没有 worktree 监工模型。 |
-| [Open WebUI](../llm-chat-ui/open-webui.zh.md) | ✅ | 你要的是模型聊天平台（RAG、用户、presets）、完全不要编码 agent 界面时，选 Open WebUI。 | Open WebUI 渲染的是与模型的对话；CloudCLI 渲染的是*进程*——会话、终端、diff。重叠的只有浏览器标签页。 |
-| [LibreChat](../llm-chat-ui/librechat.zh.md) | ✅ | 团队的硬需求是多用户鉴权与面向聊天的 provider 广度时，选 LibreChat。 | LibreChat：团队级聊天。CloudCLI：个人编码 agent 座舱；远程可看不等于多租户。 |
+| [Open WebUI](../../llm-chat-ui/open-webui.zh.md) | ✅ | 你要的是模型聊天平台（RAG、用户、presets）、完全不要编码 agent 界面时，选 Open WebUI。 | Open WebUI 渲染的是与模型的对话；CloudCLI 渲染的是*进程*——会话、终端、diff。重叠的只有浏览器标签页。 |
+| [LibreChat](../../llm-chat-ui/librechat.zh.md) | ✅ | 团队的硬需求是多用户鉴权与面向聊天的 provider 广度时，选 LibreChat。 | LibreChat：团队级聊天。CloudCLI：个人编码 agent 座舱；远程可看不等于多租户。 |
 | Conductor（Mac 应用） | 未收录（非仓库） | 只有当你要闭源商业 macOS 任务驾驶应用、且不打算自托管时才考虑。 | 专有 SaaS 形态产品、不是仓库——列出来只为版图完整。 |
 
 ## 技术栈

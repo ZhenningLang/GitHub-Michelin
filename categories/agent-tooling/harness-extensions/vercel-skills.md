@@ -2,7 +2,7 @@
 name: Vercel Skills
 slug: vercel-skills
 repo: https://github.com/vercel-labs/skills
-category: agent-tooling
+category: harness-extensions
 tags: [skills, package-manager, cli, claude-code, opencode, cursor, codex, npx, installer, agent-tooling]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 A package-manager-style CLI (`npx skills`) that installs, finds, and updates agent "skills" — `SKILL.md` instruction packs — into 70+ coding agents from GitHub/GitLab/local sources. It is the *installer*, not the skill content.
 
-![vercel-skills — health radar](../../assets/health/vercel-skills.svg)
+![vercel-skills — health radar](../../../assets/health/vercel-skills.svg)
 
 ## When to use
 
@@ -87,7 +87,7 @@ So you run `npx skills add owner/repo` to drop a skill into the right agent dire
 
 - **You want the skills themselves, not a way to manage them.** This is the installer/manager. The actual reusable instructions are *content* packs — the [skill-pack] siblings below (Planning with Files, Context Mode, etc.) are the kind of thing it installs. Adding this tool gives you zero new agent capabilities until you point it at content.
 - **You only use one agent and rarely change skills.** If you live entirely in Claude Code and hand-copy two skills a year, the value (cross-agent path resolution, bulk update) is marginal over `cp` + a git submodule; you're taking a dependency for ergonomics you won't exercise.
-- **You need MCP-server, plugin, or tool-binary management.** Its scope is `SKILL.md` instruction packs only — it does not install or run MCP servers, manage agent binaries, or orchestrate runtime state. For task/state tooling see the comparison row for [beads](beads.md).
+- **You need MCP-server, plugin, or tool-binary management.** Its scope is `SKILL.md` instruction packs only — it does not install or run MCP servers, manage agent binaries, or orchestrate runtime state. For task/state tooling see the comparison row for [beads](../work-state/beads.md).
 - **You need a curated, security-reviewed marketplace.** Sources resolve straight from arbitrary GitHub/GitLab/git URLs; installing a pack means trusting third-party prompt content that goes into your agent's context. There is no vetting gate, so supply-chain / prompt-injection caution is on you.
 - **Reproducible, pinned installs across a team.** No lockfile / `skills.json` manifest was found in the docs, so version-pinning and deterministic re-install across machines are not first-class today (verify against the current release before depending on it).
 - **Maturity ceiling.** Pre-2.0, single-vendor (`vercel-labs`) project moving fast (frequent point releases); the command surface and the registry it talks to can shift release-to-release.
@@ -96,9 +96,9 @@ So you run `npx skills add owner/repo` to drop a skill into the right agent dire
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Planning with Files](planning-with-files.md) | ✅ | Choose Planning with Files when you need skill-pack content rather than an installer. | A skill-pack (content) — the *kind of thing* Skills installs, not a competitor. Use Skills to deliver packs like this into your agent. |
-| [Context Mode](context-mode.md) | ✅ | Choose Context Mode when you need workflow content rather than skill distribution. | Also a skill-pack / workflow content, not an installer. Orthogonal: Skills is the delivery mechanism, this is the payload. |
-| [beads](beads.md) | ✅ | Choose beads when you need persistent task/memory state for agents, not skill distribution. | Different layer: persistent task/memory *state* for agents, not skill distribution. You might install both — they don't overlap. |
+| [Planning with Files](../work-state/planning-with-files.md) | ✅ | Choose Planning with Files when you need skill-pack content rather than an installer. | A skill-pack (content) — the *kind of thing* Skills installs, not a competitor. Use Skills to deliver packs like this into your agent. |
+| [Context Mode](../work-state/context-mode.md) | ✅ | Choose Context Mode when you need workflow content rather than skill distribution. | Also a skill-pack / workflow content, not an installer. Orthogonal: Skills is the delivery mechanism, this is the payload. |
+| [beads](../work-state/beads.md) | ✅ | Choose beads when you need persistent task/memory state for agents, not skill distribution. | Different layer: persistent task/memory *state* for agents, not skill distribution. You might install both — they don't overlap. |
 | Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`) | 未收录 | Choose Claude Code plugin marketplaces when you need Claude-Code-native plugin distribution. | Native Claude Code plugin/marketplace mechanism; richer (commands, hooks, MCP) but Claude-Code-only. Skills targets `SKILL.md` packs across 70+ agents instead. |
 | git submodule / manual `cp` | 未收录 | Choose git submodules or manual copying when zero new dependency and transparency matter most. | Zero new dependency and fully transparent, but no cross-agent path resolution, no discovery registry, no bulk `update` — the manual flow Skills replaces. |
 | npm / pnpm packaging a skill dir | 未收录 | Choose npm/pnpm packaging when you want JS-ecosystem versioning and lockfiles. | Reuses the JS package ecosystem (real versioning + lockfiles), but skills aren't npm-shaped and you'd hand-place files per agent; Skills is purpose-built for the `SKILL.md` layout. |

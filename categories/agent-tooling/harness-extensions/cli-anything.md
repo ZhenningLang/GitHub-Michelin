@@ -2,7 +2,7 @@
 name: CLI-Anything
 slug: cli-anything
 repo: https://github.com/HKUDS/CLI-Anything
-category: agent-tooling
+category: harness-extensions
 tags: [agent-native, cli-harness, gui-automation, mcp-complement, skill-generation, code-generation, python]
 language: Python
 license: Apache-2.0
@@ -77,20 +77,20 @@ health:
 
 A generator + registry that makes existing software agent-callable by emitting CLI harnesses: install its plugin/skill into a coding agent, run `/cli-anything <app>`, and get a `cli-anything-<app>` command (`--json` output plus a `SKILL.md`) that drives the software's **own** backend instead of reimplementing it.
 
-![cli-anything — health radar](../../assets/health/cli-anything.svg)
+![cli-anything — health radar](../../../assets/health/cli-anything.svg)
 
 ## When to use
 
 You run a coding agent (Claude Code, Cursor, Codex, …) and keep needing it to operate software that ships as a GUI or a half-documented native scripting interface: batch-export a folder of `.odt` files to PDF, assemble a Blender scene from a spec, produce a QGIS map, record and cut an OBS session. You could hand-write a wrapper per app, or reach for pixel automation, but both scale badly across a dozen pieces of software.
 
-You install the CLI-Anything plugin into your agent and run `/cli-anything <app>`; the agent follows the repo's 7-phase `HARNESS.md` SOP and emits a `cli-anything-<app>` command backed by the app's real backend (LibreOffice `--headless`, Blender `--background --python`, GIMP Script-Fu, `melt`/`ffmpeg`), with `--json` output and a `SKILL.md` your agent can discover. It wins over [PyAutoGUI](../desktop-automation/pyautogui.md) because backend calls are deterministic where pixel coordinates are not, and over a hand-written MCP server because you would otherwise rebuild that adapter once per application. If a harness already exists, skip generation entirely: `pip install cli-anything-hub`, then `cli-hub search` / `install` / `launch`.
+You install the CLI-Anything plugin into your agent and run `/cli-anything <app>`; the agent follows the repo's 7-phase `HARNESS.md` SOP and emits a `cli-anything-<app>` command backed by the app's real backend (LibreOffice `--headless`, Blender `--background --python`, GIMP Script-Fu, `melt`/`ffmpeg`), with `--json` output and a `SKILL.md` your agent can discover. It wins over [PyAutoGUI](../../desktop-automation/pyautogui.md) because backend calls are deterministic where pixel coordinates are not, and over a hand-written MCP server because you would otherwise rebuild that adapter once per application. If a harness already exists, skip generation entirely: `pip install cli-anything-hub`, then `cli-hub search` / `install` / `launch`.
 
 ## When NOT to use
 
 - **Your target is your own HTTP API with an OpenAPI spec.** The SOP is written around GUI apps ("identify the backend engine", "map GUI actions"), so an API project has no engine to discover and you end up with a thin HTTP shim to maintain. Use an OpenAPI→MCP generator, or let the agent call the API directly.
-- **Your agent runtime only speaks MCP.** A generated harness is invoked by shelling out to a CLI; if the client cannot run processes, use an MCP server instead — for browsers specifically, [Playwright MCP](../web-automation/playwright-family/playwright-mcp.md).
-- **You need pixel-level control of an app with no scripting backend.** That is exactly what [PyAutoGUI](../desktop-automation/pyautogui.md) is for; CLI-Anything requires a backend to wrap and will not synthesize one.
-- **The app already has a maintained agent integration.** Prefer it — e.g. [Playwright CLI](../web-automation/playwright-family/playwright-cli.md) for browser work — because a regenerated community harness adds churn without adding capability.
+- **Your agent runtime only speaks MCP.** A generated harness is invoked by shelling out to a CLI; if the client cannot run processes, use an MCP server instead — for browsers specifically, [Playwright MCP](../../web-automation/playwright-family/playwright-mcp.md).
+- **You need pixel-level control of an app with no scripting backend.** That is exactly what [PyAutoGUI](../../desktop-automation/pyautogui.md) is for; CLI-Anything requires a backend to wrap and will not synthesize one.
+- **The app already has a maintained agent integration.** Prefer it — e.g. [Playwright CLI](../../web-automation/playwright-family/playwright-cli.md) for browser work — because a regenerated community harness adds churn without adding capability.
 - **You need a stable, supported contract or an SLA.** The project is pre-1.0, harnesses are community-contributed, and they track the upstream app's version. Bind to the app's native API and pin versions yourself if stability is the requirement.
 - **You cannot install the target software** (locked-down CI, no license for the desktop app). The harness invokes the real application by design — it is a dependency, not a bundled runtime. Use a library that reimplements the same job (a Python/Rust library, or the app's headless sibling) instead.
 - **Credentialed or regulated environments, without a review budget.** Each `cli-anything-<app>` is third-party code that holds your tokens and drives your apps. Prefer vendor-maintained MCP servers or your own in-house wrapper, and treat any community harness you do install as a supply-chain review rather than a default install.
@@ -99,8 +99,8 @@ You install the CLI-Anything plugin into your agent and run `/cli-anything <app>
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [PyAutoGUI](../desktop-automation/pyautogui.md) | ✅ | When the target exposes a scripting/CLI backend, take CLI-Anything's generated harness; pick PyAutoGUI only when it does not and you must drive the GUI itself. | Backend calls are deterministic and survive DPI/theme/resolution changes; pixel automation applies universally but breaks silently — you trade coverage for reliability. |
-| [Playwright CLI](../web-automation/playwright-family/playwright-cli.md) | ✅ | For browser targets, use Microsoft's vendor-maintained CLI+SKILLs path; choose CLI-Anything only when you want one uniform harness pattern across many non-browser apps. | Playwright is browser-deep, versioned, and vendor-supported; CLI-Anything is broader but each harness is thinner and community-owned. |
+| [PyAutoGUI](../../desktop-automation/pyautogui.md) | ✅ | When the target exposes a scripting/CLI backend, take CLI-Anything's generated harness; pick PyAutoGUI only when it does not and you must drive the GUI itself. | Backend calls are deterministic and survive DPI/theme/resolution changes; pixel automation applies universally but breaks silently — you trade coverage for reliability. |
+| [Playwright CLI](../../web-automation/playwright-family/playwright-cli.md) | ✅ | For browser targets, use Microsoft's vendor-maintained CLI+SKILLs path; choose CLI-Anything only when you want one uniform harness pattern across many non-browser apps. | Playwright is browser-deep, versioned, and vendor-supported; CLI-Anything is broader but each harness is thinner and community-owned. |
 | Hand-written MCP server | 未收录 | Choose a hand-written MCP server when you need one app exposed with a curated, stable tool schema. | Highest control and the only option for MCP-only clients, but you build and maintain one adapter per application — the cost CLI-Anything exists to amortize. |
 | The app's native scripting backend, driven directly | 未收录 | Drive `blender --background --python`, `gimp -i -b`, `libreoffice --headless` yourself when you only need one or two operations. | Zero abstraction and no generated code to trust, but you own argument construction, error handling, JSON shaping, and the agent-facing docs for every call. |
 | A DIY CLI wrapper + `SKILL.md` kept in-house | 未收录 | Keep it in-house when your operations are unusual or security-sensitive and worth bespoke review. | Full control of credentials and surface area, at the cost of writing the CLI, tests, and skill doc yourself — and redoing it for the next app. |

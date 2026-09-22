@@ -2,7 +2,7 @@
 name: CloudCLI (Claude Code UI)
 slug: claudecodeui
 repo: https://github.com/siteboon/claudecodeui
-category: agent-tooling
+category: supervision-surfaces
 tags: [claude-code, codex, cursor-cli, agent-web-ui, mobile-client, terminal, self-hosted]
 language: TypeScript
 license: AGPL-3.0-or-later
@@ -74,11 +74,11 @@ health:
 
 An AGPL-licensed self-hosted web + mobile console (npm package `@cloudcli-ai/cloudcli`, formerly branded "Claude Code UI") for driving the CLI coding agents installed on your machine — Claude Code, Codex, and Cursor CLI, with newer provider wiring by ACP — from any device: live sessions, project/file browsing, in-browser editor, terminal, and git diff surfaces.
 
-![CloudCLI (Claude Code UI) — health radar](../../assets/health/claudecodeui.svg)
+![CloudCLI (Claude Code UI) — health radar](../../../assets/health/claudecodeui.svg)
 
 ## When to use
 
-You're an engineer whose main agent is Anthropic's Claude Code (or OpenAI's Codex / Cursor CLI), you run it on a workstation or home server, and you want to check on a long task from your phone, review its pending file changes, or send a follow-up message without returning to that terminal. You reach for CloudCLI because it is *the* maintained open-source web surface for that CLI family: it fronts the locally-installed, locally-authenticated agent processes rather than re-implementing them, so sessions/projects map 1:1 to what the CLI itself stores. Against [Hermes Workspace](hermes-workspace.md) the decision is simply which brain you run — Hermes Workspace's enhanced panes only light up for Nous's hermes-agent gateway/dashboard; against [Agent Orchestrator](agent-orchestrator.md) you'd be choosing a desktop worktree supervisor for *parallel heterogeneous* agents instead of a remote browser console for *your own* agent sessions; against [Open WebUI](../llm-chat-ui/open-webui.md)/[LibreChat](../llm-chat-ui/librechat.md) you're choosing actual coding-agent control (files, terminal, git) over model chat.
+You're an engineer whose main agent is Anthropic's Claude Code (or OpenAI's Codex / Cursor CLI), you run it on a workstation or home server, and you want to check on a long task from your phone, review its pending file changes, or send a follow-up message without returning to that terminal. You reach for CloudCLI because it is *the* maintained open-source web surface for that CLI family: it fronts the locally-installed, locally-authenticated agent processes rather than re-implementing them, so sessions/projects map 1:1 to what the CLI itself stores. Against [Hermes Workspace](hermes-workspace.md) the decision is simply which brain you run — Hermes Workspace's enhanced panes only light up for Nous's hermes-agent gateway/dashboard; against [Agent Orchestrator](agent-orchestrator.md) you'd be choosing a desktop worktree supervisor for *parallel heterogeneous* agents instead of a remote browser console for *your own* agent sessions; against [Open WebUI](../../llm-chat-ui/open-webui.md)/[LibreChat](../../llm-chat-ui/librechat.md) you're choosing actual coding-agent control (files, terminal, git) over model chat.
 
 A plugin system (custom tabs with frontend + optional Node backend, installed from git repos) and an i18n'd responsive UI round out the case for self-hosting it as your personal agent cockpit.
 
@@ -86,7 +86,7 @@ A plugin system (custom tabs with frontend + optional Node backend, installed fr
 
 It fronts *processes*, not models. The CLI agents are already installed and logged in on your machine, and each keeps its sessions and projects on disk; CloudCLI starts a local Node server that reads that same state, so a session in the browser is the session the CLI itself stores — nothing is re-implemented, and no model key ever passes through it (your spend stays on the vendor login you already have). A WebSocket data plane carries a real PTY (`node-pty`), the file tree and the git diff into the page, which is what makes the phone view useful rather than a chat mirror. One deliberate friction: every tool the agent could call starts **disabled**, so a fresh install can look but not act until you turn them on one at a time.
 
-![CloudCLI (Claude Code UI) — backbone user story](../../assets/flow/claudecodeui.svg)
+![CloudCLI (Claude Code UI) — backbone user story](../../../assets/flow/claudecodeui.svg)
 
 <!-- flow-steps:begin (generated from flows/claudecodeui.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,7 +108,7 @@ It fronts *processes*, not models. The CLI agents are already installed and logg
 
 - **Your agent brain is hermes-agent.** Use [Hermes Workspace](hermes-workspace.md) — CloudCLI fronts Claude-family CLIs, not the Hermes gateway API contract.
 - **You can't carry AGPL-3.0-or-later.** The README itself spells out the network clause: modify it and run it as a network service → you must offer the modified source to that service's users. For embedding into a proprietary offering, the MIT-licensed [Hermes Workspace](hermes-workspace.md) (or plain APIs) is the safer shape — for self-hosted *personal* use this is a non-issue, which is why it still wins the previous bullet's niche.
-- **You want a team chat platform.** Multi-user RBAC is not its product shape (see Caveats); pick [LibreChat](../llm-chat-ui/librechat.md) for shared auth/presets or [Open WebUI](../llm-chat-ui/open-webui.md) for a managed chat frontend.
+- **You want a team chat platform.** Multi-user RBAC is not its product shape (see Caveats); pick [LibreChat](../../llm-chat-ui/librechat.md) for shared auth/presets or [Open WebUI](../../llm-chat-ui/open-webui.md) for a managed chat frontend.
 - **You need supervised parallelism across many agents.** For N heterogeneous coding agents with per-worktree isolation and CI/review feedback routing in a GUI, use [Agent Orchestrator](agent-orchestrator.md); CloudCLI is fundamentally "my sessions, remote".
 - **The substrate can be pulled.** Its value is fronting vendor CLIs' local state/auth — changes to Claude Code's session format, ToS stance toward wrappers, or Codex/Cursor CLI internals can break or delegitimize panes with no recourse for you. [推断]
 - **Open-core gravity.** The repo fronts a commercial companion (cloudcli.ai hosted service; README carries "CloudCLI Cloud" CTAs) — feature roadmap alignment with the paid cloud is not guaranteed to match self-hosters' interests. [推断] from the hosting CTA, not from a stated policy.
@@ -120,8 +120,8 @@ It fronts *processes*, not models. The CLI agents are already installed and logg
 |---|---|---|---|
 | [Hermes Workspace](hermes-workspace.md) | ✅ | When the brain on the box is hermes-agent, pick Hermes Workspace (its panes read Hermes gateway/dashboard APIs); when it's Claude Code / Codex / Cursor CLI, pick CloudCLI. | Same product shape (web console + xterm + files over a CLI agent), opposite backends. Hermes Workspace is MIT and adds tmux swarm dispatch; CloudCLI is AGPL, older, releases monthly, and has a plugin ecosystem plus vendor cloud. |
 | [Agent Orchestrator](agent-orchestrator.md) | ✅ | Choose Agent Orchestrator when the job is *supervising many concurrent* coding agents with worktree isolation and automated CI/review feedback, on a desktop. | Desktop app + local Go daemon, 23+ agent adapters, worktree lanes. CloudCLI: browser/mobile-first remote console over an agent's existing sessions, with no worktree supervisor model at all. |
-| [Open WebUI](../llm-chat-ui/open-webui.md) | ✅ | Choose Open WebUI when you want a model-chat platform (RAG, users, presets) and no coding-agent surface at all. | Open WebUI renders conversations with models; CloudCLI renders *processes* — sessions, terminals, diffs. Overlap is only the browser tab. |
-| [LibreChat](../llm-chat-ui/librechat.md) | ✅ | Choose LibreChat when multi-user auth and provider breadth for chat are requirements of a team. | LibreChat: team-grade chat. CloudCLI: personal coding-agent cockpit; remote viewing is not multi-tenancy. |
+| [Open WebUI](../../llm-chat-ui/open-webui.md) | ✅ | Choose Open WebUI when you want a model-chat platform (RAG, users, presets) and no coding-agent surface at all. | Open WebUI renders conversations with models; CloudCLI renders *processes* — sessions, terminals, diffs. Overlap is only the browser tab. |
+| [LibreChat](../../llm-chat-ui/librechat.md) | ✅ | Choose LibreChat when multi-user auth and provider breadth for chat are requirements of a team. | LibreChat: team-grade chat. CloudCLI: personal coding-agent cockpit; remote viewing is not multi-tenancy. |
 | Conductor (Mac app) | not indexed (non-repo) | Only if you want a closed commercial macOS mission-control app and won't self-host. | Proprietary SaaS-shaped product; not a repository — noted for landscape completeness. |
 
 ## Tech stack

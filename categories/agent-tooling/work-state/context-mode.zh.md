@@ -2,7 +2,7 @@
 name: Context Mode
 slug: context-mode
 repo: https://github.com/mksglu/context-mode
-category: agent-tooling
+category: work-state
 tags: [mcp, context-window, tool-output-sandbox, session-memory, hooks, fts5, multi-platform, source-available]
 language: TypeScript
 license: Elastic-2.0
@@ -77,7 +77,7 @@ health:
 
 一个 MCP server，把工具的原始输出挡在 agent 上下文窗口之外：它在隔离子进程里跑读取/抓取/日志处理（只有 stdout 回到上下文），把会话事件索引进 SQLite FTS5 让 agent 熬过 compaction，并用 hooks 把重量级工具调用「路由」进沙箱——覆盖约 18 个 agent 平台。
 
-![context-mode — 健康度雷达](../../assets/health/context-mode.zh.svg)
+![context-mode — 健康度雷达](../../../assets/health/context-mode.zh.svg)
 
 ## 何时使用
 

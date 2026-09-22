@@ -2,7 +2,7 @@
 name: Vercel Skills
 slug: vercel-skills
 repo: https://github.com/vercel-labs/skills
-category: agent-tooling
+category: harness-extensions
 tags: [skills, package-manager, cli, claude-code, opencode, cursor, codex, npx, installer, agent-tooling]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 一个包管理器风格的 CLI（`npx skills`），把 agent「skills」——即 `SKILL.md` 指令包——从 GitHub/GitLab/本地源安装、查找、更新进 70+ 个编码 agent。它是*安装器*，不是 skill 内容本身。
 
-![vercel-skills — 健康度雷达](../../assets/health/vercel-skills.zh.svg)
+![vercel-skills — 健康度雷达](../../../assets/health/vercel-skills.zh.svg)
 
 ## 何时使用
 
@@ -87,7 +87,7 @@ health:
 
 - **你要的是 skills 本身，而不是管理它们的方式。** 这是安装器/管理器。真正可复用的指令是*内容*包——下方的 [skill-pack] 同类项（Planning with Files、Context Mode 等）正是它要安装的东西。装上这个工具，在你把它指向内容之前，不会给你的 agent 带来任何新能力。
 - **你只用一个 agent，且很少换 skills。** 如果你完全活在 Claude Code 里、一年手工拷两个 skill，那它的价值（跨 agent 路径解析、批量更新）相比 `cp` + git submodule 就很边际；为了用不上的便利去引一个依赖，不划算。
-- **你需要管理 MCP server、plugin 或工具二进制。** 它的范围只有 `SKILL.md` 指令包——不安装也不运行 MCP server、不管理 agent 二进制、不编排运行时状态。任务/状态类工具见对比表里的 [beads](beads.zh.md) 一行。
+- **你需要管理 MCP server、plugin 或工具二进制。** 它的范围只有 `SKILL.md` 指令包——不安装也不运行 MCP server、不管理 agent 二进制、不编排运行时状态。任务/状态类工具见对比表里的 [beads](../work-state/beads.zh.md) 一行。
 - **你需要一个经过策展、做过安全审查的市场。** 源直接从任意 GitHub/GitLab/git URL 解析，装一个包意味着信任会进入你 agent 上下文的第三方 prompt 内容。没有审核闸门，供应链 / prompt 注入的警惕得你自己扛。
 - **团队内可复现、可锁定版本的安装。** 文档里没有发现 lockfile / `skills.json` 清单，所以版本锁定和跨机器确定性重装目前不是一等公民（依赖前请对照当前版本核实）。
 - **成熟度上限。** 2.0 之前、单一厂商（`vercel-labs`）、迭代很快（频繁小版本）；命令面和它对接的注册表可能随版本变动。
@@ -96,9 +96,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Planning with Files](planning-with-files.zh.md) | ✅ | 需要 skill-pack 内容而非安装器时，选 Planning with Files。 | 一个 skill-pack（内容）——正是 Skills 要安装的*那类东西*，不是竞品。用 Skills 把这样的包送进你的 agent。 |
-| [Context Mode](context-mode.zh.md) | ✅ | 需要工作流内容而非 skill 分发机制时，选 Context Mode。 | 同样是 skill-pack / 工作流内容，不是安装器。正交关系：Skills 是投递机制，这是被投递的载荷。 |
-| [beads](beads.zh.md) | ✅ | 需要 agent 的持久任务/记忆状态，而不是 skill 分发时，选 beads。 | 不同层：给 agent 的持久任务/记忆*状态*，而非 skill 分发。你可能两个都装——它们不重叠。 |
+| [Planning with Files](../work-state/planning-with-files.zh.md) | ✅ | 需要 skill-pack 内容而非安装器时，选 Planning with Files。 | 一个 skill-pack（内容）——正是 Skills 要安装的*那类东西*，不是竞品。用 Skills 把这样的包送进你的 agent。 |
+| [Context Mode](../work-state/context-mode.zh.md) | ✅ | 需要工作流内容而非 skill 分发机制时，选 Context Mode。 | 同样是 skill-pack / 工作流内容，不是安装器。正交关系：Skills 是投递机制，这是被投递的载荷。 |
+| [beads](../work-state/beads.zh.md) | ✅ | 需要 agent 的持久任务/记忆状态，而不是 skill 分发时，选 beads。 | 不同层：给 agent 的持久任务/记忆*状态*，而非 skill 分发。你可能两个都装——它们不重叠。 |
 | Claude Code 插件市场（`.claude-plugin/marketplace.json`） | 未收录 | 需要 Claude Code 原生插件分发时，选 Claude Code 插件市场。 | Claude Code 原生的插件/市场机制；更丰富（命令、hooks、MCP）但仅限 Claude Code。Skills 转而面向跨 70+ agent 的 `SKILL.md` 包。 |
 | git submodule / 手工 `cp` | 未收录 | 零新依赖和完全透明最重要时，选 git submodule 或手工复制。 | 零新依赖、完全透明，但没有跨 agent 路径解析、没有发现注册表、没有批量 `update`——正是 Skills 取代的手工流程。 |
 | 用 npm / pnpm 打包一个 skill 目录 | 未收录 | 想复用 JS 包生态的版本管理和 lockfile 时，选 npm/pnpm 打包。 | 复用 JS 包生态（有真正的版本管理 + lockfile），但 skills 不是 npm 形态，你得按 agent 手工摆放文件；Skills 是为 `SKILL.md` 布局专门做的。 |

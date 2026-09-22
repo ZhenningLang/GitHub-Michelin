@@ -2,7 +2,7 @@
 name: CLI-Anything
 slug: cli-anything
 repo: https://github.com/HKUDS/CLI-Anything
-category: agent-tooling
+category: harness-extensions
 tags: [agent-native, cli-harness, gui-automation, mcp-complement, skill-generation, code-generation, python]
 language: Python
 license: Apache-2.0
@@ -77,20 +77,20 @@ health:
 
 一个**生成器 + 注册表**：把现有软件变成 agent 可调用的 CLI——把它的插件/技能装进编码 agent，跑 `/cli-anything <应用>`，就得到一个 `cli-anything-<应用>` 命令（`--json` 输出加一份 `SKILL.md`），它驱动软件**自身**的后端，而不是重新实现它。
 
-![cli-anything — 健康度雷达](../../assets/health/cli-anything.zh.svg)
+![cli-anything — 健康度雷达](../../../assets/health/cli-anything.zh.svg)
 
 ## 何时使用
 
 你日常在用编码 agent（Claude Code、Cursor、Codex……），却总要它去操作那些只有 GUI、或只有一份半文档化原生脚本接口的软件：把一文件夹 `.odt` 批量导出成 PDF、按规格搭一个 Blender 场景、产出一张 QGIS 地图、录制并粗剪一段 OBS 会话。你可以给每个应用手写一个包装，或者退而用像素级自动化，但这两条路在十几个软件上都会迅速失控。
 
-于是你把 CLI-Anything 插件装进 agent，跑 `/cli-anything <应用>`；agent 按仓库里 7 阶段的 `HARNESS.md` SOP，产出一个由该软件真实后端支撑的 `cli-anything-<应用>` 命令（LibreOffice `--headless`、Blender `--background --python`、GIMP Script-Fu、`melt`/`ffmpeg`），带 `--json` 输出和一份 agent 可发现的 `SKILL.md`。它胜过 [PyAutoGUI](../desktop-automation/pyautogui.zh.md) 的地方在于：后端调用是确定性的，而像素坐标不是；它胜过手写 MCP server 的地方在于：否则你要为每个应用重造一遍那个适配层。如果现成 harness 已存在，就完全不用生成：`pip install cli-anything-hub`，然后 `cli-hub search` / `install` / `launch`。
+于是你把 CLI-Anything 插件装进 agent，跑 `/cli-anything <应用>`；agent 按仓库里 7 阶段的 `HARNESS.md` SOP，产出一个由该软件真实后端支撑的 `cli-anything-<应用>` 命令（LibreOffice `--headless`、Blender `--background --python`、GIMP Script-Fu、`melt`/`ffmpeg`），带 `--json` 输出和一份 agent 可发现的 `SKILL.md`。它胜过 [PyAutoGUI](../../desktop-automation/pyautogui.zh.md) 的地方在于：后端调用是确定性的，而像素坐标不是；它胜过手写 MCP server 的地方在于：否则你要为每个应用重造一遍那个适配层。如果现成 harness 已存在，就完全不用生成：`pip install cli-anything-hub`，然后 `cli-hub search` / `install` / `launch`。
 
 ## 何时不用
 
 - **你的目标是自己那套带 OpenAPI spec 的 HTTP API。** 这套 SOP 是围绕 GUI 应用写的（「识别后端引擎」「把 GUI 动作映射成 API 调用」），API 项目没有可发现的引擎，你最终只会多维护一层薄 HTTP 壳。改用 OpenAPI→MCP 生成器，或直接让 agent 调 API。
-- **你的 agent 运行时只会说 MCP。** 生成的 harness 靠 shell 调 CLI 来执行；客户端不能起进程时，应改用 MCP server——浏览器场景具体用 [Playwright MCP](../web-automation/playwright-family/playwright-mcp.zh.md)。
-- **你需要对没有脚本后端的应用做像素级控制。** 那正是 [PyAutoGUI](../desktop-automation/pyautogui.zh.md) 的活；CLI-Anything 要求有一个可包的后端，不会凭空造一个。
-- **该应用已经有在维护的 agent 集成。** 优先用它——比如浏览器活走 [Playwright CLI](../web-automation/playwright-family/playwright-cli.zh.md)——因为重新生成的社区 harness 只增加变动成本，不增加能力。
+- **你的 agent 运行时只会说 MCP。** 生成的 harness 靠 shell 调 CLI 来执行；客户端不能起进程时，应改用 MCP server——浏览器场景具体用 [Playwright MCP](../../web-automation/playwright-family/playwright-mcp.zh.md)。
+- **你需要对没有脚本后端的应用做像素级控制。** 那正是 [PyAutoGUI](../../desktop-automation/pyautogui.zh.md) 的活；CLI-Anything 要求有一个可包的后端，不会凭空造一个。
+- **该应用已经有在维护的 agent 集成。** 优先用它——比如浏览器活走 [Playwright CLI](../../web-automation/playwright-family/playwright-cli.zh.md)——因为重新生成的社区 harness 只增加变动成本，不增加能力。
 - **你需要稳定、受支持的契约或 SLA。** 项目仍在 1.0 之前，harness 由社区贡献，且跟随上游应用的版本走。稳定性是硬要求时，请绑到应用原生 API 并自己锁版本。
 - **你装不了目标软件**（受限的 CI、没有桌面版授权）。harness 的设计就是调用真实应用；它是依赖，不是自带运行时。改用能重做同一件事的库（某个 Python/Rust 库，或该应用的无头版本）更合适。
 - **有凭据或受监管的环境，且没有 review 预算。** 每个 `cli-anything-<应用>` 都是第三方代码，握有你的 token、能驱动你的应用。优先用厂商维护的 MCP server，或自研的内部包装；真要装社区 harness，就把它当作一次供应链审查，而不是默认安装。
@@ -99,8 +99,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [PyAutoGUI](../desktop-automation/pyautogui.zh.md) | ✅ | 目标软件暴露了脚本/CLI 后端时，用 CLI-Anything 生成的 harness；只有它没有后端、你必须直接驱动 GUI 时，才选 PyAutoGUI。 | 后端调用是确定性的，能扛住 DPI/主题/分辨率变化；像素自动化适用范围更广但会静默失效——你是拿覆盖度换可靠性。 |
-| [Playwright CLI](../web-automation/playwright-family/playwright-cli.zh.md) | ✅ | 浏览器目标用微软官方维护的 CLI+SKILLs 路线；只有当你希望在多个非浏览器应用上统一一套 harness 形态时，才选 CLI-Anything。 | Playwright 在浏览器上更深、有版本管理、厂商支持；CLI-Anything 覆盖面更广，但每个 harness 更薄、且归社区所有。 |
+| [PyAutoGUI](../../desktop-automation/pyautogui.zh.md) | ✅ | 目标软件暴露了脚本/CLI 后端时，用 CLI-Anything 生成的 harness；只有它没有后端、你必须直接驱动 GUI 时，才选 PyAutoGUI。 | 后端调用是确定性的，能扛住 DPI/主题/分辨率变化；像素自动化适用范围更广但会静默失效——你是拿覆盖度换可靠性。 |
+| [Playwright CLI](../../web-automation/playwright-family/playwright-cli.zh.md) | ✅ | 浏览器目标用微软官方维护的 CLI+SKILLs 路线；只有当你希望在多个非浏览器应用上统一一套 harness 形态时，才选 CLI-Anything。 | Playwright 在浏览器上更深、有版本管理、厂商支持；CLI-Anything 覆盖面更广，但每个 harness 更薄、且归社区所有。 |
 | 手写 MCP server | 未收录 | 你只需要把一个应用以精心设计、稳定的工具 schema 暴露出来时，选手写 MCP server。 | 控制力最强，也是 MCP-only 客户端的唯一选择，但你得为每个应用建并维护一套适配——这正是 CLI-Anything 想摊薄的成本。 |
 | 直接调用应用自带的脚本后端 | 未收录 | 当你只需要一两个操作时，自己敲 `blender --background --python`、`gimp -i -b`、`libreoffice --headless`。 | 零抽象、没有需要信任的生成代码，但参数拼装、错误处理、JSON 整形和面向 agent 的文档都得你自己扛，每次调用都一样。 |
 | 自研一套 CLI 包装 + `SKILL.md` | 未收录 | 你的操作不常见或涉及安全、值得专门审查时，自己留在内部维护。 | 完全掌控凭据与暴露面，代价是 CLI、测试和技能文档都得自己写——而且下一个应用还要再来一遍。 |

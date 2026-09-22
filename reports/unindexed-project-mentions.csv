@@ -34,7 +34,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no
 A blocking Lua Redis client (redis-lua),categories/nginx-modules/lua-resty-redis.md,,no
 A custom userscript/proxy,categories/reading-tools/margin-read.md,,no
-A DIY CLI wrapper + `SKILL.md` kept in-house,categories/agent-tooling/cli-anything.md,,no
+A DIY CLI wrapper + `SKILL.md` kept in-house,categories/agent-tooling/harness-extensions/cli-anything.md,,no
 A hosted LP/MIP service,categories/optimization-solvers/highs.md,,no
 A hosted/cloud optimization service,categories/optimization-solvers/or-tools.md,,no
 ack,categories/dev-utilities/data-tools/ripgrep.md,,no
@@ -131,7 +131,7 @@ Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-f
 Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
-"Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/context-mode.md,,no
+"Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/work-state/context-mode.md,,no
 Built-in agent skill ecosystems,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
 Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
@@ -145,7 +145,7 @@ CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
 CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
 capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
 Caveman Code,categories/agent-skills/engineering/caveman.md,,no
-ccusage / token-cost CLIs,categories/agent-tooling/agentsview.md,,no
+ccusage / token-cost CLIs,categories/agent-tooling/session-history/agentsview.md,,no
 Cedar / Cedarling,categories/agent-governance/agent-governance-toolkit.md,,no
 Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
 cffi / ctypes,categories/python-tooling/cython.md,,no
@@ -170,7 +170,7 @@ Claude Code (built-in),categories/agent-frameworks/coding-agents/orchestration-a
 Claude Code / Claude Desktop,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
 Claude Code / similar vendor coding-CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 Claude Code GitHub Action (general),categories/ai-code-review/claude-code-security-review.md,,no
-Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/vercel-skills.md,,no
+Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
@@ -191,7 +191,7 @@ Commercial solving services (打码平台),categories/captcha/text-select-captch
 "Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda,categories/python-tooling/uv.md,,no
-Conductor / Crystal / Claude Squad,categories/agent-tooling/agent-orchestrator.md,,no
+Conductor / Crystal / Claude Squad,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
@@ -256,7 +256,7 @@ Docker `docker build --squash` / layer flattening,categories/dev-utilities/ops-i
 DockerSlim (predecessor),categories/dev-utilities/ops-infra/slim.md,,no
 Docspell,categories/document-management/paperless-ngx.md,,no
 docTR,categories/ocr/easyocr.md,,no
-Dolt directly (raw versioned SQL),categories/agent-tooling/beads.md,,no
+Dolt directly (raw versioned SQL),categories/agent-tooling/work-state/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
@@ -307,12 +307,12 @@ Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-re
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
 Generic LLM chat / hand-written prompt,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
-Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/ralph-claude-code.md,,no
+Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/work-state/ralph-claude-code.md,,no
 GeoPandas / Shapely,categories/geospatial/qgis.md,,no
 GeoServer,categories/geospatial/qgis.md,,no
 Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
-git submodule / manual `cp`,categories/agent-tooling/vercel-skills.md,,no
+git submodule / manual `cp`,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/graphify.md,,no
 GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
@@ -320,8 +320,8 @@ GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orche
 GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
 GitHub Copilot,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md,,no
 GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
-GitHub Issues (+ `gh` CLI),categories/agent-tooling/beads.md,,no
-GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/ccpm.md,,no
+GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
+GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -345,7 +345,7 @@ Graphviz / DOT,categories/diagramming/mermaid.md,,no
 Graphviz / Viz.js,categories/diagramming/flowchart-js.md,,no
 GRASS GIS,categories/geospatial/qgis.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
-grep over `~/.claude` / session dirs,categories/agent-tooling/agentsview.md,,no
+grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/agentsview.md,,no
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
@@ -362,7 +362,7 @@ Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
 Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
-Hand-written MCP server,categories/agent-tooling/cli-anything.md,,no
+Hand-written MCP server,categories/agent-tooling/harness-extensions/cli-anything.md,,no
 Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
 Hand-written project skills,categories/agent-skills/writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -375,7 +375,7 @@ hcaptcha-challenger,categories/captcha/buster.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
-herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/plannotator.md,,no
+herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
@@ -441,7 +441,7 @@ LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 Lighthouse / axe-core,categories/ai-design-generation/impeccable.md,,no
 Lighthouse CI / WebPageTest,categories/agent-skills/engineering/addyosmani-web-quality.md,,no
-Linear / Jira,categories/agent-tooling/beads.md,,no
+Linear / Jira,categories/agent-tooling/work-state/beads.md,,no
 Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
@@ -468,7 +468,7 @@ Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.
 Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt.md,,no
 Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
-Manus / hosted autonomous-agent products,categories/agent-tooling/planning-with-files.md,,no
+Manus / hosted autonomous-agent products,categories/agent-tooling/work-state/planning-with-files.md,,no
 Manuskript,categories/agent-skills/writing/fiction/webnovel-writer.md,,no
 MapServer,categories/geospatial/qgis.md,,no
 Marigold (SD-based),categories/ml-research/depth-anything-v2.md,,no
@@ -517,7 +517,7 @@ nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashligh
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
 Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
 native `ssh -L` / `autossh`,categories/networking/sshtunnel.md,,no
-"Native agent memory (`CLAUDE.md`, Cursor rules, Codex `AGENTS.md`)",categories/agent-tooling/planning-with-files.md,,no
+"Native agent memory (`CLAUDE.md`, Cursor rules, Codex `AGENTS.md`)",categories/agent-tooling/work-state/planning-with-files.md,,no
 Native Query DSL,categories/databases/database-clients/elasticsearch-sql.md,,no
 NATS / Redis Streams (direct),categories/task-queue/kombu.md,,no
 NeMo (NVIDIA),categories/speech/speechbrain.md,,no
@@ -546,7 +546,7 @@ NotebookLM / Obsidian,categories/knowledge-base/INDEX.md,,no
 notebooklm-mcp (same author),categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Notion,categories/knowledge-base/logseq.md,,no
 novelWriter,categories/agent-skills/writing/fiction/chinese-novelist-skill.md,,no
-npm / pnpm packaging a skill dir,categories/agent-tooling/vercel-skills.md,,no
+npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
@@ -598,7 +598,7 @@ Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
 Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Paste-your-own prompt,categories/agent-skills/de-ai-writing/ai-flavor-remover.md,,no
 pdm,categories/python-tooling/uv.md,,no
-"Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/agentsview.md,,no
+"Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
 Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no
 pgvector,categories/rag-retrieval/faiss.md,,no
@@ -608,18 +608,18 @@ PhotoPrism,categories/document-management/immich.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
 pip,categories/python-tooling/uv.md,,no
-Plain `MEMORY.md` / `TODO.md`,categories/agent-tooling/ccpm.md,,no
+Plain `MEMORY.md` / `TODO.md`,categories/agent-tooling/work-state/ccpm.md,,no
 Plain `runc` / containerd / Docker defaults,categories/sandboxing/gvisor.md,,no
-Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/planning-with-files.md,,no
+Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/work-state/planning-with-files.md,,no
 Plain ADB + a script,categories/im-automation/douyin-bot.md,,no
 Plain container runtimes (`runc` → Kubernetes default),categories/sandboxing/kata-containers.md,,no
 Plain Docker / containerd,categories/sandboxing/opensandbox.md,,no
-Plain Git + agent's own session logs,categories/agent-tooling/entire-cli.md,,no
+Plain Git + agent's own session logs,categories/agent-tooling/session-history/entire-cli.md,,no
 plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
-Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/beads.md,,no
+Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/work-state/beads.md,,no
 Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
 plain PyTorch (+ Triton),categories/llm-inference/serving-engines/modular.md,,no
-Plain tmux + `git worktree` scripts,categories/agent-tooling/agent-orchestrator.md,,no
+Plain tmux + `git worktree` scripts,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 plain vector DB (pgvector / Chroma),categories/agent-memory/memori.md,,no
 Platform retention (MWAA/Composer settings),categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Platypus,categories/ml-research/pymoo.md,,no
@@ -668,7 +668,7 @@ QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
 Quartz,categories/task-queue/INDEX.md,,no
 Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
-"RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/context-mode.md,,no
+"RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
 RAPTOR,categories/rag-retrieval/pageindex.md,,no
 Rasa,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 raw `tc` (iproute2),categories/networking/wondershaper.md,,no
@@ -690,7 +690,7 @@ redis-rdb-tools (sripathikrishnan),categories/databases/database-clients/rdr.md,
 RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
 Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
 Reeder,categories/reading-tools/netnewswire.md,,no
-Reflog / `git stash` + manual snapshots,categories/agent-tooling/entire-cli.md,,no
+Reflog / `git stash` + manual snapshots,categories/agent-tooling/session-history/entire-cli.md,,no
 reload/restart with logging,categories/python-tooling/pyrasite.md,,no
 Remix,categories/web-ui/frameworks/nextjs.md,,no
 requests,categories/python-tooling/curl-cffi.md,,no
@@ -748,7 +748,7 @@ SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
 Solid.js,categories/web-ui/frameworks/svelte.md,,no
-Specstory / agent transcript exporters,categories/agent-tooling/entire-cli.md,,no
+Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
 Stencil,categories/web-ui/frameworks/lit.md,,no
@@ -761,9 +761,9 @@ Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no
-Taskmaster (claude-task-master),categories/agent-tooling/ccpm.md,,no
-Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/INDEX.md,,no
-Taskwarrior,categories/agent-tooling/beads.md,,no
+Taskmaster (claude-task-master),categories/agent-tooling/work-state/ccpm.md,,no
+Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/work-state/INDEX.md,,no
+Taskwarrior,categories/agent-tooling/work-state/beads.md,,no
 TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
 termcolor / colored,categories/terminal-ui/colorama.md,,no
@@ -771,7 +771,7 @@ Terminal-Bench,categories/llm-eval/swe-bench.md,,no
 texify,categories/ocr/latex-ocr.md,,no
 TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
 textract,categories/document-parsing/markitdown.md,,no
-"The app's native scripting backend, driven directly",categories/agent-tooling/cli-anything.md,,no
+"The app's native scripting backend, driven directly",categories/agent-tooling/harness-extensions/cli-anything.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
@@ -781,7 +781,7 @@ TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
 tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no
-Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/context-mode.md,,no
+Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/work-state/context-mode.md,,no
 torchgan,categories/ml-research/pytorch-gan.md,,no
 Tour of Go / interactive docs,categories/python-tooling/gophernotes.md,,no
 tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
@@ -807,7 +807,7 @@ v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
-Vibe Kanban,categories/agent-tooling/agent-orchestrator.md,,no
+Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no

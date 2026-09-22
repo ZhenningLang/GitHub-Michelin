@@ -2,7 +2,7 @@
 name: beads
 slug: beads
 repo: https://github.com/gastownhall/beads
-category: agent-tooling
+category: work-state
 tags: [ai-agents, task-graph, agent-memory, dolt, versioned-sql, dependency-graph, cli, go, long-horizon-tasks, multi-agent]
 language: Go
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 beads（命令 `bd`）是一张带依赖关系、可版本控制的任务/issue 图，为 AI 编码 agent 提供持久的结构化记忆，底层由 Dolt（带版本控制的 SQL）支撑，以单个 Go 二进制（`bd`）发布；由 Steve Yegge 发起，仓库已从 `steveyegge/beads` 迁移到 `gastownhall` 组织。
 
-![beads — 健康度雷达](../../assets/health/beads.zh.svg)
+![beads — 健康度雷达](../../../assets/health/beads.zh.svg)
 
 ## 何时使用
 
