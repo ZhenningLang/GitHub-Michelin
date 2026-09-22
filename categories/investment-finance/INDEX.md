@@ -14,6 +14,8 @@
 | **backtrader** | Python Backtesting library for trading strategies | D (4/6) | [→](backtrader.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | A (6/6) | [→](yfinance.md) |
 | **HiThink Financial-API** | One API key for official Tonghuashun A-share quotes, statements, index/fund/futures data over CLI, MCP, REST or Python, with long history in a local DuckDB | B (6/6) | [→](financial-api.md) |
+| **AKShare** | Keyless Python library wrapping public Chinese-market finance pages into one-call pandas DataFrames | A (6/6) | [→](akshare.md) |
+| **Tushare** | Python SDK + hosted tushare.pro service behind a token and points tiers | D (5/6) | [→](tushare.md) |
 
 
 ## Comparison matrix
@@ -27,6 +29,8 @@
 | [backtrader](backtrader.md) | ✅ | D (4/6) | Python Backtesting library for trading strategies |
 | [yfinance](yfinance.md) | ✅ | A (6/6) | Download market data from Yahoo! Finance's API |
 | [financial-api](financial-api.md) | ✅ | B (6/6) | Official Tonghuashun A-share data clients — CLI, MCP, REST and Python over one API key, plus a local DuckDB of market history |
+| [akshare](akshare.md) | ✅ | A (6/6) | Free keyless scraping library for A-share/futures/macro data; interfaces break with upstream changes |
+| [tushare](tushare.md) | ✅ | D (5/6) | Token-gated hosted A-share data with points tiers and paid à-la-carte depth; the GitHub repo is frozen since 2020 |
 
 
 ## What belongs here

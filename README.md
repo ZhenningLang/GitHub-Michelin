@@ -1049,6 +1049,8 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **backtrader** | Python Backtesting library for trading strategies | NOASSERTION | D (4/6) | [EN](categories/investment-finance/backtrader.md) · [中](categories/investment-finance/backtrader.zh.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | NOASSERTION | A (6/6) | [EN](categories/investment-finance/yfinance.md) · [中](categories/investment-finance/yfinance.zh.md) |
 | **HiThink Financial-API** | One API key for official Tonghuashun A-share quotes, statements, index/fund/futures data over CLI, MCP, REST or Python, with long history in a local DuckDB | MIT | B (6/6) | [EN](categories/investment-finance/financial-api.md) · [中](categories/investment-finance/financial-api.zh.md) |
+| **AKShare** | Keyless Python library wrapping public Chinese-market finance pages into one-call pandas DataFrames | MIT | A (6/6) | [EN](categories/investment-finance/akshare.md) · [中](categories/investment-finance/akshare.zh.md) |
+| **Tushare** | Python SDK + hosted tushare.pro service behind a token and points tiers | BSD-3-Clause | D (5/6) | [EN](categories/investment-finance/tushare.md) · [中](categories/investment-finance/tushare.zh.md) |
 
 ### education-tutoring
 

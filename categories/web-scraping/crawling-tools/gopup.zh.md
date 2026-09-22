@@ -84,8 +84,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| AKShare | 未收录 | 做同类中文金融/经济数据任务，且最看重维护活跃度和目录广度时，选 AKShare。 | 当下主流、活跃维护的中文开源金融/经济数据库；目录广得多、社区也大得多——干同样的活通常是更有维护的选择。 |
-| Tushare | 未收录 | 能接受 token/积分门槛，并需要老牌中文市场数据源时，选 Tushare。 | 老牌中文金融数据库（如今大量走 token/积分门槛）；市场数据强，比 gopup 更多商业门槛。 |
+| [AKShare](../../investment-finance/akshare.zh.md) | 已收录 | 做同类中文金融/经济数据任务，且最看重维护活跃度和目录广度时，选 AKShare。 | 当下主流、活跃维护的中文开源金融/经济数据库；目录广得多、社区也大得多——干同样的活通常是更有维护的选择。 |
+| [Tushare](../../investment-finance/tushare.zh.md) | 已收录 | 能接受 token/积分门槛，并需要老牌中文市场数据源时，选 Tushare。 | 老牌中文金融数据库（如今大量走 token/积分门槛）；市场数据强，比 gopup 更多商业门槛。 |
 | baostock | 未收录 | 只需要免费的中文股票/行情历史数据时，选 baostock。 | 免费的中文股票/行情历史数据；更窄（仅市场）但接口稳定。 |
 | pandas-datareader | 未收录 | 数据源主要是西方/全球市场，且 DataFrame 体验足够时，选 pandas-datareader。 | 有维护的通用读取器，把（多为西方的）经济/市场源读成 DataFrame；DataFrame 体验相同，源集（全球）不同。 |
 | [requests-html](requests-html.zh.md) | ✅ | 想要通用爬取构件，并愿意自己实现每个数据源时，选 requests-html。 | 通用爬取构件——你得自己重写每个源；gopup 是覆盖多源的预制目录。 |

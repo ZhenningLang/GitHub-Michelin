@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "AKShare does", "zh": "AKShare 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library", "zh": "安装这个库", "code": "pip install akshare --upgrade", "component": {"en": "PyPI package", "zh": "PyPI 包"}},
+    {"lane": "you", "en": "Look up the interface name by keyword — offline, no network request", "zh": "按关键词离线查接口名，不发网络请求", "code": "ak.search(\"可转债 实时行情\", limit=5)", "component": {"en": "interface registry", "zh": "接口注册表"}},
+    {"lane": "them", "en": "Registry returns the interface name, its parameters and output columns", "zh": "注册表返回接口名、参数与输出列", "component": {"en": "interface registry", "zh": "接口注册表"}},
+    {"lane": "you", "en": "Call the interface you found with your parameters", "zh": "带上参数调用刚找到的接口", "component": {"en": "interface function", "zh": "接口函数"}},
+    {"lane": "them", "en": "Fetches the public upstream page/API, impersonating a browser where a plain client is rejected", "zh": "抓取上游公开页面/API，裸客户端被拒时伪装成浏览器", "component": {"en": "curl_cffi + JS runtime", "zh": "curl_cffi + JS 运行时"}},
+    {"lane": "them", "en": "Parses it into a pandas DataFrame with Chinese column names", "zh": "解析成列名为中文的 pandas DataFrame", "component": {"en": "interface function", "zh": "接口函数"}}
+  ],
+  "value": {"en": "No key, no account: one call per dataset lands a DataFrame — the price is breakage when upstream pages change", "zh": "免 Key、免账号：一次调用拿到一份 DataFrame——代价是上游改版带来的失效风险"},
+  "sources": [
+    "https://github.com/akfamily/akshare README.md#installation (pip install akshare --upgrade; Python 3.11+ 64-bit)",
+    "README.md#usage-search (ak.search(\"可转债 实时行情\", limit=5); ak.interface_info(\"bond_cb_jsl\"); offline keyword matching, 'handy for LLM-driven programs')",
+    "README.md#usage-data (ak.stock_zh_a_hist(symbol=\"000001\", period=\"daily\", start_date=\"20170301\", end_date=\"20231022\", adjust=\"\") and the printed Chinese-column DataFrame)",
+    "pyproject.toml dependencies (requests, curl_cffi, mini-racer/py-mini-racer/akracer, beautifulsoup4, lxml, pandas)",
+    "README.md#acknowledgement (upstream sources: 东方财富, 新浪财经, 上交所/深交所/北交所/中金所/上期所/大商所/郑商所/能源中心, 金十数据, 生意社 et al.)"
+  ]
+}
