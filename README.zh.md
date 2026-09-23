@@ -1127,3 +1127,10 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Tinycast** | 想要一个开源、完全原生、还能直接跑你现有 Raycast 扩展的 macOS 命令面板时用它——但要求 macOS 26+，且项目只有三个月历史、巴士系数为一。 | AGPL-3.0 | B（4/6） | [中](categories/desktop-launchers/tinycast.zh.md) · [EN](categories/desktop-launchers/tinycast.md) |
+
+### design-editors
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **OpenPencil** | 需要打开已有的 Figma `.fig` 文件并对它做脚本化处理——查看结构、检查、转换、导出成 JSX——或者想要一个 local-first、AI 原生、没有服务器、没有账号、不上传的编辑器时用它。 | MIT | B（6/6） | [中](categories/design-editors/open-pencil.zh.md) · [EN](categories/design-editors/open-pencil.md) |
+| **Penpot** | 一个团队必须在你自己控制的服务器上编辑同一份设计文件——浏览器编辑器、实时多人协作、组件/变体、原型和 design token——而按席位租托管 SaaS 不可行时用它。 | MPL-2.0 | B（5/6） | [中](categories/design-editors/penpot.zh.md) · [EN](categories/design-editors/penpot.md) |

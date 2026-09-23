@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="765" viewBox="0 0 880 765" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="765" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="629" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="629" rx="10"/>
+<rect class="pillT" x="474" y="40" width="165.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenPencil does</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,263.5 C439.0,263.5 439.0,287 470,287" marker-end="url(#a)"/>
+<path class="hand" d="M472,311.5 C441.0,311.5 441.0,362 410,362" marker-end="url(#a)"/>
+<path class="hand" d="M408,398.0 C439.0,398.0 439.0,422 470,422" marker-end="url(#a)"/>
+<path class="hand" d="M472,446.5 C441.0,446.5 441.0,508 410,508" marker-end="url(#a)"/>
+<path class="hand" d="M408,542.5 C439.0,542.5 439.0,566 470,566" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the editor and the CLI</text>
+<text class="c" x="82" y="125">brew install --cask openpencil · npm</text>
+<text class="c" x="82" y="144">install -g @open-pencil/cli</text>
+<text class="comp" x="82" y="167">component: desktop app · CLI</text>
+<rect class="card" x="40" y="215" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">Open the .fig file you exported from</text>
+<text class="t" x="82" y="266">Figma</text>
+<text class="comp" x="82" y="294">component: .fig codec (Kiwi)</text>
+<rect class="cardT" x="472" y="263" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="263" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="287" r="10"/>
+<text class="num" x="494" y="291" text-anchor="middle">3</text>
+<text class="t" x="514" y="292">Decodes it on your machine and paints</text>
+<text class="t" x="514" y="314">an editable canvas</text>
+<text class="comp" x="514" y="342">component: CanvasKit renderer</text>
+<rect class="card" x="40" y="338" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="338" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="362" r="10"/>
+<text class="num" x="62" y="366" text-anchor="middle">4</text>
+<text class="t" x="82" y="367">Press the shortcut and describe the</text>
+<text class="t" x="82" y="389">change you want</text>
+<text class="c" x="82" y="413">⌘J</text>
+<text class="comp" x="82" y="436">component: built-in chat</text>
+<rect class="cardT" x="472" y="398" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="398" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="422" r="10"/>
+<text class="num" x="494" y="426" text-anchor="middle">5</text>
+<text class="t" x="514" y="427">Its tool registry creates and edits</text>
+<text class="t" x="514" y="449">nodes on the scene graph</text>
+<text class="comp" x="514" y="477">component: AI tools / MCP</text>
+<rect class="card" x="40" y="484" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="484" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="508" r="10"/>
+<text class="num" x="62" y="512" text-anchor="middle">6</text>
+<text class="t" x="82" y="513">Export the result as code</text>
+<text class="c" x="82" y="537">openpencil export design.fig -f jsx</text>
+<text class="c" x="82" y="556">--style tailwind</text>
+<text class="comp" x="82" y="579">component: CLI</text>
+<rect class="cardT" x="472" y="542" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="542" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="566" r="10"/>
+<text class="num" x="494" y="570" text-anchor="middle">7</text>
+<text class="t" x="514" y="571">Writes Tailwind JSX, or saves the edit</text>
+<text class="t" x="514" y="593">back into the .fig</text>
+<text class="comp" x="514" y="621">component: CLI over RPC</text>
+<rect class="val" x="28" y="671" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="695">VALUE</text>
+<text class="valT" x="48" y="719">The design file stays a local file you can script: no Figma session, no upload</text>
+</svg>

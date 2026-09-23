@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenPencil does", "zh": "OpenPencil 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the editor and the CLI", "zh": "装好编辑器和 CLI", "code": "brew install --cask openpencil · npm install -g @open-pencil/cli", "component": {"en": "desktop app · CLI", "zh": "桌面应用 · CLI"}},
+    {"lane": "you", "en": "Open the .fig file you exported from Figma", "zh": "打开你从 Figma 导出的 .fig 文件", "component": {"en": ".fig codec (Kiwi)", "zh": ".fig 解码器（Kiwi）"}},
+    {"lane": "them", "en": "Decodes it on your machine and paints an editable canvas", "zh": "在本机把它解成节点树，画出可编辑画布", "component": {"en": "CanvasKit renderer", "zh": "CanvasKit 渲染器"}},
+    {"lane": "you", "en": "Press the shortcut and describe the change you want", "zh": "按快捷键，用一句话说要改什么", "code": "⌘J", "component": {"en": "built-in chat", "zh": "内置对话"}},
+    {"lane": "them", "en": "Its tool registry creates and edits nodes on the scene graph", "zh": "工具集在场景图上创建和修改节点", "component": {"en": "AI tools / MCP", "zh": "AI 工具 / MCP"}},
+    {"lane": "you", "en": "Export the result as code", "zh": "把结果导出成代码", "code": "openpencil export design.fig -f jsx --style tailwind", "component": {"en": "CLI", "zh": "CLI"}},
+    {"lane": "them", "en": "Writes Tailwind JSX, or saves the edit back into the .fig", "zh": "输出 Tailwind JSX，或把改动写回 .fig", "component": {"en": "CLI over RPC", "zh": "CLI（走 RPC）"}}
+  ],
+  "value": {"en": "The design file stays a local file you can script: no Figma session, no upload", "zh": "设计稿始终是你能脚本化的本地文件：不用开 Figma，也不用上传"},
+  "sources": [
+    "README.md: Installation (brew cask, npm CLI), What it does, CLI > Export, AI & MCP > Built-in chat (⌘J)",
+    "openpencil.dev/development/roadmap: Figma compatibility matrix and current focus",
+    "packages/docs/overview/comparison.md: architecture, .fig/Kiwi format, P2P collaboration"
+  ]
+}

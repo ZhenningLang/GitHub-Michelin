@@ -79,6 +79,7 @@
 | **optimization-solvers** | Solvers and modelling DSLs for assignment, LP/MIP and constraint optimization — declare the model, let the solver search. | [→](categories/optimization-solvers/INDEX.md) |
 | **cad** | Computer-aided design you run yourself — parametric 3D solid modeling, 2D drafting, and the geometry kernels behind them. | [→](categories/cad/INDEX.md) |
 | **desktop-launchers** | Keyboard-driven desktop launchers / command palettes — summon apps, clipboard history, snippets, quicklinks and window management from one hotkey. | [→](categories/desktop-launchers/INDEX.md) |
+| **design-editors** | Open-source design editors you run yourself — local-first or self-hosted Figma-class canvases. | [→](categories/design-editors/INDEX.md) |
 
 
 

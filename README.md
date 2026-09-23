@@ -1145,3 +1145,10 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Tinycast** | Use it when you want an open-source, fully native macOS palette that runs your existing Raycast extensions — but it requires macOS 26+ and is three months old with a bus factor of one. | AGPL-3.0 | B (4/6) | [EN](categories/desktop-launchers/tinycast.md) · [中](categories/desktop-launchers/tinycast.zh.md) |
+
+### design-editors
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **OpenPencil** | Use it when you must open existing Figma `.fig` files and script them — inspect, lint, convert, export to JSX — or you want a local-first AI-native editor with no server, no account and no upload. | MIT | B (6/6) | [EN](categories/design-editors/open-pencil.md) · [中](categories/design-editors/open-pencil.zh.md) |
+| **Penpot** | Use it when a team must edit one design file on servers you control — browser editor, real-time multiplayer, components/variants, prototypes and design tokens — and per-seat hosted SaaS is off the table. | MPL-2.0 | B (5/6) | [EN](categories/design-editors/penpot.md) · [中](categories/design-editors/penpot.zh.md) |

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Penpot does", "zh": "Penpot 做的"},
+  "steps": [
+    {"lane": "you", "en": "Bring up the stack with Docker Compose", "zh": "用 Docker Compose 把服务栈起起来", "code": "docker compose -p penpot -f docker-compose.yaml up -d", "component": {"en": "Docker Compose stack", "zh": "Docker Compose 服务栈"}},
+    {"lane": "you", "en": "Open localhost:9001 and create the first account", "zh": "打开 localhost:9001，建第一个账号", "component": {"en": "Penpot frontend", "zh": "Penpot 前端"}},
+    {"lane": "them", "en": "Keeps files in Postgres and assets in the storage you pointed it at", "zh": "文件存进 Postgres，素材进你指定的存储", "component": {"en": "JVM backend", "zh": "JVM 后端"}},
+    {"lane": "you", "en": "Design in the browser and invite the team onto the file", "zh": "在浏览器里设计，把同事拉进同一个文件"},
+    {"lane": "them", "en": "Syncs every peer live over WebSocket and holds the comments", "zh": "通过 WebSocket 实时同步每个人，评论也留在文件里", "component": {"en": "real-time sync", "zh": "实时同步"}},
+    {"lane": "you", "en": "Hand CSS/SVG off from Inspect, or wire an agent to the MCP server", "zh": "从 Inspect 取代码交付，或把 agent 接上 MCP", "code": "npx -y add-mcp -g -n penpot <URL>", "component": {"en": "Inspect · MCP server", "zh": "Inspect · MCP server"}},
+    {"lane": "them", "en": "Lets the agent read and rewrite the focused page through the plugin bridge", "zh": "让 agent 通过插件桥读写当前页面", "component": {"en": "MCP plugin bridge", "zh": "MCP 插件桥"}}
+  ],
+  "value": {"en": "The team edits one file on servers you control, in a format that does not lock you in", "zh": "团队在你自己的服务器上共同编辑同一个文件，格式不把你锁死"},
+  "sources": [
+    "docs/technical-guide/getting-started/docker.md: compose file download, docker compose up, localhost:9001, reverse-proxy and WebSocket paths",
+    "docs/mcp/index.md: remote MCP quick start (add-mcp), MCP key, focused-page semantics, local tool list",
+    "README.md: MCP server, design tokens, CSS Grid/Flex, inspect mode, Penpot Enterprise",
+    "docker/images/docker-compose.yaml: penpot-frontend, penpot-backend, penpot-mcp, penpot-exporter, postgres:15, valkey:8.1, mailpit, PENPOT_OBJECTS_STORAGE_BACKEND"
+  ]
+}
