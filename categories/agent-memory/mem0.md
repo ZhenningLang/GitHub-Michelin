@@ -128,7 +128,7 @@ Mem0 is built for exactly this. You call `m.add(messages, user_id=...)` after a 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 20.6 hours across 31 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 12.8 hours across 37 qualifying issues/PRs.
 - **Maintenance (2026-06):** actively maintained — last pushed 2026-06, not archived, two SDKs (Python `v2.0.8`, Node `ts-v3.0.10`) shipping on independent release trains. ~440 open issues is high in absolute terms but typical of a hot project at this star level, not a stall signal on its own.
 - **Governance / bus factor:** owned by the `mem0ai` org (a commercial company), not a foundation. Roadmap is vendor-controlled and steered by the paid **Mem0 Platform** business — a single-vendor open-core structure, not community governance. `[推断]`
 - **Age & Lindy verdict:** ~3 years old (created 2023-06) and still active — long enough to have shed at least one major extraction-algorithm rewrite (UPDATE/DELETE → ADD-only), so it clears the basic Lindy bar (old + active), but the churn means *API* longevity is weaker than the project's.

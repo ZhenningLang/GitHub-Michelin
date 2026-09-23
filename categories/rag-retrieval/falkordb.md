@@ -128,7 +128,7 @@ You're also a good fit if you came from RedisGraph and need somewhere to land af
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 10.4 hours across 13 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.8 hours across 33 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-06, current release v4.18.11 — **active** with a mature version number and frequent point releases. [推断] The ~705 open issues read as engagement on a busy project, not neglect.
 - **Governance / backing:** organization-owned (`FalkorDB/FalkorDB`) by the FalkorDB company — a single-vendor commercial-OSS project, not a foundation. [推断] Roadmap and license are vendor-controlled; bus factor is institutional rather than single-maintainer, but the vendor's business model (a managed offering) shapes direction.
 - **Age & Lindy (created 2023-07, ~3yr):** moderately young but continuously active, and it inherits credibility as the **RedisGraph successor** (OpenCypher-on-Redis lineage). [推断] Past the abandoned-young failure mode; not yet a long-proven Lindy bet — call it an established-but-not-old engine.

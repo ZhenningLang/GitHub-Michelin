@@ -123,7 +123,7 @@ You also reach for it when security review asks "is this agent jailbreakable / w
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 48 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 83.0 hours across 33 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Repo pushed 2026-06; release cadence is fast (package ~0.121.x, observed 0.121.17 on 2026-06-16). Still pre-1.0 in version numbering, but shipping constantly, not coasting. Not archived. [未验证]
 - **Governance & backing — single vendor (Promptfoo).** Organization-owned by the company behind the commercial Promptfoo offering; roadmap is vendor-controlled, not foundation-governed. The OSS CLI is the funded core of a venture-style company, which is good for momentum but ties longevity to the company's commercial trajectory. [推断]
 - **Age & Lindy — moderate, but durable for its category.** Created 2023-04, ~3 years old and continuously active — among the earlier and most-adopted OSS LLM-eval tools, so it has outlasted the "weekend eval script" wave. Young in absolute terms, but a reasonable Lindy bet within a fast-moving niche. [推断]

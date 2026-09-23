@@ -154,7 +154,7 @@ You install the base package for general OCR or an optional dependency group for
 ## Health & viability
 
 - **Maintenance:** Grade unknown because the scorer could not place the latest commit date into its activity band; the repository is not archived, and the upstream snapshot records a 2026-09-16 default-branch commit. v3.7.0 was published on 2026-06-11.
-- **Responsiveness:** Grade A — median first-response time was 8.6 hours across 38 qualifying issues in the scored sample.
+- **Responsiveness:** Grade A — median first-response time was 8.8 hours across 37 qualifying issues in the scored sample.
 - **Adoption:** Grade B — the scorer measured 1,274,369 monthly PyPI downloads and 549 dependent repositories for the `paddleocr` package.
 - **Longevity:** Grade A — 2,328 repository-age days and a commit 6 days before scoring; age plus current activity is a positive Lindy signal. [推断]
 - **Governance:** Grade A — 20 active maintainers in the last 12 months, with the top contributor at 37.4% and the top three at 63.9% of measured contributions; the repository belongs to the PaddlePaddle organization.

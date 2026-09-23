@@ -132,7 +132,7 @@ You add `chrome-devtools-mcp` to your MCP client config (`npx chrome-devtools-mc
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 27.2 hours across 47 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 6.4 hours across 49 qualifying issues/PRs.
 - **Maintenance — active, official.** Last pushed 2026-06, not archived; latest v1.4.0 (2026-06-23). Released under the **ChromeDevTools (Google)** org, so maintenance is institutional rather than hobbyist — the strongest backing signal among the web-automation peers here. `[未验证]`
 - **Governance / backing — Google / Chrome DevTools team.** **Organization**-owned (`ChromeDevTools/chrome-devtools-mcp`), ~44.5k stars [未验证]. Bus factor is low (a team inside Google, not one maintainer) — but note Google's mixed track record of sunsetting side projects, so "official" reduces, not eliminates, abandonment risk. `[推断]`
 - **Age & Lindy — young (created 2025-09, ~9 months as of 2026-06).** Too new for a Lindy prior on its own; v1.x but the flag/tool surface still moves release-to-release, so pin a version for reproducibility. The Lindy strength comes less from this repo's age than from the durability of its foundation (Chrome + CDP + Puppeteer).

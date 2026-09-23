@@ -120,11 +120,11 @@ You're building an AI agent or data pipeline that needs to ingest web content at
 **Low (hosted) / Medium (self-hosted)**. The hosted API is a simple HTTP integration. Self-hosting requires managing a Node.js service, Playwright browser instances, and queue/caching infrastructure. Browser automation is resource-intensive and can consume significant memory.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Grade B — median first-response time 147.3 hours across 37 qualifying issues/PRs.
-- **Adoption**: Grade A — 5,804,535 monthly downloads via pypi.org (package: firecrawl-py).
-- **Longevity**: Grade B — 809 days old.
-- **Governance**: Grade A — top-3 contributor share 59.1% (?).
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade B — median first-response time 52.0 hours across 34 qualifying issues/PRs.
+- **Adoption**: Grade A — 6,277,142 monthly downloads via pypi.org (package: firecrawl-py).
+- **Longevity**: Grade B — 890 days old.
+- **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade D — AGPL-3.0 license.
 ## Caveats (unverified)
 

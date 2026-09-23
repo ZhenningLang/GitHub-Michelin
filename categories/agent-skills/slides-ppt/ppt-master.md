@@ -103,7 +103,7 @@ It fits AI IDE workflows where an agent can read/write files and run commands lo
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-16T03:51:31Z`; health scores maintenance as A.
 - **Adoption snapshot:** ~39,357 GitHub stars as of 2026-07, but the project is young and attention is not the same as long-term deck quality.
 - **License snapshot:** MIT verified from upstream README and root `LICENSE` in the read-only upstream check.
-- **Lindy / governance:** health longevity is C; governance is unknown in the recomputed health block (`empty_or_gated`) despite visible sponsor/community interest.
+- **Lindy / governance:** health longevity is B; governance is D in the recomputed health block despite visible sponsor/community interest.
 - **Risk flags:** quality depends heavily on model capability, local setup, source-material quality, and post-generation human editing.
 
 ## Caveats (unverified)

@@ -126,7 +126,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 97.1 小时，基于 21 个 qualifying issues/PRs。
+- **响应速度**：Grade C——中位首次响应时间 272.8 小时，基于 4 个 qualifying issues/PRs。
 - **维护（2026-06）。** 本仓库最近的*发布*标签是 2.6.1（2024-09）和 2.6.0（2024-06），仓库最后 push 于 2025-11——**有维护，但发布节奏明显比其社区分叉慢**。未归档。[推断]
 - **治理 / bus factor。** 组织所有（`pygame`），有多人贡献历史（illume/René Dudfield、MyreMylar、Starbuck5、ankith26，以及初代作者 PeterShinners/llindstrom）——是个真实社区，尽管近期势头大多转移到了 **pygame-ce** 分叉。[推断]
 - **年龄与 Lindy 判断。** 这个 GitHub 仓库始于 2017-03，但 **pygame 这个项目约有 25 年历史**（2000 年代初）且仍在使用⇒**非常强的 Lindy**——它是寿命最长的 Python 游戏库之一。（仓库年龄低估了真实年龄。[未验证]）

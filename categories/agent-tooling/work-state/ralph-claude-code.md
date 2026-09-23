@@ -124,7 +124,7 @@ So you `ralph-enable` (or `ralph-import requirements.md`) in your repo, drop you
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.1 hours across 30 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance** — last push 2026-06 (as of 2026-06) on a v0.11.x line, so actively worked, but **no tagged GitHub releases** exist — the version comes from in-repo README text, not published artifacts. A v0.10 release already moved all files into `.ralph/` (a breaking layout change needing `ralph-migrate`), so expect flags/layout to keep shifting. [推断]
 - **Governance / bus factor** — `[推断]` single-maintainer, `User`-owned repo (`frankbria`); no releases, no team or foundation. ~9.5k stars on a one-person harness is a bus-factor flag — abandonment and flag/layout drift risk is non-trivial for anything you can't re-tool.
 - **Age & Lindy** — created 2025-08, so under a year old as of 2026-06 and still sub-1.0: too young for a Lindy verdict. It packages an established *technique* (Geoffrey Huntley's Ralph loop), but this particular harness is unproven on longevity.

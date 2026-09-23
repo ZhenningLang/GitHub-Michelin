@@ -125,7 +125,7 @@ You're also a good fit if you previously ran Perplexica and want the maintained 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 59.6 hours across 11 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 134.3 hours across 5 qualifying issues/PRs.
 - **Maintenance (2026-06):** **active** — last release v1.12.2 ~2026-04, pushed ~2026-04, a mature double-digit-minor versioned line. Steady, not coasting. [推断]
 - **Governance & bus factor:** `User`-owned (`ItzCrazyKns`) with ~35k stars — a **bus-factor flag**: very high visibility riding on essentially **one maintainer**. This is a recently-renamed project, so API/UI churn under a single owner is a live risk. [推断]
 - **Age & Lindy (~2yr, counting Perplexica lineage from 2024-04):** the *codebase* carries Perplexica's ~2yr history and momentum even though "Vane" is a fresh name — that lineage is the Lindy signal here, not the rebrand date. Old-enough-and-active leans favorable, tempered by the solo-maintainer flag. [推断]

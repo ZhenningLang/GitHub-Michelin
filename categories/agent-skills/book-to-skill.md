@@ -127,7 +127,7 @@ You're a software engineer who has accumulated a shelf of technical PDFs — lan
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 10.4 hours across 8 qualifying issues.
+- **Responsiveness**: Grade A — median first-response time 39.9 hours across 27 qualifying issues/PRs.
 - **Maintenance:** Active — last push 2026-06-30, very recent. Created 2026-05-01, so only ~2 months old as of 2026-07. [未验证]
 - **Governance:** Single-user repo (`virgiliojr94`). Bus factor is 1. The project is extremely young with no organizational backing. [推断]
 - **Backing:** No institutional backing — maintained by an individual contributor. GitHub Sponsors is available but does not constitute an organizational commitment. [推断]

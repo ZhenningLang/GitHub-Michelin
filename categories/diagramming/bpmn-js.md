@@ -122,7 +122,7 @@ You reach for the **viewer** build when you only need to render existing diagram
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 25.5 hours across 3 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 2.8 hours across 3 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; latest tag v18.19.0 on a steady, frequent release cadence (~81 releases). Clearly **active**, not coasting; not archived. [推断]
 - **Governance / backing.** Maintained by the **bpmn.io team at Camunda** (an established workflow-automation vendor) — a multi-maintainer org-backed project (nikku, philippfromme, barmac, marstamm…), so bus factor is healthy. Direction follows Camunda's commercial interests, the main governance caveat. [推断]
 - **Age & Lindy verdict.** Created 2014-03, ~12 years old and **still actively shipping** — a **strong Lindy** signal; the canonical, long-proven open BPMN web canvas, not a newcomer. [推断]

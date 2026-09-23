@@ -131,7 +131,7 @@ You also reach for Cython when you need to **wrap a C or C++ library** and expos
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 6.0 hours across 29 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 3.0 hours across 46 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; releases are frequent and current — 3.2.5/3.2.6 and a 3.3.0a1 alpha all in mid-2026 — clearly **very active**. Not archived.
 - **Governance / bus factor.** Organization-owned (`cython`) with a deep, long-standing core team (scoder/Stefan Behnel, robertwb/Robert Bradshaw, da-woods, dalcinl, and others) — a real multi-maintainer project, not a one-person repo. [推断]
 - **Age & Lindy verdict.** This repo dates to 2010-11 (~15 years) and Cython's lineage (from Pyrex) is older still; **continuously active for over a decade** ⇒ **very strong Lindy**. It is foundational infrastructure under much of scientific Python. [推断]

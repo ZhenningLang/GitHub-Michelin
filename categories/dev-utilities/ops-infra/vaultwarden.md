@@ -123,7 +123,7 @@ You're a privacy-conscious individual or small team who needs a password manager
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.7 hours across 29 qualifying issues.
+- **Responsiveness**: Grade A — median first-response time 0.5 hours across 29 qualifying issues/PRs.
 - **Maintenance — actively maintained, single-core-maintainer model.** Pushed 2026-06-05; not archived. The project has a steady release cadence and a large contributor base, but the core maintainer (`dani-garcia`) is the decisive factor. [推断]
 - **Governance — user-owned, high bus-factor risk.** Owned by a single GitHub user (`dani-garcia`), not an organization. While there are many contributors, the roadmap and merge decisions rest with one person. This is the classic high-bus-factor open-source model — common, but a risk if the maintainer steps away. [推断]
 - **Age & Lindy — ~8 years old, still active.** Created 2018-02, actively maintained since. Eight years of continuous maintenance is a solid Lindy signal for a security tool, provided it stays active. [推断]

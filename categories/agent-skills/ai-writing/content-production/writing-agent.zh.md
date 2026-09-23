@@ -100,10 +100,10 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-05T06:13:28Z`；health 将维护评为 B。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-05T06:13:28Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 319 个 GitHub stars；中文写作工作流里小众但相关。
 - **许可证快照：** 只读上游核验确认 README badge 和根目录 `LICENSE` 均为 MIT。
-- **Lindy / 治理：** 项目年轻，health 中 longevity 为 C；单维护者集中，governance 为 D。
+- **Lindy / 治理：** 项目年轻，health 中 longevity 为 B；单维护者集中，governance 为 D。
 - **风险信号：** pipeline 复杂度、模型 / provider setup 和用户提供的证据质量，决定最终是否真能发布。
 
 ## 存疑（未验证）

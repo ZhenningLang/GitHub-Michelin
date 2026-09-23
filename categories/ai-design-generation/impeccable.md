@@ -134,7 +134,7 @@ When you want the agent itself to improve the design rather than just lint it, y
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 23.4 hours across 51 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 5.5 hours across 46 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, and shipping fast — multiple CLI/Skill/Extension releases in June 2026. Active and clearly under heavy development; the same cadence is also a churn risk (pin versions). [推断]
 - **Governance & bus factor:** a `User`-owned repo (pbakaus) carrying ~41k stars — high stars on a single-maintainer project is a **bus-factor flag**: a lot of adoption rides on one person's continued involvement, with no foundation or vendor backstop visible. [推断]
 - **Age & Lindy verdict:** created 2025-11, so age < 1 year — **young but already widely starred**. The star count signals real interest, not Lindy-proven durability; treat longevity as unproven and the rule set as still-moving. [未验证]

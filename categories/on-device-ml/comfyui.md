@@ -129,10 +129,10 @@ You're a digital artist or AI researcher who wants to generate, edit, and upscal
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade E — no registry package/download signal recorded.
-- **Longevity**: Grade A — 1263 days old.
-- **Governance**: Grade A — top-3 contributor share 62.4% (?).
-- **Risk / License**: Grade C — GPL-3.0 license.
+- **Adoption**: Grade B.
+- **Longevity**: Grade A — 1345 days old.
+- **Governance**: Grade A — top-3 contributor share 60.0% (?).
+- **Risk / License**: Grade D — GPL-3.0 license.
 ## Caveats (unverified)
 
 - [未验证] ~119k GitHub stars as of 2026-07-01; star counts are approximate and time-sensitive.

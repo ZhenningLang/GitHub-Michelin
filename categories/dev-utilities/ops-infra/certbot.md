@@ -128,7 +128,7 @@ You reach for it specifically when you want the *reference* ACME client — the 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 61.5 hours across 27 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 32.3 hours across 15 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; v5.6.0 shipped 2026-05 on a steady monthly-ish minor cadence — **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor.** Owned by an **Organization** and developed in the open by EFF, now under ISRG (Let's Encrypt's nonprofit) stewardship — **nonprofit, team/foundation-backed governance, low bus-factor**. This is the reference client for the CA that issues most of the web's free certs, so it has institutional reasons to stay maintained. [推断]
 - **Backing & Lindy.** Created 2014-11 (~12 years) and **still actively shipping** ⇒ a **strong Lindy** signal: a long-lived, battle-proven client, not a hyped newcomer. The nonprofit backing (EFF/ISRG) further lowers abandonment risk versus a single-vendor commercial tool. [推断]

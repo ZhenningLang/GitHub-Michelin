@@ -151,11 +151,11 @@ The scheduler, integrations, memory pipeline and approval gate ship with the app
 
 ## Health & viability
 
-- **Maintenance**: Grade A — commits land daily and all 13 trailing weeks are active; the default branch moved 1,000–3,300 times per week over the last five weeks (measured 2026-09-20). Release cadence is the softer spot: the newest GitHub release is from 2026-08-07 while the workspace version has already reached 0.63.29.
-- **Responsiveness**: Grade A on paper — median first-response 0.0h over 44 qualifying issues. Read it as a weak signal: in-window traffic is dominated by the maintainer's own triage, so it measures internal throughput more than outsider support.
-- **Adoption**: Grade ? — an `app` with no registry package, so the scorer has no dependency-graph or download signal to use. 39,918 stars against 201 watchers (~0.5%) and 3,942 forks is a launch-shaped profile `[推断]`; do not read it as production adoption.
-- **Longevity**: Grade C — created 2026-02-18, i.e. 214 days old at verification. Young-and-thriving fails the Lindy prior by construction: there is no proven survival yet, and age × activity is the honest reading.
-- **Governance / bus factor**: Grade B in the scorer's 12-month window (175 active maintainers, top-1 share 45.4%, top-3 85%), but the lifetime API is blunter — the creator holds ~63% of 21,280 commits and issue traffic sits with two accounts, so the roadmap is effectively one person's.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A on paper — median first-response 0.0h over 50 qualifying issues. Read it as a weak signal: in-window traffic is dominated by the maintainer's own triage, so it measures internal throughput more than outsider support.
+- **Adoption**: Grade B.
+- **Longevity**: Grade C — 216 days old.
+- **Governance / bus factor**: Grade B in the scorer's 12-month window (175 active maintainers, top-1 share 46.2%, top-3 85.7%), but the lifetime API is blunter — the creator holds ~63% of 21,280 commits and issue traffic sits with two accounts, so the roadmap is effectively one person's.
 - **Risk flags**: `GPL-3.0-only` grades D on permissiveness (strong network copyleft, no relicense in 36 months) — embedding it in proprietary software is the wrong shape; the core also ships a crypto wallet and a referral/rewards surface inside an agent that reads your mail and chat, and the engine is spread over 16 younger sibling repositories under one organization, so dependency count multiplies rather than diversifies.
 
 ## Caveats (unverified)

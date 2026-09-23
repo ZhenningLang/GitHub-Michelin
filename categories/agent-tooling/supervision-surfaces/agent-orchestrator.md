@@ -137,7 +137,7 @@ So you install Agent Orchestrator as a desktop app. It runs a local Go daemon th
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 16.3 hours across 8 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 6.8 hours across 21 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06-29 with frequent nightly prereleases and a v0.10.1 tagged 2026-06-28 — **very active** development. Not archived. The flip side: ~588 open issues against a large fork count signals a fast-moving, still-stabilizing project. [推断]
 - **Governance / bus factor.** `owner.type` is **User**, not an Organization or foundation. ~36 contributors, but contributions concentrate in the top few (harshitsinghbhandari, suraj-markup, and the owner AgentWrapper); a Discord-driven community with a "daily contributor sync" suggests energy, but the roadmap rests on a small, individually-owned group — real bus-factor risk. [推断]
 - **Age × Lindy (2026-06).** Created 2026-02 — about 4.5 months old. This is a **very young project**; Lindy gives it no credit. Treat API/schema/UI stability as unproven and the longevity unknown.

@@ -137,7 +137,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 16.3 小时，基于 8 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 6.8 小时，基于 21 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06-29，带频繁的 nightly 预发布，v0.10.1 于 2026-06-28 打 tag——**非常活跃**的开发。未归档。另一面：约 588 个未关 issue 配上很高的 fork 数，说明是个快速演进、仍在稳定中的项目。[推断]
 - **治理 / bus factor。** `owner.type` 是 **User**，不是 Organization 或基金会。约 36 名贡献者，但贡献集中在头部几人（harshitsinghbhandari、suraj-markup 和所有者 AgentWrapper）；Discord 驱动、带“每日贡献者同步”的社区显出热度，但路线图系于一个小的、个人所有的群体——真实的 bus-factor 风险。[推断]
 - **年龄 × Lindy（2026-06）。** 2026-02 创建——约 4.5 个月大。这是一个**非常年轻的项目**；Lindy 不给它加分。把 API/schema/UI 稳定性当成未经验证，寿命未知。

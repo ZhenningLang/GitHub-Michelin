@@ -157,7 +157,7 @@ CaskHub talks to Homebrew at three levels rather than treating it as one black b
 - **Adoption & ecosystem — the strongest recent install reach of the five.** 2,942 cask installs in the 30 days to 2026-09-20, ranked around 75th overall with a 0.24% share, against ~1.3k stars and 55 forks. The distribution is overwhelmingly through the official cask.
 - **Responsiveness — 46 issues filed, 15 open, 0 open pull requests**, which on a seven-month-old solo project is a manageable backlog.
 - **Risk flags — telemetry, youth, and a data pipeline you do not control.** Sentry and TelemetryDeck ship in the binary; the categories and icons depend on CaskFlow release assets, so a failure there degrades browsing metadata rather than installs. MIT licence, no relicense history, no open-core gating.
-- **The adoption axis is `?` (`no_package_structural`).** No package registry exists for a cask-distributed app, so the measured cask-install and download figures above are the evidence the radar cannot encode; `?` is unobtainable, not low.
+- **The adoption axis is `A`, scored from the Homebrew signal rather than a package registry.** No package registry exists for a cask-distributed app, so the measured cask-install and download figures above are the evidence the radar encodes through the Homebrew tier; `A` reflects real cask-install reach, not an unobtainable `?`.
 
 ## Caveats (unverified)
 

@@ -128,10 +128,10 @@ You're a Python developer tired of waiting for `pip install` to resolve dependen
 
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 6.5 hours across 35 qualifying issues/PRs.
-- **Adoption**: Grade A — 157,448,976 monthly downloads via pypi.org (package: uv).
-- **Longevity**: Grade B — 1004 days old.
-- **Governance**: Grade B — top-3 contributor share 73.6% (?).
+- **Responsiveness**: Grade A — median first-response time 3.3 hours across 53 qualifying issues/PRs.
+- **Adoption**: Grade A — 128,564,586 monthly downloads via pypi.org (package: uv).
+- **Longevity**: Grade B — 1086 days old.
+- **Governance**: Grade A — top-3 contributor share 63.2% (?).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

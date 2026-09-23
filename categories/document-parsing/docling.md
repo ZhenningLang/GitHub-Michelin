@@ -126,7 +126,7 @@ You also reach for it when you want one parser across heterogeneous formats inst
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.5 hours across 56 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 11.2 hours across 38 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06 with very frequent releases (v2.107.0, 2026-06-24) — **highly active**, not archived. [推断]
 - **Governance / backing.** The strongest signal here: **IBM-originated and hosted under the LF AI & Data Foundation** — foundation governance plus a major-vendor origin is a much safer footing than a lone-maintainer repo, lowering bus-factor and abandonment risk. [推断]
 - **Age & Lindy verdict.** Only ~2 years old (created 2024-07) ⇒ **young**, so the Lindy prior is weak *on age alone* — but the rapid-fire release cadence, foundation backing, and ~62k stars are the offsetting signals. Treat it as a fast-rising, well-backed project rather than a battle-tested veteran. [推断]

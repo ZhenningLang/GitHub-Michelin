@@ -133,7 +133,7 @@ You also reach for it when isolation strength is the requirement, not an afterth
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 26.4 hours across 32 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 13.9 hours across 44 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06-27; multiple component releases tagged 2026-06-25 (python SDK v0.1.13, java v1.0.15) — **very active** development. Not archived. [推断]
 - **Backing & governance (2026-06).** Originated from Alibaba (the repo's own badges/links reference `github.com/alibaba/OpenSandbox`) and now sits under the `opensandbox-group` org with a GOVERNANCE.md, an OpenSSF Best Practices entry, and a CNCF Landscape listing — signals of an intent toward open, multi-maintainer governance backed by a large vendor. [未验证]
 - **Age × Lindy (2026-06).** Created 2025-12 — roughly 6 months old. This is a **young project**; Lindy gives it no credit yet. ~11.7k stars on a months-old repo is a strong hype/attention signal but says nothing about longevity. Treat API/protocol stability as unproven. [推断]

@@ -155,7 +155,7 @@ You run APISIX in front of upstream services and declare routes, upstream nodes,
 ## Health & viability
 
 - **Maintenance:** Grade A — the latest commit was on the scoring date and all 13 measured weeks were active; v3.18.0 was published on 2026-08-20.
-- **Responsiveness:** Grade A — measured median first-response time was 0.0 hours across 51 qualifying issues.
+- **Responsiveness:** Grade A — measured median first-response time was 0.0 hours across 49 qualifying issues.
 - **Adoption:** Not scored because the service has no canonical package-registry signal; the repository had 17,153 GitHub stars in the 2026-09-22 snapshot, and its README lists production users across several industries.
 - **Longevity:** Grade A — the repository was 2,722 days old with a commit on the scoring date; age plus current activity is a positive Lindy signal for the core gateway. [推断]
 - **Governance:** Grade A — 19 active maintainers were measured over 12 months, with 29.7% from the top contributor and 70.1% from the top three. Apache APISIX is an ASF top-level project, not a current podling; it graduated on 2020-07-15.

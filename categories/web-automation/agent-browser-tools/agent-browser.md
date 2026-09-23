@@ -130,7 +130,7 @@ You install `agent-browser` (npm, Homebrew, or cargo), run `agent-browser instal
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 118.9 hours across 13 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — very active.** Last pushed 2026-06, not archived, shipping fast (multiple releases per week; latest v0.31.0 on 2026-06-25). Daemon lifecycle/restore handling is an actively-moving area — watch daemon compatibility on upgrades. `[未验证]`
 - **Governance / backing — Vercel Labs.** **Organization**-owned (`vercel-labs/agent-browser`); a `-labs` repo signals an experiment/incubation surface rather than a flagship product, so backing is real but the longevity commitment is softer than a core Vercel product. `[推断]` ~37.2k stars [未验证]; the org (not a lone maintainer) reduces bus-factor risk relative to single-owner repos.
 - **Age & Lindy — young, unproven (created 2026-01, ~5 months as of 2026-06).** Pre-1.0 and too new for a Lindy prior; the heavy release cadence means CLI flags and config schema shift between versions. Pin a version if you script against it.

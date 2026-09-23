@@ -123,9 +123,9 @@ You're a technical team that needs to automate internal processes — pulling da
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no qualifying recent issue/PR traffic was found by the scorer (`no_traffic`).
-- **Adoption**: Grade B — 1,313,694 monthly downloads via npmjs.org (package: n8n-workflow).
-- **Longevity**: Grade A — 2568 days old.
-- **Governance**: Grade A — top-3 contributor share 14.9%.
+- **Adoption**: Grade C — 390,962 monthly downloads via npmjs.org (package: n8n).
+- **Longevity**: Grade A — 2650 days old.
+- **Governance**: Grade A — top-3 contributor share 12.1% (?).
 - **Risk / License**: Cannot be scored — the fair-code license was not parsed into a comparable SPDX-style tier (`license_unparsed`).
 
 ## Caveats (unverified)

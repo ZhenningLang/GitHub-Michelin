@@ -127,9 +127,9 @@ You're a developer who wants an AI assistant that lives inside your terminal and
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade A — 45,794,237 monthly downloads via npmjs.org (package: @openai/codex).
-- **Longevity**: Grade C — 446 days old.
-- **Governance**: Grade A — top-3 contributor share 34.9% (?).
+- **Adoption**: Grade A — 77,905,874 monthly downloads via npmjs.org (package: @openai/codex).
+- **Longevity**: Grade C — 527 days old.
+- **Governance**: Grade A — top-3 contributor share 31.2% (?).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

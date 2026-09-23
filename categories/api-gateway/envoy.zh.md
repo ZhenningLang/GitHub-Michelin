@@ -151,7 +151,7 @@ Envoy 运行在应用旁边或前面，通过 listener、filter chain、route、
 ## 健康度与可持续性
 
 - **维护：** Grade A——默认分支最近提交距评分 0 天，所测 13 周全部活跃；观察到的最新 release 为 v1.39.1。
-- **响应速度：** Grade A——所测窗口中，中位首次响应时间为 14.2 小时，基于 17 个 qualifying issue。
+- **响应速度：** Grade A——所测窗口中，中位首次响应时间为 16.1 小时，基于 16 个 qualifying issue。
 - **采用广度：** 未评分，因为这个 service 没有能被结构化检测到的 canonical package；CNCF 毕业是治理证据，不能替代 package adoption 指标。
 - **长青度：** Grade A——仓库已创建 3,697 天，最近提交距评分 0 天；这种年龄与活跃度组合对网络数据面是很强的 Lindy 信号。[推断]
 - **治理：** Grade A——过去 12 个月测得 149 名活跃维护者，头部一人占 17.9%，前三人占 41.2%。上游 README 明确 CNCF 是托管方，CNCF 记录 Envoy 自 2018 年起为毕业项目，仓库还记录了 maintainer 投票机制和 xDS API shepherd。

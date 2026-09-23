@@ -138,11 +138,11 @@ You're building a data-dense admin dashboard, an internal operations tool, or a 
 - Monitoring for accessibility issues in complex components (tables, forms) that may need manual ARIA adjustments
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 day ago.
-- **Responsiveness**: Grade A — median first-response time 0.1 hours across 40 qualifying issues/PRs.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A — median first-response time 0.1 hours across 47 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — registry_no_counts.
-- **Longevity**: Grade A — 4088 days old.
-- **Governance**: Grade A — top-3 contributor share 52.0% (?).
+- **Longevity**: Grade A — 4169 days old.
+- **Governance**: Grade A — top-3 contributor share 49.0% (?).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

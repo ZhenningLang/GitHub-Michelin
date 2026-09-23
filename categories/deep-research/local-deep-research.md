@@ -132,7 +132,7 @@ You're also a good fit if your research is *academic or technical* rather than o
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 21.9 hours across 13 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 16.3 hours across 3 qualifying issues/PRs.
 - **Maintenance (2026-06):** **active** — last pushed 2026-06, shipping a versioned v1.x line (security hardening landed as recently as v1.7.0). Release cadence is real, unlike a one-off demo. [推断]
 - **Governance & bus factor:** `User`-owned (`LearningCircuit`) with ~8.6k stars — community-style project, no foundation or vendor backing. Lower bus-factor pressure than a viral solo repo, but still small-team. [推断]
 - **Age & Lindy (~1yr, created 2025-02):** young, so no long Lindy track record yet; the mitigating signal is that it's *young **and** actively releasing*, not young-and-hyped-then-quiet. Pin a version — it's pre-1.0-style and config/schema/API still churn release-to-release.

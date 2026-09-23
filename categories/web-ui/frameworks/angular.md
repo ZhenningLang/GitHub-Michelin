@@ -140,11 +140,11 @@ You're an enterprise team building a large, complex web application with dozens 
 - You upgrade major versions (Angular's 6-month release cycle means annual upgrades are needed)
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 18 qualifying issues/PRs.
-- **Adoption**: Grade A — 24,664,067 monthly downloads via npmjs.org (package: @angular/core).
-- **Longevity**: Grade A — 4,306 days old.
-- **Governance**: Grade A — top-3 contributor share 36.8% (?).
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A — median first-response time 0.0 hours across 28 qualifying issues/PRs.
+- **Adoption**: Grade A — 20,872,075 monthly downloads via npmjs.org (package: @angular/core).
+- **Longevity**: Grade A — 4387 days old.
+- **Governance**: Grade A — top-3 contributor share 36.0% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

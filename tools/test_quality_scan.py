@@ -831,6 +831,80 @@ class QualityScanTest(unittest.TestCase):
             self.assertFalse(any(f.category == "health-prose-grade-drift"
                                  for f in result.findings))
 
+    def test_a_contrast_is_not_read_as_a_claim(self) -> None:
+        """"so this axis is B rather than A" states B, not A.
+
+        Three of the first four corpus hits were this shape, including one on this repo's
+        own apache-poi page.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- **Governance**: single-vendor, so this axis is B rather than A.
+""",
+                """    governance:
+      grade: B
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.category == "health-prose-grade-drift"
+                                 for f in result.findings))
+
+    def test_a_history_is_not_read_as_a_claim(self) -> None:
+        """"it used to grade E" describes the past, not the current grade."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Caveats (unverified)
+
+- The scorer used to read that null as no license and grade E; that was a bug, fixed.
+""",
+                """    risk_license:
+      grade: A
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.category == "health-prose-grade-drift"
+                                 for f in result.findings))
+
+    def test_a_contrast_does_not_hide_a_real_claim_elsewhere_on_the_line(self) -> None:
+        """Suppressing contrasts must not suppress a genuine claim in the same sentence."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- **Longevity** is C, so the axis is B rather than A.
+""",
+                """    longevity:
+      grade: A
+      raw: {}
+    governance:
+      grade: B
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            drift = [f for f in result.findings if f.category == "health-prose-grade-drift"]
+            self.assertEqual(len(drift), 1, f"expected the longevity claim only, got {drift}")
+            self.assertIn("longevity grade A", drift[0].message)
+
     def test_license_identifiers_are_not_read_as_grades(self) -> None:
         """`CC BY-SA 4.0` and `BSD-3-Clause` contain letters that are not grades."""
         with tempfile.TemporaryDirectory() as td:

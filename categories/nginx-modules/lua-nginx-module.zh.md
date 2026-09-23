@@ -118,12 +118,12 @@ health:
 
 ## 健康度与可持续性
 
-- **维护活跃度**：Grade A——最近 13 周中 10 周有提交；最后提交距今 5 天。
-- **响应速度**：Grade A——中位首次响应时间 22.3 小时，基于 3 个 qualifying issues/PRs。
+- **维护活跃度**：Grade A——最近 13 周中 9 周有提交；最后提交距今 6 天。
+- **响应速度**：Grade A——中位首次响应时间 7.1 小时，基于 10 个 qualifying issues/PRs。
 - **采用广度**：无法计算——ambiguous。
-- **长青度**：Grade A——仓库已创建 5922 天。
-- **治理集中度**：Grade B——前三贡献者占比 71.6%（?）。
-- **许可风险**：Grade E——source_available/no-license: NONE。
+- **长青度**：Grade A——仓库已创建 6004 天。
+- **治理集中度**：Grade B——前三贡献者占比 70.9%（?）。
+- **许可风险**：无法计算——license_declared_unverifiable。
 
 ## 存疑（未验证）
 

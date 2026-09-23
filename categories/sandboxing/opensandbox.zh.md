@@ -133,7 +133,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 26.4 小时，基于 32 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 13.9 小时，基于 44 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06-27；多个组件版本 tag 于 2026-06-25（python SDK v0.1.13、java v1.0.15）——**非常活跃**的开发。未归档。[推断]
 - **背书与治理（2026-06）。** 源自阿里巴巴（仓库自身的徽章/链接指向 `github.com/alibaba/OpenSandbox`），现位于 `opensandbox-group` 组织下，带 GOVERNANCE.md、一条 OpenSSF Best Practices 记录和一项 CNCF Landscape 收录——这些是朝向开放、多维护者治理、由一家大厂商背书的信号。[未验证]
 - **年龄 × Lindy（2026-06）。** 2025-12 创建——约 6 个月大。这是一个**年轻项目**；Lindy 还不给它加分。几个月大的仓库却有约 11.7k star，是很强的炒作/注意力信号，但说明不了寿命。把 API/协议稳定性当成未经验证。[推断]

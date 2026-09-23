@@ -130,11 +130,11 @@ You're building a media pipeline, archiving content, or need to grab a video or 
 **Low to run, medium to keep current.** Installation is trivial (`pip install yt-dlp` or a standalone binary). The real ops burden is extractor currency: streaming sites change frequently, and while yt-dlp updates much faster than youtube-dl, you still need to stay on a recent release. For one-off scripts this is fine; for a long-lived automation pipeline, budget for version pinning and periodic updates. The `--update` flag helps, but CI environments should pin and test new versions.
 
 ## Health & viability
-- **Maintenance**: Grade A — 11/13 active weeks in trailing 13; last commit 1 day ago.
-- **Responsiveness**: Grade A — median first-response time 0.8 hours across 6 qualifying issues/PRs.
-- **Adoption**: Grade A — 18,330,007 monthly downloads via pypi.org (package: yt-dlp).
-- **Longevity**: Grade A — 2076 days old.
-- **Governance**: Grade B — top-3 contributor share 77.3% (?).
+- **Maintenance**: Grade A — 10/13 active weeks in trailing 13; last commit 6 days ago.
+- **Responsiveness**: Grade A — median first-response time 9.3 hours across 15 qualifying issues/PRs.
+- **Adoption**: Grade A — 13,137,179 monthly downloads via pypi.org (package: yt-dlp).
+- **Longevity**: Grade A — 2158 days old.
+- **Governance**: Grade B — top-3 contributor share 74.8% (?).
 - **Risk / License**: Grade A — Unlicense license.
 ## Caveats (unverified)
 

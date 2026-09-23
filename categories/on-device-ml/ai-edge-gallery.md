@@ -126,7 +126,7 @@ So you install Google AI Edge Gallery from the Play Store / App Store (or sidelo
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 14.5 hours across 54 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 37.2 hours across 40 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, latest release v1.0.16 (2026-06-23) on a very rapid app cadence (v1.0.11 → v1.0.16 over weeks) — **very actively maintained**, but fast enough that features churn release-to-release and several are flagged "experimental."
 - **Governance / backing:** organization-owned under `google-ai-edge` and **Google-maintained** — strong backing and resourcing for the underlying LiteRT stack. [推断] Caveat: Google has a track record of sunsetting consumer-facing demo apps, so the *showcase* may be deprioritized even if the runtime endures; this is a showcase on top of the SDKs, not the SDK itself.
 - **Age & Lindy verdict (created 2025-03, ~1 yr):** young and riding the on-device-LLM wave — **Lindy-unproven** as a standalone app. But its purpose (de-risk an on-device decision *now*) doesn't require longevity, and it sits on the more durable LiteRT/Google AI Edge runtime, which is the part worth betting on long-term.

@@ -132,7 +132,7 @@ So you stand up paperless-ngx with its Docker-first compose stack and point your
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 1.1 hours across 53 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.2 hours across 38 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; stable v2.20.x line plus a v3.0 beta in flight — **actively** developed, not archived. The strikingly low open-issue count (~6) suggests aggressive triage, not stagnation. [推断]
 - **Governance / bus factor.** Community-maintained under the `paperless-ngx` org — itself the community continuation after the original `paperless`/`paperless-ng` lineage stalled, which is reassuring (the project has *already* survived one maintainer handoff) but it has **no commercial backer**; longevity rests on volunteer continuity. [推断]
 - **Age & Lindy verdict.** ~4 years as `paperless-ngx` (created 2022-02), with deeper roots via its predecessors ⇒ a **moderate Lindy** signal — proven in the homelab/DMS niche, though younger than the underlying paperless idea. [推断]

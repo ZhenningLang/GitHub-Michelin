@@ -127,10 +127,10 @@ health:
 **低到中等。** 安装通过 npm（npm install -g byterover-cli）。CLI 自包含，仅本地使用无需服务器设置。中等难度来自把它集成进 agent 工作流：配置 MCP 集成、决定什么该放进上下文树、以及如果使用的话管理云同步。因为项目年轻且未到 1.0，请预期破坏性改动和不断演变的配置。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 10 周有提交；最后提交距今 7 天。
-- **响应速度**：Grade A——中位首次响应时间 3.6 小时，基于 23 个 qualifying issues/PRs。
-- **采用广度**：Grade D——npmjs.org 上月下载量 6,431（包名：byterover-cli）。
-- **长青度**：Grade C——仓库已创建 379 天。
+- **维护活跃度**：Grade C——最近 13 周中 1 周有提交；最后提交距今 89 天。
+- **响应速度**：Grade D——中位首次响应时间 1089.6 小时，基于 3 个 qualifying issues/PRs。
+- **采用广度**：Grade C——npmjs.org 上月下载量 57,394（包名：byterover-cli）。
+- **长青度**：Grade C——仓库已创建 460 天。
 - **治理集中度**：Grade A——前三贡献者占比 63.4%（?）。
 - **许可风险**：Grade E——NOASSERTION 许可证。
 ## 存疑（未验证）

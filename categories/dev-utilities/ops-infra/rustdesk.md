@@ -128,10 +128,10 @@ You're a developer or sysadmin who needs remote access to your own machines — 
 
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 6.6 hours across 15 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 2.9 hours across 9 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
-- **Longevity**: Grade A — 2,104 days old.
-- **Governance**: Grade A — top-3 contributor share 53.3% (?).
+- **Longevity**: Grade A — 2185 days old.
+- **Governance**: Grade A — top-3 contributor share 56.3% (?).
 - **Risk / License**: Grade D — AGPL-3.0 license.
 ## Caveats (unverified)
 

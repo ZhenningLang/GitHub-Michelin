@@ -148,10 +148,10 @@ Octop 是盒子；四套 `harness-*` 库是马达。你安装、建管理员、�
 
 ## 健康度与可持续性
 
-- **维护活跃度**：Grade A——默认分支最近一次提交距今 4 天，过去 13 周里 11 周有提交（评分 2026-09-22）。v1.0.1 于 2026-09-19 同时出现在 GitHub 与 PyPI。
+- **维护活跃度**：Grade A——最近 13 周中 11 周有提交；最后提交距今 4 天。
 - **响应速度**：Grade ?（`no_window_signal`）——有 issue 流量，但抽样窗口里没有合格的首次响应。不要把维护活跃度 A 读成支持速度。
-- **采用广度**：Grade ?（`no_package_structural`）——评分器对 `type: app` 跳过下载图谱。PyPI 上确实有名为 `octop` 的 1.0.1；月下载量未取到（pypistats 429，ecosyste.ms 403）。star 不能替代：2026-09-22 为 4,593 star / 45 watcher / 530 fork，是上线形态。
-- **长青度**：Grade D——创建于 2026-07-08，76 天；app 队列的 C 档门槛是 183 天。打了 1.0 标签买不来 Lindy 先验。
+- **采用广度**：Grade D（`releases`）——评分器对 `type: app` 回退到 release 下载量。PyPI 上确实有名为 `octop` 的 1.0.1；月下载量未取到（pypistats 429，ecosyste.ms 403）。star 不能替代：2026-09-22 为 4,593 star / 45 watcher / 530 fork，是上线形态。
+- **长青度**：Grade D——仓库已创建 76 天。
 - **治理**：12 个月贡献窗口 Grade A（30 个活跃人类作者，top-1 占比 27.9%，top-3 占比 64.3%）。终身 top-10 仍集中在 `jubaoliang` / `jubaoliang-tencent`（144 和 129）。TencentCloud 厂商组织加一支年轻内部团队，不是基金会。
 - **许可风险**：Grade A——SPDX MIT，36 个月内无重新授权。与该档位分开的事实：四个 `harness-*` GitHub URL 404、推荐安装是 COS 上的 `curl | bash`、76 天大的仓有 364 个未关 issue。英文 README 徽章 1.0.1，2026-09-22 抓到的中文 README 徽章仍是 0.9.33。
 

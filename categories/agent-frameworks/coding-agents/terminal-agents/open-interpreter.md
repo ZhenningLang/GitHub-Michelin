@@ -137,7 +137,7 @@ It fits when the harness *is* the point: you're benchmarking or productionizing 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 58.5 hours across 18 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 164.5 hours across 26 qualifying issues/PRs.
 - **Maintenance — active, mid-rewrite (as of 2026-06).** Last push 2026-06-20; not archived; the Rust line is releasing (`rust-v0.0.16`/`rust-v0.0.17` both 2026-06-20). But note the **gap**: the prior (Python) releases ended at `v0.4.2` on 2024-10-24, so the project went roughly **~20 months without a tagged release** before the Rust relaunch — a real discontinuity, not steady cadence. The "active" verdict applies to the *new* codebase, which is brand-new. [推断]
 - **Governance & bus factor — founder + upstream Codex contributors.** Organization-owned (`openinterpreter`); commit history is dominated by the founder ("killian") plus a stream of OpenAI Codex contributors via "Merge upstream Codex main" commits — i.e. much of the engineering is *inherited* from OpenAI's Codex team, while the OI-specific layer rests heavily on a small core. The project's roadmap is coupled to a fork it does not control. [推断]
 - **Age & Lindy — repo is old, the *current* product is not.** The repo dates to 2023-07 (~3 years), but the thing it ships today (Rust Codex fork) is only weeks/months old. The Lindy prior from age does **not** transfer: an old repo that just threw away its codebase and identity is closer to a young project than a proven one. The ~64k stars were earned by the discontinued Python tool and say little about the new one's durability. [推断]

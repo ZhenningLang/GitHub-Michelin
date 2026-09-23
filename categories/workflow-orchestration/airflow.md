@@ -132,7 +132,7 @@ You reach for it specifically when you want pipelines as code in version control
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 23 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 4.9 hours across 39 qualifying issues/PRs.
 - **Maintenance (2026-06)** — last pushed 2026-06, not archived, on the active v3.x line; one of the busiest data-infra repos, so clearly **active**, not coasting. The ~1.7k open issues read as scale-of-traffic, not neglect. `[推断]`
 - **Governance & bus factor** — an **Apache Software Foundation** top-level project (`Organization`-owned under `apache/`): foundation governance with a PMC and many corporate contributors is about the strongest bus-factor profile open source offers — no single vendor owns the roadmap. `[推断]`
 - **Age & Lindy** — created ~2015-04, so ~11 years old (2026-06) and still actively developed: a **strong-Lindy** bet (long-lived *and* active), and the default orchestration layer much of data engineering already runs on. `[推断]`

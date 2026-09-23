@@ -128,7 +128,7 @@ So you install Context Mode as an MCP server (a `/plugin` install on Claude Code
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 158.3 hours across 4 qualifying issues/PRs (relaxed solo-maintainer band, 2026-09).
+- **Responsiveness**: Grade B — median first-response time 232.3 hours across 4 qualifying issues/PRs.
 - **Maintenance** — commits remain hyperactive (latest push 2026-09-15, 100+ commits since late June), but the release channel has stalled: latest release/npm version is still v1.0.169 (2026-06-29), ~2.5 months behind `main` (as of 2026-09). Churn risk cuts both ways — fast-moving main, and users on the npm line no longer tracking it.
 - **Governance / bus factor** — `[推断]` single-author (`User`-owned) project; ~23k stars on a one-maintainer repo is a bus-factor flag. There's a hosted "Insight" dashboard at context-mode.com, hinting at a commercial intent behind it, but no foundation or team governance to point to — roadmap is one person's.
 - **Age & Lindy** — created 2026-02, so ~7 months old as of 2026-09 despite the v1.0.x label and a #1 Hacker News moment: unproven on Lindy grounds. Treat the stars/HN buzz as attention, not durability.

@@ -130,7 +130,7 @@ You drop in **page-agent** — a few lines of JavaScript via npm or CDN, no back
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 72.2 hours across 41 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 73.6 hours across 20 qualifying issues/PRs.
 - **Maintenance (2026-06)** — last pushed 2026-06, not archived; ~33 releases through v1.10.0 and active commit flow point to a maintained project, not a coasting one. `[推断]`
 - **Governance & backing** — an Alibaba-owned (`Organization`) repo, so it's **vendor-backed** rather than a single hobbyist: that's a bus-factor cushion, but the roadmap follows Alibaba's interest in it, and a big vendor can deprioritize a side project. `[推断]`
 - **Age & Lindy** — created ~2025-09, so ~1 year old (2026-06): **young and unproven** on the Lindy axis. Vendor backing offsets some of the abandonment risk, but it has no long track record and the "survives HTML changes" robustness claim is unbenchmarked. `[推断]`

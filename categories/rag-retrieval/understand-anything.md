@@ -129,7 +129,7 @@ Beyond code it also covers two adjacent surfaces: `/understand-knowledge` parses
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 45.5 hours across 34 qualifying issues/PRs (90-day window).
+- **Responsiveness**: Grade A — median first-response time 45.5 hours across 34 qualifying issues/PRs.
 - **Maintenance — Grade A, actively shipping.** Last commit 7 days before scoring, committed in 11 of the last 13 weeks. Latest release v2.9.0 (2026-07-10), but still only ~10 releases and ~846 commits total: active, yet too short a track record to judge stability. `[未验证]`
 - **Adoption — unmeasurable, not evidence of reach.** The scorer returns `?` (ambiguous): the package is not on npm (`private: true`) and dependent-repo counts are effectively zero, so the large star/fork numbers do **not** translate into a measurable dependency-graph footprint. Stars are informational only in this corpus.
 - **Governance / bus factor — Grade C, single vendor with one dominant author.** ~58 contributors in the last 12 months, but the original author (`Lum1104`) holds ~73% of commits and the top 3 hold ~84%. The repo now sits under the `Egonex-AI` org, and the MIT notice names both `Yuxiang Lin` and `Infinite Universe, Inc.`; the README says "Originally created by Lum1104" and links a companion "Understand Anyone" product at egonex.ai. `[推断]` the personal project was folded into a company — backing is still one vendor.

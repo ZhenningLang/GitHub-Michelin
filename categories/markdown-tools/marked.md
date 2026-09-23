@@ -120,7 +120,7 @@ It's the right reach when *throughput and simplicity* matter more than strict sp
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 6.6 hours across 18 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 4.8 hours across 14 qualifying issues/PRs.
 - **Maintenance — active (last push 2026-06).** Regular releases through the v18.x line (v18.0.5 dated 2026-06-04); a healthy, low-issue-count repo (~16 open issues at ~36k stars) for a mature parser whose scope is deliberately small and settled [未验证].
 - **Governance & bus factor.** `Org`-owned (`markedjs/`) — a maintainer team / org rather than a single person, which de-risks the bus factor versus a one-author library [推断]. Long-running community project, not vendor-controlled; no commercial tier gating features.
 - **Age & Lindy verdict — old and still active ⇒ strong Lindy.** Created 2011 (~15y old) and still shipping in 2026: the textbook age × still-active signal. A 15-year-old parser still cutting releases is about as safe a longevity bet as this category offers; the API has moved across majors, so pin and track the major version.

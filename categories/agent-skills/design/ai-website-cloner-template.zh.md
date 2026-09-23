@@ -96,10 +96,10 @@ Clone any website with one command using AI coding agents
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-04T06:49:18Z`；health 将维护评为 B。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-04T06:49:18Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 28,523 个 GitHub stars；对年轻 template 是强关注信号，但不证明每个目标站都能安全重建。
 - **许可证快照：** 已从 upstream README badge、README license section 和根目录 `LICENSE` 核验 MIT。
-- **Lindy / 治理：** health 中 longevity 为 C；项目年轻且贡献集中，governance 为 D。
+- **Lindy / 治理：** health 中 longevity 为 C；项目年轻且贡献集中，governance 为 C。
 - **风险信号：** 法律授权、目标站条款、浏览器访问、资产权利和生成后的 QA，比 template 本身更关键。
 
 ## 存疑（未验证）

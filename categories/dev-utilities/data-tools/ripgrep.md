@@ -125,11 +125,11 @@ You're choosing a code search tool for daily use across large codebases and spee
 **None**. ripgrep is a single static binary. Install via package manager, download from releases, or `cargo install`. No configuration, no daemon, no maintenance.
 
 ## Health & viability
-- **Maintenance**: Grade B — 5/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Grade A — median first-response time 54.5 hours across 16 qualifying issues/PRs.
-- **Adoption**: Grade D — 13,080,989 monthly downloads via conda-forge.org (package: ripgrep).
-- **Longevity**: Grade A — 3,767 days old.
-- **Governance**: Grade D — top-3 contributor share 93.1% (?).
+- **Maintenance**: Grade B — 6/13 active weeks in trailing 13; last commit 50 days ago.
+- **Responsiveness**: Grade A — median first-response time 13.2 hours across 22 qualifying issues/PRs.
+- **Adoption**: Grade A — 1,575,197 monthly downloads via crates.io (package: ripgrep).
+- **Longevity**: Grade A — 3848 days old.
+- **Governance**: Grade D — top-3 contributor share 95.0% (?).
 - **Risk / License**: Grade A — Unlicense license.
 ## Caveats (unverified)
 

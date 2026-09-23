@@ -120,7 +120,7 @@ The part that earns its keep over a hand-rolled toolbox is **multi-backend routi
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 82.1 hours across 23 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 81.1 hours across 19 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, at v1.5.0 — active. For a tool whose whole job is *managing upstream churn*, recency of maintenance is load-bearing: a coasting fork of this would silently rot as scrapers break. [推断]
 - **Governance & bus factor:** `User`-owned (Panniantong) with ~43k stars — a **bus-factor flag**: large adoption riding on a single maintainer, no foundation or vendor backstop. Higher stakes than usual here because the value *is* continuous upkeep, not a stable artifact. [推断]
 - **Age & Lindy verdict:** created 2026-02, so age < 1 year — **young and hyped** (43k stars in months). Lindy is unproven, and this is a category where Lindy matters less than *current* upstream health: even a long-lived version would need constant re-vetting. [推断]

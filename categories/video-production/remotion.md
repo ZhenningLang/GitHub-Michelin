@@ -122,7 +122,7 @@ You reach for Remotion because it is the most proven engine in this shape: 6+ ye
 ## Health & viability
 
 - **Maintenance (2026-09):** exceptional — created 2020-06, pushed daily through 2026-09-19, v4.0.526 published 2026-09-17, releases every ~2 days for years; first npm publish 2020-12.
-- **Governance / bus factor:** org-owned (remotion-dev) by the company behind it; the radar counts 134 active maintainers in 12 months but a top-contributor share of ≈76% — founder-dominated, while the site advertises 300+ contributors overall. The founder *is* the commercial entity, so incentives to maintain are structural.
+- **Governance / bus factor:** org-owned (remotion-dev) by the company behind it; the radar counts 135 active maintainers in 12 months but a top-contributor share of ≈76% — founder-dominated, while the site advertises 300+ contributors overall. The founder *is* the commercial entity, so incentives to maintain are structural.
 - **Backing & Lindy:** 6+ years old and still accelerating — a strong Lindy profile by this index's prior; funded by company licenses rather than VC-scale hype [推断].
 - **Adoption & ecosystem:** 59,735 stars / 4,584 forks (2026-09-19); the site advertises 5M+ installs per month, 300+ customers, 35+ templates, and 1,000+ doc pages; a drop-in Elements gallery, a `Player` component used in production web apps, and established Lambda rendering — the default answer for "video as React code".
 - **Risk flags:** source-available license (non-OSI) with an eligibility threshold, published usage-based pricing, and an announced 5.0 terms change; 171 open issues reflects high usage more than neglect [推断]; no relicense-to-restrictive shock so far — the paid tier has existed since the project's early years.

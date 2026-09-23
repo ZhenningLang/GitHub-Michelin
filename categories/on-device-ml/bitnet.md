@@ -128,7 +128,7 @@ So you reach for BitNet. You pick a **ternary** model that was actually trained 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 98.8 hours across 7 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 95.2 hours across 11 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-03-10 — roughly 3 months idle at verification, so the runtime reads as **coasting**, not actively iterated week-to-week. [推断] No tagged releases means cadence is judged from commit recency, not a release stream.
 - **Governance / backing:** Microsoft-owned (`microsoft/BitNet`, Organization). [推断] That removes single-maintainer bus-factor risk, but Microsoft is also a serial project-archiver — vendor backing here signals "research reference implementation kept alive," not a productized, SLA-backed SDK.
 - **Age & Lindy (created 2024-08, ~2yr):** young and still-active enough to not fail Lindy, but too new to be a proven long-lived bet. [推断] The value rides on the BitNet-b1.58 research line continuing; treat it as **promising-but-unproven** infrastructure.

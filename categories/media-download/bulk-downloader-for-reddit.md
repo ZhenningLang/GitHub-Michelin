@@ -114,12 +114,12 @@ It's the right reach when you want a *scriptable, reproducible* Reddit archive �
 
 ## Health & viability
 
-- **Maintenance**: Grade E — 0/13 active weeks in trailing 13; last commit 1250 days ago.
+- **Maintenance**: Grade E — 0/13 active weeks in trailing 13; last commit 1331 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade E — no registry package/download signal recorded.
-- **Longevity**: Grade E — 2941 days old.
+- **Adoption**: Grade D.
+- **Longevity**: Grade E — 3022 days old.
 - **Governance**: Cannot be scored — unattributable.
-- **Risk / License**: Grade C — GPL-3.0 license.
+- **Risk / License**: Grade D — GPL-3.0 license.
 
 ## Caveats (unverified)
 

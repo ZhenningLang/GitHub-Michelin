@@ -123,11 +123,11 @@ You're a developer who lives in the terminal and wants an AI assistant that can 
 **Low**. Gemini CLI is installed via npm and runs as a local Node.js process. There is no server to maintain. The operational burden is limited to keeping the CLI updated and managing your Google API credentials. The free tier has rate limits that may require upgrading for heavy usage, but there is no infrastructure to operate.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 day ago.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade B — 2,522,263 monthly downloads via npmjs.org (package: @google/gemini-cli).
-- **Longevity**: Grade C — 442 days old.
-- **Governance**: Grade A — top-3 contributor share 21.1% (?).
+- **Adoption**: Grade B — 1,331,337 monthly downloads via npmjs.org (package: @google/gemini-cli).
+- **Longevity**: Grade C — 523 days old.
+- **Governance**: Grade A — top-3 contributor share 20.5% (?).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

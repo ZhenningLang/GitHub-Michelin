@@ -129,7 +129,7 @@ It also fits when you want lightweight admin without a JVM on the box: `kafka-py
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 2.7 hours across 10 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 1.9 hours across 14 qualifying issues/PRs.
 - **Maintenance (2026-06) — active.** Releasing briskly: v3.0.6 on **2026-06-25** with several point releases in the same week, and last push **2026-06-27**. The 3.0 line was a substantial refactor (protocol generation, async internals). Clearly **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor.** `User`-owned (Dana Powers, `dpkp`) — nominally single-owner, but a long-standing **multi-contributor** project (jeffwidman, mumrah, wizzat and others in the top contributors), so the bus factor is better than a typical solo repo. Still, no foundation backing — direction rests with a small core. [推断]
 - **Age × Lindy.** Created **2012-09** (~14 years) and *still actively shipping major versions* ⇒ a **strong Lindy** signal: one of the oldest, most-proven Python Kafka clients, not a newcomer. Old-and-active is the good quadrant. [推断]

@@ -132,7 +132,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 21.9 小时，基于 13 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 16.3 小时，基于 3 个 qualifying issues/PRs。
 - **维护（2026-06）：** **活跃**——最近 push 在 2026-06，按版本号推进 v1.x 线（安全加固直到 v1.7.0 才落地）。它有真实的 release 节奏，不像一次性 demo。[推断]
 - **治理与 bus factor:** `User` 名下（`LearningCircuit`），约 8.6k star——社区式项目，没有基金会或厂商背书。bus-factor 压力低于爆红的单人仓库，但仍属小团队。[推断]
 - **年龄与 Lindy（约 1 年，2025-02 创建）：** 年轻，尚无长期 Lindy 记录；缓和信号在于它是*年轻**且**在持续发版*，而非年轻且热炒后归于沉寂。请 pin 版本——它仍是 1.0 前形态，config/schema/API 会逐版变动。

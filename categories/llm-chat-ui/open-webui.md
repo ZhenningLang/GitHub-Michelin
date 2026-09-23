@@ -120,7 +120,7 @@ You're a privacy-conscious developer or small team who wants a self-hosted chat 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 25 qualifying issues.
+- **Responsiveness**: Grade A — median first-response time 0.0 hours across 12 qualifying issues/PRs.
 - **Maintenance**: Very active — pushed daily as of 2026-07, with a responsive issue tracker (242 open issues). [推断]
 - **Governance**: Owned by the open-webui organization; appears to have a dedicated team with reasonable bus factor.
 - **Backing**: No major corporate backing visible; community-driven with active Discord and sponsor program. [未验证]

@@ -144,10 +144,10 @@ You deploy `powerjob-server` with a relational database, then add the worker sta
 ## Health & viability
 
 - **Overall:** Grade C across 4 of 6 scored axes; the missing adoption and governance grades should remain visible rather than treated as low scores.
-- **Maintenance:** Grade D — the default branch's last commit was 400 days old and no active week was measured in the latest 13-week window. GitHub's repository-level `pushed_at` is 2026-03-07, but that reflects work outside the default branch; the latest stable release remains v5.1.2 from 2025-08.
+- **Maintenance:** Grade `?` — the scorer could not read default-branch recency this run (`recency_unreadable`). GitHub's repository-level `pushed_at` is 2026-03-07, but that reflects work outside the default branch; the latest stable release remains v5.1.2 from 2025-08.
 - **Responsiveness:** Grade C — median first-response time was 290.4 hours across 4 qualifying issues in the scorer's window.
 - **Adoption / Governance:** Both are unscored — registry signals were ambiguous, and recent maintainer attribution was unavailable. GitHub still reported 7,796 stars on 2026-09-22, while lifetime contributor totals were heavily concentrated in the original maintainer.
-- **Longevity:** Grade D — the repository was 2,381 days old, but the default-branch commit was 400 days old; age without current stable-line activity is a weak Lindy signal. [推断]
+- **Longevity:** Grade `?` — the scorer could not find longevity data this run (`not_found`); without a readable current stable-line signal, age alone cannot be graded as a Lindy signal. [推断]
 - **Risk / License:** Grade A for the confirmed Apache-2.0 license with no detected relicense in 36 months. That license score does not cover unresolved 2026 security reports or the open fastjson security-upgrade PR, which remain material production risks.
 
 ## Caveats (unverified)

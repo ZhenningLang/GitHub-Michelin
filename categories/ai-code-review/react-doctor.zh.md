@@ -126,7 +126,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 0.6 小时，基于 56 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 0.2 小时，基于 55 个 qualifying issues/PRs。
 - **维护（2026-06）：** [推断] 维护活跃——仓库最近 push 在 2026-06-25，插件 `oxlint-plugin-react-doctor@0.5.8` 于 2026-06-20 发布，通过 Changesets 频繁做多包发布。约 13k star 下未关闭 issue 约 44，偏低。截至 2026-06 势头健康。
 - **治理与背书：** [推断] 归属 `millionco` 组织（Million.js 背后的团队，一个有名的 React 性能项目），因此背后是一个成型的 React 工具链组织与品牌，而非孤身爱好者——bus-factor 低于单人维护仓库。但仍是单一厂商，非基金会治理。
 - **年龄与 Lindy：** [推断] 创建于 2026-02，截至 2026-06 约 4 个月——**非常年轻；无 Lindy 记录。** 它在 1.0 之前、在一个多包 monorepo 上快速迭代，所以规则目录和 `doctor.config.ts` 可能在版本间变动；一旦 CI 闸门依赖精确结论，请 pin 版本。

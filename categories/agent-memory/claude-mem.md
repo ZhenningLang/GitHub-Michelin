@@ -152,7 +152,7 @@ claude-mem hooks into your coding agent's lifecycle (e.g. Claude Code): it fires
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 31.7 hours across 23 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 36.2 hours across 54 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Last push 2026-06; latest release v13.8.0 (2026-06-21); not archived. Fast-moving with a high major version on a young project — actively maintained, but the unusual versioning is itself a thing to verify against the live repo.
 - **Governance & bus factor — single developer, star/maturity mismatch ⇒ strong red flag.** A `User`-owned repo (`@thedotmack`) sitting in your every-session critical path is a bus-factor-of-one dependency. The ~84.8k star count is API-verified, but it is wildly disproportionate for a young single-developer hook tool and its production-adoption/vetting meaning is unverified and suspicious — treat popularity as decoupled from vetting, not as adoption evidence. [未验证]
 - **Age & Lindy — young, unproven.** Created 2025-08, ~10 months old (as of 2026-06). Active but no track record; young-and-hyped, not Lindy-safe — do not adopt *because* it looks widely vetted.

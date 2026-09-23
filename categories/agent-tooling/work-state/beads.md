@@ -131,7 +131,7 @@ So you `bd init` in the repo and hand the agent the `bd` binary. Now its task st
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 70.9 hours across 9 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance** — last push 2026-06 (as of 2026-06) on a v1.x release line: actively developed. But the author still self-describes it as "alpha" and the FAQ warns flags/data-formats can evolve, so treat it as active-but-volatile, not stabilized. [推断]
 - **Governance / bus factor** — `[未验证]` started by Steve Yegge; repo moved from `steveyegge/beads` to the `gastownhall` org. An org wrapper reduces the literal single-person bus factor on paper, but it's reportedly largely AI-built ("a tool AI built for itself") and the org appears purpose-made — treat real bus-factor / abandonment risk as non-trivial for anything you can't re-tool.
 - **Age & Lindy** — created 2025-10, so under a year old as of 2026-06: too young for a Lindy verdict. High star velocity (~24k) is hype-driven attention, not a longevity track record — don't read the stars as durability. [推断]

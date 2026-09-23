@@ -126,10 +126,10 @@ You also reach for it when you want a design system that stays in your repo, not
 **Low.** There is nothing to deploy or operate beyond your normal React build pipeline. The operational burden is in **maintenance of the copied components**: when you upgrade the shadcn/ui CLI or add a new component, you may need to reconcile styling changes or Tailwind config updates. Because the components live in your repo, you must patch them yourself if a bug is found — you cannot just bump a version in `package.json`. The flip side is that you are never blocked by upstream release cadence. For a small team, the copy-and-own model is low-friction; for a large org with many teams, you may need to build your own internal distribution mechanism to keep component variants consistent.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 15.3 hours across 28 qualifying issues/PRs.
-- **Adoption**: Grade A — 18,842,516 monthly downloads via npmjs.org (package: shadcn).
-- **Longevity**: Grade B — 1,276 days old.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
+- **Responsiveness**: Grade A — median first-response time 41.2 hours across 30 qualifying issues/PRs.
+- **Adoption**: Grade A — 6,084,607 monthly downloads via npmjs.org (package: @shadcn/react).
+- **Longevity**: Grade B — 1357 days old.
 - **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)

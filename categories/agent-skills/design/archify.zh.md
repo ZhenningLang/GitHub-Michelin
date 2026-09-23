@@ -106,7 +106,7 @@ Any agent Skill: generate beautiful architecture diagrams with dark/light theme 
 - **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-15T16:29:36Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 5,339 个 GitHub stars；这是有用关注信号，但项目仍很年轻。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT。
-- **Lindy / 治理：** health 中 longevity 为 C；项目年轻且贡献集中，governance 为 D。
+- **Lindy / 治理：** health 中 longevity 因项目年轻而为 C；governance 未知——health 数据块对此没有数据。
 - **风险信号：** 输出准确性依赖 agent 对系统的理解和本地验证 loop，不只依赖 renderer。
 
 ## 存疑（未验证）

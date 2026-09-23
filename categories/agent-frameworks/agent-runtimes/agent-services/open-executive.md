@@ -152,11 +152,11 @@ You copy `.env.example`, put in a model-provider key, and run `make dev`. That s
 
 ## Health & viability
 
-- **Maintenance:** Grade B (scored 2026-09-22) — last default-branch commit the same day, 5/13 trailing weeks active. Tags `v0.2.0` and `v0.2.1` both dated 2026-09-22; `CHANGELOG.md` follows Keep a Changelog. Pre-1.0: 0.2.0 removed the talent and staff-onboarding verticals.
+- **Maintenance:** Grade A (scored 2026-09-22) — last default-branch commit the same day, 6/13 trailing weeks active. Tags `v0.2.0` and `v0.2.1` both dated 2026-09-22; `CHANGELOG.md` follows Keep a Changelog. Pre-1.0: 0.2.0 removed the talent and staff-onboarding verticals.
 - **Responsiveness:** Grade A — median first-response 6.5 hours across 22 qualifying issues (relaxed_solo band).
 - **Adoption:** Grade ? (`no_package_structural`) — the scorer skips download graphs for `type: app`. GitHub on 2026-09-22: 5,119 stars / 530 forks / 39 watchers / 3 open issues. No production-user list verified; watcher count is the calmer proxy.
 - **Longevity:** Grade D — created 2026-06-11, 103 days old. The app cohort's C bar is older than that. 5.1k stars in three months is a launch-shaped signal, not a Lindy prior.
-- **Governance:** Grade ? (`empty_or_gated`). Independently: GitHub Organization `SenteLabsAI`, created the same day as the repo, two public repos. `CODEOWNERS` is `@johnrufusone @banuakman`. Contributor listing is dominated by `johnrufusone` (186) then a `claude` account (44) and Dependabot (21); `banuakman` has 4. Roadmap rides on one young vendor, not a foundation.
+- **Governance:** Grade D. Independently: GitHub Organization `SenteLabsAI`, created the same day as the repo, two public repos. `CODEOWNERS` is `@johnrufusone @banuakman`. Contributor listing is dominated by `johnrufusone` (186) then a `claude` account (44) and Dependabot (21); `banuakman` has 4. Roadmap rides on one young vendor, not a foundation.
 - **Risk / License:** Grade ? (`license_unparsed`) — GitHub API reports `NOASSERTION` while `LICENSE` and `pyproject.toml` are Apache-2.0. Separate from that grade: shared workspace with no per-user isolation; fail-open API unless `OE_PUBLIC_DEPLOYMENT` is set; scheduler cannot scale out; first-party eval gate and cache-hit claims are unaudited; README / `docs/architecture.md` / `config.py` disagree on default model ids (`config.py` is runtime truth). A managed cloud is advertised at `openexecutive.ai` as coming — that is not this repository.
 
 ## Caveats (unverified)

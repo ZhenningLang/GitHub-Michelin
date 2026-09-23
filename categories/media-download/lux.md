@@ -120,7 +120,7 @@ You especially reach for it when the sources are **Chinese sites** — Bilibili,
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 180.7 hours across 4 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — active but slowing; releases lag master (master pushed ~2026-03, last tagged release v0.24.1 2024-05, as of 2026-06).** Not archived and the default branch still receives commits, but the ~2-year gap since the last tagged release against a moving target (sites changing their players) is the signal to watch: verify whether it's genuinely active or coasting before you depend on it for many sites. [推断]
 - **Governance & bus factor — single-maintainer `User` repo (iawia002).** Owned by an individual account, not an org or foundation, and contributions are heavily concentrated in the owner (iawia002 ~497 vs the next contributor ~14). That is a real bus-factor flag: roadmap and extractor upkeep depend largely on one person. [推断]
 - **Age & Lindy — created 2018 (~8y old), ~31.4k stars: decent age and adoption.** A multi-year, still-getting-commits project clears the basic Lindy bar — the *idea* and codebase have endured (it predates its *annie* rename). But for a downloader the durable risk isn't age, it's **extractor staleness/cadence**: old-and-active is reassuring for the core, not a guarantee any given site still works today.

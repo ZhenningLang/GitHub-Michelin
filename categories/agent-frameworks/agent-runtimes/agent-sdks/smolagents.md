@@ -126,7 +126,7 @@ It's also a good fit when you're model-shopping or staying close to the Hugging 
 
 ## Health & viability
 
-- **Responsiveness**: Grade C — median first-response time 211.9 hours across 24 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 35.8 hours across 32 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Last push 2026-06; releasing on a brisk v1.x cadence (1,000+ commits on main). Reads as actively developed, not coasting; not archived.
 - **Governance & backing — Hugging Face (strong signal).** Owned by the `huggingface` org, not a lone maintainer. HF backing is a meaningful durability signal: a well-resourced, central player in the open-model ecosystem with a track record of sustaining tooling — which materially offsets the project's youth. [推断]
 - **Age & Lindy — young, Lindy-unproven, but offset by the backer.** Created 2024-12, ~1.5 years old (as of 2026-06). By age × still-active alone it does **not** clear the Lindy bar that older frameworks like [DSPy](../../workflow-builders/dspy.md) do — there's no long track record yet — but the HF backing + fast adoption substantially de-risks the "will it still be here" question relative to a hyped solo project. [推断]

@@ -125,7 +125,7 @@ You also reach for it as a shareable team deployment in the cheap-and-cheerful s
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 113.2 hours across 4 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 339.8 hours across 5 qualifying issues/PRs.
 - **Maintenance — active but coasting on releases (as of 2026-06).** Repo pushed 2026-05, so the codebase is alive; but the latest tagged release (v2.16.1) is reported 2025-07-29 — roughly a year stale, so you'd be tracking a fast-moving `main` rather than cut releases. Not archived. [未验证]
 - **Governance & bus factor — single-vendor, open-core-adjacent.** Organization-owned (the ChatGPTNextWeb / NextChat org), so not literally a single User repo, but it is effectively one vendor's project, and that vendor monetizes a separate paid Enterprise Edition. The OSS community edition's roadmap is theirs to set; treat governance as vendor-controlled, not foundation-style. [推断]
 - **Age & Lindy — moderate.** Created 2023-03, ~3 years old and still maintained; old enough to have outlived the first wave of ChatGPT-clone UIs, young enough that this category churns fast. A reasonable but not blue-chip Lindy bet — its durability rests on the vendor's continued interest. [推断]

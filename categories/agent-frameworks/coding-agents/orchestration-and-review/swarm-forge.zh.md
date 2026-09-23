@@ -123,7 +123,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade C——4 个 qualifying issues 的中位首次响应时间 229.1 小时（这是作者驱动的项目，不是客服）；验证时挂着 22 个 open issue 与 16 个 open PR。
+- **响应速度**：Grade C——中位首次响应时间 229.1 小时，基于 4 个 qualifying issues/PRs。
 - **维护——活跃但没有版本发布（截至 2026-09-19）。** 331 次提交，最后推送 2026-09-07（距验证约 12 天），未归档。但**没有任何 tagged release**（只有两个非正式 tag），也没有 changelog，所以「升级」就等于重新拉分支；不存在可供依赖的 semver 纪律。
 - **治理与 bus factor——单人作者、名气大。** 仓库是 `User` 持有的 Robert C. Martin（`unclebob`，cleancoder.com），331 次提交中约 324 次出自他；contributors API 一共只列出 3 个人。名气带来关注度，但不带来延续性：bus factor 实际为 1。[推断]
 - **背书与寿命——没有组织、没有基金会。** 与 [Symphony](../../agent-runtimes/agent-services/symphony.zh.md)（OpenAI 所有）不同，它的路线图背后没有厂商或基金会。宪法还把作者自己的工具仓库硬编码为必需依赖，于是项目与它的工具链共用同一个维护者。

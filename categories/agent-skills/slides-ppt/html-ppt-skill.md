@@ -99,7 +99,7 @@ It is strong for presentation authors who want a large palette: 36 CSS-token the
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-04-26T07:13:39Z`; health scores maintenance as B.
 - **Adoption snapshot:** ~7,185 GitHub stars as of 2026-07; relevant, but still a young skill with limited longevity evidence.
 - **License snapshot:** MIT verified from upstream README and root `LICENSE` in the read-only upstream check.
-- **Lindy / governance:** health longevity is C and governance is C; not abandoned, but not old enough to be a stable presentation standard.
+- **Lindy / governance:** health longevity is C and governance is D; not abandoned, but not old enough to be a stable presentation standard.
 - **Risk flags:** the large catalog is an advantage, but also increases the chance of visual inconsistency unless the agent selects and applies templates carefully.
 
 ## Caveats (unverified)
