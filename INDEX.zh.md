@@ -79,6 +79,7 @@
 | **cad** | 自己跑的计算机辅助设计——参数化三维实体建模、二维制图，以及其下的几何内核。 | [→](categories/cad/INDEX.zh.md) |
 | **desktop-launchers** | 键盘驱动的桌面启动器／命令面板——应用启动、剪贴板历史、片段、快捷链接、窗口管理，一个快捷键全管。 | [→](categories/desktop-launchers/INDEX.zh.md) |
 | **design-editors** | 你自己跑的开源设计编辑器——本地优先或自托管的 Figma 级画布。 | [→](categories/design-editors/INDEX.zh.md) |
+| **learning-resources** | 策展型阅读路径与资源清单——读它去找某个领域的权威论文、规范或参考实现，而不是一堆博客。 | [→](categories/learning-resources/INDEX.zh.md) |
 
 
 

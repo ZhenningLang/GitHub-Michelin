@@ -334,6 +334,7 @@ Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
+gpu-mode/lectures,categories/learning-resources/gpu-perf-engineering-resources.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-review-graph.md,,no
 Graphviz,categories/diagramming/INDEX.md,,no

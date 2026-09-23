@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "The guide does", "zh": "这份清单做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the README and read \"Start here\" first, in order", "zh": "打开 README，先按顺序读完 “Start here” 那 8 条", "code": "Start here", "component": {"en": "README.md", "zh": "README.md"}, "phase": {"en": "First pass", "zh": "首次通读"}},
+    {"lane": "them", "en": "Orders the field from one request to one GPU, then kernels, engines and clusters", "zh": "把领域从单次请求排到单卡、算子、引擎、集群", "component": {"en": "README.md", "zh": "README.md"}},
+    {"lane": "them", "en": "Admits only the original paper, the official spec, an implementing repo or a reproducible report", "zh": "只收录原始论文、官方规范、实现仓库，或有复现细节的实现者报告", "component": {"en": "CONTRIBUTING.md", "zh": "CONTRIBUTING.md"}, "phase": {"en": "Then as a reference", "zh": "之后当参考"}},
+    {"lane": "you", "en": "Jump to the numbered section that matches today's bottleneck", "zh": "跳到与当前瓶颈对应的编号小节", "code": "2. Kernel optimization · 4. Inference engines · 5. Distributed inference"},
+    {"lane": "you", "en": "Open the linked primary source and work it on your own hardware", "zh": "打开链接里的原始资料，在自己的机器上动手做"},
+    {"lane": "them", "en": "Drops performance numbers that lack hardware, workload, precision or baseline", "zh": "丢掉缺硬件、负载、精度或基线的性能数字"},
+    {"lane": "them", "en": "Rejects broken anchors on every PR and re-checks all external links weekly", "zh": "每次 PR 拒绝断锚点，每周复查全部外链", "component": {"en": "check_guide.py · links.yml", "zh": "check_guide.py · links.yml"}}
+  ],
+  "value": {"en": "You stop guessing what to learn first and whose explanation to trust — the order and the source bar are already made", "zh": "不用再猜先学什么、该信谁的解释——顺序和收录标准已经替你定好"},
+  "sources": [
+    "README.md → \"Read **Start here** first. After that, use it as a reference.\"",
+    "README.md → \"The list is ordered from a single inference request to a single GPU, optimized kernels, inference engines, and distributed systems.\"",
+    "README.md → section headings \"Start here: the minimum mental model\", \"2. Kernel optimization\", \"4. Inference engines\", \"5. Distributed inference\" (the code values are those headings, verbatim)",
+    "README.md → \"Source policy\" (\"the paper that introduced the mechanism; the specification or official documentation that defines it; the repository that implements it; a direct implementer report with code, measurements, and enough detail to reproduce\")",
+    "CONTRIBUTING.md → \"Primary means one of the following\" + \"Do not submit summaries, generic tutorials, marketing pages, broad surveys, or leaderboard claims without a hardened evaluator.\"",
+    "CONTRIBUTING.md → \"Performance claims\" (\"A performance number needs: hardware and software versions; workload shapes or request distribution; precision and algorithm; baseline; correctness method. If any item is missing, omit the number.\")",
+    "CONTRIBUTING.md → \"The automated checks reject broken internal anchors and accidental duplicate links. External links are checked separately\"",
+    "scripts/check_guide.py + .github/workflows/quality.yml (runs it on every PR) and .github/workflows/links.yml (lychee, cron \"17 9 * * 1\")"
+  ]
+}

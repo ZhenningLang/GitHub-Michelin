@@ -1135,3 +1135,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | --- | --- | --- | --- | --- |
 | **OpenPencil** | 需要打开已有的 Figma `.fig` 文件并对它做脚本化处理——查看结构、检查、转换、导出成 JSX——或者想要一个 local-first、AI 原生、没有服务器、没有账号、不上传的编辑器时用它。 | MIT | B（6/6） | [中](categories/design-editors/open-pencil.zh.md) · [EN](categories/design-editors/open-pencil.md) |
 | **Penpot** | 一个团队必须在你自己控制的服务器上编辑同一份设计文件——浏览器编辑器、实时多人协作、组件/变体、原型和 design token——而按席位租托管 SaaS 不可行时用它。 | MPL-2.0 | B（5/6） | [中](categories/design-editors/penpot.zh.md) · [EN](categories/design-editors/penpot.md) |
+
+### learning-resources
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
