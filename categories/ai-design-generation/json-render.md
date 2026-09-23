@@ -88,6 +88,14 @@ You're shipping a chat product, an internal ops console, or an agent surface tha
 
 Reach for json-render when the deciding tradeoff is **catalog over codegen**. You already have (or will write) a finite set of React / Vue / Svelte / Solid components. You register their props as Zod schemas. The model is only allowed to pick from that list. The output is a JSON spec your renderer paints — not source files you then review, merge, and deploy. Pick it over v0 or Lovable when the UI must stay inside the app and the design system you already ship; pick [HTML Anything](html-anything.md) or [Open Design](open-design.md) when the deliverable is a file (HTML / PPTX / MP4) produced by a coding-agent CLI, not a runtime tree.
 
+## Q&A
+
+**Is this a chatbot display layer?**
+Yes — that is the main seat. The repo ships `examples/chat` and `examples/harness-chat`. It is not only display: buttons fire catalogued actions and forms write state. The model cannot invent parts you did not register. Markdown bubbles plus a few static cards is too much machinery; if you want the model to write React source, that is v0.
+
+**Is CopilotKit the same thing, and is it already indexed?**
+Not indexed. They overlap on "the agent paints UI in the chat." CopilotKit is a full agent-into-your-app SDK — chat UI, shared state, human-in-the-loop, Slack/Teams, hosted Intelligence. json-render is the parts bin only.
+
 ## How it works
 
 json-render does not sit in the model's sampling loop. You declare a catalog — allowed component names, Zod prop schemas, and actions. From that catalog it builds two artifacts you hand to the model: a system prompt (`catalog.prompt()`) that lists the parts bin, and optionally a JSON Schema (`catalog.jsonSchema({ strict: true })`) for a provider's structured-output API. The model streams a spec: a `root` key plus an `elements` map, or JSONL patches. `createSpecStreamCompiler` assembles the tree as chunks arrive. After generation, `catalog.validate()` runs Zod over the spec and `validateSpec` checks structural mistakes the model often makes (missing root, dangling children). `defineRegistry` maps each `type` string onto a real component; `<Renderer>` paints only those. Unknown types never become DOM because they are not in the registry — but the model can still emit invalid JSON until you validate. That is a parts bin plus an inspector, not a keyboard that cannot type illegal letters (that job is [XGrammar](../llm-inference/structured-generation/xgrammar.md)).
@@ -119,6 +127,7 @@ json-render does not sit in the model's sampling loop. You declare a catalog —
 - **You are on React 18 or Zod 3.** `@json-render/react` 0.21.0 peers `react@^19.2.3`; `@json-render/core` peers `zod@^4.0.0`. Stay on your current stack, or budget the upgrade, rather than expecting a compatibility shim that is not in the package metadata.
 - **You need native SwiftUI or Android views.** The mobile path is React Native. There is no UIKit / Jetpack renderer in the published package list.
 - **You only wanted a design-system kit.** The shadcn pack is 36 pre-built components *for this runtime*. If you just need buttons and cards in a normal React app, use shadcn/ui directly, not this framework.
+- **You want a full copilot product, not a parts bin.** Chat chrome, shared agent state, human-in-the-loop, Slack/Teams — that is CopilotKit (`未收录`), not this package.
 - **You cannot tolerate 0.x churn or a Labs label.** The repo is a Vercel Labs product, versioned 0.21.x, with breaking changes called out in the changelog (for example the `executeAction` callback shape in 0.20.0). Pin the version; do not treat the API as frozen.
 
 ## Comparison
@@ -128,7 +137,7 @@ json-render does not sit in the model's sampling loop. You declare a catalog —
 | [HTML Anything](html-anything.md) | ✅ | Pick HTML Anything when a logged-in coding-agent CLI should turn Markdown into a shippable HTML file. Pick json-render when the model must assemble UI *inside* your running app from components you already ship. | HTML Anything produces a file via a spawned CLI and never enters your product runtime; json-render is a library you embed, and you must own the catalog and the model call. |
 | [Open Design](open-design.md) | ✅ | Pick Open Design for a local-first desktop studio (prototypes, decks, images, HTML→MP4). Pick json-render when generative UI is a feature of an existing web/mobile app, not a separate studio. | Open Design is an Electron app you operate; json-render is a package you import. Studio breadth versus in-process control. |
 | [XGrammar](../llm-inference/structured-generation/xgrammar.md) | ✅ | Pick XGrammar when you own the logits and a malformed token must be impossible. Pick json-render when the problem is *which components the model may name*, after a JSON string already exists. | XGrammar masks tokens inside generation; json-render constrains a component vocabulary with a prompt, a JSON Schema, and Zod. They stack: XGrammar (or hosted structured output) for shape, json-render for the parts bin. |
-| Vercel AI SDK (`vercel/ai`) | 未收录 | Pick the AI SDK's generative-UI / streaming-UI helpers when you want React Server Components streamed as UI and you already live in that SDK. Pick json-render when the contract must be a catalogued JSON spec that also renders on Vue, Svelte, Solid, RN, PDF, or email. | The AI SDK path is React/RSC-shaped and does not give you a cross-renderer JSON catalog; json-render is catalog-first and model-agnostic, and you wire the model yourself. Left unindexed in this change because it is a large SDK, not a gen-UI-only repo. |
+| CopilotKit (`CopilotKit/CopilotKit`) | 未收录 | Pick CopilotKit when you want a full agent-in-your-app SDK (chat UI, shared state, human-in-the-loop, Slack/Teams). Pick json-render when you already have the chat and only need the model to assemble UI from your catalog. | CopilotKit is the product layer between agents and users; json-render is a catalogued JSON renderer you embed. Left unindexed here because this change only folds the reading conversation into the existing page. |
 | v0 | 非仓库 | Pick v0 when you want hosted codegen that writes React source. Pick json-render when the model must not invent components and the UI must render from a spec at runtime. | v0 is a hosted product (no git repository as the unit of use). You get source files and a vendor workflow; json-render gives you an in-app parts bin and no hosted editor. |
 
 ## Tech stack
@@ -167,6 +176,7 @@ json-render does not sit in the model's sampling loop. You declare a catalog —
 - [未验证] No `SECURITY.md` / `CONTRIBUTING.md` / `CODEOWNERS` were present in the tree at this revision; a private vulnerability channel outside the repo was not confirmed.
 - [推断] Contributor concentration (`ctate` far ahead of the next human) is from the GitHub contributors API on 2026-09-23 and is not identity-deduplicated.
 - [推断] "Vercel Labs can be sunset" is the usual Labs-product reading, not a Vercel statement about this repo.
-- [推断] Vercel AI SDK (`vercel/ai`) is a real repository deliberately left unindexed by this change; the generative-UI comparison is from public positioning, not from a page read here.
+- [推断] CopilotKit (`CopilotKit/CopilotKit`) is a real repository deliberately left unindexed by this change; the comparison is from its README positioning (agent-native apps, chat UI, AG-UI, Intelligence), not from a selection page.
+- [推断] Vercel AI SDK (`vercel/ai`) remains unindexed; it was dropped from this page's comparison table in favor of CopilotKit, which is the closer chatbot-UI substitute named in the reading conversation.
 - [未验证] React Native / Vue / Svelte / Solid / PDF / email / Ink renderers were not executed; package presence in `packages/` and README install lines are the evidence.
 - [未验证] "36 shadcn/ui components" is the README figure; the component list was not counted in this review.
