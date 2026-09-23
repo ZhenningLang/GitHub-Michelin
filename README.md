@@ -1163,3 +1163,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **AI Performance Engineering Resources** | Use it when you need to learn or reference GPU/AI performance engineering and want the canonical source per mechanism in dependency order — one request → one GPU → kernels → engines → distributed serving — instead of a pile of blog posts. | MIT (declared) | C (3/5) | [EN](categories/learning-resources/gpu-perf-engineering-resources.md) · [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) |
+
+### model-editing
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Heretic** | Use it when an aligned open model refuses prompts that are legitimate for your work, and you want the refusal direction ablated out automatically with a measured quality tradeoff — one GPU, no training data, AGPL tooling. | AGPL-3.0-or-later | B (6/6) | [EN](categories/model-editing/heretic.md) · [中](categories/model-editing/heretic.zh.md) |

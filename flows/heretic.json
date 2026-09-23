@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Heretic does", "zh": "Heretic 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package", "zh": "安装这个包", "code": "pip install -U heretic-llm"},
+    {"lane": "you", "en": "Point it at the model to decensor", "zh": "指向要去审查的模型", "code": "heretic Qwen/Qwen3-4B-Instruct-2507"},
+    {"lane": "them", "en": "Loads the weights and derives a per-layer refusal direction from good/bad prompts", "zh": "加载权重，用无害／有害提示词算出每一层的拒答方向", "component": {"en": "Analyzer", "zh": "Analyzer"}},
+    {"lane": "them", "en": "Runs ~200 abliteration trials, scoring refusals and KL divergence", "zh": "跑约 200 轮消融试验，给拒答率和 KL 散度打分", "component": {"en": "Optuna TPE study", "zh": "Optuna TPE 搜索"}},
+    {"lane": "you", "en": "Pick a point on the Pareto front", "zh": "在帕累托前沿上挑一个点"},
+    {"lane": "them", "en": "Exports the merged model or a LoRA adapter", "zh": "导出合并后的模型或 LoRA 适配器", "component": {"en": "Model", "zh": "Model"}}
+  ],
+  "value": {"en": "A locally runnable decensored checkpoint — no training data, no abliteration script", "zh": "一个能在本地跑的去审查检查点——不用准备训练数据，不用自己写消融脚本"},
+  "sources": ["heretic README.md Usage: `pip install -U heretic-llm`; `heretic Qwen/Qwen3-4B-Instruct-2507`; heretic-project.org/tutorial (residual directions, ~200 trials, Pareto front, save/upload/chat/benchmark actions); config.default.toml (scorers: KeywordRate refusals + KLDivergence, n_trials=200); src/heretic/main.py (model.abliterate / get_merged_model / ExportStrategy.ADAPTER)"]
+}
