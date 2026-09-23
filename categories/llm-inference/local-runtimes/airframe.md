@@ -79,6 +79,14 @@ You are building a Rust application that needs embedded local inference — a de
 
 Pick Airframe over [llama.cpp](llama-cpp.md) bindings when build simplicity and cross-platform GPU coverage decide — its own comparison is "cargo build vs C++ compiler required", and for a Rust-only shop that is a real, daily cost. Pick llama.cpp when model-architecture breadth decides, because Airframe certifies only 12 architecture families (Llama, Mistral, Phi, Qwen2/3/3.5, Gemma2/4, StarCoder2) and anything outside them has no correctness guarantee. It is also the engine inside [Shimmy](shimmy.md), so if what you actually want is an OpenAI-compatible server rather than an embedded library, you want the server, not this crate.
 
+## Q&A
+
+**Is Airframe usable on its own, without Shimmy?**
+Yes — it is an ordinary crate (`cargo add airframe`), and you own everything above the engine: tokenization, chat templating, streaming, concurrency. Pick the crate when you are embedding inference in your own Rust program; pick [Shimmy](shimmy.md) when you want the OpenAI-compatible server that already built those layers.
+
+**The Shimmy page calls itself "one binary" while naming this crate as its engine — which is it?**
+Both, at different levels. `cargo install shimmy` compiles Airframe into the resulting executable, so the artifact a user gets is a single file even though the code is two layers: a server shell plus this engine. Same shape as Ollama packaging llama.cpp — the packaging choice does not change who owns which code.
+
 ## How it works
 
 Airframe reads the GGUF file's metadata to derive the model's structure — layer count, normalization style, head dimensions — instead of hardcoding per-model constants, then executes the transformer's arithmetic (attention, feed-forward) as WGSL shaders. WGSL is WebGPU's shader language: you write the math once in a form every vendor's GPU driver can run, which is how one codebase covers NVIDIA, AMD, Intel, and Apple Silicon without CUDA or Metal specifics. The WebGPU implementation is the `wgpu` crate, the same one Firefox uses. What Airframe does not do is everything above the arithmetic: chat templating, serving, concurrency, and model management are your application's problem — this is an engine, not a server.

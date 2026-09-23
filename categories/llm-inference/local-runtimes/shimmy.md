@@ -92,6 +92,14 @@ You already have GGUF models on disk — downloaded from Hugging Face or pulled 
 
 Pick Shimmy over [Ollama](ollama.md) when the deciding factor is footprint and directness — one binary, one file path, no daemon, no store — rather than ecosystem depth. Pick it over [llama.cpp](llama-cpp.md)'s server when you want OpenAI-, Ollama-, and Anthropic-compatible endpoints without reading a flag reference. The deciding tradeoff: you accept a one-year-old, single-maintainer engine that certifies only 26 model+quantization combinations, in exchange for the lightest OpenAI-compatible serving path in this category.
 
+## Q&A
+
+**How do Shimmy and Airframe relate?**
+Airframe is the engine; Shimmy is the server around it. Shimmy's HTTP routing and API compatibility layers are its own code, and inference is delegated to the Airframe crate. Because that crate is compiled in as a dependency, the shipped artifact is still a single binary containing both layers — "shell" is an architecture statement, "one binary" is a distribution statement. Ollama has the same shape with a C++ engine inside.
+
+**What does Shimmy add over embedding Airframe directly?**
+Three layers Airframe does not have: the service surface (OpenAI/Ollama/Anthropic-compatible endpoints, streaming, WebSocket, `/metrics`, `/docs`), model management (auto-discovery of Ollama/Hugging Face model directories, load/unload/preload, chat-template rendering), and usage entry points (the `shimmy` CLI plus a SafeTensors loading adapter). Airframe answers "generate the next tokens for this prompt"; Shimmy answers "be discoverable and callable by the tools I already have" — and it inherits the engine's limits, so engine capability is the ceiling on what the server can serve.
+
 ## How it works
 
 Shimmy is an HTTP server shell around a separate engine. You hand it a GGUF file path (or let auto-discovery find models in the Ollama and Hugging Face directories); it loads the weights through Airframe, a pure-Rust engine that runs the model as GPU compute shaders — small programs your graphics card executes — via WebGPU, the cross-vendor GPU API that works on NVIDIA, AMD, Intel, and Apple Silicon alike. Your side of the deal ends at the file path and the port; everything between a GGUF file and a streamed chat-completion response — tokenizer, chat template, sampling — is its side.

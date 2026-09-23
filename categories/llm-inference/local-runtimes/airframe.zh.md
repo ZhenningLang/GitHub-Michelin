@@ -79,6 +79,14 @@ health:
 
 和 [llama.cpp](llama-cpp.zh.md) 绑定之间选 Airframe 的场景，是决定因素是构建简单性和跨平台显卡覆盖——它自己的对比就是「`cargo build` 对 需要 C++ 编译器」，对纯 Rust 团队这是每天的真实成本。模型架构广度成为决定因素时选 llama.cpp，因为 Airframe 只认证了 12 个架构家族（Llama、Mistral、Phi、Qwen2／3／3.5、Gemma2／4、StarCoder2），名单之外没有正确性保证。它也是 [Shimmy](shimmy.zh.md) 内部的引擎——如果你要的其实是 OpenAI 兼容服务器而不是内嵌库，那要的是那个服务器，不是这个 crate。
 
+## 快问快答
+
+**不装 Shimmy，Airframe 能单独用吗？**
+能——它就是普通 crate（`cargo add airframe`），引擎之上的所有事都归你：分词、对话模板、流式输出、并发。要把推理嵌进自己的 Rust 程序就用这个 crate；想要那套已经建好的 OpenAI 兼容服务器就用 [Shimmy](shimmy.zh.md)。
+
+**Shimmy 页面说自己「一个二进制」，又把这个 crate 说成它的引擎，到底哪个对？**
+两个都对，只是层面不同。`cargo install shimmy` 会把 Airframe 编译进最终可执行文件，所以用户拿到的产物是一个文件，而代码是两层：服务壳加这个引擎。形状和 Ollama 打包 llama.cpp 一样——打包方式不改变代码归属。
+
 ## 怎么用起来
 
 Airframe 读取 GGUF 文件的元数据来推导模型结构——层数、归一化方式、注意力头维度——而不是为每个模型硬编码常量，然后把 transformer 的算术（注意力、前馈网络）编译成 WGSL 着色器执行。WGSL 是 WebGPU 的着色器语言：算术写一次、每家显卡厂商的驱动都能跑，这就是一份代码覆盖 NVIDIA、AMD、Intel、Apple Silicon 而不碰 CUDA 或 Metal 细节的原理。WebGPU 实现用的是 `wgpu` crate，和 Firefox 同一个。Airframe 不做的是算术之上的所有事：对话模板、服务化、并发、模型管理都是你的应用要解决的问题——它是引擎，不是服务器。

@@ -92,6 +92,14 @@ health:
 
 和 [Ollama](ollama.zh.md) 之间选 Shimmy 的场景，是决定因素是体积和直接性——一个二进制、一个文件路径、没有守护进程、没有模型仓库——而不是生态深度。和 [llama.cpp](llama-cpp.zh.md) 自带 server 之间选它的场景，是你想要 OpenAI、Ollama、Anthropic 三家兼容的端点，又不想翻参数手册。决定性的取舍是：你接受一个刚满一年、单人维护、只认证了 26 个模型加量化组合的引擎，换来本类目里最轻的 OpenAI 兼容服务路径。
 
+## 快问快答
+
+**Shimmy 和 Airframe 是什么关系？**
+Airframe 是引擎，Shimmy 是套在它外面的服务端。Shimmy 的 HTTP 路由和 API 兼容层是自己写的代码，推理委托给 Airframe crate。因为这个 crate 是作为依赖编译进去的，交付产物仍然是一个包含两层的单文件——「壳」说的是架构关系，「单二进制」说的是分发形态。Ollama 是同样形状，只是里面装的是 C++ 引擎。
+
+**相对直接内嵌 Airframe，Shimmy 多了什么？**
+三层 Airframe 没有的东西：服务面（OpenAI／Ollama／Anthropic 兼容端点、流式、WebSocket、`/metrics`、`/docs`）、模型管理（自动发现 Ollama／Hugging Face 模型目录、加载／卸载／预热、对话模板渲染）、使用入口（`shimmy` 命令行加 SafeTensors 加载适配）。Airframe 回答「给这段提示词生成接下来的 token」，Shimmy 回答「被我已经在用的工具发现并调用」——它继承引擎的限制，所以引擎能力就是服务能提供的上限。
+
 ## 怎么用起来
 
 Shimmy 是一个套在独立引擎外面的 HTTP 服务壳。你给它一个 GGUF 文件路径（或者让它自动发现 Ollama 和 Hugging Face 目录里的模型）；它通过 Airframe 加载权重——Airframe 是纯 Rust 引擎，把模型跑成 GPU 计算着色器（显卡执行的小程序），走的是 WebGPU 这个跨厂商接口，NVIDIA、AMD、Intel、Apple Silicon 都覆盖。你这边的责任到文件路径和端口为止；从 GGUF 文件到流式聊天补全响应之间的所有环节——分词、对话模板、采样——都是它的事。
