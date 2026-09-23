@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="833" viewBox="0 0 880 833" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="833" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="675" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="675" rx="10"/>
+<rect class="pillT" x="474" y="40" width="175.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenMontage does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="edge" d="M62,287 L62,311" marker-end="url(#a)"/>
+<path class="hand" d="M408,359.0 C439.0,359.0 439.0,383 470,383" marker-end="url(#a)"/>
+<path class="edge" d="M494,453 L494,477" marker-end="url(#a)"/>
+<path class="edge" d="M494,551 L494,575" marker-end="url(#a)"/>
+<path class="hand" d="M472,613.0 C441.0,613.0 441.0,637 410,637" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Clone the repository and run its setup</text>
+<text class="t" x="82" y="123">once</text>
+<text class="c" x="82" y="147">make setup</text>
+<rect class="card" x="40" y="193" width="368" height="94" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="94" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Open the project in your coding</text>
+<text class="t" x="82" y="244">assistant — the agent is the</text>
+<text class="t" x="82" y="266">orchestrator</text>
+<rect class="card" x="40" y="313" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="313" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="337" r="10"/>
+<text class="num" x="62" y="341" text-anchor="middle">3</text>
+<text class="t" x="82" y="342">Describe the video in plain language</text>
+<text class="c" x="82" y="366">Make a 60-second animated explainer about</text>
+<text class="c" x="82" y="385">how neural networks learn</text>
+<rect class="cardT" x="472" y="359" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="359" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="383" r="10"/>
+<text class="num" x="494" y="387" text-anchor="middle">4</text>
+<text class="t" x="514" y="388">Reads the pipeline manifest: stages,</text>
+<text class="t" x="514" y="410">tools, review criteria and success</text>
+<text class="t" x="514" y="432">gates</text>
+<rect class="cardT" x="472" y="479" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="479" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="503" r="10"/>
+<text class="num" x="494" y="507" text-anchor="middle">5</text>
+<text class="t" x="514" y="508">Runs the stages — research, script,</text>
+<text class="t" x="514" y="530">scene plan, assets, edit, compose</text>
+<rect class="cardT" x="472" y="577" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="577" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="601" r="10"/>
+<text class="num" x="494" y="605" text-anchor="middle">6</text>
+<text class="t" x="514" y="606">Stops for approval with a cost</text>
+<text class="t" x="514" y="628">estimate before spending on paid APIs</text>
+<rect class="card" x="40" y="613" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="613" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="637" r="10"/>
+<text class="num" x="62" y="641" text-anchor="middle">7</text>
+<text class="t" x="82" y="642">Approve, and let it render through</text>
+<text class="t" x="82" y="664">Remotion or HyperFrames</text>
+<rect class="val" x="28" y="717" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="741">VALUE</text>
+<text class="valT" x="48" y="765">A finished, narrated video from one sentence — with checkpoints and cost control instead of a</text>
+<text class="valT" x="48" y="787">hired studio</text>
+</svg>
