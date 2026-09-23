@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenMontage does",
+    "zh": "OpenMontage 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repository and run its setup once",
+      "zh": "克隆仓库并跑一次安装",
+      "code": "make setup"
+    },
+    {
+      "lane": "you",
+      "en": "Open the project in your coding assistant — the agent is the orchestrator",
+      "zh": "在编程助手里打开项目，agent 就是编排器"
+    },
+    {
+      "lane": "you",
+      "en": "Describe the video in plain language",
+      "zh": "用自然语言描述要什么视频",
+      "code": "Make a 60-second animated explainer about how neural networks learn"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the pipeline manifest: stages, tools, review criteria and success gates",
+      "zh": "读管线清单：阶段、工具、评审标准与成功门"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the stages — research, script, scene plan, assets, edit, compose",
+      "zh": "依次跑各阶段：研究、脚本、分镜、素材、剪辑、合成"
+    },
+    {
+      "lane": "them",
+      "en": "Stops for approval with a cost estimate before spending on paid APIs",
+      "zh": "花付费 API 之前先给成本估算并等你确认"
+    },
+    {
+      "lane": "you",
+      "en": "Approve, and let it render through Remotion or HyperFrames",
+      "zh": "确认后让它用 Remotion 或 HyperFrames 渲染"
+    }
+  ],
+  "value": {
+    "en": "A finished, narrated video from one sentence — with checkpoints and cost control instead of a hired studio",
+    "zh": "一句话得到配好音的成片，有检查点和成本控制，不需要请工作室"
+  },
+  "sources": [
+    "README Quick Start (git clone ... && make setup; 前置要求 Python 3.10+ / FFmpeg / Node.js 18+ / AI 编程助手; 示例指令 \"Make a 60-second animated explainer about how neural networks learn\")",
+    "README Pipelines (pipeline_defs/*.yaml 共 13 个清单，含 framework-smoke；阶段流 research -> proposal -> script -> scene_plan -> assets -> edit -> compose)",
+    "README How It Works (没有 code orchestrator，AI 编程助手就是编排器；agent 读 YAML 管线清单与 Markdown 导演技能，再调用 Python 工具，并在花费前请求人工批准)",
+    "README Pipelines 表 (渲染后端为 Remotion / HyperFrames)"
+  ]
+}
