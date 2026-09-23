@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "them": {"en": "Strands Agents does", "zh": "Strands Agents 做的"},
+  "them": {"en": "Harness SDK does", "zh": "Harness SDK 做的"},
   "steps": [
     {"lane": "you", "en": "Install the harness package, plus a provider extra if you are not on Bedrock", "zh": "装上 harness 包；不用 Bedrock 就再装对应 extra", "code": "pip install strands-harness"},
     {"lane": "you", "en": "Build the agent in one call — every argument is optional", "zh": "一次调用把 agent 建出来，参数全可省", "code": "create_harness()"},
