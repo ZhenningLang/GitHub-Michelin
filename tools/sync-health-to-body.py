@@ -3,8 +3,52 @@
 
 Reads the health block from YAML frontmatter and rewrites the corresponding
 prose section in the body so they never drift.  Preserves the Caveats section."""
-import argparse, re, yaml
+import argparse, re, sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+# Reuse the repo's own frontmatter reader instead of PyYAML: every other tool here is
+# stdlib-only and CI installs no third-party packages, so importing yaml made this the
+# one script that could not run in CI.
+from health_card import parse_frontmatter as _parse_mapping
+
+
+def _coerce(value):
+    """Turn the mapping parser's strings back into the types the bullets format.
+
+    The parser yields every scalar as a string, but the bullets use `{n:,}` and
+    `{share:.1%}` and test `is not None` — so `null` must become None and numbers must
+    become numbers, or a bullet either crashes or prints the literal text "null".
+    """
+    if isinstance(value, dict):
+        return {k: _coerce(v) for k, v in value.items()}
+    if not isinstance(value, str):
+        return value
+    # Inline flow mappings: the scorer writes `raw: {}` for an axis with no evidence and
+    # `adoption: { reason: no_package_structural }` in the unknowns block. The mapping
+    # parser hands those back as the literal strings, so a caller doing `raw.get(...)`
+    # would fail on a str — which it did, on android-skills.
+    if value.startswith("{") and value.endswith("}"):
+        inner = value[1:-1].strip()
+        if not inner:
+            return {}
+        out = {}
+        for part in inner.split(","):
+            k, sep, v = part.partition(":")
+            if sep:
+                out[k.strip()] = _coerce(v.strip().strip('"').strip("'"))
+        return out
+    if value in ("null", "~", ""):
+        return None
+    if value == "true":
+        return True
+    if value == "false":
+        return False
+    if re.fullmatch(r"-?\d+", value):
+        return int(value)
+    if re.fullmatch(r"-?\d*\.\d+", value):
+        return float(value)
+    return value
 
 
 def parse_frontmatter(text):
@@ -14,11 +58,10 @@ def parse_frontmatter(text):
     end = text.find("\n---", 3)
     if end == -1:
         return None, text
-    try:
-        fm = yaml.safe_load(text[3:end])
-    except Exception:
+    fm = _parse_mapping(text[: end + 4])
+    if not fm:
         return None, text
-    return fm or {}, text[end + 4:]
+    return _coerce(fm), text[end + 4:]
 
 
 def axis_bullet_en(name, axis):

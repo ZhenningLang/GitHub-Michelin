@@ -133,6 +133,53 @@ class SectionBoundaryTest(unittest.TestCase):
             sync.axis_bullet_en = original
 
 
+class FrontmatterCoercionTest(unittest.TestCase):
+    """The script reads frontmatter with the repo's stdlib mapping parser, not PyYAML.
+
+    That parser returns every scalar as a string, but the bullets format with `{n:,}` and
+    `{share:.1%}` and branch on `is not None` — so the coercion layer is load-bearing.
+    Dropping PyYAML was necessary because CI installs no third-party packages and this
+    was the only tool in the repo that imported it.
+    """
+
+    def test_null_becomes_none(self) -> None:
+        self.assertIsNone(sync._coerce("null"))
+
+    def test_integers_and_floats_are_numbers(self) -> None:
+        self.assertEqual(sync._coerce("362917"), 362917)
+        self.assertEqual(sync._coerce("0.876"), 0.876)
+        self.assertEqual(sync._coerce("-3"), -3)
+
+    def test_booleans(self) -> None:
+        self.assertIs(sync._coerce("true"), True)
+        self.assertIs(sync._coerce("false"), False)
+
+    def test_version_like_strings_stay_strings(self) -> None:
+        """`Apache-2.0` and `1.2.3` must not be mangled into numbers."""
+        self.assertEqual(sync._coerce("Apache-2.0"), "Apache-2.0")
+        self.assertEqual(sync._coerce("1.2.3"), "1.2.3")
+
+    def test_empty_flow_mapping(self) -> None:
+        """The scorer writes `raw: {}` for an axis with no evidence.
+
+        The mapping parser hands that back as the string "{}", and a caller doing
+        `raw.get(...)` then fails on a str — which it did, on android-skills.
+        """
+        self.assertEqual(sync._coerce("{}"), {})
+
+    def test_inline_flow_mapping(self) -> None:
+        self.assertEqual(sync._coerce("{ reason: no_package_structural }"),
+                         {"reason": "no_package_structural"})
+
+    def test_bullets_render_for_an_axis_with_no_evidence(self) -> None:
+        """End to end: an axis whose raw is the `{}` literal must not raise."""
+        fm, _ = sync.parse_frontmatter(page([("Health & viability", "x\n")]).replace(
+            "    longevity:\n      grade: A\n      raw:\n        repo_age_days: 2000\n",
+            "    longevity:\n      grade: \"?\"\n      raw: {}\n"))
+        axis = fm["health"]["axes"]["longevity"]
+        self.assertIn("Cannot be scored", sync.axis_bullet_en("longevity", axis))
+
+
 class AllFlagGuardTest(unittest.TestCase):
     def test_all_refuses_without_the_acknowledgement_flag(self) -> None:
         """`--all` overwrites hand-written prose on every page, so it must be opt-in."""
