@@ -154,11 +154,21 @@ TypeScript 宿主管供应商、会话记录、子进程生命周期和调度。
 - **治理：** C——12 个月 96 个活跃维护者，但 top-1 占 64.1%、top-3 占 78.2%（`badlogic` / Mario Zechner）。LICENSE 版权是 2025 Mario Zechner 与 2026 Prime Intellect；组织背书是真的，提交集中度仍然高。
 - **风险 / 许可：** A——MIT，36 个月内无改许可。安装和更新仍走供应商托管的 `curl | sh`；默认运行时不是沙箱。
 
+## 指指点点
+
+材料进对话窗口，智能用在材料上，窗口会烂。材料进 Python 变量，智能用在怎么切；父模型再也看不见 A 和 B 同时在场。怎么切块，本身就是你以为刚省下来的那种全局智能。 [推断]
+
+这里的「自我改进」是 `/refine` 往附加提示里写东西，外加一个研究赌注：用强化学习把模型训成会用这套脚手架。Prime Intellect 自己的 RLM 文章已经写过：现成模型套上脚手架，短数学题会变差。那不是产品已经学会了，是马具在盼着模型学会。 [推断]
+
+README 里诚实的那句是沙箱警告。其余的口号——RLM、Continual Harness、提交信息里的 RSI——读起来像一个研究项目在发 TUI。公开安装仍是从 Prime 域名 `curl | sh`，树里面的 npm 名仍是 `pi`。
+
 ## 存疑（未验证）
 
 - [未验证] `prime-agent update` 离开 Prime Intellect 账号能不能用；只读了安装 URL 和 `PI_OFFLINE=1` 跳过模型表刷新。
 - [未验证] 生产采用相对 star 数如何；4.5 个月 21.2k star 是注意力信号，不是用户数。
 - [推断] 高 fork/star（2026-09-22 约 11%）可能含镜像或一次性 fork，不一定是下游生态。
+- [推断] 把上下文放进变量而不是窗口，会把父模型降成调度员；怎么切块需要的全局视野，正是这一步刚拿走的。
 - [推断] Prime Intellect 的 RLM 博文（math-python 掉分、没 tip 的 DeepDive）说的是他们 verifier 里的 RLM 脚手架，不是测过的 Prime Agent TUI 基准。
+- [推断] `/refine` 加上强化学习那套说法，是马具在盼模型学会脚手架，不是它已经学会的证据。
 - [未验证] `/refine` 在野外对后续会话能改进多少；文档写了机制，没有田野研究。
 - [未验证] Windows/Termux 支持深度，除了仓库里有 `docs/windows.md` 和 `docs/termux.md`。

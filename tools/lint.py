@@ -30,6 +30,8 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - every page has an upstream snapshot for cheap stale checks -> ERROR if absent/malformed
   - page Comparison tables include an explicit Our verdict / 我们的评价 column -> ERROR if absent
   - every page: a Caveats ledger section (## Caveats (unverified) / ## 存疑（未验证）) -> ERROR if absent
+  - optional Callouts / 指指点点: if present, non-empty, bilingual pair matches, sits after
+    Health & viability and before Caveats -> ERROR on empty / one-sided / wrong position
   - prose-region [未验证]/[推断] density > PROSE_LABEL_MAX -> WARNING (converge into the Caveats section)
   - every directory under categories/ is a category node: must have INDEX.md + INDEX.zh.md
     (traversal is NOT gated on INDEX existence, so a dir missing its INDEX is reported, not skipped)
@@ -120,6 +122,8 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 # Caveats ledger heading — tolerant prefix match (the parenthetical varies: (unverified)/（未验证）).
 CAVEATS_RE_EN = re.compile(r"(?m)^##\s+Caveats\b")
 CAVEATS_RE_ZH = re.compile(r"(?m)^##\s+存疑")
+CALLOUTS_RE_EN = re.compile(r"(?m)^##\s+Callouts\s*$")
+CALLOUTS_RE_ZH = re.compile(r"(?m)^##\s+指指点点\s*$")
 # Health & viability is a labeled-judgment section (like Caveats) — exempt from the inline
 # label-density count, so the density boundary ends at whichever of Health/Caveats comes first.
 HEALTH_RE_EN = re.compile(r"(?m)^##\s+Health\s*&\s*viability\b")
@@ -676,6 +680,36 @@ def check_upstream_block(path: Path, text: str, rep: Report) -> None:
         rep.error(path, "upstream: default_branch_sha must be a 40-char git SHA")
 
 
+def section_after_heading(text: str, match: re.Match[str]) -> str:
+    start = match.end()
+    nxt = re.search(r"(?m)^##\s+", text[start:])
+    end = start + nxt.start() if nxt else len(text)
+    return text[start:end].strip()
+
+
+def check_callouts(
+    path: Path,
+    text: str,
+    zh: bool,
+    cav: re.Match[str] | None,
+    health: re.Match[str] | None,
+    sibling_text: str | None,
+    rep: Report,
+) -> None:
+    own = CALLOUTS_RE_ZH if zh else CALLOUTS_RE_EN
+    found = own.search(text)
+    if found:
+        if not section_after_heading(text, found):
+            rep.error(path, "Callouts / 指指点点 is empty — omit the heading if there is nothing leftover")
+        if cav is not None and found.start() > cav.start():
+            rep.error(path, "Callouts / 指指点点 must sit before Caveats (the page still ends with the ledger)")
+        if health is not None and found.start() < health.start():
+            rep.error(path, "Callouts / 指指点点 must sit after Health & viability")
+    if sibling_text is not None and not zh:
+        if bool(CALLOUTS_RE_EN.search(text)) != bool(CALLOUTS_RE_ZH.search(sibling_text)):
+            rep.error(path, "Callouts / 指指点点 presence must match the bilingual sibling")
+
+
 def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[str], rep: Report, today: dt.date) -> None:
     name = path.name
     zh = name.endswith(ZH_SUFFIX)
@@ -753,14 +787,16 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
                        f"keep load-bearing ones, move the rest into the Caveats ledger")
 
     sibling = category_dir / (base + (".md" if zh else ZH_SUFFIX))
+    sibling_text = None
     if not sibling.exists():
         rep.error(path, f"missing {'English' if zh else 'Chinese'} sibling: {sibling.name}")
     elif not zh:
         # Frontmatter is facts (language-neutral) -> must be identical across the bilingual pair.
         # Compare normalized raw frontmatter so nested health/upstream facts cannot silently drift.
-        zh_text = sibling.read_text(encoding="utf-8")
-        if normalized_frontmatter(text) != normalized_frontmatter(zh_text):
+        sibling_text = sibling.read_text(encoding="utf-8")
+        if normalized_frontmatter(text) != normalized_frontmatter(sibling_text):
             rep.error(path, f"frontmatter drift vs {sibling.name} (must be identical)")
+    check_callouts(path, text, zh, cav, health, sibling_text, rep)
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)
