@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "them": {"en": "A.I.G does", "zh": "A.I.G 做的"},
+  "steps": [
+    {"lane": "you", "en": "Bring up the two containers", "zh": "把两个容器跑起来",
+     "code": "docker-compose -f docker-compose.images.yml up -d",
+     "component": {"en": "webserver + agent images", "zh": "webserver 和 agent 镜像"}},
+    {"lane": "you", "en": "Open the web UI and paste the address of your live AI service", "zh": "打开 Web 界面，贴入运行中的 AI 服务地址",
+     "code": "http://127.0.0.1:8000",
+     "component": {"en": "A.I.G web UI on :8088", "zh": "8088 端口的 Web 界面"}},
+    {"lane": "them", "en": "Fingerprints the component and version, then matches it against the CVE rule library", "zh": "指纹识别组件与版本，再比对 CVE 规则库",
+     "component": {"en": "AI infra scanner", "zh": "AI 基础设施扫描器"}},
+    {"lane": "them", "en": "For MCP, skill, and jailbreak scans, runs LLM-driven probes through the model key you configured", "zh": "对 MCP、Skill、越狱评测，用你配置的模型跑 LLM 驱动的审计",
+     "component": {"en": "skill-scan · PromptSecurity", "zh": "skill-scan 等审计流水线"}},
+    {"lane": "you", "en": "Read the report: component version, matched CVEs, severity, remediation links", "zh": "读报告：组件版本、命中的 CVE、严重级别和修复建议",
+     "component": {"en": "scan report", "zh": "扫描报告"}}
+  ],
+  "value": {"en": "A dated risk report on your AI services, MCP servers and skills — without writing a single probe yourself",
+            "zh": "不用自己写任何探测脚本，就拿到一份覆盖 AI 服务、MCP server 和 Skill 的风险报告"},
+  "sources": [
+    "README.md Quick Start (docker-compose.images.yml up -d, http://localhost:8088)",
+    "README.md Quick Usage Guide (AI Infra Scan: enter http://127.0.0.1:8000, fingerprint, 2000+ CVEs, report with remediation links)",
+    "docker-compose.images.yml (zhuquelab/aig-server + zhuquelab/aig-agent)",
+    "skill-scan/README.md (LLM-driven multi-stage audit, LLM_API_KEY)"
+  ]
+}
