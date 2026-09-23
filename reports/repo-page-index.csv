@@ -485,6 +485,7 @@ https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categ
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
 https://github.com/outsourc-e/hermes-workspace,hermes-workspace,supervision-surfaces,categories/agent-tooling/supervision-surfaces/hermes-workspace.md
 https://github.com/oven-sh/bun,bun,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/bun.md
+https://github.com/p-e-w/heretic,heretic,model-editing,categories/model-editing/heretic.md
 https://github.com/pahaz/sshtunnel,sshtunnel,networking,categories/networking/sshtunnel.md
 https://github.com/paperless-ngx/paperless-ngx,paperless-ngx,document-management,categories/document-management/paperless-ngx.md
 https://github.com/parallax/jsPDF,jspdf,pdf-tools,categories/pdf-tools/jspdf.md

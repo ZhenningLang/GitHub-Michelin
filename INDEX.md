@@ -81,6 +81,7 @@
 | **desktop-launchers** | Keyboard-driven desktop launchers / command palettes — summon apps, clipboard history, snippets, quicklinks and window management from one hotkey. | [→](categories/desktop-launchers/INDEX.md) |
 | **design-editors** | Open-source design editors you run yourself — local-first or self-hosted Figma-class canvases. | [→](categories/design-editors/INDEX.md) |
 | **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts. | [→](categories/learning-resources/INDEX.md) |
+| **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
 
 
 

@@ -1145,3 +1145,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
+
+### model-editing
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Heretic** | 当一个对齐后的开源模型拒答那些对你的工作是正当的提示词，而你想自动把拒答方向消融掉、并带一个可量化的质量取舍时用它——一张显卡、不用训练数据、工具侧是 AGPL。 | AGPL-3.0-or-later | B（6/6） | [中](categories/model-editing/heretic.zh.md) · [EN](categories/model-editing/heretic.md) |
