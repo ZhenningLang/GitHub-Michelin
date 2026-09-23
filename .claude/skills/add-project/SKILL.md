@@ -65,10 +65,12 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      `未收录` with the reason in the tradeoff cell and in the commit/PR summary. The obligation
      covers the 3–5 named direct substitutes, not transitive alternatives-of-alternatives.
     - **Health & viability** — required for all types; dated, labeled judgment per §7.
-    - **Q&A / 快问快答** — optional leftover bin (schema §2). After When to use, before How it works.
-      Harvest the human's actual questions that the template has no slot for, and short versions
-      of the agent's answers. Not a transcript. If nothing leftover, omit the heading. Uncertain
-      claims still get a Caveats bullet. Golden example: `prime-agent`.
+    - **Q&A / 快问快答** — a required decision, an optional section (schema §2). After When to use,
+      before How it works. Harvest the human's actual questions that the template has no slot for,
+      and short versions of the agent's answers. Not a transcript, and never padding. If the
+      reading conversation produced none, that is a valid outcome — but **say so** (`no leftover
+      Q&A`) in the commit/PR summary; silently dropping the section is the failure this rule
+      exists to stop. Uncertain claims still get a Caveats bullet. Golden example: `prime-agent`.
     - **Truth labeling + Caveats ledger** (§3) — inline labels only on the load-bearing few;
       everything unverified gets a ledger bullet.
    - **Chinese punctuation** in `.zh.md` (§6) — fullwidth next to 汉字; lint ERRORs on violations.

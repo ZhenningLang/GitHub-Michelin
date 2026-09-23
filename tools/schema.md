@@ -101,7 +101,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
 | `## When to use` | `## 何时使用` | **all types** | the **trigger scenario** (see below) — the concrete situation in which you should think of this project, and why it beats its substitutes there |
-| `## Q&A` | `## 快问快答` | **optional, all types** | leftover from the reading conversation: the human's questions, and short versions of the agent's answers. Omit the heading when there is nothing leftover |
+| `## Q&A` | `## 快问快答` | **all types** — section optional, **decision required** | leftover from the reading conversation: the human's questions, and short versions of the agent's answers. Write it, or record "no leftover Q&A" in the change summary — never omit silently, never pad |
 | `## How it works` | `## 怎么用起来` | **all types** (backfill in progress — see below) | the **backbone user story**: a plain-language mechanism paragraph + a generated two-lane flow card (you do / it does) — how you actually put it to work once chosen |
 | `## When NOT to use` | `## 何时不用` | **all types** | anti-patterns, scale ceilings, lock-in, maintenance risk — **the most valuable section** |
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
@@ -125,14 +125,20 @@ per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden se
 inferred fact gets one `[未验证]` / `[推断]` bullet. This is the single place uncertainty is collected;
 the linter ERRORs if it is missing. See §3 for how it interacts with inline labels.
 
-**Q&A / 快问快答 is optional — leftover from the reading conversation.** After When to use is
-written, put here the questions the human actually asked that the template has no slot for, and
-short versions of the agent's answers. Not a transcript, not an essay. Empty headings and
-anything already covered by When to use / How it works / When NOT / Comparison / Health do not
-belong. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry
-the heading (`## Q&A` / `## 快问快答`), the body is non-empty, and the section sits after
-When to use and before How it works (or before When NOT, if How it works is still missing).
-Golden example: `prime-agent`.
+**Q&A / 快问快答 is a required decision with an optional section.** After When to use is written,
+put here the questions the human actually asked that the template has no slot for, and short
+versions of the agent's answers. The section is optional because a reading conversation genuinely
+may produce nothing leftover — but that outcome has to be *decided*, not defaulted into: when there
+is nothing, record `no leftover Q&A` in the change summary (commit or PR), so a reader can tell a
+considered "none" from an agent that never looked. Never pad it. An empty heading, a transcript,
+and anything already covered by When to use / How it works / When NOT / Comparison / Health do not
+belong. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry the
+heading (`## Q&A` / `## 快问快答`), the body is non-empty, and the section sits after When to use and
+before How it works (or before When NOT, if How it works is still missing). A conversation about an
+already-published page that yields such questions re-opens the decision — fold them in and refresh
+both siblings in one change. The linter cannot gate this: it validates shape only when the section
+is present, so it can never distinguish a skipped decision from a genuine "none" — the recorded
+decision is the evidence. Golden example: `prime-agent`.
 
 ### The lead line is the problem, not the definition
 
