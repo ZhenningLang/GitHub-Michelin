@@ -131,7 +131,7 @@ You're a digital artist or AI researcher who wants to generate, edit, and upscal
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade B.
 - **Longevity**: Grade A — 1345 days old.
-- **Governance**: Grade A — top-3 contributor share 60.0% (?).
+- **Governance**: Grade A — top-3 contributor share 60.0% (49 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade D — GPL-3.0 license.
 ## Caveats (unverified)
 

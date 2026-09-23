@@ -116,7 +116,7 @@ You're choosing a code editor and raw performance, modern UX, and team collabora
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade A.
 - **Longevity**: Grade A — 2041 days old.
-- **Governance**: Grade A — top-3 contributor share 18.9% (?).
+- **Governance**: Grade A — top-3 contributor share 18.9% (307 active maintainers in the trailing 12 months).
 - **Risk / License**: `?` (license_unparsed) — GitHub reports `NOASSERTION` and the machine axis cannot classify it; the README states GPL-3.0-or-later for the community edition while the repo also ships branded/proprietary content, so review the license per release rather than treating it as a stable permissive grant.
 ## Caveats (unverified)
 

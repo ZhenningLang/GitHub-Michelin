@@ -129,7 +129,7 @@ You're a developer or team using AI coding agents (Claude Code, Codex, Open Inte
 - **Responsiveness**: Grade A — median first-response time 2.8 hours across 4 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
 - **Longevity**: Grade C — 243 days old.
-- **Governance**: Grade A — top-3 contributor share 52.4% (?).
+- **Governance**: Grade A — top-3 contributor share 52.4% (97 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

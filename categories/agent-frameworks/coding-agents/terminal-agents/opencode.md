@@ -128,7 +128,7 @@ You are a developer who wants AI-assisted coding but refuses to be locked into a
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade A — 554,339 monthly downloads via npmjs.org (package: @opencode-ai/cli-linux-x64).
 - **Longevity**: Grade C — 510 days old.
-- **Governance**: Grade A — top-3 contributor share 41.7% (?).
+- **Governance**: Grade A — top-3 contributor share 41.7% (429 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

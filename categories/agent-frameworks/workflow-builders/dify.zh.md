@@ -129,7 +129,7 @@ health:
 - **响应速度**：Grade A——中位首次响应时间 1.1 小时，基于 15 个 qualifying issues/PRs。
 - **采用广度**：Grade D——pypi.org 上月下载量 10,843（包名：dify-client）。
 - **长青度**：Grade B——仓库已创建 1259 天。
-- **治理集中度**：Grade A——前三贡献者占比 32.4%（?）。
+- **治理集中度**：Grade A——前三贡献者占比 32.4%（过去 12 个月内 244 位活跃维护者）。
 - **许可风险**：无法计算——custom_modified_license。上游 `LICENSE` 是修改版 Apache License 2.0，额外加入多租户服务商用许可、前端 LOGO/版权信息不可移除等条件；应把 GitHub 的 `NOASSERTION` 当作真实的许可审查信号，而不是解析器误报。
 ## 存疑（未验证）
 

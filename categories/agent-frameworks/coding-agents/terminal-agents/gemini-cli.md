@@ -127,7 +127,7 @@ You're a developer who lives in the terminal and wants an AI assistant that can 
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade B — 1,331,337 monthly downloads via npmjs.org (package: @google/gemini-cli).
 - **Longevity**: Grade C — 523 days old.
-- **Governance**: Grade A — top-3 contributor share 20.5% (?).
+- **Governance**: Grade A — top-3 contributor share 20.5% (79 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

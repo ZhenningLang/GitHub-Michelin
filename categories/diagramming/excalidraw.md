@@ -132,7 +132,7 @@ You're a product manager or designer who needs to quickly whiteboard an architec
 - **Responsiveness**: Grade A — median first-response time 34.4 hours across 26 qualifying issues/PRs.
 - **Adoption**: Grade B — 1,918,275 monthly downloads via npmjs.org (package: @excalidraw/excalidraw).
 - **Longevity**: Grade A — 2456 days old.
-- **Governance**: Grade B — top-3 contributor share 88.9% (?).
+- **Governance**: Grade B — top-3 contributor share 88.9% (13 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

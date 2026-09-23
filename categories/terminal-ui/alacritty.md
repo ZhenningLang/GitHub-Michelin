@@ -130,7 +130,7 @@ You're a developer who spends hours in the terminal every day and wants the fast
 - **Responsiveness**: Grade A — median first-response time 2.0 hours across 38 qualifying issues/PRs.
 - **Adoption**: Grade A — 1,616,311 monthly downloads via crates.io (package: alacritty_terminal).
 - **Longevity**: Grade A — 3870 days old.
-- **Governance**: Grade B — top-3 contributor share 92.0% (?).
+- **Governance**: Grade B — top-3 contributor share 92.0% (5 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

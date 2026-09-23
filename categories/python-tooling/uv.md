@@ -131,7 +131,7 @@ You're a Python developer tired of waiting for `pip install` to resolve dependen
 - **Responsiveness**: Grade A — median first-response time 3.3 hours across 53 qualifying issues/PRs.
 - **Adoption**: Grade A — 128,564,586 monthly downloads via pypi.org (package: uv).
 - **Longevity**: Grade B — 1086 days old.
-- **Governance**: Grade A — top-3 contributor share 63.2% (?).
+- **Governance**: Grade A — top-3 contributor share 63.2% (152 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

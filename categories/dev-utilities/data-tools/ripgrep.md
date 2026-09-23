@@ -129,7 +129,7 @@ You're choosing a code search tool for daily use across large codebases and spee
 - **Responsiveness**: Grade A — median first-response time 13.2 hours across 22 qualifying issues/PRs.
 - **Adoption**: Grade A — 1,575,197 monthly downloads via crates.io (package: ripgrep).
 - **Longevity**: Grade A — 3848 days old.
-- **Governance**: Grade D — top-3 contributor share 95.0% (?).
+- **Governance**: Grade D — top-3 contributor share 95.0% (6 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Unlicense license.
 ## Caveats (unverified)
 

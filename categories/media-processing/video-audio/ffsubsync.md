@@ -129,7 +129,7 @@ You also reach for it in a batch/automation context — a media server (it's the
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade C — 28,965 monthly downloads via pypi.org (package: ffsubsync).
 - **Longevity**: Grade A — 2768 days old.
-- **Governance**: Grade C — top-3 contributor share 95.7% (?).
+- **Governance**: Grade C — top-3 contributor share 95.7% (6 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

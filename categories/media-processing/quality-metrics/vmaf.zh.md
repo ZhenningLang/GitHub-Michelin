@@ -134,7 +134,7 @@ Netflix 的、获 Emmy 奖的感知视频质量指标——一个 C 库 `libvmaf
 - **响应速度**：Grade A——中位首次响应时间 11.1 小时，基于 6 个 qualifying issues/PRs。
 - **采用广度**：Grade A——formulae.brew.sh 上月下载量 58,378（包名：libvmaf）。
 - **长青度**：Grade A——仓库已创建 3879 天。
-- **治理集中度**：Grade C——前三贡献者占比 87.0%（?）。
+- **治理集中度**：Grade C——前三贡献者占比 87.0%（过去 12 个月内 15 位活跃维护者）。
 - **许可风险**：BSD-2-Clause-Patent（宽松）——健康度雷达该轴记为 `?`，因为 GitHub 对该仓库报 NOASSERTION，许可信息以本页 frontmatter 为准而非机器块。
 
 ## 存疑（未验证）

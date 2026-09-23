@@ -125,7 +125,7 @@ health:
 - **响应速度**：无法计算——unknown。
 - **采用广度**：Grade A——npmjs.org 上月下载量 10,026,677（包名：@openclaw/brave-plugin）。
 - **长青度**：Grade C——仓库已创建 302 天。
-- **治理集中度**：Grade B——前三贡献者占比 74.6%（?）。
+- **治理集中度**：Grade B——前三贡献者占比 74.6%（过去 12 个月内 486 位活跃维护者）。
 - **许可风险**：`?`（license_unparsed）——2026-07-03 已验证：GitHub 返回 `NOASSERTION`，但 LICENSE 正文是标准 MIT（`Permission is hereby granted...` 完整段落）；识别失败是因为末尾附加了第三方声明指针，且无重新授权历史。
 
 ## 存疑（未验证）

@@ -125,7 +125,7 @@ You are a Python developer building an AI application that needs to connect LLMs
 
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — unknown.
-- **Governance**: Grade B — top-3 contributor share 74.6% (?).
+- **Governance**: Grade B — top-3 contributor share 74.6% (42 active maintainers in the trailing 12 months).
 - **Longevity**: Grade B — 1437 days old.
 - **Adoption**: Grade A — 175,109,180 monthly downloads via pypi.org (package: langchain).
 - **Risk flags**: LangChain AI offers commercial products (LangSmith, LangGraph Cloud) that may create open-core or feature-gating pressure. The framework's rapid evolution has historically caused breaking changes between versions.

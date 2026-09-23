@@ -131,7 +131,7 @@ You're a machine learning researcher or data engineer preparing a large-scale co
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade D — 18,743 monthly downloads via pypi.org (package: olmocr).
 - **Longevity**: Grade C — 735 days old.
-- **Governance**: Grade D — top-3 contributor share 99.8% (?).
+- **Governance**: Grade D — top-3 contributor share 99.8% (4 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Apache-2.0 license.
 
 ## Caveats (unverified)

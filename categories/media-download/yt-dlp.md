@@ -134,7 +134,7 @@ You're building a media pipeline, archiving content, or need to grab a video or 
 - **Responsiveness**: Grade A — median first-response time 9.3 hours across 15 qualifying issues/PRs.
 - **Adoption**: Grade A — 13,137,179 monthly downloads via pypi.org (package: yt-dlp).
 - **Longevity**: Grade A — 2158 days old.
-- **Governance**: Grade B — top-3 contributor share 74.8% (?).
+- **Governance**: Grade B — top-3 contributor share 74.8% (40 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — Unlicense license.
 ## Caveats (unverified)
 

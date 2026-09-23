@@ -122,7 +122,7 @@ health:
 - **响应速度**：Grade A——中位首次响应时间 7.1 小时，基于 10 个 qualifying issues/PRs。
 - **采用广度**：无法计算——ambiguous。
 - **长青度**：Grade A——仓库已创建 6004 天。
-- **治理集中度**：Grade B——前三贡献者占比 70.9%（?）。
+- **治理集中度**：Grade B——前三贡献者占比 70.9%（过去 12 个月内 21 位活跃维护者）。
 - **许可风险**：无法计算——license_declared_unverifiable。
 
 ## 存疑（未验证）

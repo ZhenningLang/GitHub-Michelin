@@ -125,7 +125,7 @@ You're a technical team that needs to automate internal processes — pulling da
 - **Responsiveness**: Cannot be scored — no qualifying recent issue/PR traffic was found by the scorer (`no_traffic`).
 - **Adoption**: Grade C — 390,962 monthly downloads via npmjs.org (package: n8n).
 - **Longevity**: Grade A — 2650 days old.
-- **Governance**: Grade A — top-3 contributor share 12.1% (?).
+- **Governance**: Grade A — top-3 contributor share 12.1% (197 active maintainers in the trailing 12 months).
 - **Risk / License**: Cannot be scored — the fair-code license was not parsed into a comparable SPDX-style tier (`license_unparsed`).
 
 ## Caveats (unverified)

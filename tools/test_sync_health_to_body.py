@@ -180,6 +180,29 @@ class FrontmatterCoercionTest(unittest.TestCase):
         self.assertIn("Cannot be scored", sync.axis_bullet_en("longevity", axis))
 
 
+class GovernanceBulletTest(unittest.TestCase):
+    """The bullet read `owner_type`, which the scorer never writes: 73 pages said "(?)"."""
+
+    AXIS = {"grade": "D", "raw": {"active_maintainers_12mo": 1, "top1_share": 1.0,
+                                  "top3_share": 1.0, "window_source": "stats_contributors"}}
+
+    def test_names_the_active_maintainer_count(self) -> None:
+        self.assertEqual(
+            sync.axis_bullet_en("governance", self.AXIS),
+            "- **Governance**: Grade D — top-3 contributor share 100.0% "
+            "(1 active maintainer in the trailing 12 months).")
+        self.assertEqual(
+            sync.axis_bullet_zh("governance", self.AXIS),
+            "- **治理集中度**：Grade D——前三贡献者占比 100.0%（过去 12 个月内 1 位活跃维护者）。")
+
+    def test_plural_and_missing_count(self) -> None:
+        many = {"grade": "A", "raw": {"active_maintainers_12mo": 7, "top3_share": 0.5}}
+        self.assertIn("(7 active maintainers in", sync.axis_bullet_en("governance", many))
+        none = {"grade": "B", "raw": {"top3_share": 0.5}}
+        for line in (sync.axis_bullet_en("governance", none), sync.axis_bullet_zh("governance", none)):
+            self.assertNotIn("?", line)
+
+
 class AllFlagGuardTest(unittest.TestCase):
     def test_all_refuses_without_the_acknowledgement_flag(self) -> None:
         """`--all` overwrites hand-written prose on every page, so it must be opt-in."""

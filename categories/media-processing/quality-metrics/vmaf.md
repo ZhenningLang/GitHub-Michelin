@@ -134,7 +134,7 @@ You also use it when you need *more than one* metric from a single, optimized im
 - **Responsiveness**: Grade A — median first-response time 11.1 hours across 6 qualifying issues/PRs.
 - **Adoption**: Grade A — 58,378 monthly downloads via formulae.brew.sh (package: libvmaf).
 - **Longevity**: Grade A — 3879 days old.
-- **Governance**: Grade C — top-3 contributor share 87.0% (?).
+- **Governance**: Grade C — top-3 contributor share 87.0% (15 active maintainers in the trailing 12 months).
 - **Risk / License**: BSD-2-Clause-Patent (permissive) — the health radar records this axis as `?` because GitHub reports NOASSERTION for the repository, so the license is taken from the page frontmatter rather than the machine block.
 
 ## Caveats (unverified)

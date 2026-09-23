@@ -130,7 +130,7 @@ You're choosing a JavaScript or TypeScript runtime and tooling stack and speed a
 - **Responsiveness**: Grade A — median first-response time 0.1 hours across 28 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
 - **Longevity**: Grade A — 1988 days old.
-- **Governance**: Grade B — top-3 contributor share 84.6% (?).
+- **Governance**: Grade B — top-3 contributor share 84.6% (63 active maintainers in the trailing 12 months).
 - **Risk / License**: Cannot be scored — unknown.
 ## Caveats (unverified)
 
