@@ -14,9 +14,18 @@ shape and are deliberately excluded here.
 
 - Named-but-unindexed alternatives: 836
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
-- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
+- `partial` rows (mixed indexed/unindexed, clean up the indexed names): 1
 - Raw machine list: `reports/unindexed-project-mentions.csv`
 - Repo -> page reverse index: `reports/repo-page-index.csv`
+
+## Partly-indexed rows
+
+These composite rows name at least one alternative that already has a page.
+Remove the indexed names from the row, or split the row.
+
+| Alternative | Indexed names | First page |
+|---|---|---|
+| claude-code-templates / awesome-claude-code | claude-code-templates | `categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md` |
 
 ## Top 30 named alternatives
 

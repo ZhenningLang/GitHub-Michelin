@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude Code Templates does", "zh": "Claude Code Templates 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Pick components from the catalog and run the installer",
+      "zh": "在目录里挑好组件，跑安装命令",
+      "code": "npx claude-code-templates@latest --agent development-tools/code-reviewer --yes",
+      "component": {"en": "cct CLI", "zh": "cct 命令行"}
+    },
+    {
+      "lane": "them",
+      "en": "Copies the chosen files into your project's .claude/ directory",
+      "zh": "把选中的文件拷进项目的 .claude/ 目录",
+      "component": {"en": "installer", "zh": "安装器"}
+    },
+    {
+      "lane": "you",
+      "en": "Call the new command or agent inside Claude Code as usual",
+      "zh": "在 Claude Code 里照常调用新命令或 agent",
+      "code": "/generate-tests"
+    },
+    {
+      "lane": "them",
+      "en": "The installed agent, command or hook steers the agent's behavior from then on",
+      "zh": "装好的 agent、命令或 hook 从此左右 agent 的行为",
+      "component": {"en": "installed component files", "zh": "装好的组件文件"}
+    }
+  ],
+  "value": {
+    "en": "You get a working agent, command or hook without writing or maintaining the config markdown yourself",
+    "zh": "不用自己写、也不用自己维护配置 markdown，就有了可用的 agent、命令和 hook"
+  },
+  "sources": [
+    "README.md — quick-install examples and the /generate-tests command example",
+    "cli-rust/src/commands/install.rs — writes into .claude/agents, .claude/commands, .mcp.json, .claude/hooks",
+    "cli-tool/components/ tree — agents/commands/hooks/mcps/settings/skills categories"
+  ]
+}
