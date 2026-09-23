@@ -760,35 +760,99 @@ def health_axis_raw_values(text: str) -> dict[tuple[str, str], str]:
     return values
 
 
+def body_lines(text: str) -> list[tuple[int, str]]:
+    """The body only, numbered against the whole file so findings point at real lines.
+
+    The frontmatter must be excluded or the `health:` block's own `grade: B` lines would
+    be read as prose claiming a grade.
+    """
+    lines = text.splitlines()
+    start = 0
+    if lines and lines[0].strip() == "---":
+        for i in range(1, len(lines)):
+            if lines[i].strip() == "---":
+                start = i + 1
+                break
+    return [(i + 1, lines[i]) for i in range(start, len(lines))]
+
+
 def health_section_heading(page: Path) -> str:
     return "## 健康度与可持续性" if page.name.endswith(ZH_SUFFIX) else "## Health & viability"
 
 
+# A grade asserted in prose. Two shapes, because two kinds of sentence make the claim:
+# the generated template ("Grade B — ..."), and hand-written text in either language
+# ("health longevity is C", "health 将维护评为 C", "governance 为 D"). Only matching the
+# first is how apache-poi shipped a Caveats paragraph explaining an "risk/license is E"
+# verdict that the page no longer carried. The letter must be delimited on both sides so
+# the A of `CC BY-SA 4.0` and the D of `BSD-3` are not read as grades.
+PROSE_GRADE_CLAIM = re.compile(
+    r"(?:(?<![A-Za-z0-9`])(?:Grade|grade|档位?|评级|评为)\s*[:：]?\s*"
+    r"|(?:\bis\b|\bare\b|为|是|＝|=)\s*)"
+    r"`?([A-E?])`?(?![A-Za-z0-9\-])")
+# Which axis a claim belongs to. Longest spellings first so `维护活跃度` beats `维护`; the
+# lookahead keeps `维护者`(a person) from being read as the maintenance axis, which
+# otherwise mis-attributes every "维护者集中，governance 为 D" line.
+AXIS_CLAIM_PATTERNS = {
+    "maintenance": [r"Maintenance", r"maintenance", r"维护活跃度", r"维护(?!者)"],
+    "responsiveness": [r"Responsiveness", r"responsiveness", r"响应速度", r"响应性", r"响应"],
+    "adoption": [r"Adoption", r"adoption", r"采用广度", r"采用度", r"采用"],
+    "longevity": [r"Longevity", r"longevity", r"长青度", r"长青"],
+    "governance": [r"Governance", r"governance", r"Bus [Ff]actor",
+                   r"治理集中度", r"维护者分散度", r"治理"],
+    "risk_license": [r"Risk ?/ ?[Ll]icense", r"risk[ /]licen[cs]e",
+                     r"许可宽松度", r"许可证风险", r"许可与风险", r"许可"],
+}
+
+
+def axis_for_claim(line: str, position: int) -> str | None:
+    """Which axis does the grade at `position` belong to?
+
+    The nearest axis word *before* the letter wins. Taking the first match in dict order
+    instead reads `longevity 为 C；维护者集中，governance 为 D` as a claim about
+    governance=C and maintenance=D — both wrong, and both on a line that is actually fine.
+    """
+    best: tuple[int, str] | None = None
+    prefix = line[:position]
+    for axis, patterns in AXIS_CLAIM_PATTERNS.items():
+        for pattern in patterns:
+            for match in re.finditer(pattern, prefix):
+                if best is None or match.start() > best[0]:
+                    best = (match.start(), axis)
+    return best[1] if best else None
+
+
 def detect_health_prose_grade_drift(page: Path, text: str, root: Path) -> list[Finding]:
+    """Compare every grade asserted in the body against the frontmatter.
+
+    Scans the whole body, not just `Health & viability`: a page explains its grades
+    wherever the explanation belongs, and apache-poi's stale one lived in Caveats.
+    """
     grades = health_axis_grades(text)
     if not grades:
         return []
     findings: list[Finding] = []
-    heading = health_section_heading(page)
-    for line_no, line in section_lines(text, heading):
-        prose_grade = re.search(r"\bGrade\s+([A-E?])\b", line)
-        if not prose_grade:
-            continue
-        for axis, labels in AXIS_LABELS.items():
-            if any(label in line for label in labels):
-                frontmatter_grade = grades.get(axis)
-                if frontmatter_grade and frontmatter_grade != prose_grade.group(1):
-                    findings.append(
-                        Finding(
-                            "health-prose-grade-drift",
-                            "high",
-                            relpath(page, root),
-                            line_no,
-                            f"Health prose Grade {prose_grade.group(1)} disagrees with frontmatter {axis} grade {frontmatter_grade}.",
-                            line.strip(),
-                        )
-                    )
-                break
+    seen: set[tuple[int, str]] = set()
+    for line_no, line in body_lines(text):
+        for match in PROSE_GRADE_CLAIM.finditer(line):
+            axis = axis_for_claim(line, match.start())
+            if axis is None:
+                continue
+            claimed = match.group(1)
+            actual = grades.get(axis)
+            if not actual or actual == claimed or (line_no, axis) in seen:
+                continue
+            seen.add((line_no, axis))
+            findings.append(
+                Finding(
+                    "health-prose-grade-drift",
+                    "high",
+                    relpath(page, root),
+                    line_no,
+                    f"Health prose grade {claimed} disagrees with frontmatter {axis} grade {actual}.",
+                    line.strip(),
+                )
+            )
     return findings
 
 

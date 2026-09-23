@@ -742,6 +742,139 @@ class QualityScanTest(unittest.TestCase):
 
             self.assertFalse(any(f.category == "health-prose-grade-drift" for f in result.findings))
 
+    def test_detects_grade_drift_outside_the_health_section(self) -> None:
+        """A page explains its grades wherever the explanation belongs.
+
+        apache-poi's stale paragraph — "overall D, capped, risk/license E" — sat in
+        Caveats, so scanning only `Health & viability` never saw it.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- Nothing to declare here.
+
+## Caveats (unverified)
+
+- **Radar note.** Governance is D because contribution is concentrated.
+""",
+                """    governance:
+      grade: B
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertTrue(any(f.category == "health-prose-grade-drift"
+                                and "Governance is D" in f.evidence
+                                for f in result.findings))
+
+    def test_detects_hand_written_grade_claim_without_the_word_grade(self) -> None:
+        """The generated template says "Grade B"; a human writes "longevity is C"."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- **Lindy / governance:** health longevity is C and governance is D.
+""",
+                """    longevity:
+      grade: B
+      raw: {}
+    governance:
+      grade: D
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            drift = [f for f in result.findings if f.category == "health-prose-grade-drift"]
+            self.assertEqual(len(drift), 1, f"expected only the longevity claim, got {drift}")
+            self.assertIn("longevity grade B", drift[0].message)
+
+    def test_chinese_hand_written_claim_is_attributed_to_the_nearest_axis(self) -> None:
+        """`longevity 为 C；维护者集中，governance 为 D` states two grades, both correct.
+
+        Taking the first axis word in the line instead of the nearest one reads it as
+        governance=C and maintenance=D — two findings, both wrong, on a clean line.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.zh.md",
+                """## 健康度与可持续性
+
+- **Lindy / 治理：** 项目年轻，health 中 longevity 为 C；维护者集中，governance 为 D。
+""",
+                """    maintenance:
+      grade: A
+      raw: {}
+    longevity:
+      grade: C
+      raw: {}
+    governance:
+      grade: D
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.category == "health-prose-grade-drift"
+                                 for f in result.findings))
+
+    def test_license_identifiers_are_not_read_as_grades(self) -> None:
+        """`CC BY-SA 4.0` and `BSD-3-Clause` contain letters that are not grades."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- **Risk / License**: content is CC BY-SA 4.0 and the code is BSD-3-Clause.
+""",
+                """    risk_license:
+      grade: A
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.category == "health-prose-grade-drift"
+                                 for f in result.findings))
+
+    def test_frontmatter_grades_are_not_read_as_prose(self) -> None:
+        """Scanning the whole file instead of the body would match the health block itself."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            write_page_with_health(
+                root,
+                "categories/demo/demo.md",
+                """## Health & viability
+
+- Nothing to declare.
+""",
+                """    maintenance:
+      grade: A
+      raw: {}
+""",
+            )
+
+            result = quality_scan.scan(root)
+
+            self.assertFalse(any(f.category == "health-prose-grade-drift"
+                                 for f in result.findings))
+
     def test_matching_chinese_health_prose_grade_is_not_reported(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
