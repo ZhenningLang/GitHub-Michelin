@@ -581,6 +581,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **python-pptx** | 当你必须用 Python 生成或编辑原生 `.pptx`、且交付物要能在 PowerPoint 里打开时用它——但它自 2024-08-07 起未再发版，动画（2017）和 SmartArt（2014）从未实现。 | MIT | C（4/6） | [中](categories/office-automation/python-pptx.zh.md) · [EN](categories/office-automation/python-pptx.md) |
 | **XlsxWriter** | 当 Python 服务从数据生成新的 `.xlsx`、且你要零依赖加 13 年稳定性时用它——但它只写，无法打开已有工作簿，也不计算公式。 | BSD-2-Clause | B（6/6） | [中](categories/office-automation/xlsxwriter.zh.md) · [EN](categories/office-automation/xlsxwriter.md) |
 | **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | MIT | C（6/6） | [中](categories/office-automation/office-word-mcp-server.zh.md) · [EN](categories/office-automation/office-word-mcp-server.md) |
+| **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | MIT | C（6/6） | [中](categories/office-automation/office-powerpoint-mcp-server.zh.md) · [EN](categories/office-automation/office-powerpoint-mcp-server.md) |
+| **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | Apache-2.0 | D（4/6） | [中](categories/office-automation/apache-poi.zh.md) · [EN](categories/office-automation/apache-poi.md) |
 
 ### diagramming
 

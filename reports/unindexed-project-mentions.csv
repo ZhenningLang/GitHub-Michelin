@@ -432,7 +432,7 @@ lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta Code,categories/agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
-LibreOffice headless / Aspose / Apache POI,categories/office-automation/INDEX.md,,no
+LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 Lighthouse / axe-core,categories/ai-design-generation/impeccable.md,,no
@@ -548,7 +548,6 @@ Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 Obsidian,categories/knowledge-base/llm-wiki.md,,no
 Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
-Office-PowerPoint-MCP-Server,categories/office-automation/INDEX.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 "Official paper repos (StyleGAN, CycleGAN, …)",categories/ml-research/pytorch-gan.md,,no
 Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.md,,no
