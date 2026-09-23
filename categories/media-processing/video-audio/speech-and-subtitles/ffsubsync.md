@@ -2,7 +2,7 @@
 name: ffsubsync
 slug: ffsubsync
 repo: https://github.com/smacke/ffsubsync
-category: video-audio
+category: speech-and-subtitles
 tags: [subtitles, video, synchronization, srt, ffmpeg, vad, cli]
 language: Python
 license: MIT
@@ -79,7 +79,7 @@ health:
 
 A language-agnostic CLI that automatically re-times an out-of-sync subtitle file against the video (or a reference subtitle), aligning speech segments via FFT cross-correlation.
 
-![ffsubsync — health radar](../../../assets/health/ffsubsync.svg)
+![ffsubsync — health radar](../../../../assets/health/ffsubsync.svg)
 
 ## When to use
 

@@ -2,7 +2,7 @@
 name: claude-video
 slug: claude-video
 repo: https://github.com/bradautomates/claude-video
-category: video-audio
+category: speech-and-subtitles
 tags: [video-audio, video-understanding, agent-skill, app]
 language: Python
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.
 
-![claude-video — 健康度雷达](../../../assets/health/claude-video.zh.svg)
+![claude-video — 健康度雷达](../../../../assets/health/claude-video.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ Give Claude the ability to watch any video. /watch downloads, extracts frames, t
 
 ## 何时不用
 
-- **你需要视频生成、剪辑、转码或生产流水线。** 用 [MoviePy](moviepy.zh.md)、[FFmpeg](ffmpeg.zh.md)、[MLT](mlt.zh.md) 或视频生产工具；claude-video 是视频理解 helper。
+- **你需要视频生成、剪辑、转码或生产流水线。** 用 [MoviePy](../editing-and-cutting/moviepy.zh.md)、[FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)、[MLT](../editing-and-cutting/mlt.zh.md) 或视频生产工具；claude-video 是视频理解 helper。
 - **你只需要纯转录。** 画面不重要时，[OpenAI Whisper](whisper.zh.md)、原生字幕或专用 ASR pipeline 更简单。
 - **你不能运行 shell 工具或安装 `yt-dlp` / `ffmpeg`。** 工作流依赖本地命令执行；claude.ai web 也需要启用 code execution / file creation。
 - **视频源禁止下载或权限不清。** `yt-dlp` 支持不等于你拥有访问、下载或再分发权限。
@@ -96,9 +96,9 @@ Give Claude the ability to watch any video. /watch downloads, extracts frames, t
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.zh.md) | ✅ | 需要底层解码、转码、滤镜控制时选 FFmpeg。 | FFmpeg 是引擎；claude-video 把媒体提取包装成 agent 可用的视频理解流程。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 需要底层解码、转码、滤镜控制时选 FFmpeg。 | FFmpeg 是引擎；claude-video 把媒体提取包装成 agent 可用的视频理解流程。 |
 | [OpenAI Whisper](whisper.zh.md) | ✅ | 任务只有 speech-to-text 时选 Whisper。 | Whisper 处理音频文字；claude-video 把 transcript、frames 和 agent prompt 组合起来。 |
-| [MoviePy](moviepy.zh.md) | ✅ | 需要程序化剪辑 / 合成时选 MoviePy。 | MoviePy 产出编辑后的视频；claude-video 读取视频做分析。 |
+| [MoviePy](../editing-and-cutting/moviepy.zh.md) | ✅ | 需要程序化剪辑 / 合成时选 MoviePy。 | MoviePy 产出编辑后的视频；claude-video 读取视频做分析。 |
 | 自写 yt-dlp + ffmpeg 脚本 | 未收录 | 不需要 agent skill packaging，只要固定 ingestion pipeline 时自写。 | 自写脚本更小、更确定；claude-video 已处理 agent-facing UX 和 frame budget。 |
 
 

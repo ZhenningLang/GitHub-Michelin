@@ -124,10 +124,10 @@ sharp 是一个 Node 包，真正处理像素的是底下的 C 库 **libvips**�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ffmpeg-python](../video-audio/ffmpeg-python.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [FFmpeg](../video-audio/ffmpeg.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [ffsubsync](../video-audio/ffsubsync.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [GStreamer](../video-audio/gstreamer.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ffmpeg-python](../video-audio/transcoding-and-pipelines/ffmpeg-python.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [FFmpeg](../video-audio/transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ffsubsync](../video-audio/speech-and-subtitles/ffsubsync.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [GStreamer](../video-audio/transcoding-and-pipelines/gstreamer.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 sharp 对照。 | sharp 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 sharp 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

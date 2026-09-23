@@ -2,7 +2,7 @@
 name: GStreamer
 slug: gstreamer
 repo: https://gitlab.freedesktop.org/gstreamer/gstreamer
-category: video-audio
+category: transcoding-and-pipelines
 tags: [media, pipeline, streaming, real-time, gstreamer, c, plugins, audio, video, multimedia]
 language: C
 license: LGPL-2.1-or-later
@@ -66,7 +66,7 @@ health:
 面向实时音视频处理应用的管线式多媒体框架——不是 CLI 工具，而是一个由可插拔元素在代码中串联而成的图（graph）。
 
 
-![GStreamer — health radar](../../../assets/health/gstreamer.zh.svg)
+![GStreamer — health radar](../../../../assets/health/gstreamer.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 |---|---|---|---|
 | [FFmpeg](ffmpeg.zh.md) | ✅ | 用 FFmpeg 做 CLI 批量转码、格式转换和通用编解码。 | FFmpeg 是通用 CLI + 库；GStreamer 是管线图框架。FFmpeg 擅长一次性变换，GStreamer 擅长实时、持久、嵌入应用的管线。GStreamer 常通过插件在底层使用 FFmpeg/libav 的编解码器。 |
 | [HandBrake](handbrake.zh.md) | ✅ | 需要面向终端用户、预设驱动的 GUI/CLI 转码器时，选 HandBrake。 | 基于 FFmpeg/x264/x265；适合「rip 成 MP4/MKV」的体验，不是库或管线框架。 |
-| [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 需要带时间线模型的 NLE 剪辑或合成框架时，选 MLT/Shotcut。 | 面向编辑的多媒体框架；编解码实际由 FFmpeg 承担。需要编辑器而非实时管线时选它。 |
+| [MLT](../editing-and-cutting/mlt.zh.md) / Shotcut | 部分已收录 | 需要带时间线模型的 NLE 剪辑或合成框架时，选 MLT/Shotcut。 | 面向编辑的多媒体框架；编解码实际由 FFmpeg 承担。需要编辑器而非实时管线时选它。 |
 | AWS Elemental MediaConvert | 未收录 | 用云转码服务做托管、弹性、按分钟计费的转码。 | SaaS，不是自托管框架。零运维但厂商锁定且按分钟收费。内部通常基于 FFmpeg。 |
 | VLC | 未收录 | 用 VLC 做支持广泛格式的独立媒体播放器。 | 终端用户播放器，不是构建自有应用的框架。 |
 | JACK / PulseAudio | 未收录 | 用 JACK/PulseAudio 做 Linux 桌面音频路由和专业音频低延迟。 | 音频服务器，不是视频管线。GStreamer 可以把它们当作 sink，但本身是更高层的处理框架。 |

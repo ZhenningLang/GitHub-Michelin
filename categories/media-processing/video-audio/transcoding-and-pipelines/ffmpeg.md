@@ -2,7 +2,7 @@
 name: FFmpeg
 slug: ffmpeg
 repo: https://github.com/FFmpeg/FFmpeg
-category: video-audio
+category: transcoding-and-pipelines
 tags: [video, audio, transcoding, codecs, muxing, filtering, multimedia, cli, libav]
 language: C
 license: LGPL-2.1-or-later
@@ -69,7 +69,7 @@ health:
 
 The universal audio/video framework — `ffmpeg`/`ffprobe`/`ffplay` CLIs plus the `libav*` libraries that decode, encode, transcode, mux, demux, and filter virtually any media format in existence.
 
-![ffmpeg — health radar](../../../assets/health/ffmpeg.svg)
+![ffmpeg — health radar](../../../../assets/health/ffmpeg.svg)
 
 ## When to use
 
@@ -93,7 +93,7 @@ You also reach for FFmpeg as a library, not just a CLI, when you're embedding me
 | [GStreamer](gstreamer.md) | ✅ | Choose GStreamer when you need pipeline/element graph framework for live/streaming and app-embedded media. | Pipeline/element graph framework for live/streaming and app-embedded media; more composable for real-time apps and device pipelines, but a heavier programming model than shelling out to one CLI — and it often uses FFmpeg/libav under the hood anyway. |
 | libav (avconv) | 未收录 | Only choose libav when you are maintaining legacy systems that still ship `avconv`. | Historical 2011 fork of FFmpeg; merged back into irrelevance and effectively dead. Old distros shipped `avconv`; for any new work use FFmpeg, not libav. |
 | [HandBrake](handbrake.md) | ✅ | Choose HandBrake when you need an end-user transcoding app with GUI and `HandBrakeCLI`. | End-user transcoding app (GUI + `HandBrakeCLI`) built on top of FFmpeg/x264/x265; great preset-driven "rip this to MP4/MKV" UX, far narrower than raw FFmpeg's format/filter surface and not a library. |
-| [MLT](mlt.md) / Shotcut | 部分已收录 | Choose MLT/Shotcut when you need multimedia editing/compositing with a timeline model. | Multimedia *framework* for editing/compositing with a timeline model; sits above FFmpeg for the actual codec work — reach for it when you need an editor/NLE, not a transcoder. |
+| [MLT](../editing-and-cutting/mlt.md) / Shotcut | 部分已收录 | Choose MLT/Shotcut when you need multimedia editing/compositing with a timeline model. | Multimedia *framework* for editing/compositing with a timeline model; sits above FFmpeg for the actual codec work — reach for it when you need an editor/NLE, not a transcoder. |
 | AWS Elemental MediaConvert / cloud transcoders | 未收录 | Choose managed cloud transcoders when zero-ops elastic scale matters more than self-hosting. | Managed, pay-per-minute transcoding services (often FFmpeg-derived internally); zero ops and elastic scale, but vendor lock-in, per-minute cost, and a SaaS — not a repository you self-host. |
 
 ## Tech stack

@@ -113,7 +113,7 @@ health:
 ## 何时不用
 
 - **你的剪映是 11.x，或你需要当前版本的草稿格式。** 新版剪映的草稿不是明文 JSON，纯写文件这条路写不了也读不了——README 自己就把新版的模板加载指向 `fallback_loader`。要覆盖 11.5.0／11.4.2 就用 [Jianying Headless](jianying-headless.zh.md)，或者接受由人在匹配版本的编辑器里导出。
-- **你需要不经人手就产出成片。** 内置导出只在 Windows 上、且要求剪映 6 及更早，还要移动鼠标、把窗口置顶；在 macOS／Linux 上这个库明确只生成草稿、不导出。交付物是视频而非工程时，用 [MoviePy](../video-audio/moviepy.zh.md) 或 FFmpeg 渲染；要在 macOS 上导出则用 [Jianying Headless](jianying-headless.zh.md)。
+- **你需要不经人手就产出成片。** 内置导出只在 Windows 上、且要求剪映 6 及更早，还要移动鼠标、把窗口置顶；在 macOS／Linux 上这个库明确只生成草稿、不导出。交付物是视频而非工程时，用 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md) 或 FFmpeg 渲染；要在 macOS 上导出则用 [Jianying Headless](jianying-headless.zh.md)。
 - **你要的是编辑器，而不是写工程文件的库。** 用 [Concat](../video-editing/concat.zh.md) 或 [OpenCut](../video-editing/opencut.zh.md)；这个库自己不做任何渲染，只为别人的编辑器写工程文件。
 - **你需要剪映 10.8 上的蒙版。** README 自己的功能表把该版本下的视频蒙版标为不可用、并称将在 0.3.1 修复——围绕某个功能做设计前先核对你这版对应的那一行。
 - **你需要一个还在维护的 CapCut 国际版库。** pyCapCut 就是做这个变体的，但它没有任何许可证文件、自 2025-09-12 起没有提交（见横向对比）。
@@ -124,7 +124,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.zh.md) | ✅ | 当成片必须由剪映自己的引擎在较新版本上渲染时选 Jianying Headless；当写草稿这一步必须跑在 Linux／Windows CI 或塞进一个 vendored 的 Python 服务里时选 pyJianYingDraft，因为那个桥只支持 macOS 26、绑定单个应用版本且非商用。 | pyJianYingDraft 是 Apache-2.0、跨平台、依赖轻，但碰不了加密草稿也不能渲染；Jianying Headless 以一整类机器上的私有 ABI 换来原生导出与哈希钉死的兼容性。 |
-| [MoviePy](../video-audio/moviepy.zh.md) | ✅ | 交付物是渲染文件时选 MoviePy；当人还要在剪映里继续编辑结果时选 pyJianYingDraft，因为 MoviePy 自己合成帧、产不出任何人能打开的时间线。 | MoviePy 在任何平台靠 FFmpeg 渲染、不依赖编辑器；pyJianYingDraft 产出可编辑工程，但收尾必须靠编辑器。 |
+| [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md) | ✅ | 交付物是渲染文件时选 MoviePy；当人还要在剪映里继续编辑结果时选 pyJianYingDraft，因为 MoviePy 自己合成帧、产不出任何人能打开的时间线。 | MoviePy 在任何平台靠 FFmpeg 渲染、不依赖编辑器；pyJianYingDraft 产出可编辑工程，但收尾必须靠编辑器。 |
 | [Concat](../video-editing/concat.zh.md) | ✅ | 编辑器本身必须开源且能脚本化到底时选 Concat；当团队本来就在剪映里干活、只需要自动化「写草稿」这一步时选 pyJianYingDraft，因为 Concat 是替换编辑器，而这个是往编辑器里写。 | Concat 是 AGPL，自带 FFmpeg／Whisper 管线与图形界面；pyJianYingDraft 是 Apache-2.0 的纯库，继承剪映的特效生态——上限是该版本的草稿格式。 |
 | pyCapCut | 未收录 | 当你明确需要 CapCut（国际版）草稿时，不要按现状用 pyCapCut：它根本没有许可证文件（等同保留所有权利），且自 2025-09-12 起没有提交，锁定它既是法律上的也是维护上的死路——改用 pyJianYingDraft 的做法、自己补上 CapCut 变体。 | pyCapCut 面向国际版应用；代价是一个无许可、停更一年的代码库，而 pyJianYingDraft 是 Apache-2.0 且仍在发版。 |
 | 剪映专业版／CapCut（闭源应用） | 未收录 | 一次性剪辑就用剪映本身；当同一套结构要被反复生成或由 agent 生成时选 pyJianYingDraft，因为该应用没有可脚本化的创作接口。 | 应用免费、由厂商维护、特效齐全；这个库是非官方的、与版本耦合，而且只能写出它元数据表里已知的东西。 |

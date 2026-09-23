@@ -87,7 +87,7 @@ health:
 
 ## 怎么用起来
 
-你不会再跑第二条 agent 循环。桌面安装包（或源码的 `pnpm web:dev`）拉起只监听本机的 Fastify daemon；daemon 管项目、Run、审批、日程和 `.runtime/` 下的 SQLite，再把推理、工具调用、Skills、MCP 交给 Codex CLI 当执行真相源。创作者工具是同一台状态机上的可视化表单——导入视频、选转录／翻译／配音／导出，工作区和对话看到的是同一步骤、同一进度、同一个版本。媒体活外包：[yt-dlp](../media-download/yt-dlp.zh.md) 拉公开链接，Whisper 家族 ASR（云端或本机 faster-whisper／WhisperKit／whisper.cpp），LLM 断句和翻译，TTS／配音，[FFmpeg](../media-processing/video-audio/ffmpeg.zh.md) 合成。图／视频生成不是本机推理——它调用你在「设置 → AI 服务」里配的账号（README 举例：GPT Image、Seedance、可灵、Veo）。你这边：安装、Codex 登录、密钥、需求。它这边：保住项目、驱动 Codex、跑 KrillinAI，重新生成时不覆盖昨天的导出。
+你不会再跑第二条 agent 循环。桌面安装包（或源码的 `pnpm web:dev`）拉起只监听本机的 Fastify daemon；daemon 管项目、Run、审批、日程和 `.runtime/` 下的 SQLite，再把推理、工具调用、Skills、MCP 交给 Codex CLI 当执行真相源。创作者工具是同一台状态机上的可视化表单——导入视频、选转录／翻译／配音／导出，工作区和对话看到的是同一步骤、同一进度、同一个版本。媒体活外包：[yt-dlp](../media-download/yt-dlp.zh.md) 拉公开链接，Whisper 家族 ASR（云端或本机 faster-whisper／WhisperKit／whisper.cpp），LLM 断句和翻译，TTS／配音，[FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) 合成。图／视频生成不是本机推理——它调用你在「设置 → AI 服务」里配的账号（README 举例：GPT Image、Seedance、可灵、Veo）。你这边：安装、Codex 登录、密钥、需求。它这边：保住项目、驱动 Codex、跑 KrillinAI，重新生成时不覆盖昨天的导出。
 
 ![open-creator — 主干用户故事](../../assets/flow/open-creator.zh.svg)
 
@@ -115,7 +115,7 @@ health:
 - **你要在 coding assistant 里跑带治理的「调研 → 脚本 → QC」成片管线。** 用 [OpenMontage](open-montage.zh.md) 或 [anything2explainer](anything2explainer.zh.md)。README 工具表里 Auto Clips 和数字人标成「开发中」。
 - **你要时间线 NLE——蒙版、关键帧、人盯着剪。** 用 [Concat](../media-processing/video-editing/concat.zh.md)，或达芬奇／Premiere（非仓库）。OpenCreator 导出文件，不是帧级剪辑器。
 - **你要从主题出库存素材短视频，近零成本、不要 agent。** 用 [MoneyPrinterTurbo](moneyprinter-turbo.zh.md)（Edge TTS，不需要 Codex）。
-- **你不能接受 Apache-2.0 外壳旁边再塞一个 GPL-3.0 媒体核心。** 根目录 `LICENSE` 是 Apache-2.0；`runtime/krillinai/LICENSE` 是 GNU GPL v3。再分发过不了这关，就自己拼 [FFmpeg](../media-processing/video-audio/ffmpeg.zh.md) + [yt-dlp](../media-download/yt-dlp.zh.md)，或留在 MIT 的 [MoneyPrinterTurbo](moneyprinter-turbo.zh.md)。
+- **你不能接受 Apache-2.0 外壳旁边再塞一个 GPL-3.0 媒体核心。** 根目录 `LICENSE` 是 Apache-2.0；`runtime/krillinai/LICENSE` 是 GNU GPL v3。再分发过不了这关，就自己拼 [FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md) + [yt-dlp](../media-download/yt-dlp.zh.md)，或留在 MIT 的 [MoneyPrinterTurbo](moneyprinter-turbo.zh.md)。
 - **你要带 RBAC 的多用户团队平台。** daemon 绑在 `127.0.0.1`，一份本地 SQLite。用聊天平台例如 [Open WebUI](../llm-chat-ui/open-webui.zh.md)，不是这个。
 
 ## 横向对比

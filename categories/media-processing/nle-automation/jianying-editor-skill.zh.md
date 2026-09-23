@@ -98,7 +98,7 @@ health:
 ## 何时不用
 
 - **你用 CapCut 国际版，或用手机端剪映。** 它只面向桌面版剪映专业版（JianyingPro），README 明确说别拿这套流程去试国际版。改用至少记录过 CapCut 变体的 [pyJianYingDraft](pyjianyingdraft.zh.md)，或者手工剪。
-- **你需要不经人手就产出成片。** 在 macOS 上它只生成草稿；Windows 上的自动导出是 UI 自动化、针对剪映 5.9 或更早，应用控件一变就会失效。无人值守管线请用 [FFmpeg](../video-audio/ffmpeg.zh.md) 或 [MoviePy](../video-audio/moviepy.zh.md) 渲染，macOS 上则用 [Jianying Headless](jianying-headless.zh.md)（非商用许可）。
+- **你需要不经人手就产出成片。** 在 macOS 上它只生成草稿；Windows 上的自动导出是 UI 自动化、针对剪映 5.9 或更早，应用控件一变就会失效。无人值守管线请用 [FFmpeg](../video-audio/transcoding-and-pipelines/ffmpeg.zh.md) 或 [MoviePy](../video-audio/editing-and-cutting/moviepy.zh.md) 渲染，macOS 上则用 [Jianying Headless](jianying-headless.zh.md)（非商用许可）。
 - **你需要剪映的实时 GPU 能力——智能抠图、美颜、语音识别字幕、一键成片。** README 把这些列为做不到，因为它们不由草稿文件驱动。
 - **你想要一个可以锁版本、可以长期维护的依赖。** 它没有 tagged release 可锁（仓库里只有一个 `VERSION` 文件写着 1.7.0），项目约 8 个月历史，而且几乎全部由一位作者完成。任何必须长期存活的东西，底下请垫 [pyJianYingDraft](pyjianyingdraft.zh.md)（Apache-2.0、有发版、跨平台）。
 - **你需要在隔离环境或无人值守的机器上跑它，或者手上的素材涉密。** 它安装桌面控制类依赖（`uiautomation`、`pynput`、`playwright`），录屏与导出时会接管屏幕；配音来自 `edge-tts`，文本会发往微软的云服务。请把它放在专用机器或虚拟机上、用可丢弃的数据，而不是放在还存着别的工作成果的主力机上。
@@ -111,7 +111,7 @@ health:
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.zh.md) | ✅ | 当成片必须在 macOS 上由剪映自己的引擎不经人手地产出时选 Jianying Headless；当任务是「把一段需求变成带字幕、带配音的时间轴」且你接受手工导出时选本 skill，因为两者解决的是同一条链的不同半段，而 Headless 绑定单个应用版本、且是非商用许可。 | 本 skill 带的是更高层的工作流（TTS、字幕对齐、特效检索、录屏），但 macOS 上没有无人值守导出；Jianying Headless 给原生导出，代价是只支持 macOS、只支持单一版本、且非商用。 |
 | [pyJianYingDraft](pyjianyingdraft.zh.md) | ✅ | 当你 code-first、想要 Apache-2.0 且有发版的库来构建时选 pyJianYingDraft；当你要让 coding agent 驱动整个需求、且希望 TTS、字幕对齐、特效名检索都已经规定好时选本 skill，因为 pyJianYingDraft 把这些决策统统留给你的代码。 | pyJianYingDraft 是稳定、不带观点的库；本 skill 是有观点的 agent playbook，但没有发版、只有一位维护者。 |
-| [Auto-Editor](../video-audio/auto-editor.zh.md) | ✅ | 需求只是「剪掉冷场、给我一条时间线」时选 Auto-Editor；当时间轴里还要在剪映内组装配音、字幕、配乐和具名特效时选本 skill，因为 Auto-Editor 从不产出剪映工程。 | Auto-Editor 是六年历史、单一二进制、导出可被 NLE 导入的剪切结果；本 skill 面向某一个编辑器的草稿格式和某一套生态，背后的长寿性差得远。 |
+| [Auto-Editor](../video-audio/editing-and-cutting/auto-editor.zh.md) | ✅ | 需求只是「剪掉冷场、给我一条时间线」时选 Auto-Editor；当时间轴里还要在剪映内组装配音、字幕、配乐和具名特效时选本 skill，因为 Auto-Editor 从不产出剪映工程。 | Auto-Editor 是六年历史、单一二进制、导出可被 NLE 导入的剪切结果；本 skill 面向某一个编辑器的草稿格式和某一套生态，背后的长寿性差得远。 |
 | 剪映专业版／CapCut（闭源应用） | 未收录 | 一次性、以后也不再重做的剪辑就用应用本身；当同一套结构要反复按需求生成时选本 skill，因为应用没有可脚本化的创作接口。 | 应用给的是厂商级打磨、全部特效和免费可用的实时 GPU 能力；这个 skill 自动化的是组装，调不动那些实时能力，且应用的格式或界面一变就可能失效。 |
 
 ## 健康度与可持续性
