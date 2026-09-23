@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {"en": "the PPT MCP server does", "zh": "PPT MCP 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Point an MCP client at the PyPI entry point",
+      "zh": "在 MCP 客户端里填上 PyPI 入口",
+      "code": "uvx --from office-powerpoint-mcp-server ppt_mcp_server"
+    },
+    {
+      "lane": "them",
+      "en": "Starts FastMCP over stdio and registers the PowerPoint tools",
+      "zh": "用 stdio 拉起 FastMCP，注册 PowerPoint 工具",
+      "component": {"en": "ppt_mcp_server", "zh": "ppt_mcp_server"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask the client to create a deck and add slides",
+      "zh": "让客户端新建演示文稿并加幻灯片",
+      "code": "create_presentation · add_slide · manage_text"
+    },
+    {
+      "lane": "them",
+      "en": "Holds a python-pptx Presentation in process memory and mutates it",
+      "zh": "在进程内存里握着一份 python-pptx 演示文稿并改它",
+      "component": {"en": "in-memory presentations dict", "zh": "内存中的 presentations 字典"}
+    },
+    {
+      "lane": "you",
+      "en": "Tell it where to write the file",
+      "zh": "告诉它文件写到哪里",
+      "code": "save_presentation"
+    },
+    {
+      "lane": "them",
+      "en": "Writes a .pptx to disk",
+      "zh": "把 .pptx 写到磁盘"
+    }
+  ],
+  "value": {
+    "en": "An LLM client can build a .pptx through tool calls — you never write the python-pptx glue",
+    "zh": "LLM 客户端用 tool 调用就能做出 .pptx，你不用写 python-pptx 胶水"
+  },
+  "sources": [
+    "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server/blob/main/README.md (UVX MCP config; create_presentation / add_slide / save_presentation examples)",
+    "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server/blob/main/ppt_mcp_server.py (FastMCP, presentations dict, stdio default)",
+    "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server/blob/main/pyproject.toml (entry point ppt_mcp_server, package office-powerpoint-mcp-server)"
+  ]
+}

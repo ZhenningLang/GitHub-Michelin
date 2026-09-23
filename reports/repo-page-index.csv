@@ -34,6 +34,7 @@ https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
 https://github.com/FreshRSS/FreshRSS,freshrss,reading-tools,categories/reading-tools/freshrss.md
 https://github.com/Giskard-AI/giskard-oss,giskard,llm-eval,categories/llm-eval/giskard.md
+https://github.com/GongRzhe/Office-PowerPoint-MCP-Server,office-powerpoint-mcp-server,office-automation,categories/office-automation/office-powerpoint-mcp-server.md
 https://github.com/GongRzhe/Office-Word-MCP-Server,office-word-mcp-server,office-automation,categories/office-automation/office-word-mcp-server.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
@@ -172,6 +173,7 @@ https://github.com/apache/airflow,airflow,workflow-orchestration,categories/work
 https://github.com/apache/apisix,apisix,api-gateway,categories/api-gateway/apisix.md
 https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
 https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
+https://github.com/apache/poi,apache-poi,office-automation,categories/office-automation/apache-poi.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
 https://github.com/argoproj/argo-workflows,argo-workflows,workflow-orchestration,categories/workflow-orchestration/argo-workflows.md
 https://github.com/ariya/phantomjs,phantomjs,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/phantomjs.md

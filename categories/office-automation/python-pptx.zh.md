@@ -95,7 +95,7 @@ health:
 | [OfficeCLI](officecli.zh.md) | ✅ | 如果 deck 生成是你必须维护和测试的 Python 服务里的一段代码，选 python-pptx；如果 deck 由 agent 迭代驱动、且需要动画、转场或看到渲染后的幻灯片，选 OfficeCLI——这三样在这里要么缺失要么已冻结。 | python-pptx 给你一个可锁版本、可测试的 MIT 库，但没有渲染、没有动画 API；OfficeCLI 给你一个渲染闭环和缺失的特性面，代价是它只有 6 个月、单人作者、默认自动更新。 |
 | [Pandoc](../markdown-tools/pandoc.zh.md) | ✅ | 如果 deck 是从 Markdown 单向导出、样式由 reference deck 提供，选 Pandoc；如果必须打开一份已有 `.pptx` 并就地改动特定 shape、图表或版式，选 python-pptx。 | Pandoc 一次调用、没有对象模型、无法就地编辑；python-pptx 能精确就地编辑，但每个 shape 都要你自己定位。 |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | 如果交付物是 agent 从一篇文章产出的好看 deck、且 HTML 输出可接受，选 Guizang skill；如果交付物必须是能在 PowerPoint 打开并走企业评审的 `.pptx`，选 python-pptx。 | 该 skill 用锁定视觉系统换来设计感，代价是 AGPL-3.0 条款和 HTML（而非 OOXML）产物；python-pptx 换来格式正确性，但完全不带设计主张。 |
-| Office-PowerPoint-MCP-Server | 未收录 | 已被作者于 2025-12-31 归档（1,852 star，API 已验证）；新工作不要选它——直接用 python-pptx，因为那个 server 只是这同一层库之上的薄 MCP 封装。 | 它曾提供现成的、给 LLM 客户端用的 MCP tool schema；这份便利现在无人维护，而且该封装没有增加任何 python-pptx 缺少的能力。 |
+| [Office-PowerPoint-MCP-Server](office-powerpoint-mcp-server.zh.md) | ✅ | 已被作者于 2025-12-31 归档（1,852 star，API 已验证）；新工作不要选它——直接用 python-pptx，因为那个 server 只是这同一层库之上的薄 MCP 封装。 | 它曾提供现成的、给 LLM 客户端用的 MCP tool schema；这份便利现在无人维护，而且该封装没有增加任何 python-pptx 缺少的能力。 |
 
 ## 技术栈
 
