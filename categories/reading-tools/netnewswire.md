@@ -124,7 +124,7 @@ You also reach for it when you already keep your subscriptions in a sync service
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 28.4 hours across 35 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 6.6 hours across 28 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; iOS 7.1 and mac 7.1 releases shipped in June 2026 with beta builds in between — clearly **active** development, not coasting. Not archived.
 - **Governance / bus factor.** Created and led by Brent Simmons (`brentsimmons`), who authored the original NetNewsWire decades ago; there is a real contributor list (vincode-io, Wevah, kielgillard, and others) beyond the lead, but the project's direction is strongly identified with one well-known developer — a moderate bus-factor consideration. [推断]
 - **Age & Lindy verdict.** This repo dates to 2017-05 (~9 years), and the NetNewsWire *name/app* is far older than the repo — it's one of the longest-lived Mac feed readers — and it is still actively shipping ⇒ **strong Lindy** signal. (Repo age understates true project age. [未验证])

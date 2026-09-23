@@ -127,7 +127,7 @@ You reach for it whenever the task is *programmatic font surgery*: subsetting fo
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 1.2 hours across 4 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 21.7 hours across 10 qualifying issues/PRs.
 - **Maintenance (2026-06).** Very active: v4.63.0 released 2026-05, last push 2026-06, on a steady frequent minor-release cadence. Not archived — clearly maintained, not coasting. [推断]
 - **Governance / bus factor.** Lives under the `fonttools` **GitHub organization** with a long contributor history led by Behdad Esfahbod and Cosimo Lupo (anthrotype) among hundreds of contributors — multi-maintainer, not a single point of failure; healthier bus factor than most font tools. [推断]
 - **Age & Lindy.** Created 2013 on GitHub but the codebase's lineage (Just van Rossum's TTX/fontTools) predates that by years; ~13+ years here and **still actively shipping** ⇒ a **strong Lindy** signal — it is the established standard, not a newcomer. [推断]

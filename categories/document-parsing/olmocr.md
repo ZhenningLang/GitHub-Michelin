@@ -127,11 +127,11 @@ You're a machine learning researcher or data engineer preparing a large-scale co
 
 ## Health & viability
 
-- **Maintenance**: Grade C — 0/13 active weeks in trailing 13; last commit 100 days ago.
+- **Maintenance**: Grade C — 0/13 active weeks in trailing 13; last commit 181 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade C — 22,800 monthly downloads via pypi.org (package: olmocr).
-- **Longevity**: Grade B — 654 days old.
-- **Governance**: Grade D — top-3 contributor share 99.1% (?).
+- **Adoption**: Grade D — 18,743 monthly downloads via pypi.org (package: olmocr).
+- **Longevity**: Grade C — 735 days old.
+- **Governance**: Grade D — top-3 contributor share 99.8% (?).
 - **Risk / License**: Grade A — Apache-2.0 license.
 
 ## Caveats (unverified)

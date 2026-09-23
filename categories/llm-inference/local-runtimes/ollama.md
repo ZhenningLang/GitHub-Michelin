@@ -158,7 +158,7 @@ Ollama is the local-model equivalent of a package manager plus a always-on servi
 - **Backing & Lindy:** three-plus years of continuous activity is a strong Lindy prior for a fast-moving field, and the project has outlived several "Ollama is just a wrapper" critiques by absorbing features (MLX runner, agent integrations, cloud tier).
 - **Adoption & ecosystem:** ~181,000 stars, 17,900 forks, 1,000+ watchers, an enormous third-party UI/integration list, and official client libraries — the deepest ecosystem in this category.
 - **Risk flags:** parts of the experience live outside the repo (the model registry and the cloud tier), so "MIT" covers the engine and app, not the hosted service; the OpenAI/Anthropic compatibility layers implement subsets rather than the full specifications; and a ~4,000 open issue/PR backlog means fixes compete for attention.
-- **Radar coverage:** the responsiveness and adoption axes are `?` for structural reasons (no qualifying issue-response signal in the sampling window; no canonical package for an `app`-type project), so the aggregate is computed over 4 of 6 axes — read that as incomplete coverage, not as a perfect score.
+- **Radar coverage:** the responsiveness axis is `?` for structural reasons (no qualifying issue-response signal in the sampling window), so the aggregate is computed over 5 of 6 axes — read that as incomplete coverage, not as a perfect score.
 - **Verdict:** the safe default for local models in 2026 — pick it unless you specifically need serving-scale throughput (vLLM/SGLang) or an embedded engine (llama.cpp).
 
 ## Caveats (unverified)

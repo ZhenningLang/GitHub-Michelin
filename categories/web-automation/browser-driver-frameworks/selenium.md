@@ -131,11 +131,11 @@ You reach for **Selenium WebDriver**. You write the test once against the WebDri
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 12.6 hours across 38 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 21.8 hours across 40 qualifying issues/PRs.
 - **Maintenance (2026-06)** — last pushed 2026-06, not archived, shipping the v4.x line (v4.45.0); a continuously released project tracking evolving browser/WebDriver targets, i.e. **active**, not coasting. `[推断]`
 - **Governance & bus factor** — lives under the **SeleniumHQ** org (`Organization`-owned), a long-standing community/multi-contributor project rather than one person or a single vendor's product; the W3C-standard WebDriver protocol it anchors further de-risks any single-owner dependency. `[推断]`
 - **Age & Lindy** — created ~2013-01, so ~13 years old (2026-06) and still actively shipping: a textbook **strong-Lindy** bet — long-lived *and* still-active, with deep ecosystem inertia (cloud grids, CI integrations, years of Q&A) that makes it the safe default. `[推断]`
-- **Adoption & ecosystem** — the automated registry/dependent graph scores this axis as E, but that metric undercounts a multi-language WebDriver ecosystem whose usage is spread across bindings, browser drivers, hosted grids, and CI integrations. Human review should treat Selenium as deeply entrenched despite the package-graph score. `[推断]`
+- **Adoption & ecosystem** — the dependent graph still reads E (0 dependent repos recorded), but that metric undercounts a multi-language WebDriver ecosystem whose usage is spread across bindings, browser drivers, hosted grids, and CI integrations. Download volume says the opposite and now carries the axis to A: 128,246,077 a month. Human review should treat Selenium as deeply entrenched; the package graph is the wrong instrument here. `[推断]`
 - **Risk flags** — Apache-2.0, no relicense/open-core history seen; the practical risk is **flakiness without disciplined waits** and **Grid ops burden**, not project viability. `[未验证]`
 
 ## Caveats (unverified)

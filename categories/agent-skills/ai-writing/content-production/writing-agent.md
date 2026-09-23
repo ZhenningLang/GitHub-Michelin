@@ -103,7 +103,7 @@ It fits users willing to run a full Claude Code project workflow, inspect interm
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-05T06:13:28Z`; health scores maintenance as B.
 - **Adoption snapshot:** ~319 GitHub stars as of 2026-07; niche but relevant for Chinese writing workflows.
 - **License snapshot:** MIT verified from upstream README badge and root `LICENSE` in the read-only upstream check.
-- **Lindy / governance:** health longevity is C and governance is D because the repo is young and single-maintainer concentrated.
+- **Lindy / governance:** health longevity is B and governance is D because the repo is young and single-maintainer concentrated.
 - **Risk flags:** pipeline complexity, model/provider setup, and user-supplied evidence quality decide whether outputs are actually publishable.
 
 ## Caveats (unverified)

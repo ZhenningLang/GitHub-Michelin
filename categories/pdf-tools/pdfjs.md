@@ -129,7 +129,7 @@ The same library is your tool when you need to *read* a PDF, not just show it: p
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 2.5 hours across 45 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 2.9 hours across 53 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-06, latest release v6.1.200 dated 2026-06-27 — **active** with a steady release stream; security/format fixes land regularly. [推断]
 - **Governance / backing:** Mozilla-owned (`mozilla/pdf.js`, Organization) and the engine behind Firefox's built-in PDF viewer. [推断] That is unusually strong backing: it is load-bearing for a shipping browser, so it has a structural reason to stay maintained — not a hobby project at the mercy of one maintainer.
 - **Age & Lindy (created 2011-04, ~15yr):** old **and** still active — a textbook **strong Lindy** bet. A 15-year-old, browser-critical, continuously released library is about as safe a longevity prior as open source offers. [推断]

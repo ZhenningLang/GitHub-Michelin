@@ -130,7 +130,7 @@ You reach for it specifically when you want **observability over your own agent 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 25.6 hours across 24 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 12.5 hours across 14 qualifying issues/PRs.
 - **Maintenance (2026-06).** Extremely active — created 2026-02, last push 2026-06, shipping rapid point releases (v0.34.x). Clearly in heavy development, not coasting. Not archived. [推断]
 - **Governance / bus factor.** Owner is the `kenn-io` **Organization**, but the project is **only ~4 months old** with a top contributor (wesm) dominating commits — early-stage, likely small core team; treat bus factor as unproven. [推断]
 - **Age & Lindy — RISK.** Created 2026-02 yet already ~3.4k stars. **Young + high stars is a hype/maturity risk flag, not a Lindy signal**: there is no track record yet, APIs and storage formats may still churn, and longevity is unproven. Bet on it as a *new* tool, not a settled one. [未验证]

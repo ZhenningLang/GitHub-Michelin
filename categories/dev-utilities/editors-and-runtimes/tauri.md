@@ -128,7 +128,7 @@ You're choosing a cross-platform desktop or mobile framework and bundle size, me
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 5.0 hours across 35 qualifying issues.
+- **Responsiveness**: Grade A — median first-response time 5.1 hours across 39 qualifying issues/PRs.
 - **Maintenance**: Very active — pushed daily as of 2026-07, with v2 stable and active community support (1,442 open issues). [推断]
 - **Governance**: Owned by the `tauri-apps` organization with a dedicated core team and open governance model. Bus factor is reasonable.
 - **Backing**: Backed by the Tauri Collective and Open Collective funding; has corporate sponsors and a non-profit foundation structure. [未验证]

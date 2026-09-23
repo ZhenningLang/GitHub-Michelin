@@ -125,7 +125,7 @@ As the app grows you lean on the rest of the framework: `beat` for cron-like per
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 99.5 hours across 11 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 30.7 hours across 21 qualifying issues/PRs.
 - **Maintenance (2026-06).** Repo last pushed 2026-06 and actively shipping on the v5.x line (latest release v5.6.3, 2026-03) — **active**, not coasting; not archived. [推断]
 - **Governance / bus factor.** Owned by the `celery` GitHub **organization** with a broad contributor base over many years rather than a single author — but it's community/volunteer-maintained without a large foundation or vendor bankrolling it, so sustained maintainer bandwidth is the thing to watch. [推断]
 - **Age & Lindy verdict.** Created **2009-04 (~17 years)** and **still actively maintained** ⇒ a **very strong Lindy** signal — one of the longest-lived, most battle-tested task queues in any language, the boring proven default rather than a hyped newcomer. [推断]

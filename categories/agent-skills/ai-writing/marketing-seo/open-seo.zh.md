@@ -120,7 +120,7 @@ Open source alternative to Semrush and Ahrefs
 - **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-15T17:12:05Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 4,337 个 GitHub stars；这是有用关注信号，但不证明已达到商业套件能力。
 - **许可证快照：** 只读上游核验确认根目录 `LICENSE` 为 MIT。
-- **Lindy / 治理：** health 中 longevity 为 D；应用年轻且贡献集中，governance 为 D。
+- **Lindy / 治理：** health 中 longevity 为 C；应用年轻且贡献集中，governance 为 D。
 - **风险信号：** DataForSEO 成本、默认无认证的本地 Docker、暴露自托管、OAuth secrets 和 SEO 数据新鲜度都需要运维复核。
 
 ## 存疑（未验证）

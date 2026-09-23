@@ -128,11 +128,11 @@ health:
 **低**。Deno 是可在主流操作系统上运行的单一二进制文件。部署时，可以直接运行 `deno run`，用 `deno compile` 编译为独立二进制，或部署到 Deno Deploy（托管边缘）。内置工具链（test、fmt、lint、bench）减少了对单独 devDependencies 的需求。没有 `node_modules` 膨胀简化了 CI/CD 缓存和 Docker 镜像大小。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
-- **响应速度**：Grade A——中位首次响应时间 3.8 小时，基于 36 个 qualifying issues/PRs。
-- **采用广度**：Grade A——crates.io 上月下载量 5,934,345（包名：deno_core）。
-- **长青度**：Grade A——仓库已创建 2,972 天。
-- **治理集中度**：Grade A——前三贡献者占比 59.4%（?）。
+- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 1 天。
+- **响应速度**：Grade A——中位首次响应时间 16.5 小时，基于 18 个 qualifying issues/PRs。
+- **采用广度**：Grade A——crates.io 上月下载量 7,904,610（包名：deno_core）。
+- **长青度**：Grade A——仓库已创建 3053 天。
+- **治理集中度**：Grade A——前三贡献者占比 60.9%（?）。
 - **许可风险**：Grade A——MIT 许可证。
 ## 存疑（未验证）
 

@@ -125,7 +125,7 @@ It's also the substrate under much of the Python networking/security ecosystem: 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 76.1 hours across 3 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 47.9 hours across 18 qualifying issues/PRs.
 - **Maintenance (2026-06).** Repo last pushed 2026-06; latest release **v2.8.0 (2025-09)**, with 2.7.0 (2024-10) and 2.6.1 (2024-02) before it — a steady annual-ish release cadence, **actively maintained**, not archived. Notably **only ~4 open issues**, signaling tight triage. [未验证]
 - **Governance / bus factor.** Owner type is **User** (Bob Halley / rthalley, ~1,850 commits) with a meaningful second contributor (bwelling, ~200) and dependabot — a **single-primary-maintainer** project, so bus factor is the main governance caveat despite long, careful upkeep. [推断]
 - **Age & Lindy verdict.** Created **2011**, ~15 years old and **still actively releasing** ⇒ a **strong Lindy** signal: it is the de-facto Python DNS library, depended on across the security/networking ecosystem. [推断]

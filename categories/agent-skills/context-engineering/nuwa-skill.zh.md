@@ -96,7 +96,7 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-02T03:11:38Z`；health 将维护评为 A。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-02T03:11:38Z`；health 将维护评为 B。
 - **采用快照：** 2026-07 约 28,015 个 GitHub stars；对年轻 skill 是强关注信号，但不是 persona fidelity 证明。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT。
 - **Lindy / 治理：** health 中 longevity 为 C；因项目年轻且维护者集中，governance 为 D。

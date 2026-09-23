@@ -124,7 +124,7 @@ You also reach for it when you want per-site control: Just Read lets you save cu
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 9.6 hours across 3 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 1.9 hours across 6 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-05 with commits through March–May 2026 — **actively maintained**. Not archived. [推断]
 - **Governance / bus factor.** Single-maintainer (`ZachSaucier` is effectively the only contributor) and a **User**-owned repo with a hosted commercial side (justread.link) — a clear single-point-of-failure both for the code and for the Premium service. **Flagged.** [推断]
 - **Age & Lindy verdict.** Created 2015-10 (~10 years) and still active ⇒ a reasonable Lindy signal for a personal project; it has survived a decade of free-time maintenance, which is itself a positive durability indicator. [推断]

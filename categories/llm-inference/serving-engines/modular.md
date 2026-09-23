@@ -124,7 +124,7 @@ You also reach for this when you specifically want **Mojo** — you're writing c
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 55.1 hours across 18 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.1 hours across 10 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06-28; MAX v26.4.0 released 2026-06-18 on a steady multi-release-per-year cadence — clearly **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor (2026-06).** Single-vendor: the roadmap, the language (Mojo), and the engine are all controlled by **Modular Inc.**, a funded startup — **not** a foundation (no Apache/CNCF/LF governance). Bus-factor and commercial-strategy risk concentrate in one company; if Modular pivots, gets acquired, or de-prioritizes the OSS stack, downstream users carry that risk. [推断]
 - **Age & Lindy (2026-06).** Created 2023-04 (~3 years old) and still actively shipping ⇒ a **moderate** signal: real momentum, but **weak Lindy** — too young to be considered long-proven, and its long-term survival is unproven relative to incumbents like vLLM/TensorRT-LLM. Use age × still-active: active is good, young still means unproven. [推断]

@@ -138,7 +138,7 @@ It also fits when you need to *script and operationalize* GIS work, not just cli
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 19.1 hours across 3 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 8.5 hours across 14 qualifying issues/PRs.
 - **Maintenance — active (as of 2026-06).** Last push 2026-06; a 4.0.x stable line is shipping (4.0.3 reported 2026-05). Not archived; the high open-issue count (~5.4k) reads as a large, busy tracker for a 15-year desktop application, not as neglect. [推断]
 - **Governance & backing — foundation/community, low bus factor.** QGIS is an OSGeo project run by the QGIS.org association with a steering committee, a core-developer team, and sustaining/commercial-support members [推断] — a genuine multi-maintainer, multi-vendor structure rather than one person's repo. The GitHub repo is Organization-owned, consistent with that.
 - **Age & Lindy — strong.** Created 2011-05, ~15 years old and *still actively developed* (age × still-active). A long-lived, foundation-backed desktop GIS that keeps shipping LTR releases is about as safe a Lindy bet as open-source GIS offers; the only "fails Lindy" risk here is in third-party plugins, not the core.

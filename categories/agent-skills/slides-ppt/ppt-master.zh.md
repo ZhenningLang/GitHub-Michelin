@@ -103,7 +103,7 @@ AI generates a real, editable PowerPoint from any document — native shapes & a
 - **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-16T03:51:31Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 39,357 个 GitHub stars，但项目很年轻，关注度不等于长期 deck 质量。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT。
-- **Lindy / 治理：** health 中 longevity 为 C；重算后的 governance 为未知（`empty_or_gated`），尽管 README 可见 sponsor / 社区关注。
+- **Lindy / 治理：** health 中 longevity 为 B；重算后的 governance 为 D，尽管 README 可见 sponsor / 社区关注。
 - **风险信号：** 质量强依赖模型能力、本地环境、源材料质量和生成后的人工编辑。
 
 ## 存疑（未验证）

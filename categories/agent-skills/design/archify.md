@@ -106,7 +106,7 @@ It is strongest for architecture overviews, CI/CD workflows, request sequences, 
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-15T16:29:36Z`; health scores maintenance as A.
 - **Adoption snapshot:** ~5,339 GitHub stars as of 2026-07; useful attention signal, but the project is still young.
 - **License snapshot:** MIT verified from upstream README and root `LICENSE` in the read-only upstream check.
-- **Lindy / governance:** health longevity is C and governance is D because the repo is young and contribution is concentrated.
+- **Lindy / governance:** health longevity is C because the repo is young; governance is unknown — the health block has no data for it.
 - **Risk flags:** output accuracy depends on the agent's system understanding and local validation loop, not only on the renderer.
 
 ## Caveats (unverified)

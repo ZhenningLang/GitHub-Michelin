@@ -132,7 +132,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 1.1 小时，基于 53 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 0.2 小时，基于 38 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06；稳定的 v2.20.x 线加上正在推进的 v3.0 beta——处于**活跃**开发，未归档。极低的 open issue 数（约 6）显示积极的 triage，而非停滞。[推断]
 - **治理 / bus factor。** 由 `paperless-ngx` 组织社区维护——它本身就是原 `paperless`/`paperless-ng` 谱系停滞后的社区延续，这点让人安心（项目**已经**挺过一次维护者交接），但它**没有商业方背书**；存续依赖志愿者的延续性。[推断]
 - **年龄与 Lindy 判断。** 作为 `paperless-ngx` 约 4 年（2022-02 创建），经由前身有更深的根基 ⇒ **中等 Lindy** 信号——在 homelab/DMS 细分领域已被验证，但比底层的 paperless 理念年轻。[推断]

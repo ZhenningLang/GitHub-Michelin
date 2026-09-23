@@ -128,11 +128,11 @@ You're a product manager or designer who needs to quickly whiteboard an architec
 **Low** for the common case: use the free hosted app at excalidraw.com, export your drawings, and move on. **Medium** when embedding the React component: you pin the npm package, handle version upgrades (the component API can shift), and bundle it into your build pipeline. **Medium–High** if you want self-hosted real-time collaboration: you must operate a WebSocket relay server, manage encryption keys, and handle NAT/firewall traversal. As a client-side library, the main maintenance burden is staying current with React/TypeScript compatibility and occasional breaking API changes in the npm package. [推断]
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 3 days ago.
-- **Responsiveness**: Grade A — median first-response time 23.5 hours across 22 qualifying issues/PRs.
-- **Adoption**: Grade B — 1,390,033 monthly downloads via npmjs.org (package: @excalidraw/excalidraw).
-- **Longevity**: Grade A — 2374 days old.
-- **Governance**: Grade B — top-3 contributor share 83.5% (?).
+- **Maintenance**: Grade A — 12/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A — median first-response time 34.4 hours across 26 qualifying issues/PRs.
+- **Adoption**: Grade B — 1,918,275 monthly downloads via npmjs.org (package: @excalidraw/excalidraw).
+- **Longevity**: Grade A — 2456 days old.
+- **Governance**: Grade B — top-3 contributor share 88.9% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

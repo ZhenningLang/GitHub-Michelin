@@ -150,7 +150,7 @@ You do not run a second agent loop. The Desktop installer (or `pnpm web:dev` for
 
 ## Health & viability
 
-Radar **A (5/6)** on 2026-09-22 (`adoption` is `?` / `no_package_structural` — apps with no canonical package leave that axis out). Do not read the green `risk_license` A as clearance for the nested GPL core; the scorer grades the root SPDX only.
+Radar **B (6/6)** on 2026-09-22 — `adoption` grades D (release-download signal only; no canonical package). Do not read the green `risk_license` A as clearance for the nested GPL core; the scorer grades the root SPDX only.
 
 - **Maintenance (A):** last commit 1 day, 8 active weeks in 13. Created 2024-12-17, default branch `master` at `a153ac073e6d` (2026-09-21), `pushed_at` 2026-09-22, latest tag **v3.2.2** (2026-09-21) after v3.2.1 / v3.2.0 the same month. Rename from KrillinAI landed at v3.0.0 (2026-09-05).
 - **Governance (B):** 12 active maintainers in 12 months, top-1 share 0.32 / top-3 0.77 (scorer window). Personal GitHub user `krillinai`, not an organization. README names a four-person "Crew". Not a foundation.

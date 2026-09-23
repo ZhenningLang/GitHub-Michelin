@@ -127,7 +127,7 @@ You also reach for it to fill a seed script that pumps a few thousand fake order
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 4.1 hours across 12 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 1.6 hours across 12 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06 (active); shipping on the v10 line with a steady release cadence and frequent commits — **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor.** This is a community **organization** project, not a single-maintainer package — and notably so *by origin*: faker-js was formed in January 2022 after the original `faker.js` was deliberately sabotaged and removed from npm by its sole author. The community fork exists specifically to remove that single-owner rug-pull risk, so the governance structure is a **positive** here — but the lineage is worth knowing when you read older tutorials referencing the dead `faker` package. [推断]
 - **Age & Lindy verdict.** ~4 years old **as this org/fork** (created 2022-01) and still actively shipping ⇒ a **moderate-and-improving** Lindy signal: younger than its commit history implies (the underlying idea and data descend from the 2011-era original), but the *governed* incarnation is the one you depend on, and it has now sustained ~4 years of active multi-contributor maintenance. [推断]

@@ -126,11 +126,11 @@ health:
 **无。** Alacritty 是单一二进制。通过包管理器安装或 release 下载。配置为单个 YAML 文件。无需守护进程、无需后台服务。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 7 周有提交；最后提交距今 10 天。
-- **响应速度**：Grade A——中位首次响应时间 1.5 小时，基于 55 个 qualifying issues/PRs。
-- **采用广度**：Grade B——crates.io 上月下载量 520,819（包名：alacritty_terminal）。
-- **长青度**：Grade A——仓库已创建 3,788 天。
-- **治理集中度**：Grade C——前三贡献者占比 93.3%（?）。
+- **维护活跃度**：Grade B——最近 13 周中 4 周有提交；最后提交距今 22 天。
+- **响应速度**：Grade A——中位首次响应时间 2.0 小时，基于 38 个 qualifying issues/PRs。
+- **采用广度**：Grade A——crates.io 上月下载量 1,616,311（包名：alacritty_terminal）。
+- **长青度**：Grade A——仓库已创建 3870 天。
+- **治理集中度**：Grade B——前三贡献者占比 92.0%（?）。
 - **许可风险**：Grade A——Apache-2.0 许可证。
 ## 存疑（未验证）
 

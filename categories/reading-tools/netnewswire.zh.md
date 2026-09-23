@@ -124,7 +124,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 28.4 小时，基于 35 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 6.6 小时，基于 28 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06；iOS 7.1 与 mac 7.1 在 2026 年 6 月发布，中间还有 beta 构建——明显是**活跃**开发而非吃老本。未归档。
 - **治理 / bus factor。** 由 Brent Simmons（`brentsimmons`）创建并主导，他几十年前就写过初代 NetNewsWire；除领衔者外有真实的贡献者列表（vincode-io、Wevah、kielgillard 等），但项目方向与这位知名开发者强绑定——是个中等程度的 bus-factor 考量。[推断]
 - **年龄与 Lindy 判断。** 本仓库始于 2017-05（约 9 年），而 NetNewsWire 这个*名字/应用*远比仓库更老——它是寿命最长的 Mac 订阅阅读器之一——且仍在活跃发布⇒**强 Lindy** 信号。（仓库年龄低估了真实项目年龄。[未验证]）

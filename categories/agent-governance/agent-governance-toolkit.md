@@ -129,7 +129,7 @@ It is strongest when governance has to be a product surface: YAML/Cedar/OPA-styl
 ## Health & viability
 
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-16T07:08:50Z`; health scores maintenance and responsiveness as A.
-- **Adoption snapshot:** ~4,889 GitHub stars as of 2026-07 and health found 88,426 last-month PyPI downloads for `agent_governance_toolkit`; treat this as early adoption, not a mature long-lived standard.
+- **Adoption snapshot:** ~4,889 GitHub stars as of 2026-07 and health found 127,874 last-month PyPI downloads for `agent_governance_toolkit`; treat this as early adoption, not a mature long-lived standard.
 - **License snapshot:** MIT verified from GitHub metadata and root `LICENSE` in the read-only upstream check.
 - **Lindy / governance:** the project is very young (health longevity D) but backed by Microsoft, has governance docs, maintainers docs, security policy, and broad contributor signals.
 - **Risk flags:** Public Preview status, broad package surface, and middleware-level security boundary are the main practical risks.

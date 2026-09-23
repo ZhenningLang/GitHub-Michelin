@@ -122,7 +122,7 @@ Parlant is built for exactly this lane. Instead of cramming everything into one 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 61.4 hours across 7 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance (2026-06):** actively maintained — default branch last pushed 2026-06-25, not archived; latest release v3.3.2 (2026-04-28), a reasonably recent tag with a v3.x line, reads as a live project rather than coasting. [推断]
 - **Governance & bus factor (2026-06):** Organization-owned (`emcie-co` / Emcie), i.e. a single-vendor commercial startup rather than a neutral foundation (no Apache/LF/CNCF governance). That's a real **bus-factor and commercial-risk** consideration: roadmap and continuity follow one company's priorities and funding. [推断]
 - **Age & Lindy (2026-06):** created 2024-02, ~2 years old — **young**, so the **Lindy prior is unproven**: it has momentum but not the multi-year track record that de-risks long-term bets. Use age × still-active here as "active but not yet seasoned."

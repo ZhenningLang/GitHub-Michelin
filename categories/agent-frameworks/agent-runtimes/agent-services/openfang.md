@@ -124,7 +124,7 @@ It also fits when you care about footprint and self-hosting. The whole thing is 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 127.5 hours across 34 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — active, pre-1.0 (as of 2026-06).** Last push 2026-06; latest release v0.6.9 (2026-05, security patches for RUSTSEC advisories); not archived. Actively developed but explicitly pre-1.0, so expect breaking changes between minor versions.
 - **Governance & backing — single vendor.** Driven by one company (RightNow / `RightNow-AI`), not a foundation or multi-org community; the roadmap and continuity ride on that vendor. A single-vendor pre-1.0 project carries direction-change and abandonment risk a foundation project does not.
 - **Age & Lindy — very young, unproven.** Created 2026-02, ~4 months old (as of 2026-06). No track record; firmly "young and hyped," not Lindy-safe — do not bet a business-critical pipeline on it without absorbing churn.

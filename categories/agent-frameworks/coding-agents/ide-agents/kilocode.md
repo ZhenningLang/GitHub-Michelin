@@ -125,7 +125,7 @@ You reach for it specifically when you want an *open-source*, in-IDE coding agen
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 8.1 hours across 6 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — very active (as of 2026-06).** Last push 2026-06-28; release cadence is aggressive (current release ~v7.x, with releases landing within days of each other). Not archived. Actively, heavily maintained.
 - **Governance / backing — org-owned, appears funded.** Owned by an **Organization** (`Kilo-Org`), not a single user — a better bus-factor signal than a solo repo, and the "all-in-one agentic engineering platform" positioning suggests a commercial/funded effort building a paid platform around the open extension. [未验证] funding/commercial details and roadmap ownership.
 - **Age & Lindy — young, unproven.** Created 2025-03, ~1 year old (as of 2026-06). High activity and rapid adoption (~24.9k stars), but no long track record — **active-but-unproven**, not Lindy-safe. Fast-moving surface ⇒ expect churn.

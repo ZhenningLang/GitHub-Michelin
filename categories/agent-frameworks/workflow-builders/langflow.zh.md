@@ -131,11 +131,11 @@ health:
 **中等**。本地开发简单（`pip install langflow` 或 Docker）。生产部署需要管理 Python 后端、用于流持久化的数据库，以及可能的向量数据库。可视化流本身需要版本控制纪律——保存为 JSON 的流可以提交到 git，但做 diff 和代码审查很别扭。主要的持续负担是保持 Langflow 版本、LangChain 依赖和模型提供商 API 的同步。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 1 天。
-- **响应速度**：Grade A——中位首次响应时间 16.9 小时，基于 55 个 qualifying issues/PRs。
-- **采用广度**：Grade C——pypi.org 上月下载量 92,752（包名：langflow-base）。
-- **长青度**：Grade B——仓库已创建 1240 天。
-- **治理集中度**：Grade A——前三贡献者占比 34.6%（?）。
+- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 7 天。
+- **响应速度**：Grade B——中位首次响应时间 56.6 小时，基于 33 个 qualifying issues/PRs。
+- **采用广度**：Grade C——pypi.org 上月下载量 41,135（包名：langflow）。
+- **长青度**：Grade B——仓库已创建 1322 天。
+- **治理集中度**：Grade A——前三贡献者占比 44.9%（?）。
 - **许可风险**：Grade A——MIT 许可证。
 ## 存疑（未验证）
 

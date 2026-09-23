@@ -124,11 +124,11 @@ You are a developer who wants AI-assisted coding but refuses to be locked into a
 **Low**. Installation is `npm install -g opencode-ai` or similar; the agent runs as a local process with no persistent service to manage. The ongoing burden is API key rotation and keeping the npm package updated.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade C — 138,309 monthly downloads via npmjs.org (package: @opencode-ai/cli-linux-x64).
-- **Longevity**: Grade C — 429 days old.
-- **Governance**: Grade A — top-3 contributor share 45.1% (?).
+- **Adoption**: Grade A — 554,339 monthly downloads via npmjs.org (package: @opencode-ai/cli-linux-x64).
+- **Longevity**: Grade C — 510 days old.
+- **Governance**: Grade A — top-3 contributor share 41.7% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

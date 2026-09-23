@@ -127,7 +127,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 51.7 小时，基于 16 个 qualifying issues/PRs。
+- **响应速度**：Grade C——中位首次响应时间 558.2 小时，基于 7 个 qualifying issues/PRs。
 - **维护——活跃。** 默认分支最后一次 push 在 2026-06，未归档，但**完全没有打 tag 的 release**——“版本”即 `main` 当前内容，为可复现请 pin 到某个 commit。没有 semver 的活跃开发，意味着你跟的是一个移动靶。`[未验证]`
 - **治理 / 背书——单一厂商（Vectify AI）。** 仓库为 **Organization** 所有（`VectifyAI/PageIndex`），约 33k star[未验证]。路线图由厂商驱动，且开源仓库是更大商业产品（托管版 PageIndex Cloud/MCP/API/VPC）的*索引内核*——于是 OSS 表面是产品的引流位，带着典型的 open-core 风险：最好的能力落在托管层。`[推断]`
 - **年龄与 Lindy——年轻，约 1 年（创建于 2025-04）。** 够久到能跑出真实基准（98.7% FinanceBench，自报[未验证]），但还不够久到成为 Lindy 意义上的安全选择；API/CLI 参数可能随版本变动。当作有潜力的年轻库，而非已定型的标准。

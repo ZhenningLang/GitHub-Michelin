@@ -122,7 +122,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 25.5 小时，基于 3 个 qualifying issues/PRs。
+- **响应速度**：Grade B——中位首次响应时间 2.8 小时，基于 3 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06；最新 tag v18.19.0，发布节奏稳定且频繁（约 81 个 release）。明显**活跃**而非吃老本；未归档。[推断]
 - **治理 / 背书。** 由 **Camunda 旗下 bpmn.io 团队**维护（一家成熟的工作流自动化厂商）——多维护者、有组织背书的项目（nikku、philippfromme、barmac、marstamm……），bus factor 健康。方向跟随 Camunda 的商业利益，是主要的治理顾虑。[推断]
 - **年龄与 Lindy 判断。** 2014-03 创建，约 12 年且**仍在活跃发布**——**强 Lindy** 信号；是 Web 上正统、久经验证的开源 BPMN 画布，而非新秀。[推断]

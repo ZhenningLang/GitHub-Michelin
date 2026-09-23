@@ -120,10 +120,10 @@ You're a creator, researcher, or developer who wants to generate images from tex
 **Medium.** Installation is a one-click script for basic setups, but the real burden is keeping the Python environment, PyTorch, CUDA drivers, and extension ecosystem compatible. Extension updates can break the WebUI after a `git pull`, and model files consume tens of gigabytes of disk space. GPU thermal management, VRAM limits, and batch-size tuning are ongoing concerns. For a personal workstation this is manageable; for a shared server or production pipeline, expect frequent troubleshooting.
 
 ## Health & viability
-- **Maintenance**: Grade D — 0/13 active weeks in trailing 13; last commit 705 days ago.
-- **Responsiveness**: Grade A — median first-response time 29.3 hours across 11 qualifying issues/PRs.
+- **Maintenance**: Grade E — 0/13 active weeks in trailing 13; last commit 787 days ago.
+- **Responsiveness**: Grade A — median first-response time 92.2 hours across 3 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
-- **Longevity**: Grade D — 1,411 days old.
+- **Longevity**: Grade E — 1492 days old.
 - **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade D — AGPL-3.0 license.
 ## Caveats (unverified)

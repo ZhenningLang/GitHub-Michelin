@@ -131,11 +131,11 @@ You're a developer or AI engineer who needs to prototype and deploy LLM-powered 
 **Medium**. Local development is straightforward (`pip install langflow` or Docker). Production deployment requires managing a Python backend, a database for flow persistence, and potentially a vector database. The visual flows themselves need versioning discipline — flows saved as JSON can be committed to git, but diffing and code-reviewing them is awkward. The main ongoing burden is keeping the Langflow version, LangChain dependencies, and model provider APIs in sync.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Grade A — median first-response time 16.9 hours across 55 qualifying issues/PRs.
-- **Adoption**: Grade C — 92,752 monthly downloads via pypi.org (package: langflow-base).
-- **Longevity**: Grade B — 1240 days old.
-- **Governance**: Grade A — top-3 contributor share 34.6% (?).
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 7 days ago.
+- **Responsiveness**: Grade B — median first-response time 56.6 hours across 33 qualifying issues/PRs.
+- **Adoption**: Grade C — 41,135 monthly downloads via pypi.org (package: langflow).
+- **Longevity**: Grade B — 1322 days old.
+- **Governance**: Grade A — top-3 contributor share 44.9% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

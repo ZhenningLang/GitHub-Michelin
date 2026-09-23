@@ -129,7 +129,7 @@ So you run `npx skills add owner/repo` to drop a skill into the right agent dire
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 35.2 hours across 5 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 85.1 hours across 16 qualifying issues/PRs.
 - **Maintenance (2026-06):** [推断] actively maintained — last push 2026-06, latest release v1.5.13 (2026-06-23), not archived, on a frequent point-release cadence. Open-issue count (~805 as of 2026-06) is high for a small CLI; read it as active usage churn rather than neglect, but expect a backlog.
 - **Governance & backing:** [推断] `vercel-labs` is Vercel's experimental/labs org, not a core Vercel product line. "Labs" repos carry a real deprecation/abandonment risk — Vercel ships many experiments and not all graduate or get long-term support. Single-vendor roadmap; no foundation neutrality.
 - **Age & Lindy:** [推断] created 2026-01, so ~0.5 yr old as of 2026-06 — **young, unproven by Lindy**. The install/update ergonomics are useful now, but a half-year-old pre-2.0 labs tool has no longevity track record; the command surface and `skills.sh` registry it depends on can still shift.

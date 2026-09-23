@@ -145,7 +145,7 @@ health:
 
 - **维护：** Grade B——评分时最近提交距今 21 天，过去 13 周中有 2 周活跃；仓库未归档，v2.6.8 发布于 2026-06-11。
 - **响应速度：** 未评分——抽样窗口有活动，但没有符合条件的 issue 或 pull request 首次响应信号。
-- **采用广度：** Grade A——评分器记录了 5,723 个依赖仓库与 volume tier A。其原始字段是 `downloads_last_month=170998789`；Packagist 直接 stats endpoint 在 2026-09-22 则返回月下载 6,244,768、累计下载 171,313,863，因此字段名差异需要 tooling review。
+- **采用广度：** Grade A——评分器记录了 5,723 个依赖仓库与 volume tier A。其原始字段是 `downloads_last_month=171288629`；Packagist 直接 stats endpoint 在 2026-09-22 则返回月下载 6,244,768、累计下载 171,313,863，因此字段名差异需要 tooling review。
 - **长青度：** Grade A——仓库已创建 4,155 天，评分时最近提交距今 21 天；年龄与活跃度的组合对这一专用 PHP library 是很强的 Lindy 信号。[推断]
 - **治理：** Grade B——过去 12 个月测得 3 名活跃维护者，头部一人占所测贡献的 54.4%，前三人占 100%。Setasign 组织所有权与商业 add-on 提供 vendor 支持，但贡献仍然集中。
 - **风险与许可：** Grade A——GitHub 返回 MIT，`composer.json` 声明 MIT，`LICENSE.txt` 也包含 MIT 条款，评分所测 36 个月内未发现 relicense。open-core 边界是功能边界：加密 PDF 与压缩 xref/object streams 由另行许可的 parser 提供。

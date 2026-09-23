@@ -124,7 +124,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 4.0 小时，基于 5 个 qualifying issues/PRs。
+- **响应速度**：Grade C——中位首次响应时间 208.1 小时，基于 11 个 qualifying issues/PRs。
 - **维护（2026-06）。** 仓库最后 push 于 2026-05——**活跃**，未归档。发布主要走 **PyPI**（这里 GitHub Releases 列表为空），所以节奏要看 PyPI/changelog 而非 git tag。[未验证]
 - **治理 / bus factor。** 归 **`paramiko` 组织**，但历史上压倒性地由一位维护者驱动（**bitprophet** / Jeff Forcier，约 2,800 次提交，第二名仅数百次）——尽管有组织外壳，这仍是真实的 **bus-factor** 考量。[推断]
 - **年龄与 Lindy 判断。** **2009** 年创建，约 17 岁且**仍活跃**⇒ **强 Lindy** 信号：它是事实上的 Python SSH 库，被 Fabric、Ansible 和一大片 Python 基础设施工具依赖。[推断]

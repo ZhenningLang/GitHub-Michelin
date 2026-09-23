@@ -123,7 +123,7 @@ It shines as a *building block*: it's the transcript-fetch layer under a larger 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 28.4 hours across 11 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 14.8 hours across 4 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last push 2026-05; v1.2.4 released 2026-01 on a steady release cadence through 2025–2026 — **active**. Not archived. The 1.x line is a relatively recent, maintained API.
 - **Governance / bus factor.** Single-maintainer project (jdepoix) with a long tail of contributors. Bus-factor risk exists, but the project has absorbed multiple YouTube-side breakages over its lifetime, which is the relevant survival signal here. [推断]
 - **Age & Lindy verdict.** ~8 years old (created 2018-04) and still actively maintained ⇒ a **strong Lindy** signal — it has repeatedly survived YouTube changes, which is the best evidence of durability for a tool riding an undocumented endpoint.

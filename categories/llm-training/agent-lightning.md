@@ -124,11 +124,11 @@ v1.0 is built exactly for this, and it is deliberately small (~3,500 LOC). Three
 
 ## Health & viability
 
-- **Maintenance**: Grade A — 7/13 active weeks in trailing 13; last commit 2 days ago.
-- **Responsiveness**: Grade A — median time to first response 28h over 14 qualifying issues.
+- **Maintenance**: Grade A — 9/13 active weeks in trailing 13; last commit 5 days ago.
+- **Responsiveness**: Grade A — median first-response time 28.0 hours across 14 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — ambiguous.
-- **Longevity**: Grade C — repo is 458 days old.
-- **Governance**: Grade B — 45 active maintainers in 12 months, top-3 contributor share 84.6% (Microsoft-led).
+- **Longevity**: Grade C — 461 days old.
+- **Governance**: Grade B — top-3 contributor share 84.7% (?).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

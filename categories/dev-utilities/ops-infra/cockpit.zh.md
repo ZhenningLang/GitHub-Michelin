@@ -125,7 +125,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 30.0 小时，基于 45 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 52.6 小时，基于 43 个 qualifying issues/PRs。
 - **维护（2026-06）：** **活跃且稳定**——滚动整数版本（最新 `364`，2026-06-23）以高频节奏发布，最近 push 在 2026-06。这是一个持续发版的项目，而非 coasting。[推断]
 - **治理与 bus factor:** `Organization` 名下的 `cockpit-project`，实质由 **Red Hat 背书**——一家在 Linux 工具链上有长期记录、且有多人团队的厂商，因此 bus-factor 风险低（组织治理，而非单人维护）。[推断]
 - **年龄与 Lindy（约 12 年，2013-11 创建）：** **老且仍活跃**——强 Lindy 判定。十多年的持续发版加上随发行版默认分发（Fedora/RHEL/Debian/Ubuntu），在本类别里几乎是最稳的耐久性押注。

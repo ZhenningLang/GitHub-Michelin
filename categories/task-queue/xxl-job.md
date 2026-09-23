@@ -150,7 +150,7 @@ XXL-JOB has two halves. The **scheduling center** is a separately deployed admin
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 91.7 hours across 26 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 43.5 hours across 13 qualifying issues/PRs.
 - **Maintenance (2026-06).** Repo last pushed 2026-06 — **active**, not archived; long release history over ~11 years. [推断]
 - **Governance / bus factor.** Owned by a **single individual** (`xuxueli`, `owner.type` = User) who is the lead author — a real **bus-factor flag**: roadmap and merge authority concentrate on one person, even though the project is widely deployed. [推断]
 - **Age & Lindy verdict.** Created **2015-11** (~11 years) and **still actively maintained** ⇒ a **strong Lindy** signal for its niche: a long-proven, battle-tested scheduler rather than a hyped newcomer. [推断]

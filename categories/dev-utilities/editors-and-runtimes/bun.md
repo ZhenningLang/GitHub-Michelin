@@ -127,10 +127,10 @@ You're choosing a JavaScript or TypeScript runtime and tooling stack and speed a
 
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 0.2 hours across 44 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.1 hours across 28 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
-- **Longevity**: Grade A — 1906 days old.
-- **Governance**: Grade A — top-3 contributor share 73.0% (?).
+- **Longevity**: Grade A — 1988 days old.
+- **Governance**: Grade B — top-3 contributor share 84.6% (?).
 - **Risk / License**: Cannot be scored — unknown.
 ## Caveats (unverified)
 

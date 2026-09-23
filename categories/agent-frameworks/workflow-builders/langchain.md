@@ -123,11 +123,11 @@ You are a Python developer building an AI application that needs to connect LLMs
 
 ## Health & viability
 
-- **Maintenance**: Grade A — pushed within the past day as of 2026-07, with 13 active weeks out of 13. The 415 open issues are well-managed for a project of this scale.
-- **Responsiveness**: Grade A — median time to first response is 0.0 hours, indicating an extremely responsive maintainer team.
-- **Governance**: Grade B — backed by LangChain AI, Inc., with 48 active maintainers in the past 12 months. The top maintainer holds 53% of commits, which is a concentration risk.
-- **Longevity**: Grade B — 1,355 days old (created 2022-10), giving it a ~3.7-year track record. This is a solid Lindy signal for an AI project that is still actively maintained.
-- **Adoption**: Grade A — 141k GitHub stars, 23k+ forks, and 2,418,075 monthly PyPI downloads. The volume tier is A and the project has extensive ecosystem adoption.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Cannot be scored — unknown.
+- **Governance**: Grade B — top-3 contributor share 74.6% (?).
+- **Longevity**: Grade B — 1437 days old.
+- **Adoption**: Grade A — 175,109,180 monthly downloads via pypi.org (package: langchain).
 - **Risk flags**: LangChain AI offers commercial products (LangSmith, LangGraph Cloud) that may create open-core or feature-gating pressure. The framework's rapid evolution has historically caused breaking changes between versions.
 
 ## Caveats (unverified)

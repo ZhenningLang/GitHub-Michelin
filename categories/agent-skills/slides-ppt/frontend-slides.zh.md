@@ -96,7 +96,7 @@ Create beautiful slides on the web using a coding agent's frontend skills
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-06-23T20:08:19Z`；health 将维护评为 B。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-06-23T20:08:19Z`；health 将维护评为 C。
 - **采用快照：** 2026-07 约 25,713 个 GitHub stars；这对年轻 skill 是强关注，但不能替代本地输出验收。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT。
 - **Lindy / 治理：** 项目年轻，health 中 longevity 为 C、governance 为 C；有用，但还不是长期 deck 标准。

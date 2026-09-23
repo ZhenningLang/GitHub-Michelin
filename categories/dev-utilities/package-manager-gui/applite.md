@@ -157,7 +157,7 @@ Applite is a thin, opinionated layer over a Homebrew installation that it will c
 - **Adoption & ecosystem — the widest reach of the Homebrew GUIs.** ~7.1k stars, 179 forks and ~357k total release-asset downloads, with 727 cask installs in the 30 days to 2026-09-20 (cask rank ~254). 68 pull requests landed with 0 open.
 - **Responsiveness — 87 issues filed, 9 open**, which on a three-year-old single-maintainer project reads as a backlog that is being worked rather than ignored.
 - **Risk flags — none on licensing; two on process.** MIT with no relicense history and no open-core gating. The flags are the bus factor above and the disclosed AI-assisted development, which some organisations treat as a review requirement.
-- **The adoption axis is `?` (`no_package_structural`).** A cask-distributed app exposes no package-registry structure for that axis, so the download and cask-install figures above stand in for it; `?` is unobtainable, not a low grade.
+- **The adoption axis grades `A` off Homebrew and release signals (`homebrew+releases`).** A cask-distributed app exposes no package-registry structure for that axis, so the download and cask-install figures above are what the grade reads directly, not a registry proxy.
 
 ## Caveats (unverified)
 

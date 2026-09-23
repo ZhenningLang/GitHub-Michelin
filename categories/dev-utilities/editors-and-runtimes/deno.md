@@ -128,11 +128,11 @@ You're choosing a JavaScript/TypeScript runtime for a new server-side project or
 **Low**. Deno is a single binary that runs on major OSs. For deployment, you can run `deno run` directly, compile to a standalone binary with `deno compile`, or deploy to Deno Deploy (managed edge). The built-in toolchain (test, fmt, lint, bench) reduces the need for separate devDependencies. No `node_modules` bloat simplifies CI/CD caching and Docker image sizes.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 3.8 hours across 36 qualifying issues/PRs.
-- **Adoption**: Grade A — 5,934,345 monthly downloads via crates.io (package: deno_core).
-- **Longevity**: Grade A — 2,972 days old.
-- **Governance**: Grade A — top-3 contributor share 59.4% (?).
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
+- **Responsiveness**: Grade A — median first-response time 16.5 hours across 18 qualifying issues/PRs.
+- **Adoption**: Grade A — 7,904,610 monthly downloads via crates.io (package: deno_core).
+- **Longevity**: Grade A — 3053 days old.
+- **Governance**: Grade A — top-3 contributor share 60.9% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

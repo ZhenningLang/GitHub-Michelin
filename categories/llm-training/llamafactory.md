@@ -133,7 +133,7 @@ It's also a strong fit when the people doing the tuning aren't full-time trainin
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 121.1 hours across 37 qualifying issues/PRs.
+- **Responsiveness**: Grade C — median first-response time 221.5 hours across 27 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Repo pushed 2026-06; latest release v0.9.5 reported 2026-05-30 with a busy tracker (~1k open issues — high, but proportional to ~72k stars and a fast-adding model matrix). Not archived. [未验证]
 - **Governance & bus factor — single maintainer, a real flag.** The repo is **User-owned** (`hiyouga`) yet carries ~72k stars — a classic bus-factor signal: enormous adoption concentrated on one person's account, without a foundation or company structure visible. There is a contributor community, but the named owner sets direction; if that maintainer steps back, continuity is uncertain. [推断]
 - **Age & Lindy — moderate, trending strong.** Created 2023-05, ~3 years old and continuously, heavily active — it has become a de-facto default for open-model fine-tuning, which is a strong adoption-driven Lindy signal even at a young absolute age. The durability question is governance (above), not activity.

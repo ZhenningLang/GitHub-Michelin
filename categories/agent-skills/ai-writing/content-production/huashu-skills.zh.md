@@ -96,7 +96,7 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-04-21T05:28:31Z`；health 将维护评为 C。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-04-21T05:28:31Z`；health 将维护评为 B。
 - **采用快照：** 2026-07 约 1,205 个 GitHub stars；对 creator toolkit 是有用关注信号，但不证明每个子 skill 的质量。
 - **许可证快照：** `NOASSERTION`；本次根目录 `LICENSE` 返回 404，health 也把 repo 标为 source-available / no-license。
 - **Lindy / 治理：** 项目年轻，health 中 longevity 为 C；维护者集中，governance 为 D。

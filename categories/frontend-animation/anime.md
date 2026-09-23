@@ -127,7 +127,7 @@ It also fits when you're animating things the CSS engine can't reach cleanly: tw
 
 ## Health & viability
 
-- **Responsiveness**: Grade C — median first-response time 306.1 hours across 4 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance (2026-06).** Last pushed 2026-06; v4.5.0 (2026-06-22) follows the major v4 rewrite — **active**, not archived. The low open-issue count (~110) is healthy for a library this widely used. [推断]
 - **Governance / bus factor.** A **single-author, `User`-owned repo** (`juliangarnier/anime`) with ~70k stars — the classic bus-factor flag: enormous adoption resting on one maintainer, with no foundation or vendor behind it. [推断]
 - **Age & Lindy verdict.** ~10 years old (created 2016-03) and **still actively shipping** (it just completed a full v4 rewrite) ⇒ a **strong Lindy** signal — a decade of survival plus a fresh major version is the opposite of a stalled project, which substantially tempers the single-maintainer concern. [推断]
