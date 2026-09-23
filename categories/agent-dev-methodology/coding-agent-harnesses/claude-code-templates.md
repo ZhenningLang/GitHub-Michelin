@@ -81,6 +81,20 @@ You're a developer setting up Claude Code on a new project (or a new hire's mach
 
 You pick this over the alternatives when what you want is **breadth and à-la-carte choice**, not a coherent methodology: Superpowers and Compound Engineering each install one opinionated end-to-end workflow, while this is a supermarket shelf — many unrelated components from many upstream authors, and you assemble your own combination. The deciding tradeoff: maximum choice and zero commitment per component, at the cost of no guarantee the pieces were designed to work together.
 
+## Q&A
+
+**Will installing this mess up the harness I already tuned?**
+It can. The installer writes into the same `.claude/` namespace your own agents, commands and hooks already occupy, with no isolation beyond a same-name overwrite prompt. Read the catalog and port one component into your own system instead of installing over it.
+
+**Isn't it mostly a repackaging of other people's work?**
+Largely, yes. The README's Attribution section lists the upstream collections it aggregates — `anthropics/skills`, `wshobson/agents`, `obra/superpowers` among them. When you want a specific component, its original repo is the better source: fewer moving parts, and the author's own docs.
+
+**Should I copy the first install command in the README?**
+No. It installs a sponsor's (Bright Data) skills and MCP, not a neutral starter set. Every default in this project is worth reading before you run it.
+
+**Are the `--analytics` / `--chats` dashboards part of the catalog?**
+No — they are a second product inside the same CLI, watching your sessions rather than installing components. Evaluate them separately, and note `--chats --tunnel` exposes conversations over the internet.
+
 ## How it works
 
 The project is two things glued together: a **catalog** (Markdown component files under `cli-tool/components/`, most of them aggregated from upstream collections like `anthropics/skills` and `wshobson/agents`, each keeping its original license) and an **installer CLI** (npm package `claude-code-templates`, binaries `cct` / `claude-code-templates`, with a Rust rewrite under `cli-rust/`). The installer does no magic: it downloads the component files you named and writes them into the places Claude Code already reads — verified in the source, agents land in `<project>/.claude/agents/`, commands in `.claude/commands/`, hooks in `.claude/hooks/`, MCP servers in `.mcp.json`. After that the catalog's job is done; **Claude Code's own native loader picks the files up**, and the installed agent or hook steers your sessions from then on. Think of it as a bookstore, not a librarian: it hands you the book, and your own Claude Code does the reading. The same CLI also ships optional local dashboards (`--analytics`, `--chats`, `--health-check`, `--plugins`) that watch your Claude Code sessions — those are separate from the catalog and not part of the backbone below.
@@ -145,12 +159,6 @@ The project is two things glued together: a **catalog** (Markdown component file
 - **Age & Lindy:** created 2025-07, ~14 months old. Young-hyped profile: 31.2k stars against ~10.7k monthly npm downloads suggests star-driven attention well ahead of actual usage. Unproven by age; adopt for current value, not expected longevity.
 - **Backing:** commercial sponsorship (Bright Data, Z.AI, Vercel/Neon OSS programs) pays for the site and presumably maintainer time, but sponsor placement leaks into the product — the README's headline install command installs the sponsor's skills. Sponsorship is not governance; it can also disappear.
 - **Risk flags:** MIT, no relicense history. The real risks are content-level: aggregated third-party components each carry their original license and quality; hooks run arbitrary code on your machine; no CLA or security-audit process published beyond a `SECURITY.md` and a committed `security-report.json`. [未验证]
-
-## Callouts
-
-- **The right way to consume this project is copying, not installing.** The durable value is the catalog as a reading list — the installer's convenience is exactly what makes it dangerous to a curated setup. Browse aitmpl.com, find the one component that solves your problem, read its source, and port it into your own harness where your own lint and review apply.
-- **The README's first command is an ad.** The top-of-page quick start installs a sponsor's (Bright Data) skills and MCP, not a neutral starter set. Judge every default in this project with that in mind.
-- **The monitoring dashboards are a second product hiding in the same CLI.** `--analytics` / `--chats` / `--health-check` are genuinely useful and independently valuable, but they have nothing to do with the template catalog — evaluate them as a separate tool before letting them watch your sessions (and `--chats --tunnel` exposes conversations over the internet).
 
 ## Caveats (unverified)
 
