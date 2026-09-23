@@ -105,6 +105,6 @@ Choose it over a broad personal collection when you specifically want software-e
 
 ## Caveats (unverified)
 
-- [未验证] oss-atlas did not execute the setup command or install the Claude Code plugin; verify behavior in your own harness.
+- [未验证] GitHub-Michelin did not execute the setup command or install the Claude Code plugin; verify behavior in your own harness.
 - [未验证] The README's claims about effectiveness of these engineering practices are not independently measured here.
 - [推断] The high star count and author reputation reduce discovery risk, but the repo is still young and contributor concentration remains a governance concern.

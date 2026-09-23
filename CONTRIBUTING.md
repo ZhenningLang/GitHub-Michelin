@@ -1,4 +1,4 @@
-# Contributing to oss-atlas
+# Contributing to GitHub-Michelin
 
 This is an **agent-first** selection index. It collects open-source repositories broadly; honesty
 and accurate judgment matter more than polish. Read [AGENTS.md](AGENTS.md) and

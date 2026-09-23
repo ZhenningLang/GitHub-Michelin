@@ -74,7 +74,7 @@ Python Backtesting library for trading strategies
 
 ## When to use
 
-You're evaluating a task in the `investment-finance` area and want a real repository in the oss-atlas shortlist rather than an untracked name from a backlog. Reach for backtrader when the upstream description matches the job, when its license and maintenance profile are acceptable after verification, and when adopting a public project is preferable to writing a local one-off.
+You're evaluating a task in the `investment-finance` area and want a real repository in the GitHub-Michelin shortlist rather than an untracked name from a backlog. Reach for backtrader when the upstream description matches the job, when its license and maintenance profile are acceptable after verification, and when adopting a public project is preferable to writing a local one-off.
 
 This is a first-pass intake page for a user-requested backlog item. Use it to route selection and compare nearby options, then reread the upstream README, license, examples, and release history before relying on it for high-stakes work.
 

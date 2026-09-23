@@ -1,4 +1,6 @@
-# oss-atlas
+<p align="center"><img src="assets/logo.svg" width="160" alt="GitHub-Michelin logo"></p>
+
+# GitHub-Michelin
 
 **A natural-language, agent-first index for open-source *selection* (选型).**
 When a coding agent gets a task, it reads this index to pick the right OSS project —
@@ -8,7 +10,7 @@ weighing *when NOT to use* each option, not just what it does.
 
 ## Install
 
-Install the public oss-atlas selection skills into your coding agent:
+Install the public GitHub-Michelin selection skills into your coding agent:
 
 - **`select-oss`** — choose an open-source project, library, tool, framework, model, or system.
 - **`select-agent-skills`** — choose installable `SKILL.md` packs and agent-skill combinations.
@@ -20,18 +22,18 @@ Kilo, Gemini CLI, Copilot, and ~70 more — the CLI knows each agent's skills pa
 
 ```bash
 # Global (all your projects); drop -g for project-local. Pick agents with -a, e.g. -a claude-code
-npx skills add ZhenningLang/oss-atlas -g
+npx skills add ZhenningLang/GitHub-Michelin -g
 ```
 
 **Manual** (no Node) — copy the skill folder into your agent's skills dir, e.g. Claude Code:
 
 ```bash
-git clone https://github.com/ZhenningLang/oss-atlas
-cp -r oss-atlas/skills/select-oss ~/.claude/skills/
-cp -r oss-atlas/skills/select-agent-skills ~/.claude/skills/
+git clone https://github.com/ZhenningLang/GitHub-Michelin
+cp -r GitHub-Michelin/skills/select-oss ~/.claude/skills/
+cp -r GitHub-Michelin/skills/select-agent-skills ~/.claude/skills/
 ```
 
-The skills fetch pages from `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/`; only the
+The skills fetch pages from `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/`; only the
 small `SKILL.md` files are installed, so they stay tiny and always read the latest index. For agents
 without web access, the skills fall back to a local clone.
 
@@ -957,7 +959,7 @@ Categories follow the tree in [INDEX.md](INDEX.md).
 
 Most OSS READMEs are marketing: they tell you what a project does and why it's great. They do
 **not** tell you when *not* to use it, how it compares to alternatives, or what it costs to
-operate. An agent doing selection needs exactly that negative space. oss-atlas inverts the
+operate. An agent doing selection needs exactly that negative space. GitHub-Michelin inverts the
 README genre into a **decision-support** genre.
 
 The index is deliberately **weak** — no database, no search, no embeddings. Just Markdown that

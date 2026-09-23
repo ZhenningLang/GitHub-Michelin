@@ -101,13 +101,13 @@ health:
 ## 健康度与可持续性
 
 - **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-16T03:00:58Z`；健康度评分器给 maintenance `A`。
-- **采用快照：** GitHub API 在 2026-07 返回约 3,203 个 star；README 列出了多个已生成 skill-pack 示例，但 oss-atlas 未逐一审计质量。
+- **采用快照：** GitHub API 在 2026-07 返回约 3,203 个 star；README 列出了多个已生成 skill-pack 示例，但 GitHub-Michelin 未逐一审计质量。
 - **许可证快照：** 根目录 `LICENSE` 为 MIT，README 也链接到它。
 - **Lindy / 治理：** 仓库约 3 个月，longevity 仍为 `C`；评分器看到贡献者集中度高，因此 governance 为 `D`。
 - **风险信号：** 输出可能嵌入来源材料衍生的方法论；版权、来源标注和授权比普通 prompt 包更重要。
 
 ## 存疑（未验证）
 
-- [未验证] 下游生成出的 skill pack 质量未被 oss-atlas 逐项审计。
+- [未验证] 下游生成出的 skill pack 质量未被 GitHub-Michelin 逐项审计。
 - [未验证] RIA-TV++ 的通过率和压力测试效果来自 README，本页没有独立测量。
 - [推断] 它放入 context-engineering，是因为它改变 agent 读取内容和可复用上下文的包装方式，尽管示例覆盖写作、商业和知识工作。

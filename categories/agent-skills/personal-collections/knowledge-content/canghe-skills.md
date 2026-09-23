@@ -105,5 +105,5 @@ The decisive tradeoff is convenience versus governance. It is a large personal b
 ## Caveats (unverified)
 
 - [未验证] The README states `MIT`, but no root `LICENSE` file was reachable at `master/LICENSE`; confirm licensing before redistribution or vendoring.
-- [未验证] The individual skill commands were not installed or executed by oss-atlas; API-key, browser-login, and provider behavior require local verification.
+- [未验证] The individual skill commands were not installed or executed by GitHub-Michelin; API-key, browser-login, and provider behavior require local verification.
 - [推断] This belongs in personal-collections rather than engineering because the dominant value is one author's broad toolbox, not code-quality discipline.

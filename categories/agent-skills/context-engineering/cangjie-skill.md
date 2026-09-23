@@ -101,7 +101,7 @@ The decisive tradeoff is rigor versus speed. cangjie-skill's RIA-TV++ flow spend
 ## Health & viability
 
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-16T03:00:58Z`; the health scorer grades maintenance `A`.
-- **Adoption snapshot:** GitHub API reports ~3,203 stars as of 2026-07; the README lists multiple generated skill-pack examples, but oss-atlas did not independently validate their quality.
+- **Adoption snapshot:** GitHub API reports ~3,203 stars as of 2026-07; the README lists multiple generated skill-pack examples, but GitHub-Michelin did not independently validate their quality.
 - **License snapshot:** root `LICENSE` is MIT and README links to it.
 - **Lindy / governance:** the repo is about 3 months old, so longevity is still `C`; governance is `D` because the scorer sees high contributor concentration.
 - **Risk flags:** the output may embed source-derived methods; copyright, source attribution, and permission matter more here than in ordinary prompt packs.

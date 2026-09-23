@@ -1,4 +1,6 @@
-# oss-atlas
+<p align="center"><img src="assets/logo.svg" width="160" alt="GitHub-Michelin logo"></p>
+
+# GitHub-Michelin（GitHub 米其林）
 
 **一个面向 coding agent 的开源项目「选型」自然语言索引。**
 agent 收到任务时读这个索引来挑开源项目——重点是衡量每个候选*何时不该用*，而不只是它能干什么。
@@ -7,7 +9,7 @@ agent 收到任务时读这个索引来挑开源项目——重点是衡量每�
 
 ## 安装
 
-把 oss-atlas 的公开选型 skills 装进你的 coding agent：
+把 GitHub-Michelin 的公开选型 skills 装进你的 coding agent：
 
 - **`select-oss`** —— 为任务选择开源项目、库、工具、框架、模型或系统。
 - **`select-agent-skills`** —— 选择可安装的 `SKILL.md` 包和 agent-skill 组合。
@@ -19,18 +21,18 @@ Kilo、Gemini CLI、Copilot 等 ~70 个 —— CLI 内置了每个 agent 的 ski
 
 ```bash
 # -g 装到全局（所有项目）；去掉 -g 则装到当前项目。用 -a 指定 agent，如 -a claude-code
-npx skills add ZhenningLang/oss-atlas -g
+npx skills add ZhenningLang/GitHub-Michelin -g
 ```
 
 **手动**（无 Node）—— 把 skill 目录拷进你 agent 的 skills 目录，以 Claude Code 为例：
 
 ```bash
-git clone https://github.com/ZhenningLang/oss-atlas
-cp -r oss-atlas/skills/select-oss ~/.claude/skills/
-cp -r oss-atlas/skills/select-agent-skills ~/.claude/skills/
+git clone https://github.com/ZhenningLang/GitHub-Michelin
+cp -r GitHub-Michelin/skills/select-oss ~/.claude/skills/
+cp -r GitHub-Michelin/skills/select-agent-skills ~/.claude/skills/
 ```
 
-skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面；只安装很小的 `SKILL.md`，
+skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取页面；只安装很小的 `SKILL.md`，
 因此体积极小、永远读到最新索引。对没有联网能力的 agent，skills 会回退到本地 clone。
 
 维护者还有一个内部 **`project-harvester`** skill，位于 `skills/project-harvester/`，用于批量发现候选项目。
@@ -953,7 +955,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 ## 为什么做这个
 
 多数开源 README 是营销：讲它能干啥、为啥好，却**不**告诉你何时*不该*用、和替代怎么比、运维成本多少。
-做选型的 agent 恰恰需要这片「负空间」。oss-atlas 把 README 这个体裁反转成**决策支持**体裁。
+做选型的 agent 恰恰需要这片「负空间」。GitHub-Michelin 把 README 这个体裁反转成**决策支持**体裁。
 
 索引刻意做得「弱」——没有数据库、没有搜索、没有 embedding，就是给 agent 读和推理的 Markdown。
 目录结构本身就是「查询 API」。

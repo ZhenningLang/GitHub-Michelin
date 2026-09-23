@@ -105,6 +105,6 @@ Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 gril
 
 ## 存疑（未验证）
 
-- [未验证] oss-atlas 没有执行 setup 命令或安装 Claude Code plugin；请在自己的 harness 中验证行为。
+- [未验证] GitHub-Michelin 没有执行 setup 命令或安装 Claude Code plugin；请在自己的 harness 中验证行为。
 - [未验证] README 对这些工程实践效果的描述未在本页独立测量。
 - [推断] 高 star 和作者声誉降低发现风险，但仓库仍年轻，贡献者集中度仍是治理风险。

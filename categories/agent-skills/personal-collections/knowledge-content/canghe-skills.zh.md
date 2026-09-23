@@ -105,5 +105,5 @@ health:
 ## 存疑（未验证）
 
 - [未验证] README 声明 `MIT`，但 `master/LICENSE` 没有可访问 root license 文件；再分发或 vendoring 前必须确认许可证。
-- [未验证] oss-atlas 未安装或执行各个 skill 命令；API key、浏览器登录和 provider 行为需要本地验证。
+- [未验证] GitHub-Michelin 未安装或执行各个 skill 命令；API key、浏览器登录和 provider 行为需要本地验证。
 - [推断] 它属于 personal-collections 而非 engineering，因为主要价值是某作者的宽工具箱，而不是代码质量纪律。
