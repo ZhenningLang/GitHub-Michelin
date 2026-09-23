@@ -98,9 +98,11 @@ The schema is the contract: **`tools/schema.md`**. In short:
   `Health & viability` / `健康度与可持续性` **section** — a dated, labeled viability verdict
   (maintenance, governance/bus-factor, backing, **age/Lindy**, adoption, risk flags; see schema §7)
   — **and ends with a** `Caveats (unverified)` / `存疑（未验证）` **ledger** — the uncertainty list.
-  Optional leftover bin: `Q&A` / `快问快答` (after When to use, before How it works) — the human's
-  questions from the reading conversation, and short versions of the agent's answers.
-  Omit when empty; both siblings must match.
+  `Q&A` / `快问快答` (after When to use, before How it works) — the human's questions from the
+  reading conversation, and short versions of the agent's answers. A **required decision, optional
+  section**: write it, or record `no leftover Q&A` in the change summary — never omit silently,
+  never pad. Both siblings must match, and a later conversation about a published page re-opens
+  the decision (see schema §2).
 - **Bilingual**: the two files are monolingual mirrors — do NOT mix languages inside one file.
 - **Truth labeling**: anything not confirmed from a source is `[未验证]` / `[推断]`. Date your
   facts (`maturity`, `last_verified`) — **dates are UTC**, and the gate compares `last_verified`
