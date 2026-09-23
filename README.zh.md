@@ -272,6 +272,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | CC-BY-SA-4.0 (content) / Apache-2.0 (code examples) | "?"（2/5） | [中](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md) |
+| **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.md) |
 | **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.md) |
 | **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | MIT | B（6/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md) |
 | **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | MIT | D（6/6） | [中](categories/agent-dev-methodology/spec-driven-development/get-shit-done.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/get-shit-done.md) |

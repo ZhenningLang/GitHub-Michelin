@@ -173,7 +173,7 @@ Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orche
 Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
-claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md,,no
+claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md,claude-code-templates,partial
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 CLAUDE.md (built-in),categories/agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
