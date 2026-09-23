@@ -15,7 +15,7 @@
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | B（6/6） | [→](openai-agents-sdk.zh.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A（5/6） | [→](pydantic-ai.zh.md) |
 | **smolagents** | 当你想要 Hugging Face 出的极简、透明、写代码行动的 agent 循环时用它——不是重型生产 agent 操作系统。 | B（6/6） | [→](smolagents.zh.md) |
-| **Strands Agents** | 想要一次调用就有能用的 agent——调好的 prompt、shell／文件／web 工具、代码沙箱、子代理、记忆与会话——而且 Python 与 TypeScript 同接口、每个默认值都可覆盖时用它。 | A（6/6） | [→](strands-agents.zh.md) |
+| **Harness SDK** | 想要一次调用就有能用的 agent——调好的 prompt、shell／文件／web 工具、代码沙箱、子代理、记忆与会话——而且 Python 与 TypeScript 同接口、每个默认值都可覆盖时用它。 | A（6/6） | [→](harness-sdk.zh.md) |
 
 ## 对比矩阵
 
@@ -23,7 +23,7 @@
 | --- | --- | --- | --- |
 | [AgentScope](agentscope.zh.md) | ✅ | B（6/6） | 要把多智能体 LLM 应用作为生产服务交付，需要沙箱工具、权限闸门、tracing 和人工介入时。 |
 | [smolagents](smolagents.zh.md) | ✅ | B（6/6） | 当你想要 Hugging Face 出的极简、透明、写代码行动的 agent 循环时用它——不是重型生产 agent 操作系统。 |
-| [Strands Agents](strands-agents.zh.md) | ✅ | A（6/6） | 一次调用拿到调好的默认 agent，Python 与 TypeScript 同接口；代价是控制流归模型、组装层还在 0.x。 |
+| [Harness SDK](harness-sdk.zh.md) | ✅ | A（6/6） | 一次调用拿到调好的默认 agent，Python 与 TypeScript 同接口；代价是控制流归模型、组装层还在 0.x。 |
 
 ## 什么该放这里
 

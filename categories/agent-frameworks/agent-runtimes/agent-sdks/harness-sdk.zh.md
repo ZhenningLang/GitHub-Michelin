@@ -1,6 +1,7 @@
 ---
-name: Strands Agents
-slug: strands-agents
+name: Harness SDK
+slug: harness-sdk
+aka: [Strands Harness SDK, Strands Agents, strands-agents/harness-sdk, strands-harness]
 repo: https://github.com/strands-agents/harness-sdk
 category: agent-sdks
 tags: [llm-agent, agent-runtime, agent-sdk, harness, multi-agent, mcp, bedrock, python, typescript]
@@ -75,11 +76,11 @@ health:
         content_license: null
 ---
 
-# Strands Agents
+# Harness SDK
 
 你自己写的 agent 一开始是四十行胶水代码——调模型、解析工具调用的 JSON、在请求报错之前把历史裁短、记住用户昨天说过什么——这些没一行是你真正要做的产品。Strands 一次调用就交给你一个能用的 agent，而且每个默认值都留着覆盖口。
 
-![Strands Agents — 健康度雷达](../../../../assets/health/strands-agents.zh.svg)
+![Harness SDK — 健康度雷达](../../../../assets/health/harness-sdk.zh.svg)
 
 ## 何时使用
 
@@ -111,18 +112,18 @@ health:
 
 `strands_harness` 是薄薄一层配置，盖在同一个仓库里的 SDK 上。`create_harness()` 把它点过名的每个参数——模型、工具、MCP server、记忆、会话、技能、审批策略——解析成具体的 SDK 对象，然后交回一个普通的 `strands.Agent`；harness 没点名的关键字会直通 `Agent`，而且你显式给的值永远压过默认值。它接管的是：system prompt、默认工具集、状态写在哪（`./.agent/sessions`、`./.agent/memory`、`./.agent/skills`），以及让长对话留在窗口内那套记账——旧的轮次被摘要掉，体积大的工具结果搬去存储、只在上下文里留一个短引用。留在你手里的是：供应商凭证、承载它的进程、以及“什么操作可以不让它问就做”的每一个决定。返回值是个普通 agent 才是重点——它是一份已经能编译的起步配置，不是一个接管你程序的框架。还有第二条入口：`strands` 这个 CLI 把同一个 agent 包成终端可用的形态，但真正通向核心价值的还是库这条路。
 
-![Strands Agents — 主干用户故事](../../../../assets/flow/strands-agents.zh.svg)
+![Harness SDK — 主干用户故事](../../../../assets/flow/harness-sdk.zh.svg)
 
-<!-- flow-steps:begin (generated from flows/strands-agents.json by tools/flow_card.py — do not edit) -->
+<!-- flow-steps:begin (generated from flows/harness-sdk.json by tools/flow_card.py — do not edit) -->
 <details>
 <summary>流程文字版</summary>
 
 1. **你**：装上 harness 包；不用 Bedrock 就再装对应 extra — `pip install strands-harness`
 2. **你**：一次调用把 agent 建出来，参数全可省 — `create_harness()`
-3. **Strands Agents**：接好调过的 system prompt、shell 与文件工具、代码沙箱和子代理 — 组件：`strands_harness`
-4. **Strands Agents**：把会话、长期记忆和技能放进它自己管的那个点目录 — `./.agent/` — 组件：`harness 默认值`
+3. **Harness SDK**：接好调过的 system prompt、shell 与文件工具、代码沙箱和子代理 — 组件：`strands_harness`
+4. **Harness SDK**：把会话、长期记忆和技能放进它自己管的那个点目录 — `./.agent/` — 组件：`harness 默认值`
 5. **你**：把任务丢给它 — `agent("Find the slowest test in this repo")`
-6. **Strands Agents**：跑循环、调工具、把旧轮次摘要掉、复用缓存过的上下文 — 组件：`agent 循环`
+6. **Harness SDK**：跑循环、调工具、把旧轮次摘要掉、复用缓存过的上下文 — 组件：`agent 循环`
 
 **价值**：你不用再自己攒循环、工具、记忆和会话：一次调用就有能用的 agent，而每个默认值都留着覆盖口
 

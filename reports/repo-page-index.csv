@@ -547,7 +547,7 @@ https://github.com/speechbrain/speechbrain,speechbrain,speech,categories/speech/
 https://github.com/spyoungtech/grequests,grequests,python-tooling,categories/python-tooling/grequests.md
 https://github.com/stanford-oval/storm,storm,deep-research,categories/deep-research/storm.md
 https://github.com/stanfordnlp/dspy,dspy,workflow-builders,categories/agent-frameworks/workflow-builders/dspy.md
-https://github.com/strands-agents/harness-sdk,strands-agents,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/strands-agents.md
+https://github.com/strands-agents/harness-sdk,harness-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md
 https://github.com/supabase/supabase,supabase,database-engines,categories/databases/database-engines/supabase.md
 https://github.com/superradcompany/microsandbox,microsandbox,sandboxing,categories/sandboxing/microsandbox.md
 https://github.com/sveltejs/kit,sveltekit,frameworks,categories/web-ui/frameworks/sveltekit.md

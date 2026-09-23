@@ -35,8 +35,8 @@
 <rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">You do</text>
 <rect class="laneT" x="460" y="28" width="392" height="640" rx="10"/>
-<rect class="pillT" x="474" y="40" width="202.7" height="24" rx="12"/>
-<text class="hdr hT" x="488" y="57">Strands Agents does</text>
+<rect class="pillT" x="474" y="40" width="175.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Harness SDK does</text>
 <path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
 <path class="hand" d="M408,262.5 C439.0,262.5 439.0,286 470,286" marker-end="url(#a)"/>
 <path class="edge" d="M494,381 L494,405" marker-end="url(#a)"/>

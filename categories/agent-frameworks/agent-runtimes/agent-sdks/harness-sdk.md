@@ -1,6 +1,7 @@
 ---
-name: Strands Agents
-slug: strands-agents
+name: Harness SDK
+slug: harness-sdk
+aka: [Strands Harness SDK, Strands Agents, strands-agents/harness-sdk, strands-harness]
 repo: https://github.com/strands-agents/harness-sdk
 category: agent-sdks
 tags: [llm-agent, agent-runtime, agent-sdk, harness, multi-agent, mcp, bedrock, python, typescript]
@@ -75,11 +76,11 @@ health:
         content_license: null
 ---
 
-# Strands Agents
+# Harness SDK
 
 Your agent starts as forty lines of glue — call the model, parse the tool-call JSON, trim the history before the request errors out, remember what the user told you yesterday — and none of that is the product you set out to build. Strands hands you a working agent in one call and leaves every default overridable.
 
-![Strands Agents — health radar](../../../../assets/health/strands-agents.svg)
+![Harness SDK — health radar](../../../../assets/health/harness-sdk.svg)
 
 ## When to use
 
@@ -111,18 +112,18 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 
 `strands_harness` is a thin configuration layer over the SDK that lives in the same repository. `create_harness()` resolves each of its named arguments — model, tools, MCP servers, memory, sessions, skills, approval policy — into concrete SDK objects, then hands back a normal `strands.Agent`; anything the harness does not name passes straight through to `Agent`, and your explicit value always wins over the default. What it takes over: the system prompt, the default tool set, where state is written (`./.agent/sessions`, `./.agent/memory`, `./.agent/skills`), and the bookkeeping that keeps a long conversation inside the window — old turns get summarized and bulky tool results move out to storage behind a short reference. What stays yours: provider credentials, the process that hosts the agent, and every decision about what it may do without asking. The return value being an ordinary agent is the point — it is a starting configuration that already compiles, not a framework that owns your program. There is a second on-ramp, a `strands` CLI that wraps the same agent for terminal use, but the library path is the one that reaches the core value.
 
-![Strands Agents — backbone user story](../../../../assets/flow/strands-agents.svg)
+![Harness SDK — backbone user story](../../../../assets/flow/harness-sdk.svg)
 
-<!-- flow-steps:begin (generated from flows/strands-agents.json by tools/flow_card.py — do not edit) -->
+<!-- flow-steps:begin (generated from flows/harness-sdk.json by tools/flow_card.py — do not edit) -->
 <details>
 <summary>Text version of the flow</summary>
 
 1. **You**: Install the harness package, plus a provider extra if you are not on Bedrock — `pip install strands-harness`
 2. **You**: Build the agent in one call — every argument is optional — `create_harness()`
-3. **Strands Agents**: Wires a tuned system prompt, shell and file tools, a code sandbox and a subagent — component: `strands_harness`
-4. **Strands Agents**: Keeps sessions, long-term memory and skills in one dot-directory it owns — `./.agent/` — component: `harness defaults`
+3. **Harness SDK**: Wires a tuned system prompt, shell and file tools, a code sandbox and a subagent — component: `strands_harness`
+4. **Harness SDK**: Keeps sessions, long-term memory and skills in one dot-directory it owns — `./.agent/` — component: `harness defaults`
 5. **You**: Hand it the task — `agent("Find the slowest test in this repo")`
-6. **Strands Agents**: Runs the loop, calls tools, summarizes old turns and reuses cached context — component: `agent loop`
+6. **Harness SDK**: Runs the loop, calls tools, summarizes old turns and reuses cached context — component: `agent loop`
 
 **Value**: You no longer hand-assemble the loop, its tools, memory and sessions: one call gives you a working agent, and every default stays overridable
 

@@ -15,7 +15,7 @@
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | B (6/6) | [→](openai-agents-sdk.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A (5/6) | [→](pydantic-ai.md) |
 | **smolagents** | Use it when you want a tiny, transparent code-acting agent loop from Hugging Face — not a heavy production agent OS. | B (6/6) | [→](smolagents.md) |
-| **Strands Agents** | Use it when you want a working agent from one call — tuned prompt, shell/file/web tools, a code sandbox, a subagent, memory and sessions — in Python and TypeScript alike, with every default overridable. | A (6/6) | [→](strands-agents.md) |
+| **Harness SDK** | Use it when you want a working agent from one call — tuned prompt, shell/file/web tools, a code sandbox, a subagent, memory and sessions — in Python and TypeScript alike, with every default overridable. | A (6/6) | [→](harness-sdk.md) |
 
 ## Comparison matrix
 
@@ -23,7 +23,7 @@
 | --- | --- | --- | --- |
 | [AgentScope](agentscope.md) | ✅ | B (6/6) | Shipping a production multi-agent LLM service needing sandboxed tools, permissions, tracing, and human-in-the-loop. |
 | [smolagents](smolagents.md) | ✅ | B (6/6) | Use it when you want a tiny, transparent code-acting agent loop from Hugging Face — not a heavy production agent OS. |
-| [Strands Agents](strands-agents.md) | ✅ | A (6/6) | A tuned default agent from one call, in Python and TypeScript; the price is model-owned control flow and a 0.x assembled layer. |
+| [Harness SDK](harness-sdk.md) | ✅ | A (6/6) | A tuned default agent from one call, in Python and TypeScript; the price is model-owned control flow and a 0.x assembled layer. |
 
 ## What belongs here
 
