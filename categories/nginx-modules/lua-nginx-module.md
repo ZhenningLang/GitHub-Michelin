@@ -16,13 +16,13 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:44:08Z
-  overall: D
-  overall_score: 3.0
-  scored_axes: 5
+  computed_at: 2026-09-23T07:49:37Z
+  overall: A
+  overall_score: 3.75
+  scored_axes: 4
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
@@ -47,7 +47,7 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 6003
+        repo_age_days: 6004
         last_commit_age_days: 6
         cohort: library
     governance:
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     adoption: { reason: ambiguous }
+    risk_license: { reason: license_declared_unverifiable }
 ---
 
 # lua-nginx-module (ngx_lua)

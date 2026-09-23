@@ -7,13 +7,13 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **pygame** | Use it when you want to learn or ship a small 2D Python game with a simple loop — but for 3D or performance-critical work it bottlenecks, look elsewhere. | D (6/6) | [→](pygame.md) |
+| **pygame** | Use it when you want to learn or ship a small 2D Python game with a simple loop — but for 3D or performance-critical work it bottlenecks, look elsewhere. | C (5/6) | [→](pygame.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [pygame](pygame.md) | ✅ | D (6/6) | Use it when you want to learn or ship a small 2D Python game with a simple loop — but for 3D or performance-critical work it bottlenecks, look elsewhere. |
+| [pygame](pygame.md) | ✅ | C (5/6) | Use it when you want to learn or ship a small 2D Python game with a simple loop — but for 3D or performance-critical work it bottlenecks, look elsewhere. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

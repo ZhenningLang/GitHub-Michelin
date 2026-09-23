@@ -16,13 +16,13 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:15:02Z
+  computed_at: 2026-09-23T07:55:52Z
   overall: E
-  overall_score: 0.25
-  scored_axes: 4
+  overall_score: 0.33
+  scored_axes: 3
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
@@ -49,22 +49,19 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3900
+        repo_age_days: 3901
         last_commit_age_days: 3039
         cohort: app
     governance:
       grade: "?"
       raw: {}
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
     governance: { reason: unattributable }
+    risk_license: { reason: license_declared_unverifiable }
 ---
 
 # SpiderKeeper

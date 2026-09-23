@@ -191,7 +191,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **OpenHands** | 🙌 OpenHands: AI-Driven Development | NOASSERTION | A（6/6） | [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md) · [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) |
 | **T3 Code** | 当一个本地 GUI 要驱动已经认证的 Codex、Claude、Cursor、OpenCode CLI 时用它。 | MIT | A（6/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/t3code.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/t3code.md) |
 | **Background Agents（Open-Inspect）** | 当一个可信组织需要自托管的后台 coding-agent 沙箱、集成和自动化时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md) |
-| **SwarmForge** | 当你想要一个自托管的角色流水线（spec→code→clean→architect→harden→QA）跑在自己的仓库上、每个角色一个 git worktree、以 commit 交接时用它——但它没有许可证，也没有 tagged release。 | NONE（无 LICENSE 文件——保留所有权利） | D（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md) |
+| **SwarmForge** | 当你想要一个自托管的角色流水线（spec→code→clean→architect→harden→QA）跑在自己的仓库上、每个角色一个 git worktree、以 commit 交接时用它——但它没有许可证，也没有 tagged release。 | NONE（无 LICENSE 文件——保留所有权利） | D（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md) |
 | **OpenChamber** | 当你用 OpenCode，想要一个跨设备的运行工作台——按目标审计的会话、一条提示词最多五个模型（可各带 worktree）、变更讲解，以及紧挨对话的 git/PR 面板——但要接受一个 12 个月大、单人主控、只绑一个 agent runtime 的应用时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) |
 | **OpenResearch** | 当 coding agent 和 GPU 都已经到位、缺的只是实验记账——每个实验一条分支的实验树、不可变的提交快照、以及把 run 派到九个算力后端——时用它，代价是接受一个 3.5 个月大、发布极快的应用，且它的托管算力那一半是闭源服务。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md) |
 
@@ -307,7 +307,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | --- | --- | --- | --- | --- |
 | **DevToys** | 想把 Base64/JSON/哈希/diff 等开发小工具离线本地化、收进一个跨平台桌面应用、不再用不可信在线网站时，用它。 | MIT | B（5/6） | [中](categories/dev-utilities/data-tools/devtoys.zh.md) · [EN](categories/dev-utilities/data-tools/devtoys.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/data-tools/cyberchef.zh.md) · [EN](categories/dev-utilities/data-tools/cyberchef.md) |
-| **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | D（6/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |
+| **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | LGPL-2.1-or-later | B（5/6） | [中](categories/dev-utilities/ops-infra/cockpit.zh.md) · [EN](categories/dev-utilities/ops-infra/cockpit.md) |
 | **Telegraf** | 当你需要一个插件驱动的 agent 把异构指标/日志统一采集并路由到多种后端时用它。 | MIT | A（6/6） | [中](categories/dev-utilities/ops-infra/telegraf.zh.md) · [EN](categories/dev-utilities/ops-infra/telegraf.md) |
 | **OpenZL** | 当你要把 TB 级的某种高度结构化/数值格式压得比通用 zstd 更狠时使用。 | BSD-3-Clause | C（5/6） | [中](categories/dev-utilities/data-tools/openzl.zh.md) · [EN](categories/dev-utilities/data-tools/openzl.md) |
 | **Certbot** | 当系统管理员要自动签发并续期免费 Let's Encrypt TLS 证书时用它——不过反向代理自带的自动 TLS 常让它显得多余。 | Apache-2.0 | A（5/6） | [中](categories/dev-utilities/ops-infra/certbot.zh.md) · [EN](categories/dev-utilities/ops-infra/certbot.md) |
@@ -390,8 +390,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **autoresearch** | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 | MIT | D（5/6） | [中](categories/ml-research/autoresearch.zh.md) · [EN](categories/ml-research/autoresearch.md) |
-| **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | MIT | D（5/6） | [中](categories/ml-research/llm-circuit-finder.zh.md) · [EN](categories/ml-research/llm-circuit-finder.md) |
+| **autoresearch** | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 | MIT | B（4/6） | [中](categories/ml-research/autoresearch.zh.md) · [EN](categories/ml-research/autoresearch.md) |
+| **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | MIT | D（4/6） | [中](categories/ml-research/llm-circuit-finder.zh.md) · [EN](categories/ml-research/llm-circuit-finder.md) |
 | **CLIP** | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 | MIT | C（5/6） | [中](categories/ml-research/clip.zh.md) · [EN](categories/ml-research/clip.md) |
 | **TaskMatrix** | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 | MIT | "?"（2/6） | [中](categories/ml-research/taskmatrix.zh.md) · [EN](categories/ml-research/taskmatrix.md) |
 | **PyTorch-GAN** | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 | MIT | D（4/6） | [中](categories/ml-research/pytorch-gan.zh.md) · [EN](categories/ml-research/pytorch-gan.md) |
@@ -416,7 +416,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **Agent Skills (addyosmani)** | 约 24 个生产级工程技能包（质量/安全/web 性能/API/发布），装进 coding agent 并通过约 8 个 SDLC 斜杠命令路由。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/addyosmani-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/addyosmani-agent-skills.md) |
 | **web-quality-skills** | 含六个技能的 agent 技能包，把 Lighthouse / Core Web Vitals / WCAG / SEO 最佳实践编码成按需加载的指令集，让 coding agent 审计并修复 web 质量问题；属建议层，非测量工具。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/addyosmani-web-quality.zh.md) · [EN](categories/agent-skills/engineering/addyosmani-web-quality.md) |
 | **Scientific Agent Skills** | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/scientific-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/scientific-agent-skills.md) |
-| **Vercel Agent Skills** | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 | MIT | C（5/6） | [中](categories/agent-skills/engineering/vercel-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/vercel-agent-skills.md) |
+| **Vercel Agent Skills** | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 | MIT | B（4/6） | [中](categories/agent-skills/engineering/vercel-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/vercel-agent-skills.md) |
 | **Waza** | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 | MIT | C（5/6） | [中](categories/agent-skills/engineering/waza.zh.md) · [EN](categories/agent-skills/engineering/waza.md) |
 
 #### agent-skills / design
@@ -469,7 +469,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/vendor-collections/anthropic-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/anthropic-skills.md) |
+| **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | Apache-2.0 | A（3/5） | [中](categories/agent-skills/vendor-collections/anthropic-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/anthropic-skills.md) |
 | **Agent Plugins for AWS** | AWS Labs 官方出品的九个 agent 插件集合（serverless、Amplify、SageMaker、迁移、数据库、部署/成本估算等），通过 marketplace 安装、触发短语驱动并接好 AWS MCP server，教 Claude Code / Cursor / Codex 在 AWS 上做架构、部署和运维。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/aws-agent-plugins.zh.md) · [EN](categories/agent-skills/vendor-collections/aws-agent-plugins.md) |
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/claude-plugins-official.zh.md) · [EN](categories/agent-skills/vendor-collections/claude-plugins-official.md) |
 | **MiniMax Skills** | MiniMax 官方约 16 个 Agent Skill 成包（前端/移动端/shader 开发，外加 pdf/docx/xlsx/pptx、音乐与多模态生成），经插件市场装进 Claude Code 等编码 agent。 | MIT | B（4/5） | [中](categories/agent-skills/vendor-collections/minimax-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/minimax-skills.md) |
@@ -496,10 +496,10 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **dbskill** | 一套个人精选的中文 agent 技能包（约 21 个 /dbs-* 命令），聚焦商业模式诊断、内容创作与个人决策，可安装进 Claude Code 等 harness。 | CC-BY-NC-4.0 | C（4/6） | [中](categories/agent-skills/personal-collections/knowledge-content/dbskill.zh.md) · [EN](categories/agent-skills/personal-collections/knowledge-content/dbskill.md) |
 | **Dimillian Skills** | 某开发者个人精选的 16 个自包含 Codex skill，重心压在 Apple 平台（SwiftUI/iOS/macOS），外加几个通用评审/重构 swarm。 | MIT | C（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md) |
 | **gstack** | Garry Tan 的私人 Claude Code harness：54 个 skill——约一半是角色人设（CEO 复盘、工程经理、设计师、QA、安全官、发布工程师），另一半是工具命令——外加一个 agent 真正驱动的浏览器，串成一条「规划 → 构建 → 评审 → 发布 → 复盘」冲刺流程。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/gstack.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/gstack.md) |
-| **andrej-karpathy-skills** | 一个行为准则包——单个 CLAUDE.md（加 Cursor 变体和一层薄技能包装），把 Karpathy 关于 LLM 编码陷阱的四条原则（先想后写、简单优先、外科式改动、目标驱动执行）注入 Claude Code / Cursor。 | MIT | C（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md) |
+| **andrej-karpathy-skills** | 一个行为准则包——单个 CLAUDE.md（加 Cursor 变体和一层薄技能包装），把 Karpathy 关于 LLM 编码陷阱的四条原则（先想后写、简单优先、外科式改动、目标驱动执行）注入 Claude Code / Cursor。 | MIT | C（3/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md) |
 | **Khazix Skills** | 数字生命卡兹克（Khazix）的个人精选合集，含五个 SKILL.md 标准格式、以中文为主的 Agent Skill：磁盘清理、AI 资讯查询、文档/记忆同步、长文研究报告、公众号风格写作。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/knowledge-content/khazix-skills.zh.md) · [EN](categories/agent-skills/personal-collections/knowledge-content/khazix-skills.md) |
 | **ljg-skills** | 李继刚的个人 Claude Code 技能合集（20+ 个 skill），面向中文知识工作——读论文/拆书、概念分析、大白话改写、把内容渲染成 PNG 卡片，通过 skills CLI 安装。 | NOASSERTION | B（4/5） | [中](categories/agent-skills/personal-collections/knowledge-content/ljg-skills.zh.md) · [EN](categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md) |
-| **PUA** | 一个高能动性人设 skill 包：把 coding agent 设定成「被放进 30 天 PIP 的 P8 工程师」，用职场 PUA/PIP 话术逼它穷尽排查手段而非早早放弃。 | MIT | D（5/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/pua.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/pua.md) |
+| **PUA** | 一个高能动性人设 skill 包：把 coding agent 设定成「被放进 30 天 PIP 的 P8 工程师」，用职场 PUA/PIP 话术逼它穷尽排查手段而非早早放弃。 | MIT | C（4/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/pua.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/pua.md) |
 | **Qiushi-Skill** | 一套方法论 skill 包，用「实事求是」加九个唯物辩证法思维工具（矛盾分析、调查研究、实践认识论等）武装编程 agent，并通过 npx 安装器跨 Claude Code/Cursor/Codex/OpenCode 落地。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.md) |
 | **shaping-skills** | Ryan Singer 的个人 Claude Code 技能包，把 Shape Up 的「shaping」流程（框定问题、breadboarding、产出 framing/kickoff 文档）带进 coding agent，让 AI 在写代码前先帮你想清楚「要做什么」。 | NOASSERTION | E（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md) |
 | **TÂCHES CC Resources** | TÂCHES（glittercowboy）的个人化 Claude Code 扩展合集：约 27 个 slash 命令、9 个 skill（多为生成新命令/skill/subagent/hook/MCP server 的元生成器）、3 个审计 subagent 及 hook，作为单个 marketplace 插件安装。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md) |
@@ -585,7 +585,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **XlsxWriter** | 当 Python 服务从数据生成新的 `.xlsx`、且你要零依赖加 13 年稳定性时用它——但它只写，无法打开已有工作簿，也不计算公式。 | BSD-2-Clause | B（6/6） | [中](categories/office-automation/xlsxwriter.zh.md) · [EN](categories/office-automation/xlsxwriter.md) |
 | **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | MIT | C（6/6） | [中](categories/office-automation/office-word-mcp-server.zh.md) · [EN](categories/office-automation/office-word-mcp-server.md) |
 | **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | MIT | C（6/6） | [中](categories/office-automation/office-powerpoint-mcp-server.zh.md) · [EN](categories/office-automation/office-powerpoint-mcp-server.md) |
-| **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | Apache-2.0 | D（4/6） | [中](categories/office-automation/apache-poi.zh.md) · [EN](categories/office-automation/apache-poi.md) |
+| **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | Apache-2.0 | B（3/6） | [中](categories/office-automation/apache-poi.zh.md) · [EN](categories/office-automation/apache-poi.md) |
 
 ### diagramming
 
@@ -751,7 +751,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **ItChat** | 仅作为旧版微信机器人代码学习——已停更，且其依赖的网页协议已失效，基本不可用。 | MIT | C（4/6） | [中](categories/im-automation/wechat/itchat.zh.md) · [EN](categories/im-automation/wechat/itchat.md) |
 | **WeChatPlugin-MacOS** | 当前微信别用——一个 patch macOS 微信客户端二进制的小助手，每次微信更新就失效、已 ~2 年没动；有封号与安全风险。 | MIT | D（4/6） | [中](categories/im-automation/wechat/wechatplugin-macos.zh.md) · [EN](categories/im-automation/wechat/wechatplugin-macos.md) |
 | **wxpy** | 仅作为旧版微信机器人代码学习——2019 年起已归档，且基于已失效的微信网页协议，基本不可用。 | MIT | D（5/6） | [中](categories/im-automation/wechat/wxpy.zh.md) · [EN](categories/im-automation/wechat/wxpy.md) |
-| **wxappUnpacker** | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 | GPL-3.0-or-later | E（4/6） | [中](categories/im-automation/wechat/wxappunpacker.zh.md) · [EN](categories/im-automation/wechat/wxappunpacker.md) |
+| **wxappUnpacker** | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 | GPL-3.0-or-later | E（3/6） | [中](categories/im-automation/wechat/wxappunpacker.zh.md) · [EN](categories/im-automation/wechat/wxappunpacker.md) |
 | **Douyin-Bot** | 仅当你想要一份 ADB 屏幕坐标手机自动化的历史示例时用它——切勿部署，2018 年的硬编码坐标与失效的腾讯人脸 API 意味着它早已跑不通。 | MIT | D（3/6） | [中](categories/im-automation/douyin-bot.zh.md) · [EN](categories/im-automation/douyin-bot.md) |
 | **WeChat Bot** | 当一个 Node CLI 必须把微信、飞书、Telegram 与 WhatsApp 接到多个 LLM 时用它——个人微信仍走非官方通道，并伴随账号风险。 | MIT | B（5/6） | [中](categories/im-automation/wechat/wechat-bot.zh.md) · [EN](categories/im-automation/wechat/wechat-bot.md) |
 | **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/wechat/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/chatgpt-wechat-bot.md) |
@@ -831,7 +831,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **elasticsearch-dsl-py** | 当你维护仍锁定独立 elasticsearch-dsl 包的旧 Python 代码时才用它——任何新项目它都已归档，请改装 elasticsearch>=8.18 并使用 elasticsearch.dsl。 | Apache-2.0 | C（5/6） | [中](categories/databases/database-clients/elasticsearch-dsl-py.zh.md) · [EN](categories/databases/database-clients/elasticsearch-dsl-py.md) |
 | **elasticsearch-sql** | 当熟悉 SQL 的团队想免学 JSON Query DSL 直接查 Elasticsearch 时用它——但 Elastic 官方的 SQL／ES\|QL 已与之重叠，能覆盖你的需求时优先用官方特性。 | Apache-2.0 | C（5/6） | [中](categories/databases/database-clients/elasticsearch-sql.zh.md) · [EN](categories/databases/database-clients/elasticsearch-sql.md) |
 | **go-mysql-elasticsearch** | 当你想用单个 Go 二进制 tail MySQL binlog、单向中等规模同步到 Elasticsearch 时用它——但它自 2023 年起无人维护、无任何发布，请当作 fork 自管的项目对待。 | MIT | D（4/6） | [中](categories/databases/data-sync/go-mysql-elasticsearch.zh.md) · [EN](categories/databases/data-sync/go-mysql-elasticsearch.md) |
-| **python-mysql-replication** | 当你想用纯 Python 原语把 MySQL binlog 流式解析成带类型的事件、自建可控 CDC 循环时用它——但 checkpoint、去重和精确一次投递全得你自己负责。 | Apache-2.0 | D（5/6） | [中](categories/databases/data-sync/python-mysql-replication.zh.md) · [EN](categories/databases/data-sync/python-mysql-replication.md) |
+| **python-mysql-replication** | 当你想用纯 Python 原语把 MySQL binlog 流式解析成带类型的事件、自建可控 CDC 循环时用它——但 checkpoint、去重和精确一次投递全得你自己负责。 | Apache-2.0 | B（4/6） | [中](categories/databases/data-sync/python-mysql-replication.zh.md) · [EN](categories/databases/data-sync/python-mysql-replication.md) |
 | **PrettyZoo** | 当你在开发或故障排查时想用友好的桌面 GUI 浏览并轻量编辑 ZooKeeper znode 树时用它——但它自 2023 年起已归档，新 JDK／macOS 可能跑不起来且无上游修复。 | Apache-2.0 | D（5/6） | [中](categories/databases/database-clients/prettyzoo.zh.md) · [EN](categories/databases/database-clients/prettyzoo.md) |
 | **RDR** | 当 Redis 触发 maxmemory 告警、需要离线快速按前缀分析 RDB 快照时用它——但内存数字是近似值，且项目已停滞（v0.0.1，2019 年）。 | Apache-2.0 | C（4/6） | [中](categories/databases/database-clients/rdr.zh.md) · [EN](categories/databases/database-clients/rdr.md) |
 | **Supabase** | 基于 PostgreSQL 构建的开源 Firebase 替代方案，包含身份认证、自动生成 API、实时订阅、边缘函数和向量存储——但它与 Postgres 深度绑定。 | Apache-2.0 | A（5/6） | [中](categories/databases/database-engines/supabase.zh.md) · [EN](categories/databases/database-engines/supabase.md) |
@@ -861,7 +861,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **pygame** | 当你想学做或交付一个带简单游戏循环的小型 2D Python 游戏时用它——但做 3D 或性能敏感的项目它会成瓶颈，请另寻它路。 | LGPL-2.1 | D（6/6） | [中](categories/game-dev/pygame.zh.md) · [EN](categories/game-dev/pygame.md) |
+| **pygame** | 当你想学做或交付一个带简单游戏循环的小型 2D Python 游戏时用它——但做 3D 或性能敏感的项目它会成瓶颈，请另寻它路。 | LGPL-2.1 | C（5/6） | [中](categories/game-dev/pygame.zh.md) · [EN](categories/game-dev/pygame.md) |
 
 ### kafka-tools
 
@@ -884,8 +884,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **lua-nginx-module (ngx_lua)** | 当你需要在 NGINX 上用 LuaJIT cosocket 实现真正的逐请求可编程能力（鉴权、路由、限流）时用它——但一次阻塞调用就会卡死整个 worker，且你被绑定在 OpenResty 版本耦合、核心团队高度集中的生态上。 | BSD-2-Clause | D（5/6） | [中](categories/nginx-modules/lua-nginx-module.zh.md) · [EN](categories/nginx-modules/lua-nginx-module.md) |
-| **lua-resty-redis** | 当你的 OpenResty 边缘逻辑要在请求热路径上非阻塞访问 Redis（带连接池和 pipeline）时用它——但它只能在 ngx_lua 内运行，且不内置 Redis Cluster 的槽位路由。 | BSD-2-Clause | D（4/6） | [中](categories/nginx-modules/lua-resty-redis.zh.md) · [EN](categories/nginx-modules/lua-resty-redis.md) |
+| **lua-nginx-module (ngx_lua)** | 当你需要在 NGINX 上用 LuaJIT cosocket 实现真正的逐请求可编程能力（鉴权、路由、限流）时用它——但一次阻塞调用就会卡死整个 worker，且你被绑定在 OpenResty 版本耦合、核心团队高度集中的生态上。 | BSD-2-Clause | A（4/6） | [中](categories/nginx-modules/lua-nginx-module.zh.md) · [EN](categories/nginx-modules/lua-nginx-module.md) |
+| **lua-resty-redis** | 当你的 OpenResty 边缘逻辑要在请求热路径上非阻塞访问 Redis（带连接池和 pipeline）时用它——但它只能在 ngx_lua 内运行，且不内置 Redis Cluster 的槽位路由。 | BSD-2-Clause | B（3/6） | [中](categories/nginx-modules/lua-resty-redis.zh.md) · [EN](categories/nginx-modules/lua-resty-redis.md) |
 | **nginx-upload-module** | 当你想让 NGINX 把大文件 multipart 上传直接落盘、只把文件元数据交给后端时用它——但你在编译一个老化、单人维护的 C 分叉（末次提交 2024-07），如今直传 S3 预签名上传往往更优。 | BSD-3-Clause | "?"（2/6） | [中](categories/nginx-modules/nginx-upload-module.zh.md) · [EN](categories/nginx-modules/nginx-upload-module.md) |
 | **tusd** | 当你需要一个基于协议的稳健断点续传上传服务器，能把文件流式写到本地磁盘或云存储时用它——但它是独立服务，不是 NGINX 模块，对小文件/可靠网络可能过度设计。 | MIT | B（6/6） | [中](categories/nginx-modules/tusd.zh.md) · [EN](categories/nginx-modules/tusd.md) |
 

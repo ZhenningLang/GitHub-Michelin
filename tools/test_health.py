@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import datetime as dt
+import json
+import types
 import os
 import sys
 import time
@@ -612,6 +614,135 @@ class InstrumentTierTest(unittest.TestCase):
         self.assertIsNotNone(axis)
         self.assertEqual(axis.grade, "C")
         self.assertEqual(axis.raw["signal_basis"], "releases")
+
+
+class LicenseDetectionTest(unittest.TestCase):
+    """"GitHub could not classify a license" must not be written as "there is none".
+
+    `repos/{full}/license` 404s whenever GitHub's detector declines, which includes a real
+    license in a place it does not look. apache/poi keeps Apache-2.0 at `legal/LICENSE`,
+    and the old `404 -> NONE -> E` shortcut graded the ASF's flagship Java library as
+    all-rights-reserved and capped the whole page to D. 33 pages carried that verdict.
+    """
+
+    def test_license_filenames_accepted(self) -> None:
+        for name in ("LICENSE", "license", "LICENCE", "LICENSE.txt", "LICENSE.md",
+                     "LICENSE.rst", "COPYING", "COPYING.txt", "UNLICENSE", "COPYRIGHT",
+                     "LICENSE-APACHE", "LICENSE-MIT", "LICENSE-2.0.txt", "license-2.0"):
+            with self.subTest(name=name):
+                self.assertTrue(health._is_license_filename(name))
+
+    def test_files_that_only_mention_licensing_are_rejected(self) -> None:
+        """A policy doc or a source file must not count as the license text."""
+        for name in ("LICENSING.md", "license_test.go", "LICENSE.py", "LICENSE.go",
+                     "licenses.json", "licensed.rb", "copying_utils.py", "NOTICE",
+                     "README.md", "THIRD-PARTY-LICENSES.csv"):
+            with self.subTest(name=name):
+                self.assertFalse(health._is_license_filename(name))
+
+    def _repo(self):
+        return types.SimpleNamespace(full="owner/demo")
+
+    def test_finds_a_license_outside_the_root(self) -> None:
+        calls = []
+
+        def fake(path, **kw):
+            calls.append(path)
+            if path == "repos/owner/demo/contents":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "file", "name": "README.md", "path": "README.md"},
+                     {"type": "dir", "name": "legal", "path": "legal"}]))
+            if path == "repos/owner/demo/contents/legal":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "file", "name": "LICENSE", "path": "legal/LICENSE"}]))
+            return health.GhResult(404, "")
+
+        with mock.patch.object(health, "gh_api", side_effect=fake):
+            self.assertEqual(health._find_license_path(self._repo()), ("legal/LICENSE", "file"))
+        self.assertIn("repos/owner/demo/contents", calls)
+
+    def test_root_license_short_circuits_the_directory_probe(self) -> None:
+        """Cost control: the extra calls only happen when the root has nothing."""
+        calls = []
+
+        def fake(path, **kw):
+            calls.append(path)
+            return health.GhResult(200, json.dumps(
+                [{"type": "file", "name": "LICENSE", "path": "LICENSE"}]))
+
+        with mock.patch.object(health, "gh_api", side_effect=fake):
+            self.assertEqual(health._find_license_path(self._repo()), ("LICENSE", "file"))
+        self.assertEqual(calls, ["repos/owner/demo/contents"])
+
+    def test_no_license_anywhere_returns_none(self) -> None:
+        """The genuinely unlicensed case still has to be reachable — it earns a real E."""
+        def fake(path, **kw):
+            if path == "repos/owner/demo/contents":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "file", "name": "README.md", "path": "README.md"}]))
+            return health.GhResult(404, "")
+
+        with mock.patch.object(health, "gh_api", side_effect=fake):
+            self.assertEqual(health._find_license_path(self._repo()), (None, None))
+
+    def test_reuse_style_license_directory_is_reported_as_such(self) -> None:
+        """A per-SPDX `LICENSES/` tree lists bundled licenses too, so one file proves nothing.
+
+        cockpit-project/cockpit declares LGPL-2.1-or-later and its first entry is
+        `BSD-3-Clause.txt`; classifying from that would be a coin flip, and a bundled
+        `SSPL-1.0.txt` would yield a confident, wrong E.
+        """
+        def fake(path, **kw):
+            if path == "repos/owner/demo/contents":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "dir", "name": "LICENSES", "path": "LICENSES"}]))
+            if path == "repos/owner/demo/contents/licenses":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "file", "name": "BSD-3-Clause.txt",
+                      "path": "LICENSES/BSD-3-Clause.txt"}]))
+            return health.GhResult(404, "")
+
+        with mock.patch.object(health, "gh_api", side_effect=fake):
+            path, how = health._find_license_path(self._repo())
+        self.assertEqual(how, "dedicated_dir")
+        self.assertEqual(path, "LICENSES/BSD-3-Clause.txt")
+
+    def test_plain_license_in_a_dedicated_dir_is_still_classifiable(self) -> None:
+        """`legal/LICENSE` is one file stating the terms — that one can be read."""
+        def fake(path, **kw):
+            if path == "repos/owner/demo/contents":
+                return health.GhResult(200, json.dumps([]))
+            if path == "repos/owner/demo/contents/legal":
+                return health.GhResult(200, json.dumps(
+                    [{"type": "file", "name": "LICENSE", "path": "legal/LICENSE"}]))
+            return health.GhResult(404, "")
+
+        with mock.patch.object(health, "gh_api", side_effect=fake):
+            self.assertEqual(health._find_license_path(self._repo()),
+                             ("legal/LICENSE", "file"))
+
+    def test_declared_license_separates_unverifiable_from_all_rights_reserved(self) -> None:
+        """No LICENSE file is not the same claim as no license.
+
+        pygame ships LGPL-2.1 and openresty/lua-nginx-module BSD-2-Clause, both declared
+        in the README with no file to find; swarm-forge really is all-rights-reserved.
+        The page's own `license:` field is what tells them apart.
+        """
+        for declared in ("LGPL-2.1", "BSD-2-Clause", "MIT", "Apache-2.0", "GPL-3.0-or-later"):
+            with self.subTest(declared=declared):
+                self.assertTrue(health.DECLARED_REAL_LICENSE_RE.match(declared))
+                self.assertFalse(health.DECLARED_NO_LICENSE_RE.match(declared))
+        for declared in ("NONE", "NONE (no LICENSE file — all rights reserved)",
+                         "Not declared (no LICENSE file in repo)", "Unlicensed"):
+            with self.subTest(declared=declared):
+                self.assertTrue(
+                    health.DECLARED_NO_LICENSE_RE.match(declared)
+                    or not health.DECLARED_REAL_LICENSE_RE.match(declared))
+
+    def test_unreadable_listing_does_not_invent_a_license(self) -> None:
+        with mock.patch.object(health, "gh_api",
+                               side_effect=lambda path, **kw: health.GhResult(500, "")):
+            self.assertEqual(health._find_license_path(self._repo()), (None, None))
 
 
 if __name__ == "__main__":

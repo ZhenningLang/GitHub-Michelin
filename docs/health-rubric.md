@@ -560,7 +560,7 @@ gh api repos/{owner}/{repo}/community/profile --jq '{health:.health_percentage, 
 | **B** | permissive BUT carries a benign attribution/clause add-on (MIT + watermark like bpmn-js, BSD-2-Clause-Patent). No relicense. |
 | **C** | weak/file copyleft (MPL-2.0, LGPL-2.1/3.0, EPL) — usable as a dependency with linking/redistribution obligations. |
 | **D** | strong/network copyleft (GPL-2.0/3.0, AGPL-3.0) — whole-program / SaaS viral obligation; a real adoption constraint but open and embeddable. |
-| **E** | `spdx_id ∈ {NOASSERTION-confirmed-source-available, NONE/no-LICENSE}` OR non-OSI/non-commercial (CC-BY-NC, SSPL-1.0, Elastic-2.0, BSL-1.1) OR detected relicense permissive→copyleft/source-available within trailing 36mo. |
+| **E** | `spdx_id ∈ {NOASSERTION-confirmed-source-available, NONE/no-LICENSE-file-found-anywhere}` OR non-OSI/non-commercial (CC-BY-NC, SSPL-1.0, Elastic-2.0, BSL-1.1) OR detected relicense permissive→copyleft/source-available within trailing 36mo. |
 
 Mixed/dual: `A OR B` → more permissive of the OR; `A AND B` → more restrictive of the AND. **Component-split** (per-directory, e.g. "MIT code / CC-BY-SA content") is neither — record both and tier on the **code** component; flag the content license in `caveats`.
 
@@ -571,11 +571,22 @@ Mixed/dual: `A OR B` → more permissive of the OR; `A AND B` → more restricti
 **`?` rule** (split detection-failed from assessed-bad by reading the LICENSE blob)
 - `repo_unreachable` — `gh api .../license` 404s on the **repo** itself (not just the license).
 - `license_unparsed` — `spdx_id == NOASSERTION` but the LICENSE blob textually matches a real OSI license GitHub merely failed to detect → `?` + a `caveats` bullet for human review. (If the blob matches SSPL/BSL/EULA → **E**, not `?`.)
+- **A 404 from `/license` is not evidence of "no license."** GitHub's endpoint 404s whenever its
+  detector declines to classify, which includes a real license in a place it does not look.
+  `apache/poi` keeps Apache-2.0 at `legal/LICENSE`, and the old `404 ⇒ NONE ⇒ E` shortcut therefore
+  graded the ASF's flagship Java library all-rights-reserved and capped the page to **D**. Before
+  concluding NONE, look for the file: repo root first, then `legal/`, `license(s)/`, `doc(s)/`,
+  `.github/`. Found ⇒ route through the same blob classifier as NOASSERTION above, so SSPL/BSL still
+  earn **E** and an OSI-looking blob yields `?` rather than an unearned **A**. Not found ⇒ **E** with
+  `NONE`, which is the genuinely-unlicensed case and a real risk signal worth keeping.
+  Filename matching is exact about what counts: `LICENSE`, `LICENSE-APACHE`, `COPYING`,
+  `LICENSE-2.0.txt` are the license; `LICENSING.md` is a policy doc and `license_test.go` is source.
 - **Skill-packs are NOT collapsed to "license N/A"** — verified to have real, varied licenses (MIT, Apache-2.0, AGPL, CC-BY-NC, NOASSERTION). Apply the smooth radius; exempt from the CAP.
 
 **Data source / exact calls**
 ```
-gh api repos/{owner}/{repo}/license --jq '{spdx:.license.spdx_id, key:.license.key, path:.path}'   # 404 ⇒ NONE = all-rights-reserved
+gh api repos/{owner}/{repo}/license --jq '{spdx:.license.spdx_id, key:.license.key, path:.path}'   # 404 ⇒ detector declined, NOT "no license" — search for the file (above)
+gh api repos/{owner}/{repo}/contents            --jq '[.[]|select(.type=="file")|.name]'             # then legal/, license(s)/, doc(s)/, .github/
 gh api licenses/{key} --jq '{conditions,limitations}'                                               # cache per key (~20 keys)
 # relicense (resolve real filename first):
 gh api 'repos/{owner}/{repo}/commits?path={resolved_license_path}&per_page=100' --jq 'length'
