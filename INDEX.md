@@ -80,6 +80,7 @@
 | **cad** | Computer-aided design you run yourself — parametric 3D solid modeling, 2D drafting, and the geometry kernels behind them. | [→](categories/cad/INDEX.md) |
 | **desktop-launchers** | Keyboard-driven desktop launchers / command palettes — summon apps, clipboard history, snippets, quicklinks and window management from one hotkey. | [→](categories/desktop-launchers/INDEX.md) |
 | **design-editors** | Open-source design editors you run yourself — local-first or self-hosted Figma-class canvases. | [→](categories/design-editors/INDEX.md) |
+| **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts. | [→](categories/learning-resources/INDEX.md) |
 
 
 

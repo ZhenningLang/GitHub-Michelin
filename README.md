@@ -1153,3 +1153,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **OpenPencil** | Use it when you must open existing Figma `.fig` files and script them — inspect, lint, convert, export to JSX — or you want a local-first AI-native editor with no server, no account and no upload. | MIT | B (6/6) | [EN](categories/design-editors/open-pencil.md) · [中](categories/design-editors/open-pencil.zh.md) |
 | **Penpot** | Use it when a team must edit one design file on servers you control — browser editor, real-time multiplayer, components/variants, prototypes and design tokens — and per-seat hosted SaaS is off the table. | MPL-2.0 | B (5/6) | [EN](categories/design-editors/penpot.md) · [中](categories/design-editors/penpot.zh.md) |
+
+### learning-resources
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **AI Performance Engineering Resources** | Use it when you need to learn or reference GPU/AI performance engineering and want the canonical source per mechanism in dependency order — one request → one GPU → kernels → engines → distributed serving — instead of a pile of blog posts. | MIT (declared) | C (3/5) | [EN](categories/learning-resources/gpu-perf-engineering-resources.md) · [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) |
