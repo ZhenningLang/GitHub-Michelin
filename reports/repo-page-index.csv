@@ -296,6 +296,7 @@ https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categorie
 https://github.com/google-gemini/gemini-cli,gemini-cli,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design,categories/agent-skills/design/stitch-skills.md
 https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-device-ml/timesfm.md
+https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/ax.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
 https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md

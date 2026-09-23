@@ -118,6 +118,7 @@ health:
 | [Kata Containers](kata-containers.zh.md) | ✅ | 想在现有 Kubernetes 里给每个 pod 一台虚拟机级隔离，选 Kata；真正的问题是大量闲置的**有状态**会话而不是隔离强度，才用 Agent Substrate。 | Kata 是 Substrate 微虚拟机类可以使用的隔离运行时；它解决沙箱边界，但不解决多路复用，所以是更下层而不是替代品。 |
 | [Knative Serving](../serverless/knative-serving.zh.md) | ✅ | 负载是应该缩到零的无状态 HTTP 服务，选 Knative；负载是必须在空闲期间保住内存的有状态 agent 会话，才选 Agent Substrate。 | Knative 的缩容到零按设计就会丢掉进程；Substrate 的暂停／恢复会保住它。是否有状态就是分界线。 |
 | [kagent](../agent-frameworks/kubernetes-agents/kagent.zh.md) | ✅ | 想让 agent 以 Kubernetes 对象形式被声明与治理，选 kagent；已经有 agent、只缺下面那层运行时来多路复用有状态沙箱，才选 Agent Substrate。 | kagent 是 agent 即工作负载的声明式控制面，消费的是 Substrate 这类运行时；那条对比里的「普通 Pod + HPA」基线在本库没有单独页面，因为 Kubernetes 是 Substrate 的运行平台，不是同层替代品。 |
+| [AX](../agent-frameworks/kubernetes-agents/ax.zh.md) | ✅ | 想要像 kubectl 那样的 Task／Workspace YAML、并接受 Substrate 当依赖，选 AX；你要自己建那层控制面、需要直接说 WorkerPool／Actor，选 Substrate。 | AX 是给开发者看的编排器，任务存在 Redis 里并在 Substrate 上开 actor；Substrate 是底下的密度运行时。两者叠加——AX 替不了快照／恢复。 |
 
 ## 技术栈
 
@@ -146,7 +147,7 @@ health:
 
 - **维护活跃度（2026-09-20）。** 非常活跃：最后推送 2026-09-19；此前八周提交数为 82、47、65、72、110、110、54、48；累计 941 次提交；2026-09-18 仍在合并 PR；两个发布（v0.0.0 于 2026-05-19，v0.1.0 于 2026-09-10）。未归档。
 - **治理与 bus factor（2026-09-20）。** 本页最强的信号：公开列出 18 位 maintainer（16 位 Google、2 位来自 Solo.io），GOVERNANCE.md 定了四层角色（Default → Contributor → Reviewer → Maintainer，均需他人背书），MAINTAINERS.md 明确承诺与 CNCF 的 maintainer 名单保持同步——朝向多方共治而不是单一所有者。[推断] 这里体现的是 CNCF 意向，并非已宣布的捐赠。
-- **背书与 Lindy（2026-09-20）。** 创建于 2026-05-13，**约 4.3 个月**，所以 Lindy 一分不给：「年龄 × 仍在活跃」里年龄那一半最弱，而活跃那一半很强。maintainer 名单里有一批 Kubernetes 老将（如 Tim Hockin、Benjamin Elder、Michelle Au 等），是很硬的背书信号；但 README 同时写明它「不是 Google 官方支持的产品」，不要脑补成 Google 产品支持。两个外部消费者是具体存在的：`google/ax`（Agent Executor）和 CNCF Sandbox 项目 kagent。
+- **背书与 Lindy（2026-09-20）。** 创建于 2026-05-13，**约 4.3 个月**，所以 Lindy 一分不给：「年龄 × 仍在活跃」里年龄那一半最弱，而活跃那一半很强。maintainer 名单里有一批 Kubernetes 老将（如 Tim Hockin、Benjamin Elder、Michelle Au 等），是很硬的背书信号；但 README 同时写明它「不是 Google 官方支持的产品」，不要脑补成 Google 产品支持。两个外部消费者是具体存在的：[AX](../agent-frameworks/kubernetes-agents/ax.zh.md)（Agent Executor）和 CNCF Sandbox 项目 [kagent](../agent-frameworks/kubernetes-agents/kagent.zh.md)。
 - **采用与生态（2026-09-20）。** 刻意面向集成：`docs/integration-repos.md` 讲清集成代码放哪、修复怎么回流，并附带成套 demo（counter、sandbox／Antigravity、Claude Code 多路复用、multi-template、请求停车、自动扩缩池）以及 Locust 基准测试台。约 2.0k stars、333 fork，但只有 18 个 watcher——这个 star 与 watcher 的比例更像关注度，而不是已经沉淀的生产使用。[推断]
 - **风险旗标（2026-09-20）。** 1.0 之前且 API 明确不稳定；贡献需要签 Google CLA；以项目年龄衡量，待处理积压偏大（321 个 open issue、190 个 open PR）。团队把自己最难的设计缺口公开记在 issue 里——worker affinity 没有 failover、约 6 秒的恢复 deadline 无法完成冷缓存恢复、镜像缓存无界、普通 actor 删除不回收状态目录——这既是透明度，也是一份诚实的未完成清单。许可干净（Apache-2.0，无 relicense 历史）。按项目自己的威胁模型，安全加固尚未做。
 

@@ -102,7 +102,7 @@ kagent 有四个组件：watch 自定义资源并创建运行所需资源的 **c
 
 ## 何时不用
 
-- **你需要把大量有状态 agent 挤在少数机器上。** kagent 把 agent 当工作负载调度，不做「快照—恢复」来回收空闲容量。想要带内存状态暂停／恢复的密度，用 [Agent Substrate](../../sandboxing/substrate.zh.md)。
+- **你需要把大量有状态 agent 挤在少数机器上。** kagent 把 agent 当工作负载调度，不做「快照—恢复」来回收空闲容量。想要带内存状态暂停／恢复的密度，用 [Agent Substrate](../../sandboxing/substrate.zh.md)；想在那层运行时上再要一份 YAML *任务* 控制面，用 [AX](ax.zh.md)。
 - **你不在 Kubernetes 上，或不能安装 CRD 与 operator。** kagent 的全部价值就是集群原生。离开 Kubernetes，请用代码优先的框架，如 [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) 或 [AgentScope](../agent-runtimes/agent-sdks/agentscope.zh.md)。
 - **你需要隔离边界来承载恶意的 agent 代码。** 这里配置的 agent 会带着你给的凭据去调工具，隔离是另一个问题——请在下面垫一个沙箱运行时（[gVisor](../../sandboxing/gvisor.zh.md)、[Kata Containers](../../sandboxing/kata-containers.zh.md)）或沙箱平台（[OpenSandbox](../../sandboxing/opensandbox.zh.md)），不要假设框架本身提供了隔离。
 - **你今天就要一个成熟、无变动的 API。** 项目年轻（创建于 2025-01）且在活跃开发中，有自己的路线图看板；请把它的 CRD 面当作还在动。想要更老、更广的 agent 框架生态，请用 `agent-runtimes` 里的条目。
@@ -117,7 +117,7 @@ kagent 有四个组件：watch 自定义资源并创建运行所需资源的 **c
 | [LangGraph](../agent-runtimes/agent-sdks/langgraph.zh.md) | ✅ | agent 逻辑本身就是产品、想要 Python 图 API 与最大控制力，选 LangGraph；问题在于 agent 的**运维**（部署、配置、工具、追踪），选 kagent。 | LangGraph 给你进程内的编程式控制流，对集群没有主张；kagent 给你 CRD、控制器和 UI，但对运行循环的控制更少。 |
 | [AgentScope](../agent-runtimes/agent-sdks/agentscope.zh.md) | ✅ | 想要带自研运行时与沙箱方案的全功能多 agent 框架（代码形态），选 AgentScope；运行时本身就应该是 Kubernetes，选 kagent。 | AgentScope 是你要部署的框架；kagent 是把 agent 作为集群对象部署、并接受 Kubernetes 运维模型的一条路。 |
 | [OpenSandbox](../../sandboxing/opensandbox.zh.md) | ✅ | 需求是给 agent 生成的代码一个隔离执行环境，选 OpenSandbox；需求是声明式管理有哪些 agent、能用哪些工具，选 kagent。 | 正交的两层：kagent 决定 agent 的配置与生命周期，OpenSandbox 决定它的代码在哪跑、能碰到什么。 |
-| 通用 operator 框架／其他项目的 agent CRD 栈 | 未收录 | 你在自己写 controller，选通用 operator 框架；想要 agent CRD、引擎、工具服务器与 UI 都已经做好，选 kagent。 | 通用框架（Kubebuilder、Operator SDK）是没有任何 agent 语义的工具箱；kagent 交付了语义，但也把你的设计约束在它的资源模型里。这里按范围外处理：工具箱与产品的对比是另一个选型题。 |
+| [AX](ax.zh.md) | ✅ | *agent*（提示、工具、ADK 引擎）应该是 Kubernetes CRD，选 kagent；想声明的对象是沙箱 *任务*（工作区、出站、挂起）并且命令自己带，选 AX。 | kagent 的生命周期住在 etcd，还自带引擎；AX 把任务存在 Redis，没有规划器，叠在 Agent Substrate 上。 |
 
 ## 技术栈
 

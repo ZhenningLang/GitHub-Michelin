@@ -423,7 +423,6 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
-Kubernetes operator frameworks / agent CRD stacks in other projects,categories/agent-frameworks/kubernetes-agents/kagent.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangBot,categories/im-automation/wechat/dify-on-wechat.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no

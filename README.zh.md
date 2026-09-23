@@ -194,6 +194,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **OpenChamber** | 当你用 OpenCode，想要一个跨设备的运行工作台——按目标审计的会话、一条提示词最多五个模型（可各带 worktree）、变更讲解，以及紧挨对话的 git/PR 面板——但要接受一个 12 个月大、单人主控、只绑一个 agent runtime 的应用时用它。 | MIT | C（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) |
 | **OpenResearch** | 当 coding agent 和 GPU 都已经到位、缺的只是实验记账——每个实验一条分支的实验树、不可变的提交快照、以及把 run 派到九个算力后端——时用它，代价是接受一个 3.5 个月大、发布极快的应用，且它的托管算力那一半是闭源服务。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md) |
 
+| **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | — | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
 
 ### agent-memory
