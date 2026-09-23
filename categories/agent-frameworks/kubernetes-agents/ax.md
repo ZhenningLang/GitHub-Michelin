@@ -18,10 +18,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:42:24Z
+  computed_at: 2026-09-23T05:20:34Z
   overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  overall_score: 2.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -31,20 +32,28 @@ health:
       raw:
         archived: false
         last_commit_age_days: 3
-        active_weeks_13: 9
+        active_weeks_13: 8
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 70.0
-        qualifying_issues: 23
+        median_ttfr_hours: 43.2
+        qualifying_issues: 24
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: E
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/google/ax
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
@@ -66,8 +75,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # AX
