@@ -152,11 +152,11 @@ health:
 
 ## 健康度与可持续性
 
-- **维护活跃度：** Grade B（评分 2026-09-22）——默认分支最近一次提交就在当天，过去 13 周里 5 周有提交。`v0.2.0` 和 `v0.2.1` 都标在 2026-09-22；`CHANGELOG.md` 跟 Keep a Changelog。仍是 pre-1.0：0.2.0 整块删掉了人才和员工入职。
+- **维护活跃度：** Grade A（评分 2026-09-22）——默认分支最近一次提交就在当天，过去 13 周里 6 周有提交。`v0.2.0` 和 `v0.2.1` 都标在 2026-09-22；`CHANGELOG.md` 跟 Keep a Changelog。仍是 pre-1.0：0.2.0 整块删掉了人才和员工入职。
 - **响应速度：** Grade A——22 个合格 issue 的首次响应中位数 6.5 小时（relaxed_solo 档）。
 - **采用广度：** Grade ?（`no_package_structural`）——评分器对 `type: app` 跳过下载图谱。2026-09-22 的 GitHub 为 5,119 star / 530 fork / 39 watcher / 3 个未关 issue。未核实生产用户名单；watcher 数是更冷静的代理。
 - **长青度：** Grade D——创建于 2026-06-11，103 天。app 队列的 C 档比这更老。三个月 5.1k star 是上线形态，不是 Lindy 先验。
-- **治理：** Grade ?（`empty_or_gated`）。独立观察：GitHub 组织 `SenteLabsAI`，与仓同一天创建，两个公开仓。`CODEOWNERS` 是 `@johnrufusone @banuakman`。贡献列表被 `johnrufusone`（186）主导，其次是名为 `claude` 的账号（44）和 Dependabot（21）；`banuakman` 有 4 次。路线图骑在一个年轻厂商上，不是基金会。
+- **治理：** Grade D。独立观察：GitHub 组织 `SenteLabsAI`，与仓同一天创建，两个公开仓。`CODEOWNERS` 是 `@johnrufusone @banuakman`。贡献列表被 `johnrufusone`（186）主导，其次是名为 `claude` 的账号（44）和 Dependabot（21）；`banuakman` 有 4 次。路线图骑在一个年轻厂商上，不是基金会。
 - **许可风险：** Grade ?（`license_unparsed`）——GitHub API 报 `NOASSERTION`，而 `LICENSE` 和 `pyproject.toml` 是 Apache-2.0。与该档位分开的事实：共享工作区、无按用户隔离；除非设 `OE_PUBLIC_DEPLOYMENT`，API 默认 fail-open；调度器不能横向扩展；第一方评测门槛和缓存命中宣称未经审计；README / `docs/architecture.md` / `config.py` 对默认模型 id 不一致（运行时以 `config.py` 为准）。托管云在 `openexecutive.ai` 上写成即将推出——那不是这个仓库。
 
 ## 存疑（未验证）

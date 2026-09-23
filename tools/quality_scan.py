@@ -797,12 +797,34 @@ AXIS_CLAIM_PATTERNS = {
     "maintenance": [r"Maintenance", r"maintenance", r"维护活跃度", r"维护(?!者)"],
     "responsiveness": [r"Responsiveness", r"responsiveness", r"响应速度", r"响应性", r"响应"],
     "adoption": [r"Adoption", r"adoption", r"采用广度", r"采用度", r"采用"],
-    "longevity": [r"Longevity", r"longevity", r"长青度", r"长青"],
+    "longevity": [r"Longevity", r"longevity", r"长青度", r"长青", r"长寿"],
     "governance": [r"Governance", r"governance", r"Bus [Ff]actor",
                    r"治理集中度", r"维护者分散度", r"治理"],
     "risk_license": [r"Risk ?/ ?[Ll]icense", r"risk[ /]licen[cs]e",
                      r"许可宽松度", r"许可证风险", r"许可与风险", r"许可"],
 }
+
+
+# A grade letter is not always a claim about the current grade. Pages legitimately write
+# contrasts ("so this axis is B rather than A", "这一轴是 B 而不是 A") and histories ("it used
+# to grade E", "把这一轴从 D 拉到了 B"). Reading those as assertions produced 3 false positives
+# out of 4 on the first corpus run, including one in this repo's own apache-poi page.
+# Matched against the text before the claim MARKER (the "是"/"is"), so the negation sits at
+# the very end: "...而不" + "是 A", "...rather" + "than A".
+CONTRAST_BEFORE = re.compile(
+    r"(?:rather|instead|not|而不|而非|不|非|由|从)\s*`?$")
+HISTORY_BEFORE = re.compile(
+    r"(?:used to|previously|formerly|once|以前|过去|原本|曾经|此前)[^.。;；]{0,40}$")
+
+
+def is_live_claim(line: str, position: int) -> bool:
+    """Does this grade letter assert the page's CURRENT grade?
+
+    A letter introduced by "rather than" / "而不是", or sitting in a sentence that is
+    recounting what the score used to be, is not a claim about today's value.
+    """
+    prefix = line[:position]
+    return not (CONTRAST_BEFORE.search(prefix) or HISTORY_BEFORE.search(prefix))
 
 
 def axis_for_claim(line: str, position: int) -> str | None:
@@ -835,6 +857,8 @@ def detect_health_prose_grade_drift(page: Path, text: str, root: Path) -> list[F
     seen: set[tuple[int, str]] = set()
     for line_no, line in body_lines(text):
         for match in PROSE_GRADE_CLAIM.finditer(line):
+            if not is_live_claim(line, match.start()):
+                continue
             axis = axis_for_claim(line, match.start())
             if axis is None:
                 continue

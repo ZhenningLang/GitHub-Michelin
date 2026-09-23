@@ -151,7 +151,7 @@ Envoy runs beside or in front of applications and handles the live connection pa
 ## Health & viability
 
 - **Maintenance:** Grade A — the latest default-branch commit was 0 days old and all 13 measured weeks were active; the latest observed release was v1.39.1.
-- **Responsiveness:** Grade A — median first-response time was 14.2 hours across 17 qualifying issues in the measured window.
+- **Responsiveness:** Grade A — median first-response time was 16.1 hours across 16 qualifying issues in the measured window.
 - **Adoption:** Not scored because the service has no structurally detectable canonical package; CNCF graduation is governance evidence, not a substitute for a package-adoption metric.
 - **Longevity:** Grade A — the repository was 3,697 days old with a 0-day-old commit; that age-plus-activity combination is a strong Lindy signal for a network data plane. [推断]
 - **Governance:** Grade A — 149 active maintainers were measured over 12 months, with the top contributor at 17.9% and the top three at 41.2%. The upstream README identifies CNCF as the host, CNCF records Envoy as graduated since 2018, and the repository documents maintainer voting and xDS API shepherds.

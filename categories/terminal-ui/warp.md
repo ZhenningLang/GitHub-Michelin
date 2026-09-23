@@ -124,7 +124,7 @@ You're a developer who spends most of your day in a terminal and wants a modern,
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Grade A — median first-response time 0.0 hours across 53 qualifying issues/PRs.
-- **Adoption**: Grade E.
+- **Adoption**: Grade D.
 - **Longevity**: Grade A — 1902 days old.
 - **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade D — AGPL-3.0 license.

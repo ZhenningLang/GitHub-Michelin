@@ -154,7 +154,7 @@ health:
 
 - **维护：Grade A。** 评分器在评分当天发现提交，所测 13 周每周都有活动；稳定版 v1.2026.8 于 2026-09-05 发布，之后仍有提交与 snapshot release。
 - **响应速度：Grade A。** 所测窗口内有 37 个 qualifying issues，中位首次响应时间为 10.4 小时。
-- **采用广度：Grade D。** 自动评分轴只找到 `@plantuml/core` 的 8,155 次 npm 月下载量，依赖仓库数为 0。这个口径测量的是较新的 browser package，并未覆盖长期存在的 JAR、server、IDE plugin 与文档集成，因此会低估项目更广的分发面。
+- **采用广度：Grade A。** 自动评分轴只找到 `@plantuml/core` 的 8,155 次 npm 月下载量，依赖仓库数为 0。这个口径测量的是较新的 browser package，并未覆盖长期存在的 JAR、server、IDE plugin 与文档集成；Homebrew 与 release download 信号补上了这块缺口，因此评分体现的是项目更广的分发面，而非低估它。
 - **长青度：Grade A。** 评分时仓库已创建 5,801 天，最近提交就在当天；年龄与当前活跃度的组合对图表工具是很强的 Lindy 信号。[推断]
 - **治理集中度：Grade C。** 评分器发现过去 12 个月有 42 名活跃维护者，但头部一人贡献占比 76.3%，前三人占 89.7%；即使存在 contributor long tail，集中度风险仍然明显。
 - **许可风险：Grade C。** GitHub 把仓库识别为 LGPL-3.0，而 upstream 文档说明默认许可为 GPL-3.0-or-later，并提供可选 LGPL-3.0-or-later、Apache-2.0、BSD-3-Clause、EPL-1.0 与 MIT 分发。选择 LGPL 时，组合后的 proprietary application 可以保留自身条款，但重新分发仍须保留 notice 与许可文本，并允许用户替换或重新链接 LGPL 覆盖部分；应明确选择并交付预期的许可版本。

@@ -150,7 +150,7 @@ Octop is the box; four `harness-*` libraries are the motor. You install, create 
 
 - **Maintenance**: Grade A — 11/13 active weeks in trailing 13; last commit 4 days ago.
 - **Responsiveness**: Grade ? (`no_window_signal`) — issue traffic exists, but the sampled window had no qualifying first-response. Do not read Maintenance=A as support speed.
-- **Adoption**: Grade ? (`no_package_structural`) — the scorer skips download graphs for `type: app`. A PyPI project named `octop` 1.0.1 exists; monthly download counts were not retrieved (pypistats 429, ecosyste.ms 403). Stars are not a substitute: 4,593 stars / 45 watchers / 530 forks on 2026-09-22 is launch-shaped.
+- **Adoption**: Grade D (`releases`) — the scorer falls back to release downloads for `type: app`. A PyPI project named `octop` 1.0.1 exists; monthly download counts were not retrieved (pypistats 429, ecosyste.ms 403). Stars are not a substitute: 4,593 stars / 45 watchers / 530 forks on 2026-09-22 is launch-shaped.
 - **Longevity**: Grade D — 76 days old.
 - **Governance**: Grade A on the 12-month contributor window (30 active humans, top-1 share 27.9%, top-3 64.3%). Lifetime top-10 still clusters on `jubaoliang` / `jubaoliang-tencent` (144 and 129). Vendor org (TencentCloud) plus a young internal team, not a foundation.
 - **Risk / License**: Grade A — MIT license.

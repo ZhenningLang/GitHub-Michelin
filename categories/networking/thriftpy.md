@@ -124,7 +124,7 @@ In practice today, that pitch lives on in **thriftpy2**, the maintained fork. Yo
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Grade C — 38,919 monthly downloads via pypi.org (package: thriftpy).
 - **Longevity**: Grade A — 4606 days old.
-- **Governance**: Grade D — top-3 contributor share 100.0% (?).
+- **Governance**: Grade D — top-3 contributor share 100.0% (1 active maintainer in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

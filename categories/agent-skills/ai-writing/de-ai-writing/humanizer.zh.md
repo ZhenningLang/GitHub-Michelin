@@ -99,7 +99,7 @@ Claude Code skill that removes signs of AI-generated writing from text
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-06-29T20:43:06Z`；health 将维护评为 B。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-06-29T20:43:06Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 29,415 个 GitHub stars，但这是社交关注度，不等于每次改写质量。
 - **许可证快照：** 只读上游核验确认 GitHub metadata、根目录 `LICENSE`、README 和 `SKILL.md` metadata 均为 MIT。
 - **Lindy / 治理：** 项目很年轻但关注度高；health 显示贡献者分布比许多单 skill 仓库更分散，不过仍不足一年。

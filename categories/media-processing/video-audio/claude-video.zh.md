@@ -122,9 +122,9 @@ Give Claude the ability to watch any video. /watch downloads, extracts frames, t
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-01T01:26:49Z`；health 将 maintenance 评为 B、responsiveness 评为 A。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-01T01:26:49Z`；health 将 maintenance 评为 B、responsiveness 评为 B。
 - **采用快照：** 2026-07 约 8,688 个 GitHub stars；作为年轻 repo 关注度很强，但 health scorer 没有可用的 package-download 轴。
-- **许可证快照：** 已人工核验根目录 `LICENSE` 为 MIT；当前 health block 将 `risk_license` 标为 `?`，原因是重算时 scorer 报告 `repo_unreachable`。
+- **许可证快照：** 已人工核验根目录 `LICENSE` 为 MIT；当前 health block 将 `risk_license` 评为 `A`，与人工核验一致。
 - **Lindy / 治理：** 项目很年轻，health 中 longevity 为 D；治理因单维护者集中为 D。
 - **风险信号：** 依赖第三方视频源行为、本地媒体工具、可选转录供应商和多模态 token 成本。
 

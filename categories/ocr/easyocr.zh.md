@@ -150,7 +150,7 @@ health:
 
 - **维护：** Grade B 只来自 scorer 的成熟 library Lindy carve-out 把原始 C 上调：最近一次默认分支提交距评分 291 天，之前 13 周的活跃周数为 0。该提交是 2025-12-05 的 README 修改；最近一次合并代码 PR 是 2024-07-25，最新 release 是 2024-09-24 的 v1.7.2。它是在漂移，而不是安静但稳定，因为 2025 至 2026 年提交的兼容性和设备支持 PR 尚未进入 release。[推断]
 - **响应速度：** 无法评分——存在 traffic，但抽样窗口没有可计分的 issue 或 PR 响应（`no_window_signal`）。未知不代表响应良好；2026-09-22 的 API 快照中有 55 个 open PR。
-- **采用广度：** Grade A——`easyocr` PyPI package 上月下载量为 2,090,951，依赖仓库数为 671；2026-09-22 时 GitHub 仓库另有 30,017 stars。
+- **采用广度：** Grade A——`easyocr` PyPI package 上月下载量为 2,005,340，依赖仓库数为 671；2026-09-22 时 GitHub 仓库另有 30,017 stars。
 - **长青度：** Grade C——仓库已创建 2,383 天，最近提交距评分 291 天。六年存续是真实信号，但缺少当前代码整合时，年龄只能提供较弱 Lindy 信号。[推断]
 - **治理集中度：** Grade D——scorer 在过去 12 个月测得 1 名活跃维护者，承担 100% 的所测贡献；organization ownership 没有消除当前 bus factor 集中。
 - **风险与许可：** Grade A——仓库附带 Apache-2.0 license，GitHub 报告相同 SPDX identifier，scorer 在过去 36 个月未发现 relicense。主要选型风险是技术漂移，而不是许可限制。

@@ -152,10 +152,10 @@ The scheduler, integrations, memory pipeline and approval gate ship with the app
 ## Health & viability
 
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A on paper — median first-response 0.0h over 44 qualifying issues. Read it as a weak signal: in-window traffic is dominated by the maintainer's own triage, so it measures internal throughput more than outsider support.
+- **Responsiveness**: Grade A on paper — median first-response 0.0h over 50 qualifying issues. Read it as a weak signal: in-window traffic is dominated by the maintainer's own triage, so it measures internal throughput more than outsider support.
 - **Adoption**: Grade B.
 - **Longevity**: Grade C — 216 days old.
-- **Governance / bus factor**: Grade B in the scorer's 12-month window (175 active maintainers, top-1 share 45.4%, top-3 85%), but the lifetime API is blunter — the creator holds ~63% of 21,280 commits and issue traffic sits with two accounts, so the roadmap is effectively one person's.
+- **Governance / bus factor**: Grade B in the scorer's 12-month window (175 active maintainers, top-1 share 46.2%, top-3 85.7%), but the lifetime API is blunter — the creator holds ~63% of 21,280 commits and issue traffic sits with two accounts, so the roadmap is effectively one person's.
 - **Risk flags**: `GPL-3.0-only` grades D on permissiveness (strong network copyleft, no relicense in 36 months) — embedding it in proprietary software is the wrong shape; the core also ships a crypto wallet and a referral/rewards surface inside an agent that reads your mail and chat, and the engine is spread over 16 younger sibling repositories under one organization, so dependency count multiplies rather than diversifies.
 
 ## Caveats (unverified)

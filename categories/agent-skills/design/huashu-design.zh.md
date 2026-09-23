@@ -103,7 +103,7 @@ Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTM
 - **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-02T03:49:28Z`；health 将维护评为 A。
 - **采用快照：** 2026-07 约 21,518 个 GitHub stars，但项目很年轻，star 速度可能更多反映社交关注，而不是生产可靠性。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT；README 说明项目自 2026-05-14 起改为 MIT。
-- **Lindy / 治理：** repo 很年轻，所以 health 中 longevity 为 D；治理为 C，维护者集中度较高。
+- **Lindy / 治理：** repo 很年轻，所以 health 中 longevity 为 C；治理为 C，维护者集中度较高。
 - **风险信号：** 输出质量取决于 agent、可用品牌资产、本地浏览器 / 媒体工具，以及用户是否愿意视觉验收 artifact。
 
 ## 存疑（未验证）

@@ -99,7 +99,7 @@ The template targets Next.js 16, React 19, TypeScript strict, shadcn/ui, Tailwin
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-04T06:49:18Z`; health scores maintenance as B.
 - **Adoption snapshot:** ~28,523 GitHub stars as of 2026-07; strong attention signal for a young template, not proof that every target site can be reconstructed safely.
 - **License snapshot:** MIT verified from upstream README badge, README license section, and root `LICENSE`.
-- **Lindy / governance:** health longevity is C and governance is D because the project is young and contribution is concentrated.
+- **Lindy / governance:** health longevity is C and governance is C because the project is young and contribution is concentrated.
 - **Risk flags:** legal authorization, target-site terms, browser access, asset rights, and post-generation QA matter more than the template itself.
 
 ## Caveats (unverified)

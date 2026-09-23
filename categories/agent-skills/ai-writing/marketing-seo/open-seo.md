@@ -120,7 +120,7 @@ It also exposes an OpenSEO MCP server plus prebuilt Agent Skills (`seo-project-s
 - **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2026-07-15T17:12:05Z`; health scores maintenance as A.
 - **Adoption snapshot:** ~4,337 GitHub stars as of 2026-07; useful attention signal but not proof of commercial-suite parity.
 - **License snapshot:** MIT verified from root `LICENSE` in the read-only upstream check.
-- **Lindy / governance:** health longevity is D and governance is D because the app is young and contribution is concentrated.
+- **Lindy / governance:** health longevity is C and governance is D because the app is young and contribution is concentrated.
 - **Risk flags:** DataForSEO spend, unauthenticated local Docker defaults, self-hosting exposure, OAuth secrets, and SEO-data freshness all need operational review.
 
 ## Caveats (unverified)

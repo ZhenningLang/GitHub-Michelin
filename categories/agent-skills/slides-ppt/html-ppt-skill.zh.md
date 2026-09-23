@@ -96,10 +96,10 @@ HTML PPT Studio——AgentSkill，内置 36 个主题、15 个 full-deck templat
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-04-26T07:13:39Z`；health 将维护评为 B。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-04-26T07:13:39Z`；health 将维护评为 C。
 - **采用快照：** 2026-07 约 7,185 个 GitHub stars；相关但仍是年轻 skill，长期证据有限。
 - **许可证快照：** 只读上游核验确认 README 和根目录 `LICENSE` 均为 MIT。
-- **Lindy / 治理：** health 中 longevity 为 C、governance 为 C；没有废弃，但还不足以视为长期 presentation 标准。
+- **Lindy / 治理：** health 中 longevity 为 C、governance 为 D；没有废弃，但还不足以视为长期 presentation 标准。
 - **风险信号：** 大 catalog 是优势，也会增加视觉不一致风险，除非 agent 小心选择和应用模板。
 
 ## 存疑（未验证）
