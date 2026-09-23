@@ -98,8 +98,8 @@ The schema is the contract: **`tools/schema.md`**. In short:
   `Health & viability` / `健康度与可持续性` **section** — a dated, labeled viability verdict
   (maintenance, governance/bus-factor, backing, **age/Lindy**, adoption, risk flags; see schema §7)
   — **and ends with a** `Caveats (unverified)` / `存疑（未验证）` **ledger** — the uncertainty list.
-  Optional leftover bin: `Callouts` / `指指点点` (after When to use, before How it works) for human
-  judgment the template would drop — portable takeaways, marketing stripped, disguise named.
+  Optional leftover bin: `Q&A` / `快问快答` (after When to use, before How it works) — the human's
+  questions from the reading conversation, and short versions of the agent's answers.
   Omit when empty; both siblings must match.
 - **Bilingual**: the two files are monolingual mirrors — do NOT mix languages inside one file.
 - **Truth labeling**: anything not confirmed from a source is `[未验证]` / `[推断]`. Date your

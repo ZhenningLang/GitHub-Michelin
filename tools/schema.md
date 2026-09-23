@@ -101,7 +101,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
 | `## When to use` | `## 何时使用` | **all types** | the **trigger scenario** (see below) — the concrete situation in which you should think of this project, and why it beats its substitutes there |
-| `## Callouts` | `## 指指点点` | **optional, all types** | leftover human judgment the template would drop or distort — portable developer takeaways, marketing stripped off, disguise named. Omit the heading when there is nothing leftover |
+| `## Q&A` | `## 快问快答` | **optional, all types** | leftover from the reading conversation: the human's questions, and short versions of the agent's answers. Omit the heading when there is nothing leftover |
 | `## How it works` | `## 怎么用起来` | **all types** (backfill in progress — see below) | the **backbone user story**: a plain-language mechanism paragraph + a generated two-lane flow card (you do / it does) — how you actually put it to work once chosen |
 | `## When NOT to use` | `## 何时不用` | **all types** | anti-patterns, scale ceilings, lock-in, maintenance risk — **the most valuable section** |
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
@@ -125,13 +125,12 @@ per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden se
 inferred fact gets one `[未验证]` / `[推断]` bullet. This is the single place uncertainty is collected;
 the linter ERRORs if it is missing. See §3 for how it interacts with inline labels.
 
-**Callouts / 指指点点 is optional — it is the leftover bin, not a new taxonomy.** After the
-required sections are written, put here what a human/agent reading conversation actually figured
-out that those sections have no slot for: judgments that are generally true for developers,
-and the stripping of marketing or disguise. Messy is allowed. Chat logs, empty headings, and
-anything that already belongs in When to use / When NOT / Comparison / How it works / Health
-are not. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry
-the heading (`## Callouts` / `## 指指点点`), the body is non-empty, and the section sits after
+**Q&A / 快问快答 is optional — leftover from the reading conversation.** After When to use is
+written, put here the questions the human actually asked that the template has no slot for, and
+short versions of the agent's answers. Not a transcript, not an essay. Empty headings and
+anything already covered by When to use / How it works / When NOT / Comparison / Health do not
+belong. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry
+the heading (`## Q&A` / `## 快问快答`), the body is non-empty, and the section sits after
 When to use and before How it works (or before When NOT, if How it works is still missing).
 Golden example: `prime-agent`.
 
@@ -212,7 +211,7 @@ between a reader who agrees and a reader who recognizes their own situation.
 
 This section answers **"I've chosen it — how do I put it to work, and what does it do for me?"** —
 the *post-selection* angle, and the one a reader cannot get from `When to use`. It has exactly two
-authored parts, in this order, placed **between `When to use` (or `Callouts` / `指指点点`, if
+authored parts, in this order, placed **between `When to use` (or `Q&A` / `快问快答`, if
 present) and `When NOT to use`**:
 
 1. **A plain-language mechanism paragraph** (3–6 sentences). Explain how it works underneath in the
