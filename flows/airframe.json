@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "them": {"en": "Airframe does", "zh": "Airframe 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the crate to your Rust project", "zh": "把 crate 加进你的 Rust 项目", "code": "airframe = \"0.4\""},
+    {"lane": "you", "en": "Load a GGUF file and call generate", "zh": "加载一个 GGUF 文件并调用生成", "code": "GpuRuntime::load(\"path/to/model.gguf\").await?"},
+    {"lane": "them", "en": "Runs the transformer as WGSL compute shaders on any WebGPU device", "zh": "把模型计算跑成 WGSL 着色器，在任意 WebGPU 显卡上执行", "component": {"en": "wgpu runtime", "zh": "wgpu 运行时"}}
+  ],
+  "value": {"en": "GPU inference inside a pure-Rust build — no C++ toolchain, no CUDA install, no Python", "zh": "在纯 Rust 工程里获得 GPU 推理——不要 C++ 工具链、不要 CUDA、不要 Python"},
+  "sources": ["airframe README.md Quick Start: `[dependencies] airframe = \"0.4\"`; `GpuRuntime::load(\"path/to/model.gguf\").await?`"]
+}

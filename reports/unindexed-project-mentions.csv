@@ -139,6 +139,7 @@ Caddy (automatic HTTPS),categories/dev-utilities/ops-infra/certbot.md,,no
 Caddy + plugins (Go),categories/nginx-modules/lua-nginx-module.md,,no
 CadQuery / build123d,categories/cad/freecad.md,,no
 Canal (Alibaba),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
+candle,categories/llm-inference/local-runtimes/airframe.md,,no
 Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.md,,no
 CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
 CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
@@ -447,6 +448,7 @@ LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
+LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
 Logitech Options+ (official),categories/peripherals/logiops.md,,no
 Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no
@@ -494,6 +496,7 @@ MiDaS / DPT (Intel ISL),categories/ml-research/depth-anything-v2.md,,no
 Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
 Miniflux,categories/reading-tools/netnewswire.md,,no
 MinIO,categories/document-management/copyparty.md,,no
+mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no

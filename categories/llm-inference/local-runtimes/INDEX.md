@@ -13,6 +13,8 @@
 | **omlx** | Use it when you want a Mac (Apple Silicon) local LLM inference server on MLX with SSD-tiered KV caching — a young single-maintainer repo with a suspicious star count. | B (5/6) | [→](omlx.md) |
 | **MTPLX** | Use it when you want the model's own MTP heads to exact-speculatively decode Qwen 3.8 at ~2x plain speed on a Mac with an OpenAI/Anthropic server and app — accepting a ~5-month-old, author-dominated repo and an in-product attribution NOTICE. | B (6/6) | [→](mtplx.md) |
 | **AirLLM** | Use it when a model will not fit your card in the form you need and wall-clock time is free — a library that streams the checkpoint off disk one layer at a time so VRAM costs one layer, at seconds-to-minutes per token. | B (6/6) | [→](airllm.md) |
+| **Shimmy** | Use it when you have GGUF files on disk and want an OpenAI/Ollama/Anthropic-compatible API from one Rust binary with zero runtime dependencies — accepting a one-year-old single-maintainer project whose engine certifies only 26 model+quant combinations. | B (6/6) | [→](shimmy.md) |
+| **Airframe** | Use it when you embed GGUF inference in your own Rust program and need a pure-Rust build with one-shader-language GPU coverage (WebGPU) — accepting a six-month-old, single-contributor engine with 12 certified architecture families and a pending-patent subsystem. | C (4/6) | [→](airframe.md) |
 
 ## Comparison matrix
 
@@ -24,6 +26,8 @@
 | [omlx](omlx.md) | ✅ | B (5/6) | Mac-only MLX server with SSD-tiered KV caching; young, effectively single-maintainer. |
 | [MTPLX](mtplx.md) | ✅ | B (6/6) | Mac-only exact MTP speculative decoding for Qwen 3.8; author-dominated, attribution NOTICE, non-Qwen models fall back to AR.
 | [AirLLM](airllm.md) | ✅ | — | Layer-streaming library that runs a 70B/671B-class model on a 4–12GB card by keeping one layer on the device; the price is a disk read per token (users report 28.6 s/token on a 3B) and a compression option that measures slower, not faster. | |
+| [Shimmy](shimmy.md) | ✅ | — | Single Rust binary serving OpenAI/Ollama/Anthropic-compatible APIs from a GGUF path, auto-discovering Ollama/HF model dirs; the engine (Airframe) certifies only 26 model+quant combos, and its LICENSE file contradicts its Cargo.toml (Apache-2.0 vs MIT). |
+| [Airframe](airframe.md) | ✅ | — | Pure-Rust WebGPU (WGSL) GGUF inference engine — `cargo build` covers NVIDIA/AMD/Intel/Apple Silicon; young, single-contributor, no LICENSE file, and the FSE subsystem carries a pending US patent. |
 
 ## What belongs here
 
