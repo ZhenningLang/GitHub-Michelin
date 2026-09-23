@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T18:10:08Z
+  computed_at: 2026-09-22T16:36:53Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 6
+        last_commit_age_days: 74
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -40,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 408
-        last_commit_age_days: 6
+        repo_age_days: 476
+        last_commit_age_days: 74
         cohort: service
     governance:
       grade: D
@@ -60,7 +61,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: registry_lookup_failed }
+    adoption: { reason: no_package_structural }
 ---
 
 # Screenshot Service

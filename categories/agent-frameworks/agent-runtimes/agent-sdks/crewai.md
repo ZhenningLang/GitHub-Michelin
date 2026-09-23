@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:17:00Z
+  computed_at: 2026-09-22T17:31:04Z
   overall: A
-  overall_score: 3.5
-  scored_axes: 6
+  overall_score: 3.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 13.3
-        qualifying_issues: 22
-        band: default
-        window_offset_days: 8
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: crewai-tools
         dependent_repos_count: 0
-        downloads_last_month: 11752156
+        downloads_last_month: 7309923
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.7
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 983
-        last_commit_age_days: 4
+        repo_age_days: 1062
+        last_commit_age_days: 0
         cohort: framework
     governance:
-      grade: B
+      grade: A
       raw:
         active_maintainers_12mo: 27
-        top1_share: 0.477
-        top3_share: 0.706
+        top1_share: 0.374
+        top3_share: 0.649
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 # CrewAI
 

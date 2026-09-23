@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T12:27:04Z
+  computed_at: 2026-09-22T17:11:05Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 1.5
-        qualifying_issues: 12
+        median_ttfr_hours: 105.0
+        qualifying_issues: 3
         band: default
         window_offset_days: 6
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: A
       raw:
-        registry: pypi.org
-        canonical_package: cua-auto
+        registry: npmjs.org
+        canonical_package: "@trycua/cua-driver-linux-x64-gnu"
         dependent_repos_count: 0
-        downloads_last_month: 62348
+        downloads_last_month: 7562030
         graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
+        volume_tier: A
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 603
+        homebrew_tier: B
+        release_downloads: 1847291
+        release_assets: 1246
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 521
-        last_commit_age_days: 1
+        repo_age_days: 599
+        last_commit_age_days: 0
         cohort: framework
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 65
-        top1_share: 0.296
-        top3_share: 0.692
+        active_maintainers_12mo: 80
+        top1_share: 0.434
+        top3_share: 0.724
         window_source: stats_contributors
         carve_out: null
     risk_license:

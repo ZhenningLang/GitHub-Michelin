@@ -16,46 +16,45 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-08T03:50:16Z
+  computed_at: 2026-09-22T16:59:18Z
   overall: C
-  overall_score: 2.0
+  overall_score: 1.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 22
-        active_weeks_13: 6
+        last_commit_age_days: 63
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: D
       raw:
         registry: null
         canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+        release_downloads: 63
+        release_assets: 18
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 60
-        last_commit_age_days: 22
+        repo_age_days: 137
+        last_commit_age_days: 63
         cohort: tool
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 4
-        top1_share: 0.979
+        top1_share: 0.98
         top3_share: 0.995
         window_source: stats_contributors
         carve_out: null

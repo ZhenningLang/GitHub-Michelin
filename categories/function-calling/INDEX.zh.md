@@ -7,14 +7,14 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Functionary** | 只把当它开源 JSON Schema 函数调用的历史参考——它已废弃；生产环境请服务当前模型或走端侧。 | B（3/6） | [→](functionary.zh.md) |
+| **Functionary** | 只把当它开源 JSON Schema 函数调用的历史参考——它已废弃；生产环境请服务当前模型或走端侧。 | B（4/6） | [→](functionary.zh.md) |
 
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Functionary](functionary.zh.md) | ✅ | B（3/6） | 早期开源函数调用模型的代表作（JSON Schema 工具、vLLM/SGLang 服务）——现已废弃，仅作模式来源。 |
+| [Functionary](functionary.zh.md) | ✅ | B（4/6） | 早期开源函数调用模型的代表作（JSON Schema 工具、vLLM/SGLang 服务）——现已废弃，仅作模式来源。 |
 | FunctionGemma（Google）/ 云端工具 API | 未收录 | — | 页面里点到的其他函数调用模型与 API——一个是模型卡，其余是托管服务，均非本索引收录的仓库。 |
 
 ## 什么该放这里

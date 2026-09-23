@@ -16,32 +16,33 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:49:03Z
+  computed_at: 2026-09-22T15:53:36Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 2
+        last_commit_age_days: 83
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 37
-        last_commit_age_days: 2
+        repo_age_days: 118
+        last_commit_age_days: 83
         cohort: skill-pack
     governance:
       grade: "?"
@@ -55,8 +56,9 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Guizang Social Card Skill

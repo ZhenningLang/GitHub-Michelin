@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:58:58Z
+  computed_at: 2026-09-22T17:15:40Z
   overall: A
   overall_score: 4.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,35 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.2
-        qualifying_issues: 43
+        median_ttfr_hours: 8.4
+        qualifying_issues: 44
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: npmjs.org
+        canonical_package: "@mui/material"
+        dependent_repos_count: 163982
+        downloads_last_month: 36513050
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.0
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4340
+        repo_age_days: 4418
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 43
-        top1_share: 0.191
-        top3_share: 0.448
+        active_maintainers_12mo: 42
+        top1_share: 0.182
+        top3_share: 0.464
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: registry_lookup_failed }
 ---
 # Material UI (MUI)
 

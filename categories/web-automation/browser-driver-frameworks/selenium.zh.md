@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:44:37Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T17:12:09Z
+  overall: A
+  overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,41 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 12.6
-        qualifying_issues: 38
+        median_ttfr_hours: 21.8
+        qualifying_issues: 40
         band: default
         window_offset_days: 1
+        source: issue
+        inferred: false
     adoption:
-      grade: E
+      grade: A
       raw:
-        registry: gem.coop
-        canonical_package: selenium-webdriver
+        registry: nuget.org
+        canonical_package: selenium.support
         dependent_repos_count: 0
-        downloads_last_month: 345857423
+        downloads_last_month: 128246077
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: A
         cross_check_divergence: null
+        homebrew_installs_90d: 1019
+        homebrew_tier: B
+        release_downloads: 33478704
+        release_assets: 684
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4918
+        repo_age_days: 4999
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 45
-        top1_share: 0.252
-        top3_share: 0.513
+        active_maintainers_12mo: 39
+        top1_share: 0.354
+        top3_share: 0.603
         window_source: stats_contributors
         carve_out: null
     risk_license:

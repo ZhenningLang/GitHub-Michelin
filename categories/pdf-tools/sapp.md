@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-17T03:33:46Z
+  computed_at: 2026-09-22T16:54:11Z
   overall: B
-  overall_score: 3.0
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 28
-        active_weeks_13: 2
-        carve_out: null
+        last_commit_age_days: 6
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,22 +41,23 @@ health:
         registry: packagist.org
         canonical_package: ddn/sapp
         dependent_repos_count: 1
-        downloads_last_month: 77817
+        downloads_last_month: 87926
         graph_tier: D
         volume_tier: B
-        cross_check_divergence: 24.9
+        cross_check_divergence: 21.86
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2080
-        last_commit_age_days: 28
+        repo_age_days: 2147
+        last_commit_age_days: 6
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 4
-        top1_share: 0.6
-        top3_share: 0.933
+        active_maintainers_12mo: 3
+        top1_share: 0.727
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:

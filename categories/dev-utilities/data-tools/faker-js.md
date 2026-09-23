@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:33:49Z
+  computed_at: 2026-09-22T16:09:14Z
   overall: A
-  overall_score: 3.8
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.1
+        median_ttfr_hours: 1.6
         qualifying_issues: 12
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@faker-js/faker"
         dependent_repos_count: 17617
-        downloads_last_month: 65781383
+        downloads_last_month: 64398665
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.0
+        release_downloads: 716
+        release_assets: 51
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1638
+        repo_age_days: 1719
         last_commit_age_days: 0
         cohort: library
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.256
-        top3_share: 0.59
+        active_maintainers_12mo: 16
+        top1_share: 0.401
+        top3_share: 0.631
         window_source: stats_contributors
         carve_out: null
     risk_license:

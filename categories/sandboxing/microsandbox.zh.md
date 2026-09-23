@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T02:19:38Z
+  computed_at: 2026-09-22T17:01:46Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -46,19 +47,29 @@ health:
         registry: npmjs.org
         canonical_package: microsandbox
         dependent_repos_count: 0
-        downloads_last_month: 526504
+        downloads_last_month: 522886
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.03
+        release_downloads: 304146
+        release_assets: 1211
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 718
+        repo_age_days: 719
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        active_maintainers_12mo: 51
+        top1_share: 0.44
+        top3_share: 0.861
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -66,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    governance: { reason: empty_or_gated }
 ---
 
 # Microsandbox

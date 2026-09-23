@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T11:25:50Z
+  computed_at: 2026-09-22T17:35:13Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,20 +42,26 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 76418
+        release_assets: 1386
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 107
+        repo_age_days: 108
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 17
-        top1_share: 0.595
-        top3_share: 0.952
+        top1_share: 0.596
+        top3_share: 0.953
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # OpenResearch

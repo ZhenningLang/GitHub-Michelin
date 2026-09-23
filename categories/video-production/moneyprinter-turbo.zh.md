@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T10:52:07Z
-  overall: A
-  overall_score: 3.75
-  scored_axes: 4
+  computed_at: 2026-09-22T17:52:56Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,30 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.1
-        qualifying_issues: 41
+        median_ttfr_hours: 11.5
+        qualifying_issues: 44
         band: relaxed_solo
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 109793
+        release_assets: 14
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: B
       raw:
-        repo_age_days: 921
-        last_commit_age_days: 0
+        repo_age_days: 926
+        last_commit_age_days: 1
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        active_maintainers_12mo: 74
+        top1_share: 0.47
+        top3_share: 0.596
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -59,9 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
-    governance: { reason: empty_or_gated }
 ---
 
 # MoneyPrinterTurbo

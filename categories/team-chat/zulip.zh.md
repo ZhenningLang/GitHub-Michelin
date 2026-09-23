@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T02:13:35Z
+  computed_at: 2026-09-22T17:06:13Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,32 +29,38 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 6.2
-        qualifying_issues: 55
+        median_ttfr_hours: 5.9
+        qualifying_issues: 56
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 14185
+        release_assets: 100
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4011
-        last_commit_age_days: 0
+        repo_age_days: 4015
+        last_commit_age_days: 1
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 82
-        top1_share: 0.115
+        active_maintainers_12mo: 81
+        top1_share: 0.114
         top3_share: 0.29
         window_source: stats_contributors
         carve_out: null
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Zulip

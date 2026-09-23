@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:47:50Z
+  computed_at: 2026-09-22T15:53:36Z
   overall: B
   overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 11
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 161
-        last_commit_age_days: 0
+        repo_age_days: 242
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 24
-        top1_share: 0.432
-        top3_share: 0.695
+        active_maintainers_12mo: 30
+        top1_share: 0.401
+        top3_share: 0.641
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Anthropic Knowledge Work Plugins

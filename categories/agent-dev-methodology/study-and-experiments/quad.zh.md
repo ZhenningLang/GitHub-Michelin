@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-17T03:22:19Z
+  computed_at: 2026-09-22T17:30:31Z
   overall: D
-  overall_score: 0.75
-  scored_axes: 4
+  overall_score: 0.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: Proprietary"
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 183
-        active_weeks_13: 0
+        last_commit_age_days: 13
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
@@ -48,12 +49,17 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 198
-        last_commit_age_days: 183
+        repo_age_days: 266
+        last_commit_age_days: 13
         cohort: framework
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 1
+        top1_share: 1.0
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: E
       raw:
@@ -63,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    governance: { reason: unattributable }
 ---
 
 # QUAD Framework

@@ -16,39 +16,46 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:44:02Z
+  computed_at: 2026-09-22T17:38:21Z
   overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  overall_score: 3.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
         last_commit_age_days: 1
-        active_weeks_13: 3
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 215
+        registry: null
+        canonical_package: null
+        release_downloads: 8543
+        release_assets: 7
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 296
         last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 56
-        top1_share: 0.309
-        top3_share: 0.539
+        active_maintainers_12mo: 92
+        top1_share: 0.232
+        top3_share: 0.414
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # UI UX Pro Max Skill

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:49:41Z
+  computed_at: 2026-09-22T16:42:23Z
   overall: D
-  overall_score: 0.8
+  overall_score: 1.0
   scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 106
+        last_commit_age_days: 187
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -46,10 +47,10 @@ health:
         cross_check_divergence: null
         archived: false
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 107
-        last_commit_age_days: 106
+        repo_age_days: 188
+        last_commit_age_days: 187
         cohort: tool
     governance:
       grade: D
@@ -67,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: too_young }
+    responsiveness: { reason: no_traffic }
 ---
 
 # llm-circuit-finder

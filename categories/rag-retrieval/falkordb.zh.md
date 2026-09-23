@@ -16,51 +16,61 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:54:16Z
-  overall: A
-  overall_score: 3.75
-  scored_axes: 4
-  capped: false
-  cap_reason: null
+  computed_at: 2026-09-22T16:57:09Z
+  overall: D
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
+  capped: true
+  cap_reason: "source-available/no-license: NOASSERTION"
   needs_human_review: false
   axes:
     maintenance:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 9
-        active_weeks_13: 12
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.4
-        qualifying_issues: 13
+        median_ttfr_hours: 0.8
+        qualifying_issues: 33
         band: relaxed_solo
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: B
+      grade: D
       raw:
-        repo_age_days: 1079
-        last_commit_age_days: 9
+        registry: null
+        canonical_package: null
+        release_downloads: 70360
+        release_assets: 616
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: A
+      raw:
+        repo_age_days: 1160
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 16
-        top1_share: 0.38
-        top3_share: 0.68
+        active_maintainers_12mo: 15
+        top1_share: 0.264
+        top3_share: 0.62
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    adoption: { reason: ambiguous }
-    risk_license: { reason: license_unparsed }
+      grade: E
+      raw:
+        spdx_id: NOASSERTION
+        permissiveness: source_available
+        relicense_36mo: false
+        content_license: null
 ---
 
 # FalkorDB

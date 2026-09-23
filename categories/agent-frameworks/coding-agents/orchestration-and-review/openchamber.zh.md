@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T15:47:03Z
-  overall: C
-  overall_score: 2.4
+  computed_at: 2026-09-22T17:34:52Z
+  overall: B
+  overall_score: 3.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,27 +36,34 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: B
       raw:
-        registry: open-vsx.org
-        canonical_package: FedaykinDev/openchamber
+        registry: npmjs.org
+        canonical_package: "@openchamber/sdk"
         dependent_repos_count: 0
-        downloads_last_month: 244743
+        downloads_last_month: null
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
+        homebrew_installs_90d: 953
+        homebrew_tier: B
+        release_downloads: 4677574
+        release_assets: 1613
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 374
+        repo_age_days: 376
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.678
-        top3_share: 0.742
+        top1_share: 0.671
+        top3_share: 0.736
         window_source: stats_contributors
         carve_out: null
     risk_license:

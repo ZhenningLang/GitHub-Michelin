@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:48:33Z
+  computed_at: 2026-09-23T03:11:36Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,42 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
+        median_ttfr_hours: 0.8
         qualifying_issues: 47
         band: default
         window_offset_days: 6
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/jaegertracing/jaeger
+        dependent_repos_count: 1141
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 13358904
+        release_assets: 2555
+        release_tier: A
+        docker_pulls: 9663139
+        docker_image: jaegertracing/jaeger
+        docker_tier: C
+        signal_basis: releases+docker
+        tier_source: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 3734
+        repo_age_days: 3812
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 36
-        top1_share: 0.465
-        top3_share: 0.655
+        active_maintainers_12mo: 30
+        top1_share: 0.567
+        top3_share: 0.716
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +80,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # Jaeger
 

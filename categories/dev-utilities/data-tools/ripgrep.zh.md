@@ -16,50 +16,60 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:13:00Z
+  computed_at: 2026-09-23T03:03:17Z
   overall: B
-  overall_score: 2.83
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: false
+  needs_human_review: true
   axes:
     maintenance:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 5
+        last_commit_age_days: 50
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 54.5
-        qualifying_issues: 16
+        median_ttfr_hours: 13.2
+        qualifying_issues: 22
         band: relaxed_solo
         window_offset_days: 8
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
-        registry: conda-forge.org
+        registry: crates.io
         canonical_package: ripgrep
-        dependent_repos_count: 86
-        downloads_last_month: 13080989
+        dependent_repos_count: 1
+        downloads_last_month: 1575197
         graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
+        volume_tier: A
+        cross_check_divergence: 13.39
+        homebrew_installs_90d: 213088
+        homebrew_tier: A
+        release_downloads: 53737933
+        release_assets: 678
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3767
-        last_commit_age_days: 2
+        repo_age_days: 3848
+        last_commit_age_days: 50
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.892
-        top3_share: 0.931
+        active_maintainers_12mo: 6
+        top1_share: 0.842
+        top3_share: 0.95
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,36 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:21:59Z
-  overall: D
-  overall_score: 1.33
-  scored_axes: 3
+  computed_at: 2026-09-22T17:50:15Z
+  overall: B
+  overall_score: 2.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: E
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 973
-        active_weeks_13: 0
+        last_commit_age_days: 13
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: E
+      grade: B
       raw:
-        repo_age_days: 3815
-        last_commit_age_days: 973
+        registry: proxy.golang.org
+        canonical_package: github.com/gopherdata/gophernotes
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 53
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+    longevity:
+      grade: A
+      raw:
+        repo_age_days: 3896
+        last_commit_age_days: 13
         cohort: tool
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 1
+        top1_share: 1.0
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -55,8 +73,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
-    governance: { reason: unattributable }
 ---
 
 # gophernotes

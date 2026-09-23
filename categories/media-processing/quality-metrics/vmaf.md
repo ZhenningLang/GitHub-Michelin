@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:52:50Z
-  overall: B
-  overall_score: 3.0
+  computed_at: 2026-09-22T16:37:46Z
+  overall: A
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 11
+        last_commit_age_days: 6
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 41.2
-        qualifying_issues: 4
+        median_ttfr_hours: 11.1
+        qualifying_issues: 6
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: formulae.brew.sh
         canonical_package: libvmaf
         dependent_repos_count: 11
-        downloads_last_month: 97260
+        downloads_last_month: 58378
         graph_tier: D
-        volume_tier: "?"
+        volume_tier: B
         cross_check_divergence: null
+        homebrew_installs_90d: 196149
+        homebrew_tier: A
+        release_downloads: 40043
+        release_assets: 34
+        release_tier: D
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3798
-        last_commit_age_days: 3
+        repo_age_days: 3879
+        last_commit_age_days: 6
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 14
-        top1_share: 0.782
-        top3_share: 0.859
+        active_maintainers_12mo: 15
+        top1_share: 0.772
+        top3_share: 0.87
         window_source: stats_contributors
         carve_out: null
     risk_license:

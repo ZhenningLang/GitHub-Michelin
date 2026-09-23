@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:48:14Z
+  computed_at: 2026-09-22T15:47:29Z
   overall: C
   overall_score: 2.0
-  scored_axes: 4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 13
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: npmjs.org
+        canonical_package: "@caveman-ai/cli"
+        dependent_repos_count: 0
+        downloads_last_month: 96227
+        graph_tier: E
+        volume_tier: C
+        cross_check_divergence: null
+        release_downloads: 295401
+        release_assets: 342
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 103
-        last_commit_age_days: 13
+        repo_age_days: 171
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.626
-        top3_share: 0.716
+        active_maintainers_12mo: 72
+        top1_share: 0.717
+        top3_share: 0.78
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +73,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 # caveman
 

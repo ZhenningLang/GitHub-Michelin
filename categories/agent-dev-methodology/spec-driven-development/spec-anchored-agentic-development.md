@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T18:07:13Z
+  computed_at: 2026-09-22T17:29:53Z
   overall: B
   overall_score: 2.67
   scored_axes: 3
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 2
+        last_commit_age_days: 20
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: D
       raw:
-        repo_age_days: 13
-        last_commit_age_days: 8
+        repo_age_days: 81
+        last_commit_age_days: 20
         cohort: skill-pack
     governance:
       grade: "?"
@@ -55,8 +56,9 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Spec-Anchored Agentic Development

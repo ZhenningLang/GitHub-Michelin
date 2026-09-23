@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:24:21Z
+  computed_at: 2026-09-22T16:39:02Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,41 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 281
-        active_weeks_13: 0
-        carve_out: mature_library_lindy
+        last_commit_age_days: 27
+        active_weeks_13: 2
+        carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        median_ttfr_hours: 283.7
+        qualifying_issues: 9
+        band: default
+        window_offset_days: 2
+        source: pr
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: moviepy
         dependent_repos_count: 5431
-        downloads_last_month: 6211330
+        downloads_last_month: 5642863
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.29
+        tier_source: registry
     longevity:
-      grade: C
+      grade: A
       raw:
-        repo_age_days: 4708
-        last_commit_age_days: 281
+        repo_age_days: 4789
+        last_commit_age_days: 27
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 5
+        active_maintainers_12mo: 2
         top1_share: 0.5
-        top3_share: 0.75
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
 ---
 
 # MoviePy

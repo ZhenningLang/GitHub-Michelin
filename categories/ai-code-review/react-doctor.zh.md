@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:49:39Z
+  computed_at: 2026-09-22T15:56:44Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.6
-        qualifying_issues: 56
+        median_ttfr_hours: 0.2
+        qualifying_issues: 55
         band: relaxed_solo
         window_offset_days: 7
+        source: issue
+        inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: react-doctor
+        canonical_package: oxlint-plugin-react-doctor
         dependent_repos_count: 0
-        downloads_last_month: 2363597
+        downloads_last_month: 5826524
         graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 1.17
+        volume_tier: A
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 140
-        last_commit_age_days: 0
+        repo_age_days: 221
+        last_commit_age_days: 1
         cohort: tool
     governance:
-      grade: B
+      grade: C
       raw:
         active_maintainers_12mo: 17
-        top1_share: 0.586
-        top3_share: 0.939
+        top1_share: 0.65
+        top3_share: 0.935
         window_source: stats_contributors
         carve_out: null
     risk_license:

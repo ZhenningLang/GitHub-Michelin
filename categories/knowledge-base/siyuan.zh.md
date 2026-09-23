@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T15:53:29Z
+  computed_at: 2026-09-22T16:25:41Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.7
-        qualifying_issues: 7
+        median_ttfr_hours: 1.4
+        qualifying_issues: 8
         band: relaxed_solo
         window_offset_days: 10
         source: pr
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 274
+        homebrew_tier: C
+        release_downloads: 726632
+        release_assets: 900
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2211
-        last_commit_age_days: 3
+        repo_age_days: 2214
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 46
-        top1_share: 0.67
-        top3_share: 0.984
+        top1_share: 0.676
+        top3_share: 0.985
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # SiYuan

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:43:50Z
+  computed_at: 2026-09-22T16:31:01Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 85
-        active_weeks_13: 1
+        last_commit_age_days: 166
+        active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
       grade: "?"
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: colossalai
         dependent_repos_count: 63
-        downloads_last_month: 14927
+        downloads_last_month: 9715
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1709
-        last_commit_age_days: 85
+        repo_age_days: 1790
+        last_commit_age_days: 166
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.625
-        top3_share: 0.875
+        active_maintainers_12mo: 2
+        top1_share: 0.667
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Colossal-AI

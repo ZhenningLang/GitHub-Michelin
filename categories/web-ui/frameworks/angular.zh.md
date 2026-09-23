@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T16:15:40Z
+  computed_at: 2026-09-22T17:16:33Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 18
+        qualifying_issues: 28
         band: default
         window_offset_days: 11
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@angular/core"
         dependent_repos_count: 768558
-        downloads_last_month: 24664067
+        downloads_last_month: 20872075
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.05
+        release_downloads: 324
+        release_assets: 6
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4306
-        last_commit_age_days: 2
+        repo_age_days: 4387
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 90
-        top1_share: 0.167
-        top3_share: 0.368
+        active_maintainers_12mo: 89
+        top1_share: 0.162
+        top3_share: 0.36
         window_source: stats_contributors
         carve_out: null
     risk_license:

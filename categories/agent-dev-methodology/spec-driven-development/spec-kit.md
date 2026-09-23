@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:20Z
-  overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  computed_at: 2026-09-22T17:30:01Z
+  overall: A
+  overall_score: 3.75
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: pypi.org
         canonical_package: spec-kit-redist
@@ -44,20 +45,19 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        homebrew_installs_90d: 4842
+        homebrew_tier: A
+        signal_basis: homebrew
+        tier_source: homebrew
     longevity:
       grade: B
       raw:
-        repo_age_days: 315
-        last_commit_age_days: 1
+        repo_age_days: 397
+        last_commit_age_days: 0
         cohort: skill-pack
     governance:
-      grade: A
-      raw:
-        active_maintainers_12mo: 96
-        top1_share: 0.232
-        top3_share: 0.522
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -67,6 +67,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
+    governance: { reason: empty_or_gated }
 ---
 
 # Spec Kit

@@ -16,20 +16,21 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T09:17:33Z
+  computed_at: 2026-09-22T17:02:34Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 26
-        active_weeks_13: 5
+        last_commit_age_days: 1
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: B
@@ -41,19 +42,25 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 21487636
+        release_assets: 793
+        release_tier: A
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3160
-        last_commit_age_days: 26
+        repo_age_days: 3163
+        last_commit_age_days: 1
         cohort: service
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 9
-        top1_share: 0.812
+        top1_share: 0.813
         top3_share: 0.947
         window_source: stats_contributors
         carve_out: null
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Knative Serving

@@ -11,7 +11,7 @@
 | **Astro** | 当站点是内容集合、只需少数交互组件时用它——但交付物是带版本的文档站、或站点本质是全栈应用时不要用。 | A（5/6） | [→](astro.zh.md) |
 | **Docusaurus** | 当需要第一天就有带版本、可搜索、支持 i18n 的文档站时用它——但站点是通用内容站、或你宁愿自己组装文档那套家具时不要用。 | B（6/6） | [→](docusaurus.zh.md) |
 | **Lit** | 一个由 Google 出品的轻量级库，用于构建快速、可互操作的 Web Components。基于 Web Components 标准，无虚拟 DOM，运行时体积极小（lit-html 约 3 KB）。 | A（6/6） | [→](lit.zh.md) |
-| **Next.js** | 全栈 React 框架的默认选择，由 Vercel 创建并维护。内置 App Router、React Server Components、自动静态优化、ISR 和内置 API 层——与 Vercel 深度集成是「happy path」。 | A（5/6） | [→](nextjs.zh.md) |
+| **Next.js** | 全栈 React 框架的默认选择，由 Vercel 创建并维护。内置 App Router、React Server Components、自动静态优化、ISR 和内置 API 层——与 Vercel 深度集成是「happy path」。 | A（6/6） | [→](nextjs.zh.md) |
 | **Nextra** | 当文档必须活在既有 Next.js 应用里、一层薄 MDX 就够了时用它——但你需要版本化文档、或需要背后有较大维护团队的项目时不要用。 | B（6/6） | [→](nextra.zh.md) |
 | **Nuxt** | the full-stack Vue framework | A（6/6） | [→](nuxt.zh.md) |
 | **React** | 用于构建用户界面的声明式、组件化 JavaScript 库，由 Meta 维护。它是全球采用最广泛的 UI 库，从单页应用到通过 React Native 构建的原生移动应用都有它的身影。 | A（6/6） | [→](react.zh.md) |

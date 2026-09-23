@@ -16,47 +16,49 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:55:00Z
-  overall: C
-  overall_score: 2.33
+  computed_at: 2026-09-22T17:52:14Z
+  overall: D
+  overall_score: 1.0
   scored_axes: 3
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: D
       raw:
         archived: false
-        last_commit_age_days: 290
+        last_commit_age_days: 371
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 499
-        last_commit_age_days: 290
+        registry: null
+        canonical_package: null
+        docker_pulls: 7566
+        docker_image: hivenexus/hivechat
+        docker_tier: D
+        signal_basis: docker
+    longevity:
+      grade: D
+      raw:
+        repo_age_days: 581
+        last_commit_age_days: 371
         cohort: app
     governance:
-      grade: B
-      raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.409
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
+    governance: { reason: unattributable }
     risk_license: { reason: license_unparsed }
 ---
 

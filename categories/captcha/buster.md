@@ -16,38 +16,51 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-17T03:22:31Z
-  overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  computed_at: 2026-09-22T16:00:49Z
+  overall: C
+  overall_score: 2.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 20
-        active_weeks_13: 8
+        last_commit_age_days: 87
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 76.1
-        qualifying_issues: 7
+        median_ttfr_hours: 95.3
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 1
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/dessant/buster
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 67142
+        release_assets: 111
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2798
-        last_commit_age_days: 20
+        repo_age_days: 2865
+        last_commit_age_days: 87
         cohort: tool
     governance:
       grade: D
@@ -64,8 +77,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Buster

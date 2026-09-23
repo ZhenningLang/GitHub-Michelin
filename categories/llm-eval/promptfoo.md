@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:12:57Z
+  computed_at: 2026-09-22T16:27:19Z
   overall: A
-  overall_score: 3.67
-  scored_axes: 6
+  overall_score: 3.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,34 +35,32 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 48
+        median_ttfr_hours: 83.0
+        qualifying_issues: 33
         band: relaxed_solo
         window_offset_days: 10
+        source: issue
+        inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: promptfoo
         dependent_repos_count: 1
-        downloads_last_month: 415776
+        downloads_last_month: 2498046
         graph_tier: D
-        volume_tier: C
-        cross_check_divergence: null
+        volume_tier: B
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1162
+        repo_age_days: 1243
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: A
-      raw:
-        active_maintainers_12mo: 61
-        top1_share: 0.391
-        top3_share: 0.673
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -69,6 +68,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    governance: { reason: empty_or_gated }
 ---
 
 # promptfoo

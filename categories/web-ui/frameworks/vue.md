@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:15:09Z
+  computed_at: 2026-09-22T17:19:12Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 8
+        last_commit_age_days: 5
         active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.1
-        qualifying_issues: 46
+        median_ttfr_hours: 2.5
+        qualifying_issues: 56
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@vue/compiler-core"
         dependent_repos_count: 140641
-        downloads_last_month: 84373060
+        downloads_last_month: 81512722
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2943
-        last_commit_age_days: 8
+        repo_age_days: 3024
+        last_commit_age_days: 5
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 23
-        top1_share: 0.603
-        top3_share: 0.71
+        active_maintainers_12mo: 20
+        top1_share: 0.631
+        top3_share: 0.711
         window_source: stats_contributors
         carve_out: null
     risk_license:

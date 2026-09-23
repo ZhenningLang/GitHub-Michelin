@@ -17,20 +17,21 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T05:54:54Z
+  computed_at: 2026-09-22T16:34:36Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 77
-        active_weeks_13: 1
+        last_commit_age_days: 1
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: "?"
@@ -41,15 +42,16 @@ health:
         registry: npmjs.org
         canonical_package: "@mdx-js/react"
         dependent_repos_count: 103300
-        downloads_last_month: 77383406
+        downloads_last_month: 71436872
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3192
-        last_commit_age_days: 77
+        repo_age_days: 3195
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: C

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:42:16Z
+  computed_at: 2026-09-22T15:39:12Z
   overall: C
-  overall_score: 2.33
-  scored_axes: 6
+  overall_score: 2.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,16 +29,12 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 4
+        last_commit_age_days: 12
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 91.3
-        qualifying_issues: 5
-        band: relaxed_solo
-        window_offset_days: 13
+      grade: "?"
+      raw: {}
     adoption:
       grade: E
       raw:
@@ -50,10 +47,10 @@ health:
         cross_check_divergence: null
         archived: false
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 170
-        last_commit_age_days: 1
+        repo_age_days: 252
+        last_commit_age_days: 12
         cohort: tool
     governance:
       grade: C
@@ -70,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Claude Subconscious

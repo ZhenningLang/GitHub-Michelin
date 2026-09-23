@@ -16,50 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:46Z
+  computed_at: 2026-09-22T17:19:00Z
   overall: A
-  overall_score: 3.83
+  overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 13
+        last_commit_age_days: 0
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.7
-        qualifying_issues: 29
+        median_ttfr_hours: 8.1
+        qualifying_issues: 37
         band: default
         window_offset_days: 7
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: svelte
         dependent_repos_count: 56439
-        downloads_last_month: 7230385
+        downloads_last_month: 20786696
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 2.8
+        cross_check_divergence: 1.05
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3512
-        last_commit_age_days: 1
+        repo_age_days: 3593
+        last_commit_age_days: 0
         cohort: framework
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 56
-        top1_share: 0.467
-        top3_share: 0.725
+        active_maintainers_12mo: 58
+        top1_share: 0.381
+        top3_share: 0.709
         window_source: stats_contributors
         carve_out: null
     risk_license:

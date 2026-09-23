@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:50:48Z
+  computed_at: 2026-09-22T16:53:17Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 12
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 42.6
-        qualifying_issues: 20
+        median_ttfr_hours: 17.8
+        qualifying_issues: 13
         band: relaxed_solo
         window_offset_days: 6
         source: issue
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: ocrmypdf
         dependent_repos_count: 108
-        downloads_last_month: 857809
+        downloads_last_month: 1217669
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.03
+        release_downloads: 20579
+        release_assets: 178
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4581
-        last_commit_age_days: 3
+        repo_age_days: 4659
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 12
-        top1_share: 0.957
-        top3_share: 0.97
+        top1_share: 0.966
+        top3_share: 0.976
         window_source: stats_contributors
         carve_out: null
     risk_license:

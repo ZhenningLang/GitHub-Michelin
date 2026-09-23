@@ -16,43 +16,46 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:24Z
+  computed_at: 2026-09-22T17:43:14Z
   overall: B
-  overall_score: 3.0
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 83
-        active_weeks_13: 2
+        last_commit_age_days: 21
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 59.6
-        qualifying_issues: 11
+        median_ttfr_hours: 134.3
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
       grade: "?"
       raw: {}
     longevity:
       grade: B
       raw:
-        repo_age_days: 815
-        last_commit_age_days: 83
+        repo_age_days: 896
+        last_commit_age_days: 21
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 16
-        top1_share: 0.943
-        top3_share: 0.958
+        active_maintainers_12mo: 9
+        top1_share: 0.971
+        top3_share: 0.984
         window_source: stats_contributors
         carve_out: null
     risk_license:

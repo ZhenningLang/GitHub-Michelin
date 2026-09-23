@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T16:21:24Z
+  computed_at: 2026-09-22T16:06:44Z
   overall: C
-  overall_score: 2.0
-  scored_axes: 4
+  overall_score: 1.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,26 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 447
+        release_assets: 12
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 4
+        repo_age_days: 5
         last_commit_age_days: 0
         cohort: model
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 4
-        top1_share: 0.983
-        top3_share: 0.994
+        active_maintainers_12mo: 6
+        top1_share: 0.976
+        top3_share: 0.985
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Kev

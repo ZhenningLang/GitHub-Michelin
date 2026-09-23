@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:35:43Z
+  computed_at: 2026-09-22T17:42:18Z
   overall: A
   overall_score: 4.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,33 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.2
-        qualifying_issues: 46
+        median_ttfr_hours: 2.6
+        qualifying_issues: 45
         band: relaxed_solo
         window_offset_days: 5
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 43078599
+        release_assets: 999
+        release_tier: A
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3911
+        repo_age_days: 3989
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 112
-        top1_share: 0.24
-        top3_share: 0.425
+        active_maintainers_12mo: 131
+        top1_share: 0.237
+        top3_share: 0.388
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # DBeaver
 

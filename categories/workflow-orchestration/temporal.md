@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:03:10Z
+  computed_at: 2026-09-22T17:23:32Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,42 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 167.3
-        qualifying_issues: 47
+        median_ttfr_hours: 52.1
+        qualifying_issues: 29
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1056869
+        release_assets: 664
+        release_tier: B
+        docker_pulls: 4282196
+        docker_image: temporalio/temporal
+        docker_tier: C
+        signal_basis: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 2455
-        last_commit_age_days: 4
+        repo_age_days: 2533
+        last_commit_age_days: 1
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 52
-        top1_share: 0.16
-        top3_share: 0.292
+        active_maintainers_12mo: 57
+        top1_share: 0.166
+        top3_share: 0.273
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +74,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # Temporal
 

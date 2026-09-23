@@ -18,20 +18,21 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:19:39Z
+  computed_at: 2026-09-23T03:51:02Z
   overall: B
-  overall_score: 2.67
-  scored_axes: 3
+  overall_score: 2.5
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
         last_commit_age_days: 0
-        active_weeks_13: 5
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: A
@@ -52,14 +53,18 @@ health:
         last_commit_age_days: 0
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 12
+        top1_share: 0.844
+        top3_share: 0.891
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
     adoption: { reason: no_package_structural }
-    governance: { reason: empty_or_gated }
     risk_license: { reason: license_unparsed }
 ---
 

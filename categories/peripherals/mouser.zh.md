@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T03:53:36Z
+  computed_at: 2026-09-22T17:50:04Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,26 +29,32 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 38
+        last_commit_age_days: 41
         active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 54.1
-        qualifying_issues: 19
+        median_ttfr_hours: 40.3
+        qualifying_issues: 18
         band: relaxed_solo
         window_offset_days: 8
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 27669
+        release_assets: 42
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 207
-        last_commit_age_days: 38
+        repo_age_days: 210
+        last_commit_age_days: 41
         cohort: app
     governance:
       grade: A
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Mouser

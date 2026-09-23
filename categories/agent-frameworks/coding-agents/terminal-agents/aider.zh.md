@@ -16,26 +16,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:27:40Z
+  computed_at: 2026-09-22T17:35:54Z
   overall: B
-  overall_score: 3.17
+  overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 45
-        active_weeks_13: 5
+        last_commit_age_days: 123
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.2
-        qualifying_issues: 13
+        median_ttfr_hours: 8.7
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 3
         source: issue
@@ -46,22 +47,26 @@ health:
         registry: pypi.org
         canonical_package: aider-chat
         dependent_repos_count: 1
-        downloads_last_month: 712014
+        downloads_last_month: 362917
         graph_tier: D
         volume_tier: B
         cross_check_divergence: null
+        homebrew_installs_90d: 1833
+        homebrew_tier: B
+        signal_basis: homebrew
+        tier_source: registry
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 1154
-        last_commit_age_days: 45
+        repo_age_days: 1232
+        last_commit_age_days: 123
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 17
-        top1_share: 0.841
-        top3_share: 0.884
+        active_maintainers_12mo: 12
+        top1_share: 0.81
+        top3_share: 0.876
         window_source: stats_contributors
         carve_out: null
     risk_license:

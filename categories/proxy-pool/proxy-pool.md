@@ -16,32 +16,39 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:43Z
-  overall: A
-  overall_score: 3.5
-  scored_axes: 4
+  computed_at: 2026-09-22T16:55:13Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 18
-        active_weeks_13: 6
+        last_commit_age_days: 99
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: A
+      grade: D
       raw:
-        repo_age_days: 3507
-        last_commit_age_days: 18
+        registry: null
+        canonical_package: null
+        docker_pulls: 213228
+        docker_image: jhao104/proxy_pool
+        docker_tier: D
+        signal_basis: docker
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 3588
+        last_commit_age_days: 99
         cohort: app
     governance:
       grade: C
@@ -59,8 +66,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # proxy_pool

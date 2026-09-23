@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:59Z
+  computed_at: 2026-09-22T17:28:07Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 12
+        last_commit_age_days: 4
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 267
-        last_commit_age_days: 0
+        repo_age_days: 348
+        last_commit_age_days: 4
         cohort: skill-pack
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.761
-        top3_share: 0.919
+        active_maintainers_12mo: 47
+        top1_share: 0.751
+        top3_share: 0.894
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Superpowers

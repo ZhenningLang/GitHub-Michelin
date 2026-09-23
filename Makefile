@@ -52,7 +52,7 @@ upstream-check:
 	python3 tools/upstream_snapshot.py --page "$(PAGE)" --check
 
 test:
-	python3 -m unittest tools/test_health.py tools/test_health_audit.py tools/test_health_backfill.py tools/test_lint.py tools/test_quality_scan.py tools/test_upstream_snapshot.py tools/test_verify_quality_batch.py tools/test_flow_card.py tools/test_intake_sweep.py
+	python3 -m unittest tools/test_health.py tools/test_health_card.py tools/test_sync_health_to_body.py tools/test_health_audit.py tools/test_health_backfill.py tools/test_lint.py tools/test_quality_scan.py tools/test_upstream_snapshot.py tools/test_verify_quality_batch.py tools/test_flow_card.py tools/test_intake_sweep.py
 
 quality-scan:
 	python3 tools/quality_scan.py

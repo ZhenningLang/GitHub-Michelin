@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:43Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-22T17:45:49Z
+  overall: B
+  overall_score: 3.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,39 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 49
+        last_commit_age_days: 43
         active_weeks_13: 2
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 113.2
-        qualifying_issues: 4
+        median_ttfr_hours: 339.8
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 694015
+        release_assets: 642
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1211
-        last_commit_age_days: 49
+        repo_age_days: 1292
+        last_commit_age_days: 43
         cohort: app
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 4
-        top1_share: 0.417
-        top3_share: 0.917
+        active_maintainers_12mo: 2
+        top1_share: 0.944
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # NextChat

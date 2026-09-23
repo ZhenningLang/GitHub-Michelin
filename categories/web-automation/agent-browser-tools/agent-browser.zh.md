@@ -16,50 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:55:59Z
+  computed_at: 2026-09-22T17:09:29Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 6
+  overall_score: 3.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
-        active_weeks_13: 13
+        last_commit_age_days: 0
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 118.9
-        qualifying_issues: 13
-        band: relaxed_solo
-        window_offset_days: 12
+      grade: "?"
+      raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: agent-browser
         dependent_repos_count: 0
-        downloads_last_month: 2005864
+        downloads_last_month: 5145602
         graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 2.17
+        volume_tier: A
+        cross_check_divergence: 1.04
+        homebrew_installs_90d: 14532
+        homebrew_tier: A
+        release_downloads: 298313
+        release_assets: 623
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 173
-        last_commit_age_days: 7
+        repo_age_days: 254
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 96
-        top1_share: 0.67
-        top3_share: 0.766
+        top1_share: 0.649
+        top3_share: 0.734
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +73,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Agent Browser

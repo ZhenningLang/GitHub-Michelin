@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:07:23Z
+  computed_at: 2026-09-22T16:03:24Z
   overall: A
-  overall_score: 3.5
+  overall_score: 4.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,27 +36,32 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@metabase/embedding-sdk-react"
         dependent_repos_count: 0
-        downloads_last_month: 211490
+        downloads_last_month: 244900
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        docker_pulls: 272820557
+        docker_image: metabase/metabase
+        docker_tier: A
+        signal_basis: docker
+        tier_source: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4172
+        repo_age_days: 4250
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 121
-        top1_share: 0.061
-        top3_share: 0.147
+        active_maintainers_12mo: 115
+        top1_share: 0.058
+        top3_share: 0.164
         window_source: stats_contributors
         carve_out: null
     risk_license:

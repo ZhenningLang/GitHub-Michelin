@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:24:44Z
+  computed_at: 2026-09-22T15:55:56Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 17
-        active_weeks_13: 11
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: planning-with-files
+        dependent_repos_count: 0
+        downloads_last_month: 2294
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 181
-        last_commit_age_days: 17
+        repo_age_days: 262
+        last_commit_age_days: 0
         cohort: skill-pack
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 42
-        top1_share: 0.733
-        top3_share: 0.765
+        active_maintainers_12mo: 52
+        top1_share: 0.774
+        top3_share: 0.807
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Planning with Files

@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-03T08:16:29Z
+  computed_at: 2026-09-22T16:43:50Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 1
-        carve_out: mature_library_lindy
+        last_commit_age_days: 17
+        active_weeks_13: 5
+        carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,15 +41,16 @@ health:
         registry: pypi.org
         canonical_package: thriftpy
         dependent_repos_count: 286
-        downloads_last_month: 19000
+        downloads_last_month: 38919
         graph_tier: C
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4525
-        last_commit_age_days: 1
+        repo_age_days: 4606
+        last_commit_age_days: 17
         cohort: library
     governance:
       grade: D

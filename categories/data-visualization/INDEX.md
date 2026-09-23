@@ -8,7 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Apache Superset** | Use it when you want self-hosted SQL BI dashboards and exploration over a warehouse — not infra metrics/observability. | A (6/6) | [→](superset.md) |
-| **Evidence** | Business intelligence as code: build fast, interactive data visualizations in SQL and markdown | B (5/6) | [→](evidence.md) |
+| **Evidence** | Business intelligence as code: build fast, interactive data visualizations in SQL and markdown | A (6/6) | [→](evidence.md) |
 | **Metabase** | The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart: | A (4/6) | [→](metabase.md) |
 
 

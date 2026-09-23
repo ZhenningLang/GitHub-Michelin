@@ -7,17 +7,17 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **prompt-master** | A Claude skill that generates one-shot optimized prompts for 30+ AI tools (LLMs, coding agents, image/video/voice AI) via intent extraction, template routing, and a 37-pattern anti-pattern checklist. | B (4/6) | [→](prompt-master.md) |
-| **prompts.chat** | Self-hostable community platform for sharing, discovering, and collecting ready-made prompts (f.k.a. Awesome ChatGPT Prompts). | A (4/6) | [→](prompts-chat.md) |
-| **Prompt Engineering Guide** | Reference knowledge base (guides, papers, notebooks) for learning prompt/context engineering, RAG, and agent techniques. | C (4/6) | [→](prompt-engineering-guide.md) |
+| **prompt-master** | A Claude skill that generates one-shot optimized prompts for 30+ AI tools (LLMs, coding agents, image/video/voice AI) via intent extraction, template routing, and a 37-pattern anti-pattern checklist. | B (4/5) | [→](prompt-master.md) |
+| **prompts.chat** | Self-hostable community platform for sharing, discovering, and collecting ready-made prompts (f.k.a. Awesome ChatGPT Prompts). | B (5/6) | [→](prompts-chat.md) |
+| **Prompt Engineering Guide** | Reference knowledge base (guides, papers, notebooks) for learning prompt/context engineering, RAG, and agent techniques. | C (4/5) | [→](prompt-engineering-guide.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [prompt-master](prompt-master.md) | ✅ | B (4/6) | Generates a tailored prompt per request for a specific target tool; choose it over copying library prompts when the task is novel — but it is single-maintainer and its per-model routing advice decays fast. |
-| [prompts.chat](prompts-chat.md) | ✅ | A (4/6) | Browse and copy community-voted ready-made prompts, or self-host a prompt library for your org; no generation pipeline, quality varies per prompt. |
-| [prompt-engineering-guide](prompt-engineering-guide.md) | ✅ | C (4/6) | Learn the underlying techniques and research; it teaches principles rather than producing paste-ready prompts, and commit cadence has slowed. |
+| [prompt-master](prompt-master.md) | ✅ | B (4/5) | Generates a tailored prompt per request for a specific target tool; choose it over copying library prompts when the task is novel — but it is single-maintainer and its per-model routing advice decays fast. |
+| [prompts.chat](prompts-chat.md) | ✅ | B (5/6) | Browse and copy community-voted ready-made prompts, or self-host a prompt library for your org; no generation pipeline, quality varies per prompt. |
+| [prompt-engineering-guide](prompt-engineering-guide.md) | ✅ | C (4/5) | Learn the underlying techniques and research; it teaches principles rather than producing paste-ready prompts, and commit cadence has slowed. |
 
 ## What belongs here
 

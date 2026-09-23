@@ -16,39 +16,40 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:44:25Z
+  computed_at: 2026-09-22T17:38:45Z
   overall: B
-  overall_score: 2.75
+  overall_score: 2.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 19
-        active_weeks_13: 5
+        last_commit_age_days: 29
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 166
-        last_commit_age_days: 19
+        repo_age_days: 247
+        last_commit_age_days: 29
         cohort: skill-pack
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.636
-        top3_share: 0.909
+        top1_share: 0.667
+        top3_share: 0.917
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # web-quality-skills

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:01:10Z
+  computed_at: 2026-09-22T17:19:51Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,17 +29,17 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 69
+        last_commit_age_days: 75
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
-      grade: C
+      grade: A
       raw:
-        median_ttfr_hours: 590.5
+        median_ttfr_hours: 0.0
         qualifying_issues: 5
         band: default
         window_offset_days: 10
-        source: issue
+        source: pr
         inferred: false
     adoption:
       grade: B
@@ -46,15 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: react-joyride
         dependent_repos_count: 2453
-        downloads_last_month: 4417754
+        downloads_last_month: 4795547
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3966
-        last_commit_age_days: 69
+        repo_age_days: 4044
+        last_commit_age_days: 75
         cohort: library
     governance:
       grade: C

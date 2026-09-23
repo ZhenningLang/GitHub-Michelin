@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T09:54:08Z
+  computed_at: 2026-09-22T16:38:05Z
   overall: C
-  overall_score: 2.25
-  scored_axes: 4
+  overall_score: 2.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,26 +29,32 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 16
-        active_weeks_13: 3
+        last_commit_age_days: 84
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 63.4
-        qualifying_issues: 15
+        median_ttfr_hours: 220.5
+        qualifying_issues: 23
         band: relaxed_solo
         window_offset_days: 4
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 20475
+        release_assets: 5
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 83
-        last_commit_age_days: 16
+        repo_age_days: 151
+        last_commit_age_days: 84
         cohort: app
     governance:
       grade: D
@@ -58,11 +65,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    adoption: { reason: no_package_structural }
-    risk_license: { reason: repo_unreachable }
+      grade: A
+      raw:
+        spdx_id: MIT
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
 ---
 # claude-video
 

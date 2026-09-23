@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T06:52:17Z
+  computed_at: 2026-09-22T15:46:05Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
-        active_weeks_13: 11
+        last_commit_age_days: 8
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 202
-        last_commit_age_days: 7
+        repo_age_days: 203
+        last_commit_age_days: 8
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 # drawio-skill
 

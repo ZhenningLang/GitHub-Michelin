@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:55:40Z
-  overall: C
-  overall_score: 2.0
-  scored_axes: 6
+  computed_at: 2026-09-22T17:53:04Z
+  overall: B
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,39 +29,33 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 7
+        last_commit_age_days: 17
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 29.1
-        qualifying_issues: 29
+        median_ttfr_hours: 85.1
+        qualifying_issues: 21
         band: relaxed_solo
         window_offset_days: 3
+        source: issue
+        inferred: false
     adoption:
-      grade: E
-      raw:
-        registry: null
-        canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+      grade: "?"
+      raw: {}
     longevity:
       grade: D
       raw:
-        repo_age_days: 96
-        last_commit_age_days: 0
+        repo_age_days: 177
+        last_commit_age_days: 17
         cohort: tool
     governance:
-      grade: C
+      grade: B
       raw:
-        active_maintainers_12mo: 17
-        top1_share: 0.778
-        top3_share: 0.874
+        active_maintainers_12mo: 50
+        top1_share: 0.569
+        top3_share: 0.707
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,6 +65,8 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
+  unknowns:
+    adoption: { reason: ambiguous }
 ---
 
 # OpenMontage

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:52:08Z
-  overall: B
-  overall_score: 3.0
+  computed_at: 2026-09-23T03:12:27Z
+  overall: A
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 23
-        active_weeks_13: 9
+        last_commit_age_days: 16
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 25.2
-        qualifying_issues: 7
+        median_ttfr_hours: 49.4
+        qualifying_issues: 8
         band: relaxed_solo
         window_offset_days: 5
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
-        registry: conda-forge.org
-        canonical_package: qpdf
-        dependent_repos_count: 1
-        downloads_last_month: 147160
-        graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 22316
+        homebrew_tier: A
+        release_downloads: 2099067
+        release_assets: 777
+        release_tier: B
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5146
-        last_commit_age_days: 23
+        repo_age_days: 5224
+        last_commit_age_days: 16
         cohort: tool
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.934
-        top3_share: 0.984
+        active_maintainers_12mo: 12
+        top1_share: 0.795
+        top3_share: 0.95
         window_source: stats_contributors
         carve_out: null
     risk_license:

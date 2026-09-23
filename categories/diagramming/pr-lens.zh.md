@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T14:17:50Z
+  computed_at: 2026-09-22T16:16:26Z
   overall: C
   overall_score: 2.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -51,6 +52,7 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:

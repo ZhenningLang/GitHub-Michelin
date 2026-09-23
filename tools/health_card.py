@@ -30,8 +30,14 @@ TIER = {
     "C": (0.60, "#D4C20A"),  # yellow
     "D": (0.40, "#E8702A"),  # orange
     "E": (0.20, "#E5484D"),  # red
-    "?": (0.50, "#8B949E"),  # gray (excluded from area)
+    "?": (0.50, "#8B949E"),  # gray, dashed (measured failed — excluded from area)
+    "N/A": (0.50, "#4B5563"), # dim gray, solid (axis does not apply — excluded from area)
 }
+# Unscored states share a radius but must never share a treatment: a dashed ghost says
+# "we could not measure this, go look"; a flat dim spoke says "this axis asks a question
+# this artifact type cannot answer". Rendering both as the same gray hid which one a
+# reader was looking at.
+UNSCORED = ("?", "N/A")
 AXIS_KEYS = ["maintenance", "responsiveness", "adoption", "longevity", "governance", "risk_license"]
 
 # Per-language axis labels = the real axis meaning (order = top, then clockwise).
@@ -130,7 +136,8 @@ def parse_frontmatter(text: str) -> dict:
 
 
 # ---------------------------------------------------------------- renderer
-def render(lang: str, name: str, grades: list[str], overall: str, note: str, flags: list[str], scored_axes: str) -> str:
+def render(lang: str, name: str, grades: list[str], overall: str, note: str, flags: list[str],
+           scored_axes: str, applicable_axes: str | None = None) -> str:
     cfg = LANG[lang]
     oc = TIER.get(overall, TIER["?"])[1]
     lf = cfg["label_font"]
@@ -201,14 +208,19 @@ def render(lang: str, name: str, grades: list[str], overall: str, note: str, fla
         s.append(f'<text x="{CX+8}" y="{ly:.1f}" font-size="11" font-style="italic" fill="{GOLD}" '
                  f'fill-opacity="0.55" font-family="{DISP}">{g}</text>')
 
+    if applicable_axes is None:
+        applicable_axes = str(sum(1 for g in grades if g != "N/A"))
+
     # ---- data polygon ----
     pts = [_v(i, TIER.get(grades[i], TIER["?"])[0]) for i in range(6)]
     s.append(f'<polygon points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in pts)}" fill="url(#poly)" filter="url(#glow)"/>')
     for i in range(6):
         a, b = pts[i], pts[(i + 1) % 6]
-        if grades[i] == "?" or grades[(i + 1) % 6] == "?":
+        if grades[i] in UNSCORED or grades[(i + 1) % 6] in UNSCORED:
+            na_edge = "N/A" in (grades[i], grades[(i + 1) % 6]) and "?" not in (grades[i], grades[(i + 1) % 6])
+            col_e, dash = ("#4B5563", "1 5") if na_edge else ("#8B949E", "4 4")
             s.append(f'<line x1="{a[0]:.1f}" y1="{a[1]:.1f}" x2="{b[0]:.1f}" y2="{b[1]:.1f}" '
-                     f'stroke="#8B949E" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.92"/>')
+                     f'stroke="{col_e}" stroke-width="2" stroke-dasharray="{dash}" stroke-opacity="0.92"/>')
         else:
             s.append(f'<line x1="{a[0]:.1f}" y1="{a[1]:.1f}" x2="{b[0]:.1f}" y2="{b[1]:.1f}" stroke="{oc}" stroke-width="3"/>')
     for i in range(6):
@@ -216,6 +228,8 @@ def render(lang: str, name: str, grades: list[str], overall: str, note: str, fla
         g = grades[i]
         if g == "?":
             s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" fill="#10100b" stroke="#8B949E" stroke-width="2" stroke-dasharray="2 2"/>')
+        elif g == "N/A":
+            s.append(f'<rect x="{x-4.5:.1f}" y="{y-4.5:.1f}" width="9" height="9" fill="#10100b" stroke="#4B5563" stroke-width="2"/>')
         else:
             s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" fill="{TIER[g][1]}" stroke="#1a1306" stroke-width="1.2"/>')
 
@@ -263,7 +277,7 @@ def render(lang: str, name: str, grades: list[str], overall: str, note: str, fla
     s.append(f'<text x="{px}" y="252" font-size="11" letter-spacing="3" fill="{GOLD}" font-family="{lf}" font-weight="900">'
              f'{cfg["overall"]}{nt}</text>')
     s.append(f'<text x="{px+150}" y="252" font-size="11" letter-spacing="2" fill="#8B949E" '
-             f'font-family="{lf}" font-weight="900" text-anchor="end">{cfg["axes_scored"]} {scored_axes}/6</text>')
+             f'font-family="{lf}" font-weight="900" text-anchor="end">{cfg["axes_scored"]} {scored_axes}/{applicable_axes}</text>')
     # axis rows
     y0 = 288
     for i, label in enumerate(cfg["axes"]):
@@ -274,12 +288,15 @@ def render(lang: str, name: str, grades: list[str], overall: str, note: str, fla
         s.append(f'<text x="{px}" y="{yy}" font-size="{lfs}" font-weight="900" fill="{PARCH}" font-family="{lf}" letter-spacing="0.4">{label}</text>')
         bx, bw = px + 150, 118
         s.append(f'<rect x="{bx}" y="{yy-11}" width="{bw}" height="9" rx="2" fill="#241d0e" stroke="{GOLD_DK}" stroke-opacity="0.5"/>')
-        if g != "?":
+        if g not in UNSCORED:
             s.append(f'<rect x="{bx}" y="{yy-11}" width="{bw*TIER[g][0]:.0f}" height="9" rx="2" fill="{col}"/>')
-        else:
+        elif g == "?":
             s.append(f'<rect x="{bx}" y="{yy-11}" width="{bw}" height="9" rx="2" fill="none" stroke="#8B949E" stroke-dasharray="3 3"/>')
-        s.append(f'<text x="{bx+bw+13}" y="{yy}" font-size="16" font-weight="900" font-style="italic" fill="{col}" '
-                 f'font-family="{DISP}" text-anchor="middle">{g}</text>')
+        else:
+            s.append(f'<line x1="{bx}" y1="{yy-6.5}" x2="{bx+bw}" y2="{yy-6.5}" stroke="#4B5563" stroke-width="2"/>')
+        gfs = 11 if g == "N/A" else 16
+        s.append(f'<text x="{bx+bw+13}" y="{yy}" font-size="{gfs}" font-weight="900" font-style="italic" fill="{col}" '
+                 f'font-family="{DISP}" text-anchor="middle">{_esc(g)}</text>')
     # flags
     fy = y0 + 6 * 29 + 6
     fx = px
@@ -302,7 +319,8 @@ def card_for_page(page: Path, duplicates: set[str]) -> Path | None:
     axes = health.get("axes", {})
     grades = [str(axes.get(k, {}).get("grade", "?")) for k in AXIS_KEYS]
     overall = str(health.get("overall", "?"))
-    scored_axes = str(health.get("scored_axes", sum(1 for g in grades if g != "?")))
+    scored_axes = str(health.get("scored_axes", sum(1 for g in grades if g not in UNSCORED)))
+    applicable_axes = str(health.get("applicable_axes", sum(1 for g in grades if g != "N/A")))
     name = str(fm.get("name", page.stem))
 
     flags: list[str] = []
@@ -316,7 +334,7 @@ def card_for_page(page: Path, duplicates: set[str]) -> Path | None:
     if str(health.get("capped", "")).lower() == "true":
         note = str(health.get("cap_reason") or "")
 
-    svg = render(lang, name, grades, overall, note, flags[:3], scored_axes)
+    svg = render(lang, name, grades, overall, note, flags[:3], scored_axes, applicable_axes)
     ASSETS.mkdir(parents=True, exist_ok=True)
     out = ASSETS / (card_stem_for_page(page, duplicates) + LANG[lang]["ext"])
     out.write_text(svg, encoding="utf-8")

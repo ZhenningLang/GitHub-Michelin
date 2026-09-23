@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T10:36:55Z
+  computed_at: 2026-09-22T17:44:59Z
   overall: C
-  overall_score: 2.0
-  scored_axes: 4
+  overall_score: 1.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,12 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: E
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/openilink/openilink-sdk-go
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 184
+        repo_age_days: 185
         last_commit_age_days: 171
         cohort: library
     governance:
@@ -60,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
 ---
 
 # OpeniLink Go SDK

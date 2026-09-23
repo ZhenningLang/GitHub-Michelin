@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:40:59Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-22T16:19:20Z
+  overall: B
+  overall_score: 3.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,36 +35,51 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.1
-        qualifying_issues: 3
+        median_ttfr_hours: 8.5
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: conda-forge.org
+        canonical_package: qgis
+        dependent_repos_count: 15
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 5387
+        release_assets: 15
+        release_tier: D
+        docker_pulls: 732505
+        docker_image: qgis/qgis
+        docker_tier: D
+        signal_basis: releases+docker
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5541
+        repo_age_days: 5622
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 88
-        top1_share: 0.34
-        top3_share: 0.44
+        active_maintainers_12mo: 93
+        top1_share: 0.354
+        top3_share: 0.471
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-2.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # QGIS

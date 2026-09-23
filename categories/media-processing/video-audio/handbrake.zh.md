@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:47Z
+  computed_at: 2026-09-22T16:38:52Z
   overall: A
-  overall_score: 3.75
-  scored_axes: 4
+  overall_score: 4.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 13
+        last_commit_age_days: 0
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.3
-        qualifying_issues: 48
+        median_ttfr_hours: 10.9
+        qualifying_issues: 44
         band: relaxed_solo
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 4620
+        homebrew_tier: A
+        release_downloads: 59336263
+        release_assets: 968
+        release_tier: A
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3968
-        last_commit_age_days: 3
+        repo_age_days: 4049
+        last_commit_age_days: 0
         cohort: app
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 25
-        top1_share: 0.424
-        top3_share: 0.713
+        active_maintainers_12mo: 28
+        top1_share: 0.385
+        top3_share: 0.71
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
 ---
 

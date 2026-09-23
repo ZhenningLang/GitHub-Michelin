@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:01:39Z
+  computed_at: 2026-09-22T17:20:02Z
   overall: B
-  overall_score: 3.0
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 48
-        active_weeks_13: 2
-        carve_out: null
+        last_commit_age_days: 126
+        active_weeks_13: 0
+        carve_out: mature_library_lindy
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,21 +41,22 @@ health:
         registry: npmjs.org
         canonical_package: "@reactour/utils"
         dependent_repos_count: 59
-        downloads_last_month: 662761
+        downloads_last_month: 847775
         graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.09
+        tier_source: registry
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 3398
-        last_commit_age_days: 48
+        repo_age_days: 3476
+        last_commit_age_days: 126
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.857
+        active_maintainers_12mo: 1
+        top1_share: 1.0
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:33Z
+  computed_at: 2026-09-22T16:16:39Z
   overall: B
-  overall_score: 2.83
+  overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.4
-        qualifying_issues: 9
+        median_ttfr_hours: 2.7
+        qualifying_issues: 29
         band: relaxed_solo
         window_offset_days: 3
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: "@immich/cli"
         dependent_repos_count: 0
-        downloads_last_month: 6496
+        downloads_last_month: 11288
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 4699561
+        release_assets: 919
+        release_tier: B
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1611
-        last_commit_age_days: 1
+        repo_age_days: 1692
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 322
-        top1_share: 0.107
-        top3_share: 0.273
+        active_maintainers_12mo: 307
+        top1_share: 0.085
+        top3_share: 0.24
         window_source: stats_contributors
         carve_out: null
     risk_license:

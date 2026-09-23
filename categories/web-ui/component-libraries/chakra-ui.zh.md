@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:58:07Z
-  overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  computed_at: 2026-09-22T17:15:27Z
+  overall: A
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 27.1
-        qualifying_issues: 39
+        median_ttfr_hours: 29.4
+        qualifying_issues: 24
         band: default
         window_offset_days: 11
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: npmjs.org
+        canonical_package: "@chakra-ui/styled-system"
+        dependent_repos_count: 39668
+        downloads_last_month: 4205118
+        graph_tier: A
+        volume_tier: B
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2515
-        last_commit_age_days: 0
+        repo_age_days: 2593
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 32
-        top1_share: 0.829
-        top3_share: 0.882
+        active_maintainers_12mo: 28
+        top1_share: 0.71
+        top3_share: 0.835
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: registry_lookup_failed }
 ---
 # Chakra UI
 

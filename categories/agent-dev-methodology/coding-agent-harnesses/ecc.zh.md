@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:12Z
+  computed_at: 2026-09-23T03:10:49Z
   overall: B
-  overall_score: 2.5
+  overall_score: 2.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 59.7
-        qualifying_issues: 33
+        median_ttfr_hours: 46.8
+        qualifying_issues: 31
         band: default
         window_offset_days: 4
+        source: issue
+        inferred: false
     adoption:
       grade: D
       raw:
-        registry: npmjs.org
-        canonical_package: ecc-universal
-        dependent_repos_count: 0
-        downloads_last_month: 1204
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
+        registry: null
+        canonical_package: null
+        release_downloads: 77679
+        release_assets: 10
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 166
-        last_commit_age_days: 3
+        repo_age_days: 248
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 93
-        top1_share: 0.734
-        top3_share: 0.766
+        active_maintainers_12mo: 92
+        top1_share: 0.651
+        top3_share: 0.748
         window_source: stats_contributors
         carve_out: null
     risk_license:

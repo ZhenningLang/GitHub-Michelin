@@ -16,39 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:03Z
+  computed_at: 2026-09-22T17:27:40Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 67
-        active_weeks_13: 1
+        last_commit_age_days: 8
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 45.2
+        qualifying_issues: 4
+        band: relaxed_solo
+        window_offset_days: 11
+        source: pr
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: pypi.org
+        canonical_package: superclaude
+        dependent_repos_count: 0
+        downloads_last_month: 11763
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 376
-        last_commit_age_days: 67
+        repo_age_days: 457
+        last_commit_age_days: 8
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 41
-        top1_share: 0.409
-        top3_share: 0.812
+        active_maintainers_12mo: 17
+        top1_share: 0.513
+        top3_share: 0.769
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -58,9 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: registry_no_counts }
 ---
 
 # SuperClaude Framework

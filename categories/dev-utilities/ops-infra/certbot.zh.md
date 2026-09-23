@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:50:56Z
+  computed_at: 2026-09-22T16:11:34Z
   overall: A
-  overall_score: 3.75
-  scored_axes: 4
+  overall_score: 3.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,53 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 9
-        active_weeks_13: 10
+        last_commit_age_days: 13
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 61.5
-        qualifying_issues: 27
+        median_ttfr_hours: 32.3
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 4
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: pypi.org
+        canonical_package: certbot-dns-google
+        dependent_repos_count: 26
+        downloads_last_month: 28492
+        graph_tier: D
+        volume_tier: C
+        cross_check_divergence: null
+        homebrew_installs_90d: 5062
+        homebrew_tier: A
+        release_downloads: 409881
+        release_assets: 487
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4252
-        last_commit_age_days: 9
+        repo_age_days: 4333
+        last_commit_age_days: 13
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 20
-        top1_share: 0.41
-        top3_share: 0.863
+        active_maintainers_12mo: 22
+        top1_share: 0.362
+        top3_share: 0.831
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: ambiguous }
     risk_license: { reason: license_unparsed }
 ---
 

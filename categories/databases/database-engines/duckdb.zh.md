@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:37:07Z
+  computed_at: 2026-09-22T16:05:13Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -32,10 +33,10 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 9.5
-        qualifying_issues: 19
+        median_ttfr_hours: 26.5
+        qualifying_issues: 4
         band: default
         window_offset_days: 8
         source: issue
@@ -44,24 +45,34 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: duckdb
-        dependent_repos_count: 3752
-        downloads_last_month: 7110467
-        graph_tier: B
-        volume_tier: A
+        canonical_package: duckdb-cli
+        dependent_repos_count: 0
+        downloads_last_month: 43625
+        graph_tier: E
+        volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 12429
+        homebrew_tier: A
+        release_downloads: 7845529
+        release_assets: 1189
+        release_tier: B
+        docker_pulls: 203207
+        docker_image: duckdb/duckdb
+        docker_tier: D
+        signal_basis: homebrew+releases+docker
+        tier_source: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 2932
+        repo_age_days: 3010
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 183
-        top1_share: 0.322
-        top3_share: 0.46
+        active_maintainers_12mo: 221
+        top1_share: 0.267
+        top3_share: 0.41
         window_source: stats_contributors
         carve_out: null
     risk_license:

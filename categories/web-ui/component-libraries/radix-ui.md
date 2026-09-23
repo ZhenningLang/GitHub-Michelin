@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:00:23Z
+  computed_at: 2026-09-22T17:15:57Z
   overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,41 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 53
         active_weeks_13: 5
         carve_out: null
     responsiveness:
-      grade: C
+      grade: A
       raw:
-        median_ttfr_hours: 219.7
-        qualifying_issues: 12
+        median_ttfr_hours: 31.8
+        qualifying_issues: 23
         band: default
         window_offset_days: 12
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: npmjs.org
+        canonical_package: "@radix-ui/react-slot"
+        dependent_repos_count: 60185
+        downloads_last_month: 673958960
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.05
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2208
-        last_commit_age_days: 3
+        repo_age_days: 2286
+        last_commit_age_days: 53
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.801
-        top3_share: 0.826
+        active_maintainers_12mo: 29
+        top1_share: 0.876
+        top3_share: 0.892
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: registry_lookup_failed }
 ---
 # Radix UI Primitives
 

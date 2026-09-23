@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T09:15:27Z
+  computed_at: 2026-09-22T17:51:19Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -41,20 +42,26 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1797876
+        release_assets: 323
+        release_tier: B
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3258
-        last_commit_age_days: 3
+        repo_age_days: 3260
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 16
-        top1_share: 0.195
-        top3_share: 0.52
+        active_maintainers_12mo: 18
+        top1_share: 0.194
+        top3_share: 0.517
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Firecracker

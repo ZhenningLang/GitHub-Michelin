@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:44:59Z
-  overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  computed_at: 2026-09-22T15:47:58Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,33 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 2163
+        release_assets: 61
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 113
-        last_commit_age_days: 6
+        repo_age_days: 195
+        last_commit_age_days: 0
         cohort: skill-pack
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.969
-        top3_share: 0.983
+        active_maintainers_12mo: 17
+        top1_share: 0.924
+        top3_share: 0.962
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Waza

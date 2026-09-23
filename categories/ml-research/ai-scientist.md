@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T12:02:41Z
+  computed_at: 2026-09-22T16:40:31Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false

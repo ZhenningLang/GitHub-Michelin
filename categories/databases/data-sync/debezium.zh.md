@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:36:14Z
+  computed_at: 2026-09-22T16:03:24Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  overall_score: 3.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: repo1.maven.org
+        canonical_package: "io.debezium:debezium-api"
+        dependent_repos_count: 594
+        downloads_last_month: null
+        graph_tier: C
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3818
-        last_commit_age_days: 3
+        repo_age_days: 3896
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 105
-        top1_share: 0.199
-        top3_share: 0.406
+        active_maintainers_12mo: 141
+        top1_share: 0.195
+        top3_share: 0.365
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: issues_disabled }
-    adoption: { reason: no_package_structural }
 ---
 # Debezium
 

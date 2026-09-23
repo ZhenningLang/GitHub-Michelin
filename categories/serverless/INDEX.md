@@ -7,13 +7,13 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Knative Serving** | Use it when HTTP services sit idle most of the day and you want revisioned rollouts plus autoscaling to zero without adopting a FaaS product. | B (5/6) | [→](knative-serving.md) |
+| **Knative Serving** | Use it when HTTP services sit idle most of the day and you want revisioned rollouts plus autoscaling to zero without adopting a FaaS product. | B (6/6) | [→](knative-serving.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Knative Serving](knative-serving.md) | ✅ | B (5/6) | Scale-to-zero, revisions and traffic splitting inside your own cluster — you get portability by operating a CRD control plane, a networking layer and an autoscaler. |
+| [Knative Serving](knative-serving.md) | ✅ | B (6/6) | Scale-to-zero, revisions and traffic splitting inside your own cluster — you get portability by operating a CRD control plane, a networking layer and an autoscaler. |
 
 ## What belongs here
 

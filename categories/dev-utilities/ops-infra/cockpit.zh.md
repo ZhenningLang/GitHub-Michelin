@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T11:22:17Z
+  computed_at: 2026-09-22T16:12:18Z
   overall: D
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -34,25 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 30.0
-        qualifying_issues: 45
+        median_ttfr_hours: 52.6
+        qualifying_issues: 43
         band: relaxed_solo
         window_offset_days: 6
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/cockpit-project/cockpit
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 19080
+        release_assets: 121
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4627
+        repo_age_days: 4708
         last_commit_age_days: 0
         cohort: app
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 28
-        top1_share: 0.326
-        top3_share: 0.7
+        active_maintainers_12mo: 27
+        top1_share: 0.426
+        top3_share: 0.718
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +77,6 @@ health:
         permissiveness: source_available
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Cockpit

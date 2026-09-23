@@ -16,43 +16,52 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T04:19:42Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-22T16:44:41Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 8
+        last_commit_age_days: 6
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 31.1
-        qualifying_issues: 5
+        median_ttfr_hours: 117.7
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 7
+        source: pr
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1101835
+        release_assets: 1081
+        release_tier: B
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4856
-        last_commit_age_days: 2
+        repo_age_days: 4938
+        last_commit_age_days: 6
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.657
-        top3_share: 0.829
+        active_maintainers_12mo: 12
+        top1_share: 0.659
+        top3_share: 0.795
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # tusd

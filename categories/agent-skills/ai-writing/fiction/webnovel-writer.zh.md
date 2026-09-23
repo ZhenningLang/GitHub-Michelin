@@ -16,38 +16,45 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-13T10:56:17Z
-  overall: B
-  overall_score: 2.6
-  scored_axes: 5
+  computed_at: 2026-09-22T15:42:28Z
+  overall: C
+  overall_score: 2.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.5
-        qualifying_issues: 40
+        median_ttfr_hours: 13.3
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 42
+        release_assets: 7
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 192
-        last_commit_age_days: 6
+        repo_age_days: 263
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: D
@@ -58,14 +65,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Webnovel Writer

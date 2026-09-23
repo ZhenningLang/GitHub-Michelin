@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:21:14Z
+  computed_at: 2026-09-22T16:01:32Z
   overall: D
-  overall_score: 1.6
+  overall_score: 1.4
   scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 56
-        active_weeks_13: 3
-        carve_out: null
+        last_commit_age_days: 137
+        active_weeks_13: 0
+        carve_out: mature_library_lindy
     responsiveness:
       grade: "?"
       raw: {}
@@ -46,10 +47,10 @@ health:
         cross_check_divergence: null
         archived: false
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 2140
-        last_commit_age_days: 56
+        repo_age_days: 2221
+        last_commit_age_days: 137
         cohort: library
     governance:
       grade: D
@@ -67,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Text_select_captcha

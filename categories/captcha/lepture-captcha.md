@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:21:12Z
+  computed_at: 2026-09-22T16:01:13Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 255
+        last_commit_age_days: 336
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -40,15 +41,20 @@ health:
         registry: pypi.org
         canonical_package: captcha
         dependent_repos_count: 506
-        downloads_last_month: 364394
+        downloads_last_month: 313940
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
+        release_downloads: 33213
+        release_assets: 4
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 4238
-        last_commit_age_days: 255
+        repo_age_days: 4319
+        last_commit_age_days: 336
         cohort: library
     governance:
       grade: D

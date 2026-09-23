@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T06:51:28Z
+  computed_at: 2026-09-22T17:02:56Z
   overall: B
-  overall_score: 2.67
-  scored_axes: 6
+  overall_score: 2.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,18 +30,12 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 9
         carve_out: null
     responsiveness:
-      grade: C
-      raw:
-        median_ttfr_hours: 599.3
-        qualifying_issues: 3
-        band: default
-        window_offset_days: 10
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: D
       raw:
@@ -51,18 +46,23 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 307
+        release_assets: 76
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 589
-        last_commit_age_days: 0
+        repo_age_days: 593
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.596
-        top3_share: 0.916
+        top1_share: 0.599
+        top3_share: 0.917
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -72,6 +72,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # AgentSociety

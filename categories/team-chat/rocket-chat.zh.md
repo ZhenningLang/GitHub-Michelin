@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:55:10Z
+  computed_at: 2026-09-22T17:05:40Z
   overall: A
-  overall_score: 3.6
+  overall_score: 3.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,13 +36,13 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 35
+        qualifying_issues: 40
         band: relaxed_solo
         window_offset_days: 4
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: "@rocket.chat/ui-kit"
@@ -50,18 +51,23 @@ health:
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
+        docker_pulls: 99047228
+        docker_image: rocketchat/rocket.chat
+        docker_tier: B
+        signal_basis: docker
+        tier_source: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4141
+        repo_age_days: 4144
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 54
-        top1_share: 0.157
-        top3_share: 0.329
+        active_maintainers_12mo: 53
+        top1_share: 0.158
+        top3_share: 0.332
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:47:14Z
+  computed_at: 2026-09-22T15:51:32Z
   overall: B
   overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 12
+        last_commit_age_days: 9
+        active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: B
       raw:
-        repo_age_days: 343
-        last_commit_age_days: 8
+        repo_age_days: 425
+        last_commit_age_days: 9
         cohort: skill-pack
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 66
-        top1_share: 0.606
-        top3_share: 0.711
+        active_maintainers_12mo: 60
+        top1_share: 0.624
+        top3_share: 0.739
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # wshobson/agents

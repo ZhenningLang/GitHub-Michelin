@@ -16,52 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:26:04Z
-  overall: C
-  overall_score: 2.33
+  computed_at: 2026-09-22T17:30:50Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 91
-        active_weeks_13: 1
-        carve_out: null
+        last_commit_age_days: 169
+        active_weeks_13: 0
+        carve_out: mature_library_lindy
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 42.7
-        qualifying_issues: 28
+        median_ttfr_hours: 28.4
+        qualifying_issues: 26
         band: default
         window_offset_days: 4
         source: issue
         inferred: false
     adoption:
-      grade: E
+      grade: B
       raw:
         registry: nuget.org
         canonical_package: autogen.core
         dependent_repos_count: 0
-        downloads_last_month: 178365
+        downloads_last_month: 217307
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 1053
-        last_commit_age_days: 91
+        repo_age_days: 1131
+        last_commit_age_days: 169
         cohort: framework
     governance:
-      grade: C
+      grade: B
       raw:
-        active_maintainers_12mo: 7
-        top1_share: 0.699
-        top3_share: 0.952
+        active_maintainers_12mo: 5
+        top1_share: 0.417
+        top3_share: 0.833
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:43:54Z
+  computed_at: 2026-09-22T15:46:38Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
-        active_weeks_13: 9
+        last_commit_age_days: 2
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 134
-        last_commit_age_days: 12
+        repo_age_days: 215
+        last_commit_age_days: 2
         cohort: skill-pack
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 6
-        top1_share: 0.733
-        top3_share: 0.981
+        top1_share: 0.764
+        top3_share: 0.984
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Taste-Skill

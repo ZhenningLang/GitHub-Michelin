@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T09:42:05Z
+  computed_at: 2026-09-22T15:41:36Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 45
-        active_weeks_13: 5
+        last_commit_age_days: 5
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 176
-        last_commit_age_days: 45
+        repo_age_days: 244
+        last_commit_age_days: 5
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 # De-AI-Prompt-Enhancer-Writer-Booster-SKILL
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T11:15:54Z
+  computed_at: 2026-09-22T16:03:24Z
   overall: A
-  overall_score: 3.83
+  overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,42 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 29
+        median_ttfr_hours: 4.1
+        qualifying_issues: 8
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@superset-ui/switchboard"
-        dependent_repos_count: 145
-        downloads_last_month: 628998
-        graph_tier: C
+        canonical_package: "@superset-ui/embedded-sdk"
+        dependent_repos_count: 6
+        downloads_last_month: 758851
+        graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.11
+        cross_check_divergence: 1.02
+        release_downloads: 5372977
+        release_assets: 49
+        release_tier: B
+        docker_pulls: 605612912
+        docker_image: apache/superset
+        docker_tier: A
+        signal_basis: releases+docker
+        tier_source: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4000
+        repo_age_days: 4081
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 119
-        top1_share: 0.23
-        top3_share: 0.379
+        active_maintainers_12mo: 146
+        top1_share: 0.276
+        top3_share: 0.452
         window_source: stats_contributors
         carve_out: null
     risk_license:

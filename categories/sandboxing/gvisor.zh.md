@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T09:14:16Z
+  computed_at: 2026-09-22T17:01:46Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,33 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 74.5
-        qualifying_issues: 20
+        median_ttfr_hours: 90.6
+        qualifying_issues: 24
         band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 14437
+        release_assets: 22
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3068
+        repo_age_days: 3071
         last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 110
-        top1_share: 0.103
-        top3_share: 0.279
+        active_maintainers_12mo: 113
+        top1_share: 0.101
+        top3_share: 0.276
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # gVisor

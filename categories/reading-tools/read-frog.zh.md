@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-08T03:49:42Z
+  computed_at: 2026-09-22T17:50:59Z
   overall: B
   overall_score: 2.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,48 +29,46 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 4
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.9
-        qualifying_issues: 43
+        median_ttfr_hours: 0.7
+        qualifying_issues: 49
         band: relaxed_solo
         window_offset_days: 11
         source: issue
         inferred: false
     adoption:
-      grade: E
+      grade: D
       raw:
         registry: null
         canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+        release_downloads: 9451
+        release_assets: 380
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 447
-        last_commit_age_days: 0
+        repo_age_days: 524
+        last_commit_age_days: 4
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 52
-        top1_share: 0.377
-        top3_share: 0.814
+        active_maintainers_12mo: 55
+        top1_share: 0.395
+        top3_share: 0.839
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
 ---

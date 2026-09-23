@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:43:56Z
+  computed_at: 2026-09-22T16:27:36Z
   overall: B
-  overall_score: 3.17
+  overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 132
+        last_commit_age_days: 210
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 126.6
-        qualifying_issues: 22
+        median_ttfr_hours: 129.0
+        qualifying_issues: 21
         band: default
         window_offset_days: 1
         source: issue
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: ragas
         dependent_repos_count: 1
-        downloads_last_month: 1554680
+        downloads_last_month: 1009510
         graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.07
+        cross_check_divergence: 1.0
+        release_downloads: 14
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 1155
-        last_commit_age_days: 132
+        repo_age_days: 1233
+        last_commit_age_days: 210
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.495
-        top3_share: 0.672
+        active_maintainers_12mo: 15
+        top1_share: 0.621
+        top3_share: 0.797
         window_source: stats_contributors
         carve_out: null
     risk_license:

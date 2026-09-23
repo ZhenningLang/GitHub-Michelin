@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:13Z
+  computed_at: 2026-09-22T17:42:14Z
   overall: D
-  overall_score: 1.33
-  scored_axes: 3
+  overall_score: 1.0
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,28 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2141
+        last_commit_age_days: 2223
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: E
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/go-mysql-org/go-mysql-elasticsearch
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 4187
-        last_commit_age_days: 2141
+        repo_age_days: 4268
+        last_commit_age_days: 2223
         cohort: tool
     governance:
       grade: "?"
@@ -54,8 +63,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
     governance: { reason: unattributable }
 ---
 

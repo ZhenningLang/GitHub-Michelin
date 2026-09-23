@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T14:15:58Z
+  computed_at: 2026-09-22T16:52:49Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 9
+        last_commit_age_days: 13
         active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 53.9
+        median_ttfr_hours: 54.8
         qualifying_issues: 9
         band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: sherlock-project
@@ -50,11 +51,15 @@ health:
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 939
+        homebrew_tier: B
+        signal_basis: homebrew
+        tier_source: homebrew
     longevity:
       grade: A
       raw:
-        repo_age_days: 2825
-        last_commit_age_days: 9
+        repo_age_days: 2829
+        last_commit_age_days: 13
         cohort: tool
     governance:
       grade: A

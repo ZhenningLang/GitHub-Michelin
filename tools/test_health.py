@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import os
 import sys
+import time
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -32,6 +33,15 @@ def pr_node(created: str, author: str, response: str | None, reviewer: str = "ma
         "reviews": {"nodes": reviews},
         "comments": {"nodes": comments},
     }
+
+
+def no_install_signals():
+    """Silence the §2.3b fallback instruments.
+
+    They reach the network (gh releases, Homebrew, Docker Hub); the registry-path tests
+    below are about selection logic, not distribution channels, and must stay offline.
+    """
+    return mock.patch("health._adoption_from_install_signals", return_value=None)
 
 
 class HealthMechanismTest(unittest.TestCase):
@@ -167,14 +177,14 @@ class HealthMechanismTest(unittest.TestCase):
         self.assertEqual(axis.reason, "no_window_signal")
 
     def test_adoption_structural_no_package_for_app(self) -> None:
-        with mock.patch("health.http_get_json", return_value=(200, [])):
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, [])):
             axis = health.axis_adoption(FakeRepo("app"))
 
         self.assertEqual(axis.grade, "?")
         self.assertEqual(axis.reason, "no_package_structural")
 
     def test_adoption_lookup_failure_is_distinct_reason(self) -> None:
-        with mock.patch("health.http_get_json", return_value=(0, None)):
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(0, None)):
             axis = health.axis_adoption(FakeRepo("library"))
 
         self.assertEqual(axis.grade, "?")
@@ -182,7 +192,7 @@ class HealthMechanismTest(unittest.TestCase):
 
     def test_adoption_lookup_http_failure_is_distinct_reason(self) -> None:
         for status in (403, 429, 500):
-            with self.subTest(status=status), mock.patch("health.http_get_json", return_value=(status, None)):
+            with self.subTest(status=status), no_install_signals(), mock.patch("health.http_get_json", return_value=(status, None)):
                 axis = health.axis_adoption(FakeRepo("library"))
 
             self.assertEqual(axis.grade, "?")
@@ -191,14 +201,14 @@ class HealthMechanismTest(unittest.TestCase):
 
     def test_adoption_ambiguous_candidates_remains_unknown(self) -> None:
         candidates = [{"name": "other", "downloads": 1, "rank": 1, "registry": "pypi.org"}]
-        with mock.patch("health.http_get_json", return_value=(200, candidates)):
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, candidates)):
             axis = health.axis_adoption(FakeRepo("library"))
 
         self.assertEqual(axis.grade, "?")
         self.assertEqual(axis.reason, "ambiguous")
 
     def test_adoption_successful_empty_lookup_for_package_type_scores_e(self) -> None:
-        with mock.patch("health.http_get_json", return_value=(200, [])):
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, [])):
             axis = health.axis_adoption(FakeRepo("library"))
 
         self.assertEqual(axis.grade, "E")
@@ -206,13 +216,26 @@ class HealthMechanismTest(unittest.TestCase):
         self.assertIsNone(axis.raw["downloads_last_month"])
 
     def test_adoption_missing_counts_does_not_silently_zero(self) -> None:
-        package = {"name": "demo", "downloads": 1000, "rank": 1, "registry": "repo1.maven.org"}
-        with mock.patch("health.http_get_json", return_value=(200, [package])):
+        # Genuinely no counts of either kind -> `?`, never a zero-derived E.
+        package = {"name": "demo", "downloads": None, "dependent_repos_count": None,
+                   "registry": "repo1.maven.org"}
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, [package])):
             axis = health.axis_adoption(FakeRepo("library"))
 
         self.assertEqual(axis.grade, "?")
         self.assertEqual(axis.reason, "registry_no_counts")
         self.assertNotIn("dependent_repos_count", axis.raw)
+
+    def test_downloads_are_tiered_even_on_an_unlisted_registry(self) -> None:
+        # selenium reported 345,857,423 downloads/month on gem.coop, which had no anchor
+        # row; the figure was dropped and the page scored E off dependents alone.
+        package = {"name": "demo", "downloads": 345_857_423, "dependent_repos_count": 0,
+                   "registry": "gem.coop"}
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, [package])):
+            axis = health.axis_adoption(FakeRepo("library"))
+
+        self.assertEqual(axis.raw["volume_tier"], "A")
+        self.assertEqual(axis.grade, "A")
 
     def test_risk_license_scores_gpl3_as_strong_copyleft(self) -> None:
         repo = FakeRepo("tool")
@@ -337,6 +360,258 @@ class GradeChangeReportTest(unittest.TestCase):
 
     def test_grade_changes_empty_old_reports_nothing(self) -> None:
         self.assertEqual(health.grade_changes({}, {"overall": "A"}), [])
+
+
+
+class RateLimitTest(unittest.TestCase):
+    """An exhausted quota must not reach the axes as an ordinary failure.
+
+    Axis functions degrade an API error to `?`, so a 403 from a spent rate limit would be
+    written to the page as "unmeasurable" — and across a 600-page batch it would overwrite
+    hundreds of real grades with unknowns that look measured.
+    """
+
+    HEADERS = ("HTTP/2 403\r\n"
+               "x-ratelimit-remaining: 0\r\n"
+               "x-ratelimit-reset: {reset}\r\n\r\n{{}}")
+
+    def test_exhausted_quota_is_detected(self) -> None:
+        raw = self.HEADERS.format(reset=9999999999)
+        self.assertTrue(health._rate_limited(403, raw))
+        self.assertTrue(health._rate_limited(429, raw))
+
+    def test_ordinary_403_is_not_treated_as_rate_limiting(self) -> None:
+        raw = "HTTP/2 403\r\nx-ratelimit-remaining: 4500\r\n\r\n{}"
+        self.assertFalse(health._rate_limited(403, raw))
+
+    def test_absurd_reset_is_not_waited_on(self) -> None:
+        # A clock skew or a bad header must not park the run for hours.
+        raw = self.HEADERS.format(reset=int(time.time()) + 999_999)
+        self.assertFalse(health._retry_after_reset(raw))
+
+    def test_past_reset_needs_no_wait(self) -> None:
+        raw = self.HEADERS.format(reset=int(time.time()) - 60)
+        self.assertFalse(health._retry_after_reset(raw))
+
+
+class CanonicalSelectionTest(unittest.TestCase):
+    """Which package a repo's adoption number is read off.
+
+    Picking the wrong candidate does not fail loudly — it reports a real measurement of
+    the wrong thing, which is why each rule here is pinned by a case that shipped.
+    """
+
+    def test_go_pseudo_module_never_outranks_real_packages(self) -> None:
+        # proxy.golang.org synthesizes `github.com/{owner}/{repo}` for ANY repo, so its
+        # name always contains the repo name and always won the substring match.
+        # material-ui scored D off a 2-dependent Go pseudo-module while its npm packages
+        # carried 154k dependents.
+        candidates = [
+            {"name": "github.com/mui/material-ui", "downloads": None,
+             "dependent_repos_count": 2, "registry": "proxy.golang.org"},
+            {"name": "@mui/material", "downloads": 36_513_050,
+             "dependent_repos_count": 163_982, "registry": "npmjs.org"},
+        ]
+        picked = health._select_canonical(candidates, "mui", "material-ui")
+        self.assertEqual(picked["name"], "@mui/material")
+
+    def test_lone_go_pseudo_module_is_not_a_package_for_a_python_repo(self) -> None:
+        # The only "candidate" a package-less repo has is the Go proxy's synthetic module
+        # with 0 dependents. Accepting it turned "no package anywhere" into a measured
+        # E for 39 pages, swe-agent (Python) among them.
+        candidates = [{"name": "github.com/swe-agent/swe-agent", "downloads": None,
+                       "dependent_repos_count": 0, "registry": "proxy.golang.org"}]
+        self.assertIsNone(
+            health._select_canonical(candidates, "swe-agent", "swe-agent", "Python"))
+
+    def test_lone_go_pseudo_module_is_kept_for_an_actual_go_repo(self) -> None:
+        candidates = [{"name": "github.com/cli/cli", "downloads": None,
+                       "dependent_repos_count": 4200, "registry": "proxy.golang.org"}]
+        picked = health._select_canonical(candidates, "cli", "cli", "Go")
+        self.assertIsNotNone(picked)
+
+    def test_unrelated_package_is_not_adopted_on_volume_alone(self) -> None:
+        # ecosyste.ms listed a NuGet package called `digitalbanking` under
+        # jaegertracing/jaeger. Picking the highest-download candidate regardless of name
+        # printed that stranger's package on the page as jaeger's canonical one.
+        candidates = [{"name": "digitalbanking", "downloads": 1034,
+                       "dependent_repos_count": 0, "registry": "nuget.org"}]
+        self.assertIsNone(
+            health._select_canonical(candidates, "jaegertracing", "jaeger", "Go"))
+
+    def test_countless_distro_build_cannot_license_an_e_verdict(self) -> None:
+        # An Ubuntu/Alpine/Nix entry with neither downloads nor dependents says only
+        # "somebody packaged this once"; scoring E off it asserts a measurement nobody made.
+        candidates = [{"name": "demo", "downloads": None, "dependent_repos_count": 0,
+                       "registry": {"name": "ubuntu-23.04", "ecosystem": "ubuntu"}}]
+        self.assertIsNone(health._select_canonical(candidates, "owner", "demo", "C"))
+
+    def test_scoped_package_matches_on_repo_owner(self) -> None:
+        # A monorepo publishes @scope/* where no package carries the repo's own name.
+        candidates = [
+            {"name": "@mui/types", "downloads": 54_061_754,
+             "dependent_repos_count": 154_773, "registry": "npmjs.org"},
+            {"name": "@mui/material", "downloads": 36_513_050,
+             "dependent_repos_count": 163_982, "registry": "npmjs.org"},
+        ]
+        # Both are in scope, but only one also matches the repo name -> it wins on the
+        # stronger claim, not on raw downloads.
+        picked = health._select_canonical(candidates, "mui", "material-ui")
+        self.assertEqual(picked["name"], "@mui/material")
+
+    def test_primary_registry_outranks_a_mirror(self) -> None:
+        # gem.coop mirrors RubyGems; letting it win canonical put selenium, asciidoctor
+        # and loki on a registry whose counts the anchor table did not cover.
+        candidates = [
+            {"name": "selenium-webdriver", "downloads": 345_857_423,
+             "dependent_repos_count": 0, "registry": "gem.coop"},
+            {"name": "selenium-webdriver", "downloads": 9_000_000,
+             "dependent_repos_count": 12_000, "registry": "rubygems.org"},
+        ]
+        picked = health._select_canonical(candidates, "SeleniumHQ", "selenium")
+        self.assertEqual(health._registry_name(picked), "rubygems.org")
+
+    def test_typosquats_still_lose_without_the_rank_filter(self) -> None:
+        candidates = [
+            {"name": "flask", "downloads": 133_128_741, "dependent_repos_count": 100,
+             "registry": "pypi.org"},
+            {"name": "f-ask", "downloads": 18, "dependent_repos_count": 0, "registry": "pypi.org"},
+            {"name": "flask-mirror-upstream", "downloads": 17, "dependent_repos_count": 0,
+             "registry": "pypi.org"},
+        ]
+        picked = health._select_canonical(candidates, "pallets", "flask")
+        self.assertEqual(picked["name"], "flask")
+
+    def test_null_rank_no_longer_discards_every_candidate(self) -> None:
+        # ecosyste.ms returns rank: null for every candidate of every repo probed
+        # (2026-09). The old `rank is not None` filter therefore dropped 100% of them.
+        candidates = [{"name": "playwright", "downloads": 323_433_868,
+                       "dependent_repos_count": 9_850, "rank": None, "registry": "npmjs.org"}]
+        self.assertIsNotNone(health._select_canonical(candidates, "microsoft", "playwright"))
+
+    def test_name_variants_strip_language_suffixes(self) -> None:
+        # elasticsearch-dsl-py ships as `elasticsearch-dsl`; ecosyste.ms maps neither.
+        self.assertIn("elasticsearch-dsl", health._name_variants("elasticsearch-dsl-py"))
+        self.assertIn("requests", health._name_variants("python-requests"))
+        self.assertEqual(health._name_variants("flask"), ["flask"])
+
+
+class NotApplicableAxisTest(unittest.TestCase):
+    def test_skill_pack_without_package_is_not_applicable_not_unknown(self) -> None:
+        with mock.patch("health._adoption_from_install_signals", return_value=None), \
+             mock.patch("health.http_get_json", return_value=(200, [])):
+            axis = health.axis_adoption(FakeRepo("skill-pack"))
+        self.assertEqual(axis.grade, "N/A")
+        self.assertEqual(axis.reason, "no_install_channel")
+
+    def test_app_without_package_stays_unknown_not_not_applicable(self) -> None:
+        # An app CAN be adopted measurably (installers, images); failing to find the
+        # number is our gap, not a statement that the question does not apply.
+        with mock.patch("health._adoption_from_install_signals", return_value=None), \
+             mock.patch("health.http_get_json", return_value=(200, [])):
+            axis = health.axis_adoption(FakeRepo("app"))
+        self.assertEqual(axis.grade, "?")
+
+    def test_not_applicable_axis_shrinks_the_denominator(self) -> None:
+        axes = {k: health.Axis("B", {}) for k in
+                ("maintenance", "responsiveness", "longevity", "governance", "risk_license")}
+        axes["adoption"] = health.Axis.not_applicable("no_install_channel")
+        agg = health.aggregate(axes)
+        self.assertEqual(agg["scored_axes"], 5)
+        self.assertEqual(agg["applicable_axes"], 5)
+
+    def test_unknown_axis_keeps_the_denominator(self) -> None:
+        axes = {k: health.Axis("B", {}) for k in
+                ("maintenance", "responsiveness", "longevity", "governance", "risk_license")}
+        axes["adoption"] = health.Axis.unknown("ambiguous")
+        agg = health.aggregate(axes)
+        self.assertEqual(agg["scored_axes"], 5)
+        self.assertEqual(agg["applicable_axes"], 6)
+
+    def test_not_applicable_is_emitted_separately_from_unknowns(self) -> None:
+        axes = {k: health.Axis("B", {}) for k in health.AXIS_ORDER}
+        axes["adoption"] = health.Axis.not_applicable("no_install_channel")
+        axes["responsiveness"] = health.Axis.unknown("no_traffic")
+        out = health.emit_health_yaml(health.aggregate(dict(axes)), axes,
+                                      "2026-09-22T00:00:00Z", False)
+        self.assertIn("not_applicable:", out)
+        self.assertIn("adoption: { reason: no_install_channel }", out)
+        self.assertIn("responsiveness: { reason: no_traffic }", out)
+        self.assertIn('grade: "N/A"', out)
+
+
+class MaxAcrossChannelsTest(unittest.TestCase):
+    """The axis takes the best of registry and install channels (spec §2.3b)."""
+
+    def _axis(self, candidates, *, releases):
+        with mock.patch("health._homebrew_installs", return_value=None), \
+             mock.patch("health._release_downloads", return_value=(releases, 9)), \
+             mock.patch("health._docker_pulls", return_value=(None, None)), \
+             mock.patch("health.http_get_json", return_value=(200, candidates)):
+            return health.axis_adoption(FakeRepo("tool"))
+
+    def test_binary_first_project_is_not_held_down_by_a_token_package(self) -> None:
+        # immich's shape: a token registry presence (6,496 downloads/month, no
+        # dependents) next to 4.7M binary downloads. The registry alone scored it D.
+        cands = [{"name": "demo", "downloads": 6_496, "dependent_repos_count": 3,
+                  "registry": "npmjs.org"}]
+        axis = self._axis(cands, releases=4_699_204)
+        self.assertEqual(axis.grade, "B")
+        self.assertEqual(axis.raw["tier_source"], "releases")
+        self.assertEqual(axis.raw["release_downloads"], 4_699_204)
+
+    def test_registry_first_project_is_not_inflated_by_a_dead_release_channel(self) -> None:
+        # angular's shape: 24.6M npm downloads/month, 324 release-asset downloads.
+        cands = [{"name": "demo", "downloads": 24_664_067,
+                  "dependent_repos_count": 50_000, "registry": "npmjs.org"}]
+        axis = self._axis(cands, releases=324)
+        self.assertEqual(axis.grade, "A")
+        self.assertEqual(axis.raw["tier_source"], "registry")
+
+    def test_weak_install_channel_never_drags_a_grade_down(self) -> None:
+        cands = [{"name": "demo", "downloads": 6_000_000,
+                  "dependent_repos_count": 20_000, "registry": "npmjs.org"}]
+        self.assertEqual(self._axis(cands, releases=12).grade, "A")
+
+
+class InstallSignalCacheTest(unittest.TestCase):
+    def test_empty_index_is_not_cached(self) -> None:
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            with mock.patch.object(health, "HEALTH_CACHE_DIR", Path(d)):
+                health._cache_json("probe", 3600, lambda: {})
+                self.assertFalse((Path(d) / "probe.json").exists())
+                health._cache_json("probe", 3600, lambda: {"a/b": 5})
+                self.assertTrue((Path(d) / "probe.json").exists())
+
+
+class InstrumentTierTest(unittest.TestCase):
+    def test_tier_from_anchors_maps_bands(self) -> None:
+        anchors = (1000, 100, 10)
+        self.assertEqual(health._tier_from_anchors(5000, anchors), "A")
+        self.assertEqual(health._tier_from_anchors(100, anchors), "B")
+        self.assertEqual(health._tier_from_anchors(10, anchors), "C")
+        self.assertEqual(health._tier_from_anchors(5, anchors), "D")
+        self.assertIsNone(health._tier_from_anchors(None, anchors))
+
+    def test_install_signals_never_reach_e(self) -> None:
+        # Asymmetry guard: a tiny release-asset count is not proof of non-adoption,
+        # because the project's real distribution channel may be one we cannot read.
+        anchors = (1000, 100, 10)
+        self.assertEqual(health._tier_from_anchors(1, anchors), "D")
+        self.assertEqual(health._tier_from_anchors(0, anchors), "D")
+
+    def test_skill_pack_with_release_bundle_is_measured_not_na(self) -> None:
+        # 18 of this index's 84 skill-packs publish downloadable bundles; conceding N/A
+        # by type alone would have thrown those real numbers away.
+        repo = FakeRepo("skill-pack")
+        with mock.patch("health._homebrew_installs", return_value=None), \
+             mock.patch("health._release_downloads", return_value=(120_000, 30)), \
+             mock.patch("health._docker_pulls", return_value=(None, None)):
+            axis = health._adoption_from_install_signals(repo, False)
+        self.assertIsNotNone(axis)
+        self.assertEqual(axis.grade, "C")
+        self.assertEqual(axis.raw["signal_basis"], "releases")
 
 
 if __name__ == "__main__":

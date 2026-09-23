@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T08:09:42Z
+  computed_at: 2026-09-22T16:23:31Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 1
-        carve_out: mature_library_lindy
+        last_commit_age_days: 1
+        active_weeks_13: 3
+        carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,15 +41,16 @@ health:
         registry: pypi.org
         canonical_package: finrl
         dependent_repos_count: 1
-        downloads_last_month: 4742
+        downloads_last_month: 3313
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2181
-        last_commit_age_days: 4
+        repo_age_days: 2249
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: D

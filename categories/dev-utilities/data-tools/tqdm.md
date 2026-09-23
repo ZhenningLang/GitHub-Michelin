@@ -16,53 +16,64 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:50:34Z
+  computed_at: 2026-09-22T16:10:15Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 4
+  overall_score: 3.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 16
-        active_weeks_13: 4
+        last_commit_age_days: 11
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        median_ttfr_hours: 105.6
+        qualifying_issues: 6
+        band: default
+        window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: tqdm
         dependent_repos_count: 136364
-        downloads_last_month: 580186396
+        downloads_last_month: 416518228
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.03
+        release_downloads: 20537
+        release_assets: 199
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4048
-        last_commit_age_days: 16
+        repo_age_days: 4129
+        last_commit_age_days: 11
         cohort: library
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.909
-        top3_share: 0.955
+        active_maintainers_12mo: 21
+        top1_share: 0.719
+        top3_share: 0.798
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    responsiveness: { reason: no_traffic }
     risk_license: { reason: license_unparsed }
 ---
 

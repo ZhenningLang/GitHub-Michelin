@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T11:10:40Z
+  computed_at: 2026-09-22T15:42:10Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 13
+        last_commit_age_days: 16
         active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 237
-        last_commit_age_days: 13
+        repo_age_days: 240
+        last_commit_age_days: 16
         cohort: skill-pack
     governance:
       grade: C
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # chinese-novelist-skill

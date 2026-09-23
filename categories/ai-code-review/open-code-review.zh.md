@@ -18,10 +18,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T11:21:29Z
+  computed_at: 2026-09-22T15:56:23Z
   overall: B
-  overall_score: 2.8
+  overall_score: 3.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -37,19 +38,26 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: "@alibaba-group/open-code-review"
         dependent_repos_count: 0
-        downloads_last_month: 329386
+        downloads_last_month: 388518
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 592
+        homebrew_tier: B
+        release_downloads: 226139
+        release_assets: 700
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 127
+        repo_age_days: 128
         last_commit_age_days: 0
         cohort: tool
     governance:

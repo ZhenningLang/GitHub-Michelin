@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:19Z
+  computed_at: 2026-09-22T15:54:15Z
   overall: B
-  overall_score: 2.83
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,41 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 25.6
-        qualifying_issues: 24
+        median_ttfr_hours: 12.5
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: agentsview
         dependent_repos_count: 0
-        downloads_last_month: 10113
+        downloads_last_month: 29440
         graph_tier: E
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 2557
+        homebrew_tier: B
+        release_downloads: 223817
+        release_assets: 1182
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 134
+        repo_age_days: 215
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 93
-        top1_share: 0.573
-        top3_share: 0.703
+        active_maintainers_12mo: 97
+        top1_share: 0.468
+        top3_share: 0.719
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T03:41:41Z
+  computed_at: 2026-09-22T17:04:39Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -50,7 +51,12 @@ health:
         downloads_last_month: 1519753
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: null
+        cross_check_divergence: 1.02
+        release_downloads: 65
+        release_assets: 2
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:

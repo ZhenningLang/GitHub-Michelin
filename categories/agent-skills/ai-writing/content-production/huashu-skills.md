@@ -16,32 +16,33 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T10:20:43Z
-  overall: D
-  overall_score: 1.25
+  computed_at: 2026-09-22T15:40:57Z
+  overall: B
+  overall_score: 2.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 86
-        active_weeks_13: null
+        last_commit_age_days: 0
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 173
-        last_commit_age_days: 86
+        repo_age_days: 242
+        last_commit_age_days: 0
         cohort: skill-pack
     governance:
       grade: D
@@ -52,15 +53,16 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
+      grade: A
       raw:
-        spdx_id: NONE
-        permissiveness: source_available
+        spdx_id: MIT
+        permissiveness: permissive
         relicense_36mo: false
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 # huashu-skills
 

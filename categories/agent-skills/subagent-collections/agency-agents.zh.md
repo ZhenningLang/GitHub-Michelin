@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:46:55Z
+  computed_at: 2026-09-22T15:51:08Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 6
+        last_commit_age_days: 1
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 263
-        last_commit_age_days: 2
+        repo_age_days: 344
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 90
-        top1_share: 0.225
-        top3_share: 0.419
+        active_maintainers_12mo: 99
+        top1_share: 0.284
+        top3_share: 0.454
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Agency-Agents

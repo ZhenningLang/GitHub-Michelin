@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:00Z
+  computed_at: 2026-09-22T17:02:23Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,25 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 26.4
-        qualifying_issues: 32
+        median_ttfr_hours: 13.9
+        qualifying_issues: 44
         band: default
         window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: pypi.org
+        canonical_package: opensandbox
+        dependent_repos_count: 0
+        downloads_last_month: 307927
+        graph_tier: E
+        volume_tier: B
+        cross_check_divergence: null
+        release_downloads: 7214
+        release_assets: 27
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 198
+        repo_age_days: 279
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 71
-        top1_share: 0.393
-        top3_share: 0.631
+        active_maintainers_12mo: 94
+        top1_share: 0.361
+        top3_share: 0.566
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # OpenSandbox

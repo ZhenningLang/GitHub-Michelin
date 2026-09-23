@@ -16,21 +16,22 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:19:27Z
-  overall: C
-  overall_score: 2.0
-  scored_axes: 4
+  computed_at: 2026-09-22T17:06:59Z
+  overall: B
+  overall_score: 3.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: D
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 398
-        active_weeks_13: 0
-        carve_out: null
+        last_commit_age_days: 80
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,19 +41,25 @@ health:
         registry: pypi.org
         canonical_package: asciimatics
         dependent_repos_count: 176
-        downloads_last_month: 82881
+        downloads_last_month: 106486
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
-      grade: D
+      grade: A
       raw:
-        repo_age_days: 4097
-        last_commit_age_days: 398
+        repo_age_days: 4178
+        last_commit_age_days: 80
         cohort: library
     governance:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        active_maintainers_12mo: 3
+        top1_share: 0.6
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -61,8 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    governance: { reason: unattributable }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # asciimatics

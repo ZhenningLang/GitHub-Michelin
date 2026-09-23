@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T10:03:51Z
+  computed_at: 2026-09-22T17:40:29Z
   overall: B
-  overall_score: 3.33
-  scored_axes: 3
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,24 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 218
-        last_commit_age_days: 0
+        registry: null
+        canonical_package: null
+        release_downloads: 75627
+        release_assets: 28
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 286
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 23
+        top1_share: 0.974
+        top3_share: 0.986
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -55,8 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
-    governance: { reason: empty_or_gated }
 ---
 # ppt-master
 

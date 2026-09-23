@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import functools
 import hashlib
 import json
 import os
@@ -94,10 +95,76 @@ ADOPTION_VOLUME_ANCHORS = {
     "crates.io":   (1_000_000, 100_000, 10_000, 500),
     "rubygems.org": (500_000, 50_000, 5_000, 500),
     "packagist.org": (500_000, 50_000, 5_000, 500),
+    "nuget.org":   (1_000_000, 100_000, 10_000, 500),
+    "conda-forge.org": (1_000_000, 100_000, 10_000, 500),
+    "anaconda.org": (1_000_000, 100_000, 10_000, 500),
+    "gem.coop":    (500_000, 50_000, 5_000, 500),
+    "open-vsx.org": (500_000, 50_000, 5_000, 500),
+    "formulae.brew.sh": (100_000, 10_000, 1_000, 100),
 }
+# Any registry not named above. Without this, `volume_tier_from_downloads` returned None
+# for an unlisted registry and the download figure was **discarded entirely** — so
+# selenium (345,857,423 downloads/month on gem.coop) scored its dependents-only tier and
+# landed on E. 20 pages carried a silently-dropped download count this way. A default
+# that is merely approximate beats throwing a nine-figure measurement away.
+ADOPTION_VOLUME_ANCHORS_DEFAULT = (1_000_000, 100_000, 10_000, 500)
+
+# A package's *ecosystem* (not its registry name) says whether it is the project's own
+# distribution channel. ecosyste.ms indexes 100 registries and most are distro archives
+# that repackage other people's software — jq's 37 candidates are almost all Alpine,
+# Debian, Ubuntu, Nix and Adelie builds, and letting one win made the page report
+# `registry: alpine-v3.19, canonical_package: jq-dev`. Version-suffixed names
+# (`alpine-v3.19`, `alpine-edge`, `nixpkgs-24.11`, `ubuntu-23.10`) also make a
+# name-based denylist unmaintainable, so this is an allowlist keyed on ecosystem.
+PRIMARY_ECOSYSTEMS = {
+    "npm", "pypi", "cargo", "rubygems", "packagist", "maven", "nuget", "go", "hex",
+    "pub", "cocoapods", "cran", "cpan", "clojars", "hackage", "luarocks", "elm",
+    "julia", "swiftpm", "deno", "bower", "dub", "vcpkg",
+}
+# Mirrors of a primary registry: right ecosystem, wrong copy. `gem.coop` mirrors
+# RubyGems and, by winning canonical, put selenium (345,857,423 downloads/month),
+# asciidoctor and loki on a registry the anchor table did not cover — all three scored E.
+MIRROR_REGISTRIES = {"gem.coop"}
+# Redistribution channels kept out of canonical selection unless they carry real counts,
+# since dropping them entirely would lose the only signal some projects have.
+SECONDARY_REGISTRIES = {"conda-forge.org", "anaconda.org", "formulae.brew.sh", "spack.io"}
 # dependent_repos_count -> graph_tier (A/B/C/D/E). Go importers map to this same column.
 ADOPTION_GRAPH_ANCHORS = (10_000, 1_000, 100)  # A, B, C floors; D = 1..99; E = 0
 ADOPTION_NO_PACKAGE_TYPES = {"app", "skill-pack", "service", "model"}
+# Every type gets the §2.3b instruments before any `?` is conceded: any project can ship
+# a binary, an image or a bundle, and which channel it uses is a fact to be measured
+# rather than assumed from its `type:` label.
+# Types that fall back to N/A when *no* instrument answers. A skill-pack is copied into
+# a directory; if it also ships no release bundle, there is no install event anywhere to
+# count, and "how many installs" stops being a question about its health. Measured first,
+# conceded second: 18 of this index's 84 skill-packs do publish downloadable bundles.
+ADOPTION_NA_TYPES = {"skill-pack"}
+
+# Install-signal anchors (A_floor, B_floor, C_floor) = the **top 10% / 25% / 50% of that
+# channel's own population**. They are deliberately NOT calibrated to mean the same
+# absolute reach as a registry grade, because the evidence says no such mapping exists:
+# across 138 projects measured both ways, Spearman correlation between release-asset
+# downloads and registry downloads is 0.124, and against dependent_repos 0.002. The
+# channels see different users. angular ships 24.6M npm downloads a month and 324 release
+# downloads; jq ships 295M release downloads and reads as a minor package on a registry.
+# A letter therefore means "top decile *of the channel this project actually ships
+# through*", and `signal_basis` on every page names which channel that was.
+RELEASE_DOWNLOAD_ANCHORS = (10_000_000, 1_000_000, 100_000)   # p90/p75/p50 of this index's
+                                                              # 270 asset-publishing repos
+BREW_INSTALL_ANCHORS = (3_000, 500, 100)                      # p90/p75/p50 of Homebrew's
+                                                              # own 7,900 formulae + casks
+# Docker has no population we can enumerate, so these stay absolute and are the weakest
+# of the three; pull_count is cumulative and inflated by CI (envoy alone reports 5.76e9).
+DOCKER_PULL_ANCHORS = (100_000_000, 10_000_000, 1_000_000)
+# Docker Hub's anonymous API rate-limits hard (429 observed live at 8 concurrent
+# requests), and it is the weakest of the three instruments — pull_count is cumulative
+# and CI-inflated. So it is spent only where a container image is plausibly the project's
+# primary distribution channel, which cuts the call volume across a full rescore by
+# roughly 70% (177 of 607 pages) and keeps the batch clear of the one limit this scorer
+# has actually been refused by. A library or a skill-pack that happens to publish an
+# image is not measured by it.
+DOCKER_PROBE_TYPES = {"service", "app"}
+DOCKER_PROBE_DELAY_S = 1.2
 # ecosyste.ms registry name -> direct-registry cross-check kind.
 REGISTRY_CROSSCHECK = {
     "npmjs.org": "npm", "pypi.org": "pypi", "crates.io": "crates",
@@ -231,7 +298,33 @@ def gh_api(path: str, *, method: str = "GET", fields: dict | None = None,
         m = re.search(r"HTTP (\d{3})", err)
         status = int(m.group(1)) if m else 502
         body = body or err
+    if _rate_limited(status, raw) and _retry_after_reset(raw):
+        return gh_api(path, method=method, fields=fields, graphql=graphql)
     return GhResult(status, body)
+
+
+def _rate_limited(status: int, raw: str) -> bool:
+    return status in (403, 429) and re.search(
+        r"(?im)^x-ratelimit-remaining:\s*0\s*$", raw) is not None
+
+
+def _retry_after_reset(raw: str, *, max_wait_s: int = 3700) -> bool:
+    """Block until the rate-limit window resets, then report that a retry is warranted.
+
+    Without this, a 403 from an exhausted quota reaches the axis functions as an ordinary
+    API failure and degrades to `?` — indistinguishable on the page from "this project is
+    genuinely unmeasurable". Across a 600-page batch that silently overwrites real grades
+    with a wall of unknowns, which is far worse than waiting.
+    """
+    m = re.search(r"(?im)^x-ratelimit-reset:\s*(\d+)\s*$", raw)
+    if not m:
+        return False
+    wait = int(m.group(1)) - int(time.time()) + 5
+    if wait <= 0 or wait > max_wait_s:
+        return False
+    print(f"# rate limit exhausted; sleeping {wait}s until reset", file=sys.stderr, flush=True)
+    time.sleep(wait)
+    return True
 
 
 def resolve_gh_cli() -> str | None:
@@ -286,21 +379,38 @@ def gh_stats(path: str, retries: int = 3) -> GhResult:
     return res
 
 
-def http_get_json(url: str, *, timeout: int = 25) -> tuple[int, object | None]:
-    """GET a URL with urllib; return (status, parsed_json_or_None). Never raises."""
+def http_get_json(url: str, *, timeout: int = 25, retries: int = 0,
+                  backoff: float = 1.5) -> tuple[int, object | None]:
+    """GET a URL with urllib; return (status, parsed_json_or_None). Never raises.
+
+    `retries` re-attempts only *transport* failures (status 0) and 429/5xx — the
+    transient class. A 404 or a parsed 200 is returned immediately: retrying those
+    burns budget without changing the answer. Retry matters because a transport blip
+    on the ecosyste.ms lookup is otherwise indistinguishable from "no package exists",
+    and `registry_lookup_failed` then masquerades as missing adoption data
+    (observed live: playwright/material-ui/chakra-ui/radix-ui all scored `?` this way).
+    """
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT,
                                                "Accept": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            body = resp.read().decode("utf-8", "replace")
-            try:
-                return resp.status, json.loads(body)
-            except (ValueError, json.JSONDecodeError):
-                return resp.status, None
-    except urllib.error.HTTPError as e:
-        return e.code, None
-    except (urllib.error.URLError, OSError, ValueError):
-        return 0, None
+    delay = backoff
+    for attempt in range(retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                body = resp.read().decode("utf-8", "replace")
+                try:
+                    return resp.status, json.loads(body)
+                except (ValueError, json.JSONDecodeError):
+                    return resp.status, None
+        except urllib.error.HTTPError as e:
+            status = e.code
+        except (urllib.error.URLError, OSError, ValueError):
+            status = 0
+        transient = status == 0 or status == 429 or status >= 500
+        if not transient or attempt == retries:
+            return status, None
+        time.sleep(delay)
+        delay *= 2
+    return 0, None
 
 
 def http_get_text(url: str, *, timeout: int = 25) -> tuple[int, str | None]:
@@ -366,13 +476,13 @@ def graph_tier_from_dependents(n: int) -> str:
 def volume_tier_from_downloads(downloads: int | None, registry: str) -> str | None:
     """Map absolute last-month downloads to a tier vs the per-registry anchor table.
 
-    Returns None ("?") if registry has no anchors (Maven/Go) or downloads is None.
+    Returns None ("?") only when there is no download figure to tier. A registry we have
+    no bespoke table for falls back to ADOPTION_VOLUME_ANCHORS_DEFAULT rather than
+    discarding the number: an unrecognised registry name is our gap, not the project's.
     """
     if downloads is None:
         return None
-    anchors = ADOPTION_VOLUME_ANCHORS.get(registry)
-    if anchors is None:
-        return None  # Maven/Go: no download counts -> volume "?"
+    anchors = ADOPTION_VOLUME_ANCHORS.get(registry) or ADOPTION_VOLUME_ANCHORS_DEFAULT
     a, b, c, e_floor = anchors
     if downloads >= a:
         return "A"
@@ -398,18 +508,38 @@ def tier_max(*tiers: str | None) -> str:
 # ---------------------------------------------------------------------------
 
 class Axis:
-    """One axis result: grade (A-E or '?'), raw measured values, optional ? reason."""
+    """One axis result: grade (A-E, '?' or 'N/A'), raw values, optional reason.
+
+    Three states, deliberately distinct (spec §2.3, §3.2):
+      A-E   measured.
+      '?'   we tried to measure and could not — the reader should treat the axis as an
+            open question and go look, and the failure may be ours.
+      'N/A' the axis asks a question this artifact type cannot answer, no matter how
+            healthy it is. A skill-pack is copied, never installed: there is no install
+            event to count anywhere, so an adoption number does not exist to be found.
+    `?` is a gap in our data; `N/A` is a gap in the question. Collapsing them (as this
+    scorer did through 2026-09) tells the reader "unknown" in both cases and hides which
+    one they are looking at — and it drags the aggregate denominator down for projects
+    that are not missing anything.
+    """
+
+    NOT_APPLICABLE = "N/A"
 
     def __init__(self, grade: str, raw: dict, reason: str | None = None,
                  evidence: str = ""):
         self.grade = grade
         self.raw = raw
-        self.reason = reason          # set iff grade == "?"
+        self.reason = reason          # set iff grade in ("?", "N/A")
         self.evidence = evidence      # one-line human note for the report
 
     @classmethod
     def unknown(cls, reason: str, raw: dict | None = None, evidence: str = "") -> "Axis":
         return cls("?", raw or {}, reason=reason, evidence=evidence or f"? ({reason})")
+
+    @classmethod
+    def not_applicable(cls, reason: str, raw: dict | None = None, evidence: str = "") -> "Axis":
+        return cls(cls.NOT_APPLICABLE, raw or {}, reason=reason,
+                   evidence=evidence or f"N/A ({reason})")
 
 
 # ---------------------------------------------------------------------------
@@ -838,45 +968,264 @@ def _band_label(band: str) -> str:
 # ---------------------------------------------------------------------------
 
 ECOSYSTE_LOOKUP = "https://packages.ecosyste.ms/api/v1/packages/lookup?repository_url="
+ECOSYSTE_REGISTRY_PKG = "https://packages.ecosyste.ms/api/v1/registries/{reg}/packages/{name}"
+NOISE_FLOOR_DOWNLOADS = 1000
+# Registries worth a by-name retry when the repo_url lookup maps to nothing usable,
+# ordered by how often this index's pages ship there.
+NAME_LOOKUP_REGISTRIES = ("npmjs.org", "pypi.org", "crates.io", "rubygems.org", "packagist.org")
+
+
+# A containment match is only meaningful if the repo name is a substantial part of the
+# candidate's name. Without a bound, any long coordinate that happens to embed the repo
+# name matches: `com.skillsjars:coreyhaines31__marketingskills__ab-test-setup`, a
+# third-party auto-published Maven shell, was accepted as `marketingskills`'s canonical
+# package and its 0 dependents then scored the page E.
+NAME_MATCH_MAX_LENGTH_RATIO = 3.0
 
 
 def _name_fuzzy_match(pkg_name: str, repo_name: str) -> bool:
-    """Loose match: normalize separators, check containment either way."""
+    """Match on normalized names, bounded so containment cannot be arbitrarily diluted."""
     norm = lambda s: re.sub(r"[^a-z0-9]", "", (s or "").lower())
     p, r = norm(pkg_name), norm(repo_name)
     if not p or not r:
         return False
-    return p == r or p in r or r in p
+    if p == r:
+        return True
+    longer, shorter = (p, r) if len(p) >= len(r) else (r, p)
+    if shorter not in longer:
+        return False
+    return len(longer) <= len(shorter) * NAME_MATCH_MAX_LENGTH_RATIO
 
 
-def _select_canonical(candidates: list[dict], repo_name: str) -> dict | None:
-    """Canonical = name-fuzzy-match + max downloads, dropping noise (spec §2.3).
+def _split_scope(pkg_name: str) -> tuple[str | None, str]:
+    """`@mui/utils` -> ("mui", "utils"); unscoped names -> (None, name)."""
+    if pkg_name.startswith("@") and "/" in pkg_name:
+        scope, _, rest = pkg_name[1:].partition("/")
+        return scope, rest
+    return None, pkg_name
 
-    Drop entries with downloads < 1000 OR rank == null, EXCEPT when all candidates
-    have rank == null and one has high downloads (crewai case) -> fall back to max-dl.
+
+def _match_quality(entry: dict, repo_owner: str, repo_name: str) -> int:
+    """How strongly a candidate package claims to BE this repo. Higher is better.
+
+    2 = its name matches the repo name.
+    1 = it is scoped to the repo's owner (`@mui/material` for `mui/material-ui`) — the
+        monorepo case, where no single package carries the repo's name.
+    0 = neither; usable only as a last resort.
+    """
+    name = entry.get("name", "") or ""
+    scope, bare = _split_scope(name)
+    # A Go module path is `github.com/{owner}/{repo}`, so the repo name is always a small
+    # fraction of it and the length bound in _name_fuzzy_match would reject every Go
+    # module outright. Compare the final path segment instead.
+    tail = name
+    if "/" in name and not name.startswith("@"):
+        # Strip a Go major-version suffix first: `github.com/apache/casbin/v3` has the
+        # tail `v3`, which matches nothing.
+        path = re.sub(r"/v\d+$", "", name)
+        tail = path.rsplit("/", 1)[-1]
+    if any(_name_fuzzy_match(n, repo_name) for n in (name, bare, tail)):
+        return 2
+    if scope and _name_fuzzy_match(scope, repo_owner):
+        return 1
+    return 0
+
+
+def _is_vcs_pseudo(entry: dict) -> bool:
+    """proxy.golang.org synthesizes a module for *any* GitHub repo, named
+    `github.com/{owner}/{repo}` — so it always contains the repo name and always wins a
+    substring name match, whatever language the repo is actually written in.
+
+    Left in the general pool it silently hijacks the canonical slot: material-ui's real
+    npm packages (154k dependents) lost to its Go pseudo-module (2 dependents) and the
+    page scored D instead of A. Real Go projects are unaffected — they reach the same
+    number through the pkg.go.dev importers fallback below.
+    """
+    reg = _registry_name(entry)
+    return reg == "proxy.golang.org"
+
+
+def _select_canonical(candidates: list[dict], repo_owner: str, repo_name: str,
+                      repo_language: str | None = None) -> dict | None:
+    """Canonical = strongest repo claim, then max downloads (spec §2.3).
+
+    Anti-typosquat defense = **name/scope match AND max-downloads**, in that order.
+    The spec's original third condition (`rank != null`) is no longer applied: as of
+    2026-09 ecosyste.ms returns `rank: null` for *every* candidate of every repo probed
+    (flask 18/18, playwright 100/100, material-ui 83/83), so the filter it described
+    dropped 100% of candidates and every repo fell through to the fallback branches.
+
+    Dropping it does not weaken the defense, which was always carried by the other two
+    conditions: flask's squatters (`f-ask`, dl=18) fail the name match, and the ones that
+    pass it (`flask-mirror-upstream`, dl=17) lose max-downloads to the real package
+    (dl=133M) by seven orders of magnitude.
     """
     if not candidates:
         return None
-    named = [c for c in candidates if _name_fuzzy_match(c.get("name", ""), repo_name)]
-    pool = named or candidates
+    # The Go proxy synthesizes a module for every GitHub repo whatever its language, so
+    # its entry is evidence of nothing unless the repo is actually Go. Keeping it as a
+    # last-resort candidate turned "no package anywhere" into "a package with 0
+    # dependents" — i.e. into a measured E — for 39 pages, among them `swe-agent`, a
+    # Python project. It is dropped outright for non-Go repos; real Go projects still
+    # reach their number through the pkg.go.dev importers fallback below.
+    pool = [c for c in candidates
+            if not _is_vcs_pseudo(c) or (repo_language or "").lower() == "go"]
+    if not pool:
+        return None
+    # Prefer the project's own distribution channel over distro archives, mirrors and
+    # repackagers. A repackaged build is kept only when it carries a real count, since
+    # for some projects it is the only number that exists.
+    primary = [c for c in pool if _is_primary_registry(c)]
+    if not primary:
+        # Nothing on a primary ecosystem. A distro or repackaged entry is worth keeping
+        # only if it actually counts something; one with neither downloads nor dependents
+        # says only "somebody built this once", and letting it through would license an
+        # E verdict off a number nobody measured.
+        primary = [c for c in pool
+                   if (c.get("downloads") or 0) > 0 or (c.get("dependent_repos_count") or 0) > 0]
+        if not primary:
+            return None
+    pool = primary
 
     def dl(c):
         return c.get("downloads") or 0
 
-    clean = [c for c in pool if dl(c) >= 1000 and c.get("rank") is not None]
-    if clean:
-        return max(clean, key=dl)
-    # All rank==null (crewai case): fall back to the max-downloads candidate if it has real volume.
-    all_rank_null = all(c.get("rank") is None for c in pool)
-    if all_rank_null:
-        best = max(pool, key=dl)
-        if dl(best) >= 1000:
-            return best
-    # Otherwise: still take best-by-downloads if any clears 1000 (avoid false ?).
-    over = [c for c in pool if dl(c) >= 1000]
-    if over:
-        return max(over, key=dl)
+    scored = [(c, _match_quality(c, repo_owner, repo_name)) for c in pool]
+    for want in (2, 1):
+        tier = [c for c, q in scored if q == want and dl(c) >= NOISE_FLOOR_DOWNLOADS]
+        if tier:
+            return max(tier, key=dl)
+    # Nothing claims the repo by name or scope. Do NOT fall back to whichever candidate
+    # has the most downloads: ecosyste.ms's repo -> package mapping carries wrong entries,
+    # and picking on volume alone labels a stranger's package as this project's canonical.
+    # `jaegertracing/jaeger` was reported as shipping `digitalbanking` on NuGet this way.
+    # An unidentified package is `?`; a misidentified one is a false fact on the page, and
+    # the install-signal path (§2.3b) still measures whatever the project really ships.
+    # No download figures at all (Go, Maven, Spack). Keep the strongest name claimant
+    # anyway: identifying the package and finding it has no counts is `registry_no_counts`,
+    # a different and more informative answer than `ambiguous` ("we could not tell which
+    # package this repo is"). Dependents, where present, still tier it.
+    countless = [c for c, q in scored if q > 0 and c.get("downloads") is None]
+    if countless:
+        return max(countless, key=lambda c: c.get("dependent_repos_count") or 0)
     return None
+
+
+def _name_variants(repo_name: str) -> list[str]:
+    """Plausible package names for a repo, most-likely first.
+
+    ecosyste.ms maps repo -> package by scraping manifests, and the mapping is missing
+    for a long tail of repos whose package name differs from the repo name (the usual
+    cause is a language suffix: `elasticsearch-dsl-py` ships as `elasticsearch-dsl`).
+    """
+    base = (repo_name or "").strip()
+    out = [base]
+    low = base.lower()
+    for suf in ("-py", ".py", "-python", "-js", ".js", "-node", "-go", ".go",
+                "-rs", ".rs", "-rb", "-ruby", "-php", "-java"):
+        if low.endswith(suf) and len(base) > len(suf) + 1:
+            out.append(base[: -len(suf)])
+    for pre in ("python-", "node-", "go-", "rust-", "ruby-", "php-"):
+        if low.startswith(pre) and len(base) > len(pre) + 1:
+            out.append(base[len(pre):])
+    seen, uniq = set(), []
+    for n in out:
+        if n and n.lower() not in seen:
+            seen.add(n.lower())
+            uniq.append(n)
+    return uniq
+
+
+_REPO_IDENTITY_CACHE: dict[str, str | None] = {}
+
+
+def _resolves_to(recorded: str, want_full: str) -> bool:
+    """Is `recorded` (owner/name from a package's metadata) the same repo as `want_full`?
+
+    Matching on the repo *name* alone is not enough, and getting this wrong is silent:
+    it attaches a stranger's download figures to a page as a real measurement. Two live
+    collisions caught before the backfill ran — `crates.io/waza` is a placeholder crate
+    at `mattjperez/waza` ("Reserved name"), nothing to do with `tw93/Waza`; `npmjs.org/d2`
+    is `dhis2/d2`, a DHIS2 client library, nothing to do with `d2lang/d2`.
+
+    Owner equality alone is too strict the other way, because org renames and transfers
+    leave the old owner in ecosyste.ms's record. GitHub resolves those: asking it for
+    `elasticsearch/elasticsearch-dsl-py` returns `elastic/elasticsearch-dsl-py`. So:
+    accept on exact match, else accept only if GitHub redirects the recorded repo to
+    exactly the repo we are scoring.
+    """
+    if recorded.lower() == want_full.lower():
+        return True
+    if recorded not in _REPO_IDENTITY_CACHE:
+        res = gh_api(f"repos/{recorded}")
+        full = None
+        if isinstance(res.json, dict):
+            full = res.json.get("full_name")
+        _REPO_IDENTITY_CACHE[recorded] = full
+    resolved = _REPO_IDENTITY_CACHE[recorded]
+    return bool(resolved) and resolved.lower() == want_full.lower()
+
+
+def _lookup_by_name(repo_owner: str, repo_name: str) -> dict | None:
+    """Secondary discovery: find the package by *name* when repo_url lookup came up empty.
+
+    ecosyste.ms builds its repo -> package mapping by scraping manifests and the mapping
+    has a long tail of gaps; a gap there is not evidence of an unpackaged project
+    (`elasticsearch-dsl-py` ships as `elasticsearch-dsl` and is mapped to neither).
+    Every hit must survive `_resolves_to` before its numbers are used.
+    """
+    want_full = f"{repo_owner}/{repo_name}"
+    best = None
+    for name in _name_variants(repo_name):
+        for reg in NAME_LOOKUP_REGISTRIES:
+            url = ECOSYSTE_REGISTRY_PKG.format(
+                reg=reg, name=urllib.parse.quote(name, safe=""))
+            status, data = http_get_json(url, retries=1)
+            if status != 200 or not isinstance(data, dict):
+                continue
+            back = (data.get("repository_url") or "").rstrip("/")
+            m = re.search(r"github\.com/([^/]+/[^/\s]+?)(?:\.git)?$", back)
+            if not m or not _resolves_to(m.group(1), want_full):
+                continue
+            if (data.get("downloads") or 0) < NOISE_FLOOR_DOWNLOADS \
+                    and not (data.get("dependent_repos_count") or 0):
+                continue
+            cand = dict(data)
+            cand["registry"] = reg
+            cand["_via"] = "name_lookup"
+            if best is None or (cand.get("downloads") or 0) > (best.get("downloads") or 0):
+                best = cand
+        if best is not None:
+            return best
+    return best
+
+
+# ecosyste.ms returns `registry` as an object carrying `ecosystem`, but some call paths
+# (and this suite's fixtures) carry only the name. Fall back to the name for the primary
+# registries, so a bare string is not silently treated as an unknown repackager.
+REGISTRY_NAME_TO_ECOSYSTEM = {
+    "npmjs.org": "npm", "pypi.org": "pypi", "crates.io": "cargo",
+    "rubygems.org": "rubygems", "packagist.org": "packagist",
+    "repo1.maven.org": "maven", "nuget.org": "nuget", "proxy.golang.org": "go",
+    "hex.pm": "hex", "pub.dev": "pub", "cocoapods.org": "cocoapods",
+    "cran.r-project.org": "cran", "metacpan.org": "cpan", "bower.io": "bower",
+}
+
+
+def _registry_ecosystem(entry: dict) -> str | None:
+    reg = entry.get("registry")
+    if isinstance(reg, dict):
+        return reg.get("ecosystem") or REGISTRY_NAME_TO_ECOSYSTEM.get(reg.get("name") or "")
+    return REGISTRY_NAME_TO_ECOSYSTEM.get(reg or "")
+
+
+def _is_primary_registry(entry: dict) -> bool:
+    """Is this candidate the project's own distribution channel, rather than a repackage?"""
+    if _registry_name(entry) in MIRROR_REGISTRIES:
+        return False
+    if _registry_name(entry) in SECONDARY_REGISTRIES:
+        return False
+    return _registry_ecosystem(entry) in PRIMARY_ECOSYSTEMS
 
 
 def _registry_name(entry: dict) -> str | None:
@@ -913,23 +1262,273 @@ def _direct_registry_downloads(kind: str, pkg: str) -> int | None:
     return None
 
 
+# ---------------------------------------------------------------------------
+# Adoption fallback instruments (spec §2.3b)
+#
+# Registry downloads answer "how many projects install this" only for things that ship
+# to a registry. An IDE, a database server or a CLI binary is adopted just as measurably
+# — it just leaves its trace somewhere else. Scoring those `?` reported a gap in our
+# instruments as a gap in the project.
+#
+# Each instrument below counts a real install/pull event, never attention (stars, forks,
+# watchers). Measured on this index's own cohort, star count ranks essentially
+# independently of adoption (Spearman 0.13 vs grade, 0.065 vs dependents, 0.007 vs
+# downloads over 268 scored pages), so it is not a usable stand-in and is not used.
+# ---------------------------------------------------------------------------
+
+HEALTH_CACHE_DIR = Path(
+    os.environ.get("OSS_ATLAS_HEALTH_CACHE")
+    or (Path(__file__).resolve().parent.parent / ".health-cache"))
+BREW_CACHE_TTL_S = 24 * 3600
+
+
+def _cache_json(key: str, ttl: int, fetch):
+    """Disk-cached JSON, shared across processes.
+
+    The batch runner invokes this scorer once per page, so a whole-registry index that is
+    cheap once (Homebrew ships ~20MB of formula + analytics JSON) would otherwise be
+    re-downloaded several hundred times in a single rerun.
+    """
+    path = HEALTH_CACHE_DIR / f"{key}.json"
+    try:
+        if path.exists() and (time.time() - path.stat().st_mtime) < ttl:
+            return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        pass
+    data = fetch()
+    # Never cache an empty result. A transport failure and "this index is genuinely
+    # empty" produce the same {} here, and persisting it would serve that emptiness as
+    # a measured fact for the whole TTL — every later page would score as if Homebrew
+    # had no record of it, which is indistinguishable from a real answer.
+    if data:
+        try:
+            HEALTH_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(data), encoding="utf-8")
+        except OSError:
+            pass
+    return data
+
+
+_BREW: dict | None = None
+
+
+def _brew_tables() -> dict:
+    """{"<owner>/<repo>": installs_90d} built from Homebrew's own formula/cask metadata.
+
+    Keyed by the GitHub repo each formula declares, not by formula name: `bat` the
+    formula and `bat` the repo agree, but `visual-studio-code` and `microsoft/vscode`
+    do not, and name-guessing silently attaches one project's installs to another.
+    """
+    global _BREW
+    if _BREW is not None:
+        return _BREW
+
+    def build():
+        repo_to_tokens: dict[str, list[list[str]]] = {}
+        for api, kind in (("formula", "formula"), ("cask", "cask")):
+            st, data = http_get_json(f"https://formulae.brew.sh/api/{api}.json",
+                                     timeout=120, retries=1)
+            if st != 200 or not isinstance(data, list):
+                continue
+            for it in data:
+                urls = [it.get("homepage"), it.get("url")]
+                u = it.get("urls") or {}
+                for kk in ("stable", "head"):
+                    v = u.get(kk) or {}
+                    if isinstance(v, dict):
+                        urls.append(v.get("url"))
+                tok = it.get("token") or it.get("name")
+                if isinstance(tok, list):
+                    tok = tok[0] if tok else None
+                if not tok:
+                    continue
+                for uu in urls:
+                    m = re.search(r"github\.com/([^/]+)/([^/\s#?]+?)(?:\.git)?(?:/|$)", str(uu or ""))
+                    if m:
+                        key = f"{m.group(1).lower()}/{m.group(2).lower()}"
+                        repo_to_tokens.setdefault(key, []).append([kind, str(tok)])
+                        break
+        counts: dict[str, int] = {}
+        for path, kind in (("analytics/install/90d.json", "formula"),
+                           ("analytics/cask-install/90d.json", "cask")):
+            st, d = http_get_json(f"https://formulae.brew.sh/api/{path}", timeout=120, retries=1)
+            if st != 200 or not isinstance(d, dict):
+                continue
+            for item in d.get("items", []):
+                nm = item.get("formula") or item.get("cask") or item.get("token")
+                try:
+                    counts[f"{kind}:{str(nm).split()[0]}"] = int(
+                        str(item.get("count", "0")).replace(",", ""))
+                except (ValueError, AttributeError):
+                    pass
+        out = {}
+        for repo_key, toks in repo_to_tokens.items():
+            best = max((counts.get(f"{k}:{t}", 0) for k, t in toks), default=0)
+            if best:
+                out[repo_key] = best
+        return out
+
+    _BREW = _cache_json("homebrew_installs_90d", BREW_CACHE_TTL_S, build) or {}
+    return _BREW
+
+
+def _homebrew_installs(owner: str, name: str) -> int | None:
+    return _brew_tables().get(f"{owner.lower()}/{name.lower()}")
+
+
+def _release_downloads(repo: RepoData) -> tuple[int | None, int]:
+    """(total asset downloads across published releases, asset count).
+
+    Counts only uploaded release *assets* — installers, binaries, wheels attached by
+    hand. A source-tarball-only release reports nothing here, which is correct: GitHub
+    generates those for every tag whether or not anyone wants them.
+    """
+    res = gh_api(f"repos/{repo.full}/releases?per_page=100")
+    data = res.json if isinstance(res.json, list) else None
+    if data is None:
+        return None, 0
+    total, assets = 0, 0
+    for rel in data:
+        for a in (rel.get("assets") or []):
+            total += a.get("download_count") or 0
+            assets += 1
+    return (total if assets else None), assets
+
+
+def _docker_pulls(repo: RepoData) -> tuple[int | None, str | None]:
+    """Docker Hub pull count, only for a repository that names this GitHub repo back.
+
+    Namespace guessing alone is unsafe — `grafana/loki` and `prometheus/prometheus` are
+    fine, but plenty of short names collide with unrelated images. Each guess is accepted
+    only if Docker Hub's description or full description points at the same GitHub repo,
+    or the namespace equals the GitHub owner.
+    """
+    owner, name = repo.owner.lower(), repo.name.lower()
+    for ns, rn in ((owner, name), (name, name), ("library", name)):
+        time.sleep(DOCKER_PROBE_DELAY_S)
+        st, d = http_get_json(f"https://hub.docker.com/v2/repositories/{ns}/{rn}", retries=1)
+        if st != 200 or not isinstance(d, dict):
+            continue
+        pulls = d.get("pull_count")
+        if not pulls:
+            continue
+        blob = f"{d.get('description') or ''} {d.get('full_description') or ''}".lower()
+        if ns == owner or ns == "library" or f"github.com/{owner}/{name}" in blob:
+            return int(pulls), f"{ns}/{rn}"
+    return None, None
+
+
+def _tier_from_anchors(value: int | None, anchors: tuple[int, int, int]) -> str | None:
+    """value -> A/B/C/D against (A_floor, B_floor, C_floor). None -> None.
+
+    **E is deliberately unreachable here**, unlike the registry path. The two directions
+    of this evidence are not symmetric: a large install count proves the project is
+    adopted, but a small one does not prove it is not, because the channel we can read
+    may not be the channel its users take. A tool distributed mainly by `git clone` or a
+    curl-to-shell script can show a handful of release-asset downloads while being widely
+    used, and calling that E would assert "measurably unadopted" from a number that never
+    measured the main path. The registry path keeps E because there the registry *is* the
+    distribution channel, so absence there is real absence.
+    """
+    if value is None:
+        return None
+    a, b, c = anchors
+    if value >= a:
+        return "A"
+    if value >= b:
+        return "B"
+    if value >= c:
+        return "C"
+    return "D"
+
+
+def _adoption_from_install_signals(repo: RepoData, archived: bool) -> Axis | None:
+    """Score adoption from install events for projects that ship no registry package.
+
+    Tier = max() over whatever instruments answered, matching the registry path's
+    max(graph_tier, volume_tier): a project is as adopted as its strongest real
+    distribution channel, and being absent from a channel it never used is not evidence
+    against it. Returns None when nothing answered, leaving the caller to decide between
+    `?`, `N/A` and E.
+    """
+    raw: dict = {"registry": None, "canonical_package": None}
+    tiers: list[str] = []
+
+    brew = _homebrew_installs(repo.owner, repo.name)
+    if brew is not None:
+        raw["homebrew_installs_90d"] = brew
+        t = _tier_from_anchors(brew, BREW_INSTALL_ANCHORS)
+        raw["homebrew_tier"] = t
+        tiers.append(t)
+
+    rel, n_assets = _release_downloads(repo)
+    if rel is not None:
+        raw["release_downloads"] = rel
+        raw["release_assets"] = n_assets
+        t = _tier_from_anchors(rel, RELEASE_DOWNLOAD_ANCHORS)
+        raw["release_tier"] = t
+        tiers.append(t)
+
+    pulls, image = _docker_pulls(repo) if repo.type in DOCKER_PROBE_TYPES else (None, None)
+    if pulls is not None:
+        raw["docker_pulls"] = pulls
+        raw["docker_image"] = image
+        t = _tier_from_anchors(pulls, DOCKER_PULL_ANCHORS)
+        raw["docker_tier"] = t
+        tiers.append(t)
+
+    tiers = [t for t in tiers if t]
+    if not tiers:
+        return None
+    tier = functools.reduce(tier_max, tiers)
+    # Name the channel the grade actually came from. Without it a reader sees a letter
+    # and `registry: null` and cannot tell whether it rests on 112M binary downloads or
+    # on a Docker counter that a CI pipeline inflated.
+    raw["signal_basis"] = "+".join(
+        k for k, present in (("homebrew", "homebrew_tier" in raw),
+                             ("releases", "release_tier" in raw),
+                             ("docker", "docker_tier" in raw)) if present)
+    if archived:
+        raw["archived"] = True
+    ax = Axis(tier, raw,
+              evidence=f"install signals brew={raw.get('homebrew_installs_90d')} "
+                       f"releases={raw.get('release_downloads')} "
+                       f"docker={raw.get('docker_pulls')} -> {tier}")
+    return ax
+
+
 def axis_adoption(repo: RepoData) -> Axis:
     url = ECOSYSTE_LOOKUP + urllib.parse.quote(
         f"https://github.com/{repo.full}", safe="")
-    status, data = http_get_json(url)
+    status, data = http_get_json(url, retries=2)
     archived = bool(repo.core.json.get("archived")) if isinstance(repo.core.json, dict) else False
 
     if status == 0 or status >= 400:
         return Axis.unknown("registry_lookup_failed", evidence=f"? ecosyste.ms lookup HTTP {status}")
 
     candidates = data if isinstance(data, list) else []
-    canonical = _select_canonical(candidates, repo.name)
+    canonical = _select_canonical(candidates, repo.owner, repo.name,
+                                  (repo.core.json or {}).get("language")
+                                  if isinstance(repo.core.json, dict) else None)
+
+    # Secondary discovery before conceding: ecosyste.ms's repo -> package mapping has a
+    # long tail of gaps, and a gap there is not evidence of an unpackaged project.
+    if canonical is None:
+        canonical = _lookup_by_name(repo.owner, repo.name)
 
     if canonical is None:
-        # No package cleared the noise filter.
+        # Ships no registry package. Before concluding anything, ask the instruments that
+        # fit how this kind of artifact actually reaches its users (spec §2.3b).
+        fallback = _adoption_from_install_signals(repo, archived)
+        if fallback is not None:
+            return fallback
         if repo.type in ADOPTION_NO_PACKAGE_TYPES:
+            if repo.type in ADOPTION_NA_TYPES:
+                return Axis.not_applicable(
+                    "no_install_channel",
+                    evidence=f"type {repo.type}: copied, not installed — no install event exists to count")
             return Axis.unknown("no_package_structural",
-                                evidence=f"type {repo.type} & no canonical package -> no_package_structural")
+                                evidence=f"type {repo.type} & no canonical package or install signal")
         # A successful empty lookup for package-relevant types is measurably unadopted -> E (spec §2.3).
         if candidates:
             return Axis.unknown("ambiguous",
@@ -958,6 +1557,14 @@ def axis_adoption(repo: RepoData) -> Axis:
             dep_repos = max(dep_repos or 0, importers)
 
     if dep_repos is None and volume_tier is None:
+        # A package exists but carries no comparable counts. That is a gap in the
+        # registry's bookkeeping, not proof the project has no measurable reach — try
+        # the install channels before conceding, same as the no-package path.
+        fallback = _adoption_from_install_signals(repo, archived)
+        if fallback is not None:
+            fallback.raw["registry"] = registry
+            fallback.raw["canonical_package"] = pkg_name
+            return fallback
         return Axis.unknown("registry_no_counts",
                             raw={"registry": registry, "canonical_package": pkg_name},
                             evidence="? canonical package exists but comparable dependents/download counts unavailable")
@@ -992,11 +1599,37 @@ def axis_adoption(repo: RepoData) -> Axis:
         "volume_tier": volume_tier if volume_tier else "?",
         "cross_check_divergence": divergence,
     }
+
+    # Having a registry package does not mean the registry is where this project's users
+    # get it. Binary-first tools keep a token package and ship through releases: jq reads
+    # as a minor conda package (-> D) while 295M people pulled its binaries; ripgrep the
+    # same (-> D, 53M binaries); ImageMagick and ComfyUI scored E. So the install channels
+    # are measured for every project, not only for those with no package at all, and the
+    # axis takes the best of the two — the same max() the registry path already applies
+    # across its own two sub-signals.
+    #
+    # This cannot inflate a registry-first project, which is what the symmetric evidence
+    # shows: angular publishes 24.6M npm downloads a month and 324 release-asset
+    # downloads, ray 276, faker 716. A channel a project does not use reports nothing,
+    # and max() with nothing is unchanged.
+    install = _adoption_from_install_signals(repo, archived)
+    if install is not None:
+        raw.update({k: v for k, v in install.raw.items()
+                    if k not in ("registry", "canonical_package")})
+        if GRADE_ORDER.index(install.grade) < GRADE_ORDER.index(tier):
+            raw["tier_source"] = raw.get("signal_basis")
+            tier = install.grade
+        else:
+            raw["tier_source"] = "registry"
+    else:
+        raw["tier_source"] = "registry"
+
     if archived:
         raw["archived"] = True
     ax = Axis(tier, raw,
               evidence=f"registry={registry} pkg={pkg_name} dep_repos={dep_repos} "
-                       f"dl={downloads} graph={graph_tier} vol={volume_tier} -> {tier}")
+                       f"dl={downloads} graph={graph_tier} vol={volume_tier} "
+                       f"install={install.grade if install else None} -> {tier}")
     ax.needs_human_review = needs_review
     return ax
 
@@ -1427,9 +2060,14 @@ def aggregate(axes: dict[str, Axis]) -> dict:
     scored = {k: a for k, a in axes.items()
               if isinstance(a, Axis) and a.grade in GRADE_POINTS}
     n = len(scored)
+    # Denominator = axes this artifact type can be asked about at all. An N/A axis is
+    # removed from the question, not left unanswered, so a skill-pack with all five of
+    # its meaningful axes measured reads "5/5" rather than a deceptively thin "5/6".
+    applicable = sum(1 for k, a in axes.items()
+                     if isinstance(a, Axis) and a.grade != Axis.NOT_APPLICABLE)
     if n < 3:
         return {"overall": "?", "overall_score": None, "scored_axes": n,
-                "capped": False, "cap_reason": None}
+                "applicable_axes": applicable, "capped": False, "cap_reason": None}
     mean = sum(GRADE_POINTS[a.grade] for a in scored.values()) / n
     overall = _overall_letter(mean)
 
@@ -1451,7 +2089,8 @@ def aggregate(axes: dict[str, Axis]) -> dict:
             cap_reason = f"source-available/no-license: {spdx}"
 
     return {"overall": overall, "overall_score": round(mean, 2),
-            "scored_axes": n, "capped": capped, "cap_reason": cap_reason}
+            "scored_axes": n, "applicable_axes": applicable,
+            "capped": capped, "cap_reason": cap_reason}
 
 
 # ---------------------------------------------------------------------------
@@ -1505,9 +2144,17 @@ AXIS_ORDER = ["maintenance", "responsiveness", "adoption", "longevity",
 RAW_KEY_ORDER = {
     "maintenance": ["archived", "last_commit_age_days", "active_weeks_13", "carve_out"],
     "responsiveness": ["median_ttfr_hours", "qualifying_issues", "band", "window_offset_days", "source", "inferred"],
+    # Registry path, then the §2.3b install-signal path. Every field that can decide the
+    # grade must be listed: emission filters raw to these keys, so a measurement missing
+    # here is written nowhere and the grade becomes unauditable — ollama/dbeaver/valkey
+    # each landed "A" with nothing but `registry: null` on the page to show for it.
     "adoption": ["registry", "canonical_package", "dependent_repos_count",
                  "downloads_last_month", "graph_tier", "volume_tier",
-                 "cross_check_divergence", "archived"],
+                 "cross_check_divergence",
+                 "homebrew_installs_90d", "homebrew_tier",
+                 "release_downloads", "release_assets", "release_tier",
+                 "docker_pulls", "docker_image", "docker_tier",
+                 "signal_basis", "tier_source", "archived"],
     "longevity": ["repo_age_days", "last_commit_age_days", "cohort"],
     "governance": ["active_maintainers_12mo", "top1_share", "top3_share",
                    "window_source", "carve_out"],
@@ -1528,7 +2175,7 @@ def _yaml_scalar(v) -> str:
     # strings that aren't plain identifiers.
     needs_quote = (
         s == ""
-        or s in ("?", "null", "true", "false", "~", "-", ">", "|", "*", "&", "!", "%", "@", "`")
+        or s in ("?", "N/A", "null", "true", "false", "~", "-", ">", "|", "*", "&", "!", "%", "@", "`")
         or s[0] in "?-:#[]{},&*!|>%@`\"'"
         or re.search(r"[:#\[\]{}]", s)
         or (re.match(r"^[\d.+-]", s) and not re.match(r"^[\w./@+-]+$", s))
@@ -1546,6 +2193,7 @@ def emit_health_yaml(agg: dict, axes: dict[str, Axis], computed_at: str,
     lines.append(f"  overall: {_yaml_scalar(agg['overall'])}")
     lines.append(f"  overall_score: {_yaml_scalar(agg['overall_score'])}")
     lines.append(f"  scored_axes: {agg['scored_axes']}")
+    lines.append(f"  applicable_axes: {agg.get('applicable_axes', 6)}")
     lines.append(f"  capped: {_yaml_scalar(agg['capped'])}")
     lines.append(f"  cap_reason: {_yaml_scalar(agg['cap_reason'])}")
     lines.append(f"  needs_human_review: {_yaml_scalar(needs_human_review)}")
@@ -1554,8 +2202,8 @@ def emit_health_yaml(agg: dict, axes: dict[str, Axis], computed_at: str,
         ax = axes[name]
         lines.append(f"    {name}:")
         lines.append(f"      grade: {_yaml_scalar(ax.grade)}")
-        if ax.grade == "?":
-            # ? axes carry no raw block; reason lives in unknowns.
+        if ax.grade in ("?", Axis.NOT_APPLICABLE):
+            # Unscored axes carry no raw block; the reason lives in unknowns/not_applicable.
             lines.append("      raw: {}")
             continue
         lines.append("      raw:")
@@ -1567,6 +2215,12 @@ def emit_health_yaml(agg: dict, axes: dict[str, Axis], computed_at: str,
     if unknowns:
         lines.append("  unknowns:")
         for name, reason in unknowns.items():
+            lines.append(f"    {name}: {{ reason: {reason} }}")
+    na = {name: axes[name].reason for name in AXIS_ORDER
+          if axes[name].grade == Axis.NOT_APPLICABLE}
+    if na:
+        lines.append("  not_applicable:")
+        for name, reason in na.items():
             lines.append(f"    {name}: {{ reason: {reason} }}")
     return "\n".join(lines) + "\n"
 

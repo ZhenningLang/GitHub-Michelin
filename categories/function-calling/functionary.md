@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T10:54:56Z
+  computed_at: 2026-09-22T16:18:55Z
   overall: B
-  overall_score: 3.33
-  scored_axes: 3
+  overall_score: 2.75
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 81
+        last_commit_age_days: 84
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -40,12 +41,17 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1166
-        last_commit_age_days: 81
+        repo_age_days: 1169
+        last_commit_age_days: 84
         cohort: model
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 1
+        top1_share: 1.0
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -56,7 +62,6 @@ health:
   unknowns:
     responsiveness: { reason: type_na }
     adoption: { reason: no_package_structural }
-    governance: { reason: empty_or_gated }
 ---
 
 # Functionary

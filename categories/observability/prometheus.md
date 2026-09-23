@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:50:12Z
+  computed_at: 2026-09-22T16:46:39Z
   overall: A
-  overall_score: 3.67
+  overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,34 +35,41 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 39.9
-        qualifying_issues: 48
+        median_ttfr_hours: 32.8
+        qualifying_issues: 52
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@prometheus-io/lezer-promql"
         dependent_repos_count: 296
-        downloads_last_month: 407507
+        downloads_last_month: 412781
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 4138
+        homebrew_tier: A
+        release_downloads: 23611823
+        release_assets: 3604
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4972
+        repo_age_days: 5050
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 104
-        top1_share: 0.206
-        top3_share: 0.409
+        active_maintainers_12mo: 110
+        top1_share: 0.208
+        top3_share: 0.437
         window_source: stats_contributors
         carve_out: null
     risk_license:

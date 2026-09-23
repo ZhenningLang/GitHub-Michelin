@@ -7,17 +7,17 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | B (4/6) | [→](baoyu-skills.md) |
-| **huashu-skills** | Chinese creator toolkit with 21 skills for articles, topics, research, video outlines, images, PDF export, and creator workflows. | D (4/6) | [→](huashu-skills.md) |
-| **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (4/6) | [→](writing-agent.md) |
+| **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | B (4/5) | [→](baoyu-skills.md) |
+| **huashu-skills** | Chinese creator toolkit with 21 skills for articles, topics, research, video outlines, images, PDF export, and creator workflows. | B (4/5) | [→](huashu-skills.md) |
+| **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (5/6) | [→](writing-agent.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Baoyu Skills](baoyu-skills.md) | ✅ | B (4/6) | A 20+ general content/formatting utility pack; broad but not a novel- or marketing-specific pipeline. |
-| [huashu-skills](huashu-skills.md) | ✅ | D (4/6) | Broad Chinese creator toolkit; license ambiguity and per-skill install paths make it riskier. |
-| [writing-agent](writing-agent.md) | ✅ | B (4/6) | Strict Chinese article production line with an evidence ledger; heavier than modular creator toolkits. |
+| [Baoyu Skills](baoyu-skills.md) | ✅ | B (4/5) | A 20+ general content/formatting utility pack; broad but not a novel- or marketing-specific pipeline. |
+| [huashu-skills](huashu-skills.md) | ✅ | B (4/5) | Broad Chinese creator toolkit; license ambiguity and per-skill install paths make it riskier. |
+| [writing-agent](writing-agent.md) | ✅ | B (5/6) | Strict Chinese article production line with an evidence ledger; heavier than modular creator toolkits. |
 
 ## What belongs here
 

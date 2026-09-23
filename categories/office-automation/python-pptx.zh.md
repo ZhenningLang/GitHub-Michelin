@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T12:27:46Z
+  computed_at: 2026-09-22T16:48:31Z
   overall: C
   overall_score: 2.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,7 +30,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 772
+        last_commit_age_days: 776
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,15 +42,16 @@ health:
         registry: pypi.org
         canonical_package: python-pptx
         dependent_repos_count: 2396
-        downloads_last_month: 64003855
+        downloads_last_month: 52188179
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.23
+        cross_check_divergence: 1.06
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 5049
-        last_commit_age_days: 772
+        repo_age_days: 5053
+        last_commit_age_days: 776
         cohort: library
     governance:
       grade: "?"

@@ -3,8 +3,52 @@
 
 Reads the health block from YAML frontmatter and rewrites the corresponding
 prose section in the body so they never drift.  Preserves the Caveats section."""
-import argparse, re, yaml
+import argparse, re, sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+# Reuse the repo's own frontmatter reader instead of PyYAML: every other tool here is
+# stdlib-only and CI installs no third-party packages, so importing yaml made this the
+# one script that could not run in CI.
+from health_card import parse_frontmatter as _parse_mapping
+
+
+def _coerce(value):
+    """Turn the mapping parser's strings back into the types the bullets format.
+
+    The parser yields every scalar as a string, but the bullets use `{n:,}` and
+    `{share:.1%}` and test `is not None` — so `null` must become None and numbers must
+    become numbers, or a bullet either crashes or prints the literal text "null".
+    """
+    if isinstance(value, dict):
+        return {k: _coerce(v) for k, v in value.items()}
+    if not isinstance(value, str):
+        return value
+    # Inline flow mappings: the scorer writes `raw: {}` for an axis with no evidence and
+    # `adoption: { reason: no_package_structural }` in the unknowns block. The mapping
+    # parser hands those back as the literal strings, so a caller doing `raw.get(...)`
+    # would fail on a str — which it did, on android-skills.
+    if value.startswith("{") and value.endswith("}"):
+        inner = value[1:-1].strip()
+        if not inner:
+            return {}
+        out = {}
+        for part in inner.split(","):
+            k, sep, v = part.partition(":")
+            if sep:
+                out[k.strip()] = _coerce(v.strip().strip('"').strip("'"))
+        return out
+    if value in ("null", "~", ""):
+        return None
+    if value == "true":
+        return True
+    if value == "false":
+        return False
+    if re.fullmatch(r"-?\d+", value):
+        return int(value)
+    if re.fullmatch(r"-?\d*\.\d+", value):
+        return float(value)
+    return value
 
 
 def parse_frontmatter(text):
@@ -14,11 +58,10 @@ def parse_frontmatter(text):
     end = text.find("\n---", 3)
     if end == -1:
         return None, text
-    try:
-        fm = yaml.safe_load(text[3:end])
-    except Exception:
+    fm = _parse_mapping(text[: end + 4])
+    if not fm:
         return None, text
-    return fm or {}, text[end + 4:]
+    return _coerce(fm), text[end + 4:]
 
 
 def axis_bullet_en(name, axis):
@@ -38,6 +81,10 @@ def axis_bullet_en(name, axis):
     }
     label = labels.get(name, name)
     
+    if grade == "N/A":
+        reason = axis.get("reason", "not applicable")
+        return f"- **{label}**: Not applicable to this project type — {reason}."
+
     if grade == "?":
         reason = axis.get("reason", "unknown")
         return f"- **{label}**: Cannot be scored — {reason}."
@@ -105,6 +152,10 @@ def axis_bullet_zh(name, axis):
     }
     label = labels.get(name, name)
     
+    if grade == "N/A":
+        reason = axis.get("reason", "not applicable")
+        return f"- **{label}**：该项目类型不适用——{reason}。"
+
     if grade == "?":
         reason = axis.get("reason", "unknown")
         return f"- **{label}**：无法计算——{reason}。"
@@ -185,14 +236,38 @@ def sync_page(path):
         header = "## Health & viability\n"
         next_header = "## Caveats (unverified)"
     
-    # Match header + content until next header (but not including it)
-    pattern = f'({re.escape(header)})((?:(?!{re.escape(next_header)}).)*)'
+    # Replace the health section's body only, stopping at the NEXT H2 of any kind.
+    #
+    # This used to scan forward to a hardcoded `next_header` ("## Caveats (unverified)")
+    # with a negative lookahead, which had two destructive failure modes:
+    #   1. Any H2 sitting between the two headers was swallowed and overwritten. This
+    #      really happened: a `--all` run deleted `## Tech stack` / `## Dependencies` /
+    #      `## Ops difficulty` from pyav and lit (4 files), recovered from git.
+    #   2. On a page with no Caveats section the lookahead never matches, so `.*` under
+    #      DOTALL runs to end of file and the whole tail of the page is replaced.
+    # Terminating on `\n## ` makes the rewrite structurally local: it can only touch the
+    # lines between this H2 and the following one.
+    pattern = re.escape(header) + r"(.*?)(?=\n## |\Z)"
     match = re.search(pattern, body, re.DOTALL)
     if not match:
         return False
-    
-    new_body = body[:match.start()] + match.group(1) + health_section + body[match.end():]
-    
+
+    new_body = body[:match.start()] + header + health_section + body[match.end():]
+
+    # Defence in depth: a section rewrite must not change which sections exist. The fix
+    # above is an argument about a regex; this is a check on the actual output, so a later
+    # edit to that regex cannot silently resume eating sections.
+    before_h2 = re.findall(r"(?m)^## .*$", body)
+    after_h2 = re.findall(r"(?m)^## .*$", new_body)
+    if before_h2 != after_h2:
+        lost = [h for h in before_h2 if h not in after_h2]
+        raise SystemExit(
+            f"{path}: refusing to write — section rewrite changed the H2 set\n"
+            f"  lost:   {lost or '(none)'}\n"
+            f"  before: {before_h2}\n"
+            f"  after:  {after_h2}"
+        )
+
     # Reconstruct full text with original frontmatter
     new_text = text[:len(text) - len(body)] + new_body
     
@@ -205,8 +280,12 @@ def sync_page(path):
 
 def main():
     ap = argparse.ArgumentParser(description="Sync health frontmatter to body prose")
-    ap.add_argument("--all", action="store_true", help="sync all pages in categories/")
+    ap.add_argument("--all", action="store_true",
+                    help="sync all pages in categories/ (requires --overwrite-prose)")
     ap.add_argument("--page", help="sync a single page path")
+    ap.add_argument("--overwrite-prose", action="store_true",
+                    help="acknowledge that --all replaces hand-written analysis with the "
+                         "generated one-line-per-axis template")
     args = ap.parse_args()
 
     if args.page:
@@ -215,6 +294,18 @@ def main():
         return 0
 
     if args.all:
+        # `--all` is destructive on any page whose health prose was written by hand: the
+        # generated text is one terse line per axis, so a corpus-wide run replaces
+        # multi-paragraph analysis with ~350 chars of restated frontmatter. That happened
+        # once (1218 pages rewritten, 548 of them losing hand-written analysis, recovered
+        # from git). The script's real job is newly-added pages, which have no prose yet.
+        if not args.overwrite_prose:
+            print("refusing --all without --overwrite-prose.\n"
+                  "  --all regenerates the health section of EVERY page from frontmatter,\n"
+                  "  replacing any hand-written analysis with one terse line per axis.\n"
+                  "  For a newly-added page use --page; if you really mean the whole\n"
+                  "  corpus, re-run with --overwrite-prose.")
+            return 2
         pages = list(Path("categories").rglob("*.md"))
         changed = 0
         for p in pages:

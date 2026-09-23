@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T04:28:16Z
+  computed_at: 2026-09-22T16:37:04Z
   overall: C
   overall_score: 2.0
   scored_axes: 3
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 10
+        last_commit_age_days: 11
         active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 240
-        last_commit_age_days: 10
+        repo_age_days: 242
+        last_commit_age_days: 11
         cohort: skill-pack
     governance:
       grade: D
@@ -56,8 +57,9 @@ health:
       raw: {}
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # JianYing Editor Skill

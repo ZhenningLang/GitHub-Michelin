@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:49:54Z
+  computed_at: 2026-09-22T15:57:32Z
   overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,26 +30,40 @@ health:
       raw:
         archived: false
         last_commit_age_days: 0
-        active_weeks_13: 10
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 14
+        band: relaxed_solo
+        window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1756
+        homebrew_tier: B
+        release_downloads: 926870
+        release_assets: 240
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 66
+        repo_age_days: 147
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 96
-        top1_share: 0.166
-        top3_share: 0.384
+        active_maintainers_12mo: 94
+        top1_share: 0.193
+        top3_share: 0.358
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -58,9 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
 ---
 
 # Open Design

@@ -16,39 +16,46 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T09:37:08Z
+  computed_at: 2026-09-22T17:37:38Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 4
+  overall_score: 2.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 17
-        active_weeks_13: 5
+        last_commit_age_days: 16
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 4997
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 179
-        last_commit_age_days: 17
+        repo_age_days: 248
+        last_commit_age_days: 16
         cohort: skill-pack
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 10
+        active_maintainers_12mo: 20
         top1_share: 0.5
-        top3_share: 0.767
+        top3_share: 0.672
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 # humanizer
 

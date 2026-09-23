@@ -16,45 +16,38 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:19:53Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-22T17:49:21Z
+  overall: "?"
+  overall_score: null
+  scored_axes: 2
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
-      raw:
-        archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 7
-        carve_out: null
-    responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 1.4
-        qualifying_issues: 9
-        band: default
-        window_offset_days: 7
-    adoption:
       grade: "?"
       raw: {}
-    longevity:
+    responsiveness:
+      grade: "?"
+      raw: {}
+    adoption:
       grade: A
       raw:
-        repo_age_days: 4343
-        last_commit_age_days: 1
-        cohort: library
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 123869
+        homebrew_tier: A
+        release_downloads: 4335810
+        release_assets: 2
+        release_tier: B
+        signal_basis: homebrew+releases
+    longevity:
+      grade: "?"
+      raw: {}
     governance:
-      grade: C
-      raw:
-        active_maintainers_12mo: 6
-        top1_share: 0.645
-        top3_share: 0.86
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -63,7 +56,10 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
+    maintenance: { reason: recency_unreadable }
+    responsiveness: { reason: github_unavailable }
+    longevity: { reason: not_found }
+    governance: { reason: empty_or_gated }
 ---
 
 # Tesseract
