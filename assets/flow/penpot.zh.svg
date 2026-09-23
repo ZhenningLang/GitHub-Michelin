@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="677" viewBox="0 0 880 677" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="677" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="541" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="541" rx="10"/>
+<rect class="pillT" x="474" y="40" width="123.6" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Penpot 做的</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,252.5 C439.0,252.5 439.0,276 470,276" marker-end="url(#a)"/>
+<path class="hand" d="M472,289.5 C441.0,289.5 441.0,340 410,340" marker-end="url(#a)"/>
+<path class="hand" d="M408,341.0 C439.0,341.0 439.0,377 470,377" marker-end="url(#a)"/>
+<path class="hand" d="M472,401.5 C441.0,401.5 441.0,425 410,425" marker-end="url(#a)"/>
+<path class="hand" d="M408,461.0 C439.0,461.0 439.0,500 470,500" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">用 Docker Compose 把服务栈起起来</text>
+<text class="c" x="82" y="125">docker compose -p penpot -f</text>
+<text class="c" x="82" y="144">docker-compose.yaml up -d</text>
+<text class="comp" x="82" y="167">组件：Docker Compose 服务栈</text>
+<rect class="card" x="40" y="215" width="368" height="75" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="75" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">打开 localhost:9001，建第一个账号</text>
+<text class="comp" x="82" y="272">组件：Penpot 前端</text>
+<rect class="cardT" x="472" y="252" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="252" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="276" r="10"/>
+<text class="num" x="494" y="280" text-anchor="middle">3</text>
+<text class="t" x="514" y="281">文件存进 Postgres，素材进你指定的存储</text>
+<text class="comp" x="514" y="309">组件：JVM 后端</text>
+<rect class="card" x="40" y="316" width="368" height="50" rx="8"/>
+<rect class="accY" x="40" y="316" width="4" height="50" rx="2"/>
+<circle class="accY" cx="62" cy="340" r="10"/>
+<text class="num" x="62" y="344" text-anchor="middle">4</text>
+<text class="t" x="82" y="345">在浏览器里设计，把同事拉进同一个文件</text>
+<rect class="cardT" x="472" y="353" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="353" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="377" r="10"/>
+<text class="num" x="494" y="381" text-anchor="middle">5</text>
+<text class="t" x="514" y="382">通过 WebSocket 实时同步每个人，评论也留在</text>
+<text class="t" x="514" y="404">文件里</text>
+<text class="comp" x="514" y="432">组件：实时同步</text>
+<rect class="card" x="40" y="401" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="401" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="425" r="10"/>
+<text class="num" x="62" y="429" text-anchor="middle">6</text>
+<text class="t" x="82" y="430">从 Inspect 取代码交付，或把 agent 接上</text>
+<text class="t" x="82" y="452">MCP</text>
+<text class="c" x="82" y="476">npx -y add-mcp -g -n penpot &lt;URL&gt;</text>
+<text class="comp" x="82" y="499">组件：Inspect · MCP server</text>
+<rect class="cardT" x="472" y="476" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="476" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="500" r="10"/>
+<text class="num" x="494" y="504" text-anchor="middle">7</text>
+<text class="t" x="514" y="505">让 agent 通过插件桥读写当前页面</text>
+<text class="comp" x="514" y="533">组件：MCP 插件桥</text>
+<rect class="val" x="28" y="583" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="607">价值</text>
+<text class="valT" x="48" y="631">团队在你自己的服务器上共同编辑同一个文件，格式不把你锁死</text>
+</svg>

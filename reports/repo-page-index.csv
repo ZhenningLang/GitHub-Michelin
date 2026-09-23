@@ -462,6 +462,7 @@ https://github.com/ollama/ollama,ollama,local-runtimes,categories/llm-inference/
 https://github.com/op7418/Humanizer-zh,humanizer-zh,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md
 https://github.com/op7418/guizang-ppt-skill,guizang-ppt,slides-ppt,categories/agent-skills/slides-ppt/guizang-ppt.md
 https://github.com/op7418/guizang-social-card-skill,guizang-social-card,visual-content,categories/agent-skills/visual-content/guizang-social-card.md
+https://github.com/open-pencil/open-pencil,open-pencil,design-editors,categories/design-editors/open-pencil.md
 https://github.com/open-telemetry/opentelemetry-collector,opentelemetry-collector,observability,categories/observability/opentelemetry-collector.md
 https://github.com/open-webui/open-webui,open-webui,llm-chat-ui,categories/llm-chat-ui/open-webui.md
 https://github.com/openai/CLIP,clip,ml-research,categories/ml-research/clip.md
@@ -485,6 +486,7 @@ https://github.com/paperless-ngx/paperless-ngx,paperless-ngx,document-management
 https://github.com/parallax/jsPDF,jspdf,pdf-tools,categories/pdf-tools/jspdf.md
 https://github.com/paramiko/paramiko,paramiko,networking,categories/networking/paramiko.md
 https://github.com/pbakaus/impeccable,impeccable,ai-design-generation,categories/ai-design-generation/impeccable.md
+https://github.com/penpot/penpot,penpot,design-editors,categories/design-editors/penpot.md
 https://github.com/peterbrittain/asciimatics,asciimatics,terminal-ui,categories/terminal-ui/asciimatics.md
 https://github.com/petergyang/no-ai-slop,no-ai-slop,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/no-ai-slop.md
 https://github.com/pezzolabs/pezzo,pezzo,llm-eval,categories/llm-eval/pezzo.md
