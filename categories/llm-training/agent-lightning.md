@@ -128,7 +128,7 @@ v1.0 is built exactly for this, and it is deliberately small (~3,500 LOC). Three
 - **Responsiveness**: Grade A — median first-response time 28.0 hours across 14 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — ambiguous.
 - **Longevity**: Grade C — 461 days old.
-- **Governance**: Grade B — top-3 contributor share 84.7% (?).
+- **Governance**: Grade B — top-3 contributor share 84.7% (45 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

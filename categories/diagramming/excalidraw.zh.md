@@ -132,7 +132,7 @@ health:
 - **响应速度**：Grade A——中位首次响应时间 34.4 小时，基于 26 个 qualifying issues/PRs。
 - **采用广度**：Grade B——npmjs.org 上月下载量 1,918,275（包名：@excalidraw/excalidraw）。
 - **长青度**：Grade A——仓库已创建 2456 天。
-- **治理集中度**：Grade B——前三贡献者占比 88.9%（?）。
+- **治理集中度**：Grade B——前三贡献者占比 88.9%（过去 12 个月内 13 位活跃维护者）。
 - **许可风险**：Grade A——MIT 许可证。
 ## 存疑（未验证）
 

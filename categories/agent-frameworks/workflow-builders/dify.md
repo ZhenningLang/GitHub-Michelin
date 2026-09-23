@@ -129,7 +129,7 @@ You're a product team that needs to ship AI-powered workflows fast without writi
 - **Responsiveness**: Grade A — median first-response time 1.1 hours across 15 qualifying issues/PRs.
 - **Adoption**: Grade D — 10,843 monthly downloads via pypi.org (package: dify-client).
 - **Longevity**: Grade B — 1259 days old.
-- **Governance**: Grade A — top-3 contributor share 32.4% (?).
+- **Governance**: Grade A — top-3 contributor share 32.4% (244 active maintainers in the trailing 12 months).
 - **Risk / License**: Cannot be scored — custom_modified_license. Upstream `LICENSE` is a modified Apache License 2.0 with extra commercial-license conditions for multi-tenant service use and frontend logo/copyright removal; treat GitHub `NOASSERTION` as a real license-review signal, not a parser glitch.
 ## Caveats (unverified)
 

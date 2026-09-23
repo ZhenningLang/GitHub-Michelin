@@ -108,11 +108,8 @@ def axis_bullet_en(name, axis):
         registry = raw.get("registry", "?")
         pkg = raw.get("canonical_package", "?")
         downloads = raw.get("downloads_last_month")
-        stars = raw.get("stars")
         if downloads is not None:
             return f"- **{label}**: Grade {grade} — {downloads:,} monthly downloads via {registry} (package: {pkg})."
-        elif stars is not None:
-            return f"- **{label}**: Grade {grade} — {stars:,} GitHub stars."
         else:
             return f"- **{label}**: Grade {grade}."
     
@@ -121,12 +118,16 @@ def axis_bullet_en(name, axis):
         return f"- **{label}**: Grade {grade} — {age} days old."
     
     if name == "governance":
-        owner = raw.get("owner_type", "?")
+        # `active_maintainers_12mo` is what the scorer writes. This used to read
+        # `owner_type`, which it never writes, so every page printed "(?)".
+        n = raw.get("active_maintainers_12mo")
+        who = (f" ({n} active maintainer{'' if n == 1 else 's'} in the trailing 12 months)"
+               if n is not None else "")
         top3 = raw.get("top3_share")
         if top3 is not None:
-            return f"- **{label}**: Grade {grade} — top-3 contributor share {top3:.1%} ({owner})."
+            return f"- **{label}**: Grade {grade} — top-3 contributor share {top3:.1%}{who}."
         else:
-            return f"- **{label}**: Grade {grade} ({owner})."
+            return f"- **{label}**: Grade {grade}{who}."
     
     if name == "risk_license":
         spdx = raw.get("spdx_id", "?")
@@ -179,11 +180,8 @@ def axis_bullet_zh(name, axis):
         registry = raw.get("registry", "?")
         pkg = raw.get("canonical_package", "?")
         downloads = raw.get("downloads_last_month")
-        stars = raw.get("stars")
         if downloads is not None:
             return f"- **{label}**：Grade {grade}——{registry} 上月下载量 {downloads:,}（包名：{pkg}）。"
-        elif stars is not None:
-            return f"- **{label}**：Grade {grade}——GitHub {stars:,} 星。"
         else:
             return f"- **{label}**：Grade {grade}。"
     
@@ -192,12 +190,13 @@ def axis_bullet_zh(name, axis):
         return f"- **{label}**：Grade {grade}——仓库已创建 {age} 天。"
     
     if name == "governance":
-        owner = raw.get("owner_type", "?")
+        n = raw.get("active_maintainers_12mo")
+        who = f"（过去 12 个月内 {n} 位活跃维护者）" if n is not None else ""
         top3 = raw.get("top3_share")
         if top3 is not None:
-            return f"- **{label}**：Grade {grade}——前三贡献者占比 {top3:.1%}（{owner}）。"
+            return f"- **{label}**：Grade {grade}——前三贡献者占比 {top3:.1%}{who}。"
         else:
-            return f"- **{label}**：Grade {grade}（{owner}）。"
+            return f"- **{label}**：Grade {grade}{who}。"
     
     if name == "risk_license":
         spdx = raw.get("spdx_id", "?")

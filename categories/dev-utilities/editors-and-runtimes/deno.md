@@ -132,7 +132,7 @@ You're choosing a JavaScript/TypeScript runtime for a new server-side project or
 - **Responsiveness**: Grade A — median first-response time 16.5 hours across 18 qualifying issues/PRs.
 - **Adoption**: Grade A — 7,904,610 monthly downloads via crates.io (package: deno_core).
 - **Longevity**: Grade A — 3053 days old.
-- **Governance**: Grade A — top-3 contributor share 60.9% (?).
+- **Governance**: Grade A — top-3 contributor share 60.9% (93 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

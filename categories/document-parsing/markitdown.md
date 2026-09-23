@@ -125,7 +125,7 @@ You're building a RAG pipeline, a document QA system, or an agent that needs to 
 - **Responsiveness**: Grade B — median first-response time 66.6 hours across 36 qualifying issues/PRs.
 - **Adoption**: Grade A — 14,692,950 monthly downloads via pypi.org (package: markitdown).
 - **Longevity**: Grade C — 678 days old.
-- **Governance**: Grade B — top-3 contributor share 53.3% (?).
+- **Governance**: Grade B — top-3 contributor share 53.3% (54 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

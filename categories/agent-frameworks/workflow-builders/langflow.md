@@ -135,7 +135,7 @@ You're a developer or AI engineer who needs to prototype and deploy LLM-powered 
 - **Responsiveness**: Grade B — median first-response time 56.6 hours across 33 qualifying issues/PRs.
 - **Adoption**: Grade C — 41,135 monthly downloads via pypi.org (package: langflow).
 - **Longevity**: Grade B — 1322 days old.
-- **Governance**: Grade A — top-3 contributor share 44.9% (?).
+- **Governance**: Grade A — top-3 contributor share 44.9% (138 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

@@ -122,7 +122,7 @@ You're a developer who juggles multiple AI coding agents and assistants across y
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Cannot be scored — unknown.
 - **Longevity**: Grade C — 414 days old.
-- **Governance**: Grade D — top-3 contributor share 88.0% (?).
+- **Governance**: Grade D — top-3 contributor share 88.0% (98 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

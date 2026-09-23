@@ -125,7 +125,7 @@ You are a privacy-conscious professional who wants a single AI assistant that fo
 - **Responsiveness**: Cannot be scored — unknown.
 - **Adoption**: Grade A — 10,026,677 monthly downloads via npmjs.org (package: @openclaw/brave-plugin).
 - **Longevity**: Grade C — 302 days old.
-- **Governance**: Grade B — top-3 contributor share 74.6% (?).
+- **Governance**: Grade B — top-3 contributor share 74.6% (486 active maintainers in the trailing 12 months).
 - **Risk / License**: `?` (license_unparsed) — verified 2026-07-03: GitHub returns `NOASSERTION` but the LICENSE body is standard MIT (`Permission is hereby granted...` complete paragraph); recognition fails because of a trailing third-party notice pointer, and there is no relicense history.
 
 ## Caveats (unverified)

@@ -124,7 +124,7 @@ You are a developer or team that needs to automate complex, multi-step tasks wit
 - **Responsiveness**: Grade A — median first-response time 34.5 hours across 16 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
 - **Longevity**: Grade B — 1286 days old.
-- **Governance**: Grade A — top-3 contributor share 50.9% (?).
+- **Governance**: Grade A — top-3 contributor share 50.9% (21 active maintainers in the trailing 12 months).
 - **Risk / License**: Cannot be scored — unknown.
 ## Caveats (unverified)
 

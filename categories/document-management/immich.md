@@ -142,7 +142,7 @@ You're a privacy-conscious user with thousands of photos and videos scattered ac
 - **Responsiveness**: Grade A — median first-response time 2.7 hours across 29 qualifying issues/PRs.
 - **Adoption**: Grade B — 11,288 monthly downloads via npmjs.org (package: @immich/cli).
 - **Longevity**: Grade A — 1692 days old.
-- **Governance**: Grade A — top-3 contributor share 24.0% (?).
+- **Governance**: Grade A — top-3 contributor share 24.0% (307 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade E — AGPL-3.0 license.
 ## Caveats (unverified)
 

@@ -122,7 +122,7 @@ The decisive feature is the **cosocket** API: your Lua can open non-blocking TCP
 - **Responsiveness**: Grade A — median first-response time 7.1 hours across 10 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — ambiguous.
 - **Longevity**: Grade A — 6004 days old.
-- **Governance**: Grade B — top-3 contributor share 70.9% (?).
+- **Governance**: Grade B — top-3 contributor share 70.9% (21 active maintainers in the trailing 12 months).
 - **Risk / License**: Cannot be scored — unknown.
 
 ## Caveats (unverified)
