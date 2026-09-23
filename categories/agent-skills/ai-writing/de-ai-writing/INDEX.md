@@ -7,7 +7,7 @@
 
 | Entry | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Humanizer-zh** | A single Chinese Claude Code skill that rewrites text to strip ~24 tell-tale AI-writing patterns; a localization of blader/humanizer. | C (4/5) | [→](humanizer-zh.md) |
+| **Humanizer-zh** | Chinese editor skill that de-slops existing prose while keeping facts, hedges, and author stance; 31 checkpoints, not an AI detector. | C (4/5) | [→](humanizer-zh.md) |
 | **De-AI-Prompt-Enhancer-Writer-Booster-SKILL** | Chinese de-AI writing suite with `de-AI-writing` and `good-writing` SKILL folders; useful when author-style reconstruction is desired and license ambiguity is acceptable. | C (4/5) | [→](de-ai-prompt-enhancer-writer-booster-skill.md) |
 | **shuorenhua** | Chinese-first de-AI rewrite skill with protected spans, scenario rules, multi-harness docs, and MIT licensing. | C (5/6) | [→](shuorenhua.md) |
 | **ai-flavor-remover** | Single-file Chinese prompt snippet for removing AI flavor; author-tested only on Gemini 2.5 Pro, not an installable skill pack. | D (4/6) | [→](ai-flavor-remover.md) |
@@ -21,7 +21,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Humanizer-zh](humanizer-zh.md) | ✅ | C (4/5) | Chinese-first AI-text humanizing skill; use it as the current in-index baseline. |
+| [Humanizer-zh](humanizer-zh.md) | ✅ | C (4/5) | Chinese editor brief: strip template prose, keep facts and hedges; Claude-first, not a detector. |
 | [Baoyu Skills](../content-production/baoyu-skills.md) | ✅ | B (4/5) | Broader Chinese content/publishing bundle; Humanizer-zh is narrower and focused on de-AI rewriting. |
 | Custom voice guide | 未收录 | — | Better for one private author or brand voice; less reusable than a public skill. |
 | [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](de-ai-prompt-enhancer-writer-booster-skill.md) | ✅ | C (4/5) | Heavier Chinese writer-booster workflow; useful for author-style reconstruction, risky when license clarity or neutrality matters. |

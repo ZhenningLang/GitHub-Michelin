@@ -10,7 +10,6 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-force`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-ignorance`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
-`blader/humanizer` (upstream),categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 `cake` / SQM (OpenWrt),categories/networking/wondershaper.md,,no
 `diffusers` (Hugging Face),categories/ml-research/pytorch-gan.md,,no
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
@@ -357,7 +356,7 @@ Hand-rolled context/memory skills in your own repo,categories/agent-skills/conte
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
 Hand-rolled regex / manual parsing,categories/media-processing/video-audio/m3u8.md,,no
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
-Hand-written de-slop prompt in `CLAUDE.md`,categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
+Hand-written de-slop line in `CLAUDE.md`,categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
 Hand-written MCP server,categories/agent-tooling/harness-extensions/cli-anything.md,,no
 Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
@@ -819,7 +818,6 @@ WeCom / Official WeChat APIs,categories/im-automation/openilink-hub.md,,no
 WeCom / Official WeChat Work API,categories/im-automation/wechat/itchat.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/whisper.md,,no
-"Wikipedia ""Signs of AI writing"" guide",categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
