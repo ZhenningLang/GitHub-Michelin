@@ -105,7 +105,7 @@ health:
 | [Compound Engineering](compound-engineering.zh.md) | ✅ | 需要让 agent 工作复利累积的方法论加插件时，选 Compound Engineering。 | 让 agent 工作“复利累积”的方法论加插件；是带工具的开发*哲学*，而非配置注入框架。 |
 | [ECC](ecc.zh.md) | ✅ | 需要上下文工程方法论，而不是可安装命令套件时，选 ECC。 | 面向 agent 的上下文工程方法论；偏概念/流程框架，而非可安装的命令套件。 |
 | [12-Factor Agents](../spec-driven-development/12-factor-agents.zh.md) | ✅ | 需要构建可靠 LLM agent 的原则时，选 12-Factor Agents。 | 构建可靠 LLM agent 的原则——是你读的规范/宣言，不是装进 Claude Code 的软件。 |
-| claude-code-templates / awesome-claude-code | 未收录 | 需要面向 Claude Code 的社区配置/模板集合，并按需复制粘贴时，选这些社区集合。 | 面向 Claude Code 的社区配置/模板集合；更轻、按需复制粘贴，而非 SuperClaude 那种安装式、协调好的框架。 |
+| [claude-code-templates](claude-code-templates.zh.md) / awesome-claude-code | 部分已收录 | 想按需自选、自己拼装 Claude Code 配置片段时选 claude-code-templates；想一次性装好一套协调设计的框架时选 SuperClaude。 | 目录是许多独立作者写的组件摆在一层货架上，没有协同保证；SuperClaude 用这个自由度换一套设计好的整体安装。awesome-claude-code 未收录。 |
 
 ## 技术栈
 
