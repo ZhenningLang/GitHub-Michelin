@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Browser does", "zh": "Agent Browser 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and let it fetch Chrome for Testing once", "zh": "装上 CLI，并让它拉一次 Chrome for Testing", "code": "agent-browser install"},
+    {"lane": "them", "en": "Starts a daemon that owns the browser and stays up between commands", "zh": "拉起守护进程：它持有浏览器，并在命令之间一直活着", "component": {"en": "daemon", "zh": "守护进程"}},
+    {"lane": "you", "en": "Open a page", "zh": "打开一个页面", "code": "agent-browser open example.com"},
+    {"lane": "them", "en": "Returns the accessibility tree, one ref per interactive element", "zh": "返回可访问性树，每个可交互元素一个引用", "code": "agent-browser snapshot", "component": {"en": "snapshot refs", "zh": "快照引用"}},
+    {"lane": "you", "en": "Act on a ref instead of a selector", "zh": "对着引用动手，而不是对着选择器", "code": "agent-browser click @e2"},
+    {"lane": "them", "en": "Saves cookies and storage, and restores them on the next run", "zh": "保存 cookie 与存储，下次运行时恢复", "component": {"en": "session state", "zh": "会话状态"}}
+  ],
+  "value": {
+    "en": "You stop maintaining CSS selectors that break on every redesign, and you pay for one browser launch instead of one per step",
+    "zh": "你不用再维护每次改版都会断的 CSS 选择器，浏览器也只启动一次，而不是每步都启一次"
+  },
+  "sources": [
+    "README.md Installation (npm install -g agent-browser; agent-browser install downloads Chrome for Testing; brew/cargo paths; --with-deps on Linux)",
+    "README.md Quick Start (agent-browser open example.com; agent-browser snapshot; agent-browser click @e2; agent-browser fill @e3 \"test@example.com\"; agent-browser close)",
+    "README.md Commands > Batch Execution (agent-browser batch runs several commands in one invocation to avoid per-command startup), Sessions (`session list`, `--session id --restore`, state under ~/.agent-browser/sessions) and Debug > doc note that a daemon idle for one hour saves state, closes the browser and exits",
+    "README.md Tabs & Windows (tab ids t1/t2 are stable and never reused; target ids stay stable across daemon restarts) and Debug > Timeout note (default operation timeout 25s, intentionally below the CLI's 30s IPC read timeout)",
+    "CHANGELOG.md (release train v0.33..v0.38.1 between 2026-07-23 and 2026-09-16; snapshot --delta and persistent refs in 0.38.0)"
+  ]
+}
