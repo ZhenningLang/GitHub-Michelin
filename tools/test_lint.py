@@ -220,12 +220,12 @@ class LintContractTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             en = page_text().replace(
-                "## Caveats (unverified)",
-                "## Callouts\n\n## Caveats (unverified)",
+                "## When NOT to use",
+                "## Callouts\n\n## When NOT to use",
             )
             zh = page_text(zh=True).replace(
-                "## 存疑（未验证）",
-                "## 指指点点\n\n## 存疑（未验证）",
+                "## 何时不用",
+                "## 指指点点\n\n## 何时不用",
             )
             page = self._write_pair(root, en, zh)
             rep = lint.Report()
@@ -236,8 +236,8 @@ class LintContractTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             en = page_text().replace(
-                "## Caveats (unverified)",
-                "## Callouts\n\nA leftover judgment.\n\n## Caveats (unverified)",
+                "## When NOT to use",
+                "## Callouts\n\nA leftover judgment.\n\n## When NOT to use",
             )
             zh = page_text(zh=True)
             page = self._write_pair(root, en, zh)
@@ -253,7 +253,7 @@ class LintContractTest(unittest.TestCase):
             page = self._write_pair(root, en, zh)
             rep = lint.Report()
             lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
-            self.assertTrue(any("must sit before Caveats" in e for e in rep.errors))
+            self.assertTrue(any("must sit between When to use and How it works" in e for e in rep.errors))
 
     def test_frontmatter_parity_detects_nested_drift(self) -> None:
         with tempfile.TemporaryDirectory() as td:

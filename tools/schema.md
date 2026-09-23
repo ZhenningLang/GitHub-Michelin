@@ -101,6 +101,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
 | `## When to use` | `## 何时使用` | **all types** | the **trigger scenario** (see below) — the concrete situation in which you should think of this project, and why it beats its substitutes there |
+| `## Callouts` | `## 指指点点` | **optional, all types** | leftover human judgment the template would drop or distort — portable developer takeaways, marketing stripped off, disguise named. Omit the heading when there is nothing leftover |
 | `## How it works` | `## 怎么用起来` | **all types** (backfill in progress — see below) | the **backbone user story**: a plain-language mechanism paragraph + a generated two-lane flow card (you do / it does) — how you actually put it to work once chosen |
 | `## When NOT to use` | `## 何时不用` | **all types** | anti-patterns, scale ceilings, lock-in, maintenance risk — **the most valuable section** |
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
@@ -108,7 +109,6 @@ its own contract. Then the required `##` sections below — **which ones are req
 | `## Dependencies` | `## 依赖` | non-`skill-pack` | runtime/infra a user must run (db, services, hardware) |
 | `## Ops difficulty` | `## 运维难度` | non-`skill-pack` | low / medium / high + why; deploy + maintain burden |
 | `## Health & viability` | `## 健康度与可持续性` | **all types** | dated, labeled judgment of whether it's worth betting on — maintenance, governance/bus-factor, backing, age/**Lindy**, adoption, risk flags (see §7) |
-| `## Callouts` | `## 指指点点` | **optional, all types** | leftover human judgment the template would drop or distort — portable developer takeaways, marketing stripped off, disguise named. Omit the heading when there is nothing leftover |
 | `## Caveats (unverified)` | `## 存疑（未验证）` | **all types** | a bulleted **ledger**: one `[未验证]`/`[推断]` bullet per unverified fact — the page's single uncertainty list |
 
 **Type-adaptive sections.** `skill-pack` entries (prompt/skill collections, harness configs) require
@@ -132,7 +132,8 @@ and the stripping of marketing or disguise. Messy is allowed. Chat logs, empty h
 anything that already belongs in When to use / When NOT / Comparison / How it works / Health
 are not. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry
 the heading (`## Callouts` / `## 指指点点`), the body is non-empty, and the section sits after
-Health & viability and before Caveats. Golden example: `prime-agent`.
+When to use and before How it works (or before When NOT, if How it works is still missing).
+Golden example: `prime-agent`.
 
 ### The lead line is the problem, not the definition
 
@@ -211,7 +212,8 @@ between a reader who agrees and a reader who recognizes their own situation.
 
 This section answers **"I've chosen it — how do I put it to work, and what does it do for me?"** —
 the *post-selection* angle, and the one a reader cannot get from `When to use`. It has exactly two
-authored parts, in this order, placed **between `When to use` and `When NOT to use`**:
+authored parts, in this order, placed **between `When to use` (or `Callouts` / `指指点点`, if
+present) and `When NOT to use`**:
 
 1. **A plain-language mechanism paragraph** (3–6 sentences). Explain how it works underneath in the
    simplest terms. It **must draw the line between what the project does for you and what you do** —

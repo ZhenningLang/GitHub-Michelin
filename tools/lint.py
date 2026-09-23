@@ -31,7 +31,8 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - page Comparison tables include an explicit Our verdict / 我们的评价 column -> ERROR if absent
   - every page: a Caveats ledger section (## Caveats (unverified) / ## 存疑（未验证）) -> ERROR if absent
   - optional Callouts / 指指点点: if present, non-empty, bilingual pair matches, sits after
-    Health & viability and before Caveats -> ERROR on empty / one-sided / wrong position
+    When to use and before How it works (or When NOT if that section is absent)
+    -> ERROR on empty / one-sided / wrong position
   - prose-region [未验证]/[推断] density > PROSE_LABEL_MAX -> WARNING (converge into the Caveats section)
   - every directory under categories/ is a category node: must have INDEX.md + INDEX.zh.md
     (traversal is NOT gated on INDEX existence, so a dir missing its INDEX is reported, not skipped)
@@ -608,9 +609,11 @@ def check_flow_section(path: Path, text: str, zh: bool, root: Path, duplicate_ba
             rep.flow_missing.append(path)
         return
 
-    # position: right after When to use, right before When NOT to use
+    # position: after When to use (or Callouts if present), right before When NOT to use
     h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
-    want_prev, want_next = ("## 何时使用", "## 何时不用") if zh else ("## When to use", "## When NOT to use")
+    want_when, want_next = ("## 何时使用", "## 何时不用") if zh else ("## When to use", "## When NOT to use")
+    callouts = "## 指指点点" if zh else "## Callouts"
+    want_prev = callouts if callouts in h2 else want_when
     i = h2.index(flow_card.SECTION[lang])
     if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
         rep.error(path, f"{flow_card.SECTION[lang]} must sit between '{want_prev}' and '{want_next}'")
@@ -691,8 +694,6 @@ def check_callouts(
     path: Path,
     text: str,
     zh: bool,
-    cav: re.Match[str] | None,
-    health: re.Match[str] | None,
     sibling_text: str | None,
     rep: Report,
 ) -> None:
@@ -701,10 +702,19 @@ def check_callouts(
     if found:
         if not section_after_heading(text, found):
             rep.error(path, "Callouts / 指指点点 is empty — omit the heading if there is nothing leftover")
-        if cav is not None and found.start() > cav.start():
-            rep.error(path, "Callouts / 指指点点 must sit before Caveats (the page still ends with the ledger)")
-        if health is not None and found.start() < health.start():
-            rep.error(path, "Callouts / 指指点点 must sit after Health & viability")
+        h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
+        heading = "## 指指点点" if zh else "## Callouts"
+        want_prev = "## 何时使用" if zh else "## When to use"
+        want_flow = "## 怎么用起来" if zh else "## How it works"
+        want_not = "## 何时不用" if zh else "## When NOT to use"
+        want_next = want_flow if want_flow in h2 else want_not
+        i = h2.index(heading) if heading in h2 else -1
+        if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
+            rep.error(
+                path,
+                "Callouts / 指指点点 must sit between When to use and How it works "
+                "(or When NOT to use, if How it works is absent)",
+            )
     if sibling_text is not None and not zh:
         if bool(CALLOUTS_RE_EN.search(text)) != bool(CALLOUTS_RE_ZH.search(sibling_text)):
             rep.error(path, "Callouts / 指指点点 presence must match the bilingual sibling")
@@ -781,6 +791,11 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
     health = (HEALTH_RE_ZH if zh else HEALTH_RE_EN).search(text)
     bounds = [m.start() for m in (health, cav) if m]
     prose = text[: min(bounds)] if bounds else text
+    callouts = (CALLOUTS_RE_ZH if zh else CALLOUTS_RE_EN).search(text)
+    if callouts:
+        nxt = re.search(r"(?m)^##\s+", text[callouts.end():])
+        end = callouts.end() + nxt.start() if nxt else len(text)
+        prose = prose[: callouts.start()] + prose[end:]
     n_inline = len(LABEL_RE.findall(prose))
     if n_inline > PROSE_LABEL_MAX:
         rep.warn(path, f"{n_inline} inline [未验证]/[推断] before the Health/Caveats sections (> {PROSE_LABEL_MAX}); "
@@ -796,7 +811,7 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         sibling_text = sibling.read_text(encoding="utf-8")
         if normalized_frontmatter(text) != normalized_frontmatter(sibling_text):
             rep.error(path, f"frontmatter drift vs {sibling.name} (must be identical)")
-    check_callouts(path, text, zh, cav, health, sibling_text, rep)
+    check_callouts(path, text, zh, sibling_text, rep)
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)

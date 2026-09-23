@@ -85,6 +85,14 @@ You are mid a multi-hour coding or evaluation job — a repo-wide refactor, a re
 
 Reach for Prime Agent when that is the constraint. It is a hard fork of `pi` (earendil-works) now shipped by Prime Intellect: the model's one built-in tool is a persistent Python kernel, `rlm.spawn(...)` starts real child agents, and a local daemon keeps the session, kernel, and children alive after the TUI detaches. Choose it over [OpenCode](opencode.md) or [Codex](codex.md) when programmatic context folding and detachable long runs are the point, not model-agnostic pair-programming. Choose it over [OpenHands](../orchestration-and-review/openhands.md) when you want a local CLI/TUI rather than a self-hosted agent platform with its own sandbox. The cost is a multi-process runtime (daemon, worker, kernel), Node.js ≥ 22.8 and Python ≥ 3.11, an install path that is `curl | sh` from Prime's domain, and no default security sandbox.
 
+## Callouts
+
+Other agents dump files into the chat. This one makes the model write Python to look at them. Sounds smarter. The parent stops seeing the files and turns into a dispatcher. Cutting the work into pieces is the part that needed the whole picture — and this setup took the picture away. [推断]
+
+They call it self-improving. `/refine` writes extra prompts. The research bet is that RL will teach the model this scaffold. Their own write-up: short math gets worse with the scaffold on. So it has not learned yet. [推断]
+
+The sandbox warning in the README is the honest bit. RLM, Continual Harness, RSI in the commits — packaging. Install is still `curl | sh` off Prime's domain. The package inside the tree is still named `pi`.
+
 ## How it works
 
 The TypeScript host owns providers, transcripts, child lifecycles, and scheduling. What the model sees is a persistent Python REPL: files, shell, skills, and subagents are all reached by writing code, not by a menu of separate tools. `rlm.spawn("…", name="…")` admits a child `AgentSession` with its own context; the call returns a handle immediately, and answers come back as messages or files, not as the spawn return value. Compaction summarizes old chat while kernel variables survive. A daemon worker keeps that tree running after you detach; `/refine` can write small, reviewable updates into supplemental prompts, memories, skill descriptions, or subagent specs without touching the immutable base system prompt. What stays yours: the repo, the provider login, and whether the working tree is disposable. What it takes over: the Python control loop, child admission, session JSONL, and background continuity. Analogy: other agents paste the binder into the conversation; this one hands the model a desk and a filing cabinet and asks it to write the retrieval program.
@@ -153,14 +161,6 @@ The TypeScript host owns providers, transcripts, child lifecycles, and schedulin
 - **Longevity:** Grade D — 138 days old. Still-active, not long-lived; 21.2k stars in that window is a risk flag on this index's prior, not proof.
 - **Governance:** Grade C — 96 active maintainers in 12 months, but top-1 share 64.1% / top-3 78.2% (`badlogic` / Mario Zechner). LICENSE copyright is 2025 Mario Zechner and 2026 Prime Intellect; org backing is real, commit concentration is still high.
 - **Risk / License:** Grade A — MIT, no relicense in 36 months. Install/update still goes through a vendor-hosted `curl | sh`; the default runtime is not a sandbox.
-
-## Callouts
-
-Putting the working set in the chat spends the model's intelligence on the material, and the window rots. Putting it in Python variables spends that intelligence on how to slice; the parent never sees A and B together. How you cut is itself the job that needed the global view you just removed. [推断]
-
-"Self-improving" here is `/refine` writing supplemental prompts, plus a research bet that RL will teach models to use the scaffold. Prime Intellect's own RLM write-up already shows current models getting worse on short math when that scaffold is on. That is not a product that has learned; it is a harness that hopes the model will. [推断]
-
-The README's honest line is the sandbox warning. The rest of the pitch — RLM, Continual Harness, RSI in commit messages — reads like a research program shipping a TUI. The public install is still `curl | sh` from Prime's domain while the npm name inside the tree is still `pi`.
 
 ## Caveats (unverified)
 
