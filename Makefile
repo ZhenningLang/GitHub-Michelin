@@ -1,7 +1,7 @@
 .PHONY: lint flows gates reverse-index reverse-index-check cards health health-audit health-backfill upstream-snapshot upstream-check test quality-scan quality-scan-gated quality-scan-changed quality-batch install-hooks help
 
 help:
-	@echo "oss-atlas make targets:"
+	@echo "GitHub-Michelin make targets:"
 	@echo "  make lint           run the index linter (tools/lint.py)"
 	@echo "  make cards          regenerate ALL health radar SVGs from frontmatter (offline)"
 	@echo "  make flows          regenerate ALL How-it-works flow SVGs + page step lists from flows/*.json (offline)"

@@ -1,6 +1,6 @@
 ---
 name: read-repo
-description: 当要为 oss-atlas 写/刷新一个选型页、需要"读懂一个开源仓库"时使用；给出读哪些源、读多深、怎么读源码、怎么把"何时不用"与健康度信号逼出来的方法论。供 add-project / sync-entry 调用，不面向最终用户安装。
+description: 当要为 GitHub-Michelin 写/刷新一个选型页、需要"读懂一个开源仓库"时使用；给出读哪些源、读多深、怎么读源码、怎么把"何时不用"与健康度信号逼出来的方法论。供 add-project / sync-entry 调用，不面向最终用户安装。
 argument-hint: <GitHub URL 或 owner/repo>
 metadata:
   internal: true

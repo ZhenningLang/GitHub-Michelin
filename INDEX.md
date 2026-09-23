@@ -1,4 +1,4 @@
-# oss-atlas — category route
+# GitHub-Michelin — category route
 
 > Recursive route root. The master map an agent reads first. Pick a category by its "use when",
 > then keep descending through each node's `INDEX.md` (the tree can be deep, not a fixed 3 levels)

@@ -115,7 +115,7 @@ You choose this repository only as the map to those three groups and as a prompt
 ## Health & viability
 
 - **Maintenance, as of 2026-07:** the index received three commits over 2026-05-09 to 2026-05-10 and has not changed since. The final commit only edits README wording. It is not archived, but there is no continuing experiment log.
-- **Content sufficiency:** it clears the oss-atlas inclusion bar because it defines a concrete research question and links three real, non-empty implementation groups. Its selectable value is limited to being an experiment map and design reference.
+- **Content sufficiency:** it clears the GitHub-Michelin inclusion bar because it defines a concrete research question and links three real, non-empty implementation groups. Its selectable value is limited to being an experiment map and design reference.
 - **Completion status:** no results, observations, scoring rubric, raw transcripts, experiment diary, or final report are present. Treat the study as unfinished, not as a benchmark with an unknown winner.
 - **Governance and bus factor:** all four repositories are owned by one user and show no external contributors or governance. Continuity and interpretation depend on that author.
 - **Age, adoption, and license:** the index is about two months old, has 0 stars, no release, no issues, and no license file. Age provides no Lindy signal, and missing reuse terms are a practical blocker for incorporating its material.

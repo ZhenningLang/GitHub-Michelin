@@ -1,18 +1,18 @@
 ---
 name: select-agent-skills
-description: Use when a task needs choosing agent skills, SKILL.md packs, prompt workflows, subagent bundles, or a combination of skills from oss-atlas. Trigger on requests like "pick skills for this task", "which agent skill should I use", "recommend a skill combo", "根据任务推荐 skills", or when the user specifically asks for agent-skills rather than a general OSS library/tool. Navigates the oss-atlas `agent-skills` category first and outputs fit, sequence, tradeoffs, and when-not-to-use caveats.
+description: Use when a task needs choosing agent skills, SKILL.md packs, prompt workflows, subagent bundles, or a combination of skills from GitHub-Michelin. Trigger on requests like "pick skills for this task", "which agent skill should I use", "recommend a skill combo", "根据任务推荐 skills", or when the user specifically asks for agent-skills rather than a general OSS library/tool. Navigates the GitHub-Michelin `agent-skills` category first and outputs fit, sequence, tradeoffs, and when-not-to-use caveats.
 ---
 
 # select-agent-skills
 
-Use this skill to choose **agent-consumable skills** from oss-atlas, not arbitrary OSS projects. If the user asks for a database, framework, library, app, model, or infrastructure component, use `select-oss` instead.
+Use this skill to choose **agent-consumable skills** from GitHub-Michelin, not arbitrary OSS projects. If the user asks for a database, framework, library, app, model, or infrastructure component, use `select-oss` instead.
 
 ## Resolve the Index
 
-Read oss-atlas from the best available source:
+Read GitHub-Michelin from the best available source:
 
 - Local clone: start at `categories/agent-skills/INDEX.md`.
-- Remote fallback: fetch from `https://raw.githubusercontent.com/ZhenningLang/oss-atlas/main/categories/agent-skills/INDEX.md`.
+- Remote fallback: fetch from `https://raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/categories/agent-skills/INDEX.md`.
 
 English pages are canonical. Use `.zh.md` only when the user wants Chinese-facing output or when the skill itself is Chinese-first.
 
@@ -64,7 +64,7 @@ Use this structure:
 - <candidate> — <specific blocker or mismatch>
 
 ## Gaps
-- <say what oss-atlas does not cover, or "None identified from the pages read">
+- <say what GitHub-Michelin does not cover, or "None identified from the pages read">
 ```
 
 ## Honesty Rules

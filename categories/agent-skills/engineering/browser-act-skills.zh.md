@@ -104,6 +104,6 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] stealth 和 anti-bot 能力来自 README，oss-atlas 未针对具体目标网站独立测试。
+- [未验证] stealth 和 anti-bot 能力来自 README，GitHub-Michelin 未针对具体目标网站独立测试。
 - [未验证] 价格和免费额度边界可能变化；依赖 managed proxy 或 stealth browser quota 前请核验 BrowserAct 当前服务条款。
 - [推断] BrowserAct 更适合被当作 agent browser workflow 层，而不是确定性浏览器测试框架的替代品。

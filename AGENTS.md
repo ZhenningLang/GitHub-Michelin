@@ -1,4 +1,4 @@
-# AGENTS.md — oss-atlas
+# AGENTS.md — GitHub-Michelin
 
 > This repo is read **primarily by coding agents** (and secondarily by humans). It is a
 > curated, natural-language knowledge base for **OSS selection** (选型): when an agent gets a
@@ -58,7 +58,7 @@ Procedure when you have a task and need to pick a project:
 
 There is a skill for this: **`skills/select-oss/`** — a dual-mode navigator that reads the index
 locally when you're inside a clone, or fetches the public raw files otherwise. It installs into any
-coding agent via skills.sh (`npx skills add ZhenningLang/oss-atlas`); see the README "Install" section.
+coding agent via skills.sh (`npx skills add ZhenningLang/GitHub-Michelin`); see the README "Install" section.
 
 ## Selection heuristics (beyond "what it does")
 

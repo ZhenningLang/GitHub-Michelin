@@ -74,7 +74,7 @@ Human ChatGPT Comparison Corpus (HC3), Detectors, and more! 🔥
 
 ## 何时使用
 
-你正在评估 `llm-eval` 方向的任务，需要把一个真实仓库纳入 oss-atlas 候选，而不是只在 backlog 里看到一个名字。当上游描述贴合任务、许可证和维护画像经核验后可接受，并且采用公共项目比自写一次性方案更合适时，可以把 chatgpt-comparison-detection 纳入候选。
+你正在评估 `llm-eval` 方向的任务，需要把一个真实仓库纳入 GitHub-Michelin 候选，而不是只在 backlog 里看到一个名字。当上游描述贴合任务、许可证和维护画像经核验后可接受，并且采用公共项目比自写一次性方案更合适时，可以把 chatgpt-comparison-detection 纳入候选。
 
 这是用户指定 backlog 的首版 intake 页面。用它来完成路由和邻近方案对比；在高风险场景依赖它之前，请重新阅读上游 README、许可证、示例和 release 历史。
 

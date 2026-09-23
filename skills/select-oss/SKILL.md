@@ -1,11 +1,11 @@
 ---
 name: select-oss
-description: Use when a task needs choosing an open-source project — pick a library, tool, framework, model, or system. Navigates the oss-atlas index (an agent-first "inverse-of-a-README" corpus that leads with *when NOT to use*) to produce a shortlist with the decisive tradeoff. Trigger phrases like "which library should I use", "pick an OSS for X", "compare open-source options for Y", "选型".
+description: Use when a task needs choosing an open-source project — pick a library, tool, framework, model, or system. Navigates the GitHub-Michelin index (an agent-first "inverse-of-a-README" corpus that leads with *when NOT to use*) to produce a shortlist with the decisive tradeoff. Trigger phrases like "which library should I use", "pick an OSS for X", "compare open-source options for Y", "选型".
 ---
 
 # select-oss
 
-[oss-atlas](https://github.com/ZhenningLang/oss-atlas) is a natural-language index built so an
+[GitHub-Michelin](https://github.com/ZhenningLang/GitHub-Michelin) is a natural-language index built so an
 agent can pick OSS for a task **fast and honestly**. Each page is the *opposite of a README* — it
 leads with positive scenarios, **when NOT to use**, a comparison matrix, deps, and ops cost.
 
@@ -18,12 +18,12 @@ reachable by descent alone).
 
 The index is a tree of Markdown files. Read them from whichever source you have:
 
-- **Local copy** — if you're working inside an oss-atlas clone, or one exists on disk, read the
-  files directly. Get one with: `git clone https://github.com/ZhenningLang/oss-atlas`.
+- **Local copy** — if you're working inside an GitHub-Michelin clone, or one exists on disk, read the
+  files directly. Get one with: `git clone https://github.com/ZhenningLang/GitHub-Michelin`.
 - **Remote (default)** — otherwise fetch over HTTP from the canonical source. Base URL:
 
   ```
-  https://raw.githubusercontent.com/ZhenningLang/oss-atlas/main/
+  https://raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/
   ```
 
   Prefer `curl -s <url>` when you have a shell (it returns the exact Markdown, links intact). If

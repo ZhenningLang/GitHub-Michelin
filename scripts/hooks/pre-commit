@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# oss-atlas pre-commit hook — OFFLINE only (no network; safe and fast).
+# GitHub-Michelin pre-commit hook — OFFLINE only (no network; safe and fast).
 #   1. regenerate the health radar SVG cards from each staged page's `health:` block
 #      (keeps the image == its SSOT — scoring itself lives in tools/health.py / skills),
 #   1b. regenerate How-it-works flow cards + in-page step lists from flows/*.json,

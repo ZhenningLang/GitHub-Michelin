@@ -17,7 +17,7 @@ metadata:
 
 ## Purpose
 
-When the oss-atlas index needs new entries, this skill automates the heavy lifting of
+When the GitHub-Michelin index needs new entries, this skill automates the heavy lifting of
 finding GitHub repos that are **not already indexed**, filtering out non-software resource
 collections by default, and surfacing candidates with enough metadata to decide whether to add them.
 
@@ -26,7 +26,7 @@ collections by default, and surfacing candidates with enough metadata to decide 
 - `GITHUB_TOKEN` or `GH_TOKEN` for authenticated GitHub API access. Without one, the script uses
   GitHub's lower unauthenticated rate limit.
 - Python 3.9+ with standard library only (no pip deps needed for the harvester core).
-- The oss-atlas repo checked out locally at `{workspace}`.
+- The GitHub-Michelin repo checked out locally at `{workspace}`.
 
 ## Supported Modes
 
@@ -140,7 +140,7 @@ Quality signals checked at this stage (cheap, no extra API calls):
   interview-prep corpora, and similar learning/reference repositories
 
 Use `--include-resource-collections` only when the user explicitly asks to discover those repository
-types. Star count is not a quality gate for oss-atlas inclusion; keep `--min-stars 0` unless the user
+types. Star count is not a quality gate for GitHub-Michelin inclusion; keep `--min-stars 0` unless the user
 requests a popularity threshold.
 
 ### Step 5: Agent semantic classification (no keyword matching)
