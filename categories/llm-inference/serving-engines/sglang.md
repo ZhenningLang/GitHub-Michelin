@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:19:57Z
+  computed_at: 2026-09-22T16:29:45Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: sglang
         dependent_repos_count: 0
-        downloads_last_month: 479769069
+        downloads_last_month: 12312686
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.04
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 907
+        repo_age_days: 989
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 452
-        top1_share: 0.062
-        top3_share: 0.158
+        active_maintainers_12mo: 453
+        top1_share: 0.068
+        top3_share: 0.168
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # SGLang

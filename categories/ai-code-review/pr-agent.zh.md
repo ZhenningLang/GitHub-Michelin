@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:32:33Z
+  computed_at: 2026-09-22T15:56:40Z
   overall: A
-  overall_score: 3.5
-  scored_axes: 6
+  overall_score: 3.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,49 +29,46 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 11
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 260.3
-        qualifying_issues: 42
-        band: relaxed_solo
-        window_offset_days: 13
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: C
       raw:
         registry: pypi.org
         canonical_package: pr-agent
         dependent_repos_count: 0
-        downloads_last_month: 23002
+        downloads_last_month: 25731
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1097
-        last_commit_age_days: 1
+        repo_age_days: 1175
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 25
-        top1_share: 0.303
-        top3_share: 0.609
+        active_maintainers_12mo: 35
+        top1_share: 0.147
+        top3_share: 0.392
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: A
       raw:
-        spdx_id: Apache-2.0
+        spdx_id: MIT
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 # PR-Agent
 

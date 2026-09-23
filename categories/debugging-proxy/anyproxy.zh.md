@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:46Z
+  computed_at: 2026-09-22T16:06:11Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2206
+        last_commit_age_days: 2287
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +41,16 @@ health:
         registry: npmjs.org
         canonical_package: anyproxy
         dependent_repos_count: 238
-        downloads_last_month: 8995
+        downloads_last_month: 7372
         graph_tier: C
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 4344
-        last_commit_age_days: 2206
+        repo_age_days: 4425
+        last_commit_age_days: 2287
         cohort: tool
     governance:
       grade: "?"

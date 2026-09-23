@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:31:48Z
+  computed_at: 2026-09-23T03:53:07Z
   overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,26 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 11
+        last_commit_age_days: 5
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 166633
+        release_assets: 24
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 190
-        last_commit_age_days: 4
+        repo_age_days: 191
+        last_commit_age_days: 5
         cohort: skill-pack
     governance:
       grade: B
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Android Skills

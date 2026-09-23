@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T11:04:30Z
+  computed_at: 2026-09-22T15:49:52Z
   overall: C
   overall_score: 1.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 93
+        last_commit_age_days: 162
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 115
-        last_commit_age_days: 93
+        repo_age_days: 183
+        last_commit_age_days: 162
         cohort: skill-pack
     governance:
       grade: B
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 # skills
 

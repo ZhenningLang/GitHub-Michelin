@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:49:36Z
+  computed_at: 2026-09-22T17:49:08Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 15.7
-        qualifying_issues: 39
-        band: default
-        window_offset_days: 0
-        source: issue
-        inferred: false
-    adoption:
       grade: "?"
       raw: {}
+    adoption:
+      grade: C
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/open-telemetry/opentelemetry-collector
+        dependent_repos_count: 9
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 426910
+        release_assets: 140
+        release_tier: C
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2615
-        last_commit_age_days: 2
+        repo_age_days: 2693
+        last_commit_age_days: 1
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 36
-        top1_share: 0.19
-        top3_share: 0.417
+        active_maintainers_12mo: 34
+        top1_share: 0.282
+        top3_share: 0.478
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
+    responsiveness: { reason: github_unavailable }
 ---
 # OpenTelemetry Collector
 

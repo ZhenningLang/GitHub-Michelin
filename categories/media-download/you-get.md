@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:52:32Z
+  computed_at: 2026-09-22T16:35:56Z
   overall: D
-  overall_score: 0.67
+  overall_score: 1.33
   scored_axes: 3
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,34 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 432
+        last_commit_age_days: 513
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: C
       raw:
-        registry: conda-forge.org
+        registry: pypi.org
         canonical_package: you-get
-        dependent_repos_count: 0
-        downloads_last_month: 49144
-        graph_tier: E
-        volume_tier: "?"
+        dependent_repos_count: 125
+        downloads_last_month: 17280
+        graph_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        homebrew_installs_90d: 156
+        homebrew_tier: C
+        release_downloads: 405099
+        release_assets: 394
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 5065
-        last_commit_age_days: 432
+        repo_age_days: 5146
+        last_commit_age_days: 513
         cohort: tool
     governance:
       grade: "?"

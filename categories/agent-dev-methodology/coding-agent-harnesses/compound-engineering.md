@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:08Z
+  computed_at: 2026-09-23T03:10:49Z
   overall: B
   overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 267
+        repo_age_days: 348
         last_commit_age_days: 0
         cohort: skill-pack
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 70
-        top1_share: 0.577
-        top3_share: 0.868
+        active_maintainers_12mo: 95
+        top1_share: 0.658
+        top3_share: 0.851
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Compound Engineering

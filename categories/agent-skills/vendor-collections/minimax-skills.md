@@ -16,32 +16,33 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:48:02Z
+  computed_at: 2026-09-22T15:53:36Z
   overall: B
-  overall_score: 3.25
+  overall_score: 3.0
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 76
-        active_weeks_13: 3
+        last_commit_age_days: 157
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 108
-        last_commit_age_days: 76
+        repo_age_days: 189
+        last_commit_age_days: 157
         cohort: skill-pack
     governance:
       grade: A
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # MiniMax Skills

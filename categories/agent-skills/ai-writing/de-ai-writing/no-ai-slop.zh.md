@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:06:42Z
+  computed_at: 2026-09-22T15:41:50Z
   overall: C
-  overall_score: 2.25
-  scored_axes: 4
+  overall_score: 2.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,8 +36,14 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 959
+        release_assets: 7
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # no-ai-slop

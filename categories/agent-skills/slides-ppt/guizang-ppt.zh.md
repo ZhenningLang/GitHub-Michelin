@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:48:52Z
+  computed_at: 2026-09-22T17:40:22Z
   overall: C
-  overall_score: 1.5
+  overall_score: 2.0
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,25 +29,25 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 31
-        active_weeks_13: 6
+        last_commit_age_days: 47
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: D
-      raw:
-        repo_age_days: 71
-        last_commit_age_days: 31
-        cohort: skill-pack
-    governance:
       grade: C
       raw:
-        active_maintainers_12mo: 2
+        repo_age_days: 152
+        last_commit_age_days: 47
+        cohort: skill-pack
+    governance:
+      grade: B
+      raw:
+        active_maintainers_12mo: 3
         top1_share: 0.5
         top3_share: 1.0
         window_source: stats_contributors
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Guizang PPT Skill

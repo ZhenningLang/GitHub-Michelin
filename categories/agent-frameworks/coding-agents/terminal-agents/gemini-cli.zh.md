@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:27:02Z
+  computed_at: 2026-09-22T17:36:05Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,22 +41,27 @@ health:
         registry: npmjs.org
         canonical_package: "@google/gemini-cli"
         dependent_repos_count: 0
-        downloads_last_month: 2522263
+        downloads_last_month: 1331337
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.02
+        release_downloads: 10558
+        release_assets: 290
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 442
+        repo_age_days: 523
         last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 88
-        top1_share: 0.08
-        top3_share: 0.211
+        active_maintainers_12mo: 79
+        top1_share: 0.085
+        top3_share: 0.205
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Gemini CLI

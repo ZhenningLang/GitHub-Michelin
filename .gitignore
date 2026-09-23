@@ -18,3 +18,6 @@ memory_telemetry.jsonl
 .health-backfill/
 memory/
 
+
+# Scorer instrument caches (Homebrew index etc.) — regenerable, TTL-bound
+.health-cache/

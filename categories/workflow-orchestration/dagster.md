@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:02:06Z
+  computed_at: 2026-09-22T17:22:31Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 25.3
-        qualifying_issues: 30
+        median_ttfr_hours: 65.8
+        qualifying_issues: 21
         band: default
         window_offset_days: 0
         source: issue
@@ -44,24 +45,29 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: dagster-postgres
-        dependent_repos_count: 63
-        downloads_last_month: 8704723
+        canonical_package: dagster-pipes
+        dependent_repos_count: 1
+        downloads_last_month: 8497641
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: null
+        release_downloads: 5717
+        release_assets: 576
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2989
-        last_commit_age_days: 4
+        repo_age_days: 3067
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 106
-        top1_share: 0.178
-        top3_share: 0.424
+        active_maintainers_12mo: 90
+        top1_share: 0.304
+        top3_share: 0.502
         window_source: stats_contributors
         carve_out: null
     risk_license:

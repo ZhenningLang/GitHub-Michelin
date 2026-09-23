@@ -16,39 +16,52 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:25Z
-  overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  computed_at: 2026-09-22T17:42:48Z
+  overall: B
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 16
-        active_weeks_13: 7
+        last_commit_age_days: 21
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        median_ttfr_hours: 175.2
+        qualifying_issues: 5
+        band: default
+        window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 39513
+        release_assets: 171
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4260
-        last_commit_age_days: 16
+        repo_age_days: 4341
+        last_commit_age_days: 21
         cohort: service
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 8
-        top1_share: 0.306
-        top3_share: 0.722
+        active_maintainers_12mo: 5
+        top1_share: 0.364
+        top3_share: 0.818
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -58,9 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
 ---
 
 # PikiwiDB

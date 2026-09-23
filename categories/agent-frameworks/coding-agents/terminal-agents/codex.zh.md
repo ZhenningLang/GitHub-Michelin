@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:26:35Z
+  computed_at: 2026-09-22T17:35:57Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,22 +41,29 @@ health:
         registry: npmjs.org
         canonical_package: "@openai/codex"
         dependent_repos_count: 0
-        downloads_last_month: 45794237
+        downloads_last_month: 77905874
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 283626
+        homebrew_tier: A
+        release_downloads: 7006482
+        release_assets: 16186
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 446
+        repo_age_days: 527
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 92
-        top1_share: 0.155
-        top3_share: 0.349
+        active_maintainers_12mo: 367
+        top1_share: 0.163
+        top3_share: 0.312
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +74,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Codex

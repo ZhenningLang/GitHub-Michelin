@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:51:38Z
+  computed_at: 2026-09-22T16:53:55Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 12
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.7
-        qualifying_issues: 23
+        median_ttfr_hours: 16.9
+        qualifying_issues: 31
         band: default
         window_offset_days: 7
         source: issue
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: pymupdf
         dependent_repos_count: 1798
-        downloads_last_month: 94701153
+        downloads_last_month: 91755424
         graph_tier: B
         volume_tier: A
         cross_check_divergence: null
+        release_downloads: 38427
+        release_assets: 190
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5021
-        last_commit_age_days: 4
+        repo_age_days: 5099
+        last_commit_age_days: 0
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 14
-        top1_share: 0.681
-        top3_share: 0.919
+        active_maintainers_12mo: 18
+        top1_share: 0.626
+        top3_share: 0.905
         window_source: stats_contributors
         carve_out: null
     risk_license:

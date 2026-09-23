@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:57:13Z
+  computed_at: 2026-09-22T17:12:08Z
   overall: A
   overall_score: 4.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 13.5
-        qualifying_issues: 44
+        median_ttfr_hours: 8.8
+        qualifying_issues: 31
         band: default
         window_offset_days: 11
         source: issue
@@ -44,21 +45,27 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@puppeteer/browsers"
-        dependent_repos_count: 4110
-        downloads_last_month: 76295103
-        graph_tier: B
+        canonical_package: puppeteer-core
+        dependent_repos_count: 43700
+        downloads_last_month: 75797451
+        graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3345
-        last_commit_age_days: 0
+        repo_age_days: 3423
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        active_maintainers_12mo: 21
+        top1_share: 0.349
+        top3_share: 0.724
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -66,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    governance: { reason: empty_or_gated }
 ---
 # Puppeteer
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:42:05Z
+  computed_at: 2026-09-22T16:25:49Z
   overall: B
-  overall_score: 3.17
-  scored_axes: 6
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -32,36 +33,35 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 12.1
-        qualifying_issues: 10
-        band: relaxed_solo
-        window_offset_days: 9
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: D
       raw:
         registry: npmjs.org
         canonical_package: librechat-data-provider
         dependent_repos_count: 1
-        downloads_last_month: 4359
+        downloads_last_month: 9620
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 1065
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1241
+        repo_age_days: 1319
         last_commit_age_days: 1
         cohort: app
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 48
-        top1_share: 0.77
-        top3_share: 0.873
+        active_maintainers_12mo: 55
+        top1_share: 0.787
+        top3_share: 0.893
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,6 +71,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 # LibreChat
 

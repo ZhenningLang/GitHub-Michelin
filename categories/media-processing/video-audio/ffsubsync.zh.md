@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:24:06Z
+  computed_at: 2026-09-22T16:38:25Z
   overall: B
-  overall_score: 2.8
+  overall_score: 3.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,39 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 16
-        active_weeks_13: 3
+        last_commit_age_days: 60
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: pypi.org
         canonical_package: ffsubsync
         dependent_repos_count: 9
-        downloads_last_month: 17416
+        downloads_last_month: 28965
         graph_tier: D
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
+        release_downloads: 2404
+        release_assets: 12
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2686
-        last_commit_age_days: 16
+        repo_age_days: 2768
+        last_commit_age_days: 60
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 7
-        top1_share: 0.612
-        top3_share: 0.918
+        active_maintainers_12mo: 6
+        top1_share: 0.743
+        top3_share: 0.957
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # ffsubsync

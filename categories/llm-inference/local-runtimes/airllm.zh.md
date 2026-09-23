@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T10:27:00Z
+  computed_at: 2026-09-22T16:28:05Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,8 +36,8 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 143.9
-        qualifying_issues: 16
+        median_ttfr_hours: 62.6
+        qualifying_issues: 14
         band: default
         window_offset_days: 3
         source: issue
@@ -51,6 +52,7 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: B
       raw:

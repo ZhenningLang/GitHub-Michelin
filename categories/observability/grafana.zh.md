@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T16:13:57Z
+  computed_at: 2026-09-22T16:45:22Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,27 +36,37 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@grafana/e2e-selectors"
         dependent_repos_count: 904
-        downloads_last_month: 702530
+        downloads_last_month: 454707
         graph_tier: C
-        volume_tier: B
-        cross_check_divergence: 1.02
+        volume_tier: C
+        cross_check_divergence: null
+        homebrew_installs_90d: 3910
+        homebrew_tier: A
+        release_downloads: 16302
+        release_assets: 267
+        release_tier: D
+        docker_pulls: 5332729043
+        docker_image: grafana/grafana
+        docker_tier: A
+        signal_basis: homebrew+releases+docker
+        tier_source: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4587
+        repo_age_days: 4668
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 239
-        top1_share: 0.041
-        top3_share: 0.102
+        active_maintainers_12mo: 243
+        top1_share: 0.04
+        top3_share: 0.101
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +77,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Grafana

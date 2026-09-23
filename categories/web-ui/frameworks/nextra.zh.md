@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T07:16:58Z
+  computed_at: 2026-09-22T17:18:11Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,7 +30,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 89
+        last_commit_age_days: 91
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
@@ -45,17 +46,18 @@ health:
       grade: B
       raw:
         registry: npmjs.org
-        canonical_package: nextra
-        dependent_repos_count: 2302
-        downloads_last_month: 817763
+        canonical_package: nextra-theme-docs
+        dependent_repos_count: 1715
+        downloads_last_month: 809687
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.01
+        tier_source: registry
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 2288
-        last_commit_age_days: 89
+        repo_age_days: 2290
+        last_commit_age_days: 91
         cohort: framework
     governance:
       grade: B

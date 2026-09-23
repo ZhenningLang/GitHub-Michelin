@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:20:26Z
+  computed_at: 2026-09-22T16:30:23Z
   overall: A
   overall_score: 4.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,22 +41,27 @@ health:
         registry: pypi.org
         canonical_package: vllm
         dependent_repos_count: 5
-        downloads_last_month: 5503961
+        downloads_last_month: 2256880
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.05
+        release_downloads: 3849713
+        release_assets: 526
+        release_tier: B
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1240
+        repo_age_days: 1321
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 433
-        top1_share: 0.061
-        top3_share: 0.143
+        active_maintainers_12mo: 432
+        top1_share: 0.044
+        top3_share: 0.125
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # vLLM

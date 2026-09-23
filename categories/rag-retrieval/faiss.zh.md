@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:21Z
+  computed_at: 2026-09-22T16:57:06Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,38 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 64.7
-        qualifying_issues: 16
+        median_ttfr_hours: 101.7
+        qualifying_issues: 21
         band: default
         window_offset_days: 4
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: faiss-cpu
         dependent_repos_count: 5592
-        downloads_last_month: 18313484
+        downloads_last_month: 11749699
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.13
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 1244
+        homebrew_tier: B
+        signal_basis: homebrew
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3433
+        repo_age_days: 3514
         last_commit_age_days: 1
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 43
-        top1_share: 0.21
-        top3_share: 0.477
+        active_maintainers_12mo: 47
+        top1_share: 0.238
+        top3_share: 0.493
         window_source: stats_contributors
         carve_out: null
     risk_license:

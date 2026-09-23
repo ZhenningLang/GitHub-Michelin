@@ -16,43 +16,56 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T04:19:01Z
+  computed_at: 2026-09-22T16:34:37Z
   overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: D
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 418
-        active_weeks_13: 0
-        carve_out: null
+        last_commit_age_days: 11
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 3
+        band: default
+        window_offset_days: 5
+        source: pr
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: micromark-util-character
         dependent_repos_count: 49741
-        downloads_last_month: 197051373
+        downloads_last_month: 233026619
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
-      grade: D
+      grade: A
       raw:
-        repo_age_days: 2788
-        last_commit_age_days: 418
+        repo_age_days: 2870
+        last_commit_age_days: 11
         cohort: library
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 1
+        top1_share: 1.0
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -60,9 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
-    governance: { reason: unattributable }
 ---
 
 # micromark

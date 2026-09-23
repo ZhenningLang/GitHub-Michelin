@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:53:34Z
+  computed_at: 2026-09-22T16:59:05Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.0
-        qualifying_issues: 51
+        median_ttfr_hours: 2.6
+        qualifying_issues: 38
         band: relaxed_solo
         window_offset_days: 6
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        docker_pulls: 38283056
+        docker_image: freshrss/freshrss
+        docker_tier: B
+        signal_basis: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 5006
-        last_commit_age_days: 0
+        repo_age_days: 5084
+        last_commit_age_days: 2
         cohort: app
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 24
-        top1_share: 0.551
-        top3_share: 0.801
+        active_maintainers_12mo: 34
+        top1_share: 0.533
+        top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # FreshRSS
 

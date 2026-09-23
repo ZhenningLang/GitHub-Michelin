@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T10:28:10Z
+  computed_at: 2026-09-22T16:30:25Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -49,7 +50,14 @@ health:
         downloads_last_month: 4966018
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.06
+        cross_check_divergence: null
+        homebrew_installs_90d: 2
+        homebrew_tier: D
+        release_downloads: 151
+        release_assets: 35
+        release_tier: D
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: C
       raw:

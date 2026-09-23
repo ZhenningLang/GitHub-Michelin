@@ -16,39 +16,46 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:44:50Z
-  overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  computed_at: 2026-09-22T17:39:14Z
+  overall: C
+  overall_score: 2.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 23
-        active_weeks_13: 7
+        last_commit_age_days: 25
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 207
-        last_commit_age_days: 23
+        registry: null
+        canonical_package: null
+        release_downloads: 2309
+        release_assets: 30
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 288
+        last_commit_age_days: 25
         cohort: skill-pack
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 23
-        top1_share: 0.251
-        top3_share: 0.575
+        active_maintainers_12mo: 24
+        top1_share: 0.351
+        top3_share: 0.626
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Vercel Agent Skills

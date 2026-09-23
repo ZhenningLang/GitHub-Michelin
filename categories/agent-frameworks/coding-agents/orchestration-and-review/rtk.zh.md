@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:26:31Z
-  overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  computed_at: 2026-09-22T17:35:17Z
+  overall: A
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.5
-        qualifying_issues: 5
+        median_ttfr_hours: 2.8
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 7
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: D
+      grade: A
       raw:
-        repo_age_days: 162
-        last_commit_age_days: 2
+        registry: crates.io
+        canonical_package: brokk-rtk
+        dependent_repos_count: 0
+        downloads_last_month: 1332
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        homebrew_installs_90d: 44527
+        homebrew_tier: A
+        release_downloads: 1279859
+        release_assets: 1000
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
+    longevity:
+      grade: C
+      raw:
+        repo_age_days: 243
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 97
-        top1_share: 0.276
-        top3_share: 0.59
+        top1_share: 0.248
+        top3_share: 0.524
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +79,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # RTK

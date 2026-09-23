@@ -16,32 +16,41 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:33Z
-  overall: C
-  overall_score: 2.0
-  scored_axes: 3
+  computed_at: 2026-09-22T16:55:26Z
+  overall: D
+  overall_score: 1.25
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: D
+      grade: E
       raw:
         archived: false
-        last_commit_age_days: 671
+        last_commit_age_days: 752
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
       grade: D
       raw:
-        repo_age_days: 3006
-        last_commit_age_days: 671
+        registry: pypi.org
+        canonical_package: scylla
+        dependent_repos_count: 13
+        downloads_last_month: 245
+        graph_tier: D
+        volume_tier: E
+        cross_check_divergence: null
+        tier_source: registry
+    longevity:
+      grade: E
+      raw:
+        repo_age_days: 3087
+        last_commit_age_days: 752
         cohort: app
     governance:
       grade: "?"
@@ -55,7 +64,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
 ---
 

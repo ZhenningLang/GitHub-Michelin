@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:46:21Z
+  computed_at: 2026-09-22T16:30:58Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 35.5
+        median_ttfr_hours: 24.4
         qualifying_issues: 23
         band: relaxed_solo
         window_offset_days: 0
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: axolotl
         dependent_repos_count: 1
-        downloads_last_month: 17071
+        downloads_last_month: 10378
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1179
-        last_commit_age_days: 1
+        repo_age_days: 1258
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 34
-        top1_share: 0.467
-        top3_share: 0.804
+        active_maintainers_12mo: 30
+        top1_share: 0.397
+        top3_share: 0.822
         window_source: stats_contributors
         carve_out: null
     risk_license:

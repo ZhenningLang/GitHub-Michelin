@@ -24,7 +24,7 @@
 | [XlsxWriter](xlsxwriter.zh.md) | ✅ | B（6/6） | 零依赖、生产级稳定、维护活跃的表格生成；只写，且不求值公式。 |
 | [Office-Word-MCP-Server](office-word-mcp-server.zh.md) | ✅ | C（6/6） | MCP 原生的 Word 编辑，带 python-docx 缺的脚注支持；已归档、只有 Word，且它的 PDF 工具需要真实安装 MS Word。 |
 | [Pandoc](../markdown-tools/pandoc.zh.md) | ✅ | B（6/6） | 一次调用把 Markdown 导出成 `.docx`／`.pptx`，用 reference doc 控样式；无法就地编辑已有 Office 文件。 |
-| [MarkItDown](../document-parsing/markitdown.zh.md) | ✅ | A（6/6） | 相反方向：Office → Markdown 供 LLM 摄取，只读，且按设计在格式上有损。 |
+| [MarkItDown](../document-parsing/markitdown.zh.md) | ✅ | B（6/6） | 相反方向：Office → Markdown 供 LLM 摄取，只读，且按设计在格式上有损。 |
 | openpyxl | 未收录 | — | XlsxWriter 的读写型 `.xlsx` 对手；未收录是因为它的规范仓库在 Heptapod（Mercurial）而非 GitHub，而本索引的健康度／上游快照工具只支持 GitHub。 |
 | Office-PowerPoint-MCP-Server | 未收录 | — | Word MCP server 的 `.pptx` 姊妹项目（1,852 star）；被同一作者于 2025-12-31 归档，所以除了这条说明之外不提供额外选型价值。 |
 | LibreOffice headless／Aspose／Apache POI | 未收录 | — | 这些页面里点名的转换引擎、商业与 JVM 路线；与面向 agent 的 OOXML 编辑器不在同一抽象层。 |

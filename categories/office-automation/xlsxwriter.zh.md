@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T12:28:25Z
+  computed_at: 2026-09-22T16:48:34Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,13 +30,13 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 45
+        last_commit_age_days: 49
         active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 0.6
+        median_ttfr_hours: 0.4
         qualifying_issues: 4
         band: default
         window_offset_days: 11
@@ -47,15 +48,16 @@ health:
         registry: pypi.org
         canonical_package: xlsxwriter
         dependent_repos_count: 3828
-        downloads_last_month: 87471871
+        downloads_last_month: 84484621
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.02
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5005
-        last_commit_age_days: 45
+        repo_age_days: 5010
+        last_commit_age_days: 49
         cohort: library
     governance:
       grade: D

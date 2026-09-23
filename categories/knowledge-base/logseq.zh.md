@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T15:53:04Z
+  computed_at: 2026-09-22T16:25:07Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,35 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 209.3
-        qualifying_issues: 21
+        median_ttfr_hours: 249.2
+        qualifying_issues: 20
         band: relaxed_solo
         window_offset_days: 9
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1260
+        homebrew_tier: B
+        release_downloads: 89236369
+        release_assets: 1070
+        release_tier: A
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2311
+        repo_age_days: 2314
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 53
-        top1_share: 0.541
-        top3_share: 0.799
+        active_maintainers_12mo: 52
+        top1_share: 0.543
+        top3_share: 0.798
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Logseq

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T12:33:30Z
+  computed_at: 2026-09-22T17:32:54Z
   overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,26 +36,34 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 44
+        qualifying_issues: 50
         band: relaxed_solo
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 609
+        homebrew_tier: B
+        release_downloads: 2447061
+        release_assets: 1166
+        release_tier: B
+        signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 214
+        repo_age_days: 216
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 175
-        top1_share: 0.454
-        top3_share: 0.85
+        top1_share: 0.462
+        top3_share: 0.857
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # OpenHuman

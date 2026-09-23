@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:27:23Z
-  overall: B
-  overall_score: 3.2
+  computed_at: 2026-09-22T15:36:41Z
+  overall: A
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@opencode-ai/cli-linux-x64"
         dependent_repos_count: 0
-        downloads_last_month: 138309
+        downloads_last_month: 554339
         graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
+        volume_tier: B
+        cross_check_divergence: 1.09
+        homebrew_installs_90d: 94934
+        homebrew_tier: A
+        release_downloads: 84114151
+        release_assets: 3624
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 429
-        last_commit_age_days: 0
+        repo_age_days: 510
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 475
-        top1_share: 0.161
-        top3_share: 0.451
+        active_maintainers_12mo: 429
+        top1_share: 0.146
+        top3_share: 0.417
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +74,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # OpenCode

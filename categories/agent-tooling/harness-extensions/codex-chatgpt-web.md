@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:34:57Z
+  computed_at: 2026-09-22T17:41:13Z
   overall: C
-  overall_score: 2.0
+  overall_score: 2.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,16 +36,14 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: C
       raw:
         registry: null
         canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+        release_downloads: 144169
+        release_assets: 834
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: D
       raw:

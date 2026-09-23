@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:38:06Z
+  computed_at: 2026-09-22T16:06:20Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 12
+        last_commit_age_days: 12
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 27.1
-        qualifying_issues: 16
+        median_ttfr_hours: 23.6
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 2
         source: issue
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: mitmproxy
         dependent_repos_count: 639
-        downloads_last_month: 5650055
+        downloads_last_month: 4068369
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.19
+        release_downloads: 227435
+        release_assets: 145
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5984
-        last_commit_age_days: 3
+        repo_age_days: 6062
+        last_commit_age_days: 12
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 29
-        top1_share: 0.5
-        top3_share: 0.609
+        active_maintainers_12mo: 30
+        top1_share: 0.464
+        top3_share: 0.573
         window_source: stats_contributors
         carve_out: null
     risk_license:

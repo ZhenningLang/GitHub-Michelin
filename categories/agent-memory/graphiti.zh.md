@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:30:26Z
+  computed_at: 2026-09-22T15:39:33Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 11
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: C
+      grade: A
       raw:
-        median_ttfr_hours: 239.5
-        qualifying_issues: 31
+        median_ttfr_hours: 38.7
+        qualifying_issues: 33
         band: default
         window_offset_days: 8
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: graphiti-core
         dependent_repos_count: 0
-        downloads_last_month: 900026
+        downloads_last_month: 597089
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.51
+        cross_check_divergence: 1.0
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 697
-        last_commit_age_days: 0
+        repo_age_days: 775
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 22
-        top1_share: 0.58
-        top3_share: 0.887
+        active_maintainers_12mo: 37
+        top1_share: 0.494
+        top3_share: 0.789
         window_source: stats_contributors
         carve_out: null
     risk_license:

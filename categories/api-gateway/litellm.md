@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T11:27:36Z
+  computed_at: 2026-09-22T15:59:18Z
   overall: A
   overall_score: 4.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: litellm
         dependent_repos_count: 1
-        downloads_last_month: 191453852
+        downloads_last_month: 141593074
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.14
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1150
+        repo_age_days: 1154
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 301
-        top1_share: 0.181
-        top3_share: 0.382
+        active_maintainers_12mo: 297
+        top1_share: 0.183
+        top3_share: 0.383
         window_source: stats_contributors
         carve_out: null
     risk_license:

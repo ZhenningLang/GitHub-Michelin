@@ -16,26 +16,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T08:09:21Z
-  overall: A
-  overall_score: 3.6
+  computed_at: 2026-09-22T16:23:32Z
+  overall: B
+  overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 10
+        last_commit_age_days: 64
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 13.3
-        qualifying_issues: 9
+        median_ttfr_hours: 47.2
+        qualifying_issues: 14
         band: default
         window_offset_days: 9
         source: issue
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: openbb-platform-api
         dependent_repos_count: 0
-        downloads_last_month: 51887
+        downloads_last_month: 59887
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 185400
+        release_assets: 139
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2034
-        last_commit_age_days: 2
+        repo_age_days: 2102
+        last_commit_age_days: 64
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 45
-        top1_share: 0.385
-        top3_share: 0.459
+        active_maintainers_12mo: 46
+        top1_share: 0.392
+        top3_share: 0.473
         window_source: stats_contributors
         carve_out: null
     risk_license:

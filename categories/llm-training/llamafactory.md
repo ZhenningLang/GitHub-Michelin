@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:44:17Z
+  computed_at: 2026-09-22T16:31:04Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,39 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 13
+        last_commit_age_days: 8
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
-      grade: B
+      grade: C
       raw:
-        median_ttfr_hours: 121.1
-        qualifying_issues: 37
+        median_ttfr_hours: 221.5
+        qualifying_issues: 27
         band: default
         window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
-      grade: E
+      grade: D
       raw:
-        registry: null
-        canonical_package: null
+        registry: pypi.org
+        canonical_package: llamafactory
         dependent_repos_count: 0
-        downloads_last_month: null
+        downloads_last_month: 19727
         graph_tier: E
-        volume_tier: null
+        volume_tier: D
         cross_check_divergence: null
-        archived: false
+        release_downloads: 5324
+        release_assets: 6
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1132
-        last_commit_age_days: 0
+        repo_age_days: 1213
+        last_commit_age_days: 8
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 35
-        top1_share: 0.375
-        top3_share: 0.613
+        active_maintainers_12mo: 32
+        top1_share: 0.341
+        top3_share: 0.556
         window_source: stats_contributors
         carve_out: null
     risk_license:

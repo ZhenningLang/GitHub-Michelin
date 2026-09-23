@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:47:15Z
+  computed_at: 2026-09-22T17:32:53Z
   overall: B
   overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -38,31 +39,41 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: openclaw
+        canonical_package: "@openclaw/brave-plugin"
         dependent_repos_count: 0
-        downloads_last_month: 14326323
+        downloads_last_month: 10026677
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 3342
+        homebrew_tier: A
+        release_downloads: 901542
+        release_assets: 331
+        release_tier: C
+        docker_pulls: 225897
+        docker_image: openclaw/openclaw
+        docker_tier: D
+        signal_basis: homebrew+releases+docker
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 221
+        repo_age_days: 302
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 487
-        top1_share: 0.528
-        top3_share: 0.752
+        active_maintainers_12mo: 486
+        top1_share: 0.555
+        top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
     risk_license: { reason: license_unparsed }
 ---
 # OpenClaw

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:02:46Z
+  computed_at: 2026-09-22T17:23:10Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.0
-        qualifying_issues: 44
+        median_ttfr_hours: 0.0
+        qualifying_issues: 36
         band: default
         window_offset_days: 8
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: prefect
         dependent_repos_count: 767
-        downloads_last_month: 6969639
+        downloads_last_month: 7273707
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 1.68
+        cross_check_divergence: 1.06
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2929
+        repo_age_days: 3007
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 123
-        top1_share: 0.633
-        top3_share: 0.846
+        active_maintainers_12mo: 136
+        top1_share: 0.661
+        top3_share: 0.838
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-19T15:54:48Z
+  computed_at: 2026-09-22T17:45:34Z
   overall: E
-  overall_score: 0.25
-  scored_axes: 4
+  overall_score: 0.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 494
+        last_commit_age_days: 497
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,20 @@ health:
         band: relaxed_solo
         window_offset_days: 7
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 73826
+        release_assets: 305
+        release_tier: D
+        signal_basis: releases
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 1028
-        last_commit_age_days: 494
+        repo_age_days: 1031
+        last_commit_age_days: 497
         cohort: app
     governance:
       grade: "?"
@@ -58,7 +66,6 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
 ---
 

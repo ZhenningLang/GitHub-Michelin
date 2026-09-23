@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T14:23:31Z
+  computed_at: 2026-09-22T15:36:55Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,8 +42,14 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 64865
+        release_assets: 391
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Prime Agent
@@ -79,6 +84,14 @@ A long coding session fills the model's window with files, command dumps, and su
 You are mid a multi-hour coding or evaluation job — a repo-wide refactor, a research sweep over a large log, a SWE-style rollout that should still be running after you log out — and the usual terminal agent is already losing the plot. The chat is a stack of file dumps and compaction summaries; a bug that only makes sense when two distant files are in the same window never gets seen together. You do not want another list of tools. You want the model to treat the working set as data it can slice in code.
 
 Reach for Prime Agent when that is the constraint. It is a hard fork of `pi` (earendil-works) now shipped by Prime Intellect: the model's one built-in tool is a persistent Python kernel, `rlm.spawn(...)` starts real child agents, and a local daemon keeps the session, kernel, and children alive after the TUI detaches. Choose it over [OpenCode](opencode.md) or [Codex](codex.md) when programmatic context folding and detachable long runs are the point, not model-agnostic pair-programming. Choose it over [OpenHands](../orchestration-and-review/openhands.md) when you want a local CLI/TUI rather than a self-hosted agent platform with its own sandbox. The cost is a multi-process runtime (daemon, worker, kernel), Node.js ≥ 22.8 and Python ≥ 3.11, an install path that is `curl | sh` from Prime's domain, and no default security sandbox.
+
+## Callouts
+
+Other agents dump files into the chat. This one makes the model write Python to look at them. Sounds smarter. The parent stops seeing the files and turns into a dispatcher. Cutting the work into pieces is the part that needed the whole picture — and this setup took the picture away. [推断]
+
+They call it self-improving. `/refine` writes extra prompts. The research bet is that RL will teach the model this scaffold. Their own write-up: short math gets worse with the scaffold on. So it has not learned yet. [推断]
+
+The sandbox warning in the README is the honest bit. RLM, Continual Harness, RSI in the commits — packaging. Install is still `curl | sh` off Prime's domain. The package inside the tree is still named `pi`.
 
 ## How it works
 
@@ -154,6 +167,8 @@ The TypeScript host owns providers, transcripts, child lifecycles, and schedulin
 - [未验证] Whether `prime-agent update` works without a Prime Intellect account; only the install URL and `PI_OFFLINE=1` model-list skip were read.
 - [未验证] Production adoption versus star count; 21.2k stars in ~4.5 months is an attention signal, not a user-count.
 - [推断] High fork/star (~11% on 2026-09-22) may include mirrors or one-off forks rather than a downstream ecosystem.
+- [推断] Putting context in variables rather than the window demotes the parent to a dispatcher; how you slice needs the global view that move just removed.
 - [推断] Prime Intellect's RLM blog (math-python drop, DeepDive without tips) applies to their verifier RLM scaffold, not as a measured Prime Agent TUI benchmark.
+- [推断] `/refine` plus the RL-training story is a harness that hopes the model will learn the scaffold, not evidence that it already has.
 - [未验证] How far `/refine` actually improves later sessions in the wild; docs describe the mechanism, not a field study.
 - [未验证] Windows/Termux support depth beyond the existence of `docs/windows.md` and `docs/termux.md`.

@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T01:03:10Z
+  computed_at: 2026-09-22T17:46:09Z
   overall: A
   overall_score: 4.0
-  scored_axes: 4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,27 +30,44 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/ollama/ollama
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        homebrew_installs_90d: 132206
+        homebrew_tier: A
+        release_downloads: 112076422
+        release_assets: 1561
+        release_tier: A
+        docker_pulls: 177956630
+        docker_image: ollama/ollama
+        docker_tier: A
+        signal_basis: homebrew+releases+docker
+        tier_source: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 1181
-        last_commit_age_days: 1
+        repo_age_days: 1184
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 32
         top1_share: 0.237
-        top3_share: 0.559
+        top3_share: 0.558
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -61,7 +79,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
 ---
 # Ollama
 

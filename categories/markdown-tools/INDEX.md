@@ -12,9 +12,9 @@
 | **marked** | Use it when you need a fast, low-level Markdown→HTML parser in JS — but you must sanitize the output yourself and don't need strict CommonMark. | A (5/6) | [→](marked.md) |
 | **remark** | Use it when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown — but it's a toolchain, not a one-call renderer. | A (6/6) | [→](remark.md) |
 | **markdown-it** | Use it when you need a strict CommonMark/GFM-compliant, pluggable Markdown→HTML parser in JS — but the plugin ecosystem adds weight and you must still sanitize untrusted input. | A (6/6) | [→](markdown-it.md) |
-| **micromark** | Use it when you need a low-level, streaming-friendly CommonMark/GFM tokenizer in JS — the engine underneath remark — but you must build the rendering layer yourself. | B (4/6) | [→](micromark.md) |
+| **micromark** | Use it when you need a low-level, streaming-friendly CommonMark/GFM tokenizer in JS — the engine underneath remark — but you must build the rendering layer yourself. | B (6/6) | [→](micromark.md) |
 | **Pandoc** | Universal markup converter | B (6/6) | [→](pandoc.md) |
-| **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | B (4/6) | [→](goldmark.md) |
+| **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | A (6/6) | [→](goldmark.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | A (6/6) | [→](markdownlint.md) |
 | **MDX** | Use it when the docs live inside a React/Preact/Vue app and the prose must import and render your own components — not when the deliverable is a standalone PDF, book or publishable document. | B (5/6) | [→](mdx.md) |
 
@@ -28,7 +28,7 @@
 | [marked](marked.md) | ✅ | A (5/6) | Use it when you need a fast, low-level Markdown→HTML parser in JS — but you must sanitize the output yourself and don't need strict CommonMark. |
 | [remark](remark.md) | ✅ | A (6/6) | Use it when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown — but it's a toolchain, not a one-call renderer. |
 | [markdown-it](markdown-it.md) | ✅ | A (6/6) | Use it when you need a strict CommonMark/GFM-compliant, pluggable Markdown→HTML parser in JS — but the plugin ecosystem adds weight and you must still sanitize untrusted input. |
-| [micromark](micromark.md) | ✅ | B (4/6) | Use it when you need a low-level, streaming-friendly CommonMark/GFM tokenizer in JS — the engine underneath remark — but you must build the rendering layer yourself. |
+| [micromark](micromark.md) | ✅ | B (6/6) | Use it when you need a low-level, streaming-friendly CommonMark/GFM tokenizer in JS — the engine underneath remark — but you must build the rendering layer yourself. |
 
 ## What belongs here
 

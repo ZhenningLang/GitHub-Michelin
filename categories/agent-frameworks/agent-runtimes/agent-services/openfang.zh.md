@@ -16,36 +16,39 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:59Z
-  overall: B
-  overall_score: 2.8
+  computed_at: 2026-09-22T17:32:12Z
+  overall: C
+  overall_score: 2.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 52
-        active_weeks_13: 6
+        last_commit_age_days: 133
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 127.5
-        qualifying_issues: 34
-        band: default
-        window_offset_days: 4
-    adoption:
       grade: "?"
       raw: {}
+    adoption:
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 87084
+        release_assets: 2262
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 128
-        last_commit_age_days: 52
+        repo_age_days: 210
+        last_commit_age_days: 133
         cohort: framework
     governance:
       grade: B
@@ -63,7 +66,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # OpenFang

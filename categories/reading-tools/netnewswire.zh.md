@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:48Z
+  computed_at: 2026-09-22T17:50:48Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 2
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 28.4
-        qualifying_issues: 35
+        median_ttfr_hours: 6.6
+        qualifying_issues: 28
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1352
+        homebrew_tier: B
+        release_downloads: 273580
+        release_assets: 52
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3330
-        last_commit_age_days: 0
+        repo_age_days: 3411
+        last_commit_age_days: 2
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 18
-        top1_share: 0.887
-        top3_share: 0.984
+        active_maintainers_12mo: 16
+        top1_share: 0.918
+        top3_share: 0.988
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # NetNewsWire

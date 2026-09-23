@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T09:14:54Z
+  computed_at: 2026-09-23T03:12:29Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 12.9
-        qualifying_issues: 34
+        median_ttfr_hours: 14.2
+        qualifying_issues: 32
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1791508
+        release_assets: 507
+        release_tier: B
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3209
-        last_commit_age_days: 1
+        repo_age_days: 3212
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 108
-        top1_share: 0.379
-        top3_share: 0.638
+        active_maintainers_12mo: 110
+        top1_share: 0.378
+        top3_share: 0.636
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Kata Containers

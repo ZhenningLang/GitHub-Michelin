@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T05:58:00Z
+  computed_at: 2026-09-22T16:14:39Z
   overall: C
-  overall_score: 2.0
-  scored_axes: 4
+  overall_score: 2.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 961
+        homebrew_tier: B
+        release_downloads: 77650
+        release_assets: 33
+        release_tier: D
+        signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 202
-        last_commit_age_days: 2
+        repo_age_days: 204
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 11
-        top1_share: 0.829
-        top3_share: 0.959
+        active_maintainers_12mo: 14
+        top1_share: 0.825
+        top3_share: 0.952
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
 ---
 
 # BrewUI

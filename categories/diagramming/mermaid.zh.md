@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:22:41Z
+  computed_at: 2026-09-22T16:16:04Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 42.9
-        qualifying_issues: 28
+        median_ttfr_hours: 62.8
+        qualifying_issues: 16
         band: default
         window_offset_days: 7
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: "@mermaid-js/parser"
         dependent_repos_count: 1
-        downloads_last_month: 32486503
+        downloads_last_month: 54202447
         graph_tier: D
         volume_tier: A
         cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4261
-        last_commit_age_days: 2
+        repo_age_days: 4343
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 86
-        top1_share: 0.136
-        top3_share: 0.353
+        active_maintainers_12mo: 79
+        top1_share: 0.18
+        top3_share: 0.395
         window_source: stats_contributors
         carve_out: null
     risk_license:

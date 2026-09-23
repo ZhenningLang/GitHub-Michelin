@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T11:22:04Z
+  computed_at: 2026-09-22T16:11:42Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,42 +29,50 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.8
-        qualifying_issues: 29
+        median_ttfr_hours: 1.3
+        qualifying_issues: 3
         band: relaxed_solo
         window_offset_days: 8
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 3640
+        homebrew_tier: A
+        release_downloads: 42286157
+        release_assets: 1705
+        release_tier: A
+        signal_basis: homebrew+releases
     longevity:
       grade: B
       raw:
-        repo_age_days: 955
-        last_commit_age_days: 1
+        repo_age_days: 1036
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 50
-        top1_share: 0.536
-        top3_share: 0.861
+        active_maintainers_12mo: 53
+        top1_share: 0.459
+        top3_share: 0.833
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Clash Verge Rev

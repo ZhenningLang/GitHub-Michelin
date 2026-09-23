@@ -16,45 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:46:46Z
+  computed_at: 2026-09-22T17:47:03Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 74
-        active_weeks_13: 2
+        last_commit_age_days: 152
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 7
+        median_ttfr_hours: 14.9
+        qualifying_issues: 3
         band: default
         window_offset_days: 10
-        source: pr
+        source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: pypi.org
+        canonical_package: torchtune
+        dependent_repos_count: 0
+        downloads_last_month: 315353
+        graph_tier: E
+        volume_tier: B
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 990
-        last_commit_age_days: 74
+        repo_age_days: 1068
+        last_commit_age_days: 152
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 24
-        top1_share: 0.118
-        top3_share: 0.294
+        active_maintainers_12mo: 7
+        top1_share: 0.25
+        top3_share: 0.5
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 # torchtune
 

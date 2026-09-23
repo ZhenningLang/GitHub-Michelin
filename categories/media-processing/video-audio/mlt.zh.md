@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:24:26Z
+  computed_at: 2026-09-22T17:48:09Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.7
-        qualifying_issues: 5
+        median_ttfr_hours: 1.0
+        qualifying_issues: 7
         band: default
         window_offset_days: 10
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 577
+        homebrew_tier: B
+        release_downloads: 586031
+        release_assets: 40
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5194
-        last_commit_age_days: 0
+        repo_age_days: 5275
+        last_commit_age_days: 1
         cohort: framework
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 18
-        top1_share: 0.562
-        top3_share: 0.87
+        active_maintainers_12mo: 23
+        top1_share: 0.614
+        top3_share: 0.846
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +73,6 @@ health:
         permissiveness: weak_file_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # MLT

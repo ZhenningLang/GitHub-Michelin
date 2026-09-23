@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:54Z
+  computed_at: 2026-09-22T17:19:15Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,35 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 2
+        last_commit_age_days: 66
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: driver.js
         dependent_repos_count: 2055
-        downloads_last_month: 4230644
+        downloads_last_month: 6810887
         graph_tier: B
-        volume_tier: B
-        cross_check_divergence: 1.0
+        volume_tier: A
+        cross_check_divergence: 1.01
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3036
-        last_commit_age_days: 6
+        repo_age_days: 3117
+        last_commit_age_days: 66
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.93
-        top3_share: 0.965
+        active_maintainers_12mo: 3
+        top1_share: 0.98
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Driver.js

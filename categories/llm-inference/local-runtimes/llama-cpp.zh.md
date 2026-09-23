@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T01:02:14Z
-  overall: B
-  overall_score: 3.17
+  computed_at: 2026-09-23T03:11:32Z
+  overall: A
+  overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,34 +35,41 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.6
-        qualifying_issues: 22
+        median_ttfr_hours: 3.8
+        qualifying_issues: 19
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: E
+      grade: A
       raw:
-        registry: anaconda.org
-        canonical_package: llama.cpp-tools
+        registry: swiftpackageindex.com
+        canonical_package: github.com/ggml-org/llama.cpp
         dependent_repos_count: 0
-        downloads_last_month: 5306
+        downloads_last_month: null
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
+        homebrew_installs_90d: 78243
+        homebrew_tier: A
+        release_downloads: 504294
+        release_assets: 3218
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: B
       raw:
-        repo_age_days: 1289
+        repo_age_days: 1292
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 260
+        active_maintainers_12mo: 264
         top1_share: 0.144
-        top3_share: 0.319
+        top3_share: 0.317
         window_source: stats_contributors
         carve_out: null
     risk_license:

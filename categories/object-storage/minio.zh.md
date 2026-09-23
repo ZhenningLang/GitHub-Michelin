@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-20T11:51:42Z
-  overall: D
-  overall_score: 1.0
-  scored_axes: 5
+  computed_at: 2026-09-22T16:45:03Z
+  overall: C
+  overall_score: 1.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 220
+        last_commit_age_days: 222
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,22 @@ health:
         band: default
         window_offset_days: 6
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1405
+        homebrew_tier: B
+        release_downloads: 26635524
+        release_assets: 6575
+        release_tier: A
+        signal_basis: homebrew+releases
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 4267
-        last_commit_age_days: 220
+        repo_age_days: 4269
+        last_commit_age_days: 222
         cohort: service
     governance:
       grade: A
@@ -62,8 +72,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # MinIO

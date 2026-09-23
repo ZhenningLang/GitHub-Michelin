@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:19:26Z
+  computed_at: 2026-09-22T17:47:27Z
   overall: B
-  overall_score: 3.0
+  overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
+        last_commit_age_days: 3
         active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.8
-        qualifying_issues: 40
+        median_ttfr_hours: 5.1
+        qualifying_issues: 43
         band: relaxed_solo
         window_offset_days: 9
         source: issue
@@ -43,32 +44,31 @@ health:
     adoption:
       grade: B
       raw:
-        registry: pypi.org
-        canonical_package: gallery-dl
-        dependent_repos_count: 31
-        downloads_last_month: 279973
-        graph_tier: D
-        volume_tier: B
-        cross_check_divergence: 1.01
+        registry: null
+        canonical_package: null
+        release_downloads: 1057676
+        release_assets: 756
+        release_tier: B
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4285
-        last_commit_age_days: 6
+        repo_age_days: 4363
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 34
-        top1_share: 0.936
-        top3_share: 0.955
+        active_maintainers_12mo: 17
+        top1_share: 0.934
+        top3_share: 0.962
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-2.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
 ---

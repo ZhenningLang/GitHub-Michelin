@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:33:59Z
+  computed_at: 2026-09-22T17:42:13Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,50 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
-        active_weeks_13: 13
+        last_commit_age_days: 2
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
-      grade: C
+      grade: B
       raw:
-        median_ttfr_hours: 189.3
-        qualifying_issues: 3
+        median_ttfr_hours: 118.6
+        qualifying_issues: 10
         band: default
         window_offset_days: 7
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/openfga/openfga
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        homebrew_installs_90d: 219
+        homebrew_tier: C
+        release_downloads: 483373
+        release_assets: 1927
+        release_tier: C
+        docker_pulls: 43201483
+        docker_image: openfga/openfga
+        docker_tier: B
+        signal_basis: homebrew+releases+docker
+        tier_source: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 1489
-        last_commit_age_days: 7
+        repo_age_days: 1567
+        last_commit_age_days: 2
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 44
-        top1_share: 0.191
-        top3_share: 0.517
+        active_maintainers_12mo: 39
+        top1_share: 0.208
+        top3_share: 0.514
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +82,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # OpenFGA
 

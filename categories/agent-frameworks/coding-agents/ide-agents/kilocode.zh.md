@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:26:54Z
-  overall: B
-  overall_score: 3.0
-  scored_axes: 6
+  computed_at: 2026-09-22T17:33:51Z
+  overall: A
+  overall_score: 3.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
+      grade: "?"
+      raw: {}
+    adoption:
       grade: A
       raw:
-        median_ttfr_hours: 8.1
-        qualifying_issues: 6
-        band: relaxed_solo
-        window_offset_days: 2
-    adoption:
-      grade: E
-      raw:
-        registry: open-vsx.org
-        canonical_package: kilocode/kilo-code
+        registry: npmjs.org
+        canonical_package: "@kilocode/sdk"
         dependent_repos_count: 0
-        downloads_last_month: 2802930
+        downloads_last_month: 6743293
         graph_tier: E
-        volume_tier: "?"
-        cross_check_divergence: null
+        volume_tier: A
+        cross_check_divergence: 1.03
+        release_downloads: 204701
+        release_assets: 1114
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 480
-        last_commit_age_days: 1
+        repo_age_days: 561
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 472
-        top1_share: 0.088
-        top3_share: 0.252
+        active_maintainers_12mo: 442
+        top1_share: 0.162
+        top3_share: 0.331
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +71,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Kilo Code

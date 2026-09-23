@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:51:57Z
+  computed_at: 2026-09-22T16:27:13Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  overall_score: 3.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,33 +36,38 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 55
+        qualifying_issues: 58
         band: relaxed_solo
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        docker_pulls: 17869447
+        docker_image: langfuse/langfuse
+        docker_tier: B
+        signal_basis: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 1145
+        repo_age_days: 1223
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 76
-        top1_share: 0.19
-        top3_share: 0.426
+        active_maintainers_12mo: 71
+        top1_share: 0.141
+        top3_share: 0.318
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
 ---
 # Langfuse

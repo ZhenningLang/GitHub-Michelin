@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:39:50Z
-  overall: C
-  overall_score: 2.0
-  scored_axes: 5
+  computed_at: 2026-09-22T16:08:26Z
+  overall: B
+  overall_score: 2.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,38 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 279
+        last_commit_age_days: 357
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 3.5
+        qualifying_issues: 20
+        band: relaxed_solo
+        window_offset_days: 2
+        source: pr
+        inferred: false
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: pypi.org
         canonical_package: knowledge-storm
         dependent_repos_count: 0
-        downloads_last_month: 1387
+        downloads_last_month: 2205
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        docker_pulls: 9326098
+        docker_image: library/storm
+        docker_tier: C
+        signal_basis: docker
+        tier_source: docker
     longevity:
       grade: C
       raw:
-        repo_age_days: 834
-        last_commit_age_days: 279
+        repo_age_days: 912
+        last_commit_age_days: 357
         cohort: app
     governance:
       grade: D
@@ -65,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_window_signal }
 ---
 # STORM
 

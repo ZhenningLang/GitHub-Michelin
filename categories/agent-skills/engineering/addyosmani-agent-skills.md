@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:44:14Z
-  overall: B
-  overall_score: 3.25
+  computed_at: 2026-09-22T17:38:43Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 138
-        last_commit_age_days: 1
+        repo_age_days: 219
+        last_commit_age_days: 2
         cohort: skill-pack
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 41
-        top1_share: 0.488
-        top3_share: 0.683
+        active_maintainers_12mo: 78
+        top1_share: 0.331
+        top3_share: 0.517
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Agent Skills (addyosmani)

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:43:57Z
+  computed_at: 2026-09-22T16:53:33Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 2.5
-        qualifying_issues: 45
+        median_ttfr_hours: 2.9
+        qualifying_issues: 53
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: pdfjs-dist
         dependent_repos_count: 17822
-        downloads_last_month: 80749282
+        downloads_last_month: 88930518
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.05
+        cross_check_divergence: 1.02
+        release_downloads: 4108347
+        release_assets: 147
+        release_tier: B
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5547
-        last_commit_age_days: 0
+        repo_age_days: 5628
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 39
-        top1_share: 0.426
-        top3_share: 0.962
+        active_maintainers_12mo: 43
+        top1_share: 0.365
+        top3_share: 0.968
         window_source: stats_contributors
         carve_out: null
     risk_license:

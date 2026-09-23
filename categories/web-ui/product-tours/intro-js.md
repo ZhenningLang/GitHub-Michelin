@@ -16,45 +16,53 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:15:00Z
+  computed_at: 2026-09-22T17:19:45Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 3.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 180
-        active_weeks_13: 0
-        carve_out: mature_library_lindy
+        last_commit_age_days: 1
+        active_weeks_13: 6
+        carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 22
+        band: default
+        window_offset_days: 1
+        source: pr
+        inferred: false
     adoption:
       grade: B
       raw:
         registry: npmjs.org
         canonical_package: intro.js
         dependent_repos_count: 1272
-        downloads_last_month: 645716
+        downloads_last_month: 696730
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.27
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 4863
-        last_commit_age_days: 180
+        repo_age_days: 4944
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: C
+      grade: D
       raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.9
+        active_maintainers_12mo: 1
+        top1_share: 1.0
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -62,7 +70,6 @@ health:
       grade: "?"
       raw: {}
   unknowns:
-    responsiveness: { reason: no_traffic }
     risk_license: { reason: license_unparsed }
 ---
 

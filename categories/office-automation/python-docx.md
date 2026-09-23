@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T12:27:15Z
+  computed_at: 2026-09-22T16:48:23Z
   overall: B
-  overall_score: 2.6
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,14 +30,14 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 459
+        last_commit_age_days: 463
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 5.1
-        qualifying_issues: 4
+        median_ttfr_hours: 8.7
+        qualifying_issues: 5
         band: default
         window_offset_days: 9
         source: issue
@@ -47,15 +48,16 @@ health:
         registry: pypi.org
         canonical_package: python-docx
         dependent_repos_count: 3530
-        downloads_last_month: 94383978
+        downloads_last_month: 90326686
         graph_tier: B
         volume_tier: A
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 4721
-        last_commit_age_days: 459
+        repo_age_days: 4725
+        last_commit_age_days: 463
         cohort: library
     governance:
       grade: "?"

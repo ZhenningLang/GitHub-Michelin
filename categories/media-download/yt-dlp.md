@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:41:22Z
+  computed_at: 2026-09-22T16:36:22Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 11
+        last_commit_age_days: 6
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.8
-        qualifying_issues: 6
+        median_ttfr_hours: 9.3
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: yt-dlp
         dependent_repos_count: 3540
-        downloads_last_month: 18330007
+        downloads_last_month: 13137179
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.07
+        homebrew_installs_90d: 142372
+        homebrew_tier: A
+        release_downloads: 226465698
+        release_assets: 1633
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2076
-        last_commit_age_days: 1
+        repo_age_days: 2158
+        last_commit_age_days: 6
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 48
-        top1_share: 0.515
-        top3_share: 0.773
+        active_maintainers_12mo: 40
+        top1_share: 0.514
+        top3_share: 0.748
         window_source: stats_contributors
         carve_out: null
     risk_license:

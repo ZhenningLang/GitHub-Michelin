@@ -16,53 +16,64 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:15:23Z
+  computed_at: 2026-09-22T17:20:03Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 3.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 24
-        active_weeks_13: 4
+        last_commit_age_days: 0
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 3
+        band: default
+        window_offset_days: 3
+        source: pr
+        inferred: false
     adoption:
       grade: B
       raw:
         registry: npmjs.org
         canonical_package: shepherd.js
         dependent_repos_count: 834
-        downloads_last_month: 1138442
+        downloads_last_month: 1210075
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.06
+        release_downloads: 32428
+        release_assets: 1083
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4581
-        last_commit_age_days: 24
+        repo_age_days: 4662
+        last_commit_age_days: 0
         cohort: library
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.95
-        top3_share: 1.0
+        active_maintainers_12mo: 6
+        top1_share: 0.754
+        top3_share: 0.947
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    responsiveness: { reason: no_traffic }
     risk_license: { reason: license_unparsed }
 ---
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:47:41Z
-  overall: A
-  overall_score: 3.5
+  computed_at: 2026-09-22T16:36:17Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 51
-        active_weeks_13: 4
-        carve_out: null
+        last_commit_age_days: 13
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 28.4
-        qualifying_issues: 11
+        median_ttfr_hours: 14.8
+        qualifying_issues: 4
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: youtube-transcript-api
         dependent_repos_count: 205
-        downloads_last_month: 36786385
+        downloads_last_month: 16400197
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2996
-        last_commit_age_days: 51
+        repo_age_days: 3077
+        last_commit_age_days: 13
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 6
-        top1_share: 0.769
-        top3_share: 0.885
+        active_maintainers_12mo: 4
+        top1_share: 0.765
+        top3_share: 0.941
         window_source: stats_contributors
         carve_out: null
     risk_license:

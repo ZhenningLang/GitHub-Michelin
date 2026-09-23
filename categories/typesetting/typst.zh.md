@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T05:52:47Z
+  computed_at: 2026-09-22T17:08:17Z
   overall: A
-  overall_score: 3.83
-  scored_axes: 6
+  overall_score: 4.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -29,14 +30,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.8
-        qualifying_issues: 46
+        median_ttfr_hours: 0.7
+        qualifying_issues: 48
         band: relaxed_solo
         window_offset_days: 11
         source: issue
@@ -50,21 +51,23 @@ health:
         downloads_last_month: 2864274
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 2.32
+        cross_check_divergence: 2.28
+        homebrew_installs_90d: 10852
+        homebrew_tier: A
+        release_downloads: 3390972
+        release_assets: 202
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2552
-        last_commit_age_days: 2
+        repo_age_days: 2555
+        last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: B
-      raw:
-        active_maintainers_12mo: 43
-        top1_share: 0.414
-        top3_share: 0.681
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -72,6 +75,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    governance: { reason: empty_or_gated }
 ---
 
 # Typst

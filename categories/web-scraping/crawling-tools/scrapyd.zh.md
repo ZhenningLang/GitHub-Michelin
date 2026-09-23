@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:02:38Z
+  computed_at: 2026-09-22T17:14:59Z
   overall: B
-  overall_score: 3.0
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 14
+        last_commit_age_days: 2
         active_weeks_13: 4
         carve_out: null
     responsiveness:
@@ -40,21 +41,26 @@ health:
         registry: pypi.org
         canonical_package: scrapyd
         dependent_repos_count: 525
-        downloads_last_month: 45155
+        downloads_last_month: 33535
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 149
+        release_assets: 2
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4900
-        last_commit_age_days: 14
+        repo_age_days: 4981
+        last_commit_age_days: 2
         cohort: service
     governance:
-      grade: C
+      grade: D
       raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.977
+        active_maintainers_12mo: 1
+        top1_share: 1.0
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Scrapyd

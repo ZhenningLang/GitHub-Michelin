@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:17:12Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-23T03:52:17Z
+  overall: B
+  overall_score: 3.17
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 8
         carve_out: null
     responsiveness:
@@ -41,20 +42,26 @@ health:
         source: pr
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 56641
+        release_assets: 409
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: B
       raw:
         repo_age_days: 645
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 12
-        top1_share: 0.32
-        top3_share: 0.77
+        top1_share: 0.317
+        top3_share: 0.772
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # OpenCreator

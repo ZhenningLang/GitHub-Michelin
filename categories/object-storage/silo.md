@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T09:53:12Z
-  overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  computed_at: 2026-09-22T16:45:22Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 8
+        last_commit_age_days: 6
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
@@ -41,13 +42,22 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 28537
+        release_assets: 253
+        release_tier: D
+        docker_pulls: 230437
+        docker_image: pgsty/silo
+        docker_tier: D
+        signal_basis: releases+docker
     longevity:
       grade: C
       raw:
-        repo_age_days: 330
-        last_commit_age_days: 3
+        repo_age_days: 332
+        last_commit_age_days: 6
         cohort: service
     governance:
       grade: "?"
@@ -60,7 +70,6 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
     governance: { reason: fork }
 ---
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:34:55Z
+  computed_at: 2026-09-22T16:04:56Z
   overall: A
   overall_score: 4.0
-  scored_axes: 4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,31 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 3265
+        homebrew_tier: A
+        release_downloads: 603521
+        release_assets: 5048
+        release_tier: C
+        docker_pulls: 5880681
+        docker_image: library/clickhouse
+        docker_tier: C
+        signal_basis: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 3686
+        repo_age_days: 3764
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 210
-        top1_share: 0.244
-        top3_share: 0.317
+        active_maintainers_12mo: 232
+        top1_share: 0.305
+        top3_share: 0.413
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +72,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
 ---
 # ClickHouse
 

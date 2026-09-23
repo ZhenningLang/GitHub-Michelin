@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T03:54:02Z
+  computed_at: 2026-09-22T17:49:58Z
   overall: C
-  overall_score: 1.75
-  scored_axes: 4
+  overall_score: 1.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,26 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 265
+        last_commit_age_days: 268
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 44258
+        release_assets: 5
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 2629
-        last_commit_age_days: 265
+        repo_age_days: 2632
+        last_commit_age_days: 268
         cohort: tool
     governance:
       grade: C
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: ambiguous }
 ---
 
 # logiops

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T14:23:31Z
+  computed_at: 2026-09-22T15:36:55Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,8 +42,14 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 64865
+        release_assets: 391
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Prime Agent
@@ -79,6 +84,14 @@ health:
 你正卡在一个要跑好几小时的编码或评测活里——仓库级重构、对着一份巨大日志做研究扫、登出后还得继续的 SWE 式 rollout——而手头的终端 agent 已经开始丢线。对话里堆着文件原文和压缩摘要；一个只有两份相距很远的文件同时在窗口里才看得出的 bug，永远见不到面。你要的不是又一排工具按钮，而是让模型把工作集当成能用代码切开的数据。
 
 这才是选它的理由。它是 `pi`（earendil-works）的硬分叉，现在由 Prime Intellect 出品：模型的内置工具只有一个持久 Python 内核，`rlm.spawn(...)` 拉起真正的子 agent，本地 daemon 在 TUI 断开后仍保住会话、内核和子进程。当你要的是程序化的上下文折叠和可断开的长跑，而不是模型无关的结对编程，选它而不是 [OpenCode](opencode.zh.md) 或 [Codex](codex.zh.md)。当你要的是本机 CLI/TUI，而不是自带沙箱的自托管 agent 平台，选它而不是 [OpenHands](../orchestration-and-review/openhands.zh.md)。代价是多进程运行时（daemon、worker、kernel）、Node.js ≥ 22.8 加 Python ≥ 3.11、从 Prime 域名 `curl | sh` 安装，以及默认没有安全沙箱。
+
+## 指指点点
+
+别的 agent 把文件往对话里塞。这个让模型写 Python 去翻。听着更聪明。父模型看不见文件了，变成调度员。把活切成块，本来就得先看见整幅图——这套做法把图拿走了。[推断]
+
+他们说自我改进。`/refine` 是在附加提示里写字。研究上的赌是强化学习能把模型训会这套脚手架。他们自己的文章：短数学题一套就掉分。所以现在还没学会。[推断]
+
+README 里沙箱那句是实话。RLM、Continual Harness、提交信息里的 RSI，是包装。安装还是 Prime 域名上的 `curl | sh`。树里的包名还叫 `pi`。
 
 ## 怎么用起来
 
@@ -154,6 +167,8 @@ TypeScript 宿主管供应商、会话记录、子进程生命周期和调度。
 - [未验证] `prime-agent update` 离开 Prime Intellect 账号能不能用；只读了安装 URL 和 `PI_OFFLINE=1` 跳过模型表刷新。
 - [未验证] 生产采用相对 star 数如何；4.5 个月 21.2k star 是注意力信号，不是用户数。
 - [推断] 高 fork/star（2026-09-22 约 11%）可能含镜像或一次性 fork，不一定是下游生态。
+- [推断] 把上下文放进变量而不是窗口，会把父模型降成调度员；怎么切块需要的全局视野，正是这一步刚拿走的。
 - [推断] Prime Intellect 的 RLM 博文（math-python 掉分、没 tip 的 DeepDive）说的是他们 verifier 里的 RLM 脚手架，不是测过的 Prime Agent TUI 基准。
+- [推断] `/refine` 加上强化学习那套说法，是马具在盼模型学会脚手架，不是它已经学会的证据。
 - [未验证] `/refine` 在野外对后续会话能改进多少；文档写了机制，没有田野研究。
 - [未验证] Windows/Termux 支持深度，除了仓库里有 `docs/windows.md` 和 `docs/termux.md`。

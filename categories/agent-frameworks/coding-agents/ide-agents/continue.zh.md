@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T11:05:30Z
+  computed_at: 2026-09-22T17:33:44Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 63
+        last_commit_age_days: 64
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -41,20 +42,25 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: E
+      grade: D
       raw:
-        registry: open-vsx.org
-        canonical_package: Continue/continue
+        registry: npmjs.org
+        canonical_package: "@continuedev/cli"
         dependent_repos_count: 0
-        downloads_last_month: 1621802
+        downloads_last_month: 12734
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: D
         cross_check_divergence: null
+        release_downloads: 44769
+        release_assets: 176
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1217
-        last_commit_age_days: 63
+        repo_age_days: 1218
+        last_commit_age_days: 64
         cohort: app
     governance:
       grade: A

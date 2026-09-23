@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:09Z
-  overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  computed_at: 2026-09-22T17:05:05Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 8
+        last_commit_age_days: 0
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        median_ttfr_hours: 267.4
+        qualifying_issues: 10
+        band: default
+        window_offset_days: 3
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: kombu
         dependent_repos_count: 26706
-        downloads_last_month: 55928487
+        downloads_last_month: 45342092
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.06
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5854
-        last_commit_age_days: 6
+        repo_age_days: 5935
+        last_commit_age_days: 0
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 18
-        top1_share: 0.678
-        top3_share: 0.776
+        active_maintainers_12mo: 20
+        top1_share: 0.77
+        top3_share: 0.824
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
 ---
 
 # Kombu

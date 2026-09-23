@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T05:39:20Z
+  computed_at: 2026-09-22T16:46:59Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,10 +42,15 @@ health:
         registry: pypi.org
         canonical_package: easyocr
         dependent_repos_count: 671
-        downloads_last_month: 2090951
+        downloads_last_month: 2005340
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 1.04
+        cross_check_divergence: null
+        release_downloads: 48280806
+        release_assets: 24
+        release_tier: A
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:19:55Z
+  computed_at: 2026-09-22T16:28:48Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,36 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 6.0
-        qualifying_issues: 19
+        median_ttfr_hours: 7.4
+        qualifying_issues: 27
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 604296
+        release_assets: 275
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 140
-        last_commit_age_days: 1
+        repo_age_days: 221
+        last_commit_age_days: 0
         cohort: framework
     governance:
-      grade: C
-      raw:
-        active_maintainers_12mo: 98
-        top1_share: 0.755
-        top3_share: 0.805
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -63,7 +67,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
+    governance: { reason: empty_or_gated }
 ---
 
 # oMLX

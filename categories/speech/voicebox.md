@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T15:13:13Z
+  computed_at: 2026-09-22T17:04:13Z
   overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,26 +29,32 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 54
-        active_weeks_13: 5
+        last_commit_age_days: 57
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 40.2
-        qualifying_issues: 14
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 2709549
+        release_assets: 347
+        release_tier: B
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 237
-        last_commit_age_days: 54
+        repo_age_days: 240
+        last_commit_age_days: 57
         cohort: app
     governance:
       grade: D
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Voicebox

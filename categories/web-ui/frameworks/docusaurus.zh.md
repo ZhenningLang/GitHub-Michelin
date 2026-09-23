@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T07:16:23Z
+  computed_at: 2026-09-22T17:16:53Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,14 +30,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 56.6
-        qualifying_issues: 25
+        median_ttfr_hours: 74.1
+        qualifying_issues: 23
         band: default
         window_offset_days: 5
         source: issue
@@ -47,15 +48,16 @@ health:
         registry: npmjs.org
         canonical_package: "@docusaurus/types"
         dependent_repos_count: 14304
-        downloads_last_month: 6638380
+        downloads_last_month: 6061802
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.07
+        cross_check_divergence: 1.02
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3379
-        last_commit_age_days: 2
+        repo_age_days: 3381
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: D

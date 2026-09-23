@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T11:26:59Z
+  computed_at: 2026-09-22T15:58:31Z
   overall: B
-  overall_score: 2.6
+  overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,27 +36,34 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: A
       raw:
         registry: formulae.brew.sh
         canonical_package: cliproxyapi
         dependent_repos_count: 0
-        downloads_last_month: 2826
+        downloads_last_month: 1928
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 12364
+        homebrew_tier: A
+        release_downloads: 539424
+        release_assets: 1098
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 445
+        repo_age_days: 448
         last_commit_age_days: 1
         cohort: tool
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 95
-        top1_share: 0.492
-        top3_share: 0.797
+        top1_share: 0.49
+        top3_share: 0.791
         window_source: stats_contributors
         carve_out: null
     risk_license:

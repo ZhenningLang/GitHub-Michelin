@@ -7,16 +7,16 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **CC Switch** | A cross-platform desktop All-in-One manager for Claude Code, Claude Desktop, Codex, Gemini CLI, OpenCode, OpenClaw, and Hermes Agent — built with Rust and Tauri 2. | B (4/6) | [→](cc-switch.md) |
-| **Claude Octopus** | A Claude Code plugin that fans a single task out to up to ~8 other AI models (Codex, Gemini, Perplexity, Ollama, OpenRouter, etc.) and uses their disagreement as a blindspot/consensus gate, all driven by `/octo:*` slash commands. | B (5/6) | [→](claude-octopus.md) |
+| **CC Switch** | A cross-platform desktop All-in-One manager for Claude Code, Claude Desktop, Codex, Gemini CLI, OpenCode, OpenClaw, and Hermes Agent — built with Rust and Tauri 2. | B (5/6) | [→](cc-switch.md) |
+| **Claude Octopus** | A Claude Code plugin that fans a single task out to up to ~8 other AI models (Codex, Gemini, Perplexity, Ollama, OpenRouter, etc.) and uses their disagreement as a blindspot/consensus gate, all driven by `/octo:*` slash commands. | C (6/6) | [→](claude-octopus.md) |
 | **oh-my-claudecode** | A multi-agent orchestration layer for Anthropic's Claude Code CLI: it stages teams of specialized agents (plan → prd → exec → verify → fix), routes each subtask to a cheaper or stronger model, and runs parallel workers under tmux — installed as a Claude Code plugin or via the `oh-my-claude-sisyphus` npm package. | B (5/6) | [→](oh-my-claudecode.md) |
-| **OpenHands** | 🙌 OpenHands: AI-Driven Development | A (4/6) | [→](openhands.md) |
-| **RTK** | A high-performance CLI proxy that filters and compresses command outputs before they reach your LLM context, reducing token consumption by 60–90% on common dev commands with sub-10ms overhead. | B (5/6) | [→](rtk.md) |
+| **OpenHands** | 🙌 OpenHands: AI-Driven Development | A (6/6) | [→](openhands.md) |
+| **RTK** | A high-performance CLI proxy that filters and compresses command outputs before they reach your LLM context, reducing token consumption by 60–90% on common dev commands with sub-10ms overhead. | A (6/6) | [→](rtk.md) |
 | **SWE-agent** | SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice. It can also be employed for offensive cybersecurity or competitive coding challenges. [NeurIPS 2024] | A (5/6) | [→](swe-agent.md) |
 | **Background Agents (Open-Inspect)** | Use it when one trusted organization needs self-hosted background coding-agent sandboxes, integrations, and automation. | B (5/6) | [→](background-agents.md) |
 | **SwarmForge** | Use it when you want a self-hosted role pipeline (spec→code→clean→architect→harden→QA) over your own repo, with each role in its own git worktree and commit-based handoffs — but it ships no license and no tagged releases. | D (6/6) | [→](swarm-forge.md) |
-| **OpenChamber** | Use it when you run OpenCode and want a cross-device operator workspace — goal-audited sessions, up to five models per prompt with optional worktrees, a diff walkthrough, and the git/PR surface beside the chat — accepting a 12-month-old, single-maintainer app locked to one agent runtime. | C (5/6) | [→](openchamber.md) |
-| **OpenResearch** | Use it when your coding agent and GPUs are already in place and the missing layer is the experiment bookkeeping — a branch-per-experiment tree, immutable commit snapshots, and runs dispatched across nine compute backends — accepting a 3.5-month-old, fast-release app whose managed-compute half is a closed service. | B (5/6) | [→](openresearch.md) |
+| **OpenChamber** | Use it when you run OpenCode and want a cross-device operator workspace — goal-audited sessions, up to five models per prompt with optional worktrees, a diff walkthrough, and the git/PR surface beside the chat — accepting a 12-month-old, single-maintainer app locked to one agent runtime. | B (5/6) | [→](openchamber.md) |
+| **OpenResearch** | Use it when your coding agent and GPUs are already in place and the missing layer is the experiment bookkeeping — a branch-per-experiment tree, immutable commit snapshots, and runs dispatched across nine compute backends — accepting a 3.5-month-old, fast-release app whose managed-compute half is a closed service. | B (6/6) | [→](openresearch.md) |
 
 ## What belongs here
 

@@ -16,13 +16,14 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:42:30Z
+  computed_at: 2026-09-22T16:26:35Z
   overall: A
-  overall_score: 3.67
+  overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
       grade: A
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 39.8
-        qualifying_issues: 22
+        median_ttfr_hours: 44.9
+        qualifying_issues: 21
         band: default
         window_offset_days: 7
         source: issue
@@ -46,21 +47,22 @@ health:
         registry: pypi.org
         canonical_package: deepeval
         dependent_repos_count: 1
-        downloads_last_month: 2014738
+        downloads_last_month: 3270403
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 3.42
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 1061
+        repo_age_days: 1139
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 43
-        top1_share: 0.33
+        active_maintainers_12mo: 111
+        top1_share: 0.343
         top3_share: 0.727
         window_source: stats_contributors
         carve_out: null

@@ -17,38 +17,39 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T15:07:29Z
+  computed_at: 2026-09-22T17:38:14Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 3
+        last_commit_age_days: 7
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 122
-        last_commit_age_days: 1
+        repo_age_days: 190
+        last_commit_age_days: 7
         cohort: skill-pack
     governance:
-      grade: C
+      grade: D
       raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.971
+        active_maintainers_12mo: 3
+        top1_share: 0.959
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -61,7 +62,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Skills For Design Engineers

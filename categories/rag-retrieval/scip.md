@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:53:08Z
+  computed_at: 2026-09-22T16:57:59Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 10
+        last_commit_age_days: 2
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.1
-        qualifying_issues: 19
+        median_ttfr_hours: 71.2
+        qualifying_issues: 4
         band: relaxed_solo
         window_offset_days: 2
         source: pr
@@ -46,22 +47,27 @@ health:
         registry: crates.io
         canonical_package: scip
         dependent_repos_count: 139
-        downloads_last_month: 1988072
+        downloads_last_month: 2584792
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 3.85
+        cross_check_divergence: 3.86
+        release_downloads: 480746
+        release_assets: 216
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1518
-        last_commit_age_days: 0
+        repo_age_days: 1596
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 10
-        top1_share: 0.886
-        top3_share: 0.92
+        active_maintainers_12mo: 9
+        top1_share: 0.902
+        top3_share: 0.927
         window_source: stats_contributors
         carve_out: null
     risk_license:

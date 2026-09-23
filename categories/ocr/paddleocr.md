@@ -17,22 +17,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T05:38:17Z
+  computed_at: 2026-09-22T16:47:46Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        archived: false
+        last_commit_age_days: 7
+        active_weeks_13: 3
+        carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.6
-        qualifying_issues: 38
+        median_ttfr_hours: 8.8
+        qualifying_issues: 37
         band: default
         window_offset_days: 2
         source: issue
@@ -46,12 +51,17 @@ health:
         downloads_last_month: 1274369
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
+        release_downloads: 2055691
+        release_assets: 4
+        release_tier: B
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
         repo_age_days: 2328
-        last_commit_age_days: 6
+        last_commit_age_days: 7
         cohort: library
     governance:
       grade: A
@@ -68,8 +78,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    maintenance: { reason: recency_unreadable }
 ---
 
 # PaddleOCR

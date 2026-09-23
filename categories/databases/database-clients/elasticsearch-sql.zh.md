@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:26Z
-  overall: B
-  overall_score: 3.0
-  scored_axes: 4
+  computed_at: 2026-09-22T16:04:20Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,32 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 60
-        active_weeks_13: 1
+        last_commit_age_days: 141
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: A
+      grade: D
       raw:
-        repo_age_days: 4331
-        last_commit_age_days: 60
+        registry: repo1.maven.org
+        canonical_package: "org.nlpcn:elasticsearch-sql"
+        dependent_repos_count: 52
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 3438
+        release_assets: 100
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 4412
+        last_commit_age_days: 141
         cohort: tool
     governance:
       grade: C
@@ -59,8 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # elasticsearch-sql

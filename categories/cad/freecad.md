@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T02:30:12Z
-  overall: B
-  overall_score: 3.0
+  computed_at: 2026-09-22T16:00:33Z
+  overall: A
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,15 +36,22 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: conda-forge.org
         canonical_package: freecad
         dependent_repos_count: 4
         downloads_last_month: 508217
         graph_tier: D
-        volume_tier: "?"
+        volume_tier: B
         cross_check_divergence: null
+        homebrew_installs_90d: 8970
+        homebrew_tier: A
+        release_downloads: 18873705
+        release_assets: 1455
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
@@ -53,9 +61,9 @@ health:
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 144
+        active_maintainers_12mo: 145
         top1_share: 0.111
-        top3_share: 0.249
+        top3_share: 0.248
         window_source: stats_contributors
         carve_out: null
     risk_license:

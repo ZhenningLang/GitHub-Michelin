@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T09:51:29Z
+  computed_at: 2026-09-22T15:46:05Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,26 +29,32 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 14
-        active_weeks_13: 11
+        last_commit_age_days: 4
+        active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: D
+      grade: B
       raw:
-        repo_age_days: 88
-        last_commit_age_days: 14
+        registry: null
+        canonical_package: null
+        release_downloads: 4577680
+        release_assets: 20
+        release_tier: B
+        signal_basis: releases
+    longevity:
+      grade: C
+      raw:
+        repo_age_days: 156
+        last_commit_age_days: 4
         cohort: skill-pack
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 2
-        top1_share: 0.966
+        top1_share: 0.974
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 # huashu-design
 

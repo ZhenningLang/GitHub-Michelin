@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:07:00Z
+  computed_at: 2026-09-22T15:56:37Z
   overall: D
-  overall_score: 1.0
-  scored_axes: 4
+  overall_score: 1.8
+  scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,20 +29,26 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 122
+        last_commit_age_days: 200
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 4
+        band: relaxed_solo
+        window_offset_days: 2
+        source: pr
+        inferred: false
     adoption:
       grade: "?"
       raw: {}
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 127
-        last_commit_age_days: 122
+        repo_age_days: 205
+        last_commit_age_days: 200
         cohort: app
     governance:
       grade: D
@@ -59,7 +66,6 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_window_signal }
     adoption: { reason: no_package_structural }
 ---
 # OpenReview

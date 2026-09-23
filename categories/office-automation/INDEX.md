@@ -24,7 +24,7 @@
 | [XlsxWriter](xlsxwriter.md) | ✅ | B (6/6) | Zero-dependency, production-stable, actively maintained spreadsheet generation; write-only and does not evaluate formulas. |
 | [Office-Word-MCP-Server](office-word-mcp-server.md) | ✅ | C (6/6) | MCP-native Word editing with the footnote support python-docx lacks; archived, Word-only, and its PDF tool needs a real MS Word install. |
 | [Pandoc](../markdown-tools/pandoc.md) | ✅ | B (6/6) | One-call Markdown → `.docx`/`.pptx` export with a reference doc for styling; cannot edit an existing Office file in place. |
-| [MarkItDown](../document-parsing/markitdown.md) | ✅ | A (6/6) | The opposite direction: Office → Markdown for LLM ingestion, read-only and deliberately lossy on formatting. |
+| [MarkItDown](../document-parsing/markitdown.md) | ✅ | B (6/6) | The opposite direction: Office → Markdown for LLM ingestion, read-only and deliberately lossy on formatting. |
 | openpyxl | 未收录 | — | The read+write `.xlsx` counterpart to XlsxWriter; not indexed because its canonical repo is on Heptapod (Mercurial), not GitHub, and this index's health/upstream tooling is GitHub-only. |
 | Office-PowerPoint-MCP-Server | 未收录 | — | The `.pptx` sibling of the Word MCP server (1,852 stars); archived by the same author on 2025-12-31, so it adds no selection value beyond that note. |
 | LibreOffice headless / Aspose / Apache POI | 未收录 | — | Conversion-engine, commercial, and JVM routes named across these pages; different abstraction level from an agent-facing OOXML editor. |

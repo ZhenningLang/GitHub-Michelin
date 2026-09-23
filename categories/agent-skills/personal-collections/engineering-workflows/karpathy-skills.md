@@ -16,32 +16,33 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:45:51Z
+  computed_at: 2026-09-22T15:48:35Z
   overall: C
-  overall_score: 2.0
+  overall_score: 1.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 74
-        active_weeks_13: 2
+        last_commit_age_days: 155
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 157
-        last_commit_age_days: 74
+        repo_age_days: 238
+        last_commit_age_days: 155
         cohort: skill-pack
     governance:
       grade: B
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # andrej-karpathy-skills

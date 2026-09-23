@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:08:03Z
-  overall: B
-  overall_score: 3.0
+  computed_at: 2026-09-22T16:09:46Z
+  overall: A
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 11
+        last_commit_age_days: 3
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.0
-        qualifying_issues: 13
+        median_ttfr_hours: 12.9
+        qualifying_issues: 16
         band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: conda-forge.org
         canonical_package: jq
         dependent_repos_count: 52
         downloads_last_month: 7573273
         graph_tier: D
-        volume_tier: "?"
+        volume_tier: A
         cross_check_divergence: null
+        homebrew_installs_90d: 216465
+        homebrew_tier: A
+        release_downloads: 295514014
+        release_assets: 229
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5101
-        last_commit_age_days: 4
+        repo_age_days: 5179
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 16
-        top1_share: 0.7
-        top3_share: 0.767
+        active_maintainers_12mo: 20
+        top1_share: 0.623
+        top3_share: 0.696
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-22T11:04:57Z
-  overall: D
-  overall_score: 1.33
+  computed_at: 2026-09-22T17:33:58Z
+  overall: C
+  overall_score: 1.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -39,15 +40,20 @@ health:
         band: relaxed_solo
         window_offset_days: 3
     adoption:
-      grade: E
+      grade: D
       raw:
-        registry: open-vsx.org
-        canonical_package: RooVeterinaryInc/roo-code-nightly
+        registry: npmjs.org
+        canonical_package: "@roo-code/types"
         dependent_repos_count: 0
-        downloads_last_month: 371498
+        downloads_last_month: 3353
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: D
         cross_check_divergence: null
+        release_downloads: 73347
+        release_assets: 226
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
         archived: true
     longevity:
       grade: E

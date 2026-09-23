@@ -7,13 +7,13 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Knative Serving** | 当 HTTP 服务一天里大部分时间闲着、你想要按 revision 的发布加缩容到零，又不想采用某个 FaaS 产品时用它。 | B（5/6） | [→](knative-serving.zh.md) |
+| **Knative Serving** | 当 HTTP 服务一天里大部分时间闲着、你想要按 revision 的发布加缩容到零，又不想采用某个 FaaS 产品时用它。 | B（6/6） | [→](knative-serving.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Knative Serving](knative-serving.zh.md) | ✅ | B（5/6） | 在自己集群里实现缩容到零、revision 与流量切分——可移植性的代价是要运维一套 CRD 控制面、一层网络与一个扩缩器。 |
+| [Knative Serving](knative-serving.zh.md) | ✅ | B（6/6） | 在自己集群里实现缩容到零、revision 与流量切分——可移植性的代价是要运维一套 CRD 控制面、一层网络与一个扩缩器。 |
 
 ## 什么该放这里
 

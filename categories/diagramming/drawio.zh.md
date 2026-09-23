@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T12:45:09Z
+  computed_at: 2026-09-22T16:15:49Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,20 +30,20 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
+        last_commit_age_days: 6
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.3
-        qualifying_issues: 39
+        median_ttfr_hours: 5.7
+        qualifying_issues: 40
         band: relaxed_solo
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: drawio-offline
@@ -51,11 +52,19 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 142673
+        release_assets: 100
+        release_tier: C
+        docker_pulls: 29254260
+        docker_image: jgraph/drawio
+        docker_tier: B
+        signal_basis: releases+docker
+        tier_source: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 3667
-        last_commit_age_days: 5
+        repo_age_days: 3668
+        last_commit_age_days: 6
         cohort: app
     governance:
       grade: D

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:18:52Z
+  computed_at: 2026-09-22T16:34:42Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,41 +35,48 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 14.9
-        qualifying_issues: 47
+        median_ttfr_hours: 5.9
+        qualifying_issues: 50
         band: relaxed_solo
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
-        registry: conda-forge.org
+        registry: hackage.haskell.org
         canonical_package: pandoc
-        dependent_repos_count: 1217
-        downloads_last_month: 27273456
+        dependent_repos_count: 1083
+        downloads_last_month: 381453
         graph_tier: B
-        volume_tier: "?"
+        volume_tier: B
         cross_check_divergence: null
+        homebrew_installs_90d: 105289
+        homebrew_tier: A
+        release_downloads: 40582650
+        release_assets: 859
+        release_tier: A
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5952
+        repo_age_days: 6030
         last_commit_age_days: 1
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 39
-        top1_share: 0.823
-        top3_share: 0.908
+        active_maintainers_12mo: 42
+        top1_share: 0.901
+        top3_share: 0.927
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-2.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
 ---

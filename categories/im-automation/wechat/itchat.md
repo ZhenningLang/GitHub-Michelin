@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:41:43Z
+  computed_at: 2026-09-22T16:20:43Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2837
+        last_commit_age_days: 2918
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +41,20 @@ health:
         registry: pypi.org
         canonical_package: itchat
         dependent_repos_count: 394
-        downloads_last_month: 22591
+        downloads_last_month: 8523
         graph_tier: C
-        volume_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        release_downloads: 543
+        release_assets: 8
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 3818
-        last_commit_age_days: 2837
+        repo_age_days: 3899
+        last_commit_age_days: 2918
         cohort: library
     governance:
       grade: "?"

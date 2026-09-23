@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:55:36Z
-  overall: B
-  overall_score: 2.67
-  scored_axes: 3
+  computed_at: 2026-09-22T17:08:43Z
+  overall: C
+  overall_score: 2.25
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: "@hypit/hypit"
+        dependent_repos_count: 0
+        downloads_last_month: 9120
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 483
+        release_assets: 20
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 51
-        last_commit_age_days: 0
+        repo_age_days: 55
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 15
-        top1_share: 0.575
-        top3_share: 0.976
+        active_maintainers_12mo: 16
+        top1_share: 0.576
+        top3_share: 0.974
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -56,7 +69,6 @@ health:
       raw: {}
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: ambiguous }
     risk_license: { reason: license_unparsed }
 ---
 

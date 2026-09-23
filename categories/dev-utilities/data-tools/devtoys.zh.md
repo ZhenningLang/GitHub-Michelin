@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:33:29Z
+  computed_at: 2026-09-22T16:09:04Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,34 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 128
+        last_commit_age_days: 209
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
       grade: B
       raw:
-        repo_age_days: 1739
-        last_commit_age_days: 128
+        registry: nuget.org
+        canonical_package: devtoys.api
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        homebrew_installs_90d: 877
+        homebrew_tier: B
+        release_downloads: 591922
+        release_assets: 299
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
+    longevity:
+      grade: C
+      raw:
+        repo_age_days: 1820
+        last_commit_age_days: 209
         cohort: app
     governance:
       grade: C
@@ -59,8 +74,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # DevToys

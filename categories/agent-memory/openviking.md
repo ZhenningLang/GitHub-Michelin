@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T16:08:19Z
+  computed_at: 2026-09-22T15:40:21Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,8 +36,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 6.8
-        qualifying_issues: 36
+        median_ttfr_hours: 4.2
+        qualifying_issues: 33
         band: default
         window_offset_days: 2
         source: issue
@@ -47,22 +48,30 @@ health:
         registry: pypi.org
         canonical_package: openviking
         dependent_repos_count: 0
-        downloads_last_month: 447672
+        downloads_last_month: 449975
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
+        release_downloads: 5435
+        release_assets: 30
+        release_tier: D
+        docker_pulls: 99233
+        docker_image: openviking/openviking
+        docker_tier: D
+        signal_basis: releases+docker
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 259
+        repo_age_days: 260
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.163
-        top3_share: 0.318
+        top1_share: 0.161
+        top3_share: 0.316
         window_source: stats_contributors
         carve_out: null
     risk_license:

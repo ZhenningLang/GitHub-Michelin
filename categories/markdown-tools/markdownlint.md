@@ -16,26 +16,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:47:39Z
+  computed_at: 2026-09-22T16:34:10Z
   overall: A
-  overall_score: 3.67
+  overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 26
-        active_weeks_13: 10
+        last_commit_age_days: 56
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.9
-        qualifying_issues: 17
+        median_ttfr_hours: 4.8
+        qualifying_issues: 15
         band: default
         window_offset_days: 7
         source: issue
@@ -46,15 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: markdownlint
         dependent_repos_count: 33289
-        downloads_last_month: 9968591
+        downloads_last_month: 11652620
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.06
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4131
-        last_commit_age_days: 26
+        repo_age_days: 4209
+        last_commit_age_days: 56
         cohort: library
     governance:
       grade: C

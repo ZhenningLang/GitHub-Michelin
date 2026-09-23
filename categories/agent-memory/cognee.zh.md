@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:29:55Z
+  computed_at: 2026-09-22T15:39:21Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 3
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 2.2
-        qualifying_issues: 28
+        median_ttfr_hours: 63.7
+        qualifying_issues: 46
         band: default
         window_offset_days: 4
         source: issue
@@ -46,22 +47,30 @@ health:
         registry: pypi.org
         canonical_package: cognee
         dependent_repos_count: 0
-        downloads_last_month: 73825
+        downloads_last_month: 101425
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 43
+        release_assets: 8
+        release_tier: D
+        docker_pulls: 176531
+        docker_image: cognee/cognee
+        docker_tier: D
+        signal_basis: releases+docker
+        tier_source: registry
     longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 1055
-        last_commit_age_days: 4
+        repo_age_days: 1133
+        last_commit_age_days: 3
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 82
-        top1_share: 0.266
-        top3_share: 0.576
+        active_maintainers_12mo: 234
+        top1_share: 0.313
+        top3_share: 0.617
         window_source: stats_contributors
         carve_out: null
     risk_license:

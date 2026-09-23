@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:09:59Z
+  computed_at: 2026-09-22T16:49:36Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
-        active_weeks_13: 7
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 60.7
-        qualifying_issues: 20
+        median_ttfr_hours: 129.3
+        qualifying_issues: 36
         band: default
         window_offset_days: 0
         source: issue
@@ -46,22 +47,29 @@ health:
         registry: pypi.org
         canonical_package: mlx-lm
         dependent_repos_count: 0
-        downloads_last_month: 1467056
+        downloads_last_month: 935298
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: null
+        cross_check_divergence: 1.67
+        homebrew_installs_90d: 1280
+        homebrew_tier: B
+        release_downloads: 1613
+        release_assets: 1
+        release_tier: D
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 482
-        last_commit_age_days: 12
+        repo_age_days: 560
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 78
-        top1_share: 0.179
-        top3_share: 0.444
+        active_maintainers_12mo: 72
+        top1_share: 0.289
+        top3_share: 0.506
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:46:45Z
+  computed_at: 2026-09-22T17:40:01Z
   overall: B
-  overall_score: 2.75
+  overall_score: 3.0
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
-        active_weeks_13: 10
+        last_commit_age_days: 23
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 128
-        last_commit_age_days: 7
+        repo_age_days: 209
+        last_commit_age_days: 23
         cohort: skill-pack
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 8
-        top1_share: 0.878
-        top3_share: 0.97
+        active_maintainers_12mo: 16
+        top1_share: 0.78
+        top3_share: 0.917
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Anthropic Cybersecurity Skills

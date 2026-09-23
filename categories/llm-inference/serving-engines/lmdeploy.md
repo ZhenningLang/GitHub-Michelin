@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:45:24Z
+  computed_at: 2026-09-22T16:29:07Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 16.8
+        median_ttfr_hours: 35.1
         qualifying_issues: 29
         band: relaxed_solo
         window_offset_days: 13
@@ -46,22 +47,27 @@ health:
         registry: pypi.org
         canonical_package: lmdeploy
         dependent_repos_count: 2
-        downloads_last_month: 58990
+        downloads_last_month: 26445
         graph_tier: D
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 738621
+        release_assets: 467
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1117
-        last_commit_age_days: 3
+        repo_age_days: 1195
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 51
-        top1_share: 0.213
-        top3_share: 0.499
+        active_maintainers_12mo: 48
+        top1_share: 0.217
+        top3_share: 0.498
         window_source: stats_contributors
         carve_out: null
     risk_license:

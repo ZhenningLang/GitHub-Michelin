@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:20:08Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T17:11:05Z
+  overall: A
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
+        last_commit_age_days: 7
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 67.1
-        qualifying_issues: 31
+        median_ttfr_hours: 35.0
+        qualifying_issues: 26
         band: default
         window_offset_days: 13
         source: issue
@@ -46,21 +47,26 @@ health:
         registry: pypi.org
         canonical_package: browser-use
         dependent_repos_count: 0
-        downloads_last_month: 192875795
+        downloads_last_month: 15057294
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.46
+        release_downloads: 368
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 613
-        last_commit_age_days: 5
+        repo_age_days: 691
+        last_commit_age_days: 7
         cohort: framework
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 46
-        top1_share: 0.467
+        active_maintainers_12mo: 131
+        top1_share: 0.37
         top3_share: 0.629
         window_source: stats_contributors
         carve_out: null

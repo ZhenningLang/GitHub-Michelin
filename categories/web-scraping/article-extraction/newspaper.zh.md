@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:00:24Z
+  computed_at: 2026-09-22T17:13:16Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 51
-        active_weeks_13: 2
+        last_commit_age_days: 7
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: "?"
@@ -40,15 +41,16 @@ health:
         registry: pypi.org
         canonical_package: newspaper3k
         dependent_repos_count: 1068
-        downloads_last_month: 812808
+        downloads_last_month: 526510
         graph_tier: B
         volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4603
-        last_commit_age_days: 51
+        repo_age_days: 4684
+        last_commit_age_days: 7
         cohort: library
     governance:
       grade: D
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # newspaper

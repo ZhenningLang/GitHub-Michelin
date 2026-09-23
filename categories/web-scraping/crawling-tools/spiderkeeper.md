@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:03:04Z
+  computed_at: 2026-09-22T17:15:02Z
   overall: E
-  overall_score: 0.0
-  scored_axes: 3
+  overall_score: 0.25
+  scored_axes: 4
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,20 +29,28 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2958
+        last_commit_age_days: 3039
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: pypi.org
+        canonical_package: spiderkeeper
+        dependent_repos_count: 5
+        downloads_last_month: 28
+        graph_tier: D
+        volume_tier: E
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 3819
-        last_commit_age_days: 2958
+        repo_age_days: 3900
+        last_commit_age_days: 3039
         cohort: app
     governance:
       grade: "?"
@@ -55,7 +64,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
 ---
 

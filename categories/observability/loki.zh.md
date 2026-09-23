@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:48:56Z
+  computed_at: 2026-09-23T03:12:09Z
   overall: B
-  overall_score: 2.67
+  overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,50 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
+      grade: C
       raw:
-        median_ttfr_hours: 146.1
-        qualifying_issues: 44
+        median_ttfr_hours: 235.9
+        qualifying_issues: 46
         band: default
         window_offset_days: 12
         source: issue
         inferred: false
     adoption:
-      grade: E
+      grade: A
       raw:
-        registry: gem.coop
-        canonical_package: fluent-plugin-grafana-loki
-        dependent_repos_count: 0
-        downloads_last_month: 52845726
-        graph_tier: E
+        registry: proxy.golang.org
+        canonical_package: github.com/grafana/loki
+        dependent_repos_count: 334
+        downloads_last_month: null
+        graph_tier: C
         volume_tier: "?"
         cross_check_divergence: null
+        homebrew_installs_90d: 4096
+        homebrew_tier: A
+        release_downloads: 11721513
+        release_assets: 4794
+        release_tier: A
+        docker_pulls: 4794728876
+        docker_image: grafana/loki
+        docker_tier: A
+        signal_basis: homebrew+releases+docker
+        tier_source: homebrew+releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 3003
-        last_commit_age_days: 3
+        repo_age_days: 3082
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 104
-        top1_share: 0.148
-        top3_share: 0.317
+        active_maintainers_12mo: 86
+        top1_share: 0.132
+        top3_share: 0.278
         window_source: stats_contributors
         carve_out: null
     risk_license:

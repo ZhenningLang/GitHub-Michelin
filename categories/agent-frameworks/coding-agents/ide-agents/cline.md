@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T11:04:20Z
-  overall: A
-  overall_score: 3.5
-  scored_axes: 6
+  computed_at: 2026-09-22T17:32:58Z
+  overall: B
+  overall_score: 3.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,7 +36,7 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 15
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -50,6 +51,11 @@ health:
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 106586
+        release_assets: 230
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
@@ -57,13 +63,8 @@ health:
         last_commit_age_days: 0
         cohort: app
     governance:
-      grade: A
-      raw:
-        active_maintainers_12mo: 57
-        top1_share: 0.331
-        top3_share: 0.611
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -71,6 +72,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    governance: { reason: empty_or_gated }
 ---
 
 # Cline

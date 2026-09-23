@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:26:15Z
-  overall: A
-  overall_score: 3.5
+  computed_at: 2026-09-22T15:37:34Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 7
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 16.9
-        qualifying_issues: 55
+        median_ttfr_hours: 56.6
+        qualifying_issues: 33
         band: default
         window_offset_days: 1
+        source: issue
+        inferred: false
     adoption:
       grade: C
       raw:
         registry: pypi.org
-        canonical_package: langflow-base
-        dependent_repos_count: 0
-        downloads_last_month: 92752
-        graph_tier: E
+        canonical_package: langflow
+        dependent_repos_count: 11
+        downloads_last_month: 41135
+        graph_tier: D
         volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 87
+        homebrew_tier: D
+        release_downloads: 207598
+        release_assets: 221
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1240
-        last_commit_age_days: 1
+        repo_age_days: 1322
+        last_commit_age_days: 7
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 125
-        top1_share: 0.153
-        top3_share: 0.346
+        active_maintainers_12mo: 138
+        top1_share: 0.286
+        top3_share: 0.449
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:45:16Z
+  computed_at: 2026-09-22T17:39:22Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,33 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
-        active_weeks_13: 13
+        last_commit_age_days: 17
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 203
-        last_commit_age_days: 5
+        registry: null
+        canonical_package: null
+        release_downloads: 465
+        release_assets: 180
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 285
+        last_commit_age_days: 17
         cohort: skill-pack
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.985
-        top3_share: 1.0
+        active_maintainers_12mo: 5
+        top1_share: 0.923
+        top3_share: 0.998
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # claude-code-harness

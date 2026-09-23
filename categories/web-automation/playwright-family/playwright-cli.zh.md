@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-16T09:37:36Z
+  computed_at: 2026-09-22T17:12:21Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 4
         active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 35.2
-        qualifying_issues: 9
+        median_ttfr_hours: 76.8
+        qualifying_issues: 8
         band: relaxed_solo
         window_offset_days: 12
         source: issue
@@ -46,29 +47,32 @@ health:
         registry: npmjs.org
         canonical_package: "@playwright/cli"
         dependent_repos_count: 0
-        downloads_last_month: 3038654
+        downloads_last_month: 3299425
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.09
+        cross_check_divergence: 1.01
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2280
-        last_commit_age_days: 2
+        repo_age_days: 2286
+        last_commit_age_days: 4
         cohort: tool
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 11
         top1_share: 0.477
-        top3_share: 0.916
+        top3_share: 0.908
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: repo_unreachable }
+      grade: A
+      raw:
+        spdx_id: Apache-2.0
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
 ---
 
 # Playwright CLI

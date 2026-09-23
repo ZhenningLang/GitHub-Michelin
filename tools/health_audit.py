@@ -34,7 +34,7 @@ RUBRIC_ENUMS: dict[str, set[str]] = {
     "responsiveness": {"issues_disabled", "no_traffic", "no_window_signal", "too_young",
                        "type_na", "github_unavailable", "mirror", "vendor_support_elsewhere"},
     "adoption": {"no_package_structural", "registry_lookup_failed", "registry_no_counts",
-                 "ambiguous"},
+                 "ambiguous", "no_install_channel"},
     "longevity": {"not_found", "no_activity_signal", "not_a_repo"},
     "governance": {"fork", "unattributable", "empty_or_gated"},
     "risk_license": {"repo_unreachable", "license_unparsed"},
@@ -86,10 +86,11 @@ def parse_page(text: str) -> tuple[dict[str, str], dict[str, str]] | None:
         if gm:
             grades[axis] = gm.group(1).strip("\"'")
     reasons: dict[str, str] = {}
-    um = re.search(r"(?ms)^  unknowns:\n(.*?)(?=^\S|\Z)", block)
-    if um:
-        for rm in re.finditer(r"(?m)^\s{4}(\w+):\s*\{\s*reason:\s*([\w-]+)\s*\}", um.group(1)):
-            reasons[rm.group(1)] = rm.group(2)
+    for key in ("unknowns", "not_applicable"):
+        um = re.search(r"(?ms)^  " + key + r":\n(.*?)(?=^\S|\Z)", block)
+        if um:
+            for rm in re.finditer(r"(?m)^\s{4}(\w+):\s*\{\s*reason:\s*([\w-]+)\s*\}", um.group(1)):
+                reasons[rm.group(1)] = rm.group(2)
     return grades, reasons
 
 
@@ -100,6 +101,7 @@ def audit(root: Path) -> dict:
     flagged: dict[str, list[dict]] = {"transient": [], "needs_review": [],
                                       "enum_drift": [], "missing_reason": []}
     unknown_axes = 0
+    na_axes = 0
     unparsed: list[str] = []
     for page in pages:
         parsed = parse_page(page.read_text(encoding="utf-8"))
@@ -111,6 +113,12 @@ def audit(root: Path) -> dict:
         grades, reasons = parsed
         rel = str(page.relative_to(root))
         for axis, grade in grades.items():
+            if grade == "N/A":
+                # A deliberate "this axis does not apply to this artifact type" verdict.
+                # Counting it as an unknown would inflate the very backlog this audit
+                # exists to burn down, and it is not something a re-run can resolve.
+                na_axes += 1
+                continue
             if grade != "?":
                 continue
             unknown_axes += 1
@@ -125,6 +133,7 @@ def audit(root: Path) -> dict:
             if bucket in ("transient", "needs_review"):
                 flagged[bucket].append({"page": rel, "axis": axis, "reason": reason})
     return {"pages_scanned": len(pages), "pages_unparsed": unparsed, "unknown_axes": unknown_axes,
+            "not_applicable_axes": na_axes,
             "distribution": [{"axis": a, "reason": r, "count": c, "bucket": classify(r)}
                              for (a, r), c in sorted(dist.items(), key=lambda kv: -kv[1])],
             "flagged": flagged}
@@ -153,6 +162,7 @@ def main() -> int:
             for rel in result["pages_unparsed"]:
                 print(f"  {rel}")
         print(f"`?` axes:      {result['unknown_axes']}")
+        print(f"N/A axes:     {result.get('not_applicable_axes', 0)}  (axis does not apply to the type; not a gap)")
         print()
         print(f"{'axis':<16} {'reason':<26} {'count':>5}  bucket")
         for row in result["distribution"]:

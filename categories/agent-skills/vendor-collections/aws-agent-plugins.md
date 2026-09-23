@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:47:33Z
-  overall: A
-  overall_score: 3.5
-  scored_axes: 4
+  computed_at: 2026-09-22T15:51:44Z
+  overall: B
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,33 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 13
+        last_commit_age_days: 8
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 28
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 148
-        last_commit_age_days: 1
+        repo_age_days: 229
+        last_commit_age_days: 8
         cohort: skill-pack
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 41
-        top1_share: 0.265
-        top3_share: 0.508
+        active_maintainers_12mo: 54
+        top1_share: 0.214
+        top3_share: 0.458
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Agent Plugins for AWS

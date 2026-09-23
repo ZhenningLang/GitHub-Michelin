@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:21:01Z
+  computed_at: 2026-09-22T17:19:04Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.4
-        qualifying_issues: 49
+        median_ttfr_hours: 6.4
+        qualifying_issues: 40
         band: default
         window_offset_days: 2
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: "@sveltejs/kit"
         dependent_repos_count: 17842
-        downloads_last_month: 8552809
+        downloads_last_month: 9226844
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.0
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2090
+        repo_age_days: 2168
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 39
-        top1_share: 0.258
-        top3_share: 0.61
+        active_maintainers_12mo: 36
+        top1_share: 0.328
+        top3_share: 0.676
         window_source: stats_contributors
         carve_out: null
     risk_license:

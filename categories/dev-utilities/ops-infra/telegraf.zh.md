@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:14:58Z
+  computed_at: 2026-09-22T17:44:03Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,25 +35,38 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 24.0
-        qualifying_issues: 27
+        median_ttfr_hours: 45.0
+        qualifying_issues: 36
         band: relaxed_solo
         window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/influxdata/telegraf
+        dependent_repos_count: 3856
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        homebrew_installs_90d: 1140
+        homebrew_tier: B
+        signal_basis: homebrew
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4111
+        repo_age_days: 4192
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 56
-        top1_share: 0.352
-        top3_share: 0.786
+        active_maintainers_12mo: 52
+        top1_share: 0.37
+        top3_share: 0.754
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +76,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Telegraf

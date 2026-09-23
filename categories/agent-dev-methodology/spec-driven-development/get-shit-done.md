@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:09Z
-  overall: C
-  overall_score: 1.5
+  computed_at: 2026-09-22T17:29:32Z
+  overall: D
+  overall_score: 1.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 33
-        active_weeks_13: 9
+        last_commit_age_days: 114
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: E
@@ -39,28 +40,33 @@ health:
         band: default
         window_offset_days: 10
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: npmjs.org
         canonical_package: get-shit-done-cc
         dependent_repos_count: 0
-        downloads_last_month: 194520
+        downloads_last_month: 47093
         graph_tier: E
-        volume_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        release_downloads: 69
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
         archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 201
-        last_commit_age_days: 33
+        repo_age_days: 282
+        last_commit_age_days: 114
         cohort: framework
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 97
         top1_share: 0.454
-        top3_share: 0.871
+        top3_share: 0.873
         window_source: stats_contributors
         carve_out: null
     risk_license:
