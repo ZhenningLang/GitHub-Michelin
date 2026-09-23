@@ -914,6 +914,60 @@ def line_mentions_raw_field(line: str, field: str) -> bool:
     return False
 
 
+# Fields that advance on their own every day the page is not rescored, so prose stating
+# them is only exact on the day it was written. Demanding equality makes this check a
+# clock: it reported 15 pages whose prose was 1-4 days behind, and would report them
+# again tomorrow. Measured over those 15, the worst was 4 days / 2.1%; a 100-day gap on
+# a 400-day repo is 25% and still fails, which is the staleness worth reporting.
+AGE_FIELDS = {"repo_age_days", "last_commit_age_days"}
+AGE_ABS_TOLERANCE = 7
+AGE_REL_TOLERANCE = 0.05
+# Contributor shares are stored to three decimals and written to two, or as a percentage.
+# Observed gap: prose "0.77" against frontmatter 0.772.
+SHARE_FIELDS = {"top1_share", "top3_share"}
+SHARE_ABS_TOLERANCE = 0.005
+# A zero is legitimately written in words — "there are no registry packages to measure
+# dependents against" states dependent_repos_count=0 more clearly than the digit would.
+ZERO_IN_WORDS = re.compile(
+    r"\b(no|none|zero|not any|without any)\b|没有|无(?!法)|不存在|零个?", re.IGNORECASE)
+
+
+def prose_states_value(line: str, prose_numbers: set, field: str, value: str) -> bool:
+    """Does this line state `value`, allowing how people actually write numbers?
+
+    Exact match first; the tolerances below each exist for a measured reason, not a
+    taste — see the constants. Returning True means "no drift to report".
+    """
+    if prose_numbers & numeric_variants(value):
+        return True
+    try:
+        target = float(str(value).replace(",", ""))
+    except (TypeError, ValueError):
+        return False
+
+    if target == 0 and ZERO_IN_WORDS.search(line):
+        return True
+
+    candidates = []
+    for n in prose_numbers:
+        try:
+            candidates.append(float(str(n).replace(",", "").rstrip("%")))
+        except ValueError:
+            continue
+    if not candidates:
+        return False
+
+    if field in AGE_FIELDS:
+        allowed = max(AGE_ABS_TOLERANCE, abs(target) * AGE_REL_TOLERANCE)
+        return any(abs(c - target) <= allowed for c in candidates)
+    if field in SHARE_FIELDS:
+        # `0.77` for 0.772, and `77.2` / `77` for the same value written as a percentage.
+        return any(abs(c - target) <= SHARE_ABS_TOLERANCE
+                   or abs(c - target * 100) <= SHARE_ABS_TOLERANCE * 100
+                   for c in candidates)
+    return False
+
+
 def detect_health_prose_raw_drift(page: Path, text: str, root: Path) -> list[Finding]:
     raw_values = health_axis_raw_values(text)
     if not raw_values:
@@ -933,7 +987,7 @@ def detect_health_prose_raw_drift(page: Path, text: str, root: Path) -> list[Fin
                 frontmatter_value = raw_values.get((axis, field))
                 if not frontmatter_value:
                     continue
-                if prose_numbers & numeric_variants(frontmatter_value):
+                if prose_states_value(line, prose_numbers, field, frontmatter_value):
                     continue
                 findings.append(
                     Finding(
