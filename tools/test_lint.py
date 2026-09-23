@@ -221,23 +221,23 @@ class LintContractTest(unittest.TestCase):
             root = Path(td)
             en = page_text().replace(
                 "## When NOT to use",
-                "## Callouts\n\n## When NOT to use",
+                "## Q&A\n\n## When NOT to use",
             )
             zh = page_text(zh=True).replace(
                 "## 何时不用",
-                "## 指指点点\n\n## 何时不用",
+                "## 快问快答\n\n## 何时不用",
             )
             page = self._write_pair(root, en, zh)
             rep = lint.Report()
             lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
-            self.assertTrue(any("Callouts / 指指点点 is empty" in e for e in rep.errors))
+            self.assertTrue(any("Q&A / 快问快答 is empty" in e for e in rep.errors))
 
     def test_one_sided_callouts_is_an_error(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             en = page_text().replace(
                 "## When NOT to use",
-                "## Callouts\n\nA leftover judgment.\n\n## When NOT to use",
+                "## Q&A\n\nA leftover judgment.\n\n## When NOT to use",
             )
             zh = page_text(zh=True)
             page = self._write_pair(root, en, zh)
@@ -248,8 +248,8 @@ class LintContractTest(unittest.TestCase):
     def test_callouts_after_caveats_is_an_error(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            en = page_text() + "\n## Callouts\n\nA leftover judgment.\n"
-            zh = page_text(zh=True) + "\n## 指指点点\n\n一条剩下的判断。\n"
+            en = page_text() + "\n## Q&A\n\nA leftover judgment.\n"
+            zh = page_text(zh=True) + "\n## 快问快答\n\n一条剩下的判断。\n"
             page = self._write_pair(root, en, zh)
             rep = lint.Report()
             lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))

@@ -30,7 +30,7 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - every page has an upstream snapshot for cheap stale checks -> ERROR if absent/malformed
   - page Comparison tables include an explicit Our verdict / 我们的评价 column -> ERROR if absent
   - every page: a Caveats ledger section (## Caveats (unverified) / ## 存疑（未验证）) -> ERROR if absent
-  - optional Callouts / 指指点点: if present, non-empty, bilingual pair matches, sits after
+  - optional Q&A / 快问快答: if present, non-empty, bilingual pair matches, sits after
     When to use and before How it works (or When NOT if that section is absent)
     -> ERROR on empty / one-sided / wrong position
   - prose-region [未验证]/[推断] density > PROSE_LABEL_MAX -> WARNING (converge into the Caveats section)
@@ -123,8 +123,8 @@ LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 # Caveats ledger heading — tolerant prefix match (the parenthetical varies: (unverified)/（未验证）).
 CAVEATS_RE_EN = re.compile(r"(?m)^##\s+Caveats\b")
 CAVEATS_RE_ZH = re.compile(r"(?m)^##\s+存疑")
-CALLOUTS_RE_EN = re.compile(r"(?m)^##\s+Callouts\s*$")
-CALLOUTS_RE_ZH = re.compile(r"(?m)^##\s+指指点点\s*$")
+QA_RE_EN = re.compile(r"(?m)^##\s+Q&A\s*$")
+QA_RE_ZH = re.compile(r"(?m)^##\s+快问快答\s*$")
 # Health & viability is a labeled-judgment section (like Caveats) — exempt from the inline
 # label-density count, so the density boundary ends at whichever of Health/Caveats comes first.
 HEALTH_RE_EN = re.compile(r"(?m)^##\s+Health\s*&\s*viability\b")
@@ -609,10 +609,10 @@ def check_flow_section(path: Path, text: str, zh: bool, root: Path, duplicate_ba
             rep.flow_missing.append(path)
         return
 
-    # position: after When to use (or Callouts if present), right before When NOT to use
+    # position: after When to use (or Q&A if present), right before When NOT to use
     h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
     want_when, want_next = ("## 何时使用", "## 何时不用") if zh else ("## When to use", "## When NOT to use")
-    callouts = "## 指指点点" if zh else "## Callouts"
+    callouts = "## 快问快答" if zh else "## Q&A"
     want_prev = callouts if callouts in h2 else want_when
     i = h2.index(flow_card.SECTION[lang])
     if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
@@ -690,20 +690,20 @@ def section_after_heading(text: str, match: re.Match[str]) -> str:
     return text[start:end].strip()
 
 
-def check_callouts(
+def check_qa(
     path: Path,
     text: str,
     zh: bool,
     sibling_text: str | None,
     rep: Report,
 ) -> None:
-    own = CALLOUTS_RE_ZH if zh else CALLOUTS_RE_EN
+    own = QA_RE_ZH if zh else QA_RE_EN
     found = own.search(text)
     if found:
         if not section_after_heading(text, found):
-            rep.error(path, "Callouts / 指指点点 is empty — omit the heading if there is nothing leftover")
+            rep.error(path, "Q&A / 快问快答 is empty — omit the heading if there is nothing leftover")
         h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
-        heading = "## 指指点点" if zh else "## Callouts"
+        heading = "## 快问快答" if zh else "## Q&A"
         want_prev = "## 何时使用" if zh else "## When to use"
         want_flow = "## 怎么用起来" if zh else "## How it works"
         want_not = "## 何时不用" if zh else "## When NOT to use"
@@ -712,12 +712,12 @@ def check_callouts(
         if not (i > 0 and h2[i - 1] == want_prev and i + 1 < len(h2) and h2[i + 1] == want_next):
             rep.error(
                 path,
-                "Callouts / 指指点点 must sit between When to use and How it works "
+                "Q&A / 快问快答 must sit between When to use and How it works "
                 "(or When NOT to use, if How it works is absent)",
             )
     if sibling_text is not None and not zh:
-        if bool(CALLOUTS_RE_EN.search(text)) != bool(CALLOUTS_RE_ZH.search(sibling_text)):
-            rep.error(path, "Callouts / 指指点点 presence must match the bilingual sibling")
+        if bool(QA_RE_EN.search(text)) != bool(QA_RE_ZH.search(sibling_text)):
+            rep.error(path, "Q&A / 快问快答 presence must match the bilingual sibling")
 
 
 def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[str], rep: Report, today: dt.date) -> None:
@@ -791,7 +791,7 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
     health = (HEALTH_RE_ZH if zh else HEALTH_RE_EN).search(text)
     bounds = [m.start() for m in (health, cav) if m]
     prose = text[: min(bounds)] if bounds else text
-    callouts = (CALLOUTS_RE_ZH if zh else CALLOUTS_RE_EN).search(text)
+    callouts = (QA_RE_ZH if zh else QA_RE_EN).search(text)
     if callouts:
         nxt = re.search(r"(?m)^##\s+", text[callouts.end():])
         end = callouts.end() + nxt.start() if nxt else len(text)
@@ -811,7 +811,7 @@ def check_page(path: Path, category_dir: Path, root: Path, duplicate_bases: set[
         sibling_text = sibling.read_text(encoding="utf-8")
         if normalized_frontmatter(text) != normalized_frontmatter(sibling_text):
             rep.error(path, f"frontmatter drift vs {sibling.name} (must be identical)")
-    check_callouts(path, text, zh, sibling_text, rep)
+    check_qa(path, text, zh, sibling_text, rep)
 
     check_health_block(path, text, base, zh, root, duplicate_bases, rep, today)
     check_upstream_block(path, text, rep)

@@ -85,13 +85,16 @@ You are mid a multi-hour coding or evaluation job — a repo-wide refactor, a re
 
 Reach for Prime Agent when that is the constraint. It is a hard fork of `pi` (earendil-works) now shipped by Prime Intellect: the model's one built-in tool is a persistent Python kernel, `rlm.spawn(...)` starts real child agents, and a local daemon keeps the session, kernel, and children alive after the TUI detaches. Choose it over [OpenCode](opencode.md) or [Codex](codex.md) when programmatic context folding and detachable long runs are the point, not model-agnostic pair-programming. Choose it over [OpenHands](../orchestration-and-review/openhands.md) when you want a local CLI/TUI rather than a self-hosted agent platform with its own sandbox. The cost is a multi-process runtime (daemon, worker, kernel), Node.js ≥ 22.8 and Python ≥ 3.11, an install path that is `curl | sh` from Prime's domain, and no default security sandbox.
 
-## Callouts
+## Q&A
 
-Other agents dump files into the chat. This one makes the model write Python to look at them. Sounds smarter. The parent stops seeing the files and turns into a dispatcher. Cutting the work into pieces is the part that needed the whole picture — and this setup took the picture away. [推断]
+**What's the core idea?**
+Don't stuff the working set into the model's head. Make it write Python over that material as variables, and spawn children with `rlm.spawn`.
 
-They call it self-improving. `/refine` writes extra prompts. The research bet is that RL will teach the model this scaffold. Their own write-up: short math gets worse with the scaffold on. So it has not learned yet. [推断]
+**This seems weird. Doesn't it waste the LLM's intelligence?**
+Yes. The parent never sees the files and becomes a dispatcher. How you slice the work needed the global view you just removed. Their own short-math experiment got worse with the scaffold on. [推断]
 
-The sandbox warning in the README is the honest bit. RLM, Continual Harness, RSI in the commits — packaging. Install is still `curl | sh` off Prime's domain. The package inside the tree is still named `pi`.
+**So what's the bet?**
+On long jobs, stuffing the window kills you first, so they pay the other cost. On short jobs that need A and B in the same window, this loses. They hope RL will train models to use the scaffold. It has not yet. [推断]
 
 ## How it works
 

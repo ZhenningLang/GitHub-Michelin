@@ -68,8 +68,8 @@ English (`*.md` / `INDEX.md`) is the canonical path. The `.zh.md` files are a Ch
 
 4. **Level 3 — decide.** Read each candidate's `<slug>.md`. The decisive section is usually
     **`## When NOT to use`**: check it against the hard constraints from step 1. Then weigh
-    `## Ops difficulty` and `## Dependencies` against the user's budget. If `## Callouts` /
-    `## 指指点点` is present, read it — leftover human judgment the template would have dropped.
+    `## Ops difficulty` and `## Dependencies` against the user's budget. If `## Q&A` /
+    `## 快问快答` is present, read it — leftover questions from the reading conversation.
 
 5. **Recommend** with the *tradeoff that decided it*, not just a name. Format:
 
