@@ -122,10 +122,10 @@ You're a developer who spends most of your day in a terminal and wants a modern,
 **Low.** Warp is an end-user desktop application. You download it, install it, and use it. The operational complexity is the same as any other desktop app: keeping it updated, managing any account/login requirements, and understanding that it's a closed-source product that receives updates on Warp's schedule (weekly, typically Thursdays). There is no server to run, no database to manage, and no self-hosting burden.
 
 ## Health & viability
-- **Maintenance**: Grade A — 10/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 31 qualifying issues/PRs.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A — median first-response time 0.0 hours across 53 qualifying issues/PRs.
 - **Adoption**: Grade E.
-- **Longevity**: Grade A — 1,821 days old.
+- **Longevity**: Grade A — 1902 days old.
 - **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade D — AGPL-3.0 license.
 ## Caveats (unverified)

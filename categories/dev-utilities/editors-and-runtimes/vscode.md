@@ -128,8 +128,8 @@ You're a developer who needs a fast, cross-platform code editor that supports do
 - **Maintenance**: Extremely active — Microsoft pushes monthly iteration plans, publishes roadmaps, and ships updates regularly. 187k stars, 18,939 open issues.
 - **Governance**: Owned by Microsoft, one of the world's largest tech companies. The roadmap is public and the project is well-funded.
 - **Backing**: Microsoft is a committed vendor with a strong track record of long-term investment in developer tools.
-- **Adoption**: Grade D — 2,672 monthly downloads via npmjs.org (package: @theia/vscode-builtin-fsharp).
-- **Longevity**: Grade A — 3956 days old, with continuous active development. Strong Lindy signal.
+- **Adoption**: Grade B — 2,136 monthly downloads via npmjs.org (package: @theia/vscode-builtin-vb).
+- **Longevity**: Grade A — 4037 days old.
 - **Risk flags**: Microsoft controls the proprietary distribution and the extensions marketplace. The telemetry in the distributed build is a privacy concern for some users. There have been no relicense concerns, but the open-core model (free editor + paid services) is present.
 
 ## Caveats (unverified)

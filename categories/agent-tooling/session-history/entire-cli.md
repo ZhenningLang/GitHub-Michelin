@@ -125,7 +125,7 @@ So you `entire enable` in the repo and point it at your agent. Now every session
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 17.1 hours across 35 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 8.1 hours across 18 qualifying issues/PRs.
 - **Maintenance** — last push 2026-06 with a recent release (v0.7.7, 2026-06-18) as of 2026-06: actively developed. Reportedly ~103 releases, so a real shipping cadence — but pre-1.0, and one command (`entire checkpoint rewind`) is already deprecated, so interfaces and on-disk formats can still shift. [推断]
 - **Governance / bus factor** — `Organization`-owned (`entireio`), which is a better signal than a personal repo, but it's a small vendor-led project (there's an `entire.io` install host and `entire login` device auth, hinting at a commercial backer); no foundation or formal governance. ~4.5k stars is modest, so adoption is early. [推断]
 - **Age & Lindy** — created 2026-01, so only months old as of 2026-06: too young for a Lindy verdict and still pre-1.0. Judge it on shipping cadence, not track record.

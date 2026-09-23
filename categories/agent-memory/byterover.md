@@ -127,10 +127,10 @@ You're a developer who runs AI coding agents across multiple sessions and keeps 
 **Low to medium.** Installation is via npm (`npm install -g byterover-cli`). The CLI is self-contained, and local-only use requires no server setup. The medium difficulty comes from integrating it into your agent workflow: configuring the MCP integration, deciding what belongs in the context tree, and managing cloud sync if you use it. Because the project is young and pre-1.0, expect breaking changes and evolving configuration.
 
 ## Health & viability
-- **Maintenance**: Grade A — 10/13 active weeks in trailing 13; last commit 7 days ago.
-- **Responsiveness**: Grade A — median first-response time 3.6 hours across 23 qualifying issues/PRs.
-- **Adoption**: Grade D — 6,431 monthly downloads via npmjs.org (package: byterover-cli).
-- **Longevity**: Grade C — 379 days old.
+- **Maintenance**: Grade C — 1/13 active weeks in trailing 13; last commit 89 days ago.
+- **Responsiveness**: Grade D — median first-response time 1089.6 hours across 3 qualifying issues/PRs.
+- **Adoption**: Grade C — 57,394 monthly downloads via npmjs.org (package: byterover-cli).
+- **Longevity**: Grade C — 460 days old.
 - **Governance**: Grade A — top-3 contributor share 63.4% (?).
 - **Risk / License**: Grade E — NOASSERTION license.
 ## Caveats (unverified)

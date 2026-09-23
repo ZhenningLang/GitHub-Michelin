@@ -122,7 +122,7 @@ This is the right pick when your real goal is *file storage and link-sharing ins
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 90.2 hours across 15 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 139.9 hours across 20 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06 with a recent tag (1.103.0, 2026-06-23) and `main` ahead at 1.105.0 — **actively** developed, not archived. [推断]
 - **Governance / backing.** Owned by **Linagora**, a French open-source company, as part of its Twake Workplace suite — a vendor-backed project (not a lone maintainer), which is reassuring for continuity but ties the roadmap to one company's suite strategy. It is a fork/rebrand of upstream `cozy/cozy-drive`. [推断]
 - **Age & Lindy verdict.** The repo dates to ~2016 (created 2016-12) and the Cozy Drive lineage it descends from is older still ⇒ the *codebase* has a **moderate-to-strong Lindy** prior, but as a **Linagora rebrand its independent track record is shorter** and adoption (~960 stars) is modest — judge by the suite's traction, not raw age. [推断]

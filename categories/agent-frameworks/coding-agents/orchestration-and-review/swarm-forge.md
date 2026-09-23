@@ -123,7 +123,7 @@ The deciding difference against its closest substitutes is **commit-as-handoff i
 
 ## Health & viability
 
-- **Responsiveness**: Grade C — median first-response 229.1 hours across 4 qualifying issues (author-driven, not a support desk); 22 open issues / 16 open PRs at verification.
+- **Responsiveness**: Grade C — median first-response time 229.1 hours across 4 qualifying issues/PRs.
 - **Maintenance — active but release-less (as of 2026-09-19).** 331 commits, last push 2026-09-07 (~12 days before verification), not archived. But there are **no tagged releases** (two informal tags only) and no changelog, so "upgrade" means re-pulling branches; no semver discipline exists to rely on.
 - **Governance & bus factor — single author, high-profile.** The repo is `User`-owned by Robert C. Martin (`unclebob`, cleancoder.com) and ~324 of 331 commits are his; the contributors API lists 3 people total. A famous name buys attention, not continuity: bus factor is effectively 1. [推断]
 - **Backing & longevity — no org, no foundation.** Unlike [Symphony](../../agent-runtimes/agent-services/symphony.md) (OpenAI-owned), there is no vendor or foundation behind the roadmap. The constitution also hard-codes the author's own tool repositories as required dependencies, so the project and its toolchain share one maintainer.

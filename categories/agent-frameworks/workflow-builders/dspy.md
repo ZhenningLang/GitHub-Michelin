@@ -129,7 +129,7 @@ It's also a good fit when you expect to swap models often. Because DSPy routes c
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 19.7 hours across 37 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 23.0 hours across 28 qualifying issues/PRs.
 - **Maintenance — active (as of 2026-06).** Last push 2026-06; latest release 3.2.1 (2026-05). Steady release flow on a v3.x line; not archived. Reads as healthily maintained, with 540+ open issues reflecting a large active user base rather than neglect.
 - **Governance & backing — org/academic-anchored.** Lives under `stanfordnlp` (Stanford NLP), a research-org owner rather than a single vendor or lone maintainer; provenance (the original DSP/DSPy papers) gives it academic credibility. Not foundation-governed, but the bus factor is broader than a personal repo. [推断]
 - **Age & Lindy — old(ish) and still active ⇒ strong prior.** Created 2023-01, ~3 years old (as of 2026-06) and still shipping. By age × still-active it clears the Lindy bar that the younger agent frameworks in this category do not — a comparatively safe long-term bet for the *paradigm*, even though the API churns within it.

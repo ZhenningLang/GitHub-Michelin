@@ -126,7 +126,7 @@ You reach for it as the **de-facto Python library for evolutionary multi-objecti
 
 ## Health & viability
 
-- **Responsiveness**: Grade D — median first-response time 752.4 hours across 6 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 4.5 hours across 4 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed **2026-06-28** (the day of verification) with only ~2 open issues — strong signs of an **actively maintained, well-tended** project on the v0.6.x line. Not coasting, not abandoned. [推断]
 - **Governance / backing.** Developed under the `anyoptimization` org (Organization-owned) with a lead maintainer (blankjul) and a real contributor list; tied to academic work (the pymoo IEEE Access paper). Bus factor leans on the lead maintainer but with org structure and multiple contributors — healthier than a lone-author repo. [推断]
 - **Age & Lindy verdict.** Created 2017-09 (~8–9 years) **and still actively shipping** ⇒ a **strong Lindy** signal: a mature, long-proven library that remains current, not a hyped newcomer. [推断]

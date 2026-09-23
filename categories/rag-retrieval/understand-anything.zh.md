@@ -129,7 +129,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 45.5 小时，基于 90 天窗口内 34 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 45.5 小时，基于 34 个 qualifying issues/PRs。
 - **维护——Grade A，持续在发版。** 评分前最后一次提交距今 7 天，最近 13 周中有 11 周有提交。最新版 v2.9.0（2026-07-10），但总共仍只有约 10 个 release、约 846 次提交：活跃，但履历太短，无法判断稳定性。`[未验证]`
 - **采用广度——不可测量，不能当作触达证据。** 评分器返回 `?`（ambiguous）：包未发布到 npm（`private: true`），依赖仓库数基本为零，所以庞大的 star／fork 数字**并不**转化为可测量的依赖图足迹。在本语料里 star 仅供参考。
 - **维护者分散度——Grade C，单一厂商 + 单一主导作者。** 最近 12 个月约 58 位贡献者，但原作者（`Lum1104`）占约 73% 提交、前 3 位占约 84%。仓库现在归属 `Egonex-AI` org，MIT 署名同时列出 `Yuxiang Lin` 与 `Infinite Universe, Inc.`；README 写“Originally created by Lum1104”，并链接 egonex.ai 上的配套产品 “Understand Anyone”。`[推断]` 个人项目被并入了一家公司——背书仍系于单一厂商。

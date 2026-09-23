@@ -132,7 +132,7 @@ It fits especially well when the graph spans more than just app code — graphif
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 6.0 hours across 11 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 6.3 hours across 6 qualifying issues/PRs.
 - **Maintenance — active.** Last pushed 2026-06, not archived, very high release cadence (143+ releases, multiple per week as of 2026-06) [未验证]. Activity is not the worry here; churn is — the velocity that signals "alive" also means CLI surface and output schema move between minor versions, so pin a version.
 - **Governance / bus factor — single-maintainer-scale, a real flag.** The repo is **User**-owned (`safishamsi/graphify`) with ~73k stars [未验证] — a high star-to-bus-factor ratio. No foundation or vendor backs the roadmap; one person's attention is the dependency. `[推断]` If that maintainer stops, the project stalls.
 - **Age & Lindy — young, unproven (created 2026-04, ~2 months old as of 2026-06).** Too new to have earned a Lindy prior: heavy stars on a months-old single-maintainer repo are hype, not a track record. Treat it as promising-but-unsettled, not a safe long-term bet.

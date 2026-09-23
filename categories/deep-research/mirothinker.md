@@ -119,7 +119,7 @@ You're an ML engineer at a research-tooling team and you want a self-hosted, ope
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 145.8 hours across 4 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance (2026-06).** Last pushed 2026-04 (latest commit ~2026-04); the v1.x model line shows ongoing iteration. **Active** and **not archived**, but the cadence and a young codebase mean churn. [推断]
 - **Governance / backing.** Org-backed (**MiroMindAI**, miromind.ai), multi-contributor — better bus factor than a solo repo, but it's a single company's research project; longevity tracks that company's continued investment. [推断]
 - **Age & Lindy verdict.** Created 2025-08, **<1 year old** — **no Lindy yet**. High stars (~8.3k) on a very young repo is a hype/momentum signal, not durability proof; treat sustainability as unproven. [推断]

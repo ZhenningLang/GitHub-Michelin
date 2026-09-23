@@ -135,7 +135,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 1.5 小时，基于 12 个 qualifying issues/PRs。
+- **响应速度**：Grade B——中位首次响应时间 105.0 小时，基于 3 个 qualifying issues/PRs。
 - **维护——多包并行、活跃。** 最后一次 push 在 2026-06，未归档；monorepo 的各包（cua-agent v0.8.4、cua-sandbox v0.1.17、cua-cloud、cua-driver-rs v0.6.8、cua-bench）均在 2026-06 更新。活跃，但你要跟踪**多条独立版本线**，且 `cua-driver-rs`/Linux 驱动标注为 pre-release。`[未验证]`
 - **治理 / 背书——单一创业公司（trycua）。** 仓库为 **Organization** 所有（`trycua/cua`），约 19k star[未验证]。背后是一家风投阶段公司（cua.ai 托管产品的母体）——比单个维护者好，但其寿命系于这家公司的存续与融资。`[推断]`
 - **年龄与 Lindy——年轻（创建于 2025-01，截至 2026-06 约 1.5 年）。** 够久到能展示真实的基准集成（OSWorld/ScreenSpot/Windows Arena），但众多 `v0.x` 包标志着 API 仍在稳定前；尚无 Lindy 先验。预期破坏性变更；按包 pin 版本。

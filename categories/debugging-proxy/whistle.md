@@ -125,7 +125,7 @@ It shines when you need to inspect *and* rewrite at once: reproduce a production
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 8.9 hours across 15 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 18.4 hours across 15 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06 and not archived; tags up through v2.10.x indicate it's **actively shipping**, not abandoned. [推断]
 - **Governance / bus factor.** The repo owner is a **single GitHub User, not an organization** — effectively one maintainer. That's a real **bus-factor flag**: roadmap and continuity hinge on one person, even though the project is long-lived. [推断]
 - **Age & Lindy verdict.** Created 2015-03 (~11 years) and **still active** ⇒ a **strong Lindy** signal for its niche — a debugging proxy that has survived and stayed maintained for a decade is a safer bet than a young one, the single-maintainer caveat notwithstanding. [推断]

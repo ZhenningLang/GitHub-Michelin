@@ -130,7 +130,7 @@ You also reach for it when you want that same logic *repeatable*. A recipe seria
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 5.0 hours across 35 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 52.7 hours across 36 qualifying issues/PRs.
 - **Maintenance (2026-06):** **active** — semver-tagged releases (latest v11.2.0, ~2026-06-17), last pushed 2026-06. A mature major-version line with ongoing releases, not coasting. [推断]
 - **Governance & bus factor:** `Organization`-owned by **GCHQ** (the UK signals-intelligence agency) — institutional backing rather than a solo maintainer, with a contributor community around it. Unusual but durable sponsor; low bus-factor risk. [推断]
 - **Age & Lindy (~10yr, created 2016-11):** **old and still active** — a strong Lindy verdict. A decade of continuous releases plus government backing makes it a safe long-term bet for an analysis tool.

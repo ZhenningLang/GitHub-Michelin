@@ -106,9 +106,9 @@ You also reach for it when you want to standardize how your team uses AI agents.
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — unknown.
-- **Adoption**: Grade D — 1,919 monthly downloads via pypi.org (package: spec-kit-redist).
-- **Longevity**: Grade B — 315 days old.
-- **Governance**: Grade A — top-3 contributor share 52.2% (?).
+- **Adoption**: Grade A — 1,919 monthly downloads via pypi.org (package: spec-kit-redist).
+- **Longevity**: Grade B — 397 days old.
+- **Governance**: Cannot be scored — unknown.
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

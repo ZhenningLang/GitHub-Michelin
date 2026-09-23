@@ -130,7 +130,7 @@ You also use it when the source isn't YouTube at all — the value is the extrac
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 9.9 hours across 10 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 33.7 hours across 3 qualifying issues/PRs.
 - **Maintenance — coasting; the active path is the fork (last push ~2026-02, last tagged release 2021.12.17, as of 2026-06).** Not archived and master still gets occasional commits, but the tagged-release gap of 4+ years against a fast-moving target (YouTube player/signature changes) is the decisive signal: upstream lags, and yt-dlp ships the fixes. Treat youtube-dl as legacy upstream [推断].
 - **Governance & succession.** `Org`-owned (`ytdl-org/`) — a community org, no vendor or foundation. Roadmap momentum has effectively migrated to the **yt-dlp** fork, which is now the de-facto successor for YouTube extraction; the project's longevity lives on through that fork, not the original tag line [推断].
 - **Age & Lindy verdict — old and historically vindicated, but for *durability* not *currency*.** Created 2010 (~16y old), ~140k stars: among the longest-Lindy tools in this index, and it survived a 2020 GitHub DMCA takedown (later reinstated). But age proves the *idea* endures, not that the upstream binary works on YouTube today — for currency, age × *still-active* points you to yt-dlp.

@@ -118,11 +118,11 @@ You're a developer who juggles multiple AI coding agents and assistants across y
 **Low**. CC Switch is a desktop GUI application distributed via standard installer packages. The operational burden is limited to configuring your agent credentials and keeping the app updated. There is no server or database to maintain. However, you must still manage each underlying agent's credentials and updates independently.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 day ago.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
 - **Adoption**: Cannot be scored — unknown.
-- **Longevity**: Grade D — 333 days old.
-- **Governance**: Grade D — top-3 contributor share 91.5% (?).
+- **Longevity**: Grade C — 414 days old.
+- **Governance**: Grade D — top-3 contributor share 88.0% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

@@ -124,7 +124,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 102.4 小时，基于 7 个 qualifying issues/PRs。
+- **响应速度**：Grade D——中位首次响应时间 749.9 小时，基于 6 个 qualifying issues/PRs。
 - **维护（2026-06）：** **活跃**——最近 push 在 2026-06；打 tag 的 release 在推进（v0.1.0 2025-10 → v0.2.0 2026-05），但明确仍是 **pre-1.0**，格式/API/codec 集被声明为仍在变动。[推断]
 - **治理与 bus factor:** `Organization` 名下，归 **Meta**（`facebook`）所有，与 zstd 同门——厂商背书强、有团队治理，bus-factor 风险低。Meta 声称核心「is used extensively in production at Meta」，说明有内部用户在维系它。[未验证]
 - **年龄与 Lindy（约 9 个月，2025-09 创建）：** **年轻、Lindy 上未经检验**——太新，不能仅凭耐久性押注。缓和因素不是年龄而是背书方的记录（Meta/zstd 血统）；但 pre-1.0 意味着格式本身仍是移动靶。

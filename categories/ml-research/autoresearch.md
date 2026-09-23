@@ -116,7 +116,7 @@ It's also a clean reference implementation to read or fork when you want to *stu
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 78.1 hours across 5 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 7.7 hours across 4 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-03, ~36 commits on master, no tagged release. [推断] Active in the sense of recently touched, but this is a demo branch, not a maintained product — there is no release cadence to read, and it can change commit-to-commit.
 - **Governance / bus factor:** a single-maintainer repo under Karpathy's personal account (`User`-owned) carrying ~88k stars — a textbook **bus-factor flag**: the stars reflect the author's reach, not a team or sustained roadmap. [推断] No governance, no contributors process implied; if the author moves on, it freezes.
 - **Age & Lindy verdict (created 2026-03, ~0 yr):** brand-new and ridden on hype/star count, not survival. [推断] **Unproven by Lindy** — judge it as a reference artifact and a pattern to study, not a long-term dependency. Its value is the *idea* (agent-as-researcher under a fixed budget), which outlives any specific commit.

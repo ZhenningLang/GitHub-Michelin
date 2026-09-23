@@ -125,9 +125,9 @@ Visual Studio Code——一款轻量但强大的代码编辑器，兼具编辑�
 ## 健康度与可持续性
 - **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
 - **响应速度**：无法计算——no_traffic。
-- **采用广度**：Grade D——npmjs.org 上月下载量 2,672（包名：@theia/vscode-builtin-fsharp）。
-- **长青度**：Grade A——仓库已创建 3956 天。
-- **治理集中度**：Grade A——前三贡献者占比 18.1%（?）。
+- **采用广度**：Grade B——npmjs.org 上月下载量 2,136（包名：@theia/vscode-builtin-vb）。
+- **长青度**：Grade A——仓库已创建 4037 天。
+- **治理集中度**：Grade A——前三贡献者占比 21.0%（?）。
 - **许可风险**：Grade A——MIT 许可证。
 ## 存疑（未验证）
 

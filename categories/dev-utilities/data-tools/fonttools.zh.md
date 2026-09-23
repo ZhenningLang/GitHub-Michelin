@@ -127,7 +127,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 1.2 小时，基于 4 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 21.7 小时，基于 10 个 qualifying issues/PRs。
 - **维护（2026-06）。** 非常活跃：v4.63.0 于 2026-05 发布，最后 push 在 2026-06，按稳定的高频小版本节奏发布。未归档——明显在维护，不是吃老本。[推断]
 - **治理 / bus factor。** 隶属 `fonttools` **GitHub 组织**，贡献者历史悠长，由 Behdad Esfahbod 和 Cosimo Lupo（anthrotype）领衔，外加数百名贡献者——多维护者，不是单点失效；bus factor 比大多数字体工具健康。[推断]
 - **年龄与 Lindy。** 2013 年上 GitHub，但其代码血统（Just van Rossum 的 TTX/fontTools）还要更早数年；在此 13+ 年且**仍在活跃发布**⇒ **强 Lindy** 信号——它是既定标准，而非新秀。[推断]

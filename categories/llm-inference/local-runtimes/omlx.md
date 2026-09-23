@@ -125,7 +125,7 @@ You also reach for it when you want one Mac-local server that handles text LLMs,
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 6.0 hours across 19 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 7.4 hours across 27 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06-28; v0.4.4 released 2026-06-16 with frequent rc/dev tags — **very active** development, not coasting. Not archived. [推断]
 - **Governance / bus factor (2026-06) — flag.** Owner is a **single User account** (`jundot`), and one author dominates commit history (~1.2k commits) with a long tail of small outside contributors. This is a **single-maintainer / high-bus-factor** project: if the author stops, it likely stalls. [推断]
 - **Age & Lindy (2026-06) — fails Lindy.** Created **2026-02** (~0.4 years old). Far **too young** to carry any Lindy prior; longevity is entirely unproven regardless of activity. Use age × still-active: active is good, but ~4 months is not a track record. [推断]

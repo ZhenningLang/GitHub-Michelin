@@ -135,7 +135,7 @@ You reach for **Cua**. You spin up an ephemeral sandbox with one async call — 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 1.5 hours across 12 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 105.0 hours across 3 qualifying issues/PRs.
 - **Maintenance — active across many packages.** Last pushed 2026-06, not archived; the monorepo's packages (cua-agent v0.8.4, cua-sandbox v0.1.17, cua-cloud, cua-driver-rs v0.6.8, cua-bench) were all updated 2026-06. Active, but you track **several independent version streams**, and `cua-driver-rs`/Linux drivers are flagged pre-release. `[未验证]`
 - **Governance / backing — single startup (trycua).** **Organization**-owned (`trycua/cua`), ~19k stars [未验证]. Backed by one venture-stage company behind the cua.ai hosted product — better than a lone maintainer, but its longevity is tied to that company's survival and funding. `[推断]`
 - **Age & Lindy — young (created 2025-01, ~1.5 years as of 2026-06).** Old enough to show real benchmark integration (OSWorld/ScreenSpot/Windows Arena) but the many `v0.x` packages signal a pre-stable API; no Lindy prior yet. Expect breaking changes; pin per-package versions.

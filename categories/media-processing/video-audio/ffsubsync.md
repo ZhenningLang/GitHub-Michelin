@@ -125,11 +125,11 @@ You also reach for it in a batch/automation context — a media server (it's the
 
 ## Health & viability
 
-- **Maintenance**: Grade B — 3/13 active weeks in trailing 13; last commit 16 days ago.
+- **Maintenance**: Grade B — 4/13 active weeks in trailing 13; last commit 60 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade D — 17,416 monthly downloads via pypi.org (package: ffsubsync).
-- **Longevity**: Grade A — 2686 days old.
-- **Governance**: Grade C — top-3 contributor share 91.8% (?).
+- **Adoption**: Grade C — 28,965 monthly downloads via pypi.org (package: ffsubsync).
+- **Longevity**: Grade A — 2768 days old.
+- **Governance**: Grade C — top-3 contributor share 95.7% (?).
 - **Risk / License**: Grade A — MIT license.
 
 ## Caveats (unverified)

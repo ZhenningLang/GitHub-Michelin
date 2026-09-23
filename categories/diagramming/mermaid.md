@@ -126,7 +126,7 @@ You also reach for it when you're an agent or a tool generating diagrams program
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 42.9 hours across 28 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 62.8 hours across 16 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06 with recent releases (e.g. `@mermaid-js/tiny@11.16.0`, 2026-06-25) — **actively** maintained, not archived. [推断]
 - **Governance / bus factor.** Owned by the `mermaid-js` GitHub org (a multi-maintainer community project, not a lone-maintainer repo), which lowers bus-factor risk versus a single-author library. No single corporate owner. [推断]
 - **Age & Lindy verdict.** ~12 years old (created 2014-11) and still active ⇒ a **strong Lindy** signal; it's the de-facto text-to-diagram standard, embedded by GitHub/GitLab/Notion/Docusaurus/Obsidian. [推断]

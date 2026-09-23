@@ -127,7 +127,7 @@ It's a strong fit when "similarity ≠ relevance" is your actual pain and your c
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 51.7 hours across 16 qualifying issues/PRs.
+- **Responsiveness**: Grade C — median first-response time 558.2 hours across 7 qualifying issues/PRs.
 - **Maintenance — active.** Default branch last pushed 2026-06, not archived, but there is **no tagged release** at all — "version" is whatever `main` holds, so pin a commit for reproducibility. Active development without semver means you track a moving target. `[未验证]`
 - **Governance / backing — single vendor (Vectify AI).** **Organization**-owned (`VectifyAI/PageIndex`), ~33k stars [未验证]. The roadmap is vendor-driven, and the open repo is the *indexing core* of a larger commercial offering (hosted PageIndex Cloud/MCP/API/VPC) — so the OSS surface is a loss-leader for the product, with the usual open-core risk that the best features land in the hosted tier. `[推断]`
 - **Age & Lindy — young, ~1 year (created 2025-04).** Old enough to have shipped real benchmarks (98.7% FinanceBench, self-reported [未验证]) but not long enough to be a Lindy-safe bet; APIs/CLI flags can shift release-to-release. Treat as a promising young library, not a settled standard.

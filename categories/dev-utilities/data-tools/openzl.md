@@ -124,7 +124,7 @@ The payoff is two-fold: you can get materially better ratio-at-speed than a gene
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 102.4 hours across 7 qualifying issues/PRs.
+- **Responsiveness**: Grade D — median first-response time 749.9 hours across 6 qualifying issues/PRs.
 - **Maintenance (2026-06):** **active** — last pushed 2026-06; tagged releases moving (v0.1.0 2025-10 → v0.2.0 2026-05) but explicitly **pre-1.0**, with the format/API/codec set declared as still-changing. [推断]
 - **Governance & bus factor:** `Organization`-owned by **Meta** (`facebook`), same house as zstd — strong vendor backing and team governance, low bus-factor risk. Meta states the core "is used extensively in production at Meta," so there's an internal user keeping it alive. [未验证]
 - **Age & Lindy (~9mo, created 2025-09):** **young and unproven on Lindy** — too new to bet on durability alone. The mitigant isn't age but the backer's track record (Meta/zstd lineage); still, pre-1.0 means the format itself is a moving target.

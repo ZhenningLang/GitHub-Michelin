@@ -126,7 +126,7 @@ You also reach for it when you want a *small* 2D game or interactive multimedia 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 97.1 hours across 21 qualifying issues/PRs.
+- **Responsiveness**: Grade C — median first-response time 272.8 hours across 4 qualifying issues/PRs.
 - **Maintenance (2026-06).** This repo's last *release* tags are 2.6.1 (2024-09) and 2.6.0 (2024-06), with the repo last pushed 2025-11 — **maintained but with a notably slower release cadence** than its community fork. Not archived. [推断]
 - **Governance / bus factor.** Organization-owned (`pygame`) with a multi-person contributor history (illume/René Dudfield, MyreMylar, Starbuck5, ankith26, and the original authors PeterShinners/llindstrom) — a real community, though much of the recent momentum has shifted to the **pygame-ce** fork. [推断]
 - **Age & Lindy verdict.** This GitHub repo dates to 2017-03, but **pygame the project is ~25 years old** (early 2000s) and still in use ⇒ **very strong Lindy** — it is one of the most enduring Python game libraries. (Repo age understates true age. [未验证])

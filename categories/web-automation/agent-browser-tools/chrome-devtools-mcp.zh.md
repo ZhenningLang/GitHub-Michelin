@@ -132,7 +132,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 27.2 小时，基于 47 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 6.4 小时，基于 49 个 qualifying issues/PRs。
 - **维护——活跃、官方。** 最后一次 push 在 2026-06，未归档；最新 v1.4.0（2026-06-23）。发布在 **ChromeDevTools（Google）** 组织名下，所以维护是机构级而非业余——是本处 web-automation 同类里最强的背书信号。`[未验证]`
 - **治理 / 背书——Google / Chrome DevTools 团队。** 仓库为 **Organization** 所有（`ChromeDevTools/chrome-devtools-mcp`），约 44.5k star[未验证]。bus factor 很低（是 Google 内部一个团队，而非单个维护者）——但要注意 Google 砍掉副项目的履历参差，所以“官方”是降低而非消除弃坑风险。`[推断]`
 - **年龄与 Lindy——年轻（创建于 2025-09，截至 2026-06 约 9 个月）。** 单看自身太新，拿不到 Lindy 先验；版本是 1.x 但 flag/工具面仍随版本变动，要可复现请 pin 版本。它的 Lindy 强度，更多来自其底座（Chrome + CDP + Puppeteer）的耐久性，而非这个仓库自身的年龄。

@@ -123,7 +123,7 @@ You're an applied-AI engineer who's hit a wall hand-tuning a long skill/prompt d
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 42.0 hours across 30 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 69.8 hours across 37 qualifying issues/PRs.
 - **Maintenance (2026-06).** Created 2026-05; last pushed/committed 2026-06 — very actively committed in its first weeks. v0.1.0. **Active** and **not archived**, but this is initial-release velocity, not a track record. [推断]
 - **Governance / backing.** Published under the **microsoft** org — strong institutional backing and a multi-contributor team (better bus factor than a solo repo). Caveat: Microsoft/MSR research repos vary widely in long-term support; org backing is not a maintenance guarantee. [推断]
 - **Age & Lindy verdict.** **~1 month old** (created 2026-05) — **no Lindy whatsoever**. Treat durability as entirely unproven; this is a fresh research artifact. [推断]

@@ -133,7 +133,7 @@ Google 把 Python/Kotlin/C++ 绑定标记为 *Stable*，但项目本身仍处于
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 61.3 小时，基于 36 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 15.8 小时，基于 48 个 qualifying issues/PRs。
 - **维护（2026-06）：** 最后 push 在 2026-06，发版节奏很快（稳定版 v0.13.1 → v0.14.0-alpha 在约 2 周内）——明显**活跃**，但处于 pre-1.0，变动正是这种活跃的代价。[推断]
 - **治理 / 背书：** 由 Google 在 `google-ai-edge`（Organization）下维护，属于 LiteRT / TensorFlow Lite 谱系。[推断] 这消除了单一维护者的巴士因子风险，但 Google 是出了名的项目杀手（参见 MediaPipe→LiteRT-LM 的重定位）——*运行时*的方向性延续比任何单个绑定或格式存活更可靠。
 - **年龄与 Lindy（创建于 2025-04，约 1 年）：** 年轻且被热捧；Lindy 先验很弱——它尚未证明多年存活。押它是为了 Google/LiteRT 的背书与 Gemma 路径，而非长寿记录。[推断]

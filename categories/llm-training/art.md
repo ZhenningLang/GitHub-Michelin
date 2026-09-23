@@ -124,7 +124,7 @@ ART is built for exactly this. You keep your agent code in Python and route its 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 129.2 hours across 8 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — active (as of 2026-06).** Repo pushed 2026-06; latest release v0.5.17 reported 2026-03-13, with frequent shipping on a fast-moving stack. Pre-1.0, so expect API movement and breakage from upstream (vLLM/Unsloth/TRL/torchtune) churn. Not archived. [未验证]
 - **Governance & backing — single vendor (OpenPipe).** Organization-owned by OpenPipe, a venture-style company whose managed/serverless RL offering (with W&B) is the monetized path. Roadmap and the RULER reward tooling are vendor-driven; longevity is tied to OpenPipe's commercial trajectory, and leaning on the managed path carries lock-in risk. [推断]
 - **Age & Lindy — young / unproven.** Created 2025-03, ~1 year old. No Lindy track record yet; this is an early bet on agent-RL becoming mainstream and on OpenPipe sustaining the project, not on durability.

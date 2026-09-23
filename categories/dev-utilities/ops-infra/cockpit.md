@@ -125,7 +125,7 @@ It shines when you have a handful of servers and want a low-ceremony pane of gla
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 30.0 hours across 45 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 52.6 hours across 43 qualifying issues/PRs.
 - **Maintenance (2026-06):** **active and steady** — rolling integer releases (latest `364`, 2026-06-23) shipped on a frequent cadence; last pushed 2026-06. This is a continuously-released project, not a coasting one. [推断]
 - **Governance & bus factor:** `Organization`-owned under `cockpit-project`, effectively **Red Hat-backed** — a vendor with a long Linux-tooling track record and a multi-person team, so low bus-factor risk (org governance, not a solo maintainer). [推断]
 - **Age & Lindy (~12yr, created 2013-11):** **old and still active** — a strong Lindy verdict. A decade-plus of continuous releases plus distro-default shipping (Fedora/RHEL/Debian/Ubuntu) is about as safe a longevity bet as this category offers.

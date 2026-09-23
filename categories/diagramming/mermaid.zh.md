@@ -126,7 +126,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 42.9 小时，基于 28 个 qualifying issues/PRs。
+- **响应速度**：Grade B——中位首次响应时间 62.8 小时，基于 16 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06，近期有发布（如 `@mermaid-js/tiny@11.16.0`，2026-06-25）——处于**活跃**维护，未归档。[推断]
 - **治理 / bus factor。** 归属 `mermaid-js` GitHub 组织（多维护者的社区项目，而非单作者仓库），相比单人维护的库降低了 bus-factor 风险。没有单一公司所有者。[推断]
 - **年龄与 Lindy 判断。** 约 12 年（2014-11 创建）且仍活跃 ⇒ **强 Lindy** 信号；它是事实上的文本转图标准，被 GitHub/GitLab/Notion/Docusaurus/Obsidian 内嵌。[推断]

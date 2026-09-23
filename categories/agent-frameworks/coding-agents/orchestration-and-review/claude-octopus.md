@@ -128,7 +128,7 @@ It fits best when you treat the extra models as a *review/research panel* layere
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.3 hours across 47 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 3.4 hours across 29 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Last push 2026-06-25 with a high release cadence (242 releases, currently v9.45.0); not archived. This reads as actively, even frantically, maintained — the flip side is the churn called out under "When NOT to use."
 - **Governance & bus factor — single-maintainer / personal repo.** Owned by an individual GitHub account (`nyldn`), not an org or foundation; the roadmap is one person's. For a tool you wire into every session, that is a bus-factor-of-one risk. [推断]
 - **Age & Lindy — young, unproven.** Created 2026-01, ~6 months old (as of 2026-06). High activity but no track record; by the age × still-active heuristic it is "active but unproven," not a Lindy-safe bet — its longevity is undemonstrated.

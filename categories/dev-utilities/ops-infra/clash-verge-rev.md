@@ -123,11 +123,11 @@ You're a developer or power user who needs a flexible, rule-based proxy client o
 
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 0.8 hours across 29 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 1.3 hours across 3 qualifying issues/PRs.
 - **Adoption**: Cannot be scored — unknown.
-- **Longevity**: Grade B — 955 days old.
-- **Governance**: Grade B — top-3 contributor share 86.1% (?).
-- **Risk / License**: Grade C — GPL-3.0 license.
+- **Longevity**: Grade B — 1036 days old.
+- **Governance**: Grade B — top-3 contributor share 83.3% (?).
+- **Risk / License**: Grade D — GPL-3.0 license.
 ## Caveats (unverified)
 
 - [未验证] The original Clash project and its Windows GUI were archived; the long-term stability of this continuation fork depends on ongoing community support.

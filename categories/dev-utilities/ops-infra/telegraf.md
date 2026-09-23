@@ -130,7 +130,7 @@ You also reach for it when your sources are heterogeneous and you want collectio
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 24.0 hours across 27 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 45.0 hours across 36 qualifying issues/PRs.
 - **Maintenance (2026-06).** Last pushed 2026-06; v1.39.0 is recent and the project ships on a steady minor-release cadence — **active**, not coasting. Not archived. [推断]
 - **Governance / backing.** A single-vendor project: InfluxData drives the roadmap, with MIT licensing and vendor-neutral outputs. That's a bus-factor consideration — outputs stay open, but direction follows one company's priorities (contrast the CNCF-governed OTel Collector). [推断]
 - **Age & Lindy verdict.** ~11 years old (created 2015-04) and **still actively shipping** ⇒ a **strong Lindy** signal; this is a mature, long-proven collector, not a hyped newcomer. [推断]

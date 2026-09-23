@@ -157,7 +157,7 @@ Kong is a door that sits in front of all your backend services. **The door and a
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 26.0 hours across 5 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 93.9 hours across 8 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, latest release 3.9.x — a continuously released, actively maintained gateway, not a coasting one. [推断]
 - **Governance & backing:** `Organization`-owned and **vendor-backed** (Kong Inc., a funded commercial company), not a foundation project. That means a real roadmap and support exist, but the **open-core** model is the governance reality: the OSS gateway is one tier and the vendor controls what stays open vs. moves to Enterprise (Developer Portal, RBAC, advanced AI plugins). Roadmap is the vendor's, not a neutral foundation's. [推断]
 - **Age & Lindy verdict:** created 2014-11, so ~12 years old **and still active** — a strong **Lindy** signal: it has survived multiple architecture shifts (it even removed Cassandra as a config store in the 3.4 line) and is among the longest-lived OSS API gateways. Old + active ⇒ a safe durability bet for the core proxy. [推断]

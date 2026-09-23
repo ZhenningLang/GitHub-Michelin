@@ -124,7 +124,7 @@ It's also the substrate you inherit indirectly: **Fabric** (remote task executio
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 4.0 hours across 5 qualifying issues/PRs.
+- **Responsiveness**: Grade C — median first-response time 208.1 hours across 11 qualifying issues/PRs.
 - **Maintenance (2026-06).** Repo last pushed 2026-05 — **active**, not archived. Releases are published primarily to **PyPI** (the GitHub Releases list is empty here), so cadence is best judged from PyPI/changelog rather than git tags. [未验证]
 - **Governance / bus factor.** Under the **`paramiko` organization**, but historically driven overwhelmingly by one maintainer (**bitprophet** / Jeff Forcier, ~2,800 commits vs the next contributor in the hundreds) — a real **bus-factor** consideration despite the org wrapper. [推断]
 - **Age & Lindy verdict.** Created **2009**, ~17 years old and **still active** ⇒ a **strong Lindy** signal: it is the de-facto Python SSH library, depended on by Fabric, Ansible, and a large slice of Python infra tooling. [推断]

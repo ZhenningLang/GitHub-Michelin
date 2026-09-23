@@ -131,7 +131,7 @@ You also reach for it when you outgrow CPU: the same library has a GPU path (`fa
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 64.7 hours across 16 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 101.7 hours across 21 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-06, current release line v1.14.x — **active** and steadily released; a long-running, well-maintained library, not a stalled research drop. [推断]
 - **Governance / backing:** Meta FAIR-maintained (`facebookresearch/faiss`, Organization). [推断] Institutional backing removes single-maintainer bus-factor risk; it is core enough to Meta's own retrieval stack and the broader vector-DB ecosystem (many stores wrap it) that it has strong structural reasons to persist.
 - **Age & Lindy (created 2017-02, ~9yr):** old **and** still active — a **strong Lindy** bet. Nine years of continuous use and being the de-facto in-process ANN index under many vector databases is about as durable a longevity prior as this space offers. [推断]

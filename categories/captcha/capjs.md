@@ -126,7 +126,7 @@ Cap fits here. You drop the `<cap-widget>` on the protected form (or call it pro
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 5.5 hours across 37 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 9.6 hours across 12 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, not archived — active. The standalone server is at a mature-looking v3.1.5 while the library (`capjs-core`) is still v0.1.x, so the *library* API surface is the less-settled half. [推断]
 - **Governance & bus factor:** `User`-owned (tiagozip), single-maintainer. At ~7k stars the bus-factor exposure is real but more contained than a 40k-star one-person project — still, there is no foundation or vendor behind it, so continuity rides on one author. [推断]
 - **Age & Lindy verdict:** created 2025-01, so ~1.5 years old — **young; Lindy not yet established**. It is past the first-month vapor stage but not proven across years; the pre-1.0 `capjs-core` reinforces "expect API churn, pin versions." [推断]

@@ -126,11 +126,11 @@ You're a developer who spends hours in the terminal every day and wants the fast
 **None.** Alacritty is a single binary. Install via package manager or download from releases. Configuration is a single YAML file. No daemon, no background service.
 
 ## Health & viability
-- **Maintenance**: Grade A — 7/13 active weeks in trailing 13; last commit 10 days ago.
-- **Responsiveness**: Grade A — median first-response time 1.5 hours across 55 qualifying issues/PRs.
-- **Adoption**: Grade B — 520,819 monthly downloads via crates.io (package: alacritty_terminal).
-- **Longevity**: Grade A — 3,788 days old.
-- **Governance**: Grade C — top-3 contributor share 93.3% (?).
+- **Maintenance**: Grade B — 4/13 active weeks in trailing 13; last commit 22 days ago.
+- **Responsiveness**: Grade A — median first-response time 2.0 hours across 38 qualifying issues/PRs.
+- **Adoption**: Grade A — 1,616,311 monthly downloads via crates.io (package: alacritty_terminal).
+- **Longevity**: Grade A — 3870 days old.
+- **Governance**: Grade B — top-3 contributor share 92.0% (?).
 - **Risk / License**: Grade A — Apache-2.0 license.
 ## Caveats (unverified)
 

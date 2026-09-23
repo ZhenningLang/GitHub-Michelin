@@ -125,9 +125,9 @@ You are a solo developer or small team running AI agents on a $5 VPS or a GPU cl
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade B — 377,785 monthly downloads via pypi.org (package: hermes-agent).
-- **Longevity**: Grade D — 345 days old.
-- **Governance**: Grade B — top-3 contributor share 61.9% (?).
+- **Adoption**: Grade A — 142,147 monthly downloads via pypi.org (package: hermes-agent).
+- **Longevity**: Grade C — 427 days old.
+- **Governance**: Grade B — top-3 contributor share 65.0% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

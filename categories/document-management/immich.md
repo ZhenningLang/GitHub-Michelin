@@ -138,11 +138,11 @@ You're a privacy-conscious user with thousands of photos and videos scattered ac
 - The mobile app auto-backup works well on WiFi but can be battery-heavy on cellular if not restricted
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Grade A — median first-response time 10.4 hours across 9 qualifying issues/PRs.
-- **Adoption**: Grade D — 6,496 monthly downloads via npmjs.org (package: @immich/cli).
-- **Longevity**: Grade A — 1,611 days old.
-- **Governance**: Grade A — top-3 contributor share 27.3% (?).
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Grade A — median first-response time 2.7 hours across 29 qualifying issues/PRs.
+- **Adoption**: Grade B — 11,288 monthly downloads via npmjs.org (package: @immich/cli).
+- **Longevity**: Grade A — 1692 days old.
+- **Governance**: Grade A — top-3 contributor share 24.0% (?).
 - **Risk / License**: Grade E — AGPL-3.0 license.
 ## Caveats (unverified)
 

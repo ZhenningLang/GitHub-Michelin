@@ -125,7 +125,7 @@ It fits best when you already live inside the Letta ecosystem (or want an excuse
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 91.3 hours across 5 qualifying issues/PRs.
+- **Responsiveness**: Cannot be scored — unknown.
 - **Maintenance — slowing, demo-stage (as of 2026-06).** Latest release v2.1.1 (2026-03-30, "Bug fixes"); last push 2026-05-13 — a couple of months stale by 2026-06, no recent activity. Not archived, but the cadence reads as coasting on a demo rather than active product development.
 - **Governance & backing — vendor demo (Letta).** Owned by `letta-ai`, the same team behind the Letta platform; backing is real, but this repo is explicitly a *demo* and the team points you to Letta Code for production. The org won't vanish, but it has no incentive to harden the demo. [推断]
 - **Age & Lindy — young and explicitly not-for-production.** Created 2026-01, ~5 months old (as of 2026-06). No track record and the authors disclaim production use; Lindy does not apply — this is a reference implementation, not a durable bet.

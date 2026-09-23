@@ -123,7 +123,7 @@ The defining trait is that it ships **no model and no API key of its own**: it s
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.2 hours across 52 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.1 hours across 17 qualifying issues/PRs.
 - **Maintenance (2026-06):** [推断] active but immature — last push 2026-06, but **no tagged release** (self-described "early but real"), so you track `main` with no version line. Open-issue count ~53. Recent activity is healthy; the absence of any release cadence is the concern, not stalled commits.
 - **Governance & backing:** [推断] under the `nexu-io` org — same team as [open-design](open-design.md), the larger desktop app this is the focused subset of. So there's an org and a sibling product behind it rather than a lone author, but it's a young single-vendor project; agent detection, the `SKILL.md` protocol and the design-system model are borrowed verbatim from `open-design`, so you're adopting that ecosystem's conventions, not a neutral standard.
 - **Age & Lindy:** [未验证] repo created ~2026-05, ~1 month of public history as of 2026-06 — **brand-new; no Lindy prior.** README figures (75 skills / 9 surfaces / 8 CLIs, and upstream "40k★" claims) are promotional and can drift on `main`; verify before depending.

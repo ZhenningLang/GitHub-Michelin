@@ -131,7 +131,7 @@ So you reach for LiteRT-LM. You package a **Gemma** model into the `.litertlm` f
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 61.3 hours across 36 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 15.8 hours across 48 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-06 with a fast release cadence (stable v0.13.1 → v0.14.0-alpha within ~2 weeks) — clearly **active**, but pre-1.0, so churn is the cost of that activity. [推断]
 - **Governance / backing:** Google-maintained under `google-ai-edge` (Organization), part of the LiteRT / TensorFlow Lite lineage. [推断] Removes single-maintainer bus-factor risk, but Google is a notorious project-killer (cf. the MediaPipe→LiteRT-LM repositioning) — directional continuity of the *runtime* is safer than any one binding or format surviving.
 - **Age & Lindy (created 2025-04, ~1yr):** young and hyped; the Lindy prior is weak — it has not yet proven multi-year survival. Bet on it for the Google/LiteRT backing and Gemma path, not for longevity track record. [推断]

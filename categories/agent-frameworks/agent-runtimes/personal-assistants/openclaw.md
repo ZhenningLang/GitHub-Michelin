@@ -121,11 +121,11 @@ You are a privacy-conscious professional who wants a single AI assistant that fo
 **Low**. The gateway is a single control plane; installation is straightforward for users comfortable with running Node.js apps. The main ongoing burden is configuring messaging channels and rotating LLM credentials.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago. This is a measured value, reliable.
-- **Responsiveness**: Grade ? — 0 qualifying issues/PRs in window; no direct response-speed data. Maintenance=A only means the repo is still committing code; it says nothing about issue-response speed. If the repo has closed its issue tracker or uses Discord/forums, responsiveness is simply unmeasurable via GitHub data alone.
-- **Adoption**: Grade A — 14,326,323 monthly downloads via npmjs.org (package: openclaw).
-- **Longevity**: Grade C — 221 days old. No proven long-term track record; weak Lindy prior.
-- **Governance**: Grade B — top-3 contributor share 75.2%, concentration risk exists; top-1 at 52.8%, so a core maintainer departure could significantly slow the project.
+- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
+- **Responsiveness**: Cannot be scored — unknown.
+- **Adoption**: Grade A — 10,026,677 monthly downloads via npmjs.org (package: @openclaw/brave-plugin).
+- **Longevity**: Grade C — 302 days old.
+- **Governance**: Grade B — top-3 contributor share 74.6% (?).
 - **Risk / License**: `?` (license_unparsed) — verified 2026-07-03: GitHub returns `NOASSERTION` but the LICENSE body is standard MIT (`Permission is hereby granted...` complete paragraph); recognition fails because of a trailing third-party notice pointer, and there is no relicense history.
 
 ## Caveats (unverified)

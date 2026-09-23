@@ -106,9 +106,9 @@ GitHub 出品的开源工具包，帮助你上手 Spec-Driven Development——�
 ## 健康度与可持续性
 - **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
 - **响应速度**：无法计算——unknown。
-- **采用广度**：Grade D——pypi.org 上月下载量 1,919（包名：spec-kit-redist）。
-- **长青度**：Grade B——仓库已创建 315 天。
-- **治理集中度**：Grade A——前三贡献者占比 52.2%（?）。
+- **采用广度**：Grade A——pypi.org 上月下载量 1,919（包名：spec-kit-redist）。
+- **长青度**：Grade B——仓库已创建 397 天。
+- **治理集中度**：无法计算——unknown。
 - **许可风险**：Grade A——MIT 许可证。
 ## 存疑（未验证）
 

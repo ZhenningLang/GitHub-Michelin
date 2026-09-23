@@ -136,7 +136,7 @@ You also reach for it when you need broad chart variety and dashboard interactiv
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 29 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 4.1 hours across 8 qualifying issues/PRs.
 - **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, at v6.x — a continuously released, heavily maintained project; ~903 open issues reflects scale and breadth of use, not neglect. [推断]
 - **Governance & backing:** an **Apache Software Foundation** top-level project — foundation governance, a PMC rather than a single maintainer or vendor, and ASF's relicense/IP guardrails. This is about the strongest governance posture in the index: no one company can unilaterally rug-pull the license. [推断]
 - **Age & Lindy verdict:** created 2015-07, so ~11 years old **and still active** — a textbook **strong Lindy** bet: long-lived, foundation-backed, widely deployed. Old + active ⇒ durable. [推断]

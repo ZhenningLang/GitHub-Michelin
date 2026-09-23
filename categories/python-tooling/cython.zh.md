@@ -131,7 +131,7 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 6.0 小时，基于 29 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 3.0 小时，基于 46 个 qualifying issues/PRs。
 - **维护（2026-06）。** 最后 push 于 2026-06；发布频繁且当前——3.2.5/3.2.6 和一个 3.3.0a1 alpha 都在 2026 年年中——明显**非常活跃**。未归档。
 - **治理 / bus factor。** 组织所有（`cython`），有深厚长期的核心团队（scoder/Stefan Behnel、robertwb/Robert Bradshaw、da-woods、dalcinl 等）——是真正多维护者项目，不是单人仓库。[推断]
 - **年龄与 Lindy 判断。** 本仓库始于 2010-11（约 15 年），而 Cython 的血统（源自 Pyrex）还更早；**持续活跃十余年**⇒**非常强的 Lindy**。它是科学 Python 很大一片之下的基础设施。[推断]

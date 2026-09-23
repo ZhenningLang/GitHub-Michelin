@@ -130,11 +130,11 @@ You also use it when you need *more than one* metric from a single, optimized im
 
 ## Health & viability
 
-- **Maintenance**: Grade A — 11/13 active weeks in trailing 13; last commit 3 days ago.
-- **Responsiveness**: Grade A — median first-response time 41.2 hours across 4 qualifying issues/PRs.
-- **Adoption**: Grade D — 97,260 monthly downloads via formulae.brew.sh (package: libvmaf).
-- **Longevity**: Grade A — 3798 days old.
-- **Governance**: Grade C — top-3 contributor share 85.9% (?).
+- **Maintenance**: Grade A — 7/13 active weeks in trailing 13; last commit 6 days ago.
+- **Responsiveness**: Grade A — median first-response time 11.1 hours across 6 qualifying issues/PRs.
+- **Adoption**: Grade A — 58,378 monthly downloads via formulae.brew.sh (package: libvmaf).
+- **Longevity**: Grade A — 3879 days old.
+- **Governance**: Grade C — top-3 contributor share 87.0% (?).
 - **Risk / License**: BSD-2-Clause-Patent (permissive) — the health radar records this axis as `?` because GitHub reports NOASSERTION for the repository, so the license is taken from the page frontmatter rather than the machine block.
 
 ## Caveats (unverified)

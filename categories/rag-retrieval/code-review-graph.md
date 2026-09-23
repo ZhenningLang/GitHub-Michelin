@@ -134,7 +134,7 @@ It's also a fit when you want risk-scored PR review *in CI without sending code 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 134.0 hours across 33 qualifying issues/PRs.
+- **Responsiveness**: Grade B — median first-response time 403.7 hours across 22 qualifying issues/PRs.
 - **Maintenance (2026-06):** last push 2026-06-14, latest release v2.3.6 on 2026-06-10 — **active** with a fast release cadence. [推断] Cadence is the upside; for a project this young the same speed means an unstable API/format surface.
 - **Governance / bus factor:** **single-maintainer, `User`-owned** (`tirth8205/code-review-graph`), Beta-classified. This is a real **bus-factor flag**: ~18k stars on a personal repo created only months ago is hype far outrunning institutional backing — there is no team or foundation behind the roadmap. [推断]
 - **Age & Lindy (created 2026-02, ~0yr):** **young and hyped — fails the Lindy prior.** No track record, no proven multi-year survival; the star count says attention, not durability. Treat continuity as unproven and pin the GitHub Action to a tag. [推断]

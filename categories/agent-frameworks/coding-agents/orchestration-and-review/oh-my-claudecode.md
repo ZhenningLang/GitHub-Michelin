@@ -123,7 +123,7 @@ You reach for it specifically when you want orchestration *inside the Claude Cod
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.0 hours across 21 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 0.6 hours across 38 qualifying issues/PRs.
 - **Maintenance — very active (as of 2026-06).** Last push 2026-06 with an aggressive release cadence (multiple releases a month, currently v4.15.0); not archived. Actively maintained, but the velocity is itself the churn flagged under "When NOT to use."
 - **Governance & bus factor — single-maintainer + huge-star mismatch ⇒ red flag.** A `User`-owned repo (`Yeachan-Heo`) carrying ~37k stars is a classic bus-factor flag: one person owns the roadmap of something with disproportionate visibility. Treat the popularity as decoupled from maintenance depth before making it load-bearing. [推断]
 - **Age & Lindy — young, unproven.** Created 2026-01, ~6 months old (as of 2026-06). High activity but no track record; active-but-unproven, not Lindy-safe — longevity and single-author continuity are undemonstrated.

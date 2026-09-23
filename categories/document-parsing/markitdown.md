@@ -121,11 +121,11 @@ You're building a RAG pipeline, a document QA system, or an agent that needs to 
 **Low.** `pip install markitdown` and import. The library is stateless and runs in-process; there is no service to deploy, no database to manage, and no persistent infrastructure. The main operational concern is keeping the Python environment and optional dependencies current, plus the input-sanitization discipline mentioned in the security notes.
 
 ## Health & viability
-- **Maintenance**: Grade B — 3/13 active weeks in trailing 13; last commit 37 days ago.
-- **Responsiveness**: Grade A — median first-response time 37.3 hours across 32 qualifying issues/PRs.
-- **Adoption**: Grade A — 10,869,537 monthly downloads via pypi.org (package: markitdown).
-- **Longevity**: Grade C — 597 days old.
-- **Governance**: Grade A — top-3 contributor share 53.6% (?).
+- **Maintenance**: Grade A — 7/13 active weeks in trailing 13; last commit 1 days ago.
+- **Responsiveness**: Grade B — median first-response time 66.6 hours across 36 qualifying issues/PRs.
+- **Adoption**: Grade A — 14,692,950 monthly downloads via pypi.org (package: markitdown).
+- **Longevity**: Grade C — 678 days old.
+- **Governance**: Grade B — top-3 contributor share 53.3% (?).
 - **Risk / License**: Grade A — MIT license.
 ## Caveats (unverified)
 

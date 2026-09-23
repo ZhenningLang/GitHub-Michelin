@@ -128,7 +128,7 @@ Mem0 正是为此而生。一轮对话后你调用 `m.add(messages, user_id=...)
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 20.6 小时，基于 31 个 qualifying issues/PRs。
+- **响应速度**：Grade A——中位首次响应时间 12.8 小时，基于 37 个 qualifying issues/PRs。
 - **维护（2026-06）：** 活跃维护——最后 push 于 2026-06，未归档，两套 SDK（Python `v2.0.8`、Node `ts-v3.0.10`）在各自独立的发版线上推进。约 440 个 open issue 绝对值偏高，但对这个 star 量级的热门项目算正常，单看它不构成停滞信号。
 - **治理 / bus factor：** 归 `mem0ai` 组织（一家商业公司）所有，不是基金会。路线图由厂商掌控、被付费的 **Mem0 Platform** 业务牵引——是单厂商 open-core 结构，而非社区治理。`[推断]`
 - **年龄与 Lindy 判断：** 约 3 岁（创建于 2023-06）且仍活跃——存活到至少经历过一次抽取算法大重写（UPDATE/DELETE → ADD-only），所以越过了基本的 Lindy 门槛（老 + 活跃）；但这种 churn 意味着 *API* 的稳定性弱于项目本身的存续性。

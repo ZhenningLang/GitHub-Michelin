@@ -134,7 +134,7 @@ It also shines as the *ingest and transport* layer in front of something heavier
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 3.0 hours across 44 qualifying issues/PRs.
+- **Responsiveness**: Grade A — median first-response time 1.8 hours across 47 qualifying issues/PRs.
 - **Maintenance (2026-06).** Frequent releases (v1.20.16, 2026-05-26) and last pushed 2026-06 — **active**, fast-moving, not archived. [推断]
 - **Governance / bus factor.** This is the standout flag: a **single-maintainer, `User`-owned repo** (`9001/copyparty`) with ~45k stars. Heavy adoption resting on one person is a real bus-factor risk — if the maintainer steps away, there is no foundation or vendor to carry it. The opinionated, single-author design (e.g. "sync will never be supported") is the flip side of that. [推断]
 - **Age & Lindy verdict.** ~7 years old (created 2019-05) and still actively maintained ⇒ a **moderate Lindy** signal — long enough to have proven durable, but it lives or dies with its maintainer rather than an institution. [推断]
