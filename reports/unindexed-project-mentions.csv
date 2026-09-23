@@ -479,6 +479,7 @@ Maxwell's Daemon,categories/databases/data-sync/python-mysql-replication.md,,no
 Mayan EDMS,categories/document-management/paperless-ngx.md,,no
 Mayan EDMS / Docspell / Nextcloud,categories/document-management/INDEX.md,,no
 mCaptcha,categories/captcha/capjs.md,,no
+mcp-scan (Invariant Labs),categories/llm-eval/ai-infra-guard.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
 MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
@@ -653,6 +654,7 @@ Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
 PyPy,categories/python-tooling/cython.md,,no
 pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
+PyRIT,categories/llm-eval/ai-infra-guard.md,,no
 Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
 Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
 python-social-auth,categories/auth/authomatic.md,,no

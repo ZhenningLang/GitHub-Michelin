@@ -272,6 +272,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | Apache-2.0 | B (6/6) | [EN](categories/llm-eval/giskard.md) · [中](categories/llm-eval/giskard.zh.md) |
 | **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | NOASSERTION | A (5/6) | [EN](categories/llm-eval/langfuse.md) · [中](categories/llm-eval/langfuse.zh.md) |
 | **SWE-bench** | Use it when you need to grade coding-agent patches against real GitHub issues and their tests — each evaluation run needs Docker and a lot of disk. | MIT | B (6/6) | [EN](categories/llm-eval/swe-bench.md) · [中](categories/llm-eval/swe-bench.zh.md) |
+| **AI-Infra-Guard** | Use it when the audit surface is your whole self-hosted AI stack — live-service CVEs, MCP servers, agent skills, jailbreak evals — from one Tencent-built platform, not a single model endpoint. | Apache-2.0 | B (6/6) | [EN](categories/llm-eval/ai-infra-guard.md) · [中](categories/llm-eval/ai-infra-guard.zh.md) |
 
 ### agent-dev-methodology
 
