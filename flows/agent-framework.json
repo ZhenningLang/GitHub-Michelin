@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Framework does", "zh": "Agent Framework 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and set provider credentials", "zh": "装包，配好模型凭据", "code": "pip install agent-framework"},
+    {"lane": "you", "en": "Create an agent with a chat client, instructions, and plain-function tools", "zh": "用模型客户端、指令和普通函数工具造一个 agent", "code": "Agent(client=OpenAIChatClient(), instructions=…, tools=[…])"},
+    {"lane": "you", "en": "Hand it a task", "zh": "把任务交给它", "code": "await agent.run(\"…\")"},
+    {"lane": "them", "en": "Calls the model, runs your tools, and loops until it can answer", "zh": "调模型、执行你的工具函数，循环到能给出答案", "component": {"en": "agent loop", "zh": "agent 循环"}},
+    {"lane": "them", "en": "Returns one response object with final text, messages, and tool-call records", "zh": "返回一个响应对象：最终文本、消息与工具调用记录", "component": {"en": "AgentResponse", "zh": "AgentResponse"}}
+  ],
+  "value": {"en": "The tool-calling loop is not yours to write; sessions, middleware, and graph workflows bolt onto the same Agent later", "zh": "工具调用循环不用自己写；会话、中间件、图工作流之后都长在这同一个 Agent 上"},
+  "sources": [
+    "https://github.com/microsoft/agent-framework README.md (pip install agent-framework; Python quickstart with Agent + FoundryChatClient)",
+    "python/README.md (OpenAIChatClient, tools=[get_weather, ...], agent.run)",
+    "python/samples/01-get-started/01_hello_agent.py (Agent(client=..., instructions=...); await agent.run(...); streaming mode)"
+  ]
+}

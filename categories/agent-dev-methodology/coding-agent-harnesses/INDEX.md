@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Claude Code Templates** | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. | B (5/6) | [→](claude-code-templates.md) |
 | **Compound Engineering** | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. | B (4/5) | [→](compound-engineering.md) |
 | **ECC** | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. | B (6/6) | [→](ecc.md) |
 | **SuperClaude Framework** | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. | B (6/6) | [→](superclaude.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [Claude Code Templates](claude-code-templates.md) | ✅ | B (5/6) | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. |
 | [Compound Engineering](compound-engineering.md) | ✅ | B (4/5) | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. |
 | [ECC](ecc.md) | ✅ | B (6/6) | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. |
 | [SuperClaude Framework](superclaude.md) | ✅ | B (6/6) | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. |

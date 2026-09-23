@@ -90,8 +90,11 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    scenario, the choice, and the decisive tradeoff. Do not keep or introduce template verdicts such
    as `Use this page for its stated niche.` / `当前页用于它的主场景。` or vague claims such as `best`,
    `good choice`, or `open-source alternative`.
-     **Q&A / 快问快答**: if the re-read produced leftover questions the template still cannot
-     hold, write or refresh the Q&A; if they now fit a required section, delete the heading.
+     **Q&A / 快问快答**: re-open the decision rather than inheriting it. If the re-read — or any
+     conversation about this page since it shipped — produced leftover questions the template
+     cannot hold, write or refresh the Q&A; if they now fit a required section, delete the heading.
+     If there are none, record `no leftover Q&A` in the change summary instead of omitting silently
+     (schema §2); a later conversation is itself a reason to re-open.
     **How it works**: if the page has `flows/<stem>.json`, re-check every `code` value against the
    refetched README/source (renamed commands, new install path, removed APIs) and fix the spec +
    mechanism paragraph; then `python3 tools/flow_card.py <page>`. If the page lacks the section,

@@ -176,6 +176,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | **LangGraph** | Build resilient agents. | MIT | A（6/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/langgraph.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/langgraph.zh.md) |
 | **LlamaIndex** | LlamaIndex is the leading document agent and OCR platform | MIT | A（6/6） | [EN](categories/agent-frameworks/workflow-builders/llamaindex.md) · [中](categories/agent-frameworks/workflow-builders/llamaindex.zh.md) |
 | **AutoGen** | A programming framework for agentic AI | CC-BY-4.0 | B（6/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.zh.md) |
+| **Microsoft Agent Framework** | 微软对 AutoGen + Semantic Kernel 的接班品——agent 优先的 Python／.NET 框架，带类型图工作流、断点续跑和 Foundry 托管。 | MIT | A（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/agent-framework.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/agent-framework.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | MIT | A（5/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.zh.md) |
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | MIT | B（6/6） | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.zh.md) |
 | **Claude Commerce Agents** | 你要在一个卖东西的产品（零售、旅游、票务、电信）里做助手，想直接拿到购物/商家 agent 这一层（prompt、护栏、UI 回填、暂存审批）——当作一份读来 vendor 的蓝图，而不是装来用的依赖。 | Apache-2.0 | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.md) |
@@ -272,6 +273,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **12-Factor Agents** | 当你想用一套生产级 agent 设计原则来指导手写或薄框架 agent 时使用。 | CC-BY-SA-4.0 (content) / Apache-2.0 (code examples) | "?"（2/5） | [中](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md) |
+| **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.md) |
 | **Superpowers** | 当你想给编程 agent 装一套即插即用的「头脑风暴→计划→TDD→验证」SDLC 方法论时用它。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superpowers.md) |
 | **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | MIT | B（6/6） | [中](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.zh.md) · [EN](categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md) |
 | **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | MIT | D（6/6） | [中](categories/agent-dev-methodology/spec-driven-development/get-shit-done.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/get-shit-done.md) |
@@ -291,6 +293,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/oss-atlas/main/` 拉取页面
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/json-render.zh.md) · [EN](categories/ai-design-generation/json-render.md) |
 | **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | Apache-2.0 | B（5/6） | [中](categories/ai-design-generation/html-anything.zh.md) · [EN](categories/ai-design-generation/html-anything.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/open-design.zh.md) · [EN](categories/ai-design-generation/open-design.md) |
 | **Impeccable** | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 | Apache-2.0 | B（6/6） | [中](categories/ai-design-generation/impeccable.zh.md) · [EN](categories/ai-design-generation/impeccable.md) |

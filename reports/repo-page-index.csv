@@ -238,6 +238,7 @@ https://github.com/dair-ai/Prompt-Engineering-Guide,prompt-engineering-guide,pro
 https://github.com/dani-garcia/vaultwarden,vaultwarden,ops-infra,categories/dev-utilities/ops-infra/vaultwarden.md
 https://github.com/danny-avila/LibreChat,librechat,llm-chat-ui,categories/llm-chat-ui/librechat.md
 https://github.com/datalab-to/marker,marker,document-parsing,categories/document-parsing/marker.md
+https://github.com/davila7/claude-code-templates,claude-code-templates,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/claude-code-templates.md
 https://github.com/dbeaver/dbeaver,dbeaver,database-clients,categories/databases/database-clients/dbeaver.md
 https://github.com/dealfonso/sapp,sapp,pdf-tools,categories/pdf-tools/sapp.md
 https://github.com/debezium/debezium,debezium,data-sync,categories/databases/data-sync/debezium.md
@@ -414,6 +415,7 @@ https://github.com/mher/flower,flower,task-queue,categories/task-queue/flower.md
 https://github.com/micromark/micromark,micromark,markdown-tools,categories/markdown-tools/micromark.md
 https://github.com/microsoft/BitNet,bitnet,on-device-ml,categories/on-device-ml/bitnet.md
 https://github.com/microsoft/SkillOpt,skillopt,workflow-builders,categories/agent-frameworks/workflow-builders/skillopt.md
+https://github.com/microsoft/agent-framework,agent-framework,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/agent-framework.md
 https://github.com/microsoft/agent-governance-toolkit,agent-governance-toolkit,agent-governance,categories/agent-governance/agent-governance-toolkit.md
 https://github.com/microsoft/agent-lightning,agent-lightning,llm-training,categories/llm-training/agent-lightning.md
 https://github.com/microsoft/autogen,autogen,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md
@@ -574,6 +576,7 @@ https://github.com/usablica/intro.js,intro-js,product-tours,categories/web-ui/pr
 https://github.com/valkey-io/valkey,valkey,database-engines,categories/databases/database-engines/valkey.md
 https://github.com/vercel-labs/agent-browser,agent-browser,agent-browser-tools,categories/web-automation/agent-browser-tools/agent-browser.md
 https://github.com/vercel-labs/agent-skills,vercel-agent-skills,engineering,categories/agent-skills/engineering/vercel-agent-skills.md
+https://github.com/vercel-labs/json-render,json-render,ai-design-generation,categories/ai-design-generation/json-render.md
 https://github.com/vercel-labs/openreview,openreview,ai-code-review,categories/ai-code-review/openreview.md
 https://github.com/vercel-labs/skills,vercel-skills,harness-extensions,categories/agent-tooling/harness-extensions/vercel-skills.md
 https://github.com/vercel/eve,eve,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/eve.md

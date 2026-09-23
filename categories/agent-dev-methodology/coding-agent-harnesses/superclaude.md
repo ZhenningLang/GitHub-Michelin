@@ -105,7 +105,7 @@ It also fits when you want behavioral *modes* layered on top of the raw model: a
 | [Compound Engineering](compound-engineering.md) | ✅ | Choose Compound Engineering when you need methodology-plus-plugin tooling for compounding agent work. | Methodology-plus-plugin for compounding agent work; a development *philosophy* with tooling, vs SuperClaude's config-injection framework. |
 | [ECC](ecc.md) | ✅ | Choose ECC when you need context-engineering methodology rather than an installable command suite. | Context-engineering methodology for agents; conceptual/process framing rather than an installable command suite. |
 | [12-Factor Agents](../spec-driven-development/12-factor-agents.md) | ✅ | Choose 12-Factor Agents when you need principles for building reliable LLM agents. | Principles for building reliable LLM agents — a spec/manifesto you read, not software you install into Claude Code. |
-| claude-code-templates / awesome-claude-code | 未收录 | Choose community template collections when you want lighter, à-la-carte Claude Code config snippets. | Community config/template collections for Claude Code; lighter, à-la-carte copy-paste vs SuperClaude's installed, coordinated framework. |
+| [claude-code-templates](claude-code-templates.md) / awesome-claude-code | 部分已收录 | Choose claude-code-templates when you want lighter, à-la-carte Claude Code config snippets you assemble yourself; choose SuperClaude when you want a coordinated framework installed as one set. | The catalog is a shelf of independently authored components with no coordination guarantee; SuperClaude trades that freedom for one designed, installed system. awesome-claude-code has no page. |
 
 ## Tech stack
 

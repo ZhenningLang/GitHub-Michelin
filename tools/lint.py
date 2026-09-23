@@ -33,6 +33,9 @@ Checks (ERROR = non-zero exit; WARNING = printed, exit still 0):
   - optional Q&A / 快问快答: if present, non-empty, bilingual pair matches, sits after
     When to use and before How it works (or When NOT if that section is absent)
     -> ERROR on empty / one-sided / wrong position
+    NOTE: the *decision* to write the section (schema §2: "required decision, optional section",
+    recorded as `no leftover Q&A` in the change summary) is intentionally NOT gateable — absence
+    here cannot distinguish a considered "none" from an agent that never looked.
   - prose-region [未验证]/[推断] density > PROSE_LABEL_MAX -> WARNING (converge into the Caveats section)
   - every directory under categories/ is a category node: must have INDEX.md + INDEX.zh.md
     (traversal is NOT gated on INDEX existence, so a dir missing its INDEX is reported, not skipped)
@@ -701,7 +704,7 @@ def check_qa(
     found = own.search(text)
     if found:
         if not section_after_heading(text, found):
-            rep.error(path, "Q&A / 快问快答 is empty — omit the heading if there is nothing leftover")
+            rep.error(path, "Q&A / 快问快答 is empty — drop the heading; if there is genuinely nothing, record `no leftover Q&A` in the change summary")
         h2 = [m.group(0).strip() for m in re.finditer(r"(?m)^##[ \t]+\S.*$", text)]
         heading = "## 快问快答" if zh else "## Q&A"
         want_prev = "## 何时使用" if zh else "## When to use"

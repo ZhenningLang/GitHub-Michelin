@@ -173,7 +173,6 @@ Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orche
 Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
-claude-code-templates / awesome-claude-code,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 CLAUDE.md (built-in),categories/agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
@@ -194,6 +193,7 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
+CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
