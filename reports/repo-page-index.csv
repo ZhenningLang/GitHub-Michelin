@@ -414,6 +414,7 @@ https://github.com/mher/flower,flower,task-queue,categories/task-queue/flower.md
 https://github.com/micromark/micromark,micromark,markdown-tools,categories/markdown-tools/micromark.md
 https://github.com/microsoft/BitNet,bitnet,on-device-ml,categories/on-device-ml/bitnet.md
 https://github.com/microsoft/SkillOpt,skillopt,workflow-builders,categories/agent-frameworks/workflow-builders/skillopt.md
+https://github.com/microsoft/agent-framework,agent-framework,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/agent-framework.md
 https://github.com/microsoft/agent-governance-toolkit,agent-governance-toolkit,agent-governance,categories/agent-governance/agent-governance-toolkit.md
 https://github.com/microsoft/agent-lightning,agent-lightning,llm-training,categories/llm-training/agent-lightning.md
 https://github.com/microsoft/autogen,autogen,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md

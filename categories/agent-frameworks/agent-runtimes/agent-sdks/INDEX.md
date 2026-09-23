@@ -11,6 +11,7 @@
 | **AutoGen** | A programming framework for agentic AI | B (6/6) | [→](autogen.md) |
 | **CrewAI** | Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks. | A (5/6) | [→](crewai.md) |
 | **LangGraph** | Build resilient agents. | A (6/6) | [→](langgraph.md) |
+| **Microsoft Agent Framework** | You want Microsoft's successor to AutoGen + Semantic Kernel: self-looping agents first, typed graph workflows and .NET parity when production needs them. | A (6/6) | [→](agent-framework.md) |
 | **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | B (6/6) | [→](openai-agents-sdk.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A (5/6) | [→](pydantic-ai.md) |
 | **smolagents** | Use it when you want a tiny, transparent code-acting agent loop from Hugging Face — not a heavy production agent OS. | B (6/6) | [→](smolagents.md) |
