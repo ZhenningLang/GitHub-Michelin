@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:49:44Z
-  overall: B
-  overall_score: 2.6
+  computed_at: 2026-09-23T03:02:59Z
+  overall: C
+  overall_score: 2.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
-        active_weeks_13: 11
+        last_commit_age_days: 1
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.5
-        qualifying_issues: 37
+        median_ttfr_hours: 9.6
+        qualifying_issues: 12
         band: default
         window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: npmjs.org
-        canonical_package: "@cap.js/widget"
+        canonical_package: cap-widget
         dependent_repos_count: 0
-        downloads_last_month: 81941
+        downloads_last_month: 18143
         graph_tier: E
-        volume_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 538
-        last_commit_age_days: 12
+        repo_age_days: 619
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 23
-        top1_share: 0.898
-        top3_share: 0.921
+        active_maintainers_12mo: 19
+        top1_share: 0.889
+        top3_share: 0.927
         window_source: stats_contributors
         carve_out: null
     risk_license:

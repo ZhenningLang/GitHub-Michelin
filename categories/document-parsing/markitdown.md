@@ -16,50 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:40:22Z
-  overall: A
-  overall_score: 3.5
+  computed_at: 2026-09-22T16:18:04Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
-      raw:
-        archived: false
-        last_commit_age_days: 38
-        active_weeks_13: 3
-        carve_out: null
-    responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 37.3
-        qualifying_issues: 32
+        archived: false
+        last_commit_age_days: 1
+        active_weeks_13: 7
+        carve_out: null
+    responsiveness:
+      grade: B
+      raw:
+        median_ttfr_hours: 66.6
+        qualifying_issues: 36
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: markitdown
         dependent_repos_count: 0
-        downloads_last_month: 10869537
+        downloads_last_month: 14692950
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 597
-        last_commit_age_days: 38
+        repo_age_days: 678
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 16
-        top1_share: 0.321
-        top3_share: 0.536
+        active_maintainers_12mo: 54
+        top1_share: 0.445
+        top3_share: 0.533
         window_source: stats_contributors
         carve_out: null
     risk_license:

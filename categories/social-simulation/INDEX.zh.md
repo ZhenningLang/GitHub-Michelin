@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **MiroFish** | 打包好的「上传→模拟→报告」群体智能预测应用：喂一份文档，拿回预测报告和可交互的模拟世界。 | C（5/6） | [→](mirofish.zh.md) |
 | **OASIS** | CAMEL-AI 出品的 pip 可装社交媒体模拟框架（类 Twitter/Reddit，号称最高百万 agent），用代码研究信息传播与极化。 | B（6/6） | [→](oasis.zh.md) |
-| **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | B（6/6） | [→](agentsociety.zh.md) |
+| **AgentSociety** | 清华 FIB Lab 的 LLM 原生社会科学模拟平台：Ray 分布式、实验回放、DuckDB 追踪。 | B（5/6） | [→](agentsociety.zh.md) |
 | **generative_agents** | 2023 年斯坦福「Smallville」原版研究原型（memory stream / reflection / planning）——学开创性架构用，别在上面盖楼。 | D（3/6） | [→](generative-agents.zh.md) |
 
 ## 对比矩阵
@@ -18,7 +18,7 @@
 | --- | --- | --- | --- |
 | [MiroFish](mirofish.zh.md) | ✅ | C（5/6） | 成品（上传→报告），但 AGPL-3.0 + Zep Cloud 依赖 + 预测能力未经验证。 |
 | [OASIS](oasis.zh.md) | ✅ | B（6/6） | Apache-2.0 引擎，社交媒体信息流保真、公布成本模型；流水线要自己搭。 |
-| [AgentSociety](agentsociety.zh.md) | ✅ | B（6/6） | 科研级回放/分布式实验能力；技术栈更重、纯框架。 |
+| [AgentSociety](agentsociety.zh.md) | ✅ | B（5/6） | 科研级回放/分布式实验能力；技术栈更重、纯框架。 |
 | [generative_agents](generative-agents.zh.md) | ✅ | D（3/6） | 领域开创性参考实现，2024-08 起冻结；只剩教学/研究价值。 |
 
 ## 什么该放这里

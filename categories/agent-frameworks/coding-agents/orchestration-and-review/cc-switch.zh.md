@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:54Z
+  computed_at: 2026-09-22T17:34:25Z
   overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: D
+      grade: A
       raw:
-        repo_age_days: 333
-        last_commit_age_days: 1
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 32506
+        homebrew_tier: A
+        release_downloads: 19380551
+        release_assets: 719
+        release_tier: A
+        signal_basis: homebrew+releases
+    longevity:
+      grade: C
+      raw:
+        repo_age_days: 414
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.869
-        top3_share: 0.915
+        top1_share: 0.82
+        top3_share: 0.88
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -59,8 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # CC Switch

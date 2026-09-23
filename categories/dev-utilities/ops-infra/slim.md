@@ -16,39 +16,58 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:36:41Z
+  computed_at: 2026-09-22T17:43:36Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
-      raw:
-        archived: false
-        last_commit_age_days: 100
-        active_weeks_13: 0
-        carve_out: null
-    responsiveness:
-      grade: "?"
-      raw: {}
-    adoption:
-      grade: "?"
-      raw: {}
-    longevity:
       grade: B
       raw:
-        repo_age_days: 3950
-        last_commit_age_days: 100
-        cohort: tool
-    governance:
+        archived: false
+        last_commit_age_days: 3
+        active_weeks_13: 2
+        carve_out: null
+    responsiveness:
+      grade: A
+      raw:
+        median_ttfr_hours: 0.8
+        qualifying_issues: 3
+        band: relaxed_solo
+        window_offset_days: 1
+        source: pr
+        inferred: false
+    adoption:
       grade: C
       raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.5
-        top3_share: 1.0
+        registry: proxy.golang.org
+        canonical_package: github.com/slimtoolkit/slim
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 493215
+        release_assets: 50
+        release_tier: C
+        signal_basis: releases
+        tier_source: releases
+    longevity:
+      grade: A
+      raw:
+        repo_age_days: 4031
+        last_commit_age_days: 3
+        cohort: tool
+    governance:
+      grade: B
+      raw:
+        active_maintainers_12mo: 4
+        top1_share: 0.25
+        top3_share: 0.75
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -58,9 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
 ---
 
 # SlimToolkit

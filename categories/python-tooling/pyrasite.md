@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:21:45Z
-  overall: C
-  overall_score: 1.5
+  computed_at: 2026-09-22T16:56:35Z
+  overall: D
+  overall_score: 1.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,36 +29,37 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 452
+        last_commit_age_days: 534
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: pypi.org
         canonical_package: pyrasite
         dependent_repos_count: 14
-        downloads_last_month: 79705
+        downloads_last_month: 10512
         graph_tier: D
-        volume_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 5410
-        last_commit_age_days: 452
+        repo_age_days: 5491
+        last_commit_age_days: 534
         cohort: tool
     governance:
       grade: "?"
       raw: {}
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
   unknowns:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:47:26Z
+  computed_at: 2026-09-22T17:37:07Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
+        median_ttfr_hours: 1.1
         qualifying_issues: 15
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: D
       raw:
-        registry: npmjs.org
+        registry: pypi.org
         canonical_package: dify-client
-        dependent_repos_count: 8
-        downloads_last_month: 8835
-        graph_tier: D
+        dependent_repos_count: 0
+        downloads_last_month: 10843
+        graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 17383
+        release_assets: 30
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1178
+        repo_age_days: 1259
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 256
-        top1_share: 0.111
-        top3_share: 0.226
+        active_maintainers_12mo: 244
+        top1_share: 0.167
+        top3_share: 0.324
         window_source: stats_contributors
         carve_out: null
     risk_license:

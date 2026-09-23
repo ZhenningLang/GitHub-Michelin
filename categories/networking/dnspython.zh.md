@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:14Z
-  overall: B
-  overall_score: 3.2
+  computed_at: 2026-09-22T16:43:29Z
+  overall: A
+  overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
-        active_weeks_13: 7
+        last_commit_age_days: 3
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 76.1
-        qualifying_issues: 3
+        median_ttfr_hours: 47.9
+        qualifying_issues: 18
         band: default
         window_offset_days: 0
+        source: pr
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: dnspython
         dependent_repos_count: 46555
-        downloads_last_month: 285058747
+        downloads_last_month: 214730536
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
+        release_downloads: 2539
+        release_assets: 12
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5427
-        last_commit_age_days: 5
+        repo_age_days: 5508
+        last_commit_age_days: 3
         cohort: library
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.835
-        top3_share: 0.906
+        active_maintainers_12mo: 19
+        top1_share: 0.747
+        top3_share: 0.808
         window_source: stats_contributors
         carve_out: null
     risk_license:

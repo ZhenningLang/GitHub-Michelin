@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:26:34Z
-  overall: A
-  overall_score: 3.5
+  computed_at: 2026-09-22T17:31:12Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.5
-        qualifying_issues: 49
+        median_ttfr_hours: 9.6
+        qualifying_issues: 27
         band: default
         window_offset_days: 13
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: openai-agents
         dependent_repos_count: 0
-        downloads_last_month: 28952989
+        downloads_last_month: 15564645
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.16
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 482
+        repo_age_days: 561
         last_commit_age_days: 0
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 74
-        top1_share: 0.519
-        top3_share: 0.646
+        active_maintainers_12mo: 70
+        top1_share: 0.606
+        top3_share: 0.705
         window_source: stats_contributors
         carve_out: null
     risk_license:

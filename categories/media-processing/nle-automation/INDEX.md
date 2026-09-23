@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **Jianying Headless** | Use it when a macOS 剪映 professional workflow needs agent-generated *editable* drafts — real multi-track projects, plus native MP4 export from the app's own engine — but it is 5 days old, single-maintainer, tied to one app build, and non-commercial only. | D (4/6) | [→](jianying-headless.md) |
 | **pyJianYingDraft** | Use it when a Python pipeline must emit editable 剪映 drafts — cross-platform, Apache-2.0, no editor needed on the build machine — accepting that newer 剪映 drafts are encrypted, nothing renders for you, and batch export needs Windows with 剪映 6 or older. | C (5/6) | [→](pyjianyingdraft.md) |
-| **JianYing Editor Skill** | Use it when a coding agent should turn a plain-language brief into a real 剪映 timeline — media, TTS voiceover, aligned subtitles, music and named effects — and you will judge and export in 剪映 yourself; no tagged releases, Windows-only unattended export, and it takes over the screen. | C (3/6) | [→](jianying-editor-skill.md) |
+| **JianYing Editor Skill** | Use it when a coding agent should turn a plain-language brief into a real 剪映 timeline — media, TTS voiceover, aligned subtitles, music and named effects — and you will judge and export in 剪映 yourself; no tagged releases, Windows-only unattended export, and it takes over the screen. | C (3/5) | [→](jianying-editor-skill.md) |
 
 ## Comparison matrix
 
@@ -17,7 +17,7 @@
 | --- | --- | --- | --- |
 | [Jianying Headless](jianying-headless.md) | ✅ | D (4/6) | Agent-written editable 剪映 drafts plus native export through the app's own engine; paid for with macOS 26 + one pinned 剪映 build, a per-machine compiled bridge, and a non-commercial license. |
 | [pyJianYingDraft](pyjianyingdraft.md) | ✅ | C (5/6) | Python-side draft authoring for 剪映 on any OS under Apache-2.0; it cannot touch encrypted drafts, does not render, and its own export is Windows + 剪映 6 or older only. |
-| [JianYing Editor Skill](jianying-editor-skill.md) | ✅ | C (3/6) | Pick it when the request itself is conversational and the timeline needs voiceover, subtitles and music assembled — it is the agent-facing layer over the same draft files, but it has no tagged releases, no macOS export, and a single maintainer. |
+| [JianYing Editor Skill](jianying-editor-skill.md) | ✅ | C (3/5) | Pick it when the request itself is conversational and the timeline needs voiceover, subtitles and music assembled — it is the agent-facing layer over the same draft files, but it has no tagged releases, no macOS export, and a single maintainer. |
 | 剪映专业版 / CapCut (closed app) | 未收录 | — | Manual timeline craft with the vendor's own polish; no supported automation surface. |
 
 ## What belongs here

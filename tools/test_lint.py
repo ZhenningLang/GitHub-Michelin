@@ -285,5 +285,100 @@ class LintContractTest(unittest.TestCase):
         self.assertEqual(lint.today_utc(), utc_today)
 
 
+def adoption_block(grade: str, raw_lines: list[str]) -> str:
+    """A full health block whose adoption axis carries `grade` and the given raw keys."""
+    raw = "\n".join(f"        {line}" for line in raw_lines) if raw_lines else "        {}"
+    body = "raw:\n" + raw if raw_lines else "raw: {}"
+    return HEALTH_BLOCK.replace(
+        "    adoption:\n      grade: A\n      raw: {}\n",
+        f"    adoption:\n      grade: {grade}\n      " + body + "\n",
+    )
+
+
+class AdoptionEvidenceGateTest(unittest.TestCase):
+    """An adoption grade must be traceable to evidence on the page itself.
+
+    Both gates close bugs that shipped: 39 pages carried `E` with no package matched at
+    all, and the by-name lookup once attached a stranger's package as canonical.
+    """
+
+    def check(self, block: str) -> lint.Report:
+        rep = lint.Report()
+        fmtext = "repo: https://github.com/example/demo\n"
+        lint.check_adoption_evidence(Path("categories/demo/demo.md"), fmtext, block, rep)
+        return rep
+
+    def errors_for(self, block: str, needle: str) -> list[str]:
+        return [e for e in self.check(block).errors if needle in e]
+
+    def test_e_without_any_count_is_an_error(self) -> None:
+        block = adoption_block("E", ["registry: null", "canonical_package: null"])
+        self.assertTrue(self.errors_for(block, "carries no measured count"))
+
+    def test_e_with_all_counts_null_is_an_error(self) -> None:
+        block = adoption_block("E", ["dependent_repos_count: null",
+                                     "downloads_last_month: null"])
+        self.assertTrue(self.errors_for(block, "carries no measured count"))
+
+    def test_e_with_a_measured_zero_is_allowed(self) -> None:
+        """Zero installs is a real measurement; only the absence of a number is a gap."""
+        block = adoption_block("E", ["canonical_package: demo",
+                                     "dependent_repos_count: 0",
+                                     "downloads_last_month: 0"])
+        self.assertEqual(self.errors_for(block, "carries no measured count"), [])
+
+    def test_e_backed_by_an_install_channel_is_allowed(self) -> None:
+        block = adoption_block("E", ["canonical_package: null", "release_downloads: 12"])
+        self.assertEqual(self.errors_for(block, "carries no measured count"), [])
+
+    def test_unrelated_grade_without_counts_is_not_flagged(self) -> None:
+        """Only E asserts 'measurably unadopted', so only E owes a number."""
+        block = adoption_block("?", ["registry: null", "canonical_package: null"])
+        self.assertEqual(self.errors_for(block, "carries no measured count"), [])
+
+    def test_canonical_package_unrelated_to_the_repo_is_an_error(self) -> None:
+        """jaeger once reported `digitalbanking` (NuGet, 1034 downloads) as its package."""
+        block = adoption_block("D", ["canonical_package: digitalbanking",
+                                     "downloads_last_month: 1034"])
+        self.assertTrue(self.errors_for(block, "matches neither"))
+
+    def test_canonical_package_matching_the_repo_name_is_allowed(self) -> None:
+        block = adoption_block("A", ["canonical_package: demo",
+                                     "downloads_last_month: 900000"])
+        self.assertEqual(self.errors_for(block, "matches neither"), [])
+
+    def test_canonical_package_scoped_to_the_owner_is_allowed(self) -> None:
+        """The monorepo case: `@mui/material` for `mui/material-ui`."""
+        block = adoption_block("A", ["canonical_package: \"@example/anything\"",
+                                     "downloads_last_month: 900000"])
+        self.assertEqual(self.errors_for(block, "matches neither"), [])
+
+    def test_absent_canonical_package_is_not_flagged(self) -> None:
+        block = adoption_block("B", ["canonical_package: null",
+                                     "homebrew_installs_90d: 4000"])
+        self.assertEqual(self.errors_for(block, "matches neither"), [])
+
+    def test_gate_runs_from_check_page_on_a_real_page(self) -> None:
+        """Wiring check: the gate must be reachable through the normal lint entry point.
+
+        A check that is never called is worse than no check — this repo already shipped a
+        '?' warning that silently matched nothing across 600 pages.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            page = root / "categories" / "demo" / "demo.md"
+            page.parent.mkdir(parents=True)
+            bad = adoption_block("E", ["registry: null", "canonical_package: null"])
+            page.write_text(page_text().replace(HEALTH_BLOCK, bad), encoding="utf-8")
+            (root / "assets" / "health").mkdir(parents=True)
+            (root / "assets" / "health" / "demo.svg").write_text("<svg/>", encoding="utf-8")
+
+            rep = lint.Report()
+            lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
+
+            self.assertTrue(any("carries no measured count" in e for e in rep.errors),
+                            f"gate did not fire through check_page; errors={rep.errors}")
+
+
 if __name__ == "__main__":
     unittest.main()

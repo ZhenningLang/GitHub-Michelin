@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T10:45:11Z
+  computed_at: 2026-09-22T17:09:05Z
   overall: A
   overall_score: 3.5
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -40,21 +41,22 @@ health:
         registry: npmjs.org
         canonical_package: remotion
         dependent_repos_count: 185
-        downloads_last_month: 6412370
+        downloads_last_month: 6250860
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.01
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2279
+        repo_age_days: 2282
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 134
-        top1_share: 0.757
+        active_maintainers_12mo: 135
+        top1_share: 0.758
         top3_share: 0.885
         window_source: stats_contributors
         carve_out: null

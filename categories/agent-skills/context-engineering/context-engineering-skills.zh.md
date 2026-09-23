@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:42:57Z
+  computed_at: 2026-09-22T15:43:30Z
   overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,33 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 43
         active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
-      raw:
-        repo_age_days: 194
-        last_commit_age_days: 4
-        cohort: skill-pack
-    governance:
       grade: D
       raw:
-        active_maintainers_12mo: 10
-        top1_share: 0.817
-        top3_share: 0.939
+        registry: null
+        canonical_package: null
+        release_downloads: 124
+        release_assets: 4
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 276
+        last_commit_age_days: 43
+        cohort: skill-pack
+    governance:
+      grade: C
+      raw:
+        active_maintainers_12mo: 11
+        top1_share: 0.744
+        top3_share: 0.95
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # Agent Skills for Context Engineering

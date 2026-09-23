@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:51:43Z
+  computed_at: 2026-09-22T16:26:18Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 25
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: B
       raw:
         registry: pypi.org
         canonical_package: open-webui
         dependent_repos_count: 0
-        downloads_last_month: 1635855
+        downloads_last_month: 1340107
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.01
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1000
-        last_commit_age_days: 2
+        repo_age_days: 1082
+        last_commit_age_days: 1
         cohort: app
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 160
-        top1_share: 0.705
-        top3_share: 0.837
+        active_maintainers_12mo: 144
+        top1_share: 0.655
+        top3_share: 0.865
         window_source: stats_contributors
         carve_out: null
     risk_license:

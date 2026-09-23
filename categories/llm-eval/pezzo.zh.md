@@ -16,20 +16,21 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:12:57Z
+  computed_at: 2026-09-22T16:27:13Z
   overall: C
-  overall_score: 1.75
-  scored_axes: 4
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: D
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 370
-        active_weeks_13: 0
+        last_commit_age_days: 32
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
@@ -44,15 +45,21 @@ health:
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
-      grade: D
+      grade: A
       raw:
-        repo_age_days: 1167
-        last_commit_age_days: 370
+        repo_age_days: 1249
+        last_commit_age_days: 32
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        active_maintainers_12mo: 1
+        top1_share: 1.0
+        top3_share: 1.0
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -61,8 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    governance: { reason: unattributable }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Pezzo

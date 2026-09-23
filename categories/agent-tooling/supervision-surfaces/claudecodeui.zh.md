@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T15:56:49Z
-  overall: C
-  overall_score: 2.4
-  scored_axes: 5
+  computed_at: 2026-09-22T15:54:43Z
+  overall: B
+  overall_score: 2.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 37.5
-        qualifying_issues: 24
+        median_ttfr_hours: 37.8
+        qualifying_issues: 25
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -50,15 +51,25 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 9889
+        release_assets: 56
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 453
-        last_commit_age_days: 0
+        repo_age_days: 454
+        last_commit_age_days: 1
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        active_maintainers_12mo: 87
+        top1_share: 0.466
+        top3_share: 0.748
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: D
       raw:
@@ -66,8 +77,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    governance: { reason: empty_or_gated }
 ---
 
 # CloudCLI (Claude Code UI)

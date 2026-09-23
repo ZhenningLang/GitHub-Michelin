@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T08:11:01Z
+  computed_at: 2026-09-22T16:24:09Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 18
-        active_weeks_13: 11
+        last_commit_age_days: 27
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 18.3
+        median_ttfr_hours: 29.0
         qualifying_issues: 23
         band: default
         window_offset_days: 7
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: yfinance
         dependent_repos_count: 2777
-        downloads_last_month: 27193715
+        downloads_last_month: 19260190
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.01
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3343
-        last_commit_age_days: 18
+        repo_age_days: 3411
+        last_commit_age_days: 27
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 37
-        top1_share: 0.377
-        top3_share: 0.725
+        active_maintainers_12mo: 41
+        top1_share: 0.33
+        top3_share: 0.691
         window_source: stats_contributors
         carve_out: null
     risk_license:

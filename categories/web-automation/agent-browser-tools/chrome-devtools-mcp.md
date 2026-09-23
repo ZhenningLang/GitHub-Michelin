@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:56:22Z
+  computed_at: 2026-09-22T17:11:05Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,38 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 27.2
-        qualifying_issues: 47
+        median_ttfr_hours: 6.4
+        qualifying_issues: 49
         band: relaxed_solo
         window_offset_days: 11
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: chrome-devtools-mcp
         dependent_repos_count: 0
-        downloads_last_month: 10687215
+        downloads_last_month: 9332843
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.18
+        homebrew_installs_90d: 622
+        homebrew_tier: B
+        signal_basis: homebrew
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 295
+        repo_age_days: 376
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 97
-        top1_share: 0.448
-        top3_share: 0.631
+        active_maintainers_12mo: 93
+        top1_share: 0.384
+        top3_share: 0.591
         window_source: stats_contributors
         carve_out: null
     risk_license:

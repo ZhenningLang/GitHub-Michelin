@@ -16,13 +16,14 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:50:49Z
+  computed_at: 2026-09-23T03:11:22Z
   overall: A
-  overall_score: 3.75
+  overall_score: 4.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
       grade: A
@@ -35,26 +36,25 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
-        registry: crates.io
-        canonical_package: zed_extension_api
-        dependent_repos_count: 0
-        downloads_last_month: 812610
-        graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 3.61
+        registry: null
+        canonical_package: null
+        release_downloads: 12879334
+        release_assets: 1290
+        release_tier: A
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1960
+        repo_age_days: 2041
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 312
-        top1_share: 0.082
+        active_maintainers_12mo: 307
+        top1_share: 0.076
         top3_share: 0.189
         window_source: stats_contributors
         carve_out: null
@@ -62,7 +62,7 @@ health:
       grade: "?"
       raw: {}
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
     risk_license: { reason: license_unparsed }
 ---
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:38:32Z
+  computed_at: 2026-09-22T16:14:32Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 28
-        active_weeks_13: 7
+        last_commit_age_days: 4
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.7
+        median_ttfr_hours: 0.5
         qualifying_issues: 29
         band: relaxed_solo
         window_offset_days: 7
+        source: issue
+        inferred: false
     adoption:
       grade: D
       raw:
         registry: crates.io
         canonical_package: vaultwarden
         dependent_repos_count: 0
-        downloads_last_month: 2730
+        downloads_last_month: 2832
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3058
-        last_commit_age_days: 28
+        repo_age_days: 3139
+        last_commit_age_days: 4
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 15
-        top1_share: 0.369
-        top3_share: 0.704
+        active_maintainers_12mo: 14
+        top1_share: 0.353
+        top3_share: 0.705
         window_source: stats_contributors
         carve_out: null
     risk_license:

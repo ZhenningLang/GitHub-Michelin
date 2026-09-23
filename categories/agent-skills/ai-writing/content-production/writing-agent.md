@@ -16,32 +16,39 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T10:20:43Z
+  computed_at: 2026-09-22T15:41:02Z
   overall: B
-  overall_score: 2.5
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 11
-        active_weeks_13: 5
+        last_commit_age_days: 15
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 207
-        last_commit_age_days: 11
+        registry: null
+        canonical_package: null
+        release_downloads: 725
+        release_assets: 1
+        release_tier: D
+        signal_basis: releases
+    longevity:
+      grade: B
+      raw:
+        repo_age_days: 275
+        last_commit_age_days: 15
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 # writing-agent
 

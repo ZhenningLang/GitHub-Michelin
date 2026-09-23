@@ -16,45 +16,52 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:31:19Z
+  computed_at: 2026-09-22T15:39:58Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 4
+        last_commit_age_days: 12
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: C
       raw:
-        median_ttfr_hours: 395.4
-        qualifying_issues: 23
+        median_ttfr_hours: 215.0
+        qualifying_issues: 22
         band: default
         window_offset_days: 9
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        docker_pulls: 689896
+        docker_image: letta/letta
+        docker_tier: D
+        signal_basis: docker
     longevity:
       grade: B
       raw:
-        repo_age_days: 999
-        last_commit_age_days: 3
+        repo_age_days: 1077
+        last_commit_age_days: 12
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 28
-        top1_share: 0.288
-        top3_share: 0.503
+        active_maintainers_12mo: 24
+        top1_share: 0.211
+        top3_share: 0.53
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # Letta (MemGPT)
 

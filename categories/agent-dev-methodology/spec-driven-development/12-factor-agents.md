@@ -16,48 +16,46 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:47:03Z
-  overall: C
-  overall_score: 2.0
-  scored_axes: 3
+  computed_at: 2026-09-22T17:28:45Z
+  overall: "?"
+  overall_score: null
+  scored_axes: 2
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: D
       raw:
         archived: false
-        last_commit_age_days: 285
+        last_commit_age_days: 366
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: C
+      grade: D
       raw:
-        repo_age_days: 459
-        last_commit_age_days: 285
+        repo_age_days: 541
+        last_commit_age_days: 366
         cohort: skill-pack
     governance:
-      grade: C
-      raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.913
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+    governance: { reason: unattributable }
     risk_license: { reason: license_unparsed }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # 12-Factor Agents

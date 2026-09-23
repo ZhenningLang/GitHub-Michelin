@@ -17,21 +17,18 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T03:41:50Z
+  computed_at: 2026-09-23T03:05:30Z
   overall: C
-  overall_score: 2.0
-  scored_axes: 4
+  overall_score: 2.33
+  scored_axes: 3
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: D
-      raw:
-        archived: false
-        last_commit_age_days: 400
-        active_weeks_13: 0
-        carve_out: null
+      grade: "?"
+      raw: {}
     responsiveness:
       grade: C
       raw:
@@ -42,14 +39,23 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
       grade: D
       raw:
-        repo_age_days: 2381
-        last_commit_age_days: 400
-        cohort: framework
+        registry: repo1.maven.org
+        canonical_package: "com.github.kfcfans:powerjob"
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 54
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+    longevity:
+      grade: "?"
+      raw: {}
     governance:
       grade: "?"
       raw: {}
@@ -61,8 +67,9 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
-    governance: { reason: unattributable }
+    maintenance: { reason: recency_unreadable }
+    longevity: { reason: not_found }
+    governance: { reason: empty_or_gated }
 ---
 
 # PowerJob

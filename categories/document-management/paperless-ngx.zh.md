@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:17:28Z
+  computed_at: 2026-09-22T16:16:53Z
   overall: B
-  overall_score: 3.2
-  scored_axes: 5
+  overall_score: 2.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,36 +35,42 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.1
-        qualifying_issues: 53
+        median_ttfr_hours: 0.2
+        qualifying_issues: 38
         band: relaxed_solo
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 324957
+        release_assets: 100
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1601
+        repo_age_days: 1683
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 43
-        top1_share: 0.688
-        top3_share: 0.93
+        active_maintainers_12mo: 50
+        top1_share: 0.658
+        top3_share: 0.947
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # paperless-ngx

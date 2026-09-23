@@ -16,57 +16,61 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:20Z
-  overall: D
-  overall_score: 2.5
+  computed_at: 2026-09-22T15:54:13Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
-  needs_human_review: true
+  applicable_axes: 6
+  capped: false
+  cap_reason: null
+  needs_human_review: false
   axes:
     maintenance:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 12
+        last_commit_age_days: 5
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 35.2
-        qualifying_issues: 5
+        median_ttfr_hours: 85.1
+        qualifying_issues: 16
         band: relaxed_solo
         window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
         canonical_package: skills
         dependent_repos_count: 3
-        downloads_last_month: 2903169
+        downloads_last_month: 28456872
         graph_tier: D
-        volume_tier: B
-        cross_check_divergence: 11.98
+        volume_tier: A
+        cross_check_divergence: 1.0
+        tier_source: registry
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 169
-        last_commit_age_days: 3
+        repo_age_days: 251
+        last_commit_age_days: 5
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 97
-        top1_share: 0.466
-        top3_share: 0.597
+        active_maintainers_12mo: 98
+        top1_share: 0.488
+        top3_share: 0.592
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
+      grade: A
       raw:
-        spdx_id: NONE
-        permissiveness: source_available
+        spdx_id: MIT
+        permissiveness: permissive
         relicense_36mo: false
         content_license: null
 ---

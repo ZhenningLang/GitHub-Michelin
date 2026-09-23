@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:12:47Z
-  overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  computed_at: 2026-09-22T17:43:35Z
+  overall: A
+  overall_score: 3.75
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,35 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
-      raw:
-        registry: null
-        canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+      grade: "?"
+      raw: {}
     longevity:
       grade: A
       raw:
-        repo_age_days: 5595
-        last_commit_age_days: 1
+        repo_age_days: 5676
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 14
-        top1_share: 0.38
-        top3_share: 0.867
+        active_maintainers_12mo: 11
+        top1_share: 0.465
+        top3_share: 0.965
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -68,6 +61,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: issues_disabled }
+    adoption: { reason: ambiguous }
 ---
 
 # IdeaVim

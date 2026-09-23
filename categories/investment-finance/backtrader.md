@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T08:10:26Z
+  computed_at: 2026-09-22T16:23:07Z
   overall: D
-  overall_score: 1.25
+  overall_score: 1.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1184
+        last_commit_age_days: 1252
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,24 +41,25 @@ health:
         registry: pypi.org
         canonical_package: backtrader
         dependent_repos_count: 231
-        downloads_last_month: 345095
+        downloads_last_month: 293691
         graph_tier: C
         volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 4205
-        last_commit_age_days: 1184
+        repo_age_days: 4273
+        last_commit_age_days: 1252
         cohort: library
     governance:
       grade: "?"
       raw: {}
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
   unknowns:

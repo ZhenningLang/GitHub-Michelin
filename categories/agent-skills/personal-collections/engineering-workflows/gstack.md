@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T13:55:24Z
+  computed_at: 2026-09-22T15:48:33Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
+        last_commit_age_days: 1
         active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 194
-        last_commit_age_days: 5
+        repo_age_days: 195
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.696
-        top3_share: 0.742
+        top1_share: 0.697
+        top3_share: 0.743
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # gstack

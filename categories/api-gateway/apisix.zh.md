@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T04:41:51Z
+  computed_at: 2026-09-22T15:57:56Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,26 +30,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 51
+        qualifying_issues: 49
         band: default
         window_offset_days: 11
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/apache/apisix
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 24120
+        release_assets: 24
+        release_tier: D
+        docker_pulls: 40167399
+        docker_image: apache/apisix
+        docker_tier: B
+        signal_basis: releases+docker
+        tier_source: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 2722
-        last_commit_age_days: 0
+        repo_age_days: 2723
+        last_commit_age_days: 1
         cohort: service
     governance:
       grade: A
@@ -65,8 +81,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Apache APISIX

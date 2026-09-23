@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-21T04:28:32Z
+  computed_at: 2026-09-22T17:09:11Z
   overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,26 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
+        last_commit_age_days: 13
         active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 126871
+        release_assets: 231
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 64
-        last_commit_age_days: 12
+        repo_age_days: 65
+        last_commit_age_days: 13
         cohort: skill-pack
     governance:
       grade: C
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 
 # video-shotcraft

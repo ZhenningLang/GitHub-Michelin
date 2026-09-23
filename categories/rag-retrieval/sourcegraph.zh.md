@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-06T16:10:31Z
-  overall: E
-  overall_score: 0.0
-  scored_axes: 3
+  computed_at: 2026-09-22T16:58:11Z
+  overall: D
+  overall_score: 0.75
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 683
+        last_commit_age_days: 761
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,26 @@ health:
         band: relaxed_solo
         window_offset_days: 6
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/sourcegraph/sourcegraph-public-snapshot
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 40919
+        release_assets: 146
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 3969
-        last_commit_age_days: 683
+        repo_age_days: 4047
+        last_commit_age_days: 761
         cohort: app
     governance:
       grade: "?"
@@ -54,7 +68,6 @@ health:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: no_package_structural }
     governance: { reason: unattributable }
     risk_license: { reason: license_unparsed }
 ---

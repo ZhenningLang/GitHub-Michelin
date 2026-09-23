@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | B（5/6） | [→](learn-claude-code.zh.md) |
 | **LTBL Experiment** | 只把它当作三个上下文质量实现组的未完成索引；它不是可运行软件、带评分的 benchmark，也没有发布胜负结论。 | D（4/6） | [→](ltbl-experiment.zh.md) |
-| **QUAD Framework** | 只在法务审查后研究它的四 Circles 组织模型和部署语料；软件采用专有许可，项目已不活跃，公开安装器与 submodule 路径也不完整。 | D（4/6） | [→](quad.zh.md) |
+| **QUAD Framework** | 只在法务审查后研究它的四 Circles 组织模型和部署语料；软件采用专有许可，项目已不活跃，公开安装器与 submodule 路径也不完整。 | D（5/6） | [→](quad.zh.md) |
 
 ## 对比矩阵
 
@@ -17,7 +17,7 @@
 | --- | --- | --- | --- |
 | [Learn Claude Code](learn-claude-code.zh.md) | ✅ | B（5/6） | 17 章动手课，逐机制复刻 Claude Code 式 harness；教的是内部原理，但它是课程，不是依赖包也不是产品。 |
 | [LTBL Experiment](ltbl-experiment.zh.md) | ✅ | D（4/6） | 未完成的实验索引，不是可运行软件、带评分的 benchmark，也不能证明某种方法胜出。 |
-| [QUAD Framework](quad.zh.md) | ✅ | D（4/6） | 覆盖较广的四 Circles 组织与部署参考，但软件采用专有许可，项目已不活跃，公开内容也不完整。 |
+| [QUAD Framework](quad.zh.md) | ✅ | D（5/6） | 覆盖较广的四 Circles 组织与部署参考，但软件采用专有许可，项目已不活跃，公开内容也不完整。 |
 
 ## 什么该放这里
 

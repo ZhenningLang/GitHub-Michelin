@@ -8,10 +8,10 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **AgentScope** | Shipping a production multi-agent LLM service needing sandboxed tools, permissions, tracing, and human-in-the-loop. | B (6/6) | [→](agentscope.md) |
-| **AutoGen** | A programming framework for agentic AI | C (6/6) | [→](autogen.md) |
-| **CrewAI** | Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks. | A (6/6) | [→](crewai.md) |
+| **AutoGen** | A programming framework for agentic AI | B (6/6) | [→](autogen.md) |
+| **CrewAI** | Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks. | A (5/6) | [→](crewai.md) |
 | **LangGraph** | Build resilient agents. | A (6/6) | [→](langgraph.md) |
-| **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | A (6/6) | [→](openai-agents-sdk.md) |
+| **OpenAI Agents SDK** | A lightweight, powerful framework for multi-agent workflows | B (6/6) | [→](openai-agents-sdk.md) |
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A (5/6) | [→](pydantic-ai.md) |
 | **smolagents** | Use it when you want a tiny, transparent code-acting agent loop from Hugging Face — not a heavy production agent OS. | B (6/6) | [→](smolagents.md) |
 

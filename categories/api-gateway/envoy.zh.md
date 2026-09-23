@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T04:41:24Z
+  computed_at: 2026-09-23T03:02:26Z
   overall: A
   overall_score: 4.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,15 +36,26 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 14.2
-        qualifying_issues: 17
+        median_ttfr_hours: 16.1
+        qualifying_issues: 16
         band: default
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1100
+        homebrew_tier: B
+        release_downloads: 780162
+        release_assets: 600
+        release_tier: C
+        docker_pulls: 5765058369
+        docker_image: envoyproxy/envoy
+        docker_tier: A
+        signal_basis: homebrew+releases+docker
     longevity:
       grade: A
       raw:
@@ -54,8 +66,8 @@ health:
       grade: A
       raw:
         active_maintainers_12mo: 149
-        top1_share: 0.179
-        top3_share: 0.412
+        top1_share: 0.181
+        top3_share: 0.413
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Envoy

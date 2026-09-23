@@ -7,14 +7,14 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | B（5/6） | [→](freecad.zh.md) |
+| **FreeCAD** | 当你需要一套可编辑的参数化历史加真 B-rep 实体模型——画草图、加约束、Pad/Pocket，之后改一个尺寸让零件自行重建——文件在本地、带 Python API、不用买席位时用它。 | A（5/6） | [→](freecad.zh.md) |
 
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [FreeCAD](freecad.zh.md) | ✅ | B（5/6） | 开源参数化三维 CAD：带约束求解的草图、可重新尺寸驱动的特征历史、OCCT 实体内核、本地 `.FCStd` 文件与内建 Python API——代价是交互、装配/加工/有限元的成熟度和上游的 AI 贡献政策。 |
+| [FreeCAD](freecad.zh.md) | ✅ | A（5/6） | 开源参数化三维 CAD：带约束求解的草图、可重新尺寸驱动的特征历史、OCCT 实体内核、本地 `.FCStd` 文件与内建 Python API——代价是交互、装配/加工/有限元的成熟度和上游的 AI 贡献政策。 |
 | OpenSCAD · CadQuery · LibreCAD · Blender | 未收录 | — | 最接近的开源替代（代码优先的 CSG、跑在 OCCT 上的 Python CAD、二维制图、网格/美术管线）——已在 FreeCAD 的对比表里逐项权衡，尚未收录。 |
 | Fusion 360 · Onshape · SolidWorks | 未收录 | — | 商业/云端 CAD 套件，装配、集成仿真与厂商支持更完整——正是 FreeCAD 想替代、但只部分对齐的那部分工作流。 |
 

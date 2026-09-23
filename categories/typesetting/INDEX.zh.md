@@ -7,19 +7,19 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Asciidoctor** | 当技术文档需要从纯文本源发布成 HTML、DocBook、EPUB 或 man page 时用它——但你需要排版引擎或印刷级 PDF 时不要用。 | C（4/6） | [→](asciidoctor.zh.md) |
+| **Asciidoctor** | 当技术文档需要从纯文本源发布成 HTML、DocBook、EPUB 或 man page 时用它——但你需要排版引擎或印刷级 PDF 时不要用。 | B（4/6） | [→](asciidoctor.zh.md) |
 | **LaTeX** | 当投稿方的 class 文件、几十年的宏包积累、或几十年稳定的源语言决定结果时用它——但没人愿意维护 `\begin{}` 脚手架、或你需要从同一份文件出 HTML 时不要用。 | B（6/6） | [→](latex.zh.md) |
-| **Quarkdown** | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 | B（5/6） | [→](quarkdown.zh.md) |
-| **Typst** | 当你能自己选源语言，想要学习曲线短、Apache-2.0 许可的印刷级 PDF 时用它——但投稿方指定 LaTeX class 文件、或源必须保持 Markdown 时不要用。 | A（6/6） | [→](typst.zh.md) |
+| **Quarkdown** | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 | C（6/6） | [→](quarkdown.zh.md) |
+| **Typst** | 当你能自己选源语言，想要学习曲线短、Apache-2.0 许可的印刷级 PDF 时用它——但投稿方指定 LaTeX class 文件、或源必须保持 Markdown 时不要用。 | A（5/6） | [→](typst.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Asciidoctor](asciidoctor.zh.md) | ✅ | C（4/6） | 当技术文档需要从纯文本源发布成 HTML、DocBook、EPUB 或 man page 时用它——但你需要排版引擎或印刷级 PDF 时不要用。 |
+| [Asciidoctor](asciidoctor.zh.md) | ✅ | B（4/6） | 当技术文档需要从纯文本源发布成 HTML、DocBook、EPUB 或 man page 时用它——但你需要排版引擎或印刷级 PDF 时不要用。 |
 | [LaTeX](latex.zh.md) | ✅ | B（6/6） | 当投稿方的 class 文件、几十年的宏包积累、或几十年稳定的源语言决定结果时用它——但没人愿意维护 `\begin{}` 脚手架、或你需要从同一份文件出 HTML 时不要用。 |
-| [Quarkdown](quarkdown.zh.md) | ✅ | B（5/6） | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 |
-| [Typst](typst.zh.md) | ✅ | A（6/6） | 当你能自己选源语言，想要学习曲线短、Apache-2.0 许可的印刷级 PDF 时用它——但投稿方指定 LaTeX class 文件、或源必须保持 Markdown 时不要用。 |
+| [Quarkdown](quarkdown.zh.md) | ✅ | C（6/6） | 当你需要一份保持 Markdown 可读性的源文件编译成网页、印刷 PDF、reveal.js 幻灯片与文档站时用它——但交付物必须是 Word、许可必须宽松、或印刷保真度是硬要求时不要用。 |
+| [Typst](typst.zh.md) | ✅ | A（5/6） | 当你能自己选源语言，想要学习曲线短、Apache-2.0 许可的印刷级 PDF 时用它——但投稿方指定 LaTeX class 文件、或源必须保持 Markdown 时不要用。 |
 
 ## 什么该放这里
 

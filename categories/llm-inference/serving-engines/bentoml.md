@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:44:24Z
+  computed_at: 2026-09-22T16:29:05Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 33
-        active_weeks_13: 6
+        last_commit_age_days: 15
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: B
+      grade: C
       raw:
-        median_ttfr_hours: 96.0
-        qualifying_issues: 3
+        median_ttfr_hours: 667.5
+        qualifying_issues: 5
         band: default
         window_offset_days: 3
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: bentoml
         dependent_repos_count: 499
-        downloads_last_month: 197146
+        downloads_last_month: 148871
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2653
-        last_commit_age_days: 33
+        repo_age_days: 2731
+        last_commit_age_days: 15
         cohort: service
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 12
-        top1_share: 0.585
-        top3_share: 0.792
+        top1_share: 0.5
+        top3_share: 0.735
         window_source: stats_contributors
         carve_out: null
     risk_license:

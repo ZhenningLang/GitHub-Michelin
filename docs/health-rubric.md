@@ -39,7 +39,63 @@ A project is rendered as a hexagon radar (JoJo-stand-stats *visual style* only �
 Every page already carries `type ∈ {library, framework, tool, app, service, skill-pack, model}`. Type drives several carve-outs below. Measured EN-page distribution (from verifier counts, treat as approximate, re-derive at runtime): library ~64, tool ~57, skill-pack ~42, app ~34, framework ~25, model ~4, service ~3.
 
 ### 1.2 `?` is first-class, never silently coerced
-`?` means **"the spine signal for this axis could not be obtained, or the axis is structurally N/A for this type."** It is NOT a low score. A scorer MUST NOT map `?`→E, `?`→A, or `?`→0 in any aggregate. Every `?` carries a machine-readable `reason` code (enumerated per-axis). `?` axes are excluded from polygon area and from the overall grade (§3).
+`?` means **"the spine signal for this axis could not be obtained."** It is NOT a low score. A scorer MUST NOT map `?`→E, `?`→A, or `?`→0 in any aggregate. Every `?` carries a machine-readable `reason` code (enumerated per-axis). `?` axes are excluded from polygon area and from the overall grade (§3), but stay in the coverage denominator — the reader should see that something is missing.
+
+**An axis that is structurally inapplicable to a type is `N/A`, not `?`** (added 2026-09; see §2.3c). The two were one value until then, which told the reader "unknown" in both cases and hid which one they were looking at. `N/A` leaves the denominator as well, since counting a question the artifact cannot be asked would understate its real coverage.
+
+### 1.2b A failure must never be able to look like a measurement
+
+This scorer runs unattended over 600 pages and writes its output straight into them. A grade that
+came out of a broken fetch is indistinguishable, on the page, from one that came out of a real
+one — nobody reads 600 radar cards looking for a number that is subtly wrong. So every path that
+reads a number carries an obligation: **failure must be a different type from a measured value, and
+that difference must survive all the way to the page.**
+
+Ten violations of this shape were found and fixed in a single session in 2026-09. Three of them are
+representative:
+
+| Violation | What the page would have said |
+|---|---|
+| An exhausted GitHub rate limit returned 403, which the axis functions degrade to `?` | Hundreds of real grades overwritten with "unmeasurable", mid-batch, silently |
+| The Homebrew index cache stored an empty dict when the fetch failed | Every Homebrew lookup for the next 24h returns "not in Homebrew" |
+| A calibration fetch swallowed its timeout and reported zero downloads | The largest projects drop out of the sample that sets the anchors |
+
+The rules that follow from it, enforced in `tools/health.py`:
+
+1. **Never cache an empty result.** A transport failure and a genuinely empty index produce the
+   same `{}`; persisting it serves the failure as a fact for the whole TTL.
+2. **Wait out a rate limit, do not degrade through it.** `gh_api` parses `x-ratelimit-remaining`
+   and `x-ratelimit-reset` and blocks until the window resets rather than handing the axis a 403.
+3. **Retry transport failures before concluding absence.** A blip on a registry lookup is
+   otherwise indistinguishable from "this project has no package" — that is how playwright, with
+   323M monthly npm downloads, came to carry `?`.
+4. **Distinguish "could not identify" from "identified, no counts".** `ambiguous` and
+   `registry_no_counts` are different findings and route to different fixes.
+5. **`?` and `N/A` are different claims.** See §2.3c.
+
+When a check cannot satisfy this, it does not ship: a signal we cannot trust to fail loudly is
+worse than no signal, because it spends the reader's trust on noise.
+
+**These rules are not self-enforcing.** The same session that wrote them down broke them again
+several times afterwards, which is evidence that a written rule is not a control. Two of them are
+now machine gates in `tools/lint.py`, checked on every page on every run and covered by tests in
+`tools/test_lint.py`:
+
+| Gate | Rejects | The bug it closes |
+|---|---|---|
+| adoption `E` must carry a number in one of `dependent_repos_count`, `downloads_last_month`, `homebrew_installs_90d`, `release_downloads`, `docker_pulls` | an `E` whose evidence is all `null` | 39 pages scored `E` when the scorer had matched no package at all — "found nothing" served as "measured zero". A *measured* zero still passes; only the absence of a number fails |
+| `canonical_package` must name-match the repo or be scoped to its owner (re-checked offline with the scorer's own `_match_quality`) | a package that cannot be shown to be this repo | `crates.io/waza` (a reserved name owned by someone else) attached to `tw93/Waza`; `npmjs.org/d2` (DHIS2's library) to `d2lang/d2`; `digitalbanking` reported as jaeger's package |
+
+A gate that never fires is worse than no gate — this repo shipped a `?` warning that silently
+matched nothing across 600 pages. So each gate has a test asserting it fires *through the normal
+lint entry point*, not just when called directly.
+
+The same principle applies to tools that rewrite pages, not only to those that measure them.
+`tools/sync-health-to-body.py` rewrites one body section; it used to scan forward to a hardcoded
+next header, so it swallowed any section in between and, on a page without that header, replaced
+the whole tail of the file. It now stops at the next H2 of any kind, refuses to write when the set
+of H2 headings would change, and requires an explicit `--overwrite-prose` for `--all`, because
+`--all` replaces hand-written analysis with generated one-line-per-axis text.
 
 ### 1.3 Bot / AI-agent author filter (shared by maintenance, governance, momentum-derived signals)
 When counting *human* authors or commits, drop authors whose `login` (or, if null, `commit.author.email` local-part) matches:
@@ -178,7 +234,42 @@ query($o:String!,$n:String!){ repository(owner:$o,name:$n){
 
 **The fix that matters:** `rankings.downloads` from ecosyste.ms is **NOT** a 0–1 percentile (verified live: instructor=1.90, dspy=15.13, `None` for crewai/very-popular pkgs, flask=0.0106 fails its own A bar). **Do not use it as the ranker.** Use **`dependent_repos_count` as the PRIMARY structural signal** (it works for npm/PyPI/crates/Go/Maven in live tests) and **absolute last-month downloads vs per-registry anchor tables** as the co-signal. Tier = **max(graph_tier, volume_tier)**; **persist both sub-scores** so the conflation is auditable (a high-volume-zero-dependents app-package and a low-volume-foundational lib must not silently collapse to the same number).
 
-**Canonical-package selection (THE single most important anti-gaming rule):** `packages/lookup?repository_url=` returns typosquats/forks/mirrors (flask buried at position 6 behind `falask`, `flasl`). Pick canonical = entry whose `.name` fuzzy-matches the repo name AND has max `.downloads`, dropping entries with `downloads < 1000` OR `rank == null` **EXCEPT** when *all* candidates have `rank==null` and one has high downloads (crewai case) — then fall back to the max-downloads candidate, do NOT drop it as a typosquat.
+**Canonical-package selection (THE single most important anti-gaming rule):** `packages/lookup?repository_url=` returns typosquats/forks/mirrors (flask buried at position 6 behind `falask`, `flasl`). Pick canonical = the entry with the **strongest claim to be this repo**, then max `.downloads`, with a `downloads >= 1000` noise floor. Claim strength, best first:
+
+1. `.name` fuzzy-matches the repo name (scoped names are matched on the bare name too, so `@playwright/test` matches `playwright`).
+2. The package is **scoped to the repo's owner** (`@mui/material` for `mui/material-ui`). Monorepos publish under a scope where no single package carries the repo's name; without this rule they look unpackaged.
+3. Neither — accepted only when nothing else clears the noise floor.
+
+**`proxy.golang.org` entries are excluded from the pool whenever any non-Go candidate exists.** The Go proxy synthesizes a module named `github.com/{owner}/{repo}` for *every* GitHub repo regardless of language, so its name always contains the repo name and always wins a substring match. Live consequence: `mui/material-ui` selected its 2-dependent Go pseudo-module over npm packages carrying 154k dependents and scored **D instead of A**. Real Go projects are unaffected — they reach the same number through the pkg.go.dev importers fallback below.
+
+**Only the project's own distribution channel can be canonical.** ecosyste.ms indexes 100
+registries and most repackage other people's software. Candidates are filtered to an **allowlist of
+primary ecosystems** (`npm, pypi, cargo, rubygems, packagist, maven, nuget, go, hex, pub, cocoapods,
+cran, cpan, clojars, hackage, luarocks, elm, julia, swiftpm, deno, bower, dub, vcpkg`), keyed on the
+candidate's `registry.ecosystem` rather than its name — registry names are version-suffixed
+(`alpine-v3.19`, `alpine-edge`, `nixpkgs-24.11`, `ubuntu-23.10`) and a name-based denylist is
+unmaintainable. Mirrors of a primary registry (`gem.coop`) and redistribution channels
+(`conda-forge.org`, `anaconda.org`, `formulae.brew.sh`, `spack.io`) are excluded too: right
+ecosystem, wrong copy. When nothing primary remains, a repackaged candidate is accepted **only if it
+carries a real count**, since for some projects it is the only number that exists; a distro entry
+with neither downloads nor dependents is pure noise in the `registry:` field.
+
+Live consequences before this rule: `gem.coop` beat rubygems.org for **selenium** (345,857,423
+downloads/month), **asciidoctor** and **loki** — all three scored **E**; `conda-forge.org` beat the
+project's own registry for **pandoc**, **ripgrep**, **jq** and **FreeCAD**; and an Alpine build
+(`jq-dev`) was reported as jq's canonical package.
+
+**An unlisted registry no longer discards the download figure.** `volume_tier_from_downloads`
+returned `None` for any registry missing from the anchor table, and the count was dropped entirely —
+selenium's nine-figure monthly downloads vanished and the page scored its dependents-only tier, E.
+**20 pages** carried a silently-dropped count this way. Unlisted registries now fall back to a
+default anchor row; an approximate tier beats throwing the measurement away.
+
+**The `rank != null` condition is withdrawn (2026-09).** ecosyste.ms now returns `rank: null` for every candidate of every repo probed (flask 18/18, playwright 100/100, material-ui 83/83), so the filter dropped 100% of candidates and every lookup fell through to the fallback branches — it had stopped doing anything years before anyone noticed. The typosquat defense never rested on it: flask's squatters either fail the name match (`f-ask`) or lose max-downloads by seven orders of magnitude (`flask-mirror-upstream`, dl=17 vs 133M).
+
+**Secondary discovery by package name.** ecosyste.ms builds its repo→package mapping by scraping manifests and the mapping has a long tail of gaps; a gap there is not evidence of an unpackaged project. When the `repository_url` lookup yields nothing usable, retry by **name** against `registries/{registry}/packages/{name}`, trying the repo name and its language-suffix-stripped variants (`elasticsearch-dsl-py` → `elasticsearch-dsl`). A hit is accepted only when the package's own `repository_url` points back at a repo of the same name; the owner is deliberately not required to match, because org renames leave the old owner in ecosyste.ms's record.
+
+**Transport failures are retried.** A blip on the lookup is otherwise indistinguishable from "no package exists", and `registry_lookup_failed` then masquerades as missing adoption data. Observed live before the retry existed: playwright (323M monthly npm downloads), material-ui, chakra-ui and radix-ui all carried `?` on this axis.
 
 **Per-registry absolute anchors** (for `volume_tier`):
 
@@ -199,11 +290,127 @@ query($o:String!,$n:String!){ repository(owner:$o,name:$n){
 
 **Mandatory cross-check (cheap, ~30–60 extra calls):** for every **A or B** result, hit the direct registry API and flag `>2×` divergence from ecosyste.ms for human review (field unreliability makes this non-optional, not "borderline-only").
 
+### 2.3b Install signals — the channel a project's users actually take
+
+A registry download count answers "how many projects install this" only for artifacts that
+ship to a language registry. An IDE, a database server, a desktop app or a CLI binary is adopted
+just as measurably; its trace is simply somewhere else. Through 2026-09 this scorer reported those
+as `?` — 273 of 600 pages (45%) — which stated a gap in our instruments as a gap in the project.
+
+| Instrument | Source | A | B | C |
+|---|---|---|---|---|
+| GitHub release asset downloads (cumulative) | `repos/{o}/{r}/releases?per_page=100`, summing `assets[].download_count` | ≥10,000,000 | ≥1,000,000 | ≥100,000 |
+| Homebrew installs, trailing 90d | `formulae.brew.sh` `formula.json` + `cask.json` joined to `analytics/install/90d.json` | ≥3,000 | ≥500 | ≥100 |
+| Docker Hub pulls (cumulative) | `hub.docker.com/v2/repositories/{ns}/{name}` — **`type: service` and `type: app` only** | ≥100,000,000 | ≥10,000,000 | ≥1,000,000 |
+
+**Measured for every project, not only for those with no package.** Having a registry package does
+not mean the registry is where the project's users get it. Binary-first tools keep a token package
+and ship through releases: `jq` read as a minor package and scored **D** while 295M people pulled
+its binaries; `ripgrep` **D** against 53M; `pandoc` **B** against 40M; `ImageMagick` and `ComfyUI`
+**E**. The axis therefore takes `max(registry_tier, install_tier)`, the same max() the registry path
+already applies across its own two sub-signals, and records `tier_source` so the page says which
+channel decided.
+
+This cannot inflate a registry-first project, and the symmetric evidence is what shows it: angular
+publishes 24.6M npm downloads a month against **324** release-asset downloads, ray 276, faker 716.
+A channel a project does not use reports nothing, and `max()` with nothing is unchanged.
+
+#### Why the anchors are channel-relative, not absolute
+
+**The two kinds of channel do not measure the same users, and there is no ground truth to calibrate
+one against the other.** Measured over 138 projects carrying both numbers: Spearman correlation
+between release-asset downloads and registry downloads is **0.124**; against `dependent_repos_count`,
+**0.002**. Grouping by registry-derived grade gives medians that are not even monotonic (A 86k,
+B 32k, C 8.8k, D 98k, E 31k release downloads). Neither channel is the truth the other should be
+scaled to; each sees the slice of users that came its way.
+
+So a letter here means **top decile / quartile / half of the channel this project actually ships
+through**, and nothing stronger. Populations used:
+
+- **Releases** — the 270 repos in this index that publish release assets (no global GitHub
+  population is obtainable). p90 12.7M, p75 907k, p50 72k, rounded to the table above.
+- **Homebrew** — Homebrew's own 7,900 formulae and casks, the channel's true global population.
+  p90 3,000, p75 406, p50 83. Note this index's projects sit high in that distribution by
+  selection, so most of the 32 with Homebrew data land A or B. Homebrew analytics also counts only
+  opted-in users, which understates every absolute figure — a percentile is invariant to that
+  scaling, which is a further reason to prefer it here.
+- **Docker** — no enumerable population, so these anchors stay absolute and are the weakest of the
+  three. `pull_count` is cumulative and CI-inflated (envoy alone reports 5.76e9).
+
+A consequence to be honest about: a Homebrew-derived A and an npm-derived A are **not** the same
+amount of adoption. `signal_basis` and `tier_source` are on every page for exactly this reason, and
+no aggregate should be read as comparing them.
+
+**E is unreachable through this path**, unlike the registry path. The evidence is asymmetric: a
+large install count proves adoption, a small one does not disprove it, because the channel we can
+read may not be the channel its users take. A tool distributed mainly by `git clone` or a
+curl-to-shell script can show a handful of release-asset downloads while being widely used; calling
+that E would assert "measurably unadopted" from a number that never measured the main path. The
+registry path keeps E because there the registry **is** the distribution channel. Floor here is D.
+
+#### Attention is not adoption, and is not used
+
+Star count was evaluated as a fallback and rejected on this index's own data: across the 268 pages
+with a measured adoption grade, Spearman correlation between stars and that grade is **0.125**,
+against `dependent_repos_count` **0.065**, against `downloads_last_month` **0.007**. Five-tier exact
+agreement is 12%, below the 20% random assignment would give. In an index weighted toward AI/agent
+tooling — the worst cohort for star inflation — a star-derived grade would systematically reward
+demo repos with no production use, precisely the failure this axis exists to expose. Forks and
+watchers are excluded for the same reason: they count attention, not installs.
+
+#### Known limitations
+
+- **Release counts have no independent cross-check**, unlike registry A/B results which are verified
+  against the direct registry API. One publisher controls both the artifact and the counter. Treat
+  an A/B resting only on release downloads as weaker than one resting on dependents.
+- **Cumulative vs periodic.** Release and Docker counts are all-time; Homebrew is 90-day; registry
+  is last-month. Within a channel this is consistent, so the percentile holds, but an older project
+  accumulates more all-time volume than an equally-adopted young one. The `longevity` and
+  `maintenance` axes carry the "is it still alive" question separately.
+- **Only the most recent 100 releases** are read, so all-time totals undercount projects with very
+  long release histories.
+
+**Operational notes.** Docker Hub's anonymous API rate-limits hard (429 observed live at 8
+concurrent requests) and is the weakest of the three instruments, so it is spent only where a
+container image is plausibly the project's primary channel (`service`, `app`) and is serialized
+behind a 1.2s delay. That scoping cuts Docker calls across a full rescore by ~70% (177 of 607
+pages) and keeps the batch clear of the one limit this scorer has actually been refused by. A
+library that happens to publish an image is simply not measured this way.
+
+**Pacing a full rescore.** GitHub's `rate_limit` endpoint does not decrement for this project's
+token (verified: five REST calls, `remaining` stayed at 5000), so the budget cannot be observed and
+must be assumed. Batches therefore run defensively — small chunks, low parallelism, a pause between
+chunks — with the header-driven wait in `gh_api` (§1.2b) as the backstop if the assumption is wrong.
+The runner is resumable: a page with an `ok` row is skipped, a `FAIL` row is retried. The Homebrew index is ~20MB of JSON and is
+disk-cached with a 24h TTL, since the batch runner invokes this scorer once per page. **An empty
+index is never cached** — a transport failure and a genuinely empty registry produce the same
+result, and persisting that emptiness would serve it as a measured fact for the whole TTL.
+
+### 2.3c `?` vs `N/A` — a gap in the data vs a gap in the question
+
+These are different claims and must not share a grade:
+
+- **`?`** — we tried to measure and could not. The reader should treat the axis as an open question
+  and go look, and the failure may be ours. Stays in the aggregate denominator.
+- **`N/A`** — the axis asks a question this artifact type cannot answer, however healthy it is.
+  Removed from the denominator, so a skill-pack with its other five axes measured reads `5/5`
+  rather than a deceptively thin `5/6`.
+
+For adoption, `N/A` (reason `no_install_channel`) applies only to `skill-pack`, and **only after
+every instrument above has been tried and returned nothing**: a skill-pack is copied into a
+directory rather than installed, so where it also publishes no downloadable bundle there is no
+install event anywhere to count. Conceding `N/A` by type alone would have been wrong — 18 of this
+index's 84 skill-packs publish release bundles with real download counts.
+
+`app`, `service`, `tool` and the rest never go `N/A` on this axis: they *can* be adopted measurably,
+so failing to find the number is our gap, not a statement that the question does not apply.
+
 **`?` rule** (require POSITIVE proof of no-package, so a real E can't be dodged by mislabeling `type`)
 - `no_package_structural` — `type ∈ {app, skill-pack, service, model}` AND `packages/lookup` returns zero entries clearing the noise filter AND GitHub "Used by" empty/unavailable. (model weights on HF Hub → `?` unless a pip/npm wrapper exists, in which case score the wrapper.)
 - `registry_lookup_failed` — packages.ecosyste.ms lookup transport or HTTP/API failure; this is a tool/data-source failure, not evidence of zero adoption.
 - `registry_no_counts` — a canonical package exists, but comparable dependency/download counts are unavailable. Maven/Go commonly hit this, but the condition is data-shape based rather than registry-name-only. If dependents ARE present → score from dependents, not `?`.
-- `ambiguous` — multiple plausible canonical packages, none clears the noise filter.
+- `ambiguous` — multiple plausible canonical packages, none clears the noise filter, and the by-name secondary lookup (above) also found nothing.
+- `no_install_channel` — **grade `N/A`, not `?`**: a `skill-pack` with no package and no install signal of any kind. See §2.3c.
 - **A `tool`/`library` with a successful empty lookup is NOT `?`** — if packages.ecosyste.ms responds successfully and no canonical package clears the noise filter, score **E** (measurably unadopted) or manual-flag. Transport / HTTP / API failures are `registry_lookup_failed` (`?`), not evidence of zero adoption. Archived repos keep their last computed tier with an `archived` flag, not `?`.
 
 **Data source / exact calls**
@@ -228,7 +435,17 @@ gh api repos/{owner}/{repo} --jq '{archived,pushed_at,name,homepage,language}'
 - Typosquat poisoning → defeated only by the canonical-selection rule above (load-bearing).
 - Self-traffic to escape E → E floor set at a self-traffic level AND requires zero dependents.
 
-**Honest scope:** this axis is *genuinely measurable* only for the ~library + framework + registry-shipping tool cohort (~40% of the index). For the rest it is `?`. The old "one threshold table works for all languages" claim is **false** and removed.
+**Honest scope (revised 2026-09):** the earlier claim — that this axis is measurable only for the
+registry-shipping library/framework/tool cohort (~40% of the index) and is `?` for the rest — was
+true of the *instrument*, not of the projects. Adding §2.3b's install signals and repairing §2.3's
+selection bugs brought the unscored share down from **273/600 (45%)** to the residue documented in
+the run log, of which the largest remaining block is `skill-pack` pages that genuinely publish
+nothing downloadable and are now `N/A` rather than `?`.
+
+What remains true: **one threshold table does not work across all distribution channels**, and no
+single number spans them. The axis is a max() over per-channel anchor tables, each fitted to its
+own measured distribution, and a project is only ever compared against the channel it actually
+ships through.
 
 ---
 

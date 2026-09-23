@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:46:00Z
+  computed_at: 2026-09-22T17:14:25Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 7
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: praw
         dependent_repos_count: 5679
-        downloads_last_month: 1699946
+        downloads_last_month: 1312838
         graph_tier: B
         volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5797
-        last_commit_age_days: 2
+        repo_age_days: 5879
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.681
-        top3_share: 1.0
+        active_maintainers_12mo: 4
+        top1_share: 0.655
+        top3_share: 0.982
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # PRAW

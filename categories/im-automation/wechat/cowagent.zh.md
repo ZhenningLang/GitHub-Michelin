@@ -18,10 +18,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T10:36:48Z
-  overall: A
-  overall_score: 3.6
+  computed_at: 2026-09-22T16:20:06Z
+  overall: B
+  overall_score: 3.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -43,8 +44,17 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1426
+        release_assets: 36
+        release_tier: D
+        docker_pulls: 26111
+        docker_image: zhayujie/cowagent
+        docker_tier: D
+        signal_basis: releases+docker
     longevity:
       grade: A
       raw:
@@ -52,13 +62,8 @@ health:
         last_commit_age_days: 0
         cohort: app
     governance:
-      grade: C
-      raw:
-        active_maintainers_12mo: 55
-        top1_share: 0.647
-        top3_share: 0.824
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -67,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
+    governance: { reason: empty_or_gated }
 ---
 
 # CowAgent

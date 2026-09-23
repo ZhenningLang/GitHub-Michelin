@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:27:01Z
+  computed_at: 2026-09-22T17:31:23Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.3
-        qualifying_issues: 39
+        median_ttfr_hours: 0.0
+        qualifying_issues: 21
         band: default
         window_offset_days: 1
         source: issue
@@ -46,14 +47,15 @@ health:
         registry: pypi.org
         canonical_package: pydantic-ai-slim
         dependent_repos_count: 0
-        downloads_last_month: 203469540
+        downloads_last_month: 33128902
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.05
+        cross_check_divergence: 1.13
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 745
+        repo_age_days: 823
         last_commit_age_days: 0
         cohort: framework
     governance:

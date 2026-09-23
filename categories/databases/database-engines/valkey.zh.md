@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:37:37Z
+  computed_at: 2026-09-22T16:05:54Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,27 +35,38 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.7
+        median_ttfr_hours: 17.8
         qualifying_issues: 21
         band: default
         window_offset_days: 11
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 2251
+        homebrew_tier: B
+        release_downloads: 62
+        release_assets: 2
+        release_tier: D
+        docker_pulls: 298626945
+        docker_image: valkey/valkey
+        docker_tier: A
+        signal_basis: homebrew+releases+docker
     longevity:
       grade: B
       raw:
-        repo_age_days: 837
+        repo_age_days: 915
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 91
-        top1_share: 0.208
-        top3_share: 0.383
+        active_maintainers_12mo: 106
+        top1_share: 0.185
+        top3_share: 0.339
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +76,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 # Valkey
 

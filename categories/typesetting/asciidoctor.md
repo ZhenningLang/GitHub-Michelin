@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T05:53:44Z
-  overall: C
-  overall_score: 2.0
+  computed_at: 2026-09-22T17:07:45Z
+  overall: B
+  overall_score: 3.0
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,27 +30,34 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 18
+        last_commit_age_days: 21
         active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: E
+      grade: A
       raw:
-        registry: gem.coop
+        registry: rubygems.org
         canonical_package: asciidoctor
-        dependent_repos_count: 0
-        downloads_last_month: 56047687
-        graph_tier: E
-        volume_tier: "?"
-        cross_check_divergence: null
+        dependent_repos_count: 6586
+        downloads_last_month: 56069948
+        graph_tier: B
+        volume_tier: A
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 4001
+        homebrew_tier: A
+        release_downloads: 189
+        release_assets: 6
+        release_tier: D
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5223
-        last_commit_age_days: 18
+        repo_age_days: 5226
+        last_commit_age_days: 21
         cohort: tool
     governance:
       grade: D

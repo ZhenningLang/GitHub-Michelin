@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:59:47Z
+  computed_at: 2026-09-22T17:18:19Z
   overall: A
-  overall_score: 3.83
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 55
+        qualifying_issues: 53
         band: default
         window_offset_days: 4
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: "@nuxt/kit"
         dependent_repos_count: 7686
-        downloads_last_month: 19852338
+        downloads_last_month: 25486095
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.11
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3540
-        last_commit_age_days: 3
+        repo_age_days: 3618
+        last_commit_age_days: 1
         cohort: framework
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 81
-        top1_share: 0.579
-        top3_share: 0.646
+        active_maintainers_12mo: 97
+        top1_share: 0.657
+        top3_share: 0.715
         window_source: stats_contributors
         carve_out: null
     risk_license:

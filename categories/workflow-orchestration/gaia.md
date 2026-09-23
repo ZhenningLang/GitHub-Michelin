@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-03T15:04:39Z
+  computed_at: 2026-09-22T17:22:31Z
   overall: D
   overall_score: 1.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 174
+        last_commit_age_days: 255
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,26 @@ health:
         band: relaxed_solo
         window_offset_days: 12
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/gaia-pipeline/gaia
+        dependent_repos_count: 48
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 628
+        release_assets: 21
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 3109
-        last_commit_age_days: 174
+        repo_age_days: 3190
+        last_commit_age_days: 255
         cohort: app
     governance:
       grade: D
@@ -62,8 +76,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Gaia

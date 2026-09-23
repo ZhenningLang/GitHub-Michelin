@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:41:19Z
+  computed_at: 2026-09-22T15:37:32Z
   overall: A
-  overall_score: 3.67
-  scored_axes: 6
+  overall_score: 3.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 27
-        band: default
-        window_offset_days: 6
+      grade: "?"
+      raw: {}
     adoption:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: langchain-tests
-        dependent_repos_count: 0
-        downloads_last_month: 2418075
-        graph_tier: E
+        canonical_package: langchain
+        dependent_repos_count: 18663
+        downloads_last_month: 175109180
+        graph_tier: A
         volume_tier: A
         cross_check_divergence: null
+        release_downloads: 1865
+        release_assets: 186
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1355
-        last_commit_age_days: 2
+        repo_age_days: 1437
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 48
-        top1_share: 0.53
-        top3_share: 0.757
+        active_maintainers_12mo: 42
+        top1_share: 0.488
+        top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +71,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # LangChain

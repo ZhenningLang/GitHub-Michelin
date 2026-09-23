@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T07:15:20Z
+  computed_at: 2026-09-23T03:06:08Z
   overall: A
   overall_score: 4.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,14 +30,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 16
+        qualifying_issues: 22
         band: default
         window_offset_days: 12
         source: issue
@@ -45,17 +46,18 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@astrojs/internal-helpers"
-        dependent_repos_count: 8268
-        downloads_last_month: 24300104
-        graph_tier: B
+        canonical_package: astro
+        dependent_repos_count: 18705
+        downloads_last_month: 18612583
+        graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2015
-        last_commit_age_days: 2
+        repo_age_days: 2017
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A

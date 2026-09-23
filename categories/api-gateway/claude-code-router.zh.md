@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T11:26:30Z
+  computed_at: 2026-09-22T15:58:05Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,7 +35,7 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 38.0
+        median_ttfr_hours: 39.6
         qualifying_issues: 19
         band: relaxed_solo
         window_offset_days: 10
@@ -46,22 +47,27 @@ health:
         registry: npmjs.org
         canonical_package: "@musistudio/claude-code-router"
         dependent_repos_count: 0
-        downloads_last_month: 398338
+        downloads_last_month: 273997
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        release_downloads: 105696
+        release_assets: 338
+        release_tier: C
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 571
+        repo_age_days: 575
         last_commit_age_days: 2
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 37
+        active_maintainers_12mo: 36
         top1_share: 0.782
-        top3_share: 0.846
+        top3_share: 0.847
         window_source: stats_contributors
         carve_out: null
     risk_license:

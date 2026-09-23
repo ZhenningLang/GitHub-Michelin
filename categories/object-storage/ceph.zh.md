@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T11:53:09Z
+  computed_at: 2026-09-23T03:04:03Z
   overall: A
   overall_score: 4.0
-  scored_axes: 3
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,26 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: null
+        canonical_package: null
+        docker_pulls: 134631934
+        docker_image: ceph/ceph
+        docker_tier: A
+        signal_basis: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 5498
+        repo_age_days: 5500
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 155
+        active_maintainers_12mo: 156
         top1_share: 0.072
-        top3_share: 0.201
+        top3_share: 0.199
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -56,7 +63,6 @@ health:
       raw: {}
   unknowns:
     responsiveness: { reason: issues_disabled }
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
 ---
 

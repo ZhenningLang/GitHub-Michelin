@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-18T12:29:06Z
+  computed_at: 2026-09-22T16:48:00Z
   overall: C
   overall_score: 1.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 261
+        last_commit_age_days: 265
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -48,19 +49,20 @@ health:
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
         archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 542
-        last_commit_age_days: 261
+        repo_age_days: 547
+        last_commit_age_days: 265
         cohort: service
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.385
-        top3_share: 0.846
+        active_maintainers_12mo: 4
+        top1_share: 0.455
+        top3_share: 0.909
         window_source: stats_contributors
         carve_out: null
     risk_license:

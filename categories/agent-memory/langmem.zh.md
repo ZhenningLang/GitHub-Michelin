@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:30:50Z
+  computed_at: 2026-09-22T15:39:47Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 12
+        last_commit_age_days: 13
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: "?"
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: langmem
         dependent_repos_count: 0
-        downloads_last_month: 678526
+        downloads_last_month: 725685
         graph_tier: E
         volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 531
-        last_commit_age_days: 8
+        repo_age_days: 609
+        last_commit_age_days: 13
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.273
-        top3_share: 0.818
+        active_maintainers_12mo: 3
+        top1_share: 0.6
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:

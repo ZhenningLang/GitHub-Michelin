@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:52:33Z
+  computed_at: 2026-09-22T16:57:37Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  overall_score: 3.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,26 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 329668
+        release_assets: 224
+        release_tier: C
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2485
+        repo_age_days: 2563
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 97
-        top1_share: 0.123
-        top3_share: 0.254
+        active_maintainers_12mo: 107
+        top1_share: 0.103
+        top3_share: 0.234
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
 ---
 # Milvus
 

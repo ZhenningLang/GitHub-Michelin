@@ -11,7 +11,7 @@
 | **Prometheus** | The Prometheus monitoring system and time series database. | A（6/6） | [→](prometheus.zh.md) |
 | **OpenTelemetry Collector** | OpenTelemetry Collector | A（5/6） | [→](opentelemetry-collector.zh.md) |
 | **Loki** | Like Prometheus, but for logs. | B（6/6） | [→](loki.zh.md) |
-| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | A（5/6） | [→](jaeger.zh.md) |
+| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | A（6/6） | [→](jaeger.zh.md) |
 
 
 ## 对比矩阵
@@ -19,7 +19,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Grafana](grafana.zh.md) | ✅ | B（5/6） | 多数据源之上的统一看板/告警；是可视化层而非存储（AGPL-3.0）。 |
-| [Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) | ✅ | A（5/6） | 插件驱动的采集/路由 agent，负责把数据喂给 Grafana 读取的后端——分工不同。 |
+| [Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) | ✅ | A（6/6） | 插件驱动的采集/路由 agent，负责把数据喂给 Grafana 读取的后端——分工不同。 |
 | Kibana / Datadog / Apache Superset | 部分已收录 | — | 各页对比里点到的其他看板/可观测/BI 方案；其中 Apache Superset 收录在 data-visualization 分类下，Kibana 与 Datadog 尚未收录。 |
 
 ## 什么该放这里

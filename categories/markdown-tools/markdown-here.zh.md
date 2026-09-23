@@ -16,41 +16,49 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:44:57Z
+  computed_at: 2026-09-22T16:34:02Z
   overall: C
-  overall_score: 2.25
+  overall_score: 1.75
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: D
       raw:
         archived: false
-        last_commit_age_days: 359
+        last_commit_age_days: 440
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: C
-      raw:
-        repo_age_days: 5164
-        last_commit_age_days: 359
-        cohort: tool
-    governance:
       grade: D
       raw:
-        active_maintainers_12mo: 1
-        top1_share: 1.0
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+        registry: proxy.golang.org
+        canonical_package: github.com/adam-p/markdown-here
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 13458
+        release_assets: 6
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+    longevity:
+      grade: D
+      raw:
+        repo_age_days: 5246
+        last_commit_age_days: 440
+        cohort: tool
+    governance:
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -59,8 +67,8 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
+    governance: { reason: unattributable }
 ---
 
 # Markdown Here

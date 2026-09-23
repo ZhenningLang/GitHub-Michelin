@@ -16,26 +16,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:20:32Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T17:13:50Z
+  overall: A
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 5
-        active_weeks_13: 5
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
-      grade: C
+      grade: B
       raw:
-        median_ttfr_hours: 656.5
-        qualifying_issues: 8
+        median_ttfr_hours: 110.8
+        qualifying_issues: 12
         band: default
         window_offset_days: 2
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: trafilatura
         dependent_repos_count: 63
-        downloads_last_month: 9907058
+        downloads_last_month: 11637624
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2646
-        last_commit_age_days: 5
+        repo_age_days: 2724
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 11
-        top1_share: 0.588
-        top3_share: 0.765
+        active_maintainers_12mo: 22
+        top1_share: 0.431
+        top3_share: 0.585
         window_source: stats_contributors
         carve_out: null
     risk_license:

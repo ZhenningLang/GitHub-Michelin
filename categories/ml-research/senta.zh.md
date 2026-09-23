@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:50:49Z
+  computed_at: 2026-09-22T16:42:56Z
   overall: D
-  overall_score: 1.33
-  scored_axes: 3
+  overall_score: 1.25
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,28 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2194
+        last_commit_age_days: 2275
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: pypi.org
+        canonical_package: senta
+        dependent_repos_count: 1
+        downloads_last_month: 33
+        graph_tier: D
+        volume_tier: E
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 2923
-        last_commit_age_days: 2194
+        repo_age_days: 3005
+        last_commit_age_days: 2275
         cohort: library
     governance:
       grade: "?"
@@ -55,7 +64,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
     governance: { reason: unattributable }
 ---
 

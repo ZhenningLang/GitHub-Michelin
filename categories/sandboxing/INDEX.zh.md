@@ -7,27 +7,27 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **gVisor** | 不可信容器必须与宿主内核隔离、又不想跑虚拟机时用它——不需要 KVM，且容器工作流不变。 | A（5/6） | [→](gvisor.zh.md) |
-| **Kata Containers** | 想让每个 pod 在轻量虚拟机里拿到真内核、同时 Kubernetes 保持常规 RuntimeClass 工作流时用它。 | A（5/6） | [→](kata-containers.zh.md) |
-| **Firecracker** | 你在自建沙箱层、想要一个带控制 API 的极简 KVM microVM 原语（而不是容器运行时）时用它。 | A（5/6） | [→](firecracker.zh.md) |
-| **OpenSandbox** | 当你需要自托管隔离沙箱、在 K8s 规模上运行不可信的 agent 生成代码（带出口管控和凭证保险库）时用它——但仓库仅数月之龄（2025-12 创建），其 API 与 Lindy 长期记录尚未经检验。 | B（5/6） | [→](opensandbox.zh.md) |
+| **gVisor** | 不可信容器必须与宿主内核隔离、又不想跑虚拟机时用它——不需要 KVM，且容器工作流不变。 | A（6/6） | [→](gvisor.zh.md) |
+| **Kata Containers** | 想让每个 pod 在轻量虚拟机里拿到真内核、同时 Kubernetes 保持常规 RuntimeClass 工作流时用它。 | A（6/6） | [→](kata-containers.zh.md) |
+| **Firecracker** | 你在自建沙箱层、想要一个带控制 API 的极简 KVM microVM 原语（而不是容器运行时）时用它。 | A（6/6） | [→](firecracker.zh.md) |
+| **OpenSandbox** | 当你需要自托管隔离沙箱、在 K8s 规模上运行不可信的 agent 生成代码（带出口管控和凭证保险库）时用它——但仓库仅数月之龄（2025-12 创建），其 API 与 Lindy 长期记录尚未经检验。 | B（6/6） | [→](opensandbox.zh.md) |
 | **E2B** | 当 agent 需要跑 AI 生成的代码、你想要把沙箱做成 SDK 时用它——默认托管，必须落在自己账号时用 Terraform 自托管到 AWS／GCP。 | A（6/6） | [→](e2b.zh.md) |
-| **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | B（4/6） | [→](substrate.zh.md) |
+| **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | B（5/6） | [→](substrate.zh.md) |
 | **Modal client SDK** | 想要 serverless 容器、GPU 与沙箱而什么都不用运维时用它——客户端 SDK 开源，平台闭源且只能托管。 | A（6/6） | [→](modal-client.zh.md) |
-| **Microsandbox** | 沙箱必须跑在你已有的硬件上时用它——一个二进制或一个 SDK、普通 OCI 镜像、每沙箱出口策略与宿主侧 secret，无守护进程、无集群——但宿主需要 KVM／Apple Silicon／WHP，且仍处于 beta。 | A（5/6） | [→](microsandbox.zh.md) |
+| **Microsandbox** | 沙箱必须跑在你已有的硬件上时用它——一个二进制或一个 SDK、普通 OCI 镜像、每沙箱出口策略与宿主侧 secret，无守护进程、无集群——但宿主需要 KVM／Apple Silicon／WHP，且仍处于 beta。 | A（6/6） | [→](microsandbox.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [gVisor](gvisor.zh.md) | ✅ | A（5/6） | 不用 KVM 的隔离（用户态内核、过滤后的系统调用面）——比虚拟机更容易落地，但语义与吞吐和真内核不同。 |
-| [Kata Containers](kata-containers.zh.md) | ✅ | A（5/6） | 每沙箱一个真内核（轻量虚拟机）加一套做完的 Kubernetes 集成——代价是每个节点都要硬件虚拟化，且多一个 hypervisor 要运维。 |
-| [Firecracker](firecracker.zh.md) | ✅ | A（5/6） | 现有攻击面最小的 microVM 原语，而它之上的一切（镜像、调度、快照、多租户）都要你自己建。 |
-| [OpenSandbox](opensandbox.zh.md) | ✅ | B（5/6） | 自托管优先的沙箱平台，有文档化协议与多语言 SDK——平台由你运维，且项目年轻。 |
+| [gVisor](gvisor.zh.md) | ✅ | A（6/6） | 不用 KVM 的隔离（用户态内核、过滤后的系统调用面）——比虚拟机更容易落地，但语义与吞吐和真内核不同。 |
+| [Kata Containers](kata-containers.zh.md) | ✅ | A（6/6） | 每沙箱一个真内核（轻量虚拟机）加一套做完的 Kubernetes 集成——代价是每个节点都要硬件虚拟化，且多一个 hypervisor 要运维。 |
+| [Firecracker](firecracker.zh.md) | ✅ | A（6/6） | 现有攻击面最小的 microVM 原语，而它之上的一切（镜像、调度、快照、多租户）都要你自己建。 |
+| [OpenSandbox](opensandbox.zh.md) | ✅ | B（6/6） | 自托管优先的沙箱平台，有文档化协议与多语言 SDK——平台由你运维，且项目年轻。 |
 | [E2B](e2b.zh.md) | ✅ | A（6/6） | 最快拿到能用的沙箱（先托管 SDK、后 Terraform 自托管）——自托管只覆盖 AWS／GCP。 |
-| [Agent Substrate](substrate.zh.md) | ✅ | B（4/6） | 靠把闲置的有状态 agent 存成快照、塞进预热 pod 来换密度——1.0 之前、出站轮询唤醒不成立、安全加固未做。 |
+| [Agent Substrate](substrate.zh.md) | ✅ | B（5/6） | 靠把闲置的有状态 agent 存成快照、塞进预热 pod 来换密度——1.0 之前、出站轮询唤醒不成立、安全加固未做。 |
 | [Modal client SDK](modal-client.zh.md) | ✅ | A（6/6） | serverless 容器、GPU 与沙箱都不用运维——不能自托管、没有退路、单一厂商。 |
-| [Microsandbox](microsandbox.zh.md) | ✅ | A（5/6） | 从普通 OCI 镜像拉起的本地优先 microVM 沙箱，CLI 动词跟 Docker 同构、无守护进程——跨平台且非特权，但宿主需要硬件虚拟化，且处于 beta。 |
+| [Microsandbox](microsandbox.zh.md) | ✅ | A（6/6） | 从普通 OCI 镜像拉起的本地优先 microVM 沙箱，CLI 动词跟 Docker 同构、无守护进程——跨平台且非特权，但宿主需要硬件虚拟化，且处于 beta。 |
 
 ## 什么该放这里
 

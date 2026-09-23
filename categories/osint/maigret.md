@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T14:15:29Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T16:52:22Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 25.7
-        qualifying_issues: 14
+        median_ttfr_hours: 24.5
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 3
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: maigret
@@ -50,18 +51,25 @@ health:
         graph_tier: D
         volume_tier: C
         cross_check_divergence: null
+        homebrew_installs_90d: 638
+        homebrew_tier: B
+        release_downloads: 14232
+        release_assets: 7
+        release_tier: D
+        signal_basis: homebrew+releases
+        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2274
-        last_commit_age_days: 0
+        repo_age_days: 2278
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 42
-        top1_share: 0.691
-        top3_share: 0.801
+        active_maintainers_12mo: 44
+        top1_share: 0.678
+        top3_share: 0.794
         window_source: stats_contributors
         carve_out: null
     risk_license:

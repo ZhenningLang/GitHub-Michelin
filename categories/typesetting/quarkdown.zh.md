@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T05:15:31Z
-  overall: B
-  overall_score: 2.6
-  scored_axes: 5
+  computed_at: 2026-09-22T17:52:21Z
+  overall: C
+  overall_score: 2.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,32 +30,38 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 6.6
-        qualifying_issues: 22
+        qualifying_issues: 21
         band: relaxed_solo
         window_offset_days: 5
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 31446
+        release_assets: 89
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: B
       raw:
-        repo_age_days: 963
-        last_commit_age_days: 0
+        repo_age_days: 966
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 17
-        top1_share: 0.901
+        active_maintainers_12mo: 18
+        top1_share: 0.9
         top3_share: 0.94
         window_source: stats_contributors
         carve_out: null
@@ -65,8 +72,6 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Quarkdown

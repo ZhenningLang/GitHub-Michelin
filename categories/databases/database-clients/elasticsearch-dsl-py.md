@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:10Z
-  overall: D
-  overall_score: 1.0
-  scored_axes: 4
+  computed_at: 2026-09-22T16:04:19Z
+  overall: C
+  overall_score: 1.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 441
+        last_commit_age_days: 522
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,26 @@ health:
         band: default
         window_offset_days: 1
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: pypi.org
+        canonical_package: elasticsearch-dsl
+        dependent_repos_count: 3207
+        downloads_last_month: 5280991
+        graph_tier: B
+        volume_tier: A
+        cross_check_divergence: 1.17
+        release_downloads: 421
+        release_assets: 8
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 4503
-        last_commit_age_days: 441
+        repo_age_days: 4584
+        last_commit_age_days: 522
         cohort: library
     governance:
       grade: "?"
@@ -58,7 +72,6 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
     governance: { reason: unattributable }
 ---
 

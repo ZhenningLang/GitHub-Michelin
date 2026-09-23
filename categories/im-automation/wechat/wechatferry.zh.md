@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-22T10:37:18Z
+  computed_at: 2026-09-23T03:11:25Z
   overall: D
   overall_score: 1.0
-  scored_axes: 5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 185
+        last_commit_age_days: 186
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,13 +40,20 @@ health:
         band: default
         window_offset_days: 12
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 22806
+        release_assets: 6
+        release_tier: D
+        signal_basis: releases
+        archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 1463
-        last_commit_age_days: 185
+        repo_age_days: 1464
+        last_commit_age_days: 186
         cohort: library
     governance:
       grade: D
@@ -62,8 +70,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # WeChatFerry

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T03:07:18Z
+  computed_at: 2026-09-22T16:50:14Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.2
-        qualifying_issues: 43
+        median_ttfr_hours: 4.1
+        qualifying_issues: 44
         band: default
         window_offset_days: 5
         source: issue
@@ -49,7 +50,14 @@ health:
         downloads_last_month: 5421188
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.35
+        homebrew_installs_90d: 394
+        homebrew_tier: C
+        release_downloads: 107589
+        release_assets: 63
+        release_tier: C
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:

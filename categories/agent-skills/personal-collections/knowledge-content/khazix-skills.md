@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:45:58Z
+  computed_at: 2026-09-22T17:39:46Z
   overall: B
-  overall_score: 2.5
+  overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,20 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 10
+        last_commit_age_days: 7
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 88
-        last_commit_age_days: 1
+        repo_age_days: 169
+        last_commit_age_days: 7
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Khazix Skills

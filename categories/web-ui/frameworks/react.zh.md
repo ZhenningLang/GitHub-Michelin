@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T02:50:09Z
+  computed_at: 2026-09-23T03:06:34Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -32,34 +33,41 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 48.8
-        qualifying_issues: 31
-        band: default
-        window_offset_days: 0
-    adoption:
       grade: A
       raw:
-        registry: npmjs.org
-        canonical_package: react
-        dependent_repos_count: 2830385
-        downloads_last_month: 321778145
-        graph_tier: A
-        volume_tier: A
-        cross_check_divergence: 1.79
+        median_ttfr_hours: 13.2
+        qualifying_issues: 28
+        band: default
+        window_offset_days: 0
+        source: issue
+        inferred: false
+    adoption:
+      grade: B
+      raw:
+        registry: nuget.org
+        canonical_package: react.js
+        dependent_repos_count: 92
+        downloads_last_month: 615151
+        graph_tier: D
+        volume_tier: B
+        cross_check_divergence: null
+        release_downloads: 2258599
+        release_assets: 256
+        release_tier: B
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4787
+        repo_age_days: 4869
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.23
-        top3_share: 0.586
+        active_maintainers_12mo: 46
+        top1_share: 0.218
+        top3_share: 0.463
         window_source: stats_contributors
         carve_out: null
     risk_license:

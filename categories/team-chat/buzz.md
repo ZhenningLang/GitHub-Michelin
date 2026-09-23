@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T02:12:13Z
+  computed_at: 2026-09-22T17:52:06Z
   overall: B
-  overall_score: 3.33
-  scored_axes: 3
+  overall_score: 3.25
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,12 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 852
+        homebrew_tier: B
+        release_downloads: 763678
+        release_assets: 746
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 196
+        repo_age_days: 200
         last_commit_age_days: 0
         cohort: app
     governance:
@@ -55,7 +64,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
     governance: { reason: empty_or_gated }
 ---
 

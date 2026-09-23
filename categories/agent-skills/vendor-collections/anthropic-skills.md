@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:47:25Z
+  computed_at: 2026-09-23T03:02:21Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 9
+        last_commit_age_days: 12
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: B
       raw:
-        repo_age_days: 284
-        last_commit_age_days: 2
+        repo_age_days: 365
+        last_commit_age_days: 12
         cohort: skill-pack
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 13
-        top1_share: 0.31
-        top3_share: 0.69
+        active_maintainers_12mo: 15
+        top1_share: 0.278
+        top3_share: 0.593
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Anthropic Skills

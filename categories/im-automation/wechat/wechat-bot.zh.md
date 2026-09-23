@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T18:08:30Z
+  computed_at: 2026-09-22T16:20:57Z
   overall: B
-  overall_score: 3.2
+  overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,35 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 3
+        last_commit_age_days: 19
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 92.6
-        qualifying_issues: 3
-        band: relaxed_solo
-        window_offset_days: 4
-        source: issue
-        inferred: false
-    adoption:
       grade: "?"
       raw: {}
+    adoption:
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: wechat-bot
+        dependent_repos_count: 3
+        downloads_last_month: 47
+        graph_tier: D
+        volume_tier: E
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1675
-        last_commit_age_days: 8
+        repo_age_days: 1742
+        last_commit_age_days: 19
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.889
-        top3_share: 1.0
+        active_maintainers_12mo: 4
+        top1_share: 0.824
+        top3_share: 0.941
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # WeChat Bot

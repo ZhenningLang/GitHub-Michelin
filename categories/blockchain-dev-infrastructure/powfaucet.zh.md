@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-17T03:34:23Z
-  overall: B
-  overall_score: 2.8
+  computed_at: 2026-09-22T16:00:27Z
+  overall: C
+  overall_score: 2.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,36 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
-        active_weeks_13: 10
+        last_commit_age_days: 25
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 1.1
-        qualifying_issues: 4
-        band: default
-        window_offset_days: 10
-        source: pr
-        inferred: false
-    adoption:
       grade: "?"
       raw: {}
+    adoption:
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 4207
+        release_assets: 204
+        release_tier: D
+        docker_pulls: 41603
+        docker_image: pk910/powfaucet
+        docker_tier: D
+        signal_basis: releases+docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 1578
-        last_commit_age_days: 7
+        repo_age_days: 1646
+        last_commit_age_days: 25
         cohort: service
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.76
-        top3_share: 0.92
+        top1_share: 0.778
+        top3_share: 0.926
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,7 +69,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: no_package_structural }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # PoWFaucet

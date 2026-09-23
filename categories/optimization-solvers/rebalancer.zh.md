@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T02:28:41Z
+  computed_at: 2026-09-22T16:50:32Z
   overall: B
-  overall_score: 3.2
+  overall_score: 2.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,22 +42,23 @@ health:
         source: pr
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 524
+        release_assets: 40
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 103
+        repo_age_days: 104
         last_commit_age_days: 0
         cohort: library
     governance:
-      grade: B
-      raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.457
-        top3_share: 0.662
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -65,7 +67,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
+    governance: { reason: empty_or_gated }
 ---
 
 # Rebalancer

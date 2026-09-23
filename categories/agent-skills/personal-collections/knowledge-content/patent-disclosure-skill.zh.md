@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T11:45:51Z
+  computed_at: 2026-09-22T17:39:59Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,27 +29,27 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 3
         active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 165
-        last_commit_age_days: 1
+        repo_age_days: 168
+        last_commit_age_days: 3
         cohort: skill-pack
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.907
-        top3_share: 0.953
+        top1_share: 0.911
+        top3_share: 0.956
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # patent-disclosure-skill

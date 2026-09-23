@@ -16,50 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:36Z
+  computed_at: 2026-09-22T16:06:37Z
   overall: B
-  overall_score: 2.83
+  overall_score: 3.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
-        active_weeks_13: 4
+        last_commit_age_days: 2
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.9
+        median_ttfr_hours: 18.4
         qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 11
+        source: issue
+        inferred: false
     adoption:
       grade: D
       raw:
         registry: npmjs.org
         canonical_package: whistle
         dependent_repos_count: 24
-        downloads_last_month: 11769
+        downloads_last_month: 17165
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4130
-        last_commit_age_days: 12
+        repo_age_days: 4211
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.982
-        top3_share: 0.995
+        active_maintainers_12mo: 6
+        top1_share: 0.979
+        top3_share: 0.992
         window_source: stats_contributors
         carve_out: null
     risk_license:

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T15:07:46Z
+  computed_at: 2026-09-22T15:38:38Z
   overall: B
-  overall_score: 2.83
-  scored_axes: 6
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,41 +29,35 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 41.8
-        qualifying_issues: 34
-        band: relaxed_solo
-        window_offset_days: 13
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
-      grade: E
+      grade: D
       raw:
         registry: null
         canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+        homebrew_installs_90d: 73
+        homebrew_tier: D
+        release_downloads: 22213
+        release_assets: 30
+        release_tier: D
+        signal_basis: homebrew+releases
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 118
-        last_commit_age_days: 2
+        repo_age_days: 186
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.15
-        top3_share: 0.407
+        active_maintainers_12mo: 79
+        top1_share: 0.168
+        top3_share: 0.367
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -72,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: github_unavailable }
 ---
 
 # SkillSpector

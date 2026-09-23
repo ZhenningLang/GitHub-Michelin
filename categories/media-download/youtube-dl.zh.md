@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T16:12:31Z
+  computed_at: 2026-09-22T16:36:01Z
   overall: B
-  overall_score: 2.67
+  overall_score: 2.83
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,38 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 220
+        last_commit_age_days: 301
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.9
-        qualifying_issues: 10
+        median_ttfr_hours: 33.7
+        qualifying_issues: 3
         band: relaxed_solo
         window_offset_days: 1
+        source: issue
+        inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: pypi.org
         canonical_package: youtube_dl
         dependent_repos_count: 3990
-        downloads_last_month: 242635
+        downloads_last_month: 151625
         graph_tier: B
-        volume_tier: B
-        cross_check_divergence: null
+        volume_tier: C
+        cross_check_divergence: 1.01
+        release_downloads: 62785626
+        release_assets: 990
+        release_tier: A
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 5724
-        last_commit_age_days: 220
+        repo_age_days: 5805
+        last_commit_age_days: 301
         cohort: tool
     governance:
       grade: D

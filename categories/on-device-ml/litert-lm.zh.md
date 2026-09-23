@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:54:09Z
+  computed_at: 2026-09-22T16:49:11Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 61.3
-        qualifying_issues: 36
+        median_ttfr_hours: 15.8
+        qualifying_issues: 48
         band: relaxed_solo
         window_offset_days: 10
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: pypi.org
-        canonical_package: litert-lm
+        canonical_package: litert-lm-builder
         dependent_repos_count: 0
-        downloads_last_month: 11218
+        downloads_last_month: 136497
         graph_tier: E
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
+        release_downloads: 90741
+        release_assets: 133
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 445
+        repo_age_days: 526
         last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 32
-        top1_share: 0.278
-        top3_share: 0.523
+        active_maintainers_12mo: 40
+        top1_share: 0.291
+        top3_share: 0.522
         window_source: stats_contributors
         carve_out: null
     risk_license:

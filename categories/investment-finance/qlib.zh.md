@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T08:10:05Z
+  computed_at: 2026-09-22T16:23:43Z
   overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,33 +29,39 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 85
-        active_weeks_13: 1
-        carve_out: mature_library_lindy
+        last_commit_age_days: 6
+        active_weeks_13: 2
+        carve_out: null
     responsiveness:
-      grade: A
+      grade: C
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 11
+        median_ttfr_hours: 189.0
+        qualifying_issues: 3
         band: default
         window_offset_days: 1
-        source: pr
+        source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 1410
+        release_assets: 36
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2162
-        last_commit_age_days: 85
+        repo_age_days: 2230
+        last_commit_age_days: 6
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.692
-        top3_share: 0.769
+        active_maintainers_12mo: 9
+        top1_share: 0.655
+        top3_share: 0.793
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 # qlib
 

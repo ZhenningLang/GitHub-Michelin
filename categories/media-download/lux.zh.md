@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:46:32Z
+  computed_at: 2026-09-22T16:35:27Z
   overall: B
-  overall_score: 2.8
+  overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,35 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 186
+        last_commit_age_days: 267
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 180.7
-        qualifying_issues: 4
-        band: relaxed_solo
-        window_offset_days: 8
-    adoption:
       grade: "?"
       raw: {}
+    adoption:
+      grade: C
+      raw:
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 249
+        homebrew_tier: C
+        release_downloads: 560461
+        release_assets: 1248
+        release_tier: C
+        signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 3051
-        last_commit_age_days: 186
+        repo_age_days: 3132
+        last_commit_age_days: 267
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 4
-        top1_share: 0.25
-        top3_share: 0.75
+        active_maintainers_12mo: 3
+        top1_share: 0.333
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -63,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    adoption: { reason: ambiguous }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # lux

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T11:54:58Z
+  computed_at: 2026-09-22T17:11:05Z
   overall: B
-  overall_score: 3.0
+  overall_score: 3.33
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,33 +36,38 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 52.8
-        qualifying_issues: 40
+        qualifying_issues: 44
         band: relaxed_solo
         window_offset_days: 1
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: B
       raw:
         registry: npmjs.org
         canonical_package: "@wxg-prc-cpg/browser-skill-dsh-plugin"
         dependent_repos_count: 0
-        downloads_last_month: 9475
+        downloads_last_month: 12944
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 1249935
+        release_assets: 69
+        release_tier: B
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 90
+        repo_age_days: 92
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 21
-        top1_share: 0.28
-        top3_share: 0.7
+        active_maintainers_12mo: 24
+        top1_share: 0.305
+        top3_share: 0.681
         window_source: stats_contributors
         carve_out: null
     risk_license:

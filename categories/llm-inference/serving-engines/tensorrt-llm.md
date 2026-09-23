@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:52:11Z
+  computed_at: 2026-09-22T16:29:51Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 4
+  overall_score: 3.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,34 +35,45 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 32.7
-        qualifying_issues: 22
+        median_ttfr_hours: 29.1
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
       grade: D
       raw:
         registry: pypi.org
         canonical_package: tensorrt-llm
         dependent_repos_count: 0
-        downloads_last_month: 10452
+        downloads_last_month: 10477
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 183
+        release_assets: 5
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 1052
+        repo_age_days: 1133
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        active_maintainers_12mo: 99
+        top1_share: 0.081
+        top3_share: 0.176
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    governance: { reason: empty_or_gated }
     risk_license: { reason: license_unparsed }
 ---
 

@@ -16,38 +16,39 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T10:14:43Z
+  computed_at: 2026-09-22T17:37:46Z
   overall: B
-  overall_score: 2.75
+  overall_score: 2.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 14
-        active_weeks_13: 8
+        last_commit_age_days: 29
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 102
-        last_commit_age_days: 14
+        repo_age_days: 171
+        last_commit_age_days: 29
         cohort: skill-pack
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 1
-        top1_share: 1.0
+        active_maintainers_12mo: 3
+        top1_share: 0.965
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 # nuwa-skill
 

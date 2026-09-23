@@ -16,46 +16,51 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:48Z
-  overall: B
-  overall_score: 3.2
+  computed_at: 2026-09-22T16:39:29Z
+  overall: A
+  overall_score: 3.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
-      grade: C
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 79
-        active_weeks_13: 1
+        last_commit_age_days: 22
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: pypi.org
         canonical_package: openai-whisper
         dependent_repos_count: 2067
-        downloads_last_month: 733631
+        downloads_last_month: 5089326
         graph_tier: B
-        volume_tier: B
-        cross_check_divergence: 3.59
+        volume_tier: A
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 10596
+        homebrew_tier: A
+        signal_basis: homebrew
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1386
-        last_commit_age_days: 79
+        repo_age_days: 1467
+        last_commit_age_days: 22
         cohort: model
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.333
-        top3_share: 1.0
+        active_maintainers_12mo: 5
+        top1_share: 0.2
+        top3_share: 0.6
         window_source: stats_contributors
         carve_out: null
     risk_license:

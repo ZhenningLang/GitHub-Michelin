@@ -16,50 +16,48 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:25:40Z
-  overall: B
-  overall_score: 3.0
-  scored_axes: 6
+  computed_at: 2026-09-22T17:32:16Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 8
+        last_commit_age_days: 74
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 61.4
-        qualifying_issues: 7
-        band: default
-        window_offset_days: 0
+      grade: "?"
+      raw: {}
     adoption:
       grade: D
       raw:
         registry: pypi.org
         canonical_package: parlant
         dependent_repos_count: 0
-        downloads_last_month: 10560
+        downloads_last_month: 10561
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 869
-        last_commit_age_days: 8
+        repo_age_days: 950
+        last_commit_age_days: 74
         cohort: framework
     governance:
-      grade: A
+      grade: B
       raw:
-        active_maintainers_12mo: 35
-        top1_share: 0.355
-        top3_share: 0.725
+        active_maintainers_12mo: 29
+        top1_share: 0.402
+        top3_share: 0.8
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Parlant

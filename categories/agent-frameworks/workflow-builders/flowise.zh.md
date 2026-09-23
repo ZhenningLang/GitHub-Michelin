@@ -16,52 +16,63 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:06:36Z
-  overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  computed_at: 2026-09-22T17:37:37Z
+  overall: D
+  overall_score: 1.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: E
       raw:
-        archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 13
+        archived: true
+        last_commit_age_days: 40
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
-      grade: A
+      grade: E
       raw:
-        median_ttfr_hours: 90.1
-        qualifying_issues: 31
+        median_ttfr_hours: null
+        qualifying_issues: 0
         band: relaxed_solo
         window_offset_days: 11
-        source: issue
-        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: A
+      grade: C
       raw:
-        repo_age_days: 1193
-        last_commit_age_days: 0
+        registry: npmjs.org
+        canonical_package: "@flowiseai/observe"
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        docker_pulls: 6951116
+        docker_image: flowiseai/flowise
+        docker_tier: C
+        signal_basis: docker
+        tier_source: docker
+        archived: true
+    longevity:
+      grade: E
+      raw:
+        repo_age_days: 1271
+        last_commit_age_days: 40
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 32
-        top1_share: 0.379
-        top3_share: 0.588
+        active_maintainers_12mo: 24
+        top1_share: 0.287
+        top3_share: 0.555
         window_source: stats_contributors
         carve_out: null
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
 ---
 # Flowise

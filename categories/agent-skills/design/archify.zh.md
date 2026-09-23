@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T10:33:32Z
+  computed_at: 2026-09-22T15:44:09Z
   overall: B
   overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,28 +30,35 @@ health:
       raw:
         archived: false
         last_commit_age_days: 0
-        active_weeks_13: 7
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: "@tt-a1i/archify-dsh"
+        dependent_repos_count: 0
+        downloads_last_month: 17850
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 12795
+        release_assets: 17
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 92
+        repo_age_days: 160
         last_commit_age_days: 0
         cohort: skill-pack
     governance:
-      grade: D
-      raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.892
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -60,7 +68,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+    governance: { reason: empty_or_gated }
 ---
 # archify
 

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:40:15Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T16:09:44Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,40 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 9
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 2.7
-        qualifying_issues: 42
+        median_ttfr_hours: 15.1
+        qualifying_issues: 39
         band: relaxed_solo
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
-        registry: formulae.brew.sh
-        canonical_package: fzf
-        dependent_repos_count: 1518
-        downloads_last_month: 30483
-        graph_tier: B
-        volume_tier: "?"
-        cross_check_divergence: null
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 148498
+        homebrew_tier: A
+        release_downloads: 14337799
+        release_assets: 1463
+        release_tier: A
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4639
-        last_commit_age_days: 0
+        repo_age_days: 4717
+        last_commit_age_days: 9
         cohort: tool
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 11
-        top1_share: 0.891
-        top3_share: 0.944
+        top1_share: 0.87
+        top3_share: 0.937
         window_source: stats_contributors
         carve_out: null
     risk_license:

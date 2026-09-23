@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T15:53:56Z
+  computed_at: 2026-09-22T16:24:53Z
   overall: C
-  overall_score: 2.0
+  overall_score: 2.17
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 49
+        last_commit_age_days: 52
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -41,20 +42,25 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: pypi.org
         canonical_package: khoj
         dependent_repos_count: 2
-        downloads_last_month: 15561
+        downloads_last_month: 11079
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 105253
+        release_assets: 297
+        release_tier: C
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1861
-        last_commit_age_days: 49
+        repo_age_days: 1864
+        last_commit_age_days: 52
         cohort: service
     governance:
       grade: D

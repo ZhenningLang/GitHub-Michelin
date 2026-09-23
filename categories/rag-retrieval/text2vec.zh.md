@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:00Z
+  computed_at: 2026-09-22T16:58:33Z
   overall: C
-  overall_score: 2.4
+  overall_score: 2.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 139
+        last_commit_age_days: 220
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -40,15 +41,20 @@ health:
         registry: pypi.org
         canonical_package: text2vec
         dependent_repos_count: 6
-        downloads_last_month: 2623
+        downloads_last_month: 1782
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 8028
+        release_assets: 2
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 2425
-        last_commit_age_days: 139
+        repo_age_days: 2507
+        last_commit_age_days: 220
         cohort: library
     governance:
       grade: D
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # text2vec

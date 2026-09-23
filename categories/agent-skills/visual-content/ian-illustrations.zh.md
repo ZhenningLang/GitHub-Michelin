@@ -16,32 +16,33 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:49:30Z
+  computed_at: 2026-09-22T17:41:04Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 30
-        active_weeks_13: 2
+        last_commit_age_days: 111
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 37
-        last_commit_age_days: 30
+        repo_age_days: 118
+        last_commit_age_days: 111
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # ian-xiaohei-illustrations

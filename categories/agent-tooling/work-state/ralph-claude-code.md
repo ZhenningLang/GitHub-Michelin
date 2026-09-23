@@ -16,28 +16,25 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:24:44Z
-  overall: B
-  overall_score: 2.67
-  scored_axes: 6
+  computed_at: 2026-09-22T15:56:01Z
+  overall: C
+  overall_score: 2.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 17
-        active_weeks_13: 6
+        last_commit_age_days: 74
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 0.1
-        qualifying_issues: 30
-        band: relaxed_solo
-        window_offset_days: 2
+      grade: "?"
+      raw: {}
     adoption:
       grade: E
       raw:
@@ -52,15 +49,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 310
-        last_commit_age_days: 17
+        repo_age_days: 391
+        last_commit_age_days: 74
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 23
-        top1_share: 0.726
-        top3_share: 0.872
+        active_maintainers_12mo: 25
+        top1_share: 0.669
+        top3_share: 0.838
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Ralph for Claude Code

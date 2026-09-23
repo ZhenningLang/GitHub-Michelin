@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:28Z
+  computed_at: 2026-09-22T16:04:00Z
   overall: D
-  overall_score: 2.2
+  overall_score: 2.6
   scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,9 +29,9 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 146
-        active_weeks_13: 0
-        carve_out: mature_library_lindy
+        last_commit_age_days: 48
+        active_weeks_13: 3
+        carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
@@ -40,22 +41,23 @@ health:
         registry: pypi.org
         canonical_package: mysql-replication
         dependent_repos_count: 111
-        downloads_last_month: 413367
+        downloads_last_month: 517239
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.01
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 5039
-        last_commit_age_days: 146
+        repo_age_days: 5120
+        last_commit_age_days: 48
         cohort: library
     governance:
-      grade: C
+      grade: B
       raw:
-        active_maintainers_12mo: 5
-        top1_share: 0.667
-        top3_share: 0.889
+        active_maintainers_12mo: 6
+        top1_share: 0.545
+        top3_share: 0.818
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # python-mysql-replication

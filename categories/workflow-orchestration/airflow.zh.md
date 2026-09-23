@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T16:17:28Z
+  computed_at: 2026-09-23T03:06:41Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 23
+        median_ttfr_hours: 4.9
+        qualifying_issues: 39
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
-      grade: A
+      grade: C
       raw:
         registry: pypi.org
-        canonical_package: apache-airflow-providers-common-sql
-        dependent_repos_count: 189
-        downloads_last_month: 42177710
-        graph_tier: C
-        volume_tier: A
+        canonical_package: apache-airflow-mypy
+        dependent_repos_count: 0
+        downloads_last_month: 47011
+        graph_tier: E
+        volume_tier: C
         cross_check_divergence: null
+        release_downloads: 82990
+        release_assets: 924
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4099
+        repo_age_days: 4180
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 211
-        top1_share: 0.113
-        top3_share: 0.242
+        top1_share: 0.119
+        top3_share: 0.226
         window_source: stats_contributors
         carve_out: null
     risk_license:

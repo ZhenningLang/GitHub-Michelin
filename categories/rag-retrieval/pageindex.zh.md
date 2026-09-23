@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:23:04Z
+  computed_at: 2026-09-22T16:57:54Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,39 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
+      grade: C
       raw:
-        median_ttfr_hours: 51.7
-        qualifying_issues: 16
+        median_ttfr_hours: 558.2
+        qualifying_issues: 7
         band: default
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 451
+        release_assets: 68
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 458
-        last_commit_age_days: 0
+        repo_age_days: 539
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.774
-        top3_share: 0.962
+        active_maintainers_12mo: 13
+        top1_share: 0.685
+        top3_share: 0.894
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # PageIndex

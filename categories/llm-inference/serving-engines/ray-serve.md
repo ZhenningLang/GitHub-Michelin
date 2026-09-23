@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:20:00Z
+  computed_at: 2026-09-22T16:29:41Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,39 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 2.0
-        qualifying_issues: 41
+        median_ttfr_hours: 2.4
+        qualifying_issues: 46
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: ray
         dependent_repos_count: 3641
-        downloads_last_month: 58670130
+        downloads_last_month: 15914619
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
+        release_downloads: 276
+        release_assets: 2
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3538
+        repo_age_days: 3619
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 196
-        top1_share: 0.098
-        top3_share: 0.195
+        active_maintainers_12mo: 183
+        top1_share: 0.074
+        top3_share: 0.173
         window_source: stats_contributors
         carve_out: null
     risk_license:

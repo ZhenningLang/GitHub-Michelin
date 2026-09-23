@@ -16,10 +16,11 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-07-03T14:57:38Z
-  overall: D
-  overall_score: 0.8
+  computed_at: 2026-09-22T17:11:51Z
+  overall: C
+  overall_score: 1.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 2181
+        last_commit_age_days: 2262
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,21 +40,22 @@ health:
         band: relaxed_solo
         window_offset_days: 2
     adoption:
-      grade: E
+      grade: A
       raw:
         registry: nuget.org
         canonical_package: phantomjs
         dependent_repos_count: 0
-        downloads_last_month: 4585941
+        downloads_last_month: 4700667
         graph_tier: E
-        volume_tier: "?"
+        volume_tier: A
         cross_check_divergence: null
+        tier_source: registry
         archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 5667
-        last_commit_age_days: 2181
+        repo_age_days: 5748
+        last_commit_age_days: 2262
         cohort: tool
     governance:
       grade: "?"

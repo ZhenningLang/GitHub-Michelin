@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:20:29Z
+  computed_at: 2026-09-22T16:18:50Z
   overall: B
-  overall_score: 2.83
-  scored_axes: 6
+  overall_score: 3.0
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,39 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 11
-        active_weeks_13: 2
-        carve_out: null
+        last_commit_age_days: 44
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
-      grade: C
-      raw:
-        median_ttfr_hours: 306.1
-        qualifying_issues: 4
-        band: default
-        window_offset_days: 3
+      grade: "?"
+      raw: {}
     adoption:
       grade: B
       raw:
         registry: npmjs.org
         canonical_package: animejs
         dependent_repos_count: 7272
-        downloads_last_month: 2065381
+        downloads_last_month: 3732175
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.86
+        cross_check_divergence: 1.01
+        release_downloads: 130
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3763
-        last_commit_age_days: 11
+        repo_age_days: 3845
+        last_commit_age_days: 44
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 8
-        top1_share: 0.9
-        top3_share: 0.938
+        active_maintainers_12mo: 3
+        top1_share: 0.965
+        top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +71,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Anime.js

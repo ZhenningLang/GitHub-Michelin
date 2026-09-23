@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:13:12Z
-  overall: D
-  overall_score: 1.33
-  scored_axes: 3
+  computed_at: 2026-09-22T16:04:55Z
+  overall: C
+  overall_score: 1.75
+  scored_axes: 4
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,32 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2180
+        last_commit_age_days: 2261
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/xueqiu/rdr
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 26759
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 3410
-        last_commit_age_days: 2180
+        repo_age_days: 3491
+        last_commit_age_days: 2261
         cohort: tool
     governance:
       grade: "?"
@@ -55,7 +68,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
-    adoption: { reason: ambiguous }
     governance: { reason: unattributable }
 ---
 

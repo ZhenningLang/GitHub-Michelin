@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:47:41Z
-  overall: B
-  overall_score: 3.25
+  computed_at: 2026-09-22T17:40:55Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -35,20 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
-      grade: C
+      grade: B
       raw:
-        repo_age_days: 225
+        repo_age_days: 306
         last_commit_age_days: 0
         cohort: skill-pack
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 36
-        top1_share: 0.421
-        top3_share: 0.643
+        active_maintainers_12mo: 42
+        top1_share: 0.432
+        top3_share: 0.627
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -60,7 +61,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Claude Plugins (Official)

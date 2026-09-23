@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T16:05:55Z
+  computed_at: 2026-09-22T17:35:11Z
   overall: A
-  overall_score: 3.75
-  scored_axes: 4
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,37 +35,48 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.4
-        qualifying_issues: 34
+        median_ttfr_hours: 10.3
+        qualifying_issues: 11
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: A
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: openhands-ai
         dependent_repos_count: 0
-        downloads_last_month: 4736015
+        downloads_last_month: 252478
         graph_tier: E
-        volume_tier: A
-        cross_check_divergence: null
+        volume_tier: B
+        cross_check_divergence: 1.0
+        release_downloads: 21574
+        release_assets: 64
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 846
+        repo_age_days: 924
         last_commit_age_days: 0
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        active_maintainers_12mo: 49
+        top1_share: 0.317
+        top3_share: 0.564
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    governance: { reason: empty_or_gated }
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: MIT
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
 ---
 # OpenHands
 

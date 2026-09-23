@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T03:52:38Z
+  computed_at: 2026-09-22T16:54:44Z
   overall: C
-  overall_score: 2.2
+  overall_score: 2.4
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 3
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: crates.io
         canonical_package: openlogi-core
@@ -44,11 +45,16 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 174574
+        release_assets: 817
+        release_tier: C
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 119
-        last_commit_age_days: 0
+        repo_age_days: 121
+        last_commit_age_days: 3
         cohort: app
     governance:
       grade: D

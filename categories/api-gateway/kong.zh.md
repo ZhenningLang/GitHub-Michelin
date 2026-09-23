@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:24Z
-  overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  computed_at: 2026-09-22T15:59:18Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,45 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 5
+        last_commit_age_days: 19
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 26.0
-        qualifying_issues: 5
+        median_ttfr_hours: 93.9
+        qualifying_issues: 8
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: C
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/Kong/kong
+        dependent_repos_count: 1
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        docker_pulls: 8389295
+        docker_image: kong/kong
+        docker_tier: C
+        signal_basis: docker
+        tier_source: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4245
-        last_commit_age_days: 2
+        repo_age_days: 4327
+        last_commit_age_days: 19
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 17
-        top1_share: 0.158
-        top3_share: 0.395
+        active_maintainers_12mo: 15
+        top1_share: 0.179
+        top3_share: 0.429
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # Kong Gateway

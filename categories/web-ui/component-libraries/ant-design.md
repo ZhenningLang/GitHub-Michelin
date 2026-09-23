@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:15:45Z
+  computed_at: 2026-09-22T17:15:10Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,31 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.1
-        qualifying_issues: 40
+        qualifying_issues: 47
         band: default
         window_offset_days: 5
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: nuget.org
+        canonical_package: antd
+        dependent_repos_count: 0
+        downloads_last_month: 7442
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 4160
+        release_assets: 74
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4088
-        last_commit_age_days: 1
+        repo_age_days: 4169
+        last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 73
-        top1_share: 0.209
-        top3_share: 0.52
+        active_maintainers_12mo: 74
+        top1_share: 0.198
+        top3_share: 0.49
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: registry_no_counts }
 ---
 
 # Ant Design

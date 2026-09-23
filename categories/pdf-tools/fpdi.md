@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T03:41:39Z
+  computed_at: 2026-09-22T16:52:53Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: true
@@ -41,10 +42,11 @@ health:
         registry: packagist.org
         canonical_package: setasign/fpdi
         dependent_repos_count: 5723
-        downloads_last_month: 170998789
+        downloads_last_month: 171288629
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 27.38
+        cross_check_divergence: 26.58
+        tier_source: registry
     longevity:
       grade: A
       raw:

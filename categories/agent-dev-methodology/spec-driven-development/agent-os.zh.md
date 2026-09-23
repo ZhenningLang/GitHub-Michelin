@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T04:40:59Z
+  computed_at: 2026-09-22T17:29:32Z
   overall: B
   overall_score: 3.25
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -36,12 +37,12 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: B
       raw:
-        repo_age_days: 432
+        repo_age_days: 433
         last_commit_age_days: 24
         cohort: skill-pack
     governance:
@@ -61,7 +62,8 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # Agent OS

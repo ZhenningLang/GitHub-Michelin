@@ -16,54 +16,63 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:00Z
-  overall: B
-  overall_score: 2.8
-  scored_axes: 5
+  computed_at: 2026-09-23T03:05:36Z
+  overall: C
+  overall_score: 2.33
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
-      raw:
-        archived: false
-        last_commit_age_days: 12
-        active_weeks_13: 8
-        carve_out: null
-    responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 91.7
-        qualifying_issues: 26
+        archived: false
+        last_commit_age_days: 63
+        active_weeks_13: 2
+        carve_out: null
+    responsiveness:
+      grade: A
+      raw:
+        median_ttfr_hours: 43.5
+        qualifying_issues: 13
         band: default
         window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: repo1.maven.org
+        canonical_package: "com.xuxueli:xxl-job"
+        dependent_repos_count: 5
+        downloads_last_month: null
+        graph_tier: D
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3870
-        last_commit_age_days: 12
+        repo_age_days: 3952
+        last_commit_age_days: 63
         cohort: framework
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.957
-        top3_share: 0.98
+        active_maintainers_12mo: 8
+        top1_share: 0.955
+        top3_share: 0.981
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: C
+      grade: D
       raw:
         spdx_id: GPL-3.0
-        permissiveness: weak_file_copyleft
+        permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # XXL-JOB

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T02:51:27Z
+  computed_at: 2026-09-22T17:17:48Z
   overall: A
-  overall_score: 4.0
-  scored_axes: 5
+  overall_score: 3.83
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -32,27 +33,37 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 11.1
-        qualifying_issues: 4
+        median_ttfr_hours: 23.7
+        qualifying_issues: 3
         band: default
         window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        registry: npmjs.org
+        canonical_package: next
+        dependent_repos_count: 345645
+        downloads_last_month: 192615857
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3557
+        repo_age_days: 3639
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 75
-        top1_share: 0.102
-        top3_share: 0.289
+        active_maintainers_12mo: 79
+        top1_share: 0.098
+        top3_share: 0.276
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -62,8 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Next.js

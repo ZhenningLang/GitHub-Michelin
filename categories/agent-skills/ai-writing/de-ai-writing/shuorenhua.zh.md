@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T09:37:08Z
-  overall: B
-  overall_score: 2.75
-  scored_axes: 4
+  computed_at: 2026-09-22T15:42:06Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,26 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 11
+        last_commit_age_days: 9
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 123
+        release_assets: 3
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 116
-        last_commit_age_days: 0
+        repo_age_days: 184
+        last_commit_age_days: 9
         cohort: skill-pack
     governance:
       grade: D
@@ -60,7 +67,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
 ---
 # shuorenhua
 

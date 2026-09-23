@@ -16,46 +16,48 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:54:55Z
-  overall: B
-  overall_score: 3.2
+  computed_at: 2026-09-22T16:50:09Z
+  overall: A
+  overall_score: 3.8
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 5
+        last_commit_age_days: 7
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: timesfm
         dependent_repos_count: 0
-        downloads_last_month: 49632
+        downloads_last_month: 202561
         graph_tier: E
-        volume_tier: C
+        volume_tier: B
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 795
-        last_commit_age_days: 1
+        repo_age_days: 876
+        last_commit_age_days: 7
         cohort: model
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 8
-        top1_share: 0.333
-        top3_share: 0.833
+        active_maintainers_12mo: 12
+        top1_share: 0.245
+        top3_share: 0.612
         window_source: stats_contributors
         carve_out: null
     risk_license:

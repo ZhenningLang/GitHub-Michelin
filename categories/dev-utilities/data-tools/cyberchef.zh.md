@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T15:28:42Z
-  overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  computed_at: 2026-09-22T16:09:02Z
+  overall: A
+  overall_score: 3.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,35 +29,47 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 13
+        last_commit_age_days: 1
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 5.0
-        qualifying_issues: 35
+        median_ttfr_hours: 52.7
+        qualifying_issues: 36
         band: relaxed_solo
         window_offset_days: 3
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: npmjs.org
         canonical_package: cyberchef
         dependent_repos_count: 12
-        downloads_last_month: 1840
+        downloads_last_month: 6814
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
+        release_downloads: 650622
+        release_assets: 99
+        release_tier: C
+        signal_basis: releases
+        tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3504
-        last_commit_age_days: 0
+        repo_age_days: 3585
+        last_commit_age_days: 1
         cohort: app
     governance:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        active_maintainers_12mo: 23
+        top1_share: 0.364
+        top3_share: 0.647
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -64,8 +77,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    governance: { reason: empty_or_gated }
 ---
 
 # CyberChef

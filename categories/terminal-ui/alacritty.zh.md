@@ -16,50 +16,60 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:19:22Z
+  computed_at: 2026-09-22T17:06:20Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.67
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 11
-        active_weeks_13: 7
+        last_commit_age_days: 22
+        active_weeks_13: 4
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.5
-        qualifying_issues: 55
+        median_ttfr_hours: 2.0
+        qualifying_issues: 38
         band: relaxed_solo
         window_offset_days: 11
+        source: issue
+        inferred: false
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: crates.io
         canonical_package: alacritty_terminal
         dependent_repos_count: 335
-        downloads_last_month: 520819
+        downloads_last_month: 1616311
         graph_tier: C
-        volume_tier: B
-        cross_check_divergence: 2.28
+        volume_tier: A
+        cross_check_divergence: 1.74
+        homebrew_installs_90d: 3807
+        homebrew_tier: A
+        release_downloads: 2841517
+        release_assets: 1144
+        release_tier: B
+        signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3788
-        last_commit_age_days: 11
+        repo_age_days: 3870
+        last_commit_age_days: 22
         cohort: tool
     governance:
-      grade: C
+      grade: B
       raw:
         active_maintainers_12mo: 5
-        top1_share: 0.633
-        top3_share: 0.933
+        top1_share: 0.56
+        top3_share: 0.92
         window_source: stats_contributors
         carve_out: null
     risk_license:

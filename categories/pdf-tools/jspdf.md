@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T03:48:48Z
+  computed_at: 2026-09-22T16:52:54Z
   overall: B
-  overall_score: 3.17
-  scored_axes: 6
+  overall_score: 3.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,35 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 38
+        last_commit_age_days: 9
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
-      grade: C
-      raw:
-        median_ttfr_hours: 360.0
-        qualifying_issues: 0
-        band: default
-        window_offset_days: 11
+      grade: "?"
+      raw: {}
     adoption:
       grade: A
       raw:
         registry: npmjs.org
         canonical_package: jspdf
         dependent_repos_count: 21994
-        downloads_last_month: 57090753
+        downloads_last_month: 52701611
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 6053
-        last_commit_age_days: 38
+        repo_age_days: 6134
+        last_commit_age_days: 9
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.667
-        top3_share: 0.822
+        active_maintainers_12mo: 10
+        top1_share: 0.615
+        top3_share: 0.769
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -69,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # jsPDF

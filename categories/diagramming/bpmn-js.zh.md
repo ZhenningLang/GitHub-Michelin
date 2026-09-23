@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-19T08:51:09Z
-  overall: A
-  overall_score: 3.6
+  computed_at: 2026-09-22T16:15:30Z
+  overall: B
+  overall_score: 3.2
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,38 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
-        active_weeks_13: 11
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 25.5
+        median_ttfr_hours: 2.8
         qualifying_issues: 3
         band: default
         window_offset_days: 2
+        source: issue
+        inferred: false
     adoption:
       grade: B
       raw:
         registry: npmjs.org
         canonical_package: bpmn-js
         dependent_repos_count: 1072
-        downloads_last_month: 645650
+        downloads_last_month: 878232
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.49
+        cross_check_divergence: 1.03
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4498
-        last_commit_age_days: 3
+        repo_age_days: 4579
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.588
-        top3_share: 0.844
+        active_maintainers_12mo: 13
+        top1_share: 0.613
+        top3_share: 0.839
         window_source: stats_contributors
         carve_out: null
     risk_license:

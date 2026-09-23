@@ -16,39 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:18:24Z
-  overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  computed_at: 2026-09-22T17:47:22Z
+  overall: A
+  overall_score: 3.5
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 103
-        active_weeks_13: 0
-        carve_out: mature_library_lindy
+        last_commit_age_days: 1
+        active_weeks_13: 10
+        carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
-    adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 2628
-        last_commit_age_days: 103
+        median_ttfr_hours: 0.5
+        qualifying_issues: 25
+        band: default
+        window_offset_days: 4
+        source: issue
+        inferred: false
+    adoption:
+      grade: A
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/yuin/goldmark
+        dependent_repos_count: 131427
+        downloads_last_month: null
+        graph_tier: A
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
+    longevity:
+      grade: A
+      raw:
+        repo_age_days: 2706
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: B
+      grade: D
       raw:
-        active_maintainers_12mo: 7
-        top1_share: 0.579
-        top3_share: 0.789
+        active_maintainers_12mo: 6
+        top1_share: 0.911
+        top3_share: 0.962
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -58,9 +73,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: github_unavailable }
-    adoption: { reason: ambiguous }
 ---
 # Goldmark
 

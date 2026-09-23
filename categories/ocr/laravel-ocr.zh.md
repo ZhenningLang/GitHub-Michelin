@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T18:05:47Z
+  computed_at: 2026-09-22T16:47:39Z
   overall: D
   overall_score: 1.0
   scored_axes: 5
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NONE"
   needs_human_review: false
@@ -28,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 24
+        last_commit_age_days: 12
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -40,15 +41,16 @@ health:
         registry: packagist.org
         canonical_package: mayaram/laravel-ocr
         dependent_repos_count: 0
-        downloads_last_month: 1606
+        downloads_last_month: 4430
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 153
-        last_commit_age_days: 24
+        repo_age_days: 221
+        last_commit_age_days: 12
         cohort: library
     governance:
       grade: D
@@ -66,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: too_young }
+    responsiveness: { reason: no_traffic }
 ---
 
 # Laravel OCR

@@ -17,10 +17,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-18T11:36:19Z
-  overall: A
-  overall_score: 4.0
-  scored_axes: 4
+  computed_at: 2026-09-22T17:39:59Z
+  overall: B
+  overall_score: 3.4
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -29,26 +30,34 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 9
+        last_commit_age_days: 13
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 80.4
-        qualifying_issues: 7
+        median_ttfr_hours: 102.7
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: prompts.chat
+        dependent_repos_count: 0
+        downloads_last_month: 1040
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1383
-        last_commit_age_days: 9
+        repo_age_days: 1387
+        last_commit_age_days: 13
         cohort: app
     governance:
       grade: A
@@ -62,7 +71,6 @@ health:
       grade: "?"
       raw: {}
   unknowns:
-    adoption: { reason: no_package_structural }
     risk_license: { reason: license_unparsed }
 ---
 # prompts.chat

@@ -16,28 +16,25 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:18:35Z
+  computed_at: 2026-09-22T16:08:01Z
   overall: C
-  overall_score: 2.33
-  scored_axes: 6
+  overall_score: 2.2
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 81
-        active_weeks_13: 2
+        last_commit_age_days: 184
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 145.8
-        qualifying_issues: 4
-        band: default
-        window_offset_days: 6
+      grade: "?"
+      raw: {}
     adoption:
       grade: E
       raw:
@@ -50,17 +47,17 @@ health:
         cross_check_divergence: null
         archived: false
     longevity:
-      grade: D
+      grade: C
       raw:
-        repo_age_days: 330
-        last_commit_age_days: 81
+        repo_age_days: 411
+        last_commit_age_days: 184
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 19
-        top1_share: 0.599
-        top3_share: 0.766
+        active_maintainers_12mo: 10
+        top1_share: 0.595
+        top3_share: 0.798
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,6 +67,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # MiroThinker

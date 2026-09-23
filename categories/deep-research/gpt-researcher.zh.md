@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-06T15:38:35Z
-  overall: B
-  overall_score: 3.33
+  computed_at: 2026-09-22T16:07:19Z
+  overall: A
+  overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 12
+        last_commit_age_days: 30
+        active_weeks_13: 6
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 594.0
-        qualifying_issues: 30
+        median_ttfr_hours: 238.7
+        qualifying_issues: 35
         band: relaxed_solo
         window_offset_days: 12
         source: issue
@@ -46,22 +47,23 @@ health:
         registry: pypi.org
         canonical_package: gpt-researcher
         dependent_repos_count: 0
-        downloads_last_month: 105138
+        downloads_last_month: 76563
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1151
-        last_commit_age_days: 8
+        repo_age_days: 1229
+        last_commit_age_days: 30
         cohort: app
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 19
-        top1_share: 0.402
-        top3_share: 0.554
+        active_maintainers_12mo: 20
+        top1_share: 0.33
+        top3_share: 0.626
         window_source: stats_contributors
         carve_out: null
     risk_license:

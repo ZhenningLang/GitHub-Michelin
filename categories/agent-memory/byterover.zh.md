@@ -17,43 +17,47 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:41:47Z
+  computed_at: 2026-09-22T15:39:04Z
   overall: D
-  overall_score: 2.5
+  overall_score: 1.83
   scored_axes: 6
+  applicable_axes: 6
   capped: true
   cap_reason: "source-available/no-license: NOASSERTION"
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 8
-        active_weeks_13: 10
+        last_commit_age_days: 89
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
-      grade: A
+      grade: D
       raw:
-        median_ttfr_hours: 3.6
-        qualifying_issues: 23
+        median_ttfr_hours: 1089.6
+        qualifying_issues: 3
         band: default
         window_offset_days: 12
+        source: issue
+        inferred: false
     adoption:
-      grade: D
+      grade: C
       raw:
         registry: npmjs.org
         canonical_package: byterover-cli
         dependent_repos_count: 0
-        downloads_last_month: 6431
+        downloads_last_month: 57394
         graph_tier: E
-        volume_tier: D
+        volume_tier: C
         cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 379
-        last_commit_age_days: 8
+        repo_age_days: 460
+        last_commit_age_days: 89
         cohort: library
     governance:
       grade: A

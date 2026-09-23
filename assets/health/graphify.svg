@@ -116,6 +116,6 @@
 <rect x="648" y="422" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
 <rect x="648" y="422" width="118" height="9" rx="2" fill="#F2C200"/>
 <text x="779" y="433" font-size="16" font-weight="900" font-style="italic" fill="#F2C200" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">A</text>
-<rect x="498" y="455" width="47" height="21" rx="3" fill="#1b1408" stroke="#E8C45A" stroke-opacity="0.5"/>
-<text x="521.5" y="470" font-size="11" font-weight="700" fill="#f3e7c8" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif">MIT</text>
+<rect x="498" y="455" width="110" height="21" rx="3" fill="#1b1408" stroke="#E8C45A" stroke-opacity="0.5"/>
+<text x="553.0" y="470" font-size="11" font-weight="700" fill="#f3e7c8" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif">Apache-2.0</text>
 </svg>

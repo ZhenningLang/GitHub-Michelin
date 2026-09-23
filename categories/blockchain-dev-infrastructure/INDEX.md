@@ -7,13 +7,13 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **PoWFaucet** | Operate a shared EVM testnet faucet with operator-funded native coins or ERC-20 tokens, configurable reward policy, and modular anti-abuse controls. | B (5/6) | [→](powfaucet.md) |
+| **PoWFaucet** | Operate a shared EVM testnet faucet with operator-funded native coins or ERC-20 tokens, configurable reward policy, and modular anti-abuse controls. | C (5/6) | [→](powfaucet.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [PoWFaucet](powfaucet.md) | ✅ | B (5/6) | Pick for a public or community EVM faucet that needs layered abuse controls and policy knobs; pay for that breadth with hot-wallet custody, persistent service operations, and AGPL obligations. |
+| [PoWFaucet](powfaucet.md) | ✅ | C (5/6) | Pick for a public or community EVM faucet that needs layered abuse controls and policy knobs; pay for that breadth with hot-wallet custody, persistent service operations, and AGPL obligations. |
 | FaucetETH (upstream: FaucETH) | 未收录 | — | Pick for a smaller conventional EVM faucet with hCaptcha and multi-chain configuration; it has a narrower control surface than PoWFaucet and does not remove wallet-funding or custody work. |
 | Ethereum-Faucet | 未收录 | — | Pick when an MIT-licensed, compact faucet implementation matters more than PoWFaucet's mature module set; the adopter must supply more abuse prevention and operational controls. |
 | Nethereum.Faucet | 未收录 | — | Pick for a C#/.NET and Nethereum stack with a Blazor front end and REST API; it fits that ecosystem but lacks PoWFaucet's breadth of proof-of-work and identity modules. |

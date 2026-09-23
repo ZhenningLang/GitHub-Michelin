@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T14:40:41Z
+  computed_at: 2026-09-22T16:18:19Z
   overall: C
-  overall_score: 2.4
+  overall_score: 2.0
   scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,34 +29,39 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 100
+        last_commit_age_days: 181
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: pypi.org
         canonical_package: olmocr
         dependent_repos_count: 0
-        downloads_last_month: 22800
+        downloads_last_month: 18743
         graph_tier: E
-        volume_tier: C
+        volume_tier: D
         cross_check_divergence: null
+        release_downloads: 2342
+        release_assets: 88
+        release_tier: D
+        signal_basis: releases
+        tier_source: registry
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 654
-        last_commit_age_days: 100
+        repo_age_days: 735
+        last_commit_age_days: 181
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 8
-        top1_share: 0.975
-        top3_share: 0.991
+        active_maintainers_12mo: 4
+        top1_share: 0.988
+        top3_share: 0.998
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -66,7 +72,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_traffic }
+    responsiveness: { reason: no_window_signal }
 ---
 
 # olmOCR

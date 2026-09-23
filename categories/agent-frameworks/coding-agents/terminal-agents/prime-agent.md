@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T14:23:31Z
+  computed_at: 2026-09-22T15:36:55Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -41,8 +42,14 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: null
+        canonical_package: null
+        release_downloads: 64865
+        release_assets: 391
+        release_tier: D
+        signal_basis: releases
     longevity:
       grade: D
       raw:
@@ -64,8 +71,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Prime Agent

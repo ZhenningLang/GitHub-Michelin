@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T10:46:08Z
-  overall: C
-  overall_score: 1.75
+  computed_at: 2026-09-22T15:49:30Z
+  overall: B
+  overall_score: 2.75
   scored_axes: 4
+  applicable_axes: 5
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,39 +29,40 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 6
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
+      grade: "N/A"
       raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 117
-        last_commit_age_days: 0
+        repo_age_days: 199
+        last_commit_age_days: 6
         cohort: skill-pack
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 3
-        top1_share: 0.941
+        top1_share: 0.963
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
+      grade: A
       raw:
-        spdx_id: NONE
-        permissiveness: source_available
+        spdx_id: MIT
+        permissiveness: permissive
         relicense_36mo: false
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    adoption: { reason: no_package_structural }
+  not_applicable:
+    adoption: { reason: no_install_channel }
 ---
 
 # ljg-skills

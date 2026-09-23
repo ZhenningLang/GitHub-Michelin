@@ -16,38 +16,54 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-16T18:09:12Z
+  computed_at: 2026-09-22T16:19:32Z
   overall: B
-  overall_score: 2.6
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: C
       raw:
         archived: false
-        last_commit_age_days: 28
-        active_weeks_13: 4
+        last_commit_age_days: 96
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 94.3
-        qualifying_issues: 24
+        median_ttfr_hours: 102.8
+        qualifying_issues: 3
         band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
-    longevity:
-      grade: D
+      grade: B
       raw:
-        repo_age_days: 117
-        last_commit_age_days: 28
+        registry: proxy.golang.org
+        canonical_package: github.com/openilink/openilink-hub
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 1708
+        release_assets: 199
+        release_tier: D
+        docker_pulls: 13532
+        docker_image: openilink/openilink-hub
+        docker_tier: D
+        signal_basis: releases+docker
+        tier_source: registry
+    longevity:
+      grade: C
+      raw:
+        repo_age_days: 185
+        last_commit_age_days: 96
         cohort: app
     governance:
       grade: D
@@ -64,8 +80,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: no_package_structural }
 ---
 
 # OpeniLink Hub

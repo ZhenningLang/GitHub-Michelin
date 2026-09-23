@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-20T07:55:37Z
+  computed_at: 2026-09-22T17:51:24Z
   overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  overall_score: 2.6
+  scored_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -28,20 +29,28 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: "?"
-      raw: {}
+      grade: E
+      raw:
+        registry: proxy.golang.org
+        canonical_package: github.com/agent-substrate/substrate
+        dependent_repos_count: 0
+        downloads_last_month: null
+        graph_tier: E
+        volume_tier: "?"
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 130
-        last_commit_age_days: 1
+        repo_age_days: 132
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
@@ -60,7 +69,6 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    adoption: { reason: no_package_structural }
 ---
 
 # Agent Substrate

@@ -16,10 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-07-03T08:14:50Z
+  computed_at: 2026-09-22T17:16:20Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -34,32 +35,35 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 15.3
-        qualifying_issues: 28
+        median_ttfr_hours: 41.2
+        qualifying_issues: 30
         band: default
         window_offset_days: 10
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: shadcn
+        canonical_package: "@shadcn/react"
         dependent_repos_count: 0
-        downloads_last_month: 18842516
+        downloads_last_month: 6084607
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.13
+        cross_check_divergence: 1.04
+        tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1276
+        repo_age_days: 1357
         last_commit_age_days: 1
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 71
-        top1_share: 0.787
-        top3_share: 0.804
+        active_maintainers_12mo: 74
+        top1_share: 0.773
+        top3_share: 0.798
         window_source: stats_contributors
         carve_out: null
     risk_license:
