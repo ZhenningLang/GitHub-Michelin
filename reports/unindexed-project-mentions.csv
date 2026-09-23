@@ -144,7 +144,6 @@ Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.
 CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
 CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
 capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
-Caveman Code,categories/agent-skills/engineering/caveman.md,,no
 ccusage / token-cost CLIs,categories/agent-tooling/session-history/agentsview.md,,no
 Cedar / Cedarling,categories/agent-governance/agent-governance-toolkit.md,,no
 Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
@@ -215,7 +214,6 @@ Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
 Custom shell wrappers,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
-Custom terse-response rule,categories/agent-skills/engineering/caveman.md,,no
 Custom unpack scripts,categories/im-automation/wechat/wxappunpacker.md,,no
 Custom voice guide,categories/agent-skills/ai-writing/de-ai-writing/INDEX.md,,no
 Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/claude-video.md,,no
@@ -373,6 +371,7 @@ hCaptcha / Cloudflare Turnstile / Friendly Captcha / Altcha,categories/captcha/I
 hcaptcha-challenger,categories/captcha/buster.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
+Headroom,categories/agent-skills/engineering/caveman.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
 herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no

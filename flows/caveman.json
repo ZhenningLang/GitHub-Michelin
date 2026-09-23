@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "caveman does",
+    "zh": "caveman 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill globally into your agent",
+      "zh": "把技能全局装进你的 agent",
+      "code": "npx skills add JuliusBrussee/caveman -g"
+    },
+    {
+      "lane": "you",
+      "en": "Ask a coding question as usual",
+      "zh": "照常问一个编程问题"
+    },
+    {
+      "lane": "them",
+      "en": "Shortens the prose; code, commands, and errors stay exact",
+      "zh": "只缩短周围的话，代码、命令和报错原样保留",
+      "component": { "en": "skill", "zh": "技能规则" }
+    },
+    {
+      "lane": "you",
+      "en": "Switch intensity when the default is too much or too little",
+      "zh": "默认太狠或太松时调档",
+      "code": "/caveman lite · /caveman ultra"
+    },
+    {
+      "lane": "you",
+      "en": "Say stop when you want normal prose back",
+      "zh": "想恢复正常文风时说一句 stop",
+      "code": "stop caveman"
+    },
+    {
+      "lane": "them",
+      "en": "Reverts for the session; the agent talks normally again",
+      "zh": "本会话恢复默认文风"
+    }
+  ],
+  "value": {
+    "en": "Same diagnosis, fewer filler tokens; code and errors never get rewritten",
+    "zh": "诊断还在，铺垫没了；代码和报错不会被改写"
+  },
+  "sources": [
+    "https://github.com/JuliusBrussee/caveman README.md — Quick Start `npx skills add JuliusBrussee/caveman -g`, `/caveman lite|full|ultra`, `stop caveman`, and the skill unpacked table",
+    "https://github.com/JuliusBrussee/caveman README.md — See it: code, commands, file paths, and exact error messages never get cavemanned",
+    "https://github.com/JuliusBrussee/caveman INSTALL.md — 30+ agent install matrix referenced from README Quick Start"
+  ]
+}
