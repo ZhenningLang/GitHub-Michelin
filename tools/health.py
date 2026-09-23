@@ -199,6 +199,25 @@ STRONG_COPYLEFT_SPDX_PREFIXES = ("GPL-", "AGPL-")
 DECLARED_PROPRIETARY_LICENSES = {"Proprietary", "Source-available"}
 # Content licenses tracked on a separate flag, never via the code-copyleft map (spec §2.6).
 CONTENT_LICENSE_RE = re.compile(r"^CC-BY", re.IGNORECASE)
+# Base names that mean "this file IS the license", plus the extensions a license text is
+# allowed to carry. Used only to check whether a license exists at all, after GitHub's
+# detector has already declined to classify one.
+LICENSE_BASE_NAMES = ("license", "licence", "copying", "unlicense", "copyright")
+LICENSE_TEXT_EXTS = ("", "txt", "md", "rst", "html")
+# Directories projects actually park a license in when it is not at the root. Kept short
+# on purpose: each entry is an extra API call on the repos that reach this path.
+LICENSE_SEARCH_DIRS = ("legal", "license", "licenses", "LICENSES", "doc", "docs", ".github")
+# Of those, the ones whose whole purpose is to hold licenses, so any text file inside counts
+# (the REUSE spec names each file after its SPDX id, e.g. `LICENSES/LGPL-2.1-or-later.txt`).
+LICENSE_DEDICATED_DIRS = {"legal", "license", "licenses"}
+# A page's own `license:` frontmatter is a human-verified fact. It cannot earn a good grade,
+# but it does distinguish "the maintainers published a license the machine can't parse" from
+# "this really is all-rights-reserved" — and the pages already say which: pygame declares
+# LGPL-2.1, swarm-forge declares "NONE (no LICENSE file — all rights reserved)".
+DECLARED_NO_LICENSE_RE = re.compile(r"^\s*(none|no\b|not declared|unlicensed|proprietary)", re.I)
+DECLARED_REAL_LICENSE_RE = re.compile(
+    r"^\s*(mit|apache|bsd|[al]?gpl|lgpl|mpl|isc|unlicense|cc[\s-]|cc0|epl|zlib|"
+    r"artistic|boost|bsl|eupl|ms-pl|postgresql|python|ruby|openssl|wtfpl)", re.I)
 
 RELICENSE_WINDOW_DAYS = 36 * 30  # "trailing 36mo" approximation
 
@@ -1822,12 +1841,45 @@ def axis_risk_license(repo: RepoData) -> Axis:
 
     res = gh_api(f"repos/{repo.full}/license")
     if res.status == 404:
-        # 404 on the LICENSE endpoint = NONE (all-rights-reserved). Distinguish repo 404.
+        # A 404 here does NOT mean "unlicensed". GitHub's endpoint 404s whenever its
+        # detector cannot *classify* a license, which includes a perfectly real license
+        # in a place it does not look. apache/poi keeps Apache-2.0 at `legal/LICENSE`
+        # and this endpoint returns 404, so the old `404 -> NONE -> E` shortcut graded
+        # the ASF's flagship Java library as all-rights-reserved and capped the whole
+        # page to D. Same shape as the bugs in rubric 1.2b: "could not detect" became
+        # "does not exist". So look for the file before concluding there isn't one.
         if not repo.core.ok:
             return Axis.unknown("repo_unreachable", evidence=f"? repo HTTP {repo.core.status}")
+        found, how = _find_license_path(repo)
+        if how == "dedicated_dir":
+            return Axis.unknown(
+                "license_multi_file",
+                evidence=f"? repo uses a per-SPDX license directory ({found}); no single file "
+                         "states the project's own terms")
+        if found:
+            # A license exists but GitHub could not classify it — exactly the state the
+            # NOASSERTION path already handles, so reuse it rather than inventing a
+            # second, looser verdict. It stays conservative: SSPL/BSL/Elastic still
+            # grade E, and an OSI-looking blob yields `?` for manual review instead of
+            # an unearned A (rubric 2.6).
+            return _risk_noassertion(repo, found)
+        # No license *file*, which is not the same as no license: pygame ships LGPL-2.1
+        # and openresty/lua-nginx-module BSD-2-Clause, both declared in the README with no
+        # LICENSE file to find. Calling those all-rights-reserved is a false claim, and it
+        # capped their pages. The page's own `license:` field already separates the two
+        # cases, and the scorer trusts that field in the other direction already (a
+        # declared Proprietary license grades E above), so consult it here too. It can only
+        # buy `?` — never a grade — so a human-entered field still cannot flatter a page.
+        declared = (repo.declared_license or "").strip()
+        if declared and DECLARED_REAL_LICENSE_RE.match(declared) \
+                and not DECLARED_NO_LICENSE_RE.match(declared):
+            return Axis.unknown(
+                "license_declared_unverifiable",
+                evidence=f"? page declares {declared} but no LICENSE file exists to confirm it "
+                         f"(GitHub's detector found none either)")
         return Axis("E", {"spdx_id": "NONE", "permissiveness": "source_available",
                           "relicense_36mo": False, "content_license": None},
-                    evidence="no LICENSE (404) -> NONE -> E")
+                    evidence="no LICENSE file anywhere and none declared -> NONE -> E")
     if res.status in (403, 451) and res.json is None and not repo.core.ok:
         return Axis.unknown("repo_unreachable", evidence=f"? repo HTTP {repo.core.status}")
     if not res.ok or not isinstance(res.json, dict):
@@ -1963,6 +2015,80 @@ def _risk_noassertion(repo: RepoData, lic_path: str | None) -> Axis:
                             evidence="? NOASSERTION blob looks OSI but template match inconclusive (manual review)")
     return Axis.unknown("license_unparsed",
                         evidence="? NOASSERTION blob unclassifiable (manual review)")
+
+
+def _is_license_filename(name: str) -> bool:
+    """Does this filename mean "the license text lives here"?
+
+    Has to accept the real spellings — `LICENSE`, `COPYING`, `LICENSE.md`,
+    `LICENSE-APACHE`, `LICENSE-2.0.txt` — while rejecting files that merely *mention*
+    licensing: `LICENSING.md` is a policy doc, and `license_test.go` and `LICENSE.py`
+    are source. A single regex kept letting those two through, because the variant
+    suffix that allows `-APACHE` also allows `_test.go`, so the extension is checked
+    separately against an allow-list instead.
+    """
+    low = (name or "").lower()
+    base, _, ext = low.rpartition(".")
+    if not base:            # no dot at all: rpartition puts everything in `ext`
+        base, ext = ext, ""
+    # A version fragment like the `0` of `license-2.0` is not an extension.
+    if ext.isdigit():
+        base, ext = low, ""
+    if ext not in LICENSE_TEXT_EXTS:
+        return False
+    # `-`/`_` separate a variant (LICENSE-MIT); a bare suffix (LICENSING) does not count.
+    head = re.split(r"[-_]", base, maxsplit=1)[0]
+    return head in LICENSE_BASE_NAMES
+
+
+def _find_license_path(repo: RepoData) -> str | None:
+    """Locate a license file that GitHub's own detector did not classify.
+
+    Only called after `repos/{full}/license` 404s, so the cost is paid on the handful of
+    repos that need it (33 of 615 pages at the time this was written), not on every scan.
+    Checks the repo root first, then the small set of directories projects actually use;
+    `apache/poi` is the case that motivated this — Apache-2.0 at `legal/LICENSE`.
+    Returns the path of the first match, or None when the repo really has no license.
+    """
+    def first_license_in(dir_path: str, *, dedicated: bool = False) -> str | None:
+        suffix = f"/{urllib.parse.quote(dir_path)}" if dir_path else ""
+        res = gh_api(f"repos/{repo.full}/contents{suffix}")
+        if not res.ok or not isinstance(res.json, list):
+            return None
+        for entry in res.json:
+            if entry.get("type") != "file":
+                continue
+            name = entry.get("name") or ""
+            # Inside a directory that exists to hold licenses, the REUSE convention names
+            # each file after its SPDX id — cockpit-project/cockpit keeps
+            # `LICENSES/LGPL-2.1-or-later.txt`. The filename test would reject those, so
+            # the directory's own intent is what qualifies them.
+            if dedicated and name.lower().endswith((".txt", ".md")):
+                return entry.get("path")
+            if _is_license_filename(name):
+                return entry.get("path")
+        return None
+
+    hit = first_license_in("")
+    if hit:
+        return hit, "file"
+    for d in LICENSE_SEARCH_DIRS:
+        dedicated = d.lower() in LICENSE_DEDICATED_DIRS
+        hit = first_license_in(d, dedicated=dedicated)
+        if hit:
+            # A REUSE `LICENSES/` tree lists every license appearing anywhere in the repo,
+            # bundled dependencies included, so whichever file sorts first says nothing
+            # about the project's own terms — cockpit declares LGPL-2.1-or-later and the
+            # first entry is `BSD-3-Clause.txt`. Classifying from it would be a coin flip,
+            # and a bundled `SSPL-1.0.txt` would produce a confident, wrong E.
+            return hit, ("dedicated_dir" if dedicated and _has_spdx_named_files(hit) else "file")
+    return None, None
+
+
+def _has_spdx_named_files(path: str) -> bool:
+    """Is this a REUSE-style per-SPDX file rather than a plain `legal/LICENSE`?"""
+    name = path.rsplit("/", 1)[-1]
+    return not _is_license_filename(name)
 
 
 def _fetch_license_blob(repo: RepoData, lic_path: str | None) -> str | None:

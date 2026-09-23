@@ -16,20 +16,20 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:48:43Z
-  overall: D
-  overall_score: 2.25
-  scored_axes: 4
+  computed_at: 2026-09-23T07:50:31Z
+  overall: B
+  overall_score: 3.0
+  scored_axes: 3
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 4
+        last_commit_age_days: 5
         active_weeks_13: 3
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5342
-        last_commit_age_days: 4
+        repo_age_days: 5343
+        last_commit_age_days: 5
         cohort: library
     governance:
       grade: C
@@ -53,15 +53,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_window_signal }
     adoption: { reason: ambiguous }
+    risk_license: { reason: license_declared_unverifiable }
 ---
 
 # lua-resty-redis

@@ -13,7 +13,7 @@
 | **PRAW** | The "Python Reddit API Wrapper" — a Python package that gives you typed, Pythonic objects (Submission, Comment, Subreddit, Redditor) over Reddit's official OAuth API, and handles rate-limit compliance so you don't have to sprinkle `sleep` calls in your code. | B (5/6) | [→](praw.md) |
 | **requests-html** | "HTML Parsing for Humans" — a Python library that bundles `requests`, PyQuery/lxml parsing, and optional JavaScript rendering (via pyppeteer/Chromium) behind one ergonomic API, so a small script can fetch a page and select elements without wiring three libraries together. | D (3/6) | [→](requests-html.md) |
 | **Scrapyd** | A service daemon for deploying and running Scrapy spiders over a JSON HTTP API — eggify a Scrapy project, upload it, and schedule/cancel/monitor crawl jobs remotely. The canonical "run Scrapy in production" daemon, from the Scrapy org itself. | B (5/6) | [→](scrapyd.md) |
-| **SpiderKeeper** | A Flask-based admin web UI / dashboard for Scrapy spiders that sits on top of Scrapyd — deploy projects, schedule periodic jobs, and watch run stats from a browser. It crawls nothing itself; it's a management layer over one or more Scrapyd servers. Lightweight, popular, and largely stale. | E (4/6) | [→](spiderkeeper.md) |
+| **SpiderKeeper** | A Flask-based admin web UI / dashboard for Scrapy spiders that sits on top of Scrapyd — deploy projects, schedule periodic jobs, and watch run stats from a browser. It crawls nothing itself; it's a management layer over one or more Scrapyd servers. Lightweight, popular, and largely stale. | E (3/6) | [→](spiderkeeper.md) |
 
 ## What belongs here
 

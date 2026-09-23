@@ -17,13 +17,13 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T04:52:42Z
-  overall: D
-  overall_score: 2.5
-  scored_axes: 4
+  computed_at: 2026-09-23T07:52:10Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 3
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
@@ -54,15 +54,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_window_signal }
     adoption: { reason: ambiguous }
+    risk_license: { reason: license_unparsed }
 ---
 
 # Apache POI
@@ -131,7 +128,8 @@ A JDK, plus the Maven artifacts for the formats you touch. Spreadsheet OOXML (th
 
 ## Health & viability
 
-- **Radar overall D (4/6 scored, capped) is a tooling miss, not a viability miss.** Maintenance A (last commit 1 day, 13/13 weeks active) and longevity A (repo age 6334 days and still active). Responsiveness is `?` (`no_window_signal`) — GitHub Issues are not the project's main tracker. Adoption is `?` (`ambiguous`) — the scorer did not bind a Maven package. Risk/license is E (`spdx_id: NONE`) because GitHub's license API is null; that CAP'd the aggregate. Do not read overall D as "this project is dying."
+- **Two radar axes are `?` for tooling reasons, not viability ones.** Maintenance A (last commit 1 day, 13/13 weeks active) and longevity A (repo age 6334 days and still active). Responsiveness is `?` (`no_window_signal`) — GitHub Issues are not the project's main tracker. Adoption is `?` (`ambiguous`) — the scorer sees only a Go pseudo-module for this repo; the real artifact, `org.apache.poi:poi` with 75,041 dependent repos on Maven Central, carries no `repository_url` that can be tied back, so it is deliberately not adopted as canonical.
+- **Risk/license is `?`, and the license is genuinely Apache-2.0.** GitHub's license API returns null for this repo because the file sits at `legal/LICENSE` rather than the root, so the scorer cannot classify it automatically. It used to read that null as "no license" and grade E, which capped the whole page to D; that was a scorer bug, fixed. `?` is now the honest reading: a license is present and named below, but the machine did not assert which.
 - **Maintenance: active, verified 2026-09-23** — Maven Central `poi-ooxml` latest/release is 5.5.1, `lastUpdated` 2025-11-30; project news dated 30 November 2025. Default-branch commit on `trunk` 2026-09-22 (`b1494b9a`). README: `trunk` is 6.0.0 development. GitHub Releases is empty (0); version tags are `REL_5_5_1` and earlier — Apache ships on the download page and Maven, not the GitHub Releases UI.
 - **Governance: ASF PMC, radar C on 12-month concentration** — 36 active maintainers in the scoring window, but `top1_share` 0.619 / `top3_share` 0.853. Lifetime contributors API (2026-09-23): `pjfanning` 3091, `Gagravarr` 2348, `centic9` 1953, `kiwiwings` 1334, `onealj` 962. Foundation-backed, not a solo hobby; recent commits still cluster.
 - **Backing & Lindy: both halves hold** — site copyright 2001–2026; `legal/NOTICE` "Copyright 2003-2026 The Apache Software Foundation". GitHub `created_at` is 2009-05-21 (the gitbox mirror). The 2025-07-07 news post made GitHub the official source after years as a read-only mirror — do not read the leftover "Mirror of Apache POI gitbox" description as archival.

@@ -13,7 +13,7 @@
 | **XlsxWriter** | Use it when a Python service generates new `.xlsx` files from data and you want zero dependencies plus 13 years of stability — but it is write-only, cannot open an existing workbook, and does not calculate formulas. | B (6/6) | [→](xlsxwriter.md) |
 | **Office-Word-MCP-Server** | Use it only when an existing LLM integration is already bound to its ~55 Word tool schemas — the repo was archived 2025-12-31 and its author mass-archived ~15 MCP servers; for new work use OfficeCLI or wrap python-docx yourself. | C (6/6) | [→](office-word-mcp-server.md) |
 | **Office-PowerPoint-MCP-Server** | Use it only when an existing LLM integration is already bound to its PowerPoint tool schemas — same author mass-archived it with the Word sibling on 2026-03-03; for new work wrap python-pptx or use OfficeCLI. | C (6/6) | [→](office-powerpoint-mcp-server.md) |
-| **Apache POI** | Use it when a JVM service must read or mutate Office files in place — not for a Python agent path, and not as a conversion/print engine. | D (4/6) | [→](apache-poi.md) |
+| **Apache POI** | Use it when a JVM service must read or mutate Office files in place — not for a Python agent path, and not as a conversion/print engine. | B (3/6) | [→](apache-poi.md) |
 
 
 ## Comparison matrix
@@ -29,7 +29,7 @@
 | [MarkItDown](../document-parsing/markitdown.md) | ✅ | B (6/6) | The opposite direction: Office → Markdown for LLM ingestion, read-only and deliberately lossy on formatting. |
 | openpyxl | 未收录 | — | The read+write `.xlsx` counterpart to XlsxWriter; not indexed because its canonical repo is on Heptapod (Mercurial), not GitHub, and this index's health/upstream tooling is GitHub-only. |
 | [Office-PowerPoint-MCP-Server](office-powerpoint-mcp-server.md) | ✅ | C (6/6) | The `.pptx` sibling of the Word MCP server; same author mass-archived both on 2026-03-03 (last push 2025-12-31). New work should wrap python-pptx or use OfficeCLI. |
-| [Apache POI](apache-poi.md) | ✅ | D (4/6) | The JVM library for OLE2/OOXML; pick it for a Java service that must mutate Office files in place, not for a Python agent path. |
+| [Apache POI](apache-poi.md) | ✅ | B (3/6) | The JVM library for OLE2/OOXML; pick it for a Java service that must mutate Office files in place, not for a Python agent path. |
 | LibreOffice (headless) | 未收录 | — | `soffice --headless` is a runtime mode of the LibreOffice suite, not a distinct repository. GitHub name hits are stale Docker wrappers. The suite itself is a real git repo at git.libreoffice.org (GitHub `LibreOffice/core` is a populated read-only mirror). |
 | Aspose | 非仓库 | — | Commercial closed-source Office SDKs (Aspose.Words / Cells / Slides). GitHub orgs publish examples for the paid product, not the library source. |
 

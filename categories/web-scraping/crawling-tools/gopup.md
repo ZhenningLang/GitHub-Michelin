@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:14:24Z
+  computed_at: 2026-09-23T07:55:01Z
   overall: E
   overall_score: 0.25
   scored_axes: 4
@@ -49,7 +49,7 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2377
+        repo_age_days: 2378
         last_commit_age_days: 1104
         cohort: library
     governance:

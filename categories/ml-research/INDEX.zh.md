@@ -7,8 +7,8 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **autoresearch** | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 | D（5/6） | [→](autoresearch.zh.md) |
-| **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | D（5/6） | [→](llm-circuit-finder.zh.md) |
+| **autoresearch** | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 | B（4/6） | [→](autoresearch.zh.md) |
+| **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | D（4/6） | [→](llm-circuit-finder.zh.md) |
 | **CLIP** | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 | C（5/6） | [→](clip.zh.md) |
 | **TaskMatrix** | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 | "?"（2/6） | [→](taskmatrix.zh.md) |
 | **PyTorch-GAN** | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 | D（4/6） | [→](pytorch-gan.zh.md) |
@@ -24,8 +24,8 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [autoresearch](autoresearch.zh.md) | ✅ | D（5/6） | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 |
-| [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（5/6） | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 |
+| [autoresearch](autoresearch.zh.md) | ✅ | B（4/6） | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 |
+| [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（4/6） | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 |
 | [CLIP](clip.zh.md) | ✅ | C（5/6） | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 |
 | [TaskMatrix](taskmatrix.zh.md) | ✅ | "?"（2/6） | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 |
 | [PyTorch-GAN](pytorch-gan.zh.md) | ✅ | D（4/6） | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 |

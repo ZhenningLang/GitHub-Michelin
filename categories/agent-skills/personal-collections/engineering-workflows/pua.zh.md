@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:39:32Z
-  overall: D
-  overall_score: 1.4
-  scored_axes: 5
+  computed_at: 2026-09-23T07:34:49Z
+  overall: C
+  overall_score: 1.75
+  scored_axes: 4
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 13
+        last_commit_age_days: 14
         active_weeks_13: 4
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 65
+        release_downloads: 71
         release_assets: 4
         release_tier: D
         signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 198
-        last_commit_age_days: 13
+        repo_age_days: 199
+        last_commit_age_days: 14
         cohort: skill-pack
     governance:
       grade: D
@@ -59,14 +59,11 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: type_na }
+    risk_license: { reason: license_declared_unverifiable }
 ---
 
 # PUA

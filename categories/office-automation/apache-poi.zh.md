@@ -17,13 +17,13 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T04:52:42Z
-  overall: D
-  overall_score: 2.5
-  scored_axes: 4
+  computed_at: 2026-09-23T07:52:10Z
+  overall: B
+  overall_score: 3.33
+  scored_axes: 3
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
@@ -54,15 +54,12 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_window_signal }
     adoption: { reason: ambiguous }
+    risk_license: { reason: license_unparsed }
 ---
 
 # Apache POI
@@ -131,7 +128,8 @@ Java 库（`org.apache.poi`），5.x 线需要 Java 8 或更新（项目新闻�
 
 ## 健康度与可持续性
 
-- **雷达总分 D（4／6 轴有分，被封顶）是工具漏检，不是项目在死。** 维护 A（上次提交 1 天，13／13 周活跃），长青 A（仓库年龄 6334 天且仍活跃）。响应是 `?`（`no_window_signal`）——GitHub Issues 不是主跟踪器。采用度是 `?`（`ambiguous`）——打分器没绑上 Maven 包。许可宽松度是 E（`spdx_id: NONE`），因为 GitHub 的 license API 为 null；这一项把总分封顶了。不要把总分 D 读成“这项目快不行了”。
+- **有两轴是 `?`，原因是工具够不着，不是项目有问题。** 维护 A（上次提交 1 天，13／13 周活跃），长青 A（仓库年龄 6334 天且仍活跃）。响应是 `?`（`no_window_signal`）——GitHub Issues 不是主跟踪器。采用度是 `?`（`ambiguous`）——打分器只看到这个仓库的一个 Go 伪模块；真正的构件 `org.apache.poi:poi` 在 Maven Central 上有 75,041 个依赖仓库，但它没有能回指本仓库的 `repository_url`，所以按设计不被采纳为 canonical。
+- **许可轴是 `?`，而许可证确实是 Apache-2.0。** GitHub 的 license API 对这个仓库返回 null，因为许可证文件在 `legal/LICENSE` 而不是根目录，打分器无法自动判定。它以前把这个 null 读成“没有许可证”并判 E，把整页封顶到 D——那是打分器的缺陷，已修复。现在的 `?` 才是诚实的说法：许可证存在且下面写明了，只是机器没有断言它是哪一种。
 - **维护：活跃，2026-09-23 验证** —— Maven Central 上 `poi-ooxml` 的 latest／release 是 5.5.1，`lastUpdated` 2025-11-30；项目新闻日期 2025 年 11 月 30 日。默认分支 `trunk` 上 2026-09-22 的提交（`b1494b9a`）。README：`trunk` 在做 6.0.0。GitHub Releases 为空（0）；版本标签是 `REL_5_5_1` 及更早——阿帕奇在下载页和 Maven 上发版，不用 GitHub Releases 界面。
 - **治理：阿帕奇 PMC，雷达 C 来自近 12 个月集中度** —— 评分窗口里有 36 个活跃维护者，但 `top1_share` 0.619／`top3_share` 0.853。生命周期 contributors API（2026-09-23）：`pjfanning` 3091、`Gagravarr` 2348、`centic9` 1953、`kiwiwings` 1334、`onealj` 962。有基金会，不是单人业余项目；近期提交仍集中。
 - **背书与 Lindy：两半都成立** —— 站点版权 2001–2026；`legal/NOTICE` 写 “Copyright 2003-2026 The Apache Software Foundation”。GitHub `created_at` 是 2009-05-21（gitbox 镜像）。2025-07-07 的新闻把 GitHub 定为官方源，此前多年只是只读镜像——不要把残留的 “Mirror of Apache POI gitbox” 描述读成归档。

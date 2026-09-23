@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | D（6/6） | [→](cockpit.zh.md) |
+| **Cockpit** | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 | B（5/6） | [→](cockpit.zh.md) |
 | **Telegraf** | 当你需要一个插件驱动的 agent 把异构指标/日志统一采集并路由到多种后端时用它。 | A（6/6） | [→](telegraf.zh.md) |
 | **Certbot** | 当系统管理员要自动签发并续期免费 Let's Encrypt TLS 证书时用它——不过反向代理自带的自动 TLS 常让它显得多余。 | A（5/6） | [→](certbot.zh.md) |
 | **SlimToolkit** | 当你想在不重写 Dockerfile 的情况下自动瘦身并加固臃肿的容器镜像时用它——注意它可能删掉运行时动态加载的文件。 | B（6/6） | [→](slim.zh.md) |
@@ -20,7 +20,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Cockpit](cockpit.zh.md) | ✅ | D（6/6） | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 |
+| [Cockpit](cockpit.zh.md) | ✅ | B（5/6） | 当你需要为少数几台 Linux 服务器用浏览器做 systemd 原生的图形化管理时用它。 |
 | [Telegraf](telegraf.zh.md) | ✅ | A（6/6） | 当你需要一个插件驱动的 agent 把异构指标/日志统一采集并路由到多种后端时用它。 |
 | [Certbot](certbot.zh.md) | ✅ | A（5/6） | 当系统管理员要自动签发并续期免费 Let's Encrypt TLS 证书时用它——不过反向代理自带的自动 TLS 常让它显得多余。 |
 | [SlimToolkit](slim.zh.md) | ✅ | B（6/6） | 当你想在不重写 Dockerfile 的情况下自动瘦身并加固臃肿的容器镜像时用它——注意它可能删掉运行时动态加载的文件。 |

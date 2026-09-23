@@ -16,20 +16,20 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:21:29Z
+  computed_at: 2026-09-23T07:44:55Z
   overall: E
   overall_score: 0.0
-  scored_axes: 4
+  scored_axes: 3
   applicable_axes: 6
-  capped: true
-  cap_reason: "source-available/no-license: NONE"
+  capped: false
+  cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1263
+        last_commit_age_days: 1264
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,22 +49,19 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2487
-        last_commit_age_days: 1263
+        repo_age_days: 2488
+        last_commit_age_days: 1264
         cohort: tool
     governance:
       grade: "?"
       raw: {}
     risk_license:
-      grade: E
-      raw:
-        spdx_id: NONE
-        permissiveness: source_available
-        relicense_36mo: false
-        content_license: null
+      grade: "?"
+      raw: {}
   unknowns:
     responsiveness: { reason: no_traffic }
     governance: { reason: empty_or_gated }
+    risk_license: { reason: license_declared_unverifiable }
 ---
 
 # wxappUnpacker

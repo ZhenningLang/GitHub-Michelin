@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Cockpit** | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. | D (6/6) | [→](cockpit.md) |
+| **Cockpit** | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. | B (5/6) | [→](cockpit.md) |
 | **Telegraf** | Use it when you need one plugin-driven agent to collect and route heterogeneous metrics/logs to many backends. | A (6/6) | [→](telegraf.md) |
 | **Certbot** | Use it when a sysadmin must auto-provision & renew free Let's Encrypt TLS certs — though reverse proxies' built-in auto-TLS often makes it redundant. | A (5/6) | [→](certbot.md) |
 | **SlimToolkit** | Use it when you want to auto-minify & harden a bloated container image without rewriting the Dockerfile — beware it can strip dynamically-loaded files. | B (6/6) | [→](slim.md) |
@@ -20,7 +20,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Cockpit](cockpit.md) | ✅ | D (6/6) | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. |
+| [Cockpit](cockpit.md) | ✅ | B (5/6) | Use it when you need a browser-based, systemd-native admin UI for a few Linux servers. |
 | [Telegraf](telegraf.md) | ✅ | A (6/6) | Use it when you need one plugin-driven agent to collect and route heterogeneous metrics/logs to many backends. |
 | [Certbot](certbot.md) | ✅ | A (5/6) | Use it when a sysadmin must auto-provision & renew free Let's Encrypt TLS certs — though reverse proxies' built-in auto-TLS often makes it redundant. |
 | [SlimToolkit](slim.md) | ✅ | B (6/6) | Use it when you want to auto-minify & harden a bloated container image without rewriting the Dockerfile — beware it can strip dynamically-loaded files. |

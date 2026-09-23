@@ -7,8 +7,8 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **autoresearch** | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. | D (5/6) | [→](autoresearch.md) |
-| **llm-circuit-finder** | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. | D (5/6) | [→](llm-circuit-finder.md) |
+| **autoresearch** | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. | B (4/6) | [→](autoresearch.md) |
+| **llm-circuit-finder** | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. | D (4/6) | [→](llm-circuit-finder.md) |
 | **CLIP** | Use it when you need zero-shot image classification or image↔text retrieval embeddings — the original frozen reference; OpenCLIP has more checkpoints. | C (5/6) | [→](clip.md) |
 | **TaskMatrix** | Use it only to study an early visual-tool-routing agent (Visual ChatGPT) — abandoned since ~2024, don't build on it. | "?" (2/6) | [→](taskmatrix.md) |
 | **PyTorch-GAN** | Read it to learn GAN architectures from clean reference implementations — idle since 2024 and superseded by diffusion; not production code. | D (4/6) | [→](pytorch-gan.md) |
@@ -24,8 +24,8 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [autoresearch](autoresearch.md) | ✅ | D (5/6) | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. |
-| [llm-circuit-finder](llm-circuit-finder.md) | ✅ | D (5/6) | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. |
+| [autoresearch](autoresearch.md) | ✅ | B (4/6) | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. |
+| [llm-circuit-finder](llm-circuit-finder.md) | ✅ | D (4/6) | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. |
 | [CLIP](clip.md) | ✅ | C (5/6) | Use it when you need zero-shot image classification or image↔text retrieval embeddings — the original frozen reference; OpenCLIP has more checkpoints. |
 | [TaskMatrix](taskmatrix.md) | ✅ | "?" (2/6) | Use it only to study an early visual-tool-routing agent (Visual ChatGPT) — abandoned since ~2024, don't build on it. |
 | [PyTorch-GAN](pytorch-gan.md) | ✅ | D (4/6) | Read it to learn GAN architectures from clean reference implementations — idle since 2024 and superseded by diffusion; not production code. |

@@ -13,7 +13,7 @@
 | **XlsxWriter** | 当 Python 服务从数据生成新的 `.xlsx`、且你要零依赖加 13 年稳定性时用它——但它只写，无法打开已有工作簿，也不计算公式。 | B（6/6） | [→](xlsxwriter.zh.md) |
 | **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | C（6/6） | [→](office-word-mcp-server.zh.md) |
 | **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | C（6/6） | [→](office-powerpoint-mcp-server.zh.md) |
-| **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | D（4/6） | [→](apache-poi.zh.md) |
+| **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | B（3/6） | [→](apache-poi.zh.md) |
 
 
 ## 对比矩阵
@@ -29,7 +29,7 @@
 | [MarkItDown](../document-parsing/markitdown.zh.md) | ✅ | B（6/6） | 相反方向：Office → Markdown 供 LLM 摄取，只读，且按设计在格式上有损。 |
 | openpyxl | 未收录 | — | XlsxWriter 的读写型 `.xlsx` 对手；未收录是因为它的规范仓库在 Heptapod（Mercurial）而非 GitHub，而本索引的健康度／上游快照工具只支持 GitHub。 |
 | [Office-PowerPoint-MCP-Server](office-powerpoint-mcp-server.zh.md) | ✅ | C（6/6） | Word MCP server 的 `.pptx` 姊妹项目；同一作者在 2026-03-03 批量归档（最后一次 push 是 2025-12-31）。新工作应封装 python-pptx 或用 OfficeCLI。 |
-| [Apache POI](apache-poi.zh.md) | ✅ | D（4/6） | 面向 OLE2／OOXML 的 JVM 库；Java 服务要原地改 Office 文件时选它，不是 Python agent 路径。 |
+| [Apache POI](apache-poi.zh.md) | ✅ | B（3/6） | 面向 OLE2／OOXML 的 JVM 库；Java 服务要原地改 Office 文件时选它，不是 Python agent 路径。 |
 | LibreOffice（无界面） | 未收录 | — | `soffice --headless` 是 LibreOffice 套件的运行模式，不是独立仓库。GitHub 名搜索命中是过期 Docker 包装。套件本身是 git.libreoffice.org 上的真实 git 仓库（GitHub `LibreOffice/core` 是已填充的只读镜像）。 |
 | Aspose | 非仓库 | — | 闭源商业 Office SDK（Aspose.Words／Cells／Slides）。GitHub 组织发布的是付费产品的示例，不是库源码。 |
 
