@@ -88,6 +88,14 @@ health:
 
 选 json-render 的那条取舍是**目录优先，而不是生成源码**。你已经有（或准备写）一套有限的 React / Vue / Svelte / Solid 组件，用 Zod 登记它们的 props，模型只能从这张清单里挑。产出是渲染器会画的 JSON spec，不是你还要 review、合并、再部署的源文件。当界面必须留在应用里、必须用你已经在用的设计系统时，选它而不是 v0 或 Lovable；当交付物是 coding-agent CLI 产出的文件（HTML / PPTX / MP4）而不是运行时的树时，选 [HTML Anything](html-anything.zh.md) 或 [Open Design](open-design.zh.md)。
 
+## 快问快答
+
+**这是 chatbot 的展示层吗？**
+对，这就是主场。仓库里有 `examples/chat` 和 `examples/harness-chat`。但不止展示：按钮会触发你登记过的动作，表单能写回状态。模型不能发明你没登记的零件。Markdown 气泡加几张静态卡，上它会重；要模型直接写 React 源码，用 v0。
+
+**CopilotKit 是不是一回事，已经收录了吗？**
+没收录。重叠的只是「聊天里画出界面」。CopilotKit 是整套把 agent 塞进应用的 SDK——自带聊天 UI、共享状态、人在环里、Slack/Teams、托管的 Intelligence。json-render 只管零件箱。
+
 ## 怎么用起来
 
 json-render 并不坐进模型的采样循环。你声明一份目录：允许的组件名、Zod 属性 schema、以及 actions。它从这份目录做出两样你交给模型的东西：列出零件箱的系统提示（`catalog.prompt()`），以及可选的、给供应商 structured-output API 用的 JSON Schema（`catalog.jsonSchema({ strict: true })`）。模型流式吐出一份 spec：一个 `root` 键加一张 `elements` 表，或 JSONL 补丁。`createSpecStreamCompiler` 在分片到达时把树拼起来。生成之后，`catalog.validate()` 用 Zod 校验 spec，`validateSpec` 再抓模型常犯的结构错误（缺 root、子节点悬空）。`defineRegistry` 把每个 `type` 字符串映射到真正的组件；`<Renderer>` 只画这些。未知类型进不了 DOM，因为 registry 里没有它们——但在你真正 `validate()` 之前，模型仍可能吐出非法 JSON。这是零件箱加质检员，不是一台打不出非法字母的键盘（那是 [XGrammar](../llm-inference/structured-generation/xgrammar.zh.md) 的活）。
@@ -119,6 +127,7 @@ json-render 并不坐进模型的采样循环。你声明一份目录：允许�
 - **你还在 React 18 或 Zod 3。** `@json-render/react` 0.21.0 的 peer 是 `react@^19.2.3`；`@json-render/core` 的 peer 是 `zod@^4.0.0`。留在现有栈，或把升级算进成本，不要指望包元数据里没有的兼容层。
 - **你需要原生 SwiftUI 或 Android 视图。** 移动端路径是 React Native。已发布的包列表里没有 UIKit / Jetpack 渲染器。
 - **你其实只要一套设计系统。** shadcn 包是给这个运行时准备的 36 个现成组件。普通 React 应用里只要按钮和卡片，直接用 shadcn/ui，不要上这套框架。
+- **你要的是整套 copilot 产品，不是零件箱。** 聊天外壳、共享 agent 状态、人在环里、Slack/Teams——那是 CopilotKit（`未收录`），不是这个包。
 - **你受不了 0.x 的接口变动，或 Labs 标签。** 这是 Vercel Labs 产品，版本 0.21.x，changelog 里点名过 breaking change（例如 0.20.0 的 `executeAction` 回调形状）。钉死版本，别把 API 当成冻结的。
 
 ## 横向对比
@@ -128,7 +137,7 @@ json-render 并不坐进模型的采样循环。你声明一份目录：允许�
 | [HTML Anything](html-anything.zh.md) | 已收录 | 当已登录的 coding-agent CLI 要把 Markdown 变成可投 HTML 文件时选 HTML Anything；当模型必须在你正在跑的应用里、用你已有的组件拼界面时选 json-render。 | HTML Anything 经 spawn CLI 产出文件，从不进入你的产品运行时；json-render 是你嵌入的库，目录和模型调用都得自己扛。 |
 | [Open Design](open-design.zh.md) | 已收录 | 要本地优先的桌面 studio（原型、deck、图像、HTML→MP4）时选 Open Design；当生成式 UI 是现有 web/mobile 应用的一项功能、而不是单独 studio 时选 json-render。 | Open Design 是你操作的 Electron 应用；json-render 是你 import 的包。studio 的广度对上进程内的控制权。 |
 | [XGrammar](../llm-inference/structured-generation/xgrammar.zh.md) | 已收录 | 当你握着 logits、畸形 token 必须不可能出现时选 XGrammar；当问题是「模型可以点名哪些组件」、而 JSON 字符串已经存在时选 json-render。 | XGrammar 在生成过程里掩 token；json-render 用提示词、JSON Schema 和 Zod 约束组件词表。两者可叠：XGrammar（或托管 structured output）管形状，json-render 管零件箱。 |
-| Vercel AI SDK（`vercel/ai`） | 未收录 | 当你已经活在该 SDK 里、想把 React Server Components 当成 UI 流式推出来时，选它的 generative-UI / streaming-UI 助手；当契约必须是一份编过目的 JSON spec、还要在 Vue、Svelte、Solid、RN、PDF 或邮件上渲染时选 json-render。 | AI SDK 路径是 React/RSC 形状，不给你跨渲染器的 JSON 目录；json-render 以目录为先、不绑模型，模型调用自己接。本次不收录，因为它是大型 SDK，不是只做生成式 UI 的仓库。 |
+| CopilotKit（`CopilotKit/CopilotKit`） | 未收录 | 要整套把 agent 塞进应用的 SDK（聊天 UI、共享状态、人在环里、Slack/Teams）时选 CopilotKit；你已经有聊天、只需要模型用你的目录拼界面时选 json-render。 | CopilotKit 是 agent 和用户之间的产品层；json-render 是你嵌入的、编过目的 JSON 渲染器。本次不收录，因为这次只把阅读对话补进已有页。 |
 | v0 | 非仓库 | 要托管式 codegen、写出 React 源码时选 v0；当模型不许发明组件、界面必须在运行时从 spec 画出来时选 json-render。 | v0 是托管产品（使用单元不是 git 仓库）。你得到源文件和供应商工作流；json-render 给你应用内的零件箱，没有托管编辑器。 |
 
 ## 技术栈
@@ -167,6 +176,7 @@ json-render 并不坐进模型的采样循环。你声明一份目录：允许�
 - [未验证] 此修订的树上没有 `SECURITY.md` / `CONTRIBUTING.md` / `CODEOWNERS`；仓库外是否另有漏洞报告渠道，未确认。
 - [推断] 贡献者集中（`ctate` 远超下一名人类）来自 2026-09-23 的 GitHub contributors API，没有做身份去重。
 - [推断] 「Vercel Labs 可能被下线」是对 Labs 产品的常规读法，不是 Vercel 针对此仓库的声明。
-- [推断] Vercel AI SDK（`vercel/ai`）是真实仓库，本次故意不收录；生成式 UI 的对比来自公开定位，不是读过它的选型页。
+- [推断] CopilotKit（`CopilotKit/CopilotKit`）是真实仓库，本次故意不收录；对比来自它 README 的定位（agent-native 应用、聊天 UI、AG-UI、Intelligence），不是选型页。
+- [推断] Vercel AI SDK（`vercel/ai`）仍未收录；本页对比表改成 CopilotKit，因为它才是阅读对话里点名的、更近的 chatbot UI 替代品。
 - [未验证] React Native / Vue / Svelte / Solid / PDF / 邮件 / Ink 渲染器没有实际跑过；证据是 `packages/` 里有对应包，以及 README 的安装行。
 - [未验证] 「36 个 shadcn/ui 组件」是 README 数字；本次没有点过组件清单。
