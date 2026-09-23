@@ -81,6 +81,20 @@ health:
 
 和替代品相比，选它的场景是**要广度和单点自选，而不是一套自洽的方法论**：Superpowers 和 Compound Engineering 各自只装一条有主见的端到端工作流，而这里是超市货架——来自许多上游作者的互不相关的组件，由你自己搭配。决定性取舍是：单组件选择最多、承诺最轻，代价是没人保证这些部件能协同工作。
 
+## 快问快答
+
+**装它会不会把我已经调好的 harness 搞乱？**
+有可能。安装器写的是和你自己的 agent、命令、hook 同一个 `.claude/` 命名空间，除了同名覆盖提示之外没有隔离。正确做法是读目录，把某一个组件移植进你自己的体系，而不是整包覆盖上去。
+
+**它是不是基本在二次分发别人的东西？**
+大体上是。README 的 Attribution 一节列出了它聚合的上游合集——`anthropics/skills`、`wshobson/agents`、`obra/superpowers` 等。你要某个具体组件时，它的原仓库是更好的来源：环节更少，文档也是作者自己写的。
+
+**README 里第一条安装命令能直接照抄吗？**
+不能。它装的是赞助商（Bright Data）的 skill 和 MCP，不是中性的入门套装。这个项目的每个默认值都值得先读再跑。
+
+**`--analytics` / `--chats` 这些面板也是目录的一部分吗？**
+不是——它们是同一个 CLI 里的第二个产品，观察你的会话，和装组件没有关系。要把它们当独立工具单独评估，另外 `--chats --tunnel` 会把对话暴露到公网。
+
 ## 怎么用起来
 
 这个项目是两部分粘在一起的：一个**目录**（`cli-tool/components/` 下的 Markdown 组件文件，大部分聚合自 `anthropics/skills`、`wshobson/agents` 等上游合集，各自保留原 license），加一个**安装器 CLI**（npm 包 `claude-code-templates`，二进制名 `cct` / `claude-code-templates`，另有 `cli-rust/` 下的 Rust 重写版）。安装器没有魔法：它把你点名的组件文件下载下来，写进 Claude Code 本来就会读的位置——源码可查证，agent 落到 `<项目>/.claude/agents/`，命令落到 `.claude/commands/`，hook 落到 `.claude/hooks/`，MCP 服务写进 `.mcp.json`。装完之后目录的使命就结束了，**由 Claude Code 自己的原生加载机制接管这些文件**，装好的 agent 或 hook 从此左右你的会话。它更像书店而不是图书管理员：只负责把书递给你，读书的是你自己的 Claude Code。同一个 CLI 还附带几个可选的本地监控面板（`--analytics`、`--chats`、`--health-check`、`--plugins`）用来观察你的会话，它们与组件目录无关，不在下面的主干流程里。
@@ -145,12 +159,6 @@ health:
 - **年龄与 Lindy**：2025 年 7 月创建，约 14 个月。典型的年轻高热项目：31.2k star 对上月约 1.07 万 npm 下载，说明关注度由 star 驱动、明显跑在实际使用前面。年龄上未经证明，按当下价值采用，别赌它的寿命。
 - **背书**：商业赞助（Bright Data、Z.AI、Vercel/Neon 的开源计划）为站点和（推测的）维护者时间买单，但赞助商 placement 渗进了产品——README 头条安装命令装的就是赞助商的 skill。赞助不是治理，也可能随时撤走。
 - **风险信号**：MIT，无改 license 历史。真正的风险在内容层：聚合来的第三方组件各带原 license 和原质量；hook 会在你机器上跑任意代码；除了一份 `SECURITY.md` 和一个提交在仓库里的 `security-report.json`，没有公开的 CLA 或安全审计流程。[未验证]
-
-## 指指点点
-
-- **这个项目正确的消费方式是「抄」而不是「装」。** 持久的价值在于目录本身是一份阅读清单；安装器的便利恰恰是对精调配置最危险的地方。在 aitmpl.com 上翻，找到解决你问题的那一个组件，读它的源码，把它移植进你自己的 harness，让安装经过你自己的 lint 和 review。
-- **README 的第一条命令是广告。** 页首的快速开始装的是赞助商（Bright Data）的 skill 和 MCP，不是中性的入门套装。看这个项目的每一个默认值时都带着这个前提。
-- **监控面板是藏在同一个 CLI 里的第二个产品。** `--analytics` / `--chats` / `--health-check` 确实有用、也有独立价值，但它们和模板目录毫无关系——放它去观察你的会话之前，把它当成一个独立工具单独评估（`--chats --tunnel` 会把对话暴露到公网）。
 
 ## 存疑（未验证）
 
