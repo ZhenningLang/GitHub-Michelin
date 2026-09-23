@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | B（5/6） | [→](claude-code-templates.zh.md) |
+| **Claude Code Templates** | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 | B（6/6） | [→](claude-code-templates.zh.md) |
 | **Compound Engineering** | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 | B（4/5） | [→](compound-engineering.zh.md) |
 | **ECC** | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 | B（6/6） | [→](ecc.zh.md) |
 | **SuperClaude Framework** | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 | B（6/6） | [→](superclaude.zh.md) |
@@ -17,7 +17,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Claude Code Templates](claude-code-templates.zh.md) | ✅ | B（5/6） | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 |
+| [Claude Code Templates](claude-code-templates.zh.md) | ✅ | B（6/6） | 当你想在一个大目录里逛逛、单点自选地安装现成的 Claude Code agent、命令、hook、MCP 和 skill，而不是自己从头写时，用它。 |
 | [Compound Engineering](compound-engineering.zh.md) | ✅ | B（4/5） | 当你想要一套即插即用的 brainstorm→plan→work→review→compound 循环、并把经验跨会话沉淀复用时，就用它。 |
 | [ECC](ecc.zh.md) | ✅ | B（6/6） | 当你想要一套有人维护、开箱即全的 Claude Code 底座（skill、agent、hook、memory 加安全扫描）时用它。 |
 | [SuperClaude Framework](superclaude.zh.md) | ✅ | B（6/6） | 当你常驻 Claude Code、想一次装好现成的命令、agent 和行为模式框架时用它。 |

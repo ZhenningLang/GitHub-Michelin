@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T06:39:34Z
+  computed_at: 2026-09-23T08:56:04Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -42,8 +42,17 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: claude-code-templates
+        package_link: npmjs.org_git_head
+        dependent_repos_count: 0
+        downloads_last_month: 9880
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: C
       raw:
@@ -65,8 +74,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # Claude Code Templates
