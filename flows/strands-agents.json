@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Strands Agents does", "zh": "Strands Agents 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the harness package, plus a provider extra if you are not on Bedrock", "zh": "装上 harness 包；不用 Bedrock 就再装对应 extra", "code": "pip install strands-harness"},
+    {"lane": "you", "en": "Build the agent in one call — every argument is optional", "zh": "一次调用把 agent 建出来，参数全可省", "code": "create_harness()"},
+    {"lane": "them", "en": "Wires a tuned system prompt, shell and file tools, a code sandbox and a subagent", "zh": "接好调过的 system prompt、shell 与文件工具、代码沙箱和子代理", "component": {"en": "strands_harness", "zh": "strands_harness"}},
+    {"lane": "them", "en": "Keeps sessions, long-term memory and skills in one dot-directory it owns", "zh": "把会话、长期记忆和技能放进它自己管的那个点目录", "code": "./.agent/", "component": {"en": "harness defaults", "zh": "harness 默认值"}},
+    {"lane": "you", "en": "Hand it the task", "zh": "把任务丢给它", "code": "agent(\"Find the slowest test in this repo\")"},
+    {"lane": "them", "en": "Runs the loop, calls tools, summarizes old turns and reuses cached context", "zh": "跑循环、调工具、把旧轮次摘要掉、复用缓存过的上下文", "component": {"en": "agent loop", "zh": "agent 循环"}}
+  ],
+  "value": {
+    "en": "You no longer hand-assemble the loop, its tools, memory and sessions: one call gives you a working agent, and every default stays overridable",
+    "zh": "你不用再自己攒循环、工具、记忆和会话：一次调用就有能用的 agent，而每个默认值都留着覆盖口"
+  },
+  "sources": [
+    "harness-py/README.md (pip install strands-harness; create_harness() returns a plain strands.Agent; the default tool set incl. shell, read/write/edit, web_fetch, programmatic_tool_caller and subagent; sessions in ./.agent/sessions, memory in ./.agent/memory, skills in ./.agent/skills; every default overridable; provider extras [openai]/[anthropic]/[gemini]/[ollama]/[litellm])",
+    "README.md quick start and Working with the SDK sections (pip install strands-harness; agent(\"Find the slowest test in this repo and explain why it's slow\"); provider/model string; model-agnostic provider list)",
+    "harness-py/pyproject.toml (runtime deps strands-agents[otel], pydantic, pydantic-monty; requires-python >=3.10; optional extras per provider)",
+    "site/src/content/docs/user-guide/harness/quickstart (sessions on by default under ./.agent/sessions; model passed as provider/name; Bedrock is the default)"
+  ]
+}

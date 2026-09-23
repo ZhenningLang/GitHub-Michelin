@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Pi does", "zh": "Pi 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and start it in the project folder", "zh": "装上 CLI，在项目目录里启动", "code": "pi"},
+    {"lane": "you", "en": "Connect a subscription or an API key", "zh": "连上订阅或填入 API key", "code": "/login"},
+    {"lane": "them", "en": "Saves the credentials in the agent directory", "zh": "把凭证存进 agent 目录", "component": {"en": "auth.json", "zh": "auth.json"}},
+    {"lane": "you", "en": "Put your own instructions, skills and extensions in the project", "zh": "把你自己的指令、技能和扩展放进项目", "code": "./.pi/", "component": {"en": "skills · prompts · extensions", "zh": "技能 · 模板 · 扩展"}},
+    {"lane": "them", "en": "Loads those project resources once you grant project trust", "zh": "你授予项目信任后，加载这些项目资源", "component": {"en": "project trust", "zh": "项目信任"}},
+    {"lane": "you", "en": "Give it a goal", "zh": "给它一个目标"},
+    {"lane": "them", "en": "Reads files, runs commands and edits content, one turn at a time", "zh": "读文件、跑命令、改内容，一轮一轮推进", "component": {"en": "agent loop", "zh": "agent 循环"}}
+  ],
+  "value": {
+    "en": "You stop adopting a built-in agent wholesale: a small loop whose behaviour comes from files in your repo, which it can also write itself",
+    "zh": "你不用整体接受一个内置的 agent：循环很小，它做什么由你仓库里的文件决定，而那些文件它自己也能写"
+  },
+  "sources": [
+    "packages/coding-agent/README.md (npm install -g --ignore-scripts @earendil-works/pi-coding-agent; Node.js 22.19 or newer; curl -fsSL https://pi.dev/install.sh | sh; cd /path/to/project; pi; /login; adapt Pi to your workflow via prompt templates, skills, extensions and themes; new-contributor issues and PRs are closed automatically)",
+    "packages/coding-agent/docs/configuration.md (agent directory defaults to ~/.pi/agent and holds auth.json, extensions/, skills/, prompts/, themes/; project .pi/ loads after project trust; PI_CODING_AGENT_DIR moves the agent directory; /settings and /reload)",
+    "packages/coding-agent/docs/how-pi-works.md (one turn = request, streamed tool calls, results; sessions are JSONL trees where each entry refers to its parent; compaction inserts a summary entry; extensions are TypeScript modules loaded into the Pi process; enabled tools use the operating-system permissions of the Pi process)",
+    "packages/coding-agent/docs/index.md (print mode, JSON event stream mode, RPC mode and the TypeScript SDK all use the same agent and session mechanisms; project trust does not sandbox tool calls)"
+  ]
+}
