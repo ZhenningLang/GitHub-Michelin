@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Shimmy does", "zh": "Shimmy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary", "zh": "安装单文件二进制", "code": "cargo install shimmy"},
+    {"lane": "you", "en": "Point it at a GGUF file and start the server", "zh": "指向一个 GGUF 文件并启动服务", "code": "shimmy serve --model-path /absolute/path/to/model.gguf --bind 127.0.0.1:11435"},
+    {"lane": "them", "en": "Loads the model onto your GPU via WebGPU and serves OpenAI-compatible endpoints", "zh": "通过 WebGPU 把模型加载到显卡，对外提供 OpenAI 兼容接口", "component": {"en": "Airframe engine", "zh": "Airframe 引擎"}},
+    {"lane": "you", "en": "Call it from any OpenAI SDK or curl", "zh": "用任意 OpenAI SDK 或 curl 调用", "code": "curl -s http://127.0.0.1:11435/v1/chat/completions"}
+  ],
+  "value": {"en": "Your existing OpenAI-SDK tools talk to a local model — no Python, no Docker, no account", "zh": "你现有的 OpenAI SDK 工具直接连上本地模型——不要 Python、不要 Docker、不要账号"},
+  "sources": ["shimmy README.md Quick Start: `cargo install shimmy`; `shimmy serve --model-path /absolute/path/to/model.gguf --bind 127.0.0.1:11435`; `curl -s http://127.0.0.1:11435/v1/chat/completions`"]
+}
