@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "AX does", "zh": "AX 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the control plane onto a cluster that already runs Agent Substrate", "zh": "在已有 Agent Substrate 的集群上部署控制面", "code": "make deploy AX_IMAGE_REPO=<your-registry>"},
+    {"lane": "you", "en": "Declare a Task, Workspace, Gateway and Model in one YAML file", "zh": "用一份 YAML 声明任务、工作区、网关和模型", "code": "ax apply -f examples/task.yaml"},
+    {"lane": "them", "en": "Stores the objects in Redis and provisions a Substrate actor", "zh": "把对象写入 Redis，并在 Substrate 上开出 actor"},
+    {"lane": "them", "en": "Prepares git, MCP and skills in the sandbox, then starts your command", "zh": "在沙箱里备好 Git、MCP 和 skills，再启动你的命令"}
+  ],
+  "value": {"en": "Agent tasks become YAML you apply — snapshots, routing and isolation stay under the floor, not in your manifests", "zh": "agent 任务变成一份 YAML：快照、路由和隔离仍由底层处理，不必写进清单"},
+  "sources": [
+    "https://github.com/google/ax/blob/main/README.md (make deploy AX_IMAGE_REPO=<your-registry>; ax apply -f examples/task.yaml; ax watch / ax ssh / ax suspend)",
+    "https://github.com/google/ax/blob/main/DESIGN.md (Redis hashes + streams; ax-server; ax-controller; Agent Substrate actors)",
+    "https://github.com/google/ax/blob/main/docs/sandbox.md (ax-task-runner as PID 1; workspace git/MCP/skills; optional goal via Antigravity)",
+    "https://github.com/google/ax/blob/main/docs/concepts.md (Task, Workspace, Gateway, Model; atespace)",
+    "https://github.com/google/ax/blob/main/examples/task.yaml (Task + Workspace + Gateway + Model in one file)"
+  ]
+}
