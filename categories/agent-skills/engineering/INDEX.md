@@ -14,7 +14,7 @@
 | **Waza** | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. | C (5/6) | [→](waza.md) |
 | **mattpocock/skills** | Matt Pocock's engineering skill pack for Claude Code and skills.sh: grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. | B (4/5) | [→](mattpocock-skills.md) |
 | **BrowserAct Skills** | Agent-facing browser automation skill pack for BrowserAct: indexed browser control, stealth/private sessions, remote human handoff, and Skill Forge scraping workflows. | B (4/5) | [→](browser-act-skills.md) |
-| **caveman** | Prompt and installer pack that makes many coding agents answer in deliberately terse "caveman" style while preserving code, commands, and errors. | C (5/6) | [→](caveman.md) |
+| **caveman** | Brevity skill plus optional local proxy: shrinks what a coding agent says and, if wrapped, what it reads, while leaving code, commands, and errors intact. | D (6/6) | [→](caveman.md) |
 | **i-have-adhd** | A 10-rule response-style skill that makes a coding agent lead with the action, number steps, restate progress every turn, and drop the preamble and closer — one ruleset across roughly 15 harnesses. | A (4/5) | [→](i-have-adhd.md) |
 
 
@@ -29,7 +29,7 @@
 | [Waza](waza.md) | ✅ | C (5/6) | A compact collection of eight "engineering habit" skills (plan, design, review, debug, write, research, read, audit) a coding agent loads on demand across Claude Code, Codex, and Cursor. |
 | [mattpocock/skills](mattpocock-skills.md) | ✅ | B (4/5) | Engineering process pack for requirements grilling, domain docs, TDD, bug diagnosis, architecture, review, tickets, and implementation flow. |
 | [BrowserAct Skills](browser-act-skills.md) | ✅ | B (4/5) | Agent browser automation layer with indexed actions, stealth/private sessions, remote handoff, and Skill Forge; use Playwright for deterministic tests. |
-| [caveman](caveman.md) | ✅ | C (5/6) | Brevity overlay for existing agents; changes response style, not engineering process or context design. |
+| [caveman](caveman.md) | ✅ | D (6/6) | Token-spend overlay: MIT skill shortens replies; optional BSL proxy shrinks logs/JSON/diffs the agent rereads. |
 | [i-have-adhd](i-have-adhd.md) | ✅ | A (4/5) | Overlay for a reader with a short working memory; shapes how the agent talks, not what it knows — pick caveman when token spend is the problem. |
 
 

@@ -102,7 +102,7 @@ health:
 ## 何时不用
 
 - **你只跑 Claude Code，且唯一的不满就是铺垫。** 它内置的 **Concise** output style 已经做到：先给结果、跳过铺垫与叙述、默认把回复压短，同时在你要求解释时仍完整回答，并保留报错全文与破坏性操作的确认——也就是规则 1 与规则 10 追求的效果，而且零依赖。规则 5–7（每轮复述进度、给具体时间估计、把完成的部分亮出来）和跨 harness 可移植性才是你额外获得的东西。来源：Claude Code output-styles 官方文档，2026-09-22 核对。
-- **你的痛点是 token 花销，不是可读性。** 目标是明显减少输出 token 就用 [caveman](caveman.zh.md)，并接受它自己声明的 benchmark 保留意见。i-have-adhd 的列表上限规则明确只约束呈现（不得限制分析、检索、工具结果、候选生成），所以它不是成本合同——而常驻模式还会反复注入规则，反而增加输入 token。
+- **你的痛点是 token 花销，不是可读性。** 目标是少付 billed token 就用 [caveman](caveman.zh.md)——它的 MIT 技能缩短回复，可选的本地代理还会压缩 agent 反复读的日志和工具输出。i-have-adhd 的列表上限规则明确只约束呈现（不得限制分析、检索、工具结果、候选生成），所以它不是成本合同——而常驻模式还会反复注入规则，反而增加输入 token。
 - **你要去 AI 味的是要发布的文档。** 用 [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md) 或 [humanizer](../ai-writing/de-ai-writing/humanizer.zh.md)。那些作用于文稿，这个作用于对话回复，两者不能互相替代。
 - **你需要 agent 自己动手，而不是把改动推回给你。** 用带真实自主性的方法学 harness，例如 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。这个仓库自己的评测支撑不了这条主张：`agent-owned-edit` 这条 case 因为 runner 剥掉了工具而谁都过不了，`RESULTS.md` 自己写明了。
 - **你的报错必须诚实表达不确定，而不是干脆利落。** 规则 8 要求「原因＋修法」，却没有「原因尚未确定」这一支；项目自己的评测记录了一次回归（`partial-success`，3 次试验均值 −0.63），评分者的评语是模型在毫无证据时把某个原因断言成了定论。如果校准过的不确定性比一条漂亮报错更重要，自己补上这一支，或换别的技能。
@@ -113,7 +113,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [caveman](caveman.zh.md) | ✅ | 痛点是回复形状、读者工作记忆短，选 i-have-adhd；痛点是普遍的可见 token 花销，选 caveman。 | i-have-adhd 多出跨轮行为（复述进度、显式亮出成果、保留真实的不确定性措辞），代价是规则更长，常驻时增加输入 token；caveman 是更短、覆盖面更宽的风格覆盖层。 |
+| [caveman](caveman.zh.md) | ✅ | 痛点是回复形状、读者工作记忆短，选 i-have-adhd；痛点是 token 花销——包括 agent 反复读进去的日志和工具输出——选 caveman。 | i-have-adhd 多出跨轮行为（复述进度、显式亮出成果、保留真实的不确定性措辞），代价是规则更长，常驻时增加输入 token；caveman 的技能是更短的覆盖层，可选代理还会压缩 agent 读进去的东西。 |
 | [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md) | ✅ | 产物是你将要发布的文档，选 stop-slop；产物是 agent 自己的回复，选 i-have-adhd。 | 去 AI 味规则就地把文稿改一遍，对正式文体可能改过头；i-have-adhd 不碰你的文件，改的是 agent 跟你说话的方式。 |
 | [humanizer](../ai-writing/de-ai-writing/humanizer.zh.md) | ✅ | 与 stop-slop 同轴、偏英文：两者都用于书面产出，不用于聊天回复。 | humanizer 针对已发布文稿里的 AI 痕迹，带插件与安装文档；i-have-adhd 针对实时对话，那里的 AI 痕迹是铺垫和收尾客套。 |
 | Claude Code 内置的 output style（`/output-style`，含 **Concise**） | 非仓库 | 只跑 Claude Code 且问题就是铺垫，直接用内置的 Concise，不必安装；还需要跨轮行为或想让同一形状覆盖其它 harness，选 i-have-adhd。 | 内建在闭源 CLI 里，不是仓库：没有多 harness 可移植性，也没有可 fork、可固定版本的规则文件——但 Concise 已经覆盖「先给结果、去掉铺垫、被要求解释时完整回答」，且零依赖。 |

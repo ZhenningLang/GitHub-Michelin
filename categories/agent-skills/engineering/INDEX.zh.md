@@ -14,7 +14,7 @@
 | **Waza** | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 | C（5/6） | [→](waza.zh.md) |
 | **mattpocock/skills** | Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程。 | B（4/5） | [→](mattpocock-skills.zh.md) |
 | **BrowserAct Skills** | 面向 BrowserAct 的 agent 浏览器自动化技能包：索引式浏览器控制、stealth/private session、远程人工接管，以及 Skill Forge 抓取工作流。 | B（4/5） | [→](browser-act-skills.zh.md) |
-| **caveman** | 一个 prompt 与安装器技能包，让多种 coding agent 用刻意简短的“caveman”风格回答，同时保留代码、命令和错误信息。 | C（5/6） | [→](caveman.zh.md) |
+| **caveman** | 简短表达技能加可选本地代理：压缩 coding agent 说出来的话，wrap 之后也压缩它读进去的东西，代码、命令和报错原样保留。 | D（6/6） | [→](caveman.zh.md) |
 | **i-have-adhd** | 一份 10 条规则的回复风格技能：让 coding agent 每轮先说动作、把步骤编号、复述进度，并删掉铺垫与收尾；一套规则覆盖约 15 种 harness。 | A（4/5） | [→](i-have-adhd.zh.md) |
 
 
@@ -29,7 +29,7 @@
 | [Waza](waza.zh.md) | ✅ | C（5/6） | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 |
 | [mattpocock/skills](mattpocock-skills.zh.md) | ✅ | B（4/5） | 面向需求 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程的工程过程包。 |
 | [BrowserAct Skills](browser-act-skills.zh.md) | ✅ | B（4/5） | 带索引动作、stealth/private session、远程接管和 Skill Forge 的 agent 浏览器自动化层；确定性测试仍用 Playwright。 |
-| [caveman](caveman.zh.md) | ✅ | C（5/6） | 给现有 agent 加简短表达覆盖层；改变回复风格，不改变工程流程或上下文设计。 |
+| [caveman](caveman.zh.md) | ✅ | D（6/6） | token 花销覆盖层：MIT 技能缩短回复；可选 BSL 代理压缩 agent 反复读的日志 / JSON / diff。 |
 | [i-have-adhd](i-have-adhd.zh.md) | ✅ | A（4/5） | 给工作记忆短的读者用的表达覆盖层；改变 agent 的说话方式而非它知道什么——痛点是 token 花销时选 caveman。 |
 
 
