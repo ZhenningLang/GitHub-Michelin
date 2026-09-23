@@ -742,6 +742,85 @@ class QualityScanTest(unittest.TestCase):
 
             self.assertFalse(any(f.category == "health-prose-grade-drift" for f in result.findings))
 
+    def _raw_drift(self, body: str, axes: str, *, zh: bool = False) -> list:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            name = "demo.zh.md" if zh else "demo.md"
+            write_page_with_health(root, f"categories/demo/{name}", body, axes)
+            result = quality_scan.scan(root)
+        return [f for f in result.findings if f.category == "health-prose-raw-drift"]
+
+    def test_age_off_by_a_day_is_not_drift(self) -> None:
+        """`repo_age_days` advances on its own, so prose is exact only the day it is written.
+
+        Demanding equality made this check a clock: it reported 15 pages whose prose was
+        1-4 days behind and would report them again the next day.
+        """
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Longevity**: the repository was 432 days old.\n",
+            "    longevity:\n      grade: A\n      raw:\n        repo_age_days: 433\n")
+        self.assertEqual(drift, [])
+
+    def test_a_genuinely_stale_age_is_still_drift(self) -> None:
+        """The tolerance must not hide a page whose prose predates a real gap."""
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Longevity**: the repository was 432 days old.\n",
+            "    longevity:\n      grade: A\n      raw:\n        repo_age_days: 2000\n")
+        self.assertEqual(len(drift), 1, f"expected the stale age to be reported, got {drift}")
+
+    def test_a_hundred_day_gap_on_a_young_repo_is_still_drift(self) -> None:
+        """5% of 400 is 20 days; 100 days behind must not slip through."""
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Longevity**: the repository was 300 days old.\n",
+            "    longevity:\n      grade: A\n      raw:\n        repo_age_days: 400\n")
+        self.assertEqual(len(drift), 1)
+
+    def test_a_share_rounded_to_two_decimals_is_not_drift(self) -> None:
+        """Frontmatter stores 0.772; prose writes 0.77. That is how people write numbers."""
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Governance**: top-3 contributor share is 0.77.\n",
+            "    governance:\n      grade: B\n      raw:\n        top3_share: 0.772\n")
+        self.assertEqual(drift, [])
+
+    def test_a_share_written_as_a_percentage_is_not_drift(self) -> None:
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Governance**: the top 3 hold 77.2% of commits.\n",
+            "    governance:\n      grade: B\n      raw:\n        top3_share: 0.772\n")
+        self.assertEqual(drift, [])
+
+    def test_a_wrong_share_is_still_drift(self) -> None:
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Governance**: top-3 contributor share is 0.41.\n",
+            "    governance:\n      grade: B\n      raw:\n        top3_share: 0.772\n")
+        self.assertEqual(len(drift), 1)
+
+    def test_a_zero_stated_in_words_is_not_drift(self) -> None:
+        """"there are no registry packages" states 0 more clearly than the digit would."""
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Adoption**: there are no registry packages to "
+            "measure dependents against, so the only signal is attention.\n",
+            "    adoption:\n      grade: E\n      raw:\n        dependent_repos_count: 0\n")
+        self.assertEqual(drift, [])
+
+    def test_a_chinese_zero_stated_in_words_is_not_drift(self) -> None:
+        drift = self._raw_drift(
+            "## 健康度与可持续性\n\n- **采用广度**：没有可测的 registry 包，依赖数无从统计。\n",
+            "    adoption:\n      grade: E\n      raw:\n        dependent_repos_count: 0\n",
+            zh=True)
+        self.assertEqual(drift, [])
+
+    def test_a_nonzero_count_is_not_excused_by_the_word_no(self) -> None:
+        """The words-for-zero escape applies only when the value really is zero.
+
+        The line has to carry a number of its own, because a line with no numbers is
+        never compared at all — that is pre-existing behaviour, not part of this change.
+        """
+        drift = self._raw_drift(
+            "## Health & viability\n\n- **Adoption**: there are no dependent repos worth "
+            "reporting; dependent_repos_count sits at 7.\n",
+            "    adoption:\n      grade: D\n      raw:\n        dependent_repos_count: 4200\n")
+        self.assertEqual(len(drift), 1)
+
     def test_detects_grade_drift_outside_the_health_section(self) -> None:
         """A page explains its grades wherever the explanation belongs.
 
@@ -1001,16 +1080,21 @@ class QualityScanTest(unittest.TestCase):
 
 - **长青度**：Grade A——仓库已创建 2567 天。
 """,
+                # Was 2568 — a one-day gap. That is no longer drift: `repo_age_days`
+                # advances by one every day a page is not rescored, so equality made the
+                # check a clock (15 real pages, 1-4 days behind, reported daily). The gap
+                # here is now large enough to be real staleness, which is what this test
+                # was protecting: that a Chinese line gets scanned for raw drift at all.
                 """    longevity:
       grade: A
       raw:
-        repo_age_days: 2568
+        repo_age_days: 3600
 """,
             )
 
             result = quality_scan.scan(root)
 
-            self.assertTrue(any(f.category == "health-prose-raw-drift" and "repo_age_days=2568" in f.message for f in result.findings))
+            self.assertTrue(any(f.category == "health-prose-raw-drift" and "repo_age_days=3600" in f.message for f in result.findings))
 
     def test_matching_health_prose_raw_value_is_not_reported(self) -> None:
         with tempfile.TemporaryDirectory() as td:
