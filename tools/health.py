@@ -1185,13 +1185,101 @@ def _resolves_to(recorded: str, want_full: str) -> bool:
     return bool(resolved) and resolved.lower() == want_full.lower()
 
 
-def _lookup_by_name(repo_owner: str, repo_name: str) -> dict | None:
+def _github_repos_in(urls) -> list[str]:
+    """owner/name for every github.com repo URL among `urls`, first-seen order.
+
+    Registry metadata spells the same link many ways — `git+https://github.com/o/r.git`,
+    `github:o/r`, `https://github.com/o/r/issues` — and all of them name the repo in the
+    first two path segments.
+    """
+    out: list[str] = []
+    for u in urls:
+        if not isinstance(u, str):
+            continue
+        m = (re.search(r"github\.com[/:]([\w.-]+)/([\w.-]+)", u)
+             or re.fullmatch(r"\s*github:([\w.-]+)/([\w.-]+)\s*", u))
+        if not m:
+            continue
+        full = f"{m.group(1)}/{m.group(2).removesuffix('.git')}"
+        if full.lower() not in (x.lower() for x in out):
+            out.append(full)
+    return out
+
+
+def _registry_links_back(reg: str, name: str, want_full: str,
+                         default_branch: str | None) -> str | None:
+    """Ask the registry itself whether package `name` was published from `want_full`.
+
+    Consulted only when ecosyste.ms's record for the package carries no repository_url.
+    Its mapping is a scrape of the registry, and the scrape misses links the registry
+    does hold: PyPI's `harnessrouter` lists the repo as `Source` while ecosyste.ms has
+    an empty field. Returns how the link was shown, or None.
+
+    A name match alone is never enough (see `_resolves_to`); the registry has to name
+    this repo. npm packages often omit `repository` entirely, so npm also accepts the
+    commit the tarball was built from (`gitHead`) when it lies on this repo's default
+    branch. Default branch, not "exists in the repo": GitHub serves any commit of the
+    fork network through the parent's API, so a stranger's fork that published under
+    the same name would otherwise pass.
+    """
+    q = urllib.parse.quote(name, safe="@")
+    urls: list = []
+    commit = None
+    if reg == "npmjs.org":
+        st, j = http_get_json(f"https://registry.npmjs.org/{q}/latest", retries=1)
+        if st != 200 or not isinstance(j, dict):
+            return None
+        repo_field = j.get("repository")
+        urls = [repo_field.get("url") if isinstance(repo_field, dict) else repo_field,
+                j.get("homepage"),
+                (j.get("bugs") or {}).get("url") if isinstance(j.get("bugs"), dict) else j.get("bugs")]
+        commit = j.get("gitHead")
+    elif reg == "pypi.org":
+        st, j = http_get_json(f"https://pypi.org/pypi/{q}/json", retries=1)
+        info = (j or {}).get("info") if isinstance(j, dict) else None
+        if st != 200 or not isinstance(info, dict):
+            return None
+        urls = [info.get("home_page"), info.get("download_url"),
+                *((info.get("project_urls") or {}).values())]
+    elif reg == "crates.io":
+        st, j = http_get_json(f"https://crates.io/api/v1/crates/{q}", retries=1)
+        crate = (j or {}).get("crate") if isinstance(j, dict) else None
+        if st != 200 or not isinstance(crate, dict):
+            return None
+        urls = [crate.get("repository"), crate.get("homepage")]
+    elif reg == "rubygems.org":
+        st, j = http_get_json(f"https://rubygems.org/api/v1/gems/{q}.json", retries=1)
+        if st != 200 or not isinstance(j, dict):
+            return None
+        urls = [j.get("source_code_uri"), j.get("homepage_uri"), j.get("bug_tracker_uri")]
+    elif reg == "packagist.org":
+        st, j = http_get_json(f"https://packagist.org/packages/{name}.json", retries=1)
+        pkg = (j or {}).get("package") if isinstance(j, dict) else None
+        if st != 200 or not isinstance(pkg, dict):
+            return None
+        urls = [pkg.get("repository")]
+
+    for full in _github_repos_in(urls):
+        if _resolves_to(full, want_full):
+            return f"{reg}_metadata"
+    if commit and default_branch and re.fullmatch(r"[0-9a-f]{40}", str(commit)):
+        res = gh_api(f"repos/{want_full}/compare/{commit}...{urllib.parse.quote(default_branch, safe='')}")
+        if isinstance(res.json, dict) and res.json.get("status") in ("ahead", "identical"):
+            return f"{reg}_git_head"
+    return None
+
+
+def _lookup_by_name(repo_owner: str, repo_name: str, *,
+                    default_branch: str | None = None) -> dict | None:
     """Secondary discovery: find the package by *name* when repo_url lookup came up empty.
 
     ecosyste.ms builds its repo -> package mapping by scraping manifests and the mapping
     has a long tail of gaps; a gap there is not evidence of an unpackaged project
     (`elasticsearch-dsl-py` ships as `elasticsearch-dsl` and is mapped to neither).
-    Every hit must survive `_resolves_to` before its numbers are used.
+    Every hit must be shown to come from this repo before its numbers are used: its
+    ecosyste.ms `repository_url` survives `_resolves_to`, or — when that field is empty —
+    the registry's own metadata links back (`_registry_links_back`). A field that names
+    a *different* repo is a rejection, not a gap, and is never overruled.
     """
     want_full = f"{repo_owner}/{repo_name}"
     best = None
@@ -1202,16 +1290,24 @@ def _lookup_by_name(repo_owner: str, repo_name: str) -> dict | None:
             status, data = http_get_json(url, retries=1)
             if status != 200 or not isinstance(data, dict):
                 continue
-            back = (data.get("repository_url") or "").rstrip("/")
-            m = re.search(r"github\.com/([^/]+/[^/\s]+?)(?:\.git)?$", back)
-            if not m or not _resolves_to(m.group(1), want_full):
-                continue
             if (data.get("downloads") or 0) < NOISE_FLOOR_DOWNLOADS \
                     and not (data.get("dependent_repos_count") or 0):
                 continue
+            back = (data.get("repository_url") or "").strip().rstrip("/")
+            if back:
+                m = re.search(r"github\.com/([^/]+/[^/\s]+?)(?:\.git)?$", back)
+                if not m or not _resolves_to(m.group(1), want_full):
+                    continue
+                link = "ecosystems_repository_url"
+            else:
+                link = _registry_links_back(reg, data.get("name") or name, want_full,
+                                            default_branch)
+                if link is None:
+                    continue
             cand = dict(data)
             cand["registry"] = reg
             cand["_via"] = "name_lookup"
+            cand["_package_link"] = link
             if best is None or (cand.get("downloads") or 0) > (best.get("downloads") or 0):
                 best = cand
         if best is not None:
@@ -1533,7 +1629,10 @@ def axis_adoption(repo: RepoData) -> Axis:
     # Secondary discovery before conceding: ecosyste.ms's repo -> package mapping has a
     # long tail of gaps, and a gap there is not evidence of an unpackaged project.
     if canonical is None:
-        canonical = _lookup_by_name(repo.owner, repo.name)
+        canonical = _lookup_by_name(
+            repo.owner, repo.name,
+            default_branch=(repo.core.json or {}).get("default_branch")
+            if isinstance(repo.core.json, dict) else None)
 
     if canonical is None:
         # Ships no registry package. Before concluding anything, ask the instruments that
@@ -1618,6 +1717,10 @@ def axis_adoption(repo: RepoData) -> Axis:
         "volume_tier": volume_tier if volume_tier else "?",
         "cross_check_divergence": divergence,
     }
+    # How a by-name hit was tied to this repo, so a reader can audit the one path where
+    # the package was not found through the repo itself.
+    if canonical.get("_package_link"):
+        raw["package_link"] = canonical["_package_link"]
 
     # Having a registry package does not mean the registry is where this project's users
     # get it. Binary-first tools keep a token package and ship through releases: jq reads
@@ -2274,7 +2377,7 @@ RAW_KEY_ORDER = {
     # grade must be listed: emission filters raw to these keys, so a measurement missing
     # here is written nowhere and the grade becomes unauditable — ollama/dbeaver/valkey
     # each landed "A" with nothing but `registry: null` on the page to show for it.
-    "adoption": ["registry", "canonical_package", "dependent_repos_count",
+    "adoption": ["registry", "canonical_package", "package_link", "dependent_repos_count",
                  "downloads_last_month", "graph_tier", "volume_tier",
                  "cross_check_divergence",
                  "homebrew_installs_90d", "homebrew_tier",

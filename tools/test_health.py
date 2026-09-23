@@ -498,6 +498,88 @@ class CanonicalSelectionTest(unittest.TestCase):
         self.assertEqual(health._name_variants("flask"), ["flask"])
 
 
+class RegistryLinkBackTest(unittest.TestCase):
+    """By-name hits whose ecosyste.ms record has no repository_url.
+
+    davila7/claude-code-templates ships npm `claude-code-templates` (10k/month), but the
+    ecosyste.ms record's repository_url is "" and the npm manifest has no `repository`,
+    so the page sat at `?` ambiguous. The registry still ties the package to the repo:
+    the tarball's `gitHead` is a commit on the repo's default branch.
+    """
+
+    ECO = "https://packages.ecosyste.ms/api/v1/registries/npmjs.org/packages/demo"
+
+    def _http(self, npm_latest: dict | None, eco_url: str = ""):
+        def fake(url, **kw):
+            if url == self.ECO:
+                return 200, {"name": "demo", "repository_url": eco_url,
+                             "downloads": 10_000, "dependent_repos_count": 0}
+            if url == "https://registry.npmjs.org/demo/latest" and npm_latest is not None:
+                return 200, npm_latest
+            return 404, None
+        return fake
+
+    def _compare(self, status: str | None):
+        calls = []
+
+        def fake(path, **kw):
+            calls.append(path)
+            if "/compare/" in path and status:
+                return health.GhResult(200, json.dumps({"status": status}))
+            return health.GhResult(404, "")
+        return fake, calls
+
+    def _lookup(self, http, gh):
+        with mock.patch("health.http_get_json", side_effect=http), \
+             mock.patch("health.gh_api", side_effect=gh):
+            return health._lookup_by_name("owner", "demo", default_branch="main")
+
+    def test_registry_repository_field_links_back(self) -> None:
+        gh, _ = self._compare(None)
+        hit = self._lookup(self._http({"repository": {"url": "git+https://github.com/owner/demo.git"}}), gh)
+        self.assertEqual(hit["_package_link"], "npmjs.org_metadata")
+
+    def test_git_head_on_default_branch_links_back(self) -> None:
+        gh, calls = self._compare("ahead")
+        hit = self._lookup(self._http({"gitHead": "a" * 40}), gh)
+        self.assertEqual(hit["_package_link"], "npmjs.org_git_head")
+        self.assertEqual(calls, [f"repos/owner/demo/compare/{'a' * 40}...main"])
+
+    def test_git_head_off_the_default_branch_is_rejected(self) -> None:
+        # GitHub serves a fork's commits through the parent's API; a stranger's fork that
+        # published under the same name shows up as a commit that `diverged`.
+        gh, _ = self._compare("diverged")
+        self.assertIsNone(self._lookup(self._http({"gitHead": "a" * 40}), gh))
+
+    def test_name_match_without_any_link_is_rejected(self) -> None:
+        gh, _ = self._compare(None)
+        self.assertIsNone(self._lookup(self._http({"name": "demo"}), gh))
+
+    def test_record_naming_another_repo_is_not_overruled_by_the_registry(self) -> None:
+        # A non-empty field that names someone else is a rejection, not a gap.
+        gh, _ = self._compare("ahead")
+        http = self._http({"repository": "github:owner/demo", "gitHead": "a" * 40},
+                          eco_url="https://github.com/stranger/demo")
+        self.assertIsNone(self._lookup(http, gh))
+
+    def test_link_method_reaches_the_page(self) -> None:
+        # Emission filters raw to RAW_KEY_ORDER; a key missing there is silently dropped.
+        hit = {"name": "demo", "registry": "npmjs.org", "downloads": 10_000,
+               "dependent_repos_count": 0, "_package_link": "npmjs.org_git_head"}
+        with no_install_signals(), mock.patch("health.http_get_json", return_value=(200, [])), \
+             mock.patch("health._lookup_by_name", return_value=hit):
+            axis = health.axis_adoption(FakeRepo("tool"))
+        self.assertEqual(axis.raw["package_link"], "npmjs.org_git_head")
+        self.assertIn("package_link", health.RAW_KEY_ORDER["adoption"])
+
+    def test_github_repos_in_reads_every_spelling(self) -> None:
+        self.assertEqual(
+            health._github_repos_in(["git+https://github.com/o/r.git", "github:o/r",
+                                     "https://github.com/o/r/issues", None,
+                                     "https://example.com", "https://github.com/x/y/tree/main/pkg"]),
+            ["o/r", "x/y"])
+
+
 class NotApplicableAxisTest(unittest.TestCase):
     def test_skill_pack_without_package_is_not_applicable_not_unknown(self) -> None:
         with mock.patch("health._adoption_from_install_signals", return_value=None), \
