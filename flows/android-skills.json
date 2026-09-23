@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Android skills give you",
+    "zh": "Android skills 给你的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install one skill into the current Android project",
+      "zh": "把一个 skill 装进当前工程",
+      "code": "android skills add r8-analyzer --project=.",
+      "component": {
+        "en": "Android CLI",
+        "zh": "Android CLI"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Drops SKILL.md plus references and scripts into the project's agent dirs",
+      "zh": "把 SKILL.md、references 和脚本放进 agent 目录",
+      "component": {
+        "en": "skill pack",
+        "zh": "skill 包"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent the matching job in plain language",
+      "zh": "用自然语言把这件活交给 agent"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the skill from its description and follows the vendor playbook",
+      "zh": "按描述匹配并加载 skill，按厂商剧本执行",
+      "component": {
+        "en": "SKILL.md",
+        "zh": "SKILL.md"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Review the report or proposed change; the agent does not gate it",
+      "zh": "审报告或拟议改动，agent 不把门"
+    }
+  ],
+  "value": {
+    "en": "Google's current Android playbook on the jobs where models still fail, without you pasting docs each time",
+    "zh": "在模型仍会失手的那些活上，拿到 Google 当前的 Android 剧本，而不必每次自己贴文档"
+  },
+  "sources": [
+    "https://github.com/android/skills README.md — `android skills add r8-analyzer --project=.`, `android skills add --all`, auto-activate example \"Make my app UI edge-to-edge.\"",
+    "https://developer.android.com/tools/agents/android-skills — install via Android CLI, activate by prompting the related task, Android Studio `@skill-name`",
+    "https://developer.android.com/tools/agents/android-cli#skills-add — `android skills add [--all] [--agent=<agent-name>] <skill-name>`",
+    "performance/r8-analyzer/SKILL.md — Path A/B/C analysis, \"No code changes: Research and suggest only\"",
+    ".claude-plugin/marketplace.json — 24 skill paths listed under plugin `android-skills`"
+  ]
+}

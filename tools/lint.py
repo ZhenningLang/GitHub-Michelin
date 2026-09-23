@@ -474,6 +474,14 @@ def check_adoption_evidence(path: Path, fmtext: str, block: str, rep: Report) ->
                             f"'measurably unadopted'; with none of {ADOPTION_COUNT_KEYS} "
                             "set to a number this is a failed measurement, which is '?'")
 
+    if grade == "N/A":
+        counts = {k: raw[k] for k in ADOPTION_COUNT_KEYS
+                  if k in raw and re.fullmatch(r"\d+", raw[k])}
+        if counts:
+            rep.error(path, f"health: adoption 'N/A' contradicts its own evidence {counts} — "
+                            "N/A claims no install event exists anywhere to count, so a page "
+                            "carrying a real count must be graded, not excused")
+
     pkg = raw.get("canonical_package", "null")
     if pkg and pkg != "null":
         repo_m = re.search(r"(?m)^repo:\s*(\S+)\s*$", fmtext)

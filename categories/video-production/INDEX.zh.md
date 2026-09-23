@@ -14,6 +14,7 @@
 | **Remotion** | 当 React 优先的团队需要久经验证的程序化视频——composition 即 React 组件、带成熟 Lambda 云渲染——且接受 source-available 许可证（3 人以下公司免费）时用它。 | A（4/6） | [→](remotion.zh.md) |
 | **MoneyPrinterTurbo** | 当你需要一台可自托管的 MIT 家电（WebUI + API），把主题变成近零边际成本的口播库存素材短视频时用它——不做克隆，不需要 agent。 | B（6/6） | [→](moneyprinter-turbo.zh.md) |
 | **video-shotcraft** | 当 coding agent 应该把你的产品或网页做成电影感宣传片——150+ 张镜头配方卡、一支已验收的 36.2 秒 Remotion 模板、真实页面截图、2.5D 运镜与卡点音效——并在本机渲染时用它；仅约 2 个月历史、无 tagged release，且面向 Remotion 那个带资格门槛的许可。 | B（5/6） | [→](video-shotcraft.zh.md) |
+| **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | B（6/6） | [→](open-creator.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [Remotion](remotion.zh.md) | ✅ | A（4/6） | React 组件式创作加成熟的 Lambda 渲染，但采用 source-available 许可、超公司规模阈值需付费；OpenMontage 内嵌的正是这一类引擎。 |
 | [Hypit](hypit.zh.md) | ✅ | C（4/6） | agent 优先的爆款视频克隆，产出词锚定 SVML workflow、生成层可插拔；非 OSI 许可证，验证时仅 7 周龄，生成按付费模型 API 计费。 |
 | [MoneyPrinterTurbo](moneyprinter-turbo.zh.md) | ✅ | B（6/6） | 主题→口播库存素材短视频的 MIT WebUI/API 家电；边际成本近零、画面通用、单维护者 bus factor。 |
+| [OpenCreator](open-creator.zh.md) | ✅ | B（6/6） | 本机 Codex 原生创作者桌面，已交付长处是把现成视频做翻译／配音／竖屏；生成和写作共用同一项目。必须 Codex 登录，无 Linux 桌面，嵌套 GPL 的 KrillinAI 核心。 |
 | Runway / Pika / HeyGen | 未收录 | — | 闭源 SaaS——一键生成更快，但无管线定制、无 agent 审批门、无开源扩展性。 |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | 专业非线性剪辑软件——面向人工剪辑师，非 agent 驱动；需要帧级手动控制与传统后期团队时选它。 |
 

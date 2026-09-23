@@ -109,6 +109,7 @@ https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/sw
 https://github.com/SakanaAI/AI-Scientist,ai-scientist,ml-research,categories/ml-research/ai-scientist.md
 https://github.com/SamuelSchmidgall/AgentLaboratory,agent-laboratory,ml-research,categories/ml-research/agent-laboratory.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
+https://github.com/SenteLabsAI/OpenExecutive,open-executive,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/open-executive.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
 https://github.com/Setasign/FPDI,fpdi,pdf-tools,categories/pdf-tools/fpdi.md
 https://github.com/Significant-Gravitas/AutoGPT,autogpt,workflow-builders,categories/agent-frameworks/workflow-builders/autogpt.md
@@ -156,6 +157,7 @@ https://github.com/alibaba/page-agent,page-agent,agent-browser-tools,categories/
 https://github.com/alielsokary/CaskHub,caskhub,package-manager-gui,categories/dev-utilities/package-manager-gui/caskhub.md
 https://github.com/allenai/olmocr,olmocr,document-parsing,categories/document-parsing/olmocr.md
 https://github.com/alphaXiv/OpenResearch,openresearch,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md
+https://github.com/android/skills,android-skills,vendor-collections,categories/agent-skills/vendor-collections/android-skills.md
 https://github.com/angular/angular,angular,frameworks,categories/web-ui/frameworks/angular.md
 https://github.com/anomalyco/opencode,opencode,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/opencode.md
 https://github.com/ant-design/ant-design,ant-design,component-libraries,categories/web-ui/component-libraries/ant-design.md
@@ -361,6 +363,7 @@ https://github.com/khoj-ai/khoj,khoj,knowledge-base,categories/knowledge-base/kh
 https://github.com/kkroening/ffmpeg-python,ffmpeg-python,video-audio,categories/media-processing/video-audio/ffmpeg-python.md
 https://github.com/knative/serving,knative-serving,serverless,categories/serverless/knative-serving.md
 https://github.com/kohlschutter/boilerpipe,boilerpipe,article-extraction,categories/web-scraping/article-extraction/boilerpipe.md
+https://github.com/krillinai/OpenCreator,open-creator,video-production,categories/video-production/open-creator.md
 https://github.com/kubernetes-sigs/descheduler,descheduler,ops-infra,categories/dev-utilities/ops-infra/descheduler.md
 https://github.com/langchain-ai/langchain,langchain,workflow-builders,categories/agent-frameworks/workflow-builders/langchain.md
 https://github.com/langchain-ai/langgraph,langgraph,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/langgraph.md

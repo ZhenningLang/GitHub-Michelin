@@ -336,6 +336,23 @@ class AdoptionEvidenceGateTest(unittest.TestCase):
         block = adoption_block("?", ["registry: null", "canonical_package: null"])
         self.assertEqual(self.errors_for(block, "carries no measured count"), [])
 
+    def test_na_contradicted_by_its_own_count_is_an_error(self) -> None:
+        """N/A says no install event exists; a real count on the same page refutes that.
+
+        Not hypothetical: `android/skills` is a skill-pack — the type N/A was introduced
+        for — yet it ships release assets with 166,633 downloads, so it is graded, not
+        excused. The scorer already tries install channels before conceding N/A; this
+        gate keeps that ordering from silently regressing.
+        """
+        block = adoption_block("N/A", ["canonical_package: null",
+                                       "release_downloads: 166633"])
+        self.assertTrue(self.errors_for(block, "contradicts its own evidence"))
+
+    def test_na_with_no_counts_is_allowed(self) -> None:
+        block = adoption_block("N/A", ["canonical_package: null",
+                                       "release_downloads: null"])
+        self.assertEqual(self.errors_for(block, "contradicts its own evidence"), [])
+
     def test_canonical_package_unrelated_to_the_repo_is_an_error(self) -> None:
         """jaeger once reported `digitalbanking` (NuGet, 1034 downloads) as its package."""
         block = adoption_block("D", ["canonical_package: digitalbanking",

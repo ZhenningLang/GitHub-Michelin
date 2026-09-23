@@ -14,6 +14,7 @@
 | **Anthropic Knowledge Work Plugins** | Use it when you want Anthropic's official open-source plugins aimed at knowledge work (docs, comms, research) for Claude — very young. | B (4/5) | [→](knowledge-work-plugins.md) |
 | **Remotion Agent Skills** | Remotion's official 12-skill bundle that teaches a coding agent (Claude Code, Codex, Cursor, Kimi Code) to write correct Remotion React video code — installable with `npx skills add remotion-dev/skills`, version-locked to the framework. | C (4/5) | [→](remotion-skills.md) |
 | **HumanLayer Skills** | HumanLayer's official six-skill bundle — visual explanation (`show-me`), PR outlining (`visual-pr`), CLAUDE.md rewriting, React prop narrowing, and two skills that turn a repeatable agent job into a scheduled GitHub Actions loop carrying an agent-memory file and an `/iterate` comment channel. | B (4/5) | [→](humanlayer-skills.md) |
+| **Android Skills** | Google's official 24-skill pack for the Android jobs models still fail (edge-to-edge, R8, Navigation 3, Play policy) — installed with the Android CLI, not `npx skills add`. | B (5/6) | [→](android-skills.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.md) | ✅ | B (4/5) | Use it when you want Anthropic's official open-source plugins aimed at knowledge work (docs, comms, research) for Claude — very young. |
 | [Remotion Agent Skills](remotion-skills.md) | ✅ | C (4/5) | Vendor-canonical, version-locked guidance for agents authoring React video; useless if you are not on a skill-loading harness or not using Remotion, and its content license is undeclared. |
 | [HumanLayer Skills](humanlayer-skills.md) | ✅ | B (4/5) | A vendor's six opinionated dev-process skills, two of which ship runnable CI-loop machinery; Claude-only distribution, no tagged release to pin, and the loop templates default to broad agent permissions. |
+| [Android Skills](android-skills.md) | ✅ | B (5/6) | Google's official Android playbooks for the jobs models still fail; Android-only, CLI-installed, contributions closed. |
 
 ## What belongs here
 
