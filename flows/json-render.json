@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "json-render does",
+    "zh": "json-render 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install core plus a renderer",
+      "zh": "安装核心和一个渲染器",
+      "code": "npm install @json-render/core @json-render/react"
+    },
+    {
+      "lane": "you",
+      "en": "Declare allowed components and their props",
+      "zh": "声明允许的组件及其属性",
+      "code": "defineCatalog"
+    },
+    {
+      "lane": "them",
+      "en": "Turns the catalog into a system prompt and a JSON Schema",
+      "zh": "把组件目录编成系统提示和 JSON Schema",
+      "code": "catalog.prompt() · catalog.jsonSchema({ strict: true })",
+      "component": {
+        "en": "catalog",
+        "zh": "catalog"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Send that to your model and stream the JSON",
+      "zh": "把提示交给模型并流式接收 JSON"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles the stream into a spec tree",
+      "zh": "把流编译成 spec 树",
+      "code": "createSpecStreamCompiler",
+      "component": {
+        "en": "SpecStream",
+        "zh": "SpecStream"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Render it with your registered components",
+      "zh": "用你登记的组件画出来",
+      "code": "<Renderer spec={spec} registry={registry} />"
+    }
+  ],
+  "value": {
+    "en": "The model can only assemble UIs from your catalog; unknown types never become DOM",
+    "zh": "模型只能用你目录里的零件拼界面，未知类型进不了 DOM"
+  },
+  "sources": [
+    "README.md install: `npm install @json-render/core @json-render/react`",
+    "README.md Define Your Catalog: `defineCatalog`",
+    "README.md AI Prompt Generation: `catalog.prompt()`",
+    "packages/core/src/schema.ts Catalog.jsonSchema / Catalog.validate",
+    "README.md Streaming (SpecStream): `createSpecStreamCompiler`",
+    "README.md React (UI): `defineRegistry`, `<Renderer spec={spec} registry={registry} />`"
+  ]
+}

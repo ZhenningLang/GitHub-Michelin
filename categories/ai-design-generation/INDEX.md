@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **json-render** | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. | B (6/6) | [→](json-render.md) |
 | **HTML Anything** | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. | B (5/6) | [→](html-anything.md) |
 | **Open Design** | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. | B (6/6) | [→](open-design.md) |
 | **Impeccable** | Use it when your AI agent keeps shipping same-looking frontend slop and you want deterministic detection plus design critique. | B (6/6) | [→](impeccable.md) |
@@ -16,6 +17,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [json-render](json-render.md) | ✅ | B (6/6) | Use it when a model must assemble in-app UI from your existing components, not invent JSX or a new design system. |
 | [HTML Anything](html-anything.md) | ✅ | B (5/6) | Use it when you already run a logged-in coding-agent CLI and want local-first, key-free Markdown-to-shippable-HTML generation with one-click WeChat/X/Zhihu export. |
 | [Open Design](open-design.md) | ✅ | B (6/6) | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. |
 | [Impeccable](impeccable.md) | ✅ | B (6/6) | Use it when your AI agent keeps shipping same-looking frontend slop and you want deterministic detection plus design critique. |

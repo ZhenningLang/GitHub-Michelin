@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **json-render** | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 | B（6/6） | [→](json-render.zh.md) |
 | **HTML Anything** | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 | B（5/6） | [→](html-anything.zh.md) |
 | **Open Design** | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 | B（6/6） | [→](open-design.zh.md) |
 | **Impeccable** | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 | B（6/6） | [→](impeccable.zh.md) |
@@ -16,6 +17,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [json-render](json-render.zh.md) | ✅ | B（6/6） | 当模型必须用你已有的组件在应用里拼界面、而不是发明 JSX 或新设计系统时用它。 |
 | [HTML Anything](html-anything.zh.md) | ✅ | B（5/6） | 当你本机已登录某个 coding-agent CLI、想要零 API key、local-first 地把 Markdown 变成可交付 HTML 并一键导出微信/X/知乎时用它。 |
 | [Open Design](open-design.zh.md) | ✅ | B（6/6） | 想要一个 local-first、BYOK 的桌面 studio，让编码 agent 产出 HTML 原型、deck、图像和 HTML→MP4 动效时用它。 |
 | [Impeccable](impeccable.zh.md) | ✅ | B（6/6） | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 |
