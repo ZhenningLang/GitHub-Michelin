@@ -92,6 +92,14 @@ You are shipping an agent inside a product or an internal platform: it calls too
 
 Reach for it when that is the shape and your organization is anywhere near the Microsoft ecosystem. `Agent` is multi-turn and loops over tool calls by default; conversation state lives in an explicit `AgentSession` you create and pass; sequential / concurrent / handoff / group-chat patterns are drawn as a typed graph with `WorkflowBuilder`, with checkpointing and pause-for-a-human gates built in; OpenTelemetry tracing ships in the box. Choose it over LangGraph when .NET parity, an AutoGen/Semantic Kernel migration, or Foundry hosting decide the pick; over OpenAI Agents SDK when you need multi-provider breadth and explicit workflow graphs rather than a light single-vendor loop.
 
+## Q&A
+
+**Is this just LangGraph for .NET?**
+No — both ship Python, so "different language" is the wrong axis. The real split is agent-first versus graph-first, plus which ecosystem you bind to: Foundry/Azure here, LangChain there.
+
+**So it's only a different on-ramp?**
+The on-ramp difference is real: here a minimal agent runs first and the graph is added later; in LangGraph the compiled graph is the program from step one. But for a single-agent app the deciding half is the ecosystem, not the on-ramp. [推断]
+
 ## How it works
 
 The framework keeps a clean split between a model client and an agent: a client (OpenAI, Azure OpenAI, Foundry, Anthropic…) only knows how to call a model, while an `Agent` wraps that client with instructions and tools and owns the loop — call the model, execute the tool calls it returns, feed the results back, repeat until it can answer. You write plain Python functions or C# methods and pass them in; the tool-calling schema is generated for you. Conversation state lives in an `AgentSession` you create explicitly, so the agent object itself stays stateless. When one agent is not enough you do not learn a new abstraction: executors (agents, plain functions, sub-workflows) become nodes in a typed data-flow graph, edges route typed messages, and checkpointing — saving the workflow's state so it can resume after a restart — plus pause-for-human-input rides on the same model. What stays yours: the tools, the instructions, the provider account. What it takes over: the tool-calling loop, message normalization across providers, the streaming shape, and the orchestration machinery.
@@ -159,16 +167,12 @@ The framework keeps a clean split between a model client and an agent: a client 
 - **Adoption & ecosystem:** 13.7k stars / 2.4k forks (2026-09); ~40 Python packages plus the NuGet set; Discord, weekly office hours, MS Learn docs, and official migration guides. The star count partly reflects Microsoft's distribution power [推断].
 - **Risk flags:** MIT license, no relicense history. The real risks are cadence and churn: weekly releases, many beta/alpha integration packages, an already-renamed package (`azure-ai` → `foundry`), and the Go SDK living in a separate preview repo.
 
-## Callouts
-
-- The most honest line in the docs is "if you can write a function to handle the task, do that instead of using an AI agent." A framework whose own overview tells you when not to use it is rarer than it should be.
-- Agent-first vs graph-first is a real model difference, not a tutorial style: here the default unit is a self-looping `Agent` and the graph is opt-in; in LangGraph the compiled graph is the program. Porting between them later means restructuring, not translating. [推断]
-
 ## Caveats (unverified)
 
 - [未验证] Whether distributed workflow execution has shipped since the AutoGen migration guide (updated 2026-08-25) called it planned.
 - [未验证] .NET/Python feature parity details — only the Python `PACKAGE_STATUS.md` was read; .NET staging lives under `dotnet/`.
 - [未验证] Real production adoption beyond stars; 13.7k stars in ~17 months is an attention signal that Microsoft's marketing amplifies.
 - [推断] Survival is tied to Microsoft's Foundry product bet; the AutoGen predecessor pattern shows how fast a Microsoft agent framework can go quiet.
+- [推断] The agent-first versus graph-first reading, and "the ecosystem decides for a single-agent app", are this page's judgment from each project's docs and samples — not a head-to-head evaluation.
 - [未验证] Whether the weekly cadence stays non-breaking in practice for `released` packages — the Python Griffe compatibility check is advisory (non-blocking) per CONTRIBUTING.md.
 - [未验证] DevUI, hosting-*, and declarative-agent maturity beyond their `beta`/`alpha` status labels in PACKAGE_STATUS.md.
