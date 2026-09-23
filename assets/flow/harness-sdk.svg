@@ -78,8 +78,8 @@
 <circle class="accY" cx="62" cy="491" r="10"/>
 <text class="num" x="62" y="495" text-anchor="middle">5</text>
 <text class="t" x="82" y="496">Hand it the task</text>
-<text class="c" x="82" y="520">agent(&quot;Find the slowest test in this</text>
-<text class="c" x="82" y="539">repo&quot;)</text>
+<text class="c" x="82" y="520">agent(&quot;Find the slowest test in this repo</text>
+<text class="c" x="82" y="539">and explain why it&#x27;s slow&quot;)</text>
 <rect class="cardT" x="472" y="553" width="368" height="97" rx="8"/>
 <rect class="accT" x="472" y="553" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="577" r="10"/>

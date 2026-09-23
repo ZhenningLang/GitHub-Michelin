@@ -89,7 +89,7 @@ Reach for Pi when you would rather build that behaviour out of files you own. Un
 
 ## Q&A
 
-**Is Pi the same kind of thing as an agent SDK like Strands Agents?**
+**Is Pi the same kind of thing as an agent SDK like [Harness SDK](../../agent-runtimes/agent-sdks/harness-sdk.md)?**
 Not at the same layer. Pi's product is the terminal agent; what shares a cell with an agent SDK is its library layer — `@earendil-works/pi-ai` for the provider abstraction and `@earendil-works/pi-agent-core` for the loop — which is published separately and usable on its own. If you are embedding an agent in your own service, judge it by those packages, not by the CLI.
 
 **What does "extensible, it can adapt itself" actually mean in practice?**
@@ -156,13 +156,13 @@ Pi is a TypeScript program that owns one agent loop and exposes it through sever
 
 ## Ops difficulty
 
-**Low, with a trust decision instead of an operational one.** Setup is one npm install (or one install script) and `/login`; there is no server, no database and no daemon. Sessions are JSONL files under the agent directory, and `/sessions`-style resumption reads them back rather than replaying history. The real work is deciding the boundary: because tools and extensions execute with your user's permissions, the meaningful configuration is where you run Pi, not what you set inside it. Day-2 tasks are small — `/settings` for preferences, `/reload` after hand-editing resources, and `PI_CODING_AGENT_DIR` when you want the agent state somewhere else. The documented containerization patterns are the parts to read before pointing it at anything you would not hand a shell script.
+**Low, with a trust decision instead of an operational one.** Setup is one npm install (or one install script) and `/login`; there is no server, no database and no daemon. Sessions are JSONL files under the agent directory, and resuming one reads that file back rather than replaying history. The real work is deciding the boundary: because tools and extensions execute with your user's permissions, the meaningful configuration is where you run Pi, not what you set inside it. Day-2 tasks are small — `/settings` for preferences, `/reload` after hand-editing resources, and `PI_CODING_AGENT_DIR` when you want the agent state somewhere else. The documented containerization patterns are the parts to read before pointing it at anything you would not hand a shell script.
 
 ## Health & viability
 
-- **Maintenance:** Grade A — `v0.87.1` published 2026-09-22, six releases in the six days before this page was written, the default branch pushed the same day, and 13 of 13 active weeks.
+- **Maintenance:** Grade A — `v0.87.1` published 2026-09-22, four releases between 2026-09-19 and 2026-09-22, the default branch pushed the same day, and 13 of 13 active weeks.
 - **Responsiveness:** Not scored (`?`, no window signal) — the index found no qualifying issue set to measure. The auto-close policy for new contributors is a plausible cause of that shape, not a measured one.
-- **Adoption:** Grade A — measured on 2026-09-23, the canonical package records 16,404,021 npm downloads in the last month, with the CLI package at 9,369,096, alongside ~108.8k stars and ~13.8k forks. Very high for its age, and consistent with the CLI being driven by scripts and other tools, not only by humans.
+- **Adoption:** Grade A — measured on 2026-09-23, `@earendil-works/pi-ai` records 16,404,021 npm downloads in the last month and the CLI package 9,369,096, alongside ~108.8k stars and ~13.8k forks. Very high for its age, and consistent with the CLI being driven by scripts and other tools, not only by humans.
 - **Longevity:** Grade C — 410 days old (created 2025-08-09). Still-active, not long-lived.
 - **Governance:** Grade C — 98 active maintainers over 12 months on paper, but top-1 share 60.0% and top-3 77.1%: commits concentrate in two well-known authors. An independent org (`earendil-works`), so there is no foundation behind the roadmap.
 - **Risk / License:** Grade A — MIT, no relicense in 36 months, and supply-chain discipline (exact pins, `min-release-age=2`, a shipped shrinkwrap, a scheduled `npm audit`) that is unusually strong for the age. The deliberate risks sit elsewhere: no built-in permission system, and new-contributor issues and pull requests auto-closed.

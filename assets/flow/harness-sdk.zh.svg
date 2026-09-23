@@ -75,8 +75,8 @@
 <circle class="accY" cx="62" cy="436" r="10"/>
 <text class="num" x="62" y="440" text-anchor="middle">5</text>
 <text class="t" x="82" y="441">把任务丢给它</text>
-<text class="c" x="82" y="465">agent(&quot;Find the slowest test in this</text>
-<text class="c" x="82" y="484">repo&quot;)</text>
+<text class="c" x="82" y="465">agent(&quot;Find the slowest test in this repo</text>
+<text class="c" x="82" y="484">and explain why it&#x27;s slow&quot;)</text>
 <rect class="cardT" x="472" y="498" width="368" height="97" rx="8"/>
 <rect class="accT" x="472" y="498" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="522" r="10"/>

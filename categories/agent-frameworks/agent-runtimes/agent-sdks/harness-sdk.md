@@ -78,7 +78,7 @@ health:
 
 # Harness SDK
 
-Your agent starts as forty lines of glue — call the model, parse the tool-call JSON, trim the history before the request errors out, remember what the user told you yesterday — and none of that is the product you set out to build. Strands hands you a working agent in one call and leaves every default overridable.
+Your agent starts as forty lines of glue — call the model, parse the tool-call JSON, trim the history before the request errors out, remember what the user told you yesterday — and none of that is the product you set out to build. The Strands harness hands you a working agent in one call and leaves every default overridable.
 
 ![Harness SDK — health radar](../../../../assets/health/harness-sdk.svg)
 
@@ -86,7 +86,7 @@ Your agent starts as forty lines of glue — call the model, parse the tool-call
 
 You are shipping a product that calls a model and uses tools, and you have already written the transport-dispatch-persist loop once. It went like this: the model asked for two tools in one turn, your parser handled one, and the run stopped mid-task; a few weeks later the transcript outgrew the window and every request started failing on context length. You want that layer to be someone else's maintained code, and you do not want to buy a hosted platform to get it.
 
-Reach for Strands Agents when you want the loop and the scaffolding around it pre-assembled rather than minimal. One `create_harness()` call gives you a tuned system prompt (explore before editing, confirm before anything irreversible, verify before declaring done), shell and file tools, a web fetch that answers with a summary instead of dumping a page into context, a sandbox where the model writes code that chains its own tools, a subagent for delegated work, sessions on disk, long-term memory, and automatic context summarization. Choose it over [smolagents](smolagents.md) when you want those pieces configured instead of assembled by you, over [Pydantic AI](pydantic-ai.md) when the same library has to exist in TypeScript as well as Python, and over [LangGraph](langgraph.md) when you would rather not maintain a graph at all. The price of the defaults is that control flow belongs to the model — there is no state machine to inspect, and a compliance reviewer gets a trace, not a diagram.
+Reach for the Strands harness when you want the loop and the scaffolding around it pre-assembled rather than minimal. One `create_harness()` call gives you a tuned system prompt (explore before editing, confirm before anything irreversible, verify before declaring done), shell and file tools, a web fetch that answers with a summary instead of dumping a page into context, a sandbox where the model writes code that chains its own tools, a subagent for delegated work, sessions on disk, long-term memory, and automatic context summarization. Choose it over [smolagents](smolagents.md) when you want those pieces configured instead of assembled by you, over [Pydantic AI](pydantic-ai.md) when the same library has to exist in TypeScript as well as Python, and over [LangGraph](langgraph.md) when you would rather not maintain a graph at all. The price of the defaults is that control flow belongs to the model — there is no state machine to inspect, and a compliance reviewer gets a trace, not a diagram.
 
 ## Q&A
 
@@ -102,8 +102,8 @@ Yes, and a few more. The lower SDK tree carries hooks, plugins, interventions, m
 **How is it different from Pydantic AI or LangGraph?**
 It bets on better defaults, not a better abstraction. The same-shaped projects are OpenAI Agents SDK and smolagents' CodeAgent; LangGraph is a different tool (an explicit graph you maintain), not a substitute for what `create_harness()` does.
 
-**Is it the same kind of thing as Pi?**
-Same kind, opposite center of gravity. Both projects call themselves a harness; Pi's center of gravity is a finished terminal coding agent, Strands' is a library you embed. Pi's reusable library layer is `pi-agent-core`, and that layer — not the CLI — is what shares a cell with Strands.
+**Is it the same kind of thing as [Pi](../../coding-agents/terminal-agents/pi.md)?**
+Same kind, opposite center of gravity. Both projects call themselves a harness; Pi's center of gravity is a finished terminal coding agent, the Strands harness is a library you embed. Pi's reusable library layer is `pi-agent-core`, and that layer — not the CLI — is what shares a cell with Strands.
 
 **Should I worry that it is young?**
 It has no Lindy advantage: about 16 months old, and the assembled harness layer is still 0.x while the SDK under it is at 1.57. Activity is high, not proven.
@@ -122,7 +122,7 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 2. **You**: Build the agent in one call — every argument is optional — `create_harness()`
 3. **Harness SDK**: Wires a tuned system prompt, shell and file tools, a code sandbox and a subagent — component: `strands_harness`
 4. **Harness SDK**: Keeps sessions, long-term memory and skills in one dot-directory it owns — `./.agent/` — component: `harness defaults`
-5. **You**: Hand it the task — `agent("Find the slowest test in this repo")`
+5. **You**: Hand it the task — `agent("Find the slowest test in this repo and explain why it's slow")`
 6. **Harness SDK**: Runs the loop, calls tools, summarizes old turns and reuses cached context — component: `agent loop`
 
 **Value**: You no longer hand-assemble the loop, its tools, memory and sessions: one call gives you a working agent, and every default stays overridable
@@ -132,9 +132,9 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 
 ## When NOT to use
 
-- **You need a hosted runtime with a control plane.** Strands runs inside your process: sessions go to disk, and concurrency and process lifetime are your problem. If what you want is someone else to operate the agent runtime, that is a hosted service (AWS Bedrock AgentCore and similar), not a project in this index, and it belongs in a different evaluation.
-- **You need deterministic, inspectable control flow across many steps.** The model decides what happens next, so there is no graph to diff or review. Use [LangGraph](langgraph.md) instead of Strands Agents, because an explicit state machine is the artifact you need when a reviewer must approve the path a request takes.
-- **Your compliance surface forbids the model's own queries leaving your environment.** On Bedrock Converse and similar, web search is off by default; turning it on routes through Exa, a third party that receives every search query the model writes. Use a provider with native search, or drop the tool, instead of Strands Agents' Bedrock path, because the egress is the model's, not yours to filter.
+- **You need a hosted runtime with a control plane.** The Strands harness runs inside your process: sessions go to disk, and concurrency and process lifetime are your problem. If what you want is someone else to operate the agent runtime, that is a hosted service (AWS Bedrock AgentCore and similar), not a project in this index, and it belongs in a different evaluation.
+- **You need deterministic, inspectable control flow across many steps.** The model decides what happens next, so there is no graph to diff or review. Use [LangGraph](langgraph.md) instead of the Strands harness, because an explicit state machine is the artifact you need when a reviewer must approve the path a request takes.
+- **Your compliance surface forbids the model's own queries leaving your environment.** On Bedrock Converse and similar, web search is off by default; turning it on routes through Exa, a third party that receives every search query the model writes. Use a provider with native search, or drop the tool, instead of shipping the Bedrock default, because the egress is the model's, not yours to filter.
 - **You need web search on Bedrock and will not touch IAM.** Bedrock Web Search needs the `bedrock-websearch` actions; without them the request succeeds and each search fails, which is the worst failure shape to debug. Use [OpenAI Agents SDK](openai-agents-sdk.md) or another provider whose search needs no extra IAM, or grant the actions first.
 - **You need API stability on the assembled layer.** The SDK is past 1.0, the harness is not, and its only published compatibility note enumerates what the SDK will *not* treat as breaking. Pick [Microsoft Agent Framework](agent-framework.md) or [LangGraph](langgraph.md) if a version guarantee on the whole stack is a purchase condition.
 - **You want a batteries-included terminal coding agent.** The `strands` CLI chats with a harness agent; it is not a coding agent with a keyboard-driven TUI. Use [Pi](../../coding-agents/terminal-agents/pi.md) or [OpenCode](../../coding-agents/terminal-agents/opencode.md) instead, because pair-programming in a terminal is their whole product.
@@ -143,11 +143,11 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [OpenAI Agents SDK](openai-agents-sdk.md) | ✅ | Choose OpenAI Agents SDK when you are happy wiring tools, handoffs and guardrails yourself and want the vendor's own runtime; choose Strands Agents when you want a benchmarked default agent you then override. | Both are MIT/Apache-permissive loops in Python with a TypeScript sibling; Strands ships the assembled layer, OpenAI's stays closer to primitives and to its own models. |
-| [smolagents](smolagents.md) | ✅ | Choose smolagents when the loop should stay small enough to read in one sitting, ideally with a code-writing agent at the centre; choose Strands Agents when the surrounding machinery (memory, sessions, context folding, approvals) is the part you do not want to write. | smolagents is the cheaper mental model and integrates through LiteLLM; Strands is heavier and Bedrock-flavoured by default. |
-| [Pydantic AI](pydantic-ai.md) | ✅ | Choose Pydantic AI when static typing and dependency injection are the constraints your codebase already lives by, in Python only; choose Strands Agents when you need the same library in TypeScript, or a pre-assembled agent rather than a typed loop. | Pydantic AI trades breadth for type safety and reached a 1.0 stability promise; Strands trades some type discipline for two first-party languages and batteries. |
-| [LangGraph](langgraph.md) | ✅ | Choose LangGraph when the workflow itself is the artifact you must control and version; choose Strands Agents when a model-driven loop with tool use is enough and a graph would be overhead. | LangGraph buys you durable, explicit orchestration and pays for it in concepts; Strands buys you speed to a working agent and pays in control. |
-| [Microsoft Agent Framework](agent-framework.md) | ✅ | Choose Microsoft Agent Framework when you are on .NET or already inside Microsoft's agent stack and want typed graph workflows; choose Strands Agents when you are Python/TypeScript-first and want the model to own the loop. | Microsoft's is the vendor-lineage successor to AutoGen plus Semantic Kernel; Strands is single-vendor too, but AWS-shaped and thinner above the loop. |
+| [OpenAI Agents SDK](openai-agents-sdk.md) | ✅ | Choose OpenAI Agents SDK when you are happy wiring tools, handoffs and guardrails yourself and want the vendor's own runtime; choose Harness SDK when you want a benchmarked default agent you then override. | Both are MIT/Apache-permissive loops in Python with a TypeScript sibling; Strands ships the assembled layer, OpenAI's stays closer to primitives and to its own models. |
+| [smolagents](smolagents.md) | ✅ | Choose smolagents when the loop should stay small enough to read in one sitting, ideally with a code-writing agent at the centre; choose Harness SDK when the surrounding machinery (memory, sessions, context folding, approvals) is the part you do not want to write. | smolagents is the cheaper mental model and integrates through LiteLLM; Strands is heavier and Bedrock-flavoured by default. |
+| [Pydantic AI](pydantic-ai.md) | ✅ | Choose Pydantic AI when static typing and dependency injection are the constraints your codebase already lives by, in Python only; choose Harness SDK when you need the same library in TypeScript, or a pre-assembled agent rather than a typed loop. | Pydantic AI trades breadth for type safety and reached a 1.0 stability promise; Strands trades some type discipline for two first-party languages and batteries. |
+| [LangGraph](langgraph.md) | ✅ | Choose LangGraph when the workflow itself is the artifact you must control and version; choose Harness SDK when a model-driven loop with tool use is enough and a graph would be overhead. | LangGraph buys you durable, explicit orchestration and pays for it in concepts; Strands buys you speed to a working agent and pays in control. |
+| [Microsoft Agent Framework](agent-framework.md) | ✅ | Choose Microsoft Agent Framework when you are on .NET or already inside Microsoft's agent stack and want typed graph workflows; choose Harness SDK when you are Python/TypeScript-first and want the model to own the loop. | Microsoft's is the vendor-lineage successor to AutoGen plus Semantic Kernel; Strands is single-vendor too, but AWS-shaped and thinner above the loop. |
 
 ## Tech stack
 
@@ -172,7 +172,7 @@ It has no Lindy advantage: about 16 months old, and the assembled harness layer 
 
 - **Maintenance:** Grade A — pushed within the last day, 13 of 13 active weeks, releases landing daily (`python/v1.57.0`, `typescript/v1.19.0`, `harness-python/v0.1.2` on 2026-09-22).
 - **Responsiveness:** Grade A — median time to first response of 9.9h across 22 qualifying issues, which reads as a maintainer team working the queue rather than triaging it.
-- **Adoption:** Grade B — measured on 2026-09-23, the canonical package records 1,686,373 npm downloads in the last month while the new harness packages were at 128 (npm) and 897 (PyPI): ~7.6k stars and ~1.2k forks after 16 months, but the assembled layer has almost no users yet.
+- **Adoption:** Grade B — measured on 2026-09-23, `@strands-agents/sdk` records 1,686,373 npm downloads in the last month while the new harness packages were at 128 (npm) and 897 (PyPI): ~7.6k stars and ~1.2k forks after 16 months, but the assembled layer has almost no users yet.
 - **Longevity:** Grade C — 497 days old as of 2026-09-23, and all of it recent. No Lindy advantage: a fast release cadence, not a durable track record.
 - **Governance:** Grade A — AWS-owned (`authors = AWS <opensource@amazon.com>`, a Strands team at Amazon Web Services) and genuinely distributed: 92 active maintainers over 12 months, top-1 contributor share 12.8% and top-3 29.3%, which is a team rather than a bus factor of one.
 - **Risk / License:** Grade A — Apache-2.0, no relicense in 36 months. The risk here is churn, not the license: the repository was renamed from `strands-agents/sdk-python` to `harness-sdk`, sibling repos (`sdk-typescript`, `docs`, `mcp-server`, `agent-builder`) are archived as everything consolidates into the monorepo, the open queue sits at 518 issues and 286 pull requests (2026-09-23), and the harness layer carries no stability promise yet.
