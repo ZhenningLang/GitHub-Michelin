@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Humanizer-zh does",
+    "zh": "Humanizer-zh 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your harness",
+      "zh": "把技能装进你的 harness",
+      "code": "npx skills add https://github.com/op7418/Humanizer-zh.git"
+    },
+    {
+      "lane": "you",
+      "en": "Paste a draft or point at a file, with register if you have one",
+      "zh": "贴一段草稿或指向一个文件，有作者样本就一并给",
+      "code": "/humanizer-zh"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the 31-checkpoint editor brief and reads the whole input first",
+      "zh": "加载 31 个检查点的编辑说明，动手前先通读全文",
+      "component": { "en": "SKILL.md", "zh": "SKILL.md" }
+    },
+    {
+      "lane": "them",
+      "en": "Rewrites template Chinese; facts, hedges, and author stance stay",
+      "zh": "改掉套话中文；事实、不确定措辞和作者立场原样留下"
+    },
+    {
+      "lane": "you",
+      "en": "Read the final draft; ask for suggestions-only if you did not want a rewrite",
+      "zh": "读最终稿；若只要建议、不要改文件，事先说清楚"
+    }
+  ],
+  "value": {
+    "en": "The de-slopped Chinese still means what you wrote; empty claims and invented metrics do not appear",
+    "zh": "去掉套话的中文仍是你写的那个意思；空话和凭空补出的数据不会出现"
+  },
+  "sources": [
+    "https://github.com/op7418/Humanizer-zh README.md — install `npx skills add https://github.com/op7418/Humanizer-zh.git`, `/humanizer-zh`, paste-text and file-edit usage, default final-draft output",
+    "https://github.com/op7418/Humanizer-zh CHANGELOG.md — 2026-09-23: keep facts/hedges/stance; 31 checkpoints; no mechanical deletion of real three-item lists or dashes",
+    "https://github.com/op7418/Humanizer-zh tests/README.md — 18 short cases plus `python3 tests/check_structure.py` for protected Markdown parts"
+  ]
+}

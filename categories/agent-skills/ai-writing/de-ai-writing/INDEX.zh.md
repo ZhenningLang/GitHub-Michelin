@@ -7,7 +7,7 @@
 
 | 条目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Humanizer-zh** | 一个简体中文 Claude Code 单技能，按约 24 条清单改写掉文本里的 AI 痕迹，是 blader/humanizer 的本地化版。 | C（4/5） | [→](humanizer-zh.zh.md) |
+| **Humanizer-zh** | 给已有中文稿去套话和模板腔，同时保住事实、确定程度和作者立场；31 个检查点，不是检测器。 | C（4/5） | [→](humanizer-zh.zh.md) |
 | **De-AI-Prompt-Enhancer-Writer-Booster-SKILL** | 中文去 AI 味套件，含 `de-AI-writing` 和 `good-writing` 两个 SKILL 文件夹；适合作者风格复现，但许可证不清。 | C（4/5） | [→](de-ai-prompt-enhancer-writer-booster-skill.zh.md) |
 | **shuorenhua** | 中文优先的去 AI 味改写 skill，带 protected spans、场景规则、多 harness 文档和 MIT 许可证。 | C（5/6） | [→](shuorenhua.zh.md) |
 | **ai-flavor-remover** | 中文单文件 prompt 片段；作者标注只在 Gemini 2.5 Pro 上测试过，不是可安装 skill-pack。 | D（4/6） | [→](ai-flavor-remover.zh.md) |
@@ -21,7 +21,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Humanizer-zh](humanizer-zh.zh.md) | ✅ | C（4/5） | 中文优先的去 AI 味 skill；作为当前索引里的基线使用。 |
+| [Humanizer-zh](humanizer-zh.zh.md) | ✅ | C（4/5） | 中文编辑说明：去掉套话、保住事实和不确定措辞；偏 Claude，不是检测器。 |
 | [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | B（4/5） | 更宽的中文内容 / 发布套件；Humanizer-zh 更窄，聚焦去 AI 味改写。 |
 | 自写 voice guide | 未收录 | — | 更适合一个私有作者或品牌 voice；但不如公共 skill 可复用。 |
 | [De-AI-Prompt-Enhancer-Writer-Booster-SKILL](de-ai-prompt-enhancer-writer-booster-skill.zh.md) | ✅ | C（4/5） | 更重的中文 writer-booster 流程；适合作者风格复现，许可证清晰度和中性表达是风险。 |
