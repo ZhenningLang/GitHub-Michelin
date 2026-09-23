@@ -64,9 +64,14 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      APIs, and record the reason in the tradeoff cell. A repository you deliberately skip stays
      `未收录` with the reason in the tradeoff cell and in the commit/PR summary. The obligation
      covers the 3–5 named direct substitutes, not transitive alternatives-of-alternatives.
-   - **Health & viability** — required for all types; dated, labeled judgment per §7.
-   - **Truth labeling + Caveats ledger** (§3) — inline labels only on the load-bearing few;
-     everything unverified gets a ledger bullet.
+    - **Health & viability** — required for all types; dated, labeled judgment per §7.
+    - **Callouts / 指指点点** — optional leftover bin (schema §2). After the template sections,
+      harvest what the reading conversation figured out that those sections have no slot for:
+      portable developer judgments, marketing stripped off, disguise named. Chat logs do not
+      belong. If nothing leftover, omit the heading — do not pad. Uncertain claims still get a
+      Caveats bullet. Golden example: `prime-agent`.
+    - **Truth labeling + Caveats ledger** (§3) — inline labels only on the load-bearing few;
+      everything unverified gets a ledger bullet.
    - **Chinese punctuation** in `.zh.md` (§6) — fullwidth next to 汉字; lint ERRORs on violations.
    Model the negative-space writing on the golden examples listed in §2.
 

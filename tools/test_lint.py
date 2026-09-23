@@ -206,6 +206,55 @@ class LintContractTest(unittest.TestCase):
 
             self.assertTrue(any("upstream: missing required frontmatter block" in e for e in rep.errors))
 
+    def _write_pair(self, root: Path, en: str, zh: str) -> Path:
+        page = root / "categories" / "demo" / "demo.md"
+        page.parent.mkdir(parents=True)
+        page.write_text(en, encoding="utf-8")
+        page.with_name("demo.zh.md").write_text(zh, encoding="utf-8")
+        (root / "assets" / "health").mkdir(parents=True)
+        (root / "assets" / "health" / "demo.svg").write_text("<svg />", encoding="utf-8")
+        (root / "assets" / "health" / "demo.zh.svg").write_text("<svg />", encoding="utf-8")
+        return page
+
+    def test_empty_callouts_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            en = page_text().replace(
+                "## Caveats (unverified)",
+                "## Callouts\n\n## Caveats (unverified)",
+            )
+            zh = page_text(zh=True).replace(
+                "## 存疑（未验证）",
+                "## 指指点点\n\n## 存疑（未验证）",
+            )
+            page = self._write_pair(root, en, zh)
+            rep = lint.Report()
+            lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
+            self.assertTrue(any("Callouts / 指指点点 is empty" in e for e in rep.errors))
+
+    def test_one_sided_callouts_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            en = page_text().replace(
+                "## Caveats (unverified)",
+                "## Callouts\n\nA leftover judgment.\n\n## Caveats (unverified)",
+            )
+            zh = page_text(zh=True)
+            page = self._write_pair(root, en, zh)
+            rep = lint.Report()
+            lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
+            self.assertTrue(any("presence must match the bilingual sibling" in e for e in rep.errors))
+
+    def test_callouts_after_caveats_is_an_error(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            en = page_text() + "\n## Callouts\n\nA leftover judgment.\n"
+            zh = page_text(zh=True) + "\n## 指指点点\n\n一条剩下的判断。\n"
+            page = self._write_pair(root, en, zh)
+            rep = lint.Report()
+            lint.check_page(page, page.parent, root, set(), rep, lint.dt.date(2026, 6, 29))
+            self.assertTrue(any("must sit before Caveats" in e for e in rep.errors))
+
     def test_frontmatter_parity_detects_nested_drift(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

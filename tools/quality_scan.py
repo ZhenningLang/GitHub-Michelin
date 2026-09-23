@@ -68,6 +68,7 @@ DUP_SECTIONS = {
     # shutdown). Thresholds sit above each language's observed ceiling.
     "何时使用": 0.55, "何时不用": 0.55,
     "Dependencies": 0.65, "Ops difficulty": 0.65, "依赖": 0.65, "运维难度": 0.65,
+    "Callouts": 0.40, "指指点点": 0.55,
 }
 # Phrase blacklists only ever catch boilerplate someone already wrote. What makes boilerplate
 # boilerplate is not its wording but that it repeats: prose written without reading THIS project

@@ -90,7 +90,10 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
    scenario, the choice, and the decisive tradeoff. Do not keep or introduce template verdicts such
    as `Use this page for its stated niche.` / `当前页用于它的主场景。` or vague claims such as `best`,
    `good choice`, or `open-source alternative`.
-   **How it works**: if the page has `flows/<stem>.json`, re-check every `code` value against the
+    **Callouts / 指指点点**: if the re-read produced leftover human judgment the template still
+    cannot hold, write or refresh the section; if the leftover is gone or now fits a required
+    section, delete the heading rather than leave an empty or duplicative bin.
+    **How it works**: if the page has `flows/<stem>.json`, re-check every `code` value against the
    refetched README/source (renamed commands, new install path, removed APIs) and fix the spec +
    mechanism paragraph; then `python3 tools/flow_card.py <page>`. If the page lacks the section,
    add it per `tools/schema.md` while you have the sources open.

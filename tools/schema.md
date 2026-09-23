@@ -108,6 +108,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | `## Dependencies` | `## 依赖` | non-`skill-pack` | runtime/infra a user must run (db, services, hardware) |
 | `## Ops difficulty` | `## 运维难度` | non-`skill-pack` | low / medium / high + why; deploy + maintain burden |
 | `## Health & viability` | `## 健康度与可持续性` | **all types** | dated, labeled judgment of whether it's worth betting on — maintenance, governance/bus-factor, backing, age/**Lindy**, adoption, risk flags (see §7) |
+| `## Callouts` | `## 指指点点` | **optional, all types** | leftover human judgment the template would drop or distort — portable developer takeaways, marketing stripped off, disguise named. Omit the heading when there is nothing leftover |
 | `## Caveats (unverified)` | `## 存疑（未验证）` | **all types** | a bulleted **ledger**: one `[未验证]`/`[推断]` bullet per unverified fact — the page's single uncertainty list |
 
 **Type-adaptive sections.** `skill-pack` entries (prompt/skill collections, harness configs) require
@@ -123,6 +124,15 @@ per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden se
 `## Caveats (unverified)` (EN) / `## 存疑（未验证）` (ZH): a bulleted list where each unverified or
 inferred fact gets one `[未验证]` / `[推断]` bullet. This is the single place uncertainty is collected;
 the linter ERRORs if it is missing. See §3 for how it interacts with inline labels.
+
+**Callouts / 指指点点 is optional — it is the leftover bin, not a new taxonomy.** After the
+required sections are written, put here what a human/agent reading conversation actually figured
+out that those sections have no slot for: judgments that are generally true for developers,
+and the stripping of marketing or disguise. Messy is allowed. Chat logs, empty headings, and
+anything that already belongs in When to use / When NOT / Comparison / How it works / Health
+are not. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry
+the heading (`## Callouts` / `## 指指点点`), the body is non-empty, and the section sits after
+Health & viability and before Caveats. Golden example: `prime-agent`.
 
 ### The lead line is the problem, not the definition
 

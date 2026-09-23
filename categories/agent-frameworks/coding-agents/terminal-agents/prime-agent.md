@@ -154,11 +154,21 @@ The TypeScript host owns providers, transcripts, child lifecycles, and schedulin
 - **Governance:** Grade C — 96 active maintainers in 12 months, but top-1 share 64.1% / top-3 78.2% (`badlogic` / Mario Zechner). LICENSE copyright is 2025 Mario Zechner and 2026 Prime Intellect; org backing is real, commit concentration is still high.
 - **Risk / License:** Grade A — MIT, no relicense in 36 months. Install/update still goes through a vendor-hosted `curl | sh`; the default runtime is not a sandbox.
 
+## Callouts
+
+Putting the working set in the chat spends the model's intelligence on the material, and the window rots. Putting it in Python variables spends that intelligence on how to slice; the parent never sees A and B together. How you cut is itself the job that needed the global view you just removed. [推断]
+
+"Self-improving" here is `/refine` writing supplemental prompts, plus a research bet that RL will teach models to use the scaffold. Prime Intellect's own RLM write-up already shows current models getting worse on short math when that scaffold is on. That is not a product that has learned; it is a harness that hopes the model will. [推断]
+
+The README's honest line is the sandbox warning. The rest of the pitch — RLM, Continual Harness, RSI in commit messages — reads like a research program shipping a TUI. The public install is still `curl | sh` from Prime's domain while the npm name inside the tree is still `pi`.
+
 ## Caveats (unverified)
 
 - [未验证] Whether `prime-agent update` works without a Prime Intellect account; only the install URL and `PI_OFFLINE=1` model-list skip were read.
 - [未验证] Production adoption versus star count; 21.2k stars in ~4.5 months is an attention signal, not a user-count.
 - [推断] High fork/star (~11% on 2026-09-22) may include mirrors or one-off forks rather than a downstream ecosystem.
+- [推断] Putting context in variables rather than the window demotes the parent to a dispatcher; how you slice needs the global view that move just removed.
 - [推断] Prime Intellect's RLM blog (math-python drop, DeepDive without tips) applies to their verifier RLM scaffold, not as a measured Prime Agent TUI benchmark.
+- [推断] `/refine` plus the RL-training story is a harness that hopes the model will learn the scaffold, not evidence that it already has.
 - [未验证] How far `/refine` actually improves later sessions in the wild; docs describe the mechanism, not a field study.
 - [未验证] Windows/Termux support depth beyond the existence of `docs/windows.md` and `docs/termux.md`.
