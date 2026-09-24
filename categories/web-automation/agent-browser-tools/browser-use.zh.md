@@ -103,7 +103,7 @@ health:
 |---|---|---|---|
 | [Agent Browser](agent-browser.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 browser-use 对照。 | browser-use 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 browser-use 对照。 | browser-use 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Cua](cua.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 browser-use 对照。 | browser-use 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Cua](../../desktop-automation/cua.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 browser-use 对照。 | browser-use 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [page-agent](page-agent.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 browser-use 对照。 | browser-use 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 browser-use 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 

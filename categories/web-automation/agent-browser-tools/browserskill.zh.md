@@ -120,7 +120,7 @@ BrowserSkill 不用给 agent 一个它自己的浏览器就能补上这段：你
 - **想把站点流程冻成可反复执行的命令。** 高频、确定性的操作是 [OpenCLI](opencli.zh.md) 的主场（站点 adapter 加 autofix）；BrowserSkill 没有任何成文 adapter 层，同一套多步流程每次都还是 agent 任务。[未验证]
 - **要排查性能、网络或 console。** 这里没有 DevTools 追踪面——trace、Core Web Vitals、堆快照、请求瀑布流请用 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)。
 - **要在自己的 web 应用里嵌一个产品内 copilot。** 那是嵌进你自己页面的库（[page-agent](page-agent.zh.md)），不是从外部驱动你浏览器的 agent。
-- **任务离开了浏览器。** 驱动原生桌面应用或要整机隔离用 [Cua](cua.zh.md)；批量抓取而不是操作页面，用 [Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md) 这类抓取工具。
+- **任务离开了浏览器。** 驱动原生桌面应用或要整机隔离用 [Cua](../../desktop-automation/cua.zh.md)；批量抓取而不是操作页面，用 [Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md) 这类抓取工具。
 - **范围内包含不可信页面内容与你敏感的登录态。** agent 会在你已登录的 profile 里读任意页面，页面文本的 prompt injection 就是真实攻击面：截至 2026-09-19，仓库的 skills 没有任何 prompt injection 防护指引（未修 issue #286），而本地 daemon 握手只校验 `chrome-extension://` 这个 origin 协议、不校验是不是自家扩展 ID（未修 issue #273）。这个威胁模型你接受不了的话，就让 agent 待在干净 profile 里（[Agent Browser](agent-browser.zh.md)、[Playwright MCP](../playwright-family/playwright-mcp.zh.md)），代价是认下登录摩擦。
 - **受管控或封闭的机器。** 装扩展并常驻一个本地 daemon 是前提；Windows 未签名构建被 Smart App Control 拦过（未修 issue #262），而每条命令都会回收子进程的沙箱必须改用 host 托管的 `BSK_HOME` 方案，不能靠自动启动。
 - **不能接受“扩展加 daemon 继承 profile 里全部会话”这个信任面。** 借页签需你批准、help 保持开启，能限制 agent 背着你做什么，但缩小不了这座桥造出来的信任面。
