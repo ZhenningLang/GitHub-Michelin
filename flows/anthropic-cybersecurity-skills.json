@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "The pack does", "zh": "技能包做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the pack into your agent — npx, git clone, or the plugin entry", "zh": "把技能包装进 agent——npx、git clone 或 plugin 入口", "code": "npx skills add mukul975/Anthropic-Cybersecurity-Skills", "component": {"en": "installer / repo", "zh": "安装器 / 仓库"}},
+    {"lane": "them", "en": "Drops 818 SKILL.md runbooks and a generated index.json", "zh": "落盘 818 份 SKILL.md 与一份生成的 index.json", "component": {"en": "skills/ tree", "zh": "skills/ 目录树"}},
+    {"lane": "you", "en": "Describe the job in plain language", "zh": "用白话描述任务"},
+    {"lane": "them", "en": "Matches description and tags, loads only the few hits", "zh": "按 description 与 tags 匹配，只加载命中的几份", "component": {"en": "progressive disclosure", "zh": "按需加载"}},
+    {"lane": "you", "en": "Supply the target, the tools, and the authorization scope", "zh": "提供目标、工具与授权范围"},
+    {"lane": "them", "en": "Walks its Workflow steps, then self-checks against Verification", "zh": "按 Workflow 逐步执行，再用 Verification 自检", "component": {"en": "SKILL.md", "zh": "SKILL.md"}},
+    {"lane": "them", "en": "Takes framework IDs from references/ for the report", "zh": "从 references/ 取框架编号写报告", "component": {"en": "references/", "zh": "references/"}},
+    {"lane": "you", "en": "Review the output and own the call", "zh": "复核产出并承担责任"}
+  ],
+  "value": {"en": "The agent follows a framework-mapped runbook instead of improvising — but every step still runs against a target you authorize.", "zh": "agent 照着已映射框架的 runbook 走，而不是即兴发挥；但每一步仍作用在你授权并复核的目标上"},
+  "sources": [
+    "README.md#quick-start: npx skills add / git clone install paths",
+    "README.md#how-ai-agents-use-these-skills: progressive disclosure — scan frontmatter, load matched skills, run Workflow then Verification",
+    "index.json: machine-generated list of 818 skills with name and description",
+    "skills/performing-memory-forensics-with-volatility3/SKILL.md: Workflow steps and the verification checks the agent follows",
+    ".claude-plugin/marketplace.json: Claude Code plugin install entry"
+  ]
+}
