@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="791" viewBox="0 0 880 791" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="791" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="655" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="655" rx="10"/>
+<rect class="pillT" x="474" y="40" width="96.0" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Cua 做的</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,264.0 C439.0,264.0 439.0,288 470,288" marker-end="url(#a)"/>
+<path class="edge" d="M494,362 L494,386" marker-end="url(#a)"/>
+<path class="edge" d="M494,463 L494,487" marker-end="url(#a)"/>
+<path class="edge" d="M494,564 L494,588" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装好驱动，把 agent 接上</text>
+<text class="c" x="82" y="125">curl -fsSL</text>
+<text class="c" x="82" y="144">https://cua.ai/driver/install.sh | bash</text>
+<text class="comp" x="82" y="167">组件：驱动安装脚本</text>
+<rect class="card" x="40" y="215" width="368" height="98" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="98" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">可选地领一台可丢弃的桌面，别碰真机</text>
+<text class="c" x="82" y="268">Sandbox.ephemeral(...)</text>
+<text class="comp" x="82" y="291">组件：沙箱 / Fleet 认领</text>
+<rect class="cardT" x="472" y="264" width="368" height="98" rx="8"/>
+<rect class="accT" x="472" y="264" width="4" height="98" rx="2"/>
+<circle class="accT" cx="494" cy="288" r="10"/>
+<text class="num" x="494" y="292" text-anchor="middle">3</text>
+<text class="t" x="514" y="293">作为进程运行，走 stdio 上的 MCP</text>
+<text class="c" x="514" y="317">cua-driver mcp</text>
+<text class="comp" x="514" y="340">组件：Cua Driver</text>
+<rect class="cardT" x="472" y="388" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="388" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="412" r="10"/>
+<text class="num" x="494" y="416" text-anchor="middle">4</text>
+<text class="t" x="514" y="417">读窗口与无障碍状态，后台发系统级输入</text>
+<text class="comp" x="514" y="445">组件：驱动工具</text>
+<rect class="cardT" x="472" y="489" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="489" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="513" r="10"/>
+<text class="num" x="494" y="517" text-anchor="middle">5</text>
+<text class="t" x="514" y="518">跑那台桌面，运行结束就销毁</text>
+<text class="comp" x="514" y="546">组件：沙箱运行时</text>
+<rect class="cardT" x="472" y="590" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="590" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="614" r="10"/>
+<text class="num" x="494" y="618" text-anchor="middle">6</text>
+<text class="t" x="514" y="619">把动作结果和截图交回 agent 循环</text>
+<text class="comp" x="514" y="647">组件：驱动工具</text>
+<rect class="val" x="28" y="697" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="721">价值</text>
+<text class="valT" x="48" y="745">不用自己拼 VM、截图管线和输入通路，就能覆盖任意应用与系统弹窗</text>
+</svg>

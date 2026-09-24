@@ -575,7 +575,7 @@ https://github.com/tirth8205/code-review-graph,code-review-graph,rag-retrieval,c
 https://github.com/titanwings/distilly,distilly,agent-skills,categories/agent-skills/distilly.md
 https://github.com/topoteretes/cognee,cognee,agent-memory,categories/agent-memory/cognee.md
 https://github.com/tqdm/tqdm,tqdm,data-tools,categories/dev-utilities/data-tools/tqdm.md
-https://github.com/trycua/cua,cua,agent-browser-tools,categories/web-automation/agent-browser-tools/cua.md
+https://github.com/trycua/cua,cua,desktop-automation,categories/desktop-automation/cua.md
 https://github.com/tsinghua-fib-lab/AgentSociety,agentsociety,social-simulation,categories/social-simulation/agentsociety.md
 https://github.com/tt-a1i/archify,archify,design,categories/agent-skills/design/archify.md
 https://github.com/tus/tusd,tusd,nginx-modules,categories/nginx-modules/tusd.md

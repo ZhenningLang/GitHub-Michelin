@@ -117,7 +117,6 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **page-agent** | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. | MIT | B (6/6) | [EN](categories/web-automation/agent-browser-tools/page-agent.md) · [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) |
 | **Chrome DevTools MCP** | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. | Apache-2.0 | A (6/6) | [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) · [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) |
-| **Cua** | Use it when an agent must control a full desktop OS via vision in isolated VM sandboxes, not just web pages. | MIT | B (6/6) | [EN](categories/web-automation/agent-browser-tools/cua.md) · [中](categories/web-automation/agent-browser-tools/cua.zh.md) |
 | **Agent Browser** | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. | Apache-2.0 | B (5/6) | [EN](categories/web-automation/agent-browser-tools/agent-browser.md) · [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) |
 | **Selenium** | Use it when you need cross-browser WebDriver automation across a browser/language matrix — Playwright/Cypress are nicer for modern single-browser DX. | Apache-2.0 | A (6/6) | [EN](categories/web-automation/browser-driver-frameworks/selenium.md) · [中](categories/web-automation/browser-driver-frameworks/selenium.zh.md) |
 | **PhantomJS** | Avoid for new work — an archived, abandoned scriptable headless browser; use headless Chrome (Puppeteer/Playwright) or Selenium instead. | BSD-3-Clause | C (5/6) | [EN](categories/web-automation/browser-driver-frameworks/phantomjs.md) · [中](categories/web-automation/browser-driver-frameworks/phantomjs.zh.md) |
@@ -865,6 +864,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | MIT | B (5/6) | [EN](categories/desktop-automation/cua.md) · [中](categories/desktop-automation/cua.zh.md) |
 | **PyAutoGUI** | Use it when you must script a desktop app with no API across Windows/macOS/Linux — but coordinate/pixel automation breaks silently on resolution, DPI, or theme changes, and dev has coasted since 2024. | BSD-3-Clause | C (4/6) | [EN](categories/desktop-automation/pyautogui.md) · [中](categories/desktop-automation/pyautogui.zh.md) |
 
 ### game-dev

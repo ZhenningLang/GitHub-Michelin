@@ -114,7 +114,6 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/page-agent.zh.md) · [EN](categories/web-automation/agent-browser-tools/page-agent.md) |
 | **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md) |
-| **Cua** | 当 agent 需要在隔离 VM 沙箱里用视觉操作整台桌面系统（而非仅网页）时使用。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/cua.zh.md) · [EN](categories/web-automation/agent-browser-tools/cua.md) |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | Apache-2.0 | B（5/6） | [中](categories/web-automation/agent-browser-tools/agent-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/agent-browser.md) |
 | **Selenium** | 当你需要跨浏览器、跨语言的 WebDriver 自动化时用它——现代单浏览器体验 Playwright/Cypress 更顺手。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/browser-driver-frameworks/selenium.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/selenium.md) |
 | **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | BSD-3-Clause | C（5/6） | [中](categories/web-automation/browser-driver-frameworks/phantomjs.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/phantomjs.md) |
@@ -862,6 +861,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Cua** | 当 agent 需要操作整台电脑（原生桌面应用、系统弹窗，而非仅网页）、且这次运行需要隔离时使用。 | MIT | B（5/6） | [中](categories/desktop-automation/cua.zh.md) · [EN](categories/desktop-automation/cua.md) |
 | **PyAutoGUI** | 当你要在 Windows／macOS／Linux 上脚本化操控没有 API 的桌面应用时用它——但基于坐标和像素的自动化会因分辨率、DPI 或主题变化静默失效，且自 2024 年起已停滞维护。 | BSD-3-Clause | C（4/6） | [中](categories/desktop-automation/pyautogui.zh.md) · [EN](categories/desktop-automation/pyautogui.md) |
 
 ### game-dev

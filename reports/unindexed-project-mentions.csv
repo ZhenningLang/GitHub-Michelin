@@ -61,6 +61,7 @@ Ansible / Salt / Puppet,categories/dev-utilities/ops-infra/cockpit.md,,no
 "Anthropic ""Building effective agents"" guide",categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
 Anthropic / built-in agent skills,categories/agent-skills/design/taste-skill.md,,no
 Anthropic / built-in agent skills and slash commands,categories/agent-skills/design/ui-ux-pro-max.md,,no
+Anthropic computer use / OpenAI Operator,categories/desktop-automation/cua.md,,no
 Anthropic Console prompt improver,categories/agent-skills/prompt-engineering/prompt-master.md,,no
 Anthropic Cookbook,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 Anthropic's built-in skills / native slash commands,categories/agent-skills/personal-collections/engineering-workflows/pua.md,,no
@@ -259,7 +260,7 @@ Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
-E2B / Daytona (dev sandboxes),categories/web-automation/agent-browser-tools/cua.md,,no
+E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
@@ -565,7 +566,6 @@ OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engine
 OpenAI / Cohere embedding APIs,categories/rag-retrieval/text2vec.md,,no
 "OpenAI / Gemini ""Deep Research""",categories/deep-research/mirothinker.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
-OpenAI Operator / Anthropic computer use,categories/web-automation/agent-browser-tools/cua.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 OpenCLIP,categories/ml-research/clip.md,,no
 OpenCV,categories/media-processing/video-audio/editing-and-cutting/moviepy.md,,no
@@ -583,7 +583,6 @@ OpenTimelineIO,categories/media-processing/video-audio/editing-and-cutting/mlt.m
 Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no
 OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 osint.industries,categories/osint/ghunt.md,,no
-OSWorld / WebArena (benchmarks),categories/web-automation/agent-browser-tools/cua.md,,no
 Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no

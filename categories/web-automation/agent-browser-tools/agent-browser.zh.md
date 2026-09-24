@@ -138,7 +138,7 @@ CLI 只是一层薄客户端，底下是一个长期存活的 Rust 守护进程�
 | [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | 已收录 | 要 Google 官方的 MCP server、覆盖 DevTools 检查面时选 Chrome DevTools MCP；要让 agent 还能按引用**动手操作**、或者它是 shell 出去而不是说 MCP 时选 Agent Browser。 | DevTools MCP 是官方的检查面且只有 MCP；Agent Browser 是 CLI 优先的 Rust 守护进程，同时提供 MCP profile、快照引用、无障碍审计和 HAR 抓取。 |
 | [browser-use](browser-use.zh.md) | 已收录 | 要一个自带 LLM 循环的 Python agent 时选 browser-use；循环归你自己、底下只要一个快原语时选 Agent Browser。 | browser-use 是你要编程面对的框架；Agent Browser 是你调用的一个二进制，这让它更容易嵌进现有体系，代价是循环、提示词和重试都归你。 |
 | [page-agent](page-agent.zh.md) | 已收录 | agent 必须活在用户当前页面里、并复用那个会话时选 page-agent；浏览器应该是一个独立的、可脚本化的实例时选 Agent Browser。 | page-agent 在页面内跑、没有后端；Agent Browser 拥有一个外部 Chrome，所以能做服务端／CI 的活，但拿不到一个活标签页的 JS 上下文。 |
-| [Cua](cua.zh.md) | 已收录 | 任务会离开浏览器——原生桌面应用、系统弹窗、需要 VM 隔离时选 Cua；一切都在网页里、确定性比覆盖面更重要时选 Agent Browser。 | Cua 是在 VM 里做基于视觉的 computer-use；Agent Browser 只管浏览器且基于 a11y 树，更便宜也更可复现，但页外就是盲区。 |
+| [Cua](../../desktop-automation/cua.zh.md) | 已收录 | 任务会离开浏览器——原生桌面应用、系统弹窗、需要 VM 隔离时选 Cua；一切都在网页里、确定性比覆盖面更重要时选 Agent Browser。 | Cua 在系统层操作整台电脑（结构化状态或像素、沙箱可选）；Agent Browser 只管浏览器且基于 a11y 树，更便宜也更可复现，但页外就是盲区。 |
 | [Playwright](../playwright-family/playwright.zh.md) / Puppeteer | 部分已收录 | 在 Node 里写长期维护的测试套件、要跨浏览器覆盖时选 Playwright 或 Puppeteer；调用方是模型、需要引用而不是选择器时选 Agent Browser。 | Playwright／Puppeteer 是 import 进测试运行器、由你维护的库；Agent Browser 是模型可驱动的进程，用生态广度换面向 LLM 的顺手程度。 |
 
 ## 技术栈
