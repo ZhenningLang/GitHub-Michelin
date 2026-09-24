@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": { "en": "Agent-Native does", "zh": "Agent-Native 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold an app from a template",
+      "zh": "从模板生成一个应用",
+      "code": "npx --yes @agent-native/core@latest create my-app --standalone --template chat"
+    },
+    {
+      "lane": "you",
+      "en": "Write the capability once, as an action",
+      "zh": "把能力写一次，写成一个 action",
+      "code": "defineAction"
+    },
+    {
+      "lane": "them",
+      "en": "Mounts it on every surface: UI hooks, HTTP, MCP, A2A, CLI",
+      "zh": "把它挂到所有出口：前端 hook、HTTP、MCP、A2A、CLI",
+      "component": { "en": "action registry", "zh": "action 注册表" }
+    },
+    {
+      "lane": "you",
+      "en": "Call the same action from a React page",
+      "zh": "在 React 页面里调同一个 action",
+      "code": "useActionQuery"
+    },
+    {
+      "lane": "them",
+      "en": "The agent reads the description + schema and calls it as a tool in chat",
+      "zh": "agent 读描述和 schema，在聊天里把它当工具调用",
+      "component": { "en": "agent loop", "zh": "agent loop" }
+    },
+    {
+      "lane": "them",
+      "en": "Keeps agent work and UI state in one SQL database",
+      "zh": "把 agent 的操作和界面状态存进同一个 SQL 库",
+      "component": { "en": "Postgres / PGlite", "zh": "Postgres / PGlite" }
+    }
+  ],
+  "value": {
+    "en": "You write the capability once; the button, the chat agent and any MCP host all run the same code",
+    "zh": "能力只写一次；页面按钮、聊天里的 agent、外部 MCP 主机跑的都是同一份代码"
+  },
+  "sources": [
+    "README.md Quick start (npx --yes @agent-native/core@latest create ...) and 'Example: a shared action' (defineAction, useActionQuery)",
+    "packages/core/docs/content/getting-started.mdx (create my-app --standalone --template chat; actions/hello.ts; useActionQuery from React)",
+    "packages/core/docs/content/actions-overview.mdx (auto-mounted at /_agent-native/actions/<name>; MCP/A2A/CLI surfaces call the same action)",
+    "packages/core/docs/content/agent-surfaces.mdx (dedicated agent loop for chat; shared SQL-backed app state)",
+    "packages/core/docs/content/mcp-protocol.mdx (every app auto-mounts /mcp for external MCP hosts)"
+  ]
+}

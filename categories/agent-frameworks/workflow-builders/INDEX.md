@@ -15,6 +15,7 @@
 | **Langflow** | Use it when you want a visual drag-and-drop platform to build and deploy LLM workflows and agents with built-in API and MCP servers — but visual flows are harder to diff/review than code. | B (6/6) | [→](langflow.md) |
 | **LlamaIndex** | LlamaIndex is the leading document agent and OCR platform | A (6/6) | [→](llamaindex.md) |
 | **Flowise** | Build AI Agents, Visually | D (5/6) | [→](flowise.md) |
+| **Agent-Native** | You want the agent inside your product to actually perform its tasks, and you'll let one TypeScript app own the UI, server and Postgres so the button and the tool share one implementation. | C (4/6) | [→](agent-native.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [Dify](dify.md) | ✅ | B (5/6) | Use it when you want a production-ready visual platform for building agentic workflows with low-code, RAG, and MCP support — but verify the license before commercial use. |
 | [LangChain](langchain.md) | ✅ | A (5/6) | Use it when you need a code-first framework to compose LLM agents, tools, and memory with a vast integration ecosystem — but avoid for simple single-prompt apps. |
 | [Langflow](langflow.md) | ✅ | B (6/6) | Use it when you want a visual drag-and-drop platform to build and deploy LLM workflows and agents with built-in API and MCP servers — but visual flows are harder to diff/review than code. |
+| [Agent-Native](agent-native.md) | ✅ | C (4/6) | One action powers the button and the agent tool plus a full app (auth, SQL state, chat) — the price is letting the framework own your stack, and it is a six-month-old, fast-moving v0.x. |
 
 ## What belongs here
 
