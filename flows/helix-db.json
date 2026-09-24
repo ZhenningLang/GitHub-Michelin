@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "HelixDB does",
+    "zh": "HelixDB 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI, scaffold a project, start a local instance",
+      "zh": "装好 CLI、初始化项目、起一个本地实例",
+      "code": "curl -sSL \"https://install.helix-db.com\" | bash",
+      "component": {
+        "en": "helix CLI",
+        "zh": "helix CLI"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Build the query with an SDK builder, not a query language",
+      "zh": "用 SDK 的 builder 拼查询，而不是写查询语言",
+      "code": "writeBatch() · readBatch()",
+      "component": {
+        "en": "helix SDK (4 languages)",
+        "zh": "helix SDK（四种语言）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Takes the operation tree as inline JSON on one endpoint",
+      "zh": "在一个端点上收下操作树 JSON，无需编译部署",
+      "code": "POST /v2/query",
+      "component": {
+        "en": "query planner",
+        "zh": "查询规划器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs graph traversal, vector and BM25 text search in one transaction on one snapshot",
+      "zh": "同一事务、同一快照里跑图遍历、向量与 BM25 全文检索",
+      "component": {
+        "en": "object-storage engine",
+        "zh": "对象存储引擎"
+      }
+    }
+  ],
+  "value": {
+    "en": "One database and one transaction for relationships, embeddings and keywords — nothing to sync between a graph store, a vector store and a search cluster",
+    "zh": "关系、向量和关键词就是同一个数据库、同一个事务——不用再在三套存储之间做同步"
+  },
+  "sources": [
+    "docs/llms.txt (quickstart): `curl -sSL \"https://install.helix-db.com\" | bash`, `helix init local`, `helix start dev`, `writeBatch().varAs(\"alice\", g().addN(\"User\", { username: \"alice\" }))`, `readBatch().varAs(\"users\", g().nWithLabel(\"User\"))`",
+    "README.md \"Writing queries with the SDKs\": authors queries with the Rust/TypeScript/Go/Python DSL and sends them to `POST /v2/query` with no build or deploy step",
+    "docs/database/helix-db/introduction.mdx: one labeled property graph; vector, BM25 text and secondary indexes are access paths over node/edge properties; ACID across graph, vector and text",
+    "docs/database/helix-cloud/start-here/architecture.mdx: single writer + readers behind a gateway, object storage as the durable system of record",
+    "docs/database/helix-db/start-here/local-development/local-server.mdx: `helix init local`, `helix start dev`, queries at `http://localhost:6969/v2/query`"
+  ]
+}

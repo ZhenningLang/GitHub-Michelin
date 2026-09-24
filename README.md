@@ -261,6 +261,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **SCIP** | SCIP Code Intelligence Protocol | Apache-2.0 | A (6/6) | [EN](categories/rag-retrieval/scip.md) · [中](categories/rag-retrieval/scip.zh.md) |
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | Apache-2.0 | A (5/6) | [EN](categories/rag-retrieval/milvus.md) · [中](categories/rag-retrieval/milvus.zh.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | NOASSERTION | D (4/6) | [EN](categories/rag-retrieval/sourcegraph.md) · [中](categories/rag-retrieval/sourcegraph.zh.md) |
+| **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | Apache-2.0 | B (6/6) | [EN](categories/rag-retrieval/helix-db.md) · [中](categories/rag-retrieval/helix-db.zh.md) |
 
 ### llm-eval
 
