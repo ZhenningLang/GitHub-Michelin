@@ -195,6 +195,7 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
+CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
@@ -805,6 +806,7 @@ v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
+Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no

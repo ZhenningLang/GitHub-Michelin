@@ -15,6 +15,7 @@
 | **Langflow** | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 | B（6/6） | [→](langflow.zh.md) |
 | **LlamaIndex** | LlamaIndex is the leading document agent and OCR platform | A（6/6） | [→](llamaindex.zh.md) |
 | **Flowise** | Build AI Agents, Visually | D（5/6） | [→](flowise.zh.md) |
+| **Agent-Native** | 你想让产品里的 agent 真的把活干完，并愿意让一个 TypeScript 应用接管界面、服务端与 Postgres，好让按钮和工具共用同一份实现。 | C（4/6） | [→](agent-native.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [Dify](dify.zh.md) | ✅ | B（5/6） | 当你想要一个生产就绪的、用于构建 agentic 工作流的低代码可视化平台，内置 RAG 与 MCP 支持时用它——但商用前请核实许可。 |
 | [LangChain](langchain.zh.md) | ✅ | A（5/6） | 当你需要一个代码优先的框架来组合 LLM agent、工具与记忆，并拥有庞大的集成生态时用它——但简单单 prompt 应用别用它。 |
 | [Langflow](langflow.zh.md) | ✅ | B（6/6） | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器；可视化流比代码更难做 diff/审查。 |
+| [Agent-Native](agent-native.zh.md) | ✅ | C（4/6） | 同一个 action 既驱动页面按钮也当 agent 工具，还附送完整应用（鉴权、SQL 状态、聊天）——代价是让框架接管你的技术栈，且它是半年大、迭代极快的 v0.x。 |
 
 ## 什么该放这里
 
