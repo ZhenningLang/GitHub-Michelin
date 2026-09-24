@@ -257,6 +257,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SCIP** | SCIP Code Intelligence Protocol | Apache-2.0 | A（6/6） | [EN](categories/rag-retrieval/scip.md) · [中](categories/rag-retrieval/scip.zh.md) |
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | Apache-2.0 | A（5/6） | [EN](categories/rag-retrieval/milvus.md) · [中](categories/rag-retrieval/milvus.zh.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | NOASSERTION | D（4/6） | [EN](categories/rag-retrieval/sourcegraph.md) · [中](categories/rag-retrieval/sourcegraph.zh.md) |
+| **HelixDB** | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/helix-db.zh.md) · [EN](categories/rag-retrieval/helix-db.md) |
 
 ### llm-eval
 

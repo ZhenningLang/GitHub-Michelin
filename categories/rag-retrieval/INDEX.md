@@ -17,6 +17,7 @@
 | **SCIP** | SCIP Code Intelligence Protocol | A (6/6) | [→](scip.md) |
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A (5/6) | [→](milvus.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | D (4/6) | [→](sourcegraph.md) |
+| **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | B (6/6) | [→](helix-db.md) |
 
 
 ## Comparison matrix
@@ -30,6 +31,7 @@
 | [Understand-Anything](understand-anything.md) | ✅ | B (6/6) | Code → explorable knowledge graph an agent can query; younger than graphify, with an unverified star count and egress boundary. |
 | [FAISS](faiss.md) | ✅ | A (6/6) | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. |
 | [text2vec](text2vec.md) | ✅ | C (5/6) | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). |
+| [HelixDB](helix-db.md) | ✅ | B (6/6) | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. |
 | Neo4j / LightRAG / Weaviate | 未收录 | — | Other graph/RAG retrieval stacks named across the pages. |
 
 ## What belongs here
