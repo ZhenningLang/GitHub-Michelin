@@ -4,11 +4,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 2captcha-python,categories/captcha/buster.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/claude-subconscious.md,,no
-[deccp](https://github.com/AUGMXNT/deccp),categories/model-editing/heretic.md,,no
-[ErisForge](https://github.com/Tsadoq/ErisForge),categories/model-editing/heretic.md,,no
-[FailSpy/abliterator](https://github.com/FailSpy/abliterator),categories/model-editing/heretic.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
-[remove-refusals-with-transformers](https://github.com/Sumandora/remove-refusals-with-transformers),categories/model-editing/heretic.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no

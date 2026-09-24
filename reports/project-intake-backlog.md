@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 845
+- Named-but-unindexed alternatives: 841
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -27,11 +27,7 @@ shape and are deliberately excluded here.
 | 2captcha-python | `categories/captcha/buster.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
-| [deccp](https://github.com/AUGMXNT/deccp) | `categories/model-editing/heretic.md` |
-| [ErisForge](https://github.com/Tsadoq/ErisForge) | `categories/model-editing/heretic.md` |
-| [FailSpy/abliterator](https://github.com/FailSpy/abliterator) | `categories/model-editing/heretic.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
-| [remove-refusals-with-transformers](https://github.com/Sumandora/remove-refusals-with-transformers) | `categories/model-editing/heretic.md` |
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
@@ -52,3 +48,7 @@ shape and are deliberately excluded here.
 | `python-wechaty` | `categories/im-automation/wechat/wechaty.md` |
 | `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
 | `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
+| `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |
+| `subprocess` + `ssh` | `categories/networking/sshtunnel.md` |
+| `subprocess` + system `ssh` | `categories/networking/paramiko.md` |
+| `tcconfig` (Python) | `categories/networking/wondershaper.md` |
