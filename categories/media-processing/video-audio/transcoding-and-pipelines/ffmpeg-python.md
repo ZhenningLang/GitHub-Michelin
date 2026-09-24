@@ -2,7 +2,7 @@
 name: ffmpeg-python
 slug: ffmpeg-python
 repo: https://github.com/kkroening/ffmpeg-python
-category: video-audio
+category: transcoding-and-pipelines
 tags: [ffmpeg, python, bindings, filter-graph, video, audio, transcoding]
 language: Python
 license: Apache-2.0
@@ -71,7 +71,7 @@ health:
 
 Python bindings for FFmpeg that let you build complex filter graphs as chained Python expressions instead of hand-writing `-filter_complex` strings — it constructs the FFmpeg command line for you and shells out to the `ffmpeg` binary.
 
-![ffmpeg-python — health radar](../../../assets/health/ffmpeg-python.svg)
+![ffmpeg-python — health radar](../../../../assets/health/ffmpeg-python.svg)
 
 ## When to use
 
@@ -94,7 +94,7 @@ Its sweet spot is exactly *complex* filter graphs — the README's whole pitch i
 |---|---|---|---|
 | [FFmpeg](ffmpeg.md) (the CLI itself) | ✅ | Choose FFmpeg itself when you need the underlying engine and can manage filtergraph strings directly. | The underlying engine; maximal power and the canonical reference, but `-filter_complex` strings are unreadable for complex graphs — which is exactly what this wraps. |
 | [PyAV](pyav.md) | ✅ | Choose PyAV when you need Pythonic bindings to the libav* libraries. | Pythonic bindings to the libav* libraries — in-process decode/encode and per-frame access, no shelling out; heavier to install, lower-level than a CLI graph builder. |
-| [MoviePy](moviepy.md) | ✅ | Choose MoviePy when you need higher-level Python video editing with effects, compositing, text, and a friendlier API. | Higher-level Python video editing (effects, compositing, text) with a friendlier API; great for editing, less of a thin FFmpeg-graph mapping. |
+| [MoviePy](../editing-and-cutting/moviepy.md) | ✅ | Choose MoviePy when you need higher-level Python video editing with effects, compositing, text, and a friendlier API. | Higher-level Python video editing (effects, compositing, text) with a friendlier API; great for editing, less of a thin FFmpeg-graph mapping. |
 | subprocess + raw ffmpeg | 未收录 | Choose subprocess + raw ffmpeg when you need zero dependency and total control. | Zero dependency and total control, but you hand-build and escape the `-filter_complex` strings yourself — the pain this library removes. |
 | imageio-ffmpeg / fluent-ffmpeg | 未收录 | Choose imageio-ffmpeg or fluent-ffmpeg when you need other-language or narrower-scope FFmpeg wrappers. | Other-language or narrower-scope FFmpeg wrappers (Node's fluent-ffmpeg, Python imageio shim); similar shell-out model, different ergonomics. |
 

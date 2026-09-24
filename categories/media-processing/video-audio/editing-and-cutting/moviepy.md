@@ -2,7 +2,7 @@
 name: MoviePy
 slug: moviepy
 repo: https://github.com/Zulko/moviepy
-category: video-audio
+category: editing-and-cutting
 tags: [video, python, editing, compositing, ffmpeg, effects, text, animation]
 language: Python
 license: MIT
@@ -81,7 +81,7 @@ health:
 A Python library for programmatic video editing — cutting, concatenating, compositing, text overlays, and effects — that builds FFmpeg commands under the hood but presents a higher-level, friendlier API.
 
 
-![MoviePy — health radar](../../../assets/health/moviepy.svg)
+![MoviePy — health radar](../../../../assets/health/moviepy.svg)
 
 ## When to use
 
@@ -100,11 +100,11 @@ You're a data scientist or content-automation engineer who needs to generate vid
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.md) | ✅ | Choose FFmpeg when you need the universal engine, maximum speed, or full codec control — at the cost of hand-writing commands. | The underlying universal engine; maximum power and speed, but CLI syntax is steep and `-filter_complex` is write-only for complex graphs. |
-| [ffmpeg-python](ffmpeg-python.md) | ✅ | Choose ffmpeg-python when you want Pythonic DAG construction of FFmpeg filter graphs, not higher-level video editing abstractions. | Thin Python wrapper around FFmpeg CLI filter graphs; closer to FFmpeg's concepts, less "video editing" feel than MoviePy. |
-| [PyAV](pyav.md) | ✅ | Choose PyAV when you need in-process libav* bindings for per-frame access or custom decode/encode pipelines. | Pythonic bindings to libav* libraries; in-process frame access, no shelling out; heavier setup, lower-level than MoviePy. |
-| [HandBrake](handbrake.md) | ✅ | Choose HandBrake when you need a GUI or preset-driven batch encoder with built-in quality tuning, not programmatic editing. | Desktop/preset batch encoder with excellent quality presets; not a programmable editing library. |
-| [GStreamer](gstreamer.md) | ✅ | Choose GStreamer when you need a streaming media framework with pipeline graphs and plugin ecosystem, not simple Python scripting. | Industrial-strength streaming media framework; steep learning curve, overkill for simple clip editing. |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | Choose FFmpeg when you need the universal engine, maximum speed, or full codec control — at the cost of hand-writing commands. | The underlying universal engine; maximum power and speed, but CLI syntax is steep and `-filter_complex` is write-only for complex graphs. |
+| [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.md) | ✅ | Choose ffmpeg-python when you want Pythonic DAG construction of FFmpeg filter graphs, not higher-level video editing abstractions. | Thin Python wrapper around FFmpeg CLI filter graphs; closer to FFmpeg's concepts, less "video editing" feel than MoviePy. |
+| [PyAV](../transcoding-and-pipelines/pyav.md) | ✅ | Choose PyAV when you need in-process libav* bindings for per-frame access or custom decode/encode pipelines. | Pythonic bindings to libav* libraries; in-process frame access, no shelling out; heavier setup, lower-level than MoviePy. |
+| [HandBrake](../transcoding-and-pipelines/handbrake.md) | ✅ | Choose HandBrake when you need a GUI or preset-driven batch encoder with built-in quality tuning, not programmatic editing. | Desktop/preset batch encoder with excellent quality presets; not a programmable editing library. |
+| [GStreamer](../transcoding-and-pipelines/gstreamer.md) | ✅ | Choose GStreamer when you need a streaming media framework with pipeline graphs and plugin ecosystem, not simple Python scripting. | Industrial-strength streaming media framework; steep learning curve, overkill for simple clip editing. |
 | [MLT](mlt.md) / Shotcut | 部分已收录 | Choose MLT when you need a professional non-linear editing engine with timeline support, not a quick Python script. | Professional NLE engine (MLT) and GUI (Shotcut); heavy, timeline-oriented, not lightweight scripting. |
 | OpenCV | 未收录 | Choose OpenCV when computer vision or frame-level image processing is the primary task, with video as a side effect. | Computer vision first; can read/write video but lacks editing concepts like clips, transitions, or compositing layers. |
 

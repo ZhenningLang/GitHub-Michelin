@@ -28,7 +28,7 @@ https://github.com/DormyMo/SpiderKeeper,spiderkeeper,crawling-tools,categories/w
 https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimization-solvers/highs.md
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,rag-retrieval,categories/rag-retrieval/understand-anything.md
 https://github.com/EveryInc/compound-engineering-plugin,compound-engineering,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md
-https://github.com/FFmpeg/FFmpeg,ffmpeg,video-audio,categories/media-processing/video-audio/ffmpeg.md
+https://github.com/FFmpeg/FFmpeg,ffmpeg,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md
 https://github.com/FalkorDB/FalkorDB,falkordb,rag-retrieval,categories/rag-retrieval/falkordb.md
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
@@ -39,7 +39,7 @@ https://github.com/GongRzhe/Office-Word-MCP-Server,office-word-mcp-server,office
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
 https://github.com/HKUDS/DeepTutor,deeptutor,education-tutoring,categories/education-tutoring/deeptutor.md
-https://github.com/HandBrake/HandBrake,handbrake,video-audio,categories/media-processing/video-audio/handbrake.md
+https://github.com/HandBrake/HandBrake,handbrake,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.md
 https://github.com/HarnessRouter/harnessrouter,harnessrouter,api-gateway,categories/api-gateway/harnessrouter.md
 https://github.com/Hello-SimpleAI/chatgpt-comparison-detection,chatgpt-comparison-detection,llm-eval,categories/llm-eval/chatgpt-comparison-detection.md
 https://github.com/HiThink-Tech/Financial-API,financial-api,investment-finance,categories/investment-finance/financial-api.md
@@ -100,7 +100,7 @@ https://github.com/PleasePrompto/notebooklm-skill,notebooklm-skill,context-engin
 https://github.com/PowerJob/PowerJob,powerjob,task-queue,categories/task-queue/powerjob.md
 https://github.com/PrefectHQ/prefect,prefect,workflow-orchestration,categories/workflow-orchestration/prefect.md
 https://github.com/PrimeIntellect-ai/prime-agent,prime-agent,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/prime-agent.md
-https://github.com/PyAV-Org/PyAV,pyav,video-audio,categories/media-processing/video-audio/pyav.md
+https://github.com/PyAV-Org/PyAV,pyav,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md
 https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
 https://github.com/RameshAditya/asciify,asciify,terminal-ui,categories/terminal-ui/asciify.md
 https://github.com/Ranchero-Software/NetNewsWire,netnewswire,reading-tools,categories/reading-tools/netnewswire.md
@@ -134,10 +134,10 @@ https://github.com/VectifyAI/PageIndex,pageindex,rag-retrieval,categories/rag-re
 https://github.com/Vincentwei1021/anything2explainer,anything2explainer,video-production,categories/video-production/anything2explainer.md
 https://github.com/Vincentwei1021/video-shotcraft,video-shotcraft,video-production,categories/video-production/video-shotcraft.md
 https://github.com/VoltAgent/awesome-claude-code-subagents,awesome-claude-code-subagents,subagent-collections,categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md
-https://github.com/WyattBlue/auto-editor,auto-editor,video-audio,categories/media-processing/video-audio/auto-editor.md
+https://github.com/WyattBlue/auto-editor,auto-editor,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md
 https://github.com/Yeachan-Heo/oh-my-claudecode,oh-my-claudecode,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md
 https://github.com/ZachSaucier/Just-Read,just-read,reading-tools,categories/reading-tools/just-read.md
-https://github.com/Zulko/moviepy,moviepy,video-audio,categories/media-processing/video-audio/moviepy.md
+https://github.com/Zulko/moviepy,moviepy,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/moviepy.md
 https://github.com/a2vibecreators/QUAD,quad,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/quad.md
 https://github.com/abue-ammar/tinycast,tinycast,desktop-launchers,categories/desktop-launchers/tinycast.md
 https://github.com/adam-p/markdown-here,markdown-here,markdown-tools,categories/markdown-tools/markdown-here.md
@@ -202,7 +202,7 @@ https://github.com/block/buzz,buzz,team-chat,categories/team-chat/buzz.md
 https://github.com/blockpanda/any2html,any2html,document-parsing,categories/document-parsing/any2html.md
 https://github.com/bmad-code-org/BMAD-METHOD,bmad-method,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/bmad-method.md
 https://github.com/bpmn-io/bpmn-js,bpmn-js,diagramming,categories/diagramming/bpmn-js.md
-https://github.com/bradautomates/claude-video,claude-video,video-audio,categories/media-processing/video-audio/claude-video.md
+https://github.com/bradautomates/claude-video,claude-video,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md
 https://github.com/browser-act/skills,browser-act-skills,engineering,categories/agent-skills/engineering/browser-act-skills.md
 https://github.com/browser-use/browser-use,browser-use,agent-browser-tools,categories/web-automation/agent-browser-tools/browser-use.md
 https://github.com/brunophilipe/Cakebrew,cakebrew,package-manager-gui,categories/dev-utilities/package-manager-gui/cakebrew.md
@@ -296,7 +296,7 @@ https://github.com/ggml-org/llama.cpp,llama-cpp,local-runtimes,categories/llm-in
 https://github.com/gilbarbara/react-joyride,react-joyride,product-tours,categories/web-ui/product-tours/react-joyride.md
 https://github.com/github/spec-kit,spec-kit,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/spec-kit.md
 https://github.com/glittercowboy/taches-cc-resources,taches-cc-resources,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md
-https://github.com/globocom/m3u8,m3u8,video-audio,categories/media-processing/video-audio/m3u8.md
+https://github.com/globocom/m3u8,m3u8,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md
 https://github.com/go-mysql-org/go-mysql-elasticsearch,go-mysql-elasticsearch,data-sync,categories/databases/data-sync/go-mysql-elasticsearch.md
 https://github.com/google-ai-edge/LiteRT-LM,litert-lm,on-device-ml,categories/on-device-ml/litert-lm.md
 https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categories/on-device-ml/ai-edge-gallery.md
@@ -368,7 +368,7 @@ https://github.com/kata-containers/kata-containers,kata-containers,sandboxing,ca
 https://github.com/kenn-io/agentsview,agentsview,session-history,categories/agent-tooling/session-history/agentsview.md
 https://github.com/keycloak/keycloak,keycloak,auth,categories/auth/keycloak.md
 https://github.com/khoj-ai/khoj,khoj,knowledge-base,categories/knowledge-base/khoj.md
-https://github.com/kkroening/ffmpeg-python,ffmpeg-python,video-audio,categories/media-processing/video-audio/ffmpeg-python.md
+https://github.com/kkroening/ffmpeg-python,ffmpeg-python,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md
 https://github.com/knative/serving,knative-serving,serverless,categories/serverless/knative-serving.md
 https://github.com/kohlschutter/boilerpipe,boilerpipe,article-extraction,categories/web-scraping/article-extraction/boilerpipe.md
 https://github.com/krillinai/OpenCreator,open-creator,video-production,categories/video-production/open-creator.md
@@ -439,7 +439,7 @@ https://github.com/miuuyy/codex-chatgpt-web,codex-chatgpt-web,harness-extensions
 https://github.com/mksglu/context-mode,context-mode,work-state,categories/agent-tooling/work-state/context-mode.md
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
 https://github.com/mlc-ai/xgrammar,xgrammar,structured-generation,categories/llm-inference/structured-generation/xgrammar.md
-https://github.com/mltframework/mlt,mlt,video-audio,categories/media-processing/video-audio/mlt.md
+https://github.com/mltframework/mlt,mlt,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/mlt.md
 https://github.com/modal-labs/modal-client,modal-client,sandboxing,categories/sandboxing/modal-client.md
 https://github.com/modular/modular,modular,serving-engines,categories/llm-inference/serving-engines/modular.md
 https://github.com/mozilla/pdf.js,pdfjs,pdf-tools,categories/pdf-tools/pdfjs.md
@@ -473,7 +473,7 @@ https://github.com/openai/CLIP,clip,ml-research,categories/ml-research/clip.md
 https://github.com/openai/codex,codex,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/codex.md
 https://github.com/openai/openai-agents-python,openai-agents-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md
 https://github.com/openai/symphony,symphony,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/symphony.md
-https://github.com/openai/whisper,whisper,video-audio,categories/media-processing/video-audio/whisper.md
+https://github.com/openai/whisper,whisper,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/whisper.md
 https://github.com/openchamber/openchamber,openchamber,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md
 https://github.com/openclaw/openclaw,openclaw,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md
 https://github.com/openfga/openfga,openfga,auth,categories/auth/openfga.md
@@ -545,7 +545,7 @@ https://github.com/siteboon/claudecodeui,claudecodeui,supervision-surfaces,categ
 https://github.com/siyuan-note/siyuan,siyuan,knowledge-base,categories/knowledge-base/siyuan.md
 https://github.com/slavingia/skills,slavingia-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md
 https://github.com/slimtoolkit/slim,slim,ops-infra,categories/dev-utilities/ops-infra/slim.md
-https://github.com/smacke/ffsubsync,ffsubsync,video-audio,categories/media-processing/video-audio/ffsubsync.md
+https://github.com/smacke/ffsubsync,ffsubsync,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md
 https://github.com/soimort/you-get,you-get,media-download,categories/media-download/you-get.md
 https://github.com/sourcegraph/sourcegraph-public-snapshot,sourcegraph,rag-retrieval,categories/rag-retrieval/sourcegraph.md
 https://github.com/soxoj/maigret,maigret,osint,categories/osint/maigret.md
@@ -625,4 +625,4 @@ https://github.com/zed-industries/zed,zed,editors-and-runtimes,categories/dev-ut
 https://github.com/zhaoxuya520/reverse-skill,reverse-skill,security,categories/agent-skills/security/reverse-skill.md
 https://github.com/zhayujie/CowAgent,cowagent,wechat,categories/im-automation/wechat/cowagent.md
 https://github.com/zulip/zulip,zulip,team-chat,categories/team-chat/zulip.md
-https://gitlab.freedesktop.org/gstreamer/gstreamer,gstreamer,video-audio,categories/media-processing/video-audio/gstreamer.md
+https://gitlab.freedesktop.org/gstreamer/gstreamer,gstreamer,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md

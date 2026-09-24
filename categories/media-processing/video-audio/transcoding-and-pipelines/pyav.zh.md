@@ -2,7 +2,7 @@
 name: PyAV
 slug: pyav
 repo: https://github.com/PyAV-Org/PyAV
-category: video-audio
+category: transcoding-and-pipelines
 tags: [python, ffmpeg, libav, video, audio, decoding, encoding, frames, bindings]
 language: Python / Cython
 license: MIT
@@ -85,7 +85,7 @@ health:
 面向 FFmpeg 的 libav* 库的 Pythonic 绑定——在进程内完成解码/编码，可逐帧访问 NumPy 数组和 Python bytes，无需生成子进程。
 
 
-![PyAV — health radar](../../../assets/health/pyav.zh.svg)
+![PyAV — health radar](../../../../assets/health/pyav.zh.svg)
 
 ## 何时使用
 
@@ -106,7 +106,7 @@ health:
 |---|---|---|---|
 | [FFmpeg](ffmpeg.zh.md) | ✅ | 需要通用 CLI 或 C 库时，选 FFmpeg。 | 通用 CLI 与 C 库；能力最强，但 API 陡峭，且没有原生 Python 帧访问，需要自己包装。 |
 | [ffmpeg-python](ffmpeg-python.zh.md) | ✅ | 需要可读地构造 Python 滤镜图并生成子进程调用 CLI 时，选 ffmpeg-python。 | 用 Python 可读地构造 DAG 并生成子进程调用 ffmpeg CLI；无需编译，但也没有进程内帧访问。 |
-| [MoviePy](moviepy.zh.md) | ✅ | 需要更高层的 Python 视频编辑、特效或合成时，选 MoviePy。 | 更高层的 Python 视频编辑（特效、合成、文字），API 更友好；适合编辑，但直接帧控制力较弱。 |
+| [MoviePy](../editing-and-cutting/moviepy.zh.md) | ✅ | 需要更高层的 Python 视频编辑、特效或合成时，选 MoviePy。 | 更高层的 Python 视频编辑（特效、合成、文字），API 更友好；适合编辑，但直接帧控制力较弱。 |
 | [GStreamer](gstreamer.zh.md) | ✅ | 需要实时、嵌入应用的媒体管线框架时，选 GStreamer。 | 面向实时应用的管线式多媒体框架；学习曲线陡峭，在流式/嵌入式场景强于批量帧处理。 |
 | [HandBrake](handbrake.zh.md) | ✅ | 需要预设驱动的终端用户转码应用时，选 HandBrake。 | 终端用户转码应用（GUI + CLI）；远比原生 libav 窄，不是库，也不适合帧级脚本化。 |
 | OpenCV | 未收录 | 需要计算机视觉管线及其自有视频 I/O 时，选 OpenCV。 | 计算机视觉库，自带视频 I/O；适合采集和简单读写，但编解码器/格式覆盖度远不及 FFmpeg/libav。 |

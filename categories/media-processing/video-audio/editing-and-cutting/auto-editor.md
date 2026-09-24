@@ -2,7 +2,7 @@
 name: Auto-Editor
 slug: auto-editor
 repo: https://github.com/WyattBlue/auto-editor
-category: video-audio
+category: editing-and-cutting
 tags: [video-editing, silence-removal, audio-analysis, cli, nle-export, first-pass]
 language: Nim
 license: Unlicense
@@ -85,19 +85,19 @@ health:
 
 A command-line first-pass editor: it analyzes a recording's loudness (or motion), cuts the silent stretches for you, and can hand the result back as an editable timeline for Premiere, Resolve, Final Cut, ShotCut or Kdenlive.
 
-![Auto-Editor — health radar](../../../assets/health/auto-editor.svg)
+![Auto-Editor — health radar](../../../../assets/health/auto-editor.svg)
 
 ## When to use
 
 You have hours of talking-head footage — a stream, a tutorial series, a podcast recording, a screen-share walkthrough — and the first edit is the part nobody wants to do: finding and deleting the dead air. You are not trying to make a creative cut yet; you are trying to get to a tight file so the creative work starts from something watchable.
 
-You run `auto-editor recording.mp4` and get a tightened file back, no project, no timeline, no editor open. The deciding tradeoff against raw [FFmpeg](ffmpeg.md): FFmpeg can do every one of these cuts, but you have to author the filter graph and the decision logic yourself (`silencedetect`, then map timestamps into a `select` expression); Auto-Editor ships that decision layer — the loudness labelling, the margin around speech, the "cut this class, keep that class" model — and also writes the timeline XML for the NLEs you already use. Against [MoviePy](moviepy.md), you get a finished CLI instead of a library you have to program; against [HandBrake](handbrake.md), you get editing decisions instead of transcoding presets.
+You run `auto-editor recording.mp4` and get a tightened file back, no project, no timeline, no editor open. The deciding tradeoff against raw [FFmpeg](../transcoding-and-pipelines/ffmpeg.md): FFmpeg can do every one of these cuts, but you have to author the filter graph and the decision logic yourself (`silencedetect`, then map timestamps into a `select` expression); Auto-Editor ships that decision layer — the loudness labelling, the margin around speech, the "cut this class, keep that class" model — and also writes the timeline XML for the NLEs you already use. Against [MoviePy](moviepy.md), you get a finished CLI instead of a library you have to program; against [HandBrake](../transcoding-and-pipelines/handbrake.md), you get editing decisions instead of transcoding presets.
 
 ## How it works
 
 Auto-Editor decodes the file itself (the official binaries bundle their own media stack, so no separate FFmpeg install is required) and then walks the media in small time slices, computing one loudness value per slice. Each slice gets an integer label — `0` for silent, `1` for active — and the default rule (`--edit audio:threshold=0.04,stream=all`) keeps only the active ones. Cutting is not brutal: the `--margin` option, defaulting to `0.2s`, re-inserts a little silence before and after each kept span so speech does not start mid-word or clip. You can move the decision to motion instead (`--edit motion:threshold=0.02`), combine methods (`--edit "(or audio:0.03 motion:0.06)"`), or add further label classes with `--edit:2` / `--when:2` to make some passages play faster rather than get cut. The other half of the tool is the exit ramp: `--export premiere` (or `resolve`, `final-cut-pro`, `shotcut`, `kdenlive`, `clip-sequence`) writes an importable timeline instead of a rendered file, so you can start from its cut and finish by hand. Your side of the line is the policy — which method, which threshold, what to output; its side is finding the silences and doing the cutting.
 
-![auto-editor — backbone user story](../../../assets/flow/auto-editor.svg)
+![auto-editor — backbone user story](../../../../assets/flow/auto-editor.svg)
 
 <!-- flow-steps:begin (generated from flows/auto-editor.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -118,11 +118,11 @@ Auto-Editor decodes the file itself (the official binaries bundle their own medi
 
 ## When NOT to use
 
-- **You need frame-accurate creative editing, multiple tracks, or compositing.** This makes one decision (silent vs active) over one input. Use an NLE for the real cut — [Concat](../video-editing/concat.md) or [OpenCut](../video-editing/opencut.md) — or [MoviePy](moviepy.md) when the edit lives in Python.
-- **Your audio has no silence to remove — music videos, ambient footage, dense dialogue with a room tone floor.** Loudness labelling has nothing to work with. Switch to `--edit motion`, or use [FFmpeg](ffmpeg.md) and cut by hand.
-- **You need the tool as a library inside a service.** Auto-Editor is a CLI with its own binary; embed [MoviePy](moviepy.md), [PyAV](pyav.md) or [ffmpeg-python](ffmpeg-python.md) instead.
-- **Your real job is format conversion or shrinking a file, not editing it.** Use [HandBrake](handbrake.md) (presets, hardware encoders) or [FFmpeg](ffmpeg.md).
-- **You want the cut decided by speech or scene semantics, not volume.** ASR-driven editing is a different tool class — [Whisper](whisper.md) gives you the transcript, but the cut logic is yours.
+- **You need frame-accurate creative editing, multiple tracks, or compositing.** This makes one decision (silent vs active) over one input. Use an NLE for the real cut — [Concat](../../video-editing/concat.md) or [OpenCut](../../video-editing/opencut.md) — or [MoviePy](moviepy.md) when the edit lives in Python.
+- **Your audio has no silence to remove — music videos, ambient footage, dense dialogue with a room tone floor.** Loudness labelling has nothing to work with. Switch to `--edit motion`, or use [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) and cut by hand.
+- **You need the tool as a library inside a service.** Auto-Editor is a CLI with its own binary; embed [MoviePy](moviepy.md), [PyAV](../transcoding-and-pipelines/pyav.md) or [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.md) instead.
+- **Your real job is format conversion or shrinking a file, not editing it.** Use [HandBrake](../transcoding-and-pipelines/handbrake.md) (presets, hardware encoders) or [FFmpeg](../transcoding-and-pipelines/ffmpeg.md).
+- **You want the cut decided by speech or scene semantics, not volume.** ASR-driven editing is a different tool class — [Whisper](../speech-and-subtitles/whisper.md) gives you the transcript, but the cut logic is yours.
 - **You distribute software through a managed channel that rejects unsigned binaries.** The official releases are unsigned, and the docs' own advice is to ignore the macOS/Windows "unknown developer" warnings; `brew install auto-editor` is the cleanest path.
 - **You are following an old tutorial that says `pip install auto-editor`.** The project states the CLI is no longer published on pip; the PyPI copy is stale, so the pip route silently gives you an old version. Install from the Releases page or Homebrew.
 - **You need the hosted "online" or desktop application.** Those products reuse this repository's assets but carry their own proprietary license — the repo's public-domain grant does not cover them.
@@ -131,9 +131,9 @@ Auto-Editor decodes the file itself (the official binaries bundle their own medi
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [FFmpeg](ffmpeg.md) | ✅ | When the edit is one-off and you already think in filter graphs, pick FFmpeg; pick Auto-Editor when the whole job is a repeating "remove the dead air and give me a timeline" pass, because FFmpeg gives you raw primitives and no notion of a silence policy or an NLE hand-off. | Auto-Editor is one binary with the decisions pre-made and XML export built in; FFmpeg is universal and scriptable but puts the labelling, margin and timeline-building logic on you. |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | When the edit is one-off and you already think in filter graphs, pick FFmpeg; pick Auto-Editor when the whole job is a repeating "remove the dead air and give me a timeline" pass, because FFmpeg gives you raw primitives and no notion of a silence policy or an NLE hand-off. | Auto-Editor is one binary with the decisions pre-made and XML export built in; FFmpeg is universal and scriptable but puts the labelling, margin and timeline-building logic on you. |
 | [MoviePy](moviepy.md) | ✅ | When you are already inside a Python pipeline that composites and re-encodes, pick MoviePy; pick Auto-Editor when the deliverable is a cut of a long recording and you would rather not write the audio-analysis code, because MoviePy is a general editing API and does not ship silence detection. | Auto-Editor's CLI does exactly one job with a labelled-segment model and no code; MoviePy is a library that can express any edit but gives you no built-in policy. |
-| [HandBrake](handbrake.md) | ✅ | When you need to transcode a finished file into a distribution format, pick HandBrake; when you need to decide what stays in the file at all, pick Auto-Editor, because HandBrake's presets cannot detect or remove silence. | HandBrake has hardware encoders and battle-tested presets; Auto-Editor decides content rather than format and does not compete on encoding options. |
+| [HandBrake](../transcoding-and-pipelines/handbrake.md) | ✅ | When you need to transcode a finished file into a distribution format, pick HandBrake; when you need to decide what stays in the file at all, pick Auto-Editor, because HandBrake's presets cannot detect or remove silence. | HandBrake has hardware encoders and battle-tested presets; Auto-Editor decides content rather than format and does not compete on encoding options. |
 | Descript | 未收录 | When the editing is text-driven (edit the transcript, the video follows) and a subscription plus cloud upload is acceptable, pick Descript; pick Auto-Editor when the footage must stay local and the pipeline must be scriptable, because Descript is closed SaaS with no CLI you can wire into a batch. | Descript gives a polished interactive text-editing experience; Auto-Editor gives a local, free, unattended pass that leaves an editable timeline in your own NLE. |
 | 剪映专业版 / CapCut (closed app) | 未收录 | When the first pass is a one-off and you want vendor polish, do it in the app; pick Auto-Editor when the same trim has to run unattended on every recording you produce, because the app has no supported batch entry point. | The app is free and visual; Auto-Editor is unattended and scriptable but blind to anything except loudness or motion. |
 

@@ -2,7 +2,7 @@
 name: claude-video
 slug: claude-video
 repo: https://github.com/bradautomates/claude-video
-category: video-audio
+category: speech-and-subtitles
 tags: [video-audio, video-understanding, agent-skill, app]
 language: Python
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.
 
-![claude-video — health radar](../../../assets/health/claude-video.svg)
+![claude-video — health radar](../../../../assets/health/claude-video.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ It fits tasks like analyzing a launch video, summarizing a lecture, diagnosing a
 
 ## When NOT to use
 
-- **You need video generation, editing, transcoding, or production.** Use [MoviePy](moviepy.md), [FFmpeg](ffmpeg.md), [MLT](mlt.md), or a video-production tool; claude-video is a video-understanding helper.
+- **You need video generation, editing, transcoding, or production.** Use [MoviePy](../editing-and-cutting/moviepy.md), [FFmpeg](../transcoding-and-pipelines/ffmpeg.md), [MLT](../editing-and-cutting/mlt.md), or a video-production tool; claude-video is a video-understanding helper.
 - **You only need raw transcription.** [OpenAI Whisper](whisper.md), native captions, or a dedicated ASR pipeline is simpler when frames are irrelevant.
 - **You cannot run shell tools or install `yt-dlp`/`ffmpeg`.** The workflow depends on local command execution; claude.ai web also needs code execution/file creation enabled.
 - **The video source blocks download or violates terms/permissions.** `yt-dlp` support does not grant rights to access or redistribute content.
@@ -96,9 +96,9 @@ It fits tasks like analyzing a launch video, summarizing a lecture, diagnosing a
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.md) | ✅ | Choose FFmpeg when you need raw decode/transcode/filter control. | FFmpeg is the engine; claude-video wraps media extraction for agent understanding. |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | Choose FFmpeg when you need raw decode/transcode/filter control. | FFmpeg is the engine; claude-video wraps media extraction for agent understanding. |
 | [OpenAI Whisper](whisper.md) | ✅ | Choose Whisper when speech-to-text is the whole job. | Whisper handles audio text; claude-video combines transcript with frames and agent prompting. |
-| [MoviePy](moviepy.md) | ✅ | Choose MoviePy for programmatic editing/compositing. | MoviePy produces edited videos; claude-video reads videos for analysis. |
+| [MoviePy](../editing-and-cutting/moviepy.md) | ✅ | Choose MoviePy for programmatic editing/compositing. | MoviePy produces edited videos; claude-video reads videos for analysis. |
 | Custom yt-dlp + ffmpeg script | 未收录 | Write custom when you need a fixed ingestion pipeline without agent skill packaging. | Custom scripts can be smaller and deterministic; claude-video already handles agent-facing UX and frame budgets. |
 
 

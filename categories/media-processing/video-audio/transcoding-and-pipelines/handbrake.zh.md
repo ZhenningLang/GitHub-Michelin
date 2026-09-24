@@ -2,7 +2,7 @@
 name: HandBrake
 slug: handbrake
 repo: https://github.com/HandBrake/HandBrake
-category: video-audio
+category: transcoding-and-pipelines
 tags: [video, transcoding, h264, h265, gui, cli, dvd, bluray, ffmpeg]
 language: C
 license: GPL-2.0-or-later
@@ -79,7 +79,7 @@ health:
 开源视频转码器，用于将几乎任意格式的视频转换为现代广泛支持的编解码器——基于 FFmpeg、x264 和 x265 构建，带有预设驱动的 GUI 和配套的 `HandBrakeCLI` 命令行工具。
 
 
-![HandBrake — health radar](../../../assets/health/handbrake.zh.svg)
+![HandBrake — health radar](../../../../assets/health/handbrake.zh.svg)
 
 ## 何时使用
 
@@ -99,7 +99,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [FFmpeg](ffmpeg.zh.md) | ✅ | 需要万能编解码器/格式瑞士军刀、库嵌入或自定义滤镜图时，选 FFmpeg。 | 万能编解码器/格式瑞士军刀，拥有无限的滤镜图和库嵌入能力；学习曲线陡峭得多，且没有内置 GUI，但你能控制每个参数。 |
-| [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 需要基于时间线的非线性视频编辑器或合成框架时，选 MLT/Shotcut。 | 基于时间线的 NLE/合成框架；实际编解码工作仍由 FFmpeg 完成。需要剪辑而非单纯转码时用它。 |
+| [MLT](../editing-and-cutting/mlt.zh.md) / Shotcut | 部分已收录 | 需要基于时间线的非线性视频编辑器或合成框架时，选 MLT/Shotcut。 | 基于时间线的 NLE/合成框架；实际编解码工作仍由 FFmpeg 完成。需要剪辑而非单纯转码时用它。 |
 | [GStreamer](gstreamer.zh.md) | ✅ | 需要可组合流水线框架用于应用嵌入或直播流媒体时，选 GStreamer。 | 可组合流水线框架，用于应用嵌入或直播流媒体；编程模型更陡峭，但比起文件到文件转码器，在实时和设备管线方面更灵活。 |
 | AWS Elemental MediaConvert / 云转码 | 未收录 | 需要弹性、托管、按分钟计费的转码且不想承担运维负担时，选云转码。 | 托管的按分钟计费转码服务；零运维、弹性伸缩，但有厂商锁定、按分钟成本，且是 SaaS——不是你可自托管的仓库。 |
 | VLC | 未收录 | 需要带少量转换功能的媒体播放器，而非专用转码器时，选 VLC。 | 主要是媒体播放器；其转换/导出功能只是配菜，不是主菜。用于偶尔的一次性导出，而非批量归档工作流。 |

@@ -2,7 +2,7 @@
 name: MLT
 slug: mlt
 repo: https://github.com/mltframework/mlt
-category: video-audio
+category: editing-and-cutting
 tags: [video, editing, nle, timeline, compositing, c++, ffmpeg, kdenlive, shotcut]
 language: C++
 license: LGPL-2.1-or-later
@@ -81,7 +81,7 @@ A multimedia framework for building non-linear video editors (NLEs) — timeline
 
 
 
-![MLT — health radar](../../../assets/health/mlt.svg)
+![MLT — health radar](../../../../assets/health/mlt.svg)
 
 ## When to use
 
@@ -90,7 +90,7 @@ You're building a video application that needs a timeline: a custom NLE for a ni
 ## When NOT to use
 
 - **You need a ready-to-use video editor.** MLT is a framework, not an application. If you want an editor you can open and cut with today, use Shotcut, Kdenlive, or another NLE instead of MLT directly.
-- **You only need batch transcoding or format conversion.** MLT adds timeline complexity you don't need. For straight decode/encode/transcode, use [FFmpeg](ffmpeg.md) directly — it's faster, simpler, and has far broader community support.
+- **You only need batch transcoding or format conversion.** MLT adds timeline complexity you don't need. For straight decode/encode/transcode, use [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) directly — it's faster, simpler, and has far broader community support.
 - **You need real-time streaming or a persistent media pipeline.** MLT is designed around offline/sequential timeline rendering, not live stream processing. For real-time pipelines, look at GStreamer.
 - **You want a Python-native, friendly video editing API.** MLT's primary interface is C++ with XML project descriptors. For Python-first programmatic editing, consider MoviePy or PyAV instead.
 - **You're building a proprietary closed-source product and need to be absolutely sure about LGPL linkage.** MLT is LGPL-2.1+; while linking as a library is generally permitted under LGPL, the dynamic vs static linking boundaries and any plugin-filter combinations must be reviewed for your specific distribution model. If license purity is a hard constraint, verify with counsel. [未验证]
@@ -100,11 +100,11 @@ You're building a video application that needs a timeline: a custom NLE for a ni
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.md) | ✅ | Use FFmpeg for raw decode/encode/transcode/filter pipelines; use MLT when you need a timeline model on top of that engine. | The universal media Swiss-army-knife; steep API and LGPL/GPL build-licensing trap. MLT sits above it for editorial timeline semantics. |
-| [GStreamer](gstreamer.md) | ✅ | Pick GStreamer for real-time, persistent, app-embedded pipelines; pick MLT for offline timeline editing. | Pipeline/element graph framework for live/streaming and app-embedded media; heavier programming model but more composable for real-time apps. |
-| [HandBrake](handbrake.md) | ✅ | Pick HandBrake for end-user preset-driven transcoding; pick MLT for programmatic timeline editing. | Preset-driven GUI and CLI for ripping/transcoding to modern MP4/MKV; end-user app, not a library, far narrower than raw FFmpeg. |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.md) | ✅ | Use FFmpeg for raw decode/encode/transcode/filter pipelines; use MLT when you need a timeline model on top of that engine. | The universal media Swiss-army-knife; steep API and LGPL/GPL build-licensing trap. MLT sits above it for editorial timeline semantics. |
+| [GStreamer](../transcoding-and-pipelines/gstreamer.md) | ✅ | Pick GStreamer for real-time, persistent, app-embedded pipelines; pick MLT for offline timeline editing. | Pipeline/element graph framework for live/streaming and app-embedded media; heavier programming model but more composable for real-time apps. |
+| [HandBrake](../transcoding-and-pipelines/handbrake.md) | ✅ | Pick HandBrake for end-user preset-driven transcoding; pick MLT for programmatic timeline editing. | Preset-driven GUI and CLI for ripping/transcoding to modern MP4/MKV; end-user app, not a library, far narrower than raw FFmpeg. |
 | [MoviePy](moviepy.md) | ✅ | Pick MoviePy for friendly Python batch video editing; pick MLT for C++ timeline precision. | Friendly Python API for programmatic video editing — cutting, compositing, text, effects — but batch-only and slower than raw FFmpeg for large files. |
-| [PyAV](pyav.md) | ✅ | Pick PyAV for Pythonic libav bindings; pick MLT for timeline model and editorial semantics. | Pythonic bindings to FFmpeg's libav*; gives you codec-level control in Python, but no timeline or NLE abstractions. |
+| [PyAV](../transcoding-and-pipelines/pyav.md) | ✅ | Pick PyAV for Pythonic libav bindings; pick MLT for timeline model and editorial semantics. | Pythonic bindings to FFmpeg's libav*; gives you codec-level control in Python, but no timeline or NLE abstractions. |
 | Shotcut | 未收录 | Shotcut is built on MLT. Use Shotcut when you want a ready-made open-source NLE; use MLT directly when you need to embed or extend the engine. | The open-source NLE built on MLT; reach for it when you need an editor, not a framework. |
 | Kdenlive | 未收录 | Kdenlive is built on MLT. Use Kdenlive when you want a KDE-integrated NLE; use MLT directly when you need the engine. | Another open-source NLE built on MLT; KDE/Qt integration, more features than Shotcut in some areas, but still an app, not a library. |
 | DaVinci Resolve | 未收录 | Use DaVinci Resolve for professional-grade color, VFX, and editorial — it's a commercial NLE, not an OSS framework. | Professional commercial NLE with world-class color grading; free tier exists but not open-source and not embeddable as a library. |
