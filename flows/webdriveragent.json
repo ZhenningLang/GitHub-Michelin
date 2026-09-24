@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "WebDriverAgent does", "zh": "WebDriverAgent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the runner project in Xcode", "zh": "在 Xcode 里打开 runner 工程",
+     "code": "WebDriverAgent.xcodeproj"},
+    {"lane": "you", "en": "Run the runner scheme on a simulator or device", "zh": "在模拟器或真机上运行 runner scheme",
+     "code": "WebDriverAgentRunner", "component": {"en": "XCTest runner", "zh": "XCTest runner"}},
+    {"lane": "them", "en": "Build and launch the runner, then start a WebDriver HTTP server on the target", "zh": "构建并启动 runner，然后在目标上开一个 WebDriver 服务"},
+    {"lane": "you", "en": "Send WebDriver and Mobile JSON Wire requests", "zh": "发送 WebDriver 与 Mobile JSON Wire 请求"},
+    {"lane": "them", "en": "Call Apple's API through XCTest to execute the command and return the response", "zh": "通过 XCTest 调用 Apple API 执行命令，并回传响应"}
+  ],
+  "value": {"en": "iOS accepts standard WebDriver commands on a device or simulator — you build tooling on a real protocol, not private symbols.", "zh": "iOS 在真机或模拟器上接受标准 WebDriver 命令——你在真协议上搭工具，而不是私有符号。"},
+  "sources": ["README.md (WebDriver server for iOS, links XCTest.framework, adopted by Appium via XCUITest driver)", "README.md Getting Started on This Repository (open WebDriverAgent.xcodeproj, start WebDriverAgentRunner, send requests)"]
+}

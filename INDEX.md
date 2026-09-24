@@ -57,6 +57,7 @@
 | **databases** | Databases and database tooling — clients, GUIs, sync, and Redis/ES-compatible stores. | [→](categories/databases/INDEX.md) |
 | **object-storage** | S3-compatible object storage servers you run yourself. | [→](categories/object-storage/INDEX.md) |
 | **desktop-automation** | Programmatic desktop GUI automation (mouse/keyboard/screen). | [→](categories/desktop-automation/INDEX.md) |
+| **mobile-automation** | Programmatically drive iOS/Android simulators, emulators, and devices — input injection, UI automation, and E2E test frameworks. | [→](categories/mobile-automation/INDEX.md) |
 | **game-dev** | Game development libraries and engines. | [→](categories/game-dev/INDEX.md) |
 | **kafka-tools** | Apache Kafka clients and management UIs. | [→](categories/kafka-tools/INDEX.md) |
 | **networking** | Networking libraries — SSH, DNS, tunnels, RPC, and traffic shaping. | [→](categories/networking/INDEX.md) |

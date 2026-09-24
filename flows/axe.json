@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "AXe does", "zh": "AXe 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "安装 CLI",
+     "code": "brew install cameroncooke/axe/axe", "component": {"en": "Homebrew tap", "zh": "Homebrew tap"}},
+    {"lane": "you", "en": "Find the booted simulator's UDID", "zh": "找到已启动模拟器的 UDID",
+     "code": "axe list-simulators"},
+    {"lane": "them", "en": "Attach to the simulator over the private HID and Accessibility APIs", "zh": "通过私有 HID 与 Accessibility API 挂上模拟器"},
+    {"lane": "you", "en": "Tap an element by its accessibility label", "zh": "按无障碍标签点击一个元素",
+     "code": "axe tap --label \"Continue\" --udid \"$UDID\""},
+    {"lane": "them", "en": "Resolve the label to a node in the AX tree and inject the touch", "zh": "在无障碍树里把标签解析成节点，并注入触摸"},
+    {"lane": "you", "en": "Take a screenshot", "zh": "截一张图",
+     "code": "axe screenshot --output ./screen.png --udid \"$UDID\""}
+  ],
+  "value": {"en": "A handful of simulator actions from a shell, with no test framework, server, or companion to run.", "zh": "几个模拟器动作，一条 shell 命令一个；不用测试框架、服务端或 companion。"},
+  "sources": ["README.md Install + Basic usage", "README.md Xcode compatibility + E2E development (idb fork)"]
+}

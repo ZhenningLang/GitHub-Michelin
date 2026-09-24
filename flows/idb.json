@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "idb does", "zh": "idb 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the companion and the CLI", "zh": "安装 companion 与 CLI",
+     "code": "brew install facebook/fb/idb", "component": {"en": "Homebrew formula", "zh": "Homebrew formula"}},
+    {"lane": "you", "en": "List targets", "zh": "列出目标",
+     "code": "idb list-targets"},
+    {"lane": "them", "en": "Attach a companion process to each simulator or device", "zh": "给每台模拟器或设备挂一个 companion 进程",
+     "component": {"en": "idb_companion", "zh": "idb_companion"}},
+    {"lane": "you", "en": "Launch an app on a target", "zh": "在某个目标上启动一个 app",
+     "code": "idb launch com.apple.mobilesafari"},
+    {"lane": "them", "en": "Execute it on the target through the private frameworks and return the result", "zh": "通过私有框架在目标上执行，并把结果回传"}
+  ],
+  "value": {"en": "Your script addresses simulators and real devices uniformly, from a client that can run off the machine — you own the orchestration.", "zh": "你的脚本用同一套命令寻址模拟器和真机，客户端还能跑在别的机器上——编排权在你手里。"},
+  "sources": ["README.md Quick Start + Quick Start commands", "README.md architecture paragraph (companion/client, FBSimulatorControl/FBDeviceControl)"]
+}

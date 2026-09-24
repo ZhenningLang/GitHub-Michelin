@@ -56,6 +56,7 @@
 | **databases** | 数据库与数据库工具——客户端、GUI、同步，以及 Redis/ES 兼容存储。 | [→](categories/databases/INDEX.zh.md) |
 | **object-storage** | 你自建的 S3 兼容对象存储服务端。 | [→](categories/object-storage/INDEX.zh.md) |
 | **desktop-automation** | 程序化桌面 GUI 自动化（鼠标/键盘/屏幕）。 | [→](categories/desktop-automation/INDEX.zh.md) |
+| **mobile-automation** | 程序化驱动 iOS／Android 模拟器与真机——输入注入、UI 自动化、端到端测试框架。 | [→](categories/mobile-automation/INDEX.zh.md) |
 | **game-dev** | 游戏开发库与引擎。 | [→](categories/game-dev/INDEX.zh.md) |
 | **kafka-tools** | Apache Kafka 客户端与管理界面。 | [→](categories/kafka-tools/INDEX.zh.md) |
 | **networking** | 网络库——SSH、DNS、隧道、RPC 与流量整形。 | [→](categories/networking/INDEX.zh.md) |

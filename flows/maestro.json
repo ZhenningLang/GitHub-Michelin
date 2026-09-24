@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Maestro does", "zh": "Maestro 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI (needs Java 17+)", "zh": "安装 CLI（需要 Java 17+）",
+     "code": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash", "component": {"en": "Maestro CLI", "zh": "Maestro CLI"}},
+    {"lane": "you", "en": "Write a flow as a flat list of YAML commands", "zh": "用一列扁平的 YAML 命令写流程",
+     "code": "launchApp · tapOn · assertVisible"},
+    {"lane": "you", "en": "Run the flow against a booted device or simulator", "zh": "对着已启动的设备或模拟器运行流程",
+     "code": "maestro test contacts.yaml"},
+    {"lane": "them", "en": "Connect to the device and resolve elements through the accessibility layer", "zh": "连上设备，通过无障碍层解析元素"},
+    {"lane": "them", "en": "Auto-wait for the UI to settle and report each step's pass/fail", "zh": "自动等待界面稳定，并逐步报告通过／失败"}
+  ],
+  "value": {"en": "A readable, framework-agnostic E2E flow running in minutes — no drivers, SDKs, or manual waits.", "zh": "几分钟跑起一条可读、跨框架的端到端流程——不用驱动、SDK，也不用写等待。"},
+  "sources": ["README.md (install, YAML example with appId/launchApp/tapOn, why-Maestro)", "docs.maestro.dev run-your-first-test (maestro test <flow>.yaml)"]
+}

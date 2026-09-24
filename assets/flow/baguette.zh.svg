@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="635" viewBox="0 0 880 635" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="635" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="499" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="499" rx="10"/>
+<rect class="pillT" x="474" y="40" width="141.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">baguette 做的</text>
+<path class="edge" d="M62,170 L62,194" marker-end="url(#a)"/>
+<path class="hand" d="M408,232.5 C439.0,232.5 439.0,256 470,256" marker-end="url(#a)"/>
+<path class="hand" d="M472,280.5 C441.0,280.5 441.0,319 410,319" marker-end="url(#a)"/>
+<path class="hand" d="M408,341.0 C439.0,341.0 439.0,379 470,379" marker-end="url(#a)"/>
+<path class="hand" d="M472,391.0 C441.0,391.0 441.0,437 410,437" marker-end="url(#a)"/>
+<path class="hand" d="M408,459.0 C439.0,459.0 439.0,483 470,483" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="98" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="98" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">在 Mac 上安装 CLI</text>
+<text class="c" x="82" y="125">brew install baguette</text>
+<text class="comp" x="82" y="148">组件：Homebrew formula</text>
+<rect class="card" x="40" y="196" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="196" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="220" r="10"/>
+<text class="num" x="62" y="224" text-anchor="middle">2</text>
+<text class="t" x="82" y="225">无头启动一台模拟器</text>
+<text class="c" x="82" y="249">baguette boot --udid &lt;UDID&gt;</text>
+<rect class="cardT" x="472" y="232" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="232" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="256" r="10"/>
+<text class="num" x="494" y="260" text-anchor="middle">3</text>
+<text class="t" x="514" y="261">挂上已启动的设备，打开 iOS 26 接受的宿主机</text>
+<text class="t" x="514" y="283">HID 通路</text>
+<text class="comp" x="514" y="311">组件：宿主机 HID 注入</text>
+<rect class="card" x="40" y="295" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="295" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="319" r="10"/>
+<text class="num" x="62" y="323" text-anchor="middle">4</text>
+<text class="t" x="82" y="324">用设备点坐标发一次点击</text>
+<text class="c" x="82" y="348">baguette tap --udid &lt;UDID&gt; --x 219 --y 478</text>
+<text class="c" x="82" y="367">--width 438 --height 954</text>
+<rect class="cardT" x="472" y="355" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="355" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="379" r="10"/>
+<text class="num" x="494" y="383" text-anchor="middle">5</text>
+<text class="t" x="514" y="384">把触摸走 9 参数 digitizer 通路，让 app 真</text>
+<text class="t" x="514" y="406">正的处理器被触发</text>
+<rect class="card" x="40" y="413" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="413" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="437" r="10"/>
+<text class="num" x="62" y="441" text-anchor="middle">6</text>
+<text class="t" x="82" y="442">抓一张 App Store 尺寸的截图</text>
+<text class="c" x="82" y="466">baguette screenshot --udid &lt;UDID&gt; --size</text>
+<text class="c" x="82" y="485">appstore-6.9 -o hero.png</text>
+<rect class="cardT" x="472" y="459" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="459" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="483" r="10"/>
+<text class="num" x="494" y="487" text-anchor="middle">7</text>
+<text class="t" x="514" y="488">合成并写出 PNG</text>
+<rect class="val" x="28" y="541" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="565">价值</text>
+<text class="valT" x="48" y="589">不再需要人守着 Simulator.app，也不再依赖坏掉的 HID 工具——一个 CLI 无头完成输入与投屏。</text>
+</svg>
