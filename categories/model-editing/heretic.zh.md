@@ -128,10 +128,10 @@ Heretic 驱动一个 Hugging Face Transformers 模型走完一轮消融流程。
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FailSpy/abliterator](https://github.com/FailSpy/abliterator) | 未收录 | 想针对 TransformerLens 的 hook 写单次消融实验脚本时选 abliterator；想要参数搜索和拒答／KL 度量都替你做完时选 Heretic。 | abliterator 是 MIT 的底层库，但自 2024-06 起停更；Heretic 自动且活跃，代价是 AGPL 与必须上显卡。 |
-| [ErisForge](https://github.com/Tsadoq/ErisForge) | 未收录 | 想用一个小型 PyTorch 库消融任意选定的概念（不限于拒答）时选 ErisForge；目标明确是移除拒答、并要自动的质量取舍时选 Heretic。 | ErisForge 更通用，但仓库里没有 `LICENSE` 文件（2026-09-23 核实），用量也小得多（280 star）。 |
-| [remove-refusals-with-transformers](https://github.com/Sumandora/remove-refusals-with-transformers) | 未收录 | 想要一份简短、易读、Apache-2.0 的参考脚本，自己理解或改造消融时选它；需要带断点续跑、量化和导出能力的持续维护流水线时选 Heretic。 | 该脚本宽松又简单，但最后推送停在 2025-11，既没有优化器也没有质量指标。 |
-| [deccp](https://github.com/AUGMXNT/deccp) | 未收录 | 目标专门是中文大模型的审查、并且想用它的评测框架时选 deccp；要一个通用的、与模型无关的流水线时选 Heretic。 | deccp 更窄，且自 2025-04 起停更（98 star）；Heretic 覆盖面更广也更活跃。 |
+| [abliterator](abliterator.zh.md) | ✅ | 想针对 TransformerLens 的 hook 写单次消融实验脚本时选 abliterator；想要参数搜索和拒答／KL 度量都替你做完时选 Heretic。 | abliterator 是 MIT 的底层库，但自 2024-06 起停更；Heretic 自动且活跃，代价是 AGPL 与必须上显卡。 |
+| [ErisForge](erisforge.zh.md) | ✅ | 想用一个小型 PyTorch 库消融任意选定的概念（不限于拒答）时选 ErisForge；目标明确是移除拒答、并要自动的质量取舍时选 Heretic。 | ErisForge 更通用，但仓库里没有 `LICENSE` 文件（2026-09-24 核实），用量也小得多（280 star）。 |
+| [remove-refusals-with-transformers](remove-refusals-with-transformers.zh.md) | ✅ | 想要一份简短、易读、Apache-2.0 的参考脚本，自己理解或改造消融时选它；需要带断点续跑、量化和导出能力的持续维护流水线时选 Heretic。 | 该脚本宽松又简单，但最后推送停在 2025-11，既没有优化器也没有质量指标。 |
+| [deccp](deccp.zh.md) | ✅ | 目标专门是中文大模型的审查、并且想用它的评测框架时选 deccp；要一个通用的、与模型无关的流水线时选 Heretic。 | deccp 更窄，且自 2025-04 起停更（98 star）；Heretic 覆盖面更广也更活跃。 |
 | 用微调把拒答行为训掉——[Unsloth](../llm-training/unsloth.zh.md) 与 [HF TRL](../llm-training/trl.zh.md) | ✅ | 能弄到偏好数据、需要一个可评估、可复现的行为时选微调；没有数据集、只想一条命令改权重时选 Heretic。 | 微调直接对准目标行为、更可控，但要付出数据、标注和一轮真实训练；消融更便宜却更粗暴，且它的拒答率只是关键词代理指标。 |
 
 ## 技术栈
