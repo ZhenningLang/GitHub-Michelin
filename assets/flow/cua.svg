@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="956" viewBox="0 0 880 956" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="956" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="798" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="798" rx="10"/>
+<rect class="pillT" x="474" y="40" width="101.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Cua does</text>
+<path class="edge" d="M62,211 L62,235" marker-end="url(#a)"/>
+<path class="hand" d="M408,297.0 C439.0,297.0 439.0,321 470,321" marker-end="url(#a)"/>
+<path class="edge" d="M494,417 L494,441" marker-end="url(#a)"/>
+<path class="edge" d="M494,562 L494,586" marker-end="url(#a)"/>
+<path class="edge" d="M494,685 L494,709" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the driver once, then point an</text>
+<text class="t" x="82" y="123">agent at it</text>
+<text class="c" x="82" y="147">curl -fsSL</text>
+<text class="c" x="82" y="166">https://cua.ai/driver/install.sh | bash</text>
+<text class="comp" x="82" y="189">component: driver installer</text>
+<rect class="card" x="40" y="237" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="237" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="261" r="10"/>
+<text class="num" x="62" y="265" text-anchor="middle">2</text>
+<text class="t" x="82" y="266">Optionally claim a disposable desktop</text>
+<text class="t" x="82" y="288">so actions skip your machine</text>
+<text class="c" x="82" y="312">Sandbox.ephemeral(...)</text>
+<text class="comp" x="82" y="335">component: sandbox / Fleet claim</text>
+<rect class="cardT" x="472" y="297" width="368" height="120" rx="8"/>
+<rect class="accT" x="472" y="297" width="4" height="120" rx="2"/>
+<circle class="accT" cx="494" cy="321" r="10"/>
+<text class="num" x="494" y="325" text-anchor="middle">3</text>
+<text class="t" x="514" y="326">Runs as a process that speaks MCP over</text>
+<text class="t" x="514" y="348">stdio</text>
+<text class="c" x="514" y="372">cua-driver mcp</text>
+<text class="comp" x="514" y="395">component: Cua Driver</text>
+<rect class="cardT" x="472" y="443" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="443" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="467" r="10"/>
+<text class="num" x="494" y="471" text-anchor="middle">4</text>
+<text class="t" x="514" y="472">Reads window and accessibility state,</text>
+<text class="t" x="514" y="494">then sends OS-level input in the</text>
+<text class="t" x="514" y="516">background</text>
+<text class="comp" x="514" y="544">component: driver tools</text>
+<rect class="cardT" x="472" y="588" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="588" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="612" r="10"/>
+<text class="num" x="494" y="616" text-anchor="middle">5</text>
+<text class="t" x="514" y="617">Runs that desktop and destroys it when</text>
+<text class="t" x="514" y="639">the run ends</text>
+<text class="comp" x="514" y="667">component: sandbox runtime</text>
+<rect class="cardT" x="472" y="711" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="711" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="735" r="10"/>
+<text class="num" x="494" y="739" text-anchor="middle">6</text>
+<text class="t" x="514" y="740">Hands action results and screenshots</text>
+<text class="t" x="514" y="762">back to the agent loop</text>
+<text class="comp" x="514" y="790">component: driver tools</text>
+<rect class="val" x="28" y="840" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="864">VALUE</text>
+<text class="valT" x="48" y="888">You get OS-level reach across any app or dialog without hand-building the VM, screenshot</text>
+<text class="valT" x="48" y="910">loop, and input plumbing</text>
+</svg>

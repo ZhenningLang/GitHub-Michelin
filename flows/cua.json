@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Cua does", "zh": "Cua 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the driver once, then point an agent at it", "zh": "装好驱动，把 agent 接上", "code": "curl -fsSL https://cua.ai/driver/install.sh | bash", "component": {"en": "driver installer", "zh": "驱动安装脚本"}},
+    {"lane": "you", "en": "Optionally claim a disposable desktop so actions skip your machine", "zh": "可选地领一台可丢弃的桌面，别碰真机", "code": "Sandbox.ephemeral(...)", "component": {"en": "sandbox / Fleet claim", "zh": "沙箱 / Fleet 认领"}},
+    {"lane": "them", "en": "Runs as a process that speaks MCP over stdio", "zh": "作为进程运行，走 stdio 上的 MCP", "code": "cua-driver mcp", "component": {"en": "Cua Driver", "zh": "Cua Driver"}},
+    {"lane": "them", "en": "Reads window and accessibility state, then sends OS-level input in the background", "zh": "读窗口与无障碍状态，后台发系统级输入", "component": {"en": "driver tools", "zh": "驱动工具"}},
+    {"lane": "them", "en": "Runs that desktop and destroys it when the run ends", "zh": "跑那台桌面，运行结束就销毁", "component": {"en": "sandbox runtime", "zh": "沙箱运行时"}},
+    {"lane": "them", "en": "Hands action results and screenshots back to the agent loop", "zh": "把动作结果和截图交回 agent 循环", "component": {"en": "driver tools", "zh": "驱动工具"}}
+  ],
+  "value": {
+    "en": "You get OS-level reach across any app or dialog without hand-building the VM, screenshot loop, and input plumbing",
+    "zh": "不用自己拼 VM、截图管线和输入通路，就能覆盖任意应用与系统弹窗"
+  },
+  "sources": [
+    "README.md — driver install scripts (curl -fsSL https://cua.ai/driver/install.sh | bash; Windows: irm https://cua.ai/driver/install.ps1 | iex) and 'Connect through the CLI, MCP, or typed SDKs. Background delivery lets agents work without moving your pointer'",
+    "libs/cua-driver/README.md — 'Speaks MCP over stdio'; 'cua-driver mcp'; 'cua-driver call'; permission modes standard/bounded/unrestricted; 'cua-driver mcp --grant existing-profile'",
+    "libs/python/cua-sandbox/README.md — Sandbox.ephemeral / Sandbox.create with cpu= and memory_mb=, pool claims, and the unsandboxed Localhost.connect() path",
+    "README.md — Cua Fleets at run.cua.ai: 'your code claims a desktop from a pool and uses the Sandbox SDK to run commands, capture screenshots, and interact with apps inside it'"
+  ]
+}
