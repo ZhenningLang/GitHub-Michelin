@@ -1152,3 +1152,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Heretic** | 当一个对齐后的开源模型拒答那些对你的工作是正当的提示词，而你想自动把拒答方向消融掉、并带一个可量化的质量取舍时用它——一张显卡、不用训练数据、工具侧是 AGPL。 | AGPL-3.0-or-later | B（6/6） | [中](categories/model-editing/heretic.zh.md) · [EN](categories/model-editing/heretic.md) |
+| **Remove Refusals with Transformers** | 想要最短、可读的原生 `transformers` 拒答移除配方时用它——两个 Apache-2.0 脚本供阅读与改造，没有优化器、没有导出、也不维护。 | Apache-2.0 | C（5/6） | [中](categories/model-editing/remove-refusals-with-transformers.zh.md) · [EN](categories/model-editing/remove-refusals-with-transformers.md) |
+| **abliterator** | 想自己写脚本、针对 TransformerLens 的 hook 逐步检查消融过程时用它——激活缓存、方向打分、改权重——代价是仓库自 2024-06 起停更。 | MIT | D（4/6） | [中](categories/model-editing/abliterator.zh.md) · [EN](categories/model-editing/abliterator.md) |
+| **ErisForge** | 想要一个可 `pip` 安装、能对选定解码层消融或“增强”某种行为、能给拒答打分并保存模型的库时用它——代价是单一维护者、仓库没有 `LICENSE` 文件。 | MIT（仅声明） | "?"（2/6） | [中](categories/model-editing/erisforge.zh.md) · [EN](categories/model-editing/erisforge.md) |
+| **deccp** | 只在你要它的中文审查关注时用它：一个 Qwen2 去审查概念验证，附手工核对的数据集与文章，作者明确不再支持。 | Apache-2.0 | C（4/6） | [中](categories/model-editing/deccp.zh.md) · [EN](categories/model-editing/deccp.md) |

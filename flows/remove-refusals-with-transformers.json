@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "The scripts do", "zh": "脚本做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the requirements and set your model", "zh": "安装依赖并设定你的模型"},
+    {"lane": "you", "en": "Run the refusal-direction computation", "zh": "运行拒答方向计算", "code": "compute_refusal_dir.py"},
+    {"lane": "them", "en": "Derives the harmful-minus-harmless direction and orthogonalizes the weights", "zh": "算出有害减无害方向并对权重做正交化", "component": {"en": "HF Transformers model", "zh": "HF Transformers 模型"}},
+    {"lane": "you", "en": "Run the chat script to test the result", "zh": "运行对话脚本测试结果", "code": "inference.py"},
+    {"lane": "them", "en": "Answers with the refusal direction removed", "zh": "在拒答方向被移除的情况下作答", "component": {"en": "local model", "zh": "本地模型"}}
+  ],
+  "value": {"en": "A decensored model produced with plain Hugging Face Transformers, no TransformerLens", "zh": "一个用原生 Hugging Face Transformers 产出的去审查模型，不需要 TransformerLens"},
+  "sources": ["Sumandora/remove-refusals-with-transformers README.md (master): set model/quantization in compute_refusal_dir.py and inference.py; run compute_refusal_dir.py; run inference.py; harmful.txt/harmless.txt; pure HF Transformers, no TransformerLens; tested on a 6GB RTX 2060"]
+}

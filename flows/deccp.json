@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "The scripts do", "zh": "脚本做的"},
+  "steps": [
+    {"lane": "you", "en": "Fork the repo and set your Qwen2 model paths", "zh": "fork 仓库并设定你的 Qwen2 模型路径"},
+    {"lane": "you", "en": "Compute the refusal direction", "zh": "计算拒答方向", "code": "01-compute_refusal_dir.py"},
+    {"lane": "them", "en": "Writes candidate refusal vectors and the ablated weights", "zh": "写出候选拒答向量与消融后的权重", "component": {"en": "refusal-removal scripts", "zh": "拒答移除脚本"}},
+    {"lane": "you", "en": "Check the vectors against the test prompts", "zh": "用测试提示词检验向量", "code": "02-test-vector-results.py"},
+    {"lane": "them", "en": "Saves the weights and can upload them to the Hub", "zh": "保存权重，并可上传到 Hub", "component": {"en": "03-save-model-weights.py", "zh": "03-save-model-weights.py"}}
+  ],
+  "value": {"en": "A Qwen2 model with Chinese censorship ablated, plus the dataset and writeup behind it", "zh": "一个中文审查被消融掉的 Qwen2 模型，外加它背后的数据集与文章"},
+  "sources": ["AUGMXNT/deccp README.md: PoC for un-censoring Qwen2 Instruct models; scripts 01-compute_refusal_dir.py, 02-test-vector-results.py, 03-save-model-weights.py, 04-upload-model-to-hf.py; harmful.txt/harmless.txt; dataset and abliterated model on Hugging Face; author states he will not support the codebase"]
+}

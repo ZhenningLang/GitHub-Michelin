@@ -3,6 +3,7 @@ https://github.com/0xNyk/council-of-high-intelligence,council-of-high-intelligen
 https://github.com/666ghj/MiroFish,mirofish,social-simulation,categories/social-simulation/mirofish.md
 https://github.com/9001/copyparty,copyparty,document-management,categories/document-management/copyparty.md
 https://github.com/AI4Finance-Foundation/FinRL,finrl,investment-finance,categories/investment-finance/finrl.md
+https://github.com/AUGMXNT/deccp,deccp,model-editing,categories/model-editing/deccp.md
 https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,on-device-ml,categories/on-device-ml/stable-diffusion-webui.md
 https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,design,categories/agent-skills/design/drawio-skill.md
@@ -30,6 +31,7 @@ https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimiz
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,rag-retrieval,categories/rag-retrieval/understand-anything.md
 https://github.com/EveryInc/compound-engineering-plugin,compound-engineering,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md
 https://github.com/FFmpeg/FFmpeg,ffmpeg,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md
+https://github.com/FailSpy/abliterator,abliterator,model-editing,categories/model-editing/abliterator.md
 https://github.com/FalkorDB/FalkorDB,falkordb,rag-retrieval,categories/rag-retrieval/falkordb.md
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
@@ -118,6 +120,7 @@ https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-red
 https://github.com/Setasign/FPDI,fpdi,pdf-tools,categories/pdf-tools/fpdi.md
 https://github.com/Significant-Gravitas/AutoGPT,autogpt,workflow-builders,categories/agent-frameworks/workflow-builders/autogpt.md
 https://github.com/SpiderClub/haipproxy,haipproxy,proxy-pool,categories/proxy-pool/haipproxy.md
+https://github.com/Sumandora/remove-refusals-with-transformers,remove-refusals-with-transformers,model-editing,categories/model-editing/remove-refusals-with-transformers.md
 https://github.com/SuperClaude-Org/SuperClaude_Framework,superclaude,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md
 https://github.com/TKkk-iOSer/WeChatPlugin-MacOS,wechatplugin-macos,wechat,categories/im-automation/wechat/wechatplugin-macos.md
 https://github.com/Tencent/AI-Infra-Guard,ai-infra-guard,llm-eval,categories/llm-eval/ai-infra-guard.md
@@ -129,6 +132,7 @@ https://github.com/The-PR-Agent/pr-agent,pr-agent,ai-code-review,categories/ai-c
 https://github.com/Thriftpy/thriftpy,thriftpy,networking,categories/networking/thriftpy.md
 https://github.com/TimefoldAI/timefold-solver,timefold-solver,optimization-solvers,categories/optimization-solvers/timefold-solver.md
 https://github.com/TomBadash/Mouser,mouser,peripherals,categories/peripherals/mouser.md
+https://github.com/Tsadoq/ErisForge,erisforge,model-editing,categories/model-editing/erisforge.md
 https://github.com/Unstructured-IO/unstructured,unstructured,document-parsing,categories/document-parsing/unstructured.md
 https://github.com/VectifyAI/OpenKB,openkb,knowledge-base,categories/knowledge-base/openkb.md
 https://github.com/VectifyAI/PageIndex,pageindex,rag-retrieval,categories/rag-retrieval/pageindex.md

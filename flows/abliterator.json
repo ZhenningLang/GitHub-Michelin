@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "abliterator does", "zh": "abliterator 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library and its TransformerLens dependency", "zh": "安装这个库及其 TransformerLens 依赖"},
+    {"lane": "you", "en": "Load a model plus harmful/harmless datasets", "zh": "加载模型以及有害／无害数据集", "code": "ModelAbliterator(...)"},
+    {"lane": "them", "en": "Caches residual-stream activations for N harmful and N harmless samples", "zh": "缓存 N 条有害与 N 条无害样本的残差流激活", "component": {"en": "ModelAbliterator", "zh": "ModelAbliterator"}},
+    {"lane": "them", "en": "Derives a difference-of-means refusal direction per hook point", "zh": "为每个 hook 点算出均值差拒答方向", "component": {"en": "refusal_dirs()", "zh": "refusal_dirs()"}},
+    {"lane": "you", "en": "Score candidate directions against the test set", "zh": "用测试集给候选方向打分", "code": "test_dir(testing_dir, N=32)"},
+    {"lane": "them", "en": "Patches the chosen direction into the weights", "zh": "把选中的方向写进权重", "component": {"en": "apply_refusal_dirs()", "zh": "apply_refusal_dirs()"}}
+  ],
+  "value": {"en": "You get to search and compare refusal directions yourself, without rebuilding the activation-caching scaffolding", "zh": "你能自己搜索并比较拒答方向，而不用重写激活缓存的脚手架"},
+  "sources": ["FailSpy/abliterator README.md: ModelAbliterator(...), cache_activations(N=…), refusal_dirs(), test_dir(testing_dir, N=32), apply_refusal_dirs([...], layers=None), mse_harmless(N=…), save_activations('file.pth'), blacklist_layer(…); requirements.txt pins transformer-lens from a git @dev branch"]
+}

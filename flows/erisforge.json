@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "ErisForge does", "zh": "ErisForge 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library", "zh": "安装这个库", "code": "pip install erisforge"},
+    {"lane": "you", "en": "Call the forge with a behavior direction and a layer range", "zh": "带着行为方向与层区间调用 forge", "code": "forge.run_forged_model(...)"},
+    {"lane": "them", "en": "Installs an ablation or addition layer on the chosen decoder layers", "zh": "在选定的解码层上挂消融或增强层", "component": {"en": "Decoder layers", "zh": "解码层"}},
+    {"lane": "them", "en": "Scores refusal expressions in the generated responses", "zh": "给生成回复里的拒答表达打分", "component": {"en": "ExpressionRefusalScorer", "zh": "ExpressionRefusalScorer"}},
+    {"lane": "you", "en": "Save or push the transformed model", "zh": "保存或推送改造后的模型", "code": "forge.save_model(...)"}
+  ],
+  "value": {"en": "A model whose decoder layers are edited to ablate or amplify a chosen behavior", "zh": "一个解码层被改造过、能消融或放大某种行为的模型"},
+  "sources": ["Tsadoq/ErisForge README.md: `pip install erisforge`; `forge.run_forged_model(...)`; `AblationDecoderLayer` / `AdditionDecoderLayer`; `ExpressionRefusalScorer`; `forge.save_model(...)`; pyproject.toml (requires-python >=3.11); requirements.txt (torch~=2.5.1, transformers~=4.46.2)"]
+}
