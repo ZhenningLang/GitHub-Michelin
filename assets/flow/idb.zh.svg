@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="509" viewBox="0 0 880 509" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="509" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="373" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="373" rx="10"/>
+<rect class="pillT" x="474" y="40" width="96.0" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">idb 做的</text>
+<path class="edge" d="M62,170 L62,194" marker-end="url(#a)"/>
+<path class="hand" d="M408,232.5 C439.0,232.5 439.0,256 470,256" marker-end="url(#a)"/>
+<path class="hand" d="M472,269.5 C441.0,269.5 441.0,319 410,319" marker-end="url(#a)"/>
+<path class="hand" d="M408,331.5 C439.0,331.5 439.0,357 470,357" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="98" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="98" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">安装 companion 与 CLI</text>
+<text class="c" x="82" y="125">brew install facebook/fb/idb</text>
+<text class="comp" x="82" y="148">组件：Homebrew formula</text>
+<rect class="card" x="40" y="196" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="196" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="220" r="10"/>
+<text class="num" x="62" y="224" text-anchor="middle">2</text>
+<text class="t" x="82" y="225">列出目标</text>
+<text class="c" x="82" y="249">idb list-targets</text>
+<rect class="cardT" x="472" y="232" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="232" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="256" r="10"/>
+<text class="num" x="494" y="260" text-anchor="middle">3</text>
+<text class="t" x="514" y="261">给每台模拟器或设备挂一个 companion 进程</text>
+<text class="comp" x="514" y="289">组件：idb_companion</text>
+<rect class="card" x="40" y="295" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="295" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="319" r="10"/>
+<text class="num" x="62" y="323" text-anchor="middle">4</text>
+<text class="t" x="82" y="324">在某个目标上启动一个 app</text>
+<text class="c" x="82" y="348">idb launch com.apple.mobilesafari</text>
+<rect class="cardT" x="472" y="333" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="333" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="357" r="10"/>
+<text class="num" x="494" y="361" text-anchor="middle">5</text>
+<text class="t" x="514" y="362">通过私有框架在目标上执行，并把结果回传</text>
+<rect class="val" x="28" y="415" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="439">价值</text>
+<text class="valT" x="48" y="463">你的脚本用同一套命令寻址模拟器和真机，客户端还能跑在别的机器上——编排权在你手里。</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Detox does", "zh": "Detox 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add Detox to the React Native project", "zh": "把 Detox 加进 React Native 工程",
+     "code": "detox init", "component": {"en": "Detox CLI + in-app client", "zh": "Detox CLI 与端内客户端"}},
+    {"lane": "you", "en": "Write a Jest test with matchers, actions and assertions", "zh": "用 matcher、action、断言写一个 Jest 测试",
+     "code": "element(by.id('ButtonID')).tap()"},
+    {"lane": "you", "en": "Run the suite against a simulator or emulator", "zh": "对着模拟器或仿真器跑测试",
+     "code": "detox test --configuration ios.sim.debug"},
+    {"lane": "them", "en": "Build and launch the instrumented app, then synchronize with its async activity", "zh": "构建并启动注入过的 app，然后与它的异步活动同步"},
+    {"lane": "them", "en": "Run each action/assertion only once the app is idle, and report pass/fail", "zh": "只在 app 空闲后执行每个动作／断言，并报告通过／失败"}
+  ],
+  "value": {"en": "No manual sleeps and far fewer flakes — Detox knows when your React Native app has settled.", "zh": "不用手写 sleep、flaky 大幅减少——Detox 知道你 React Native 应用何时静下来了。"},
+  "sources": ["README.md (gray-box, JS test example, RN 0.77-0.84, iOS devices unsupported)", "wix.github.io/Detox your-first-test (detox test --configuration ios.sim.debug, synchronization note)"]
+}

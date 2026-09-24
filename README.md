@@ -869,6 +869,18 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | MIT | B (5/6) | [EN](categories/desktop-automation/cua.md) · [中](categories/desktop-automation/cua.zh.md) |
 | **PyAutoGUI** | Use it when you must script a desktop app with no API across Windows/macOS/Linux — but coordinate/pixel automation breaks silently on resolution, DPI, or theme changes, and dev has coasted since 2024. | BSD-3-Clause | C (4/6) | [EN](categories/desktop-automation/pyautogui.md) · [中](categories/desktop-automation/pyautogui.zh.md) |
 
+### mobile-automation
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **baguette** | Use it when you want headless, scriptable control of an Apple-Silicon iOS Simulator — 60fps streaming, host-side gestures, a multi-device farm — but it needs Xcode 26 and rides private SimulatorKit symbols. | Apache-2.0 | B (6/6) | [EN](categories/mobile-automation/baguette.md) · [中](categories/mobile-automation/baguette.zh.md) |
+| **idb** | Use it when you must automate iOS simulators AND real devices from a remote client with granular primitives — but iOS 26 broke parts of it and you run a companion per target. | MIT | B (6/6) | [EN](categories/mobile-automation/idb.md) · [中](categories/mobile-automation/idb.zh.md) |
+| **AXe** | Use it when you want a single `axe tap / type / describe-ui` CLI against a simulator — but it is a single-maintainer project, quiet since 2026-07. | MIT | B (6/6) | [EN](categories/mobile-automation/axe.md) · [中](categories/mobile-automation/axe.zh.md) |
+| **Appium** | Use it when you need one cross-platform, cross-language WebDriver test framework for iOS and Android — but you install and operate a server plus per-platform drivers. | Apache-2.0 | A (6/6) | [EN](categories/mobile-automation/appium.md) · [中](categories/mobile-automation/appium.zh.md) |
+| **WebDriverAgent** | Use it when you are building the iOS automation layer itself — it is the WebDriver server Appium drives — not something most teams run standalone. | BSD-3-Clause | A (4/6) | [EN](categories/mobile-automation/webdriveragent.md) · [中](categories/mobile-automation/webdriveragent.zh.md) |
+| **Maestro** | Use it when you want YAML flows and near-zero onboarding for Android/iOS/web E2E — but physical iOS devices are unsupported. | Apache-2.0 | A (6/6) | [EN](categories/mobile-automation/maestro.md) · [中](categories/mobile-automation/maestro.zh.md) |
+| **Detox** | Use it when you are testing a React Native app and want gray-box synchronization that fights flakiness — but it locks to RN versions, is JS-only, and iOS physical devices are unsupported. | MIT | B (6/6) | [EN](categories/mobile-automation/detox.md) · [中](categories/mobile-automation/detox.zh.md) |
+
 ### game-dev
 
 | Project | Use when | License | Health | Page |

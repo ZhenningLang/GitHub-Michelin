@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "baguette does", "zh": "baguette 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI on the Mac", "zh": "在 Mac 上安装 CLI",
+     "code": "brew install baguette", "component": {"en": "Homebrew formula", "zh": "Homebrew formula"}},
+    {"lane": "you", "en": "Boot a simulator headlessly", "zh": "无头启动一台模拟器",
+     "code": "baguette boot --udid <UDID>"},
+    {"lane": "them", "en": "Attach to the booted device and open the host-HID path iOS 26 accepts", "zh": "挂上已启动的设备，打开 iOS 26 接受的宿主机 HID 通路",
+     "component": {"en": "host-HID injection", "zh": "宿主机 HID 注入"}},
+    {"lane": "you", "en": "Send a tap in device points", "zh": "用设备点坐标发一次点击",
+     "code": "baguette tap --udid <UDID> --x 219 --y 478 --width 438 --height 954"},
+    {"lane": "them", "en": "Route the touch through the 9-arg digitizer path so the app's real handlers fire", "zh": "把触摸走 9 参数 digitizer 通路，让 app 真正的处理器被触发"},
+    {"lane": "you", "en": "Capture an App-Store-sized frame", "zh": "抓一张 App Store 尺寸的截图",
+     "code": "baguette screenshot --udid <UDID> --size appstore-6.9 -o hero.png"},
+    {"lane": "them", "en": "Compose and write the PNG", "zh": "合成并写出 PNG"}
+  ],
+  "value": {"en": "No human at Simulator.app and no broken 5-arg HID tool — one CLI drives input, capture and streaming headlessly.", "zh": "不再需要人守着 Simulator.app，也不再依赖坏掉的 HID 工具——一个 CLI 无头完成输入与投屏。"},
+  "sources": ["README.md Quickstart + CLI reference", "docs/features/touches/README.md", "docs/ARCHITECTURE.md"]
+}

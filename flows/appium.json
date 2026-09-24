@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Appium does", "zh": "Appium 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the core server", "zh": "安装核心服务端",
+     "code": "npm i -g appium", "component": {"en": "Appium server", "zh": "Appium 服务端"}},
+    {"lane": "you", "en": "Install a driver for each platform you test", "zh": "为每个要测的平台装一个驱动",
+     "code": "appium driver install <driver-name>"},
+    {"lane": "you", "en": "Start the server", "zh": "启动服务端",
+     "code": "appium"},
+    {"lane": "them", "en": "Enable the installed drivers and expose a WebDriver endpoint on port 4723", "zh": "启用已装驱动，并在 4723 端口暴露 WebDriver 端点"},
+    {"lane": "you", "en": "Point your language client at it with the app and device capabilities", "zh": "用 app 与设备 capability 把所选语言的客户端指向它"},
+    {"lane": "them", "en": "The driver translates each WebDriver command into the platform's native automation and returns the result", "zh": "驱动把每条 WebDriver 命令翻译成该平台的原生自动化，并回传结果"}
+  ],
+  "value": {"en": "One test shape across iOS and Android, in your language — you stop writing platform-specific automation glue.", "zh": "同一份测试形状跨 iOS 与 Android、用你惯用的语言——不再写平台特定的自动化胶水。"},
+  "sources": ["README.md Installation + Drivers + server startup", "appium.io Quickstart (install server → install driver → client)"]
+}

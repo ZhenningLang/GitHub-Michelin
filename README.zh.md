@@ -866,6 +866,18 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Cua** | 当 agent 需要操作整台电脑（原生桌面应用、系统弹窗，而非仅网页）、且这次运行需要隔离时使用。 | MIT | B（5/6） | [中](categories/desktop-automation/cua.zh.md) · [EN](categories/desktop-automation/cua.md) |
 | **PyAutoGUI** | 当你要在 Windows／macOS／Linux 上脚本化操控没有 API 的桌面应用时用它——但基于坐标和像素的自动化会因分辨率、DPI 或主题变化静默失效，且自 2024 年起已停滞维护。 | BSD-3-Clause | C（4/6） | [中](categories/desktop-automation/pyautogui.zh.md) · [EN](categories/desktop-automation/pyautogui.md) |
 
+### mobile-automation
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **baguette** | 当你想无头、可脚本地控制 Apple Silicon 上的 iOS 模拟器——60fps 投屏、宿主机手势注入、多设备 farm——但它需要 Xcode 26，且骑在 SimulatorKit 私有符号上时使用。 | Apache-2.0 | B（6/6） | [中](categories/mobile-automation/baguette.zh.md) · [EN](categories/mobile-automation/baguette.md) |
+| **idb** | 当你要从远端客户端用细粒度原语自动化 iOS 模拟器**和**真机时用它——但 iOS 26 打坏了它一部分能力，且每个目标要挂一个 companion 进程。 | MIT | B（6/6） | [中](categories/mobile-automation/idb.zh.md) · [EN](categories/mobile-automation/idb.md) |
+| **AXe** | 当你想要一个 `axe tap／type／describe-ui` 命令直接操作模拟器时用它——但它是单人维护，2026-07 后就没动静了。 | MIT | B（6/6） | [中](categories/mobile-automation/axe.zh.md) · [EN](categories/mobile-automation/axe.md) |
+| **Appium** | 当你需要一个跨平台、跨语言的 WebDriver 测试框架同时覆盖 iOS 和 Android 时用它——代价是要自己跑一个服务端并逐平台装驱动。 | Apache-2.0 | A（6/6） | [中](categories/mobile-automation/appium.zh.md) · [EN](categories/mobile-automation/appium.md) |
+| **WebDriverAgent** | 当你要自己搭 iOS 自动化底层时用它——它就是 Appium 驱动的那个 WebDriver 服务端，多数团队不会单独跑它。 | BSD-3-Clause | A（4/6） | [中](categories/mobile-automation/webdriveragent.zh.md) · [EN](categories/mobile-automation/webdriveragent.md) |
+| **Maestro** | 当你想用 YAML 流程、几分钟就能上手做 Android／iOS／Web 的端到端测试时用它——但不支持 iOS 真机。 | Apache-2.0 | A（6/6） | [中](categories/mobile-automation/maestro.zh.md) · [EN](categories/mobile-automation/maestro.md) |
+| **Detox** | 当你在测 React Native 应用、想要灰盒同步来压住 flaky 时用它——但它锁 React Native 版本、只支持 JS，且不支持 iOS 真机。 | MIT | B（6/6） | [中](categories/mobile-automation/detox.zh.md) · [EN](categories/mobile-automation/detox.md) |
+
 ### game-dev
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

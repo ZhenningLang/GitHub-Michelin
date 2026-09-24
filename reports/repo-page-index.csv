@@ -184,6 +184,8 @@ https://github.com/apache/casbin,casbin,auth,categories/auth/casbin.md
 https://github.com/apache/incubator-kie-optaplanner,optaplanner,optimization-solvers,categories/optimization-solvers/optaplanner.md
 https://github.com/apache/poi,apache-poi,office-automation,categories/office-automation/apache-poi.md
 https://github.com/apache/superset,superset,data-visualization,categories/data-visualization/superset.md
+https://github.com/appium/WebDriverAgent,webdriveragent,mobile-automation,categories/mobile-automation/webdriveragent.md
+https://github.com/appium/appium,appium,mobile-automation,categories/mobile-automation/appium.md
 https://github.com/argoproj/argo-workflows,argo-workflows,workflow-orchestration,categories/workflow-orchestration/argo-workflows.md
 https://github.com/ariya/phantomjs,phantomjs,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/phantomjs.md
 https://github.com/arm/metis,metis,ai-code-review,categories/ai-code-review/metis.md
@@ -218,6 +220,7 @@ https://github.com/buriy/python-readability,python-readability,article-extractio
 https://github.com/cactus-compute/needle,needle,on-device-ml,categories/on-device-ml/needle.md
 https://github.com/calesthio/OpenMontage,open-montage,video-production,categories/video-production/open-montage.md
 https://github.com/camel-ai/oasis,oasis,social-simulation,categories/social-simulation/oasis.md
+https://github.com/cameroncooke/AXe,axe,mobile-automation,categories/mobile-automation/axe.md
 https://github.com/campfirein/byterover-cli,byterover,agent-memory,categories/agent-memory/byterover.md
 https://github.com/cbailes/awesome-deep-trading,awesome-deep-trading,investment-finance,categories/investment-finance/awesome-deep-trading.md
 https://github.com/celery/celery,celery,task-queue,categories/task-queue/celery.md
@@ -278,6 +281,7 @@ https://github.com/evidence-dev/evidence,evidence,data-visualization,categories/
 https://github.com/excalidraw/excalidraw,excalidraw,diagramming,categories/diagramming/excalidraw.md
 https://github.com/f/prompts.chat,prompts-chat,prompt-engineering,categories/agent-skills/prompt-engineering/prompts-chat.md
 https://github.com/facebook/docusaurus,docusaurus,frameworks,categories/web-ui/frameworks/docusaurus.md
+https://github.com/facebook/idb,idb,mobile-automation,categories/mobile-automation/idb.md
 https://github.com/facebook/openzl,openzl,data-tools,categories/dev-utilities/data-tools/openzl.md
 https://github.com/facebook/react,react,frameworks,categories/web-ui/frameworks/react.md
 https://github.com/facebook/rebalancer,rebalancer,optimization-solvers,categories/optimization-solvers/rebalancer.md
@@ -446,6 +450,7 @@ https://github.com/mksglu/context-mode,context-mode,work-state,categories/agent-
 https://github.com/ml-explore/mlx-lm,mlx-mlx-lm,on-device-ml,categories/on-device-ml/mlx-mlx-lm.md
 https://github.com/mlc-ai/xgrammar,xgrammar,structured-generation,categories/llm-inference/structured-generation/xgrammar.md
 https://github.com/mltframework/mlt,mlt,editing-and-cutting,categories/media-processing/video-audio/editing-and-cutting/mlt.md
+https://github.com/mobile-dev-inc/maestro,maestro,mobile-automation,categories/mobile-automation/maestro.md
 https://github.com/modal-labs/modal-client,modal-client,sandboxing,categories/sandboxing/modal-client.md
 https://github.com/modular/modular,modular,serving-engines,categories/llm-inference/serving-engines/modular.md
 https://github.com/mozilla/pdf.js,pdfjs,pdf-tools,categories/pdf-tools/pdfjs.md
@@ -567,6 +572,7 @@ https://github.com/sveltejs/svelte,svelte,frameworks,categories/web-ui/framework
 https://github.com/tanweai/pua,pua,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/pua.md
 https://github.com/tartley/colorama,colorama,terminal-ui,categories/terminal-ui/colorama.md
 https://github.com/tauri-apps/tauri,tauri,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tauri.md
+https://github.com/tddworks/baguette,baguette,mobile-automation,categories/mobile-automation/baguette.md
 https://github.com/teamclairvoyant/airflow-maintenance-dags,airflow-maintenance-dags,workflow-orchestration,categories/workflow-orchestration/airflow-maintenance-dags.md
 https://github.com/temporalio/temporal,temporal,workflow-orchestration,categories/workflow-orchestration/temporal.md
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
@@ -612,6 +618,7 @@ https://github.com/warpdotdev/warp,warp,terminal-ui,categories/terminal-ui/warp.
 https://github.com/wechaty/wechaty,wechaty,wechat,categories/im-automation/wechat/wechaty.md
 https://github.com/withastro/astro,astro,frameworks,categories/web-ui/frameworks/astro.md
 https://github.com/withmargin/margin-read,margin-read,reading-tools,categories/reading-tools/margin-read.md
+https://github.com/wix/Detox,detox,mobile-automation,categories/mobile-automation/detox.md
 https://github.com/wizlijun/claude_translater,claude-translater,translation,categories/agent-skills/ai-writing/translation/claude-translater.md
 https://github.com/wkeeling/selenium-wire,selenium-wire,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium-wire.md
 https://github.com/wshobson/agents,wshobson-agents,subagent-collections,categories/agent-skills/subagent-collections/wshobson-agents.md
