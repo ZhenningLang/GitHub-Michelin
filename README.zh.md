@@ -79,6 +79,16 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Knative Serving** | 当 HTTP 服务一天里大部分时间闲着、你想要按 revision 的发布加缩容到零，又不想采用某个 FaaS 产品时用它。 | Apache-2.0 | B（6/6） | [中](categories/serverless/knative-serving.zh.md) · [EN](categories/serverless/knative-serving.md) |
 
+### kubernetes-ui
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **k9s** | 集群操作必须留在终端——活表、日志、exec——浏览器是错的表面时用它。 | Apache-2.0 | A（5/6） | [中](categories/kubernetes-ui/k9s.zh.md) · [EN](categories/kubernetes-ui/k9s.md) |
+| **Headlamp** | 团队需要带 RBAC 按钮的共享浏览器控制台、还要挂在 kubernetes-sigs 下时用它。 | Apache-2.0 | A（6/6） | [中](categories/kubernetes-ui/headlamp.zh.md) · [EN](categories/kubernetes-ui/headlamp.md) |
+| **Radar** | 要从本机 Apache-2.0 二进制拿到拓扑、Helm／GitOps、审计和 MCP、还不要账号时用它。 | Apache-2.0 | B（6/6） | [中](categories/kubernetes-ui/radar.zh.md) · [EN](categories/kubernetes-ui/radar.md) |
+| **Freelens** | 要旧版 Lens 桌面窗口、而且必须是 MIT、不要 Mirantis 账号时用它。 | MIT | A（6/6） | [中](categories/kubernetes-ui/freelens.zh.md) · [EN](categories/kubernetes-ui/freelens.md) |
+| **Lens** | 只有团队已经在为 Lens Desktop／Teamwork 付钱时用它；GitHub 上的开源树已停。 | MIT | C（4/6） | [中](categories/kubernetes-ui/lens.zh.md) · [EN](categories/kubernetes-ui/lens.md) |
+
 ### document-management
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

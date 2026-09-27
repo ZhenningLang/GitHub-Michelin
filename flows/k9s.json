@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "k9s does", "zh": "k9s 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install k9s and start it on your kubeconfig", "zh": "装好 k9s，对着 kubeconfig 启动", "code": "brew install derailed/k9s/k9s · k9s"},
+    {"lane": "them", "en": "Watches the API server and draws a live resource table", "zh": "盯着 API，画出实时资源表"},
+    {"lane": "you", "en": "Jump to pods, then logs, YAML, or a container shell", "zh": "跳到 Pod，再看日志、YAML 或进容器", "code": ":po · l · y · s"},
+    {"lane": "them", "en": "Streams logs, opens a shell, or applies an edit", "zh": "拉日志、开 shell，或提交你的编辑"}
+  ],
+  "value": {"en": "Cluster navigation stays in the terminal — no kubectl incantation chain", "zh": "集群操作留在终端里，不用再拼一串 kubectl"},
+  "sources": [
+    "https://github.com/derailed/k9s README Installation (brew install derailed/k9s/k9s)",
+    "README The Command Line (k9s, k9s -n, --readonly)",
+    "README Key Bindings (:pod, l logs, y YAML, s shell)"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Freelens does", "zh": "Freelens 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app", "zh": "装上桌面应用", "code": "brew install --cask freelens"},
+    {"lane": "them", "en": "Reads ~/.kube/config and lists your clusters", "zh": "读取 ~/.kube/config，列出集群"},
+    {"lane": "you", "en": "Pick a cluster and open a workload", "zh": "选一个集群，打开一个负载"},
+    {"lane": "them", "en": "Shows resources, logs, and a terminal in one window", "zh": "在同一窗口里给出资源、日志和终端"}
+  ],
+  "value": {"en": "The old Lens desktop layout, without an account or a paid plan", "zh": "还是以前那种 Lens 桌面布局，不用账号，也不用付费套餐"},
+  "sources": [
+    "https://github.com/freelensapp/freelens README Homebrew (brew install --cask freelens)",
+    "README Requirements (Kubernetes 1.22+, ~/.kube/config for Flatpak default)",
+    "README (fork of Open Lens / Lens Desktop core)"
+  ]
+}
