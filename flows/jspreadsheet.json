@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": { "en": "Jspreadsheet does", "zh": "Jspreadsheet 做的" },
+  "steps": [
+    { "lane": "you", "en": "Add the package (jSuites comes with it)", "zh": "安装依赖（jSuites 随同装载）",
+      "code": "npm install jspreadsheet-ce" },
+    { "lane": "you", "en": "Drop a div where the editable table should live", "zh": "在要放可编辑表格的位置放一个 div",
+      "code": "<div id=\"spreadsheet\"></div>" },
+    { "lane": "you", "en": "Initialize with worksheets data and typed columns", "zh": "用 worksheets 数据与类型化列初始化",
+      "code": "jspreadsheet(document.getElementById('spreadsheet'), {" },
+    { "lane": "them", "en": "Cells open native editors per column type: calendar, dropdown, checkbox", "zh": "单元格按列类型弹出原生编辑器：日历、下拉、勾选",
+      "component": { "en": "native column types", "zh": "原生列类型" } },
+    { "lane": "them", "en": "Copy/paste interoperates with real Excel blocks", "zh": "复制粘贴与真实 Excel 块互通",
+      "component": { "en": "clipboard", "zh": "剪贴板" } },
+    { "lane": "you", "en": "Push deltas to your API through the central event dispatch", "zh": "通过中央事件分发把增量推给你的 API",
+      "code": "onevent" }
+  ],
+  "value": { "en": "Users work the sheet Excel-style while your API receives typed rows — MIT, no jQuery, no workbook model to babysit", "zh": "用户按 Excel 习惯操作表格，你的 API 收到类型化的行——MIT、无 jQuery、不用养一套工作簿模型" },
+  "sources": [
+    "https://github.com/jspreadsheet/ce/blob/master/README.md — `npm install jspreadsheet-ce`; `<div id=\"spreadsheet\"></div>`; `jspreadsheet(document.getElementById('spreadsheet'), {` with worksheets/data/columns config; events line 'onevent, onchangepage, onbeforesave, onsave' (fetched 2026-09-27)"
+  ]
+}

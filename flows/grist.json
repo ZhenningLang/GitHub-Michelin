@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": { "en": "Grist does", "zh": "Grist 做的" },
+  "steps": [
+    { "lane": "you", "en": "Start the Grist server with a persist directory", "zh": "带 persist 目录启动 Grist 服务器",
+      "code": "docker run -p 8484:8484 -v $PWD/persist:/persist -it gristlabs/grist" },
+    { "lane": "them", "en": "Prints an admin boot key and serves the Quick setup page", "zh": "打印管理员 boot key，起 Quick setup 页",
+      "component": { "en": "home server", "zh": "home 服务" } },
+    { "lane": "you", "en": "Paste the boot key, pick the admin email and sign-in method", "zh": "粘贴 boot key，选管理员邮箱与登录方式" },
+    { "lane": "you", "en": "Build sheets whose columns are typed fields with Python formulas", "zh": "建表：列即类型化字段，公式用 Python 写",
+      "component": { "en": "doc workers", "zh": "doc worker" } },
+    { "lane": "them", "en": "Recomputes references and choices table-wide as data changes", "zh": "数据一变，引用与选项整表联动重算" },
+    { "lane": "them", "en": "Serves row-level access rules, live presence, webhooks and the REST API", "zh": "行级权限、在线状态、webhook 与 REST API 一并供出" }
+  ],
+  "value": { "en": "The team's spreadsheet now behaves like a small database-backed app — permissions, forms, dashboards and APIs included — in one container you own", "zh": "团队的表格从此表现得像一个有数据库撑腰的小应用——权限、表单、看板、API 全配齐——跑在你自己的一个容器里" },
+  "sources": [
+    "https://github.com/gristlabs/grist-core/blob/main/README.md — 'Using Grist' section: docker run -p 8484:8484 -v $PWD/persist:/persist -it gristlabs/grist; Quick setup + boot key; Python formulas; row/column/table access control; webhooks; REST API (fetched 2026-09-27)"
+  ]
+}

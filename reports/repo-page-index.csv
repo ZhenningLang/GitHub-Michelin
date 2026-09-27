@@ -20,6 +20,7 @@ https://github.com/ChatGPTNextWeb/NextChat,nextchat,llm-chat-ui,categories/llm-c
 https://github.com/ChromeDevTools/chrome-devtools-mcp,chrome-devtools-mcp,agent-browser-tools,categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md
 https://github.com/ClickHouse/ClickHouse,clickhouse,database-engines,categories/databases/database-engines/clickhouse.md
 https://github.com/ColeMurray/background-agents,background-agents,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md
+https://github.com/CollaboraOnline/online,collabora-online,office-editors,categories/office-editors/collabora-online.md
 https://github.com/Comfy-Org/ComfyUI,comfyui,on-device-ml,categories/on-device-ml/comfyui.md
 https://github.com/Cookee24/PairTranslate,pair-translate,reading-tools,categories/reading-tools/pair-translate.md
 https://github.com/DavidAnson/markdownlint,markdownlint,markdown-tools,categories/markdown-tools/markdownlint.md
@@ -87,6 +88,7 @@ https://github.com/Netflix/vmaf,vmaf,quality-metrics,categories/media-processing
 https://github.com/NopeCHALLC/nopecha-extension,nopecha-extension,captcha,categories/captcha/nopecha-extension.md
 https://github.com/NousResearch/hermes-agent,hermes-agent,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md
 https://github.com/Nutlope/hallmark,hallmark,design,categories/agent-skills/design/hallmark.md
+https://github.com/ONLYOFFICE/DocumentServer,onlyoffice-documentserver,office-editors,categories/office-editors/onlyoffice-documentserver.md
 https://github.com/OUBIGFA/De-AI-Prompt-Enhancer-Writer-Booster-SKILL,de-ai-prompt-enhancer-writer-booster-skill,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md
 https://github.com/OpenAtomFoundation/pikiwidb,pikiwidb,database-engines,categories/databases/database-engines/pikiwidb.md
 https://github.com/OpenBB-finance/OpenBB,openbb,investment-finance,categories/investment-finance/openbb.md
@@ -272,6 +274,7 @@ https://github.com/dongbeixiaohuo/writing-agent,writing-agent,content-production
 https://github.com/dontbesilent2025/dbskill,dbskill,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/dbskill.md
 https://github.com/dpkp/kafka-python,kafka-python,kafka-tools,categories/kafka-tools/kafka-python.md
 https://github.com/dragnet-org/dragnet,dragnet,article-extraction,categories/web-scraping/article-extraction/dragnet.md
+https://github.com/dream-num/univer,univer,office-editors,categories/office-editors/univer.md
 https://github.com/duckdb/duckdb,duckdb,database-engines,categories/databases/database-engines/duckdb.md
 https://github.com/dzhng/deep-research,deep-research,deep-research,categories/deep-research/deep-research.md
 https://github.com/e2b-dev/E2B,e2b,sandboxing,categories/sandboxing/e2b.md
@@ -327,9 +330,11 @@ https://github.com/google/or-tools,or-tools,optimization-solvers,categories/opti
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
+https://github.com/gristlabs/grist-core,grist,office-editors,categories/office-editors/grist.md
 https://github.com/gsd-build/get-shit-done,get-shit-done,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md
 https://github.com/halloffamer11/USDAD,usdad,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/usdad.md
 https://github.com/handsomestWei/patent-disclosure-skill,patent-disclosure-skill,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md
+https://github.com/handsontable/handsontable,handsontable,office-editors,categories/office-editors/handsontable.md
 https://github.com/hanfangyuan4396/dify-on-wechat,dify-on-wechat,wechat,categories/im-automation/wechat/dify-on-wechat.md
 https://github.com/hardikpandya/stop-slop,stop-slop,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md
 https://github.com/harry0703/MoneyPrinterTurbo,moneyprinter-turbo,video-production,categories/video-production/moneyprinter-turbo.md
@@ -371,6 +376,7 @@ https://github.com/jmcnamara/XlsxWriter,xlsxwriter,office-automation,categories/
 https://github.com/joonspk-research/generative_agents,generative-agents,social-simulation,categories/social-simulation/generative-agents.md
 https://github.com/jordan-gibbs/hyperresearch,hyperresearch,deep-research,categories/deep-research/hyperresearch.md
 https://github.com/jqlang/jq,jq,data-tools,categories/dev-utilities/data-tools/jq.md
+https://github.com/jspreadsheet/ce,jspreadsheet,office-editors,categories/office-editors/jspreadsheet.md
 https://github.com/jsvine/pdfplumber,pdfplumber,pdf-tools,categories/pdf-tools/pdfplumber.md
 https://github.com/jub0t/Concat,concat,video-editing,categories/media-processing/video-editing/concat.md
 https://github.com/juliangarnier/anime,anime,frontend-animation,categories/frontend-animation/anime.md
@@ -546,6 +552,7 @@ https://github.com/router-for-me/CLIProxyAPI,cliproxyapi,api-gateway,categories/
 https://github.com/rq/rq,rq,task-queue,categories/task-queue/rq.md
 https://github.com/rthalley/dnspython,dnspython,networking,categories/networking/dnspython.md
 https://github.com/rtk-ai/rtk,rtk,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md
+https://github.com/ruilisi/fortune-sheet,fortune-sheets,office-editors,categories/office-editors/fortune-sheets.md
 https://github.com/run-llama/llama_index,llamaindex,workflow-builders,categories/agent-frameworks/workflow-builders/llamaindex.md
 https://github.com/rustdesk/rustdesk,rustdesk,ops-infra,categories/dev-utilities/ops-infra/rustdesk.md
 https://github.com/safishamsi/graphify,graphify,rag-retrieval,categories/rag-retrieval/graphify.md

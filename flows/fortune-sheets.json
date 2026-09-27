@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": { "en": "Fortune Sheets does", "zh": "Fortune Sheets 做的" },
+  "steps": [
+    { "lane": "you", "en": "Add the React workbook component to your app", "zh": "给应用装上 React 工作簿组件",
+      "code": "npm install @fortune-sheet/react" },
+    { "lane": "you", "en": "Render a Workbook into a sized container div", "zh": "在有尺寸的容器 div 里渲染 Workbook",
+      "code": "<Workbook data={[{ name: \"Sheet1\" }]} />" },
+    { "lane": "them", "en": "Draws the Excel-like grid: formulas, merges, conditional formatting", "zh": "画出类 Excel 网格：公式、合并、条件格式",
+      "component": { "en": "@fortune-sheet/core", "zh": "@fortune-sheet/core" } },
+    { "lane": "you", "en": "Subscribe to the change stream to persist or broadcast edits", "zh": "订阅变更流，把编辑落库或广播",
+      "code": "onOp" },
+    { "lane": "them", "en": "Emits a structured op array describing each edit", "zh": "为每次编辑吐出结构化 op 数组",
+      "component": { "en": "op stream", "zh": "op 流" } },
+    { "lane": "you", "en": "Point ops at your storage — Express + MongoDB demo included", "zh": "把 op 接到你的存储——仓库自带 Express + MongoDB 示例",
+      "code": "node index.js", "component": { "en": "backend-demo", "zh": "backend-demo" } }
+  ],
+  "value": { "en": "An editable Excel-like grid inside your React app while storage and collaboration stay your own stack — no vendor server", "zh": "React 应用里多了一张可编辑的类 Excel 网格，存储与协同仍是你自己的栈——没有厂商服务器" },
+  "sources": [
+    "https://github.com/ruilisi/fortune-sheet/blob/master/README.md — install line `npm install @fortune-sheet/react`; JSX sample `<Workbook data={[{ name: \"Sheet1\" }]} />`; 'an array of Op will be emiited through onOp callback'; backend demo 'Run it with node index.js' (fetched 2026-09-27)"
+  ]
+}

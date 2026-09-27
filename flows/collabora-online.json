@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": { "en": "Collabora Online does", "zh": "Collabora Online 做的" },
+  "steps": [
+    { "lane": "you", "en": "Deploy the CODE server on your cluster with the Helm chart", "zh": "用 Helm chart 把 CODE 服务器部署上集群",
+      "code": "collabora/collabora-online", "component": { "en": "helm chart", "zh": "helm chart" } },
+    { "lane": "you", "en": "Tell it which WOPI host may call: your file platform's URL", "zh": "告诉它哪个 WOPI host 可以调用：你的文件平台 URL",
+      "code": "collabora.aliasgroups[0].host=https://your-wopi-host" },
+    { "lane": "them", "en": "coolwsd brokers editor sessions for your documents", "zh": "coolwsd 为你的文档调度编辑器会话",
+      "component": { "en": "coolwsd", "zh": "coolwsd" } },
+    { "lane": "you", "en": "Users click a file in your drive — the editor opens in the browser", "zh": "用户在网盘里点文件——浏览器里编辑器直接打开" },
+    { "lane": "them", "en": "The LibreOffice engine renders and merges edits live for everyone", "zh": "LibreOffice 引擎为所有人实时渲染并合并编辑",
+      "component": { "en": "LibreOffice core", "zh": "LibreOffice 内核" } },
+    { "lane": "them", "en": "Saved versions go back to your WOPI host's storage", "zh": "保存的新版本落回你的 WOPI host 存储" }
+  ],
+  "value": { "en": "A desktop-grade office editor inside your self-hosted drive, colleagues already in the file — storage, accounts, and sharing stay yours", "zh": "自托管网盘里多了一个桌面级办公编辑器，同事已经在文件里——存储、账号、分享仍然归你" },
+  "sources": [
+    "https://github.com/CollaboraOnline/online/blob/main/kubernetes/helm/collabora-online/README.md — verbatim: helm install --create-namespace --namespace collabora collabora-online collabora/collabora-online -f my_values.yaml; --set 'collabora.aliasgroups[0].host=https://your-wopi-host' (fetched 2026-09-27)",
+    "https://github.com/CollaboraOnline/online/blob/main/README.md — issues + release artifacts (nightly container, Helm chart); development on Gerrit; LibreOffice-based engine"
+  ]
+}
