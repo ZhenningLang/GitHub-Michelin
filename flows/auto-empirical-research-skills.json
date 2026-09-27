@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "AERS does",
+    "zh": "AERS 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install one first-party plugin from the marketplace",
+      "zh": "从 marketplace 装一个一等插件",
+      "code": "/plugin install empirical-analysis-python@auto-empirical-research-skills",
+      "component": {"en": "Claude Code marketplace", "zh": "Claude Code 插件市场"}
+    },
+    {
+      "lane": "them",
+      "en": "Registers that plugin's SKILL.md descriptions for this session",
+      "zh": "把该插件的 SKILL.md 描述注册进本会话",
+      "component": {"en": "plugin", "zh": "插件"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the empirical task in natural language",
+      "zh": "用自然语言说要做的实证任务"
+    },
+    {
+      "lane": "them",
+      "en": "Matches the description and loads one child skill",
+      "zh": "按描述匹配，只加载那一个子 skill",
+      "component": {"en": "SKILL.md", "zh": "SKILL.md"}
+    },
+    {
+      "lane": "you",
+      "en": "Point it at your data and confirm the identification strategy",
+      "zh": "给出数据，确认识别策略"
+    },
+    {
+      "lane": "them",
+      "en": "Runs estimation, robustness, and journal tables, then stops for you",
+      "zh": "跑估计、稳健性和期刊表格，然后停下来等你",
+      "component": {"en": "analysis pipeline", "zh": "分析流水线"}
+    }
+  ],
+  "value": {
+    "en": "A method-specific empirical run without loading 1,096 skills or writing the pipeline yourself",
+    "zh": "不用装 1096 个 skill，也不用自己写流水线提示，就能跑完一次方法对口的实证"
+  },
+  "sources": [
+    "INSTALL.md method 1 (marketplace add + plugin install slash commands)",
+    "README.md 怎么用 (natural-language Callaway–Sant'Anna example)",
+    "SKILL.md Workflow steps 1–2 (route to one child SKILL.md, do not load the catalog)",
+    "INSTALL.md method 3 warning: copy a handful, not the whole catalog (~64k tokens)"
+  ]
+}
