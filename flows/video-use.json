@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "video-use makes the agent do",
+    "zh": "video-use 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the skill, install ffmpeg, and put an ElevenLabs key in .env",
+      "zh": "克隆 skill、装 ffmpeg、把 ElevenLabs 密钥写入 .env",
+      "code": "uv sync"
+    },
+    {
+      "lane": "them",
+      "en": "Registers as a skill whose helpers sit next to SKILL.md",
+      "zh": "把整个目录注册为 skill，helpers 就在 SKILL.md 旁边",
+      "component": {"en": "SKILL.md", "zh": "SKILL.md"}
+    },
+    {
+      "lane": "you",
+      "en": "Point the agent at a folder of raw takes and ask it to edit",
+      "zh": "让 agent 对着素材文件夹开始剪",
+      "code": "edit these into a launch video"
+    },
+    {
+      "lane": "them",
+      "en": "Transcribes with Scribe and packs a phrase-level reading view",
+      "zh": "用 Scribe 转写，打成逐句可读的 takes_packed.md",
+      "code": "takes_packed.md",
+      "component": {"en": "transcribe_batch.py", "zh": "transcribe_batch.py"}
+    },
+    {
+      "lane": "you",
+      "en": "Confirm the plain-English strategy before any cut",
+      "zh": "先用白话确认策略，再允许动刀"
+    },
+    {
+      "lane": "them",
+      "en": "Writes an EDL, renders, self-evals at cut boundaries, and drops final.mp4",
+      "zh": "写出 EDL，渲染并在每个切点自检，落到 final.mp4",
+      "code": "edit/final.mp4",
+      "component": {"en": "render.py", "zh": "render.py"}
+    }
+  ],
+  "value": {
+    "en": "You stop watching the timeline yourself; the agent cuts from a transcript you can read, after you approve the plan",
+    "zh": "你不用自己盯时间轴；agent 读一份转写稿来剪，而且动刀前要你点头"
+  },
+  "sources": [
+    "https://github.com/browser-use/video-use/blob/main/install.md Steps 1–5 (git clone, uv sync, ffmpeg, ELEVENLABS_API_KEY, skill symlink)",
+    "https://github.com/browser-use/video-use/blob/main/README.md Setup prompt and Pipeline (edit these into a launch video; Transcribe → Pack → LLM Reasons → EDL → Render → Self-Eval)",
+    "https://github.com/browser-use/video-use/blob/main/SKILL.md Helpers + The process + Directory layout (transcribe_batch.py, pack_transcripts.py, takes_packed.md, render.py, edit/final.mp4, strategy confirmation)"
+  ]
+}

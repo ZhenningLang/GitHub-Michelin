@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Browser Harness does",
+    "zh": "Browser Harness 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI and register the skill once",
+      "zh": "一次性装好 CLI 并注册 skill",
+      "code": "uv tool install --python 3.12 --upgrade --force browser-harness"
+    },
+    {
+      "lane": "them",
+      "en": "Connects a daemon to your Chrome over CDP after you allow remote debugging",
+      "zh": "你勾选远程调试后，用 CDP 把 daemon 接到 Chrome",
+      "code": "chrome://inspect/#remote-debugging",
+      "component": {"en": "daemon", "zh": "daemon"}
+    },
+    {
+      "lane": "you",
+      "en": "Drive the attached tab with a Python heredoc",
+      "zh": "用 Python heredoc 驱动已附着的标签页",
+      "code": "print(page_info())"
+    },
+    {
+      "lane": "them",
+      "en": "Runs pre-imported helpers against that tab without launching a new browser",
+      "zh": "用预导入的帮手在该标签页上执行，不再新开浏览器",
+      "component": {"en": "helpers.py", "zh": "helpers.py"}
+    },
+    {
+      "lane": "you",
+      "en": "When a helper is missing, write it in the local workspace",
+      "zh": "缺帮手时写进本地 workspace",
+      "code": "agent-workspace/agent_helpers.py"
+    },
+    {
+      "lane": "them",
+      "en": "Later tasks reuse those helpers; the core package stays untouched",
+      "zh": "后续任务复用这些帮手，核心包不被改动"
+    }
+  ],
+  "value": {
+    "en": "Your coding agent drives the Chrome you are already logged into, instead of you maintaining a Playwright script per click",
+    "zh": "coding agent 直接驱动你已登录的 Chrome，而不用为每次点击去维护 Playwright 脚本"
+  },
+  "sources": [
+    "https://github.com/browser-use/browser-harness/blob/main/install.md Fast Path (uv tool install --python 3.12, chrome://inspect/#remote-debugging)",
+    "https://github.com/browser-use/browser-harness/blob/main/SKILL.md Usage (browser-harness heredoc, print(page_info()), first navigation is new_tab)",
+    "https://github.com/browser-use/browser-harness/blob/main/README.md How it works (src/browser_harness protected; agent writes agent-workspace/agent_helpers.py)",
+    "https://github.com/browser-use/browser-harness/blob/main/AGENTS.md Overview (daemon.py, helpers.py, run.py)"
+  ]
+}

@@ -8,6 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Agent Browser** | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 | B（5/6） | [→](agent-browser.zh.md) |
+| **Browser Harness** | 当 coding agent 必须经 CDP 驱动你已经登录的 Chrome、并把缺的帮手写进本地 workspace 时用它——仍是 Alpha、遥测默认开、没有内层 agent 循环。 | A（6/6） | [→](browser-harness.zh.md) |
 | **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | A（6/6） | [→](browser-use.zh.md) |
 | **BrowserSkill** | 当 agent 必须在不动你现有窗口的前提下操作你已登录的 Chromium 时用它——借你的页签要先经你确认，遇到登录或验证码把控制权交还给你。 | B（6/6） | [→](browserskill.zh.md) |
 | **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | A（6/6） | [→](chrome-devtools-mcp.zh.md) |
@@ -19,6 +20,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Agent Browser](agent-browser.zh.md) | ✅ | B（5/6） | 当 agent 需要靠 shell 命令通过 CDP 驱动真实 Chrome、用稳定元素引用而非 CSS 选择器操作网页时使用。 |
+| [Browser Harness](browser-harness.zh.md) | ✅ | A（6/6） | coding agent 经 CDP 附着你正在用的 Chrome，缺帮手就写进本地；没有内层 LLM 循环，遥测关掉之前一直开，仍是 0.1.x Alpha。 |
 | [browser-use](browser-use.zh.md) | ✅ | A（6/6） | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. |
 | [BrowserSkill](browserskill.zh.md) | ✅ | B（6/6） | 让任何能调 shell 的 agent 桥接你已登录的 Chromium，不干扰你自己的窗口，遇到只能人做的步骤交还给你；信任面与 OpenCLI 同级，但没有它的确定性站点适配器。 |
 | [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | ✅ | A（6/6） | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 |
