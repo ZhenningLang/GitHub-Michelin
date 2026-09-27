@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "tmux does", "zh": "tmux 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install from your platform's package set (or build from the tarball)", "zh": "用系统包源安装（或从 tarball 构建）", "code": "./configure && make"},
+    {"lane": "you", "en": "Start a session before the long-running thing begins", "zh": "在长任务开始前沿起一个 session", "code": "tmux"},
+    {"lane": "them", "en": "Spawns a server that owns the pseudo-terminals and the status line", "zh": "拉起一个 server，掌管所有伪终端和底部状态栏"},
+    {"lane": "you", "en": "Add a window, split it, run the build or the agent inside", "zh": "开 window、分屏，把构建或 agent 放进去跑", "code": "tmux neww \\; splitw"},
+    {"lane": "you", "en": "Detach when you're done watching", "zh": "看完了就脱离", "code": "ctrl+b d"},
+    {"lane": "them", "en": "Keeps every process alive through SSH timeouts and closed terminals", "zh": "SSH 超时、终端关闭，所有进程照跑"},
+    {"lane": "you", "en": "Tomorrow, reattach and pick up exactly where you left", "zh": "第二天重连，画面原样接上", "code": "tmux attach"}
+  ],
+  "value": {
+    "en": "Dropped connections and dead terminal windows stop killing server-side work — with one small C binary and nothing to babysit",
+    "zh": "断线、终端先死，再也不杀服务端任务——一个小的 C 二进制，没有要伺候的东西"
+  },
+  "sources": [
+    "README (Dependencies: libevent 2.x + ncurses; build from release tarball: ./configure && make; sudo make install; platforms OpenBSD/FreeBSD/NetBSD/Linux/macOS/Solaris)",
+    "man tmux.1 DESCRIPTION (started creates a new session with a single window; status line at the bottom; session = collection of pseudo terminals; survives accidental disconnection such as ssh connection timeout or intentional detaching with C-b d)",
+    "man tmux.1 example ($ tmux attach; $ tmux neww \\; splitw)",
+    "man tmux.1 (prefix key C-b; C-b d detach)"
+  ]
+}

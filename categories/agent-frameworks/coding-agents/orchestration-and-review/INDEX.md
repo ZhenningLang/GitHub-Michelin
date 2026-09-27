@@ -18,6 +18,8 @@
 | **OpenChamber** | Use it when you run OpenCode and want a cross-device operator workspace — goal-audited sessions, up to five models per prompt with optional worktrees, a diff walkthrough, and the git/PR surface beside the chat — accepting a 12-month-old, single-maintainer app locked to one agent runtime. | B (5/6) | [→](openchamber.md) |
 | **OpenResearch** | Use it when your coding agent and GPUs are already in place and the missing layer is the experiment bookkeeping — a branch-per-experiment tree, immutable commit snapshots, and runs dispatched across nine compute backends — accepting a 3.5-month-old, fast-release app whose managed-compute half is a closed service. | B (6/6) | [→](openresearch.md) |
 
+| **herdr** | Use it when you supervise several coding agents in parallel and want the multiplexer itself to badge blocked/working/done and let agents drive each other via `herdr agent wait/prompt` — but it's 6 months old, pre-1.0, and effectively single-maintainer. | — | [→](herdr.md) |
+
 ## What belongs here
 
 Coding-agent control planes, multi-agent runners, and review/automation wrappers.

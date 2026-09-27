@@ -138,6 +138,7 @@ Built-in agent skill ecosystems,categories/agent-skills/ai-writing/content-produ
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
 Built-in file reading / grep retrieval,categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 Butteraugli,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+Byobu,categories/terminal-ui/tmux.md,,no
 Caddy (automatic HTTPS),categories/dev-utilities/ops-infra/certbot.md,,no
 Caddy + plugins (Go),categories/nginx-modules/lua-nginx-module.md,,no
 CadQuery / build123d,categories/cad/freecad.md,,no
@@ -326,6 +327,7 @@ GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
+GNU Screen,categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.md,,no
 Go Playground / `go run`,categories/python-tooling/gophernotes.md,,no
 go-mysql (library),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Godot,categories/game-dev/pygame.md,,no

@@ -1,6 +1,6 @@
 # terminal-ui
 
-> 分类节点。终端/CLI UI 库——着色、TUI、ASCII art、终端渲染。
+> 分类节点。终端/CLI UI 库——着色、TUI、ASCII art、终端渲染——以及围着这些工具保活 pane 与 session 的终端复用器（tmux、Zellij）。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
 ## 本分类项目
@@ -16,6 +16,8 @@
 | **Alacritty** | 当你想要一个快速、GPU 加速、跨平台的终端模拟器，具备合理的默认设置时用它——但它明确不支持标签页、分屏和连字，且需要 OpenGL 3.3+。 | A（6/6） | [→](alacritty.zh.md) |
 | **Rich** | Rich is a Python library for rich text and beautiful formatting in the terminal. | B（6/6） | [→](rich.zh.md) |
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | B（6/6） | [→](textual.zh.md) |
+| **tmux** | 当 SSH 上的长任务必须比终端活得久、你要的是最小且无处不在的复用器时用它——但它对 pane 里跑什么一无所知，agent 监管得自己搭胶水。 | A（6/6） | [→](tmux.zh.md) |
+| **Zellij** | 当你想要自带可发现性的终端复用（模式提示条、鼠标、布局、WASM 插件）外加 token 鉴权 web client 时用它——但它是 pre-1.0、issue 积压大，且 web 接入要做真 TLS 运维。 | A（6/6） | [→](zellij.zh.md) |
 
 
 ## 对比矩阵
@@ -29,8 +31,10 @@
 | [asciify](asciify.zh.md) | ✅ | E（4/6） | 当你只想要一份极简易读、可复制粘贴的图片转 ASCII 算法参考时用它——但它没有任何许可证（默认保留所有权利），自 2022 年起无人维护，切勿将其并入产品。 |
 | [Alacritty](alacritty.zh.md) | ✅ | A（6/6） | 快速、GPU 加速的 OpenGL 终端模拟器，具备合理的默认设置；设计上不支持标签页、分屏和连字——复用请配合 tmux。 |
 | [Warp](warp.zh.md) | ✅ | B（6/6） | 带命令块和编码 agent 的现代 AI 终端；GitHub 仓库仅用于 issue，产品为专有闭源软件。 |
+| [tmux](tmux.zh.md) | ✅ | A（6/6） | SSH 长任务要活得比终端久时的最小通用复用器；对 pane 内容无感知，agent 监管自己搭。 |
+| [zellij](zellij.zh.md) | ✅ | A（6/6） | 自带提示条、鼠标、布局、WASM 插件与鉴权 web client 的“人本位”复用器；pre-1.0，issue 积压大。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里
 
-在**终端里渲染 UI** 的库——着色、TUI、ASCII art、样式化输出。
+在**终端里渲染 UI** 的库——着色、TUI、ASCII art、样式化输出——以及终端**多路复用器**（管 session/pane 存活的东西，如 tmux、Zellij；感知 agent 的那类，如 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)，归在 `agent-frameworks/coding-agents/orchestration-and-review`）。
