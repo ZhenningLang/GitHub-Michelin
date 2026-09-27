@@ -52,6 +52,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Ralph for Claude Code** | 想让 Claude Code 无人值守地啃完 fix_plan.md 清单、又要速率限制/熔断器/双条件退出闸门兜底时用它。 | MIT | C（5/6） | [中](categories/agent-tooling/work-state/ralph-claude-code.zh.md) · [EN](categories/agent-tooling/work-state/ralph-claude-code.md) |
 | **Context Mode** | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 | Elastic-2.0 | D（6/6） | [中](categories/agent-tooling/work-state/context-mode.zh.md) · [EN](categories/agent-tooling/work-state/context-mode.md) |
 | **Planning with Files** | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 | MIT | B（5/6） | [中](categories/agent-tooling/work-state/planning-with-files.zh.md) · [EN](categories/agent-tooling/work-state/planning-with-files.md) |
+| **LoopX** | 当 agent 的工作要跨天、跨重启、跨运行时持续推进，且需要持久目标、人工门禁、配额与证据治理每一轮时用它。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/work-state/loopx.zh.md) · [EN](categories/agent-tooling/work-state/loopx.md) |
 | **Vercel Skills** | 当你想要一个 npm 风格的 CLI 来跨多个编码 agent 安装、查找、更新 SKILL.md 技能包时使用。 | MIT | A（6/6） | [中](categories/agent-tooling/harness-extensions/vercel-skills.zh.md) · [EN](categories/agent-tooling/harness-extensions/vercel-skills.md) |
 | **AgentsView** | 当你同时跑多个编码 agent、想要本地优先的跨 agent 会话搜索与 token／成本分析时用它——但它问世仅数月、尚未到 1.0，要预期频繁变动。 | MIT | B（6/6） | [中](categories/agent-tooling/session-history/agentsview.zh.md) · [EN](categories/agent-tooling/session-history/agentsview.md) |
 | **Agent Orchestrator** | 当你要监管多个跑在真实分支上的并行编码 agent、想要一个桌面控制面把每个隔离进 git worktree 并自动路由 CI／review／冲突反馈时用它——但它约 4.5 个月大、尚未到 1.0、单一 User 所有，且 daemon 是 loopback 无鉴权。 | Apache-2.0 | B（6/6） | [中](categories/agent-tooling/supervision-surfaces/agent-orchestrator.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/agent-orchestrator.md) |
@@ -78,16 +79,6 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Knative Serving** | 当 HTTP 服务一天里大部分时间闲着、你想要按 revision 的发布加缩容到零，又不想采用某个 FaaS 产品时用它。 | Apache-2.0 | B（6/6） | [中](categories/serverless/knative-serving.zh.md) · [EN](categories/serverless/knative-serving.md) |
-
-### kubernetes-ui
-
-| 项目 | 何时用 | 许可 | 健康度 | 页面 |
-| --- | --- | --- | --- | --- |
-| **k9s** | 集群操作必须留在终端——活表、日志、exec——浏览器是错的表面时用它。 | Apache-2.0 | A（5/6） | [中](categories/kubernetes-ui/k9s.zh.md) · [EN](categories/kubernetes-ui/k9s.md) |
-| **Headlamp** | 团队需要带 RBAC 按钮的共享浏览器控制台、还要挂在 kubernetes-sigs 下时用它。 | Apache-2.0 | A（6/6） | [中](categories/kubernetes-ui/headlamp.zh.md) · [EN](categories/kubernetes-ui/headlamp.md) |
-| **Radar** | 要从本机 Apache-2.0 二进制拿到拓扑、Helm／GitOps、审计和 MCP、还不要账号时用它。 | Apache-2.0 | B（6/6） | [中](categories/kubernetes-ui/radar.zh.md) · [EN](categories/kubernetes-ui/radar.md) |
-| **Freelens** | 要旧版 Lens 桌面窗口、而且必须是 MIT、不要 Mirantis 账号时用它。 | MIT | A（6/6） | [中](categories/kubernetes-ui/freelens.zh.md) · [EN](categories/kubernetes-ui/freelens.md) |
-| **Lens** | 只有团队已经在为 Lens Desktop／Teamwork 付钱时用它；GitHub 上的开源树已停。 | MIT | C（4/6） | [中](categories/kubernetes-ui/lens.zh.md) · [EN](categories/kubernetes-ui/lens.md) |
 
 ### document-management
 
@@ -513,7 +504,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/antfu-skills.md) |
-| **claude-code-harness** | 装进 Claude Code（也覆盖 Codex CLI、Cursor、Grok）的受治理交付闭环：你批准的 spec 契约、TDD 门控执行、独立 review，外加一个在每次工具调用执行前检查它的 Go 护栏引擎。 | MIT | B（5/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md) |
+| **claude-code-harness** | 一套个人化的 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环（spec 优先契约、TDD 门控执行、独立 review），并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | MIT | B（5/6） | [中](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md) |
 | **dbskill** | 一套个人精选的中文 agent 技能包（约 21 个 /dbs-* 命令），聚焦商业模式诊断、内容创作与个人决策，可安装进 Claude Code 等 harness。 | CC-BY-NC-4.0 | C（4/6） | [中](categories/agent-skills/personal-collections/knowledge-content/dbskill.zh.md) · [EN](categories/agent-skills/personal-collections/knowledge-content/dbskill.md) |
 | **Dimillian Skills** | 某开发者个人精选的 16 个自包含 Codex skill，重心压在 Apple 平台（SwiftUI/iOS/macOS），外加几个通用评审/重构 swarm。 | MIT | C（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md) |
 | **gstack** | Garry Tan 的私人 Claude Code harness：54 个 skill——约一半是角色人设（CEO 复盘、工程经理、设计师、QA、安全官、发布工程师），另一半是工具命令——外加一个 agent 真正驱动的浏览器，串成一条「规划 → 构建 → 评审 → 发布 → 复盘」冲刺流程。 | MIT | B（4/5） | [中](categories/agent-skills/personal-collections/engineering-workflows/gstack.zh.md) · [EN](categories/agent-skills/personal-collections/engineering-workflows/gstack.md) |
