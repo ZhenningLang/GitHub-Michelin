@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Moli does", "zh": "Moli 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary with the published installer script", "zh": "用官方安装脚本装好单二进制", "code": "moli-installer.sh"},
+    {"lane": "you", "en": "Ask for a page as Markdown", "zh": "要一个页面的 Markdown", "code": "moli fetch --dump markdown --wait-until done https://example.com"},
+    {"lane": "them", "en": "Loads the URL, runs the page's JavaScript in V8, waits for the load to settle", "zh": "加载页面，在 V8 里跑 JS，等页面稳定", "component": {"en": "moli fetch", "zh": "moli fetch"}},
+    {"lane": "them", "en": "Serializes the live DOM to Markdown — layout and paint never run", "zh": "把实时 DOM 序列化成 Markdown——布局和渲染全程没跑"}
+  ],
+  "value": {
+    "en": "Your agent gets JS-rendered page content from one binary — no Chrome, no driver, no paying for pixels",
+    "zh": "agent 拿一个二进制就取到 JS 渲染后的内容——不装 Chrome、不伺候驱动、不为像素付钱"
+  },
+  "sources": [
+    "README.md Quick start / Direct installation (curl --proto '=https' --tlsv1.2 -fsSL https://github.com/lexmount/moli/releases/latest/download/moli-installer.sh | sh)",
+    "README.md CLI usage (moli fetch --dump markdown --wait-until done https://example.com; semantic_tree_text; --layout for screenshot/pdf; wait options)",
+    "README.md Why Moli + Cost controls (default LayoutPolicy::Mock skips layout/paint; DOM+style is the single source of truth; FrozenLayoutTree rebuilt per request; --layout enables real geometry)"
+  ]
+}
