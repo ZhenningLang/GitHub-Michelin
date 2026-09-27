@@ -8,7 +8,7 @@
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **antfu/skills** | Anthony Fu's personal curated agent-skill collection for the Vue/Vite/Nuxt stack (his ESLint/pnpm/Vitest/UnoCSS prefs + generated/vendored framework skills), installed via the skills CLI. | B (4/5) | [→](antfu-skills.md) |
-| **claude-code-harness** | A governed delivery loop installed into Claude Code (also Codex CLI, Cursor, Grok): spec contracts you approve, TDD-gated work, independent review, plus a Go guardrail engine that inspects every tool call before it executes. | B (5/6) | [→](claude-code-harness.md) |
+| **claude-code-harness** | A personal Claude Code harness that installs a governed plan → work → review → release loop as a plugin, with a Go-native doctor CLI for diagnosing plugin-cache and skill drift. | B (5/6) | [→](claude-code-harness.md) |
 | **Dimillian Skills** | One developer's personal collection of 16 self-contained Codex skills, heavily focused on Apple-platform work plus generic review/refactor swarms. | C (4/5) | [→](dimillian-skills.md) |
 | **gstack** | Garry Tan's personal Claude Code harness: 54 skills — about half role personas (CEO, eng manager, designer, QA, security officer, release engineer), half utility commands — plus a real browser the agent drives, across one plan → build → review → ship → retro sprint. | B (4/5) | [→](gstack.md) |
 | **andrej-karpathy-skills** | A behavioral-guidelines pack distilling Karpathy's four LLM-coding principles into Claude Code / Cursor. | C (3/5) | [→](karpathy-skills.md) |
@@ -22,7 +22,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [antfu/skills](antfu-skills.md) | ✅ | B (4/5) | Best when your stack matches Anthony Fu's Vue/Vite/Nuxt conventions. |
-| [claude-code-harness](claude-code-harness.md) | ✅ | B (5/6) | Best when you want a governed contract loop with a pre-execution guardrail engine, not a persona pack. |
+| [claude-code-harness](claude-code-harness.md) | ✅ | B (5/6) | Best when you want a governed Claude Code harness with doctor tooling. |
 | [Dimillian Skills](dimillian-skills.md) | ✅ | C (4/5) | Best for Apple-platform Codex workflows and personal review/refactor swarms. |
 | [gstack](gstack.md) | ✅ | B (4/5) | Best when you want one operator's whole sprint loop — role skills plus a driven browser — rather than parts to assemble. |
 | [andrej-karpathy-skills](karpathy-skills.md) | ✅ | C (3/5) | Best as a compact behavior guideline pack, not a full harness. |
