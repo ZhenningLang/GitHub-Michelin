@@ -4,6 +4,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 2captcha-python,categories/captcha/buster.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/claude-subconscious.md,,no
+[fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
@@ -42,6 +43,7 @@ acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
 ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
+AG Grid,categories/office-editors/jspreadsheet.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/ai-scientist.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
@@ -391,6 +393,7 @@ Hugging Face sentiment models,categories/ml-research/senta.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/astro.md,,no
+HyperFormula,categories/office-editors/handsontable.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
@@ -438,6 +441,7 @@ lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta Code,categories/agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
+LibreOffice,categories/office-editors/collabora-online.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
@@ -461,6 +465,7 @@ Looker,categories/data-visualization/superset.md,,no
 LTBL implementation groups / Beam,categories/agent-dev-methodology/spec-driven-development/INDEX.md,,no
 lua-resty-redis-cluster,categories/nginx-modules/lua-resty-redis.md,,no
 lucidrains' implementations,categories/ml-research/pytorch-gan.md,,no
+Luckysheet,categories/office-editors/fortune-sheets.md,,no
 Luigi,categories/workflow-orchestration/airflow.md,,no
 macOS Spotlight (built-in),categories/dev-utilities/data-tools/flashlight.md,,no
 Make (Integromat),categories/workflow-orchestration/n8n.md,,no
@@ -540,10 +545,12 @@ NewsBlur,categories/reading-tools/netnewswire.md,,no
 newspaper3k / goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 newspaper4k,categories/web-scraping/article-extraction/newspaper.md,,no
 Nextcloud,categories/document-management/copyparty.md,,no
+Nextcloud (richdocuments),categories/office-editors/collabora-online.md,,no
 Nextcloud Photos,categories/document-management/immich.md,,no
 NGINX `client_body_*` buffering + app handling,categories/nginx-modules/nginx-upload-module.md,,no
 nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
+NocoDB,categories/office-editors/grist.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
 NotebookLM,categories/knowledge-base/khoj.md,,no
 NotebookLM / Google OKF,categories/knowledge-base/openkb.md,,no

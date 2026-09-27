@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": { "en": "Univer does", "zh": "Univer 做的" },
+  "steps": [
+    { "lane": "you", "en": "Add the curated sheets preset to your web app", "zh": "给 Web 应用装上精选的表格 preset",
+      "code": "pnpm add @univerjs/presets @univerjs/preset-sheets-core" },
+    { "lane": "you", "en": "Mount the preset on a container div in your page", "zh": "把 preset 挂到页面上的容器 div",
+      "code": "UniverSheetsCorePreset({ container: 'app' })", "component": { "en": "presets", "zh": "presets" } },
+    { "lane": "you", "en": "Open an empty workbook through the Facade API", "zh": "通过 Facade API 开一个空工作簿",
+      "code": "univerAPI.createWorkbook({})" },
+    { "lane": "them", "en": "Renders the grid, toolbar and formula bar on one canvas", "zh": "在一块 Canvas 上画出网格、工具栏与公式栏",
+      "component": { "en": "engine-render", "zh": "engine-render" } },
+    { "lane": "them", "en": "Evaluates every cell edit through its formula engine", "zh": "每次单元格编辑都过一遍公式引擎求值",
+      "component": { "en": "engine-formula", "zh": "engine-formula" } },
+    { "lane": "them", "en": "Same packages run headless in Node for server-side work", "zh": "同一套包在 Node 里无头跑服务端计算",
+      "component": { "en": "headless runtime", "zh": "无头运行时" } }
+  ],
+  "value": { "en": "You ship an Excel-like editor inside your product without writing a canvas engine, a formula parser, or an undo system", "zh": "你在产品里交付了一个类 Excel 编辑器，却一行 Canvas 引擎、公式解析或撤销系统都不用写" },
+  "sources": [
+    "https://github.com/dream-num/univer/blob/dev/README.md — Preset Mode quick start: `pnpm add @univerjs/presets @univerjs/preset-sheets-core`, `UniverSheetsCorePreset({ container: 'app' })`, `univerAPI.createWorkbook({})` (fetched 2026-09-27)",
+    "https://github.com/dream-num/univer/blob/dev/README.md — Highlights & Why sections: canvas rendering engine, formula engine, headless Node.js/isomorphism"
+  ]
+}

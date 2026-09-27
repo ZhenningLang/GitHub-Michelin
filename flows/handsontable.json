@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": { "en": "Handsontable does", "zh": "Handsontable 做的" },
+  "steps": [
+    { "lane": "you", "en": "Install the grid (wrappers exist for React/Angular/Vue)", "zh": "安装网格（有 React/Angular/Vue wrapper）",
+      "code": "npm install handsontable" },
+    { "lane": "you", "en": "Declare columns: type, editor, and validator per field", "zh": "声明列：每列给类型、编辑器与校验器",
+      "code": "{ data: 'company', title: 'Company', width: 100 }" },
+    { "lane": "you", "en": "Start on the free evaluation key, swap in the purchased one", "zh": "先用免费评估 key，上线换成购买的 key",
+      "code": "licenseKey: 'non-commercial-and-evaluation'" },
+    { "lane": "them", "en": "Renders a virtualized grid with spreadsheet keyboard + clipboard", "zh": "渲染虚拟化网格，键盘与剪贴板都是电子表格式",
+      "component": { "en": "data grid core", "zh": "网格核心" } },
+    { "lane": "them", "en": "Evaluates cell formulas through HyperFormula's 400 functions", "zh": "公式经 HyperFormula 的 400 个函数求值",
+      "component": { "en": "HyperFormula", "zh": "HyperFormula" } },
+    { "lane": "them", "en": "Runs data validation and conditional formatting as you type", "zh": "边输入边跑数据校验与条件格式",
+      "component": { "en": "validators & formatting", "zh": "校验器+条件格式" } }
+  ],
+  "value": { "en": "Power users keep their Excel muscle memory inside your product — and you never write the keyboard, clipboard, and recalculation layer yourself", "zh": "重度用户在你的产品里保留 Excel 肌肉记忆——键盘、剪贴板、重算层都不用你自己写" },
+  "sources": [
+    "https://github.com/handsontable/handsontable/blob/master/README.md — `npm install handsontable`; setup sample `{ data: 'company', title: 'Company', width: 100 }` and `new Handsontable(element, {`; `licenseKey: 'non-commercial-and-evaluation'`; Key Features list: 400 built-in formulas, data validation, conditional formatting, virtualization, server-side data (fetched 2026-09-27)"
+  ]
+}

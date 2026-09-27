@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": { "en": "ONLYOFFICE Docs does", "zh": "ONLYOFFICE Docs 做的" },
+  "steps": [
+    { "lane": "you", "en": "Run the document server container with a JWT secret", "zh": "带 JWT secret 起文档服务器容器",
+      "code": "onlyoffice/documentserver" },
+    { "lane": "you", "en": "Put the open document where your storage serves URLs from", "zh": "把待编辑文档放到你的存储可发 URL 的位置",
+      "component": { "en": "your storage", "zh": "你的存储" } },
+    { "lane": "you", "en": "Embed the editor placeholder in your page and configure it", "zh": "在页面里放编辑器占位符并配置它",
+      "code": "new DocsAPI.DocEditor(\"placeholder\",", "component": { "en": "sdkjs API", "zh": "sdkjs API" } },
+    { "lane": "them", "en": "Streams the Word/Cells/Slides-like editor against your file", "zh": "对你的文件流出 Word/Cells/Slides 式编辑器",
+      "component": { "en": "web-apps + server", "zh": "web-apps + server" } },
+    { "lane": "them", "en": "Merges everyone's edits into the document in real time", "zh": "把所有人的编辑实时合进同一份文档" },
+    { "lane": "them", "en": "Sends the saved version back to your endpoint", "zh": "把保存后的新版本送回你的端点" }
+  ],
+  "value": { "en": "Clicking a file in your product opens a familiar, co-editable .docx/.xlsx/.pptx editor — you own storage and accounts, they ship the whole office suite", "zh": "在你的产品里点一个文件，就打开可协同的完整 Office 编辑器——存储和账号是你的，套件由他们出货" },
+  "sources": [
+    "https://helpcenter.onlyoffice.com/docs/installation/docs-community-install-docker.aspx — verbatim: docker run -i -t -d -p 80:80 --restart=always -e JWT_SECRET=my_jwt_secret onlyoffice/documentserver (fetched 2026-09-27)",
+    "https://github.com/ONLYOFFICE/document-server-integration/blob/master/web/documentserver-example/js/init.js — verbatim line: new DocsAPI.DocEditor(\"placeholder\", followed by documentType/document config (fetched 2026-09-27)",
+    "https://github.com/ONLYOFFICE/DocumentServer/blob/master/README.md — collaborative editing in real time; save/export; components server/core/sdkjs/web-apps"
+  ]
+}

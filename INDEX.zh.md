@@ -37,6 +37,7 @@
 | **ocr** | 光学字符识别引擎——图像/扫描件转文本。 | [→](categories/ocr/INDEX.zh.md) |
 | **document-parsing** | 把文档（PDF/DOCX/…）解析成结构化 Markdown/JSON，供 gen-AI 消费。 | [→](categories/document-parsing/INDEX.zh.md) |
 | **office-automation** | 程序化创建、读取、编辑原生 Office 文档（.docx/.xlsx/.pptx）——生成侧，面向脚本与 agent。 | [→](categories/office-automation/INDEX.zh.md) |
+| **office-editors** | Web 上的交互式办公编辑——嵌进你自己产品的编辑器 SDK 与电子表格式网格，以及可自托管的文档服务器与表格平台。 | [→](categories/office-editors/INDEX.zh.md) |
 | **diagramming** | 从文本生成图表（diagrams-as-code），用于 Markdown、文档和 Web。 | [→](categories/diagramming/INDEX.zh.md) |
 | **media-download** | 通过 CLI 或库从流媒体站点下载音视频。 | [→](categories/media-download/INDEX.zh.md) |
 | **media-processing** | 解码/编码/转码/滤镜处理音视频（媒体框架与工具链）。 | [→](categories/media-processing/INDEX.zh.md) |

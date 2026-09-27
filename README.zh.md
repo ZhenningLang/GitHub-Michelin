@@ -605,6 +605,18 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | MIT | C（6/6） | [中](categories/office-automation/office-powerpoint-mcp-server.zh.md) · [EN](categories/office-automation/office-powerpoint-mcp-server.md) |
 | **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | Apache-2.0 | B（3/6） | [中](categories/office-automation/apache-poi.zh.md) · [EN](categories/office-automation/apache-poi.md) |
 
+
+### office-editors
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Univer** | 当你在*做一个产品*、需要内嵌一个可以逐插件改版重写的表格/文档编辑器、且要求 Apache-2.0 时用它——但协同、xlsx 导入导出、图表、透视表在付费 Pro，1.0 线 2026-09 才发布，路线图系于单一厂商。 | Apache-2.0 | A（6/6） | [中](categories/office-editors/univer.zh.md) · [EN](categories/office-editors/univer.md) |
+| **Fortune Sheets** | 当 React 应用要一个 MIT 的即用型类 Excel 网格、并愿意自己接 op 流做持久化时用它——但它是 Luckysheet 血统、功能上限相同，无内置 xlsx 读写，且 2025-12-15 后无提交。 | MIT | B（5/6） | [中](categories/office-editors/fortune-sheets.zh.md) · [EN](categories/office-editors/fortune-sheets.md) |
+| **Handsontable** | 当内部数据录入网格需要 15 年打磨的电子表格交互（校验、条件格式、400 个公式）、且预算容得下商业授权时用它——想免费商用就换 Jspreadsheet CE 或 Fortune Sheets。 | 自定义（非商业免费 + 商业付费） | A（5/6） | [中](categories/office-editors/handsontable.zh.md) · [EN](categories/office-editors/handsontable.md) |
+| **Jspreadsheet** | 当你想要最轻的 MIT 原生 JS 网格、带列类型与 Excel 复制粘贴时用它——但要接受社区版是 Pro 产品的免费层、GitHub 发布落后于 npm 包。 | MIT | B（5/6） | [中](categories/office-editors/jspreadsheet.zh.md) · [EN](categories/office-editors/jspreadsheet.md) |
+| **Grist** | 当团队要的是一个*成品*——自托管、列即数据库字段、公式用 Python、按行权限、带 webhook 的表格平台——而不是一个可嵌入组件时用它；Apache-2.0 核心有法国政府贡献背书、月度发布活跃。 | Apache-2.0 | A（5/6） | [中](categories/office-editors/grist.zh.md) · [EN](categories/office-editors/grist.md) |
+| **ONLYOFFICE Docs** | 当你的网盘/CRM/LMS 需要「点一下 .docx 就进入带实时协同的完整编辑器」、一个 Docker 容器搞定且要真实 OOXML 保真度时用它——但它是 AGPL，社区版建议并发 ≤20，GitHub 仓库只是打包壳。 | AGPL-3.0 | B（6/6） | [中](categories/office-editors/onlyoffice-documentserver.zh.md) · [EN](categories/office-editors/onlyoffice-documentserver.md) |
+| **Collabora Online** | 当你运行（或对接）Nextcloud 这类支持 WOPI 的文件平台、想在浏览器里用上 LibreOffice 渲染引擎时用它——但活跃开发在 Gerrit 而非这个 GitHub 仓库，这里也没有可嵌入的 UI SDK。 | MPL-2.0 | A（5/6） | [中](categories/office-editors/collabora-online.zh.md) · [EN](categories/office-editors/collabora-online.md) |
 ### diagramming
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
