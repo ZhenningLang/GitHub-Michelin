@@ -704,6 +704,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SAPP** | 当 PHP 应用必须追加 PKCS#12 签名、又不能破坏已有 PDF 修订时用它——规范覆盖较窄，也不支持加密 PDF。 | LGPL-3.0-or-later | B（5/6） | [中](categories/pdf-tools/sapp.zh.md) · [EN](categories/pdf-tools/sapp.md) |
 | **FPDI** | 当基于 FPDF／TCPDF／tFPDF 的 PHP 应用要把已有 PDF 的页面当模板导入时用它——免费解析器不支持加密文件与压缩交叉引用流。 | MIT | A（5/6） | [中](categories/pdf-tools/fpdi.zh.md) · [EN](categories/pdf-tools/fpdi.md) |
 | **pyHanko** | 当 Python 需要按成文记录的 PAdES／LTV 流程创建或验证 PDF 签名时用它——上游仍自标 beta。 | MIT | A（6/6） | [中](categories/pdf-tools/pyhanko.zh.md) · [EN](categories/pdf-tools/pyhanko.md) |
+| **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | AGPL-3.0 | C（5/6） | [中](categories/pdf-tools/pdfmathtranslate.zh.md) · [EN](categories/pdf-tools/pdfmathtranslate.md) |
+| **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | AGPL-3.0 | C（6/6） | [中](categories/pdf-tools/babeldoc.zh.md) · [EN](categories/pdf-tools/babeldoc.md) |
 
 ### workflow-orchestration
 
