@@ -12,6 +12,9 @@
 | **Puppeteer** | JavaScript API for Chrome and Firefox | A（6/6） | [→](puppeteer.zh.md) |
 | **nodriver** | 当你需要 Python-first 的异步直接 CDP 控制、且不想依赖 WebDriver 时用它；它仅支持 Chromium、采用 AGPL-3.0，反检测也只是尽力而为，不是稳定绕过契约。 | C（5/6） | [→](nodriver.zh.md) |
 | **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | C（5/6） | [→](phantomjs.zh.md) |
+| **Moli** | 当结构优先的 agent 机群要用约 100 MB 的单进程浏览、真实布局与截图只是按需打开的例外，协议面要 CDP+WebDriver 时用它。 | B（6/6） | [→](moli.zh.md) |
+| **Lightpanda** | 当批量 JS+DOM 提取永远不看像素时用它：无渲染引擎的 Zig 浏览器，自报比 Chrome 省 16 倍内存，带 CDP/BiDi/MCP。 | B（6/6） | [→](lightpanda.zh.md) |
+| **Obscura** | 当对抗性抓取要一个自带 stealth、常开渲染、单文件的 Rust 浏览器时用它。 | B（6/6） | [→](obscura.zh.md) |
 
 ## 对比矩阵
 
@@ -22,6 +25,9 @@
 | [Puppeteer](puppeteer.zh.md) | ✅ | A（6/6） | Chrome-first 的 JavaScript 自动化；当前索引条目仍需要补齐选型边界。 |
 | [nodriver](nodriver.zh.md) | ✅ | C（5/6） | 不依赖 WebDriver 的 Python 异步直接 CDP 控制，代价是没有跨浏览器覆盖、许可不宽松，反检测也仅为尽力而为。 |
 | [PhantomJS](phantomjs.zh.md) | ✅ | C（5/6） | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 |
+| [Moli](moli.zh.md) | ✅ | B（6/6） | 结构优先的 agent 机群要 ~100 MB 单进程浏览、渲染按需打开、一个端点说 CDP+WebDriver 时用它；兼容性长尾让给真实 Chrome。 |
+| [Lightpanda](lightpanda.zh.md) | ✅ | B（6/6） | 批量 JS+DOM 提取且永不渲染时最划算；要截图/几何就得换引擎，AGPL 也要先过法务。 |
+| [Obscura](obscura.zh.md) | ✅ | B（6/6） | 对抗性赛道要 stealth+常开渲染的单文件浏览器时用它；协议面以 CDP 为主，治理面还很薄。 |
 | undetected-chromedriver / SeleniumBase | 未收录 | — | nodriver 页面提到的 Selenium 兼容 stealth 工具与开箱即用 Python 浏览器测试框架。 |
 
 ## 什么该放这里

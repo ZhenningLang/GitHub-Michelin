@@ -337,6 +337,7 @@ https://github.com/grafana/grafana,grafana,observability,categories/observabilit
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
 https://github.com/gristlabs/grist-core,grist,office-editors,categories/office-editors/grist.md
 https://github.com/gsd-build/get-shit-done,get-shit-done,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/get-shit-done.md
+https://github.com/h4ckf0r0day/obscura,obscura,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/obscura.md
 https://github.com/halloffamer11/USDAD,usdad,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/usdad.md
 https://github.com/handsomestWei/patent-disclosure-skill,patent-disclosure-skill,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md
 https://github.com/handsontable/handsontable,handsontable,office-editors,categories/office-editors/handsontable.md
@@ -415,7 +416,9 @@ https://github.com/letta-ai/claude-subconscious,claude-subconscious,agent-memory
 https://github.com/letta-ai/letta,letta,agent-memory,categories/agent-memory/letta.md
 https://github.com/lewislulu/html-ppt-skill,html-ppt-skill,slides-ppt,categories/agent-skills/slides-ppt/html-ppt-skill.md
 https://github.com/lexiforest/curl_cffi,curl-cffi,python-tooling,categories/python-tooling/curl-cffi.md
+https://github.com/lexmount/moli,moli,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/moli.md
 https://github.com/lich0821/WeChatFerry,wechatferry,wechat,categories/im-automation/wechat/wechatferry.md
+https://github.com/lightpanda-io/browser,lightpanda,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/lightpanda.md
 https://github.com/lijigang/ljg-skills,ljg-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md
 https://github.com/linagora/twake-drive,twake-drive,document-management,categories/document-management/twake-drive.md
 https://github.com/lingfengQAQ/webnovel-writer,webnovel-writer,fiction,categories/agent-skills/ai-writing/fiction/webnovel-writer.md

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Lightpanda does", "zh": "Lightpanda 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the nightly build (brew, AUR, or the curl download)", "zh": "装 nightly 版（brew、AUR 或 curl 直下）", "code": "brew install lightpanda-io/browser/lightpanda"},
+    {"lane": "you", "en": "Dump a JS-heavy page", "zh": "导出一个重 JS 的页面", "code": "./lightpanda fetch --obey-robots --dump html"},
+    {"lane": "them", "en": "Runs the page's JavaScript in V8 with XHR/Fetch, cookies and form clicks — no render engine involved", "zh": "在 V8 里跑页面 JS 与 XHR/Fetch，全程没有渲染引擎", "component": {"en": "fetch / CDP server", "zh": "fetch / CDP 服务"}},
+    {"lane": "them", "en": "Prints the settled DOM as HTML or Markdown in ~120 MB of RAM", "zh": "以约 120 MB 内存输出稳定后的 DOM 文本"}
+  ],
+  "value": {
+    "en": "Thousands of JS pages scraped on a fraction of Chrome's memory (vendor-reported ~16x lighter) — one small binary, no browser fleet",
+    "zh": "上千个 JS 页面用 Chrome 零头的内存抓完——一个小二进制，没有机群"
+  },
+  "sources": [
+    "README.md Package Managers (brew install lightpanda-io/browser/lightpanda; yay -S lightpanda-nightly-bin) and Download from the nightly builds (curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux && chmod a+x ./lightpanda; ./lightpanda version)",
+    "README.md Dump a URL (./lightpanda fetch --obey-robots --dump html --log-format pretty --log-level info https://demo-browser.lightpanda.io/campfire-commerce/; --dump markdown; --wait-* options)",
+    "README.md Benchmarks (933 pages on AWS m5.large: peak 123MB vs 2GB, 5s vs 46s) and Start a CDP server (puppeteer.connect via browserWSEndpoint ws://127.0.0.1:9222)",
+    "README.md Why Lightpanda (no graphical rendering engine; built on v8, libcurl, html5ever)"
+  ]
+}
