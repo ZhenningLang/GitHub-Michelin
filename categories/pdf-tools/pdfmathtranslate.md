@@ -89,7 +89,7 @@ You pick it over [BabelDOC](babeldoc.md) because this is the *product*: many tra
 BabelDOC is the layout-preserving translation *engine* (library + debug CLI). This page is the *product* you run as a user (`pdf2zh`). Install PDFMathTranslate unless you are embedding the current 0.6 kernel or debugging it — and even then BabelDOC's README says not to call its Python API.
 
 **Q: Is the 2.0 fork the same project?**
-No. `PDFMathTranslate-next` is a separate repository the 1.x README points at for the v2 kernel (`--mode precise` here shells out to an isolated copy of it). This batch indexes 1.x plus BabelDOC; next stays 未收录.
+No. `PDFMathTranslate-next` is a separate repository the 1.x README points at for the v2 kernel (`--mode precise` here shells out to an isolated copy of it). See [PDFMathTranslate-next](pdfmathtranslate-next.md).
 
 ## How it works
 
@@ -114,7 +114,7 @@ You give it a PDF and, unless you stay on the default Google translator, a servi
 ## When NOT to use
 
 - **The file is an EPUB, txt, markdown, or subtitle, not a layout-sensitive PDF.** Use [Bilingual Book Maker](../reading-tools/bilingual-book-maker.md) instead — MIT, paragraph-stream, resume, no ONNX model download.
-- **You need the current BabelDOC 0.6 kernel (cross-column/page work, glossary extraction, the engine Immersive Translate hosts).** This 1.x tree pins `babeldoc<0.3.0`. Use [BabelDOC](babeldoc.md) only as a debug CLI, or the 2.0 fork PDFMathTranslate-next (未收录) which BabelDOC's README names as the self-host path.
+- **You need the current BabelDOC 0.6 kernel (cross-column/page work, glossary extraction, the engine Immersive Translate hosts).** This 1.x tree pins `babeldoc<0.3.0`. Use [BabelDOC](babeldoc.md) only as a debug CLI, or [PDFMathTranslate-next](pdfmathtranslate-next.md) which BabelDOC's README names as the self-host path.
 - **You cannot ship AGPL-3.0.** Both this repo and BabelDOC are AGPL; a proprietary product that embeds the translator as a network service inherits the copyleft. Use a licensed commercial PDF translator (非仓库) or a permissive paragraph tool like Bilingual Book Maker for non-PDF files.
 - **You want structured Markdown/JSON for RAG, not a translated PDF.** Use [Docling](../document-parsing/docling.md) instead — this project re-renders a PDF, it does not linearize the document for an LLM.
 - **The PDF is a hard scan, handwriting, or mixed scan-plus-text.** Fast-mode OCR is experimental (added 2026-09-08), targets white-background scans, and skips partial-scan pages that already contain text. Run [OCRmyPDF](ocrmypdf.md) first, or expect wrong inline equations.
@@ -126,7 +126,7 @@ You give it a PDF and, unless you stay on the default Google translator, a servi
 |---|---|---|---|
 | [BabelDOC](babeldoc.md) | ✅ | When you want a user-facing CLI/GUI with Google/DeepL/Ollama and many services, pick PDFMathTranslate; pick BabelDOC only to debug or embed the current 0.6 engine, because 1.x pins `babeldoc<0.3.0` and BabelDOC's authors refuse to support direct API use. | This page is the product (37k stars, many translators); BabelDOC is the AGPL engine, OpenAI-compatible LLM only, EN→ZH first. |
 | [Bilingual Book Maker](../reading-tools/bilingual-book-maker.md) | ✅ | When the input is a scientific PDF whose columns and formulas must survive, pick PDFMathTranslate; pick Bilingual Book Maker when you want a bilingual EPUB/txt from a book file. | BBM is MIT and layout-blind; PDFMathTranslate is AGPL and PDF-native, with a HuggingFace model download on first run. |
-| PDFMathTranslate-next | 未收录 | When you need the 2.0 kernel (cross-column/page, current BabelDOC), go to that fork; stay here for the stable 1.x CLI/GUI that still landed 2026 commits. | The 1.x README itself points 2.0 at `PDFMathTranslate/PDFMathTranslate-next`; skipped this batch because indexing was scoped to BabelDOC plus this 1.x product. |
+| [PDFMathTranslate-next](pdfmathtranslate-next.md) | ✅ | When you need BabelDOC 0.6 and SiliconFlowFree/OpenAI-class engines, pick 2.0; stay here when Google-by-default and 2026-09 commits matter more. | 2.0 wraps current BabelDOC but last pushed 2026-05; 1.x is the older kernel still moving. |
 | Immersive Translate hosted PDF translator | 非仓库 | When you just want pages translated in a browser with a free quota, use the hosted service; pick this repo when the PDF must stay on your machine or you must own the translator key. | Hosted SaaS at `app.immersivetranslate.com/babel-doc/` — not a repository. |
 
 ## Tech stack

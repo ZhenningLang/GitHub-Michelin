@@ -91,7 +91,7 @@ You pick it over PDFMathTranslate 1.x when you need the current 0.6 kernel: 1.x 
 ## Q&A
 
 **Q: Should I `import babeldoc` from my app?**
-No. The README: "All APIs of BabelDOC should be considered as internal APIs, and any direct use of BabelDOC is not supported." The recommended Python call is `high_level.do_translate_async_stream` on PDFMathTranslate-next (未收录), not this package.
+No. The README: "All APIs of BabelDOC should be considered as internal APIs, and any direct use of BabelDOC is not supported." The recommended Python call is `high_level.do_translate_async_stream` on [PDFMathTranslate-next](pdfmathtranslate-next.md), not this package.
 
 **Q: How does this relate to PDFMathTranslate?**
 This is the engine. PDFMathTranslate 1.x is the user-facing product and still depends on an *old* BabelDOC major (`<0.3.0`). PDFMathTranslate-next is the 2.0 fork BabelDOC names for self-hosting. Immersive Translate hosts this engine as SaaS.
@@ -119,7 +119,7 @@ You supply a PDF, an OpenAI-compatible endpoint, and language codes (default `en
 ## When NOT to use
 
 - **You just want to translate a paper on your machine.** Use [PDFMathTranslate](pdfmathtranslate.md) instead — CLI, GUI, Docker, many translators, and an upstream that actually supports end users.
-- **You need Google, DeepL, Bing, or Ollama as the translator.** BabelDOC's CLI only exposes `--openai`. PDFMathTranslate's `-s` table covers those; this engine tells you to use PDFMathTranslate-next (未收录) for more services.
+- **You need Google, DeepL, Bing, or Ollama as the translator.** BabelDOC's CLI only exposes `--openai`. PDFMathTranslate's `-s` table covers those; this engine tells you to use [PDFMathTranslate-next](pdfmathtranslate-next.md) for more services.
 - **You cannot accept AGPL-3.0, or you cannot treat the API as unstable.** Embedding this in a networked product is copyleft; the README freezes the API as internal. Use a permissive paragraph tool like [Bilingual Book Maker](../reading-tools/bilingual-book-maker.md) for non-PDF files, or a commercial PDF translator (非仓库).
 - **The job is an EPUB/txt book, not a PDF whose layout must survive.** Use Bilingual Book Maker.
 - **You need Markdown/JSON for RAG.** Use [Docling](../document-parsing/docling.md) — BabelDOC re-renders PDFs, it does not linearize documents.
@@ -130,7 +130,7 @@ You supply a PDF, an OpenAI-compatible endpoint, and language codes (default `en
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [PDFMathTranslate](pdfmathtranslate.md) | ✅ | When you are an end user or you need many translation backends, pick PDFMathTranslate; pick BabelDOC only to debug or embed the current 0.6 engine, knowing its Python API is unsupported. | PDFMathTranslate 1.x is the product but pins `babeldoc<0.3.0`; this repo is v0.6.4, OpenAI-only, maintainer-led. |
-| PDFMathTranslate-next | 未收录 | When you want self-hosted 2.0 with WebUI and more translators on top of current BabelDOC, that fork is the path BabelDOC's README names; this page stays the engine. | Separate org/repo (`PDFMathTranslate-next/PDFMathTranslate-next`, ~3k stars); skipped this batch because indexing was scoped to BabelDOC plus PDFMathTranslate 1.x. |
+| [PDFMathTranslate-next](pdfmathtranslate-next.md) | ✅ | When you want self-hosted 2.0 with WebUI and more translators on top of current BabelDOC, pick that wrapper; this page stays the engine. | Official BabelDOC caller (`babeldoc>=0.6.2,<0.7.0`); last pushed 2026-05, SiliconFlowFree by default. |
 | [Bilingual Book Maker](../reading-tools/bilingual-book-maker.md) | ✅ | When the file is a book you will read as EPUB/txt, pick Bilingual Book Maker; pick BabelDOC when the output must remain a laid-out PDF. | BBM is MIT and layout-blind; BabelDOC is AGPL, ONNX-heavy, and PDF-native. |
 | Immersive Translate hosted PDF translator | 非仓库 | When you want the engine without operating ONNX, fonts, or an API key, use the hosted quota; pick this repo when the PDF cannot leave your machine. | Hosted SaaS at `app.immersivetranslate.com/babel-doc/` — funstory-ai's commercial front door, not a repository. |
 

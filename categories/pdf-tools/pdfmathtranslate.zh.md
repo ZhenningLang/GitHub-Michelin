@@ -89,7 +89,7 @@ health:
 BabelDOC 是保留排版的翻译*引擎*（库 + 调试 CLI）。本页是给用户跑的*成品*（`pdf2zh`）。除非你要嵌入当前 0.6 内核或调试它，否则装 PDFMathTranslate——即便要嵌，BabelDOC 的 README 也说不要直接调它的 Python API。
 
 **问：2.0 那个 fork 是同一个项目吗？**
-不是。`PDFMathTranslate-next` 是 1.x README 指向的另一个仓库，给 v2 内核用（这里的 `--mode precise` 会在隔离环境里调它）。本批次收录 1.x 和 BabelDOC；next 仍为未收录。
+不是。`PDFMathTranslate-next` 是 1.x README 指向的另一个仓库，给 v2 内核用（这里的 `--mode precise` 会在隔离环境里调它）。见 [PDFMathTranslate-next](pdfmathtranslate-next.zh.md)。
 
 ## 怎么用起来
 
@@ -114,7 +114,7 @@ BabelDOC 是保留排版的翻译*引擎*（库 + 调试 CLI）。本页是给�
 ## 何时不用
 
 - **文件是 EPUB、txt、Markdown 或字幕，不是对版式敏感的 PDF。** 改用 [Bilingual Book Maker](../reading-tools/bilingual-book-maker.zh.md)——MIT、段落流、可续跑，不用下载 ONNX 模型。
-- **你要当前 BabelDOC 0.6 内核（跨栏/跨页、术语抽取、沉浸式翻译托管的那套引擎）。** 这条 1.x 线钉着 `babeldoc<0.3.0`。把 [BabelDOC](babeldoc.zh.md) 只当调试 CLI，或去 2.0 fork PDFMathTranslate-next（未收录）——BabelDOC 的 README 把自托管路径指到那里。
+- **你要当前 BabelDOC 0.6 内核（跨栏/跨页、术语抽取、沉浸式翻译托管的那套引擎）。** 这条 1.x 线钉着 `babeldoc<0.3.0`。把 [BabelDOC](babeldoc.zh.md) 只当调试 CLI，或用 [PDFMathTranslate-next](pdfmathtranslate-next.zh.md)——BabelDOC 的 README 把自托管路径指到那里。
 - **你不能接受 AGPL-3.0。** 本仓库和 BabelDOC 都是 AGPL；专有产品把翻译器做成网络服务会带上 copyleft。非 PDF 文件用宽松许可的段落工具如 Bilingual Book Maker，或买商业 PDF 翻译（非仓库）。
 - **你要的是给 RAG 用的结构化 Markdown/JSON，不是译完的 PDF。** 改用 [Docling](../document-parsing/docling.zh.md)——本项目重绘 PDF，不把文档拉直给大模型。
 - **PDF 是硬扫描件、手写、或扫描加文字混排。** fast 模式 OCR 仍是实验（2026-09-08 加入），面向白底扫描，已经带文字的半扫描页会跳过。先跑 [OCRmyPDF](ocrmypdf.zh.md)，否则行内公式很容易认错。
@@ -126,7 +126,7 @@ BabelDOC 是保留排版的翻译*引擎*（库 + 调试 CLI）。本页是给�
 |---|---|---|---|
 | [BabelDOC](babeldoc.zh.md) | 已收录 | 要面向用户的 CLI/GUI，还要 Google/DeepL/Ollama 等多种服务，选 PDFMathTranslate；只有调试或嵌入当前 0.6 引擎时才选 BabelDOC，因为 1.x 钉死 `babeldoc<0.3.0`，且作者拒绝支持直接调 API。 | 本页是成品（3.7 万 star，翻译后端多）；BabelDOC 是 AGPL 引擎，只接 OpenAI 兼容 LLM，主攻英译中。 |
 | [Bilingual Book Maker](../reading-tools/bilingual-book-maker.zh.md) | 已收录 | 输入是必须保住双栏和公式的科研 PDF 时选 PDFMathTranslate；要从书文件得到双语 EPUB/txt 时选 Bilingual Book Maker。 | BBM 是 MIT、无视版式；PDFMathTranslate 是 AGPL、PDF 原生，首次运行要下 HuggingFace 模型。 |
-| PDFMathTranslate-next | 未收录 | 需要 2.0 内核（跨栏/跨页、当前 BabelDOC）时去那个 fork；要仍在 2026 年提交的稳定 1.x CLI/GUI 就留在本页。 | 1.x 的 README 自己把 2.0 指到 `PDFMathTranslate/PDFMathTranslate-next`；本批次按用户范围只收 BabelDOC 和这份 1.x 成品，故跳过。 |
+| [PDFMathTranslate-next](pdfmathtranslate-next.zh.md) | 已收录 | 需要 BabelDOC 0.6 以及 SiliconFlowFree/OpenAI 这类引擎时选 2.0；要默认 Google、且 2026-09 仍在提交时留在本页。 | 2.0 包当前 BabelDOC，但最后推送是 2026-05；1.x 内核更旧，树还在动。 |
 | 沉浸式翻译托管服务 | 非仓库 | 只想在浏览器里按页翻译、用免费额度，走托管服务；PDF 必须留在本机或必须自持翻译密钥时选本仓库。 | 托管 SaaS，地址 `app.immersivetranslate.com/babel-doc/`——不是仓库。 |
 
 ## 技术栈

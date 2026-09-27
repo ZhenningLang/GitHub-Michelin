@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "them": {"en": "PDFMathTranslate-next does", "zh": "PDFMathTranslate-next 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the 2.0 CLI",
+      "zh": "安装 2.0 命令行",
+      "code": "uv tool install --python 3.12 pdf2zh-next",
+      "component": {"en": "PyPI package pdf2zh-next", "zh": "PyPI 包 pdf2zh-next"}
+    },
+    {
+      "lane": "you",
+      "en": "Point it at a PDF, defaulting to SiliconFlowFree",
+      "zh": "把 PDF 交给它，默认走硅基流动免费通道",
+      "code": "pdf2zh_next document.pdf",
+      "component": {"en": "pdf2zh_next CLI", "zh": "pdf2zh_next CLI"}
+    },
+    {
+      "lane": "them",
+      "en": "Calls BabelDOC 0.6 to parse layout and translate paragraphs",
+      "zh": "调用 BabelDOC 0.6 解析版面并翻译段落",
+      "component": {"en": "BabelDOC + translator", "zh": "BabelDOC + 翻译器"}
+    },
+    {
+      "lane": "them",
+      "en": "Writes a translated PDF and a bilingual comparison PDF",
+      "zh": "写出译文 PDF 和双语对照 PDF",
+      "component": {"en": "PDF renderer", "zh": "PDF 渲染"}
+    }
+  ],
+  "value": {
+    "en": "Current BabelDOC as a product you can run, without calling the engine API",
+    "zh": "能跑起来的当前 BabelDOC，而不用直接调引擎 API"
+  },
+  "sources": [
+    "docs/en/getting-started/INSTALLATION_uv.md — `uv tool install --python 3.12 pdf2zh-next`",
+    "docs/en/getting-started/USAGE_commandline.md — `pdf2zh_next document.pdf`",
+    "pdf2zh_next/config/translate_engine_model.py — `_DEFAULT_TRANSLATION_ENGINE = SiliconFlowFreeSettings`",
+    "pyproject.toml — `babeldoc>=0.6.2,<0.7.0`"
+  ]
+}
