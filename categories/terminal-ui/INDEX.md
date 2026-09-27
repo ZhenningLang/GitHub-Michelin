@@ -1,6 +1,6 @@
 # terminal-ui
 
-> Category node. Terminal/CLI UI libraries — colors, TUIs, ASCII art, terminal rendering.
+> Category node. Terminal/CLI UI libraries — colors, TUIs, ASCII art, terminal rendering — plus the terminal multiplexers (tmux, Zellij) that keep panes and sessions alive around those tools.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
 ## Projects in this category
@@ -16,6 +16,8 @@
 | **Alacritty** | Use it when you want a fast, GPU-accelerated, cross-platform terminal emulator with sensible defaults — but it explicitly lacks tabs, splits, and ligatures, and requires OpenGL 3.3+. | A (6/6) | [→](alacritty.md) |
 | **Rich** | Rich is a Python library for rich text and beautiful formatting in the terminal. | B (6/6) | [→](rich.md) |
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | B (6/6) | [→](textual.md) |
+| **tmux** | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. | A (6/6) | [→](tmux.md) |
+| **Zellij** | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. | A (6/6) | [→](zellij.md) |
 
 
 ## Comparison matrix
@@ -29,8 +31,10 @@
 | [asciify](asciify.md) | ✅ | E (4/6) | Use it as a minimal, legible copy-paste reference for the image-to-ASCII algorithm — but it ships NO license (all rights reserved), is unmaintained since 2022, so never vendor it into a product. |
 | [Alacritty](alacritty.md) | ✅ | A (6/6) | Fast, GPU-accelerated OpenGL terminal emulator with sensible defaults; lacks tabs, splits, and ligatures by design — use tmux for multiplexing. |
 | [Warp](warp.md) | ✅ | B (6/6) | Modern, AI-powered terminal with command blocks and coding agents; the GitHub repo is issues-only and the product is proprietary closed-source. |
+| [tmux](tmux.md) | ✅ | A (6/6) | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. |
+| [Zellij](zellij.md) | ✅ | A (6/6) | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
 
-Libraries that **render UI in the terminal** — colors, TUIs, ASCII art, styled output.
+Libraries that **render UI in the terminal** — colors, TUIs, ASCII art, styled output — and terminal **multiplexers** (session/pane keepers like tmux, Zellij; agent-aware ones like [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.md) live under `agent-frameworks/coding-agents/orchestration-and-review`).

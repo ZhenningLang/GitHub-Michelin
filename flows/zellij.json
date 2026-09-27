@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "Zellij does", "zh": "Zellij 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single Rust binary", "zh": "装一个 Rust 二进制", "code": "cargo install --locked zellij"},
+    {"lane": "you", "en": "Start a session — new workspace, tabs and panes appear", "zh": "起一个 session——新工作区，标签与分屏就位", "code": "zellij"},
+    {"lane": "them", "en": "Runs a server behind your terminal and shows a live hint bar for every key", "zh": "在终端身后跑 server，每个键都有实时的底部提示条"},
+    {"lane": "you", "en": "Split, tab, float and stack panes following the hints — no grammar to memorize", "zh": "跟着提示条分屏、开标签、浮动堆叠——不用背按键语法", "code": "Alt n"},
+    {"lane": "you", "en": "Detach, or just let the SSH tab die", "zh": "主动脱离，或者让 SSH 那一页直接死掉"},
+    {"lane": "them", "en": "Keeps the session and its processes running in the background", "zh": "session 和里面的进程在后台照常活着"},
+    {"lane": "you", "en": "Reattach from a terminal — or later from a browser via the web client", "zh": "终端里 attach 回来——或者改天用浏览器的 web client 进", "code": "zellij attach"}
+  ],
+  "value": {
+    "en": "Multiplexing without the archaeology: the UI teaches itself, and a token-authenticated browser is a second door into live sessions",
+    "zh": "不用考古的终端复用：界面自己会说话，token 鉴权的浏览器是进入活 session 的第二扇门"
+  },
+  "sources": [
+    "README 'How do I install it?' (cargo install --locked zellij; prebuilt binary in PATH; OS packages)",
+    "README 'What is this?' (workspace for terminal users; layouts, floating and stacked panes, multiplayer, plugins in any language compiling to WebAssembly, built-in web client making a terminal optional)",
+    "zellij-utils/assets/config/default.kdl (bind \"Alt n\" { NewPane; }; pane/tab modes; Detach bound in mode blocks)",
+    "docs/web-client (built-in webserver off by default, 127.0.0.1:8082, login tokens hashed and shown once, HTTPS hard requirement beyond localhost, reverse-proxy recommendation, $ zellij attach https://my-server:8082/my-session)"
+  ]
+}
