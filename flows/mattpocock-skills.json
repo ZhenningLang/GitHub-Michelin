@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "mattpocock/skills does",
+    "zh": "mattpocock/skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "phase": { "en": "Install", "zh": "安装" },
+      "en": "Install the whole set via skills.sh, or subscribe as a Claude Code plugin",
+      "zh": "用 skills.sh 装整套，或订阅 Claude Code 插件",
+      "code": "npx skills@latest add mattpocock/skills",
+      "component": { "en": "skills.sh / plugin", "zh": "skills.sh / 插件" }
+    },
+    {
+      "lane": "you",
+      "phase": { "en": "Setup", "zh": "配置" },
+      "en": "Run the one-time setup in each repo you want to cover",
+      "zh": "在每个要用的仓库跑一次 setup",
+      "code": "/setup-matt-pocock-skills"
+    },
+    {
+      "lane": "them",
+      "en": "Interviews you on issue tracker, triage labels and docs location, then configures the repo",
+      "zh": "问你 issue tracker、标签与文档位置，写入仓库配置"
+    },
+    {
+      "lane": "you",
+      "phase": { "en": "Daily loop", "zh": "日常循环" },
+      "en": "Start every change with a grilling interview instead of a prompt dump",
+      "zh": "每次改动先开一轮 grilling 访谈，而不是丢一段提示词",
+      "code": "/grill-with-docs"
+    },
+    {
+      "lane": "them",
+      "en": "Interviews until every design branch resolves, distilling shared vocabulary into CONTEXT.md and ADRs",
+      "zh": "追问到设计树每个分支收敛，把术语沉淀进 CONTEXT.md 和 ADR"
+    },
+    {
+      "lane": "you",
+      "en": "Freeze the conversation into a spec, then break it into tickets",
+      "zh": "把讨论定成 spec，再拆成工单",
+      "code": "/to-spec"
+    },
+    {
+      "lane": "them",
+      "en": "Publishes the spec and blocking-linked tickets to the tracker you chose",
+      "zh": "把 spec 和带阻塞关系的工单发到你选的 tracker"
+    },
+    {
+      "lane": "you",
+      "en": "Tell the agent to build the tickets",
+      "zh": "让 agent 按工单开工",
+      "code": "/implement"
+    },
+    {
+      "lane": "them",
+      "en": "Drives /tdd red-green-refactor per vertical slice and closes with a two-axis /code-review",
+      "zh": "按 /tdd 红绿循环逐片实现，收尾跑两轴 /code-review"
+    }
+  ],
+  "value": {
+    "en": "Every change goes through the same loop — align first, test-driven build, reviewed diff — without a heavyweight framework owning the process",
+    "zh": "每次改动都走同一条循环——先对齐、测试驱动实现、审查后提交——而不必让重型框架接管流程"
+  },
+  "sources": [
+    "https://github.com/mattpocock/skills README.md (fetched 2026-09-27) — Installation section: `claude plugins install mattpocock-skills`, `npx skills@latest add mattpocock/skills`, step 2 `Run /setup-matt-pocock-skills` (asks issue tracker: GitHub, Linear, or local files; triage labels; docs location)",
+    "README.md Reference section — user-invoked `/grill-with-docs` (grilling + domain model + CONTEXT.md + ADRs), `/to-spec`, `/to-tickets` (tracer-bullet tickets with blocking edges), `/implement` (drives /tdd at seams, closes with /code-review)",
+    "README.md Reference section — model-invoked `/tdd` (red-green-refactor, vertical slices), `/code-review` (two-axis: Standards + Spec)"
+  ]
+}
