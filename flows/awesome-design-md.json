@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "the collection gives you",
+    "zh": "这份合集给你的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy a site's DESIGN.md into the project root",
+      "zh": "把某站点的 DESIGN.md 拷到项目根目录",
+      "code": "DESIGN.md"
+    },
+    {
+      "lane": "them",
+      "en": "Ships YAML tokens plus prose rules as a visual contract",
+      "zh": "给出 YAML token 加散文规则当视觉契约",
+      "component": {
+        "en": "DESIGN.md",
+        "zh": "DESIGN.md"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Tell the agent to follow that file — harnesses do not auto-load it",
+      "zh": "告诉 agent 按这份文件做，它不会自动加载"
+    }
+  ],
+  "value": {
+    "en": "The agent generates UI in that brand language without you writing a design system",
+    "zh": "不用自写设计系统，agent 就按该品牌语言出 UI"
+  },
+  "sources": [
+    "https://github.com/VoltAgent/awesome-design-md README How to Use (copy DESIGN.md to project root; tell the AI agent to use it)",
+    "README What's Inside Each DESIGN.md (YAML tokens + markdown sections)",
+    "git tree design-md/<brand>/DESIGN.md — 74 folders, 0 html files (2026-09-27)"
+  ]
+}

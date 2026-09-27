@@ -11,6 +11,7 @@
 | **Skills For Design Engineers** | Emil Kowalski 的六技能设计工程包，面向 UI motion、动画词汇、Apple 风格界面原则、严格动画评审和动画改进计划。 | B（4/5） | [→](emilkowalski-skills.zh.md) |
 | **make-interfaces-feel-better** | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 | B（4/5） | [→](make-interfaces-feel-better.zh.md) |
 | **Stitch Skills** | 一套遵循 Agent Skills 开放标准的技能库，驱动 Google 的 Stitch MCP server 生成 UI 屏幕、在代码与设计间双向转换、抽取 DESIGN.md，并导出 React/React Native/shadcn 组件。 | B（4/5） | [→](stitch-skills.zh.md) |
+| **Awesome DESIGN.md** | 当要把某个知名站点的样子变成一份可丢进项目的 DESIGN.md 时用；要自己的品牌或品味 skill、或指望 harness 自动加载时不要用。 | B（4/5） | [→](awesome-design-md.zh.md) |
 | **Taste-Skill** | 一套可移植、与框架无关的 agent skill 包，给 coding agent 注入审美，阻止千篇一律的 AI-slop 前端，转而产出有意图的布局、排版、动效与留白。 | B（4/5） | [→](taste-skill.zh.md) |
 | **UI UX Pro Max Skill** | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 | B（5/6） | [→](ui-ux-pro-max.zh.md) |
 | **Hallmark** | 当 Claude Code、Cursor、Codex agent 需要有主张的反 AI 味设计 brief、审计、重设计或研究流程时用它。 | B（4/5） | [→](hallmark.zh.md) |
@@ -28,6 +29,7 @@
 | [Skills For Design Engineers](emilkowalski-skills.zh.md) | ✅ | B（4/5） | 动画和设计工程 taste 是瓶颈时最合适；UX research 或设计系统用更宽的设计包。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | B（4/5） | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 |
 | [Stitch Skills](stitch-skills.zh.md) | ✅ | B（4/5） | 一套遵循 Agent Skills 开放标准的技能库，驱动 Google 的 Stitch MCP server 生成 UI 屏幕、在代码与设计间双向转换、抽取 DESIGN.md，并导出 React/React Native/shadcn 组件。 |
+| [Awesome DESIGN.md](awesome-design-md.zh.md) | ✅ | B（4/5） | 当要把某个知名站点的样子变成一份可丢进项目的 DESIGN.md 时用；要自己的品牌或品味 skill、或指望 harness 自动加载时不要用。 |
 | [Taste-Skill](taste-skill.zh.md) | ✅ | B（4/5） | 一套可移植、与框架无关的 agent skill 包，给 coding agent 注入审美，阻止千篇一律的 AI-slop 前端，转而产出有意图的布局、排版、动效与留白。 |
 | [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | ✅ | B（5/6） | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 |
 | [Hallmark](hallmark.zh.md) | ✅ | B（4/5） | 带 build、audit、redesign、study 动词的有主张设计技能；是建议式指导，不是组件库或确定性 linter。 |
