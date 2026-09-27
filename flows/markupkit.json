@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "markupkit does", "zh": "markupkit 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "一次搭建"}, "en": "Install the dev dependency", "zh": "装一个开发依赖", "code": "npm i usemarkupkit -D", "component": {"en": "npm package", "zh": "npm 包"}},
+    {"lane": "you", "en": "Mount it beside your app, dev-only", "zh": "挂在应用旁边，仅 dev 生效", "code": "<Markup />"},
+    {"lane": "them", "en": "Adds a floating toolbar, isolated from your styles", "zh": "浮出工具条，与你的样式隔离", "component": {"en": "toolbar", "zh": "工具栏"}},
+    {"lane": "you", "phase": {"en": "Every review", "zh": "每轮走查"}, "en": "Toggle with Ctrl+Shift+D and draw on the page", "zh": "Ctrl+Shift+D 开合，直接在页面上画", "code": "Ctrl+Shift+D"},
+    {"lane": "them", "en": "Classifies each stroke into a shape and resolves the elements it touches", "zh": "把每一笔归类成形状，并解析它碰到的元素", "component": {"en": "shape classifier", "zh": "笔画分类器"}},
+    {"lane": "you", "en": "Press C to copy the markdown at your detail level", "zh": "按 C 按你选的详细档位复制 markdown", "code": "C"},
+    {"lane": "them", "en": "Emits selectors, coordinates and layout deltas your agent can apply in one pass", "zh": "产出选择器、坐标与布局增量，agent 一遍就能应用"}
+  ],
+  "value": {"en": "'Circle this, strike that, move the card under the heading' reaches the agent as a structured diff, not a paragraph.", "zh": "「圈住这个、划掉那个、把卡片挪到标题下面」以结构化 diff 抵达 agent，而不是一整段话。"},
+  "sources": [
+    "README.md (install, quick start, modes, keyboard shortcuts, layout mode, output levels)"
+  ]
+}

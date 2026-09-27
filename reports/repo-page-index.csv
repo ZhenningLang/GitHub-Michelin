@@ -8,6 +8,7 @@ https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,o
 https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,design,categories/agent-skills/design/drawio-skill.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
+https://github.com/AmElmo/pointa,pointa,ui-annotation,categories/agent-tooling/ui-annotation/pointa.md
 https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals/openlogi.md
 https://github.com/AutumnWhj/ChatGPT-wechat-bot,chatgpt-wechat-bot,wechat,categories/im-automation/wechat/chatgpt-wechat-bot.md
 https://github.com/BerriAI/litellm,litellm,api-gateway,categories/api-gateway/litellm.md
@@ -28,6 +29,7 @@ https://github.com/DepthAnything/Depth-Anything-V2,depth-anything-v2,ml-research
 https://github.com/DevToys-app/DevToys,devtoys,data-tools,categories/dev-utilities/data-tools/devtoys.md
 https://github.com/Dimillian/Skills,dimillian-skills,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md
 https://github.com/DormyMo/SpiderKeeper,spiderkeeper,crawling-tools,categories/web-scraping/crawling-tools/spiderkeeper.md
+https://github.com/Dragoon0x/markupkit,markupkit,ui-annotation,categories/agent-tooling/ui-annotation/markupkit.md
 https://github.com/ERGO-Code/HiGHS,highs,optimization-solvers,categories/optimization-solvers/highs.md
 https://github.com/Egonex-AI/Understand-Anything,understand-anything,rag-retrieval,categories/rag-retrieval/understand-anything.md
 https://github.com/EveryInc/compound-engineering-plugin,compound-engineering,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/compound-engineering.md
@@ -65,6 +67,7 @@ https://github.com/K-Dense-AI/scientific-agent-skills,scientific-agent-skills,en
 https://github.com/KKKKhazix/khazix-skills,khazix-skills,knowledge-content,categories/agent-skills/personal-collections/knowledge-content/khazix-skills.md
 https://github.com/Kilo-Org/kilocode,kilocode,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/kilocode.md
 https://github.com/Kong/kong,kong,api-gateway,categories/api-gateway/kong.md
+https://github.com/LKRCharon/patch-mark,patch-mark,ui-annotation,categories/agent-tooling/ui-annotation/patch-mark.md
 https://github.com/LearningCircuit/local-deep-research,local-deep-research,deep-research,categories/deep-research/local-deep-research.md
 https://github.com/Leonxlnx/taste-skill,taste-skill,design,categories/agent-skills/design/taste-skill.md
 https://github.com/LianjiaTech/bella-domify,bella-domify,document-parsing,categories/document-parsing/bella-domify.md
@@ -112,6 +115,7 @@ https://github.com/PyAV-Org/PyAV,pyav,transcoding-and-pipelines,categories/media
 https://github.com/RVC-Boss/GPT-SoVITS,gpt-sovits,speech,categories/speech/gpt-sovits.md
 https://github.com/RameshAditya/asciify,asciify,terminal-ui,categories/terminal-ui/asciify.md
 https://github.com/Ranchero-Software/NetNewsWire,netnewswire,reading-tools,categories/reading-tools/netnewswire.md
+https://github.com/RaphaelRegnier/vibe-annotations,vibe-annotations,ui-annotation,categories/agent-tooling/ui-annotation/vibe-annotations.md
 https://github.com/RightNow-AI/openfang,openfang,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/openfang.md
 https://github.com/RocketChat/Rocket.Chat,rocket-chat,team-chat,categories/team-chat/rocket-chat.md
 https://github.com/RooCodeInc/Roo-Code,roo-code,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/roo-code.md
@@ -208,6 +212,7 @@ https://github.com/ayghri/i-have-adhd,i-have-adhd,engineering,categories/agent-s
 https://github.com/backnotprop/plannotator,plannotator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/plannotator.md
 https://github.com/baidu/Senta,senta,ml-research,categories/ml-research/senta.md
 https://github.com/bdeansrowe/ltbl-experiment,ltbl-experiment,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md
+https://github.com/benjitaylor/agentation,agentation,ui-annotation,categories/agent-tooling/ui-annotation/agentation.md
 https://github.com/bentoml/BentoML,bentoml,serving-engines,categories/llm-inference/serving-engines/bentoml.md
 https://github.com/bkidy/screenshot,screenshot-service,image-processing,categories/media-processing/image-processing/screenshot-service.md
 https://github.com/blader/humanizer,humanizer,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/humanizer.md
@@ -418,6 +423,7 @@ https://github.com/lit/lit,lit,frameworks,categories/web-ui/frameworks/lit.md
 https://github.com/littlecodersh/ItChat,itchat,wechat,categories/im-automation/wechat/itchat.md
 https://github.com/lmacken/pyrasite,pyrasite,python-tooling,categories/python-tooling/pyrasite.md
 https://github.com/logseq/logseq,logseq,knowledge-base,categories/knowledge-base/logseq.md
+https://github.com/loopx-project/loopx,loopx,work-state,categories/agent-tooling/work-state/loopx.md
 https://github.com/lovell/sharp,sharp,image-processing,categories/media-processing/image-processing/sharp.md
 https://github.com/lukas-blecher/LaTeX-OCR,latex-ocr,ocr,categories/ocr/latex-ocr.md
 https://github.com/luolin-ai/Dify-Enterprise-WeChat-bot,dify-enterprise-wechat-bot,wechat,categories/im-automation/wechat/dify-enterprise-wechat-bot.md
@@ -477,6 +483,7 @@ https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering,context-e
 https://github.com/musistudio/claude-code-router,claude-code-router,api-gateway,categories/api-gateway/claude-code-router.md
 https://github.com/mxrch/GHunt,ghunt,osint,categories/osint/ghunt.md
 https://github.com/n8n-io/n8n,n8n,workflow-orchestration,categories/workflow-orchestration/n8n.md
+https://github.com/nahar-strativ/earmark,earmark,ui-annotation,categories/agent-tooling/ui-annotation/earmark.md
 https://github.com/nashsu/llm_wiki,llm-wiki,knowledge-base,categories/knowledge-base/llm-wiki.md
 https://github.com/nextlevelbuilder/ui-ux-pro-max-skill,ui-ux-pro-max,design,categories/agent-skills/design/ui-ux-pro-max.md
 https://github.com/nexu-io/html-anything,html-anything,ai-design-generation,categories/ai-design-generation/html-anything.md
@@ -556,6 +563,7 @@ https://github.com/ruilisi/fortune-sheet,fortune-sheets,office-editors,categorie
 https://github.com/run-llama/llama_index,llamaindex,workflow-builders,categories/agent-frameworks/workflow-builders/llamaindex.md
 https://github.com/rustdesk/rustdesk,rustdesk,ops-infra,categories/dev-utilities/ops-infra/rustdesk.md
 https://github.com/safishamsi/graphify,graphify,rag-retrieval,categories/rag-retrieval/graphify.md
+https://github.com/samber/cc-skills-golang,cc-skills-golang,engineering,categories/agent-skills/engineering/cc-skills-golang.md
 https://github.com/scanny/python-pptx,python-pptx,office-automation,categories/office-automation/python-pptx.md
 https://github.com/scip-code/scip,scip,rag-retrieval,categories/rag-retrieval/scip.md
 https://github.com/scrapy/scrapyd,scrapyd,crawling-tools,categories/web-scraping/crawling-tools/scrapyd.md

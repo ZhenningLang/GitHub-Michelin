@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Pointa does", "zh": "Pointa 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "一次搭建"}, "en": "Install the extension from the Chrome Web Store", "zh": "从 Chrome 商店安装扩展", "component": {"en": "browser extension", "zh": "浏览器扩展"}},
+    {"lane": "you", "en": "Register the MCP entry in your agent config", "zh": "在 agent 配置里注册 MCP 条目", "code": "claude mcp add --transport stdio pointa -- npx -y pointa-server", "component": {"en": "pointa-server", "zh": "pointa-server"}},
+    {"lane": "them", "en": "Starts a local HTTP daemon and file store under ~/.pointa", "zh": "拉起本地 HTTP daemon，状态存进 ~/.pointa"},
+    {"lane": "you", "phase": {"en": "Every bug", "zh": "每个 bug"}, "en": "Open the localhost app, click the icon, annotate elements", "zh": "打开 localhost 应用，点扩展图标，给元素钉批注"},
+    {"lane": "them", "en": "Anchors feedback per page and route, with screenshots for bug reports", "zh": "批注按页面和路由锚定，bug 报告可带截图"},
+    {"lane": "you", "en": "Optionally wrap the dev command to capture backend logs", "zh": "可选：包一层 dev 命令截后端日志", "code": "pointa dev npm run dev"},
+    {"lane": "them", "en": "The agent reads the annotations over MCP when you say implement", "zh": "你说一句实现，agent 就经 MCP 把批注读走"}
+  ],
+  "value": {"en": "Designers and QA hand the coding agent Figma-style feedback without ever touching the repo.", "zh": "设计和 QA 把 Figma 式反馈递给编码 agent，全程不碰仓库。"},
+  "sources": [
+    "README.md (Quick Start, AI Agent Setup, Backend Log Capture, How It Works, Server Commands)"
+  ]
+}

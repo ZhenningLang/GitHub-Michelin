@@ -12,6 +12,7 @@
 | **Ralph for Claude Code** | Use it when you want Claude Code to grind through a fix_plan.md checklist unattended with rate limits, a circuit breaker, and a dual-condition exit gate. | C (5/6) | [→](ralph-claude-code.md) |
 | **Context Mode** | Use it when a coding agent burns context on raw tool output and you want sandboxed execution plus compaction-surviving session memory. | D (6/6) | [→](context-mode.md) |
 | **Planning with Files** | Use it when a long agent run keeps losing its plan to /clear, compaction, or crashes. | B (5/6) | [→](planning-with-files.md) |
+| **LoopX** | Use it when agent work must keep moving across days, restarts and runtimes, with durable goals, human gates, quotas and evidence governing each turn. | B (6/6) | [→](loopx.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [Ralph for Claude Code](ralph-claude-code.md) | ✅ | C (5/6) | A guarded unattended loop over a checklist — it drives the agent, it does not store the work. |
 | [Context Mode](context-mode.md) | ✅ | D (6/6) | Sandbox off the tool noise and keep memory across compaction; it manages context, not the task list. |
 | [Planning with Files](planning-with-files.md) | ✅ | B (5/6) | The plan as plain files on disk — the cheapest recovery from /clear, with no graph or dependency semantics. |
+| [LoopX](loopx.md) | ✅ | B (6/6) | State kernel plus a quota-gated heartbeat driver across runtimes — the fullest loop governance here, at the cost of a fail-closed protocol and a very young, fast-moving surface. |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | Other task/work-tracking backends for agents named across the pages. |
 
 ## What belongs here

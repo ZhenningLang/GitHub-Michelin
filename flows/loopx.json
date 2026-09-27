@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "LoopX does", "zh": "LoopX 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "一次性搭建"}, "en": "Install the CLI from PyPI and register its skills into your agent host", "zh": "从 PyPI 装 CLI，把技能注册进 agent 宿主", "code": "python3 -m pip install --upgrade loopx · loopx workflow-skills --install"},
+    {"lane": "you", "en": "Connect the project from its root (or paste one message and let your agent do it)", "zh": "在项目根目录 connect，或粘一条消息让 agent 代办", "code": "loopx connect"},
+    {"lane": "them", "en": "Create or reuse durable goal state and report the current gate and top todo", "zh": "创建或复用目标状态，汇报当前门禁与首条 todo", "component": {"en": "state kernel (.loopx/)", "zh": "状态内核（.loopx/）"}},
+    {"lane": "you", "en": "State the long-horizon objective in one line", "zh": "一句话写下长程目标", "code": "/loopx <goal text>"},
+    {"lane": "them", "phase": {"en": "Every beat", "zh": "每一拍"}, "en": "The heartbeat wakes your existing agent, which must ask the kernel before acting", "zh": "心跳唤醒你已有的 agent，动手前先问内核", "code": "loopx quota should-run"},
+    {"lane": "them", "en": "It claims one bounded todo, executes a turn, writes back evidence and the next todo", "zh": "认领一片有界任务，执行一轮，写回证据与下一条", "code": "loopx todo claim · loopx todo update"},
+    {"lane": "them", "en": "When a decision is yours, it stops and asks a concrete question instead of guessing", "zh": "该你拍板时，它停下来问一个具体问题，而不是猜", "component": {"en": "user gate", "zh": "用户门禁"}},
+    {"lane": "you", "en": "Read the evidence packet and record your gate decisions", "zh": "读证据交接包，落门禁决策", "code": "loopx review-packet · loopx operator-gate"}
+  ],
+  "value": {"en": "The loop keeps moving across days, restarts and even a harness swap; you show up only at concrete decisions", "zh": "跨天、重启、换宿主，循环照常推进；你只出现在具体的决策点"},
+  "sources": [
+    "README.md 'Try LoopX' quick start (pip install loopx; loopx workflow-skills --install; loopx connect; /loopx <task>)",
+    "docs/guides/getting-started.md 'Codex App And Other Agent Setup' (one-message agent connect), 'Daily Workflow' and 'Heartbeats And Quota' (loopx quota should-run, todo claim, todo update, spend-slot, review-packet, operator-gate)",
+    "docs/guides/getting-started.md 'Command Skill Registration' (slash/skill entry /loopx <goal text>)"
+  ]
+}
