@@ -8,7 +8,7 @@
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | B（4/5） | [→](antfu-skills.zh.md) |
-| **claude-code-harness** | 一套个人化 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环，并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | B（5/6） | [→](claude-code-harness.zh.md) |
+| **claude-code-harness** | 装进 Claude Code（也覆盖 Codex CLI、Cursor、Grok）的受治理交付闭环：你批准的 spec 契约、TDD 门控执行、独立 review，外加一个在每次工具调用执行前检查它的 Go 护栏引擎。 | B（5/6） | [→](claude-code-harness.zh.md) |
 | **Dimillian Skills** | 某开发者个人精选的 16 个自包含 Codex skill，重心压在 Apple 平台，外加通用评审／重构 swarm。 | C（4/5） | [→](dimillian-skills.zh.md) |
 | **gstack** | Garry Tan 的私人 Claude Code harness：54 个 skill——约一半是角色人设（CEO、工程经理、设计师、QA、安全官、发布工程师），另一半是工具命令——外加一个 agent 真正驱动的浏览器，串成一条「规划 → 构建 → 评审 → 发布 → 复盘」冲刺流程。 | B（4/5） | [→](gstack.zh.md) |
 | **andrej-karpathy-skills** | 一个行为准则包，把 Karpathy 关于 LLM 编码的四条原则注入 Claude Code / Cursor。 | C（3/5） | [→](karpathy-skills.zh.md) |
@@ -22,7 +22,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [antfu/skills](antfu-skills.zh.md) | ✅ | B（4/5） | 当你的技术栈匹配 Anthony Fu 的 Vue/Vite/Nuxt 约定时最合适。 |
-| [claude-code-harness](claude-code-harness.zh.md) | ✅ | B（5/6） | 需要带 doctor 工具的受治理 Claude Code harness 时最合适。 |
+| [claude-code-harness](claude-code-harness.zh.md) | ✅ | B（5/6） | 想要带执行前护栏引擎的受治理契约闭环、而不是 persona 包时，选它。 |
 | [Dimillian Skills](dimillian-skills.zh.md) | ✅ | C（4/5） | 适合 Apple 平台 Codex 工作流和个人评审／重构 swarm。 |
 | [gstack](gstack.zh.md) | ✅ | B（4/5） | 想要某位操作者的整套冲刺闭环（角色技能加真浏览器驱动）而不是自己拼零件时最合适。 |
 | [andrej-karpathy-skills](karpathy-skills.zh.md) | ✅ | C（3/5） | 适合作为紧凑行为准则包，而不是完整 harness。 |
