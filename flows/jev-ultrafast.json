@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Jev Ultrafast does", "zh": "Jev Ultrafast 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install with uv and put the TypeSafe and text-model keys in .env", "zh": "用 uv 装好，把 TypeSafe 和文本模型的 key 写进 .env", "code": "uv sync"},
+    {"lane": "you", "en": "Point the agent at a start URL and give it one natural-language goal", "zh": "给它一个起始网址和一句自然语言目标", "code": "Agent(url, goal)"},
+    {"lane": "them", "en": "Reads the visible page into a numbered table of controls and values", "zh": "把可见控件和取值读成一张带编号的表", "component": {"en": "snapshot.js", "zh": "snapshot.js"}},
+    {"lane": "them", "en": "One TypeSafe request returns the operation and its element", "zh": "一次 TypeSafe 请求拿回操作和对应元素"},
+    {"lane": "them", "en": "Performs the action on your real Chrome tab", "zh": "在你真实的 Chrome 标签页上执行该操作", "component": {"en": "browser-harness", "zh": "browser-harness"}},
+    {"lane": "them", "en": "Only for typing, a small LLM writes the string first", "zh": "只有打字时才让一个小模型先生成文本", "code": "TEXT_MODEL=inception/mercury-2.5"},
+    {"lane": "them", "en": "Repeats on the new page until it chooses DONE", "zh": "在新页面上重复，直到它选择 DONE"}
+  ],
+  "value": {"en": "You stop writing per-site selectors and per-step prompts — one goal in, the loop picks the next operation and element", "zh": "你不用再写站点专用选择器和每步提示词——一句目标进去，循环自己挑下一步操作和元素"},
+  "sources": [
+    "https://github.com/browser-use/jev-ultrafast README Try it (uv sync; cp .env.example .env; uv run jev; TYPESAFE_API_KEY and TEXT_MODEL_API_KEY)",
+    "README Use the library (from jev_ultrafast import Agent; Agent(url, goal); for state in agent.run())",
+    ".env.example (TYPESAFE_API_KEY, TYPESAFE_MODEL=jev-latest, TEXT_MODEL_API_KEY, TEXT_MODEL_BASE_URL, TEXT_MODEL=inception/mercury-2.5)",
+    "README Why it moves / the action space (CLICK, TYPE_TEXT, SELECT, SCROLL_UP, SCROLL_DOWN, WAIT, DONE, BLOCKED; one node = one index; one browser call per snapshot)",
+    "docs/design.md (one TypeSafe request returns the operation plus per-operation target heads; only TYPE_TEXT calls the text LLM; snapshot.js owns identities and geometry is re-read before input)"
+  ]
+}

@@ -215,6 +215,7 @@ https://github.com/bpmn-io/bpmn-js,bpmn-js,diagramming,categories/diagramming/bp
 https://github.com/bradautomates/claude-video,claude-video,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md
 https://github.com/browser-act/skills,browser-act-skills,engineering,categories/agent-skills/engineering/browser-act-skills.md
 https://github.com/browser-use/browser-use,browser-use,agent-browser-tools,categories/web-automation/agent-browser-tools/browser-use.md
+https://github.com/browser-use/jev-ultrafast,jev-ultrafast,agent-browser-tools,categories/web-automation/agent-browser-tools/jev-ultrafast.md
 https://github.com/brunophilipe/Cakebrew,cakebrew,package-manager-gui,categories/dev-utilities/package-manager-gui/cakebrew.md
 https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills,auto-empirical-research-skills,engineering,categories/agent-skills/engineering/auto-empirical-research-skills.md
 https://github.com/buildermethods/agent-os,agent-os,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/agent-os.md

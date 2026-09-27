@@ -13,6 +13,7 @@
 | **Chrome DevTools MCP** | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 | A（6/6） | [→](chrome-devtools-mcp.zh.md) |
 | **OpenCLI** | 当 agent 必须操作藏在你登录态后面的站点时用它——经扩展+daemon 桥接你已登录的 Chrome，并把站点工作流固化成可复用 CLI 命令；要预期适配器 churn 和真实的信任面。 | B（6/6） | [→](opencli.zh.md) |
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | B（6/6） | [→](page-agent.zh.md) |
+| **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | C（6/6） | [→](jev-ultrafast.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Chrome DevTools MCP](chrome-devtools-mcp.zh.md) | ✅ | A（6/6） | 当 agent 需要驱动并用 DevTools 检查真实 Chrome（性能 trace、网络、控制台、堆内存）时使用。 |
 | [OpenCLI](opencli.zh.md) | ✅ | B（6/6） | 桥接你已登录的 Chrome，agent 完全不碰登录流程，另有可复用站点适配器；仅 Chromium、适配器 churn 是结构性的，扩展+daemon 继承你全部会话。 |
 | [page-agent](page-agent.zh.md) | ✅ | B（6/6） | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 |
+| [Jev Ultrafast](jev-ultrafast.zh.md) | ✅ | C（6/6） | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 |
 
 ## 什么该放这里
 
