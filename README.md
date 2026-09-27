@@ -82,6 +82,16 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **Knative Serving** | Use it when HTTP services sit idle most of the day and you want revisioned rollouts plus autoscaling to zero without adopting a FaaS product. | Apache-2.0 | B (6/6) | [EN](categories/serverless/knative-serving.md) · [中](categories/serverless/knative-serving.zh.md) |
 
+### kubernetes-ui
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **k9s** | Use it when cluster ops must stay in a terminal — live tables, logs, exec — and a browser is the wrong surface. | Apache-2.0 | A (5/6) | [EN](categories/kubernetes-ui/k9s.md) · [中](categories/kubernetes-ui/k9s.zh.md) |
+| **Headlamp** | Use it when a team needs a shared browser console with RBAC-aware buttons under kubernetes-sigs. | Apache-2.0 | A (6/6) | [EN](categories/kubernetes-ui/headlamp.md) · [中](categories/kubernetes-ui/headlamp.zh.md) |
+| **Radar** | Use it when you need topology, Helm/GitOps, audit, and MCP from a local Apache-2.0 binary with no account. | Apache-2.0 | B (6/6) | [EN](categories/kubernetes-ui/radar.md) · [中](categories/kubernetes-ui/radar.zh.md) |
+| **Freelens** | Use it when you want the old Lens desktop window as MIT software, without a Mirantis account. | MIT | A (6/6) | [EN](categories/kubernetes-ui/freelens.md) · [中](categories/kubernetes-ui/freelens.zh.md) |
+| **Lens** | Use it only when the team already pays for Lens Desktop / Teamwork; the GitHub OSS tree is retired. | MIT | C (4/6) | [EN](categories/kubernetes-ui/lens.md) · [中](categories/kubernetes-ui/lens.zh.md) |
+
 ### document-management
 
 | Project | Use when | License | Health | Page |
