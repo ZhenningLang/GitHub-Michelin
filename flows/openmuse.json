@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenMuse does", "zh": "OpenMuse 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install from source and copy the config template", "zh": "从源码安装，复制配置模板", "code": "pnpm install --frozen-lockfile · cp .env.example .env"},
+    {"lane": "you", "en": "Create a CopilotKit Intelligence project and keep its server-only key in .env", "zh": "建 Intelligence 项目，key 写进 .env", "code": "npx copilotkit@latest login · npx copilotkit@latest project select"},
+    {"lane": "you", "en": "Start the API and the app", "zh": "拉起 API 和应用", "code": "pnpm dev · pnpm dev:web"},
+    {"lane": "them", "en": "Serves chat plus a durable task engine over PGlite at localhost:8081", "zh": "在 localhost:8081 提供聊天和建在 PGlite 上的持久任务引擎", "component": {"en": "Hono API + task engine", "zh": "API 与任务引擎"}},
+    {"lane": "you", "en": "Delegate from the phone or web chat", "zh": "在手机上或网页聊天里派活", "code": "Check out Hacker News for cool stuff"},
+    {"lane": "them", "en": "Drives a persistent Chromium and streams browser/PDF/plan cards inline", "zh": "驾驶保活的 Chromium，把浏览器/PDF/计划卡片流回聊天", "component": {"en": "Playwright browser worker", "zh": "浏览器 worker"}},
+    {"lane": "them", "en": "Pauses side effects for your review; Take control opens its live session", "zh": "写操作停下等你审批；Take control 可直接打开它的实时会话", "component": {"en": "Review gate + receipts", "zh": "审阅门与回执"}}
+  ],
+  "value": {
+    "en": "You walk away and the errand keeps running — every action reviewed, receipted, and resumable, and you can take over its browser mid-task",
+    "zh": "人走开，差事还在跑——每个动作有审批、有回执、可续跑，任务中途还能直接接管它的浏览器"
+  },
+  "sources": [
+    "https://github.com/CopilotKit/openmuse/blob/main/README.md Quick start (pnpm install --frozen-lockfile, cp .env.example .env, npx copilotkit@latest login, npx copilotkit@latest project select, CPK_INTELLIGENCE_API_KEY, pnpm dev, pnpm dev:web, localhost:8081)",
+    "https://github.com/CopilotKit/openmuse/blob/main/README.md Try it (Check out Hacker News for cool stuff; Take control; approval-gated sends)",
+    "https://github.com/CopilotKit/openmuse/blob/main/.env.example (WORKSPACE_MODE=sample, CPK_INTELLIGENCE_API_KEY required in every mode)",
+    "https://github.com/CopilotKit/openmuse/blob/main/apps/worker/README.md (persistent per-session Chromium profiles, token-protected API)",
+    "https://github.com/CopilotKit/openmuse/blob/main/docs/RICH-THREADS.md (task-linked rich cards, review, computer)"
+  ]
+}
