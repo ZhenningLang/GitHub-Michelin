@@ -130,6 +130,7 @@ health:
 | harness 内建的计划批准（Claude Code / Codex 的许可提示） | 非仓库 | 计划很短、只需要批准或不批准时，继续用内建提示；需要说清*哪一行*不对而不只是说「不行」时，才换 Plannotator。 | 零安装、始终可用，但没有批注、没有页面、没有计划 diff，也不留决定记录。 |
 | [CloudCLI（Claude Code UI）](claudecodeui.zh.md) | 已收录 | 想从浏览器或手机*驱动* agent 会话（文件、终端、git）时选 CloudCLI；任务是评审并批注某个具体产物、且 agent 正等着你的决定时选 Plannotator。 | CloudCLI 是会话形态、覆盖更宽；Plannotator 是产物形态并卡住这一轮——更窄，但那个卡点正是它的价值。 |
 | [Open Code Review](../../ai-code-review/open-code-review.zh.md) | 已收录 | 想让每个 diff 在 CI 里自动获得评审 finding 时选 Open Code Review；价值在于*人*对计划或 diff 做出决定、并让 agent 据此行动时选 Plannotator。 | 自动覆盖不需要人类注意力，代价是注意力没有花在爆炸半径最大的地方——两者通常都需要，只是在不同阶段。 |
+| [Agentation](../ui-annotation/agentation.zh.md) 与活体 UI 批注家族 | ✅ | 审的是 agent 写的东西——计划、diff——且这一步要卡在你的裁决上，选 Plannotator；审的是你的应用渲染出来的东西、点实时元素让 agent 去 grep 准确选择器，选 UI 批注一族。 | 同一个「人批注→回传 agent」的环，对象与方向相反：Plannotator 读工件并拦截，Agentation 读页面并投喂。 |
 | herdr-annotate / Plannotator TUI（同一作者的命令行与 TUI 变体） | 未收录 | 浏览器尺度的文档与计划拦截继续用 Plannotator 本体；终端变体是给泡在 Herdr 里或想要 TUI 的人准备的，此处有意不收录，视作同一评审模型的近似重复。 | 终端界面在浏览器不可用的场景（纯 headless 机器）能顶上，但丢掉渲染后的 Markdown/HTML、并排 diff 与 VS Code 集成。 |
 | CodeRabbit / Graphite / Reviewable（托管 PR 评审服务） | 非仓库 | 评审必须社会化——同事在 PR 上评论、要有历史与通知——时选托管评审服务；评审人就是你、agent 在等答案时选 Plannotator。 | 托管服务处理多人流程与审计，但闭源、收费，而且位于本地 agent 循环的下游，而不是循环之内。 |
 

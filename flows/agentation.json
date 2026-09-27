@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Agentation does", "zh": "Agentation 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Wire in once", "zh": "一次接入"}, "en": "Install the dev dependency", "zh": "装一个开发依赖", "code": "npm install agentation -D", "component": {"en": "npm package", "zh": "npm 包"}},
+    {"lane": "you", "en": "Mount the toolbar beside your app", "zh": "把工具栏挂在应用旁边", "code": "<Agentation />"},
+    {"lane": "them", "en": "Renders the annotation toolbar into the page's corner", "zh": "在页面角落渲染出批注工具栏", "component": {"en": "toolbar", "zh": "工具栏"}},
+    {"lane": "you", "phase": {"en": "Every tweak", "zh": "每轮反馈"}, "en": "Activate it and click the element that is wrong", "zh": "激活它，点那个渲染错了的元素"},
+    {"lane": "them", "en": "Captures selector, box, classes, styles, component path, source file:line", "zh": "抓下选择器、盒子、类名、样式、组件路径与源码 file:line", "component": {"en": "element identification", "zh": "元素识别"}},
+    {"lane": "you", "en": "Copy the structured markdown and paste it to your agent", "zh": "复制结构化 markdown，贴给你的 agent"},
+    {"lane": "them", "en": "Or syncs live to the MCP server your agent reads", "zh": "或经 endpoint 实时同步进 agent 读取的 MCP 服务", "code": "npx -y agentation-mcp server", "component": {"en": "agentation-mcp", "zh": "agentation-mcp"}}
+  ],
+  "value": {"en": "The agent greps a real selector and file:line instead of guessing which button you meant.", "zh": "agent 拿到的是能直接 grep 的选择器和 file:line，不用再猜你说的是哪个按钮。"},
+  "sources": [
+    "README.md (install, usage, endpoint, npx agentation-mcp server)",
+    "package/README.md (props, Annotation type)",
+    "package/src/utils/element-identification.ts",
+    "package/src/utils/react-detection.ts",
+    "package/src/utils/source-location.ts"
+  ]
+}

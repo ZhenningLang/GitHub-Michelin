@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "earmark does", "zh": "earmark 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "一次搭建"}, "en": "Install and mount the overlay in dev", "zh": "dev 环境装好并挂上批注层", "code": "npm install -D earmark", "component": {"en": "overlay", "zh": "批注层"}},
+    {"lane": "you", "en": "Mount it with a dev guard", "zh": "带 dev 开关地挂载", "code": "createEarmark()"},
+    {"lane": "you", "en": "Add the stamper to your bundler config", "zh": "给打包器配置加打戳插件", "code": "import earmark from 'vite-plugin-earmark'", "component": {"en": "vite-plugin-earmark", "zh": "vite-plugin-earmark"}},
+    {"lane": "them", "en": "Stamps every element with its file:line at dev build", "zh": "dev 构建时给每个元素盖上 file:line 戳"},
+    {"lane": "you", "phase": {"en": "Every fix", "zh": "每轮修复"}, "en": "Press alt+a, click the element, write what should change", "zh": "按 alt+a，点中元素，写下要改什么", "code": "alt+a"},
+    {"lane": "them", "en": "Resolves selector, source line, CSS rules, box and styles into markdown", "zh": "把选择器、源码行、CSS 规则、盒子与样式解析成 markdown"},
+    {"lane": "you", "en": "Paste it, or let the agent watch over MCP and reply on the pin", "zh": "贴给 agent，或让 agent 经 MCP 挂看守、在图钉上回复"},
+    {"lane": "them", "en": "Tracks the loop in pin colors: blue acknowledged, green resolved", "zh": "用图钉颜色跟踪闭环：蓝是 acknowledged，绿是 resolved"}
+  ],
+  "value": {"en": "Your agent gets the exact file:line and stylesheet rule — no grep guessing about which component you pointed at.", "zh": "agent 直接拿到准确的 file:line 和样式表规则——不用 grep 猜你指的是哪个组件。"},
+  "sources": [
+    "README.md (Install, Try it in 30 seconds, Using it, Agent sync mode, Source file paths)",
+    "repo tree: packages/core/src/{overlay,picker,selector,sourcemap,styles}.js"
+  ]
+}

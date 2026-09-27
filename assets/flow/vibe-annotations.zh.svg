@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="708" viewBox="0 0 880 708" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="708" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="572" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="572" rx="10"/>
+<rect class="pillT" x="474" y="40" width="215.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Vibe Annotations 做的</text>
+<path class="edge" d="M62,164 L62,188" marker-end="url(#a)"/>
+<path class="hand" d="M408,247.5 C439.0,247.5 439.0,271 470,271" marker-end="url(#a)"/>
+<path class="hand" d="M472,291.5 C441.0,291.5 441.0,355 410,355" marker-end="url(#a)"/>
+<path class="hand" d="M408,375.5 C439.0,375.5 439.0,399 470,399" marker-end="url(#a)"/>
+<path class="hand" d="M472,432.0 C441.0,432.0 441.0,470 410,470" marker-end="url(#a)"/>
+<path class="hand" d="M408,490.5 C439.0,490.5 439.0,539 470,539" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">一次搭建</text>
+<text class="t" x="82" y="118">从 Chrome 商店安装扩展</text>
+<text class="comp" x="82" y="146">组件：浏览器扩展</text>
+<rect class="card" x="40" y="190" width="368" height="115" rx="8"/>
+<rect class="accY" x="40" y="190" width="4" height="115" rx="2"/>
+<circle class="accY" cx="62" cy="214" r="10"/>
+<text class="num" x="62" y="218" text-anchor="middle">2</text>
+<text class="ph" x="82" y="219">一次搭建</text>
+<text class="t" x="82" y="236">跑一次性的初始化向导</text>
+<text class="c" x="82" y="260">npx vibe-annotations-server init</text>
+<text class="comp" x="82" y="283">组件：初始化向导</text>
+<rect class="cardT" x="472" y="247" width="368" height="89" rx="8"/>
+<rect class="accT" x="472" y="247" width="4" height="89" rx="2"/>
+<circle class="accT" cx="494" cy="271" r="10"/>
+<text class="num" x="494" y="275" text-anchor="middle">3</text>
+<text class="ph" x="514" y="276">一次搭建</text>
+<text class="t" x="514" y="293">装好全局服务、后台启动、顺手配好你的编码</text>
+<text class="t" x="514" y="315">agent</text>
+<rect class="card" x="40" y="331" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="331" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="355" r="10"/>
+<text class="num" x="62" y="359" text-anchor="middle">4</text>
+<text class="ph" x="82" y="360">每轮批注</text>
+<text class="t" x="82" y="377">打开 localhost 页面，点 Annotate，标出不</text>
+<text class="t" x="82" y="399">满意处</text>
+<rect class="cardT" x="472" y="375" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="375" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="399" r="10"/>
+<text class="num" x="494" y="403" text-anchor="middle">5</text>
+<text class="ph" x="514" y="404">每轮批注</text>
+<text class="t" x="514" y="421">批注按项目和页面归档，同时供扩展和 age</text>
+<text class="t" x="514" y="443">nt 读</text>
+<text class="comp" x="514" y="471">组件：本地服务</text>
+<rect class="card" x="40" y="446" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="446" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="470" r="10"/>
+<text class="num" x="62" y="474" text-anchor="middle">6</text>
+<text class="ph" x="82" y="475">每轮批注</text>
+<text class="t" x="82" y="492">让 agent 经 MCP 直接实现——或 View</text>
+<text class="t" x="82" y="514">all、Copy、粘贴</text>
+<rect class="cardT" x="472" y="515" width="368" height="67" rx="8"/>
+<rect class="accT" x="472" y="515" width="4" height="67" rx="2"/>
+<circle class="accT" cx="494" cy="539" r="10"/>
+<text class="num" x="494" y="543" text-anchor="middle">7</text>
+<text class="ph" x="514" y="544">每轮批注</text>
+<text class="t" x="514" y="561">修复闭环就此合上，全程没人改过应用代码</text>
+<rect class="val" x="28" y="614" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="638">价值</text>
+<text class="valT" x="48" y="662">谁看见 UI 问题谁就能直接喂给编码 agent——不用仓库权限、不用装依赖、不用翻剪贴板考古。</text>
+</svg>
