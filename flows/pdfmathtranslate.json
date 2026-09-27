@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "them": {"en": "PDFMathTranslate does", "zh": "PDFMathTranslate 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI with a supported Python",
+      "zh": "用受支持的 Python 安装 CLI",
+      "code": "uv tool install --python 3.12 pdf2zh",
+      "component": {"en": "PyPI package pdf2zh", "zh": "PyPI 包 pdf2zh"}
+    },
+    {
+      "lane": "you",
+      "en": "Point it at a scientific PDF",
+      "zh": "把一篇科研 PDF 交给它",
+      "code": "pdf2zh document.pdf",
+      "component": {"en": "pdf2zh CLI", "zh": "pdf2zh CLI"}
+    },
+    {
+      "lane": "them",
+      "en": "Detects layout, keeps formulas and figures, sends paragraphs to the translator",
+      "zh": "识别版面，保住公式与图，把段落送去翻译",
+      "component": {"en": "DocLayout-YOLO + translator", "zh": "版面模型 + 翻译器"}
+    },
+    {
+      "lane": "them",
+      "en": "Writes a translated PDF and a bilingual comparison PDF",
+      "zh": "写出译文 PDF 和双语对照 PDF",
+      "component": {"en": "PyMuPDF renderer", "zh": "PyMuPDF 渲染"}
+    }
+  ],
+  "value": {
+    "en": "A paper you can read in the target language without rebuilding the layout by hand",
+    "zh": "论文能用目标语言读，而不用手重排版"
+  },
+  "sources": [
+    "README.md §3.2.1 Python: Install using uv — `uv tool install --python 3.12 pdf2zh` and `pdf2zh document.pdf`",
+    "README.md §1 What does this do? — preserve formulas/charts/TOC; mono + dual output named in §4.1",
+    "README.md §4 Technical Details — DocLayout-YOLO acknowledgement; PyMuPDF document merging"
+  ]
+}

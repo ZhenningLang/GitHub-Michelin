@@ -86,7 +86,7 @@ health:
 - **你要把跨章节术语一致性当一等公民。** 它是段落流式翻译，可选会话上下文（`--use_context session`，按 token 预算压缩）——没有人工整理的术语表、没有逐块术语注入、没有选择性重翻。长书的专有名词漂移是主要痛点时，用 [translate-book](../agent-skills/ai-writing/translation/translate-book.zh.md)。
 - **你想让翻译默认跑在 coding-agent 订阅上。** 它的原生路径是 API key（虽有 Codex 路由）。如果你唯一的“LLM 入口”是 Claude Code/Codex harness，用 translate-book 或 [claude_translater](../agent-skills/ai-writing/translation/claude-translater.zh.md)。
 - **你只读网页。** 浏览器内阅读加双语覆盖，用 [Read Frog](read-frog.zh.md) 或 [FluentRead](fluentread.zh.md)——不需要文件流水线。
-- **你的输入是复杂 PDF。** PDF 输入会退化为双语 `.txt`（会尝试建 EPUB 但可能失败），版式信息丢失。PDF 优先且在意 DOCX/EPUB/PDF 输出保真时，用基于 Calibre 的 translate-book。
+- **你的输入是复杂 PDF。** PDF 输入会退化为双语 `.txt`（会尝试建 EPUB 但可能失败），版式信息丢失。科研 PDF 必须保住公式和双栏时，用 [PDFMathTranslate](../pdf-tools/pdfmathtranslate.zh.md)。
 - **你没有素材的翻译权利。** 项目自己的免责声明把用途限定在你有权翻译的作品上——受版权保护的商业电子书，请用有授权的翻译服务（未收录，非 repo）。
 
 ## 横向对比
