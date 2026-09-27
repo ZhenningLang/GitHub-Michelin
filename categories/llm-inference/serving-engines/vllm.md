@@ -4,21 +4,21 @@ slug: vllm
 repo: https://github.com/vllm-project/vllm
 category: serving-engines
 tags: [llm-serving, inference-engine, pagedattention, gpu, cuda, python, openai-compatible, throughput]
-language: Python (with CUDA C++ kernels)
+language: Python (with CUDA C++ kernels and Rust components)
 license: Apache-2.0
-maturity: "v0.11.x, very active, ~73k stars (as of 2026-07)"
-last_verified: 2026-07-01
+maturity: "v0.30.x, very active, ~93k stars (as of 2026-09)"
+last_verified: 2026-09-27
 type: tool
 upstream:
-  pushed_at: 2026-07-06T09:15:50Z
+  pushed_at: 2026-09-27T12:01:31Z
   default_branch: main
-  default_branch_sha: 90ce3a09bef2fd7203369b3f7aeabee15ea6f0f8
+  default_branch_sha: 924707f1bf94ff583d89bff7522ee12ff032c286
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:30:23Z
+  computed_at: 2026-09-27T15:00:45Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.8
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -36,16 +36,16 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: A
+      grade: B
       raw:
         registry: pypi.org
         canonical_package: vllm
         dependent_repos_count: 5
-        downloads_last_month: 2256880
+        downloads_last_month: 1942109
         graph_tier: D
-        volume_tier: A
-        cross_check_divergence: 1.05
-        release_downloads: 3849713
+        volume_tier: B
+        cross_check_divergence: 1.0
+        release_downloads: 4009301
         release_assets: 526
         release_tier: B
         signal_basis: releases
@@ -53,7 +53,7 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1321
+        repo_age_days: 1326
         last_commit_age_days: 0
         cohort: tool
     governance:
@@ -61,7 +61,7 @@ health:
       raw:
         active_maintainers_12mo: 432
         top1_share: 0.044
-        top3_share: 0.125
+        top3_share: 0.129
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -87,16 +87,37 @@ The most popular open-source LLM serving engine, built around **PagedAttention**
 
 You're running a production API that needs to serve open-weight LLMs (Llama, Qwen, Mistral, Gemma, …) at high throughput behind an OpenAI-compatible endpoint. Your traffic is bursty and interleaved — users send long prompts and short prompts, some stream tokens and some don't — and you keep hitting GPU memory fragmentation: naive batching leaves holes in the KV cache, so you can't fit as many concurrent requests as the hardware should allow. You deploy vLLM, which virtualizes the KV cache into fixed-size pages (like an OS memory manager) and reclaims blocks when sequences finish, letting you pack requests tightly and sustain far higher throughput than a simple static-batch server. The built-in OpenAI-compatible API (`/v1/chat/completions`) means your existing client code works without changes, and the Python ecosystem makes model customization (custom logits processors, sampling parameters, speculative decoding) accessible without dropping into C++.
 
-You also reach for vLLM when you need tensor-parallel or pipeline-parallel multi-GPU serving, quantization (AWQ, GPTQ, FP8) to squeeze larger models onto fewer GPUs, or prefix caching to avoid re-computing shared system prompts across many requests. The community is enormous, so when a new model drops on Hugging Face, a vLLM integration usually lands within days.
+You also reach for vLLM when you need multi-GPU and multi-node serving (tensor, pipeline, data, expert, and context parallelism), quantization (FP8, INT8/INT4, GPTQ/AWQ, GGUF, compressed-tensors) to squeeze larger models onto fewer GPUs, or prefix caching to avoid re-computing shared system prompts across many requests. The community is enormous, so when a new model drops on Hugging Face, a vLLM integration usually lands within days.
+
+## How it works
+
+vLLM sits between your HTTP requests and the GPU. On startup the server loads the model once, then **PagedAttention** manages the KV cache — the key/value state the model must remember for every in-flight conversation — like an OS manages memory: it is split into fixed-size blocks, allocated on demand, and reclaimed the moment a sequence finishes. On top of that, the scheduler runs **continuous batching**: finished requests free their blocks and queued requests join the same GPU step without pausing the generations already running, which is where the throughput comes from. The surface you touch is the OpenAI-compatible HTTP server (`/v1/completions`, `/v1/chat/completions`, plus the Anthropic Messages API and gRPC in current releases); for batch jobs with no server, the `from vllm import LLM` class drives the same engine in-process. What stays yours: the GPU environment and drivers, model choice, the batching/tuning knobs, and any load balancing, auth, or HA layer in front of the single-instance server.
+
+![vLLM — backbone user story](../../../assets/flow/vllm.svg)
+
+<!-- flow-steps:begin (generated from flows/vllm.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the engine into a Python environment — `uv pip install vllm --torch-backend=auto · pip install vllm`
+2. **You**: Start an OpenAI-compatible server pointed at any Hugging Face model id — `vllm serve Qwen/Qwen2.5-1.5B-Instruct`
+3. **vLLM**: Loads the model once, then pages the KV cache into fixed-size GPU blocks as requests arrive — component: `PagedAttention engine`
+4. **You**: Point your existing OpenAI client at the endpoint — `base_url="http://localhost:8000/v1"`
+5. **vLLM**: Continuously batches concurrent requests, streaming tokens and reclaiming blocks as sequences finish — component: `Scheduler`
+
+**Value**: OpenAI-compatible serving at datacenter throughput without writing batching or KV-cache management yourself
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need to run on non-NVIDIA hardware as a first-class citizen.** vLLM is deeply NVIDIA-centric (custom CUDA kernels, CUTLASS, Triton). AMD and Intel GPU support exists but is newer, less mature, and lacks the same performance tuning depth. For AMD-first or Intel-first deployments, the maturity gap is real. [未验证]
-- **You want a simple, single-binary local inference tool.** vLLM is a large, complex Python codebase with heavy PyTorch/CUDA dependencies and a long dependency tree. For a single Mac or a laptop, Ollama or llama.cpp are far lighter and easier to install. vLLM is a datacenter serving engine, not a desktop convenience tool.
+- **Non-NVIDIA hardware is a growing plugin matrix, not one first-class path.** The tuned mainstream is NVIDIA CUDA. AMD (ROCm wheels), Intel (XPU, official Docker images since v0.26), Google TPU (`vllm-tpu`), Ascend NPU (community `vllm-ascend`), and Apple Silicon (the separate `vLLM-Metal` project, which swaps PyTorch for an MLX backend and needs MLX-converted models) are each their own install path with their own version pins — the ROCm wheels currently want Python 3.12 / ROCm 7.0 / glibc ≥ 2.35, for example. For an AMD-, TPU-, or NPU-first deployment you are choosing a plugin ecosystem, not the headline one. [推断：各平台调优深度未做同硬件实测]
+- **You want a simple, single-binary local inference tool.** vLLM is a large, complex Python codebase with heavy PyTorch/CUDA dependencies and a long dependency tree. For a single Mac or a laptop, Ollama or llama.cpp are far lighter and easier to install (vLLM's Apple Silicon story is the separate vLLM-Metal project, not `pip install vllm`). vLLM is a datacenter serving engine, not a desktop convenience tool.
 - **You need deep custom kernel modifications without CUDA expertise.** vLLM's performance comes from hand-tuned CUDA kernels and attention implementations. If you need to modify the attention mechanism or add a custom kernel, you are writing CUDA C++ and integrating with vLLM's kernel dispatch layer — a steep learning curve compared to a pure-Python framework.
 - **You want a unified serving + orchestration + multi-model routing layer.** vLLM is the inference engine, not the orchestration framework. For multi-model A/B testing, canary deployments, request-level routing, or autoscaling across a fleet, you will still need a separate layer (Kubernetes, Ray Serve, or a proxy like BentoML) in front of vLLM. It does not replace a serving platform.
 - **Latency is more critical than throughput.** vLLM optimizes for **throughput** (requests per second, GPU utilization). For ultra-low-latency interactive use cases where every millisecond of time-to-first-token matters, NVIDIA's **TensorRT-LLM** or hand-tuned custom engines often win because they compile a static graph and fuse operators more aggressively; vLLM's dynamic scheduling and Python overhead add latency.
-- **You want to avoid fast-moving breakage.** vLLM ships at a furious pace (10+ commits/day, frequent minor releases). New features land quickly, but APIs shift, default behaviors change, and model-support compatibility moves fast. If you need a "set it and forget it" inference runtime with a 12-month stable surface, vLLM's velocity is a liability, not a feature. [推断]
+- **You want to avoid fast-moving breakage.** vLLM ships at a furious pace — 1,581 commits in the 30 days to 2026-09-27 (≈50/day) and a minor release roughly every two weeks (v0.24.0 on 2026-06-29 → v0.30.0 on 2026-09-22, GitHub API). New features land quickly, but APIs shift, default behaviors change, and model-support compatibility moves fast. If you need a "set it and forget it" inference runtime with a 12-month stable surface, vLLM's velocity is a liability, not a feature.
 
 ## Comparison
 
@@ -112,20 +133,20 @@ You also reach for vLLM when you need tensor-parallel or pipeline-parallel multi
 
 ## Tech stack
 
-- **Python** — the primary language: model loading, scheduler, API server, and user-facing customization surface (custom logits processors, sampling params, guided decoding).
-- **CUDA C++ / Triton** — custom GPU kernels for attention, KV cache management, and quantization; PagedAttention's block-table management is implemented in optimized CUDA.
-- **PyTorch** — the underlying tensor framework; models are loaded via PyTorch and run through custom vLLM attention kernels that replace standard PyTorch attention.
-- **OpenAI-compatible API** — a FastAPI-based server exposing `/v1/completions`, `/v1/chat/completions`, and `/v1/embeddings` for drop-in compatibility with OpenAI clients.
-- **Distributed primitives** — tensor parallelism and pipeline parallelism via PyTorch distributed; supports multi-GPU and multi-node deployments.
-- **Prefix caching** — an optional layer that caches the KV blocks of common prefixes (e.g., system prompts) to avoid recomputation on cache hits.
+- **Python** — the primary language (~85% of the code, GitHub languages 2026-09): model loading, scheduler, API server, and user-facing customization surface (custom logits processors, sampling params, guided decoding).
+- **CUDA C++ / Triton, plus Rust** — custom GPU kernels for attention, KV cache management, and quantization (C++/CUDA ~8%, Rust ~6% per GitHub languages 2026-09; the Rust crates sit in `rust/src/` — tokenizer/chat-parsing paths [推断：具体职责未逐一读源码]). Attention runs on swappable backends (FlashAttention, FlashInfer, TRTLLM-GEN, FlashMLA, Triton), auto-selected or pinned via `--attention-backend`.
+- **PyTorch** — the underlying tensor framework (build metadata pins `torch == 2.13.0` as of v0.30); the Apple Silicon plugin is the exception, swapping in an MLX backend.
+- **OpenAI-compatible API** — a FastAPI-based server exposing `/v1/completions`, `/v1/chat/completions`, and `/v1/embeddings` for drop-in compatibility with OpenAI clients; current releases additionally advertise an Anthropic Messages API and gRPC support.
+- **Distributed primitives** — tensor, pipeline, data, expert, and context parallelism for multi-GPU and multi-node deployments.
+- **Throughput feature set** — continuous batching with chunked prefill, prefix caching, CUDA/HIP graph capture, torch.compile-driven kernel generation, speculative decoding (n-gram, EAGLE, …), multi-LoRA serving, and structured output via xgrammar or guidance.
 
 ## Dependencies
 
-- **Hardware** — NVIDIA GPUs are the primary target (CUDA 11.8+ / 12.1+); AMD (ROCm) and Intel support are newer. Server-class GPUs (A100, H100, A10, L4, etc.) are the typical deployment target. CPU-only inference exists but is not the performance story.
-- **GPU drivers & runtime** — NVIDIA GPU drivers, CUDA toolkit, and cuDNN on the host; the Python package bundles most CUDA kernels but the host must provide the driver/runtime stack.
-- **Runtime environment** — Python 3.9–3.12; installed via `pip` (e.g., `pip install vllm`) or prebuilt Docker containers (`vllm/vllm-openai`). The package is heavy (~GBs of CUDA wheels and PyTorch).
-- **Models** — you bring Hugging Face-compatible models (safetensors or PyTorch checkpoints); vLLM supports thousands of models via automatic Hugging Face `transformers` config detection and manual model-card registration.
-- **External services (optional)** — for production serving you typically place a load balancer or reverse proxy (nginx, Envoy, Kubernetes ingress) in front; vLLM itself is a single-process server and does not handle TLS, auth, or multi-node routing natively. [推断]
+- **Hardware** — NVIDIA GPUs are the tuned primary target (quickstart assumes Linux + CUDA); AMD (ROCm), Intel (XPU), Google TPU, Ascend NPU, and Apple Silicon go through the per-platform paths described in *When NOT to use*. Server-class GPUs (A100, H100, L4, etc.) are the typical deployment target. x86/ARM/PowerPC CPU inference exists but is not the performance story.
+- **GPU drivers & runtime** — NVIDIA GPU drivers and the CUDA runtime on the host; `uv` can auto-select the right PyTorch CUDA build with `--torch-backend=auto`, but the host must still provide the driver stack.
+- **Runtime environment** — Python ≥ 3.10, < 3.15 per packaging metadata (quickstart exercises 3.10–3.13); installed via `uv`/`pip` (`uv pip install vllm --torch-backend=auto`, recommended) or prebuilt Docker containers (`vllm/vllm-openai`, plus `-rocm`/`-xpu` nightlies). The package is heavy (multi-GB CUDA wheels and PyTorch).
+- **Models** — you bring Hugging Face-compatible models (safetensors; GGUF also loadable as a quantization format); the README claims 200+ supported architectures across decoder-only, MoE, hybrid SSM, multimodal, embedding, and reward models. ModelScope is available via `VLLM_USE_MODELSCOPE=True`.
+- **External services (optional)** — for production serving you typically place a load balancer or reverse proxy (nginx, Envoy, Kubernetes ingress) in front; the server supports API-key checking (`--api-key` / `VLLM_API_KEY`) but is still a single-model, single-process server that does not handle TLS termination or multi-node routing natively. [推断]
 
 ## Ops difficulty
 
@@ -134,24 +155,25 @@ You also reach for vLLM when you need tensor-parallel or pipeline-parallel multi
 1. **GPU fleet management** — driver versions, CUDA compatibility, memory tuning, and multi-GPU topology (NVLink, PCIe) are your responsibility. A single vLLM instance typically owns one or more GPUs exclusively; you manage instance density, not the engine.
 2. **Model lifecycle & disk** — model weights are large (tens to hundreds of GB); cold-start download times, disk cache management, and version upgrades across a fleet are significant operational work.
 3. **Throughput vs. latency tuning** — vLLM exposes many knobs (max_num_seqs, max_num_batched_tokens, block size, scheduling policy) that interact in non-obvious ways. Getting the best throughput for your specific workload distribution requires benchmarking and iteration; defaults are conservative and often leave GPU headroom on the table.
-4. **Version velocity** — with 10+ commits/day and frequent releases, staying current means regular upgrades, and the API surface shifts (new arguments, changed defaults, deprecated features). You will be upgrading vLLM regularly if you want bug fixes and new model support.
+4. **Version velocity** — ~50 commits/day and a minor release every ~2 weeks mean staying current is regular work, and the API surface shifts (new arguments, changed defaults, deprecated features). You will be upgrading vLLM regularly if you want bug fixes and new model support.
 5. **No built-in HA or multi-node routing** — you run vLLM as a stateful process per GPU/node. High availability, autoscaling, request routing, and model A/B testing are handled by external infrastructure (Kubernetes, a proxy, or a serving framework like Ray Serve), not by vLLM itself.
 
 ## Health & viability
 
-- **Maintenance (2026-07).** Extremely active — 10+ commits/day, very frequent releases (v0.11.x as of mid-2026), and a long tail of merged PRs. The project is clearly in aggressive growth mode, not coasting. Not archived. [推断]
-- **Governance / bus factor (2026-07).** Led by a large, distributed team (UC Berkeley / LMSYS origin) with 432 active maintainers and a wide contributor base (~500+ contributors). The governance is **community-led open source** rather than a single vendor or foundation — higher bus-factor than a single-company project, though there is no Apache/CNCF/LF foundation umbrella. [推断]
-- **Backing & longevity (2026-07).** Originated from UC Berkeley's Sky Computing Lab and LMSYS (the team behind Chatbot Arena); the PagedAttention paper was published at SOSP 2023. Strong academic pedigree + commercial adoption (many AI startups and cloud providers run vLLM in production). Age (~2.5 years since first release) × still-active gives a **moderate-to-strong Lindy prior**: old enough to have proven itself, young enough to still be innovating rapidly. [推断]
-- **Adoption (2026-07).** ~73k stars and very wide production usage — cited as the backend for many inference-as-a-service platforms and internal AI teams. The OpenAI-compatible API, broad model support, and active ecosystem (plugins, Docker images, Helm charts) make it the de-facto open-source standard for LLM serving. Star count is not proof of quality, but the ecosystem density is real. [未验证]
-- **Risk flags.** Apache-2.0 with no relicense history to date (2026-07). No CLA requirement. The main risk is **velocity fragility** — the fast pace means APIs and internal architecture shift rapidly, which creates upgrade burden and occasional breaking changes. There is also a **single-language (Python/CUDA) concentration risk**: the project is deeply tied to the PyTorch/CUDA ecosystem; a major PyTorch breaking change or CUDA compatibility shift would affect vLLM directly. [推断]
+- **Maintenance (2026-09).** Extremely active — 1,581 commits in the last 30 days and a minor release roughly every two weeks (v0.24.0 → v0.30.0 between 2026-06-29 and 2026-09-22, GitHub API). The project is clearly in aggressive growth mode, not coasting. Not archived.
+- **Governance / bus factor (2026-09).** The README describes "many dozens of academic institutions and companies from over 2000 contributors"; the health scorer counts 432 distinct committers in the last 12 months with no single contributor above ~4% of commits. Governance is **community-led open source** (UC Berkeley / Sky Computing origin) rather than a single vendor or foundation — high bus-factor, though there is still no Apache/CNCF/LF umbrella. [推断]
+- **Backing & longevity (2026-09).** Originated from UC Berkeley's Sky Computing Lab; the PagedAttention paper was published at SOSP 2023. Strong academic pedigree + commercial adoption (many AI startups and cloud providers run vLLM in production). Age (repo ~3.6 years) × still-active gives a **moderate-to-strong Lindy prior**: old enough to have proven itself, still moving fast. [推断]
+- **Adoption (2026-09).** ~92.8k stars (GitHub API, 2026-09-27) and ~1.9M PyPI downloads/month (health scorer, 2026-09-27) — cited as the backend for many inference-as-a-service platforms and internal AI teams. The OpenAI-compatible API, broad model support, and active ecosystem (plugins, Docker images, Helm charts) make it the de-facto open-source standard for LLM serving. Star count is not proof of quality, but the ecosystem density is real. The radar's adoption axis grades B — download volume and release assets carry the claim; the dependency-graph signal is weak — that is the gap between the numbers and the "de-facto standard" narrative. [未验证：生产采用广度]
+- **Risk flags.** Apache-2.0 with no relicense history to date (2026-09). No CLA requirement. The main risk is **velocity fragility** — the fast pace means APIs and internal architecture shift rapidly, which creates upgrade burden and occasional breaking changes. Secondary: the **multi-platform expansion** (ROCm/XPU/TPU/NPU/Metal) spreads maintenance across per-hardware paths with their own pins, and some are community-run. There is also a **PyTorch/CUDA concentration risk**: the project is deeply tied to that stack; a major PyTorch breaking change or CUDA compatibility shift would affect vLLM directly. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~73k stars and exact production-adoption claims are from public GitHub API and project communications as of 2026-07-01; the star count itself is API-verifiable but its adoption meaning is indicative, not proof of production quality.
-- [未验证] AMD and Intel GPU support status ("newer, less mature") is inferred from public README/docs and issue-discussion patterns, not from a hands-on benchmark on those platforms.
-- [未验证] Prefix caching behavior, block-size interactions with scheduling, and the exact set of supported quantization schemes (AWQ, GPTQ, FP8, etc.) are taken from the project's README and documentation; not all combinations were independently tested.
-- [推断] "10+ commits/day" and "v0.11.x" velocity are inferred from GitHub activity patterns and release history; the exact daily rate varies and should be checked at the time of evaluation.
+- [未验证] The adoption *meaning* of ~92.8k stars / ~2.3M PyPI downloads-month (both API-checked 2026-09-22/27) is indicative, not proof of production quality; "backend for many inference platforms" comes from project communications and community reports.
+- [推断] Per-platform maturity (ROCm wheels, Intel XPU, `vllm-tpu`, `vllm-ascend`, `vLLM-Metal`) is read from the official install docs' structure and version notes; no hands-on benchmark on those platforms was performed.
+- [推断] The role of the ~6% Rust code (tokenizer/chat-parsing crates under `rust/src/`) is inferred from GitHub languages stats and `pyproject.toml` build metadata (`setuptools-rust`), not from reading the crates.
+- [未验证] The quantization set (FP8, MXFP8/MXFP4, NVFP4, INT8/INT4, GPTQ/AWQ, GGUF, compressed-tensors, ModelOpt, TorchAO) is quoted from the README; not all combinations were independently tested.
+- [推断] The earlier "CUDA 11.8+ / 12.1+" pin was dropped rather than re-verified this pass; check the current installation guide for exact toolkit versions.
 - [推断] The steep learning curve for custom CUDA kernel modifications is inferred from the codebase structure (custom CUDA kernels in `csrc/`, kernel dispatch in Python) and maintainer discussions, not from a first-hand kernel-development walkthrough.
 - [推断] TensorRT-LLM latency advantage and the "latency vs. throughput" tradeoff are inferred from community benchmarks and NVIDIA's own performance claims, not from an independent head-to-head benchmark on identical hardware.
-- [推断] The "moderate-to-strong Lindy prior" assessment combines the project's ~2023 origin date with its observed continued activity; this is a heuristic judgment, not a measured prediction.
+- [推断] The "moderate-to-strong Lindy prior" assessment combines the project's 2023 origin with its observed continued activity; this is a heuristic judgment, not a measured prediction.
 - [推断] CPU-only inference support exists but is described as "not the performance story" based on README emphasis and community reports, not from a controlled CPU-vs-GPU benchmark.
