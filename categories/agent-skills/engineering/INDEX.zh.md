@@ -12,6 +12,7 @@
 | **Scientific Agent Skills** | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 | A（4/5） | [→](scientific-agent-skills.zh.md) |
 | **Auto-Empirical Research Skills** | 当 coding agent 要做社会科学实证论文（双重差分／工具变量／断点／合成控制、稳健性、期刊表格），你需要一份会路由到单个 skill 的目录，而不是通用写代码提示时用它。 | C（3/5） | [→](auto-empirical-research-skills.zh.md) |
 | **Vercel Agent Skills** | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 | B（4/6） | [→](vercel-agent-skills.zh.md) |
+| **cc-skills-golang** | 当你的 coding agent 写出能编译但不地道的 Go（error 包装、nil 陷阱、命名）时用它——要的是按需加载的 Go 说明书，不是流程／TDD 包。 | C（5/6） | [→](cc-skills-golang.zh.md) |
 | **Waza** | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 | C（5/6） | [→](waza.zh.md) |
 | **mattpocock/skills** | Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程。 | B（4/5） | [→](mattpocock-skills.zh.md) |
 | **BrowserAct Skills** | 面向 BrowserAct 的 agent 浏览器自动化技能包：索引式浏览器控制、stealth/private session、远程人工接管，以及 Skill Forge 抓取工作流。 | B（4/5） | [→](browser-act-skills.zh.md) |
@@ -28,6 +29,7 @@
 | [Scientific Agent Skills](scientific-agent-skills.zh.md) | ✅ | A（4/5） | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 |
 | [Auto-Empirical Research Skills](auto-empirical-research-skills.zh.md) | ✅ | C（3/5） | 社会科学实证的目录加路由器（双重差分／工具变量／断点、期刊表格）；不是生命科学库，许可证混杂。 |
 | [Vercel Agent Skills](vercel-agent-skills.zh.md) | ✅ | B（4/6） | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 |
+| [cc-skills-golang](cc-skills-golang.zh.md) | ✅ | C（5/6） | 给 coding agent 按需加载的 Go 习惯用法 skill；不是流程／TDD 包，全装会偏向作者自己的库。 |
 | [Waza](waza.zh.md) | ✅ | C（5/6） | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 |
 | [mattpocock/skills](mattpocock-skills.zh.md) | ✅ | B（4/5） | 面向需求 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程的工程过程包。 |
 | [BrowserAct Skills](browser-act-skills.zh.md) | ✅ | B（4/5） | 带索引动作、stealth/private session、远程接管和 Skill Forge 的 agent 浏览器自动化层；确定性测试仍用 Playwright。 |

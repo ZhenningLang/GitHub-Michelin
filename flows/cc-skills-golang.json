@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "cc-skills-golang does",
+    "zh": "cc-skills-golang 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the pack into your agent",
+      "zh": "把 skill 包装进你的 agent",
+      "code": "npx skills add https://github.com/samber/cc-skills-golang --all"
+    },
+    {
+      "lane": "them",
+      "en": "Registers ~45 Go skill descriptions for on-demand triggering",
+      "zh": "登记约 45 个 Go skill 的触发描述",
+      "component": { "en": "SKILL.md descriptions", "zh": "SKILL.md 描述" }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent to write or review Go, as usual",
+      "zh": "照常让它写或审 Go"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the matching SKILL.md and applies those rules",
+      "zh": "加载对上的 SKILL.md 并按规则写或审",
+      "component": { "en": "SKILL.md", "zh": "SKILL.md" }
+    }
+  ],
+  "value": {
+    "en": "The agent follows Go conventions and footguns without you pasting Effective Go each turn",
+    "zh": "agent 会按 Go 习惯和踩坑条写，不必每轮把 Effective Go 粘进去"
+  },
+  "sources": [
+    "https://github.com/samber/cc-skills-golang README.md — How to use (`npx skills add https://github.com/samber/cc-skills-golang --all`)",
+    "https://github.com/samber/cc-skills-golang README.md — Skills section (atomic cross-referencing units; recommended skills ~1,100 description tokens; install all general-purpose together)",
+    "https://github.com/samber/cc-skills-golang/skills/golang-error-handling/SKILL.md — description field as the trigger; body loaded when the task matches"
+  ]
+}

@@ -426,6 +426,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Scientific Agent Skills** | 一个大型 skill 包（约 147 个 skill），把 coding agent 变成生物、化学、医学、药物发现领域的科研助手——每个 skill 用一份带文档的 SKILL.md 封装一个科学 Python 库或数据库，按需加载。 | MIT | A（4/5） | [中](categories/agent-skills/engineering/scientific-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/scientific-agent-skills.md) |
 | **Auto-Empirical Research Skills** | 当 coding agent 要做社会科学实证论文（双重差分／工具变量／断点／合成控制、稳健性、期刊表格），你需要一份会路由到单个 skill 的目录，而不是通用写代码提示时用它。 | CC-BY-SA-4.0 | C（3/5） | [中](categories/agent-skills/engineering/auto-empirical-research-skills.zh.md) · [EN](categories/agent-skills/engineering/auto-empirical-research-skills.md) |
 | **Vercel Agent Skills** | Vercel 官方 agent-skill 包——按需安装的 React/Next.js/Vercel 部署、Web 设计与文档审查指南，采用 agentskills.io/skills.sh 格式。 | MIT | B（4/6） | [中](categories/agent-skills/engineering/vercel-agent-skills.zh.md) · [EN](categories/agent-skills/engineering/vercel-agent-skills.md) |
+| **cc-skills-golang** | 当你的 coding agent 写出能编译但不地道的 Go（error 包装、nil 陷阱、命名）时用它——要的是按需加载的 Go 说明书，不是流程／TDD 包。 | MIT | C（5/6） | [中](categories/agent-skills/engineering/cc-skills-golang.zh.md) · [EN](categories/agent-skills/engineering/cc-skills-golang.md) |
 | **Waza** | 一套精简的八个「工程习惯」skill 集合（规划、设计、评审、调试、写作、调研、读取、审计），coding agent 可按需加载，覆盖 Claude Code、Codex、Cursor。 | MIT | C（5/6） | [中](categories/agent-skills/engineering/waza.zh.md) · [EN](categories/agent-skills/engineering/waza.md) |
 
 #### agent-skills / design
