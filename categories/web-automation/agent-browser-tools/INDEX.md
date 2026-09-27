@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Agent Browser** | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. | B (5/6) | [→](agent-browser.md) |
+| **Browser Harness** | Use it when a coding agent must drive the Chrome you are already logged into over CDP, writing missing helpers into a local workspace — Alpha, default-on telemetry, no inner agent loop. | A (6/6) | [→](browser-harness.md) |
 | **browser-use** | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. | A (6/6) | [→](browser-use.md) |
 | **BrowserSkill** | Use it when an agent must drive your already-logged-in Chromium without taking it over — it borrows your tabs only after you confirm and hands control back for login or CAPTCHA. | B (6/6) | [→](browserskill.md) |
 | **Chrome DevTools MCP** | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. | A (6/6) | [→](chrome-devtools-mcp.md) |
@@ -19,6 +20,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Agent Browser](agent-browser.md) | ✅ | B (5/6) | Use it when an agent must shell-drive a real Chrome over CDP with stable element refs instead of CSS selectors. |
+| [Browser Harness](browser-harness.md) | ✅ | A (6/6) | Coding agent attaches to your live Chrome over CDP and writes missing helpers locally; no inner LLM loop, telemetry on until you opt out, still 0.1.x Alpha. |
 | [browser-use](browser-use.md) | ✅ | A (6/6) | 🌐 Make websites accessible for AI agents. Automate tasks online with ease. |
 | [BrowserSkill](browserskill.md) | ✅ | B (6/6) | Bridges your already-logged-in Chromium from any shell-capable agent, keeps your own windows untouched, and hands human-only steps back to you; the same trust surface as OpenCLI, minus its deterministic site adapters. |
 | [Chrome DevTools MCP](chrome-devtools-mcp.md) | ✅ | A (6/6) | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. |
