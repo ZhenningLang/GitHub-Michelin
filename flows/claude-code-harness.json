@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "claude-code-harness does",
+    "zh": "claude-code-harness 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it from the Claude Code plugin marketplace",
+      "zh": "从 Claude Code 插件市场安装",
+      "code": "/plugin install claude-code-harness@claude-code-harness-marketplace",
+      "component": {"en": "plugin marketplace", "zh": "插件市场"}
+    },
+    {
+      "lane": "you",
+      "en": "Run setup once to activate the verbs, hooks, and guardrails",
+      "zh": "跑一次 setup，激活动词、钩子和护栏",
+      "code": "/harness-setup",
+      "component": {"en": "setup skill", "zh": "setup 技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Wires a Go engine into the PreToolUse hook — each file write and command is inspected before it runs",
+      "zh": "把 Go 引擎接进 PreToolUse 钩子：写文件和命令执行前先过检查",
+      "component": {"en": "PreToolUse hook → bin/harness", "zh": "钩子 → Go 引擎"}
+    },
+    {
+      "lane": "you",
+      "en": "Hand it your intent plus the completion criterion",
+      "zh": "把意图和完成标准交给它",
+      "code": "/harness-plan Improve the README onboarding flow",
+      "component": {"en": "harness-plan skill", "zh": "harness-plan 技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Inspects the code and writes spec.md + Plans.md: scope, acceptance criteria, unknowns, stop conditions",
+      "zh": "写出 spec.md + Plans.md：范围、验收标准、未知项、停止条件",
+      "component": {"en": "main agent", "zh": "主 agent"}
+    },
+    {
+      "lane": "you",
+      "en": "Approve or correct the contract, then start the plan",
+      "zh": "批准或修正契约，然后启动计划",
+      "code": "/harness-work all",
+      "component": {"en": "approval + harness-work", "zh": "批准门 + 技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Implements under the plan, runs required checks, and sends review findings back to the worker",
+      "zh": "按计划实现，跑必需检查，review 发现退回 worker 修正",
+      "code": "/harness-review",
+      "component": {"en": "worker + guardrail engine", "zh": "worker + 护栏引擎"}
+    },
+    {
+      "lane": "them",
+      "en": "Packages only verified evidence into CHANGELOG, tag, and release",
+      "zh": "只把验证过的证据打包成 changelog、tag 和 release",
+      "code": "/harness-release",
+      "component": {"en": "release skill", "zh": "发布技能"}
+    }
+  ],
+  "value": {
+    "en": "You approve two contracts; the agent can no longer grade its own homework, and risky commands are inspected before they run",
+    "zh": "你只批准两份契约；agent 不再自己给自己打分，危险命令执行前先被拦下检查"
+  },
+  "sources": [
+    "README.md Install in 30 seconds (marketplace add + /plugin install claude-code-harness@claude-code-harness-marketplace + /harness-setup, then /harness-plan ...)",
+    "README.md The loop table (/harness-plan writes spec.md + Plans.md; /harness-work, /harness-review, /harness-release verbs and gates)",
+    "README.md What happens after a request (worker implements, checks run, review findings returned to worker within the iteration limit)",
+    "hooks/hooks.json (PreToolUse matcher Write|Edit|MultiEdit|Bash execs bin/harness)",
+    "go/DESIGN.md (Go-native guardrail engine: internal/guardrail rules.go declarative rule table, pre_tool.go deny/allow verdicts)"
+  ]
+}
