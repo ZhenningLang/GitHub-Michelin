@@ -19,6 +19,7 @@
 | **pyHanko** | 当 Python 需要按成文记录的 PAdES／LTV 流程创建或验证 PDF 签名时用它——上游仍自标 beta。 | A（6/6） | [→](pyhanko.zh.md) |
 | **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | C（5/6） | [→](pdfmathtranslate.zh.md) |
 | **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | C（6/6） | [→](babeldoc.zh.md) |
+| **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | D（4/6） | [→](pdfmathtranslate-next.zh.md) |
 
 
 ## 对比矩阵
@@ -33,6 +34,7 @@
 | [pyHanko](pyhanko.zh.md) | ✅ | A（6/6） | Python 的 PDF 签名、时间戳与验证，带成文记录的 PAdES/LTV 流程；上游仍自标 beta。 |
 | [PDFMathTranslate](pdfmathtranslate.zh.md) | ✅ | C（5/6） | 面向用户的论文 PDF 翻译，保住版式；翻译后端多，但是 AGPL，且 1.x 钉死 BabelDOC `<0.3`。 |
 | [BabelDOC](babeldoc.zh.md) | ✅ | C（6/6） | 沉浸式翻译在用的保留排版翻译引擎；只接 OpenAI，API 声明为内部，当前 0.6 不是 pdf2zh 1.x 装到的那版。 |
+| [PDFMathTranslate-next](pdfmathtranslate-next.zh.md) | ✅ | D（4/6） | BabelDOC 0.6 的官方成品包装；默认硅基流动免费通道，Google/Bing 已弃用，自 2026-05 起安静。 |
 | OpenPDFSign | 未收录 | — | 各页点到的独立 Java 签名命令行工具。 |
 
 ## 什么该放这里

@@ -91,7 +91,7 @@ health:
 ## 快问快答
 
 **问：我该在应用里 `import babeldoc` 吗？**
-不该。README 原文：“All APIs of BabelDOC should be considered as internal APIs, and any direct use of BabelDOC is not supported.”推荐的 Python 调用是 PDFMathTranslate-next（未收录）上的 `high_level.do_translate_async_stream`，不是这个包。
+不该。README 原文：“All APIs of BabelDOC should be considered as internal APIs, and any direct use of BabelDOC is not supported.”推荐的 Python 调用是 [PDFMathTranslate-next](pdfmathtranslate-next.zh.md) 上的 `high_level.do_translate_async_stream`，不是这个包。
 
 **问：它和 PDFMathTranslate 是什么关系？**
 这是引擎。PDFMathTranslate 1.x 是面向用户的成品，依赖的仍是*旧*的 BabelDOC 主版本（`<0.3.0`）。PDFMathTranslate-next 是 BabelDOC 点名用来自托管的 2.0 fork。沉浸式翻译把这台引擎做成 SaaS。
@@ -119,7 +119,7 @@ health:
 ## 何时不用
 
 - **你只是想在自己电脑上译一篇论文。** 改用 [PDFMathTranslate](pdfmathtranslate.zh.md)——有 CLI、GUI、Docker、多种翻译器，而且上游真正支持终端用户。
-- **翻译后端必须是 Google、DeepL、Bing 或 Ollama。** BabelDOC 的 CLI 只暴露 `--openai`。PDFMathTranslate 的 `-s` 表覆盖那些；本引擎让你去 PDFMathTranslate-next（未收录）找更多服务。
+- **翻译后端必须是 Google、DeepL、Bing 或 Ollama。** BabelDOC 的 CLI 只暴露 `--openai`。PDFMathTranslate 的 `-s` 表覆盖那些；本引擎让你去 [PDFMathTranslate-next](pdfmathtranslate-next.zh.md) 找更多服务。
 - **你不能接受 AGPL-3.0，或不能接受 API 不稳定。** 嵌进联网产品会带上 copyleft；README 把 API 冻成内部接口。非 PDF 文件用宽松许可的段落工具如 [Bilingual Book Maker](../reading-tools/bilingual-book-maker.zh.md)，或买商业 PDF 翻译（非仓库）。
 - **任务是 EPUB/txt 书，不是必须保住版式的 PDF。** 用 Bilingual Book Maker。
 - **你要给 RAG 用的 Markdown/JSON。** 用 [Docling](../document-parsing/docling.zh.md)——BabelDOC 重绘 PDF，不把文档拉直。
@@ -130,7 +130,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [PDFMathTranslate](pdfmathtranslate.zh.md) | 已收录 | 你是终端用户，或需要多种翻译后端时，选 PDFMathTranslate；只有调试或嵌入当前 0.6 引擎时才选 BabelDOC，并接受它的 Python API 不受支持。 | PDFMathTranslate 1.x 是成品，但钉死 `babeldoc<0.3.0`；本仓库是 v0.6.4，只接 OpenAI，维护者主导。 |
-| PDFMathTranslate-next | 未收录 | 要在当前 BabelDOC 上自托管 2.0（带 WebUI、更多翻译器），走 BabelDOC README 点名的那个 fork；本页只当引擎。 | 另一个组织/仓库（`PDFMathTranslate-next/PDFMathTranslate-next`，约 3k star）；本批次按用户范围只收 BabelDOC 和 PDFMathTranslate 1.x，故跳过。 |
+| [PDFMathTranslate-next](pdfmathtranslate-next.zh.md) | 已收录 | 要在当前 BabelDOC 上自托管 2.0（带 WebUI、更多翻译器）时选那个包装；本页只当引擎。 | 官方 BabelDOC 调用方（`babeldoc>=0.6.2,<0.7.0`）；最后推送 2026-05，默认硅基流动免费通道。 |
 | [Bilingual Book Maker](../reading-tools/bilingual-book-maker.zh.md) | 已收录 | 文件是一本将以 EPUB/txt 阅读的书，选 Bilingual Book Maker；产物必须仍是排好版的 PDF 时选 BabelDOC。 | BBM 是 MIT、无视版式；BabelDOC 是 AGPL、ONNX 很重、PDF 原生。 |
 | 沉浸式翻译托管服务 | 非仓库 | 想用这台引擎、却不想自己运 ONNX、字体和 API key，走托管额度；PDF 不能离开本机时选本仓库。 | 托管 SaaS，地址 `app.immersivetranslate.com/babel-doc/`——funstory-ai 的商业前门，不是仓库。 |
 
