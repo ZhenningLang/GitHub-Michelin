@@ -55,6 +55,7 @@
 | **auth** | 认证与授权库——登录提供方与权限规则。 | [→](categories/auth/INDEX.zh.md) |
 | **databases** | 数据库与数据库工具——客户端、GUI、同步，以及 Redis/ES 兼容存储。 | [→](categories/databases/INDEX.zh.md) |
 | **object-storage** | 你自建的 S3 兼容对象存储服务端。 | [→](categories/object-storage/INDEX.zh.md) |
+| **secrets-management** | 自托管、按身份把关的机器凭据仓库——存放、签发并轮换 API 密钥、证书、数据库密码。 | [→](categories/secrets-management/INDEX.zh.md) |
 | **desktop-automation** | 程序化桌面 GUI 自动化（鼠标/键盘/屏幕）。 | [→](categories/desktop-automation/INDEX.zh.md) |
 | **mobile-automation** | 程序化驱动 iOS／Android 模拟器与真机——输入注入、UI 自动化、端到端测试框架。 | [→](categories/mobile-automation/INDEX.zh.md) |
 | **game-dev** | 游戏开发库与引擎。 | [→](categories/game-dev/INDEX.zh.md) |

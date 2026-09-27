@@ -860,6 +860,12 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A (5/6) | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A (6/6) | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
 
+### secrets-management
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **OpenBao** | Use it when you need a self-hosted, identity-gated secrets server under MPL after HashiCorp relicensed Vault — but it is a Raft/Postgres cluster you operate, not a drop-in for every Vault plugin. | MPL-2.0 | B (6/6) | [EN](categories/secrets-management/openbao.md) · [中](categories/secrets-management/openbao.zh.md) |
+
 ### object-storage
 
 | Project | Use when | License | Health | Page |

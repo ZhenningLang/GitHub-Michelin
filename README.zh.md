@@ -857,6 +857,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A（5/6） | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A（6/6） | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
 
+### secrets-management
+
+| 项目 | 何时用 | 许可 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **OpenBao** | 需要在 HashiCorp 改 Vault 许可证之后、用 MPL 自托管一套按身份把关的密钥服务端时用它——但它是你自己运维的 Raft／Postgres 集群，不是每个 Vault 插件的即插即用替代。 | MPL-2.0 | B（6/6） | [中](categories/secrets-management/openbao.zh.md) · [EN](categories/secrets-management/openbao.md) |
+
 ### object-storage
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
