@@ -708,6 +708,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **SAPP** | Use it when a PHP app must append PKCS#12 signatures without destroying existing PDF revisions — coverage is narrow and encrypted PDFs are unsupported. | LGPL-3.0-or-later | B (5/6) | [EN](categories/pdf-tools/sapp.md) · [中](categories/pdf-tools/sapp.zh.md) |
 | **FPDI** | Use it when a PHP app built on FPDF/TCPDF/tFPDF must import pages from an existing PDF as templates — the free parser rejects encrypted files and compressed cross-reference streams. | MIT | A (5/6) | [EN](categories/pdf-tools/fpdi.md) · [中](categories/pdf-tools/fpdi.zh.md) |
 | **pyHanko** | Use it when Python must create or validate PDF signatures with documented PAdES/LTV workflows — upstream still labels the project beta. | MIT | A (6/6) | [EN](categories/pdf-tools/pyhanko.md) · [中](categories/pdf-tools/pyhanko.zh.md) |
+| **PDFMathTranslate** | Use it when a scientific PDF must be translated without losing formulas and columns — CLI/GUI/Docker, many translators; AGPL, and 1.x pins an old BabelDOC. | AGPL-3.0 | C (5/6) | [EN](categories/pdf-tools/pdfmathtranslate.md) · [中](categories/pdf-tools/pdfmathtranslate.zh.md) |
+| **BabelDOC** | Use it when you need the layout-preserving PDF translation engine (current 0.6) to embed or debug — not an end-user app; AGPL, OpenAI-only, API unsupported. | AGPL-3.0 | C (6/6) | [EN](categories/pdf-tools/babeldoc.md) · [中](categories/pdf-tools/babeldoc.zh.md) |
 
 ### workflow-orchestration
 

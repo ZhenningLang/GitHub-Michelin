@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "them": {"en": "BabelDOC does", "zh": "BabelDOC 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the debug CLI",
+      "zh": "安装调试用 CLI",
+      "code": "uv tool install --python 3.12 BabelDOC",
+      "component": {"en": "PyPI package BabelDOC", "zh": "PyPI 包 BabelDOC"}
+    },
+    {
+      "lane": "you",
+      "en": "Give it a PDF and an OpenAI-compatible key",
+      "zh": "提供 PDF 和 OpenAI 兼容密钥",
+      "code": "babeldoc --openai --openai-model \"gpt-4o-mini\" --files example.pdf",
+      "component": {"en": "babeldoc CLI", "zh": "babeldoc CLI"}
+    },
+    {
+      "lane": "them",
+      "en": "Parses layout, translates paragraphs, re-renders the pages",
+      "zh": "解析版面、翻译段落、重新绘制页面",
+      "component": {"en": "layout IR + LLM", "zh": "版面中间表示 + LLM"}
+    },
+    {
+      "lane": "them",
+      "en": "Writes mono and dual PDFs, watermarked by default",
+      "zh": "写出单语和双语 PDF，默认带水印",
+      "component": {"en": "PDF renderer", "zh": "PDF 渲染"}
+    }
+  ],
+  "value": {
+    "en": "A layout-preserving translation without writing a PDF parser",
+    "zh": "保住版式的译文，而不用手写 PDF 解析器"
+  },
+  "sources": [
+    "README.md Getting Started — `uv tool install --python 3.12 BabelDOC`",
+    "README.md Getting Started example — `babeldoc --openai --openai-model \"gpt-4o-mini\" --openai-base-url \"https://api.openai.com/v1\" --openai-api-key \"your-api-key-here\" --files example.pdf`",
+    "README.md Advanced Options — watermark-output-mode default watermarked; OpenAI-only translator note"
+  ]
+}

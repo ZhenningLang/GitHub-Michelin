@@ -597,6 +597,7 @@ pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
 Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Paste-your-own prompt,categories/agent-skills/ai-writing/de-ai-writing/ai-flavor-remover.md,,no
+PDFMathTranslate-next,categories/pdf-tools/babeldoc.md,,no
 pdm,categories/python-tooling/uv.md,,no
 "Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
