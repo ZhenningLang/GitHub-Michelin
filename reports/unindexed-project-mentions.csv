@@ -367,6 +367,7 @@ Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui
 Hand-written project skills,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
+HashiCorp Vault,categories/secrets-management/openbao.md,,no
 Hasura,categories/databases/database-engines/supabase.md,,no
 Haystack / django-elasticsearch-dsl,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 hCaptcha,categories/captcha/capjs.md,,no
@@ -393,6 +394,7 @@ Hugo,categories/web-ui/frameworks/astro.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
+Infisical,categories/secrets-management/openbao.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
 InvokeAI,categories/on-device-ml/comfyui.md,,no
@@ -748,6 +750,7 @@ SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
 Solid.js,categories/web-ui/frameworks/svelte.md,,no
+SOPS,categories/secrets-management/openbao.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no

@@ -56,6 +56,7 @@
 | **auth** | Authentication & authorization libraries — login providers and permission rules. | [→](categories/auth/INDEX.md) |
 | **databases** | Databases and database tooling — clients, GUIs, sync, and Redis/ES-compatible stores. | [→](categories/databases/INDEX.md) |
 | **object-storage** | S3-compatible object storage servers you run yourself. | [→](categories/object-storage/INDEX.md) |
+| **secrets-management** | Store, issue, and rotate machine credentials — API keys, certificates, database passwords — from a self-hosted identity-gated store. | [→](categories/secrets-management/INDEX.md) |
 | **desktop-automation** | Programmatic desktop GUI automation (mouse/keyboard/screen). | [→](categories/desktop-automation/INDEX.md) |
 | **mobile-automation** | Programmatically drive iOS/Android simulators, emulators, and devices — input injection, UI automation, and E2E test frameworks. | [→](categories/mobile-automation/INDEX.md) |
 | **game-dev** | Game development libraries and engines. | [→](categories/game-dev/INDEX.md) |

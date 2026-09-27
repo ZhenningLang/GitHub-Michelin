@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenBao does", "zh": "OpenBao 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a local server with a known root token", "zh": "用已知根令牌启动本地服务端", "code": "bao server -dev -dev-root-token-id=\"example-tutorial-token\""},
+    {"lane": "them", "en": "Serves HTTP on :8200, already unsealed", "zh": "在 :8200 提供 HTTP，已经解封"},
+    {"lane": "you", "en": "Authenticate a client with that token", "zh": "用该令牌给客户端鉴权", "code": "client.SetToken(\"example-tutorial-token\")"},
+    {"lane": "you", "en": "Write a versioned key-value secret", "zh": "写入一条带版本的密钥", "code": "client.KVv2(mountPoint).Put(...)"},
+    {"lane": "them", "en": "Encrypts it behind the barrier before storage", "zh": "先加密再写入存储"},
+    {"lane": "you", "en": "Read the secret back", "zh": "再把密钥读回来", "code": "bao kv get -mount=secret -field=password developer-quickstart"},
+    {"lane": "them", "en": "Decrypts and returns the value", "zh": "解密后返回明文"}
+  ],
+  "value": {"en": "The password is no longer in a config file; the disk only holds ciphertext", "zh": "密码不再躺在配置文件里，磁盘上只剩密文"},
+  "sources": [
+    "https://openbao.org/docs/get-started/developer-qs/ (bao server -dev, SetToken, KVv2 Put/Get, bao kv get)",
+    "https://openbao.org/docs/internals/architecture/ (barrier encrypts before storage)"
+  ]
+}
