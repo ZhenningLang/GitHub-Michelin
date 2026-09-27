@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "patch-mark does", "zh": "patch-mark 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Embed once", "zh": "一次嵌入"}, "en": "Load the component with two lines on the page", "zh": "在页面上用两行挂起组件", "code": "<patch-mark visible></patch-mark>", "component": {"en": "web component", "zh": "web component"}},
+    {"lane": "them", "en": "Shows a floating launcher; click an element to pin your note", "zh": "浮出入口；点选元素钉下批注", "component": {"en": "launcher", "zh": "浮动入口"}},
+    {"lane": "them", "en": "Persists annotations locally, or to your REST store", "zh": "批注本地持久化，或写入你的 REST store", "code": "createFetchStore({ endpoint: '/api/annotations' })"},
+    {"lane": "you", "phase": {"en": "Every handoff", "zh": "每次递送"}, "en": "Point at the UI, write the feedback in plain words", "zh": "指着界面，用大白话写反馈"},
+    {"lane": "them", "en": "Compiles open items into one trust-bounded prompt via the handoff bar", "zh": "handoff bar 把所有未关闭项编成一个信任有界的 prompt"},
+    {"lane": "you", "en": "Or register the MCP server so the agent pulls them itself", "zh": "或注册 MCP 服务，让 agent 自己来拉", "code": "patch-mark-mcp --endpoint http://localhost:3000/api/annotations", "component": {"en": "patch-mark-mcp", "zh": "patch-mark-mcp"}},
+    {"lane": "them", "en": "Exposes only list_open_annotations until you opt into resolving", "zh": "未开允许 resolve 前只暴露只读工具"}
+  ],
+  "value": {"en": "Feedback from a page you don't own becomes verifiable evidence for the agent — data to check, not instructions to obey.", "zh": "来自一个不属于你的页面的反馈，变成 agent 可核实的证据——是待查的数据，不是照办的指令。"},
+  "sources": [
+    "README.md (Quick start, npm, createFetchStore, MCP config, handoff bar, --allow-resolve)"
+  ]
+}
