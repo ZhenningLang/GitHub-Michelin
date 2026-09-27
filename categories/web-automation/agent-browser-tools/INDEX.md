@@ -14,6 +14,7 @@
 | **Chrome DevTools MCP** | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. | A (6/6) | [→](chrome-devtools-mcp.md) |
 | **OpenCLI** | Use it when an agent must operate sites behind *your* login — it bridges your already-logged-in Chrome via extension+daemon and freezes site workflows into reusable CLI commands; expect adapter churn and a real trust surface. | B (6/6) | [→](opencli.md) |
 | **page-agent** | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. | B (6/6) | [→](page-agent.md) |
+| **Jev Ultrafast** | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. | C (6/6) | [→](jev-ultrafast.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Chrome DevTools MCP](chrome-devtools-mcp.md) | ✅ | A (6/6) | Use it when an agent needs to drive and DevTools-inspect real Chrome — traces, network, console, heap. |
 | [OpenCLI](opencli.md) | ✅ | B (6/6) | Bridges your logged-in Chrome so agents never touch login flows, plus reusable site adapters; Chromium-only, adapter churn is structural, and the extension+daemon inherits all your sessions. |
 | [page-agent](page-agent.md) | ✅ | B (6/6) | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. |
+| [Jev Ultrafast](jev-ultrafast.md) | ✅ | C (6/6) | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. |
 
 ## What belongs here
 

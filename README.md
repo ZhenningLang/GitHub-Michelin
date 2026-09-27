@@ -130,6 +130,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **BrowserSkill** | Use it when an agent must operate your already-logged-in Chromium without taking it over — it borrows your open tabs only after you confirm and hands control back to you for login or CAPTCHA; no deterministic site-adapter layer, and the same extension+daemon trust surface as OpenCLI. | MIT | B (6/6) | [EN](categories/web-automation/agent-browser-tools/browserskill.md) · [中](categories/web-automation/agent-browser-tools/browserskill.zh.md) |
 | **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | Apache-2.0 | A (5/6) | [EN](categories/web-automation/playwright-family/playwright.md) · [中](categories/web-automation/playwright-family/playwright.zh.md) |
 | **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A (6/6) | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
+| **Jev Ultrafast** | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. | MIT | C (6/6) | [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) · [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) |
 
 ### llm-training
 

@@ -127,6 +127,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **BrowserSkill** | 当 agent 必须在不动你现有窗口的前提下操作你已登录的 Chromium 时用它——借你已打开的页签要先经你确认，遇到登录或验证码把控制权交还给你；没有确定性站点适配器层，信任面与 OpenCLI 同级（扩展+daemon）。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/browserskill.zh.md) · [EN](categories/web-automation/agent-browser-tools/browserskill.md) |
 | **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | Apache-2.0 | A（5/6） | [EN](categories/web-automation/playwright-family/playwright.md) · [中](categories/web-automation/playwright-family/playwright.zh.md) |
 | **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A（6/6） | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
+| **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | MIT | C（6/6） | [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) · [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) |
 
 ### llm-training
 
