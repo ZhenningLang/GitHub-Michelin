@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:55:13Z
+  computed_at: 2026-09-27T16:22:24Z
   overall: C
   overall_score: 2.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 99
+        last_commit_age_days: 104
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        docker_pulls: 213228
+        docker_pulls: 213721
         docker_image: jhao104/proxy_pool
         docker_tier: D
         signal_basis: docker
     longevity:
       grade: B
       raw:
-        repo_age_days: 3588
-        last_commit_age_days: 99
+        repo_age_days: 3593
+        last_commit_age_days: 104
         cohort: app
     governance:
       grade: C

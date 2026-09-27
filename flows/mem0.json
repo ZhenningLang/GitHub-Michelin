@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Mem0 does", "zh": "Mem0 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK", "zh": "安装 SDK", "code": "pip install mem0ai · npm install mem0ai"},
+    {"lane": "you", "en": "Instantiate memory in your process", "zh": "在你的进程里实例化记忆", "code": "memory = Memory()"},
+    {"lane": "you", "en": "Before each reply, look up relevant memories", "zh": "每次回复前，先查相关记忆", "code": "memory.search(query=message, filters={\"user_id\": user_id}, top_k=3)"},
+    {"lane": "them", "en": "Fuses vector similarity, BM25 keyword and entity matches into the top facts", "zh": "把向量相似、BM25 关键词和实体匹配融合成 top 事实", "component": {"en": "multi-signal retrieval", "zh": "多信号检索"}},
+    {"lane": "you", "en": "Chat with your own LLM, then feed the turn back", "zh": "照常和你的 LLM 对话，再把这轮发回去", "code": "memory.add(messages, user_id=user_id)"},
+    {"lane": "them", "en": "One LLM pass extracts facts, embeds them and links entities", "zh": "一次 LLM 抽取生成事实，做 embedding 并链接实体", "component": {"en": "ADD-only extraction", "zh": "ADD-only 抽取"}}
+  ],
+  "value": {"en": "Your agent remembers the user next session without building the extraction prompts, embedding pipeline, or store yourself", "zh": "下一个会话你的 agent 就记得这个用户，而不必自己搭抽取 prompt、embedding 管线和存储"},
+  "sources": ["README.md main @ 2026-09 (retrieved 2026-09-27) Quickstart: pip install mem0ai / npm install mem0ai; Basic Usage: memory = Memory(); memory.search(query=message, filters={\"user_id\": user_id}, top_k=3); memory.add(messages, user_id=user_id)", "README.md 'New Memory Algorithm': single-pass ADD-only extraction, entity linking, multi-signal retrieval, temporal reasoning"]
+}

@@ -51,8 +51,8 @@
     },
     {
       "lane": "them",
-      "en": "Runs the tests and asks: merge, open a PR, or discard",
-      "zh": "跑测试，问你合并、提 PR 还是丢弃",
+      "en": "Runs the tests and asks: merge, open a PR, keep, or discard",
+      "zh": "跑测试，问你合并、提 PR、保留还是丢弃",
       "code": "finishing-a-development-branch"
     }
   ],
@@ -61,7 +61,7 @@
     "zh": "agent 按有纪律的流程自主干几个小时而不跑偏"
   },
   "sources": [
-    "https://github.com/obra/superpowers README How it works + The Basic Workflow (skill names, 2-5 minute tasks, autonomy)",
+    "https://github.com/obra/superpowers README How it works + The Basic Workflow (skill names, 2-5 minute tasks, autonomy; merge/PR/keep/discard options) — commands re-verified against README on main 2026-09-27",
     "README Installation / Claude Code (/plugin install superpowers@claude-plugins-official)"
   ]
 }

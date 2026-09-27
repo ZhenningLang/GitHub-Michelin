@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:56:35Z
+  computed_at: 2026-09-27T16:25:21Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 534
+        last_commit_age_days: 539
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: pyrasite
         dependent_repos_count: 14
-        downloads_last_month: 10512
+        downloads_last_month: 7825
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 5491
-        last_commit_age_days: 534
+        repo_age_days: 5496
+        last_commit_age_days: 539
         cohort: tool
     governance:
       grade: "?"

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:34:02Z
+  computed_at: 2026-09-27T16:06:20Z
   overall: C
   overall_score: 1.75
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 440
+        last_commit_age_days: 445
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -38,23 +38,17 @@ health:
     adoption:
       grade: D
       raw:
-        registry: proxy.golang.org
-        canonical_package: github.com/adam-p/markdown-here
-        dependent_repos_count: 1
-        downloads_last_month: null
-        graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
+        registry: null
+        canonical_package: null
         release_downloads: 13458
         release_assets: 6
         release_tier: D
         signal_basis: releases
-        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 5246
-        last_commit_age_days: 440
+        repo_age_days: 5251
+        last_commit_age_days: 445
         cohort: tool
     governance:
       grade: "?"

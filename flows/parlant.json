@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Parlant does", "zh": "Parlant 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK into your backend's Python environment", "zh": "把 SDK 装进你后端的 Python 环境", "code": "pip install parlant"},
+    {"lane": "you", "en": "Declare behavior as guidelines: a condition and the action it triggers", "zh": "把行为写成 guideline：一条条件加它触发的动作", "code": "agent.create_guideline(condition=..., action=...)"},
+    {"lane": "you", "en": "Register tools and bind them to the observation that gates them", "zh": "注册工具，并绑定允许它触发的 observation", "code": "@p.tool", "component": {"en": "parlant.sdk", "zh": "parlant.sdk"}},
+    {"lane": "them", "en": "Per turn, match relevant guidelines/journeys/glossary into one narrowed context", "zh": "每轮只把相关的 guideline/journey/术语装配成收窄的上下文", "component": {"en": "Contextual Matching Engine", "zh": "Contextual Matching Engine"}},
+    {"lane": "them", "en": "Generate the reply from that focused context — or pick a canned response when strict", "zh": "基于这份聚焦上下文生成回复——严格模式则改选预批模板", "component": {"en": "Message Generation", "zh": "Message Generation"}}
+  ],
+  "value": {"en": "Hundreds of behavioral rules without prompt rot — the engine filters relevance, not the LLM", "zh": "几百条行为规则也不会把 prompt 撑爆——过滤相关性的是引擎，不是大模型"},
+  "sources": [
+    "README.md develop @ 2026-09 (retrieved 2026-09-27): 'pip install parlant'; 'import parlant.sdk as p' with 'async with p.Server()'; 'agent.create_guideline(condition=\"customer seems new to the topic\", action=\"simplify and use concrete examples\")' — the code step shows the call skeleton, ellipses stand for those README literals; '@p.tool' + create_observation(tools=[...]); mermaid 'Contextual Matching Engine' → 'Message Generation'/'Canned Message' flow; 'the engine filters context relevance, not the LLM'"
+  ]
+}

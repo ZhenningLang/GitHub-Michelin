@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:55:26Z
+  computed_at: 2026-09-27T16:23:42Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 752
+        last_commit_age_days: 757
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,6 +40,7 @@ health:
       raw:
         registry: pypi.org
         canonical_package: scylla
+        package_link: ecosystems_repository_url
         dependent_repos_count: 13
         downloads_last_month: 245
         graph_tier: D
@@ -49,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3087
-        last_commit_age_days: 752
+        repo_age_days: 3092
+        last_commit_age_days: 757
         cohort: app
     governance:
       grade: "?"

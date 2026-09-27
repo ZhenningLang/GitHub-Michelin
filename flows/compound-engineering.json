@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Compound Engineering does",
+    "zh": "Compound Engineering 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the plugin from your host's marketplace",
+      "zh": "在宿主的插件市场装好插件",
+      "code": "/plugin marketplace add EveryInc/compound-engineering-plugin"
+    },
+    {
+      "lane": "you",
+      "en": "Brainstorm a rough idea before any code",
+      "zh": "写码前先头脑风暴一个粗糙想法",
+      "code": "/ce-brainstorm make background job retries safer"
+    },
+    {
+      "lane": "them",
+      "en": "Runs interactive Q&A and writes a requirements-only plan",
+      "zh": "连环追问澄清需求，写出 requirements-only 计划",
+      "component": {"en": "ce-brainstorm skill", "zh": "ce-brainstorm skill"}
+    },
+    {
+      "lane": "you",
+      "en": "Grow the plan, then execute it",
+      "zh": "把计划长大，然后执行",
+      "code": "/ce-plan · /ce-work"
+    },
+    {
+      "lane": "them",
+      "en": "Enriches the plan with your past learnings, implements it, keeping host verification and commits",
+      "zh": "带着过往经验细化计划并实现，保留宿主验证与 commit",
+      "component": {"en": "ce-plan / ce-work skills", "zh": "ce-plan / ce-work skill"}
+    },
+    {
+      "lane": "you",
+      "en": "Tighten and review the diff",
+      "zh": "收紧并审查这次改动",
+      "code": "/ce-simplify-code · /ce-code-review"
+    },
+    {
+      "lane": "them",
+      "en": "Multi-agent review against the plan — report-only, applying fixes stays your call",
+      "zh": "对照计划做多 agent 审查——只出报告，是否应用由你定"
+    },
+    {
+      "lane": "you",
+      "en": "Close the loop and capture the learning",
+      "zh": "收尾循环，把经验沉淀下来",
+      "code": "/ce-compound"
+    },
+    {
+      "lane": "them",
+      "en": "Writes the learning to docs/solutions/, which the next brainstorm and plan read as grounding",
+      "zh": "把经验写进 docs/solutions/，供下一轮 plan 先读",
+      "component": {"en": "docs/solutions/ artifacts", "zh": "docs/solutions/ 工件"}
+    }
+  ],
+  "value": {
+    "en": "Each loop starts from your accumulated decisions instead of a blank slate — run one teaches it, run two remembers",
+    "zh": "每一轮循环从累积的决策出发，而不是一张白纸——第一次跑教会它，第二次跑它记住了"
+  },
+  "sources": [
+    "README Install / Claude Code (retrieved 2026-09-27): /plugin marketplace add EveryInc/compound-engineering-plugin; /plugin install compound-engineering",
+    "README Try it — The standard loop (retrieved 2026-09-27): /ce-brainstorm make background job retries safer; /ce-plan; /ce-work; /ce-simplify-code; /ce-code-review; /ce-compound",
+    "README The loop table + Philosophy (retrieved 2026-09-27): ce-brainstorm writes a requirements-only unified plan; ce-plan enriches into implementation-ready plans; ce-work executes retaining host verification/commits; ce-code-review is report-only multi-agent review with local apply explicit; ce-compound captures learning into docs/solutions/ read by the next ce-brainstorm/ce-plan",
+    "README Philosophy (retrieved 2026-09-27): invocation syntax — $skill-name in Codex; 'Run one teaches it. Run two remembers.'"
+  ]
+}

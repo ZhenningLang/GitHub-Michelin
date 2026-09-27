@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "AgentScope does",
+    "zh": "AgentScope 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the framework into a Python environment",
+      "zh": "把框架装进一个 Python 环境",
+      "code": "uv pip install agentscope"
+    },
+    {
+      "lane": "you",
+      "en": "Compose an Agent from a model client and a toolkit of tools",
+      "zh": "用模型客户端和工具集组装一个 Agent",
+      "code": "from agentscope.agent import Agent"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the reasoning-acting loop, pausing each sensitive tool call for confirmation",
+      "zh": "跑推理-行动循环，敏感工具调用先停下来等确认",
+      "component": { "en": "Permission system", "zh": "权限系统" }
+    },
+    {
+      "lane": "you",
+      "en": "Chat with it and test in the terminal",
+      "zh": "在终端里直接与它对话、测试",
+      "code": "await launch_console(agent)"
+    },
+    {
+      "lane": "them",
+      "en": "Streams every model call and tool event outward as typed events",
+      "zh": "把每次模型调用与工具事件类型化成事件流推出去",
+      "component": { "en": "Event bus", "zh": "事件总线" }
+    },
+    {
+      "lane": "you",
+      "en": "Start the bundled multi-tenant service backend",
+      "zh": "启动自带的多租户服务后端",
+      "code": "python main.py"
+    },
+    {
+      "lane": "them",
+      "en": "Isolates sessions, executes tools in the chosen sandbox, persists agent state",
+      "zh": "按会话隔离、在选定沙箱执行工具、持久化状态",
+      "component": { "en": "Agent Service", "zh": "agent service" }
+    }
+  ],
+  "value": {
+    "en": "Serving, sandboxing, permission gates, and tracing come with the framework — you only compose the agent and operate what you opted into",
+    "zh": "服务化、沙箱、权限闸门、追踪随框架到位，你只负责组装和运维自己开启的部分"
+  },
+  "sources": [
+    "agentscope README Quickstart / Agent section (2026-09-27): `uv pip install agentscope`; `from agentscope.agent import Agent`; `await launch_console(agent)`",
+    "agentscope README 'Run the following commands to start the agent service backend' — `cd agentscope/examples/agent_service` + `python main.py`",
+    "agentscope README building-blocks table: Permission & HITL (confirmation, bypass mode), Workspace/Sandbox (local, Docker, Apple Container, Bubblewrap, E2B, OpenSandbox, Daytona, K8s), Event System; EventType enum in src/agentscope/event/_event.py at tag v2.0.8"
+  ]
+}

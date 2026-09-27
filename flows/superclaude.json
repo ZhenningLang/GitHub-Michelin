@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "SuperClaude does",
+    "zh": "SuperClaude 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the framework via pipx and write it into Claude Code",
+      "zh": "用 pipx 装好框架，再写入 Claude Code",
+      "code": "pipx install superclaude · superclaude install"
+    },
+    {
+      "lane": "them",
+      "en": "Drops 30 slash commands, 20 agent definitions and 7 behavioral modes into your Claude Code config",
+      "zh": "把 30 命令、20 agent、7 模式写入 Claude Code 配置",
+      "component": {"en": "Python installer CLI", "zh": "Python 安装器 CLI"}
+    },
+    {
+      "lane": "you",
+      "en": "Restart Claude Code and invoke a command instead of pasting a prompt",
+      "zh": "重启 Claude Code，用命令代替粘 prompt",
+      "code": "/sc:brainstorm"
+    },
+    {
+      "lane": "them",
+      "en": "Injected behavioral instructions set the persona and mode, routing to the right domain agent",
+      "zh": "行为指令注入设定 persona 与模式，路由到对应领域 agent"
+    },
+    {
+      "lane": "you",
+      "en": "Optionally wire MCP servers for live docs and web search",
+      "zh": "可选地接上 MCP 服务，获得实时文档与搜索",
+      "code": "superclaude mcp --servers tavily context7"
+    },
+    {
+      "lane": "them",
+      "en": "Powers /sc:research with multi-hop web search scored for source credibility",
+      "zh": "让 /sc:research 做多跳网络调研，并按来源可信度打分",
+      "component": {"en": "Deep Research mode", "zh": "Deep Research 模式"}
+    }
+  ],
+  "value": {
+    "en": "Claude Code starts every session with a shared command vocabulary and structured personas — no prompt-pasting discipline to maintain",
+    "zh": "Claude Code 每次会话都自带共享命令词汇表和结构化 persona——不必再维护一套粘 prompt 的纪律"
+  },
+  "sources": [
+    "README Quick Installation — Option 1 pipx (retrieved 2026-09-27): pipx install superclaude; superclaude install; superclaude mcp --list; superclaude mcp --servers tavily --servers context7",
+    "README Quick Installation (retrieved 2026-09-27): 'After installation, restart Claude Code to use 30 commands including /sc:brainstorm ...'",
+    "README Overview + Framework Statistics (retrieved 2026-09-27): behavioral instruction injection and component orchestration; 30 commands / 20 agents / 7 modes / 8 MCP servers",
+    "README Deep Research Capabilities (retrieved 2026-09-27): multi-hop reasoning up to 5 iterative searches; source credibility assessment 0.0-1.0; Tavily/Context7 etc. orchestration"
+  ]
+}

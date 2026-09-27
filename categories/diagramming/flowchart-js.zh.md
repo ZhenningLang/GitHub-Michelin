@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:03Z
+  computed_at: 2026-09-27T16:00:42Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 250
+        last_commit_age_days: 255
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,16 +41,16 @@ health:
         registry: npmjs.org
         canonical_package: flowchart.js
         dependent_repos_count: 1725
-        downloads_last_month: 150733
+        downloads_last_month: 149566
         graph_tier: B
         volume_tier: C
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 4815
-        last_commit_age_days: 250
+        repo_age_days: 4820
+        last_commit_age_days: 255
         cohort: library
     governance:
       grade: D

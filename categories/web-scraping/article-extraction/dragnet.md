@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:13:07Z
+  computed_at: 2026-09-27T16:31:09Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1962
+        last_commit_age_days: 1967
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,6 +40,7 @@ health:
       raw:
         registry: pypi.org
         canonical_package: dragnet
+        package_link: ecosystems_repository_url
         dependent_repos_count: 13
         downloads_last_month: 884
         graph_tier: D
@@ -49,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5207
-        last_commit_age_days: 1962
+        repo_age_days: 5212
+        last_commit_age_days: 1967
         cohort: library
     governance:
       grade: "?"

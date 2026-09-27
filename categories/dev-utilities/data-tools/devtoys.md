@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:09:04Z
+  computed_at: 2026-09-27T15:58:58Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 209
+        last_commit_age_days: 214
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,9 +45,9 @@ health:
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
-        homebrew_installs_90d: 877
+        homebrew_installs_90d: 862
         homebrew_tier: B
-        release_downloads: 591922
+        release_downloads: 594196
         release_assets: 299
         release_tier: C
         signal_basis: homebrew+releases
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 1820
-        last_commit_age_days: 209
+        repo_age_days: 1825
+        last_commit_age_days: 214
         cohort: app
     governance:
       grade: C

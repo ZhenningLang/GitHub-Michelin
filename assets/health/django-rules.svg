@@ -49,24 +49,24 @@
 <text x="268" y="203.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">C</text>
 <text x="268" y="226.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">D</text>
 <text x="268" y="249.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">E</text>
-<polygon points="260.0,176.0 309.8,239.2 339.7,314.0 260.0,337.0 220.2,291.0 160.4,210.5" fill="url(#poly)" filter="url(#glow)"/>
+<polygon points="260.0,176.0 309.8,239.2 339.7,314.0 260.0,337.0 210.2,296.8 160.4,210.5" fill="url(#poly)" filter="url(#glow)"/>
 <line x1="260.0" y1="176.0" x2="309.8" y2="239.2" stroke="#8B949E" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.92"/>
 <line x1="309.8" y1="239.2" x2="339.7" y2="314.0" stroke="#8B949E" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.92"/>
 <line x1="339.7" y1="314.0" x2="260.0" y2="337.0" stroke="#3FB950" stroke-width="3"/>
-<line x1="260.0" y1="337.0" x2="220.2" y2="291.0" stroke="#3FB950" stroke-width="3"/>
-<line x1="220.2" y1="291.0" x2="160.4" y2="210.5" stroke="#3FB950" stroke-width="3"/>
+<line x1="260.0" y1="337.0" x2="210.2" y2="296.8" stroke="#8B949E" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.92"/>
+<line x1="210.2" y1="296.8" x2="160.4" y2="210.5" stroke="#8B949E" stroke-width="2" stroke-dasharray="4 4" stroke-opacity="0.92"/>
 <line x1="160.4" y1="210.5" x2="260.0" y2="176.0" stroke="#3FB950" stroke-width="3"/>
 <circle cx="260.0" cy="176.0" r="5.5" fill="#3FB950" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="309.8" cy="239.2" r="5.5" fill="#10100b" stroke="#8B949E" stroke-width="2" stroke-dasharray="2 2"/>
 <circle cx="339.7" cy="314.0" r="5.5" fill="#3FB950" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="260.0" cy="337.0" r="5.5" fill="#D4C20A" stroke="#1a1306" stroke-width="1.2"/>
-<circle cx="220.2" cy="291.0" r="5.5" fill="#E8702A" stroke="#1a1306" stroke-width="1.2"/>
+<circle cx="210.2" cy="296.8" r="5.5" fill="#10100b" stroke="#8B949E" stroke-width="2" stroke-dasharray="2 2"/>
 <circle cx="160.4" cy="210.5" r="5.5" fill="#F2C200" stroke="#1a1306" stroke-width="1.2"/>
 <text x="260.0" y="135.0" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Maintenance <tspan fill="#3FB950" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">B</tspan></text>
 <text x="370.9" y="203.5" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="start" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Responsiveness <tspan fill="#8B949E" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">?</tspan></text>
 <text x="370.9" y="340.5" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="start" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Adoption <tspan fill="#3FB950" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">B</tspan></text>
 <text x="260.0" y="409.0" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Longevity <tspan fill="#D4C20A" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">C</tspan></text>
-<text x="149.1" y="340.5" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="end" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Bus Factor <tspan fill="#E8702A" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">D</tspan></text>
+<text x="149.1" y="340.5" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="end" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Bus Factor <tspan fill="#8B949E" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">?</tspan></text>
 <text x="149.1" y="203.5" font-size="12" font-weight="900" fill="#f3e7c8" text-anchor="end" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4" filter="url(#soft)">Permissiveness <tspan fill="#F2C200" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="17">A</tspan></text>
 <text x="498" y="60" font-size="13" letter-spacing="5" fill="#E8C45A" font-weight="900" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" filter="url(#soft)">◆ HEALTH RADAR</text>
 <g transform="translate(498,112) skewX(-9)"><text x="2" y="2" font-size="30" font-weight="900" font-style="italic" fill="#000" fill-opacity="0.6" font-family="'Georgia','Times New Roman',serif">django-rules</text><text x="0" y="0" font-size="30" font-weight="900" font-style="italic" fill="#fff7e2" font-family="'Georgia','Times New Roman',serif">django-rules</text></g>
@@ -91,7 +91,7 @@
 </g>
 <text x="550" y="226" font-size="104" font-weight="900" font-style="italic" text-anchor="middle" fill="#3FB950" stroke="#000" stroke-width="2" paint-order="stroke" font-family="'Georgia','Times New Roman',serif" filter="url(#glow)">B</text>
 <text x="498" y="252" font-size="11" letter-spacing="3" fill="#E8C45A" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900">OVERALL</text>
-<text x="648" y="252" font-size="11" letter-spacing="2" fill="#8B949E" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" text-anchor="end">AXES 5/6</text>
+<text x="648" y="252" font-size="11" letter-spacing="2" fill="#8B949E" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" text-anchor="end">AXES 4/6</text>
 <text x="498" y="288" font-size="11" font-weight="900" fill="#f3e7c8" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4">Maintenance</text>
 <rect x="648" y="277" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
 <rect x="648" y="277" width="94" height="9" rx="2" fill="#3FB950"/>
@@ -110,8 +110,8 @@
 <text x="779" y="375" font-size="16" font-weight="900" font-style="italic" fill="#D4C20A" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">C</text>
 <text x="498" y="404" font-size="11" font-weight="900" fill="#f3e7c8" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4">Bus Factor</text>
 <rect x="648" y="393" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
-<rect x="648" y="393" width="47" height="9" rx="2" fill="#E8702A"/>
-<text x="779" y="404" font-size="16" font-weight="900" font-style="italic" fill="#E8702A" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">D</text>
+<rect x="648" y="393" width="118" height="9" rx="2" fill="none" stroke="#8B949E" stroke-dasharray="3 3"/>
+<text x="779" y="404" font-size="16" font-weight="900" font-style="italic" fill="#8B949E" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">?</text>
 <text x="498" y="433" font-size="11" font-weight="900" fill="#f3e7c8" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" letter-spacing="0.4">Permissiveness</text>
 <rect x="648" y="422" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
 <rect x="648" y="422" width="118" height="9" rx="2" fill="#F2C200"/>

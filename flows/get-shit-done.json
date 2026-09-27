@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "GSD does",
+    "zh": "GSD 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the command pack into your agent CLI",
+      "zh": "把命令包装进你的 agent CLI",
+      "code": "npx get-shit-done-cc@latest"
+    },
+    {
+      "lane": "you",
+      "en": "Kick off a greenfield project (or /gsd-map-codebase for existing code)",
+      "zh": "新建项目起步（已有代码先 /gsd-map-codebase）",
+      "code": "/gsd-new-project"
+    },
+    {
+      "lane": "them",
+      "en": "Interview, research, and write requirements + roadmap as durable markdown under .planning/",
+      "zh": "访谈、调研，把需求与路线图写成 .planning/ 下持久的 markdown",
+      "component": { "en": ".planning/ docs", "zh": ".planning/ 文档" }
+    },
+    {
+      "lane": "you",
+      "en": "Shape phase 1's decisions, then have it planned",
+      "zh": "定下阶段 1 的实现决策，再触发规划",
+      "code": "/gsd-discuss-phase 1 · /gsd-plan-phase 1"
+    },
+    {
+      "lane": "them",
+      "en": "Research, decompose, and verify the plan fits a fresh context window",
+      "zh": "调研、拆解计划，并校验它装得进一个全新上下文窗口",
+      "component": { "en": "planner + verifier agents", "zh": "planner 与 verifier 子代理" }
+    },
+    {
+      "lane": "you",
+      "en": "Run the phase",
+      "zh": "启动本阶段执行",
+      "code": "/gsd-execute-phase 1"
+    },
+    {
+      "lane": "them",
+      "en": "Parallel-wave executors each get a clean 200k-token context; every task gets its own atomic commit",
+      "zh": "并行执行器各拿干净的 20 万 token 上下文，每任务独立提交",
+      "component": { "en": "subagent executors", "zh": "子代理执行器" }
+    },
+    {
+      "lane": "you",
+      "en": "Walk the guided UAT, then ship the verified phase",
+      "zh": "走完引导式 UAT，然后交付已验证的阶段",
+      "code": "/gsd-verify-work 1 · /gsd-ship 1"
+    }
+  ],
+  "value": {
+    "en": "Every phase executes in un-degraded fresh context, with an auditable commit-per-task history",
+    "zh": "每个阶段都在未劣化的全新上下文里执行，git 历史一任务一提交、可审计"
+  },
+  "sources": [
+    "gsd-build/get-shit-done README at tag v1.42.3 (fetched 2026-09-27): `npx get-shit-done-cc@latest`; commands `/gsd-new-project`, `/gsd-discuss-phase [N]`, `/gsd-plan-phase [N]`, `/gsd-execute-phase <N>`, `/gsd-verify-work [N]`, `/gsd-ship [N]`; 'Each executor gets a fresh 200k-token context. Each task gets its own atomic commit.'; 'Plans run in parallel waves'; 'Run `/gsd-map-codebase` first' for existing codebases",
+    "open-gsd/gsd-core README (next branch, 2026-09-27) for the successor loop wording 'Discuss / Plan / Execute / Verify / Ship' — card documents the frozen legacy repo commands"
+  ]
+}

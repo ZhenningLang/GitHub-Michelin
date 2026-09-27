@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenFang does", "zh": "OpenFang 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary", "zh": "安装这个单一二进制", "code": "curl -fsSL https://openfang.sh/install | sh"},
+    {"lane": "you", "en": "Set up providers, then start the daemon (dashboard on :4200)", "zh": "配置 provider，启动守护进程（仪表盘在 :4200）", "code": "openfang init · openfang start"},
+    {"lane": "you", "en": "Activate a bundled Hand — or author your own HAND.toml", "zh": "激活一个内置 Hand——或自己写 HAND.toml", "code": "openfang hand activate researcher"},
+    {"lane": "them", "en": "Runs the Hand on its schedule, LLM calls and tools inside the WASM sandbox", "zh": "按日程驱动这个 Hand，LLM 调用与工具都在 WASM 沙箱里执行", "component": {"en": "kernel + scheduler", "zh": "kernel + 调度器"}},
+    {"lane": "them", "en": "Reports over your connected chat channel and logs every action to the audit chain", "zh": "通过你连接的聊天渠道汇报，每个动作记入审计链", "component": {"en": "channel adapters", "zh": "渠道适配器"}}
+  ],
+  "value": {"en": "Agents that do work on a timer, unattended — one process instead of cron + queue + webhooks + dashboard glue", "zh": "智能体按定时器无人值守地干活——一个进程，不必再拼 cron、队列、webhook 和仪表盘"},
+  "sources": [
+    "README.md main @ 2026-05-12 commit acf2587 (retrieved 2026-09-27): Quick Start block — 'curl -fsSL https://openfang.sh/install | sh', 'openfang init', 'openfang start', 'Dashboard is live at http://localhost:4200', 'openfang hand activate researcher'; Architecture section — kernel (orchestration/scheduler), WASM sandbox; ~40 channel adapters"
+  ]
+}
