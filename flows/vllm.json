@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "vLLM does", "zh": "vLLM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the engine into a Python environment", "zh": "把引擎装进 Python 环境", "code": "uv pip install vllm --torch-backend=auto · pip install vllm"},
+    {"lane": "you", "en": "Start an OpenAI-compatible server pointed at any Hugging Face model id", "zh": "用任意 Hugging Face 模型 ID 启动服务", "code": "vllm serve Qwen/Qwen2.5-1.5B-Instruct"},
+    {"lane": "them", "en": "Loads the model once, then pages the KV cache into fixed-size GPU blocks as requests arrive", "zh": "加载一次模型，把 KV 缓存虚拟化成固定大小的页", "component": {"en": "PagedAttention engine", "zh": "PagedAttention 引擎"}},
+    {"lane": "you", "en": "Point your existing OpenAI client at the endpoint", "zh": "把现有 OpenAI 客户端指向这个端点", "code": "base_url=\"http://localhost:8000/v1\""},
+    {"lane": "them", "en": "Continuously batches concurrent requests, streaming tokens and reclaiming blocks as sequences finish", "zh": "连续批处理并发请求，序列一结束就回收块、流式返回", "component": {"en": "Scheduler", "zh": "调度器"}}
+  ],
+  "value": {"en": "OpenAI-compatible serving at datacenter throughput without writing batching or KV-cache management yourself", "zh": "不必自己写批处理和 KV 缓存管理，就得到 OpenAI 兼容的高吞吐服务"},
+  "sources": ["docs.vllm.ai quickstart (retrieved 2026-09-27): uv pip install vllm --torch-backend=auto; vllm serve Qwen/Qwen2.5-1.5B-Instruct; OpenAI client base_url http://localhost:8000/v1; /v1/chat/completions", "README.md main @ 2026-09: install with uv (recommended) or pip; PagedAttention, continuous batching, prefix caching"]
+}
