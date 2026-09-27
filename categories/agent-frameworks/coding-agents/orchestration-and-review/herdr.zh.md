@@ -92,6 +92,7 @@ health:
 - **「它是不是就是把我现有的 tmux 窗口管起来？」** 不是——herdr 是*替代*多路复用器本身，不是骑在 tmux 上面。你的 pane 从 tmux 的 server 搬到 herdr 的 server。相对 tmux 多出来的是 agent 层：working/blocked/idle 标记、`herdr agent wait --until blocked`、以及 agent 之间互相调用的 API。
 - **「它能顶替我那个 capture-pane 轮询脚本——告诉我哪个 worker 卡住了吗？」** 能，这正是它的内置场景：每个 pane 的状态由进程和屏幕检测打标记，blocked 会弹通知，不用自己爬屏。更进一步：编排方可以 `herdr agent read reviewer --source recent-unwrapped` 直接读卡住窗口的文字。
 - **「机器重启后，正在跑的进程能回来吗？」** 进程回不来——herdr 恢复保存的布局、在原目录重开 shell；只有带原生会话引用的 agent 能通过自己的 `--resume` 机制接回对话，这是*状态重建*，不是*进程复活*。
+- **「名字和产品功能什么关系？」** herdr 是 *herder*（牧羊人）去掉了元音，羊群就是你的 coding agents——项目自己也在坐实这个隐喻：博客副标题是 "Notes from the herd."，logo 是一只眼睛为终端提示符的羊头，README 结尾署名 🐑。功能清单就是牧羊人的岗位说明：你不在时羊群继续走、哪只停下来了打标记、需要回答时把你叫回来。
 
 ## 怎么用起来
 
@@ -157,11 +158,11 @@ herdr 是 tmux 血统的 client/server 终端多路复用器：后台 server 掌
 ## 健康度与可持续性
 
 - **维护（2026-09）。** 极快：首版 v0.1.0 在 2026-03-27（与建仓同日），最新稳定 v0.9.1（2026-09-16），preview 构建与当周修复持续到 2026-09-27 的 master push；1,752 commits；374 个 open issues——高使用量和高动荡并存。
-- **治理 / bus factor。** `owner.type` 是 Organization，但 `orgs/herdrdev/members` 为**空**——组织页实际就是单作者：ogulcancelik（Ogulcan Celik）占约 1,752 commits 中的 1,265（约 72%，终身口径）；近 12 个月窗口更紧，头部作者占 **82.3%**（health scorer，2026-09-27）。根目录未见 SECURITY.md 或 GOVERNANCE（有 CONTRIBUTING.md）。单维护者风险，明示。
-- **后盾（2026-09）。** 独立开发者形态：SPONSORS.md + 企业/合作邮箱（hey@herdr.dev）、作者博客 oddbit.ai、社区 PR 吞吐可见（CHANGELOG 点名致谢多位外部贡献者，含反复的 Windows 修复）。贡献者名单里出现高知名度账号（如 dhh，6 次贡献）[未验证：这些贡献的内容未查]。
+- **治理 / bus factor。** `owner.type` 是 Organization，但 `orgs/herdrdev/members` 为**空**（2026-09-27）——组织页实际仍是单作者：ogulcancelik（Can Celik）占约 1,752 commits 中的 1,265（约 72%，终身口径）；近 12 个月窗口更紧，头部作者占 **82.3%**（health scorer，2026-09-27）。根目录未见 SECURITY.md 或 GOVERNANCE（有 CONTRIBUTING.md）。作者已宣布（博客 2026-09-08）种子轮资金将用于*组建团队*——正在招聘，走的是终端原生渠道——这条画像预计会变；在那之前，单维护者风险明示。
+- **后盾（2026-09）。** 已是有融资的公司，不再是独立开发者形态：**加入 Y Combinator**（2026-08-06 官宣），并完成 **Bessemer Venture Partners 领投的 600 万美元种子轮**，YC、e2vc 及天使跟投，天使包括 Tobi Lütke（Shopify CEO）、Dane Knecht（Cloudflare CTO）、Görkem Yurtseven（fal 联合创始人）（博客 2026-09-08）。官网页脚署 "© 2026 Herdr, Inc."；作者的书面承诺是*运行时保持开源*（Apache-2.0），商业化方向指向托管的 Herdr Cloud（博客 2026-09-07）。SPONSORS.md 与企业/合作联系渠道仍在。
 - **年龄 × Lindy（2026-09）。** 6 个月、约 41k stars（API 读数 40,969，2026-09-27）：热度拉满，Lindy 积累为零。按本索引自己的启发式，年轻仓库的高星是风险信号而非证明——而“给 agent 用的终端复用器”恰是范式最容易翻桌的领域。[推断]
 - **采用度与生态。** Homebrew formula（2026-09-27 实测：90 天安装 50,512 次、release 资产累计下载 1,051,148——真实拉力，不是玄学）、插件市场（同账号下的 herdr-plugin-examples）、agent-skill 文档、英/日/中三语文档；18 种 agent 有原生会话恢复、23 种可 `agent start`。尚无点名的生产采用者清单。
-- **风险信号。** pre-1.0 且 schema/CLI 快速演化（已发布的 JSON Schema 与 “endpoint generation” 的 client/server 兼容机制算缓解）；Windows 路线仍 beta；屏幕历史持久化默认关闭（安全意识，但恢复体验因此打折）；路线图 = 一个人的判断。
+- **风险信号。** pre-1.0 且 schema/CLI 快速演化（已发布的 JSON Schema 与 "endpoint generation" 的 client/server 兼容机制算缓解）；Windows 路线仍 beta；屏幕历史持久化默认关闭（安全意识，但恢复体验因此打折）；商业化方向是开源运行时旁边的托管 Herdr Cloud（博客 2026-09-07）——今天是一句“运行时保持开源”的承诺，明天是一条要盯着的 open-core 边界；而在种子轮之前，路线图一直是一个人的判断。
 
 ## 存疑（未验证）
 
@@ -171,5 +172,5 @@ herdr 是 tmux 血统的 client/server 终端多路复用器：后台 server 掌
 - [未验证] star 数、commit 数、贡献占比均为 2026-09-27 的 GitHub API 输出；squash-merge 与机器人提交（名单里有 akbash-bot、kangal-bot）会扭曲按人归因。
 - [未验证] 文档化的 handoff 分批（>64 panes）之外的性能/规模上限未实测；“30 个 pane 没问题”是假设。
 - [推断] “agent 几乎无感”——来自文档“不包装 agent、只掌管其终端”的说法；按设计陈述理解，未做负载测试。
-- [未验证] dhh 对 herdr 的 6 次贡献：数字出自 contributors API，内容未查看。
+- [推断] herdr = "herder" 的命名隐喻——有官方物料佐证（博客副标题 "Notes from the herd."、眼睛是终端提示符的羊头 logo、README 结尾的 🐑）；但“为什么把拼法去掉元音”，在仓库代码搜索与博客目录里都没有作者自述（2026-09-27 查）。
 - [推断] 归类放在 `orchestration-and-review`：herdr 是*面向*编程 agent 的复用器（偏控制面）；按功能本可以与 tmux/zellij 同归终端复用类，此处以场景归位。
