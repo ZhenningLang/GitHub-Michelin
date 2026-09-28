@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack alt-cli does",
+    "zh": "TanStack alt-cli 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a new project from any directory",
+      "zh": "在任意目录下脚手架一个新项目",
+      "code": "npx @tanstack/cli create my-app"
+    },
+    {
+      "lane": "them",
+      "en": "Prompts for project name, package manager and which integrations to include",
+      "zh": "提问项目名、包管理器，以及要包含哪些集成"
+    },
+    {
+      "lane": "you",
+      "en": "Answer the prompts, or pass the whole selection as flags",
+      "zh": "回答提问，或把全部选择作为旗标一次给足",
+      "code": "--integrations tanstack-query,clerk,drizzle"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves integration dependencies and conflicts, renders templates, merges package.json and installs",
+      "zh": "解析依赖与冲突，渲染 EJS 模板，合并依赖并安装",
+      "component": {
+        "en": "integration engine",
+        "zh": "integration 引擎"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start the dev server and open the app",
+      "zh": "启动开发服务器，打开应用",
+      "code": "pnpm dev"
+    }
+  ],
+  "value": {
+    "en": "A running TanStack Start project with auth, ORM and deploy wiring composed from 29 integrations — vendor boilerplate never passes through your hands",
+    "zh": "认证、ORM、部署接线都组合到位的可运行项目——厂商样板代码完全不经你的手"
+  },
+  "sources": [
+    "README.md Quick Start (npx @tanstack/cli create my-app; --integrations tanstack-query,clerk,drizzle)",
+    "docs/quick-start.md (interactive prompts for name/package manager/integrations; cd my-app; pnpm dev; .tanstack.json)",
+    "AGENTS.md at repo root (engine compiles selected integrations into a project with EJS templating; API fetches integration definitions from the GitHub integrations/ folder)",
+    "docs/cli-reference.md (tanstack create options incl. --integrations, -y; tanstack integration init/compile)"
+  ]
+}

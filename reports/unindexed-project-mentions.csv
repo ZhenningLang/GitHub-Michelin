@@ -249,7 +249,8 @@ CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
-create-t3-app (`t3-oss/create-t3-app`),categories/dev-utilities/editors-and-runtimes/tanstack-cli.md,,no
+create-t3-app (`t3-oss/create-t3-app`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
+create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
@@ -288,7 +289,7 @@ DeepL / Google Translate browser features,categories/reading-tools/fluentread.md
 DeepSpeech (Mozilla),categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
 DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
-degit (`Rich-Harris/degit`),categories/dev-utilities/editors-and-runtimes/tanstack-cli.md,,no
+degit (`Rich-Harris/degit`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
 Descript,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
@@ -1037,6 +1038,7 @@ Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no
 Your own hand-written slash commands,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no

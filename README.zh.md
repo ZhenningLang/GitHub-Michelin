@@ -391,6 +391,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | **TanStack Config** | TanStack 自家库共用的开发期预设：带类型信息的 ESLint 扁平配置、ESM／CJS 双格式 Vite 库构建、TypeDoc 转 Markdown、按提交信息发版的脚本——检查预设用得很广，构建与发布两半在 TanStack 内部已成遗留（转向 tsdown、Changesets）；只支持 pnpm。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-config.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-config.md) |
 | **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-container.md) |
+
+| **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | A（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | A（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
