@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them":  {"en": "TanStack Markdown does", "zh": "TanStack Markdown 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the dependency to your docs app", "zh": "给应用装上这个依赖", "code": "pnpm add @tanstack/markdown"},
+    {"lane": "you", "en": "Parse each document once, at build time", "zh": "构建期把每篇文档解析一次", "code": "const document = parseMarkdown(source)"},
+    {"lane": "them", "en": "Return a plain-object AST you can cache as JSON, with executable URLs screened and raw HTML escaped", "zh": "返回可缓存为 JSON 的 AST，剔除危险 URL、转义原始 HTML", "component": {"en": "parser", "zh": "解析器"}},
+    {"lane": "you", "en": "Render the cached tree to an HTML string", "zh": "把缓存的树渲染成 HTML 字符串", "code": "const html = renderHtml(document)"},
+    {"lane": "them", "en": "Consume the same tree without re-parsing — every renderer keeps one output contract", "zh": "不重新解析直接消费同一棵树，各渲染器共用一份输出契约", "component": {"en": "HTML / React / Octane renderers", "zh": "HTML/React/Octane 渲染器"}},
+    {"lane": "you", "en": "Hand the same document to the React adapter", "zh": "把同一份文档交给 React 适配器", "code": "<Markdown>{document}</Markdown>"}
+  ],
+  "value": {"en": "One parse feeds HTML, React, and Octane with identical output, in ~5-7 KB gzip entries with the safe defaults already applied", "zh": "一次解析同时喂给 HTML、React、Octane，输出一致；约 5-7 KB gzip 入口，安全默认已生效"},
+  "sources": ["README.md main @ 2026-09-28 (raw.githubusercontent.com/TanStack/markdown/main/README.md): 'pnpm add @tanstack/markdown'; \"import { renderHtml } from '@tanstack/markdown/html'\"; '<Markdown>{source}</Markdown>'", "docs/quick-start.md main @ 2026-09-28 (raw.githubusercontent.com/TanStack/markdown/main/docs/quick-start.md): 'const document = parseMarkdown(source)'; 'const cached = JSON.stringify(document)'; 'const html = renderHtml(document)'; '<Markdown>{document}</Markdown>'", "docs/overview.md + docs/core-concepts/security.md main @ 2026-09-28: parse-once serializable AST; raw HTML escaped by default, javascript:/vbscript:/file:/dangerous data: URLs removed at parse time"]
+}

@@ -760,6 +760,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | MIT | A (6/6) | [EN](categories/markdown-tools/goldmark.md) · [中](categories/markdown-tools/goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A (6/6) | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
 | **MDX** | Use it when the docs live inside a React/Preact/Vue app and the prose must import and render your own components — not when the deliverable is a standalone PDF, book or publishable document. | MIT | B (5/6) | [EN](categories/markdown-tools/mdx.md) · [中](categories/markdown-tools/mdx.zh.md) |
+| **TanStack Markdown** | Use it when your docs/blog corpus is author-controlled, bundle size is the constraint, and you want HTML/React/Octane renderers to emit identical output from one cached AST — not for untrusted user Markdown or full CommonMark fidelity. | MIT | C (5/6) | [EN](categories/markdown-tools/tanstack-markdown.md) · [中](categories/markdown-tools/tanstack-markdown.zh.md) |
 
 ### typesetting
 
