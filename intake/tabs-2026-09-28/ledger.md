@@ -45,9 +45,9 @@
 | macro-inc/macro | add | done | categories/team-chat/macro.md |  | macro-inc/macro |
 | mikiarlo3/ai-copywriter | add | done | categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md |  | mikiarlo3/ai-copywriter |
 | mvanhorn/last30days-skill | add | done | categories/deep-research/last30days.md |  | mvanhorn/last30days-skill |
-| nexu-io/open-design | sync | running |  |  | nexu-io/open-design |
+| nexu-io/open-design | sync | done | categories/ai-design-generation/open-design.md |  | nexu-io/open-design |
 | nicedreamzapp/claude-code-local | add | running |  |  | nicedreamzapp/claude-code-local |
-| op7418/Humanizer-zh | sync | pending |  |  | op7418/humanizer-zh |
+| op7418/Humanizer-zh | sync | running |  |  | op7418/humanizer-zh |
 | open-slide/open-slide | add | pending |  |  | open-slide/open-slide |
 | openclaw/openclaw | sync | pending |  |  | openclaw/openclaw |
 | openedclaude/claude-reviews-claude | skip | skipped |  | 不收：对 Claude Code 泄露源码的解读文章集，无可复用软件；标签保留待你复核 | openedclaude/claude-reviews-claude |

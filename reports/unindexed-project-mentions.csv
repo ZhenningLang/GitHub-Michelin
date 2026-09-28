@@ -199,7 +199,6 @@ Claude Code GitHub Action (general),categories/ai-code-review/claude-code-securi
 Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
-"Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
@@ -319,7 +318,6 @@ Fiddler,categories/debugging-proxy/whistle.md,,no
 figlet / toilet (CLI),categories/terminal-ui/art.md,,no
 Figma,categories/diagramming/excalidraw.md,,no
 Figma + plugins,categories/agent-skills/visual-content/guizang-social-card.md,,no
-Figma / Penpot,categories/ai-design-generation/open-design.md,,no
 Figma / visual design tool,categories/agent-skills/design/visual-artifacts/huashu-design.md,,no
 Filebrowser,categories/document-management/copyparty.md,,no
 Fine-tuning / LoRA stacks,categories/ml-research/llm-circuit-finder.md,,no
@@ -883,7 +881,6 @@ undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-
 unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
-v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no

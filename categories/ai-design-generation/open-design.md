@@ -6,17 +6,17 @@ category: ai-design-generation
 tags: [ai-design, local-first, desktop-app, electron, byok, design-systems, prototyping, slides, mcp]
 language: TypeScript
 license: Apache-2.0
-maturity: v0.11.0 "The Bazaar", active (2026-06)
-last_verified: 2026-06-26
+maturity: v0.24.1, active, ~98.4k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T11:25:26Z
+  pushed_at: 2026-09-28T10:22:08Z
   default_branch: main
-  default_branch_sha: fc4e51871c65e66a7b4648a7a48565125536cedf
+  default_branch_sha: 64710082d02c041da47bf8c6d6c5316b36b28b22
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:57:32Z
+  computed_at: 2026-09-28T10:21:32Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 14
+        median_ttfr_hours: 0.1
+        qualifying_issues: 10
         band: relaxed_solo
         window_offset_days: 9
         source: issue
@@ -46,16 +46,16 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 1756
+        homebrew_installs_90d: 1755
         homebrew_tier: B
-        release_downloads: 926870
-        release_assets: 240
+        release_downloads: 947979
+        release_assets: 246
         release_tier: C
         signal_basis: homebrew+releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 147
+        repo_age_days: 153
         last_commit_age_days: 0
         cohort: app
     governance:
@@ -63,7 +63,7 @@ health:
       raw:
         active_maintainers_12mo: 94
         top1_share: 0.193
-        top3_share: 0.358
+        top3_share: 0.359
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,71 +77,94 @@ health:
 
 # Open Design
 
-A local-first, BYOK Electron desktop app that turns a coding agent into a design studio — generating sandboxed HTML prototypes, magazine-style decks, brand-grade images and HTML→MP4 motion graphics, all driven by reusable Skills and `DESIGN.md` design systems.
+Ask your coding agent for a pitch deck or a clickable app mockup and you get a wall of unstyled HTML in the chat — or you pay for a closed hosted design tool that keeps your files on its servers. Open Design gives the agent you already run a desktop studio around it: brand design systems and templates go into its context, the result renders in a live preview, and you export real HTML/PDF/PPTX/MP4 files.
 
 ![open-design — health radar](../../assets/health/open-design.svg)
 
 ## When to use
 
-You're a product engineer or designer who already lives inside a coding agent (Claude Code, Codex, Cursor, Copilot, etc.) and you want it to *produce design artifacts*, not just code — a clickable mobile prototype, a pitch deck, a brand social card — without piping your prompts and assets through someone else's cloud. You care that everything runs on your own machine, that you bring your own model key, and that the output is plain HTML/PDF/PPTX/MP4 you can keep. Open Design gives you a desktop "Studio" where the agent reads a `DESIGN.md` design system, renders prototypes in a sandboxed iframe, and exports decks, images, dashboards and HyperFrames (HTML→MP4) — with a library of 100+ Skills and ~150 brand design systems (Linear, Stripe, Apple, Notion, etc.) as starting points.
+You're a product engineer or founder who already lives in Claude Code, Codex, Cursor or a similar agent, and this week you need design output rather than code: a three-screen mobile onboarding mockup for a user test, a 12-slide investor update, a 30-second product promo. Asking the agent directly gets you `index.html` with Times New Roman and default blue links, because it has no brand to follow and no way to show you the result. The hosted answer (Claude Design, v0, Lovable) does look good, but it bills per seat, runs on the vendor's model, and your prompts, screenshots and brand assets live in someone else's cloud.
 
-It also fits when you want one design surface that plugs into *whatever* agent you already use. Rather than locking you to a single assistant, it exposes itself through an MCP server and BYOK proxy (any OpenAI-compatible endpoint), so the same prototypes/decks workflow is callable from 20+ CLIs. You prototype in the browser-like renderer, tweak Live Artifact parameters, then export the file and move on — no account, no per-seat SaaS.
+You reach for Open Design when you want that same brief → preview → critique → export loop but driven by *your* agent and *your* model key, with the output as plain files on your disk. It ships 151 `DESIGN.md` brand design systems (Linear, Stripe, Apple, Notion…), 100+ skills and a large template/plugin catalog, spawns whichever agent CLI you have installed, and previews what it writes in a sandboxed iframe. The deciding tradeoff against the narrower in-index siblings — a single deck skill, a prompt-to-HTML tool — is breadth: prototypes, decks, dashboards, images and HyperFrames video in one workspace, at the cost of installing and keeping up with a fast-moving desktop app.
+
+## How it works
+
+Open Design does not ship its own agent. It is a local server (the "daemon", a background Node process that keeps projects in a SQLite file) plus a web/Electron front end. When you submit a brief, the daemon starts the coding-agent CLI you already have — `claude`, `codex`, `cursor-agent`, 26 CLIs in total — inside a project folder, and puts the chosen template or skill plus the active `DESIGN.md` (a Markdown file describing a brand's colours, type and components) into its instructions; think of it as handing a contractor your brand book before they start. The agent writes ordinary files; Open Design watches them and renders them in a locked-down preview frame. If no CLI is installed, a built-in proxy calls any OpenAI-compatible endpoint with your key instead. What you do: pick the artifact type and design system, write the brief, judge the result and export. The other way in is to skip the GUI entirely — `od mcp install claude` registers it as an MCP server (a plug-in tool interface) inside your agent, so you can say "use open-design to generate a landing page" from your normal session.
+
+![open-design — backbone user story](../../assets/flow/open-design.svg)
+
+<!-- flow-steps:begin (generated from flows/open-design.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the desktop app; have a coding-agent CLI on PATH or a BYOK model key — component: `desktop app`
+2. **Open Design**: Detects the agent CLIs on PATH and loads skills, templates and 151 design systems — component: `local daemon`
+3. **You**: On Home, pick an artifact type and a design system, then type a brief
+4. **Open Design**: Runs your agent in the project folder with the template and DESIGN.md composed in — `DESIGN.md` — component: `runtime adapter`
+5. **Open Design**: Renders the files it writes in a sandboxed live preview — component: `Studio preview iframe`
+6. **You**: Critique in chat until it looks right, then export — `HTML · PDF · PPTX`
+
+**Value**: On-brand prototypes, decks and videos as real files on your disk, made by the agent you already pay for
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You want a hosted, zero-setup SaaS.** This is a desktop app you install and run (Electron + a local Node daemon). If you'd rather log into a website and have a vendor manage everything, the proprietary Claude Design / similar hosted tools are a closer fit — this trades that convenience for local control.
-- **You need true vector design / freeform canvas editing.** It generates *code-rendered* artifacts (HTML/PPTX/MP4), not an editable vector document. It is positioned as a "Figma alternative" for generation, but it is not a collaborative vector editor — for hand-pixel-pushing, real-time multiplayer, or precise vector work, Figma/Penpot remain the tools.
-- **Early-stage maturity / churn.** It's pre-1.0 (v0.11.0) with rapid releases and an expanding plugin "Bazaar"; Skills, plugin formats and the agent-adapter surface are still moving. [推断] Lock-in risk is low (open formats, Apache-2.0), but breaking changes between minor versions are plausible.
-- **No GPU/heavy video budget but you need lots of MP4.** HyperFrames (HTML→MP4) and video generation lean on local rendering plus your BYOK model spend; high-volume video is not free or instant.
-- **You can't or won't manage a model key.** BYOK is the model — there is no built-in free inference. If you have no OpenAI-compatible endpoint/key, you can't generate.
-- **Production design-system governance at team scale.** It's a single-user local studio; it has no built-in multiplayer, review workflow, or central asset governance.
+- **You want zero install and zero upkeep.** It is a desktop app plus a local daemon that ships a minor release every few days. If logging into a website is the whole budget, the hosted Claude Design or v0 (neither is a repository) fit better; you give up local files and model choice for convenience.
+- **You need an editable vector design file or real-time co-editing.** Output is code-rendered HTML/PPTX/MP4, not a layered vector document, and no multiplayer editing is documented. For pixel-level work, components with variants and team review, use [Penpot](../design-editors/penpot.md) (self-hosted) or Figma.
+- **Your data policy forbids outbound telemetry.** Official builds turn product analytics on by default (opt-out on first run; the optional content channel can include prompts and tool output), and a scrubbed safety/reliability channel stays on regardless of the toggle. Forks and source builds without the telemetry credentials send neither — so in regulated or air-gapped settings build from source, or use a plain skill such as [guizang-ppt-skill](../agent-skills/slides-ppt/guizang-ppt.md) inside your existing agent, which adds no telemetry of its own.
+- **You're on Linux and want a packaged app.** The latest releases ship only macOS (arm64/x64) and Windows x64 installers; Linux means running from source (Node ~24, pnpm 10.33) or the Docker image. If that's too much, [html-anything](html-anything.md) is a lighter prompt-to-HTML path.
+- **You need a stable surface to build on.** It went from v0.11 to v0.24.1 between June and September 2026 (13 minor releases) and the plugin manifest, runtime adapters and design-system package shape are still moving. Pin a version, or depend on the underlying pieces — [HyperFrames](../video-production/hyperframes.md) for HTML→MP4, a single deck skill for slides — which have a smaller surface to break.
+- **You have no model access.** There is no free bundled inference: you bring an agent CLI subscription, a BYOK key, or pay the vendor's own OpenDesign Cloud model service. Without one of those, nothing generates.
+- **You need MP4 at volume.** HyperFrames renders through headless Chrome plus FFmpeg on your machine, and the cinematic video/audio templates call paid models (Seedance, Veo, Suno). For batch video pipelines, drive [HyperFrames](../video-production/hyperframes.md) directly on a render box instead of through a desktop GUI.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [html-anything](html-anything.md) | ✅ | Pick html-anything when you only need prompt-to-standalone-HTML artifacts. | Sibling focused on turning prompts into standalone HTML artifacts; Open Design is the heavier full desktop studio (decks/video/design-systems/export) around that idea. |
-| [Impeccable](impeccable.md) | ✅ | Pick Impeccable when high-polish UI generation is the whole job. | Sibling aimed at high-polish UI generation; Open Design is broader (slides, images, video, MP4) and ships as a local app rather than a narrower generator. |
-| [guizang-ppt-skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | Pick guizang-ppt-skill when you need only deck generation as a Skill. | A single-purpose deck-generation Skill; Open Design includes deck generation as one of several artifact types plus its own runtime/export. |
-| [guizang-social-card-skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | Pick guizang-social-card-skill when the artifact is a focused social card. | A focused social-card Skill; Open Design covers cards/images among many artifact types inside a packaged app. |
-| Claude Design (Anthropic, hosted) | 未收录 | Pick the hosted proprietary product when managed cloud polish matters more than local-first/BYOK control. | The proprietary hosted product this clones; managed cloud + polish vs Open Design's local-first, BYOK, open-format stance. |
-| v0 (Vercel) | 未收录 | Pick v0 when the target is hosted prompt-to-web-UI generation rather than a local multi-artifact studio. | Hosted prompt-to-UI generator; cloud SaaS, narrower to web UI, vs Open Design's local multi-artifact studio. |
-| Figma / Penpot | 未收录 | Pick Figma or Penpot when you need multiplayer vector editing, not generated code-rendered artifacts. | True vector design editors with multiplayer; Open Design generates code-rendered artifacts, not editable vector docs. |
+| [html-anything](html-anything.md) | ✅ | When the output is a single standalone HTML page from a prompt, pick html-anything; pick Open Design when you also need decks, video, brand systems and export in one place. | Far less to install and learn; you lose the design-system catalog, live studio and PPTX/MP4 export. |
+| [Impeccable](impeccable.md) | ✅ | When the job is polishing UI inside your existing agent session, pick Impeccable; pick Open Design when non-UI artifacts (decks, images, video) matter too. | Stays inside your agent with no extra app; covers only UI quality, not multi-artifact delivery. |
+| [guizang-ppt-skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | When a magazine-style deck is the only artifact, install guizang-ppt-skill directly; Open Design bundles this same skill verbatim alongside everything else. | One skill, no daemon, no telemetry; no preview studio, other artifact types or design-system switching. |
+| [HyperFrames](../video-production/hyperframes.md) | ✅ | When you only need agent-written HTML→MP4 video, especially in batch, use HyperFrames directly; Open Design is its GUI host plus prompt templates. | Scriptable and headless; you give up the studio preview and the Seedance/Veo template catalog. |
+| [Penpot](../design-editors/penpot.md) | ✅ | When designers need a shared, editable vector file with components and comments, pick Penpot; pick Open Design when the agent should produce finished code-rendered artifacts. | Real multiplayer vector editing, self-hostable; no agent generation loop or HTML/MP4 output. |
+| Claude Design (Anthropic) | not a repo | When managed hosting and Anthropic's polish matter more than local files and model choice, pick the hosted product; Open Design is its open, local-first counterpart. | Zero install and no upkeep; closed source, cloud-only, locked to Anthropic's models and billing. |
 
 ## Tech stack
 
-- **Language:** TypeScript (primary, per repo).
-- **Frontend/Studio:** Next.js 16 App Router + React 18. [未验证] exact framework versions are from the README and may shift release-to-release.
-- **Local daemon:** Node 24 · Express · SSE streaming · `better-sqlite3` for project/conversation storage.
-- **Desktop shell:** Electron with a sandboxed renderer; prototypes render in a sandboxed iframe / loopback-only preview server.
-- **Integration:** MCP server + BYOK proxy for any OpenAI-compatible endpoint (with SSRF protection per release notes).
-- **Content:** ~150 `DESIGN.md` design systems, 100+ Skills, 261 official plugins; deck templates/themes.
-- **Export:** HTML, PDF, PPTX, MP4, ZIP, Markdown.
+- **Language:** TypeScript (pnpm monorepo: `apps/web`, `apps/daemon`, `apps/desktop`, plus shared `packages/`).
+- **Front end:** Next.js 16.2 App Router + React 18.3.
+- **Local daemon:** Node 24 · Express 5 · SSE streaming · `better-sqlite3` 12 for projects, conversations and runs; stdio MCP server; `od` CLI.
+- **Desktop shell:** Electron 41 with a sandboxed renderer and a sidecar IPC channel; previews render in a sandboxed iframe.
+- **Model access:** spawns 26 local agent CLIs via runtime adapters, or a BYOK proxy for Anthropic / OpenAI / Azure / Gemini / Ollama and any OpenAI-compatible endpoint, with an SSRF guard that blocks internal IPs unless allow-listed.
+- **Content:** 151 `DESIGN.md` design-system packages, 100+ functional skills, 277 official plugins, 15 deck templates × 36 themes, HyperFrames templates.
+- **Export:** HTML (inlined), PDF, PPTX, ZIP, Markdown, MP4 (HyperFrames).
 
 ## Dependencies
 
-- **Runtime:** Node ~24 and pnpm (README cites pnpm 10.33.x) for run-from-source; the packaged desktop builds (macOS / Windows / Linux AppImage) bundle their runtime, so no separate install is needed for those.
-- **Models:** a BYOK key for an OpenAI-compatible endpoint — required for any generation; no bundled inference.
-- **Datastore:** local SQLite (`better-sqlite3`); no external database/service required for core use.
-- **Optional:** Docker Desktop (web/Docker deployment) or Vercel (web). [未验证] Video/HyperFrame export may pull additional local rendering deps — verify against current docs.
+- **Model access (required):** a coding-agent CLI on `PATH`, a BYOK key for a supported/OpenAI-compatible endpoint, or a paid OpenDesign Cloud account.
+- **Desktop:** the macOS (Apple Silicon / Intel) or Windows x64 installer bundles its runtime. On macOS, `/usr/bin/od` can shadow the `od` CLI — use the Settings → MCP server snippet instead.
+- **From source (Linux, or dev):** Node `~24`, pnpm `>=10.33.2 <11`; data lives in a local SQLite file, no external database.
+- **Server/Docker:** `deploy/docker-compose` with an `OD_API_TOKEN` for Basic/Bearer auth; public exposure needs a reverse proxy and `OPEN_DESIGN_ALLOWED_ORIGINS`.
+- **Video:** HyperFrames rendering needs headless Chrome + FFmpeg on the host; cinematic video/audio templates need keys for the paid model providers they call.
 
 ## Ops difficulty
 
-**Low for desktop use, medium from source/web.** The fastest path is the pre-packaged desktop app: download, add a BYOK key, generate — close to zero ops, everything local. Running from source or self-hosting the web build is **medium**: you manage Node 24 / pnpm versions, the local daemon, and Docker/Vercel deployment, plus the usual Electron build friction across OSes. Because it's local-first and single-user there's no server fleet to maintain, but you do own model-key management, updates across fast minor releases, and any video/export toolchain on your machine.
+**Low on macOS/Windows desktop, medium elsewhere.** On the packaged app you install, point it at an agent or key, and generate; the recurring cost is keeping up with releases that land every few days and occasionally change plugin or runtime behaviour. Linux users and anyone self-hosting are on **medium**: exact Node/pnpm versions, the Docker compose file with an API token, reverse-proxy origin settings if exposed beyond loopback, and the Chrome/FFmpeg toolchain for video. Security-conscious teams also have to own telemetry settings — turn off the opt-out analytics on each install, or build from source to drop both telemetry channels.
 
 ## Health & viability
 
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, with a rapid pre-1.0 release cadence (v0.11.0). Clearly **active**, but ~457 open issues against a young repo signals both heavy use and a fast-moving, not-yet-settled surface. [推断]
-- **Governance & bus factor:** `Organization`-owned (nexu-io) rather than a lone maintainer, which is a mild bus-factor improvement over a personal repo; but it is a small/unproven org, not a foundation or established vendor — roadmap ownership and funding model are unverified. [未验证]
-- **Age & Lindy verdict:** created 2026-04, so age < 1 year — **very young and heavily hyped** (~72k stars on a months-old repo). Stars here reflect a launch wave, not durability; this is the opposite of a Lindy-safe bet, so weigh it as "promising but unproven." [未验证]
-- **Risk flags / lock-in:** the upside is genuinely low lock-in — Apache-2.0, local-first, BYOK, and open export formats (HTML/PDF/PPTX/MP4) mean you keep your artifacts even if the project stalls. The main risk is breaking changes between minor versions while the plugin/Skill formats stabilize. [推断]
+- **Maintenance (as of 2026-09-28):** very active — commits every week of the last quarter and 38 GitHub releases in five months, the latest v0.24.1 on 2026-09-24. Pace is itself the risk: minor versions arrive faster than most teams re-test.
+- **Governance & bus factor:** owned by the `nexu-io` organization (created 2026-02, brands itself OpenDesign). About 94 people contributed in the past year and the top contributor holds ~19% of commits, so it is not a one-person repo; but MAINTAINERS.md reserves merge rights to an internal Core Team whose roster is not public, so the roadmap is vendor-controlled.
+- **Backing & business model:** the same team sells OpenDesign Cloud, a paid model service built into the app (since v0.9), and the README opens with its promotions. That funds the project, but it is an open-core-style incentive to watch: whether future features land in the free BYOK path or only behind the Cloud sign-in is not yet knowable. [推断]
+- **Age & Lindy verdict:** created 2026-04-28, five months old, with ~98k stars and ~11k forks — a launch-wave repo riding Claude Design's release, not a Lindy-safe bet. Treat stars as hype until it survives a year.
+- **Risk flags / lock-in:** Apache-2.0, no relicense so far, and outputs are plain HTML/PDF/PPTX/MP4, so walking away costs little. The real flags are default-on product telemetry and minor-version churn in the plugin and adapter formats.
 
 ## Caveats (unverified)
 
-- [未验证] v0.11.0 ("The Bazaar") published 2026-06-17; repo last pushed 2026-06-26 — versions and dates per GitHub API/README and may move quickly given the rapid release cadence.
-- [未验证] Star count ~71.3k as of 2026-06 — GitHub stars are unreliable and date-sensitive; treat as indicative only.
-- [未验证] Counts cited (100+ Skills, ~150 design systems, 261 plugins, 22+ agents, 56 decks) are the project's own README/release framing and shift release-to-release; verify the current numbers before relying on a specific one.
-- [未验证] Framework/runtime versions (Next.js 16, React 18, Node 24, Electron, pnpm 10.33.x) are from the README and not independently confirmed against the lockfile.
-- [推断] HyperFrames are described as HTML→MP4 motion graphics built on an external framework; exact rendering pipeline and its system requirements are not fully verified here.
-- [推断] "Figma alternative" / "Claude Design alternative" are the project's positioning claims, not a feature-parity guarantee.
+- [未验证] Counts (151 design systems, 100+ skills, 277 plugins, 26 agent CLIs, 15 deck templates × 36 themes) are the README's own figures as of 2026-09-28 and change almost every release.
+- [未验证] Star (~98.4k) and fork (~11.4k) counts are from the GitHub API on 2026-09-28 and are volatile; stars on a five-month-old repo are not evidence of durability.
+- [未验证] The telemetry description comes from `PRIVACY.md` at the time of reading; what the shipped binaries actually send was not independently inspected.
+- [推断] "No documented multiplayer editing" rests on the README and roadmap; a collaboration plugin (`od-tune-collab`) exists and its scope was not examined.
+- [推断] Whether future capabilities stay available on the free BYOK path or move behind OpenDesign Cloud is a judgment about incentives, not an observed change.
+- [未验证] The Linux gap reflects the v0.24.1 release assets and issue #4368; a Linux artifact may ship in any later release.
