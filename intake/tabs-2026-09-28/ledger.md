@@ -99,8 +99,8 @@
 | TanStack/config | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-config.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
 | TanStack/intent | add | done | categories/agent-tooling/harness-extensions/tanstack-intent.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
 | TanStack/redact | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
-| TanStack/select | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
-| TanStack/workflow | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
+| TanStack/select | add | done | categories/web-ui/component-libraries/tanstack-select.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
+| TanStack/workflow | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
 | TanStack/highlight | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
 | TanStack/persist | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
 | TanStack/container | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |

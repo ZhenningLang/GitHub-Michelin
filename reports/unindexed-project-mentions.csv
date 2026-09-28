@@ -310,6 +310,7 @@ Docspell,categories/document-management/paperless-ngx.md,,no
 docTR,categories/ocr/easyocr.md,,no
 Dolt directly (raw versioned SQL),categories/agent-tooling/work-state/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
+Downshift (`downshift-js/downshift`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
@@ -442,6 +443,7 @@ hcaptcha-challenger,categories/captcha/buster.md,,no
 hcxdumptool (`ZerBea/hcxdumptool`),categories/pentest/wifit3.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
+Headless UI (`tailwindlabs/headlessui`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Headroom,categories/agent-skills/engineering/caveman.md,,no
 Headroom (headroomlabs-ai/headroom),categories/agent-tooling/work-state/token-optimizer.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
@@ -803,6 +805,7 @@ Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
 Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
 rc-slider (`react-component/slider`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
+React Aria (`adobe/react-spectrum`),categories/web-ui/component-libraries/tanstack-select.md,,no
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
 React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
@@ -810,6 +813,7 @@ react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/componen
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 react-range (`twoy/react-range`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
+react-select (`JedWatson/react-select`),categories/web-ui/component-libraries/tanstack-select.md,,no
 react-virtualized (`bvaughn/react-virtualized`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-virtuoso (`petyosi/react-virtuoso`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-window (`bvaughn/react-window`),categories/web-ui/virtualization/tanstack-virtual.md,,no
