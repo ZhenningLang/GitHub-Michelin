@@ -199,6 +199,7 @@ Claude Code GitHub Action (general),categories/ai-code-review/claude-code-securi
 Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
+claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtimes/claude-code-local.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
