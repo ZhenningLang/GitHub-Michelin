@@ -15,6 +15,7 @@
 | **CLIProxyAPI** | 想把消费级 CLI/OAuth 登录态复用成 OpenAI/Gemini/Claude 兼容 API 时用它——但这种复用本身带有服务条款与封号风险。 | B（5/6） | [→](cliproxyapi.zh.md) |
 | **APISIX** | 当你要 ASF 治理、配置由 etcd 动态驱动、插件在进程内的网关时用它——etcd 控制面也得你自己运维。 | A（6/6） | [→](apisix.zh.md) |
 | **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | A（6/6） | [→](envoy.zh.md) |
+| **TokenHub** | 当模型访问要变成受治理的基础设施——项目 key、配额、路由策略、审计和供应商账单核对装进一个自托管 Go 网关时用它；但它只有约三个月大，还在 v0.9.0。 | B（6/6） | [→](tokenhub.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [CLIProxyAPI](cliproxyapi.zh.md) | ✅ | B（5/6） | 把消费级 CLI/OAuth 账号变成覆盖多协议的 API；运行轻，但带有固化的服务条款/账号风险，且在主机上保存 token。 |
 | [APISIX](apisix.zh.md) | ✅ | A（6/6） | ASF 顶级项目，基于 NGINX/OpenResty，配置由 etcd 动态驱动，进程内插件面很广；控制面是你必须自己运维的硬依赖。 |
 | [Envoy](envoy.zh.md) | ✅ | A（6/6） | CNCF 毕业的 L4/L7 数据面，由 xDS 驱动；控制面与 API 管理策略层都由你自己带。 |
+| [TokenHub](tokenhub.zh.md) | ✅ | B（6/6） | 治理优先的自托管 AI 网关（Go/SQLite）：项目 key、配额、路由、审计和供应商账单核对；非常年轻（v0.9.x）且作者主导。 |
 | Tyk / KrakenD / New API | 未收录 | — | 各页点到的其他自托管网关。 |
 
 ## 什么该放这里

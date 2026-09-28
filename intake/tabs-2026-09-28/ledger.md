@@ -11,9 +11,9 @@
 | alexgreensh/token-optimizer | add | done | categories/agent-tooling/work-state/token-optimizer.md |  | alexgreensh/token-optimizer |
 | ant-research/AntSpeaker | add | done | categories/speech/antspeaker.md |  | ant-research/antspeaker |
 | Armur-Ai/Pentest-Swarm-AI | add | done | categories/pentest/pentest-swarm-ai.md |  | armur-ai/pentest-swarm-ai |
-| astaxie/TokenHub | add | running |  |  | astaxie/tokenhub |
+| astaxie/TokenHub | add | done | categories/api-gateway/tokenhub.md |  | astaxie/tokenhub |
 | Asymptote-Labs/agent-beacon | add | running |  |  | asymptote-labs/agent-beacon |
-| Ataraxy-Labs/weave | add | pending |  |  | ataraxy-labs/weave |
+| Ataraxy-Labs/weave | add | running |  |  | ataraxy-labs/weave |
 | basecamp/hey-cli | add | pending |  |  | basecamp/hey-cli |
 | bivlked/amneziawg-installer | add | pending |  |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | pending |  |  | cloudflare/computer |

@@ -206,6 +206,7 @@ https://github.com/ariya/phantomjs,phantomjs,browser-driver-frameworks,categorie
 https://github.com/arm/metis,metis,ai-code-review,categories/ai-code-review/metis.md
 https://github.com/asciidoctor/asciidoctor,asciidoctor,typesetting,categories/typesetting/asciidoctor.md
 https://github.com/assafelovic/gpt-researcher,gpt-researcher,deep-research,categories/deep-research/gpt-researcher.md
+https://github.com/astaxie/TokenHub,tokenhub,api-gateway,categories/api-gateway/tokenhub.md
 https://github.com/astral-sh/uv,uv,python-tooling,categories/python-tooling/uv.md
 https://github.com/asweigart/pyautogui,pyautogui,desktop-automation,categories/desktop-automation/pyautogui.md
 https://github.com/authomatic/authomatic,authomatic,auth,categories/auth/authomatic.md

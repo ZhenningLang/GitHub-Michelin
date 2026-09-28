@@ -382,6 +382,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **CLIProxyAPI** | Wraps consumer CLI/OAuth logins as OpenAI/Gemini/Claude-compatible APIs for other tools — at the cost of inherent ToS/account risk and tokens stored on the host. | MIT | B (5/6) | [EN](categories/api-gateway/cliproxyapi.md) · [中](categories/api-gateway/cliproxyapi.zh.md) |
 | **APISIX** | Use it when you want an ASF-governed gateway with etcd-backed live configuration and in-process plugins — you also operate the etcd control plane. | Apache-2.0 | A (6/6) | [EN](categories/api-gateway/apisix.md) · [中](categories/api-gateway/apisix.zh.md) |
 | **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | Apache-2.0 | A (6/6) | [EN](categories/api-gateway/envoy.md) · [中](categories/api-gateway/envoy.zh.md) |
+| **TokenHub** | Governance-first self-hosted AI gateway in Go: project keys, quotas, routing policy, audit and provider-bill reconciliation — very young (v0.9.x, created 2026-06) and author-dominated. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/tokenhub.md) · [中](categories/api-gateway/tokenhub.zh.md) |
 
 ### geospatial
 

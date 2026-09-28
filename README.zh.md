@@ -379,6 +379,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **CLIProxyAPI** | 把消费级 CLI/OAuth 登录态包装成 OpenAI/Gemini/Claude 兼容 API 供其他工具调用——代价是固化的服务条款/账号风险与主机上的 token 存储。 | MIT | B（5/6） | [中](categories/api-gateway/cliproxyapi.zh.md) · [EN](categories/api-gateway/cliproxyapi.md) |
 | **APISIX** | 当你要 ASF 治理、配置由 etcd 动态驱动、插件在进程内的网关时用它——etcd 控制面也得你自己运维。 | Apache-2.0 | A（6/6） | [中](categories/api-gateway/apisix.zh.md) · [EN](categories/api-gateway/apisix.md) |
 | **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | Apache-2.0 | A（6/6） | [中](categories/api-gateway/envoy.zh.md) · [EN](categories/api-gateway/envoy.md) |
+| **TokenHub** | 治理优先的自托管 Go AI 网关：项目 key、配额、路由策略、审计和供应商账单核对——非常年轻（v0.9.x，建于 2026-06）且作者主导。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/tokenhub.zh.md) · [EN](categories/api-gateway/tokenhub.md) |
 
 ### geospatial
 
