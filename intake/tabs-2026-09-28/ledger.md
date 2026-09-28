@@ -8,9 +8,9 @@
 |:---|:---|:---|:---|:---|:---|
 | agegr/pi-web | add | done | categories/agent-tooling/supervision-surfaces/pi-web.md |  | agegr/pi-web |
 | aiming-lab/SimpleMem | add | done | categories/agent-memory/simplemem.md |  | aiming-lab/simplemem |
-| alexgreensh/token-optimizer | add | running |  |  | alexgreensh/token-optimizer |
-| ant-research/AntSpeaker | add | pending |  |  | ant-research/antspeaker |
-| Armur-Ai/Pentest-Swarm-AI | add | pending |  |  | armur-ai/pentest-swarm-ai |
+| alexgreensh/token-optimizer | add | done | categories/agent-tooling/work-state/token-optimizer.md |  | alexgreensh/token-optimizer |
+| ant-research/AntSpeaker | add | running |  |  | ant-research/antspeaker |
+| Armur-Ai/Pentest-Swarm-AI | add | running |  |  | armur-ai/pentest-swarm-ai |
 | astaxie/TokenHub | add | pending |  |  | astaxie/tokenhub |
 | Asymptote-Labs/agent-beacon | add | pending |  |  | asymptote-labs/agent-beacon |
 | Ataraxy-Labs/weave | add | pending |  |  | ataraxy-labs/weave |

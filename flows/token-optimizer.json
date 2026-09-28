@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Token Optimizer does", "zh": "Token Optimizer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the plugin from the Claude Code marketplace", "zh": "从 Claude Code 插件市场装上插件", "code": "/plugin marketplace add alexgreensh/token-optimizer"},
+    {"lane": "you", "en": "Run the audit once to wire the hooks", "zh": "跑一次审计，把钩子接好", "code": "/token-optimizer"},
+    {"lane": "them", "en": "Hooks go live for every session — compression, checkpoints, quality scoring, dashboard", "zh": "钩子在每场会话生效——压缩、检查点、质量打分、仪表盘"},
+    {"lane": "you", "en": "Work as usual — edit files, run tests", "zh": "照常干活——改文件、跑测试"},
+    {"lane": "them", "en": "Re-reads come back as diffs or skeletons, CLI output compressed; raw archived first", "zh": "重读只回差异或骨架，CLI 输出被压缩；原始内容先归档", "code": "expand", "component": {"en": "PreToolUse/PostToolUse hooks", "zh": "PreToolUse／PostToolUse 钩子"}},
+    {"lane": "them", "en": "At auto-compact: checkpoints the session before, restores what the summary dropped after", "zh": "auto-compact 时先检查点，过后恢复被摘要丢掉的部分"}
+  ],
+  "value": {"en": "Cheaper sessions that keep their thread across compaction — every saving metered in local SQLite", "zh": "会话更便宜、还熬得过 compaction——每笔节省都记进本地 SQLite"},
+  "sources": [
+    "https://github.com/alexgreensh/token-optimizer README Install (/plugin marketplace add alexgreensh/token-optimizer; then /token-optimizer once to set up hooks)",
+    "README What You Get + Active Compression (PreToolUse hooks intercept Read/Bash; PostToolUse archives the full original; expand retrieves it)",
+    "README Smart Compaction (checkpoints before auto-compact, restores after)",
+    "README The Dashboard (auto-regenerates after every session via the SessionEnd hook)"
+  ]
+}

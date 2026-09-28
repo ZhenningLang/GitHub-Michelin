@@ -13,6 +13,7 @@
 | **Context Mode** | 当 coding agent 把上下文耗在原始工具输出上、你想要沙箱执行加熬过 compaction 的会话记忆时用它。 | D（6/6） | [→](context-mode.zh.md) |
 | **Planning with Files** | 当长任务 agent 总在 /clear、上下文压缩或崩溃中丢失计划时用它把计划落到磁盘。 | B（5/6） | [→](planning-with-files.zh.md) |
 | **LoopX** | 当 agent 的工作要跨天、跨重启、跨运行时持续推进，且需要持久目标、人工门禁、配额与证据治理每一轮时用它。 | B（6/6） | [→](loopx.zh.md) |
+| **Token Optimizer** | 当 coding agent 的 token 烧在工具输出、重复读取和 compaction 丢失上、你又想要钩子层压缩、compaction 检查点和本地美元台账时用它——代价是接受其非商用许可证。 | C（5/6） | [→](token-optimizer.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Context Mode](context-mode.zh.md) | ✅ | D（6/6） | 沙箱挡掉工具噪声、记忆熬过压缩——它管上下文，不管任务清单。 |
 | [Planning with Files](planning-with-files.zh.md) | ✅ | B（5/6） | 把计划当普通文件落盘——从 /clear 恢复最便宜，但没有图与依赖语义。 |
 | [LoopX](loopx.zh.md) | ✅ | B（6/6） | 状态内核加配额门控的多运行时心跳驱动——本分类里治理最完整的一套，代价是 fail-closed 协议和一个极年轻、高速变动的表面。 |
+| [Token Optimizer](token-optimizer.zh.md) | ✅ | C（5/6） | 钩子层压缩加 compaction 检查点加本地美元台账，覆盖约 10 个 coding agent；source-available 非商用许可证，7 个月大的单人维护表面。 |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | 各页对比里点到的其他 agent 任务/工作追踪后端。 |
 
 ## 什么该放这里
