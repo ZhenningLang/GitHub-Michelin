@@ -15,6 +15,7 @@
 | **Zed** | 当你想要一个高性能原生代码编辑器，支持实时多人协作时用它——但它的扩展生态远小于 VS Code，且仅约 4 年历史。 | A（4/6） | [→](zed.zh.md) |
 | **scriptc** | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 | C（6/6） | [→](scriptc.zh.md) |
 | **TanStack CLI** | 当你要起一个 TanStack Start／Router 应用、希望认证、数据库、部署、监控以 add-on 方式组合进来时用它——技术栈不在 TanStack 上、或项目没有 `.cta.json` 可对照时不要用。 | B（6/6） | [→](tanstack-cli.zh.md) |
+| **TanStack Devtools** | 当你的 Vite 应用挂着好几个 TanStack（或自家）库的调试面板、想合并成一个页内可停靠面板并附带点元素跳源码、生产构建自动剥离时用它——查 React 内部用 React DevTools；非 Vite/Rspack 构建、或开发服务器能被别人访问（命令注入 issue #464 未修）时不要用。 | B（6/6） | [→](tanstack-devtools.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [Zed](zed.zh.md) | ✅ | A（4/6） | 当你想要一个高性能原生代码编辑器，支持实时多人协作时用它——但它的扩展生态远小于 VS Code，且仅约 4 年历史。 |
 | [scriptc](scriptc.zh.md) | ✅ | C（6/6） | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 |
 | [TanStack CLI](tanstack-cli.zh.md) | ✅ | B（6/6） | 当你要起一个 TanStack Start／Router 应用、希望认证、数据库、部署、监控以 add-on 方式组合进来时用它——技术栈不在 TanStack 上、或项目没有 `.cta.json` 可对照时不要用。 |
+| [TanStack Devtools](tanstack-devtools.zh.md) | ✅ | B（6/6） | 当你的 Vite 应用挂着好几个 TanStack（或自家）库的调试面板、想合并成一个页内可停靠面板并附带点元素跳源码、生产构建自动剥离时用它——查 React 内部用 React DevTools；非 Vite/Rspack 构建、或开发服务器能被别人访问（命令注入 issue #464 未修）时不要用。 |
 
 ## 什么该放这里
 

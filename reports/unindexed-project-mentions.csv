@@ -656,6 +656,7 @@ Notion,categories/knowledge-base/logseq.md,,no
 novelWriter,categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.md,,no
 npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
+Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
@@ -798,6 +799,7 @@ Raylib (+ python bindings),categories/game-dev/pygame.md,,no
 rc-slider (`react-component/slider`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
+React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 react-range (`twoy/react-range`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
@@ -816,6 +818,7 @@ Redis,categories/databases/database-engines/pikiwidb.md,,no
 redis-rdb-tools (sripathikrishnan),categories/databases/database-clients/rdr.md,,no
 RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
 Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
+Redux DevTools (`reduxjs/redux-devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
 Redux Toolkit (`reduxjs/redux-toolkit`),categories/web-ui/state-management/tanstack-store.md,,no
 Reeder,categories/reading-tools/netnewswire.md,,no
 Reflog / `git stash` + manual snapshots,categories/agent-tooling/session-history/entire-cli.md,,no
@@ -976,6 +979,7 @@ VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
 VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
 Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack Devtools does",
+    "zh": "TanStack Devtools 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install your framework adapter and the Vite plugin as dev dependencies",
+      "zh": "把框架适配包和 Vite 插件装成开发依赖",
+      "code": "npm install -D @tanstack/react-devtools @tanstack/devtools-vite"
+    },
+    {
+      "lane": "you",
+      "en": "Mount it at the app root, passing each library's panel as a plugin",
+      "zh": "在应用根部挂载它，把各库的面板作为插件传入",
+      "code": "<TanStackDevtools plugins={[...]} />"
+    },
+    {
+      "lane": "them",
+      "en": "Draws one trigger and a dockable panel; each plugin renders in its own tab",
+      "zh": "画出一个触发按钮和可停靠面板，每个插件各占一个标签页",
+      "component": {
+        "en": "core shell (Solid.js)",
+        "zh": "核心外壳（Solid.js）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Add the Vite plugin first in your Vite config",
+      "zh": "在 Vite 配置里把它的插件放在第一位",
+      "code": "devtools()"
+    },
+    {
+      "lane": "them",
+      "en": "In dev: stamps JSX with source lines and pipes console; on build: strips devtools",
+      "zh": "开发时给 JSX 标上源码行号、转发 console；构建时删掉它",
+      "component": {
+        "en": "@tanstack/devtools-vite",
+        "zh": "@tanstack/devtools-vite"
+      }
+    }
+  ],
+  "value": {
+    "en": "One panel hosts every library's inspector plus click-to-source, and none of it reaches the production bundle",
+    "zh": "一个面板装下所有库的调试器，还能点元素跳源码，而且一行都不会进生产包"
+  },
+  "sources": [
+    "docs/quick-start.md (npm install -D @tanstack/react-devtools @tanstack/devtools-vite; <TanStackDevtools plugins={[...]} />; devtools() first in Vite plugins)",
+    "docs/architecture.md (Solid.js core shell, adapters, inject-source, console piping, remove-devtools-on-build)",
+    "docs/production.md (removeDevtoolsOnBuild default strips devtools)"
+  ]
+}
