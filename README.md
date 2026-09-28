@@ -1234,6 +1234,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Kev** | Use it when you want a self-hosted, fine-tunable model that answers typed questions (yes/no, choice, rating) about one text and returns calibrated probabilities — not a hosted decision API and not a from-scratch classifier. | Apache-2.0 | C (5/6) | [EN](categories/decision-models/kev.md) · [中](categories/decision-models/kev.zh.md) |
+| **Laya** | Use it when the same typed decisions (pick-one, yes/no, rate-on-a-scale) repeat at volume and you want a small local encoder that answers in one pass per request, routes 100+ languages, and that you will fine-tune — its base checkpoints are weak zero-shot. | Apache-2.0 | B (5/6) | [EN](categories/decision-models/laya.md) · [中](categories/decision-models/laya.zh.md) |
 | **Simple Jev** | Use it when you already serve an open chat model and want the Jev-style typed-decision API — one shared context plus typed questions in, label probabilities out, no generated JSON — accepting the base model's judgement and uncalibrated confidence. | Apache-2.0 | C (4/6) | [EN](categories/decision-models/simple-jev.md) · [中](categories/decision-models/simple-jev.zh.md) |
 
 ### optimization-solvers

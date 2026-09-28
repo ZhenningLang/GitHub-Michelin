@@ -98,6 +98,7 @@ https://github.com/NLPchina/elasticsearch-sql,elasticsearch-sql,database-clients
 https://github.com/NVIDIA/SkillSpector,skillspector,agent-governance,categories/agent-governance/skillspector.md
 https://github.com/NVIDIA/TensorRT-LLM,tensorrt-llm,serving-engines,categories/llm-inference/serving-engines/tensorrt-llm.md
 https://github.com/NVIDIA/garak,garak,llm-eval,categories/llm-eval/garak.md
+https://github.com/NandhaKishorM/laya,laya,decision-models,categories/decision-models/laya.md
 https://github.com/Nebutra/MinerU-Skill,mineru-skill,document-parsing,categories/document-parsing/mineru-skill.md
 https://github.com/Netflix/vmaf,vmaf,quality-metrics,categories/media-processing/quality-metrics/vmaf.md
 https://github.com/NopeCHALLC/nopecha-extension,nopecha-extension,captcha,categories/captcha/nopecha-extension.md

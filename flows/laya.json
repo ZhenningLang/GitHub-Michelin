@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Laya does", "zh": "Laya 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and create a Router", "zh": "装好包，建一个 Router", "code": "python -m pip install laya · router = Router()"},
+    {"lane": "you", "en": "Write your questions as a dict: choice, score or noul, each with its criteria", "zh": "把问题写成一个字典：choice、score 或 noul，各带选项说明", "code": "\"type\": \"choice\""},
+    {"lane": "you", "en": "Call predict with the text (or a JSON state) and the questions", "zh": "把正文（或一个 JSON 状态）连同问题交给 predict", "code": "router.predict(state, questions)"},
+    {"lane": "them", "en": "Detects the script and language and picks the English or multilingual checkpoint", "zh": "识别文字与语种，挑英文或多语种 checkpoint", "component": {"en": "Router", "zh": "Router"}},
+    {"lane": "them", "en": "Downloads that checkpoint from Hugging Face on first use", "zh": "首次用到时从 Hugging Face 下载该 checkpoint", "component": {"en": "Hub checkpoint", "zh": "Hub checkpoint"}},
+    {"lane": "them", "en": "Scores every option of every question in one encoder pass — no text is generated", "zh": "一次编码器前向就给所有问题的所有选项打分，不生成任何文字", "component": {"en": "decision head", "zh": "判定头"}}
+  ],
+  "value": {"en": "You branch on a label plus a probability per question in tens of milliseconds, on your own machine — no LLM call, no JSON to parse", "zh": "每道题拿到一个标签和一个概率，几十毫秒、在自己机器上——不调大模型，也不用解析 JSON"},
+  "sources": [
+    "README → Installation (`python -m pip install laya`)",
+    "README → Quickstart (`router = Router()  # downloads a checkpoint on first use`; question dict with `\"type\": \"choice\"`, `\"score\"`, `\"noul\"` and `criteria`; `result = router.predict(state, questions)`; `result[\"routing\"][\"model\"]`)",
+    "README → Quickstart (\"The Router detects the script and language and sends non-English text to laya-multilingual\")",
+    "README → overview (\"Laya evaluates typed questions (choice, score, noul) over any state ... in a single forward pass ... No text generation, so nothing to parse\"); checkpoint table (ModernBERT-large 421M, mmBERT-base 322M)"
+  ]
+}

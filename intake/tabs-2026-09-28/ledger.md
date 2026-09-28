@@ -79,4 +79,4 @@
 | daeuniverse/dae | add | done | categories/networking/dae.md | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | running |  | 处理中新开的标签 | vshulcz/deja-vu |
 | maziyarpanahi/openmed | add | running |  | 处理中新开的标签 | maziyarpanahi/openmed |
-| NandhaKishorM/laya | add | running |  | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
+| NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |

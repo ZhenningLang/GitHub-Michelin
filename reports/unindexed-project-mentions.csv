@@ -365,6 +365,7 @@ GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gem
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
 GitNexus,categories/rag-retrieval/code-intelligence/ix.md,,no
+GLiClass (knowledgator/GLiClass),categories/decision-models/laya.md,,no
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -827,6 +828,7 @@ Semrush / Ahrefs,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,n
 sentence-transformers (SBERT),categories/rag-retrieval/vector-search/text2vec.md,,no
 Serena,categories/rag-retrieval/code-intelligence/ix.md,,no
 Serena (MCP),categories/rag-retrieval/code-intelligence/code-review-graph.md,,no
+SetFit (huggingface/setfit),categories/decision-models/laya.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
 ShareX,categories/media-processing/video-editing/openscreen.md,,no
