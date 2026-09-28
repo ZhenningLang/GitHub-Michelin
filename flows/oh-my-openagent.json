@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "OmO does", "zh": "OmO 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the standalone CLI", "zh": "全局安装独立 CLI", "code": "bun add -g omo-ai · npm i -g omo-ai", "phase": {"en": "Set up", "zh": "搭建"}},
+    {"lane": "them", "en": "Ships the omo TUI with delegation categories, skills, and memory wired in", "zh": "带来 omo TUI，内置任务分类路由、技能与记忆系统"},
+    {"lane": "you", "en": "Start it in your project and sign in to your subscriptions", "zh": "在项目里启动并登录已有订阅", "code": "omo · /login"},
+    {"lane": "them", "en": "Stores provider logins and maps each task category to a model fallback chain", "zh": "保存登录态，把每类任务映射到一条模型回退链", "component": {"en": "model chains", "zh": "模型链"}},
+    {"lane": "you", "en": "Describe the job and escalate it with a keyword", "zh": "描述任务，用一个关键词升级处理", "code": "ulw · mass ulw", "phase": {"en": "Every task", "zh": "每个任务"}},
+    {"lane": "them", "en": "Explores, plans in a notepad, and spawns one worker per sub-task by category", "zh": "先摸清代码库，在记事本里做计划，按分类派发子任务", "component": {"en": "task tool", "zh": "task 工具"}},
+    {"lane": "them", "en": "Verifies each result before it counts as done; durable notes persist for the next session", "zh": "结果先过校验才算完成，沉淀的笔记留到下个会话", "component": {"en": "ulw-execute + Kibitzer", "zh": "ulw-execute 与 Kibitzer"}}
+  ],
+  "value": {
+    "en": "You hand over whole jobs instead of prompts: work fans out across models, gets verified before it counts as done, and memory carries into the next session",
+    "zh": "你交出去的是整个任务而不只是一句提示：工作分摊到多个模型、验证通过才算完成、记忆还能带到下个会话"
+  },
+  "sources": [
+    "README.md Install + Why OmO (bun add -g omo-ai; npm i -g omo-ai; omo; /login covers Claude, ChatGPT, Kimi and GLM subscriptions; add ultrawork or ulw to your prompt; type mass ulw and the whole job becomes a graph of agents, each part runs on the model that fits it and gets checked before anything is called done)",
+    "docs/guide/orchestration.md (keyword-detector hook activates ultrawork/ulw from message keywords; task(category=...) routes to a category worker; /ulw-execute verifies each checkbox with five gates before it flips to done; boulder.json resumes work across sessions; Kibitzer memory nudges)",
+    "docs/reference/features.md (builtin categories quick/ultrabrain/deep-low/visual-engineering/writing with model fallback chains; main agent delegates through the task tool)",
+    "docs/reference/configuration.md (memory on by default as a git repository; reflection writes durable notes; telemetry defaults and opt-outs)"
+  ]
+}
