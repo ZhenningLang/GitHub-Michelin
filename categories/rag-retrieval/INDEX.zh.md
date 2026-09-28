@@ -18,6 +18,7 @@
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A（5/6） | [→](milvus.zh.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | D（4/6） | [→](sourcegraph.zh.md) |
 | **HelixDB** | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 | B（6/6） | [→](helix-db.zh.md) |
+| **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | B（6/6） | [→](ix.zh.md) |
 
 
 ## 对比矩阵
@@ -32,6 +33,7 @@
 | [FAISS](faiss.zh.md) | ✅ | A（6/6） | 当你需要一个快速的进程内 ANN 向量索引来检索 embedding 时用它——是库，不是托管向量数据库。 |
 | [text2vec](text2vec.zh.md) | ✅ | C（5/6） | 当你要为中文语义检索或 FAQ 匹配快速拿到句向量、只想一行 pip 装好时用它——它只是编码器，向量索引（FAISS／Milvus）得自己配。 |
 | [HelixDB](helix-db.zh.md) | ✅ | B（6/6） | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 |
+| [Ix](ix.zh.md) | ✅ | B（6/6） | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 |
 | Neo4j / LightRAG / Weaviate | 未收录 | — | 各页对比里点到的其他图 / RAG 检索方案。 |
 
 ## 什么该放这里

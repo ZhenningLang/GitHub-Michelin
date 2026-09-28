@@ -352,6 +352,7 @@ GitHub Copilot,categories/agent-frameworks/coding-agents/terminal-agents/codex.m
 GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
+GitNexus,categories/rag-retrieval/ix.md,,no
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -796,6 +797,7 @@ Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engine
 Semgrep,categories/agent-governance/skillspector.md,,no
 Semrush / Ahrefs,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 sentence-transformers (SBERT),categories/rag-retrieval/text2vec.md,,no
+Serena,categories/rag-retrieval/ix.md,,no
 Serena (MCP),categories/rag-retrieval/code-review-graph.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no

@@ -396,6 +396,7 @@ https://github.com/imputnet/cobalt,cobalt,media-download,categories/media-downlo
 https://github.com/influxdata/telegraf,telegraf,ops-infra,categories/dev-utilities/ops-infra/telegraf.md
 https://github.com/iojw/socialscan,socialscan,osint,categories/osint/socialscan.md
 https://github.com/ispras/dedoc,dedoc,document-parsing,categories/document-parsing/dedoc.md
+https://github.com/ix-infrastructure/Ix,ix,rag-retrieval,categories/rag-retrieval/ix.md
 https://github.com/jackwener/OpenCLI,opencli,agent-browser-tools,categories/web-automation/agent-browser-tools/opencli.md
 https://github.com/jaegertracing/jaeger,jaeger,observability,categories/observability/jaeger.md
 https://github.com/jakubkrehel/make-interfaces-feel-better,make-interfaces-feel-better,ui-taste,categories/agent-skills/design/ui-taste/make-interfaces-feel-better.md
