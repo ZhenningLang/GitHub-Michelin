@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "scriptc does", "zh": "scriptc 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the compiler with npm and write a normal typed TypeScript file", "zh": "用 npm 装好编译器，照常写有类型的 TS 文件", "code": "npm install -g scriptc", "component": {"en": "scriptc CLI (Node >= 24)", "zh": "scriptc CLI（Node 24+）"}},
+    {"lane": "you", "en": "Ask for a standalone executable instead of running it on Node", "zh": "不跑在 Node 上，直接要一个独立可执行文件", "code": "scriptc build hello.ts -o hello"},
+    {"lane": "them", "en": "The real tsc type-checks the program and lowers it to typed IR", "zh": "真正的 tsc 做类型检查，AST 降成带类型 IR", "component": {"en": "tsc frontend", "zh": "tsc 前端"}},
+    {"lane": "them", "en": "The bundled LLVM helper emits assembly and object code from that IR", "zh": "自带的 LLVM 助手把 IR 编成汇编和目标文件", "component": {"en": "LLVM 22 helper", "zh": "LLVM 22 助手"}},
+    {"lane": "them", "en": "The platform linker joins the object with the precompiled runtime pack; no C is compiled", "zh": "平台链接器把目标文件和预编译运行时包拼起来，全程不编译任何 C 代码", "component": {"en": "runtime pack", "zh": "运行时包"}},
+    {"lane": "you", "en": "Run and ship the binary — it needs no Node and no JS engine", "zh": "直接运行和分发这个二进制——目标机器不需要 Node，也没有 JS 引擎", "code": "./hello"}
+  ],
+  "value": {"en": "A ~320KB native binary that starts in milliseconds — no Node install, no engine, no node_modules on the target", "zh": "约 320KB 的原生二进制，毫秒级启动——目标机器不用装 Node、不带引擎、不需要 node_modules"},
+  "sources": [
+    "README Installation (npm install -g scriptc; Node.js 24 or newer; clang only the platform linker driver)",
+    "README Build a program (scriptc build hello.ts -o hello; ./hello ctate)",
+    "docs how-it-works (tsc parses and type-checks, lowering to typed IR; LLVM 22 helper emits assembly/object; precompiled runtime pack + linker; no program or runtime C compiled)",
+    "docs introduction (~320KB size class, no Node, no V8, no JavaScript engine in the binary)"
+  ]
+}

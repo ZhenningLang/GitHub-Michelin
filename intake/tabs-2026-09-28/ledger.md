@@ -68,7 +68,7 @@
 | synthetic-sciences/openscience | add | pending |  |  | synthetic-sciences/openscience |
 | Thysrael/Horizon | add | pending |  |  | thysrael/horizon |
 | vectorize-io/hindsight | add | pending |  |  | vectorize-io/hindsight |
-| vercel-labs/scriptc | add | running |  |  | vercel-labs/scriptc |
+| vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |
 | VictorTaelin/OptMem | add | pending |  |  | victortaelin/optmem |
 | video-db/call.md | add | pending |  |  | video-db/call.md |
 | win4r/MuseAI-Skills | skip | skipped |  | 不收：muse.ai 闭源产品运行环境快照（ELF 二进制 + 技能文本），非官方发布；标签保留待你复核 | win4r/museai-skills |

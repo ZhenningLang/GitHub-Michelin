@@ -95,6 +95,7 @@ ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
 ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
 ascii-magic,categories/terminal-ui/asciify.md,,no
 ascii-magic / cowsay,categories/terminal-ui/art.md,,no
+AssemblyScript,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
 AsyncSSH,categories/networking/paramiko.md,,no
 AsyncSSH (forwarding API),categories/networking/sshtunnel.md,,no
@@ -555,6 +556,7 @@ nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
 NocoDB,categories/office-editors/grist.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
+Node.js SEA,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 NotebookLM,categories/knowledge-base/khoj.md,,no
 NotebookLM / Google OKF,categories/knowledge-base/openkb.md,,no
 NotebookLM / Obsidian,categories/knowledge-base/INDEX.md,,no
@@ -823,6 +825,7 @@ Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
+vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
