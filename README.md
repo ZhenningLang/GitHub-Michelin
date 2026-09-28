@@ -992,6 +992,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Voicebox** | Use it when you want a self-hosted voice I/O studio — cloned-voice TTS, hotkey Whisper dictation, and MCP/REST agent speech in one MIT app — but it's a young single-maintainer project with a stalled release cadence and macOS-only auto-paste today. | MIT | B (6/6) | [EN](categories/speech/voicebox.md) · [中](categories/speech/voicebox.zh.md) |
 | **GPT-SoVITS** | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. | MIT | A (5/6) | [EN](categories/speech/gpt-sovits.md) · [中](categories/speech/gpt-sovits.zh.md) |
 | **Coqui TTS (idiap fork)** | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. | MPL-2.0 | C (4/6) | [EN](categories/speech/coqui-ai-tts.md) · [中](categories/speech/coqui-ai-tts.zh.md) |
+| **AntSpeaker (MECT)** | Use it when you need to check whether two voice clips are the same speaker using tiny ready-made PyTorch checkpoints (3.8M–9.6M params) with zero training — but the weights are CC-BY-NC-SA (no commercial use), there is no training code, and the repo is a two-week-old paper release. | CC-BY-NC-SA-4.0 | C (3/6) | [EN](categories/speech/antspeaker.md) · [中](categories/speech/antspeaker.zh.md) |
 
 ### terminal-ui
 

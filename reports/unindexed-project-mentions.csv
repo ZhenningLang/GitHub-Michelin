@@ -2,6 +2,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 (alternatives named across the pages),categories/auth/INDEX.md,,no
 1Password / LastPass,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 2captcha-python,categories/captcha/buster.md,,no
+3D-Speaker,categories/speech/antspeaker.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/claude-subconscious.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
@@ -843,6 +844,7 @@ WeChatTweak-macOS (Sunnyyoung fork/successor),categories/im-automation/wechat/we
 WeCom / Official Account / Mini-Program APIs,categories/im-automation/wechat/wechatplugin-macos.md,,no
 WeCom / Official WeChat APIs,categories/im-automation/openilink-hub.md,,no
 WeCom / Official WeChat Work API,categories/im-automation/wechat/itchat.md,,no
+WeSpeaker,categories/speech/antspeaker.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no

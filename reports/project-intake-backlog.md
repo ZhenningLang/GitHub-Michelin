@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 863
+- Named-but-unindexed alternatives: 865
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -25,6 +25,7 @@ shape and are deliberately excluded here.
 | (alternatives named across the pages) | `categories/auth/INDEX.md` |
 | 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
+| 3D-Speaker | `categories/speech/antspeaker.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | `python-wechaty` | `categories/im-automation/wechat/wechaty.md` |
 | `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
 | `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
-| `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |

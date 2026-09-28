@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "MECT does", "zh": "MECT 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the PyTorch audio stack (the repo ships no pip package — clone it and import)", "zh": "装 PyTorch 音频依赖并 clone 仓库（无 pip 包）", "code": "pip install torch torchaudio soundfile"},
+    {"lane": "you", "en": "Download one of the six checkpoints from Hugging Face", "zh": "从 Hugging Face 下载检查点", "code": "hf download AntResearch/AntSpeaker mect_b2_vc2.pt --local-dir ./"},
+    {"lane": "you", "en": "Build the model from the config baked into the checkpoint", "zh": "用检查点里自带的配置把模型原样建出来", "code": "create_model(ckpt[\"config\"][\"model\"])", "component": {"en": "antspeaker registry", "zh": "antspeaker 注册器"}},
+    {"lane": "you", "en": "Turn each utterance into 80-dim Mel filterbank features", "zh": "把每段音频转成 80 维梅尔滤波器组特征", "code": "kaldi.fbank(waveform * (1 << 15), ...)"},
+    {"lane": "you", "en": "Feed the features to the model", "zh": "把特征喂给模型", "code": "model(fbank.to(device))"},
+    {"lane": "them", "en": "Run CNN-Transformer blocks; the mixture-of-experts router activates only part of the expert sub-networks", "zh": "过 CNN-Transformer 各层，混合专家路由器只激活一部分专家子网络", "component": {"en": "MECT backbone", "zh": "MECT 主干网络"}},
+    {"lane": "them", "en": "Pool the frames and project them to one fixed-size speaker embedding (192-dim by default)", "zh": "池化后投影成一个定长说话人向量（默认 192 维）", "component": {"en": "pooling + linear head", "zh": "池化 + 线性头"}},
+    {"lane": "you", "en": "Compare two embeddings with cosine similarity and pick your own threshold", "zh": "两段音频各取向量，余弦相似度一比，阈值自己定", "code": "F.cosine_similarity(emb1, emb2)"}
+  ],
+  "value": {"en": "No training, no labels, no serving stack — a speaker check is two embeddings and one cosine; the only knob left is your threshold", "zh": "不用训练、不用标注、不用服务栈——声纹比对就是两个向量一次余弦，剩下的唯一旋钮是你自己的阈值"},
+  "sources": [
+    "https://github.com/ant-research/AntSpeaker README (Quick Start: pip install torch torchaudio soundfile; hf download AntResearch/AntSpeaker mect_b2_vc2.pt; create_model(ckpt[\"config\"][\"model\"]); kaldi.fbank(waveform * (1 << 15), ...); model(fbank.to(device)); F.cosine_similarity(emb1, emb2))",
+    "https://github.com/ant-research/AntSpeaker example.py (load_model / load_audio / extract_fbank, model(fbank))",
+    "https://github.com/ant-research/AntSpeaker antspeaker/models/model.py (VPR forward: backbone -> pooling -> BN -> linear; embed_dim default 192)"
+  ]
+}
