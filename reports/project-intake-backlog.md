@@ -28,7 +28,7 @@ shape and are deliberately excluded here.
 | 3D-Speaker | `categories/speech/antspeaker.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
-| [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
+| [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |

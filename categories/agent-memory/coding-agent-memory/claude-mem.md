@@ -2,7 +2,7 @@
 name: claude-mem
 slug: claude-mem
 repo: https://github.com/thedotmack/claude-mem
-category: agent-memory
+category: coding-agent-memory
 tags: [agent-memory, cross-session-memory, claude-code, hooks, mcp, context-injection, sqlite, vector-store]
 language: TypeScript
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 You restart Claude Code every day and re-explain the project from scratch; `/clear` wipes the context you spent an hour building. claude-mem hooks the agent's session lifecycle, compresses what happened into observations in a local SQLite + Chroma store, and injects the relevant slices back into future sessions — a memory layer on your own machine (an optional hosted "observer" / cloud-sync tier was added in v13.x).
 
-![claude-mem — health radar](../../assets/health/claude-mem.svg)
+![claude-mem — health radar](../../../assets/health/claude-mem.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ It fits when you want this *across* tools, not bound to one agent: the same memo
 
 claude-mem hooks into your coding agent's lifecycle (e.g. Claude Code): it fires when a session starts, when you send a prompt, after every tool call, and when the session ends. It hands what the agent did to an LLM that compresses it into short "observations", stored in a local **SQLite** database (plus a **Chroma** vector index so you can search by meaning, not just keywords), all managed by a local worker service. When you open a new session it injects relevant past summaries into the context automatically; when the agent needs details it searches in three steps — a compact index first, then the surrounding timeline, then full text only for the few records it needs. Your part is one install command plus picking who runs the compression — the hosted claude-mem observer it offers by default since v13.x, your own OpenRouter or Gemini key, or your Anthropic plan; after that you just work.
 
-![claude-mem — backbone user story](../../assets/flow/claude-mem.svg)
+![claude-mem — backbone user story](../../../assets/flow/claude-mem.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-mem.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ claude-mem hooks into your coding agent's lifecycle (e.g. Claude Code): it fires
 
 ## When NOT to use
 
-- **You need memory inside your own application, not your coding agent.** claude-mem is a *developer-workstation* tool wired into agent hooks. If you're embedding user memory into an app you ship (a chatbot, a support agent), a model-agnostic memory **library/API** like [Mem0](mem0.md) or [Memori](memori.md) is the right shape — claude-mem has no SDK you call from product code.
+- **You need memory inside your own application, not your coding agent.** claude-mem is a *developer-workstation* tool wired into agent hooks. If you're embedding user memory into an app you ship (a chatbot, a support agent), a model-agnostic memory **library/API** like [Mem0](../app-memory/mem0.md) or [Memori](../app-memory/memori.md) is the right shape — claude-mem has no SDK you call from product code.
 - **Single-developer maintenance / abandonment risk.** The project is authored by one developer (`@thedotmack`). It moves fast (v13.x in 2026), but a hook tool sitting in your every-session critical path from a single maintainer is a bus-factor-of-one dependency — weigh that before making it load-bearing.
 - **You need a fully local-only memory tool.** The store is local (SQLite + Chroma), but v13.x added a hosted "observer" compression tier that is the installer's default nudge (email sign-in, 30-day free trial), plus opt-in cloud sync to cmem.ai. You can decline the account (`--provider`, `CLAUDE_MEM_ONLINE_OPTIN=false`, or a non-interactive shell) and keep the store on-box — but every documented compression provider (observer, OpenRouter, Gemini, your Anthropic plan) is still an external API call, and no local-model compression path is documented [未验证]（源码未查）. There's also no managed multi-tenant backend to share memory across a team or fleet; it's per-developer-machine.
 - **Privacy of captured session data.** By design it captures *everything the agent does* — file contents, commands, outputs — and an LLM compresses it. The store is local and `<private>` tags can exclude content from storage, but with the default provider path the *compression itself* calls an external model (hosted observer or your OpenRouter/Gemini/Anthropic key), and cloud sync to cmem.ai is opt-in; on a sensitive repo, audit what lands in the store and which compression provider you actually chose.
@@ -122,11 +122,11 @@ claude-mem hooks into your coding agent's lifecycle (e.g. Claude Code): it fires
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Mem0](mem0.md) | ✅ | Choose Mem0 when app-embedded model-agnostic memory API matters more than coding-agent hooks. | Model-agnostic memory **library/API** you embed in your own agent code (Python/TS, any LLM); built for app-embedded user memory. claude-mem is a workstation hook tool for coding agents, not a library you call. |
-| [Memori](memori.md) | ✅ | Choose Memori when SQL-first client-wrapper memory is the right application shape. | SQL-first memory engine you wrap your LLM client with; framework-agnostic, with a cloud/BYODB split. claude-mem is local-only and hook-driven, scoped to coding-agent sessions rather than app memory. |
+| [Mem0](../app-memory/mem0.md) | ✅ | Choose Mem0 when app-embedded model-agnostic memory API matters more than coding-agent hooks. | Model-agnostic memory **library/API** you embed in your own agent code (Python/TS, any LLM); built for app-embedded user memory. claude-mem is a workstation hook tool for coding agents, not a library you call. |
+| [Memori](../app-memory/memori.md) | ✅ | Choose Memori when SQL-first client-wrapper memory is the right application shape. | SQL-first memory engine you wrap your LLM client with; framework-agnostic, with a cloud/BYODB split. claude-mem is local-only and hook-driven, scoped to coding-agent sessions rather than app memory. |
 | [Claude Subconscious](claude-subconscious.md) | ✅ | Choose Claude Subconscious when a Claude-Code hook demo backed by Letta fits your experiment. | Closest shape: a Claude Code hook plugin doing cross-session memory — but it's a Letta-backed *demo* explicitly "not for production" and Claude-Code-only. claude-mem is local-store (SQLite+Chroma), multi-agent, and positions as a real install. |
-| [Letta (MemGPT)](letta.md) | ✅ | Choose Letta when you want a stateful runtime to own the agent loop and memory OS. | Stateful agent runtime with a self-editing memory OS and a server; owns the agent loop. claude-mem slots under your existing agents via hooks rather than replacing them. |
-| [Zep](zep.md) / [Graphiti](graphiti.md) | ✅ | Choose Zep or Graphiti when temporal knowledge-graph memory and fact invalidation are central. | Temporal knowledge-graph memory service with explicit fact invalidation; a hosted/self-host backend for app memory, not a per-developer coding-agent hook layer. |
+| [Letta (MemGPT)](../app-memory/letta.md) | ✅ | Choose Letta when you want a stateful runtime to own the agent loop and memory OS. | Stateful agent runtime with a self-editing memory OS and a server; owns the agent loop. claude-mem slots under your existing agents via hooks rather than replacing them. |
+| [Zep](../graph-memory/zep.md) / [Graphiti](../graph-memory/graphiti.md) | ✅ | Choose Zep or Graphiti when temporal knowledge-graph memory and fact invalidation are central. | Temporal knowledge-graph memory service with explicit fact invalidation; a hosted/self-host backend for app memory, not a per-developer coding-agent hook layer. |
 
 ## Tech stack
 

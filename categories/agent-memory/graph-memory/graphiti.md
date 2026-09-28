@@ -2,7 +2,7 @@
 name: Graphiti
 slug: graphiti
 repo: https://github.com/getzep/graphiti
-category: agent-memory
+category: graph-memory
 tags: [agent-memory, knowledge-graph, graphiti, library]
 language: Python
 license: Apache-2.0
@@ -78,7 +78,7 @@ health:
 
 Build Real-Time Knowledge Graphs for AI Agents
 
-![Graphiti — health radar](../../assets/health/graphiti.svg)
+![Graphiti — health radar](../../../assets/health/graphiti.svg)
 
 ## When to use
 
@@ -97,10 +97,10 @@ This first-pass page exists because Graphiti was repeatedly useful as a comparis
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ByteRover CLI](byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
-| [claude-mem](claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
-| [Claude Subconscious](claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
-| [Letta (MemGPT)](letta.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
+| [ByteRover CLI](../coding-agent-memory/byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
+| [claude-mem](../coding-agent-memory/claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
+| [Letta (MemGPT)](../app-memory/letta.md) | ✅ | When you need the established in-index option for this category, compare it against Graphiti before switching. | Graphiti is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Graphiti only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

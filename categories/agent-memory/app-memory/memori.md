@@ -2,7 +2,7 @@
 name: Memori
 slug: memori
 repo: https://github.com/MemoriLabs/Memori
-category: agent-memory
+category: app-memory
 tags: [agent-memory, persistent-memory, llm-agnostic, mcp, state-management, entity-extraction]
 language: Python
 license: Apache-2.0
@@ -81,7 +81,7 @@ health:
 
 Your agent calls the model fresh every session — it doesn't know the user or what it just did. Memori wraps the LLM client you already use: every call is captured and recalled automatically in the background, so relevant facts, people, preferences and rules are already in context next time, without you writing any `search()` calls.
 
-![memori — health radar](../../assets/health/memori.svg)
+![memori — health radar](../../../assets/health/memori.svg)
 
 ## When to use
 
@@ -93,7 +93,7 @@ It's a fit when you want memory that's keyed on *what agents do*, not just chat 
 
 Memori is a wrapper, not a service you call separately. `Memori().llm.register(client)` monkey-patches your existing OpenAI/Anthropic/etc. client, and `mem.attribution(entity_id=..., process_id=...)` says whose memories these are (entity = the user; process = the agent or program). From then on every `chat.completions.create(...)` you make is captured synchronously into storage and the *recall* path — relevant facts pulled back out — is injected into later prompts automatically, so your application code never imports a memory API in the request path. Extraction of structured memories ("Advanced Augmentation": facts, preferences, rules, relationships, skills) happens asynchronously in the background, which is where the "no latency" claim comes from. With Memori Cloud the storage and augmentation are managed for you (`MEMORI_API_KEY`); with BYODB the same tables live in your own database (SQLite, PostgreSQL, MySQL, MongoDB, TiDB, … per the docs) and you pass a connection factory instead. What stays yours: attribution discipline (no entity/process ids, no memories), the DB you operate in BYODB mode, and whatever capability gap exists between the cloud and local augmentation paths.
 
-![memori — backbone user story](../../assets/flow/memori.svg)
+![memori — backbone user story](../../../assets/flow/memori.svg)
 
 <!-- flow-steps:begin (generated from flows/memori.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -124,9 +124,9 @@ Memori is a wrapper, not a service you call separately. `Memori().llm.register(c
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Mem0](mem0.md) | ✅ | Choose Mem0 when explicit add/search APIs and broad self-hosting matter more. | The most-cited agent-memory layer; add/search API over a vector store, broad self-host story. Memori leans on automatic client interception + structured entity/process state and an opinionated cloud, vs Mem0's more explicit, datastore-flexible retrieval. |
-| [claude-subconscious](claude-subconscious.md) | ✅ | Choose claude-subconscious when you specifically want a Claude/Letta background-memory experiment. | A Claude-specific background-memory experiment (Letta lineage); narrower scope than Memori's multi-provider, multi-framework infrastructure. |
+| [claude-subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | Choose claude-subconscious when you specifically want a Claude/Letta background-memory experiment. | A Claude-specific background-memory experiment (Letta lineage); narrower scope than Memori's multi-provider, multi-framework infrastructure. |
 | [Letta (MemGPT)](letta.md) | ✅ | Choose Letta when you need a memory-management OS inside a stateful agent runtime. | Agent runtime with a memory-management OS (tiered context, self-editing memory); a heavier stateful-agent server, not a drop-in client wrapper. |
-| [Zep](zep.md) | ✅ | Choose Zep when temporal knowledge-graph memory is the main architecture bet. | Temporal knowledge-graph memory service with a strong self-host/OSS core; comparable structured-memory ambition, different graph-first model. |
+| [Zep](../graph-memory/zep.md) | ✅ | Choose Zep when temporal knowledge-graph memory is the main architecture bet. | Temporal knowledge-graph memory service with a strong self-host/OSS core; comparable structured-memory ambition, different graph-first model. |
 | [LangMem (LangChain)](langmem.md) | ✅ | Choose LangMem when your memory utilities should stay tied to LangGraph/LangChain. | Memory utilities tied to the LangGraph/LangChain stack; less standalone than Memori's framework-agnostic pitch. |
 | plain vector DB (pgvector / Chroma) | 未收录 | Choose a plain vector DB when owning schema and retrieval outweighs augmentation features. | You own the schema and retrieval; no augmentation, no entity model, no cloud — maximum control, maximum wiring. |
 

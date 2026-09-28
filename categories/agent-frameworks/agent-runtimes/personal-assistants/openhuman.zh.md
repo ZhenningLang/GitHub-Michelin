@@ -112,8 +112,8 @@ health:
 
 ## 何时不用
 
-- **你想把这套机制嵌进自己要发布的产品。** Rust 工作区声明的是 `GPL-3.0-only`，引擎还散在 16 个同为 GPL 的 vendor 子模块里——从根到叶子都是 copyleft。如果你要的是能自由商用的应用内记忆，别用 OpenHuman，改用 [Mem0](../../../agent-memory/mem0.zh.md) 或 [Memori](../../../agent-memory/memori.zh.md)，因为它们是宽松许可的库，且不附带桌面应用。
-- **你只是想要编码 agent 的记忆。** OpenHuman 的价值来自那套广覆盖集成；如果你只是想让会话上下文在 Claude Code 或 Codex 里扛住 `/clear`，改用 [claude-mem](../../../agent-memory/claude-mem.zh.md)，因为它挂在你已经在跑的 agent 生命周期上，不需要你把个人账号 OAuth 出去。
+- **你想把这套机制嵌进自己要发布的产品。** Rust 工作区声明的是 `GPL-3.0-only`，引擎还散在 16 个同为 GPL 的 vendor 子模块里——从根到叶子都是 copyleft。如果你要的是能自由商用的应用内记忆，别用 OpenHuman，改用 [Mem0](../../../agent-memory/app-memory/mem0.zh.md) 或 [Memori](../../../agent-memory/app-memory/memori.zh.md)，因为它们是宽松许可的库，且不附带桌面应用。
+- **你只是想要编码 agent 的记忆。** OpenHuman 的价值来自那套广覆盖集成；如果你只是想让会话上下文在 Claude Code 或 Codex 里扛住 `/clear`，改用 [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md)，因为它挂在你已经在跑的 agent 生命周期上，不需要你把个人账号 OAuth 出去。
 - **你不能把主账号交给一个才几个月大的 beta。** 默认推理走的是厂商的托管订阅，而集成要的是邮件、日历、聊天记录的读权限。如果这个交换你不能接受，改用 OpenClaw（可自托管、MIT、自带 key、无需登录任何厂商账号）或 claude-mem（只抓编码 agent 干过的事），因为这两者的数据路径都不经过厂商账号。
 - **你想要一个小而可审查的后端运行时。** 多 crate 的 Rust 工作区、Tauri 桌面外壳、pnpm 前端工作区加 16 个 git 子模块，对“按计划跑个 agent”来说体积很大。如果你要的是后端形态的东西，改用 [OpenFang](../agent-services/openfang.zh.md)（单个自托管 Rust 二进制跑计划任务型 agent）或 [eve](../agent-services/eve.zh.md)（一个可部署的 TypeScript 服务，自带持久会话运行时），因为这两者不逼你先做出一个桌面应用。
 - **你不接受会动钱的 agent。** core 里内置了非托管多链钱包（EVM、Bitcoin、Solana、Tron），走 prepare→confirm→execute 流程；另有一块需要登录后端会话的邀请返利与积分界面。如果“agent 进程持有签名密钥”对你是否决项，改用 OpenClaw 或 Hermes Agent，因为它们的 core 里都没有钱包。
@@ -126,7 +126,7 @@ health:
 | --- | --- | --- | --- |
 | [OpenClaw](openclaw.zh.md) | ✅ | 如果你要的是把模型指向自己后端的自托管 MIT 助手、并且消息渠道覆盖最广，选 OpenClaw；如果决定性功能是持续灌入的本地记忆加可视化工作流画布，就选 OpenHuman。 | OpenClaw 赢在许可宽松、渠道数量和自托管控制权；OpenHuman 为记忆流水线付出的代价是必须有厂商账号、桌面构建重得多，而且没有宽松许可。 |
 | [Hermes Agent](hermes-agent.zh.md) | ✅ | 如果助手的价值应该来自把经验变成技能的学习循环，选 Hermes；如果你宁可让它一上来就读你已有的数据源、而不是攒几周能力，就选 OpenHuman。 | Hermes 靠自我改进挣来上下文、一台小 VPS 就能跑；OpenHuman 靠每 20 分钟灌入你的邮件聊天和仓库来买上下文，见效更快但隐私面更大。 |
-| [claude-mem](../../../agent-memory/claude-mem.zh.md) | ✅ | 如果你真正缺的是 Claude Code／Codex 下的编码会话上下文，选 claude-mem；只有当你要的是横跨邮件、日历、聊天的通用助手时才选 OpenHuman。 | claude-mem 是一个本地钩子层，不要账号也不要图形界面；OpenHuman 是完整助手，覆盖面更广、活动部件更多、数据经过的环节也更多。 |
+| [claude-mem](../../../agent-memory/coding-agent-memory/claude-mem.zh.md) | ✅ | 如果你真正缺的是 Claude Code／Codex 下的编码会话上下文，选 claude-mem；只有当你要的是横跨邮件、日历、聊天的通用助手时才选 OpenHuman。 | claude-mem 是一个本地钩子层，不要账号也不要图形界面；OpenHuman 是完整助手，覆盖面更广、活动部件更多、数据经过的环节也更多。 |
 | [eve](../agent-services/eve.zh.md) | ✅ | 如果你要的是部署成服务、带人工审批的持久 agent 后端，选 eve；如果你要的是让非技术用户从桌面窗口直接操作，就选 OpenHuman。 | eve 给你文件、HTTP 服务和检查点，跑在你自己的基础设施上；OpenHuman 给你一个消费级安装形态加托管推理，代价是 GPL 和更重的工具链。 |
 | [OpenFang](../agent-services/openfang.zh.md) | ✅ | 如果你要的是单个 Rust 二进制跑计划任务型自治 agent、不要桌面外壳，选 OpenFang；如果助手必须吃进个人数据源、并由人看着图形界面来掌舵，就选 OpenHuman。 | OpenFang 更小、更好自托管；OpenHuman 自带集成、图形界面和托管模型路由，而这恰好可能是你不想背的重量。 |
 | Claude Cowork | 未收录 | 未收录，因为它不是仓库而是闭源托管产品；如果你要的是厂商支持、完全不用操心自托管的桌面助手，选它。 | 闭源且云形态，没有任何你能审查的本地模式强制；OpenHuman 是 GPL、可自托管、有一个硬开关——你放弃的正是这份可审查性。 |

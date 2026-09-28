@@ -225,19 +225,19 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | Apache-2.0 | A（6/6） | [中](categories/agent-memory/mem0.zh.md) · [EN](categories/agent-memory/mem0.md) |
-| **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | Apache-2.0 | B（5/6） | [中](categories/agent-memory/memori.zh.md) · [EN](categories/agent-memory/memori.md) |
-| **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | MIT | C（5/6） | [中](categories/agent-memory/claude-subconscious.zh.md) · [EN](categories/agent-memory/claude-subconscious.md) |
-| **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | Apache-2.0 | B（6/6） | [中](categories/agent-memory/claude-mem.zh.md) · [EN](categories/agent-memory/claude-mem.md) |
-| **ByteRover CLI** | 当你想要一款可移植的、带 git 式版本控制和云同步的结构化编码 agent 记忆层时用它——但它极其年轻（2025-06 创建），且许可情况模糊。 | NOASSERTION | D（6/6） | [中](categories/agent-memory/byterover.zh.md) · [EN](categories/agent-memory/byterover.md) |
-| **Letta (MemGPT)** | Platform for stateful agents: AI with advanced memory that can learn and self-improve over time. | Apache-2.0 | B（6/6） | [EN](categories/agent-memory/letta.md) · [中](categories/agent-memory/letta.zh.md) |
-| **Zep** | Zep \| Examples, Integrations, & More | Apache-2.0 | A（4/6） | [EN](categories/agent-memory/zep.md) · [中](categories/agent-memory/zep.zh.md) |
-| **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | Apache-2.0 | B（6/6） | [EN](categories/agent-memory/graphiti.md) · [中](categories/agent-memory/graphiti.zh.md) |
-| **LangMem** | 当你需要在 agent-memory 方向评估 LangMem 时用它。 | MIT | B（5/6） | [EN](categories/agent-memory/langmem.md) · [中](categories/agent-memory/langmem.zh.md) |
-| **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | Apache-2.0 | A（6/6） | [EN](categories/agent-memory/cognee.md) · [中](categories/agent-memory/cognee.zh.md) |
-| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | AGPL-3.0 | B（6/6） | [EN](categories/agent-memory/openviking.md) · [中](categories/agent-memory/openviking.zh.md) |
-| **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | MIT | B（5/6） | [EN](categories/agent-memory/simplemem.md) · [中](categories/agent-memory/simplemem.zh.md) |
-| **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | MIT | B（6/6） | [EN](categories/agent-memory/agent-beacon.md) · [中](categories/agent-memory/agent-beacon.zh.md) |
+| **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | Apache-2.0 | A（6/6） | [中](categories/agent-memory/app-memory/mem0.zh.md) · [EN](categories/agent-memory/app-memory/mem0.md) |
+| **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | Apache-2.0 | B（5/6） | [中](categories/agent-memory/app-memory/memori.zh.md) · [EN](categories/agent-memory/app-memory/memori.md) |
+| **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | MIT | C（5/6） | [中](categories/agent-memory/coding-agent-memory/claude-subconscious.zh.md) · [EN](categories/agent-memory/coding-agent-memory/claude-subconscious.md) |
+| **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | Apache-2.0 | B（6/6） | [中](categories/agent-memory/coding-agent-memory/claude-mem.zh.md) · [EN](categories/agent-memory/coding-agent-memory/claude-mem.md) |
+| **ByteRover CLI** | 当你想要一款可移植的、带 git 式版本控制和云同步的结构化编码 agent 记忆层时用它——但它极其年轻（2025-06 创建），且许可情况模糊。 | NOASSERTION | D（6/6） | [中](categories/agent-memory/coding-agent-memory/byterover.zh.md) · [EN](categories/agent-memory/coding-agent-memory/byterover.md) |
+| **Letta (MemGPT)** | Platform for stateful agents: AI with advanced memory that can learn and self-improve over time. | Apache-2.0 | B（6/6） | [EN](categories/agent-memory/app-memory/letta.md) · [中](categories/agent-memory/app-memory/letta.zh.md) |
+| **Zep** | Zep \| Examples, Integrations, & More | Apache-2.0 | A（4/6） | [EN](categories/agent-memory/graph-memory/zep.md) · [中](categories/agent-memory/graph-memory/zep.zh.md) |
+| **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | Apache-2.0 | B（6/6） | [EN](categories/agent-memory/graph-memory/graphiti.md) · [中](categories/agent-memory/graph-memory/graphiti.zh.md) |
+| **LangMem** | 当你需要在 agent-memory 方向评估 LangMem 时用它。 | MIT | B（5/6） | [EN](categories/agent-memory/app-memory/langmem.md) · [中](categories/agent-memory/app-memory/langmem.zh.md) |
+| **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | Apache-2.0 | A（6/6） | [EN](categories/agent-memory/graph-memory/cognee.md) · [中](categories/agent-memory/graph-memory/cognee.zh.md) |
+| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | AGPL-3.0 | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/openviking.md) · [中](categories/agent-memory/coding-agent-memory/openviking.zh.md) |
+| **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | MIT | B（5/6） | [EN](categories/agent-memory/app-memory/simplemem.md) · [中](categories/agent-memory/app-memory/simplemem.zh.md) |
+| **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | MIT | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/agent-beacon.md) · [中](categories/agent-memory/coding-agent-memory/agent-beacon.zh.md) |
 
 ### deep-research
 

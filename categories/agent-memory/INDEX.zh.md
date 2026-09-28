@@ -1,43 +1,25 @@
 # agent-memory
 
 > 分类节点。面向 agent、与 LLM 无关的跨会话持久记忆基础设施。
+> 按**记忆属于谁、怎么接进来**拆分子类：自己产品里的记忆组件、挂在你已在跑的编码 agent harness 上的记忆层，或单独部署的图形态引擎。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
-## 本分类项目
+## 子分类
 
-| 项目 | 何时用 | 健康度 | 页面 |
-| --- | --- | --- | --- |
-| **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | A（6/6） | [→](mem0.zh.md) |
-| **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | B（5/6） | [→](memori.zh.md) |
-| **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | C（5/6） | [→](claude-subconscious.zh.md) |
-| **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | B（6/6） | [→](claude-mem.zh.md) |
-| **ByteRover CLI** | 当你想要一款可移植的、带 git 式版本控制和云同步的结构化编码 agent 记忆层时用它——但它极其年轻（2025-06 创建），且许可情况模糊。 | D（6/6） | [→](byterover.zh.md) |
-| **Letta (MemGPT)** | Platform for stateful agents: AI with advanced memory that can learn and self-improve over time. | B（6/6） | [→](letta.zh.md) |
-| **Zep** | Zep \| Examples, Integrations, & More | A（4/6） | [→](zep.zh.md) |
-| **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | B（6/6） | [→](graphiti.zh.md) |
-| **LangMem** | 当你需要在 `agent-memory` 分类中评估 LangMem 时用它。 | B（5/6） | [→](langmem.zh.md) |
-| **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A（6/6） | [→](cognee.zh.md) |
-| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
-| **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | B（5/6） | [→](simplemem.zh.md) |
-| **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | B（6/6） | [→](agent-beacon.zh.md) |
-
+| 子分类 | 何时进入 | 路由 |
+| --- | --- | --- |
+| **应用记忆** | 你自己在做 agent／产品，想要把记忆当组件——一个 API、SDK、客户端包裹器，或接管 agent 循环的平台。 | [→](app-memory/INDEX.zh.md) |
+| **编码 agent 记忆** | agent 是你已在跑的编码 harness（Claude Code、Codex、Cursor……），记忆要挂进它们的会话——本地或共享服务端。 | [→](coding-agent-memory/INDEX.zh.md) |
+| **图记忆** | 记忆存储该是知识图谱——时间事实图、文档派生的图管线——作为服务或库来跑。 | [→](graph-memory/INDEX.zh.md) |
 
 ## 对比矩阵
 
-| 选项 | 是否收录 | 健康度 | 一句话取舍 |
-| --- | --- | --- | --- |
-| [Mem0](mem0.zh.md) | ✅ | A（6/6） | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 |
-| [Memori](memori.zh.md) | ✅ | B（5/6） | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 |
-| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | C（5/6） | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 |
-| [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
-| [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 面向编码 agent 的可移植结构化记忆，带 git 式版本控制和云同步；极其年轻（2025-06 创建），许可模糊（NOASSERTION 与 Elastic 2.0）。 |
-| [Letta (MemGPT)](letta.zh.md) | ✅ | B（6/6） | 有状态 agent 平台，记忆 OS 由运行时自己掌管；适合让 Letta 接管 agent 循环，不适合只想给现有 harness 加上下文。 |
-| [Zep](zep.zh.md) | ✅ | A（4/6） | 面向用户事实的时间知识图谱记忆，事实会过期或被取代；是应用记忆的后端，不是编码 agent 的钩子层。 |
-| [Cognee](cognee.zh.md) | ✅ | A（6/6） | 自托管的知识图谱记忆引擎，面向文档形态的 agent 记忆；比文件或 SQLite 存储更重。 |
-| [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
-| [SimpleMem](simplemem.zh.md) | ✅ | B（5/6） | 写入时压缩的记忆库，带 LoCoMo 公开证据；PyPI 冻在 0.1.0（只能源码安装）、存储 bug 未修、音视频支持无基准。 |
-| [Beacon](agent-beacon.zh.md) | ✅ | B（6/6） | 跨工具会话采集加人工审核的经验沉淀；仓库年轻、厂商驱动、带托管商业层。 |
+| 选项 | 类型 | 一句话取舍 |
+| --- | --- | --- |
+| [应用记忆](app-memory/INDEX.zh.md) | 子分类 | Mem0、Memori、Letta、LangMem、SimpleMem——面向应用数据（用户、实体、对话）的记忆，在构建期嵌入。 |
+| [编码 agent 记忆](coding-agent-memory/INDEX.zh.md) | 子分类 | claude-mem、Claude Subconscious、ByteRover、OpenViking、Beacon——通过 hook／插件／MCP 在你的机器或团队服务端上捕获编码会话。 |
+| [图记忆](graph-memory/INDEX.zh.md) | 子分类 | Zep、Graphiti、Cognee——带时间失效或文档到图管线的知识图谱引擎；比文件或向量存储更重。 |
 
 ## 什么该放这里
 
-主要职责是**跨会话存取** agent 记忆、且与具体模型无关的基础设施。不含任务/issue 跟踪（见 `agent-tooling`），不含 RAG 文档检索（见 `rag-retrieval`）。
+主要职责是**跨会话存取** agent 记忆、且与具体模型无关的基础设施。不含任务/issue 跟踪（见 `agent-tooling`），不含 RAG 文档检索（见 `rag-retrieval`）。按**谁的记忆、怎么接**选子类：自己产品里的组件（`app-memory`）、挂在你运行的编码 agent 上的层（`coding-agent-memory`）、图形态引擎（`graph-memory`）。

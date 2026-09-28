@@ -3,7 +3,7 @@ name: ByteRover CLI
 slug: byterover
 repo: https://github.com/campfirein/byterover-cli
 homepage: https://docs.byterover.dev/
-category: agent-memory
+category: coding-agent-memory
 tags: [agent-memory, context-tree, coding-agent, mcp, cloud-sync, repl]
 language: TypeScript
 license: NOASSERTION
@@ -80,32 +80,32 @@ health:
 
 面向自主编码 agent 的可移植记忆层（原名为 Cipher）——带 git 式版本控制、云同步和 MCP 集成的结构化上下文树。
 
-![ByteRover CLI — 健康度雷达](../../assets/health/byterover.zh.svg)
+![ByteRover CLI — 健康度雷达](../../../assets/health/byterover.zh.svg)
 
 ## 何时使用
 
-你是一名开发者，在多个会话中运行 AI 编码 agent，却不断丢失上下文。你试过依赖 agent 内置的记忆，但它在会话之间遗忘了项目约定、架构决策和个人编码风格。你考虑过 [Mem0](mem0.zh.md) 的托管记忆 API，但你需要一个本地优先的 CLI 工具，带 git 式版本控制和可直接控制的上下文树。你在项目目录里安装 ByteRover CLI（brv），它会构建一个交互式 REPL，通过 agentic 映射理解你的代码库，读写文件、执行代码，并将知识存储在持久的上下文树中。你可以用 git 式命令（branch、commit、merge、push/pull）对这个上下文树做版本控制，跨机器同步到云端，并与团队成员共享。它支持 20 余家 LLM 提供商，通过 MCP 与 22 余种 AI 编码 agent 集成。需要本地 CLI 和 git 式版本控制，而非托管 API 优先服务时，选 ByteRover 而非 [Mem0](mem0.zh.md)；需要结构化上下文树，而非现有 LLM 客户端的轻量级包装时，选 ByteRover 而非 [Memori](memori.zh.md)；需要通用跨 agent 记忆层，而非 Claude Code 专用 hook 时，选 ByteRover 而非 [claude-mem](claude-mem.zh.md)。
+你是一名开发者，在多个会话中运行 AI 编码 agent，却不断丢失上下文。你试过依赖 agent 内置的记忆，但它在会话之间遗忘了项目约定、架构决策和个人编码风格。你考虑过 [Mem0](../app-memory/mem0.zh.md) 的托管记忆 API，但你需要一个本地优先的 CLI 工具，带 git 式版本控制和可直接控制的上下文树。你在项目目录里安装 ByteRover CLI（brv），它会构建一个交互式 REPL，通过 agentic 映射理解你的代码库，读写文件、执行代码，并将知识存储在持久的上下文树中。你可以用 git 式命令（branch、commit、merge、push/pull）对这个上下文树做版本控制，跨机器同步到云端，并与团队成员共享。它支持 20 余家 LLM 提供商，通过 MCP 与 22 余种 AI 编码 agent 集成。需要本地 CLI 和 git 式版本控制，而非托管 API 优先服务时，选 ByteRover 而非 [Mem0](../app-memory/mem0.zh.md)；需要结构化上下文树，而非现有 LLM 客户端的轻量级包装时，选 ByteRover 而非 [Memori](../app-memory/memori.zh.md)；需要通用跨 agent 记忆层，而非 Claude Code 专用 hook 时，选 ByteRover 而非 [claude-mem](claude-mem.zh.md)。
 
 
 ## 何时不用
 
-- **你想要简单、成熟稳定的记忆方案**——如果你需要久经沙场的 agent 记忆，用 [Mem0](mem0.zh.md) 或 [Memori](memori.zh.md) 代替 ByteRover，因为 ByteRover 极其年轻（2025-06 创建），尚未到 1.0，上下文树抽象、git 式版本控制和云同步都是新颖的，但规模上未经检验。[推断]
+- **你想要简单、成熟稳定的记忆方案**——如果你需要久经沙场的 agent 记忆，用 [Mem0](../app-memory/mem0.zh.md) 或 [Memori](../app-memory/memori.zh.md) 代替 ByteRover，因为 ByteRover 极其年轻（2025-06 创建），尚未到 1.0，上下文树抽象、git 式版本控制和云同步都是新颖的，但规模上未经检验。[推断]
 - **你不想增加额外的依赖层**——如果你想要编码 agent 和项目之间的最小开销，用 [claude-mem](claude-mem.zh.md) 或直接调优提示词代替 ByteRover，因为 ByteRover 夹在你的 agent 和项目之间，增加了 CLI 工具、Web 仪表盘，以及可选的云端后端。
-- **你需要一个可嵌入自己应用的库**——如果你需要为自建 agent 框架添加记忆，且要求干净、可嵌入的 API，用 [Mem0](mem0.zh.md) 或 MemGPT 代替 ByteRover，因为 ByteRover 主要是一个 CLI 工具和 REPL（brv），不是一个干净、可嵌入、带简单 API 的库。[推断]
-- **你对许可模糊敏感**——如果你需要许可清晰的商业用途库，用 [Mem0](mem0.zh.md)（MIT）或 [Memori](memori.zh.md)（MIT）代替 ByteRover，因为 GitHub 元数据报告 NOASSERTION（无识别许可证），而 README 显示「Elastic 2.0」徽章——商业使用前需要澄清许可情况。[未验证]
+- **你需要一个可嵌入自己应用的库**——如果你需要为自建 agent 框架添加记忆，且要求干净、可嵌入的 API，用 [Mem0](../app-memory/mem0.zh.md) 或 MemGPT 代替 ByteRover，因为 ByteRover 主要是一个 CLI 工具和 REPL（brv），不是一个干净、可嵌入、带简单 API 的库。[推断]
+- **你对许可模糊敏感**——如果你需要许可清晰的商业用途库，用 [Mem0](../app-memory/mem0.zh.md)（MIT）或 [Memori](../app-memory/memori.zh.md)（MIT）代替 ByteRover，因为 GitHub 元数据报告 NOASSERTION（无识别许可证），而 README 显示「Elastic 2.0」徽章——商业使用前需要澄清许可情况。[未验证]
 - **你不想要云同步或外部依赖**——如果你想要完全离线、气隙隔离的记忆，无需任何云中心设计，用 [claude-mem](claude-mem.zh.md) 或简单的本地文件记忆包装代替 ByteRover，因为虽然可以仅本地使用，但产品的价值主张包括云同步和 hub 生态。
-- **你需要企业级安全或合规**——如果你需要独立审计的记忆和云同步安全模型，用 [Mem0](mem0.zh.md) 或厂商背书的商业解决方案代替 ByteRover，因为项目年轻且体量小，云同步和 MCP 集成的安全模型未经独立审计。
+- **你需要企业级安全或合规**——如果你需要独立审计的记忆和云同步安全模型，用 [Mem0](../app-memory/mem0.zh.md) 或厂商背书的商业解决方案代替 ByteRover，因为项目年轻且体量小，云同步和 MCP 集成的安全模型未经独立审计。
 
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Mem0](mem0.zh.md) | ✅ | 成熟、LLM 无关的记忆 API，采用度高，带云服务。 | 托管 API 优先的记忆服务，生态支持更广；不如 ByteRover 聚焦本地 CLI 和 git 式版本控制。 |
-| [Memori](memori.zh.md) | ✅ | 轻量级包装器，为现有 LLM 客户端添加持久记忆。 | 更易采用——包裹现有客户端，无需新 CLI 或上下文树；结构不如 ByteRover 丰富。 |
+| [Mem0](../app-memory/mem0.zh.md) | ✅ | 成熟、LLM 无关的记忆 API，采用度高，带云服务。 | 托管 API 优先的记忆服务，生态支持更广；不如 ByteRover 聚焦本地 CLI 和 git 式版本控制。 |
+| [Memori](../app-memory/memori.zh.md) | ✅ | 轻量级包装器，为现有 LLM 客户端添加持久记忆。 | 更易采用——包裹现有客户端，无需新 CLI 或上下文树；结构不如 ByteRover 丰富。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | 接入 Claude Code 会话生命周期的 hook/MCP 记忆。 | 与 Claude Code 紧耦合；不是像 ByteRover 这样通用的跨 agent 记忆层。 |
-| [Letta (MemGPT)](letta.zh.md) | ✅ | 学术研究项目转商业化，用于 LLM 记忆管理。 | 在 LLM 记忆管理上有深厚的研究根基；商业服务和集成模式不同。 |
-| [Cognee](cognee.zh.md) | ✅ | 面向 AI agent 的开源记忆层，基于图召回。 | 基于图的记忆，抽象不同；比 Mem0 更年轻、更未经检验。 |
+| [Letta (MemGPT)](../app-memory/letta.zh.md) | ✅ | 学术研究项目转商业化，用于 LLM 记忆管理。 | 在 LLM 记忆管理上有深厚的研究根基；商业服务和集成模式不同。 |
+| [Cognee](../graph-memory/cognee.zh.md) | ✅ | 面向 AI agent 的开源记忆层，基于图召回。 | 基于图的记忆，抽象不同；比 Mem0 更年轻、更未经检验。 |
 
 ## 技术栈
 

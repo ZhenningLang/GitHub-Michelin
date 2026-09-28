@@ -2,7 +2,7 @@
 name: Cognee
 slug: cognee
 repo: https://github.com/topoteretes/cognee
-category: agent-memory
+category: graph-memory
 tags: [agent-memory, knowledge-graph, cognee, service]
 language: Python
 license: Apache-2.0
@@ -85,7 +85,7 @@ health:
 
 Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.
 
-![Cognee — 健康度雷达](../../assets/health/cognee.zh.svg)
+![Cognee — 健康度雷达](../../../assets/health/cognee.zh.svg)
 
 ## 何时使用
 
@@ -104,9 +104,9 @@ Cognee is the open-source AI memory platform for agents. Give your AI agents per
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ByteRover CLI](byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [claude-mem](claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ByteRover CLI](../coding-agent-memory/byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [claude-mem](../coding-agent-memory/claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Graphiti](graphiti.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Cognee 对照。 | Cognee 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Cognee 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 

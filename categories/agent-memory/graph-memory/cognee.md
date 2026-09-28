@@ -2,7 +2,7 @@
 name: Cognee
 slug: cognee
 repo: https://github.com/topoteretes/cognee
-category: agent-memory
+category: graph-memory
 tags: [agent-memory, knowledge-graph, cognee, service]
 language: Python
 license: Apache-2.0
@@ -85,7 +85,7 @@ health:
 
 Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.
 
-![Cognee — health radar](../../assets/health/cognee.svg)
+![Cognee — health radar](../../../assets/health/cognee.svg)
 
 ## When to use
 
@@ -104,9 +104,9 @@ This first-pass page exists because Cognee was repeatedly useful as a comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ByteRover CLI](byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
-| [claude-mem](claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
-| [Claude Subconscious](claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
+| [ByteRover CLI](../coding-agent-memory/byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
+| [claude-mem](../coding-agent-memory/claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
 | [Graphiti](graphiti.md) | ✅ | When you need the established in-index option for this category, compare it against Cognee before switching. | Cognee is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Cognee only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 

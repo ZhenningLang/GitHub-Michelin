@@ -2,7 +2,7 @@
 name: claude-mem
 slug: claude-mem
 repo: https://github.com/thedotmack/claude-mem
-category: agent-memory
+category: coding-agent-memory
 tags: [agent-memory, cross-session-memory, claude-code, hooks, mcp, context-injection, sqlite, vector-store]
 language: TypeScript
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 你每天重开 Claude Code，都要把项目从头交代一遍；一次 `/clear` 就把花一小时攒出的上下文清零。claude-mem 挂在 agent 的会话生命周期上，把发生过的事压缩成观察记录，存进本地的 SQLite + Chroma 库，再把相关片段注入后续会话——记忆层跑在你自己机器上（v13.x 起另加了可选的托管 observer 与云同步档）。
 
-![claude-mem — 健康度雷达](../../assets/health/claude-mem.zh.svg)
+![claude-mem — 健康度雷达](../../../assets/health/claude-mem.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 
 claude-mem 挂在编程 agent（如 Claude Code）的生命周期钩子上——会话开始、你发消息、agent 每次调完工具、会话结束时都会被触发。它把 agent 干过的事交给一个 LLM 压缩成简短的「观察记录」，存进本地 **SQLite**（另配一个 **Chroma** 向量库，用来按意思而不只是按关键词搜），这些都由一个本地 worker 服务管理。下次开新会话时，它自动把相关历史摘要塞进上下文；要查细节时，agent 通过它提供的搜索工具分三步查：先搜出简短索引，再看前后时间线，最后只取需要的那几条全文。你做的只有一条安装命令，外加选定由谁来跑压缩——v13.x 起默认引导你用的托管 claude-mem observer、你自己的 OpenRouter 或 Gemini key，或你的 Anthropic 套餐；之后正常干活即可。
 
-![claude-mem — 主干用户故事](../../assets/flow/claude-mem.zh.svg)
+![claude-mem — 主干用户故事](../../../assets/flow/claude-mem.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-mem.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ claude-mem 挂在编程 agent（如 Claude Code）的生命周期钩子上——
 
 ## 何时不用
 
-- **你要的是嵌进自己应用的记忆，而不是嵌进编程 agent。** claude-mem 是接在 agent hook 上的*开发者工作站*工具。如果你要把用户记忆嵌进你交付的应用（聊天机器人、客服 agent），模型无关的记忆**库/API**——如 [Mem0](mem0.zh.md) 或 [Memori](memori.zh.md)——才是对的形态；claude-mem 没有供你在业务代码里调用的 SDK。
+- **你要的是嵌进自己应用的记忆，而不是嵌进编程 agent。** claude-mem 是接在 agent hook 上的*开发者工作站*工具。如果你要把用户记忆嵌进你交付的应用（聊天机器人、客服 agent），模型无关的记忆**库/API**——如 [Mem0](../app-memory/mem0.zh.md) 或 [Memori](../app-memory/memori.zh.md)——才是对的形态；claude-mem 没有供你在业务代码里调用的 SDK。
 - **单人维护 / 弃坑风险。** 项目由一名开发者（`@thedotmack`）主导。它迭代很快（2026 年已到 v13.x），但一个坐在你每次会话关键路径上的 hook 工具、且只有单一维护者，这是 bus-factor 为一的依赖——在让它变成承重件之前先掂量。
 - **你要的是完全本地、不出域的记忆工具。** 存储是本地的（SQLite + Chroma），但 v13.x 加了托管「observer」压缩档，而且是安装器的默认引导（邮箱登录、30 天免费试用），另有可选的 cmem.ai 云同步。你可以拒绝建账号（`--provider`、`CLAUDE_MEM_ONLINE_OPTIN=false`，或在非交互 shell 里安装）、把库留在本机——但文档给出的压缩 provider（observer、OpenRouter、Gemini、Anthropic 套餐）全都仍是外部 API 调用，没有文档化的本地模型压缩路径 [未验证]（源码未查）。它也没有托管的多租户后端来在团队或机群间共享记忆；它是每开发者一台机器的。
 - **被捕获会话数据的隐私。** 它的设计就是捕获 *agent 做过的一切*——文件内容、命令、输出——再由 LLM 压缩。库在本地，且 `<private>` 标签可把内容排除在存储之外，但在默认 provider 路径下，*压缩本身*会调用外部模型（托管 observer 或你的 OpenRouter/Gemini/Anthropic key），云同步到 cmem.ai 是 opt-in；在敏感仓库上，要审查什么会落进库里、以及你实际选的压缩 provider 是哪一个。
@@ -122,11 +122,11 @@ claude-mem 挂在编程 agent（如 Claude Code）的生命周期钩子上——
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Mem0](mem0.zh.md) | ✅ | 应用内嵌、模型无关的记忆 API 比编程 agent hook 更重要时，选 Mem0。 | 你嵌进自己 agent 代码的模型无关记忆**库/API**（Python/TS，任意 LLM）；为应用内嵌用户记忆而建。claude-mem 是面向编程 agent 的工作站 hook 工具，不是你调用的库。 |
-| [Memori](memori.zh.md) | ✅ | SQL 优先、包裹 LLM client 的应用记忆形态更合适时，选 Memori。 | 你用它包裹自己 LLM client 的 SQL 优先记忆引擎；框架无关，带云/BYODB 之分。claude-mem 纯本地、hook 驱动，范围限于编程 agent 会话而非应用记忆。 |
+| [Mem0](../app-memory/mem0.zh.md) | ✅ | 应用内嵌、模型无关的记忆 API 比编程 agent hook 更重要时，选 Mem0。 | 你嵌进自己 agent 代码的模型无关记忆**库/API**（Python/TS，任意 LLM）；为应用内嵌用户记忆而建。claude-mem 是面向编程 agent 的工作站 hook 工具，不是你调用的库。 |
+| [Memori](../app-memory/memori.zh.md) | ✅ | SQL 优先、包裹 LLM client 的应用记忆形态更合适时，选 Memori。 | 你用它包裹自己 LLM client 的 SQL 优先记忆引擎；框架无关，带云/BYODB 之分。claude-mem 纯本地、hook 驱动，范围限于编程 agent 会话而非应用记忆。 |
 | [Claude Subconscious](claude-subconscious.zh.md) | ✅ | Letta 支撑的 Claude Code hook 记忆实验正好贴合时，选 Claude Subconscious。 | 形态最接近：同样是做跨会话记忆的 Claude Code hook 插件——但它是 Letta 支撑的 *demo*，作者明示“不用于生产”，且只支持 Claude Code。claude-mem 是本地存储（SQLite+Chroma）、多 agent，定位为正式安装的工具。 |
-| [Letta (MemGPT)](letta.zh.md) | ✅ | 想让有状态 runtime 接管 agent 循环和记忆 OS 时，选 Letta。 | 有状态的 agent runtime，带自编辑记忆 OS 和服务端；接管 agent 主循环。claude-mem 通过 hook 嵌在你现有 agent 之下，而非替换它们。 |
-| [Zep](zep.zh.md) / [Graphiti](graphiti.zh.md) | ✅ | 时序知识图谱记忆和显式事实失效是核心时，选 Zep 或 Graphiti。 | 带显式事实失效的时序知识图记忆服务；面向应用记忆的托管/自托管后端，不是每开发者一份的编程 agent hook 层。 |
+| [Letta (MemGPT)](../app-memory/letta.zh.md) | ✅ | 想让有状态 runtime 接管 agent 循环和记忆 OS 时，选 Letta。 | 有状态的 agent runtime，带自编辑记忆 OS 和服务端；接管 agent 主循环。claude-mem 通过 hook 嵌在你现有 agent 之下，而非替换它们。 |
+| [Zep](../graph-memory/zep.zh.md) / [Graphiti](../graph-memory/graphiti.zh.md) | ✅ | 时序知识图谱记忆和显式事实失效是核心时，选 Zep 或 Graphiti。 | 带显式事实失效的时序知识图记忆服务；面向应用记忆的托管/自托管后端，不是每开发者一份的编程 agent hook 层。 |
 
 ## 技术栈
 

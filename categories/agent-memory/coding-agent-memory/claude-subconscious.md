@@ -2,7 +2,7 @@
 name: Claude Subconscious
 slug: claude-subconscious
 repo: https://github.com/letta-ai/claude-subconscious
-category: agent-memory
+category: coding-agent-memory
 tags: [claude-code, letta, plugin, cross-session-memory, hooks, demo]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 Claude Code forgets everything between sessions, so you re-explain the same preferences and decisions every time. Claude Subconscious hangs a background Letta agent off your hooks: it watches every transcript, maintains eight persistent memory blocks, and whispers relevant guidance back before your next prompt — without ever touching CLAUDE.md.
 
-![claude-subconscious — health radar](../../assets/health/claude-subconscious.svg)
+![claude-subconscious — health radar](../../../assets/health/claude-subconscious.svg)
 
 ## When to use
 
@@ -87,7 +87,7 @@ It fits best when you already live inside the Letta ecosystem (or want an excuse
 
 Four hooks wrap your Claude Code session and everything happens at their boundaries. On first use the plugin auto-imports a bundled "Subconscious" Letta agent — zero config beyond `LETTA_API_KEY` — and one agent "brain" is then shared across all your projects while each repo keeps its own conversation bookkeeping under `.letta/claude/`. After each response, the `Stop` hook parses the transcript (user messages, assistant replies including thinking blocks, tool uses) into a temp file and spawns a detached background worker, so it never blocks you; that worker replays the transcript to the agent through the Letta Code SDK, and while processing it the agent can explore your codebase — by default with read-only tools (`Read` / `Grep` / `Glob` plus `web_search` / `fetch_webpage`, tightened or widened via `LETTA_SDK_TOOLS`) — and rewrite its eight memory blocks (`core_directives`, `guidance`, `user_preferences`, `project_context`, `session_patterns`, `pending_items`, `self_improvement`, `tool_guidelines`). Before your next prompt, the `UserPromptSubmit` hook fetches what changed and prints it to stdout as `<letta_message>` / `<letta_memory_blocks>` XML, which Claude Code folds into the prompt context; `PreToolUse` can inject mid-workflow updates the same way. What stays yours: memory quality depends on the agent model you point it at, and CLAUDE.md is never written by the plugin — all injection is in-context only.
 
-![claude-subconscious — backbone user story](../../assets/flow/claude-subconscious.svg)
+![claude-subconscious — backbone user story](../../../assets/flow/claude-subconscious.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-subconscious.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ Four hooks wrap your Claude Code session and everything happens at their boundar
 ## When NOT to use
 
 - **Production / team use.** The authors explicitly state this is "a demo app built using the Letta Code SDK, and is not intended to be used in production," and point you to Letta Code instead. Do not build a team workflow on it.
-- **You're not on Claude Code.** It is a Claude Code plugin end-to-end — it depends on Claude Code's hook lifecycle (`SessionStart` / `UserPromptSubmit` / `PreToolUse` / `Stop`). It is *not* an LLM-agnostic, framework-agnostic memory library; [Mem0](mem0.md) or [Memori](memori.md) are the choices if you need memory inside your own agent code.
+- **You're not on Claude Code.** It is a Claude Code plugin end-to-end — it depends on Claude Code's hook lifecycle (`SessionStart` / `UserPromptSubmit` / `PreToolUse` / `Stop`). It is *not* an LLM-agnostic, framework-agnostic memory library; [Mem0](../app-memory/mem0.md) or [Memori](../app-memory/memori.md) are the choices if you need memory inside your own agent code.
 - **You can't depend on an external Letta server.** It requires a `LETTA_API_KEY` and a reachable Letta backend (cloud `api.letta.com` or self-hosted). No backend, no memory. That's a hard network dependency on every session boundary.
 - **Privacy-sensitive code you can't ship off-box.** The Stop hook sends your **full session transcript** to the Letta agent, and the agent gets client-side tool access while processing: by default `LETTA_SDK_TOOLS=read-only` (`Read`/`Grep`/`Glob` + web search/fetch), but `full` grants Bash, Edit, Write and sub-agent spawning via `Task`. Think before pointing it at a sensitive repo.
 - **You want deterministic, auditable, self-hosted memory with no third-party brain.** The memory lives in a Letta agent, not in a local store you fully own; behavior depends on the agent model and Letta API semantics.
@@ -119,8 +119,8 @@ Four hooks wrap your Claude Code session and everything happens at their boundar
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Mem0](mem0.md) | ✅ | Choose Mem0 when portable application memory matters more than a Claude Code plugin. | Framework-agnostic memory **library/API** you embed in your own agent (Python/TS, any LLM); not a Claude Code plugin and not a background "whisper" agent. Pick it for portable, production-oriented memory. |
-| [Memori](memori.md) | ✅ | Choose Memori when you need a SQL-native memory backend rather than Claude-Code-bound hooks. | SQL-native open-source memory engine for agents; also LLM/framework-agnostic and self-hostable. Different shape: a memory backend, not a Claude-Code-bound plugin. |
+| [Mem0](../app-memory/mem0.md) | ✅ | Choose Mem0 when portable application memory matters more than a Claude Code plugin. | Framework-agnostic memory **library/API** you embed in your own agent (Python/TS, any LLM); not a Claude Code plugin and not a background "whisper" agent. Pick it for portable, production-oriented memory. |
+| [Memori](../app-memory/memori.md) | ✅ | Choose Memori when you need a SQL-native memory backend rather than Claude-Code-bound hooks. | SQL-native open-source memory engine for agents; also LLM/framework-agnostic and self-hostable. Different shape: a memory backend, not a Claude-Code-bound plugin. |
 | Letta Code | 未收录 | Choose Letta Code when you want the team's full coding-agent product instead of this demo. | The production sibling from the same team — a full coding agent on the Letta platform. The README explicitly recommends it over this demo for real use. |
 | CLAUDE.md (built-in) | 未收录 | Choose CLAUDE.md when manual, deterministic project memory is enough. | Manual, deterministic, zero-dependency project memory. No background learning or cross-project brain; you curate it by hand. Claude Subconscious explicitly avoids writing here. |
 | [Cipher](https://github.com/campfirein/cipher) | 未收录 | Choose Cipher when MCP-based memory across IDEs and CLIs matters more than Claude-only hooks. | MCP-based memory layer for coding agents (works across IDEs/CLIs via MCP); broader client support than a single-tool plugin. |

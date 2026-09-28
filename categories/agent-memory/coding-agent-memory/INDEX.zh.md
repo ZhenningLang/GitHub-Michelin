@@ -1,0 +1,28 @@
+# coding-agent-memory
+
+> 分类节点。挂在你已经在跑的编码 agent harness 上的记忆——Claude Code、Codex、Cursor、OpenCode——通过 hook、插件或 MCP 接入：开发者机器上的会话捕获、压缩与注入，以及给一组 agent 共用的共享上下文存储。
+> ← 返回 [agent-memory](../INDEX.zh.md) · 根路由：[分类路由](../../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
+
+## 本分类项目
+
+| 项目 | 何时用 | 健康度 | 页面 |
+| --- | --- | --- | --- |
+| **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | C（5/6） | [→](claude-subconscious.zh.md) |
+| **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | B（6/6） | [→](claude-mem.zh.md) |
+| **ByteRover CLI** | 当你想要一款可移植的、带 git 式版本控制和云同步的结构化编码 agent 记忆层时用它——但它极其年轻（2025-06 创建），且许可情况模糊。 | D（6/6） | [→](byterover.zh.md) |
+| **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
+| **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | B（6/6） | [→](agent-beacon.zh.md) |
+
+## 对比矩阵
+
+| 选项 | 是否收录 | 健康度 | 一句话取舍 |
+| --- | --- | --- | --- |
+| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | C（5/6） | 后台 Letta agent 通过 hook 向 Claude Code 低语记忆；探索性 demo，不用于生产。 |
+| [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
+| [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 面向编码 agent 的可移植结构化记忆，带 git 式版本控制和云同步；极其年轻（2025-06 创建），许可模糊（NOASSERTION 与 Elastic 2.0）。 |
+| [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
+| [Beacon](agent-beacon.zh.md) | ✅ | B（6/6） | 跨工具会话采集加人工审核的经验沉淀；仓库年轻、厂商驱动、带托管商业层。 |
+
+## 什么该放这里
+
+挂在**你正在运行的编码 agent harness**（Claude Code、Codex、Cursor、OpenCode……）上的记忆层——通过 hook、插件、MCP 或端点采集接入：本地每开发者一份的存储（claude-mem、claude-subconscious、ByteRover、Beacon）与多 agent 共享的上下文服务端（OpenViking）。主体是编码会话：决策、约定、轨迹、经验。不含嵌进你自己产品的记忆 API（见 `app-memory`），不含图形态引擎（见 `graph-memory`）。

@@ -2,7 +2,7 @@
 name: Beacon
 slug: agent-beacon
 repo: https://github.com/Asymptote-Labs/agent-beacon
-category: agent-memory
+category: coding-agent-memory
 tags: [agent-memory, cross-harness, session-history, telemetry, opentelemetry, agent-skills, mcp, local-first, siem-forwarding]
 language: Go
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 The migration trick your Claude Code session finally nailed evaporates when the session ends — and tomorrow Cursor relearns it from scratch. Beacon records what your coding agents did across Claude Code, Codex, Cursor, OpenCode and 20+ other harnesses into one local trace, and turns the sessions you review and approve into project skills any of them can load.
 
-![Beacon — health radar](../../assets/health/agent-beacon.svg)
+![Beacon — health radar](../../../assets/health/agent-beacon.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ The memory half is what picks Beacon over its closest substitute: lessons only e
 
 Beacon is an *endpoint agent*: a Go CLI plus a small OpenTelemetry-based collector (OpenTelemetry = an open standard for shipping traces/metrics; here it listens on loopback `127.0.0.1:4318` only) running as a local service. After install, it configures each supported harness through whichever surface that harness exposes — lifecycle hooks, a managed plugin, native OTLP export, or reading the session files the runtime already writes to disk — and normalizes everything into one event stream appended to a rotating local `runtime.jsonl` (10 MiB × 5 archives, with secret redaction, sanitization and truncation applied before storage). You do: install once, pick Local in the setup wizard, work as usual. It does: capture, normalize, store, correlate, and optionally run threat-detection rules over the stream. The learning loop is deliberately *not* hooked into your sessions: `beacon memory evaluations run` sends a bounded, redacted projection of a finished trace to an evaluator (TypeSafe's hosted Jev API by default, or your own via `BEACON_JEV_ENDPOINT`) which returns probabilities; a trace becomes a candidate lesson only if task success ≥ 0.50 *and* the mean of three lesson-questions ≥ 0.60 — and even then nothing is written until you approve it. `beacon memory skills install` then renders the approved lesson as a project Agent Skill under `.agents/skills/<slug>/SKILL.md`, and `beacon mcp serve` exposes the same memory as read-only MCP tools (`get_memory_context`) any harness can call. Think apprenticeship logbook, not a diary the agent rereads: only the foreman — you — countersigns a lesson before it enters the house manual.
 
-![agent-beacon — backbone user story](../../assets/flow/agent-beacon.svg)
+![agent-beacon — backbone user story](../../../assets/flow/agent-beacon.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-beacon.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,9 +117,9 @@ Beacon is an *endpoint agent*: a Go CLI plus a small OpenTelemetry-based collect
 
 ## When NOT to use
 
-- **You want memory inside your own application, not on your workstation.** Beacon is an endpoint capture tool wired into coding-agent harnesses. For a model-agnostic memory library/API you embed in product code (a chatbot, a support agent), use [Mem0](mem0.md) or [Memori](memori.md) — Beacon has no memory API your app calls.
+- **You want memory inside your own application, not on your workstation.** Beacon is an endpoint capture tool wired into coding-agent harnesses. For a model-agnostic memory library/API you embed in product code (a chatbot, a support agent), use [Mem0](../app-memory/mem0.md) or [Memori](../app-memory/memori.md) — Beacon has no memory API your app calls.
 - **You want zero-maintenance auto-injection at every session start.** Beacon's capture is automatic, but recall rides on an Agent Skill or MCP call the agent chooses to make — nothing is force-injected into context. [claude-mem](claude-mem.md) compresses and injects relevant summaries at `SessionStart` automatically; if you want memory that just appears without installing skills per harness, pick that shape and accept its per-session LLM compression cost.
-- **You need a central, multi-user memory server for a team or fleet.** Beacon memory lives in a per-endpoint `memory.db`, scoped to one project (sharing happens by committing the installed skills, or via the hosted tier). For a self-hosted shared context store with accounts and isolation, [OpenViking](openviking.md) or [Letta](letta.md) are the right shape — a server, not an endpoint.
+- **You need a central, multi-user memory server for a team or fleet.** Beacon memory lives in a per-endpoint `memory.db`, scoped to one project (sharing happens by committing the installed skills, or via the hosted tier). For a self-hosted shared context store with accounts and isolation, [OpenViking](openviking.md) or [Letta](../app-memory/letta.md) are the right shape — a server, not an endpoint.
 - **You won't run a background collector that records full agent sessions.** Beacon's value depends on capturing everything your agents do (with redaction/truncation, local-only by default, uninstall with `--keep-logs`). In a locked-down or minimal environment, hand-maintained `AGENTS.md`/`CLAUDE.md` conventions are lighter and leak nothing — you trade compounding for control.
 - **You need a fully offline distill loop.** Scoring traces with the default evaluator calls TypeSafe's hosted Jev API (consent-gated); recall and promote stay keyless and local. You can point `BEACON_JEV_ENDPOINT` at an internal compatible evaluator or write candidates by hand (`beacon memory candidates create`), but if you want offline scoring out of the box, budget for that wiring first.
 - **You need a proven, boring dependency.** The repo is ~4.5 months old (created 2026-05-12), releases multiple times a week, and the roadmap belongs to a young security startup whose commercial tier is the hosted service. Fine for a workstation tool you can uninstall; think twice before a fleet-wide rollout standardizes on its event schema.
@@ -129,8 +129,8 @@ Beacon is an *endpoint agent*: a Go CLI plus a small OpenTelemetry-based collect
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [claude-mem](claude-mem.md) | ✅ | Choose Beacon when capture must span many harnesses with one normalized trace and lessons you approve before they land; choose claude-mem when you want automatic compress-and-inject at session start inside its supported agents. | Beacon: cross-harness traces + human review gate + one Go binary, but recall depends on skills/MCP the agent invokes. claude-mem: automatic context injection, but per-harness hooks, a local Bun/Python stack, and LLM compression on every capture. |
-| [Mem0](mem0.md) | ✅ | Choose Mem0 when the memory belongs to your application (an SDK/API your code calls, any LLM); choose Beacon when it belongs to your *workstation* across the coding agents you already run. | Mem0 is an embeddable memory library with hosted/self-host options — no session capture. Beacon is endpoint telemetry + review-gated lessons; no app-facing memory API. |
-| [Letta (MemGPT)](letta.md) | ✅ | Choose Letta when you want a stateful runtime to own the agent loop and its memory OS; choose Beacon when your agents already run under their own harnesses and you only want a passive memory/trace layer beneath them. | Letta replaces how your agents run (server, memory OS, self-editing state). Beacon adds capture + curated memory without touching the agent loop. |
+| [Mem0](../app-memory/mem0.md) | ✅ | Choose Mem0 when the memory belongs to your application (an SDK/API your code calls, any LLM); choose Beacon when it belongs to your *workstation* across the coding agents you already run. | Mem0 is an embeddable memory library with hosted/self-host options — no session capture. Beacon is endpoint telemetry + review-gated lessons; no app-facing memory API. |
+| [Letta (MemGPT)](../app-memory/letta.md) | ✅ | Choose Letta when you want a stateful runtime to own the agent loop and its memory OS; choose Beacon when your agents already run under their own harnesses and you only want a passive memory/trace layer beneath them. | Letta replaces how your agents run (server, memory OS, self-editing state). Beacon adds capture + curated memory without touching the agent loop. |
 | [OpenViking](openviking.md) | ✅ | Choose OpenViking when several people/agents must share one self-hosted context+memory store behind a server; choose Beacon for per-developer, per-endpoint memory that needs no server at all. | OpenViking: shared multi-account store, but a server to run plus model dependencies and AGPL-3.0. Beacon: zero-server local JSONL + memory.db, but no multi-user backend (sharing = committed skills or hosted tier). |
 | Basic Memory | 未收录 | Choose Beacon when the source of truth must be every harness's captured sessions with a review gate; choose Basic Memory when you want a local-first knowledge base of notes the AI remembers, without session telemetry. | Basic Memory (basicmachines-co, ~4.1k stars, AGPL-3.0, active 2026-09) is note-centric local memory over MCP; no cross-harness trace capture, no approval loop. Not added in this tab-intake batch. |
 

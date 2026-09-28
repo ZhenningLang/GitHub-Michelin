@@ -2,7 +2,7 @@
 name: Graphiti
 slug: graphiti
 repo: https://github.com/getzep/graphiti
-category: agent-memory
+category: graph-memory
 tags: [agent-memory, knowledge-graph, graphiti, library]
 language: Python
 license: Apache-2.0
@@ -78,7 +78,7 @@ health:
 
 Build Real-Time Knowledge Graphs for AI Agents
 
-![Graphiti — 健康度雷达](../../assets/health/graphiti.zh.svg)
+![Graphiti — 健康度雷达](../../../assets/health/graphiti.zh.svg)
 
 ## 何时使用
 
@@ -97,10 +97,10 @@ Build Real-Time Knowledge Graphs for AI Agents
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ByteRover CLI](byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [claude-mem](claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Letta (MemGPT)](letta.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ByteRover CLI](../coding-agent-memory/byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [claude-mem](../coding-agent-memory/claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Letta (MemGPT)](../app-memory/letta.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Graphiti 对照。 | Graphiti 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Graphiti 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

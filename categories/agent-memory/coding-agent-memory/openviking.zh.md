@@ -3,7 +3,7 @@ name: OpenViking
 slug: openviking
 repo: https://github.com/volcengine/OpenViking
 homepage: https://openviking.ai/
-category: agent-memory
+category: coding-agent-memory
 tags: [agent-memory, context-database, agentic-rag, coding-agent, claude-code, openclaw, mcp, hooks, multi-tenant, agpl]
 language: Python
 license: AGPL-3.0
@@ -87,11 +87,11 @@ health:
 
 自托管的上下文数据库：把 agent 的文档、长期记忆和技能放进同一个 `viking://` 虚拟文件系统，用「目录树 + 语义检索 + 三层摘要按需加载」组织，再靠 hooks、MCP 或宿主原生插件槽交给你的编码 agent 使用。
 
-![OpenViking — 健康度雷达](../../assets/health/openviking.zh.svg)
+![OpenViking — 健康度雷达](../../../assets/health/openviking.zh.svg)
 
 ## 何时使用
 
-你在多个仓库上同时开着几个编码 agent——一个窗口 Claude Code，另一个窗口 Codex 或 OpenClaw——而每一个都从零开始：你的写作偏好、上次决定砍掉的那个队列、上周贴进去的设计文档，全没了。常见答法各自只走了一半。按 agent 分的 markdown 记忆文件（OpenClaw 就是一棵 `memory/` 目录加一个小的 SQLite 索引）给你留下可读的东西，却没法按「意思」把一句半记得的话找回来；[claude-mem](claude-mem.zh.md) 这类本地钩子工具修好了单机上的单个 agent，但没有服务端、没有共享存储、也没有文档这一侧；[Mem0](mem0.zh.md) 或 [Zep](zep.zh.md) 这类应用记忆 API 是给产品代码用的形状，不是给一桌面 agent 用的。你起一个 `openviking-server`，把每个 agent 的插件指向它，就得到一份既装得下你喂进去的文档、又装得下会话产出的记忆的存储。
+你在多个仓库上同时开着几个编码 agent——一个窗口 Claude Code，另一个窗口 Codex 或 OpenClaw——而每一个都从零开始：你的写作偏好、上次决定砍掉的那个队列、上周贴进去的设计文档，全没了。常见答法各自只走了一半。按 agent 分的 markdown 记忆文件（OpenClaw 就是一棵 `memory/` 目录加一个小的 SQLite 索引）给你留下可读的东西，却没法按「意思」把一句半记得的话找回来；[claude-mem](claude-mem.zh.md) 这类本地钩子工具修好了单机上的单个 agent，但没有服务端、没有共享存储、也没有文档这一侧；[Mem0](../app-memory/mem0.zh.md) 或 [Zep](../graph-memory/zep.zh.md) 这类应用记忆 API 是给产品代码用的形状，不是给一桌面 agent 用的。你起一个 `openviking-server`，把每个 agent 的插件指向它，就得到一份既装得下你喂进去的文档、又装得下会话产出的记忆的存储。
 
 相对「纯文件加 skills」这个答法，决定性的取舍不是存得更多，而是**组织、发现和记忆生命周期**。文件树只有在 agent 已经知道该看哪里时才算好索引；OpenViking 保留了树（agent 照样 `ls`、`tree`、`read`），但在目录名底下加了向量索引，在每个目录上面加了一句摘要和一段概览，于是一次查询不必靠文件名也能落到对的子树。它还把「写记忆」变成有人负责的事：会话结束时由服务端抽取、去重、合并记忆，而不是指望 agent 自己记得归档一条笔记。代价是你为这些引入一个常驻服务、两个模型依赖，以及技术栈里一个 AGPL 组件。
 
@@ -99,7 +99,7 @@ health:
 
 你装好服务端，`viking://` 后面的事全归它：正文存在 AGFS（本地盘或 S3），独立的向量索引只存 URI 和向量，每个目录都带自动生成的摘要（L0）和概览（L1），让 agent 在决定读全文（L2）之前先判断相关性。喂数据有两条路——文档走 `ov add-resource`，会话走 agent 自己的插件，你干活时它顺手捕获对话轮次。检索不是一次向量查询：深层 `search` 会把你的问题扩成几个带类型的子查询，从根目录逐层往下走、再重排，返回带片段和 URI 的结果；而每轮自动召回刻意只搜记忆和技能，资源文档留给模型自己主动取。记忆那条链以 session commit 为轴：归档的历史先被概括，再按记忆 schema 抽候选，然后和已有记忆比对，决定新建、合并还是丢弃。你要做的只是把服务起好、装上对应 harness 的插件、把资料喂进去；之后的召回与捕获循环归它，真正需要你调的旋钮是记忆归属——插件默认从 git `origin` 推导，所以一份仓库一份记忆。
 
-![openviking — 主干用户故事](../../assets/flow/openviking.zh.svg)
+![openviking — 主干用户故事](../../../assets/flow/openviking.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/openviking.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,23 +119,23 @@ health:
 
 ## 何时不用
 
-- **AGPL-3.0 对你就是阻碍。** 主仓是 AGPL-3.0（只有 `crates/ov_cli` 和 `examples/` 是 Apache-2.0），火山引擎还在上面卖授权自托管版，一旦做成对外提供的网络服务就牵扯 copyleft 义务。这个许可也不是无关紧要的历史：首次提交（2026-01-29）带的是 Apache-2.0，2026-03-30 才切成 AGPL-3.0（PR #1085）。如果不能接受，改选许可宽松的记忆服务，例如 [Mem0](mem0.zh.md) 或 [Zep](zep.zh.md)，或者直接用托管产品、不做再分发。
+- **AGPL-3.0 对你就是阻碍。** 主仓是 AGPL-3.0（只有 `crates/ov_cli` 和 `examples/` 是 Apache-2.0），火山引擎还在上面卖授权自托管版，一旦做成对外提供的网络服务就牵扯 copyleft 义务。这个许可也不是无关紧要的历史：首次提交（2026-01-29）带的是 Apache-2.0，2026-03-30 才切成 AGPL-3.0（PR #1085）。如果不能接受，改选许可宽松的记忆服务，例如 [Mem0](../app-memory/mem0.zh.md) 或 [Zep](../graph-memory/zep.zh.md)，或者直接用托管产品、不做再分发。
 - **你只是想让单个开发者的单个编码 agent 记住一个仓库。** 用 [claude-mem](claude-mem.zh.md)，或者就写记忆文件加一份用心的 `AGENTS.md`。OpenViking 会给一个本地钩子工具已经解决的问题再添上服务端、embedding 模型、视觉模型和一套索引，而你并不使用那份多租户能力，却要付它的运维成本。
-- **你需要把记忆嵌进自己要发布的应用里。** OpenViking 是你自己运行、通过 HTTP 或 MCP 调用的服务，不是可嵌入的库；记忆属于产品代码时，选 [Mem0](mem0.zh.md) 或 [LangMem](langmem.zh.md)。
+- **你需要把记忆嵌进自己要发布的应用里。** OpenViking 是你自己运行、通过 HTTP 或 MCP 调用的服务，不是可嵌入的库；记忆属于产品代码时，选 [Mem0](../app-memory/mem0.zh.md) 或 [LangMem](../app-memory/langmem.zh.md)。
 - **你提供不了 embedding 模型，或者提供不了视觉模型。** 摄取和语义概括两个都要（云端或本地 Ollama 都行），所以「离线且不接模型」不是它支持的形态。
 - **对话内容不能离开本进程。** 它按设计捕获每一次提问、每一轮回答，以及超过 20000 字符的工具输出；服务端在本机时数据留在你机器上，但一旦指向共享或云端端点，你就是在上传自己的工作内容。不能接受的话，就让存储留在本地，或者继续用基于文件的记忆。
 - **你需要一个能长期在它之上搭建的稳定接口。** 仓库只有八个月大，PyPI 上自标 `Development Status :: 3 - Alpha`，还积着约 500 个待合的 PR，而且已经跨过 v0.3 到 v0.4 `[推断]`；只有能吸收这种变更节奏，才把记忆放进关键路径，否则换一个更老的服务。
-- **你真正想要的其实是文档 RAG。** 如果场景里没有会话记忆，[Milvus](../rag-retrieval/milvus.zh.md) 这类向量库、或 [PageIndex](../rag-retrieval/pageindex.zh.md) 这类文档树检索器，都比一个顺手管 agent 的上下文数据库更小。
+- **你真正想要的其实是文档 RAG。** 如果场景里没有会话记忆，[Milvus](../../rag-retrieval/milvus.zh.md) 这类向量库、或 [PageIndex](../../rag-retrieval/pageindex.zh.md) 这类文档树检索器，都比一个顺手管 agent 的上下文数据库更小。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Mem0](mem0.zh.md) | ✅ | 记忆属于你的应用内部、你要的是一次库调用而不是一个服务时选 Mem0；一份存储要同时服务多个 agent 和你的文档时选 OpenViking。 | Mem0 给你与模型无关的记忆 API（Python/TypeScript，任意 LLM），自身不需要任何基础设施；OpenViking 多了服务端、资源摄取和分层目录检索，也因此把这些运维与许可成本记在你账上。 |
-| [Zep](zep.zh.md) | ✅ | 记忆指的是关于用户随时间变化的事实、你需要时间失效和图查询时选 Zep；上下文里代码、文档和技能与对话同等重要时选 OpenViking。 | 两者都是可自托管的记忆服务；Zep 的强项是能把过期事实退掉的时间知识图谱，OpenViking 的强项是 `viking://` 文件系统——目录自带摘要，正文可以是任何摄取进来的文档。 |
+| [Mem0](../app-memory/mem0.zh.md) | ✅ | 记忆属于你的应用内部、你要的是一次库调用而不是一个服务时选 Mem0；一份存储要同时服务多个 agent 和你的文档时选 OpenViking。 | Mem0 给你与模型无关的记忆 API（Python/TypeScript，任意 LLM），自身不需要任何基础设施；OpenViking 多了服务端、资源摄取和分层目录检索，也因此把这些运维与许可成本记在你账上。 |
+| [Zep](../graph-memory/zep.zh.md) | ✅ | 记忆指的是关于用户随时间变化的事实、你需要时间失效和图查询时选 Zep；上下文里代码、文档和技能与对话同等重要时选 OpenViking。 | 两者都是可自托管的记忆服务；Zep 的强项是能把过期事实退掉的时间知识图谱，OpenViking 的强项是 `viking://` 文件系统——目录自带摘要，正文可以是任何摄取进来的文档。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | 单个开发者的机器、要本地化足迹时选 claude-mem；同一份上下文要跨团队或跨一批 agent 共享时选 OpenViking。 | claude-mem 是本地钩子加 MCP 的一层，用 SQLite 加向量库，没有服务端；OpenViking 做到账号、用户、peer 三级隔离，这正是你要买的能力，也正是你要接的运维负担。 |
-| [Letta](letta.zh.md) | ✅ | 你想要一个运行时接管 agent 循环和它自编辑的记忆时选 Letta；agent 已经存在、你只想给它们上下文时选 OpenViking。 | Letta 会替换掉 agent 本体；OpenViking 靠 hooks、MCP 或 `contextEngine` 槽嵌在 Claude Code、Codex、OpenClaw 之下，你保住现有 harness，也一并继承它的生命周期习性。 |
-| [PageIndex](../rag-retrieval/pageindex.zh.md) | ✅ | 我们的评价：只做文档上的层次化问答、且不想引入向量库时选 PageIndex。取舍：机器部件少得多，但记忆这一侧完全是空的——没有捕获循环、没有记忆抽取、也没有多租户服务。 | PageIndex 直接在文档树上推理、不需要 embedding；OpenViking 保留向量索引并补上记忆生命周期，为覆盖更多活儿付出更多活动部件。 |
+| [Letta](../app-memory/letta.zh.md) | ✅ | 你想要一个运行时接管 agent 循环和它自编辑的记忆时选 Letta；agent 已经存在、你只想给它们上下文时选 OpenViking。 | Letta 会替换掉 agent 本体；OpenViking 靠 hooks、MCP 或 `contextEngine` 槽嵌在 Claude Code、Codex、OpenClaw 之下，你保住现有 harness，也一并继承它的生命周期习性。 |
+| [PageIndex](../../rag-retrieval/pageindex.zh.md) | ✅ | 我们的评价：只做文档上的层次化问答、且不想引入向量库时选 PageIndex。取舍：机器部件少得多，但记忆这一侧完全是空的——没有捕获循环、没有记忆抽取、也没有多租户服务。 | PageIndex 直接在文档树上推理、不需要 embedding；OpenViking 保留向量索引并补上记忆生命周期，为覆盖更多活儿付出更多活动部件。 |
 
 ## 技术栈
 

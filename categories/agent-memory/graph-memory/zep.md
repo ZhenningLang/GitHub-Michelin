@@ -2,7 +2,7 @@
 name: Zep
 slug: zep
 repo: https://github.com/getzep/zep
-category: agent-memory
+category: graph-memory
 tags: [agent-memory, knowledge-graph, zep, service]
 language: Python
 license: Apache-2.0
@@ -67,7 +67,7 @@ health:
 
 Zep \| Examples, Integrations, & More
 
-![Zep — health radar](../../assets/health/zep.svg)
+![Zep — health radar](../../../assets/health/zep.svg)
 
 ## When to use
 
@@ -86,10 +86,10 @@ This first-pass page exists because Zep was repeatedly useful as a comparison ca
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ByteRover CLI](byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
-| [claude-mem](claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
-| [Claude Subconscious](claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
-| [Letta (MemGPT)](letta.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
+| [ByteRover CLI](../coding-agent-memory/byterover.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
+| [claude-mem](../coding-agent-memory/claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
+| [Letta (MemGPT)](../app-memory/letta.md) | ✅ | When you need the established in-index option for this category, compare it against Zep before switching. | Zep is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Zep only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

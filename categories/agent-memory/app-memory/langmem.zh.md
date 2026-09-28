@@ -2,7 +2,7 @@
 name: LangMem
 slug: langmem
 repo: https://github.com/langchain-ai/langmem
-category: agent-memory
+category: app-memory
 tags: [agent-memory, knowledge-graph, langmem, library]
 language: Python
 license: MIT
@@ -74,7 +74,7 @@ health:
 
 LangMem 是 `agent-memory` 分类下的开源仓库。
 
-![LangMem — 健康度雷达](../../assets/health/langmem.zh.svg)
+![LangMem — 健康度雷达](../../../assets/health/langmem.zh.svg)
 
 ## 何时使用
 
@@ -93,10 +93,10 @@ LangMem 是 `agent-memory` 分类下的开源仓库。
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ByteRover CLI](byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [claude-mem](claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Graphiti](graphiti.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ByteRover CLI](../coding-agent-memory/byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [claude-mem](../coding-agent-memory/claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Graphiti](../graph-memory/graphiti.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 LangMem 对照。 | LangMem 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 LangMem 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

@@ -5,7 +5,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 3D-Speaker,categories/speech/antspeaker.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
-[Cipher](https://github.com/campfirein/cipher),categories/agent-memory/claude-subconscious.md,,no
+[Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -117,7 +117,7 @@ AWS official MCP servers (standalone),categories/agent-skills/vendor-collections
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
-Basic Memory,categories/agent-memory/agent-beacon.md,,no
+Basic Memory,categories/agent-memory/coding-agent-memory/agent-beacon.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Bazarr,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-agent-skills.md,,no
@@ -186,7 +186,7 @@ Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orche
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
-CLAUDE.md (built-in),categories/agent-memory/claude-subconscious.md,,no
+CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
 Cloudflare Turnstile,categories/captcha/capjs.md,,no
@@ -454,7 +454,7 @@ LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
-Letta Code,categories/agent-memory/claude-subconscious.md,,no
+Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice,categories/office-editors/collabora-online.md,,no
@@ -647,10 +647,10 @@ Plain Docker / containerd,categories/sandboxing/opensandbox.md,,no
 Plain Git + agent's own session logs,categories/agent-tooling/session-history/entire-cli.md,,no
 plain logging / `print`,categories/dev-utilities/data-tools/tqdm.md,,no
 Plain markdown `MEMORY.md` / `TODO.md`,categories/agent-tooling/work-state/beads.md,,no
-Plain pgvector + your own extraction,categories/agent-memory/mem0.md,,no
+Plain pgvector + your own extraction,categories/agent-memory/app-memory/mem0.md,,no
 plain PyTorch (+ Triton),categories/llm-inference/serving-engines/modular.md,,no
 Plain tmux + `git worktree` scripts,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
-plain vector DB (pgvector / Chroma),categories/agent-memory/memori.md,,no
+plain vector DB (pgvector / Chroma),categories/agent-memory/app-memory/memori.md,,no
 Platform retention (MWAA/Composer settings),categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Platypus,categories/ml-research/pymoo.md,,no
 pnpm / Yarn,categories/dev-utilities/editors-and-runtimes/bun.md,,no

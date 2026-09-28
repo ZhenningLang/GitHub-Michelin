@@ -2,7 +2,7 @@
 name: LangMem
 slug: langmem
 repo: https://github.com/langchain-ai/langmem
-category: agent-memory
+category: app-memory
 tags: [agent-memory, knowledge-graph, langmem, library]
 language: Python
 license: MIT
@@ -74,7 +74,7 @@ health:
 
 LangMem is an open-source repository in the agent-memory category.
 
-![LangMem — health radar](../../assets/health/langmem.svg)
+![LangMem — health radar](../../../assets/health/langmem.svg)
 
 ## When to use
 
@@ -93,10 +93,10 @@ This first-pass page exists because LangMem was repeatedly useful as a compariso
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [ByteRover CLI](byterover.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
-| [claude-mem](claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
-| [Claude Subconscious](claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
-| [Graphiti](graphiti.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
+| [ByteRover CLI](../coding-agent-memory/byterover.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
+| [claude-mem](../coding-agent-memory/claude-mem.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
+| [Graphiti](../graph-memory/graphiti.md) | ✅ | When you need the established in-index option for this category, compare it against LangMem before switching. | LangMem is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose LangMem only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

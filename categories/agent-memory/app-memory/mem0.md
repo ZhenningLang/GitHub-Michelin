@@ -2,7 +2,7 @@
 name: Mem0
 slug: mem0
 repo: https://github.com/mem0ai/mem0
-category: agent-memory
+category: app-memory
 tags: [agent-memory, long-term-memory, llm-agnostic, vector-store, rag, personalization]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 Every new chat session starts from zero — your assistant re-asks what it already knew. Mem0 runs an LLM extraction pass over each conversation turn, stores the durable facts it distills ("user is vegetarian") in a vector store, and hands back only the relevant ones before the next reply, so you don't stuff whole transcripts into the prompt.
 
-![mem0 — health radar](../../assets/health/mem0.svg)
+![mem0 — health radar](../../../assets/health/mem0.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ Mem0 is built for exactly this. You call `memory.add(messages, user_id=...)` aft
 
 Mem0 sits inside your app process, between your conversation loop and the storage you've picked. On `add()`, a single LLM pass reads the turn, extracts memory-worthy facts, embeds each one, and writes it to a vector store (Qdrant by default); entities are extracted, embedded, and linked across memories to boost retrieval. On `search()`, three matchers — vector similarity, BM25 keyword, and entity matching — score in parallel and are fused, with time-aware ranking that picks the right dated instance when you ask about current state vs past events; the top-k memories come back as plain strings and *you* compose them into the system prompt. What stays yours: the LLM and embedder behind it (defaults `gpt-5-mini` and `text-embedding-3-small`), the vector store, and the hygiene of accumulated memories — extraction is ADD-only, so nothing self-corrects. The self-hosted server and paid Platform add dashboard, auth/API keys, and (on Platform) proprietary tuning on top of the same shape.
 
-![mem0 — backbone user story](../../assets/flow/mem0.svg)
+![mem0 — backbone user story](../../../assets/flow/mem0.svg)
 
 <!-- flow-steps:begin (generated from flows/mem0.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -122,8 +122,8 @@ Mem0 sits inside your app process, between your conversation loop and the storag
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Memori](memori.md) | ✅ | Choose Memori when database-native auditability matters more than drop-in vector memory. | SQL-first / database-native memory (queryable, auditable, no vector store required); Mem0 leans vector + LLM extraction and is more "drop-in" but less inspectable. |
-| [claude-subconscious](claude-subconscious.md) | ✅ | Choose claude-subconscious when you want a Claude-specific hook memory experiment. | A Claude-specific subconscious/reflection memory experiment; Mem0 is general-purpose and LLM-agnostic across many providers. |
-| [Zep](zep.md) / [Graphiti](graphiti.md) | ✅ | Choose Zep or Graphiti when temporal graph memory and explicit invalidation are central. | Temporal knowledge-graph memory with bi-temporal edges and explicit invalidation; stronger at evolving/contradicting facts where Mem0's ADD-only model accumulates. |
+| [claude-subconscious](../coding-agent-memory/claude-subconscious.md) | ✅ | Choose claude-subconscious when you want a Claude-specific hook memory experiment. | A Claude-specific subconscious/reflection memory experiment; Mem0 is general-purpose and LLM-agnostic across many providers. |
+| [Zep](../graph-memory/zep.md) / [Graphiti](../graph-memory/graphiti.md) | ✅ | Choose Zep or Graphiti when temporal graph memory and explicit invalidation are central. | Temporal knowledge-graph memory with bi-temporal edges and explicit invalidation; stronger at evolving/contradicting facts where Mem0's ADD-only model accumulates. |
 | [Letta (MemGPT)](letta.md) | ✅ | Choose Letta when you need a stateful agent runtime, not just a memory library. | Agent runtime with self-editing memory + a stateful server, not just a library; heavier, owns the agent loop rather than slotting under yours. |
 | [LangMem (LangChain)](langmem.md) | ✅ | Choose LangMem when your memory layer should stay inside LangChain/LangGraph. | Memory utilities tied to the LangChain/LangGraph ecosystem; Mem0 is framework-neutral. |
 | Plain pgvector + your own extraction | 未收录 | Choose plain pgvector when full schema and retrieval control outweigh Mem0's packaged layer. | Full control, no extra dependency or platform; you build and maintain the extraction prompts, schema, and retrieval that Mem0 gives you out of the box. |

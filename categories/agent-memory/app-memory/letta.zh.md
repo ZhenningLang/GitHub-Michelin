@@ -2,7 +2,7 @@
 name: Letta (MemGPT)
 slug: letta
 repo: https://github.com/letta-ai/letta
-category: agent-memory
+category: app-memory
 tags: [agent-memory, knowledge-graph, letta, service]
 language: Python
 license: Apache-2.0
@@ -76,7 +76,7 @@ health:
 
 Platform for stateful agents: AI with advanced memory that can learn and self-improve over time.
 
-![Letta (MemGPT) — 健康度雷达](../../assets/health/letta.zh.svg)
+![Letta (MemGPT) — 健康度雷达](../../../assets/health/letta.zh.svg)
 
 ## 何时使用
 
@@ -95,9 +95,9 @@ Platform for stateful agents: AI with advanced memory that can learn and self-im
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ByteRover CLI](byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [claude-mem](claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Claude Subconscious](claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [ByteRover CLI](../coding-agent-memory/byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [claude-mem](../coding-agent-memory/claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Claude Subconscious](../coding-agent-memory/claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Mem0](mem0.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Letta (MemGPT) 对照。 | Letta (MemGPT) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Letta (MemGPT) 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 

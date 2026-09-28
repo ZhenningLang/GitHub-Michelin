@@ -2,7 +2,7 @@
 name: Claude Subconscious
 slug: claude-subconscious
 repo: https://github.com/letta-ai/claude-subconscious
-category: agent-memory
+category: coding-agent-memory
 tags: [claude-code, letta, plugin, cross-session-memory, hooks, demo]
 language: TypeScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 Claude Code 每个会话之间都会失忆，同一套偏好和决定你要一遍遍重讲。Claude Subconscious 用 hook 挂一个 Letta agent 在后台：它看你每一段 transcript，维护八个持久记忆块，并在你下一次 prompt 前把相关的指引“低语”回来——全程不碰 CLAUDE.md。
 
-![claude-subconscious — 健康度雷达](../../assets/health/claude-subconscious.zh.svg)
+![claude-subconscious — 健康度雷达](../../../assets/health/claude-subconscious.zh.svg)
 
 ## 何时使用
 
@@ -87,7 +87,7 @@ Claude Code 每个会话之间都会失忆，同一套偏好和决定你要一�
 
 四个 hook 包住你的 Claude Code 会话，一切都发生在它们的边界上。首次使用时插件会自动导入一个内置的 “Subconscious” Letta agent——除了 `LETTA_API_KEY` 之外零配置——此后一个 agent “大脑”跨你所有项目共享，而每个仓库只在 `.letta/claude/` 下保存自己的会话记账。每次回复结束后，`Stop` hook 把 transcript（用户消息、含思考块的助手回复、工具调用）解析进一个临时文件，再派生一个分离的后台 worker，因此从不阻塞你；worker 通过 Letta Code SDK 把 transcript 重放给 agent，agent 处理时可以顺带探索你的代码库——默认是只读工具（`Read` / `Grep` / `Glob` 加 `web_search` / `fetch_webpage`，经 `LETTA_SDK_TOOLS` 收紧或放开）——并重写它的八个记忆块（`core_directives`、`guidance`、`user_preferences`、`project_context`、`session_patterns`、`pending_items`、`self_improvement`、`tool_guidelines`）。在你下一次 prompt 之前，`UserPromptSubmit` hook 取回变化了的内容，以 `<letta_message>` / `<letta_memory_blocks>` XML 打到 stdout，Claude Code 把它折进上下文；`PreToolUse` 还能以同样方式注入中途更新。留在你手里的是：记忆质量取决于你给它配哪个模型，而 CLAUDE.md 永远不由插件写入——一切注入只发生在上下文里。
 
-![claude-subconscious — 主干用户故事](../../assets/flow/claude-subconscious.zh.svg)
+![claude-subconscious — 主干用户故事](../../../assets/flow/claude-subconscious.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-subconscious.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ Claude Code 每个会话之间都会失忆，同一套偏好和决定你要一�
 ## 何时不用
 
 - **生产 / 团队使用。** 作者明确写明这是“基于 Letta Code SDK 构建的 demo 应用，不打算用于生产”，并让你改用 Letta Code。不要在它上面搭团队工作流。
-- **你不用 Claude Code。** 它从头到尾是个 Claude Code 插件，依赖 Claude Code 的 hook 生命周期（`SessionStart` / `UserPromptSubmit` / `PreToolUse` / `Stop`）。它**不是**一个 LLM 无关、框架无关的记忆库；如果你要在自己的 agent 代码里嵌记忆，选 [Mem0](mem0.zh.md) 或 [Memori](memori.zh.md)。
+- **你不用 Claude Code。** 它从头到尾是个 Claude Code 插件，依赖 Claude Code 的 hook 生命周期（`SessionStart` / `UserPromptSubmit` / `PreToolUse` / `Stop`）。它**不是**一个 LLM 无关、框架无关的记忆库；如果你要在自己的 agent 代码里嵌记忆，选 [Mem0](../app-memory/mem0.zh.md) 或 [Memori](../app-memory/memori.zh.md)。
 - **你无法依赖外部 Letta 服务。** 它需要 `LETTA_API_KEY` 和一个可达的 Letta 后端（云端 `api.letta.com` 或自托管）。没有后端就没有记忆。这是每个会话边界上的硬网络依赖。
 - **涉密、不能外发的代码。** Stop hook 会把你的**完整会话 transcript** 发给 Letta agent，且 agent 在处理时拥有客户端工具权限：默认 `LETTA_SDK_TOOLS=read-only`（`Read`/`Grep`/`Glob` 加联网搜索/抓取），但 `full` 会授予 Bash、Edit、Write 和经 `Task` 派生 sub-agent。指向敏感仓库前请三思。
 - **你要确定性、可审计、完全自托管、无第三方大脑的记忆。** 记忆存在 Letta agent 里，而非你完全掌控的本地存储；行为依赖 agent 模型和 Letta API 语义。
@@ -119,8 +119,8 @@ Claude Code 每个会话之间都会失忆，同一套偏好和决定你要一�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Mem0](mem0.zh.md) | ✅ | 可移植的应用内嵌记忆比 Claude Code 插件更重要时，选 Mem0。 | 框架无关、可嵌进你自己 agent 的记忆**库/API**（Python/TS，任意 LLM）；不是 Claude Code 插件、也不是后台“低语”agent。要可移植、偏生产的记忆选它。 |
-| [Memori](memori.zh.md) | ✅ | 需要 SQL 原生记忆后端而非 Claude Code hook 时，选 Memori。 | SQL 原生的开源 agent 记忆引擎；同样 LLM/框架无关、可自托管。形态不同：是记忆后端，不是绑定 Claude Code 的插件。 |
+| [Mem0](../app-memory/mem0.zh.md) | ✅ | 可移植的应用内嵌记忆比 Claude Code 插件更重要时，选 Mem0。 | 框架无关、可嵌进你自己 agent 的记忆**库/API**（Python/TS，任意 LLM）；不是 Claude Code 插件、也不是后台“低语”agent。要可移植、偏生产的记忆选它。 |
+| [Memori](../app-memory/memori.zh.md) | ✅ | 需要 SQL 原生记忆后端而非 Claude Code hook 时，选 Memori。 | SQL 原生的开源 agent 记忆引擎；同样 LLM/框架无关、可自托管。形态不同：是记忆后端，不是绑定 Claude Code 的插件。 |
 | Letta Code | 未收录 | 想要同团队完整编码 agent 产品而不是这个 demo 时，选 Letta Code。 | 同团队的生产版本——Letta 平台上的完整编码 agent。README 明确推荐用它替代本 demo 做真实使用。 |
 | CLAUDE.md（内置） | 未收录 | 手动、确定的项目记忆已经足够时，选 CLAUDE.md。 | 手动、确定、零依赖的项目记忆。没有后台学习、没有跨项目大脑；靠你手工维护。Claude Subconscious 刻意不写这里。 |
 | [Cipher](https://github.com/campfirein/cipher) | 未收录 | 跨 IDE/CLI 的 MCP 记忆层比 Claude-only hook 更重要时，选 Cipher。 | 基于 MCP 的编码 agent 记忆层（经 MCP 跨 IDE/CLI 通用）；客户端支持比单工具插件更广。 |
