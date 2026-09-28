@@ -30,9 +30,9 @@
 | FlashML-org/FreeToken | add | done | categories/llm-inference/local-runtimes/freetoken.md |  | flashml-org/freetoken |
 | gastownhall/beads | sync | done | categories/agent-tooling/work-state/beads.md |  | gastownhall/beads |
 | genspark-ai/genoffice | add | done | categories/office-editors/genoffice.md |  | genspark-ai/genoffice |
-| Gentleman-Programming/engram | add | running |  |  | gentleman-programming/engram |
+| Gentleman-Programming/engram | add | done | categories/agent-memory/coding-agent-memory/engram.md |  | gentleman-programming/engram |
 | glincker/thesvg | add | running |  |  | glincker/thesvg |
-| harry0703/MangoDisk | add | pending |  |  | harry0703/mangodisk |
+| harry0703/MangoDisk | add | running |  |  | harry0703/mangodisk |
 | harry7557558/spirula-studio | add | pending |  |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | pending |  |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | pending |  |  | infinityloop1308/pipepipe |
