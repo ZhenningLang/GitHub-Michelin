@@ -1236,3 +1236,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **abliterator** | Use it when you want to script and inspect abliteration yourself against TransformerLens hooks — activation caching, direction scoring, weight patching — accepting a repo dormant since 2024-06. | MIT | D (4/6) | [EN](categories/model-editing/abliterator.md) · [中](categories/model-editing/abliterator.zh.md) |
 | **ErisForge** | Use it when you want a pip-installable library that can ablate *or add* a behavior direction on chosen decoder layers, score refusals and save the model — accepting a single-maintainer project with no `LICENSE` file. | MIT (declared) | "?" (2/6) | [EN](categories/model-editing/erisforge.md) · [中](categories/model-editing/erisforge.zh.md) |
 | **deccp** | Use it only for its Chinese-censorship focus: a Qwen2 un-censoring PoC with a hand-checked dataset and writeup, explicitly unsupported by its author. | Apache-2.0 | C (4/6) | [EN](categories/model-editing/deccp.md) · [中](categories/model-editing/deccp.zh.md) |
+
+### pentest
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Pentest Swarm AI** | Use it when authorized web/API scope is wide, breadth plus proven (exploited, evidence-captured) findings matter, and you must self-host with any tool-calling model (incl. fully local Ollama) — accepting an alpha-stage swarm scheduler, AGPL-3.0, and a single-maintainer bus factor. | AGPL-3.0 | C (6/6) | [EN](categories/pentest/pentest-swarm-ai.md) · [中](categories/pentest/pentest-swarm-ai.zh.md) |

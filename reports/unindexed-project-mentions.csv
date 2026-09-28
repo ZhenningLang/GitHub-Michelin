@@ -363,6 +363,7 @@ Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-serv
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 Gurobi / FICO Xpress,categories/optimization-solvers/highs.md,,no
 Gurobi · FICO Xpress,categories/optimization-solvers/INDEX.md,,no
+HackingBuddyGPT,categories/pentest/pentest-swarm-ai.md,,no
 Hand-rolled cleanup DAGs/scripts,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 Hand-rolled context/memory skills in your own repo,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
 Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/autogen.md,,no
@@ -388,6 +389,7 @@ Headroom (headroomlabs-ai/headroom),categories/agent-tooling/work-state/token-op
 Helicone,categories/llm-eval/pezzo.md,,no
 herdr-annotate / Plannotator TUI (same maintainer's terminal and TUI variants),categories/agent-tooling/supervision-surfaces/plannotator.md,,no
 Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
+HexStrike AI,categories/pentest/pentest-swarm-ai.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
@@ -615,6 +617,8 @@ Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
 Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Paste-your-own prompt,categories/agent-skills/ai-writing/de-ai-writing/ai-flavor-remover.md,,no
 pdm,categories/python-tooling/uv.md,,no
+PentAGI,categories/pentest/pentest-swarm-ai.md,,no
+PentestGPT,categories/pentest/pentest-swarm-ai.md,,no
 "Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
 Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no

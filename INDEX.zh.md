@@ -84,6 +84,7 @@
 | **design-editors** | 你自己跑的开源设计编辑器——本地优先或自托管的 Figma 级画布。 | [→](categories/design-editors/INDEX.zh.md) |
 | **learning-resources** | 策展型阅读路径与资源清单——读它去找某个领域的权威论文、规范或参考实现，而不是一堆博客。 | [→](categories/learning-resources/INDEX.zh.md) |
 | **model-editing** | 通过编辑模型已保存的权重来改变它的行为——消融（abliteration）及相关模型手术——而不是训练它。 | [→](categories/model-editing/INDEX.zh.md) |
+| **pentest** | 授权范围内 web 应用与 API 的自主／AI 辅助渗透测试——agent swarm、渗透测试自动化、漏洞利用链（授权优先）。 | [→](categories/pentest/INDEX.zh.md) |
 
 
 
