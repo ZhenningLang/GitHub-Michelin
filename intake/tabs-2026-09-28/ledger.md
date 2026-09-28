@@ -18,9 +18,9 @@
 | bivlked/amneziawg-installer | add | done | categories/networking/amneziawg-installer.md |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | done | categories/sandboxing/cloudflare-computer.md |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | done | categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md |  | code-yeongyu/oh-my-openagent |
-| Dammyjay93/interface-design | add | done | categories/agent-skills/design/interface-design.md |  | dammyjay93/interface-design |
-| derv82/wifit3 | add | running |  |  | derv82/wifit3 |
-| devdotfast/whiteboard | add | pending |  |  | devdotfast/whiteboard |
+| Dammyjay93/interface-design | add | done | categories/agent-skills/design/ui-taste/interface-design.md |  | dammyjay93/interface-design |
+| derv82/wifit3 | add | done | categories/pentest/wifit3.md |  | derv82/wifit3 |
+| devdotfast/whiteboard | add | running |  |  | devdotfast/whiteboard |
 | DietrichGebert/ponytail | add | pending |  |  | dietrichgebert/ponytail |
 | docker/docker-agent | add | pending |  |  | docker/docker-agent |
 | dontbesilent2025/dbskill | sync | pending |  |  | dontbesilent2025/dbskill |

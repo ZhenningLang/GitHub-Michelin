@@ -1232,3 +1232,4 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Pentest Swarm AI** | 当授权的 web／API 范围很宽、既要广度又要「已利用、留证据」的实证发现、且必须用任意支持工具调用的模型自托管（含全本地 Ollama）时用它——代价是 alpha 阶段的 swarm 调度器、AGPL-3.0 和单一维护者的巴士系数。 | AGPL-3.0 | C（6/6） | [中](categories/pentest/pentest-swarm-ai.zh.md) · [EN](categories/pentest/pentest-swarm-ai.md) |
+| **Wifit3** | 当授权目标是 Wi-Fi、而你手里是一台没有工具链可装的 Linux／Windows／macOS 笔记本时用它——代价是只有约 19 款受支持 USB 芯片可用、且 v0.x BETA 只有约 3 个月大。 | GPL-2.0 | C（6/6） | [中](categories/pentest/wifit3.zh.md) · [EN](categories/pentest/wifit3.md) |

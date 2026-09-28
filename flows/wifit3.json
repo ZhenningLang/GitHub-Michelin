@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Wifit3 does", "zh": "Wifit3 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the single-file binary for your OS and run it", "zh": "下载对应系统的单文件可执行程序并运行", "code": "wifit3-windows-x64.exe · ./wifit3-linux-x64"},
+    {"lane": "you", "en": "Plug in a supported USB adapter, pick it on the splash, click START", "zh": "插上受支持的 USB 网卡，在启动页选中它，点 START", "component": {"en": "splash / adapter picker", "zh": "启动页·网卡选择"}},
+    {"lane": "them", "en": "Binds the adapter to userland once, sidestepping the OS Wi-Fi stack entirely", "zh": "一次性把网卡绑到用户态，绕开系统 Wi-Fi 栈", "component": {"en": "OS setup module", "zh": "系统安装模块"}},
+    {"lane": "them", "en": "Its Python mini-driver claims the chip over USB, loads the vendor firmware, and sets monitor mode", "zh": "迷你驱动经 USB 接管芯片，上传厂商固件并写入监听模式", "component": {"en": "userland chipset driver", "zh": "用户态芯片驱动"}},
+    {"lane": "them", "en": "Channel-hops 2.4/5 GHz, aggregates all adapters, and lists APs with vendor/model fingerprints", "zh": "在 2.4/5 GHz 跳频扫描，聚合多卡，把 AP 指纹到品牌型号", "component": {"en": "scanner", "zh": "扫描页"}},
+    {"lane": "you", "en": "Focus one AP and start a campaign: deauth, PMKID, WPS, WEP, or EvilTwin", "zh": "聚焦 AP，发起战役：解除认证、PMKID、WPS、WEP、EvilTwin"},
+    {"lane": "them", "en": "Injects the 802.11 frames in pure Python, validates captures, and stores them in the Vault", "zh": "纯 Python 注入组帧，存入 Vault", "code": ".pcap · .hc22000", "component": {"en": "campaign + vault", "zh": "战役与 Vault"}}
+  ],
+  "value": {"en": "A crackable WPA hash from a Windows or macOS laptop — no Kali VM, no kernel drivers, no aircrack-ng", "zh": "Windows 或 macOS 上直接拿到可破解的 WPA 哈希——不用 Kali、内核驱动或 aircrack-ng"},
+  "sources": [
+    "README.md — Installation & Running (Option 1 binaries: wifit3-windows-x64.exe / wifit3-linux-x64 / wifit3-macos-universal2)",
+    "README.md — One-Time Driver Setup (START button; Linux pkexec/sudo writes udev permissions and blocklists in /etc/modprobe.d/; macOS Allow dialog; Windows UAC installs WinUSB; VirtualBox USB Filters)",
+    "README.md — How it Works: Mini-Drivers (userland Python ports of Linux kernel drivers, USB bulk/control transfers, monitor mode in user space)",
+    "README.md — Features (multi-card aggregation, channel hopping, AP & client identification, handshake/PMKID/WPS/WEP/EvilTwin campaigns, exports .pcap and .hc22000 files)",
+    "src/wifit3/vault/tools/hashcat.py — launches user-provided hashcat_exe with -m 22000 against Vault captures"
+  ]
+}
