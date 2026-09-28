@@ -2,7 +2,7 @@
 name: Interface Design
 slug: interface-design
 repo: https://github.com/Dammyjay93/interface-design
-category: design
+category: ui-taste
 tags: [design-system, ui-craft, visual-hierarchy, design-memory, anti-slop, claude-code, codex]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 You ask your coding agent for another settings page and it quietly re-decides every design question from scratch — 38px buttons this time, 17px gaps, the same Inter default as last session — so the app looks like four prototypes stapled together. Interface Design is a Claude Code / Codex skill that makes the agent explore the product's domain, decide direction and tokens once, restate that decision before every component, and persist it in `.interface-design/system.md` so later sessions reuse it.
 
-![Interface Design — health radar](../../../assets/health/interface-design.svg)
+![Interface Design — health radar](../../../../assets/health/interface-design.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ Compared with the sibling taste packs, the deciding tradeoff is **memory plus en
 
 The entire repo is instruction markdown with no runtime — a `SKILL.md` of roughly 320 lines, two command files, and reference templates that a skill-capable agent loads when the request is product-UI work (Claude Code auto-invokes or `/interface-design`; Codex scans `~/.agents/skills`, and `agents/openai.yaml` allows implicit invocation). What the project does for you: it imposes a decision protocol — an intent brief (who the human is, what they must accomplish, how it should feel), four mandatory domain-exploration outputs (domain vocabulary, color world, a product-specific signature, and the three defaults you're rejecting), a per-component checkpoint restating intent, hierarchy, palette, depth, surfaces, typography and spacing with a *why* for each, and concrete craft rules (type scale as a ratio, one committed depth strategy, low-opacity rgba borders, ~60/30/10 accent budget, sub-300ms custom easing). What stays yours: confirming the proposed direction, approving the save to the system file, and the fact that enforcement is advisory — the checkpoint is mandatory prompt text, not a lint gate, and nothing blocks a build. Two conditionals are explicit in the skill: it renders live specimens only if the harness has an inline render tool, and offers direction boards / paintovers only if an image-generation tool exists — it tells the agent to check, never assume.
 
-![interface-design — backbone user story](../../../assets/flow/interface-design.svg)
+![interface-design — backbone user story](../../../../assets/flow/interface-design.svg)
 
 <!-- flow-steps:begin (generated from flows/interface-design.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,7 +104,7 @@ The entire repo is instruction markdown with no runtime — a `SKILL.md` of roug
 
 - **Marketing pages, landings, campaigns, brand-only work.** The skill's own description rules them out; its craft is tuned to dense product surfaces. Use [taste-skill](taste-skill.md) (its signature domain is landing-page anti-slop) or [Hallmark](hallmark.md) for one-off web briefs.
 - **You're adjusting one small component and there's no direction question.** The protocol wants four exploration outputs and a seven-line checkpoint before *every* UI edit — heavy ceremony for a padding fix. Use [make-interfaces-feel-better](make-interfaces-feel-better.md)'s ~16 named detail rules, which cost nothing per component.
-- **You need deterministic enforcement.** Everything is prompt text an agent can skip or dilute; "mandatory" is mandatory in prose. For a real artifact gate, use [Impeccable](../../ai-design-generation/impeccable.md)'s detector or a CSS linter in CI.
+- **You need deterministic enforcement.** Everything is prompt text an agent can skip or dilute; "mandatory" is mandatory in prose. For a real artifact gate, use [Impeccable](../../../ai-design-generation/impeccable.md)'s detector or a CSS linter in CI.
 - **You want pre-computed style candidates, not reasoning.** [ui-ux-pro-max](ui-ux-pro-max.md) queries a CSV-backed style/palette/font database and emits concrete options plus an accessibility checklist; this pack makes the agent derive everything from your product's domain.
 - **You already have a governed design system or brand tokens.** Inferred directions and a `system.md` of the agent's own can fight mandated tokens; encode the real system directly and skip the taste layer.
 - **You already run another opinionated taste skill.** Two anti-slop packs loaded together produce overlapping, conflicting directives on typography, color and motion — pick one taste source of truth.
@@ -118,7 +118,7 @@ The entire repo is instruction markdown with no runtime — a `SKILL.md` of roug
 | [UI UX Pro Max Skill](ui-ux-pro-max.md) | ✅ | Pick ui-ux-pro-max when you want retrieval over curated style/palette/font databases plus a pre-delivery accessibility checklist; pick Interface Design for a reasoning-and-memory protocol. | The retrieval engine returns concrete candidates fast but is bounded by its curated data; this pack's output is only as good as the agent's adherence to the protocol. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Pick make-interfaces-feel-better for near-zero-ceremony detail polish — ~16 named mechanical fixes and nothing else; pick Interface Design when hierarchy, direction and cross-session consistency are the gap. | The checklist never argues about design direction; this pack sets direction and remembers it, at the cost of a mandatory checkpoint on every component. |
 | [Hallmark](hallmark.md) | ✅ | Pick Hallmark for explicit one-pass verbs (build, audit, redesign, study) on a web page; pick Interface Design when the same app must stay coherent across many agent sessions. | Hallmark is a workflow-shaped brief; Interface Design adds the memory file and a blocking design-review command, but only for product-UI scope. |
-| [Impeccable](../../ai-design-generation/impeccable.md) | ✅ | Pick Impeccable when AI-slop detection must be deterministic — a CLI over existing artifacts you can run in CI; pick Interface Design to steer the agent before the slop is written. | The detector gates what exists; the skill influences what will be generated — they solve different ends of the same problem, not each other's. |
+| [Impeccable](../../../ai-design-generation/impeccable.md) | ✅ | Pick Impeccable when AI-slop detection must be deterministic — a CLI over existing artifacts you can run in CI; pick Interface Design to steer the agent before the slop is written. | The detector gates what exists; the skill influences what will be generated — they solve different ends of the same problem, not each other's. |
 
 ## Health & viability
 

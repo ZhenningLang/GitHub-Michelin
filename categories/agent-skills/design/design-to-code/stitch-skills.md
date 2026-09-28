@@ -2,7 +2,7 @@
 name: Stitch Skills
 slug: stitch-skills
 repo: https://github.com/google-labs-code/stitch-skills
-category: design
+category: design-to-code
 tags: [agent-skills, ui-design, mcp, stitch, design-to-code]
 language: TypeScript
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 A library of Agent Skills (Agent Skills open standard) that drive Google's **Stitch** MCP server — generating UI screens from text/images, converting code↔design, extracting a `DESIGN.md`, and shipping React / React Native / shadcn components out of a Stitch project.
 
-![stitch-skills — health radar](../../../assets/health/stitch-skills.svg)
+![stitch-skills — health radar](../../../../assets/health/stitch-skills.svg)
 
 ## When to use
 
@@ -90,10 +90,10 @@ You install Stitch Skills so the agent itself can run the loop. With the Stitch 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [designer-skills](designer-skills.md) | ✅ | Pick designer-skills when you need generic designer-persona guidance and no backend dependency. | Generic designer-persona skill pack for UI/UX taste; no required backend. Stitch Skills is heavier (needs the MCP server) but actually *generates and converts* designs rather than only advising. |
-| [ui-ux-pro-max](ui-ux-pro-max.md) | ✅ | Pick ui-ux-pro-max when you want broad, vendor-neutral UI/UX guidance and critique. | Broad UI/UX skill collection focused on guidance and critique; vendor-neutral. Choose it when you want portable taste, Stitch Skills when you're committed to the Stitch generation loop. |
-| [taste-skill](taste-skill.md) | ✅ | Pick taste-skill when you need pure taste and anti-generic critique without Stitch plumbing. | Pure "taste"/anti-generic critique pack; overlaps only with Stitch's `taste-design` slice, with none of the code↔design plumbing or lock-in. |
-| [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Pick make-interfaces-feel-better when you need advisory interaction polish for existing UI. | Interaction/polish-focused skills; advisory micro-improvements. Stitch Skills operates at the screen-generation and component-export layer instead. |
+| [designer-skills](../ui-taste/designer-skills.md) | ✅ | Pick designer-skills when you need generic designer-persona guidance and no backend dependency. | Generic designer-persona skill pack for UI/UX taste; no required backend. Stitch Skills is heavier (needs the MCP server) but actually *generates and converts* designs rather than only advising. |
+| [ui-ux-pro-max](../ui-taste/ui-ux-pro-max.md) | ✅ | Pick ui-ux-pro-max when you want broad, vendor-neutral UI/UX guidance and critique. | Broad UI/UX skill collection focused on guidance and critique; vendor-neutral. Choose it when you want portable taste, Stitch Skills when you're committed to the Stitch generation loop. |
+| [taste-skill](../ui-taste/taste-skill.md) | ✅ | Pick taste-skill when you need pure taste and anti-generic critique without Stitch plumbing. | Pure "taste"/anti-generic critique pack; overlaps only with Stitch's `taste-design` slice, with none of the code↔design plumbing or lock-in. |
+| [make-interfaces-feel-better](../ui-taste/make-interfaces-feel-better.md) | ✅ | Pick make-interfaces-feel-better when you need advisory interaction polish for existing UI. | Interaction/polish-focused skills; advisory micro-improvements. Stitch Skills operates at the screen-generation and component-export layer instead. |
 | Stitch MCP server itself (`stitch.withgoogle.com`) | 未收录 (hosted, not a repo) | Pick the hosted Stitch MCP server when you need the actual engine these skills call. | The actual engine these skills call; it's a hosted product, not an indexable repo. This repo is just the agent-facing skill wrappers around it. |
 | v0 / Lovable / other AI UI generators | 未收录 | Pick hosted AI UI generators when you want competing design-to-code products rather than agent skills. | Competing AI design-to-code products, mostly hosted SaaS rather than agent-skill repos; different unit of consumption (you drive their UI, not your agent). |
 

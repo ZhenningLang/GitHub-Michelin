@@ -2,7 +2,7 @@
 name: ai-website-cloner-template
 slug: ai-website-cloner-template
 repo: https://github.com/JCodesMore/ai-website-cloner-template
-category: design
+category: design-to-code
 tags: [agent-skill, design, ai-website-cloner-template, skill-pack]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 Clone any website with one command using AI coding agents
 
-![ai-website-cloner-template — 健康度雷达](../../../assets/health/ai-website-cloner-template.zh.svg)
+![ai-website-cloner-template — 健康度雷达](../../../../assets/health/ai-website-cloner-template.zh.svg)
 
 ## 何时使用
 
@@ -79,7 +79,7 @@ Clone any website with one command using AI coding agents
 ## 何时不用
 
 - **你不拥有或未获授权复刻目标站点。** 上游 README 明确排除 phishing、impersonation、冒充他人设计，以及违反服务条款的用途。
-- **你只是找设计灵感。** 用 [Hallmark](hallmark.zh.md)、[Taste-Skill](taste-skill.zh.md) 或 study workflow，而不是复制品牌资产、文案和布局。
+- **你只是找设计灵感。** 用 [Hallmark](../ui-taste/hallmark.zh.md)、[Taste-Skill](../ui-taste/taste-skill.zh.md) 或 study workflow，而不是复制品牌资产、文案和布局。
 - **你需要 framework-neutral 输出。** 这个 template 强绑定 Next.js、React、shadcn/ui 和 Tailwind CSS。
 - **你不能运行 browser-backed agent workflow。** 重建依赖截图、computed styles、交互、资产和视觉对比。
 - **你需要 pixel-perfect 法务 / 合规签核。** 生成代码只能当起点；上线前仍要审品牌 / IP 权利、可访问性、安全和响应式行为。
@@ -88,9 +88,9 @@ Clone any website with one command using AI coding agents
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Hallmark](hallmark.zh.md) | ✅ | 需要 anti-slop design direction、audit、redesign 或 study，但不复制线上站点时选 Hallmark。 | Hallmark 更适合灵感和重设计；ai-website-cloner-template 重建具体网站。 |
+| [Hallmark](../ui-taste/hallmark.zh.md) | ✅ | 需要 anti-slop design direction、audit、redesign 或 study，但不复制线上站点时选 Hallmark。 | Hallmark 更适合灵感和重设计；ai-website-cloner-template 重建具体网站。 |
 | [Stitch Skills](stitch-skills.zh.md) | ✅ | 想通过 Stitch MCP 生成 UI screens 或 code/design handoff 时选 Stitch。 | Stitch 生成 screen；这个 template 把目标站点迁移 / 重建成 Next.js 项目。 |
-| [huashu-design](huashu-design.zh.md) | ✅ | 需要 HTML-native prototypes、slides、motion 和信息图时选 huashu-design。 | huashu-design 创造新 artifact；这个 template 克隆 / 迁移现有网页。 |
+| [huashu-design](../visual-artifacts/huashu-design.zh.md) | ✅ | 需要 HTML-native prototypes、slides、motion 和信息图时选 huashu-design。 | huashu-design 创造新 artifact；这个 template 克隆 / 迁移现有网页。 |
 | 手工重建 | 未收录 | IP、可访问性或业务逻辑需要精确人工判断时手工重建。 | 更慢，但比自动 cloning 更能降低法律和质量风险。 |
 
 

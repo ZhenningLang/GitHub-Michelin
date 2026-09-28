@@ -2,7 +2,7 @@
 name: UI UX Pro Max Skill
 slug: ui-ux-pro-max
 repo: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-category: design
+category: ui-taste
 tags: [ui-ux, design-intelligence, design-system, agent-skill, multi-harness]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 You ask your coding agent for a landing page and get emoji icons, default Tailwind spacing and the same gradient hero it gives everyone. UI UX Pro Max gives the agent a local search engine over hundreds of industry design rules — styles, palettes, font pairings, anti-patterns — so it picks UI with reasons instead of reflexes.
 
-![ui-ux-pro-max — health radar](../../../assets/health/ui-ux-pro-max.svg)
+![ui-ux-pro-max — health radar](../../../../assets/health/ui-ux-pro-max.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ UI UX Pro Max installs that judgment into the agent. You run `npm install -g ui-
 
 The pack is a retrieval engine wearing a skill costume. Install puts a `SKILL.md` manifest into your agent's skill directory plus a `scripts/search.py` backed by CSV databases of product types, styles, palettes, typography and UX rules — the BM25 ranking (a classic text-relevance scoring method) runs locally on Python's standard library, no server, no API key. When you make a UI request, the skill instructs the agent to query the engine across several domains in parallel, apply the matching industry reasoning rules (JSON decision conditions), and assemble a design-system recommendation: page pattern, style, exact colors, font pairing, effects to use, anti-patterns to avoid, and a pre-delivery checklist the agent must pass before claiming the UI is done. If you persist the result, it writes a `MASTER.md` plus optional per-page override files that the agent re-reads across sessions, so your product's design system stays stable while the rules library updates. What stays yours: installing Python 3 yourself (the skill is told never to install software on your machine), keeping the design-system files in the repo, and the fact that the checklist is instruction, not a gate — the agent can still skip it.
 
-![ui-ux-pro-max — backbone user story](../../../assets/flow/ui-ux-pro-max.svg)
+![ui-ux-pro-max — backbone user story](../../../../assets/flow/ui-ux-pro-max.svg)
 
 <!-- flow-steps:begin (generated from flows/ui-ux-pro-max.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ The pack is a retrieval engine wearing a skill costume. Install puts a `SKILL.md
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [designer-skills](designer-skills.md) | ✅ | When you want the designer's whole practice (research, UX strategy, design ops) as agent skills, pick designer-skills; pick UI UX Pro Max when the deliverable is generated UI code backed by a searchable rule/palette database. | designer-skills is breadth across the design workflow; this pack is depth on one pipeline — product type → design system → coded screen — and needs Python for its retrieval step. |
-| [stitch-skills](stitch-skills.md) | ✅ | Pick stitch-skills when your flow runs through Google Stitch's MCP generation (text/image → screens, DESIGN.md export); pick UI UX Pro Max when you have no Stitch server and want local rule-driven design decisions. | stitch-skills drives a hosted generation pipeline; this pack is fully local and outputs reasoning + a markdown design system instead of Stitch screens. |
+| [stitch-skills](../design-to-code/stitch-skills.md) | ✅ | Pick stitch-skills when your flow runs through Google Stitch's MCP generation (text/image → screens, DESIGN.md export); pick UI UX Pro Max when you have no Stitch server and want local rule-driven design decisions. | stitch-skills drives a hosted generation pipeline; this pack is fully local and outputs reasoning + a markdown design system instead of Stitch screens. |
 | [taste-skill](taste-skill.md) | ✅ | Pick taste-skill when the gap is purely aesthetic — anti-slop layout, typography, GSAP motion — with tunable variance/density dials; pick UI UX Pro Max when you also want UX architecture (patterns, a11y rules, per-stack guidance) retrieved from a rule database. | taste-skill is markdown-only and stronger on visual style; this one covers broader UI/UX but adds a CLI install and a Python search step. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Pick make-interfaces-feel-better for day-2 polish of an existing screen (~16 concrete interaction rules); pick UI UX Pro Max for the day-0 product-type-to-design-system pipeline. | Narrow polish checklist vs. generation-time system; complementary rather than competing. |
 | Anthropic / built-in agent skills and slash commands | 未收录 | Pick built-in skills when shipping throwaway prototypes where a starter design system adds no value; this pack exists because default agent UI output is generic. | Native ecosystem, zero upkeep vs. a third-party rule database you install and update. |

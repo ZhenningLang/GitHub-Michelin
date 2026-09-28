@@ -2,7 +2,7 @@
 name: drawio-skill
 slug: drawio-skill
 repo: https://github.com/Agents365-ai/drawio-skill
-category: design
+category: visual-artifacts
 tags: [agent-skill, drawio, architecture-diagram, diagram-ir, iac, uml, c4, mcp-server, skill-pack]
 language: Python
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio` 文件，并能在源改动后重新同步、不丢掉你手工调好的版式。
 
-![drawio-skill — 健康度雷达](../../../assets/health/drawio-skill.zh.svg)
+![drawio-skill — 健康度雷达](../../../../assets/health/drawio-skill.zh.svg)
 
 ## 何时使用
 
@@ -80,7 +80,7 @@ health:
 
 drawio-skill 的主体是一份 `SKILL.md`（147 行，绝大部分是一张路由表）加 45 个 Python 脚本；agent 读这张表自己挑该走的工作流，你不用手动调脚本。底下所有流程都汇到它称为 **Diagram IR** 的模型：每个节点和边把三件事分开存——它**是什么**（`kind`、owner、environment、trust boundary）、它**从哪来**（源文件与行号，作为 provenance 保留）、它**画在哪**。导入器只填前两层，布局步骤决定第三层，而第三层是唯一预期由你手改的层。这个拆分正是 `sync` 成立的前提：拿改过的源重跑一次导入器，得到新的「含义加来源」层，再和旧层做 diff，于是只有变化的节点会动——你的坐标和样式原样保留，被删掉的东西默认以淡显元素留着可审，直到你显式加 `--prune`。你出的是源和版式审美，它出的是抽取、摆放、结构校验，以及让模型和图不掉队的记账。它的占地很小：IR、build、sync、query、test、review、story 这几条链路只要 Python 3；渲染 PNG/SVG/PDF 导出和「看图自检」循环才需要 draw.io 桌面版二进制；自动布局才需要 Graphviz；PyYAML、Pillow、python-pptx 只在对应导入器或导出用到时才有要求，缺了会明确报错，而不是抛一堆 traceback。
 
-![drawio-skill — 主干用户故事](../../../assets/flow/drawio-skill.zh.svg)
+![drawio-skill — 主干用户故事](../../../../assets/flow/drawio-skill.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/drawio-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -100,8 +100,8 @@ drawio-skill 的主体是一份 `SKILL.md`（147 行，绝大部分是一张路�
 
 ## 何时不用
 
-- **图必须以纯文本留在 git 里。** 如果评审时希望图是一个可 diff、能在 Markdown 里直接渲染的代码块，用 [Mermaid](../../diagramming/mermaid.zh.md)：它紧凑、零安装、可移植，代价是版式控制弱。drawio-skill 优化的是「可手工微调的成品图」，不是这个场景。
-- **要的是随手的白板风格草图。** 人画、人协作的场景用 [Excalidraw](../../diagramming/excalidraw.zh.md)；drawio-skill 面向的是生成式的、精确的、有源可溯的图，不是随手涂画。
+- **图必须以纯文本留在 git 里。** 如果评审时希望图是一个可 diff、能在 Markdown 里直接渲染的代码块，用 [Mermaid](../../../diagramming/mermaid.zh.md)：它紧凑、零安装、可移植，代价是版式控制弱。drawio-skill 优化的是「可手工微调的成品图」，不是这个场景。
+- **要的是随手的白板风格草图。** 人画、人协作的场景用 [Excalidraw](../../../diagramming/excalidraw.zh.md)；drawio-skill 面向的是生成式的、精确的、有源可溯的图，不是随手涂画。
 - **想要 agent 出图但不想装任何桌面软件。** 如果自包含的 HTML/SVG 图就算交付物、不需要 `.drawio` 文件，[archify](archify.zh.md) 完全绕开 draw.io 二进制。
 - **交付物是原型、幻灯片、动画或信息图。** 那是 [huashu-design](huashu-design.zh.md) 的地盘（HTML 原生的视觉产物）；drawio-skill 只做能对应到真实系统组件的那类图。
 - **需要渲染导出，但跑不了 draw.io 桌面版二进制。** IR、XML、`build`、`sync`、`query`、`test`、`review`、`story` 这些链路是纯 Python；PNG/SVG/PDF 导出和看图自检循环不是。在跑不了那个二进制的环境里，你拿到的是 XML 加一个 diagrams.net 链接兜底，而不是成品图——这种情况改用 Mermaid，或改用托管绘图工具。
@@ -114,8 +114,8 @@ drawio-skill 的主体是一份 `SKILL.md`（147 行，绝大部分是一张路�
 |---|---|---|---|
 | [archify](archify.zh.md) | ✅ | 需要文件能在 draw.io 里打开、并能从源重新同步时选 drawio-skill；自包含的 HTML/SVG 图就够、且不想装桌面二进制时选 archify。 | archify 在浏览器里渲染、不装东西；drawio-skill 要装一次 draw.io，换来一个人能手工编辑的文件和一条回到源的同步路径。 |
 | [huashu-design](huashu-design.zh.md) | ✅ | 交付物是原型、幻灯片、动画或信息图时选 huashu-design；交付物是必须对应到具体系统组件的技术图时留用 drawio-skill。 | huashu-design 覆盖的视觉面更宽、输出 HTML；drawio-skill 更窄，但带 provenance 和可机器校验的模型。 |
-| [Mermaid](../../diagramming/mermaid.zh.md) | ✅ | 图要保持纯文本、在评审里能干净 diff、并能直接渲染进 Markdown 时选 Mermaid；读者需要一张非工程同学也愿意打开微调的成品图时选 drawio-skill。 | Mermaid 可移植、零安装，但几乎没有版式控制；drawio-skill 拿这份可移植性换手工可调的几何与官方云图标、UML 形状的还原度。 |
-| [Excalidraw](../../diagramming/excalidraw.zh.md) | ✅ | 重点是人在上面协作涂画时选 Excalidraw；图必须从事实源生成、并且随源变化保持准确时选 drawio-skill。 | Excalidraw 胜在低门槛手绘；drawio-skill 胜在抽取准确和增量更新，代价是链路更重。 |
+| [Mermaid](../../../diagramming/mermaid.zh.md) | ✅ | 图要保持纯文本、在评审里能干净 diff、并能直接渲染进 Markdown 时选 Mermaid；读者需要一张非工程同学也愿意打开微调的成品图时选 drawio-skill。 | Mermaid 可移植、零安装，但几乎没有版式控制；drawio-skill 拿这份可移植性换手工可调的几何与官方云图标、UML 形状的还原度。 |
+| [Excalidraw](../../../diagramming/excalidraw.zh.md) | ✅ | 重点是人在上面协作涂画时选 Excalidraw；图必须从事实源生成、并且随源变化保持准确时选 drawio-skill。 | Excalidraw 胜在低门槛手绘；drawio-skill 胜在抽取准确和增量更新，代价是链路更重。 |
 
 ## 健康度与可持续性
 

@@ -2,7 +2,7 @@
 name: archify
 slug: archify
 repo: https://github.com/tt-a1i/archify
-category: design
+category: visual-artifacts
 tags: [agent-skill, design, archify, skill-pack]
 language: JavaScript
 license: MIT
@@ -74,7 +74,7 @@ health:
 
 Any agent Skill: generate beautiful architecture diagrams with dark/light theme toggle and PNG/JPEG/WebP/SVG export
 
-![archify — health radar](../../../assets/health/archify.svg)
+![archify — health radar](../../../../assets/health/archify.svg)
 
 ## When to use
 
@@ -95,10 +95,10 @@ It is strongest for architecture overviews, CI/CD workflows, request sequences, 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [huashu-design](huashu-design.md) | ✅ | Choose huashu-design for broad HTML-native visual artifacts, slides, motion, and infographics. | huashu-design is wider; archify is specialized for technical diagrams with typed renderers. |
-| [Stitch Skills](stitch-skills.md) | ✅ | Choose Stitch when the target is UI screen generation or code/design handoff through Google's Stitch MCP. | Stitch targets product UI; archify targets architecture and workflow communication. |
-| [Mermaid](../../diagramming/mermaid.md) | ✅ | Choose Mermaid when diagrams must remain plain-text, diffable, and Markdown-native. | Mermaid is portable and compact; archify gives richer artifacts and export controls. |
-| [Excalidraw](../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when humans need hand-drawn collaborative whiteboarding. | Excalidraw is better for manual sketching; archify is faster for agent-produced technical diagrams. |
-| [draw.io](../../diagramming/drawio.md) | ✅ | Choose draw.io when a full WYSIWYG diagramming canvas is required. | Manual editors have better hand-tuning; archify keeps diagrams agent-generated and export-ready. |
+| [Stitch Skills](../design-to-code/stitch-skills.md) | ✅ | Choose Stitch when the target is UI screen generation or code/design handoff through Google's Stitch MCP. | Stitch targets product UI; archify targets architecture and workflow communication. |
+| [Mermaid](../../../diagramming/mermaid.md) | ✅ | Choose Mermaid when diagrams must remain plain-text, diffable, and Markdown-native. | Mermaid is portable and compact; archify gives richer artifacts and export controls. |
+| [Excalidraw](../../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when humans need hand-drawn collaborative whiteboarding. | Excalidraw is better for manual sketching; archify is faster for agent-produced technical diagrams. |
+| [draw.io](../../../diagramming/drawio.md) | ✅ | Choose draw.io when a full WYSIWYG diagramming canvas is required. | Manual editors have better hand-tuning; archify keeps diagrams agent-generated and export-ready. |
 
 
 ## Health & viability

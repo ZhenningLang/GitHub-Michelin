@@ -92,7 +92,7 @@ health:
 
 你要的是一块画布，不是一套图语法：框必须落在你指定的位置，用的是官方 AWS／Azure／GCP／UML／BPMN 形状库而不是近似的方块，最后产物是一份同事能打开、能挪两下、能改回来的文件。这就是 draw.io 干的活——你负责画，它负责序列化。当结构与形状还原度比「手绘感」更重要时选它而不选 Excalidraw；当交付物是一张手工调过的图而不是可 diff 的文本时选它而不选 Mermaid。
 
-决定性取舍是它把两半都留住了：文件是纯 XML（`mxfile` / `mxGraphModel` / `mxCell`，每个元素带几何信息加一条 `style` 串），所以能进 git diff、能让工具在不打开 GUI 的情况下生成和打补丁；同时它又确实是一份所见即所得文档。再加上它被设计成完全离线运行，于是它自然成了「agent 生成图、再反复同步」这类工作流的承载介质：本索引收录的 [drawio-skill](../agent-skills/design/drawio-skill.zh.md) 正是围绕这个文件格式做的。
+决定性取舍是它把两半都留住了：文件是纯 XML（`mxfile` / `mxGraphModel` / `mxCell`，每个元素带几何信息加一条 `style` 串），所以能进 git diff、能让工具在不打开 GUI 的情况下生成和打补丁；同时它又确实是一份所见即所得文档。再加上它被设计成完全离线运行，于是它自然成了「agent 生成图、再反复同步」这类工作流的承载介质：本索引收录的 [drawio-skill](../agent-skills/design/visual-artifacts/drawio-skill.zh.md) 正是围绕这个文件格式做的。
 
 ## 怎么用起来
 
@@ -132,7 +132,7 @@ draw.io 是一个客户端 JavaScript 编辑器——XML 元素名（`mxfile`、
 | [Excalidraw](excalidraw.zh.md) | ✅ | 图要精确、形状要准、还要能交给别人改时选 draw.io；要非正式的协作草图加实时多人编辑时选 Excalidraw。 | Excalidraw 胜在低摩擦和实时协作；draw.io 胜在形状还原度、桌面离线使用和一份可 diff 的文本文件。 |
 | [Mermaid](mermaid.zh.md) | ✅ | 图应该以文本形式留在仓库里、并在 Markdown 内渲染时选 Mermaid；摆放位置本身承载信息、且会有人去手工调整时选 draw.io。 | Mermaid 可移植、可评审、零安装；draw.io 拿这些换像素级版式控制和一个真正的编辑器。 |
 | [bpmn-js](bpmn-js.zh.md) | ✅ | 必须把 BPMN 2.0 建模器嵌进 web 应用时选 bpmn-js；人需要的是一个通用绘图应用时选 draw.io。 | bpmn-js 是一个只做一个标准的库，且带水印许可条款；draw.io 是覆盖面更广的应用，UML／BPMN／网络／云形状都能画。 |
-| [drawio-skill](../agent-skills/design/drawio-skill.zh.md) | ✅ | 两者是互补不是竞争：让 skill 从事实源生成或重新同步 `.drawio`，再用 draw.io 打开收最后那一成版式。 | skill 补的是抽取、provenance 和增量同步，但需要 Python、导出还要这个应用；编辑器则需要人的手。 |
+| [drawio-skill](../agent-skills/design/visual-artifacts/drawio-skill.zh.md) | ✅ | 两者是互补不是竞争：让 skill 从事实源生成或重新同步 `.drawio`，再用 draw.io 打开收最后那一成版式。 | skill 补的是抽取、provenance 和增量同步，但需要 Python、导出还要这个应用；编辑器则需要人的手。 |
 
 ## 技术栈
 
@@ -158,7 +158,7 @@ draw.io 是一个客户端 JavaScript 编辑器——XML 元素名（`mxfile`、
 - **维护（核对于 2026-09-21）**：活跃开发中——编辑器仓 2026-09-16 有推送（同日发布 v31.4.6），桌面仓 2026-09-18 有推送（最新 release v31.4.5，2026-09-08）。桌面仓至少有 100 个 release。
 - **治理与巴士系数——决定性信号。** 源码开放，但**开发是封闭的**：官方 README 明确「We do not accept pull requests. The project is developed entirely by the core team」。公开的编辑器仓正反映了这点（3 位贡献者、`dev` 分支 115 次提交），而真正的开发历史在桌面仓（16 位贡献者、1,252 次提交，其中单个账号 926 次）。所以「贡献者众多」这个常见健康信号在这里是**设计上缺席**的，也没有社区兜底路径：发布方一旦停手，你要么 fork 要么迁移。
 - **背书与寿命**：由 draw.io Ltd（原 JGraph）与 draw.io AG 共同拥有，商业的 Atlassian 集成在供养这份工作；GitHub 组织建于 2012 年，编辑器仓 2016 年、桌面仓 2017 年。约十年的持续活跃，对应用和文件格式都是很强的 Lindy 先验。
-- **采用度**：桌面版约 6.32 万星，官方在 `app.diagrams.net` 跑着一份托管部署；这个格式是事实上的互通目标——本索引收录的 [drawio-skill](../agent-skills/design/drawio-skill.zh.md) 就是完全围绕生成与同步它来做的。但雷达上这一轴要谨慎读：它是按 npm 包 `drawio-offline`（第三方重打包）算出来的，所以这一轴低估了真实分发面（GitHub release 加上 Homebrew／Flathub／Snap 包和托管版）。
+- **采用度**：桌面版约 6.32 万星，官方在 `app.diagrams.net` 跑着一份托管部署；这个格式是事实上的互通目标——本索引收录的 [drawio-skill](../agent-skills/design/visual-artifacts/drawio-skill.zh.md) 就是完全围绕生成与同步它来做的。但雷达上这一轴要谨慎读：它是按 npm 包 `drawio-offline`（第三方重打包）算出来的，所以这一轴低估了真实分发面（GitHub release 加上 Homebrew／Flathub／Snap 包和托管版）。
 - **响应性**：issue 回得很快——雷达给这一轴打了高分——而 pull request 则被政策直接拒收，所以这里的「响应快」指分诊，不指修复能落地。
 - **风险信号**：源码是 Apache-2.0，但**图标集、stencil 库和图表模板另有一条附加限制**——未经书面许可，不得作为软件资产用于、随附于或并入 Atlassian 产品及 Atlassian 市场／插件生态的产品（终端用户产出的图明确豁免；官方也声明不对你用本软件创建的图主张版权）。第三方 JavaScript 与 Apache-2.0 兼容、无 GPL／AGPL（官方说法）。桌面版的更新检查可用 `DRAWIO_DISABLE_UPDATE=true` 或 `--disable-update` 关掉。
 

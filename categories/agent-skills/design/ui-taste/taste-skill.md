@@ -2,7 +2,7 @@
 name: Taste-Skill
 slug: taste-skill
 repo: https://github.com/Leonxlnx/taste-skill
-category: design
+category: ui-taste
 tags: [skills, design-taste, anti-slop, frontend, ui, claude-code, codex]
 language: JavaScript
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 Ask a coding agent for a landing page and you get the same dead template every AI ships — centered hero, purple gradient, zero motion. Taste-Skill is a set of portable skill files that load design taste into the agent before it writes code, so the output has intentional layout, typography and motion instead of slop.
 
-![taste-skill — health radar](../../../assets/health/taste-skill.svg)
+![taste-skill — health radar](../../../../assets/health/taste-skill.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ It also ships tunable dials — `DESIGN_VARIANCE`, `MOTION_INTENSITY`, `VISUAL_D
 
 Taste-Skill is pure instruction text: each skill is a `SKILL.md` file that a skill-loading agent (Claude Code, Codex, Cursor, ChatGPT…) pulls into context when its description matches your request — there is no runtime, no server, and nothing to `import`. What the v2 default skill puts in front of the agent is a checklist-shaped protocol: read the brief and infer a design direction, map that direction onto concrete design-system values (color, type, spacing), follow canonical GSAP motion skeletons (the animation code patterns it wants reused) instead of inventing transitions ad hoc, then pass a strict pre-flight check and anti-repetition rules so screen two does not clone screen one. You set the coarse direction with three numeric dials at the top of the skill file — layout variance, motion intensity, visual density — and choose which specialized skill to install per job (image-first pipelines and redesign auditing are separate skills). What stays yours: everything the agent is still free to ignore — enforcement is advisory, and quality still depends on whether your harness loads and follows the markdown faithfully.
 
-![taste-skill — backbone user story](../../../assets/flow/taste-skill.svg)
+![taste-skill — backbone user story](../../../../assets/flow/taste-skill.svg)
 
 <!-- flow-steps:begin (generated from flows/taste-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -112,7 +112,7 @@ Taste-Skill is pure instruction text: each skill is a `SKILL.md` file that a ski
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [designer-skills](designer-skills.md) | ✅ | When you want a whole design practice (research, UX strategy, design ops, 97 skills across 9 plugins), pick designer-skills; pick Taste-Skill when the job is narrower — make generated frontend output stop looking like AI slop. | Breadth vs. sharpness: designer-skills covers the designer's workflow, Taste-Skill spends its tokens on anti-slop aesthetics plus tunable variance/motion/density dials. |
-| [stitch-skills](stitch-skills.md) | ✅ | If you design through Google's Stitch tooling — text/image → screens, code↔design conversion, `DESIGN.md` export — pick stitch-skills; pick Taste-Skill when there is no Stitch server in your loop. | Stitch-Skill drives an MCP-backed generation pipeline; Taste-Skill is serverless prompt-level taste that only shapes what your own agent writes. |
+| [stitch-skills](../design-to-code/stitch-skills.md) | ✅ | If you design through Google's Stitch tooling — text/image → screens, code↔design conversion, `DESIGN.md` export — pick stitch-skills; pick Taste-Skill when there is no Stitch server in your loop. | Stitch-Skill drives an MCP-backed generation pipeline; Taste-Skill is serverless prompt-level taste that only shapes what your own agent writes. |
 | [ui-ux-pro-max](ui-ux-pro-max.md) | ✅ | When you need product-type-to-design-system reasoning at scale (a local search engine over hundreds of rules, palettes and WCAG checklists), pick ui-ux-pro-max; pick Taste-Skill when the gap is purely visual — layout, type, motion — not UX architecture. | ui-ux-pro-max ships a retrieval engine + CSV rule databases and needs Python; Taste-Skill is markdown-only, zero-prerequisite, and stronger on aesthetic direction. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Pick make-interfaces-feel-better when the UI already exists and needs ~16 concrete polish rules (radius, transitions, alignment); pick Taste-Skill when the agent is generating the screen from scratch. | Day-2 interaction polish vs. generation-time aesthetics; they compose rather than compete. |
 | Anthropic / built-in agent skills | 未收录 | Pick the host's native skills when you want no third-party bundle to keep in sync; Taste-Skill exists because out-of-the-box agent UI output is generic. | Native ecosystem vs. specialized third-party taste layer — the latter can duplicate or conflict with native design skills. |

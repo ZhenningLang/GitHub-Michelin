@@ -3,7 +3,7 @@ name: Skills For Design Engineers
 slug: emilkowalski-skills
 repo: https://github.com/emilkowalski/skills
 homepage: https://emilkowal.ski/skill
-category: design
+category: ui-taste
 tags: [skills, design-engineering, animation, ui-polish, motion, claude-code, codex]
 language: Markdown
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 一套面向 coding agent 的六技能设计工程包，重点是 UI motion、动画词汇、Apple 风格界面原则和严格动画评审，而不是完整产品设计流程。
 
-![Skills For Design Engineers — 健康度雷达](../../../assets/health/emilkowalski-skills.zh.svg)
+![Skills For Design Engineers — 健康度雷达](../../../../assets/health/emilkowalski-skills.zh.svg)
 
 ## 何时使用
 
@@ -84,7 +84,7 @@ health:
 - **你需要确定性的 UI 质量闸门。** 需要硬性 gate 时，用视觉回归测试、Storybook 检查、Lighthouse 或自定义 artifact linter；这个包是 prompt/skill 指导，agent 仍可能误用。
 - **你主要需要通用 anti-slop 前端方向。** 问题是布局、字体、颜色和整屏设计方向太 bland 时，用 [Taste-Skill](taste-skill.zh.md)；Emil 的包更偏动画和设计工程决策。
 - **你只需要微观 polish 细节。** 目标是同心圆角、等宽数字、surface 细节这类小机械打磨时，用 [make-interfaces-feel-better](make-interfaces-feel-better.zh.md)；Emil 的包在 motion 和设计判断上更宽。
-- **你需要可编辑设计 artifact 或 Stitch/MCP 转换。** 需求是生成、导入或转换设计时，用 [Stitch Skills](stitch-skills.zh.md) 或 design-to-code 工作流；Emil 的包是指导 coding agent 的 UI taste。
+- **你需要可编辑设计 artifact 或 Stitch/MCP 转换。** 需求是生成、导入或转换设计时，用 [Stitch Skills](../design-to-code/stitch-skills.zh.md) 或 design-to-code 工作流；Emil 的包是指导 coding agent 的 UI taste。
 - **你不能接受单作者 taste 作为依赖。** 该 repo 由个人维护，且 README 明确说它基于作者在 Vercel、Linear 等公司的经验；需要稳定指导时应 pin commit。
 
 ## 横向对比
@@ -95,7 +95,7 @@ health:
 | [Taste-Skill](taste-skill.zh.md) | ✅ | agent 需要布局、颜色、字体和 motion 的宽泛 anti-slop 方向时选 Taste-Skill；要动画专项 taste 时选 Emil 的包。 | Taste-Skill 是通用视觉 taste 覆盖层；Emil 的包给出更具体的动画评审和动画词汇。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | UI 方向已对、只缺小机械 polish 时选 make-interfaces-feel-better；motion 决策本身需要批评时选 Emil 的包。 | 前者是紧凑 polish 清单；Emil 的包有多个动画评审和机会发现 skill。 |
 | [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | ✅ | 需要带本地参考数据的更大 UI/UX 指导系统时选 UI UX Pro Max；要轻量 motion/design-engineering taste 包时选 Emil 的包。 | UI UX Pro Max 更宽也更重；Emil 的包更小、更容易审阅。 |
-| [Stitch Skills](stitch-skills.zh.md) | ✅ | 工作流是通过 Stitch MCP 做 UI 生成／转换时选 Stitch Skills；agent 已在编码、需要 motion critique 时选 Emil 的包。 | Stitch 是工具支撑的设计工作流；Emil 的包是 advisory skill text。 |
+| [Stitch Skills](../design-to-code/stitch-skills.zh.md) | ✅ | 工作流是通过 Stitch MCP 做 UI 生成／转换时选 Stitch Skills；agent 已在编码、需要 motion critique 时选 Emil 的包。 | Stitch 是工具支撑的设计工作流；Emil 的包是 advisory skill text。 |
 
 ## 健康度与可持续性
 

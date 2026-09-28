@@ -3,7 +3,7 @@ name: Skills For Design Engineers
 slug: emilkowalski-skills
 repo: https://github.com/emilkowalski/skills
 homepage: https://emilkowal.ski/skill
-category: design
+category: ui-taste
 tags: [skills, design-engineering, animation, ui-polish, motion, claude-code, codex]
 language: Markdown
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 A six-skill design-engineering pack for coding agents that focuses on UI motion, animation vocabulary, Apple-style interface principles, and strict animation review rather than broad product-design process.
 
-![Skills For Design Engineers — health radar](../../../assets/health/emilkowalski-skills.svg)
+![Skills For Design Engineers — health radar](../../../../assets/health/emilkowalski-skills.svg)
 
 ## When to use
 
@@ -84,7 +84,7 @@ The deciding tradeoff is focus: this pack is narrower than broad design lifecycl
 - **You need deterministic UI quality enforcement.** Use a visual regression test, Storybook checks, Lighthouse, or a custom artifact linter when you need hard gates; this pack is prompt/skill guidance that the agent may misapply.
 - **You mainly need generic anti-slop frontend direction.** Use [Taste-Skill](taste-skill.md) when the issue is bland layout, type, color, and full-screen design direction; Emil's pack is more specifically about animation/design-engineering decisions.
 - **You only need micro-polish details.** Use [make-interfaces-feel-better](make-interfaces-feel-better.md) when the target is small mechanical polish such as concentric radii, tabular numbers, and surface details; Emil's pack is broader on motion and design judgment.
-- **You need editable design artifacts or Stitch/MCP conversion.** Use [Stitch Skills](stitch-skills.md) or a design-to-code workflow when your need is generating, importing, or converting designs rather than coaching a coding agent's UI taste.
+- **You need editable design artifacts or Stitch/MCP conversion.** Use [Stitch Skills](../design-to-code/stitch-skills.md) or a design-to-code workflow when your need is generating, importing, or converting designs rather than coaching a coding agent's UI taste.
 - **You cannot tolerate single-author taste as a dependency.** The repo is authored by an individual and is based on his experience at companies such as Vercel and Linear; pin a commit if you need stable guidance.
 
 ## Comparison
@@ -95,7 +95,7 @@ The deciding tradeoff is focus: this pack is narrower than broad design lifecycl
 | [Taste-Skill](taste-skill.md) | ✅ | Choose Taste-Skill when the agent needs broad anti-slop direction across layout, color, typography, and motion; choose Emil's pack for animation-specific taste. | Taste-Skill is a general visual-taste overlay; Emil's pack gives more concrete animation review and vocabulary. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Choose make-interfaces-feel-better when the UI is directionally right but needs small mechanical polish; choose Emil's pack when motion decisions themselves need critique. | The former is a compact polish checklist; Emil's pack has multiple animation-review and opportunity-finding skills. |
 | [UI UX Pro Max Skill](ui-ux-pro-max.md) | ✅ | Choose UI UX Pro Max when you want a larger UI/UX guidance system with local reference data; choose Emil's pack when you want a lightweight motion/design-engineering taste pack. | UI UX Pro Max is broader and heavier; Emil's pack is smaller and easier to inspect. |
-| [Stitch Skills](stitch-skills.md) | ✅ | Choose Stitch Skills when UI generation/conversion through Stitch MCP is the workflow; choose Emil's pack when the agent is already coding and needs motion critique. | Stitch is a tool-backed design workflow; Emil's pack is advisory skill text. |
+| [Stitch Skills](../design-to-code/stitch-skills.md) | ✅ | Choose Stitch Skills when UI generation/conversion through Stitch MCP is the workflow; choose Emil's pack when the agent is already coding and needs motion critique. | Stitch is a tool-backed design workflow; Emil's pack is advisory skill text. |
 
 ## Health & viability
 

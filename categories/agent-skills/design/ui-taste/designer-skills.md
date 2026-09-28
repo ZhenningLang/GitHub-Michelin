@@ -2,7 +2,7 @@
 name: Designer Skills
 slug: designer-skills
 repo: https://github.com/Owl-Listener/designer-skills
-category: design
+category: ui-taste
 tags: [skills, ui-ux, design-systems, claude-code, gemini-cli, plugin]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 A broad design-practice skill pack — 97 skills and 30 commands across 9 plugins (research, design systems, UX strategy, UI, interaction, prototyping/testing, design ops, toolkit, visual critique) installed into Claude Code or Gemini CLI via a plugin marketplace.
 
-![designer-skills — health radar](../../../assets/health/designer-skills.svg)
+![designer-skills — health radar](../../../../assets/health/designer-skills.svg)
 
 ## When to use
 
@@ -89,11 +89,11 @@ You reach for it when you want *breadth* — one install that covers research �
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [stitch-skills](stitch-skills.md) | ✅ | Choose stitch-skills when a focused Stitch-oriented design pack is lighter than a full lifecycle suite. | Compare on scope: Stitch-oriented pack vs. this broad full-lifecycle design suite. If your need is narrow, the focused pack is lighter; Designer Skills wins on breadth. |
+| [stitch-skills](../design-to-code/stitch-skills.md) | ✅ | Choose stitch-skills when a focused Stitch-oriented design pack is lighter than a full lifecycle suite. | Compare on scope: Stitch-oriented pack vs. this broad full-lifecycle design suite. If your need is narrow, the focused pack is lighter; Designer Skills wins on breadth. |
 | [ui-ux-pro-max](ui-ux-pro-max.md) | ✅ | Choose ui-ux-pro-max when its UI/interaction guidance or install path fits your harness better. | Another UI/UX skill pack; overlaps heavily on the "polished interface" surface. Pick by which one's UI/interaction guidance matches your taste and which install path fits your harness. |
 | [taste-skill](taste-skill.md) | ✅ | Choose taste-skill when visual taste and critique judgment are the narrow job. | Centers visual *taste*/judgment; narrower than this multi-discipline suite. Use it for critique-flavored taste calls; use Designer Skills when you also need research/systems/ops. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | Choose make-interfaces-feel-better when micro-interaction polish matters more than lifecycle coverage. | Aimed at interaction polish / "feel"; overlaps Designer Skills' `interaction-design` plugin. The narrow pack is sharper on micro-interaction; Designer Skills covers the rest of the lifecycle too. |
-| [Anthropic Skills](../vendor-collections/anthropic-skills.md) / built-in skills | 部分已收录 | Choose Anthropic Skills or built-ins when platform-native guidance should avoid third-party bundle overlap. | The platform's own skill ecosystem; Designer Skills is a third-party bundle layered on top, so it can duplicate or conflict with native skills. |
+| [Anthropic Skills](../../vendor-collections/anthropic-skills.md) / built-in skills | 部分已收录 | Choose Anthropic Skills or built-ins when platform-native guidance should avoid third-party bundle overlap. | The platform's own skill ecosystem; Designer Skills is a third-party bundle layered on top, so it can duplicate or conflict with native skills. |
 | Companion collections (AI product design, UX program mgmt, design leadership, inclusive design) | 未收录 | Choose the author's companion collections when the task is an adjacent design discipline. | Same author's sibling repos in the family; this entry covers only the "design practice" collection. Reach for the others for adjacent disciplines. |
 
 ## Health & viability

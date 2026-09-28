@@ -73,8 +73,8 @@ Altcha,categories/captcha/capjs.md,,no
 Angular CDK stepper,categories/web-ui/product-tours/shepherd-js.md,,no
 Ansible / Salt / Puppet,categories/dev-utilities/ops-infra/cockpit.md,,no
 "Anthropic ""Building effective agents"" guide",categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
-Anthropic / built-in agent skills,categories/agent-skills/design/taste-skill.md,,no
-Anthropic / built-in agent skills and slash commands,categories/agent-skills/design/ui-ux-pro-max.md,,no
+Anthropic / built-in agent skills,categories/agent-skills/design/ui-taste/taste-skill.md,,no
+Anthropic / built-in agent skills and slash commands,categories/agent-skills/design/ui-taste/ui-ux-pro-max.md,,no
 Anthropic computer use / OpenAI Operator,categories/desktop-automation/cua.md,,no
 Anthropic Console prompt improver,categories/agent-skills/prompt-engineering/prompt-master.md,,no
 Anthropic Cookbook,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
@@ -204,7 +204,7 @@ collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 Commercial Kubernetes placement / cost-optimization platforms,categories/dev-utilities/ops-infra/descheduler.md,,no
 "Commercial patent SaaS (智慧芽 PatSnap, incoPat, 专利之星)",categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
-"Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/designer-skills.md,,no
+"Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/ui-taste/designer-skills.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda,categories/python-tooling/uv.md,,no
 Conductor / Crystal / Claude Squad,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
@@ -304,7 +304,7 @@ figlet / toilet (CLI),categories/terminal-ui/art.md,,no
 Figma,categories/diagramming/excalidraw.md,,no
 Figma + plugins,categories/agent-skills/visual-content/guizang-social-card.md,,no
 Figma / Penpot,categories/ai-design-generation/open-design.md,,no
-Figma / visual design tool,categories/agent-skills/design/huashu-design.md,,no
+Figma / visual design tool,categories/agent-skills/design/visual-artifacts/huashu-design.md,,no
 Filebrowser,categories/document-management/copyparty.md,,no
 Fine-tuning / LoRA stacks,categories/ml-research/llm-circuit-finder.md,,no
 Firebase,categories/databases/database-engines/supabase.md,,no
@@ -382,9 +382,9 @@ Hand-rolled integration,categories/agent-frameworks/agent-runtimes/agent-sdks/au
 Hand-rolled regex / manual parsing,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 Hand-rolling your own subagents/skills,categories/agent-skills/subagent-collections/wshobson-agents.md,,no
 Hand-written de-slop line in `CLAUDE.md`,categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md,,no
-Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/make-interfaces-feel-better.md,,no
+Hand-written design checklist in your own `CLAUDE.md` / prompt,categories/agent-skills/design/ui-taste/make-interfaces-feel-better.md,,no
 Hand-written MCP server,categories/agent-tooling/harness-extensions/cli-anything.md,,no
-Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-ux-pro-max.md,,no
+Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui-taste/ui-ux-pro-max.md,,no
 Hand-written project skills,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
@@ -496,7 +496,7 @@ Make (Integromat),categories/workflow-orchestration/n8n.md,,no
 Managed-cloud node autoscaling and provider rebalancing features,categories/dev-utilities/ops-infra/descheduler.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
-Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
+Manual rebuild,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
 Manus / hosted autonomous-agent products,categories/agent-tooling/work-state/planning-with-files.md,,no
 Manuskript,categories/agent-skills/ai-writing/fiction/webnovel-writer.md,,no
@@ -840,7 +840,7 @@ unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
-v0 / Lovable / other AI UI generators,categories/agent-skills/design/stitch-skills.md,,no
+v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no

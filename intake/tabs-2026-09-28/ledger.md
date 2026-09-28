@@ -19,7 +19,7 @@
 | cloudflare/computer | add | done | categories/sandboxing/cloudflare-computer.md |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | done | categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md |  | code-yeongyu/oh-my-openagent |
 | Dammyjay93/interface-design | add | done | categories/agent-skills/design/interface-design.md |  | dammyjay93/interface-design |
-| derv82/wifit3 | add | pending |  |  | derv82/wifit3 |
+| derv82/wifit3 | add | running |  |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | pending |  |  | devdotfast/whiteboard |
 | DietrichGebert/ponytail | add | pending |  |  | dietrichgebert/ponytail |
 | docker/docker-agent | add | pending |  |  | docker/docker-agent |

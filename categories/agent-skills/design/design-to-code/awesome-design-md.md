@@ -3,7 +3,7 @@ name: Awesome DESIGN.md
 slug: awesome-design-md
 repo: https://github.com/VoltAgent/awesome-design-md
 homepage: https://getdesign.md/
-category: design
+category: design-to-code
 tags: [design-md, design-system, agent-skills, vibe-coding, voltagent]
 language: Markdown
 license: MIT
@@ -70,13 +70,13 @@ health:
 
 Your coding agent keeps shipping the same generic UI, and “make it look like Linear” is too vague to stick. This repo hands you a ready `DESIGN.md` — tokens plus don’ts — extracted from a named site, so you drop one file and point the agent at it.
 
-![Awesome DESIGN.md — health radar](../../../assets/health/awesome-design-md.svg)
+![Awesome DESIGN.md — health radar](../../../../assets/health/awesome-design-md.svg)
 
 ## When to use
 
 You are shipping a landing page or product UI with a coding agent. Every “make it look premium” prompt comes back as a centered hero, three cards, and a purple-to-blue gradient. You do not have a designer, and you do not want to write a design system from scratch. You open this collection, pick a named site — Linear, Stripe, Notion, Claude — copy that folder’s `DESIGN.md` into the project root, and tell the agent to follow it.
 
-Pick this over [Taste-Skill](taste-skill.md) or [UI UX Pro Max Skill](ui-ux-pro-max.md) when the point is a *specific* brand language, not inferred “taste.” Pick it over [Stitch Skills](stitch-skills.md) when you want a file you can drop in with no Google Stitch account or MCP server. The deciding tradeoff: you get a prewritten visual contract, and you give up having *your* brand, official tokens, or any harness that loads the file by itself.
+Pick this over [Taste-Skill](../ui-taste/taste-skill.md) or [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.md) when the point is a *specific* brand language, not inferred “taste.” Pick it over [Stitch Skills](stitch-skills.md) when you want a file you can drop in with no Google Stitch account or MCP server. The deciding tradeoff: you get a prewritten visual contract, and you give up having *your* brand, official tokens, or any harness that loads the file by itself.
 
 ## Q&A
 
@@ -93,7 +93,7 @@ No. Third-party extractions of publicly visible CSS. The MIT LICENSE claims copy
 
 The repo does not run. Each `design-md/<brand>/` folder is a static pair: a `DESIGN.md` in Google’s alpha DESIGN.md format (YAML frontmatter for colors, type, radius, spacing, components; markdown for mood, layout, and don’ts) plus a README that has moved previews to `https://getdesign.md/`. You copy the markdown into the project root. The agent treats it as extra instructions — there is no parser unless you separately lint with `@google/design.md` or upload the file into Stitch. Analogy: `AGENTS.md` is the standing engineering brief the harness injects; this file is a costume you have to hand the model yourself.
 
-![awesome-design-md — backbone user story](../../../assets/flow/awesome-design-md.svg)
+![awesome-design-md — backbone user story](../../../../assets/flow/awesome-design-md.svg)
 
 <!-- flow-steps:begin (generated from flows/awesome-design-md.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,7 +111,7 @@ The repo does not run. Each `design-md/<brand>/` folder is a static pair: a `DES
 ## When NOT to use
 
 - **You need *your* brand, not Linear’s.** These files impersonate public marketing sites. Write a project `DESIGN.md` or extract one from your own code with [Stitch Skills](stitch-skills.md) (`extract-design-md`) instead of copying someone else’s look.
-- **You want taste without cloning a brand.** Use [Taste-Skill](taste-skill.md) or [UI UX Pro Max Skill](ui-ux-pro-max.md) — they inject judgment, not a Stripe/Linear costume.
+- **You want taste without cloning a brand.** Use [Taste-Skill](../ui-taste/taste-skill.md) or [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.md) — they inject judgment, not a Stripe/Linear costume.
 - **You need to rebuild an authorized site with screenshots and assets.** That is [ai-website-cloner-template](ai-website-cloner-template.md); a `DESIGN.md` is tokens and prose, not a clone kit.
 - **You expect the harness to load it like AGENTS.md.** It will not. If you need standing rules, put a one-line pointer in `AGENTS.md` / `CLAUDE.md` / `.cursor/rules`. If you need a parsed design system inside Stitch, use [Stitch Skills](stitch-skills.md) and the Stitch upload path.
 - **You need a linter or a format spec, not a corpus.** The format lives in `google-labs-code/design.md` (`npx @google/design.md lint`). This repo is sample files.
@@ -123,8 +123,8 @@ The repo does not run. Each `design-md/<brand>/` folder is a static pair: a `DES
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Stitch Skills](stitch-skills.md) | ✅ | Pick Stitch Skills when you need to extract or apply *your* design system through Google Stitch; pick this collection when you only want a ready file cloned from a public site and will not run the Stitch MCP server. | Stitch Skills generates and converts; this repo only ships static markdown. You avoid vendor login, and you also get no round-trip into real screens. |
-| [Taste-Skill](taste-skill.md) | ✅ | Pick Taste-Skill when the failure is generic AI-slop and you do not want to look like a named brand; pick this when “make it look like Linear” is the actual brief. | Taste-Skill infers a direction; this pins tokens to one extracted site. More specific, more impersonation risk. |
-| [UI UX Pro Max Skill](ui-ux-pro-max.md) | ✅ | Pick UI UX Pro Max when you want a local style/palette/font retrieval engine and an accessibility checklist; pick this when you want one brand’s `DESIGN.md` as the single contract. | Pro Max is a skill pack with a CSV engine; this is a folder of markdown. No install channel, no enforcement. |
+| [Taste-Skill](../ui-taste/taste-skill.md) | ✅ | Pick Taste-Skill when the failure is generic AI-slop and you do not want to look like a named brand; pick this when “make it look like Linear” is the actual brief. | Taste-Skill infers a direction; this pins tokens to one extracted site. More specific, more impersonation risk. |
+| [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.md) | ✅ | Pick UI UX Pro Max when you want a local style/palette/font retrieval engine and an accessibility checklist; pick this when you want one brand’s `DESIGN.md` as the single contract. | Pro Max is a skill pack with a CSV engine; this is a folder of markdown. No install channel, no enforcement. |
 | [ai-website-cloner-template](ai-website-cloner-template.md) | ✅ | Pick the cloner template when you are authorized to rebuild a site and need screenshots, assets, and visual QA; pick this when a token+prose contract is enough. | The cloner is a reconstruction workflow; this is a drop-in design brief. Lighter, and it will not reproduce layout or assets. |
 | getdesign.md (VoltAgent hosted) | 非仓库 | Pick the hosted site when you want previews, downloads, or a paid exclusive extraction of a site that is not in the 74 folders; keep the GitHub repo when you only need the public markdown. | Same org’s commercial funnel. Previews live there — the repo’s own README still claims `preview.html` files that are not in the tree. |
 

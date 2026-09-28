@@ -2,7 +2,7 @@
 name: huashu-design
 slug: huashu-design
 repo: https://github.com/alchaincyf/huashu-design
-category: design
+category: visual-artifacts
 tags: [agent-skill, design, huashu-design, skill-pack]
 language: HTML
 license: MIT
@@ -72,7 +72,7 @@ health:
 
 Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTML 原生的设计 skill · 高保真原型 / 幻灯片 / 动画 + 20 设计哲学 + 5 维评审 + MP4 导出 · Agent-agnostic
 
-![huashu-design — health radar](../../../assets/health/huashu-design.svg)
+![huashu-design — health radar](../../../../assets/health/huashu-design.svg)
 
 ## When to use
 
@@ -82,8 +82,8 @@ It is especially useful for Chinese/English agent workflows that install via `np
 
 ## When NOT to use
 
-- **You only need UI taste guidance while coding an existing app.** [Taste-Skill](taste-skill.md), [make-interfaces-feel-better](make-interfaces-feel-better.md), or [UI UX Pro Max Skill](ui-ux-pro-max.md) may be lighter.
-- **You need code-to-design handoff into React/React Native/shadcn.** [Stitch Skills](stitch-skills.md) is closer to UI generation and implementation handoff.
+- **You only need UI taste guidance while coding an existing app.** [Taste-Skill](../ui-taste/taste-skill.md), [make-interfaces-feel-better](../ui-taste/make-interfaces-feel-better.md), or [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.md) may be lighter.
+- **You need code-to-design handoff into React/React Native/shadcn.** [Stitch Skills](../design-to-code/stitch-skills.md) is closer to UI generation and implementation handoff.
 - **You need a component library, not a generative skill.** huashu-design creates artifacts via an agent workflow; it is not a reusable design-system package.
 - **Your environment cannot run scripts, browser checks, video export, or file creation.** Its strongest claims depend on HTML files, scripts, Playwright-style checking, and media export tooling.
 - **You require editable Figma/Keynote layer-level output.** Upstream explicitly frames output as HTML / MP4 / GIF / PPTX / PDF / images rather than Figma-native editing.
@@ -92,9 +92,9 @@ It is especially useful for Chinese/English agent workflows that install via `np
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Stitch Skills](stitch-skills.md) | ✅ | Choose Stitch when the main job is UI screen generation, code/design conversion, or React/React Native/shadcn export. | Stitch is more implementation-handoff oriented; huashu-design is broader visual artifact production. |
-| [Taste-Skill](taste-skill.md) | ✅ | Choose Taste-Skill when you want a coding agent to avoid AI-slop frontend aesthetics while implementing an app. | Taste-Skill is advisory and lightweight; huashu-design is an artifact-generation workflow. |
-| [Designer Skills](designer-skills.md) | ✅ | Choose Designer Skills when you want a broad design-practice toolkit across research, systems, UX, UI, and critique. | Designer Skills is broader process coverage; huashu-design is more opinionated around HTML-native deliverables. |
+| [Stitch Skills](../design-to-code/stitch-skills.md) | ✅ | Choose Stitch when the main job is UI screen generation, code/design conversion, or React/React Native/shadcn export. | Stitch is more implementation-handoff oriented; huashu-design is broader visual artifact production. |
+| [Taste-Skill](../ui-taste/taste-skill.md) | ✅ | Choose Taste-Skill when you want a coding agent to avoid AI-slop frontend aesthetics while implementing an app. | Taste-Skill is advisory and lightweight; huashu-design is an artifact-generation workflow. |
+| [Designer Skills](../ui-taste/designer-skills.md) | ✅ | Choose Designer Skills when you want a broad design-practice toolkit across research, systems, UX, UI, and critique. | Designer Skills is broader process coverage; huashu-design is more opinionated around HTML-native deliverables. |
 | Figma / visual design tool | 未收录 | Choose a GUI tool when designers need layer-level editing, collaboration, or design-system integration. | GUI tools are better for manual design iteration; huashu-design is better for agent-driven file generation. |
 
 

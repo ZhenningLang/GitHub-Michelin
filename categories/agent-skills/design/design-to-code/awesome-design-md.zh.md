@@ -3,7 +3,7 @@ name: Awesome DESIGN.md
 slug: awesome-design-md
 repo: https://github.com/VoltAgent/awesome-design-md
 homepage: https://getdesign.md/
-category: design
+category: design-to-code
 tags: [design-md, design-system, agent-skills, vibe-coding, voltagent]
 language: Markdown
 license: MIT
@@ -70,13 +70,13 @@ health:
 
 你让 agent 做页面，它每次都长得差不多；说“做成 Linear 那样”又太飘，抓不住。这个仓库按站点各给一份现成的 `DESIGN.md`（配色字号，再加不要做什么），拷进项目根目录，让 agent 对着读。
 
-![Awesome DESIGN.md — 健康度雷达](../../../assets/health/awesome-design-md.zh.svg)
+![Awesome DESIGN.md — 健康度雷达](../../../../assets/health/awesome-design-md.zh.svg)
 
 ## 何时使用
 
 你在用 coding agent 做落地页或产品界面。每次说“做高级一点”，回来的都是居中大标题、三张卡片、紫到蓝的渐变。手里没有设计师，也不想从零写设计系统。打开这份合集，选一个叫得出名字的站点——Linear、Stripe、Notion、Claude——把对应目录里的 `DESIGN.md` 拷到项目根，告诉 agent 按它做。
 
-要的是**某一个品牌的样子**，而不是“有品味”，就选它，而不是 [Taste-Skill](taste-skill.zh.md) 或 [UI UX Pro Max Skill](ui-ux-pro-max.zh.md)。只想丢一个文件、不想开 Google Stitch 账号和 MCP，就选它，而不是 [Stitch Skills](stitch-skills.zh.md)。决定性取舍：你拿到一份写好的视觉契约，同时放弃了**自己的**品牌、官方 token，以及 harness 自动加载。
+要的是**某一个品牌的样子**，而不是“有品味”，就选它，而不是 [Taste-Skill](../ui-taste/taste-skill.zh.md) 或 [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.zh.md)。只想丢一个文件、不想开 Google Stitch 账号和 MCP，就选它，而不是 [Stitch Skills](stitch-skills.zh.md)。决定性取舍：你拿到一份写好的视觉契约，同时放弃了**自己的**品牌、官方 token，以及 harness 自动加载。
 
 ## 快问快答
 
@@ -93,7 +93,7 @@ health:
 
 仓库本身不运行。每个 `design-md/<brand>/` 是一对静态文件：一份 Google alpha 规格的 `DESIGN.md`（YAML 里是颜色、字体、圆角、间距、组件；正文是气质、布局和不要做什么），再加一份 README，预览已经搬到 `https://getdesign.md/`。你把 markdown 拷到项目根。agent 把它当额外指令读——没有解析器，除非你另外用 `@google/design.md` 做 lint，或上传到 Stitch。类比：`AGENTS.md` 是 harness 会自动塞进去的工程简报；这份文件是一件戏服，得你亲手递给模型。
 
-![awesome-design-md — 主干用户故事](../../../assets/flow/awesome-design-md.zh.svg)
+![awesome-design-md — 主干用户故事](../../../../assets/flow/awesome-design-md.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/awesome-design-md.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,7 +111,7 @@ health:
 ## 何时不用
 
 - **你要的是自己的品牌，不是 Linear 的皮。** 这些文件在仿公开营销站。写一份项目自己的 `DESIGN.md`，或用 [Stitch Skills](stitch-skills.zh.md) 的 `extract-design-md` 从自己的代码抽，别拷别人的样子。
-- **你要的是品味，不是克隆某个品牌。** 用 [Taste-Skill](taste-skill.zh.md) 或 [UI UX Pro Max Skill](ui-ux-pro-max.zh.md)——它们注入判断，不是 Stripe / Linear 的戏服。
+- **你要的是品味，不是克隆某个品牌。** 用 [Taste-Skill](../ui-taste/taste-skill.zh.md) 或 [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.zh.md)——它们注入判断，不是 Stripe / Linear 的戏服。
 - **你要按授权重建整个站点，还要截图和资产。** 那是 [ai-website-cloner-template](ai-website-cloner-template.zh.md)；一份 `DESIGN.md` 只有 token 和散文，不是克隆套件。
 - **你指望 harness 像加载 AGENTS.md 那样自动读它。** 不会。需要常驻规则，就在 `AGENTS.md` / `CLAUDE.md` / `.cursor/rules` 里写一行指针。需要在 Stitch 里解析成设计系统，用 [Stitch Skills](stitch-skills.zh.md) 和 Stitch 的上传路径。
 - **你要的是 linter 或格式规范，不是语料。** 格式在 `google-labs-code/design.md`（`npx @google/design.md lint`）。本仓库只是样例文件。
@@ -123,8 +123,8 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Stitch Skills](stitch-skills.zh.md) | 已收录 | 要通过 Google Stitch 抽取或套用**自己的**设计系统时选 Stitch Skills；只想从公开站点拷一份现成文件、又不跑 Stitch MCP 时选本合集。 | Stitch Skills 能生成和转换；本仓库只发静态 markdown。省掉厂商登录，也没有回到真实屏幕的往返。 |
-| [Taste-Skill](taste-skill.zh.md) | 已收录 | 失败模式是千篇一律的 AI 味、又不想长得像某个品牌时选 Taste-Skill；brief 就是“做成 Linear 那样”时选本合集。 | Taste-Skill 推断方向；本合集把 token 钉在一个抽出来的站点上。更具体，仿冒风险也更大。 |
-| [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | 已收录 | 要本地风格/配色/字体检索加上可访问性清单时选 UI UX Pro Max；要一份品牌 `DESIGN.md` 当唯一契约时选本合集。 | Pro Max 是带 CSV 引擎的 skill pack；这是一堆 markdown。没有安装渠道，也没有强制。 |
+| [Taste-Skill](../ui-taste/taste-skill.zh.md) | 已收录 | 失败模式是千篇一律的 AI 味、又不想长得像某个品牌时选 Taste-Skill；brief 就是“做成 Linear 那样”时选本合集。 | Taste-Skill 推断方向；本合集把 token 钉在一个抽出来的站点上。更具体，仿冒风险也更大。 |
+| [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.zh.md) | 已收录 | 要本地风格/配色/字体检索加上可访问性清单时选 UI UX Pro Max；要一份品牌 `DESIGN.md` 当唯一契约时选本合集。 | Pro Max 是带 CSV 引擎的 skill pack；这是一堆 markdown。没有安装渠道，也没有强制。 |
 | [ai-website-cloner-template](ai-website-cloner-template.zh.md) | 已收录 | 已获授权、要重建站点并需要截图、资产和视觉 QA 时选克隆模板；一份 token 加散文就够时选本合集。 | 克隆模板是重建工作流；这是一份可丢进去的设计 brief。更轻，也复现不了版式和资产。 |
 | getdesign.md（VoltAgent 托管站） | 非仓库 | 要预览、下载，或给 74 个目录里没有的站点做付费独占抽取时选托管站；只要公开 markdown 时留在 GitHub 仓库。 | 同一组织的商业漏斗。预览在那边——仓库 README 仍声称有 `preview.html`，树里一份都没有。 |
 

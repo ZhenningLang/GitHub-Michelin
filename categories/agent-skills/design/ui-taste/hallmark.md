@@ -2,7 +2,7 @@
 name: Hallmark
 slug: hallmark
 repo: https://github.com/Nutlope/hallmark
-category: design
+category: ui-taste
 tags: [agent-skill, ui-design, anti-slop, frontend, claude-code, codex, cursor]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 An MIT-licensed design skill for Claude Code, Cursor, and Codex that steers an agent away from repetitive AI-generated UI patterns through opinionated briefs, themes, audits, redesigns, and design studies.
 
-![Hallmark — health radar](../../../assets/health/hallmark.svg)
+![Hallmark — health radar](../../../../assets/health/hallmark.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ Use its default build mode for a new page, `audit` for a no-edit critique, `rede
 
 - **You need accessible, composable production components.** Choose [shadcn/ui](https://github.com/shadcn-ui/ui) or your established design system; Hallmark ships Markdown rules, not React, Vue, or Svelte components.
 - **You need a CSS compiler or utility framework.** Choose [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss); Hallmark provides neither utility classes nor a CSS runtime.
-- **You need deterministic visual regression or an enforceable quality gate.** Choose Playwright plus screenshot assertions, or a deterministic detector such as [Impeccable](../../ai-design-generation/impeccable.md); Hallmark's self-critique and slop tests are advisory instructions interpreted by an agent.
+- **You need deterministic visual regression or an enforceable quality gate.** Choose Playwright plus screenshot assertions, or a deterministic detector such as [Impeccable](../../../ai-design-generation/impeccable.md); Hallmark's self-critique and slop tests are advisory instructions interpreted by an agent.
 - **Your agent cannot load custom skills or you do not use Claude Code, Cursor, or Codex.** Choose a framework-neutral design-system document instead; Hallmark's core asset is a harness-loaded `SKILL.md`.
 - **A strict brand system already specifies tokens, templates, and approval flow.** Prefer that system; Hallmark's default macrostructure and theme choices can conflict with governed brand constraints.
 - **Image-heavy retail, travel, or lookbook work is the main job.** The roadmap names image-heavy briefs as a current limitation, so pair it with a dedicated art-direction/image workflow rather than using it as the only design mechanism.
@@ -92,8 +92,8 @@ Use its default build mode for a new page, `audit` for a no-edit critique, `rede
 |---|---|---|---|
 | [Taste-Skill](taste-skill.md) | ✅ | Choose Hallmark when its four explicit build, audit, redesign, and study verbs fit your workflow; choose Taste-Skill for a broader framework-agnostic taste pack. | Hallmark has a narrower, opinionated protocol and static demonstrations; Taste-Skill covers more aesthetic variants but remains advisory too. |
 | [Designer Skills](designer-skills.md) | ✅ | Choose Designer Skills when research, UX strategy, design systems, and testing all need coverage; choose Hallmark when one compact anti-slop workflow is enough. | The broader pack has more surface area and routing complexity; Hallmark is easier to adopt but less complete. |
-| [Impeccable](../../ai-design-generation/impeccable.md) | ✅ | Choose Impeccable when deterministic detection of existing frontend artifacts is required; choose Hallmark when an agent needs a generative design brief and redesign process. | Impeccable offers a CLI/detectors; Hallmark offers taste guidance without deterministic enforcement. |
-| [shadcn/ui](../../web-ui/component-libraries/shadcn-ui.md) | ✅ | Choose shadcn/ui when the output must be an accessible component baseline; choose Hallmark when the missing layer is visual direction before component selection. | Components make implementation reusable; Hallmark affects the agent's design choices but supplies no component runtime. |
+| [Impeccable](../../../ai-design-generation/impeccable.md) | ✅ | Choose Impeccable when deterministic detection of existing frontend artifacts is required; choose Hallmark when an agent needs a generative design brief and redesign process. | Impeccable offers a CLI/detectors; Hallmark offers taste guidance without deterministic enforcement. |
+| [shadcn/ui](../../../web-ui/component-libraries/shadcn-ui.md) | ✅ | Choose shadcn/ui when the output must be an accessible component baseline; choose Hallmark when the missing layer is visual direction before component selection. | Components make implementation reusable; Hallmark affects the agent's design choices but supplies no component runtime. |
 
 ## Health & viability
 

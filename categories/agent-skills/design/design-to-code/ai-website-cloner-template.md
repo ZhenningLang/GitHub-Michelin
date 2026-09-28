@@ -2,7 +2,7 @@
 name: ai-website-cloner-template
 slug: ai-website-cloner-template
 repo: https://github.com/JCodesMore/ai-website-cloner-template
-category: design
+category: design-to-code
 tags: [agent-skill, design, ai-website-cloner-template, skill-pack]
 language: TypeScript
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 Clone any website with one command using AI coding agents
 
-![ai-website-cloner-template — health radar](../../../assets/health/ai-website-cloner-template.svg)
+![ai-website-cloner-template — health radar](../../../../assets/health/ai-website-cloner-template.svg)
 
 ## When to use
 
@@ -79,7 +79,7 @@ The template targets Next.js 16, React 19, TypeScript strict, shadcn/ui, Tailwin
 ## When NOT to use
 
 - **You do not own or have permission to reproduce the target site.** The upstream README explicitly excludes phishing, impersonation, passing off someone else's design, and terms-of-service violations.
-- **You only need design inspiration.** Use [Hallmark](hallmark.md), [Taste-Skill](taste-skill.md), or a study workflow rather than cloning brand assets, copy, and layout.
+- **You only need design inspiration.** Use [Hallmark](../ui-taste/hallmark.md), [Taste-Skill](../ui-taste/taste-skill.md), or a study workflow rather than cloning brand assets, copy, and layout.
 - **You need framework-neutral output.** This template is opinionated around Next.js, React, shadcn/ui, and Tailwind CSS.
 - **You cannot run a browser-backed agent workflow.** The reconstruction depends on screenshots, computed styles, interactions, assets, and visual comparison.
 - **You need pixel-perfect legal/compliance signoff.** Treat generated code as a starting point and review brand/IP rights, accessibility, security, and responsive behavior before launch.
@@ -88,9 +88,9 @@ The template targets Next.js 16, React 19, TypeScript strict, shadcn/ui, Tailwin
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Hallmark](hallmark.md) | ✅ | Choose Hallmark when you need anti-slop design direction, audit, redesign, or study without copying a live site. | Hallmark is safer for ideation; ai-website-cloner-template reconstructs concrete sites. |
+| [Hallmark](../ui-taste/hallmark.md) | ✅ | Choose Hallmark when you need anti-slop design direction, audit, redesign, or study without copying a live site. | Hallmark is safer for ideation; ai-website-cloner-template reconstructs concrete sites. |
 | [Stitch Skills](stitch-skills.md) | ✅ | Choose Stitch when you want UI screens or code/design handoff through Stitch MCP. | Stitch generates screens; this template migrates/rebuilds target websites into a Next.js project. |
-| [huashu-design](huashu-design.md) | ✅ | Choose huashu-design for HTML-native prototypes, slides, motion, and infographics. | huashu-design creates new artifacts; this template clones/migrates existing web pages. |
+| [huashu-design](../visual-artifacts/huashu-design.md) | ✅ | Choose huashu-design for HTML-native prototypes, slides, motion, and infographics. | huashu-design creates new artifacts; this template clones/migrates existing web pages. |
 | Manual rebuild | not indexed | Choose manual rebuild when IP, accessibility, or business logic needs exact human judgment. | Slower, but reduces legal and quality risk versus automated cloning. |
 
 

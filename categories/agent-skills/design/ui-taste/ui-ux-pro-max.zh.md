@@ -2,7 +2,7 @@
 name: UI UX Pro Max Skill
 slug: ui-ux-pro-max
 repo: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
-category: design
+category: ui-taste
 tags: [ui-ux, design-intelligence, design-system, agent-skill, multi-harness]
 language: Python
 license: MIT
@@ -73,7 +73,7 @@ health:
 
 你让 coding agent 做一个落地页，拿回来的总是那副 AI 模板脸：emoji 当图标、默认 Tailwind 间距、人手的同款渐变 hero。UI UX Pro Max 给 agent 装上一个本地检索引擎，覆盖数百条行业设计规则——风格、配色、字体搭配、反模式——让它带着理由选 UI，而不是凭惯性。
 
-![ui-ux-pro-max — 健康度雷达](../../../assets/health/ui-ux-pro-max.zh.svg)
+![ui-ux-pro-max — 健康度雷达](../../../../assets/health/ui-ux-pro-max.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ UI UX Pro Max 就是把这种判断力装进 agent。你跑 `npm install -g ui-u
 
 这个包是一个穿了 skill 外衣的检索引擎。安装会把一份 `SKILL.md` manifest 放进你 agent 的 skill 目录，外加一个 `scripts/search.py`，背后是产品类型、风格、配色、排版与 UX 规则的 CSV 库——BM25 排序（一种经典的文本相关性打分方法）在 Python 标准库上本地跑，没有服务端、没有 API key。你发出 UI 请求时，skill 指示 agent 跨多个领域并行查询引擎，套用匹配的行业推理规则（JSON 决策条件），组装出一份设计系统推荐：页面模式、风格、具体配色、字体搭配、动效、要避开的反模式，以及一份声称完成前必须通过的交付前清单。若你选择持久化，它会写出 `MASTER.md` 加可选的逐页覆盖文件，供 agent 跨会话重读——规则库随版本更新，你项目的系统设计保持稳定。仍然归你管的：自己装好 Python 3（skill 被明确告知不得替你安装软件）、把设计系统文件维护在仓库里，以及那份清单终究是指令而非闸门——agent 仍可能跳过它。
 
-![ui-ux-pro-max — 主干用户故事](../../../assets/flow/ui-ux-pro-max.zh.svg)
+![ui-ux-pro-max — 主干用户故事](../../../../assets/flow/ui-ux-pro-max.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ui-ux-pro-max.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ UI UX Pro Max 就是把这种判断力装进 agent。你跑 `npm install -g ui-u
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [designer-skills](designer-skills.zh.md) | ✅ | 你要的是把设计师整套实践（研究、UX 策略、设计 ops）装进 agent 时，选 designer-skills；你要的是由可检索规则/配色库支撑的生成式 UI 代码时，选 UI UX Pro Max。 | designer-skills 覆盖设计工作流的广度；本 pack 深耕一条管线——产品类型 → 设计系统 → 落码界面——且检索步骤需要 Python。 |
-| [stitch-skills](stitch-skills.zh.md) | ✅ | 你的流程走 Google Stitch 的 MCP 生成（文字/图 → 界面、DESIGN.md 导出）时，选 stitch-skills；回路里没有 Stitch 服务、想要本地规则驱动的设计决策时，选 UI UX Pro Max。 | stitch-skills 驱动一条托管生成管线；本 pack 完全本地，产出的是推理结果加 markdown 设计系统，而非 Stitch 界面。 |
+| [stitch-skills](../design-to-code/stitch-skills.zh.md) | ✅ | 你的流程走 Google Stitch 的 MCP 生成（文字/图 → 界面、DESIGN.md 导出）时，选 stitch-skills；回路里没有 Stitch 服务、想要本地规则驱动的设计决策时，选 UI UX Pro Max。 | stitch-skills 驱动一条托管生成管线；本 pack 完全本地，产出的是推理结果加 markdown 设计系统，而非 Stitch 界面。 |
 | [taste-skill](taste-skill.zh.md) | ✅ | 缺口纯粹在审美——anti-slop 布局、排版、GSAP 动效，外加可调的变化/密度旋钮——时选 taste-skill；你还想要 UX 架构（模式、无障碍规则、分栈指导）从规则库里被检索出来时选 UI UX Pro Max。 | taste-skill 只有 markdown、长于视觉风格；本 pack 覆盖面更广，但多了 CLI 安装与一个 Python 检索步骤。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | Day-2 打磨一个已存在的界面（约 16 条具体交互规则）时选 make-interfaces-feel-better；Day-0 的产品类型→设计系统流水线选 UI UX Pro Max。 | 窄而精的打磨清单 vs 生成期的系统设计；互补而非互斥。 |
 | Anthropic / 内置 agent skills 和 slash command | 未收录 | 做一次性原型、起手设计系统不值当用时选内置生态；本 pack 的存在理由恰恰是默认 agent 的 UI 输出太雷同。 | 原生生态零维护 vs 你要安装并更新一套第三方规则库。 |

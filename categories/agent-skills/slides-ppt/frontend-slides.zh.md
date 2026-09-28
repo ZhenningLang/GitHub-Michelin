@@ -82,7 +82,7 @@ Create beautiful slides on the web using a coding agent's frontend skills
 - **你需要大型静态模板 / runtime 库。** [html-ppt-skill](html-ppt-skill.zh.md) 内置更多主题、布局、动画和 presenter mode。
 - **你不能使用有文件系统和 shell 权限的本地 coding agent。** 该 skill 需要创建文件，并可选运行 PPT 提取、部署和 PDF 导出脚本。
 - **你只接受确定的企业模板。** 风格发现适合探索，但严格品牌 deck 可能需要锁定模板系统。
-- **你想要通用视觉产物生成器。** slides 只是多种 artifact 之一时，看 [HTML Anything](../../ai-design-generation/html-anything.zh.md) 或 [huashu-design](../design/huashu-design.zh.md)。
+- **你想要通用视觉产物生成器。** slides 只是多种 artifact 之一时，看 [HTML Anything](../../ai-design-generation/html-anything.zh.md) 或 [huashu-design](../design/visual-artifacts/huashu-design.zh.md)。
 
 ## 横向对比
 

@@ -2,7 +2,7 @@
 name: make-interfaces-feel-better
 slug: make-interfaces-feel-better
 repo: https://github.com/jakubkrehel/make-interfaces-feel-better
-category: design
+category: ui-taste
 tags: [skills, ui-polish, micro-interactions, css, animations, typography, claude-code]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则——同心圆角、可中断过渡、等宽数字、入场/出场动画、视觉对齐、字体平滑——注入你的 coding agent，让它交付的界面「感觉」做完了，而不只是「功能正确」。
 
-![make-interfaces-feel-better — 健康度雷达](../../../assets/health/make-interfaces-feel-better.zh.svg)
+![make-interfaces-feel-better — 健康度雷达](../../../../assets/health/make-interfaces-feel-better.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 | [taste-skill](taste-skill.zh.md) | ✅ | 页面方向仍平淡、需要更宽的 anti-slop 视觉品味包时，选 taste-skill。 | 更宽的「anti-slop 视觉品味」包：推断设计方向、映射完整的色/字/间距系统、铺 GSAP 动效骨架。本 skill 更窄——机械的细节打磨，不定方向。页面平淡时用 taste-skill；方向已 OK 但不够精细时用本 skill。 |
 | [designer-skills](designer-skills.zh.md) | ✅ | 需要完整设计生命周期套装，而不是单一工艺细节清单时，选 designer-skills。 | 完整设计*生命周期*套装（97 个 skill：调研、IA、设计系统、批评）。偏重、偏流程；本 skill 是单一工艺细节清单，几乎零仪式。 |
 | [ui-ux-pro-max](ui-ux-pro-max.zh.md) | ✅ | 需要更大的端到端 UI/UX skill 套装时，选 ui-ux-pro-max。 | 更大的 UI/UX skill 套装，面向端到端界面质量。比表面积：本 skill 是一份紧凑的、源自文章的规则集，不是多 skill 系统。 |
-| [stitch-skills](stitch-skills.zh.md) | ✅ | 想比较同叶目录里更偏设计生成/转换链路的包时，选 stitch-skills。 | 同叶目录的设计 skill 包；比较各自「强制 vs 建议」的阶段，以及动效/排版指引是否重叠。 |
+| [stitch-skills](../design-to-code/stitch-skills.zh.md) | ✅ | 想比较同一 design 分类树下更偏设计生成/转换链路的包时，选 stitch-skills。 | 同一 design 分类树下的设计 skill 包；比较各自「强制 vs 建议」的阶段，以及动效/排版指引是否重叠。 |
 | 写在自己 `CLAUDE.md` / prompt 里的手写设计清单 | 未收录 | 想完全自维护规则、避免引入第三方 skill 包时，选手写设计清单。 | DIY 方案；同样是建议性的，但由你维护。本 skill 把一份已知好用的细节清单打包，省得你每个项目重新推导。 |
 
 ## 健康度与可持续性

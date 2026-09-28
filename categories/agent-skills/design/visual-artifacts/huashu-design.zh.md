@@ -2,7 +2,7 @@
 name: huashu-design
 slug: huashu-design
 repo: https://github.com/alchaincyf/huashu-design
-category: design
+category: visual-artifacts
 tags: [agent-skill, design, huashu-design, skill-pack]
 language: HTML
 license: MIT
@@ -72,7 +72,7 @@ health:
 
 Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTML 原生的设计 skill · 高保真原型 / 幻灯片 / 动画 + 20 设计哲学 + 5 维评审 + MP4 导出 · Agent-agnostic
 
-![huashu-design — 健康度雷达](../../../assets/health/huashu-design.zh.svg)
+![huashu-design — 健康度雷达](../../../../assets/health/huashu-design.zh.svg)
 
 ## 何时使用
 
@@ -82,8 +82,8 @@ Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTM
 
 ## 何时不用
 
-- **你只需要在写现有 app 时补 UI 审美。** [Taste-Skill](taste-skill.zh.md)、[make-interfaces-feel-better](make-interfaces-feel-better.zh.md) 或 [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) 更轻。
-- **你需要 code-to-design handoff 到 React / React Native / shadcn。** [Stitch Skills](stitch-skills.zh.md) 更贴近 UI 生成和实现交接。
+- **你只需要在写现有 app 时补 UI 审美。** [Taste-Skill](../ui-taste/taste-skill.zh.md)、[make-interfaces-feel-better](../ui-taste/make-interfaces-feel-better.zh.md) 或 [UI UX Pro Max Skill](../ui-taste/ui-ux-pro-max.zh.md) 更轻。
+- **你需要 code-to-design handoff 到 React / React Native / shadcn。** [Stitch Skills](../design-to-code/stitch-skills.zh.md) 更贴近 UI 生成和实现交接。
 - **你要的是组件库，不是生成式 skill。** huashu-design 通过 agent workflow 生成 artifact，不是可复用设计系统 package。
 - **运行环境不能执行脚本、浏览器检查、视频导出或文件创建。** 它最强的能力依赖 HTML 文件、scripts、Playwright 式检查和媒体导出工具。
 - **你必须要 Figma / Keynote 图层级可编辑输出。** 上游明确把输出定位为 HTML / MP4 / GIF / PPTX / PDF / 图片，而不是 Figma-native 编辑。
@@ -92,9 +92,9 @@ Huashu Design · HTML-native design skill for Claude Code · Claude Code 里 HTM
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Stitch Skills](stitch-skills.zh.md) | ✅ | 主要任务是 UI screen generation、code / design 转换或 React / React Native / shadcn 导出时选 Stitch。 | Stitch 更偏实现交接；huashu-design 更偏宽视觉 artifact 生产。 |
-| [Taste-Skill](taste-skill.zh.md) | ✅ | coding agent 正在实现 app，只需要避免 AI-slop 前端审美时选 Taste-Skill。 | Taste-Skill 更轻、更建议式；huashu-design 是 artifact-generation workflow。 |
-| [Designer Skills](designer-skills.zh.md) | ✅ | 需要覆盖研究、设计系统、UX、UI、critique 的宽设计实践工具箱时选 Designer Skills。 | Designer Skills 流程覆盖更广；huashu-design 更有主张，聚焦 HTML-native 交付。 |
+| [Stitch Skills](../design-to-code/stitch-skills.zh.md) | ✅ | 主要任务是 UI screen generation、code / design 转换或 React / React Native / shadcn 导出时选 Stitch。 | Stitch 更偏实现交接；huashu-design 更偏宽视觉 artifact 生产。 |
+| [Taste-Skill](../ui-taste/taste-skill.zh.md) | ✅ | coding agent 正在实现 app，只需要避免 AI-slop 前端审美时选 Taste-Skill。 | Taste-Skill 更轻、更建议式；huashu-design 是 artifact-generation workflow。 |
+| [Designer Skills](../ui-taste/designer-skills.zh.md) | ✅ | 需要覆盖研究、设计系统、UX、UI、critique 的宽设计实践工具箱时选 Designer Skills。 | Designer Skills 流程覆盖更广；huashu-design 更有主张，聚焦 HTML-native 交付。 |
 | Figma / 可视化设计工具 | 未收录 | 设计师需要图层级编辑、协作或接入设计系统时选 GUI 工具。 | GUI 更适合人工细调；huashu-design 更适合 agent-driven 文件生成。 |
 
 

@@ -2,7 +2,7 @@
 name: Designer Skills
 slug: designer-skills
 repo: https://github.com/Owl-Listener/designer-skills
-category: design
+category: ui-taste
 tags: [skills, ui-ux, design-systems, claude-code, gemini-cli, plugin]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 一个覆盖面很广的设计实践 skill pack——9 个 plugin 下共 97 个 skill、30 个 command（涵盖用户研究、设计系统、UX 策略、UI、交互、原型/测试、design ops、工具箱、视觉批评），通过 plugin marketplace 装进 Claude Code 或 Gemini CLI。
 
-![designer-skills — 健康度雷达](../../../assets/health/designer-skills.zh.svg)
+![designer-skills — 健康度雷达](../../../../assets/health/designer-skills.zh.svg)
 
 ## 何时使用
 
@@ -89,11 +89,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [stitch-skills](stitch-skills.zh.md) | ✅ | 只需要面向 Stitch 的聚焦包，而不是全生命周期设计套件时，选 stitch-skills。 | 比的是范围：面向 Stitch 的包 vs. 这套覆盖全生命周期的设计套件。需求窄时聚焦包更轻；要广度则 Designer Skills 胜。 |
+| [stitch-skills](../design-to-code/stitch-skills.zh.md) | ✅ | 只需要面向 Stitch 的聚焦包，而不是全生命周期设计套件时，选 stitch-skills。 | 比的是范围：面向 Stitch 的包 vs. 这套覆盖全生命周期的设计套件。需求窄时聚焦包更轻；要广度则 Designer Skills 胜。 |
 | [ui-ux-pro-max](ui-ux-pro-max.zh.md) | ✅ | 另一个 UI/UX skill pack 的交互指引或安装路径更适配你的 harness 时，选 ui-ux-pro-max。 | 另一个 UI/UX skill pack；在「打磨界面」这一面重叠很多。按哪一个的 UI/交互指引更对你胃口、哪种安装路径更适配你的 harness 来选。 |
 | [taste-skill](taste-skill.zh.md) | ✅ | 只需要聚焦视觉*品味*/判断的窄包时，选 taste-skill。 | 聚焦视觉*品味*/判断；比这套多学科套件窄。要带品味色彩的批评判断用它；同时还需要研究/系统/ops 时用 Designer Skills。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | 只需要交互打磨和「手感」细节，而不是完整生命周期时，选 make-interfaces-feel-better。 | 面向交互打磨 /「手感」；与 Designer Skills 的 `interaction-design` plugin 重叠。窄包在微交互上更锋利；Designer Skills 还覆盖生命周期其余部分。 |
-| [Anthropic Skills](../vendor-collections/anthropic-skills.zh.md) / 内置 skills | 部分已收录 | 只想用平台自带 skill 生态，避免第三方 bundle 与原生 skill 重复时，选 Anthropic Skills 或内置 skills。 | 平台自带的 skill 生态；Designer Skills 是叠在上面的第三方 bundle，可能与原生 skill 重复或冲突。 |
+| [Anthropic Skills](../../vendor-collections/anthropic-skills.zh.md) / 内置 skills | 部分已收录 | 只想用平台自带 skill 生态，避免第三方 bundle 与原生 skill 重复时，选 Anthropic Skills 或内置 skills。 | 平台自带的 skill 生态；Designer Skills 是叠在上面的第三方 bundle，可能与原生 skill 重复或冲突。 |
 | 家族里的姊妹合集（AI 产品设计、UX 项目管理、设计领导力、包容性设计） | 未收录 | 需求落在同作者家族的相邻学科，而不是「设计实践」合集时，选那些姊妹 repo。 | 同作者家族里的姊妹 repo；本条目只覆盖「设计实践」这一合集。相邻学科去用其它几个。 |
 
 ## 健康度与可持续性

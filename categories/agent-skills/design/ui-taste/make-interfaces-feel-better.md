@@ -2,7 +2,7 @@
 name: make-interfaces-feel-better
 slug: make-interfaces-feel-better
 repo: https://github.com/jakubkrehel/make-interfaces-feel-better
-category: design
+category: ui-taste
 tags: [skills, ui-polish, micro-interactions, css, animations, typography, claude-code]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 A single, focused agent skill that injects ~16 concrete UI-polish principles — concentric border radius, interruptible transitions, tabular numbers, enter/exit animation, optical alignment, font smoothing — so your coding agent ships interfaces that *feel* finished instead of merely correct.
 
-![make-interfaces-feel-better — health radar](../../../assets/health/make-interfaces-feel-better.svg)
+![make-interfaces-feel-better — health radar](../../../../assets/health/make-interfaces-feel-better.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ You reach for it specifically when the gap is *craft-level detail*, not directio
 | [taste-skill](taste-skill.md) | ✅ | Choose taste-skill when the screen is still bland and needs design direction. | Broader "anti-slop visual taste" pack: infers design direction, maps a full color/type/spacing system, lays in GSAP motion. This skill is narrower — mechanical detail-polish, no direction-setting. Use taste-skill when the screen is bland; use this when it's directionally fine but unrefined. |
 | [designer-skills](designer-skills.md) | ✅ | Choose designer-skills when you need a full design lifecycle bundle rather than a checklist. | Full design *lifecycle* bundle (97 skills: research, IA, design systems, critique). Heavyweight and process-oriented; this one is a single craft-detail checklist with near-zero ceremony. |
 | [ui-ux-pro-max](ui-ux-pro-max.md) | ✅ | Choose ui-ux-pro-max when a larger end-to-end UI/UX bundle is warranted. | Larger UI/UX skill bundle aimed at end-to-end interface quality. Compare on surface area: this skill is one tight article-derived rule set, not a multi-skill system. |
-| [stitch-skills](stitch-skills.md) | ✅ | Choose stitch-skills when its sibling design stages or motion/typography rules fit better. | Sibling design skill pack; compare on which stages each enforces vs. suggests and whether the motion/typography guidance overlaps. |
+| [stitch-skills](../design-to-code/stitch-skills.md) | ✅ | Choose stitch-skills when its sibling design stages or motion/typography rules fit better. | Sibling design skill pack; compare on which stages each enforces vs. suggests and whether the motion/typography guidance overlaps. |
 | Hand-written design checklist in your own `CLAUDE.md` / prompt | 未收录 | Choose a hand-written checklist when you want zero third-party skill dependency. | The DIY alternative; same advisory nature, but you maintain it. This skill packages a known-good detail list so you don't re-derive it per project. |
 
 ## Health & viability

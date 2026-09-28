@@ -2,7 +2,7 @@
 name: drawio-skill
 slug: drawio-skill
 repo: https://github.com/Agents365-ai/drawio-skill
-category: design
+category: visual-artifacts
 tags: [agent-skill, drawio, architecture-diagram, diagram-ir, iac, uml, c4, mcp-server, skill-pack]
 language: Python
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files — then re-syncs them from the source without discarding the layout you tuned by hand.
 
-![drawio-skill — health radar](../../../assets/health/drawio-skill.svg)
+![drawio-skill — health radar](../../../../assets/health/drawio-skill.svg)
 
 ## When to use
 
@@ -80,7 +80,7 @@ Reach for drawio-skill when the diagram has to survive contact with a real team 
 
 drawio-skill is one `SKILL.md` (147 lines, mostly a routing table) plus 45 Python scripts; the agent reads that table and picks the workflow for your request, so you never call the scripts yourself. Underneath, everything funnels through one idea the project calls the **Diagram IR**: a small model where every node and edge keeps three things apart — what it *means* (`kind`, owner, environment, trust boundary), where it *came from* (source file and line, kept as provenance), and where it *sits* on the page. Importers fill in only the first two, a layout step decides the third, and the third is the only layer you are expected to edit by hand. That separation is what makes `sync` possible: re-running an importer against a changed source yields a new meaning-and-provenance layer, which is diffed against the old one so only changed nodes move — your coordinates and styles stay untouched, and deletions remain visible as faded elements until you pass `--prune`. What you supply is the source and the layout taste; what it supplies is extraction, placement, structural validation and the bookkeeping that keeps model and picture in step. Its footprint is deliberately small: Python 3 only for the IR, build, sync, query, test, review and story workflows; the draw.io desktop binary only for rendered PNG/SVG/PDF exports and the vision self-check loop; Graphviz only for automatic layout; PyYAML, Pillow and python-pptx only where an importer or export needs them, each failing with an explicit message rather than a traceback.
 
-![drawio-skill — backbone user story](../../../assets/flow/drawio-skill.svg)
+![drawio-skill — backbone user story](../../../../assets/flow/drawio-skill.svg)
 
 <!-- flow-steps:begin (generated from flows/drawio-skill.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -100,8 +100,8 @@ drawio-skill is one `SKILL.md` (147 lines, mostly a routing table) plus 45 Pytho
 
 ## When NOT to use
 
-- **The diagram must stay plain text in git.** When reviewers should read the diagram as a diffable code block that renders inside a Markdown file, use [Mermaid](../../diagramming/mermaid.md): it is compact and portable, at the cost of layout control. drawio-skill optimizes for a hand-tunable picture instead.
-- **The value is a loose, hand-drawn sketch.** For whiteboard-style collaboration where a person does the drawing, use [Excalidraw](../../diagramming/excalidraw.md); drawio-skill targets generated, precise, source-backed diagrams rather than casual sketching.
+- **The diagram must stay plain text in git.** When reviewers should read the diagram as a diffable code block that renders inside a Markdown file, use [Mermaid](../../../diagramming/mermaid.md): it is compact and portable, at the cost of layout control. drawio-skill optimizes for a hand-tunable picture instead.
+- **The value is a loose, hand-drawn sketch.** For whiteboard-style collaboration where a person does the drawing, use [Excalidraw](../../../diagramming/excalidraw.md); drawio-skill targets generated, precise, source-backed diagrams rather than casual sketching.
 - **You want an agent-made diagram artifact without installing anything desktop.** If a self-contained HTML/SVG diagram is an acceptable deliverable and no `.drawio` file is needed, [archify](archify.md) avoids the draw.io binary entirely.
 - **The artifact is a prototype, slide deck, animation or infographic.** That is [huashu-design](huashu-design.md)'s surface — HTML-native visual artifacts; drawio-skill stays narrow on diagrams that map to real system components.
 - **You need rendered exports but cannot run the draw.io desktop binary.** The IR, XML, `build`, `sync`, `query`, `test`, `review` and `story` paths are pure Python; PNG/SVG/PDF export and the vision self-check loop are not. In an environment that cannot run that binary you get XML plus a diagrams.net URL fallback rather than the polished artifact — prefer Mermaid or a hosted drawing tool there.
@@ -114,8 +114,8 @@ drawio-skill is one `SKILL.md` (147 lines, mostly a routing table) plus 45 Pytho
 |---|---|---|---|
 | [archify](archify.md) | ✅ | Choose drawio-skill when the file must open in draw.io and be re-synced from source; choose archify when a self-contained HTML/SVG diagram is enough and no desktop binary should be needed. | archify renders in a browser and installs nothing; drawio-skill costs a draw.io install but returns a file humans can hand-edit plus a sync path back to the source. |
 | [huashu-design](huashu-design.md) | ✅ | Choose huashu-design when the artifact is a prototype, slide deck, animation or infographic; keep drawio-skill when the artifact is a technical diagram that must map to named system components. | huashu-design covers a wider visual surface with HTML output; drawio-skill is narrower but carries provenance and a machine-checkable model. |
-| [Mermaid](../../diagramming/mermaid.md) | ✅ | Choose Mermaid when the diagram should stay plain text, diff cleanly in review and render inside Markdown; choose drawio-skill when the audience needs a polished picture a non-engineer will open and adjust. | Mermaid is portable and zero-install but gives little layout control; drawio-skill trades that portability for hand-tunable geometry and official cloud/UML shape fidelity. |
-| [Excalidraw](../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when the point is a collaborative sketch a human draws on; choose drawio-skill when the diagram must be generated from a source of truth and stay accurate across changes. | Excalidraw wins on low-friction drawing; drawio-skill wins on extraction accuracy and incremental update, at the cost of a heavier pipeline. |
+| [Mermaid](../../../diagramming/mermaid.md) | ✅ | Choose Mermaid when the diagram should stay plain text, diff cleanly in review and render inside Markdown; choose drawio-skill when the audience needs a polished picture a non-engineer will open and adjust. | Mermaid is portable and zero-install but gives little layout control; drawio-skill trades that portability for hand-tunable geometry and official cloud/UML shape fidelity. |
+| [Excalidraw](../../../diagramming/excalidraw.md) | ✅ | Choose Excalidraw when the point is a collaborative sketch a human draws on; choose drawio-skill when the diagram must be generated from a source of truth and stay accurate across changes. | Excalidraw wins on low-friction drawing; drawio-skill wins on extraction accuracy and incremental update, at the cost of a heavier pipeline. |
 
 ## Health & viability
 

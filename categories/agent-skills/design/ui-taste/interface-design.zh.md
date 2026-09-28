@@ -2,7 +2,7 @@
 name: Interface Design
 slug: interface-design
 repo: https://github.com/Dammyjay93/interface-design
-category: design
+category: ui-taste
 tags: [design-system, ui-craft, visual-hierarchy, design-memory, anti-slop, claude-code, codex]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 你让 coding agent 再加一个设置页，它却把每个设计问题重新拍了一遍板——这次按钮 38px、间距 17px、字体还是那个 Inter 默认——应用看起来像四份原型拼起来的。Interface Design 是一个面向 Claude Code / Codex 的 skill：让 agent 先探索产品领域、一次性定下方向与 token，写每个组件前复述这个决定，并把决策落盘到 `.interface-design/system.md`，之后的会话直接复用。
 
-![Interface Design — 健康度雷达](../../../assets/health/interface-design.zh.svg)
+![Interface Design — 健康度雷达](../../../../assets/health/interface-design.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 整个仓库就是没有任何运行时的指令 markdown：约 320 行的 `SKILL.md`、两个 command 文件加参考模板，由支持 skill 的 agent 在请求命中产品界面工作时加载（Claude Code 自动触发或直接 `/interface-design`；Codex 扫描 `~/.agents/skills`，`agents/openai.yaml` 允许隐式调用）。它替你做的事：强加一套决策流程——意图简报（这个「人」是谁、要完成什么、该有什么感觉）、四个必答的领域探索产出（领域词汇、色彩世界、只属于这个产品的 signature、以及你拒绝的三个默认项）、写每个组件前逐条复述意图／层次／色板／深度／表面／字体／间距并各自给出「为什么」的检查点，外加具体工艺规则（字号按比率成阶、深度策略只选一种并贯彻、低透明度 rgba 边框、约 60/30/10 的点缀色预算、300ms 以内的自定义缓动）。留给你的：确认它提出的方向、批准把决策写入系统文件，以及一个事实——约束是劝导式的，检查点是 prompt 文本里的「必须」，不是 lint 门禁，什么都拦不住一次构建。两条能力是显式条件式的：harness 有内联渲染工具才渲染真实样例，有图像生成工具才提供方向板／paintover——skill 要求先检查再使用，从不假设工具存在。
 
-![interface-design — 主干用户故事](../../../assets/flow/interface-design.zh.svg)
+![interface-design — 主干用户故事](../../../../assets/flow/interface-design.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/interface-design.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,7 +104,7 @@ health:
 
 - **营销页、落地页、campaign、纯品牌工作。** skill 自己的描述就排除了它们，工艺是为高密度产品界面调的。改用 [taste-skill](taste-skill.zh.md)（它的主场是落地页反 slop）或 [Hallmark](hallmark.zh.md) 做一次性网页 brief。
 - **只是微调一个小组件、根本不存在方向问题。** 流程要求四个探索产出，加上*每次*改 UI 前的七行检查点——为一个 padding 修复付这套仪式感不划算。改用 [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) 的约 16 条具名细节规则，逐组件零成本。
-- **需要确定性强制。** 全部是 agent 可以跳过或稀释的 prompt 文本，「必须」只是文字上的必须。要真实的产物门禁，用 [Impeccable](../../ai-design-generation/impeccable.zh.md) 的检测器或 CI 里的 CSS linter。
+- **需要确定性强制。** 全部是 agent 可以跳过或稀释的 prompt 文本，「必须」只是文字上的必须。要真实的产物门禁，用 [Impeccable](../../../ai-design-generation/impeccable.zh.md) 的检测器或 CI 里的 CSS linter。
 - **想要现成的风格候选而不是推理。** [ui-ux-pro-max](ui-ux-pro-max.zh.md) 查 CSV 支撑的风格／配色／字体库并输出具体选项加交付前可访问性清单；这个包让 agent 一切从你的产品领域推导。
 - **你已有受治理的设计系统或品牌 token。** 由推断出的方向、外加 agent 自己写的 `system.md`，会和受强制的 token 打架；把真实系统直接写进约束，跳过品味层。
 - **已经在跑另一套有主张的品味 skill。** 两个反 slop 包同时加载，会在字体、色彩、动效上给出重叠且互相冲突的指令——品味来源只认一个。
@@ -118,7 +118,7 @@ health:
 | [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | ✅ | 想从策划好的风格／配色／字体库里检索、外加交付前可访问性清单时选 ui-ux-pro-max；想要一套推理加记忆的协议时选本页项目。 | 检索引擎出的候选具体且快，但受限于库内数据；本包的上限取决于 agent 对协议的执行度。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | 只要低仪式感的细节打磨——约 16 条具名机械修正、别无其他——就选它；缺的是层次、方向和跨会话一致性时才选 Interface Design。 | 清单从不参与设计方向的争论；本包定方向并记住它，代价是每个组件前的强制检查点。 |
 | [Hallmark](hallmark.zh.md) | ✅ | 对单个网页要显式的一次性动词（build、audit、redesign、study）时选 Hallmark；同一个应用要在多次 agent 会话间保持连贯时选 Interface Design。 | Hallmark 是流程化的 brief；Interface Design 补上记忆文件和可否决的 design-review，但适用范围锁在产品界面。 |
-| [Impeccable](../../ai-design-generation/impeccable.zh.md) | ✅ | AI-slop 检测必须确定性——对既有产物跑 CLI、可进 CI——时选 Impeccable；想在 slop 写出来之前引导生成时选本页项目。 | 检测器给已存在的东西把关，skill 影响即将生成的东西——两者解决同一问题的两端，互为补充而非替代。 |
+| [Impeccable](../../../ai-design-generation/impeccable.zh.md) | ✅ | AI-slop 检测必须确定性——对既有产物跑 CLI、可进 CI——时选 Impeccable；想在 slop 写出来之前引导生成时选本页项目。 | 检测器给已存在的东西把关，skill 影响即将生成的东西——两者解决同一问题的两端，互为补充而非替代。 |
 
 ## 健康度与可持续性
 

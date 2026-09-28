@@ -2,7 +2,7 @@
 name: Hallmark
 slug: hallmark
 repo: https://github.com/Nutlope/hallmark
-category: design
+category: ui-taste
 tags: [agent-skill, ui-design, anti-slop, frontend, claude-code, codex, cursor]
 language: Markdown
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 一个面向 Claude Code、Cursor 和 Codex 的 MIT 许可设计技能：用有主张的 brief、主题、审计、重设计和设计研究，引导 agent 避开重复的 AI 生成式 UI 模式。
 
-![Hallmark — 健康度雷达](../../../assets/health/hallmark.zh.svg)
+![Hallmark — 健康度雷达](../../../../assets/health/hallmark.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 - **你需要无障碍、可组合的生产组件。**改选 [shadcn/ui](https://github.com/shadcn-ui/ui) 或已有设计系统；Hallmark 提供 Markdown 规则，不提供 React、Vue 或 Svelte 组件。
 - **你需要 CSS 编译器或原子化样式框架。**改选 [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)；Hallmark 不提供 utility class，也没有 CSS runtime。
-- **你需要确定性的视觉回归或可强制执行的质量闸门。**改用 Playwright 加截图断言，或 [Impeccable](../../ai-design-generation/impeccable.zh.md) 这样的确定性检测器；Hallmark 的自评与 slop test 是由 agent 解读的建议式指令。
+- **你需要确定性的视觉回归或可强制执行的质量闸门。**改用 Playwright 加截图断言，或 [Impeccable](../../../ai-design-generation/impeccable.zh.md) 这样的确定性检测器；Hallmark 的自评与 slop test 是由 agent 解读的建议式指令。
 - **你的 agent 无法加载自定义 skill，或你不使用 Claude Code、Cursor、Codex。**改用与 harness 无关的设计系统文档；Hallmark 的核心资产是由 harness 加载的 `SKILL.md`。
 - **已有严格的品牌系统，已规定 token、模板和审批流。**优先遵循该系统；Hallmark 的默认宏观结构和主题选择可能与受治理的品牌约束冲突。
 - **主要工作是重图片的零售、旅游或 lookbook 页面。**路线图把 image-heavy brief 列为当前限制，应与专门的美术指导、图像工作流搭配，而非把它当作唯一机制。
@@ -92,8 +92,8 @@ health:
 |---|---|---|---|
 | [Taste-Skill](taste-skill.zh.md) | ✅ | 工作流正好需要 build、audit、redesign、study 四个明确动词时选 Hallmark；需要更宽泛、框架无关的审美技能包时选 Taste-Skill。 | Hallmark 的协议更窄、更有主张，并带静态演示；Taste-Skill 覆盖更多美学变体，但同样只是建议式。 |
 | [Designer Skills](designer-skills.zh.md) | ✅ | 研究、UX 策略、设计系统和测试都要覆盖时选 Designer Skills；一个紧凑的反 AI 味流程足够时选 Hallmark。 | 大型技能包的覆盖面和路由复杂度更高；Hallmark 更容易采用，但不够全面。 |
-| [Impeccable](../../ai-design-generation/impeccable.zh.md) | ✅ | 需要确定性检查既有前端产物时选 Impeccable；需要 agent 获得生成式设计 brief 与重设计流程时选 Hallmark。 | Impeccable 提供 CLI 与检测器；Hallmark 提供没有确定性执行力的审美指导。 |
-| [shadcn/ui](../../web-ui/component-libraries/shadcn-ui.zh.md) | ✅ | 产物必须有无障碍组件基线时选 shadcn/ui；组件选择之前缺的是视觉方向时选 Hallmark。 | 组件让实现可复用；Hallmark 影响 agent 的设计选择，但不提供组件运行时。 |
+| [Impeccable](../../../ai-design-generation/impeccable.zh.md) | ✅ | 需要确定性检查既有前端产物时选 Impeccable；需要 agent 获得生成式设计 brief 与重设计流程时选 Hallmark。 | Impeccable 提供 CLI 与检测器；Hallmark 提供没有确定性执行力的审美指导。 |
+| [shadcn/ui](../../../web-ui/component-libraries/shadcn-ui.zh.md) | ✅ | 产物必须有无障碍组件基线时选 shadcn/ui；组件选择之前缺的是视觉方向时选 Hallmark。 | 组件让实现可复用；Hallmark 影响 agent 的设计选择，但不提供组件运行时。 |
 
 ## 健康度与可持续性
 
