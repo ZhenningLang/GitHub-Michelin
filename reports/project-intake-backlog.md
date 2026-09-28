@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 888
+- Named-but-unindexed alternatives: 890
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -51,4 +51,4 @@ shape and are deliberately excluded here.
 | `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
 | `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
-| `lich0821/wcfLink` | `categories/im-automation/wechat/wechatferry.md` |
+| `iOfficeAI/AionUi` | `categories/agent-tooling/supervision-surfaces/ekko-studio.md` |

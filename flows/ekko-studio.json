@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Ekko Studio does",
+    "zh": "Ekko Studio 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the npm package and start the local server",
+      "zh": "装 npm 包，启动本地服务",
+      "code": "npm install -g ekko-studio · ekko-studio-web start"
+    },
+    {
+      "lane": "them",
+      "en": "Creates its data dir and SQLite DB, starts the Hermes bridge, opens the browser",
+      "zh": "建数据目录和 SQLite 库，拉起 Hermes 桥接，打开浏览器",
+      "code": "http://localhost:8648",
+      "component": {
+        "en": "Koa server + Python bridge",
+        "zh": "Koa 服务 + Python 桥接"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Sign in, then pick the agents you use in Agent Manager",
+      "zh": "登录，在 Agent Manager 里选你要用的 agent"
+    },
+    {
+      "lane": "them",
+      "en": "Installs and configures those coding-agent CLIs on the backend machine",
+      "zh": "在后端机器上安装并配置这些编码 agent 的 CLI",
+      "component": {
+        "en": "Agent Manager",
+        "zh": "Agent Manager"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Chat with one agent, or @mention several agents in a group room",
+      "zh": "和一个 agent 单聊，或在群聊房间里 @ 多个 agent"
+    },
+    {
+      "lane": "them",
+      "en": "Routes each run to that agent's adapter, streams replies and tool traces, saves the session",
+      "zh": "把每次运行派给对应 agent 的适配器，流式回显回复与工具轨迹，存下会话",
+      "component": {
+        "en": "runtime adapters",
+        "zh": "运行时适配器"
+      }
+    }
+  ],
+  "value": {
+    "en": "One local console for all your agents' sessions and files, instead of one terminal and one history per agent",
+    "zh": "所有 agent 的会话和文件都在一个本地控制台里，不再一个 agent 一个终端、一份历史"
+  },
+  "sources": [
+    "README 'Quick Start > npm' (npm install -g ekko-studio; ekko-studio-web start; Open http://localhost:8648)",
+    "README 'Auto Configuration' (initializes Studio data directories, local databases and bundled skills; starts the Hermes agent bridge used by /chat-run; opens a browser)",
+    "README 'Authentication' (default bootstrap credentials are admin / 123456; users are prompted to change them after login)",
+    "README 'Coding Agents' (install, configure, launch and monitor Claude Code, Codex, Pi, Grok, OpenCode and DSH from the dashboard) and 'Agent Manager' screenshot caption",
+    "README 'Group Chat' (@mention routing — mention an agent to trigger a contextual reply)",
+    "README 'AI Chat' (real-time streaming over Socket.IO /chat-run; Studio dispatches each run through runtime adapters; self-built SQLite session database)"
+  ]
+}

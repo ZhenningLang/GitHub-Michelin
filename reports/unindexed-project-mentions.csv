@@ -28,8 +28,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
+`iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
+`nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-python`,categories/im-automation/openilink-sdk-go.md,,no
