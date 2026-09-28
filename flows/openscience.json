@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenScience does",
+    "zh": "OpenScience 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "phase": { "en": "Set up once", "zh": "一次性搭建" },
+      "en": "Install the CLI and open it on your project folder",
+      "zh": "装好 CLI，指向你的项目文件夹",
+      "code": "npm install -g @synsci/openscience · openscience ~/research/my-project",
+      "component": { "en": "openscience CLI", "zh": "openscience CLI" }
+    },
+    {
+      "lane": "you",
+      "en": "Connect a model: your own API key, or a local endpoint",
+      "zh": "接上模型：自己的 API key，或本地端点",
+      "code": "openscience keys add · openscience local add"
+    },
+    {
+      "lane": "you",
+      "phase": { "en": "Every task", "zh": "每个任务" },
+      "en": "Describe the research task in plain language, optionally agreeing on method first",
+      "zh": "用大白话描述研究任务，可先对齐方法再干",
+      "code": "/plan"
+    },
+    {
+      "lane": "them",
+      "en": "The lead agent works the turn step by step: shell, Python/R kernels, files, science connectors",
+      "zh": "主 agent 逐步执行：shell、Python/R 内核、文件、科学连接器",
+      "component": { "en": "lead agent + tools", "zh": "主 agent＋工具" }
+    },
+    {
+      "lane": "you",
+      "en": "Approve the risky command or new network host it asks about",
+      "zh": "它请求危险命令或新网络主机时，你来批"
+    },
+    {
+      "lane": "them",
+      "en": "Bounded subtasks run on parallel workers; the lead keeps synthesis and the final say",
+      "zh": "有边界的子任务交给并行 worker，综合和结论留在主线",
+      "component": { "en": "worker agents", "zh": "子任务 worker" }
+    },
+    {
+      "lane": "them",
+      "en": "The answer lands with the full trace and the files it wrote in your project",
+      "zh": "答案连同完整轨迹和写好的文件落回你的项目"
+    }
+  ],
+  "value": {
+    "en": "A checkable result on your disk — data, code, figures, report and the trace — not a confident paragraph",
+    "zh": "落到磁盘的可核查结果——数据、代码、图、报告加执行轨迹，而不是一段自信的文本"
+  },
+  "sources": [
+    "README 'Install' (npm install -g @synsci/openscience; openscience keys add; openscience local add)",
+    "README 'First task' (openscience ~/research/my-project; 'Start with /plan')",
+    "README 'How it works' (research agent plans, tools: shell, Python/R kernels, files, search, connectors, compute; workers for bounded parallel tasks)",
+    "README 'How it works' → Permissions bullet (risky actions and network commands ask once per destination host)",
+    "docs/notes/opencode-core-for-science.md (lead agents research/plan/explore plus domain specialists; Task tool delegation with parent keeps final say)"
+  ]
+}

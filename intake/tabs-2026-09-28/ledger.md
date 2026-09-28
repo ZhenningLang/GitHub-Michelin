@@ -65,11 +65,11 @@
 | skillsgate/skillsgate | add | done | categories/agent-tooling/harness-extensions/skillsgate.md | 首次（Opus）在无头模式把健康评分放后台后提前结束，已补前台规则后重排 | skillsgate/skillsgate |
 | stanfordnlp/dspy | sync | done | categories/agent-frameworks/workflow-builders/dspy.md | 新鲜页，sync-entry 按阈值未重核，无改动 | stanfordnlp/dspy |
 | supermemoryai/supermemory | add | running |  |  | supermemoryai/supermemory |
-| synthetic-sciences/openscience | add | running |  |  | synthetic-sciences/openscience |
+| synthetic-sciences/openscience | add | done | categories/deep-research/openscience.md |  | synthetic-sciences/openscience |
 | Thysrael/Horizon | add | done | categories/reading-tools/horizon.md |  | thysrael/horizon |
 | vectorize-io/hindsight | add | running |  |  | vectorize-io/hindsight |
 | vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |
-| VictorTaelin/OptMem | add | pending |  |  | victortaelin/optmem |
+| VictorTaelin/OptMem | add | running |  |  | victortaelin/optmem |
 | video-db/call.md | add | pending |  |  | video-db/call.md |
 | win4r/MuseAI-Skills | skip | skipped |  | 不收：muse.ai 闭源产品运行环境快照（ELF 二进制 + 技能文本），非官方发布；标签保留待你复核 | win4r/museai-skills |
 | yang0/handraw-style | add | pending |  |  | yang0/handraw-style |

@@ -18,6 +18,7 @@
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | B（4/6） | [→](node-deepresearch.zh.md) |
 | **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | B（5/6） | [→](hyperresearch.zh.md) |
 | **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | B（6/6） | [→](last30days.zh.md) |
+| **OpenScience** | 当研究任务必须真的在自己的文件上跑代码时用它——文献与数据库检索、Python/R 内核、集群作业、每一步都留在可审计的轮次轨迹里。 | B（6/6） | [→](openscience.zh.md) |
 
 
 ## 对比矩阵
@@ -31,6 +32,7 @@
 | [MiroThinker](mirothinker.zh.md) | ✅ | C（5/6） | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 |
 | [Hyperresearch](hyperresearch.zh.md) | ✅ | B（5/6） | 锁死 Claude Code 的 16 步研究流水线，带对抗式 critic、引用核验和持久 vault；pre-1.0 churn 明显，且榜单领先宣称是自测 projection。 |
 | [last30days](last30days.zh.md) | ✅ | B（6/6） | 一条斜杠命令把最近 30 天 Reddit／X／YouTube／HN／Polymarket 的信号融合成一份带引用的简报；项目年轻、热度高、上下文开销大，且依赖抓取。 |
+| [OpenScience](openscience.zh.md) | ✅ | B（6/6） | OpenCode 形状、为科学加载的工作台：真实内核、真实连接器、真实集群；代价是账号首启、外部学术 API 与极快的版本 churn。 |
 | Perplexity / OpenAI Deep Research | 未收录 | — | 各页对比里点到的其他深度研究 agent / 服务。 |
 
 ## 什么该放这里

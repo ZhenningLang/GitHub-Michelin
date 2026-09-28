@@ -18,6 +18,7 @@
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | B (4/6) | [→](node-deepresearch.md) |
 | **Hyperresearch** | Use it when you're in Claude Code and need a high-stakes, citation-audited research report — a 16-step adversarial pipeline plus a persistent source vault; heavy on time and tokens, Claude-Code-only. | B (5/6) | [→](hyperresearch.md) |
 | **last30days** | Use it when you want your agent to brief you on what Reddit, X, YouTube, HN and Polymarket said about a topic in the last 30 days, ranked by engagement — but it loads a ~258 KB skill prompt per call and leans on scraping and browser-session cookies. | B (6/6) | [→](last30days.md) |
+| **OpenScience** | Use it when the research task must actually run code on your own files — literature and database search, Python/R kernels, cluster jobs — with every step left in an auditable turn trace. | B (6/6) | [→](openscience.md) |
 
 
 ## Comparison matrix
@@ -31,6 +32,7 @@
 | [MiroThinker](mirothinker.md) | ✅ | C (5/6) | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. |
 | [Hyperresearch](hyperresearch.md) | ✅ | B (5/6) | Claude-Code-locked 16-step research pipeline with adversarial critics, cite-checking, and a persistent vault; pre-1.0 churn and its leaderboard claim is a self-run projection. |
 | [last30days](last30days.md) | ✅ | B (6/6) | Slash-command skill that fuses 30 days of Reddit/X/YouTube/HN/Polymarket signal into one cited brief; young, hyped, context-heavy, and dependent on scraping. |
+| [OpenScience](openscience.md) | ✅ | B (6/6) | An OpenCode-shaped workbench loaded for science: real kernels, real connectors, real files — young (3 months), churn-heavy, with an account-gated interactive surface. |
 | Perplexity / OpenAI Deep Research | 未收录 | — | Other deep-research agents/services named across the pages. |
 
 ## What belongs here
