@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "oh-my-claudecode does", "zh": "oh-my-claudecode 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it once — Claude Code plugin or npm CLI", "zh": "装一次——Claude Code 插件或 npm CLI", "code": "/plugin install oh-my-claudecode · npm i -g oh-my-claude-sisyphus@latest"},
+    {"lane": "you", "en": "Run the one-time setup", "zh": "跑一次性的 setup", "code": "omc setup · /omc-setup"},
+    {"lane": "you", "en": "Hand a whole feature to autopilot in natural language", "zh": "把一整个功能用自然语言交给 autopilot", "code": "/autopilot \"build a REST API for managing tasks\""},
+    {"lane": "them", "en": "Runs the staged pipeline plan → PRD → exec → verify → fix, looping on failures", "zh": "按规划→PRD→执行→验证→修复流水线干活，失败进循环", "component": {"en": "Team pipeline", "zh": "Team 流水线"}},
+    {"lane": "them", "en": "Routes each subtask to a cheaper or stronger Claude tier; the HUD shows every agent", "zh": "把子任务路由到更便宜或更强的模型档位，HUD 实时展示", "component": {"en": "HUD statusline", "zh": "HUD 状态栏"}}
+  ],
+  "value": {"en": "A feature planned, built, verified, and re-fixed by a team of Claude agents — you review the result, not every step", "zh": "一整个功能由一队 Claude agent 规划、实现、验证、返工——你审最终结果，不盯每一步"},
+  "sources": ["README.md main @ 2026-09-27: Quick Start (/plugin marketplace add + /plugin install oh-my-claudecode; npm i -g oh-my-claude-sisyphus@latest; /omc-setup and omc setup; /autopilot \"build a REST API for managing tasks\"), Team Mode section (pipeline team-plan → team-prd → team-exec → team-verify → team-fix), Why section (smart model routing, HUD statusline), Requirements (tmux)"]
+}

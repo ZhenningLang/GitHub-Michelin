@@ -67,7 +67,6 @@ Anthropic computer use / OpenAI Operator,categories/desktop-automation/cua.md,,n
 Anthropic Console prompt improver,categories/agent-skills/prompt-engineering/prompt-master.md,,no
 Anthropic Cookbook,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 Anthropic's built-in skills / native slash commands,categories/agent-skills/personal-collections/engineering-workflows/pua.md,,no
-Anthropic's built-in skills / slash commands,categories/agent-skills/engineering/waza.md,,no
 Anthropic's built-in subagent docs / hand-rolled agents,categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
 Anthropic's example/built-in agents,categories/agent-skills/subagent-collections/agency-agents.md,,no
 Anthropic's official / built-in Agent Skills,categories/agent-skills/personal-collections/knowledge-content/khazix-skills.md,,no
@@ -175,7 +174,6 @@ Claude Code / similar vendor coding-CLI,categories/agent-frameworks/coding-agent
 Claude Code GitHub Action (general),categories/ai-code-review/claude-code-security-review.md,,no
 Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
-Claude Code's native skills / built-in slash commands,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
@@ -475,7 +473,6 @@ Make (Integromat),categories/workflow-orchestration/n8n.md,,no
 Managed-cloud node autoscaling and provider rebalancing features,categories/dev-utilities/ops-infra/descheduler.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
-Manual prompt engineering,categories/agent-frameworks/workflow-builders/skillopt.md,,no
 Manual rebuild,categories/agent-skills/design/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
 Manus / hosted autonomous-agent products,categories/agent-tooling/work-state/planning-with-files.md,,no

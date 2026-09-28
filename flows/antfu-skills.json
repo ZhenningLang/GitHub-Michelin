@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "antfu/skills does", "zh": "antfu/skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the whole collection with the skills CLI", "zh": "用 skills CLI 一次装齐整套集合", "code": "pnpx skills add antfu/skills --skill='*'"},
+    {"lane": "them", "en": "Each skill becomes a SKILL.md folder in your agent's skills directory, waiting to be pulled", "zh": "每个 skill 落成 SKILL.md 文件夹，等待按需触发", "component": {"en": "SKILL.md files", "zh": "SKILL.md 文件"}},
+    {"lane": "you", "en": "Build and test in Vue / Nuxt / Vite as usual", "zh": "照常写 Vue/Nuxt/Vite 的代码和测试"},
+    {"lane": "them", "en": "The agent pulls the matching skill into context only when a task triggers it", "zh": "任务匹配时，agent 才把对应 skill 拉进上下文", "component": {"en": "on-demand loading", "zh": "按需加载"}},
+    {"lane": "them", "en": "Generated skills answer from official docs kept fresh as git submodules under sources/", "zh": "生成类 skill 依据 sources/ 子模块同步的官方文档作答", "component": {"en": "sources/ submodules", "zh": "sources/ 子模块"}}
+  ],
+  "value": {"en": "The agent writes the stack the way its own maintainers do — his conventions plus doc-accurate framework usage, without you authoring rules per tool", "zh": "agent 按生态维护者本人的约定与官方文档口径写代码，不必你逐工具立规矩"},
+  "sources": ["README.md main @ 2026-09-27 (raw.githubusercontent.com/antfu/skills/main/README.md): install `pnpx skills add antfu/skills --skill='*'` and `-g` variant; links CLI docs to vercel-labs/skills", "README Skills sections: hand-maintained `antfu`/`antfu-design`; generated table (vue, nuxt, pinia, vite, vitepress, vitest, unocss, pnpm)", "README FAQ: 'uses git submodules to directly reference source documentation'; 'the value of skills lies in being shareable and on-demand'", "Repo tree via gh api 2026-09-27: skills/ contains 11 folders incl. nitro; .gitmodules lists 9 sources/ submodules incl. nitrojs/nitro", "README 'Generate Your Own Skills': `pnpm start init`, `pnpm start sync`, edit `meta.ts`"]
+}

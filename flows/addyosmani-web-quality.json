@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "web-quality-skills does",
+    "zh": "web-quality-skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the pack onto your coding agent",
+      "zh": "把技能包装进你的 coding agent",
+      "code": "npx skills add addyosmani/web-quality-skills"
+    },
+    {
+      "lane": "them",
+      "en": "Six skills register with the loader and activate on matching prompts",
+      "zh": "六个技能经加载器注册，在匹配的提示词上自动激活",
+      "component": {
+        "en": "skills/ + SKILL.md",
+        "zh": "skills/ 与 SKILL.md"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask for an audit in plain language",
+      "zh": "用自然语言提出审计要求",
+      "code": "Audit this page for web quality issues"
+    },
+    {
+      "lane": "them",
+      "en": "The audit skill seeks live evidence first: Lighthouse and traces via Chrome DevTools MCP, CrUX field data",
+      "zh": "先经 DevTools MCP 拿 Lighthouse 实验室实测证据",
+      "component": {
+        "en": "web-quality-audit skill",
+        "zh": "web-quality-audit 技能"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Keeps measured failures apart from source hypotheses, ranks findings against CWV/WCAG/SEO thresholds",
+      "zh": "区分实测失败与源码推测，按 CWV/WCAG/SEO 阈值排序结论"
+    }
+  ],
+  "value": {
+    "en": "Evidence-led web-quality audits without hand-pasting the checklist, with Lighthouse CLI and static inspection as fallback when no browser tool is wired",
+    "zh": "不必手贴清单就能得到以证据为准的 web 质量审计；没接浏览器工具时退回 Lighthouse CLI 与静态检查"
+  },
+  "sources": [
+    "README.md main @ 2026-09-27 (Quick start): npx skills add addyosmani/web-quality-skills",
+    "README.md (Usage): \"Audit this page for web quality issues\"",
+    "README.md (Measurement model / Optional Chrome DevTools integration): CrUX field data, first-party RUM, DevTools trace or Lighthouse lab run, static source inspection; lighthouse_audit, performance_start_trace",
+    "GitHub contents API 2026-09-27: skills/ = accessibility, best-practices, core-web-vitals, performance, seo, web-quality-audit"
+  ]
+}

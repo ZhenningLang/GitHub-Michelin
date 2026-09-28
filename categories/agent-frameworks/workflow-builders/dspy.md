@@ -6,17 +6,17 @@ category: workflow-builders
 tags: [llm-programming, prompt-optimization, modules, signatures, rag, agents]
 language: Python
 license: MIT
-maturity: v3.2.1, active (2026-06)
-last_verified: 2026-06-26
+maturity: v3.4.0, active, ~38.4k stars (as of 2026-09)
+last_verified: 2026-09-27
 type: framework
 upstream:
-  pushed_at: 2026-06-25T16:53:41Z
+  pushed_at: 2026-09-27T00:23:09Z
   default_branch: main
-  default_branch_sha: 498760149b230f402c56bece2aa45df6e1ba946b
+  default_branch_sha: 9c900c7de0a3cc3114c23fe8202ebe48e2206ce1
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:37:13Z
+  computed_at: 2026-09-27T17:06:32Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 12
+        last_commit_age_days: 1
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 23.0
-        qualifying_issues: 28
+        median_ttfr_hours: 23.2
+        qualifying_issues: 25
         band: default
         window_offset_days: 10
         source: issue
@@ -47,23 +47,23 @@ health:
         registry: pypi.org
         canonical_package: dspy
         dependent_repos_count: 3
-        downloads_last_month: 5040660
+        downloads_last_month: 5174682
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1352
-        last_commit_age_days: 0
+        repo_age_days: 1357
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 19
-        top1_share: 0.489
-        top3_share: 0.689
+        active_maintainers_12mo: 20
+        top1_share: 0.511
+        top3_share: 0.693
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,7 +77,7 @@ health:
 
 # DSPy
 
-A framework for *programming* (not prompting) language models: you declare typed input→output `Signature`s, compose `Module`s, and let optimizers compile the actual prompts (and optionally weights) for you against a metric.
+Hand-tuned prompts work today and silently break when the model updates or the data drifts, and "this version feels better" is unverifiable. DSPy makes the prompt a compiled artifact: you declare typed input→output signatures plus a scoring metric, and its optimizers generate the actual prompts (optionally weights) that maximize the metric — recompile when the model changes.
 
 ![dspy — health radar](../../../assets/health/dspy.svg)
 
@@ -86,6 +86,28 @@ A framework for *programming* (not prompting) language models: you declare typed
 You're an applied ML or platform engineer building an LLM pipeline — say a RAG system or a multi-step classification/extraction flow — and you're tired of hand-tuning megaprompts that silently break every time you swap the model or the data drifts. You've got a few dozen labeled examples and a metric you actually care about (exact-match, F1, an LLM judge), but no good way to systematically turn "this prompt feels better" into "this prompt measurably scores higher." DSPy resolves this by letting you write the *logic* declaratively: you define a `Signature` like `question -> answer`, wrap it in a `Module` (`Predict`, `ChainOfThought`, `ReAct`), and then hand the whole program plus your metric to an optimizer. The optimizer (BootstrapFewShot, MIPROv2, GEPA, BootstrapFinetune) searches over demonstrations, instructions, or finetuned weights to maximize your metric — so the prompt becomes a compiled artifact instead of a hand-edited string.
 
 It's also a good fit when you expect to swap models often. Because DSPy routes calls through LiteLLM, the same program runs across OpenAI, Anthropic, local vLLM/Ollama, and others, and you can re-compile when you change backends rather than rewriting prompts per provider. If your value is in *structure that survives model churn* — and you have data and a metric to optimize against — that's DSPy's sweet spot.
+
+## How it works
+
+A DSPy program is plain Python. You write a `Signature` — a typed input→output declaration like `"subject -> haiku"`, no prompt text involved — and wrap it in a `Module` (`Predict`, `ChainOfThought`, `ReAct`) that decides how the call is made. At run time DSPy builds the real prompt, sends it through its LiteLLM gateway (a provider-agnostic adapter layer) to whichever model you configured, and parses the reply back into your declared output fields. The compiler part: you hand an optimizer a small train set plus a metric — any function that scores an output, e.g. exact-match, F1, or an LLM judge — and it searches over instruction wording and few-shot demonstrations (or finetuned weights) until your metric stops improving, emitting a compiled program. What is yours: the program structure, the examples, and the metric; what DSPy owns: every prompt string in between, regenerable with one `optimizer.compile(...)` call when you swap models.
+
+![dspy — backbone user story](../../../assets/flow/dspy.svg)
+
+<!-- flow-steps:begin (generated from flows/dspy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it into any Python environment — `pip install dspy`
+2. **You**: Point DSPy at a model via a LiteLLM model string — `dspy.LM("openai/gpt-5-nano", api_key="YOUR_OPENAI_API_KEY")`
+3. **You**: Declare the task as typed input -> output, not a prompt — `dspy.Predict("subject -> haiku")`
+4. **DSPy**: Builds and sends the actual prompt, parses typed output back — component: `ChatAdapter`
+5. **You**: Write a scoring metric, then compile against a train set — `optimizer.compile(haiku_bot, trainset=train, valset=val)`
+6. **DSPy**: Searches instructions & demos that maximize your metric, keeps the best — component: `Optimizer (GEPA, MIPROv2)`
+
+**Value**: Prompts become compiled artifacts — when you swap models, rerun the optimizer instead of hand-editing
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -110,7 +132,7 @@ It's also a good fit when you expect to swap models often. Because DSPy routes c
 ## Tech stack
 
 - **Language:** Python (`>=3.10, <3.15` per pyproject).
-- **Core abstractions:** `Signature` (typed I/O spec), `Module` (`Predict`, `ChainOfThought`, `ReAct`, `ProgramOfThought`, etc.), and optimizers / "teleprompters" (`BootstrapFewShot`, `MIPROv2`, `GEPA`, `BootstrapFinetune`, `COPRO`, `SIMBA`) [推断 — exact set varies by release].
+- **Core abstractions:** `Signature` (typed I/O spec), `Module` (`Predict`, `ChainOfThought`, `ReAct`, `ProgramOfThought`, etc.), and optimizers / "teleprompters" — verified against `dspy/teleprompt/` at v3.4.0: `GEPA`, `MIPROv2`, `BootstrapFewShot`(+RandomSearch), `BootstrapFinetune`, `COPRO`, `SIMBA`, plus `Ensemble`, `GRPO`, `AvatarOptimizer`, `InferRules`, `KNNFewShot` and others.
 - **LM gateway:** LiteLLM, giving provider-agnostic access (OpenAI, Anthropic, local vLLM/Ollama, etc.).
 - **Validation/serialization:** Pydantic v2, orjson, json-repair (for coercing model output into typed fields).
 - **Caching/robustness:** diskcache + cachetools (LM response caching), tenacity (retries), cloudpickle (program serialization).
@@ -119,7 +141,7 @@ It's also a good fit when you expect to swap models often. Because DSPy routes c
 ## Dependencies
 
 - **Runtime:** Python ≥ 3.10 and < 3.15. No GPU required for the framework itself (you call hosted or local LMs); finetune-based optimizers need whatever the target finetuning backend requires.
-- **Required Python deps (v3.2.1, per pyproject):** `litellm` ≥ 1.64.0, `openai` ≥ 0.28.1, `pydantic` ≥ 2.0, `regex`, `orjson`, `tqdm`, `requests` ≥ 2.31, `diskcache` ≥ 5.6, `json-repair`, `tenacity`, `anyio`, `cachetools` ≥ 5.5, `cloudpickle` ≥ 3.1.2, `gepa[dspy]` ==0.1.1.
+- **Required Python deps (v3.4.0, per pyproject):** `litellm` ≥ 1.65.8, `openai` ≥ 1.66.2, `pydantic` ≥ 2.11.0, `regex` ≥ 2023.10.3, `orjson`, `tqdm`, `requests` ≥ 2.31, `diskcache` ≥ 5.6, `json-repair` ≥ 0.54.2, `tenacity`, `anyio`, `cachetools` ≥ 5.5, `cloudpickle` ≥ 3.1.2, `gepa[dspy]` ==0.1.4. Optional extras exist for `anthropic`, `mcp`, `weaviate`, `langchain`, `optuna`, `deno`, and `typesafe`.
 - **External services:** at least one LM provider/endpoint (API key for a hosted model, or a local server like Ollama/vLLM). Optional: a vector store/retriever for RAG, and tracking/observability backends.
 - **Install:** `pip install dspy` (formerly `dspy-ai`).
 
@@ -129,18 +151,17 @@ It's also a good fit when you expect to swap models often. Because DSPy routes c
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 23.0 hours across 28 qualifying issues/PRs.
-- **Maintenance — active (as of 2026-06).** Last push 2026-06; latest release 3.2.1 (2026-05). Steady release flow on a v3.x line; not archived. Reads as healthily maintained, with 540+ open issues reflecting a large active user base rather than neglect.
+- **Responsiveness**: Grade A — median first-response time 23.2 hours across 25 qualifying issues/PRs (re-scored 2026-09).
+- **Maintenance — very active (as of 2026-09).** Last push 2026-09; latest release 3.4.0 (2026-09-25). Steady release flow on a v3.x line; not archived. Reads as healthily maintained, with hundreds of open issues reflecting a large active user base rather than neglect.
 - **Governance & backing — org/academic-anchored.** Lives under `stanfordnlp` (Stanford NLP), a research-org owner rather than a single vendor or lone maintainer; provenance (the original DSP/DSPy papers) gives it academic credibility. Not foundation-governed, but the bus factor is broader than a personal repo. [推断]
-- **Age & Lindy — old(ish) and still active ⇒ strong prior.** Created 2023-01, ~3 years old (as of 2026-06) and still shipping. By age × still-active it clears the Lindy bar that the younger agent frameworks in this category do not — a comparatively safe long-term bet for the *paradigm*, even though the API churns within it.
-- **Adoption & ecosystem — widely referenced.** A well-known framework with substantial mindshare in the prompt-optimization space and a LiteLLM-based provider-agnostic core; the main friction is fast-moving APIs (see "When NOT to use"), not adoption.
+- **Age & Lindy — ~3.7 years old and still active ⇒ strong prior.** Created 2023-01, still shipping weekly (as of 2026-09). By age × still-active it clears the Lindy bar that the younger agent frameworks in this category do not — a comparatively safe long-term bet for the *paradigm*, even though the API churns within it.
+- **Adoption & ecosystem — widely referenced, with named production cases.** 5,174,682 PyPI downloads/month (measured 2026-09) and ~38.4k stars. The docs cite Shopify (GPT-5 task converted to DSPy + GEPA on a small Qwen model, ~75× cheaper and ~2× more reliable) and Dropbox (doubled relevance-judge accuracy on a smaller model) — these are the project's own reported numbers, not independently reproduced.
 - **Risk flags — API instability, not licensing.** MIT-licensed with no relicense history; the real risk is migration cost across major versions (teleprompter→optimizer renames), so pin a version.
 
 ## Caveats (unverified)
 
-- [未验证] Star count ~35.4k as of 2026-06 (from `gh repo view`) — GitHub stars in this ecosystem are unreliable and date-sensitive; indicative only.
-- [未验证] Latest release 3.2.1 dated 2026-05-05 (per GitHub release metadata); a newer version may exist by the time you read this.
+- [未验证] Star count ~38.4k as of 2026-09 (GitHub API) — stars are unreliable and date-sensitive; indicative only, not adoption or vetting evidence.
 - [未验证] Optimizer compile runs being slow / token-expensive is a general characteristic of search-based prompt optimization; exact cost depends entirely on optimizer choice, program size, model, and dataset — no first-party number is asserted here.
-- [推断] The exact set of available optimizers/modules (and their names) shifts release-to-release; the lists above reflect commonly documented components — verify against the installed version before relying on a specific one.
 - [推断] API churn / renames across major versions (teleprompter→optimizer terminology, signature ergonomics) is inferred from DSPy's release history and community reports, not confirmed against a specific changelog here; treat upgrade-migration cost as a risk to check.
 - [未验证] LiteLLM enabling specific providers (Anthropic, vLLM, Ollama) is per DSPy/LiteLLM documentation; confirm the exact provider/model is supported for your version before depending on it.
+- [未验证] The Shopify (~75× cheaper, ~2× more reliable) and Dropbox (doubled accuracy) figures are the project's own claims in its docs (getting-started/gepa-optimization.md), not independently reproduced.

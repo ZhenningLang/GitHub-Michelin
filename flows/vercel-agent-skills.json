@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Vercel Agent Skills does",
+    "zh": "Vercel Agent Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the pack onto your coding agent",
+      "zh": "把技能包装进你的 coding agent",
+      "code": "npx skills add vercel-labs/agent-skills"
+    },
+    {
+      "lane": "them",
+      "en": "Skills become available and load when a relevant task is detected",
+      "zh": "技能即刻可用，任务匹配时自动装载"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for a review or an optimization in plain language",
+      "zh": "用自然语言提出 review 或优化请求",
+      "code": "Review this React component for performance issues"
+    },
+    {
+      "lane": "them",
+      "en": "react-best-practices audits your code against Vercel Engineering's 40+ rules, prioritized by impact",
+      "zh": "按 Vercel 工程 40+ 条规则审查代码并按影响排序",
+      "component": {
+        "en": "react-best-practices",
+        "zh": "react-best-practices"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "On a deployed project, vercel-optimize pulls real Vercel metrics first, then audits only the routes they flag",
+      "zh": "先拉真实 Vercel 指标，再只查被点名的路由",
+      "component": {
+        "en": "vercel-optimize",
+        "zh": "vercel-optimize"
+      }
+    }
+  ],
+  "value": {
+    "en": "Vercel's own house rules for React performance, UI quality, and cost get applied by your agent without you authoring the rule sets",
+    "zh": "Vercel 自家的 React 性能、UI 质量与成本规则由 agent 自动套用，不必你自己编写规则集"
+  },
+  "sources": [
+    "README.md main @ 2026-09-27 (Installation): npx skills add vercel-labs/agent-skills",
+    "README.md (Usage): \"Skills are automatically available once installed. The agent will use them when relevant tasks are detected.\"; example prompt \"Review this React component for performance issues\"",
+    "README.md (react-best-practices): 40+ rules across 8 categories, prioritized by impact; (vercel-optimize): collects Vercel metrics first, then investigates only the routes those metrics point to"
+  ]
+}

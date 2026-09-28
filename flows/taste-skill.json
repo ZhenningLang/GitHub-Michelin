@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Taste-Skill does", "zh": "Taste-Skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the pack into your agent with the skills CLI", "zh": "用 skills CLI 把整套包装进 agent", "code": "npx skills add https://github.com/Leonxlnx/taste-skill", "component": {"en": "skills/ tree + SKILL.md files", "zh": "skills/ 目录 + SKILL.md 文件"}},
+    {"lane": "you", "en": "Ask the agent to build or redesign a frontend page", "zh": "让 agent 构建或重设计一个前端页面"},
+    {"lane": "them", "en": "Loads the taste skill: reads the brief, infers the design language, maps it to colors, type and spacing", "zh": "加载 taste skill：读 brief、推断设计语言并映射到设计系统", "component": {"en": "taste-skill v2 skill file", "zh": "taste-skill v2 skill"}},
+    {"lane": "them", "en": "Applies the GSAP motion skeletons and runs anti-repetition and pre-flight checks", "zh": "套用 GSAP 动效骨架，跑反重复与 pre-flight 检查"},
+    {"lane": "you", "en": "Retune the three dials at the top of the skill to steer future output", "zh": "调整 skill 文件顶部的三个旋钮，校准后续输出", "code": "DESIGN_VARIANCE · MOTION_INTENSITY · VISUAL_DENSITY"}
+  ],
+  "value": {"en": "Intentional layout, typography and motion in agent-generated UI without hand-writing a design brief every prompt", "zh": "agent 产出的 UI 有刻意的布局、排版与动效，不必每条 prompt 手写设计 brief"},
+  "sources": ["README.md main @ 2026-09: Install section `npx skills add https://github.com/Leonxlnx/taste-skill`; Skills table (taste-skill = v2 experimental, install name design-taste-frontend; v2 description: brief inference, design-system map, canonical GSAP code skeletons, anti-repetition, strict pre-flight check); Settings section: DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY, numbers at the top of the file are 1-10 dials"]
+}

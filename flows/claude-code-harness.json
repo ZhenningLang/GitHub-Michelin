@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude Code Harness does", "zh": "Claude Code Harness 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the plugin marketplace in Claude Code", "zh": "在 Claude Code 里添加插件市场", "code": "/plugin marketplace add Chachamaru127/claude-code-harness"},
+    {"lane": "you", "en": "Install the plugin and run the one-time setup", "zh": "安装插件并跑一次 setup", "code": "/harness-setup"},
+    {"lane": "them", "en": "Five core verbs and the Go guardrail engine become part of your session", "zh": "五个核心动词与 Go 护栏引擎接入你的会话", "component": {"en": "harness plugin", "zh": "harness 插件"}},
+    {"lane": "you", "en": "Hand over one intent with a completion criterion", "zh": "交出一个意图和完成标准", "code": "/harness-plan Improve the README onboarding flow"},
+    {"lane": "them", "en": "Drafts spec.md + Plans.md — scope, acceptance criteria, unknowns, stop conditions — for you to approve", "zh": "起草 spec.md + Plans.md：范围、验收标准、未知项、停止条件", "component": {"en": "/harness-plan", "zh": "/harness-plan"}},
+    {"lane": "you", "en": "Approve or correct the contract, then execute the whole plan", "zh": "批准或修正契约，然后整盘执行", "code": "/harness-work all"},
+    {"lane": "them", "en": "Workers run tasks with required checks; each operation is adjudicated by the Go engine before executing", "zh": "工人按计划干活；每个操作执行前由 Go 引擎裁决放行或拒绝", "component": {"en": "runtime floor + guardrails", "zh": "runtime floor + 护栏"}},
+    {"lane": "you", "en": "Review the result separately, then ship", "zh": "独立评审结果，然后发布", "code": "/harness-review · /harness-release"},
+    {"lane": "them", "en": "Major findings block completion; the release packages only verified evidence", "zh": "重大问题拦住完成；发布只打包已验证的证据", "component": {"en": "/harness-release preflight", "zh": "/harness-release 预检"}}
+  ],
+  "value": {"en": "Every feature lands as an approved contract, TDD-gated work, independent review, and guarded operations — instead of 'trust me, it works'", "zh": "每个功能都落成批准的契约、TDD 门控、独立评审与执行前护栏，而不是「我测过了，放心」"},
+  "sources": ["README.md main @ 2026-09-27 (raw.githubusercontent.com/Chachamaru127/claude-code-harness/main/README.md): 'Install in 30 seconds' block — `/plugin marketplace add Chachamaru127/claude-code-harness`, `/plugin install claude-code-harness@claude-code-harness-marketplace`, `/harness-setup`, `/harness-plan Improve the README onboarding flow`", "README 'The loop' table: /harness-plan outputs spec.md + Plans.md (scope, acceptance criteria, dependencies, unknowns, stop conditions); '/harness-work all' runs the whole approved plan; 'Your job is not to write the plan — it is to approve or correct it'", "README 'The safety layer': 'Operations connected to CCH's checks are inspected by a Go engine before execution'; runtime floor 5 categories allow/deny with no global disable switch; Guardrails R01–R16 deny/confirm/warn", "README loop table: /harness-review 'Major findings block completion'; /harness-release 'Packages only verified evidence into CHANGELOG, tag, and release. Release preflight must pass'"]
+}

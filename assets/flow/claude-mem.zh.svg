@@ -44,7 +44,7 @@
 <rect class="accY" x="40" y="72" width="4" height="73" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
-<text class="t" x="82" y="101">一条命令安装，选定压缩记忆用的模型</text>
+<text class="t" x="82" y="101">一条命令安装，选定由谁来压缩记忆</text>
 <text class="c" x="82" y="125">npx claude-mem install</text>
 <rect class="cardT" x="472" y="108" width="368" height="50" rx="8"/>
 <rect class="accT" x="472" y="108" width="4" height="50" rx="2"/>

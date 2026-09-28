@@ -2,7 +2,7 @@
   "schema": 1,
   "them": {"en": "claude-mem does", "zh": "claude-mem 做的"},
   "steps": [
-    {"lane": "you", "en": "Install with one command and pick the model that compresses memories", "zh": "一条命令安装，选定压缩记忆用的模型", "code": "npx claude-mem install"},
+    {"lane": "you", "en": "Install with one command and pick who compresses your memories", "zh": "一条命令安装，选定由谁来压缩记忆", "code": "npx claude-mem install"},
     {"lane": "them", "en": "Registers lifecycle hooks and starts a local worker service", "zh": "注册生命周期钩子，启动本地 worker 服务"},
     {"lane": "you", "en": "Work in Claude Code as usual", "zh": "照常用 Claude Code 干活"},
     {"lane": "them", "en": "Hooks capture your prompts and every tool call in the session", "zh": "钩子捕获会话里的消息和每一次工具调用"},
@@ -12,7 +12,7 @@
   ],
   "value": {"en": "Project context survives across sessions — no re-explaining every time", "zh": "跨会话记得项目上下文，不用每次重新交代"},
   "sources": [
-    "https://github.com/thedotmack/claude-mem README Quick Start (npx claude-mem install, provider choice)",
+    "https://github.com/thedotmack/claude-mem README Quick Start (npx claude-mem install; sign-in flow, provider choice: observer / OpenRouter / Gemini / Anthropic plan; --provider and CLAUDE_MEM_ONLINE_OPTIN opt-outs)",
     "README How It Works (lifecycle hooks, worker service, SQLite, Chroma)",
     "README MCP Search Tools (search / timeline / get_observations)"
   ]

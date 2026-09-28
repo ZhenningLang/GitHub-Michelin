@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "the skill does", "zh": "本 skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the skill into your Claude Code skills folder", "zh": "把 skill 克隆进 Claude Code 技能目录", "code": "git clone https://github.com/PleasePrompto/notebooklm-skill notebooklm"},
+    {"lane": "them", "en": "On first use, builds an isolated Python environment and installs Chrome plus the automation stack for you", "zh": "首次使用时自建隔离 Python 环境，装好 Chrome 和自动化栈", "component": {"en": ".venv auto-bootstrap", "zh": ".venv 自动引导"}},
+    {"lane": "you", "en": "Do a one-time Google login in the Chrome window it opens", "zh": "在它弹出的 Chrome 窗口里做一次 Google 登录", "code": "Set up NotebookLM authentication"},
+    {"lane": "you", "en": "Share each notebook by link and register it in the local library", "zh": "把笔记本按链接共享，并登记进本地 library", "code": "Add this NotebookLM to my library: [your-link]"},
+    {"lane": "them", "en": "Opens a fresh real Chrome per question, asks Gemini, and returns the citation-backed answer to the CLI", "zh": "开新真实 Chrome 问 Gemini，带回带引用的答案", "component": {"en": "ask_question.py", "zh": "ask_question.py"}}
+  ],
+  "value": {"en": "source-grounded, citation-backed answers from your own uploaded docs land in the terminal — no copy-paste dance between the browser and your editor", "zh": "自己上传文档里有来源依据、带引用的答案直接落回终端——不再在浏览器和编辑器之间复制粘贴"},
+  "sources": ["README.md master (raw.githubusercontent.com/PleasePrompto/notebooklm-skill/master/README.md, retrieved 2026-09-27): Installation 'cd ~/.claude/skills' + 'git clone https://github.com/PleasePrompto/notebooklm-skill notebooklm'; Quick Start '\"Set up NotebookLM authentication\"', '\"Add this NotebookLM to my library: [your-link]\"'; first-use auto-setup of .venv + Google Chrome; Architecture: scripts ask_question.py / notebook_manager.py / auth_manager.py; Session Model: fresh browser per question"]
+}
