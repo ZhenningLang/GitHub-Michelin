@@ -149,6 +149,7 @@ https://github.com/TanStack/db,tanstack-db,data-fetching,categories/web-ui/data-
 https://github.com/TanStack/form,tanstack-form,forms,categories/web-ui/forms/tanstack-form.md
 https://github.com/TanStack/query,tanstack-query,data-fetching,categories/web-ui/data-fetching/tanstack-query.md
 https://github.com/TanStack/router,tanstack-router,frameworks,categories/web-ui/frameworks/tanstack-router.md
+https://github.com/TanStack/virtual,tanstack-virtual,virtualization,categories/web-ui/virtualization/tanstack-virtual.md
 https://github.com/Tencent/AI-Infra-Guard,ai-infra-guard,llm-eval,categories/llm-eval/ai-infra-guard.md
 https://github.com/Tencent/BrowserSkill,browserskill,agent-browser-tools,categories/web-automation/agent-browser-tools/browserskill.md
 https://github.com/TencentCloud/Octop,octop,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/octop.md

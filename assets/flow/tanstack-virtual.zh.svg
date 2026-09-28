@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="660" viewBox="0 0 880 660" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="660" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="524" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="524" rx="10"/>
+<rect class="pillT" x="474" y="40" width="215.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">TanStack Virtual 做的</text>
+<path class="edge" d="M62,145 L62,169" marker-end="url(#a)"/>
+<path class="edge" d="M62,269 L62,293" marker-end="url(#a)"/>
+<path class="hand" d="M408,342.5 C439.0,342.5 439.0,366 470,366" marker-end="url(#a)"/>
+<path class="hand" d="M472,378.0 C441.0,378.0 441.0,440 410,440" marker-end="url(#a)"/>
+<path class="hand" d="M408,462.0 C439.0,462.0 439.0,486 470,486" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">安装对应框架的适配包</text>
+<text class="c" x="82" y="125">npm install @tanstack/react-virtual</text>
+<rect class="card" x="40" y="171" width="368" height="98" rx="8"/>
+<rect class="accY" x="40" y="171" width="4" height="98" rx="2"/>
+<circle class="accY" cx="62" cy="195" r="10"/>
+<text class="num" x="62" y="199" text-anchor="middle">2</text>
+<text class="t" x="82" y="200">创建虚拟器：条目数、滚动元素、行高估计</text>
+<text class="c" x="82" y="224">useVirtualizer</text>
+<text class="comp" x="82" y="247">组件：Virtualizer（virtual-core）</text>
+<rect class="card" x="40" y="295" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="295" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="319" r="10"/>
+<text class="num" x="62" y="323" text-anchor="middle">3</text>
+<text class="t" x="82" y="324">准备固定高度的滚动框，里面放一个和整个列表</text>
+<text class="t" x="82" y="346">一样高的撑高层</text>
+<text class="c" x="82" y="370">rowVirtualizer.getTotalSize()</text>
+<rect class="cardT" x="472" y="342" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="342" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="366" r="10"/>
+<text class="num" x="494" y="370" text-anchor="middle">4</text>
+<text class="t" x="514" y="371">监听滚动位置和容器尺寸，算出可见行（加缓冲</text>
+<text class="t" x="514" y="393">行）和各自偏移</text>
+<rect class="card" x="40" y="416" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="416" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="440" r="10"/>
+<text class="num" x="62" y="444" text-anchor="middle">5</text>
+<text class="t" x="82" y="445">只渲染这些行，绝对定位，并挂上它的测量 ref</text>
+<text class="c" x="82" y="469">rowVirtualizer.getVirtualItems() ·</text>
+<text class="c" x="82" y="488">ref={virtualizer.measureElement}</text>
+<rect class="cardT" x="472" y="462" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="462" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="486" r="10"/>
+<text class="num" x="494" y="490" text-anchor="middle">6</text>
+<text class="t" x="514" y="491">测出真实行高，修正位置，让正在看的内</text>
+<text class="t" x="514" y="513">容不跳动</text>
+<rect class="val" x="28" y="566" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="590">价值</text>
+<text class="valT" x="48" y="614">一万行的列表挂载和滚动起来和三十行一样轻，不用手算偏移，也不用放弃自己的行标签</text>
+</svg>
