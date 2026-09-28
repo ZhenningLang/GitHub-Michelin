@@ -3,6 +3,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 1Password / LastPass,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 2captcha-python,categories/captcha/buster.md,,no
 3D-Speaker,categories/speech/antspeaker.md,,no
+@github/hotkey (`github/hotkey`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 @xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
@@ -446,6 +447,7 @@ HF TRL,categories/llm-training/art.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 hnswlib,categories/rag-retrieval/vector-search/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
+hotkeys-js (`jaywcjlove/hotkeys-js`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 httpx,categories/python-tooling/curl-cffi.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
@@ -604,6 +606,7 @@ Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
 Motion Canvas,categories/video-production/hyperframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
+Mousetrap (`ccampbell/mousetrap`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
 Mozilla Readability (library),categories/reading-tools/just-read.md,,no
 MUI X Data Grid (`mui/mui-x`),categories/web-ui/component-libraries/tanstack-table.md,,no
@@ -792,6 +795,7 @@ Raylib (+ python bindings),categories/game-dev/pygame.md,,no
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
+react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 react-virtualized (`bvaughn/react-virtualized`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-virtuoso (`petyosi/react-virtuoso`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-window (`bvaughn/react-window`),categories/web-ui/virtualization/tanstack-virtual.md,,no
@@ -919,6 +923,7 @@ thriftpy2,categories/networking/thriftpy.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
+tinykeys (`jamiebuilds/tinykeys`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
 tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no

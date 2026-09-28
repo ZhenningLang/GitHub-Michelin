@@ -92,8 +92,8 @@
 | TanStack/ranger | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
 | TanStack/pacer | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
 | TanStack/charts | add | done | categories/web-ui/charts/tanstack-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
-| TanStack/hotkeys | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
-| TanStack/time | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
+| TanStack/hotkeys | add | done | categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
+| TanStack/time | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
 | TanStack/devtools | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
 | TanStack/markdown | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
 | TanStack/config | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Hotkeys does", "zh": "TanStack Hotkeys 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装对应框架的适配包", "code": "@tanstack/react-hotkeys"},
+    {"lane": "you", "en": "Register a shortcut in a component with a platform-neutral binding", "zh": "在组件里用不分平台的写法登记快捷键", "code": "useHotkey('Mod+S', () => { saveDocument() })", "component": {"en": "framework adapter", "zh": "框架适配包"}},
+    {"lane": "them", "en": "Adds it to the shared manager and removes it again on unmount", "zh": "登记到共享管理器，组件卸载时自动注销", "component": {"en": "HotkeyManager (singleton)", "zh": "HotkeyManager（单例）"}},
+    {"lane": "them", "en": "Maps Mod to Cmd on macOS or Ctrl elsewhere, and skips plain keys typed in inputs", "zh": "Mod 在 macOS 换成 Cmd、别处换成 Ctrl，输入框里打的普通键不算"},
+    {"lane": "them", "en": "On a match, blocks the browser default and calls your function", "zh": "匹配上就拦掉浏览器默认行为，调用你的函数"}
+  ],
+  "value": {"en": "Cross-platform shortcuts that do not fight the browser or text fields, without hand-written keydown checks", "zh": "跨平台的快捷键不跟浏览器和输入框打架，也不用再手写 keydown 判断"},
+  "sources": [
+    "docs/installation.md (@tanstack/react-hotkeys and the other adapter package names)",
+    "docs/framework/react/quick-start.md (useHotkey('Mod+S', () => { saveDocument() }), Mod resolves to Meta on macOS and Control on Windows/Linux)",
+    "docs/framework/react/guides/hotkeys.md (defaults: preventDefault true, stopPropagation true, smart ignoreInputs, conflictBehavior 'warn')",
+    "docs/overview.md (framework adapters register and remove bindings on unmount)",
+    "packages/hotkeys/src/hotkey-manager.ts (HotkeyManager.getInstance singleton, preventDefault on match)"
+  ]
+}

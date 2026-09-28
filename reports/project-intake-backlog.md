@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 999
+- Named-but-unindexed alternatives: 1004
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -26,6 +26,7 @@ shape and are deliberately excluded here.
 | 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
+| @github/hotkey (`github/hotkey`) | `categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-force` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-ignorance` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `cake` / SQM (OpenWrt) | `categories/networking/wondershaper.md` |
