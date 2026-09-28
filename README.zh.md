@@ -79,6 +79,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | Apache-2.0 | B（5/6） | [中](categories/sandboxing/substrate.zh.md) · [EN](categories/sandboxing/substrate.md) |
 | **Modal client SDK** | 想要 serverless 容器、GPU 与沙箱而什么都不用运维时用它——客户端 SDK 开源，平台闭源且只能托管。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/modal-client.zh.md) · [EN](categories/sandboxing/modal-client.md) |
 | **Microsandbox** | 沙箱必须跑在你已有的硬件上时用它——一个二进制或一个 SDK、普通 OCI 镜像、每沙箱出口策略与宿主侧 secret，无守护进程、无集群——但宿主需要 KVM／Apple Silicon／WHP，且仍处于 beta。 | Apache-2.0 | A（6/6） | [中](categories/sandboxing/microsandbox.zh.md) · [EN](categories/sandboxing/microsandbox.md) |
+| **Monty** | 模型写的 Python 要在每个请求里跑进你自己的应用时用它——pip 装进来的 Rust 解释器毫秒级开出全新沙箱会话，里面没有文件系统／网络／环境变量，除非你亲手传入——但它只支持一个 Python 子集、没有第三方包，隔离边界是语言本身而非操作系统。 | MIT | A（6/6） | [中](categories/sandboxing/monty.zh.md) · [EN](categories/sandboxing/monty.md) |
 
 ### serverless
 

@@ -546,6 +546,7 @@ https://github.com/provectus/kafka-ui,kafka-ui,kafka-tools,categories/kafka-tool
 https://github.com/psf/requests-html,requests-html,crawling-tools,categories/web-scraping/crawling-tools/requests-html.md
 https://github.com/puppeteer/puppeteer,puppeteer,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/puppeteer.md
 https://github.com/pwr-Solaar/Solaar,solaar,peripherals,categories/peripherals/solaar.md
+https://github.com/pydantic/monty,monty,sandboxing,categories/sandboxing/monty.md
 https://github.com/pydantic/pydantic-ai,pydantic-ai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md
 https://github.com/pygame/pygame,pygame,game-dev,categories/game-dev/pygame.md
 https://github.com/pymupdf/PyMuPDF,pymupdf,pdf-tools,categories/pdf-tools/pymupdf.md

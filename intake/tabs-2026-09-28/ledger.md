@@ -55,7 +55,7 @@
 | paperclipai/paperclip | add | pending |  |  | paperclipai/paperclip |
 | Piebald-AI/claude-code-system-prompts | skip | skipped |  | 不收：闭源产品 Claude Code 的系统提示词提取物，版权/ToS 风险；标签保留待你复核 | piebald-ai/claude-code-system-prompts |
 | pinchtab/pinchtab | add | pending |  |  | pinchtab/pinchtab |
-| pydantic/monty | add | running |  |  | pydantic/monty |
+| pydantic/monty | add | done | categories/sandboxing/monty.md |  | pydantic/monty |
 | pydantic/pydantic-ai | sync | pending |  |  | pydantic/pydantic-ai |
 | repowise-dev/repowise | add | pending |  |  | repowise-dev/repowise |
 | serengil/deepface | add | pending |  |  | serengil/deepface |

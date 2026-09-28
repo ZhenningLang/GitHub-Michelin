@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 856
+- Named-but-unindexed alternatives: 858
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -29,6 +29,8 @@ shape and are deliberately excluded here.
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
+| [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
+| [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
@@ -50,5 +52,3 @@ shape and are deliberately excluded here.
 | `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
 | `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
 | `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |
-| `subprocess` + `ssh` | `categories/networking/sshtunnel.md` |
-| `subprocess` + system `ssh` | `categories/networking/paramiko.md` |

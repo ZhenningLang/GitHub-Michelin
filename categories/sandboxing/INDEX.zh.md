@@ -1,6 +1,6 @@
 # sandboxing
 
-> 分类节点。面向不可信负载与 agent 生成代码的沙箱技术——内核／虚拟机级隔离运行时，以及建在其上的 agent 沙箱平台与 SDK。
+> 分类节点。面向不可信负载与 agent 生成代码的沙箱技术——内核／虚拟机级隔离运行时、语言级解释器沙箱，以及建在其上的 agent 沙箱平台与 SDK。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
 ## 本分类项目
@@ -15,6 +15,7 @@
 | **Agent Substrate** | 当你有一大批大部分时间闲置的有状态 agent 会话、想把它们多路复用到少数预热 Kubernetes pod 上（闲置时存档、按需恢复）时用它——但它处于 1.0 之前、API 不稳定、安全加固尚未做。 | B（5/6） | [→](substrate.zh.md) |
 | **Modal client SDK** | 想要 serverless 容器、GPU 与沙箱而什么都不用运维时用它——客户端 SDK 开源，平台闭源且只能托管。 | A（6/6） | [→](modal-client.zh.md) |
 | **Microsandbox** | 沙箱必须跑在你已有的硬件上时用它——一个二进制或一个 SDK、普通 OCI 镜像、每沙箱出口策略与宿主侧 secret，无守护进程、无集群——但宿主需要 KVM／Apple Silicon／WHP，且仍处于 beta。 | A（6/6） | [→](microsandbox.zh.md) |
+| **Monty** | 模型写的 Python 要在每个请求里跑进你自己的应用时用它——pip 装进来的 Rust 解释器毫秒级开出全新沙箱会话，里面没有文件系统／网络／环境变量，除非你亲手传入——但它只支持一个 Python 子集、没有第三方包，隔离边界是语言本身而非操作系统。 | A（6/6） | [→](monty.zh.md) |
 
 ## 对比矩阵
 
@@ -28,7 +29,8 @@
 | [Agent Substrate](substrate.zh.md) | ✅ | B（5/6） | 靠把闲置的有状态 agent 存成快照、塞进预热 pod 来换密度——1.0 之前、出站轮询唤醒不成立、安全加固未做。 |
 | [Modal client SDK](modal-client.zh.md) | ✅ | A（6/6） | serverless 容器、GPU 与沙箱都不用运维——不能自托管、没有退路、单一厂商。 |
 | [Microsandbox](microsandbox.zh.md) | ✅ | A（6/6） | 从普通 OCI 镜像拉起的本地优先 microVM 沙箱，CLI 动词跟 Docker 同构、无守护进程——跨平台且非特权，但宿主需要硬件虚拟化，且处于 beta。 |
+| [Monty](monty.zh.md) | ✅ | A（6/6） | 以库形态交付的亚毫秒级 Python 沙箱（语言级解释器禁闭）——没有容器、没有机群要运维，但只有 Python 子集、没有第三方包。 |
 
 ## 什么该放这里
 
-跑不可信代码的层次与产品：虚拟机／内核级隔离运行时（`gVisor`、`Kata Containers`、`Firecracker`），以及建在其上的 agent 沙箱平台与客户端（`OpenSandbox`、`E2B`、`Agent Substrate`、`Modal` 客户端 SDK）。不含通用容器运行时选型（那是你已经在跑的底座），也不含 agent 框架（见 `agent-frameworks`）。
+跑不可信代码的层次与产品：虚拟机／内核级隔离运行时（`gVisor`、`Kata Containers`、`Firecracker`），语言级解释器沙箱（`Monty`），以及建在其上的 agent 沙箱平台与客户端（`OpenSandbox`、`E2B`、`Agent Substrate`、`Modal` 客户端 SDK）。不含通用容器运行时选型（那是你已经在跑的底座），也不含 agent 框架（见 `agent-frameworks`）。
