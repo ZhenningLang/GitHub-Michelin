@@ -241,6 +241,7 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
+Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
@@ -536,6 +537,7 @@ LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
 LLM-Subtrans (`machinewrapped/llm-subtrans`),categories/reading-tools/translate-books-with-llms.md,,no
 LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
+llms.txt (`AnswerDotAI/llms-txt`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
@@ -890,6 +892,7 @@ Single de-AI / translation prompt,categories/agent-skills/ai-writing/content-pro
 Skills Hub (qufei1993/skills-hub),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (jiweiyeah/Skills-Manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (xingkongliang/skills-manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
+skills-npm (`antfu/skills-npm`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no

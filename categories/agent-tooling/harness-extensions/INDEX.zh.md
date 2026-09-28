@@ -12,6 +12,7 @@
 | **codex-chatgpt-web** | 当 Codex 配额先耗尽、而付费的 ChatGPT 网页订阅闲着，想让 Codex 任务改记到 Web 套餐的独立额度上时用它——走的是一条上游随时能掐断的非官方浏览器桥。 | C（5/6） | [→](codex-chatgpt-web.zh.md) |
 | **HEY CLI** | 当你的邮件跑在 HEY 上、想把它同时交给终端和编程 agent 时用它——第一方的 CLI/TUI，自带 agent skill 和 MCP 服务，但绑定 37signals 的付费账号。 | B（6/6） | [→](hey-cli.zh.md) |
 | **SkillsGate** | 当你的 skill 散落在多个 agent 的隐藏目录里、想要一个桌面界面统一管理时用它——一份真身按 agent 建符号链接、接 skills.sh 目录、能 SSH 推送；但它单人维护、只支持全局安装，锁文件还和 `npx skills` 冲突。 | B（6/6） | [→](skillsgate.zh.md) |
+| **TanStack Intent** | 当你维护一个 npm 库、想把给 agent 的说明（`SKILL.md`）打进包里、与已装版本对应并在过期时被标出来时用它——只支持 npm/JS，仍是 v0.x，且只负责送达引导、不保证 agent 照做。 | B（6/6） | [→](tanstack-intent.zh.md) |
 
 ## 对比矩阵
 
@@ -22,6 +23,7 @@
 | [codex-chatgpt-web](codex-chatgpt-web.zh.md) | ✅ | C（5/6） | 把 ChatGPT 网页会话（Plus/Pro，含网页独占档位）桥进 Codex 模型选择器、记在 Web 套餐额度上——纯粹的配额套利，命脉握在 ChatGPT 的 DOM 和 ToS 手里。 |
 | [HEY CLI](hey-cli.zh.md) | ✅ | B（6/6） | 厂商亲自为 HEY 邮件、日历造的命令面加 skill 加 MCP——第一方、走 API，但只此一家：没有 HEY 账号就没有使用场景。 |
 | [SkillsGate](skillsgate.zh.md) | ✅ | B（6/6） | 盖在 Vercel Skills 目录与文件夹布局上的桌面界面：按 agent 开关、内置编辑器、SSH 推送到服务器——但只能全局安装，第 1 版锁文件和 CLI 的第 3 版互相打架。 |
+| [TanStack Intent](tanstack-intent.zh.md) | ✅ | B（6/6） | 技能的维护者一侧：在 npm 包里编写、校验并发布 `SKILL.md`，让用户的 agent 加载与已装版本一致的说明——只限 npm，是送达通道而不是强制手段。 |
 | 各类技能包本身（agent-skills 条目） | 部分已收录 | — | 内容侧请看 [`agent-skills`](../../agent-skills/INDEX.zh.md)，那里是技能包本体而不是安装器。 |
 
 ## 什么该放这里

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Intent does", "zh": "Intent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start skill scaffolding with your own coding agent", "zh": "和自己的编码 agent 一起启动 skill 生成", "code": "npx @tanstack/intent@latest scaffold"},
+    {"lane": "them", "en": "Prints a three-phase prompt: your agent maps the domain, interviews you, writes SKILL.md files", "zh": "打印三阶段提示词：agent 梳理领域、访谈你、写出 SKILL.md", "component": {"en": "bundled meta-skills", "zh": "内置元 skill"}},
+    {"lane": "you", "en": "Validate the skills and copy the CI template", "zh": "校验 skill，并拷入 CI 模板", "code": "npx @tanstack/intent@latest validate · npx @tanstack/intent@latest setup"},
+    {"lane": "you", "en": "Publish the package as usual; skills ride inside the tarball", "zh": "照常发包，skill 随 tarball 一起发出", "code": "npm publish"},
+    {"lane": "them", "en": "Users' agents list and load the SKILL.md of the version they installed", "zh": "用户的 agent 列出并加载其已装版本的 SKILL.md", "component": {"en": "list / load discovery", "zh": "list / load 发现"}},
+    {"lane": "them", "en": "After each release, flags skills whose sources changed and opens a review PR", "zh": "每次发版后标出源文件已变的 skill，开复查 PR", "component": {"en": "check-skills.yml workflow", "zh": "check-skills.yml 工作流"}}
+  ],
+  "value": {"en": "Your agent guidance ships and versions with your package, and you hear about it when it goes stale", "zh": "给 agent 的说明随包发布、随版本走，过期时会被点名"},
+  "sources": [
+    "docs/getting-started/quick-start-maintainers.md (TanStack/intent main @ 305ca7f, 2026-09-13): 'npx @tanstack/intent@latest scaffold' (three phases: domain discovery, tree generation, skill generation), 'npx @tanstack/intent@latest validate', 'npx @tanstack/intent@latest setup' copies check-skills.yml, 'npm publish', check-skills.yml opens a PR flagging stale skills",
+    "docs/overview.md: 'npx @tanstack/intent@latest list' and 'npx @tanstack/intent@latest load @tanstack/query#fetching' load SKILL.md for the installed package version",
+    "npx @tanstack/intent@0.4.0 --help (run 2026-09-28): scaffold, validate, setup, list, load commands present in the released CLI",
+    "packages/intent/meta: domain-discovery, tree-generator, generate-skill, skill-staleness-check"
+  ]
+}
