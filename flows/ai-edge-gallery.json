@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "AI Edge Gallery does", "zh": "AI Edge Gallery 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the app from Play, the App Store, or the latest release APK", "zh": "从 Play、App Store 或最新 release 的 APK 安装"},
+    {"lane": "them", "en": "Serves a catalog of Gemma-first models, plus custom model loading", "zh": "提供以 Gemma 为先的模型目录，也支持自定义导入", "component": {"en": "Model Management", "zh": "模型管理"}},
+    {"lane": "you", "en": "Tap a model to download it, then open a feature tile (chat, Ask Image, Prompt Lab)", "zh": "点模型下载，再打开功能磁贴：聊天、Ask Image、Prompt Lab"},
+    {"lane": "them", "en": "Runs inference entirely on the device through the LiteRT runtime — no network", "zh": "通过 LiteRT 运行时全程在设备本地推理，不联网", "component": {"en": "LiteRT runtime", "zh": "LiteRT 运行时"}},
+    {"lane": "you", "en": "Run the Benchmark tile on each phone you care about", "zh": "在每台你要评估的手机上跑 Benchmark 磁贴", "component": {"en": "Benchmark", "zh": "基准测试"}},
+    {"lane": "them", "en": "Reports how each model performs on your specific hardware", "zh": "报出每个模型在你这台硬件上的真实表现"}
+  ],
+  "value": {"en": "A weeks-long feasibility study in an afternoon: real latency and quality numbers from the stakeholder's own phone before you write any integration code", "zh": "把几周的可行性验证压成一个下午：先拿到决策者自己手机上的真实延迟与质量数据，再决定要不要写集成代码"},
+  "sources": [
+    "README.md main @ 2026-09-28: install from Google Play / App Store / macOS DMG / apk from latest release; Android 12+, iOS 17+",
+    "README.md main @ 2026-09-28: Core Features — Model Management & Benchmark tile: 'Easily download models from the list or load your own custom models ... run benchmark tests to understand exactly how each model performs on your specific hardware'; Ask Image, Audio Scribe, Prompt Lab, Agent Skills",
+    "README.md main @ 2026-09-28: Technology Highlights — LiteRT and Google AI Edge; '100% On-Device Privacy — All model inferences happen directly on your device hardware. No internet is required'"
+  ]
+}

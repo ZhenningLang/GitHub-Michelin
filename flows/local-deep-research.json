@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Local Deep Research does", "zh": "Local Deep Research 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the app — Docker Compose stack or pip", "zh": "装起应用——Docker Compose 栈或 pip", "code": "docker compose up -d · pip install local-deep-research"},
+    {"lane": "them", "en": "Bring up the web app alongside bundled Ollama and SearXNG containers", "zh": "应用连同内置的 Ollama、SearXNG 容器一起拉起，打开 Web UI", "code": "http://localhost:5000", "component": {"en": "Docker stack", "zh": "Docker 栈"}},
+    {"lane": "you", "en": "In Settings pick the langgraph-agent strategy and point the LLM at your local model", "zh": "在设置里选 langgraph-agent 策略，把 LLM 指向本地模型", "code": "langgraph-agent"},
+    {"lane": "them", "en": "Per question, the agent decides which engines to search (web, arXiv, PubMed…) and keeps reading", "zh": "由 agent 自主决定搜哪些引擎并持续追读，直到证据足够", "component": {"en": "LangGraph agent", "zh": "LangGraph agent"}},
+    {"lane": "them", "en": "Synthesizes a cited report into your per-user AES-256 SQLCipher database", "zh": "生成带引用的报告，写入按用户加密的 SQLCipher 库", "component": {"en": "encrypted store", "zh": "加密存储"}}
+  ],
+  "value": {"en": "Multi-engine cited research running entirely on hardware you own — nothing has to leave your network", "zh": "多引擎、带引用的研究全程跑在你自己的机器上——数据不必离开你的网络"},
+  "sources": [
+    "README.md main @ 2b1b589a (retrieved 2026-09-28): Quick Start — Option 2 docker compose up -d; Option 3 pip install local-deep-research; Open http://localhost:5000",
+    "README.md How It Works (2026-09-28): LangGraph Agent Strategy — LLM decides what to search, which specialized engines (arXiv, PubMed, Semantic Scholar, etc.), when to synthesize; Select langgraph-agent in Settings",
+    "README.md Security (2026-09-28): per-user SQLCipher AES-256 database; docker-compose ships bundled Ollama and SearXNG images pinned by digest"
+  ]
+}

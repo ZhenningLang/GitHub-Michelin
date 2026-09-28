@@ -6,17 +6,17 @@ category: rag-retrieval
 tags: [code-intelligence, knowledge-graph, mcp, tree-sitter, context-reduction, blast-radius, graphrag]
 language: Python
 license: MIT
-maturity: v2.3.6, active, beta (2026-06)
-last_verified: 2026-06-26
+maturity: v2.3.9, active, beta, 31.8k stars (2026-09)
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-14T17:20:41Z
-  default_branch: main
-  default_branch_sha: b72413cbd34a4ac08cc60dcdd42df1d02f3fc77d
+  pushed_at: 2026-09-18T19:41:29Z
+  default_branch: staging
+  default_branch_sha: 6b12d11625cbec3b6773e076cb3d136464fa90e5
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:56:56Z
+  computed_at: 2026-09-28T08:28:36Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 11
+        last_commit_age_days: 10
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 403.7
-        qualifying_issues: 22
+        median_ttfr_hours: 376.4
+        qualifying_issues: 31
         band: relaxed_solo
         window_offset_days: 13
         source: issue
@@ -47,10 +47,10 @@ health:
         registry: pypi.org
         canonical_package: code-review-graph
         dependent_repos_count: 0
-        downloads_last_month: 254286
+        downloads_last_month: 319245
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: null
+        cross_check_divergence: 1.07
         release_downloads: 27
         release_assets: 3
         release_tier: D
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 208
-        last_commit_age_days: 4
+        repo_age_days: 214
+        last_commit_age_days: 10
         cohort: tool
     governance:
       grade: B
@@ -81,23 +81,46 @@ health:
 
 # code-review-graph
 
-A local-first code-intelligence graph: Tree-sitter parses your repo into a SQLite graph of functions/classes/edges, then serves your AI coding tool the minimal blast-radius context via MCP so it reads only what matters.
+Your AI coding assistant re-reads half the repo to answer one review question — 143k tokens on Flask's corpus — and still misses a caller two hops away. code-review-graph parses the codebase into a local structural graph once with Tree-sitter (the incremental parser that maps files to functions, classes, and call edges), keeps it fresh on save, and serves the agent only the files a change actually touches over MCP.
 
 ![code-review-graph — health radar](../../assets/health/code-review-graph.svg)
 
 ## When to use
 
-You're a developer pairing with an AI coding assistant (Claude Code, Cursor, Codex, etc.) on a medium-to-large repo, and you keep watching it burn context re-reading half the tree just to answer "what does this change affect?" or "how does auth work here?". Every review task balloons the token bill and the agent still misses a caller two hops away. You want the agent to read *the right ~15 files*, not grep blindly across 28,000. You install code-review-graph, run `build` once (~10s for 500 files), and from then on the agent calls MCP tools like `get_impact_radius` and `get_review_context`: the graph traces every caller, dependent, and test of a changed file and hands back a compact structural slice instead of raw source. On the repos in its own benchmark it reports a median ~82x per-question token reduction, and incremental updates re-index a 2,900-file project in under 2 seconds on file save.
+You're a developer pairing with an AI coding assistant (Claude Code, Cursor, Codex, Gemini CLI, Copilot, OpenCode — the installer auto-detects 16 platforms) on a medium-to-large repo, and you keep watching it burn context re-reading files just to answer "what does this change affect?". Every review task balloons the token bill and the agent still misses an indirect caller. You install code-review-graph (`pip install code-review-graph`, then `code-review-graph install` and `build` — a cold build of a ~3,000-file repo measured at ~40 s), and from then on the agent calls MCP tools like `get_impact_radius` and `get_review_context`: the graph traces callers, dependents, and tests of a changed file and hands back a compact structural slice instead of raw source. On the 6 repos in its own benchmark it reports a median ~63x per-question token reduction (358x max on fastapi), and a two-file edit on a ~3,000-file project re-indexes in about 2.5 s via hooks/watch.
 
 It's also a fit when you want risk-scored PR review *in CI without sending code anywhere*: the same analysis runs as a composite GitHub Action that builds and queries the graph entirely on your runner, posts a sticky comment with risk-scored functions and test gaps, and can gate merges via `fail-on-risk`. If you live in a monorepo and want a background daemon (`crg-daemon`) keeping multiple repos' graphs fresh, that ships in-box too.
+
+## How it works
+
+The tool *and* the serving layer ship with it — you only install once and keep coding. `build` walks every source file with Tree-sitter and records nodes (functions, classes, imports, tests) and edges (calls, inheritance, imports) into a local SQLite file under `.code-review-graph/`; optional post-processing adds framework-aware edges and community clustering. Hooks, a git pre-commit hook, watch mode, or `crg-daemon` then diff changed files and re-parse only what's stale, following the graph's import/call edges to find dependents. Your AI tool talks to the resident MCP server (~30 tools, 5 workflow prompt templates), and "what breaks if I change X" becomes one `get_impact_radius` call returning a few thousand tokens instead of a grep storm. What stays yours: whether the agent actually consults the graph (it's instructed to via the platform's rules file, but a lazy agent can still grep), the conservative false positives of impact analysis, and any trust you place in the project's self-reported benchmarks.
+
+![code-review-graph — backbone user story](../../assets/flow/code-review-graph.svg)
+
+<!-- flow-steps:begin (generated from flows/code-review-graph.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the CLI once — `pip install code-review-graph · pipx install code-review-graph`
+2. **You**: Configure your AI tools and parse the repo — `code-review-graph install · code-review-graph build` — component: `installer + CLI`
+3. **code-review-graph**: Tree-sitter writes functions, calls and imports into a local SQLite graph
+4. **You**: Leave watch mode or editor hooks running as you work — `code-review-graph watch`
+5. **code-review-graph**: Only changed files and their dependents get re-parsed — component: `incremental updater`
+6. **You**: Ask the agent about impact; it calls the MCP tools — `get_impact_radius · get_review_context`
+7. **code-review-graph**: Answers with a compact blast-radius slice instead of raw source
+
+**Value**: The agent reads only the files a change touches — its benchmark reports ~63x median token reduction per question
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
 - **You want a general-purpose graph database, not a code-context layer.** This is a fixed code-intelligence pipeline (AST → SQLite → blast-radius), not a queryable graph store you build apps on. For an actual property/Cypher graph DB use [FalkorDB](falkordb.md).
 - **Trivial / single-file changes.** The maintainer's own limitations note that graph context can *exceed* a naive file read for small edits — the structural metadata is overhead you don't recoup until changes span multiple files.
-- **You need trustworthy recall numbers today.** The headline "recall 1.0" is explicitly **circular** — ground truth is derived from the same graph the predictor walks. The honest co-change mode is acknowledged as "substantially lower" and **not yet published**. [推断] treat impact accuracy as directional, not a guarantee.
-- **Cross-file call resolution beyond Python.** Flow detection is documented at ~33% recall and only reliable on Python framework patterns (FastAPI/httpx); JS/Go flow and search ranking (MRR 0.35) are stated weak spots.
-- **Bus-factor / maturity risk.** It is a single-maintainer, Beta-classified project at v2.3.x (first commit 2026-02). Pinning the GitHub Action to a tag and a fast release cadence are mitigations, but lock-in to its `.code-review-graph/` SQLite format and MCP tool surface is real.
+- **You need trustworthy recall numbers today.** The "recall 1.0" figure is explicitly **circular** — ground truth is derived from the same graph the predictor walks — and the honest headline is now 0.69 average impact F1. The co-change mode (graded against git history instead of the graph) returned `predicted_files = 0` on every graded commit in the 2026-08-02 capture, so it is not yet a usable measurement. [推断] Treat impact accuracy as directional, not a guarantee.
+- **Cross-file call resolution beyond Python/PHP.** Entry-point/flow detection is documented as strongest for Python and PHP/Laravel, with JavaScript and Go flow detection and keyword-search ranking stated as needing work (the earlier release's specific "~33% recall / MRR 0.35" figures are no longer published).
+- **Bus-factor / maturity risk.** It is a single-maintainer ("Tirth"), Beta-classified project at v2.3.9 on a personal repo (first commit 2026-02), and the default branch is currently `staging`. A website and Discord now exist, but there is still no team or foundation behind the roadmap; pinning the GitHub Action to a tag is a mitigation, and lock-in to its `.code-review-graph/` SQLite format and MCP tool surface is real.
 - **You need pure document/passage RAG over prose.** This indexes code structure, not arbitrary documents — for hierarchical document retrieval see [PageIndex](pageindex.md).
 
 ## Comparison
@@ -113,19 +136,19 @@ It's also a fit when you want risk-scored PR review *in CI without sending code 
 
 ## Tech stack
 
-- **Language:** Python (≥ 3.10, tested through 3.13).
-- **Parsing:** Tree-sitter via `tree-sitter` + `tree-sitter-language-pack`; broad language coverage (Python, JS/TS/TSX, Go, Rust, Java, C/C++, C#, Ruby, Kotlin, Swift, PHP, Scala, Solidity, Dart, and more) plus Jupyter/Databricks `.ipynb`. Custom languages addable via `.code-review-graph/languages.toml`, no fork.
+- **Language:** Python (≥ 3.10, classifiers through 3.13).
+- **Parsing:** Tree-sitter via `tree-sitter` + `tree-sitter-language-pack`; broad language coverage (Python, JS/TS/TSX, Go, Rust, Java/Spring, C/C++, C#, Ruby, Kotlin, Swift, PHP/Laravel, Scala, Solidity, Dart, Erlang via config, and more) plus Jupyter/Databricks `.ipynb`. Custom languages addable via `.code-review-graph/languages.toml`, no fork.
 - **Graph/storage:** local SQLite in `.code-review-graph/` with FTS5 full-text search; `networkx` for graph algorithms; community detection via Leiden (optional `igraph`).
-- **Serving:** MCP server (`mcp` + `fastmcp`) exposing ~30 tools and 5 prompt templates; CLI (`code-review-graph`) and daemon (`crg-daemon`).
-- **Optional:** vector embeddings via sentence-transformers / Google Gemini / MiniMax / any OpenAI-compatible endpoint; Python call-resolution enrichment via Jedi; D3.js interactive visualization; export to GraphML / Neo4j Cypher / Obsidian / SVG.
-- **CI:** composite GitHub Action for risk-scored PR comments.
+- **Serving:** MCP server (`mcp` + `fastmcp`) exposing 30 tools and 5 prompt templates (review, architecture, debug, onboard, pre-merge); CLI (`code-review-graph`) and daemon (`crg-daemon`).
+- **Optional:** vector embeddings via sentence-transformers / Google Gemini / any OpenAI-compatible endpoint; Jedi-based Python call enrichment; D3.js interactive visualization; export to GraphML / Neo4j Cypher / Obsidian / SVG.
+- **CI:** composite GitHub Action for risk-scored PR comments. Project site at code-review-graph.com.
 
 ## Dependencies
 
 - **Runtime:** Python ≥ 3.10. Install via `pip install code-review-graph` (or `pipx`/`uvx`).
-- **Required Python deps (v2.3.6):** `mcp` ≥ 1.0, `fastmcp` ≥ 3.2.4 (<4), `tree-sitter` ≥ 0.23, `tree-sitter-language-pack` ≥ 0.3, `networkx` ≥ 3.2, `watchdog` ≥ 4.0 (and `tomli` on Python < 3.11).
+- **Required Python deps (v2.3.9):** `mcp` ≥ 1.0 (< 3), `fastmcp` ≥ 3.2.4 (< 4), `anyio` ≥ 4 (< 5), `tree-sitter` ≥ 0.23 (< 1), `tree-sitter-language-pack` ≥ 0.3 (< 1), `pyyaml` ≥ 6 (< 7), `networkx` ≥ 3.2 (< 4), `watchdog` ≥ 4 (< 7) (and `tomli` on Python < 3.11).
 - **Core storage:** local SQLite file — **no external database or cloud service required** for the core graph.
-- **Optional groups:** `[embeddings]` (sentence-transformers, numpy), `[google-embeddings]`, `[communities]` (igraph), `[enrichment]` (jedi), `[eval]` (matplotlib), `[wiki]` (ollama), or `[all]`.
+- **Optional groups:** `[embeddings]` (sentence-transformers, numpy), `[google-embeddings]` (google-genai), `[communities]` (igraph), `[enrichment]` (jedi), `[eval]` (matplotlib), `[wiki]` (ollama), or `[all]`.
 - **External services are opt-in only:** cloud embeddings require explicit egress acknowledgement; the CI Action runs entirely on your own runner with no source sent out.
 
 ## Ops difficulty
@@ -134,18 +157,18 @@ It's also a fit when you want risk-scored PR review *in CI without sending code 
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 403.7 hours across 22 qualifying issues/PRs.
-- **Maintenance (2026-06):** last push 2026-06-14, latest release v2.3.6 on 2026-06-10 — **active** with a fast release cadence. [推断] Cadence is the upside; for a project this young the same speed means an unstable API/format surface.
-- **Governance / bus factor:** **single-maintainer, `User`-owned** (`tirth8205/code-review-graph`), Beta-classified. This is a real **bus-factor flag**: ~18k stars on a personal repo created only months ago is hype far outrunning institutional backing — there is no team or foundation behind the roadmap. [推断]
-- **Age & Lindy (created 2026-02, ~0yr):** **young and hyped — fails the Lindy prior.** No track record, no proven multi-year survival; the star count says attention, not durability. Treat continuity as unproven and pin the GitHub Action to a tag. [推断]
-- **Adoption / ecosystem:** broad language coverage and an MCP + CI surface drive the stars, but lock-in to its `.code-review-graph/` SQLite format and MCP tool surface is real, and self-reported benchmarks (the ~82x figures, "recall 1.0") are circular/unreproduced. [未验证]
-- **Risk flags:** MIT (no relicense risk); the dominant risks are **abandonment / bus-factor** (single maintainer, ~0yr old) and format lock-in, not licensing. [推断]
+- **Responsiveness**: Grade B — median first-response time ~376 hours across 31 qualifying issues/PRs.
+- **Maintenance (2026-09):** last push 2026-09-18, latest release v2.3.9 the same day — **active**, though the ~1-month gap from v2.3.6 (June) to the September line is slower than the spring cadence. [推断] For a project this young, cadence cuts both ways: an evolving API/format surface.
+- **Governance / bus factor:** **single-maintainer, `User`-owned** (`tirth8205/code-review-graph`), Beta-classified, author "Tirth" per packaging metadata. A project website (code-review-graph.com) and Discord appeared since the last check — signs of investing, but there is still no team or foundation behind the roadmap. This remains a real **bus-factor flag**: ~32k stars on a personal repo is hype far outrunning institutional backing. [推断]
+- **Age & Lindy (created 2026-02, ~0.6yr):** **young and hyped — fails the Lindy prior.** No track record, no proven multi-year survival; the star count says attention, not durability. Treat continuity as unproven and pin the GitHub Action to a tag. [推断]
+- **Adoption / ecosystem:** broad language coverage, 16 auto-detected editor platforms, and an MCP + CI surface drive adoption signals (PyPI downloads are high; GitHub dependents remain ~0). Self-reported benchmarks (the ~63x/358x figures, 0.69 F1) are unpublished-for-co-change and not independently reproduced here. [未验证]
+- **Risk flags:** MIT (no relicense risk); the dominant risks are **abandonment / bus-factor** (single maintainer, <1yr old, default branch currently `staging`) and format lock-in, not licensing. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] Latest release v2.3.6 published 2026-06-10; repo created 2026-02-26; pushed 2026-06-14 (per `gh` metadata 2026-06-26). Version cadence is fast; re-verify before pinning.
-- [未验证] Star count ~18.9k (per `gh` 2026-06-26) — GitHub stars are unreliable and date-sensitive; treat as indicative only.
-- [未验证] All token-reduction figures (~82x median, 528x max, "<2s" re-index, build/latency tables) are the project's own benchmark numbers on 6 self-selected repos; not independently reproduced here.
-- [推断] Impact "recall 1.0" is self-described as circular (graph-derived ground truth); the honest co-change accuracy is unpublished, so real-world impact precision/recall is unknown.
-- [未验证] Stated language coverage, ~30 MCP tools, and supported editor platforms come from the README; the exact working set may shift release-to-release.
+- [未验证] Latest release v2.3.9 published 2026-09-18; repo created 2026-02-26; pushed 2026-09-18 (per `gh` metadata 2026-09-28). The default branch moved from `main` to `staging` at some point since June — why (release flow?) is unexplained in the README.
+- [未验证] Star count ~31.8k (per `gh` 2026-09-28) — GitHub stars are unreliable and date-sensitive; treat as indicative only.
+- [未验证] All token-reduction figures (~63x median, 358x max, ~40 s cold build of ~3,000 files, ~2.5 s incremental) are the project's own benchmark numbers on 6 self-selected repos, with a docs/REPRODUCING.md guide but no independent reproduction here.
+- [推断] Impact "recall 1.0" is self-described as circular (graph-derived ground truth); the honest co-change mode returned 0 predictions in the latest published capture, so real-world impact precision/recall is unknown.
+- [未验证] Stated language coverage, 30 MCP tools, and the 16 supported editor platforms come from the README; the exact working set may shift release-to-release.
 - [未验证] License is MIT per both `gh licenseInfo` and `pyproject.toml`; single-maintainer ("Tirth"), Beta development status per packaging classifiers.

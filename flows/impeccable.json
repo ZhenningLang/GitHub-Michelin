@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Impeccable does", "zh": "Impeccable 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill + design hook into the harnesses it detects", "zh": "一条命令把 skill 和设计 hook 装进它检测到的 harness", "code": "npx impeccable install"},
+    {"lane": "you", "en": "Run once per project; it records durable product truth in PRODUCT.md", "zh": "每个项目跑一次，把产品事实沉淀进 PRODUCT.md", "code": "/impeccable init"},
+    {"lane": "them", "en": "Fetches the self-contained engine binary once — no LLM, no API key", "zh": "首次取回一次自包含引擎二进制——无 LLM、无 API key", "component": {"en": "engine binary", "zh": "引擎二进制"}},
+    {"lane": "them", "en": "On each direct UI-file edit the hook runs 61 deterministic rules and feeds findings back to your agent", "zh": "每次直接编辑 UI 文件时跑 61 条规则，把问题回灌给 agent", "component": {"en": "design hook", "zh": "设计 hook"}},
+    {"lane": "you", "en": "Fix or restyle with the shared command vocabulary", "zh": "用共享命令词汇修复或重刷风格", "code": "/impeccable polish · /impeccable bolder"},
+    {"lane": "you", "en": "Gate merges in CI with the same offline engine", "zh": "在 CI 里用同一个离线引擎把关合并", "code": "npx impeccable detect --json ."}
+  ],
+  "value": {"en": "Your agent ships UIs without the AI-slop tells — checked offline, on every edit, with no API key", "zh": "agent 交出的 UI 不再带 AI slop 特征——离线、逐次编辑、无需 API key 地检查"},
+  "sources": [
+    "https://github.com/pbakaus/impeccable (Quick start: `npx impeccable install`, `/impeccable init`)",
+    "https://github.com/pbakaus/impeccable#installation (engine binary ships next to the launcher or is fetched once into ~/.impeccable/bin/)",
+    "https://github.com/pbakaus/impeccable#design-hook (hook runs the detector on direct UI file edits, findings surface back into the agent flow)",
+    "https://github.com/pbakaus/impeccable#cli (`npx impeccable detect --json .`, 61 deterministic rules, exit 0/2 semantics)",
+    "https://github.com/pbakaus/impeccable#usage (`/impeccable polish` etc., `/impeccable pin <command>`)"
+  ]
+}

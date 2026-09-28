@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "MiroThinker does", "zh": "MiroThinker 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, sync the app environment, fill the tool API keys in .env", "zh": "克隆仓库、同步环境，在 .env 里填好工具 API key", "code": "uv sync · cp .env.example .env"},
+    {"lane": "you", "en": "Serve a fine-tuned model on your own GPUs with SGLang or vLLM", "zh": "用 SGLang 或 vLLM 把微调模型托管到自己的 GPU 上", "code": "sglang.launch_server --model-path $AGENT_PATH --tp $NUM_GPUS"},
+    {"lane": "you", "en": "Run a research task with a prebuilt agent config pointed at that server", "zh": "选预置 agent 配置，指向这个服务跑一个研究任务", "code": "uv run python main.py agent=mirothinker_1.7_keep5_max200"},
+    {"lane": "them", "en": "MiroFlow drives the loop: up to 300 model-chosen tool calls, context keeps only the last 5 tool results", "zh": "MiroFlow 编排循环：模型自主最多300次工具调用，上下文留最近5条", "component": {"en": "MiroFlow agent", "zh": "MiroFlow agent"}},
+    {"lane": "them", "en": "Serper search, Jina scrape and E2B sandbox answer each step; the final result ships with sources", "zh": "搜索（Serper）、抓取（Jina）、沙箱（E2B）逐条应答，答案带来源", "component": {"en": "MCP tool servers", "zh": "MCP 工具服务"}}
+  ],
+  "value": {"en": "Self-hosted deep research on open weights you can read, modify and extend — the agent loop is your code, not a black-box API", "zh": "开权重的自托管深度研究：agent 循环是你读得到、改得动的代码，不是黑盒 API"},
+  "sources": [
+    "README.md main @ 1c4253f6 (retrieved 2026-09-28): Installation — git clone, cd apps/miroflow-agent, uv sync, cp .env.example .env",
+    "README.md Serve the MiroThinker Agent (2026-09-28): python3 -m sglang.launch_server --model-path $AGENT_PATH --tp $NUM_GPUS with AGENT_PATH=miromind-ai/MiroThinker-1.7-mini, NUM_GPUS=4, PORT=61002",
+    "README.md Run Your First Task (2026-09-28): uv run python main.py llm=qwen-3 agent=mirothinker_1.7_keep5_max200 llm.base_url=http://localhost:61002/v1",
+    "README.md Minimal Configuration (2026-09-28): tool-python/E2B, search_and_scrape_webpage/Serper, jina_scrape_llm_summary/Jina",
+    "README.md Pre-configured Agent Settings + context retention (2026-09-28): mirothinker_1.7_keep5_max200 (Max Turns 200, Keep 5 most recent); keep_tool_result recency strategy"
+  ]
+}
