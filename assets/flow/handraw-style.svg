@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="762" viewBox="0 0 880 762" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="762" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="604" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="604" rx="10"/>
+<rect class="pillT" x="474" y="40" width="193.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">handraw-style does</text>
+<path class="hand" d="M408,151.0 C439.0,151.0 439.0,175 470,175" marker-end="url(#a)"/>
+<path class="hand" d="M472,231.5 C441.0,231.5 441.0,280 410,280" marker-end="url(#a)"/>
+<path class="hand" d="M408,324.0 C439.0,324.0 439.0,362 470,362" marker-end="url(#a)"/>
+<path class="edge" d="M494,435 L494,459" marker-end="url(#a)"/>
+<path class="hand" d="M472,520.5 C441.0,520.5 441.0,544 410,544" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="158" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="158" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Send the repo URL to your coding agent</text>
+<text class="t" x="82" y="123">and ask it to install the Skill</text>
+<text class="c" x="82" y="147">帮我安装这个</text>
+<text class="c" x="82" y="166">Skill：https://github.com/yang0/handraw-st</text>
+<text class="c" x="82" y="185">yle</text>
+<text class="comp" x="82" y="208">component: 3 skills + style library</text>
+<rect class="cardT" x="472" y="151" width="368" height="161" rx="8"/>
+<rect class="accT" x="472" y="151" width="4" height="161" rx="2"/>
+<circle class="accT" cx="494" cy="175" r="10"/>
+<text class="num" x="494" y="179" text-anchor="middle">2</text>
+<text class="t" x="514" y="180">On first use it opens the local</text>
+<text class="t" x="514" y="202">gallery so you can browse the numbered</text>
+<text class="t" x="514" y="224">styles</text>
+<text class="c" x="514" y="248">skills/handdraw-style-prompter/gallery/ind</text>
+<text class="c" x="514" y="267">ex.html</text>
+<text class="comp" x="514" y="290">component: offline HTML gallery</text>
+<rect class="card" x="40" y="256" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="256" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="280" r="10"/>
+<text class="num" x="62" y="284" text-anchor="middle">3</text>
+<text class="t" x="82" y="285">Pick style, layout and theme-color</text>
+<text class="t" x="82" y="307">numbers with a theme — or just the</text>
+<text class="t" x="82" y="329">theme</text>
+<text class="c" x="82" y="353">图型：SC-001，风格：041，主题色：C-01，主题：秋天</text>
+<text class="c" x="82" y="372">的第一杯奶茶</text>
+<rect class="cardT" x="472" y="338" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="338" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="362" r="10"/>
+<text class="num" x="494" y="366" text-anchor="middle">4</text>
+<text class="t" x="514" y="367">Resolves your image model against its</text>
+<text class="t" x="514" y="389">per-style capability matrix</text>
+<text class="comp" x="514" y="417">component: model_capabilities.json</text>
+<rect class="cardT" x="472" y="461" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="461" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="485" r="10"/>
+<text class="num" x="494" y="489" text-anchor="middle">5</text>
+<text class="t" x="514" y="490">Assembles the bilingual prompt; pads a</text>
+<text class="t" x="514" y="512">style-isolation reference image when</text>
+<text class="t" x="514" y="534">text can&#x27;t activate the look</text>
+<text class="comp" x="514" y="562">component: 279 numbered reference webps</text>
+<rect class="card" x="40" y="520" width="368" height="94" rx="8"/>
+<rect class="accY" x="40" y="520" width="4" height="94" rx="2"/>
+<circle class="accY" cx="62" cy="544" r="10"/>
+<text class="num" x="62" y="548" text-anchor="middle">6</text>
+<text class="t" x="82" y="549">Paste the prompt into any image AI —</text>
+<text class="t" x="82" y="571">or ask the agent to generate on the</text>
+<text class="t" x="82" y="593">spot</text>
+<rect class="val" x="28" y="646" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="670">VALUE</text>
+<text class="valT" x="48" y="694">One theme sentence becomes a style-faithful hand-drawn image — no art jargon to learn, no</text>
+<text class="valT" x="48" y="716">style drift between generations</text>
+</svg>

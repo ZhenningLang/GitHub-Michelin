@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "handraw-style does",
+    "zh": "handraw-style 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Send the repo URL to your coding agent and ask it to install the Skill",
+      "zh": "把仓库地址发给编码 agent，让它安装 Skill",
+      "code": "帮我安装这个 Skill：https://github.com/yang0/handraw-style",
+      "component": {"en": "3 skills + style library", "zh": "3 个 skill + 图库"}
+    },
+    {
+      "lane": "them",
+      "en": "On first use it opens the local gallery so you can browse the numbered styles",
+      "zh": "首次使用时打开本地画廊，供你浏览编号风格",
+      "code": "skills/handdraw-style-prompter/gallery/index.html",
+      "component": {"en": "offline HTML gallery", "zh": "离线 HTML 画廊"}
+    },
+    {
+      "lane": "you",
+      "en": "Pick style, layout and theme-color numbers with a theme — or just the theme",
+      "zh": "选风格、图型、主题色编号并给出主题——也可以只给主题",
+      "code": "图型：SC-001，风格：041，主题色：C-01，主题：秋天的第一杯奶茶"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves your image model against its per-style capability matrix",
+      "zh": "拿当前生图模型对照逐风格能力矩阵做判定",
+      "component": {"en": "model_capabilities.json", "zh": "model_capabilities.json"}
+    },
+    {
+      "lane": "them",
+      "en": "Assembles the bilingual prompt; pads a style-isolation reference image when text can't activate the look",
+      "zh": "组装双语提示词；文字激活不了画风时，垫一张带风格隔离指令的编号参考图",
+      "component": {"en": "279 numbered reference webps", "zh": "279 张编号参考图"}
+    },
+    {
+      "lane": "you",
+      "en": "Paste the prompt into any image AI — or ask the agent to generate on the spot",
+      "zh": "把提示词贴进任意生图 AI，或直接让 agent 出图"
+    }
+  ],
+  "value": {
+    "en": "One theme sentence becomes a style-faithful hand-drawn image — no art jargon to learn, no style drift between generations",
+    "zh": "一句主题就能得到画风忠实的成图——不用背画风术语，多次生成也不漂移"
+  },
+  "sources": [
+    "README.md 安装 section: '帮我安装这个 Skill：https://github.com/yang0/handraw-style'",
+    "README.md 精准指定模式 section: '图型：SC-001，风格：041，主题色：C-01，主题：秋天的第一杯奶茶'",
+    "SKILL.md (root) Session initialization + Inputs: skills/handdraw-style-prompter/gallery/index.html",
+    "SKILL.md Style activation policy: references/model_capabilities.json, resolve_reference.py, reference-isolation block, numbered reference assets under images/individual/"
+  ]
+}
