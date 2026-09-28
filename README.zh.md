@@ -759,6 +759,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | MIT | B（5/6） | [中](categories/markdown-tools/mdx.zh.md) · [EN](categories/markdown-tools/mdx.md) |
 | **TanStack Markdown** | 当你的文档/博客语料由作者控制、包体积是硬约束，且你要 HTML/React/Octane 三个渲染器从同一份缓存 AST 输出完全一致的页面时用它——不要用它渲染不可信用户 Markdown，也不要指望它严格遵循 CommonMark。 | MIT | C（5/6） | [中](categories/markdown-tools/tanstack-markdown.zh.md) · [EN](categories/markdown-tools/tanstack-markdown.md) |
 
+| **TanStack Highlight** | 当博客或文档只用一小撮已知语言、想要体积极小、同步执行、只带类名且服务端与客户端一致的代码高亮时用它——要 VS Code 级准确度、冷门语言或自动检测语言时不要用。 | MIT | B（6/6） | [中](categories/markdown-tools/tanstack-highlight.zh.md) · [EN](categories/markdown-tools/tanstack-highlight.md) |
+
 ### typesetting
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

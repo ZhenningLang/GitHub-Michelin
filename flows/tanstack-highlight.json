@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack Highlight does",
+    "zh": "TanStack Highlight 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package (no runtime dependencies)",
+      "zh": "安装这个包（没有运行时依赖）",
+      "code": "pnpm add @tanstack/highlight",
+      "component": {
+        "en": "@tanstack/highlight (npm)",
+        "zh": "@tanstack/highlight（npm）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Create one highlighter in a shared module, importing only the languages your docs use",
+      "zh": "在一个共享模块里建一个高亮器，只导入文档用到的语言",
+      "code": "createHighlighter({ languages: [ts] })",
+      "component": {
+        "en": "core + language subpaths",
+        "zh": "core 与按语言的子路径"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Builds a name/alias registry; embedded script, style and fence regions delegate to registered languages",
+      "zh": "建立语言与别名登记表；内嵌脚本、样式和围栏转交已登记语言"
+    },
+    {
+      "lane": "you",
+      "en": "Call it synchronously on each code block, on the server and in the browser alike",
+      "zh": "在服务端和浏览器里用同一方式同步调用它处理每个代码块",
+      "code": "{ lang: 'tsx' }"
+    },
+    {
+      "lane": "them",
+      "en": "Returns one escaped <pre><code> tree with stable th-* classes and no inline colors",
+      "zh": "返回已转义的 <pre><code> 树，只带 th-* 类名，无内联颜色",
+      "code": "result.html"
+    },
+    {
+      "lane": "you",
+      "en": "Generate theme CSS once for light and dark",
+      "zh": "为亮色和暗色主题生成一次 CSS",
+      "code": "createThemeCss",
+      "component": {
+        "en": "theme + themes/* entries",
+        "zh": "theme 与 themes/* 入口"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Switches themes through CSS variables alone, without re-highlighting or duplicating markup",
+      "zh": "只靠 CSS 变量切换主题，不重新高亮，也不复制一份标记"
+    }
+  ],
+  "value": {
+    "en": "Colored docs code with identical SSR and client output, a few KB per language, and no async grammar loading",
+    "zh": "文档代码有颜色，服务端与客户端输出一致，每种语言只占几 KB，也不用异步加载语法"
+  },
+  "sources": [
+    "README.md — 'pnpm add @tanstack/highlight'; Selective Languages (createHighlighter, lang: 'tsx'); SSR And Client; Output Contract (one <pre><code> tree, stable th-* classes, no inline styles); Themes (createThemeCss, darkSelector)",
+    "docs/guides/react.md — `createHighlighter({ languages: [ts] })`",
+    "docs/quick-start.md — `{ lang: 'tsx' }`, `result.html`, createThemeCss 'Theme changes do not require another highlighting pass'",
+    "docs/architecture.md — registry of LanguageDefinition objects; embedded languages delegate; themes are CSS variables over stable semantic classes",
+    "package.json v0.1.0 — no `dependencies` field; exports ./core, ./languages/*, ./theme, ./themes/*, ./markdown, ./remark, ./rehype, ./octane, ./react"
+  ]
+}

@@ -82,7 +82,7 @@
 | NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
 | TanStack/query | add | done | categories/web-ui/data-fetching/tanstack-query.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/query |
 | TanStack/table | add | done | categories/web-ui/component-libraries/tanstack-table.md | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
-| TanStack/router | add | done | categories/web-ui/frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
+| TanStack/router | add | done | categories/web-ui/frameworks/app-frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
 | TanStack/virtual | add | done | categories/web-ui/virtualization/tanstack-virtual.md | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
 | TanStack/form | add | done | categories/web-ui/forms/tanstack-form.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
 | TanStack/db | add | done | categories/web-ui/data-fetching/tanstack-db.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
@@ -98,10 +98,10 @@
 | TanStack/markdown | add | done | categories/markdown-tools/tanstack-markdown.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
 | TanStack/config | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-config.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
 | TanStack/intent | add | done | categories/agent-tooling/harness-extensions/tanstack-intent.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
-| TanStack/redact | add | done | categories/web-ui/frameworks/tanstack-redact.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
+| TanStack/redact | add | done | categories/web-ui/frameworks/view-frameworks/tanstack-redact.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
 | TanStack/select | add | done | categories/web-ui/component-libraries/tanstack-select.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
 | TanStack/workflow | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
-| TanStack/highlight | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
+| TanStack/highlight | add | done | categories/markdown-tools/tanstack-highlight.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
 | TanStack/persist | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
 | TanStack/container | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
 | TanStack/react-charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |

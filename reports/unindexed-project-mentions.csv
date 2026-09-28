@@ -452,6 +452,7 @@ Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12
 HexStrike AI,categories/pentest/pentest-swarm-ai.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
+highlight.js (`highlightjs/highlight.js`),categories/markdown-tools/tanstack-highlight.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 hnswlib,categories/rag-retrieval/vector-search/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
@@ -759,6 +760,7 @@ PowerSync (`powersync-ja/powersync-service`),categories/web-ui/data-fetching/tan
 Preact (`preactjs/preact`),categories/web-ui/frameworks/view-frameworks/tanstack-redact.md,,no
 Premiere Pro,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
+Prism (`PrismJS/prism`),categories/markdown-tools/tanstack-highlight.md,,no
 Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
 Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
@@ -886,6 +888,7 @@ SetFit (huggingface/setfit),categories/decision-models/laya.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
 ShareX,categories/media-processing/video-editing/openscreen.md,,no
+Shiki (`shikijs/shiki`),categories/markdown-tools/tanstack-highlight.md,,no
 Shotcut,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
@@ -916,6 +919,7 @@ SOPS,categories/secrets-management/openbao.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
+Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no
 StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-empirical-research-skills.md,,no
 Stencil,categories/web-ui/frameworks/view-frameworks/lit.md,,no
 Streamdown,categories/markdown-tools/tanstack-markdown.md,,no
@@ -924,6 +928,7 @@ Stylelint,categories/ai-design-generation/impeccable.md,,no
 Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
+Sugar High (`huozhi/sugar-high`),categories/markdown-tools/tanstack-highlight.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
 svgl,categories/web-ui/icon-libraries/thesvg.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
