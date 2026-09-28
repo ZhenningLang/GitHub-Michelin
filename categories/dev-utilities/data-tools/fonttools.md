@@ -6,17 +6,17 @@ category: data-tools
 tags: [fonts, typography, opentype, truetype, woff, python, font-manipulation]
 language: Python
 license: MIT
-maturity: v4.63.0, active (2026-06)
-last_verified: 2026-06-28
+maturity: v4.66.0, active, ~5.3k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-23T08:46:21Z
+  pushed_at: 2026-09-24T13:05:25Z
   default_branch: main
-  default_branch_sha: fec4e74985ede2f98c6e3b54ea2c83417db1338c
+  default_branch_sha: 718b61b552841de3964ba5b691fcf6102a2ebb3c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:09:40Z
+  computed_at: 2026-09-28T05:15:18Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 21.7
-        qualifying_issues: 10
+        median_ttfr_hours: 26.0
+        qualifying_issues: 9
         band: default
         window_offset_days: 4
         source: issue
@@ -47,26 +47,26 @@ health:
         registry: pypi.org
         canonical_package: fonttools
         dependent_repos_count: 33983
-        downloads_last_month: 184200439
+        downloads_last_month: 184800448
         graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
-        homebrew_installs_90d: 800
+        homebrew_installs_90d: 1009
         homebrew_tier: B
         signal_basis: homebrew
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4808
+        repo_age_days: 4814
         last_commit_age_days: 4
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 31
-        top1_share: 0.411
-        top3_share: 0.764
+        active_maintainers_12mo: 32
+        top1_share: 0.418
+        top3_share: 0.766
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,7 +80,7 @@ health:
 
 # fontTools
 
-A Python library (plus a set of command-line tools) to read, write, and manipulate font files — TrueType/OpenType, WOFF/WOFF2, AFM, and more — the de-facto foundation of the open-source font tooling stack.
+A font file is a binary bag of dozens of numbered tables, and a one-off script that edits or subsets one can silently corrupt the rest. fontTools parses TrueType/OpenType/WOFF into a Python object model — one class per table — so you can read, edit, subset and re-serialize fonts programmatically, plus bundled CLIs (`ttx`, subset, instancer) that do the same from the shell.
 
 ![fonttools — health radar](../../../assets/health/fonttools.svg)
 
@@ -88,7 +88,29 @@ A Python library (plus a set of command-line tools) to read, write, and manipula
 
 You're building a font pipeline: maybe you're a type designer's engineer turning a UFO/glyph source into shippable `.otf`/`.ttf`/`.woff2`, or a frontend platform team that needs to **subset** webfonts down to the glyphs a page actually uses so the download is a few KB instead of hundreds. You don't want to parse the binary `sfnt`/`glyf`/`GPOS` tables by hand, and you don't trust a one-off script to round-trip a font without corrupting its tables. You `pip install fonttools`, then either call the library — `TTFont("in.ttf")` gives you a navigable object model of every table you can read, edit, and save — or run the bundled CLIs: `ttx` to dump a font to editable XML and recompile it, `pyftsubset` to cut a font down to a glyph set, `ttx`/`fontTools.ttLib` to merge, instance a variable font, or fix metadata. It's the library that other font tools (and most webfont build steps) are built on.
 
-You reach for it whenever the task is *programmatic font surgery*: subsetting for the web, converting formats, inspecting/patching tables, instancing variable fonts to static cuts, or feeding a larger build system (it's a dependency of matplotlib, of many designer toolchains, and of webfont services). [未验证]
+You reach for it whenever the task is *programmatic font surgery*: subsetting for the web, converting formats, inspecting/patching tables, instancing variable fonts to static cuts, or feeding a larger build system. The dependency claim is now checked: matplotlib declares `fonttools>=4.28.2` in its own PyPI metadata (2026-09), and PyPI's graph lists ~34k dependent repositories with ~185M monthly downloads (health scorer, 2026-09-28) — the webfont-build and designer-toolchain usage around it is inferred from that footprint, not enumerated here.
+
+## How it works
+
+fontTools treats a font file as what it really is: a binary container — the `sfnt` table-bag layout TrueType/OpenType use — holding dozens of numbered tables, and it gives each table its own Python class. `tt = ttLib.TTFont("afont.ttf")` parses that container into the object model, so `tt['maxp'].numGlyphs` or `tt['OS/2'].achVendID` become plain readable/writable attributes, and saving re-serializes a valid binary font when you're done editing. For one-shot bulk work you can skip Python entirely: `ttx` round-trips a font to editable XML and back, `fonttools subset` cuts a font down to a Unicode or glyph range (what webfont subsetting is), and `fonttools varLib.instancer` bakes a static instance out of a variable font. What stays yours: knowing which tables and subset flags your format actually depends on (a wrong flag can drop layout features and break kerning), and wiring the calls into your build — fontTools is an in-process library plus CLIs, not a service.
+
+![fonttools — backbone user story](../../../assets/flow/fonttools.svg)
+
+<!-- flow-steps:begin (generated from flows/fonttools.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library into a Python environment — `pip install fonttools · pip install fonttools[ufo,lxml,woff,unicode]`
+2. **You**: Open a font file as an object model — `from fontTools import ttLib · tt = ttLib.TTFont("afont.ttf")`
+3. **fontTools**: Parses each binary sfnt table into typed attributes you can read and write — component: `TTFont`
+4. **You**: Read or edit any table in place — `tt['maxp'].numGlyphs`
+5. **fontTools**: Recompiles your edits into a valid binary font when you save
+6. **You**: Cut webfonts down to exactly the glyphs you ship — `fonttools subset font.ttf --unicodes="U+0020-0025"`
+
+**Value**: Read, edit, subset and convert font files without parsing sfnt binaries by hand
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -117,7 +139,7 @@ You reach for it whenever the task is *programmatic font surgery*: subsetting fo
 
 ## Dependencies
 
-- **Runtime:** Python; the base library is pure-Python with **no required external services**. Optional extras pull native deps — e.g. WOFF2 (`brotli`), unicode data, faster XML (`lxml`), graphite, plotting — installed via `pip install fonttools[woff,unicode,...]`. [未验证]
+- **Runtime:** Python ≥ 3.11 (README: "FontTools requires Python 3.11 or later"; PyPI `requires-python: >=3.11`, 2026-09). The base library is pure-Python with **no required external dependencies** beyond the standard library. Optional extras pull native/other deps — WOFF2 goes through the `woff` extra (Brotli bindings), `lxml` speeds up XML, `ufo`/`unicode`/etc. gate other modules; the PyPI metadata (2026-09) lists extras `ufo, lxml, woff, unicode, graphite, interpolatable, plot, symfont, type1, pathops, repacker, all`, installed via e.g. `pip install fonttools[ufo,lxml,woff,unicode]`.
 - **Services/infra:** none — it's an in-process library/CLI; no datastore or daemon.
 - **Build:** standard Python packaging; optional native extras need their respective build prerequisites.
 
@@ -127,17 +149,15 @@ You reach for it whenever the task is *programmatic font surgery*: subsetting fo
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 21.7 hours across 10 qualifying issues/PRs.
-- **Maintenance (2026-06).** Very active: v4.63.0 released 2026-05, last push 2026-06, on a steady frequent minor-release cadence. Not archived — clearly maintained, not coasting. [推断]
-- **Governance / bus factor.** Lives under the `fonttools` **GitHub organization** with a long contributor history led by Behdad Esfahbod and Cosimo Lupo (anthrotype) among hundreds of contributors — multi-maintainer, not a single point of failure; healthier bus factor than most font tools. [推断]
+- **Responsiveness**: Grade A — median first-response time 26.0 hours across 9 qualifying issues/PRs (health scorer, 2026-09-28).
+- **Maintenance (2026-09).** Very active: v4.66.0 released 2026-09-23, last push to `main` 2026-09-24 (GitHub API), commits in all of the last 13 weeks — a steady frequent-minor cadence, clearly maintained, not coasting. Not archived.
+- **Governance / bus factor.** Lives under the `fonttools` **GitHub organization** with a long contributor history led by Behdad Esfahbod and Cosimo Lupo (anthrotype) among hundreds of contributors — multi-maintainer, not a single point of failure, though the radar's B reflects real commit concentration (top contributor ≈42% of 12-month commits). [推断]
 - **Age & Lindy.** Created 2013 on GitHub but the codebase's lineage (Just van Rossum's TTX/fontTools) predates that by years; ~13+ years here and **still actively shipping** ⇒ a **strong Lindy** signal — it is the established standard, not a newcomer. [推断]
-- **Adoption.** Foundational: a dependency of matplotlib and a backbone of the open-source font/webfont toolchain; broad real-world use. ~400+ open issues are consistent with a large surface and active triage, not a red flag on their own. [未验证]
+- **Adoption.** Foundational and measured: matplotlib's PyPI metadata requires `fonttools>=4.28.2` (2026-09); the PyPI registry snapshot shows ~185M downloads/month and ~34k dependent repos (health scorer, 2026-09-28); ~5.3k GitHub stars. The webfont-service / designer-toolchain layer around it is inferred from that footprint. [推断]
 - **Risk flags.** None notable — permissive MIT, no relicense history found, diversified maintainership. The main caveat is format breadth (not every exotic table is deeply modeled), not project health. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~5.1k GitHub stars and ~400 open issues as of 2026-06; star/issue counts are date-sensitive and indicative only.
-- [未验证] v4.63.0 dated 2026-05; release cadence and exact version shift over time — verify against the current releases page.
-- [未验证] The set of optional extras (brotli for WOFF2, lxml, unicodedata2, etc.) and which features they gate is taken from packaging metadata/README and may change; check current `pyproject` extras.
-- [推断] "Foundation of the font tooling stack" and specific downstream dependents (matplotlib, designer toolchains) are inferred from ecosystem knowledge; the exact current dependency set is not enumerated here.
-- [推断] Per-table coverage and round-trip fidelity for exotic/vendor tables is an inference from the format's breadth, not a measured claim about any specific table.
+- [未验证] Coverage/round-trip fidelity of exotic/vendor tables is inferred from the format's breadth, not measured against a specific table.
+- [推断] "Backbone of the webfont-toolchain stack" beyond the verified matplotlib dependency and registry dependents (designer toolchains, webfont services) is ecosystem knowledge, not enumerated from sources in this pass.
+- [推断] Which precise features each optional extra (brotli for WOFF2, lxml, unicodedata2, …) gates was read from README/packaging structure, not exercised one by one.

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "fontTools does", "zh": "fontTools 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library into a Python environment", "zh": "把库装进 Python 环境", "code": "pip install fonttools · pip install fonttools[ufo,lxml,woff,unicode]"},
+    {"lane": "you", "en": "Open a font file as an object model", "zh": "把字体文件打开成一个对象模型", "code": "from fontTools import ttLib · tt = ttLib.TTFont(\"afont.ttf\")"},
+    {"lane": "them", "en": "Parses each binary sfnt table into typed attributes you can read and write", "zh": "把二进制的 sfnt 表解析成可读写的类型化属性", "component": {"en": "TTFont", "zh": "TTFont"}},
+    {"lane": "you", "en": "Read or edit any table in place", "zh": "就地读取或修改任意一张表", "code": "tt['maxp'].numGlyphs"},
+    {"lane": "them", "en": "Recompiles your edits into a valid binary font when you save", "zh": "保存时把改动重新编译成合法的二进制字体"},
+    {"lane": "you", "en": "Cut webfonts down to exactly the glyphs you ship", "zh": "把 webfont 裁到只发布需要的字形", "code": "fonttools subset font.ttf --unicodes=\"U+0020-0025\""}
+  ],
+  "value": {"en": "Read, edit, subset and convert font files without parsing sfnt binaries by hand", "zh": "不手撕 sfnt 二进制，就能读改、子集化、转换字体文件"},
+  "sources": [
+    "README.md main @ 2026-09-28: pip install fonttools; pip install fonttools[ufo,lxml,woff,unicode]",
+    "fonttools.readthedocs.io/en/latest/ttLib/ttFont.html (retrieved 2026-09-28): from fontTools import ttLib; tt = ttLib.TTFont(\"afont.ttf\"); tt['maxp'].numGlyphs",
+    "fonttools.readthedocs.io/en/latest/subset/index.html (retrieved 2026-09-28): fonttools subset font.ttf --unicodes=\"U+0020-0025\" ..."
+  ]
+}

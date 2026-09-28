@@ -6,17 +6,17 @@ category: python-tooling
 tags: [go, jupyter, kernel, notebook, repl, interactive]
 language: Go
 license: MIT
-maturity: v0.7.5 (2022), stalled (2026-06)
-last_verified: 2026-06-28
+maturity: v0.7.6, revived 2026-09 after 2022–2026 dormancy, ~4.0k stars
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2023-11-03T18:02:49Z
+  pushed_at: 2026-09-23T13:53:49Z
   default_branch: master
-  default_branch_sha: 55142043d19696ba037e3e93f9ec6c7f8436e82d
+  default_branch_sha: 900c58c5edf8e30c5a0aa4946b13aa914215d36c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:50:15Z
+  computed_at: 2026-09-28T08:24:36Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 13
+        last_commit_age_days: 19
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3896
-        last_commit_age_days: 13
+        repo_age_days: 3902
+        last_commit_age_days: 19
         cohort: tool
     governance:
       grade: D
@@ -77,7 +77,7 @@ health:
 
 # gophernotes
 
-A Jupyter kernel for the **Go** language — write and run Go interactively in Jupyter notebooks (and nteract), cell by cell, with persistent state between cells.
+Jupyter notebooks speak Python, but you ship Go and want the same cell-by-cell exploration in the language you actually use. gophernotes registers a Go kernel so Jupyter/nteract can run Go cells through an embedded interpreter — no compile-link cycle per snippet — with state persisting between cells.
 
 ![gophernotes — health radar](../../assets/health/gophernotes.svg)
 
@@ -87,9 +87,30 @@ You think in Go and you want a notebook. You're exploring a dataset, sketching o
 
 You also reach for it when you want **shareable, executable Go documents** — a notebook that mixes explanation with live Go cells someone can re-run — rather than a static `.go` file plus a README. It leans on a Go interpreter so cells run without a full compile-link cycle per snippet, which is what makes the notebook feel interactive rather than batch.
 
+## How it works
+
+Two processes share the work. Jupyter's front-end talks to gophernotes over the **Jupyter kernel protocol** (ZeroMQ messages — the same contract every language kernel implements), and gophernotes evaluates your Go with an embedded **gomacro** interpreter: a Go interpreter that keeps a live session, so a variable declared in cell 1 still exists in cell 4 without any recompile. Because cells are interpreted rather than compile-linked, they return in milliseconds — but the price is fidelity: some semantics are emulated or unsupported (generics edge cases, cgo, `unsafe.Pointer` conversions, partially-implemented `goto`; the README's Limitations list is the real contract). What it does for you: the protocol plumbing, the interpreter, and a ready `kernel/` spec directory to hand to Jupyter. What stays yours: a Go toolchain, `go install` of the binary, and one manual step — copying the kernelspec into Jupyter's data dir and rewriting `kernel.json` to point at the binary path (the README gives the exact `cp` + `sed`).
+
+![gophernotes — backbone user story](../../assets/flow/gophernotes.svg)
+
+<!-- flow-steps:begin (generated from flows/gophernotes.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Build the kernel binary with the Go toolchain — `go install github.com/gopherdata/gophernotes@v0.7.5`
+2. **You**: Copy the shipped kernelspec into Jupyter's kernel dir — `cp kernel/* ~/.local/share/jupyter/kernels/gophernotes`
+3. **You**: Rewrite kernel.json to point at the installed binary — `sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|"`
+4. **You**: Start Jupyter and pick Go from the New menu — `jupyter notebook`
+5. **gophernotes**: Evaluates each cell through its embedded gomacro interpreter, keeping state across cells — component: `gomacro interpreter`
+
+**Value**: Interactive, shareable Go notebooks — run a cell, tweak, re-run — without a compile-link cycle per snippet
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **The project looks stalled — verify before depending on it.** Last release (v0.7.5) is 2022 and the repo was last pushed 2023-11; against modern Go releases it may have compatibility gaps. Confirm it works with your current Go version before building on it. [未验证]
+- **Maintenance history is dormancy-then-revival — verify before depending on it.** v0.7.5 shipped 2022, the repo then sat until **2026-09**, when a gomacro dependency-refresh commit (2026-09-09) and v0.7.6 (2026-09-23) revived it — one data point, not a proven cadence. The README's install snippets still pin v0.7.5. Against modern Go releases compatibility gaps may remain; confirm it works with your current Go version before building on it. [推断：复活是否持续无先例可验]
 - **You need full, standard Go semantics.** It runs Go through an **interpreter** (gomacro lineage), not the standard compiler, so some language features, generics edge-cases, cgo, or certain packages may behave differently or not work. This is exploration, not production execution. [未验证]
 - **Your data-science workflow is Python-shaped.** If your stack is pandas/NumPy/matplotlib, a Go kernel doesn't get you that ecosystem; the Python kernel + Go-as-microservice split is often more practical.
 - **You want rich notebook plotting / widgets out of the box.** The Go notebook experience is far thinner than Python's (limited plotting, fewer display integrations); don't expect IPython/Jupyter-widget parity.
@@ -125,16 +146,16 @@ You also reach for it when you want **shareable, executable Go documents** — a
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last release v0.7.5 is **2022**, repo last pushed **2023-11** — **stalled**: no recent activity, well behind current Go releases. Not formally archived, but effectively in maintenance-stop territory. [推断]
-- **Governance / bus factor.** Organization-owned (`gopherdata`) with several historical contributors (dwhitena, cosmos72, SpencerPark, sbinet, mattn…), but no visible recent steward — a bus-factor and continuity concern given the inactivity. [推断]
-- **Age & Lindy verdict.** Created 2016-01 (~10 years) but Lindy requires **age × still-active**; since it's stalled, age alone is **not** reassuring here — long-lived-but-dormant fails the Lindy test. [推断]
-- **Adoption.** ~4k stars reflect real historical interest as *the* Go-in-Jupyter kernel, but a Go notebook is a niche workflow and momentum appears to have faded; treat stars as legacy recognition. [未验证]
-- **Risk flags.** **Stalled maintenance** is the headline risk, compounded by interpreter-vs-compiler semantic gaps and likely friction with new Go versions. MIT-licensed, so no relicense/copyleft concern. [推断]
+- **Maintenance (2026-09).** Dormant after v0.7.5 (2022-05) — last push 2023-11 — then **revived in September 2026**: a dependency-refresh commit updating gomacro/zmq4/uuid (2026-09-09) and release **v0.7.6** (2026-09-23, "Update to latest gomacro: adds minimal support for go/types.Alias", GitHub API). Active again as of today, but the revival is one commit and one patch release, not yet a cadence. Not archived.
+- **Governance / bus factor.** Organization-owned (`gopherdata`) with several historical contributors (dwhitena, cosmos72, SpencerPark, sbinet, mattn…); the 2026 revival was carried out by **cosmos72 — the author of the upstream gomacro interpreter**, not the original gopherdata crew. Single-steward rescue: continuity now rests on one person's interest in his interpreter still being usable as a kernel. [推断]
+- **Age & Lindy verdict.** Created 2016-01 (~10 years), but Lindy requires **age × still-active**, and it was dormant 2022–2026; the Sep-2026 revival barely re-qualifies it — long-lived-but-dormant failed the Lindy test, revived-after-three-years is a *new* bet with only one data point. [推断]
+- **Adoption.** ~4.0k stars reflect real historical interest as *the* Go-in-Jupyter kernel, but a Go notebook is a niche workflow; the saving grace is the interpreter itself — gomacro received the 2026-09-01 update pulled in by v0.7.6, so the engine under this kernel is alive even when the wrapper isn't. [推断]
+- **Risk flags.** **Revival-not-reliability** is the headline: a project that slept four years and woke once may sleep again, compounded by interpreter-vs-compiler semantic gaps and likely friction with new Go versions. MIT-licensed, so no relicense/copyleft concern. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~4k stars, 265 forks, 55 open issues as of 2026-06 — volatile, date-sensitive; likely legacy popularity rather than current momentum.
-- [未验证] Latest release v0.7.5 (2022) and last push 2023-11 — "stalled" is inferred from this cadence; the repo is not archived, so check for any newer activity before assuming dead.
-- [未验证] Compatibility with current Go versions is unconfirmed and is the main practical risk; the interpreter (gomacro lineage) may not track recent Go language features.
+- [未验证] ~4.0k stars, 264 forks, 54 open issues as of 2026-09 — volatile, date-sensitive; likely legacy popularity plus a small revival bump rather than current momentum.
+- [未验证] Revival read as: dependency-refresh commit 2026-09-09 + v0.7.6 release 2026-09-23 (GitHub API) — whether sustained maintenance resumed is unconfirmed; check activity again before depending on it.
+- [未验证] Compatibility with current Go versions is unconfirmed and is the main practical risk; the interpreter (gomacro lineage) may not track recent Go language features (v0.7.6 notes only "minimal support for go/types.Alias").
 - [推断] The Jupyter-kernel-protocol / ZeroMQ / gomacro-interpreter architecture is inferred from the project's description and standard Jupyter-kernel design, not a source audit.
 - [未验证] The exact limitations vs standard `go build` semantics (generics, cgo, specific packages) are not enumerated here; verify the features you need against the running kernel.

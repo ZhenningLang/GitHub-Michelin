@@ -6,17 +6,17 @@ category: debugging-proxy
 tags: [http-proxy, https, debugging, mock, web-ui, traffic-inspection, mitm, websocket]
 language: JavaScript
 license: MIT
-maturity: v2.10.x, active, ~15.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v2.10.10, active, ~15.7k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-21T15:35:58Z
+  pushed_at: 2026-09-21T02:43:12Z
   default_branch: master
-  default_branch_sha: 6da6e6c174c4d308199b9512c1ce1a7a671893ba
+  default_branch_sha: 33820c617df12894bb38a5e8ea9019b96b3c955e
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:06:37Z
+  computed_at: 2026-09-28T05:25:00Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -29,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 7
         active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 18.4
+        median_ttfr_hours: 6.8
         qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 11
@@ -47,7 +47,7 @@ health:
         registry: npmjs.org
         canonical_package: whistle
         dependent_repos_count: 24
-        downloads_last_month: 17165
+        downloads_last_month: 17821
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4211
-        last_commit_age_days: 2
+        repo_age_days: 4217
+        last_commit_age_days: 7
         cohort: tool
     governance:
       grade: D
@@ -77,7 +77,7 @@ health:
 
 # whistle
 
-跨平台的 HTTP/HTTPS/HTTP2/WebSocket 调试代理：把流量指向它，在 web UI 里写规则行，就能即时抓包、检视、改写、重定向、Mock 请求——类似 Fiddler/Charles，但基于浏览器、由配置驱动。
+跨平台的 HTTP/HTTPS/HTTP2/WebSocket/TCP 调试代理：把流量指向它，在 web UI 里写规则行，就能即时抓包、检视、改写、重定向、Mock 请求——类似 Fiddler/Charles，但基于浏览器、由配置驱动。
 
 ![whistle — 健康度雷达](../../assets/health/whistle.zh.svg)
 
@@ -86,6 +86,27 @@ health:
 你是一名 Web 或移动端开发者，盯着一个只在对接*真实*后端时才出现的 bug——某个接口返回了让你的 App 崩掉的字段，CDN 发了一份过期的打包文件，或者某条流程只在同事的 staging 主机上挂掉。你不想等后端发版才能验证修复，也不想把 Mock 数据硬编码进 App。你装上 whistle（`npm i -g whistle`），启动它，把浏览器或手机的代理指过去，安装一次它的根证书让 HTTPS 可解密，于是每个请求都流经一个 web UI，你能读到完整的请求/响应对。你写几行规则——`www.example.com/api/user resBody://{mock.json}` Mock 一个响应，`example.com 127.0.0.1:8080` 把某个 host 重定向到本地，`example.com/app.js file:///path/app.js` 把一个脚本换成本地文件——改动在下一个请求就生效，无需重新发布。
 
 它的强项在于检视*与*改写一气呵成：用精确的坏 payload 复现一个只在生产出现的 bug、把设备的流量经笔记本上的 whistle 路由来调试移动 App，或在后端还没就绪时通过 Mock 它的端点来做前端联调。规则语法存在一个可进版本库、可共享的文件里，整个团队都能复现同一套拦截配置。
+
+## 怎么用起来
+
+whistle 是一个本地 Node.js 进程，同时充当你的代理和托管 web UI 的服务（`w2 start` 拉起，`w2 stop`／`w2 restart`／`w2 status` 管理）。客户端把系统代理指向它之后（`w2 proxy`，或在各应用里单独设代理），流经的每个请求都会被捕获——头部、正文、socket——并实时出现在 Network 面板里。要读 HTTPS，需要在每个客户端设备上装一次它自生成的根 CA（`w2 ca`，或在 UI 里一键完成），这让 whistle 能在传输中解密、匹配并改写流量；同一张 CA 也是你接受的安全交换（见「何时不用」）。匹配发生在朴素的规则行上——`www.example.com/static file:///User/xxx/statics` 把一个 URL 前缀映射到本地文件，`resBody://`（Mock 响应）、`host`（改 DNS 指向）、`reqHeaders://`／`statusCode`（微调请求／响应）等操作符叠加在同一个 pattern 上。仍归你的部分：逐设备信任 CA、把每个客户端的代理指过来、以及编写规则行本身。
+
+![whistle — 主干用户故事](../../assets/flow/whistle.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/whistle.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：全局安装并启动代理服务 — `npm i -g whistle · w2 start`
+2. **你**：安装根证书并把系统代理指向它 — `w2 ca · w2 proxy`
+3. **whistle**：在 web 界面里抓取 HTTP/HTTPS/WS/TCP 流量 — 组件：`代理进程 + Web UI`
+4. **你**：加一行规则，把某个地址映射到本地文件 — `www.example.com/static file:///User/xxx/statics`
+5. **whistle**：下一个请求就按规则改写，应用代码不用动
+
+**价值**：几分钟内抓包并改写真实流量，不碰代码、不等发版
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -108,34 +129,34 @@ health:
 
 ## 技术栈
 
-- **语言/运行时：** 基于 Node.js 的 JavaScript——以 npm CLI 安装运行（`whistle` / `w2`）。
+- **语言/运行时：** 基于 Node.js 的 JavaScript——以 npm CLI 安装运行（`whistle` / `w2`）；README 还列了 Homebrew（`brew install whistle`）与打包桌面客户端 [whistle-client](https://github.com/avwo/whistle-client) 两条安装路径（README，2026-09）。
 - **架构：** 一个本地代理服务器加一个 web UI；流量按规则行匹配（一套自有的 whistle 规则 DSL：pattern → 操作符，如 `file://`、`resBody://`、`host`、`req`/`res` 修改符、`weinre`/inspect 等）。
-- **协议：** HTTP、HTTPS（通过可安装的根 CA 做解密）、HTTP/2、WebSocket。
-- **可扩展性：** 一套插件系统（whistle 插件以 `whistle.<name>` 的 npm 包发布）扩展匹配/处理。[未验证]
+- **协议：** HTTP、HTTPS（通过可安装的根 CA 做解密）、HTTP/2、WebSocket 与 TCP 抓包／修改；支持 HTTP/HTTPS/SOCKS/反向代理等多种代理模式（README，2026-09）。
+- **内置工具：** UI 自带 Weinre（远程 DOM 检查）、Console、Composer（请求重放与编辑）（README，2026-09）。
+- **可扩展性：** 一套插件系统（whistle 插件以 `whistle.<name>` 的 npm 包发布）扩展匹配与界面功能——插件支持是 README 成文特性；单个插件的成熟度另说。
 
 ## 依赖
 
-- **Node.js** 是唯一的硬运行时依赖——你需要一个 Node 环境来安装和运行它（`package.json` 声明了 `engines.node` 下限，确切最低值由仓库设定且随时间变动）。[未验证]
+- **Node.js** 是唯一的硬运行时依赖——截至 v2.10.10，`package.json` 声明 `engines.node: ">= 14.0.0"`（2026-09-28 核实）。
 - **根 CA 安装** 到每个要解密 HTTPS 的客户端——这是个安装/运维层面的依赖，而非一个服务。
 - 不需要搭数据库或外部服务；状态和规则都存在本地。
 
 ## 运维难度
 
-**低。** 一句 `npm i -g whistle`（或 `npx`）然后 `w2 start` 即可；web UI 跑在本地，规则在界面里或规则文件里编辑。唯一真正的摩擦是 HTTPS：给每个要解密的客户端/设备生成并安装根证书，且每个设备/系统都得重做一遍。把它作为共享/团队实例运行、或代理移动设备，会多一点网络配置（大家把代理指向那台主机、信任证书），但没有集群、数据存储或扩容方面的顾虑，因为它是开发工具而非基础设施。
+**低。** 一句 `npm i -g whistle`（或 `brew install whistle`、或直接用打包桌面客户端）然后 `w2 start` 即可；web UI 跑在本地，规则在界面里或规则文件里编辑。唯一真正的摩擦是 HTTPS：给每个要解密的客户端/设备生成并安装根证书，且每个设备/系统都得重做一遍（`w2 ca` 可自动化本机这一步）。把它作为共享/团队实例运行、或代理移动设备，会多一点网络配置（大家把代理指向那台主机、信任证书），但没有集群、数据存储或扩容方面的顾虑，因为它是开发工具而非基础设施。
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 18.4 小时，基于 15 个 qualifying issues/PRs。
-- **维护（2026-06）。** 最后 push 于 2026-06 且未归档；tag 已到 v2.10.x，表明它在**活跃发布**，并未弃坑。[推断]
-- **治理 / bus factor。** 仓库 owner 是**单个 GitHub User 而非组织**——实质上是一名维护者。这是个实打实的 **bus-factor 标记**：路线图与延续性系于一人，尽管项目本身已存在很久。[推断]
+- **响应速度**：雷达评为 A（计分窗口内中位首次响应约 6.8 小时）——维护者回得很快。
+- **维护（2026-09）。** 默认分支最后提交 2026-09-21；最新 tag v2.10.10——**持续发布中**，整个夏天基本月度有提交。未归档。
+- **治理 / bus factor。** 仓库 owner 是**单个 GitHub User（avwo）而非组织**——实质上是一名维护者。这是个实打实的 **bus-factor 标记**：路线图与延续性系于一人，尽管项目本身已存在很久。[推断]
 - **年龄与 Lindy 判断。** 2015-03 创建（约 11 年）且**仍然活跃**⇒ 对它的细分领域是个**强 Lindy** 信号——一个调试代理能活下来并维护十年，比一个新秀更值得押注，尽管有单维护者这一保留项。[推断]
-- **采用度。** ~15.6k star，在中文前端社区相当知名；在那里被广泛当作 Fiddler/Charles 的替代品。star 数仅供参考，不等于当前健康度的证明。[未验证]
+- **采用度。** 约 15.7k star、约 1.18k fork，对这个年纪的工具 open issue 仅 82 个（GitHub API 2026-09-28）；在中文前端社区相当知名，被广泛当作 Fiddler/Charles 的替代品。star 数仅供参考，不等于当前健康度的证明。
 - **风险标记。** MIT 许可、未发现 relicense 历史；主要风险是单维护者的 bus factor 与 HTTPS-MITM 固有的信任模型，而非许可问题。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 15.6k star、版本 v2.10.x——star 数和版本号对时间敏感、会漂移，仅供参考。
-- [未验证] 最低 Node.js 版本由仓库 `package.json` 的 `engines` 字段声明且随时间变化，这里不断言具体数字。
-- [未验证] “文档以中文为主”是从项目起源和社区做出的推断；英文文档存在，但其完整度未被穷尽核查。
+- [未验证] 截至 2026-09-28 约 15.7k star、v2.10.10——star 数和版本号对时间敏感、会漂移，仅供参考。
+- [未验证] 「文档以中文为主」是从项目起源和社区做出的推断；英文文档树确实存在（wproxy.org 的 /en/ 路径），但其与中文版的完整度差距未被穷尽核查。
 - [未验证] 插件生态（`whistle.<name>` 包）与完整的规则操作符集来自项目自身的表述；具体插件的成熟度未逐一核实。
-- [推断] “单维护者”是从 owner 为 GitHub User 账号推断而来；真实的贡献者分布未逐人测量。
+- [推断] 「单维护者」是从 owner 为 GitHub User 账号推断而来；真实的贡献者分布未逐人测量。

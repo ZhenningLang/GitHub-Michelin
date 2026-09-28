@@ -6,19 +6,19 @@ category: workflow-orchestration
 tags: [workflow, orchestration, scheduler, dag, data-engineering, batch, etl, python]
 language: Python
 license: Apache-2.0
-maturity: v3.x line, active, ~46k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v3.3.2, active, ~47k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-29T11:36:14Z
+  pushed_at: 2026-09-28T09:40:36Z
   default_branch: main
-  default_branch_sha: 512a0445875c950ff50f9fbd890751da20e92a09
+  default_branch_sha: 23bcbe6c99a3cf7dc5de9ebe4a45ad5a50513c44
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:06:41Z
+  computed_at: 2026-09-28T09:46:11Z
   overall: A
-  overall_score: 3.67
+  overall_score: 4.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -35,23 +35,23 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.9
-        qualifying_issues: 39
+        median_ttfr_hours: 3.5
+        qualifying_issues: 37
         band: default
         window_offset_days: 5
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: A
       raw:
         registry: pypi.org
-        canonical_package: apache-airflow-mypy
+        canonical_package: apache-airflow-core
         dependent_repos_count: 0
-        downloads_last_month: 47011
+        downloads_last_month: 2682704
         graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
-        release_downloads: 82990
+        volume_tier: A
+        cross_check_divergence: 1.0
+        release_downloads: 83214
         release_assets: 924
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4180
+        repo_age_days: 4186
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 211
-        top1_share: 0.119
-        top3_share: 0.226
+        active_maintainers_12mo: 210
+        top1_share: 0.121
+        top3_share: 0.227
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,7 +81,7 @@ health:
 
 # Apache Airflow
 
-A platform to programmatically author, schedule, and monitor batch data workflows as Python DAGs — a scheduler, a metadata database, a web UI, and a pluggable executor, with a large catalog of operators and provider integrations.
+Your nightly pipelines live in a graveyard of cron jobs that fail silently at 3 a.m., with no dependency order, no retries, and nobody who can say what broke. Airflow turns each pipeline into a Python file (a DAG — a graph of dependent tasks), and a scheduler with a metadata database and a web UI runs it on cadence: what ran, what's late, what failed, and one-click re-runs and date-range backfills.
 
 ![airflow — health radar](../../assets/health/airflow.svg)
 
@@ -90,6 +90,28 @@ A platform to programmatically author, schedule, and monitor batch data workflow
 You're a data engineer responsible for a fleet of scheduled batch pipelines — nightly ELT into a warehouse, hourly aggregations, a daily training-data refresh, a few cross-system jobs that pull from S3, run a Spark step, and load Snowflake. The work is *time- or interval-driven*, every job is a graph of dependent steps, and you need retries, backfills, alerting on failure, and one place to see what ran, what's late, and what broke. You write each pipeline as a Python file that builds a DAG: tasks are operators (Bash, Python, SQL, a Spark submit, a Kubernetes pod), edges are dependencies, and a `schedule` controls cadence. Airflow's scheduler walks the DAGs, hands ready tasks to an executor (local, Celery, or Kubernetes), records every run in the metadata DB, and renders the grid/graph views in the web UI so you can inspect, re-run, or backfill a date range from the browser.
 
 You reach for it specifically when you want pipelines as code in version control, a huge library of pre-built operators and provider packages (cloud SDKs, databases, transfer operators) instead of hand-rolled glue, and a mature operational surface — SLAs, retries with backoff, task-level logs, and a UI your whole team already knows. It's the default orchestration layer when the unit of work is "a scheduled batch job made of steps," and you'd rather configure proven operators than build a scheduler yourself.
+
+## How it works
+
+You write each pipeline as a Python file: a DAG whose nodes are *operators* — a Bash command, a Python function, a SQL query, a Spark submit, a Kubernetes pod — chained by dependencies, with a `schedule` controlling cadence. Inside, Airflow runs as several cooperating processes against a metadata database: a *DAG processor* parses your files into the DB, the *scheduler* ticks and decides which task instances are ready (time arrived, upstreams succeeded), and an *executor* — Local on one box, Celery over a worker pool and a message broker (e.g. Redis), or Kubernetes launching a pod per task — actually runs them; an API server backs the web UI where you watch the grid, re-run, or backfill. Retries with backoff, SLA misses, task logs, and run history are recorded for you. What it deliberately does *not* do is move your data: tasks should be idempotent and delegate heavy lifting to external systems, passing only small metadata (XCom) between steps — Airflow coordinates, the warehouse/Spark/cloud services crunch. What stays yours: the metadata DB and its backups, worker capacity and broker, provider packages and credentials, and the code of each task.
+
+![airflow — backbone user story](../../assets/flow/airflow.svg)
+
+<!-- flow-steps:begin (generated from flows/airflow.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install Airflow pinned to a constraints file for a reproducible env — `pip install 'apache-airflow==3.3.2'`
+2. **You**: Start a full local instance with one command — `airflow standalone`
+3. **Apache Airflow**: Initializes the metadata DB, creates an admin, runs scheduler, API server, DAG processor
+4. **You**: Write each pipeline as a Python DAG file of tasks and dependencies — `from airflow.sdk import DAG · @task(retries=3)`
+5. **You**: Open the UI and unpause the DAG — `localhost:8080`
+6. **Apache Airflow**: On schedule, hands ready tasks to your executor, records every run, retries and backfills
+
+**Value**: Scheduled batch pipelines as version-controlled code, with retries, backfills and one team-wide UI
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -112,10 +134,10 @@ You reach for it specifically when you want pipelines as code in version control
 
 ## Tech stack
 
-- **Language:** Python — DAGs and operators are Python; the core scheduler/web server are Python services.
-- **Web/UI:** a web server rendering DAG grid/graph views, logs, and run history; built on a Python web stack with a REST API. [未验证]
-- **Scheduler + executors:** a scheduler process plus a pluggable executor — Local, Celery (distributed workers), or Kubernetes (one pod per task) — selected by deployment scale.
-- **Operators & providers:** a large catalog of built-in operators and separately versioned *provider* packages for clouds, databases, and transfer/SQL/Spark/etc. integrations.
+- **Language:** Python — DAGs and operators are Python; the core services are Python. Current line supports Python 3.10–3.14 (since Airflow 3.2.0; quickstart doc, retrieved 2026-09-28), and officially supported install paths are `pip` or `uv` with the per-version constraints files.
+- **Web/UI:** an API server (`airflow api-server`) plus the web UI rendering DAG grid/graph views, logs, and run history. The UI's internal framework is still unverified. [未验证]
+- **Services & executors:** separate components you can run individually — `airflow db migrate`, `airflow scheduler`, `airflow dag-processor`, `airflow triggerer`, `airflow api-server` (quickstart commands, retrieved 2026-09-28) — with a pluggable executor (Local, Celery with a broker, or Kubernetes) picked by deployment scale.
+- **Operators & providers:** a large catalog of built-in operators and separately versioned *provider* packages for clouds, databases, and transfer/SQL/Spark/AI-ML integrations (the README now calls out agentic/LLM-workload orchestration among its uses, retrieved 2026-09-28).
 - **Persistence:** a metadata database (PostgreSQL or MySQL in production; SQLite only for local dev) holds DAG runs, task state, connections, and variables.
 
 ## Dependencies
@@ -132,17 +154,16 @@ You reach for it specifically when you want pipelines as code in version control
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 4.9 hours across 39 qualifying issues/PRs.
-- **Maintenance (2026-06)** — last pushed 2026-06, not archived, on the active v3.x line; one of the busiest data-infra repos, so clearly **active**, not coasting. The ~1.7k open issues read as scale-of-traffic, not neglect. `[推断]`
-- **Governance & bus factor** — an **Apache Software Foundation** top-level project (`Organization`-owned under `apache/`): foundation governance with a PMC and many corporate contributors is about the strongest bus-factor profile open source offers — no single vendor owns the roadmap. `[推断]`
-- **Age & Lindy** — created ~2015-04, so ~11 years old (2026-06) and still actively developed: a **strong-Lindy** bet (long-lived *and* active), and the default orchestration layer much of data engineering already runs on. `[推断]`
-- **Adoption & ecosystem** — huge production footprint, a large operator/provider catalog, managed offerings from multiple clouds, and ~46k stars; ecosystem depth is a real moat, not hype. `[未验证]`
-- **Risk flags** — Apache-2.0 under ASF (no relicense/open-core risk — foundation IP policy precludes a vendor rug-pull); the real cost is **operational weight** (multi-service distributed system), not licensing or abandonment. `[未验证]`
+- **Responsiveness**: Grade A — median first-response time 3.5 hours across 37 qualifying issues/PRs (re-scored 2026-09-28).
+- **Maintenance (2026-09)** — pushed daily, latest release 3.3.2 on 2026-09-17 (GitHub API); one of the busiest data-infra repos, clearly **active**, not coasting. The ~1.7k open issues (2026-06 reading) read as scale-of-traffic, not neglect. `[推断]`
+- **Governance & bus factor** — an **Apache Software Foundation** top-level project (`Organization`-owned under `apache/`): foundation governance with a PMC and 200+ active committers in the last year is about the strongest bus-factor profile open source offers — no single vendor owns the roadmap.
+- **Age & Lindy** — created 2015-04, ~11.5 years old and still actively developed: a **strong-Lindy** bet (long-lived *and* active), and the default orchestration layer much of data engineering already runs on.
+- **Adoption & ecosystem** — huge production footprint (~2.7M PyPI downloads/month for `apache-airflow-core` and ~47k stars as of the 2026-09-28 re-score), a large operator/provider catalog, and managed offerings from multiple clouds; ecosystem depth is a real moat, not hype.
+- **Risk flags** — Apache-2.0 under ASF (no relicense/open-core risk — foundation IP policy precludes a vendor rug-pull); the real cost is **operational weight** (multi-service distributed system) and the v2→v3 migration upheaval, not licensing or abandonment.
 
 ## Caveats (unverified)
 
-- [未验证] ~46k GitHub stars and "active (2026-06)" come from the repo page; star counts are date-sensitive and unreliable — treat as indicative only.
-- [未验证] The exact current stable version of the 3.x line and its release date were not pinned here; verify against the repo's releases before relying on a specific version.
-- [未验证] Web-UI internals (framework, REST API surface) and the precise supported database/Python version ranges change across releases — confirm in the docs for your target version.
+- [未验证] ~47k GitHub stars (46,997, GitHub API 2026-09-28) — star counts are date-sensitive and unreliable as a health proxy; treat as indicative only.
+- [未验证] Web-UI internals (framework, API surface) and the precise supported database versions change across releases — confirm in the docs for your target version.
 - [推断] The "Dagster/Prefect feel more modern for dynamic/data-aware DAGs" judgment is an opinion about tooling ergonomics, not a measured benchmark; Airflow has added data-aware scheduling that narrows the gap.
 - [推断] The Celery broker requirement (Redis/RabbitMQ) follows from standard Celery deployment; the specific broker is a deployment choice, not fixed by Airflow.

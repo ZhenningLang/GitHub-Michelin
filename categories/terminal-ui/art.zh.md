@@ -6,17 +6,17 @@ category: terminal-ui
 tags: [ascii-art, text-art, figlet, python, cli, fonts, decoration]
 language: Python
 license: MIT
-maturity: v6.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v6.5, master quiet since 2025-04 while dev branch stays active, 2.5k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-29T01:32:38Z
+  pushed_at: 2026-09-21T01:32:57Z
   default_branch: master
   default_branch_sha: 3917a898faeb7490d3043a1158b13a5d9b51e273
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:06:26Z
+  computed_at: 2026-09-28T10:07:15Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 528
+        last_commit_age_days: 534
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -47,16 +47,16 @@ health:
         registry: pypi.org
         canonical_package: art
         dependent_repos_count: 391
-        downloads_last_month: 1153907
+        downloads_last_month: 1063012
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.05
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 3275
-        last_commit_age_days: 528
+        repo_age_days: 3281
+        last_commit_age_days: 534
         cohort: library
     governance:
       grade: "?"
@@ -74,7 +74,7 @@ health:
 
 # ART
 
-一个纯 Python 的 ASCII 艺术库：把文字变成 figlet 风格的大字横幅（`text2art`）、插入单字符艺术片段（`art`），并用装饰边框包裹输出——内置数百种字体和艺术片段，无系统依赖。
+你想让 CLI 一启动就打出体面的横幅——工具名排成 figlet 风格的大块字母——却不想装 C 二进制，也不想调系统的 `figlet`。ART 把 677 种字体和 700 多个单行艺术片段以纯 Python 数据随包发布，`text2art("MyTool")` 直接返回渲染好的横幅字符串，打印、记日志、嵌进文档都行。
 
 ![art — 健康度雷达](../../assets/health/terminal-ui-art.zh.svg)
 
@@ -84,8 +84,30 @@ health:
 
 当 ASCII 艺术*文字*就是交付物时你会选它：横幅、启动画面、生成的 README 艺术、Discord/Telegram 机器人输出、终端问候语，或测试 fixture。它是个聚焦的“文字→艺术”生成器，API 稳定、文档完善，内置字体/艺术目录大得出奇。
 
+## 怎么用起来
+
+ART 认识的一切都藏在 Python 包里的数据：字体表、单行艺术片段、装饰碎片——没有系统 `figlet`，也不联网。`text2art("MyTool", font=...)` 把你字符串里的每个字符按所选字体表映射，再把各列拼成一个多行横幅字符串；`art("coffee")` 返回一个具名的单行片段，`randart()` 返回随机片段；`decor("barcode1")` 返回边框碎片，由你自己拼接包裹。ART 替你做完整的目录、字符映射和排版；留给你的只有决定字符串去向（stdout、日志、README）以及自己处理终端宽度——大字体输出很宽。它还带一个 CLI（`art text yourtext`、`art fonts`），但 README 明确 5.9 是官方支持该 CLI 结构的最后一个版本，所以 Python API 才是被维护的入口。
+
+![ART — 主干用户故事](../../assets/flow/terminal-ui-art.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/terminal-ui-art.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从 PyPI 装上库 — `pip install art==6.5`
+2. **你**：在进程内把工具名渲染成横幅字符串 — `text2art("art")`
+3. **ART**：用随包发布的 677 种字体逐字拼出大图，不调系统 figlet — 组件：`内置字体目录`
+4. **你**：给横幅套上装饰边框 — `decor("barcode1")`
+5. **ART**：交回一个普通字符串：打印、记日志、贴进 README 都行
+
+**价值**：一次 pip install 即得 figlet 风格横幅：无 C 二进制、无子进程，跨平台表现一致
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
+- **发布线已经沉寂。** 默认分支最后一次提交在 2025-04（v6.5，2025-04-12）；截至 2026-09，正式发布已约 17 个月没有动静，新工作都落在 `dev` 分支上（2026-09 仍有特性提交与 README 更新）。如果你的项目等不起一个节奏不定的维护者修 bug，请选更活跃的替代品（`pyfiglet`，未收录）——或者接受可能需要自己 vendor 补丁。
 - **你想把图片/照片转成 ASCII。** art 处理的是*文字和字符*，不是位图——图片转 ASCII 你需要图像转换器（[asciify](asciify.zh.md)、`ascii-magic`、`jp2a`），不是它。
 - **你在做全屏 TUI 或动画。** art 产出的是字符串，不是 UI；交互屏、widget 或特效请用 TUI 库（[asciimatics](asciimatics.zh.md)、Textual、urwid）。
 - **你必须与 `figlet` 的字体/输出完全一致。** art 有自己的字体集和渲染；若你要逐字节的 figlet 兼容，请改用 `pyfiglet` 或 `figlet` 二进制。
@@ -106,12 +128,13 @@ health:
 
 - **语言：** 纯 Python；字体和艺术片段随包发布（无需系统 `figlet`）。
 - **API 面：** `text2art`（文字→大字横幅）、`art`（具名单片艺术）、`decor`（装饰边框）、字体/艺术列表辅助函数；外加一个 CLI。
-- **目录：** 仓库内置数百种字体和数百个具名艺术片段/装饰（README 称 600+ 字体、700+ 艺术片；确切数量随版本增长）。[未验证]
-- **分发：** PyPI、conda，以及 Docker/CLI 路径。
+- **目录：** master 分支 README 计数为 677 种字体、711 个单行艺术片段、218 种装饰（数量随版本增长）。
+- **分发：** PyPI（`pip install art==6.5`）、conda-forge（`conda install -c conda-forge ascii-art`）、私有 conda 频道，另有 MATLAB 绑定。
 
 ## 依赖
 
-- **运行时：** 仅 Python——核心库**无第三方运行时依赖**；字体/艺术数据随包发布。[未验证]
+- **运行时：** 仅 Python——6.5 的 PyPI 元数据里**没有第三方运行时依赖**（`coverage`/`bandit` 等条目属于 dev 专用 extras）；字体/艺术数据随包发布。
+- **Python 下限：** `setup.py` 声明 `python_requires>=3.6`，但 INSTALL.md 提示 ART 6.4 是最后官方支持 Python 3.6 的版本——建议用 3.7+ [推断]。
 - **安装：** `pip install art`（或 conda）；CLI 随之附带。
 - **无外部服务、网络或数据存储**——完全离线、进程内字符串生成。
 
@@ -121,17 +144,16 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2026-05，有 v6.x 发布线和稳定的打 tag 发布节奏——处于**活跃**而非吃老本。未归档。[推断]
-- **治理 / bus factor。** 主要由作者（sepandhaghighi）推动，外加一位常驻协作者和若干贡献者；属小团队/单一主导，但有持续、规整的发布和 CI/覆盖率。[推断]
-- **年龄与 Lindy 判断。** 约 9 年（2017-10 创建）且**仍在活跃发布**⇒ **强 Lindy** 信号：一个成熟稳定、持续推进的库。[推断]
-- **采用度。** 约 2.5k star，上架 PyPI/conda，内置字体/艺术目录大、文档与测试覆盖良好——对一个小众库来说采用度健康。[未验证]
-- **风险标记。** MIT 许可，未发现 relicense 历史；除常规的小型维护团队考量外无显著风险标记。[推断]
+- **维护（2026-09 实测）。** 雷达 `maintenance: D`——默认分支最后一次提交是 2025-04-12（v6.5），沉寂约 17 个月。仓库未归档，`dev` 分支到 2026-09 仍持续收到特性提交与 README 更新，dependabot PR 也开着——项目活着，但发布节奏已经不成班次。
+- **响应速度。** 雷达 `responsiveness: A`——近期 PR 的中位首次响应约 0.1 小时（样本很小）；对 issue 的关注度可信。
+- **治理 / bus factor。** 雷达 `governance: ?`（贡献数据无法归因）；人工判读：由作者（sepandhaghighi）主导，AUTHORS 承认有一位常驻协作者——单一主导的小团队 [推断]。
+- **年龄与 Lindy 判断。** 约 9 年（2017-10 创建）——但 Lindy 要年龄乘以仍在活跃，而当前的活跃在 `dev` 而非已发布的 `master` 上；应视为“处于慢发布季的老熟库”，不是强 Lindy 的全绿通行 [推断]。
+- **采用度（2026-09 实测）。** 2,501 star；PyPI 上月 1,063,012 次下载、约 391 个依赖仓库——对单一用途的横幅库来说，采用度异常扎实。
+- **风险标记。** MIT，无 relicense 历史；真正的风险是发布节奏与默认分支沉寂，不是许可。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 2.5k star、v6.x；star 数和版本号会漂移，仅供参考。
-- [未验证] 字体/艺术片段数量（README 称 600+ 字体、700+ 艺术）随版本增长；视为近似，请对照当前版本核实。
-- [未验证] 核心库“无第三方运行时依赖”出自项目自述；请对照你所用版本的当前打包元数据确认。
-- [推断] “活跃”和发布节奏是从 2026-05 最后 push 和 tag 历史推断，而非精确的发布间隔测量。
+- [推断] 建议 Python 3.7+：`setup.py` 声明 `>=3.6`，而 INSTALL.md 说 6.4 是最后官方支持 3.6 的版本——6.5 的实际下限没有给出数字。
+- [推断] “dev 分支活跃预示未来会发版”是从分支提交（2026-08/09）推断，项目未发布路线图。
+- [推断] 单一主导 + 协作者的治理判读来自作者/贡献者分布，而非治理文档。
 - [未验证] 超大字体在高频场景下的宽度/性能是一般性提醒，而非针对本库的实测基准。

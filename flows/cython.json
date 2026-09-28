@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Cython does", "zh": "Cython 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the compiler into your Python environment", "zh": "把编译器装进你的 Python 环境", "code": "pip install Cython"},
+    {"lane": "you", "en": "Type the hot loop in a .pyx file", "zh": "在 .pyx 文件里给热点循环标类型", "code": "cdef int a = 0"},
+    {"lane": "you", "en": "Compile the file in place", "zh": "就地编译这个文件", "code": "cythonize -i filename.pyx"},
+    {"lane": "them", "en": "Translates it to C and builds a native CPython extension module", "zh": "把它翻译成 C 并构建为原生 CPython 扩展模块", "component": {"en": "generated C + your C compiler", "zh": "生成的 C + 你的 C 编译器"}},
+    {"lane": "you", "en": "Import it like any other module — typed loop now runs at near-C speed", "zh": "像普通模块一样 import——标了类型的循环以接近 C 的速度跑"}
+  ],
+  "value": {"en": "A profiled bottleneck running at C speed with one file renamed and a few cdef lines — the rest of the program stays plain Python", "zh": "改名一个文件、加几行 cdef，被 profile 揪出的瓶颈就跑出 C 的速度——程序其余部分仍是普通 Python"},
+  "sources": [
+    "github.com/cython/cython README.rst (master, retrieved 2026-09-28): 'pip install Cython'; Apache license",
+    "cython.readthedocs.io/en/latest/src/quickstart/build.html (retrieved 2026-09-28): 'A source file can be built \u201cin place\u201d ... with cythonize -i filename.pyx'; 'cdef int a = 0' example; C compiler builds a .so importable into Python",
+    "cython.readthedocs.io language basics (2026-09-28): cdef statement for type declarations"
+  ]
+}

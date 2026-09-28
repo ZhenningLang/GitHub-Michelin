@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "PikiwiDB does", "zh": "PikiwiDB 做的"},
+  "steps": [
+    {"lane": "you", "en": "Bring up a node from the official Docker image", "zh": "用官方 Docker 镜像起一个节点", "code": "docker run -d · pikadb/pika:v3.3.6"},
+    {"lane": "them", "en": "Keeps the hot working set in memory and persists the full dataset to RocksDB on local disk", "zh": "热数据留在内存，全量数据落到本地磁盘的 RocksDB", "component": {"en": "memory + RocksDB tiering", "zh": "内存缓存 + RocksDB 分层"}},
+    {"lane": "you", "en": "Point your existing Redis clients at it — same protocol, no code change", "zh": "现有 Redis 客户端原样指过去，协议兼容、代码不改", "code": "redis-cli -p 9221 \"info\""},
+    {"lane": "them", "en": "Answers Redis commands from disk-backed string/hash/zset structures", "zh": "按 Redis 协议应答，数据从落盘结构中取", "component": {"en": "Redis-compatible server", "zh": "Redis 兼容服务层"}},
+    {"lane": "you", "en": "Add a replica with the Redis command you already know", "zh": "用你熟悉的 Redis 命令挂一个从库", "code": "slaveof"},
+    {"lane": "them", "en": "Replicates asynchronously over binlog, full and incremental", "zh": "通过 binlog 异步复制，支持全量与增量同步", "component": {"en": "binlog replication", "zh": "binlog 复制"}}
+  ],
+  "value": {"en": "Hundreds-of-GB nodes at SSD cost, with untouched Redis client code", "zh": "单节点装下几百 GB、按 SSD 计价，Redis 客户端代码一行不改"},
+  "sources": ["README.md unstable @ 2026-09-28: 'Running with Docker' block ('docker run -d', image 'pikadb/pika:v3.3.6', 'redis-cli -p 9221 \"info\"'); 'supports master-slave mode using the slaveof command'; 'full and incremental data synchronization'; 'Each data structure uses a separate RocksDB instance'; feature list (String/Hash/List/Zset/Set/Geo/Hyperloglog/Pubsub/Bitmap/Stream/ACL)"]
+}

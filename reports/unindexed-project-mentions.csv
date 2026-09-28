@@ -98,7 +98,6 @@ Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md
 Apache APISIX,categories/api-gateway/kong.md,,no
 Apache Avro,categories/networking/thriftpy.md,,no
 Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
-Apache Superset,categories/observability/grafana.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
 Appcues / Userflow / Userpilot,categories/web-ui/product-tours/driver-js.md,,no
@@ -252,7 +251,6 @@ CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 Czkawka,categories/disk-cleanup/mangodisk.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
-Datadog / Grafana Cloud,categories/observability/grafana.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
@@ -301,7 +299,6 @@ Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 endesive,categories/pdf-tools/pyhanko.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
-Envoy + Lua/Wasm filters,categories/nginx-modules/lua-nginx-module.md,,no
 ESLint + a11y plugins (eslint-plugin-jsx-a11y),categories/ai-design-generation/impeccable.md,,no
 eslint-plugin-react-hooks / react,categories/ai-code-review/react-doctor.md,,no
 ESPnet,categories/speech/speechbrain.md,,no
@@ -335,7 +332,6 @@ FriendlyCaptcha,categories/captcha/capjs.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
-Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
 Generic LLM chat / hand-written prompt,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
@@ -563,7 +559,6 @@ mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no
-Mockaroo,categories/dev-utilities/data-tools/faker-js.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/taskmatrix.md,,no
 Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Telegraf does", "zh": "Telegraf 做的"},
+  "steps": [
+    {"lane": "you", "en": "Pull the agent (static binary and Docker image both exist)", "zh": "拉取 agent（静态二进制或镜像）", "code": "docker pull telegraf"},
+    {"lane": "you", "en": "Write one TOML declaring a few inputs and one output", "zh": "写一份 TOML，声明输入和输出", "code": "[[inputs.cpu]] · [[outputs.file]]"},
+    {"lane": "you", "en": "Launch the agent with that config mounted in", "zh": "挂上这份配置启动 agent", "code": "docker run --rm --volume $PWD/config.toml:/etc/telegraf/telegraf.conf telegraf"},
+    {"lane": "them", "en": "Collects data from each input at its own interval", "zh": "按各自的 interval 从每个输入采集数据", "component": {"en": "input plugins", "zh": "输入插件"}},
+    {"lane": "them", "en": "Processes, aggregates, and writes points to your outputs at each flush interval", "zh": "按 flush 间隔处理、聚合并写到输出", "component": {"en": "output plugins", "zh": "输出插件"}}
+  ],
+  "value": {"en": "Heterogeneous hosts, databases, queues and PLCs streaming into whichever backend you query, with no glue code", "zh": "主机、数据库、消息队列乃至 PLC 的数据都流进你查询的那个后端，不用写胶水代码"},
+  "sources": ["influxdata/telegraf docs/QUICK_START.md (master, retrieved 2026-09-28): 'docker pull telegraf'; example config.toml '[[inputs.cpu]] / [[inputs.mem]] / [[outputs.file]]'; launch command 'docker run --rm --volume $PWD/config.toml:/etc/telegraf/telegraf.conf telegraf'", "README.md master @ 2026-09-28: 'The Telegraf agent then collects data from inputs at each interval and sends data to outputs at each flush interval.'"]
+}

@@ -6,17 +6,17 @@ category: data-tools
 tags: [encoding, encryption, hashing, compression, data-analysis, forensics, web-app, offline, self-hostable, node-library]
 language: JavaScript
 license: Apache-2.0
-maturity: v11.2.0, active (2026-06)
-last_verified: 2026-06-26
+maturity: "v11.5.0, very active, ~36k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-26T12:15:28Z
+  pushed_at: 2026-09-26T11:33:12Z
   default_branch: master
-  default_branch_sha: 275b594f7c8b0e39880f55e7c1f67dc0a4e73f92
+  default_branch_sha: d0267c3cf7691e9c2ed51e2d5071b9fd6004fcc1
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:09:02Z
+  computed_at: 2026-09-28T05:16:40Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 11
+        last_commit_age_days: 2
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 52.7
-        qualifying_issues: 36
+        median_ttfr_hours: 32.6
+        qualifying_issues: 29
         band: relaxed_solo
         window_offset_days: 3
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: npmjs.org
         canonical_package: cyberchef
         dependent_repos_count: 12
-        downloads_last_month: 6814
+        downloads_last_month: 8803
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
-        release_downloads: 650622
+        release_downloads: 654035
         release_assets: 99
         release_tier: C
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3585
-        last_commit_age_days: 1
+        repo_age_days: 3591
+        last_commit_age_days: 2
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 23
-        top1_share: 0.364
-        top3_share: 0.647
+        top1_share: 0.36
+        top3_share: 0.64
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,7 +81,7 @@ health:
 
 # CyberChef
 
-A fully client-side "Cyber Swiss Army Knife" web app that chains 300+ encode/decode, crypto, compression, hashing and data-analysis operations into reusable visual "recipes" — runnable offline in the browser or as a Node library.
+You've got a blob of data you can't read — Base64 wrapped in URL-encoding, a hexdump that hides a gzip stream — and writing a throwaway decoder per layer is slow, while pasting live incident data into some online tool leaks it. CyberChef gives you a canvas where you drag decode/encode/hash/cipher operations into a chain and the answer re-computes live, entirely inside your browser.
 
 ![cyberchef — health radar](../../../assets/health/cyberchef.svg)
 
@@ -90,6 +90,28 @@ A fully client-side "Cyber Swiss Army Knife" web app that chains 300+ encode/dec
 You're a security analyst, CTF player, or backend engineer staring at a blob of data you don't recognize — maybe a doubly-URL-encoded then Base64'd token, a gzipped payload inside a hex dump, or a timestamp in some format you can't place. Writing a throwaway script for each transform is slow, and pasting sensitive data into a random online decoder is a non-starter. You open CyberChef (the public instance, or a copy you self-host), drag operations into a recipe — `From Base64` → `URL Decode` → `Gunzip` — and watch the output update live at each step. The "Magic" operation can even guess the chain for you when you have no idea what you're looking at. Because everything runs in your browser and nothing is sent to a server, you can safely throw real incident data, keys, or PCAP-extracted strings at it.
 
 You also reach for it when you want that same logic *repeatable*. A recipe serialises into the URL, so you can bookmark or share a deep link that reproduces an exact transform pipeline, drop file inputs up to ~2 GB, set breakpoints to inspect intermediate stages, and — when you've nailed the recipe interactively — call the very same operations programmatically from Node via the `cyberchef` npm package to bake it into a script or pipeline.
+
+## How it works
+
+The UI has four zones: an input box, an output box, a searchable list of operations, and the recipe area in the middle. You paste (or drag, up to ~2 GB) the data into the input, drag operations into the recipe, and **Auto Bake** re-runs the whole chain on every change — the output updates live at each step, so you iterate by looking, not by re-running scripts. Nothing is uploaded: the app is entirely client-side, and you can even click to download a full copy of it and drop it into an air-gapped VM. If you don't know what encoding you're looking at, the **Magic** operation runs detection heuristics over the data and offers a candidate decode chain in the output pane. The recipe itself serialises into the URL (`#recipe=Operation()&input=`), so a solved pipeline is a bookmarkable, shareable artifact; the same operation set is also reachable from Node (`npm install cyberchef`, see the "Node API" wiki) when you want to run a recipe programmatically.
+
+![CyberChef — backbone user story](../../../assets/flow/cyberchef.svg)
+
+<!-- flow-steps:begin (generated from flows/cyberchef.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Serve the app locally (or just open the public instance) — `docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest` — component: `static SPA`
+2. **You**: Paste the unreadable blob into the input box
+3. **CyberChef**: Magic runs detection heuristics and offers a candidate decode chain — component: `Magic`
+4. **You**: Drag operations into the recipe to chain the transforms
+5. **CyberChef**: Auto Bake re-runs the whole chain and updates the output live, in your browser — component: `Auto Bake`
+6. **You**: Copy the URL — the recipe serialises into it — to save or share — `#recipe=Operation()&input=`
+
+**Value**: A reproducible, shareable transform pipeline that never sends your data to a server
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -122,25 +144,25 @@ You also reach for it when you want that same logic *repeatable*. A recipe seria
 
 - **To use the public app:** just a modern browser (README states Chrome 50+ / Firefox 38+). No backend — all processing is client-side.
 - **To self-host:** serve the prebuilt static files behind any web server, or run the official Docker image `ghcr.io/gchq/cyberchef:latest`. No database, no server-side runtime required at request time.
-- **To build from source / use the Node library:** Node.js v24 (package declares `engines: ">=24 <25"`), then `npm install` and `npx grunt prod` (build) or `npm install cyberchef` to consume the library.
+- **To build from source / develop:** Node.js `v24` (README "Node.js support": built to fully support v24, tested against v26; package declares `engines: ">=24 <27"`), then `npm install` and `npm run build` (production build into `build/prod`) or `npm start` (dev server with live reload at `http://localhost:8080`).
+- **Node library:** `npm install cyberchef` to consume the operation set from Node (see the "Node API" wiki page).
 
 ## Ops difficulty
 
-**Low.** As a static single-page app there is nothing stateful to operate: the easiest self-host is dropping the built `assets`/`index.html` on any static host or CDN, or running the published Docker image. There is no database, queue, or background worker, and no inbound data handling to secure server-side because processing is in the client. The only real cost is rebuilding/upgrading the bundle on a new release and the strict Node v24 build requirement, which can bite CI pinned to other Node majors. Running the Node library inside your own service inherits that service's ops profile rather than adding its own.
+**Low.** As a static single-page app there is nothing stateful to operate: the easiest self-host is dropping the built `assets`/`index.html` on any static host or CDN, or running the published Docker image (`ghcr.io/gchq/cyberchef:latest` on port 8080). There is no database, queue, or background worker, and no inbound data handling to secure server-side because processing is in the client. The only real cost is rebuilding/upgrading the bundle on a new release and the Node `v24` build pin (`engines: ">=24 <27"`), which can bite CI pinned to other Node majors. Running the Node library inside your own service inherits that service's ops profile rather than adding its own.
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 52.7 hours across 36 qualifying issues/PRs.
-- **Maintenance (2026-06):** **active** — semver-tagged releases (latest v11.2.0, ~2026-06-17), last pushed 2026-06. A mature major-version line with ongoing releases, not coasting. [推断]
-- **Governance & bus factor:** `Organization`-owned by **GCHQ** (the UK signals-intelligence agency) — institutional backing rather than a solo maintainer, with a contributor community around it. Unusual but durable sponsor; low bus-factor risk. [推断]
+- **Responsiveness**: Grade A — median first-response time 32.6 hours across 29 qualifying issues/PRs.
+- **Maintenance (2026-09):** **very active** — semver-tagged releases keep coming (latest v11.5.0, 2026-09-18), last pushed 2026-09-26. A mature major-version line, not coasting.
+- **Governance & bus factor:** `Organization`-owned by **GCHQ** (the UK signals-intelligence agency) — institutional backing rather than a solo maintainer, with a broad contributor community (23 active committers in the trailing 12 months, top-1 share 0.36). Unusual but durable sponsor; low bus-factor risk.
 - **Age & Lindy (~10yr, created 2016-11):** **old and still active** — a strong Lindy verdict. A decade of continuous releases plus government backing makes it a safe long-term bet for an analysis tool.
-- **Adoption/ecosystem:** de-facto standard "cyber swiss army knife" in security/CTF/forensics circles, dual-distributed (hosted SPA + `cyberchef` npm library) with an official server wrapper; broad real-world use. [推断]
-- **Risk flags:** none structural (Apache-2.0, no relicense/open-core history). Practical gates are scope, not viability: not vetted production crypto, and a strict Node v24 build pin can bite CI. [推断]
+- **Adoption/ecosystem:** de-facto standard "cyber swiss army knife" in security/CTF/forensics circles (~36k stars), dual-distributed (hosted SPA + `cyberchef` npm library) with an official container image; broad real-world use. [推断] the "de-facto standard" framing is community reputation, not a measured claim.
+- **Risk flags:** none structural (Apache-2.0 under Crown Copyright, no relicense/open-core history). Practical gates are scope, not viability: not vetted production crypto, and the Node v24 build pin can bite CI.
 
 ## Caveats (unverified)
 
 - [未验证] "300+ operations" is the project's commonly-cited framing; the exact operation count shifts release-to-release — verify against the current build before relying on a specific operation existing.
-- [未验证] Reported v11.2.0 published 2026-06-17; star count ~35.2k as of 2026-06 — GitHub stars are unreliable and date-sensitive, treat as indicative only.
+- [未验证] Star count ~36.0k as of 2026-09 — GitHub stars are date-sensitive, treat as indicative only.
 - [未验证] README states browser support as Chrome 50+ / Firefox 38+ and a ~2 GB file-input ceiling; actual behaviour at the limit depends on the host browser's memory and version.
-- [推断] The npm library exposing the operation set as a Node API is real (package `main` points at a Node wrapper), but the npm package's published version may lag the GitHub tag — confirm before pinning.
-- [推断] Self-hosted instances are "fully offline-capable once served" based on the client-side-only design; verify your specific build has no CDN/runtime fetches before treating it as air-gapped-safe.
+- [推断] Self-hosted instances are "fully offline-capable once served" based on the client-side-only design (the README documents downloading a full copy of the app); still verify your specific build has no CDN/runtime fetches before treating it as air-gapped-safe.

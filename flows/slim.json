@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Slim does", "zh": "Slim 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "装上 CLI", "code": "brew install docker-slim"},
+    {"lane": "you", "en": "Point one command at any image in the local registry", "zh": "一条命令指向本地任意镜像", "code": "slim build your-name/your-app"},
+    {"lane": "them", "en": "Starts the container and exercises it via HTTP probe and your --exec commands", "zh": "启动容器，用 HTTP 探针和你给的 --exec 命令施压", "component": {"en": "HTTP probe", "zh": "HTTP 探针"}},
+    {"lane": "them", "en": "Records every file access and syscall, then rebuilds a .slim image with only what was used", "zh": "记录实际用到的文件和系统调用，重建只含这些产物的 .slim 镜像", "component": {"en": "build command", "zh": "build 命令"}},
+    {"lane": "you", "en": "Run the minified image and verify it still behaves", "zh": "跑一下瘦身后的镜像，验证行为不变", "code": "docker run archlinux:curl curl checkip.amazonaws.com"}
+  ],
+  "value": {"en": "An image up to 30x smaller plus generated Seccomp/AppArmor profiles, without touching the Dockerfile", "zh": "不改 Dockerfile，镜像最多小 30 倍，还附带生成好的 Seccomp/AppArmor 配置"},
+  "sources": ["slimtoolkit/slim README.md (master, retrieved 2026-09-28): Homebrew section 'brew install docker-slim'", "README.md usage section: 'slim build your-name/your-app'; overview example 'slim build --target archlinux:latest --tag archlinux:curl --http-probe=false --exec \"curl checkip.amazonaws.com\"' followed by 'docker run archlinux:curl curl checkip.amazonaws.com'", "README.md seccomp section: 'docker run --security-opt seccomp:<...>.json'; --include-path allowlist example; Overview lists the 'xray' inspection command"]
+}

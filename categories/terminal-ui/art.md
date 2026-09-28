@@ -6,17 +6,17 @@ category: terminal-ui
 tags: [ascii-art, text-art, figlet, python, cli, fonts, decoration]
 language: Python
 license: MIT
-maturity: v6.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v6.5, master quiet since 2025-04 while dev branch stays active, 2.5k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-29T01:32:38Z
+  pushed_at: 2026-09-21T01:32:57Z
   default_branch: master
   default_branch_sha: 3917a898faeb7490d3043a1158b13a5d9b51e273
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:06:26Z
+  computed_at: 2026-09-28T10:07:15Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 528
+        last_commit_age_days: 534
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -47,16 +47,16 @@ health:
         registry: pypi.org
         canonical_package: art
         dependent_repos_count: 391
-        downloads_last_month: 1153907
+        downloads_last_month: 1063012
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.05
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 3275
-        last_commit_age_days: 528
+        repo_age_days: 3281
+        last_commit_age_days: 534
         cohort: library
     governance:
       grade: "?"
@@ -74,7 +74,7 @@ health:
 
 # ART
 
-A pure-Python ASCII-art library: turn text into figlet-style large-font banners (`text2art`), insert single-character art pieces (`art`), and wrap output in decorative borders — hundreds of fonts and art pieces, no system dependencies.
+You want your CLI's startup banner — your tool's name in big figlet-style block letters — without installing a C binary or shelling out to `figlet`. ART keeps 677 fonts and 700+ one-line art pieces as pure-Python data inside the package, so `text2art("MyTool")` just returns the rendered banner as a string you can print, log, or embed anywhere.
 
 ![art — health radar](../../assets/health/terminal-ui-art.svg)
 
@@ -84,8 +84,30 @@ You're building a CLI tool and you want a polished startup banner — your tool'
 
 You reach for it when ASCII-art *text* is the deliverable: banners, splash screens, generated README art, Discord/Telegram bot output, terminal greetings, or test fixtures. It's a focused text→art generator with a stable, well-documented API and an unusually large bundled font/art catalog.
 
+## How it works
+
+Everything ART knows is data shipped inside the Python package: font tables, one-line art pieces, and decoration fragments — no system `figlet`, no network. `text2art("MyTool", font=...)` maps each character of your string through the chosen font table and joins the columns into a multi-line banner string; `art("coffee")` returns a named one-line piece, `randart()` a random one; `decor("barcode1")` returns border fragments you concatenate around the banner. What ART does for you: the whole catalog, the character mapping, the layout. What stays yours: deciding where the returned string goes (stdout, a log, a README) and handling terminal width yourself — big fonts produce wide output. There is also a CLI (`art text yourtext`, `art fonts`), but the README marks 5.9 as the last version to officially support that CLI structure, so the Python API is the maintained surface.
+
+![ART — backbone user story](../../assets/flow/terminal-ui-art.svg)
+
+<!-- flow-steps:begin (generated from flows/terminal-ui-art.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library from PyPI — `pip install art==6.5`
+2. **You**: Render your tool's name into a banner string, in-process — `text2art("art")`
+3. **ART**: Maps each letter through one of 677 fonts bundled in the package — no system figlet — component: `bundled font catalog`
+4. **You**: Wrap the banner with a decorative border — `decor("barcode1")`
+5. **ART**: Hands back one plain str — print it, log it, or paste it into your README
+
+**Value**: A figlet-style ASCII banner from a pip install — no C binary, no subprocess, identical on Windows, macOS and Linux
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
+- **The release line has been quiet.** The default branch last saw a commit 2025-04 (v6.5, 2025-04-12); as of 2026-09 the published release is ~17 months old, and new work lands on the `dev` branch instead (feature commits and README updates through 2026-09). If your project cannot wait on a fix coming from an irregular maintainer, prefer a busier alternative (`pyfiglet`, not indexed) — or accept that you may vendor a patch.
 - **You want to convert an image/photo into ASCII.** art works on *text and characters*, not raster images — for picture-to-ASCII you need an image converter ([asciify](asciify.md), `ascii-magic`, `jp2a`), not this.
 - **You're building a full-screen TUI or animation.** art produces strings, not a UI; for interactive screens, widgets or effects use a TUI library ([asciimatics](asciimatics.md), Textual, urwid).
 - **You must match `figlet`'s exact fonts/output.** art has its own font set and rendering; if you need byte-for-byte figlet compatibility, use `pyfiglet` or the `figlet` binary instead.
@@ -106,12 +128,13 @@ You reach for it when ASCII-art *text* is the deliverable: banners, splash scree
 
 - **Language:** pure Python; fonts and art pieces are shipped inside the package (no system `figlet` needed).
 - **API surface:** `text2art` (text→large-font banner), `art` (named single-piece art), `decor` (decorative borders), font/art listing helpers; plus a CLI.
-- **Catalog:** hundreds of fonts and hundreds of named art pieces/decorations bundled in-repo (the README cites 600+ fonts and 700+ art pieces; exact counts grow per release). [未验证]
-- **Distribution:** PyPI, conda, and a Docker/CLI path.
+- **Catalog:** 677 fonts, 711 one-line art pieces and 218 decorations in the master-branch README counters (counts grow release-to-release).
+- **Distribution:** PyPI (`pip install art==6.5`), conda-forge (`conda install -c conda-forge ascii-art`), private conda channel, plus MATLAB bindings.
 
 ## Dependencies
 
-- **Runtime:** Python only — **no third-party runtime dependencies** for the core library; the font/art data ships with the package. [未验证]
+- **Runtime:** Python only — PyPI metadata for 6.5 lists **no third-party runtime dependencies** (the `coverage`/`bandit`/etc. entries are dev-only extras); the font/art data ships with the package.
+- **Python floor:** `setup.py` declares `python_requires>=3.6`, but INSTALL.md warns ART 6.4 was the last version to officially support Python 3.6 — use 3.7+ [推断].
 - **Install:** `pip install art` (or conda); the CLI comes with it.
 - **No external services, network, or datastore** — fully offline, in-process string generation.
 
@@ -121,17 +144,16 @@ You reach for it when ASCII-art *text* is the deliverable: banners, splash scree
 
 ## Health & viability
 
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last pushed 2026-05 with a v6.x release line and a steady tagged-release cadence — **active**, not coasting. Not archived. [推断]
-- **Governance / bus factor.** Driven primarily by the author (sepandhaghighi) with a recurring co-maintainer and contributors; a small-team/single-lead project but with sustained, disciplined releases and CI/coverage. [推断]
-- **Age & Lindy verdict.** ~9 years old (created 2017-10) and **still actively shipping** ⇒ a **strong Lindy** signal: a mature, stable library that keeps moving. [推断]
-- **Adoption.** ~2.5k stars, on PyPI/conda with a large bundled font/art catalog and good docs/test coverage — healthy adoption for a niche library. [未验证]
-- **Risk flags.** MIT-licensed, no relicense history found; no significant risk flags beyond normal small-maintainer-team considerations. [推断]
+- **Maintenance (measured 2026-09).** Radar `maintenance: D` — the default branch last saw a commit 2025-04-12 (v6.5), ~17 months quiet. Not archived, and the `dev` branch keeps receiving feature commits and README updates through 2026-09, with dependabot PRs open — alive, but releases are irregular rather than a steady train.
+- **Responsiveness.** Radar `responsiveness: A` — measured median time-to-first-response on recent PRs is ~0.1h (small sample); issue attention is credible.
+- **Governance / bus factor.** Radar `governance: ?` (unattributable from contribution data); human read: driven by the author (sepandhaghighi) with an AUTHORS-recognized co-maintainer — single-lead small team [推断].
+- **Age & Lindy verdict.** ~9 years old (created 2017-10) — but Lindy needs age × still-active, and activity currently lives on `dev`, not on released `master`; treat as a mature library in a slow-release season rather than a strong-Lindy all-clear [推断].
+- **Adoption (measured 2026-09).** 2,501 stars; PyPI shows 1,063,012 downloads last month and ~391 dependent repos — unusually strong uptake for a single-purpose banner lib.
+- **Risk flags.** MIT, no relicense history; the real risks are release cadence and the quiet default branch, not licensing.
 
 ## Caveats (unverified)
 
-- [未验证] ~2.5k stars and v6.x as of 2026-06; star counts and version numbers drift — indicative only.
-- [未验证] Font/art-piece counts (README cites 600+ fonts, 700+ art) grow release-to-release; treat as approximate, verify against the current release.
-- [未验证] "No third-party runtime dependencies" for the core library is from the project's framing; confirm against the current packaging metadata for your version.
-- [推断] "Active" and the release cadence are inferred from the 2026-05 last-push and tag history, not a precise release-interval measurement.
+- [推断] Python 3.7+ recommendation: `setup.py` declares `>=3.6` while INSTALL.md says 6.4 was the last version officially supporting 3.6 — the effective floor for 6.5 is not stated numerically.
+- [推断] "dev branch activity predicts a future release" is an inference from branch commits (2026-08/09); no release roadmap is published.
+- [推断] The single-lead + co-maintainer governance read comes from authors/contributor patterns, not a governance document.
 - [未验证] Width/performance of very large fonts in high-volume contexts is a general caution, not a measured benchmark for this library.

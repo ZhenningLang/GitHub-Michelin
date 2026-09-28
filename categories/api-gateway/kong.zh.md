@@ -6,17 +6,17 @@ category: api-gateway
 tags: [api-gateway, ai-gateway, llm-gateway, reverse-proxy, plugins, kubernetes-ingress, openresty]
 language: Lua
 license: Apache-2.0
-maturity: v3.9.x, active (2026-06)
-last_verified: 2026-06-26
+maturity: v3.9.x, active, ~44k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: service
 upstream:
-  pushed_at: 2026-06-29T09:48:26Z
+  pushed_at: 2026-09-28T04:53:21Z
   default_branch: master
-  default_branch_sha: 1730282ec2f8ed097cf6ad6a3d69e55b7ba9ebb6
+  default_branch_sha: af0acd7f44025ad9613aa69064c732dd48c6fdcc
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:59:18Z
+  computed_at: 2026-09-28T05:00:02Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 19
-        active_weeks_13: 4
+        last_commit_age_days: 0
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 93.9
-        qualifying_issues: 8
+        median_ttfr_hours: 88.0
+        qualifying_issues: 9
         band: default
         window_offset_days: 5
         source: issue
@@ -44,30 +44,24 @@ health:
     adoption:
       grade: C
       raw:
-        registry: proxy.golang.org
-        canonical_package: github.com/Kong/kong
-        dependent_repos_count: 1
-        downloads_last_month: null
-        graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
-        docker_pulls: 8389295
+        registry: null
+        canonical_package: null
+        docker_pulls: 8434828
         docker_image: kong/kong
         docker_tier: C
         signal_basis: docker
-        tier_source: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4327
-        last_commit_age_days: 19
+        repo_age_days: 4332
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 15
-        top1_share: 0.179
-        top3_share: 0.429
+        active_maintainers_12mo: 16
+        top1_share: 0.194
+        top3_share: 0.472
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -101,7 +95,7 @@ Kong 是站在你所有后端服务前面的一道门。**门本身和一整套�
 <details>
 <summary>流程文字版</summary>
 
-1. **你**：部署 Kong，放在所有后端服务前面 — `docker-compose --profile database up`
+1. **你**：部署 Kong，放在所有后端服务前面 — `KONG_DATABASE=postgres docker-compose --profile database up`
 2. **你**：声明 Service + Route：哪条路径转给哪个后端 — `Admin API :8001 or decK YAML`
 3. **你**：给路由挂上现成插件，填参数 — `key-auth · rate-limiting · prometheus`
 4. **Kong Gateway**：请求从 :8000 进门，匹配到路由
@@ -140,14 +134,14 @@ Kong 是站在你所有后端服务前面的一道门。**门本身和一整套�
 - **插件：** Lua 插件进程内运行；Go 与 JS/TS 插件通过 Plugin Development Kit（PDK）进程外运行。
 - **配置存储：** PostgreSQL（传统/混合模式）**或** DB-less 声明式 YAML/JSON（内存态）。
 - **控制面：** RESTful Admin API、Kong Manager Web UI，以及做声明式 GitOps 式配置的 decK。
-- **AI Gateway：** `ai-proxy` / `ai-*` 插件，在多家 LLM 供应商（OpenAI、Anthropic、Bedrock、Gemini、Azure、Mistral 等）之上提供 OpenAI 兼容门面，并处理 MCP 流量。
+- **AI Gateway：** `ai-proxy` / `ai-*` 插件，在多家 LLM 供应商之上提供 OpenAI 兼容门面（README 点名 OpenAI、Anthropic、GCP Gemini、AWS Bedrock、Azure AI、Databricks、Mistral、Hugging Face 等）；README 还列出 MCP 流量治理/安全/可观测、把任意 RESTful API 自动生成 MCP，以及“60+ AI 特性”（语义安全/缓存/路由）。
 - **部署模式：** 传统（带库）、混合（控制面/数据面分离）、DB-less，以及面向 Kubernetes 的 Kong Ingress Controller。
 
 ## 依赖
 
 - **运行时：** OpenResty/Nginx + LuaJIT 栈（官方包/镜像已打包）。
 - **数据存储：** 传统/混合模式需 PostgreSQL；DB-less 模式**无**（仅声明式文件）。
-- **默认端口：** 8000（代理）、8001（Admin API）、8002（Kong Manager UI）。[未验证] 默认端口集合随版本/配置可能不同。
+- **默认端口：** 8000（代理）、8001（Admin API）、8002（Kong Manager UI）——以 README 的 docker-compose 快速上手为准（2026-09）。
 - **工具：** 声明式配置管理用 `decK`；Kubernetes 用 Kong Ingress Controller（独立仓库）。
 - **安装：** 官方 Docker 镜像、Linux 包（deb/rpm）、Helm chart，或从源码构建。
 
@@ -157,17 +151,17 @@ Kong 是站在你所有后端服务前面的一道门。**门本身和一整套�
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 93.9 小时，基于 8 个 qualifying issues/PRs。
-- **维护（截至 2026-06）：** 最后 push 在 2026-06，未归档，最新版本 3.9.x——一个持续发版、积极维护的网关，而非在吃老本。[推断]
-- **治理与背书：** 由 `Organization` 持有且**厂商背书**（Kong Inc.，一家拿过融资的商业公司），不是基金会项目。这意味着有真实的路线图和支持，但**开源核心（open-core）**模式才是治理现实：OSS 网关只是一档，厂商掌控什么留在开源、什么挪进 Enterprise（Developer Portal、RBAC、高级 AI 插件）。路线图归厂商，而非中立基金会。[推断]
+- **响应速度**：Grade B——中位首次响应时间 88.0 小时，基于 9 个 qualifying issues/PRs（评分器，2026-09-28）。
+- **维护（截至 2026-09）：** 未归档；master 最后一次提交与 2026-09-28 健康度评分同日，近 13 周中有 5 周活跃——核心开发明显在 master 上推进，但最新公开发布的 release 仍是 3.9.3（2026-06-17），稳定版节奏较 2024–25 变慢。[推断：节奏判断基于 GitHub releases 可见日期]
+- **治理与背书：** 由 `Organization` 持有且**厂商背书**（Kong Inc.，一家拿过融资的商业公司），不是基金会项目。这意味着有真实的路线图和支持，但**开源核心（open-core）**模式才是治理现实：OSS 网关只是一档，厂商掌控什么留在开源、什么挪进 Enterprise（Developer Portal、RBAC、高级 AI 插件）。路线图归厂商，而非中立基金会。
 - **年龄与 Lindy 判断：** 建于 2014-11，约 12 年**且仍然活跃**——很强的 **Lindy** 信号：它熬过了多次架构变迁（甚至在 3.4 这条线移除了作为配置存储的 Cassandra），是寿命最长的 OSS API 网关之一。老 + 活跃 ⇒ 核心代理是安全的耐久押注。[推断]
 - **采用/生态：** 广泛的生产采用、庞大的插件生态、一个 Kubernetes Ingress Controller、做 GitOps 配置的 decK，以及成熟文档——生态深度本身就是可持续性信号。
-- **风险标记：** 真正要盯的是**开源核心的功能闸门**，而非 license 反水——OSS 核心仍是 Apache-2.0，但高级特性可能仅限企业版，且这条划分随版本变动。依赖某个具体插件前请先核实其 OSS 可用性。[推断]
+- **风险标记：** 真正要盯的是**开源核心的功能闸门**，而非 license 反水——OSS 核心仍是 Apache-2.0（README + GitHub API，2026-09），但高级特性可能仅限企业版，且这条划分随版本变动。依赖某个具体插件前请先核实其 OSS 可用性。
 
 ## 存疑（未验证）
 
-- [未验证] 观察到的最新版本为 3.9.3（2026-06-17 发布），仓库活动到 2026-06-17；star 数约 43.7k（截至 2026-06）——GitHub star 不可靠且对日期敏感，仅作参考。
+- [未验证] 截至 2026-09-28，GitHub 最新 release 仍是 3.9.3（2026-06-17 发布），而 master 分支持续有 push——下一个稳定版（3.10.x？）是否落地、还是在别处出货（Enterprise/Kong Mesh/Konnect），无法从本仓库核实。star 数约 44.2k（截至 2026-09）——GitHub star 不可靠且对日期敏感，仅作参考。
 - [未验证] 第三方对比里引用的吞吐/延迟数字（如 Kong 约 16k RPS/节点、APISIX 约 23k QPS/核、开插件后 APISIX 快约 200%）来自外部基准测试博客，随版本、配置、硬件差异巨大，无第一方保证。
 - [推断] 开源版与企业版之间的插件划分（Developer Portal、RBAC、高级 AI 特性）随版本变动；依赖某个具体插件前，请对照当前仓库/文档核实其 OSS 可用性。
 - [未验证] AI Gateway 插件支持的 LLM 供应商与 MCP 特性的确切清单随版本变化；此处的供应商列表反映 README 的表述，并非逐版本审计。
-- [未验证] 据称 Cassandra 已在 3.4 这条线移除（自 2.7 起弃用）；如要迁移，请对照 UPGRADE.md 确认确切版本。
+- [推断] Cassandra 的移除已在 3.4.0 得到仓库 CHANGELOG 证实（“Cassandra as a datastore for Kong is no longer supported”，2026-09-28 核对）；但 UPGRADE.md 仍留着 3.0 之前的旧表述，把移除目标写在 4.0——以 CHANGELOG 为准，迁移极老的 Cassandra 存储前请再核对迁移文档。

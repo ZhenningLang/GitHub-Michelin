@@ -6,19 +6,19 @@ category: task-queue
 tags: [job-scheduler, distributed-scheduling, cron, sharding, failover, java, spring]
 language: Java
 license: GPL-3.0
-maturity: ~30.3k stars, active (2026-06); single-lead-author project, created 2015-11
-last_verified: 2026-06-28
+maturity: v3.4.2, active, ~30.6k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-21T08:40:20Z
+  pushed_at: 2026-07-21T16:01:12Z
   default_branch: master
-  default_branch_sha: 128dd678962b8918b9abf2e82928818b0072ac50
+  default_branch_sha: e74c784f68f81fa89cb350913ef15794865d7b12
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:05:36Z
+  computed_at: 2026-09-28T10:18:38Z
   overall: C
-  overall_score: 2.33
+  overall_score: 2.17
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 63
-        active_weeks_13: 2
+        last_commit_age_days: 69
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 43.5
-        qualifying_issues: 13
+        median_ttfr_hours: 77.7
+        qualifying_issues: 9
         band: default
         window_offset_days: 13
         source: issue
@@ -55,14 +55,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3952
-        last_commit_age_days: 63
+        repo_age_days: 3957
+        last_commit_age_days: 69
         cohort: framework
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 8
-        top1_share: 0.955
+        top1_share: 0.954
         top3_share: 0.981
         window_source: stats_contributors
         carve_out: null
@@ -77,7 +77,7 @@ health:
 
 # XXL-JOB
 
-A lightweight, distributed task-scheduling platform: a central web-based **admin/dispatcher** that triggers cron-style jobs against your application's **executors**, with sharded execution, failover, and a built-in UI — widely deployed in Chinese enterprises.
+Your scheduled jobs are scattered across crontabs on random boxes and `@Scheduled` annotations nobody dares to touch, and answering "did last night's run succeed?" means SSH-ing around. XXL-JOB moves the schedule into one web console: a central dispatcher fires cron jobs over HTTP to executors embedded in your apps, with run logs, retry, failover and sharding built in.
 
 ![xxl-job — health radar](../../assets/health/xxl-job.svg)
 
@@ -139,7 +139,7 @@ XXL-JOB has two halves. The **scheduling center** is a separately deployed admin
 
 ## Dependencies
 
-- **A database for the admin** — you must run a relational DB (MySQL by default) and apply XXL-JOB's schema; this is the scheduling/state store.
+- **A database for the admin** — you must run a relational DB (MySQL is the documented default) and apply XXL-JOB's provided schema (`doc/db/tables_xxl_job.sql`); this is the scheduling/state store.
 - **The admin/dispatcher service** — at least one Spring Boot admin instance (run several behind a load balancer against the shared DB for redundancy).
 - **Executors in your apps** — each application that runs jobs pulls in the executor dependency and registers with the admin; the executors are where your `@XxlJob` handlers actually run.
 - A JVM (and, in practice, a Spring/Spring Boot app) to host both admin and executors.
@@ -150,18 +150,18 @@ XXL-JOB has two halves. The **scheduling center** is a separately deployed admin
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 43.5 hours across 13 qualifying issues/PRs.
-- **Maintenance (2026-06).** Repo last pushed 2026-06 — **active**, not archived; long release history over ~11 years. [推断]
+- **Responsiveness**: Grade B — median first-response time 77.7 hours across 9 qualifying issues/PRs (down from A at 43.5h/13; issue intake is thin, so the window is noisy).
+- **Maintenance (2026-09).** Last `master` commit 2026-07-21; latest release 3.4.2 (2026-06-19), part of a roughly one-to-two-releases-per-quarter cadence through 2025–2026 (3.3.0 2025-11 → 3.3.2 2026-01 → 3.4.0 2026-04 → 3.4.2 2026-06, GitHub releases). Active, but a cruising pace — no new release since June. Not archived.
 - **Governance / bus factor.** Owned by a **single individual** (`xuxueli`, `owner.type` = User) who is the lead author — a real **bus-factor flag**: roadmap and merge authority concentrate on one person, even though the project is widely deployed. [推断]
-- **Age & Lindy verdict.** Created **2015-11** (~11 years) and **still actively maintained** ⇒ a **strong Lindy** signal for its niche: a long-proven, battle-tested scheduler rather than a hyped newcomer. [推断]
-- **Adoption.** ~30.3k stars and heavy real-world use, especially across Chinese enterprises, indicate strong adoption and a deep deployment base. [未验证]
+- **Age & Lindy verdict.** Created **2015-11** (~11 years as of 2026-09) and **still maintained** ⇒ a **strong Lindy** signal for its niche: a long-proven, battle-tested scheduler rather than a hyped newcomer. [推断]
+- **Adoption.** ~30.6k stars and ~11.5k forks (GitHub API, 2026-09); heavy real-world use, especially across Chinese enterprises, is widely reported but not measured here. [推断]
 - **Risk flags.** **GPL-3.0 copyleft** is the headline licensing risk for proprietary distribution; combined with single-lead-author governance and Chinese-first docs/community, these are the things to weigh before betting on it. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~30.3k stars and "active, pushed 2026-06" are point-in-time figures — star counts are unreliable and date-sensitive; re-verify against the live repo.
+- [未验证] ~30.6k stars, ~11.5k forks and "last commit 2026-07-21" are point-in-time figures — star counts are unreliable and date-sensitive; re-verify against the live repo.
 - [未验证] GPL-3.0 is the license reported for the repo; the precise copyleft obligations for your distribution model depend on how you embed/ship it — confirm with the `LICENSE` file and legal counsel, don't act on this page alone.
-- [未验证] MySQL as the default/required datastore and the exact supported DB list come from the project's framing; verify the current docs for supported databases and schema.
+- [未验证] The shipped schema is MySQL-flavoured (`doc/db/tables_xxl_job.sql`, checked on tag 3.4.2), and the current GitHub README has slimmed to a feature list that links the docs site (www.xuxueli.com/xxl-job) — the exact supported-DB list comes from those docs, which were not fully re-read this pass; verify before depending on anything beyond MySQL.
 - [未验证] "Heavily Chinese docs/community" and the relative thinness of English coverage are an impression from the project's origin and audience, not a measured claim.
 - [推断] "Central scheduler = SPOF/HA concern" is an architectural inference; multi-admin-against-shared-DB redundancy exists, so treat it as a design tradeoff to plan for, not an outage guarantee.
 - [推断] PowerJob being a "more modern alternative" with a smaller install base is a positioning inference, not a benchmarked comparison.

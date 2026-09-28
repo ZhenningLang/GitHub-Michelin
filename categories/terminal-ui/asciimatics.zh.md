@@ -6,17 +6,17 @@ category: terminal-ui
 tags: [terminal-ui, tui, curses, ascii-art, animation, cross-platform, python, widgets]
 language: Python
 license: Apache-2.0
-maturity: v1.15.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: PyPI 1.15.0 (2023-10); master carries 1.15.1 (tagged 2026-07), 4.3k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2025-06-03T21:42:03Z
+  pushed_at: 2026-07-04T13:05:35Z
   default_branch: master
-  default_branch_sha: 0a400e6c6c52cb7f4ba15ffaaa55b535d0d1b2b1
+  default_branch_sha: bf0cea87b50439e40a5c7b708d64da4195314a60
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:06:59Z
+  computed_at: 2026-09-28T10:11:27Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 80
+        last_commit_age_days: 86
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: asciimatics
         dependent_repos_count: 176
-        downloads_last_month: 106486
+        downloads_last_month: 97458
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4178
-        last_commit_age_days: 80
+        repo_age_days: 4184
+        last_commit_age_days: 86
         cohort: library
     governance:
       grade: B
@@ -73,7 +73,7 @@ health:
 
 # asciimatics
 
-一个跨平台的 Python 全屏文本 UI 库——一套类 curses 的 API，外加一层 widget/表单工具集和一个 ASCII 动画/特效引擎，在 Linux、macOS 和 Windows 上表现一致。
+你用来做全屏终端界面的标准库 `curses` 只能在 Unix 上跑，同一份代码在同事的 Windows 笔记本上根本起不来。asciimatics 把 curses 与 Windows 原生 console API 收进同一个 `Screen` API 后面，交互式表单、仪表盘、ASCII 动画都只写一份 Python，在 Linux、macOS、Windows 上表现一致。
 
 ![asciimatics — 健康度雷达](../../assets/health/asciimatics.zh.svg)
 
@@ -83,13 +83,35 @@ health:
 
 当你想要那层*好玩*的能力时，你也会选它：滚动横幅、精灵、粒子特效、生命游戏、场景间转场。asciimatics 最初就是个动画工具集（名字本身就是双关），所以如果你在做启动画面、复古 demo、ASCII 艺术开场或教学可视化，它的 `Effect`/`Scene`/`Renderer` 模型就是为此而生。无论你要的是严肃的数据录入屏，还是滚动片尾，用的都是同一个库。
 
+## 怎么用起来
+
+asciimatics 交给你一个 `Screen` 对象，底下按操作系统换引擎：Linux/macOS 上走 Python 的 `curses`，Windows 上直接走原生 console API（经 pywin32）——“一次编写、处处能跑”就来自这里。Screen 上面有两层。**特效层**是一个绘制循环：`Renderer` 把每一帧生成成 ASCII 画，`Effect` 让它动起来，`Scene` 把这些特效放到 Screen 上播——精灵、横幅、粒子都属于这层。**widget 层**才是表单所在地：你继承一个 `Frame`，加上 `Layout`（终端 resize 时它负责重排你的 widget），再把 `Button`/`TextBox`/`DropdownList` 挂上去；Frame 的事件循环把键鼠事件路由到当前聚焦的 widget。它替你做的：接管整屏、跨平台管道、重绘、resize 与非阻塞输入。仍归你的：回调背后的业务逻辑，以及在你实际投放的各个终端里测渲染——色彩深度和 unicode 宽度各家模拟器并不一致。入口是 `Screen.wrapper(demo)`：开屏、把 Screen 传进你的函数、退出时恢复终端。
+
+![asciimatics — 主干用户故事](../../assets/flow/asciimatics.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/asciimatics.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从 PyPI 装上库 — `pip install asciimatics`
+2. **你**：继承 Frame，加 Layout，把 widget 挂上去 — `layout2.add_widget(Button("Add", self._add), 0)`
+3. **asciimatics**：负责把 widget 排上屏，终端 resize 时自动重排 — 组件：`Frame + Layout`
+4. **你**：经 Screen 包装器启动事件循环 — `Screen.wrapper(demo, catch_interrupt=True, arguments=[last_scene])`
+5. **asciimatics**：同一个 Screen：内接 curses 与 Windows console — 组件：`Screen`
+
+**价值**：交互全屏表单在 Windows、macOS、Linux 上行为一致：不碰标准库 curses，也不用写第二套代码
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你只面向 Linux/macOS 且想要最大控制力。** 如果跨平台不是硬需求，原生 `curses` 或更底层的绑定没有额外依赖、控制更细——asciimatics 的抽象是一层你未必需要的便利层。
 - **你想要现代、响应式、样式丰富的 TUI 框架。** Textual（CSS 式样式、异步、鼠标优先 widget）或 `urwid` 面向更丰富的应用 UI；asciimatics 的 widget 集能用但偏简朴，API 风格也偏老。做大型应用前请先对比。
 - **你只想要漂亮的静态输出、表格、进度条或标记。** `rich` 更适合带样式的非全屏输出——asciimatics 会接管整个屏幕，给日志上色或画进度条属于杀鸡用牛刀。
-- **你只需要 ASCII 艺术字横幅或图片转 ASCII。** 用更聚焦的库（[art](art.zh.md) 做 figlet 风格文字，图片转 ASCII 用专门转换器）；asciimatics 是 UI/动画引擎，不是字体/艺术生成器。
-- **你在意单一维护者风险。** 开发主要由一位作者推动；对一个长期生产依赖来说，请权衡 bus-factor（见健康度）。[推断]
+- **你要的是拿来即印的横幅字符串，不是接管整屏。** asciimatics 能做 figlet 风格文字（`FigletText`）也能把图片转 ASCII，但它的 renderer 是把画面画到全屏 `Screen` 上，不会交给你一段可随处打印的字符串——要可打印的横幅请用 [art](art.zh.md) 或 `pyfiglet`；要独立的图片转 ASCII 请用 `jp2a`、[asciify](asciify.zh.md) 这类转换器。
+- **发布版落后 master 好几年。** PyPI 上最新是 1.15.0（2023-10）；master 此后又加了鼠标滚轮、字素簇 Unicode 处理和类型标注（1.15.1 已于 2026-07 打 tag，但截至 2026-09 未发 PyPI）。急着要修复就得从源码装——或者干脆改追 Textual 的发布节奏。
+- **路线图系于一人。** 过去 12 个月有 3 位活跃提交者，但头号贡献者约占六成的窗口提交——对长期生产依赖是集中的 bus-factor（见健康度）。要厂商背书就选 Textual。[推断]
 
 ## 横向对比
 
@@ -103,14 +125,14 @@ health:
 
 ## 技术栈
 
-- **语言：** 纯 Python（支持当前 CPython 版本；具体最低版本请对照仓库的 `setup`/`pyproject` 核实）。[未验证]
-- **核心抽象：** 一个 `Screen` 类封装各平台终端后端——Unix-like 上用 `curses`、Windows 上用原生 console API——对外呈现统一的跨平台界面。
+- **语言：** 纯 Python；master 的 `pyproject.toml` 声明 `requires-python >=3.8`，CI 分类器覆盖 3.9–3.11（1.15.0 的变更记录写明放弃 Python 2 后需要 3.9+）。
+- **核心抽象：** 一个 `Screen` 类封装各平台终端后端——Unix-like 上用 `curses`、Windows 上用原生 console API（pywin32）——对外呈现统一的跨平台界面。
 - **widget 层：** `Frame`、`Layout` 及各 widget（文本、列表、按钮等），其上叠加场景/特效模型。
-- **动画引擎：** `Scene` / `Effect` / `Renderer` 原语，用于精灵、粒子、转场和 ASCII 艺术渲染。
+- **动画引擎：** `Scene` / `Effect` / `Renderer` 原语，用于精灵、粒子、转场、figlet 文字与图片转 ASCII 渲染。
 
 ## 依赖
 
-- **运行时：** Python 加一小撮 pip 依赖（如某个 Windows console 绑定、`wcwidth` 之类）；`pip install asciimatics` 即可。确切依赖清单见打包元数据。[未验证]
+- **运行时：** Python 加四个 pip 依赖（master `pyproject.toml`）：`pyfiglet >=0.7.2`、`Pillow >=2.7.0`、`wcwidth >=0.5.0`，仅 Windows 另需 `pywin32 >=1.0`；`pip install asciimatics` 即可。
 - **平台：** 一个终端/控制台；Windows 上用原生 console API，而非要求 Unix 的 `curses`。
 - **无外部服务或数据存储**——它是进程内 UI 库。
 
@@ -120,17 +142,15 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2025-06；提交仍在持续但节奏不快。版本有打 tag（1.15.x 线）。读作**有维护但推进缓慢**，并非废弃——未归档。[推断]
-- **治理 / bus factor。** 单一维护者项目（Peter Brittain），托管在个人账号下，外加一条偶发贡献者的长尾；路线图很大程度取决于一个人。这是长期依赖的主要治理风险。[推断]
-- **年龄与 Lindy 判断。** 约 11 年（2015-04 创建）且仍在收到提交⇒ **强 Lindy** 信号：一个成熟稳定、早已定型的库，而非被炒作的新秀。[推断]
-- **采用度。** 约 4.3k star，作为 Python 跨平台 TUI/动画的首选库被广泛使用；文档完善、示例齐全。[未验证]
-- **风险标记。** Apache-2.0（宽松，未发现 relicense 历史）；现实风险在维护速度/bus-factor，而非许可。[推断]
+- **维护（2026-09 实测）。** 雷达 `maintenance: B`：master 在 2026-07-03/04 仍有提交——字素簇 Unicode 修复、鼠标滚轮支持、mypy 清理——但发布列车停摆：PyPI 最新是 1.15.0（2023-10-25），1.15.1 的 GitHub tag（2026-07）核查时仍未上 PyPI。读作**有人维护但发版滞后**，不是废弃，未归档。
+- **响应速度。** 雷达 `responsiveness: ?`（测量窗口内无信号）——别指望快速响应 issue，数据也没给出反面证据。
+- **治理 / bus factor。** 雷达 `governance: B`——12 个月窗口内 3 位活跃提交者，头号占约六成：单人主导（Peter Brittain）但不是独狼，无基金会背书。
+- **年龄与 Lindy 判断。** 约 11.5 年（2015-04 创建）且提交仍在落地 ⇒ **扎实的 Lindy** 信号，但被多年的 PyPI 空窗打折：库还活着，分发火车在慢速行驶。[推断]
+- **采用度（2026-09 实测）。** 4,302 star，PyPI 上月 97,458 次下载，约 176 个依赖仓库——在小众领域已站稳脚跟，但不再高增长。
+- **风险标记。** Apache-2.0，未发现 relicense 历史；现实风险是发布速度与集中的路线图，不是许可。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 4.3k GitHub star、1.15.x 发布线；star 数和版本号会漂移——仅供参考。
-- [未验证] 确切的 Python 最低版本和精确的运行时依赖清单由仓库打包元数据决定且随版本变化，这里不断言具体数值。
-- [推断] “有维护但推进缓慢”是从 2025-06 的最后 push 和不快的提交节奏推断，而非实测的发布频率数字。
-- [推断] 单一维护者/bus-factor 的判断是从贡献者分布和个人账号归属推断，而非来自某份治理文档。
-- [推断] Textual/urwid“更丰富”是对其特性集的概括，而非对 asciimatics 逐项功能审计。
+- [推断] GitHub 上打了 1.15.1 而 PyPI 上没有，暗示后续还会发版；但没有公开路线图，时间点纯属推测。
+- [推断] “单人主导、头号贡献者约六成”是 12 个月提交统计窗口，而非治理文档。
+- [未验证] Textual/urwid“更丰富”是对其特性集的概括，而非对 asciimatics 逐项功能审计。
