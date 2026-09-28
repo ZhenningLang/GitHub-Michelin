@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:03:40Z
+  computed_at: 2026-09-28T11:15:31Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -67,10 +67,13 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: BSD-3-Clause
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
+        license_basis: "registry:pypi.org/flower"
 ---
 
 # Flower
@@ -148,7 +151,7 @@ Flower 蹭的是 Celery 自带的遥测，而不是往你的 worker 里塞任何
 - **治理 / bus factor。** 归属一个**个人账号**（`mher`）且约 7.2k star——高 star 加单一所有者是一个 **bus-factor 风险标记**：贡献部分来自 Celery 维护者圈子（ask、auvipy），但命名空间与最终话语权落在一个人身上。[推断]
 - **年龄与 Lindy 判断。** 2012-07 创建（GitHub `created_at`），约 14 年且 **2026 年重新活跃**⇒ **强 Lindy** 信号，但要带一条提醒：它做 Celery 看板已逾十年，而 2023–2026 的发版空窗说明维护可能停摆。
 - **采用度。** 凡生产环境跑 Celery 处，它都是事实上的监控——约 7.2k star（2026-09）、每月 8,044,726 次 PyPI 下载和广泛拉取的 Docker 镜像表明真实使用面很广。
-- **风险标记。** 许可为 BSD-3-Clause（已从 LICENSE 文件确认，GitHub API 报 `NOASSERTION`），未发现 relicense 历史；主要标记是单一所有者治理，以及作为管理工具的安全暴露面。
+- **风险标记。** 许可为 BSD-3-Clause——雷达经注册表佐证判 A：LICENSE 正文只有单一 BSD-3 模板（GitHub 检测器因换行仍报 `NOASSERTION`），PyPI 元数据同称 BSD，且未发现 relicense 历史；主要标记是单一所有者治理，以及作为管理工具的安全暴露面。
 
 ## 存疑（未验证）
 

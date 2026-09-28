@@ -7,7 +7,7 @@ tags: [claude-code, multi-agent, orchestration, plugin, tmux, parallel-execution
 language: TypeScript
 license: MIT
 maturity: v5.5.0, very active, ~39.4k stars (as of 2026-09)
-last_verified: 2026-09-27
+last_verified: 2026-09-28
 type: framework
 upstream:
   pushed_at: 2026-09-27T13:39:12Z
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T17:17:07Z
+  computed_at: 2026-09-28T11:16:51Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -35,15 +35,24 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.8
-        qualifying_issues: 33
+        median_ttfr_hours: 0.9
+        qualifying_issues: 31
         band: default
         window_offset_days: 9
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: oh-my-claude-sisyphus
+        package_link: ecosystems_repository_url
+        dependent_repos_count: 0
+        downloads_last_month: 16726
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
@@ -65,8 +74,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # oh-my-claudecode
@@ -151,6 +158,7 @@ OMC turns your Claude Code session into a lead-plus-team runtime. `/team` (or `/
 - **Maintenance — very active (as of 2026-09).** Last push 2026-09-27, current release v5.5.0 (2026-09-22), 252 releases; not archived. Actively maintained, but the velocity is itself the churn flagged under "When NOT to use."
 - **Governance & bus factor — single lead with a small team, huge-star mismatch.** The README names one Creator & Lead (`Yeachan-Heo`) plus a handful of maintainers and top collaborators; radar measures ~79% of 12-month commits on the top contributor out of ~99 active in 12 months. A `User`-owned repo carrying ~39k stars is still a bus-factor flag for anything load-bearing. [推断]
 - **Age & Lindy — young, unproven.** Created 2026-01, ~8 months old (as of 2026-09). High activity but no track record; active-but-unproven, not Lindy-safe — longevity and single-lead continuity are undemonstrated.
+- **Adoption — measured, small but real.** The npm package publishes under a different name (`oh-my-claude-sisyphus`, linked back from the repo's own `package.json`): ~16.7k downloads/month (npm, trailing month, 2026-09-28), zero registry dependents — radar D.
 - **Risk flags — fast-moving surface + thin layer.** MIT-licensed, low relicense risk, but it's a thin, fast-evolving layer over Claude Code that has already broken naming (swarm→team) and removed provider MCP servers once; the native agent-teams feature it builds on is itself experimental.
 
 ## Caveats (unverified)

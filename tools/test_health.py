@@ -228,6 +228,53 @@ class HealthMechanismTest(unittest.TestCase):
         self.assertEqual(axis.reason, "registry_no_counts")
         self.assertNotIn("dependent_repos_count", axis.raw)
 
+    def test_skillpack_verified_sub_floor_package_is_not_na(self) -> None:
+        # "Copied, not installed" must not be claimed when a registry package of this
+        # repo verifiably exists but sits below the noise floor (qiushi-skill shape).
+        def dispatch(url, **kw):
+            if "packages/lookup" in url:
+                return (200, [])
+            if "/registries/npmjs.org/packages/demo" in url:
+                return (200, {"name": "demo", "downloads": 385,
+                              "dependent_repos_count": 0,
+                              "repository_url": "https://github.com/owner/demo"})
+            return (404, None)
+        with no_install_signals(), \
+                mock.patch("health._manifest_names", return_value=[]), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            axis = health.axis_adoption(FakeRepo("skill-pack"))
+        self.assertEqual(axis.grade, "?")
+        self.assertEqual(axis.reason, "install_channel_below_noise_floor")
+        self.assertEqual(axis.raw["canonical_package"], "demo")
+        self.assertEqual(axis.raw["downloads_last_month"], 385)
+
+    def test_skillpack_with_no_package_at_any_volume_stays_na(self) -> None:
+        with no_install_signals(), \
+                mock.patch("health._manifest_names", return_value=[]), \
+                mock.patch("health.http_get_json", return_value=(200, [])):
+            axis = health.axis_adoption(FakeRepo("skill-pack"))
+        self.assertEqual(axis.grade, "N/A")
+        self.assertEqual(axis.reason, "no_install_channel")
+
+    def test_manifest_declared_package_name_supplies_adoption(self) -> None:
+        # `oh-my-claudecode` publishes as `oh-my-claude-sisyphus`: name variants miss,
+        # the repo's own package.json names it, and the registry record links back.
+        def dispatch(url, **kw):
+            if "packages/lookup" in url:
+                return (200, [])
+            if "/registries/npmjs.org/packages/branded-pkg" in url:
+                return (200, {"name": "branded-pkg", "downloads": 16726,
+                              "dependent_repos_count": 0,
+                              "repository_url": "https://github.com/owner/demo"})
+            return (404, None)
+        with no_install_signals(), \
+                mock.patch("health._manifest_names", return_value=["branded-pkg"]), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            axis = health.axis_adoption(FakeRepo("framework"))
+        self.assertEqual(axis.grade, "D")
+        self.assertEqual(axis.raw["canonical_package"], "branded-pkg")
+        self.assertEqual(axis.raw["package_link"], "ecosystems_repository_url")
+
     def test_downloads_are_tiered_even_on_an_unlisted_registry(self) -> None:
         # selenium reported 345,857,423 downloads/month on gem.coop, which had no anchor
         # row; the figure was dropped and the page scored E off dependents alone.
@@ -287,6 +334,64 @@ class HealthMechanismTest(unittest.TestCase):
 
         self.assertEqual(axis.grade, "?")
         self.assertEqual(axis.reason, "license_unparsed")
+
+    # --- NOASSERTION: single permissive template + registry corroboration (rubric §2.6) ---
+
+    BSD_WITH_WRAP = (
+        "Copyright (c) 2012 Someone and individual contributors.\nAll rights reserved.\n\n"
+        "Redistribution and use in source and binary forms, with or without \n"
+        "modification, are permitted provided that the following conditions are met:\n"
+        "    * Redistributions of source code must retain the above copyright\n"
+        "      notice.\n"
+        "    * Neither the name of the copyright holder nor the names of its contributors\n"
+        "      may be used to endorse or promote products.\n\n"
+        'THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"\n'
+    )
+    CELERY_STYLE = BSD_WITH_WRAP + (
+        "\nCelery is licensed under The BSD License (3 Clause). It is GPL-compatible(1).\n\n"
+        "Documentation License\n=====================\nThe documentation portion is supplied "
+        "under the \"Creative Commons Attribution-ShareAlike 4.0 International\" license.\n\n"
+        "Footnotes\n=========\n(1) A GPL-compatible license does not mean we distribute "
+        "Celery under the GPL.\n"
+    )
+
+    def _registry_record(self, licenses):
+        def dispatch(url, **kw):
+            if "/registries/" in url and "/packages/" in url:
+                return (200, {"name": "demo", "licenses": licenses,
+                              "repository_url": "https://github.com/owner/demo",
+                              "downloads": 10, "dependent_repos_count": 0})
+            return (404, None)
+        return dispatch
+
+    def test_noassertion_wrapped_bsd_blob_with_registry_corroboration_grades_a(self) -> None:
+        repo = FakeRepo("tool")
+        with mock.patch("health._fetch_license_blob", return_value=self.BSD_WITH_WRAP), \
+                mock.patch("health.http_get_json", side_effect=self._registry_record("BSD-3-Clause")), \
+                mock.patch("health._detect_relicense", return_value=False):
+            axis = health._risk_noassertion(repo, "LICENSE")
+        self.assertEqual(axis.grade, "A")
+        self.assertEqual(axis.raw["spdx_id"], "BSD-3-Clause")
+        self.assertEqual(axis.raw["license_basis"], "registry:pypi.org/demo")
+
+    def test_noassertion_bsd_blob_with_docs_addendum_records_content_license(self) -> None:
+        repo = FakeRepo("tool")
+        with mock.patch("health._fetch_license_blob", return_value=self.CELERY_STYLE), \
+                mock.patch("health.http_get_json", side_effect=self._registry_record("BSD-3-Clause")), \
+                mock.patch("health._detect_relicense", return_value=False):
+            axis = health._risk_noassertion(repo, "LICENSE")
+        self.assertEqual(axis.grade, "A")
+        self.assertEqual(axis.raw["content_license"], "CC-BY-SA-4.0")
+
+    def test_noassertion_blob_without_registry_corroboration_stays_unknown(self) -> None:
+        repo = FakeRepo("tool")
+        with mock.patch("health._fetch_license_blob", return_value=self.BSD_WITH_WRAP), \
+                mock.patch("health.http_get_json", side_effect=self._registry_record("MIT")), \
+                mock.patch("health._detect_relicense", return_value=False):
+            axis = health._risk_noassertion(repo, "LICENSE")
+        self.assertEqual(axis.grade, "?")
+        self.assertEqual(axis.reason, "license_unparsed")
+        self.assertIn("no verified registry listing corroborates", axis.evidence)
 
     def test_permissiveness_scores_lgpl_library_condition_as_weak_copyleft(self) -> None:
         conditions = ["disclose-source", "same-license--library", "state-changes"]

@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:02:44Z
+  computed_at: 2026-09-28T11:14:43Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -50,27 +50,30 @@ health:
         downloads_last_month: 42357772
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
         repo_age_days: 6366
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 28
-        top1_share: 0.653
-        top3_share: 0.782
+        top1_share: 0.652
+        top3_share: 0.781
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: BSD-3-Clause
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: CC-BY-SA-4.0
+        license_basis: "registry:pypi.org/celery"
 ---
 
 # Celery
@@ -152,7 +155,7 @@ Celery 把「跑什么」和「何时跑」拆开：你把 Python 函数挂到�
 - **治理 / bus factor。** 由 `celery` 这个 GitHub **组织**持有，多年来有广泛的贡献者群体，而非单一作者——社区/志愿者维护，非基金会治理，但资金已不再为零：README 指向 Open Collective 赞助、Tidelift 订阅，以及「Celery now powered by Blacksmith」的赞助公告（2026-09）。持续的维护者带宽仍是要盯的点。[推断：Blacksmith 背书对路线图的实际约束力未见公开说明]
 - **年龄与 Lindy 判断。** **2009-04 创建**（GitHub `created_at`，2026-09）且**仍在活跃维护**⇒ **极强 Lindy** 信号——它是任何语言里最长寿、最久经实战的任务队列之一，是无聊但被验证过的默认选项，而非被炒作的新秀。[推断]
 - **采用度与生态。** 在 Python 里无处不在：Django/Flask/FastAPI 技术栈的默认后台作业框架，真实部署基数巨大，文档成熟，broker 支持一等，生态完整（Flower、django-celery-beat/results、各种集成）。约 28.9k star（2026-09）与每月 42,357,772 次 PyPI 下载是广泛采用的佐证。
-- **风险标记。** 无 relicense 历史——全程 **BSD-3-Clause** 宽松许可；主要风险是上文那套运维复杂度 / 可调试性，外加依赖社区维护而非有资金的背书方。[推断]
+- **风险标记。** 无 relicense 历史——全程 **BSD-3-Clause** 宽松许可，且已由机器佐证：LICENSE 正文只有单一 BSD-3 模板、`docs/` 目录另挂 CC BY-SA 4.0 附节，PyPI 元数据同宣称（雷达 risk_license A，`license_basis: registry`）；主要风险是上文那套运维复杂度 / 可调试性，外加依赖社区维护而非有资金的背书方。[推断]
 
 ## 存疑（未验证）
 

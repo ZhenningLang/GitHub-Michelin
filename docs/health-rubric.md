@@ -271,7 +271,14 @@ default anchor row; an approximate tier beats throwing the measurement away.
 
 **When ecosyste.ms's `repository_url` is empty, ask the registry itself (2026-09).** The field is a scrape of the registry, and the scrape misses links the registry holds: PyPI's `harnessrouter` lists its repo as `Source`, ecosyste.ms has `""`. So an empty field — and only an empty one — sends the check to the registry's own metadata (npm `repository`/`homepage`/`bugs`, PyPI `project_urls`/`home_page`, crates `repository`/`homepage`, RubyGems `source_code_uri`/`homepage_uri`, Packagist `repository`). npm packages often carry none of those (`claude-code-templates`, 10k/month, sat at `ambiguous` for this reason), so npm also accepts the tarball's `gitHead` **when that commit is on the repo's default branch** — "exists in the repo" is not enough, because GitHub serves every commit of the fork network through the parent's API, and a stranger's fork that published under the same name would pass. A name match with no link is still rejected, and a field that names a *different* repo is a rejection that the registry never overrules. How the hit was tied to the repo is recorded as `raw.package_link` (`ecosystems_repository_url`, `<registry>_metadata`, `<registry>_git_head`).
 
-*Not done:* taking package names from the repo's own manifest (`bilingual_book_maker` ships as `bbook-maker`). A manifest only says what the repo *calls* its package, not that the registry's package of that name came from it — an unpublished or `private` name can belong to a stranger on the registry — and the offline lint gate (`check_adoption_evidence`) rejects a `canonical_package` that matches neither repo name nor owner scope. Doing it needs a registry-side link for the manifest name *and* a lint gate that can verify that link offline.
+*Now done:* taking package names from the repo's own root manifests (`bilingual_book_maker` ships
+as `bbook-maker`, `oh-my-claudecode` as `oh-my-claude-sisyphus`). A manifest only says what the
+repo *calls* its package, so it is treated as a candidate list only: every manifest-named package
+is adopted solely when the registry record's repository link resolves back to this repo through
+`_resolves_to` — the same verification every by-name hit passes. The offline lint gate
+(`check_adoption_evidence`) accepts a `canonical_package` that matches neither repo name nor owner
+scope only when the block records the link evidence in `package_link`, which the scorer writes
+only after that check.
 
 **Transport failures are retried.** A blip on the lookup is otherwise indistinguishable from "no package exists", and `registry_lookup_failed` then masquerades as missing adoption data. Observed live before the retry existed: playwright (323M monthly npm downloads), material-ui, chakra-ui and radix-ui all carried `?` on this axis.
 
@@ -404,7 +411,12 @@ For adoption, `N/A` (reason `no_install_channel`) applies only to `skill-pack`, 
 every instrument above has been tried and returned nothing**: a skill-pack is copied into a
 directory rather than installed, so where it also publishes no downloadable bundle there is no
 install event anywhere to count. Conceding `N/A` by type alone would have been wrong — 18 of this
-index's 84 skill-packs publish release bundles with real download counts.
+index's 84 skill-packs publish release bundles with real download counts. The claim "no install
+channel exists" now has to survive one more probe: a registry package under the repo's name or
+its own manifest name, linked back to the repo, is found at *any* volume (the noise floor is
+lifted for this question only — it exists to stop name collisions from supplying grades, not to
+license a false "no channel" premise). A verified sub-floor package yields `?`
+(`install_channel_below_noise_floor`) with the count named in the evidence, not `N/A`.
 
 `app`, `service`, `tool` and the rest never go `N/A` on this axis: they *can* be adopted measurably,
 so failing to find the number is our gap, not a statement that the question does not apply.
@@ -413,8 +425,9 @@ so failing to find the number is our gap, not a statement that the question does
 - `no_package_structural` — `type ∈ {app, skill-pack, service, model}` AND `packages/lookup` returns zero entries clearing the noise filter AND GitHub "Used by" empty/unavailable. (model weights on HF Hub → `?` unless a pip/npm wrapper exists, in which case score the wrapper.)
 - `registry_lookup_failed` — packages.ecosyste.ms lookup transport or HTTP/API failure; this is a tool/data-source failure, not evidence of zero adoption.
 - `registry_no_counts` — a canonical package exists, but comparable dependency/download counts are unavailable. Maven/Go commonly hit this, but the condition is data-shape based rather than registry-name-only. If dependents ARE present → score from dependents, not `?`.
-- `ambiguous` — multiple plausible canonical packages, none clears the noise filter, and the by-name secondary lookup (above) also found nothing.
+- `ambiguous` — multiple plausible canonical packages, none clears the noise filter, and the by-name secondary lookup (above, including the repo's own manifest names) also found nothing.
 - `no_install_channel` — **grade `N/A`, not `?`**: a `skill-pack` with no package and no install signal of any kind. See §2.3c.
+- `install_channel_below_noise_floor` — a `skill-pack` whose registry package exists and links back to the repo, but carries fewer than 1,000 monthly downloads and no dependents: the channel is real, the volume is below anything gradable. The count lives in the axis evidence and the page prose. Not `N/A` — "no install event exists" would be false.
 - **A `tool`/`library` with a successful empty lookup is NOT `?`** — if packages.ecosyste.ms responds successfully and no canonical package clears the noise filter, score **E** (measurably unadopted) or manual-flag. Transport / HTTP / API failures are `registry_lookup_failed` (`?`), not evidence of zero adoption. Archived repos keep their last computed tier with an `archived` flag, not `?`.
 
 **Data source / exact calls**
@@ -574,7 +587,7 @@ Mixed/dual: `A OR B` → more permissive of the OR; `A AND B` → more restricti
 
 **`?` rule** (split detection-failed from assessed-bad by reading the LICENSE blob)
 - `repo_unreachable` — `gh api .../license` 404s on the **repo** itself (not just the license).
-- `license_unparsed` — `spdx_id == NOASSERTION` but the LICENSE blob textually matches a real OSI license GitHub merely failed to detect → `?` + a `caveats` bullet for human review. (If the blob matches SSPL/BSL/EULA → **E**, not `?`.)
+- `license_unparsed` — `spdx_id == NOASSERTION` and the LICENSE blob is not confirmable. The blob is matched on whitespace-collapsed text (wrapped template lines once caused false "inconclusive" verdicts). **Registry corroboration:** if exactly ONE permissive template (MIT/Apache-2.0/BSD-3) matches, no second code-license marker appears anywhere in the file, and the project's own registry listing — verified to link back to this repo — declares the same license family, the axis is graded **A** with `license_basis: registry:<host>/<pkg>` and any `docs`-section Creative Commons/GFDL addendum recorded as `content_license` (celery). Anything composite, dual-templated, or uncorroborated stays `?` + a `caveats` bullet for human review. (If the blob matches SSPL/BSL/EULA → **E**, not `?`.)
 - **A 404 from `/license` is not evidence of "no license."** GitHub's endpoint 404s whenever its
   detector declines to classify, which includes a real license in a place it does not look.
   `apache/poi` keeps Apache-2.0 at `legal/LICENSE`, and the old `404 ⇒ NONE ⇒ E` shortcut therefore

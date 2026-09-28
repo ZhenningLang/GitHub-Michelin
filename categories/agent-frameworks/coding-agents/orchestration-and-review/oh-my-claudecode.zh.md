@@ -7,7 +7,7 @@ tags: [claude-code, multi-agent, orchestration, plugin, tmux, parallel-execution
 language: TypeScript
 license: MIT
 maturity: v5.5.0, very active, ~39.4k stars (as of 2026-09)
-last_verified: 2026-09-27
+last_verified: 2026-09-28
 type: framework
 upstream:
   pushed_at: 2026-09-27T13:39:12Z
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T17:17:07Z
+  computed_at: 2026-09-28T11:16:51Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 2.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -35,15 +35,24 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.8
-        qualifying_issues: 33
+        median_ttfr_hours: 0.9
+        qualifying_issues: 31
         band: default
         window_offset_days: 9
         source: issue
         inferred: false
     adoption:
-      grade: "?"
-      raw: {}
+      grade: D
+      raw:
+        registry: npmjs.org
+        canonical_package: oh-my-claude-sisyphus
+        package_link: ecosystems_repository_url
+        dependent_repos_count: 0
+        downloads_last_month: 16726
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
+        tier_source: registry
     longevity:
       grade: D
       raw:
@@ -65,8 +74,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    adoption: { reason: ambiguous }
 ---
 
 # oh-my-claudecode
@@ -151,6 +158,7 @@ OMC 把你的 Claude Code 会话变成「领队 + 团队」运行时。`/team`�
 - **维护——非常活跃（截至 2026-09）。** 最后推送 2026-09-27，当前发布 v5.5.0（2026-09-22），共 252 次发布；未归档。在被积极维护，但这份速度本身就是「何时不用」里点到的 churn。
 - **治理与 bus factor——单一领队带小团队 + 巨量 star 错位。** README 列名一位 Creator & Lead（`Yeachan-Heo`）与少量维护者 / 头号协作者；雷达测得 12 个月约 99 名活跃贡献者中 79% 的提交集中在头号贡献者身上。一个 `User` 持有的仓库背着约 39k star，对承重场景仍是 bus-factor 信号。[推断]
 - **年龄与 Lindy——年轻、未经证明。** 2026-01 创建，约 8 个月（截至 2026-09）。活跃度高但无历史沉淀；活跃但未经证明，不是 Lindy 意义上的安全押注——寿命与单领队连续性都未被证明。
+- **采用度 — 有实测但量小。** npm 包以另一个名字发布（`oh-my-claude-sisyphus`，经仓库自身 `package.json` 回链核实）：每月约 1.67 万次下载（npm 统计月，2026-09-28），注册表零依赖方——雷达 D。
 - **风险信号——快速变动的表面 + 薄层。** MIT 许可、重许可风险低，但它是对 Claude Code 的薄且快变的层：命名已破过一次契约（swarm→team）、provider MCP server 删过一轮；它所依托的原生 agent-teams 能力自己还在实验开关后面。
 
 ## 存疑（未验证）

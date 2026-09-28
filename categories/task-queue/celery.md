@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:02:44Z
+  computed_at: 2026-09-28T11:14:43Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -50,27 +50,30 @@ health:
         downloads_last_month: 42357772
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
         repo_age_days: 6366
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 28
-        top1_share: 0.653
-        top3_share: 0.782
+        top1_share: 0.652
+        top3_share: 0.781
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: BSD-3-Clause
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: CC-BY-SA-4.0
+        license_basis: "registry:pypi.org/celery"
 ---
 
 # Celery
@@ -152,7 +155,7 @@ Celery splits "what to run" from "when to run it". You attach Python functions t
 - **Governance / bus factor.** Owned by the `celery` GitHub **organization** with a broad contributor base over many years rather than a single author — community/volunteer-maintained, not foundation-governed, but funding is no longer zero: the README points to Open Collective sponsors, a Tidelift subscription, and a "Celery now powered by Blacksmith" sponsorship announcement (2026-09). Sustained maintainer bandwidth remains the thing to watch. [推断：Blacksmith 背书对路线图的实际约束力未见公开说明]
 - **Age & Lindy verdict.** Created **2009-04** (GitHub `created_at`, 2026-09) and **still actively maintained** ⇒ a **very strong Lindy** signal — one of the longest-lived, most battle-tested task queues in any language, the boring proven default rather than a hyped newcomer. [推断]
 - **Adoption & ecosystem.** Ubiquitous in Python: the default background-job framework for Django/Flask/FastAPI stacks, huge real-world deployment base, mature docs, first-class broker support, and an ecosystem (Flower, django-celery-beat/results, integrations). ~28.9k stars (2026-09) and 42,357,772 monthly PyPI downloads are indicative of broad adoption.
-- **Risk flags.** No relicense history — **BSD-3-Clause** permissive throughout; main risk is the operational complexity / debuggability discussed above, plus reliance on community maintenance rather than a funded backer. [推断]
+- **Risk flags.** No relicense history — **BSD-3-Clause** permissive throughout, now machine-confirmed: the LICENSE body is a single BSD-3 text with a Creative Commons BY-SA 4.0 addendum for `docs/` only, and PyPI metadata corroborates (radar risk_license A, `license_basis: registry`). Main risk is the operational complexity / debuggability discussed above, plus reliance on community maintenance rather than a funded backer. [推断]
 
 ## Caveats (unverified)
 
