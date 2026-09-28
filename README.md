@@ -238,6 +238,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | Apache-2.0 | A (6/6) | [EN](categories/agent-memory/cognee.md) · [中](categories/agent-memory/cognee.zh.md) |
 | **OpenViking** | Use it when several coding agents or a team must share one context store holding both your documents and their long-term memory, and you can run a server — but the main project is AGPL-3.0 and the repo self-labels alpha. | AGPL-3.0 | B (6/6) | [EN](categories/agent-memory/openviking.md) · [中](categories/agent-memory/openviking.zh.md) |
 | **SimpleMem** | Use it when your LLM agent must recall long-horizon dialogues without replaying raw history — write-time compression with published LoCoMo numbers, but a young academic repo, a stale PyPI package, and audio/video support that is not benchmark-validated. | MIT | B (5/6) | [EN](categories/agent-memory/simplemem.md) · [中](categories/agent-memory/simplemem.zh.md) |
+| **Beacon** | Use it when agent knowledge is trapped per-harness — you want one local trace of every coding session and review-gated lessons any harness can load. | MIT | B (6/6) | [EN](categories/agent-memory/agent-beacon.md) · [中](categories/agent-memory/agent-beacon.zh.md) |
 
 ### deep-research
 

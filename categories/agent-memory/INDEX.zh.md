@@ -19,6 +19,7 @@
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A（6/6） | [→](cognee.zh.md) |
 | **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
 | **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | B（5/6） | [→](simplemem.zh.md) |
+| **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | B（6/6） | [→](agent-beacon.zh.md) |
 
 
 ## 对比矩阵
@@ -35,6 +36,7 @@
 | [Cognee](cognee.zh.md) | ✅ | A（6/6） | 自托管的知识图谱记忆引擎，面向文档形态的 agent 记忆；比文件或 SQLite 存储更重。 |
 | [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
 | [SimpleMem](simplemem.zh.md) | ✅ | B（5/6） | 写入时压缩的记忆库，带 LoCoMo 公开证据；PyPI 冻在 0.1.0（只能源码安装）、存储 bug 未修、音视频支持无基准。 |
+| [Beacon](agent-beacon.zh.md) | ✅ | B（6/6） | 跨工具会话采集加人工审核的经验沉淀；仓库年轻、厂商驱动、带托管商业层。 |
 
 ## 什么该放这里
 

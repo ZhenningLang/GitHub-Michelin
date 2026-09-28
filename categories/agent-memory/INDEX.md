@@ -19,6 +19,7 @@
 | **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A (6/6) | [→](cognee.md) |
 | **OpenViking** | Use it when several coding agents or a team must share one context store holding both your documents and their long-term memory, and you can run a server — but the main project is AGPL-3.0 and the repo self-labels alpha. | B (6/6) | [→](openviking.md) |
 | **SimpleMem** | Use it when your LLM agent must recall long-horizon dialogues without replaying raw history — write-time compression with published LoCoMo numbers, but a young academic repo, a stale PyPI package, and audio/video support that is not benchmark-validated. | B (5/6) | [→](simplemem.md) |
+| **Beacon** | Use it when agent knowledge is trapped per-harness — you want one local trace of every coding session and review-gated lessons any harness can load. | B (6/6) | [→](agent-beacon.md) |
 
 
 ## Comparison matrix
@@ -35,6 +36,7 @@
 | [Cognee](cognee.md) | ✅ | A (6/6) | Self-hosted knowledge-graph memory engine for document-shaped agent memory; heavier to run than a file or SQLite store. |
 | [OpenViking](openviking.md) | ✅ | B (6/6) | Self-hosted context database that unifies document RAG and session memory behind one `viking://` tree with per-user isolation; costs a server, two model dependencies and AGPL-3.0. |
 | [SimpleMem](simplemem.md) | ✅ | B (5/6) | Write-time compression memory library with published LoCoMo evidence; PyPI frozen at 0.1.0 (source-only install), open storage bugs, audio/video support unbenchmarked. |
+| [Beacon](agent-beacon.md) | ✅ | B (6/6) | Cross-harness session capture with human-approved lessons; young vendor-backed repo with a hosted funnel. |
 
 ## What belongs here
 

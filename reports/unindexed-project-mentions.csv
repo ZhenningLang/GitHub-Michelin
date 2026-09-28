@@ -114,6 +114,7 @@ AWS official MCP servers (standalone),categories/agent-skills/vendor-collections
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
+Basic Memory,categories/agent-memory/agent-beacon.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Bazarr,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/engineering/scientific-agent-skills.md,,no
