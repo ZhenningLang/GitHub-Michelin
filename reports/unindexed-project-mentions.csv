@@ -662,6 +662,7 @@ OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md
 OpenSplat,categories/3d-reconstruction/spirula-studio.md,,no
 OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
 OpenTimelineIO,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
+OptMem-Split (fork),categories/agent-memory/coding-agent-memory/optmem.md,,no
 Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no
 OS-level logrotate / cron,categories/workflow-orchestration/airflow-maintenance-dags.md,,no
 osint.industries,categories/osint/ghunt.md,,no

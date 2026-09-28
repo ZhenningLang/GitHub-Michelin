@@ -253,6 +253,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | MIT | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/agent-beacon.md) · [中](categories/agent-memory/coding-agent-memory/agent-beacon.zh.md) |
 | **Engram** | 当你同时用好几个编码 agent、想让它们共用一份由 agent 自己通过 MCP 写入和检索的本地记忆时用它——一个 Go 程序加一个 SQLite 文件，关键词搜索，不做后台采集。 | MIT | B（5/6） | [中](categories/agent-memory/coding-agent-memory/engram.zh.md) · [EN](categories/agent-memory/coding-agent-memory/engram.md) |
 | **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/backpass.zh.md) · [EN](categories/agent-memory/coding-agent-memory/backpass.md) |
+| **OptMem** | 当你想要零活动部件的编码 agent 记忆——一段贴进去的提示块、一个零依赖的 Python 脚本、一份由 agent 自己经营的只追加日志——且能接受自愿捕获、仅正则的检索和没有许可证时用它。 | NONE (no LICENSE file — all rights reserved) | D（5/6） | [中](categories/agent-memory/coding-agent-memory/optmem.zh.md) · [EN](categories/agent-memory/coding-agent-memory/optmem.md) |
 
 ### deep-research
 

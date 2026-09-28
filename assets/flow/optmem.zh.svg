@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="847" viewBox="0 0 880 847" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="847" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="711" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="711" rx="10"/>
+<rect class="pillT" x="474" y="40" width="123.6" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OptMem 做的</text>
+<path class="hand" d="M408,118.0 C439.0,118.0 439.0,142 470,142" marker-end="url(#a)"/>
+<path class="hand" d="M472,175.0 C441.0,175.0 441.0,214 410,214" marker-end="url(#a)"/>
+<path class="edge" d="M62,279 L62,303" marker-end="url(#a)"/>
+<path class="edge" d="M62,420 L62,444" marker-end="url(#a)"/>
+<path class="hand" d="M408,491.0 C439.0,491.0 439.0,515 470,515" marker-end="url(#a)"/>
+<path class="edge" d="M494,606 L494,630" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">安装</text>
+<text class="t" x="82" y="118">运行一行安装脚本，它会打印出记忆提示块</text>
+<text class="comp" x="82" y="146">组件：install.sh</text>
+<rect class="cardT" x="472" y="118" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="118" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="142" r="10"/>
+<text class="num" x="494" y="146" text-anchor="middle">2</text>
+<text class="ph" x="514" y="147">安装</text>
+<text class="t" x="514" y="164">把零依赖的单文件工具放到 ~/.optmem/memo，</text>
+<text class="t" x="514" y="186">建好存储</text>
+<text class="comp" x="514" y="214">组件：memo 脚本</text>
+<rect class="card" x="40" y="190" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="190" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="214" r="10"/>
+<text class="num" x="62" y="218" text-anchor="middle">3</text>
+<text class="ph" x="82" y="219">安装</text>
+<text class="t" x="82" y="236">把打印出的块粘贴到 agent 的</text>
+<text class="t" x="82" y="258">AGENTS.md／CLAUDE.md 顶部</text>
+<rect class="card" x="40" y="305" width="368" height="115" rx="8"/>
+<rect class="accY" x="40" y="305" width="4" height="115" rx="2"/>
+<circle class="accY" cx="62" cy="329" r="10"/>
+<text class="num" x="62" y="333" text-anchor="middle">4</text>
+<text class="ph" x="82" y="334">每个会话</text>
+<text class="t" x="82" y="351">每个会话，agent 先读记忆再做任何事</text>
+<text class="c" x="82" y="375">memo wake</text>
+<text class="comp" x="82" y="398">组件：提示块</text>
+<rect class="card" x="40" y="446" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="446" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="470" r="10"/>
+<text class="num" x="62" y="474" text-anchor="middle">5</text>
+<text class="ph" x="82" y="475">每个会话</text>
+<text class="t" x="82" y="492">agent 每学到值得留下的事，就记一行</text>
+<text class="c" x="82" y="516">memo note &quot;...&quot;</text>
+<rect class="cardT" x="472" y="491" width="368" height="115" rx="8"/>
+<rect class="accT" x="472" y="491" width="4" height="115" rx="2"/>
+<circle class="accT" cx="494" cy="515" r="10"/>
+<text class="num" x="494" y="519" text-anchor="middle">6</text>
+<text class="ph" x="514" y="520">每个会话</text>
+<text class="t" x="514" y="537">把定长记录追加进日志；合并到期时提出来</text>
+<text class="c" x="514" y="561">memo nap</text>
+<text class="comp" x="514" y="584">组件：memo</text>
+<rect class="cardT" x="472" y="632" width="368" height="89" rx="8"/>
+<rect class="accT" x="472" y="632" width="4" height="89" rx="2"/>
+<circle class="accT" cx="494" cy="656" r="10"/>
+<text class="num" x="494" y="660" text-anchor="middle">7</text>
+<text class="ph" x="514" y="661">每个会话</text>
+<text class="t" x="514" y="678">下一次 wake 在预算内打印重建的摘要树</text>
+<text class="t" x="514" y="700">和最新记忆</text>
+<rect class="val" x="28" y="753" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="777">价值</text>
+<text class="valT" x="48" y="801">以后每个会话——无论换什么模型、什么 harness——都知道之前定过什么、试过什么</text>
+</svg>
