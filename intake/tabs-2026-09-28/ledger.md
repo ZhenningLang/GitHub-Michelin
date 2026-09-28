@@ -7,7 +7,7 @@
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | agegr/pi-web | add | done | categories/agent-tooling/supervision-surfaces/pi-web.md |  | agegr/pi-web |
-| aiming-lab/SimpleMem | add | running |  |  | aiming-lab/simplemem |
+| aiming-lab/SimpleMem | add | done | categories/agent-memory/simplemem.md |  | aiming-lab/simplemem |
 | alexgreensh/token-optimizer | add | running |  |  | alexgreensh/token-optimizer |
 | ant-research/AntSpeaker | add | pending |  |  | ant-research/antspeaker |
 | Armur-Ai/Pentest-Swarm-AI | add | pending |  |  | armur-ai/pentest-swarm-ai |
