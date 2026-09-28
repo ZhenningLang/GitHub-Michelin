@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Supermemory does", "zh": "Supermemory 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK and point it at the API", "zh": "安装 SDK，指向它的 API", "code": "npm install supermemory · pip install supermemory", "component": {"en": "first-party SDK", "zh": "官方 SDK"}},
+    {"lane": "you", "en": "Push the raw conversation turn, tagged per user", "zh": "把原始对话轮次推给它，按用户打标签", "code": "client.add({ content: \"...\", containerTag: \"user_123\" })"},
+    {"lane": "them", "en": "Extracts facts, resolves contradictions, expires temporary ones", "zh": "抽取事实、消解矛盾、让过期信息自动失效", "component": {"en": "memory engine", "zh": "记忆引擎"}},
+    {"lane": "them", "en": "Keeps a static + dynamic profile per user, always fresh", "zh": "为每个用户维护静态＋动态画像，持续更新", "component": {"en": "user profiles", "zh": "用户画像"}},
+    {"lane": "you", "en": "Before the next reply, fetch profile + relevant context", "zh": "下次回复前，一次取回画像＋相关记忆", "code": "client.profile({ containerTag: \"user_123\", q: \"...\" })"},
+    {"lane": "them", "en": "Returns profile facts and hybrid-search memories in one call", "zh": "一次调用返回画像事实与混合检索记忆", "component": {"en": "hybrid search", "zh": "混合检索"}}
+  ],
+  "value": {"en": "Your agent knows who it is talking to from the first sentence — no vector DB, embedding pipeline, or chunking strategy to operate", "zh": "agent 第一句话就知道对面是谁——你不必运维向量库、embedding 管线或分块策略"},
+  "sources": [
+    "README.md main @ 2026-09 (retrieved 2026-09-28) 'Build with Supermemory (API)' Install: `npm install supermemory    # or: pip install supermemory`; Quickstart: `client.add({ content: \"User loves TypeScript...\", containerTag: \"user_123\" })` and `client.profile({ containerTag: \"user_123\", q: \"...\" })` returning { profile, searchResults }",
+    "README.md 'How memory works under the hood': memory engine extracts facts / tracks updates / resolves contradictions / auto-forgets; hybrid search = RAG + Memory in one query; user profiles static + dynamic",
+    "apps/docs/self-hosting/overview.mdx @ 2026-09-28: same API against local server via baseURL http://localhost:6767"
+  ]
+}

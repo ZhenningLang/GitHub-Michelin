@@ -561,6 +561,7 @@ MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
 MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no
 Megatron-LM,categories/llm-training/colossalai.md,,no
 Memgraph,categories/rag-retrieval/structured-retrieval/falkordb.md,,no
+Memobase (memodb-io/memobase),categories/agent-memory/app-memory/supermemory.md,,no
 memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
 Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
 mergiraf,categories/agent-tooling/concurrent-editing/weave.md,,no
