@@ -8,12 +8,14 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **TanStack Charts** | Your stock chart components cannot draw the custom layer design wants, and the same chart must render in more than one framework and on the server — one typed mark-and-scale definition with SVG SSR, focus and optional Canvas; Alpha 0.x, two months old. | B (6/6) | [→](tanstack-charts.md) |
+| **TanStack React Charts** | You must keep an existing `react-charts` line/bar/area chart integration running in a React DOM app until you migrate — series arrays plus `getValue` axis accessors, D3-computed SVG with Voronoi hover; archived 2025, v3 never left beta, do not start new charts on it. | D (5/6) | [→](tanstack-react-charts.md) |
 
 ## Comparison matrix
 
 | Project | Model | Output | Frameworks | Pick it over the rest when | License |
 | --- | --- | --- | --- | --- | --- |
 | TanStack Charts | grammar of graphics (marks, channels, scales), custom marks via a scene protocol | SVG (default), Canvas (opt-in), static SVG on the server | React, Preact, Vue, Solid, Svelte, Angular, Lit, Alpine, Octane, React Native (experimental), vanilla DOM | one definition must serve several frameworks and SSR and grow into custom marks — and you can pin an Alpha version | MIT |
+| TanStack React Charts | series arrays + primary/secondary axis accessors; line, area, bar, bubble only | SVG (browser-measured; SSR only as fixed fallback size) | React DOM only | you are maintaining existing charts built on it and cannot migrate yet — archived, no fixes | MIT |
 
 ## What belongs here
 

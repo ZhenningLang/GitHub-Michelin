@@ -653,6 +653,7 @@ Nextcloud (richdocuments),categories/office-editors/collabora-online.md,,no
 Nextcloud Photos,categories/document-management/immich.md,,no
 NGINX `client_body_*` buffering + app handling,categories/nginx-modules/nginx-upload-module.md,,no
 nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
+nivo (`plouc/nivo`),categories/web-ui/charts/tanstack-react-charts.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
 NocoDB,categories/office-editors/grist.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no

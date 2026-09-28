@@ -104,7 +104,7 @@
 | TanStack/highlight | add | done | categories/markdown-tools/tanstack-highlight.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
 | TanStack/persist | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
 | TanStack/container | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
-| TanStack/react-charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
+| TanStack/react-charts | add | done | categories/web-ui/charts/tanstack-react-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
 | TanStack/bling | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
 | TanStack/alt-cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |
 | TanStack/preact | skip | skipped |  | 不收：fork 自 preactjs/preact，与上游重复 | tanstack/preact |

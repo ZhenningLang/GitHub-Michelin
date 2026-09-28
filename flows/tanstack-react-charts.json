@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "React Charts does",
+    "zh": "React Charts 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the beta package into a React DOM app",
+      "zh": "在 React DOM 应用里安装 beta 版包",
+      "code": "npm install react-charts@beta --save"
+    },
+    {
+      "lane": "you",
+      "en": "Shape rows into series, and memoize axes that each take a getValue accessor",
+      "zh": "整理成序列数组，用 useMemo 记住带 getValue 取值函数的轴配置",
+      "code": "getValue: datum => datum.date"
+    },
+    {
+      "lane": "you",
+      "en": "Render the Chart component with those options inside a sized container",
+      "zh": "在有宽高的容器里渲染 Chart 组件，传入这些配置",
+      "code": "<Chart>",
+      "component": {
+        "en": "Chart component",
+        "zh": "Chart 组件"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Infers the scale type from your values and builds D3 scales and axes",
+      "zh": "按数值推断比例尺类型，用 D3 建好比例尺和坐标轴"
+    },
+    {
+      "lane": "them",
+      "en": "Measures the container and draws SVG lines, areas or bars",
+      "zh": "量出容器尺寸，画出 SVG 折线、面积或柱子"
+    },
+    {
+      "lane": "them",
+      "en": "Snaps tooltip and cursors to the nearest point via a Voronoi hit map",
+      "zh": "借 Voronoi 命中图让提示框和十字线吸附到最近的点",
+      "component": {
+        "en": "Voronoi + tooltip portal",
+        "zh": "Voronoi 与提示框浮层"
+      }
+    }
+  ],
+  "value": {
+    "en": "Responsive, hoverable React charts from your own row objects without writing D3 drawing code",
+    "zh": "直接用你自己的行对象得到可伸缩、可悬停的 React 图表，不用手写 D3 绘图代码"
+  },
+  "sources": [
+    "docs/src/pages/docs/installation.md (npm install react-charts@beta --save; ReactDOM only)",
+    "docs/src/pages/docs/getting-started.md (series array with data; primaryAxis/secondaryAxes with getValue: datum => datum.date; <Chart options={{ data, primaryAxis, secondaryAxes }} />)",
+    "docs/src/pages/docs/api.md (memoize props; <Chart> component; scale types linear/band/time/timeLocal/log; showVoronoi interaction click-map; initialWidth/initialHeight SSR only)",
+    "src/components/Chart.tsx, src/components/Voronoi.tsx, src/hooks/usePortalElement.ts (container measurement, SVG root, Voronoi hover, tooltip portal)",
+    "issue #222 v3 checklist (automatic scale type inference)",
+    "examples/simple/src/components/Line.tsx (Chart inside ResizableBox)"
+  ]
+}
