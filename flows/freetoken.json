@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "FreeToken does", "zh": "FreeToken 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the engine into a Python venv on a Linux box with an NVIDIA GPU", "zh": "在带 NVIDIA 显卡的 Linux 机器上把引擎装进 Python 虚拟环境", "code": "uv pip install \"freetoken[accel]\"", "component": {"en": "ft CLI (PyPI package)", "zh": "ft 命令行（PyPI 包）"}},
+    {"lane": "you", "en": "Start the server with a local path or Hugging Face repo id", "zh": "用本地路径或 HF 仓库 id 启动服务", "code": "ft serve --model ~/models/Qwen3.6-35B-A3B"},
+    {"lane": "them", "en": "Picks dtype, kernels, cache sizes and parsers from the checkpoint and the GPU", "zh": "按检查点和显卡自动选精度、算子、缓存大小与解析器"},
+    {"lane": "them", "en": "Keeps experts in host RAM, caches hot ones on the GPU, fetches or CPU-computes misses", "zh": "专家常驻内存，热门的缓存在显卡上，未命中的现取或交给 CPU 算", "component": {"en": "MoE offload engine", "zh": "MoE 卸载引擎"}},
+    {"lane": "them", "en": "Serves OpenAI and Anthropic APIs on 127.0.0.1:1919", "zh": "在 127.0.0.1:1919 提供 OpenAI／Anthropic 接口", "component": {"en": "ft serve API server", "zh": "ft serve 接口服务"}},
+    {"lane": "you", "en": "Launch your coding agent against the server", "zh": "让你的编程智能体连到这台服务", "code": "ft launch claude"},
+    {"lane": "them", "en": "Writes the agent's provider config, clears cloud API keys, starts the agent", "zh": "写好智能体的模型配置、清掉云端 API key，然后启动智能体"}
+  ],
+  "value": {"en": "Your coding agent runs on a frontier MoE model bigger than your VRAM, on your own desktop, with no paid endpoint to fall back to", "zh": "编程智能体跑在比显存还大的前沿 MoE 模型上，全在自己的台式机里，不会悄悄回落到付费接口"},
+  "sources": [
+    "README.md Getting Started → CLI (uv pip install \"freetoken[accel]\")",
+    "docs/install.md (Linux x86_64, NVIDIA driver r580+, CUDA 13; nvcc for JIT kernels)",
+    "docs/quickstart.md (ft serve --model ~/models/Qwen3.6-35B-A3B; auto-resolved dtype/backends/cache sizes/parsers; API server on 127.0.0.1:1919; OpenAI and Anthropic routes; ft launch claude)",
+    "docs/models.md MoE strategies (offload: experts in host RAM with a GPU LRU cache; cpu; hybrid; auto)",
+    "docs/cli.md ft launch (discovers /v1/models, writes provider config, installs CLI if missing, clears ANTHROPIC_API_KEY/OPENAI_API_KEY from the child env)"
+  ]
+}

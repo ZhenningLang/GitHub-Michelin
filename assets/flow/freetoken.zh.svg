@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="796" viewBox="0 0 880 796" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="796" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="660" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="660" rx="10"/>
+<rect class="pillT" x="474" y="40" width="151.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">FreeToken 做的</text>
+<path class="edge" d="M62,192 L62,216" marker-end="url(#a)"/>
+<path class="hand" d="M408,254.5 C439.0,254.5 439.0,278 470,278" marker-end="url(#a)"/>
+<path class="edge" d="M494,326 L494,350" marker-end="url(#a)"/>
+<path class="edge" d="M494,449 L494,473" marker-end="url(#a)"/>
+<path class="hand" d="M472,523.5 C441.0,523.5 441.0,547 410,547" marker-end="url(#a)"/>
+<path class="hand" d="M408,559.5 C439.0,559.5 439.0,622 470,622" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">在带 NVIDIA 显卡的 Linux 机器上把引擎装进</text>
+<text class="t" x="82" y="123">Python 虚拟环境</text>
+<text class="c" x="82" y="147">uv pip install &quot;freetoken[accel]&quot;</text>
+<text class="comp" x="82" y="170">组件：ft 命令行（PyPI 包）</text>
+<rect class="card" x="40" y="218" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">2</text>
+<text class="t" x="82" y="247">用本地路径或 HF 仓库 id 启动服务</text>
+<text class="c" x="82" y="271">ft serve --model ~/models/Qwen3.6-35B-A3B</text>
+<rect class="cardT" x="472" y="254" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="254" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="278" r="10"/>
+<text class="num" x="494" y="282" text-anchor="middle">3</text>
+<text class="t" x="514" y="283">按检查点和显卡自动选精度、算子、缓存大小与</text>
+<text class="t" x="514" y="305">解析器</text>
+<rect class="cardT" x="472" y="352" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="352" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="376" r="10"/>
+<text class="num" x="494" y="380" text-anchor="middle">4</text>
+<text class="t" x="514" y="381">专家常驻内存，热门的缓存在显卡上，未命中的</text>
+<text class="t" x="514" y="403">现取或交给 CPU 算</text>
+<text class="comp" x="514" y="431">组件：MoE 卸载引擎</text>
+<rect class="cardT" x="472" y="475" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="475" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="499" r="10"/>
+<text class="num" x="494" y="503" text-anchor="middle">5</text>
+<text class="t" x="514" y="504">在 127.0.0.1:1919 提供</text>
+<text class="t" x="514" y="526">OpenAI／Anthropic 接口</text>
+<text class="comp" x="514" y="554">组件：ft serve 接口服务</text>
+<rect class="card" x="40" y="523" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="523" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="547" r="10"/>
+<text class="num" x="62" y="551" text-anchor="middle">6</text>
+<text class="t" x="82" y="552">让你的编程智能体连到这台服务</text>
+<text class="c" x="82" y="576">ft launch claude</text>
+<rect class="cardT" x="472" y="598" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="598" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="622" r="10"/>
+<text class="num" x="494" y="626" text-anchor="middle">7</text>
+<text class="t" x="514" y="627">写好智能体的模型配置、清掉云端 API key，然</text>
+<text class="t" x="514" y="649">后启动智能体</text>
+<rect class="val" x="28" y="702" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="726">价值</text>
+<text class="valT" x="48" y="750">编程智能体跑在比显存还大的前沿 MoE 模型上，全在自己的台式机里，不会悄悄回落到付费接口</text>
+</svg>

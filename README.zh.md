@@ -789,6 +789,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Magnitude** | 当机器能力未知、你要下载前的速度与内存估算加一键接入已有 coding harness 时用它——接受一个两个月大、单厂商所有、且在 Apple Silicon 上报告比 llama.cpp 慢约 6 倍的仓库。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/magnitude.md) · [中](categories/llm-inference/local-runtimes/magnitude.zh.md) |
 | **Shimmy** | 当磁盘上已有 GGUF 文件、想要单个 Rust 二进制给出 OpenAI／Ollama／Anthropic 兼容 API 时用它——接受一个刚满一年、单人维护、引擎只认证 26 个模型加量化组合的项目。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/shimmy.md) · [中](categories/llm-inference/local-runtimes/shimmy.zh.md) |
 | **Airframe** | 当要在自己的 Rust 程序里内嵌 GGUF 推理、且要纯 Rust 构建加一种着色器语言覆盖全显卡（WebGPU）时用它——接受一个约六个月大、单贡献者、只认证 12 个架构家族且含 pending 专利子系统的引擎。 | MIT | C（4/6） | [EN](categories/llm-inference/local-runtimes/airframe.md) · [中](categories/llm-inference/local-runtimes/airframe.zh.md) |
+| **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 
 ### task-queue
