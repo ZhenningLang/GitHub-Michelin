@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | D (6/6) | [→](falkordb.md) |
+| **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | D (5/6) | [→](falkordb.md) |
 | **PageIndex** | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. | B (6/6) | [→](pageindex.md) |
 | **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | B (6/6) | [→](helix-db.md) |
 
@@ -15,7 +15,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [FalkorDB](falkordb.md) | ✅ | D (6/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
+| [FalkorDB](falkordb.md) | ✅ | D (5/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
 | [PageIndex](pageindex.md) | ✅ | B (6/6) | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. |
 | [HelixDB](helix-db.md) | ✅ | B (6/6) | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. |
 | Neo4j / LightRAG | 未收录 | — | Other graph / GraphRAG retrieval stacks named across the pages. |

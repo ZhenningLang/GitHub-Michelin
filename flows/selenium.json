@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {"en": "Selenium does", "zh": "Selenium 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add one language binding to your test project",
+      "zh": "给你的测试项目加一门语言绑定",
+      "code": "pip install selenium",
+      "component": {"en": "language bindings", "zh": "语言绑定"}
+    },
+    {
+      "lane": "you",
+      "en": "Open a session on the browser you target",
+      "zh": "在目标浏览器上开一个会话",
+      "code": "driver = webdriver.Chrome()"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves, downloads and launches the matching driver for that browser",
+      "zh": "解析、下载并拉起匹配的浏览器驱动",
+      "component": {"en": "Selenium Manager", "zh": "Selenium Manager"}
+    },
+    {
+      "lane": "you",
+      "en": "Drive the page like a user: navigate, find elements, type, click",
+      "zh": "像用户一样操作页面：导航、找元素、填写、点击",
+      "code": "driver.get(\"https://www.selenium.dev/selenium/web/web-form.html\")"
+    },
+    {
+      "lane": "you",
+      "en": "Set your own waits — the calls return immediately",
+      "zh": "自己设定等待——命令是立刻返回的",
+      "code": "driver.implicitly_wait(0.5)"
+    },
+    {
+      "lane": "them",
+      "en": "Every command lands as a native event; one code runs on Chrome, Firefox, Edge, Safari",
+      "zh": "每条命令都落成原生事件，四个浏览器跑同一套代码",
+      "component": {"en": "W3C WebDriver", "zh": "W3C WebDriver"}
+    }
+  ],
+  "value": {
+    "en": "One automation API drives real Chrome, Firefox, Edge and Safari — the W3C-standard way to do cross-browser E2E",
+    "zh": "一套 API 驱动真实的四大浏览器——W3C 标准的跨浏览器端到端自动化"
+  },
+  "sources": [
+    "selenium.dev Install a Selenium library (pip install selenium; bindings 4.49.0 across Maven/NuGet/gem/npm)",
+    "selenium.dev Write your first Selenium script (driver = webdriver.Chrome(); driver.get(\"https://www.selenium.dev/selenium/web/web-form.html\"); driver.implicitly_wait(0.5); find_element/send_keys/click)",
+    "selenium.dev Selenium Manager docs section (driver resolution/download) and WebDriver overview ('WebDriver drives a browser natively, as a user would')"
+  ]
+}

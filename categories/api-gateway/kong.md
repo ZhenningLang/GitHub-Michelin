@@ -6,17 +6,17 @@ category: api-gateway
 tags: [api-gateway, ai-gateway, llm-gateway, reverse-proxy, plugins, kubernetes-ingress, openresty]
 language: Lua
 license: Apache-2.0
-maturity: v3.9.x, active (2026-06)
-last_verified: 2026-06-26
+maturity: v3.9.x, active, ~44k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: service
 upstream:
-  pushed_at: 2026-06-29T09:48:26Z
+  pushed_at: 2026-09-28T04:53:21Z
   default_branch: master
-  default_branch_sha: 1730282ec2f8ed097cf6ad6a3d69e55b7ba9ebb6
+  default_branch_sha: af0acd7f44025ad9613aa69064c732dd48c6fdcc
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:59:18Z
+  computed_at: 2026-09-28T05:00:02Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 19
-        active_weeks_13: 4
+        last_commit_age_days: 0
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 93.9
-        qualifying_issues: 8
+        median_ttfr_hours: 88.0
+        qualifying_issues: 9
         band: default
         window_offset_days: 5
         source: issue
@@ -44,30 +44,24 @@ health:
     adoption:
       grade: C
       raw:
-        registry: proxy.golang.org
-        canonical_package: github.com/Kong/kong
-        dependent_repos_count: 1
-        downloads_last_month: null
-        graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
-        docker_pulls: 8389295
+        registry: null
+        canonical_package: null
+        docker_pulls: 8434828
         docker_image: kong/kong
         docker_tier: C
         signal_basis: docker
-        tier_source: docker
     longevity:
       grade: A
       raw:
-        repo_age_days: 4327
-        last_commit_age_days: 19
+        repo_age_days: 4332
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 15
-        top1_share: 0.179
-        top3_share: 0.429
+        active_maintainers_12mo: 16
+        top1_share: 0.194
+        top3_share: 0.472
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -101,7 +95,7 @@ Kong is a door that sits in front of all your backend services. **The door and a
 <details>
 <summary>Text version of the flow</summary>
 
-1. **You**: Deploy Kong in front of all your backend services — `docker-compose --profile database up`
+1. **You**: Deploy Kong in front of all your backend services — `KONG_DATABASE=postgres docker-compose --profile database up`
 2. **You**: Declare a Service + Route: which path goes to which backend — `Admin API :8001 or decK YAML`
 3. **You**: Attach bundled plugins to the route and set their parameters — `key-auth · rate-limiting · prometheus`
 4. **Kong Gateway**: A request enters on :8000 and is matched to a route
@@ -140,14 +134,14 @@ Kong is a door that sits in front of all your backend services. **The door and a
 - **Plugins:** Lua plugins in-process; Go and JS/TS plugins out-of-process via the Plugin Development Kit (PDK).
 - **Config store:** PostgreSQL (traditional/hybrid mode) **or** DB-less declarative YAML/JSON (in-memory).
 - **Control surfaces:** RESTful Admin API, Kong Manager web UI, and decK for declarative GitOps-style config.
-- **AI Gateway:** `ai-proxy` / `ai-*` plugins providing an OpenAI-compatible facade over multiple LLM providers (OpenAI, Anthropic, Bedrock, Gemini, Azure, Mistral, etc.) plus MCP traffic handling.
+- **AI Gateway:** `ai-proxy` / `ai-*` plugins providing an OpenAI-compatible facade over multiple LLM providers (README names OpenAI, Anthropic, GCP Gemini, AWS Bedrock, Azure AI, Databricks, Mistral, Hugging Face, …); the README also lists MCP traffic governance/security/observability, MCP autogeneration from any RESTful API, and "60+ AI features" (semantic security/caching/routing).
 - **Deployment modes:** traditional (DB-backed), hybrid (split control plane / data plane), DB-less, and the Kong Ingress Controller for Kubernetes.
 
 ## Dependencies
 
 - **Runtime:** the OpenResty/Nginx + LuaJIT stack (bundled in official packages/images).
 - **Datastore:** PostgreSQL for traditional/hybrid mode; **none** for DB-less mode (declarative file only).
-- **Default ports:** 8000 (proxy), 8001 (Admin API), 8002 (Kong Manager UI). [未验证] exact default port set can vary by version/config.
+- **Default ports:** 8000 (proxy), 8001 (Admin API), 8002 (Kong Manager UI) — per the README's docker-compose quick start (2026-09).
 - **Tooling:** `decK` for declarative config management; the Kong Ingress Controller (separate repo) for Kubernetes.
 - **Install:** official Docker images, Linux packages (deb/rpm), Helm chart, or build from source.
 
@@ -157,17 +151,17 @@ Kong is a door that sits in front of all your backend services. **The door and a
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 93.9 hours across 8 qualifying issues/PRs.
-- **Maintenance (as of 2026-06):** last pushed 2026-06, not archived, latest release 3.9.x — a continuously released, actively maintained gateway, not a coasting one. [推断]
-- **Governance & backing:** `Organization`-owned and **vendor-backed** (Kong Inc., a funded commercial company), not a foundation project. That means a real roadmap and support exist, but the **open-core** model is the governance reality: the OSS gateway is one tier and the vendor controls what stays open vs. moves to Enterprise (Developer Portal, RBAC, advanced AI plugins). Roadmap is the vendor's, not a neutral foundation's. [推断]
+- **Responsiveness**: Grade B — median first-response time 88.0 hours across 9 qualifying issues/PRs (scorer, 2026-09-28).
+- **Maintenance (as of 2026-09):** not archived; master's last commit was the same day as the 2026-09-28 health scoring, with 5 of the past 13 weeks active — core development is clearly running on master, but the latest published release is still 3.9.3 (2026-06-17), so stable releases have slowed versus the 2024–25 cadence. [推断：节奏判断基于 GitHub releases 可见日期]
+- **Governance & backing:** `Organization`-owned and **vendor-backed** (Kong Inc., a funded commercial company), not a foundation project. That means a real roadmap and support exist, but the **open-core** model is the governance reality: the OSS gateway is one tier and the vendor controls what stays open vs. moves to Enterprise (Developer Portal, RBAC, advanced AI plugins). Roadmap is the vendor's, not a neutral foundation's.
 - **Age & Lindy verdict:** created 2014-11, so ~12 years old **and still active** — a strong **Lindy** signal: it has survived multiple architecture shifts (it even removed Cassandra as a config store in the 3.4 line) and is among the longest-lived OSS API gateways. Old + active ⇒ a safe durability bet for the core proxy. [推断]
 - **Adoption/ecosystem:** broad production adoption, a large plugin ecosystem, a Kubernetes Ingress Controller, decK for GitOps config, and mature docs — the ecosystem depth is itself a viability signal.
-- **Risk flags:** the watch item is **open-core feature-gating**, not a license rug-pull — the OSS core stays Apache-2.0, but advanced features may be enterprise-only and that split shifts release-to-release. Verify a specific plugin's OSS availability before depending on it. [推断]
+- **Risk flags:** the watch item is **open-core feature-gating**, not a license rug-pull — the OSS core stays Apache-2.0 (README + GitHub API, 2026-09), but advanced features may be enterprise-only and that split shifts release-to-release. Verify a specific plugin's OSS availability before depending on it.
 
 ## Caveats (unverified)
 
-- [未验证] Latest release observed as 3.9.3 (published 2026-06-17) with repo activity to 2026-06-17; star count ~43.7k as of 2026-06 — GitHub stars are unreliable and date-sensitive, treat as indicative only.
+- [未验证] Latest GitHub release is still 3.9.3 (published 2026-06-17) as of 2026-09-28, while master keeps receiving pushes — whether the next stable (3.10.x?) lands, or the in-tree work ships elsewhere (Enterprise/Kong Mesh/Konnect), is not verifiable from this repo. Star count ~44.2k as of 2026-09 — GitHub stars are unreliable and date-sensitive, treat as indicative only.
 - [未验证] Throughput/latency figures cited in third-party comparisons (e.g. Kong ~16k RPS/node, APISIX ~23k QPS/core, APISIX ~200% faster with plugins) come from external benchmark blogs and vary heavily by version, config, and hardware; no first-party guarantee.
 - [推断] The exact split between open-source and enterprise plugins (Developer Portal, RBAC, advanced AI features) shifts release-to-release; verify a specific plugin's OSS availability against the current repo/docs before relying on it.
 - [未验证] The precise list of LLM providers and MCP features supported by the AI Gateway plugins changes per release; the provider list here reflects README framing, not a per-version audit.
-- [未验证] Cassandra was reported removed in the 3.4 line (deprecated since 2.7); confirm against UPGRADE.md for the exact version if migrating.
+- [推断] Cassandra removal is confirmed at 3.4.0 by the repo CHANGELOG ("Cassandra as a datastore for Kong is no longer supported", checked 2026-09-28); UPGRADE.md still carries older pre-3.0 wording that had targeted 4.0 for the removal — treat the CHANGELOG as authoritative, but re-check the migration docs before moving a very old Cassandra-backed store.

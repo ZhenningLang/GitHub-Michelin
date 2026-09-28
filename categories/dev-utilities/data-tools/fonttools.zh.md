@@ -6,17 +6,17 @@ category: data-tools
 tags: [fonts, typography, opentype, truetype, woff, python, font-manipulation]
 language: Python
 license: MIT
-maturity: v4.63.0, active (2026-06)
-last_verified: 2026-06-28
+maturity: v4.66.0, active, ~5.3k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-23T08:46:21Z
+  pushed_at: 2026-09-24T13:05:25Z
   default_branch: main
-  default_branch_sha: fec4e74985ede2f98c6e3b54ea2c83417db1338c
+  default_branch_sha: 718b61b552841de3964ba5b691fcf6102a2ebb3c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:09:40Z
+  computed_at: 2026-09-28T05:15:18Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 21.7
-        qualifying_issues: 10
+        median_ttfr_hours: 26.0
+        qualifying_issues: 9
         band: default
         window_offset_days: 4
         source: issue
@@ -47,26 +47,26 @@ health:
         registry: pypi.org
         canonical_package: fonttools
         dependent_repos_count: 33983
-        downloads_last_month: 184200439
+        downloads_last_month: 184800448
         graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
-        homebrew_installs_90d: 800
+        homebrew_installs_90d: 1009
         homebrew_tier: B
         signal_basis: homebrew
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4808
+        repo_age_days: 4814
         last_commit_age_days: 4
         cohort: library
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 31
-        top1_share: 0.411
-        top3_share: 0.764
+        active_maintainers_12mo: 32
+        top1_share: 0.418
+        top3_share: 0.766
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,7 +80,7 @@ health:
 
 # fontTools
 
-一个 Python 库（外加一组命令行工具），用来读取、写入、操纵字体文件——TrueType/OpenType、WOFF/WOFF2、AFM 等等——是开源字体工具栈事实上的基石。
+字体文件是几十个编号二进制表拼起来的包，临时脚本改一张表或做一次子集，很容易悄悄弄坏其余部分。fontTools 把 TrueType/OpenType/WOFF 解析成 Python 对象模型——每张表一个类——让你以编程方式读取、修改、子集化并重新序列化字体，另附带干同样活的命令行工具（`ttx`、subset、instancer）。
 
 ![fonttools — 健康度雷达](../../../assets/health/fonttools.zh.svg)
 
@@ -88,7 +88,29 @@ health:
 
 你在搭一条字体流水线：也许你是给某位字体设计师做工程的人，要把 UFO/字形源转成可发布的 `.otf`/`.ttf`/`.woff2`；也许你是前端平台团队，需要把 webfont **子集化**到页面真正用到的那些字形，让下载从几百 KB 降到几 KB。你不想手撕二进制的 `sfnt`/`glyf`/`GPOS` 表，也不信任一个临时脚本能在不破坏表结构的前提下完整 round-trip 一个字体。你 `pip install fonttools`，然后要么调库——`TTFont("in.ttf")` 给你一个可遍历的对象模型，每张表都能读、改、存——要么用自带 CLI：`ttx` 把字体 dump 成可编辑 XML 再编译回来，`pyftsubset` 把字体裁到指定字形集，用 `fontTools.ttLib` 合并、把可变字体 instance 成静态切片、或修元数据。其他字体工具（以及大多数 webfont 构建步骤）都建在它之上。
 
-只要任务是*程序化的字体外科手术*，你就会选它：为 Web 做子集、格式转换、检视/修补表、把可变字体 instance 成静态、或喂给更大的构建系统（它是 matplotlib 的依赖，也是许多设计师工具链和 webfont 服务的依赖）。[未验证]
+只要任务是*程序化的字体外科手术*，你就会选它：为 Web 做子集、格式转换、检视/修补表、把可变字体 instance 成静态、或喂给更大的构建系统。依赖这条现在查实了：matplotlib 在自家 PyPI 元数据里声明 `fonttools>=4.28.2`（2026-09），PyPI 依赖图列出约 3.4 万个依赖仓库、月下载约 1.85 亿（健康度评分器，2026-09-28）——围绕它的 webfont 构建设计师工具链用法，是从这个足迹推断的，此处不逐一列举。
+
+## 怎么用起来
+
+fontTools 把字体文件看成它本来的样子：一个二进制容器——即 TrueType/OpenType 使用的 `sfnt`「表袋」布局——装着几十张编号表，并给每张表一个对应的 Python 类。`tt = ttLib.TTFont("afont.ttf")` 把容器解析成对象模型，于是 `tt['maxp'].numGlyphs`、`tt['OS/2'].achVendID` 都成了可读可写的普通属性，改完保存，它再序列化回合法的二进制字体。一次性的批量活儿可以完全不碰 Python：`ttx` 把字体往返转成可编辑的 XML，`fonttools subset` 把字体裁到指定的 Unicode 或字形范围（webfont 子集化就是这么回事），`fonttools varLib.instancer` 把可变字体烤成静态切片。仍然归你的：搞清楚你的格式真正依赖哪些表和子集参数（参数选错可能删掉排版特性、弄坏 kerning），以及把这些调用接进构建——fontTools 是进程内的库加 CLI，不是服务。
+
+![fonttools — 主干用户故事](../../../assets/flow/fonttools.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/fonttools.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把库装进 Python 环境 — `pip install fonttools · pip install fonttools[ufo,lxml,woff,unicode]`
+2. **你**：把字体文件打开成一个对象模型 — `from fontTools import ttLib · tt = ttLib.TTFont("afont.ttf")`
+3. **fontTools**：把二进制的 sfnt 表解析成可读写的类型化属性 — 组件：`TTFont`
+4. **你**：就地读取或修改任意一张表 — `tt['maxp'].numGlyphs`
+5. **fontTools**：保存时把改动重新编译成合法的二进制字体
+6. **你**：把 webfont 裁到只发布需要的字形 — `fonttools subset font.ttf --unicodes="U+0020-0025"`
+
+**价值**：不手撕 sfnt 二进制，就能读改、子集化、转换字体文件
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -117,7 +139,7 @@ health:
 
 ## 依赖
 
-- **运行时：** Python；基础库是纯 Python，**不需要任何外部服务**。可选 extras 会拉入原生依赖——如 WOFF2（`brotli`）、unicode 数据、更快的 XML（`lxml`）、graphite、绘图，通过 `pip install fonttools[woff,unicode,...]` 安装。[未验证]
+- **运行时：** Python ≥ 3.11（README：「FontTools requires Python 3.11 or later」；PyPI `requires-python: >=3.11`，2026-09）。基础库是纯 Python，**除标准库外没有必需的外部依赖**。可选 extras 会拉入原生或其他依赖——WOFF2 走 `woff` extra（Brotli 绑定）、`lxml` 加速 XML、`ufo`/`unicode` 等各管各的模块；PyPI 元数据（2026-09）列出的 extras 为 `ufo, lxml, woff, unicode, graphite, interpolatable, plot, symfont, type1, pathops, repacker, all`，用 `pip install fonttools[ufo,lxml,woff,unicode]` 之类命令安装。
 - **服务/基础设施：** 无——它是进程内的库/CLI，没有数据存储或守护进程。
 - **构建：** 标准 Python 打包；可选原生 extras 需要各自的构建前置。
 
@@ -127,17 +149,15 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 21.7 小时，基于 10 个 qualifying issues/PRs。
-- **维护（2026-06）。** 非常活跃：v4.63.0 于 2026-05 发布，最后 push 在 2026-06，按稳定的高频小版本节奏发布。未归档——明显在维护，不是吃老本。[推断]
-- **治理 / bus factor。** 隶属 `fonttools` **GitHub 组织**，贡献者历史悠长，由 Behdad Esfahbod 和 Cosimo Lupo（anthrotype）领衔，外加数百名贡献者——多维护者，不是单点失效；bus factor 比大多数字体工具健康。[推断]
-- **年龄与 Lindy。** 2013 年上 GitHub，但其代码血统（Just van Rossum 的 TTX/fontTools）还要更早数年；在此 13+ 年且**仍在活跃发布**⇒ **强 Lindy** 信号——它是既定标准，而非新秀。[推断]
-- **采用度。** 基础性：matplotlib 的依赖，开源字体/webfont 工具链的脊梁；真实使用广泛。约 400+ 个 open issue 与大面积＋活跃 triage 相符，单看并非红旗。[未验证]
+- **响应速度**：Grade A——中位首次响应 26.0 小时，基于 9 个 qualifying issues/PRs（健康度评分器，2026-09-28）。
+- **维护（2026-9）。** 非常活跃：v4.66.0 于 2026-09-23 发布，`main` 最后 push 在 2026-09-24（GitHub API），最近 13 周每周都有提交——稳定的高频小版本节奏，明显在维护、不是吃老本。未归档。
+- **治理 / bus factor。** 隶属 `fonttools` **GitHub 组织**，贡献者历史悠长，由 Behdad Esfahbod 和 Cosimo Lupo（anthrotype）领衔，外加数百名贡献者——多维护者、不是单点失效；雷达给 B 反映的是真实的提交集中度（头部贡献者约占近 12 个月提交的 42%）。[推断]
+- **年龄与 Lindy。** 2013 年上 GitHub，但代码血统（Just van Rossum 的 TTX/fontTools）还要更早数年；在此 13+ 年且**仍在活跃发布**⇒ **强 Lindy** 信号——它是既定标准，而非新秀。[推断]
+- **采用度。** 基础性且有实测支撑：matplotlib 的 PyPI 元数据要求 `fonttools>=4.28.2`（2026-09）；PyPI 注册表快照显示月下载约 1.85 亿、依赖仓库约 3.4 万（健康度评分器，2026-09-28）；GitHub star 约 5.3k。围绕它的 webfont 服务/设计师工具链一层是从这个足迹推断的。[推断]
 - **风险标记。** 无明显项；宽松 MIT、未发现 relicense 历史、维护者多元。主要保留意见是格式广度（并非每张异种表都被深度建模），而非项目健康。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 5.1k GitHub star、约 400 个 open issue；star/issue 数对时间敏感，仅供参考。
-- [未验证] v4.63.0 标注 2026-05；发布节奏与确切版本随时间变动——请对照当前发布页核实。
-- [未验证] 可选 extras 集合（WOFF2 的 brotli、lxml、unicodedata2 等）及各自所 gate 的特性取自打包元数据/README，可能变化；请查当前 `pyproject` 的 extras。
-- [推断]「字体工具栈的基石」及具体下游依赖者（matplotlib、设计师工具链）是从生态知识推断；确切的当前依赖集合这里未逐一列出。
-- [推断] 异种/厂商私有表的逐表覆盖与 round-trip 保真度是从格式广度做出的推断，而非对某张具体表的实测结论。
+- [未验证] 异种/厂商私有表的逐表覆盖与 round-trip 保真度是从格式广度做出的推断，而非对某张具体表的实测结论。
+- [推断]「webfont 工具链的脊梁」里，除已查实的 matplotlib 依赖声明与注册表依赖数之外（设计师工具链、webfont 服务），其余是生态常识，本轮未从来源逐一列举。
+- [推断] 各可选 extra（WOFF2 的 Brotli、lxml、unicodedata2 等）具体 gate 哪些特性，取自 README/打包结构的阅读，未逐一实测。

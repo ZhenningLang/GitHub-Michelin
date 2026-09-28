@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "kafka-python does", "zh": "kafka-python 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the client — no native library to build", "zh": "装客户端——没有要编译的原生库", "code": "pip install kafka-python"},
+    {"lane": "you", "en": "Iterate a topic, joining a consumer group if you want shared splits", "zh": "迭代一个 topic，要分摊就加入消费组", "code": "KafkaConsumer('my_favorite_topic', group_id='my_favorite_group')"},
+    {"lane": "them", "en": "Discovers brokers, assigns partitions, commits offsets; yields namedtuples", "zh": "自动发现 broker、分配分区、提交偏移，逐条交付消息", "component": {"en": "KafkaConsumer", "zh": "KafkaConsumer"}},
+    {"lane": "you", "en": "Send messages — keyed so the same key lands on the same partition", "zh": "发消息——带 key，同 key 进同一分区", "code": "producer.send('foobar', key=b'foo', value=b'bar')"},
+    {"lane": "them", "en": "Batches and retries in the background; future.get() returns once the broker confirms", "zh": "后台批量与重试，broker 确认后 future.get() 返回", "component": {"en": "KafkaProducer", "zh": "KafkaProducer"}}
+  ],
+  "value": {"en": "A Kafka client that pip-installs anywhere Python runs — no librdkafka, no JVM — with Java-style consumer groups and async producing", "zh": "pip 即装的 Kafka 客户端——无 librdkafka、无 JVM，消费组与异步生产对齐 Java"},
+  "sources": ["README.md master @ 2026-09-28 (raw.githubusercontent.com/dpkp/kafka-python/README.rst): pip install kafka-python; consumer = KafkaConsumer('my_favorite_topic', group_id='my_favorite_group'); producer.send('foobar', key=b'foo', value=b'bar'); future.get(timeout=60); consumer iterator returns ConsumerRecords namedtuples (topic, partition, offset, key, value)"]
+}

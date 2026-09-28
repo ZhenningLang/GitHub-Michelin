@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Paperless-ngx does", "zh": "Paperless-ngx 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the official installer script to stand up the Docker Compose stack and an admin account", "zh": "跑官方安装脚本，搭起 compose 栈并创建管理员", "code": "install-paperless-ngx.sh"},
+    {"lane": "you", "en": "Point your scanner (or a sync folder) at the consume directory", "zh": "把扫描仪或同步目录指向 consume 文件夹", "code": "./consume:/usr/src/paperless/consume"},
+    {"lane": "them", "en": "The consumer picks up each new file, converts it, OCRs scans and extracts text", "zh": "一有新文件就接手、转 PDF、对扫描件 OCR、抽取文字", "component": {"en": "consumer", "zh": "消费器"}},
+    {"lane": "them", "en": "Matching rules auto-apply tags, correspondent and type; Tantivy indexes the full text", "zh": "匹配规则自动套标签、通信方和类型，Tantivy 建全文索引", "component": {"en": "matcher + search index", "zh": "匹配器 + 搜索索引"}},
+    {"lane": "you", "en": "Search any phrase from any scanned page in the web UI", "zh": "在 Web UI 里对任意扫描页做全文搜索"}
+  ],
+  "value": {"en": "Years of paper become a full-text-searchable archive on your own trusted box", "zh": "成堆的纸变成自家可信机器上可全文检索的档案"},
+  "sources": [
+    "README.md paperless-ngx @ dev (retrieved 2026-09-28) 'Getting started': verbatim install-script command 'bash -c \"$(curl -L https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/install-paperless-ngx.sh)\"'",
+    "docs/setup.md @ dev (retrieved 2026-09-28): installer 'pulls the image, starts the containers, and creates your superuser'; compose volume mapping '- ./consume:/usr/src/paperless/consume'",
+    "v3.0.0 release notes (2026-07-22): 'Feature: Replace Whoosh with tantivy search backend'; docs/usage.md @ dev: 'matching tags, correspondents and document types'"
+  ]
+}

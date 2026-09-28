@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "PDF.js does", "zh": "PDF.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the prebuilt npm package", "zh": "安装预编译的 npm 包", "code": "npm install pdfjs-dist"},
+    {"lane": "you", "en": "Point the library at the worker file it ships", "zh": "把库指向它自带的 worker 文件", "code": "pdfjsLib.GlobalWorkerOptions.workerSrc"},
+    {"lane": "you", "en": "Open a document from a URL or bytes you already hold", "zh": "从一个 URL 或你手里已有的字节打开文档", "code": "pdfjsLib.getDocument({ url })"},
+    {"lane": "them", "en": "Parses the PDF format in a background Web Worker, keeping your UI thread free", "zh": "在后台 Web Worker 里解析 PDF 格式，主线程不卡", "component": {"en": "pdf.worker", "zh": "pdf.worker"}},
+    {"lane": "you", "en": "Ask for a page and render it into a canvas you own", "zh": "取一页，渲染进你自己的 canvas", "code": "page.render(renderContext)"},
+    {"lane": "them", "en": "Paints pixel-faithful page output into that canvas via the display-layer API", "zh": "经 display 层 API 把像素级忠实的页面画进 canvas", "component": {"en": "display layer", "zh": "display 层"}}
+  ],
+  "value": {"en": "Consistent in-app PDF viewing with files never leaving the client — plus getTextContent() for search/extraction in the same library", "zh": "跨浏览器一致的页内 PDF 显示，文档不出客户端——同一个库再用 getTextContent() 做搜索/抽取"},
+  "sources": [
+    "github.com/mozilla/pdf.js README (master, retrieved 2026-09-28): pre-built versions for usage with NPM under the `pdfjs-dist` name; pdf.worker.js",
+    "examples/learning/helloworld.html (master, 2026-09-28): pdfjsLib.GlobalWorkerOptions.workerSrc = \"../../node_modules/pdfjs-dist/build/pdf.worker.mjs\"; const loadingTask = pdfjsLib.getDocument({ url }); page.render(renderContext)",
+    "examples/text-only/index.html: <script src=\"../../node_modules/pdfjs-dist/build/pdf.mjs\">",
+    "npm registry pdfjs-dist latest = 6.3.289 (2026-09-28): install coordinate pdfjs-dist",
+    "mozilla.github.io/pdf.js/getting_started (2026-09-28): build/pdf.mjs display layer, build/pdf.worker.mjs core layer"
+  ]
+}

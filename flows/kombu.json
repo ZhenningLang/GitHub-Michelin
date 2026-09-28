@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Kombu does", "zh": "Kombu 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Kombu into your Python service", "zh": "把 Kombu 装进你的 Python 服务", "code": "pip install kombu", "component": {"en": "application environment", "zh": "应用环境"}},
+    {"lane": "you", "en": "Declare exchanges and queues as Python objects, then open one Connection by URL", "zh": "用对象声明 exchange/queue，按 URL 开连接", "code": "with Connection('amqp://guest:guest@localhost//') as conn:"},
+    {"lane": "them", "en": "The same transport interface serves amqp://, redis:// or sqs:// behind the URL", "zh": "同一传输接口管尽 amqp、redis、SQS 数种后端", "component": {"en": "transport layer", "zh": "传输层"}},
+    {"lane": "you", "en": "Publish through a Producer, declaring the queue with the message", "zh": "经 Producer 发布消息，随消息声明队列", "code": "producer = conn.Producer(serializer='json')"},
+    {"lane": "them", "en": "Serializes the payload and routes it to the bound queue", "zh": "序列化载荷并路由到绑定的队列"},
+    {"lane": "you", "en": "Consume with a callback list plus an event loop", "zh": "用回调列表加事件循环来消费", "code": "conn.drain_events()", "component": {"en": "Consumer", "zh": "Consumer"}},
+    {"lane": "them", "en": "Delivers each message to your callback; your message.ack() confirms it", "zh": "把每条消息派发给你的回调，由 message.ack() 确认"}
+  ],
+  "value": {"en": "One producer/consumer API across AMQP, Redis, SQS and more — moving brokers is a URL change, not a rewrite", "zh": "一套生产/消费 API 横跨 AMQP、Redis、SQS 等——换 broker 只是换 URL，不是重写"},
+  "sources": [
+    "README.rst main @ 2026-09 (Quick overview / Installation): pip install kombu; from kombu import Connection, Exchange, Queue; Exchange('media', 'direct', durable=True); Queue('video', exchange=media_exchange, routing_key='video'); with Connection('amqp://guest:guest@localhost//') as conn:; producer = conn.Producer(serializer='json'); conn.Consumer(video_queue, callbacks=[process_media]); conn.drain_events(); message.ack()"
+  ]
+}

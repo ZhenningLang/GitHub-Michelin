@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Khazix Skills does", "zh": "Khazix Skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Ask your agent to install just the skill you want", "zh": "让 agent 只装你需要的那一个 skill", "code": "帮我安装这个 skill：https://github.com/KKKKhazix/khazix-skills/tree/main/<skill-name>"},
+    {"lane": "them", "en": "The agent clones that skill directory into place — no paths for you to manage", "zh": "agent 把该 skill 目录装到技能位置，不用你管路径"},
+    {"lane": "you", "en": "Later, trigger it with one plain sentence", "zh": "之后随时用一句自然中文触发它", "code": "帮我看看存储 · 今天 AI 圈有什么新东西 · /neat"},
+    {"lane": "them", "en": "The skill's structured instructions run and deliver: cleanup report, AI digest, doc-memory reconciliation", "zh": "按技能内的指令交付：清理报告、AI 日报或文档记忆对齐", "component": {"en": "SKILL.md instruction set", "zh": "SKILL.md 指令集"}}
+  ],
+  "value": {"en": "Six daily-chores skills the author actually runs, instead of writing and maintaining your own SKILL.md", "zh": "不必自己写 SKILL.md，直接用作者每天真在用的现成技能"},
+  "sources": ["README.md main @ b81ad3b (retrieved 2026-09-28): 安装方式 `帮我安装这个 skill：https://github.com/KKKKhazix/khazix-skills/tree/main/<skill-name>`、`Agent 会自己 clone 到对应目录`; 怎么触发 `帮我看看存储`、`今天 AI 圈有什么新东西`、`/neat`; Skills 目录表（leader、storage-analyzer、aihot、neat-freak、hv-analysis、khazix-writer 各一句话）"]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "tqdm does", "zh": "tqdm 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it — pure Python, no mandatory deps", "zh": "安装——纯 Python，无必需依赖", "code": "pip install tqdm · conda install -c conda-forge tqdm"},
+    {"lane": "you", "en": "Wrap the loop's iterable", "zh": "裹住循环的可迭代对象", "code": "for i in tqdm(range(10000)):"},
+    {"lane": "them", "en": "Redraws one in-place bar with rate and live ETA", "zh": "原地刷新一条进度行，带速率与实时 ETA"},
+    {"lane": "you", "en": "Drop it into a shell pipe as a byte/line meter", "zh": "把它插进 shell 管道当计量器", "code": "find . -name '*.py' -type f -exec cat \\{} \\; | tqdm | wc -l"},
+    {"lane": "them", "en": "Meters the stream as it passes through, without reading it itself", "zh": "数据流过时计数，不自己读取内容"},
+    {"lane": "you", "en": "Register it on a pandas DataFrame for per-row progress", "zh": "在 pandas DataFrame 上注册，逐行显示进度", "code": "tqdm.pandas()"},
+    {"lane": "them", "en": "Gives progress_apply a bar without changing your apply code", "zh": "让 progress_apply 自带进度条，apply 代码不用改"}
+  ],
+  "value": {"en": "Live progress in loops, shell pipes, notebooks and pandas from one tiny dependency", "zh": "循环、shell 管道、notebook 和 pandas 里都有实时进度，依赖极小"},
+  "sources": [
+    "README.md master @ 2026-09-28: pip install tqdm; conda install -c conda-forge tqdm; for i in tqdm(range(10000)):; find . -name '*.py' -type f -exec cat \\{} \\; | tqdm | wc -l; tqdm.pandas() → df.progress_apply(lambda x: x**2)"
+  ]
+}

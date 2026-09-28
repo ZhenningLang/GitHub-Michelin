@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "promptfoo does", "zh": "promptfoo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and scaffold a working example suite", "zh": "安装 CLI 并生成一套可跑的示例评测", "code": "npm install -g promptfoo · promptfoo init --example getting-started"},
+    {"lane": "you", "en": "Declare prompts, providers, test cases and assertions in one YAML file", "zh": "在一份 YAML 里声明 prompt、provider、测试用例和断言", "code": "promptfooconfig.yaml"},
+    {"lane": "you", "en": "Run the suite and open the results", "zh": "运行评测并打开结果", "code": "promptfoo eval · promptfoo view"},
+    {"lane": "them", "en": "Calls every prompt × provider with your own keys and grades each assertion, judge rubric included", "zh": "用你自己的 key 调用每个 prompt × provider，逐条给断言判分", "component": {"en": "Local eval engine", "zh": "本地评测引擎"}},
+    {"lane": "them", "en": "Serves a side-by-side matrix in a local web viewer, pass/fail per cell", "zh": "在本地 Web 查看器里呈现并排矩阵，每格标出通过/失败", "component": {"en": "promptfoo view", "zh": "promptfoo view"}}
+  ],
+  "value": {"en": "A prompt change that degrades quality now fails promptfoo eval in CI, before it ships", "zh": "让质量退化的 prompt 改动会在 CI 里被 promptfoo eval 挡下，而不是上线后才暴露"},
+  "sources": ["README.md main @ 2026-09 (raw.githubusercontent.com/promptfoo/promptfoo/main/README.md): npm install -g promptfoo; promptfoo init --example getting-started; export OPENAI_API_KEY=sk-abc123; promptfoo eval; promptfoo view", "site/docs/getting-started.md main @ 2026-09: promptfooconfig.yaml with sample prompts, providers, test cases; npx promptfoo@latest alternative", "docs/usage/assertion-based: deterministic, similarity and llm-rubric assertion types (already recorded on this page from v0.121 package.json review)"]
+}

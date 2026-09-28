@@ -6,17 +6,17 @@ category: pdf-tools
 tags: [pdf, viewer, rendering, parsing, text-extraction, canvas, browser, javascript]
 language: JavaScript
 license: Apache-2.0
-maturity: v6.x, active (2026-06), ~53.5k stars
-last_verified: 2026-06-28
+maturity: v6.3.x, active (2026-09), ~54k stars
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-29T11:21:08Z
+  pushed_at: 2026-09-25T06:04:33Z
   default_branch: master
-  default_branch_sha: 649fb9c9704692dcdb506fb45d92999e67aad132
+  default_branch_sha: d52fdf411a6e4d338180687456e0df019e28475e
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:53:33Z
+  computed_at: 2026-09-28T08:23:09Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 3
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 2.9
-        qualifying_issues: 53
+        median_ttfr_hours: 2.7
+        qualifying_issues: 52
         band: default
         window_offset_days: 5
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: npmjs.org
         canonical_package: pdfjs-dist
         dependent_repos_count: 17822
-        downloads_last_month: 88930518
+        downloads_last_month: 97146696
         graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.02
-        release_downloads: 4108347
+        release_downloads: 4135048
         release_assets: 147
         release_tier: B
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5628
-        last_commit_age_days: 1
+        repo_age_days: 5634
+        last_commit_age_days: 3
         cohort: library
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 43
-        top1_share: 0.365
-        top3_share: 0.968
+        top1_share: 0.359
+        top3_share: 0.969
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,7 +81,7 @@ health:
 
 # PDF.js
 
-A pure-JavaScript PDF rendering and parsing library by Mozilla that powers Firefox's built-in viewer — it draws PDF pages to a `<canvas>`, extracts text and metadata, and ships a prebuilt drop-in viewer, running in the browser and in Node.
+Your web app needs to show a PDF, and the only defaults are each browser's own inconsistent viewer or uploading the file to a third-party service. PDF.js is Mozilla's pure-JavaScript renderer and parser — the engine behind Firefox's built-in viewer — that draws pages to a `<canvas>` and extracts text entirely client-side, in the browser and in Node.
 
 ![pdfjs — health radar](../../assets/health/pdfjs.svg)
 
@@ -90,6 +90,28 @@ A pure-JavaScript PDF rendering and parsing library by Mozilla that powers Firef
 You're a front-end engineer building a web app where users need to view PDFs inline — contracts, invoices, reports — without bouncing them to the browser's native plugin or a third-party SaaS embed. You don't want to upload documents to someone else's server just to render them, and you need the viewer to behave consistently across Chrome, Firefox, and Safari. You pull in `pdfjs-dist`, point it at the PDF (a URL, an `ArrayBuffer`, or bytes you already hold), call `getDocument()`, and render each page into a canvas you control — zoom, page navigation, and text-layer selection all happen client-side. For a turnkey UI you drop in the prebuilt `web/viewer.html` bundle and skip writing the chrome yourself.
 
 The same library is your tool when you need to *read* a PDF, not just show it: pull the text content per page (`getTextContent()`) for client-side search, snippet extraction, or feeding a lightweight search index, or read the document outline and annotations. Because parsing and rendering run in a Web Worker off the main thread, a heavy document won't freeze your UI — and the whole thing works offline once the assets are loaded, so it suits privacy-sensitive apps that must keep documents on the client.
+
+## How it works
+
+PDF.js is two layers (their own docs say so): a **core** that parses the binary PDF format, and a **display** layer that turns the parsed objects into things you can draw and query. You call `getDocument()` with a URL, an `ArrayBuffer`, or bytes you already hold, and the parsing happens in a **Web Worker** — a background browser thread — so a 50-page contract never freezes your UI. You then ask the returned document for a page (`getPage(1)`), get a `viewport` sized to your zoom level, and call `render()` with a `<canvas>` context you own; a selectable text layer is generated separately as positioned DOM you overlay on the canvas, and `getTextContent()` is what powers client-side search or extraction. What it does for you: parsing, rendering, text/outline/annotation access, and a complete prebuilt viewer (`web/viewer.html`) if you don't want to write the chrome yourself. What stays yours: serving the worker file (`build/pdf.worker.mjs`) from a reachable URL and setting `GlobalWorkerOptions.workerSrc` to match — the single most common integration failure — plus any UI beyond the prebuilt viewer and the CPU budget on the client.
+
+![PDF.js — backbone user story](../../assets/flow/pdfjs.svg)
+
+<!-- flow-steps:begin (generated from flows/pdfjs.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the prebuilt npm package — `npm install pdfjs-dist`
+2. **You**: Point the library at the worker file it ships — `pdfjsLib.GlobalWorkerOptions.workerSrc`
+3. **You**: Open a document from a URL or bytes you already hold — `pdfjsLib.getDocument({ url })`
+4. **PDF.js**: Parses the PDF format in a background Web Worker, keeping your UI thread free — component: `pdf.worker`
+5. **You**: Ask for a page and render it into a canvas you own — `page.render(renderContext)`
+6. **PDF.js**: Paints pixel-faithful page output into that canvas via the display-layer API — component: `display layer`
+
+**Value**: Consistent in-app PDF viewing with files never leaving the client — plus getTextContent() for search/extraction in the same library
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -118,27 +140,27 @@ The same library is your tool when you need to *read* a PDF, not just show it: p
 
 ## Dependencies
 
-- **Runtime:** a JavaScript environment — a modern browser, or Node for server-side use. The worker script (`pdf.worker.js`) must be served and its path configured (`GlobalWorkerOptions.workerSrc`).
+- **Runtime:** a JavaScript environment — a modern browser, or Node for server-side use. The worker script (`build/pdf.worker.mjs` in current `pdfjs-dist`) must be served and its path configured (`GlobalWorkerOptions.workerSrc`).
 - **Install:** `npm install pdfjs-dist` for the library + prebuilt viewer assets; no external services or datastore required.
 - **Node specifics:** server-side rendering to canvas needs a canvas implementation (e.g. `node-canvas` / `@napi-rs/canvas`); plain text extraction has lighter needs. [未验证]
 - **Build from source:** Node.js and the Gulp toolchain; exact minimum versions are set by the repo and shift over time. [未验证]
 
 ## Ops difficulty
 
-**Low.** PDF.js is a client-side (or in-process Node) library — there is no service to deploy, no datastore, no clustering. The one real setup gotcha is wiring the worker: the `pdf.worker.js` file must be served from a reachable URL and `workerSrc` set to match, or rendering silently fails; bundlers (Webpack/Vite) often need a one-time config to emit the worker correctly. Beyond that, "ops" is really just keeping the dependency current (security and format-compatibility fixes land regularly) and budgeting CPU/memory on the client for large documents. Serving the prebuilt viewer is static-file hosting.
+**Low.** PDF.js is a client-side (or in-process Node) library — there is no service to deploy, no datastore, no clustering. The one real setup gotcha is wiring the worker: the `pdf.worker.mjs` file must be served from a reachable URL and `workerSrc` set to match, or rendering silently fails; bundlers (Webpack/Vite) often need a one-time config to emit the worker correctly. Beyond that, "ops" is really just keeping the dependency current (security and format-compatibility fixes land regularly) and budgeting CPU/memory on the client for large documents. Serving the prebuilt viewer is static-file hosting.
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 2.9 hours across 53 qualifying issues/PRs.
-- **Maintenance (2026-06):** last push 2026-06, latest release v6.1.200 dated 2026-06-27 — **active** with a steady release stream; security/format fixes land regularly. [推断]
+- **Responsiveness**: Grade A — median first-response time 2.7 hours across 52 qualifying issues/PRs.
+- **Maintenance (2026-09):** last push 2026-09-25, latest release v6.3.289 dated 2026-08-29 (GitHub API) — **active** with a steady release stream; security/format fixes land regularly. [推断]
 - **Governance / backing:** Mozilla-owned (`mozilla/pdf.js`, Organization) and the engine behind Firefox's built-in PDF viewer. [推断] That is unusually strong backing: it is load-bearing for a shipping browser, so it has a structural reason to stay maintained — not a hobby project at the mercy of one maintainer.
 - **Age & Lindy (created 2011-04, ~15yr):** old **and** still active — a textbook **strong Lindy** bet. A 15-year-old, browser-critical, continuously released library is about as safe a longevity prior as open source offers. [推断]
-- **Adoption:** ~53k stars (volatile, see Caveats) plus the de-facto status as *the* JS PDF renderer (shipped in every Firefox, wrapped by countless web viewers) — deep, real ecosystem adoption. [未验证]
+- **Adoption:** ~54k stars (volatile, see Caveats) plus the de-facto status as *the* JS PDF renderer (shipped in every Firefox, wrapped by countless web viewers) — deep, real ecosystem adoption. [未验证]
 - **Risk flags:** Apache-2.0 (no relicense risk); no open-core/CLA gating. The only real watch-item is that it renders/reads but does not author PDFs — a scope boundary, not a viability risk.
 
 ## Caveats (unverified)
 
-- [未验证] ~53.5k GitHub stars and "active (2026-06)" reflect a point-in-time snapshot (latest release v6.1.200, 2026-06-27); star counts are noisy and date-sensitive — treat as indicative.
+- [未验证] ~54k GitHub stars and "active (2026-09)" reflect a point-in-time snapshot (latest release v6.3.289, 2026-08-29; checked 2026-09-28); star counts are noisy and date-sensitive — treat as indicative.
 - [未验证] Modern PDF.js renders primarily to `<canvas>`; an older SVG back-end existed historically and may be deprecated/removed in current versions — verify against the version you pin rather than assuming SVG output.
 - [未验证] Node-side rendering and the exact canvas backend / API surface vary by version; confirm against the `pdfjs-dist` version you install.
 - [推断] In-browser performance and memory pressure on very large or image-heavy PDFs is an inference from the rendering model, not a measured benchmark for any specific document.

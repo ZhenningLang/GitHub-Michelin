@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | A (6/6) | [→](docling.md) |
+| **Docling** | Use it when you must parse messy PDF/DOCX/PPTX into clean structured Markdown/JSON for RAG ingestion — a parser, not a DMS. | A (5/6) | [→](docling.md) |
 | **MarkItDown** | Use it when you need a lightweight Python library to convert various office documents and files to Markdown for LLM ingestion — simpler than Docling but less layout-aware. | B (6/6) | [→](markitdown.md) |
 | **olmOCR** | Use it when you must convert complex PDFs with equations, tables, handwriting, and multi-column layouts into clean Markdown for LLM training datasets — requires a GPU. | C (5/6) | [→](olmocr.md) |
 | **Marker** | Convert PDF to markdown + JSON quickly with high accuracy | B (5/6) | [→](marker.md) |
@@ -22,7 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Docling](docling.md) | ✅ | A (6/6) | Rich-document parsing (layout + tables) to structured Markdown/JSON; heavier model deps than plain text extraction. |
+| [Docling](docling.md) | ✅ | A (5/6) | Rich-document parsing (layout + tables) to structured Markdown/JSON; heavier model deps than plain text extraction. |
 | [MarkItDown](markitdown.md) | ✅ | B (6/6) | Lightweight Python library converting office documents and files to Markdown for LLM ingestion; simpler than Docling but less layout-aware. |
 | [olmOCR](olmocr.md) | ✅ | C (5/6) | VLM-based PDF linearization for LLM datasets; handles equations, tables, and handwriting but requires GPU. |
 | [PageIndex](../rag-retrieval/structured-retrieval/pageindex.md) | ✅ | B (6/6) | Builds a retrieval index over long structured docs — downstream of parsing, not a parser. |

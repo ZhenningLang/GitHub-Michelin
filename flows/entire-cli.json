@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Entire does", "zh": "Entire 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary", "zh": "安装单一二进制", "code": "brew install --cask entireio/tap/entire"},
+    {"lane": "you", "en": "Enable it in your repo and pick your agents", "zh": "在仓库里启用并选好 agent", "code": "cd your-project && entire enable", "component": {"en": "agent hooks", "zh": "agent hooks"}},
+    {"lane": "them", "en": "Captures prompts, tool calls and files as the agent works", "zh": "agent 干活时捕获提示、工具调用与文件改动", "component": {"en": "shadow branch", "zh": "shadow 分支"}},
+    {"lane": "you", "en": "Commit as usual — the trailer links your commit to the record", "zh": "照常 commit — trailer 把你的 commit 链到记录上", "code": "Entire-Checkpoint: <id>"},
+    {"lane": "them", "en": "Condenses the session into a checkpoint ref in the git object store", "zh": "把会话浓缩成 git 对象库里的 checkpoint ref", "code": "refs/entire/checkpoints/<shard>/<id>", "component": {"en": "checkpoint refs", "zh": "checkpoint refs"}},
+    {"lane": "you", "en": "Resume a stopped session from the last checkpoint", "zh": "从最近一次 checkpoint 恢复停掉的会话", "code": "entire session resume <branch>"}
+  ],
+  "value": {"en": "A searchable, per-commit record of how the code was written — outside your branch history — with a known-good checkpoint to resume from", "zh": "分支历史之外，一份连着 commit、可搜索的编码过程记录，和可恢复的已知良好 checkpoint"},
+  "sources": ["README.md main @ 2026-09: Quick Start (brew install --cask entireio/tap/entire; curl -fsSL https://entire.io/install.sh | bash; cd your-project && entire enable)", "README.md Key Concepts / Checkpoints & Checkpoint Storage: 'the commit carries an Entire-Checkpoint: <id> trailer'; refs/entire/checkpoints/<shard>/<id>; shadow-branch condensation", "README.md Typical Workflow step 3: entire session resume <branch>"]
+}

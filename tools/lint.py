@@ -497,7 +497,14 @@ def check_adoption_evidence(path: Path, fmtext: str, block: str, rep: Report) ->
                         (repo_m.group(1) if repo_m else "").rstrip("/"))
         if slug:
             owner, name = slug.group(1), slug.group(2).removesuffix(".git")
-            if _match_quality({"name": pkg.strip("\"'")}, owner, name) == 0:
+            # A package whose name is unrelated to the repo (published under a brand:
+            # `oh-my-claudecode` ships as `oh-my-claude-sisyphus`) is allowed only when
+            # the block records how the scorer tied the registry record to this repo
+            # (`package_link`, written solely after the repository link was checked).
+            link = raw.get("package_link", "null")
+            if link and link != "null":
+                pass
+            elif _match_quality({"name": pkg.strip("\"'")}, owner, name) == 0:
                 rep.error(path, f"health: adoption canonical_package '{pkg}' matches neither "
                                 f"the repo name '{name}' nor the owner scope '{owner}' — a "
                                 "package that cannot be shown to be this repo must not "

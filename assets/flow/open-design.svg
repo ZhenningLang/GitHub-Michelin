@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="735" viewBox="0 0 880 735" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="686" viewBox="0 0 880 686" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -30,65 +30,56 @@
 @media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="735" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="577" rx="10"/>
+<rect class="bg" width="880" height="686" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="528" rx="10"/>
 <rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">You do</text>
-<rect class="laneT" x="460" y="28" width="392" height="577" rx="10"/>
-<rect class="pillT" x="474" y="40" width="175.1" height="24" rx="12"/>
-<text class="hdr hT" x="488" y="57">Open Design does</text>
-<path class="hand" d="M408,131.5 C439.0,131.5 439.0,155 470,155" marker-end="url(#a)"/>
-<path class="hand" d="M472,190.5 C441.0,190.5 441.0,241 410,241" marker-end="url(#a)"/>
-<path class="hand" d="M408,253.0 C439.0,253.0 439.0,300 470,300" marker-end="url(#a)"/>
-<path class="edge" d="M494,418 L494,442" marker-end="url(#a)"/>
-<path class="hand" d="M472,492.5 C441.0,492.5 441.0,516 410,516" marker-end="url(#a)"/>
-<rect class="card" x="40" y="72" width="368" height="119" rx="8"/>
-<rect class="accY" x="40" y="72" width="4" height="119" rx="2"/>
+<rect class="laneT" x="460" y="28" width="392" height="528" rx="10"/>
+<rect class="pillT" x="474" y="40" width="165.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenDesign does</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,262.0 C439.0,262.0 439.0,286 470,286" marker-end="url(#a)"/>
+<path class="edge" d="M494,381 L494,405" marker-end="url(#a)"/>
+<path class="hand" d="M472,466.5 C441.0,466.5 441.0,490 410,490" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
-<text class="t" x="82" y="101">Install the desktop app; have a</text>
-<text class="t" x="82" y="123">coding-agent CLI on PATH or a BYOK</text>
-<text class="t" x="82" y="145">model key</text>
-<text class="comp" x="82" y="173">component: desktop app</text>
-<rect class="cardT" x="472" y="131" width="368" height="119" rx="8"/>
-<rect class="accT" x="472" y="131" width="4" height="119" rx="2"/>
-<circle class="accT" cx="494" cy="155" r="10"/>
-<text class="num" x="494" y="159" text-anchor="middle">2</text>
-<text class="t" x="514" y="160">Detects the agent CLIs on PATH and</text>
-<text class="t" x="514" y="182">loads skills, templates and 151 design</text>
-<text class="t" x="514" y="204">systems</text>
-<text class="comp" x="514" y="232">component: local daemon</text>
-<rect class="card" x="40" y="217" width="368" height="72" rx="8"/>
-<rect class="accY" x="40" y="217" width="4" height="72" rx="2"/>
-<circle class="accY" cx="62" cy="241" r="10"/>
-<text class="num" x="62" y="245" text-anchor="middle">3</text>
-<text class="t" x="82" y="246">On Home, pick an artifact type and a</text>
-<text class="t" x="82" y="268">design system, then type a brief</text>
-<rect class="cardT" x="472" y="276" width="368" height="142" rx="8"/>
-<rect class="accT" x="472" y="276" width="4" height="142" rx="2"/>
-<circle class="accT" cx="494" cy="300" r="10"/>
-<text class="num" x="494" y="304" text-anchor="middle">4</text>
-<text class="t" x="514" y="305">Runs your agent in the project folder</text>
-<text class="t" x="514" y="327">with the template and DESIGN.md</text>
-<text class="t" x="514" y="349">composed in</text>
-<text class="c" x="514" y="373">DESIGN.md</text>
-<text class="comp" x="514" y="396">component: runtime adapter</text>
-<rect class="cardT" x="472" y="444" width="368" height="97" rx="8"/>
-<rect class="accT" x="472" y="444" width="4" height="97" rx="2"/>
-<circle class="accT" cx="494" cy="468" r="10"/>
-<text class="num" x="494" y="472" text-anchor="middle">5</text>
-<text class="t" x="514" y="473">Renders the files it writes in a</text>
-<text class="t" x="514" y="495">sandboxed live preview</text>
-<text class="comp" x="514" y="523">component: Studio preview iframe</text>
-<rect class="card" x="40" y="492" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="492" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="516" r="10"/>
-<text class="num" x="62" y="520" text-anchor="middle">6</text>
-<text class="t" x="82" y="521">Critique in chat until it looks right,</text>
-<text class="t" x="82" y="543">then export</text>
-<text class="c" x="82" y="567">HTML · PDF · PPTX</text>
-<rect class="val" x="28" y="619" width="824" height="88" rx="10"/>
-<text class="valK" x="48" y="643">VALUE</text>
-<text class="valT" x="48" y="667">On-brand prototypes, decks and videos as real files on your disk, made by the agent you</text>
-<text class="valT" x="48" y="689">already pay for</text>
+<text class="t" x="82" y="101">Install the desktop app</text>
+<text class="t" x="82" y="123">(macOS/Windows) — or attach your agent</text>
+<text class="t" x="82" y="145">instead</text>
+<text class="c" x="82" y="169">od mcp install claude</text>
+<rect class="card" x="40" y="215" width="368" height="94" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="94" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">Pick an artifact type, a plugin/skill</text>
+<text class="t" x="82" y="266">and one of the 151 DESIGN.md systems,</text>
+<text class="t" x="82" y="288">enter a brief</text>
+<rect class="cardT" x="472" y="262" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="262" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="286" r="10"/>
+<text class="num" x="494" y="290" text-anchor="middle">3</text>
+<text class="t" x="514" y="291">Spawns a coding-agent CLI already on</text>
+<text class="t" x="514" y="313">your PATH — or streams your BYOK</text>
+<text class="t" x="514" y="335">endpoint</text>
+<text class="comp" x="514" y="363">component: local daemon</text>
+<rect class="cardT" x="472" y="407" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="407" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="431" r="10"/>
+<text class="num" x="494" y="435" text-anchor="middle">4</text>
+<text class="t" x="514" y="436">The agent composes skill + template +</text>
+<text class="t" x="514" y="458">brand contract into real HTML/CSS</text>
+<text class="t" x="514" y="480">files, previewed in a sandboxed iframe</text>
+<text class="comp" x="514" y="508">component: spawned agent</text>
+<rect class="card" x="40" y="466" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="466" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="490" r="10"/>
+<text class="num" x="62" y="494" text-anchor="middle">5</text>
+<text class="t" x="82" y="495">Iterate in Studio, then export the</text>
+<text class="t" x="82" y="517">artifact</text>
+<rect class="val" x="28" y="570" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="594">VALUE</text>
+<text class="valT" x="48" y="618">Prototypes, decks and videos as real files on your machine — no hosted studio, no model</text>
+<text class="valT" x="48" y="640">lock-in</text>
 </svg>

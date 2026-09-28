@@ -6,20 +6,20 @@ category: task-queue
 tags: [task-queue, distributed, async, background-jobs, workers, scheduling, python, broker]
 language: Python
 license: BSD-3-Clause
-maturity: v5.x, active (2026-06), ~28.6k stars
-last_verified: 2026-06-28
+maturity: v5.x, active (2026-09), ~28.9k stars
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-27T11:27:51Z
+  pushed_at: 2026-09-27T15:29:28Z
   default_branch: main
-  default_branch_sha: d6131816f172750f7ba6204f903cd2fc243853ad
+  default_branch_sha: efdfad389ef63115c7a57c2f960972c8c0e2e6b6
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:04:35Z
+  computed_at: 2026-09-28T11:14:43Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -35,7 +35,7 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 30.7
+        median_ttfr_hours: 42.3
         qualifying_issues: 21
         band: default
         window_offset_days: 8
@@ -47,30 +47,33 @@ health:
         registry: pypi.org
         canonical_package: celery
         dependent_repos_count: 40119
-        downloads_last_month: 41999705
+        downloads_last_month: 42357772
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 6360
+        repo_age_days: 6366
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 27
-        top1_share: 0.658
-        top3_share: 0.791
+        active_maintainers_12mo: 28
+        top1_share: 0.652
+        top3_share: 0.781
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: BSD-3-Clause
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: CC-BY-SA-4.0
+        license_basis: "registry:pypi.org/celery"
 ---
 
 # Celery
@@ -84,6 +87,28 @@ Python 事实标准的分布式任务队列：通过消息 broker（RabbitMQ/Red
 你在用 Python 写 Web 应用——Django 或 FastAPI——你的请求处理器开始干太多事了。发欢迎邮件、生成 PDF 发票、转码上传文件、调用三个慢吞吞的第三方 API：这些全都卡在 HTTP 响应里，p99 一路往上爬。你不想让用户盯着转圈等一个跑 20 秒的内联作业，又不能简单地开线程——因为你需要这些活儿能挺过进程重启、还能跨机器横向扩展。于是你拿起 Celery：把那个慢函数标成 `@app.task`，在视图里调 `process_upload.delay(upload_id)`，请求立刻返回。一组独立的 Celery worker——可以在同一台机上，也可以是一整片机群——从 RabbitMQ 或 Redis 上把作业取走执行，第三方 API 超时就带退避重试。
 
 应用长大后，你会用上框架的其余部分：`beat` 跑类 cron 的周期任务（夜间报表、缓存预热）、用路由把重型 GPU 作业送进专属队列和 worker 池、用 `chain`/`group`/`chord` 这些 canvas 原语来扇出再汇合、限速，以及在调用方真要返回值时配一个 result backend（Redis/DB）。它就是那个无聊但久经验证的默认选项——「把这段 Python 活儿稍后、在别处、可靠地跑掉」；加上周边生态（Flower 做监控、Django 集成、成熟的 broker 支持），你很少是第一个踩到某个坑的人。
+
+## 怎么用起来
+
+Celery 把「跑什么」和「何时跑」拆开：你把 Python 函数挂到一个 *app* 对象上（worker 启动命令 `celery -A tasks` 里的 `tasks` 就是那个模块）；调用 `task.delay(...)` 在你自己的进程里什么都不执行——它把这次调用序列化成一条消息，投进 broker（你单独运维的消息队列服务，RabbitMQ 或 Redis）的队列。另一头是你自己拉起的 **worker** 进程：worker 与 broker 保持长连接，一旦有空位就取消息、反序列化、执行，配置了的话失败会按指数退避（每次重试等待时间翻倍）再来。`beat` 是另一个你拉起的进程，到点把周期任务变成普通的排队调用而已。留在你手上的事：运维 broker、托管并扩缩 worker、保证任务幂等——投递默认是至少一次，崩溃或重投递后任务可能跑两遍。底层的传输管道（连接池、重连、序列化）是 `kombu` 的活，本地进程池是 `billiard` 的活——两者你都只配置、不编写。
+
+![Celery — 主干用户故事](../../assets/flow/celery.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/celery.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 Celery，并跑一个 Redis 或 RabbitMQ 作 broker — `pip install celery · docker run -d -p 6379:6379 redis`
+2. **你**：在可导入模块里建 app，把慢函数标成任务 — `@app.task` — 组件：`Celery 应用`
+3. **你**：在负责跑任务的机器上启动 worker 池 — `celery -A tasks worker --loglevel=INFO` — 组件：`worker`
+4. **Celery**：worker 保持连接，从 broker 队列持续消费任务消息 — 组件：`broker + worker`
+5. **你**：在请求处理器里调用任务，立刻返回 — `add.delay(4, 4)`
+6. **Celery**：空闲 worker 取走执行，并可把结果写进 result backend — 组件：`worker`
+
+**价值**：HTTP 响应立即返回；重活跑在能扛重启、可跨机扩展的 worker 池上
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -106,9 +131,9 @@ Python 事实标准的分布式任务队列：通过消息 broker（RabbitMQ/Red
 
 ## 技术栈
 
-- **语言：** Python（纯 Python 框架；跑在 CPython 上，支持现代 3.x）。
-- **Broker（可插拔传输层）：** RabbitMQ（AMQP，参考 broker）与 Redis 是一等公民；其他（如 SQS）也存在但支持程度不一——请核实你那个传输层的功能对等性。[未验证]
-- **Result backend（可选）：** Redis、数据库（SQLAlchemy/Django ORM）、RabbitMQ/RPC 等——仅在调用方需要消费任务返回值或状态时才需要。
+- **语言：** Python——5.6.x 线跑在 CPython 3.9–3.13 与 PyPy3.9+ 上；v5.7（2026-09 起处于 alpha）放弃 Python 3.9。纯 Python 框架，无编译内核。
+- **Broker（可插拔传输层）：** RabbitMQ（AMQP，参考 broker）与 Redis 按文档为功能完备；Amazon SQS 与 Google Pub/Sub 随发行版提供，其余传输层仍属实验性——请核实你那个传输层的功能对等性。
+- **Result backend（可选）：** Redis、数据库（SQLAlchemy/Django ORM）、AMQP/RPC、memcached、Elasticsearch、Google Cloud Storage 等——仅在调用方需要消费任务返回值或状态时才需要。
 - **核心库：** `kombu`（消息/传输抽象）、`billiard`（进程池）、`click`（CLI）。定时靠 `celery beat`；监控常用 Flower。
 - **原语：** 任务、队列/路由、重试、限速，以及用于组合工作流的 canvas（`chain`、`group`、`chord`、`map`、`chunks`）。
 
@@ -125,17 +150,16 @@ Python 事实标准的分布式任务队列：通过消息 broker（RabbitMQ/Red
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 30.7 小时，基于 21 个 qualifying issues/PRs。
-- **维护（2026-06）。** 仓库最后 push 于 2026-06，并在 v5.x 线上持续发版（最新发布 v5.6.3，2026-03）——处于**活跃**而非吃老本；未归档。[推断]
-- **治理 / bus factor。** 由 `celery` 这个 GitHub **组织**持有，多年来有广泛的贡献者群体，而非单一作者——但它由社区/志愿者维护，背后没有大型基金会或厂商出钱，所以持续的维护者带宽是要盯的点。[推断]
-- **年龄与 Lindy 判断。** **2009-04 创建（约 17 年）**且**仍在活跃维护**⇒ **极强 Lindy** 信号——它是任何语言里最长寿、最久经实战的任务队列之一，是无聊但被验证过的默认选项，而非被炒作的新秀。[推断]
-- **采用度与生态。** 在 Python 里无处不在：Django/Flask/FastAPI 技术栈的默认后台作业框架，真实部署基数巨大，文档成熟，broker 支持一等，生态完整（Flower、django-celery-beat/results、各种集成）。约 28.6k star 是广泛采用的佐证。[未验证]
-- **风险标记。** 无 relicense 历史——全程 **BSD-3-Clause** 宽松许可；主要风险是上文那套运维复杂度 / 可调试性，外加依赖社区维护而非有资金的背书方。[推断]
+- **响应速度**：Grade A——中位首次响应时间 42.3 小时，基于 21 个 qualifying issues/PRs。
+- **维护（2026-09）。** 仓库最后 push 于 2026-09，并在 v5.x 线上持续发版（最新稳定版 v5.6.3，2026-03；v5.7.0a1 自 2026-09 起在 main 分支处于 alpha）——处于**活跃**而非吃老本；未归档。
+- **治理 / bus factor。** 由 `celery` 这个 GitHub **组织**持有，多年来有广泛的贡献者群体，而非单一作者——社区/志愿者维护，非基金会治理，但资金已不再为零：README 指向 Open Collective 赞助、Tidelift 订阅，以及「Celery now powered by Blacksmith」的赞助公告（2026-09）。持续的维护者带宽仍是要盯的点。[推断：Blacksmith 背书对路线图的实际约束力未见公开说明]
+- **年龄与 Lindy 判断。** **2009-04 创建**（GitHub `created_at`，2026-09）且**仍在活跃维护**⇒ **极强 Lindy** 信号——它是任何语言里最长寿、最久经实战的任务队列之一，是无聊但被验证过的默认选项，而非被炒作的新秀。[推断]
+- **采用度与生态。** 在 Python 里无处不在：Django/Flask/FastAPI 技术栈的默认后台作业框架，真实部署基数巨大，文档成熟，broker 支持一等，生态完整（Flower、django-celery-beat/results、各种集成）。约 28.9k star（2026-09）与每月 42,357,772 次 PyPI 下载是广泛采用的佐证。
+- **风险标记。** 无 relicense 历史——全程 **BSD-3-Clause** 宽松许可，且已由机器佐证：LICENSE 正文只有单一 BSD-3 模板、`docs/` 目录另挂 CC BY-SA 4.0 附节，PyPI 元数据同宣称（雷达 risk_license A，`license_basis: registry`）；主要风险是上文那套运维复杂度 / 可调试性，外加依赖社区维护而非有资金的背书方。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06，约 28.6k GitHub star、最新发布 v5.6.3（2026-03）——star 数和版本号对时间敏感、会漂移，仅供参考。
-- [未验证] 创建日期 2009-04、「约 17 年」年龄是依此处对项目历史的记述，请对照仓库实际创建日期复核。
-- [未验证] broker/传输层的功能对等性各不相同（RabbitMQ vs Redis vs SQS 等）且随版本变动；请确认你依赖的那个传输层支持你需要的功能。
+- [未验证] 2026-09-28 从 GitHub/PyPI API 读到的约 28.9k star、最新稳定版 v5.6.3（2026-03）——star 数和版本号会漂移，仅供参考。
+- [推断] broker/传输层的功能对等性各不相同（RabbitMQ/Redis 功能完备 vs SQS/GCP Pub/Sub 及其余）且随版本变动；请确认你依赖的那个传输层支持你需要的功能。
 - [推断] 至少一次投递、「任务必须幂等」/ 无恰好一次保证这套说法，是把分布式队列的一般推理套到 Celery 上，并非引用的承诺——且行为取决于 broker 与 ack/可见性配置。
 - [推断]「中到高」的运维难度与「可观测性是坑」的表述，是从 worker/broker/backend 架构得出的判断，而非实测基准。

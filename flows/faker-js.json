@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Faker does", "zh": "Faker 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it as a dev dependency", "zh": "作为 dev 依赖安装", "code": "npm install @faker-js/faker --save-dev"},
+    {"lane": "you", "en": "Import the faker instance in your factory file", "zh": "在工厂文件里 import faker 实例", "code": "import { faker } from '@faker-js/faker';"},
+    {"lane": "you", "en": "Compose namespaced generators into your record shape", "zh": "用命名空间生成器拼出你的记录形状", "code": "faker.person.fullName() · faker.internet.email()"},
+    {"lane": "them", "en": "Draws plausible values from locale datasets via a seedable PRNG", "zh": "经可 seed 的伪随机源从 locale 数据集挑值", "component": {"en": "generator modules", "zh": "生成器模块"}},
+    {"lane": "you", "en": "Set a seed when a failing test must replay exactly", "zh": "要精确复现失败时设一个 seed", "code": "faker.seed(123)"},
+    {"lane": "them", "en": "Replays the identical value sequence, in browser and Node alike", "zh": "精确重放同一取值序列，浏览器与 Node 一致", "component": {"en": "Randomizer", "zh": "Randomizer"}}
+  ],
+  "value": {"en": "Realistic fixtures by the thousand from one factory function — varied by default, byte-identical when you seed", "zh": "一个工厂函数吐出上千条逼真 fixture——默认多样，seed 之后逐字节复现"},
+  "sources": [
+    "fakerjs.dev Getting Started (fetched 2026-09-28): npm install @faker-js/faker --save-dev",
+    "README.md (faker-js/faker, branch next, fetched 2026-09-28): import { faker } from '@faker-js/faker'; faker.person.fullName(); faker.internet.email(); faker.helpers.multiple(createRandomUser, { count: 5 })",
+    "fakerjs.dev Usage (fetched 2026-09-28): faker.seed(123) reproducible results; Mersenne-Twister randomizers per the Randomizer guide"
+  ]
+}

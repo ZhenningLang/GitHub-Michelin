@@ -6,20 +6,20 @@ category: document-parsing
 tags: [document-parsing, pdf, docx, rag, markdown, ocr, table-extraction, layout-analysis, llm-ingestion]
 language: Python
 license: MIT
-maturity: v2.x, active (2026-06), ~62.3k stars; LF AI & Data project (IBM-originated)
-last_verified: 2026-06-28
+maturity: v2.x, active (2026-09), ~68.1k stars; LF AI & Data project (IBM-originated)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-29T09:11:34Z
+  pushed_at: 2026-09-28T05:13:57Z
   default_branch: main
-  default_branch_sha: 6395151e271277d4a154e7e7f01c71fd72829482
+  default_branch_sha: 1d284951e3dcf9e57298a4f4494875239a5fec33
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:17:42Z
+  computed_at: 2026-09-28T06:08:38Z
   overall: A
-  overall_score: 3.67
-  scored_axes: 6
+  overall_score: 3.6
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 11.2
-        qualifying_issues: 38
+        median_ttfr_hours: 13.3
+        qualifying_issues: 41
         band: default
         window_offset_days: 0
         source: issue
@@ -47,25 +47,20 @@ health:
         registry: pypi.org
         canonical_package: docling
         dependent_repos_count: 0
-        downloads_last_month: 3400846
+        downloads_last_month: 2743116
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 805
+        repo_age_days: 811
         last_commit_age_days: 0
         cohort: library
     governance:
-      grade: A
-      raw:
-        active_maintainers_12mo: 83
-        top1_share: 0.162
-        top3_share: 0.464
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -73,11 +68,13 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    governance: { reason: empty_or_gated }
 ---
 
 # Docling
 
-A Python library that parses PDF, DOCX, PPTX, XLSX, HTML, images and more into one unified structured representation (`DoclingDocument`) — with page layout, reading order, and table structure recovered — then exports clean Markdown / HTML / lossless JSON for gen-AI and RAG ingestion.
+You feed a pipeline a multi-column scanned PDF and plain text extraction hands back word-soup — columns interleaved, tables collapsed, headings flattened. Docling parses PDF, Office, HTML, images, audio and more with layout-aware ML models and rebuilds the document as one structured `DoclingDocument` (reading order, real table rows/cells, OCR for scans), then exports clean Markdown / HTML / lossless JSON that a chunker and embedder can consume directly.
 
 ![docling — health radar](../../assets/health/docling.svg)
 
@@ -86,6 +83,26 @@ A Python library that parses PDF, DOCX, PPTX, XLSX, HTML, images and more into o
 You're an engineer building a RAG pipeline and your corpus is a pile of messy real-world documents — scanned PDFs with multi-column layout, DOCX contracts, PPTX decks, the occasional spreadsheet and a few HTML exports. Naive text extraction wrecks you: columns interleave, tables collapse into word-soup, headings lose their level, and the chunks you feed the retriever are garbage in, garbage out. You import Docling, point its `DocumentConverter` at a file or URL, and get back a `DoclingDocument` that has reconstructed reading order, detected the layout, recovered table structure as actual rows/cells, and (when the page is a scan) run OCR. From there you call `.export_to_markdown()` or `.export_to_dict()`/JSON and hand structured text — headings, tables, lists intact — to your chunker and embedder. Because it's a plain `pip install docling` library with a Python API and a CLI, it drops into an existing ingestion job rather than forcing a service.
 
 You also reach for it when you want one parser across heterogeneous formats instead of a different tool per type — PDF via PyMuPDF, DOCX via python-docx, PPTX via python-pptx, glued together by hand. Docling normalizes them all to the same `DoclingDocument`, so downstream chunking/serialization code is written once. It ships plug-and-play integrations for LangChain, LlamaIndex, Haystack and Crew AI, so the converter slots in as the document-loader stage of those frameworks.
+
+## How it works
+
+Docling is a conversion pipeline you run in-process. For each source file a format-specific backend reads the raw structure (PDF pages, DOCX XML, HTML DOM…), then a set of vision models runs on the pages: layout analysis (default model: Heron) finds headings, paragraphs, tables and figures and restores reading order, a table-structure model rebuilds rows and cells, and OCR kicks in wherever there is no embedded text layer — by default an `auto` engine selector picks the best OCR engine installed on your machine (RapidOCR, EasyOCR, Tesseract, ocrmac on macOS, Nemotron-OCR). Everything is merged into a single `DoclingDocument` — one lossless tree of typed items independent of the input format — and serialization is your exit door: `export_to_markdown()`, HTML, JSON, or DocTags for VLM prompts. What the library does for you: format normalization, layout/table/OCR inference, and stable exports. What stays yours: the Python environment, the one-time model-weight downloads (they are cached locally, so air-gapped setups need a plan), accelerator choice (CPU works; GPU is materially faster), and all chunking/embedding after the export. A CLI (`docling <file-or-url>`) wraps the same pipeline for one-off conversions.
+
+![docling — backbone user story](../../assets/flow/docling.svg)
+
+<!-- flow-steps:begin (generated from flows/docling.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library into your Python environment — `pip install docling`
+2. **You**: Point the converter at a file or URL — `converter = DocumentConverter() · result = converter.convert(source)`
+3. **Docling**: Runs layout, reading-order, table-structure and OCR models, merges everything into one DoclingDocument — component: `Document pipeline`
+4. **You**: Serialize the result for your chunker — `result.document.export_to_markdown()`
+
+**Value**: Markdown/JSON with columns, tables and headings intact — RAG-ready input without hand-written parsing
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -109,15 +126,15 @@ You also reach for it when you want one parser across heterogeneous formats inst
 
 - **Language:** Python (`pip install docling`), exposing a `DocumentConverter` API and a CLI.
 - **Core model:** every input is normalized to a unified `DoclingDocument` (layout, reading order, tables, figures, lists, headings), then serialized to Markdown / HTML / lossless JSON / DocTags.
-- **ML models:** layout analysis and table-structure recovery run vision/DL models; optional Visual Language Model path (e.g. IBM's GraniteDocling) and ASR models for audio inputs. [未验证]
-- **Inputs/outputs:** parses PDF, DOCX, PPTX, XLSX, HTML, EPUB, images (PNG/TIFF/JPEG), and more; exports Markdown, HTML, JSON, DocTags.
+- **ML models:** layout analysis and table-structure recovery run vision/DL models; optional Visual Language Model path (e.g. IBM's GraniteDocling, including via `docling --pipeline vlm --vlm-model granite_docling`) and ASR models for audio, video parsing (ASR transcript + keyframes).
+- **Inputs/outputs:** parses PDF, DOCX, PPTX, XLSX, HTML, EPUB, images (PNG/TIFF/JPEG), Apple Pages/Keynote, audio (WAV/MP3), WebVTT, email (.eml/.msg), ODF (.odt/.ods/.odp), LaTeX, XBRL, plain text and more; exports Markdown, HTML, WebVTT, DocLang, JSON, DocTags.
 - **Integrations:** plug-and-play with LangChain, LlamaIndex, Haystack, Crew AI; MCP server and API-server deployment options exist.
 
 ## Dependencies
 
-- **Runtime:** a Python environment (a recent Python 3.x); install via pip/uv.
+- **Runtime:** a Python environment — **Python 3.10+** (`requires_python <4.0,>=3.10` on PyPI; 3.9 support was dropped in docling 2.70.0); install via pip/uv.
 - **ML model weights:** layout and table-structure models are downloaded on first use and cached locally; this is a one-time network fetch and meaningful disk footprint.
-- **OCR engines (for scanned input):** pluggable OCR backends — e.g. EasyOCR (default-ish) and Tesseract — are used when pages are images/scans; the exact set and defaults vary by version. [未验证]
+- **OCR engines (for scanned input):** pluggable backends installed as extras — RapidOCR, EasyOCR, Tesseract (CLI or tesserocr), ocrmac (macOS Vision), Nemotron-OCR, KServe; the default `OcrAutoOptions` picks the best available one per platform (source: docs "OCR in Docling" + `docling/datamodel/pipeline_options.py`, 2026-09).
 - **Hardware:** runs CPU-only, but layout/table/VLM inference is materially faster on a GPU; throughput on large corpora is dominated by model inference.
 
 ## Ops difficulty
@@ -126,17 +143,16 @@ You also reach for it when you want one parser across heterogeneous formats inst
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 11.2 hours across 38 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed 2026-06 with very frequent releases (v2.107.0, 2026-06-24) — **highly active**, not archived. [推断]
-- **Governance / backing.** The strongest signal here: **IBM-originated and hosted under the LF AI & Data Foundation** — foundation governance plus a major-vendor origin is a much safer footing than a lone-maintainer repo, lowering bus-factor and abandonment risk. [推断]
-- **Age & Lindy verdict.** Only ~2 years old (created 2024-07) ⇒ **young**, so the Lindy prior is weak *on age alone* — but the rapid-fire release cadence, foundation backing, and ~62k stars are the offsetting signals. Treat it as a fast-rising, well-backed project rather than a battle-tested veteran. [推断]
-- **Adoption & ecosystem.** Strong and growing: ~62k stars and plug-and-play integrations with LangChain, LlamaIndex, Haystack, Crew AI make it a de-facto RAG document-loader. The ~937 open issues are consistent with rapid growth and a large surface, not a stall. [未验证]
+- **Responsiveness**: Grade A — median first-response time 13.3 hours across 41 qualifying issues/PRs.
+- **Maintenance (2026-09).** Last pushed 2026-09 with a fast release cadence (v2.130.0, 2026-09-22) — **highly active**, not archived. [推断]
+- **Governance / backing.** The strongest signal here: **IBM-originated and hosted under the LF AI & Data Foundation** (confirmed from README, 2026-09-28) — foundation governance plus a major-vendor origin is a much safer footing than a lone-maintainer repo, lowering bus-factor and abandonment risk. The radar's governance axis is currently unmeasured: GitHub's contributor-stats endpoint was still computing when the scorer ran (`?`), so this bullet is documentation-based, not commit-share-based. [推断]
+- **Age & Lindy verdict.** Only ~2 years old (created 2024-07) ⇒ **young**, so the Lindy prior is weak *on age alone* — but the rapid-fire release cadence, foundation backing, and ~68k stars are the offsetting signals. Treat it as a fast-rising, well-backed project rather than a battle-tested veteran. [推断]
+- **Adoption & ecosystem.** Strong and growing: ~68.1k stars (up from ~62.3k in June, gh 2026-09-28) and plug-and-play integrations with LangChain, LlamaIndex, Haystack, Crew AI make it a de-facto RAG document-loader. The ~955 open issues are consistent with rapid growth and a large surface, not a stall. [未验证]
 - **Risk flags.** MIT, no relicense or open-core split found. The practical caveat is **version churn** — formats, OCR backends, and defaults shift release-to-release, so pin and re-verify the features you depend on. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~62.3k stars and v2.x as of 2026-06 (latest release observed v2.107.0, 2026-06-24); star counts and version numbers are date-sensitive — treat as indicative and re-verify against the repo.
+- [未验证] ~68.1k stars and v2.x as of 2026-09-28 (latest release observed v2.130.0, 2026-09-22, GitHub API); star counts and version numbers are date-sensitive — treat as indicative and re-verify against the repo.
 - [未验证] License is MIT and the project is hosted under the LF AI & Data Foundation, originated by IBM Research Zurich — confirm current governance/license against the repo before relying on it.
-- [未验证] The exact set of supported input formats, export formats, OCR backends, and their version-specific defaults shift release-to-release; verify the formats and engines you depend on against the installed version.
 - [推断] Compute/footprint claims (model-weight download size, GPU speedup, CPU latency) are inferred from the use of layout/table/VLM models, not measured here — benchmark on your hardware and corpus.
-- [未验证] VLM (GraniteDocling) and ASR/audio paths are README-described features whose availability and quality vary by version and configuration; do not assume they're enabled by default.
+- [未验证] VLM (GraniteDocling), ASR/audio and video paths are README-described features whose availability and quality vary by version and configuration; do not assume they're enabled by default.

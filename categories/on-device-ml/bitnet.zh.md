@@ -6,20 +6,20 @@ category: on-device-ml
 tags: [1-bit-llm, ternary, cpu-inference, quantization, llama-cpp, edge-ai, bitnet-b1.58, microsoft]
 language: Python (tooling) + C++ kernels
 license: MIT
-maturity: No tagged releases; commit-versioned, last push 2026-03-10; created 2024-08; Microsoft-maintained (as of 2026-06-26)
-last_verified: 2026-06-26
+maturity: No tagged releases; commit-versioned, ~40.3k stars, last push 2026-07-27; created 2024-08; Microsoft-maintained (as of 2026-09-28)
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-03-10T07:49:47Z
+  pushed_at: 2026-07-27T05:52:06Z
   default_branch: main
-  default_branch_sha: 01eb415772c342d9f20dc42772f1583ae1e5b102
+  default_branch_sha: 0b341e582afbf9e1011f24744b554c96a3477eb5
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:48:52Z
+  computed_at: 2026-09-28T07:57:48Z
   overall: B
-  overall_score: 2.5
-  scored_axes: 6
+  overall_score: 3.2
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,34 +29,26 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 57
+        last_commit_age_days: 63
         active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
-        median_ttfr_hours: 95.2
-        qualifying_issues: 11
+        median_ttfr_hours: 44.6
+        qualifying_issues: 13
         band: default
         window_offset_days: 11
         source: issue
         inferred: false
     adoption:
-      grade: E
-      raw:
-        registry: null
-        canonical_package: null
-        dependent_repos_count: 0
-        downloads_last_month: null
-        graph_tier: E
-        volume_tier: null
-        cross_check_divergence: null
-        archived: false
+      grade: "?"
+      raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 778
-        last_commit_age_days: 57
+        repo_age_days: 784
+        last_commit_age_days: 63
         cohort: framework
     governance:
       grade: B
@@ -73,11 +65,13 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    adoption: { reason: ambiguous }
 ---
 
 # BitNet
 
-微软官方的 **1-bit / 1.58-bit（三值）** LLM 推理框架（`bitnet.cpp`）——一个基于 llama.cpp 派生的运行时，配自研 CPU 内核（I2_S / TL1 / TL2），让 BitNet-b1.58-2B-4T 这类三值模型在 x86 与 ARM CPU 上跑得又快又省电。仅推理，不含训练。
+普通笔记本 CPU 跑一个 7B 的 4-bit 模型很吃力——回答慢、风扇转、电量掉。bitnet.cpp 是微软为三值 LLM 做的推理运行时：权重只有 −1、0、+1 三种值（约 1.58 bit），定制 CPU 内核把矩阵乘法变成查表加法，让那些**原生按 1.58-bit 训练**的模型在普通 x86/ARM CPU 上又凉快又快地跑。只做推理，不含训练。
 
 ![bitnet — 健康度雷达](../../assets/health/bitnet.zh.svg)
 
@@ -85,7 +79,29 @@ health:
 
 你在给一个桌面应用加本地助手功能，而它要发给各种普通笔记本——有 Intel/AMD 的 x86，有 ARM（Apple 芯片、少量 Windows-on-ARM），往往没有可用 GPU，空闲内存只有 4–8GB。你已经决定不走云端：数据敏感、要能离线用、也不想让每次调用的 API 账单随用户量线性增长。一个普通 7B 的 4-bit GGUF 模型在低端 CPU 上仍然偏重，而能耗/续航也很要紧——后台功能一转风扇用户就会抱怨。
 
-于是你选 BitNet。你挑一个**真正按三值训练**的模型——官方的 BitNet-b1.58-2B-4T，以及 Falcon3、Llama3-8B-1.58 等社区移植版——用仓库的 setup 脚本转换好，让 `bitnet.cpp` 的 I2_S/TL1/TL2 内核去跑它。因为权重是三值的，矩阵乘法变成以查表/加法为主的运算，正好被自研内核吃透：CPU 上相比标准量化基线能拿到 README 宣称的数倍加速和大幅能耗下降，而小模型也能舒服地塞进你的内存预算。框架本身是 llama.cpp 的薄派生层，所以 `llama-cli` 式运行时和 GGUF 工具链都很眼熟。
+于是你选 BitNet。你挑一个**真正按三值训练**的模型——官方的 BitNet-b1.58-2B-4T，以及 Falcon3、Llama3-8B-1.58 等社区移植版——用仓库的 setup 脚本转换好，让 `bitnet.cpp` 的 I2_S/TL1/TL2 内核去跑它。因为权重是三值的，矩阵乘法变成以查表/加法为主的运算，正好被自研内核吃透：CPU 上相比标准量化基线能拿到 README 宣称的数倍加速和大幅能耗下降，而小模型也能舒服地塞进你的内存预算。框架本身是 llama.cpp 的薄派生层，所以 `llama-cli` 式运行时和 GGUF 工具链都很眼熟。2026 年年中起，同一套引擎还能跑微软官方的 1-bit 向量模型（BitNet-embedding-0.6B/270M），检索管线也能搭上这条 CPU 路径。
+
+## 怎么用起来
+
+bitnet.cpp 是 llama.cpp 的瘦身分叉，只为一种模型形状特化：**三值**权重——每个存下来的权重只有 −1、0、+1，约 1.58 bit，且模型**生来就这么训练**，不是事后压扁的。这把占大头的矩阵乘法变成了整数查表加累加——自研内核（I2_S 用于 x86+ARM、TL1 用于 ARM、TL2 用于 x86，查表思路取自微软 T-MAC）在 llama.cpp 通用 GEMM 循环还在做乘法的的地方，把极小的权重字母表吃干榨净。你做的：从源码构建（Python ≥ 3.10、CMake ≥ 3.22、Clang ≥ 18，推荐 Conda），从 Hugging Face 拉一个受支持的三值权重文件，跑 `setup_env.py` 把它转成内核就绪格式；日常就是 llama.cpp 风格的 CLI（`run_inference.py`，聊天模式加 `-cnv`）。它替你做的：在 CPU 上以自报的数倍加速和 55–82% 省电跑转化后的模型（README 口径，见存疑），另有一条可选的官方 GPU 内核路径，NPU 列为即将支持。留在你这边的：从小而精选的模型清单里挑选、钉住某个 commit（没有打过 tag 的 release）、以及在 CLI 之外自己搭 UX。
+
+![BitNet — 主干用户故事](../../assets/flow/bitnet.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bitnet.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆仓库，装 Python 依赖 — `git clone --recursive https://github.com/microsoft/BitNet.git`
+2. **你**：下载官方 2B 三值模型，跑环境脚本 — `python setup_env.py -md models/BitNet-b1.58-2B-4T -q i2_s`
+3. **BitNet**：把权重转成 I2_S 布局，按你的 CPU 构建调优内核 — 组件：`setup_env.py`
+4. **你**：对量化文件启动聊天循环 — `python run_inference.py -m models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf · -cnv`
+5. **BitNet**：用查表加法的三值内核解码——x86/ARM CPU 上快且省电，不用 GPU — 组件：`I2_S 内核`
+
+**价值**：2.4B 三元模型在普通笔记本 CPU 上跑对话——不用 GPU，拿到 README 宣称的数倍加速与大幅省电
+
+</details>
+<!-- flow-steps:end -->
+
 
 ## 何时不用
 
@@ -117,8 +133,8 @@ health:
 
 ## 依赖
 
-- **构建工具链：** Python ≥ 3.9、CMake ≥ 3.22、**Clang/LLVM ≥ 18**（一个相对较新的编译器——常见的安装坑）；推荐 Conda。
-- **模型：** 受支持格式的*三值*模型——BitNet-b1.58-2B-4T（官方），或社区移植（Falcon3 1B–10B、Falcon-E、Llama3-8B-1.58、bitnet_b1_58-large/3B），通过 Hugging Face CLI 拉取并用仓库脚本转换。
+- **构建工具链：** Python ≥ 3.10、CMake ≥ 3.22、**Clang/LLVM ≥ 18**（一个相对较新的编译器——常见的安装坑）；推荐 Conda。
+- **模型：** 受支持格式的*三值*模型——BitNet-b1.58-2B-4T（官方，2.4B、可聊天），官方 1-bit 向量模型 BitNet-embedding-0.6B/270M（2026-07 新增），或社区移植（Falcon3 1B–10B、Falcon-E、Llama3-8B-1.58、bitnet_b1_58-large/3B），通过 Hugging Face CLI 拉取并用仓库脚本转换。
 - **硬件：** x86 或 ARM CPU；CPU 路径不需要 GPU。内存随模型大小变化（2–3B 三值模型很小，但仍需几 GB）。
 - **无包安装**——引擎要从源码构建；没有 `pip install bitnet` 之类的运行时包。
 
@@ -128,18 +144,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 95.2 小时，基于 11 个 qualifying issues/PRs。
-- **维护（2026-06）：** 最后 push 在 2026-03-10——核验时已闲置约 3 个月，因此运行时读起来更像**滑行（coasting）**而非每周活跃迭代。[推断] 没有打 tag 的 release，节奏只能从 commit 新近度判断，而非发版流。
-- **治理 / 背书：** 微软所有（`microsoft/BitNet`，Organization）。[推断] 这消除了单一维护者的巴士因子风险，但微软也是个连环砍项目的厂商——这里的厂商背书表示“一个被维持的研究参考实现”，而非产品化、带 SLA 的 SDK。
+- **响应速度**：Grade A——中位首次响应时间 44.6 小时，基于 13 个 qualifying issues/PRs（健康度评分器，2026-09-28）。
+- **维护（2026-09）：** 最后 push 在 2026-07-27——核验时已闲置约 9 周，近 13 周里仅 3 周有活动，仓库读起来是**一阵一阵的滑行**而非每周迭代；2026 年 7 月的新闻块（官方 1-bit 向量模型、VibeASR.cpp）说明这支团队动起真格仍出货。没有打 tag 的 release，节奏只能从 commit 新近度判断，而非发版流。
+- **治理 / 背书：** 微软所有（`microsoft/BitNet`，Organization）；评分器数到近 12 个月只有 3 名活跃提交者（头名占约 58%）——是一支聚焦的微软研究队，不是开放社区。这消除了单一维护者的巴士因子风险，但微软也是个连环砍项目的厂商——这里的厂商背书表示“一个被维持的研究参考实现”，而非产品化、带 SLA 的 SDK。
 - **年龄与 Lindy（创建于 2024-08，约 2 年）：** 年轻但仍足够活跃，不算 Lindy 失败，但太新、不足以成为已被验证的长寿赌注。[推断] 其价值押在 BitNet-b1.58 研究线能否持续上；当作**有前景但未被验证**的基础设施看待。
-- **采用度：** 约 39k star（易波动，见存疑）说明关注度很强，但精选的三值模型列表与 CPU 优先的范围让真实生产采用面偏窄。[未验证]
+- **采用度：** 约 40.3k star（GitHub API，2026-09-28）说明关注度很强，但精选的三值模型列表与 CPU 优先的范围让真实生产采用面偏窄；健康雷达本轮没能给该轴出分（包/依赖方信号含糊——引擎本来就不可 pip 安装）。[未验证]
 - **风险标记：** MIT 许可（无重新许可风险）。当前的活跃风险是 commit 版本化带来的变动（要 pin commit）、受支持模型面很小，以及 GPU/NPU 路径仍在成熟。[推断]
 
 ## 存疑（未验证）
 
 - [未验证] 加速与能耗数据（ARM 约 1.37–5.07x / 省 ~55–70% 能耗；x86 约 2.37–6.17x / 省 ~72–82% 能耗；后续内核“+1.15–2.1x”；单 CPU 跑 100B 模型“5–7 tok/s”）是项目 README 自报、对照未指明的基线——本页未独立复现；随 CPU、模型、内核变化。
-- [未验证] star 数约 39.5k、fork 约 3.6k（GitHub API，2026-06-26）——star 数不可靠且对日期敏感，仅作参考。
-- [推断] 2026-06-26 未查到任何 GitHub release/tag，故项目疑似按 commit 版本化；“稳定 API”状态与有意义的版本号因此是从仓库状态推断，非官方声明。
+- [未验证] star 数约 40.3k（GitHub API，2026-09-28）——star 数不可靠且对日期敏感，仅作参考。
+- [推断] 2026-09-28 复核仍未查到任何 GitHub release/tag（releases/latest 404、tags 为空），故项目疑似按 commit 版本化；“稳定 API”状态与有意义的版本号因此是从仓库状态推断，非官方声明（README 挂着“version 1.0”徽章）。
 - [未验证] GPU 与 NPU 支持状态（“GPU 已可用 / NPU 即将”）来自 README 表述；非 CPU 路径的成熟度、性能与平台覆盖本页未验证。
 - [推断] 确切的受支持模型列表与所需转换步骤会随仓库变化；依赖某个具体模型前请对照当前 `README`/脚本核实。
 - [推断] “派生自 llama.cpp、复用 GGUF + CLI”是从框架表述与工具链推断；与上游的精确同步关系未审计。

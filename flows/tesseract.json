@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Tesseract does", "zh": "Tesseract 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the engine and a language data package", "zh": "装引擎包和语言数据包", "code": "tesseract-ocr-LANG · tesseract-ocr-eng"},
+    {"lane": "you", "en": "Point the CLI at an image and an output basename", "zh": "把图片交给命令行，给个输出基名", "code": "tesseract imagename outputbase"},
+    {"lane": "them", "en": "Segments the page into regions and lines, then recognizes each line with the LSTM engine", "zh": "把页面切成区块和行，用 LSTM 引擎逐行识别", "component": {"en": "libtesseract engine", "zh": "libtesseract 引擎"}},
+    {"lane": "you", "en": "Re-run asking for a structured output format instead of plain text", "zh": "重跑一次，改要带位置的输出格式", "code": "tesseract images/eurotext.png - -l eng tsv"},
+    {"lane": "them", "en": "Writes plain text, TSV/hOCR/ALTO/PAGE with coordinates, or a searchable PDF", "zh": "交回纯文本、带坐标格式或可搜索 PDF"}
+  ],
+  "value": {"en": "OCR on your own CPU, fully offline: machine-readable text plus word-level coordinates, no GPU and no per-page cloud bill", "zh": "在自己 CPU 上离线完成识别：拿到机器可读文本和词级坐标，不用 GPU、不按页付云费"},
+  "sources": [
+    "README.md main @ 2026-09-28: `tesseract imagename outputbase [-l lang] [--oem ocrenginemode] [--psm pagesegmode]`; libtesseract + CLI; LSTM line recognizer; output formats plain text/hOCR/PDF/invisible-text PDF/TSV/ALTO/PAGE",
+    "tesseract-ocr.github.io/tessdoc/Command-Line-Usage.html (retrieved 2026-09-28): `tesseract imagename outputbase`; `tesseract images/eurotext.png - -l eng tsv`",
+    "github.com/tesseract-ocr/tessdata_fast README (retrieved 2026-09-28): Debian/Ubuntu language packages named `tesseract-ocr-LANG`, eg. `tesseract-ocr-eng`"
+  ]
+}

@@ -26,7 +26,7 @@
 | [SdPaint](sdpaint.zh.md) | ✅ | D（3/6） | 当你已在跑 AUTOMATIC1111＋ControlNet、想要一个实时草图转图的绘画循环时用它——但它自 2024 年起停滞，且自身不带任何模型。 |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 可移植的 deck 生成 skill；因为消费单元是 skill pack，已迁到 agent-skills。 |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | D（3/5） | 可移植的社交卡片 skill；因为它装进 agent harness，已迁到 agent-skills。 |
-| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | C（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
+| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
 | v0 / Lovable / tldraw make-real | 未收录 | — | 各页对比里点到的其他 agent 化 UI/设计生成器。 |
 
 ## 什么该放这里

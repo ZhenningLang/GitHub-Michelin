@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them":  {"en": "LlamaFactory does", "zh": "LlamaFactory 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the framework from source into your Python environment", "zh": "从源码把框架装进 Python 环境", "code": "pip install -e ."},
+    {"lane": "you", "en": "Register your dataset in the data index", "zh": "把数据集登记进数据索引文件", "code": "data/dataset_info.json"},
+    {"lane": "you", "en": "Pick model, stage and finetuning_type in one YAML, then launch the CLI", "zh": "在一份 YAML 里选好模型、任务与微调方式，一条命令开跑", "code": "llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml"},
+    {"lane": "them", "en": "Resolves the model's chat template and runs the job on transformers/peft/trl, accelerators optional", "zh": "解析对话模板，在 transformers/peft/trl 上跑训练"}
+  ],
+  "value": {"en": "Fine-tune any of 100+ models from one YAML — the same config also runs in the LlamaBoard web UI", "zh": "一份 YAML 微调 100+ 模型，同一份配置也能在 LlamaBoard 网页里跑"},
+  "sources": ["README.md main @ 2026-09-28 (raw.githubusercontent.com/hiyouga/LlamaFactory/main/README.md): 'git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git; cd LlamaFactory; pip install -e .'; 'Please update data/dataset_info.json to use your custom dataset.'; Quickstart: 'llamafactory-cli train examples/train_lora/qwen3_lora_sft.yaml'; 'llamafactory-cli webui'; Docker: 'docker run -it --rm --gpus=all --ipc=host hiyouga/llamafactory:latest'", "examples/train_lora/qwen3_lora_sft.yaml @ main 2026-09-28: 'stage: sft', 'finetuning_type: lora'"]
+}

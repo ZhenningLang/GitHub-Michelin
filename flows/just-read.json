@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Just Read does", "zh": "Just Read 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension from your browser's store (Chrome/Edge/Brave/Opera/Firefox)", "zh": "从浏览器扩展商店装好扩展"},
+    {"lane": "you", "en": "On an article page, fire reader mode", "zh": "在文章页上一键触发", "code": "CTRL+SHIFT+L"},
+    {"lane": "them", "en": "Picks the article from the DOM, strips ads, modals and navigation, re-renders in your font and width", "zh": "挑出正文元素，剥掉广告弹窗导航，按你设定的字体宽度重排", "component": {"en": "content script", "zh": "内容脚本"}},
+    {"lane": "you", "en": "If auto-selection grabbed the wrong block, enter selection mode and click the real article", "zh": "自动选错了？进选择模式点住真正文", "code": "CTRL+SHIFT+K"},
+    {"lane": "them", "en": "Re-renders exactly the element you chose; edit, highlight or delete strays in place", "zh": "按你点的元素重排，剩余杂质原地删改"},
+    {"lane": "you", "en": "Make a site always-readable: add its domain to the auto-run list", "zh": "让某站永远自动进入：把域名加进自动列表", "code": "Auto-run domain list"}
+  ],
+  "value": {"en": "The article, readable your way, in place — one keystroke, no copy-paste into a notes app", "zh": "一篇按你的方式排好版的干净文章，原地可得——一次按键，不用复制到笔记"},
+  "sources": ["README.md ZachSaucier/Just-Read @ main (retrieved 2026-09-28): Installation section (Chrome/Brave/Opera/Edge store links, Firefox Add-ons); 'Use the shortcut CTRL+SHIFT+L' under Auto-selection; 'Use the shortcut CTRL+SHIFT+K then click the part of the page highlighted that you want to read' under User selection mode; 'entering a part of the URL (usually the domain is a good choice) or a regular expression (regex) into the \"Auto-run domain list\" found on the extension's Options page'"]
+}

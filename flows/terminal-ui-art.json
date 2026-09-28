@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "ART does", "zh": "ART 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library from PyPI", "zh": "从 PyPI 装上库", "code": "pip install art==6.5"},
+    {"lane": "you", "en": "Render your tool's name into a banner string, in-process", "zh": "在进程内把工具名渲染成横幅字符串", "code": "text2art(\"art\")"},
+    {"lane": "them", "en": "Maps each letter through one of 677 fonts bundled in the package — no system figlet", "zh": "用随包发布的 677 种字体逐字拼出大图，不调系统 figlet", "component": {"en": "bundled font catalog", "zh": "内置字体目录"}},
+    {"lane": "you", "en": "Wrap the banner with a decorative border", "zh": "给横幅套上装饰边框", "code": "decor(\"barcode1\")"},
+    {"lane": "them", "en": "Hands back one plain str — print it, log it, or paste it into your README", "zh": "交回一个普通字符串：打印、记日志、贴进 README 都行"}
+  ],
+  "value": {"en": "A figlet-style ASCII banner from a pip install — no C binary, no subprocess, identical on Windows, macOS and Linux", "zh": "一次 pip install 即得 figlet 风格横幅：无 C 二进制、无子进程，跨平台表现一致"},
+  "sources": ["INSTALL.md master @ 2026-09-28 (raw.githubusercontent.com/sepandhaghighi/art/master/INSTALL.md): 'pip install art==6.5' (PyPI section)", "README.md master @ 2026-09-28: 'from art import *'; 'Art=text2art(\"art\")'; 'decor(\"barcode1\")'; Font Counter 677 / 1-Line-Art Counter 711 / Decor Counter 218; CLI 'art text [yourtext] [fontname(optional)]' with 'ART 5.9 is the last version to support this CLI structure'"]
+}

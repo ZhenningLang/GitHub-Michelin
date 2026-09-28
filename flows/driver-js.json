@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Driver.js does", "zh": "Driver.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package (or load it from a CDN script tag)", "zh": "安装这个 npm 包（或用 CDN 标签引入）", "code": "npm install driver.js · yarn add driver.js"},
+    {"lane": "you", "en": "Import the factory and its stylesheet in your app", "zh": "在你的应用里导入工厂函数和样式表", "code": "import { driver } from \"driver.js\" · import \"driver.js/dist/driver.css\""},
+    {"lane": "you", "en": "Declare the tour as a steps array: selector + popover copy", "zh": "把引导声明成 steps 数组：选择器加气泡文案", "code": "element: '.page-header'"},
+    {"lane": "you", "en": "Create the instance and start driving", "zh": "创建实例并启动引导", "code": "driverObj.drive()"},
+    {"lane": "them", "en": "Dims the page, cuts a spotlight around each element, positions the popover with prev/next/close", "zh": "压暗页面、围绕元素挖出聚光、定位带上下步/关闭的气泡"},
+    {"lane": "them", "en": "Advances as the user clicks Next or uses the keyboard, firing your lifecycle hooks", "zh": "随用户点 Next 或键盘推进，并在各阶段回调你的 hook"}
+  ],
+  "value": {"en": "A framework-free product tour or one-off spotlight with zero runtime dependencies", "zh": "零运行时依赖、不绑定框架的产品引导或单点聚光"},
+  "sources": ["nilbuild/driver.js apps/docs/src/content/guides/installation.mdx (master, retrieved 2026-09-28): npm install driver.js / yarn add driver.js; import { driver } from \"driver.js\"; import \"driver.js/dist/driver.css\"; CDN script tag", "apps/docs/src/content/guides/basic-usage.mdx (same retrieval): steps array example — code value shorthanded from { element: '.page-header', popover: { title: 'Title', description: 'Description' } }; driverObj.drive()", "readme.md (master, same retrieval): zero dependencies, everything controllable by keyboard, hooks to manipulate elements as they are highlighted"]
+}

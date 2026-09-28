@@ -1,18 +1,19 @@
 {
   "schema": 1,
-  "them": {"en": "Open Design does", "zh": "Open Design 做的"},
+  "them": {"en": "OpenDesign does", "zh": "OpenDesign 做的"},
   "steps": [
-    {"lane": "you", "en": "Install the desktop app; have a coding-agent CLI on PATH or a BYOK model key", "zh": "装桌面版；本机有编码 agent CLI，或备好 BYOK 模型 key", "component": {"en": "desktop app", "zh": "桌面应用"}},
-    {"lane": "them", "en": "Detects the agent CLIs on PATH and loads skills, templates and 151 design systems", "zh": "探测 PATH 上的 agent CLI，载入 skill、模板和设计系统", "component": {"en": "local daemon", "zh": "本地 daemon"}},
-    {"lane": "you", "en": "On Home, pick an artifact type and a design system, then type a brief", "zh": "在首页选产物类型和设计系统，写一句需求"},
-    {"lane": "them", "en": "Runs your agent in the project folder with the template and DESIGN.md composed in", "zh": "在项目目录里启动你的 agent，把模板和 DESIGN.md 拼进上下文", "code": "DESIGN.md", "component": {"en": "runtime adapter", "zh": "运行时适配器"}},
-    {"lane": "them", "en": "Renders the files it writes in a sandboxed live preview", "zh": "把写出的文件渲染进沙箱里的实时预览", "component": {"en": "Studio preview iframe", "zh": "Studio 预览 iframe"}},
-    {"lane": "you", "en": "Critique in chat until it looks right, then export", "zh": "在对话里挑毛病直到满意，然后导出", "code": "HTML · PDF · PPTX"}
+    {"lane": "you", "en": "Install the desktop app (macOS/Windows) — or attach your agent instead", "zh": "装桌面应用（macOS/Windows），或直接把 agent 接上", "code": "od mcp install claude"},
+    {"lane": "you", "en": "Pick an artifact type, a plugin/skill and one of the 151 DESIGN.md systems, enter a brief", "zh": "选产物类型、插件与一套 DESIGN.md 设计系统，写简报"},
+    {"lane": "them", "en": "Spawns a coding-agent CLI already on your PATH — or streams your BYOK endpoint", "zh": "启动你 PATH 上已有的编码 agent CLI，或走你的 BYOK 端点", "component": {"en": "local daemon", "zh": "本地 daemon"}},
+    {"lane": "them", "en": "The agent composes skill + template + brand contract into real HTML/CSS files, previewed in a sandboxed iframe", "zh": "把 Skill、模板与品牌契约组装成真实项目文件，沙箱里预览", "component": {"en": "spawned agent", "zh": "被拉起的 agent"}},
+    {"lane": "you", "en": "Iterate in Studio, then export the artifact", "zh": "在 Studio 里迭代，导出成品"}
   ],
-  "value": {"en": "On-brand prototypes, decks and videos as real files on your disk, made by the agent you already pay for", "zh": "符合品牌规范的原型、deck 和视频，以真实文件留在你的磁盘上，由你已经在用的 agent 产出"},
+  "value": {"en": "Prototypes, decks and videos as real files on your machine — no hosted studio, no model lock-in", "zh": "原型、deck、视频都以真实文件留在本机——不用托管工作室，不锁模型"},
   "sources": [
-    "https://github.com/nexu-io/open-design README Quick start (desktop app auto-detects every coding-agent CLI on PATH, loads skills, templates and 151 design systems)",
-    "README Product tour (Home: artifact type, brief, design system, working directory, model) and Architecture (daemon spawns the CLI in the managed project cwd; composes skill/template + DESIGN.md; sandboxed iframe preview)",
-    "README Decks section (export to HTML, PDF, PPTX, ZIP, Markdown) and Platform Compatibility (BYOK proxy when no CLI is installed)"
+    "https://github.com/nexu-io/open-design#quick-start (desktop download macOS/Windows, no Linux artifact)",
+    "https://github.com/nexu-io/open-design#install-into-your-coding-agent-no-ui (`od mcp install <agent>`, e.g. claude)",
+    "https://github.com/nexu-io/open-design#product-tour (Home: artifact type + brief + design system; Studio iterate & export)",
+    "https://github.com/nexu-io/open-design#design-systems (151 DESIGN.md packages) and #skills-and-design-templates",
+    "https://github.com/nexu-io/open-design#architecture (daemon spawns cli with cwd; sandboxed iframe; 127.0.0.1; BYOK proxy)"
   ]
 }

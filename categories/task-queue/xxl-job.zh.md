@@ -6,19 +6,19 @@ category: task-queue
 tags: [job-scheduler, distributed-scheduling, cron, sharding, failover, java, spring]
 language: Java
 license: GPL-3.0
-maturity: ~30.3k stars, active (2026-06); single-lead-author project, created 2015-11
-last_verified: 2026-06-28
+maturity: v3.4.2, active, ~30.6k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-21T08:40:20Z
+  pushed_at: 2026-07-21T16:01:12Z
   default_branch: master
-  default_branch_sha: 128dd678962b8918b9abf2e82928818b0072ac50
+  default_branch_sha: e74c784f68f81fa89cb350913ef15794865d7b12
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:05:36Z
+  computed_at: 2026-09-28T10:18:38Z
   overall: C
-  overall_score: 2.33
+  overall_score: 2.17
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 63
-        active_weeks_13: 2
+        last_commit_age_days: 69
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 43.5
-        qualifying_issues: 13
+        median_ttfr_hours: 77.7
+        qualifying_issues: 9
         band: default
         window_offset_days: 13
         source: issue
@@ -55,14 +55,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3952
-        last_commit_age_days: 63
+        repo_age_days: 3957
+        last_commit_age_days: 69
         cohort: framework
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 8
-        top1_share: 0.955
+        top1_share: 0.954
         top3_share: 0.981
         window_source: stats_contributors
         carve_out: null
@@ -77,7 +77,7 @@ health:
 
 # XXL-JOB
 
-一个轻量级的分布式任务调度平台：一个中心化的、基于 Web 的**调度中心（admin/dispatcher）**，按 cron 触发任务，分发到你应用里的**执行器（executor）**上，支持分片执行、failover 和内置 UI——在中国企业里被广泛部署。
+你的定时任务散落在各台机器随手的 crontab 和没人敢动的 `@Scheduled` 注解里，「昨晚那次跑成功了没」得 SSH 登机器翻日志才答得上来。XXL-JOB 把调度收进一个网页控制台：中心调度器按 cron 通过 HTTP 触发你应用里的执行器，运行日志、失败重试、故障转移和分片都是现成的。
 
 ![xxl-job — 健康度雷达](../../assets/health/xxl-job.zh.svg)
 
@@ -139,7 +139,7 @@ XXL-JOB 分两块：**调度中心**是一个独立部署的管理服务（带�
 
 ## 依赖
 
-- **调度中心需要一个数据库**——你必须跑一个关系型数据库（默认 MySQL）并导入 XXL-JOB 的 schema；这是调度/状态存储。
+- **调度中心需要一个数据库**——你必须跑一个关系型数据库（文档默认 MySQL）并导入 XXL-JOB 自带的 schema（`doc/db/tables_xxl_job.sql`）；这是调度/状态存储。
 - **调度中心/dispatcher 服务**——至少一个 Spring Boot admin 实例（为冗余可在负载均衡后跑多个，共享同一数据库）。
 - **你应用里的执行器**——每个要跑任务的应用都引入执行器依赖并向 admin 注册；你的 `@XxlJob` handler 实际就跑在执行器里。
 - 一个 JVM（实践中是一个 Spring/Spring Boot 应用）来承载 admin 和执行器。
@@ -150,18 +150,18 @@ XXL-JOB 分两块：**调度中心**是一个独立部署的管理服务（带�
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 43.5 小时，基于 13 个 qualifying issues/PRs。
-- **维护（2026-06）。** 仓库最后 push 于 2026-06——**活跃**，未归档；约 11 年里有很长的发布历史。[推断]
+- **响应速度**：Grade B——中位首次响应时间 77.7 小时，基于 9 个 qualifying issues/PRs（从上次的 A/43.5h 下调；窗口内样本少，噪声大）。
+- **维护（2026-09）。** `master` 最后提交 2026-07-21；最新发布 3.4.2（2026-06-19），处于 2025–2026 年间大约每季度一到两个版本的节奏（3.3.0 于 2025-11 → 3.3.2 于 2026-01 → 3.4.0 于 2026-04 → 3.4.2 于 2026-06，GitHub releases）。仍活跃，但是巡航节奏——6 月之后没有新版本。未归档。
 - **治理 / bus factor。** 由**单一个人**（`xuxueli`，`owner.type` = User）拥有，他是主要作者——这是个实打实的 **bus-factor 标记**：路线图和合并权集中在一个人身上，尽管项目被广泛部署。[推断]
-- **年龄与 Lindy 判断。** **2015-11** 创建（约 11 年）且**仍在活跃维护**⇒ 对它的细分领域而言是**强 Lindy** 信号：一个久经验证、身经百战的调度器，而非被炒作的新秀。[推断]
-- **采用度。** 约 30.3k star 加上大量真实使用，尤其在中国企业里，表明采用度强、部署基础深。[未验证]
+- **年龄与 Lindy 判断。** **2015-11** 创建（截至 2026-09 约 11 年）且**仍在维护**⇒ 对它的细分领域而言是**强 Lindy** 信号：一个久经验证、身经百战的调度器，而非被炒作的新秀。[推断]
+- **采用度。** 约 30.6k star、约 11.5k fork（GitHub API，2026-09）；「在中国企业里被大量真实使用」这一点广为人知，但本页没有实测。[推断]
 - **风险标记。** **GPL-3.0 copyleft** 是面向专有分发的头号许可风险；叠加单一主作者治理和中文为主的文档/社区，这些是下注前要权衡的点。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 约 30.3k star 和「活跃、2026-06 push」都是时间点数据——star 数不可靠且对时间敏感；请对照实时仓库重核。
+- [未验证] 约 30.6k star、约 11.5k fork、「最后提交 2026-07-21」都是时间点数据——star 数不可靠且对时间敏感；请对照实时仓库重核。
 - [未验证] GPL-3.0 是仓库标注的许可证；对你的分发模式而言，确切的 copyleft 义务取决于你如何嵌入/交付它——请以 `LICENSE` 文件和法务意见为准，别只凭本页行动。
-- [未验证] MySQL 作为默认/必需数据存储以及确切的支持数据库列表来自项目自述；支持哪些数据库和 schema 请核对当前文档。
+- [未验证] 随仓库发布的 schema 是 MySQL 风格（`doc/db/tables_xxl_job.sql`，在 tag 3.4.2 上核实）；当前 GitHub README 已瘦身为功能清单并链向文档站（www.xuxueli.com/xxl-job）——确切的数据库支持列表以那份文档为准，本次没有逐页重读，除 MySQL 外的支持请先自行核实。
 - [未验证]「文档/社区以中文为主」、英文覆盖相对薄，是从项目来源和受众得到的印象，不是实测结论。
 - [推断]「中心调度 = SPOF/HA 隐患」是架构层面的推断；多 admin 共享 DB 的冗余是存在的，所以把它当成一个需要提前规划的设计取舍，而非宕机保证。
 - [推断] PowerJob 是「更现代的替代品」且装机量更小，是定位上的推断，不是 benchmark 比较。

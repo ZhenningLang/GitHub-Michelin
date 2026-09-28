@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **promptfoo** | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. | A (5/6) | [→](promptfoo.md) |
+| **promptfoo** | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. | A (6/6) | [→](promptfoo.md) |
 | **Pezzo** | Use it when a small team wants one self-hosted control plane for prompt versioning plus cost/latency observability — but it looks stalled since mid-2025, so assume you'll maintain it yourself. | C (5/6) | [→](pezzo.md) |
 | **DeepEval** | The LLM Evaluation Framework | A (6/6) | [→](deepeval.md) |
 | **Ragas** | Supercharge Your LLM Application Evaluations 🚀 | B (6/6) | [→](ragas.md) |
@@ -23,7 +23,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [promptfoo](promptfoo.md) | ✅ | A (5/6) | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. |
+| [promptfoo](promptfoo.md) | ✅ | A (6/6) | Use it when you need declarative YAML evals plus red-teaming for your LLM app in CI. |
 | [Pezzo](pezzo.md) | ✅ | C (5/6) | Use it when a small team wants one self-hosted control plane for prompt versioning plus cost/latency observability — but it looks stalled since mid-2025, so assume you'll maintain it yourself. |
 | Ragas / OpenAI Evals | partly indexed | — | Other LLM eval / red-team frameworks named across the pages; Ragas is indexed in this category, OpenAI Evals is not. |
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.md) | ✅ | E (4/6) | Dataset/detector resources for AI-text comparison; use eval frameworks when you need a maintained test runner. |

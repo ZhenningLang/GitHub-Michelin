@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "them": { "en": "OpenSandbox does", "zh": "OpenSandbox 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Configure the Docker example, then start one local sandbox server",
+      "zh": "照 Docker 示例配置后，在本地起一个沙箱服务器",
+      "code": "uvx opensandbox-server"
+    },
+    {
+      "lane": "them",
+      "en": "Allocates a sandbox from any image and wires in its execution daemon and egress policy",
+      "zh": "从任意镜像分配沙箱，接入执行守护进程与出口策略",
+      "component": { "en": "sandbox server", "zh": "沙箱服务器" }
+    },
+    {
+      "lane": "you",
+      "en": "Create the sandbox and run the code your model just wrote, from your app",
+      "zh": "在应用代码里创建沙箱、运行模型刚生成的代码",
+      "code": "Sandbox.create(\"alpine\") · sandbox.commands.run(\"echo 'Hello OpenSandbox!'\")"
+    },
+    {
+      "lane": "them",
+      "en": "Executes inside the isolated container and streams logs and files back; real secrets stay in the vault",
+      "zh": "在隔离容器内执行并回传日志与文件，真实密钥留在保险库里",
+      "component": { "en": "execd", "zh": "execd 守护进程" }
+    }
+  ],
+  "value": {
+    "en": "Untrusted agent code runs safely on your own infra, with the same API from laptop to Kubernetes cluster",
+    "zh": "不受信的 agent 代码在你自己的基础设施上安全运行，笔记本到集群同一套 API"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/opensandbox-group/OpenSandbox/main/README.md — Getting Started, 'Install and Configure the Sandbox Server' (uvx opensandbox-server init-config ~/.sandbox.toml --example docker; uvx opensandbox-server)",
+    "https://raw.githubusercontent.com/opensandbox-group/OpenSandbox/main/README.md — 'Create a Sandbox and Execute Commands/Scripts' (uv pip install opensandbox; Sandbox.create(\"alpine\"); await sandbox.commands.run(\"echo 'Hello OpenSandbox!'\"); await sandbox.destroy())",
+    "https://raw.githubusercontent.com/opensandbox-group/OpenSandbox/main/README.md — Features ('Network Policy and Credential Vault', 'Strong Isolation', 'Hybrid Deployment')"
+  ]
+}

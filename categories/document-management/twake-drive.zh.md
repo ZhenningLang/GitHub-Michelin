@@ -6,17 +6,17 @@ category: document-management
 tags: [drive, file-manager, cozy, self-hosted, file-sharing, react, agpl, personal-cloud, google-drive-alternative]
 language: JavaScript / TypeScript (React)
 license: AGPL-3.0
-maturity: Active, mature codebase; latest release 1.103.0 (2026-06-23), main at 1.105.0 (see caveats)
-last_verified: 2026-06-26
+maturity: Active, mature codebase; latest release 1.107.0 (2026-09-08), master at 1.108.0, ~990 stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T09:34:45Z
+  pushed_at: 2026-09-25T10:21:57Z
   default_branch: master
-  default_branch_sha: 63e2513dea9dc46910018208b0efce6014bcbd98
+  default_branch_sha: c757bafeb489576a2857dc42c15751c08a620ca2
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:57Z
+  computed_at: 2026-09-28T05:57:30Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 11
+        last_commit_age_days: 4
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 139.9
-        qualifying_issues: 20
+        median_ttfr_hours: 136.2
+        qualifying_issues: 23
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -47,15 +47,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3572
-        last_commit_age_days: 0
+        repo_age_days: 3577
+        last_commit_age_days: 4
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 10
-        top1_share: 0.315
-        top3_share: 0.639
+        top1_share: 0.327
+        top3_share: 0.656
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,7 +71,7 @@ health:
 
 # Twake Drive
 
-一个可自托管的“Google Drive 开源替代”——用于存储、浏览、链接分享和预览文件的 React Web 应用，作为 Cozy 应用运行在 cozy-stack 后端之上（隶属 Twake Workplace 套件）。它是个人/团队文件网盘，不是 OCR 文档归档系统。
+团队的文件散落在各自的电脑和聊天记录里，没有一个“放进去、发个链接就能分享”的地方。Twake Drive 就是那个地方——一个 Google Drive 形态的文件应用（文件树、上传、链接分享、搜索、浏览器内预览），由你自己的 Cozy/Twake 栈提供服务，而不是托管给 Google。它是个人/团队文件网盘，不是 OCR 文档归档系统。
 
 ![twake-drive — 健康度雷达](../../assets/health/twake-drive.zh.svg)
 
@@ -80,6 +80,26 @@ health:
 你在为一个小团队运行 Twake Workplace（或一台 Cozy 服务器），想要套件里的“文件存储”那一块——一个让大家把文档、照片、证件扫描件、工资单和税单丢进去的地方，用熟悉的文件树界面浏览，并通过链接把某个文件夹分享给同事。你不想再多养一台独立服务器，只想要一个能接入你已有的认证、分享和连接器模型的网盘。于是你从 cozy-stack 把 Twake Drive Web 应用 serve 出来，用户就得到一个干净的 React 界面：上传、按名称搜索、浏览器内 PDF/图片预览、以及“分享此链接”——再加上 Cozy 连接器，自动从水电/电信运营商把账单和对账单拉进网盘。它是你自托管栈的“Google-Drive 形态”门面，而不是一套记录管理系统。
 
 当你的真实目标是 *在 Twake/Cozy 生态内做文件存储和链接分享*、且你的“文档”是人们保留下来、偶尔按名称或文件夹找回的东西（而不是一个需要 OCR、自动打标签和全文检索的归档语料库）时，它就是对的选择。
+
+## 怎么用起来
+
+Twake Drive 是前端，不是整套栈——它交付的是一个 React 应用，而不是存储。后端是 **cozy-stack**（独立的 Go 服务器），由它掌管文件、账号、认证、分享和数据模型；应用通过 `cozy-client` 库与它对话。你构建好 bundle（`yarn build`），再告诉 cozy-stack 去哪里找它（`cozy-stack serve --appdir drive:…/build/drive`）；cozy-stack 把它当作应用安装并 serve 给用户的浏览器。它替你做的：文件树界面、拖拽上传、按名称搜索、浏览器内 PDF/图片预览、链接分享（分享给另一个 Cozy 实例时，对方会收到一封“接受分享”的邮件，之后这个文件夹就出现在对方自己的网盘里）、以及连接器面板（`cozy-harvest-lib`），自动从水电/电信供应商把账单拉进来。留给你的：搭建并升级 cozy-stack 本身、它的数据存储、分享邀请的邮件投递——生产部署拓扑不在本仓库定义，这里只有开发工具链和一个 E2E compose 文件。
+
+![twake-drive — 主干用户故事](../../assets/flow/twake-drive.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/twake-drive.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好依赖并构建 Web 应用 — `yarn install · yarn build`
+2. **你**：把构建产物挂载到运行中的 cozy-stack — `cozy-stack serve --appdir drive:/<project_absolute_path>/twake-drive/build/drive`
+3. **Twake Drive**：在浏览器里提供 Drive 界面：文件树、上传、按名称搜索 — 组件：`cozy-stack 应用宿主`
+4. **Twake Drive**：把文件夹分享成链接，收件人经邮件确认后在自己网盘里看到它
+
+**价值**：在既有 Cozy/Twake 栈上得到 Google Drive 形态的文件门面，不必再多养一台文件服务器
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -111,7 +131,7 @@ health:
 ## 依赖
 
 - **cozy-stack** —— 强制后端；你通过 `cozy-stack serve --appdir drive:…` serve 这个应用。没有它，应用什么都做不了。
-- **Node.js 20**（`.nvmrc`）+ **Yarn** 用于构建/开发 Web 应用。
+- **Node.js 24**（`.nvmrc`，`engines: ~24`）+ **Yarn** 用于构建/开发 Web 应用。
 - **CouchDB** 是 cozy-stack 的数据存储 `[推断]`（cozy-stack 的标准后端存储；本仓库不配置它）。
 - **MailHog / 一个 SMTP 服务器** 用于开发环境下的邮件分享流程。
 - **Docker** 镜像 `cozy/cozy-app-dev` 用于 VM 内开发工作流；`docker-compose.e2e.yml` 用于 E2E 测试。生产部署走 Cozy/Twake Workplace 平台，而非本仓库里的某个 compose 文件。
@@ -122,17 +142,17 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 139.9 小时，基于 20 个 qualifying issues/PRs。
-- **维护（2026-06）。** 最后 push 于 2026-06，有近期 tag（1.103.0，2026-06-23），`main` 已领先到 1.105.0——处于**活跃**开发，未归档。[推断]
+- **响应速度**：Grade A——中位首次响应时间 136.2 小时，基于 23 个 qualifying issues/PRs。
+- **维护（2026-09）。** 最后 push 于 2026-09-25，有近期 tag（1.107.0，2026-09-08），`master` 已领先到 1.108.0——处于**活跃**开发，未归档。[推断]
 - **治理 / 背书。** 归属法国开源公司 **Linagora**，是其 Twake Workplace 套件的一部分——厂商背书的项目（不是单人维护），这对延续性是个安心信号，但也把路线图绑在一家公司的套件战略上。它是上游 `cozy/cozy-drive` 的 fork/换牌。[推断]
-- **年龄与 Lindy 判断。** 仓库可追溯到约 2016 年（2016-12 创建），其所承袭的 Cozy Drive 谱系更老 ⇒ *代码库*有**中到强的 Lindy** 先验，但作为 **Linagora 换牌产物，其独立的存续记录更短**，采用度（约 960 star）也一般——应按套件的牵引力而非单纯年龄来判断。[推断]
-- **采用度。** 较低的 star 数（约 960）显示独立社区不大；它真正的采用度被框定在已经在跑 Twake Workplace / Cozy 的团队，而非广泛的独立用户群。[未验证]
+- **年龄与 Lindy 判断。** 仓库可追溯到约 2016 年（2016-12 创建），其所承袭的 Cozy Drive 谱系更老 ⇒ *代码库*有**中到强的 Lindy** 先验，但作为 **Linagora 换牌产物，其独立的存续记录更短**，采用度（约 990 star）也一般——应按套件的牵引力而非单纯年龄来判断。[推断]
+- **采用度。** 较低的 star 数（约 987，gh 2026-09-28）显示独立社区不大；它真正的采用度被框定在已经在跑 Twake Workplace / Cozy 的团队，而非广泛的独立用户群。[未验证]
 - **风险标记。** **AGPL-3.0** 是头号标记——若你以服务形式提供修改版，网络版 copyleft 义务即生效。此外有重度**平台锁定**：本仓库只是前端，需要独立的 cozy-stack 后端。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] `gh` 报告最新打标签的发布为 **1.103.0**（2026-06-23），而 `main` 上的 `package.json`/`manifest.webapp` 显示 **1.105.0**——main 领先于最新 tag；把确切的“当前版本”当作近似值。
-- [未验证] 星标数约 960（gh，2026-06-26）。GitHub 星标不可靠且对日期敏感；仅供参考。
+- [未验证] `gh` 报告最新打标签的发布为 **1.107.0**（2026-09-08），而 `master` 上的 `package.json`/`manifest.webapp` 显示 **1.108.0**——master 领先于最新 tag；把确切的“当前版本”当作近似值。
+- [未验证] 星标数约 987（gh，2026-09-28）。GitHub 星标不可靠且对日期敏感；仅供参考。
 - [推断] cozy-stack 使用 CouchDB 作为数据存储，并提供实际的文件存储/认证/分享层——这是从 Cozy 架构推断的，而非来自本仓库的文件（本仓库只是前端）。
 - [推断] “无 OCR / 无全文内容检索 / 无自动打标签”是从 README 功能列表（文件树、上传、URL 分享、名称搜索）以及缺少任何 OCR/索引依赖推断的；若内容检索关键，请对照当前 cozy-stack 能力核实。
 - [未验证] 与上游 `cozy/cozy-drive` 的关系（fork 还是换牌）是从 `manifest.webapp` 的 `source`/`editor` 字段和 `cozy-drive` 包名推断的；确切治理关系本次未确认。

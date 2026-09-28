@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Celery does", "zh": "Celery 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Celery and have Redis or RabbitMQ running as the broker", "zh": "装好 Celery，并跑一个 Redis 或 RabbitMQ 作 broker", "code": "pip install celery · docker run -d -p 6379:6379 redis"},
+    {"lane": "you", "en": "Create an app in an importable module and mark the slow function as a task", "zh": "在可导入模块里建 app，把慢函数标成任务", "code": "@app.task", "component": {"en": "Celery app", "zh": "Celery 应用"}},
+    {"lane": "you", "en": "Start worker pools on the machines meant to run the work", "zh": "在负责跑任务的机器上启动 worker 池", "code": "celery -A tasks worker --loglevel=INFO", "component": {"en": "worker", "zh": "worker"}},
+    {"lane": "them", "en": "Workers hold an open connection and consume task messages off the broker queue", "zh": "worker 保持连接，从 broker 队列持续消费任务消息", "component": {"en": "broker + workers", "zh": "broker + worker"}},
+    {"lane": "you", "en": "Call the task from your request handler and return immediately", "zh": "在请求处理器里调用任务，立刻返回", "code": "add.delay(4, 4)"},
+    {"lane": "them", "en": "An idle worker picks the job up, executes it, and can store the result in a backend", "zh": "空闲 worker 取走执行，并可把结果写进 result backend", "component": {"en": "worker", "zh": "worker"}}
+  ],
+  "value": {"en": "The HTTP response returns in milliseconds while heavy Python work runs on a worker pool that survives restarts and scales across machines", "zh": "HTTP 响应立即返回；重活跑在能扛重启、可跨机扩展的 worker 池上"},
+  "sources": [
+    "docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html (retrieved 2026-09-28): pip install celery; docker run -d -p 6379:6379 redis; app = Celery('tasks', broker='pyamqp://guest@localhost//') with @app.task def add(x, y); celery -A tasks worker --loglevel=INFO; add.delay(4, 4)",
+    "README.rst main @ 2026-09: @app.task example, pip install \"celery[redis]\" bundle, result backends"
+  ]
+}

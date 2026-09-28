@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Readability.js does", "zh": "Readability.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the module", "zh": "安装模块", "code": "npm install @mozilla/readability"},
+    {"lane": "you", "en": "Put the page HTML into a DOM — the browser already has one; in Node, wrap it with jsdom", "zh": "把页面 HTML 放进 DOM——浏览器自带；Node 里用 jsdom 包一层"},
+    {"lane": "you", "en": "Construct Readability on a document clone and parse", "zh": "在 document 克隆上构造 Readability 并解析", "code": "new Readability(documentClone).parse()"},
+    {"lane": "them", "en": "Scores candidate nodes, strips boilerplate, and returns title, byline and cleaned main content as one object", "zh": "给候选节点打分、剥掉样板，一次性返回标题、署名和清理过的正文", "component": {"en": "Readability engine", "zh": "Readability 引擎"}}
+  ],
+  "value": {"en": "The same extraction Firefox Reader View ships, running inside your own extension or Node service — no per-site rules", "zh": "Firefox 阅读模式同款抽取引擎跑在你自己的扩展或 Node 服务里——不用为每个站点写规则"},
+  "sources": ["README.md main @ ab4027a8 (retrieved 2026-09-28): 'npm install @mozilla/readability'; 'var article = new Readability(document).parse();'; 'var documentClone = document.cloneNode(true); var article = new Readability(documentClone).parse();'; Node example uses jsdom; parse() output fields listed in README API Reference"]
+}

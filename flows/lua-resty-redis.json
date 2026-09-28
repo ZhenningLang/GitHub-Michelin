@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "lua-resty-redis does", "zh": "lua-resty-redis 做的"},
+  "steps": [
+    {"lane": "you", "en": "Require the driver inside an ngx_lua handler", "zh": "在 ngx_lua 处理器里引入驱动", "code": "local redis = require \"resty.redis\" · local red = redis:new()"},
+    {"lane": "you", "en": "Set timeouts, then connect to a Redis server", "zh": "先设超时，再连 Redis 服务", "code": "red:set_timeouts(1000, 1000, 1000) · red:connect(\"127.0.0.1\", 6379)"},
+    {"lane": "them", "en": "The connection rides the cosocket: while Redis answers, the worker keeps serving other requests", "zh": "连接挂在 cosocket 上：等 Redis 时 worker 不阻塞", "component": {"en": "cosocket", "zh": "cosocket"}},
+    {"lane": "you", "en": "Call Redis commands as lowercase Lua methods", "zh": "把 Redis 命令当小写 Lua 方法调", "code": "red:set(\"dog\", \"an animal\") · red:get(\"dog\")"},
+    {"lane": "you", "en": "Batch commands into one round trip", "zh": "把多条命令压成一次往返", "code": "red:init_pipeline() · red:commit_pipeline()"},
+    {"lane": "them", "en": "Sends pipelined commands as one trip and hands back ordered results as a Lua table", "zh": "pipeline 一次发出，按序返回 Lua 表结果"},
+    {"lane": "you", "en": "Return the socket to the pool at the end of the request", "zh": "请求结束前把 socket 归还连接池", "code": "red:set_keepalive(10000, 100)"},
+    {"lane": "them", "en": "The next request reuses the pooled connection — no reconnect, no re-auth per request", "zh": "下一个请求直接复用池中连接——不再重连、不再每请求鉴权"}
+  ],
+  "value": {"en": "Redis-backed edge logic that never stalls an NGINX worker — pooling and pipelining included", "zh": "Redis 支撑的边缘逻辑永不卡住 NGINX worker——连接池与 pipeline 都已内置"},
+  "sources": [
+    "README.markdown master @ 2026-09-28, Synopsis section: local redis = require \"resty.redis\"; local red = redis:new(); red:set_timeouts(1000, 1000, 1000); red:connect(\"127.0.0.1\", 6379); red:set(\"dog\", \"an animal\"); red:get(\"dog\"); red:init_pipeline(); red:commit_pipeline(); red:set_keepalive(10000, 100)",
+    "README.markdown master @ 2026-09-28, Description: library is a Redis client driver for the ngx_lua nginx module, based on the cosocket API"
+  ]
+}

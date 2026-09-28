@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "MAX does", "zh": "MAX 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install MAX into a pixi (or uv) project", "zh": "在 pixi（或 uv）项目里装上 MAX", "code": "pixi add max-all"},
+    {"lane": "you", "en": "Start an endpoint on a model from the library", "zh": "对库里的模型启动一个服务端点", "code": "max serve --model google/gemma-4-31B-it"},
+    {"lane": "them", "en": "Downloads, compiles the model once into fused kernels for your GPU, starts the server", "zh": "下载模型，一次性编译成适配你 GPU 的融合 kernel，再起服务", "component": {"en": "MAX engine", "zh": "MAX 引擎"}},
+    {"lane": "you", "en": "Point any OpenAI client at the endpoint", "zh": "把任意 OpenAI 客户端指向这个端点", "code": "OpenAI(base_url=\"http://localhost:8000/v1\", api_key=\"EMPTY\")"},
+    {"lane": "them", "en": "Serves chat completions from the compiled graph on NVIDIA, AMD, or CPU", "zh": "用编译好的图在 NVIDIA、AMD 或 CPU 上响应补全请求", "component": {"en": "max serve", "zh": "max serve"}}
+  ],
+  "value": {"en": "One engine serves open models across NVIDIA and AMD behind a drop-in OpenAI endpoint — no per-vendor stack, no CUDA C++ for the hot path", "zh": "一套引擎在 NVIDIA 与 AMD 上服务开源模型，兼容 OpenAI，热路径不写 CUDA C++"},
+  "sources": ["max.modular.com/get-started (retrieved 2026-09-28): pixi add max-all; max serve --model google/gemma-4-31B-it; OpenAI(base_url=\"http://localhost:8000/v1\", api_key=\"EMPTY\"); 'download the model, compile it, and start the server'; NVIDIA/AMD/CPU support", "README.md main @ 2026-09: MAX inference server /max/python/max/serve (OpenAI-compatible endpoint); Mojo kernels in /max/kernels"]
+}

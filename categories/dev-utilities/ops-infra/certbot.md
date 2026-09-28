@@ -6,17 +6,17 @@ category: ops-infra
 tags: [tls, ssl, acme, lets-encrypt, certificates, https, automation, nginx, apache]
 language: Python
 license: Apache-2.0
-maturity: v5.6.0, active (2026-06)
-last_verified: 2026-06-28
+maturity: "v5.8.0, active, ~33.3k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-26T10:00:06Z
+  pushed_at: 2026-09-22T03:53:35Z
   default_branch: main
-  default_branch_sha: f769e35e77f1fa21a75cd5418641502dad8a37c5
+  default_branch_sha: 485649333422392901e7ef891630f0129985df8e
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:11:34Z
+  computed_at: 2026-09-28T05:59:27Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 13
-        active_weeks_13: 11
+        last_commit_age_days: 18
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 32.3
-        qualifying_issues: 15
+        median_ttfr_hours: 60.0
+        qualifying_issues: 13
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: certbot-dns-google
-        dependent_repos_count: 26
-        downloads_last_month: 28492
+        canonical_package: certbot-dns-cloudflare
+        dependent_repos_count: 41
+        downloads_last_month: 476384
         graph_tier: D
-        volume_tier: C
-        cross_check_divergence: null
-        homebrew_installs_90d: 5062
+        volume_tier: B
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 5132
         homebrew_tier: A
-        release_downloads: 409881
+        release_downloads: 410837
         release_assets: 487
         release_tier: C
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4333
-        last_commit_age_days: 13
+        repo_age_days: 4338
+        last_commit_age_days: 18
         cohort: tool
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 22
-        top1_share: 0.362
-        top3_share: 0.831
+        top1_share: 0.364
+        top3_share: 0.83
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -87,9 +87,30 @@ The EFF/Let's Encrypt ACME client that obtains and auto-renews free, browser-tru
 
 ## When to use
 
-You're a sysadmin standing up HTTPS for a handful of public web servers — a couple of nginx vhosts, an Apache box, maybe a bare TCP service that just needs a cert on disk. You don't want to buy certificates, you don't want them expiring at 2 a.m. on a holiday, and you don't want to hand-edit `ssl_certificate` lines every 90 days. You install Certbot, run `certbot --nginx` (or `--apache`), answer a couple of prompts, and it talks ACME to Let's Encrypt, proves you control the domain via an HTTP-01 or DNS-01 challenge, writes the cert/key under `/etc/letsencrypt/live/...`, and rewrites your server config to point at them. It also drops a systemd timer (or cron entry) so `certbot renew` runs twice a day and silently renews anything inside its 30-day window — so the cert that was a manual chore becomes a fire-and-forget piece of the host.
+You're a sysadmin standing up HTTPS for a handful of public web servers — a couple of nginx vhosts, an Apache box, maybe a bare TCP service that just needs a cert on disk. You don't want to buy certificates, you don't want them expiring at 2 a.m. on a holiday, and you don't want to hand-edit `ssl_certificate` lines every 90 days. You install Certbot, run `certbot --nginx` (or `--apache`), answer a couple of prompts, and it talks ACME to Let's Encrypt, proves you control the domain via an HTTP-01 or DNS-01 challenge, writes the cert/key under `/etc/letsencrypt/live/`, and rewrites your server config to point at them. Common install methods (snap, distro packages) also pre-install a systemd timer or cron entry that runs `certbot renew` on a schedule — the docs tell you to check with `systemctl list-timers` and wire it up manually if it's missing — and `renew` only touches a certificate once less than a third of its lifetime remains, so a 90-day Let's Encrypt cert silently renews about a month before expiry. The cert that was a manual chore becomes a fire-and-forget piece of the host.
 
 You reach for it specifically when you want the *reference* ACME client — the one EFF maintains, the one every tutorial assumes — with first-class web-server integration and a large set of DNS plugins (Route 53, Cloudflare, Google, etc.) for wildcard certs that need DNS-01. If your hosts already run Python and you value the official, batteries-included path over a minimal shell script, Certbot is the default.
+
+## How it works
+
+Certbot automates the whole ACME dance (the certificate-authority protocol standardized in RFC 8555) against Let's Encrypt by default: it generates the private key *locally on your box*, creates an order with the CA, then proves you control each domain by answering a challenge — HTTP-01 (drop a token file the CA can fetch on port 80), DNS-01 (publish a TXT record via a provider plugin), or TLS-ALPN-01 — and finally downloads the signed cert. The web-server plugins do one more thing a bare ACME client doesn't: the `--nginx`/`--apache` installer parses the server's own config, points it at the key and cert under `/etc/letsencrypt/live/`, reloads the server, and can wire up an http→https redirect. Every issuance is recorded as a per-certificate *renewal configuration* on disk, so a later `certbot renew` replays the same authenticator/options without prompts — that is what a timer can run unattended. What stays yours: keeping port 80 (or DNS API credentials) reachable, the reload/distribution *hooks* if anything unusual must happen after renewal, and staying inside Let's Encrypt's rate limits. Current releases default to ECDSA keys (RSA still selectable).
+
+![Certbot — backbone user story](../../../assets/flow/certbot.svg)
+
+<!-- flow-steps:begin (generated from flows/certbot.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install Certbot on the web server — `sudo snap install --classic certbot`
+2. **You**: Run it against your web server — `sudo certbot --nginx`
+3. **Certbot**: Generates the key locally, orders via ACME, proves domain control over HTTP-01 — component: `nginx plugin`
+4. **Certbot**: Saves the cert/key and rewrites the server config to serve HTTPS — `/etc/letsencrypt/live/`
+5. **Certbot**: A timer runs certbot renew, which replays each cert's saved config near expiry — `certbot renew` — component: `renew timer (systemd/cron)`
+
+**Value**: Free, browser-trusted HTTPS that renews itself — no expiry incident, no hand-edited cert paths
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -111,8 +132,8 @@ You reach for it specifically when you want the *reference* ACME client — the 
 ## Tech stack
 
 - **Language:** Python — distributed as a CLI plus a set of plugin packages.
-- **Protocol:** ACME (RFC 8555) against Let's Encrypt by default; supports HTTP-01, DNS-01, and TLS-ALPN-01 challenges.
-- **Plugins:** authenticator/installer plugins for nginx and Apache, a `webroot`/`standalone` authenticator, and a family of `certbot-dns-*` plugins (Route 53, Cloudflare, Google, DigitalOcean, …) for DNS-01.
+- **Protocol:** ACME (RFC 8555) against Let's Encrypt by default; supports HTTP-01, DNS-01, and TLS-ALPN-01 challenges. Default key type is ECDSA; RSA remains selectable (README, 2026-09).
+- **Plugins:** authenticator/installer plugins for nginx (0.8.48+) and Apache (2.4+) per the README's support list, a `webroot`/`standalone` authenticator, and a family of `certbot-dns-*` plugins (Route 53, Cloudflare, Google, DigitalOcean, …) for DNS-01.
 - **On-disk layout:** certs/keys/account state under `/etc/letsencrypt`; renewal config per-cert so `certbot renew` is stateless to invoke.
 
 ## Dependencies
@@ -120,16 +141,16 @@ You reach for it specifically when you want the *reference* ACME client — the 
 - **Runtime:** a Python interpreter and Certbot's dependency tree (cryptography, requests, the ACME library, etc.) — heavier than the single-binary alternatives. The exact minimum Python version tracks the project's current support policy and shifts over time. [未验证]
 - **A web server (for the installer plugins):** nginx or Apache if you use `--nginx`/`--apache`; otherwise none — `certonly` just writes cert files.
 - **Network + a public CA:** outbound access to the ACME directory (Let's Encrypt) and a domain whose control you can prove via HTTP-01 (port 80 reachable) or DNS-01 (DNS API credentials).
-- **Install paths:** OS packages (most distros), the official `snap` (EFF's recommended path), `pip`, and Docker images.
+- **Install paths:** the official `certbot.eff.org` interactive guide generates per-OS instructions — distro packages (most distros), the official `snap`, `pip`, and Docker images.
 
 ## Ops difficulty
 
-**Low** for the common case. Install, run `certbot --nginx`, and the renewal timer is set up for you; day-to-day maintenance is essentially nothing — renewal is automatic and idempotent. Difficulty rises when you leave the happy path: DNS-01/wildcard certs need provider API credentials and the right `certbot-dns-*` plugin; HTTP-01 needs port 80 reachable through firewalls/load balancers; the nginx/apache installer can mis-parse non-standard configs (many shops use `certonly` + their own templating to avoid that); and renewal *hooks* (reload the server, distribute certs to other nodes) are yours to write and test. Across a fleet you'll want config management to deploy Certbot and its renewal hooks consistently rather than hand-tuning each host.
+**Low** for the common case. Install, run `certbot --nginx`, and (on most install methods) the renewal timer is set up for you — verify once with `systemctl list-timers`; day-to-day maintenance is essentially nothing — `renew` is automatic and idempotent. Difficulty rises when you leave the happy path: DNS-01/wildcard certs need provider API credentials and the right `certbot-dns-*` plugin (on the snap install path that also needs `sudo snap set certbot trust-plugin-with-root=ok` before `sudo snap install certbot-dns-cloudflare`, per the official instructions); HTTP-01 needs port 80 reachable through firewalls/load balancers; the nginx/apache installer can mis-parse non-standard configs (many shops use `certonly` + their own templating to avoid that); and renewal *hooks* (reload the server, distribute certs to other nodes) are yours to write and test. Across a fleet you'll want config management to deploy Certbot and its renewal hooks consistently rather than hand-tuning each host.
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 32.3 hours across 15 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed 2026-06; v5.6.0 shipped 2026-05 on a steady monthly-ish minor cadence — **active**, not coasting. Not archived. [推断]
+- **Responsiveness**: Grade A — median first-response time 60.0 hours across 13 qualifying issues/PRs (scorer, 2026-09-28).
+- **Maintenance (2026-09).** Last pushed 2026-09; v5.8.0 shipped 2026-09-01 after v5.7.0 (2026-07-21) — a steady ~monthly-to-bimonthly minor cadence, **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor.** Owned by an **Organization** and developed in the open by EFF, now under ISRG (Let's Encrypt's nonprofit) stewardship — **nonprofit, team/foundation-backed governance, low bus-factor**. This is the reference client for the CA that issues most of the web's free certs, so it has institutional reasons to stay maintained. [推断]
 - **Backing & Lindy.** Created 2014-11 (~12 years) and **still actively shipping** ⇒ a **strong Lindy** signal: a long-lived, battle-proven client, not a hyped newcomer. The nonprofit backing (EFF/ISRG) further lowers abandonment risk versus a single-vendor commercial tool. [推断]
 - **License.** Apache-2.0 (read from the LICENSE file; GitHub reports `NOASSERTION` only because the bundled nginx parser carries MIT) — a permissive, foundation-friendly license with **no relicense risk** of the SSPL/AGPL kind. [推断]
@@ -137,7 +158,7 @@ You reach for it specifically when you want the *reference* ACME client — the 
 
 ## Caveats (unverified)
 
-- [未验证] ~33.1k GitHub stars and v5.6.0 (released 2026-05-11) as of 2026-06 — star counts and version numbers are date-sensitive; treat as indicative.
+- [未验证] ~33.3k GitHub stars and v5.8.0 (released 2026-09-01) as of 2026-09-28 — star counts and version numbers are date-sensitive; treat as indicative.
 - [推断] GitHub's license API returns `NOASSERTION`; the actual project license is Apache-2.0 per the LICENSE file (the `NOASSERTION` is because the bundled nginx parser is MIT). Verified by reading the file, but flagged because the API badge disagrees.
 - [未验证] Let's Encrypt rate limits (per-domain/per-account, weekly issuance) are a CA-side policy that changes over time — check current limits before bulk issuance; not a Certbot-imposed limit.
 - [未验证] Minimum supported Python version tracks Certbot's current support policy and moves over time; not asserting a specific number.

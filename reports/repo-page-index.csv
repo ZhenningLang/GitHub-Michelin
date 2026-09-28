@@ -5,7 +5,6 @@ https://github.com/9001/copyparty,copyparty,document-management,categories/docum
 https://github.com/AI4Finance-Foundation/FinRL,finrl,investment-finance,categories/investment-finance/finrl.md
 https://github.com/AUGMXNT/deccp,deccp,model-editing,categories/model-editing/deccp.md
 https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,on-device-ml,categories/on-device-ml/stable-diffusion-webui.md
-https://github.com/AgentWrapper/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,visual-artifacts,categories/agent-skills/design/visual-artifacts/drawio-skill.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
 https://github.com/AmElmo/pointa,pointa,ui-annotation,categories/agent-tooling/ui-annotation/pointa.md
@@ -52,6 +51,7 @@ https://github.com/Gentleman-Programming/engram,engram,coding-agent-memory,categ
 https://github.com/Giskard-AI/giskard-oss,giskard,llm-eval,categories/llm-eval/giskard.md
 https://github.com/GongRzhe/Office-PowerPoint-MCP-Server,office-powerpoint-mcp-server,office-automation,categories/office-automation/office-powerpoint-mcp-server.md
 https://github.com/GongRzhe/Office-Word-MCP-Server,office-word-mcp-server,office-automation,categories/office-automation/office-word-mcp-server.md
+https://github.com/Graphify-Labs/graphify,graphify,code-intelligence,categories/rag-retrieval/code-intelligence/graphify.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
 https://github.com/HKUDS/DeepTutor,deeptutor,education-tutoring,categories/education-tutoring/deeptutor.md
@@ -160,6 +160,7 @@ https://github.com/TimefoldAI/timefold-solver,timefold-solver,optimization-solve
 https://github.com/TomBadash/Mouser,mouser,peripherals,categories/peripherals/mouser.md
 https://github.com/Tsadoq/ErisForge,erisforge,model-editing,categories/model-editing/erisforge.md
 https://github.com/Unstructured-IO/unstructured,unstructured,document-parsing,categories/document-parsing/unstructured.md
+https://github.com/Untrivial-ai/agent-orchestrator,agent-orchestrator,supervision-surfaces,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md
 https://github.com/VectifyAI/OpenKB,openkb,knowledge-base,categories/knowledge-base/openkb.md
 https://github.com/VectifyAI/PageIndex,pageindex,structured-retrieval,categories/rag-retrieval/structured-retrieval/pageindex.md
 https://github.com/VictorTaelin/OptMem,optmem,coding-agent-memory,categories/agent-memory/coding-agent-memory/optmem.md
@@ -620,7 +621,6 @@ https://github.com/rtk-ai/rtk,rtk,orchestration-and-review,categories/agent-fram
 https://github.com/ruilisi/fortune-sheet,fortune-sheets,office-editors,categories/office-editors/fortune-sheets.md
 https://github.com/run-llama/llama_index,llamaindex,workflow-builders,categories/agent-frameworks/workflow-builders/llamaindex.md
 https://github.com/rustdesk/rustdesk,rustdesk,ops-infra,categories/dev-utilities/ops-infra/rustdesk.md
-https://github.com/safishamsi/graphify,graphify,code-intelligence,categories/rag-retrieval/code-intelligence/graphify.md
 https://github.com/samber/cc-skills-golang,cc-skills-golang,engineering,categories/agent-skills/engineering/cc-skills-golang.md
 https://github.com/scanny/python-pptx,python-pptx,office-automation,categories/office-automation/python-pptx.md
 https://github.com/scip-code/scip,scip,code-intelligence,categories/rag-retrieval/code-intelligence/scip.md

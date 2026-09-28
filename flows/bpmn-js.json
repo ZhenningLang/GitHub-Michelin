@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "bpmn-js does", "zh": "bpmn-js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the toolkit to your web app", "zh": "把工具库装进你的 Web 应用", "code": "npm install bpmn-js"},
+    {"lane": "you", "en": "Mount a modeler on a DOM node", "zh": "把一个建模器挂到 DOM 节点", "code": "new Modeler({ container: '#canvas' })"},
+    {"lane": "you", "en": "Load an existing process diagram", "zh": "导入一张既有流程图", "code": "await modeler.importXML(bpmnXML)"},
+    {"lane": "them", "en": "Draws the process as interactive SVG with palette, context pad and BPMN-compliant rules", "zh": "画成可交互 SVG，带调色板与 BPMN 合规规则", "component": {"en": "diagram-js", "zh": "diagram-js"}},
+    {"lane": "them", "en": "Keeps the model BPMN-valid and exports schema-compliant BPMN 2.0 XML", "zh": "保持模型 BPMN 合规，导出标准 BPMN 2.0 XML", "component": {"en": "bpmn-moddle", "zh": "bpmn-moddle"}}
+  ],
+  "value": {"en": "Standards-correct BPMN modeling inside your own UI, with diagrams any BPMN engine can read", "zh": "在你自己的界面里做符合标准的 BPMN 建模，产出的图任何 BPMN 引擎都读得懂"},
+  "sources": ["bpmn.io bpmn-js Walkthrough (retrieved 2026-09-28): 'npm install bpmn-js'; 'const modeler = new Modeler({ container: '#canvas' });'; 'await modeler.importXML(bpmnXML);'; diagram-js provides Canvas/ContextPad/Palette and BpmnRules enforces BPMN modeling rules; bpmn-moddle reads/writes BPMN 2.0 XML", "bpmn-io/bpmn-js README (develop, retrieved 2026-09-28): viewer usage snippet 'new BpmnJS({ container: 'body' })' + 'viewer.importXML(xml)'"]
+}

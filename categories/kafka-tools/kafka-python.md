@@ -6,17 +6,17 @@ category: kafka-tools
 tags: [kafka, python, client, producer, consumer, admin, pure-python]
 language: Python
 license: Apache-2.0
-maturity: v3.0.6 (2026-06), active, ~5.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v3.0.11 (2026-08), active, ~5.9k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-28T22:11:41Z
+  pushed_at: 2026-09-21T18:04:09Z
   default_branch: master
-  default_branch_sha: a5da13adece530043e3a789cd27ba6bb088b3317
+  default_branch_sha: cd3f7938e1c119fa1e78c333778767606c2a802f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:24:25Z
+  computed_at: 2026-09-28T06:18:57Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 19
-        active_weeks_13: 8
+        last_commit_age_days: 24
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 1.9
-        qualifying_issues: 14
+        qualifying_issues: 12
         band: default
         window_offset_days: 8
         source: issue
@@ -47,10 +47,10 @@ health:
         registry: pypi.org
         canonical_package: kafka-python
         dependent_repos_count: 3616
-        downloads_last_month: 17551522
+        downloads_last_month: 16811201
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         release_downloads: 1864
         release_assets: 4
         release_tier: D
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5111
-        last_commit_age_days: 19
+        repo_age_days: 5117
+        last_commit_age_days: 24
         cohort: library
     governance:
       grade: D
@@ -81,7 +81,7 @@ health:
 
 # kafka-python
 
-A pure-Python client library for Apache Kafka — high-level `KafkaConsumer`, `KafkaProducer`, and `KafkaAdminClient` classes plus CLI scripts, with no C/Cython/Rust core so installs are trivial across environments.
+You need to read and write Kafka topics from Python, but the fast clients ship a native library — `pip install` turns into compiling librdkafka, matching wheels across laptop/CI/slim container, and praying the glibc lines up. kafka-python removes that layer entirely: the Kafka wire protocol is implemented in pure Python, so a bare `pip install kafka-python` works anywhere Python runs.
 
 ![kafka-python — health radar](../../assets/health/kafka-python.svg)
 
@@ -91,10 +91,31 @@ You're a Python developer who needs to read from or write to Kafka from your app
 
 It also fits when you want lightweight admin without a JVM on the box: `kafka-python admin -b localhost:9092 cluster describe` (or `python -m kafka.admin`) replaces a chunk of the Kafka `bin/*.sh` scripts for creating topics, describing clusters, and quick interactive tasks — handy in environments where you don't have a compatible JVM at hand. For raw throughput you can `pip install crc32c` to offload checksumming to an optimized C library without making it a hard dependency.
 
+## How it works
+
+kafka-python speaks the Kafka wire protocol itself: since 3.0 its encoder/decoder classes are generated from the JSON message definitions in the Apache Kafka source, so it follows the Java client's protocol without any C core. You construct one of three high-level objects — `KafkaConsumer`, `KafkaProducer`, or `KafkaAdminClient` — and broker discovery, partition assignment, batching, retries, and offset commits happen underneath; you iterate messages as namedtuples (topic, partition, offset, key, value) and get a future back from `send()` you can block on when you need delivery confirmation. The same three clients are also exposed as CLIs (`python -m kafka.consumer` / `kafka.producer` / `kafka.admin`) for one-off ops tasks without a JVM. What stays yours: (de)serialization, delivery-semantics knobs (`acks`, idempotence, transactions), and consumer-group design — plus an optional `pip install crc32c` if checksums become your CPU bottleneck.
+
+![kafka-python — backbone user story](../../assets/flow/kafka-python.svg)
+
+<!-- flow-steps:begin (generated from flows/kafka-python.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the client — no native library to build — `pip install kafka-python`
+2. **You**: Iterate a topic, joining a consumer group if you want shared splits — `KafkaConsumer('my_favorite_topic', group_id='my_favorite_group')`
+3. **kafka-python**: Discovers brokers, assigns partitions, commits offsets; yields namedtuples — component: `KafkaConsumer`
+4. **You**: Send messages — keyed so the same key lands on the same partition — `producer.send('foobar', key=b'foo', value=b'bar')`
+5. **kafka-python**: Batches and retries in the background; future.get() returns once the broker confirms — component: `KafkaProducer`
+
+**Value**: A Kafka client that pip-installs anywhere Python runs — no librdkafka, no JVM — with Java-style consumer groups and async producing
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **Maximum throughput / lowest latency.** A pure-Python client cannot match the `librdkafka`-backed `confluent-kafka-python` for high-volume producing/consuming. If you're saturating links or counting microseconds, use the native client.
-- **You need the newest broker features day one.** Protocol/KIP support is implemented in Python and may trail the latest Kafka release; verify your required KIPs/broker version are supported before depending on a brand-new feature. [未验证]
+- **You need the newest broker features day one.** Protocol/KIP support is implemented in Python; the README's compatibility badge advertises Kafka 0.8 → 4.3 (2026-09), but brand-new KIPs can still trail a fresh Kafka release — verify your required KIPs/broker version on the project's compatibility page before depending on it.
 - **Async-native codebases.** The public API is synchronous/iterator-based. The 3.x internals moved toward an async event loop, but if you want a first-class `asyncio` API, `aiokafka` is purpose-built for that.
 - **You already run the Confluent stack.** If you're standardized on Confluent Platform/Schema Registry tooling, `confluent-kafka-python` integrates more tightly with that ecosystem (serializers, registry clients).
 - **Heavy stream processing.** It's a client, not a stream-processing framework — no Kafka Streams equivalent. For stateful topologies use Faust/Quix/ksqlDB or the JVM Streams API.
@@ -113,14 +134,15 @@ It also fits when you want lightweight admin without a JVM on the box: `kafka-py
 
 - **Language:** pure Python, no Cython/C/Rust core (the headline portability claim); Python 3.8+ required for the 3.x line.
 - **Components:** `KafkaConsumer`, `KafkaProducer`, `KafkaAdminClient`, plus `kafka-python`/`python -m kafka.*` CLI entry points.
-- **3.0 internals:** protocol stack dynamically generated from Apache Kafka JSON message schemas; networking refactored around an event loop with async/await internally; encode/decode optimizations via compiled/cached bytecode (per the README's "What's New in 3.0").
-- **Optional native accel:** `crc32c` C library for faster checksums; compression codecs (gzip/snappy/lz4/zstd) may pull optional libs depending on what you enable.
+- **3.0 internals:** protocol stack dynamically generated from Apache Kafka JSON message schemas; networking refactored around a `kafka.net` event loop with async/await internally; encode/decode optimizations via compiled/cached bytecode. KIPs named in the 3.0 notes include Cooperative Rebalance (KIP-429), Rack-aware Fetch (KIP-392), Log-Truncation detection (KIP-320), Transactional Producer work (KIP-360/447/654), and Sticky Partitioner (KIP-480).
+- **Optional native accel:** `crc32c` C library for faster checksums (auto-used if installed); gzip is stdlib, while LZ4/Snappy/Zstandard pull optional libraries (see Dependencies).
 
 ## Dependencies
 
-- **A reachable Kafka cluster** — broker compatibility advertised roughly across the Kafka 0.8 → 4.x range (see the project's compatibility page). [未验证]
+- **A reachable Kafka cluster** — the README badge advertises Kafka 0.8 → 4.3 compatibility (2026-09); exact KIP coverage per broker version is on the project's compatibility page. [未验证]
 - **Core install: none** — pure Python, no external runtime deps for the base case.
-- **Optional:** `crc32c` (throughput), compression libraries (snappy/lz4/zstd) if you use those codecs, and security libs for SASL/SSL depending on your auth setup. [未验证]
+- **Compression (per README):** gzip via stdlib; LZ4 via `python-lz4` / `lz4tools` / `py-lz4framed`; Snappy via `python-snappy`; Zstandard via `python-zstandard`.
+- **Optional:** `crc32c` for high-throughput checksumming; SASL/SSL security libs depend on your auth setup (not enumerated here). [未验证]
 - **Python 3.8+** for the current major version.
 
 ## Ops difficulty
@@ -129,17 +151,17 @@ It also fits when you want lightweight admin without a JVM on the box: `kafka-py
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 1.9 hours across 14 qualifying issues/PRs.
-- **Maintenance (2026-06) — active.** Releasing briskly: v3.0.6 on **2026-06-25** with several point releases in the same week, and last push **2026-06-27**. The 3.0 line was a substantial refactor (protocol generation, async internals). Clearly **active**, not coasting. Not archived. [推断]
+- **Responsiveness**: Grade A — median first-response time 1.9 hours across 12 qualifying issues/PRs (scorer, 2026-09-28).
+- **Maintenance (2026-09) — active, steady point releases.** Five releases since the last check: 3.0.7 (2026-06-28), 3.0.8 (2026-07-09), 3.0.9 (2026-07-21), 3.0.10 (2026-08-04), 3.0.11 (2026-08-16, GitHub API) — a roughly weekly-to-fortnightly bugfix cadence on the 3.0 line; last master commit 2026-09-03. Not archived. The 3.0 line was a substantial refactor (protocol generation, async internals).
 - **Governance / bus factor.** `User`-owned (Dana Powers, `dpkp`) — nominally single-owner, but a long-standing **multi-contributor** project (jeffwidman, mumrah, wizzat and others in the top contributors), so the bus factor is better than a typical solo repo. Still, no foundation backing — direction rests with a small core. [推断]
-- **Age × Lindy.** Created **2012-09** (~14 years) and *still actively shipping major versions* ⇒ a **strong Lindy** signal: one of the oldest, most-proven Python Kafka clients, not a newcomer. Old-and-active is the good quadrant. [推断]
-- **Adoption.** Widely used historically (~5.9k stars, ~1.5k forks, ubiquitous on PyPI); the very low open-issue count (~15) alongside frequent releases suggests an attentive, on-top-of-it maintenance posture. [未验证]
+- **Age × Lindy.** Created **2012-09** (~14 years) and *still actively shipping releases* ⇒ a **strong Lindy** signal: one of the oldest, most-proven Python Kafka clients, not a newcomer. Old-and-active is the good quadrant. [推断]
+- **Adoption.** ~5.9k stars / ~1.5k forks (GitHub API, 2026-09-28) and ~16.8M PyPI downloads/month (scorer, 2026-09-28) — ubiquitous for scripting and CI jobs where native wheels are a pain; ~21 open issues alongside frequent releases suggests an attentive, on-top-of-it maintenance posture. [推断]
 - **Risk flags.** Main considerations are *performance ceiling* vs native clients and *protocol lag* vs the newest broker features — capability bounds, not health red flags. Apache-2.0, no relicense history found. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~5.9k stars / ~15 open issues / v3.0.6 (2026-06-25) / last push 2026-06-27 as of 2026-06 — volatile, re-check.
-- [未验证] Advertised broker compatibility range (Kafka 0.8 → ~4.x) and exact KIP coverage are from the README/docs; confirm the specific KIP/broker version you need against the compatibility page before depending on it.
-- [未验证] Optional compression/security dependency details (snappy/lz4/zstd, SASL/SSL libs) are inferred from typical Kafka-client needs, not enumerated here from the manifest.
+- [未验证] Stars (5,904), open issues (~21), and release list (3.0.11 @ 2026-08-16) are a GitHub API snapshot of 2026-09-28 — volatile, re-check.
+- [未验证] The advertised broker compatibility range (Kafka 0.8 → 4.3, README badge) and exact KIP coverage per version are the project's claims; confirm the specific KIP/broker version you need against the compatibility page before depending on it.
+- [未验证] SASL/SSL security-library requirements are not enumerated in the README; check the install docs for your auth mechanism.
 - [推断] "Better-than-solo bus factor" is inferred from the contributor list, not a governance document; it remains a `User`-owned repo with a small core.
 - [推断] The async/await internals vs a first-class asyncio API distinction (favoring aiokafka for async-first apps) is inferred from the 3.0 notes and ecosystem, not verified by reading the public API surface here.

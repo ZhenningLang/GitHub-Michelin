@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "dnspython does", "zh": "dnspython 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the toolkit", "zh": "装上 dnspython", "code": "pip install dnspython"},
+    {"lane": "you", "en": "Ask for a record type the stdlib cannot reach", "zh": "查一个标准库够不着的记录类型", "code": "answers = dns.resolver.resolve(\"nominum.com\", \"MX\")"},
+    {"lane": "them", "en": "Builds and sends the wire query itself, then parses the answer into typed records", "zh": "自己构造并发送线上查询，把答复解析成类型化记录", "code": "rdata.exchange · rdata.preference", "component": {"en": "dns.resolver", "zh": "dns.resolver 解析器"}},
+    {"lane": "you", "en": "Install the extra when you need the encrypted transport", "zh": "要加密传输时，装对应 extra", "code": "pip install dnspython[doh]"},
+    {"lane": "them", "en": "Sends the same query over HTTPS to a DoH endpoint when you call it", "zh": "你调用时，把同一查询经 HTTPS 发到 DoH 端点", "code": "dns.query.https(q, where, session=client)", "component": {"en": "dns.query", "zh": "dns.query 传输"}}
+  ],
+  "value": {"en": "Structured DNS answers for any record type over any transport, in-process — no shelling out to dig and parsing text", "zh": "任意记录类型、任意传输的结构化 DNS 答复都在进程内拿到，不必 shell 调 dig 再解析文本"},
+  "sources": ["README.md main @ 2026-09 (retrieved 2026-09-28): `pip install dnspython`; `pip install dnspython[doh]`; '`/etc/hosts` is thus not used'; 'supports Python 3.10 and later'; experimental DoQ", "examples/mx.py main @ 2026-09 (retrieved 2026-09-28): `answers = dns.resolver.resolve(\"nominum.com\", \"MX\")`; `rdata.exchange`; `rdata.preference`", "examples/doh.py main @ 2026-09 (retrieved 2026-09-28): `r = dns.query.https(q, where, session=client)`", "PyPI metadata 2026-09-28: requires_python >=3.10; extras dnssec=cryptography>=45, doh=httpx/httpcore/h2, doq=aioquic, idna, trio, wmi"]
+}

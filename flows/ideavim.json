@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "IdeaVim does", "zh": "IdeaVim 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install IdeaVim from the IDE's plugin manager", "zh": "在 IDE 的插件管理里安装 IdeaVim", "code": "Settings | Plugins"},
+    {"lane": "them", "en": "Its Vim engine takes over keystroke handling in the editor pane", "zh": "Vim 引擎接管编辑器面板的按键处理", "component": {"en": "Vim engine", "zh": "Vim 引擎"}},
+    {"lane": "you", "en": "Put your Vim-flavoured settings in the ideavimrc file", "zh": "把 Vim 风格设置写进 ideavimrc 文件", "code": "~/.ideavimrc"},
+    {"lane": "you", "en": "Bind IDE actions to Vim keys with an Action mapping", "zh": "用 Action 映射把 IDE 动作绑到 Vim 键上", "code": "map <leader>r <Action>(RenameElement)"},
+    {"lane": "them", "en": "Modes, operators and macros apply to the IDE's own document — refactorings and debugger unchanged", "zh": "模式与宏作用在 IDE 自己的文档上，重构与调试器照常"}
+  ],
+  "value": {"en": "Vim muscle memory and JetBrains' semantic tooling in one editor, toggled off any time", "zh": "一个编辑器里同时拥有 Vim 肌肉记忆和 JetBrains 语义工具，随时一键切回"},
+  "sources": ["README.md master @ 2026-09-28 — Setup: 'IdeaVim can be installed via Settings | Plugins'; 'Use Tools | Vim in the menu to enable or disable vim'; 'Use the ~/.ideavimrc file as an analog of ~/.vimrc'; example ideavimrc block: 'set surround', 'map <leader>r <Action>(RenameElement)'; 'source ~/.vimrc'", "plugins.jetbrains.com API plugin 164 (retrieved 2026-09-28): current build 2.47.1"]
+}

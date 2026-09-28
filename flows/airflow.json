@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Airflow does", "zh": "Airflow 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Airflow pinned to a constraints file for a reproducible env", "zh": "用官方 constraints 文件锁定依赖，可复现地安装 Airflow", "code": "pip install 'apache-airflow==3.3.2'"},
+    {"lane": "you", "en": "Start a full local instance with one command", "zh": "一条命令启动完整的本地实例", "code": "airflow standalone"},
+    {"lane": "them", "en": "Initializes the metadata DB, creates an admin, runs scheduler, API server, DAG processor", "zh": "初始化元数据库、建管理员，并启动所有组件"},
+    {"lane": "you", "en": "Write each pipeline as a Python DAG file of tasks and dependencies", "zh": "把流水线写成 Python DAG 文件：任务与依赖", "code": "from airflow.sdk import DAG · @task(retries=3)"},
+    {"lane": "you", "en": "Open the UI and unpause the DAG", "zh": "打开 Web UI，解除 DAG 暂停", "code": "localhost:8080"},
+    {"lane": "them", "en": "On schedule, hands ready tasks to your executor, records every run, retries and backfills", "zh": "按调度把就绪任务交给执行器，记录每次运行，负责重试与回填"}
+  ],
+  "value": {"en": "Scheduled batch pipelines as version-controlled code, with retries, backfills and one team-wide UI", "zh": "批处理流水线变成进版本库的代码，自带重试、回填和一个全团队共用的 UI"},
+  "sources": ["apache/airflow README.md (main, retrieved 2026-09-28): pip install 'apache-airflow==3.3.2' --constraint .../constraints-3.10.txt", "airflow-core/docs/start.rst quickstart (main, same retrieval): airflow standalone — 'initializes the database, creates a user, and starts all components'; Visit localhost:8080", "airflow-core/docs/tutorial/taskflow.rst (main, same retrieval): from airflow.sdk import DAG; @task(retries=3)"]
+}

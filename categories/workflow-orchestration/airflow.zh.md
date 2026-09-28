@@ -6,19 +6,19 @@ category: workflow-orchestration
 tags: [workflow, orchestration, scheduler, dag, data-engineering, batch, etl, python]
 language: Python
 license: Apache-2.0
-maturity: v3.x line, active, ~46k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v3.3.2, active, ~47k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-29T11:36:14Z
+  pushed_at: 2026-09-28T09:40:36Z
   default_branch: main
-  default_branch_sha: 512a0445875c950ff50f9fbd890751da20e92a09
+  default_branch_sha: 23bcbe6c99a3cf7dc5de9ebe4a45ad5a50513c44
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:06:41Z
+  computed_at: 2026-09-28T09:46:11Z
   overall: A
-  overall_score: 3.67
+  overall_score: 4.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -35,23 +35,23 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.9
-        qualifying_issues: 39
+        median_ttfr_hours: 3.5
+        qualifying_issues: 37
         band: default
         window_offset_days: 5
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: A
       raw:
         registry: pypi.org
-        canonical_package: apache-airflow-mypy
+        canonical_package: apache-airflow-core
         dependent_repos_count: 0
-        downloads_last_month: 47011
+        downloads_last_month: 2682704
         graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
-        release_downloads: 82990
+        volume_tier: A
+        cross_check_divergence: 1.0
+        release_downloads: 83214
         release_assets: 924
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4180
+        repo_age_days: 4186
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 211
-        top1_share: 0.119
-        top3_share: 0.226
+        active_maintainers_12mo: 210
+        top1_share: 0.121
+        top3_share: 0.227
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,7 +81,7 @@ health:
 
 # Apache Airflow
 
-一个用代码编排、调度并监控批处理数据工作流的平台——把流水线写成 Python DAG，由调度器、元数据库、Web UI 和可插拔执行器组成，并带有庞大的 operator 与 provider 集成目录。
+你的夜间流水线散落在一片 cron 墓地里：凌晨三点悄悄挂了没人知道，步骤之间没有依赖顺序，也没有重试，没人说得清坏在哪。Airflow 把每条流水线变成一个 Python 文件（DAG——一张由依赖串起来的任务图），由带元数据库和 Web UI 的调度器按点执行：什么跑了、什么迟了、什么挂了，重跑和按日期回填都在界面上点一下就行。
 
 ![airflow — 健康度雷达](../../assets/health/airflow.zh.svg)
 
@@ -90,6 +90,28 @@ health:
 你是数据工程师，负责一片定时跑的批处理流水线——每晚往数仓做 ELT、按小时做聚合、每天刷新一批训练数据，还有几个跨系统作业要从 S3 拉数据、跑一个 Spark 步骤、再灌进 Snowflake。这些活都是*按时间或按间隔触发*的，每个作业是一张由依赖步骤组成的图，你需要重试、回填、失败告警，以及一个统一的地方来看：什么跑了、什么迟了、什么挂了。你把每条流水线写成一个 Python 文件来构建 DAG：任务是 operator（Bash、Python、SQL、一次 Spark 提交、一个 Kubernetes pod），边是依赖，`schedule` 控制节奏。Airflow 的调度器遍历这些 DAG，把就绪任务交给执行器（Local、Celery 或 Kubernetes），把每次运行记进元数据库，并在 Web UI 里渲染 grid/graph 视图，让你在浏览器里检查、重跑或回填某个日期区间。
 
 当你想要流水线即代码、进版本库，想用一大套现成的 operator 和 provider 包（云 SDK、数据库、传输 operator）而不是手写胶水，并且想要成熟的运维面——SLA、带退避的重试、任务级日志、团队早已熟悉的 UI——时，你会专门选它。当工作单元是「由若干步骤组成的定时批处理作业」时，它就是默认的编排层：你宁愿配置久经考验的 operator，也不想自己造一个调度器。
+
+## 怎么用起来
+
+你把每条流水线写成一个 Python 文件：一个 DAG，节点是 operator（operator 就是「某种外部动作的现成封装」——一条 Bash 命令、一个 Python 函数、一段 SQL、一次 Spark 提交、一个 Kubernetes pod），用依赖串起来，`schedule` 定节奏。内部它由几个协同的进程对着一个元数据库干活：*dag-processor* 把你的文件解析进库，*调度器* 一轮轮地判断哪些任务实例就绪（到点了、上游都成功了），*执行器*——单机用 Local，Celery 走 worker 池加消息 broker（比如 Redis），Kubernetes 每个任务起一个 pod——真正把任务跑起来；API server 支撑 Web UI，你在界面上看 grid、重跑、回填。带退避的重试、SLA 告警、任务日志、运行历史都替你记录好。它刻意*不*做的是搬运数据：任务应当幂等，把重活交给外部系统（数仓、Spark、云服务），步骤间只传小元数据（XCom）——Airflow 只负责编排，真正算数的是外部系统。留给你的：元数据库及其备份、worker 容量与 broker、provider 包和凭据，以及每个任务自身的代码。
+
+![airflow — 主干用户故事](../../assets/flow/airflow.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/airflow.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用官方 constraints 文件锁定依赖，可复现地安装 Airflow — `pip install 'apache-airflow==3.3.2'`
+2. **你**：一条命令启动完整的本地实例 — `airflow standalone`
+3. **Apache Airflow**：初始化元数据库、建管理员，并启动所有组件
+4. **你**：把流水线写成 Python DAG 文件：任务与依赖 — `from airflow.sdk import DAG · @task(retries=3)`
+5. **你**：打开 Web UI，解除 DAG 暂停 — `localhost:8080`
+6. **Apache Airflow**：按调度把就绪任务交给执行器，记录每次运行，负责重试与回填
+
+**价值**：批处理流水线变成进版本库的代码，自带重试、回填和一个全团队共用的 UI
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -112,10 +134,10 @@ health:
 
 ## 技术栈
 
-- **语言：** Python——DAG 和 operator 都是 Python；核心调度器/Web server 也是 Python 服务。
-- **Web/UI：** 一个 Web server，渲染 DAG 的 grid/graph 视图、日志和运行历史；基于 Python web 栈，带 REST API。[未验证]
-- **调度器 + 执行器：** 一个调度器进程，外加可插拔执行器——Local、Celery（分布式 worker）或 Kubernetes（每任务一个 pod）——按部署规模选用。
-- **operator 与 provider：** 一大套内置 operator，加上单独版本化的 *provider* 包，覆盖云、数据库以及 transfer/SQL/Spark 等集成。
+- **语言：** Python——DAG 和 operator 都是 Python；核心服务也是 Python。当前线支持 Python 3.10–3.14（自 Airflow 3.2.0 起；quickstart 文档，2026-09-28 抓取），官方支持的装机方式是 `pip` 或 `uv` 配合按版本固定的 constraints 文件。
+- **Web/UI：** 一个 API server（`airflow api-server`）加 Web UI，渲染 DAG 的 grid/graph 视图、日志和运行历史。UI 的内部框架仍未核实。[未验证]
+- **服务与执行器：** 可独立运行的几个组件——`airflow db migrate`、`airflow scheduler`、`airflow dag-processor`、`airflow triggerer`、`airflow api-server`（quickstart 命令，2026-09-28 抓取）——加上可插拔执行器（Local、带 broker 的 Celery，或 Kubernetes），按部署规模选用。
+- **operator 与 provider：** 一大套内置 operator，加上单独版本化的 *provider* 包，覆盖云、数据库以及 transfer/SQL/Spark/AI-ML 等集成（README 现在还点名用 Airflow 编排 agentic/LLM 工作负载，2026-09-28 抓取）。
 - **持久化：** 一个元数据库（生产用 PostgreSQL 或 MySQL；SQLite 仅限本地开发）保存 DAG run、任务状态、connection 和 variable。
 
 ## 依赖
@@ -132,17 +154,16 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 4.9 小时，基于 39 个 qualifying issues/PRs。
-- **维护（2026-06）** —— 最近推送在 2026-06，未归档，处于活跃的 v3.x 线；是数据基础设施里最繁忙的仓库之一，显然**活跃**而非停滞滑行。约 1.7k 个 open issue 反映的是流量规模，而非疏于维护。`[推断]`
-- **治理与 bus factor** —— 一个 **Apache 软件基金会**顶级项目（在 `apache/` 下、`Organization` 所有）：带 PMC 和众多企业贡献者的基金会治理，是开源能提供的最强 bus-factor 画像之一——没有单一厂商掌控路线图。`[推断]`
-- **年龄与 Lindy** —— 约 2015-04 创建，到 2026-06 约 11 岁且仍在积极开发：一个**强 Lindy**下注（既长寿*又*活跃），也是大量数据工程已经在跑的默认编排层。`[推断]`
-- **采用与生态** —— 巨大的生产装机量、庞大的 operator/provider 目录、多家云厂商的托管方案，约 46k star；生态深度是真正的护城河，而非炒作。`[未验证]`
-- **风险标记** —— ASF 下的 Apache-2.0（无 relicense / open-core 风险——基金会 IP 政策排除了厂商「抽地毯」）；真正的成本在于**运维重量**（多服务分布式系统），而非许可证或弃坑。`[未验证]`
+- **响应速度**：Grade A——中位首次响应 3.5 小时，基于 37 个 qualifying issues/PRs（2026-09-28 重算）。
+- **维护（2026-09）** —— 每天都在收推送，最新 release 3.3.2 发布于 2026-09-17（GitHub API）；是数据基础设施里最繁忙的仓库之一，显然**活跃**而非停滞滑行。约 1.7k 个 open issue（2026-06 的观察）反映的是流量规模，而非疏于维护。`[推断]`
+- **治理与 bus factor** —— 一个 **Apache 软件基金会**顶级项目（在 `apache/` 下、`Organization` 所有）：带 PMC、过去一年 200 多位活跃贡献者的基金会治理，是开源能提供的最强 bus-factor 画像之一——没有单一厂商掌控路线图。
+- **年龄与 Lindy** —— 2015-04 创建，约 11 岁半且仍在积极开发：一个**强 Lindy** 下注（既长寿*又*活跃），也是大量数据工程已经在跑的默认编排层。
+- **采用与生态** —— 巨大的生产装机量（`apache-airflow-core` 在 PyPI 月下载约 270 万，star 约 47k，均为 2026-09-28 重算口径）、庞大的 operator/provider 目录、多家云厂商的托管方案；生态深度是真正的护城河，而非炒作。
+- **风险标记** —— ASF 下的 Apache-2.0（无 relicense / open-core 风险——基金会 IP 政策排除了厂商「抽地毯」）；真正的成本在于**运维重量**（多服务分布式系统）和 v2→v3 迁移的折腾，而非许可证或弃坑。
 
 ## 存疑（未验证）
 
-- [未验证] ~46k GitHub star 和「active（2026-06）」取自仓库页；star 数对时间敏感且不可靠——仅供参考。
-- [未验证] 3.x 线当前确切稳定版本及其发布日期这里没有钉死；依赖某个具体版本前请对照仓库 releases 核实。
-- [未验证] Web UI 内部实现（框架、REST API 表面）以及数据库/Python 版本支持范围随版本变化——请在你目标版本的文档里确认。
+- [未验证] 约 47k GitHub star（46,997，GitHub API 2026-09-28）——star 数对时间敏感、作为健康度代理并不可靠，仅供参考。
+- [未验证] Web UI 内部实现（框架、API 表面）以及数据库支持版本范围随版本变化——请在你目标版本的文档里确认。
 - [推断] 「动态/数据感知 DAG 上 Dagster/Prefect 更现代」是对工具体验的观点，不是实测基准；Airflow 已加入数据感知调度，差距在缩小。
 - [推断] Celery 的 broker 需求（Redis/RabbitMQ）来自标准 Celery 部署惯例；具体用哪个 broker 是部署选择，并非 Airflow 固定要求。

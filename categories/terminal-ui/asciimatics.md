@@ -6,17 +6,17 @@ category: terminal-ui
 tags: [terminal-ui, tui, curses, ascii-art, animation, cross-platform, python, widgets]
 language: Python
 license: Apache-2.0
-maturity: v1.15.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: PyPI 1.15.0 (2023-10); master carries 1.15.1 (tagged 2026-07), 4.3k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2025-06-03T21:42:03Z
+  pushed_at: 2026-07-04T13:05:35Z
   default_branch: master
-  default_branch_sha: 0a400e6c6c52cb7f4ba15ffaaa55b535d0d1b2b1
+  default_branch_sha: bf0cea87b50439e40a5c7b708d64da4195314a60
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:06:59Z
+  computed_at: 2026-09-28T10:11:27Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 80
+        last_commit_age_days: 86
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: asciimatics
         dependent_repos_count: 176
-        downloads_last_month: 106486
+        downloads_last_month: 97458
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4178
-        last_commit_age_days: 80
+        repo_age_days: 4184
+        last_commit_age_days: 86
         cohort: library
     governance:
       grade: B
@@ -73,7 +73,7 @@ health:
 
 # asciimatics
 
-A cross-platform Python library for full-screen text UIs — a single curses-like API plus a widget/forms toolkit and an ASCII animation/effects engine, working the same on Linux, macOS and Windows.
+The stdlib `curses` you'd use for a full-screen terminal app only exists on Unix — the same code just won't run on your colleague's Windows laptop. asciimatics wraps curses and the native Windows console API behind one `Screen` API, so interactive forms, dashboards and ASCII animations are written once in Python and behave the same on Linux, macOS and Windows.
 
 ![asciimatics — health radar](../../assets/health/asciimatics.svg)
 
@@ -83,13 +83,35 @@ You're a Python developer who needs a real full-screen terminal interface — an
 
 You also reach for it when you want the *fun* layer: scrolling banners, sprites, particle effects, Conway's Life, transitions between scenes. asciimatics started as an animation toolkit (the name is a pun), so if you're building a splash screen, a retro demo, an ASCII-art intro, or a teaching visual, the `Effect`/`Scene`/`Renderer` model is purpose-built for it. It's the same library whether you want a serious data-entry screen or a credits-roll animation.
 
+## How it works
+
+asciimatics hands you one `Screen` object and swaps the engine under it per OS: Python's `curses` on Linux/macOS, the native Windows console API on Windows (via pywin32) — that is where the "write once, runs everywhere" comes from. Above the Screen sit two layers. The **effects layer** is a draw loop: a `Renderer` produces each frame as ASCII art, `Effect`s move it around, and `Scene`s play the effects on the Screen — sprites, banners, particles. The **widgets layer** is where forms live: you subclass a `Frame`, add a `Layout` (which re-arranges your widgets whenever the terminal resizes), and drop `Button`/`TextBox`/`DropdownList` widgets onto it; the Frame's event loop routes keystrokes and mouse clicks to the focused widget. What asciimatics does for you: taking over the screen, the per-platform plumbing, repaints, resize and non-blocking input. What stays yours: the app logic behind your callbacks and testing how it renders in the specific terminals you ship to — colour depth and unicode width differ per emulator. The entry point is `Screen.wrapper(demo)`: it opens the screen, calls your function with it, and restores the terminal afterwards.
+
+![asciimatics — backbone user story](../../assets/flow/asciimatics.svg)
+
+<!-- flow-steps:begin (generated from flows/asciimatics.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library from PyPI — `pip install asciimatics`
+2. **You**: Subclass a Frame, add a Layout, hang widgets on it — `layout2.add_widget(Button("Add", self._add), 0)`
+3. **asciimatics**: Arranges your widgets on the Screen and re-arranges them whenever it resizes — component: `Frame + Layout`
+4. **You**: Start the event loop through the Screen wrapper — `Screen.wrapper(demo, catch_interrupt=True, arguments=[last_scene])`
+5. **asciimatics**: Drives curses on Unix and the Windows console API beneath one cross-platform Screen — component: `Screen`
+
+**Value**: An interactive full-screen form that behaves identically on Windows, macOS and Linux — no stdlib curses, no second code path
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You only target Linux/macOS and want maximum control.** If cross-platform isn't a requirement, raw `curses` or a lower-level binding has no extra dependency and finer control — asciimatics' abstraction is a convenience layer you may not need.
 - **You want a modern, reactive, richly-styled TUI framework.** Textual (CSS-like styling, async, mouse-first widgets) or `urwid` target richer app UIs; asciimatics' widget set is functional but more spartan and its API is older-style. Compare before committing to a large app.
 - **You just want pretty static output, tables, progress bars, or markup.** `rich` is the better fit for styled non-fullscreen output — asciimatics takes over the whole screen and is overkill for log colouring or a progress bar.
-- **You need ASCII-art text banners or image-to-ASCII only.** Use a focused library ([art](art.md) for figlet-style text, image-to-ASCII converters for pictures); asciimatics is a UI/animation engine, not a font/art generator.
-- **Single-maintainer risk matters to you.** Development is driven primarily by one author; for a long-lived production dependency, weigh the bus-factor (see Health). [推断]
+- **You want a banner string to print/log, not a screen to take over.** asciimatics can do figlet-style text (`FigletText`) and image-to-ASCII conversion, but its renderers paint onto a full-screen `Screen` frame, they don't hand you a string to print anywhere — for a printable banner use [art](art.md) or `pyfiglet`; for standalone picture-to-ASCII use a converter like `jp2a` or [asciify](asciify.md).
+- **The published package lags master by years.** The newest PyPI release is 1.15.0 (2023-10); master has since added mouse-wheel scrolling, grapheme-cluster Unicode handling and type hints (1.15.1 was tagged 2026-07 but not published to PyPI as of 2026-09). If you need a fix quickly, you'll be installing from source — or you'd rather ride Textual's release cadence.
+- **Roadmap is single-led.** Three committers were active over the last 12 months, but the top one holds ~60% of the window's commits — a concentrated bus-factor for a long-lived production dependency (see Health). If you want vendor backing instead, use Textual. [推断]
 
 ## Comparison
 
@@ -103,14 +125,14 @@ You also reach for it when you want the *fun* layer: scrolling banners, sprites,
 
 ## Tech stack
 
-- **Language:** pure Python (supports current CPython versions; verify the exact minimum against the repo's `setup`/`pyproject` for your version). [未验证]
-- **Core abstraction:** a `Screen` class wrapping platform-specific terminal back-ends — `curses` on Unix-likes, native console APIs on Windows — to present one cross-platform surface.
+- **Language:** pure Python; master `pyproject.toml` declares `requires-python >=3.8` with CI classifiers for 3.9–3.11 (the 1.15.0 changelog line says Python 3.9+ is required after dropping Python 2).
+- **Core abstraction:** a `Screen` class wrapping platform-specific terminal back-ends — `curses` on Unix-likes, native console APIs on Windows (pywin32) — to present one cross-platform surface.
 - **Widget layer:** `Frame`, `Layout`, and widgets (text, list, button, etc.) with a scene/effect model on top.
-- **Animation engine:** `Scene` / `Effect` / `Renderer` primitives for sprites, particles, transitions and ASCII-art rendering.
+- **Animation engine:** `Scene` / `Effect` / `Renderer` primitives for sprites, particles, transitions, figlet text and image-to-ASCII rendering.
 
 ## Dependencies
 
-- **Runtime:** Python plus a small set of pip dependencies (e.g. a Windows console binding such as `pywin32`/`pyfiglet`-style helpers and `wcwidth`); install via `pip install asciimatics`. Exact dependency list is in the packaging metadata. [未验证]
+- **Runtime:** Python plus four pip dependencies (master `pyproject.toml`): `pyfiglet >=0.7.2`, `Pillow >=2.7.0`, `wcwidth >=0.5.0`, and `pywin32 >=1.0` on Windows only; install via `pip install asciimatics`.
 - **Platform:** a terminal/console; on Windows it uses native console APIs rather than requiring a Unix `curses`.
 - **No external services or datastore** — it's an in-process UI library.
 
@@ -120,17 +142,15 @@ You also reach for it when you want the *fun* layer: scrolling banners, sprites,
 
 ## Health & viability
 
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last pushed 2025-06; commits continue but cadence is modest. Releases are tagged (1.15.x line). Reads as **maintained but slow-moving**, not abandoned — not archived. [推断]
-- **Governance / bus factor.** A single-maintainer project (Peter Brittain) on a personal account with a long tail of occasional contributors; roadmap depends largely on one person. That's the main governance risk for a long-term dependency. [推断]
-- **Age & Lindy verdict.** ~11 years old (created 2015-04) and still receiving commits ⇒ a **strong Lindy** signal: a mature, stable library that has long since found its shape, not a hyped newcomer. [推断]
-- **Adoption.** ~4.3k stars and broad use as the go-to cross-platform Python TUI/animation library; well-documented with examples. [未验证]
-- **Risk flags.** Apache-2.0 (permissive, no relicense history found); the realistic risk is maintenance velocity/bus-factor, not licensing. [推断]
+- **Maintenance (measured 2026-09).** Radar `maintenance: B`: master received commits on 2026-07-03/04 — grapheme-cluster Unicode fixes, mouse-wheel support, mypy cleanup — but the release train is stalled: latest PyPI release is 1.15.0 (2023-10-25) and the 1.15.1 GitHub tag (2026-07) was not on PyPI when checked. Reads as **maintained-but-release-late**, not abandoned; not archived.
+- **Responsiveness.** Radar `responsiveness: ?` (no signal inside the measured window) — don't count on fast issue turnaround; no data either way.
+- **Governance / bus factor.** Radar `governance: B` — 3 active committers over 12 months with the top one at ~60% of window commits: single-led (Peter Brittain) but not a lone wolf; no foundation backing.
+- **Age & Lindy verdict.** ~11.5 years old (created 2015-04) with commits still landing ⇒ a **solid Lindy** signal, tempered by the multi-year PyPI release gap: the library persists, the distribution train slows. [推断]
+- **Adoption (measured 2026-09).** 4,302 stars, 97,458 PyPI downloads last month, ~176 dependent repos — established for a niche, no longer growing fast.
+- **Risk flags.** Apache-2.0, no relicense history found; the realistic risk is release velocity and the concentrated roadmap, not licensing.
 
 ## Caveats (unverified)
 
-- [未验证] ~4.3k GitHub stars and 1.15.x release line as of 2026-06; star counts and version numbers drift — treat as indicative only.
-- [未验证] Exact Python version floor and the precise runtime dependency list are governed by the repo's packaging metadata and change across releases; not asserting specific values.
-- [推断] "Maintained but slow-moving" is inferred from a 2025-06 last-push and modest commit cadence, not a measured release-frequency figure.
-- [推断] Single-maintainer/bus-factor characterization is inferred from the contributor distribution and personal-account ownership, not a stated governance document.
-- [推断] Textual/urwid being "richer" is a general characterization of their feature sets, not a feature-by-feature audit against asciimatics.
+- [推断] The 1.15.1 tag existing on GitHub while absent from PyPI suggests more releases are coming; there is no published release roadmap, so timing is a guess.
+- [推断] "Single-led, ~60% top-contributor share" is a 12-month commit-statistics window, not a governance document.
+- [未验证] Textual/urwid being "richer" is a general characterization of their feature sets, not a feature-by-feature audit against asciimatics.

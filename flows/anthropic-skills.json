@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Anthropic Skills does",
+    "zh": "Anthropic Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Register the repo as a Claude Code plugin marketplace",
+      "zh": "把仓库注册为 Claude Code 插件市场",
+      "code": "/plugin marketplace add anthropics/skills"
+    },
+    {
+      "lane": "you",
+      "en": "Install one of the two bundles (documents or examples)",
+      "zh": "安装两个捆绑包之一（文档或示例）",
+      "code": "/plugin install document-skills@anthropic-agent-skills"
+    },
+    {
+      "lane": "them",
+      "en": "Loads a skill's full instructions only when your task matches its description",
+      "zh": "任务命中 description 时才加载该 skill 的完整指令",
+      "component": {
+        "en": "SKILL.md folders",
+        "zh": "SKILL.md 目录"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Name the job in plain language",
+      "zh": "用人话点名任务",
+      "code": "Use the PDF skill to extract the form fields from path/to/some-file.pdf"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the scripted procedure — the same one powering Claude's own document generation",
+      "zh": "按脚本化流程执行——正是驱动 Claude 自家文件生成的那套",
+      "component": {
+        "en": "document skills",
+        "zh": "文档类 skill"
+      }
+    }
+  ],
+  "value": {
+    "en": "Repeatable document/design/MCP workflows from the vendor's own reference implementation, without hand-rolled prompts",
+    "zh": "厂商示范实现给出的可重复文档/设计/MCP 流程，不必手搓 prompt"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/anthropics/skills/main/README.md — 'Try in Claude Code, Claude.ai, and the API / Claude Code' (/plugin marketplace add anthropics/skills; both /plugin install lines; the PDF form-fields example sentence), verified against README at commit 3337550 on 2026-09-28",
+    "README 'About This Repository' (each skill self-contained in its own folder with SKILL.md; document skills power Claude's document capabilities) and 'Creating a Basic Skill' (name + description frontmatter)"
+  ]
+}

@@ -9,9 +9,9 @@
 | --- | --- | --- | --- |
 | **deep-research** | 想要一个极简可读、约 500 行的 TypeScript 深度研究 agent 作为 fork 底座时用它。 | B（4/6） | [→](deep-research.zh.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | B（5/6） | [→](vane.zh.md) |
-| **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | B（6/6） | [→](local-deep-research.zh.md) |
+| **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | B（5/6） | [→](local-deep-research.zh.md) |
 | **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | B（5/6） | [→](agent-reach.zh.md) |
-| **MiroThinker** | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 | C（5/6） | [→](mirothinker.zh.md) |
+| **MiroThinker** | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 | B（4/6） | [→](mirothinker.zh.md) |
 | **GPT Researcher** | An autonomous agent that conducts deep research on any data using any LLM providers | A（6/6） | [→](gpt-researcher.zh.md) |
 | **Open Deep Research** | 当你需要在 `deep-research` 分类中评估 Open Deep Research 时用它。 | D（5/6） | [→](open-deep-research.zh.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | B（6/6） | [→](storm.zh.md) |
@@ -27,9 +27,9 @@
 | --- | --- | --- | --- |
 | [deep-research](deep-research.zh.md) | ✅ | B（4/6） | 想要一个极简可读、约 500 行的 TypeScript 深度研究 agent 作为 fork 底座时用它。 |
 | [Vane](vane.zh.md) | ✅ | B（5/6） | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 |
-| [Local Deep Research](local-deep-research.zh.md) | ✅ | B（6/6） | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 |
+| [Local Deep Research](local-deep-research.zh.md) | ✅ | B（5/6） | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | B（5/6） | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 |
-| [MiroThinker](mirothinker.zh.md) | ✅ | C（5/6） | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 |
+| [MiroThinker](mirothinker.zh.md) | ✅ | B（4/6） | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 |
 | [Hyperresearch](hyperresearch.zh.md) | ✅ | B（5/6） | 锁死 Claude Code 的 16 步研究流水线，带对抗式 critic、引用核验和持久 vault；pre-1.0 churn 明显，且榜单领先宣称是自测 projection。 |
 | [last30days](last30days.zh.md) | ✅ | B（6/6） | 一条斜杠命令把最近 30 天 Reddit／X／YouTube／HN／Polymarket 的信号融合成一份带引用的简报；项目年轻、热度高、上下文开销大，且依赖抓取。 |
 | [OpenScience](openscience.zh.md) | ✅ | B（6/6） | OpenCode 形状、为科学加载的工作台：真实内核、真实连接器、真实集群；代价是账号首启、外部学术 API 与极快的版本 churn。 |

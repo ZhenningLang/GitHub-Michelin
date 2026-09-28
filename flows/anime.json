@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Anime.js does", "zh": "Anime.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library", "zh": "安装库", "code": "npm install animejs"},
+    {"lane": "you", "en": "Import the function, then declare targets and parameters in one call", "zh": "引入函数后，一句调用声明目标与参数", "code": "import { animate } from 'animejs'; · animate(targets, parameters)"},
+    {"lane": "them", "en": "Interpolates each property every frame through the chosen ease, writing into CSS, SVG, attributes or objects", "zh": "每帧按所选缓动插值每个属性，写回 CSS、SVG、属性或对象", "component": {"en": "Engine", "zh": "引擎"}},
+    {"lane": "them", "en": "Handles loop, stagger and callbacks, and hands back play/pause/seek controls", "zh": "处理循环、错峰与回调，交回 play/pause/seek 控制器"}
+  ],
+  "value": {"en": "choreographed DOM/SVG/object motion with runtime controls — no requestAnimationFrame loops or easing math", "zh": "带运行时控制器的 DOM/SVG/对象编排动效——不必手写 requestAnimationFrame 循环和缓动数学"},
+  "sources": ["animejs.com/documentation/getting-started/installation (fetched 2026-09-28): 'npm install animejs'", "animejs.com/documentation/animation (fetched 2026-09-28): \"import { animate } from 'animejs';\" and 'const animation = animate(targets, parameters);'; returns JSAnimation with play()/pause()/reverse()/seek() methods; 'Engine' and 'Timeline' doc pages", "README.md master @ 2026-09-28 'Usage': import { animate, stagger } from 'animejs'; animate('.square', { x: 320, rotate: { from: -180 }, duration: 1250, delay: stagger(65, { from: 'center' }), ease: 'inOutQuint', loop: true, alternate: true })"]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "asciimatics does", "zh": "asciimatics 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library from PyPI", "zh": "从 PyPI 装上库", "code": "pip install asciimatics"},
+    {"lane": "you", "en": "Subclass a Frame, add a Layout, hang widgets on it", "zh": "继承 Frame，加 Layout，把 widget 挂上去", "code": "layout2.add_widget(Button(\"Add\", self._add), 0)"},
+    {"lane": "them", "en": "Arranges your widgets on the Screen and re-arranges them whenever it resizes", "zh": "负责把 widget 排上屏，终端 resize 时自动重排", "component": {"en": "Frame + Layout", "zh": "Frame + Layout"}},
+    {"lane": "you", "en": "Start the event loop through the Screen wrapper", "zh": "经 Screen 包装器启动事件循环", "code": "Screen.wrapper(demo, catch_interrupt=True, arguments=[last_scene])"},
+    {"lane": "them", "en": "Drives curses on Unix and the Windows console API beneath one cross-platform Screen", "zh": "同一个 Screen：内接 curses 与 Windows console", "component": {"en": "Screen", "zh": "Screen"}}
+  ],
+  "value": {"en": "An interactive full-screen form that behaves identically on Windows, macOS and Linux — no stdlib curses, no second code path", "zh": "交互全屏表单在 Windows、macOS、Linux 上行为一致：不碰标准库 curses，也不用写第二套代码"},
+  "sources": ["README.rst master @ 2026-09-28: 'pip install asciimatics'; 'Screen.wrapper(demo)' hello-world; features list (coloured text incl. CJK, keyboard/mouse input, console resize)", "samples/contact_list.py master @ 2026-09-28: 'layout2.add_widget(Button(\"Add\", self._add), 0)'; 'Screen.wrapper(demo, catch_interrupt=True, arguments=[last_scene])'", "doc/source/widgets.rst master @ 2026-09-28: 'The Layout class handles this for you' (rearranging on resize); 'The Frame will draw any parts of the Layouts it contains'"]
+}

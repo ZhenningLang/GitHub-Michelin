@@ -6,17 +6,17 @@ category: geospatial
 tags: [gis, geospatial, desktop-gis, cartography, qgis-server, pyqgis]
 language: C++
 license: GPL-2.0-or-later
-maturity: v4.0.3, active (2026-06)
-last_verified: 2026-06-26
+maturity: 4.2.x (LR) + 3.44.x (LTR), active, ~14.4k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T09:12:35Z
+  pushed_at: 2026-09-28T03:02:59Z
   default_branch: master
-  default_branch_sha: 0bbc7b6ed0b746fc33fea7a0422975c4177f7d43
+  default_branch_sha: 4f521ec3a2971490b1da4779fd6b384ef59b944c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:19:20Z
+  computed_at: 2026-09-28T06:18:13Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.5
-        qualifying_issues: 14
+        median_ttfr_hours: 38.2
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 12
         source: issue
@@ -51,10 +51,10 @@ health:
         graph_tier: D
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 5387
-        release_assets: 15
+        release_downloads: 5495
+        release_assets: 16
         release_tier: D
-        docker_pulls: 732505
+        docker_pulls: 743069
         docker_image: qgis/qgis
         docker_tier: D
         signal_basis: releases+docker
@@ -62,15 +62,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5622
+        repo_age_days: 5628
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 93
-        top1_share: 0.354
-        top3_share: 0.471
+        active_maintainers_12mo: 94
+        top1_share: 0.356
+        top3_share: 0.474
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -84,7 +84,7 @@ health:
 
 # QGIS
 
-一款功能完整、跨平台的桌面 GIS，用于浏览、编辑、分析和发布地理空间数据（矢量、栅格、网格、点云）。基于 Qt/C++ 构建，带有 Python（PyQGIS）插件生态，以及用于 OGC 网络服务的无界面服务端（QGIS Server）。
+别人甩给你一堆 shapefile 和 GeoTIFF，要求周五前交一张能印刷的地图——在 notebook 里用 GeoPandas + matplotlib 手拼图例、比例尺、分页，一周就没了。QGIS 是把整条路都接管的桌面 GIS：图层拖进来就自动重投影、实时渲染，分析、样式和印刷级导出都在同一个应用里完成。
 
 ![qgis — 健康度雷达](../../assets/health/qgis.zh.svg)
 
@@ -93,6 +93,27 @@ health:
 你是一名分析师、规划人员或研究者，刚拿到一堆地理空间数据——shapefile、GeoTIFF、一个 PostGIS 连接，也许还有别人导出的 GeoPackage——你需要真正把它们**看一眼**、修正几何错误、跑一套缓冲区/叠加/分区统计的处理流程，并产出一张能放进报告的印刷级地图。你不想买 ArcGIS Pro 授权，也不想为了一个图例、比例尺和按要素分页的地图册，就在 notebook 里用 GeoPandas + matplotlib 从零拼一整套出图逻辑。QGIS 给你一个统一的桌面应用：把图层拖进来，用强大的符号化引擎做样式，跑 200 多个原生 Processing 算法（再加上从 GDAL、GRASS、SAGA、OrfeoToolbox 封装来的约 1000 个），然后在打印排版器里把它排成版。
 
 当你需要**脚本化、工程化**地做 GIS 工作而不只是点击操作时，它同样合适。PyQGIS API 让你能用 Python 自动化同一套 Processing 工具箱——在内置控制台里、作为插件、或通过 `qgis_process` 无界面运行。而 QGIS Server 能把你做好样式的工程发布成 WMS/WFS/WCS/OGC-API 端点，于是你交互式设计的地图制图无需重写渲染栈就变成在线服务。
+
+## 怎么用起来
+
+QGIS 是一个基于 Qt/C++ 的桌面应用，底层是一套数据抽象层：GDAL/OGR 几乎读取所有矢量/栅格格式，每个图层都会被实时重投影到你为地图选定的 CRS（坐标参考系），渲染器再按你的符号设置绘制。分析走 Processing 框架——200 多个原生算法，外加从 GDAL、GRASS、SAGA、OrfeoToolbox 封装来的 1000 多个——可以在 GUI 工具箱里点，可以在 Python 控制台（PyQGIS）里调，也可以在终端里无界面运行：`qgis_process run native:buffer -- INPUT=source.shp DISTANCE=2 OUTPUT=buffered.shp`。制图收尾在打印排版器里完成（导出 PDF/SVG/图片，或用 Atlas 按要素自动分页）。工程文件 `.qgis` 还能交给 QGIS Server 无界面渲染成 WMS/WFS/WCS/OGC-API 服务——你在桌上做好的那张地图直接变成在线服务，不必重写渲染栈。留在你手里的：插件甄别、数据管理，以及发布时要运维的那台 Web 服务器。
+
+![QGIS — 主干用户故事](../../assets/flow/qgis.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/qgis.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用官方安装包装 QGIS（LTR 或最新版） — `qgis.org/en/site/forusers/download.html`
+2. **你**：把 shapefile、GeoTIFF 或 PostGIS 连接拖进新工程
+3. **QGIS**：把每个图层实时重投影到工程坐标系，并按你的符号渲染
+4. **你**：在工具箱里跑分析算法，或在终端无界面调用 — `qgis_process list · qgis_process help qgis:regularpoints` — 组件：`Processing 框架`
+5. **QGIS**：把地图导出为印刷级 PDF/SVG 或在线 WMS/WFS 服务
+
+**价值**：一堆原始地理文件，在同一个应用里变成印刷级地图，还能直接变成在线服务
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -138,17 +159,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 8.5 小时，基于 14 个 qualifying issues/PRs。
-- **维护——活跃（截至 2026-06）。** 最近一次推送在 2026-06；正在发布 4.0.x 稳定线（据称 4.0.3 发布于 2026-05）。未归档；约 5.4k 的高未决 issue 数，对一个 15 年的桌面应用而言读作一个庞大、繁忙的 tracker，而非疏于维护。[推断]
-- **治理与背书——基金会/社区，bus factor 低。** QGIS 是 OSGeo 旗下项目，由 QGIS.org 协会运作，设有指导委员会、核心开发者团队以及赞助/商业支持成员 [推断]——这是真正的多维护者、多厂商结构，而非某一个人的仓库。GitHub 仓库由 Organization 持有，与此一致。
-- **年龄与 Lindy——强。** 创建于 2011-05，约 15 年历史，且*仍在活跃开发*（年龄 × 仍活跃）。一个长寿、有基金会背书、持续发布 LTR 版本的桌面 GIS，几乎是开源 GIS 里最稳的 Lindy 选择；这里唯一「不符合 Lindy」的风险在第三方插件，而非内核。
-- **采用与生态。** 在政府、学术界被广泛使用，也是 ArcGIS 的开源替代；插件仓库庞大，PyQGIS/Processing 生态（GDAL/GRASS/SAGA provider）成熟。插件质量参差，可能在版本升级时失效——这是生态风险，而非内核维护风险（见「何时不用」）。
+- **响应速度**：Grade A——中位首次响应时间 38.2 小时，基于 15 个 qualifying issues/PRs（评分器，2026-09-28）。
+- **维护——非常活跃（截至 2026-09）。** 两条用户分支并行发布：最新版 4.2.x 与长期支持版 3.44.x，两线同于 2026-09-25 出点发布（4.2.3 / 3.44.15，GitHub API）；README 记载了基于时间表的路线图，LTR 与 LR 每月各出一个修复版，master 最近一次提交就在当天。约 5.5k 的高未决 issue 数，对一个长寿桌面应用而言读作庞大、繁忙的 tracker，而非疏于维护。[推断]
+- **治理与背书——基金会，bus factor 低。** QGIS 属于开源地理空间基金会 OSGeo（README），并运作在 QGIS 基金会之下，其章程、年度大会、年报与财务在 qgis.org 上公开（2026-09-28 抓取）。评分器数到近 12 个月 94 个不同提交者（头号贡献者约占 36% 提交）——这是真正的多维护者、多厂商结构，而非某一个人的仓库。
+- **年龄与 Lindy——强。** 开发始于 **2002**（README：「developed using the Qt toolkit and C++, since 2002」；文档版权页「2002-now」）；GitHub 仓库建于 2011-05（约 15 年，仅为仓库年龄）。约 24 年连续开发 × 至今月度发版（年龄 × 仍活跃），几乎是开源 GIS 里最稳的 Lindy 选择；这里唯一「不符合 Lindy」的风险在第三方插件，而非内核。
+- **采用与生态。** 约 14.4k star（GitHub API，2026-09-28）。在政府、学术界被广泛使用，也是 ArcGIS 的开源替代；插件仓库庞大，PyQGIS/Processing 生态（GDAL/GRASS/SAGA provider）成熟，外围还有野外/移动端应用家族（QField、Mergin Maps）。插件质量参差，可能在版本升级时失效——这是生态风险，而非内核维护风险（见「何时不用」）。
 - **风险标记——少。** GPL-2.0-or-later，内核应用没有重新授权或 open-core 历史。现实风险是插件 churn 与 GDAL/PROJ 版本耦合，两者前文与存疑账本均已覆盖。
 
 ## 存疑（未验证）
 
-- [未验证] Star 数约 14.0k（截至 2026-06）；GitHub star 不可靠且时效敏感，仅作参考。
-- [未验证] 最新版本据称为 4.0.3，发布于 2026-05-29（来自仓库 release 元数据）；在以某版本为标准前请核对当前稳定版/LTR 线。
-- [未验证] 算法/provider 数量（「200+ 原生」「经 GDAL/SAGA/GRASS/OrfeoToolbox 约 1000 个」）以及「1000+ 插件」均来自 QGIS 项目宣传口径并随时间变化；针对某个具体算法或插件请对照当前构建确认。
+- [未验证] Star 数（14,434）与未决 issue（约 5.5k）是 2026-09-28 的 GitHub API 快照——时效敏感，仅作参考。
+- [未验证] 4.2.x（LR）/ 3.44.x（LTR）的版本线配对核对于 2026-09-28（GitHub releases + qgis.org 下载页）；版本线会轮转，定标准前请重新核对当前 LR/LTR。
+- [未验证] 算法/provider 数量（「200+ 原生」「经 GDAL、SAGA、GRASS、OrfeoToolbox 等 1000+ 个」）是 README 自己的宣称（2026-09-28 逐字引用），未经逐一枚举核实。
 - [推断] GDAL、PROJ、GEOS 是标准底层地理库，但确切的最低/必需版本随发行版而定，此处未做版本固定——请查目标版本的构建文档。
-- [未验证] 格式与 CRS 覆盖继承自 GDAL/PROJ；对任何特定专有或小众格式的支持取决于已安装的 GDAL 驱动集，且在不同安装包之间可能不同。
+- [未验证] 格式与 CRS 覆盖继承自 GDAL/PROJ；对任何特定专有或小众格式的支持取决于已安装的 GDAL 驱动集，且在安装包之间可能不同（如 qgis.org 明示 Windows 安装包不含可选投影网格）。
+- [推断] 「约 5.5k 未决 issue 是繁忙 tracker 而非疏于维护」是从发布节奏与仓库体量推断的，未逐条审计 issue 队列。

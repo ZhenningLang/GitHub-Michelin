@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "elasticsearch-sql does", "zh": "elasticsearch-sql 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the version-matched plugin build on each ES node", "zh": "在每个 ES 节点安装与其大版本匹配的插件构建", "code": "./bin/elasticsearch-plugin install"},
+    {"lane": "you", "en": "Restart Elasticsearch so the plugin loads", "zh": "重启 Elasticsearch 加载插件"},
+    {"lane": "them", "en": "Adds an SQL endpoint and a small web UI to your cluster", "zh": "在集群里多出 SQL 端点和一个小型 Web 界面", "code": "http://localhost:9200/_plugin/sql/", "component": {"en": "SQL plugin", "zh": "SQL 插件"}},
+    {"lane": "you", "en": "Send plain SQL at the endpoint", "zh": "往端点发一条普通 SQL", "code": "curl -X GET \"localhost:9200/_nlpcn/sql\""},
+    {"lane": "them", "en": "Parses the SQL and runs the equivalent ES query/aggregation, returning rows", "zh": "把 SQL 翻译成等价的 ES 查询／聚合并返回结果行"}
+  ],
+  "value": {"en": "SQL answers from ES indices — your team never has to learn the Query DSL", "zh": "用 SQL 直接拿到 ES 索引的查询结果，团队不必先学 Query DSL"},
+  "sources": ["README.md master @ 2026-09-28: per-version install URLs incl. './bin/elasticsearch-plugin install https://github.com/NLPchina/elasticsearch-sql/releases/download/v9.3.4/elasticsearch-sql-9.3.4.0.zip'; 'Since 7.5.0.0, the path /_sql is changed to /_nlpcn/sql'; web UI 'http://localhost:9200/_plugin/sql/'; curl example 'curl -X GET \"localhost:9200/_nlpcn/sql\" -H \\'Content-Type: application/json\\' -d\\'select * from indexName limit 10\\'"]
+}

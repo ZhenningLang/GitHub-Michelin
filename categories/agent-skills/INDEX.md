@@ -31,7 +31,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [book-to-skill](book-to-skill.md) | ✅ | B (6/6) | Converts technical books and documents into installable agent skills; batch tool, not a live RAG system. |
-| [Docling](../document-parsing/docling.md) | ✅ | A (6/6) | General document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
+| [Docling](../document-parsing/docling.md) | ✅ | A (5/6) | General document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.md) | ✅ | D (5/6) | Queries an external Google service; book-to-skill works on local PDFs with no external dependency. |
 | [distilly](distilly.md) | ✅ | B (4/5) | Generates a person-specific work/persona skill from your private source material; no retrieval layer, and its only automated fidelity gate is keyword-level. |
 

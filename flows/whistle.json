@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "whistle does", "zh": "whistle 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI globally and start the proxy", "zh": "全局安装并启动代理服务", "code": "npm i -g whistle · w2 start"},
+    {"lane": "you", "en": "Trust its root CA and point your system proxy at it", "zh": "安装根证书并把系统代理指向它", "code": "w2 ca · w2 proxy"},
+    {"lane": "them", "en": "Captures HTTP/HTTPS/HTTP2/WebSocket/TCP traffic in a web UI", "zh": "在 web 界面里抓取 HTTP/HTTPS/WS/TCP 流量", "component": {"en": "proxy + web UI", "zh": "代理进程 + Web UI"}},
+    {"lane": "you", "en": "Add a rule line mapping a URL to a local file or mock", "zh": "加一行规则，把某个地址映射到本地文件", "code": "www.example.com/static file:///User/xxx/statics"},
+    {"lane": "them", "en": "Applies the rule on the very next request — no app change, no redeploy", "zh": "下一个请求就按规则改写，应用代码不用动"}
+  ],
+  "value": {"en": "Inspect and rewrite real traffic in minutes, without touching app code or waiting on a backend deploy", "zh": "几分钟内抓包并改写真实流量，不碰代码、不等发版"},
+  "sources": ["README.md master @ 2026-09-28: install 'npm i -g whistle' (also 'brew install whistle'); commands 'w2 start', 'w2 ca', 'w2 proxy'; feature list '支持 HTTP、HTTPS、HTTP/2、WebSocket、TCP 的抓包与修改请求/响应'", "https://wproxy.org/docs/getting-started.html @ 2026-09-28: example rule line 'www.example.com/static file:///User/xxx/statics'"]
+}

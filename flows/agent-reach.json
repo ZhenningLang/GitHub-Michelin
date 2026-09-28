@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent-Reach does", "zh": "Agent-Reach 做的"},
+  "steps": [
+    {"lane": "you", "en": "Hand your agent one URL — the project's install doc — and nothing else", "zh": "把一个 URL（项目的安装文档）交给你的 Agent，别的不用管", "code": "https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md"},
+    {"lane": "them", "en": "Install the CLI, then check the machine read-only and list what's missing", "zh": "装好 CLI，默认只读体检机器，列出缺失项", "code": "agent-reach install --env=auto", "component": {"en": "agent-reach CLI", "zh": "agent-reach CLI"}},
+    {"lane": "you", "en": "Approve system-level installs explicitly when you want the tools actually installed", "zh": "确认可改机器后，再显式授权系统级安装", "code": "agent-reach install --env=auto --system"},
+    {"lane": "them", "en": "Install the vetted upstream CLI/MCP per platform, each as an ordered primary+fallback list", "zh": "按平台装好选定的上游工具，每个平台是一份首选加备选的有序清单", "component": {"en": "channels/ router", "zh": "channels 路由"}},
+    {"lane": "you", "en": "For logged-in platforms, just ask your agent to configure that platform and export cookies when guided", "zh": "要登录态的平台，对 Agent 说「帮我配 Twitter」即可"},
+    {"lane": "them", "en": "agent-reach doctor probes each channel for real and reports which backend is currently active", "zh": "doctor 逐通道真实探测，报告当前生效的后端", "code": "agent-reach doctor", "component": {"en": "doctor", "zh": "体检命令"}}
+  ],
+  "value": {"en": "Your agent reads and searches Twitter, Reddit, YouTube, Bilibili, XiaoHongShu via upstream tools — when a path dies, the stack swaps it, zero action", "zh": "Agent 经上游工具读取和搜索各大平台；某条接入路失效，栈自己换代，你零操作"},
+  "sources": [
+    "README.md main @ a19a171f (retrieved 2026-09-28): 快速上手 section — install prompt carries https://raw.githubusercontent.com/Panniantong/agent-reach/main/docs/install.md",
+    "docs/install.md main @ a19a171f (retrieved 2026-09-28): agent-reach install --env=auto (read-only default); agent-reach install --env=auto --system (after explicit approval)",
+    "README.md 安全性 table (2026-09-28): agent-reach install --env=auto / --system / --dry-run command matrix",
+    "README.md 支持的平台 + 设计理念 (2026-09-28): 「告诉 Agent『帮我配 XXX』」per-platform setup; channels/ primary+fallback ordered lists; agent-reach doctor one-command health check"
+  ]
+}

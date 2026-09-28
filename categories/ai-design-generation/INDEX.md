@@ -26,7 +26,7 @@
 | [SdPaint](sdpaint.md) | ✅ | D (3/6) | Use it when you already run AUTOMATIC1111 + ControlNet and want a live sketch-to-image painting loop — but it's stalled since 2024 and provides no model of its own. |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Portable deck-generation skill; moved to agent-skills because the consumable unit is a skill pack. |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | D (3/5) | Portable social-card skill; moved to agent-skills because it is installed into an agent harness. |
-| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | C (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
+| [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |
 | v0 / Lovable / tldraw make-real | 未收录 | — | Other agentic UI/design generators named across the pages. |
 
 ## What belongs here

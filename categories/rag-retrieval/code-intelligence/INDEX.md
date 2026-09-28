@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **graphify** | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. | B (6/6) | [→](graphify.md) |
+| **graphify** | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. | C (5/6) | [→](graphify.md) |
 | **code-review-graph** | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. | B (6/6) | [→](code-review-graph.md) |
 | **Understand-Anything** | Use it when you want any codebase turned into an explorable, queryable knowledge graph for an agent — younger and less proven than graphify. | B (6/6) | [→](understand-anything.md) |
 | **SCIP** | SCIP Code Intelligence Protocol | A (6/6) | [→](scip.md) |
@@ -19,7 +19,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [graphify](graphify.md) | ✅ | B (6/6) | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. |
+| [graphify](graphify.md) | ✅ | C (5/6) | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. |
 | [code-review-graph](code-review-graph.md) | ✅ | B (6/6) | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. |
 | [Understand-Anything](understand-anything.md) | ✅ | B (6/6) | Code → explorable knowledge graph an agent can query; younger than graphify, with an unverified star count and egress boundary. |
 | [Ix](ix.md) | ✅ | B (6/6) | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. |
