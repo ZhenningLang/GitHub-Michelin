@@ -259,6 +259,7 @@ DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
 Descript,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
+Devicon,categories/web-ui/icon-libraries/thesvg.md,,no
 Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
@@ -420,6 +421,7 @@ Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/astro.md,,no
 HyperFormula,categories/office-editors/handsontable.md,,no
+Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
@@ -487,6 +489,7 @@ LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-ll
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
+lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
@@ -785,6 +788,7 @@ Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
 SigLIP,categories/ml-research/clip.md,,no
 SikuliX,categories/desktop-automation/pyautogui.md,,no
+Simple Icons,categories/web-ui/icon-libraries/thesvg.md,,no
 sing-box,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Single de-AI / translation prompt,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
@@ -808,6 +812,7 @@ Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
+svgl,categories/web-ui/icon-libraries/thesvg.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no

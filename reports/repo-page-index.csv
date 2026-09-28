@@ -345,6 +345,7 @@ https://github.com/getzep/zep,zep,graph-memory,categories/agent-memory/graph-mem
 https://github.com/ggml-org/llama.cpp,llama-cpp,local-runtimes,categories/llm-inference/local-runtimes/llama-cpp.md
 https://github.com/gilbarbara/react-joyride,react-joyride,product-tours,categories/web-ui/product-tours/react-joyride.md
 https://github.com/github/spec-kit,spec-kit,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/spec-kit.md
+https://github.com/glincker/thesvg,thesvg,icon-libraries,categories/web-ui/icon-libraries/thesvg.md
 https://github.com/glittercowboy/taches-cc-resources,taches-cc-resources,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md
 https://github.com/globocom/m3u8,m3u8,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md
 https://github.com/go-mysql-org/go-mysql-elasticsearch,go-mysql-elasticsearch,data-sync,categories/databases/data-sync/go-mysql-elasticsearch.md

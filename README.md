@@ -852,6 +852,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Astro** | Use it when the site is a content collection that needs a few interactive widgets — not when the deliverable is a versioned docs site or the site is a full-stack application. | MIT | A (5/6) | [EN](categories/web-ui/frameworks/astro.md) · [中](categories/web-ui/frameworks/astro.zh.md) |
 | **Docusaurus** | Use it when a versioned, searchable, i18n-capable documentation site must exist from day one — not when the site is a general content site or when you would rather assemble the docs furniture yourself. | MIT | B (6/6) | [EN](categories/web-ui/frameworks/docusaurus.md) · [中](categories/web-ui/frameworks/docusaurus.zh.md) |
 | **Nextra** | Use it when the docs must live inside an existing Next.js app and a thin MDX layer is enough — not when you need versioned docs, or a project with a large maintainer team behind it. | MIT | B (6/6) | [EN](categories/web-ui/frameworks/nextra.md) · [中](categories/web-ui/frameworks/nextra.zh.md) |
+| **theSVG** | Use it when you need many brand logos (colour, wordmark, AI vendors) plus AWS/Azure/GCP architecture icons from one registry as typed components, CDN URLs or a CLI — but check each icon's licence yourself; Azure icons are labelled MIT against Microsoft's terms. | MIT | B (6/6) | [EN](categories/web-ui/icon-libraries/thesvg.md) · [中](categories/web-ui/icon-libraries/thesvg.zh.md) |
 
 ### proxy-pool
 
