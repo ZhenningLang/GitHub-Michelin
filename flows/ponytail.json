@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "ponytail does",
+    "zh": "ponytail 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add ponytail's plugin marketplace",
+      "zh": "添加 ponytail 的插件市场",
+      "code": "/plugin marketplace add DietrichGebert/ponytail"
+    },
+    {
+      "lane": "you",
+      "en": "Install the plugin — as a second, separate prompt",
+      "zh": "再单独发一条 prompt 安装插件",
+      "code": "/plugin install ponytail@ponytail"
+    },
+    {
+      "lane": "them",
+      "en": "Hooks inject the ruleset at session start and into every spawned subagent",
+      "zh": "hook 在会话启动时注入规则，子 agent 也同样注入",
+      "component": {"en": "lifecycle hooks", "zh": "生命周期 hook"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the feature exactly as you always would",
+      "zh": "照常提需求，不用改说法",
+      "code": "Add a cache for these API responses."
+    },
+    {
+      "lane": "them",
+      "en": "Before writing code it stops at the first rung that holds: exist? reuse? stdlib? native? one line?",
+      "zh": "动手前先停在该停的那级：该不该存在、有没有现成、标准库、原生特性、一行",
+      "component": {"en": "seven-rung ladder", "zh": "七级阶梯"}
+    },
+    {
+      "lane": "them",
+      "en": "Hands back the minimal diff: deliberate corner-cuts marked, one runnable check left behind",
+      "zh": "只交回最小 diff：刻意简写留了上限标记，另附一个能跑的自检",
+      "code": "# ponytail: global lock, per-account locks if throughput matters"
+    }
+  ],
+  "value": {
+    "en": "You stop reviewing 400-line diffs for code the task never asked for — ~54% less code on the author's agentic benchmark, safety guards kept",
+    "zh": "你不用再审那些任务根本没要的包装代码——作者基准里约少 54%，护栏不砍"
+  },
+  "sources": [
+    "README.md Install / Claude Code (the two /plugin commands, sent as separate prompts) — read from main 2026-09-28",
+    "hooks/claude-codex-hooks.json (SessionStart → ponytail-activate.js, SubagentStart → ponytail-subagent.js, UserPromptSubmit → ponytail-mode-tracker.js)",
+    "skills/ponytail/SKILL.md (ladder rungs, example request 'Add a cache for these API responses.', the 'ponytail: global lock, per-account locks if throughput matters' comment example, the one-runnable-check rule)",
+    "AGENTS.md (rule text, bug-fix = root cause)",
+    "benchmarks/results/2026-06-18-agentic.md (the −54% LOC aggregate figure)"
+  ]
+}

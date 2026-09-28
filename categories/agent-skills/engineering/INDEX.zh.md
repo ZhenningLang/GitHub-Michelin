@@ -18,6 +18,7 @@
 | **BrowserAct Skills** | 面向 BrowserAct 的 agent 浏览器自动化技能包：索引式浏览器控制、stealth/private session、远程人工接管，以及 Skill Forge 抓取工作流。 | B（4/5） | [→](browser-act-skills.zh.md) |
 | **caveman** | 简短表达技能加可选本地代理：压缩 coding agent 说出来的话，wrap 之后也压缩它读进去的东西，代码、命令和报错原样保留。 | D（6/6） | [→](caveman.zh.md) |
 | **i-have-adhd** | 一份 10 条规则的回复风格技能：让 coding agent 每轮先说动作、把步骤编号、复述进度，并删掉铺垫与收尾；一套规则覆盖约 15 种 harness。 | A（4/5） | [→](i-have-adhd.zh.md) |
+| **Ponytail** | 常驻的「最懒资深工程师」规则集：让 coding agent 写码前先走 YAGNI → 复用 → 标准库 → 原生特性 → 一行的七级阶梯，只交回能跑的最短 diff；带生命周期 hook、六个 skill，覆盖约 20 种 harness。 | B（5/6） | [→](ponytail.zh.md) |
 
 
 ## 对比矩阵
@@ -35,6 +36,7 @@
 | [BrowserAct Skills](browser-act-skills.zh.md) | ✅ | B（4/5） | 带索引动作、stealth/private session、远程接管和 Skill Forge 的 agent 浏览器自动化层；确定性测试仍用 Playwright。 |
 | [caveman](caveman.zh.md) | ✅ | D（6/6） | token 花销覆盖层：MIT 技能缩短回复；可选 BSL 代理压缩 agent 反复读的日志 / JSON / diff。 |
 | [i-have-adhd](i-have-adhd.zh.md) | ✅ | A（4/5） | 给工作记忆短的读者用的表达覆盖层；改变 agent 的说话方式而非它知道什么——痛点是 token 花销时选 caveman。 |
+| [Ponytail](ponytail.zh.md) | ✅ | B（5/6） | 压代码那一侧：七级阶梯逼出最小实现，带强度档位和 diff 删除清单；要压的是话术不是代码，选 caveman / i-have-adhd。 |
 
 
 ## 什么该放这里

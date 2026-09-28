@@ -21,9 +21,9 @@
 | Dammyjay93/interface-design | add | done | categories/agent-skills/design/ui-taste/interface-design.md |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | done | categories/pentest/wifit3.md |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | done | categories/agent-tooling/supervision-surfaces/whiteboard.md |  | devdotfast/whiteboard |
-| DietrichGebert/ponytail | add | running |  |  | dietrichgebert/ponytail |
-| docker/docker-agent | add | pending |  |  | docker/docker-agent |
-| dontbesilent2025/dbskill | sync | pending |  |  | dontbesilent2025/dbskill |
+| DietrichGebert/ponytail | add | done | categories/agent-skills/engineering/ponytail.md |  | dietrichgebert/ponytail |
+| docker/docker-agent | add | running |  |  | docker/docker-agent |
+| dontbesilent2025/dbskill | sync | running |  |  | dontbesilent2025/dbskill |
 | dream-num/univer | sync | pending |  |  | dream-num/univer |
 | EKKOLearnAI/ekko-studio | add | pending |  |  | ekkolearnai/ekko-studio |
 | FareedKhan-dev/train-llm-from-scratch | add | pending |  |  | fareedkhan-dev/train-llm-from-scratch |
@@ -79,3 +79,4 @@
 | daeuniverse/dae | add | pending |  | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | pending |  | 处理中新开的标签 | vshulcz/deja-vu |
 | maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |
+| NandhaKishorM/laya | add | pending |  | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
