@@ -276,6 +276,7 @@ ESPnet,categories/speech/speechbrain.md,,no
 Ethereum-Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 EVA-CLIP,categories/ml-research/clip.md,,no
 Exa / Tavily / SearXNG,categories/deep-research/agent-reach.md,,no
+Excalibur.js,categories/game-dev/kaplay.md,,no
 Fabric,categories/networking/paramiko.md,,no
 FastAPI + Uvicorn,categories/llm-inference/serving-engines/ray-serve.md,,no
 faster-whisper,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
@@ -328,7 +329,7 @@ Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
 GNU Screen,categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.md,,no
 Go Playground / `go run`,categories/python-tooling/gophernotes.md,,no
 go-mysql (library),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
-Godot,categories/game-dev/pygame.md,,no
+Godot,categories/game-dev/kaplay.md,,no
 GoJS / mxGraph (draw.io),categories/diagramming/bpmn-js.md,,no
 gomacro (REPL),categories/python-tooling/gophernotes.md,,no
 Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
@@ -416,6 +417,7 @@ jp2a,categories/terminal-ui/asciify.md,,no
 JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
 Jupyter Kernel Gateway / nsjail,categories/sandboxing/opensandbox.md,,no
 Jupyter polyglot kernels (e.g. for Rust/JS),categories/python-tooling/gophernotes.md,,no
+Kaboom.js,categories/game-dev/kaplay.md,,no
 kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
@@ -611,11 +613,13 @@ Perplexica,categories/deep-research/vane.md,,no
 Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no
 pgvector,categories/rag-retrieval/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/pageindex.md,,no
+Phaser,categories/game-dev/kaplay.md,,no
 Phi-3.5-vision (Microsoft),categories/on-device-ml/minicpm-v.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
 pip,categories/python-tooling/uv.md,,no
+PixiJS,categories/game-dev/kaplay.md,,no
 Plain `MEMORY.md` / `TODO.md`,categories/agent-tooling/work-state/ccpm.md,,no
 Plain `runc` / containerd / Docker defaults,categories/sandboxing/gvisor.md,,no
 Plain `task_plan.md` / `TODO.md` you maintain by hand,categories/agent-tooling/work-state/planning-with-files.md,,no
