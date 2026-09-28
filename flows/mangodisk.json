@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "MangoDisk does", "zh": "MangoDisk 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app with one command", "zh": "一条命令装好桌面应用", "code": "brew install --cask harry0703/tap/mangodisk"},
+    {"lane": "you", "en": "Open Deep Cleanup and start a scan", "zh": "打开“深度清理”，开始扫描"},
+    {"lane": "them", "en": "Read-only scan of caches, dev tools and project build dirs via its built-in rules", "zh": "按内置规则只读扫描缓存、开发工具和项目构建目录", "component": {"en": "TOML rule library", "zh": "TOML 规则库"}},
+    {"lane": "them", "en": "Groups results by reclaimable space and pre-ticks only recommended items", "zh": "按可回收空间分组，只预勾选推荐项"},
+    {"lane": "you", "en": "Review the list, adjust ticks, confirm the cleanup", "zh": "逐项查看、调整勾选，确认清理"},
+    {"lane": "them", "en": "Re-checks each path, deletes permanently, logs it to Operation History", "zh": "逐条复核路径后永久删除，记入操作历史", "component": {"en": "mangodisk-core", "zh": "mangodisk-core"}}
+  ],
+  "value": {"en": "You get the space back without guessing which cache or build folder is safe to delete — and can read why each one was eligible", "zh": "不用再猜哪个缓存、哪个构建目录能删就把空间要回来，而且每一项为什么能删都有据可查"},
+  "sources": [
+    "https://github.com/harry0703/MangoDisk README — Install and Run (brew install --cask harry0703/tap/mangodisk; irm https://get.mangodisk.app | iex)",
+    "https://github.com/harry0703/MangoDisk README — What MangoDisk Can Do §1 Deep Cleanup; Safety and Rules (read-only scan, review and confirm, Operation History)",
+    "https://github.com/harry0703/MangoDisk SECURITY.md — Security boundaries (preflight, protected-path checks, link and reparse-point policy)",
+    "https://github.com/harry0703/MangoDisk src-tauri/crates/mangodisk-core/rules/README.md (declarative TOML rules, default/recommended selection)",
+    "https://github.com/harry0703/MangoDisk src/locales/en-US.json (Delete Permanently / This cannot be undone)"
+  ]
+}

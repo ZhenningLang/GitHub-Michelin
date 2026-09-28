@@ -119,6 +119,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **ComfyUI** | The most powerful and modular diffusion model GUI with a node-graph interface for building complex workflows locally — but it has a steep learning curve and requires significant GPU resources. | GPL-3.0 | B (6/6) | [EN](categories/on-device-ml/comfyui.md) · [中](categories/on-device-ml/comfyui.zh.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B (6/6) | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction and embeddings offline — 29–121M params, but the base model needs a fine-tune plus your own guards on refusals. | Apache-2.0 | B (4/6) | [EN](categories/on-device-ml/needle.md) · [中](categories/on-device-ml/needle.zh.md) |
+| **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | MIT | A (6/6) | [EN](categories/on-device-ml/stable-diffusion-cpp.md) · [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) |
 
 ### function-calling
 
@@ -248,6 +249,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **SimpleMem** | Use it when your LLM agent must recall long-horizon dialogues without replaying raw history — write-time compression with published LoCoMo numbers, but a young academic repo, a stale PyPI package, and audio/video support that is not benchmark-validated. | MIT | B (5/6) | [EN](categories/agent-memory/app-memory/simplemem.md) · [中](categories/agent-memory/app-memory/simplemem.zh.md) |
 | **Beacon** | Use it when agent knowledge is trapped per-harness — you want one local trace of every coding session and review-gated lessons any harness can load. | MIT | B (6/6) | [EN](categories/agent-memory/coding-agent-memory/agent-beacon.md) · [中](categories/agent-memory/coding-agent-memory/agent-beacon.zh.md) |
 | **Engram** | Use it when you run several coding agents and want them all to share one local memory the agent itself writes and searches over MCP — a single Go binary and SQLite file, keyword search, no background capture. | MIT | B (5/6) | [EN](categories/agent-memory/coding-agent-memory/engram.md) · [中](categories/agent-memory/coding-agent-memory/engram.zh.md) |
+| **backpass** | Use it when your `AGENTS.md`/`CLAUDE.md` has drifted from what your coding agents actually get wrong, and you want edits mined from the transcripts already on disk — each backed by quotes from two sessions and accepted one by one, under a token budget. | MIT | B (6/6) | [EN](categories/agent-memory/coding-agent-memory/backpass.md) · [中](categories/agent-memory/coding-agent-memory/backpass.zh.md) |
 
 ### deep-research
 
@@ -290,6 +292,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | Apache-2.0 | A (5/6) | [EN](categories/rag-retrieval/milvus.md) · [中](categories/rag-retrieval/milvus.zh.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | NOASSERTION | D (4/6) | [EN](categories/rag-retrieval/sourcegraph.md) · [中](categories/rag-retrieval/sourcegraph.zh.md) |
 | **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | Apache-2.0 | B (6/6) | [EN](categories/rag-retrieval/helix-db.md) · [中](categories/rag-retrieval/helix-db.zh.md) |
+| **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | Apache-2.0 | B (6/6) | [EN](categories/rag-retrieval/ix.md) · [中](categories/rag-retrieval/ix.zh.md) |
 
 ### llm-eval
 
@@ -408,6 +411,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Zulip** | Self-hosted, topic-threaded team chat (Apache-2.0) for async-first teams — a dedicated Ubuntu/Debian host, with voice/video delegated to integrations. | Apache-2.0 | A (6/6) | [EN](categories/team-chat/zulip.md) · [中](categories/team-chat/zulip.zh.md) |
 | **Rocket.Chat** | Self-hosted communications platform (MIT CE) with an app marketplace, omnichannel customer support, and native federation — but MongoDB + NATS + microservices ops. | MIT (CE) + EE | A (5/6) | [EN](categories/team-chat/rocket-chat.md) · [中](categories/team-chat/rocket-chat.zh.md) |
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | Apache-2.0 | B (4/6) | [EN](categories/team-chat/buzz.md) · [中](categories/team-chat/buzz.zh.md) |
+| **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | AGPL-3.0 | B (6/6) | [EN](categories/team-chat/macro.md) · [中](categories/team-chat/macro.zh.md) |
 | **HiveChat** | Self-hostable, admin-managed AI chat for small/medium teams: one admin wires many LLM providers; the team chats with per-group model access and token quotas. | Apache-2.0 | D (3/6) | [EN](categories/team-chat/hivechat.md) · [中](categories/team-chat/hivechat.zh.md) |
 
 ### captcha
@@ -941,6 +945,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **WebDriverAgent** | Use it when you are building the iOS automation layer itself — it is the WebDriver server Appium drives — not something most teams run standalone. | BSD-3-Clause | A (4/6) | [EN](categories/mobile-automation/webdriveragent.md) · [中](categories/mobile-automation/webdriveragent.zh.md) |
 | **Maestro** | Use it when you want YAML flows and near-zero onboarding for Android/iOS/web E2E — but physical iOS devices are unsupported. | Apache-2.0 | A (6/6) | [EN](categories/mobile-automation/maestro.md) · [中](categories/mobile-automation/maestro.zh.md) |
 | **Detox** | Use it when you are testing a React Native app and want gray-box synchronization that fights flakiness — but it locks to RN versions, is JS-only, and iOS physical devices are unsupported. | MIT | B (6/6) | [EN](categories/mobile-automation/detox.md) · [中](categories/mobile-automation/detox.zh.md) |
+| **tapflow** | Use it when non-developers on your team need to test iOS/Android builds in a browser on Macs you own — but agents need Apple-Silicon Macs pinned to Xcode 26–27, it is simulator-only, and one maintainer wrote nearly all of it. | MIT | B (6/6) | [EN](categories/mobile-automation/tapflow.md) · [中](categories/mobile-automation/tapflow.zh.md) |
 
 ### game-dev
 
@@ -1000,6 +1005,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | Unlicensed (EULA) | C (6/6) | [EN](categories/reading-tools/just-read.md) · [中](categories/reading-tools/just-read.zh.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | AGPL-3.0 | B (6/6) | [EN](categories/reading-tools/freshrss.md) · [中](categories/reading-tools/freshrss.zh.md) |
 | **Bilingual Book Maker** | Make bilingual epub books Using AI translate | MIT | A (5/6) | [EN](categories/reading-tools/bilingual-book-maker.md) · [中](categories/reading-tools/bilingual-book-maker.zh.md) |
+| **TranslateBooksWithLLMs** | Desktop app + CLI that translates whole EPUB/DOCX/SRT/TXT files with local or cloud LLMs, keeping formatting, with glossary and resume. | AGPL-3.0 | C (6/6) | [EN](categories/reading-tools/translate-books-with-llms.md) · [中](categories/reading-tools/translate-books-with-llms.zh.md) |
 
 ### speech
 
@@ -1074,6 +1080,7 @@ agent-canonical path; the `.zh.md` sibling is the same content in Chinese.
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | MIT | ? (0/6) | [EN](categories/terminal-ui/textual.md) · [中](categories/terminal-ui/textual.zh.md) |
 | **tmux** | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. | ISC | — | [EN](categories/terminal-ui/tmux.md) · [中](categories/terminal-ui/tmux.zh.md) |
 | **Zellij** | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. | MIT | — | [EN](categories/terminal-ui/zellij.md) · [中](categories/terminal-ui/zellij.zh.md) |
+| **Pebrel** | Use it when several AI coding CLIs run side by side on Windows and you want each pane to report working/waiting/done with notifications that jump back to it, plus SSH/SFTP in the same app — but it is twelve weeks old, single-maintainer, and Linux/macOS are Preview. | GPL-3.0-or-later | — | [EN](categories/terminal-ui/pebrel.md) · [中](categories/terminal-ui/pebrel.zh.md) |
 
 ### Anatomy of a project page
 
@@ -1260,3 +1267,21 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **Pentest Swarm AI** | Use it when authorized web/API scope is wide, breadth plus proven (exploited, evidence-captured) findings matter, and you must self-host with any tool-calling model (incl. fully local Ollama) — accepting an alpha-stage swarm scheduler, AGPL-3.0, and a single-maintainer bus factor. | AGPL-3.0 | C (6/6) | [EN](categories/pentest/pentest-swarm-ai.md) · [中](categories/pentest/pentest-swarm-ai.zh.md) |
 | **Wifit3** | Use it when the authorized target is Wi-Fi and the machine in your hand is a Linux, Windows, or macOS laptop with no toolchain to install — accepting that only ~19 supported USB chipsets work and the v0.x BETA is ~3 months old. | GPL-2.0 | C (6/6) | [EN](categories/pentest/wifit3.md) · [中](categories/pentest/wifit3.zh.md) |
+
+### disk-cleanup
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **MangoDisk** | Use it when one cleaner must cover macOS, Windows and Linux and you want to read the rule behind every deleted path — accepting permanent deletion, a two-month-old codebase and a single maintainer. | GPL-3.0-only | C (6/6) | [EN](categories/disk-cleanup/mangodisk.md) · [中](categories/disk-cleanup/mangodisk.zh.md) |
+
+### 3d-reconstruction
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Spirula Studio** | Use it when you want video or photos to become a Gaussian splat and textured mesh in one unzip-and-run app on any-vendor GPU (Vulkan), with built-in SfM, masking and 360°/fisheye support — accepting a one-person maintainer and GPL-3.0. | GPL-3.0 | C (6/6) | [EN](categories/3d-reconstruction/spirula-studio.md) · [中](categories/3d-reconstruction/spirula-studio.zh.md) |
+
+### streaming-clients
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **PipePipe** | Use it when you want an Android YouTube/BiliBili/NicoNico client with no Google account, SponsorBlock skipping and free background play — accepting a single maintainer and breakages whenever YouTube changes its defences. | GPL-3.0 | B (6/6) | [EN](categories/streaming-clients/pipepipe.md) · [中](categories/streaming-clients/pipepipe.zh.md) |

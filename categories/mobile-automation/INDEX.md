@@ -14,6 +14,7 @@
 | **WebDriverAgent** | Use it when you are building the iOS automation layer itself — it is the WebDriver server Appium drives — not something most teams run standalone. | A (4/6) | [→](webdriveragent.md) |
 | **Maestro** | Use it when you want YAML flows and near-zero onboarding for Android/iOS/web E2E — but physical iOS devices are unsupported. | A (6/6) | [→](maestro.md) |
 | **Detox** | Use it when you are testing a React Native app and want gray-box synchronization that fights flakiness — but it locks to RN versions, is JS-only, and iOS physical devices are unsupported. | B (6/6) | [→](detox.md) |
+| **tapflow** | Use it when non-developers on your team need to test iOS/Android builds in a browser on Macs you own — but agents need Apple-Silicon Macs pinned to Xcode 26–27, it is simulator-only, and one maintainer wrote nearly all of it. | B (6/6) | [→](tapflow.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [WebDriverAgent](webdriveragent.md) | ✅ | A (4/6) | The iOS engine under Appium's XCUITest driver — a dependency, not a standalone test tool. |
 | [Maestro](maestro.md) | ✅ | A (6/6) | Flat YAML flows and the fastest start, but no physical iOS devices. |
 | [Detox](detox.md) | ✅ | B (6/6) | Best flakiness control for React Native, but RN-version-locked and JS-only. |
+| [tapflow](tapflow.md) | ✅ | B (6/6) | Self-hosted browser access to your Macs' simulators for the whole team, but simulator-only, Xcode-version-locked and single-maintainer. |
 | (non-repo tools named across the pages) | 非仓库 | — | `xcrun simctl` and `XCUITest` ship inside Xcode; see each page's Comparison. |
 
 ## What belongs here
