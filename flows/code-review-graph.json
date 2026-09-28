@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "code-review-graph does", "zh": "code-review-graph 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI once", "zh": "一次性装好 CLI",
+     "code": "pip install code-review-graph · pipx install code-review-graph"},
+    {"lane": "you", "en": "Configure your AI tools and parse the repo", "zh": "配置你的 AI 工具并解析仓库",
+     "code": "code-review-graph install · code-review-graph build",
+     "component": {"en": "installer + CLI", "zh": "安装器 + CLI"}},
+    {"lane": "them", "en": "Tree-sitter writes functions, calls and imports into a local SQLite graph", "zh": "解析函数与调用，写进本地 SQLite 图"},
+    {"lane": "you", "en": "Leave watch mode or editor hooks running as you work", "zh": "工作时开着 watch 模式或编辑器 hooks",
+     "code": "code-review-graph watch"},
+    {"lane": "them", "en": "Only changed files and their dependents get re-parsed", "zh": "只重解析变更文件和它们的依赖方",
+     "component": {"en": "incremental updater", "zh": "增量更新器"}},
+    {"lane": "you", "en": "Ask the agent about impact; it calls the MCP tools", "zh": "问 agent 影响面，它去调 MCP 工具",
+     "code": "get_impact_radius · get_review_context"},
+    {"lane": "them", "en": "Answers with a compact blast-radius slice instead of raw source", "zh": "回交紧凑的 blast-radius 切片而非原始源码"}
+  ],
+  "value": {"en": "The agent reads only the files a change touches — its benchmark reports ~63x median token reduction per question", "zh": "agent 只读改动波及的文件——其基准自报每问题 token 中位缩减约 63 倍"},
+  "sources": ["README.md staging @ 2026-09 (Quick Start): pip install code-review-graph / pipx install; code-review-graph install; code-review-graph build; code-review-graph watch; MCP tool names get_impact_radius, get_review_context (README §How It Works / 30 MCP tools); benchmark figures docs/REPRODUCING.md + README §Benchmarks (~63x median)"]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "TimesFM does", "zh": "TimesFM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package with a backend extra", "zh": "装包并选后端 extra", "code": "pip install timesfm[torch] · pip install timesfm[mlx]"},
+    {"lane": "you", "en": "Point the model config at the Hugging Face checkpoint", "zh": "把模型配置指向 HF 上的 checkpoint", "code": "checkpoint_path=\"google/timesfm-3.0-pytorch\""},
+    {"lane": "them", "en": "Loads pretrained weights — no training job, no per-series fitting", "zh": "加载预训练权重——零训练任务、零逐序列拟合", "component": {"en": "TimesFM 3.0 checkpoint", "zh": "TimesFM 3.0 checkpoint"}},
+    {"lane": "you", "en": "Hand it the raw history and a horizon", "zh": "把原始历史和预测步长交给它", "code": "forecaster.predict(context, horizon=128, return_quantiles=True)"},
+    {"lane": "them", "en": "Returns point forecast plus 9 quantile bands; multivariate and covariates native since 3.0", "zh": "返回点预测加 9 条分位数带；3.0 起原生支持多变量与协变量"}
+  ],
+  "value": {"en": "Forecasts for whole fleets of series from one pretrained model, run locally — no training pipeline, no cloud per-call bill", "zh": "一个预训练模型预测整批序列，全程本地跑——不建训练管线，不付云 API 账单"},
+  "sources": ["README.md master @ 2026-09-28 (Update Aug 2026 + Code Examples: TimesFM 3.0): pip install timesfm[torch]; pip install timesfm[mlx]; config = ModelConfig(checkpoint_path=\"google/timesfm-3.0-pytorch\", ...); outputs = list(forecaster.predict_batch([ts1, ts2], horizon=12, return_quantiles=True, use_symmetric_averaging=False)); MLX example: out = forecaster.predict(context, horizon=128, return_quantiles=True) — code strings quoted verbatim from these blocks"]
+}

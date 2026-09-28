@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "HTML Anything does", "zh": "HTML Anything 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the app, install deps, start the local server", "zh": "克隆应用、装依赖、本地起服务", "code": "pnpm install · pnpm -F @html-anything/next dev"},
+    {"lane": "them", "en": "Scans your PATH and surfaces every signed-in agent CLI it recognizes", "zh": "扫描 PATH，列出它识别出的、你已登录的 agent CLI", "component": {"en": "agent adapters (argv.ts)", "zh": "agent 适配层（argv.ts）"}},
+    {"lane": "you", "en": "Paste Markdown/CSV/JSON, pick a skill template, hit ⌘+Enter", "zh": "粘进 Markdown/CSV/JSON，挑一个模板，按 ⌘+Enter"},
+    {"lane": "them", "en": "Spawns your CLI and streams single-file HTML into a sandboxed iframe preview", "zh": "spawn 你的 CLI，把单文件 HTML 流式渲进沙箱 iframe", "component": {"en": "POST /api/convert (SSE)", "zh": "/api/convert（SSE）"}},
+    {"lane": "you", "en": "One-click export: juice-inlined CSS into WeChat, 2× PNG into the tweet composer", "zh": "一键导出：内联 CSS 粘进微信，2× PNG 发推"}
+  ],
+  "value": {"en": "A designed, ship-ready single-file HTML — no hand-written CSS, no API key, content stays on your machine", "zh": "排版即交付的单文件 HTML——不手写 CSS、不配 API key、内容不出本机"},
+  "sources": ["README.md main @ 2026-09 (Quickstart): git clone https://github.com/nexu-io/html-anything; pnpm install; pnpm -F @html-anything/next dev; 'top bar auto-detects whichever coding-agent CLI you already have signed in → pick a template → paste content → ⌘+Enter'", "README.md main @ 2026-09 (Architecture): 'On boot the browser calls /api/agents … one adapter per CLI in next/src/lib/agents/argv.ts'; POST /api/convert SSE spawn", "README.md main @ 2026-09 (One-click export row): juice inlines CSS → WeChat paste; modern-screenshot → 2× PNG → ClipboardItem"]
+}

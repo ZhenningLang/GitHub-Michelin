@@ -17,7 +17,7 @@
 | **Unsloth** | Triton-kernel-accelerated single-GPU LoRA/QLoRA/RL fine-tuning that trains 500+ open LLMs ~2x faster with large VRAM savings. | B (5/6) | [→](unsloth.md) |
 | **ART (Agent Reinforcement Trainer)** | Train multi-step LLM agents on real tasks with GRPO reinforcement learning via a client-server loop, using RULER (LLM-as-judge) for zero-label reward generation. | C (5/6) | [→](art.md) |
 | **Agent Lightning** | Microsoft RL/optimization trainer that improves agents built in any framework (LangChain, AutoGen, OpenAI SDK…) with near-zero code changes by decoupling agent execution from the training backend. | B (5/6) | [→](agent-lightning.md) |
-| **Colossal-AI** | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. | B (5/6) | [→](colossalai.md) |
+| **Colossal-AI** | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. | B (6/6) | [→](colossalai.md) |
 | **Hugging Face TRL** | Train transformer language models with reinforcement learning. | A (6/6) | [→](trl.md) |
 | **torchtune** | PyTorch native post-training library | B (6/6) | [→](torchtune.md) |
 | **Axolotl** | Go ahead and axolotl questions | B (6/6) | [→](axolotl.md) |
@@ -33,7 +33,7 @@
 | [Unsloth](unsloth.md) | ✅ | B (5/6) | Triton-kernel-accelerated single-GPU LoRA/QLoRA/RL fine-tuning that trains 500+ open LLMs ~2x faster with large VRAM savings. |
 | [ART (Agent Reinforcement Trainer)](art.md) | ✅ | C (5/6) | Train multi-step LLM agents on real tasks with GRPO reinforcement learning via a client-server loop, using RULER (LLM-as-judge) for zero-label reward generation. |
 | [Agent Lightning](agent-lightning.md) | ✅ | B (5/6) | Microsoft RL/optimization trainer that improves agents built in any framework (LangChain, AutoGen, OpenAI SDK…) with near-zero code changes by decoupling agent execution from the training backend. |
-| [Colossal-AI](colossalai.md) | ✅ | B (5/6) | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. |
+| [Colossal-AI](colossalai.md) | ✅ | B (6/6) | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. |
 | [Soup](soup.md) | ✅ | B (6/6) | Use it when one YAML must take a fine-tune from JSONL to a served, exported model and the base does not fit your GPU — not when the config contract must stay stable across upgrades or the model already fits resident and you want speed. |
 | [Hugging Face TRL](trl.md) | ✅ | A (6/6) | SFT / DPO / GRPO trainers that plug into the transformers stack; pick it when the rest of your pipeline is already Hugging Face. |
 | [verl](verl.md) | ✅ | B (6/6) | RL post-training framework (HybridFlow) built around separating rollout from training at scale; not a drop-in SFT trainer. |

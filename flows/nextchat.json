@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "NextChat does", "zh": "NextChat 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy to Vercel with one click, or run the single Docker image", "zh": "一键部署 Vercel，或起单个 Docker 容器", "code": "docker pull yidadaa/chatgpt-next-web · docker run -d -p 3000:3000"},
+    {"lane": "you", "en": "Pass your provider keys and an access password as env vars", "zh": "用环境变量喂入服务商 key 和访问密码", "code": "-e OPENAI_API_KEY=sk-xxxx -e CODE=your-password"},
+    {"lane": "them", "en": "Serves the chat UI; all conversations stay in your browser's localStorage", "zh": "提供聊天界面，对话全部存在你浏览器的本地存储", "component": {"en": "Web UI (PWA)", "zh": "Web 界面（PWA）"}},
+    {"lane": "you", "en": "Open the URL, unlock with a CODE password, pick a model and chat", "zh": "打开网址，用 CODE 解锁，挑模型开聊"},
+    {"lane": "them", "en": "Streams answers from the provider you picked, rendering markdown, LaTeX, and code live", "zh": "从你选的服务商流式取回答案，实时渲染 markdown"}
+  ],
+  "value": {"en": "Your own ChatGPT-style URL in minutes — keys stay yours, chats stay in the browser, one password keeps strangers out", "zh": "几分钟得到自己的 ChatGPT 式网址：key 自持、历史本地、一道密码挡陌生人"},
+  "sources": ["README.md main @ 2026-09-28 (raw.githubusercontent.com/ChatGPTNextWeb/NextChat): one-click Vercel deploy; docker pull yidadaa/chatgpt-next-web; docker run -d -p 3000:3000 -e OPENAI_API_KEY=sk-xxxx -e CODE=your-password yidadaa/chatgpt-next-web; CODE is the page password, comma-separated; 'Privacy first, all data is stored locally in the browser'; streaming response; markdown LaTex mermaid code highlight"]
+}

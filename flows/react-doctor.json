@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "React Doctor does", "zh": "React Doctor 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run a one-shot audit at the project root", "zh": "在项目根目录跑一次审计", "code": "npx react-doctor@latest"},
+    {"lane": "them", "en": "Scans deterministically for state & effects, performance, architecture, security, a11y, maintainability issues", "zh": "对 state/effect、性能、架构、安全、可访问性、可维护性做确定性扫描", "component": {"en": "static analyzer", "zh": "静态分析器"}},
+    {"lane": "you", "en": "Install the rule set as a skill your coding agent reads", "zh": "把规则集装成 agent 会读的 skill", "code": "npx react-doctor@latest install"},
+    {"lane": "you", "en": "Gate every pull request with one command", "zh": "一条命令给每个 PR 设闸门", "code": "npx react-doctor@latest ci install"},
+    {"lane": "them", "en": "Reviews each PR and reports only the issues your change introduced", "zh": "逐 PR 扫描，只报告本次改动引入的问题", "component": {"en": "GitHub Actions workflow", "zh": "GitHub Actions 工作流"}}
+  ],
+  "value": {"en": "One React rule set the agent learns from, your editor enforces, and CI gates on — same input, same findings, every run", "zh": "一套 React 规则贯穿 agent 自学、编辑器与 CI 闸门——同样输入，永远同样结论"},
+  "sources": ["README.md main @ 2026-09 (Quick start): npx react-doctor@latest", "README.md main @ 2026-09 (Install for agents): npx react-doctor@latest install", "README.md main @ 2026-09 (Run in CI): npx react-doctor@latest ci install; 'reviews every pull request and reports only the issues your change introduced'", "README.md headline @ 2026-09: 'finds issues across state and effects, performance, architecture, security, accessibility, and maintainability'"]
+}

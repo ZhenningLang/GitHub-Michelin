@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "MiniCPM-V does", "zh": "MiniCPM-V 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Transformers serving extra", "zh": "装 Transformers 的 serving extra", "code": "pip install \"transformers[serving]>=5.7.0\""},
+    {"lane": "you", "en": "Start a local OpenAI-compatible server on the 1.3B model", "zh": "用 1.3B 模型起一个本地 OpenAI 兼容服务", "code": "transformers serve openbmb/MiniCPM-V-4.6 --port 8000 --host 0.0.0.0"},
+    {"lane": "them", "en": "Loads the open weights locally — every image stays on your device", "zh": "本地加载开放权重——每张图都留在自己设备上", "component": {"en": "MiniCPM-V 4.6 (1.3B)", "zh": "MiniCPM-V 4.6（1.3B）"}},
+    {"lane": "you", "en": "Post the image plus your question to the chat endpoint", "zh": "把图片和问题发到这个对话端点", "code": "http://localhost:8000/v1/chat/completions"},
+    {"lane": "them", "en": "Answers on images, multi-images and video using compressed visual tokens", "zh": "用压缩视觉 token 回答单图、多图与视频问题", "component": {"en": "LLaVA-UHD v4 visual compression", "zh": "LLaVA-UHD v4 视觉压缩"}}
+  ],
+  "value": {"en": "Pocket-sized image and video understanding running locally — no cloud round-trip, and the same weights reach phones via GGUF/Ollama and open mobile app code", "zh": "口袋级的图像/视频理解全程本地跑——没有云端往返；同一份权重还能经 GGUF/Ollama 与开源移动适配代码进手机"},
+  "sources": ["README.md main @ 2026-09-28, MiniCPM-V 4.6 Usages › Serving with transformers serve: pip install \"transformers[serving]>=5.7.0\"; transformers serve openbmb/MiniCPM-V-4.6 --port 8000 --host 0.0.0.0 --continuous-batching; curl http://localhost:8000/v1/chat/completions", "README.md News 2026.06.25 (merged into official Ollama library) and LLaVA-UHD v4 description in MiniCPM-V 4.6 section"]
+}

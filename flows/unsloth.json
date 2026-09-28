@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them":  {"en": "Unsloth does", "zh": "Unsloth 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Core library into an isolated uv environment", "zh": "把 Core 库装进隔离的 uv 环境", "code": "uv pip install unsloth --torch-backend=auto"},
+    {"lane": "you", "en": "Load any supported model through the drop-in FastLanguageModel class", "zh": "用近乎 drop-in 的类加载模型", "code": "model, tokenizer = FastLanguageModel.from_pretrained("},
+    {"lane": "them", "en": "Swaps in hand-written Triton kernels and dynamic 4-bit, so the job fits far less VRAM", "zh": "换上 Triton kernel 与动态 4-bit，同任务更省显存", "component": {"en": "Triton kernels", "zh": "Triton 内核"}},
+    {"lane": "you", "en": "Attach LoRA and train with the standard TRL trainer", "zh": "挂上 LoRA，用标准 TRL trainer 训练", "code": "model = FastLanguageModel.get_peft_model( · trainer = SFTTrainer("},
+    {"lane": "them", "en": "Accelerates each step behind your usual HF script — datasets and adapters stay stock", "zh": "照常跑 TRL 脚本，数据与 adapter 仍是标准 HF 资产"}
+  ],
+  "value": {"en": "QLoRA on one GPU in far less VRAM at roughly 2x speed (vendor claims), still pure Hugging Face", "zh": "单卡 QLoRA 更省更快（官方数字），产物仍是标准 HF 资产"},
+  "sources": ["README.md main @ 2026-09-28 (raw.githubusercontent.com/unslothai/unsloth/main/README.md): 'uv venv unsloth_env --python 3.13' + 'uv pip install unsloth --torch-backend=auto'; features: 'Multi GPU setups, NVIDIA, AMD, Intel GPUs, CPUs and the Vulkan backend'; license section: dual Apache-2.0 core + AGPL-3.0 Studio UI", "unslothai/notebooks Llama3.1_(8B)-Alpaca.ipynb @ 2026-09-28 (raw.githubusercontent.com): 'from unsloth import FastLanguageModel', 'model = FastLanguageModel.get_peft_model(', 'from trl import SFTConfig, SFTTrainer', 'trainer = SFTTrainer('", "docs /docs/basics/multi-gpu-training-with-unsloth.md @ 2026-09-28: 'model, tokenizer = FastLanguageModel.from_pretrained('; 'supports multi-GPU setups through libraries like Accelerate and DeepSpeed ... FSDP and DDP'", "README.md notebooks table @ 2026-09-28: vendor perf claims '2x faster' / '70% less'; news: 'RoPE & MLP Triton Kernels & Padding Free + Packing'"]
+}

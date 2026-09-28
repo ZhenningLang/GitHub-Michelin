@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "oMLX does", "zh": "oMLX 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the menu-bar app (drag the .dmg) or the Homebrew formula", "zh": "安装菜单栏应用（拖 .dmg）或 Homebrew 包", "code": "brew install jundot/omlx/omlx"},
+    {"lane": "you", "en": "Start the server pointed at your folder of MLX models", "zh": "把服务器指向你的 MLX 模型目录并启动", "code": "omlx serve --model-dir ~/models"},
+    {"lane": "them", "en": "Auto-discovers LLMs, VLMs, embeddings and rerankers in the folder and keeps them loaded under a memory cap", "zh": "自动发现目录里的各类模型，在内存上限内保持加载", "component": {"en": "EnginePool", "zh": "EnginePool"}},
+    {"lane": "you", "en": "Point your coding agent or any OpenAI/Anthropic-compatible client at it", "zh": "把编码 agent 或任何 OpenAI/Anthropic 兼容客户端指向它", "code": "http://localhost:8000/v1"},
+    {"lane": "them", "en": "Continuously batches requests, keeping the KV cache hot in RAM and cold on SSD across restarts", "zh": "连续批处理请求，KV 缓存热在内存、冷在 SSD，扛得住重启", "component": {"en": "Tiered KV cache", "zh": "分层 KV 缓存"}}
+  ],
+  "value": {"en": "Long-context coding-agent sessions on local Mac models without per-token API bills or babysitting a terminal", "zh": "在本地 Mac 模型上跑长上下文编码 agent 会话，既不必按 token 付费，也不用守着终端"},
+  "sources": ["README.md main @ 2026-09 (raw.githubusercontent.com/jundot/omlx/main/README.md): brew tap jundot/omlx https://github.com/jundot/omlx; brew install jundot/omlx/omlx; omlx serve --model-dir ~/models; discovers LLMs, VLMs, embedding models, and rerankers automatically; OpenAI-compatible client connects at http://localhost:8000/v1; tiered hot-RAM/cold-SSD KV cache surviving restarts; continuous batching via mlx-lm BatchGenerator; EnginePool in the architecture diagram"]
+}

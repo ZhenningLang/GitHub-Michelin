@@ -6,17 +6,17 @@ category: ml-research
 tags: [optimization, multi-objective, evolutionary-algorithms, nsga2, genetic-algorithm, python, operations-research]
 language: Python
 license: Apache-2.0
-maturity: v0.6.x, active (last pushed 2026-06), ~2.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v0.6.2, active, ~3.0k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-28T22:14:17Z
+  pushed_at: 2026-07-07T01:34:50Z
   default_branch: main
-  default_branch_sha: 04c77b4cbb01a51cd98be8ad74774d4ea588e35a
+  default_branch_sha: 23110c155aa8f31b5f1b86928227fb3931ba7f00
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:42:45Z
+  computed_at: 2026-09-28T07:24:44Z
   overall: B
   overall_score: 2.5
   scored_axes: 6
@@ -29,8 +29,8 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 78
-        active_weeks_13: 3
+        last_commit_age_days: 83
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: B
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3290
-        last_commit_age_days: 78
+        repo_age_days: 3295
+        last_commit_age_days: 83
         cohort: library
     governance:
       grade: D
@@ -77,7 +77,7 @@ health:
 
 # pymoo
 
-A Python framework for single- and multi-objective optimization: NSGA-II/III, MOEA/D, GA, DE, CMA-ES, PSO and more, plus test problems, constraint handling, visualization, and decision-making tools — built on NumPy/SciPy with optional compiled speedups.
+Your problem has several objectives fighting each other — minimize cost *and* weight — so there is no single best answer, only trade-offs. pymoo evolves a population against your evaluation function and hands back a whole Pareto front (the set of non-dominated compromises) with NSGA-II/III, MOEA/D, CMA-ES and friends, plus plotting and decision-making helpers.
 
 ![pymoo — health radar](../../assets/health/pymoo.svg)
 
@@ -86,6 +86,27 @@ A Python framework for single- and multi-objective optimization: NSGA-II/III, MO
 You're a researcher or engineer with an optimization problem that has **multiple conflicting objectives** — minimize cost *and* weight, maximize throughput *and* reliability — and you need to find the Pareto front, not a single scalar optimum. You define a `Problem` (variables, objectives, constraints), pick an algorithm like `NSGA2`, call `minimize(problem, algorithm, termination)`, and pymoo evolves a population toward the trade-off frontier; then you use its visualization (scatter, PCP) and decision-making modules (e.g. pseudo-weights, compromise programming) to pick a solution. It ships the standard benchmark suites (ZDT, DTLZ, WFG) so you can validate an algorithm before pointing it at your real problem, and it handles mixed/integer variables, constraints, and custom operators.
 
 You reach for it as the **de-facto Python library for evolutionary multi-objective optimization** — when you want well-tested implementations of the canonical algorithms (it's the reference for NSGA-II/III in Python) with a clean, extensible API, rather than re-implementing genetic operators yourself or wiring up a heavier OR solver. [推断]
+
+## How it works
+
+You write one function (or a `Problem` class): give it a vector of decision variables, it returns the objectives (and constraints). pymoo owns the search loop: `minimize(problem, algorithm, termination)` samples an initial population, calls your evaluation function in batches (vectorized or parallel if you make it so), and then the algorithm breeds the next generation — NSGA-II, for example, sorts the merged pool by non-domination (no other solution beats it on *every* objective) and keeps the spread-out front — until your termination (generations, runtime, convergence) fires. What comes back is not one answer but a whole final population: `res.X`/`res.F` are the surviving decision vectors and their objective values, i.e. your Pareto-front approximation, which `pymoo.visualization` (`Scatter`, parallel-coordinates) can plot against the benchmark's known front. What stays yours: the objective function itself (and its compute cost — that's where the real hours go), the evaluation budget, the seed for reproducibility, and the eventual pick of one trade-off to ship — its MCDM modules (pseudo-weights, compromise programming) help you choose.
+
+![pymoo — backbone user story](../../assets/flow/pymoo.svg)
+
+<!-- flow-steps:begin (generated from flows/pymoo.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install into your Python environment — `pip install -U pymoo`
+2. **You**: Define a problem (or borrow a benchmark) and pick an algorithm — `problem = get_problem("zdt1") · algorithm = NSGA2(pop_size=100)` — component: `Problem / Algorithm`
+3. **You**: Run the search with a termination budget and a seed — `res = minimize(problem, algorithm, ('n_gen', 200), seed=1, verbose=True)`
+4. **pymoo**: Evolves the population generation by generation toward the trade-off front — component: `NSGA2`
+5. **You**: Read the Pareto front off res.F and plot it — `plot.add(res.F, color="red")`
+
+**Value**: A whole trade-off front from one minimize() call, without writing any evolutionary machinery yourself
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -116,7 +137,7 @@ You reach for it as the **de-facto Python library for evolutionary multi-objecti
 ## Dependencies
 
 - **Runtime:** `numpy`, `scipy`, `matplotlib`, `moocore`, `autograd`, `cma`, `alive_progress`, `Deprecated` — all pip-installable, no external services.
-- **Build (optional):** a C compiler + `Cython` to build the compiled speedups from source; `pip install pymoo` ships wheels for the common case.
+- **Build (optional):** a C compiler + `Cython` to build the compiled speedups from source; `pip install pymoo` ships prebuilt Cython wheels for macOS/Windows/manylinux (glibc and musl) across CPython 3.10–3.14 (PyPI, checked 2026-09-28 for 0.6.2).
 - **Hardware:** CPU-bound; no GPU required (or used) by the core algorithms.
 - **Your problem:** you supply the objective/constraint evaluation — that's where real-world cost lives (e.g. wrapping a simulator).
 
@@ -127,15 +148,13 @@ You reach for it as the **de-facto Python library for evolutionary multi-objecti
 ## Health & viability
 
 - **Responsiveness**: Grade B — median first-response time 4.5 hours across 4 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed **2026-06-28** (the day of verification) with only ~2 open issues — strong signs of an **actively maintained, well-tended** project on the v0.6.x line. Not coasting, not abandoned. [推断]
+- **Maintenance (2026-09).** Last commit on `main` **2026-07-07** (bugfix work on the `como_cmaes` algorithm) and 0 open issues at check time (GitHub API, 2026-09-28) — a tended v0.6.x line, though commit cadence in the trailing quarter is modest, not rapid. Not abandoned. [推断]
 - **Governance / backing.** Developed under the `anyoptimization` org (Organization-owned) with a lead maintainer (blankjul) and a real contributor list; tied to academic work (the pymoo IEEE Access paper). Bus factor leans on the lead maintainer but with org structure and multiple contributors — healthier than a lone-author repo. [推断]
 - **Age & Lindy verdict.** Created 2017-09 (~8–9 years) **and still actively shipping** ⇒ a **strong Lindy** signal: a mature, long-proven library that remains current, not a hyped newcomer. [推断]
-- **Adoption.** ~2.9k stars / ~475 forks, a citable paper, and use across academic/industrial optimization work; it is a standard reference for NSGA-II/III in Python. [未验证]
+- **Adoption.** ~3.0k stars / 480 forks (GitHub API, 2026-09-28), a citable paper, and use across academic/industrial optimization work; it is a standard reference for NSGA-II/III in Python. [未验证：生产采用广度]
 - **Risk flags.** Few. Apache-2.0 (permissive, no relicense history found); the main practical caveat is the general EA caveat (stochastic, evaluation-hungry), not a project-health risk. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~2.9k stars / ~475 forks / ~2 open issues as of 2026-06; counts are date-sensitive and indicative only.
-- [未验证] v0.6.x is the current line (tags 0.6.2 / 0.6.1.x observed); the exact latest patch version and its release date are not pinned here.
 - [推断] "De-facto / reference Python library for evolutionary multi-objective optimization" is an inference from adoption + the canonical algorithm set + the paper, not a measured ranking against every alternative.
-- [推断] "Wheels ship for the common case so you rarely need to compile Cython" is inferred from typical PyPI packaging; verify for your platform if compiled-speed paths matter.
+- [推断] The adoption narrative ("use across academic/industrial optimization work") rests on the citable IEEE Access paper and star/fork counts; no production-user census was done.
