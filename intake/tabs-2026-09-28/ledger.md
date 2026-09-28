@@ -37,9 +37,9 @@
 | hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | done | categories/streaming-clients/pipepipe.md |  | infinityloop1308/pipepipe |
 | ix-infrastructure/Ix | add | running |  |  | ix-infrastructure/ix |
-| jo-duchan/tapflow | add | running |  |  | jo-duchan/tapflow |
+| jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
-| Kuddev/pebrel | add | pending |  |  | kuddev/pebrel |
+| Kuddev/pebrel | add | running |  |  | kuddev/pebrel |
 | kunchenguid/backpass | add | pending |  |  | kunchenguid/backpass |
 | leejet/stable-diffusion.cpp | add | pending |  |  | leejet/stable-diffusion.cpp |
 | macro-inc/macro | add | pending |  |  | macro-inc/macro |

@@ -941,6 +941,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **WebDriverAgent** | Use it when you are building the iOS automation layer itself — it is the WebDriver server Appium drives — not something most teams run standalone. | BSD-3-Clause | A (4/6) | [EN](categories/mobile-automation/webdriveragent.md) · [中](categories/mobile-automation/webdriveragent.zh.md) |
 | **Maestro** | Use it when you want YAML flows and near-zero onboarding for Android/iOS/web E2E — but physical iOS devices are unsupported. | Apache-2.0 | A (6/6) | [EN](categories/mobile-automation/maestro.md) · [中](categories/mobile-automation/maestro.zh.md) |
 | **Detox** | Use it when you are testing a React Native app and want gray-box synchronization that fights flakiness — but it locks to RN versions, is JS-only, and iOS physical devices are unsupported. | MIT | B (6/6) | [EN](categories/mobile-automation/detox.md) · [中](categories/mobile-automation/detox.zh.md) |
+| **tapflow** | Use it when non-developers on your team need to test iOS/Android builds in a browser on Macs you own — but agents need Apple-Silicon Macs pinned to Xcode 26–27, it is simulator-only, and one maintainer wrote nearly all of it. | MIT | B (6/6) | [EN](categories/mobile-automation/tapflow.md) · [中](categories/mobile-automation/tapflow.zh.md) |
 
 ### game-dev
 

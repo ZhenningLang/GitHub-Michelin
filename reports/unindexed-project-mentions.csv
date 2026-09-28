@@ -24,6 +24,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `bdeansrowe/ltbl-force`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-ignorance`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `cake` / SQM (OpenWrt),categories/networking/wondershaper.md,,no
+`DeviceFarmer/stf`,categories/mobile-automation/tapflow.md,,no
 `diffusers` (Hugging Face),categories/ml-research/pytorch-gan.md,,no
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
@@ -32,6 +33,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
 `nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
+`NetrisTV/ws-scrcpy`,categories/mobile-automation/tapflow.md,,no
 `openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-python`,categories/im-automation/openilink-sdk-go.md,,no

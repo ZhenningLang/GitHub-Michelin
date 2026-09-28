@@ -938,6 +938,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **WebDriverAgent** | 当你要自己搭 iOS 自动化底层时用它——它就是 Appium 驱动的那个 WebDriver 服务端，多数团队不会单独跑它。 | BSD-3-Clause | A（4/6） | [中](categories/mobile-automation/webdriveragent.zh.md) · [EN](categories/mobile-automation/webdriveragent.md) |
 | **Maestro** | 当你想用 YAML 流程、几分钟就能上手做 Android／iOS／Web 的端到端测试时用它——但不支持 iOS 真机。 | Apache-2.0 | A（6/6） | [中](categories/mobile-automation/maestro.zh.md) · [EN](categories/mobile-automation/maestro.md) |
 | **Detox** | 当你在测 React Native 应用、想要灰盒同步来压住 flaky 时用它——但它锁 React Native 版本、只支持 JS，且不支持 iOS 真机。 | MIT | B（6/6） | [中](categories/mobile-automation/detox.zh.md) · [EN](categories/mobile-automation/detox.md) |
+| **tapflow** | 当团队里不写代码的人要在浏览器里测 iOS／Android 构建、而模拟器跑在你自己的 Mac 上时使用——但 agent 必须是固定在 Xcode 26–27 的 Apple Silicon Mac，只支持模拟器，而且几乎全由一位维护者写成。 | MIT | B（6/6） | [中](categories/mobile-automation/tapflow.zh.md) · [EN](categories/mobile-automation/tapflow.md) |
 
 ### game-dev
 
