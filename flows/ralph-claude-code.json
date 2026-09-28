@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Ralph does", "zh": "Ralph 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the harness once — clone the repo and run the installer", "zh": "一次性安装套壳——克隆仓库并跑安装脚本", "code": "git clone https://github.com/frankbria/ralph-claude-code.git · ./install.sh"},
+    {"lane": "you", "en": "Enable Ralph in an existing project, importing tasks from a PRD", "zh": "在现有项目启用 Ralph，从 PRD 导入任务", "code": "ralph-enable --from prd ./docs/requirements.md"},
+    {"lane": "them", "en": "Scaffolds the .ralph/ workspace — goals in PROMPT.md, tasks in fix_plan.md", "zh": "生成 .ralph/：PROMPT.md 写目标、fix_plan.md 列任务", "component": {"en": ".ralph/ workspace", "zh": ".ralph/ 工作区"}},
+    {"lane": "you", "en": "Review the checklist, then start the monitored loop", "zh": "核对任务清单，启动带监控的循环", "code": "ralph --monitor"},
+    {"lane": "them", "en": "Each loop re-invokes Claude Code; rate limit and circuit breaker cap cost and stalls", "zh": "每轮重新调用 Claude Code，速率限制与熔断器框住成本和死循环"},
+    {"lane": "them", "en": "Exits only when completion heuristics AND EXIT_SIGNAL: true both fire", "zh": "完成启发式与 EXIT_SIGNAL: true 同时成立才退出", "component": {"en": "dual-condition exit gate", "zh": "双条件退出闸门"}}
+  ],
+  "value": {"en": "The checklist gets ground down unattended and the loop stops when work is provably done — not when Claude declares victory", "zh": "清单被无人值守啃完，循环在完成判据同时成立时才停——而不是 Claude 自称完成时"},
+  "sources": ["README.md main @ 2026-09 (Quick Start, Phase 1): git clone https://github.com/frankbria/ralph-claude-code.git; ./install.sh", "README.md main @ 2026-09 (Quick Start, Phase 2 Option A): ralph-enable --from prd ./docs/requirements.md; ralph --monitor", "README.md main @ 2026-09 (Ongoing Usage + .ralph/ files table): PROMPT.md, fix_plan.md under .ralph/", "README.md Project Status @ 2026-09: dual-condition exit gate (completion indicators + EXIT_SIGNAL: true), rate limiting 100 calls/hour configurable, circuit breaker (3 no-progress loops / 5 identical errors)"]
+}

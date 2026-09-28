@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "skills CLI does", "zh": "skills CLI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the installer against any repo that ships SKILL.md packs", "zh": "对着带 SKILL.md 包的仓库跑一条安装命令", "code": "npx skills add vercel-labs/agent-skills"},
+    {"lane": "them", "en": "Fetches the source and lists every valid skill it discovers inside", "zh": "拉取源仓库，发现并列出其中所有 skill", "component": {"en": "source resolver", "zh": "源解析器"}},
+    {"lane": "you", "en": "Pick the skills and the target agents", "zh": "挑要装的 skill、目标 agent", "code": "npx skills add vercel-labs/agent-skills -a claude-code -a opencode"},
+    {"lane": "them", "en": "Detects installed agents and symlinks (or copies) the skill into each skills directory", "zh": "检测已装 agent，把 skill 软链或复制进各自目录", "component": {"en": "agent path registry", "zh": "agent 目录映射"}},
+    {"lane": "you", "en": "Later, refresh every installed skill with one command", "zh": "之后一条命令批量更新全部 skill", "code": "npx skills update"}
+  ],
+  "value": {"en": "Same skill pack installed and kept current across 79 agents without hand-copying directories", "zh": "一条命令把同一个 skill 装进 79 个 agent 并保持更新，不再手工拷目录"},
+  "sources": ["README.md vercel-labs/skills main @ 2026-09-28: 'Install a Skill' section verbatim 'npx skills add vercel-labs/agent-skills'; Examples section verbatim 'npx skills add vercel-labs/agent-skills --skill frontend-design -g -a claude-code -y'; Other Commands table 'npx skills list' / 'npx skills update [skills]'; Installation Methods table symlink/copy; 'The CLI automatically detects which coding agents you have installed'; agent-list badge 'Supports OpenCode, Claude Code, Codex, Cursor, and 75 more'"]
+}

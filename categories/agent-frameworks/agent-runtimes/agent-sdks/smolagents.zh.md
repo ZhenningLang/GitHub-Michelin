@@ -6,17 +6,17 @@ category: agent-sdks
 tags: [code-agent, react, llm-agent, tool-use, minimal, hugging-face, litellm, mcp]
 language: Python
 license: Apache-2.0
-maturity: v1.x, active, ~28k stars (2026-06)
-last_verified: 2026-06-28
+maturity: v1.x, active, ~29.5k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-23T18:34:53Z
+  pushed_at: 2026-09-23T13:13:00Z
   default_branch: main
-  default_branch_sha: 526069c1ead958b36d9fd09a6b1ef37f68ed6ade
+  default_branch_sha: 227ef5e49ddd82339295939072f0223249aa8d38
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:31:42Z
+  computed_at: 2026-09-28T10:17:20Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 31
-        active_weeks_13: 2
+        last_commit_age_days: 5
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 35.8
-        qualifying_issues: 32
+        median_ttfr_hours: 33.0
+        qualifying_issues: 26
         band: default
         window_offset_days: 7
         source: issue
@@ -47,7 +47,7 @@ health:
         registry: pypi.org
         canonical_package: smolagents
         dependent_repos_count: 0
-        downloads_last_month: 467299
+        downloads_last_month: 427830
         graph_tier: E
         volume_tier: B
         cross_check_divergence: null
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 656
-        last_commit_age_days: 31
+        repo_age_days: 662
+        last_commit_age_days: 5
         cohort: library
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 25
-        top1_share: 0.429
-        top3_share: 0.622
+        top1_share: 0.423
+        top3_share: 0.619
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,7 +77,7 @@ health:
 
 # smolagents
 
-一个极简的库，用来构建“用代码思考”的 agent：LLM 不再吐 JSON 工具调用，而是把动作写成 Python 代码片段（`CodeAgent`），在 ReAct 循环里执行——整个 agent 逻辑约 1,000 行、模型无关、并接进 Hugging Face Hub。
+你想搭一个真正会用工具的 AI agent，可试过的框架都把「模型提出动作、你执行、结果喂回对话」这个简单循环埋进了你根本没要的图、注册表和回调里。smolagents 把这个循环保持在约 1,000 行可读代码，并让模型把每一步动作写成 Python 代码而不是填 JSON 工具调用——多步任务因此能像普通代码一样组合。
 
 ![smolagents — 健康度雷达](../../../../assets/health/smolagents.zh.svg)
 
@@ -87,11 +87,33 @@ health:
 
 当你在挑模型、或想贴着 Hugging Face 生态时，它同样合适：同一个 agent 可以跑在托管和本地模型上，工具与 agent 还能推到 Hub、从 Hub 拉回。如果你的价值在于一个*小、透明、可改*、能 fork 并据为己有的循环——而非一个托管平台——那就是 smolagents 的最佳落点。
 
+## 怎么用起来
+
+smolagents 跑的是一个 ReAct 循环——模型提出动作、库去执行、把输出作为记忆追加回对话，如此往复——它的特色在于动作的形态：`CodeAgent` 让模型用一段 Python 代码作答，于是「工具调用」只是生成代码里对你 `@tool` 函数的一次普通函数调用（连搜三个网站就是一个 `for` 循环，而不是三次往返）。你接一个模型后端（`InferenceClientModel` 走 Hugging Face 的各家推理服务，`LiteLLMModel` 覆盖 100+ 模型，`OpenAIModel`/Azure/Bedrock 走标准 OpenAI 兼容服务，或本地 `transformers`/`ollama` 模型），配上工具，调用 `agent.run(task)`；system prompt、代码解析、步数上限、流式日志都由库负责。生成的代码调用 `final_answer(...)` 时循环终止，其参数就是答案。因为生成的 Python 是任意代码，隔离就是你负责的半边：内置的 `LocalPythonExecutor` 被明确声明「不是安全边界」（只有一些可被绕过的尽力限制），不可信输入必须接 E2B、Modal、Blaxel 或 Docker。想沿用模型服务商原生的 JSON 工具调用，库里也带了 `ToolCallingAgent`。
+
+![smolagents — 主干用户故事](../../../../assets/flow/smolagents.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/smolagents.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装库和默认工具箱 — `pip install "smolagents[toolkit]"`
+2. **你**：挑一个模型后端——托管或本地都行 — `InferenceClientModel · LiteLLMModel · TransformersModel`
+3. **你**：把工具包进「写代码」的 agent，然后跑任务 — `agent = CodeAgent(tools=[WebSearchTool()], model=model, stream_outputs=True)`
+4. **smolagents**：模型用一段 Python 代码作答，你的工具就是代码里的普通函数调用 — 组件：`CodeAgent`
+5. **smolagents**：执行这段代码——不可信输入须接 E2B/Modal/Docker 沙箱
+6. **smolagents**：把每次结果追加回记忆并循环，直到代码调用 final_answer — `final_answer`
+
+**价值**：几行可读代码就有一个多步 agent——不附带任何框架的世界观
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要复杂、有状态的编排——图、分支、持久状态、人在环检查点。** smolagents 是*刻意*极简的；它给你一个循环，不是工作流引擎。要显式的图、条件边和持久化，LangGraph 是更合适的工具，硬往 smolagents 上焊这些只会处处别扭。
 - **你扛不起代码执行的安全负担。** 这个 agent 的前提就是*运行模型生成的 Python*。内置的 `LocalPythonExecutor` 被明确声明**不是安全边界**——安全使用意味着接上沙箱（E2B、Modal、Docker 等），这是真实的运维工作，在任何不可信或生产场景里都不能省。
-- **你需要稳定、冻结的 API。** 它很年轻（2024-12 创建），处在快速的 v1.x 发版节奏里，接口仍在版本间变动 [推断]。请 pin 住版本，并预期升级时偶尔要做迁移。
+- **你需要保证稳定的 API。** 它还年轻（2024-12 创建），2025–2026 年间接口随版本频繁变动 [推断]；另外注意最新发布仍是 v1.26.0（2026-05），而提交一直在进到 2026-09——你要的修复可能只存在于 `main`。请 pin 住版本，并预期升级时偶尔要做迁移。
 - **你想要开箱即用的生产级 agent OS**——多 agent 运行时、消息传递、可观测性、现成的部署方案。smolagents 是库，不是平台；要那些，去看更重的运行时，比如 [AgentScope](agentscope.zh.md)。
 - **你是在对照指标优化提示词/程序，而不只是跑一个循环。** 如果目标是被编译、可度量的 LM 程序，而非手写的动作循环，那是 [DSPy](../../workflow-builders/dspy.zh.md) 的活，不是它的。
 
@@ -110,15 +132,17 @@ health:
 - **语言：** Python。
 - **核心抽象：** 一个 ReAct 式的 agent 循环；招牌变体是 `CodeAgent`，其动作是一段被执行的 Python 片段，另有 `ToolCallingAgent` 作为 JSON 工具调用的替代。工具就是普通 Python 函数（`@tool`）或 `Tool` 子类。
 - **代码执行：** 内置 `LocalPythonExecutor`（有一定隔离，但明确*不是*安全边界），外加远程/托管沙箱集成（E2B、Modal、Docker、Blaxel）。
-- **模型网关：** 模型无关——Hugging Face Inference API / 本地 `transformers`，并通过 LiteLLM 实现 provider 无关访问（OpenAI、Anthropic、本地服务等）。
-- **生态钩子：** Hugging Face Hub（推/拉工具与 agent）、MCP 工具服务、以及 LangChain 工具互通。（具体集成/版本支持依文档——见存疑。）
+- **模型网关：** 模型无关——`InferenceClientModel` 通向 HF 支持的各家 inference provider，`LiteLLMModel` 覆盖 100+ 模型（OpenAI、Anthropic 等），`OpenAIModel` 对接标准 OpenAI 兼容服务，另有 `AzureOpenAIModel`、`AmazonBedrockModel` 与本地 `transformers`/`ollama` 模型。
+- **agent 变体与输入：** `CodeAgent`（动作为 Python 片段）与 `ToolCallingAgent`（原生 JSON 工具调用）；支持多 agent 层级；输入模态无关（文本、视觉、视频、音频）。
+- **CLI：** `smolagent`（通才 `CodeAgent` 命令行，带交互式配置向导）与 `webagent`（浏览网页的视觉 agent），可直接从 shell 跑 agent。
+- **生态钩子：** Hugging Face Hub（推/拉工具与 agent，如 `agent.push_to_hub(...)`）、MCP 工具服务、LangChain 工具互通、Hub Space 可直接当工具用。（具体集成/版本支持依文档——见存疑。）
 
 ## 依赖
 
-- **运行时：** Python（现代 3.x）。调用托管模型时框架本身不需要 GPU；本地跑模型则会引入 `transformers`/`torch` 及其对应的硬件要求。
+- **运行时：** Python ≥3.10（PyPI `requires_python`，2026-09）。调用托管模型时框架本身不需要 GPU；本地跑模型则会引入 `transformers`/`torch` 及其对应的硬件要求。
 - **模型：** 至少一个 LM 后端——HF Inference 端点或 API key、一个 LiteLLM 支持的 provider、或本地模型。
 - **沙箱（任何不可信使用都需要）：** 一个外部沙箱——E2B / Modal（云）或 Docker（自建）——这是它自身的依赖与运维面，并不内置。
-- **安装：** `pip install smolagents`（特定集成有 extras，例如工具/遥测）。
+- **安装：** README 推荐的默认装法是 `pip install "smolagents[toolkit]"`（库加默认工具箱）；裸装 `pip install smolagents` 再按集成加 extras 也可以。
 
 ## 运维难度
 
@@ -126,18 +150,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 35.8 小时，基于 32 个 qualifying issues/PRs。
-- **维护——非常活跃（截至 2026-06）。** 最后推送 2026-06；以轻快的 v1.x 节奏发版（main 上 1,000+ commit）。读起来在积极开发，而非吃老本；未归档。
+- **响应速度**：Grade A——中位首次响应时间 33.0 小时，基于 26 个 qualifying issues/PRs。
+- **维护——开发活跃、5 月后发布安静（截至 2026-09）。** 提交一直落到 2026-09-23 的 `main`，但最新的 GitHub release 和 PyPI 版本仍是 v1.26.0（2026-05-29）——中间隔了约 4 个月。是在积极开发，不是吃老本；未归档。若你需要 v1.26.0 之后的修复，可能得从源码跑。[推断：节奏观察自 tag/PyPI，非维护者声明]
 - **治理与背书——Hugging Face（强信号）。** 归 `huggingface` 组织所有，而非孤身维护者。HF 背书是一个有分量的可持续信号：它是开放模型生态里资源充足的核心玩家，有持续维护工具链的记录——这实质上对冲了项目的年轻。[推断]
-- **年龄与 Lindy——年轻、Lindy 未验证，但被背书方对冲。** 2024-12 创建，约 1.5 年（截至 2026-06）。单看「年龄 × 仍活跃」，它**跨不过** [DSPy](../../workflow-builders/dspy.zh.md) 这类更老框架能跨过的 Lindy 门槛——还没有长期记录——但 HF 背书 + 快速采用，相对一个被炒作的个人项目，大幅降低了「它还会不会在」的风险。[推断]
-- **采用与生态——快速增长。** ~28k star（2026-06），「code agent」这一理念心智份额广；接入 HF Hub、LiteLLM 与 MCP。star 有噪声，但采用曲线与生态钩子都健康。[未验证]
+- **年龄与 Lindy——年轻、Lindy 未验证，但被背书方对冲。** 2024-12-05 创建（GitHub API），截至 2026-09 约 1.8 年。单看「年龄 × 仍活跃」，它**跨不过** [DSPy](../../workflow-builders/dspy.zh.md) 这类更老框架能跨过的 Lindy 门槛——还没有长期记录——但 HF 背书 + 快速采用，相对一个被炒作的个人项目，大幅降低了「它还会不会在」的风险。[推断]
+- **采用与生态——仍在增长。** ~29.5k star、~3.0k fork（GitHub API，2026-09），「code agent」这一理念心智份额广；接入 HF Hub、LiteLLM 与 MCP。star 有噪声，但采用曲线与生态钩子都健康。
 - **风险信号——长期存在的代码执行安全风险 + API 变动，而非许可。** Apache-2.0，未发现重许可历史。真正持久的风险是内生的：agent 会执行模型生成的代码，所以不安全部署（无沙箱）是一个实打实的攻击面——这是设计的固有属性，不是能等它修掉的 bug。次要风险是年轻 API 在版本间的迁移成本。
 
 ## 存疑（未验证）
 
-- [未验证] ~28.1k GitHub star、最新发布 v1.26.0（日期 2026-05），依 GitHub 仓库页；star 数不可靠且对时间敏感，你读到时很可能已有更新版本——仅供参考。
-- [未验证] 「2024-12 创建（截至 2026-06 约 1.5 年）」是依仓库历史推断；如该事实关键，请核实确切创建日期。
-- [未验证] 「约 1,000 行核心 agent 逻辑」是项目 README 的自述说法，并非对当前代码树的实测行数。
-- [未验证] 具体沙箱集成（E2B、Modal、Docker、Blaxel）与生态钩子（LiteLLM provider 清单、MCP、LangChain 互通）依 smolagents 文档/README；依赖前请确认具体集成与版本支持。
-- [推断] 「快速变动的 v1.x API / 偶有破坏性变更」是依发版节奏推断，也是年轻 agent 库的通性，未在此对照具体 changelog 确认——升级前请看 changelog。
+- [未验证] ~29.5k star、~3.0k fork、最后提交 2026-09-23、最新发布 v1.26.0（2026-05-29）——均为 2026-09-28 从 GitHub/PyPI 取的时间点数据；你读到时可能已有新版本。
+- [推断] v1.26.0 之后约 4 个月没有新版本，是观察 GitHub tag 与 PyPI 得出的；维护者没有说明原因，是主动稳定还是放缓无从确认。
+- [未验证] 「约 1,000 行核心 agent 逻辑」是项目自述——README（2026-09）仍称 `agents.py` 不足 1,000 行；未独立实测。
+- [未验证] 沙箱集成（Blaxel、E2B、Modal、Docker）与生态钩子（LiteLLM provider 清单、MCP、LangChain 互通、Hub Space 当工具）依 smolagents 文档/README；依赖前请确认具体集成与版本支持。
+- [推断] 「快速变动的 v1.x API / 偶有破坏性变更」是依发布历史推断，也是年轻 agent 库的通性，未在此对照具体 changelog 确认——升级前请看 changelog。
 - [推断] `LocalPythonExecutor`「不是安全边界」是项目自述立场；由此得出的实务结论（不可信输入务必用真正的沙箱）是顺推，但所选沙箱的确切隔离保证仍需你自行核实。
