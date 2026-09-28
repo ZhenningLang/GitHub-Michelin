@@ -18,7 +18,7 @@
 | bivlked/amneziawg-installer | add | done | categories/networking/amneziawg-installer.md |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | done | categories/sandboxing/cloudflare-computer.md |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | running |  |  | code-yeongyu/oh-my-openagent |
-| Dammyjay93/interface-design | add | pending |  |  | dammyjay93/interface-design |
+| Dammyjay93/interface-design | add | done | categories/agent-skills/design/interface-design.md |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | pending |  |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | pending |  |  | devdotfast/whiteboard |
 | DietrichGebert/ponytail | add | pending |  |  | dietrichgebert/ponytail |

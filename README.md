@@ -468,6 +468,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **UI UX Pro Max Skill** | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. | MIT | B (5/6) | [EN](categories/agent-skills/design/ui-ux-pro-max.md) · [中](categories/agent-skills/design/ui-ux-pro-max.zh.md) |
 | **Hallmark** | Use it when a Claude Code, Cursor, or Codex agent needs an opinionated anti-slop design brief, audit, redesign, or study workflow. | MIT | B (4/5) | [EN](categories/agent-skills/design/hallmark.md) · [中](categories/agent-skills/design/hallmark.zh.md) |
 | **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | MIT | B (4/5) | [EN](categories/agent-skills/design/drawio-skill.md) · [中](categories/agent-skills/design/drawio-skill.zh.md) |
+| **Interface Design** | A craft-first design-engineering skill for Claude Code / Codex product UI: intent-first domain exploration, a mandatory per-component decision checkpoint, cross-session memory via `.interface-design/system.md`, plus strict design-review and diff-scoped design-deslop commands. | MIT | C (4/5) | [EN](categories/agent-skills/design/interface-design.md) · [中](categories/agent-skills/design/interface-design.zh.md) |
 
 #### agent-skills / writing
 

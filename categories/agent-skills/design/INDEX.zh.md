@@ -19,6 +19,7 @@
 | **ai-website-cloner-template** | 面向获授权网站重建的 AI coding agent template：截图、设计 token、资产、组件规格、并行 builder 和视觉 QA。 | B（4/5） | [→](ai-website-cloner-template.zh.md) |
 | **huashu-design** | 面向原型、slide deck、可编辑 PPTX、动画 / MP4 / GIF、信息图和视觉 artifact 生成的 HTML-native design skill。 | B（5/6） | [→](huashu-design.zh.md) |
 | **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | B（4/5） | [→](drawio-skill.zh.md) |
+| **Interface Design** | 当 agent 构建的产品界面（仪表盘、后台、设置页）每个会话都把设计问题重新拍一遍板时用它——skill 强制逐组件的意图检查点，并把决策落盘到 `.interface-design/system.md`，跨会话复用。 | C（4/5） | [→](interface-design.zh.md) |
 
 
 ## 对比矩阵
@@ -37,6 +38,7 @@
 | [ai-website-cloner-template](ai-website-cloner-template.zh.md) | ✅ | B（4/5） | 最适合获授权网站重建；不适合 phishing、impersonation 或无授权设计复制。 |
 | [huashu-design](huashu-design.zh.md) | ✅ | B（5/6） | 最适合 agent 生成 HTML 视觉 artifact；实现交接看 Stitch，轻量 UI 审美指导看 Taste-Skill。 |
 | [drawio-skill](drawio-skill.zh.md) | ✅ | B（4/5） | 交付物是可编辑、且要跟着真实源走的 `.drawio` 时最合适；图要保持纯文本用 Mermaid，不能装 draw.io 用 archify。 |
+| [Interface Design](interface-design.zh.md) | ✅ | C（4/5） | 产品界面工艺 skill，招牌是跨会话设计记忆（`.interface-design/system.md`）加严格的 design-review／限定 diff 的 design-deslop 命令；和同类品味包一样是劝导式的。 |
 
 
 ## 什么该放这里

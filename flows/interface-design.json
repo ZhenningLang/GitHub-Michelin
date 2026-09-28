@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Interface Design does", "zh": "Interface Design 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "First session", "zh": "首次会话"}, "en": "Install the skill folder into your agent — via the skills CLI or a manual copy", "zh": "把 skill 目录装进 agent——skills CLI 或手动拷贝", "code": "git clone https://github.com/Dammyjay93/interface-design.git", "component": {"en": "interface-design skill folder", "zh": "interface-design skill 目录"}},
+    {"lane": "you", "en": "Ask the agent to build product UI", "zh": "让 agent 构建一个产品界面", "code": "Build a user dashboard with metrics cards"},
+    {"lane": "them", "en": "Explores the product domain, proposes a direction, asks if it fits", "zh": "探索产品领域，提出设计方向并请用户确认", "component": {"en": "Suggest + Ask protocol", "zh": "Suggest + Ask 协议"}},
+    {"lane": "them", "en": "Restates intent, hierarchy, palette, depth, surfaces, type and spacing before each component — and why", "zh": "每个组件前复述意图、层次、色板、深度、表面、字体、间距并给理由", "code": "Depth: borders-only", "component": {"en": "mandatory pre-build checkpoint", "zh": "组件前强制检查点"}},
+    {"lane": "them", "en": "Offers to save the session's decisions to the project system file", "zh": "主动提出把本次决策写入项目系统文件", "code": ".interface-design/system.md"},
+    {"lane": "you", "phase": {"en": "Every later session", "zh": "之后每个会话"}, "en": "Start a new session and ask for the next page", "zh": "开新会话，让 agent 做下一个页面", "code": "Add a settings page"},
+    {"lane": "them", "en": "Loads system.md and builds the page on the same tokens and patterns", "zh": "读回 system.md，新页面沿用同一套 token 与模式", "component": {"en": "cross-session design memory", "zh": "跨会话设计记忆"}}
+  ],
+  "value": {"en": "You decide the design once — every later session reuses the same tokens, density and component patterns", "zh": "设计只拍一次板——之后的每个会话都复用同一套 token、密度与组件模式"},
+  "sources": ["README.md @ main (2026-09-28): Installation section `npx skills add https://github.com/dammyjay93/interface-design --skill interface-design` and Manual Fallback `git clone https://github.com/Dammyjay93/interface-design.git` + `cp -R .claude/skills/interface-design ~/.claude/skills/`; 'Example: First Session' user prompt `Build a user dashboard with metrics cards` and output line `Depth: borders-only`; 'System File' section `.interface-design/system.md`; 'Example: Second Session' user prompt `Add a settings page` and `✓ Loaded system.md`; SKILL.md @ main: 'Suggest + Ask' section, 'Before Writing Each Component' mandatory checkpoint block, 'Build flow' (read system.md if it exists)"]
+}

@@ -19,6 +19,7 @@
 | **ai-website-cloner-template** | Authorized website reconstruction template for AI coding agents: screenshots, design tokens, assets, component specs, parallel builders, and visual QA. | B (4/5) | [→](ai-website-cloner-template.md) |
 | **huashu-design** | HTML-native design skill for prototypes, slide decks, editable PPTX, animation/MP4/GIF, infographics, and visual artifact generation. | B (5/6) | [→](huashu-design.md) |
 | **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | B (4/5) | [→](drawio-skill.md) |
+| **Interface Design** | Use it when agent-built product UI (dashboards, admin, settings) re-decides every design question each session — the skill enforces an intent-first per-component checkpoint and persists decisions to `.interface-design/system.md` for cross-session consistency. | C (4/5) | [→](interface-design.md) |
 
 
 ## Comparison matrix
@@ -37,6 +38,7 @@
 | [ai-website-cloner-template](ai-website-cloner-template.md) | ✅ | B (4/5) | Best for authorized site rebuilds; not for phishing, impersonation, or unlicensed design copying. |
 | [huashu-design](huashu-design.md) | ✅ | B (5/6) | Best for agent-generated HTML artifacts; choose Stitch for implementation handoff or Taste-Skill for lightweight UI taste guidance. |
 | [drawio-skill](drawio-skill.md) | ✅ | B (4/5) | Best when the deliverable is an editable `.drawio` that must track a real source; choose Mermaid when the diagram should stay plain text, or archify when no draw.io install is acceptable. |
+| [Interface Design](interface-design.md) | ✅ | C (4/5) | Product-UI craft skill whose signature is cross-session design memory (`.interface-design/system.md`) plus strict design-review / diff-scoped design-deslop commands; advisory like its taste-pack siblings. |
 
 
 ## What belongs here
