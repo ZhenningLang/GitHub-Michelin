@@ -26,8 +26,8 @@
 | dontbesilent2025/dbskill | sync | done | categories/agent-skills/personal-collections/knowledge-content/dbskill.md |  | dontbesilent2025/dbskill |
 | dream-num/univer | sync | done | categories/office-editors/univer.md | last_verified=2026-09-27 仍新鲜，sync-entry 按阈值不重核，无改动 | dream-num/univer |
 | EKKOLearnAI/ekko-studio | add | done | categories/agent-tooling/supervision-surfaces/ekko-studio.md |  | ekkolearnai/ekko-studio |
-| FareedKhan-dev/train-llm-from-scratch | add | running |  |  | fareedkhan-dev/train-llm-from-scratch |
-| FlashML-org/FreeToken | add | pending |  |  | flashml-org/freetoken |
+| FareedKhan-dev/train-llm-from-scratch | add | done | categories/llm-training/study-and-experiments/train-llm-from-scratch.md |  | fareedkhan-dev/train-llm-from-scratch |
+| FlashML-org/FreeToken | add | running |  |  | flashml-org/freetoken |
 | gastownhall/beads | sync | pending |  |  | gastownhall/beads |
 | genspark-ai/genoffice | add | pending |  |  | genspark-ai/genoffice |
 | Gentleman-Programming/engram | add | pending |  |  | gentleman-programming/engram |

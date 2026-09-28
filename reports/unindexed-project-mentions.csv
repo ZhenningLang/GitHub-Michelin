@@ -481,6 +481,7 @@ Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
+LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
@@ -551,7 +552,7 @@ Mozilla Readability (library),categories/reading-tools/just-read.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
-nanochat,categories/ml-research/autoresearch.md,,no
+nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
 Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
