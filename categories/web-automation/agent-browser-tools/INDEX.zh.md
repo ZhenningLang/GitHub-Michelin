@@ -15,6 +15,7 @@
 | **OpenCLI** | 当 agent 必须操作藏在你登录态后面的站点时用它——经扩展+daemon 桥接你已登录的 Chrome，并把站点工作流固化成可复用 CLI 命令；要预期适配器 churn 和真实的信任面。 | B（6/6） | [→](opencli.zh.md) |
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | B（6/6） | [→](page-agent.zh.md) |
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | C（6/6） | [→](jev-ultrafast.zh.md) |
+| **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | B（6/6） | [→](pinchtab.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [OpenCLI](opencli.zh.md) | ✅ | B（6/6） | 桥接你已登录的 Chrome，agent 完全不碰登录流程，另有可复用站点适配器；仅 Chromium、适配器 churn 是结构性的，扩展+daemon 继承你全部会话。 |
 | [page-agent](page-agent.zh.md) | ✅ | B（6/6） | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 |
 | [Jev Ultrafast](jev-ultrafast.zh.md) | ✅ | C（6/6） | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 |
+| [PinchTab](pinchtab.zh.md) | ✅ | B（6/6） | 一个常驻 Go 服务让 agent 经 CLI/HTTP/MCP 管多个隔离 Chrome 实例与具名配置档，动作和快照折进一次往返，外加默认全关的能力闸门与 IDPI 内容扫描；年轻、pre-1.0、实际单维护者。 |
 
 ## 什么该放这里
 

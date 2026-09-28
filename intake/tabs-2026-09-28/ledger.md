@@ -54,12 +54,12 @@
 | palmier-io/palmier-pro | add | done | categories/media-processing/video-editing/palmier-pro.md |  | palmier-io/palmier-pro |
 | paperclipai/paperclip | add | done | categories/agent-tooling/supervision-surfaces/paperclip.md |  | paperclipai/paperclip |
 | Piebald-AI/claude-code-system-prompts | skip | skipped |  | 不收：闭源产品 Claude Code 的系统提示词提取物，版权/ToS 风险；标签保留待你复核 | piebald-ai/claude-code-system-prompts |
-| pinchtab/pinchtab | add | running |  |  | pinchtab/pinchtab |
+| pinchtab/pinchtab | add | done | categories/web-automation/agent-browser-tools/pinchtab.md |  | pinchtab/pinchtab |
 | pydantic/monty | add | done | categories/sandboxing/monty.md |  | pydantic/monty |
 | pydantic/pydantic-ai | sync | done | categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pydantic/pydantic-ai |
 | repowise-dev/repowise | add | running |  |  | repowise-dev/repowise |
 | serengil/deepface | add | running |  |  | serengil/deepface |
-| shadcn/improve | add | pending |  |  | shadcn/improve |
+| shadcn/improve | add | running |  |  | shadcn/improve |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 不收：Claude Code 最佳实践文章/教程合集，无可复用软件；标签保留待你复核 | shanraisshan/claude-code-best-practice |
 | siddharthvaddem/openscreen | add | pending |  | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
 | skillsgate/skillsgate | add | pending |  |  | skillsgate/skillsgate |

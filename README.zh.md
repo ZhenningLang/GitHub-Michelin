@@ -148,6 +148,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Playwright** | Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. | Apache-2.0 | A（5/6） | [EN](categories/web-automation/playwright-family/playwright.md) · [中](categories/web-automation/playwright-family/playwright.zh.md) |
 | **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A（6/6） | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | MIT | C（6/6） | [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) · [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) |
+| **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/pinchtab.zh.md) · [EN](categories/web-automation/agent-browser-tools/pinchtab.md) |
 
 ### llm-training
 
