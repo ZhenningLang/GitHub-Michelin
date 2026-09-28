@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "smolagents does", "zh": "smolagents 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library with its default toolbox", "zh": "安装库和默认工具箱", "code": "pip install \"smolagents[toolkit]\""},
+    {"lane": "you", "en": "Pick any model backend — hosted or local", "zh": "挑一个模型后端——托管或本地都行", "code": "InferenceClientModel · LiteLLMModel · TransformersModel"},
+    {"lane": "you", "en": "Wrap your tools into a code-acting agent, then run the task", "zh": "把工具包进「写代码」的 agent，然后跑任务", "code": "agent = CodeAgent(tools=[WebSearchTool()], model=model, stream_outputs=True)"},
+    {"lane": "them", "en": "The model answers with a Python snippet; your tools are just function calls inside it", "zh": "模型用一段 Python 代码作答，你的工具就是代码里的普通函数调用", "component": {"en": "CodeAgent", "zh": "CodeAgent"}},
+    {"lane": "them", "en": "Executes the snippet — isolate it with E2B, Modal, Blaxel or Docker for anything untrusted", "zh": "执行这段代码——不可信输入须接 E2B/Modal/Docker 沙箱"},
+    {"lane": "them", "en": "Appends each result to memory and loops until the code calls final_answer", "zh": "把每次结果追加回记忆并循环，直到代码调用 final_answer", "code": "final_answer"}
+  ],
+  "value": {"en": "A multi-step agent in a few readable lines — no framework worldview attached", "zh": "几行可读代码就有一个多步 agent——不附带任何框架的世界观"},
+  "sources": [
+    "https://github.com/huggingface/smolagents README.md 'Quick demo' (pip install \"smolagents[toolkit]\"; InferenceClientModel / LiteLLMModel / TransformersModel; agent = CodeAgent(tools=[WebSearchTool()], model=model, stream_outputs=True); agent.run(\"How many seconds would it take for a leopard at full speed to run through Pont des Arts?\"); agent.push_to_hub)",
+    "https://github.com/huggingface/smolagents README.md 'How do Code agents work?' (ReAct loop; actions as Python snippets; 'final_answer' tool ends the loop; E2B/Blaxel/Modal/Docker sandboxes; LocalPythonExecutor is not a security boundary; ToolCallingAgent alternative)",
+    "https://github.com/huggingface/smolagents README.md 'How smol is this library?' (agents.py <1,000 lines; multi-agent hierarchies)"
+  ]
+}

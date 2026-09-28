@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "make-interfaces-feel-better does",
+    "zh": "本 skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent",
+      "zh": "把 skill 装进你的 agent",
+      "code": "npx skills add jakubkrehel/make-interfaces-feel-better"
+    },
+    {
+      "lane": "them",
+      "en": "Loads automatically whenever a task touches UI polish — the frontmatter is stuffed with trigger cues",
+      "zh": "任务一碰到 UI 打磨就自动加载——frontmatter 描述里写满了触发词"
+    },
+    {
+      "lane": "you",
+      "en": "Build the UI as usual, or ask it to review the diff just written",
+      "zh": "照常做界面，或让它 review 刚写好的 diff",
+      "code": "quick · full"
+    },
+    {
+      "lane": "them",
+      "en": "Applies its 19 numbered principles in the project's existing styling system, never a second one",
+      "zh": "用项目已有的样式体系落实 19 条编号原则，绝不引入第二套"
+    },
+    {
+      "lane": "them",
+      "en": "Walks every state and replays motion at 10% speed, then returns severity-tagged findings",
+      "zh": "逐个状态过一遍、动画按 10% 速度重放，按严重级别输出发现"
+    }
+  ],
+  "value": {
+    "en": "Functionally-correct UI comes out feeling intentional without hand-writing a polish checklist per prompt",
+    "zh": "功能正确的界面交付时显得有意为之，而不用你每条 prompt 手写一遍打磨清单"
+  },
+  "sources": [
+    "README.md 'Install': npx skills add jakubkrehel/make-interfaces-feel-better",
+    "skills/make-interfaces-feel-better/SKILL.md frontmatter description: 'Use when building UI components, reviewing frontend code ... Supports quick and full review modes. Triggers on UI polish ... \"make it feel better\", \"feels off\" ...'",
+    "SKILL.md opening: 'express the change in that system: Tailwind in a Tailwind project ... Never introduce a second styling system just to apply a polish fix'",
+    "SKILL.md 'When reviewing': 'replay motion at 10% speed ... walk every state: hover, focus, active, loading, empty'",
+    "SKILL.md 'Review Output Format': quick / full modes with HIGH/MEDIUM/LOW severities"
+  ]
+}

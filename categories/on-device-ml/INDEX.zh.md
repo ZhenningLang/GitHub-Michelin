@@ -16,6 +16,7 @@
 | **ComfyUI** | 当你想要一个模块化的节点图界面来在本地构建复杂扩散模型工作流时用它——但学习曲线陡峭，且需要大量 GPU 资源。 | B（6/6） | [→](comfyui.zh.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | B（6/6） | [→](mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成**英文**工具调用、类型化抽取或嵌入时用它（29–121M 参数、2-bit）——但基座模型需要微调，拒绝类请求要自建守卫。 | B（4/6） | [→](needle.zh.md) |
+| **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | A（6/6） | [→](stable-diffusion-cpp.zh.md) |
 
 
 ## 对比矩阵
@@ -30,6 +31,7 @@
 | [Stable Diffusion WebUI](stable-diffusion-webui.zh.md) | ✅ | C（5/6） | 本地 Web GUI，用于在自有 GPU 上进行 Stable Diffusion 图像生成、编辑和超分；需要技术 setup 和 NVIDIA GPU。 |
 | [ComfyUI](comfyui.zh.md) | ✅ | B（6/6） | 模块化节点图界面，用于在本地构建复杂扩散模型工作流；学习曲线陡峭，需要大量 GPU 资源。 |
 | [Needle](needle.zh.md) | ✅ | B（4/6） | 英语专用的端侧工具调用/抽取/嵌入模型（29–121M、2-bit），解码受 grammar 约束；基座模型在否定、越界取值与域外请求上会失手。 |
+| [stable-diffusion.cpp](stable-diffusion-cpp.zh.md) | ✅ | A（6/6） | 基于 ggml 的 C/C++ 扩散推理引擎（SD、Flux、Qwen-Image、Wan 等），支持 GGUF 量化和 C API；用 ComfyUI/WebUI 的工作流丰富度和插件生态，换一个不带 Python、可嵌入的二进制。 |
 | MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时（llama.cpp 与 Ollama 已收录在 `llm-inference`）。 |
 
 ## 什么该放这里

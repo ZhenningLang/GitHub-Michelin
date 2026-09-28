@@ -13,6 +13,7 @@
 | **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
 | **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | B（6/6） | [→](agent-beacon.zh.md) |
 | **Engram** | 当你同时用好几个编码 agent、想让它们共用一份由 agent 自己通过 MCP 写入和检索的本地记忆时用它——一个 Go 程序加一个 SQLite 文件，关键词搜索，不做后台采集。 | B（5/6） | [→](engram.zh.md) |
+| **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | B（6/6） | [→](backpass.zh.md) |
 
 ## 对比矩阵
 
@@ -24,7 +25,8 @@
 | [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
 | [Beacon](agent-beacon.zh.md) | ✅ | B（6/6） | 跨工具会话采集加人工审核的经验沉淀；仓库年轻、厂商驱动、带托管商业层。 |
 | [Engram](engram.zh.md) | ✅ | B（5/6） | 不挑 agent 的 MCP 记忆，一个 Go 程序加 SQLite FTS5；没有额外运行时和 LLM 账单，但召回取决于 agent 肯不肯存，且项目年轻、发版极其频繁。 |
+| [backpass](backpass.zh.md) | ✅ | B（6/6） | 离线批处理，从 7 家 agent 已有的会话记录里给记忆文件提出有证据门槛的改动；自己不跑常驻进程、不持有密钥，但记录会发给你已登录的模型，且项目才五周大、只有一位维护者。 |
 
 ## 什么该放这里
 
-挂在**你正在运行的编码 agent harness**（Claude Code、Codex、Cursor、OpenCode……）上的记忆层——通过 hook、插件、MCP 或端点采集接入：本地每开发者一份的存储（claude-mem、claude-subconscious、ByteRover、Beacon、Engram）与多 agent 共享的上下文服务端（OpenViking）。主体是编码会话：决策、约定、轨迹、经验。不含嵌进你自己产品的记忆 API（见 `app-memory`），不含图形态引擎（见 `graph-memory`）。
+挂在**你正在运行的编码 agent harness**（Claude Code、Codex、Cursor、OpenCode……）上的记忆层——通过 hook、插件、MCP 或端点采集接入：本地每开发者一份的存储（claude-mem、claude-subconscious、ByteRover、Beacon、Engram）、从会话记录里挖改动直接修记忆文件本身的工具（backpass）与多 agent 共享的上下文服务端（OpenViking）。主体是编码会话：决策、约定、轨迹、经验。不含嵌进你自己产品的记忆 API（见 `app-memory`），不含图形态引擎（见 `graph-memory`）。

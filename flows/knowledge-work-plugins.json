@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Knowledge Work Plugins does",
+    "zh": "知识工作插件做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Register the repo as a plugin marketplace in Claude Code",
+      "zh": "把仓库注册为 Claude Code 插件市场",
+      "code": "claude plugin marketplace add anthropics/knowledge-work-plugins"
+    },
+    {
+      "lane": "you",
+      "en": "Install the plugin for one job function",
+      "zh": "装上某个岗位角色的插件",
+      "code": "claude plugin install sales@knowledge-work-plugins"
+    },
+    {
+      "lane": "them",
+      "en": "Plugins activate automatically: domain skills fire when relevant, namespaced commands appear",
+      "zh": "插件自动生效：skill 到点触发，命名空间命令就位",
+      "code": "/sales:call-prep · /data:write-query",
+      "component": {
+        "en": "skills/ + commands/ files",
+        "zh": "skills/ 与 commands/ 文件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Tailor it to your company: swap connectors, add your terminology",
+      "zh": "改成你们公司的：换连接器、补内部术语",
+      "code": ".mcp.json"
+    }
+  ],
+  "value": {
+    "en": "Claude starts as a specialist for one role — with the tools, procedures and slash commands your team uses every week",
+    "zh": "Claude 一上来就是某个岗位的专家——带着团队每周都在用的工具、流程和命令"
+  },
+  "sources": [
+    "README.md on main @ da38ec1 (fetched 2026-09-28), Getting Started / Claude Code: 'claude plugin marketplace add anthropics/knowledge-work-plugins' and 'claude plugin install sales@knowledge-work-plugins'",
+    "README.md, Getting Started: 'Once installed, plugins activate automatically. Skills fire when relevant, and slash commands are available in your session (e.g., /sales:call-prep, /data:write-query)'",
+    "README.md, How Plugins Work: 'Every plugin follows the same structure' (.claude-plugin/plugin.json, .mcp.json, commands/, skills/)",
+    "README.md, Making Them Yours: 'Swap connectors — Edit .mcp.json to point at your specific tool stack'"
+  ]
+}

@@ -6,17 +6,17 @@ category: engineering-workflows
 tags: [skills, methodology, claude-code, dialectical-materialism, multi-harness, prompt-pack]
 language: JavaScript
 license: MIT
-maturity: no tagged release, active (pushed 2026-05), ~3.3k stars (as of 2026-06)
-last_verified: 2026-06-26
+maturity: npm 2.0.0 (2026-09), git tag v1.4.0 (2026-04), active, ~3.8k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: skill-pack
 upstream:
-  pushed_at: 2026-05-01T14:14:49Z
+  pushed_at: 2026-09-06T07:38:18Z
   default_branch: main
-  default_branch_sha: 6cac8a569d3e5c48311d5bfe41c9d3dced27d14b
+  default_branch_sha: 3d36c1471081d0cedce248836522c6e845f9b516
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:48:52Z
+  computed_at: 2026-09-28T03:24:44Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 16
+        last_commit_age_days: 22
         active_weeks_13: 5
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 181
-        last_commit_age_days: 16
+        repo_age_days: 187
+        last_commit_age_days: 22
         cohort: skill-pack
     governance:
       grade: D
@@ -75,7 +75,28 @@ A methodology skill pack (求是 Skill) that arms a coding agent with one core p
 
 You're a developer (or a heavy agent user) who is tired of an obsequious assistant that agrees with whatever you say, jumps to a plausible-sounding answer, and declares victory without checking reality. You want the agent to behave like a disciplined analyst: investigate before deciding, name the *primary* contradiction instead of fixing the loudest symptom, validate hypotheses against actual practice (run it, observe it), and keep pushing until the work is genuinely done rather than nominally finished. Qiushi-Skill packages that posture as a set of on-demand skills: an "arming-thought" entry skill that injects the core principle at session start, plus nine method skills the agent loads only when a situation clearly calls for one (`/contradiction-analysis`, `/investigation-first`, etc.), with a `workflows/` layer to chain them.
 
-You reach for it when you want a ready-made *thinking discipline* rather than building your own from scratch, and especially when you want that discipline to follow you across harnesses — the repo ships per-platform manifests (`.claude-plugin`, `.cursor-plugin`, `.codex`, `.opencode`, `.openclaw`, `.hermes`, `.nanobot`) and an `npx qiushi-skill install --target <harness>` flow, so the same "facts first, main contradiction, validate in practice" spine activates through each platform's native skill-loading mechanism.
+You reach for it when you want a ready-made *thinking discipline* rather than building your own from scratch, and especially when you want that discipline to follow you across harnesses. The core assets are just three directories — `skills/`, `commands/`, `hooks/` — and the `npx qiushi-skill install --target claude-code,cursor,codex,opencode,openclaw,hermes,nanobot` CLI copies the right subset into each host's native skill directory (on Claude Code it's a full plugin bundle with agents and a SessionStart hook), so the same "facts first, main contradiction, validate in practice" spine activates through each platform's own skill-loading mechanism.
+
+## How it works
+
+Qiushi-Skill is markdown behavior files plus one thin installer — no runtime. The `arming-thought` entry skill, an ~50-line kernel carrying the "seek truth from facts" hard rules (follow the evidence, separate fact from inference from unknown, verified means done, diagnose before reporting a blocker), is injected at every session start by a `SessionStart` hook on Claude Code; on other hosts the same file is loaded through their native skill mechanism. From there the kernel decides per task whether one of the nine method skills clearly applies — direct execution tasks load nothing, and where the host already has an equivalent flow, the host wins. When investigation or review matters, it can dispatch two subagents: `investigator`, a read-only researcher that returns a facts / inferences / unknowns report, and `self-critic`, which reviews the artifact in fresh context without the author's narration. What it does for you: the routing discipline, the operating procedures, the output templates. What stays yours: actually running things and reading the evidence — every "mandatory" step is still a prompt, not a gate.
+
+![qiushi-skill — backbone user story](../../../../assets/flow/qiushi-skill.svg)
+
+<!-- flow-steps:begin (generated from flows/qiushi-skill.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install into your harness with the npm CLI — `npx qiushi-skill install --target claude-code --scope user`
+2. **Qiushi-Skill**: Inject the ~50-line arming-thought kernel at every session start — component: `arming-thought kernel`
+3. **You**: Assign work as usual, or call one method directly — `/investigation-first · /contradiction-analysis`
+4. **Qiushi-Skill**: Load the matching method skill only when clearly applicable; direct tasks load nothing
+5. **Qiushi-Skill**: Dispatch read-only investigators and fresh-context critics when evidence is due — component: `investigator subagent`
+
+**Value**: A thinking discipline — investigate first, main contradiction, verified means done — live from session start
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -84,7 +105,7 @@ You reach for it when you want a ready-made *thinking discipline* rather than bu
 - **You're on an unsupported or bespoke harness.** Activation depends on each platform's loader; outside the shipped targets there's no mechanism to auto-fire the skills, and the markdown alone does nothing.
 - **You want a runtime/library, not behavior shaping.** The `bin/` CLI is only an installer that copies skill files into your harness — there's no API or service to call; the product is prompts.
 - **Enforcement is advisory.** "Mandatory" steps are prompt-level instructions the agent can still skip; this shapes behavior, it does not gate it. [推断]
-- **Single-maintainer, no tagged release, naming may be a barrier.** Upstream is one maintainer with no semver release to pin, and the dialectical-materialism / historical-vocabulary framing (despite the README's "methodology, not propaganda" disclaimer) may be a non-starter for some teams or audiences.
+- **Single-maintainer, version drift, naming may be a barrier.** Upstream is one author; the npm package is at 2.0.0 (2026-09) while the newest git tag is still v1.4.0 (2026-04) and there is no GitHub Release, so a known-good state means pinning an npm version, not a source tag. The dialectical-materialism / historical-vocabulary framing (despite the README's "methodology, not propaganda" disclaimer) may be a non-starter for some teams or audiences.
 
 ## Comparison
 
@@ -100,16 +121,15 @@ You reach for it when you want a ready-made *thinking discipline* rather than bu
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance** — active: last pushed 2026-05, not archived (as of 2026-06), but no tagged release to pin — you track a moving branch. Reads active rather than abandoned, but without semver you can't lock a known-good state.
-- **Governance & bus factor** — single-maintainer personal repo (`User`-owned), ~3.3k stars. One author owns the methodology and the multi-harness manifests; modest stars and a niche framing mean limited community backstop if the maintainer steps away.
-- **Age & Lindy** — created 2026-03, ~0 years old as of 2026-06: young, Lindy-unproven. The *underlying* method (dialectical-materialist analysis) is old, but this packaging is new and untested across CLI churn — adopt for the discipline, not for longevity.
-- **Risk flags** — the dialectical-materialism / historical-vocabulary framing (despite a "methodology, not propaganda" disclaimer) can be a non-starter for some teams or audiences; no enforcement (advisory prompts only). License recorded MIT as of 2026-06.
+- **Maintenance** — active: last pushed 2026-09-06 (GitHub API, 2026-09-28), npm `qiushi-skill` 2.0.0 published 2026-09-06 with ~383 downloads/month (npm registry, trailing month) — real install cadence now exists, but the git tags lag (newest v1.4.0, 2026-04-30) and there are no GitHub Releases, so release hygiene trails the code.
+- **Governance & bus factor** — single-maintainer personal repo (`User`-owned, HughYau), ~3.8k stars. One author owns the methodology, the npm CLI and the per-platform install targets; modest stars and a niche framing mean limited community backstop if the maintainer steps away.
+- **Age & Lindy** — created 2026-03, ~0.5 years old as of 2026-09: young, Lindy-unproven. The *underlying* method (dialectical-materialist analysis) is old, but this packaging is new and untested across CLI churn — adopt for the discipline, not for longevity.
+- **Risk flags** — the dialectical-materialism / historical-vocabulary framing (despite a "methodology, not propaganda" disclaimer) can be a non-starter for some teams or audiences; no enforcement (advisory prompts only). License MIT — a LICENSE file is now present at the root and GitHub detects it (2026-09-28).
 
 ## Caveats (unverified)
 
-- [未验证] GitHub metadata as of 2026-06-26: license MIT, primary language JavaScript, last pushed 2026-05-01, no tagged release (`latestRelease` null), topics `ai-agents/methodology/skills/workflow`, not archived — re-verify before relying on any of these.
-- [未验证] Star count (~3.3k per GitHub on 2026-06-26) is unreliable and date-sensitive; treat as indicative only, never as a quality signal.
-- [未验证] The skill inventory (1 core principle "arming-thought" + 9 methods + a `workflows/` orchestration layer) and the supported-target list (Claude Code, Cursor, Codex, OpenCode, OpenClaw, Hermes, nanobot) are from the README; the actual `skills/` directory and per-harness activation fidelity were not independently inspected file-by-file here.
-- [未验证] The hook-based session injection (arming-thought auto-injecting at session start, methods loading "only when clearly applicable") is described by the README; whether it fires reliably in any given harness is not confirmed.
+- [未验证] The skill inventory (1 core kernel "arming-thought" + 9 methods + a `workflows/` orchestration layer, ~50-line kernel) and the supported-target list (claude-code, cursor, codex, opencode, openclaw, hermes, nanobot) are from the README and `docs/platforms.md`; the actual `skills/` tree contents and per-harness activation fidelity were not inspected file-by-file here.
+- [未验证] The hook-based session injection (`SessionStart` auto-injecting the kernel, methods loading "only when clearly applicable") is described by the README and `docs/platforms.md`; whether it fires reliably in any given harness is not confirmed.
+- [未验证] The `investigator` / `self-critic` subagents exist as files in `agents/` (repo tree, 2026-09-28); their behavior inside a live session was not exercised here.
 - [推断] Because the methods live in prompt/markdown skills loaded by the agent, enforcement is advisory — the agent can still deviate from "mandatory" investigation-first / contradiction-naming steps.
 - [推断] `type` is recorded as `skill-pack` because the `npx qiushi-skill` CLI is an installer for the skill files, not a standalone runtime; if you depend on the installer as tooling, evaluate it separately.

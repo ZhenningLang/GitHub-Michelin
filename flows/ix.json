@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Ix does",
+    "zh": "Ix 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run the one-line installer",
+      "zh": "运行一行安装命令",
+      "code": "curl -fsSL https://ix-infra.com/install.sh | sh",
+      "component": {
+        "en": "install script",
+        "zh": "安装脚本"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Installs missing Node, git, ripgrep and Docker, and sets up the local ArangoDB + memory-layer backend",
+      "zh": "补装缺的依赖，配好本地 ArangoDB 与 memory layer 后端",
+      "component": {
+        "en": "Docker backend",
+        "zh": "Docker 后端"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Map the repository once",
+      "zh": "给仓库建一次图",
+      "code": "ix map .",
+      "component": {
+        "en": "ix CLI",
+        "zh": "ix CLI"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Parses every file with tree-sitter and stores symbols, calls and imports as a persistent graph",
+      "zh": "用 tree-sitter 解析各文件，把符号、调用、import 存成持久图",
+      "component": {
+        "en": "parser + memory layer",
+        "zh": "解析器 + memory layer"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Register your coding agents with the graph",
+      "zh": "把你的编码 agent 注册到这张图上",
+      "code": "ix mcp install",
+      "component": {
+        "en": "ix mcp",
+        "zh": "ix mcp"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Answers the agent's structural questions over MCP with bounded slices, session after session",
+      "zh": "通过 MCP 用小块结构答案回应 agent 的提问，跨会话持续可用",
+      "component": {
+        "en": "stdio MCP server",
+        "zh": "stdio MCP 服务"
+      }
+    }
+  ],
+  "value": {
+    "en": "The agent stops grepping and re-reading whole files to rediscover callers and blast radius every session",
+    "zh": "agent 不用每个会话都靠 grep 和整文件重读去重新找调用方和影响面"
+  },
+  "sources": [
+    "README.md: Try Ix / Install (curl -fsSL https://ix-infra.com/install.sh | sh; ix map .; ix mcp install)",
+    "README.md: How it works (tree-sitter, ArangoDB plus the memory layer run in Docker, three clients)",
+    "docs/prerequisites.md: what the installer checks and installs",
+    "docs/mcp.md: ix mcp install registers clients; ix mcp is the stdio MCP server",
+    "docker-compose.standalone.yml: arangodb + memory-layer services used by install.sh"
+  ]
+}
