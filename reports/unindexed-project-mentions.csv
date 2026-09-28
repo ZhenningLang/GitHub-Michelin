@@ -923,6 +923,7 @@ social-auto-upload,categories/social-media-management/INDEX.md,,no
 social-auto-upload (dreammis),categories/social-media-management/easel.md,,no
 Solid (`solidjs/solid`),categories/web-ui/frameworks/view-frameworks/tanstack-redact.md,,no
 Solid.js,categories/web-ui/frameworks/view-frameworks/svelte.md,,no
+SolidStart,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
@@ -948,6 +949,7 @@ Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/work-state/IND
 Taskwarrior,categories/agent-tooling/work-state/beads.md,,no
 TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
+Telefunc,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 termcolor / colored,categories/terminal-ui/colorama.md,,no
 Terminal-Bench,categories/llm-eval/swe-bench.md,,no
 texify,categories/ocr/latex-ocr.md,,no
@@ -976,6 +978,7 @@ TrendRadar,categories/reading-tools/follow-builders.md,,no
 Trigger.dev (`triggerdotdev/trigger.dev`),categories/workflow-orchestration/tanstack-workflow.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
+tRPC,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 tsdown (`rolldown/tsdown`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no

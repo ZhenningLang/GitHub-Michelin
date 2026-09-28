@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Bling does",
+    "zh": "Bling 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package",
+      "zh": "安装这个包",
+      "code": "npm install @tanstack/bling"
+    },
+    {
+      "lane": "you",
+      "en": "Add its integration to your Astro config",
+      "zh": "在 Astro 配置里加上它的集成",
+      "code": "astroBling()",
+      "component": {"en": "Astro integration", "zh": "Astro 集成"}
+    },
+    {
+      "lane": "you",
+      "en": "Wrap a server-only async function in server$ next to your component",
+      "zh": "在组件旁用 server$ 包一个只在服务端跑的异步函数",
+      "code": "import { server$ } from '@tanstack/bling'"
+    },
+    {
+      "lane": "them",
+      "en": "At build time, keeps the body in the server bundle and swaps a fetch stub into the client bundle",
+      "zh": "构建时把函数体留在服务端包，客户端包换成发请求的替身",
+      "component": {"en": "Vite plugin (Babel compiler)", "zh": "Vite 插件（Babel 编译器）"}
+    },
+    {
+      "lane": "you",
+      "en": "In your server entry, hand matching requests to its handler",
+      "zh": "在服务端入口里把命中的请求交给它的处理器",
+      "code": "hasHandler · handleFetch$"
+    },
+    {
+      "lane": "them",
+      "en": "A browser call POSTs the arguments as JSON, runs the function on the server and returns the result",
+      "zh": "浏览器调用时把参数按 JSON POST 过去，在服务端执行并返回结果",
+      "component": {"en": "server runtime", "zh": "服务端运行时"}
+    }
+  ],
+  "value": {
+    "en": "One function call from a component replaces a hand-written API route and fetch wrapper, and server-only code stays out of the browser bundle",
+    "zh": "组件里一次函数调用，替掉手写的 API 路由和 fetch 包装，服务端代码也不会进浏览器包"
+  },
+  "sources": [
+    "docs/installation.md ('npm install @tanstack/bling')",
+    "examples/astro-react/astro.config.mjs (import { astroBling } from '@tanstack/bling/astro'; integrations: [astroBling(), react()])",
+    "README.md server$ section (import { server$ } from '@tanstack/bling'; client makes a fetch call, POST by default)",
+    "packages/bling/src/vite.ts (vite-plugin-bling transform: compileFile / compileSecretFile / splitFile via Babel)",
+    "examples/astro-react/src/app/entry-server.tsx (import { hasHandler, handleFetch$ } from '@tanstack/bling/server')",
+    "packages/bling/src/server.ts (handler registry, JSON.parse of payload, JSON.stringify of results)"
+  ]
+}
