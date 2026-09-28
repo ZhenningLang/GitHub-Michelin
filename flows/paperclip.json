@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Paperclip does", "zh": "Paperclip 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and run onboarding on your machine", "zh": "在本机安装并跑完引导", "code": "npx paperclipai onboard --yes"},
+    {"lane": "them", "en": "Starts the server and dashboard with an embedded Postgres", "zh": "启动服务和看板，自带内嵌 Postgres", "code": "http://localhost:3100", "component": {"en": "Node server + React UI", "zh": "Node 服务 + React 看板"}},
+    {"lane": "you", "en": "Create a company goal, hire a CEO agent and pick its adapter", "zh": "建公司目标，雇一个 CEO agent 并选适配器", "code": "claude_local · codex_local", "component": {"en": "adapter", "zh": "适配器"}},
+    {"lane": "them", "en": "Wakes the CEO on a heartbeat; it drafts a strategy for your approval", "zh": "按心跳唤醒 CEO，它起草战略交你审批", "component": {"en": "heartbeat scheduler", "zh": "心跳调度器"}},
+    {"lane": "you", "en": "Approve the strategy and set monthly budgets per agent", "zh": "批准战略，给每个 agent 设月度预算"},
+    {"lane": "them", "en": "CEO splits work into tickets; each agent checks one out atomically and runs", "zh": "CEO 拆成工单，每个 agent 原子领取一张再开工", "component": {"en": "paperclip skill + REST API", "zh": "paperclip skill + REST API"}},
+    {"lane": "them", "en": "Logs every run and its cost; pauses any agent that hits its budget", "zh": "记下每次运行和花费，超预算的 agent 自动暂停"}
+  ],
+  "value": {"en": "Many agents work a shared goal without double work, lost context or runaway spend — you manage from one dashboard", "zh": "多个 agent 围绕同一目标干活，不重复、不丢上下文、不失控烧钱，你只在一个看板上管"},
+  "sources": [
+    "https://github.com/paperclipai/paperclip README Quickstart (npx paperclipai onboard --yes; API server at http://localhost:3100; embedded PostgreSQL)",
+    "docs/start/quickstart.md What's Next (create company, define goal, create CEO agent and configure its adapter, set budgets, assign tasks)",
+    "docs/start/core-concepts.md (CEO drafts strategy for approval, breaks goals into tasks; atomic checkout with 409 Conflict; heartbeats)",
+    "docs/agents-runtime.md (built-in adapters claude_local / codex_local; heartbeat wake triggers; session resume)",
+    "skills/paperclip/SKILL.md (injected PAPERCLIP_* env vars and run JWT; agents call the REST API under /api)",
+    "README Budget & Cost Control (overspend pauses agents and cancels queued work)"
+  ]
+}

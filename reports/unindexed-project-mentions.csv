@@ -577,6 +577,7 @@ Motion One,categories/frontend-animation/anime.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
 Mozilla Readability (library),categories/reading-tools/just-read.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
+Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
 nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
@@ -892,6 +893,7 @@ Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-sk
 Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
+Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no

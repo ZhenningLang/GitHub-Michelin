@@ -14,6 +14,7 @@
 | **Plannotator** | 当 agent 的产出（计划、diff、HTML 产物）必须由人批注或批准、并把批注当作 agent 下一条指令发回去时用它。 | B（6/6） | [→](plannotator.zh.md) |
 | **Pi Web** | 当你的编码 agent 是 pi、想要在它自己的磁盘会话、模型与项目文件之上加一层浏览器工作台——恢复／分支会话、查 diff 和 worktree——时用它——但它约 6 个月大、pre-1.0、单人维护，且锚定 pi 的数据目录。 | B（6/6） | [→](pi-web.zh.md) |
 | **Whiteboard** | 当你要 coding agent 亲笔「画」出评审——对钉住的分支生成可交互 RFC，图、引文与代码片段都能点回本地 checkout 的确切行——时用它——但它问世约 6 周、v0.1.x，且评审面只读。 | B（5/6） | [→](whiteboard.zh.md) |
+| **Paperclip** | 当你手上已有一支常驻 agent 团队（Claude Code、Codex、OpenClaw、shell／HTTP 机器人），需要一个自托管看板按心跳唤醒它们、一张工单只许一个 agent 领、超预算自动暂停时用它——但它约 7 个月大、已公开 12 条安全公告，且 Windows 上本地运行不可用。 | B（5/6） | [→](paperclip.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [Plannotator](plannotator.zh.md) | ✅ | B（6/6） | 长在 agent 循环里的人工闸门：批注计划或 diff，决定经 hook 协议回传——代价是极年轻、单人维护。 |
 | [Pi Web](pi-web.zh.md) | ✅ | B（6/6） | 在 pi 自己的磁盘状态上加浏览器工作台——会话、模型、文件——只服务一个大脑的 MIT 驾驶舱。 |
 | [Whiteboard](whiteboard.zh.md) | ✅ | B（5/6） | agent 亲笔在钉住的分支上画出可交互 RFC——图与引文点回确切代码；评审面只读、问世约 6 周。 |
+| [Paperclip](paperclip.zh.md) | ✅ | B（5/6） | 在你现有 agent 之上加一层组织与预算控制面——心跳、原子领取、花费上限、审批——不是 diff 评审闭环；项目年轻，审过安全历史前只放在回环地址或 tailnet 里。 |
 | harness 内建的计划批准（Claude Code / Codex） | 非仓库 | — | 零安装，但没有批注、没有渲染后的文档、不留下你批准过什么的记录。 |
 
 ## 什么该放这里
