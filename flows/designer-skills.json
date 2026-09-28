@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Designer Skills does",
+    "zh": "Designer Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the marketplace (nothing installs yet)",
+      "zh": "先添加 marketplace（此时还没装任何东西）",
+      "code": "/plugin marketplace add Owl-Listener/designer-skills"
+    },
+    {
+      "lane": "you",
+      "en": "Tick the plugins you want in Discover, press enter",
+      "zh": "在 Discover 页勾选想要的 plugin，回车安装",
+      "code": "/plugin",
+      "component": {"en": "plugin marketplace", "zh": "plugin marketplace"}
+    },
+    {
+      "lane": "them",
+      "en": "Loads the chosen plugins' skills as on-demand design knowledge",
+      "zh": "把所选 plugin 的 skill 作为按需加载的设计知识",
+      "component": {"en": "plugin (e.g. ui-design)", "zh": "plugin（如 ui-design）"}
+    },
+    {
+      "lane": "you",
+      "en": "Unsure where to start? Say what you're working on",
+      "zh": "不知道从哪开始？说出你在做什么",
+      "code": "/designer-toolkit:start-here"
+    },
+    {
+      "lane": "them",
+      "en": "Names your stage and routes you to one command plus the two that follow",
+      "zh": "指出你所在的阶段，给你一条命令和随后的两条"
+    },
+    {
+      "lane": "you",
+      "en": "Run the workflow command with your context",
+      "zh": "带上你的上下文跑这条工作流命令",
+      "code": "/design-research:discover"
+    },
+    {
+      "lane": "them",
+      "en": "Chains the skills under it into one deliverable (persona, empathy map, journey map)",
+      "zh": "把底层的 skill 串成一份交付物（画像、共情地图、旅程图）",
+      "component": {"en": "command chaining skills", "zh": "command 串联 skill"}
+    }
+  ],
+  "value": {
+    "en": "The agent applies trained design judgment across the lifecycle instead of generating plausible-but-hollow output",
+    "zh": "agent 在整条生命周期上运用训练有素的设计判断，而不是产出看着像样、实则空洞的东西"
+  },
+  "sources": [
+    "README.md 'Getting started' step 2: /plugin marketplace add Owl-Listener/designer-skills",
+    "README.md 'Getting started' step 3: Type /plugin and press enter, then open the Discover tab ... press space to tick ... enter to install",
+    "README.md 'Getting started' step 4: /designer-toolkit:start-here (names the stage, gives one command and the two that follow)",
+    "README.md 'Pick your starting point' / 'Recommended install': /plugin install design-research@designer-skills; /design-research:discover runs personas, empathy map, and journey map",
+    "README.md 'What are skills and commands?': commands chain skills together to do a complete job"
+  ]
+}
