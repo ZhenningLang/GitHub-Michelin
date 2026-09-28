@@ -58,6 +58,7 @@ ack,categories/dev-utilities/data-tools/ripgrep.md,,no
 acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
 ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
+AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
@@ -433,6 +434,7 @@ Hugging Face sentiment models,categories/ml-research/senta.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/astro.md,,no
+Huly (hcengineering/platform),categories/team-chat/macro.md,,no
 HyperFormula,categories/office-editors/handsontable.md,,no
 Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
@@ -869,6 +871,7 @@ Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
 Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
+Twenty (twentyhq/twenty),categories/team-chat/macro.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no

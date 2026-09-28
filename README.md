@@ -411,6 +411,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Zulip** | Self-hosted, topic-threaded team chat (Apache-2.0) for async-first teams — a dedicated Ubuntu/Debian host, with voice/video delegated to integrations. | Apache-2.0 | A (6/6) | [EN](categories/team-chat/zulip.md) · [中](categories/team-chat/zulip.zh.md) |
 | **Rocket.Chat** | Self-hosted communications platform (MIT CE) with an app marketplace, omnichannel customer support, and native federation — but MongoDB + NATS + microservices ops. | MIT (CE) + EE | A (5/6) | [EN](categories/team-chat/rocket-chat.md) · [中](categories/team-chat/rocket-chat.zh.md) |
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | Apache-2.0 | B (4/6) | [EN](categories/team-chat/buzz.md) · [中](categories/team-chat/buzz.zh.md) |
+| **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | AGPL-3.0 | B (6/6) | [EN](categories/team-chat/macro.md) · [中](categories/team-chat/macro.zh.md) |
 | **HiveChat** | Self-hostable, admin-managed AI chat for small/medium teams: one admin wires many LLM providers; the team chats with per-group model access and token quotas. | Apache-2.0 | D (3/6) | [EN](categories/team-chat/hivechat.md) · [中](categories/team-chat/hivechat.zh.md) |
 
 ### captcha

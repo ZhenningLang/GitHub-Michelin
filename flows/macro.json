@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Macro does",
+    "zh": "Macro 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the monorepo and enter the pinned Nix dev shell",
+      "zh": "克隆单体仓库，进入钉好版本的 Nix 开发环境",
+      "code": "nix develop"
+    },
+    {
+      "lane": "you",
+      "en": "Start the local stack, passing your Google OAuth keys so Gmail can link",
+      "zh": "启动本地整套服务，并传入 Google OAuth 密钥以便接入 Gmail",
+      "code": "just run_local --no-doppler --env-file ./local.env"
+    },
+    {
+      "lane": "them",
+      "en": "Builds the Rust services, boots database, search, queue and auth containers, prints the URL",
+      "zh": "编译 Rust 服务，拉起数据库、搜索、队列和登录服务，打印地址",
+      "component": {
+        "en": "run_local launcher",
+        "zh": "run_local 启动器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Sign in with any email; the one-time code lands in the local Mailpit inbox",
+      "zh": "用任意邮箱登录，一次性验证码投到本地 Mailpit 收件箱",
+      "code": "http://localhost:8025"
+    },
+    {
+      "lane": "you",
+      "en": "In a channel, @mention an email, doc, task or company record",
+      "zh": "在频道消息里 @ 一封邮件、一篇文档、一个任务或一个客户记录"
+    },
+    {
+      "lane": "them",
+      "en": "Stores a two-way link and shares the mentioned item with every channel member",
+      "zh": "记下双向链接，并把被 @ 的东西共享给频道全体成员",
+      "component": {
+        "en": "shared backend graph",
+        "zh": "共享后端关系图"
+      }
+    }
+  ],
+  "value": {
+    "en": "Email, chat, docs, tasks and CRM point at each other in one database — no more pasting links between five tools or chasing access requests",
+    "zh": "邮件、聊天、文档、任务、客户记录在同一个库里互相指向，不再在五个工具之间贴链接、等别人开权限"
+  },
+  "sources": [
+    "https://github.com/macro-inc/macro/blob/main/docs/RUNNING_LOCALLY.md (nix develop, just run_local --no-doppler --env-file ./local.env, infra list, Mailpit at http://localhost:8025, GOOGLE_CLIENT_ID keys)",
+    "https://github.com/macro-inc/macro#how-it-all-works-together (bidirectional @linking, channel-based permissions)",
+    "https://github.com/macro-inc/macro/blob/main/docker/docker-compose.yml (services in the local stack)"
+  ]
+}
