@@ -16,7 +16,7 @@
 | Ataraxy-Labs/weave | add | done | categories/agent-tooling/concurrent-editing/weave.md |  | ataraxy-labs/weave |
 | basecamp/hey-cli | add | done | categories/agent-tooling/harness-extensions/hey-cli.md |  | basecamp/hey-cli |
 | bivlked/amneziawg-installer | add | done | categories/networking/amneziawg-installer.md |  | bivlked/amneziawg-installer |
-| cloudflare/computer | add | running |  |  | cloudflare/computer |
+| cloudflare/computer | add | done | categories/sandboxing/cloudflare-computer.md |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | running |  |  | code-yeongyu/oh-my-openagent |
 | Dammyjay93/interface-design | add | pending |  |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | pending |  |  | derv82/wifit3 |
