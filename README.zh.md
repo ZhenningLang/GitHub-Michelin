@@ -1292,3 +1292,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **DeepFace** | 当你想用一次 Python 调用做人脸比对（是不是同一个人）和一对多人脸检索、模型可切换、阈值现成时用它——但被封装的权重各有许可（Buffalo_L 仅限非商业），TensorFlow 总会被装上，种族／情绪分析在欧盟《人工智能法》下受限。 | MIT | B（6/6） | [中](categories/computer-vision/deepface.zh.md) · [EN](categories/computer-vision/deepface.md) |
+
+### meeting-intelligence
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Call.md** | 当你想要一个开源 macOS 会议副驾驶：录下你与对方、会中自动调用你的 MCP 工具、会后自动起草行动项——同时接受录制与转写走 VideoDB 云。 | MIT | C（4/6） | [中](categories/meeting-intelligence/call-md.zh.md) · [EN](categories/meeting-intelligence/call-md.md) |

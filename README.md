@@ -1310,3 +1310,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **DeepFace** | Use it when you want face verification (same person?) and 1:N face search from one Python call with swappable models and pre-tuned thresholds — but wrapped weights inherit their own licences (Buffalo_L is non-commercial), TensorFlow is always installed, and race/emotion analysis is restricted under the EU AI Act. | MIT | B (6/6) | [EN](categories/computer-vision/deepface.md) · [中](categories/computer-vision/deepface.zh.md) |
+
+### meeting-intelligence
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Call.md** | Use it when you want an open-source macOS meeting copilot that records you vs them, fires your MCP tools mid-call, and auto-drafts action items — accepting that capture and transcription run through VideoDB's cloud. | MIT | C (4/6) | [EN](categories/meeting-intelligence/call-md.md) · [中](categories/meeting-intelligence/call-md.zh.md) |
