@@ -15,6 +15,7 @@
 | **Just Read** | 当你想在浏览器里按自己的方式清掉文章的广告与杂乱、还能按站点记忆选择器时用它——但它是 EULA 授权的源码，并非真正的开源。 | C（6/6） | [→](just-read.zh.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | B（6/6） | [→](freshrss.zh.md) |
 | **Horizon** | 当订阅源多到刷不完、你想要一条自托管的 LLM 流水线每天替你打分、筛选、去重并生成双语简报，而不是一个自己刷的阅读器时用它。 | B（6/6） | [→](horizon.zh.md) |
+| **Follow Builders** | 当你想不配任何 key 就每天收到一份固定 AI 建造者名单在 X、播客和两个博客上说了什么的摘要时用它——但信源你改不了，可用性系在一个人的 X API 账单上。 | C（4/6） | [→](follow-builders.zh.md) |
 | **Bilingual Book Maker** | 当你想要一个可脚本化的 CLI，把 epub/txt/md/srt/pdf 经 LLM/MT API 做成双语对照书，带断点续跑和 PyPI 打包时用它——不是 agent 流水线。 | A（5/6） | [→](bilingual-book-maker.zh.md) |
 | **TranslateBooksWithLLMs** | 当非开发者要把整本 EPUB／DOCX／SRT／TXT 译成单一目标语言、保住格式、带术语表和断点续跑，用桌面程序接 Ollama 或云端 key 时用它；只适合单人本机。 | C（6/6） | [→](translate-books-with-llms.zh.md) |
 
@@ -32,6 +33,7 @@
 | [Bilingual Book Maker](bilingual-book-maker.zh.md) | ✅ | A（5/6） | 双语电子书文件的成熟 CLI 路径：任意 LLM/MT 后端、断点续跑、PyPI 打包——但段落流式翻译，没有人工整理的术语表。 |
 | [TranslateBooksWithLLMs](translate-books-with-llms.zh.md) | ✅ | C（6/6） | 图形界面 + 命令行的整文件翻译器，占位符校验保标签、整书术语表、SQLite 断点续跑——但不支持 PDF、不发 PyPI 包、AGPL、单维护者、没有多用户认证。 |
 | [Horizon](horizon.zh.md) | ✅ | B（6/6） | 自托管 AI 新闻雷达：profile 驱动的 LLM 打分去重，覆盖 RSS／HN／Reddit／Telegram／X，产出双语每日简报——但只有约 7 个月历史、单一维护者、尚无 release。 |
+| [Follow Builders](follow-builders.zh.md) | ✅ | C（4/6） | 零配置 agent skill，吃作者每天生成的中央 feed（26 位 X 建造者、6 个播客、2 个博客）——但信源不可改、无 LICENSE 文件、Claude Code 上定时只发原始 JSON、X API 由单一维护者付费。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里

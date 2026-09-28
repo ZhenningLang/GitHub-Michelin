@@ -73,9 +73,9 @@
 | video-db/call.md | add | running |  |  | video-db/call.md |
 | win4r/MuseAI-Skills | skip | skipped |  | 不收：muse.ai 闭源产品运行环境快照（ELF 二进制 + 技能文本），非官方发布；标签保留待你复核 | win4r/museai-skills |
 | yang0/handraw-style | add | running |  |  | yang0/handraw-style |
-| zarazhangrui/follow-builders | add | running |  |  | zarazhangrui/follow-builders |
+| zarazhangrui/follow-builders | add | done | categories/reading-tools/follow-builders.md |  | zarazhangrui/follow-builders |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
-| ZJU-REAL/Easel | add | pending |  |  | zju-real/easel |
+| ZJU-REAL/Easel | add | running |  |  | zju-real/easel |
 | daeuniverse/dae | add | pending |  | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | pending |  | 处理中新开的标签 | vshulcz/deja-vu |
 | maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |
