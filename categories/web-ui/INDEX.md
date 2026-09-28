@@ -14,6 +14,7 @@
 | **data-fetching** | Client-side data-fetching and server-state caching — dedupe requests, keep server data fresh, invalidate after writes. | [→](data-fetching/INDEX.md) |
 | **forms** | Form state and validation — typed field values, touched/errors, sync and async validators, submit handling. | [→](forms/INDEX.md) |
 | **virtualization** | List and grid virtualization — render only the visible rows of long lists, tables and chat feeds. | [→](virtualization/INDEX.md) |
+| **state-management** | Client-side state stores — shared reactive values outside the component tree, derived values, and selector-based subscriptions per framework. | [→](state-management/INDEX.md) |
 
 ## What belongs here
 

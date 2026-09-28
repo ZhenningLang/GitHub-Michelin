@@ -4,6 +4,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 2captcha-python,categories/captcha/buster.md,,no
 3D-Speaker,categories/speech/antspeaker.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
+@xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -471,6 +472,7 @@ JetBrains stock keymap,categories/dev-utilities/editors-and-runtimes/ideavim.md,
 Jev (hosted),categories/decision-models/kev.md,,no
 Jev · TypeSafe System One,categories/decision-models/INDEX.md,,no
 jMetal (Java/Py),categories/ml-research/pymoo.md,,no
+Jotai (`pmndrs/jotai`),categories/web-ui/state-management/tanstack-store.md,,no
 jp2a,categories/terminal-ui/asciify.md,,no
 JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
 Jujutsu (jj),categories/agent-tooling/concurrent-editing/weave.md,,no
@@ -606,6 +608,7 @@ Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paper
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
 nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
+Nanostores (`nanostores/nanostores`),categories/web-ui/state-management/tanstack-store.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
 Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
@@ -798,6 +801,7 @@ Redis,categories/databases/database-engines/pikiwidb.md,,no
 redis-rdb-tools (sripathikrishnan),categories/databases/database-clients/rdr.md,,no
 RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
 Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
+Redux Toolkit (`reduxjs/redux-toolkit`),categories/web-ui/state-management/tanstack-store.md,,no
 Reeder,categories/reading-tools/netnewswire.md,,no
 Reflog / `git stash` + manual snapshots,categories/agent-tooling/session-history/entire-cli.md,,no
 Relay (`facebook/relay`),categories/web-ui/data-fetching/tanstack-query.md,,no
@@ -983,5 +987,6 @@ ZoeDepth,categories/ml-research/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
 zstd,categories/dev-utilities/data-tools/openzl.md,,no
 Zulip Cloud,categories/team-chat/zulip.md,,no
+Zustand (`pmndrs/zustand`),categories/web-ui/state-management/tanstack-store.md,,no
 Zyte Scrapy Cloud,categories/web-scraping/crawling-tools/scrapyd.md,,no
 剪映专业版 / CapCut (closed app),categories/media-processing/nle-automation/INDEX.md,,no

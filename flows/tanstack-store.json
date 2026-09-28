@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Store does", "zh": "TanStack Store 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装对应框架的适配包", "code": "npm install @tanstack/react-store"},
+    {"lane": "you", "en": "Create a store from plain initial state, e.g. at module scope", "zh": "用普通初始值创建 store，可以放在模块顶层", "code": "createStore({ dogs: 0, cats: 0 })", "component": {"en": "core store (@tanstack/store)", "zh": "核心 store（@tanstack/store）"}},
+    {"lane": "them", "en": "Wraps the value in a signal and tracks which derived stores read it", "zh": "把值包成信号，并记下哪些派生 store 读了它"},
+    {"lane": "you", "en": "Read only the slice a component needs through a selector", "zh": "组件里用选择函数只读它需要的那一小块", "code": "useSelector(store, (state) => state[animal])", "component": {"en": "framework adapter", "zh": "框架适配包"}},
+    {"lane": "you", "en": "Update with an immutable updater from anywhere", "zh": "在任何地方用返回新对象的函数更新", "code": "store.setState"},
+    {"lane": "them", "en": "Recomputes derived stores and re-renders only components whose slice changed", "zh": "重算派生 store，只让选中那块变了的组件重渲染"}
+  ],
+  "value": {"en": "One shared state object outside the component tree, with no context plumbing and no re-render of unrelated components", "zh": "组件树外有一份共享状态，不用层层传 context，无关组件也不会跟着重渲染"},
+  "sources": [
+    "docs/installation.md (npm install @tanstack/react-store)",
+    "docs/framework/react/quick-start.md (createStore({ dogs: 0, cats: 0 }), useSelector(store, (state) => state[animal]), store.setState, re-render only when state[animal] changes)",
+    "docs/quick-start.md (framework-agnostic signals implementation, derived createStore(() => count.state * 2), batch, subscribe)",
+    "packages/store/src/alien.ts (adapted from stackblitz/alien-signals)"
+  ]
+}

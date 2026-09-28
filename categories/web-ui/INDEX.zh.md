@@ -14,6 +14,7 @@
 | **data-fetching** | 客户端取数与服务端状态缓存——请求去重、保持服务端数据新鲜、写后失效。 | [→](data-fetching/INDEX.zh.md) |
 | **forms** | 表单状态与校验——带类型的字段值、touched 与错误、同步与异步校验、提交处理。 | [→](forms/INDEX.zh.md) |
 | **virtualization** | 列表与网格虚拟化——长列表、表格和聊天流只渲染可见的那些行。 | [→](virtualization/INDEX.zh.md) |
+| **state-management** | 客户端状态 store——放在组件树外的共享响应式值、派生值，以及各框架按选择器订阅。 | [→](state-management/INDEX.zh.md) |
 
 ## 什么该放这里
 
