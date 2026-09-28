@@ -36,7 +36,7 @@
 | harry7557558/spirula-studio | add | done | categories/3d-reconstruction/spirula-studio.md |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | done | categories/streaming-clients/pipepipe.md |  | infinityloop1308/pipepipe |
-| ix-infrastructure/Ix | add | done | categories/rag-retrieval/ix.md |  | ix-infrastructure/ix |
+| ix-infrastructure/Ix | add | done | categories/rag-retrieval/code-intelligence/ix.md |  | ix-infrastructure/ix |
 | jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
 | Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
@@ -57,11 +57,11 @@
 | pinchtab/pinchtab | add | done | categories/web-automation/agent-browser-tools/pinchtab.md |  | pinchtab/pinchtab |
 | pydantic/monty | add | done | categories/sandboxing/monty.md |  | pydantic/monty |
 | pydantic/pydantic-ai | sync | done | categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pydantic/pydantic-ai |
-| repowise-dev/repowise | add | done | categories/rag-retrieval/repowise.md |  | repowise-dev/repowise |
+| repowise-dev/repowise | add | done | categories/rag-retrieval/code-intelligence/repowise.md |  | repowise-dev/repowise |
 | serengil/deepface | add | done | categories/computer-vision/deepface.md |  | serengil/deepface |
 | shadcn/improve | add | done | categories/agent-dev-methodology/spec-driven-development/improve.md |  | shadcn/improve |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 不收：Claude Code 最佳实践文章/教程合集，无可复用软件；标签保留待你复核 | shanraisshan/claude-code-best-practice |
-| siddharthvaddem/openscreen | add | running |  | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
+| siddharthvaddem/openscreen | add | done | categories/media-processing/video-editing/openscreen.md | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
 | skillsgate/skillsgate | add | running |  | 首次（Opus）在无头模式把健康评分放后台后提前结束，已补前台规则后重排 | skillsgate/skillsgate |
 | stanfordnlp/dspy | sync | done | categories/agent-frameworks/workflow-builders/dspy.md | 新鲜页，sync-entry 按阈值未重核，无改动 | stanfordnlp/dspy |
 | supermemoryai/supermemory | add | running |  |  | supermemoryai/supermemory |

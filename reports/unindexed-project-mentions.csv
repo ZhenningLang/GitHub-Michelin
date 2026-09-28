@@ -167,6 +167,7 @@ CadQuery / build123d,categories/cad/freecad.md,,no
 Canal (Alibaba),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 candle,categories/llm-inference/local-runtimes/airframe.md,,no
 Canva / 稿定设计,categories/agent-skills/visual-content/guizang-social-card.md,,no
+Cap (CapSoftware/Cap),categories/media-processing/video-editing/openscreen.md,,no
 CapCut (ByteDance),categories/media-processing/video-editing/INDEX.md,,no
 CapCut / 剪映 (app/SaaS),categories/video-production/moneyprinter-turbo.md,,no
 capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
@@ -469,6 +470,7 @@ kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
+Kap,categories/media-processing/video-editing/openscreen.md,,no
 Kdenlive,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 KeePassXC,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Keras official RNN tutorials,categories/ml-research/lstm-time-series.md,,no
@@ -627,6 +629,7 @@ npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/ver
 Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
+OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
 Obsidian,categories/knowledge-base/llm-wiki.md,,no
 Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -814,6 +817,7 @@ Serena,categories/rag-retrieval/code-intelligence/ix.md,,no
 Serena (MCP),categories/rag-retrieval/code-intelligence/code-review-graph.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
+ShareX,categories/media-processing/video-editing/openscreen.md,,no
 Shotcut,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
