@@ -13,9 +13,9 @@
 | Armur-Ai/Pentest-Swarm-AI | add | done | categories/pentest/pentest-swarm-ai.md |  | armur-ai/pentest-swarm-ai |
 | astaxie/TokenHub | add | done | categories/api-gateway/tokenhub.md |  | astaxie/tokenhub |
 | Asymptote-Labs/agent-beacon | add | done | categories/agent-memory/agent-beacon.md |  | asymptote-labs/agent-beacon |
-| Ataraxy-Labs/weave | add | running |  |  | ataraxy-labs/weave |
+| Ataraxy-Labs/weave | add | done | categories/agent-tooling/concurrent-editing/weave.md |  | ataraxy-labs/weave |
 | basecamp/hey-cli | add | done | categories/agent-tooling/harness-extensions/hey-cli.md |  | basecamp/hey-cli |
-| bivlked/amneziawg-installer | add | pending |  |  | bivlked/amneziawg-installer |
+| bivlked/amneziawg-installer | add | running |  |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | pending |  |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | pending |  |  | code-yeongyu/oh-my-openagent |
 | Dammyjay93/interface-design | add | pending |  |  | dammyjay93/interface-design |

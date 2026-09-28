@@ -323,6 +323,7 @@ GeoServer,categories/geospatial/qgis.md,,no
 Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 git submodule / manual `cp`,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
+git-imerge,categories/agent-tooling/concurrent-editing/weave.md,,no
 GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/graphify.md,,no
 GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
@@ -427,6 +428,7 @@ Jev · TypeSafe System One,categories/decision-models/INDEX.md,,no
 jMetal (Java/Py),categories/ml-research/pymoo.md,,no
 jp2a,categories/terminal-ui/asciify.md,,no
 JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
+Jujutsu (jj),categories/agent-tooling/concurrent-editing/weave.md,,no
 Jupyter Kernel Gateway / nsjail,categories/sandboxing/opensandbox.md,,no
 Jupyter polyglot kernels (e.g. for Rust/JS),categories/python-tooling/gophernotes.md,,no
 Kaboom.js,categories/game-dev/kaplay.md,,no
@@ -513,6 +515,7 @@ Megatron-LM,categories/llm-training/colossalai.md,,no
 Memgraph,categories/rag-retrieval/falkordb.md,,no
 memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
 Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
+mergiraf,categories/agent-tooling/concurrent-editing/weave.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/depth-anything-v2.md,,no
 Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no

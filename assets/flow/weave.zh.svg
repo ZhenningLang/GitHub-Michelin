@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="845" viewBox="0 0 880 845" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="845" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="709" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="709" rx="10"/>
+<rect class="pillT" x="474" y="40" width="114.4" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">weave 做的</text>
+<path class="edge" d="M62,187 L62,211" marker-end="url(#a)"/>
+<path class="edge" d="M62,350 L62,374" marker-end="url(#a)"/>
+<path class="hand" d="M408,432.0 C439.0,432.0 439.0,456 470,456" marker-end="url(#a)"/>
+<path class="edge" d="M494,524 L494,548" marker-end="url(#a)"/>
+<path class="hand" d="M472,607.0 C441.0,607.0 441.0,631 410,631" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="115" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="115" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">一次性</text>
+<text class="t" x="82" y="118">安装 weave 与 weave-driver 两个二进制</text>
+<text class="c" x="82" y="142">brew install weave</text>
+<text class="comp" x="82" y="165">组件：Homebrew 公式</text>
+<rect class="card" x="40" y="213" width="368" height="137" rx="8"/>
+<rect class="accY" x="40" y="213" width="4" height="137" rx="2"/>
+<circle class="accY" cx="62" cy="237" r="10"/>
+<text class="num" x="62" y="241" text-anchor="middle">2</text>
+<text class="ph" x="82" y="242">一次性</text>
+<text class="t" x="82" y="259">每个仓库登记一次，受支持扩展名写上</text>
+<text class="t" x="82" y="281">merge=weave</text>
+<text class="c" x="82" y="305">weave setup</text>
+<text class="comp" x="82" y="328">组件：weave-cli</text>
+<rect class="card" x="40" y="376" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="376" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="400" r="10"/>
+<text class="num" x="62" y="404" text-anchor="middle">3</text>
+<text class="ph" x="82" y="405">每次合并</text>
+<text class="t" x="82" y="422">照常 merge、rebase、cherry-pick——工作流</text>
+<text class="t" x="82" y="444">一个字不改</text>
+<text class="c" x="82" y="468">git merge &lt;branch&gt;</text>
+<rect class="cardT" x="472" y="432" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="432" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="456" r="10"/>
+<text class="num" x="494" y="460" text-anchor="middle">4</text>
+<text class="ph" x="514" y="461">每次合并</text>
+<text class="t" x="514" y="478">git 递来三个版本，各自被解析成函数、类与键</text>
+<text class="comp" x="514" y="506">组件：weave-driver</text>
+<rect class="cardT" x="472" y="550" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="550" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="574" r="10"/>
+<text class="num" x="494" y="578" text-anchor="middle">5</text>
+<text class="ph" x="514" y="579">每次合并</text>
+<text class="t" x="514" y="596">不相干的实体改动自动合并；真冲突返回标记，</text>
+<text class="t" x="514" y="618">写明实体与拒绝的守卫</text>
+<text class="comp" x="514" y="646">组件：weave-core</text>
+<rect class="card" x="40" y="607" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="607" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="631" r="10"/>
+<text class="num" x="62" y="635" text-anchor="middle">6</text>
+<text class="ph" x="82" y="636">每次合并</text>
+<text class="t" x="82" y="653">真冲突时看逐实体详情，改完再对三个 git 阶</text>
+<text class="t" x="82" y="675">段校验</text>
+<text class="c" x="82" y="699">weave explain &lt;file&gt; · weave check</text>
+<rect class="val" x="28" y="751" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="775">价值</text>
+<text class="valT" x="48" y="799">同一文件里互不相干的改动不再打断合并——你只处理真正的语义冲突</text>
+</svg>

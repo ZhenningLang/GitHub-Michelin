@@ -70,6 +70,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **earmark** | 当你要确定性的源码证据——构建期 `file:line` 打戳（Vite/Next/Svelte）、CSS 规则行解析、图钉变色的 acknowledge/resolve MCP 闭环——且能接受一个公开历史只有两天的 0 星项目时用它。 | MIT | C（5/6） | [中](categories/agent-tooling/ui-annotation/earmark.zh.md) · [EN](categories/agent-tooling/ui-annotation/earmark.md) |
 | **patch-mark** | 当你要用两行零依赖批注一个不属于你的页面、并希望批注被明确当作「不可信证据」喂给 agent、MCP 面默认只读时用它——两个月大的单人 MIT 项目。 | MIT | C（5/6） | [中](categories/agent-tooling/ui-annotation/patch-mark.zh.md) · [EN](categories/agent-tooling/ui-annotation/patch-mark.md) |
 | **markupkit** | 当你的 UI 反馈是空间性的——圈、箭头、删除线、拖拽布局 diff 以结构化增量递过去——且不惜自己接管一个自述休眠的学习型项目时用它。 | MIT | C（5/6） | [中](categories/agent-tooling/ui-annotation/markupkit.zh.md) · [EN](categories/agent-tooling/ui-annotation/markupkit.md) |
+| **weave** | 并行 agent 或分支总在同一文件里互不相干的改动上卡住合并、想让 git 比函数和键而不是比行时用它——但它约 8 个月大、pre-1.0、单一核心作者，引擎判定仍在版本间变动。 | MIT OR Apache-2.0 | B（6/6） | [中](categories/agent-tooling/concurrent-editing/weave.zh.md) · [EN](categories/agent-tooling/concurrent-editing/weave.md) |
 ### sandboxing
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

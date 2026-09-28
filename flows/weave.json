@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "weave does",
+    "zh": "weave 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "phase": {"en": "Once", "zh": "一次性"},
+      "en": "Install the two binaries: the weave CLI and the weave-driver git will call",
+      "zh": "安装 weave 与 weave-driver 两个二进制",
+      "code": "brew install weave",
+      "component": {"en": "Homebrew formula", "zh": "Homebrew 公式"}
+    },
+    {
+      "lane": "you",
+      "en": "Register it for the repo; every supported extension gets a merge=weave rule",
+      "zh": "每个仓库登记一次，受支持扩展名写上 merge=weave",
+      "code": "weave setup",
+      "component": {"en": "weave-cli", "zh": "weave-cli"}
+    },
+    {
+      "lane": "you",
+      "phase": {"en": "Every merge", "zh": "每次合并"},
+      "en": "Merge, rebase or cherry-pick exactly as before — the workflow is unchanged",
+      "zh": "照常 merge、rebase、cherry-pick——工作流一个字不改",
+      "code": "git merge <branch>"
+    },
+    {
+      "lane": "them",
+      "en": "git hands over base/ours/theirs; each version is parsed into functions, classes and keys",
+      "zh": "git 递来三个版本，各自被解析成函数、类与键",
+      "component": {"en": "weave-driver", "zh": "weave-driver"}
+    },
+    {
+      "lane": "them",
+      "en": "Independent entity edits merge clean; real collisions return markers naming the entity and guard",
+      "zh": "不相干的实体改动自动合并；真冲突返回标记，写明实体与拒绝的守卫",
+      "component": {"en": "weave-core", "zh": "weave-core"}
+    },
+    {
+      "lane": "you",
+      "en": "On a real conflict, read the per-entity detail, edit, then verify against the three git stages",
+      "zh": "真冲突时看逐实体详情，改完再对三个 git 阶段校验",
+      "code": "weave explain <file> · weave check"
+    }
+  ],
+  "value": {
+    "en": "Independent edits to the same file stop halting merges — you only resolve actual semantic collisions",
+    "zh": "同一文件里互不相干的改动不再打断合并——你只处理真正的语义冲突"
+  },
+  "sources": [
+    "README.md Quickstart: `weave setup` / `git merge <branch>` / `weave explain <file>` / `weave check`",
+    "README.md Setup: `weave setup` writes merge=weave rules to .gitattributes, derives them from the parser registry; --global/--local variants",
+    "README.md How It Works: parse base/ours/theirs into entities, match by identity, entity-level 3-way merge, reconstruct; fallback for >1MB/binary/unsupported",
+    "README.md Architecture: weave-driver is the binary git invokes (%O %A %B %L %P); weave-core holds entity extraction and the merge",
+    "README.md Conflict Markers: refused_by line names the internal guard that declined to auto-merge",
+    "formulae.brew.sh/api/formula/weave.json: brew install weave (homebrew/core, bottled, 0.5.4)"
+  ]
+}
