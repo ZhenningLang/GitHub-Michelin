@@ -134,6 +134,7 @@ Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/s
 bettercap,categories/pentest/wifit3.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/text2vec.md,,no
 Biome,categories/ai-code-review/react-doctor.md,,no
+BleachBit,categories/disk-cleanup/mangodisk.md,,no
 Blender,categories/cad/freecad.md,,no
 blessed / blessings,categories/terminal-ui/colorama.md,,no
 blessed / curses (stdlib),categories/terminal-ui/asciimatics.md,,no
@@ -242,6 +243,7 @@ Custom voice guide,categories/agent-skills/ai-writing/de-ai-writing/INDEX.md,,no
 Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
+Czkawka,categories/disk-cleanup/mangodisk.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
 Datadog / Grafana Cloud,categories/observability/grafana.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
@@ -549,6 +551,7 @@ Mockaroo,categories/dev-utilities/data-tools/faker-js.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/taskmatrix.md,,no
 Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
+Mole (`tw93/Mole`),categories/disk-cleanup/mangodisk.md,,no
 Morphic / Perplexity (hosted),categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
 Motion Canvas,categories/video-production/hyperframes.md,,no
@@ -882,6 +885,7 @@ WeSpeaker,categories/speech/antspeaker.md,,no
 WezTerm,categories/terminal-ui/alacritty.md,,no
 whisper.cpp,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 "wifite2 (`kimocoder/wifite2`, rewrite of `derv82/wifite`)",categories/pentest/wifit3.md,,no
+WinDirStat,categories/disk-cleanup/mangodisk.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no

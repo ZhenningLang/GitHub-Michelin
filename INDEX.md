@@ -86,6 +86,7 @@
 | **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts. | [→](categories/learning-resources/INDEX.md) |
 | **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
+| **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |
 
 
 

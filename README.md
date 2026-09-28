@@ -1260,3 +1260,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **Pentest Swarm AI** | Use it when authorized web/API scope is wide, breadth plus proven (exploited, evidence-captured) findings matter, and you must self-host with any tool-calling model (incl. fully local Ollama) — accepting an alpha-stage swarm scheduler, AGPL-3.0, and a single-maintainer bus factor. | AGPL-3.0 | C (6/6) | [EN](categories/pentest/pentest-swarm-ai.md) · [中](categories/pentest/pentest-swarm-ai.zh.md) |
 | **Wifit3** | Use it when the authorized target is Wi-Fi and the machine in your hand is a Linux, Windows, or macOS laptop with no toolchain to install — accepting that only ~19 supported USB chipsets work and the v0.x BETA is ~3 months old. | GPL-2.0 | C (6/6) | [EN](categories/pentest/wifit3.md) · [中](categories/pentest/wifit3.zh.md) |
+
+### disk-cleanup
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **MangoDisk** | Use it when one cleaner must cover macOS, Windows and Linux and you want to read the rule behind every deleted path — accepting permanent deletion, a two-month-old codebase and a single maintainer. | GPL-3.0-only | C (6/6) | [EN](categories/disk-cleanup/mangodisk.md) · [中](categories/disk-cleanup/mangodisk.zh.md) |
