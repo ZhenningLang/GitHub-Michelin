@@ -66,6 +66,7 @@ AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
+agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/ai-scientist.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
@@ -568,6 +569,7 @@ Meetily,categories/meeting-intelligence/call-md.md,,no
 Megatron-LM,categories/llm-training/colossalai.md,,no
 Memgraph,categories/rag-retrieval/structured-retrieval/falkordb.md,,no
 Memobase (memodb-io/memobase),categories/agent-memory/app-memory/supermemory.md,,no
+MemPalace (MemPalace/mempalace),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
 Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
 mergiraf,categories/agent-tooling/concurrent-editing/weave.md,,no

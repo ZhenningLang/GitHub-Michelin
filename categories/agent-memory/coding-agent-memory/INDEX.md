@@ -15,6 +15,7 @@
 | **Engram** | Use it when you run several coding agents and want them all to share one local memory the agent itself writes and searches over MCP — a single Go binary and SQLite file, keyword search, no background capture. | B (5/6) | [→](engram.md) |
 | **backpass** | Use it when your `AGENTS.md`/`CLAUDE.md` has drifted from what your coding agents actually get wrong, and you want edits mined from the transcripts already on disk — each backed by quotes from two sessions and accepted one by one, under a token budget. | B (6/6) | [→](backpass.md) |
 | **OptMem** | Use it when you want coding-agent memory with zero moving parts — one pasted prompt block, one dependency-free Python script, an agent-curated append-only log — and you can live with voluntary capture, regex-only recall, and no license. | D (5/6) | [→](optmem.md) |
+| **deja-vu** | Use it when your agents re-debug fixes you already made in another agent, and you want memory built from the transcripts 35 harnesses already wrote to disk — no capture step, no LLM, lexical search that predates the install. | B (6/6) | [→](deja-vu.md) |
 
 ## Comparison matrix
 
@@ -28,6 +29,7 @@
 | [Engram](engram.md) | ✅ | B (5/6) | Agent-agnostic MCP memory in one Go binary + SQLite FTS5; no extra runtime or LLM bill, but recall depends on the agent choosing to save, and the project is young with very high release churn. |
 | [backpass](backpass.md) | ✅ | B (6/6) | Offline batch that proposes evidence-gated edits to the memory file from existing transcripts of 7 agents; no daemon or key of its own, but traces go to your logged-in model, and it is five weeks old with a single maintainer. |
 | [OptMem](optmem.md) | ✅ | D (5/6) | One prompt block plus one stdlib-only Python file: the agent itself writes one-line memories to an append-only log and reads a summary tree at wake; nothing automatic, regex-only recall, and no license. |
+| [deja-vu](deja-vu.md) | ✅ | B (6/6) | Lexical index of the on-disk transcripts of 35 listed harnesses — searchable history from before you installed it, one Go binary with no LLM in the recall path; young, one maintainer, author-run benchmarks. |
 
 ## What belongs here
 
