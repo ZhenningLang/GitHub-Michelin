@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "GenOffice does",
+    "zh": "GenOffice 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app and connect a model: Genspark login or your own key",
+      "zh": "装好桌面应用，接上模型：登录 Genspark 或填自己的 key",
+      "code": "Settings → AI"
+    },
+    {
+      "lane": "you",
+      "en": "Open a .docx, .xlsx or .pptx and type the edit you want in the AI panel",
+      "zh": "打开 .docx、.xlsx 或 .pptx，在 AI 面板里写下要改什么"
+    },
+    {
+      "lane": "them",
+      "en": "The agent reads only the blocks it needs and applies the change in place",
+      "zh": "agent 只读它需要的块，在原处改好",
+      "component": {
+        "en": "agent-core",
+        "zh": "agent-core"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Lands edits as Word-style tracked changes; each AI turn is a snapshot you can roll back",
+      "zh": "改动落成 Word 式修订，每轮 AI 都是可回滚的快照"
+    },
+    {
+      "lane": "you",
+      "en": "Review the revisions, then accept or roll back",
+      "zh": "审阅修订，接受或回滚"
+    },
+    {
+      "lane": "them",
+      "en": "On save, splices only edited blocks into the original XML; the rest is copied byte-for-byte",
+      "zh": "保存时只把改过的块拼回原 XML，其余逐字节复制",
+      "component": {
+        "en": "docx-engine",
+        "zh": "docx-engine"
+      }
+    }
+  ],
+  "value": {
+    "en": "A reviewed AI edit of a real Office file that still opens cleanly in Word, Excel and PowerPoint — no chatbot copy-paste, no re-formatting",
+    "zh": "审过的 AI 改动落在真 Office 文件里，Word 照常打开，不用来回粘贴、手工重排"
+  },
+  "sources": [
+    "https://github.com/genspark-ai/genoffice/blob/main/README.md — Demo §1 Docs (AI reads the blocks it needs; every AI turn is a snapshot; Track changes → Word-style revisions), AI backends (Sign in with Genspark or Settings → AI bring-your-own-key), Download table (fetched 2026-09-28)",
+    "https://github.com/genspark-ai/genoffice/blob/main/CONTRIBUTING.md — Engine packages + Architecture notes (docx round trip): packages/agent-core, packages/docx-engine, splice dirty blocks into original document.xml, other entries copied byte-for-byte (fetched 2026-09-28)"
+  ]
+}

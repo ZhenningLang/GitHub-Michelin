@@ -640,6 +640,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Grist** | 当团队要的是一个*成品*——自托管、列即数据库字段、公式用 Python、按行权限、带 webhook 的表格平台——而不是一个可嵌入组件时用它；Apache-2.0 核心有法国政府贡献背书、月度发布活跃。 | Apache-2.0 | A（5/6） | [中](categories/office-editors/grist.zh.md) · [EN](categories/office-editors/grist.md) |
 | **ONLYOFFICE Docs** | 当你的网盘/CRM/LMS 需要「点一下 .docx 就进入带实时协同的完整编辑器」、一个 Docker 容器搞定且要真实 OOXML 保真度时用它——但它是 AGPL，社区版建议并发 ≤20，GitHub 仓库只是打包壳。 | AGPL-3.0 | B（6/6） | [中](categories/office-editors/onlyoffice-documentserver.zh.md) · [EN](categories/office-editors/onlyoffice-documentserver.md) |
 | **Collabora Online** | 当你运行（或对接）Nextcloud 这类支持 WOPI 的文件平台、想在浏览器里用上 LibreOffice 渲染引擎时用它——但活跃开发在 Gerrit 而非这个 GitHub 仓库，这里也没有可嵌入的 UI SDK。 | MPL-2.0 | A（5/6） | [中](categories/office-editors/collabora-online.zh.md) · [EN](categories/office-editors/collabora-online.md) |
+| **GenOffice** | 当*你自己*（而不是你产品的用户）想让 AI 在桌面上直接改真正的 `.docx`/`.xlsx`/`.pptx`、改动以可审阅的修订落下、模型自带 key，还想要 `genoffice` CLI/MCP 让编码 agent 也能这样做时用它——但它是一家初创公司两个月大的 `v0.x` 套件，使用统计默认开启，也不支持 `.doc`/ODF。 | Apache-2.0 | C（5/6） | [中](categories/office-editors/genoffice.zh.md) · [EN](categories/office-editors/genoffice.md) |
 ### diagramming
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

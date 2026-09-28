@@ -472,6 +472,7 @@ Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,n
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice,categories/office-editors/collabora-online.md,,no
+LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
@@ -602,6 +603,7 @@ Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.m
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
 One API,categories/api-gateway/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
+ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/genoffice.md,,no
 ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
