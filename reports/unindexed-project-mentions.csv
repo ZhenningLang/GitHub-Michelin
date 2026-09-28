@@ -270,6 +270,7 @@ Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 Czkawka,categories/disk-cleanup/mangodisk.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
+date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-time.md,,no
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
@@ -354,6 +355,7 @@ Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
+FullCalendar (`fullcalendar/fullcalendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
@@ -800,6 +802,7 @@ rc-slider (`react-component/slider`),categories/web-ui/component-libraries/tanst
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
 React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
+react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 react-range (`twoy/react-range`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
@@ -846,6 +849,7 @@ RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-researc
 SAGA GIS,categories/geospatial/qgis.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
 ScaNN (Google),categories/rag-retrieval/vector-search/faiss.md,,no
+schedule-x (`schedule-x/schedule-x`),categories/web-ui/component-libraries/tanstack-time.md,,no
 SciPy / Gurobi,categories/ml-research/pymoo.md,,no
 scispaCy / medSpaCy,categories/healthcare-ai/openmed.md,,no
 Scrapy,categories/web-scraping/crawling-tools/fuck-login.md,,no

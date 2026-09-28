@@ -93,11 +93,11 @@
 | TanStack/pacer | add | done | categories/web-ui/scheduling/tanstack-pacer.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
 | TanStack/charts | add | done | categories/web-ui/charts/tanstack-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
 | TanStack/hotkeys | add | done | categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
-| TanStack/time | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
+| TanStack/time | add | done | categories/web-ui/component-libraries/tanstack-time.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
 | TanStack/devtools | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
 | TanStack/markdown | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
 | TanStack/config | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
-| TanStack/intent | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
+| TanStack/intent | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
 | TanStack/redact | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
 | TanStack/select | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
 | TanStack/workflow | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |

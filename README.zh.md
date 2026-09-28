@@ -885,6 +885,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | **TanStack Pacer** | 搜索框、自动保存、滚动处理都靠手写 setTimeout/clearTimeout 裹着时用它——带类型的防抖／节流／限流／排队／批处理，同步异步（重试／中止）两套变体，pending 状态可经 TanStack Store 渲染；它不是服务端配额，且 0.x beta 有 API 变动风险。 | MIT | A（6/6） | [中](categories/web-ui/scheduling/tanstack-pacer.zh.md) · [EN](categories/web-ui/scheduling/tanstack-pacer.md) |
 
+| **TanStack Time** | 产品日历要重复日程、拖拽改时长、超订校验，而 DOM 必须归你时关注它——无头、Temporal 原生的核心算日期网格、重复展开和冲突；仅列观察名单：未发布的 pre-alpha，npm 上还没有包。 | MIT | D（4/6） | [中](categories/web-ui/component-libraries/tanstack-time.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-time.md) |
+
 
 | **TanStack DB** | 每个视图都要求单开联表接口、每次写操作都要手补查询缓存时用它——客户端规范化集合加差分数据流活查询和乐观事务；beta 0.x，不是客户端状态库，也不是持久离线数据库。 | MIT | B（6/6） | [中](categories/web-ui/data-fetching/tanstack-db.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-db.md) |
 | **TanStack Ranger** | 滑块要双把手、不规则步进数组或对数刻度推子，而标记必须完全归你时用它——无头数值引擎管拖拽跟踪、吸附、刻度和百分比，不渲染任何东西；目前只有 React 适配层，API 仍是 0.x。 | MIT | C（5/6） | [中](categories/web-ui/component-libraries/tanstack-ranger.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-ranger.md) |
