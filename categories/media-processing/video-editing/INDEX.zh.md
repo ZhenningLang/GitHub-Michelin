@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Concat** | 需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 编辑器时用它——代价是仅有 25 天历史的 0.2.x beta 与单一维护者。 | C（6/6） | [→](concat.zh.md) |
 | **OpenCut** | 想跟进或基于浏览器／WASM 重写架构开发时用它——不适用于需要可用编辑器的场景，因为仓库正在重写，能用的版本在已归档的 classic 仓库里。 | B（5/6） | [→](opencut.zh.md) |
+| **Palmier Pro** | 想让 agent（Claude Code、Codex、Cursor）通过本机 MCP 服务直接改你在 macOS 26 Apple 芯片 Mac 上开着的时间线时用它——要知道只有 v0.7.6 之前的源码是 GPL，之后的版本已闭源。 | C（6/6） | [→](palmier-pro.zh.md) |
 
 ## 对比矩阵
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [Concat](concat.zh.md) | ✅ | C（6/6） | 需要原生 Rust 桌面／移动编辑器，自带 FFmpeg 与 Whisper 并暴露 API／CLI／server 时选它；代价是 beta 稳定性与单人 bus factor。 |
 | [OpenCut](opencut.zh.md) | ✅ | B（5/6） | 想跟进或基于下一代浏览器／WASM 架构开发时选它；代价是重写期间该仓库不产出可用版本。 |
+| [Palmier Pro](palmier-pro.zh.md) | ✅ | C（6/6） | 需要 agent 经 MCP 在真正的 Mac 时间线上剪辑、外加内置生成时选它；代价是只支持 macOS 26 加 Apple 芯片、生成依赖厂商后端，而且开源线自 2026-08 起已冻结。 |
 | CapCut（字节跳动） | 未收录 | — | 需要免费、打磨成熟并带云端 AI 的编辑器时选它；代价是闭源、账号绑定上传、Pro 付费墙且无法自托管。 |
 | DaVinci Resolve | 未收录 | — | 一次性剪辑需要专业调色、遮罩与跟踪时选它；代价是庞大的专有应用与陡峭的学习曲线。 |
 

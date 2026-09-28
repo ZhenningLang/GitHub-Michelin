@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Concat** | Use when you want a native, offline, scriptable CapCut-style editor you can install and run today — accepting a 25-day-old 0.2.x beta with a single maintainer. | C (6/6) | [→](concat.md) |
 | **OpenCut** | Use when you want to track or build on the browser/WASM rewrite architecture — not when you need a working editor, because the repository is mid-rewrite and the shipped version lives in an archived classic repo. | B (5/6) | [→](opencut.md) |
+| **Palmier Pro** | Use when an agent (Claude Code, Codex, Cursor) should edit the timeline you have open on a macOS 26 Apple Silicon Mac through a local MCP server — knowing only the source through v0.7.6 is GPL and later builds are proprietary. | C (6/6) | [→](palmier-pro.md) |
 
 ## Comparison matrix
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [Concat](concat.md) | ✅ | C (6/6) | Pick for a native Rust desktop/mobile editor that bundles FFmpeg and Whisper and exposes an API/CLI/server; the price is beta stability and a one-person bus factor. |
 | [OpenCut](opencut.md) | ✅ | B (5/6) | Pick to follow or build on the next-generation browser/WASM architecture; the price is that this repository currently ships nothing while the rewrite is in progress. |
+| [Palmier Pro](palmier-pro.md) | ✅ | C (6/6) | Pick for agent editing over MCP on a real Mac timeline plus built-in generation; the price is macOS 26 + Apple Silicon only, vendor-backend generation, and an open-source line frozen since 2026-08. |
 | CapCut (ByteDance) | 未收录 | — | Pick for a free, polished editor with cloud AI features; the price is closed source, account-bound uploads, Pro paywalls, and no self-hosting. |
 | DaVinci Resolve | 未收录 | — | Pick for professional colour, masks, and tracking on a one-off edit; the price is a large proprietary application outside a normal desktop. |
 
