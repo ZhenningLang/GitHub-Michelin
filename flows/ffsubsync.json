@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "ffsubsync does", "zh": "ffsubsync 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install ffmpeg and the CLI", "zh": "装好 ffmpeg 和这个 CLI", "code": "brew install ffmpeg · pip install ffsubsync"},
+    {"lane": "you", "en": "Point it at the video and the mistimed subtitle file", "zh": "把它指向视频和对不齐的字幕文件", "code": "ffs video.mp4 -i unsynchronized.srt -o synchronized.srt"},
+    {"lane": "them", "en": "Extracts audio and marks speech / no-speech in 10 ms windows on both timelines", "zh": "抽出音频，把音频和字幕两条时间线都切成 10 毫秒的「有无人说话」窗口", "component": {"en": "ffmpeg + WebRTC VAD", "zh": "ffmpeg + WebRTC VAD"}},
+    {"lane": "them", "en": "FFT-searches every offset and framerate ratio, then rewrites the subtitle timings", "zh": "用 FFT 搜遍所有偏移与帧率比例，然后重写字幕时间戳", "component": {"en": "FFT aligner", "zh": "FFT 对齐器"}}
+  ],
+  "value": {"en": "Subtitles land in sync from one command — no language model, no manual sync points", "zh": "一条命令字幕就对上——不需要语言模型，也不用手动打同步点"},
+  "sources": ["README.md master @ 2026-09-28: Install (brew install ffmpeg; pip install ffsubsync), Usage (ffs video.mp4 -i unsynchronized.srt -o synchronized.srt), How It Works (10ms windows, VAD, FFT alignment)", "HISTORY.rst 0.5.0: 'Guard the FFT aligner against empty speech input'", "README.md Credits: VAD from webrtc via py-webrtcvad wrapper"]
+}

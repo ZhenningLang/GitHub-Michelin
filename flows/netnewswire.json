@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "them": { "en": "NetNewsWire does", "zh": "NetNewsWire 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the app on your Mac",
+      "zh": "在 Mac 上装好应用",
+      "code": "brew install --cask netnewswire"
+    },
+    {
+      "lane": "you",
+      "en": "Import the OPML export from your old reader, or add feeds by hand",
+      "zh": "导入旧阅读器导出的 OPML，或手动添加订阅"
+    },
+    {
+      "lane": "them",
+      "en": "Background-refreshes each feed and parses RSS/Atom/JSON Feed into one chronological list",
+      "zh": "后台刷新每个订阅源，解析成一条按时间排序的列表"
+    },
+    {
+      "lane": "you",
+      "en": "Read and mark articles with single-key shortcuts",
+      "zh": "用单键快捷键阅读、标记文章"
+    },
+    {
+      "lane": "them",
+      "en": "Keeps subscriptions and read state in sync on your iPhone through the account you picked",
+      "zh": "通过你选的账号，把订阅和已读状态同步到 iPhone"
+    }
+  ],
+  "value": {
+    "en": "A fast, telemetry-free chronological reader on Mac and iPhone — no account to start, no ads, no subscription fee",
+    "zh": "Mac 和 iPhone 上快而无遥测的时间线阅读器——上手不用账号，没有广告和订阅费"
+  },
+  "sources": [
+    "https://formulae.brew.sh/api/cask/netnewswire.json (cask netnewswire, version 7.1.4, checked 2026-09-28)",
+    "https://netnewswire.com/ (features list: 'Importing and exporting OPML feed lists', 'Single-key keyboard shortcuts', 'Background refreshing', 'Syncing via iCloud, Feedbin, Feedly, BazQux, Inoreader, NewsBlur, The Old Reader, and FreshRSS')",
+    "https://raw.githubusercontent.com/Ranchero-Software/NetNewsWire/main/README.md (supports RSS, Atom, JSON Feed, and RSS-in-JSON formats)"
+  ]
+}

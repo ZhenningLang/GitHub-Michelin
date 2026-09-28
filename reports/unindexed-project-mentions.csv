@@ -121,7 +121,6 @@ Autodesk Fusion · Onshape · SolidWorks,categories/cad/freecad.md,,no
 AutoHotkey,categories/desktop-automation/pyautogui.md,,no
 AUTOMATIC1111 WebUI (img2img / sketch tab),categories/ai-design-generation/sdpaint.md,,no
 AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
-AVQT / proprietary metrics,categories/media-processing/quality-metrics/vmaf.md,,no
 AWS Elemental MediaConvert,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
@@ -367,6 +366,7 @@ Google Photos,categories/document-management/immich.md,,no
 Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
 Google Search Console alone,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
+goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 gpu-mode/lectures,categories/learning-resources/gpu-perf-engineering-resources.md,,no
@@ -593,8 +593,7 @@ Neutralinojs,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 New API,categories/api-gateway/funtool.md,,no
 NewPipe (`TeamNewPipe/NewPipe`),categories/streaming-clients/pipepipe.md,,no
 NewsBlur,categories/reading-tools/netnewswire.md,,no
-newspaper3k / goose3,categories/web-scraping/article-extraction/python-readability.md,,no
-newspaper4k,categories/web-scraping/article-extraction/newspaper.md,,no
+newspaper4k (`AndyTheFactory/newspaper4k`),categories/web-scraping/article-extraction/newspaper.md,,no
 Nextcloud,categories/document-management/copyparty.md,,no
 Nextcloud (richdocuments),categories/office-editors/collabora-online.md,,no
 Nextcloud Photos,categories/document-management/immich.md,,no
@@ -743,7 +742,6 @@ Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl
 Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
 Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
-readability-lxml,categories/web-scraping/article-extraction/newspaper.md,,no
 Reader View extensions (various),categories/reading-tools/just-read.md,,no
 Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no

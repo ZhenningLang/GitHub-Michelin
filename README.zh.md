@@ -611,7 +611,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（6/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |
+| **Docling** | 当你需要把杂乱的 PDF/DOCX/PPTX 解析成干净的结构化 Markdown/JSON 以喂给 RAG 时用它——是解析器，不是文档管理系统。 | MIT | A（5/6） | [中](categories/document-parsing/docling.zh.md) · [EN](categories/document-parsing/docling.md) |
 | **MarkItDown** | 当你需要一个轻量级 Python 库把各类办公文档和文件转成 Markdown 以喂给 LLM 时用它——比 Docling 更简单，但对版面感知较弱。 | MIT | B（6/6） | [中](categories/document-parsing/markitdown.zh.md) · [EN](categories/document-parsing/markitdown.md) |
 | **olmOCR** | 当你需要把带公式、表格、手写体和多栏版面的复杂 PDF 转成干净 Markdown 以用于 LLM 训练数据集时用它——需要 GPU。 | Apache-2.0 | C（5/6） | [中](categories/document-parsing/olmocr.zh.md) · [EN](categories/document-parsing/olmocr.md) |
 | **Marker** | Convert PDF to markdown + JSON quickly with high accuracy | GPL-3.0 | B（5/6） | [EN](categories/document-parsing/marker.md) · [中](categories/document-parsing/marker.zh.md) |
@@ -679,7 +679,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HandBrake** | 当你需要预设驱动的 GUI 或 CLI 将视频转码/翻录为现代 MP4/MKV 配合 H.264/H.265 时用它——但它是终端用户应用，不是库，且远比原生 FFmpeg 窄。 | GPL-2.0-or-later | A（5/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.md) |
 | **ffmpeg-python** | 当你想用 Python 编排复杂的 FFmpeg 滤镜图、把不可读的 -filter_complex 字符串换成可读的 DAG 代码时用它——但它自 2024 年起停更、仅单人维护，且仍依赖系统已装 ffmpeg 二进制。 | Apache-2.0 | C（4/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md) |
 | **PyAV** | 当你需要在 Python 中以进程内方式把视频/音频帧作为 NumPy 数组进行程序化访问时用它——但它比 CLI 包装器更底层、安装更重（需要针对 FFmpeg 头文件编译 Cython 扩展）。 | MIT | A（6/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/pyav.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md) |
-| **VMAF** | 当你在调编码档位、需要用业界通用的 0—100 感知分对比编解码器与预设时用它——但它只支持全参考，且选错模型会悄悄让跨版本对比失效。 | BSD-2-Clause-Patent | A（5/6） | [中](categories/media-processing/quality-metrics/vmaf.zh.md) · [EN](categories/media-processing/quality-metrics/vmaf.md) |
+| **VMAF** | 当你在调编码档位、需要用业界通用的 0—100 感知分对比编解码器与预设时用它——但它只支持全参考，且选错模型会悄悄让跨版本对比失效。 | BSD-2-Clause-Patent | B（5/6） | [中](categories/media-processing/quality-metrics/vmaf.zh.md) · [EN](categories/media-processing/quality-metrics/vmaf.md) |
 | **SSIMULACRA2** | 当你需要对比图像编解码器（JPEG XL、AVIF、WebP）并需要一个与人类主观评分相关的感知质量分时用它——但它仅限图像，非对称，且采用度不及 VMAF。 | MIT | C（3/6） | [中](categories/media-processing/quality-metrics/ssimulacra2.zh.md) · [EN](categories/media-processing/quality-metrics/ssimulacra2.md) |
 | **m3u8** | 当你需要把 HLS 的 .m3u8 清单当作带类型的对象模型来解析或改写、而非正则硬抠时用它——但它仅限 Python 与 HLS，且自 2025 年起沉寂，最新的 rfc8216bis 标签可能滞后。 | MIT | C（3/6） | [中](categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.zh.md) · [EN](categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md) |
 | **ffsubsync** | 当字幕整体存在恒定偏移、你想用一条命令做 FFT 音频对齐而不手动设同步点时用它——但它修不了内容内部的逐行／变动漂移，且仅单人维护。 | MIT | B（5/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md) |

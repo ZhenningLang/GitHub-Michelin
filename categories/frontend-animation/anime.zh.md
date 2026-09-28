@@ -6,17 +6,17 @@ category: frontend-animation
 tags: [animation, javascript, svg, timeline, scroll, easing, web]
 language: JavaScript
 license: MIT
-maturity: v4.5.0, active (2026-06)
-last_verified: 2026-06-26
+maturity: v4.5.0, active (2026-09), ~73.2k stars
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-22T15:28:21Z
+  pushed_at: 2026-08-21T21:29:50Z
   default_branch: master
-  default_branch_sha: 2c9cf8ea00329f6768c7d7902252ed977d75ce42
+  default_branch_sha: 01b81be1df6843ccfe0a71c0699a746bf740dd77
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:18:50Z
+  computed_at: 2026-09-28T05:59:12Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 44
+        last_commit_age_days: 50
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,11 +41,11 @@ health:
         registry: npmjs.org
         canonical_package: animejs
         dependent_repos_count: 7272
-        downloads_last_month: 3732175
+        downloads_last_month: 3785534
         graph_tier: B
         volume_tier: B
         cross_check_divergence: 1.01
-        release_downloads: 130
+        release_downloads: 131
         release_assets: 3
         release_tier: D
         signal_basis: releases
@@ -53,14 +53,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3845
-        last_commit_age_days: 44
+        repo_age_days: 3850
+        last_commit_age_days: 50
         cohort: library
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 3
-        top1_share: 0.965
+        active_maintainers_12mo: 1
+        top1_share: 1.0
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -77,7 +77,7 @@ health:
 
 # Anime.js
 
-一个体积小、零依赖的 JavaScript 动画引擎，通过统一的 `animate()` API 驱动 CSS 属性、SVG、DOM 属性和普通 JS 对象，内置时间线、错峰（stagger）、弹簧缓动、滚动联动播放，以及可拖拽（draggable）模块。
+落地页要动效——标题逐字错峰入场、SVG logo 自己描出轮廓、卡片能带惯性甩出去——而手写 `requestAnimationFrame` 循环和缓动数学太折磨人。Anime.js 是一个体积小、零依赖的动画引擎：一句 `animate(targets, parameters)` 就能给 CSS 属性、SVG、DOM 属性或普通 JS 对象做补间，时间线、错峰（stagger）、弹簧缓动和滚动联动播放都内建。
 
 ![anime — 健康度雷达](../../assets/health/anime.zh.svg)
 
@@ -85,7 +85,27 @@ health:
 
 你是一名前端开发者，正在做一个营销站点或产品落地页，设计稿要求一连串编排好的动效：主标题逐字错峰入场、SVG logo 描边绘制、若干元素随滚动进入视口时animate、还有一张可以带物理惯性甩动的卡片。你不想为此引入一个绑定到某个 UI 框架的重型动效库，也不想手写 `requestAnimationFrame` 循环和缓动数学。于是你选用 Anime.js：基础场景一句 `animate(targets, { translateX: 250, ease: 'outElastic', loop: true })` 就够；序列变复杂时，用 `createTimeline()` 配合偏移量来编排，而不是去拼一堆 `setTimeout`。因为它是框架无关的原生 JS、运行时零依赖，所以能直接落进普通 `<script>`、Vite/webpack 打包，或 React/Vue/Svelte 任意一种而无需适配层；而 v4 的模块化构建让你只 import 真正用到的 `animate`、`stagger`、`svg`、`scroll` 等片段，保持体积精简。
 
-它同样适合处理 CSS 引擎不便触及的动画：把任意 JS 对象的数值补间出来喂给 canvas 或图表、把一条 SVG path 形变（morph）成另一条、跑运动路径动画，或让时间线随滚动位置 scrub。v4 重写把这些能力拆成独立模块（Timer、Animation、Timeline、Animatable、Draggable、Scope、ScrollObserver、SVG、Text），让你在保持体积轻的同时，又能在某个具体页面需要时取用更重的特性。
+它同样适合处理 CSS 引擎不便触及的动画：把任意 JS 对象的数值补间出来喂给 canvas 或图表、把一条 SVG path 形变（morph）成另一条、跑运动路径动画，或让时间线随滚动位置 scrub。v4 重写把这些能力拆成独立模块（Timer、Animation、Timeline、Animatable、Draggable、Layout、Scope、Events/onScroll、SVG、Text），让你在保持体积轻的同时，又能在某个具体页面需要时取用更重的特性。
+
+## 怎么用起来
+
+你从不自己写动画循环——你只做声明。一句 `animate(targets, parameters)` 告诉引擎*动什么*（CSS 选择器、DOM/SVG 节点，或一个普通 JS 对象）和*要到达什么值*（数字、颜色、带单位的字符串、函数求值），外加怎么到达：时长、缓动函数、延迟、循环。引擎跑一个共享计时器，每一帧把每个属性按所选缓动从当前值插值到目标值，再写回去——内联样式、transform、SVG 属性或对象字段。本该是一团 `setTimeout` 的序列编排，变成 `createTimeline()` 里按偏移量添加动画；`stagger()` 负责把延迟或数值在多个目标上铺开；滚动联动播放和带物理惯性的拖拽来自独立的 ScrollObserver/Draggable 模块。库替你做的：插值、缓动数学、样式写入、播放控制（`play()`、`pause()`、`seek()`……）。留给你的：布局、挑对性能安全的可动画属性、以及尊重系统的减弱动效偏好。简单场景还有一个 3KB 的 `waapi.animate()` 变体，把补间交给浏览器自己的 Web Animations API 而非 JS 引擎（文档标注完整 `animate()` 约 10KB）。
+
+![anime — 主干用户故事](../../assets/flow/anime.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/anime.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装库 — `npm install animejs`
+2. **你**：引入函数后，一句调用声明目标与参数 — `import { animate } from 'animejs'; · animate(targets, parameters)`
+3. **Anime.js**：每帧按所选缓动插值每个属性，写回 CSS、SVG、属性或对象 — 组件：`引擎`
+4. **Anime.js**：处理循环、错峰与回调，交回 play/pause/seek 控制器
+
+**价值**：带运行时控制器的 DOM/SVG/对象编排动效——不必手写 requestAnimationFrame 循环和缓动数学
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -111,7 +131,7 @@ health:
 
 - **语言：** JavaScript（原生；无 TypeScript 运行时要求，对外提供类型定义）。
 - **可驱动的目标：** CSS 属性、SVG 元素、DOM/HTML 属性，以及任意 JavaScript 对象数值。
-- **v4 模块：** `Timer`、`Animation`（`animate`）、`Timeline`（`createTimeline`）、`Animatable`、`Draggable`、`Scope`、`ScrollObserver`（滚动联动）、`SVG`（`morphTo`、`createDrawable`、`createMotionPath`）、`Text`（`splitText`、`scrambleText`），外加 `stagger`、弹簧/内置缓动，以及 WAAPI 适配器。另提供 Three.js 适配器用于驱动 3D 数值。
+- **v4 模块：** `Timer`、`Animation`（`animate`）、`Timeline`（`createTimeline`）、`Animatable`、`Draggable`、`Layout`（自动布局过渡）、`Scope`、`Events`/`onScroll`（滚动联动）、`SVG`（`morphTo`、`createDrawable`、`createMotionPath`）、`Text`（`splitText`、`scrambleText`），外加 `stagger`、弹簧/内置缓动，以及 WAAPI 适配器（`waapi.animate`，约 3KB）。另有 Three.js 适配器（`Adapters`）驱动 3D 对象属性、材质与 uniform。
 - **构建/分发：** 模块化 ESM 支持 tree-shaking；UMD/IIFE 包供 `<script>` 使用。npm 包名为 `animejs`。
 - **依赖：** 运行时零依赖——引擎自包含。
 
@@ -128,17 +148,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——unknown。
-- **维护（2026-06）。** 最后 push 于 2026-06；v4.5.0（2026-06-22）紧随 v4 大版本重写——处于**活跃**，未归档。约 110 的低 open issue 数，对这么广泛使用的库而言是健康的。[推断]
-- **治理 / bus factor。** 一个**单作者、`User` 个人账号所有的仓库**（`juliangarnier/anime`），约 70k star——典型的 bus-factor 标记：巨大的采用度压在一个维护者身上，背后没有基金会或厂商。[推断]
-- **年龄与 Lindy 判断。** 约 10 年（2016-03 创建）且**仍在活跃发布**（刚完成一次完整的 v4 重写）⇒ **强 Lindy** 信号——十年存续加一个全新大版本，是停滞项目的反面，这大大缓和了单维护者的担忧。[推断]
-- **采用度。** 非常强（约 70k star，MIT，零依赖，框架无关，npm 包名 `animejs`）——命令式 Web 动画的默认档次选择。[未验证]
+- **维护（2026-09）。** master 最后提交 2026-08-09，仓库 push 于 2026-08；最新发布 v4.5.0（2026-06-22）仍是当前版——**活跃**（v4 冲刺后的一段平稳期，并非归档）。约 118 个 open issue，对这么广泛使用的库而言是健康的。[推断]
+- **治理 / bus factor。** 一个**单作者、`User` 个人账号所有的仓库**（`juliangarnier/anime`），约 73k star——典型的 bus-factor 标记：巨大的采用度压在一个维护者身上，背后没有基金会或厂商，可持续性靠 GitHub Sponsors 支撑。[推断]
+- **年龄与 Lindy 判断。** 约 10 年（2016-03 创建）且**仍在活跃发布**（今年完成了完整的 v4 重写）⇒ **强 Lindy** 信号——十年存续加一个全新大版本，是停滞项目的反面，这大大缓和了单维护者的担忧。[推断]
+- **采用度。** 非常强（约 73.2k star，gh 2026-09-28；MIT，零依赖，框架无关，npm 包名 `animejs`，被 7,272 个仓库依赖）——命令式 Web 动画的默认档次选择。[未验证]
 - **风险标记。** 未发现 relicense 或 open-core（全程 MIT）。具体代价是 **v3→v4 迁移**——一次真实的 API/模块重写，而非原地升版本；请锁定主版本。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] star 数据报告约 70.4k（截至 2026-06）；最新发布 v4.5.0 于 2026-06-22（据 GitHub API）。GitHub star 不可靠且对日期敏感——仅作参考，请对照仓库重新核实。
-- [未验证] v4 模块清单（Timer / Animation / Timeline / Animatable / Draggable / Scope / ScrollObserver / SVG / Text，WAAPI + Three.js 适配器）取自文档站结构；在依赖某个具体模块前，请对照当前文档核实确切集合与 import 路径。
-- [未验证]「运行时零依赖」是从 npm 元数据无 `dependencies` 字段推断而来；请对照你所装版本的 `package.json` 确认。
-- [未验证] 所读 README/文档页未声明打包体积与浏览器支持矩阵；在做预算前请从构建产物或 bundlephobia 核实实际 gzip 体积与支持范围。
+- [未验证] star 数据报告约 73.2k（gh，2026-09-28）；最新发布 v4.5.0 于 2026-06-22（GitHub API），npm 上也仍是 4.5.0。GitHub star 不可靠且对日期敏感——仅作参考，请对照仓库重新核实。
+- [未验证] v4 模块清单（Timer / Animation / Timeline / Animatable / Draggable / Layout / Scope / Events-onScroll / SVG / Text，WAAPI + Three.js 适配器）取自文档站结构（animejs.com/documentation，2026-09-28）；在依赖某个具体模块前，请对照当前文档核实确切集合与 import 路径。
+- [未验证] 文档标注 `waapi.animate` 约 3KB、`animate` 约 10KB，但未给出整包 gzip 体积与浏览器支持矩阵；在做预算前请从构建产物或 bundlephobia 核实。
 - [推断] 横向对比的结论（GSAP 生态广度、Framer Motion 的 React 契合度、Motion One 的 WAAPI 体积、Velocity.js 已停维护）是基于对这些库的一般认知所做的判断，并非此处实测——请重新核对各替代方案的现状。
-- [未验证] v3→v4 的迁移成本被描述为一次真实重构，依据是它属于 API/模块重写；确切的破坏性变更面应对照项目迁移指南核实。
+- [未验证] v3→v4 的迁移成本被描述为一次真实重构，依据是它属于 API/模块重写；确切的破坏性变更面应对照项目的迁移指南（README 链接到 wiki 页）核实。

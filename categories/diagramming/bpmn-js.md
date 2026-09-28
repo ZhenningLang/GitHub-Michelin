@@ -6,17 +6,17 @@ category: diagramming
 tags: [bpmn, process-modeling, diagram, svg, web-modeler, javascript, camunda]
 language: JavaScript
 license: MIT + bpmn.io watermark clause
-maturity: v18.19.0, active, ~9.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: "v18.30.1 (2026-09), active, ~9.7k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-26T07:11:27Z
+  pushed_at: 2026-09-25T05:16:03Z
   default_branch: develop
-  default_branch_sha: 2067c99c8a807061ed78a7c0d6de9329610c3c44
+  default_branch_sha: 6eaa6917b1a61f9fe527c7ac31ed0855204c1bec
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:15:30Z
+  computed_at: 2026-09-28T05:52:38Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
@@ -29,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 13
+        last_commit_age_days: 4
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: B
@@ -47,23 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: bpmn-js
         dependent_repos_count: 1072
-        downloads_last_month: 878232
+        downloads_last_month: 909779
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4579
-        last_commit_age_days: 1
+        repo_age_days: 4585
+        last_commit_age_days: 4
         cohort: library
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 13
-        top1_share: 0.613
-        top3_share: 0.839
+        top1_share: 0.618
+        top3_share: 0.846
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -85,11 +85,32 @@ You're building a workflow or process-automation product and your users — busi
 
 You reach for the **viewer** build when you only need to render existing diagrams (dashboards, audit views, docs), and the **modeler** build when users author or edit them. It's the de-facto open BPMN canvas for the web.
 
+## How it works
+
+BPMN 2.0 is the OMG standard notation for business-process flowcharts — tasks, gateways, events — stored as XML. bpmn-js is a pure client-side library that turns that XML into an interactive canvas. On import, `bpmn-moddle` parses the BPMN document into a JavaScript object tree (it encapsulates the BPMN meta-model, so the library *knows* what each shape means, not just how it looks); `diagram-js` — the generic diagram engine underneath — draws the tree as SVG and supplies the interaction kit: palette, context pad, undo/redo. While the user models, `BpmnRules` — the rule module defined against the OMG BPMN 2.0 standard — rejects modeling operations that would violate the spec, and every accepted edit updates the object tree, which is exported back as schema-compliant BPMN XML that any BPMN-compliant engine or modeler can consume. What ships vs what stays yours: the rendering, rules, and serialization are all built in; the bundling into your app, persisting the XML, optional add-ons (properties panel, custom modules), and honoring the bpmn.io watermark license term are yours. `Viewer`, `NavigatedViewer`, and `Modeler` are the same core bundled with different feature sets.
+
+![bpmn-js — backbone user story](../../assets/flow/bpmn-js.svg)
+
+<!-- flow-steps:begin (generated from flows/bpmn-js.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the toolkit to your web app — `npm install bpmn-js`
+2. **You**: Mount a modeler on a DOM node — `new Modeler({ container: '#canvas' })`
+3. **You**: Load an existing process diagram — `await modeler.importXML(bpmnXML)`
+4. **bpmn-js**: Draws the process as interactive SVG with palette, context pad and BPMN-compliant rules — component: `diagram-js`
+5. **bpmn-js**: Keeps the model BPMN-valid and exports schema-compliant BPMN 2.0 XML — component: `bpmn-moddle`
+
+**Value**: Standards-correct BPMN modeling inside your own UI, with diagrams any BPMN engine can read
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You don't actually need the BPMN standard.** If you just want generic boxes-and-arrows or a quick text-to-diagram render, bpmn-js is heavy and BPMN-specific — Mermaid or flowchart.js are far lighter for non-standardized flowcharts.
 - **You need a process *engine*, not a canvas.** bpmn-js renders and edits diagrams; it does not execute processes. Execution requires a separate BPMN engine (Camunda 7/8, Zeebe, Flowable, etc.).
-- **The watermark clause is a problem.** The license requires the bpmn.io watermark/attribution link in rendered diagrams to stay visible and unaltered — this is **not plain MIT**; removing it violates the license. Verify the terms before white-labeling. [推断]
+- **The watermark clause is a problem.** The license requires the bpmn.io watermark/attribution link in rendered diagrams to stay visible and unaltered — this is **not plain MIT**; removing it violates the license (clause re-read verbatim from `LICENSE`, 2026-09-28). Verify the terms before white-labeling.
 - **You want DMN, forms, or other notations.** bpmn-js is BPMN only; DMN needs `dmn-js`, forms need `form-js` — sibling projects, separate installs.
 - **You need it outside a browser DOM.** It is browser/DOM-oriented (built on `diagram-js`); headless/server-side rendering is not its target.
 
@@ -123,16 +144,16 @@ You reach for the **viewer** build when you only need to render existing diagram
 ## Health & viability
 
 - **Responsiveness**: Grade B — median first-response time 2.8 hours across 3 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed 2026-06; latest tag v18.19.0 on a steady, frequent release cadence (~81 releases). Clearly **active**, not coasting; not archived. [推断]
-- **Governance / backing.** Maintained by the **bpmn.io team at Camunda** (an established workflow-automation vendor) — a multi-maintainer org-backed project (nikku, philippfromme, barmac, marstamm…), so bus factor is healthy. Direction follows Camunda's commercial interests, the main governance caveat. [推断]
-- **Age & Lindy verdict.** Created 2014-03, ~12 years old and **still actively shipping** — a **strong Lindy** signal; the canonical, long-proven open BPMN web canvas, not a newcomer. [推断]
-- **Adoption.** The de-facto standard for embedding BPMN in web apps (~9.6k stars, ~1.5k forks); large ecosystem of plugins (properties panel, lint, color-picker) and sibling notations (dmn-js, form-js). Strong, well-documented. [未验证]
-- **Risk flags.** The **custom license** (MIT-like with a mandatory, non-removable bpmn.io watermark/attribution in rendered output) is the headline flag — GitHub reports it as `NOASSERTION`; read `LICENSE` and confirm before white-labeling. Vendor-steered roadmap (Camunda) is secondary. [推断]
+- **Maintenance (2026-09).** Default branch pushed 2026-09-25; latest release v18.30.1 (2026-09-24) on a steady, frequent release cadence (~97 releases in the GitHub releases list as of 2026-09-28). Clearly **active**, not coasting; not archived. [推断]
+- **Governance / backing.** Maintained by the **bpmn.io team at Camunda** (an established workflow-automation vendor; the site footer states "built and maintained by Camunda and contributors", 2026-09) — a multi-maintainer org-backed project (nikku, philippfromme, barmac, marstamm…), so bus factor is healthy. Direction follows Camunda's commercial interests, the main governance caveat. [推断]
+- **Age & Lindy verdict.** Created 2014-03, ~12.5 years old and **still actively shipping** — a **strong Lindy** signal; the canonical, long-proven open BPMN web canvas, not a newcomer. [推断]
+- **Adoption.** The de-facto standard for embedding BPMN in web apps (~9.7k stars, ~1.5k forks, 909,779 npm downloads/month per the health scorer, 2026-09); large ecosystem of plugins (properties panel, lint, color-picker) and sibling notations (dmn-js, form-js). Strong, well-documented. [推断]
+- **Risk flags.** The **custom license** (MIT text plus a mandatory, non-removable bpmn.io watermark/attribution clause — re-read verbatim from `LICENSE` 2026-09-28) is the headline flag; GitHub still reports it as `NOASSERTION` (repo API, 2026-09-28). Vendor-steered roadmap (Camunda) is secondary.
 
 ## Caveats (unverified)
 
-- [未验证] ~9.6k stars / ~1.5k forks and v18.19.0 as of 2026-06; counts are date-sensitive — indicative only.
-- [推断] The license is MIT-derived text with an added clause requiring the bpmn.io watermark/attribution link in rendered diagrams to stay visible and unchanged; GitHub classifies it `NOASSERTION`. I read the `LICENSE` file (Camunda Services GmbH, 2014-present) — but you should confirm the exact obligations for your use, especially white-labeling.
+- [未验证] ~9.7k stars / ~1.5k forks and v18.30.1 as of 2026-09 (GitHub API, 2026-09-28); counts are date-sensitive — indicative only.
+- [推断] The `LICENSE` text (Camunda Services GmbH, 2014-present; watermark source "MUST NOT be removed or changed", must "stay fully visible and not visually overlapped") was read verbatim on 2026-09-28, but I am not counsel — confirm the exact obligations for your use, especially white-labeling.
 - [推断] "Active / multi-maintainer / healthy bus factor" is inferred from commit recency, release cadence, and the contributor list, not a published governance doc.
 - [未验证] The npm dependency list is read from the repo's `package.json` at one point in time and shifts across releases — verify against the version you install.
 - [未验证] Camunda backing and the broader bpmn.io ecosystem (dmn-js, form-js, properties-panel) are stated from public project knowledge, not independently audited here.

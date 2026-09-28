@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "you-get does", "zh": "you-get 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install from PyPI (ffmpeg on PATH for segmented sites)", "zh": "从 PyPI 安装（分段站点需 PATH 上有 ffmpeg）", "code": "pip install you-get"},
+    {"lane": "you", "en": "Point it at a page and list the streams without downloading", "zh": "指向页面，先列流不下载", "code": "you-get -i 'https://www.youtube.com/watch?v=jNQXAC9IVRw'"},
+    {"lane": "them", "en": "The site's extractor normalizes its stream list into itag/container/quality entries", "zh": "该站 extractor 把流列表归一化成 itag/容器/质量条目", "component": {"en": "per-site extractor", "zh": "按站点 extractor"}},
+    {"lane": "you", "en": "Download the stream you picked by its itag", "zh": "按挑中的 itag 下载那条流", "code": "you-get --itag=43 [URL]"},
+    {"lane": "them", "en": "Fetches the bytes, joins segments via ffmpeg when needed, saves file and subtitles", "zh": "抓取字节，需要时用 ffmpeg 拼接分段，存成文件与字幕", "component": {"en": "downloader + ffmpeg", "zh": "下载器 + ffmpeg"}}
+  ],
+  "value": {"en": "A local copy of a clip from a Chinese-heavy site list, in one command with nothing to host", "zh": "对着这份偏重中文站的列表，一条命令拿到本地文件，无需托管任何东西"},
+  "sources": ["README.md @ develop (retrieved 2026-09-28): 'pip install you-get' (Installation); 'you-get -i ...' and 'you-get --itag=43 [URL]' (Download a video / stream listing); ffmpeg 'required dependency, for downloading and joining videos streamed in multiple parts' (Warnings); per-site extractor architecture (src/you_get/extractors/)", "src/you_get/__main__.py @ develop: -l/--playlist flag (documented in prose, not README)"]
+}

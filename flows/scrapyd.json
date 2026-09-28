@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Scrapyd does", "zh": "Scrapyd 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and start the daemon on the server that will run your crawls", "zh": "在跑爬虫的服务器上安装并启动守护进程", "code": "pip install scrapyd · scrapyd"},
+    {"lane": "you", "en": "From your project, package it as an egg and upload it to the daemon", "zh": "在项目里把它打成 egg 并上传给守护进程", "code": "scrapyd-deploy", "component": {"en": "scrapyd-client", "zh": "scrapyd-client"}},
+    {"lane": "them", "en": "Stores the upload via addversion.json as a named project version; the latest version runs by default", "zh": "经 addversion.json 存为具名项目版本，默认跑最新版", "component": {"en": "JSON HTTP API", "zh": "JSON HTTP API"}},
+    {"lane": "you", "en": "Queue a crawl with one HTTP call instead of SSHing in", "zh": "一条 HTTP 调用排一个抓取，不必 SSH 进机器", "code": "curl http://localhost:6800/schedule.json"},
+    {"lane": "them", "en": "Spawns a managed scrapy crawl subprocess within max_proc capacity, writing logs and item feeds to disk", "zh": "在 max_proc 上限内拉起 scrapy crawl 子进程，日志落盘", "component": {"en": "launcher", "zh": "启动器"}},
+    {"lane": "you", "en": "Watch what's running, or stop a job, over the same API", "zh": "用同一套 API 查看在跑什么、停掉某个作业", "code": "curl http://localhost:6800/listjobs.json?project=myproject"}
+  ],
+  "value": {"en": "Local Scrapy spiders become a remotely deployable, schedulable, monitorable crawl service on one box", "zh": "本地 Scrapy 爬虫变成单机上可远程部署、调度、监控的抓取服务"},
+  "sources": ["scrapyd docs/index.rst Quickstart @ master 2026-09-28 (pip install scrapyd; scrapyd; scrapyd-deploy)", "docs/api.rst @ master 2026-09-28 (curl http://localhost:6800/addversion.json -F project=myproject -F version=r23 -F egg=@myproject.egg; curl http://localhost:6800/schedule.json -d project=myproject -d spider=somespider; curl http://localhost:6800/listjobs.json?project=myproject; curl http://localhost:6800/cancel.json -d job=6487ec79947edab326d6db28a2d86511e8247444)", "docs/overview.rst @ master 2026-09-28 (\"Scrapyd spawns a process that essentially runs: scrapy crawl myspider\"; version order: latest runs by default; minimal web interface at http://localhost:6800/)", "docs/config.rst @ master 2026-09-28 (max_proc / poll_interval launcher capacity)"]
+}

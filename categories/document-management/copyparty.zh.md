@@ -6,17 +6,17 @@ category: document-management
 tags: [file-server, file-sharing, webdav, ftp, sftp, resumable-upload, dedup, media-indexer, self-hosted, mit]
 language: Python
 license: MIT
-maturity: v1.20.16, active (2026-05); ~45k stars [未验证]
-last_verified: 2026-06-26
+maturity: v1.20.24, active, ~47k stars (2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-26T18:46:37Z
+  pushed_at: 2026-09-27T19:13:03Z
   default_branch: hovudstraum
-  default_branch_sha: 4c8203016f089b38281ed922a78255146f099e7b
+  default_branch_sha: ab2299e3db705fad1cde78cc979b44fa833bc264
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:39Z
+  computed_at: 2026-09-28T06:02:45Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 13
+        last_commit_age_days: 0
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 1.8
-        qualifying_issues: 47
+        qualifying_issues: 44
         band: relaxed_solo
         window_offset_days: 8
         source: issue
@@ -47,13 +47,13 @@ health:
         registry: pypi.org
         canonical_package: copyparty
         dependent_repos_count: 1
-        downloads_last_month: 8480
+        downloads_last_month: 8767
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
-        homebrew_installs_90d: 786
+        homebrew_installs_90d: 817
         homebrew_tier: B
-        release_downloads: 520234
+        release_downloads: 524267
         release_assets: 765
         release_tier: C
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2676
-        last_commit_age_days: 2
+        repo_age_days: 2682
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 70
-        top1_share: 0.823
-        top3_share: 0.854
+        active_maintainers_12mo: 66
+        top1_share: 0.82
+        top3_share: 0.853
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -92,6 +92,27 @@ health:
 你是一个小团队的 homelab 负责人，总需要一个地方来「丢文件」——把一批扫描件分享给同事、让不懂技术的客户在网络不稳的情况下也能传上来一个 4 GB 的视频、通过 WebDAV 暴露一个归档让手机能浏览，再给那台只会说 FTP 的老设备留一个 FTP/SFTP 入口。为这些事搭一整套 DMS 或 S3 体系太重了，你也不想仅仅为了搬运字节就装一个数据库加三个服务。你只需拷一个文件——`copyparty-sfx.py`（或者跑官方 Docker 镜像）——指向一个目录，定义几个按卷划分的读写用户，就得到一个浏览器可访问的服务器：带真正的上传 UI、能扛住断线的断点续传多线程上传（`up2k`/`u2c`），以及基于内容匹配的去重，让重复上传不会撑爆磁盘。内置索引器让目录树可按名称、路径、日期、大小和音频标签搜索，并为图片/视频/音频生成缩略图——所以面对一堆媒体和零散文件，它就是「起起来然后不用管」，没有 Postgres、没有 Redis、不用编译 Angular。
 
 它还很适合做更重系统前面的「接收和传输」层：copyparty 的事件钩子（event hooks）和文件解析插件（file-parser plugins）能在每次上传时触发一个程序（移动、转码，或把文件交给真正的 DMS），所以你可以把它当作友好的上传前门，而由下游系统去做 OCR 和归档。
+
+## 怎么用起来
+
+copyparty 就是一个 Python 脚本，同时身兼服务器、Web UI 和搜索索引。你把它指向一个目录（它称之为「卷」，volume），它就开始监听 HTTP(S)；其余能力都叠在这上面：可选的 WebDAV、FTP(S)、SFTP、TFTP、SMB 监听器，以及命令行声明的按卷、按用户的读写账号（例如 `-v /mnt/music:/music:r:rw,foo -a foo:bar`）。浏览器上传走 **up2k**——一个分块上传器：文件被切成块并做内容寻址，断线后只补传缺失的块，盘上已有的内容不会再传一遍；开了 `--dedup` 后，重复上传直接变成软链接而不是再拷一份。可选的按卷 SQLite 索引（`.hist/up2k.db`）支撑按名称/标签搜索、撤销上传和最近列表；缩略图只有装了可选加速件（Pillow、FFmpeg）才会出现——核心只靠 Python 就能跑。它替你做的：分发、续传、去重、索引。仍归你的：那台机器本身、公网化时的 TLS/反代，以及被服务目录加 `.hist` 的备份。
+
+![copyparty — 主干用户故事](../../assets/flow/copyparty.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/copyparty.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装或直接拿走那个单文件脚本，只需要 Python — `python3 -m pip install --user -U copyparty · uv tool run copyparty`
+2. **你**：指向一个目录，定义谁能读写 — `-v /mnt/music:/music:r:rw,foo -a foo:bar`
+3. **copyparty**：以 HTTP 及 WebDAV/FTP/SFTP 等多协议对外服务
+4. **你**：开启索引与去重，再把文件拖进浏览器上传 — `-e2dsa · --dedup`
+5. **copyparty**：up2k 把上传切块、断线可续传，重复内容只存一份 — 组件：`up2k 上传器`
+
+**价值**：一个 Python 脚本就是耐用、可搜索的文件服务器——没有数据库，也没有要伺候的栈
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -123,7 +144,7 @@ health:
 
 ## 依赖
 
-- **必需：** 仅一个 Python 解释器。项目自述「server only needs Python (2 or 3), all dependencies optional」。建议用现代 Python 3；旧的 Python 2 据称仍可运行 `[未验证]`。
+- **必需：** 仅一个 Python 解释器。README（2026-09）原文仍写着「server only needs Python (2 or 3), all dependencies optional」。建议用现代 Python 3；Python 2 是否真的仍能跑，此处未实测 `[推断]`。
 - **可选（按功能开关）:** Pillow / pyvips / FFmpeg 用于缩略图与媒体转码；Mutagen 用于音频元数据；pyvips/libvips、rawpy/libraw 用于额外图像格式。
 - **部署产物：** `copyparty-sfx.py`（单个自包含文件）、Windows `copyparty.exe`、官方 Docker 镜像，以及 Arch / Homebrew / NixOS 上的软件包。
 - **基础设施：** 不需要外部数据库、消息中间件或其他服务——它确实是自包含的。
@@ -134,17 +155,16 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 1.8 小时，基于 47 个 qualifying issues/PRs。
-- **维护（2026-06）。** 发布频繁（v1.20.16，2026-05-26），最后 push 于 2026-06——处于**活跃**、快速迭代，未归档。[推断]
-- **治理 / bus factor。** 这是最突出的标记：一个**单维护者、`User` 个人账号所有的仓库**（`9001/copyparty`），约 45k star。如此重的采用度压在一个人身上是实打实的 bus-factor 风险——一旦维护者离开，没有基金会或厂商接手。强主观、单作者的设计（如「永远不会支持同步」）正是其另一面。[推断]
+- **响应速度**：Grade A——中位首次响应时间 1.8 小时，基于 44 个 qualifying issues/PRs。
+- **维护（2026-09）。** 发布节奏快：v1.20.16（2026-05-26）→ v1.20.24（2026-09-19，GitHub API），最后 push 于 2026-09-27——处于**活跃**维护，未归档。
+- **治理 / bus factor。** 这是最突出的标记：一个**单维护者、`User` 个人账号所有的仓库**（`9001/copyparty`），约 47k star。如此重的采用度压在一个人身上是实打实的 bus-factor 风险——一旦维护者离开，没有基金会或厂商接手。强主观、单作者的设计（如「永远不会支持同步」）正是其另一面。[推断]
 - **年龄与 Lindy 判断。** 约 7 年（2019-05 创建）且仍在活跃维护 ⇒ **中等 Lindy** 信号——足够久、已证明耐用，但它的存续系于维护者本人而非某个机构。[推断]
-- **采用度。** 在其细分领域很强（45k star，已打包进 Arch/Homebrew/NixOS、有官方 Docker），而这恰恰让 bus-factor 集中度更值得在意。[未验证]
-- **风险标记。** MIT，未发现 relicense 或 open-core；宽广的协议面（SMB 被标注不适合 WAN）是面向公网时的*安全*隐患，与项目可持续性是两回事。[推断]
+- **采用度。** 在其细分领域很强（约 47k star，gh api 2026-09-28；已打包进 Arch/Homebrew/NixOS、有官方 Docker），而这恰恰让 bus-factor 集中度更值得在意。
+- **风险标记。** MIT，未发现 relicense 或 open-core；宽广的协议面（README 原话把 SMB 标为「unsafe, slow, not recommended for wan」）是面向公网时的*安全*隐患，与项目可持续性是两回事。
 
 ## 存疑（未验证）
 
-- [未验证] 星标约 45.4k，来自本次一次性 `gh repo view` 拉取（2026-06-26）;GitHub 星标不可靠且与日期相关——仅作参考。
-- [未验证] 最新发布 v1.20.16（「s6-ready」）据本次 GitHub API 于 2026-05-26 发布；仓库最后 push 于 2026-06-16。未归档，处于活跃维护。
-- [推断] 「单文件 / 零必需依赖」反映项目自述（`copyparty-sfx.py` + 「all dependencies optional」）；当前发布版对应的最低 Python 3 版本未在抓取到的文档中钉死——若依赖某个具体解释器版本，请对照运行的发布版核实。
+- [推断] 「单文件 / 零必需依赖」反映项目自述（`copyparty-sfx.py` + README 2026-09 原文「server only needs Python (2 or 3), all dependencies optional」）；当前发布版对应的最低 Python 3 版本未在抓取到的文档中钉死——若依赖某个具体解释器版本，请对照运行的发布版核实。
+- [推断] up2k 的按块内容寻址续传/去重行为系据 README 自述（resumable、multithreaded；拖入文件可看到盘上是否已存在；`--dedup` 用软链接承接重复），未按协议实测。
 - [未验证] 搜索基于文件名/路径/日期/大小 + 音频标签；README 中未发现 OCR，也未发现文档全文内容索引——若内容检索是硬性要求，请对照当前文档核实。
 - [未验证] 文件解析插件 / 事件钩子可运行外部程序来追加自定义标签或触发下游处理，但开箱即用的（非音频）媒体打标广度——如 EXIF、视频分辨率——在抓取到的文档中未清晰列举。

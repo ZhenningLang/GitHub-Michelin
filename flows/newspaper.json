@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "newspaper does", "zh": "newspaper 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library into your Python environment", "zh": "把库装进 Python 环境", "code": "pip3 install newspaper3k"},
+    {"lane": "you", "en": "Point it at an article URL and fetch the page", "zh": "指向一个文章 URL 并抓取页面", "code": "article = Article(url) · article.download()"},
+    {"lane": "them", "en": "Downloads the static HTML over requests and auto-detects the page language", "zh": "用 requests 下载静态 HTML，并自动检测页面语言"},
+    {"lane": "you", "en": "Run the extraction in one call", "zh": "一次调用完成抽取", "code": "article.parse()"},
+    {"lane": "them", "en": "Strips nav, ads and boilerplate, returns clean title, body text, authors, publish date and top image", "zh": "剥掉导航、广告和样板，返回干净的标题、正文、作者、发布日期和头图"}
+  ],
+  "value": {"en": "One clean article record per URL — no per-site CSS/XPath rules to write or maintain", "zh": "每个 URL 一条干净的文章记录——不用为每个站点写 CSS/XPath 规则，也不用养它们"},
+  "sources": ["README.rst master @ f8e3cb63 (retrieved 2026-09-28): 'pip3 install newspaper3k'; '>>> article = Article(url)'; '>>> article.download()'; '>>> article.parse()'; article.authors / publish_date / text / top_image shown as parse() outputs; language auto-detection section ('If no language is specified, Newspaper will attempt to auto detect a language'); requests-powered fetching per README tagline"]
+}

@@ -6,17 +6,17 @@ category: browser-driver-frameworks
 tags: [browser-automation, webdriver, w3c, cross-browser, end-to-end-testing, grid, selenium-ide, java, python, multi-language]
 language: Java
 license: Apache-2.0
-maturity: v4.45.0 (2026-06), active; ~34.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: "v4.49.0 (2026-09-09), active; ~34.5k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: framework
 upstream:
-  pushed_at: 2026-06-29T08:45:44Z
+  pushed_at: 2026-09-28T09:04:28Z
   default_branch: trunk
-  default_branch_sha: ffb4528fe77b4bc0a054f79c462a665b425833c8
+  default_branch_sha: def9c714f995d6ae2ced7fab8f28a5b4bee47503
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:12:09Z
+  computed_at: 2026-09-28T09:04:40Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 21.8
-        qualifying_issues: 40
+        median_ttfr_hours: 20.5
+        qualifying_issues: 41
         band: default
         window_offset_days: 1
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: nuget.org
-        canonical_package: selenium.support
+        canonical_package: selenium.webdriver
         dependent_repos_count: 0
-        downloads_last_month: 128246077
+        downloads_last_month: 187243102
         graph_tier: E
         volume_tier: A
         cross_check_divergence: null
-        homebrew_installs_90d: 1019
+        homebrew_installs_90d: 950
         homebrew_tier: B
-        release_downloads: 33478704
+        release_downloads: 33608657
         release_assets: 684
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4999
+        repo_age_days: 5004
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 39
-        top1_share: 0.354
-        top3_share: 0.603
+        top1_share: 0.361
+        top3_share: 0.609
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -83,7 +83,7 @@ health:
 
 # Selenium
 
-The long-standing umbrella project for cross-browser automation via the **W3C WebDriver** protocol: a language-neutral coding interface (Java/Python/JS/C#/Ruby and more) plus **Grid** for distributed execution and **Selenium IDE** for record-and-playback.
+Your end-to-end suite passes in Chrome — and your customers open the app in Firefox, Edge and Safari too. Selenium is the long-standing umbrella project for exactly this: write one language-neutral WebDriver API and it drives *real* Chrome, Firefox, Edge and Safari through the W3C WebDriver protocol, with **Grid** to fan sessions across a machine pool and **Selenium IDE** for record-and-playback.
 
 ![selenium — health radar](../../../assets/health/selenium.svg)
 
@@ -93,12 +93,34 @@ You're a QA or SDET engineer at an enterprise that ships a web app its customers
 
 You reach for **Selenium WebDriver**. You write the test once against the WebDriver API, and the same code talks to ChromeDriver, GeckoDriver, EdgeDriver, or SafariDriver because they all implement the W3C WebDriver spec — real browsers, real rendering, the closest thing to a real user. For scale you stand up **Selenium Grid**: a hub/node (or distributed) topology that schedules your tests across many browser instances and OS combinations in parallel, including Dockerized nodes. For the non-coders on the team, **Selenium IDE** records a flow in the browser and exports it to one of the language bindings as a starting point. Because the WebDriver protocol is a W3C standard with a vast ecosystem (cloud grids like BrowserStack/Sauce Labs, every CI integration, mountains of Stack Overflow answers), Selenium is the safe, ubiquitous default when *cross-browser breadth* and *language choice* are the hard requirements.
 
+## How it works
+
+Selenium has two halves. On your side, a small language binding exposes one `WebDriver` API (Java, Python, JavaScript, C#, Ruby, plus Kotlin via the Java bindings — the docs show all six). On the browser side, each browser is driven by a driver executable (ChromeDriver, GeckoDriver, msedgedriver, SafariDriver) that implements the W3C WebDriver spec — a plain HTTP wire protocol in which every `click` or `send_keys` becomes a command the browser executes as a native user event. You never manage the drivers yourself any more: **Selenium Manager** detects the browser you target, resolves and downloads a matching driver, and starts it for the session. What Selenium does for you: one API against real rendering in every browser, plus **Grid** (standalone / hub-node / distributed roles, official Docker images) when you fan sessions out. What stays conspicuously yours: the waiting. WebDriver commands return immediately, so synchronizing code with page state — the docs themselves call it "one of the biggest challenges with Selenium" — is your discipline, or the suite goes flaky. Since v4 the bindings also speak **WebDriver BiDi**, the W3C bidirectional WebSocket protocol the project co-created with browser vendors, which streams network/console/JS events and is positioned as the cross-browser replacement for Chrome's DevTools Protocol (its implementation API is still marked internal in the docs).
+
+![selenium — backbone user story](../../../assets/flow/selenium.svg)
+
+<!-- flow-steps:begin (generated from flows/selenium.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add one language binding to your test project — `pip install selenium` — component: `language bindings`
+2. **You**: Open a session on the browser you target — `driver = webdriver.Chrome()`
+3. **Selenium**: Resolves, downloads and launches the matching driver for that browser — component: `Selenium Manager`
+4. **You**: Drive the page like a user: navigate, find elements, type, click — `driver.get("https://www.selenium.dev/selenium/web/web-form.html")`
+5. **You**: Set your own waits — the calls return immediately — `driver.implicitly_wait(0.5)`
+6. **Selenium**: Every command lands as a native event; one code runs on Chrome, Firefox, Edge, Safari — component: `W3C WebDriver`
+
+**Value**: One automation API drives real Chrome, Firefox, Edge and Safari — the W3C-standard way to do cross-browser E2E
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You target one (Chromium) browser and want modern DX.** For a single-browser project, auto-waiting, network interception, and a nicer debugging story out of the box, Playwright or Cypress are simply more pleasant — Selenium feels lower-level and more verbose by comparison.
 - **You expect tests to "just work" without waits.** Selenium does not auto-wait on elements/network the way Playwright/Cypress do; suites are notoriously **flaky** unless you discipline explicit/expected-condition waits everywhere. This is the single biggest day-to-day cost.
 - **You want AI/agent-driven, natural-language automation.** Selenium is selector-and-code driven, not an LLM operating the page from intent. For NL/agent control use an in-page GUI agent like [page-agent](../agent-browser-tools/page-agent.md) or a CLI/daemon agent browser like [Agent Browser](../agent-browser-tools/agent-browser.md).
-- **You want a lightweight CDP debugging/measuring tool.** For Chrome-native performance traces, network/console inspection, and heap snapshots driven by an agent, a CDP tool like [Chrome DevTools MCP](../agent-browser-tools/chrome-devtools-mcp.md) is far lighter than standing up WebDriver + Grid.
+- **You want a lightweight CDP debugging/measuring tool.** BiDi now streams network/console/JS events cross-browser, but Selenium still gives you no performance traces or heap snapshots; for agent-driven Chrome DevTools depth, a CDP tool like [Chrome DevTools MCP](../agent-browser-tools/chrome-devtools-mcp.md) is far lighter than standing up WebDriver + Grid.
 - **You don't want to run infra.** Grid at scale is real ops — a hub/distributor, nodes, browser+driver version matching, queueing, and node health to operate (or you pay a cloud grid).
 
 ## Comparison
@@ -113,10 +135,11 @@ You reach for **Selenium WebDriver**. You write the test once against the WebDri
 
 ## Tech stack
 
-- **Core protocol:** W3C WebDriver — a language- and browser-neutral wire protocol; Selenium provides both the client bindings and (historically) reference server pieces.
-- **Implementation languages:** the project itself spans Java, Python, Ruby, C#, JavaScript, plus Rust/C++ in the repo; the WebDriver client **bindings** target Java/Python/JS/C#/Ruby (and community ports).
+- **Core protocol:** W3C WebDriver — a language- and browser-neutral wire protocol; Selenium provides both the client bindings and (historically) reference server pieces. Since v4, the bindings also support **WebDriver BiDi**, the W3C bidirectional protocol (WebSocket alongside WebDriver) for streaming network/console/JS events across browsers; the BiDi implementation API is documented as still internal.
+- **Implementation languages:** the project itself spans Java, Python, Ruby, C#, JavaScript, plus Rust/C++ in the repo; the WebDriver client **bindings** target Java/Python/JS/C#/Ruby/Kotlin (Kotlin via the Java bindings; docs also list community ports).
 - **Components:** Selenium WebDriver (the API), Selenium Grid (distributed/parallel execution — standalone, hub-node, or fully distributed roles), Selenium IDE (browser record-and-playback extension).
 - **Browser drivers:** delegates to per-browser driver executables — ChromeDriver, GeckoDriver (Firefox), msedgedriver (Edge), SafariDriver — each implementing the WebDriver spec; Selenium Manager resolves/downloads matching drivers.
+- **Current release:** v4.49.0 (2026-09-09); the official install docs pin 4.49.0 across Maven (`org.seleniumhq.selenium:selenium-java`), NuGet (`Selenium.WebDriver`), gem (`selenium-webdriver`) and npm (`selenium-webdriver`).
 
 ## Dependencies
 
@@ -131,17 +154,18 @@ You reach for **Selenium WebDriver**. You write the test once against the WebDri
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 21.8 hours across 40 qualifying issues/PRs.
-- **Maintenance (2026-06)** — last pushed 2026-06, not archived, shipping the v4.x line (v4.45.0); a continuously released project tracking evolving browser/WebDriver targets, i.e. **active**, not coasting. `[推断]`
-- **Governance & bus factor** — lives under the **SeleniumHQ** org (`Organization`-owned), a long-standing community/multi-contributor project rather than one person or a single vendor's product; the W3C-standard WebDriver protocol it anchors further de-risks any single-owner dependency. `[推断]`
-- **Age & Lindy** — created ~2013-01, so ~13 years old (2026-06) and still actively shipping: a textbook **strong-Lindy** bet — long-lived *and* still-active, with deep ecosystem inertia (cloud grids, CI integrations, years of Q&A) that makes it the safe default. `[推断]`
-- **Adoption & ecosystem** — the dependent graph still reads E (0 dependent repos recorded), but that metric undercounts a multi-language WebDriver ecosystem whose usage is spread across bindings, browser drivers, hosted grids, and CI integrations. Download volume says the opposite and now carries the axis to A: 128,246,077 a month. Human review should treat Selenium as deeply entrenched; the package graph is the wrong instrument here. `[推断]`
-- **Risk flags** — Apache-2.0, no relicense/open-core history seen; the practical risk is **flakiness without disciplined waits** and **Grid ops burden**, not project viability. `[未验证]`
+- **Responsiveness**: Grade A — median first-response time 20.5 hours across 41 qualifying issues/PRs (scorer, 2026-09-28).
+- **Maintenance (2026-09)** — pushed 2026-09-28 and not archived, shipping the v4.x line continuously (v4.45.0 in June → v4.49.0 on 2026-09-09, GitHub releases API); a project tracking evolving browser/WebDriver targets, i.e. **active**, not coasting.
+- **Governance & bus factor** — lives under the **SeleniumHQ** org (`Organization`-owned) and is hosted by the **Software Freedom Conservancy** non-profit (docs site footer and contact address `selenium@sfconservancy.org`, 2026-09), a long-standing community/multi-contributor project rather than one person or a single vendor's product; the W3C-standard WebDriver protocol it anchors further de-risks any single-owner dependency.
+- **Age & Lindy** — created 2013-01-14, so ~13.7 years old (2026-09) and still actively shipping: a textbook **strong-Lindy** bet — long-lived *and* still-active, with deep ecosystem inertia (cloud grids, CI integrations, years of Q&A) that makes it the safe default. The docs banner even headlines the joint Selenium + Appium 2026 conference — the community event layer is alive. [推断]
+- **Adoption & ecosystem** — the dependent graph still reads E (0 dependent repos recorded), but that metric undercounts a multi-language WebDriver ecosystem whose usage is spread across bindings, browser drivers, hosted grids, and CI integrations. Download volume says the opposite and now carries the axis to A: ~187M NuGet downloads a month. Human review should treat Selenium as deeply entrenched; the package graph is the wrong instrument here. [推断]
+- **Risk flags** — Apache-2.0, no relicense/open-core history seen; the practical risk is **flakiness without disciplined waits** and **Grid ops burden**, not project viability.
 
 ## Caveats (unverified)
 
-- [未验证] ~34.2k GitHub stars and v4.45.0 (released ~2026-06-16) as of 2026-06; star counts and version numbers are date-sensitive and drift — treat as indicative and re-verify against the repo.
-- [未验证] The exact set of officially-maintained language bindings (Java/Python/JS/C#/Ruby) vs community ports, and which repo languages (Rust/C++) are shipped components vs internal, comes from the README/repo framing and shifts release-to-release.
-- [推断] "Flaky without explicit waits" and the DX gap vs Playwright/Cypress are widely-held community judgments and architectural inferences, not a measured benchmark in this page.
+- [未验证] ~34.5k GitHub stars and v4.49.0 (released 2026-09-09) as of 2026-09-28 (gh API); star counts and version numbers are date-sensitive and drift — treat as indicative and re-verify against the repo.
+- [未验证] The officially-maintained binding set is read from the current docs' language tabs (Java/Python/C#/Ruby/JS/Kotlin, Kotlin via Java bindings); which repo languages (Rust/C++) are shipped components vs internal still comes from repo framing and shifts release-to-release.
+- [推断] "Flaky without explicit waits" and the DX gap vs Playwright/Cypress are widely-held community judgments and architectural inferences, not a measured benchmark in this page — though the official docs themselves call browser/code synchronization "one of the biggest challenges with Selenium".
 - [推断] Selenium Grid role/topology details (standalone / hub-node / distributed) are summarized from the project's own docs framing; verify the current Grid architecture before designing a deployment.
 - [未验证] Comparison substitutes (Playwright, Cypress, Puppeteer) reflect general positioning, not a head-to-head test run; relative tradeoffs are judgment.
+- [推断] The BiDi "cross-browser replacement for CDP" framing is the docs' own positioning; per-browser BiDi maturity (especially Safari) was not tested.

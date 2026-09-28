@@ -6,17 +6,17 @@ category: document-management
 tags: [file-server, file-sharing, webdav, ftp, sftp, resumable-upload, dedup, media-indexer, self-hosted, mit]
 language: Python
 license: MIT
-maturity: v1.20.16, active (2026-05); ~45k stars [未验证]
-last_verified: 2026-06-26
+maturity: v1.20.24, active, ~47k stars (2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-26T18:46:37Z
+  pushed_at: 2026-09-27T19:13:03Z
   default_branch: hovudstraum
-  default_branch_sha: 4c8203016f089b38281ed922a78255146f099e7b
+  default_branch_sha: ab2299e3db705fad1cde78cc979b44fa833bc264
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:39Z
+  computed_at: 2026-09-28T06:02:45Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 13
+        last_commit_age_days: 0
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 1.8
-        qualifying_issues: 47
+        qualifying_issues: 44
         band: relaxed_solo
         window_offset_days: 8
         source: issue
@@ -47,13 +47,13 @@ health:
         registry: pypi.org
         canonical_package: copyparty
         dependent_repos_count: 1
-        downloads_last_month: 8480
+        downloads_last_month: 8767
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
-        homebrew_installs_90d: 786
+        homebrew_installs_90d: 817
         homebrew_tier: B
-        release_downloads: 520234
+        release_downloads: 524267
         release_assets: 765
         release_tier: C
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2676
-        last_commit_age_days: 2
+        repo_age_days: 2682
+        last_commit_age_days: 0
         cohort: app
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 70
-        top1_share: 0.823
-        top3_share: 0.854
+        active_maintainers_12mo: 66
+        top1_share: 0.82
+        top3_share: 0.853
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -92,6 +92,27 @@ A single-file, zero-required-dependency portable file server with accelerated re
 You're the homelab person for a small team, and you keep needing a place to *drop files* — share a folder of scans with a colleague, let a non-technical client upload a 4 GB video that has to survive a flaky connection, expose an archive over WebDAV so a phone can browse it, and have FTP/SFTP available for the one legacy device that only speaks FTP. Spinning up a full DMS or an S3 stack for this is overkill, and you don't want to install a database and three services just to move bytes around. You copy one file — `copyparty-sfx.py` (or run the Docker image) — point it at a directory, define a couple of per-volume read/write users, and you have a browser-accessible server with a real upload UI, resumable multithreaded uploads (`up2k`/`u2c`) that shrug off dropped connections, and content-matching dedup so re-uploads don't bloat the disk. The built-in indexer makes the tree searchable by name, path, date, size, and audio tags, and renders thumbnails for images/video/audio — so for a pile of media and loose files it's "stand it up and forget it," with no Postgres, no Redis, no Angular build.
 
 It also shines as the *ingest and transport* layer in front of something heavier: copyparty's event hooks and file-parser plugins can fire a program on each upload (move it, transcode it, or hand it to a real DMS), so you can use it as the friendly upload front door while a downstream system does OCR and archival.
+
+## How it works
+
+copyparty is one Python script that is simultaneously the server, the web UI, and the search index. You start it pointed at a folder — a "volume" — and it listens on HTTP(S); everything else layers onto that: optional WebDAV, FTP(S), SFTP, TFTP and SMB listeners, and per-volume, per-user read/write accounts declared on the command line (e.g. `-v /mnt/music:/music:r:rw,foo -a foo:bar`). Uploads from the browser go through **up2k**, a chunked uploader — the file is split into blocks and hashed, so a dropped connection resumes only the missing blocks, and a file (or block) that already exists on disk is never re-transferred; with `--dedup` a duplicate upload becomes a symlink instead of a copy. An optional per-volume SQLite index (`.hist/up2k.db`) powers name/tag search and undo/recent lists, and thumbnails appear only if you install the optional accelerators (Pillow, FFmpeg) — the core runs on Python alone. What copyparty does for you: serve, resume, dedup, index. What stays yours: the machine, TLS/reverse-proxy if you expose it, and backups of the served folders *plus* their `.hist` directories.
+
+![copyparty — backbone user story](../../assets/flow/copyparty.svg)
+
+<!-- flow-steps:begin (generated from flows/copyparty.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install or fetch the server — Python alone is enough — `python3 -m pip install --user -U copyparty · uv tool run copyparty`
+2. **You**: Point it at a folder and define who may write — `-v /mnt/music:/music:r:rw,foo -a foo:bar`
+3. **copyparty**: Serves it over HTTP, WebDAV, FTP(S), SFTP, TFTP and SMB with a browser UI
+4. **You**: Enable indexing and dedup, then drag files into the browser to upload — `-e2dsa · --dedup`
+5. **copyparty**: up2k splits uploads into blocks, resumes dropped transfers, and stores duplicate bytes once — component: `up2k uploader`
+
+**Value**: A durable, searchable file server in one Python script — no database, no stack to babysit
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -123,7 +144,7 @@ It also shines as the *ingest and transport* layer in front of something heavier
 
 ## Dependencies
 
-- **Required:** just a Python interpreter. The project states "server only needs Python (2 or 3), all dependencies optional." Modern Python 3 recommended; legacy Python 2 reportedly still runs `[未验证]`.
+- **Required:** just a Python interpreter. The README (2026-09) still states verbatim: "server only needs Python (2 or 3), all dependencies optional." Modern Python 3 recommended; actual Python-2 execution was not tested here `[推断]`.
 - **Optional (feature-gated):** Pillow / pyvips / FFmpeg for thumbnails & media transcoding; Mutagen for audio metadata; pyvips/libvips, rawpy/libraw for extra image formats.
 - **Deployment artifacts:** `copyparty-sfx.py` (single self-contained file), Windows `copyparty.exe`, official Docker images, and packages on Arch / Homebrew / NixOS.
 - **Infra:** no external database, message broker, or other service required — it is genuinely self-contained.
@@ -134,17 +155,16 @@ It also shines as the *ingest and transport* layer in front of something heavier
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 1.8 hours across 47 qualifying issues/PRs.
-- **Maintenance (2026-06).** Frequent releases (v1.20.16, 2026-05-26) and last pushed 2026-06 — **active**, fast-moving, not archived. [推断]
-- **Governance / bus factor.** This is the standout flag: a **single-maintainer, `User`-owned repo** (`9001/copyparty`) with ~45k stars. Heavy adoption resting on one person is a real bus-factor risk — if the maintainer steps away, there is no foundation or vendor to carry it. The opinionated, single-author design (e.g. "sync will never be supported") is the flip side of that. [推断]
+- **Responsiveness**: Grade A — median first-response time 1.8 hours across 44 qualifying issues/PRs.
+- **Maintenance (2026-09).** Fast release train: v1.20.16 (2026-05-26) → v1.20.24 (2026-09-19, GitHub API), last pushed 2026-09-27 — **active**, not archived.
+- **Governance / bus factor.** This is the standout flag: a **single-maintainer, `User`-owned repo** (`9001/copyparty`) with ~47k stars. Heavy adoption resting on one person is a real bus-factor risk — if the maintainer steps away, there is no foundation or vendor to carry it. The opinionated, single-author design (e.g. "sync will never be supported") is the flip side of that. [推断]
 - **Age & Lindy verdict.** ~7 years old (created 2019-05) and still actively maintained ⇒ a **moderate Lindy** signal — long enough to have proven durable, but it lives or dies with its maintainer rather than an institution. [推断]
-- **Adoption.** Strong for its niche (45k stars, packaged on Arch/Homebrew/NixOS, official Docker), which is exactly what makes the bus-factor concentration matter. [未验证]
-- **Risk flags.** MIT, no relicense or open-core found; the broad protocol surface (SMB flagged unsafe for WAN) is a *security* concern when internet-facing, separate from project viability. [推断]
+- **Adoption.** Strong for its niche (~47k stars, gh api 2026-09-28; packaged on Arch/Homebrew/NixOS, official Docker), which is exactly what makes the bus-factor concentration matter.
+- **Risk flags.** MIT, no relicense or open-core found; the broad protocol surface (SMB flagged "unsafe, slow, not recommended for wan" in the README) is a *security* concern when internet-facing, separate from project viability.
 
 ## Caveats (unverified)
 
-- [未验证] Star count ~45.4k from a single `gh repo view` fetch (2026-06-26); GitHub stars are unreliable and date-sensitive — treat as indicative only.
-- [未验证] Latest release v1.20.16 ("s6-ready") published 2026-05-26 per the GitHub API this session; repo last pushed 2026-06-16. Not archived, actively maintained.
-- [推断] "Single-file / zero required dependencies" reflects the project's own framing (`copyparty-sfx.py` + "all dependencies optional"); the exact minimum Python 3 version for the current release was not pinned in the fetched docs — verify against the running release before relying on a specific interpreter version.
+- [推断] "Single-file / zero required dependencies" reflects the project's own framing (`copyparty-sfx.py` + "server only needs Python (2 or 3), all dependencies optional", verbatim in the 2026-09 README); the exact minimum Python 3 version for the current release was not pinned in the fetched docs — verify against the running release before relying on a specific interpreter version.
+- [推断] up2k's per-block content-addressed resume/dedup behavior is read from the README's own claims (resumable, multithreaded; dropping a file shows if it already exists; `--dedup` symlinks duplicates), not tested against the protocol.
 - [未验证] Search is filename/path/date/size + audio-tag based; no OCR and no document full-text-content indexing were found in the README — confirm against current docs if content search is a hard requirement.
 - [未验证] File-parser plugins / event hooks can run external programs to add custom tags or trigger downstream processing, but the breadth of out-of-the-box (non-audio) media tagging — e.g. EXIF, video resolution — was not clearly enumerated in the fetched docs.

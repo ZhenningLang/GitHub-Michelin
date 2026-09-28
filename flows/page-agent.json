@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "them": {"en": "page-agent does", "zh": "page-agent 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the library into your frontend app",
+      "zh": "把库装进你的前端应用",
+      "code": "npm install page-agent",
+      "component": {"en": "npm package", "zh": "npm 包"}
+    },
+    {
+      "lane": "you",
+      "en": "Point it at your own OpenAI-compatible endpoint",
+      "zh": "把它接到你自己的 OpenAI 兼容端点",
+      "code": "new PageAgent({ model, baseURL, apiKey })"
+    },
+    {
+      "lane": "you",
+      "en": "Hand it one natural-language instruction",
+      "zh": "给它发一句自然语言指令",
+      "code": "agent.execute('Click the login button')"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the live page DOM as text and lets your LLM pick elements and actions",
+      "zh": "把活的页面 DOM 读成文本，让你的 LLM 挑元素和动作",
+      "component": {"en": "DOM pipeline", "zh": "DOM 管线"}
+    },
+    {
+      "lane": "them",
+      "en": "Dispatches the fills and clicks against the real page in the user's existing session",
+      "zh": "在用户已有的登录会话里，把填写和点击落到真实页面"
+    }
+  ],
+  "value": {
+    "en": "An AI copilot inside your product in a few lines — no backend rewrite, no headless browser, no extension",
+    "zh": "几行代码就有产品内置的 AI 助手——不重写后端，不开 headless 浏览器，也不需要扩展"
+  },
+  "sources": [
+    "README.md Quick Start / NPM Installation ('npm install page-agent'; 'import { PageAgent } from page-agent'; constructor keys model/baseURL/apiKey; agent.execute('Click the login button'))",
+    "README.md One-line integration (CDN script page-agent@1.12.4/dist/iife/page-agent.demo.js)",
+    "README.md Acknowledgments (DOM processing components and prompt are derived from browser-use)"
+  ]
+}
