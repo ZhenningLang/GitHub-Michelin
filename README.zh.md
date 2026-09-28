@@ -116,6 +116,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ComfyUI** | 最强大、最模块化的扩散模型 GUI，带节点图界面，用于在本地构建复杂工作流——但学习曲线陡峭，需要大量 GPU 资源。 | GPL-3.0 | B（6/6） | [中](categories/on-device-ml/comfyui.zh.md) · [EN](categories/on-device-ml/comfyui.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
+| **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/stable-diffusion-cpp.md) |
 
 ### function-calling
 
@@ -245,6 +246,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | MIT | B（5/6） | [EN](categories/agent-memory/app-memory/simplemem.md) · [中](categories/agent-memory/app-memory/simplemem.zh.md) |
 | **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | MIT | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/agent-beacon.md) · [中](categories/agent-memory/coding-agent-memory/agent-beacon.zh.md) |
 | **Engram** | 当你同时用好几个编码 agent、想让它们共用一份由 agent 自己通过 MCP 写入和检索的本地记忆时用它——一个 Go 程序加一个 SQLite 文件，关键词搜索，不做后台采集。 | MIT | B（5/6） | [中](categories/agent-memory/coding-agent-memory/engram.zh.md) · [EN](categories/agent-memory/coding-agent-memory/engram.md) |
+| **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/backpass.zh.md) · [EN](categories/agent-memory/coding-agent-memory/backpass.md) |
 
 ### deep-research
 
@@ -287,6 +289,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | Apache-2.0 | A（5/6） | [EN](categories/rag-retrieval/milvus.md) · [中](categories/rag-retrieval/milvus.zh.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | NOASSERTION | D（4/6） | [EN](categories/rag-retrieval/sourcegraph.md) · [中](categories/rag-retrieval/sourcegraph.zh.md) |
 | **HelixDB** | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/helix-db.zh.md) · [EN](categories/rag-retrieval/helix-db.md) |
+| **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/ix.zh.md) · [EN](categories/rag-retrieval/ix.md) |
 
 ### llm-eval
 
@@ -405,6 +408,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Zulip** | 自托管、按话题分线程的团队聊天（Apache-2.0），适合异步优先的团队——需一台专用 Ubuntu/Debian 主机，语音/视频交给集成。 | Apache-2.0 | A（6/6） | [中](categories/team-chat/zulip.zh.md) · [EN](categories/team-chat/zulip.md) |
 | **Rocket.Chat** | 自托管通信平台（MIT 社区版），带应用市场、全渠道客服与原生联邦——但要运维 MongoDB + NATS + 微服务。 | MIT（社区版）+ EE | A（5/6） | [中](categories/team-chat/rocket-chat.zh.md) · [EN](categories/team-chat/rocket-chat.md) |
 | **Buzz** | 自托管 Nostr 工作区，人和 AI agent 是同一条事件日志上的签名同等成员——agent 原生、pre-1.0、基础设施重。 | Apache-2.0 | B（4/6） | [中](categories/team-chat/buzz.zh.md) · [EN](categories/team-chat/buzz.md) |
+| **Macro** | 用一个工作区替换 Slack + Linear + Notion + CRM + Gmail 客户端，所有东西在同一个库里互相 @ 链接，并通过 MCP 开放给 agent——AGPL、以托管为主，自托管仍是开发者环境。 | AGPL-3.0 | B（6/6） | [中](categories/team-chat/macro.zh.md) · [EN](categories/team-chat/macro.md) |
 | **HiveChat** | 可自托管、管理员统管的中小团队 AI 聊天：管理员配好多家大模型，团队据此聊天，按分组控制可见模型与 token 配额。 | Apache-2.0 | D（3/6） | [中](categories/team-chat/hivechat.zh.md) · [EN](categories/team-chat/hivechat.md) |
 
 ### captcha
@@ -938,6 +942,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **WebDriverAgent** | 当你要自己搭 iOS 自动化底层时用它——它就是 Appium 驱动的那个 WebDriver 服务端，多数团队不会单独跑它。 | BSD-3-Clause | A（4/6） | [中](categories/mobile-automation/webdriveragent.zh.md) · [EN](categories/mobile-automation/webdriveragent.md) |
 | **Maestro** | 当你想用 YAML 流程、几分钟就能上手做 Android／iOS／Web 的端到端测试时用它——但不支持 iOS 真机。 | Apache-2.0 | A（6/6） | [中](categories/mobile-automation/maestro.zh.md) · [EN](categories/mobile-automation/maestro.md) |
 | **Detox** | 当你在测 React Native 应用、想要灰盒同步来压住 flaky 时用它——但它锁 React Native 版本、只支持 JS，且不支持 iOS 真机。 | MIT | B（6/6） | [中](categories/mobile-automation/detox.zh.md) · [EN](categories/mobile-automation/detox.md) |
+| **tapflow** | 当团队里不写代码的人要在浏览器里测 iOS／Android 构建、而模拟器跑在你自己的 Mac 上时使用——但 agent 必须是固定在 Xcode 26–27 的 Apple Silicon Mac，只支持模拟器，而且几乎全由一位维护者写成。 | MIT | B（6/6） | [中](categories/mobile-automation/tapflow.zh.md) · [EN](categories/mobile-automation/tapflow.md) |
 
 ### game-dev
 
@@ -997,6 +1002,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Just Read** | 当你想在浏览器里按自己的方式清掉文章的广告与杂乱、还能按站点记忆选择器时用它——但它是 EULA 授权的源码，并非真正的开源。 | Unlicensed (EULA) | C（6/6） | [中](categories/reading-tools/just-read.zh.md) · [EN](categories/reading-tools/just-read.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | AGPL-3.0 | B（6/6） | [EN](categories/reading-tools/freshrss.md) · [中](categories/reading-tools/freshrss.zh.md) |
 | **Bilingual Book Maker** | 用 AI 翻译把 epub/txt/md/srt/pdf 做成双语对照书的 Python CLI，支持多家 LLM/MT 后端、断点续跑，有 PyPI 包。 | MIT | A（5/6） | [中](categories/reading-tools/bilingual-book-maker.zh.md) · [EN](categories/reading-tools/bilingual-book-maker.md) |
+| **TranslateBooksWithLLMs** | 用本地或云端大模型整本翻译 EPUB／DOCX／SRT／TXT 并保住格式的桌面程序加命令行，带术语表和断点续跑。 | AGPL-3.0 | C（6/6） | [中](categories/reading-tools/translate-books-with-llms.zh.md) · [EN](categories/reading-tools/translate-books-with-llms.md) |
 
 ### speech
 
@@ -1065,6 +1071,7 @@ categories/<分类>/<子类>/INDEX.md …           # 更深的节点 —— 树
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | MIT | ?（0/6） | [EN](categories/terminal-ui/textual.md) · [中](categories/terminal-ui/textual.zh.md) |
 | **tmux** | 当 SSH 上的长任务必须比终端活得久、你要的是最小且无处不在的复用器时用它——但它对 pane 里跑什么一无所知，agent 监管得自己搭胶水。 | ISC | — | [中](categories/terminal-ui/tmux.zh.md) · [EN](categories/terminal-ui/tmux.md) |
 | **Zellij** | 当你想要自带可发现性的终端复用（模式提示条、鼠标、布局、WASM 插件）外加 token 鉴权 web client 时用它——但它是 pre-1.0、issue 积压大，且 web 接入要做真 TLS 运维。 | MIT | — | [中](categories/terminal-ui/zellij.zh.md) · [EN](categories/terminal-ui/zellij.md) |
+| **Pebrel** | 当你在 Windows 上同时跑好几个 AI 编程命令行，想让每个面板自己报告在跑／在等／跑完，并用通知跳回那个面板，同时 SSH/SFTP 也在同一个应用里时用它——但它只有十二周、单人维护，Linux/macOS 仍是 Preview。 | GPL-3.0-or-later | — | [中](categories/terminal-ui/pebrel.zh.md) · [EN](categories/terminal-ui/pebrel.md) |
 
 ### 一个项目页的结构
 
@@ -1242,3 +1249,21 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | --- | --- | --- | --- | --- |
 | **Pentest Swarm AI** | 当授权的 web／API 范围很宽、既要广度又要「已利用、留证据」的实证发现、且必须用任意支持工具调用的模型自托管（含全本地 Ollama）时用它——代价是 alpha 阶段的 swarm 调度器、AGPL-3.0 和单一维护者的巴士系数。 | AGPL-3.0 | C（6/6） | [中](categories/pentest/pentest-swarm-ai.zh.md) · [EN](categories/pentest/pentest-swarm-ai.md) |
 | **Wifit3** | 当授权目标是 Wi-Fi、而你手里是一台没有工具链可装的 Linux／Windows／macOS 笔记本时用它——代价是只有约 19 款受支持 USB 芯片可用、且 v0.x BETA 只有约 3 个月大。 | GPL-2.0 | C（6/6） | [中](categories/pentest/wifit3.zh.md) · [EN](categories/pentest/wifit3.md) |
+
+### disk-cleanup
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **MangoDisk** | 一个清理工具要同时覆盖 macOS、Windows 和 Linux，而且你想读懂每条被删路径背后的规则时用它——代价是永久删除、代码库只有两个月、只有一位维护者。 | GPL-3.0-only | C（6/6） | [中](categories/disk-cleanup/mangodisk.zh.md) · [EN](categories/disk-cleanup/mangodisk.md) |
+
+### 3d-reconstruction
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Spirula Studio** | 当你想把视频或照片在一个解压即用的程序里变成高斯泼溅和带贴图的网格、任意厂商 GPU 都能跑（Vulkan）、自带 SfM、抠图和全景／鱼眼支持时用它——代价是只有一位维护者和 GPL-3.0。 | GPL-3.0 | C（6/6） | [中](categories/3d-reconstruction/spirula-studio.zh.md) · [EN](categories/3d-reconstruction/spirula-studio.md) |
+
+### streaming-clients
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **PipePipe** | 想在安卓手机上不登 Google 看 YouTube／B 站／NicoNico、自动跳过赞助片段、免费后台播放时用它——代价是单人维护，YouTube 一改防护就可能播不了。 | GPL-3.0 | B（6/6） | [中](categories/streaming-clients/pipepipe.zh.md) · [EN](categories/streaming-clients/pipepipe.md) |

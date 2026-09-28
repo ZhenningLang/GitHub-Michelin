@@ -12,6 +12,7 @@
 | **Zulip** | Self-hosted, topic-threaded team chat (Apache-2.0) for async-first teams — a dedicated Ubuntu/Debian host, with voice/video delegated to integrations. | A (6/6) | [→](zulip.md) |
 | **Rocket.Chat** | Self-hosted communications platform (MIT CE) with an app marketplace, omnichannel customer support, and native federation — but MongoDB + NATS + microservices ops. | A (5/6) | [→](rocket-chat.md) |
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | B (4/6) | [→](buzz.md) |
+| **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | B (6/6) | [→](macro.md) |
 | **HiveChat** | Self-hostable, admin-managed AI chat for small/medium teams: one admin wires many LLM providers; the team chats with per-group model access and token quotas. | D (3/6) | [→](hivechat.md) |
 
 ## Comparison matrix
@@ -22,6 +23,7 @@
 | [Zulip](zulip.md) | ✅ | A (6/6) | Best-organized long-form conversation and a clean Apache-2.0 license, but no native calling and it wants a dedicated host on a supported OS. |
 | [Rocket.Chat](rocket-chat.md) | ✅ | A (5/6) | Richest extension surface (marketplace, omnichannel, federation), at the cost of MongoDB + NATS + microservices operations and an EE feature split. |
 | [Buzz](buzz.md) | ✅ | B (4/6) | Only option where agents are key-holding members in the same signed log as humans, but it is ~6 months old, pre-1.0, and needs Postgres + Redis + S3. |
+| [Macro](macro.md) | ✅ | B (6/6) | Links chat, Gmail, tasks, docs and CRM in one graph agents can read, but it is a young vendor's hosted-first product with a ~40-service, build-from-source self-host. |
 | [HiveChat](hivechat.md) | ✅ | D (3/6) | Admin-managed multi-LLM team chat with quotas; different job from the comms platforms above. |
 | Lobe Chat | 未收录 | — | Other self-hosted chat UIs named on the pages. |
 | Slack / Discord / Microsoft Teams | 未收录 | — | Hosted SaaS team chat named across the pages. |

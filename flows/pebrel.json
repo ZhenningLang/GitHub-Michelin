@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Pebrel does", "zh": "Pebrel 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the Windows installer (or unzip the portable build) and launch it", "zh": "跑 Windows 安装器（或解压便携版）并启动", "code": "pebrel.exe"},
+    {"lane": "them", "en": "On first boot, wires turn hooks into Claude Code and Codex", "zh": "首次启动时给 Claude Code 和 Codex 接上回合钩子", "component": {"en": "runtime/pebrel-hook.exe", "zh": "runtime/pebrel-hook.exe"}},
+    {"lane": "you", "en": "Open tabs or splits — local, WSL or a saved SSH host — and start your AI CLIs", "zh": "开标签或分屏——本地、WSL 或已存的 SSH 主机——启动你的 AI 命令行"},
+    {"lane": "them", "en": "Maps each hook event to its pane: tab dot and AI sidebar show working or waiting", "zh": "把每个钩子事件对到面板：标签圆点和 AI 侧栏显示在跑或在等"},
+    {"lane": "them", "en": "Raises a notification tied to the source pane when a turn ends or needs you", "zh": "回合结束或需要你时，弹出绑定来源面板的通知"},
+    {"lane": "you", "en": "Click the notification to land in that pane and answer, or read the captured reply", "zh": "点通知直接回到那个面板作答，或阅读收下的回答"}
+  ],
+  "value": {
+    "en": "You stop cycling through tabs to find which agent finished or is stuck on a prompt",
+    "zh": "不用再挨个翻标签找哪个 agent 跑完了、哪个卡在确认上"
+  },
+  "sources": [
+    "README 'Download' (run the installer or extract the ZIP and launch pebrel.exe) and 'AI CLI Workflows' (activity states, notifications follow their source pane, captured answers open in a reader)",
+    "INSTALL.md 'First run' (Claude Code / Codex turn notifications are wired on first boot; pebrel setup-ai --remove to undo) and portable layout table (runtime/pebrel-hook.exe: AI turn-notification bridge)",
+    "README 'Terminals and Sessions' / 'SSH and Files' (tabs, split panes, WSL and SSH sessions, saved hosts)",
+    "nebula_app/src/ai_hook/installation.rs (Codex hook events SessionStart, UserPromptSubmit, PermissionRequest, Stop)"
+  ]
+}

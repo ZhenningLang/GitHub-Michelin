@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TBL does",
+    "zh": "TBL 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download the release for your OS, run it, open the local web page",
+      "zh": "下载对应系统的发行包，运行后打开本地网页",
+      "code": "TranslateBook.exe · ./TranslateBook",
+      "component": {
+        "en": "desktop app + web UI",
+        "zh": "桌面程序 + 网页界面"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Pick a provider: pull a local model or paste a cloud API key",
+      "zh": "选服务商：拉一个本地模型，或粘贴云端 API key",
+      "code": "ollama pull qwen3:14b"
+    },
+    {
+      "lane": "you",
+      "en": "Drop the book or subtitle file, choose the target language, start",
+      "zh": "拖入书或字幕文件，选目标语言，开始"
+    },
+    {
+      "lane": "them",
+      "en": "Swaps formatting tags for placeholders and splits the text into ~450-token chunks",
+      "zh": "把排版标签换成占位符，把正文切成约 450 token 的块",
+      "component": {
+        "en": "format adapter",
+        "zh": "格式适配器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Sends each chunk with matching glossary terms, checks placeholders, saves it to a checkpoint",
+      "zh": "每块带上相关术语发给模型，校验占位符，译完即存断点",
+      "component": {
+        "en": "SQLite checkpoint",
+        "zh": "SQLite 断点库"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Rebuilds the original file with the translated text",
+      "zh": "把译文装回原文件结构，输出新文件",
+      "code": "book (Chinese).epub"
+    }
+  ],
+  "value": {
+    "en": "A whole book or subtitle file translated in its original layout, without pasting chapters or restarting after a crash",
+    "zh": "整本书或整份字幕按原格式译好，不用逐章粘贴，崩了也不用从头来"
+  },
+  "sources": [
+    "https://github.com/hydropix/TranslateBooksWithLLMs README Quick Start (TranslateBook.exe / ./TranslateBook, http://localhost:5000, ollama pull qwen3:14b)",
+    "README CLI section (auto-generates \"book (Chinese).epub\"; MAX_TOKENS_PER_CHUNK=450)",
+    "src/core/epub/tag_preservation.py + placeholder_validator.py (tags replaced by placeholders, validated, mutation correction)",
+    "docs/GLOSSARY.md (glossary injected only into chunks where a term appears)",
+    "src/persistence/database.py + checkpoint_manager.py (SQLite job checkpoints, resume)"
+  ]
+}

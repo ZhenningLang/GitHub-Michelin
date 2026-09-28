@@ -15,6 +15,7 @@
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | C (6/6) | [→](just-read.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | B (6/6) | [→](freshrss.md) |
 | **Bilingual Book Maker** | Use it when you want a scriptable CLI that turns epub/txt/md/srt/pdf into bilingual books via LLM/MT APIs, with resume and PyPI packaging — not an agent pipeline. | A (5/6) | [→](bilingual-book-maker.md) |
+| **TranslateBooksWithLLMs** | Use it when a non-developer must translate a whole EPUB/DOCX/SRT/TXT into one target language with formatting kept, a glossary, and resume — via a desktop app on Ollama or a cloud key; single-user localhost only. | C (6/6) | [→](translate-books-with-llms.md) |
 
 
 ## Comparison matrix
@@ -28,6 +29,7 @@
 | [NetNewsWire](netnewswire.md) | ✅ | B (6/6) | Use it when you read many feeds on Mac/iPhone and want a fast, ad-free native RSS client you own — but only on Apple platforms, never elsewhere. |
 | [Just Read](just-read.md) | ✅ | C (6/6) | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. |
 | [Bilingual Book Maker](bilingual-book-maker.md) | ✅ | A (5/6) | The mature CLI path for bilingual ebook files: any LLM/MT backend, resume, PyPI — but paragraph-stream translation without a curated glossary. |
+| [TranslateBooksWithLLMs](translate-books-with-llms.md) | ✅ | C (6/6) | GUI + CLI whole-file translator with placeholder-checked tags, per-book glossary and SQLite resume — but no PDF, no PyPI package, AGPL, single maintainer, and no multi-user auth. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

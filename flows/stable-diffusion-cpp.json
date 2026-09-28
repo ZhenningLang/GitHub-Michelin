@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "stable-diffusion.cpp does",
+    "zh": "stable-diffusion.cpp 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download the sd binary for your backend from Releases, or build it with CMake",
+      "zh": "从 Releases 下载对应后端的 sd 二进制，或用 CMake 编译",
+      "component": {"en": "sd-cli / sd-server binaries", "zh": "sd-cli / sd-server 二进制"}
+    },
+    {
+      "lane": "you",
+      "en": "Download model weights as .safetensors, .ckpt or .gguf",
+      "zh": "下载模型权重（.safetensors、.ckpt 或 .gguf）"
+    },
+    {
+      "lane": "you",
+      "en": "Generate an image with one command",
+      "zh": "一条命令生成图片",
+      "code": "./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\""
+    },
+    {
+      "lane": "them",
+      "en": "Detects the model family, loads the weights and quantizes them on load if you asked",
+      "zh": "识别模型家族，加载权重，按需在加载时量化"
+    },
+    {
+      "lane": "them",
+      "en": "Runs text encoder, sampler and VAE on the ggml backend, spilling weights to RAM when VRAM is short",
+      "zh": "在 ggml 后端上跑文本编码、采样和 VAE，显存不够时把权重挪到内存",
+      "component": {"en": "patched ggml", "zh": "打过补丁的 ggml"}
+    },
+    {
+      "lane": "them",
+      "en": "Writes the PNG with generation parameters embedded, WebUI-style",
+      "zh": "写出 PNG，并按 WebUI 格式嵌入生成参数"
+    }
+  ],
+  "value": {
+    "en": "Diffusion on your own CPU/GPU from one native binary — no Python or PyTorch environment to keep in step with your drivers",
+    "zh": "一个原生二进制就能在自己的 CPU/GPU 上跑扩散模型，不用维护与驱动对齐的 Python/PyTorch 环境"
+  },
+  "sources": [
+    "https://github.com/leejet/stable-diffusion.cpp README Quick Start (releases page / build guide; weight formats; ./bin/sd-cli -m ../models/v1-5-pruned-emaonly.safetensors -p \"a lovely cat\")",
+    "README Features (ckpt/safetensors/GGUF; webui-compatible parameter string embedded in PNG output)",
+    "docs/build.md (patched ggml submodule vs SD_USE_UPSTREAM_GGML), docs/quantization_and_gguf.md (--type quantizes on load)",
+    "docs/performance.md (--offload-to-cpu, --params-backend, automatic segmented execution when VRAM is short)"
+  ]
+}

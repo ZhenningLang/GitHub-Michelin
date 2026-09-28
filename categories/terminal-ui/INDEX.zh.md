@@ -18,6 +18,7 @@
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | B（6/6） | [→](textual.zh.md) |
 | **tmux** | 当 SSH 上的长任务必须比终端活得久、你要的是最小且无处不在的复用器时用它——但它对 pane 里跑什么一无所知，agent 监管得自己搭胶水。 | A（6/6） | [→](tmux.zh.md) |
 | **Zellij** | 当你想要自带可发现性的终端复用（模式提示条、鼠标、布局、WASM 插件）外加 token 鉴权 web client 时用它——但它是 pre-1.0、issue 积压大，且 web 接入要做真 TLS 运维。 | A（6/6） | [→](zellij.zh.md) |
+| **Pebrel** | 当你在 Windows 上同时跑好几个 AI 编程命令行，想让每个面板自己报告在跑／在等／跑完，并用通知跳回那个面板，同时 SSH/SFTP 也在同一个应用里时用它——但它只有十二周、单人维护，Linux/macOS 仍是 Preview。 | C（5/6） | [→](pebrel.zh.md) |
 
 
 ## 对比矩阵
@@ -33,6 +34,7 @@
 | [Warp](warp.zh.md) | ✅ | B（6/6） | 带命令块和编码 agent 的现代 AI 终端；GitHub 仓库仅用于 issue，产品为专有闭源软件。 |
 | [tmux](tmux.zh.md) | ✅ | A（6/6） | SSH 长任务要活得比终端久时的最小通用复用器；对 pane 内容无感知，agent 监管自己搭。 |
 | [zellij](zellij.zh.md) | ✅ | A（6/6） | 自带提示条、鼠标、布局、WASM 插件与鉴权 web client 的“人本位”复用器；pre-1.0，issue 积压大。 |
+| [pebrel](pebrel.zh.md) | ✅ | C（5/6） | 以 Windows 为先的 GPU 终端，给 Claude Code／Codex 装钩子让面板报告 agent 状态，自带 SSH/SFTP；非常年轻、单人维护、GPL-3.0。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里
