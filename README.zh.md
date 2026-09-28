@@ -1012,6 +1012,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **NetNewsWire** | 当你在 Mac／iPhone 上读大量订阅、想要一个快速无广告、数据自己掌控的原生 RSS 客户端时用它——但它仅限 Apple 平台，别处一概不支持。 | MIT | B（6/6） | [中](categories/reading-tools/netnewswire.zh.md) · [EN](categories/reading-tools/netnewswire.md) |
 | **Just Read** | 当你想在浏览器里按自己的方式清掉文章的广告与杂乱、还能按站点记忆选择器时用它——但它是 EULA 授权的源码，并非真正的开源。 | Unlicensed (EULA) | C（6/6） | [中](categories/reading-tools/just-read.zh.md) · [EN](categories/reading-tools/just-read.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | AGPL-3.0 | B（6/6） | [EN](categories/reading-tools/freshrss.md) · [中](categories/reading-tools/freshrss.zh.md) |
+| **Horizon** | 当订阅源多到刷不完、你想要一条自托管的 LLM 流水线每天替你打分、筛选、去重并生成双语简报，而不是一个自己刷的阅读器时用它。 | MIT | B（6/6） | [EN](categories/reading-tools/horizon.md) · [中](categories/reading-tools/horizon.zh.md) |
 | **Bilingual Book Maker** | 用 AI 翻译把 epub/txt/md/srt/pdf 做成双语对照书的 Python CLI，支持多家 LLM/MT 后端、断点续跑，有 PyPI 包。 | MIT | A（5/6） | [中](categories/reading-tools/bilingual-book-maker.zh.md) · [EN](categories/reading-tools/bilingual-book-maker.md) |
 | **TranslateBooksWithLLMs** | 用本地或云端大模型整本翻译 EPUB／DOCX／SRT／TXT 并保住格式的桌面程序加命令行，带术语表和断点续跑。 | AGPL-3.0 | C（6/6） | [中](categories/reading-tools/translate-books-with-llms.zh.md) · [EN](categories/reading-tools/translate-books-with-llms.md) |
 

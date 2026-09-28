@@ -330,6 +330,7 @@ Firebase,categories/databases/database-engines/supabase.md,,no
 Flink CDC,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Fluent Bit / Fluentd,categories/dev-utilities/ops-infra/telegraf.md,,no
 Flutter,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+Follow (RSSNext),categories/reading-tools/horizon.md,,no
 FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
 Fooocus,categories/on-device-ml/comfyui.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
@@ -787,6 +788,7 @@ reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,n
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
+RSSHub,categories/reading-tools/horizon.md,,no
 Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no

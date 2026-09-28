@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {"en": "Horizon does", "zh": "Horizon 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install from a clone, then answer the wizard's interest questions — it writes data/config.json",
+      "zh": "克隆后安装，再回答向导的兴趣问题——它生成 data/config.json",
+      "code": "uv sync · uv run horizon-wizard",
+      "component": {"en": "setup wizard", "zh": "配置向导"}
+    },
+    {
+      "lane": "you",
+      "en": "Put your model key in .env — an env-var name, never the secret itself, goes in the config",
+      "zh": "把模型 API key 写进 .env——配置里只写环境变量名，不写密钥本身",
+      "code": "OPENAI_API_KEY=sk-your-key",
+      "component": {"en": ".env", "zh": ".env"}
+    },
+    {
+      "lane": "you",
+      "en": "Start one run over the last 24 hours (or schedule it via cron / GitHub Actions)",
+      "zh": "手动跑一次最近 24 小时的流水线（或用 cron 定时）",
+      "code": "uv run horizon",
+      "component": {"en": "horizon CLI", "zh": "horizon 命令行"}
+    },
+    {
+      "lane": "them",
+      "en": "Pull the window's items from every configured source — RSS, Hacker News, Reddit, Telegram…",
+      "zh": "抓取所有配置源在时间窗内的条目——RSS、HN、Reddit 等",
+      "component": {"en": "scrapers", "zh": "抓取器"}
+    },
+    {
+      "lane": "them",
+      "en": "Route each item to a profile, score it 0–10, drop below-threshold items, merge repeat stories",
+      "zh": "路由到 profile，按 0–10 打分，低于阈值丢弃，重复合并",
+      "component": {"en": "profiles", "zh": "profile 规则"}
+    },
+    {
+      "lane": "them",
+      "en": "Enrich survivors with background and top comments, write the English + Chinese briefing",
+      "zh": "补背景与热门评论摘要，写出中英双语简报",
+      "component": {"en": "digest writer", "zh": "简报生成"}
+    }
+  ],
+  "value": {
+    "en": "A briefing that reads handpicked in two languages — you stop opening twenty feeds a day",
+    "zh": "每天读到一份像人工精选过的双语简报——不用再开二十个订阅源"
+  },
+  "sources": [
+    "README.md — Quick Start (uv sync / uv run horizon-wizard / .env / uv run horizon)",
+    "README.md — Supported Sources / Where Your Briefing Goes",
+    "docs/profiles.md — profile routing, 0–10 rubric, thresholds, dedup",
+    "docs/configuration.md — AI Providers (api_key_env, Ollama)"
+  ]
+}

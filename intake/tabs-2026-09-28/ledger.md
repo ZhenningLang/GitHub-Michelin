@@ -66,8 +66,8 @@
 | stanfordnlp/dspy | sync | done | categories/agent-frameworks/workflow-builders/dspy.md | 新鲜页，sync-entry 按阈值未重核，无改动 | stanfordnlp/dspy |
 | supermemoryai/supermemory | add | running |  |  | supermemoryai/supermemory |
 | synthetic-sciences/openscience | add | running |  |  | synthetic-sciences/openscience |
-| Thysrael/Horizon | add | running |  |  | thysrael/horizon |
-| vectorize-io/hindsight | add | pending |  |  | vectorize-io/hindsight |
+| Thysrael/Horizon | add | done | categories/reading-tools/horizon.md |  | thysrael/horizon |
+| vectorize-io/hindsight | add | running |  |  | vectorize-io/hindsight |
 | vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |
 | VictorTaelin/OptMem | add | pending |  |  | victortaelin/optmem |
 | video-db/call.md | add | pending |  |  | video-db/call.md |
