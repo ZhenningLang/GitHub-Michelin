@@ -2,7 +2,7 @@
 name: FAISS
 slug: faiss
 repo: https://github.com/facebookresearch/faiss
-category: rag-retrieval
+category: vector-search
 tags: [vector-search, ann, similarity-search, embeddings, ivf, hnsw, pq, gpu, clustering]
 language: C++
 license: MIT
@@ -82,7 +82,7 @@ health:
 
 Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠密向量的高效相似度检索与聚类——它是众多向量库底层那个事实标准的进程内 ANN 索引（IVF / HNSW / PQ，CPU + GPU）。
 
-![faiss — 健康度雷达](../../assets/health/faiss.zh.svg)
+![faiss — 健康度雷达](../../../assets/health/faiss.zh.svg)
 
 ## 何时使用
 
@@ -92,10 +92,10 @@ Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠�
 
 ## 何时不用
 
-- **你要的是托管的向量*数据库*，而不是一个库。** 这是最锋利的界线：FAISS 是进程内索引，不是服务。它**除了 `write_index`/`read_index` 文件外没有内建持久化，没有 metadata/payload 存储，没有丰富的 metadata 过滤，没有按 id 的 CRUD/upsert 事务模型，没有复制，没有多租户，也没有网络 API**。如果你想要这些，就跑一个向量数据库——Qdrant、Milvus，或像 [FalkorDB](falkordb.zh.md) 这样的图+向量引擎——它们当中很多内部就用着 FAISS 风格的索引，只是额外补上了那些你本来要自己造的运维面。
+- **你要的是托管的向量*数据库*，而不是一个库。** 这是最锋利的界线：FAISS 是进程内索引，不是服务。它**除了 `write_index`/`read_index` 文件外没有内建持久化，没有 metadata/payload 存储，没有丰富的 metadata 过滤，没有按 id 的 CRUD/upsert 事务模型，没有复制，没有多租户，也没有网络 API**。如果你想要这些，就跑一个向量数据库——Qdrant、Milvus，或像 [FalkorDB](../structured-retrieval/falkordb.zh.md) 这样的图+向量引擎——它们当中很多内部就用着 FAISS 风格的索引，只是额外补上了那些你本来要自己造的运维面。
 - **你不想自己扛 sharding 和持久化。** 一个 FAISS 索引受限于单进程的 RAM（或单张 GPU 的显存）。把语料拆到多机、分片、复制、重启后重新加载，全是**你的**代码——没有集群这回事。
 - **你需要在查询时做属性/metadata 过滤。** FAISS 检索向量、返回 ID；把「靠近这个向量 且 `tenant=x` 且 `date>...`」组合起来不是它的活。请用带 payload 过滤的存储，或在外部过滤（并承担由此带来的召回率代价）。
-- **你需要图 / 多跳遍历。** 它只做扁平的最近邻，不做关系游走。要做实体/关系遍历或 GraphRAG，见 [FalkorDB](falkordb.zh.md)。
+- **你需要图 / 多跳遍历。** 它只做扁平的最近邻，不做关系游走。要做实体/关系遍历或 GraphRAG，见 [FalkorDB](../structured-retrieval/falkordb.zh.md)。
 - **你想要零调参。** 选索引类型及其参数（`nlist`、`nprobe`、HNSW 的 `M`/`efSearch`、PQ 的 `m`/`nbits`）是一个实打实的召回率-延迟-内存权衡；要拿到好结果，需要一定的 ANN 经验并在你自己的数据上做基准测试。
 - **你只有几千条向量。** 小规模下，暴力的 NumPy/`sklearn` 余弦检索（或你现有 Postgres 里的 pgvector）更简单，索引那套机制纯属杀鸡用牛刀。
 
@@ -103,8 +103,8 @@ Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FalkorDB](falkordb.zh.md) | ✅ | 需要带向量和全文索引的持久化 GraphRAG 图数据库时，选 FalkorDB。 | 图数据库（Redis 模块），带向量 + 全文索引做 GraphRAG；是一个带遍历能力的持久化多查询*服务*。FAISS 只是进程内的 ANN 索引——没有图、没有服务、没有 metadata 存储。 |
-| [PageIndex](pageindex.zh.md) | ✅ | 需要单篇文档的无向量推理树检索时，选 PageIndex。 | 对单篇文档做「无向量」推理树检索，是完全不同的检索原语（LLM 在 ToC 树上导航，无 embedding/ANN）。FAISS 正是 PageIndex 刻意回避的那条 embedding+ANN 路径。 |
+| [FalkorDB](../structured-retrieval/falkordb.zh.md) | ✅ | 需要带向量和全文索引的持久化 GraphRAG 图数据库时，选 FalkorDB。 | 图数据库（Redis 模块），带向量 + 全文索引做 GraphRAG；是一个带遍历能力的持久化多查询*服务*。FAISS 只是进程内的 ANN 索引——没有图、没有服务、没有 metadata 存储。 |
+| [PageIndex](../structured-retrieval/pageindex.zh.md) | ✅ | 需要单篇文档的无向量推理树检索时，选 PageIndex。 | 对单篇文档做「无向量」推理树检索，是完全不同的检索原语（LLM 在 ToC 树上导航，无 embedding/ANN）。FAISS 正是 PageIndex 刻意回避的那条 embedding+ANN 路径。 |
 | Qdrant | 未收录 | 需要带 payload 过滤和持久化的 Rust 向量数据库时，选 Qdrant。 | Rust 写的向量*数据库*，带 payload 过滤、持久化、gRPC/REST API、分片/复制；开箱即运维，而 FAISS 是你要自己包装并运维的裸库。 |
 | [Milvus](milvus.zh.md) | ✅ | 需要带水平扩展、metadata 和控制平面的分布式向量数据库时，选 Milvus。 | 分布式向量数据库（底层常嵌 FAISS/HNSW 引擎），带水平扩展、metadata 和控制平面；跑起来更重，但 sharding/持久化不用你造。 |
 | hnswlib | 未收录 | 只需要很小的 HNSW-only C++/Python 库时，选 hnswlib。 | 极小的纯头文件 C++/Python HNSW-only 库；比 FAISS 还轻、易嵌入，但单算法，没有 GPU / PQ / 聚类这些广度。 |

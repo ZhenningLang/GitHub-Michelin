@@ -25,7 +25,7 @@
 | [Docling](docling.md) | ✅ | A (6/6) | Rich-document parsing (layout + tables) to structured Markdown/JSON; heavier model deps than plain text extraction. |
 | [MarkItDown](markitdown.md) | ✅ | B (6/6) | Lightweight Python library converting office documents and files to Markdown for LLM ingestion; simpler than Docling but less layout-aware. |
 | [olmOCR](olmocr.md) | ✅ | C (5/6) | VLM-based PDF linearization for LLM datasets; handles equations, tables, and handwriting but requires GPU. |
-| [PageIndex](../rag-retrieval/pageindex.md) | ✅ | B (6/6) | Builds a retrieval index over long structured docs — downstream of parsing, not a parser. |
+| [PageIndex](../rag-retrieval/structured-retrieval/pageindex.md) | ✅ | B (6/6) | Builds a retrieval index over long structured docs — downstream of parsing, not a parser. |
 | [any2html](any2html.md) | ✅ | D (5/6) | Use it when you need any2html in this category. |
 | [Dedoc](dedoc.md) | ✅ | B (5/6) | Multi-format logical-tree parsing with tables, annotations, and attachments; deeper than lightweight Markdown conversion, but heavier on Linux dependencies and limited on difficult scans. |
 | [Bella Domify](bella-domify.md) | ✅ | C (5/6) | Detailed pdf2docx-derived DOM trees and service hooks; rich layout objects, but heavy infrastructure, optional outbound OCR, and an unresolved GPL v2/v3 declaration conflict. |

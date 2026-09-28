@@ -2,7 +2,7 @@
 name: FAISS
 slug: faiss
 repo: https://github.com/facebookresearch/faiss
-category: rag-retrieval
+category: vector-search
 tags: [vector-search, ann, similarity-search, embeddings, ivf, hnsw, pq, gpu, clustering]
 language: C++
 license: MIT
@@ -82,7 +82,7 @@ health:
 
 A C++ library (with NumPy-friendly Python bindings) from Meta FAIR for efficient similarity search and clustering of dense vectors — the de-facto in-process ANN index (IVF / HNSW / PQ, CPU + GPU) under many vector stores.
 
-![faiss — health radar](../../assets/health/faiss.svg)
+![faiss — health radar](../../../assets/health/faiss.svg)
 
 ## When to use
 
@@ -92,10 +92,10 @@ You also reach for it when you outgrow CPU: the same library has a GPU path (`fa
 
 ## When NOT to use
 
-- **You need a managed vector *database*, not a library.** This is the sharpest line: FAISS is an in-process index, not a service. It has **no built-in persistence beyond `write_index`/`read_index` files, no metadata/payload storage, no rich metadata filtering, no CRUD/upsert-by-id transactional model, no replication, no multi-tenancy, and no network API**. If you want any of those, run a vector DB — Qdrant, Milvus, or a graph+vector engine like [FalkorDB](falkordb.md) — many of which use FAISS-style indexes internally but add the operational surface you'd otherwise build yourself.
+- **You need a managed vector *database*, not a library.** This is the sharpest line: FAISS is an in-process index, not a service. It has **no built-in persistence beyond `write_index`/`read_index` files, no metadata/payload storage, no rich metadata filtering, no CRUD/upsert-by-id transactional model, no replication, no multi-tenancy, and no network API**. If you want any of those, run a vector DB — Qdrant, Milvus, or a graph+vector engine like [FalkorDB](../structured-retrieval/falkordb.md) — many of which use FAISS-style indexes internally but add the operational surface you'd otherwise build yourself.
 - **You don't want to own sharding and persistence.** A FAISS index is bounded by one process's RAM (or one GPU's memory). Splitting a corpus across machines, sharding, replicating, and reloading on restart is **your** code to write — there is no cluster.
 - **You need attribute/metadata filtering at query time.** FAISS searches vectors and returns IDs; combining "near this vector AND `tenant=x` AND `date>...`" is not its job. Use a store with payload filtering, or filter externally (with the recall caveats that brings).
-- **You need graph / multi-hop traversal.** It does flat nearest-neighbor, not relationship walks. For entity/relationship traversal or GraphRAG, see [FalkorDB](falkordb.md).
+- **You need graph / multi-hop traversal.** It does flat nearest-neighbor, not relationship walks. For entity/relationship traversal or GraphRAG, see [FalkorDB](../structured-retrieval/falkordb.md).
 - **You want zero tuning.** Picking an index type and its parameters (`nlist`, `nprobe`, HNSW `M`/`efSearch`, PQ `m`/`nbits`) is a real recall-vs-latency-vs-memory tradeoff; getting good results assumes some ANN expertise and benchmarking on your own data.
 - **You only have a few thousand vectors.** At small scale a brute-force NumPy/`sklearn` cosine search (or pgvector in your existing Postgres) is simpler and the index machinery is overkill.
 
@@ -103,8 +103,8 @@ You also reach for it when you outgrow CPU: the same library has a GPU path (`fa
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FalkorDB](falkordb.md) | ✅ | Choose FalkorDB when you need a persistent graph database with vector and full-text indexing for GraphRAG. | Graph database (Redis module) with vector + full-text indexing for GraphRAG; a persistent multi-query *service* with traversal. FAISS is just the in-process ANN index — no graph, no server, no metadata store. |
-| [PageIndex](pageindex.md) | ✅ | Choose PageIndex when you need vectorless reasoning-tree retrieval over one document. | "Vectorless" reasoning-tree retrieval over one document; a different retrieval primitive entirely (LLM navigates a ToC tree, no embeddings/ANN). FAISS is the embedding+ANN path PageIndex deliberately avoids. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | Choose FalkorDB when you need a persistent graph database with vector and full-text indexing for GraphRAG. | Graph database (Redis module) with vector + full-text indexing for GraphRAG; a persistent multi-query *service* with traversal. FAISS is just the in-process ANN index — no graph, no server, no metadata store. |
+| [PageIndex](../structured-retrieval/pageindex.md) | ✅ | Choose PageIndex when you need vectorless reasoning-tree retrieval over one document. | "Vectorless" reasoning-tree retrieval over one document; a different retrieval primitive entirely (LLM navigates a ToC tree, no embeddings/ANN). FAISS is the embedding+ANN path PageIndex deliberately avoids. |
 | Qdrant | 未收录 | Choose Qdrant when you need a Rust vector database with payload filtering and persistence. | Rust vector *database* with payload filtering, persistence, gRPC/REST API, sharding/replication; turnkey ops where FAISS is a bare library you wrap and operate yourself. |
 | [Milvus](milvus.md) | ✅ | Choose Milvus when you need a distributed vector database with horizontal scale and metadata/control-plane features. | Distributed vector database (often embedding FAISS/HNSW engines under the hood) with horizontal scale, metadata, and a control plane; heavier to run, but you don't build sharding/persistence. |
 | hnswlib | 未收录 | Choose hnswlib when a tiny HNSW-only C++/Python library is enough. | Tiny header-only C++/Python HNSW-only library; even lighter than FAISS and easy to embed, but single-algorithm and no GPU / PQ / clustering breadth. |

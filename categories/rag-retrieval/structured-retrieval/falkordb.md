@@ -2,7 +2,7 @@
 name: FalkorDB
 slug: falkordb
 repo: https://github.com/FalkorDB/FalkorDB
-category: rag-retrieval
+category: structured-retrieval
 tags: [graph-database, graphrag, knowledge-graph, opencypher, graphblas, vector-index]
 language: C
 license: SSPL-1.0
@@ -77,7 +77,7 @@ health:
 
 A sparse-matrix (GraphBLAS) property-graph database that runs as a Redis module, speaks OpenCypher, and adds vector + full-text indexing to back GraphRAG retrieval for LLM apps.
 
-![falkordb — health radar](../../assets/health/falkordb.svg)
+![falkordb — health radar](../../../assets/health/falkordb.svg)
 
 ## When to use
 
@@ -98,8 +98,8 @@ You're also a good fit if you came from RedisGraph and need somewhere to land af
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [graphify](graphify.md) | ✅ | Pick graphify when you need lightweight code/document graph construction, not the graph database itself. | Lightweight code/document-to-graph builder; FalkorDB is the storage+query engine, graphify is upstream graph construction — complementary, not a substitute. |
-| [code-review-graph](code-review-graph.md) | ✅ | Pick code-review-graph when you need a domain-specific PR/code-review graph tool. | Domain-specific (code-review) graph tool; FalkorDB is a general graph DB you'd build such a tool on. |
+| [graphify](../code-intelligence/graphify.md) | ✅ | Pick graphify when you need lightweight code/document graph construction, not the graph database itself. | Lightweight code/document-to-graph builder; FalkorDB is the storage+query engine, graphify is upstream graph construction — complementary, not a substitute. |
+| [code-review-graph](../code-intelligence/code-review-graph.md) | ✅ | Pick code-review-graph when you need a domain-specific PR/code-review graph tool. | Domain-specific (code-review) graph tool; FalkorDB is a general graph DB you'd build such a tool on. |
 | [PageIndex](pageindex.md) | ✅ | Pick PageIndex when the retrieval primitive is a reasoning document tree rather than a property graph database. | Reasoning-based document tree / retrieval index, not a graph database — different retrieval primitive (hierarchical index vs. property graph). |
 | Neo4j | 未收录 | Pick Neo4j when the largest property-graph ecosystem matters more than Redis embedding or sparse-matrix speed. | Industry-standard property graph with the largest ecosystem (Bolt, GDS, APOC); heavier, GPLv3/commercial. FalkorDB is faster on sparse-matrix traversals and Redis-embedded but younger and SSPL. |
 | Memgraph | 未收录 | Pick Memgraph when you want an in-memory Cypher graph DB without the Redis-module operating model. | In-memory, Cypher-compatible, streaming-focused graph DB; BSL-licensed. Overlaps FalkorDB's in-memory niche without the Redis-module model. |

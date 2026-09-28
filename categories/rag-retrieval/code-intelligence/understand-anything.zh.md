@@ -2,7 +2,7 @@
 name: Understand-Anything
 slug: understand-anything
 repo: https://github.com/Egonex-AI/Understand-Anything
-category: rag-retrieval
+category: code-intelligence
 tags: [knowledge-graph, code-intelligence, tree-sitter, agent-plugin, claude-code, semantic-search, codebase-onboarding]
 language: TypeScript
 license: MIT
@@ -77,7 +77,7 @@ health:
 
 一个 TypeScript 工具，把任意代码库——或文档／知识库、Figma 设计文件——变成可交互、可搜索的知识图谱，让 agent 用自然语言提问。它以插件形式装进 Claude Code、Cursor、Copilot、Codex、Gemini CLI 等 12+ 种助手，生成的图还可以提交进仓库，队友只需 Node 就能打开只读看板——不需要 LLM、不需要 API key。
 
-![understand-anything — 健康度雷达](../../assets/health/understand-anything.zh.svg)
+![understand-anything — 健康度雷达](../../../assets/health/understand-anything.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ health:
 - **可疑的人气 / 信任信号。** 一个约 846 次提交、约 6 个月历史的仓库有约 83.3k star 和约 7.0k fork：这个数字本身经 GitHub API 核实，但它对采用度／审核的含义未经核实，不应当作社会证明——见存疑。别*因为* star 数而选它。
 - **你需要完全离线、确定性、无 LLM 的提取。** 自然语言摘要和“提问”需要 LLM 后端：除非你跑本地 Ollama，否则就是 API key、成本、不确定性，以及把代码／文档内容发给你的模型提供方。只有只读*看板*那条路径是真正无 LLM 的（只需 Node）。`[未验证]` 具体的提供方出网行为。
 - **你在传不能外泄的私有代码，且不愿跑本地模型。** 项目的 `SECURITY.md` 自称是本地-only 工具、不 phone home、看板以 access token + 路径 allowlist 保护——但这是自我声明，且*分析*步骤仍会把源码发给你指定的 LLM 提供方。发机密仓库前请自行核实该声明（并使用本地模型）。
-- **纯文档/prose 的向量 RAG，不需要代码图。** 想对长文档做段落检索，[PageIndex](pageindex.zh.md)（在目录树上推理）更合适；想要可建应用的真·可查询图数据库，用 [FalkorDB](falkordb.zh.md)。
+- **纯文档/prose 的向量 RAG，不需要代码图。** 想对长文档做段落检索，[PageIndex](../structured-retrieval/pageindex.zh.md)（在目录树上推理）更合适；想要可建应用的真·可查询图数据库，用 [FalkorDB](../structured-retrieval/falkordb.zh.md)。
 
 ## 横向对比
 
@@ -103,8 +103,8 @@ health:
 |---|---|---|---|
 | [graphify](graphify.zh.md) | ✅ | 需要文档较完整的 Python CLI/MCP 代码文档建图管线时，选 graphify。 | 最近的同类：代码/文档 → 给 agent 用的可查询图，但有文档完备的 Python CLI + MCP server、36 种语法、Leiden 聚类、可移植 JSON/HTML/Cypher 产物。更可检视、文档更全；Understand-Anything 是 TypeScript、插件优先、更年轻、文档更薄。 |
 | [code-review-graph](code-review-graph.zh.md) | ✅ | 需要聚焦代码评审/爆炸半径的管线时，选 code-review-graph。 | 窄域的代码评审/爆炸半径管线（AST→SQLite→MCP），带风险评分 CI Action 和代码不出网的 runner 方案。Understand-Anything 是通用探索/查询工具，不是 PR 评审闸门。 |
-| [PageIndex](pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 基于推理的*文档*层级检索（无代码 AST/调用图）；检索原语不同——prose 目录树 vs 代码/实体图。 |
-| [FalkorDB](falkordb.zh.md) | ✅ | 需要真正的持久化属性图后端时，选 FalkorDB。 | 真正的持久化属性图数据库（Redis 模块、OpenCypher、向量索引），你在它上面建应用；Understand-Anything 是开箱即用的抽取-查询工具，不是图后端。 |
+| [PageIndex](../structured-retrieval/pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 基于推理的*文档*层级检索（无代码 AST/调用图）；检索原语不同——prose 目录树 vs 代码/实体图。 |
+| [FalkorDB](../structured-retrieval/falkordb.zh.md) | ✅ | 需要真正的持久化属性图后端时，选 FalkorDB。 | 真正的持久化属性图数据库（Redis 模块、OpenCypher、向量索引），你在它上面建应用；Understand-Anything 是开箱即用的抽取-查询工具，不是图后端。 |
 | [Sourcegraph](sourcegraph.zh.md) / [SCIP](scip.zh.md) | ✅ | 需要工业级、规模化的精确代码智能时，选 Sourcegraph 或 SCIP。 | 工业级精确代码智能（跨仓、language server、规模化）；基础设施更重，不是 agent 插件形态的即插即用工具。Understand-Anything 更轻、有 LLM 增强，但未经证明。 |
 
 ## 技术栈

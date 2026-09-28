@@ -2,7 +2,7 @@
 name: Milvus
 slug: milvus
 repo: https://github.com/milvus-io/milvus
-category: rag-retrieval
+category: vector-search
 tags: [rag, retrieval, milvus, service]
 language: Go
 license: Apache-2.0
@@ -72,7 +72,7 @@ health:
 
 Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search
 
-![Milvus — health radar](../../assets/health/milvus.svg)
+![Milvus — health radar](../../../assets/health/milvus.svg)
 
 ## When to use
 
@@ -91,10 +91,10 @@ This first-pass page exists because Milvus was repeatedly useful as a comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [code-review-graph](code-review-graph.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
+| [code-review-graph](../code-intelligence/code-review-graph.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
 | [FAISS](faiss.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
-| [FalkorDB](falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
-| [graphify](graphify.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
+| [graphify](../code-intelligence/graphify.md) | ✅ | When you need the established in-index option for this category, compare it against Milvus before switching. | Milvus is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Milvus only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

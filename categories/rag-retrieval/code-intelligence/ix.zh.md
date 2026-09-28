@@ -2,7 +2,7 @@
 name: Ix
 slug: ix
 repo: https://github.com/ix-infrastructure/Ix
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, knowledge-graph, mcp, tree-sitter, context-reduction, blast-radius, coding-agent, arangodb, docker, open-core]
 language: TypeScript
 license: Apache-2.0
@@ -77,7 +77,7 @@ health:
 
 你问编码 agent“改了 `verify_token` 会坏哪里”，它就去 grep、打开十几个文件，最后还是漏掉隔两层的调用方——下个会话再从头来一遍。Ix 把仓库一次性解析成“谁调用谁、谁引用谁”的关系图，存进本机数据库，agent 只需问某个符号周围连着什么，不用再逐个读文件。
 
-![Ix — 健康度雷达](../../assets/health/ix.zh.svg)
+![Ix — 健康度雷达](../../../assets/health/ix.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 Ix 分成两半。本仓库里的那一半是 `ix` 命令行工具：它用 tree-sitter（一个把各种语言源码解析成语法树的解析库）遍历你的文件，抽出每个函数、类、调用和 import，分批发给本机上的后端。另一半就是那个后端：一个 ArangoDB 图数据库，加上 Ix 自己的“memory layer”HTTP 服务，由 Docker 在 `127.0.0.1` 上替你跑起来，负责存图和回答查询。可以把它想成测绘员和地图局：CLI 负责实地走一遍，后端负责保管地图、回答“这个东西连着哪些东西”。你要做的是跑安装脚本、每个仓库建一次图、注册 agent 客户端；之后 agent 通过 MCP（编码 agent 调用外部工具的协议）调用 Ix 的工具，拿到简短、省 token 的回答（`--format llm`），而 `ix watch` 或编辑器插件会在文件变动时保持图是新的。
 
-![ix — 主干用户故事](../../assets/flow/ix.zh.svg)
+![ix — 主干用户故事](../../../assets/flow/ix.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ix.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -113,8 +113,8 @@ Ix 分成两半。本仓库里的那一半是 `ix` 命令行工具：它用 tree
 - **这台机器上不能用 Docker。** Ix 需要 Docker + Compose、Node 22+、git 和 ripgrep，还要两个常驻容器占着 8529 和 8090 端口。锁死的公司笔记本、很薄的 CI 机器，或者不允许用 Docker Desktop 许可的环境，选只要 Python 的 [code-review-graph](code-review-graph.zh.md)。
 - **多人或多个仓库共用一个后端，并且你期望彼此隔离。** 仓库自己的 CLAUDE.md 警告：`ix reset` 是全局的——它会清掉共享后端里**所有**工作区的图，而 CLI 不提供按工作区重置。要给整个团队提供跨仓库的代码智能，[Sourcegraph](sourcegraph.zh.md) 配 [SCIP](scip.zh.md) 索引更重，但才是真正的多租户方案。
 - **你需要编译器级的精确解析。** 这张图是 tree-sitter 抽取出来的，不做类型检查：2026-09 仍开着的 issue 有 `--path` 在三处含义不一致（#636）、关键词搜索悄悄丢结果（#647）、PHP 文件缺架构归属（#629）、升级后常量一直不出现（#709）。要精确的跳转定义和引用，用基于语言服务器（LSP）的 Serena，或者 [SCIP](scip.zh.md) 的精确索引。
-- **你希望规划、决策、任务跟踪也在同一个工具里。** `plan`、`task`、`workflow`、`decide`、`goal`、`truth`、`bug`、`briefing` 在开源版里只是占位命令，运行时打印“requires Ix Pro”；真正的实现在一个不公开的包里。免费版只按结构查询来规划，项目记忆交给 [agent-memory](../agent-memory/INDEX.zh.md) 分类里的专门工具。
-- **你要问的是文字类内容——文档、会议记录、设计理由。** Ix 自带的 skill 明说它“不回答文字或历史类问题”。要把代码**和**文档一起建成图，用 [graphify](graphify.zh.md) 或 [Understand-Anything](understand-anything.zh.md)；长文档检索用 [PageIndex](pageindex.zh.md)。
+- **你希望规划、决策、任务跟踪也在同一个工具里。** `plan`、`task`、`workflow`、`decide`、`goal`、`truth`、`bug`、`briefing` 在开源版里只是占位命令，运行时打印“requires Ix Pro”；真正的实现在一个不公开的包里。免费版只按结构查询来规划，项目记忆交给 [agent-memory](../../agent-memory/INDEX.zh.md) 分类里的专门工具。
+- **你要问的是文字类内容——文档、会议记录、设计理由。** Ix 自带的 skill 明说它“不回答文字或历史类问题”。要把代码**和**文档一起建成图，用 [graphify](graphify.zh.md) 或 [Understand-Anything](understand-anything.zh.md)；长文档检索用 [PageIndex](../structured-retrieval/pageindex.zh.md)。
 - **你需要长期的可靠记录。** Ix 才七个月大（2026-03-03 创建），还在 v0.x，v0.10 在六天里（2026-08-16 到 08-21）发了 16 个候选版——命令和参数面还在变。锁定版本，并预期升级后要重新建图。
 
 ## 横向对比

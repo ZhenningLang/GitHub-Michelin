@@ -2,7 +2,7 @@
 name: Repowise
 slug: repowise
 repo: https://github.com/repowise-dev/repowise
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, mcp, tree-sitter, agent-context, code-health, git-analytics, dead-code, context-reduction, lancedb, agpl]
 language: Python
 license: AGPL-3.0
@@ -83,7 +83,7 @@ health:
 
 Your coding agent pays the same tax on every task — grep, open six files, still miss the caller two hops away, forget it all next session — and it can't tell you what breaks when you touch `src/auth.py`. Repowise indexes code, git history, tests, docs and decisions once on your machine, then serves cited answers, change risk, dead code and 1–10 file health scores to your agent over MCP, with no API key needed for the deterministic core.
 
-![Repowise — health radar](../../assets/health/repowise.svg)
+![Repowise — health radar](../../../assets/health/repowise.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ You pick Repowise over the nearer code-graph tools because of the surface area i
 
 One `pip`-installed Python process does both halves. `repowise init` parses every source file into ASTs with tree-sitter (a parser library that turns source text into a syntax tree per language), resolving imports and call edges with confidence stamps, while a git layer extracts hotspots, ownership, co-change and bug-fix history. From those raw layers it derives, deterministically, the wiki pages, the 1–10 health score, dead-code findings and change risk — think of it as surveying the ground once and keeping a map office, instead of re-walking the field for every question. You then index once, register `repowise update` (or a post-commit hook / file watcher) to keep the map current, and the `repowise mcp` server answers your agent's calls; the same index also feeds `repowise serve`'s local dashboard, the VS Code extension, and a hosted GitHub PR bot. Opt-in features — model-written wiki prose, semantic search, comment-archaeology decisions — call the provider you configure with your own key directly; the docs state nothing leaves your machine otherwise, and session-start/PostToolUse hooks read only the local SQLite index and git [未验证].
 
-![repowise — backbone user story](../../assets/flow/repowise.svg)
+![repowise — backbone user story](../../../assets/flow/repowise.svg)
 
 <!-- flow-steps:begin (generated from flows/repowise.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ One `pip`-installed Python process does both halves. `repowise init` parses ever
 - **You only need a call graph and want it fast.** Repowise's own benchmarks put full-index time on `django` at 366.8 s versus 16.4 s for the graph-only tool CodeGraph (not indexed) — ~22×, ~135× with prose generation on; the project itself says "if a call graph is all you need, that is the right trade and you should take it." For a minimal pip-plus-SQLite blast-radius graph use [code-review-graph](code-review-graph.md); for a watched graph database use [Ix](ix.md).
 - **You need compiler-grade symbol resolution.** The edges are tree-sitter inference, not type checking; Repowise measured its own call-edge precision at 84.8% — about one edge in seven is wrong — and concedes the highest-recall Go cells. For exact go-to-definition and edits through real language servers, use Serena (not indexed).
 - **You plan to embed the engine in a product you ship.** AGPL-3.0 copyleft makes that a commercial-license conversation with the vendor. For a permissive path build on [SCIP](scip.md) indexes served by [Sourcegraph](sourcegraph.md), or MIT [code-review-graph](code-review-graph.md).
-- **Your corpus is prose, not code.** Repowise indexes code, its own generated wiki, git history and decisions; questions over your PDFs, schemas or meeting notes are [graphify](graphify.md) territory, and long structured documents are [PageIndex](pageindex.md).
+- **Your corpus is prose, not code.** Repowise indexes code, its own generated wiki, git history and decisions; questions over your PDFs, schemas or meeting notes are [graphify](graphify.md) territory, and long structured documents are [PageIndex](../structured-retrieval/pageindex.md).
 - **You want a centrally served cross-repository search for a whole org today.** Workspace/estate mode and the enterprise surfaces (RBAC, SSO, Helm, air-gap) are GA-to-planned per the vendor's own matrix, with several items "rolling out"; for a mature multi-tenant route use [Sourcegraph](sourcegraph.md).
 - **You need to trust the numbers independently.** The savings and benchmark claims are author-run (admirably published with losing rows, but not reproduced by a third party); treat −31.6% tokens and 2.3× defect yield as vendor evidence, not neutral fact.
 - **You need a five-year track record.** Six months old, v0.x, release every ~3 days, ~78% of listed-contributor commits from one person [推断] — pin a version and expect churn.

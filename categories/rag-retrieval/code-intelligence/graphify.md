@@ -2,7 +2,7 @@
 name: graphify
 slug: graphify
 repo: https://github.com/safishamsi/graphify
-category: rag-retrieval
+category: code-intelligence
 tags: [knowledge-graph, code-intelligence, tree-sitter, graphrag, leiden, mcp, claude-code, skill]
 language: Python
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 A Python CLI + MCP server (also packaged as an AI-coding-assistant skill) that turns a folder of code, schemas, scripts, docs and media into a portable, queryable knowledge graph an agent can ask instead of grepping.
 
-![graphify — health radar](../../assets/health/graphify.svg)
+![graphify — health radar](../../../assets/health/graphify.svg)
 
 ## When to use
 
@@ -93,19 +93,19 @@ It fits especially well when the graph spans more than just app code — graphif
 
 ## When NOT to use
 
-- **You want a persistent, multi-writer graph database.** graphify's native store is a one-shot `graph.json` (with a 512 MiB default cap); it does Cypher *export* to Neo4j/FalkorDB but is not itself a transactional graph DB. If you need a live, queryable, concurrently-updated graph backend, use [FalkorDB](falkordb.md) or Neo4j directly.
+- **You want a persistent, multi-writer graph database.** graphify's native store is a one-shot `graph.json` (with a 512 MiB default cap); it does Cypher *export* to Neo4j/FalkorDB but is not itself a transactional graph DB. If you need a live, queryable, concurrently-updated graph backend, use [FalkorDB](../structured-retrieval/falkordb.md) or Neo4j directly.
 - **Huge monorepos / very large graphs.** The interactive HTML visualization is practically capped around ~5000 nodes [未验证]; beyond that you work with raw JSON, and extraction over a massive tree means many LLM calls for non-code files (cost + latency).
 - **You need deterministic, offline-only extraction.** Code AST extraction is local, but semantic nodes for docs/PDFs/images require an LLM backend (Anthropic/OpenAI/Gemini/Ollama/Bedrock/etc.) — that means API keys, cost, non-determinism, and sending file contents to a model unless you run a local Ollama backend.
 - **You want a stable, frozen API.** Releases are very frequent (143+ releases, multiple per week as of 2026-06); this is fast-moving single-maintainer-scale software [推断] — pin versions and expect churn in commands/output format.
-- **Pure document RAG over prose with no code.** If your corpus is articles/PDFs and you want passage retrieval (not a code/entity graph), a document-structure or vector approach like [PageIndex](pageindex.md) is a more direct fit.
+- **Pure document RAG over prose with no code.** If your corpus is articles/PDFs and you want passage retrieval (not a code/entity graph), a document-structure or vector approach like [PageIndex](../structured-retrieval/pageindex.md) is a more direct fit.
 - **You only need code-review-specific graphs.** For PR/diff-scoped review graphs, [code-review-graph](code-review-graph.md) targets that narrower workflow.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FalkorDB](falkordb.md) | ✅ | Pick FalkorDB when you need a persistent graph database, not one-shot repo extraction. | A real persistent graph database (Redis-based, Cypher); graphify can *push* to it. Use FalkorDB when you need a live multi-query graph store, graphify when you want one-shot extraction + agent-facing query. |
-| [PageIndex](pageindex.md) | ✅ | Pick PageIndex when the problem is long-document/PDF structure retrieval rather than code/entity graph extraction. | Reasoning-based document-structure indexing for RAG over long docs/PDFs; no code AST or call-graph. Different problem: prose retrieval vs code/entity graph. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | Pick FalkorDB when you need a persistent graph database, not one-shot repo extraction. | A real persistent graph database (Redis-based, Cypher); graphify can *push* to it. Use FalkorDB when you need a live multi-query graph store, graphify when you want one-shot extraction + agent-facing query. |
+| [PageIndex](../structured-retrieval/pageindex.md) | ✅ | Pick PageIndex when the problem is long-document/PDF structure retrieval rather than code/entity graph extraction. | Reasoning-based document-structure indexing for RAG over long docs/PDFs; no code AST or call-graph. Different problem: prose retrieval vs code/entity graph. |
 | [code-review-graph](code-review-graph.md) | ✅ | Pick code-review-graph when you only need the narrow PR/code-review graph workflow. | Narrow PR/code-review graph workflow; graphify is whole-repo + multi-language + multi-modal and broader in scope. |
 | [Sourcegraph](sourcegraph.md) / [SCIP](scip.md) | ✅ | Pick Sourcegraph/SCIP when you need precise cross-repo code intelligence backed by language servers. | Industrial-grade precise code intelligence (cross-repo, language servers); heavier infra and not agent-skill-shaped. graphify is lighter, LLM-augmented, drops into an agent loop. |
 | GitHub `code2graph` / tree-sitter scripts | 未收录 | Pick roll-your-own AST scripts when control matters more than bundled query, clustering, visualization, and agent integration. | Roll-your-own AST graphs; more control, but you build query, clustering, viz, and agent integration yourself. |

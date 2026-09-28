@@ -2,7 +2,7 @@
 name: FalkorDB
 slug: falkordb
 repo: https://github.com/FalkorDB/FalkorDB
-category: rag-retrieval
+category: structured-retrieval
 tags: [graph-database, graphrag, knowledge-graph, opencypher, graphblas, vector-index]
 language: C
 license: SSPL-1.0
@@ -77,7 +77,7 @@ health:
 
 一个以稀疏矩阵（GraphBLAS）为底层的属性图数据库，作为 Redis 模块运行，讲 OpenCypher，并叠加向量 + 全文索引，为 LLM 应用的 GraphRAG 检索兜底。
 
-![falkordb — 健康度雷达](../../assets/health/falkordb.zh.svg)
+![falkordb — 健康度雷达](../../../assets/health/falkordb.zh.svg)
 
 ## 何时使用
 
@@ -98,8 +98,8 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [graphify](graphify.zh.md) | ✅ | 需要轻量代码/文档建图，而不是图数据库本身时，选 graphify。 | 轻量的代码/文档转图构建器；FalkorDB 是存储+查询引擎，graphify 在其上游做建图——互补，而非替代。 |
-| [code-review-graph](code-review-graph.zh.md) | ✅ | 需要专门的 PR/code-review 图工具时，选 code-review-graph。 | 领域专用（代码评审）图工具；FalkorDB 是你会拿来构建这类工具的通用图数据库。 |
+| [graphify](../code-intelligence/graphify.zh.md) | ✅ | 需要轻量代码/文档建图，而不是图数据库本身时，选 graphify。 | 轻量的代码/文档转图构建器；FalkorDB 是存储+查询引擎，graphify 在其上游做建图——互补，而非替代。 |
+| [code-review-graph](../code-intelligence/code-review-graph.zh.md) | ✅ | 需要专门的 PR/code-review 图工具时，选 code-review-graph。 | 领域专用（代码评审）图工具；FalkorDB 是你会拿来构建这类工具的通用图数据库。 |
 | [PageIndex](pageindex.zh.md) | ✅ | 检索原语是推理文档树，而不是属性图数据库时，选 PageIndex。 | 基于推理的文档树 / 检索索引，不是图数据库——检索原语不同（层级索引 vs 属性图）。 |
 | Neo4j | 未收录 | 最大属性图生态比 Redis 嵌入或稀疏矩阵速度更重要时，选 Neo4j。 | 业界标准的属性图，生态最大（Bolt、GDS、APOC）；更重，GPLv3/商业许可。FalkorDB 在稀疏矩阵遍历上更快、可嵌入 Redis，但更年轻且为 SSPL。 |
 | Memgraph | 未收录 | 想要内存型 Cypher 图数据库，但不想继承 Redis 模块模型时，选 Memgraph。 | 内存型、兼容 Cypher、偏流式的图数据库；BSL 许可。和 FalkorDB 的内存型定位有重叠，但没有 Redis 模块这套模型。 |

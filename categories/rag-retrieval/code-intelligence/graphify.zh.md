@@ -2,7 +2,7 @@
 name: graphify
 slug: graphify
 repo: https://github.com/safishamsi/graphify
-category: rag-retrieval
+category: code-intelligence
 tags: [knowledge-graph, code-intelligence, tree-sitter, graphrag, leiden, mcp, claude-code, skill]
 language: Python
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 一个 Python CLI + MCP server（同时打包成 AI 编程助手 skill），把一整个目录的代码、schema、脚本、文档和媒体抽成一张可移植、可查询的知识图谱，让 agent 用“问图”代替“grep”。
 
-![graphify — 健康度雷达](../../assets/health/graphify.zh.svg)
+![graphify — 健康度雷达](../../../assets/health/graphify.zh.svg)
 
 ## 何时使用
 
@@ -93,19 +93,19 @@ health:
 
 ## 何时不用
 
-- **你要的是持久化、多写入方的图数据库。** graphify 的原生存储是一次性的 `graph.json`（默认 512 MiB 上限）；它能把图 *导出* 成 Cypher 推到 Neo4j/FalkorDB，但自身不是事务型图数据库。如果你需要一个常驻、可查询、可并发更新的图后端，直接用 [FalkorDB](falkordb.zh.md) 或 Neo4j。
+- **你要的是持久化、多写入方的图数据库。** graphify 的原生存储是一次性的 `graph.json`（默认 512 MiB 上限）；它能把图 *导出* 成 Cypher 推到 Neo4j/FalkorDB，但自身不是事务型图数据库。如果你需要一个常驻、可查询、可并发更新的图后端，直接用 [FalkorDB](../structured-retrieval/falkordb.zh.md) 或 Neo4j。
 - **超大 monorepo / 超大图。** 交互式 HTML 可视化实际上限大约 5000 个节点 [未验证]；超过后只能用原始 JSON，而且在巨大目录树上抽取意味着对非代码文件发起大量 LLM 调用（成本 + 延迟）。
 - **你需要确定性、纯离线的抽取。** 代码 AST 抽取是本地的，但文档/PDF/图片的语义节点需要 LLM 后端（Anthropic/OpenAI/Gemini/Ollama/Bedrock 等）——这意味着 API key、成本、非确定性，以及把文件内容发给模型（除非你跑本地 Ollama 后端）。
 - **你想要稳定、冻结的 API。** 发版非常频繁（143+ 个 release，截至 2026-06 每周多次）；这是快速迭代、近乎单维护者规模的软件 [推断]——请 pin 版本，并预期命令/输出格式会变动。
-- **纯文档 RAG（只有散文、没有代码）。** 如果你的语料是文章/PDF，想要段落级检索（而非代码/实体图），用面向文档结构或向量的方案如 [PageIndex](pageindex.zh.md) 更直接。
+- **纯文档 RAG（只有散文、没有代码）。** 如果你的语料是文章/PDF，想要段落级检索（而非代码/实体图），用面向文档结构或向量的方案如 [PageIndex](../structured-retrieval/pageindex.zh.md) 更直接。
 - **你只需要面向 code-review 的图。** 针对 PR/diff 范围的评审图，[code-review-graph](code-review-graph.zh.md) 面向那个更窄的工作流。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FalkorDB](falkordb.zh.md) | ✅ | 需要持久化图数据库，而不是一次性仓库抽取时，选 FalkorDB。 | 真正的持久化图数据库（基于 Redis、Cypher）；graphify 可以往它 *推送*。需要常驻多查询图存储时用 FalkorDB，需要一次性抽取 + 面向 agent 查询时用 graphify。 |
-| [PageIndex](pageindex.zh.md) | ✅ | 问题是长文档/PDF 的结构化检索，而不是代码/实体图抽取时，选 PageIndex。 | 面向长文档/PDF 的、基于推理的文档结构索引做 RAG；没有代码 AST 或调用图。是不同的问题：散文检索 vs 代码/实体图。 |
+| [FalkorDB](../structured-retrieval/falkordb.zh.md) | ✅ | 需要持久化图数据库，而不是一次性仓库抽取时，选 FalkorDB。 | 真正的持久化图数据库（基于 Redis、Cypher）；graphify 可以往它 *推送*。需要常驻多查询图存储时用 FalkorDB，需要一次性抽取 + 面向 agent 查询时用 graphify。 |
+| [PageIndex](../structured-retrieval/pageindex.zh.md) | ✅ | 问题是长文档/PDF 的结构化检索，而不是代码/实体图抽取时，选 PageIndex。 | 面向长文档/PDF 的、基于推理的文档结构索引做 RAG；没有代码 AST 或调用图。是不同的问题：散文检索 vs 代码/实体图。 |
 | [code-review-graph](code-review-graph.zh.md) | ✅ | 只需要窄域 PR/code-review 图工作流时，选 code-review-graph。 | 窄域的 PR/code-review 图工作流；graphify 是全仓库 + 多语言 + 多模态，范围更广。 |
 | [Sourcegraph](sourcegraph.zh.md) / [SCIP](scip.zh.md) | ✅ | 需要由 language server 支撑的跨仓库精确代码智能时，选 Sourcegraph/SCIP。 | 工业级精确代码智能（跨仓库、language server）；基础设施更重，且不是 agent-skill 形态。graphify 更轻、由 LLM 增强、能直接嵌进 agent 循环。 |
 | GitHub `code2graph` / 自写 tree-sitter 脚本 | 未收录 | 控制权比现成查询、聚类、可视化和 agent 集成更重要时，选自写 AST 图。 | 自己搭 AST 图；更可控，但查询、聚类、可视化和 agent 集成都得自己写。 |

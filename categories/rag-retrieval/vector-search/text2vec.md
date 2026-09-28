@@ -2,7 +2,7 @@
 name: text2vec
 slug: text2vec
 repo: https://github.com/shibing624/text2vec
-category: rag-retrieval
+category: vector-search
 tags: [embeddings, sentence-embeddings, semantic-search, chinese-nlp, text-similarity, sentence-bert, cosent]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 A Python library that turns text into vectors for semantic similarity and retrieval — bundling Word2Vec, BM25, Sentence-BERT, CoSENT and BGE-style methods behind one `pip install`, with a strong Chinese-language focus.
 
-![text2vec — health radar](../../assets/health/text2vec.svg)
+![text2vec — health radar](../../../assets/health/text2vec.svg)
 
 ## When to use
 

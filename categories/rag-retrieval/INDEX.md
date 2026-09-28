@@ -1,43 +1,25 @@
 # rag-retrieval
 
 > Category node. Document indexing, code-intelligence graphs, and graph DBs for retrieval-augmented generation.
+> Split into sub-categories by **what is being retrieved and how**: a codebase indexed for an agent, text found by embedding similarity, or a graph / document structure walked hop by hop.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
-## Projects in this category
+## Sub-categories
 
-| Project | Use when | Health | Page |
-| --- | --- | --- | --- |
-| **FalkorDB** | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. | D (6/6) | [→](falkordb.md) |
-| **graphify** | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. | B (6/6) | [→](graphify.md) |
-| **code-review-graph** | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. | B (6/6) | [→](code-review-graph.md) |
-| **PageIndex** | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. | B (6/6) | [→](pageindex.md) |
-| **Understand-Anything** | Use it when you want any codebase turned into an explorable, queryable knowledge graph for an agent — younger and less proven than graphify. | B (6/6) | [→](understand-anything.md) |
-| **FAISS** | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. | A (6/6) | [→](faiss.md) |
-| **text2vec** | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). | C (5/6) | [→](text2vec.md) |
-| **SCIP** | SCIP Code Intelligence Protocol | A (6/6) | [→](scip.md) |
-| **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A (5/6) | [→](milvus.md) |
-| **Sourcegraph** | Code AI platform with Code Search & Cody | D (4/6) | [→](sourcegraph.md) |
-| **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | B (6/6) | [→](helix-db.md) |
-| **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | B (6/6) | [→](ix.md) |
-| **Repowise** | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. | C (6/6) | [→](repowise.md) |
-
+| Sub-category | Enter when | Route |
+| --- | --- | --- |
+| **Code Intelligence** | The corpus is a code repository and an agent must answer structural questions — callers, blast radius, ownership — without grepping the whole tree. | [→](code-intelligence/INDEX.md) |
+| **Vector Search** | You need the embedding path of RAG: an encoder that turns text into vectors, or an ANN index / vector database that returns nearest neighbours. | [→](vector-search/INDEX.md) |
+| **Structured Retrieval** | Similarity alone is not enough: retrieval should traverse an entity graph (GraphRAG) or navigate a document's own section tree, with citable paths. | [→](structured-retrieval/INDEX.md) |
 
 ## Comparison matrix
 
-| Option | Indexed | Health | One-line tradeoff |
-| --- | --- | --- | --- |
-| [FalkorDB](falkordb.md) | ✅ | D (6/6) | Use it when GraphRAG needs vector similarity plus multi-hop graph traversal in one low-latency Redis-embedded engine. |
-| [graphify](graphify.md) | ✅ | B (6/6) | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. |
-| [code-review-graph](code-review-graph.md) | ✅ | B (6/6) | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. |
-| [PageIndex](pageindex.md) | ✅ | B (6/6) | Use it when vector RAG returns similar-but-irrelevant chunks over a few long, structured documents needing auditable citations. |
-| [Understand-Anything](understand-anything.md) | ✅ | B (6/6) | Code → explorable knowledge graph an agent can query; younger than graphify, with an unverified star count and egress boundary. |
-| [FAISS](faiss.md) | ✅ | A (6/6) | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. |
-| [text2vec](text2vec.md) | ✅ | C (5/6) | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). |
-| [HelixDB](helix-db.md) | ✅ | B (6/6) | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. |
-| [Ix](ix.md) | ✅ | B (6/6) | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. |
-| [Repowise](repowise.md) | ✅ | C (6/6) | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. |
-| Neo4j / LightRAG / Weaviate | 未收录 | — | Other graph/RAG retrieval stacks named across the pages. |
+| Option | Type | One-line tradeoff |
+| --- | --- | --- |
+| [Code Intelligence](code-intelligence/INDEX.md) | Sub-category | graphify, code-review-graph, Understand-Anything, Ix, Repowise, SCIP, Sourcegraph — code graphs and code-search indexes that hand an agent a structural slice instead of raw files. |
+| [Vector Search](vector-search/INDEX.md) | Sub-category | FAISS, Milvus, text2vec — encoder, in-process ANN library, and vector-database service; fast similarity, no notion of relationships. |
+| [Structured Retrieval](structured-retrieval/INDEX.md) | Sub-category | FalkorDB, HelixDB, PageIndex — graph engines that mix traversal with vector/text indexes, and a vectorless document-tree index; more setup or per-query LLM cost than plain vector search. |
 
 ## What belongs here
 
-Infrastructure whose primary job is **indexing and retrieving** context for RAG — document indexes, code graphs, graph databases. Not agent memory (see `agent-memory`), not research agents (see `deep-research`).
+Infrastructure whose primary job is **indexing and retrieving** context for RAG — document indexes, code graphs, graph databases. Not agent memory (see `agent-memory`), not research agents (see `deep-research`). Pick a sub-category by **what you retrieve and how**: a codebase for an agent (`code-intelligence`), embeddings by similarity (`vector-search`), or a graph / document structure by traversal (`structured-retrieval`).

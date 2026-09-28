@@ -2,7 +2,7 @@
 name: text2vec
 slug: text2vec
 repo: https://github.com/shibing624/text2vec
-category: rag-retrieval
+category: vector-search
 tags: [embeddings, sentence-embeddings, semantic-search, chinese-nlp, text-similarity, sentence-bert, cosent]
 language: Python
 license: Apache-2.0
@@ -79,7 +79,7 @@ health:
 
 把文本转成向量、用于语义相似与检索的 Python 库——一个 `pip install` 即打包了 Word2Vec、BM25、Sentence-BERT、CoSENT 和 BGE 系方法，且明显偏向中文。
 
-![text2vec — 健康度雷达](../../assets/health/text2vec.zh.svg)
+![text2vec — 健康度雷达](../../../assets/health/text2vec.zh.svg)
 
 ## 何时使用
 

@@ -2,7 +2,7 @@
 name: PageIndex
 slug: pageindex
 repo: https://github.com/VectifyAI/PageIndex
-category: rag-retrieval
+category: structured-retrieval
 tags: [rag, vectorless, reasoning-retrieval, document-index, tree-index, pdf]
 language: Python
 license: MIT
@@ -77,7 +77,7 @@ health:
 
 A "vectorless" RAG document index: it builds a table-of-contents-style tree over a long document and lets an LLM reason down the tree to find relevant sections, instead of chunking + embedding + vector similarity search.
 
-![pageindex — health radar](../../assets/health/pageindex.svg)
+![pageindex — health radar](../../../assets/health/pageindex.svg)
 
 ## When to use
 
@@ -99,9 +99,9 @@ It's a strong fit when "similarity ≠ relevance" is your actual pain and your c
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [FalkorDB](falkordb.md) | ✅ | Pick FalkorDB when you need a persistent property graph for GraphRAG, not a per-document reasoning tree. | Property-graph DB for GraphRAG (vector + multi-hop traversal); PageIndex is a per-document reasoning tree, not a graph store — different retrieval primitive. |
-| [graphify](graphify.md) | ✅ | Pick graphify when the goal is a code/docs knowledge graph rather than one document's table-of-contents tree. | Builds a knowledge graph from code/docs; PageIndex builds a hierarchical ToC tree of one document and reasons over it — no entity graph. |
-| [code-review-graph](code-review-graph.md) | ✅ | Pick code-review-graph when the target is a domain-specific code-review graph. | Domain-specific code-review graph; orthogonal to document tree retrieval. |
-| [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.md) | ✅ | Pick LlamaIndex when you need a broad RAG framework with many index types rather than one vectorless reasoning index. | General RAG framework with many indices incl. a tree/summary index; far broader and embedding-centric, where PageIndex is a focused vectorless reasoning index. |
+| [graphify](../code-intelligence/graphify.md) | ✅ | Pick graphify when the goal is a code/docs knowledge graph rather than one document's table-of-contents tree. | Builds a knowledge graph from code/docs; PageIndex builds a hierarchical ToC tree of one document and reasons over it — no entity graph. |
+| [code-review-graph](../code-intelligence/code-review-graph.md) | ✅ | Pick code-review-graph when the target is a domain-specific code-review graph. | Domain-specific code-review graph; orthogonal to document tree retrieval. |
+| [LlamaIndex](../../agent-frameworks/workflow-builders/llamaindex.md) | ✅ | Pick LlamaIndex when you need a broad RAG framework with many index types rather than one vectorless reasoning index. | General RAG framework with many indices incl. a tree/summary index; far broader and embedding-centric, where PageIndex is a focused vectorless reasoning index. |
 | RAPTOR | 未收录 | Pick RAPTOR when recursive clustering plus summarization trees and embedding-time retrieval are the desired design. | Recursive clustering + summarization tree for retrieval, but still embedding-retrieved at query time; PageIndex navigates the tree by LLM reasoning instead of vector search. |
 | pgvector / Qdrant | 未收录 | Pick a vector store when classic embedding + ANN retrieval is sufficient and cheaper at scale. | Classic embedding + ANN vector retrieval; cheaper at scale and breadth, but exactly the "similarity ≠ relevance" failure mode PageIndex is built to avoid. |
 

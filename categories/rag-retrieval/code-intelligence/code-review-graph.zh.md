@@ -2,7 +2,7 @@
 name: code-review-graph
 slug: code-review-graph
 repo: https://github.com/tirth8205/code-review-graph
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, knowledge-graph, mcp, tree-sitter, context-reduction, blast-radius, graphrag]
 language: Python
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 一张本地优先的代码智能图：Tree-sitter 把仓库解析成由函数/类/边构成的 SQLite 图，再通过 MCP 把最小的 blast-radius 上下文喂给你的 AI 编码工具，让它只读要紧的部分。
 
-![code-review-graph — 健康度雷达](../../assets/health/code-review-graph.zh.svg)
+![code-review-graph — 健康度雷达](../../../assets/health/code-review-graph.zh.svg)
 
 ## 何时使用
 
@@ -93,20 +93,20 @@ health:
 
 ## 何时不用
 
-- **你想要一个通用图数据库，而非代码上下文层。** 这是一条固定的代码智能流水线（AST → SQLite → blast-radius），不是可让你在其上构建应用的可查询图存储。要真正的属性/Cypher 图数据库，用 [FalkorDB](falkordb.zh.md)。
+- **你想要一个通用图数据库，而非代码上下文层。** 这是一条固定的代码智能流水线（AST → SQLite → blast-radius），不是可让你在其上构建应用的可查询图存储。要真正的属性/Cypher 图数据库，用 [FalkorDB](../structured-retrieval/falkordb.zh.md)。
 - **琐碎 / 单文件改动。** 维护者自己的限制说明指出，对小改动，图上下文可能*超过*直接读文件——结构元数据是开销，直到改动跨多个文件才赚回来。
 - **你今天就需要可信的 recall 数字。** 标语式的 "recall 1.0" 被明确指为**循环**——ground truth 来自预测器所走的同一张图。诚实的 co-change 模式被承认“明显更低”且**尚未发布**。[推断] 把影响准确率当作方向性参考，而非保证。
 - **超出 Python 的跨文件调用解析。** 流程检测文档记为约 33% recall，且只在 Python 框架模式（FastAPI/httpx）上可靠；JS/Go 流程与搜索排序（MRR 0.35）是明述的弱点。
 - **巴士因子 / 成熟度风险。** 这是一个单一维护者、Beta 分级、v2.3.x 的项目（首次 commit 2026-02）。把 GitHub Action pin 到某个 tag、以及快速的发版节奏是缓解手段，但对其 `.code-review-graph/` SQLite 格式和 MCP 工具面的锁定是真实的。
-- **你需要对散文做纯文档/段落 RAG。** 它索引的是代码结构而非任意文档——要层级文档检索看 [PageIndex](pageindex.zh.md)。
+- **你需要对散文做纯文档/段落 RAG。** 它索引的是代码结构而非任意文档——要层级文档检索看 [PageIndex](../structured-retrieval/pageindex.zh.md)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FalkorDB](falkordb.zh.md) | ✅ | 需要真正基于 Redis、带 Cypher 和向量搜索的属性图数据库时，选 FalkorDB。 | 一个真正基于 Redis 的属性图数据库，带 Cypher + 向量搜索，你直接查询它；是*底座*而非开箱即用的代码上下文工具。code-review-graph 给你整条 AST→图→MCP 流水线，但建在它自己固定的 SQLite 存储上。 |
+| [FalkorDB](../structured-retrieval/falkordb.zh.md) | ✅ | 需要真正基于 Redis、带 Cypher 和向量搜索的属性图数据库时，选 FalkorDB。 | 一个真正基于 Redis 的属性图数据库，带 Cypher + 向量搜索，你直接查询它；是*底座*而非开箱即用的代码上下文工具。code-review-graph 给你整条 AST→图→MCP 流水线，但建在它自己固定的 SQLite 存储上。 |
 | [graphify](graphify.zh.md) | ✅ | 需要另一个面向 agent 检索的代码库建图工具时，选 graphify。 | 同样把代码库变成图供 agent 检索；意图有重叠。code-review-graph 重压在 blast-radius/评审 + 一个 MCP server、宽语言覆盖和一个 CI Action 上。请直接对比 scope/成熟度。 |
-| [PageIndex](pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 面向*文档*（PDF、长文本）的、基于推理的层级检索，无向量库；输入领域不同——散文而非源码 AST。 |
+| [PageIndex](../structured-retrieval/pageindex.zh.md) | ✅ | 需要面向文档的推理式层级检索时，选 PageIndex。 | 面向*文档*（PDF、长文本）的、基于推理的层级检索，无向量库；输入领域不同——散文而非源码 AST。 |
 | [Sourcegraph](sourcegraph.zh.md) / [SCIP](scip.zh.md) | ✅ | 需要成熟、规模化的多仓库代码智能时，选 Sourcegraph 或 SCIP。 | 成熟、规模化的多仓库代码智能与索引；基础设施更重，不是面向 agent token 预算的本地单二进制 MCP 上下文压缩器。 |
 | Serena (MCP) | 未收录 | 需要面向 agent 的 LSP 语义代码 MCP server 时，选 Serena。 | 面向 agent 的、基于 LSP 的语义代码 MCP server；以符号/LSP 驱动，而非带 blast-radius + 社区/风险分析的持久化 Tree-sitter 图。 |
 | GraphRAG (Microsoft) | 未收录 | 需要 LLM 构建的实体/社区图来做文档 RAG 时，选 GraphRAG。 | LLM 构建的实体/社区图，用于文档 RAG；面向非结构化语料，而非确定性的 AST 派生代码图。 |

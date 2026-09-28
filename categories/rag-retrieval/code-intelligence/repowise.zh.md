@@ -2,7 +2,7 @@
 name: Repowise
 slug: repowise
 repo: https://github.com/repowise-dev/repowise
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, mcp, tree-sitter, agent-context, code-health, git-analytics, dead-code, context-reduction, lancedb, agpl]
 language: Python
 license: AGPL-3.0
@@ -83,7 +83,7 @@ health:
 
 编码 agent 每个任务都在交同一笔税：grep、打开六个文件、照样漏掉隔两层的调用方，下个会话再来一遍；你问“改 `src/auth.py` 会坏什么”，它答不上来。Repowise 在你本机一次性把代码、git 历史、测试、文档和架构决策建成索引，再通过 MCP 把带引用的答案、变更风险、死代码和 1–10 的文件健康分喂给 agent——确定性核心不需要任何 API key。
 
-![Repowise — 健康度雷达](../../assets/health/repowise.zh.svg)
+![Repowise — 健康度雷达](../../../assets/health/repowise.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ health:
 
 一个 `pip` 装好的 Python 进程把两半都干了。`repowise init` 用 tree-sitter（一个把各种语言源码解析成语法树的解析库）把每个源文件解析成 AST，带置信度地解析 import 和调用边；git 层同时抽出热点、归属、共同变更和修 bug 历史。在这两层原始数据之上，它确定性地推导出 wiki 页面、1–10 健康分、死代码发现和变更风险——相当于实地测绘一次、之后开一个地图局，而不是每次提问都重新走一遍地形。你只需建一次索引，再挂上 `repowise update`（post-commit 钩子或文件守护进程）让地图保持最新，`repowise mcp` 服务就能回答 agent 的调用；同一张索引还喂给 `repowise serve` 的本地看板、VS Code 扩展和托管的 GitHub PR 机器人。可选项——模型撰写的 wiki 散文、语义检索、注释考古决策——用你自己配置的 key 直连你选的模型；文档声称其余时间没有任何东西离开本机，SessionStart／PostToolUse 钩子只读本地 SQLite 索引和 git [未验证]。
 
-![repowise — 主干用户故事](../../assets/flow/repowise.zh.svg)
+![repowise — 主干用户故事](../../../assets/flow/repowise.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/repowise.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -119,7 +119,7 @@ health:
 - **你只想要一张调用图、而且要快。** Repowise 自己的基准给出 `django` 全量索引 366.8 秒，而纯建图的 CodeGraph（未收录）只要 16.4 秒——约 22 倍，开散文生成后约 135 倍；项目自己都承认“如果调用图就是你要的全部，这个取舍是对的”。要最小的“pip 加一个 SQLite 文件”式影响面图，用 [code-review-graph](code-review-graph.zh.md)；要带监听的图数据库，用 [Ix](ix.zh.md)。
 - **你需要编译器级精度。** 这些边是 tree-sitter 推断，不是类型检查：Repowise 自评调用边精确率 84.8%——差不多每七条边就错一条——并且承认 Go 的最高召回格不是它。要通过真正的语言服务器做精确跳转定义和编辑，用 Serena（未收录）。
 - **你打算把引擎嵌进自己要发布的产品。** AGPL-3.0 的传染条款让这条路变成和厂商谈商业授权。要走宽松许可，基于 [SCIP](scip.zh.md) 索引配 [Sourcegraph](sourcegraph.zh.md)，或 MIT 的 [code-review-graph](code-review-graph.zh.md)。
-- **你的语料是文字材料而不是代码。** Repowise 索引的是代码、它自己生成的 wiki、git 历史和决策；问 PDF、schema、会议记录，该用覆盖文档多模态的 [graphify](graphify.zh.md)，长结构化文档用 [PageIndex](pageindex.zh.md)。
+- **你的语料是文字材料而不是代码。** Repowise 索引的是代码、它自己生成的 wiki、git 历史和决策；问 PDF、schema、会议记录，该用覆盖文档多模态的 [graphify](graphify.zh.md)，长结构化文档用 [PageIndex](../structured-retrieval/pageindex.zh.md)。
 - **你要今天就有一个全组织集中服务的跨仓检索。** workspace／estate 模式和企业能力（RBAC、SSO、Helm、离线包）按厂商自己的矩阵还停在“滚动发布”或“计划中”；成熟的多租户路线用 [Sourcegraph](sourcegraph.zh.md)。
 - **你需要独立可信的数字。** 省 token 和各种基准都是作者自己跑的（把输的行列也公开了，很难得，但没有第三方复现）；−31.6% token、2.3 倍缺陷捕获率都应按厂商证据对待，不是中立事实。
 - **你需要五年以上的可靠记录。** 六个月大、v0.x、约每 3 天一个发布、列出的贡献者里约 78% 的提交出自一人 [推断]——锁版本，并接受接口会变。

@@ -125,7 +125,7 @@ health:
 - **你提供不了 embedding 模型，或者提供不了视觉模型。** 摄取和语义概括两个都要（云端或本地 Ollama 都行），所以「离线且不接模型」不是它支持的形态。
 - **对话内容不能离开本进程。** 它按设计捕获每一次提问、每一轮回答，以及超过 20000 字符的工具输出；服务端在本机时数据留在你机器上，但一旦指向共享或云端端点，你就是在上传自己的工作内容。不能接受的话，就让存储留在本地，或者继续用基于文件的记忆。
 - **你需要一个能长期在它之上搭建的稳定接口。** 仓库只有八个月大，PyPI 上自标 `Development Status :: 3 - Alpha`，还积着约 500 个待合的 PR，而且已经跨过 v0.3 到 v0.4 `[推断]`；只有能吸收这种变更节奏，才把记忆放进关键路径，否则换一个更老的服务。
-- **你真正想要的其实是文档 RAG。** 如果场景里没有会话记忆，[Milvus](../../rag-retrieval/milvus.zh.md) 这类向量库、或 [PageIndex](../../rag-retrieval/pageindex.zh.md) 这类文档树检索器，都比一个顺手管 agent 的上下文数据库更小。
+- **你真正想要的其实是文档 RAG。** 如果场景里没有会话记忆，[Milvus](../../rag-retrieval/vector-search/milvus.zh.md) 这类向量库、或 [PageIndex](../../rag-retrieval/structured-retrieval/pageindex.zh.md) 这类文档树检索器，都比一个顺手管 agent 的上下文数据库更小。
 
 ## 横向对比
 
@@ -135,7 +135,7 @@ health:
 | [Zep](../graph-memory/zep.zh.md) | ✅ | 记忆指的是关于用户随时间变化的事实、你需要时间失效和图查询时选 Zep；上下文里代码、文档和技能与对话同等重要时选 OpenViking。 | 两者都是可自托管的记忆服务；Zep 的强项是能把过期事实退掉的时间知识图谱，OpenViking 的强项是 `viking://` 文件系统——目录自带摘要，正文可以是任何摄取进来的文档。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | 单个开发者的机器、要本地化足迹时选 claude-mem；同一份上下文要跨团队或跨一批 agent 共享时选 OpenViking。 | claude-mem 是本地钩子加 MCP 的一层，用 SQLite 加向量库，没有服务端；OpenViking 做到账号、用户、peer 三级隔离，这正是你要买的能力，也正是你要接的运维负担。 |
 | [Letta](../app-memory/letta.zh.md) | ✅ | 你想要一个运行时接管 agent 循环和它自编辑的记忆时选 Letta；agent 已经存在、你只想给它们上下文时选 OpenViking。 | Letta 会替换掉 agent 本体；OpenViking 靠 hooks、MCP 或 `contextEngine` 槽嵌在 Claude Code、Codex、OpenClaw 之下，你保住现有 harness，也一并继承它的生命周期习性。 |
-| [PageIndex](../../rag-retrieval/pageindex.zh.md) | ✅ | 我们的评价：只做文档上的层次化问答、且不想引入向量库时选 PageIndex。取舍：机器部件少得多，但记忆这一侧完全是空的——没有捕获循环、没有记忆抽取、也没有多租户服务。 | PageIndex 直接在文档树上推理、不需要 embedding；OpenViking 保留向量索引并补上记忆生命周期，为覆盖更多活儿付出更多活动部件。 |
+| [PageIndex](../../rag-retrieval/structured-retrieval/pageindex.zh.md) | ✅ | 我们的评价：只做文档上的层次化问答、且不想引入向量库时选 PageIndex。取舍：机器部件少得多，但记忆这一侧完全是空的——没有捕获循环、没有记忆抽取、也没有多租户服务。 | PageIndex 直接在文档树上推理、不需要 embedding；OpenViking 保留向量索引并补上记忆生命周期，为覆盖更多活儿付出更多活动部件。 |
 
 ## 技术栈
 

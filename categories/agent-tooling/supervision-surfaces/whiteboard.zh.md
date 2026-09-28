@@ -110,7 +110,7 @@ health:
 - **你想要机器自动写 finding、不需要人来读。** 需求若是 CI 里每个 PR 都有 LLM 行级评论，用 [PR-Agent](../../ai-code-review/pr-agent.zh.md) 或 [Open Code Review](../../ai-code-review/open-code-review.zh.md)——Whiteboard 产出的是*给人看的叙事*，你不开口它什么都不画。
 - **你的工作环境没有桌面——SSH、CI、无图形会话。** 画布是 macOS/Windows/Linux 的 Electron 应用；CLI 和服务端能无头跑，但离开桌面应用你无法*看*任何一块 whiteboard。远程机器上，终端原生评审或 [CloudCLI（Claude Code UI）](claudecodeui.zh.md) 更合适。
 - **你今天就依赖多人实时评审。** 分享存在，但“分享之后评审里的更新不会同步给别人”（README 已知限制），面向团队的托管产品只是*计划中*。要带通知、历史与组织审计的社交评审，用 GitHub/GitLab PR review 加托管评审服务（CodeRabbit、Greptile——是服务，不是仓库）。
-- **一次评审必须横跨多个仓库。** “在单个评审里跨多仓库工作与浏览文件支持不佳”（README）——按仓库拆开评审，或把跨仓库检索的活交给 [Sourcegraph](../../rag-retrieval/sourcegraph.zh.md)。
+- **一次评审必须横跨多个仓库。** “在单个评审里跨多仓库工作与浏览文件支持不佳”（README）——按仓库拆开评审，或把跨仓库检索的活交给 [Sourcegraph](../../rag-retrieval/code-intelligence/sourcegraph.zh.md)。
 - **默认开启的遥测在你没确认关掉之前不可接受。** 匿名 PostHog 遥测出厂即开（docs/telemetry.md），可在设置或 `DO_NOT_TRACK` 关掉；崩溃转储“可能包含进程内存中的开源文本”，遥测未关时下次启动会上传（docs/privacy.md）。在严格的出网管控环境，先关遥测再安装。[未验证]——读自文档，未实际观测流量。
 - **你要一个已经定型的依赖。** v0.1.x、问世约 6 周、约每日发版，且刚经历改名（Review→Whiteboard）、`~/.dev/reviews` 与 `review` 包名等遗留路径仍在树里——存储格式和 CLI 表面都要预期震荡。[推断]
 

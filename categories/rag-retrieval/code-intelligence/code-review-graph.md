@@ -2,7 +2,7 @@
 name: code-review-graph
 slug: code-review-graph
 repo: https://github.com/tirth8205/code-review-graph
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, knowledge-graph, mcp, tree-sitter, context-reduction, blast-radius, graphrag]
 language: Python
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 A local-first code-intelligence graph: Tree-sitter parses your repo into a SQLite graph of functions/classes/edges, then serves your AI coding tool the minimal blast-radius context via MCP so it reads only what matters.
 
-![code-review-graph — health radar](../../assets/health/code-review-graph.svg)
+![code-review-graph — health radar](../../../assets/health/code-review-graph.svg)
 
 ## When to use
 
@@ -93,20 +93,20 @@ It's also a fit when you want risk-scored PR review *in CI without sending code 
 
 ## When NOT to use
 
-- **You want a general-purpose graph database, not a code-context layer.** This is a fixed code-intelligence pipeline (AST → SQLite → blast-radius), not a queryable graph store you build apps on. For an actual property/Cypher graph DB use [FalkorDB](falkordb.md).
+- **You want a general-purpose graph database, not a code-context layer.** This is a fixed code-intelligence pipeline (AST → SQLite → blast-radius), not a queryable graph store you build apps on. For an actual property/Cypher graph DB use [FalkorDB](../structured-retrieval/falkordb.md).
 - **Trivial / single-file changes.** The maintainer's own limitations note that graph context can *exceed* a naive file read for small edits — the structural metadata is overhead you don't recoup until changes span multiple files.
 - **You need trustworthy recall numbers today.** The headline "recall 1.0" is explicitly **circular** — ground truth is derived from the same graph the predictor walks. The honest co-change mode is acknowledged as "substantially lower" and **not yet published**. [推断] treat impact accuracy as directional, not a guarantee.
 - **Cross-file call resolution beyond Python.** Flow detection is documented at ~33% recall and only reliable on Python framework patterns (FastAPI/httpx); JS/Go flow and search ranking (MRR 0.35) are stated weak spots.
 - **Bus-factor / maturity risk.** It is a single-maintainer, Beta-classified project at v2.3.x (first commit 2026-02). Pinning the GitHub Action to a tag and a fast release cadence are mitigations, but lock-in to its `.code-review-graph/` SQLite format and MCP tool surface is real.
-- **You need pure document/passage RAG over prose.** This indexes code structure, not arbitrary documents — for hierarchical document retrieval see [PageIndex](pageindex.md).
+- **You need pure document/passage RAG over prose.** This indexes code structure, not arbitrary documents — for hierarchical document retrieval see [PageIndex](../structured-retrieval/pageindex.md).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FalkorDB](falkordb.md) | ✅ | Choose FalkorDB when you need a real Redis-based property graph DB with Cypher and vector search. | A real Redis-based property graph DB with Cypher + vector search you query directly; a *substrate*, not a turnkey code-context tool. code-review-graph gives you the whole AST→graph→MCP pipeline out of the box but on its own fixed SQLite store. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | Choose FalkorDB when you need a real Redis-based property graph DB with Cypher and vector search. | A real Redis-based property graph DB with Cypher + vector search you query directly; a *substrate*, not a turnkey code-context tool. code-review-graph gives you the whole AST→graph→MCP pipeline out of the box but on its own fixed SQLite store. |
 | [graphify](graphify.md) | ✅ | Choose graphify when you need another codebase-to-graph tool for agent retrieval. | Also turns a codebase into a graph for agent retrieval; overlapping intent. code-review-graph leans hard into blast-radius/review + an MCP server, broad language coverage, and a CI Action. Compare scope/maturity directly. |
-| [PageIndex](pageindex.md) | ✅ | Choose PageIndex when you need reasoning-based hierarchical retrieval over documents. | Reasoning-based hierarchical retrieval over *documents* (PDFs, long text), no vector DB; different input domain — prose, not source ASTs. |
+| [PageIndex](../structured-retrieval/pageindex.md) | ✅ | Choose PageIndex when you need reasoning-based hierarchical retrieval over documents. | Reasoning-based hierarchical retrieval over *documents* (PDFs, long text), no vector DB; different input domain — prose, not source ASTs. |
 | [Sourcegraph](sourcegraph.md) / [SCIP](scip.md) | ✅ | Choose Sourcegraph or SCIP when you need mature multi-repo code intelligence at scale. | Mature, multi-repo code intelligence and indexing at scale; heavier infra, not a local single-binary MCP context-reducer aimed at agent token budgets. |
 | Serena (MCP) | 未收录 | Choose Serena when you need an LSP-backed semantic code MCP server for agents. | LSP-backed semantic code MCP server for agents; symbol/LSP-driven rather than a persisted Tree-sitter graph with blast-radius + community/risk analysis. |
 | GraphRAG (Microsoft) | 未收录 | Choose GraphRAG when you need an LLM-built entity/community graph for document RAG. | LLM-built entity/community graph for document RAG; aimed at unstructured corpora, not deterministic AST-derived code graphs. |

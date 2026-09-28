@@ -2,7 +2,7 @@
 name: Ix
 slug: ix
 repo: https://github.com/ix-infrastructure/Ix
-category: rag-retrieval
+category: code-intelligence
 tags: [code-intelligence, knowledge-graph, mcp, tree-sitter, context-reduction, blast-radius, coding-agent, arangodb, docker, open-core]
 language: TypeScript
 license: Apache-2.0
@@ -77,7 +77,7 @@ health:
 
 Your coding agent answers "what breaks if I change `verify_token`?" by grepping, opening a dozen files and still missing a caller two hops away — then does it all again next session. Ix parses the repo once into a graph of who-calls-what and who-imports-what, keeps it in a local database, and lets the agent ask for one symbol's neighbourhood instead of reading files.
 
-![Ix — health radar](../../assets/health/ix.svg)
+![Ix — health radar](../../../assets/health/ix.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ You pick Ix over its nearest neighbours for three reasons: its extractor covers 
 
 Ix is two halves. The half in this repository is the `ix` command-line tool: it walks your files with tree-sitter — a parser library that turns source text into a syntax tree for each language — pulls out every function, class, call and import, and sends them as batches to a backend on your machine. The other half is that backend: an ArangoDB graph database plus Ix's "memory layer" HTTP service, run for you by Docker on `127.0.0.1`, which stores the graph and answers queries. Think of it as the difference between a surveyor and the map office: the CLI walks the ground, the backend keeps the map and answers "what is connected to this?". You run the installer, map each repo once and register your agent clients; after that the agent calls Ix tools over MCP (the protocol coding agents use to call external tools) and gets short, token-lean answers (`--format llm`), while `ix watch` or the editor plugins keep the graph fresh as files change.
 
-![ix — backbone user story](../../assets/flow/ix.svg)
+![ix — backbone user story](../../../assets/flow/ix.svg)
 
 <!-- flow-steps:begin (generated from flows/ix.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -113,8 +113,8 @@ Ix is two halves. The half in this repository is the `ix` command-line tool: it 
 - **Docker is not an option on the machine.** Ix needs Docker + Compose, Node 22+, git and ripgrep, and two long-running containers holding ports 8529 and 8090. On a locked-down laptop, a thin CI runner, or a machine that forbids Docker Desktop's license, pick [code-review-graph](code-review-graph.md), which needs only Python.
 - **Several people or several repos share one backend and you expect isolation.** The repo's own CLAUDE.md warns that `ix reset` is global — it wipes *every* workspace's graph in the shared backend, and the CLI exposes no per-workspace reset. For multi-repo code intelligence served to a whole team, [Sourcegraph](sourcegraph.md) with [SCIP](scip.md) indexes is the heavier but properly multi-tenant route.
 - **You need precise, compiler-grade resolution.** The graph is tree-sitter extraction, not type checking: open issues in 2026-09 include `--path` behaving three different ways (#636), keyword search silently dropping matches (#647), PHP files missing architecture ancestry (#629) and constants never materialising after an upgrade (#709). For exact go-to-definition and references use an LSP-backed tool such as Serena, or precise SCIP indexes from [SCIP](scip.md).
-- **You want planning, decisions and task tracking in the same tool.** `plan`, `task`, `workflow`, `decide`, `goal`, `truth`, `bug` and `briefing` are registered as stubs that print "requires Ix Pro"; they come from a separate, unpublished package. Plan the free tier around structural queries only, or keep project memory in a dedicated tool from the [agent-memory](../agent-memory/INDEX.md) category.
-- **You need questions about prose — docs, meeting notes, design rationale — answered.** Ix's own skill says it "does not answer prose or history questions". For a graph over code *and* docs, use [graphify](graphify.md) or [Understand-Anything](understand-anything.md); for long documents, [PageIndex](pageindex.md).
+- **You want planning, decisions and task tracking in the same tool.** `plan`, `task`, `workflow`, `decide`, `goal`, `truth`, `bug` and `briefing` are registered as stubs that print "requires Ix Pro"; they come from a separate, unpublished package. Plan the free tier around structural queries only, or keep project memory in a dedicated tool from the [agent-memory](../../agent-memory/INDEX.md) category.
+- **You need questions about prose — docs, meeting notes, design rationale — answered.** Ix's own skill says it "does not answer prose or history questions". For a graph over code *and* docs, use [graphify](graphify.md) or [Understand-Anything](understand-anything.md); for long documents, [PageIndex](../structured-retrieval/pageindex.md).
 - **You need a long track record.** Ix is seven months old (created 2026-03-03), at v0.x, and shipped 16 release candidates for v0.10 in six days (2026-08-16 to 08-21) — the command and flag surface is still moving. Pin a version and expect to re-map after upgrades.
 
 ## Comparison

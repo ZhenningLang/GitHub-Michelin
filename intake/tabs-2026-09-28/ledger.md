@@ -62,10 +62,10 @@
 | shadcn/improve | add | done | categories/agent-dev-methodology/spec-driven-development/improve.md |  | shadcn/improve |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 不收：Claude Code 最佳实践文章/教程合集，无可复用软件；标签保留待你复核 | shanraisshan/claude-code-best-practice |
 | siddharthvaddem/openscreen | add | running |  | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
-| skillsgate/skillsgate | add | running |  |  | skillsgate/skillsgate |
-| stanfordnlp/dspy | sync | running |  |  | stanfordnlp/dspy |
-| supermemoryai/supermemory | add | pending |  |  | supermemoryai/supermemory |
-| synthetic-sciences/openscience | add | pending |  |  | synthetic-sciences/openscience |
+| skillsgate/skillsgate | add | running |  | 首次（Opus）在无头模式把健康评分放后台后提前结束，已补前台规则后重排 | skillsgate/skillsgate |
+| stanfordnlp/dspy | sync | done | categories/agent-frameworks/workflow-builders/dspy.md | 新鲜页，sync-entry 按阈值未重核，无改动 | stanfordnlp/dspy |
+| supermemoryai/supermemory | add | running |  |  | supermemoryai/supermemory |
+| synthetic-sciences/openscience | add | running |  |  | synthetic-sciences/openscience |
 | Thysrael/Horizon | add | pending |  |  | thysrael/horizon |
 | vectorize-io/hindsight | add | pending |  |  | vectorize-io/hindsight |
 | vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |

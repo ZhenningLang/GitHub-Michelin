@@ -2,7 +2,7 @@
 name: SCIP
 slug: scip
 repo: https://github.com/scip-code/scip
-category: rag-retrieval
+category: code-intelligence
 tags: [rag, retrieval, scip, tool]
 language: Go
 license: Apache-2.0
@@ -82,7 +82,7 @@ health:
 
 SCIP Code Intelligence Protocol
 
-![SCIP — 健康度雷达](../../assets/health/scip.zh.svg)
+![SCIP — 健康度雷达](../../../assets/health/scip.zh.svg)
 
 ## 何时使用
 
@@ -102,8 +102,8 @@ SCIP Code Intelligence Protocol
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [code-review-graph](code-review-graph.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [FAISS](faiss.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [FalkorDB](falkordb.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [FAISS](../vector-search/faiss.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [FalkorDB](../structured-retrieval/falkordb.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [graphify](graphify.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SCIP 对照。 | SCIP 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 SCIP 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 

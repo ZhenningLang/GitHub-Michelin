@@ -2,7 +2,7 @@
 name: SCIP
 slug: scip
 repo: https://github.com/scip-code/scip
-category: rag-retrieval
+category: code-intelligence
 tags: [rag, retrieval, scip, tool]
 language: Go
 license: Apache-2.0
@@ -82,7 +82,7 @@ health:
 
 SCIP Code Intelligence Protocol
 
-![SCIP — health radar](../../assets/health/scip.svg)
+![SCIP — health radar](../../../assets/health/scip.svg)
 
 ## When to use
 
@@ -102,8 +102,8 @@ This first-pass page exists because SCIP was repeatedly useful as a comparison c
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [code-review-graph](code-review-graph.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| [FAISS](faiss.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| [FalkorDB](falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
+| [FAISS](../vector-search/faiss.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
 | [graphify](graphify.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 

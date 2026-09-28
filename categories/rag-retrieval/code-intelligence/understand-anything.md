@@ -2,7 +2,7 @@
 name: Understand-Anything
 slug: understand-anything
 repo: https://github.com/Egonex-AI/Understand-Anything
-category: rag-retrieval
+category: code-intelligence
 tags: [knowledge-graph, code-intelligence, tree-sitter, agent-plugin, claude-code, semantic-search, codebase-onboarding]
 language: TypeScript
 license: MIT
@@ -77,7 +77,7 @@ health:
 
 A TypeScript tool that turns any codebase — or a docs/knowledge base, or a Figma design file — into an interactive, searchable knowledge graph an agent can query in plain English. It installs as a plugin across Claude Code, Cursor, Copilot, Codex, Gemini CLI and 12+ other assistants, and the resulting graph can be committed so teammates open the dashboard with only Node — no LLM, no API key.
 
-![understand-anything — health radar](../../assets/health/understand-anything.svg)
+![understand-anything — health radar](../../../assets/health/understand-anything.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ Beyond code it also covers two adjacent surfaces: `/understand-knowledge` parses
 - **Suspicious popularity / trust signal.** ~83.3k stars and ~7.0k forks on a repo with ~846 commits and ~6 months of history: the count is API-verified, but its adoption/vetting meaning is unverified and should not be read as social proof — see Caveats. Do not pick this *because* of the star count.
 - **You need fully offline, deterministic, no-LLM extraction.** Plain-English summaries and "ask questions" require an LLM backend: unless you run a local Ollama, that means API keys, cost, non-determinism, and sending code/doc contents to your model provider. Only the read-only *viewer* path is genuinely no-LLM (Node only). [未验证] the exact provider-egress behavior.
 - **You're sending proprietary code you can't expose and won't run a local model.** The project's `SECURITY.md` states it is a local-only tool that does not phone home and gates the dashboard behind an access token and a path allowlist — but that is a self-attested claim, and the *analysis* step still sends source to whichever LLM provider you point it at. Verify the claim yourself (and use a local model) before pointing it at confidential repos.
-- **Pure vector-RAG over prose/docs, no code graph.** If you want passage retrieval over long documents, [PageIndex](pageindex.md) (reasoning-over-ToC) is a better fit; if you want a real queryable graph DB to build on, use [FalkorDB](falkordb.md).
+- **Pure vector-RAG over prose/docs, no code graph.** If you want passage retrieval over long documents, [PageIndex](../structured-retrieval/pageindex.md) (reasoning-over-ToC) is a better fit; if you want a real queryable graph DB to build on, use [FalkorDB](../structured-retrieval/falkordb.md).
 
 ## Comparison
 
@@ -103,8 +103,8 @@ Beyond code it also covers two adjacent surfaces: `/understand-knowledge` parses
 |---|---|---|---|
 | [graphify](graphify.md) | ✅ | Choose graphify when you need a documented Python CLI/MCP code-docs graph pipeline. | Closest sibling: code/docs → queryable graph for agents, but a documented Python CLI + MCP server, 36 grammars, Leiden clustering, portable JSON/HTML/Cypher outputs. More inspectable and better-documented; Understand-Anything is TypeScript, plugin-first, and younger/thinner on docs. |
 | [code-review-graph](code-review-graph.md) | ✅ | Choose code-review-graph when you need a focused code-review/blast-radius pipeline. | Narrow code-review/blast-radius pipeline (AST→SQLite→MCP) with a risk-scoring CI Action and no-egress runner story. Understand-Anything is a general explore/query tool, not a PR-review gate. |
-| [PageIndex](pageindex.md) | ✅ | Choose PageIndex when you need reasoning-based hierarchical retrieval over documents. | Reasoning-based hierarchical retrieval over *documents* (no code AST/call graph); different retrieval primitive — prose tree vs code/entity graph. |
-| [FalkorDB](falkordb.md) | ✅ | Choose FalkorDB when you need a real persistent property-graph backend. | A real persistent property-graph DB (Redis module, OpenCypher, vector index) you build apps on; Understand-Anything is a turnkey extract-and-query tool, not a graph backend. |
+| [PageIndex](../structured-retrieval/pageindex.md) | ✅ | Choose PageIndex when you need reasoning-based hierarchical retrieval over documents. | Reasoning-based hierarchical retrieval over *documents* (no code AST/call graph); different retrieval primitive — prose tree vs code/entity graph. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | Choose FalkorDB when you need a real persistent property-graph backend. | A real persistent property-graph DB (Redis module, OpenCypher, vector index) you build apps on; Understand-Anything is a turnkey extract-and-query tool, not a graph backend. |
 | [Sourcegraph](sourcegraph.md) / [SCIP](scip.md) | ✅ | Choose Sourcegraph or SCIP when you need industrial precise code intelligence at scale. | Industrial precise code intelligence (cross-repo, language servers, scale); heavier infra, not an agent-plugin-shaped drop-in. Understand-Anything is lighter and LLM-augmented but unproven. |
 
 ## Tech stack

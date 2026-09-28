@@ -115,8 +115,8 @@ health:
 
 ## 何时不用
 
-- **你的语料又大又杂，而不是又长又有结构。** OpenKB 的检索是「对编译后维基做目录驱动导航」，且当前发布版**没有任何全文搜索工具**——召回上界取决于编译阶段往 `wiki/index.md` 和各页 `brief:` 里写了什么。如果你要的是在一个庞大异构堆里做语义搜索，应该在 RAG 应用下面用 [FAISS](../rag-retrieval/faiss.zh.md) / [Milvus](../rag-retrieval/milvus.zh.md)，或者用 [Khoj](../knowledge-base/khoj.zh.md)，完全跳过编译这一步。
-- **你只需要对单份文档做一次问答。** OpenKB 按文档付出的 LLM 编译成本，买的是你根本收不到的「积累」——只读一次却付了建维基的钱。直接用 [PageIndex](../rag-retrieval/pageindex.zh.md)（同一个底层检索器，MIT，引入更轻）；如果难点只在文件转换，用 [docling](../document-parsing/docling.zh.md) 或 [marker](../document-parsing/marker.zh.md)。
+- **你的语料又大又杂，而不是又长又有结构。** OpenKB 的检索是「对编译后维基做目录驱动导航」，且当前发布版**没有任何全文搜索工具**——召回上界取决于编译阶段往 `wiki/index.md` 和各页 `brief:` 里写了什么。如果你要的是在一个庞大异构堆里做语义搜索，应该在 RAG 应用下面用 [FAISS](../rag-retrieval/vector-search/faiss.zh.md) / [Milvus](../rag-retrieval/vector-search/milvus.zh.md)，或者用 [Khoj](../knowledge-base/khoj.zh.md)，完全跳过编译这一步。
+- **你只需要对单份文档做一次问答。** OpenKB 按文档付出的 LLM 编译成本，买的是你根本收不到的「积累」——只读一次却付了建维基的钱。直接用 [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md)（同一个底层检索器，MIT，引入更轻）；如果难点只在文件转换，用 [docling](../document-parsing/docling.zh.md) 或 [marker](../document-parsing/marker.zh.md)。
 - **你需要在不上托管服务的前提下对扫描版 PDF 做 OCR。** 扫描件 OCR 被列为 PageIndex Cloud 的能力，也就是付费托管层；本地路径假定文本可直接提取。如果你的语料是扫描件且必须留在本地，解析阶段改用 [olmocr](../document-parsing/olmocr.zh.md) 或 [MinerU](../document-parsing/mineru-skill.zh.md)。
 - **你想要一个由你自己撰写笔记的图形界面。** OpenKB 的维基是生成出来的，不是写作面——流程是批量编译，不是写文章。要人主导编辑、带图谱视图和插件生态，用 [SiYuan](../knowledge-base/siyuan.zh.md)、[Logseq](../knowledge-base/logseq.zh.md) 或 [LLM Wiki](../knowledge-base/llm-wiki.zh.md)。
 - **你需要多用户与权限控制。** 它是一个单用户本地工具，写的是一个文件目录；自带的 Web UI 默认明确关闭鉴权，除非你设 `OPENKB_API_TOKEN`。要共享且有权限的团队空间，用托管维基产品（Notion、Confluence——没有可收录的仓库）。
@@ -128,7 +128,7 @@ health:
 | --- | --- | --- | --- |
 | [LLM Wiki](../knowledge-base/llm-wiki.zh.md) | ✅ | 两者都把来源编译成持续维护的维基；当知识库需要无头／可编程（CLI、REST API、agent skill）时选 OpenKB，当核心诉求是桌面应用内的编辑与图谱浏览时选 LLM Wiki。 | OpenKB 换来服务端自动化和更多产出面（skill、幻灯片、图谱），代价是放弃打包桌面应用的打磨度和笔记写作体验。 |
 | [Khoj](../knowledge-base/khoj.zh.md) | ✅ | 要一份可编译、可审阅的 Markdown 知识库选 OpenKB；要的是从多端（网页、桌面、Obsidian、聊天应用）对文件和网络提问，选 Khoj。 | OpenKB 的知识是持久的、能在 git 里审阅的；Khoj 的知识按查询临时重组，但触面广得多且不用等编译。 |
-| [PageIndex](../rag-retrieval/pageindex.zh.md) | ✅ | 只需要对长 PDF 做无向量检索，就用 PageIndex 并跳过维基；OpenKB 是它上面加了编译、互链与持久化的一层。 | PageIndex 是更小的 MIT 库、不背 LLM 记账负担；OpenKB 换来积累，代价是更重、更主观的管道。 |
+| [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md) | ✅ | 只需要对长 PDF 做无向量检索，就用 PageIndex 并跳过维基；OpenKB 是它上面加了编译、互链与持久化的一层。 | PageIndex 是更小的 MIT 库、不背 LLM 记账负担；OpenKB 换来积累，代价是更重、更主观的管道。 |
 | [Reor](../knowledge-base/reor.zh.md) | ✅ | 不是可用的现役替代品——已归档（2025-05）；只把它当作「本地优先 AI 笔记」的模式参考。 | Reor 展示了本地 embedding 的设计空间，但不再收到依赖与安全修复，生产选型不应落在它身上。 |
 | [markitdown](../document-parsing/markitdown.zh.md) + 你自己的提示词循环 | ✅ | 只需要转换加问答时，把 markitdown 接到自己的提示词上投入更低；当你想要的是积累起来的维基、而不只是解析出的文本，才选 OpenKB。 | 自己拼管道让你不必绑在 OpenKB 年轻的 API 和它的 LLM 记账上，但提示词、互链、索引维护与时效处理都要你自己扛。 |
 | NotebookLM / Google OKF | 未收录 | 只作参照系：NotebookLM 是已经能做「来源落地综述」的托管 SaaS，OKF 是一份规范而不是仓库。 | 托管综述零运维，但不可审阅、不可 diff、不在本地；OKF 合规只说明页面格式可移植，并不等于这份知识归你运营。 |

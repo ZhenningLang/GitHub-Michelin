@@ -2,7 +2,7 @@
 name: HelixDB
 slug: helix-db
 repo: https://github.com/HelixDB/helix-db
-category: rag-retrieval
+category: structured-retrieval
 tags: [graph-database, vector-database, full-text-search, knowledge-graph, rag, rust, object-storage, ai-memory]
 language: Rust
 license: Apache-2.0
@@ -85,13 +85,13 @@ health:
 
 你在给 RAG 攒检索层，攒着攒着发现手上已经是三套库——实体关系一套图库、embedding 一套向量库、精确命中一套搜索引擎——外面还得糊一层胶水，让三边对「刚删掉的那份文档」保持一致。HelixDB 把这三件事收进同一个引擎、同一个事务：实体、实体之间的关系、以及挂在它们身上的 embedding 和正文，本来就是一整张属性图（点和边，各自带类型化字段），一次请求查完。
 
-![HelixDB — 健康度雷达](../../assets/health/helix-db.zh.svg)
+![HelixDB — 健康度雷达](../../../assets/health/helix-db.zh.svg)
 
 ## 何时使用
 
 你正在搭一个 AI 产品的检索层——企业知识库、要记住用户和文档的智能体、人员搜索工具——而且里面的实体是真的连着的：人和团队连着，分块和它出自的那份文档连着。你想一口气问出两类问题：*找出跟这句话语义最近的几个分块，顺着它们走到提到的人和项目，最后只留下 `status` 还是 active 的那些。* 用三套系统拼这件事，意味着同一份语料存三份再加一个对账任务，而问题就出在对账上——你删了一份文档，三套里总有一套还在返回它的分块。
 
-当「把这三件事放进一个引擎」比「每个引擎各自再精进 20%」更值钱时，就是它了。这里的向量索引和 BM25 全文索引只是「挂在点和边已有属性上的一条访问路径」（索引对边也生效，不只是点），而每个请求都是单快照上的一个可串行化事务，所以图上的跳转、ANN 检索和关键词命中不可能互相打架。比起 [FalkorDB](falkordb.zh.md)，它的取舍是：开源核心用宽松许可（Apache-2.0，不是 SSPL），持久层落在对象存储上而不是压在一个 Redis 节点的内存里。比起 [Milvus](milvus.zh.md) 或 pgvector，它的取舍是：图上的遍历是主角，而不是事后加的一层过滤。代价是年轻：v3 引擎 2026 年 7 月才开源，自建 HA 还没进菜单，冷读要付对象存储的延迟。
+当「把这三件事放进一个引擎」比「每个引擎各自再精进 20%」更值钱时，就是它了。这里的向量索引和 BM25 全文索引只是「挂在点和边已有属性上的一条访问路径」（索引对边也生效，不只是点），而每个请求都是单快照上的一个可串行化事务，所以图上的跳转、ANN 检索和关键词命中不可能互相打架。比起 [FalkorDB](falkordb.zh.md)，它的取舍是：开源核心用宽松许可（Apache-2.0，不是 SSPL），持久层落在对象存储上而不是压在一个 Redis 节点的内存里。比起 [Milvus](../vector-search/milvus.zh.md) 或 pgvector，它的取舍是：图上的遍历是主角，而不是事后加的一层过滤。代价是年轻：v3 引擎 2026 年 7 月才开源，自建 HA 还没进菜单，冷读要付对象存储的延迟。
 
 ## 快问快答
 
@@ -105,7 +105,7 @@ health:
 
 HelixDB 是你要运行的服务器，不是一个客户端库：存储、索引维护和事务都归它，你有三种接入方式——本地容器、同进程「嵌入式」、以及它家的托管 Cloud——三者的查询完全一样。你用 SDK 的 builder（Rust、TypeScript、Go、Python）而不是查询文本来描述查询：链式调用说出「从标着 `User` 的点出发，按这个属性过滤，再在结果上搜 embedding 属性」，SDK 把这棵操作树序列化成 JSON。这份 JSON 发到同一个端点，规划后在单个已提交快照上执行，于是图上的跳转、近似最近邻向量检索（ANN，即「按距离找最近的」，不是全量扫描）和 BM25 关键词匹配（经典的词频相关度排序，罕见词权重更高）要么一起提交，要么一起失败。底下一切数据的长久副本放在对象存储上——键值引擎是 SlateDB，一个 LSM 存储，HelixDB 自己维护了它的分支——内存和 SSD 只当缓存；笔记本上同一套代码也可以跑在内存或本地目录上。分工是：你定义数据模型、索引和查询；HelixDB 负责让索引保持一致、跑事务、扩读副本。打个比方：多数 RAG 栈是三个文件柜加一个文员，每来一份新文档就往三个柜子里各抄一遍；这里是同一个柜子，只是有三种翻法。
 
-![HelixDB — 主干用户故事](../../assets/flow/helix-db.zh.svg)
+![HelixDB — 主干用户故事](../../../assets/flow/helix-db.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/helix-db.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,11 +123,11 @@ HelixDB 是你要运行的服务器，不是一个客户端库：存储、索引
 
 ## 何时不用
 
-- **每次读都要亚毫秒。** 它自己的 Tradeoffs 页面写着：命中缓存很快，但冷读要走一次对象存储往返。这种场景改用 [Milvus](milvus.zh.md) 或 [FAISS](faiss.zh.md)，因为它们常驻内存、直接从 RAM 作答，不走网络。
-- **需要 100% 精确的向量召回。** 这里是近似检索（ANN），文档在给出「召回率 90% 以上」这个说法的同时也写明了这个限制。精确性不可让步、语料又不大时，改用 [FAISS](faiss.zh.md) 的暴力检索索引。
+- **每次读都要亚毫秒。** 它自己的 Tradeoffs 页面写着：命中缓存很快，但冷读要走一次对象存储往返。这种场景改用 [Milvus](../vector-search/milvus.zh.md) 或 [FAISS](../vector-search/faiss.zh.md)，因为它们常驻内存、直接从 RAM 作答，不走网络。
+- **需要 100% 精确的向量召回。** 这里是近似检索（ANN），文档在给出「召回率 90% 以上」这个说法的同时也写明了这个限制。精确性不可让步、语料又不大时，改用 [FAISS](../vector-search/faiss.zh.md) 的暴力检索索引。
 - **必须自建生产级 HA 集群。** 自建指的是单节点的 local server；HA 拓扑（3 个以上网关、自动扩缩的读节点）只存在于 Helix Cloud，文档让你就可用性与 SLA 去联系创始人谈，而 roadmap 里「支持非 HA 集群」还在进行中。要今天就自己运维高可用，改用 [FalkorDB](falkordb.zh.md) 配 Redis Sentinel／Cluster，因为它按普通 Redis 部署扩缩，你现在就能操作。 [推断]
-- **写吞吐必须横向扩。** 单写进程串行化所有提交，批量提交能提高吞吐，但抬不高单节点的天花板。需要写横向扩展时改用分片存储（或 Postgres，见 [Supabase](../databases/database-engines/supabase.zh.md)），因为 HelixDB 是拿写扩展性换掉了它想保留的那份简单性。
-- **你只需要向量检索。** 没有遍历、边上也没有属性时，你会为一个用不上的图引擎付费。这种场景改用 pgvector（经 [Supabase](../databases/database-engines/supabase.zh.md)）或 [Milvus](milvus.zh.md)。
+- **写吞吐必须横向扩。** 单写进程串行化所有提交，批量提交能提高吞吐，但抬不高单节点的天花板。需要写横向扩展时改用分片存储（或 Postgres，见 [Supabase](../../databases/database-engines/supabase.zh.md)），因为 HelixDB 是拿写扩展性换掉了它想保留的那份简单性。
+- **你只需要向量检索。** 没有遍历、边上也没有属性时，你会为一个用不上的图引擎付费。这种场景改用 pgvector（经 [Supabase](../../databases/database-engines/supabase.zh.md)）或 [Milvus](../vector-search/milvus.zh.md)。
 - **需要能把版本和 API 钉死的环境。** 这套引擎作为开源项目只有约两个月，而且各部件独立发版——数据库是 v3.x，CLI 有自己的版本线，服务端镜像的标签是 `v0.0.6`，SDK 则停在 Rust 3.0.0／TypeScript 3.2.0／Python 0.3.4／Go 0.3.x。吸收不了这种变动的话，改用 [FalkorDB](falkordb.zh.md) 或基于 Postgres 的一套。 [推断]
 - **你已经在跑 v1。** HelixQL 和它背后的 LMDB 引擎都已归档，v3 被描述为「一个从根本上不同的架构」，所以这是迁移项目，不是版本升级。要么安排重写，要么把 v1 冻结不动、换到版本线稳定的存储（例如 [FalkorDB](falkordb.zh.md)）。
 
@@ -136,8 +136,8 @@ HelixDB 是你要运行的服务器，不是一个客户端库：存储、索引
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [FalkorDB](falkordb.zh.md) | ✅ | 想要一个在 Redis 里跑、有多年积累、说 Cypher 的图引擎时选 FalkorDB；想要宽松许可、且数据集能长到超过单机内存时选 HelixDB。 | FalkorDB 更老、兼容 OpenCypher，但受限于内存且服务端是 SSPL；HelixDB 是 Apache-2.0、数据落在对象存储上，但年轻得多。 |
-| [Milvus](milvus.zh.md) | ✅ | 任务就是集群规模的向量 ANN、查询里不含关系时选 Milvus；遍历、向量检索和关键词过滤必须在同一个事务里跑完时选 HelixDB。 | Milvus 是更深的向量平台（索引种类多、可分布式扩展）；HelixDB 拿向量深度换来「图 + BM25 同引擎」。 |
-| [Supabase](../databases/database-engines/supabase.zh.md) | ✅ | 语料本来就在 Postgres 里、SQL 关联加「召回够用」胜过引入新数据库时，选 Supabase 的 Postgres + pgvector；把多跳遍历和 BM25 排序当一等查询原语时选 HelixDB。 | Postgres 是运维最轻、最可回退的默认解，还能让检索和其他数据同事务；代价是没有图原生遍历、没有多样的 ANN 索引、也没有对象存储的成本结构。 |
+| [Milvus](../vector-search/milvus.zh.md) | ✅ | 任务就是集群规模的向量 ANN、查询里不含关系时选 Milvus；遍历、向量检索和关键词过滤必须在同一个事务里跑完时选 HelixDB。 | Milvus 是更深的向量平台（索引种类多、可分布式扩展）；HelixDB 拿向量深度换来「图 + BM25 同引擎」。 |
+| [Supabase](../../databases/database-engines/supabase.zh.md) | ✅ | 语料本来就在 Postgres 里、SQL 关联加「召回够用」胜过引入新数据库时，选 Supabase 的 Postgres + pgvector；把多跳遍历和 BM25 排序当一等查询原语时选 HelixDB。 | Postgres 是运维最轻、最可回退的默认解，还能让检索和其他数据同事务；代价是没有图原生遍历、没有多样的 ANN 索引、也没有对象存储的成本结构。 |
 | Neo4j | 未收录 | Bolt 驱动生态、GDS 算法库和招人池比「把存储放到对象存储上」更重要时选 Neo4j；每 GB 成本是决定性约束时选 HelixDB。 | Neo4j 是属性图的老牌选手（社区版 GPLv3／企业版商业授权），数据落在本地磁盘或内存。它是真实存在的仓库，本次刻意未收录以控制改动范围——它的生态体量值得日后单独出一页。 |
 | Pinecone | 非仓库 | 想要完全不自托管的托管式 ANN 时选 Pinecone；它是托管服务，按形态就不属于本索引的收录范围，而不是遗漏。 | 闭源托管、只有向量、按向量量计价；没有自托管路径，也没有图遍历和 BM25。 |
 

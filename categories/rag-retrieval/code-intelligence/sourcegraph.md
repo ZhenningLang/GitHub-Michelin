@@ -2,7 +2,7 @@
 name: Sourcegraph
 slug: sourcegraph
 repo: https://github.com/sourcegraph/sourcegraph-public-snapshot
-category: rag-retrieval
+category: code-intelligence
 tags: [rag, retrieval, sourcegraph, app]
 language: Go
 license: NOASSERTION
@@ -75,7 +75,7 @@ health:
 
 Code AI platform with Code Search & Cody It is archived on GitHub, so treat it as a legacy or pattern-source option rather than a default for new production work.
 
-![Sourcegraph — health radar](../../assets/health/sourcegraph.svg)
+![Sourcegraph — health radar](../../../assets/health/sourcegraph.svg)
 
 ## When to use
 
@@ -95,8 +95,8 @@ This first-pass page exists because Sourcegraph was repeatedly useful as a compa
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [code-review-graph](code-review-graph.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
-| [FAISS](faiss.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
-| [FalkorDB](falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
+| [FAISS](../vector-search/faiss.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
+| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
 | [graphify](graphify.md) | ✅ | When you need the established in-index option for this category, compare it against Sourcegraph before switching. | Sourcegraph is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Sourcegraph only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
