@@ -2,7 +2,7 @@
 name: Nuxt
 slug: nuxt
 repo: https://github.com/nuxt/nuxt
-category: frameworks
+category: app-frameworks
 tags: [frontend, ui, nuxt, framework]
 language: TypeScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 the full-stack Vue framework
 
-![Nuxt — health radar](../../../assets/health/nuxt.svg)
+![Nuxt — health radar](../../../../assets/health/nuxt.svg)
 
 ## When to use
 
@@ -97,10 +97,10 @@ This first-pass page exists because Nuxt was repeatedly useful as a comparison c
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Angular](angular.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
-| [Ant Design](../component-libraries/ant-design.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
-| [Chakra UI](../component-libraries/chakra-ui.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
-| [Driver.js](../product-tours/driver-js.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
+| [Angular](../view-frameworks/angular.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
+| [Ant Design](../../component-libraries/ant-design.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
+| [Chakra UI](../../component-libraries/chakra-ui.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
+| [Driver.js](../../product-tours/driver-js.md) | ✅ | When you need the established in-index option for this category, compare it against Nuxt before switching. | Nuxt is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose Nuxt only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

@@ -2,7 +2,7 @@
 name: Nuxt
 slug: nuxt
 repo: https://github.com/nuxt/nuxt
-category: frameworks
+category: app-frameworks
 tags: [frontend, ui, nuxt, framework]
 language: TypeScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 the full-stack Vue framework
 
-![Nuxt — 健康度雷达](../../../assets/health/nuxt.zh.svg)
+![Nuxt — 健康度雷达](../../../../assets/health/nuxt.zh.svg)
 
 ## 何时使用
 
@@ -97,10 +97,10 @@ the full-stack Vue framework
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Angular](angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Ant Design](../component-libraries/ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Chakra UI](../component-libraries/chakra-ui.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Driver.js](../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Angular](../view-frameworks/angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Ant Design](../../component-libraries/ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Chakra UI](../../component-libraries/chakra-ui.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Driver.js](../../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Nuxt 对照。 | Nuxt 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Nuxt 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

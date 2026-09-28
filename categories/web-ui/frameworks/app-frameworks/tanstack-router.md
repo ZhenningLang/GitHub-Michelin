@@ -3,7 +3,7 @@ name: TanStack Router
 slug: tanstack-router
 repo: https://github.com/TanStack/router
 homepage: https://tanstack.com/router
-category: frameworks
+category: app-frameworks
 tags: [routing, type-safety, react, spa, ssr, search-params, file-based-routing, tanstack-start, vite, loaders, prefetching, full-stack]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 A link whose route doesn't exist, an `id` param that arrives as an untyped string, a query key renamed in one component while every shared link still carries the old one — routing mistakes like these normally surface at runtime, in front of users. TanStack Router makes the URL compiled code: it generates a typed route tree from your route files, so `<Link to>`, path params and search params are checked by TypeScript before the app can build, and per-route data loading (fetch, cache, prefetch) is built in rather than assembled from helpers.
 
-![TanStack Router — health radar](../../../assets/health/tanstack-router.svg)
+![TanStack Router — health radar](../../../../assets/health/tanstack-router.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ Reach for TanStack Router when **compile-time URL safety plus a built-in data la
 
 You describe routes as files: `posts.$postId.tsx` under `src/routes` declares `/posts/:postId`, and inside it `createFileRoute('/posts/$postId')({ loader, component, errorComponent })` pairs data fetching with a plain React component. Between your files and runtime sit two moving parts. A build plugin (`tanstackRouter()` from `@tanstack/router-plugin/vite`, also offered for Rspack/webpack/esbuild) watches the routes folder and regenerates `routeTree.gen.ts` — a plain TypeScript description of the whole tree, committed to the repo. Then `createRouter({ routeTree })` + `<RouterProvider>` consume it, and the router does the rest on its own: path params arrive typed, loaders fetch per match with stale-while-revalidate caching (serve the cached result immediately, refresh in the background) and prefetching you get by setting `defaultPreload: 'intent'`, search params are serialized as structured values, and `<Link>`/`useNavigate` accept only destinations the tree contains. You write route files, a loader and components; the types, the orchestration and the caching come from the generated tree. Code-based routes (`createRoute`) work without the plugin if you dislike codegen, but file-based is the mainline. TanStack Start layers full-document SSR, streaming, server functions and middleware over the same router when the client-first model stops being enough.
 
-![tanstack-router — backbone user story](../../../assets/flow/tanstack-router.svg)
+![tanstack-router — backbone user story](../../../../assets/flow/tanstack-router.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-router.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ You describe routes as files: `posts.$postId.tsx` under `src/routes` declares `/
 - **You need React Server Components as a production default today.** Router's own comparison table lists RSC as supported only via its server-function layer and marks it experimental for Start, while [Next.js](nextjs.md) treats RSC as first-class — pick Next.js for a server-first architecture.
 - **You want the Start full-stack framework but cannot accept Release-Candidate risk.** As of 2026-09-28 the Start docs call it "Release Candidate… considered feature-complete", not v1; teams that need a framework with years of majors behind it should pick [Next.js](nextjs.md), [Nuxt](nuxt.md) or [SvelteKit](sveltekit.md) and revisit later.
 - **Routes must be registered at runtime** — module federation, fog-of-war route trees, plugins that add pages after boot. The repo's own comparison marks runtime route manipulation as not officially supported (`🛑`) while Next.js and React Router support it; parallel routes are also listed unsupported and the guide page is a placeholder ("We haven't covered this yet"). Use a framework whose route tree can change after startup.
-- **The team is on Angular or Svelte.** There is no binding for either — the repo ships React, Vue and Solid packages; on those stacks the built-in [Angular](angular.md) router or [SvelteKit](sveltekit.md) is the coherent choice.
+- **The team is on Angular or Svelte.** There is no binding for either — the repo ships React, Vue and Solid packages; on those stacks the built-in [Angular](../view-frameworks/angular.md) router or [SvelteKit](sveltekit.md) is the coherent choice.
 - **You must avoid committed generated files and a strict TS floor.** `routeTree.gen.ts` lives in the repo (merge conflicts included) and the install docs want React 18/19 with TypeScript 5.3+; if neither is acceptable, code-based routing keeps the plugin out but gives up the file-convention ergonomics that motivate the pick.
 
 ## Comparison
@@ -126,7 +126,7 @@ You describe routes as files: `posts.$postId.tsx` under `src/routes` declares `/
 | [Next.js](nextjs.md) | ✅ | When the app is client-first and the URL itself is the state you care to type, pick TanStack Router (optionally via Start); pick Next.js when RSC, ISR and Vercel-platform optimizations are the architecture, not an add-on. | Router gains full compile-time URL typing, a plain Vite build deployable anywhere, and SWR-style loader caching; it pays with a codegen dependency and a server story (Start) that is Release Candidate, not v1. |
 | React Router | 未收录 | When you need typed links, typed params and schema-validated search params as the core feature, pick TanStack Router; when the routing need is plain nesting plus navigation without a codegen step, React Router is the lighter pick. | Router gains type safety and a built-in data layer; it pays plugin + generated-tree tooling. React Router was not added in this tab-intake batch, so this row is a pointer, not a verified comparison. |
 | [SvelteKit](sveltekit.md) | ✅ | When you are on React and want its ecosystem plus typed routing you can adopt file-by-file, pick TanStack Router; on Svelte, pick SvelteKit — Router has no Svelte binding, and its generated tree would fight Svelte's compiler. | Router gains framework-agnostic core with React/Vue/Solid bindings and the richest search-param model; SvelteKit gains a runtime that needs no router add-on at all. |
-| [Angular](angular.md) | ✅ | Treat this page as out of scope on Angular: the framework ships its own DI-driven, guard-equipped router as the coherent default; reach for TanStack Router only if the team has already chosen React/Vue/Solid. | Angular gains a decade-integrated official router; TanStack Router gains cross-framework typings and data-loading ergonomics that do not exist for Angular. |
+| [Angular](../view-frameworks/angular.md) | ✅ | Treat this page as out of scope on Angular: the framework ships its own DI-driven, guard-equipped router as the coherent default; reach for TanStack Router only if the team has already chosen React/Vue/Solid. | Angular gains a decade-integrated official router; TanStack Router gains cross-framework typings and data-loading ergonomics that do not exist for Angular. |
 
 ## Tech stack
 

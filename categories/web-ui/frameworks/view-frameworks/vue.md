@@ -2,7 +2,7 @@
 name: Vue.js
 slug: vue
 repo: https://github.com/vuejs/core
-category: frameworks
+category: view-frameworks
 tags: [vue, frontend, framework, typescript, progressive, reactive, spa, ssr, vue-router, pinia]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 A progressive JavaScript framework for building user interfaces, created by Evan You. Known for its gentle learning curve, excellent documentation, and incrementally adoptable architecture.
 
 
-![Vue.js — health radar](../../../assets/health/vue.svg)
+![Vue.js — health radar](../../../../assets/health/vue.svg)
 
 ## When to use
 
@@ -103,8 +103,8 @@ You're a frontend developer or a small team building a modern web application �
 | [React](react.md) | ✅ | Choose React when you want the largest UI library ecosystem and a "just JavaScript" philosophy. | React has a larger job market and more third-party libraries; Vue is easier to learn and has a more integrated experience. |
 | [Angular](angular.md) | ✅ | A comprehensive, opinionated TypeScript framework for enterprise-scale apps. | Angular ships with more built-in structure (DI, CLI, forms); Vue is lighter, more flexible, and faster to prototype. |
 | [Svelte](svelte.md) | ✅ | Choose Svelte when you want a compile-time framework with minimal runtime and no virtual DOM. | Svelte is smaller and faster for simple apps; Vue has a larger ecosystem, more mature tooling, and a gentler migration path. |
-| [SvelteKit](sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack meta-framework rather than Vue's progressive app framework. | SvelteKit adds routing, SSR, and app conventions around Svelte; Vue's equivalent is Nuxt.js, while Vue alone is easier to adopt incrementally. |
-| [Next.js](nextjs.md) | ✅ | Choose Next.js when your SSR/SEO requirement sits in the React ecosystem rather than Vue. | Next.js is the React default for SSR/SEO; Vue's equivalent is Nuxt.js, which has a smaller community footprint. |
+| [SvelteKit](../app-frameworks/sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack meta-framework rather than Vue's progressive app framework. | SvelteKit adds routing, SSR, and app conventions around Svelte; Vue's equivalent is Nuxt.js, while Vue alone is easier to adopt incrementally. |
+| [Next.js](../app-frameworks/nextjs.md) | ✅ | Choose Next.js when your SSR/SEO requirement sits in the React ecosystem rather than Vue. | Next.js is the React default for SSR/SEO; Vue's equivalent is Nuxt.js, which has a smaller community footprint. |
 | Nuxt.js | 未收录 | The meta-framework for Vue — SSR, SSG, file-based routing, and auto-imports. | Nuxt adds SSR/SSG to Vue; it is the Vue answer to Next.js but with less market share and third-party integration. |
 
 ## Tech stack

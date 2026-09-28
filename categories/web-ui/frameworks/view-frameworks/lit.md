@@ -2,7 +2,7 @@
 name: Lit
 slug: lit
 repo: https://github.com/lit/lit
-category: frameworks
+category: view-frameworks
 tags: [web-components, lit-html, lit-element, compiler, typescript, standards, framework-agnostic]
 language: TypeScript
 license: BSD-3-Clause
@@ -81,7 +81,7 @@ health:
 A lightweight library from Google for building fast, interoperable web components. Built on Web Components standards with no virtual DOM and a tiny runtime (~3 KB for lit-html).
 
 
-![Lit — health radar](../../../assets/health/lit.svg)
+![Lit — health radar](../../../../assets/health/lit.svg)
 
 ## When to use
 

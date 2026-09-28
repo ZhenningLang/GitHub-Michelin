@@ -2,7 +2,7 @@
 name: React
 slug: react
 repo: https://github.com/facebook/react
-category: frameworks
+category: view-frameworks
 tags: [ui-library, react, components, frontend, javascript, typescript, virtual-dom, jsx, facebook]
 language: JavaScript / TypeScript
 license: MIT
@@ -85,7 +85,7 @@ health:
 用于构建用户界面的声明式、组件化 JavaScript 库，由 Meta 维护。它是全球采用最广泛的 UI 库，从单页应用到通过 React Native 构建的原生移动应用都有它的身影。
 
 
-![React — health radar](../../../assets/health/react.zh.svg)
+![React — health radar](../../../../assets/health/react.zh.svg)
 
 ## 何时使用
 
@@ -107,11 +107,11 @@ health:
 | [Vue.js](vue.zh.md) | ✅ | 需要渐进式框架、更温和学习曲线和优秀文档时，选 Vue。 | Vue 更容易增量采纳；React 生态更大、就业市场更深。 |
 | [Angular](angular.zh.md) | ✅ | 由 Google 构建的综合性、opinionated TypeScript 框架，面向企业级应用。 | Angular 内置一切；React 更灵活，但需要你自己组装技术栈。 |
 | [Svelte](svelte.zh.md) | ✅ | 需要编译时组件、极小运行时和无虚拟 DOM 时，选 Svelte。 | Svelte 对中小型应用更快更简单；React 生态庞大得多，招聘更容易。 |
-| [SvelteKit](sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈应用框架，而不只是 UI 库时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；纯 React 更轻，但需要自行组装更多技术栈。 |
-| [Next.js](nextjs.zh.md) | ✅ | 需要默认的全栈 React 框架、一流 SSR/SSG 和 Vercel 生态时，选 Next.js。 | Next.js 是 React 加上路由、SSR 和部署；当你需要这些功能时用它，想要更轻量、更可控的 setup 时用纯 React。 |
-| [shadcn/ui](../component-libraries/shadcn-ui.zh.md) | ✅ | 构建在 React 之上的组件分发模式——不是替代品，而是常见搭档。 | shadcn/ui 提供可复制的粘贴组件；它不是独立的 UI 库。 |
-| [Ant Design](../component-libraries/ant-design.zh.md) | ✅ | 企业级 React 组件库，拥有全面的预置组件。 | Ant Design 是 React 内部使用的样式组件套件；它不是 React 的替代品。 |
-| [Driver.js](../product-tours/driver-js.zh.md) | ✅ | 轻量、零依赖的导览和聚光灯库。 | 不是 UI 框架的替代品；与 React 配合使用做 onboarding 导览。 |
+| [SvelteKit](../app-frameworks/sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈应用框架，而不只是 UI 库时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；纯 React 更轻，但需要自行组装更多技术栈。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | 需要默认的全栈 React 框架、一流 SSR/SSG 和 Vercel 生态时，选 Next.js。 | Next.js 是 React 加上路由、SSR 和部署；当你需要这些功能时用它，想要更轻量、更可控的 setup 时用纯 React。 |
+| [shadcn/ui](../../component-libraries/shadcn-ui.zh.md) | ✅ | 构建在 React 之上的组件分发模式——不是替代品，而是常见搭档。 | shadcn/ui 提供可复制的粘贴组件；它不是独立的 UI 库。 |
+| [Ant Design](../../component-libraries/ant-design.zh.md) | ✅ | 企业级 React 组件库，拥有全面的预置组件。 | Ant Design 是 React 内部使用的样式组件套件；它不是 React 的替代品。 |
+| [Driver.js](../../product-tours/driver-js.zh.md) | ✅ | 轻量、零依赖的导览和聚光灯库。 | 不是 UI 框架的替代品；与 React 配合使用做 onboarding 导览。 |
 
 ## 技术栈
 

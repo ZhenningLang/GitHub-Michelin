@@ -97,7 +97,7 @@ Chakra UI is a component system for building SaaS products with speed ⚡️
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Angular](../frameworks/angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Chakra UI 对照。 | Chakra UI 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Angular](../frameworks/view-frameworks/angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Chakra UI 对照。 | Chakra UI 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Ant Design](ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Chakra UI 对照。 | Chakra UI 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Driver.js](../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Chakra UI 对照。 | Chakra UI 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | [Intro.js](../product-tours/intro-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Chakra UI 对照。 | Chakra UI 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |

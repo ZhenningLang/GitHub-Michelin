@@ -2,7 +2,7 @@
 name: Next.js
 slug: nextjs
 repo: https://github.com/vercel/next.js
-category: frameworks
+category: app-frameworks
 tags: [nextjs, react, ssr, ssg, fullstack, vercel, typescript, app-router, edge]
 language: TypeScript / JavaScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 全栈 React 框架的默认选择，由 Vercel 创建并维护。内置 App Router、React Server Components、自动静态优化、ISR 和内置 API 层——与 Vercel 深度集成是「happy path」。
 
 
-![Next.js — health radar](../../../assets/health/nextjs.zh.svg)
+![Next.js — health radar](../../../../assets/health/nextjs.zh.svg)
 
 ## 何时使用
 
@@ -100,14 +100,14 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Angular](angular.zh.md) | ✅ | 全栈 TypeScript 框架，内置深度的企业级工具链和强 opinionated 设计。 | Angular 自带更多内置功能，且不限于 React 生态；Next.js 主导 React SSR/SSG 细分领域，并拥有更大的 React 就业市场。 |
-| [React](react.zh.md) | ✅ | 只需要 UI 库，而不需要 Next.js 路由、SSR 或全栈约定时，选 React。 | 纯 React 提供最大灵活性和更小的包体积；Next.js 提供路由、SSR 和全栈约定，但增加了复杂度。 |
-| [Vue.js](vue.zh.md) | ✅ | 需要更容易增量采纳的非 React 渐进式框架时，选 Vue。 | Vue 是框架无关的，更容易增量采纳；Next.js 仅支持 React，且更 opinionated。 |
-| [Svelte](svelte.zh.md) | ✅ | 需要编译时组件模型且不想投入 React 生态时，选 Svelte。 | Svelte 对组件密集型中小应用更轻量、更简单；Next.js 拥有庞大得多的生态和更深的就业市场。 |
+| [Angular](../view-frameworks/angular.zh.md) | ✅ | 全栈 TypeScript 框架，内置深度的企业级工具链和强 opinionated 设计。 | Angular 自带更多内置功能，且不限于 React 生态；Next.js 主导 React SSR/SSG 细分领域，并拥有更大的 React 就业市场。 |
+| [React](../view-frameworks/react.zh.md) | ✅ | 只需要 UI 库，而不需要 Next.js 路由、SSR 或全栈约定时，选 React。 | 纯 React 提供最大灵活性和更小的包体积；Next.js 提供路由、SSR 和全栈约定，但增加了复杂度。 |
+| [Vue.js](../view-frameworks/vue.zh.md) | ✅ | 需要更容易增量采纳的非 React 渐进式框架时，选 Vue。 | Vue 是框架无关的，更容易增量采纳；Next.js 仅支持 React，且更 opinionated。 |
+| [Svelte](../view-frameworks/svelte.zh.md) | ✅ | 需要编译时组件模型且不想投入 React 生态时，选 Svelte。 | Svelte 对组件密集型中小应用更轻量、更简单；Next.js 拥有庞大得多的生态和更深的就业市场。 |
 | [SvelteKit](sveltekit.zh.md) | ✅ | 需要围绕 Svelte 编译时模型构建的更轻量全栈框架时，选 SvelteKit。 | SvelteKit 对中小型应用更轻量、更简单；Next.js 拥有庞大得多的生态、更成熟的工具和更深的就业市场。 |
 | Nuxt.js | 未收录 | 全栈 Vue 框架——Vue 生态中相当于 Next.js 的存在。 | Nuxt 面向 Vue 团队；Next.js 面向 React 团队。选择通常取决于你的 UI 框架偏好。 |
 | Remix | 未收录 | 全栈 React 框架，专注于 Web 标准、渐进增强和更弱的厂商耦合。 | Remix 对部署更灵活，避免了一些 Vercel 专属功能；Next.js 拥有更多内置优化（图片、字体、脚本）和更大的社区。 |
-| [Astro](astro.zh.md) | ✅ | 以内容为中心的静态站点构建工具，采用 Islands 架构并支持多框架。 | Astro 更适合静态内容站点和混合框架项目；Next.js 更适合动态、全栈且交互密集的 React 应用。 |
+| [Astro](../site-frameworks/astro.zh.md) | ✅ | 以内容为中心的静态站点构建工具，采用 Islands 架构并支持多框架。 | Astro 更适合静态内容站点和混合框架项目；Next.js 更适合动态、全栈且交互密集的 React 应用。 |
 
 ## 技术栈
 

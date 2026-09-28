@@ -3,7 +3,7 @@ name: Nextra
 slug: nextra
 repo: https://github.com/shuding/nextra
 homepage: https://nextra.site
-category: frameworks
+category: site-frameworks
 tags: [documentation-site, nextjs, mdx, react, docs-theme, ssg, static-export, app-router]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 Next.js 之上的一层薄薄的站点生成方案：装上几个包、把 Next 配置包一层，Markdown／MDX 文件就成了文档站或博客站，几乎没有属于它自己的框架。
 
-![Nextra — 健康度雷达](../../../assets/health/nextra.zh.svg)
+![Nextra — 健康度雷达](../../../../assets/health/nextra.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ Next.js 之上的一层薄薄的站点生成方案：装上几个包、把 Next 
 
 你装上整栈——`npm i next react react-dom nextra nextra-theme-docs`——加上调用 Next.js CLI 的 `dev`／`build`／`start` 脚本，再建一个 `next.config.mjs` 把配置包起来：`import nextra from 'nextra'`、`const withNextra = nextra({...})`、`export default withNextra({...})`。正是这层包装让 Next.js 把 Markdown／MDX 当成页面。**然后你只需要写一次站点外壳**——在 `app/layout.jsx` 里组合 `nextra-theme-docs` 的 `Layout`、`Navbar`、`Footer`，把 `await getPageMap()` 传进去做侧边栏导航，并 `import 'nextra-theme-docs/style.css'`——之后**每加一个页面就只是一个 Markdown 或 MDX 文件**，按文件约定（`page.mdx`，或 `content` 目录）放置。`npm run dev` 启动 Next.js 开发模式；`npm run build` 跑生产构建。
 
-![nextra — 主干用户故事](../../../assets/flow/nextra.zh.svg)
+![nextra — 主干用户故事](../../../../assets/flow/nextra.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/nextra.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,8 +116,8 @@ Next.js 之上的一层薄薄的站点生成方案：装上几个包、把 Next 
 - **你不用 Next.js，或者不想把 App Router 与 React Server Components 引入链路。** 内容站改用 [Astro](astro.zh.md)；想要 React 但不想背 Next.js 的框架主张，则用 [Docusaurus](docusaurus.zh.md)。
 - **站点主要是宣传内容，文档只占一小块。** 改用 [Astro](astro.zh.md)——通用内容框架比一个你还得掏空的文档主题更贴合这种形态。
 - **你需要一个有人员与发布保证的项目。** Nextra 的仓库挂在一个个人 GitHub 账号下，贡献集中在少数几个人（人类贡献者里 `shuding` 509、`dimaMachina` 203，前面还有个 746 的重构机器人），最近一个带标签的版本是 2025-12-04，未关闭 issue 约 333 个。如果文档平台对你是长期基础设施，请把这一点与 Docusaurus 的团队和发布历史一起权衡。
-- **你想要尽可能小的依赖树。** Nextra 等于 Next.js 加 React 加 MDX 管线；纯 Markdown 生成器如 [Quarkdown](../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../typesetting/asciidoctor.zh.md) 能把整套 JS 构建从「发布文档」的关键路径上拿掉。
-- **你需要从同一份源得到 PDF 或纸质手册。** Nextra 只产出网站；排版成品请看 [Quarkdown](../../typesetting/quarkdown.zh.md) 或 [LaTeX](../../typesetting/latex.zh.md)。
+- **你想要尽可能小的依赖树。** Nextra 等于 Next.js 加 React 加 MDX 管线；纯 Markdown 生成器如 [Quarkdown](../../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../../typesetting/asciidoctor.zh.md) 能把整套 JS 构建从「发布文档」的关键路径上拿掉。
+- **你需要从同一份源得到 PDF 或纸质手册。** Nextra 只产出网站；排版成品请看 [Quarkdown](../../../typesetting/quarkdown.zh.md) 或 [LaTeX](../../../typesetting/latex.zh.md)。
 - **你希望生成的站点能当纯文件托管、不必先做「要不要 Node 运行时」的决定。** Next.js 可以静态导出，Nextra 也记录了这条路径，但你终究还是在用 Next.js 构建；静态优先的框架会把这件事变成默认而不是一种模式。
 
 ## 横向对比

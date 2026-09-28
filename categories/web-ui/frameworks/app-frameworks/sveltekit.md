@@ -2,7 +2,7 @@
 name: SvelteKit
 slug: sveltekit
 repo: https://github.com/sveltejs/kit
-category: frameworks
+category: app-frameworks
 tags: [frontend, ui, sveltekit, framework]
 language: JavaScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 web development, streamlined
 
-![SvelteKit — health radar](../../../assets/health/sveltekit.svg)
+![SvelteKit — health radar](../../../../assets/health/sveltekit.svg)
 
 ## When to use
 
@@ -97,10 +97,10 @@ This first-pass page exists because SvelteKit was repeatedly useful as a compari
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Angular](angular.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
-| [Ant Design](../component-libraries/ant-design.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
-| [Driver.js](../product-tours/driver-js.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
-| [Intro.js](../product-tours/intro-js.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
+| [Angular](../view-frameworks/angular.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
+| [Ant Design](../../component-libraries/ant-design.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
+| [Driver.js](../../product-tours/driver-js.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
+| [Intro.js](../../product-tours/intro-js.md) | ✅ | When you need the established in-index option for this category, compare it against SvelteKit before switching. | SvelteKit is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SvelteKit only after verifying the repo-specific caveats below. |
 | Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
 
 ## Tech stack

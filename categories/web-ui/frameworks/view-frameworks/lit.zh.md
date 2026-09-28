@@ -2,7 +2,7 @@
 name: Lit
 slug: lit
 repo: https://github.com/lit/lit
-category: frameworks
+category: view-frameworks
 tags: [web-components, lit-html, lit-element, compiler, typescript, standards, framework-agnostic]
 language: TypeScript
 license: BSD-3-Clause
@@ -81,7 +81,7 @@ health:
 一个由 Google 出品的轻量级库，用于构建快速、可互操作的 Web Components。基于 Web Components 标准，无虚拟 DOM，运行时体积极小（lit-html 约 3 KB）。
 
 
-![Lit — health radar](../../../assets/health/lit.zh.svg)
+![Lit — health radar](../../../../assets/health/lit.zh.svg)
 
 ## 何时使用
 

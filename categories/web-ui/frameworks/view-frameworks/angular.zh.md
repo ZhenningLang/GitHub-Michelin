@@ -2,7 +2,7 @@
 name: Angular
 slug: angular
 repo: https://github.com/angular/angular
-category: frameworks
+category: view-frameworks
 tags: [web-framework, typescript, spa, pwa, enterprise, frontend]
 language: TypeScript
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 用于构建移动端和桌面端 Web 应用的综合性开发平台。基于 TypeScript，由 Google 构建和维护，专注于企业级应用。
 
-![Angular — 健康度雷达](../../../assets/health/angular.zh.svg)
+![Angular — 健康度雷达](../../../../assets/health/angular.zh.svg)
 
 ## 何时使用
 
@@ -105,9 +105,9 @@ health:
 | [React](react.zh.md) | ✅ | 需要最大 UI 生态和「就是 JavaScript」理念时，选 React。 | React 更灵活，就业市场更大；Angular 更 opinionated，自带更多内置工具，减少决策疲劳。 |
 | [Vue.js](vue.zh.md) | ✅ | 需要渐进式框架、更温和的学习曲线和优秀文档时，选 Vue。 | Vue 更容易增量采纳；Angular 要求全面投入，但回报是企业级更强的结构性。 |
 | [Svelte](svelte.zh.md) | ✅ | 需要编译时组件、极小运行时开销和无虚拟 DOM 时，选 Svelte。 | Svelte 对中小型应用更快更简单；Angular 拥有更深的企业支持、更多第三方集成和更长的记录。 |
-| [SvelteKit](sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈 meta-framework，而不是单独组件框架时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；Angular 仍更企业级、更 opinionated，也更久经验证。 |
-| [Next.js](nextjs.zh.md) | ✅ | 需要 React 生态 SSR/SSG 和主流全栈框架时，选 Next.js。 | Next.js 是 React 生态 SSR/SEO 的默认选择；Angular Universal 存在，但在该细分领域不占主导。 |
-| [shadcn/ui](../component-libraries/shadcn-ui.zh.md) | ✅ | 组件分发模式，不是框架——通常在 React 内部使用。 | 并非直接替代品；shadcn/ui 关注组件所有权，Angular 是完整应用框架。 |
+| [SvelteKit](../app-frameworks/sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈 meta-framework，而不是单独组件框架时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；Angular 仍更企业级、更 opinionated，也更久经验证。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | 需要 React 生态 SSR/SSG 和主流全栈框架时，选 Next.js。 | Next.js 是 React 生态 SSR/SEO 的默认选择；Angular Universal 存在，但在该细分领域不占主导。 |
+| [shadcn/ui](../../component-libraries/shadcn-ui.zh.md) | ✅ | 组件分发模式，不是框架——通常在 React 内部使用。 | 并非直接替代品；shadcn/ui 关注组件所有权，Angular 是完整应用框架。 |
 | [Lit](lit.zh.md) | ✅ | 基于标准的 Web Components 构建库，运行时极小。 | Lit 用于构建可互操作的组件，而非完整 SPA；Angular 是带路由、依赖注入和 CLI 的完整框架。如果设计系统需要跨框架工作，选 Lit。 |
 
 ## 技术栈

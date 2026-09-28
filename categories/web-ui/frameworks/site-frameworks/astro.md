@@ -3,7 +3,7 @@ name: Astro
 slug: astro
 repo: https://github.com/withastro/astro
 homepage: https://astro.build
-category: frameworks
+category: site-frameworks
 tags: [frontend, framework, static-site-generator, content-site, islands-architecture, vite, mdx, multi-framework, ssr, typescript]
 language: TypeScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 A website build tool for content-driven sites: pages are HTML-first `.astro` components, Markdown/MDX joins them as content collections, and interactive components from React, Vue, Svelte, Solid or Preact are hydrated individually as "islands" instead of shipping an app-wide bundle.
 
-![Astro — health radar](../../../assets/health/astro.svg)
+![Astro — health radar](../../../../assets/health/astro.svg)
 
 ## When to use
 
@@ -90,7 +90,7 @@ Reach for Astro when **content-first and JS-minimal are the requirements, and yo
 
 `npm create astro@latest` runs a wizard that scaffolds a project; the manual path is `npm install astro` plus three scripts — `astro dev`, `astro build`, `astro preview`. **You then write pages as `.astro` components** in `src/pages/`: a file is a page, its top frontmatter runs at build time (never in the browser), and the template below it is HTML with expressions — so a page can loop over data, render Markdown, and stay static. Configuration lives in `astro.config.mjs` (`defineConfig`), which is also where integrations are registered: `npm create astro@latest -- --add react` adds a UI framework, and `@astrojs/mdx` adds MDX as a first-party integration. **Astro does the rest: it builds every component to HTML and CSS, strips all client-side JavaScript by default, and only bundles JavaScript for the components you explicitly opt in with a directive such as `client:load`, `client:idle` or `client:visible`.** `npm run build` writes the static site; `server:defer` is available when a component must render per-request instead.
 
-![astro — backbone user story](../../../assets/flow/astro.svg)
+![astro — backbone user story](../../../../assets/flow/astro.svg)
 
 <!-- flow-steps:begin (generated from flows/astro.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,12 +111,12 @@ Reach for Astro when **content-first and JS-minimal are the requirements, and yo
 ## When NOT to use
 
 - **Your site is a versioned documentation set and you want the versioning, sidebar and i18n to exist already.** Use [Docusaurus](docusaurus.md): Astro can build a docs site, but the docs information architecture is a template you assemble, not a preset you configure.
-- **Your team is committed to Next.js and the site must share its runtime, routing and dependencies.** Use [Next.js](nextjs.md) directly — see also [Nextra](nextra.md), which adds a Markdown/MDX layer to it. Astro is a different runtime and framework model, and splitting a Next.js codebase's site away from it has a cost.
+- **Your team is committed to Next.js and the site must share its runtime, routing and dependencies.** Use [Next.js](../app-frameworks/nextjs.md) directly — see also [Nextra](nextra.md), which adds a Markdown/MDX layer to it. Astro is a different runtime and framework model, and splitting a Next.js codebase's site away from it has a cost.
 - **You want a Vue-shaped, Markdown-first docs tool with the least possible configuration.** VitePress is the natural pick; it is not indexed here, so treat this as a pointer rather than a comparison this atlas has verified.
 - **You want the largest theme ecosystem and the fastest builds without a Node toolchain.** Hugo is the mature option; not indexed here either. Astro's advantage is component flexibility, not battery count.
-- **You largely need to syndicate Markdown notes, not build a site.** A static-site framework is infrastructure you then maintain; [Quarkdown](../../typesetting/quarkdown.md) or [Asciidoctor](../../typesetting/asciidoctor.md) produce a documentation site from a plain-text source with no JS build in the loop.
+- **You largely need to syndicate Markdown notes, not build a site.** A static-site framework is infrastructure you then maintain; [Quarkdown](../../../typesetting/quarkdown.md) or [Asciidoctor](../../../typesetting/asciidoctor.md) produce a documentation site from a plain-text source with no JS build in the loop.
 - **Your runtime is pinned below Node 22.12.0, or you use an odd-numbered Node release.** Astro's prerequisites state Node `v22.12.0` or higher and explicitly exclude odd-numbered versions such as v23 — check that against your CI image before adopting it.
-- **The deliverable is a document rather than a site.** For PDF, print or e-book output, look at [LaTeX](../../typesetting/latex.md), [Typst](../../typesetting/typst.md) or [Quarkdown](../../typesetting/quarkdown.md); Astro's output is a website.
+- **The deliverable is a document rather than a site.** For PDF, print or e-book output, look at [LaTeX](../../../typesetting/latex.md), [Typst](../../../typesetting/typst.md) or [Quarkdown](../../../typesetting/quarkdown.md); Astro's output is a website.
 
 ## Comparison
 
@@ -124,7 +124,7 @@ Reach for Astro when **content-first and JS-minimal are the requirements, and yo
 |---|---|---|---|
 | [Docusaurus](docusaurus.md) | ✅ | Choose Astro when the site is content-driven and documentation is one section of it; choose Docusaurus when the deliverable is a versioned documentation site and you want that infrastructure pre-built. | Astro gains a general framework with any UI framework per component and near-zero JS by default; it pays with no docs versioning or docs sidebar — a docs-only project rebuilds what Docusaurus presets. |
 | [Nextra](nextra.md) | ✅ | Choose Astro when you want content-first output and the freedom to mix UI frameworks; choose Nextra when the docs must live inside an existing Next.js application. | Astro gains a lighter client bundle and framework independence; it pays with a different runtime from a Next.js monorepo and no Next.js ecosystem alignment. |
-| [Next.js](nextjs.md) | ✅ | Choose Next.js when the site is an application that happens to serve pages — dashboards, personalization, server actions, an existing app-router codebase; choose Astro when the site is a document collection that happens to need a few interactive widgets. | Next.js gains a full-stack runtime, RSC and the largest React ecosystem; it pays with shipping more JavaScript by default and a heavier mental model for what is ultimately a content site. |
+| [Next.js](../app-frameworks/nextjs.md) | ✅ | Choose Next.js when the site is an application that happens to serve pages — dashboards, personalization, server actions, an existing app-router codebase; choose Astro when the site is a document collection that happens to need a few interactive widgets. | Next.js gains a full-stack runtime, RSC and the largest React ecosystem; it pays with shipping more JavaScript by default and a heavier mental model for what is ultimately a content site. |
 | VitePress | 未收录 | Choose VitePress when you are on Vue and want Markdown-first docs with minimal setup; choose Astro when the site needs real components, multiple frameworks or content collections beyond docs. | VitePress gains simplicity and a small runtime inside the Vue ecosystem; it pays with a narrower scope — it is a docs generator, not a general site framework. |
 | Hugo | 未收录 | Choose Hugo when you want the fastest builds, a mature theme ecosystem and Go-template templating; choose Astro when you want component-based authoring and per-component interactivity. | Hugo gains build speed, a decade of themes and a single binary with no Node toolchain; it pays with Go templates instead of components and no islands model. |
 

@@ -3,7 +3,7 @@ name: Docusaurus
 slug: docusaurus
 repo: https://github.com/facebook/docusaurus
 homepage: https://docusaurus.io
-category: frameworks
+category: site-frameworks
 tags: [documentation-site, static-site-generator, react, mdx, docs, i18n, docs-versioning, meta]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 基于 React 的框架，用 Markdown／MDX 构建、做版本管理并部署项目文档站——一条命令就把文档、博客、自定义页面、i18n 与静态构建一起搭好。
 
-![Docusaurus — 健康度雷达](../../../assets/health/docusaurus.zh.svg)
+![Docusaurus — 健康度雷达](../../../../assets/health/docusaurus.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 
 入口就是脚手架命令：`npx create-docusaurus@latest my-website classic` 会生成带 `/docs`、`/blog`、`/src/pages`、`/static`、`docusaurus.config.js`、`sidebars.js` 的项目。**你把 Markdown 或 MDX 文件写进这些目录**——`/src/pages` 下的任何 JSX/TSX/MDX 会变成页面，`/docs` 配合 `sidebars.js` 变成文档区，`/blog` 变成带日期的文章——并在 `docusaurus.config.js` 里配置站点。**其余由 Docusaurus 完成：把文件树变成路由、用 React 渲染 MDX、套上预设的文档版式，`npm run build` 输出一整目录静态文件，可放到任何静态托管上。** 开发用 `npm run start`，本地服务器默认在 localhost:3000；内容始终是普通文件，站点结构可以在 diff 里审阅。
 
-![docusaurus — 主干用户故事](../../../assets/flow/docusaurus.zh.svg)
+![docusaurus — 主干用户故事](../../../../assets/flow/docusaurus.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/docusaurus.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,8 +115,8 @@ health:
 - **你的站点主要是营销页、落地页与内容集合，文档只占其中一块。** 改用 [Astro](astro.zh.md)：它的 content collections 与组件模型更贴合这种形态，而 Docusaurus 的价值（版本化文档、文档侧边栏、博客）在文档很少时纯属累赘。
 - **你想要一层极简的 MDX，并愿意自己掌控路由与布局。** 改用 [Nextra](nextra.zh.md)——它是 Next.js 之上更薄的一层，代价是文档那套家具要你自己组装。
 - **你的团队用 Vue 或 Svelte 而不是 React。** Docusaurus 是一个 React 应用；Vue 团队应看 VitePress 或 Vue 侧的文档框架，Svelte 团队看 SvelteKit 的文档模板。两者本索引都未收录。
-- **团队里没人能维护一个 React 应用。** 脚手架只能带你走一段——超出预设的定制意味着写 React 组件、MDX provider 与插件代码。纯 Markdown 工具链如 [Quarkdown](../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../typesetting/asciidoctor.zh.md) 能在不引入 JS 框架的前提下产出文档站。
-- **你需要从同一份源额外得到 PDF 或纸质书。** Docusaurus 只产出网站；要排版成品请看 [Quarkdown](../../typesetting/quarkdown.zh.md)（一份 Markdown 超集源同时出 PDF、幻灯片与文档站）或 [LaTeX](../../typesetting/latex.zh.md)。
+- **团队里没人能维护一个 React 应用。** 脚手架只能带你走一段——超出预设的定制意味着写 React 组件、MDX provider 与插件代码。纯 Markdown 工具链如 [Quarkdown](../../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../../typesetting/asciidoctor.zh.md) 能在不引入 JS 框架的前提下产出文档站。
+- **你需要从同一份源额外得到 PDF 或纸质书。** Docusaurus 只产出网站；要排版成品请看 [Quarkdown](../../../typesetting/quarkdown.zh.md)（一份 Markdown 超集源同时出 PDF、幻灯片与文档站）或 [LaTeX](../../../typesetting/latex.zh.md)。
 - **你需要内容就地渲染、不经构建。** Docusaurus 的 MDX 文件不会在 GitHub 上渲染；站点只在构建之后存在。若就地预览比站点本身更重要，请继续用纯 Markdown。
 - **你的 Node 版本较旧，或 CI 镜像钉在更老的运行时上。** Docusaurus 3 要求 Node 20.0 及以上；在选定它之前先对照你的构建镜像。
 
@@ -127,7 +127,7 @@ health:
 | [Nextra](nextra.zh.md) | ✅ | 当版本化文档、i18n 与文档侧边栏必须在第一天就有、而且你宁愿配置而不是自己造时选 Docusaurus；当你想要 Next.js 之上的一层薄 MDX、其余自己组装时选 Nextra。 | Docusaurus 换来开箱即用的完整文档信息架构与明确的版本模型；代价是预设更重、以及一个你未必完全掌控的 React 应用。Nextra 正好相反：家具更少、魔法更少、拼装更多。 |
 | [Astro](astro.zh.md) | ✅ | 当交付物是带版本的文档站时选 Docusaurus；当交付物是内容驱动的网站、文档只是其中一节时选 Astro。 | Astro 换来通用站点框架（content collections、islands、任意 UI 框架、默认近乎零 JS）；代价是没有内置的文档版本管理，纯文档项目得把 Docusaurus 预设的东西重做一遍。 |
 | VitePress | 未收录 | 当团队用 Vue、想要快速极简、以 Markdown 为主要配置方式的文档生成器时选 VitePress；当你需要在文档里用 React 组件、或需要它自带的版本与 i18n 工作流时选 Docusaurus。 | VitePress 换来小得多的运行时、与 Vue 的对齐和简单性；代价是没有 React，插件生态也比一套 Docusaurus 预设薄。 |
-| [Next.js](nextjs.zh.md) 自己接 MDX | ✅ | 只有当站点需求确实与任何文档预设都不同、并且你接受自己拥有路由、布局、搜索、版本与 i18n 时，才选自接 MDX 的 Next.js；否则选 Docusaurus，再把不需要的部分删掉。 | Next.js 换来完全的控制与不受框架约束；代价是把一套 Docusaurus 预设视为基线的文档基础设施——版本化侧边栏、i18n 路由、搜索——重新实现一遍。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) 自己接 MDX | ✅ | 只有当站点需求确实与任何文档预设都不同、并且你接受自己拥有路由、布局、搜索、版本与 i18n 时，才选自接 MDX 的 Next.js；否则选 Docusaurus，再把不需要的部分删掉。 | Next.js 换来完全的控制与不受框架约束；代价是把一套 Docusaurus 预设视为基线的文档基础设施——版本化侧边栏、i18n 路由、搜索——重新实现一遍。 |
 
 ## 技术栈
 

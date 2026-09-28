@@ -2,7 +2,7 @@
 name: SvelteKit
 slug: sveltekit
 repo: https://github.com/sveltejs/kit
-category: frameworks
+category: app-frameworks
 tags: [frontend, ui, sveltekit, framework]
 language: JavaScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 web development, streamlined
 
-![SvelteKit — 健康度雷达](../../../assets/health/sveltekit.zh.svg)
+![SvelteKit — 健康度雷达](../../../../assets/health/sveltekit.zh.svg)
 
 ## 何时使用
 
@@ -97,10 +97,10 @@ web development, streamlined
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Angular](angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Ant Design](../component-libraries/ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Driver.js](../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Intro.js](../product-tours/intro-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Angular](../view-frameworks/angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Ant Design](../../component-libraries/ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Driver.js](../../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
+| [Intro.js](../../product-tours/intro-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 SvelteKit 对照。 | SvelteKit 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
 | 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 SvelteKit 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
 
 ## 技术栈

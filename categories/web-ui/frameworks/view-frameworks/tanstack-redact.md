@@ -2,7 +2,7 @@
 name: TanStack Redact
 slug: tanstack-redact
 repo: https://github.com/TanStack/redact
-category: frameworks
+category: view-frameworks
 tags: [react, runtime, drop-in-replacement, vite, bundle-size, synchronous-rendering, ssr, typescript, tanstack]
 language: TypeScript
 license: NOASSERTION
@@ -79,7 +79,7 @@ health:
 
 Your Vite + React site carries about 69 KB of gzip runtime before the first line of your own code ships, and most of that weight pays for concurrent scheduling your pages never use. TanStack Redact swaps the runtime under your app — one Vite plugin redirects every `react` / `react-dom` / JSX import to a synchronous re-implementation measured at 23 KB gzip — but it has no concurrent scheduler, and as of 2026-09 the repo ships with no license at all.
 
-![TanStack Redact — health radar](../../../assets/health/tanstack-redact.svg)
+![TanStack Redact — health radar](../../../../assets/health/tanstack-redact.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ Reach for Redact here: `pnpm add @tanstack/redact`, put `redact()` in `vite.conf
 
 You change the build, not the code. The Vite plugin re-points the module specifiers `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `react-dom/server` and the scheduler package at Redact's own compiled entries, in both client and SSR builds — the same alias trick `preact/compat` uses, but covering the whole React surface in one plugin. Redact then renders **synchronously**: a state update flushes immediately, with none of React's time slicing, interruptible rendering or priority lanes. The APIs that exist to drive concurrency still exist so imports don't break, but several are downgraded — `useTransition`'s pending flag stays false, `useDeferredValue` returns its input, and `useActionState` returns the initial state without running the action. The RSC environment is deliberately left on real React, so Server Components keep working through `@vitejs/plugin-rsc`. Feature flags (`redact({ features: { ... } })`) and the `nano` preset strip behavior you don't need — down to 12.5 KB gzip for a DOM client without context, Suspense or memo.
 
-![tanstack-redact — backbone user story](../../../assets/flow/tanstack-redact.svg)
+![tanstack-redact — backbone user story](../../../../assets/flow/tanstack-redact.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-redact.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ You change the build, not the code. The Vite plugin re-points the module specifi
 | Solid (`solidjs/solid`) | not indexed | Pick Solid only when rewriting components in its signals API is on the table — fine-grained updates with no virtual DOM; pick Redact when the existing React source must stay untouched. | Solid (6.4M weekly downloads, MIT) changes the programming model, so it is a rewrite rather than a swap; Redact keeps the React API and re-implements what runs beneath it, at the cost of a young runtime. Not added in this tab-intake batch. |
 | Svelte (`sveltejs/svelte`) | ✅ [svelte](svelte.md) | Pick Svelte for a greenfield app that wants a compiler framework with no virtual-DOM runtime at all; pick Redact for an existing React codebase where only the runtime beneath the code may change. | Svelte compiles components to imperative code and shrinks the whole model, at the price of new syntax and a migration; Redact asks for one build-plugin line but inherits none of the compiler optimizations. |
 
-The repo's own manifest calls it "a minimal React-compatible runtime for TanStack Start apps" [推断] — the sibling [TanStack Router](tanstack-router.md) / Start stack is the intended first home, and other TanStack libraries such as [TanStack Query](../data-fetching/tanstack-query.md) and [TanStack Table](../component-libraries/tanstack-table.md) consume React's public API surface, which Redact covers; their behavior under the swap is inferred from that, not tested by the repo.
+The repo's own manifest calls it "a minimal React-compatible runtime for TanStack Start apps" [推断] — the sibling [TanStack Router](../app-frameworks/tanstack-router.md) / Start stack is the intended first home, and other TanStack libraries such as [TanStack Query](../../data-fetching/tanstack-query.md) and [TanStack Table](../../component-libraries/tanstack-table.md) consume React's public API surface, which Redact covers; their behavior under the swap is inferred from that, not tested by the repo.
 
 ## Tech stack
 

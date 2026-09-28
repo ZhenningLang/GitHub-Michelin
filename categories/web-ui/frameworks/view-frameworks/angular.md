@@ -2,7 +2,7 @@
 name: Angular
 slug: angular
 repo: https://github.com/angular/angular
-category: frameworks
+category: view-frameworks
 tags: [web-framework, typescript, spa, pwa, enterprise, frontend]
 language: TypeScript
 license: MIT
@@ -83,7 +83,7 @@ health:
 
 A comprehensive web development platform for building mobile and desktop web applications using TypeScript. Built and maintained by Google with a strong focus on enterprise-scale apps.
 
-![Angular — health radar](../../../assets/health/angular.svg)
+![Angular — health radar](../../../../assets/health/angular.svg)
 
 ## When to use
 
@@ -105,9 +105,9 @@ You're an enterprise team building a large, complex web application with dozens 
 | [React](react.md) | ✅ | Choose React when you want the largest UI ecosystem and a "just JavaScript" philosophy. | React is more flexible and has a larger job market; Angular is more opinionated and ships with more built-in tooling, reducing decision fatigue. |
 | [Vue.js](vue.md) | ✅ | Choose Vue when you need a progressive framework with a gentler learning curve and excellent documentation. | Vue is easier to adopt incrementally; Angular demands all-in commitment but rewards it with stronger enterprise structure. |
 | [Svelte](svelte.md) | ✅ | Choose Svelte when you want compile-time components with minimal runtime overhead and no virtual DOM. | Svelte is faster and simpler for small-to-medium apps; Angular has deeper enterprise support, more third-party integrations, and a longer track record. |
-| [SvelteKit](sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack meta-framework rather than a standalone component framework. | SvelteKit adds routing, SSR, and app conventions around Svelte; Angular remains more enterprise-opinionated and longer-established. |
-| [Next.js](nextjs.md) | ✅ | Choose Next.js when you need React-based SSR/SSG with a dominant full-stack ecosystem. | Next.js is the default for React-based SSR/SEO; Angular Universal exists but is less dominant in that niche. |
-| [shadcn/ui](../component-libraries/shadcn-ui.md) | ✅ | A component distribution model, not a framework — often used inside React. | Not a direct substitute; shadcn/ui is about component ownership, Angular is a full application framework. |
+| [SvelteKit](../app-frameworks/sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack meta-framework rather than a standalone component framework. | SvelteKit adds routing, SSR, and app conventions around Svelte; Angular remains more enterprise-opinionated and longer-established. |
+| [Next.js](../app-frameworks/nextjs.md) | ✅ | Choose Next.js when you need React-based SSR/SSG with a dominant full-stack ecosystem. | Next.js is the default for React-based SSR/SEO; Angular Universal exists but is less dominant in that niche. |
+| [shadcn/ui](../../component-libraries/shadcn-ui.md) | ✅ | A component distribution model, not a framework — often used inside React. | Not a direct substitute; shadcn/ui is about component ownership, Angular is a full application framework. |
 | [Lit](lit.md) | ✅ | Lightweight library for building standards-based web components with a tiny runtime. | Lit is for building interoperable components, not full SPAs; Angular is a complete framework with routing, DI, and CLI. Choose Lit for design systems that must work across frameworks. |
 
 ## Tech stack

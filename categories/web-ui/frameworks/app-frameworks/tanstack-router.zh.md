@@ -3,7 +3,7 @@ name: TanStack Router
 slug: tanstack-router
 repo: https://github.com/TanStack/router
 homepage: https://tanstack.com/router
-category: frameworks
+category: app-frameworks
 tags: [routing, type-safety, react, spa, ssr, search-params, file-based-routing, tanstack-start, vite, loaders, prefetching, full-stack]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 指向不存在路由的链接、到手是一个无类型字符串的 `id` 参数、某个组件里改了名的查询参数键——这些路由事故通常要到运行时、在用户面前才暴露。TanStack Router 把 URL 变成参与编译的代码：它从你的路由文件生成一棵带类型的路由树，`<Link to>`、路径参数与查询参数在应用能构建成功之前就被 TypeScript 检查过；按路由取数、缓存与预取也是内置能力，而不是自己拼工具函数。
 
-![TanStack Router — 健康度雷达](../../../assets/health/tanstack-router.zh.svg)
+![TanStack Router — 健康度雷达](../../../../assets/health/tanstack-router.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 
 你以文件描述路由：`src/routes` 下的 `posts.$postId.tsx` 声明 `/posts/:postId`，文件内用 `createFileRoute('/posts/$postId')({ loader, component, errorComponent })` 把取数与一个普通 React 组件配对。在你的文件与运行时之间有两个活动部件。构建插件（`@tanstack/router-plugin/vite` 导出的 `tanstackRouter()`，也有 Rspack／webpack／esbuild 形态）监听路由目录，重新生成 `routeTree.gen.ts`——一份对整棵树的纯 TypeScript 描述，提交进仓库。随后 `createRouter({ routeTree })` 加 `<RouterProvider>` 消费它，其余由路由自己完成：路径参数到手即带类型；loader 按匹配执行 stale-while-revalidate（先给缓存结果，后台再刷新）；设了 `defaultPreload: 'intent'` 就有悬停预取；查询参数序列化为结构化值；`<Link>`／`useNavigate` 只接受路由树里存在的目标。你写的只是路由文件、loader 和组件，类型、编排与缓存都来自生成的树。不喜欢代码生成也可以用代码式 `createRoute`，但文件约定才是主干。当客户端优先模型不再够用，TanStack Start 在同一套路由之上叠加全文档 SSR、流式、server functions 与中间件。
 
-![tanstack-router — 主干用户故事](../../../assets/flow/tanstack-router.zh.svg)
+![tanstack-router — 主干用户故事](../../../../assets/flow/tanstack-router.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-router.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 - **今天就要把 React Server Components 当生产默认。** 仓库自己的对比表把 RSC 列为仅经 server-function 层支持、对 Start 标注实验性，而 [Next.js](nextjs.zh.md) 把 RSC 作为一等功能——服务器优先的架构选 Next.js。
 - **想要 Start 的全栈能力，但承受不起 Release-Candidate 风险。** 截至 2026-09-28，Start 文档自述「Release Candidate……功能完备」而非 v1；需要多年大版本背书框架的团队，选 [Next.js](nextjs.zh.md)、[Nuxt](nuxt.zh.md) 或 [SvelteKit](sveltekit.zh.md)，以后再说。
 - **路由必须在运行时注册**——模块联邦、fog-of-war 动态路由树、启动后再加页面的插件。仓库对比表把运行时路由操纵列为不支持（`🛑`），而 Next.js 与 React Router 支持；并行路由同样列为不支持，且其指南页还是占位（写着「我们还没讲到这个」）。需要启动后路由树仍可变化的框架。
-- **团队在 Angular 或 Svelte 上。** 两者都没有绑定——本仓库发布的是 React、Vue、Solid 三个绑定；在这些栈上，[Angular](angular.zh.md) 的内置路由或 [SvelteKit](sveltekit.zh.md) 才是自洽选择。
+- **团队在 Angular 或 Svelte 上。** 两者都没有绑定——本仓库发布的是 React、Vue、Solid 三个绑定；在这些栈上，[Angular](../view-frameworks/angular.zh.md) 的内置路由或 [SvelteKit](sveltekit.zh.md) 才是自洽选择。
 - **不能接受仓库里放生成文件、也不能接受严格的 TypeScript 下限。** `routeTree.gen.ts` 要提交进仓库（也就带来合并冲突），安装文档要求 React 18／19 并建议 TypeScript 5.3 起步；两者都不可接受时，代码式路由能绕开插件，但也就放弃了促成这次选型的核心文件体验。
 
 ## 横向对比
@@ -126,7 +126,7 @@ health:
 | [Next.js](nextjs.zh.md) | ✅ | 应用客户端优先、你在意的是给 URL 这层状态做类型时，选 TanStack Router（必要时经 Start）；RSC、ISR 与 Vercel 平台优化就是架构本身时，选 Next.js。 | Router 换来编译期全 URL 类型、可部署任何地方的普通 Vite 构建与 SWR 式 loader 缓存；付出一个代码生成依赖，以及一个还是 Release Candidate 的服务端故事。 |
 | React Router | 未收录 | 类型化链接、类型化参数与经校验的查询参数是核心诉求时，选 TanStack Router；只需要普通嵌套与导航、不想引入代码生成时，React Router 更轻。 | Router 换来类型安全与内置数据层，代价是插件加生成树的工具链。React Router 本批次未添加，此行只是指路，不是经过核实的对比。 |
 | [SvelteKit](sveltekit.zh.md) | ✅ | 栈是 React、想要生态与可按文件逐个采用的类型化路由时，选 TanStack Router；栈是 Svelte 就选 SvelteKit——Router 没有 Svelte 绑定，其生成树也会与 Svelte 编译器相抵。 | Router 换来框架无关核心加 React／Vue／Solid 三绑定、以及最完整的查询参数模型；SvelteKit 换来一个根本不需要外挂路由的运行时。 |
-| [Angular](angular.zh.md) | ✅ | 在 Angular 上就把本页视为范围之外：框架自带的、与 DI 和守卫深度整合的路由才是自洽默认；只有团队已经选了 React／Vue／Solid，才轮到 TanStack Router。 | Angular 换来十年一体集成的官方路由；TanStack Router 换来跨框架类型与数据加载手感——而这些在 Angular 上不存在。 |
+| [Angular](../view-frameworks/angular.zh.md) | ✅ | 在 Angular 上就把本页视为范围之外：框架自带的、与 DI 和守卫深度整合的路由才是自洽默认；只有团队已经选了 React／Vue／Solid，才轮到 TanStack Router。 | Angular 换来十年一体集成的官方路由；TanStack Router 换来跨框架类型与数据加载手感——而这些在 Angular 上不存在。 |
 
 ## 技术栈
 

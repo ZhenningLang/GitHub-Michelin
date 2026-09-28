@@ -2,7 +2,7 @@
 name: React
 slug: react
 repo: https://github.com/facebook/react
-category: frameworks
+category: view-frameworks
 tags: [ui-library, react, components, frontend, javascript, typescript, virtual-dom, jsx, facebook]
 language: JavaScript / TypeScript
 license: MIT
@@ -85,7 +85,7 @@ health:
 A declarative, component-based JavaScript library for building user interfaces. Maintained by Meta, it is the most widely adopted UI library in the world, powering everything from single-page apps to native mobile apps via React Native.
 
 
-![React — health radar](../../../assets/health/react.svg)
+![React — health radar](../../../../assets/health/react.svg)
 
 ## When to use
 
@@ -107,11 +107,11 @@ You're a frontend team building a modern SaaS dashboard. Your product has dozens
 | [Vue.js](vue.md) | ✅ | Choose Vue when you need a progressive framework with a gentler learning curve and excellent documentation. | Vue is easier to adopt incrementally; React has a larger ecosystem and deeper job market. |
 | [Angular](angular.md) | ✅ | A comprehensive, opinionated TypeScript framework built by Google for enterprise-scale apps. | Angular ships with everything built-in; React is more flexible but requires you to assemble your own stack. |
 | [Svelte](svelte.md) | ✅ | Choose Svelte when you want compile-time components with minimal runtime and no virtual DOM. | Svelte is faster and simpler for small-to-medium apps; React has a vastly larger ecosystem and hiring pool. |
-| [SvelteKit](sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack app framework rather than a UI library. | SvelteKit adds routing, SSR, and app conventions around Svelte; React alone stays lighter but requires more stack assembly. |
-| [Next.js](nextjs.md) | ✅ | Choose Next.js when you need the default full-stack React framework with SSR/SSG and Vercel ecosystem depth. | Next.js is React plus routing, SSR, and deployment; use it when you need those features, use plain React when you want a lighter, more controlled setup. |
-| [shadcn/ui](../component-libraries/shadcn-ui.md) | ✅ | A component distribution model built on top of React — not a substitute, but a common companion. | shadcn/ui gives you copy-and-own components inside React; it is not a standalone UI library. |
-| [Ant Design](../component-libraries/ant-design.md) | ✅ | An enterprise-class React component library with a comprehensive set of pre-built components. | Ant Design is a styled component kit you use *inside* React; it is not a replacement for React itself. |
-| [Driver.js](../product-tours/driver-js.md) | ✅ | A lightweight, dependency-free tour and spotlight library. | Not a UI framework substitute; use it alongside React for onboarding tours. |
+| [SvelteKit](../app-frameworks/sveltekit.md) | ✅ | Choose SvelteKit when you want Svelte's full-stack app framework rather than a UI library. | SvelteKit adds routing, SSR, and app conventions around Svelte; React alone stays lighter but requires more stack assembly. |
+| [Next.js](../app-frameworks/nextjs.md) | ✅ | Choose Next.js when you need the default full-stack React framework with SSR/SSG and Vercel ecosystem depth. | Next.js is React plus routing, SSR, and deployment; use it when you need those features, use plain React when you want a lighter, more controlled setup. |
+| [shadcn/ui](../../component-libraries/shadcn-ui.md) | ✅ | A component distribution model built on top of React — not a substitute, but a common companion. | shadcn/ui gives you copy-and-own components inside React; it is not a standalone UI library. |
+| [Ant Design](../../component-libraries/ant-design.md) | ✅ | An enterprise-class React component library with a comprehensive set of pre-built components. | Ant Design is a styled component kit you use *inside* React; it is not a replacement for React itself. |
+| [Driver.js](../../product-tours/driver-js.md) | ✅ | A lightweight, dependency-free tour and spotlight library. | Not a UI framework substitute; use it alongside React for onboarding tours. |
 
 ## Tech stack
 

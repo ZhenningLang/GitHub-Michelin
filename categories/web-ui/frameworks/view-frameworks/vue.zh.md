@@ -2,7 +2,7 @@
 name: Vue.js
 slug: vue
 repo: https://github.com/vuejs/core
-category: frameworks
+category: view-frameworks
 tags: [vue, frontend, framework, typescript, progressive, reactive, spa, ssr, vue-router, pinia]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 由 Evan You 创建的渐进式 JavaScript 用户界面框架，以温和的学习曲线、优秀的文档和可增量采纳的架构著称。
 
 
-![Vue.js — health radar](../../../assets/health/vue.zh.svg)
+![Vue.js — health radar](../../../../assets/health/vue.zh.svg)
 
 ## 何时使用
 
@@ -103,8 +103,8 @@ health:
 | [React](react.zh.md) | ✅ | 需要最大 UI 库生态和「就是 JavaScript」理念时，选 React。 | React 就业市场更大，第三方库更多；Vue 更易学，体验更一体化。 |
 | [Angular](angular.zh.md) | ✅ | 全面的、opinionated 的 TypeScript 框架，用于企业级应用。 | Angular 自带更多内置结构（依赖注入、CLI、表单）；Vue 更轻、更灵活、原型验证更快。 |
 | [Svelte](svelte.zh.md) | ✅ | 需要编译时框架、极小运行时开销和无虚拟 DOM 时，选 Svelte。 | Svelte 对简单应用更小更快；Vue 生态更大、工具更成熟、迁移路径更温和。 |
-| [SvelteKit](sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈 meta-framework，而不是 Vue 渐进式应用框架时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；Vue 的对应方案是 Nuxt.js，而纯 Vue 更容易增量采纳。 |
-| [Next.js](nextjs.zh.md) | ✅ | SSR/SEO 需求落在 React 生态而不是 Vue 生态时，选 Next.js。 | Next.js 是 React 生态 SSR/SEO 的默认选择；Vue 的对应方案是 Nuxt.js，社区规模更小。 |
+| [SvelteKit](../app-frameworks/sveltekit.zh.md) | ✅ | 需要 Svelte 的全栈 meta-framework，而不是 Vue 渐进式应用框架时，选 SvelteKit。 | SvelteKit 围绕 Svelte 增加路由、SSR 和应用约定；Vue 的对应方案是 Nuxt.js，而纯 Vue 更容易增量采纳。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | SSR/SEO 需求落在 React 生态而不是 Vue 生态时，选 Next.js。 | Next.js 是 React 生态 SSR/SEO 的默认选择；Vue 的对应方案是 Nuxt.js，社区规模更小。 |
 | Nuxt.js | 未收录 | Vue 的元框架——SSR、SSG、基于文件的路由和自动导入。 | Nuxt 为 Vue 增加 SSR/SSG；它是 Vue 对 Next.js 的回答，但市场份额和第三方集成更少。 |
 
 ## 技术栈

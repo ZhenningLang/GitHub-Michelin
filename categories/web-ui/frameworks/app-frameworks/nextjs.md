@@ -2,7 +2,7 @@
 name: Next.js
 slug: nextjs
 repo: https://github.com/vercel/next.js
-category: frameworks
+category: app-frameworks
 tags: [nextjs, react, ssr, ssg, fullstack, vercel, typescript, app-router, edge]
 language: TypeScript / JavaScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 The default full-stack React framework, created and maintained by Vercel. Ships with App Router, React Server Components, automatic static optimization, ISR, and a built-in API layer — with tight Vercel integration as the "happy path."
 
 
-![Next.js — health radar](../../../assets/health/nextjs.svg)
+![Next.js — health radar](../../../../assets/health/nextjs.svg)
 
 ## When to use
 
@@ -100,14 +100,14 @@ You're a product team building a modern web application that needs to balance SE
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Angular](angular.md) | ✅ | Full-stack TypeScript framework with deep enterprise tooling and strong opinions. | Angular ships more built-in features and is framework-agnostic of React; Next.js dominates the React SSR/SSG niche and has a larger React job market. |
-| [React](react.md) | ✅ | Choose React alone when you want the UI library without Next.js routing, SSR, or full-stack conventions. | React alone gives you maximum flexibility and smaller bundles; Next.js gives you routing, SSR, and full-stack conventions but adds complexity. |
-| [Vue.js](vue.md) | ✅ | Choose Vue when you want a progressive non-React framework that is easier to adopt incrementally. | Vue is framework-agnostic and easier to adopt incrementally; Next.js is React-only and more opinionated. |
-| [Svelte](svelte.md) | ✅ | Choose Svelte when you want the compile-time component model without committing to React. | Svelte is leaner and simpler for component-heavy small-to-medium apps; Next.js has a vastly larger ecosystem and job market. |
+| [Angular](../view-frameworks/angular.md) | ✅ | Full-stack TypeScript framework with deep enterprise tooling and strong opinions. | Angular ships more built-in features and is framework-agnostic of React; Next.js dominates the React SSR/SSG niche and has a larger React job market. |
+| [React](../view-frameworks/react.md) | ✅ | Choose React alone when you want the UI library without Next.js routing, SSR, or full-stack conventions. | React alone gives you maximum flexibility and smaller bundles; Next.js gives you routing, SSR, and full-stack conventions but adds complexity. |
+| [Vue.js](../view-frameworks/vue.md) | ✅ | Choose Vue when you want a progressive non-React framework that is easier to adopt incrementally. | Vue is framework-agnostic and easier to adopt incrementally; Next.js is React-only and more opinionated. |
+| [Svelte](../view-frameworks/svelte.md) | ✅ | Choose Svelte when you want the compile-time component model without committing to React. | Svelte is leaner and simpler for component-heavy small-to-medium apps; Next.js has a vastly larger ecosystem and job market. |
 | [SvelteKit](sveltekit.md) | ✅ | Choose SvelteKit when you want a leaner full-stack framework built around Svelte's compile-time model. | SvelteKit is leaner and simpler for small-to-medium apps; Next.js has a vastly larger ecosystem, more mature tooling, and deeper job market. |
 | Nuxt.js | 未收录 | Full-stack Vue framework — the Vue ecosystem's equivalent of Next.js. | Nuxt is for Vue teams; Next.js is for React teams. The choice is usually determined by your UI framework preference. |
 | Remix | 未收录 | Full-stack React framework focused on web standards, progressive enhancement, and less vendor coupling. | Remix is less opinionated about deployment and avoids some Vercel-specific features; Next.js has more built-in optimizations (image, font, script) and a larger community. |
-| [Astro](astro.md) | ✅ | Content-focused static site builder with islands architecture and multi-framework support. | Astro is better for static content sites and mixed-framework projects; Next.js is better for dynamic, full-stack React applications with heavy interactivity. |
+| [Astro](../site-frameworks/astro.md) | ✅ | Content-focused static site builder with islands architecture and multi-framework support. | Astro is better for static content sites and mixed-framework projects; Next.js is better for dynamic, full-stack React applications with heavy interactivity. |
 
 ## Tech stack
 

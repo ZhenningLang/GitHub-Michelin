@@ -3,7 +3,7 @@ name: Astro
 slug: astro
 repo: https://github.com/withastro/astro
 homepage: https://astro.build
-category: frameworks
+category: site-frameworks
 tags: [frontend, framework, static-site-generator, content-site, islands-architecture, vite, mdx, multi-framework, ssr, typescript]
 language: TypeScript
 license: MIT
@@ -78,7 +78,7 @@ health:
 
 面向内容驱动网站的构建工具：页面是 HTML 优先的 `.astro` 组件，Markdown／MDX 以 content collections 的形式并入，来自 React、Vue、Svelte、Solid 或 Preact 的交互组件以「islands」为单位各自 hydrate，而不是把整个应用打成一个包。
 
-![Astro — 健康度雷达](../../../assets/health/astro.zh.svg)
+![Astro — 健康度雷达](../../../../assets/health/astro.zh.svg)
 
 ## 何时使用
 
@@ -90,7 +90,7 @@ health:
 
 `npm create astro@latest` 会跑一个脚手架向导；手动路径是 `npm install astro` 加三条脚本——`astro dev`、`astro build`、`astro preview`。**然后你在 `src/pages/` 下用 `.astro` 组件写页面**：一个文件就是一个页面，顶部 frontmatter 在构建期运行（从不在浏览器里跑），下面的模板是带表达式的 HTML——所以一个页面可以遍历数据、渲染 Markdown，同时保持静态。配置在 `astro.config.mjs`（`defineConfig`），集成也在这里注册：`npm create astro@latest -- --add react` 添加 UI 框架，`@astrojs/mdx` 以一等集成的方式加入 MDX。**其余由 Astro 完成：把每个组件构建成 HTML 与 CSS，默认剥离所有客户端 JavaScript，只为那些你用指令显式开启的组件打包 JS，例如 `client:load`、`client:idle` 或 `client:visible`。** `npm run build` 写出静态站点；当某个组件必须按请求渲染时，还有 `server:defer` 可用。
 
-![astro — 主干用户故事](../../../assets/flow/astro.zh.svg)
+![astro — 主干用户故事](../../../../assets/flow/astro.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/astro.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -111,12 +111,12 @@ health:
 ## 何时不用
 
 - **你的站点是带版本的文档集，且你希望版本、侧边栏与 i18n 已经存在。** 改用 [Docusaurus](docusaurus.zh.md)：Astro 能建文档站，但那套文档信息架构是要你拼装的模板，不是配置一下就有的预设。
-- **团队已押注 Next.js，且站点必须共享它的运行时、路由与依赖。** 直接用 [Next.js](nextjs.zh.md)——另见 [Nextra](nextra.zh.md)，它在 Next.js 之上补了一层 Markdown／MDX。Astro 是另一套运行时与框架模型，把 Next.js 代码库的站点从它里面拆出来是有代价的。
+- **团队已押注 Next.js，且站点必须共享它的运行时、路由与依赖。** 直接用 [Next.js](../app-frameworks/nextjs.zh.md)——另见 [Nextra](nextra.zh.md)，它在 Next.js 之上补了一层 Markdown／MDX。Astro 是另一套运行时与框架模型，把 Next.js 代码库的站点从它里面拆出来是有代价的。
 - **你想要 Vue 形态、Markdown 优先、配置最少的文档工具。** VitePress 是自然选择；它在本索引里未收录，所以这一条只是指路，不是本 atlas 核实过的对比。
 - **你想要最大的主题生态与不带 Node 工具链的最快构建。** Hugo 是成熟选项；同样未收录。Astro 的长处是组件灵活性，不是电池数量。
-- **你主要的需求是把 Markdown 笔记发布出去，而不是建一个站。** 静态站点框架是你要持续维护的基础设施；[Quarkdown](../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../typesetting/asciidoctor.zh.md) 能从纯文本源产出文档站，链路上没有 JS 构建。
+- **你主要的需求是把 Markdown 笔记发布出去，而不是建一个站。** 静态站点框架是你要持续维护的基础设施；[Quarkdown](../../../typesetting/quarkdown.zh.md) 或 [Asciidoctor](../../../typesetting/asciidoctor.zh.md) 能从纯文本源产出文档站，链路上没有 JS 构建。
 - **你的运行时低于 Node 22.12.0，或用的是奇数版 Node。** Astro 的前置条件写着 Node `v22.12.0` 或更高，并明确排除 v23 这类奇数版本——采用前先对照你的 CI 镜像。
-- **交付物是文档而不是站点。** PDF、印刷或电子书输出请看 [LaTeX](../../typesetting/latex.zh.md)、[Typst](../../typesetting/typst.zh.md) 或 [Quarkdown](../../typesetting/quarkdown.zh.md)；Astro 的产物是网站。
+- **交付物是文档而不是站点。** PDF、印刷或电子书输出请看 [LaTeX](../../../typesetting/latex.zh.md)、[Typst](../../../typesetting/typst.zh.md) 或 [Quarkdown](../../../typesetting/quarkdown.zh.md)；Astro 的产物是网站。
 
 ## 横向对比
 
@@ -124,7 +124,7 @@ health:
 |---|---|---|---|
 | [Docusaurus](docusaurus.zh.md) | ✅ | 当站点是内容驱动、文档只是其中一节时选 Astro；当交付物就是带版本的文档站、且你希望这套基础设施预先建好时选 Docusaurus。 | Astro 换来一个通用框架、可按组件任选 UI 框架、以及默认近乎零 JS；代价是没有文档版本管理与文档侧边栏——纯文档项目得把 Docusaurus 预设的东西重做。 |
 | [Nextra](nextra.zh.md) | ✅ | 当你想要内容优先的产物、以及自由混用 UI 框架时选 Astro；当文档必须活在既有的 Next.js 应用里时选 Nextra。 | Astro 换来更轻的客户端包与不绑框架；代价是运行时与 Next.js 单体仓不同，也拿不到 Next.js 生态的对齐。 |
-| [Next.js](nextjs.zh.md) | ✅ | 当站点本质是「顺便提供页面的应用」——控制台、个性化、server actions、既有的 app-router 代码库——时选 Next.js；当站点本质是「顺便需要几个交互组件的内容集合」时选 Astro。 | Next.js 换来全栈运行时、RSC 与最大的 React 生态；代价是默认发更多 JavaScript，以及为一个内容站背上更重的心智模型。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | 当站点本质是「顺便提供页面的应用」——控制台、个性化、server actions、既有的 app-router 代码库——时选 Next.js；当站点本质是「顺便需要几个交互组件的内容集合」时选 Astro。 | Next.js 换来全栈运行时、RSC 与最大的 React 生态；代价是默认发更多 JavaScript，以及为一个内容站背上更重的心智模型。 |
 | VitePress | 未收录 | 当你用 Vue、想要几乎零配置的 Markdown 优先文档时选 VitePress；当站点需要真正的组件、多种框架或文档之外的 content collections 时选 Astro。 | VitePress 换来简单性与 Vue 生态内的小运行时；代价是范围更窄——它是文档生成器，不是通用站点框架。 |
 | Hugo | 未收录 | 当你想要最快的构建、成熟的主题生态与 Go 模板时选 Hugo；当你想要基于组件的写作与按组件控制交互时选 Astro。 | Hugo 换来构建速度、十年的主题积累与一个不需要 Node 工具链的二进制；代价是用 Go 模板而不是组件，也没有 islands 模型。 |
 

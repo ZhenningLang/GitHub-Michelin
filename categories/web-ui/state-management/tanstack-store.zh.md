@@ -130,7 +130,7 @@ health:
 | @xstate/store（`statelyai/xstate`） | 未收录 | 更新更适合描述成带类型载荷的具名事件（以后还可能升级成完整状态机）时，选 @xstate/store；只要“值加更新函数加派生值”时，选 TanStack Store。 | @xstate/store 带来事件驱动的更新、React／Vue／Angular／Solid／Svelte／Preact 适配和通往 XState 的升级路径；代价是每次更新的仪式感更重，装机量也小得多（周下载约 16.9 万）。本批标签收录未连带新增。 |
 | Redux Toolkit（`reduxjs/redux-toolkit`） | 未收录 | 大团队想要一套强制统一的模式——action、reducer、中间件、可回放的 devtools——选 Redux Toolkit；这套仪式是负担、只要一个带选择器的响应式值时，选 TanStack Store。 | Redux Toolkit 成熟、文档厚，有一流的 devtools 和 RTK Query；代价是样板代码多、架构被 Redux 的形状绑住。本批标签收录未连带新增。 |
 
-TanStack Store 是其他 TanStack 库的底座：[TanStack Form](../forms/tanstack-form.zh.md) 和 [TanStack Router](../frameworks/tanstack-router.zh.md) 的状态都建在它上面，TanStack Pacer 和 TanStack Devtools 与它并列，服务端数据交给 [TanStack Query](../data-fetching/tanstack-query.zh.md) 或 [TanStack DB](../data-fetching/tanstack-db.zh.md)。它们是搭档，不是替代品。
+TanStack Store 是其他 TanStack 库的底座：[TanStack Form](../forms/tanstack-form.zh.md) 和 [TanStack Router](../frameworks/app-frameworks/tanstack-router.zh.md) 的状态都建在它上面，TanStack Pacer 和 TanStack Devtools 与它并列，服务端数据交给 [TanStack Query](../data-fetching/tanstack-query.zh.md) 或 [TanStack DB](../data-fetching/tanstack-db.zh.md)。它们是搭档，不是替代品。
 
 ## 技术栈
 

@@ -3,7 +3,7 @@ name: Nextra
 slug: nextra
 repo: https://github.com/shuding/nextra
 homepage: https://nextra.site
-category: frameworks
+category: site-frameworks
 tags: [documentation-site, nextjs, mdx, react, docs-theme, ssg, static-export, app-router]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 A thin site-generation layer on top of Next.js: you add the packages, wrap your Next config once, and Markdown/MDX files become a documentation or blog site with almost no framework of its own.
 
-![Nextra — health radar](../../../assets/health/nextra.svg)
+![Nextra — health radar](../../../../assets/health/nextra.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ Reach for Nextra when **the thinness is the feature**: it is a handful of packag
 
 You install the stack — `npm i next react react-dom nextra nextra-theme-docs` — add `dev`/`build`/`start` scripts that call the Next.js CLI, and create a `next.config.mjs` that wraps your config: `import nextra from 'nextra'`, `const withNextra = nextra({...})`, `export default withNextra({...})`. That wrapper is what teaches Next.js to treat Markdown/MDX as pages. **You then write the site's shell once** — in `app/layout.jsx` you compose `Layout`, `Navbar` and `Footer` from `nextra-theme-docs`, pass `await getPageMap()` for the sidebar navigation, and import `nextra-theme-docs/style.css` — and after that **each new page is just a Markdown or MDX file** following the file conventions (`page.mdx`, or the `content` directory). `npm run dev` starts Next.js in development; `npm run build` runs the production Next.js build.
 
-![nextra — backbone user story](../../../assets/flow/nextra.svg)
+![nextra — backbone user story](../../../../assets/flow/nextra.svg)
 
 <!-- flow-steps:begin (generated from flows/nextra.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,8 +116,8 @@ You install the stack — `npm i next react react-dom nextra nextra-theme-docs` 
 - **You are not on Next.js, or you do not want the App Router and React Server Components in the loop.** Use [Astro](astro.md) for a content site, or [Docusaurus](docusaurus.md) if you want React but not Next.js's framework opinions.
 - **The site is mostly brochure content with a small docs section.** Use [Astro](astro.md) — a general content framework fits that shape better than a docs theme you then have to hollow out.
 - **You need a project with a staffing and release guarantee.** Nextra's repository lives under a personal GitHub account, contributes concentrate in a few people (`shuding` 509, `dimaMachina` 203 among humans, behind a renovation bot at 746), the last tagged release is from 2025-12-04, and there are ~333 open issues. If a documentation platform is long-lived infrastructure for you, weigh that against Docusaurus's team and release history.
-- **You want the smallest possible dependency tree.** Nextra is Next.js plus React plus the MDX pipeline; a Markdown-only generator such as [Quarkdown](../../typesetting/quarkdown.md) or [Asciidoctor](../../typesetting/asciidoctor.md) removes the whole JS build from the critical path of publishing docs.
-- **You need a PDF or a printed manual from the same source.** Nextra emits a website; look at [Quarkdown](../../typesetting/quarkdown.md) or [LaTeX](../../typesetting/latex.md) for typeset output.
+- **You want the smallest possible dependency tree.** Nextra is Next.js plus React plus the MDX pipeline; a Markdown-only generator such as [Quarkdown](../../../typesetting/quarkdown.md) or [Asciidoctor](../../../typesetting/asciidoctor.md) removes the whole JS build from the critical path of publishing docs.
+- **You need a PDF or a printed manual from the same source.** Nextra emits a website; look at [Quarkdown](../../../typesetting/quarkdown.md) or [LaTeX](../../../typesetting/latex.md) for typeset output.
 - **You want a generated site you can host as plain files without a Node runtime decision.** Next.js can statically export, and Nextra documents that path, but you are still building with Next.js; a static-first framework makes that the default rather than a mode.
 
 ## Comparison

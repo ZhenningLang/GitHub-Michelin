@@ -103,7 +103,7 @@
 | TanStack/workflow | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
 | TanStack/highlight | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
 | TanStack/persist | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
-| TanStack/container | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
+| TanStack/container | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
 | TanStack/react-charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
 | TanStack/bling | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
 | TanStack/alt-cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |

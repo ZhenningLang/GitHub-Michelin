@@ -3,7 +3,7 @@ name: Docusaurus
 slug: docusaurus
 repo: https://github.com/facebook/docusaurus
 homepage: https://docusaurus.io
-category: frameworks
+category: site-frameworks
 tags: [documentation-site, static-site-generator, react, mdx, docs, i18n, docs-versioning, meta]
 language: TypeScript
 license: MIT
@@ -80,7 +80,7 @@ health:
 
 A React-based framework for building, versioning and deploying project documentation sites from Markdown/MDX — one command scaffolds docs, a blog, custom pages, i18n and a static build.
 
-![Docusaurus — health radar](../../../assets/health/docusaurus.svg)
+![Docusaurus — health radar](../../../../assets/health/docusaurus.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ Reach for Docusaurus when **documentation is the whole job and versioning plus i
 
 The scaffold is the entry point: `npx create-docusaurus@latest my-website classic` writes a project with `/docs`, `/blog`, `/src/pages`, `/static`, `docusaurus.config.js` and `sidebars.js`. **You write Markdown or MDX files into those directories** — anything in `/src/pages` becomes a page, `/docs` plus `sidebars.js` becomes the documentation section, `/blog` becomes dated posts — and you configure the site in `docusaurus.config.js`. **Docusaurus does the rest: it turns the file tree into routes, renders MDX through React, applies the preset's docs layout, and `npm run build` emits a directory of static files for any static host.** Development runs on `npm run start` with a live server at localhost:3000; the content stays plain files, so the site's structure is reviewable in a diff.
 
-![docusaurus — backbone user story](../../../assets/flow/docusaurus.svg)
+![docusaurus — backbone user story](../../../../assets/flow/docusaurus.svg)
 
 <!-- flow-steps:begin (generated from flows/docusaurus.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -115,8 +115,8 @@ The scaffold is the entry point: `npx create-docusaurus@latest my-website classi
 - **Your site is mostly marketing pages, landing screens and content collections, with docs as one section.** Use [Astro](astro.md): its content collections and component model fit that shape, and Docusaurus's value (versioned docs, docs sidebar, blog) is dead weight when there is little documentation.
 - **You want a minimal MDX layer and prefer to own the routing and layout yourself.** Use [Nextra](nextra.md) — it is a thinner layer over Next.js, at the cost of assembling the docs furniture yourself.
 - **You are on Vue or Svelte rather than React.** Docusaurus is a React application; a Vue team should look at VitePress or a Vue-based docs framework instead, and a Svelte team at the SvelteKit docs templates. Neither is indexed here.
-- **Nobody on the team can maintain a React application.** The scaffold only takes you so far — customizing beyond the preset means writing React components, MDX providers and plugin code. A Markdown-only toolchain such as [Quarkdown](../../typesetting/quarkdown.md) or [Asciidoctor](../../typesetting/asciidoctor.md) produces a documentation site without a JS framework in the loop.
-- **You need a PDF or a printed book out of the same source.** Docusaurus emits a website; for a typeset artifact look at [Quarkdown](../../typesetting/quarkdown.md) (PDF, slides and docs from one Markdown-superset source) or [LaTeX](../../typesetting/latex.md).
+- **Nobody on the team can maintain a React application.** The scaffold only takes you so far — customizing beyond the preset means writing React components, MDX providers and plugin code. A Markdown-only toolchain such as [Quarkdown](../../../typesetting/quarkdown.md) or [Asciidoctor](../../../typesetting/asciidoctor.md) produces a documentation site without a JS framework in the loop.
+- **You need a PDF or a printed book out of the same source.** Docusaurus emits a website; for a typeset artifact look at [Quarkdown](../../../typesetting/quarkdown.md) (PDF, slides and docs from one Markdown-superset source) or [LaTeX](../../../typesetting/latex.md).
 - **You need your content to render in place, unbuilt.** Docusaurus's MDX files are not rendered by GitHub; the site only exists after a build. If in-place preview matters more than a site, keep plain Markdown.
 - **Your Node version is old, or your CI image is pinned to an older runtime.** Docusaurus 3 requires Node 20.0 or above; check that against your build image before committing to it.
 
@@ -127,7 +127,7 @@ The scaffold is the entry point: `npx create-docusaurus@latest my-website classi
 | [Nextra](nextra.md) | ✅ | Choose Docusaurus when versioned docs, i18n and a docs sidebar must exist on day one and you would rather configure them than build them; choose Nextra when you want a thin MDX layer on Next.js and will assemble the rest yourself. | Docusaurus gains the full docs information architecture out of the box plus an explicit versioning model; it pays with a heavier preset and a React app you may not fully control. Nextra is the inverse: less furniture, less magic, more assembly. |
 | [Astro](astro.md) | ✅ | Choose Docusaurus when the deliverable is a versioned documentation site; choose Astro when the deliverable is a content-driven website whose docs are one section among many. | Astro gains a general site framework (content collections, islands, any UI framework, near-zero JS by default); it pays with no built-in docs versioning, so a docs-only project re-implements what Docusaurus presets. |
 | VitePress | 未收录 | Choose VitePress when the team is on Vue and wants a fast, minimal docs generator with Markdown-first configuration; choose Docusaurus when you need React components in the docs or the versioning and i18n workflows it ships. | VitePress gains a much smaller runtime, Vue alignment and simplicity; it pays with no React and a thinner plugin story than a Docusaurus preset. |
-| [Next.js](nextjs.md) with MDX wired by hand | ✅ | Choose hand-wired Next.js only when the site's requirements genuinely differ from every docs preset and you accept owning routing, layout, search, versioning and i18n; otherwise choose Docusaurus and delete what you do not need. | Next.js gains total control and no framework constraints; it pays with re-implementing documentation infrastructure — versioned sidebars, i18n routing, search — that a Docusaurus preset treats as baseline. |
+| [Next.js](../app-frameworks/nextjs.md) with MDX wired by hand | ✅ | Choose hand-wired Next.js only when the site's requirements genuinely differ from every docs preset and you accept owning routing, layout, search, versioning and i18n; otherwise choose Docusaurus and delete what you do not need. | Next.js gains total control and no framework constraints; it pays with re-implementing documentation infrastructure — versioned sidebars, i18n routing, search — that a Docusaurus preset treats as baseline. |
 
 ## Tech stack
 

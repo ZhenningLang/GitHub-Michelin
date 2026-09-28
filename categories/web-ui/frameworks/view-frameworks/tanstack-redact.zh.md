@@ -2,7 +2,7 @@
 name: TanStack Redact
 slug: tanstack-redact
 repo: https://github.com/TanStack/redact
-category: frameworks
+category: view-frameworks
 tags: [react, runtime, drop-in-replacement, vite, bundle-size, synchronous-rendering, ssr, typescript, tanstack]
 language: TypeScript
 license: NOASSERTION
@@ -79,7 +79,7 @@ health:
 
 你的 Vite＋React 站点还没发出第一行业务代码，就先背上了约 69 KB gzip 的 React 运行时，而这份体重大半花在你的页面根本用不到的并发调度上。TanStack Redact 换掉你脚下的运行时：一个 Vite 插件把所有 `react`、`react-dom`、JSX 导入重定向到一份实测 23 KB gzip 的同步重新实现——但它没有 React 的并发调度器，而且截至 2026 年 9 月，仓库连一份许可证都还没放。
 
-![TanStack Redact — 健康度雷达](../../../assets/health/tanstack-redact.zh.svg)
+![TanStack Redact — 健康度雷达](../../../../assets/health/tanstack-redact.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ health:
 
 你改的是构建，不是代码。Vite 插件把 `react`、`react/jsx-runtime`、`react-dom`、`react-dom/client`、`react-dom/server` 和调度器这些模块名，在客户端与 SSR 构建里统统改指 Redact 自己编译好的入口——和 `preact/compat` 用的是同一招构建期别名，但一个插件罩住整个 React API 面。之后 Redact 用**同步**方式渲染：一次状态更新立刻刷完，没有 React 的时间切片、可中断渲染或优先级通道。为并发而生的那些 API 依然存在，导入不会断，但好几个被降级了——`useTransition` 的 pending 恒为 false，`useDeferredValue` 原样返回输入，`useActionState` 只返回初始状态、不执行 action。RSC 环境被刻意留在真 React 上，Server Components 经 `@vitejs/plugin-rsc` 照常工作。特性开关（`redact({ features: { ... } })`）和 `nano` 预设还能砍掉你不需要的行为——不含 context、Suspense、memo 的 DOM 客户端最瘦到 12.5 KB gzip。
 
-![tanstack-redact — 主干用户故事](../../../assets/flow/tanstack-redact.zh.svg)
+![tanstack-redact — 主干用户故事](../../../../assets/flow/tanstack-redact.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-redact.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -127,7 +127,7 @@ health:
 | Solid（`solidjs/solid`） | 未收录 | 只有当用 signals API 重写组件也在桌上时才考虑 Solid——细粒度更新、无虚拟 DOM；现有 React 源码必须原样保留时，选 Redact。 | Solid（每周 643 万下载、MIT）换的是编程模型，是重写不是替换；Redact 保留 React API、只换底下跑的东西，代价是运行时还很年轻。本次 tab-intake 批次未收录。 |
 | Svelte（`sveltejs/svelte`） | ✅ [svelte](svelte.zh.md) | 绿地项目想要一个没有虚拟 DOM 运行时的编译器框架，选 Svelte；既有 React 代码库、只允许换脚下运行时的，选 Redact。 | Svelte 把组件编译成命令式代码、整个模型都变小，但要学新语法、做迁移；Redact 只要构建配置里加一行，也拿不到 Svelte 的编译器优化。 |
 
-仓库自己的 manifest 写着「a minimal React-compatible runtime for TanStack Start apps」[推断]——姊妹项目 [TanStack Router](tanstack-router.zh.md) 与 Start 全家桶是它预设的第一个落点；[TanStack Query](../data-fetching/tanstack-query.zh.md)、[TanStack Table](../component-libraries/tanstack-table.zh.md) 等其他 TanStack 库消费的是 React 公开 API 面，Redact 声称盖住这个面，它们在换 runtime 后的表现是从这点推出来的，仓库本身没有测过。
+仓库自己的 manifest 写着「a minimal React-compatible runtime for TanStack Start apps」[推断]——姊妹项目 [TanStack Router](../app-frameworks/tanstack-router.zh.md) 与 Start 全家桶是它预设的第一个落点；[TanStack Query](../../data-fetching/tanstack-query.zh.md)、[TanStack Table](../../component-libraries/tanstack-table.zh.md) 等其他 TanStack 库消费的是 React 公开 API 面，Redact 声称盖住这个面，它们在换 runtime 后的表现是从这点推出来的，仓库本身没有测过。
 
 ## 技术栈
 
