@@ -87,6 +87,7 @@
 | **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |
+| **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
 
 
 

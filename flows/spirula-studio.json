@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Spirula Studio does",
+    "zh": "Spirula Studio 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download the release zip for your platform and unzip it — one binary, no Python or COLMAP",
+      "zh": "下载对应平台的发布包解压——一个可执行文件，不装 Python 和 COLMAP",
+      "component": {
+        "en": "spirula executable",
+        "zh": "spirula 可执行文件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Point its built-in SfM at a folder of photos (or video frames)",
+      "zh": "把内置 SfM 指向一个照片文件夹（或视频抽帧）",
+      "code": "spirula sfm auto IMAGES/ -o WORKSPACE/",
+      "component": {
+        "en": "built-in SfM",
+        "zh": "内置 SfM"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Finds and matches features on the GPU, solves every camera pose and a sparse point cloud",
+      "zh": "在 GPU 上提特征、做匹配，解出每台相机的位姿和稀疏点云",
+      "component": {
+        "en": "built-in SfM",
+        "zh": "内置 SfM"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Writes a COLMAP-format dataset the trainer can read directly",
+      "zh": "写出训练器能直接读的 COLMAP 格式数据集",
+      "component": {
+        "en": "COLMAP-format workspace",
+        "zh": "COLMAP 格式工作目录"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start training on that dataset, optionally with a preset such as 360-camera",
+      "zh": "在这个数据集上开训，可选 360-camera 等预设",
+      "code": "spirula train [<preset>] --data <colmap_dataset_dir>",
+      "component": {
+        "en": "CLI trainer",
+        "zh": "命令行训练器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Optimizes millions of Gaussians via Vulkan or CUDA, streaming progress to a web viewer",
+      "zh": "用 Vulkan 或 CUDA 优化数百万个高斯，并把进度推到网页查看器",
+      "component": {
+        "en": "training engine + web viewer",
+        "zh": "训练引擎 + 网页查看器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Saves a checkpoint with the trained splat.ply, ready to view, edit or mesh",
+      "zh": "保存含 splat.ply 的检查点，可直接查看、编辑或转网格",
+      "component": {
+        "en": "checkpoint writer",
+        "zh": "检查点写出"
+      }
+    }
+  ],
+  "value": {
+    "en": "A photo or video capture becomes a trained splat on any-vendor GPU without assembling a Python + CUDA + COLMAP toolchain",
+    "zh": "照片或视频变成训练好的 splat，任意厂商 GPU 都能跑，不用自己拼 Python、CUDA 和 COLMAP"
+  },
+  "sources": [
+    "README → intro ('one self-contained binary. No Python/PyTorch, no separate COLMAP install') and Download ('download and unzip'; 'spirula train command will serve a viewer on an HTTP port')",
+    "src/sfm/README.md → usage block ('spirula sfm auto IMAGES/ -o WORKSPACE/          # images -> sparse model')",
+    "docs/notes/sfm-design.md → D1/D4/D14 (GPU SIFT, COLMAP on-disk interchange, 'sfm auto: one command from images to a COLMAP model')",
+    "src/app/README.md → Build & run ('spirula train [<preset>] --data <colmap_dataset_dir>'; presets incl. 360-camera) and Mesh extraction ('<ckpt> = run dir (config.json + step-*.ckpt/) ... or a splat.ply')",
+    "docs/backends.md → the CUDA/Vulkan seam; README → Build from source (Vulkan recommended, CUDA legacy)"
+  ]
+}

@@ -151,6 +151,7 @@ Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-f
 Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
+Brush,categories/3d-reconstruction/spirula-studio.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/work-state/context-mode.md,,no
 Built-in agent skill ecosystems,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 Built-in browser Reader Mode (Firefox/Safari/Edge),categories/reading-tools/just-read.md,,no
@@ -206,6 +207,7 @@ CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
 Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
+COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
 Commercial Kubernetes placement / cost-optimization platforms,categories/dev-utilities/ops-infra/descheduler.md,,no
 "Commercial patent SaaS (智慧芽 PatSnap, incoPat, 专利之星)",categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
@@ -377,6 +379,7 @@ grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/ag
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
+gsplat (Nerfstudio),categories/3d-reconstruction/spirula-studio.md,,no
 "gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
@@ -481,6 +484,8 @@ LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
+LichtFeld Studio,categories/3d-reconstruction/spirula-studio.md,,no
+LichtFeld Studio · Brush · OpenSplat · gsplat,categories/3d-reconstruction/INDEX.md,,no
 Lighthouse / axe-core,categories/ai-design-generation/impeccable.md,,no
 Lighthouse CI / WebPageTest,categories/agent-skills/engineering/addyosmani-web-quality.md,,no
 Linear / Jira,categories/agent-tooling/work-state/beads.md,,no
@@ -631,6 +636,7 @@ OpenRouter,categories/api-gateway/claude-code-router.md,,no
 OpenSCAD,categories/cad/freecad.md,,no
 OpenSCAD · CadQuery · LibreCAD · Blender,categories/cad/INDEX.md,,no
 OpenSearch SQL plugin,categories/databases/database-clients/elasticsearch-sql.md,,no
+OpenSplat,categories/3d-reconstruction/spirula-studio.md,,no
 OpenSSF Scorecard,categories/agent-governance/skillspector.md,,no
 OpenTimelineIO,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Optuna / Ax (BoTorch),categories/ml-research/pymoo.md,,no

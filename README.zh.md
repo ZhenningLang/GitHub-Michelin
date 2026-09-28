@@ -1249,3 +1249,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **MangoDisk** | 一个清理工具要同时覆盖 macOS、Windows 和 Linux，而且你想读懂每条被删路径背后的规则时用它——代价是永久删除、代码库只有两个月、只有一位维护者。 | GPL-3.0-only | C（6/6） | [中](categories/disk-cleanup/mangodisk.zh.md) · [EN](categories/disk-cleanup/mangodisk.md) |
+
+### 3d-reconstruction
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Spirula Studio** | 当你想把视频或照片在一个解压即用的程序里变成高斯泼溅和带贴图的网格、任意厂商 GPU 都能跑（Vulkan）、自带 SfM、抠图和全景／鱼眼支持时用它——代价是只有一位维护者和 GPL-3.0。 | GPL-3.0 | C（6/6） | [中](categories/3d-reconstruction/spirula-studio.zh.md) · [EN](categories/3d-reconstruction/spirula-studio.md) |

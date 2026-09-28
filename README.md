@@ -1267,3 +1267,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **MangoDisk** | Use it when one cleaner must cover macOS, Windows and Linux and you want to read the rule behind every deleted path — accepting permanent deletion, a two-month-old codebase and a single maintainer. | GPL-3.0-only | C (6/6) | [EN](categories/disk-cleanup/mangodisk.md) · [中](categories/disk-cleanup/mangodisk.zh.md) |
+
+### 3d-reconstruction
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Spirula Studio** | Use it when you want video or photos to become a Gaussian splat and textured mesh in one unzip-and-run app on any-vendor GPU (Vulkan), with built-in SfM, masking and 360°/fisheye support — accepting a one-person maintainer and GPL-3.0. | GPL-3.0 | C (6/6) | [EN](categories/3d-reconstruction/spirula-studio.md) · [中](categories/3d-reconstruction/spirula-studio.zh.md) |

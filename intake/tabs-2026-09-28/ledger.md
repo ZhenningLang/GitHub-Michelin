@@ -33,7 +33,7 @@
 | Gentleman-Programming/engram | add | done | categories/agent-memory/coding-agent-memory/engram.md |  | gentleman-programming/engram |
 | glincker/thesvg | add | done | categories/web-ui/icon-libraries/thesvg.md |  | glincker/thesvg |
 | harry0703/MangoDisk | add | done | categories/disk-cleanup/mangodisk.md |  | harry0703/mangodisk |
-| harry7557558/spirula-studio | add | running |  |  | harry7557558/spirula-studio |
+| harry7557558/spirula-studio | add | done | categories/3d-reconstruction/spirula-studio.md |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | running |  |  | infinityloop1308/pipepipe |
 | ix-infrastructure/Ix | add | pending |  |  | ix-infrastructure/ix |
