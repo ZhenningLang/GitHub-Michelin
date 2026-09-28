@@ -879,6 +879,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **TanStack Query** | Use it when front-end components hand-roll fetch/loading/error and show stale data after writes — a shared per-key server-state cache with background refetch and invalidation; not a client-state store or a normalized GraphQL cache. | MIT | A (5/6) | [EN](categories/web-ui/data-fetching/tanstack-query.md) · [中](categories/web-ui/data-fetching/tanstack-query.zh.md) |
 | **TanStack Form** | Use it when forms hand-roll per-input state, touched flags and debounced async checks — a headless, typed form store with field/form validators across React, Vue, Angular, Solid, Svelte and Lit; v2 (alpha) changes the everyday API. | MIT | A (6/6) | [EN](categories/web-ui/forms/tanstack-form.md) · [中](categories/web-ui/forms/tanstack-form.zh.md) |
 
+| **TanStack DB** | Use it when every view demands its own join endpoint and every mutation hand-patches the query cache — normalized client-side collections with differential-dataflow live queries and optimistic transactions; beta 0.x, not a client-state store or a durable offline database. | MIT | B (6/6) | [EN](categories/web-ui/data-fetching/tanstack-db.md) · [中](categories/web-ui/data-fetching/tanstack-db.zh.md) |
+
 ### proxy-pool
 
 | Project | Use when | License | Health | Page |

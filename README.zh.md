@@ -876,6 +876,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Query** | 前端组件各自手写请求、loading、error，写完还显示旧数据时用它——按键共享的服务端状态缓存，后台自动重拉、写后失效；它不是客户端状态库，也不是按实体归一化的 GraphQL 缓存。 | MIT | A（5/6） | [中](categories/web-ui/data-fetching/tanstack-query.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-query.md) |
 | **TanStack Form** | 表单里每个输入手写状态、touched 和异步校验防抖时用它——无头、带类型的表单 store，字段级和表单级校验，覆盖 React、Vue、Angular、Solid、Svelte、Lit；v2（alpha）会改日常 API。 | MIT | A（6/6） | [中](categories/web-ui/forms/tanstack-form.zh.md) · [EN](categories/web-ui/forms/tanstack-form.md) |
 
+| **TanStack DB** | 每个视图都要求单开联表接口、每次写操作都要手补查询缓存时用它——客户端规范化集合加差分数据流活查询和乐观事务；beta 0.x，不是客户端状态库，也不是持久离线数据库。 | MIT | B（6/6） | [中](categories/web-ui/data-fetching/tanstack-db.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-db.md) |
+
 ### proxy-pool
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

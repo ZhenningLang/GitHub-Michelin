@@ -305,6 +305,7 @@ E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
+ElectricSQL (`electric-sql/electric`),categories/web-ui/data-fetching/tanstack-db.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 endesive,categories/pdf-tools/pyhanko.md,,no
@@ -498,6 +499,7 @@ LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
+Legend-State (`LegendApp/legend-state`),categories/web-ui/data-fetching/tanstack-db.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
@@ -724,6 +726,7 @@ Portkey Gateway,categories/api-gateway/kong.md,,no
 Postiz,categories/social-media-management/INDEX.md,,no
 Postiz (gitroomhq/postiz-app),categories/social-media-management/easel.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
+PowerSync (`powersync-ja/powersync-service`),categories/web-ui/data-fetching/tanstack-db.md,,no
 Premiere Pro,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
 Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
@@ -806,6 +809,7 @@ Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
 Rust + PyO3,categories/python-tooling/cython.md,,no
+RxDB (`pubkey/rxdb`),categories/web-ui/data-fetching/tanstack-db.md,,no
 RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-research/llm-circuit-finder.md,,no
 SAGA GIS,categories/geospatial/qgis.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
@@ -894,6 +898,7 @@ Third-party Claude Code marketplaces / community plugin lists,categories/agent-s
 thriftpy2,categories/networking/thriftpy.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
+TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
 tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no
