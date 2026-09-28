@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Cap does", "zh": "Cap 做的"},
+  "steps": [
+    {"lane": "you", "en": "Stand up the Standalone container next to a Valkey store", "zh": "起 Standalone 容器，配一个 Valkey 存储", "code": "docker compose up -d"},
+    {"lane": "you", "en": "Open the dashboard, log in with ADMIN_KEY, create a site key", "zh": "打开面板，用 ADMIN_KEY 登录，创建一个 site key", "code": "http://localhost:3000"},
+    {"lane": "them", "en": "Issues SHA-256 proof-of-work challenges bound to that site key", "zh": "按这个 site key 签发 SHA-256 工作量证明挑战", "component": {"en": "Standalone server", "zh": "Standalone 服务"}},
+    {"lane": "you", "en": "Drop the widget into the form you want to protect", "zh": "把 widget 放进要保护的表单", "code": "data-cap-api-endpoint=\"https://<your-instance>/<site-key>/\""},
+    {"lane": "them", "en": "The visitor's browser solves in parallel WASM workers and yields a single-use token", "zh": "访客浏览器在并行 WASM worker 里解题，产出一个单次 token", "component": {"en": "cap-widget (WASM)", "zh": "cap-widget（WASM）"}},
+    {"lane": "you", "en": "Before trusting the submission, POST the token to your /siteverify endpoint", "zh": "处理提交前，把 token POST 到你的 /siteverify 接口", "code": "{ \"secret\": \"<key_secret>\", \"response\": \"<captcha_token>\" }"}
+  ],
+  "value": {"en": "Bots pay CPU per action and humans click one checkbox, while verification never leaves your infrastructure", "zh": "机器人每个动作都要付 CPU，真人只点一次勾选框，校验全程留在你自己的基础设施里"},
+  "sources": [
+    "trycap.dev/guide.md (retrieved 2026-09-28): docker compose up -d; open http://localhost:3000 and log in with ADMIN_KEY to create a site key; <cap-widget data-cap-api-endpoint=\"https://<your-instance>/<site-key>/\"></cap-widget>; POST { \"secret\": \"<key_secret>\", \"response\": \"<captcha_token>\" } to /siteverify",
+    "trycap.dev/guide/standalone/index.md (retrieved 2026-09-28): tiago2/cap:latest docker compose with ADMIN_KEY/REDIS_URL (Valkey), dashboard site keys, reCAPTCHA-compatible /siteverify",
+    "github.com/tiagozip/cap README main (retrieved 2026-09-28): proof-of-work + instrumentation; 'The default way to use Cap is with the Standalone Docker container'"
+  ]
+}

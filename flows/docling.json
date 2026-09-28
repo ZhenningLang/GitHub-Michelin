@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Docling does", "zh": "Docling 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library into your Python environment", "zh": "把库装进 Python 环境", "code": "pip install docling"},
+    {"lane": "you", "en": "Point the converter at a file or URL", "zh": "把转换器指向一个文件或 URL", "code": "converter = DocumentConverter() · result = converter.convert(source)"},
+    {"lane": "them", "en": "Runs layout, reading-order, table-structure and OCR models, merges everything into one DoclingDocument", "zh": "跑版面、表格结构与 OCR 模型，合成一个 DoclingDocument", "component": {"en": "Document pipeline", "zh": "文档管线"}},
+    {"lane": "you", "en": "Serialize the result for your chunker", "zh": "把结果序列化成给分块器的输出", "code": "result.document.export_to_markdown()"}
+  ],
+  "value": {"en": "Markdown/JSON with columns, tables and headings intact — RAG-ready input without hand-written parsing", "zh": "栏目、表格、标题都完好的 Markdown/JSON——不用手写解析就得到可直接喂 RAG 的输入"},
+  "sources": ["README.md main @ 2026-09-28 Quickstart: 'pip install docling'; 'from docling.document_converter import DocumentConverter'; 'converter = DocumentConverter()'; 'result = converter.convert(source)'; 'print(result.document.export_to_markdown())'; CLI 'docling https://arxiv.org/pdf/2206.01062' generates a .md file", "docs docling-project.github.io/docling/usage/ (2026-09-28): same Python snippet; OCR concepts page + docling/datamodel/pipeline_options.py: OcrAutoOptions default, layout model Heron"]
+}

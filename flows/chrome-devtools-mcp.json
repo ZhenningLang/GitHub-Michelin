@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {"en": "Chrome DevTools MCP does", "zh": "Chrome DevTools MCP 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the server to your MCP client config",
+      "zh": "在 MCP 客户端配置里加上这个服务器",
+      "code": "npx -y chrome-devtools-mcp@latest",
+      "component": {"en": "npm package", "zh": "npm 包"}
+    },
+    {
+      "lane": "them",
+      "en": "Starts or attaches Chrome on the first tool call that needs a browser",
+      "zh": "直到第一次调用需要浏览器的工具，才启动或附着 Chrome",
+      "component": {"en": "Puppeteer", "zh": "Puppeteer"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent to inspect a live page",
+      "zh": "让 agent 去检查一个真实页面",
+      "code": "Check the performance of https://developers.chrome.com"
+    },
+    {
+      "lane": "them",
+      "en": "Drives the page over the DevTools Protocol, auto-waiting for action results",
+      "zh": "通过 DevTools 协议驱动页面，自动等待动作生效",
+      "component": {"en": "CDP automation", "zh": "CDP 自动化"}
+    },
+    {
+      "lane": "them",
+      "en": "Records a trace and returns actionable performance insights",
+      "zh": "录制 trace 并返回可执行的性能洞察",
+      "component": {"en": "DevTools tracing", "zh": "DevTools 追踪"}
+    }
+  ],
+  "value": {
+    "en": "A coding agent with the full DevTools surface — traces, network, console, heap — on a real Chrome you never opened",
+    "zh": "agent 直接拿到完整 DevTools 能力——trace、网络、控制台、堆——不必亲手打开 Chrome"
+  },
+  "sources": [
+    "README.md (Getting started: MCP config JSON; Your first prompt: 'Check the performance of https://developers.chrome.com'; note that the server starts the browser only when a tool requiring it is called)",
+    "docs/client-configurations.md (Command: npx -y chrome-devtools-mcp@latest)",
+    "docs/tool-reference.md (performance_start_trace / performance_stop_trace / performance_analyze_insight tool names)",
+    "docs/cli.md (Puppeteer-based automation, auto-wait for action results, per README Key features)"
+  ]
+}

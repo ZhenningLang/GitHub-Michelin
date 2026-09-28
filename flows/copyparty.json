@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "copyparty does", "zh": "copyparty 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install or fetch the server — Python alone is enough", "zh": "安装或直接拿走那个单文件脚本，只需要 Python", "code": "python3 -m pip install --user -U copyparty · uv tool run copyparty"},
+    {"lane": "you", "en": "Point it at a folder and define who may write", "zh": "指向一个目录，定义谁能读写", "code": "-v /mnt/music:/music:r:rw,foo -a foo:bar"},
+    {"lane": "them", "en": "Serves it over HTTP, WebDAV, FTP(S), SFTP, TFTP and SMB with a browser UI", "zh": "以 HTTP 及 WebDAV/FTP/SFTP 等多协议对外服务"},
+    {"lane": "you", "en": "Enable indexing and dedup, then drag files into the browser to upload", "zh": "开启索引与去重，再把文件拖进浏览器上传", "code": "-e2dsa · --dedup"},
+    {"lane": "them", "en": "up2k splits uploads into blocks, resumes dropped transfers, and stores duplicate bytes once", "zh": "up2k 把上传切块、断线可续传，重复内容只存一份", "component": {"en": "up2k uploader", "zh": "up2k 上传器"}}
+  ],
+  "value": {"en": "A durable, searchable file server in one Python script — no database, no stack to babysit", "zh": "一个 Python 脚本就是耐用、可搜索的文件服务器——没有数据库，也没有要伺候的栈"},
+  "sources": [
+    "README.md 9001/copyparty @ hovudstraum (retrieved 2026-09-28) quickstart: 'python3 -m pip install --user -U copyparty'; 'uv tool run copyparty'; example flag '-v /mnt/music:/music:r:rw,foo -a foo:bar'; '-e2dsa enables general file indexing'",
+    "README.md 'the browser / uploading': 'drag files/folders into the web-browser to upload'; features list: 'up2k: js, resumable, multithreaded'",
+    "README.md 'file deduplication': 'enable symlink-based upload deduplication globally with --dedup'; protocol list: 'http(s) // webdav // sftp // ftp(s) // tftp // smb/cifs'"
+  ]
+}

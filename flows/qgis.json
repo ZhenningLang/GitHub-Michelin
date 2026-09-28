@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "QGIS does", "zh": "QGIS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install QGIS from the official binaries (LTR or Latest Release)", "zh": "用官方安装包装 QGIS（LTR 或最新版）", "code": "qgis.org/en/site/forusers/download.html"},
+    {"lane": "you", "en": "Drag shapefiles, GeoTIFFs, or a PostGIS connection into a new project", "zh": "把 shapefile、GeoTIFF 或 PostGIS 连接拖进新工程"},
+    {"lane": "them", "en": "Reprojects every layer on the fly into the project CRS and renders your symbology", "zh": "把每个图层实时重投影到工程坐标系，并按你的符号渲染"},
+    {"lane": "you", "en": "Run an analysis algorithm from the GUI toolbox, or headless from a terminal", "zh": "在工具箱里跑分析算法，或在终端无界面调用", "code": "qgis_process list · qgis_process help qgis:regularpoints", "component": {"en": "Processing framework", "zh": "Processing 框架"}},
+    {"lane": "them", "en": "Exports the map as print-ready PDF/SVG, or serves the same project live as WMS/WFS via QGIS Server", "zh": "把地图导出为印刷级 PDF/SVG 或在线 WMS/WFS 服务"}
+  ],
+  "value": {"en": "A pile of raw GIS files becomes a print-ready map — and a live web service — without leaving one application", "zh": "一堆原始地理文件，在同一个应用里变成印刷级地图，还能直接变成在线服务"},
+  "sources": ["README.md master @ 2026-09-28 (raw.githubusercontent.com/qgis/QGIS): download page URL https://www.qgis.org/en/site/forusers/download.html; LTR/LR branches with monthly point releases; on-the-fly reprojection between CRS; 200+ native / 1000+ provider algorithms; print output as image/PDF/SVG; QGIS Server WMS, WFS, WFS3/OGC API for Features, WCS; PyQGIS", "docs.qgis.org/latest/en/docs/user_manual/processing/standalone.html (retrieved 2026-09-28): qgis_process run native:buffer -- INPUT=source.shp DISTANCE=2 OUTPUT=buffered.shp; qgis_process list"]
+}

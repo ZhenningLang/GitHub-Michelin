@@ -6,17 +6,17 @@ category: geospatial
 tags: [gis, geospatial, desktop-gis, cartography, qgis-server, pyqgis]
 language: C++
 license: GPL-2.0-or-later
-maturity: v4.0.3, active (2026-06)
-last_verified: 2026-06-26
+maturity: 4.2.x (LR) + 3.44.x (LTR), active, ~14.4k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T09:12:35Z
+  pushed_at: 2026-09-28T03:02:59Z
   default_branch: master
-  default_branch_sha: 0bbc7b6ed0b746fc33fea7a0422975c4177f7d43
+  default_branch_sha: 4f521ec3a2971490b1da4779fd6b384ef59b944c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:19:20Z
+  computed_at: 2026-09-28T06:18:13Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.5
-        qualifying_issues: 14
+        median_ttfr_hours: 38.2
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 12
         source: issue
@@ -51,10 +51,10 @@ health:
         graph_tier: D
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 5387
-        release_assets: 15
+        release_downloads: 5495
+        release_assets: 16
         release_tier: D
-        docker_pulls: 732505
+        docker_pulls: 743069
         docker_image: qgis/qgis
         docker_tier: D
         signal_basis: releases+docker
@@ -62,15 +62,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5622
+        repo_age_days: 5628
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 93
-        top1_share: 0.354
-        top3_share: 0.471
+        active_maintainers_12mo: 94
+        top1_share: 0.356
+        top3_share: 0.474
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -84,7 +84,7 @@ health:
 
 # QGIS
 
-A full-featured, cross-platform desktop GIS for viewing, editing, analyzing, and publishing geospatial data — vector, raster, mesh, and point cloud — built on Qt/C++ with a Python (PyQGIS) plugin ecosystem and a headless server (QGIS Server) for OGC web services.
+Somebody hands you a pile of shapefiles and GeoTIFFs and wants a print-ready map by Friday — hand-rolling that in a notebook (GeoPandas + matplotlib, legend, scale bar, page breaks) eats the week. QGIS is the desktop GIS that owns the whole path: drag layers in and they reproject and render live, and analysis, styling, and print-quality export all happen in one application.
 
 ![qgis — health radar](../../assets/health/qgis.svg)
 
@@ -93,6 +93,27 @@ A full-featured, cross-platform desktop GIS for viewing, editing, analyzing, and
 You're an analyst, planner, or researcher who just received a pile of geospatial data — shapefiles, GeoTIFFs, a PostGIS connection, maybe a GeoPackage someone exported — and you need to actually *look at* it, fix the geometry, run a buffer/overlay/zonal-statistics workflow, and produce a print-quality map for a report. You don't want to buy an ArcGIS Pro license, and you don't want to hand-roll the whole thing in a notebook from GeoPandas + matplotlib just to get a legend, scale bar, and atlas of per-feature pages. QGIS gives you a single desktop application: drag the layers in, style them with a deep symbology engine, run any of the 200+ native Processing algorithms (plus ~1000 more wrapped from GDAL, GRASS, SAGA, and OrfeoToolbox), and lay it all out in the print composer.
 
 It also fits when you need to *script and operationalize* GIS work, not just click. The PyQGIS API lets you automate the same Processing toolbox from Python — in the built-in console, as a plugin, or headless via `qgis_process` — and QGIS Server can publish your styled project as WMS/WFS/WCS/OGC-API endpoints, so the cartography you designed interactively becomes a live web service without re-implementing the rendering stack.
+
+## How it works
+
+QGIS is a Qt/C++ desktop application built on a data-abstraction layer: GDAL/OGR reads nearly every vector/raster format, and each layer is reprojected on the fly into your project's CRS (coordinate reference system) while the renderer applies your symbology. Analysis runs through the Processing framework — 200+ native algorithms plus 1,000+ wrapped from GDAL, GRASS, SAGA, and OrfeoToolbox — reachable from the GUI toolbox, from the Python console (PyQGIS), or headless from a terminal — `qgis_process run native:buffer -- INPUT=source.shp DISTANCE=2 OUTPUT=buffered.shp`. Cartography is finished in Print Layouts (export to PDF/SVG/image, or auto-generate one page per feature with Atlas). What the project does for you ends at the application boundary: the same `.qgis` project file can be rendered headlessly by QGIS Server as WMS/WFS/WCS/OGC-API services, so the map you styled on your desk becomes a web service without re-implementing the renderer. What stays yours: plugin vetting, data management, and — if you publish — the web server the renderer runs behind.
+
+![QGIS — backbone user story](../../assets/flow/qgis.svg)
+
+<!-- flow-steps:begin (generated from flows/qgis.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install QGIS from the official binaries (LTR or Latest Release) — `qgis.org/en/site/forusers/download.html`
+2. **You**: Drag shapefiles, GeoTIFFs, or a PostGIS connection into a new project
+3. **QGIS**: Reprojects every layer on the fly into the project CRS and renders your symbology
+4. **You**: Run an analysis algorithm from the GUI toolbox, or headless from a terminal — `qgis_process list · qgis_process help qgis:regularpoints` — component: `Processing framework`
+5. **QGIS**: Exports the map as print-ready PDF/SVG, or serves the same project live as WMS/WFS via QGIS Server
+
+**Value**: A pile of raw GIS files becomes a print-ready map — and a live web service — without leaving one application
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -138,17 +159,18 @@ It also fits when you need to *script and operationalize* GIS work, not just cli
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 8.5 hours across 14 qualifying issues/PRs.
-- **Maintenance — active (as of 2026-06).** Last push 2026-06; a 4.0.x stable line is shipping (4.0.3 reported 2026-05). Not archived; the high open-issue count (~5.4k) reads as a large, busy tracker for a 15-year desktop application, not as neglect. [推断]
-- **Governance & backing — foundation/community, low bus factor.** QGIS is an OSGeo project run by the QGIS.org association with a steering committee, a core-developer team, and sustaining/commercial-support members [推断] — a genuine multi-maintainer, multi-vendor structure rather than one person's repo. The GitHub repo is Organization-owned, consistent with that.
-- **Age & Lindy — strong.** Created 2011-05, ~15 years old and *still actively developed* (age × still-active). A long-lived, foundation-backed desktop GIS that keeps shipping LTR releases is about as safe a Lindy bet as open-source GIS offers; the only "fails Lindy" risk here is in third-party plugins, not the core.
-- **Adoption & ecosystem.** Widely used in government, academia, and as the open substitute for ArcGIS; large plugin repository and the PyQGIS/Processing ecosystem (GDAL/GRASS/SAGA providers). Plugin quality is uneven and can break across releases — the ecosystem risk, not a core-maintenance one (see When NOT to use).
+- **Responsiveness**: Grade A — median first-response time 38.2 hours across 15 qualifying issues/PRs (scorer, 2026-09-28).
+- **Maintenance — very active (as of 2026-09).** Two user branches ship in parallel — Latest Release 4.2.x and Long Term Release 3.44.x — and both were point-released 2026-09-25 (4.2.3 / 3.44.15, GitHub API); the README documents the time-based roadmap with a monthly point release for each branch, and master's last commit is same-day. The high open-issue count (~5.5k) reads as a large, busy tracker for a long-lived desktop application, not as neglect. [推断]
+- **Governance & backing — foundation, low bus factor.** QGIS is part of the Open-Source Geospatial Foundation (README) and is organized under the QGIS Foundation, whose charter, annual general meetings, annual reports, and finances are published on qgis.org (retrieved 2026-09-28). The scorer counts 94 distinct committers in the last 12 months (top contributor ~36% of commits) — a genuine multi-maintainer, multi-vendor structure rather than one person's repo.
+- **Age & Lindy — strong.** Development began **2002** (README: "developed using the Qt toolkit and C++, since 2002"; docs copyright "2002-now"); the GitHub repo dates from 2011-05 (~15 years, repo age only). ~24 years of continuous development × monthly releases today is about as safe a Lindy bet as open-source GIS offers; the only "fails Lindy" risk here is in third-party plugins, not the core.
+- **Adoption & ecosystem.** ~14.4k stars (GitHub API, 2026-09-28). Widely used in government, academia, and as the open substitute for ArcGIS; large plugin repository and the PyQGIS/Processing ecosystem (GDAL/GRASS/SAGA providers), plus a field/mobile app family (QField, Mergin Maps) around it. Plugin quality is uneven and can break across releases — the ecosystem risk, not a core-maintenance one (see When NOT to use).
 - **Risk flags — few.** GPL-2.0-or-later, no relicense or open-core history for the core app. The realistic risks are plugin churn and GDAL/PROJ version coupling, both already covered above and in Caveats.
 
 ## Caveats (unverified)
 
-- [未验证] Star count ~14.0k as of 2026-06; GitHub stars are unreliable and date-sensitive — treat as indicative only.
-- [未验证] Latest release reported as 4.0.3, published 2026-05-29 (per the repo's release metadata); verify the current stable/LTR line before standardizing on a version.
-- [未验证] Algorithm/provider counts ("200+ native", "~1000 via GDAL/SAGA/GRASS/OrfeoToolbox") and "1000+ plugins" come from QGIS project messaging and shift over time; confirm against the current build for any specific algorithm or plugin.
+- [未验证] Stars (14,434) and open issues (~5.5k) are a GitHub API snapshot of 2026-09-28 — date-sensitive; treat as indicative.
+- [未验证] The 4.2.x (LR) / 3.44.x (LTR) pairing was checked against the GitHub releases list and the qgis.org download page on 2026-09-28; version lines rotate, so re-verify before standardizing on one.
+- [未验证] Algorithm/provider counts ("200+ native", "1000+ via providers such as GDAL, SAGA, GRASS, OrfeoToolbox") are the README's own claims (quoted 2026-09-28), not independently enumerated.
 - [推断] GDAL, PROJ, and GEOS are the standard underlying geo libraries, but the exact minimum/required versions are release-specific and were not pinned here — check the build docs for the version you target.
-- [未验证] Format and CRS coverage is inherited from GDAL/PROJ; support for any specific proprietary or niche format depends on the installed GDAL driver set and may differ across installers.
+- [未验证] Format and CRS coverage is inherited from GDAL/PROJ; support for any specific proprietary or niche format depends on the installed GDAL driver set and may differ across installers (the Windows installers, for one, omit the optional projection grids per qgis.org).
+- [推断] The "~5.5k open issues = busy tracker, not neglect" reading is inference from the repo's release cadence and size, not an audit of the issue queue.

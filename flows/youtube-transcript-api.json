@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "youtube-transcript-api does", "zh": "本库做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library from PyPI", "zh": "从 PyPI 安装这个库", "code": "pip install youtube-transcript-api"},
+    {"lane": "you", "en": "Fetch a transcript by video ID with a language priority list", "zh": "用视频 ID 加语言优先级列表取转写", "code": "YouTubeTranscriptApi().fetch(video_id, languages=['de', 'en'])"},
+    {"lane": "them", "en": "Calls the web client's undocumented transcript endpoint, preferring manual tracks", "zh": "调用网页端未公开的转写端点，默认优先人工字幕轨", "component": {"en": "HTTP client (no browser, no key)", "zh": "HTTP 客户端（无浏览器、无 key）"}},
+    {"lane": "you", "en": "Switch to a generated track, or have YouTube translate it", "zh": "换自动生成轨，或让 YouTube 翻译", "code": "transcript_list.find_generated_transcript(['de', 'en'])"},
+    {"lane": "them", "en": "Hand back timestamped snippets you can format to SRT/WebVTT/JSON/text", "zh": "返回带时间戳片段，可格式化为 SRT/WebVTT/JSON/文本", "component": {"en": "FetchedTranscript + formatters", "zh": "FetchedTranscript + 格式化器"}}
+  ],
+  "value": {"en": "Timestamped spoken text for any video ID, in a few key-free lines", "zh": "任意视频 ID 的带时间戳口述文本，几行免 key 代码到手"},
+  "sources": ["README.md @ master (retrieved 2026-09-28): 'pip install youtube-transcript-api' (Install); 'YouTubeTranscriptApi().fetch(video_id, languages=[\\'de\\', \\'en\\'])' (Retrieve different languages); 'By default this module always chooses manually created transcripts over automatically created ones' + 'transcript_list.find_generated_transcript' (List available transcripts); 'transcript.translate(\\'de\\')' (Translate transcript); formatters JSON/SRT/WebVTT/Text/PrettyPrint (Using Formatters)"]
+}

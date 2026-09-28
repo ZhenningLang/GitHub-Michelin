@@ -6,17 +6,17 @@ category: document-management
 tags: [dms, ocr, self-hosted, django, angular, full-text-search, document-archive, homelab, tesseract, gplv3]
 language: Python (backend) + TypeScript/Angular (frontend)
 license: GPL-3.0
-maturity: Mature, active; stable v2.20.x (2026-04), v3.0 in beta as of 2026-06 (see caveats)
-last_verified: 2026-06-26
+maturity: Mature, active; v3.2.1 stable (2026-09), ~46k stars
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T01:18:26Z
+  pushed_at: 2026-09-28T04:01:44Z
   default_branch: dev
-  default_branch_sha: 67972a074070c7a7677b423c50a7627c5fbfd060
+  default_branch_sha: 6a5d06ee26a4620e6c8452870f157998d5b35050
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:53Z
+  computed_at: 2026-09-28T06:03:30Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.2
-        qualifying_issues: 38
+        median_ttfr_hours: 0.4
+        qualifying_issues: 37
         band: relaxed_solo
         window_offset_days: 13
         source: issue
@@ -46,20 +46,20 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 324957
+        release_downloads: 328527
         release_assets: 100
         release_tier: C
         signal_basis: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 1683
+        repo_age_days: 1688
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 50
+        active_maintainers_12mo: 51
         top1_share: 0.658
         top3_share: 0.947
         window_source: stats_contributors
@@ -85,16 +85,37 @@ health:
 
 于是你用它 Docker 优先的 compose 栈把 paperless-ngx 跑起来，把扫描仪对准 consume 文件夹。现在你把一批扫描件丢进去，paperless 就对它们做 OCR，并按匹配规则自动套上标签、通信方（correspondent）和文档类型——于是那份三月对账单不再需要翻柜子，在 Web UI 里做一次全文检索就能找到。因为这台机器就待在你受信任的内部办公网络上，文档规模也处于个人到小团队级别，这正是 paperless 为之而生的“扫描、归档、然后忘掉”那类活——你并不会去编辑这些文档、也不会把它们送去走审批，只是想让这一堆已完成的纸质文件变得能被找到。
 
+## 怎么用起来
+
+paperless-ngx 是 Django 后端加 Angular 前端，以 docker-compose 栈部署：web 服务、消费/工作进程、Redis/Valkey 消息代理和一个数据库（推荐 PostgreSQL）。它的主干是 **consume 目录**：把扫描仪的导出共享（或任何同步目录）指到它上面，消费器就会盯着新文件——每来一个就转成 PDF、对纯图片扫描件跑 OCR（ocrmypdf + Tesseract）、对数字文档直接抽取文字。随后匹配规则自动套上标签、通信方（correspondent，文档来自谁）和文档类型；自 v3.0（2026-07）起，抽出的全文由 **Tantivy**（一个 Rust 写的搜索引擎）建索引，取代了 v2 的 Whoosh。它替你做的：接收、OCR、分类、索引，并给出 Web UI 和 REST API。仍归你的：把这套栈跑在你信任的机器上（README 明说文档以明文存放）、备份数据库和 media/consume 目录、大版本升级前读 release notes——v3.0 移除了 API v1、放弃 Python 3.10，也移除了旧的文档加密功能。
+
+![paperless-ngx — 主干用户故事](../../assets/flow/paperless-ngx.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/paperless-ngx.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：跑官方安装脚本，搭起 compose 栈并创建管理员 — `install-paperless-ngx.sh`
+2. **你**：把扫描仪或同步目录指向 consume 文件夹 — `./consume:/usr/src/paperless/consume`
+3. **paperless-ngx**：一有新文件就接手、转 PDF、对扫描件 OCR、抽取文字 — 组件：`消费器`
+4. **paperless-ngx**：匹配规则自动套标签、通信方和类型，Tantivy 建全文索引 — 组件：`匹配器 + 搜索索引`
+5. **你**：在 Web UI 里对任意扫描页做全文搜索
+
+**价值**：成堆的纸变成自家可信机器上可全文检索的档案
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **不是安全/合规存储库**——文档以明文形式存储在磁盘上，全文以明文存入数据库，文件名也不加密。内置文档加密功能已被移除（paperless-ng 0.9，v3 再次移除），并且 `[未验证]` 据称维护者表示没有添加静态加密的计划。磁盘级加密得你自己来。
+- **不是安全/合规存储库**——文档以明文形式存储在磁盘上，全文以明文存入数据库，文件名也不加密。内置的文档/缩略图加密已在 **v3.0.0 移除**（release notes，2026-07），并且 `[未验证]` 据称维护者表示没有添加静态加密的计划。磁盘级加密得你自己来。
 - **不要跑在不可信/共享主机上**——项目明确警告反对这样做。
 - **不适合严格的多租户 / 逐文档隐私**——权限/归属模型存在已知缺口（例如经 consume 文件夹导入的文档可能没有 owner，从而对所有用户可见）。它不是一套加固过的多用户系统。
 - **不是企业级 EDMS**——没有内置的多步审批工作流、生命周期/留存管理或电子签名（这些请用 Mayan EDMS）。
 - **不适合协作撰写/编辑**——它是*已完成*文档的档案库，而非 Google Docs 的替代品。
 - **弱硬件上做大批量 OCR 体验差**——OCR 和自动匹配都吃 CPU/RAM；文档自身就建议在受限设备（树莓派等）上削减 worker 数、只处理首页、禁用 NLTK。
 - **不支持 Windows**（需要 Linux 主机）。
-- **升级锁定 / 维护风险**——社区维护，无商业方背书；大版本会带来重大破坏性变更（v3 移除 API v1、重建 migrations、改动 pre/post-consume 脚本参数）。升级前请锁定版本并阅读 release notes。
+- **升级锁定 / 维护风险**——社区维护，无商业方背书；v3.0 线（2026-07）已把这些破坏性变更真正落地（移除 API v1、重建 migrations、改动 pre/post-consume 脚本参数），其后小版本节奏仍很快（v3.1 2026-08、v3.2 2026-09）。升级前请锁定版本并阅读 release notes。
 
 ## 横向对比
 
@@ -108,13 +129,13 @@ health:
 
 ## 技术栈
 
-- Python、Django（后端）；Angular、TypeScript（前端）
-- PostgreSQL（推荐）；支持 SQLite 或 MariaDB
-- Redis / Valkey（消息代理）
-- Tesseract OCR、ImageMagick
-- Apache Tika + Gotenberg（可选——Office/HTML 格式）
-- Whoosh（搜索，v2）→ Tantivy（搜索，v3）
-- Docker / docker-compose
+- Python、Django（后端）；Angular 22、TypeScript（前端——v3.0 升到 Angular v22「zoneless」）
+- PostgreSQL（推荐）；支持 SQLite 或 MariaDB——postgres 版 compose 已改用 `postgres:18`
+- Redis / Valkey（消息代理；默认 compose 跑 `valkey/valkey:9-alpine`）
+- Tesseract OCR + ocrmypdf（当前版本线用 ocrmypdf 17.x）、ImageMagick ≥ 6
+- Apache Tika + Gotenberg（可选——导入 Office/EML/HTML；`-tika` 的 compose 文件两个都起：gotenberg 8.x + tika 3.x，2026-09 已核实）
+- 搜索引擎：**Tantivy**（v3.0 起，取代 v2 的 Whoosh；段合并自动，无需手动 optimize）
+- Docker / docker-compose（官方 `install-paperless-ngx.sh` 一键搭栈）
 
 ## 依赖
 
@@ -124,25 +145,24 @@ health:
 - **ImageMagick** 6+
 - **Apache Tika + Gotenberg**——仅在需要导入 Office/非 PDF 格式时
 - **Docker + docker-compose**（推荐的部署方式）
-- **Linux 主机**（不支持 Windows）；裸机安装时，v3 线上为 Python 3.11–3.14 `[未验证]`（据称 v2.20.x 稳定线仍支持 Python 3.10+）
+- **Linux 主机**（不支持 Windows——文档原话）；裸机安装要求 Python 3.11、3.12、3.13 或 3.14（docs/setup.md，2026-09 已核实；v2 线已被取代）
 
 ## 运维难度
 
-**中等。** 多容器 docker-compose 栈（web + worker + Redis + DB，处理 Office 文档还需加 Tika/Gotenberg）。配置完成后日常运维很轻，但是：OCR 吃 CPU/RAM，在低功耗硬件上很慢；数据库和文档/媒体卷的备份都得你自己负责；大版本升级带破坏性变更（v3 移除 API v1、放弃 Python 3.10、重建 migrations、改动 consume 脚本），因此升级需要阅读 release notes。绝不能暴露在不可信主机上。
+**中等。** 多容器 docker-compose 栈（web + worker + Redis/Valkey + DB，处理 Office 文档还需加 Tika/Gotenberg）。配置完成后日常运维很轻，但是：OCR 吃 CPU/RAM，在低功耗硬件上很慢；数据库和文档/媒体卷的备份都得你自己负责；v2→v3 升级（2026-07）经历了实打实的破坏性变更——移除 API v1、放弃 Python 3.10、重建 migrations、改动 consume 脚本参数——升级需要读 release notes 和迁移指南。绝不能暴露在不可信主机上。
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 0.2 小时，基于 38 个 qualifying issues/PRs。
-- **维护（2026-06）。** 最后 push 于 2026-06；稳定的 v2.20.x 线加上正在推进的 v3.0 beta——处于**活跃**开发，未归档。极低的 open issue 数（约 6）显示积极的 triage，而非停滞。[推断]
-- **治理 / bus factor。** 由 `paperless-ngx` 组织社区维护——它本身就是原 `paperless`/`paperless-ng` 谱系停滞后的社区延续，这点让人安心（项目**已经**挺过一次维护者交接），但它**没有商业方背书**；存续依赖志愿者的延续性。[推断]
-- **年龄与 Lindy 判断。** 作为 `paperless-ngx` 约 4 年（2022-02 创建），经由前身有更深的根基 ⇒ **中等 Lindy** 信号——在 homelab/DMS 细分领域已被验证，但比底层的 paperless 理念年轻。[推断]
-- **采用度与生态。** 很强（约 42k star，是自托管 DMS 的默认推荐，按 Docker 优先方式打包）——一个健康、被广泛部署的项目。[未验证]
-- **风险标记。** GPL-3.0（未发现 relicense）。真正的标记是**升级锁定 / 破坏性变更**（v3 移除 API v1、重建 migrations、改动 consume 脚本）以及安全姿态（静态明文、权限模型缺口）——升级前锁版本并阅读 release notes。[推断]
+- **响应速度**：Grade A——中位首次响应时间 0.4 小时，基于 37 个 qualifying issues/PRs。
+- **维护（2026-09）。** 最后 push 于 2026-09-28；v3.0 于 2026-07-22 转正，之后节奏很快（v3.1 2026-08-27、v3.2 2026-09-19、v3.2.1 2026-09-20）——处于**活跃**开发，未归档。open issue 极少（约 19，2026-09-28）显示积极的 triage，而非停滞。[推断]
+- **治理 / bus factor。** 由 `paperless-ngx` 组织社区维护——它本身就是原 `paperless`/`paperless-ng` 谱系停滞后的社区延续，这点让人安心（项目**已经**挺过一次维护者交接），但它**没有商业方背书**（DigitalOcean 赞助的是演示站，不是路线图）；存续依赖志愿者的延续性。[推断]
+- **年龄与 Lindy 判断。** 作为 `paperless-ngx` 约 4 年半（2022-02 创建），经由前身有更深的根基 ⇒ **中等 Lindy** 信号——在 homelab/DMS 细分领域已被验证，但比底层的 paperless 理念年轻。[推断]
+- **采用度与生态。** 很强（约 46k star，gh api 2026-09-28；是自托管 DMS 的默认推荐，按 Docker 优先方式打包）——一个健康、被广泛部署的项目。
+- **风险标记。** GPL-3.0（未发现 relicense）。真正的标记是**升级锁定 / 破坏性变更**（v3.0 移除 API v1、重建 migrations、改动 consume 脚本，还移除了文档静态加密）以及安全姿态（磁盘明文、权限模型缺口）——升级前锁版本并阅读 release notes。[推断]
 
 ## 存疑（未验证）
 
-- **Star 数**——42.5k，来自单次抓取 GitHub 仓库页面（2026-06），未与 API 交叉核对。`[未验证]`
-- **Release 版本/日期**——v2.20.15（约 2026-04-27）和 v3.0.0-beta.rc1（约 2026-05-05）来自搜索聚合器（releasebot/newreleases），本次未在 GitHub releases 页面上确认。`[未验证]`
-- **v3 特性清单**——tantivy 后端、本地「Paperless AI」、文档版本、OCR 插件框架、移除 API v1、放弃 Python 3.10、consume 脚本变更——取自对 v3 beta 的搜索摘要，而非完整 release notes。`[未验证]`
-- **Gotenberg**——基于 `-tika` 的 compose 文件被列为可选配套组件；在抽取出的安装文档中未明确确认。`[未验证]`
-- **资源需求**——「吃 CPU/RAM」是根据文档中省资源指引得出的定性判断；官方未发布最低 RAM/CPU 规格。`[未验证]`
+- [未验证] 「维护者没有添加静态加密的计划」是早前评审转述的立场，本轮未对照最新 issue 线程复核（v3.0.0 **移除**加密这一事实已在 release notes 确认，2026-09-28）。
+- [未验证] 权限模型缺口（「经 consume 文件夹导入的文档可能没有 owner、对所有用户可见」）早于本轮评审；多用户部署前请对照当前文档/issue 重新核实。
+- [未验证] 资源需求——「吃 CPU/RAM」是根据文档中省资源指引得出的定性判断；官方未发布最低 RAM/CPU 规格。
+- [推断] 把 Tantivy 描述为「Rust 写的搜索引擎」、以及把约 19 个 open issue 解读为「积极 triage」，属于通用认知/推断，不是本轮的测量结果。

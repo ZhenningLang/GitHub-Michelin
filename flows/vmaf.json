@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "libvmaf does", "zh": "libvmaf 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the C library and its vmaf CLI once (or take a prebuilt FFmpeg/Docker binary)", "zh": "一次性构建 C 库与 vmaf CLI（或用预编译版）", "code": "meson setup build --buildtype release · ninja -vC build"},
+    {"lane": "you", "en": "Hand the CLI a reference and a distorted clip as .y4m or .yuv", "zh": "把参考与失真片源（y4m/yuv）交给 CLI", "code": "vmaf --reference ducks.y4m --distorted ducks_dist.y4m"},
+    {"lane": "them", "en": "Runs the built-in model's feature extractors on every frame pair", "zh": "对每一对帧运行内建模型的特征提取器", "code": "--model version=vmaf_v0.6.1", "component": {"en": "libvmaf feature extractors", "zh": "libvmaf 特征提取器"}},
+    {"lane": "them", "en": "Fuses the features into per-frame and pooled 0-100 scores, written to your log", "zh": "把特征融合成逐帧与汇总的 0–100 分，写进日志", "code": "--output output.xml", "component": {"en": "model regressor + logger", "zh": "模型回归器 + 日志器"}}
+  ],
+  "value": {"en": "A perceptual 0-100 score per encode, comparable across codecs, presets and resolutions", "zh": "每个编码一个 0–100 感知分，可在 codec、preset、分辨率之间横向比较"},
+  "sources": ["libvmaf/README.md @ master (retrieved 2026-09-28): Compile section 'meson setup build --buildtype release', 'ninja -vC build'; built-in models note", "libvmaf/tools/README.md @ master: Usage flags (--reference/-r, --distorted/-d, --model/-m, --output/-o, --xml/--json/--csv/--sub); Input example '--reference ducks.y4m --distorted ducks_dist.y4m'; 'If the --model parameter is not passed at all, version=vmaf_v0.6.1 is enabled by default' and built-in model example '--model version=vmaf_v0.6.1'; Example invocation with '--output output.xml'"]
+}

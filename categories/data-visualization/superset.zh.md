@@ -4,19 +4,19 @@ slug: superset
 repo: https://github.com/apache/superset
 category: data-visualization
 tags: [bi, dashboards, data-exploration, sql, charts, semantic-layer, analytics, self-hosted]
-language: TypeScript
+language: Python
 license: Apache-2.0
-maturity: v6.1.0, active, ~73.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v6.1.0, active, ~74.9k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T07:10:08Z
+  pushed_at: 2026-09-28T02:09:26Z
   default_branch: master
-  default_branch_sha: 90fe1f5b7c49d9980afb4fb54ac92d789b294490
+  default_branch_sha: 35e5850606139373bdc83fefafdc90ac411c27a5
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:03:24Z
+  computed_at: 2026-09-28T04:36:43Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 4.1
-        qualifying_issues: 8
+        median_ttfr_hours: 7.7
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 13
         source: issue
@@ -45,16 +45,16 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@superset-ui/embedded-sdk"
-        dependent_repos_count: 6
-        downloads_last_month: 758851
-        graph_tier: D
+        canonical_package: "@superset-ui/switchboard"
+        dependent_repos_count: 145
+        downloads_last_month: 817827
+        graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.02
-        release_downloads: 5372977
+        cross_check_divergence: 1.0
+        release_downloads: 5445538
         release_assets: 49
         release_tier: B
-        docker_pulls: 605612912
+        docker_pulls: 605925979
         docker_image: apache/superset
         docker_tier: A
         signal_basis: releases+docker
@@ -62,15 +62,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4081
+        repo_age_days: 4086
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 146
-        top1_share: 0.276
-        top3_share: 0.452
+        top1_share: 0.277
+        top3_share: 0.456
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -94,11 +94,34 @@ health:
 
 当你需要在数仓表上获得丰富的图表种类和看板交互（交叉过滤、下钻、原生过滤器），并希望看板定义和数据库连接都放在一个你能掌控、能以代码形式导出 / 导入的系统里时，你也会选它。因为它讲 SQLAlchemy，连接大多数 SQL 引擎都不需要为每种来源写专用驱动，所以它能成为你真正查询的那个数仓前面的 BI 前端。
 
+## 怎么用起来
+
+Superset 是一个 Flask/Python 的 Web 应用（前端是 TypeScript/React），它从不复制你的数据：图表存下来的是*查询规格*，每次打开看板都会把它翻译成 SQL、实时打到数仓上执行、再把结果渲染出来。它自己的元数据——看板、图表、数据集、用户、连接——存在一个独立的 Postgres/MySQL 库里，所以整个资产面就是纯配置，文档里的导出导入走的是 YAML。你用一条 SQLAlchemy 连接串登记数据源；Superset 内省它的 schema，把表和列暴露成*数据集*，你在数据集上定义指标和计算列——这层就是让“营收”变成一个定义而不是五十个定义的东西。无代码的 Explore 界面用这些积木拼出图表（SQL Lab 则让分析师从原始 SQL 出发、存成虚拟数据集）；看板把图表排好版，再挂上交叉过滤和原生过滤器。异步执行、缓存预热和定时报表跑在 Celery worker + Beat 里，以 Redis 做 broker；行级安全规则在生成查询的那一刻强制执行——留在你手上的，是把这套多服务栈跑起来并持续升级。
+
+![superset — 主干用户故事](../../assets/flow/superset.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/superset.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆仓库、检出发布 tag、拉起官方镜像 — `docker compose -f docker-compose-image-tag.yml up`
+2. **Apache Superset**：把 Web、元数据库、Redis、Celery 拉成一个服务栈 — 组件：`Docker Compose 栈`
+3. **你**：用默认管理员账号登录 — `http://localhost:8088`
+4. **你**：用 SQLAlchemy 连接串登记你的数仓 — `postgresql://{username}:{password}@{host}:{port}/{database}`
+5. **Apache Superset**：内省 schema，把表和列变成可选用的数据集 — 组件：`SQLAlchemy 连接器`
+6. **你**：在无代码 explorer 里做图、存指标、拼看板
+7. **Apache Superset**：每次查看都翻译成 SQL 在你的数仓上执行，并施行行级安全
+
+**价值**：分析师自助出看板，而数仓凭据和指标定义都留在你自己的基础设施里
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要的是指标 / 可观测性看板，而非数仓 BI。** Superset 查询 SQL 数据源做分析；若你要的是 Prometheus/Loki/InfluxDB 上的时序基础设施指标、日志和告警，那是 [Grafana](../observability/grafana.zh.md)——另一类工具。别把 Superset 掰成监控控制台。
 - **你的数据是非结构化的、日志型或文档型的。** 它是 SQL BI 层，对原始日志检索、全文 / 文档分析，或不暴露 SQL/SQLAlchemy 方言的 NoSQL 存储，都没有原生解法。
-- **你想要单进程、低运维的部署。** 生产级 Superset 是多服务栈——Web 应用 + 一个元数据库 + 一个缓存（Redis）+ Celery workers（及 Celery Beat）来跑异步查询、告警和定时报表。运维和升级这一套是实打实的负担；若你想要尽可能简单的搭建，Metabase 更接近单 jar / 单容器的体验。
+- **你想要单进程、低运维的部署。** 生产级 Superset 是多服务栈——Web 应用 + 一个元数据库 + 一个缓存（Redis）+ Celery workers（及 Celery Beat）来跑异步查询、告警和定时报表。运维和升级这一套是实打实的负担；若你想要尽可能简单的搭建，[Metabase](metabase.zh.md) 更接近单 jar / 单容器的体验。
 - **你指望 Superset 来建模或搬运数据。** 它是*读取 / 可视化*层，不是 ETL/ELT 或变换工具。它不抽取、不加载、不物化管线；建模请放在上游（dbt、数仓、编排器），让 Superset 指向结果。它的语义层是轻量的（指标 / 计算列 / 虚拟数据集），不是一门完整的建模语言。[推断]
 - **你需要把成熟的嵌入式分析作为核心产品形态。** 嵌入 SDK / 看板嵌入是存在的，但其能力、主题定制和授权匹配度，需要你对照自己具体的嵌入需求先核实，再决定是否押注。[未验证]
 - **小团队、看板很少、没有数仓。** 如果你只有几个 CSV 和一个分析师，整套栈的运维重量相对回报并不划算，不如用 notebook 或更轻的工具。
@@ -128,7 +151,7 @@ health:
 - **缓存 / 消息代理（规模上来后基本必需）:** Redis（或等价物），用于缓存以及作为 Celery 的 broker / result backend。
 - **Celery workers（异步功能必需）:** 一个或多个 worker 加 Celery Beat，跑异步查询、告警、定时报表和缓存预热。没有它们，异步 SQL Lab 和报表就不工作。
 - **一个 SQL 数据源（你自己跑）:** 你让 Superset 指向的那个实际分析数据库 / 数仓——Superset 自身不存任何分析数据。
-- **Web 服务器 / 运行时：** Flask 应用需要一个 WSGI/ASGI 应用服务器（如 Gunicorn）；项目发布了官方 Docker 镜像和 Helm chart 用于部署。[未验证]
+- **Web 服务器 / 运行时：** Flask 应用需要一个 WSGI/ASGI 应用服务器（如 Gunicorn）；项目发布了官方 Docker 镜像和 Helm chart 用于部署（2026-09 已核实存在）。
 
 ## 运维难度
 
@@ -136,8 +159,8 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 4.1 小时，基于 8 个 qualifying issues/PRs。
-- **维护（截至 2026-06）：** 最后 push 在 2026-06，未归档，处于 v6.x——一个持续发版、维护密集的项目；约 903 个未关闭 issue 反映的是规模与使用广度，而非荒废。[推断]
+- **响应速度**：Grade A——中位首次响应时间 7.7 小时，基于 6 个 qualifying issues/PRs（2026-09-28 重算）。
+- **Maintenance (as of 2026-09):** 默认分支在最后核验当天仍有 push；最新应用版本 v6.1.0（2026-05-13 发布）至今仍是最新——应用发版间隔约 4 个月，但 Helm chart 一直在出（0.22.8，2026-09-09），CI/文档几乎每天在动。未归档。约 630 个未关闭 issue/PR 反映的是规模与使用广度，而非荒废。[推断]
 - **治理与背书：** 一个 **Apache 软件基金会**顶级项目——基金会治理，由 PMC 而非单一维护者或厂商主导，还有 ASF 的 relicense/IP 护栏。这是本索引里数一数二强的治理姿态：没有任何一家公司能单方面对 license 反水。[推断]
 - **年龄与 Lindy 判断：** 建于 2015-07，约 11 年**且仍然活跃**——教科书式的**强 Lindy** 押注：长寿、基金会背书、广泛部署。老 + 活跃 ⇒ 耐久。[推断]
 - **采用/生态：** 广泛的企业/生产采用、50+ 个 SQLAlchemy 数据库连接器、插件化的可视化框架，以及成熟文档——生态深、依赖面广。[未验证]
@@ -145,9 +168,9 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 最新版本记为 v6.1.0(2026-05)；截至 2026-06 约 73.6k GitHub star——star 数和版本号对时间敏感、随版本变动，仅供参考。
+- [未验证] 最新应用版本核实为 v6.1.0（2026-05-13 发布，GitHub API）；截至 2026-09-28 约 74.9k GitHub star——star 数和版本号对时间敏感、随版本变动，仅供参考。
 - [未验证] “50+ 数据库连接器”及具体引擎列表来自项目自身表述；支持集合与各连接器成熟度参差——依赖某个具体引擎 / 驱动前请对照当前文档核实。
-- [未验证] 用于生产部署的官方 Docker 镜像和 Helm chart 是据对该项目的一般认知陈述，未在此逐条对照当前仓库重新确认。
+- [未验证] 官方 Docker 镜像（apache/superset）与 Helm chart 的存在已在本轮核实（README 链接与仓库内 helm/superset 目录、chart 发版 0.22.8），但其生产就绪度与默认配置的合理性未逐条评估。
 - [未验证] 嵌入式分析 / 看板嵌入的能力及任何授权限制未为本页核实；在依赖它们前请对照当前文档确认。
 - [推断] 把语义层称为“轻量”（相对 LookML 式建模）是从其指标 / 计算列 / 虚拟数据集模型做出的推断，而非实测对比。
 - [推断] 生产需要元数据库 + Redis + Celery workers 是从标准文档化架构推断；受限用途下或许能跑精简的单服务部署，但那不是受支持的生产路径。

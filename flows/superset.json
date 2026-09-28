@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Superset does", "zh": "Superset 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, check out a release tag, boot the official images", "zh": "克隆仓库、检出发布 tag、拉起官方镜像", "code": "docker compose -f docker-compose-image-tag.yml up"},
+    {"lane": "them", "en": "Brings up the web app, metadata Postgres, Redis cache and Celery workers as one stack", "zh": "把 Web、元数据库、Redis、Celery 拉成一个服务栈", "component": {"en": "Docker Compose stack", "zh": "Docker Compose 栈"}},
+    {"lane": "you", "en": "Log in with the default admin account", "zh": "用默认管理员账号登录", "code": "http://localhost:8088"},
+    {"lane": "you", "en": "Register your warehouse with a SQLAlchemy connection string", "zh": "用 SQLAlchemy 连接串登记你的数仓", "code": "postgresql://{username}:{password}@{host}:{port}/{database}"},
+    {"lane": "them", "en": "Introspects the schema so tables and columns become selectable datasets", "zh": "内省 schema，把表和列变成可选用的数据集", "component": {"en": "SQLAlchemy connector", "zh": "SQLAlchemy 连接器"}},
+    {"lane": "you", "en": "Build charts in the no-code explorer, save metrics, assemble dashboards", "zh": "在无代码 explorer 里做图、存指标、拼看板"},
+    {"lane": "them", "en": "Runs each view as SQL against your warehouse and enforces row-level security", "zh": "每次查看都翻译成 SQL 在你的数仓上执行，并施行行级安全"}
+  ],
+  "value": {"en": "Self-service dashboards over your warehouse while credentials and metric definitions stay in your own infrastructure", "zh": "分析师自助出看板，而数仓凭据和指标定义都留在你自己的基础设施里"},
+  "sources": [
+    "superset.apache.org user-docs quickstart (retrieved 2026-09-28): git clone https://github.com/apache/superset; git checkout tags/<release>; docker compose -f docker-compose-image-tag.yml up; head over to http://localhost:8088 and log in with the default created account username admin password admin",
+    "superset.apache.org admin-docs installation/docker-compose (retrieved 2026-09-28): the four compose variants and the image-tag flow",
+    "github.com/apache/superset master docs/user_docs_versioned_docs/version-6.0.0/configuration/databases.mdx: postgresql://{username}:{password}@{host}:{port}/{database} SQLAlchemy URI"
+  ]
+}

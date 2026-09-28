@@ -6,17 +6,17 @@ category: transcoding-and-pipelines
 tags: [video, audio, transcoding, codecs, muxing, filtering, multimedia, cli, libav]
 language: C
 license: LGPL-2.1-or-later
-maturity: "active, LGPL-2.1+ core with optional GPL parts, ~61.5k stars (2026-06)"
-last_verified: 2026-06-28
+maturity: "active, LGPL-2.1+ core with optional GPL parts, n9.0.x (9.0.2, 2026-09; master 9.1-dev), ~64.6k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T11:25:33Z
+  pushed_at: 2026-09-28T05:55:14Z
   default_branch: master
-  default_branch_sha: 3f6bf150cb018334809bec029325b28cff8a5a9a
+  default_branch_sha: 84779ade2679449c70dfd3fb77f7779340356ff0
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:47:55Z
+  computed_at: 2026-09-28T07:23:50Z
   overall: A
   overall_score: 4.0
   scored_axes: 4
@@ -40,21 +40,21 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 503858
+        homebrew_installs_90d: 508082
         homebrew_tier: A
         signal_basis: homebrew
     longevity:
       grade: A
       raw:
-        repo_age_days: 5640
+        repo_age_days: 5646
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 105
-        top1_share: 0.206
-        top3_share: 0.447
+        active_maintainers_12mo: 109
+        top1_share: 0.195
+        top3_share: 0.443
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -67,7 +67,7 @@ health:
 
 # FFmpeg
 
-The universal audio/video framework — `ffmpeg`/`ffprobe`/`ffplay` CLIs plus the `libav*` libraries that decode, encode, transcode, mux, demux, and filter virtually any media format in existence.
+A media file lands in a format nothing in your stack plays — weird container, exotic codec, 10-bit HEVC. FFmpeg is the one tool that recognizes nearly everything in existence: `ffmpeg -i input.avi output.mp4` probes it, decodes it, converts it, and rewraps it, or you embed the same engine through its `libav*` libraries.
 
 ![ffmpeg — health radar](../../../../assets/health/ffmpeg.svg)
 
@@ -77,10 +77,31 @@ You're a backend engineer wiring up a media pipeline: users upload arbitrary vid
 
 You also reach for FFmpeg as a library, not just a CLI, when you're embedding media handling inside an application — `libavformat`/`libavcodec`/`libavfilter`/`libswscale` give you programmatic demux/decode/filter/encode so you're not spawning subprocesses per request. It's the de-facto engine under most of the media stack you already use (browsers, players, NLEs, cloud transcoders all sit on or beside it), so building on it means building on the format coverage the rest of the industry depends on.
 
+## How it works
+
+FFmpeg is a single binary running one pipeline for all media. When you type `ffmpeg -i input.avi output.mp4`, `libavformat` probes the input (magic bytes + extension) and picks a demuxer; `libavcodec` decodes each stream with native or linked codecs; decoded frames optionally pass through a filtergraph (`-vf scale=1280:-2`); on the output side FFmpeg chooses an encoder and muxer from your target format and writes it — `ffprobe` exposes the same discovery layer as parseable text/JSON, and the `libav*` libraries are exactly what you embed if you call the engine from C/C++ (or a binding like PyAV) instead of spawning a subprocess. What stays yours: build-time flags — which codecs you link changes the binary's license (see below); resource caps and sandboxing for untrusted input; and the CLI's flag grammar (stream specifiers, `-map`, filtergraph syntax) whenever defaults aren't what you meant.
+
+![ffmpeg — backbone user story](../../../../assets/flow/ffmpeg.svg)
+
+<!-- flow-steps:begin (generated from flows/ffmpeg.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install FFmpeg once — `brew install ffmpeg`
+2. **You**: Inspect an unknown media file — `ffprobe -show_streams -select_streams a INPUT` — component: `ffprobe`
+3. **You**: Convert with a single command — `ffmpeg -i input.avi output.mp4`
+4. **FFmpeg**: Probes the container and auto-wires matching demuxer, decoder, encoder and muxer — component: `libavformat + libavcodec`
+5. **FFmpeg**: Decodes, filters, encodes and muxes into the file you asked for — component: `libavfilter + libavformat`
+
+**Value**: Any file you throw at it becomes the exact container / codec / stream layout you specified — one binary, no per-format code
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need to download from a streaming site.** FFmpeg is not a downloader. It can read an HTTP/HLS URL, but extracting video from YouTube/etc. is the job of `youtube-dl` / `yt-dlp` (URL resolution, format selection, throttling). Don't reimplement that with FFmpeg.
-- **You ship a proprietary, closed-source binary — read the license trap first.** The core is LGPL-2.1+, but the moment you build with GPL-licensed encoders (x264, x265) or pass `--enable-gpl`, the resulting binary is **GPL**, and `--enable-nonfree` makes it legally **unredistributable**. For commercial/closed distribution you must control your build flags and codec set (or license codecs separately). This is the single most common way teams get FFmpeg licensing wrong. [未验证]
+- **You ship a proprietary, closed-source binary — read the license trap first.** The core is LGPL-2.1+, but the moment you build with GPL-licensed encoders (x264, x265) or pass `--enable-gpl`, the resulting binary is **GPL**, and `--enable-nonfree` (for incompatible libs like FDK-AAC) makes it legally **unredistributable** — both spelled out in the repo's `LICENSE.md` (checked 2026-09-28). For commercial/closed distribution you must control your build flags and codec set (or license codecs separately). This is the single most common way teams get FFmpeg licensing wrong.
 - **You want a thin, stable API and a gentle learning curve.** The CLI's flag grammar (stream specifiers, filtergraphs, per-stream `-c:v:0`) is famously steep, and the C libraries are low-level with a moving API across major versions. Budget real time, or wrap it.
 - **You're parsing untrusted input at scale without a sandbox.** FFmpeg's demuxers/decoders are a large, historically CVE-heavy attack surface in C; feeding it adversarial files unsandboxed is risky. Isolate (seccomp/container/separate process), pin a version, and patch.
 - **You just want a few transcodes from Python.** Don't hand-build argv strings — wrap it via [ffmpeg-python](https://github.com/kkroening/ffmpeg-python) or `PyAV` for a saner interface over the same engine.
@@ -117,15 +138,14 @@ You also reach for FFmpeg as a library, not just a CLI, when you're embedding me
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — issues_disabled.
-- **Maintenance — active and continuous (last push 2026-06).** Decades of uninterrupted development with regular releases; one of the most consistently maintained projects in any media stack [未验证]. The ~3 open issues on the GitHub mirror reflect that upstream tracking happens on its own mailing-list/bug-tracker, not that the project is idle.
+- **Maintenance — active and continuous (last push 2026-09).** Decades of uninterrupted development with regular releases; 9.0 shipped 2026-08-03, patched to 9.0.1/9.0.2 by 2026-09-17, and master is already 9.1-dev (GitHub tags, 2026-09-28). The ~3 open issues on the GitHub mirror reflect that upstream tracking happens on its own mailing-list/bug-tracker, not that the project is idle — GitHub PRs are explicitly ignored in favor of `git send-email` to ffmpeg-devel (README).
 - **Governance & bus factor — broad, mature community.** `Org`-owned (`FFmpeg/`) — a long-standing multi-contributor project, not a single maintainer or a single vendor's roadmap; about as low a bus-factor risk as open source offers [推断]. (Note the historical 2011 libav fork, which merged back into irrelevance — FFmpeg is the surviving line.)
-- **Age & Lindy verdict — old and still active ⇒ as strong a Lindy bet as it gets.** Created 2011 on GitHub (roots to ~2000), still shipping in 2026, and the de-facto engine under most browsers, players, NLEs and cloud transcoders. This is the safest longevity bet in the media category — building on it is building on what the rest of the industry depends on.
-- **Risk flags — licensing is the trap, not viability.** LGPL-2.1+ core, but `--enable-gpl` (x264/x265) makes the build GPL and `--enable-nonfree` makes it **unredistributable**: a load-bearing flag for closed-source distribution you must control at build time [未验证]. Plus a large, historically CVE-heavy C parser attack surface — sandbox and patch untrusted-input pipelines.
+- **Age & Lindy verdict — old and still active ⇒ as strong a Lindy bet as it gets.** Created 2011 on GitHub (roots to ~2000), still shipping in 2026 (~64.6k stars, GitHub API 2026-09-28), and the de-facto engine under most browsers, players, NLEs and cloud transcoders. This is the safest longevity bet in the media category — building on it is building on what the rest of the industry depends on.
+- **Risk flags — licensing is the trap, not viability.** LGPL-2.1+ core, but `--enable-gpl` (x264/x265) makes the build GPL and `--enable-nonfree` makes it **unredistributable** — both confirmed against `LICENSE.md` (2026-09-28): a load-bearing flag for closed-source distribution you must control at build time. Plus a large, historically CVE-heavy C parser attack surface — sandbox and patch untrusted-input pipelines.
 
 ## Caveats (unverified)
 
-- [未验证] ~61.5k GitHub stars and "active" status as of 2026-06; the README states the codebase is "mainly LGPL-licensed with optional components licensed under GPL." Star counts are time-sensitive — treat as indicative.
-- [未验证] **License condition (load-bearing):** core files are LGPL-2.1-or-later; optional GPL parts (incl. some x86 optimizations and 30+ libavfilter filters) require explicitly passing `--enable-gpl`, which makes the build GPL-2.0+. Linking GPL externals like x264/x265 likewise forces GPL. `--enable-nonfree` permits otherwise-incompatible libs (e.g. some codecs) but renders the resulting binary **unredistributable**; `--enable-version3` upgrades to (L)GPL v3. Verify against `LICENSE.md` for the exact component list before distributing.
+- [未验证] **License component list:** `LICENSE.md` (read 2026-09-28) confirms LGPL v2.1+ core, `--enable-gpl` → GPL v2+, `--enable-version3` → (L)GPL v3, and `--enable-nonfree` → unredistributable binary, and enumerates the GPL-part files; we did not audit the list item-by-item against every build configuration you might ship.
 - [推断] Language percentages (C ≈89%, Assembly ≈8%) are GitHub's linguist breakdown and shift over time; treated as approximate.
 - [推断] The CVE/security framing reflects FFmpeg's history as a large C parser of untrusted binary formats; it is an inference about attack surface, not a claim about any specific current vulnerability.
 - [推断] Which codecs a *packaged* (distro/static) build enables — and therefore that build's effective license — varies by source; verify the specific build you ship, don't assume the upstream default.

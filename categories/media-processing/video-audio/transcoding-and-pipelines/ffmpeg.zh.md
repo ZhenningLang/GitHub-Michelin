@@ -6,17 +6,17 @@ category: transcoding-and-pipelines
 tags: [video, audio, transcoding, codecs, muxing, filtering, multimedia, cli, libav]
 language: C
 license: LGPL-2.1-or-later
-maturity: "active, LGPL-2.1+ core with optional GPL parts, ~61.5k stars (2026-06)"
-last_verified: 2026-06-28
+maturity: "active, LGPL-2.1+ core with optional GPL parts, n9.0.x (9.0.2, 2026-09; master 9.1-dev), ~64.6k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T11:25:33Z
+  pushed_at: 2026-09-28T05:55:14Z
   default_branch: master
-  default_branch_sha: 3f6bf150cb018334809bec029325b28cff8a5a9a
+  default_branch_sha: 84779ade2679449c70dfd3fb77f7779340356ff0
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:47:55Z
+  computed_at: 2026-09-28T07:23:50Z
   overall: A
   overall_score: 4.0
   scored_axes: 4
@@ -40,21 +40,21 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 503858
+        homebrew_installs_90d: 508082
         homebrew_tier: A
         signal_basis: homebrew
     longevity:
       grade: A
       raw:
-        repo_age_days: 5640
+        repo_age_days: 5646
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 105
-        top1_share: 0.206
-        top3_share: 0.447
+        active_maintainers_12mo: 109
+        top1_share: 0.195
+        top3_share: 0.443
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -67,7 +67,7 @@ health:
 
 # FFmpeg
 
-通用音视频框架——`ffmpeg`/`ffprobe`/`ffplay` 命令行工具，加上 `libav*` 系列库，几乎能解码、编码、转码、封装、解封装、滤镜处理世面上一切媒体格式。
+通用音视频工具链。你拿到一个任何技术栈都播不了的媒体文件——奇怪的容器、小众编码器、10-bit HEVC——FFmpeg 几乎全都认：`ffmpeg -i input.avi output.mp4` 一条命令完成探查、解码、转换、重封装；也可以把同一套引擎用它的 `libav*` 库直接嵌进你的程序。
 
 ![ffmpeg — 健康度雷达](../../../../assets/health/ffmpeg.zh.svg)
 
@@ -77,10 +77,31 @@ health:
 
 你也会把 FFmpeg 当库用，而不只是命令行：当你要把媒体处理嵌进应用里时，`libavformat`/`libavcodec`/`libavfilter`/`libswscale` 提供可编程的解封装/解码/滤镜/编码，不必为每个请求 fork 子进程。它是你已经在用的大半个媒体栈底下事实上的引擎（浏览器、播放器、NLE、云转码服务都建在它之上或挨着它），所以建在它上面，等于建在整个行业都依赖的那套格式覆盖面上。
 
+## 怎么用起来
+
+FFmpeg 是一个二进制在跑一条对所有媒体通用的管线。你敲下 `ffmpeg -i input.avi output.mp4` 时，`libavformat` 先探测输入（魔数加扩展名）选出解封装器；`libavcodec` 用原生或外挂编解码器解出每一路流；解出的帧可选择性穿过滤镜图（`-vf scale=1280:-2`）；到输出侧，FFmpeg 按你指定的目标格式挑编码器与封装器写出去——`ffprobe` 把同一套探测能力以可解析的文本/JSON 暴露出来，而如果你要从 C/C++（或 PyAV 这类绑定）直接调引擎而不是 fork 子进程，`libav*` 就是你嵌入的东西。仍然归你管的：构建期 flag——链了哪些编码器会改变二进制的许可证（见下文）；对不可信输入的资源上限与沙箱；以及当默认行为不合你意时，命令行那套 flag 语法（流选择符、`-map`、滤镜图语法）。
+
+![ffmpeg — 主干用户故事](../../../../assets/flow/ffmpeg.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ffmpeg.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：一次性装好 FFmpeg — `brew install ffmpeg`
+2. **你**：探查一个来路不明的媒体文件 — `ffprobe -show_streams -select_streams a INPUT` — 组件：`ffprobe`
+3. **你**：一条命令完成转换 — `ffmpeg -i input.avi output.mp4`
+4. **FFmpeg**：探测容器格式，自动配上对应的解封装、解码、编码与封装器 — 组件：`libavformat + libavcodec`
+5. **FFmpeg**：解码、滤镜、编码、封装，写出你指定的那个文件 — 组件：`libavfilter + libavformat`
+
+**价值**：任何文件进去，都变成你指定的容器/编码器/流布局——一个二进制，不用为每种格式写代码
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要从流媒体站点下载。** FFmpeg 不是下载器。它能读 HTTP/HLS URL，但从 YouTube 之类抽取视频是 `youtube-dl` / `yt-dlp` 的活（URL 解析、清晰度选择、限速）。别拿 FFmpeg 去重造这套。
-- **你要分发闭源专有二进制——先看清这个许可证陷阱。** 核心是 LGPL-2.1+，但你一旦用 GPL 编码器（x264、x265）构建，或传了 `--enable-gpl`，产出的二进制就变成 **GPL**；而 `--enable-nonfree` 会让它在法律上**不可再分发**。要做商业/闭源分发，你必须管住自己的构建 flag 和编码器集合（或单独获得编码器授权）。这是团队在 FFmpeg 许可证上最常踩的坑。[未验证]
+- **你要分发闭源专有二进制——先看清这个许可证陷阱。** 核心是 LGPL-2.1+，但你一旦用 GPL 编码器（x264、x265）构建，或传了 `--enable-gpl`，产出的二进制就变成 **GPL**；而 `--enable-nonfree`（为 FDK-AAC 等不兼容库准备）会让它在法律上**不可再分发**——两点都写明了在仓库的 `LICENSE.md` 里（2026-09-28 核对）。要做商业/闭源分发，你必须管住自己的构建 flag 和编码器集合（或单独获得编码器授权）。这是团队在 FFmpeg 许可证上最常踩的坑。
 - **你想要一套精简稳定的 API 和平缓的学习曲线。** 命令行的 flag 语法（流选择符、滤镜图、按流 `-c:v:0`）出了名地陡，C 库又是低层的，且大版本间 API 会变。要么预留真金白银的时间，要么把它包起来。
 - **你要在大规模上解析不可信输入却不做沙箱。** FFmpeg 的解封装/解码器是一片用 C 写的、历史上 CVE 密集的攻击面；不加沙箱直接喂对抗性文件很危险。请隔离（seccomp/容器/独立进程）、锁版本、勤打补丁。
 - **你只是想在 Python 里转几次码。** 别手拼 argv 字符串——用 [ffmpeg-python](https://github.com/kkroening/ffmpeg-python) 或 `PyAV` 在同一引擎上套个更清爽的接口。
@@ -117,15 +138,14 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——issues_disabled。
-- **维护——活跃且连续（最近一次 push 在 2026-06）。** 数十年不间断开发、规律发版；在任何媒体栈里都属于维护最稳定的项目之一 [未验证]。GitHub 镜像上约 3 个 open issue 反映的是上游跟踪走它自己的邮件列表/bug tracker，而非项目闲置。
+- **维护——活跃且连续（最近一次 push 在 2026-09）。** 数十年不间断开发、规律发版；9.0 于 2026-08-03 发布，到 2026-09-17 已打出 9.0.1/9.0.2 补丁，master 已是 9.1-dev（GitHub tags，2026-09-28 核对）。GitHub 镜像上约 3 个 open issue 反映的是上游跟踪走它自己的邮件列表/bug tracker——README 明确说 GitHub PR 不在评审流程内、补丁要 `git send-email` 发到 ffmpeg-devel——而非项目闲置。
 - **治理与 bus factor——成熟而广泛的社区。** `Org` 所有（`FFmpeg/`）——一个长期存在的多贡献者项目，既非单人维护，也非某个厂商的单一路线图；其 bus factor 风险之低，几乎是开源能给到的下限 [推断]。（注意历史上 2011 年的 libav 分叉，后来合并回去、归于无关——FFmpeg 是存活下来的那条线。）
-- **年龄与 Lindy 判断——老且仍活跃 ⇒ 能给到的最强 Lindy 押注。** 2011 年上 GitHub（源头可追到约 2000 年），2026 年仍在发版，且是大半个媒体栈（浏览器、播放器、NLE、云转码）底下事实上的引擎。这是媒体类里最稳的寿命押注——建在它上面，等于建在整个行业都依赖的东西上。
-- **风险标记——陷阱在许可证，而非可持续性。** LGPL-2.1+ 核心，但 `--enable-gpl`（x264/x265）会让构建变 GPL，`--enable-nonfree` 会让它**不可再分发**：对闭源分发是个承重 flag，你必须在构建期管住 [未验证]。此外还有一片大、历史上 CVE 密集的 C 解析器攻击面——不可信输入的管线请沙箱化并打补丁。
+- **年龄与 Lindy 判断——老且仍活跃 ⇒ 能给到的最强 Lindy 押注。** 2011 年上 GitHub（源头可追到约 2000 年），2026 年仍在发版（约 64.6k star，GitHub API 2026-09-28），且是大半个媒体栈（浏览器、播放器、NLE、云转码）底下事实上的引擎。这是媒体类里最稳的寿命押注——建在它上面，等于建在整个行业都依赖的东西上。
+- **风险标记——陷阱在许可证，而非可持续性。** LGPL-2.1+ 核心，但 `--enable-gpl`（x264/x265）会让构建变 GPL，`--enable-nonfree` 会让它**不可再分发**——两点已于 2026-09-28 对照 `LICENSE.md` 核实：对闭源分发是个承重 flag，你必须在构建期管住。此外还有一片大、历史上 CVE 密集的 C 解析器攻击面——不可信输入的管线请沙箱化并打补丁。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 61.5k GitHub star、状态“活跃”;README 称代码库“主要为 LGPL 许可，可选组件为 GPL 许可”。star 数对时间敏感，仅供参考。
-- [未验证] **许可证条件（承重）:** 核心文件为 LGPL-2.1-or-later；可选 GPL 部分（含部分 x86 优化和 libavfilter 里 30+ 个滤镜）需显式传 `--enable-gpl`，这会让构建变 GPL-2.0+。链接 x264/x265 等 GPL 外部库同样强制 GPL。`--enable-nonfree` 允许引入本不兼容的库（如某些编码器）但会让产出二进制**不可再分发**;`--enable-version3` 升到 (L)GPL v3。分发前请对照 `LICENSE.md` 核实确切组件清单。
+- [未验证] **许可证组件清单：** `LICENSE.md`（2026-09-28 已读）确认核心为 LGPL v2.1+、`--enable-gpl` → GPL v2+、`--enable-version3` → (L)GPL v3、`--enable-nonfree` → 产出二进制不可再分发，并逐条列出 GPL 部分文件；我们没有把你可能分发的每种构建配置逐条对照过这份清单。
 - [推断] 语言占比（C 约 89%、汇编约 8%）是 GitHub linguist 的统计，会随时间变化，视为近似值。
 - [推断] CVE/安全的说法源自 FFmpeg 作为大型 C 不可信二进制格式解析器的历史，是对攻击面的推断，而非针对某个当前具体漏洞的断言。
 - [推断] *打包*（发行版/静态）构建启用了哪些编码器、因而其有效许可证如何，随来源而变；请核实你实际分发的那份构建，别假设等于上游默认。

@@ -6,17 +6,17 @@ category: document-management
 tags: [drive, file-manager, cozy, self-hosted, file-sharing, react, agpl, personal-cloud, google-drive-alternative]
 language: JavaScript / TypeScript (React)
 license: AGPL-3.0
-maturity: Active, mature codebase; latest release 1.103.0 (2026-06-23), main at 1.105.0 (see caveats)
-last_verified: 2026-06-26
+maturity: Active, mature codebase; latest release 1.107.0 (2026-09-08), master at 1.108.0, ~990 stars (as of 2026-09)
+last_verified: 2026-09-28
 type: app
 upstream:
-  pushed_at: 2026-06-29T09:34:45Z
+  pushed_at: 2026-09-25T10:21:57Z
   default_branch: master
-  default_branch_sha: 63e2513dea9dc46910018208b0efce6014bcbd98
+  default_branch_sha: c757bafeb489576a2857dc42c15751c08a620ca2
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:16:57Z
+  computed_at: 2026-09-28T05:57:30Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
-        active_weeks_13: 11
+        last_commit_age_days: 4
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 139.9
-        qualifying_issues: 20
+        median_ttfr_hours: 136.2
+        qualifying_issues: 23
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -47,15 +47,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3572
-        last_commit_age_days: 0
+        repo_age_days: 3577
+        last_commit_age_days: 4
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 10
-        top1_share: 0.315
-        top3_share: 0.639
+        top1_share: 0.327
+        top3_share: 0.656
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,7 +71,7 @@ health:
 
 # Twake Drive
 
-A self-hostable "open-source alternative to Google Drive" — a React web app for storing, browsing, link-sharing and previewing files, running as a Cozy app on top of the cozy-stack backend (part of the Twake Workplace suite). It is a personal/team file drive, NOT an OCR document archiver.
+Your team's files live on individual laptops and in chat attachments, and there is no single place to drop a folder and hand someone a link. Twake Drive is that place — a Google-Drive-shaped file app (file tree, upload, share-by-URL, search, in-browser preview) that you serve from your own Cozy/Twake stack, not from Google. It is a personal/team file drive, NOT an OCR document archiver.
 
 ![twake-drive — health radar](../../assets/health/twake-drive.svg)
 
@@ -80,6 +80,26 @@ A self-hostable "open-source alternative to Google Drive" — a React web app fo
 You're running Twake Workplace (or a Cozy server) for a small team and you want the file-storage piece of that suite — somewhere people drop documents, photos, ID scans, payslips and tax notices, browse them in a familiar file-tree UI, and share a folder with a colleague by link. You don't want yet another standalone server to babysit; you want the drive that plugs into the auth, sharing and connector model you already run. So you serve the Twake Drive web app from your cozy-stack, and your users get a clean React UI with upload, search-by-name, in-browser PDF/image preview, and "share this link" — plus the Cozy connectors that auto-pull bills and statements from utility/telecom providers into the drive. It's the "Google-Drive-shaped" front door to your self-hosted stack, not a records-management system.
 
 This is the right pick when your real goal is *file storage and link-sharing inside the Twake/Cozy ecosystem*, and your "documents" are things people keep and occasionally retrieve by name or folder — not a corpus you need to OCR, auto-tag and full-text search the way a paperwork archive demands.
+
+## How it works
+
+Twake Drive is the front end, not the whole stack — it ships a React app, not storage. The backend is **cozy-stack** (a separate Go server) which owns the files, the accounts, auth, and the sharing/data model; the app talks to it through the `cozy-client` library. You build the bundle (`yarn build`) and tell cozy-stack where to find it (`cozy-stack serve --appdir drive:…/build/drive`); cozy-stack installs it as an app and serves it to your users' browsers. What it does for you: the file-tree UI, drag-and-drop upload, search by name, in-browser PDF/image preview, share-by-link (for a link to another Cozy instance, the recipient gets an "accept the sharing" email and the folder then appears in their own drive), and the connector panel (`cozy-harvest-lib`) that auto-pulls bills from utility/telecom providers. What stays yours: standing up and upgrading cozy-stack, its datastore, and mail delivery for share invites — production deployment topology is not defined in this repo, which ships only dev tooling and an E2E compose file.
+
+![twake-drive — backbone user story](../../assets/flow/twake-drive.svg)
+
+<!-- flow-steps:begin (generated from flows/twake-drive.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install dependencies and build the web app — `yarn install · yarn build`
+2. **You**: Mount the built bundle on a running cozy-stack — `cozy-stack serve --appdir drive:/<project_absolute_path>/twake-drive/build/drive`
+3. **Twake Drive**: Serves the Drive UI in the browser: file tree, upload, search by name — component: `cozy-stack app host`
+4. **Twake Drive**: Shares a folder by link; the recipient accepts from an email and sees it in their own drive
+
+**Value**: a Google-Drive-shaped file front door on your existing Cozy/Twake stack, with no second file server to babysit
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -111,7 +131,7 @@ This is the right pick when your real goal is *file storage and link-sharing ins
 ## Dependencies
 
 - **cozy-stack** — mandatory backend; you serve this app via `cozy-stack serve --appdir drive:…`. Without it the app does nothing.
-- **Node.js 20** (`.nvmrc`) + **Yarn** to build/develop the web app.
+- **Node.js 24** (`.nvmrc`, `engines: ~24`) + **Yarn** to build/develop the web app.
 - **CouchDB** is cozy-stack's datastore `[推断]` (cozy-stack's standard backing store; not configured from this repo).
 - **MailHog / an SMTP server** for the share-by-email flow in dev.
 - **Docker** image `cozy/cozy-app-dev` for the in-VM dev workflow; `docker-compose.e2e.yml` for E2E tests. Production deployment is via the Cozy/Twake Workplace platform, not a compose file in this repo.
@@ -122,17 +142,17 @@ This is the right pick when your real goal is *file storage and link-sharing ins
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 139.9 hours across 20 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed 2026-06 with a recent tag (1.103.0, 2026-06-23) and `main` ahead at 1.105.0 — **actively** developed, not archived. [推断]
+- **Responsiveness**: Grade A — median first-response time 136.2 hours across 23 qualifying issues/PRs.
+- **Maintenance (2026-09).** Last pushed 2026-09-25 with a recent tag (1.107.0, 2026-09-08) and `master` ahead at 1.108.0 — **actively** developed, not archived. [推断]
 - **Governance / backing.** Owned by **Linagora**, a French open-source company, as part of its Twake Workplace suite — a vendor-backed project (not a lone maintainer), which is reassuring for continuity but ties the roadmap to one company's suite strategy. It is a fork/rebrand of upstream `cozy/cozy-drive`. [推断]
-- **Age & Lindy verdict.** The repo dates to ~2016 (created 2016-12) and the Cozy Drive lineage it descends from is older still ⇒ the *codebase* has a **moderate-to-strong Lindy** prior, but as a **Linagora rebrand its independent track record is shorter** and adoption (~960 stars) is modest — judge by the suite's traction, not raw age. [推断]
-- **Adoption.** Low star count (~960) signals a small standalone community; its real adoption is gated to teams already running Twake Workplace / Cozy, not a broad independent user base. [未验证]
+- **Age & Lindy verdict.** The repo dates to ~2016 (created 2016-12) and the Cozy Drive lineage it descends from is older still ⇒ the *codebase* has a **moderate-to-strong Lindy** prior, but as a **Linagora rebrand its independent track record is shorter** and adoption (~990 stars) is modest — judge by the suite's traction, not raw age. [推断]
+- **Adoption.** Low star count (~990, gh 2026-09-28) signals a small standalone community; its real adoption is gated to teams already running Twake Workplace / Cozy, not a broad independent user base. [未验证]
 - **Risk flags.** **AGPL-3.0** is the headline flag — network-copyleft obligations bite if you offer a modified version as a service. Plus heavy **platform lock-in**: this repo is front-end only and requires the separate cozy-stack backend. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] `gh` reports latest tagged release **1.103.0** (2026-06-23) while `package.json`/`manifest.webapp` on `main` show **1.105.0** — main is ahead of the latest tag; treat the exact "current version" as approximate.
-- [未验证] Star count ~960 (gh, 2026-06-26). GitHub stars are unreliable and date-sensitive; indicative only.
+- [未验证] `gh` reports latest tagged release **1.107.0** (2026-09-08) while `package.json`/`manifest.webapp` on `master` show **1.108.0** — master is ahead of the latest tag; treat the exact "current version" as approximate.
+- [未验证] Star count ~987 (gh, 2026-09-28). GitHub stars are unreliable and date-sensitive; indicative only.
 - [推断] cozy-stack uses CouchDB as its datastore and provides the actual file storage/auth/sharing layer — inferred from the Cozy architecture, not from files in this repo (which is front-end only).
 - [推断] "No OCR / no full-text content search / no auto-tagging" is inferred from the README feature list (file tree, upload, URL sharing, name search) and the absence of any OCR/index dependency; verify against current cozy-stack capabilities if content search matters.
 - [未验证] Relationship to upstream `cozy/cozy-drive` (fork vs rebrand) is inferred from `manifest.webapp` `source`/`editor` fields and the `cozy-drive` package name; exact governance not confirmed this session.
