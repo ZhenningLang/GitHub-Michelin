@@ -557,6 +557,7 @@ Markdown plus a hand-rolled template layer,categories/markdown-tools/mdx.md,,no
 markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
 markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
 Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Mastra (`mastra-ai/mastra`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 Material React Table (`KevinVandy/material-react-table`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Mathpix,categories/ocr/latex-ocr.md,,no
 Mattermost Cloud,categories/team-chat/mattermost.md,,no
@@ -659,6 +660,7 @@ ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
 OpenAI / Cohere embedding APIs,categories/rag-retrieval/vector-search/text2vec.md,,no
+OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 OpenCLIP,categories/ml-research/clip.md,,no
@@ -941,6 +943,7 @@ VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
+Vercel AI SDK (`vercel/ai`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no

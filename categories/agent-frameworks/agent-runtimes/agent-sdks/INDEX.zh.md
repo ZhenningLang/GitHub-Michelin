@@ -16,6 +16,7 @@
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A（5/6） | [→](pydantic-ai.zh.md) |
 | **smolagents** | 当你想要 Hugging Face 出的极简、透明、写代码行动的 agent 循环时用它——不是重型生产 agent 操作系统。 | B（6/6） | [→](smolagents.zh.md) |
 | **Harness SDK** | 想要一次调用就有能用的 agent——调好的 prompt、shell／文件／web 工具、代码沙箱、子代理、记忆与会话——而且 Python 与 TypeScript 同接口、每个默认值都可覆盖时用它。 | A（6/6） | [→](harness-sdk.zh.md) |
+| **TanStack AI** | 在 TypeScript 应用里做 AI 界面——流式聊天、带类型的工具、媒体与 agent，横跨七个前端框架——想要一套 provider 无关的类型契约、且完全不绑平台层时用它。 | B（6/6） | [→](tanstack-ai.zh.md) |
 
 ## 对比矩阵
 

@@ -86,10 +86,10 @@
 | TanStack/virtual | add | done | categories/web-ui/virtualization/tanstack-virtual.md | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
 | TanStack/form | add | done | categories/web-ui/forms/tanstack-form.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
 | TanStack/db | add | done | categories/web-ui/data-fetching/tanstack-db.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
-| TanStack/ai | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
+| TanStack/ai | add | done | categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
 | TanStack/cli | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |
 | TanStack/store | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
-| TanStack/ranger | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
+| TanStack/ranger | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
 | TanStack/pacer | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
 | TanStack/charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
 | TanStack/hotkeys | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
