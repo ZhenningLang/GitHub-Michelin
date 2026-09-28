@@ -329,6 +329,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **PURE** | 当 intent 追溯需要 Git 原生 schema、registry、phase gate 和 Shell 检查时用它——结构明确，但非常年轻。 | MIT | C（5/6） | [中](categories/agent-dev-methodology/spec-driven-development/pure-agentic.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/pure-agentic.md) |
 | **Learn Claude Code** | 当你想通过亲手重建全部 17 个机制来搞懂 Claude Code 式 agent harness 的原理时用它——但它是课程，不是可 import 的库，也不是生产级 CLI。 | MIT | B（5/6） | [中](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.zh.md) · [EN](categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md) |
 | **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | MIT | B（4/6） | [中](categories/agent-dev-methodology/spec-driven-development/bmad-method.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/bmad-method.md) |
+| **Improve** | 当你想让昂贵模型只读审计仓库、再为便宜执行模型写出可交接的自包含计划时用它——它从不亲自实现。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/improve.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/improve.md) |
 | **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | MIT | B（4/5） | [中](categories/agent-dev-methodology/spec-driven-development/agent-os.zh.md) · [EN](categories/agent-dev-methodology/spec-driven-development/agent-os.md) |
 
 ### ai-design-generation

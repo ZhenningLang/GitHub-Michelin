@@ -59,11 +59,11 @@
 | pydantic/pydantic-ai | sync | done | categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pydantic/pydantic-ai |
 | repowise-dev/repowise | add | done | categories/rag-retrieval/repowise.md |  | repowise-dev/repowise |
 | serengil/deepface | add | done | categories/computer-vision/deepface.md |  | serengil/deepface |
-| shadcn/improve | add | running |  |  | shadcn/improve |
+| shadcn/improve | add | done | categories/agent-dev-methodology/spec-driven-development/improve.md |  | shadcn/improve |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 不收：Claude Code 最佳实践文章/教程合集，无可复用软件；标签保留待你复核 | shanraisshan/claude-code-best-practice |
 | siddharthvaddem/openscreen | add | running |  | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
 | skillsgate/skillsgate | add | running |  |  | skillsgate/skillsgate |
-| stanfordnlp/dspy | sync | pending |  |  | stanfordnlp/dspy |
+| stanfordnlp/dspy | sync | running |  |  | stanfordnlp/dspy |
 | supermemoryai/supermemory | add | pending |  |  | supermemoryai/supermemory |
 | synthetic-sciences/openscience | add | pending |  |  | synthetic-sciences/openscience |
 | Thysrael/Horizon | add | pending |  |  | thysrael/horizon |
