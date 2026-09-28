@@ -6,17 +6,17 @@ category: work-state
 tags: [autonomous-loop, claude-code, ralph-technique, exit-detection, bash, circuit-breaker, rate-limiting, tmux-monitor, prd-import, single-provider]
 language: Shell
 license: MIT
-maturity: v0.11.x line per README, active as of 2026-06; no tagged GitHub releases (see caveats)
-last_verified: 2026-06-26
+maturity: v0.11.5 line per README, last main-branch commit 2026-07-10, ~9.6k stars (as of 2026-09); no tagged GitHub releases (see caveats)
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-20T02:33:03Z
+  pushed_at: 2026-09-19T02:33:45Z
   default_branch: main
-  default_branch_sha: 0c1d7bf8395ceb669482c3443162e2cf381f2040
+  default_branch_sha: e8533cc3f00900e6f3f4acf8c8761e1db4a26e47
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:56:01Z
+  computed_at: 2026-09-28T04:25:32Z
   overall: C
   overall_score: 2.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 74
+        last_commit_age_days: 79
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -49,15 +49,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 391
-        last_commit_age_days: 74
+        repo_age_days: 397
+        last_commit_age_days: 79
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 25
-        top1_share: 0.669
-        top3_share: 0.838
+        top1_share: 0.641
+        top3_share: 0.824
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -82,6 +82,28 @@ health:
 你是一名开发者，手上有一份范围清晰的待办——一份 `fix_plan.md` 清单，或一份能转成清单的 PRD——你想让 Claude Code 无人值守地把它们一条条啃完，而不是自己守着一个个 prompt。你试过朴素的「不停说 continue」循环，结果撞上两种失败：要么 Claude 提前宣布胜利（「Phase complete!」）却还有活没干就停了，要么它根本不停，等你醒来 API 预算已耗尽、而那个本该跳闸的熔断器并不存在。你想要 Geoffrey Huntley 那套 Ralph 技法的自治性，又不想自己手搓安全护栏。
 
 于是你在仓库里 `ralph-enable`（或 `ralph-import requirements.md`），把目标写进 `.ralph/PROMPT.md`、任务写进 `.ralph/fix_plan.md`，然后跑 `ralph --monitor`。套壳循环 Claude Code，而它的退出闸门只有在「启发式完成信号」和显式 `EXIT_SIGNAL: true` 同时成立时才触发——所以「Phase complete, moving on」配上 `EXIT_SIGNAL: false` 会继续干。与此同时 tmux 面板显示循环计数、API 调用数 vs 你设的每小时上限、以及熔断器状态；熔断器在连续 3 次无进展或 5 次相同报错后打开；速率限制（默认 100 次/小时）和单循环超时把成本框住。Git 备份分支（`--backup` / `--rollback`）给你一个撤销键，如果不想让它碰宿主机，还能把它接进 Docker 或 E2B 沙箱。
+
+## 怎么用起来
+
+Ralph 把「你不停敲 continue」换成一个包在 Claude Code CLI 外面的监督脚本。每一轮循环，它 spawn 一次 `claude -p`，把 `.ralph/PROMPT.md` 作为常驻指令、`fix_plan.md` 里下一条未勾的任务作为当前目标，解析 CLI 的 JSON 输出（失败则回退到文本解析），并用 `--resume` 续上同一个会话让上下文跨循环保留。接着响应分析器判两件事：这一轮有没有*进展*（以新增 git commit 和新勾选的条目衡量——启发式易误报，设计上就是尽力而为）；活儿有没有*干完*——必须完成信号（至少两个启发式指示）与显式 `EXIT_SIGNAL: true` 同时成立，退出闸门才放行。护栏包裹整个循环：每小时速率限制（默认 100 次）、单循环超时、连续 3 次无进展或 5 次相同报错即打开的熔断器、以及 5 小时 API 上限检测。留在你手上的：清单的质量（Ralph 只执行 `fix_plan.md`，不替你规划、也不校验计划是否合理）、API 预算、以及审查循环产出的 commit——备份分支的存在，正是因为无人值守会弄乱现场。
+
+![ralph-claude-code — 主干用户故事](../../../assets/flow/ralph-claude-code.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ralph-claude-code.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：一次性安装套壳——克隆仓库并跑安装脚本 — `git clone https://github.com/frankbria/ralph-claude-code.git · ./install.sh`
+2. **你**：在现有项目启用 Ralph，从 PRD 导入任务 — `ralph-enable --from prd ./docs/requirements.md`
+3. **Ralph for Claude Code**：生成 .ralph/：PROMPT.md 写目标、fix_plan.md 列任务 — 组件：`.ralph/ 工作区`
+4. **你**：核对任务清单，启动带监控的循环 — `ralph --monitor`
+5. **Ralph for Claude Code**：每轮重新调用 Claude Code，速率限制与熔断器框住成本和死循环
+6. **Ralph for Claude Code**：完成启发式与 EXIT_SIGNAL: true 同时成立才退出 — 组件：`双条件退出闸门`
+
+**价值**：清单被无人值守啃完，循环在完成判据同时成立时才停——而不是 Claude 自称完成时
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -125,15 +147,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——unknown。
-- **维护** —— 截至 2026-06 最后 push 在 2026-06，处于 v0.11.x 线，即活跃推进，但**没有任何 GitHub release tag**——版本号来自仓库内 README 文本，而非已发布制品。v0.10 已经把全部文件挪进 `.ralph/`（一次需要 `ralph-migrate` 的破坏性布局变更），所以预期 flag / 布局还会继续变。[推断]
-- **治理 / 巴士因子** —— `[推断]` 单维护者、`User` 所有的仓库（`frankbria`）；无 release，无团队或基金会。一人维护的套壳却有约 9.5k star，是巴士因子警示——对你无法重新改造的东西，弃坑与 flag / 布局漂移风险不可忽视。
-- **年龄与 Lindy** —— 创建于 2025-08，截至 2026-06 不足一年且仍在 1.0 之前：太年轻，给不出 Lindy 裁决。它封装的是一套已成型的*技法*（Geoffrey Huntley 的 Ralph 循环），但这个具体套壳在长寿上未经检验。
+- **维护（2026-09）** —— 默认分支最后一次提交在 2026-07-10（距本次核验约 80 天）；GitHub `pushed_at` 2026-09-19 只反映非默认分支的活动。README 仍是 v0.11.x 线（v0.11.5，自称冲刺 v1.0 的「final polish」），但**没有任何 GitHub release tag**——版本号来自仓库内 README 文本，而非已发布制品。v0.10 已经把全部文件挪进 `.ralph/`（一次需要 `ralph-migrate` 的破坏性布局变更），所以预期 flag / 布局还会继续变。7 月以来默认分支放缓，是要盯的势头信号。
+- **治理 / 巴士因子（2026-09）** —— `[推断]` 实质单人主导、`User` 所有的仓库（`frankbria`），近 12 个月 commit 前 1 名占比约 64%；无 release，无团队或基金会。一人主导的套壳却有约 9.6k star，是巴士因子警示——对你无法重新改造的东西，弃坑与 flag / 布局漂移风险不可忽视。
+- **年龄与 Lindy** —— 创建于 2025-08，截至 2026-09 约 13 个月且仍在 1.0 之前：太年轻，给不出 Lindy 裁决。它封装的是一套已成型的*技法*（Geoffrey Huntley 的 Ralph 循环），但这个具体套壳在长寿上未经检验。
 - **风险旗标** —— `[未验证]` MIT，无重新授权历史。结构性风险是**供应商锁定**：它专门套在 Anthropic 的 `claude` CLI 上（多供应商是 1.0 前的*计划项*，尚未交付）。运维上它会无人值守地大量发起付费 API 调用，所以成本失控是真实风险——熔断器和速率限制是仅有的护栏。
 
 ## 存疑（未验证）
 
 - [未验证] **没有 GitHub release tag。** `gh repo view` 返回 `latestRelease: null`,Releases 页面写着「There aren't any releases here」。「v0.11.5」/「v0.11.x」版本及整份 changelog（784 个测试、双条件闸门修复等）都来自仓库内 README 文本，而非已发布的 release 制品——版本细节当作仓库自报。
-- [未验证] **Star 数约 9.5k**（gh 在 2026-06-26 报 9,464）。该生态的 GitHub star 不可靠且随时间变化，仅作参考。
+- [未验证] **Star 数约 9.6k**（GitHub API 在 2026-09-28 报 9,640）。该生态的 GitHub star 不可靠且随时间变化，仅作参考。
 - [推断] **单维护者 / 1.0 前的不稳定。** 以 owner 命名的仓库、无 release、一次有记录的破坏性 `.ralph/` 布局迁移，加上 README 里 bash-3.x 和误报修复的记录，显示出活跃但不稳定的接口面；对你无法重新改造的东西，弃坑与 flag/布局漂移风险不可忽视。
 - [未验证] **安全闸门的确切行为**——双条件退出（`completion_indicators >= 2` 且 `EXIT_SIGNAL: true`）、熔断阈值（3 次无进展 / 5 次相同报错）、默认 100 次/小时、以及 5 小时 API 上限检测，全部来自 README；此处未独立验证，且 LLM 驱动的完成启发式本质上是尽力而为，并非有保证的行为。
 - [推断] **多供应商支持是愿景。** README 把供应商抽象列为 1.0 之前的计划项；截至本次核验，它仍是仅支持 Claude-Code-CLI 的套壳。

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Claude Plugins (Official) does",
+    "zh": "Claude Plugins（官方）做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Open the plugin marketplace inside Claude Code",
+      "zh": "在 Claude Code 里打开插件市场浏览",
+      "code": "/plugin > Discover"
+    },
+    {
+      "lane": "you",
+      "en": "Install one plugin by name from the official directory",
+      "zh": "按名字从官方目录装一个插件",
+      "code": "/plugin install {plugin-name}@claude-plugins-official"
+    },
+    {
+      "lane": "them",
+      "en": "Claude Code's plugin loader registers the plugin's commands, agents, skills and MCP config",
+      "zh": "插件 loader 把命令、agent、skill 与 MCP 配置注册进会话",
+      "component": {
+        "en": "Claude Code plugin loader",
+        "zh": "Claude Code 插件 loader"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Work as usual — its slash commands appear, its skills and agents fire when relevant",
+      "zh": "照常干活——新命令就位，skill 和 agent 到点触发"
+    }
+  ],
+  "value": {
+    "en": "Anthropic-maintained building blocks land in your session with one command — no hand-rolled manifests",
+    "zh": "一条命令装上 Anthropic 维护的现成积木，不用手写 manifest"
+  },
+  "sources": [
+    "README.md on main @ fa59bc90 (fetched 2026-09-28), Installation: '/plugin install {plugin-name}@claude-plugins-official'; 'browse for the plugin in /plugin > Discover'",
+    "README.md, Structure + Plugin Structure: /plugins (internal) and /external_plugins (third-party); plugin folder with .claude-plugin/plugin.json, .mcp.json, commands/, agents/, skills/",
+    "README.md, Plugin names are immutable: renames map in .claude-plugin/marketplace.json, read by 'the Claude Code plugin loader'"
+  ]
+}

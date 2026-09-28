@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "The Agency does", "zh": "The Agency 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app, or clone the repo and run the installer yourself", "zh": "装桌面 app，或克隆仓库自己跑安装脚本", "code": "brew install --cask msitarzewski/agency-agents/agency-agents"},
+    {"lane": "you", "en": "Install only the divisions you want into a chosen tool", "zh": "只把你要的部门装进指定工具", "code": "./scripts/install.sh --tool claude-code --division engineering,security"},
+    {"lane": "them", "en": "Converts each persona into the target tool's native agent format", "zh": "把每个人格转换成目标工具的原生 agent 格式", "component": {"en": "scripts/convert.sh", "zh": "scripts/convert.sh"}},
+    {"lane": "you", "en": "Activate a persona by name in your session", "zh": "在会话里按名字唤起某个 persona", "code": "Hey Claude, activate Frontend Developer mode and help me build a React component"},
+    {"lane": "them", "en": "The persona file steers identity, mission, workflow and success metrics", "zh": "人格文件供给身份、使命、工作流和成功指标", "component": {"en": "division agent files", "zh": "部门人格 markdown"}}
+  ],
+  "value": {"en": "Role specialists across 18 divisions, installed once and following you into ~15 agent tools", "zh": "一次安装，18 个部门的角色专家跟着你走进约 15 种 agent 工具"},
+  "sources": ["README.md main @ 2026-09-28: 'There's an app now' + Quick Start Option 1 (`brew install --cask msitarzewski/agency-agents/agency-agents`)", "README.md Quick Start Option 2 (`./scripts/install.sh --tool claude-code`; activation quote 'Hey Claude, activate Frontend Developer mode and help me build a React component')", "README.md Option 4 (`./scripts/convert.sh` step 1; `./scripts/install.sh --tool claude-code --division engineering,security`; `--list teams`; OpenCode ~119-agent note)", "divisions.json main @ 2026-09-28: 18 divisions (strategy/ and integrations/ excluded as non-divisions)"]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Guizang Social Card does",
+    "zh": "归藏社交卡片做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent's skills directory with one command",
+      "zh": "一行命令把 skill 装进 agent 的 skills 目录",
+      "code": "git clone https://github.com/op7418/guizang-social-card-skill.git"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the cards in plain words",
+      "zh": "用人话点单要哪套图",
+      "code": "帮我做一套小红书图文"
+    },
+    {
+      "lane": "them",
+      "en": "Runs Intake: locks platform, style, content and images; with none, offers a one-shot own/AI/web pick",
+      "zh": "Intake：锁定平台/风格/内容/图，无图时一次性给三选",
+      "component": {
+        "en": "SKILL.md step 1 · Intake",
+        "zh": "SKILL.md 第 1 步 Intake"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Answer: Editorial or Swiss, a preset theme, hand over photos or approve web sourcing",
+      "zh": "回答：选 Editorial 或 Swiss 与主题预设，给图或授权取图"
+    },
+    {
+      "lane": "them",
+      "en": "Picks from the 28 layouts, caches images + writes SOURCES.md, fills the seed template, renders PNGs",
+      "zh": "选版式、落图写 SOURCES.md、填模板并渲染 PNG",
+      "code": "node render.mjs",
+      "component": {
+        "en": "render.mjs + Playwright",
+        "zh": "render.mjs + Playwright"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Review the PNGs yourself; run the 9-rule validator or ask the agent to iterate",
+      "zh": "先看 PNG，再决定跑校验器还是直接改",
+      "code": "node validate-social-deck.mjs path/to/task-dir"
+    }
+  ],
+  "value": {
+    "en": "Platform-exact PNG carousels and cover pairs (plus Live Photo bundles) without opening a design tool",
+    "zh": "平台精确尺寸的 PNG 组图与封面对（外加 Live Photo 发布包），全程不碰设计工具"
+  },
+  "sources": [
+    "README.md (main @ cf4b810, fetched 2026-09-28), 安装 方式三: 'git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill'; 30 秒开始 also shows the npx skills add one-liner",
+    "README.md, 触发方式 keyword list: '帮我做一套小红书图文 / Xiaohongshu 图文'; example request '帮我基于这篇文章做一套瑞士风小红书图文,5 张,IKB 蓝。'",
+    "README.md, 使用流程: 7-step workflow (Intake ... Deliver & Review ... Iterate), '无图时一次性给 A/B/C 三选(自己拍图 / AI 生图 / 网络取图)', '拷种子模板 → 替换 <!-- POSTERS_HERE --> → node render.mjs', '默认不自动跑 validator'",
+    "README.md, 校验脚本: 'node validate-social-deck.mjs path/to/task-dir' + R1-R9 rule list; 效果 section: SOURCES.md auto-write, Unsplash→Pexels→Flickr CC→Wallhaven→直接搜索 chain"
+  ]
+}

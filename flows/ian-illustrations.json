@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "The skill does", "zh": "Skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and copy the skill folder into Codex's skills directory", "zh": "克隆仓库，把 skill 子目录拷进 Codex 的 skills 目录", "code": "cp -R ./ian-xiaohei-illustrations \"${CODEX_HOME:-$HOME/.codex}/skills/\""},
+    {"lane": "you", "en": "Paste the article into Codex and call the skill", "zh": "把文章贴进 Codex，调用这个 skill", "code": "Use $ian-xiaohei-illustrations 把下面这篇文章生成 4 张小黑怪诞正文配图。"},
+    {"lane": "them", "en": "Reads the text and proposes a shot list: one cognitive anchor per picture", "zh": "先读正文给出 shot list：每张图只挑一个认知锚点", "component": {"en": "SKILL.md + references", "zh": "SKILL.md 与参考文档"}},
+    {"lane": "them", "en": "Renders each shot one by one through the host agent's built-in image model", "zh": "逐张调用宿主 agent 内置图像模型渲染手绘线稿", "code": "image_gen", "component": {"en": "prompt-template.md", "zh": "prompt-template.md"}},
+    {"lane": "you", "en": "If the Chinese annotations come out garbled, cut annotation words and regenerate", "zh": "批注出错字就减少标注词，重新生成"},
+    {"lane": "them", "en": "Checks each PNG against the QA checklist and saves it under the article's assets dir", "zh": "按 QA 清单逐张检查 PNG，存入文章配图目录", "code": "assets/<article-slug>-illustrations/"}
+  ],
+  "value": {"en": "A whole article illustrated in one consistent hand-drawn voice, without writing a fresh prompt per image", "zh": "整篇文章用同一套手绘语言配图，不必逐张手写提示词"},
+  "sources": ["README.md main @ 2026-09 (retrieved 2026-09-28): 安装 section verbatim 'git clone https://github.com/helloianneo/ian-xiaohei-illustrations.git' and 'cp -R ./ian-xiaohei-illustrations \"${CODEX_HOME:-$HOME/.codex}/skills/\"'; 怎么用 section verbatim 'Use $ian-xiaohei-illustrations 把下面这篇文章生成 4 张小黑怪诞正文配图。'; 它会产出什么 section verbatim 'assets/<article-slug>-illustrations/'; 注意事项: 中文错字严重时优先减少标注词并重生成", "SKILL.md ian-xiaohei-illustrations/SKILL.md main @ 2026-09: '默认 4-8 张', '先给 shot list', '用内置 image_gen 每张单独生成'"]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "ljg-skills does", "zh": "ljg-skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install all 23 skills globally for Codex with the skills CLI", "zh": "用 skills CLI 一次装齐 23 个技能（全局，Codex）", "code": "bunx skills add lijigang/ljg-skills -g -a codex --skill '*' -y"},
+    {"lane": "you", "en": "Only for the card skill: install its Playwright Chromium renderer", "zh": "只有需要铸卡时，补装 Playwright Chromium", "code": "cd ~/.agents/skills/ljg-card && bun install && bunx playwright install chromium"},
+    {"lane": "them", "en": "Skills land in ~/.agents/skills/ and load when the task matches", "zh": "技能进入 ~/.agents/skills/，任务匹配时按需加载"},
+    {"lane": "you", "en": "Hand it a paper, a book, or a knotty concept", "zh": "把一篇论文、一本书或一个绕口的概念交给它", "code": "ljg-paper · ljg-book · ljg-learn"},
+    {"lane": "them", "en": "The skill runs its fixed method and delivers structured output, or a shareable long PNG card", "zh": "按固定方法交付结构化成果，或铸成可分享的长图卡", "component": {"en": "SKILL.md method prompts", "zh": "SKILL.md 方法提示词"}}
+  ],
+  "value": {"en": "Reading, concept dissection and shareable cards done with one person's tested method, not bland summaries", "zh": "读论文、拆概念、做卡片都有成型方法，不再得到平庸摘要"},
+  "sources": ["README.md master @ fdea0be (retrieved 2026-09-28): 安装 `bunx skills add lijigang/ljg-skills -g -a codex --skill '*' -y`、`#md` 切 Markdown 分支; ljg-card 依赖 `cd ~/.agents/skills/ljg-card && bun install && bunx playwright install chromium`; 参数说明 `-g` 全局安装到 `~/.agents/skills/`; 技能表（ljg-paper、ljg-book、ljg-learn 八维度、ljg-card 四种 PNG）"]
+}

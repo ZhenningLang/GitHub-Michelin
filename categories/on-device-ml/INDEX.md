@@ -16,6 +16,7 @@
 | **ComfyUI** | Use it when you want a modular node-graph interface for building complex diffusion-model workflows locally — but it has a steep learning curve and requires significant GPU resources. | B (6/6) | [→](comfyui.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | B (6/6) | [→](mlx-mlx-lm.md) |
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction or embeddings offline (29–121M params, 2-bit) — but the base model needs a fine-tune and your own guards on refusals. | B (4/6) | [→](needle.md) |
+| **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | A (6/6) | [→](stable-diffusion-cpp.md) |
 
 
 ## Comparison matrix
@@ -30,6 +31,7 @@
 | [Stable Diffusion WebUI](stable-diffusion-webui.md) | ✅ | C (5/6) | Local web-based GUI for Stable Diffusion image generation, editing, and upscaling on your own GPU; requires technical setup and an NVIDIA GPU. |
 | [ComfyUI](comfyui.md) | ✅ | B (6/6) | Modular node-graph interface for building complex diffusion-model workflows locally; steep learning curve and significant GPU resources required. |
 | [Needle](needle.md) | ✅ | B (4/6) | English-only on-device tool-calling/extraction/embedding model (29–121M, 2-bit) with grammar-constrained decoding; the base model misses negations, out-of-range values and off-domain requests. |
+| [stable-diffusion.cpp](stable-diffusion-cpp.md) | ✅ | A (6/6) | ggml-based C/C++ diffusion engine (SD, Flux, Qwen-Image, Wan…) with GGUF quantization and a C API; trades ComfyUI/WebUI workflow richness and extensions for a Python-free, embeddable binary. |
 | MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages (llama.cpp and Ollama are indexed under `llm-inference`). |
 
 ## What belongs here

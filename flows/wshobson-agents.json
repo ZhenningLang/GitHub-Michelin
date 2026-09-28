@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "them": { "en": "wshobson/agents does", "zh": "wshobson/agents 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Register the repo as a plugin marketplace in Claude Code",
+      "zh": "在 Claude Code 里把仓库注册为插件市场",
+      "code": "/plugin marketplace add wshobson/agents"
+    },
+    {
+      "lane": "you",
+      "en": "Install one domain plugin, not the whole catalog",
+      "zh": "安装一个领域插件，而不是整个目录",
+      "code": "/plugin install python-development"
+    },
+    {
+      "lane": "them",
+      "en": "Loads only that plugin's agents, skills and commands into context",
+      "zh": "只把该插件的 agent、skill 和 command 加载进上下文",
+      "component": { "en": "plugins/python-development/", "zh": "plugins/<name>/" }
+    },
+    {
+      "lane": "you",
+      "en": "Hand it the out-of-zone task; the agent delegates to the domain specialist",
+      "zh": "把舒适区之外的任务交出去，agent 委派给领域专家"
+    },
+    {
+      "lane": "them",
+      "en": "The specialist runs with its bundled skills on its tiered model (Opus/Sonnet/Haiku)",
+      "zh": "专家带着自带 skill、按其档位模型（Opus/Sonnet/Haiku）执行"
+    }
+  ],
+  "value": {
+    "en": "Ready-made domain specialists that follow you across seven harnesses from one Markdown source",
+    "zh": "一个 Markdown 源产出的现成领域专家，跟着你跨七种 harness"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/wshobson/agents/main/README.md — Quick start / Claude Code (`/plugin marketplace add wshobson/agents`, `/plugin install python-development  # or any of 94 plugins`), verified against README at commit 9b15b34 on 2026-09-28",
+    "README 'How it works' (installing a plugin loads only its components into context) and 'Tiered model strategy' table (Opus / inherit / Sonnet / Haiku), same commit"
+  ]
+}

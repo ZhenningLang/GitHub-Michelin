@@ -14,6 +14,7 @@
 | **WebDriverAgent** | 当你要自己搭 iOS 自动化底层时用它——它就是 Appium 驱动的那个 WebDriver 服务端，多数团队不会单独跑它。 | A（4/6） | [→](webdriveragent.zh.md) |
 | **Maestro** | 当你想用 YAML 流程、几分钟就能上手做 Android／iOS／Web 的端到端测试时用它——但不支持 iOS 真机。 | A（6/6） | [→](maestro.zh.md) |
 | **Detox** | 当你在测 React Native 应用、想要灰盒同步来压住 flaky 时用它——但它锁 React Native 版本、只支持 JS，且不支持 iOS 真机。 | B（6/6） | [→](detox.zh.md) |
+| **tapflow** | 当团队里不写代码的人要在浏览器里测 iOS／Android 构建、而模拟器跑在你自己的 Mac 上时使用——但 agent 必须是固定在 Xcode 26–27 的 Apple Silicon Mac，只支持模拟器，而且几乎全由一位维护者写成。 | B（6/6） | [→](tapflow.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [WebDriverAgent](webdriveragent.zh.md) | ✅ | A（4/6） | Appium XCUITest 驱动底下的 iOS 引擎——是依赖，不是独立的测试工具。 |
 | [Maestro](maestro.zh.md) | ✅ | A（6/6） | 扁平 YAML 流程、上手最快，但不支持 iOS 真机。 |
 | [Detox](detox.zh.md) | ✅ | B（6/6） | 对 React Native 的 flaky 控制最好，但锁 RN 版本且只支持 JS。 |
+| [tapflow](tapflow.zh.md) | ✅ | B（6/6） | 让全团队在浏览器里自托管地用你 Mac 上的模拟器，但只支持模拟器、锁 Xcode 版本、单人维护。 |
 | （各页对比里点到的非仓库工具） | 非仓库 | — | `xcrun simctl` 与 `XCUITest` 随 Xcode 分发；详见各页横向对比。 |
 
 ## 什么该放这里

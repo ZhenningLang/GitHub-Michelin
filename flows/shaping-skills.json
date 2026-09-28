@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "shaping-skills does", "zh": "shaping-skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, then symlink each skill as a direct child of the skills dir", "zh": "Clone 仓库，把技能目录软链进 ~/.claude/skills/", "code": "ln -s ~/.local/share/shaping-skills/framing-doc ~/.claude/skills/framing-doc"},
+    {"lane": "you", "en": "Shape the idea with Claude before any build", "zh": "动手前先用 Claude 塑形想法", "code": "/shaping"},
+    {"lane": "them", "en": "Iterates the problem and the solution together, kept separate from implementation", "zh": "问题与方案一起迭代，并与实现分开"},
+    {"lane": "you", "en": "Ask for the shaped result to be distilled", "zh": "要求把塑形结果蒸馏成文档", "code": "/framing-doc"},
+    {"lane": "them", "en": "Formats the conversation into a framing document a builder can act on", "zh": "把对话整理成 builder 能照做的框定文档", "component": {"en": "framing-doc skill", "zh": "framing-doc 技能"}}
+  ],
+  "value": {"en": "A framing doc the team can run with — before any code is written", "zh": "写码之前，先有一份团队能照着干的框定文档"},
+  "sources": ["README.md main @ archived (fetched 2026-09-28): Install — git clone https://github.com/rjs/shaping-skills.git ~/.local/share/shaping-skills; ln -s ~/.local/share/shaping-skills/framing-doc ~/.claude/skills/framing-doc; 'Each skill must be a direct child of ~/.claude/skills/'", "README Skills section — /shaping iterate problem and solution before committing to implementation; /framing-doc turns conversation transcripts into a framing document", "README Hook: Ripple Check — PostToolUse in ~/.claude/settings.json runs shaping-ripple.sh on files with shaping: true frontmatter"]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Stitch Skills does",
+    "zh": "Stitch Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Register the Stitch MCP server with its env vars and credentials",
+      "zh": "按 setup 文档注册 Stitch MCP server，配好环境变量和凭证",
+      "component": {"en": "Stitch MCP server", "zh": "Stitch MCP server"}
+    },
+    {
+      "lane": "you",
+      "en": "Install the plugin suite into your agent",
+      "zh": "把插件套装装进 agent",
+      "code": "npx plugins add google-labs-code/stitch-skills"
+    },
+    {
+      "lane": "them",
+      "en": "The agent gains Stitch verbs as loadable skills",
+      "zh": "agent 由此获得驱动 Stitch 的技能",
+      "code": "stitch::generate-design · stitch::react-components",
+      "component": {"en": "three plugins", "zh": "三个 plugin 组"}
+    },
+    {
+      "lane": "you",
+      "en": "Describe the screen you want, as usual",
+      "zh": "照常描述你要的屏幕"
+    },
+    {
+      "lane": "them",
+      "en": "The skill turns it into Stitch calls and generates screens in your project",
+      "zh": "skill 把它翻译成 Stitch 调用，在你的项目里生成屏幕"
+    },
+    {
+      "lane": "you",
+      "en": "Once happy, ask to convert the screens to components",
+      "zh": "满意后，让它把屏幕转成组件"
+    },
+    {
+      "lane": "them",
+      "en": "Exports a React component system, running its validation scripts before handing you code",
+      "zh": "导出 React 组件体系，先跑自带校验脚本再交代码"
+    }
+  ],
+  "value": {
+    "en": "The brainstorm-to-components loop runs inside your agent — no hand-carrying HTML between the Stitch web UI and your codebase",
+    "zh": "从构思到组件的闭环在 agent 里跑完——不用再在 Stitch 网页端和代码库之间人肉搬运 HTML"
+  },
+  "sources": [
+    "README.md 'Prerequisites': register the server and set up appropriate environment variables and credentials (Stitch MCP Setup Instructions)",
+    "README.md 'Claude Code & Cursor': npx plugins add google-labs-code/stitch-skills --scope project --target claude-code",
+    "README.md 'Available Plugins' tables: stitch::generate-design, stitch::react-components; plugin groups stitch-design / stitch-build / stitch-utilities",
+    "README.md skill descriptions: 'Generate new screens from text or images'; 'Convert Stitch screens to React component systems with automated validation and design token consistency'",
+    "README.md 'Repository Structure': each skill ships scripts/ (Executable enforcers: Validation & Networking)"
+  ]
+}

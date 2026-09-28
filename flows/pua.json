@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "PUA does", "zh": "PUA 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the plugin in Claude Code", "zh": "在 Claude Code 安装插件", "code": "claude plugin marketplace add tanweai/pua · claude plugin install pua@pua-skills"},
+    {"lane": "them", "en": "At every session start, inject persona, red lines and the methodology router into context", "zh": "每次会话启动，把人设、红线与方法论路由注入上下文", "component": {"en": "SessionStart hook", "zh": "SessionStart 钩子"}},
+    {"lane": "you", "en": "Work as usual — or pull the trigger yourself", "zh": "照常干活，或自己动手触发", "code": "/pua"},
+    {"lane": "them", "en": "Count consecutive command failures, escalate L0 to L4, force a methodology switch", "zh": "统计连续失败，逐级加压 L0→L4，强制切换方法论", "component": {"en": "PostToolUse hook", "zh": "PostToolUse 钩子"}},
+    {"lane": "them", "en": "The red lines refuse \"done\" without evidence and \"I can't\" with avenues unexhausted", "zh": "红线拦下没证据的「完成」和没穷尽的「做不到」"}
+  ],
+  "value": {"en": "The agent keeps going past its usual quit point and closes with evidence", "zh": "agent 越过惯常的放弃点继续排查，带着证据收工"},
+  "sources": ["README.md main @ v3.5.1 (fetched 2026-09-28): Installation / Claude Code — claude plugin marketplace add tanweai/pua; claude plugin install pua@pua-skills", "README Manual Trigger (/pua) + Trigger Conditions (auto-trigger on 2+ failures)", "README v3 Hook System table + hooks/hooks.json (SessionStart/PostToolUse/UserPromptSubmit/PreCompact/Stop/SubagentStop/PreToolUse/PostToolUseFailure) read via GitHub contents API 2026-09-28"]
+}

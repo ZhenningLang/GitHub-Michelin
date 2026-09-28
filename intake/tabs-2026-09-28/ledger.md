@@ -32,19 +32,19 @@
 | genspark-ai/genoffice | add | done | categories/office-editors/genoffice.md |  | genspark-ai/genoffice |
 | Gentleman-Programming/engram | add | done | categories/agent-memory/coding-agent-memory/engram.md |  | gentleman-programming/engram |
 | glincker/thesvg | add | done | categories/web-ui/icon-libraries/thesvg.md |  | glincker/thesvg |
-| harry0703/MangoDisk | add | running |  |  | harry0703/mangodisk |
-| harry7557558/spirula-studio | add | running |  |  | harry7557558/spirula-studio |
-| hydropix/TranslateBooksWithLLMs | add | pending |  |  | hydropix/translatebookswithllms |
-| InfinityLoop1308/PipePipe | add | pending |  |  | infinityloop1308/pipepipe |
-| ix-infrastructure/Ix | add | pending |  |  | ix-infrastructure/ix |
-| jo-duchan/tapflow | add | pending |  |  | jo-duchan/tapflow |
+| harry0703/MangoDisk | add | done | categories/disk-cleanup/mangodisk.md |  | harry0703/mangodisk |
+| harry7557558/spirula-studio | add | done | categories/3d-reconstruction/spirula-studio.md |  | harry7557558/spirula-studio |
+| hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
+| InfinityLoop1308/PipePipe | add | done | categories/streaming-clients/pipepipe.md |  | infinityloop1308/pipepipe |
+| ix-infrastructure/Ix | add | done | categories/rag-retrieval/ix.md |  | ix-infrastructure/ix |
+| jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
-| Kuddev/pebrel | add | pending |  |  | kuddev/pebrel |
-| kunchenguid/backpass | add | pending |  |  | kunchenguid/backpass |
-| leejet/stable-diffusion.cpp | add | pending |  |  | leejet/stable-diffusion.cpp |
-| macro-inc/macro | add | pending |  |  | macro-inc/macro |
-| mikiarlo3/ai-copywriter | add | pending |  |  | mikiarlo3/ai-copywriter |
-| mvanhorn/last30days-skill | add | pending |  |  | mvanhorn/last30days-skill |
+| Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
+| kunchenguid/backpass | add | done | categories/agent-memory/coding-agent-memory/backpass.md |  | kunchenguid/backpass |
+| leejet/stable-diffusion.cpp | add | done | categories/on-device-ml/stable-diffusion-cpp.md |  | leejet/stable-diffusion.cpp |
+| macro-inc/macro | add | done | categories/team-chat/macro.md |  | macro-inc/macro |
+| mikiarlo3/ai-copywriter | add | running |  |  | mikiarlo3/ai-copywriter |
+| mvanhorn/last30days-skill | add | running |  |  | mvanhorn/last30days-skill |
 | nexu-io/open-design | sync | pending |  |  | nexu-io/open-design |
 | nicedreamzapp/claude-code-local | add | pending |  |  | nicedreamzapp/claude-code-local |
 | op7418/Humanizer-zh | sync | pending |  |  | op7418/humanizer-zh |

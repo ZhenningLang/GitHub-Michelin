@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "tapflow does", "zh": "tapflow 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI on an Apple-Silicon Mac and let it fetch Xcode/SDK prerequisites", "zh": "在 Apple Silicon Mac 上装 CLI，补齐 Xcode 等前置",
+     "code": "npm install -g tapflow · tapflow setup", "component": {"en": "tapflow CLI", "zh": "tapflow CLI"}},
+    {"lane": "you", "en": "Start the relay and the agent together on that Mac", "zh": "在这台 Mac 上一起启动 relay 和 agent",
+     "code": "tapflow start"},
+    {"lane": "them", "en": "Serve the dashboard on port 4000; the agent dials out and registers every simulator and emulator", "zh": "在 4000 端口提供看板；agent 主动连出，登记所有模拟器",
+     "component": {"en": "relay + macOS agent", "zh": "relay＋macOS agent"}},
+    {"lane": "you", "en": "Create the admin, upload a .app.zip or .apk in App Center, press Start QA", "zh": "建管理员，上传 .app.zip／.apk，点 Start QA"},
+    {"lane": "them", "en": "Boot the picked device on demand, install the build, stream H.264 to the browser", "zh": "按需启动选中的设备，装好构建，把 H.264 画面推到浏览器",
+     "component": {"en": "touch / capture helpers", "zh": "触摸／截屏 helper"}},
+    {"lane": "you", "en": "Send an invite link; the teammate clicks and drags on the screen in any browser", "zh": "发邀请链接；队友在任意浏览器里对着屏幕点击、拖动"},
+    {"lane": "them", "en": "Forward each click and drag to the simulator as a real tap or swipe", "zh": "把每次点击、拖动转成模拟器上真实的点按和滑动"}
+  ],
+  "value": {"en": "PMs, designers and backend devs test the latest build from a browser — no Xcode on their laptop, no build uploaded to a third-party device cloud.", "zh": "产品、设计、后端在浏览器里就能测最新构建——自己电脑不装 Xcode，构建也不必上传到第三方设备云。"},
+  "sources": ["README.md Quick Start + How it works", "docs/get-started/quick-start.md (setup, start, admin, Start QA, invite)", "docs/testing/app-center.md (upload formats)", "docs/operate/scaling.md (boot on demand)"]
+}

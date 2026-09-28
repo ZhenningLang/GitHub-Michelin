@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Orchestrator does", "zh": "Agent Orchestrator 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app and point it at your repository", "zh": "安装桌面应用，指向你的仓库", "code": "agent-orchestrator-darwin-arm64.dmg"},
+    {"lane": "them", "en": "The app starts the local daemon for you — no CLI required", "zh": "应用替你启动本地 daemon——不需要 CLI", "component": {"en": "Go daemon", "zh": "Go 守护进程"}},
+    {"lane": "you", "en": "Create a worker: choose one of 28 supported agents and a model, describe the task", "zh": "新建 worker：选一个受支持的 agent 和模型，写清任务"},
+    {"lane": "them", "en": "Gives the worker its own branch and isolated git worktree", "zh": "给这个 worker 配上自己的分支和隔离的 git worktree", "component": {"en": "git worktree", "zh": "git worktree"}},
+    {"lane": "them", "en": "Tracks PR, CI, review and conflicts, and places the card on the live Kanban", "zh": "跟踪 PR、CI、review 和冲突，把卡片放上实时看板"},
+    {"lane": "them", "en": "Flags blocked sessions as Needs you and returns failures to the owning agent", "zh": "把卡住的会话标成 Needs you，把失败送回拥有它的 agent"}
+  ],
+  "value": {"en": "N coding agents stay in their own lanes, and only work that truly needs you comes back to you", "zh": "N 个编码 agent 各走各的车道，只有真正需要你的活才会回到你面前"},
+  "sources": [
+    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Install' (per-platform installer files incl. agent-orchestrator-darwin-arm64.dmg; 'The desktop app runs the daemon for you, so no CLI is required')",
+    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Workers execute focused tasks' + 'One workflow, from idea to merge' (New task; agent+model choice; per-worker branch+worktree; feedback to owning agent)",
+    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Supported agents' (28 coding agents) + 'The Kanban keeps the system legible' (Working / Needs you / In review / Ready to merge)",
+    "https://github.com/Untrivial-ai/agent-orchestrator docs/architecture.md (local HTTP daemon on 127.0.0.1)"
+  ]
+}

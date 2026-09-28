@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "the catalog does", "zh": "这个目录做的"},
+  "steps": [
+    {"lane": "you", "en": "Register the repo as a Claude Code plugin marketplace", "zh": "把仓库注册成 Claude Code 插件市场", "code": "claude plugin marketplace add VoltAgent/awesome-claude-code-subagents"},
+    {"lane": "you", "en": "Install only the category bundles you need", "zh": "只装你需要的那几个类别包", "code": "claude plugin install voltagent-lang · claude plugin install voltagent-infra"},
+    {"lane": "them", "en": "Each role loads as a subagent with trigger description and tool limits", "zh": "每个角色以 subagent 载入，自带触发描述与工具权限", "component": {"en": "161 subagent files", "zh": "161 个 subagent 文件"}},
+    {"lane": "them", "en": "Each agent arrives pre-routed to opus, sonnet or haiku; override the model field to change it", "zh": "按角色预路由 opus/sonnet/haiku，改 model 可覆写", "code": "model: sonnet"},
+    {"lane": "you", "en": "Let Claude Code auto-delegate, or invoke one by name", "zh": "让 Claude Code 自动委派，或点名调用", "code": "Have the code-reviewer subagent analyze my latest commits"}
+  ],
+  "value": {"en": "Domain experts in isolated context windows without hand-writing frontmatter or role prompts", "zh": "不用手写 frontmatter 和角色提示，就得到各自隔离上下文的领域专家"},
+  "sources": ["README.md main @ 2026-09-28: Installation 'As Claude Code Plugin (Recommended)' (`claude plugin marketplace add VoltAgent/awesome-claude-code-subagents`; `claude plugin install voltagent-lang` / `claude plugin install voltagent-infra`)", "README.md 'Subagent Structure' + 'Smart Model Routing': frontmatter template `model: sonnet`, opus/sonnet/haiku routing table, `model: inherit` override", "README.md 'Understanding Subagents' / 'Deploy and Utilize': `Have the code-reviewer subagent analyze my latest commits`; independent context windows; /agents manager", "categories/ tree @ main 2026-09-28 (git tree API): 171 markdown files minus 10 category READMEs = 161 agent files, matching the README badge '161+'"]
+}
