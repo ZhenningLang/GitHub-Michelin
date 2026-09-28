@@ -87,6 +87,7 @@
 | **pentest** | 授权范围内 web 应用、API 与本地网络（Wi-Fi）的自主／AI 辅助渗透测试——agent swarm、渗透测试自动化、漏洞利用链（授权优先）。 | [→](categories/pentest/INDEX.zh.md) |
 | **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载。 | [→](categories/disk-cleanup/INDEX.zh.md) |
 | **3d-reconstruction** | 把照片、视频或扫描变成三维场景——运动恢复结构、高斯泼溅／辐射场训练，以及把结果转成网格。 | [→](categories/3d-reconstruction/INDEX.zh.md) |
+| **streaming-clients** | 替代官方 App 观看、收听流媒体平台（YouTube、B 站、SoundCloud……）的第三方客户端——无广告、免账号、可后台播放。 | [→](categories/streaming-clients/INDEX.zh.md) |
 
 
 

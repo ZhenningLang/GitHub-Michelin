@@ -374,6 +374,7 @@ Graphviz,categories/diagramming/INDEX.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no
 Graphviz / Viz.js,categories/diagramming/flowchart-js.md,,no
 GRASS GIS,categories/geospatial/qgis.md,,no
+Grayjay (`futo-org/grayjay-android`),categories/streaming-clients/pipepipe.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/agentsview.md,,no
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
@@ -483,6 +484,7 @@ LibreOffice,categories/office-editors/collabora-online.md,,no
 LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
+LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 LichtFeld Studio,categories/3d-reconstruction/spirula-studio.md,,no
 LichtFeld Studio · Brush · OpenSplat · gsplat,categories/3d-reconstruction/INDEX.md,,no
@@ -587,6 +589,7 @@ Netflix VMAF cloud/SaaS scorers,categories/media-processing/quality-metrics/ssim
 Nethereum.Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 Neutralinojs,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 New API,categories/api-gateway/funtool.md,,no
+NewPipe (`TeamNewPipe/NewPipe`),categories/streaming-clients/pipepipe.md,,no
 NewsBlur,categories/reading-tools/netnewswire.md,,no
 newspaper3k / goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 newspaper4k,categories/web-scraping/article-extraction/newspaper.md,,no
@@ -807,6 +810,7 @@ Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
 Slidev,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Slidev / Marp,categories/agent-skills/slides-ppt/INDEX.md,,no
+SmartTube (`yuliskov/SmartTube`),categories/streaming-clients/pipepipe.md,,no
 SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
@@ -855,6 +859,7 @@ Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
+Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no

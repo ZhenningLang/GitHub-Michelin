@@ -35,9 +35,9 @@
 | harry0703/MangoDisk | add | done | categories/disk-cleanup/mangodisk.md |  | harry0703/mangodisk |
 | harry7557558/spirula-studio | add | done | categories/3d-reconstruction/spirula-studio.md |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
-| InfinityLoop1308/PipePipe | add | running |  |  | infinityloop1308/pipepipe |
-| ix-infrastructure/Ix | add | pending |  |  | ix-infrastructure/ix |
-| jo-duchan/tapflow | add | pending |  |  | jo-duchan/tapflow |
+| InfinityLoop1308/PipePipe | add | done | categories/streaming-clients/pipepipe.md |  | infinityloop1308/pipepipe |
+| ix-infrastructure/Ix | add | running |  |  | ix-infrastructure/ix |
+| jo-duchan/tapflow | add | running |  |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
 | Kuddev/pebrel | add | pending |  |  | kuddev/pebrel |
 | kunchenguid/backpass | add | pending |  |  | kunchenguid/backpass |

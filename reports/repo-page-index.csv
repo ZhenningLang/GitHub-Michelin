@@ -65,6 +65,7 @@ https://github.com/Homebrew/BrewUI,brewui,package-manager-gui,categories/dev-uti
 https://github.com/Hopding/pdf-lib,pdf-lib,pdf-tools,categories/pdf-tools/pdf-lib.md
 https://github.com/HughYau/qiushi-skill,qiushi-skill,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.md
 https://github.com/ImageMagick/ImageMagick,imagemagick,image-processing,categories/media-processing/image-processing/imagemagick.md
+https://github.com/InfinityLoop1308/PipePipe,pipepipe,streaming-clients,categories/streaming-clients/pipepipe.md
 https://github.com/InternLM/lmdeploy,lmdeploy,serving-engines,categories/llm-inference/serving-engines/lmdeploy.md
 https://github.com/ItzCrazyKns/Vane,vane,deep-research,categories/deep-research/vane.md
 https://github.com/JCodesMore/ai-website-cloner-template,ai-website-cloner-template,design-to-code,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md

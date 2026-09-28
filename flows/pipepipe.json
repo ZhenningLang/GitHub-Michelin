@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "PipePipe does", "zh": "PipePipe 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the APK from F-Droid, IzzyOnDroid or GitHub Releases", "zh": "从 F-Droid、IzzyOnDroid 或 GitHub 装好 APK"},
+    {"lane": "you", "en": "Search, or share a YouTube / BiliBili link into the app", "zh": "直接搜索，或把 YouTube／B 站链接分享给它"},
+    {"lane": "them", "en": "Reads the page and the site's internal API itself — no Google account needed", "zh": "自己解析网页和站点内部接口，不需要 Google 账号", "component": {"en": "PipePipeExtractor", "zh": "PipePipeExtractor"}},
+    {"lane": "them", "en": "For YouTube, earns a playback token in the system WebView and streams over SABR", "zh": "YouTube 先在系统 WebView 里拿播放令牌，再走 SABR 取流", "component": {"en": "WebView token provider", "zh": "WebView 令牌模块"}},
+    {"lane": "them", "en": "Plays in its own player, skipping sponsor segments, and keeps going in the background", "zh": "用自带播放器播放，自动跳过赞助片段，切到后台照常播", "component": {"en": "ExoPlayer-based player", "zh": "基于 ExoPlayer 的播放器"}}
+  ],
+  "value": {"en": "You watch and listen without ads, sponsor reads, a Google login or the official app — and background play is free", "zh": "不看广告、不听口播、不登 Google、不装官方 App 就能看能听，后台播放也不用付费"},
+  "sources": [
+    "https://github.com/InfinityLoop1308/PipePipe README — F-Droid / IzzyOnDroid badges, Beyond NewPipe (SponsorBlock, background playback), About sign in",
+    "https://github.com/InfinityLoop1308/PipePipe fastlane/metadata/android/en-US/full_description.txt",
+    "https://github.com/InfinityLoop1308/PipePipe/releases (per-ABI APK assets, v5.4.0)",
+    "https://github.com/InfinityLoop1308/PipePipeExtractor extractor/src/main/java/org/schabi/newpipe/extractor/services (bandcamp, bilibili, media_ccc, niconico, peertube, soundcloud, youtube)",
+    "https://github.com/InfinityLoop1308/PipePipeClient app/src/main/assets/sabr_po_token.js; app/src/main/java/org/schabi/newpipe/youtube/LocalDomPoTokenProvider.kt; SharedWebViewRuntime.java",
+    "https://github.com/InfinityLoop1308/PipePipe/issues/2638 (Web / MWeb endpoints use SABR; WebView < 80 cannot play)",
+    "https://github.com/InfinityLoop1308/PipePipeClient app/build.gradle (com.google.android.exoplayer:exoplayer)"
+  ]
+}

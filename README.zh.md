@@ -1255,3 +1255,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Spirula Studio** | 当你想把视频或照片在一个解压即用的程序里变成高斯泼溅和带贴图的网格、任意厂商 GPU 都能跑（Vulkan）、自带 SfM、抠图和全景／鱼眼支持时用它——代价是只有一位维护者和 GPL-3.0。 | GPL-3.0 | C（6/6） | [中](categories/3d-reconstruction/spirula-studio.zh.md) · [EN](categories/3d-reconstruction/spirula-studio.md) |
+
+### streaming-clients
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **PipePipe** | 想在安卓手机上不登 Google 看 YouTube／B 站／NicoNico、自动跳过赞助片段、免费后台播放时用它——代价是单人维护，YouTube 一改防护就可能播不了。 | GPL-3.0 | B（6/6） | [中](categories/streaming-clients/pipepipe.zh.md) · [EN](categories/streaming-clients/pipepipe.md) |

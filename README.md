@@ -1273,3 +1273,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Spirula Studio** | Use it when you want video or photos to become a Gaussian splat and textured mesh in one unzip-and-run app on any-vendor GPU (Vulkan), with built-in SfM, masking and 360°/fisheye support — accepting a one-person maintainer and GPL-3.0. | GPL-3.0 | C (6/6) | [EN](categories/3d-reconstruction/spirula-studio.md) · [中](categories/3d-reconstruction/spirula-studio.zh.md) |
+
+### streaming-clients
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **PipePipe** | Use it when you want an Android YouTube/BiliBili/NicoNico client with no Google account, SponsorBlock skipping and free background play — accepting a single maintainer and breakages whenever YouTube changes its defences. | GPL-3.0 | B (6/6) | [EN](categories/streaming-clients/pipepipe.md) · [中](categories/streaming-clients/pipepipe.zh.md) |
