@@ -871,6 +871,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Astro** | 当站点是内容集合、只需少数交互组件时用它——但交付物是带版本的文档站、或站点本质是全栈应用时不要用。 | MIT | A（5/6） | [中](categories/web-ui/frameworks/astro.zh.md) · [EN](categories/web-ui/frameworks/astro.md) |
 | **Docusaurus** | 当需要第一天就有带版本、可搜索、支持 i18n 的文档站时用它——但站点是通用内容站、或你宁愿自己组装文档那套家具时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/docusaurus.zh.md) · [EN](categories/web-ui/frameworks/docusaurus.md) |
 | **Nextra** | 当文档必须活在既有 Next.js 应用里、一层薄 MDX 就够了时用它——但你需要版本化文档、或需要背后有较大维护团队的项目时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/nextra.zh.md) · [EN](categories/web-ui/frameworks/nextra.md) |
+| **TanStack Router** | 当 URL 就是应用的状态容器、写错的链接／参数／查询值必须在编译期报错而不是吓到用户时用它——但路由只是寥寥几页静态页面时不要用，需要 RSC 优先架构时选 Next.js。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/tanstack-router.zh.md) · [EN](categories/web-ui/frameworks/tanstack-router.md) |
 | **theSVG** | 需要从一份清单里拿大量品牌 logo（彩色版、文字标、AI 厂商）和 AWS／Azure／GCP 架构图标，形式是带类型的组件、CDN 地址或命令行时用它——但许可证要自己逐个核对，Azure 图标标成 MIT 与微软条款不符。 | MIT | B（6/6） | [中](categories/web-ui/icon-libraries/thesvg.zh.md) · [EN](categories/web-ui/icon-libraries/thesvg.md) |
 | **TanStack Query** | 前端组件各自手写请求、loading、error，写完还显示旧数据时用它——按键共享的服务端状态缓存，后台自动重拉、写后失效；它不是客户端状态库，也不是按实体归一化的 GraphQL 缓存。 | MIT | A（5/6） | [中](categories/web-ui/data-fetching/tanstack-query.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-query.md) |
 

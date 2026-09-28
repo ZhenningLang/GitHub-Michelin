@@ -81,12 +81,12 @@
 | maziyarpanahi/openmed | add | done | categories/healthcare-ai/openmed.md | 处理中新开的标签 | maziyarpanahi/openmed |
 | NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
 | TanStack/query | add | done | categories/web-ui/data-fetching/tanstack-query.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/query |
-| TanStack/table | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/table |
-| TanStack/router | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
-| TanStack/virtual | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/virtual |
-| TanStack/form | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
-| TanStack/db | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
-| TanStack/ai | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
+| TanStack/table | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
+| TanStack/router | add | done | categories/web-ui/frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
+| TanStack/virtual | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
+| TanStack/form | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
+| TanStack/db | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
+| TanStack/ai | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
 | TanStack/cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |
 | TanStack/store | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
 | TanStack/ranger | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
@@ -111,3 +111,4 @@
 | TanStack/tanstack.com | skip | skipped |  | 不收：TanStack 官网/文档站源码，不是可选型的软件 | tanstack/tanstack.com |
 | TanStack/template | skip | skipped |  | 不收：新库空白模板（6 星、174 KB），无实质内容 | tanstack/template |
 | larashero3-dotcom/lieflat-charts | add | pending |  | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
+| dzhng/jevgrep | add | pending |  | 处理中新开的标签（标签写法 �� | dzhng/jevgrep |

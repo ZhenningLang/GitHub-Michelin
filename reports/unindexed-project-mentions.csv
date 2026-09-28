@@ -777,6 +777,7 @@ Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl
 Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
 Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
+React Router,categories/web-ui/frameworks/tanstack-router.md,,no
 readability-lxml,categories/web-scraping/article-extraction/newspaper.md,,no
 Reader View extensions (various),categories/reading-tools/just-read.md,,no
 Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no

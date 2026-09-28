@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack Router does",
+    "zh": "TanStack Router 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the router and its build plugin",
+      "zh": "安装路由与它的构建插件",
+      "code": "npm install @tanstack/react-router · npm install -D @tanstack/router-plugin"
+    },
+    {
+      "lane": "you",
+      "en": "Register the plugin in your Vite config",
+      "zh": "在 Vite 配置里注册这个插件",
+      "code": "@tanstack/router-plugin/vite"
+    },
+    {
+      "lane": "you",
+      "en": "Write each route as one file under src/routes",
+      "zh": "每条路由写成 src/routes 下的一个文件",
+      "code": "createFileRoute('/posts/$postId')"
+    },
+    {
+      "lane": "them",
+      "en": "Watches the folder and regenerates the typed route tree on every change",
+      "zh": "监听这个目录，每次改动后重新生成带类型的路由树",
+      "code": "routeTree.gen.ts",
+      "component": {"en": "route generator", "zh": "路由生成器"}
+    },
+    {
+      "lane": "you",
+      "en": "Create the router from that tree and mount it at the root",
+      "zh": "用这棵树创建 router，并在根节点挂载",
+      "code": "createRouter · RouterProvider"
+    },
+    {
+      "lane": "them",
+      "en": "Checks every link, param and search value at compile time; loaders fetch, cache and prefetch per route",
+      "zh": "编译期校验每个链接、路径参数与查询参数；loader 按路由取数、缓存并预取"
+    }
+  ],
+  "value": {
+    "en": "A mistyped link or untyped URL param now fails the compiler instead of shipping a broken page",
+    "zh": "写错的链接、没类型的 URL 参数，如今在编译期报错，而不是把坏页面发上线"
+  },
+  "sources": [
+    "docs/router/how-to/migrate-from-react-router.md ('npm install @tanstack/react-router'; 'npm install -D @tanstack/router-plugin @tanstack/react-router-devtools')",
+    "examples/react/basic-file-based/vite.config.js (import { tanstackRouter } from '@tanstack/router-plugin/vite'; tanstackRouter({ target: 'react', autoCodeSplitting: true }))",
+    "examples/react/basic-file-based/src/routes/posts.$postId.tsx (createFileRoute('/posts/$postId') with loader/component)",
+    "examples/react/basic-file-based/src/routeTree.gen.ts (generated tree committed in the example)",
+    "examples/react/basic-file-based/src/main.tsx (createRouter({ routeTree, ... }); <RouterProvider router={router} />)",
+    "docs/router/guide/creating-a-router.md (createRouter); docs/router/api/file-based-routing.md (routesDirectory ./src/routes, generatedRouteTree)"
+  ]
+}
