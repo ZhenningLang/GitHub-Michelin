@@ -6,17 +6,17 @@ category: diagramming
 tags: [bpmn, process-modeling, diagram, svg, web-modeler, javascript, camunda]
 language: JavaScript
 license: MIT + bpmn.io watermark clause
-maturity: v18.19.0, active, ~9.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: "v18.30.1 (2026-09), active, ~9.7k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-26T07:11:27Z
+  pushed_at: 2026-09-25T05:16:03Z
   default_branch: develop
-  default_branch_sha: 2067c99c8a807061ed78a7c0d6de9329610c3c44
+  default_branch_sha: 6eaa6917b1a61f9fe527c7ac31ed0855204c1bec
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:15:30Z
+  computed_at: 2026-09-28T05:52:38Z
   overall: B
   overall_score: 3.2
   scored_axes: 5
@@ -29,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 13
+        last_commit_age_days: 4
+        active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: B
@@ -47,23 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: bpmn-js
         dependent_repos_count: 1072
-        downloads_last_month: 878232
+        downloads_last_month: 909779
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4579
-        last_commit_age_days: 1
+        repo_age_days: 4585
+        last_commit_age_days: 4
         cohort: library
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 13
-        top1_share: 0.613
-        top3_share: 0.839
+        top1_share: 0.618
+        top3_share: 0.846
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -85,11 +85,32 @@ health:
 
 当你只需渲染既有图时（看板、审计视图、文档）选 **viewer** 构建，当用户要创作或编辑时选 **modeler** 构建。它是 Web 上事实标准的开源 BPMN 画布。
 
+## 怎么用起来
+
+BPMN 2.0 是 OMG 定义的业务流程图标准记法——任务、网关、事件——以 XML 存储。bpmn-js 是一个纯浏览器端库，把这份 XML 变成可交互的画布。导入时，`bpmn-moddle` 把 BPMN 文档解析成一棵 JavaScript 对象树（它封装了 BPMN 元模型，所以库*知道*每个图形的含义，而不只是它长什么样）；底层的通用图引擎 `diagram-js` 把这棵树画成 SVG，并提供交互套件：调色板、上下文面板、撤销/重做。用户建模时，依据 OMG BPMN 2.0 标准定义的规则模块 `BpmnRules` 会拒绝违反规范的建模操作，而每次被接受的编辑都会更新对象树，最终导出回符合 schema 的 BPMN XML，任何兼容 BPMN 的引擎或建模工具都能消费。内置与归你的部分：渲染、规则、序列化全都自带；把它打包进你的应用、持久化 XML、可选加件（属性面板、自定义模块），以及遵守 bpmn.io 水印许可条款，是你的事。`Viewer`、`NavigatedViewer`、`Modeler` 是同一个内核按不同功能集打包的三个版本。
+
+![bpmn-js — 主干用户故事](../../assets/flow/bpmn-js.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bpmn-js.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把工具库装进你的 Web 应用 — `npm install bpmn-js`
+2. **你**：把一个建模器挂到 DOM 节点 — `new Modeler({ container: '#canvas' })`
+3. **你**：导入一张既有流程图 — `await modeler.importXML(bpmnXML)`
+4. **bpmn-js**：画成可交互 SVG，带调色板与 BPMN 合规规则 — 组件：`diagram-js`
+5. **bpmn-js**：保持模型 BPMN 合规，导出标准 BPMN 2.0 XML — 组件：`bpmn-moddle`
+
+**价值**：在你自己的界面里做符合标准的 BPMN 建模，产出的图任何 BPMN 引擎都读得懂
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你其实并不需要 BPMN 标准。** 如果你只想要通用的框线箭头，或一次性的文本转图渲染，bpmn-js 又重又专属 BPMN——画非标准流程图时 Mermaid 或 flowchart.js 轻得多。
 - **你需要的是流程*引擎*，不是画布。** bpmn-js 渲染和编辑图，但不执行流程。执行需要单独的 BPMN 引擎（Camunda 7/8、Zeebe、Flowable 等）。
-- **水印条款是个问题。** 许可证要求渲染图中的 bpmn.io 水印/署名链接保持可见且不被改动——这**不是纯 MIT**；移除它即违反许可证。白标前请核实条款。[推断]
+- **水印条款是个问题。** 许可证要求渲染图中的 bpmn.io 水印/署名链接保持可见且不被改动——这**不是纯 MIT**；移除它即违反许可证（2026-09-28 逐字重读 `LICENSE` 确认）。白标前请核实条款。
 - **你想要 DMN、表单或其他记法。** bpmn-js 只做 BPMN；DMN 要用 `dmn-js`，表单要用 `form-js`——是兄弟项目、单独安装。
 - **你要在浏览器 DOM 之外用它。** 它面向浏览器/DOM（基于 `diagram-js`）；无头/服务端渲染不是它的目标。
 
@@ -123,16 +144,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：Grade B——中位首次响应时间 2.8 小时，基于 3 个 qualifying issues/PRs。
-- **维护（2026-06）。** 最后 push 于 2026-06；最新 tag v18.19.0，发布节奏稳定且频繁（约 81 个 release）。明显**活跃**而非吃老本；未归档。[推断]
-- **治理 / 背书。** 由 **Camunda 旗下 bpmn.io 团队**维护（一家成熟的工作流自动化厂商）——多维护者、有组织背书的项目（nikku、philippfromme、barmac、marstamm……），bus factor 健康。方向跟随 Camunda 的商业利益，是主要的治理顾虑。[推断]
-- **年龄与 Lindy 判断。** 2014-03 创建，约 12 年且**仍在活跃发布**——**强 Lindy** 信号；是 Web 上正统、久经验证的开源 BPMN 画布，而非新秀。[推断]
-- **采用度。** Web 应用里嵌入 BPMN 的事实标准（约 9.6k star、约 1.5k fork）；插件生态庞大（属性面板、lint、取色器）以及兄弟记法（dmn-js、form-js）。强、文档完善。[未验证]
-- **风险标记。** **自定义许可证**（类 MIT 文本，但加了一条强制、不可移除的 bpmn.io 水印/署名要求于渲染输出中）是首要标记——GitHub 报为 `NOASSERTION`；白标前请读 `LICENSE` 并确认。厂商主导路线图（Camunda）为次要项。[推断]
+- **维护（2026-09）。** 默认分支最后 push 于 2026-09-25；最新 release v18.30.1（2026-09-24），发布节奏稳定且频繁（截至 2026-09-28，GitHub release 列表里约 97 个版本）。明显**活跃**而非吃老本；未归档。[推断]
+- **治理 / 背书。** 由 **Camunda 旗下 bpmn.io 团队**维护（一家成熟的工作流自动化厂商；站点页脚写明 “built and maintained by Camunda and contributors”，2026-09）——多维护者、有组织背书的项目（nikku、philippfromme、barmac、marstamm……），bus factor 健康。方向跟随 Camunda 的商业利益，是主要的治理顾虑。[推断]
+- **年龄与 Lindy 判断。** 2014-03 创建，约 12.5 年且**仍在活跃发布**——**强 Lindy** 信号；是 Web 上正统、久经验证的开源 BPMN 画布，而非新秀。[推断]
+- **采用度。** Web 应用里嵌入 BPMN 的事实标准（约 9.7k star / 约 1.5k fork，GitHub API 2026-09；健康度评分器记录 npm 月下载 909,779 次，2026-09）；插件生态庞大（属性面板、lint、取色器）以及兄弟记法（dmn-js、form-js）。强、文档完善。
+- **风险标记。** **自定义许可证**（MIT 文本外加一条强制、不可移除的 bpmn.io 水印/署名条款——2026-09-28 逐字重读 `LICENSE` 确认）是首要标记——GitHub 仍报为 `NOASSERTION`（仓库 API，2026-09-28）。厂商主导路线图（Camunda）为次要项。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 9.6k star / 约 1.5k fork、版本 v18.19.0；计数对时间敏感——仅供参考。
-- [推断] 该许可证是 MIT 衍生文本，外加一条要求渲染图中 bpmn.io 水印/署名链接保持可见且不被改动的条款；GitHub 归类为 `NOASSERTION`。我读了 `LICENSE` 文件（Camunda Services GmbH，2014 至今）——但你应针对自己的用途确认确切义务，尤其是白标。
+- [未验证] 截至 2026-09 约 9.7k star / 约 1.5k fork、版本 v18.30.1（GitHub API，2026-09-28）；计数对时间敏感——仅供参考。
+- [推断] `LICENSE` 文本（Camunda Services GmbH，2014 至今；水印代码 “MUST NOT be removed or changed”、须 “fully visible” 且不被遮挡）于 2026-09-28 逐字读取，但我不是律师——请针对自己的用途确认确切义务，尤其是白标。
 - [推断] “活跃 / 多维护者 / bus factor 健康”是从提交近况、发布节奏和贡献者名单推断的，而非来自公开的治理文档。
 - [未验证] npm 依赖清单是某一时间点从仓库 `package.json` 读取的，且随版本变动——请对照你安装的版本核实。
 - [未验证] Camunda 背书和更广的 bpmn.io 生态（dmn-js、form-js、properties-panel）依据公开项目认知陈述，未在此独立审计。

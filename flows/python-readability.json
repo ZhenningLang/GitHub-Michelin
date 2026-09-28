@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "python-readability does", "zh": "python-readability 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extractor", "zh": "安装抽取库", "code": "pip install readability-lxml"},
+    {"lane": "you", "en": "Fetch the page yourself and hand its HTML to Document", "zh": "自己抓取页面，把 HTML 交给 Document", "code": "doc = Document(response.content)"},
+    {"lane": "them", "en": "Scores candidate text blocks, keeps the main-content node, drops nav, ads and boilerplate", "zh": "给候选文本块打分，保留正文节点，剥掉导航、广告和样板", "component": {"en": "Readability scoring", "zh": "Readability 打分算法"}},
+    {"lane": "you", "en": "Ask for the result", "zh": "取回结果", "code": "doc.summary() · doc.title()"}
+  ],
+  "value": {"en": "Cleaned article HTML and the headline from raw page HTML — pure Python, no browser, no Node, no service", "zh": "从整页 HTML 得到干净正文和标题——纯 Python，不需要浏览器、Node 或服务"},
+  "sources": ["README.md master @ 3e7a8321 (retrieved 2026-09-28): 'pip install readability-lxml'; '>>> doc = Document(response.content)'; '>>> print(doc.title())'; '>>> print(doc.summary())'; CLI 'python -m readability -u https://example.com' (0.9+)"]
+}

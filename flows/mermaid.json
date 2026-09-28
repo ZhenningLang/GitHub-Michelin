@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Mermaid does", "zh": "Mermaid 做的"},
+  "steps": [
+    {"lane": "you", "en": "Write the diagram as text in a fenced mermaid block", "zh": "在 Markdown 里写一个 mermaid 围栏块，用文本画图", "code": "graph TD"},
+    {"lane": "them", "en": "Host platforms like GitHub, GitLab and docs sites render the block inline as SVG", "zh": "GitHub、GitLab 等宿主平台直接把这块文本渲染成 SVG"},
+    {"lane": "you", "en": "Rendering it yourself (site or CI)? Add the library or the headless CLI", "zh": "要自己渲染（网站或 CI），加上库或无头 CLI", "code": "npm install mermaid · npm install -g @mermaid-js/mermaid-cli"},
+    {"lane": "them", "en": "Parses the syntax, auto-lays-out with the bundled ELK engine (dagre selectable) and emits SVG/PNG", "zh": "解析语法，用内嵌 ELK 引擎自动排版（可切 dagre），输出 SVG/PNG", "component": {"en": "layout engine (ELK)", "zh": "布局引擎（ELK）"}}
+  ],
+  "value": {"en": "Diagrams that live as diffable text in the repo — edit a line in a PR and the picture follows", "zh": "图表以可 diff 的文本活在仓库里——PR 里改一行，图就跟着变"},
+  "sources": [
+    "README.md mermaid-js/mermaid @ develop (retrieved 2026-09-28): fenced ```mermaid blocks throughout; 'You can also use Mermaid within GitHub'; Integrations list",
+    "mermaid.js.org Getting Started (retrieved 2026-09-28): 'npm install mermaid'; example 'graph TD A[Client] --> B[Load Balancer]'; mermaid.initialize() call",
+    "mermaid-js/mermaid-cli README @ master (retrieved 2026-09-28): 'npm install -g @mermaid-js/mermaid-cli'; 'mmdc -i input.mmd -o output.svg'",
+    "GitHub release mermaid@12.0.0 notes (2026-09-10): ELK bundled and now the default layout algorithm for flowchart/state/class/ER; opt out via 'layout: dagre'"
+  ]
+}

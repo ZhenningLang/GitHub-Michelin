@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them": {"en": "Twake Drive does", "zh": "Twake Drive 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install dependencies and build the web app", "zh": "装好依赖并构建 Web 应用", "code": "yarn install · yarn build"},
+    {"lane": "you", "en": "Mount the built bundle on a running cozy-stack", "zh": "把构建产物挂载到运行中的 cozy-stack", "code": "cozy-stack serve --appdir drive:/<project_absolute_path>/twake-drive/build/drive"},
+    {"lane": "them", "en": "Serves the Drive UI in the browser: file tree, upload, search by name", "zh": "在浏览器里提供 Drive 界面：文件树、上传、按名称搜索", "component": {"en": "cozy-stack app host", "zh": "cozy-stack 应用宿主"}},
+    {"lane": "them", "en": "Shares a folder by link; the recipient accepts from an email and sees it in their own drive", "zh": "把文件夹分享成链接，收件人经邮件确认后在自己网盘里看到它"}
+  ],
+  "value": {"en": "a Google-Drive-shaped file front door on your existing Cozy/Twake stack, with no second file server to babysit", "zh": "在既有 Cozy/Twake 栈上得到 Google Drive 形态的文件门面，不必再多养一台文件服务器"},
+  "sources": ["README.md master @ 2026-09-28 — 'Install': git clone / yarn install; 'Run in dev mode': yarn build, cozy-stack serve --appdir drive:/<project_absolute_path>/twake-drive/build/drive, app available at http://drive.cozy.localhost:8080/#/folder; 'What's Drive?': File tree, Files and folders upload, Files and folders sharing (via URLs), Files and folders search; 'Advanced case — Share and send mails in development': Alice shares a folder, Bob accepts via email button and sees it in his own twake"]
+}

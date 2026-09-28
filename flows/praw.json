@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "PRAW does", "zh": "PRAW 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the wrapper into your Python environment", "zh": "把包装进你的 Python 环境", "code": "pip install praw · uv add praw"},
+    {"lane": "you", "en": "Register a script-type Reddit app, then build a client from its credentials", "zh": "注册一个 script 型 Reddit app，用凭据建客户端实例", "code": "reddit = praw.Reddit("},
+    {"lane": "them", "en": "Handles Reddit OAuth tokens and paces every request to follow the API rules — no sleep() in your code", "zh": "管 token、按 API 规则控速，代码里不用写 sleep()", "component": {"en": "prawcore session layer", "zh": "prawcore 会话层"}},
+    {"lane": "you", "en": "Iterate a subreddit listing like plain domain code", "zh": "像写普通领域代码一样遍历 subreddit 列表", "code": "for submission in reddit.subreddit(\"test\").hot(limit=10):"},
+    {"lane": "them", "en": "Issues the network request only when an attribute is first touched, and paginates listings transparently", "zh": "只在属性首次被访问时才发网络请求（惰性对象），并透明翻页", "component": {"en": "lazy Submission/Comment models", "zh": "惰性 Submission/Comment 模型"}}
+  ],
+  "value": {"en": "Reddit data as Pythonic objects — OAuth, pagination and rate-limit compliance stop being your problem", "zh": "Reddit 数据变成 Pythonic 对象——OAuth、分页、限速合规都不再是你的事"},
+  "sources": ["praw README.rst main @ 2026-09-28 (Installation: uv add praw / pip install praw; Quickstart block opening line `reddit = praw.Reddit(` with client_id/client_secret/user_agent kwargs on the following lines; \"internally follows all of Reddit's API rules ... no need to introduce sleep calls\")", "docs/getting_started/quick_start.rst main @ 2026-09-28 (for submission in reddit.subreddit(\"test\").hot(limit=10):; lazy objects: network requests issued only when information is needed)", "pyproject.toml main @ 2026-09-28 (dependency prawcore>=4,<5)"]
+}

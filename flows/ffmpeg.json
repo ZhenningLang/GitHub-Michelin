@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "FFmpeg does", "zh": "FFmpeg 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install FFmpeg once", "zh": "一次性装好 FFmpeg", "code": "brew install ffmpeg"},
+    {"lane": "you", "en": "Inspect an unknown media file", "zh": "探查一个来路不明的媒体文件", "code": "ffprobe -show_streams -select_streams a INPUT", "component": {"en": "ffprobe", "zh": "ffprobe"}},
+    {"lane": "you", "en": "Convert with a single command", "zh": "一条命令完成转换", "code": "ffmpeg -i input.avi output.mp4"},
+    {"lane": "them", "en": "Probes the container and auto-wires matching demuxer, decoder, encoder and muxer", "zh": "探测容器格式，自动配上对应的解封装、解码、编码与封装器", "component": {"en": "libavformat + libavcodec", "zh": "libavformat + libavcodec"}},
+    {"lane": "them", "en": "Decodes, filters, encodes and muxes into the file you asked for", "zh": "解码、滤镜、编码、封装，写出你指定的那个文件", "component": {"en": "libavfilter + libavformat", "zh": "libavfilter + libavformat"}}
+  ],
+  "value": {"en": "Any file you throw at it becomes the exact container / codec / stream layout you specified — one binary, no per-format code", "zh": "任何文件进去，都变成你指定的容器/编码器/流布局——一个二进制，不用为每种格式写代码"},
+  "sources": ["trac.ffmpeg.org/wiki/CompilationGuide/macOS (retrieved 2026-09-28): brew install ffmpeg", "ffmpeg.org/ffprobe.html (retrieved 2026-09-28): example 'ffprobe -show_streams -select_streams a INPUT'", "ffmpeg.org/ffmpeg.html (retrieved 2026-09-28): example 'ffmpeg -i input.avi output.mp4'", "README.md master @ 2026-09-28: libav* library roles (libavcodec decoders, libavformat demux/mux + protocols, libavfilter filter graph, libswscale scaling)"]
+}

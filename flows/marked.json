@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "them":  {"en": "marked does", "zh": "marked 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the library, or install the CLI globally", "zh": "装库，或全局安装命令行", "code": "npm install marked · npm install -g marked"},
+    {"lane": "you", "en": "Import it and convert Markdown in one call", "zh": "导入后一次调用完成转换", "code": "const html = marked.parse('# Marked in Node.js')"},
+    {"lane": "them", "en": "Its lexer tokenizes the source and the renderer emits the HTML string, GFM defaults included", "zh": "lexer 切 token，renderer 出 HTML，默认带 GFM", "component": {"en": "Lexer + Renderer", "zh": "Lexer + Renderer"}},
+    {"lane": "you", "en": "Sanitize the output yourself before injecting untrusted input into the DOM", "zh": "不可信输入先自己净化再注入 DOM", "code": "DOMPurify.sanitize"}
+  ],
+  "value": {"en": "Markdown to HTML in one dependency-free call, identical in browser and Node; sanitizing stays explicitly yours", "zh": "一次零依赖调用把 Markdown 变 HTML，浏览器与 Node 一致；净化归你管"},
+  "sources": ["README.md master @ 2026-09-28 (raw.githubusercontent.com/markedjs/marked/master/README.md): 'npm install -g marked'; 'npm install marked'; \"const html = marked.parse('# Marked in Node.js')\"; DOMPurify warning block: \"DOMPurify.sanitize(marked.parse(`<img src=\\\"x\\\" onerror=\\\"alert('not happening')>`));\"", "marked.js.org using_pro (read 2026-09-28): Lexer, Parser, Renderer, marked.use() extension surface"]
+}
