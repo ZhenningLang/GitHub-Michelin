@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "use-select (v0) does",
+    "zh": "use-select（v0）做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the legacy hook — the only released code of this repo",
+      "zh": "安装旧版 hook——这个仓库唯一发布过的代码",
+      "code": "yarn add use-select · npm i -s use-select",
+      "component": {
+        "en": "use-select 0.0.6 (npm)",
+        "zh": "use-select 0.0.6（npm）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Call the hook with your options, current value and change handler",
+      "zh": "把选项、当前值和变更回调交给 hook",
+      "code": "useSelect({ multi, options, value, onChange, optionsRef })",
+      "component": {
+        "en": "useSelect hook",
+        "zh": "useSelect 钩子"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Tracks search text, open state and the highlighted option, and filters the options",
+      "zh": "管理搜索词、展开状态和高亮项，并过滤选项"
+    },
+    {
+      "lane": "you",
+      "en": "Spread its prop getters onto your own input and option elements",
+      "zh": "把它的 prop getter 展开到你自己的输入框和选项元素上",
+      "code": "getInputProps() · getOptionProps({index: 1})"
+    },
+    {
+      "lane": "them",
+      "en": "Handles arrow/Page/Home/End/Enter/Escape/Backspace keys and outside clicks, then calls onChange",
+      "zh": "处理方向键、翻页、回车、Esc、退格与外部点击，再调用 onChange"
+    }
+  ],
+  "value": {
+    "en": "No hand-written keyboard, search and open/close state for a custom select — but only via an unmaintained 2019 React-16 hook; the TanStack rewrite has no API yet",
+    "zh": "不用手写键盘、搜索和开合状态——但只能靠停更的 React 16 旧 hook，重写版尚无 API"
+  },
+  "sources": [
+    "README.md at commit db61b1ca (use-select era) — 'yarn add use-select' / 'npm i -s use-select', useSelect({ multi, options, value, onChange, optionsRef }), {...getInputProps()}, getOptionProps(...)",
+    "src/index.js on branch old — useSelect options, getKeyProps key map (ArrowUp/ArrowDown/PageUp/PageDown/Home/End/Enter/Escape/Tab/Backspace), getOptionProps error text 'getOptionProps({index: 1})'",
+    "packages/select/src/index.ts on main — current core is the placeholder `export const select = 'select'`",
+    "npm registry 2026-09-28 — use-select 0.0.6 (2020-09-17) published; @tanstack/select, @tanstack/react-select, @tanstack/solid-select absent",
+    "issue #30 (2026-08-05) — RFC for the rewrite; issue #29 comment by KevinVandy (2025-05-15) — use-select practically deprecated"
+  ]
+}

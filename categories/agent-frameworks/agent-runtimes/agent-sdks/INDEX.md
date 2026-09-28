@@ -16,6 +16,7 @@
 | **Pydantic AI** | AI Agent Framework, the Pydantic way | A (5/6) | [→](pydantic-ai.md) |
 | **smolagents** | Use it when you want a tiny, transparent code-acting agent loop from Hugging Face — not a heavy production agent OS. | B (6/6) | [→](smolagents.md) |
 | **Harness SDK** | Use it when you want a working agent from one call — tuned prompt, shell/file/web tools, a code sandbox, a subagent, memory and sessions — in Python and TypeScript alike, with every default overridable. | A (6/6) | [→](harness-sdk.md) |
+| **TanStack AI** | Building the AI surface of a TypeScript app — streaming chat, typed tools, media, agents across seven front-end frameworks — under one provider-agnostic typed contract with no platform layer. | B (6/6) | [→](tanstack-ai.md) |
 
 ## Comparison matrix
 

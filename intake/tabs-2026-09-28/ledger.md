@@ -81,34 +81,34 @@
 | maziyarpanahi/openmed | add | done | categories/healthcare-ai/openmed.md | 处理中新开的标签 | maziyarpanahi/openmed |
 | NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
 | TanStack/query | add | done | categories/web-ui/data-fetching/tanstack-query.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/query |
-| TanStack/table | add | running |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
-| TanStack/router | add | done | categories/web-ui/frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
-| TanStack/virtual | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
+| TanStack/table | add | done | categories/web-ui/component-libraries/tanstack-table.md | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
+| TanStack/router | add | done | categories/web-ui/frameworks/app-frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
+| TanStack/virtual | add | done | categories/web-ui/virtualization/tanstack-virtual.md | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
 | TanStack/form | add | done | categories/web-ui/forms/tanstack-form.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
-| TanStack/db | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
-| TanStack/ai | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
-| TanStack/cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |
-| TanStack/store | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
-| TanStack/ranger | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
-| TanStack/pacer | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
-| TanStack/charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
-| TanStack/hotkeys | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
-| TanStack/time | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
-| TanStack/devtools | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
-| TanStack/markdown | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
-| TanStack/config | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
-| TanStack/intent | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
-| TanStack/redact | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
-| TanStack/select | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
-| TanStack/workflow | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
-| TanStack/highlight | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
-| TanStack/persist | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
-| TanStack/container | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
-| TanStack/react-charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
-| TanStack/bling | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
-| TanStack/alt-cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |
+| TanStack/db | add | done | categories/web-ui/data-fetching/tanstack-db.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
+| TanStack/ai | add | done | categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
+| TanStack/cli | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-cli.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |
+| TanStack/store | add | done | categories/web-ui/state-management/tanstack-store.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
+| TanStack/ranger | add | done | categories/web-ui/component-libraries/tanstack-ranger.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
+| TanStack/pacer | add | done | categories/web-ui/scheduling/tanstack-pacer.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
+| TanStack/charts | add | done | categories/web-ui/charts/tanstack-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
+| TanStack/hotkeys | add | done | categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
+| TanStack/time | add | done | categories/web-ui/component-libraries/tanstack-time.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
+| TanStack/devtools | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
+| TanStack/markdown | add | done | categories/markdown-tools/tanstack-markdown.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
+| TanStack/config | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-config.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
+| TanStack/intent | add | done | categories/agent-tooling/harness-extensions/tanstack-intent.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
+| TanStack/redact | add | done | categories/web-ui/frameworks/view-frameworks/tanstack-redact.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
+| TanStack/select | add | done | categories/web-ui/component-libraries/tanstack-select.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
+| TanStack/workflow | add | done | categories/workflow-orchestration/tanstack-workflow.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
+| TanStack/highlight | add | done | categories/markdown-tools/tanstack-highlight.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
+| TanStack/persist | add | done | categories/web-ui/state-management/tanstack-persist.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
+| TanStack/container | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-container.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
+| TanStack/react-charts | add | done | categories/web-ui/charts/tanstack-react-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
+| TanStack/bling | add | done | categories/web-ui/frameworks/app-frameworks/tanstack-bling.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
+| TanStack/alt-cli | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |
 | TanStack/preact | skip | skipped |  | 不收：fork 自 preactjs/preact，与上游重复 | tanstack/preact |
 | TanStack/tanstack.com | skip | skipped |  | 不收：TanStack 官网/文档站源码，不是可选型的软件 | tanstack/tanstack.com |
 | TanStack/template | skip | skipped |  | 不收：新库空白模板（6 星、174 KB），无实质内容 | tanstack/template |
-| larashero3-dotcom/lieflat-charts | add | pending |  | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
-| dzhng/jevgrep | add | pending |  | 处理中新开的标签（标签写法 �� | dzhng/jevgrep |
+| larashero3-dotcom/lieflat-charts | add | done | categories/agent-skills/visual-content/lieflat-charts.md | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
+| dzhng/jevgrep | add | done | categories/rag-retrieval/code-intelligence/jevgrep.md | 处理中新开的标签（标签写法 �� | dzhng/jevgrep |

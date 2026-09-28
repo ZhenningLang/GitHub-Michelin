@@ -15,6 +15,7 @@
 | **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | A (6/6) | [→](prefect.md) |
 | **Dagster** | An orchestration platform for the development, production, and observation of data assets. | A (6/6) | [→](dagster.md) |
 | **Temporal** | Temporal service | A (6/6) | [→](temporal.md) |
+| **TanStack Workflow** | Use it when durable, multi-day flows must live inside your TypeScript app on your own database — no workflow server to operate; expect a 0.0.x assembly with no control-plane UI. | C (6/6) | [→](tanstack-workflow.md) |
 
 
 ## Comparison matrix
@@ -25,6 +26,7 @@
 | [Gaia](gaia.md) | ✅ | D (6/6) | Use it when studying the "pipelines-as-compiled-plugins" design as a read-only reference — the repo is archived and abandoned, never pick it for new production work. |
 | [Airflow Maintenance DAGs](airflow-maintenance-dags.md) | ✅ | D (4/6) | Use it when self-managed Airflow needs proven copy-in DAGs to clean metadata-DB rows and stale logs — they run destructive DELETEs tied to version-specific internals, so dry-run and back up first. |
 | [n8n](n8n.md) | ✅ | A (4/6) | Visual-first workflow automation with 400+ integrations and native AI; self-hostable but fair-code licensed and not for real-time streaming. |
+| [TanStack Workflow](tanstack-workflow.md) | ✅ | C (6/6) | Headless TypeScript durable execution on your own store — no workflow server like Temporal's, but you assemble store, cron and operations yourself on a 0.0.x surface. |
 
 ## What belongs here
 

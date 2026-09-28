@@ -3,7 +3,11 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 1Password / LastPass,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 2captcha-python,categories/captcha/buster.md,,no
 3D-Speaker,categories/speech/antspeaker.md,,no
+@antfu/eslint-config (`antfu/eslint-config`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
+@github/hotkey (`github/hotkey`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
+@nanostores/persistent (`nanostores/nanostores`),categories/web-ui/state-management/tanstack-persist.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
+@xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -65,6 +69,7 @@ AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
+AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
@@ -82,6 +87,7 @@ alass,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,
 Alfred,categories/dev-utilities/data-tools/flashlight.md,,no
 alive-progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Altcha,categories/captcha/capjs.md,,no
+Angular CDK scrolling (`angular/components`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 Angular CDK stepper,categories/web-ui/product-tours/shepherd-js.md,,no
 Ansible / Salt / Puppet,categories/dev-utilities/ops-infra/cockpit.md,,no
 "Anthropic ""Building effective agents"" guide",categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
@@ -103,6 +109,8 @@ Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md
 Apache APISIX,categories/api-gateway/kong.md,,no
 Apache Avro,categories/networking/thriftpy.md,,no
 Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
+Apache ECharts,categories/agent-skills/visual-content/lieflat-charts.md,,no
+Apache ECharts (`apache/echarts`),categories/web-ui/charts/tanstack-charts.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
 Apollo Client (`apollographql/apollo-client`),categories/web-ui/data-fetching/tanstack-query.md,,no
@@ -152,12 +160,14 @@ BMAD / GSD,categories/agent-skills/engineering/mattpocock-skills.md,,no
 bogdanfinn/tls-client,categories/python-tooling/curl-cffi.md,,no
 Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,,no
 Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
+bottleneck (`SGrondin/bottleneck`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Braintrust,categories/llm-eval/promptfoo.md,,no
 Brotli,categories/dev-utilities/data-tools/openzl.md,,no
 Browser built-in translation,categories/reading-tools/pair-translate.md,,no
 Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-frameworks/selenium-wire.md,,no
 Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
+BrowserFS,categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
 Brush,categories/3d-reconstruction/spirula-studio.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/work-state/context-mode.md,,no
@@ -183,10 +193,13 @@ Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
 cffi / ctypes,categories/python-tooling/cython.md,,no
 chafa,categories/terminal-ui/asciify.md,,no
 Chance.js,categories/dev-utilities/data-tools/faker-js.md,,no
+Changesets (`changesets/changesets`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Character role-play prompt,categories/agent-skills/context-engineering/soul-md.md,,no
 Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
 Charles,categories/debugging-proxy/whistle.md,,no
 Charles / Fiddler,categories/debugging-proxy/INDEX.md,,no
+Chart.js,categories/agent-skills/visual-content/lieflat-charts.md,,no
+Chart.js (`chartjs/Chart.js`),categories/web-ui/charts/tanstack-charts.md,,no
 Chatbox / Cherry Studio,categories/team-chat/hivechat.md,,no
 ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
 ChatGPT / Claude.ai (commercial SaaS),categories/llm-chat-ui/nextchat.md,,no
@@ -232,11 +245,14 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
+Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
+create-t3-app (`t3-oss/create-t3-app`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
+create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 CRNN + CTC implementations,categories/captcha/pytorch-captcha-recognition.md,,no
 crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/claude-octopus.md,,no
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
@@ -262,9 +278,11 @@ Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 Czkawka,categories/disk-cleanup/mangodisk.md,,no
 Darts,categories/ml-research/lstm-time-series.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
+date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-time.md,,no
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
+DBOS (`dbos-inc/dbos-transact-ts`),categories/workflow-orchestration/tanstack-workflow.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
 ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
 DEAP,categories/ml-research/pymoo.md,,no
@@ -273,6 +291,7 @@ DeepL / Google Translate browser features,categories/reading-tools/fluentread.md
 DeepSpeech (Mozilla),categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 DeepSpeed,categories/llm-training/colossalai.md,,no
 DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
+degit (`Rich-Harris/degit`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
 Descript,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
@@ -297,6 +316,7 @@ Docspell,categories/document-management/paperless-ngx.md,,no
 docTR,categories/ocr/easyocr.md,,no
 Dolt directly (raw versioned SQL),categories/agent-tooling/work-state/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
+Downshift (`downshift-js/downshift`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
@@ -305,6 +325,7 @@ E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
+ElectricSQL (`electric-sql/electric`),categories/web-ui/data-fetching/tanstack-db.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
 endesive,categories/pdf-tools/pyhanko.md,,no
@@ -344,6 +365,7 @@ Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
+FullCalendar (`fullcalendar/fullcalendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
@@ -396,6 +418,7 @@ GRASS GIS,categories/geospatial/qgis.md,,no
 Grayjay (`futo-org/grayjay-android`),categories/streaming-clients/pipepipe.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/agentsview.md,,no
+grepai,categories/rag-retrieval/code-intelligence/jevgrep.md,,no
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
@@ -427,6 +450,7 @@ hcaptcha-challenger,categories/captcha/buster.md,,no
 hcxdumptool (`ZerBea/hcxdumptool`),categories/pentest/wifit3.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/shadcn-ui.md,,no
+Headless UI (`tailwindlabs/headlessui`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Headroom,categories/agent-skills/engineering/caveman.md,,no
 Headroom (headroomlabs-ai/headroom),categories/agent-tooling/work-state/token-optimizer.md,,no
 Helicone,categories/llm-eval/pezzo.md,,no
@@ -435,16 +459,18 @@ Heroku 12-Factor App,categories/agent-dev-methodology/spec-driven-development/12
 HexStrike AI,categories/pentest/pentest-swarm-ai.md,,no
 HeyGen / Runway / Pika,categories/video-production/open-montage.md,,no
 HF TRL,categories/llm-training/art.md,,no
+highlight.js (`highlightjs/highlight.js`),categories/markdown-tools/tanstack-highlight.md,,no
 hls.js / other-language parsers,categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 hnswlib,categories/rag-retrieval/vector-search/faiss.md,,no
 Hosted frontier chat API (OpenAI / Anthropic / Gemini),categories/decision-models/kev.md,,no
+hotkeys-js (`jaywcjlove/hotkeys-js`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 httpx,categories/python-tooling/curl-cffi.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/clip.md,,no
 Hugging Face sentiment models,categories/ml-research/senta.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
-Hugo,categories/web-ui/frameworks/astro.md,,no
+Hugo,categories/web-ui/frameworks/site-frameworks/astro.md,,no
 Huly (hcengineering/platform),categories/team-chat/macro.md,,no
 HyperFormula,categories/office-editors/handsontable.md,,no
 Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
@@ -452,6 +478,7 @@ imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
 Infisical,categories/secrets-management/openbao.md,,no
+Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
 InsightFace / face_recognition / CompreFace / facenet-pytorch,categories/computer-vision/INDEX.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
@@ -468,6 +495,7 @@ JetBrains stock keymap,categories/dev-utilities/editors-and-runtimes/ideavim.md,
 Jev (hosted),categories/decision-models/kev.md,,no
 Jev · TypeSafe System One,categories/decision-models/INDEX.md,,no
 jMetal (Java/Py),categories/ml-research/pymoo.md,,no
+Jotai (`pmndrs/jotai`),categories/web-ui/state-management/tanstack-store.md,,no
 jp2a,categories/terminal-ui/asciify.md,,no
 JRAW / snoowrap,categories/web-scraping/crawling-tools/praw.md,,no
 Jujutsu (jj),categories/agent-tooling/concurrent-editing/weave.md,,no
@@ -498,6 +526,7 @@ LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
+Legend-State (`LegendApp/legend-state`),categories/web-ui/data-fetching/tanstack-db.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
@@ -519,6 +548,7 @@ LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
 LLM-Subtrans (`machinewrapped/llm-subtrans`),categories/reading-tools/translate-books-with-llms.md,,no
 LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
+llms.txt (`AnswerDotAI/llms-txt`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
@@ -526,6 +556,8 @@ lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 LocalAI (mudler/LocalAI),categories/on-device-ml/stable-diffusion-cpp.md,,no
+localForage (`mozilla/localForage`),categories/web-ui/state-management/tanstack-persist.md,,no
+lodash.debounce/throttle (`lodash/lodash`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
 Logitech Options+ (official),categories/peripherals/logiops.md,,no
 Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no
@@ -553,6 +585,8 @@ Markdown plus a hand-rolled template layer,categories/markdown-tools/mdx.md,,no
 markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
 markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
 Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Mastra (`mastra-ai/mastra`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
+Material React Table (`KevinVandy/material-react-table`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Mathpix,categories/ocr/latex-ocr.md,,no
 Mattermost Cloud,categories/team-chat/mattermost.md,,no
 Maxwell's Daemon,categories/databases/data-sync/python-mysql-replication.md,,no
@@ -592,16 +626,19 @@ Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
 Motion Canvas,categories/video-production/hyperframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
+Mousetrap (`ccampbell/mousetrap`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
 Mozilla Readability (library),categories/reading-tools/just-read.md,,no
+MUI X Data Grid (`mui/mui-x`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
 Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
 nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
+Nanostores (`nanostores/nanostores`),categories/web-ui/state-management/tanstack-store.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
-Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
+Native `<template>` / hand-written DOM,categories/web-ui/frameworks/view-frameworks/lit.md,,no
 native `ssh -L` / `autossh`,categories/networking/sshtunnel.md,,no
 "Native agent memory (`CLAUDE.md`, Cursor rules, Codex `AGENTS.md`)",categories/agent-tooling/work-state/planning-with-files.md,,no
 Native Query DSL,categories/databases/database-clients/elasticsearch-sql.md,,no
@@ -625,6 +662,7 @@ Nextcloud (richdocuments),categories/office-editors/collabora-online.md,,no
 Nextcloud Photos,categories/document-management/immich.md,,no
 NGINX `client_body_*` buffering + app handling,categories/nginx-modules/nginx-upload-module.md,,no
 nginx C modules,categories/nginx-modules/lua-nginx-module.md,,no
+nivo (`plouc/nivo`),categories/web-ui/charts/tanstack-react-charts.md,,no
 njs (nginx JavaScript),categories/nginx-modules/lua-nginx-module.md,,no
 NocoDB,categories/office-editors/grist.md,,no
 Node.js,categories/dev-utilities/editors-and-runtimes/bun.md,,no
@@ -637,9 +675,11 @@ Notion,categories/knowledge-base/logseq.md,,no
 novelWriter,categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.md,,no
 npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 Numba,categories/python-tooling/cython.md,,no
-Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
+Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
+Nuxt.js,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
+Observable Plot (`observablehq/plot`),categories/web-ui/charts/tanstack-charts.md,,no
 Obsidian,categories/knowledge-base/llm-wiki.md,,no
 Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -653,6 +693,7 @@ ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
 OpenAI / Cohere embedding APIs,categories/rag-retrieval/vector-search/text2vec.md,,no
+OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 OpenCLIP,categories/ml-research/clip.md,,no
@@ -677,6 +718,7 @@ Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
+p-queue (`sindresorhus/p-queue`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 PaddleNLP / ERNIE,categories/ml-research/senta.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
@@ -724,8 +766,11 @@ Portkey Gateway,categories/api-gateway/kong.md,,no
 Postiz,categories/social-media-management/INDEX.md,,no
 Postiz (gitroomhq/postiz-app),categories/social-media-management/easel.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
+PowerSync (`powersync-ja/powersync-service`),categories/web-ui/data-fetching/tanstack-db.md,,no
+Preact (`preactjs/preact`),categories/web-ui/frameworks/view-frameworks/tanstack-redact.md,,no
 Premiere Pro,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
+Prism (`PrismJS/prism`),categories/markdown-tools/tanstack-highlight.md,,no
 Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
 Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
@@ -750,6 +795,7 @@ pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
 Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
+Pyodide,categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 PyPy,categories/python-tooling/cython.md,,no
 pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
 PyRIT,categories/llm-eval/ai-infra-guard.md,,no
@@ -772,12 +818,24 @@ Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl
 Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
 Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
+rc-slider (`react-component/slider`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
+React Aria (`adobe/react-spectrum`),categories/web-ui/component-libraries/tanstack-select.md,,no
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
-React Router,categories/web-ui/frameworks/tanstack-router.md,,no
+React Router,categories/web-ui/frameworks/app-frameworks/tanstack-router.md,,no
+React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
+react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
+react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
+react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
+react-range (`twoy/react-range`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
+react-select (`JedWatson/react-select`),categories/web-ui/component-libraries/tanstack-select.md,,no
+react-virtualized (`bvaughn/react-virtualized`),categories/web-ui/virtualization/tanstack-virtual.md,,no
+react-virtuoso (`petyosi/react-virtuoso`),categories/web-ui/virtualization/tanstack-virtual.md,,no
+react-window (`bvaughn/react-window`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 Reader View extensions (various),categories/reading-tools/just-read.md,,no
 Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 reCAPTCHA (Google),categories/captcha/capjs.md,,no
+Recharts (`recharts/recharts`),categories/web-ui/charts/tanstack-charts.md,,no
 Redash,categories/data-visualization/superset.md,,no
 Redash / Tableau / Looker,categories/data-visualization/INDEX.md,,no
 redditdownloader (shadowmoose),categories/media-download/bulk-downloader-for-reddit.md,,no
@@ -785,11 +843,13 @@ Redis,categories/databases/database-engines/pikiwidb.md,,no
 redis-rdb-tools (sripathikrishnan),categories/databases/database-clients/rdr.md,,no
 RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
 Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
+Redux DevTools (`reduxjs/redux-devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
+Redux Toolkit (`reduxjs/redux-toolkit`),categories/web-ui/state-management/tanstack-store.md,,no
 Reeder,categories/reading-tools/netnewswire.md,,no
 Reflog / `git stash` + manual snapshots,categories/agent-tooling/session-history/entire-cli.md,,no
 Relay (`facebook/relay`),categories/web-ui/data-fetching/tanstack-query.md,,no
 reload/restart with logging,categories/python-tooling/pyrasite.md,,no
-Remix,categories/web-ui/frameworks/nextjs.md,,no
+Remix,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
 requests,categories/python-tooling/curl-cffi.md,,no
 requests + BeautifulSoup,categories/web-scraping/crawling-tools/requests-html.md,,no
 requests-futures,categories/python-tooling/grequests.md,,no
@@ -806,10 +866,13 @@ Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
 Rust + PyO3,categories/python-tooling/cython.md,,no
+RxDB (`pubkey/rxdb`),categories/web-ui/data-fetching/tanstack-db.md,,no
 RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-research/llm-circuit-finder.md,,no
 SAGA GIS,categories/geospatial/qgis.md,,no
+Sandpack (CodeSandbox),categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
 ScaNN (Google),categories/rag-retrieval/vector-search/faiss.md,,no
+schedule-x (`schedule-x/schedule-x`),categories/web-ui/component-libraries/tanstack-time.md,,no
 SciPy / Gurobi,categories/ml-research/pymoo.md,,no
 scispaCy / medSpaCy,categories/healthcare-ai/openmed.md,,no
 Scrapy,categories/web-scraping/crawling-tools/fuck-login.md,,no
@@ -827,6 +890,7 @@ SeleniumBase,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
 Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/document-management/paperless-ngx.md,,no
 Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
 Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
+semantic-release (`semantic-release/semantic-release`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Semgrep,categories/agent-governance/skillspector.md,,no
 Semrush / Ahrefs,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 sentence-transformers (SBERT),categories/rag-retrieval/vector-search/text2vec.md,,no
@@ -836,6 +900,7 @@ SetFit (huggingface/setfit),categories/decision-models/laya.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
 ShareX,categories/media-processing/video-editing/openscreen.md,,no
+Shiki (`shikijs/shiki`),categories/markdown-tools/tanstack-highlight.md,,no
 Shotcut,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
@@ -847,6 +912,7 @@ Single de-AI / translation prompt,categories/agent-skills/ai-writing/content-pro
 Skills Hub (qufei1993/skills-hub),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (jiweiyeah/Skills-Manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (xingkongliang/skills-manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
+skills-npm (`antfu/skills-npm`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
@@ -859,18 +925,23 @@ SnowNLP / cnsenti,categories/ml-research/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
 social-auto-upload,categories/social-media-management/INDEX.md,,no
 social-auto-upload (dreammis),categories/social-media-management/easel.md,,no
-Solid.js,categories/web-ui/frameworks/svelte.md,,no
+Solid (`solidjs/solid`),categories/web-ui/frameworks/view-frameworks/tanstack-redact.md,,no
+Solid.js,categories/web-ui/frameworks/view-frameworks/svelte.md,,no
+SolidStart,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
+Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no
 StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-empirical-research-skills.md,,no
-Stencil,categories/web-ui/frameworks/lit.md,,no
+Stencil,categories/web-ui/frameworks/view-frameworks/lit.md,,no
+Streamdown,categories/markdown-tools/tanstack-markdown.md,,no
 streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
 Stylelint,categories/ai-design-generation/impeccable.md,,no
 Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
+Sugar High (`huozhi/sugar-high`),categories/markdown-tools/tanstack-highlight.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
 svgl,categories/web-ui/icon-libraries/thesvg.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
@@ -882,6 +953,7 @@ Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/work-state/IND
 Taskwarrior,categories/agent-tooling/work-state/beads.md,,no
 TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
+Telefunc,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 termcolor / colored,categories/terminal-ui/colorama.md,,no
 Terminal-Bench,categories/llm-eval/swe-bench.md,,no
 texify,categories/ocr/latex-ocr.md,,no
@@ -892,8 +964,11 @@ The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
+throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
+TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
+tinykeys (`jamiebuilds/tinykeys`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
 tmux + git worktree + coding-agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md,,no
@@ -904,13 +979,17 @@ tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
 Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 TrendRadar,categories/reading-tools/follow-builders.md,,no
+Trigger.dev (`triggerdotdev/trigger.dev`),categories/workflow-orchestration/tanstack-workflow.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
+tRPC,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
+tsdown (`rolldown/tsdown`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Twenty (twentyhq/twenty),categories/team-chat/macro.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
+TypeDoc (`TypeStrong/typedoc`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no
 TypeSafe System One · Jev (hosted),categories/decision-models/simple-jev.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
@@ -920,6 +999,7 @@ unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
 urql (`urql-graphql/urql`),categories/web-ui/data-fetching/tanstack-query.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
+use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/state-management/tanstack-persist.md,,no
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
@@ -928,14 +1008,20 @@ VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
+Vercel AI SDK (`vercel/ai`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
-VitePress,categories/web-ui/frameworks/astro.md,,no
+virtua (`inokawa/virtua`),categories/web-ui/virtualization/tanstack-virtual.md,,no
+visx (`airbnb/visx`),categories/web-ui/charts/tanstack-charts.md,,no
+Vite / create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-cli.md,,no
+VitePress,categories/web-ui/frameworks/site-frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
+VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
 Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no
@@ -952,9 +1038,10 @@ whisper.cpp,categories/media-processing/video-audio/speech-and-subtitles/whisper
 "wifite2 (`kimocoder/wifite2`, rewrite of `derv82/wifite`)",categories/pentest/wifit3.md,,no
 WinDirStat,categories/disk-cleanup/mangodisk.md,,no
 Windows Terminal,categories/terminal-ui/alacritty.md,,no
-Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/nextra.md,,no
+Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no
 Your own hand-written slash commands,categories/agent-skills/personal-collections/engineering-workflows/gstack.md,,no
@@ -966,5 +1053,7 @@ ZoeDepth,categories/ml-research/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
 zstd,categories/dev-utilities/data-tools/openzl.md,,no
 Zulip Cloud,categories/team-chat/zulip.md,,no
+Zustand (`pmndrs/zustand`),categories/web-ui/state-management/tanstack-store.md,,no
+Zustand persist middleware (`pmndrs/zustand`),categories/web-ui/state-management/tanstack-persist.md,,no
 Zyte Scrapy Cloud,categories/web-scraping/crawling-tools/scrapyd.md,,no
 剪映专业版 / CapCut (closed app),categories/media-processing/nle-automation/INDEX.md,,no

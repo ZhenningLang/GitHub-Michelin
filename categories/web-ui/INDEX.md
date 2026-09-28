@@ -13,6 +13,11 @@
 | **icon-libraries** | Icon catalogues you import or copy into a UI — brand logos, cloud-architecture icons, UI glyph sets. | [→](icon-libraries/INDEX.md) |
 | **data-fetching** | Client-side data-fetching and server-state caching — dedupe requests, keep server data fresh, invalidate after writes. | [→](data-fetching/INDEX.md) |
 | **forms** | Form state and validation — typed field values, touched/errors, sync and async validators, submit handling. | [→](forms/INDEX.md) |
+| **virtualization** | List and grid virtualization — render only the visible rows of long lists, tables and chat feeds. | [→](virtualization/INDEX.md) |
+| **state-management** | Client-side state stores — shared reactive values outside the component tree, derived values, and selector-based subscriptions per framework. | [→](state-management/INDEX.md) |
+| **charts** | Charting libraries embedded in the front-end — data arrays into axes, bars, lines and points with tooltips, resize and framework adapters. | [→](charts/INDEX.md) |
+| **keyboard-shortcuts** | Keyboard shortcut libraries — bind key combos and sequences to actions, handle Cmd/Ctrl and text inputs, record and display user bindings. | [→](keyboard-shortcuts/INDEX.md) |
+| **scheduling** | Function-execution timing utilities — debounce, throttle, rate-limit, queue or batch client-side calls, with framework hooks exposing the pending state. | [→](scheduling/INDEX.md) |
 
 ## What belongs here
 

@@ -17,6 +17,8 @@
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | A（6/6） | [→](goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | A（6/6） | [→](markdownlint.zh.md) |
 | **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | B（5/6） | [→](mdx.zh.md) |
+| **TanStack Markdown** | 当你的文档/博客语料由作者控制、包体积是硬约束，且你要 HTML/React/Octane 三个渲染器从同一份缓存 AST 输出完全一致的页面时用它——不要用它渲染不可信用户 Markdown，也不要指望它严格遵循 CommonMark。 | C（5/6） | [→](tanstack-markdown.zh.md) |
+| **TanStack Highlight** | 当博客或文档只用一小撮已知语言、想要体积极小、同步执行、只带类名且服务端与客户端一致的代码高亮时用它——要 VS Code 级准确度、冷门语言或自动检测语言时不要用。 | B（6/6） | [→](tanstack-highlight.zh.md) |
 
 
 ## 对比矩阵
@@ -29,6 +31,8 @@
 | [markdown-it](markdown-it.zh.md) | ✅ | A（6/6） | 当你需要一个严格遵循 CommonMark/GFM、可插拔的 JS Markdown→HTML 解析器时用它——但插件生态会增加体积，且处理不受信任内容时仍需消毒。 |
 | [CommonMark](commonmark.zh.md) | ✅ | B（5/6） | 当你需要规范合规、可遍历 AST 的 Markdown 官方参考实现时用它——但它不以速度见长，也不支持 GFM 或插件生态。 |
 | [micromark](micromark.zh.md) | ✅ | B（6/6） | 当你需要一个低层、面向流式处理的 JS CommonMark/GFM 分词器时用它——remark 的底层引擎——但渲染层要你自己搭。 |
+| [TanStack Markdown](tanstack-markdown.zh.md) | ✅ | C（5/6） | 当你的文档/博客语料由作者控制、包体积是硬约束，且你要 HTML/React/Octane 三个渲染器从同一份缓存 AST 输出完全一致的页面时用它——不要用它渲染不可信用户 Markdown，也不要指望它严格遵循 CommonMark。 |
+| [TanStack Highlight](tanstack-highlight.zh.md) | ✅ | B（6/6） | 当博客或文档只用一小撮已知语言、想要体积极小、同步执行、只带类名且服务端与客户端一致的代码高亮时用它——要 VS Code 级准确度、冷门语言或自动检测语言时不要用。 |
 
 ## 什么该放这里
 

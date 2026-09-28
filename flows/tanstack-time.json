@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Time does", "zh": "TanStack Time 做的"},
+  "steps": [
+    {"lane": "you", "en": "Create the calendar over your events, resources and a timezone", "zh": "用你的事件、资源和时区创建日历", "code": "useCalendar({ viewMode, events, resources, timeZone })", "component": {"en": "useCalendar hook", "zh": "useCalendar 钩子"}},
+    {"lane": "them", "en": "Builds the day grid for the period and expands recurring events into occurrences", "zh": "为当前周期构建日期网格，把重复事件展开成单次出现"},
+    {"lane": "you", "en": "Serve events for the visible range from your own API or store", "zh": "从自己的接口或存储返回可见范围内的事件", "code": "fetchEvents: async ({ start, end }) => events"},
+    {"lane": "them", "en": "Loads only the required range and vetoes moves that break availability or capacity", "zh": "只拉取需要的范围，并否决违反可用性或容量规则的移动", "component": {"en": "kernel + validation core", "zh": "内核与校验核心"}},
+    {"lane": "you", "en": "Render days and events as your own markup and wire the resize handles", "zh": "用自己的标记渲染日期与事件，接上拖拽调整的手柄", "code": "calendar.getDaysNames('short') · calendar.getEventProps(event)"},
+    {"lane": "them", "en": "Recomputes projections and journals undo entries on every edit", "zh": "每次编辑后重算投影并记录撤销日志"}
+  ],
+  "value": {"en": "Recurrence expansion, DST-safe grids, conflict vetoes and undo without writing any of it — and zero imposed DOM (today: vendored from a pre-alpha branch)", "zh": "重复展开、夏令时安全网格、冲突否决、撤销都不用自己写，DOM 全归你（今天需从 pre-alpha 分支引源码）"},
+  "sources": [
+    "examples/react/calendar/src/index.tsx on branch alpha — useCalendar({ viewMode: { value: 1, unit: 'month' }, events, resources, timeZone, fetchEvents }), calendar.getDaysNames('short'), calendar.getEventProps(event), getResizeHandleProps(…), goToNextPeriod()",
+    "packages/react-time/src/useCalendar/useCalendar.ts on branch alpha — hook surface, ensureRangeLoaded, undo/redo, resize controller",
+    "packages/time/src/calendar/calendar.ts on branch alpha — CalendarCore, expandRecurringEvent, Temporal internals",
+    "docs/adr/0005-v1-scope-calendar-product-react-only.md on branch alpha — v1 scope and deferrals",
+    "npm registry lookups 2026-09-28 — @tanstack/time, @tanstack/react-time, @tanstack/solid-time absent (no release)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Virtual does", "zh": "TanStack Virtual 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装对应框架的适配包", "code": "npm install @tanstack/react-virtual"},
+    {"lane": "you", "en": "Create a virtualizer: item count, the scroll element, a size estimate", "zh": "创建虚拟器：条目数、滚动元素、行高估计", "code": "useVirtualizer", "component": {"en": "Virtualizer (virtual-core)", "zh": "Virtualizer（virtual-core）"}},
+    {"lane": "you", "en": "Give it a fixed-height scroll box and an inner sizer as tall as the whole list", "zh": "准备固定高度的滚动框，里面放一个和整个列表一样高的撑高层", "code": "rowVirtualizer.getTotalSize()"},
+    {"lane": "them", "en": "Watches scroll position and box size; computes which rows are visible plus overscan, and their offsets", "zh": "监听滚动位置和容器尺寸，算出可见行（加缓冲行）和各自偏移"},
+    {"lane": "you", "en": "Render only those rows, absolutely positioned, with its measuring ref", "zh": "只渲染这些行，绝对定位，并挂上它的测量 ref", "code": "rowVirtualizer.getVirtualItems() · ref={virtualizer.measureElement}"},
+    {"lane": "them", "en": "Measures real row heights, fixes positions and keeps the viewed content from jumping", "zh": "测出真实行高，修正位置，让正在看的内容不跳动"}
+  ],
+  "value": {"en": "A 10,000-row list mounts and scrolls like a 30-row one, and you never hand-write the offset math or give up your own row markup", "zh": "一万行的列表挂载和滚动起来和三十行一样轻，不用手算偏移，也不用放弃自己的行标签"},
+  "sources": [
+    "docs/installation.md (npm install @tanstack/react-virtual)",
+    "docs/introduction.md (import { useVirtualizer } from '@tanstack/react-virtual'; rowVirtualizer.getTotalSize(); rowVirtualizer.getVirtualItems(); position absolute + translateY)",
+    "docs/chat.md (ref={virtualizer.measureElement} with data-index for dynamic sizes)",
+    "docs/api/virtualizer.md (overscan, measureElement, shouldAdjustScrollPositionOnItemSizeChange)"
+  ]
+}

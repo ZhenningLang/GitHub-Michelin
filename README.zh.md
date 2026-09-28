@@ -61,6 +61,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **codex-chatgpt-web** | 当 Codex 配额先耗尽、而付费的 ChatGPT 网页订阅闲着，想让任务改记到 Web 套餐额度上时用它——但它是一条非官方、两个月大、单人维护的浏览器桥，ChatGPT 改 UI 或改政策随时能掐断。 | MIT | C（5/6） | [中](categories/agent-tooling/harness-extensions/codex-chatgpt-web.zh.md) · [EN](categories/agent-tooling/harness-extensions/codex-chatgpt-web.md) |
 | **HEY CLI** | 当你的邮件跑在 HEY 上、想把它同时交给终端和编程 agent 时用它——第一方 CLI/TUI、自带 agent skill 和 MCP 服务；但它绑定 37signals 的付费账号、问世仅七个月、且只会说 HEY 的 API。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/hey-cli.zh.md) · [EN](categories/agent-tooling/harness-extensions/hey-cli.md) |
 | **SkillsGate** | 当你的 skill 散落在多个 agent 的隐藏目录里、想要一个桌面界面统一管理时用它——一份真身按 agent 建符号链接、接 skills.sh 目录、能 SSH 推送；但它单人维护、只支持全局安装，锁文件还和 `npx skills` 冲突。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/skillsgate.zh.md) · [EN](categories/agent-tooling/harness-extensions/skillsgate.md) |
+| **TanStack Intent** | 当你维护一个 npm 库、想把给 agent 的说明（`SKILL.md`）打进包里、与已装版本对应并在过期时被标出来时用它——只支持 npm/JS，仍是 v0.x，且只负责送达引导、不保证 agent 照做。 | MIT | B（6/6） | [中](categories/agent-tooling/harness-extensions/tanstack-intent.zh.md) · [EN](categories/agent-tooling/harness-extensions/tanstack-intent.md) |
 | **Hermes Workspace** | 当你跑的是 Nous 的 hermes-agent、想把它的状态当 Web 驾驶舱用——聊天、memory、skills、终端、tmux swarm 派发、手机经 PWA/Tailscale 可达——但它的增强面板锚定 Hermes gateway/dashboard API、且问世仅约 6 个月时用它。 | MIT | B（5/6） | [中](categories/agent-tooling/supervision-surfaces/hermes-workspace.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/hermes-workspace.md) |
 | **Ekko Studio** | 当你同时跑 Hermes Agent **和** Claude Code／Codex 等编码 agent、想要一个本地控制台——单聊、@ 多 agent 的群聊房间、带审批关口的工作流画布、文件与终端——时用它——但它是 BSL-1.1（2029 年前禁止商用）、建仓一个月就从 MIT 改许可、约 5.5 个月大且基本一人编写。 | BUSL-1.1 | D（6/6） | [中](categories/agent-tooling/supervision-surfaces/ekko-studio.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/ekko-studio.md) |
 | **CloudCLI (Claude Code UI)** | 当你的大脑是 Claude Code / Codex / Cursor CLI、想要这些会话的浏览器/移动驾驶舱（文件、终端、git）时用它——但它是 AGPL-3.0-or-later、单人操作形态。 | AGPL-3.0-or-later | B（6/6） | [中](categories/agent-tooling/supervision-surfaces/claudecodeui.zh.md) · [EN](categories/agent-tooling/supervision-surfaces/claudecodeui.md) |
@@ -227,6 +228,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Pi** | 想要一个极简终端 agent、行为由你仓库里的文件决定——技能、prompt 模板、它自己也能写的 TypeScript 扩展——并且愿意自己承担沙箱时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/pi.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/pi.md) |
 | **OmO** | 想把整件任务交给终端 agent 时用它——`ulw`、`mass ulw` 关键词把工作摊成一张按类别路由、跨订阅模型的依赖图，验证通过才算完成，记忆沉淀进 git——但 SUL-1.0 限制商业再分发，token 是按机队花的，十个月的热度 star 是风险信号而不是 Lindy 记录。 | SUL-1.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md) |
 | **Agent-Native** | 你想让产品里的 agent 真的把活干完，并愿意让一个 TypeScript 应用接管界面、服务端与 Postgres，好让按钮和工具共用同一份实现——但它是半年大的 v0.x，且许可证存疑。 | MIT（声明为 MIT，但无 LICENSE 文件） | C（4/6） | [中](categories/agent-frameworks/workflow-builders/agent-native.zh.md) · [EN](categories/agent-frameworks/workflow-builders/agent-native.md) |
+| **TanStack AI** | 当 TypeScript 应用的 AI 界面——流式聊天、带类型的工具、媒体与 agent，横跨七个前端框架——必须站在一套 provider 无关的类型契约上、且不绑任何平台层时用它；agent 活在 Python 里、或你要的是打包好的 `Agent` 类，就不是它。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md) |
 
 | **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | — | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
@@ -301,6 +303,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HelixDB** | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/structured-retrieval/helix-db.zh.md) · [EN](categories/rag-retrieval/structured-retrieval/helix-db.md) |
 | **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/code-intelligence/ix.zh.md) · [EN](categories/rag-retrieval/code-intelligence/ix.md) |
 | **Repowise** | 当你的 agent 每个任务都在大仓库里重新烧上下文找结构、而你想要一个不用 key 的本机索引，通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 | AGPL-3.0 | C（6/6） | [中](categories/rag-retrieval/code-intelligence/repowise.zh.md) · [EN](categories/rag-retrieval/code-intelligence/repowise.md) |
+| **Jevgrep** | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 | MIT | C（4/6） | [中](categories/rag-retrieval/code-intelligence/jevgrep.zh.md) · [EN](categories/rag-retrieval/code-intelligence/jevgrep.md) |
 
 ### llm-eval
 
@@ -352,6 +355,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Guizang PPT Skill** | 当你想让 agent 把文章变成有设计感的单文件 HTML 翻页 PPT（杂志风或瑞士风）时用它。 | AGPL-3.0-only | C（4/5） | [中](categories/agent-skills/slides-ppt/guizang-ppt.zh.md) · [EN](categories/agent-skills/slides-ppt/guizang-ppt.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | AGPL-3.0-only | D（3/5） | [中](categories/agent-skills/visual-content/guizang-social-card.zh.md) · [EN](categories/agent-skills/visual-content/guizang-social-card.md) |
 | **handraw-style** | 当你想把编号化的手绘画风、版面图型与主题色（279/122/36）交给装好的 agent skill 拼成中英双语生图提示词时用它。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/handraw-style.zh.md) · [EN](categories/agent-skills/visual-content/handraw-style.md) |
+| **Lieflat Charts** | 当你想让编码助手把数据做成模板锁定、可直接发布的单文件 HTML 图表或 12 套中英双语整页报告、整套交付共用一种编辑风视觉语言时用它。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/agent-skills/visual-content/lieflat-charts.zh.md) · [EN](categories/agent-skills/visual-content/lieflat-charts.md) |
 | **SdPaint** | 当你已在跑 AUTOMATIC1111＋ControlNet、想要一个实时草图转图的绘画循环时用它——但它自 2024 年起停滞，且自身不带任何模型。 | MIT | D（3/6） | [中](categories/ai-design-generation/sdpaint.zh.md) · [EN](categories/ai-design-generation/sdpaint.md) |
 ### dev-utilities
 
@@ -384,6 +388,13 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ripgrep** | 快速、感知 gitignore 的面向行搜索工具，跨平台支持一流；10 年历史，Lindy 信号强劲，单人维护但可靠性高。 | Unlicense | B（6/6） | [中](categories/dev-utilities/data-tools/ripgrep.zh.md) · [EN](categories/dev-utilities/data-tools/ripgrep.md) |
 | **Bun** | 一款极速一体化 JavaScript/TypeScript 工具集（运行时、打包器、测试运行器、包管理器）集成在单个二进制文件中——但商用前请核实自定义许可证。 | NOASSERTION | A（5/6） | [中](categories/dev-utilities/editors-and-runtimes/bun.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/bun.md) |
 | **scriptc** | 把类型写干净的 TypeScript CLI 和小型服务用真正的 tsc 编译成约 320KB 的原生可执行文件（或 WASI 模块），二进制里没有 JS 引擎——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 | Apache-2.0 | C（6/6） | [中](categories/dev-utilities/editors-and-runtimes/scriptc.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/scriptc.md) |
+| **TanStack CLI** | 脚手架 TanStack Start／Router 应用，把认证、数据库、部署、监控当作可互相协调的 add-on 组合进去，另有一组面向 agent 的 JSON 内省命令——但它只认 TanStack 栈（前 1.0 变动频繁，遥测默认开启）。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-cli.md) |
+| **TanStack Devtools** | 一个页内可停靠面板，把 TanStack（及自家）库的调试器装成标签页，配套 Vite／Rspack 插件提供点元素跳源码、console 转发和生产构建自动剥离——但仍是 alpha，会把 Solid.js 带进开发包，开发期事件总线还有一份未修的命令注入报告。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-devtools.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md) |
+
+| **TanStack Config** | TanStack 自家库共用的开发期预设：带类型信息的 ESLint 扁平配置、ESM／CJS 双格式 Vite 库构建、TypeDoc 转 Markdown、按提交信息发版的脚本——检查预设用得很广，构建与发布两半在 TanStack 内部已成遗留（转向 tsdown、Changesets）；只支持 pnpm。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-config.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-config.md) |
+| **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-container.md) |
+
+| **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | A（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | A（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
@@ -751,6 +762,9 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Goldmark** | :trophy: A markdown parser written in Go. Easy to extend, standard(CommonMark) compliant, well structured. | MIT | A（6/6） | [EN](categories/markdown-tools/goldmark.md) · [中](categories/markdown-tools/goldmark.zh.md) |
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A（6/6） | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
 | **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | MIT | B（5/6） | [中](categories/markdown-tools/mdx.zh.md) · [EN](categories/markdown-tools/mdx.md) |
+| **TanStack Markdown** | 当你的文档/博客语料由作者控制、包体积是硬约束，且你要 HTML/React/Octane 三个渲染器从同一份缓存 AST 输出完全一致的页面时用它——不要用它渲染不可信用户 Markdown，也不要指望它严格遵循 CommonMark。 | MIT | C（5/6） | [中](categories/markdown-tools/tanstack-markdown.zh.md) · [EN](categories/markdown-tools/tanstack-markdown.md) |
+
+| **TanStack Highlight** | 当博客或文档只用一小撮已知语言、想要体积极小、同步执行、只带类名且服务端与客户端一致的代码高亮时用它——要 VS Code 级准确度、冷门语言或自动检测语言时不要用。 | MIT | B（6/6） | [中](categories/markdown-tools/tanstack-highlight.zh.md) · [EN](categories/markdown-tools/tanstack-highlight.md) |
 
 ### typesetting
 
@@ -791,6 +805,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | Apache-2.0 | A（6/6） | [EN](categories/workflow-orchestration/prefect.md) · [中](categories/workflow-orchestration/prefect.zh.md) |
 | **Dagster** | An orchestration platform for the development, production, and observation of data assets. | Apache-2.0 | A（6/6） | [EN](categories/workflow-orchestration/dagster.md) · [中](categories/workflow-orchestration/dagster.zh.md) |
 | **Temporal** | Temporal service | MIT | A（6/6） | [EN](categories/workflow-orchestration/temporal.md) · [中](categories/workflow-orchestration/temporal.zh.md) |
+| **TanStack Workflow** | 跨天的持久流程必须嵌在 TypeScript 应用里、落在你自己的数据库上，且不想多运维一个 workflow server 时用它——0.0.x，控制平面界面还没有，运维面要自己拼。 | MIT | C（6/6） | [中](categories/workflow-orchestration/tanstack-workflow.zh.md) · [EN](categories/workflow-orchestration/tanstack-workflow.md) |
 
 ### llm-inference
 
@@ -853,28 +868,46 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Driver.js** | 当你想在网页上加一个极简、无依赖的产品引导/功能高亮时用它——不是完整的 onboarding 平台。 | MIT | B（5/6） | [中](categories/web-ui/product-tours/driver-js.zh.md) · [EN](categories/web-ui/product-tours/driver-js.md) |
 | **Shepherd.js** | 当你想要一个稳健、框架无关的产品引导库，支持高级定位和复杂多步骤 onboarding 时用它——但你要接受比 Driver.js 更大的包体积。 | MIT | B（5/6） | [中](categories/web-ui/product-tours/shepherd-js.zh.md) · [EN](categories/web-ui/product-tours/shepherd-js.md) |
 | **Intro.js** | 当你想要一个成熟、框架无关、文档详尽的产品引导库时用它——但你要接受非商用 AGPL-3.0，或必须购买商业授权。 | AGPL-3.0 | B（5/6） | [中](categories/web-ui/product-tours/intro-js.zh.md) · [EN](categories/web-ui/product-tours/intro-js.md) |
-| **Vue.js** | 当你想要一个渐进式、易于上手的 JavaScript 框架，带优秀文档、温和学习曲线和可增量采纳的架构时用它——但你要接受它在西方就业市场比 React 小，且没有 mega-corporate 背书。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/vue.zh.md) · [EN](categories/web-ui/frameworks/vue.md) |
-| **Svelte** | 当你想要一个编译时前端框架，带小包体积、无虚拟 DOM 和可读性强的语法时用它——但你要接受它的生态和就业市场比 React 或 Vue 小。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/svelte.zh.md) · [EN](categories/web-ui/frameworks/svelte.md) |
+| **Vue.js** | 当你想要一个渐进式、易于上手的 JavaScript 框架，带优秀文档、温和学习曲线和可增量采纳的架构时用它——但你要接受它在西方就业市场比 React 小，且没有 mega-corporate 背书。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/view-frameworks/vue.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/vue.md) |
+| **Svelte** | 当你想要一个编译时前端框架，带小包体积、无虚拟 DOM 和可读性强的语法时用它——但你要接受它的生态和就业市场比 React 或 Vue 小。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/view-frameworks/svelte.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/svelte.md) |
 | **shadcn/ui** | 一套精心设计、无障碍的 React 组件，复制进项目并完全拥有——但它需要 React 和 Tailwind CSS。 | MIT | A（6/6） | [中](categories/web-ui/component-libraries/shadcn-ui.zh.md) · [EN](categories/web-ui/component-libraries/shadcn-ui.md) |
-| **Angular** | 当你需要一个成熟、opinionated、带依赖注入和强类型的全栈框架，用于企业级大规模 web 应用时用它——但它很重，小项目用它过度。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/angular.zh.md) · [EN](categories/web-ui/frameworks/angular.md) |
+| **Angular** | 当你需要一个成熟、opinionated、带依赖注入和强类型的全栈框架，用于企业级大规模 web 应用时用它——但它很重，小项目用它过度。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/view-frameworks/angular.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/angular.md) |
 | **Ant Design** | 当你想要一套完整、生产就绪、带企业级设计规范、主题化和无障碍支持的 React UI 组件库时用它——但它仅限 React，且设计风格明显偏「中式企业风」。 | MIT | A（6/6） | [中](categories/web-ui/component-libraries/ant-design.zh.md) · [EN](categories/web-ui/component-libraries/ant-design.md) |
-| **Lit** | 当你需要一套轻量、基于标准的 Web Components，能在任何框架中工作时用它——但你要接受生态较小，且需要学习 Web Components。 | BSD-3-Clause | A（6/6） | [中](categories/web-ui/frameworks/lit.zh.md) · [EN](categories/web-ui/frameworks/lit.md) |
-| **React** | 当你想要最流行的 UI 库，带庞大生态、深厚的人才池和声明式组件模型时用它——但你要接受需要自己组合路由、状态管理和构建管线。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/react.zh.md) · [EN](categories/web-ui/frameworks/react.md) |
-| **Next.js** | 当你想要一个全栈 React 框架，内置 SSR、SSG、基于文件的路由和 API 路由时用它——但你要接受 Vercel 对路线图的影响，以及比纯 React 更强的主见架构。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/nextjs.zh.md) · [EN](categories/web-ui/frameworks/nextjs.md) |
-| **SvelteKit** | web development, streamlined | MIT | A（6/6） | [EN](categories/web-ui/frameworks/sveltekit.md) · [中](categories/web-ui/frameworks/sveltekit.zh.md) |
+| **Lit** | 当你需要一套轻量、基于标准的 Web Components，能在任何框架中工作时用它——但你要接受生态较小，且需要学习 Web Components。 | BSD-3-Clause | A（6/6） | [中](categories/web-ui/frameworks/view-frameworks/lit.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/lit.md) |
+| **React** | 当你想要最流行的 UI 库，带庞大生态、深厚的人才池和声明式组件模型时用它——但你要接受需要自己组合路由、状态管理和构建管线。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/view-frameworks/react.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/react.md) |
+| **Next.js** | 当你想要一个全栈 React 框架，内置 SSR、SSG、基于文件的路由和 API 路由时用它——但你要接受 Vercel 对路线图的影响，以及比纯 React 更强的主见架构。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/app-frameworks/nextjs.zh.md) · [EN](categories/web-ui/frameworks/app-frameworks/nextjs.md) |
+| **SvelteKit** | web development, streamlined | MIT | A（6/6） | [EN](categories/web-ui/frameworks/app-frameworks/sveltekit.md) · [中](categories/web-ui/frameworks/app-frameworks/sveltekit.zh.md) |
 | **Reactour** | Tourist Guide into your React Components | MIT | B（5/6） | [EN](categories/web-ui/product-tours/reactour.md) · [中](categories/web-ui/product-tours/reactour.zh.md) |
 | **react-joyride** | Create guided tours in your apps | MIT | B（6/6） | [EN](categories/web-ui/product-tours/react-joyride.md) · [中](categories/web-ui/product-tours/react-joyride.zh.md) |
 | **Material UI (MUI)** | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | MIT | A（6/6） | [EN](categories/web-ui/component-libraries/material-ui.md) · [中](categories/web-ui/component-libraries/material-ui.zh.md) |
 | **Chakra UI** | Chakra UI is a component system for building SaaS products with speed ⚡️ | MIT | A（6/6） | [EN](categories/web-ui/component-libraries/chakra-ui.md) · [中](categories/web-ui/component-libraries/chakra-ui.zh.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | MIT | B（6/6） | [EN](categories/web-ui/component-libraries/radix-ui.md) · [中](categories/web-ui/component-libraries/radix-ui.zh.md) |
-| **Nuxt** | the full-stack Vue framework | MIT | A（6/6） | [EN](categories/web-ui/frameworks/nuxt.md) · [中](categories/web-ui/frameworks/nuxt.zh.md) |
-| **Astro** | 当站点是内容集合、只需少数交互组件时用它——但交付物是带版本的文档站、或站点本质是全栈应用时不要用。 | MIT | A（5/6） | [中](categories/web-ui/frameworks/astro.zh.md) · [EN](categories/web-ui/frameworks/astro.md) |
-| **Docusaurus** | 当需要第一天就有带版本、可搜索、支持 i18n 的文档站时用它——但站点是通用内容站、或你宁愿自己组装文档那套家具时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/docusaurus.zh.md) · [EN](categories/web-ui/frameworks/docusaurus.md) |
-| **Nextra** | 当文档必须活在既有 Next.js 应用里、一层薄 MDX 就够了时用它——但你需要版本化文档、或需要背后有较大维护团队的项目时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/nextra.zh.md) · [EN](categories/web-ui/frameworks/nextra.md) |
-| **TanStack Router** | 当 URL 就是应用的状态容器、写错的链接／参数／查询值必须在编译期报错而不是吓到用户时用它——但路由只是寥寥几页静态页面时不要用，需要 RSC 优先架构时选 Next.js。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/tanstack-router.zh.md) · [EN](categories/web-ui/frameworks/tanstack-router.md) |
+| **Nuxt** | the full-stack Vue framework | MIT | A（6/6） | [EN](categories/web-ui/frameworks/app-frameworks/nuxt.md) · [中](categories/web-ui/frameworks/app-frameworks/nuxt.zh.md) |
+| **Astro** | 当站点是内容集合、只需少数交互组件时用它——但交付物是带版本的文档站、或站点本质是全栈应用时不要用。 | MIT | A（5/6） | [中](categories/web-ui/frameworks/site-frameworks/astro.zh.md) · [EN](categories/web-ui/frameworks/site-frameworks/astro.md) |
+| **Docusaurus** | 当需要第一天就有带版本、可搜索、支持 i18n 的文档站时用它——但站点是通用内容站、或你宁愿自己组装文档那套家具时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/site-frameworks/docusaurus.zh.md) · [EN](categories/web-ui/frameworks/site-frameworks/docusaurus.md) |
+| **Nextra** | 当文档必须活在既有 Next.js 应用里、一层薄 MDX 就够了时用它——但你需要版本化文档、或需要背后有较大维护团队的项目时不要用。 | MIT | B（6/6） | [中](categories/web-ui/frameworks/site-frameworks/nextra.zh.md) · [EN](categories/web-ui/frameworks/site-frameworks/nextra.md) |
+| **TanStack Router** | 当 URL 就是应用的状态容器、写错的链接／参数／查询值必须在编译期报错而不是吓到用户时用它——但路由只是寥寥几页静态页面时不要用，需要 RSC 优先架构时选 Next.js。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/app-frameworks/tanstack-router.zh.md) · [EN](categories/web-ui/frameworks/app-frameworks/tanstack-router.md) |
+| **TanStack Bling** | 2023 年已归档的 Vite／Astro 插件，把 `server$(fn)` 编译成服务端接口＋浏览器端发请求的替身——只当设计参考，不当依赖；新应用用 TanStack Start 的 `createServerFn`、SolidStart 或 Next.js Server Actions。 | MIT | D（5/6） | [中](categories/web-ui/frameworks/app-frameworks/tanstack-bling.zh.md) · [EN](categories/web-ui/frameworks/app-frameworks/tanstack-bling.md) |
+| **TanStack Redact** | 当 Vite＋React 应用的包体积预算被约 69 KB、页面却用不到的 React 运行时吃掉时用它——一个插件把所有 React 导入换成约 23 KB 的同步重新实现——但应用依赖并发特性、构建工具不是 Vite、或需要许可证文件（目前没有）时不要用。 | NOASSERTION | D（6/6） | [中](categories/web-ui/frameworks/view-frameworks/tanstack-redact.zh.md) · [EN](categories/web-ui/frameworks/view-frameworks/tanstack-redact.md) |
 | **theSVG** | 需要从一份清单里拿大量品牌 logo（彩色版、文字标、AI 厂商）和 AWS／Azure／GCP 架构图标，形式是带类型的组件、CDN 地址或命令行时用它——但许可证要自己逐个核对，Azure 图标标成 MIT 与微软条款不符。 | MIT | B（6/6） | [中](categories/web-ui/icon-libraries/thesvg.zh.md) · [EN](categories/web-ui/icon-libraries/thesvg.md) |
 | **TanStack Query** | 前端组件各自手写请求、loading、error，写完还显示旧数据时用它——按键共享的服务端状态缓存，后台自动重拉、写后失效；它不是客户端状态库，也不是按实体归一化的 GraphQL 缓存。 | MIT | A（5/6） | [中](categories/web-ui/data-fetching/tanstack-query.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-query.md) |
 | **TanStack Form** | 表单里每个输入手写状态、touched 和异步校验防抖时用它——无头、带类型的表单 store，字段级和表单级校验，覆盖 React、Vue、Angular、Solid、Svelte、Lit；v2（alpha）会改日常 API。 | MIT | A（6/6） | [中](categories/web-ui/forms/tanstack-form.zh.md) · [EN](categories/web-ui/forms/tanstack-form.md) |
+| **TanStack Virtual** | 几千上万行的列表、表格或聊天流挂载慢、滚动卡时用它——无头虚拟器只渲染可见行、标签由你自己写，测量动态行高，能为聊天贴底；它不是现成的列表组件，行数受浏览器元素最大高度限制（约百万行）。 | MIT | A（6/6） | [中](categories/web-ui/virtualization/tanstack-virtual.zh.md) · [EN](categories/web-ui/virtualization/tanstack-virtual.md) |
+| **TanStack Store** | 框架无关的库或应用核心需要一份带派生值的响应式 store，再用 React、Vue、Angular、Solid、Svelte、Preact、Lit 的薄适配层只在选中那块变了时重渲染；仍是 0.x，小版本会破坏兼容，没有持久化和 devtools。 | MIT | A（6/6） | [中](categories/web-ui/state-management/tanstack-store.zh.md) · [EN](categories/web-ui/state-management/tanstack-store.md) |
+| **TanStack Persist** | 界面状态一刷新就丢、每个功能都在重写 localStorage 的读、解析、存循环时用它——useState 形状的持久化状态钩子，带版本失效、maxAge 过期和子集选择，只面向 Web Storage；仅限观察名单：npm 上没有包、没有 release，成段文档是从兄弟仓库复制的，宣称的跨标签页同步没有接线。 | MIT | C（5/6） | [中](categories/web-ui/state-management/tanstack-persist.zh.md) · [EN](categories/web-ui/state-management/tanstack-persist.md) |
+| **TanStack Charts** | 现成图表组件画不出你要的自定义图层、同一张图又要在多个框架和服务端渲染时用它——一份带类型的“标记加比例尺”定义，自带服务端 SVG、键盘焦点和按需 Canvas；它是 Alpha（0.x，小版本会破坏兼容），才两个月大，代码主要出自一位作者。 | MIT | B（6/6） | [中](categories/web-ui/charts/tanstack-charts.zh.md) · [EN](categories/web-ui/charts/tanstack-charts.md) |
+| **TanStack React Charts** | 只在迁移前让 React DOM 应用里已有的 `react-charts` 集成继续活着时用它——序列数组加 `getValue` 轴取值函数，D3 计算、画成带 Voronoi 悬停的 SVG；2025 年已归档，v3 仍是 beta，React 18/Next.js 下的提示框问题没人修，新图请用仍在维护的库。 | MIT | D（5/6） | [中](categories/web-ui/charts/tanstack-react-charts.zh.md) · [EN](categories/web-ui/charts/tanstack-react-charts.md) |
+| **TanStack Hotkeys** | 手写的 keydown 判断在 Mac 的 Cmd 和 Ctrl 上出错、用户打字时误触发、没法录制和显示用户改的键时用它——带类型的 `Mod+S` 绑定、连按、录制器和格式化工具，有 React、Vue、Angular、Solid、Svelte、Preact、Lit 适配；alpha 期 0.x，小版本会破坏兼容，只发 ESM。 | MIT | B（6/6） | [中](categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.zh.md) · [EN](categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md) |
+
+| **TanStack Pacer** | 搜索框、自动保存、滚动处理都靠手写 setTimeout/clearTimeout 裹着时用它——带类型的防抖／节流／限流／排队／批处理，同步异步（重试／中止）两套变体，pending 状态可经 TanStack Store 渲染；它不是服务端配额，且 0.x beta 有 API 变动风险。 | MIT | A（6/6） | [中](categories/web-ui/scheduling/tanstack-pacer.zh.md) · [EN](categories/web-ui/scheduling/tanstack-pacer.md) |
+
+| **TanStack Time** | 产品日历要重复日程、拖拽改时长、超订校验，而 DOM 必须归你时关注它——无头、Temporal 原生的核心算日期网格、重复展开和冲突；仅列观察名单：未发布的 pre-alpha，npm 上还没有包。 | MIT | D（4/6） | [中](categories/web-ui/component-libraries/tanstack-time.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-time.md) |
+
+
+| **TanStack DB** | 每个视图都要求单开联表接口、每次写操作都要手补查询缓存时用它——客户端规范化集合加差分数据流活查询和乐观事务；beta 0.x，不是客户端状态库，也不是持久离线数据库。 | MIT | B（6/6） | [中](categories/web-ui/data-fetching/tanstack-db.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-db.md) |
+| **TanStack Ranger** | 滑块要双把手、不规则步进数组或对数刻度推子，而标记必须完全归你时用它——无头数值引擎管拖拽跟踪、吸附、刻度和百分比，不渲染任何东西；目前只有 React 适配层，API 仍是 0.x。 | MIT | C（5/6） | [中](categories/web-ui/component-libraries/tanstack-ranger.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-ranger.md) |
+| **TanStack Select** | 想要一个 TanStack 式、能搜索多选的无头下拉引擎时关注它——今天不可用：`main` 是空脚手架加 2026-08 的重写 RFC，npm 上没有包；唯一发布过的是停更、无 ARIA、只支持 React 16 的旧 hook `use-select`。 | MIT | — | [中](categories/web-ui/component-libraries/tanstack-select.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-select.md) |
+| **TanStack Table** | 表格要排序、过滤、分页、分组、选行，但 `<table>` 的 DOM 和样式必须完全归你时用它——无头引擎管状态和行模型；它不交付标记、不取数、不带虚拟滚动。 | MIT | A（6/6） | [中](categories/web-ui/component-libraries/tanstack-table.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-table.md) |
 
 ### proxy-pool
 

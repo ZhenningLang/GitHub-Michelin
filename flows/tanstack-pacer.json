@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "them": { "en": "Pacer does", "zh": "Pacer 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the adapter for your framework",
+      "zh": "安装对应框架的适配包",
+      "code": "@tanstack/react-pacer"
+    },
+    {
+      "lane": "you",
+      "en": "Wrap your handler with the hook once, at the top of the component",
+      "zh": "在组件顶部用 hook 包一次处理函数",
+      "code": "const debouncer = useDebouncer(fn, options)",
+      "component": { "en": "useDebouncer hook", "zh": "useDebouncer hook" }
+    },
+    {
+      "lane": "you",
+      "en": "Call it on every keystroke or event, like the raw function",
+      "zh": "像普通函数一样在每个按键或事件上调用",
+      "code": "debouncer.maybeExecute(args)"
+    },
+    {
+      "lane": "them",
+      "en": "Each call restarts the timer and drops the earlier arguments",
+      "zh": "每次调用重置计时器，丢弃更早的参数",
+      "component": { "en": "Debouncer", "zh": "Debouncer" }
+    },
+    {
+      "lane": "them",
+      "en": "Once calls go quiet for the wait, it runs your function with the latest args",
+      "zh": "调用停歇超过等待时长后，用最新参数执行函数"
+    }
+  ],
+  "value": {
+    "en": "No hand-rolled setTimeout/clearTimeout: one call per pause, and the pending state is there for your UI to render",
+    "zh": "不再手写 setTimeout/clearTimeout：停顿只执行一次，pending 状态直接给界面渲染"
+  },
+  "sources": [
+    "docs/quick-start.md (read from main @ d01174b, 2026-09-28): useDebouncer / Debouncer / maybeExecute / cancel / flush",
+    "docs/installation.md (2026-09-28): @tanstack/react-pacer package coordinate; adapters re-export the core",
+    "docs/guides/which-pacer-utility-should-i-choose.md (2026-09-28): debouncer discards earlier calls, latest runs after activity stops"
+  ]
+}

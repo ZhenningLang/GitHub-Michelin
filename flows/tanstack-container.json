@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Container does", "zh": "TanStack Container 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "搭建一次"},
+     "en": "Install the SDK and runtime package pair from local tarballs; npm publication hasn't happened yet",
+     "zh": "从本地 tarball 装上 SDK 与运行时这一对包（npm 尚未发布）",
+     "code": "npm install \"$SDK_TARBALL\" \"$RUNTIME_TARBALL\" --ignore-scripts"},
+    {"lane": "you",
+     "en": "Run asset setup in your build and static-host the output on your own origin",
+     "zh": "构建时跑一次资产装配，产物由你的站点静态托管",
+     "code": "prepareRuntimeAssets('public/sandbox')",
+     "component": {"en": "assets setup helper", "zh": "资产装配脚本"}},
+    {"lane": "you", "phase": {"en": "Every session", "zh": "每次会话"},
+     "en": "Create a workspace session in your page code with the project files",
+     "zh": "在页面代码里用项目文件建一个工作区会话",
+     "code": "new AgentSession(files,options)"},
+    {"lane": "them",
+     "en": "A worker kernel boots inside the visitor's browser: virtual filesystem, QuickJS engine, WASM compilers",
+     "zh": "访客浏览器里启动内核：虚拟文件系统、QuickJS、WASM 编译器",
+     "component": {"en": "worker kernel", "zh": "worker 内核"}},
+    {"lane": "you",
+     "en": "Run project commands against that virtual filesystem",
+     "zh": "对虚拟文件系统运行项目命令",
+     "code": "session.run({command:'node',args:['/check.cjs']})"},
+    {"lane": "them",
+     "en": "Executes the guest process in-tab and proxies its HTTP port into an isolated preview frame",
+     "zh": "在标签页里跑起宿主进程，把它的端口代理进隔离预览框"},
+    {"lane": "you",
+     "en": "Snapshot the workspace to browser storage; resume replays it after a reload without reinstalling",
+     "zh": "存档写进浏览器存储，重载后恢复，不用重装依赖",
+     "code": "session.snapshot()"}
+  ],
+  "value": {"en": "A real Vite or Start app runs, previews and resumes inside the browser tab — your server only serves static files",
+            "zh": "真实的 Vite 或 Start 应用在浏览器标签页里运行、预览、存档恢复——服务器只需托管静态文件"},
+  "sources": [
+    "examples/sdk-basic/README.md — tarball install (`npm install \"$SDK_TARBALL\" \"$RUNTIME_TARBALL\" --ignore-scripts`), run/save/reload/resume loop, Node host serves static files only",
+    "src/sdk/PACKAGES.md — `prepareRuntimeAssets('public/sandbox')`, assetBaseURL, owner origin vs separate preview origin, no postinstall download",
+    "examples/sdk-basic/client.js — `new AgentSession(files,options)`, `session.run({command:'node',args:['/check.cjs']})`, `session.kernel.spawn('node',[...])`, WorkerHTTP + URLPreview.mount, session.snapshot()/restore()",
+    "examples/sdk-frameworks/README.md — Vite/Start install, run, preview, save to IndexedDB, resume without reinstall; separate loopback origins; compilation in browser workers",
+    "README.md — virtual filesystem, JavaScript processes, package installation, app previews, saved workspaces; not a complete Node.js or OS implementation"
+  ]
+}

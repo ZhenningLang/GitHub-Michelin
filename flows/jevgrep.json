@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Jevgrep does",
+    "zh": "Jevgrep 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI once and save a provider key",
+      "zh": "一次性装好 CLI，并保存一个供应商 key",
+      "code": "npm install -g @dzhng/jevgrep · jg auth",
+      "component": {
+        "en": "jg CLI (npm)",
+        "zh": "jg CLI（npm）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Install the companion skill into the repo your agent works in",
+      "zh": "在 agent 干活的仓库里装上配套 skill",
+      "code": "jg skill",
+      "component": {
+        "en": "skill installer",
+        "zh": "skill 安装器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the repository a natural-language question",
+      "zh": "用自然语言向仓库提一个问题",
+      "code": "jg \"How are telemetry events recorded and sent?\" ./my-project",
+      "component": {
+        "en": "jg CLI",
+        "zh": "jg CLI"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Explores folders step by step, asking the hosted Jev model which files are relevant",
+      "zh": "按目录元数据与文件预览逐层下探，问 Jev 模型哪些文件相关",
+      "component": {
+        "en": "hierarchical search + Jev",
+        "zh": "逐层检索 + Jev 模型"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Parses Python / TS / JS declarations and picks useful source units from one snapshot",
+      "zh": "解析 Python／TS／JS 声明，从同一份快照里挑出有用源码单元",
+      "component": {
+        "en": "bundled CPython + TS parser",
+        "zh": "内置 CPython + TS 解析器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Prints summary, file leads, line-numbered verbatim excerpts and call sites to stdout",
+      "zh": "把摘要、文件线索、带行号的原文片段和调用位置打到 stdout",
+      "component": {
+        "en": "stdout evidence package",
+        "zh": "stdout 证据包"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your agent starts unfamiliar multi-file work holding the right files and real source excerpts, instead of grepping the tree",
+    "zh": "agent 接手陌生仓库时，开局就拿到对的文件和真实源码片段，不用再 grep 整棵树"
+  },
+  "sources": [
+    "README.md: quick start (npm install -g @dzhng/jevgrep; jg auth; jg skill; jg \"How are telemetry events recorded and sent?\" ./my-project)",
+    "apps/cli/README.md: install/auth/doctor and jg skill usage, credentials path",
+    "docs/architecture.md: hierarchical traversal from directory metadata + content previews; separate relevance judgment; source selection; stdout layout",
+    "skills/jevgrep/SKILL.md: agent-side setup (command -v jg, npm install, jg auth by the user) and search invocation",
+    "package/apps/cli/package.json + packages/core/package.json: pyodide 0.25.1 and typescript 5.9.3 runtime deps; specs/done/jevgrep/assets/python-runtime.md: bundled CPython via Pyodide"
+  ]
+}

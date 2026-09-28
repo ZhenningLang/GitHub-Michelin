@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack DB does", "zh": "TanStack DB 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Wire in", "zh": "接入"}, "en": "Install the framework package plus the collection adapter", "zh": "安装框架包和集合适配包", "code": "npm install @tanstack/react-db @tanstack/query-db-collection"},
+    {"lane": "you", "en": "Declare a collection: where it loads from, its primary key, handlers that write mutations back", "zh": "声明一个集合：数据从哪拉、主键是什么、写操作怎么发回服务端", "code": "queryCollectionOptions({ queryKey: ['todos'], getKey: (item) => item.id })"},
+    {"lane": "them", "en": "Materializes the collection and loads the data through TanStack Query into a normalized in-memory store", "zh": "把集合实例化，经 TanStack Query 把数据拉进内存里的规范化存储", "component": {"en": "DbClient (collections)", "zh": "DbClient（集合）"}},
+    {"lane": "you", "phase": {"en": "Every interaction", "zh": "每次读写"}, "en": "In the component, ask for the data a live query should return", "zh": "在组件里用活查询声明要什么数据", "code": "useLiveQuery({ query: (q) => q.from({ todo: todoCollection }) })"},
+    {"lane": "them", "en": "Recomputes only the changed rows via differential dataflow and re-renders subscribed components", "zh": "用差分数据流只重算变化的行，让订阅的组件重新渲染"},
+    {"lane": "you", "en": "Write by mutating a draft of the row", "zh": "通过改一行数据的草稿来写", "code": "todosCollection.update(todo.id, (draft) => { draft.completed = true })"},
+    {"lane": "them", "en": "Applies the change optimistically, persists it through onUpdate, rolls back if that fails", "zh": "先乐观地生效，再经 onUpdate 落库，失败则自动回滚"}
+  ],
+  "value": {"en": "No hand-patching caches after a write and no filter/memo re-render cascades; every screen stays coherent with the data", "zh": "写完不用手补缓存，也不用层层 filter／memo 重算；各处页面始终和数据保持一致"},
+  "sources": [
+    "docs/quick-start.md (npm install @tanstack/react-db @tanstack/query-db-collection @tanstack/query-core; queryCollectionOptions({ queryKey, queryFn, getKey: (item) => item.id, onUpdate }); useLiveQuery + q.from({ todo: todoCollection }); todosCollection.update(todo.id, (draft) => { draft.completed = true }))",
+    "docs/overview.md (collections, live queries via differential dataflow, optimistic mutations with rollback)",
+    "https://tanstack.com/blog/tanstack-db-0.1-the-embedded-client-database-for-tanstack-query (differential dataflow, incremental recomputation)"
+  ]
+}

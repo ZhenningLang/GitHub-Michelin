@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 969
+- Named-but-unindexed alternatives: 1058
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -26,7 +26,11 @@ shape and are deliberately excluded here.
 | 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
+| @antfu/eslint-config (`antfu/eslint-config`) | `categories/dev-utilities/editors-and-runtimes/tanstack-config.md` |
+| @github/hotkey (`github/hotkey`) | `categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md` |
+| @nanostores/persistent (`nanostores/nanostores`) | `categories/web-ui/state-management/tanstack-persist.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
+| @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
@@ -48,7 +52,3 @@ shape and are deliberately excluded here.
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `bdeansrowe/ltbl-force` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `bdeansrowe/ltbl-ignorance` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `cake` / SQM (OpenWrt) | `categories/networking/wondershaper.md` |
-| `DeviceFarmer/stf` | `categories/mobile-automation/tapflow.md` |

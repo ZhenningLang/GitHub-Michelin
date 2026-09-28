@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack Config does",
+    "zh": "TanStack Config 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the shared lint and build presets as dev dependencies",
+      "zh": "把共享的 lint 与构建预设装成开发依赖",
+      "code": "pnpm add -D @tanstack/eslint-config · pnpm add -D @tanstack/vite-config"
+    },
+    {
+      "lane": "you",
+      "en": "Spread the shared rules into eslint.config.js, then your own overrides",
+      "zh": "在 eslint.config.js 里展开共享规则，再追加自己的覆盖",
+      "code": "...tanstackConfig"
+    },
+    {
+      "lane": "them",
+      "en": "Lints with type-aware TypeScript, import, Node and stylistic rules; skips dist, .nx, coverage",
+      "zh": "用带类型信息的 TS、import、Node 与风格规则检查，跳过产物目录",
+      "component": {
+        "en": "@tanstack/eslint-config",
+        "zh": "@tanstack/eslint-config"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Merge its build preset last in vite.config.ts, naming the entry and source dir",
+      "zh": "在 vite.config.ts 里最后合并它的构建预设，写明入口与源码目录",
+      "code": "tanstackViteConfig({ entry: './src/index.ts', srcDir: './src' })"
+    },
+    {
+      "lane": "them",
+      "en": "Emits ESM + CJS files and .d.ts/.d.cts types with fixed import extensions; fails on type errors",
+      "zh": "产出 ESM 与 CJS 文件及类型声明，补全导入扩展名，类型报错即中止",
+      "component": {
+        "en": "@tanstack/vite-config",
+        "zh": "@tanstack/vite-config"
+      }
+    }
+  ],
+  "value": {
+    "en": "A package that lints and dual-publishes the way TanStack's own libraries do — without hand-writing the ESLint rule set or the dual-format Vite build",
+    "zh": "检查规则和 ESM/CJS 双格式产物与 TanStack 自家库一致，无需手写这两套配置"
+  },
+  "sources": [
+    "docs/eslint.md (pnpm add -D @tanstack/eslint-config; eslint.config.js with ...tanstackConfig; plugin list)",
+    "docs/vite.md (pnpm add -D @tanstack/vite-config; mergeConfig + tanstackViteConfig({ entry: './src/index.ts', srcDir: './src' }); 'Legacy Setup' heading; tsdown adoption note)",
+    "packages/eslint-config/src/index.ts (GLOB_EXCLUDE incl. dist/.nx/coverage; parserOptions.project: true; stylistic/import-x/n plugins)",
+    "packages/vite-config/src/index.ts (formats es+cjs, preserveModules, vite-plugin-dts twice with .d.cts rename, ensureImportFileExtension, process.exit(1) on diagnostics)"
+  ]
+}

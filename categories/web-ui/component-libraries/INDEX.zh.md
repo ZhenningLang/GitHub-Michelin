@@ -12,6 +12,10 @@
 | **Material UI (MUI)** | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | A（6/6） | [→](material-ui.zh.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | B（6/6） | [→](radix-ui.zh.md) |
 | **shadcn/ui** | 一套精心设计、无障碍的 React 组件，以及一种代码分发平台——你把组件复制进项目，完全拥有它们。基于 Tailwind CSS 和 Radix UI 原语构建。 | A（6/6） | [→](shadcn-ui.zh.md) |
+| **TanStack Ranger** | 滑块要双把手、不规则步进数组或对数刻度推子，而标记必须完全归你——无头数值引擎管拖拽、吸附、刻度和百分比，渲染什么都不做；目前只有 React 适配层，API 仍是 0.x。 | C（5/6） | [→](tanstack-ranger.zh.md) |
+| **TanStack Select** | 想要一个标记归你、能搜索多选的下拉框，期待 TanStack 式无头引擎——仅列观察名单：`main` 是空脚手架加一份重写 RFC，npm 上没有包；唯一发布过的是停更、无 ARIA、只支持 React 16 的旧 hook `use-select`。 | C（4/6） | [→](tanstack-select.zh.md) |
+| **TanStack Table** | 表格要排序、过滤、分页、分组、选行，但 `<table>` 的 DOM 和样式必须完全归你——无头引擎算状态和行模型，标记由你自己渲染。 | A（6/6） | [→](tanstack-table.zh.md) |
+| **TanStack Time** | 产品日历要重复日程、拖拽改时长、超订校验，而 DOM 必须归你——无头、Temporal 原生的核心算日期网格、重复展开和冲突。观察名单：未发布的 pre-alpha，npm 上还没有包。 | D（4/6） | [→](tanstack-time.zh.md) |
 
 ## 什么该放这里
 

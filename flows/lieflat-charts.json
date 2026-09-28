@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "The skill does", "zh": "Skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into your agent's skills directory", "zh": "把 skill 装进 agent 的 skills 目录", "code": "npx skills add https://github.com/larashero3-dotcom/lieflat-charts"},
+    {"lane": "you", "en": "Hand the agent your data and the publishing occasion", "zh": "把数据和发布场合一起交给 agent", "code": "Turn this CSV into a Glance chart suitable for a presentation."},
+    {"lane": "them", "en": "Judges the data shape and locks one chart type before drawing", "zh": "先判数据形状，锁定一个图型编号再动笔", "code": "catalog.md", "component": {"en": "chart catalog", "zh": "图型目录"}},
+    {"lane": "them", "en": "Reuses that template's real rendering code from the gallery HTML", "zh": "从 gallery 页复用该模板的真实渲染代码", "code": "templates/lupi-gallery.html", "component": {"en": "gallery templates", "zh": "gallery 模板"}},
+    {"lane": "you", "en": "Optionally steer the palette in plain words, or let it auto-pick", "zh": "可以一句话指定配色，或让它自动选", "code": "Rebuild this chart with the Porcelain preset."},
+    {"lane": "them", "en": "Locks one color system across the whole deliverable", "zh": "整份交付锁定一套色彩系统", "code": "mono-tokens.js · color-presets.js", "component": {"en": "design tokens", "zh": "设计 token"}},
+    {"lane": "them", "en": "Assembles a double-clickable single-file HTML chart page or full report", "zh": "组装成双击即开的单文件 HTML 图表页或整页报告", "component": {"en": "single-file HTML", "zh": "单文件 HTML"}}
+  ],
+  "value": {"en": "Publish-ready HTML charts and bilingual reports in one consistent editorial language — no chart code, no style guide to write", "zh": "同一套编辑视觉语言的可发布 HTML 图表与中英双语报告——不写图表代码，也不用自己定风格"},
+  "sources": ["README.en.md main (retrieved 2026-09-28): Quick Start verbatim 'npx skills add https://github.com/larashero3-dotcom/lieflat-charts --skill lieflat-charts'; prompt examples verbatim 'Turn this CSV into a Glance chart suitable for a presentation.' and 'Rebuild this chart with the Porcelain preset.'", "SKILL.md main (retrieved 2026-09-28): 第零节 hard constraint verbatim 'Lupi 使用 templates/lupi-gallery.html'; 第一节 six-step workflow (判数据形状→catalog 审计候选→锁定图型编号→组页→渲染→自检); intro '无需构建、双击可打开的单文件 HTML 图表或 HTML 报告'; 第六点五节 color auto-pick with Mono fallback, one color system per deliverable", "catalog.md main (retrieved 2026-09-28): header '图型目录 · 63 张', columns 数据形状/场合/读者时间", "mono-tokens.js and color-presets.js present at repo root (contents API 2026-09-28); templates/ gallery HTML present (git tree 2026-09-28)"]
+}

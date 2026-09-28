@@ -14,6 +14,7 @@
 | **Sourcegraph** | Code AI platform with Code Search & Cody | D (4/6) | [→](sourcegraph.md) |
 | **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | B (6/6) | [→](ix.md) |
 | **Repowise** | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. | C (6/6) | [→](repowise.md) |
+| **Jevgrep** | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. | C (4/6) | [→](jevgrep.md) |
 
 ## Comparison matrix
 
@@ -24,6 +25,7 @@
 | [Understand-Anything](understand-anything.md) | ✅ | B (6/6) | Code → explorable knowledge graph an agent can query; younger than graphify, with an unverified star count and egress boundary. |
 | [Ix](ix.md) | ✅ | B (6/6) | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. |
 | [Repowise](repowise.md) | ✅ | C (6/6) | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. |
+| [Jevgrep](jevgrep.md) | ✅ | C (4/6) | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. |
 | [SCIP](scip.md) | ✅ | A (6/6) | SCIP Code Intelligence Protocol |
 | [Sourcegraph](sourcegraph.md) | ✅ | D (4/6) | Code AI platform with Code Search & Cody |
 

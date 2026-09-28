@@ -13,6 +13,11 @@
 | **icon-libraries** | 拿来引入或拷进界面的图标目录——品牌 logo、云架构图标、界面图标集。 | [→](icon-libraries/INDEX.zh.md) |
 | **data-fetching** | 客户端取数与服务端状态缓存——请求去重、保持服务端数据新鲜、写后失效。 | [→](data-fetching/INDEX.zh.md) |
 | **forms** | 表单状态与校验——带类型的字段值、touched 与错误、同步与异步校验、提交处理。 | [→](forms/INDEX.zh.md) |
+| **virtualization** | 列表与网格虚拟化——长列表、表格和聊天流只渲染可见的那些行。 | [→](virtualization/INDEX.zh.md) |
+| **state-management** | 客户端状态 store——放在组件树外的共享响应式值、派生值，以及各框架按选择器订阅。 | [→](state-management/INDEX.zh.md) |
+| **charts** | 嵌进前端的图表库——把数据数组变成坐标轴、柱、线、点，带提示框、尺寸自适应和框架适配。 | [→](charts/INDEX.zh.md) |
+| **keyboard-shortcuts** | 键盘快捷键库——把组合键和连按绑定到动作，处理 Cmd／Ctrl 与输入框，录制并显示用户的按键。 | [→](keyboard-shortcuts/INDEX.zh.md) |
+| **scheduling** | 函数执行时机工具——在客户端给调用做防抖、节流、限流、排队、批处理，配套框架 hooks 可渲染等待状态。 | [→](scheduling/INDEX.zh.md) |
 
 ## 什么该放这里
 

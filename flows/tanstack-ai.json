@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack AI does",
+    "zh": "TanStack AI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the core, the headless client, your framework hook and one provider adapter",
+      "zh": "装上核心、hook 包与一个 provider 适配包",
+      "code": "pnpm add @tanstack/ai @tanstack/ai-client @tanstack/ai-react @tanstack/ai-openai"
+    },
+    {
+      "lane": "you",
+      "en": "Expose the provider key to the server, never the browser",
+      "zh": "把 key 只放服务端，不下发浏览器",
+      "code": "OPENAI_API_KEY"
+    },
+    {
+      "lane": "you",
+      "en": "Write one server route: call chat() with an adapter, return the stream as SSE",
+      "zh": "写一条服务端路由：chat() 选定适配器，把流包成 SSE 返回",
+      "code": "openaiText(\"gpt-5.6\") · toServerSentEventsResponse(stream)"
+    },
+    {
+      "lane": "them",
+      "en": "Turns provider replies into one typed event stream and loops through tool calls until done",
+      "zh": "把各家模型的回复翻成同一条带类型的流，工具没答完就继续循环",
+      "component": {
+        "en": "chat() core loop",
+        "zh": "chat() 核心循环"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Mount the hook in a component, pointed at that route",
+      "zh": "在组件里挂上 hook，指向这条路由",
+      "code": "useChat · fetchServerSentEvents(\"/api/chat\")"
+    },
+    {
+      "lane": "them",
+      "en": "Appends tokens to messages as chunks arrive, and hands you isLoading and stop",
+      "zh": "分片一到就往消息里逐字追加，顺带给 isLoading 和 stop"
+    }
+  ],
+  "value": {
+    "en": "A typed streaming chat UI — no hand-parsing SSE, no per-provider glue code, no runtime surprise when a text-only model gets an image",
+    "zh": "类型安全的流式聊天界面——不用手拆 SSE、不用为每家 provider 写胶水、也不会等纯文本模型收到图片才炸"
+  },
+  "sources": [
+    "README.md Install + Streaming Chat sections (pnpm add @tanstack/ai @tanstack/ai-client @tanstack/ai-react @tanstack/ai-openai; chat({ adapter: openaiText(...) }); toServerSentEventsResponse(stream))",
+    "docs/getting-started/quick-start.md §1 Install (react tab: @tanstack/ai @tanstack/ai-react @tanstack/ai-openai), §2 Stream from the server (chatParamsFromRequest; adapter: openaiText(\"gpt-5.6\"); toServerSentEventsResponse(stream); OPENAI_API_KEY read by the adapter at runtime, do not send to the browser), §3 Render the chat (useChat from @tanstack/ai-react; connection: fetchServerSentEvents(\"/api/chat\"); messages updates as chunks arrive; isLoading; stop)",
+    "docs/comparison/vercel-ai-sdk.md (per-model type narrowing via model-meta.ts; toolDefinition .server()/.client(); agent loop as composed (state) => boolean strategies; AG-UI wire protocol)"
+  ]
+}

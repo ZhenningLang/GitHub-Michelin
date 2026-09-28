@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="759" viewBox="0 0 880 759" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="759" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="601" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="601" rx="10"/>
+<rect class="pillT" x="474" y="40" width="221.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">TanStack Virtual does</text>
+<path class="edge" d="M62,145 L62,169" marker-end="url(#a)"/>
+<path class="edge" d="M62,291 L62,315" marker-end="url(#a)"/>
+<path class="hand" d="M408,375.5 C439.0,375.5 439.0,399 470,399" marker-end="url(#a)"/>
+<path class="hand" d="M472,422.0 C441.0,422.0 441.0,484 410,484" marker-end="url(#a)"/>
+<path class="hand" d="M408,517.0 C439.0,517.0 439.0,541 470,541" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the adapter for your framework</text>
+<text class="c" x="82" y="125">npm install @tanstack/react-virtual</text>
+<rect class="card" x="40" y="171" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="171" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="195" r="10"/>
+<text class="num" x="62" y="199" text-anchor="middle">2</text>
+<text class="t" x="82" y="200">Create a virtualizer: item count, the</text>
+<text class="t" x="82" y="222">scroll element, a size estimate</text>
+<text class="c" x="82" y="246">useVirtualizer</text>
+<text class="comp" x="82" y="269">component: Virtualizer (virtual-core)</text>
+<rect class="card" x="40" y="317" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="317" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="341" r="10"/>
+<text class="num" x="62" y="345" text-anchor="middle">3</text>
+<text class="t" x="82" y="346">Give it a fixed-height scroll box and</text>
+<text class="t" x="82" y="368">an inner sizer as tall as the whole</text>
+<text class="t" x="82" y="390">list</text>
+<text class="c" x="82" y="414">rowVirtualizer.getTotalSize()</text>
+<rect class="cardT" x="472" y="375" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="375" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="399" r="10"/>
+<text class="num" x="494" y="403" text-anchor="middle">4</text>
+<text class="t" x="514" y="404">Watches scroll position and box size;</text>
+<text class="t" x="514" y="426">computes which rows are visible plus</text>
+<text class="t" x="514" y="448">overscan, and their offsets</text>
+<rect class="card" x="40" y="460" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="460" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="484" r="10"/>
+<text class="num" x="62" y="488" text-anchor="middle">5</text>
+<text class="t" x="82" y="489">Render only those rows, absolutely</text>
+<text class="t" x="82" y="511">positioned, with its measuring ref</text>
+<text class="c" x="82" y="535">rowVirtualizer.getVirtualItems() ·</text>
+<text class="c" x="82" y="554">ref={virtualizer.measureElement}</text>
+<rect class="cardT" x="472" y="517" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="517" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="541" r="10"/>
+<text class="num" x="494" y="545" text-anchor="middle">6</text>
+<text class="t" x="514" y="546">Measures real row heights, fixes</text>
+<text class="t" x="514" y="568">positions and keeps the viewed content</text>
+<text class="t" x="514" y="590">from jumping</text>
+<rect class="val" x="28" y="643" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="667">VALUE</text>
+<text class="valT" x="48" y="691">A 10,000-row list mounts and scrolls like a 30-row one, and you never hand-write the offset</text>
+<text class="valT" x="48" y="713">math or give up your own row markup</text>
+</svg>

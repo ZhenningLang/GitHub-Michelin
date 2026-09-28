@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack CLI does",
+    "zh": "TanStack CLI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a new app from any directory",
+      "zh": "在任意目录下脚手架一个新应用",
+      "code": "npx @tanstack/cli create my-app"
+    },
+    {
+      "lane": "them",
+      "en": "Prompts for framework, package manager, toolchain and which add-ons to include",
+      "zh": "提问选哪个框架、包管理器、工具链，以及要包含哪些 add-on"
+    },
+    {
+      "lane": "you",
+      "en": "Answer the prompts, or pass the whole choice as flags",
+      "zh": "回答提问，或把全部选择作为旗标一次给足",
+      "code": "--add-ons tanstack-query,clerk --deployment vercel -y"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves add-on dependencies/conflicts, renders templates, installs, writes .cta.json",
+      "zh": "解析依赖与冲突，渲染模板，安装依赖，写出 .cta.json",
+      "component": {
+        "en": "@tanstack/create engine",
+        "zh": "@tanstack/create 引擎"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start the dev server and open the app",
+      "zh": "启动开发服务器，打开应用",
+      "code": "pnpm dev"
+    }
+  ],
+  "value": {
+    "en": "A running TanStack Start app with auth, database and deployment pre-wired — the integration boilerplate never passes through your hands",
+    "zh": "一个认证、数据库、部署都预先接好的可运行 TanStack Start 应用——集成样板代码完全不经你的手"
+  },
+  "sources": [
+    "README.md Quick Start (npx @tanstack/cli create my-app; --add-ons clerk,drizzle,tanstack-query)",
+    "docs/quick-start.md (create my-app --add-ons ... -y; cd my-app; pnpm dev; .cta.json)",
+    "docs/cli-reference.md (tanstack create options incl. --deployment, --add-ons, -y; .cta.json contract)",
+    "ARCHITECTURE.md (add-on info.json dependsOn/conflicts; EJS template rendering)"
+  ]
+}
