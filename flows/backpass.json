@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "backpass does", "zh": "backpass 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it next to acpx and a coding agent you are already logged into", "zh": "装好它，旁边要有 acpx 和一个已登录的编码 agent", "code": "npm install -g backpass", "component": {"en": "CLI (zero runtime deps)", "zh": "CLI（零运行时依赖）"}},
+    {"lane": "you", "en": "In your repo, initialize once, then start a run", "zh": "在仓库里初始化一次，然后跑一轮", "code": "backpass init · backpass"},
+    {"lane": "them", "en": "Finds this repo's sessions in 7 agents' local stores and shrinks each to its signal", "zh": "从 7 家 agent 的本地记录里找出本仓库的会话，逐个压缩到只剩要点", "component": {"en": "discovery adapters + distiller", "zh": "发现适配器＋蒸馏器"}},
+    {"lane": "them", "en": "A cheap model judges each session against your memory file; claims without a verbatim quote are dropped", "zh": "便宜模型逐个会话对照记忆文件打分；拿不出原文引用的判断直接丢弃", "component": {"en": "analysis pass (via acpx)", "zh": "分析轮（经 acpx）"}},
+    {"lane": "them", "en": "A strong model edits a staging copy; edits need 2 sessions of evidence and must fit the token budget", "zh": "强模型改一份暂存副本；每条改动要有 2 个会话作证，且不能超出 token 预算", "component": {"en": "synthesis pass + mechanical gates", "zh": "合成轮＋机械闸门"}},
+    {"lane": "you", "en": "Review each edit with its quotes and accept or reject it", "zh": "逐条看改动和它引用的原话，接受或拒绝", "code": "backpass apply"},
+    {"lane": "them", "en": "Writes only the accepted edits to AGENTS.md and skills, and remembers what you rejected", "zh": "只把你接受的改动写进 AGENTS.md 和技能，并记住你拒绝过什么", "code": "AGENTS.md"}
+  ],
+  "value": {
+    "en": "Your agent memory is corrected from what actually went wrong in real sessions — you stop rereading transcripts and hand-appending rules",
+    "zh": "记忆文件按真实会话里真出过的错来修——你不用再翻记录、手工往里追加规则"
+  },
+  "sources": [
+    "README 'Quick Start' (npm install -g backpass; Node >= 22.5 and acpx on PATH; backpass init; backpass; backpass apply)",
+    "README 'How It Works' 1-8 (seven harness stores; distillation 96-99%; verbatim-quote check; minGapEvidence 2 sessions; staging copy under .backpass/synthesis/; budget 5,000 tokens; apply is the only writing command; rejections are remembered)",
+    "README 'Two-tier models' (analysis and synthesis passes through acpx)",
+    "package.json (dependencies: {}; bin backpass; engines node >=22.5.0)",
+    "CONTRIBUTING.md (zero runtime dependencies)"
+  ]
+}

@@ -40,9 +40,9 @@
 | jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
 | Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
-| kunchenguid/backpass | add | running |  |  | kunchenguid/backpass |
+| kunchenguid/backpass | add | done | categories/agent-memory/coding-agent-memory/backpass.md |  | kunchenguid/backpass |
 | leejet/stable-diffusion.cpp | add | running |  |  | leejet/stable-diffusion.cpp |
-| macro-inc/macro | add | pending |  |  | macro-inc/macro |
+| macro-inc/macro | add | running |  |  | macro-inc/macro |
 | mikiarlo3/ai-copywriter | add | pending |  |  | mikiarlo3/ai-copywriter |
 | mvanhorn/last30days-skill | add | pending |  |  | mvanhorn/last30days-skill |
 | nexu-io/open-design | sync | pending |  |  | nexu-io/open-design |

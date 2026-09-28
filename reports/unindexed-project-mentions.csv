@@ -199,7 +199,9 @@ Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/a
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
+claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
+claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
