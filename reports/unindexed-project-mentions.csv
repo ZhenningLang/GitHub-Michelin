@@ -367,6 +367,7 @@ GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
 GitNexus,categories/rag-retrieval/code-intelligence/ix.md,,no
 GLiClass (knowledgator/GLiClass),categories/decision-models/laya.md,,no
+GLiNER,categories/healthcare-ai/openmed.md,,no
 glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -573,6 +574,7 @@ MemPalace (MemPalace/mempalace),categories/agent-memory/coding-agent-memory/deja
 memray (Bloomberg),categories/python-tooling/memory-analyzer.md,,no
 Mercury / Postlight Parser,categories/web-scraping/article-extraction/readability-js.md,,no
 mergiraf,categories/agent-tooling/concurrent-editing/weave.md,,no
+Microsoft Presidio,categories/healthcare-ai/openmed.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/depth-anything-v2.md,,no
 Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
@@ -810,6 +812,7 @@ SAGA GIS,categories/geospatial/qgis.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
 ScaNN (Google),categories/rag-retrieval/vector-search/faiss.md,,no
 SciPy / Gurobi,categories/ml-research/pymoo.md,,no
+scispaCy / medSpaCy,categories/healthcare-ai/openmed.md,,no
 Scrapy,categories/web-scraping/crawling-tools/fuck-login.md,,no
 Scrapy + custom,categories/web-scraping/article-extraction/newspaper.md,,no
 scrapy-rotating-proxies,categories/proxy-pool/proxy-pool.md,,no

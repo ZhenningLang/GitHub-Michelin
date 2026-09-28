@@ -1325,3 +1325,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Easel** | Use it when you run accounts on the Chinese platforms (Xiaohongshu/Douyin/Zhihu/Bilibili/…) and want one self-hosted agent workbench covering discover → create → publish → attribute with per-account profiles — accepting a one-month-old, v0.x project and platform risk-control exposure. | Apache-2.0 | B (5/6) | [EN](categories/social-media-management/easel.md) · [中](categories/social-media-management/easel.zh.md) |
+
+### healthcare-ai
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **OpenMed** | Use it when clinical notes must yield typed entities and a redacted copy without patient data ever leaving your network — accepting per-model validation on your own corpus and a single-maintainer release cadence. | Apache-2.0 | B (5/6) | [EN](categories/healthcare-ai/openmed.md) · [中](categories/healthcare-ai/openmed.zh.md) |

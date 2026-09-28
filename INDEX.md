@@ -92,6 +92,7 @@
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
 | **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
 | **meeting-intelligence** | AI meeting copilots and note-takers — record calls, transcribe live, assist in-meeting, and automate the post-meeting follow-up. | [→](categories/meeting-intelligence/INDEX.md) |
+| **healthcare-ai** | Clinical text intelligence you run yourself — medical entity extraction and PHI/PII de-identification on your own hardware, for data that cannot leave the network. | [→](categories/healthcare-ai/INDEX.md) |
 
 
 

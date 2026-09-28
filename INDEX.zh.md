@@ -91,6 +91,7 @@
 | **streaming-clients** | 替代官方 App 观看、收听流媒体平台（YouTube、B 站、SoundCloud……）的第三方客户端——无广告、免账号、可后台播放。 | [→](categories/streaming-clients/INDEX.zh.md) |
 | **computer-vision** | 在图片和视频里检测、识别、分析人脸、物体和人——人脸比对／识别、检测和属性分析，作为你调用的库。 | [→](categories/computer-vision/INDEX.zh.md) |
 | **meeting-intelligence** | AI 会议副驾驶与会议记录器——录制线上会议、实时转写、会中智能辅助，并自动完成会后跟进产物。 | [→](categories/meeting-intelligence/INDEX.zh.md) |
+| **healthcare-ai** | 你自己运行的临床文本智能——在自有硬件上做医学实体抽取与 PHI/PII 去标识化，服务于不能离开网络的数据。 | [→](categories/healthcare-ai/INDEX.zh.md) |
 
 
 

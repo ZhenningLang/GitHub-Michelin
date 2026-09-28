@@ -78,5 +78,5 @@
 | ZJU-REAL/Easel | add | done | categories/social-media-management/easel.md |  | zju-real/easel |
 | daeuniverse/dae | add | done | categories/networking/dae.md | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | done | categories/agent-memory/coding-agent-memory/deja-vu.md | 处理中新开的标签 | vshulcz/deja-vu |
-| maziyarpanahi/openmed | add | running |  | 处理中新开的标签 | maziyarpanahi/openmed |
+| maziyarpanahi/openmed | add | done | categories/healthcare-ai/openmed.md | 处理中新开的标签 | maziyarpanahi/openmed |
 | NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
