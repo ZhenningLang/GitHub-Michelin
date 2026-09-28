@@ -774,6 +774,7 @@ requests-futures,categories/python-tooling/grequests.md,,no
 requests-oauthlib / oauthlib,categories/auth/authomatic.md,,no
 resty.redis via OpenResty bundle,categories/nginx-modules/lua-resty-redis.md,,no
 Resumable.js,categories/nginx-modules/tusd.md,,no
+reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,no
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
@@ -819,6 +820,7 @@ Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
 Slidev,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Slidev (`slidevjs/slidev`),categories/ai-design-generation/open-slide.md,,no
 Slidev / Marp,categories/agent-skills/slides-ppt/INDEX.md,,no
 SmartTube (`yuliskov/SmartTube`),categories/streaming-clients/pipepipe.md,,no
 SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no

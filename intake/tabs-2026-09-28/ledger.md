@@ -48,11 +48,11 @@
 | nexu-io/open-design | sync | done | categories/ai-design-generation/open-design.md |  | nexu-io/open-design |
 | nicedreamzapp/claude-code-local | add | done | categories/llm-inference/local-runtimes/claude-code-local.md |  | nicedreamzapp/claude-code-local |
 | op7418/Humanizer-zh | sync | done | categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md | 新鲜页，sync-entry 按阈值未重核，无改动 | op7418/humanizer-zh |
-| open-slide/open-slide | add | running |  |  | open-slide/open-slide |
+| open-slide/open-slide | add | done | categories/ai-design-generation/open-slide.md |  | open-slide/open-slide |
 | openclaw/openclaw | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md | 新鲜页，sync-entry 按阈值未重核，无改动 | openclaw/openclaw |
 | openedclaude/claude-reviews-claude | skip | skipped |  | 不收：对 Claude Code 泄露源码的解读文章集，无可复用软件；标签保留待你复核 | openedclaude/claude-reviews-claude |
 | palmier-io/palmier-pro | add | running |  |  | palmier-io/palmier-pro |
-| paperclipai/paperclip | add | pending |  |  | paperclipai/paperclip |
+| paperclipai/paperclip | add | running |  |  | paperclipai/paperclip |
 | Piebald-AI/claude-code-system-prompts | skip | skipped |  | 不收：闭源产品 Claude Code 的系统提示词提取物，版权/ToS 风险；标签保留待你复核 | piebald-ai/claude-code-system-prompts |
 | pinchtab/pinchtab | add | pending |  |  | pinchtab/pinchtab |
 | pydantic/monty | add | done | categories/sandboxing/monty.md |  | pydantic/monty |
