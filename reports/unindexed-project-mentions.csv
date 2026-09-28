@@ -28,8 +28,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
+`iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
+`nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-python`,categories/im-automation/openilink-sdk-go.md,,no
@@ -257,6 +259,7 @@ DeepSpeed ZeRO-Inference,categories/llm-inference/local-runtimes/airllm.md,,no
 dehydrated,categories/dev-utilities/ops-infra/certbot.md,,no
 Depth Anything V1,categories/ml-research/depth-anything-v2.md,,no
 Descript,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
+Devicon,categories/web-ui/icon-libraries/thesvg.md,,no
 Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
@@ -418,6 +421,7 @@ Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/astro.md,,no
 HyperFormula,categories/office-editors/handsontable.md,,no
+Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
@@ -457,6 +461,7 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
+KTransformers,categories/llm-inference/local-runtimes/freetoken.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangBot,categories/im-automation/wechat/dify-on-wechat.md,,no
 LangChain agents,categories/ml-research/taskmatrix.md,,no
@@ -469,6 +474,7 @@ Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,n
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice,categories/office-editors/collabora-online.md,,no
+LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
@@ -479,9 +485,11 @@ Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
+LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
 Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
+lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
@@ -517,6 +525,7 @@ Maxwell's Daemon,categories/databases/data-sync/python-mysql-replication.md,,no
 Mayan EDMS,categories/document-management/paperless-ngx.md,,no
 Mayan EDMS / Docspell / Nextcloud,categories/document-management/INDEX.md,,no
 mCaptcha,categories/captcha/capjs.md,,no
+mcp-memory-service,categories/agent-memory/coding-agent-memory/engram.md,,no
 mcp-scan (Invariant Labs),categories/llm-eval/ai-infra-guard.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
@@ -549,7 +558,7 @@ Mozilla Readability (library),categories/reading-tools/just-read.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
-nanochat,categories/ml-research/autoresearch.md,,no
+nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
 Native `<embed>` / browser PDF plugin,categories/pdf-tools/jspdf.md,,no
 Native `<template>` / hand-written DOM,categories/web-ui/frameworks/lit.md,,no
@@ -598,6 +607,7 @@ Official WeChat (no plugin),categories/im-automation/wechat/wechatplugin-macos.m
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
 One API,categories/api-gateway/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
+ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/genoffice.md,,no
 ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
@@ -778,6 +788,7 @@ Showdown,categories/markdown-tools/markdown-it.md,,no
 Sidekiq / BullMQ,categories/task-queue/celery.md,,no
 SigLIP,categories/ml-research/clip.md,,no
 SikuliX,categories/desktop-automation/pyautogui.md,,no
+Simple Icons,categories/web-ui/icon-libraries/thesvg.md,,no
 sing-box,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Single de-AI / translation prompt,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
@@ -801,6 +812,7 @@ Sublime Text,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
+svgl,categories/web-ui/icon-libraries/thesvg.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no

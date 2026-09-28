@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Engram does", "zh": "Engram 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single Go binary", "zh": "装上这个 Go 单文件程序", "code": "brew install gentleman-programming/tap/engram"},
+    {"lane": "you", "en": "Run one setup command per agent, then restart that agent", "zh": "每个 agent 跑一条 setup 命令，再重启它", "code": "engram setup opencode"},
+    {"lane": "them", "en": "Registers its MCP server and hands the agent a memory protocol: when to save, when to search", "zh": "注册 MCP 服务，并给 agent 一份记忆规程：何时存、何时查", "component": {"en": "setup command + plugin", "zh": "setup 命令 + 插件"}},
+    {"lane": "you", "en": "Work as usual: fix bugs, make decisions, end the session", "zh": "照常干活：修 bug、做决定、结束会话"},
+    {"lane": "them", "en": "The agent saves curated notes and a session summary; Engram de-duplicates and indexes them", "zh": "agent 存下精炼笔记和会话总结，Engram 去重并建索引", "code": "mem_save · mem_session_summary", "component": {"en": "SQLite + FTS5 store", "zh": "SQLite + FTS5 存储"}},
+    {"lane": "you", "en": "Open a new session, in the same or another agent", "zh": "开新会话，同一个或换一个 agent 都行"},
+    {"lane": "them", "en": "Brings back prior context: injected by the plugin, or fetched by the agent", "zh": "找回之前的上下文：插件自动注入，或由 agent 主动查", "code": "mem_context · mem_search"}
+  ],
+  "value": {"en": "The next session, in any MCP agent, starts from what was learned instead of from zero", "zh": "下一个会话不管用哪家 agent，都从已学到的东西接着干，不再从零开始"},
+  "sources": [
+    "https://github.com/Gentleman-Programming/engram README Quick start (brew install gentleman-programming/tap/engram; Set up your agent table incl. engram setup opencode)",
+    "README For agents (mem_current_project, mem_context, mem_search, mem_save, mem_session_summary operating contract)",
+    "docs/PLUGINS.md (OpenCode plugin injects Memory Protocol; Claude Code plugin + setup: previous session context injection; bare MCP does not inject)",
+    "docs/ARCHITECTURE.md (agent saves, Engram stores; dedupe and topic upserts; SQLite + FTS5)"
+  ]
+}

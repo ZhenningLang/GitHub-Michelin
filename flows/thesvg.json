@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "theSVG does", "zh": "theSVG 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the component package for your framework", "zh": "装上你所用框架的组件包", "code": "npm install @thesvg/react", "component": {"en": "@thesvg/react npm package", "zh": "@thesvg/react npm 包"}},
+    {"lane": "them", "en": "Ships one typed component per brand, built from the merged icon registry", "zh": "按合并后的图标清单，给每个品牌生成一个带类型的组件", "component": {"en": "icons.json registry", "zh": "icons.json 清单"}},
+    {"lane": "you", "en": "Import the brands you need by slug", "zh": "按 slug 引入你要的品牌", "code": "import Github from '@thesvg/react/github';"},
+    {"lane": "you", "en": "Render it like any SVG element", "zh": "像普通 SVG 元素一样渲染", "code": "<Github width={24} height={24} className=\"text-white\" />"},
+    {"lane": "them", "en": "Per-icon modules let your bundler drop every icon you did not import", "zh": "每个图标一个模块，打包器会丢掉你没引入的全部图标"}
+  ],
+  "value": {"en": "Brand logos land in your UI as typed components, without hunting press kits or shipping the whole catalogue", "zh": "品牌 logo 以带类型的组件进入界面，不用再翻各家媒体资源包，也不会把整个目录打进产物"},
+  "sources": [
+    "packages/react/README.md Installation (npm install @thesvg/react; React 18+ peer) and Usage (import Github from '@thesvg/react/github'; SVGProps support)",
+    "README.md Usage → React (<Github width={24} height={24} className=\"text-white\" />)",
+    "packages/react/package.json (sideEffects: false; ./* subpath exports) and docs-local/data-sources.md (registry merged from simple-icons, svgl, lobe-icons)"
+  ]
+}

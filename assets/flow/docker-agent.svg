@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="902" viewBox="0 0 880 902" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="902" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="744" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="744" rx="10"/>
+<rect class="pillT" x="474" y="40" width="184.3" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Docker Agent does</text>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="edge" d="M62,307 L62,331" marker-end="url(#a)"/>
+<path class="hand" d="M408,369.5 C439.0,369.5 439.0,393 470,393" marker-end="url(#a)"/>
+<path class="edge" d="M494,488 L494,512" marker-end="url(#a)"/>
+<path class="hand" d="M472,573.5 C441.0,573.5 441.0,597 410,597" marker-end="url(#a)"/>
+<path class="hand" d="M408,619.0 C439.0,619.0 439.0,683 470,683" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the CLI and give it one model</text>
+<text class="t" x="82" y="123">key</text>
+<text class="c" x="82" y="147">brew install docker-agent · export</text>
+<text class="c" x="82" y="166">OPENAI_API_KEY=***</text>
+<rect class="card" x="40" y="212" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">Describe the agent in one YAML —</text>
+<text class="t" x="82" y="263">model, instruction, toolsets</text>
+<text class="c" x="82" y="287">agent.yaml</text>
+<rect class="card" x="40" y="333" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="333" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="357" r="10"/>
+<text class="num" x="62" y="361" text-anchor="middle">3</text>
+<text class="t" x="82" y="362">Launch it</text>
+<text class="c" x="82" y="386">docker agent run agent.yaml</text>
+<rect class="cardT" x="472" y="369" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="369" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="393" r="10"/>
+<text class="num" x="494" y="397" text-anchor="middle">4</text>
+<text class="t" x="514" y="398">Runs the loop, executes file/shell/MCP</text>
+<text class="t" x="514" y="420">tools, pausing for your approval per</text>
+<text class="t" x="514" y="442">call</text>
+<text class="comp" x="514" y="470">component: agent loop + TUI</text>
+<rect class="cardT" x="472" y="514" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="514" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="538" r="10"/>
+<text class="num" x="494" y="542" text-anchor="middle">5</text>
+<text class="t" x="514" y="543">Delegates tasks to the sub-agents in</text>
+<text class="t" x="514" y="565">the same config and merges their</text>
+<text class="t" x="514" y="587">results</text>
+<text class="comp" x="514" y="615">component: transfer_task</text>
+<rect class="card" x="40" y="573" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="573" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="597" r="10"/>
+<text class="num" x="62" y="601" text-anchor="middle">6</text>
+<text class="t" x="82" y="602">Publish the config like an image</text>
+<text class="c" x="82" y="626">docker agent share push ./agent.yaml</text>
+<text class="c" x="82" y="645">docker.io/username/my-agent:latest</text>
+<rect class="cardT" x="472" y="659" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="659" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="683" r="10"/>
+<text class="num" x="494" y="687" text-anchor="middle">7</text>
+<text class="t" x="514" y="688">Anyone with the CLI runs your agent</text>
+<text class="t" x="514" y="710">straight from the registry</text>
+<text class="c" x="514" y="734">docker agent run myorg/agent:tag</text>
+<rect class="val" x="28" y="786" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="810">VALUE</text>
+<text class="valT" x="48" y="834">A working multi-tool agent from one versionable file — no glue code, no server — and that</text>
+<text class="valT" x="48" y="856">file is already a shareable artifact</text>
+</svg>

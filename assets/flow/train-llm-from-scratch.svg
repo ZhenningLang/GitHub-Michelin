@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1007" viewBox="0 0 880 1007" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1007" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="849" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="849" rx="10"/>
+<rect class="pillT" x="474" y="40" width="221.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The repo&#x27;s scripts do</text>
+<path class="edge" d="M62,184 L62,208" marker-end="url(#a)"/>
+<path class="edge" d="M62,366 L62,390" marker-end="url(#a)"/>
+<path class="hand" d="M408,457.5 C439.0,457.5 439.0,481 470,481" marker-end="url(#a)"/>
+<path class="hand" d="M472,514.0 C441.0,514.0 441.0,573 410,573" marker-end="url(#a)"/>
+<path class="hand" d="M408,605.0 C439.0,605.0 439.0,629 470,629" marker-end="url(#a)"/>
+<path class="edge" d="M494,719 L494,743" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">Pretrain</text>
+<text class="t" x="82" y="118">Clone and install editable, with the</text>
+<text class="t" x="82" y="140">data/logging extras</text>
+<text class="c" x="82" y="164">pip install -e &quot;.[train]&quot;</text>
+<rect class="card" x="40" y="210" width="368" height="156" rx="8"/>
+<rect class="accY" x="40" y="210" width="4" height="156" rx="2"/>
+<circle class="accY" cx="62" cy="234" r="10"/>
+<text class="num" x="62" y="238" text-anchor="middle">2</text>
+<text class="ph" x="82" y="239">Pretrain</text>
+<text class="t" x="82" y="256">Tokenize a slice of The Pile into an</text>
+<text class="t" x="82" y="278">HDF5 token file</text>
+<text class="c" x="82" y="302">python scripts/prepare_pretrain_data.py</text>
+<text class="c" x="82" y="321">--split train --num_shards 1</text>
+<text class="comp" x="82" y="344">component: data prep scripts</text>
+<rect class="card" x="40" y="392" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="392" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="416" r="10"/>
+<text class="num" x="62" y="420" text-anchor="middle">3</text>
+<text class="ph" x="82" y="421">Pretrain</text>
+<text class="t" x="82" y="438">Launch base pretraining on one or more</text>
+<text class="t" x="82" y="460">GPUs</text>
+<text class="c" x="82" y="484">torchrun --standalone --nproc_per_node=2</text>
+<text class="c" x="82" y="503">scripts/pretrain_base.py</text>
+<rect class="cardT" x="472" y="457" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="457" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="481" r="10"/>
+<text class="num" x="494" y="485" text-anchor="middle">4</text>
+<text class="ph" x="514" y="486">Pretrain</text>
+<text class="t" x="514" y="503">Trains the hand-written Transformer on</text>
+<text class="t" x="514" y="525">next-token loss; saves checkpoints</text>
+<text class="comp" x="514" y="553">component: pretrain_base.py</text>
+<rect class="card" x="40" y="549" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="549" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="573" r="10"/>
+<text class="num" x="62" y="577" text-anchor="middle">5</text>
+<text class="ph" x="82" y="578">Post-train</text>
+<text class="t" x="82" y="595">Start the post-training chain on that</text>
+<text class="t" x="82" y="617">base</text>
+<text class="c" x="82" y="641">bash scripts/run_posttraining.sh</text>
+<rect class="cardT" x="472" y="605" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="605" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="629" r="10"/>
+<text class="num" x="494" y="633" text-anchor="middle">6</text>
+<text class="ph" x="514" y="634">Post-train</text>
+<text class="t" x="514" y="651">Runs SFT, reward model, DPO, PPO and</text>
+<text class="t" x="514" y="673">GRPO in turn, same backbone each time</text>
+<text class="comp" x="514" y="701">component: src/post_training</text>
+<rect class="cardT" x="472" y="745" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="745" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="769" r="10"/>
+<text class="num" x="494" y="773" text-anchor="middle">7</text>
+<text class="ph" x="514" y="774">Post-train</text>
+<text class="t" x="514" y="791">Scores every stage&#x27;s checkpoint on</text>
+<text class="t" x="514" y="813">GSM8K and prints one comparison table</text>
+<text class="comp" x="514" y="841">component: eval_post_training.py</text>
+<rect class="val" x="28" y="891" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="915">VALUE</text>
+<text class="valT" x="48" y="939">A small model you trained yourself, each alignment stage measured on the same axis — no trl,</text>
+<text class="valT" x="48" y="961">peft or transformers in between</text>
+</svg>

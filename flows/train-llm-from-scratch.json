@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The repo's scripts do",
+    "zh": "仓库脚本做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "phase": {
+        "en": "Pretrain",
+        "zh": "预训练"
+      },
+      "en": "Clone and install editable, with the data/logging extras",
+      "zh": "克隆后以可编辑模式安装，带上数据与日志依赖",
+      "code": "pip install -e \".[train]\""
+    },
+    {
+      "lane": "you",
+      "en": "Tokenize a slice of The Pile into an HDF5 token file",
+      "zh": "把 The Pile 的一个分片分词成 HDF5 token 文件",
+      "code": "python scripts/prepare_pretrain_data.py --split train --num_shards 1",
+      "component": {
+        "en": "data prep scripts",
+        "zh": "数据准备脚本"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Launch base pretraining on one or more GPUs",
+      "zh": "在一张或多张 GPU 上启动底座预训练",
+      "code": "torchrun --standalone --nproc_per_node=2 scripts/pretrain_base.py"
+    },
+    {
+      "lane": "them",
+      "en": "Trains the hand-written Transformer on next-token loss; saves checkpoints",
+      "zh": "用下一个词预测损失训练手写 Transformer，定期存 checkpoint",
+      "component": {
+        "en": "pretrain_base.py",
+        "zh": "pretrain_base.py"
+      }
+    },
+    {
+      "lane": "you",
+      "phase": {
+        "en": "Post-train",
+        "zh": "后训练"
+      },
+      "en": "Start the post-training chain on that base",
+      "zh": "在这个底座上启动整条后训练链",
+      "code": "bash scripts/run_posttraining.sh"
+    },
+    {
+      "lane": "them",
+      "en": "Runs SFT, reward model, DPO, PPO and GRPO in turn, same backbone each time",
+      "zh": "依次跑 SFT、奖励模型、DPO、PPO、GRPO，始终复用同一个骨干",
+      "component": {
+        "en": "src/post_training",
+        "zh": "src/post_training"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Scores every stage's checkpoint on GSM8K and prints one comparison table",
+      "zh": "对每个阶段的 checkpoint 跑 GSM8K 评测，打印一张对照表",
+      "component": {
+        "en": "eval_post_training.py",
+        "zh": "eval_post_training.py"
+      }
+    }
+  ],
+  "value": {
+    "en": "A small model you trained yourself, each alignment stage measured on the same axis — no trl, peft or transformers in between",
+    "zh": "自己从零训出一个小模型，各对齐阶段的效果在同一把尺子上量过，全程不靠 trl、peft 或 transformers"
+  },
+  "sources": [
+    "README.md Setup (pip install -e .[train] extras), Step 1 (prepare_pretrain_data.py --split train --num_shards 1 --out data/pile_train.h5), Step 3 (torchrun --standalone --nproc_per_node=2 scripts/pretrain_base.py), Run the Whole Thing (bash scripts/run_posttraining.sh)",
+    "scripts/run_posttraining.sh at b995104 (SFT -> Reward -> DPO -> PPO -> GRPO, then eval_post_training.py per checkpoint and --table)",
+    "docs/howto/train.md (pip install -e \".[train]\")",
+    "grep of all *.py imports at b995104: no transformers / trl / peft imports"
+  ]
+}

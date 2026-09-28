@@ -14,6 +14,7 @@
 | **Grist** | Use it when a team wants a *product* — a self-hosted spreadsheet whose columns are typed database fields with Python formulas, per-row permissions and webhooks — not a component to embed; a French-government-backed Apache-2.0 core with an active monthly release line. | A (5/6) | [→](grist.md) |
 | **ONLYOFFICE Docs** | Use it when your drive/CRM/LMS needs "click a .docx → full editor with real-time co-editing" in one Docker container with true OOXML fidelity — but it is AGPL, the Community edition recommends ≤20 concurrent connections, and the GitHub repo is packaging only. | B (6/6) | [→](onlyoffice-documentserver.md) |
 | **Collabora Online** | Use it when you run (or integrate with) a WOPI-capable file platform like Nextcloud and want the LibreOffice rendering engine in the browser — but active development lives on Gerrit, not this GitHub repo, and there is no UI SDK here to embed. | A (5/6) | [→](collabora-online.md) |
+| **GenOffice** | Use it when *you* (not your product's users) want an AI to edit real `.docx`/`.xlsx`/`.pptx` files on your desktop as reviewable tracked changes, with your own model key, and want a `genoffice` CLI/MCP so coding agents can do the same — but it is a 2-month-old `v0.x` suite from one startup, with default-on analytics and no `.doc`/ODF support. | C (5/6) | [→](genoffice.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Grist](grist.md) | ✅ | A (5/6) | The self-hostable spreadsheet-database *product* with Python formulas and per-row access rules; you run it, you don't embed it — and the free core is open-core behind a source-available full edition. |
 | [ONLYOFFICE Docs](onlyoffice-documentserver.md) | ✅ | B (6/6) | The all-in-one AGPL document server: real .docx/.xlsx/.pptx fidelity, built-in co-editing, one docker container — sized for a "click file → editor" drive, not for rebuilding your product's UI. |
 | [Collabora Online](collabora-online.md) | ✅ | A (5/6) | The LibreOffice-engine document server behind WOPI: maximal format coverage from a mature C++ team — but GitHub is an issue mirror (code lives on Gerrit) and integration means running a WOPI host. |
+| [GenOffice](genoffice.md) | ✅ | C (5/6) | The desktop suite with an AI agent inside the file: byte-preserving OOXML edits as tracked changes, BYOK, plus a CLI/MCP for coding agents — single-user, OOXML/PDF only, and only two months of history. |
 
 ## What belongs here
 

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Docker Agent does", "zh": "Docker Agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and give it one model key", "zh": "装好 CLI，给它一个模型 key", "code": "brew install docker-agent · export OPENAI_API_KEY=***"},
+    {"lane": "you", "en": "Describe the agent in one YAML — model, instruction, toolsets", "zh": "用一个 YAML 写清 agent：模型、指令、工具集", "code": "agent.yaml"},
+    {"lane": "you", "en": "Launch it", "zh": "把它跑起来", "code": "docker agent run agent.yaml"},
+    {"lane": "them", "en": "Runs the loop, executes file/shell/MCP tools, pausing for your approval per call", "zh": "跑循环、执行文件/shell/MCP 工具，每次调用停下等你批准", "component": {"en": "agent loop + TUI", "zh": "agent 循环＋TUI"}},
+    {"lane": "them", "en": "Delegates tasks to the sub-agents in the same config and merges their results", "zh": "把任务委派给配置里的子 agent，再合并结果", "component": {"en": "transfer_task", "zh": "transfer_task"}},
+    {"lane": "you", "en": "Publish the config like an image", "zh": "像推镜像一样发布这个配置", "code": "docker agent share push ./agent.yaml docker.io/username/my-agent:latest"},
+    {"lane": "them", "en": "Anyone with the CLI runs your agent straight from the registry", "zh": "装了这个 CLI 的人直接从 registry 拉起来跑", "code": "docker agent run myorg/agent:tag"}
+  ],
+  "value": {"en": "A working multi-tool agent from one versionable file — no glue code, no server — and that file is already a shareable artifact", "zh": "一个可版本化的文件就是一个能用多工具的 agent——不用胶水代码、不用服务器——它本身已是可分享的构件"},
+  "sources": [
+    "README.md (docker/docker-agent, 2026-09-28): Install section — `brew install docker-agent`, `export OPENAI_API_KEY=sk-...`; Quick Start — `docker agent run agent.yaml`, `docker agent run myorg/agent:tag`",
+    "docs/getting-started/quickstart/index.md (Option D): minimal agent.yaml with model/instruction/toolsets",
+    "docs/tools/shell/index.md: shell commands 'require user confirmation unless --yolo is used'",
+    "docs/concepts/multi-agent/index.md: parent calls `transfer_task`, child runs in a sub-session, results flow back",
+    "docs/concepts/distribution/index.md: `docker agent share push ./agent.yaml docker.io/username/my-agent:latest`"
+  ]
+}

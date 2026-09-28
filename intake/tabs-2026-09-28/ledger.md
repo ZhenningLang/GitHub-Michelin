@@ -21,19 +21,19 @@
 | Dammyjay93/interface-design | add | done | categories/agent-skills/design/ui-taste/interface-design.md |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | done | categories/pentest/wifit3.md |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | done | categories/agent-tooling/supervision-surfaces/whiteboard.md |  | devdotfast/whiteboard |
-| DietrichGebert/ponytail | add | running |  |  | dietrichgebert/ponytail |
-| docker/docker-agent | add | pending |  |  | docker/docker-agent |
-| dontbesilent2025/dbskill | sync | pending |  |  | dontbesilent2025/dbskill |
-| dream-num/univer | sync | pending |  |  | dream-num/univer |
-| EKKOLearnAI/ekko-studio | add | pending |  |  | ekkolearnai/ekko-studio |
-| FareedKhan-dev/train-llm-from-scratch | add | pending |  |  | fareedkhan-dev/train-llm-from-scratch |
-| FlashML-org/FreeToken | add | pending |  |  | flashml-org/freetoken |
-| gastownhall/beads | sync | pending |  |  | gastownhall/beads |
-| genspark-ai/genoffice | add | pending |  |  | genspark-ai/genoffice |
-| Gentleman-Programming/engram | add | pending |  |  | gentleman-programming/engram |
-| glincker/thesvg | add | pending |  |  | glincker/thesvg |
-| harry0703/MangoDisk | add | pending |  |  | harry0703/mangodisk |
-| harry7557558/spirula-studio | add | pending |  |  | harry7557558/spirula-studio |
+| DietrichGebert/ponytail | add | done | categories/agent-skills/engineering/ponytail.md |  | dietrichgebert/ponytail |
+| docker/docker-agent | add | done | categories/agent-frameworks/agent-runtimes/docker-agent.md |  | docker/docker-agent |
+| dontbesilent2025/dbskill | sync | done | categories/agent-skills/personal-collections/knowledge-content/dbskill.md |  | dontbesilent2025/dbskill |
+| dream-num/univer | sync | done | categories/office-editors/univer.md | last_verified=2026-09-27 仍新鲜，sync-entry 按阈值不重核，无改动 | dream-num/univer |
+| EKKOLearnAI/ekko-studio | add | done | categories/agent-tooling/supervision-surfaces/ekko-studio.md |  | ekkolearnai/ekko-studio |
+| FareedKhan-dev/train-llm-from-scratch | add | done | categories/llm-training/study-and-experiments/train-llm-from-scratch.md |  | fareedkhan-dev/train-llm-from-scratch |
+| FlashML-org/FreeToken | add | done | categories/llm-inference/local-runtimes/freetoken.md |  | flashml-org/freetoken |
+| gastownhall/beads | sync | done | categories/agent-tooling/work-state/beads.md |  | gastownhall/beads |
+| genspark-ai/genoffice | add | done | categories/office-editors/genoffice.md |  | genspark-ai/genoffice |
+| Gentleman-Programming/engram | add | done | categories/agent-memory/coding-agent-memory/engram.md |  | gentleman-programming/engram |
+| glincker/thesvg | add | done | categories/web-ui/icon-libraries/thesvg.md |  | glincker/thesvg |
+| harry0703/MangoDisk | add | running |  |  | harry0703/mangodisk |
+| harry7557558/spirula-studio | add | running |  |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | pending |  |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | pending |  |  | infinityloop1308/pipepipe |
 | ix-infrastructure/Ix | add | pending |  |  | ix-infrastructure/ix |
@@ -79,3 +79,4 @@
 | daeuniverse/dae | add | pending |  | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | pending |  | 处理中新开的标签 | vshulcz/deja-vu |
 | maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |
+| NandhaKishorM/laya | add | pending |  | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |

@@ -10,6 +10,7 @@
 | **frameworks** | Front-end frameworks and meta-frameworks for building web applications. | [→](frameworks/INDEX.md) |
 | **component-libraries** | UI component libraries, primitives, and design-system building blocks. | [→](component-libraries/INDEX.md) |
 | **product-tours** | Product tour, onboarding, spotlight, and guided-step UI libraries. | [→](product-tours/INDEX.md) |
+| **icon-libraries** | Icon catalogues you import or copy into a UI — brand logos, cloud-architecture icons, UI glyph sets. | [→](icon-libraries/INDEX.md) |
 
 ## What belongs here
 

@@ -6,17 +6,17 @@ category: work-state
 tags: [ai-agents, task-graph, agent-memory, dolt, versioned-sql, dependency-graph, cli, go, long-horizon-tasks, multi-agent]
 language: Go
 license: MIT
-maturity: v1.x line, active as of 2026-06; author still self-describes as "alpha" (see caveats)
-last_verified: 2026-06-26
+maturity: v1.3.0 (2026-09-15); 1.x line since 2026-04, weekly-to-biweekly releases with frequent schema migrations
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T00:55:01Z
+  pushed_at: 2026-09-28T09:18:20Z
   default_branch: main
-  default_branch_sha: fa4dce4548d8d15d5478b9ad7e4f6ee7cbfabaa1
+  default_branch_sha: fc4d7d395872d633d785a189d46478838001e697
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:55:23Z
+  computed_at: 2026-09-28T09:35:50Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -45,9 +45,9 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
-        homebrew_installs_90d: 7176
+        homebrew_installs_90d: 7489
         homebrew_tier: A
-        release_downloads: 1352727
+        release_downloads: 1445311
         release_assets: 739
         release_tier: B
         signal_basis: homebrew+releases
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 346
-        last_commit_age_days: 1
+        repo_age_days: 351
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 449
-        top1_share: 0.552
-        top3_share: 0.724
+        active_maintainers_12mo: 463
+        top1_share: 0.542
+        top3_share: 0.71
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -79,7 +79,7 @@ health:
 
 # beads
 
-beads（命令 `bd`）是一张带依赖关系、可版本控制的任务/issue 图，为 AI 编码 agent 提供持久的结构化记忆，底层由 Dolt（带版本控制的 SQL）支撑，以单个 Go 二进制（`bd`）发布；由 Steve Yegge 发起，仓库已从 `steveyegge/beads` 迁移到 `gastownhall` 组织。
+编码 agent 每逢上下文被压缩、或者你开个新会话，就忘了自己干到哪一步；手写的 `TODO.md` 又说不清哪件事卡着哪件事。beads 给 agent 一个放在仓库里的小任务库，记下谁挡着谁，一条命令（`bd`）回答“下一步能做什么”。
 
 ![beads — 健康度雷达](../../../assets/health/beads.zh.svg)
 
@@ -87,62 +87,81 @@ beads（命令 `bd`）是一张带依赖关系、可版本控制的任务/issue 
 
 你是个独立开发者，正盯着一个编码 agent 把单个仓库做一场跨好几天的重构。每次会话被压缩、或者你重开一个新会话，agent 就忘掉它手头一半的事：两小时前在 auth 层发现的那个 bug 没了，那条“等迁移落地后再做这个”的备注从来没被持久化到任何地方，而且它会按“塞得进 token 预算的”而非“真正无阻塞的”来悄悄重排工作顺序。你一直靠一个手写的 `MEMORY.md` 来打补丁，可它根本不知道哪些任务阻塞哪些任务；一旦你让 agent 在两个分支上干活，它就会往里乱涂相互冲突的 ID。
 
-于是你在仓库里 `bd init`，把 `bd` 二进制交给 agent。现在它的任务状态活在一张可版本控制、感知依赖关系的图里，和代码一起 commit、一起 merge —— 哈希 ID 让并行分支和多 agent 互不撞车，`bd ready` 恰好浮现那些没被阻塞的工作，`bd remember`/`bd prime` 则用 agent 真正能跨会话带走的记忆，取代那个临时的草稿文件。它离线优先、可像 git 一样分支，而这正是重点：你想要的是一张随仓库一起走的任务图，而不是一个还得登录进去的托管 tracker。
+于是你在仓库里 `bd init`，把 `bd` 二进制交给 agent。现在它的任务状态活在一张可版本控制、感知依赖关系的图里，和代码一起同步——哈希 ID 让并行分支和多 agent 互不撞车，`bd ready` 恰好列出那些没被阻塞的工作，`bd remember`/`bd prime` 则用 agent 真正能跨会话带走的记忆，取代那个临时的草稿文件。你选它而不选 GitHub Issues 或 Linear，是因为它离线优先、能像 git 一样分支、每条命令都有 JSON 输出，天生给 agent 用；你选它而不选一份 markdown，是因为它懂依赖关系。
+
+## 怎么用起来
+
+beads 是一个命令行 issue 追踪器，底层存储是 Dolt——一个像 git 那样给数据做版本管理（分支、对比、合并、推拉）的 SQL 数据库。`bd init` 在项目的 `.beads/` 目录里建好这个库，并默认把 beads 的用法写进 `AGENTS.md`、给 Claude Code 或 Codex 装上钩子，agent 不用你贴说明就会用。之后你基本不用插手：agent 自己登记任务、记下依赖（“A 挡着 B”）、用 `bd ready` 要一份没被挡住的活、原子地认领一条、做完关掉；钩子在每次开会话时跑 `bd prime`，把用法和存下的记忆重新注入。可以把它想成一块会记住“哪张卡在等哪张卡”的共享看板，而且 agent 每天早上都会重读一遍。跨机器同步（`bd dolt push` / `bd dolt pull`）走你现有的 git 远端；默认的“内嵌”模式把数据库跑在 `bd` 进程里，同一时刻只允许一个写入者。
+
+![beads — 主干用户故事](../../../assets/flow/beads.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/beads.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装一次 bd 命令行，再在项目里初始化 — `bd init` — 组件：`bd 命令行二进制`
+2. **beads**：建一个本地带版本的数据库，并把用法写进 AGENTS.md 和 agent 钩子 — `.beads/embeddeddolt/` — 组件：`内嵌 Dolt`
+3. **你**：agent 登记任务，并记下谁挡着谁 — `bd create "Title" -p 0 · bd dep add <child> <parent>`
+4. **beads**：每次开新会话，钩子自动注入用法和存下的记忆 — `bd prime` — 组件：`agent 钩子`
+5. **你**：agent 要一份没被挡住的活，认领一条，做完关掉 — `bd ready · bd update <id> --claim · bd close <id>`
+6. **beads**：关掉的任务放行它挡住的活，下一份清单按真实依赖排
+
+**价值**：每次上下文被压缩或重开会话，agent 都从一张懂依赖的任务单接着干，而不是一份过时的草稿
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **稳定性/成熟度信号** —— 尽管有 v1.x 发布线，作者的发布博文将其描述为 "alpha" 软件，FAQ 也承认 "command flags and data formats can evolve"（截至 2026-06 维护者是否仍把 1.x 视为 alpha 未能确认）。它明确表示*不*适用于 "mission-critical production systems without a tested backup/restore plan"，也不适用于 "large enterprise deployments that need formal compatibility guarantees"。
-- **人类团队 tracker** —— 没有 web UI、跨仓 dashboard、通知，也没有面向非工程人员的访问入口。这是有意为之（以此换取 agent 原生 API）。
-- **跨项目工作** —— 每个数据库都是隔离的；issue 无法引用另一项目里的 issue。服务型 monorepo 或组合视图需要多个 DB 加自定义粘合代码。
-- **大规模多写入** —— 嵌入模式是单写入（文件锁）；并发 agent 需要外部 Dolt server 加一套 "claim work" 约定（一种用户自定义的“谁在做什么”协议，以免两个 agent 抢同一任务）—— 这是实打实的运维开销。
-- **超大 backlog** —— 据称项目自己的 FAQ 建议在超过约 10 万个 issue 后过滤导出或拆分为多个数据库（这是它的指引，未经独立基准测试）。
-- **迁移/锁定** —— 导出似乎仅支持 JSONL，且未发现内置的 GitHub Issues/Jira/Linear 导入器，所以*迁出*需要自定义脚本；无论如何，你都会继承 Dolt 作为存储格式。
-- **后端变动** —— 有记录的 SQLite→Dolt 以及 0.x→1.0 迁移都带 schema 修复步骤；升级并不总是无痛。
-- **DB 脆弱性** —— `[未验证]` 据项目自己的文档/警告，agent 曾对 DB 执行破坏性操作（例如 `DROP TABLE`）；把它当作并非“设好就不管”，务必保留备份。
-- **巴士因子** —— `[未验证]` 项目年轻，据称很大程度上由 AI 构建（"a tool that AI has built for itself"），处于一个从 `steveyegge` 改名为 `gastownhall` 的组织之下；应把单一维护者/弃坑风险视为不可忽视，尤其对于那些你无法承受重新选型成本的 mission-critical agent 工作流。
+- **给人类团队做任务追踪**——官方没有 web 界面、看板或通知，网页视图只有社区项目（例如 `bd-board`）。如果产品经理或非工程人员要看 backlog，托管 tracker 更合适；beads 能和 GitHub/Jira/Linear 同步，但那样你就得同时维护两套系统。
+- **多个 agent 同时写、又没有运维预算**——默认内嵌模式只允许单写入者。并发 agent 需要 `bd init --server` 连一个外部 `dolt sql-server`，备份和升级都得你自己管。
+- **升级没法统一协调**——schema 迁移频繁且实际上单向：v1.3.0（2026-09-15）首次打开就要跑 13 个以上的迁移，新 schema 会把旧版二进制挡在门外，共享 server 从不自动迁移，共用一个库的所有客户端必须一起升级。一群 `bd` 版本不一的机器会撞上 schema 版本守卫。
+- **你要的是稳定无聊的软件**——项目不到一岁，每一两周就出一个正式版或候选版，自己的 changelog 里写着迁移和回滚手册。FAQ 如今称 1.x 已可用于生产、遵循语义化版本，但变动速度依然很高。
+- **一个库里塞超大 backlog**——FAQ 建议超过约 10 万条 issue 时按组件拆成多个库。
+- **不想引入新的存储引擎**——真正的数据源是 Dolt 数据库（`.beads/issues.jsonl` 只是导出，不是备份）。你会继承 Dolt 的格式、磁盘增长（`bd gc` / `bd prune`）和备份方式。
+- **维护高度集中**——绝大多数提交出自一位维护者，项目自述“用 AI agent 做维护”；要在它上面搭长期工作流前先掂量这一点。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Plain markdown `MEMORY.md` / `TODO.md` | 未收录 | 零依赖、人类可读笔记比结构化更重要时，选普通 markdown。 | 零依赖且人类可读，但没有依赖关系图、没有 ready 检测、没有可安全合并的 ID —— 正是 beads 要取代的非结构化做法。 |
-| GitHub Issues (+ `gh` CLI) | 未收录 | 需要带 web UI 和通知的成熟托管 tracker 时，选 GitHub Issues。 | 成熟的托管 tracker，带 web UI/通知/跨仓视图，但在线优先，不限定分支/不版本控制，缺乏面向 agent 的原生依赖图加自动 ready。 |
-| Taskwarrior | 未收录 | 需要久经考验的离线 CLI 任务管理器时，选 Taskwarrior。 | 久经考验的离线 CLI 任务管理器，过滤能力丰富，但没有 SQL/版本控制后端，多 agent 合并能力较弱，也不是围绕 agent JSON 工作流构建的。 |
-| Linear / Jira | 未收录 | 需要面向人类团队的同类最佳 tracker 时，选 Linear 或 Jira。 | 面向人类团队的同类最佳（工作流、dashboard、保证），但重量级、仅在线，不与代码一起版本控制，也非 agent 原生。 |
-| Dolt directly (raw versioned SQL) | 未收录 | 想要版本化 SQL 且愿意自建 issue schema 和 agent 体验时，选原始 Dolt。 | 拥有同样的版本化 SQL 超能力且不带成见 schema，但你得自己搭建 issue schema、依赖逻辑、ready 检测和 agent 体验 —— beads 就是那一层有成见的封装。 |
+| 普通 markdown `MEMORY.md` / `TODO.md` | 未收录 | 单个 agent 只在一个分支上干活、零依赖比“知道谁挡着谁”更要紧时，选普通 markdown。 | 零依赖且人类可读，但没有依赖关系图、没有 ready 检测、没有可安全合并的 ID——正是 beads 要取代的非结构化做法。 |
+| GitHub Issues（+ `gh` CLI） | 未收录 | 由人在浏览器里分拣 backlog 时选 GitHub Issues；只有 agent 还需要一份离线、跟着分支走的副本时才再加 beads。 | 成熟的托管 tracker，带 web 界面、通知和跨仓视图，但在线优先、不随分支做版本；beads 能与它同步（`bd github sync`），代价是两套一起跑。 |
+| Taskwarrior | 未收录 | 个人的离线待办清单选 Taskwarrior；多个分支上的 agent 要合并任务状态时选 beads。 | 久经考验的离线 CLI，过滤能力丰富，但没有带版本的 SQL 后端，不能跨分支按字段合并，也没有 agent 钩子。 |
+| Linear / Jira | 未收录 | 人类团队需要流程、看板和权限时选 Linear 或 Jira；beads 若要用，也只做 agent 的工作层。 | 面向人类团队的同类最佳，但重量级、仅在线、不与代码一起做版本；beads 提供双向同步（`bd linear` / `bd jira`），而不是取代它们。 |
+| 直接用 Dolt（原始带版本 SQL） | 未收录 | 想给自己的 schema 用带版本的 SQL、并愿意自建 agent 体验时，选原始 Dolt。 | 同样的分支/合并存储，不带预设 schema，但 issue 模型、依赖逻辑、ready 检测和 agent 钩子都得你自己写——beads 就是那一层。 |
 
 ## 技术栈
 
-- Go（约 95%）
-- Dolt —— 版本控制的 SQL 后端，通过 CGO 在进程内嵌入
-- JSONL —— 导出/迁移格式
-- CLI 二进制 `bd`
-- 通过 Homebrew / npm(`@beads/bd`)/ shell 安装脚本分发
+- Go（模块基于 Go 1.26），单个 CLI 二进制 `bd`
+- Dolt——带版本控制的 SQL 数据库，CGO 构建下以进程内方式嵌入（`github.com/dolthub/driver`），或连接外部 `dolt sql-server`
+- JSONL——导出/导入与交换格式（`bd export`、`bd import`）
+- 集成：`bd setup` 为 Claude Code、Codex、Cursor、Copilot、Gemini 等提供配置方案；与 GitHub、Jira、Linear、GitLab、Azure DevOps、Notion 的 tracker 同步；PyPI 上另有 `beads-mcp` 包
+- 分发：Homebrew、npm（`@beads/bd`）、安装脚本、`go install`、winget
 
 ## 依赖
 
-- **Dolt 后端** —— 在默认预编译二进制中以进程内嵌入（嵌入模式无需单独安装 Dolt）。`CGO_ENABLED=0` 构建仅支持 server 模式，需要外部 `dolt sql-server`。
-- **Server（多写入）模式** —— 一个外部 Dolt SQL server 进程，加上 host/port/凭据配置。
-- **可选** —— 一个 git remote，用于把 `.beads` 数据库随仓库一起同步（`bd dolt push/pull`）。
+- **内嵌模式（默认）**——除 `bd` 二进制外什么都不用装；Dolt 跑在进程内，数据存于 `.beads/embeddeddolt/`。只有 CGO 构建带它：`CGO_ENABLED=0` 的 `go install` 产出的是仅支持 server 模式的二进制。
+- **Server 模式**——一个外部 `dolt sql-server` 进程（每个项目一个，或用 `bd init --shared-server` 共享一个），加上连接配置。
+- **可选**——一个 git 远端供 `bd dolt push` / `pull` 使用（存放在 `refs/dolt/data` 下），以及要同步的 tracker 的 API 凭据。
 
 ## 运维难度
 
-**中等。** 单二进制嵌入模式确实低摩擦（`bd init` 即可开始；Dolt 跑在进程内；数据存于 `.beads/embeddeddolt/`）。难度上升是因为：嵌入模式是单写入（文件锁），所以任何真正的多 agent/多写入部署都意味着要搭建并运维一个带凭据的外部 Dolt SQL server;Dolt 数据库必须有意识地备份和同步（没有托管服务）；存在有记录的 schema 迁移变动（SQLite 时代以及 v0.63→v1.0 升级需要修复步骤）；而且作者警告 agent 在历史上曾对 DB 有破坏性行为，所以备份/恢复的卫生工作得靠你自己。
+**中等。** 单人内嵌使用摩擦很低：安装、`bd init`，剩下交给 agent。成本出在周边。升级是主要负担——README 给的升级路径是“先同步、`bd export --all`、换二进制、`bd hooks install`”，远端同步或共享的库还要指定唯一一个克隆跑 `bd migrate` 并推送，其余克隆跑 `bd bootstrap`。多写入者就得运维一个 Dolt SQL server。备份归你管（`bd backup` 或 Dolt 远端），数据库也会一直涨，直到你跑 `bd gc`。
 
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——unknown。
-- **维护** —— 截至 2026-06 最后 push 在 2026-06，处于 v1.x 发布线：活跃开发中。但作者仍自称其为「alpha」，FAQ 也警告 flag/数据格式可能演进，所以应视为活跃但易变，而非已稳定。[推断]
-- **治理 / 巴士因子** —— `[未验证]` 由 Steve Yegge 发起；仓库已从 `steveyegge/beads` 迁到 `gastownhall` 组织。纸面上组织封装降低了字面意义上的单人巴士因子，但它据称很大程度由 AI 构建（「a tool AI built for itself」）、该组织看似为此专设——对你无法重新选型的东西，真实的巴士因子 / 弃坑风险不可忽视。
-- **年龄与 Lindy** —— 创建于 2025-10，截至 2026-06 不足一年：太年轻，给不出 Lindy 裁决。高 star 增速（约 2.4 万）是热度驱动的关注，而非长寿履历——别把 star 读作持久性。[推断]
-- **风险旗标** —— `[未验证]` MIT（无重新授权历史）。真正的旗标在运维侧：作者警告 agent 曾执行破坏性 DB 操作（`DROP TABLE`），Dolt 是被锁定的存储格式且仅支持 JSONL 导出，还有记录在案的 SQLite→Dolt / 0.x→1.0 迁移变动。务必保留备份；这不是「设好就不管」。
+- **维护**——截至 2026-09-28 非常活跃：最后一次 push 就在当天，v1.3.0 于 2026-09-15 发布，v1.3.1-rc.1 于 2026-09-21 发布，自 v1.0.0（2026-04-02）以来每一到三周就有新版本。活跃但易变：1.3.0 的发布说明大半在讲 schema 迁移。
+- **治理 / 巴士因子**——由 Steve Yegge 发起，仓库从 `steveyegge/beads` 迁到 `gastownhall` 组织（Go 模块路径仍是 `github.com/steveyegge/beads`）。贡献者人数多，但实际高度集中：评分器统计 12 个月内有 463 名活跃贡献者，但头号贡献者占近期提交的 0.542（历史累计约 4.8k 次提交，第二名约 0.8k）。CONTRIBUTING 写明项目用 AI agent 做维护，合并需维护者批准。
+- **年龄与 Lindy**——创建于 2025-10-12，截至 2026-09 不足一年：太年轻，给不出 Lindy 裁决。一年内约 2.75 万 star、1.8k fork，说明的是关注度，不是持久性。
+- **采用度**——有真实使用信号：npm `@beads/bd` 上月下载 22811 次，Homebrew 90 天安装 7489 次，发布产物累计下载 1445311 次（评分器数据，2026-09-28）。约 1.3k 个未关闭 issue 说明流量很大。
+- **风险旗标**——MIT，无改协议历史。主要旗标在运维侧：Dolt 是锁定的存储格式，schema 迁移单向，且要求所有客户端一起升级。
 
 ## 存疑（未验证）
 
-- **Stars** —— 仓库页面显示约 24.8k，而一篇第三方文章引用的是 18.7k；两者未对齐。`[未验证]`
-- **发布日期** —— WebFetch 返回的 1.0.x 发布日期标为 2024 年，这与 2026 年的活跃开发相矛盾；年份几乎肯定是被读错了。把具体发布日期和 "bi-weekly cadence" 说法都按 `[未验证]` 处理。
-- **分发** —— Dolt 是否被打包进*每一个*安装器（brew/npm/脚本），还是仅限启用 CGO 的预编译二进制，属于推断而非确认。`[未验证]`
-- **"Alpha" 标签** —— 来自作者的发布博文；截至 2026-06 维护者是否仍把 1.0.x 视为 alpha 未能确认。`[未验证]`
-- **性能/规模声明** —— 数千个 issue 下亚 100ms，以及 10 万+ 的指引，都是项目自己 FAQ 的声明，未经独立基准测试。`[未验证]`
-- **迁移/后端细节** —— 仅 JSONL 导出、缺少内置 GitHub/Jira/Linear 导入器，以及有记录的 SQLite→Dolt、0.x→1.0 迁移/修复步骤，均来自项目自己的文档，未经独立验证。`[未验证]`
-- 一篇独立的第三方评述（starlog.is）无法抓取（HTTP 403），所以以上取舍主要依赖项目自己的 README/FAQ/博客加二手摘要。`[未验证]`
+- **“已用于生产”**——FAQ 称 1.x 已在生产中使用、核心语义稳定，这是项目自述；没有核对过独立的生产案例。`[未验证]`
+- **性能/规模**——“数千条 issue 下依然很快”以及约 10 万条就拆库的建议来自项目 FAQ，未经独立基准测试。`[未验证]`
+- **agent 破坏性操作**——本页旧版引用过项目关于 agent 曾对数据库执行破坏性操作（例如 `DROP TABLE`）的警告；2026-09-28 重读时在当前 README/FAQ/AGENTS 文件里没找到这条警告，因此既未确认也未撤回。`[未验证]`
+- **tracker 同步质量**——GitHub/Jira/Linear/GitLab/Azure DevOps/Notion 的同步命令在 CLI 参考里存在；字段、评论和依赖能否完整往返，没有实测。`[未验证]`
+- **维护者集中度**——“头号贡献者约 4.8k 次提交”数的是提交次数，AI 辅助的工作流可能放大这个数；它只是巴士因子的代理指标，不是度量本身。`[推断]`

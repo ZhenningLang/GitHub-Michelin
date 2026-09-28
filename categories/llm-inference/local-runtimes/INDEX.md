@@ -15,6 +15,7 @@
 | **AirLLM** | Use it when a model will not fit your card in the form you need and wall-clock time is free — a library that streams the checkpoint off disk one layer at a time so VRAM costs one layer, at seconds-to-minutes per token. | B (6/6) | [→](airllm.md) |
 | **Shimmy** | Use it when you have GGUF files on disk and want an OpenAI/Ollama/Anthropic-compatible API from one Rust binary with zero runtime dependencies — accepting a one-year-old single-maintainer project whose engine certifies only 26 model+quant combinations. | B (6/6) | [→](shimmy.md) |
 | **Airframe** | Use it when you embed GGUF inference in your own Rust program and need a pure-Rust build with one-shader-language GPU coverage (WebGPU) — accepting a six-month-old, single-contributor engine with 12 certified architecture families and a pending-patent subsystem. | C (4/6) | [→](airframe.md) |
+| **FreeToken** | Use it when one NVIDIA desktop must serve a Mixture-of-Experts model bigger than its VRAM to your coding agent — experts live in host RAM with a GPU cache — accepting a ~2-month-old, Linux-plus-NVIDIA-only v0.1.x engine with no API auth. | B (6/6) | [→](freetoken.md) |
 
 ## Comparison matrix
 
@@ -28,6 +29,7 @@
 | [AirLLM](airllm.md) | ✅ | — | Layer-streaming library that runs a 70B/671B-class model on a 4–12GB card by keeping one layer on the device; the price is a disk read per token (users report 28.6 s/token on a 3B) and a compression option that measures slower, not faster. | |
 | [Shimmy](shimmy.md) | ✅ | — | Single Rust binary serving OpenAI/Ollama/Anthropic-compatible APIs from a GGUF path, auto-discovering Ollama/HF model dirs; the engine (Airframe) certifies only 26 model+quant combos, and its LICENSE file contradicts its Cargo.toml (Apache-2.0 vs MIT). |
 | [Airframe](airframe.md) | ✅ | — | Pure-Rust WebGPU (WGSL) GGUF inference engine — `cargo build` covers NVIDIA/AMD/Intel/Apple Silicon; young, single-contributor, no LICENSE file, and the FSE subsystem carries a pending US patent. |
+| [FreeToken](freetoken.md) | ✅ | — | Serves frontier MoE checkpoints (safetensors) on one consumer NVIDIA card by keeping experts in host RAM and auto-sizing a GPU expert cache, with OpenAI/Anthropic APIs and `ft launch` for coding agents; Linux+NVIDIA only, needs RAM ≈ expert weights, v0.1.x format churn, no HTTP auth. |
 
 ## What belongs here
 
