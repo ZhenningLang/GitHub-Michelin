@@ -271,6 +271,7 @@ Devicon,categories/web-ui/icon-libraries/thesvg.md,,no
 Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 DevUtils (macOS),categories/dev-utilities/data-tools/devtoys.md,,no
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
+Diffusers (huggingface/diffusers),categories/on-device-ml/stable-diffusion-cpp.md,,no
 DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
 Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
 DirectShow / Media Foundation,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
@@ -508,6 +509,7 @@ Lobe Chat,categories/llm-chat-ui/INDEX.md,,no
 lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
+LocalAI (mudler/LocalAI),categories/on-device-ml/stable-diffusion-cpp.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
 Logitech Options+ (official),categories/peripherals/logiops.md,,no
 Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no

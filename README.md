@@ -119,6 +119,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **ComfyUI** | The most powerful and modular diffusion model GUI with a node-graph interface for building complex workflows locally — but it has a steep learning curve and requires significant GPU resources. | GPL-3.0 | B (6/6) | [EN](categories/on-device-ml/comfyui.md) · [中](categories/on-device-ml/comfyui.zh.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B (6/6) | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction and embeddings offline — 29–121M params, but the base model needs a fine-tune plus your own guards on refusals. | Apache-2.0 | B (4/6) | [EN](categories/on-device-ml/needle.md) · [中](categories/on-device-ml/needle.zh.md) |
+| **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | MIT | A (6/6) | [EN](categories/on-device-ml/stable-diffusion-cpp.md) · [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) |
 
 ### function-calling
 

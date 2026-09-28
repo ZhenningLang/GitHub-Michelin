@@ -116,6 +116,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ComfyUI** | 最强大、最模块化的扩散模型 GUI，带节点图界面，用于在本地构建复杂工作流——但学习曲线陡峭，需要大量 GPU 资源。 | GPL-3.0 | B（6/6） | [中](categories/on-device-ml/comfyui.zh.md) · [EN](categories/on-device-ml/comfyui.md) |
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
+| **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/stable-diffusion-cpp.md) |
 
 ### function-calling
 

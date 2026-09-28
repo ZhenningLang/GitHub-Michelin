@@ -41,9 +41,9 @@
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
 | Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
 | kunchenguid/backpass | add | done | categories/agent-memory/coding-agent-memory/backpass.md |  | kunchenguid/backpass |
-| leejet/stable-diffusion.cpp | add | running |  |  | leejet/stable-diffusion.cpp |
+| leejet/stable-diffusion.cpp | add | done | categories/on-device-ml/stable-diffusion-cpp.md |  | leejet/stable-diffusion.cpp |
 | macro-inc/macro | add | running |  |  | macro-inc/macro |
-| mikiarlo3/ai-copywriter | add | pending |  |  | mikiarlo3/ai-copywriter |
+| mikiarlo3/ai-copywriter | add | running |  |  | mikiarlo3/ai-copywriter |
 | mvanhorn/last30days-skill | add | pending |  |  | mvanhorn/last30days-skill |
 | nexu-io/open-design | sync | pending |  |  | nexu-io/open-design |
 | nicedreamzapp/claude-code-local | add | pending |  |  | nicedreamzapp/claude-code-local |
