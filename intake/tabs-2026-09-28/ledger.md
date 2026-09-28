@@ -67,12 +67,12 @@
 | supermemoryai/supermemory | add | done | categories/agent-memory/app-memory/supermemory.md |  | supermemoryai/supermemory |
 | synthetic-sciences/openscience | add | done | categories/deep-research/openscience.md |  | synthetic-sciences/openscience |
 | Thysrael/Horizon | add | done | categories/reading-tools/horizon.md |  | thysrael/horizon |
-| vectorize-io/hindsight | add | running |  |  | vectorize-io/hindsight |
+| vectorize-io/hindsight | add | done | categories/agent-memory/app-memory/hindsight.md |  | vectorize-io/hindsight |
 | vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |
 | VictorTaelin/OptMem | add | running |  |  | victortaelin/optmem |
 | video-db/call.md | add | running |  |  | video-db/call.md |
 | win4r/MuseAI-Skills | skip | skipped |  | 不收：muse.ai 闭源产品运行环境快照（ELF 二进制 + 技能文本），非官方发布；标签保留待你复核 | win4r/museai-skills |
-| yang0/handraw-style | add | pending |  |  | yang0/handraw-style |
+| yang0/handraw-style | add | running |  |  | yang0/handraw-style |
 | zarazhangrui/follow-builders | add | pending |  |  | zarazhangrui/follow-builders |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | ZJU-REAL/Easel | add | pending |  |  | zju-real/easel |

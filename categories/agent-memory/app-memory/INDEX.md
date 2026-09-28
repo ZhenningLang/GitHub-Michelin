@@ -13,6 +13,7 @@
 | **LangMem** | Use it when you need LangMem for the agent-memory category. | B (5/6) | [→](langmem.md) |
 | **SimpleMem** | Use it when your LLM agent must recall long-horizon dialogues without replaying raw history — write-time compression with published LoCoMo numbers, but a young academic repo, a stale PyPI package, and audio/video support that is not benchmark-validated. | B (5/6) | [→](simplemem.md) |
 | **Supermemory** | Use it when you want the whole context stack — fact extraction, contradiction supersession, auto-expiry, per-user profiles, hybrid RAG+memory — behind one API or one self-hosted binary, accepting that the engine itself ships binary-only and the license has flip-flopped once. | A (6/6) | [→](supermemory.md) |
+| **Hindsight** | Use it when your agent must remember users or projects across weeks and answer who/when questions — a self-hosted MIT memory server (Postgres + pgvector) with entity/temporal recall and MCP, but every write costs LLM calls, auth is off by default, and it is pre-1.0. | B (4/6) | [→](hindsight.md) |
 
 ## Comparison matrix
 
@@ -24,7 +25,8 @@
 | [LangMem](langmem.md) | ✅ | B (5/6) | Memory utilities tied to the LangChain/LangGraph ecosystem; stays inside that stack. |
 | [SimpleMem](simplemem.md) | ✅ | B (5/6) | Write-time compression memory library with published LoCoMo evidence; PyPI frozen at 0.1.0 (source-only install), open storage bugs, audio/video support unbenchmarked. |
 | [Supermemory](supermemory.md) | ✅ | A (6/6) | API-first memory + profiles + hybrid RAG as a hosted service or a single self-hosted binary; the engine source is not public, benchmarks are vendor-run, server channel is v0.0.x, and the license went MIT → CC BY-NC-SA → MIT. |
+| [Hindsight](hindsight.md) | ✅ | B (4/6) | Self-hosted memory server with LLM fact extraction, background consolidation and four-way recall; heavier writes and a service to run, in exchange for entity/temporal answers. |
 
 ## What belongs here
 
-Memory as a **component you build into your own agent or product**: drop-in memory APIs and libraries (Mem0, Memori, SimpleMem), ecosystem-bound memory SDKs (LangMem), and stateful-agent platforms whose runtime owns the memory (Letta). The memory's subject is application data — users, entities, long-horizon dialogues. Not memory for coding-agent harnesses you merely run (see `coding-agent-memory`), not graph-shaped engines you stand up as infrastructure (see `graph-memory`).
+Memory as a **component you build into your own agent or product**: drop-in memory APIs and libraries (Mem0, Memori, SimpleMem), self-hosted memory servers (Hindsight), ecosystem-bound memory SDKs (LangMem), and stateful-agent platforms whose runtime owns the memory (Letta). The memory's subject is application data — users, entities, long-horizon dialogues. Not memory for coding-agent harnesses you merely run (see `coding-agent-memory`), not graph-shaped engines you stand up as infrastructure (see `graph-memory`).

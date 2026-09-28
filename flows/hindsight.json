@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Hindsight does", "zh": "Hindsight 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the server container with your LLM API key", "zh": "带上你的 LLM API key 跑起服务端容器", "code": "ghcr.io/vectorize-io/hindsight:latest", "component": {"en": "hindsight-api server", "zh": "hindsight-api 服务端"}},
+    {"lane": "you", "en": "Point a client at it from your agent", "zh": "在你的 agent 里接上客户端", "code": "client = Hindsight(base_url=\"http://localhost:8888\")"},
+    {"lane": "you", "en": "After each turn, hand it what happened", "zh": "每轮结束后，把发生的事交给它", "code": "client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")"},
+    {"lane": "them", "en": "An LLM pass extracts facts, entities and dates, then consolidates them into observations", "zh": "用 LLM 抽出事实、实体和时间，再在后台合并成观察", "component": {"en": "retain + consolidation", "zh": "retain 与合并"}},
+    {"lane": "you", "en": "Before the next reply, ask it a question", "zh": "下一次回复前，向它提问", "code": "client.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")"},
+    {"lane": "them", "en": "Runs semantic, keyword, graph and time searches in parallel, fuses and reranks them to a token budget", "zh": "并行跑语义、关键词、图和时间四路检索，融合重排后按 token 预算截断", "component": {"en": "recall (RRF + cross-encoder)", "zh": "recall（RRF 加重排）"}}
+  ],
+  "value": {"en": "Your agent starts each session with the facts it learned before, without you writing extraction prompts, a vector store and a reranker", "zh": "你的 agent 每次开场就带着之前学到的事实，而不用自己写抽取 prompt、搭向量库和重排器"},
+  "sources": ["README.md main @ 2026-09-28 Quick Start: docker run ... ghcr.io/vectorize-io/hindsight:latest; Python client: client = Hindsight(base_url=\"http://localhost:8888\"); client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\"); client.recall(bank_id=\"my-bank\", query=\"What does Alice do?\")", "README.md Python Embedded: client.retain(bank_id=\"my-bank\", content=\"Alice works at Google\")", "README.md Core Concepts: retain uses an LLM to extract facts/temporal data/entities; Observations consolidated in the background; Recall runs semantic/BM25/graph/temporal in parallel, RRF + cross-encoder reranking, trimmed to token limit", "hindsight-docs/docs/developer/performance.md: recall/retain latency and LLM bottleneck"]
+}

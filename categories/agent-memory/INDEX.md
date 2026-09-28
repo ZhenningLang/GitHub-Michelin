@@ -16,7 +16,7 @@
 
 | Option | Type | One-line tradeoff |
 | --- | --- | --- |
-| [App Memory](app-memory/INDEX.md) | Sub-category | Mem0, Memori, Letta, LangMem, SimpleMem — memory keyed on application data (users, entities, dialogues), embedded at build time. |
+| [App Memory](app-memory/INDEX.md) | Sub-category | Mem0, Memori, Letta, LangMem, SimpleMem, Hindsight — memory keyed on application data (users, entities, dialogues), embedded at build time. |
 | [Coding-Agent Memory](coding-agent-memory/INDEX.md) | Sub-category | claude-mem, Claude Subconscious, ByteRover, OpenViking, Beacon — hook/plugin/MCP capture of coding sessions on your machine or a team server. |
 | [Graph Memory](graph-memory/INDEX.md) | Sub-category | Zep, Graphiti, Cognee — knowledge-graph engines with temporal invalidation or document-to-graph pipelines; heavier than file or vector stores. |
 
