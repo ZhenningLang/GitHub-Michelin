@@ -15,6 +15,7 @@
 | **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | A（6/6） | [→](prefect.zh.md) |
 | **Dagster** | An orchestration platform for the development, production, and observation of data assets. | A（6/6） | [→](dagster.zh.md) |
 | **Temporal** | Temporal service | A（6/6） | [→](temporal.zh.md) |
+| **TanStack Workflow** | 跨天的持久流程必须嵌在 TypeScript 应用里、落在你自己的数据库上，且不想多运维一个 workflow server 时用它——0.0.x，控制平面界面还没有，运维面要自己拼。 | C（6/6） | [→](tanstack-workflow.zh.md) |
 
 
 ## 对比矩阵
@@ -25,6 +26,7 @@
 | [Gaia](gaia.zh.md) | ✅ | D（6/6） | 当作只读参考研究「流水线即编译插件」设计时用它——仓库已归档废弃，绝不可用于新的生产部署。 |
 | [Airflow Maintenance DAGs](airflow-maintenance-dags.zh.md) | ✅ | D（4/6） | 当自管 Airflow 需要现成 DAG 清理元数据库行和陈旧日志时用它——它执行依赖版本内部结构的破坏性删除，先 dry-run 并备份。 |
 | [n8n](n8n.zh.md) | ✅ | A（4/6） | 可视化优先的工作流自动化，内置 400 余种集成且原生支持 AI；可自托管，但采用 fair-code 许可，不适合实时流处理。 |
+| [TanStack Workflow](tanstack-workflow.zh.md) | ✅ | C（6/6） | Headless 的 TS 持久执行，落在你自己的存储上：不用像 Temporal 那样多运维一个 server，但 store、cron 与运维面都要在 0.0.x 上自己拼。 |
 
 ## 什么该放这里
 

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "TanStack Workflow does",
+    "zh": "TanStack Workflow 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the engine — add zod if you want runtime schema validation",
+      "zh": "装上引擎，要运行时校验就再加 zod",
+      "code": "pnpm add @tanstack/workflow-core zod"
+    },
+    {
+      "lane": "you",
+      "en": "Declare a workflow: id, zod input/output, a plain async handler",
+      "zh": "声明 workflow：输入输出用 zod，主体是普通函数",
+      "code": "createWorkflow"
+    },
+    {
+      "lane": "you",
+      "en": "Put side effects in ctx.step, long waits in ctx.approve",
+      "zh": "副作用放进 ctx.step，长等待交给 ctx.approve",
+      "code": "ctx.step(id, fn)"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the handler, appends every finished step to the append-only log; a pause just returns",
+      "zh": "执行 handler，完成事实逐条追加进日志；到等待点就返回",
+      "component": {
+        "en": "workflow-core engine",
+        "zh": "workflow-core 引擎"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Later, resume the same run from any process — deliver the approval or webhook payload",
+      "zh": "之后从任意进程接着跑这个 run：把审批结果或回调载荷交回去",
+      "code": "runWorkflow · approval: { approvalId, approved: true }"
+    },
+    {
+      "lane": "them",
+      "en": "Replays the log so recorded steps never re-execute, and the run continues past the pause",
+      "zh": "重放日志：录过的步骤不再执行，流程从等待点之后继续",
+      "component": {
+        "en": "replay engine",
+        "zh": "重放引擎"
+      }
+    }
+  ],
+  "value": {
+    "en": "Day-long flows survive restarts — the charge runs once, waiting is a stored row, nothing re-executes",
+    "zh": "跨天的流程扛得住重启：扣款只执行一次，等待变成库里的行，没有重放也没有丢状态"
+  },
+  "sources": [
+    "README.md Install section (pnpm add @tanstack/workflow-core) and Example section (createWorkflow, ctx.step('charge-card', ...), ctx.approve, runWorkflow); Core Ideas (\"Side effects live inside `ctx.step(id, fn)`\", \"ctx.waitForEvent, ctx.approve, ctx.sleep\")",
+    "docs/quick-start.md Install (pnpm add @tanstack/workflow-core zod) and Recipe: pause for human approval (runWorkflow({ workflow: order, runId, runStore: store, approval: { approvalId, approved: true } }))",
+    "docs/concepts/replay-and-resume.md (\"Found → return the recorded result ... fn is NOT called\"; resume re-runs the handler from the top)",
+    "docs/overview.md (mental model: append-only event log; runtime shape: @tanstack/workflow-core as the replay engine)"
+  ]
+}

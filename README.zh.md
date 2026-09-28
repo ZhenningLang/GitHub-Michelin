@@ -800,6 +800,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | Apache-2.0 | A（6/6） | [EN](categories/workflow-orchestration/prefect.md) · [中](categories/workflow-orchestration/prefect.zh.md) |
 | **Dagster** | An orchestration platform for the development, production, and observation of data assets. | Apache-2.0 | A（6/6） | [EN](categories/workflow-orchestration/dagster.md) · [中](categories/workflow-orchestration/dagster.zh.md) |
 | **Temporal** | Temporal service | MIT | A（6/6） | [EN](categories/workflow-orchestration/temporal.md) · [中](categories/workflow-orchestration/temporal.zh.md) |
+| **TanStack Workflow** | 跨天的持久流程必须嵌在 TypeScript 应用里、落在你自己的数据库上，且不想多运维一个 workflow server 时用它——0.0.x，控制平面界面还没有，运维面要自己拼。 | MIT | C（6/6） | [中](categories/workflow-orchestration/tanstack-workflow.zh.md) · [EN](categories/workflow-orchestration/tanstack-workflow.md) |
 
 ### llm-inference
 

@@ -278,6 +278,7 @@ date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-ti
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
+DBOS (`dbos-inc/dbos-transact-ts`),categories/workflow-orchestration/tanstack-workflow.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
 ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
 DEAP,categories/ml-research/pymoo.md,,no
@@ -472,6 +473,7 @@ imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
 Infisical,categories/secrets-management/openbao.md,,no
+Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
 InsightFace / face_recognition / CompreFace / facenet-pytorch,categories/computer-vision/INDEX.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
@@ -968,6 +970,7 @@ tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
 Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 TrendRadar,categories/reading-tools/follow-builders.md,,no
+Trigger.dev (`triggerdotdev/trigger.dev`),categories/workflow-orchestration/tanstack-workflow.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
 tsdown (`rolldown/tsdown`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no

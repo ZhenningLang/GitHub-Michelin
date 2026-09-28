@@ -803,6 +803,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Prefect** | Prefect is a workflow orchestration framework for building resilient data pipelines in Python. | Apache-2.0 | A (6/6) | [EN](categories/workflow-orchestration/prefect.md) · [中](categories/workflow-orchestration/prefect.zh.md) |
 | **Dagster** | An orchestration platform for the development, production, and observation of data assets. | Apache-2.0 | A (6/6) | [EN](categories/workflow-orchestration/dagster.md) · [中](categories/workflow-orchestration/dagster.zh.md) |
 | **Temporal** | Temporal service | MIT | A (6/6) | [EN](categories/workflow-orchestration/temporal.md) · [中](categories/workflow-orchestration/temporal.zh.md) |
+| **TanStack Workflow** | Use it when durable, multi-day flows must live inside your TypeScript app on your own database — no workflow server to operate; expect a 0.0.x assembly with no control-plane UI. | MIT | C (6/6) | [EN](categories/workflow-orchestration/tanstack-workflow.md) · [中](categories/workflow-orchestration/tanstack-workflow.zh.md) |
 
 ### llm-inference
 
