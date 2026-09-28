@@ -296,6 +296,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Sourcegraph** | Code AI platform with Code Search & Cody | NOASSERTION | D (4/6) | [EN](categories/rag-retrieval/sourcegraph.md) · [中](categories/rag-retrieval/sourcegraph.zh.md) |
 | **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | Apache-2.0 | B (6/6) | [EN](categories/rag-retrieval/helix-db.md) · [中](categories/rag-retrieval/helix-db.zh.md) |
 | **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | Apache-2.0 | B (6/6) | [EN](categories/rag-retrieval/ix.md) · [中](categories/rag-retrieval/ix.zh.md) |
+| **Repowise** | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. | AGPL-3.0 | C (6/6) | [EN](categories/rag-retrieval/repowise.md) · [中](categories/rag-retrieval/repowise.zh.md) |
 
 ### llm-eval
 
