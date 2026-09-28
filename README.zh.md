@@ -354,6 +354,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Guizang PPT Skill** | 当你想让 agent 把文章变成有设计感的单文件 HTML 翻页 PPT（杂志风或瑞士风）时用它。 | AGPL-3.0-only | C（4/5） | [中](categories/agent-skills/slides-ppt/guizang-ppt.zh.md) · [EN](categories/agent-skills/slides-ppt/guizang-ppt.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | AGPL-3.0-only | D（3/5） | [中](categories/agent-skills/visual-content/guizang-social-card.zh.md) · [EN](categories/agent-skills/visual-content/guizang-social-card.md) |
 | **handraw-style** | 当你想把编号化的手绘画风、版面图型与主题色（279/122/36）交给装好的 agent skill 拼成中英双语生图提示词时用它。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/handraw-style.zh.md) · [EN](categories/agent-skills/visual-content/handraw-style.md) |
+| **Lieflat Charts** | 当你想让编码助手把数据做成模板锁定、可直接发布的单文件 HTML 图表或 12 套中英双语整页报告、整套交付共用一种编辑风视觉语言时用它。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/agent-skills/visual-content/lieflat-charts.zh.md) · [EN](categories/agent-skills/visual-content/lieflat-charts.md) |
 | **SdPaint** | 当你已在跑 AUTOMATIC1111＋ControlNet、想要一个实时草图转图的绘画循环时用它——但它自 2024 年起停滞，且自身不带任何模型。 | MIT | D（3/6） | [中](categories/ai-design-generation/sdpaint.zh.md) · [EN](categories/ai-design-generation/sdpaint.md) |
 ### dev-utilities
 

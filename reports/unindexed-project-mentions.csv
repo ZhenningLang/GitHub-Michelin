@@ -109,6 +109,7 @@ Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md
 Apache APISIX,categories/api-gateway/kong.md,,no
 Apache Avro,categories/networking/thriftpy.md,,no
 Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
+Apache ECharts,categories/agent-skills/visual-content/lieflat-charts.md,,no
 Apache ECharts (`apache/echarts`),categories/web-ui/charts/tanstack-charts.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
@@ -197,6 +198,7 @@ Character role-play prompt,categories/agent-skills/context-engineering/soul-md.m
 Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
 Charles,categories/debugging-proxy/whistle.md,,no
 Charles / Fiddler,categories/debugging-proxy/INDEX.md,,no
+Chart.js,categories/agent-skills/visual-content/lieflat-charts.md,,no
 Chart.js (`chartjs/Chart.js`),categories/web-ui/charts/tanstack-charts.md,,no
 Chatbox / Cherry Studio,categories/team-chat/hivechat.md,,no
 ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
