@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Form does", "zh": "TanStack Form 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装对应框架的适配包", "code": "@tanstack/react-form"},
+    {"lane": "you", "en": "Create the form from typed default values, validators and a submit handler", "zh": "用带类型的默认值、校验器和提交函数创建表单", "code": "useForm({ defaultValues: defaultPerson })", "component": {"en": "FormApi (form state)", "zh": "FormApi（表单状态）"}},
+    {"lane": "them", "en": "Infers every field name and type from the default values; tracks value, touched and errors", "zh": "从默认值推断每个字段名和类型，记录值、是否碰过、错误"},
+    {"lane": "you", "en": "Render each field through its render prop and wire it to your own input", "zh": "用渲染函数渲染每个字段，接到你自己的输入组件上", "code": "form.Field"},
+    {"lane": "them", "en": "Runs validators on change, blur or submit; debounces and cancels async checks", "zh": "在输入、失焦或提交时跑校验，异步校验自动防抖和取消"},
+    {"lane": "you", "en": "Submit from your form element", "zh": "在表单元素上触发提交", "code": "form.handleSubmit()"},
+    {"lane": "them", "en": "Validates everything, then calls your onSubmit with the typed values only if valid", "zh": "全量校验，通过后才把带类型的值交给你的 onSubmit"}
+  ],
+  "value": {"en": "No per-input useState, touched flags or error bookkeeping; a typo in a field name is a compile error", "zh": "不再给每个输入手写 useState、touched 标记和错误状态；字段名写错直接编译报错"},
+  "sources": [
+    "docs/installation.md (react: @tanstack/react-form)",
+    "docs/philosophy.md (useForm({ defaultValues: defaultPerson }), infer types from runtime defaults, controlled inputs)",
+    "docs/framework/react/quick-start.md (useForm, form.Field render prop with field.state.value / field.handleChange, form.handleSubmit())",
+    "docs/framework/react/guides/validation.md (onChange/onBlur/onSubmit validators, onChangeAsync, asyncDebounceMs)"
+  ]
+}

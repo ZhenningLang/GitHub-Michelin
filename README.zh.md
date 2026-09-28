@@ -874,6 +874,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Router** | 当 URL 就是应用的状态容器、写错的链接／参数／查询值必须在编译期报错而不是吓到用户时用它——但路由只是寥寥几页静态页面时不要用，需要 RSC 优先架构时选 Next.js。 | MIT | A（6/6） | [中](categories/web-ui/frameworks/tanstack-router.zh.md) · [EN](categories/web-ui/frameworks/tanstack-router.md) |
 | **theSVG** | 需要从一份清单里拿大量品牌 logo（彩色版、文字标、AI 厂商）和 AWS／Azure／GCP 架构图标，形式是带类型的组件、CDN 地址或命令行时用它——但许可证要自己逐个核对，Azure 图标标成 MIT 与微软条款不符。 | MIT | B（6/6） | [中](categories/web-ui/icon-libraries/thesvg.zh.md) · [EN](categories/web-ui/icon-libraries/thesvg.md) |
 | **TanStack Query** | 前端组件各自手写请求、loading、error，写完还显示旧数据时用它——按键共享的服务端状态缓存，后台自动重拉、写后失效；它不是客户端状态库，也不是按实体归一化的 GraphQL 缓存。 | MIT | A（5/6） | [中](categories/web-ui/data-fetching/tanstack-query.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-query.md) |
+| **TanStack Form** | 表单里每个输入手写状态、touched 和异步校验防抖时用它——无头、带类型的表单 store，字段级和表单级校验，覆盖 React、Vue、Angular、Solid、Svelte、Lit；v2（alpha）会改日常 API。 | MIT | A（6/6） | [中](categories/web-ui/forms/tanstack-form.zh.md) · [EN](categories/web-ui/forms/tanstack-form.md) |
 
 ### proxy-pool
 

@@ -81,10 +81,10 @@
 | maziyarpanahi/openmed | add | done | categories/healthcare-ai/openmed.md | 处理中新开的标签 | maziyarpanahi/openmed |
 | NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
 | TanStack/query | add | done | categories/web-ui/data-fetching/tanstack-query.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/query |
-| TanStack/table | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
+| TanStack/table | add | running |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
 | TanStack/router | add | done | categories/web-ui/frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
 | TanStack/virtual | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
-| TanStack/form | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
+| TanStack/form | add | done | categories/web-ui/forms/tanstack-form.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
 | TanStack/db | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
 | TanStack/ai | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
 | TanStack/cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |

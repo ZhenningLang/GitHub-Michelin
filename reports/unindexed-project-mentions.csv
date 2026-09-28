@@ -231,6 +231,7 @@ Conductor / Crystal / Claude Squad,categories/agent-tooling/supervision-surfaces
 Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
+Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
@@ -331,6 +332,7 @@ Figma,categories/diagramming/excalidraw.md,,no
 Figma + plugins,categories/agent-skills/visual-content/guizang-social-card.md,,no
 Figma / visual design tool,categories/agent-skills/design/visual-artifacts/huashu-design.md,,no
 Filebrowser,categories/document-management/copyparty.md,,no
+Final Form (`final-form/final-form`),categories/web-ui/forms/tanstack-form.md,,no
 Fine-tuning / LoRA stacks,categories/ml-research/llm-circuit-finder.md,,no
 Firebase,categories/databases/database-engines/supabase.md,,no
 Flink CDC,categories/databases/data-sync/go-mysql-elasticsearch.md,,no
@@ -339,6 +341,7 @@ Flutter,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 Follow (RSSNext),categories/reading-tools/horizon.md,,no
 FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
 Fooocus,categories/on-device-ml/comfyui.md,,no
+Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
@@ -777,6 +780,7 @@ Raw query dicts (no DSL),categories/databases/database-clients/elasticsearch-dsl
 Raw Reddit REST + requests,categories/web-scraping/crawling-tools/praw.md,,no
 Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
+React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
 readability-lxml,categories/web-scraping/article-extraction/newspaper.md,,no
 Reader View extensions (various),categories/reading-tools/just-read.md,,no
@@ -928,6 +932,7 @@ urwid,categories/terminal-ui/asciimatics.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
+VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
 Vendor prompt galleries (OpenAI/Anthropic example galleries),categories/agent-skills/prompt-engineering/prompts-chat.md,,no
 Vercel AI SDK,categories/agent-frameworks/workflow-builders/agent-native.md,,no
