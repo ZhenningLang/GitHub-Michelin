@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "the skill does", "zh": "技能做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into your agent's skills directory", "zh": "一条命令把技能装进 agent 的技能目录"},
+    {"lane": "you", "en": "Ask for a deck based on your article, naming page count and images", "zh": "说一句：基于这篇文章做一份瑞士风 PPT，定页数和配图", "code": "帮我基于这篇文章做一份瑞士风 PPT"},
+    {"lane": "them", "en": "Walks the fixed brief: pick Style A or B, then a 7-question clarification", "zh": "按固定工作流选 Style A 或 B，再过 7 问澄清清单", "component": {"en": "SKILL.md workflow", "zh": "SKILL.md 工作流"}},
+    {"lane": "them", "en": "Copies the locked template and fills only named layouts (S01-S22)", "zh": "拷贝锁定模板，只往具名版式（S01-S22）里填内容", "code": "assets/template-swiss.html"},
+    {"lane": "you", "en": "Run the validator until the deck passes the layout rules", "zh": "跑校验器，直到 deck 通过版式规则", "code": "node scripts/validate-swiss-deck.mjs path/to/index.html"},
+    {"lane": "them", "en": "Ships one self-contained HTML deck with presenter mode built in (press P)", "zh": "交付自带演讲者模式的单文件 HTML deck（按 P 进入）", "component": {"en": "presenter runtime", "zh": "演讲者运行时"}}
+  ],
+  "value": {"en": "A designed, self-checked slide deck as one HTML file - no slide software, no build step, no server", "zh": "一份设计过、自检过的 deck 落在单个 HTML 文件里——不用 PPT 软件、不用构建、不用服务器"},
+  "sources": ["README.md main @ 2026-09-28: 30秒开始 (`npx skills add https://github.com/op7418/guizang-ppt-skill --skill guizang-ppt-skill`; 示例请求「帮我基于这篇文章做一份瑞士风 PPT，控制在 7 页左右，需要 2-3 张配图」)", "README.md 使用流程 1-9: 选择风格、7 问需求澄清、拷贝模板 assets/template.html / assets/template-swiss.html、填充具名版式、对照 checklist 自检", "README.md Style B 瑞士风: 22 个具名版式 S01-S22、校验命令 `node scripts/validate-swiss-deck.mjs path/to/index.html`", "README.md 演讲者模式: 点击右下角 P 进入演讲者视图；按 B 关闭 WebGL 低性能静态模式"]
+}

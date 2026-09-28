@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Planning with Files does", "zh": "Planning with Files 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill into your agent", "zh": "把 skill 装进你的 agent", "code": "npx skills add OthmanAdi/planning-with-files --skill planning-with-files -g"},
+    {"lane": "you", "en": "Start a long task and let the skill write the plan", "zh": "开一个长任务，让 skill 写下计划", "code": "/plan", "component": {"en": "SKILL.md + templates", "zh": "SKILL.md + 模板"}},
+    {"lane": "them", "en": "Keeps state in three files on disk", "zh": "把状态放进磁盘上的三个文件", "code": "task_plan.md · findings.md · progress.md"},
+    {"lane": "them", "en": "Re-injects the active plan into the window every turn", "zh": "每回合把当前计划重新注进窗口", "component": {"en": "lifecycle hooks", "zh": "生命周期 hooks"}},
+    {"lane": "you", "en": "Let the context die — /clear, compaction, crash", "zh": "放任上下文死掉——/clear、压缩、崩溃", "code": "/clear"},
+    {"lane": "them", "en": "Gated mode holds the stop while any phase is in_progress", "zh": "gated 模式下，只要还有阶段在做就不让停", "code": "--gated", "component": {"en": "Stop gate", "zh": "Stop 门"}}
+  ],
+  "value": {"en": "The plan outlives every context reset; done means the on-disk checkboxes say so, not the model's confidence", "zh": "计划熬过每次上下文重置，“做完没”由盘上的勾选框说了算，而不是模型自信"},
+  "sources": ["README.md master @ 2026-09: Quick Install (npx skills add OthmanAdi/planning-with-files --skill planning-with-files -g)", "README.md 3-file pattern block (task_plan.md / findings.md / progress.md); Built-for-long-running-tasks section (re-injected every turn, hash-attested, 'can hold the agent's stop until the plan reports complete')", "README.md Plan-mode handoff ('invoke /plan and let the skill create the files'); v3.13 changelog row (/pwf --gated <name>)", "docs/long-running-agent-tasks.md via README safeguards table (Stop gate: holds only while an in_progress phase remains, block cap, stall detection)"]
+}

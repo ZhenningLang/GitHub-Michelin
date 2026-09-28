@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Qiushi-Skill does", "zh": "求是 Skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install into your harness with the npm CLI", "zh": "用 npm CLI 装进你的 harness", "code": "npx qiushi-skill install --target claude-code --scope user"},
+    {"lane": "them", "en": "Inject the ~50-line arming-thought kernel at every session start", "zh": "每次会话启动注入约 50 行的武装思想 kernel", "component": {"en": "arming-thought kernel", "zh": "武装思想入口 skill"}},
+    {"lane": "you", "en": "Assign work as usual, or call one method directly", "zh": "照常派活，或直接点一个方法", "code": "/investigation-first · /contradiction-analysis"},
+    {"lane": "them", "en": "Load the matching method skill only when clearly applicable; direct tasks load nothing", "zh": "仅在明确适用时加载对应方法，直接执行类不加载"},
+    {"lane": "them", "en": "Dispatch read-only investigators and fresh-context critics when evidence is due", "zh": "该拿证据时派只读调查员与新鲜上下文批评者", "component": {"en": "investigator subagent", "zh": "investigator 子代理"}}
+  ],
+  "value": {"en": "A thinking discipline — investigate first, main contradiction, verified means done — live from session start", "zh": "先调查、抓主要矛盾、验证过才算完成——会话一开始就生效的思维纪律"},
+  "sources": ["README.md main (fetched 2026-09-28): 安装 — npx qiushi-skill install --target claude-code --scope user; 使用方式 — arming-thought kernel (~50 lines) auto-injected at session start; 手动命令入口 — /contradiction-analysis, /investigation-first, ...; agents/ — investigator (read-only, facts/inferences/unknowns report), self-critic (fresh context)", "docs/platforms.md (fetched 2026-09-28): Claude Code full plugin bundle + SessionStart hook auto-injects the entry skill"]
+}

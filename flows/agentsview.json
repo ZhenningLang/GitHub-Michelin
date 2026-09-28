@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "AgentsView does", "zh": "AgentsView 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI with the shell script, Homebrew cask, or the desktop app", "zh": "用安装脚本、Homebrew 或桌面应用装上它", "code": "curl -fsSL https://agentsview.io/install.sh | bash"},
+    {"lane": "you", "en": "Start the local server (foreground) or the background daemon", "zh": "启动本地服务（前台）或后台守护进程", "code": "agentsview serve · agentsview daemon start"},
+    {"lane": "them", "en": "Discovers every supported agent's session dirs and indexes the conversations into a local SQLite archive", "zh": "发现各 agent 的会话目录，把对话索引进本地 SQLite", "component": {"en": "daemon + sync", "zh": "守护进程与同步"}},
+    {"lane": "them", "en": "Serves the web UI on loopback with full-text search, analytics and cost dashboards", "zh": "在本机回环地址打开 Web UI：搜索、分析与成本看板", "code": "http://127.0.0.1:8080"},
+    {"lane": "you", "en": "Ask the shell for cross-agent token and cost reports any time", "zh": "随时在终端查跨 agent 的 token 与花费报表", "code": "agentsview usage daily"}
+  ],
+  "value": {"en": "Find what any agent did and what it cost, without sending your transcripts to anyone's cloud", "zh": "不上传对话记录，就能查任何 agent 做过什么、花了多少钱"},
+  "sources": ["README.md kenn-io/agentsview main @ 2026-09-28: Install section verbatim 'curl -fsSL https://agentsview.io/install.sh | bash' and 'brew install --cask agentsview'; Quick Start verbatim 'agentsview serve' / 'agentsview daemon start' / 'agentsview usage daily'; first-run paragraph: 'discovers sessions from every supported agent on your machine, syncs them into a local SQLite database, and serves a web UI at http://127.0.0.1:8080'; Privacy section: server binds 127.0.0.1 by default"]
+}

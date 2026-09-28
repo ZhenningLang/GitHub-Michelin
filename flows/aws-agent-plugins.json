@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "them": { "en": "Agent Plugins for AWS does", "zh": "Agent Plugins for AWS 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the AWS Labs marketplace",
+      "zh": "添加 AWS Labs 市场",
+      "code": "/plugin marketplace add awslabs/agent-plugins"
+    },
+    {
+      "lane": "you",
+      "en": "Install one domain plugin",
+      "zh": "安装一个领域插件",
+      "code": "/plugin install deploy-on-aws@agent-plugins-for-aws"
+    },
+    {
+      "lane": "them",
+      "en": "Brings its declared MCP servers online — AWS docs, pricing, IaC validation",
+      "zh": "随插件接入它声明的 MCP server——AWS 文档、定价、IaC 校验",
+      "component": { "en": "AWS docs/pricing/IaC MCP servers", "zh": "3 个 AWS MCP server" }
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the job in plain words",
+      "zh": "用自然语言提需求",
+      "code": "deploy to AWS"
+    },
+    {
+      "lane": "them",
+      "en": "Runs Analyze → Recommend → Estimate → Generate → Deploy, pausing for your confirmation",
+      "zh": "依次分析、推荐、估价、生成 IaC，部署前停下等你确认"
+    }
+  ],
+  "value": {
+    "en": "Architecture recommendations, real cost estimates and CDK/CloudFormation IaC from an AWS-maintained playbook",
+    "zh": "由 AWS 维护的 playbook 给出架构推荐、真实成本估算与 CDK/CloudFormation IaC"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/awslabs/agent-plugins/main/README.md — Installation / Claude Code (/plugin marketplace add awslabs/agent-plugins; /plugin install deploy-on-aws@agent-plugins-for-aws), verified against README at commit 097fe8ad on 2026-09-28",
+    "README deploy-on-aws section — Workflow (Analyze/Recommend/Estimate/Generate/Deploy; 'Execute with user confirmation'), Agent Skill Triggers ('deploy to AWS'), MCP Servers table (awsknowledge, awspricing, aws-iac-mcp)"
+  ]
+}

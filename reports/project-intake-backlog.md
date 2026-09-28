@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 897
+- Named-but-unindexed alternatives: 924
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -47,8 +47,8 @@ shape and are deliberately excluded here.
 | `bdeansrowe/ltbl-force` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-ignorance` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `cake` / SQM (OpenWrt) | `categories/networking/wondershaper.md` |
+| `DeviceFarmer/stf` | `categories/mobile-automation/tapflow.md` |
 | `diffusers` (Hugging Face) | `categories/ml-research/pytorch-gan.md` |
 | `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
 | `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
-| `iOfficeAI/AionUi` | `categories/agent-tooling/supervision-surfaces/ekko-studio.md` |

@@ -18,6 +18,7 @@
 | **Milvus** | Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search | A (5/6) | [→](milvus.md) |
 | **Sourcegraph** | Code AI platform with Code Search & Cody | D (4/6) | [→](sourcegraph.md) |
 | **HelixDB** | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. | B (6/6) | [→](helix-db.md) |
+| **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | B (6/6) | [→](ix.md) |
 
 
 ## Comparison matrix
@@ -32,6 +33,7 @@
 | [FAISS](faiss.md) | ✅ | A (6/6) | Use it when you need a fast in-process ANN vector index for embeddings — a library, not a managed vector DB. |
 | [text2vec](text2vec.md) | ✅ | C (5/6) | Use it when you need Chinese-first sentence embeddings for semantic search or FAQ matching from a single pip install — it's only the encoder, so bring your own vector index (FAISS/Milvus). |
 | [HelixDB](helix-db.md) | ✅ | B (6/6) | Use it when your RAG corpus is a genuine graph and you want vector search, BM25 and traversal in one Apache-2.0 engine backed by object storage — but its v3 engine was open-sourced in 2026-07 and self-hosted HA does not exist yet. |
+| [Ix](ix.md) | ✅ | B (6/6) | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. |
 | Neo4j / LightRAG / Weaviate | 未收录 | — | Other graph/RAG retrieval stacks named across the pages. |
 
 ## What belongs here

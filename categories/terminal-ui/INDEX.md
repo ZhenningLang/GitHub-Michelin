@@ -18,6 +18,7 @@
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | B (6/6) | [→](textual.md) |
 | **tmux** | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. | A (6/6) | [→](tmux.md) |
 | **Zellij** | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. | A (6/6) | [→](zellij.md) |
+| **Pebrel** | Use it when several AI coding CLIs run side by side on Windows and you want each pane to report working/waiting/done with notifications that jump back to it, plus SSH/SFTP in the same app — but it is twelve weeks old, single-maintainer, and Linux/macOS are Preview. | C (5/6) | [→](pebrel.md) |
 
 
 ## Comparison matrix
@@ -33,6 +34,7 @@
 | [Warp](warp.md) | ✅ | B (6/6) | Modern, AI-powered terminal with command blocks and coding agents; the GitHub repo is issues-only and the product is proprietary closed-source. |
 | [tmux](tmux.md) | ✅ | A (6/6) | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. |
 | [Zellij](zellij.md) | ✅ | A (6/6) | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. |
+| [Pebrel](pebrel.md) | ✅ | C (5/6) | Windows-first GPU terminal that hooks Claude Code/Codex so panes report agent state, with SSH/SFTP built in; very young, single-maintainer, GPL-3.0. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
