@@ -1274,3 +1274,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **PipePipe** | 想在安卓手机上不登 Google 看 YouTube／B 站／NicoNico、自动跳过赞助片段、免费后台播放时用它——代价是单人维护，YouTube 一改防护就可能播不了。 | GPL-3.0 | B（6/6） | [中](categories/streaming-clients/pipepipe.zh.md) · [EN](categories/streaming-clients/pipepipe.md) |
+
+### computer-vision
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **DeepFace** | 当你想用一次 Python 调用做人脸比对（是不是同一个人）和一对多人脸检索、模型可切换、阈值现成时用它——但被封装的权重各有许可（Buffalo_L 仅限非商业），TensorFlow 总会被装上，种族／情绪分析在欧盟《人工智能法》下受限。 | MIT | B（6/6） | [中](categories/computer-vision/deepface.zh.md) · [EN](categories/computer-vision/deepface.md) |

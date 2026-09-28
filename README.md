@@ -1292,3 +1292,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **PipePipe** | Use it when you want an Android YouTube/BiliBili/NicoNico client with no Google account, SponsorBlock skipping and free background play — accepting a single maintainer and breakages whenever YouTube changes its defences. | GPL-3.0 | B (6/6) | [EN](categories/streaming-clients/pipepipe.md) · [中](categories/streaming-clients/pipepipe.zh.md) |
+
+### computer-vision
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **DeepFace** | Use it when you want face verification (same person?) and 1:N face search from one Python call with swappable models and pre-tuned thresholds — but wrapped weights inherit their own licences (Buffalo_L is non-commercial), TensorFlow is always installed, and race/emotion analysis is restricted under the EU AI Act. | MIT | B (6/6) | [EN](categories/computer-vision/deepface.md) · [中](categories/computer-vision/deepface.zh.md) |

@@ -89,6 +89,7 @@
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |
 | **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
+| **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
 
 
 
