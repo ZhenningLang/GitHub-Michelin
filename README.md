@@ -172,6 +172,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
+| **Docker Agent** | Use it when the agent you need should be one shareable YAML — model, tools, teammates — run locally by `docker agent run` like an image; not when the loop must live inside your code. | Apache-2.0 | B (6/6) | [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) · [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) |
 | **DSPy** | You have eval data and a metric and want optimizers to compile prompts instead of hand-tuning them. | MIT | A (6/6) | [EN](categories/agent-frameworks/workflow-builders/dspy.md) · [中](categories/agent-frameworks/workflow-builders/dspy.zh.md) |
 | **AgentScope** | Shipping a production multi-agent LLM service needing sandboxed tools, permissions, tracing, and human-in-the-loop. | Apache-2.0 | B (6/6) | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.zh.md) |
 | **OpenFang** | You want autonomous agents that run on a schedule from one self-hosted Rust binary. | Apache-2.0 OR MIT | C (5/6) | [EN](categories/agent-frameworks/agent-runtimes/agent-services/openfang.md) · [中](categories/agent-frameworks/agent-runtimes/agent-services/openfang.zh.md) |

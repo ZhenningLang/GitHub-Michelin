@@ -22,7 +22,7 @@
 | derv82/wifit3 | add | done | categories/pentest/wifit3.md |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | done | categories/agent-tooling/supervision-surfaces/whiteboard.md |  | devdotfast/whiteboard |
 | DietrichGebert/ponytail | add | done | categories/agent-skills/engineering/ponytail.md |  | dietrichgebert/ponytail |
-| docker/docker-agent | add | running |  |  | docker/docker-agent |
+| docker/docker-agent | add | done | categories/agent-frameworks/agent-runtimes/docker-agent.md |  | docker/docker-agent |
 | dontbesilent2025/dbskill | sync | done | categories/agent-skills/personal-collections/knowledge-content/dbskill.md |  | dontbesilent2025/dbskill |
 | dream-num/univer | sync | done | categories/office-editors/univer.md | last_verified=2026-09-27 仍新鲜，sync-entry 按阈值不重核，无改动 | dream-num/univer |
 | EKKOLearnAI/ekko-studio | add | done | categories/agent-tooling/supervision-surfaces/ekko-studio.md |  | ekkolearnai/ekko-studio |

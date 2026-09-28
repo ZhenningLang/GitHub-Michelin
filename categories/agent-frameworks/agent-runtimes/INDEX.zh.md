@@ -11,6 +11,12 @@
 | **个人助手** | 你要的是一个自己能用的助手，而不是一个需要写代码的库。 | [→](personal-assistants/INDEX.zh.md) |
 | **Agent 服务** | agent 负载要以你部署并运维的基础设施形态运行，而不是一个聊天窗口。 | [→](agent-services/INDEX.zh.md) |
 
+## 本分类项目
+
+| 项目 | 何时用 | 健康度 | 页面 |
+| --- | --- | --- | --- |
+| **Docker Agent** | 交付物是一个可分享的 YAML（模型、指令、工具集、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；agent 循环必须跑在你自己程序里时不选它。 | B（6/6） | [→](docker-agent.zh.md) |
+
 ## 对比矩阵
 
 | 选项 | 类型 | 一句话取舍 |
@@ -18,6 +24,7 @@
 | [Agent SDK／框架](agent-sdks/INDEX.zh.md) | 子分类 | 写代码来构建 agent（或 agent 团队）时使用的库与框架，跑在你自己的程序里。 |
 | [个人助手](personal-assistants/INDEX.zh.md) | 子分类 | 面向个人的成品助手：装上、接上你的账号或模型，然后直接跟它对话。 |
 | [Agent 服务](agent-services/INDEX.zh.md) | 子分类 | 面向 agent 负载的可部署运行时与服务——持久会话、计划任务型 agent、守规的对客 agent、待办编排器。 |
+| [Docker Agent](docker-agent.zh.md) | 项目页 | 用一个声明式 YAML 构建并运行 agent——MCP 工具、多智能体委派、审批式执行、OCI 分发——它是本地 CLI，不是托管平台。 |
 
 ## 什么该放这里
 

@@ -169,6 +169,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **Docker Agent** | 你要的 agent 应该是一个可分享的 YAML（模型、工具、队友），由 `docker agent run` 在本地像跑镜像一样执行时选它；循环必须嵌在你代码里时不选。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/docker-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/docker-agent.md) |
 | **DSPy** | 你有评测数据和指标、想让优化器编译提示词而非手工调时。 | MIT | A（6/6） | [中](categories/agent-frameworks/workflow-builders/dspy.zh.md) · [EN](categories/agent-frameworks/workflow-builders/dspy.md) |
 | **AgentScope** | 要把多智能体 LLM 应用作为生产服务交付，需要沙箱工具、权限闸门、tracing 和人工介入时。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/agentscope.md) |
 | **OpenFang** | 想用单个自托管 Rust 二进制、让自治智能体按计划 7×24 无人值守干活时。 | Apache-2.0 OR MIT | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openfang.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openfang.md) |
