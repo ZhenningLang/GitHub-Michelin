@@ -6,17 +6,17 @@ category: rag-retrieval
 tags: [vector-search, ann, similarity-search, embeddings, ivf, hnsw, pq, gpu, clustering]
 language: C++
 license: MIT
-maturity: v1.14.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v1.15.x, active, 41.0k stars (2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-25T22:18:04Z
+  pushed_at: 2026-09-27T18:01:13Z
   default_branch: main
-  default_branch_sha: a6f97750aeaf760c72d0526c3a346513823c4a0c
+  default_branch_sha: fdb9535c15b1b2990fd28f76f0641e65b95162f8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:57:06Z
+  computed_at: 2026-09-28T08:29:38Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 101.7
-        qualifying_issues: 21
+        median_ttfr_hours: 122.1
+        qualifying_issues: 22
         band: default
         window_offset_days: 4
         source: issue
@@ -47,26 +47,26 @@ health:
         registry: pypi.org
         canonical_package: faiss-cpu
         dependent_repos_count: 5592
-        downloads_last_month: 11749699
+        downloads_last_month: 11857165
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 1244
+        cross_check_divergence: null
+        homebrew_installs_90d: 1260
         homebrew_tier: B
         signal_basis: homebrew
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3514
+        repo_age_days: 3520
         last_commit_age_days: 1
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 47
-        top1_share: 0.238
-        top3_share: 0.493
+        active_maintainers_12mo: 51
+        top1_share: 0.233
+        top3_share: 0.484
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,15 +80,36 @@ health:
 
 # FAISS
 
-A C++ library (with NumPy-friendly Python bindings) from Meta FAIR for efficient similarity search and clustering of dense vectors — the de-facto in-process ANN index (IVF / HNSW / PQ, CPU + GPU) under many vector stores.
+You have millions of embeddings and need their nearest neighbors in milliseconds — but hand-writing IVF, HNSW or product-quantization math is a research project of its own. FAISS is Meta FAIR's C++ library (with Python/NumPy bindings) that ships exactly that ANN-index step (approximate nearest-neighbor search) as in-process function calls, CPU and GPU.
 
 ![faiss — health radar](../../assets/health/faiss.svg)
 
 ## When to use
 
-You're building RAG retrieval or a semantic-search feature and you already have an embedding model producing vectors; what you need is the *index* — a structure that, given a query vector, returns its nearest neighbors in milliseconds out of millions of stored vectors, without you hand-rolling the math. You don't want to stand up and operate a separate vector-database service just to do nearest-neighbor lookup inside one process. You `pip install faiss-cpu`, build an `IndexFlatL2` for an exact baseline, then graduate to `IndexIVFFlat` or `IndexHNSWFlat` (optionally with `IndexIVFPQ` product-quantization to shrink memory) when the corpus grows. The whole index lives in your process memory, `index.add(xb)` ingests your embeddings, `index.search(xq, k)` returns top-k IDs and distances, and `faiss.write_index` / `read_index` lets you snapshot it to a file. It is the fastest, most battle-tested building block for the ANN step itself, and it's the engine many higher-level vector stores wrap internally.
+You're building RAG retrieval or a semantic-search feature and you already have an embedding model producing vectors; what you need is the *index* — a structure that, given a query vector, returns its nearest neighbors in milliseconds out of millions of stored vectors, without you hand-rolling the math. You don't want to stand up and operate a separate vector-database service just to do nearest-neighbor lookup inside one process. You `pip install faiss-cpu` (or `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`, the channel Meta calls the supported path), build an `IndexFlatL2` for an exact baseline, then graduate to `IndexIVFFlat` or `IndexHNSWFlat` (optionally with `IndexIVFPQ` product-quantization to shrink memory) when the corpus grows. The whole index lives in your process memory, `index.add(xb)` ingests your embeddings, `index.search(xq, k)` returns top-k IDs and distances, and `faiss.write_index` / `read_index` lets you snapshot it to a file. It is the fastest, most battle-tested building block for the ANN step itself, and it's the engine many higher-level vector stores wrap internally.
 
-You also reach for it when you outgrow CPU: the same library has a GPU path (`faiss-gpu`, CUDA) that moves index build and search onto the device for large batches, and it does k-means clustering and PQ codebook training as first-class operations — useful when the task is "cluster these embeddings" or "compress this vector set", not only "retrieve top-k". Because it's a library, not a server, it embeds cleanly into a training pipeline, an offline batch job, or a single-binary service.
+You also reach for it when you outgrow CPU: the same library has a GPU path (`faiss-gpu`, CUDA) that moves index build and search onto the device for large batches — drop-in classes like `GpuIndexFlatL2` — with AMD ROCm and NVIDIA cuVS backends selectable at build time, and it does k-means clustering and PQ codebook training as first-class operations — useful when the task is "cluster these embeddings" or "compress this vector set", not only "retrieve top-k". Because it's a library, not a server, it embeds cleanly into a training pipeline, an offline batch job, or a single-binary service.
+
+## How it works
+
+Every FAISS index is one in-process object that stores vectors and answers `search(query, k)` with nearest-neighbor IDs and distances; the index *type* is your choice among search speed, result quality, memory per vector, and build time. The simple ones (`IndexFlat*`) brute-force every stored vector. The scalable ones add compression and pruning: IVF first k-means-clusters the corpus into `nlist` cells and at query time scans only the `nprobe` closest cells; PQ quantizes each vector into a few bytes so billions fit in RAM; HNSW layers a navigable small-world graph over raw vectors. Training (`index.train(xt)`) builds the codebooks where needed, and `faiss.write_index` serializes the whole structure to a file. What stays yours: picking and tuning the index type for *your* data (recall-vs-latency-vs-memory), keeping the file snapshot in sync with data changes, and everything a database would otherwise do — filtering, sharding, serving. GPU (`GpuIndex*` classes) and the cuVS backend swap the same API onto CUDA/ROCm devices.
+
+![faiss — backbone user story](../../assets/flow/faiss.svg)
+
+<!-- flow-steps:begin (generated from flows/faiss.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library from the pytorch channel — `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`
+2. **You**: Create an index and ingest your embeddings — `index = faiss.IndexFlatL2(d) · index.add(xb)`
+3. **You**: Ask for the k nearest neighbors of a query batch — `D, I = index.search(xq, k)`
+4. **FAISS**: Searches in-process and returns distance and ID matrices, no server round-trip — component: `Index`
+5. **You**: Reload a saved index after restart instead of rebuilding — `faiss.read_index(faissindex_file)`
+
+**Value**: Millisecond top-k over millions of vectors inside your own process, with the index type a knob you turn
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -113,16 +134,16 @@ You also reach for it when you outgrow CPU: the same library has a GPU path (`fa
 
 ## Tech stack
 
-- **Language:** C++ core with Python/NumPy bindings (SWIG-generated); CUDA for the GPU build.
+- **Language:** C++ core with Python/NumPy bindings (SWIG-generated); CUDA for the GPU build, with AMD ROCm and NVIDIA cuVS backends selectable at build time.
 - **Index families:** exact (`IndexFlat`), IVF (inverted file: `IndexIVFFlat`, `IndexIVFPQ`), graph (HNSW, NSG), quantization (PQ / OPQ / scalar / additive), binary indexes, plus composite indexes via the `index_factory` string DSL.
-- **Also:** k-means clustering, PQ/codebook training, vector transforms (PCA, OPQ), and ID-mapping wrappers (`IndexIDMap`).
-- **Build/distribution:** CMake from source; prebuilt `faiss-cpu` / `faiss-gpu` wheels and conda packages for the Python bindings.
+- **Also:** k-means clustering, PQ/codebook training, vector transforms (PCA, OPQ), ID-mapping wrappers (`IndexIDMap`); optional Intel SVS backend (`FAISS_ENABLE_SVS`) brings SVS graph indices such as Vamana.
+- **Build/distribution:** CMake from source; prebuilt `faiss-cpu` / `faiss-gpu` / `faiss-gpu-cuvs` wheels on PyPI and conda packages on the pytorch channel.
 
 ## Dependencies
 
-- **Required:** a BLAS implementation (e.g. OpenBLAS / MKL) for the linear-algebra kernels; a C++17 compiler to build from source.
-- **Optional (GPU):** NVIDIA CUDA for the GPU build; AMD ROCm and an optional NVIDIA cuVS backend are also supported. [未验证]
-- **Python:** the bindings need NumPy; the `faiss-cpu` / `faiss-gpu` wheels bundle the native library so most users never compile.
+- **Required:** a BLAS implementation (on Intel, MKL is strongly recommended) for the linear-algebra kernels; a C++20 compiler with OpenMP ≥ 2 to build from source.
+- **Optional (GPU):** NVIDIA CUDA (nvcc + toolkit) for the GPU build; AMD ROCm; NVIDIA cuVS implementations via a `libcuvs=26.06` dependency.
+- **Python:** the bindings need Python 3 + NumPy + SWIG to build; the `faiss-cpu` / `faiss-gpu` / `faiss-gpu-cuvs` wheels (and conda packages) bundle the native library so most users never compile.
 - **No services:** there is no datastore, broker, or network dependency — the index is an in-process object you optionally serialize to a file.
 
 ## Ops difficulty
@@ -131,17 +152,17 @@ You also reach for it when you outgrow CPU: the same library has a GPU path (`fa
 
 ## Health & viability
 
-- **Responsiveness**: Grade B — median first-response time 101.7 hours across 21 qualifying issues/PRs.
-- **Maintenance (2026-06):** last push 2026-06, current release line v1.14.x — **active** and steadily released; a long-running, well-maintained library, not a stalled research drop. [推断]
+- **Responsiveness**: Grade B — median first-response time ~122 hours across 22 qualifying issues/PRs.
+- **Maintenance (2026-09):** last push 2026-09-27, latest release v1.15.1 on 2026-09-16 — **active** and steadily released; a long-running, well-maintained library, not a stalled research drop. [推断]
 - **Governance / backing:** Meta FAIR-maintained (`facebookresearch/faiss`, Organization). [推断] Institutional backing removes single-maintainer bus-factor risk; it is core enough to Meta's own retrieval stack and the broader vector-DB ecosystem (many stores wrap it) that it has strong structural reasons to persist.
-- **Age & Lindy (created 2017-02, ~9yr):** old **and** still active — a **strong Lindy** bet. Nine years of continuous use and being the de-facto in-process ANN index under many vector databases is about as durable a longevity prior as this space offers. [推断]
-- **Adoption / ecosystem:** ~40k stars (volatile, see Caveats) understates it — FAISS is the *engine* embedded inside or benchmarked against by most vector stores; ecosystem dependence is deep and real. [未验证]
+- **Age & Lindy (created 2017-02, ~9.6yr):** old **and** still active — a **strong Lindy** bet. Nearly a decade of continuous use and being the de-facto in-process ANN index under many vector databases is about as durable a longevity prior as this space offers. [推断]
+- **Adoption / ecosystem:** ~41k stars (volatile, see Caveats) understates it — FAISS is the *engine* embedded inside or benchmarked against by most vector stores; ecosystem dependence is deep and real. [未验证]
 - **Risk flags:** MIT (no relicense risk, no open-core gating). The only "risk" is scope: it is a bare library, so you own persistence/sharding/filtering — an engineering cost, not a viability flag.
 
 ## Caveats (unverified)
 
-- [未验证] ~40.4k GitHub stars and v1.14.x as the current release line as of 2026-06 — star counts and version are date-sensitive; treat as indicative and re-check the repo.
+- [未验证] ~41.0k GitHub stars and v1.15.1 as the latest release as of 2026-09-28 — star counts and version are date-sensitive; treat as indicative and re-check the repo.
 - [未验证] Language byte split (C++ majority, then Python, then CUDA) is from the GitHub language breakdown at verification time and shifts release-to-release.
-- [未验证] The exact set of supported index types, transforms, and backends (CUDA / ROCm / cuVS) is from the README/docs at verification time; confirm the specific feature and platform support for your installed version.
+- [未验证] The exact set of supported index types, transforms, and backends (CUDA / ROCm / cuVS / Intel SVS) is from the README/INSTALL at verification time; confirm the specific feature and platform support for your installed version.
 - [推断] "No persistence/metadata/CRUD/filtering/clustering of the service kind" is characterizing FAISS as a library vs a vector DB; some of these gaps are partially addressable with helper wrappers (e.g. `IndexIDMap`, manual ID management) — verify what your version offers before assuming a hard absence.
 - [推断] "Many vector stores embed FAISS-style indexes internally" is a general characterization of the ecosystem, not a per-product claim; check each downstream store for its actual engine.

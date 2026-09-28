@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "ART does", "zh": "ART 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the ART client into your agent project", "zh": "在你的 agent 项目里装上 ART 客户端", "code": "pip install openpipe-art"},
+    {"lane": "you", "en": "Create a TrainableModel and register a backend with it", "zh": "创建 TrainableModel 并注册一个后端", "code": "await model.register(backend)"},
+    {"lane": "you", "en": "Run your agent through the model's OpenAI-style client", "zh": "用这个模型的 OpenAI 风格客户端跑你的 agent", "code": "model.openai_client()"},
+    {"lane": "them", "en": "Serves the current LoRA on vLLM and records each rollout as a Trajectory", "zh": "用 vLLM 服务当前 LoRA，把每次 rollout 记成一条轨迹", "component": {"en": "vLLM server", "zh": "vLLM 服务器"}},
+    {"lane": "you", "en": "Score each trajectory group with RULER", "zh": "用 RULER 给每组轨迹打分", "code": "await ruler_score_group(group, \"openai/o3\")"},
+    {"lane": "them", "en": "Runs GRPO, saves the new LoRA, hot-loads it into vLLM, resumes inference", "zh": "跑 GRPO、存下新 LoRA、热加载回 vLLM、恢复推理", "component": {"en": "GRPO training loop", "zh": "GRPO 训练循环"}}
+  ],
+  "value": {"en": "Your agent measurably improves on the tasks you really run it on — no labeled trajectories, no hand-written rewards, no training cluster of your own", "zh": "你的 agent 在真实任务上肉眼可见变强：免标注轨迹、免手写奖励、免自建训练集群"},
+  "sources": ["README.md main @ 2026-09: pip install openpipe-art; training loop outline — 'the ART server, which runs the model's latest LoRA in vLLM', 'each system, user, and assistant message is stored in a Trajectory', 'The server trains your model using GRPO', 'loads it into vLLM ... Inference is unblocked'", "art.openpipe.ai/getting-started/installation-setup (retrieved 2026-09-28): await model.register(backend); LocalBackend/ServerlessBackend", "art.openpipe.ai/fundamentals/art-client (retrieved 2026-09-28): openai_client = model.openai_client()", "art.openpipe.ai/fundamentals/ruler (retrieved 2026-09-28): judged_group = await ruler_score_group(group, \"openai/o3\", debug=True)"]
+}

@@ -372,7 +372,6 @@ Google Search Console alone,categories/agent-skills/ai-writing/marketing-seo/ope
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
-GPT-4o / Gemini (cloud),categories/on-device-ml/minicpm-v.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 gpu-mode/lectures,categories/learning-resources/gpu-perf-engineering-resources.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
@@ -569,7 +568,7 @@ Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-res
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/taskmatrix.md,,no
 Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
 Mole (`tw93/Mole`),categories/disk-cleanup/mangodisk.md,,no
-Morphic / Perplexity (hosted),categories/deep-research/vane.md,,no
+Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
 Motion Canvas,categories/video-production/hyperframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
@@ -632,7 +631,6 @@ ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
 OpenAI / Cohere embedding APIs,categories/rag-retrieval/text2vec.md,,no
-"OpenAI / Gemini ""Deep Research""",categories/deep-research/mirothinker.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 OpenCLIP,categories/ml-research/clip.md,,no
@@ -674,7 +672,6 @@ Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no
 pgvector,categories/rag-retrieval/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
-Phi-3.5-vision (Microsoft),categories/on-device-ml/minicpm-v.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
@@ -739,7 +736,7 @@ pywinauto,categories/desktop-automation/pyautogui.md,,no
 Qdrant,categories/rag-retrieval/faiss.md,,no
 QEMU / general-purpose hypervisors,categories/sandboxing/firecracker.md,,no
 Quartz,categories/task-queue/INDEX.md,,no
-Qwen-VL / Qwen2.5-VL (Alibaba),categories/on-device-ml/minicpm-v.md,,no
+Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
 RAPTOR,categories/rag-retrieval/pageindex.md,,no

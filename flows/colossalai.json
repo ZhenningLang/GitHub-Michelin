@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Colossal-AI does", "zh": "Colossal-AI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into a Linux + PyTorch environment", "zh": "在 Linux + PyTorch 环境里装上它", "code": "pip install colossalai"},
+    {"lane": "you", "en": "Wrap loop components in a Booster with your chosen plugin", "zh": "用 Booster 和你选的 plugin 包住训练组件", "code": "booster = Booster(plugin=plugin)"},
+    {"lane": "them", "en": "Injects the sharding — ZeRO, hybrid TP×PP, or Gemini offload — into those objects in place", "zh": "原地注入所选切分：ZeRO、混合并行或 Gemini offload", "component": {"en": "Booster plugin", "zh": "Booster 插件"}},
+    {"lane": "you", "en": "Launch one process per GPU (or per node via a hostfile)", "zh": "每张卡起一个进程（多机用 hostfile）", "code": "colossalai run --nproc_per_node 4 train.py"},
+    {"lane": "them", "en": "The normal loop now trains shards: gradients and optimizer state split across ranks", "zh": "普通循环从此在分片上训练：梯度与优化器状态切到各 rank", "component": {"en": "distributed engine", "zh": "分布式引擎"}}
+  ],
+  "value": {"en": "Models too large for one GPU train from your unchanged PyTorch loop, split across the cluster you already have", "zh": "单卡装不下的大模型，用你没改写的 PyTorch 循环，在现成的集群上切开训练"},
+  "sources": ["README.md main @ 2026-09: pip install colossalai (Installation section); BUILD_EXT=1 variant", "docs/source/en/basics/booster_api.md @ main 2026-09: 'colossalai.booster replaces the role of colossalai.initialize to inject features into your training components'; pseudo-code 'plugin = TorchDDPPlugin()' / 'booster = Booster(plugin=plugin)' / 'model, optimizer, criterion, _, scheduler = booster.boost(...)' / 'booster.backward(loss, optimizer)'", "docs/source/en/basics/launch_colossalai.md @ main 2026-09: colossalai.launch_from_torch(); 'colossalai run --nproc_per_node 4 train.py'; --hostfile multi-node"]
+}

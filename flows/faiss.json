@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "FAISS does", "zh": "FAISS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library from the pytorch channel", "zh": "从 pytorch 频道装库",
+     "code": "conda install -c pytorch -c conda-forge faiss-cpu=1.15.1"},
+    {"lane": "you", "en": "Create an index and ingest your embeddings", "zh": "建一个索引并灌入 embedding",
+     "code": "index = faiss.IndexFlatL2(d) · index.add(xb)"},
+    {"lane": "you", "en": "Ask for the k nearest neighbors of a query batch", "zh": "对一批查询取 k 个最近邻",
+     "code": "D, I = index.search(xq, k)"},
+    {"lane": "them", "en": "Searches in-process and returns distance and ID matrices, no server round-trip", "zh": "在进程内检索，返回距离与 ID 矩阵，无服务往返",
+     "component": {"en": "Index", "zh": "Index"}},
+    {"lane": "you", "en": "Reload a saved index after restart instead of rebuilding", "zh": "重启后直接加载已存索引，不重建",
+     "code": "faiss.read_index(faissindex_file)"}
+  ],
+  "value": {"en": "Millisecond top-k over millions of vectors inside your own process, with the index type a knob you turn", "zh": "在自己进程里对百万向量做毫秒级 top-k，索引类型只是一个可拧的旋钮"},
+  "sources": ["INSTALL.md main @ 2026-09: conda install -c pytorch -c conda-forge faiss-cpu=1.15.1", "wiki Getting-started: index = faiss.IndexFlatL2(d); index.add(xb); D, I = index.search(xq, k)", "wiki FAQ: cpu_index = faiss.read_index(faissindex_file)"]
+}

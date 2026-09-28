@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "pymoo does", "zh": "pymoo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install into your Python environment", "zh": "装进你的 Python 环境", "code": "pip install -U pymoo"},
+    {"lane": "you", "en": "Define a problem (or borrow a benchmark) and pick an algorithm", "zh": "定义问题（或借一个基准问题），挑一个算法", "code": "problem = get_problem(\"zdt1\") · algorithm = NSGA2(pop_size=100)", "component": {"en": "Problem / Algorithm", "zh": "Problem / Algorithm"}},
+    {"lane": "you", "en": "Run the search with a termination budget and a seed", "zh": "设定终止条件与随机种子，开跑", "code": "res = minimize(problem, algorithm, ('n_gen', 200), seed=1, verbose=True)"},
+    {"lane": "them", "en": "Evolves the population generation by generation toward the trade-off front", "zh": "一代一代演化种群，朝权衡前沿推进", "component": {"en": "NSGA2", "zh": "NSGA2"}},
+    {"lane": "you", "en": "Read the Pareto front off res.F and plot it", "zh": "从 res.F 读出 Pareto 前沿并画图", "code": "plot.add(res.F, color=\"red\")"}
+  ],
+  "value": {"en": "A whole trade-off front from one minimize() call, without writing any evolutionary machinery yourself", "zh": "一次 minimize() 调用就得到整条权衡前沿，不用自己写任何演化机制"},
+  "sources": ["README.rst main @ 2026-09-28 (Usage section, verbatim): pip install -U pymoo; problem = get_problem(\"zdt1\"); algorithm = NSGA2(pop_size=100); res = minimize(problem, algorithm, ('n_gen', 200), seed=1, verbose=True); plot.add(res.F, color=\"red\")"]
+}
