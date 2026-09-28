@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "amneziawg-installer does", "zh": "amneziawg-installer 做的"},
+  "steps": [
+    {"lane": "you", "en": "SSH into a clean VPS, download the latest installer and run it with sudo", "zh": "SSH 进干净 VPS，下载最新安装脚本并用 sudo 运行", "code": "sudo bash ./install_amneziawg_en.sh", "component": {"en": "install script", "zh": "安装脚本"}},
+    {"lane": "them", "en": "Builds the AmneziaWG kernel module (DKMS) from the Amnezia PPA, tunes the box, enables UFW + Fail2Ban", "zh": "从 Amnezia PPA 以 DKMS 装内核模块，调优并加固整机"},
+    {"lane": "you", "en": "Reboot when it asks and re-run the same command; after two rounds it prints the completion banner", "zh": "它要求时重启并重跑同一命令，两轮后打印安装完成横幅"},
+    {"lane": "them", "en": "Writes two client profiles — configs, QR codes and vpn:// links — into /root/awg/", "zh": "把两个客户端的配置、二维码和 vpn:// 链接写进 /root/awg/"},
+    {"lane": "you", "en": "Scan the QR (or paste the vpn:// link) in the Amnezia VPN app on your phone", "zh": "在手机的 Amnezia VPN 应用里扫码，或粘贴 vpn:// 链接"},
+    {"lane": "them", "en": "Handshakes with randomized headers DPI cannot fingerprint; your traffic exits the VPS", "zh": "以随机化包头完成握手，DPI 无指纹可匹配，流量从你的 VPS 出去"}
+  ],
+  "value": {"en": "A DPI-resistant self-hosted VPN on a cheap VPS — you never hand-write a key, an iptables rule or a sysctl", "zh": "一台便宜 VPS 上的抗 DPI 自建 VPN——全程没手写过一行密钥、iptables 或 sysctl"},
+  "sources": [
+    "README.en.md Quick Start (wget -O install_amneziawg_en.sh … ; sudo bash ./install_amneziawg_en.sh ; two reboots, re-run to resume)",
+    "README.en.md 'What the installer changes on your server' (DKMS module from the Amnezia PPA, UFW + Fail2Ban, sysctl/swap tuning, /root/awg/)",
+    "README.en.md 'After installation' (QR code and vpn:// import into the Amnezia VPN app)"
+  ]
+}

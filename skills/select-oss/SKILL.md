@@ -33,8 +33,8 @@ The index is a tree of Markdown files. Read them from whichever source you have:
   Resolve relative links the way a browser would: treat the base URL as the web root and join each
   relative link against the directory of the file you just read. So a root-`INDEX.md` link to
   `categories/agent-memory/INDEX.md` becomes
-  `…/main/categories/agent-memory/INDEX.md`; a page link `mem0.md` inside that category becomes
-  `…/main/categories/agent-memory/mem0.md`.
+  `…/main/categories/agent-memory/INDEX.md`; a page link `mem0.md` inside that category tree becomes
+  `…/main/categories/agent-memory/app-memory/mem0.md`.
 
 English (`*.md` / `INDEX.md`) is the canonical path. The `.zh.md` files are a Chinese mirror.
 

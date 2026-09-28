@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "KAPLAY does", "zh": "KAPLAY 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Build", "zh": "搭建"}, "en": "Scaffold a game project (a Vite template)", "zh": "用脚手架建一个游戏项目（Vite 模板）", "code": "npx create-kaplay my-game", "component": {"en": "create-kaplay CLI", "zh": "create-kaplay 脚手架"}},
+    {"lane": "you", "en": "Start the game inside src/game.js", "zh": "在 src/game.js 里启动游戏", "code": "kaplay()", "component": {"en": "KAPLAY core", "zh": "KAPLAY 核心"}},
+    {"lane": "them", "en": "Creates the canvas, WebGL renderer and the game loop", "zh": "创建画布、WebGL 渲染器和游戏循环", "component": {"en": "WebGL renderer", "zh": "WebGL 渲染器"}},
+    {"lane": "you", "en": "Compose a game object from small components", "zh": "用小组件拼出一个游戏对象", "code": "add([rect(40, 40), pos(100, 200), area(), body()])"},
+    {"lane": "you", "phase": {"en": "Every turn", "zh": "每一帧"}, "en": "Write behaviors as callbacks on keys, updates and collisions", "zh": "把行为写成按键、每帧、碰撞的回调", "code": "onKeyDown(\"w\", () => { player.move(0, 100) })"},
+    {"lane": "them", "en": "Each frame it renders, steps physics and fires your callbacks", "zh": "每帧渲染、推进物理并触发你写的回调"}
+  ],
+  "value": {"en": "No hand-written game loop, renderer or collision code — you write behaviors, KAPLAY runs the frame", "zh": "不用手写游戏循环、渲染器和碰撞检测——你只写行为，KAPLAY 跑每一帧"},
+  "sources": [
+    "https://github.com/kaplayjs/kaplay README — Installation (npx create-kaplay my-game, edit src/game.js at localhost:5173) and Quick Overview (kaplay(), loadSprite, add([rect, pos, area, body, health]), onKeyDown(\"w\", ...), onUpdate)",
+    "https://github.com/kaplayjs/create-kaplay README — Vite project template",
+    "https://github.com/kaplayjs/kaplay src/gfx/gfx.ts — WebGL textures/buffers (WebGLTexture, WebGLBuffer)"
+  ]
+}

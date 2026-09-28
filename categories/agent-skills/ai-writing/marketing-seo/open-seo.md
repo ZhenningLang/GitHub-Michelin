@@ -86,7 +86,7 @@ It also exposes an OpenSEO MCP server plus prebuilt Agent Skills (`seo-project-s
 - **You need a mature Semrush/Ahrefs replacement today.** OpenSEO is young and focused; established commercial suites still have broader datasets, dashboards, and support.
 - **You cannot self-host or manage secrets.** Docker/Cloudflare deployments, DataForSEO credentials, optional Google OAuth, and optional OpenRouter keys are operational responsibilities.
 - **You only need marketing copy skills.** Use [marketingskills](marketingskills.md) for copy, CRO, lifecycle, and broader marketing execution.
-- **You want design/UI taste guidance.** OpenSEO was moved out of `agent-skills/design`; use [Hallmark](../../design/hallmark.md) or [Taste-Skill](../../design/taste-skill.md) for design work.
+- **You want design/UI taste guidance.** OpenSEO was moved out of `agent-skills/design`; use [Hallmark](../../design/ui-taste/hallmark.md) or [Taste-Skill](../../design/ui-taste/taste-skill.md) for design work.
 
 ## Comparison
 

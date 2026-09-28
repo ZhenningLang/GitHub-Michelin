@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Monty does", "zh": "Monty 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the sandbox package in your app's language", "zh": "按宿主语言安装沙箱包", "code": "uv add pydantic-monty · npm install @pydantic/monty · cargo add monty"},
+    {"lane": "you", "en": "Open a pool and check out a session", "zh": "开一个池，从里面取出一个会话", "code": "with Monty() as pool: pool.checkout()"},
+    {"lane": "them", "en": "Spawns a ~2 MB worker subprocess per session — no filesystem, network or env inside", "zh": "拉起约 2 MB worker 子进程——里面没有文件、网络与环境变量"},
+    {"lane": "you", "en": "Feed model-written code plus the host functions it may call", "zh": "喂入模型写的代码和允许它调用的宿主函数", "code": "session.feed_run(code, inputs={...}, external_lookup={...})"},
+    {"lane": "them", "en": "Runs the Python subset; a host call suspends, runs your function on the host, returns only its result", "zh": "执行 Python 子集；宿主调用会暂停、在宿主侧跑你的函数、只回传结果"}
+  ],
+  "value": {"en": "Fresh sub-millisecond Python sandboxes per request, inside your own app — no containers to run, and code leaves only through the functions you handed it", "zh": "每个请求毫秒级开出全新 Python 沙箱，就在你应用里——没有容器要运维，代码只能经你交给它的函数离开"},
+  "sources": [
+    "https://github.com/pydantic/monty README — install commands (uv add pydantic-monty / npm install @pydantic/monty / cargo add monty)",
+    "https://github.com/pydantic/monty README example — with Monty() as pool / pool.checkout() / session.feed_run(code, inputs=..., external_lookup=...)",
+    "https://pydantic.dev/docs/monty/concepts/security/ — worker subprocess per session, no ambient authority, host functions run on the host",
+    "https://pydantic.dev/docs/monty/reference/alternatives/ — ~2 MB worker baseline, 0.8 ms checkout from a warm pool"
+  ]
+}

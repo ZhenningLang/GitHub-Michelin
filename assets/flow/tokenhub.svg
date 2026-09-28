@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1201" viewBox="0 0 880 1201" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1201" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="1043" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="1043" rx="10"/>
+<rect class="pillT" x="474" y="40" width="147.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">TokenHub does</text>
+<path class="edge" d="M62,211 L62,235" marker-end="url(#a)"/>
+<path class="edge" d="M62,356 L62,380" marker-end="url(#a)"/>
+<path class="edge" d="M62,501 L62,525" marker-end="url(#a)"/>
+<path class="hand" d="M408,587.0 C439.0,587.0 439.0,611 470,611" marker-end="url(#a)"/>
+<path class="edge" d="M494,684 L494,708" marker-end="url(#a)"/>
+<path class="edge" d="M494,807 L494,831" marker-end="url(#a)"/>
+<path class="edge" d="M494,930 L494,954" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="139" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="139" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the gateway on one host —</text>
+<text class="t" x="82" y="123">native systemd or Docker Compose</text>
+<text class="c" x="82" y="147">sudo bash /tmp/tokenhub-install.sh install</text>
+<text class="c" x="82" y="166">· ./deploy/install.sh</text>
+<text class="comp" x="82" y="189">component: installer / Compose</text>
+<rect class="card" x="40" y="237" width="368" height="119" rx="8"/>
+<rect class="accY" x="40" y="237" width="4" height="119" rx="2"/>
+<circle class="accY" cx="62" cy="261" r="10"/>
+<text class="num" x="62" y="265" text-anchor="middle">2</text>
+<text class="t" x="82" y="266">In the admin console, add a provider</text>
+<text class="t" x="82" y="288">with its upstream key and import its</text>
+<text class="t" x="82" y="310">models</text>
+<text class="comp" x="82" y="338">component: Next.js admin console</text>
+<rect class="card" x="40" y="382" width="368" height="119" rx="8"/>
+<rect class="accY" x="40" y="382" width="4" height="119" rx="2"/>
+<circle class="accY" cx="62" cy="406" r="10"/>
+<text class="num" x="62" y="410" text-anchor="middle">3</text>
+<text class="t" x="82" y="411">Create a project and issue a</text>
+<text class="t" x="82" y="433">project-scoped API key with quota and</text>
+<text class="t" x="82" y="455">allowlist</text>
+<text class="comp" x="82" y="483">component: Key Management</text>
+<rect class="card" x="40" y="527" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="527" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="551" r="10"/>
+<text class="num" x="62" y="555" text-anchor="middle">4</text>
+<text class="t" x="82" y="556">Point your app at the gateway and call</text>
+<text class="t" x="82" y="578">it with that key</text>
+<text class="c" x="82" y="602">POST /v1/chat/completions</text>
+<text class="comp" x="82" y="625">component: OpenAI-compatible API</text>
+<rect class="cardT" x="472" y="587" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="587" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="611" r="10"/>
+<text class="num" x="494" y="615" text-anchor="middle">5</text>
+<text class="t" x="514" y="616">Validates the project key; enforces</text>
+<text class="t" x="514" y="638">quota, RPM/TPM and allowlist admission</text>
+<text class="comp" x="514" y="666">component: Access and governance</text>
+<rect class="cardT" x="472" y="710" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="710" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="734" r="10"/>
+<text class="num" x="494" y="738" text-anchor="middle">6</text>
+<text class="t" x="514" y="739">Selects a route by priority, weight</text>
+<text class="t" x="514" y="761">and health, failing over when needed</text>
+<text class="comp" x="514" y="789">component: Routing</text>
+<rect class="cardT" x="472" y="833" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="833" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="857" r="10"/>
+<text class="num" x="494" y="861" text-anchor="middle">7</text>
+<text class="t" x="514" y="862">Forwards through the provider adapter</text>
+<text class="t" x="514" y="884">and streams the response back</text>
+<text class="comp" x="514" y="912">component: Adapter registry</text>
+<rect class="cardT" x="472" y="956" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="956" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="980" r="10"/>
+<text class="num" x="494" y="984" text-anchor="middle">8</text>
+<text class="t" x="514" y="985">Logs tokens and cost attributed to</text>
+<text class="t" x="514" y="1007">user, project and team</text>
+<text class="comp" x="514" y="1035">component: Operations and observability</text>
+<rect class="val" x="28" y="1085" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="1109">VALUE</text>
+<text class="valT" x="48" y="1133">Apps stop carrying raw provider keys — every call is policy-checked and attributable to a</text>
+<text class="valT" x="48" y="1155">project&#x27;s bill</text>
+</svg>

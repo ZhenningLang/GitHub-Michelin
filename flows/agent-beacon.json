@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "them": {"en": "Beacon does", "zh": "Beacon 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the endpoint and wire your harnesses", "zh": "安装端点，接上你常用的编码工具", "code": "beacon endpoint install --harness claude,codex,cursor", "phase": {"en": "Capture", "zh": "采集"}, "component": {"en": "endpoint agent", "zh": "端点 agent"}},
+    {"lane": "them", "en": "Registers each harness's hooks/plugins/OTLP and starts the local collector", "zh": "给每家 harness 注册 hook／插件／OTLP，启动本地采集器"},
+    {"lane": "you", "en": "Work in Claude Code, Codex, Cursor as usual", "zh": "照常在 Claude Code、Codex、Cursor 里干活"},
+    {"lane": "them", "en": "Normalizes every session into one local trace: prompts, tools, edits, approvals, tokens", "zh": "把每个会话归一化成一条本地轨迹：提示词、工具、改动、批准、token"},
+    {"lane": "you", "en": "Score a finished session and draft a candidate lesson", "zh": "给做完的会话打分，起草候选经验", "code": "beacon memory evaluations run", "phase": {"en": "Distill", "zh": "蒸馏"}},
+    {"lane": "them", "en": "Ranks the trace with a consented evaluator call; nothing is written unreviewed", "zh": "经你同意调一次评测器给轨迹排序；未经审阅绝不落笔", "component": {"en": "distill skill", "zh": "distill 技能"}},
+    {"lane": "you", "en": "Review the candidates and approve the good ones", "zh": "审查候选，批准其中好的", "code": "beacon memory candidates"},
+    {"lane": "them", "en": "Installs the approved lesson as a project Agent Skill and serves memory over MCP", "zh": "把批准的经验装成项目 Agent Skill，并经 MCP 提供记忆", "code": ".agents/skills/<slug>/SKILL.md"}
+  ],
+  "value": {
+    "en": "A lesson learned once in one harness is loaded by every harness — sessions stop evaporating",
+    "zh": "一家工具里学会的招，家家都能用——会话不再一结束就蒸发"
+  },
+  "sources": [
+    "docs.beacon.sh/get-started/quickstart (brew trust asymptote-labs/tap; brew install asymptote-labs/tap/beacon; beacon endpoint install --harness claude,codex,cursor; beacon endpoint dashboard --open)",
+    "README 'Supported Agents' coverage table (hooks/plugins/OTLP/poll per runtime; sessions, prompts, tool calls, commands, file activity, approvals, MCP interactions, token usage)",
+    "docs.beacon.sh/concepts/cross-harness-memory (beacon memory evaluations run with consented evaluator call; thresholds task_success >= 0.50 and mean >= 0.60; beacon memory candidates review/approve; beacon memory skills install writes .agents/skills/<slug>/SKILL.md; beacon mcp serve exposes get_memory_context)",
+    "docs.beacon.sh/concepts/beacon-skills (skill table: recall/distill/promote and their network column; evaluator call only after the user agrees)",
+    "SECURITY.md (loopback OpenTelemetry receivers on 127.0.0.1; local runtime.jsonl with 10 MiB rotation and five archives)"
+  ]
+}

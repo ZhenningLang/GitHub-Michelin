@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "TokenHub does", "zh": "TokenHub 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the gateway on one host — native systemd or Docker Compose", "zh": "在台主机上装好网关：原生 systemd 或 Docker Compose", "code": "sudo bash /tmp/tokenhub-install.sh install · ./deploy/install.sh", "component": {"en": "installer / Compose", "zh": "安装脚本 / Compose"}},
+    {"lane": "you", "en": "In the admin console, add a provider with its upstream key and import its models", "zh": "在管理控制台里添加 Provider，填上游 API key，导入它的模型", "component": {"en": "Next.js admin console", "zh": "Next.js 管理控制台"}},
+    {"lane": "you", "en": "Create a project and issue a project-scoped API key with quota and allowlist", "zh": "建一个项目，发一把带配额和模型白名单的项目级 API key", "component": {"en": "Key Management", "zh": "Key Management"}},
+    {"lane": "you", "en": "Point your app at the gateway and call it with that key", "zh": "把应用指到网关，用这把 key 发起调用", "code": "POST /v1/chat/completions", "component": {"en": "OpenAI-compatible API", "zh": "OpenAI 兼容 API"}},
+    {"lane": "them", "en": "Validates the project key; enforces quota, RPM/TPM and allowlist admission", "zh": "校验项目 key，执行配额、RPM/TPM 和白名单准入", "component": {"en": "Access and governance", "zh": "访问与治理层"}},
+    {"lane": "them", "en": "Selects a route by priority, weight and health, failing over when needed", "zh": "按优先级、权重和健康度选路由，必要时自动故障转移", "component": {"en": "Routing", "zh": "路由引擎"}},
+    {"lane": "them", "en": "Forwards through the provider adapter and streams the response back", "zh": "经 Provider 适配器转发上游，把响应流回给应用", "component": {"en": "Adapter registry", "zh": "适配器注册表"}},
+    {"lane": "them", "en": "Logs tokens and cost attributed to user, project and team", "zh": "记录 token 与费用，归属到用户、项目和团队", "component": {"en": "Operations and observability", "zh": "运营与可观测层"}}
+  ],
+  "value": {"en": "Apps stop carrying raw provider keys — every call is policy-checked and attributable to a project's bill", "zh": "应用不再持有厂商原始 key——每次调用都过策略检查，都能归属到项目和账单"},
+  "sources": [
+    "https://github.com/astaxie/TokenHub README Quick Start (curl install.sh / sudo bash /tmp/tokenhub-install.sh install; cp deploy/.env.example deploy/.env; ./deploy/install.sh; console :3000, API :8080, /healthz)",
+    "docs/user-guide.md (Key Management create key; Authorization: Bearer YOUR_TOKENHUB_API_KEY; GET /v1/models; POST /v1/chat/completions; Usage Analytics / Request Logs)",
+    "docs/administrator-guide.md (Production Setup Order: add Provider with Test Connection and import models; routes with priority/weight/failover; teams, projects, cost centers; quota policies)",
+    "docs/architecture.md (backend process planes: Access and governance, Routing, Adapter registry, Operations and observability; Model API /v1/*; Admin API /api/admin/*)"
+  ]
+}

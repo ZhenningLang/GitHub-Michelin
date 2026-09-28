@@ -1,6 +1,6 @@
 # sandboxing
 
-> Category node. Sandbox technologies for untrusted and agent-generated workloads — the kernel/VM isolation runtimes, and the agent-facing sandbox platforms and SDKs built on top of them.
+> Category node. Sandbox technologies for untrusted and agent-generated workloads — the kernel/VM isolation runtimes, language-level interpreter sandboxes, and the agent-facing sandbox platforms and SDKs built on top of them.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
 ## Projects in this category
@@ -15,6 +15,8 @@
 | **Agent Substrate** | Use it when a large fleet of stateful agent sessions sits idle most of the time and you want them multiplexed onto fewer warm Kubernetes pods by checkpointing idle agents and resuming them on demand — but it's pre-1.0 with unstable APIs and no security hardening yet. | B (5/6) | [→](substrate.md) |
 | **Modal client SDK** | Use it when you want serverless containers, GPUs and sandboxes without operating anything — the client SDK is open source, the platform is closed and hosted-only. | A (6/6) | [→](modal-client.md) |
 | **Microsandbox** | Use it when the sandbox must run on hardware you already own — one binary or SDK, ordinary OCI images, per-sandbox egress policy and host-side secrets, with no daemon and no cluster — but it needs KVM/Apple Silicon/WHP on the host and is still beta. | A (6/6) | [→](microsandbox.md) |
+| **Monty** | Use it when model-written Python must run per request inside your own app — a pip-installed Rust interpreter hands out fresh sandbox sessions in under a millisecond, with no filesystem/network/env inside unless you pass it in — but it speaks a Python subset with no third-party packages, and its boundary is the language, not an OS. | A (6/6) | [→](monty.md) |
+| **Cloudflare Computer** | Use it when your Cloudflare Workers agent needs a durable working directory — files live in the Durable Object's SQLite and one exec API runs commands or code against them in a container or an isolate — accepting an explicitly preview API, ~10 GB workspaces, and single-vendor lock-in. | B (6/6) | [→](cloudflare-computer.md) |
 
 ## Comparison matrix
 
@@ -28,7 +30,9 @@
 | [Agent Substrate](substrate.md) | ✅ | B (5/6) | Density for *stateful* agents by snapshotting idle ones onto warm pods — pre-1.0, ingress-driven wakeups, no security hardening yet. |
 | [Modal client SDK](modal-client.md) | ✅ | A (6/6) | Serverless containers, GPUs and sandboxes with nothing to operate — no self-hosting, no exit, single vendor. |
 | [Microsandbox](microsandbox.md) | ✅ | A (6/6) | Local-first microVM sandboxes from ordinary OCI images, with Docker-like verbs and no daemon — cross-platform and unprivileged, but it needs hardware virtualization on the host and is beta. |
+| [Monty](monty.md) | ✅ | A (6/6) | Sub-millisecond Python sandboxes as a library (language-level interpreter confinement) — no containers or fleet to run, but only a Python subset with no third-party packages. |
+| [Cloudflare Computer](cloudflare-computer.md) | ✅ | B (6/6) | Durable per-agent files on one vendor's preview runtime — zero sandbox ops and a typed workspace API, but Cloudflare-only, ~10 GB workspaces, and big-I/O work runs an order of magnitude slower than disk. |
 
 ## What belongs here
 
-Layers and products for running code you do not trust: VM/kernel-level isolation runtimes (`gVisor`, `Kata Containers`, `Firecracker`) and the agent-facing sandbox platforms and clients built on them (`OpenSandbox`, `E2B`, `Agent Substrate`, the `Modal` client SDK). Not general container-runtime selection — that is the platform you already run — and not agent frameworks, which live in `agent-frameworks`.
+Layers and products for running code you do not trust: VM/kernel-level isolation runtimes (`gVisor`, `Kata Containers`, `Firecracker`), language-level interpreter sandboxes (`Monty`), and the agent-facing sandbox platforms and clients built on them (`OpenSandbox`, `E2B`, `Agent Substrate`, the `Modal` client SDK). Not general container-runtime selection — that is the platform you already run — and not agent frameworks, which live in `agent-frameworks`.

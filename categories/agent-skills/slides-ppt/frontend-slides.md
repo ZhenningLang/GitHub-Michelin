@@ -82,7 +82,7 @@ It is packaged as a Claude Code plugin and also usable by other coding agents th
 - **You need a large static template/runtime library.** [html-ppt-skill](html-ppt-skill.md) has many built-in themes, layouts, animations, and presenter mode.
 - **You cannot use a local coding agent with filesystem and shell access.** The skill expects file creation and optional scripts for PPT extraction, deployment, and PDF export.
 - **You need deterministic corporate templates only.** The style-discovery workflow is useful for exploration, but strict brand decks may need a locked template system.
-- **You want a general visual artifact generator.** Use [HTML Anything](../../ai-design-generation/html-anything.md) or [huashu-design](../design/huashu-design.md) when slides are only one artifact type.
+- **You want a general visual artifact generator.** Use [HTML Anything](../../ai-design-generation/html-anything.md) or [huashu-design](../design/visual-artifacts/huashu-design.md) when slides are only one artifact type.
 
 ## Comparison
 

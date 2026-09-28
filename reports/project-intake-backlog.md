@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 852
+- Named-but-unindexed alternatives: 888
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -25,10 +25,22 @@ shape and are deliberately excluded here.
 | (alternatives named across the pages) | `categories/auth/INDEX.md` |
 | 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
+| 3D-Speaker | `categories/speech/antspeaker.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
-| [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
+| [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
+| [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
+| [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
+| [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
+| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
+| [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
+| [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy) | `categories/networking/amneziawg-installer.md` |
+| [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
+| [wg-easy](https://github.com/wg-easy/wg-easy) | `categories/networking/amneziawg-installer.md` |
+| [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install) | `categories/networking/amneziawg-installer.md` |
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
@@ -40,15 +52,3 @@ shape and are deliberately excluded here.
 | `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
 | `lich0821/wcfLink` | `categories/im-automation/wechat/wechatferry.md` |
-| `MEMORY USAGE` / `MEMORY DOCTOR` | `categories/databases/database-clients/rdr.md` |
-| `openilink-sdk-node` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-sdk-php` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-sdk-python` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-tg` | `categories/im-automation/openilink-hub.md` |
-| `opensearch-py` / opensearch-dsl-py | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
-| `python-wechaty` | `categories/im-automation/wechat/wechaty.md` |
-| `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
-| `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
-| `socket.getaddrinfo` (stdlib) | `categories/networking/dnspython.md` |
-| `subprocess` + `ssh` | `categories/networking/sshtunnel.md` |
-| `subprocess` + system `ssh` | `categories/networking/paramiko.md` |

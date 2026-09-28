@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "SimpleMem does", "zh": "SimpleMem 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Build memory", "zh": "写入"}, "en": "Install, point config at any OpenAI-compatible endpoint", "zh": "安装，把配置指向任一 OpenAI 兼容接口", "code": "pip install -e ."},
+    {"lane": "you", "en": "Create the memory, feed dialogue turns with timestamps", "zh": "建记忆实例，带时间戳喂入对话", "code": "mem.add_dialogue(...)"},
+    {"lane": "them", "en": "Distills each turn into compact self-contained memory units", "zh": "把每轮对话蒸馏成紧凑自包含的记忆单元", "component": {"en": "compression pipeline", "zh": "压缩管线"}},
+    {"lane": "them", "en": "Merges related units online, indexes them in embedded LanceDB", "zh": "在线合并相关记忆，索引进内嵌的 LanceDB", "component": {"en": "LanceDB + tantivy index", "zh": "LanceDB＋tantivy 索引"}},
+    {"lane": "you", "phase": {"en": "Recall", "zh": "召回"}, "en": "Finalize, then ask in plain language", "zh": "结束写入，用自然语言提问", "code": "mem.finalize() · mem.ask(...)"},
+    {"lane": "them", "en": "Plans retrieval around the question's intent, assembles a compact answer", "zh": "按问题意图规划检索，拼出紧凑答案", "component": {"en": "retrieval planner", "zh": "检索规划器"}}
+  ],
+  "value": {"en": "Past interactions stay recallable without replaying raw history into the context", "zh": "过去的交互随时可召回，不用把原始历史重放进上下文"},
+  "sources": [
+    "https://github.com/aiming-lab/SimpleMem README Quick Start (from simplemem import SimpleMem; mem.add_dialogue(...); mem.finalize(); mem.ask(...))",
+    "README Installation (pip install -e .; cp config.py.example config.py; OPENAI_API_KEY / OPENAI_BASE_URL / LLM_MODEL / EMBEDDING_MODEL)",
+    "README Overview — three-stage pipeline (Semantic Structured Compression, Online Semantic Synthesis, Intent-Aware Retrieval Planning)",
+    "setup.py — default install deps (openai, pydantic, lancedb, sentence-transformers, tantivy)"
+  ]
+}

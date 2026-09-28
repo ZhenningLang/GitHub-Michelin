@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Cloudflare Computer does", "zh": "Cloudflare Computer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package into your Worker project", "zh": "在你的 Worker 项目里安装这个包", "code": "npm install @cloudflare/computer"},
+    {"lane": "you", "en": "Wrap your Durable Object with the workspace mixin and declare the DO binding in wrangler config", "zh": "用 workspace 混入包住你的 Durable Object", "code": "withWorkspace(...)"},
+    {"lane": "them", "en": "The Durable Object keeps the workspace in its own SQLite storage — durable across restarts", "zh": "把 workspace 存进 DO 自己的 SQLite，重启不丢"},
+    {"lane": "you", "en": "Open it from your Worker and write a file through the fs API", "zh": "从 Worker 打开 workspace，写入一个文件", "code": "ws.fs.writeFile(\"/notes.md\", ...)"},
+    {"lane": "you", "en": "Register an execution backend for commands", "zh": "注册一个执行后端来跑命令", "code": "new WorkerShellBackend({...})"},
+    {"lane": "you", "en": "Run a command against the same files through the single exec entry point", "zh": "通过唯一的 exec 入口跑一条命令", "code": "ws.runtime.exec(\"cat /hello.txt\")"},
+    {"lane": "them", "en": "Executes it in the chosen backend and streams stdout/stderr/exitCode back live", "zh": "在后端里执行，实时回传 stdout／stderr／exitCode"}
+  ],
+  "value": {"en": "Your agent gets a working directory that outlives restarts plus one exec API to work on it — no sandbox fleet, no sync glue of your own", "zh": "agent 得到一个活得比重启更久的工作目录，加一个能在上面干活的 exec 入口——沙箱机群和同步胶水都不用你管"},
+  "sources": [
+    "https://github.com/cloudflare/computer/blob/main/packages/computer/README.md#installation (npm install @cloudflare/computer; nodejs_compat flag)",
+    "https://github.com/cloudflare/computer/blob/main/packages/computer/README.md#quick-start (withWorkspace; getWorkspace; ws.fs.writeFile(\"/notes.md\", ...); new WorkerShellBackend; ws.runtime.exec(\"cat /hello.txt\"); run.result() stdout/exitCode)",
+    "https://github.com/cloudflare/computer/blob/main/packages/computer/README.md#choosing-a-backend (container/worker-shell/worker-javascript backends; FUSE + sync)"
+  ]
+}

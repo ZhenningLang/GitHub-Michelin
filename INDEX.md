@@ -85,6 +85,7 @@
 | **design-editors** | Open-source design editors you run yourself — local-first or self-hosted Figma-class canvases. | [→](categories/design-editors/INDEX.md) |
 | **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts. | [→](categories/learning-resources/INDEX.md) |
 | **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
+| **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
 
 
 
