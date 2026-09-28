@@ -58,6 +58,7 @@ ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
+Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/ai-scientist.md,,no
 Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
@@ -324,7 +325,6 @@ FriendlyCaptcha,categories/captcha/capjs.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
 FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,no
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
-Gamma / Tome,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Gateway-native Redis plugins (Kong/APISIX),categories/nginx-modules/lua-resty-redis.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
@@ -374,7 +374,6 @@ grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/ag
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
-"gstack, …",categories/agent-skills/subagent-collections/awesome-claude-code-subagents.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
