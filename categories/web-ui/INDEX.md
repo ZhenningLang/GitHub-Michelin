@@ -17,6 +17,7 @@
 | **state-management** | Client-side state stores — shared reactive values outside the component tree, derived values, and selector-based subscriptions per framework. | [→](state-management/INDEX.md) |
 | **charts** | Charting libraries embedded in the front-end — data arrays into axes, bars, lines and points with tooltips, resize and framework adapters. | [→](charts/INDEX.md) |
 | **keyboard-shortcuts** | Keyboard shortcut libraries — bind key combos and sequences to actions, handle Cmd/Ctrl and text inputs, record and display user bindings. | [→](keyboard-shortcuts/INDEX.md) |
+| **scheduling** | Function-execution timing utilities — debounce, throttle, rate-limit, queue or batch client-side calls, with framework hooks exposing the pending state. | [→](scheduling/INDEX.md) |
 
 ## What belongs here
 

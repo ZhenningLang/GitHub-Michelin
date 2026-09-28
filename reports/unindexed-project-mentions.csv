@@ -157,6 +157,7 @@ BMAD / GSD,categories/agent-skills/engineering/mattpocock-skills.md,,no
 bogdanfinn/tls-client,categories/python-tooling/curl-cffi.md,,no
 Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,,no
 Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
+bottleneck (`SGrondin/bottleneck`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Braintrust,categories/llm-eval/promptfoo.md,,no
 Brotli,categories/dev-utilities/data-tools/openzl.md,,no
 Browser built-in translation,categories/reading-tools/pair-translate.md,,no
@@ -538,6 +539,7 @@ lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 LocalAI (mudler/LocalAI),categories/on-device-ml/stable-diffusion-cpp.md,,no
+lodash.debounce/throttle (`lodash/lodash`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
 Logitech Options+ (official),categories/peripherals/logiops.md,,no
 Logitech Options+ / G HUB,categories/peripherals/INDEX.md,,no
@@ -696,6 +698,7 @@ Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
+p-queue (`sindresorhus/p-queue`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 PaddleNLP / ERNIE,categories/ml-research/senta.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
@@ -922,6 +925,7 @@ The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
 Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
+throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
@@ -972,6 +976,7 @@ VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
+VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
 Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no
