@@ -10,6 +10,7 @@
 | **Claude Code Templates** | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. | B (6/6) | [→](claude-code-templates.md) |
 | **Compound Engineering** | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. | B (4/5) | [→](compound-engineering.md) |
 | **ECC** | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. | B (6/6) | [→](ecc.md) |
+| **LifeOS** | Use it when you want your coding agent to carry *you* across sessions — a captured personal profile, memory, and a current→ideal state dashboard — rather than more coding workflows. | B (6/6) | [→](lifeos.md) |
 | **SuperClaude Framework** | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. | B (6/6) | [→](superclaude.md) |
 | **Superpowers** | Use it when you want a drop-in brainstorm→plan→TDD→verify SDLC methodology installed into your coding agent. | B (4/5) | [→](superpowers.md) |
 
@@ -20,6 +21,7 @@
 | [Claude Code Templates](claude-code-templates.md) | ✅ | B (6/6) | Use it when you want to browse a large catalog and à-la-carte install ready-made Claude Code agents, commands, hooks, MCPs, and skills instead of writing them yourself. |
 | [Compound Engineering](compound-engineering.md) | ✅ | B (4/5) | Use it when you want a turnkey brainstorm→plan→work→review→compound loop that persists learnings across coding-agent sessions. |
 | [ECC](ecc.md) | ✅ | B (6/6) | Use it when you want a maintained, batteries-included Claude Code harness of skills, agents, hooks, memory, and a security scanner. |
+| [LifeOS](lifeos.md) | ✅ | B (6/6) | Use it when you want an always-on personal life layer (TELOS profile, memory, Pulse dashboard) in Claude Code; ECC for cross-harness engineering substrate. |
 | [SuperClaude Framework](superclaude.md) | ✅ | B (6/6) | Use it when you live in Claude Code and want a ready-made command, agent, and behavioral-mode framework installed at once. |
 | [Superpowers](superpowers.md) | ✅ | B (4/5) | Use it when you want a drop-in brainstorm→plan→TDD→verify SDLC methodology installed into your coding agent. |
 
