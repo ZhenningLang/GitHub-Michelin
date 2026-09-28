@@ -20,8 +20,8 @@
 | code-yeongyu/oh-my-openagent | add | done | categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md |  | code-yeongyu/oh-my-openagent |
 | Dammyjay93/interface-design | add | done | categories/agent-skills/design/ui-taste/interface-design.md |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | done | categories/pentest/wifit3.md |  | derv82/wifit3 |
-| devdotfast/whiteboard | add | running |  |  | devdotfast/whiteboard |
-| DietrichGebert/ponytail | add | pending |  |  | dietrichgebert/ponytail |
+| devdotfast/whiteboard | add | done | categories/agent-tooling/supervision-surfaces/whiteboard.md |  | devdotfast/whiteboard |
+| DietrichGebert/ponytail | add | running |  |  | dietrichgebert/ponytail |
 | docker/docker-agent | add | pending |  |  | docker/docker-agent |
 | dontbesilent2025/dbskill | sync | pending |  |  | dontbesilent2025/dbskill |
 | dream-num/univer | sync | pending |  |  | dream-num/univer |
@@ -78,3 +78,4 @@
 | ZJU-REAL/Easel | add | pending |  |  | zju-real/easel |
 | daeuniverse/dae | add | pending |  | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | pending |  | 处理中新开的标签 | vshulcz/deja-vu |
+| maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |

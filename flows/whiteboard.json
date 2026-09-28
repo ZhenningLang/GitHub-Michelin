@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Whiteboard does",
+    "zh": "Whiteboard 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install Whiteboard Desktop; it puts the whiteboard CLI on your PATH",
+      "zh": "安装桌面应用，它会顺带装好 whiteboard CLI",
+      "phase": {
+        "en": "Connect once",
+        "zh": "一次性接入"
+      },
+      "component": {
+        "en": "desktop app",
+        "zh": "桌面应用"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Desktop hosts a local server that owns review state, the canvas and agent setup",
+      "zh": "桌面应用在本机起服务，托管评审状态、画布与 agent 接入",
+      "component": {
+        "en": "embedded server",
+        "zh": "内嵌服务器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Run the connect command and paste its generated prompt into your agent",
+      "zh": "运行 connect 命令，把生成的提示词贴给你的 agent",
+      "code": "whiteboard connect <agent>"
+    },
+    {
+      "lane": "them",
+      "en": "The agent adds the whiteboard MCP server, which serves the authoring instructions",
+      "zh": "agent 注册 whiteboard MCP 服务，由它下发编写规范",
+      "code": "whiteboard mcp",
+      "component": {
+        "en": "MCP server",
+        "zh": "MCP 服务"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask your agent to review the branch against main and say: use whiteboard",
+      "zh": "让 agent 评审当前分支相对 main，并叮嘱 use whiteboard",
+      "code": "use whiteboard",
+      "phase": {
+        "en": "Every review",
+        "zh": "每次评审"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "It pins the commits, reads the diff, and draws sections, diagrams and code links live",
+      "zh": "它钉住提交、读取 diff，在画布上实时绘制章节、图与代码链接",
+      "code": "session_diff",
+      "component": {
+        "en": "MCP tools",
+        "zh": "MCP 工具"
+      }
+    }
+  ],
+  "value": {
+    "en": "Read the change as an RFC the agent wrote: click a diagram or quote, land on the exact line in your checkout",
+    "zh": "你读到的是 agent 亲笔的可交互 RFC——点图或引文，直接落到本地代码的那一行"
+  },
+  "sources": [
+    "packages/review/onboarding.md steps 1-4: install Desktop (installs `whiteboard` CLI); Desktop hosts the JSON review server; `whiteboard connect <agent>` + paste prompt -> agent adds Whiteboard MCP server; agent authors via MCP tools or `whiteboard api`",
+    "README.md Quickstart: 'Ask your agent to review your current branch against up-to-date main and open the result in Whiteboard'; telemetry example prompt ends 'use whiteboard'",
+    "packages/agent-plugins/claude/.mcp.json + packages/review/src/connect-prompts.ts: MCP launch `whiteboard mcp` via $HOME/.local/bin/whiteboard; CLI subcommands (connect/api/mcp/app/trace) in packages/review/src/cli-runner.ts",
+    "packages/review/instructions/authoring.md: create whiteboard pinned to commits/PR, 'read the diff with `session_diff`', write what/why + requirements + design + implementation sections incrementally while the user watches",
+    "packages/review/README.md: Desktop detects installed agents, installs CLI + skills, writes the shim to ~/.local/bin, re-syncs after app updates"
+  ]
+}
