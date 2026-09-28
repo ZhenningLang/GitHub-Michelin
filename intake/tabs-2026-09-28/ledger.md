@@ -39,9 +39,9 @@
 | ix-infrastructure/Ix | add | done | categories/rag-retrieval/ix.md |  | ix-infrastructure/ix |
 | jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
-| Kuddev/pebrel | add | running |  |  | kuddev/pebrel |
+| Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
 | kunchenguid/backpass | add | running |  |  | kunchenguid/backpass |
-| leejet/stable-diffusion.cpp | add | pending |  |  | leejet/stable-diffusion.cpp |
+| leejet/stable-diffusion.cpp | add | running |  |  | leejet/stable-diffusion.cpp |
 | macro-inc/macro | add | pending |  |  | macro-inc/macro |
 | mikiarlo3/ai-copywriter | add | pending |  |  | mikiarlo3/ai-copywriter |
 | mvanhorn/last30days-skill | add | pending |  |  | mvanhorn/last30days-skill |

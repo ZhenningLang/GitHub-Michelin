@@ -1077,6 +1077,7 @@ agent-canonical path; the `.zh.md` sibling is the same content in Chinese.
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | MIT | ? (0/6) | [EN](categories/terminal-ui/textual.md) · [中](categories/terminal-ui/textual.zh.md) |
 | **tmux** | Use it when a long-running build or server over SSH must outlive the terminal and you want the smallest universal multiplexer for it — but it has no notion of what runs in a pane, so agent supervision is yours to script. | ISC | — | [EN](categories/terminal-ui/tmux.md) · [中](categories/terminal-ui/tmux.zh.md) |
 | **Zellij** | Use it when you want terminal multiplexing with discoverability built in (mode hint bar, mouse, layouts, WASM plugins) plus a token-authenticated web client — but it is pre-1.0 with a large issue backlog and its web door needs real TLS work. | MIT | — | [EN](categories/terminal-ui/zellij.md) · [中](categories/terminal-ui/zellij.zh.md) |
+| **Pebrel** | Use it when several AI coding CLIs run side by side on Windows and you want each pane to report working/waiting/done with notifications that jump back to it, plus SSH/SFTP in the same app — but it is twelve weeks old, single-maintainer, and Linux/macOS are Preview. | GPL-3.0-or-later | — | [EN](categories/terminal-ui/pebrel.md) · [中](categories/terminal-ui/pebrel.zh.md) |
 
 ### Anatomy of a project page
 

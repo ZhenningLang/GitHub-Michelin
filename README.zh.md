@@ -1068,6 +1068,7 @@ categories/<分类>/<子类>/INDEX.md …           # 更深的节点 —— 树
 | **Textual** | The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser. | MIT | ?（0/6） | [EN](categories/terminal-ui/textual.md) · [中](categories/terminal-ui/textual.zh.md) |
 | **tmux** | 当 SSH 上的长任务必须比终端活得久、你要的是最小且无处不在的复用器时用它——但它对 pane 里跑什么一无所知，agent 监管得自己搭胶水。 | ISC | — | [中](categories/terminal-ui/tmux.zh.md) · [EN](categories/terminal-ui/tmux.md) |
 | **Zellij** | 当你想要自带可发现性的终端复用（模式提示条、鼠标、布局、WASM 插件）外加 token 鉴权 web client 时用它——但它是 pre-1.0、issue 积压大，且 web 接入要做真 TLS 运维。 | MIT | — | [中](categories/terminal-ui/zellij.zh.md) · [EN](categories/terminal-ui/zellij.md) |
+| **Pebrel** | 当你在 Windows 上同时跑好几个 AI 编程命令行，想让每个面板自己报告在跑／在等／跑完，并用通知跳回那个面板，同时 SSH/SFTP 也在同一个应用里时用它——但它只有十二周、单人维护，Linux/macOS 仍是 Preview。 | GPL-3.0-or-later | — | [中](categories/terminal-ui/pebrel.zh.md) · [EN](categories/terminal-ui/pebrel.md) |
 
 ### 一个项目页的结构
 
