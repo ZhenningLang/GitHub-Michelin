@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:52:14Z
+  computed_at: 2026-09-27T16:26:21Z
   overall: D
   overall_score: 1.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 371
+        last_commit_age_days: 376
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        docker_pulls: 7566
+        docker_pulls: 7569
         docker_image: hivenexus/hivechat
         docker_tier: D
         signal_basis: docker
     longevity:
       grade: D
       raw:
-        repo_age_days: 581
-        last_commit_age_days: 371
+        repo_age_days: 586
+        last_commit_age_days: 376
         cohort: app
     governance:
       grade: "?"

@@ -6,17 +6,17 @@ category: coding-agent-harnesses
 tags: [claude-code, slash-commands, agents, personas, behavioral-modes, mcp, config-framework]
 language: Python
 license: MIT
-maturity: v4.3.0, active (2026-06)
-last_verified: 2026-06-26
+maturity: "v4.3.0, active, ~23.9k stars (as of 2026-09)"
+last_verified: 2026-09-27
 type: tool
 upstream:
-  pushed_at: 2026-06-13T16:40:33Z
+  pushed_at: 2026-09-27T12:50:32Z
   default_branch: master
-  default_branch_sha: 226c45cc93b865108843a669c6545d421784b68c
+  default_branch_sha: fe68862c8ed9e2afb8120c2d9e27d0c3a7ce73a2
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:27:40Z
+  computed_at: 2026-09-27T16:11:58Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 8
+        last_commit_age_days: 0
         active_weeks_13: 3
         carve_out: null
     responsiveness:
@@ -47,7 +47,7 @@ health:
         registry: pypi.org
         canonical_package: superclaude
         dependent_repos_count: 0
-        downloads_last_month: 11763
+        downloads_last_month: 5030
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 457
-        last_commit_age_days: 8
+        repo_age_days: 462
+        last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 17
-        top1_share: 0.513
-        top3_share: 0.769
+        active_maintainers_12mo: 18
+        top1_share: 0.506
+        top3_share: 0.759
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,7 +77,7 @@ health:
 
 # SuperClaude Framework
 
-一个用 Python 安装的配置层，通过行为指令注入，给 Claude Code 装上 30 个 `/sc:` 斜杠命令、20 个专用 agent、7 种行为模式以及 MCP 接线。
+你往 Claude Code 里反复粘同样的长段提示词——“扮演安全审查员”“先头脑风暴再写码”“省着点 token”。SuperClaude 把这套纪律变成一个词的词汇表：一个 Python 安装器把 30 个 `/sc:` 斜杠命令、20 个 persona agent、7 种行为模式作为 Markdown 落进 Claude Code 的配置里，靠行为指令注入在命令触发时生效。
 
 ![superclaude — 健康度雷达](../../../assets/health/superclaude.zh.svg)
 
@@ -87,13 +87,35 @@ health:
 
 当你想在原始模型之上叠一层行为*模式*时它也合适：Brainstorming 模式在写码前先盘问需求、Token-Efficiency 模式应对长 session、Introspection/任务管理模式处理多步工作。装一次，就拿到整套命令+agent+模式；还能可选地通过 `superclaude mcp` 接上 8 个 MCP 服务（Context7、Serena、Playwright、Magic、Sequential-Thinking 等）。如果你的团队统一用 Claude Code、想要一套共享命令词汇表，它是一个打包好的起点，而不是 DIY 的配置仓库。
 
+## 怎么用起来
+
+载荷全是 Markdown：命令文件、agent persona 定义、行为指令，由 Python 安装器拷进你的 Claude Code 配置（agent 定义进 `~/.claude/agents/` 及相关位置）——没有独立的常驻服务。你敲 `/sc:<命令>` 时，命令文件里的行为指令告诉模型该采用哪个 persona 和模式，并可把任务路由给专门的 agent markdown（安全工程师、前端架构师、深度调研）；模式是可以叠在任何命令上的滤镜，比如 Brainstorming 在写码前先追问需求、Token-Efficiency 为长会话压缩输出。MCP 集成是单独的 opt-in：`superclaude mcp` 接线至多 8 个外部服务（Tavily、Context7、Serena、Sequential-Thinking……），`/sc:research` 的多跳网络调研（带来源可信度打分）就靠它们；README 说这条路径“快 2-3 倍、省 30-50% token”，那是项目自述，不是基准测试。仍然归你管的：`superclaude doctor` 与 `superclaude install --list` 用于检查和清点安装；升级意味着重跑安装器，并调和它在你配置里改写过的东西。
+
+![SuperClaude Framework — 主干用户故事](../../../assets/flow/superclaude.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/superclaude.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用 pipx 装好框架，再写入 Claude Code — `pipx install superclaude · superclaude install`
+2. **SuperClaude Framework**：把 30 命令、20 agent、7 模式写入 Claude Code 配置 — 组件：`Python 安装器 CLI`
+3. **你**：重启 Claude Code，用命令代替粘 prompt — `/sc:brainstorm`
+4. **SuperClaude Framework**：行为指令注入设定 persona 与模式，路由到对应领域 agent
+5. **你**：可选地接上 MCP 服务，获得实时文档与搜索 — `superclaude mcp --servers tavily context7`
+6. **SuperClaude Framework**：让 /sc:research 做多跳网络调研，并按来源可信度打分 — 组件：`Deep Research 模式`
+
+**价值**：Claude Code 每次会话都自带共享命令词汇表和结构化 persona——不必再维护一套粘 prompt 的纪律
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **你不用 Claude Code。** 它*只*针对 Claude Code——没有 Cursor / Codex / opencode / Droid / 通用 agent 路径。如果你的 harness 是别的，这里几乎都用不上。[推断]
+- **你不用 Claude Code。** SuperClaude 本体*只*针对 Claude Code——没有 Cursor / Codex / opencode / Droid 路径。README 如今链了两个姊妹项目（SuperGemini_Framework、SuperQwen_Framework）指向别的宿主，但那是各自独立演进的仓库，不是这个包。如果你的 harness 是别的，*这个*项目几乎都用不上。[推断]
 - **你想要极简、完全自己掌控的配置。** 它往 `~/.claude/` 注入很大的面（30 命令 + 20 agent + 7 模式）；如果你偏好少数几条自己写、完全看得懂的命令，这是一大堆要审计和裁剪的不透明脚手架。
 - **你不信任自动路由 / “自动 agent 协调”。** 行为由框架自身的分发和行为指令注入驱动；排查某个 agent 或模式*为何*触发，意味着要读 SuperClaude 叠在 Claude Code 原生机制之上的 markdown 层。
 - **你想要有保证的性能收益。** 宣传称可选 MCP 带来“2-3 倍更快”“少 30-50% token”——这些是项目自己的说法，依配置而定，本页未独立基准测试。
-- **变动 / 版本耦合。** v4 是近期重写，且已宣布 v5 的 TypeScript 插件系统；命令名、agent 名册和 `~/.claude/` 安装布局会随版本变，TS 重写还可能整个改掉安装模型。
+- **变动 / 版本耦合。** v4 是近期重写，v5 的 TypeScript 插件系统按 README（2026-09）仍是「开发中、无 ETA」；命令名、agent 名册和 `~/.claude/` 安装布局仍可能变，TS 重写还可能整个改掉安装模型。同时 release 线自 2026-03-22 停在 v4.3.0，而 master 上修复持续落地——不少改动以未发版状态存在。
 - **你只需要一个能力。** 如果你只想要比如结构化头脑风暴或一个调研模式，装整套电池（还有它的 MCP 配置）比复制单个命令重得多。
 
 ## 横向对比
@@ -103,7 +125,7 @@ health:
 | [Superpowers](superpowers.zh.md) | ✅ | 需要强调可复用 skills 的 Claude Code skill/plugin 集合时，选 Superpowers。 | Claude Code 的 skill/plugin 集合，强调可复用的“skills”；“给 Claude Code 一整套能力电池”这个目标有重叠，打包方式不同（plugin/skills vs 安装式命令+persona 框架）。 |
 | [get-shit-done](../spec-driven-development/get-shit-done.zh.md) | ✅ | 需要面向 agent 开发的有主见工作流/命令包时，选 get-shit-done。 | 面向 agent 开发的有主见工作流/命令包；更窄、工作流优先，而非 SuperClaude 那种广覆盖的命令+agent+模式面。 |
 | [Compound Engineering](compound-engineering.zh.md) | ✅ | 需要让 agent 工作复利累积的方法论加插件时，选 Compound Engineering。 | 让 agent 工作“复利累积”的方法论加插件；是带工具的开发*哲学*，而非配置注入框架。 |
-| [ECC](ecc.zh.md) | ✅ | 需要上下文工程方法论，而不是可安装命令套件时，选 ECC。 | 面向 agent 的上下文工程方法论；偏概念/流程框架，而非可安装的命令套件。 |
+| [ECC](ecc.zh.md) | ✅ | 想要最重的 harness——数百 skill、记忆 hook、安全扫描器、跨 harness 适配——选 ECC；只要一层更轻、只面向 Claude Code、能逐文件读懂的命令+persona 时，选 SuperClaude。 | ECC 装的是会在会话事件上动作的运行时（且 MIT 核心之上多了付费 Pro 层）；SuperClaude 保持静态注入的配置——面更小，但什么经验都不会往后带。 |
 | [12-Factor Agents](../spec-driven-development/12-factor-agents.zh.md) | ✅ | 需要构建可靠 LLM agent 的原则时，选 12-Factor Agents。 | 构建可靠 LLM agent 的原则——是你读的规范/宣言，不是装进 Claude Code 的软件。 |
 | [claude-code-templates](claude-code-templates.zh.md) / awesome-claude-code | 部分已收录 | 想按需自选、自己拼装 Claude Code 配置片段时选 claude-code-templates；想一次性装好一套协调设计的框架时选 SuperClaude。 | 目录是许多独立作者写的组件摆在一层货架上，没有协同保证；SuperClaude 用这个自由度换一套设计好的整体安装。awesome-claude-code 未收录。 |
 
@@ -120,25 +142,25 @@ health:
 - **运行时：** Python ≥ 3.10（依 `pyproject.toml` 的 `requires-python`）。真正的前置条件是一个可用的 Claude Code 安装——没有它，框架是惰性的。
 - **Python 依赖（v4.3.0）:** `click` ≥ 8.0.0、`rich` ≥ 13.0.0、`pytest` ≥ 7.0.0。
 - **安装：** `pipx install superclaude` 然后 `superclaude install`；或克隆后 `./install.sh`；或 `npm i -g @bifrost_inc/superclaude`。
-- **可选：** 那 8 个 MCP 服务各自带自己的 Node/Python 运行时和（部分）API key——通过 `superclaude mcp` 单独安装，不打包在内。
+- **可选：** 那 8 个 MCP 服务各自带自己的 Node/Python 运行时和（部分）API key——通过 `superclaude mcp` 或 README 链的 airis-mcp-gateway 单独安装，不打包在内。
 
 ## 运维难度
 
-**低。** 这是一个客户端的开发工具配置，不是部署的服务：`pipx install` + `superclaude install` 把文件写进 `~/.claude/` 就完事——没有服务器、没有数据存储、没有要常驻维护的编排。维护负担来自：(a) 升级后重跑 `superclaude install` 并调和 `~/.claude/` 配置的改动；(b) 可选 MCP 服务，它们带自己的运行时/key，是最可能出问题的部分；(c) 与一个正处在 v4→v5（TypeScript）过渡期、快速变动的项目耦合，这会改变安装布局。生产环境里没有什么要扩容或监控的。
+**低。** 这是一个客户端的开发工具配置，不是部署的服务：`pipx install` + `superclaude install` 把文件写进 `~/.claude/` 就完事——没有服务器、没有数据存储、没有要常驻维护的编排；`superclaude doctor` 与 `superclaude install --list` 用来检查安装结果。维护负担来自：(a) 升级后重跑 `superclaude install` 并调和 `~/.claude/` 配置的改动；(b) 可选 MCP 服务，它们带自己的运行时/key，是最可能出问题的部分；(c) 与一个 release 落后于 commit（v4.3.0 自 2026-03 起未动、master 活跃到 2026-09）、且预告了 v5 TypeScript 重写的项目耦合，重写会改变安装布局。生产环境里没有什么要扩容或监控的。
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）：** 活跃维护——仓库 push 于 2026-06-13，最新 release v4.3.0（2026-03-22），未归档。v4 是近期重写、已宣布 v5（TypeScript 插件），因此推进很快、并非 coasting——但安装布局会在 v4→v5 过渡中变化。
-- **治理与背书：** Organization 持有（SuperClaude-Org）——是社区/组织结构而非单一账号，这在 bus-factor 上比单用户仓库略好。未公布基金会或商业厂商背书；实质上是社区维护的框架。
-- **年龄与 Lindy（2026-06）：** 创建于 2025-06，约 1 岁，约 23k star。年轻，且正处重写中段（v4 刚出、v5 已宣布），意味着你今天采用的契约可能熬不过下一个大版本。Lindy 裁决：**按年龄看属未经验证**——现在可用，但请 pin 版本，并预期命令/agent 名册与安装模型的抖动。
-- **风险标记：** MIT（无 relicense）。锁定在于**只支持 Claude Code** [推断]——几乎没有东西能迁到别的 harness。可选 MCP 服务是最可能出问题的面（各带运行时/key）。未审 CVE。
+- **响应速度**：Grade A——中位首次响应 45.2 小时（relaxed_solo 档，窗口内 4 个 qualifying 条目），与 2026-09-22 的测量一致。
+- **维护（2026-09）：** 按 commit 维护、按 release 停滞——最新 release 仍是 v4.3.0（2026-03-22），PyPI 一致，但 master 持续有修复落地（最后 push 2026-09-27）。v5（TypeScript 插件系统）按 README 仍是「开发中、无 ETA」，安装布局可能随过渡改变。
+- **治理与背书：** Organization 持有（SuperClaude-Org）——社区/组织结构而非单一账号；`pyproject.toml` 列了三位作者（含 Kazuki Nakai）。README 里有明确的募捐段（Ko-fi/Patreon/GitHub Sponsors；自述每月 $100 的 Claude Max 测试开销）——志愿者经济，未公布基金会或厂商背书。该组织还在维护姊妹框架（SuperGemini、SuperQwen），维护者注意力被摊薄。
+- **年龄与 Lindy（2026-09）：** 创建于 2025-06，约 15 个月，约 23.9k star。活过了第一年且仍在动——比同分类更年轻的兄弟项稍好的 Lindy 信号；但正处重写中段（v4 刚出、v5 已宣布一年多），今天的契约未必熬过下一个大版本。Lindy 裁决：**年轻但存活**——现在可用，请 pin 版本，预期命令/agent 名册抖动。
+- **风险标记：** MIT（无 relicense）。锁定在于**本包只支持 Claude Code** [推断]——姊妹仓库是独立项目。可选 MCP 服务（经 README 链的 airis-mcp-gateway 路径安装）是最可能出问题的面（各带运行时/key）。release 滞后意味着 README 里的修复会比 PyPI 包快数周。未审 CVE。
 
 ## 存疑（未验证）
 
-- [未验证] “30 命令 / 20 agent / 7 模式 / 8 MCP 服务”的数量来自项目 README/发布说明；具体名册随版本变动——请对照你那个版本实际安装的文件核实。
-- [未验证] 最新发布 v4.3.0 于 2026-03-22；仓库 `pushedAt` 为 2026-06-13（活跃）；截至 2026-06 star 约 23.4k——GitHub star 不可靠且对时间敏感，仅供参考。
+- [未验证] “30 命令 / 20 agent / 7 模式 / 8 MCP 服务”的数量来自 README 的统计表（2026-09-27）；具体名册随版本变动——请对照你那个版本实际安装的文件核实。
+- [未验证] 截至 2026-09-27 star 约 23.9k——GitHub star 不可靠且对时间敏感，仅供参考。最新 release v4.3.0（2026-03-22）已于 2026-09-27 对 GitHub Releases 与 PyPI 双向核实。
 - [未验证] 性能说法（“2-3 倍更快”“少 30-50% token”）是项目对可选 MCP 的自我表述，依配置而定；无独立基准测试。
-- [推断] `pytest` 出现在运行时 `dependencies`（而非仅开发依赖）取自所抓取的 `pyproject.toml`；可能是有意为之（安装器自测）或打包上的小问题。
-- [推断] “只支持 Claude Code”是从 README 表述和 `~/.claude/` 安装目标推断的；没有记录其它 agent 的支持，但未提及不等于证明没有。
-- [未验证] 已宣布的 v5.0 TypeScript 插件系统是路线图，尚未发布；时间点以及是否保留当前安装模型都未确认。
+- [推断] `pytest` 出现在运行时 `dependencies`（而非仅开发依赖）已于 2026-09-27 在 `pyproject.toml` 与 PyPI 元数据双重确认；仍不确定是有意为之（包自述为 “pytest plugin”）还是打包上的小问题。
+- [推断] “只支持 Claude Code”是从 README 表述和 `~/.claude/` 安装目标推断的；README 现在链了 SuperGemini/SuperQwen 姊妹仓库，但本包没有任何 Cursor/Codex/opencode 支持声明，未提及不等于证明没有。
+- [未验证] v5.0 TypeScript 插件系统仍是路线图、未发布（README 与 issue #419：「无 ETA」，2026-09-27）；是否保留当前安装模型未确认。

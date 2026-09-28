@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:13:03Z
+  computed_at: 2026-09-27T16:28:45Z
   overall: D
   overall_score: 0.67
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1083
+        last_commit_age_days: 1087
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,14 +40,14 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 162
+        homebrew_installs_90d: 161
         homebrew_tier: C
         signal_basis: homebrew
     longevity:
       grade: E
       raw:
-        repo_age_days: 4091
-        last_commit_age_days: 1083
+        repo_age_days: 4095
+        last_commit_age_days: 1087
         cohort: tool
     governance:
       grade: "?"

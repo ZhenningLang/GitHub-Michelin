@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "ECC does",
+    "zh": "ECC 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install once through a single path — do not stack methods",
+      "zh": "只走单一路径装一次，别叠装",
+      "code": "/plugin install ecc@ecc · npx ecc-universal@2.2.2 setup"
+    },
+    {
+      "lane": "you",
+      "en": "Plan the task first",
+      "zh": "给任务先出规划",
+      "code": "/ecc:plan \"Add user authentication with OAuth\""
+    },
+    {
+      "lane": "them",
+      "en": "Planner agent produces the implementation blueprint",
+      "zh": "planner agent 产出实现蓝图",
+      "component": {"en": "planner agent", "zh": "planner agent"}
+    },
+    {
+      "lane": "you",
+      "en": "Implement tests-first with the TDD workflow skill",
+      "zh": "用 TDD 工作流 skill 测试先行",
+      "code": "tdd-workflow"
+    },
+    {
+      "lane": "them",
+      "en": "tdd-guide enforces write-tests-first; bugs start as a failing repro test",
+      "zh": "tdd-guide 强制测试先行；修 bug 先用失败测试复现",
+      "component": {"en": "tdd-guide agent", "zh": "tdd-guide agent"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask for a review when the change is done",
+      "zh": "完工后请求一轮评审",
+      "code": "/code-review"
+    },
+    {
+      "lane": "them",
+      "en": "code-reviewer checks the work from fresh context",
+      "zh": "code-reviewer 在新上下文里审查改动",
+      "component": {"en": "code-reviewer agent", "zh": "code-reviewer agent"}
+    },
+    {
+      "lane": "them",
+      "en": "Session hooks distill summaries and extract confidence-scored instincts",
+      "zh": "会话 hook 蒸馏摘要并抽取带置信度的 instinct",
+      "component": {"en": "hooks & memory runtime", "zh": "hook 与记忆运行时"}
+    },
+    {
+      "lane": "them",
+      "en": "Next session start re-injects those instincts into context",
+      "zh": "下次会话开场把它们重新注入上下文",
+      "component": {"en": "SessionStart hook", "zh": "SessionStart hook"}
+    }
+  ],
+  "value": {
+    "en": "The engineering process ships installed, not re-prompted — the agent plans, tests, reviews and remembers on its own",
+    "zh": "工程流程是装进去的，不是每次重新 prompt 出来的——agent 自己会规划、测试、审查、记忆"
+  },
+  "sources": [
+    "README Install with Claude Code (retrieved 2026-09-27): /plugin install ecc@ecc; npx ecc-universal@2.2.2 setup guided path; 'Do not stack install methods' warning",
+    "README Start Using ECC + Common workflows (retrieved 2026-09-27): /ecc:plan \"Add user authentication with OAuth\" -> planner creates implementation blueprint; tdd-workflow skill -> tdd-guide enforces write-tests-first; /code-review -> code-reviewer checks your work",
+    "README intro + Continuous Learning (retrieved 2026-09-27): plan -> test -> implement -> review -> verify -> remember -> improve; sessions distilled into summaries and instincts; SessionStart ranks and injects learned instincts"
+  ]
+}

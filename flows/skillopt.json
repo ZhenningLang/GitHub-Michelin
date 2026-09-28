@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SkillOpt does", "zh": "SkillOpt 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and install the research checkout with a benchmark extra", "zh": "克隆仓库，随基准数据装好研究版", "code": "python -m pip install -e \".[searchqa]\""},
+    {"lane": "you", "en": "Fill optimizer + target model keys into .env", "zh": "在 .env 里填好优化器与目标模型的 key", "code": "cp .env.example .env"},
+    {"lane": "you", "en": "Materialize the split, then start training the skill doc", "zh": "先生成数据切分，再启动 skill 文档训练", "code": "python scripts/train.py --config configs/searchqa/default.yaml"},
+    {"lane": "them", "en": "Each epoch: rollouts -> reflect -> aggregate -> select -> update, accepted only through a validation gate", "zh": "每步 rollout→反思→聚合→筛选→更新，编辑过验证门控才接受", "component": {"en": "Training loop", "zh": "训练循环"}},
+    {"lane": "you", "en": "Evaluate the accepted skill on an unseen split", "zh": "在未参与训练的留出切分上评估入选 skill", "code": "python scripts/eval_only.py --skill outputs/searchqa_quickstart/best_skill.md"},
+    {"lane": "them", "en": "Deploy as one plain Markdown file read by the unchanged agent", "zh": "部署为一份纯 Markdown，交给未改动的 agent 读取", "component": {"en": "best_skill.md", "zh": "best_skill.md"}}
+  ],
+  "value": {"en": "A skill doc that measurably improved under held-out scores — no weight changes, zero extra inference at deploy", "zh": "一份在留出分数上被实测改进的 skill 文档——不动权重，部署时零额外推理"},
+  "sources": [
+    "docs/index.md Quick Example (git clone …; python -m pip install -e \".[searchqa]\"; cp .env.example .env; python scripts/materialize_searchqa.py; python scripts/train.py --config configs/searchqa/default.yaml --out_root outputs/searchqa_quickstart; python scripts/eval_only.py … --skill outputs/searchqa_quickstart/best_skill.md --split valid_unseen)",
+    "docs/index.md How It Works pipeline (rollout → reflect → aggregate → select → update → gate)",
+    "README News 2026-07-02 (pip install skillopt; best_skill.md artifact, zero inference-time model calls)"
+  ]
+}

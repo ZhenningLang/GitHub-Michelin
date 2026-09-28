@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "DSPy does", "zh": "DSPy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into any Python environment", "zh": "装进任意 Python 环境", "code": "pip install dspy"},
+    {"lane": "you", "en": "Point DSPy at a model via a LiteLLM model string", "zh": "用 LiteLLM 模型字符串指定一个模型", "code": "dspy.LM(\"openai/gpt-5-nano\", api_key=\"YOUR_OPENAI_API_KEY\")"},
+    {"lane": "you", "en": "Declare the task as typed input -> output, not a prompt", "zh": "声明带类型的输入→输出，而不是写提示词", "code": "dspy.Predict(\"subject -> haiku\")"},
+    {"lane": "them", "en": "Builds and sends the actual prompt, parses typed output back", "zh": "自动拼出并发送真正的提示词，把输出解析回带类型字段", "component": {"en": "ChatAdapter", "zh": "ChatAdapter"}},
+    {"lane": "you", "en": "Write a scoring metric, then compile against a train set", "zh": "写好打分指标，对着训练集编译", "code": "optimizer.compile(haiku_bot, trainset=train, valset=val)"},
+    {"lane": "them", "en": "Searches instructions & demos that maximize your metric, keeps the best", "zh": "在指令与示范样例中搜索，保住指标最高的组合", "component": {"en": "Optimizer (GEPA, MIPROv2)", "zh": "优化器（GEPA、MIPROv2）"}}
+  ],
+  "value": {"en": "Prompts become compiled artifacts — when you swap models, rerun the optimizer instead of hand-editing", "zh": "提示词成了编译产物——换模型时重跑优化器，而不是手写重调"},
+  "sources": [
+    "README Installation (pip install dspy)",
+    "docs/docs/getting-started/installation.md (dspy.LM(\"openai/gpt-5-nano\", api_key=\"YOUR_OPENAI_API_KEY\"), dspy.configure(lm=lm))",
+    "docs/docs/getting-started/first-program.md (dspy.Predict(haiku_signature) with \"subject -> haiku\"; ChatAdapter prompt/parse flow)",
+    "docs/docs/getting-started/gepa-optimization.md (optimizer = dspy.GEPA(metric=haiku_metric, reflection_lm=reflection_lm, auto=\"light\"); optimized_haiku_bot = optimizer.compile(haiku_bot, trainset=train, valset=val))"
+  ]
+}

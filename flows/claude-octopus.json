@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude Octopus does", "zh": "Claude Octopus 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the plugin into Claude Code from the marketplace", "zh": "从 marketplace 把插件装进 Claude Code", "code": "claude plugin install octo@nyldn-plugins"},
+    {"lane": "you", "en": "Run the setup wizard — it detects which provider CLIs you have", "zh": "跑 setup 向导——它探测你装了哪些 provider CLI", "code": "/octo:setup"},
+    {"lane": "you", "en": "When one model's answer isn't enough, invoke an explicit multi-model workflow", "zh": "一个模型的意见不够时，显式启动多模型工作流", "code": "/octo:debate monorepo vs microservices"},
+    {"lane": "them", "en": "Fans the task out to the detected providers with per-model attribution", "zh": "把任务扇给探测到的各家 provider，结果逐模型署名", "component": {"en": "orchestrate.sh", "zh": "orchestrate.sh"}},
+    {"lane": "them", "en": "Claude synthesizes and applies the 75% consensus gate, surfacing disagreement", "zh": "Claude 综合各家意见并套 75% 共识闸门，上报分歧", "component": {"en": "consensus gate", "zh": "共识闸门"}}
+  ],
+  "value": {"en": "Blind-spot disagreements from rival AI vendors surface in the same session, before you merge — no copy-pasting between tools", "zh": "来自其他厂商 AI 的盲点分歧，在合并之前就出现在同一个会话里——不用在工具之间来回粘贴"},
+  "sources": ["README.md main @ 2026-09-27: Quickstart (claude plugin marketplace add https://github.com/nyldn/plugins.git; claude plugin install octo@nyldn-plugins; /octo:setup); '9 Commands That Matter Most' (/octo:debate monorepo vs microservices); 'How 12 External Providers Work Together' (per-provider attribution, 75% consensus quality gate); Claude synthesizes + consensus gate framing throughout"]
+}

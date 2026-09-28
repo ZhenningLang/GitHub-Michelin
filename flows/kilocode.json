@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Kilo Code does", "zh": "Kilo Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Kilo where you work — the VS Code extension or the terminal CLI", "zh": "在你干活的地方装 Kilo——VS Code 扩展或终端 CLI", "code": "vscode:extension/kilocode.kilo-code · npm install -g @kilocode/cli"},
+    {"lane": "you", "en": "Sign in with a Kilo account (no API key) or plug in your own provider key, then pick a model", "zh": "用 Kilo 账号登录（零 key）或插上自己的供应商 key，再挑一个模型"},
+    {"lane": "you", "en": "Describe the multi-file change in natural language, starting in Plan mode", "zh": "用自然语言描述多文件改动，先交给 Plan 模式"},
+    {"lane": "them", "en": "Designs the change and writes the implementation plan before any code is written", "zh": "在写任何代码前先设计改动、写下实现计划", "component": {"en": "Plan agent", "zh": "Plan agent"}},
+    {"lane": "them", "en": "Edits across files, runs terminal and browser commands, self-checks, then shows you a diff", "zh": "跨文件编辑、跑终端与浏览器命令、自我检查，再给出 diff", "component": {"en": "Code agent", "zh": "Code agent"}}
+  ],
+  "value": {"en": "Real multi-file edits — planned first, reviewable as a diff — inside the editor you already use, billed at the model provider's own rate", "zh": "在你已有的编辑器里完成先规划、可当 diff 审的真实多文件改动，按模型供应商原价计费"},
+  "sources": ["README.md main @ 2026-09-27: Installation section (vscode:extension/kilocode.kilo-code; npm install -g @kilocode/cli); Agents section (Code/Plan/Ask/Debug, 'Plan — Designs architecture and writes implementation plans before any code gets written'); What it does (500+ models, mid-task switching, self-checking, terminal and browser control); 'Create an account and you'll have access to 500+ models'; Autonomous Mode (kilo run --auto)"]
+}

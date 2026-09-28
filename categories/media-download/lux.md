@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:35:27Z
+  computed_at: 2026-09-27T16:08:39Z
   overall: B
-  overall_score: 2.6
+  overall_score: 2.8
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -29,28 +29,34 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 267
+        last_commit_age_days: 272
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: B
       raw:
-        registry: null
-        canonical_package: null
-        homebrew_installs_90d: 249
+        registry: proxy.golang.org
+        canonical_package: github.com/iawia002/lux
+        dependent_repos_count: 1200
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        homebrew_installs_90d: 240
         homebrew_tier: C
-        release_downloads: 560461
+        release_downloads: 561766
         release_assets: 1248
         release_tier: C
         signal_basis: homebrew+releases
+        tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 3132
-        last_commit_age_days: 267
+        repo_age_days: 3137
+        last_commit_age_days: 272
         cohort: tool
     governance:
       grade: B

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Scientific Agent Skills does",
+    "zh": "技能包做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the whole collection or just the skills you need",
+      "zh": "安装整套，或只装你要的几个技能",
+      "code": "npx skills add K-Dense-AI/scientific-agent-skills"
+    },
+    {
+      "lane": "them",
+      "en": "Your host discovers the skills from its install paths and loads only ones the task matches",
+      "zh": "宿主从安装路径发现技能，只加载任务匹配的那几个"
+    },
+    {
+      "lane": "you",
+      "en": "Describe a multi-step research task in plain language",
+      "zh": "用自然语言描述一条多步科研任务",
+      "code": "Load 10X dataset with Scanpy, perform QC and doublet removal"
+    },
+    {
+      "lane": "them",
+      "en": "Matched skills inject version-aware library idioms, validation and boundaries before any code",
+      "zh": "命中的技能先把库的地道用法、校验与边界注入上下文",
+      "component": {
+        "en": "SKILL.md files",
+        "zh": "SKILL.md 文件"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "database-lookup queries 78 public databases with provenance when the workflow needs reference data",
+      "zh": "需要参考数据时，database-lookup 按出处查 78 个公共数据库",
+      "component": {
+        "en": "database-lookup skill",
+        "zh": "database-lookup 技能"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your agent follows domain-expert pipelines instead of improvising scientific library APIs; the runtime and install audit stay yours",
+    "zh": "agent 按领域专家的惯例跑流水线，而不是即兴臆造科学库 API——Python/uv 运行时与安装审计仍在你手里"
+  },
+  "sources": [
+    "README.md main @ 2026-09-27 (Getting Started): npx skills add K-Dense-AI/scientific-agent-skills; gh skill install K-Dense-AI/scientific-agent-skills scanpy; version pinning gh skill install --pin",
+    "README.md (Quick Examples, Single-Cell RNA-seq): \"Load 10X dataset with Scanpy, perform QC and doublet removal\"",
+    "README.md (What's Included): 166 skills; unified database-lookup skill provides deterministic, provenance-rich access to 78 public databases",
+    "README.md (Prerequisites): Python 3.13+, uv package manager"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "the pack does", "zh": "本包做的"},
+  "steps": [
+    {"lane": "you", "en": "Register the repo as a Claude Code plugin marketplace", "zh": "把仓库注册成 Claude Code 的插件 marketplace", "code": "/plugin marketplace add muratcankoylan/Agent-Skills-for-Context-Engineering"},
+    {"lane": "you", "en": "Install all 17 skills as one plugin", "zh": "一次装齐 17 个技能", "code": "/plugin install context-engineering@context-engineering-marketplace"},
+    {"lane": "them", "en": "Claude discovers the skills and activates the one matching your current task on its own", "zh": "Claude 自动发现技能，并在你当前任务命中时自行激活对应那个", "component": {"en": "context-engineering plugin", "zh": "context-engineering 插件"}},
+    {"lane": "them", "en": "Startup loads only names and descriptions; a skill's full body, scripts and references load on activation", "zh": "启动只载入名字和描述，被激活时才加载完整正文、脚本和参考"},
+    {"lane": "you", "en": "Or copy a single skill into one project when you don't want the whole pack", "zh": "不想整包时装单个技能也行", "code": "cp -R skills/context-fundamentals .claude/skills/"}
+  ],
+  "value": {"en": "a named vocabulary — degradation, compression, multi-agent handoffs, evaluation — for diagnosing why a long agent run goes bad, instead of improvising per run", "zh": "诊断长跑 agent 出问题的成套词汇——退化、压缩、多 agent 交接、评估——不必每次现场发挥"},
+  "sources": ["README.md main (raw.githubusercontent.com/muratcankoylan/Agent-Skills-for-Context-Engineering/main/README.md, retrieved 2026-09-27): '/plugin marketplace add muratcankoylan/Agent-Skills-for-Context-Engineering'; '/plugin install context-engineering@context-engineering-marketplace'; 'Claude automatically discovers and activates based on your task context'; Progressive Disclosure: 'At startup, agents load only skill names and descriptions. Full content loads only when a skill is activated for relevant tasks.'; 'cp -R skills/context-fundamentals .claude/skills/'", "GitHub API repos/muratcankoylan/Agent-Skills-for-Context-Engineering/contents/skills (2026-09-27): 17 skill directories"]
+}

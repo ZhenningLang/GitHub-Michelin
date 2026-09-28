@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Skills does", "zh": "Agent Skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the pack once into your coding agent", "zh": "一次性把技能包装进你的 coding agent", "code": "npx skills add addyosmani/agent-skills", "component": {"en": "skills/ + command adapters", "zh": "skills/ 与命令适配层"}},
+    {"lane": "you", "en": "Define the work with the lifecycle command", "zh": "用生命周期命令定义需求", "code": "/spec"},
+    {"lane": "them", "en": "Routes to spec-driven-development and forces a PRD before any code", "zh": "路由到 spec-driven-development，先写 PRD 再写代码", "component": {"en": "spec-driven-development skill", "zh": "spec-driven-development 技能"}},
+    {"lane": "you", "en": "Walk the rest of the lifecycle command by command", "zh": "沿生命周期逐条命令推进", "code": "/plan · /build · /ship"},
+    {"lane": "them", "en": "Each command activates the right skills: TDD, five-axis review, security, launch gates", "zh": "每条命令自动激活对应技能：TDD、五轴评审、安全、发布闸门", "component": {"en": "25 skills + 4 personas", "zh": "25 个技能、4 个 persona"}},
+    {"lane": "them", "en": "Every skill ends in evidence requirements, with anti-rationalization tables closing escape hatches", "zh": "技能以证据要求收尾，反驳表堵住找理由跳步"}
+  ],
+  "value": {"en": "Senior-engineer discipline - spec, tests, review, launch gates - firing on every task instead of only when you remember to ask", "zh": "资深工程师纪律——spec、测试、评审、发布闸门——在每个任务上自动生效，而不是靠你想起来提醒"},
+  "sources": ["README.md main @ 2026-09: Quick Start `npx skills add addyosmani/agent-skills` (install all 25 skills); Commands table /spec /plan /build /test /constraints /review /webperf /code-simplify /ship; All 25 Skills section (24 lifecycle + using-agent-skills meta, per-skill process/gates/anti-rationalization); How Skills Work section (verification non-negotiable, Rationalizations table); Agent Personas (4) and Reference Checklists (7) sections"]
+}

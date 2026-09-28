@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:53:36Z
+  computed_at: 2026-09-27T15:46:16Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 157
+        last_commit_age_days: 162
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 189
-        last_commit_age_days: 157
+        repo_age_days: 194
+        last_commit_age_days: 162
         cohort: skill-pack
     governance:
       grade: A

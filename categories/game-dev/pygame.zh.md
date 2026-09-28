@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T07:44:09Z
+  computed_at: 2026-09-27T16:01:20Z
   overall: C
   overall_score: 2.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 352
+        last_commit_age_days: 357
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -51,7 +51,7 @@ health:
         graph_tier: A
         volume_tier: A
         cross_check_divergence: null
-        release_downloads: 2808338
+        release_downloads: 2841241
         release_assets: 1777
         release_tier: B
         signal_basis: releases
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 3468
-        last_commit_age_days: 352
+        repo_age_days: 3472
+        last_commit_age_days: 357
         cohort: library
     governance:
       grade: D

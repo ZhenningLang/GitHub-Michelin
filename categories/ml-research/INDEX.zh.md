@@ -11,7 +11,7 @@
 | **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | D（4/6） | [→](llm-circuit-finder.zh.md) |
 | **CLIP** | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 | C（5/6） | [→](clip.zh.md) |
 | **TaskMatrix** | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 | "?"（2/6） | [→](taskmatrix.zh.md) |
-| **PyTorch-GAN** | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 | D（4/6） | [→](pytorch-gan.zh.md) |
+| **PyTorch-GAN** | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 | D（3/6） | [→](pytorch-gan.zh.md) |
 | **LSTM Neural Network for Time Series Prediction** | 当需要可读的配套示例学习 Keras LSTM 时序预测时用它——它锁定 EOL 的 TF1／Python 3.5 且为 AGPL-3.0，应照文章重写而非直接引入。 | E（4/6） | [→](lstm-time-series.zh.md) |
 | **Agriculture Knowledge Graph (AgriKG)** | 当需要中文领域知识图谱完整蓝图与现成数据集（NER、关系抽取、Neo4j、Django）时用它——作者声明已停止维护、技术栈陈旧且 GPL-3.0，应借鉴方法而非照搬代码。 | D（3/6） | [→](agriculture-knowledge-graph.zh.md) |
 | **Senta (SKEP)** | 当身处 PaddlePaddle／ERNIE 生态、需要带论文方法的 SKEP 情感分析 checkpoint 时用它——它锁定 EOL 的 PaddlePaddle 1.6.3，环境复原难以避免。 | D（4/6） | [→](senta.zh.md) |
@@ -28,7 +28,7 @@
 | [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（4/6） | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 |
 | [CLIP](clip.zh.md) | ✅ | C（5/6） | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 |
 | [TaskMatrix](taskmatrix.zh.md) | ✅ | "?"（2/6） | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 |
-| [PyTorch-GAN](pytorch-gan.zh.md) | ✅ | D（4/6） | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 |
+| [PyTorch-GAN](pytorch-gan.zh.md) | ✅ | D（3/6） | 用来读干净的 GAN 参考实现学架构——2024 年起停更、已被扩散模型取代，不是生产代码。 |
 | [LSTM Neural Network for Time Series Prediction](lstm-time-series.zh.md) | ✅ | E（4/6） | 当需要可读的配套示例学习 Keras LSTM 时序预测时用它——它锁定 EOL 的 TF1／Python 3.5 且为 AGPL-3.0，应照文章重写而非直接引入。 |
 | [Agriculture Knowledge Graph (AgriKG)](agriculture-knowledge-graph.zh.md) | ✅ | D（3/6） | 当需要中文领域知识图谱完整蓝图与现成数据集（NER、关系抽取、Neo4j、Django）时用它——作者声明已停止维护、技术栈陈旧且 GPL-3.0，应借鉴方法而非照搬代码。 |
 | [Senta (SKEP)](senta.zh.md) | ✅ | D（4/6） | 当身处 PaddlePaddle／ERNIE 生态、需要带论文方法的 SKEP 情感分析 checkpoint 时用它——它锁定 EOL 的 PaddlePaddle 1.6.3，环境复原难以避免。 |

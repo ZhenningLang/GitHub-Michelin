@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-22T17:12:09Z
+  computed_at: 2026-09-27T16:29:54Z
   overall: D
   overall_score: 1.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 993
+        last_commit_age_days: 998
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,17 +45,17 @@ health:
         registry: pypi.org
         canonical_package: selenium-wire
         dependent_repos_count: 297
-        downloads_last_month: 650342
+        downloads_last_month: 510069
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.24
+        cross_check_divergence: 1.0
         tier_source: registry
         archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 3017
-        last_commit_age_days: 993
+        repo_age_days: 3022
+        last_commit_age_days: 998
         cohort: library
     governance:
       grade: "?"

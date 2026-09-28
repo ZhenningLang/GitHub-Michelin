@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Waza does", "zh": "Waza 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the pack once into the shared skills directory", "zh": "一条命令把整套装进共享 skills 目录", "code": "npx skills add tw93/Waza -a claude-code codex cursor -g -y"},
+    {"lane": "them", "en": "One copy lands in ~/.agents/skills and links into every agent that reads it", "zh": "一份拷贝落在 ~/.agents/skills，链进每个读它的 agent", "component": {"en": "shared skills dir", "zh": "共享 skills 目录"}},
+    {"lane": "you", "en": "Call the habit that matches the moment: plan, debug, or review", "zh": "在对应时刻调用对应的习惯动词", "code": "/think · /hunt · /check"},
+    {"lane": "them", "en": "The skill runs its playbook: outcome, red lines, verification, from its docs and gotchas", "zh": "skill 按手册执行：定结果、划红线、给验证，附文档与坑", "component": {"en": "skills/<name>/SKILL.md", "zh": "skills/<name>/SKILL.md"}},
+    {"lane": "you", "en": "Approve the plan, let the agent implement, then gate the merge", "zh": "批准计划后开工，合并前再过评审", "code": "/check"},
+    {"lane": "them", "en": "The review checks the diff against the repo's own context and acts only where you authorized", "zh": "评审对照仓库自身上下文审 diff，只做你授权的动作", "component": {"en": "/check project context", "zh": "/check 项目上下文"}}
+  ],
+  "value": {"en": "Planning, root-cause debugging, and diff review run in every session without maintaining your own skill stack", "zh": "规划、根因调试、diff 评审每个会话都在跑，而你不用自己维护一套 skill 栈"},
+  "sources": ["README.md main @ 2026-09-27 (raw.githubusercontent.com/tw93/Waza/main/README.md): install command `npx skills add tw93/Waza -a claude-code codex cursor -g -y`; 'One copy lands in `~/.agents/skills`, the shared skills directory. Claude Code is symlinked in; Codex, Cursor, Gemini CLI, Copilot, Amp, Kimi Code CLI... picks the eight skills up as `/check`, `/think`, and so on.'", "README.md Skills table (/think, /ui, /check, /hunt, /write, /learn, /read, /health) and 'Each skill is a folder with reference docs, helper scripts, and gotchas from real failures'", "README.md Chaining Skills: 'You decide how skills chain together'; workflow '/think → approve → say \"implement X\" → /check → merge'", "README.md /check row: 'Reviews the diff against project constraints, verifies the result, and handles approved release and maintainer actions'; Project Context section (READMEs, package manifests, Makefiles, CI workflows)", "README.md Why section: 'Each Waza skill states the outcome, the red lines, and how the result gets verified, then steps back and lets the model choose the path'"]
+}

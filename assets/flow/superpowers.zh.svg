@@ -93,7 +93,7 @@
 <rect class="accT" x="472" y="545" width="4" height="73" rx="2"/>
 <circle class="accT" cx="494" cy="569" r="10"/>
 <text class="num" x="494" y="573" text-anchor="middle">9</text>
-<text class="t" x="514" y="574">跑测试，问你合并、提 PR 还是丢弃</text>
+<text class="t" x="514" y="574">跑测试，问你合并、提 PR、保留还是丢弃</text>
 <text class="c" x="514" y="598">finishing-a-development-branch</text>
 <rect class="val" x="28" y="650" width="824" height="66" rx="10"/>
 <text class="valK" x="48" y="674">价值</text>

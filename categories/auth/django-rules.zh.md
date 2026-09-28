@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:59:56Z
+  computed_at: 2026-09-27T15:49:46Z
   overall: B
-  overall_score: 2.6
-  scored_axes: 5
+  overall_score: 3.0
+  scored_axes: 4
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 346
+        last_commit_age_days: 351
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,25 +41,20 @@ health:
         registry: pypi.org
         canonical_package: rules
         dependent_repos_count: 487
-        downloads_last_month: 470585
+        downloads_last_month: 465827
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: null
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 4583
-        last_commit_age_days: 346
+        repo_age_days: 4588
+        last_commit_age_days: 351
         cohort: library
     governance:
-      grade: D
-      raw:
-        active_maintainers_12mo: 1
-        top1_share: 1.0
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -69,6 +64,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_traffic }
+    governance: { reason: unattributable }
 ---
 
 # django-rules

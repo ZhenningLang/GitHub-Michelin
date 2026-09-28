@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:35:23Z
+  computed_at: 2026-09-27T16:07:40Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 169
+        last_commit_age_days: 174
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -47,8 +47,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 1537
-        last_commit_age_days: 169
+        repo_age_days: 1542
+        last_commit_age_days: 174
         cohort: app
     governance:
       grade: B

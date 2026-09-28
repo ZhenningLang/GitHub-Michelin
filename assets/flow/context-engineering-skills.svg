@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="773" viewBox="0 0 880 773" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="773" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="615" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="615" rx="10"/>
+<rect class="pillT" x="474" y="40" width="147.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">the pack does</text>
+<path class="edge" d="M62,205 L62,229" marker-end="url(#a)"/>
+<path class="hand" d="M408,286.5 C439.0,286.5 439.0,310 470,310" marker-end="url(#a)"/>
+<path class="edge" d="M494,405 L494,429" marker-end="url(#a)"/>
+<path class="hand" d="M472,489.0 C441.0,489.0 441.0,513 410,513" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="133" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="133" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Register the repo as a Claude Code</text>
+<text class="t" x="82" y="123">plugin marketplace</text>
+<text class="c" x="82" y="147">/plugin marketplace add</text>
+<text class="c" x="82" y="166">muratcankoylan/Agent-Skills-for-Context-En</text>
+<text class="c" x="82" y="185">gineering</text>
+<rect class="card" x="40" y="231" width="368" height="111" rx="8"/>
+<rect class="accY" x="40" y="231" width="4" height="111" rx="2"/>
+<circle class="accY" cx="62" cy="255" r="10"/>
+<text class="num" x="62" y="259" text-anchor="middle">2</text>
+<text class="t" x="82" y="260">Install all 17 skills as one plugin</text>
+<text class="c" x="82" y="284">/plugin install</text>
+<text class="c" x="82" y="303">context-engineering@context-engineering-ma</text>
+<text class="c" x="82" y="322">rketplace</text>
+<rect class="cardT" x="472" y="286" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="286" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="310" r="10"/>
+<text class="num" x="494" y="314" text-anchor="middle">3</text>
+<text class="t" x="514" y="315">Claude discovers the skills and</text>
+<text class="t" x="514" y="337">activates the one matching your</text>
+<text class="t" x="514" y="359">current task on its own</text>
+<text class="comp" x="514" y="387">component: context-engineering plugin</text>
+<rect class="cardT" x="472" y="431" width="368" height="116" rx="8"/>
+<rect class="accT" x="472" y="431" width="4" height="116" rx="2"/>
+<circle class="accT" cx="494" cy="455" r="10"/>
+<text class="num" x="494" y="459" text-anchor="middle">4</text>
+<text class="t" x="514" y="460">Startup loads only names and</text>
+<text class="t" x="514" y="482">descriptions; a skill&#x27;s full body,</text>
+<text class="t" x="514" y="504">scripts and references load on</text>
+<text class="t" x="514" y="526">activation</text>
+<rect class="card" x="40" y="489" width="368" height="136" rx="8"/>
+<rect class="accY" x="40" y="489" width="4" height="136" rx="2"/>
+<circle class="accY" cx="62" cy="513" r="10"/>
+<text class="num" x="62" y="517" text-anchor="middle">5</text>
+<text class="t" x="82" y="518">Or copy a single skill into one</text>
+<text class="t" x="82" y="540">project when you don&#x27;t want the whole</text>
+<text class="t" x="82" y="562">pack</text>
+<text class="c" x="82" y="586">cp -R skills/context-fundamentals</text>
+<text class="c" x="82" y="605">.claude/skills/</text>
+<rect class="val" x="28" y="657" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="681">VALUE</text>
+<text class="valT" x="48" y="705">a named vocabulary — degradation, compression, multi-agent handoffs, evaluation — for</text>
+<text class="valT" x="48" y="727">diagnosing why a long agent run goes bad, instead of improvising per run</text>
+</svg>

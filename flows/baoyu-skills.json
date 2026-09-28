@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Baoyu Skills does", "zh": "Baoyu Skills 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the pack once into your coding agent", "zh": "一次性把技能包装进你的 coding agent", "code": "npx skills add jimliu/baoyu-skills"},
+    {"lane": "them", "en": "Registers each skill so your agent can invoke it by name as a slash command", "zh": "把每个技能注册成可按名调用的斜杠命令", "component": {"en": "skills/ directory", "zh": "skills/ 目录"}},
+    {"lane": "you", "en": "Point a publication-quality workflow at your draft", "zh": "对初稿发起一条可发表质量的流程", "code": "/translate article.md --mode refined --to zh-CN"},
+    {"lane": "them", "en": "Runs the refined pipeline — analyze, translate, review, polish — honoring your glossary and audience flags", "zh": "执行精翻流水线——分析、翻译、审校、润色——尊重你的术语表与读者设定", "component": {"en": "baoyu-translate", "zh": "baoyu-translate"}},
+    {"lane": "you", "en": "Chain the rest of the pack the same way — structure, then theme for WeChat", "zh": "用同一条路径接上其余技能——先排版，再转公众号主题", "code": "/baoyu-format-markdown path/to/article.md"}
+  ],
+  "value": {"en": "translate → format → publish becomes named, re-runnable commands instead of prompts you re-craft every time", "zh": "翻译→排版→发布变成可按名重跑的命令，而不是每次重搓的 prompt"},
+  "sources": ["README.md main (raw.githubusercontent.com/JimLiu/baoyu-skills/main/README.md, retrieved 2026-09-27): 'npx skills add jimliu/baoyu-skills'; baoyu-translate section: '/translate article.md --mode refined --to zh-CN', '--glossary my-terms.md', Modes table 'Refined | Analyze → Translate → Review → Polish'; baoyu-format-markdown section: '/baoyu-format-markdown path/to/article.md'; Installation tip: 'bulk-installing every skill adds unnecessary context overhead'", "GitHub API repos/JimLiu/baoyu-skills/contents/skills (2026-09-27): 21 skill directories"]
+}

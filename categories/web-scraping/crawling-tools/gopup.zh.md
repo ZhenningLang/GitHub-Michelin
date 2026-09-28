@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T07:55:01Z
+  computed_at: 2026-09-27T16:32:40Z
   overall: E
   overall_score: 0.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1104
+        last_commit_age_days: 1109
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,6 +40,7 @@ health:
       raw:
         registry: pypi.org
         canonical_package: gopup
+        package_link: ecosystems_repository_url
         dependent_repos_count: 1
         downloads_last_month: 280
         graph_tier: D
@@ -49,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2378
-        last_commit_age_days: 1104
+        repo_age_days: 2382
+        last_commit_age_days: 1109
         cohort: library
     governance:
       grade: "?"

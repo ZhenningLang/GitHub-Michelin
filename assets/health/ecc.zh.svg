@@ -49,21 +49,21 @@
 <text x="268" y="203.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">C</text>
 <text x="268" y="226.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">D</text>
 <text x="268" y="249.0" font-size="11" font-style="italic" fill="#E8C45A" fill-opacity="0.55" font-family="'Georgia','Times New Roman',serif">E</text>
-<polygon points="260.0,153.0 359.6,210.5 299.8,291.0 260.0,314.0 200.2,302.5 160.4,210.5" fill="url(#poly)" filter="url(#glow)"/>
-<line x1="260.0" y1="153.0" x2="359.6" y2="210.5" stroke="#3FB950" stroke-width="3"/>
-<line x1="359.6" y1="210.5" x2="299.8" y2="291.0" stroke="#3FB950" stroke-width="3"/>
+<polygon points="260.0,153.0 339.7,222.0 299.8,291.0 260.0,314.0 200.2,302.5 160.4,210.5" fill="url(#poly)" filter="url(#glow)"/>
+<line x1="260.0" y1="153.0" x2="339.7" y2="222.0" stroke="#3FB950" stroke-width="3"/>
+<line x1="339.7" y1="222.0" x2="299.8" y2="291.0" stroke="#3FB950" stroke-width="3"/>
 <line x1="299.8" y1="291.0" x2="260.0" y2="314.0" stroke="#3FB950" stroke-width="3"/>
 <line x1="260.0" y1="314.0" x2="200.2" y2="302.5" stroke="#3FB950" stroke-width="3"/>
 <line x1="200.2" y1="302.5" x2="160.4" y2="210.5" stroke="#3FB950" stroke-width="3"/>
 <line x1="160.4" y1="210.5" x2="260.0" y2="153.0" stroke="#3FB950" stroke-width="3"/>
 <circle cx="260.0" cy="153.0" r="5.5" fill="#F2C200" stroke="#1a1306" stroke-width="1.2"/>
-<circle cx="359.6" cy="210.5" r="5.5" fill="#F2C200" stroke="#1a1306" stroke-width="1.2"/>
+<circle cx="339.7" cy="222.0" r="5.5" fill="#3FB950" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="299.8" cy="291.0" r="5.5" fill="#E8702A" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="260.0" cy="314.0" r="5.5" fill="#E8702A" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="200.2" cy="302.5" r="5.5" fill="#D4C20A" stroke="#1a1306" stroke-width="1.2"/>
 <circle cx="160.4" cy="210.5" r="5.5" fill="#F2C200" stroke="#1a1306" stroke-width="1.2"/>
 <text x="260.0" y="135.0" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">维护活跃度 <tspan fill="#F2C200" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">A</tspan></text>
-<text x="370.9" y="203.5" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">响应速度 <tspan fill="#F2C200" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">A</tspan></text>
+<text x="370.9" y="203.5" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">响应速度 <tspan fill="#3FB950" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">B</tspan></text>
 <text x="370.9" y="340.5" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="start" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">采用广度 <tspan fill="#E8702A" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">D</tspan></text>
 <text x="260.0" y="409.0" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">长青度 <tspan fill="#E8702A" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">D</tspan></text>
 <text x="149.1" y="340.5" font-size="16" font-weight="900" fill="#f3e7c8" text-anchor="end" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4" filter="url(#soft)">维护者分散度 <tspan fill="#D4C20A" font-family="'Georgia','Times New Roman',serif" font-style="italic" font-size="21">C</tspan></text>
@@ -98,8 +98,8 @@
 <text x="779" y="288" font-size="16" font-weight="900" font-style="italic" fill="#F2C200" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">A</text>
 <text x="498" y="317" font-size="14" font-weight="900" fill="#f3e7c8" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4">响应速度</text>
 <rect x="648" y="306" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
-<rect x="648" y="306" width="118" height="9" rx="2" fill="#F2C200"/>
-<text x="779" y="317" font-size="16" font-weight="900" font-style="italic" fill="#F2C200" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">A</text>
+<rect x="648" y="306" width="94" height="9" rx="2" fill="#3FB950"/>
+<text x="779" y="317" font-size="16" font-weight="900" font-style="italic" fill="#3FB950" font-family="'Georgia','Times New Roman',serif" text-anchor="middle">B</text>
 <text x="498" y="346" font-size="14" font-weight="900" fill="#f3e7c8" font-family="'PingFang SC','Hiragino Sans GB','Heiti SC','Microsoft YaHei',sans-serif" letter-spacing="0.4">采用广度</text>
 <rect x="648" y="335" width="118" height="9" rx="2" fill="#241d0e" stroke="#9c7d2a" stroke-opacity="0.5"/>
 <rect x="648" y="335" width="47" height="9" rx="2" fill="#E8702A"/>

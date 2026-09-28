@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Memori does", "zh": "Memori 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK and set your keys", "zh": "安装 SDK 并设好 key", "code": "pip install memori · export MEMORI_API_KEY=[api_key]"},
+    {"lane": "you", "en": "Wrap the LLM client you already have", "zh": "包裹你已有的 LLM 客户端", "code": "mem = Memori().llm.register(client)"},
+    {"lane": "you", "en": "Attribute calls to an entity and a process", "zh": "把调用归属到 entity 和 process", "code": "mem.attribution(entity_id=\"user_123\", process_id=\"support_agent\")"},
+    {"lane": "you", "en": "Call the model as usual — no memory API in the loop", "zh": "照常调用模型——循环里没有记忆 API", "code": "client.chat.completions.create(...)"},
+    {"lane": "them", "en": "Persists the conversation and injects relevant memories automatically", "zh": "自动持久化对话并注入相关记忆", "component": {"en": "client wrapper", "zh": "客户端包裹器"}},
+    {"lane": "them", "en": "Background augmentation extracts facts, preferences, rules at entity/process/session levels", "zh": "后台 augmentation 抽取事实、偏好、规则", "component": {"en": "Advanced Augmentation", "zh": "Advanced Augmentation"}}
+  ],
+  "value": {"en": "The next session already has the user's facts, people, preferences and rules in context — without writing a single search() call", "zh": "下一次会话里，用户的事实、人物、偏好和规则已经在 context 里——而你没写过一句 search()"},
+  "sources": ["README.md main @ 2026-09 (retrieved 2026-09-27) Quickstart (Python SDK): pip install memori; export MEMORI_API_KEY=[api_key]; mem = Memori().llm.register(client); mem.attribution(entity_id=\"user_123\", process_id=\"support_agent\"); client.chat.completions.create(...) with 'Conversations are persisted and recalled automatically'", "README 'Memori Advanced Augmentation': background augmentation at entity/process/session levels with attributes, events, facts, people, preferences, relationships, rules, skills"]
+}

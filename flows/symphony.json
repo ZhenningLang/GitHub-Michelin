@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Symphony does", "zh": "Symphony 做的"},
+  "steps": [
+    {"lane": "you", "en": "Set the tracker credential in your environment", "zh": "在环境变量里配好跟踪器凭证", "code": "LINEAR_API_KEY"},
+    {"lane": "you", "en": "Copy WORKFLOW.md into your repo — front matter config, body prompt", "zh": "把 WORKFLOW.md 拷进仓库：头部配置，正文提示词", "code": "kind: linear"},
+    {"lane": "you", "en": "Start the orchestrator pointed at the workflow file", "zh": "指向工作流文件，启动编排器", "code": "./bin/symphony ./WORKFLOW.md"},
+    {"lane": "them", "en": "Claims a ready issue and gives it an isolated git workspace", "zh": "认领就绪的 issue，为它建一个隔离的 git 工作区", "component": {"en": "Tracker adapter", "zh": "跟踪器适配器"}},
+    {"lane": "them", "en": "Works the issue with Codex in the workspace, reconciling tracker state each turn", "zh": "在工作区里驱动 Codex 干活，每轮后回写跟踪器状态", "code": "codex app-server", "component": {"en": "Codex app-server", "zh": "Codex app-server 会话"}}
+  ],
+  "value": {"en": "Manage work on the board — agents deliver PRs with proof of work while nobody babysits a run", "zh": "在面板上管理工作即可——agent 交付带证据的 PR，没人需要盯着单次运行"},
+  "sources": [
+    "elixir/README.md main @ 2026-09 (retrieved 2026-09-27): 'set it as the LINEAR_API_KEY environment variable'; run block 'mise exec -- ./bin/symphony ./WORKFLOW.md'; minimal WORKFLOW.md front matter 'tracker: kind: linear'; launches Codex in App Server mode inside the workspace",
+    "README.md main @ 2026-09: 'Symphony monitors a Linear board for work and spawns agents... The agents complete the tasks and provide proof of work... land the PR'"
+  ]
+}

@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-22T16:04:19Z
+  computed_at: 2026-09-27T15:53:42Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 522
+        last_commit_age_days: 527
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -44,11 +44,12 @@ health:
       raw:
         registry: pypi.org
         canonical_package: elasticsearch-dsl
+        package_link: ecosystems_repository_url
         dependent_repos_count: 3207
         downloads_last_month: 5280991
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.17
+        cross_check_divergence: 1.21
         release_downloads: 421
         release_assets: 8
         release_tier: D
@@ -58,8 +59,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4584
-        last_commit_age_days: 522
+        repo_age_days: 4589
+        last_commit_age_days: 527
         cohort: library
     governance:
       grade: "?"

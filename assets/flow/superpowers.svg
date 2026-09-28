@@ -97,7 +97,7 @@
 <circle class="accT" cx="494" cy="625" r="10"/>
 <text class="num" x="494" y="629" text-anchor="middle">9</text>
 <text class="t" x="514" y="630">Runs the tests and asks: merge, open a</text>
-<text class="t" x="514" y="652">PR, or discard</text>
+<text class="t" x="514" y="652">PR, keep, or discard</text>
 <text class="c" x="514" y="676">finishing-a-development-branch</text>
 <rect class="val" x="28" y="728" width="824" height="66" rx="10"/>
 <text class="valK" x="48" y="752">VALUE</text>

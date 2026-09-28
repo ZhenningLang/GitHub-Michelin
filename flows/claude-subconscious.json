@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Claude Subconscious does", "zh": "Claude Subconscious 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the plugin marketplace in Claude Code", "zh": "在 Claude Code 里添加插件市场", "code": "/plugin marketplace add letta-ai/claude-subconscious"},
+    {"lane": "you", "en": "Install the plugin", "zh": "安装插件", "code": "/plugin install claude-subconscious@claude-subconscious"},
+    {"lane": "you", "en": "Export your Letta API key — that is the whole config", "zh": "设一个 Letta API key，就是全部配置", "code": "export LETTA_API_KEY=\"your-api-key\""},
+    {"lane": "them", "en": "On first use it auto-imports a bundled Subconscious agent with 8 memory blocks", "zh": "首次使用时自动导入内置 Subconscious agent 与 8 个记忆块", "component": {"en": "agent auto-import", "zh": "agent 自动导入"}},
+    {"lane": "you", "en": "Use Claude Code normally in any project", "zh": "在任意项目里照常使用 Claude Code"},
+    {"lane": "them", "en": "After each response a detached worker replays the transcript; the agent reads files and updates its memory", "zh": "后台 worker 重放 transcript，agent 读文件更新记忆", "component": {"en": "Stop hook + SDK worker", "zh": "Stop hook + SDK worker"}},
+    {"lane": "them", "en": "Before your next prompt it injects fresh memories and whispers via stdout", "zh": "下一次 prompt 前经 stdout 注入新记忆与低语", "component": {"en": "UserPromptSubmit hook", "zh": "UserPromptSubmit hook"}}
+  ],
+  "value": {"en": "Cross-session memory that compounds while you code — without ever editing CLAUDE.md", "zh": "记忆随会话不断累积，而你从不用改 CLAUDE.md"},
+  "sources": ["README.md main @ 2026-09 (retrieved 2026-09-27): install commands '/plugin marketplace add letta-ai/claude-subconscious' and '/plugin install claude-subconscious@claude-subconscious'; config 'export LETTA_API_KEY=\"your-api-key\"'", "README.md 'Default Subconscious Agent': auto-import of bundled Subconscious.af with 8 memory blocks; 'Hooks': Stop async worker (send_messages_to_letta.ts / send_worker_sdk.ts), UserPromptSubmit injects via stdout; 'Multi-Project Usage': one shared agent, per-project .letta/claude/ bookkeeping; 'Modes': Subconscious never writes to CLAUDE.md"]
+}

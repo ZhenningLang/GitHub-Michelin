@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "UI UX Pro Max does", "zh": "UI UX Pro Max 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and drop the skill into your project for your assistant", "zh": "装 CLI，为所用 agent 把 skill 落进项目", "code": "npm install -g ui-ux-pro-max-cli · uipro init --ai claude", "component": {"en": "uipro CLI", "zh": "uipro CLI"}},
+    {"lane": "you", "en": "Ask for UI work in natural language", "zh": "用自然语言提出 UI/UX 需求", "code": "Build a landing page for my SaaS product"},
+    {"lane": "them", "en": "Skill auto-activates and runs multi-domain BM25 search over its bundled CSV databases", "zh": "skill 自动激活，对内置 CSV 库做多域 BM25 检索", "component": {"en": "search.py (Python 3, stdlib only)", "zh": "search.py（仅用 Python 3 标准库）"}},
+    {"lane": "them", "en": "Reasoning engine matches product type to style, palette, fonts and anti-patterns", "zh": "推理引擎把产品类型映射到风格、配色、字体与反模式", "component": {"en": "192 reasoning rules", "zh": "192 条推理规则"}},
+    {"lane": "them", "en": "Runs the pre-delivery checklist (contrast, breakpoints, focus states, no emoji icons)", "zh": "交付前跑质量清单（对比度、断点、focus 状态、不用 emoji 图标）"}
+  ],
+  "value": {"en": "Agent makes defensible design decisions - style, palette, typography, a11y - without you owning a design system first", "zh": "agent 做出有据可依的设计决策——风格、配色、排版、无障碍——你不必先自建一套设计系统"},
+  "sources": ["README.md main @ 2026-09: Installation section `npm install -g ui-ux-pro-max-cli`, `uipro init --ai claude`; Example prompts `Build a landing page for my SaaS product`; Design System Command section `python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"SaaS dashboard\" --design-system --persist -p \"MyApp\"`; How It Works + pre-delivery checklist sections; Features section (192 reasoning rules, BM25 per What's New diagram, Python 3.x stdlib-only per Prerequisites)"]
+}
