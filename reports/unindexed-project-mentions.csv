@@ -105,6 +105,7 @@ Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
 Apache Superset,categories/observability/grafana.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
+Apollo Client (`apollographql/apollo-client`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Appcues / Userflow / Userpilot,categories/web-ui/product-tours/driver-js.md,,no
 Appium,categories/im-automation/douyin-bot.md,,no
 Apple Core ML / Foundation Models,categories/on-device-ml/litert-lm.md,,no
@@ -790,6 +791,7 @@ RedisInsight (Redis Ltd.),categories/databases/database-clients/rdr.md,,no
 Redpanda Console,categories/kafka-tools/kafka-ui.md,,no
 Reeder,categories/reading-tools/netnewswire.md,,no
 Reflog / `git stash` + manual snapshots,categories/agent-tooling/session-history/entire-cli.md,,no
+Relay (`facebook/relay`),categories/web-ui/data-fetching/tanstack-query.md,,no
 reload/restart with logging,categories/python-tooling/pyrasite.md,,no
 Remix,categories/web-ui/frameworks/nextjs.md,,no
 requests,categories/python-tooling/curl-cffi.md,,no
@@ -803,6 +805,7 @@ rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
 RSSHub,categories/reading-tools/horizon.md,,no
+RTK Query (`reduxjs/redux-toolkit`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no
 Runway / Pika / HeyGen,categories/video-production/INDEX.md,,no
 Runway / Pika / HeyGen (SaaS),categories/video-production/hypit.md,,no
@@ -875,6 +878,7 @@ Subtitle Edit (sync features),categories/media-processing/video-audio/speech-and
 Sunshine + Moonlight,categories/dev-utilities/ops-infra/rustdesk.md,,no
 svgl,categories/web-ui/icon-libraries/thesvg.md,,no
 Swift (ModelScope),categories/llm-training/llamafactory.md,,no
+SWR (`vercel/swr`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no
 Taskmaster (claude-task-master),categories/agent-tooling/work-state/ccpm.md,,no
@@ -918,6 +922,7 @@ undetected-chromedriver,categories/web-automation/browser-driver-frameworks/nodr
 undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no
 unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
+urql (`urql-graphql/urql`),categories/web-ui/data-fetching/tanstack-query.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no

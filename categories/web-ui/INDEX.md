@@ -11,6 +11,7 @@
 | **component-libraries** | UI component libraries, primitives, and design-system building blocks. | [→](component-libraries/INDEX.md) |
 | **product-tours** | Product tour, onboarding, spotlight, and guided-step UI libraries. | [→](product-tours/INDEX.md) |
 | **icon-libraries** | Icon catalogues you import or copy into a UI — brand logos, cloud-architecture icons, UI glyph sets. | [→](icon-libraries/INDEX.md) |
+| **data-fetching** | Client-side data-fetching and server-state caching — dedupe requests, keep server data fresh, invalidate after writes. | [→](data-fetching/INDEX.md) |
 
 ## What belongs here
 
