@@ -878,6 +878,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Form** | 表单里每个输入手写状态、touched 和异步校验防抖时用它——无头、带类型的表单 store，字段级和表单级校验，覆盖 React、Vue、Angular、Solid、Svelte、Lit；v2（alpha）会改日常 API。 | MIT | A（6/6） | [中](categories/web-ui/forms/tanstack-form.zh.md) · [EN](categories/web-ui/forms/tanstack-form.md) |
 | **TanStack Virtual** | 几千上万行的列表、表格或聊天流挂载慢、滚动卡时用它——无头虚拟器只渲染可见行、标签由你自己写，测量动态行高，能为聊天贴底；它不是现成的列表组件，行数受浏览器元素最大高度限制（约百万行）。 | MIT | A（6/6） | [中](categories/web-ui/virtualization/tanstack-virtual.zh.md) · [EN](categories/web-ui/virtualization/tanstack-virtual.md) |
 | **TanStack Store** | 框架无关的库或应用核心需要一份带派生值的响应式 store，再用 React、Vue、Angular、Solid、Svelte、Preact、Lit 的薄适配层只在选中那块变了时重渲染；仍是 0.x，小版本会破坏兼容，没有持久化和 devtools。 | MIT | A（6/6） | [中](categories/web-ui/state-management/tanstack-store.zh.md) · [EN](categories/web-ui/state-management/tanstack-store.md) |
+| **TanStack Charts** | 现成图表组件画不出你要的自定义图层、同一张图又要在多个框架和服务端渲染时用它——一份带类型的“标记加比例尺”定义，自带服务端 SVG、键盘焦点和按需 Canvas；它是 Alpha（0.x，小版本会破坏兼容），才两个月大，代码主要出自一位作者。 | MIT | B（6/6） | [中](categories/web-ui/charts/tanstack-charts.zh.md) · [EN](categories/web-ui/charts/tanstack-charts.md) |
 
 | **TanStack DB** | 每个视图都要求单开联表接口、每次写操作都要手补查询缓存时用它——客户端规范化集合加差分数据流活查询和乐观事务；beta 0.x，不是客户端状态库，也不是持久离线数据库。 | MIT | B（6/6） | [中](categories/web-ui/data-fetching/tanstack-db.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-db.md) |
 

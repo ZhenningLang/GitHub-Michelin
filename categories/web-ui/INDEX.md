@@ -15,6 +15,7 @@
 | **forms** | Form state and validation — typed field values, touched/errors, sync and async validators, submit handling. | [→](forms/INDEX.md) |
 | **virtualization** | List and grid virtualization — render only the visible rows of long lists, tables and chat feeds. | [→](virtualization/INDEX.md) |
 | **state-management** | Client-side state stores — shared reactive values outside the component tree, derived values, and selector-based subscriptions per framework. | [→](state-management/INDEX.md) |
+| **charts** | Charting libraries embedded in the front-end — data arrays into axes, bars, lines and points with tooltips, resize and framework adapters. | [→](charts/INDEX.md) |
 
 ## What belongs here
 

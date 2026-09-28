@@ -106,6 +106,7 @@ Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md
 Apache APISIX,categories/api-gateway/kong.md,,no
 Apache Avro,categories/networking/thriftpy.md,,no
 Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
+Apache ECharts (`apache/echarts`),categories/web-ui/charts/tanstack-charts.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
 Apollo Client (`apollographql/apollo-client`),categories/web-ui/data-fetching/tanstack-query.md,,no
@@ -190,6 +191,7 @@ Character role-play prompt,categories/agent-skills/context-engineering/soul-md.m
 Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
 Charles,categories/debugging-proxy/whistle.md,,no
 Charles / Fiddler,categories/debugging-proxy/INDEX.md,,no
+Chart.js (`chartjs/Chart.js`),categories/web-ui/charts/tanstack-charts.md,,no
 Chatbox / Cherry Studio,categories/team-chat/hivechat.md,,no
 ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
 ChatGPT / Claude.ai (commercial SaaS),categories/llm-chat-ui/nextchat.md,,no
@@ -650,6 +652,7 @@ Numba,categories/python-tooling/cython.md,,no
 Nuxt.js,categories/web-ui/frameworks/nextjs.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
+Observable Plot (`observablehq/plot`),categories/web-ui/charts/tanstack-charts.md,,no
 Obsidian,categories/knowledge-base/llm-wiki.md,,no
 Obsidian / editor Markdown plugins,categories/markdown-tools/markdown-here.md,,no
 Official Bitwarden,categories/dev-utilities/ops-infra/vaultwarden.md,,no
@@ -794,6 +797,7 @@ Reader View extensions (various),categories/reading-tools/just-read.md,,no
 Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 reCAPTCHA (Google),categories/captcha/capjs.md,,no
+Recharts (`recharts/recharts`),categories/web-ui/charts/tanstack-charts.md,,no
 Redash,categories/data-visualization/superset.md,,no
 Redash / Tableau / Looker,categories/data-visualization/INDEX.md,,no
 redditdownloader (shadowmoose),categories/media-download/bulk-downloader-for-reddit.md,,no
@@ -952,6 +956,7 @@ vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 virtua (`inokawa/virtua`),categories/web-ui/virtualization/tanstack-virtual.md,,no
+visx (`airbnb/visx`),categories/web-ui/charts/tanstack-charts.md,,no
 VitePress,categories/web-ui/frameworks/astro.md,,no
 VLC,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 vscode-neovim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no

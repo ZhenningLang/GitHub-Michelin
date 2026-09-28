@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Charts does", "zh": "TanStack Charts 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the one package", "zh": "安装唯一的那个包", "code": "pnpm add @tanstack/charts"},
+    {"lane": "you", "en": "Define the chart: marks over your original rows, plus x/y scales", "zh": "写图表定义：在原始数据上叠标记，再配 x、y 比例尺", "code": "defineChart", "component": {"en": "grammar (marks, channels, scales)", "zh": "语法层（标记、通道、比例尺）"}},
+    {"lane": "them", "en": "Infers scale domains from the channels and fits axes and margins to the container", "zh": "从通道推断比例尺范围，按容器尺寸排好坐标轴和边距"},
+    {"lane": "them", "en": "Compiles a renderer-neutral scene of keyed shapes", "zh": "编译出一份与渲染方式无关、图形带键的场景", "component": {"en": "scene compiler", "zh": "场景编译器"}},
+    {"lane": "you", "en": "Pass the same definition to your framework's Chart component", "zh": "把同一份定义交给所用框架的 Chart 组件", "code": "<Chart definition={revenueChart} height={320} ariaLabel=\"Monthly revenue\" />", "component": {"en": "framework adapter", "zh": "框架适配层"}},
+    {"lane": "them", "en": "Renders SVG on the server, hydrates, then follows resizes with tooltips and focus", "zh": "服务端出 SVG，浏览器水合，随后跟随尺寸变化并提供提示框和焦点"}
+  ],
+  "value": {"en": "One typed chart definition that renders in any supported framework and on the server, without dropping to raw D3 for custom layers", "zh": "一份带类型的图表定义，能在各支持框架和服务端渲染，加自定义图层也不用退回裸 D3"},
+  "sources": [
+    "README.md Quick look (pnpm add via docs/installation.md; defineChart, barY(revenue, ...), <Chart definition={revenueChart} height={320} ariaLabel=\"Monthly revenue\" />; compact scales infer domains, responsive pixel ranges, renderer-neutral keyed scene)",
+    "docs/installation.md (pnpm add @tanstack/charts)",
+    "docs/quick-start.md (mountChart, initialWidth for server output, ResizeObserver)",
+    "docs/guides/ssr-and-hydration.md (SVG server output and hydration per adapter)"
+  ]
+}

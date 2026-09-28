@@ -91,7 +91,7 @@
 | TanStack/store | add | done | categories/web-ui/state-management/tanstack-store.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
 | TanStack/ranger | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
 | TanStack/pacer | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
-| TanStack/charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
+| TanStack/charts | add | done | categories/web-ui/charts/tanstack-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
 | TanStack/hotkeys | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
 | TanStack/time | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
 | TanStack/devtools | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
