@@ -418,6 +418,7 @@ GRASS GIS,categories/geospatial/qgis.md,,no
 Grayjay (`futo-org/grayjay-android`),categories/streaming-clients/pipepipe.md,,no
 grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 grep over `~/.claude` / session dirs,categories/agent-tooling/session-history/agentsview.md,,no
+grepai,categories/rag-retrieval/code-intelligence/jevgrep.md,,no
 gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no

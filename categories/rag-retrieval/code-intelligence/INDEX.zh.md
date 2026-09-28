@@ -14,6 +14,7 @@
 | **Sourcegraph** | Code AI platform with Code Search & Cody | D（4/6） | [→](sourcegraph.zh.md) |
 | **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | B（6/6） | [→](ix.zh.md) |
 | **Repowise** | 当你的 agent 每个任务都在大仓库里重新烧上下文摸底、而你要一个不用 key 的本机索引通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 | C（6/6） | [→](repowise.zh.md) |
+| **Jevgrep** | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 | C（4/6） | [→](jevgrep.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Understand-Anything](understand-anything.zh.md) | ✅ | B（6/6） | 把代码变成 agent 可查询的可探索知识图谱；比 graphify 年轻，star 数与数据外发边界均存疑。 |
 | [Ix](ix.zh.md) | ✅ | B（6/6） | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 |
 | [Repowise](repowise.zh.md) | ✅ | C（6/6） | 当你的 agent 每个任务都在大仓库里重新烧上下文找结构、而你想要一个不用 key 的本机索引，通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 |
+| [Jevgrep](jevgrep.zh.md) | ✅ | C（4/6） | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 |
 | [SCIP](scip.zh.md) | ✅ | A（6/6） | SCIP Code Intelligence Protocol |
 | [Sourcegraph](sourcegraph.zh.md) | ✅ | D（4/6） | Code AI platform with Code Search & Cody |
 

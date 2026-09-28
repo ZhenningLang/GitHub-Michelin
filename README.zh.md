@@ -303,6 +303,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HelixDB** | 当你的 RAG 语料本身就是一张图，你想把向量检索、BM25 和图遍历放进同一个采用 Apache-2.0、由对象存储托底的引擎时用它——但 v3 引擎 2026-07 才开源，且没有可自建的 HA。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/structured-retrieval/helix-db.zh.md) · [EN](categories/rag-retrieval/structured-retrieval/helix-db.md) |
 | **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | Apache-2.0 | B（6/6） | [中](categories/rag-retrieval/code-intelligence/ix.zh.md) · [EN](categories/rag-retrieval/code-intelligence/ix.md) |
 | **Repowise** | 当你的 agent 每个任务都在大仓库里重新烧上下文找结构、而你想要一个不用 key 的本机索引，通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 | AGPL-3.0 | C（6/6） | [中](categories/rag-retrieval/code-intelligence/repowise.zh.md) · [EN](categories/rag-retrieval/code-intelligence/repowise.md) |
+| **Jevgrep** | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 | MIT | C（4/6） | [中](categories/rag-retrieval/code-intelligence/jevgrep.zh.md) · [EN](categories/rag-retrieval/code-intelligence/jevgrep.md) |
 
 ### llm-eval
 
