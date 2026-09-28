@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "HEY CLI does", "zh": "HEY CLI 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up", "zh": "搭建"}, "en": "Install the hey binary for your platform", "zh": "为自己的平台装上 hey 二进制", "code": "curl -fsSL https://hey.com/install-cli | bash"},
+    {"lane": "you", "en": "Run hey once and sign in with your browser", "zh": "跑一次 hey，用浏览器完成登录", "code": "hey"},
+    {"lane": "them", "en": "Completes OAuth and stores the token in your system keyring", "zh": "完成 OAuth，把令牌存进系统钥匙串"},
+    {"lane": "you", "en": "Connect the coding agent it detected — or any MCP client", "zh": "接上检测到的编程 agent，或任意 MCP 客户端", "code": "hey setup claude · claude mcp add hey -- hey mcp"},
+    {"lane": "them", "en": "Installs the embedded skill and serves hey_* MCP tools on your account", "zh": "装好内置 skill，以你的账号提供 hey_* MCP 工具", "component": {"en": "skill + MCP server", "zh": "skill 与 MCP 服务"}},
+    {"lane": "you", "phase": {"en": "Every use", "zh": "日常使用"}, "en": "Ask the agent to work your mail — or type the commands yourself", "zh": "让 agent 处理你的邮件，或自己敲命令", "code": "hey box view imbox · hey reply 12345 -m \"Friday works for me.\""},
+    {"lane": "them", "en": "Reads come back as Markdown or JSON with --jq; writes carry the keyring token to HEY's API", "zh": "读回 Markdown 或 JSON，写操作带着钥匙串令牌发往 HEY API"}
+  ],
+  "value": {"en": "Mail, calendar and contacts become agent-callable — no browser tab, no screen-scraping, no IMAP wrangling", "zh": "邮件、日历、通讯录都变成 agent 可调用的能力——不开浏览器、不抓屏、不折腾 IMAP"},
+  "sources": [
+    "https://github.com/basecamp/hey-cli README — Install (curl installer, mise), Getting started (hey browser sign-in), Using the CLI (box view, reply), Coding agents (hey setup claude, claude mcp add hey -- hey mcp)",
+    "https://github.com/basecamp/hey-cli docs/agents.md — skill install to ~/.agents/skills/hey, hey mcp gateway tools on the signed-in account",
+    "https://github.com/basecamp/hey-cli docs/cli.md — output formats (--json, --jq), system-keyring credential storage"
+  ]
+}

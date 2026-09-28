@@ -14,7 +14,7 @@
 | astaxie/TokenHub | add | done | categories/api-gateway/tokenhub.md |  | astaxie/tokenhub |
 | Asymptote-Labs/agent-beacon | add | done | categories/agent-memory/agent-beacon.md |  | asymptote-labs/agent-beacon |
 | Ataraxy-Labs/weave | add | running |  |  | ataraxy-labs/weave |
-| basecamp/hey-cli | add | running |  |  | basecamp/hey-cli |
+| basecamp/hey-cli | add | done | categories/agent-tooling/harness-extensions/hey-cli.md |  | basecamp/hey-cli |
 | bivlked/amneziawg-installer | add | pending |  |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | pending |  |  | cloudflare/computer |
 | code-yeongyu/oh-my-openagent | add | pending |  |  | code-yeongyu/oh-my-openagent |

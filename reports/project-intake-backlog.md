@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 870
+- Named-but-unindexed alternatives: 873
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -27,8 +27,11 @@ shape and are deliberately excluded here.
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
+| [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
+| [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
 | [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
@@ -49,6 +52,3 @@ shape and are deliberately excluded here.
 | `openilink-sdk-python` | `categories/im-automation/openilink-sdk-go.md` |
 | `openilink-tg` | `categories/im-automation/openilink-hub.md` |
 | `opensearch-py` / opensearch-dsl-py | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
-| `python-wechaty` | `categories/im-automation/wechat/wechaty.md` |
-| `redis-cli --bigkeys` / `--memkeys` | `categories/databases/database-clients/rdr.md` |
-| `requests` + `concurrent.futures` | `categories/python-tooling/grequests.md` |
