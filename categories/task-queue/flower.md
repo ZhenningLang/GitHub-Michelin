@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:03:40Z
+  computed_at: 2026-09-28T11:15:31Z
   overall: B
-  overall_score: 3.0
-  scored_axes: 5
+  overall_score: 3.17
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -67,10 +67,13 @@ health:
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
-  unknowns:
-    risk_license: { reason: license_unparsed }
+      grade: A
+      raw:
+        spdx_id: BSD-3-Clause
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
+        license_basis: "registry:pypi.org/flower"
 ---
 
 # Flower
@@ -148,11 +151,11 @@ Flower rides Celery's built-in telemetry instead of embedding anything in your w
 - **Governance / bus factor.** Owned by an **individual account** (`mher`) with ~7.2k stars — a high-stars, single-owner project is a **bus-factor flag**: contribution comes partly from the Celery maintainer circle (ask, auvipy), but the namespace and final say rest with one person. [推断]
 - **Age & Lindy verdict.** Created 2012-07 (GitHub `created_at`), ~14 years old and **active again in 2026** ⇒ a **strong Lindy** signal with a caveat: it has been *the* Celery dashboard for over a decade, but the 2023–2026 release gap shows maintenance can stall.
 - **Adoption.** The de-facto monitor wherever Celery runs in production — ~7.2k stars (2026-09), 8,044,726 monthly PyPI downloads, and a widely-pulled Docker image indicate broad real-world use.
-- **Risk flags.** License is BSD-3-Clause (confirmed from the LICENSE file; GitHub's API reports `NOASSERTION`), no relicense history found; the main flags are single-owner governance and the security exposure of an admin tool.
+- **Risk flags.** License is BSD-3-Clause — the radar grades it A via registry corroboration: a single BSD-3 LICENSE body (GitHub's detector still says `NOASSERTION` on the wrapped text) and PyPI metadata declaring BSD agree, and no relicense history was found; the main flags are single-owner governance and the security exposure of an admin tool.
 
 ## Caveats (unverified)
 
-- [未验证] License: GitHub's API returns `NOASSERTION` and PyPI reports plain `BSD`, but the repo's LICENSE file and README state a 3-clause BSD license (Copyright Mher Movsisyan and contributors) — recorded here as BSD-3-Clause.
+- [推断] License: resolved 2026-09-28 — the radar corroborates BSD-3-Clause (single-template LICENSE body + matching PyPI claim); GitHub's detector still reports `NOASSERTION` only because of line-wrapping in the file.
 - [未验证] ~7.2k GitHub stars as of 2026-09; latest tagged release v2.2.0 (2026-09-22). Release cadence restarted only in 2026 after v2.0.1 sat from 2023-08 — treat the burst of activity as recovery, not a settled rhythm.
 - [推断] Task history retention is in-memory and bounded by default; durability and limits depend on configuration and version — verify before relying on Flower for historical data.
 - [推断] Worker-control capabilities make an unauthenticated deployment dangerous; the auth-required posture is inferred from the tool's function, not a measured security claim.

@@ -16,11 +16,11 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T03:24:44Z
+  computed_at: 2026-09-28T11:16:08Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
-  applicable_axes: 5
+  applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
@@ -36,7 +36,7 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: "N/A"
+      grade: "?"
       raw: {}
     longevity:
       grade: C
@@ -61,8 +61,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-  not_applicable:
-    adoption: { reason: no_install_channel }
+    adoption: { reason: install_channel_below_noise_floor }
 ---
 
 # Qiushi-Skill

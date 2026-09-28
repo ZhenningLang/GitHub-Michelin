@@ -1269,28 +1269,64 @@ def _registry_links_back(reg: str, name: str, want_full: str,
     return None
 
 
+_MANIFEST_NAMES_CACHE: dict[str, list[str]] = {}
+
+
+def _manifest_names(repo: RepoData) -> list[str]:
+    """Package names the repo declares for itself in its own root manifests.
+
+    ecosyste.ms maps repo -> package by scraping manifests, but the lookup direction we
+    probe (`repository_url` on the package record) still misses packages whose name
+    shares no token with the repo (`oh-my-claudecode` publishes as
+    `oh-my-claude-sisyphus`). The manifest says what the repo *calls* its package; it is
+    only a candidate list — every consumer must still show the registry record links back
+    to this repo before any number or license claim is used.
+    """
+    key = repo.full
+    if key in _MANIFEST_NAMES_CACHE:
+        return _MANIFEST_NAMES_CACHE[key]
+    out: list[str] = []
+    for path, pat in (
+        ("package.json", r'"name"\s*:\s*"([^"\n]{1,100})"'),
+        ("pyproject.toml", r'(?m)^name\s*=\s*"([^"\n]{1,100})"'),
+    ):
+        res = gh_api(f"repos/{repo.full}/contents/{path}")
+        if not res.ok or not isinstance(res.json, dict):
+            continue
+        import base64 as _b64
+        try:
+            text = _b64.b64decode(res.json.get("content") or "").decode("utf-8", "replace")
+        except Exception:
+            continue
+        m = re.search(pat, text)
+        if m and m.group(1).strip():
+            out.append(m.group(1).strip())
+    _MANIFEST_NAMES_CACHE[key] = out
+    return out
+
+
 def _lookup_by_name(repo_owner: str, repo_name: str, *,
-                    default_branch: str | None = None) -> dict | None:
+                    default_branch: str | None = None,
+                    extra_names: list[str] | None = None,
+                    min_downloads: int = NOISE_FLOOR_DOWNLOADS) -> dict | None:
     """Secondary discovery: find the package by *name* when repo_url lookup came up empty.
 
-    ecosyste.ms builds its repo -> package mapping by scraping manifests and the mapping
-    has a long tail of gaps; a gap there is not evidence of an unpackaged project
-    (`elasticsearch-dsl-py` ships as `elasticsearch-dsl` and is mapped to neither).
-    Every hit must be shown to come from this repo before its numbers are used: its
-    ecosyste.ms `repository_url` survives `_resolves_to`, or — when that field is empty —
-    the registry's own metadata links back (`_registry_links_back`). A field that names
-    a *different* repo is a rejection, not a gap, and is never overruled.
+    `min_downloads=0` is used by the skill-pack N/A gate: a verified package below the
+    noise floor still disproves "no install channel exists to count", and the caller
+    decides how to grade a sub-floor channel.
     """
     want_full = f"{repo_owner}/{repo_name}"
     best = None
-    for name in _name_variants(repo_name):
+    seen_names = _name_variants(repo_name) + [n for n in (extra_names or [])
+                                              if n not in (repo_name,)]
+    for name in seen_names:
         for reg in NAME_LOOKUP_REGISTRIES:
             url = ECOSYSTE_REGISTRY_PKG.format(
                 reg=reg, name=urllib.parse.quote(name, safe=""))
             status, data = http_get_json(url, retries=1)
             if status != 200 or not isinstance(data, dict):
                 continue
-            if (data.get("downloads") or 0) < NOISE_FLOOR_DOWNLOADS \
+            if (data.get("downloads") or 0) < min_downloads \
                     and not (data.get("dependent_repos_count") or 0):
                 continue
             back = (data.get("repository_url") or "").strip().rstrip("/")
@@ -1628,11 +1664,17 @@ def axis_adoption(repo: RepoData) -> Axis:
 
     # Secondary discovery before conceding: ecosyste.ms's repo -> package mapping has a
     # long tail of gaps, and a gap there is not evidence of an unpackaged project.
+    # The repo's own manifest names extend the search for packages published under an
+    # unrelated name (`oh-my-claudecode` -> `oh-my-claude-sisyphus`); a manifest hit is
+    # only trusted through the same repository-link verification as every other.
+    manifest_extra: list[str] = []
     if canonical is None:
+        manifest_extra = _manifest_names(repo)
         canonical = _lookup_by_name(
             repo.owner, repo.name,
             default_branch=(repo.core.json or {}).get("default_branch")
-            if isinstance(repo.core.json, dict) else None)
+            if isinstance(repo.core.json, dict) else None,
+            extra_names=manifest_extra)
 
     if canonical is None:
         # Ships no registry package. Before concluding anything, ask the instruments that
@@ -1642,6 +1684,28 @@ def axis_adoption(repo: RepoData) -> Axis:
             return fallback
         if repo.type in ADOPTION_NO_PACKAGE_TYPES:
             if repo.type in ADOPTION_NA_TYPES:
+                # "Copied, not installed" is only true if no registry package of this repo
+                # exists at ANY volume. Re-probe without the noise floor (the floor exists
+                # to stop name collisions from supplying grades; it must not manufacture a
+                # claim that no install channel exists). A verified sub-floor package is
+                # `?`: a channel exists, it is just too small to measure reach — and the
+                # copy path stays uncountable either way.
+                verified = _lookup_by_name(
+                    repo.owner, repo.name,
+                    default_branch=(repo.core.json or {}).get("default_branch")
+                    if isinstance(repo.core.json, dict) else None,
+                    extra_names=manifest_extra, min_downloads=0)
+                if verified is not None:
+                    return Axis.unknown(
+                        "install_channel_below_noise_floor",
+                        raw={"registry": verified.get("registry"),
+                             "canonical_package": verified.get("name"),
+                             "downloads_last_month": verified.get("downloads"),
+                             "package_link": verified.get("_package_link")},
+                        evidence="? registry package exists "
+                                 f"({verified.get('registry')}:{verified.get('name')}, "
+                                 f"{verified.get('downloads') or 0}/mo, below the "
+                                 f"{NOISE_FLOOR_DOWNLOADS} floor) — not N/A, but no gradeable count")
                 return Axis.not_applicable(
                     "no_install_channel",
                     evidence=f"type {repo.type}: copied, not installed — no install event exists to count")
@@ -2065,6 +2129,75 @@ BSD3_FRAGMENTS = [
     "the name of the copyright holder",
 ]
 
+# Phrases that mean "this LICENSE file grants more than the one permissive template
+# it embeds". Any hit vetoes registry corroboration: the composite cases that made
+# §2.6 conservative in the first place all name their second grant somewhere
+# (Mattermost "commercial license", Rocket.Chat's MPL/EE split, SSPL preambles).
+LICENSE_COMPOSITE_MARKERS = (
+    "affero", "agpl", "gnu general public", "lesser general public",
+    "gfdl", "mozilla public", "eclipse public", "commercial license",
+    "enterprise license", "dual licens", "sustainable use",
+    "server side public", "elastic license", "business source",
+)
+
+
+def _license_family_claim(text: str | None) -> str | None:
+    """Normalize a registry-side license string to the template family we can match."""
+    t = (text or "").strip().lower()
+    if not t or t in ("null", "no assertion", "unknown"):
+        return None
+    if t.startswith("bsd"):
+        return "BSD-3-Clause"
+    if "mit" in t and "apache" not in t:
+        return "MIT"
+    if "apache" in t:
+        return "Apache-2.0"
+    return None
+
+
+def _registry_license_claim(repo: RepoData) -> tuple[str, str, str] | None:
+    """(license family, registry, package) from THIS repo's own registry listing.
+
+    Ecosyste.ms package records carry the registry-declared license plus the
+    repository_url; only a record whose repository link resolves to this repo counts
+    (same `_resolves_to` discipline as the adoption lookup — a stranger's package of
+    the same name must not speak for this project).
+    """
+    want_full = f"{repo.owner}/{repo.name}"
+    for name in _name_variants(repo.name) + _manifest_names(repo):
+        for reg in ("pypi.org", "npmjs.org"):
+            url = ECOSYSTE_REGISTRY_PKG.format(
+                reg=reg, name=urllib.parse.quote(name, safe=""))
+            status, data = http_get_json(url, retries=1)
+            if status != 200 or not isinstance(data, dict):
+                continue
+            back = (data.get("repository_url") or "").strip().rstrip("/")
+            m = re.search(r"github\.com/([^/]+/[^/\s]+?)(?:\.git)?$", back)
+            if not m or not _resolves_to(m.group(1), want_full):
+                continue
+            fam = _license_family_claim(data.get("licenses") or data.get("license"))
+            if fam:
+                return fam, reg, data.get("name") or name
+    return None
+
+
+def _docs_only_license(raw_low: str) -> str | None:
+    """Name the docs-content addendum license when the file carves documentation out.
+
+    celery's LICENSE is BSD-3 for code plus a Creative Commons BY-SA section for
+    `docs/`. That is a content license, not a second code grant — the primary
+    permissiveness verdict stands, and the addendum goes on the page as
+    `content_license`, exactly like the dual-license repos' content field.
+    """
+    if "creative commons attribution-sharealike" in raw_low \
+            or "attribution-sharealike" in raw_low:
+        return "CC-BY-SA-4.0"
+    if "attribution 4.0" in raw_low and "creative commons" in raw_low:
+        return "CC-BY-4.0"
+    if "gnu free documentation license" in raw_low:
+        return "GFDL"
+    return None
+
 
 def _matches_mit_template(text: str) -> bool:
     """Check if text contains the iconic MIT license paragraphs.
@@ -2087,7 +2220,13 @@ def _risk_noassertion(repo: RepoData, lic_path: str | None) -> Axis:
     if blob is None:
         return Axis.unknown("license_unparsed",
                             evidence="? NOASSERTION & LICENSE blob unreadable")
-    low = blob.lower()
+    # Templates are matched on whitespace-collapsed text. `celery/celery`'s LICENSE wraps
+    # "with or without\nmodification" across a line break, and a raw substring test missed
+    # it — the file then landed in "looks OSI, inconclusive" forever. The collapse only
+    # affects fragment lookup; the copyleft-marker scan below runs on the raw lowercase
+    # text because it tests for whole distinct phrases, not template layout.
+    low = re.sub(r"\s+", " ", blob).lower()
+    raw_low = blob.lower()
     if any(k in low for k in ("server side public license", "sspl")):
         return Axis("E", {"spdx_id": "NOASSERTION", "permissiveness": "source_available",
                           "relicense_36mo": False, "content_license": None},
@@ -2105,12 +2244,41 @@ def _risk_noassertion(repo: RepoData, lic_path: str | None) -> Axis:
     # grant AGPL/commercial (Mattermost's LICENSE.txt) or split CE/EE terms
     # (Rocket.Chat's LICENSE) while embedding the OSI text as a sub-license or
     # appendix. Promoting that to A silently understates the real restrictions.
-    # Rubric §2.6: OSI-looking NOASSERTION -> ? (license_unparsed) + caveats bullet.
-    if _matches_mit_template(low) or _matches_apache2_template(low) or _matches_bsd3_template(low):
+    # Rubric §2.6: OSI-looking NOASSERTION -> ? (license_unparsed) + caveats bullet —
+    # UNLESS exactly one permissive template matches, no second code-license marker
+    # appears anywhere in the file, and the project's own registry listing (verified
+    # to be this repo's package) declares the same license family. Two independent
+    # sources agreeing, with nothing in the file contradicting them, is a verdict;
+    # anything composite stays `?` for manual review.
+    template_spdx = None
+    for spdx_try, matcher in (("BSD-3-Clause", _matches_bsd3_template),
+                              ("MIT", _matches_mit_template),
+                              ("Apache-2.0", _matches_apache2_template)):
+        if matcher(low):
+            if template_spdx is not None:   # two permissive templates = dual-licensed file
+                template_spdx = None
+                break
+            template_spdx = spdx_try
+    if template_spdx and not any(k in raw_low for k in LICENSE_COMPOSITE_MARKERS):
+        docs_only = _docs_only_license(raw_low)
+        claim = _registry_license_claim(repo)
+        if claim and claim[0] == template_spdx:
+            relicense = _detect_relicense(repo, lic_path)
+            raw = {"spdx_id": template_spdx, "permissiveness": "permissive",
+                   "relicense_36mo": relicense,
+                   "content_license": docs_only or None,
+                   "license_basis": f"registry:{claim[1]}/{claim[2]}"}
+            tier = "E" if relicense else "A"
+            return Axis(tier, raw,
+                        evidence=f"NOASSERTION blob is single-{template_spdx} text; "
+                                 f"{claim[1]}:{claim[2]} declares {template_spdx} -> {tier}"
+                                 + (f" (docs addendum {docs_only})" if docs_only else ""))
+        # Template matched but the registry does not corroborate the same family:
+        # still unverified — a blob can embed a template as one section of a bigger grant.
         return Axis.unknown(
             "license_unparsed",
-            evidence="? NOASSERTION blob contains an OSI template but the file may be "
-                     "composite/multi-licensed (manual review)")
+            evidence=f"? NOASSERTION blob contains a {template_spdx} template but no "
+                     "verified registry listing corroborates it (manual review)")
     # Fallback: looks like OSI but template match was inconclusive -> ? for human review.
     if any(k in low for k in ("mit license", "apache license", "bsd ", "gnu general public",
                               "mozilla public license", "isc license")):
@@ -2387,7 +2555,8 @@ RAW_KEY_ORDER = {
     "longevity": ["repo_age_days", "last_commit_age_days", "cohort"],
     "governance": ["active_maintainers_12mo", "top1_share", "top3_share",
                    "window_source", "carve_out"],
-    "risk_license": ["spdx_id", "permissiveness", "relicense_36mo", "content_license"],
+    "risk_license": ["spdx_id", "permissiveness", "relicense_36mo", "content_license",
+                 "license_basis"],
 }
 
 
