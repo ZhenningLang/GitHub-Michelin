@@ -11,6 +11,7 @@
 | **Hermes Workspace** | Use it when you run Nous's hermes-agent and want its state as a web console — chat, memory, skills, terminal, tmux swarm dispatch, phone via PWA/Tailscale — but its enhanced panes are keyed to the Hermes gateway/dashboard APIs and it's ~6 months old. | B (5/6) | [→](hermes-workspace.md) |
 | **CloudCLI (Claude Code UI)** | Use it when your brain is Claude Code / Codex / Cursor CLI and you want a browser/mobile cockpit for those sessions (files, terminal, git) — but it's AGPL-3.0-or-later and single-operator shaped. | B (6/6) | [→](claudecodeui.md) |
 | **Plannotator** | Use it when a human must annotate or approve what the agent produced — a plan, a diff, an HTML artifact — and send that markup back as the agent's next instruction. | B (6/6) | [→](plannotator.md) |
+| **Pi Web** | Use it when your coding agent is pi and you want a browser workspace over its own on-disk sessions, models and project files — resume/branch conversations, inspect diffs and worktrees — but it's ~6 months old, pre-1.0, single-maintainer, and keyed to pi's data directory. | B (6/6) | [→](pi-web.md) |
 
 ## Comparison matrix
 
@@ -20,6 +21,7 @@
 | [Hermes Workspace](hermes-workspace.md) | ✅ | B (5/6) | Vendor-shaped web console for one agent's whole state; the richest view, the most coupled to its host's APIs. |
 | [CloudCLI (Claude Code UI)](claudecodeui.md) | ✅ | B (6/6) | Operate sessions from a browser or phone (files, terminal, git) — steering, not review. |
 | [Plannotator](plannotator.md) | ✅ | B (6/6) | A human gate inside the agent loop: annotate the plan or diff, and the decision returns through the hook protocol — at the cost of a very young, single-maintainer project. |
+| [Pi Web](pi-web.md) | ✅ | B (6/6) | Browser workspace over pi's own on-disk state — sessions, models, files — the MIT cockpit for exactly one brain. |
 | Harness built-in plan approval (Claude Code / Codex) | not a repo | — | Zero install, but no annotations, no rendered document, no record of what you approved. |
 
 ## What belongs here

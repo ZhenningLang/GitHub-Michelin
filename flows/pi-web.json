@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {"en": "Pi Web does", "zh": "Pi Web 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run it on the machine where pi already runs",
+      "zh": "在已经跑着 pi 的机器上启动它",
+      "code": "npx @agegr/pi-web@latest",
+      "component": {"en": "npm CLI bin/pi-web.js", "zh": "npm CLI bin/pi-web.js"}
+    },
+    {
+      "lane": "them",
+      "en": "Starts a local server on loopback and opens the browser",
+      "zh": "在回环地址起本地服务并打开浏览器",
+      "code": "http://127.0.0.1:30141"
+    },
+    {
+      "lane": "them",
+      "en": "Loads pi's sessions and settings from the pi agent directory",
+      "zh": "从 pi 的 agent 数据目录读出会话与配置",
+      "code": "~/.pi/agent",
+      "component": {"en": "pi session store", "zh": "pi 会话存储"}
+    },
+    {
+      "lane": "you",
+      "en": "Sign in to a provider or add an API key (first run)",
+      "zh": "登录模型供应商或填入 API key（仅首次）",
+      "code": "Models"
+    },
+    {
+      "lane": "you",
+      "en": "Browse sessions grouped by project, resume one, send a message",
+      "zh": "按项目浏览会话，恢复一条或直接发消息"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the turn with pi's own engine and writes back to the same session files",
+      "zh": "用 pi 自己的引擎跑这一轮，写回同一份会话文件",
+      "component": {"en": "pi coding agent SDK", "zh": "pi 编码 agent SDK"}
+    }
+  ],
+  "value": {
+    "en": "Your pi agent gets a browser workspace — sessions, models, files — on the exact on-disk state the terminal uses, with zero migration",
+    "zh": "pi 有了浏览器工作台：会话、模型、文件都落在终端正在用的同一份状态上，零迁移"
+  },
+  "sources": [
+    "README Quick Start (npx @agegr/pi-web@latest; http://127.0.0.1:30141; Models panel to sign in or add an API key)",
+    "README Notes — Agent data (~/.pi/agent, sessions/<encoded-cwd>/<timestamp>_<uuid>.jsonl; shared model/settings/credential storage)",
+    "package.json dependencies (@earendil-works/pi-coding-agent 0.87.1, bin: pi-web)"
+  ]
+}
