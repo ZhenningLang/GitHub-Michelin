@@ -73,6 +73,7 @@
 | **agent-governance** | AI agent 的治理、策略执行、身份、沙箱与可靠性控制。 | [→](categories/agent-governance/INDEX.zh.md) |
 | **blockchain-dev-infrastructure** | EVM 与区块链开发网络的 faucet、本地链及配套开发基础设施。 | [→](categories/blockchain-dev-infrastructure/INDEX.zh.md) |
 | **social-simulation** | 模拟由 LLM agent 组成的社会——社交媒体世界、舆论动力学与推演沙盒。 | [→](categories/social-simulation/INDEX.zh.md) |
+| **social-media-management** | 用自托管智能体端到端运营真实社媒账号——热点发现、内容创作、按平台适配发布、数据回流。 | [→](categories/social-media-management/INDEX.zh.md) |
 | **osint** | OSINT 侦察——由邮箱/用户名做账户存在性探测、身份档案收集与平台专项调查（授权优先）。 | [→](categories/osint/INDEX.zh.md) |
 | **knowledge-base** | 个人知识库与「第二大脑」应用——积累、互链并查询你自己的文档语料，可选由 LLM 维护。 | [→](categories/knowledge-base/INDEX.zh.md) |
 | **peripherals** | 配置并驱动桌面外设——罗技鼠标、键盘、接收器、灯与摄像头——通过 HID++ 与 UVC。 | [→](categories/peripherals/INDEX.zh.md) |

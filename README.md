@@ -1317,3 +1317,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Call.md** | Use it when you want an open-source macOS meeting copilot that records you vs them, fires your MCP tools mid-call, and auto-drafts action items — accepting that capture and transcription run through VideoDB's cloud. | MIT | C (4/6) | [EN](categories/meeting-intelligence/call-md.md) · [中](categories/meeting-intelligence/call-md.zh.md) |
+
+### social-media-management
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Easel** | Use it when you run accounts on the Chinese platforms (Xiaohongshu/Douyin/Zhihu/Bilibili/…) and want one self-hosted agent workbench covering discover → create → publish → attribute with per-account profiles — accepting a one-month-old, v0.x project and platform risk-control exposure. | Apache-2.0 | B (5/6) | [EN](categories/social-media-management/easel.md) · [中](categories/social-media-management/easel.zh.md) |

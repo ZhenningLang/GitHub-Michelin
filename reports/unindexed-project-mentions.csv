@@ -720,6 +720,8 @@ Poetry,categories/python-tooling/uv.md,,no
 Polling (SQLAlchemy / cron),categories/databases/data-sync/python-mysql-replication.md,,no
 Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
 Portkey Gateway,categories/api-gateway/kong.md,,no
+Postiz,categories/social-media-management/INDEX.md,,no
+Postiz (gitroomhq/postiz-app),categories/social-media-management/easel.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
 Premiere Pro,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-sql.md,,no
@@ -849,6 +851,8 @@ SmartTube (`yuliskov/SmartTube`),categories/streaming-clients/pipepipe.md,,no
 SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
+social-auto-upload,categories/social-media-management/INDEX.md,,no
+social-auto-upload (dreammis),categories/social-media-management/easel.md,,no
 Solid.js,categories/web-ui/frameworks/svelte.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
