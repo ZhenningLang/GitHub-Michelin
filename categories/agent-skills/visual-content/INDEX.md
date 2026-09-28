@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **Guizang Social Card Skill** | Use it when a coding agent needs art-directed Xiaohongshu carousels or WeChat cover pairs as single-file HTML rendered to PNG. | D (3/5) | [→](guizang-social-card.md) |
 | **ian-xiaohei-illustrations** | Use it when you need consistent hand-drawn 16:9 Chinese article illustrations with a fixed IP. | B (4/5) | [→](ian-illustrations.md) |
+| **handraw-style** | Use it when you want numbered hand-drawn styles, layouts and theme colors (279/122/36) assembled into bilingual image-AI prompts by an installed agent skill. | C (4/5) | [→](handraw-style.md) |
 
 ## Comparison matrix
 
@@ -18,6 +19,7 @@
 | [ian-xiaohei-illustrations](ian-illustrations.md) | ✅ | B (4/5) | Consistent hand-drawn article illustrations with a fixed character/IP; not editable deck/card templates. |
 | [Guizang PPT Skill](../slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Choose it when the artifact is a full deck rather than standalone cards or article images. |
 | [HTML Anything](../../ai-design-generation/html-anything.md) | ✅ | B (5/6) | Broader HTML artifact generator; less focused on a specific visual-content surface. |
+| [handraw-style](handraw-style.md) | ✅ | C (4/5) | Prompt-pack route to hand-drawn visuals: numbered styles/layouts/colors with per-model activation fallback; young, single-maintainer, bundled-artwork provenance risk. |
 
 ## What belongs here
 

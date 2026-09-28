@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenMed does", "zh": "OpenMed 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK with the Hugging Face runtime extra", "zh": "安装 SDK，带上 HF 运行时 extra", "code": "pip install --upgrade \"openmed[hf]\"", "component": {"en": "openmed SDK", "zh": "openmed SDK"}},
+    {"lane": "you", "en": "Send a note to the analyzer, naming a task model", "zh": "把笔记交给分析器，指定任务模型", "code": "from openmed import analyze_text", "component": {"en": "analyze_text API", "zh": "analyze_text API"}},
+    {"lane": "them", "en": "Fetches the matching checkpoint from the catalog into local cache", "zh": "从模型目录把对应检查点拉进本地缓存", "component": {"en": "Hugging Face Hub", "zh": "Hugging Face Hub"}},
+    {"lane": "them", "en": "Labels spans on your hardware and returns entities with confidence", "zh": "在你的机器上标注片段，返回带置信度的实体", "code": "result.entities", "component": {"en": "local runtime", "zh": "本地运行时"}},
+    {"lane": "you", "en": "Ask for the shareable copy with a redaction method", "zh": "选定脱敏方法，索要可外发副本", "code": "deidentify(text, method=\"mask\")", "component": {"en": "privacy pipeline", "zh": "隐私管线"}},
+    {"lane": "them", "en": "Masks PII spans locally and returns the de-identified text", "zh": "在本地遮盖 PII 片段，返回脱敏文本", "component": {"en": "redactor", "zh": "脱敏器"}}
+  ],
+  "value": {"en": "One clinical note becomes typed entities plus a shareable redacted copy on hardware you control, with nothing sent to a cloud API", "zh": "一份临床笔记在你自己的机器上变成带类型实体和可外发的脱敏副本，任何数据都不经过云端 API"},
+  "sources": [
+    "README.md: Quick start (pip install --upgrade \"openmed[hf]\")",
+    "README.md: 30-second example (from openmed import analyze_text, model_name=\"disease_detection_superclinical\", result.entities)",
+    "README.md: Privacy: PII detection & de-identification (deidentify(text, method=\"mask\").deidentified_text)",
+    "README.md: Offline / air-gapped section (model_id points to a local directory, no Hub call)",
+    "models.jsonl: registry rows, task/format fields"
+  ]
+}

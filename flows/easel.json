@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Easel does", "zh": "Easel 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up", "zh": "搭建"}, "en": "Clone the repo and run the guided installer; keep one LLM API key at hand", "zh": "克隆仓库跑引导式安装器，手边备一个模型 API Key", "code": "bash setup.sh", "component": {"en": "setup.sh installer", "zh": "安装向导"}},
+    {"lane": "them", "en": "Checks Python, Node and FFmpeg, creates an isolated easel profile on OpenClaw, builds the web workbench", "zh": "检查依赖，建隔离 easel profile 和 Web 工作台", "component": {"en": "setup.sh installer", "zh": "安装向导"}},
+    {"lane": "you", "en": "Start the workbench, fill the account profile, log in your platforms in the Accounts page", "zh": "启动工作台，填画像，登录各平台", "code": "easel web", "component": {"en": "Web workbench", "zh": "Web 工作台"}},
+    {"lane": "them", "en": "Boots the gateway; serves chat, the 113-skill library, trend radar, calendar and publishing center", "zh": "拉起网关，提供对话、技能库、热点雷达、日历和发布中心", "component": {"en": "OpenClaw gateway", "zh": "OpenClaw 网关"}},
+    {"lane": "you", "phase": {"en": "Every cycle", "zh": "每一轮"}, "en": "Brief the agent in chat: this week's topics for this account, then a Xiaohongshu card and a short video", "zh": "在对话里下需求：本周适合本账号的选题，出小红书卡片和短视频"},
+    {"lane": "them", "en": "Picks skills, runs real scripts (TTS, transcription, ffmpeg), archives deliverables to outputs/", "zh": "选技能、跑真脚本（配音、转写、ffmpeg），成品归档到 outputs/", "component": {"en": "OpenClaw agent", "zh": "OpenClaw Agent"}},
+    {"lane": "you", "en": "Preview each platform version, pass the preflight checks, confirm publishing (Xiaohongshu: confirm manually)", "zh": "预览各平台版本，过发布前检查，确认发布（小红书手动确认）"},
+    {"lane": "them", "en": "Publishes through logged-in accounts and reads performance back into the profile", "zh": "走已登录账号发布，把数据表现读回画像", "component": {"en": "Playwright Chromium", "zh": "Playwright Chromium"}}
+  ],
+  "value": {"en": "Trend hunting, drafting, rendering, per-platform reformatting and manual cross-posting disappear; each cycle's numbers sharpen the next", "zh": "找热点、写初稿、渲染成品、按平台改格式、逐平台手动发布都省掉；每一轮数据让下一轮更贴账号"},
+  "sources": [
+    "https://github.com/ZJU-REAL/Easel README 快速开始 (git clone + bash setup.sh; guided installer checks Python/Node/Git/FFmpeg, creates the isolated easel OpenClaw profile, builds the web workbench and installs Chromium; prompts for the model key)",
+    "README 使用 Easel (easel web starts the workbench on 7860; easel chat/skill/doctor/ping; all skills run through the agent, which reads SKILL.md and archives deliverables to outputs/)",
+    "README 账号画像 (cp -r profiles/_template \"profiles/我的账号\"; six dimensions per profile) and 已经落地的能力 (seven-platform publishing: Xiaohongshu, Douyin, Kuaishou, Zhihu, Bilibili, WeChat Channels, WeChat Official Account)",
+    "README 使用提示 (Xiaohongshu automation risk — prefer preview and human-confirmed publishing) and CHANGELOG v0.2.1 (publishing read-back, preflight checks)"
+  ]
+}

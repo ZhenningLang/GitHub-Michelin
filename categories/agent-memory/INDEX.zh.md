@@ -16,7 +16,7 @@
 
 | 选项 | 类型 | 一句话取舍 |
 | --- | --- | --- |
-| [应用记忆](app-memory/INDEX.zh.md) | 子分类 | Mem0、Memori、Letta、LangMem、SimpleMem——面向应用数据（用户、实体、对话）的记忆，在构建期嵌入。 |
+| [应用记忆](app-memory/INDEX.zh.md) | 子分类 | Mem0、Memori、Letta、LangMem、SimpleMem、Hindsight——面向应用数据（用户、实体、对话）的记忆，在构建期嵌入。 |
 | [编码 agent 记忆](coding-agent-memory/INDEX.zh.md) | 子分类 | claude-mem、Claude Subconscious、ByteRover、OpenViking、Beacon——通过 hook／插件／MCP 在你的机器或团队服务端上捕获编码会话。 |
 | [图记忆](graph-memory/INDEX.zh.md) | 子分类 | Zep、Graphiti、Cognee——带时间失效或文档到图管线的知识图谱引擎；比文件或向量存储更重。 |
 

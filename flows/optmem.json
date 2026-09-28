@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "OptMem does", "zh": "OptMem 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Install", "zh": "安装"}, "en": "Run the one-line installer, which prints the memory prompt block", "zh": "运行一行安装脚本，它会打印出记忆提示块", "component": {"en": "install.sh", "zh": "install.sh"}},
+    {"lane": "them", "en": "Drops one dependency-free Python file at ~/.optmem/memo and creates the store", "zh": "把零依赖的单文件工具放到 ~/.optmem/memo，建好存储", "component": {"en": "memo script", "zh": "memo 脚本"}},
+    {"lane": "you", "en": "Paste the printed block at the top of your agent's AGENTS.md / CLAUDE.md", "zh": "把打印出的块粘贴到 agent 的 AGENTS.md／CLAUDE.md 顶部"},
+    {"lane": "you", "phase": {"en": "Every session", "zh": "每个会话"}, "en": "Every session, your agent reads its memory before anything else", "zh": "每个会话，agent 先读记忆再做任何事", "code": "memo wake", "component": {"en": "the prompt block", "zh": "提示块"}},
+    {"lane": "you", "en": "Your agent records one line whenever it learns something worth keeping", "zh": "agent 每学到值得留下的事，就记一行", "code": "memo note \"...\""},
+    {"lane": "them", "en": "Appends fixed-width records to the log; when a merge is due, asks for it", "zh": "把定长记录追加进日志；合并到期时提出来", "code": "memo nap", "component": {"en": "memo", "zh": "memo"}},
+    {"lane": "them", "en": "The next wake prints the rebuilt summary tree plus newest memories, in budget", "zh": "下一次 wake 在预算内打印重建的摘要树和最新记忆"}
+  ],
+  "value": {"en": "Every future session — any model, any harness — starts knowing what was decided and tried", "zh": "以后每个会话——无论换什么模型、什么 harness——都知道之前定过什么、试过什么"},
+  "sources": [
+    "https://github.com/VictorTaelin/OptMem README Install (curl | sh line; prints a ## Memory block to paste at the top of AGENTS.md / CLAUDE.md; tool lands at ~/.optmem/memo)",
+    "README Commands (memo wake / note / nap / recall / zoom / forget; merges arrive one at a time in the output of note)",
+    "README The prompt (wake before any other tool call every session; note on anything worth keeping; nap answers pending compressions)",
+    "README Files (~/.optmem/memory: LOG.txt append-only, TREE/ rebuildable summaries, config)"
+  ]
+}

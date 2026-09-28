@@ -8,6 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Kev** | Use it when you want a self-hosted, fine-tunable model that answers typed questions (yes/no, choice, rating) about one text and returns calibrated probabilities — not a hosted decision API and not a from-scratch classifier. | C (5/6) | [→](kev.md) |
+| **Laya** | Use it when the same typed decisions (pick-one, yes/no, rate-on-a-scale) repeat at volume and you want a small local encoder that answers in one pass per request, routes 100+ languages, and that you will fine-tune — its base checkpoints are weak zero-shot. | B (5/6) | [→](laya.md) |
 | **Simple Jev** | Use it when you already serve an open chat model and want the Jev-style typed-decision contract (`/v1/classifier`) without training a decision model — accepting the base model's judgement and uncalibrated confidence. | C (4/6) | [→](simple-jev.md) |
 
 
@@ -16,6 +17,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Kev](kev.md) | ✅ | C (5/6) | 0.8B–9B Jev-style decision models (LoRA on Qwen3.5) served behind a TypeSafe-compatible `/v1/systemone` — self-hosted calibration and fine-tuning, weaker world knowledge than a frontier model. |
+| [Laya](laya.md) | ✅ | B (5/6) | 322M–421M encoders (ModernBERT / mmBERT) with a language router and a Jev-compatible server — tens of milliseconds and runs on CPU, but near chance zero-shot on its own benchmark until you fine-tune. |
 | [Simple Jev](simple-jev.md) | ✅ | C (4/6) | A server that turns any compatible open chat model into the same typed-decision API by reading answer-label logits from one shared prefill — no trained checkpoint, no published accuracy. |
 | Jev · TypeSafe System One | 未收录 | — | Hosted decision model / decision API — the services Kev and Simple Jev reimplement locally; the hosted services are not repositories, so they are not indexed. |
 

@@ -74,6 +74,7 @@
 | **agent-governance** | Governance, policy enforcement, identity, sandboxing, and reliability controls for AI agents. | [→](categories/agent-governance/INDEX.md) |
 | **blockchain-dev-infrastructure** | EVM and blockchain development-network faucets, local chains, and supporting development infrastructure. | [→](categories/blockchain-dev-infrastructure/INDEX.md) |
 | **social-simulation** | Simulate societies of LLM agents — social-media worlds, opinion dynamics, and rehearsal sandboxes. | [→](categories/social-simulation/INDEX.md) |
+| **social-media-management** | Operate real social media accounts end-to-end with self-hosted agents — trend discovery, content creation, platform-adapted publishing, performance feedback. | [→](categories/social-media-management/INDEX.md) |
 | **osint** | OSINT reconnaissance — account-existence probes, username dossiers, and platform-specific investigation from emails/usernames (authorization-first). | [→](categories/osint/INDEX.md) |
 | **knowledge-base** | Personal knowledge bases and second-brain apps — accumulate, link, and query your own document corpus, optionally LLM-maintained. | [→](categories/knowledge-base/INDEX.md) |
 | **peripherals** | Configure and drive desktop peripherals — Logitech mice, keyboards, receivers, lights and webcams — over HID++ and UVC. | [→](categories/peripherals/INDEX.md) |
@@ -89,6 +90,9 @@
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |
 | **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
+| **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
+| **meeting-intelligence** | AI meeting copilots and note-takers — record calls, transcribe live, assist in-meeting, and automate the post-meeting follow-up. | [→](categories/meeting-intelligence/INDEX.md) |
+| **healthcare-ai** | Clinical text intelligence you run yourself — medical entity extraction and PHI/PII de-identification on your own hardware, for data that cannot leave the network. | [→](categories/healthcare-ai/INDEX.md) |
 
 
 

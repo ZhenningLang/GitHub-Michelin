@@ -14,6 +14,7 @@
 | **Spec Kit** | 当你想要 GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论时用它——但它极其年轻，且与 GitHub 生态深度绑定。 | A（4/6） | [→](spec-kit.zh.md) |
 | **USDAD** | 当你要可编辑、文字优先的 planner／adversary／architect／executor 方法论原稿时用它；它是单提交文档工件，不是可安装 runtime 或强制执行的工作流。 | C（4/5） | [→](usdad.zh.md) |
 | **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | B（4/6） | [→](bmad-method.zh.md) |
+| **Improve** | 当你想让昂贵模型只读地审计仓库、再为便宜执行模型写出自包含计划时用它——它从不亲自实现任何东西。 | B（4/5） | [→](improve.zh.md) |
 | **Agent OS** | 当你要把项目 standards 装进去并选择性注入、在实现前先塑形计划时用它——发布线自 v3.0.0（2026-01）后一直很安静。 | B（4/5） | [→](agent-os.zh.md) |
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [Spec Kit](spec-kit.zh.md) | ✅ | A（4/6） | GitHub 出品的面向 AI 编码智能体的 spec-driven 开发方法论；极其年轻，与 GitHub 生态深度绑定。 |
 | [USDAD](usdad.zh.md) | ✅ | C（4/5） | 可编辑的 planner／adversary／architect／executor 方法论文档，不是可安装 runtime，也不会机械执行流程。 |
 | [BMAD Method](bmad-method.zh.md) | ✅ | B（4/6） | 重角色的端到端方法（analyst／PM／架构／UX／开发／复核），以 skills 与 agent persona 交付；项目很年轻，涨星曲线快到可疑。 |
+| [Improve](improve.zh.md) | ✅ | B（4/5） | 只读顾问：审计完九个类别后，为便宜执行器写出可交接的计划——与规格优先或角色优先的方法不同，它从不亲自实现。 |
 | [Agent OS](agent-os.zh.md) | ✅ | B（4/5） | 薄薄的 standards + spec 层，安装项目约定并按需选择性注入；发布线自 v3.0.0（2026-01）后一直很安静。 |
 | [SWE-bench](../../llm-eval/swe-bench.zh.md) | ✅ | B（6/6） | benchmark 基础设施，收录在 `llm-eval` 而不是本类目——它给补丁打分，不是开发方法。 |
 | LTBL 实现组 / Beam | 未收录 | — | `study-and-experiments/` 里点到的 LTBL 实现仓库。`Beam` 刻意不收录：名字搜索命中的是 apache/beam，而各页指的是另一个项目——要先把仓库人工认准。 |

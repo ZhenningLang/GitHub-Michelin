@@ -73,6 +73,7 @@
 | **agent-governance** | AI agent 的治理、策略执行、身份、沙箱与可靠性控制。 | [→](categories/agent-governance/INDEX.zh.md) |
 | **blockchain-dev-infrastructure** | EVM 与区块链开发网络的 faucet、本地链及配套开发基础设施。 | [→](categories/blockchain-dev-infrastructure/INDEX.zh.md) |
 | **social-simulation** | 模拟由 LLM agent 组成的社会——社交媒体世界、舆论动力学与推演沙盒。 | [→](categories/social-simulation/INDEX.zh.md) |
+| **social-media-management** | 用自托管智能体端到端运营真实社媒账号——热点发现、内容创作、按平台适配发布、数据回流。 | [→](categories/social-media-management/INDEX.zh.md) |
 | **osint** | OSINT 侦察——由邮箱/用户名做账户存在性探测、身份档案收集与平台专项调查（授权优先）。 | [→](categories/osint/INDEX.zh.md) |
 | **knowledge-base** | 个人知识库与「第二大脑」应用——积累、互链并查询你自己的文档语料，可选由 LLM 维护。 | [→](categories/knowledge-base/INDEX.zh.md) |
 | **peripherals** | 配置并驱动桌面外设——罗技鼠标、键盘、接收器、灯与摄像头——通过 HID++ 与 UVC。 | [→](categories/peripherals/INDEX.zh.md) |
@@ -88,6 +89,9 @@
 | **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载。 | [→](categories/disk-cleanup/INDEX.zh.md) |
 | **3d-reconstruction** | 把照片、视频或扫描变成三维场景——运动恢复结构、高斯泼溅／辐射场训练，以及把结果转成网格。 | [→](categories/3d-reconstruction/INDEX.zh.md) |
 | **streaming-clients** | 替代官方 App 观看、收听流媒体平台（YouTube、B 站、SoundCloud……）的第三方客户端——无广告、免账号、可后台播放。 | [→](categories/streaming-clients/INDEX.zh.md) |
+| **computer-vision** | 在图片和视频里检测、识别、分析人脸、物体和人——人脸比对／识别、检测和属性分析，作为你调用的库。 | [→](categories/computer-vision/INDEX.zh.md) |
+| **meeting-intelligence** | AI 会议副驾驶与会议记录器——录制线上会议、实时转写、会中智能辅助，并自动完成会后跟进产物。 | [→](categories/meeting-intelligence/INDEX.zh.md) |
+| **healthcare-ai** | 你自己运行的临床文本智能——在自有硬件上做医学实体抽取与 PHI/PII 去标识化，服务于不能离开网络的数据。 | [→](categories/healthcare-ai/INDEX.zh.md) |
 
 
 

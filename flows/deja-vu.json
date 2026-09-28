@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "them": {"en": "deja does", "zh": "deja 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Set up once", "zh": "装一次"},
+     "en": "Install the deja binary with its installer or package manager", "zh": "用安装脚本或包管理器装上 deja 二进制",
+     "code": "brew install deja-vu"},
+    {"lane": "you",
+     "en": "Let it wire every coding agent it finds and build the first index", "zh": "一条命令接进它发现的所有 agent，并建好首个索引",
+     "code": "deja install --auto"},
+    {"lane": "them",
+     "en": "Parses every transcript already on disk into one local index, stripping credentials as it goes", "zh": "把磁盘上已有的所有会话记录解析成一份本地索引，随手剥离凭据",
+     "component": {"en": "indexer", "zh": "索引器"}},
+    {"lane": "you", "phase": {"en": "Every session", "zh": "每次会话"},
+     "en": "Work as usual; when an old decision comes up, open a session or search from the terminal", "zh": "照常干活；想起旧决定时开新会话或在终端直接搜",
+     "code": "deja \"connection pool exhausted\""},
+    {"lane": "them",
+     "en": "Answers with the matching sessions — the decision, the files it touched, whether things changed since", "zh": "送回命中的会话：当时的决定、动过的文件、此后有无变化",
+     "component": {"en": "MCP recall", "zh": "MCP 召回"}}
+  ],
+  "value": {"en": "Months of history — including agents you no longer use — answers from the day you install it", "zh": "装上第一天起，几个月的历史——连不再用的 agent 也算——就能替你回答"},
+  "sources": [
+    "README Install (curl -fsSL https://raw.githubusercontent.com/vshulcz/deja-vu/main/install.sh | sh; brew install deja-vu; deja install --auto wires MCP recall into every agent it finds, turns on session-start recall, builds the first index)",
+    "README Highlights (Starts full: deja \"connection pool exhausted\" over pre-install history on day one)",
+    "docs/ARCHITECTURE.md (source parsers read JSONL and SQLite stores via external sqlite3; records.bin + buckets + manifest.gob; per-file incremental ingest)",
+    "README Privacy (credentials are stripped as the index is built; sources untouched)",
+    "README MCP tools (one `deja` tool with modes recall/context/blame/fix/how/orient/remember)"
+  ]
+}

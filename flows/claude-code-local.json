@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "claude-code-local does",
+    "zh": "claude-code-local 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo on an Apple Silicon Mac and run its setup script",
+      "zh": "在 Apple Silicon Mac 上克隆仓库，跑它的安装脚本",
+      "code": "bash setup.sh",
+      "component": {
+        "en": "setup.sh",
+        "zh": "setup.sh"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Reads your RAM, picks a model that fits, installs mlx-lm in a venv and downloads the weights",
+      "zh": "读内存大小，挑一个装得下的模型，在虚拟环境装 mlx-lm 并下载权重"
+    },
+    {
+      "lane": "them",
+      "en": "Links its server into place and puts a Claude Local launcher on your Desktop",
+      "zh": "把服务器脚本链接到位，在桌面放一个 Claude Local 启动器"
+    },
+    {
+      "lane": "you",
+      "en": "Double-click the launcher",
+      "zh": "双击启动器",
+      "code": "Claude Local.command"
+    },
+    {
+      "lane": "them",
+      "en": "Starts the MLX server on localhost:4000 and opens Claude Code pointed at it",
+      "zh": "在 4000 端口起 MLX 服务器，打开连向它的 Claude Code",
+      "component": {
+        "en": "proxy/server.py",
+        "zh": "proxy/server.py"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Work in Claude Code as usual",
+      "zh": "照常在 Claude Code 里干活"
+    },
+    {
+      "lane": "them",
+      "en": "Answers each turn on the Mac's GPU and turns the model's tool-call text into Claude Code tool calls",
+      "zh": "在 GPU 上回答每一轮，把模型的工具调用文本转成 Claude Code 调用"
+    }
+  ],
+  "value": {
+    "en": "Claude Code keeps working with no cloud model, no API key and no usage limit — prompts and code stay on the Mac",
+    "zh": "Claude Code 不靠云端模型、不要 API key、不受额度限制照样能用，提示词和代码都留在本机"
+  },
+  "sources": [
+    "https://github.com/nicedreamzapp/claude-code-local README 'Get started' (git clone …; cd claude-code-local; bash setup.sh; Claude Local.command on the Desktop; double-click it)",
+    "install.sh (clones to ~/claude-code-local, exec bash setup.sh); setup.sh (RAM tiers → MODEL_ID, pip install mlx-lm into ~/.local/mlx-server, mlx_lm load() download, ln -sf proxy/server.py, writes ~/Desktop/Claude Local.command)",
+    "launchers/Claude Local.command + launchers/lib/claude-local-common.sh (ensure_mlx_server on :4000, ANTHROPIC_BASE_URL=http://localhost:4000 claude ...)",
+    "proxy/server.py docstring and do_POST (/v1/messages; Gemma 4 / Llama JSON / HF <tool_call> formats converted to Anthropic tool_use; HTTPServer on 127.0.0.1)"
+  ]
+}

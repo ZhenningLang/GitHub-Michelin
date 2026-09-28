@@ -14,6 +14,7 @@
 | **Plannotator** | Use it when a human must annotate or approve what the agent produced — a plan, a diff, an HTML artifact — and send that markup back as the agent's next instruction. | B (6/6) | [→](plannotator.md) |
 | **Pi Web** | Use it when your coding agent is pi and you want a browser workspace over its own on-disk sessions, models and project files — resume/branch conversations, inspect diffs and worktrees — but it's ~6 months old, pre-1.0, single-maintainer, and keyed to pi's data directory. | B (6/6) | [→](pi-web.md) |
 | **Whiteboard** | Use it when you want your coding agent to *draw* the review — an interactive RFC over a pinned branch whose diagrams, quotes and code peeks click back to the exact lines of your checkout — but it's ~6 weeks old, v0.1.x, and the review surface is read-only. | B (5/6) | [→](whiteboard.md) |
+| **Paperclip** | Use it when you run a standing team of existing agents (Claude Code, Codex, OpenClaw, shell/HTTP bots) and need one self-hosted board that wakes them on heartbeats, locks each ticket to one agent and pauses anyone over budget — but it's ~7 months old, has 12 published security advisories, and Windows local runs are broken. | B (5/6) | [→](paperclip.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Plannotator](plannotator.md) | ✅ | B (6/6) | A human gate inside the agent loop: annotate the plan or diff, and the decision returns through the hook protocol — at the cost of a very young, single-maintainer project. |
 | [Pi Web](pi-web.md) | ✅ | B (6/6) | Browser workspace over pi's own on-disk state — sessions, models, files — the MIT cockpit for exactly one brain. |
 | [Whiteboard](whiteboard.md) | ✅ | B (5/6) | The agent authors an evidence-linked RFC over a pinned branch — every diagram node clicks to code; read-only surface, ~6 weeks old. |
+| [Paperclip](paperclip.md) | ✅ | B (5/6) | An org-and-budget control plane over agents you already have — heartbeats, atomic checkout, spend caps, approvals — not a diff-review loop; young, and loopback/tailnet only until you've reviewed its security history. |
 | Harness built-in plan approval (Claude Code / Codex) | not a repo | — | Zero install, but no annotations, no rendered document, no record of what you approved. |
 
 ## What belongs here

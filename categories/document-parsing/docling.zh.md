@@ -109,7 +109,7 @@ Docling 是一条在你进程内运行的转换管线。对每个源文件，先
 - **你要的是归档 / 搜索 / DMS，而不是解析器。** Docling 负责转换文档；它不存储、不建索引、不打标签、也不让用户搜索。要“扫描、归档、OCR、全文搜我的文件”的话，你要的是文档管理应用——[paperless-ngx](../document-management/paperless-ngx.zh.md)——而不是一个转换库。
 - **你只是要从干净 PDF 里抠纯文本，或快速 OCR 一下。** 如果版面/表格保真度无所谓，`pdftotext`/PyMuPDF 抽文本或直接调 Tesseract OCR，比拖进 Docling 的版面和表格结构模型轻得多。
 - **你受算力或体积约束。** 版面分析和表格结构还原都跑 ML 模型；首次使用会下载模型权重，推理比正则/字符串抽取重得多（在 GPU 上快很多）。在一个极小的 serverless 函数、或只有 CPU 又有硬延迟上限的机器上，要掂量代价。[推断]
-- **你以为它是 chunker 或 retriever。** Docling 负责解析和序列化；它*不是*分块策略、embedder、向量库或 retriever。把它和 LlamaIndex、或像 [PageIndex](../rag-retrieval/pageindex.zh.md) 这样的检索层配着用——Docling 产出的正是它们消费的那种干净结构化输入。
+- **你以为它是 chunker 或 retriever。** Docling 负责解析和序列化；它*不是*分块策略、embedder、向量库或 retriever。把它和 LlamaIndex、或像 [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md) 这样的检索层配着用——Docling 产出的正是它们消费的那种干净结构化输入。
 - **你的输入是新闻文章或任意网页。** 要做去模板、抽正文/主内容，readability/newspaper 这类库更合适；Docling 面向文档文件，而非给在线网页做去杂。
 
 ## 横向对比
@@ -120,7 +120,7 @@ Docling 是一条在你进程内运行的转换管线。对每个源文件，先
 | LlamaParse | 未收录 | 可以接受 SaaS 定价和数据边界取舍，且需要复杂 PDF/表格托管解析时，选 LlamaParse。 | 托管解析服务（LlamaIndex），在复杂 PDF/表格上很强；但它是按量计费的 SaaS、数据会出你的边界，而 Docling 完全本地/进程内运行。 |
 | [Marker](marker.zh.md) | ✅ | PDF→Markdown 和 DL 版面模型已足够、不需要 Docling 更广输入范围时，选 Marker。 | 同样用深度学习版面模型的 PDF→Markdown 转换器；gen-AI 目标相近，但输入格式范围比 Docling 的 PDF/Office/HTML/图片更窄。 |
 | [PyMuPDF](../pdf-tools/pymupdf.zh.md) / [pdfplumber](../pdf-tools/pdfplumber.zh.md) | ✅ | 速度和轻量体积比内建版面/表格保真更重要时，选底层 PDF 库。 | 快、轻、无重模型的底层 PDF 文本/几何抽取；版面/表格逻辑得你自己写——开箱保真度更低，但体积小得多。 |
-| [PageIndex](../rag-retrieval/pageindex.zh.md) | ✅ | 需要在已解析文档之上做检索/推理，而不是解析本身时，选 PageIndex。 | 是文档之上的检索/推理层，不是解析器——互补而非替代；Docling 产出的正是它建索引的结构化文本。 |
+| [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md) | ✅ | 需要在已解析文档之上做检索/推理，而不是解析本身时，选 PageIndex。 | 是文档之上的检索/推理层，不是解析器——互补而非替代；Docling 产出的正是它建索引的结构化文本。 |
 
 ## 技术栈
 

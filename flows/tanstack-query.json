@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Query does", "zh": "TanStack Query 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装对应框架的适配包", "code": "npm i @tanstack/react-query"},
+    {"lane": "you", "en": "Create one client and provide it at the app root", "zh": "创建一个客户端，放在应用根部", "code": "<QueryClientProvider client={queryClient}>", "component": {"en": "QueryClient (cache)", "zh": "QueryClient（缓存）"}},
+    {"lane": "you", "en": "In each component, name the data by key and give the fetch function", "zh": "每个组件用键说明要什么数据，并给出请求函数", "code": "useQuery({ queryKey: ['todos'], queryFn: getTodos })"},
+    {"lane": "them", "en": "Dedupes identical keys, caches the result, hands every reader the same copy", "zh": "相同的键只请求一次，缓存结果，所有读者拿到同一份"},
+    {"lane": "them", "en": "Refetches stale data in the background on remount, focus or reconnect; retries failures", "zh": "重新挂载、窗口聚焦或网络恢复时后台重拉过期数据，失败自动重试"},
+    {"lane": "you", "en": "After a write, invalidate the affected keys", "zh": "写操作成功后，让受影响的键失效", "code": "queryClient.invalidateQueries({ queryKey: ['todos'] })"},
+    {"lane": "them", "en": "Marks matching queries stale and refetches the ones on screen", "zh": "把匹配的查询标脏，重拉屏幕上正在用的那些"}
+  ],
+  "value": {"en": "No more hand-written loading/error state or duplicate requests; screens stay in sync with the server after writes", "zh": "不再手写 loading／error 状态、不再重复请求；写完之后各处页面自动和服务端保持一致"},
+  "sources": [
+    "docs/framework/react/installation.md (npm i @tanstack/react-query)",
+    "docs/framework/react/quick-start.md (QueryClientProvider client={queryClient}, useQuery({ queryKey: ['todos'], queryFn: getTodos }), queryClient.invalidateQueries({ queryKey: ['todos'] }))",
+    "docs/framework/react/guides/important-defaults.md (stale-by-default, refetch on mount/focus/reconnect, 3 retries, 5-minute gc)"
+  ]
+}

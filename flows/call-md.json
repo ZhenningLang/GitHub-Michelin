@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": { "en": "Call.md does", "zh": "Call.md 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the macOS app with one command",
+      "zh": "一条命令装好 macOS 应用",
+      "code": "curl -fsSL https://artifacts.videodb.io/call.md/install | bash"
+    },
+    {
+      "lane": "you",
+      "en": "Register with your VideoDB API key, grant mic + screen permissions",
+      "zh": "填入 VideoDB API key，授予麦克风与录屏权限"
+    },
+    {
+      "lane": "them",
+      "en": "Bundled capture binary records your mic, the call audio, and the screen",
+      "zh": "内置采集二进制录下你的麦克风、对方声音与屏幕",
+      "component": { "en": "VideoDBCapture binary", "zh": "采集二进制" }
+    },
+    {
+      "lane": "them",
+      "en": "Streams the dual-channel live transcript (you vs them) back via WebSocket",
+      "zh": "经 VideoDB 云用 WebSocket 实时回传双方分轨字幕"
+    },
+    {
+      "lane": "them",
+      "en": "When the conversation needs information, it calls your MCP tools automatically",
+      "zh": "对话出现信息需求时，自动调用你配置的 MCP 工具",
+      "component": { "en": "MCP agent", "zh": "MCP agent" }
+    },
+    {
+      "lane": "you",
+      "en": "End the meeting — or let the 2-hour cap stop it for you",
+      "zh": "结束会议，或由 2 小时上限自动停止"
+    },
+    {
+      "lane": "them",
+      "en": "Writes overview, key points and action items into local SQLite; exports Markdown",
+      "zh": "把概览、要点与行动项写进本地 SQLite，导出 Markdown",
+      "component": { "en": "summary generator", "zh": "摘要生成器" }
+    }
+  ],
+  "value": {
+    "en": "Transcript, live nudges, tool results and action items are waiting when the call ends",
+    "zh": "会议一结束，转写、实时提示、工具结果与行动项已自动就位"
+  },
+  "sources": [
+    "README 'Quick Install' + scripts/install.sh (curl command, DMG from artifacts.videodb.io)",
+    "README 'Getting Started (Users)' (VideoDB API key, permissions, New Meeting)",
+    "src/main/services/videodb.service.ts (connect, findOrCreateCallMdCollection, createCaptureSession)",
+    "README 'How It Works' (dual-channel WebSocket transcription, three-part summary)",
+    "electron-builder.config.js + tests/capture-binary.test.ts (bundled VideoDBCapture binary)",
+    "README 'MCP Server Setup' + src/main/services/mcp/mcp-agent.service.ts (auto-triggering)",
+    "README Troubleshooting (MAX_RECORDING_DURATION_MS 2-hour cap)",
+    "src/main/services/llm.service.ts (OpenAI SDK against api.videodb.io proxy)"
+  ]
+}

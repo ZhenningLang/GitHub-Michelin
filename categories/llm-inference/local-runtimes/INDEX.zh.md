@@ -16,6 +16,7 @@
 | **Shimmy** | 当磁盘上已有 GGUF 文件、想要单个 Rust 二进制给出 OpenAI／Ollama／Anthropic 兼容 API 时用它——接受一个刚满一年、单人维护、引擎只认证 26 个模型加量化组合的项目。 | B（6/6） | [→](shimmy.zh.md) |
 | **Airframe** | 当要在自己的 Rust 程序里内嵌 GGUF 推理、且要纯 Rust 构建加一种着色器语言覆盖全显卡（WebGPU）时用它——接受一个约六个月大、单贡献者、只认证 12 个架构家族且含 pending 专利子系统的引擎。 | C（4/6） | [→](airframe.zh.md) |
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | B（6/6） | [→](freetoken.zh.md) |
+| **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | B（6/6） | [→](claude-code-local.zh.md) |
 
 ## 对比矩阵
 
@@ -30,6 +31,7 @@
 | [Shimmy](shimmy.zh.md) | ✅ | — | 单 Rust 二进制，从 GGUF 路径直接给出 OpenAI／Ollama／Anthropic 兼容 API，自动发现 Ollama／HF 模型目录；引擎（Airframe）只认证 26 个模型加量化组合，且 LICENSE 文件与 Cargo.toml 互相矛盾（Apache-2.0 对 MIT）。 |
 | [Airframe](airframe.zh.md) | ✅ | — | 纯 Rust WebGPU（WGSL）GGUF 推理引擎——一次 `cargo build` 覆盖 NVIDIA／AMD／Intel／Apple Silicon；年轻、单贡献者、仓库无 LICENSE 文件，FSE 子系统挂着 pending 美国专利。 |
 | [FreeToken](freetoken.zh.md) | ✅ | — | 把专家放在内存、自动分配显卡上的专家缓存，让一张消费级 NVIDIA 显卡跑前沿 MoE 检查点（safetensors），提供 OpenAI／Anthropic 接口和接编程智能体的 `ft launch`；只支持 Linux 加 NVIDIA，内存要装下全部专家，v0.1.x 格式常变，HTTP 接口无鉴权。 |
+| [Claude Code Local](claude-code-local.zh.md) | ✅ | — | 用 Anthropic Messages 接口直接应答 Claude Code、并修补本地模型工具调用的 MLX 服务器，带按内存挑模型的安装脚本和桌面启动器；只限 Mac、单线程、一份全局提示词缓存、没有投机解码。 |
 
 ## 什么该放这里
 

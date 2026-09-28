@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="944" viewBox="0 0 880 944" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="944" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="786" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="786" rx="10"/>
+<rect class="pillT" x="474" y="40" width="119.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Easel does</text>
+<path class="hand" d="M408,151.5 C439.0,151.5 439.0,175 470,175" marker-end="url(#a)"/>
+<path class="hand" d="M472,219.0 C441.0,219.0 441.0,281 410,281" marker-end="url(#a)"/>
+<path class="hand" d="M408,336.5 C439.0,336.5 439.0,360 470,360" marker-end="url(#a)"/>
+<path class="hand" d="M472,404.0 C441.0,404.0 441.0,466 410,466" marker-end="url(#a)"/>
+<path class="hand" d="M408,497.5 C439.0,497.5 439.0,522 470,522" marker-end="url(#a)"/>
+<path class="hand" d="M472,566.0 C441.0,566.0 441.0,603 410,603" marker-end="url(#a)"/>
+<path class="hand" d="M408,645.5 C439.0,645.5 439.0,684 470,684" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="159" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="159" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">Set up</text>
+<text class="t" x="82" y="118">Clone the repo and run the guided</text>
+<text class="t" x="82" y="140">installer; keep one LLM API key at</text>
+<text class="t" x="82" y="162">hand</text>
+<text class="c" x="82" y="186">bash setup.sh</text>
+<text class="comp" x="82" y="209">component: setup.sh installer</text>
+<rect class="cardT" x="472" y="151" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="151" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="175" r="10"/>
+<text class="num" x="494" y="179" text-anchor="middle">2</text>
+<text class="ph" x="514" y="180">Set up</text>
+<text class="t" x="514" y="197">Checks Python, Node and FFmpeg,</text>
+<text class="t" x="514" y="219">creates an isolated easel profile on</text>
+<text class="t" x="514" y="241">OpenClaw, builds the web workbench</text>
+<text class="comp" x="514" y="269">component: setup.sh installer</text>
+<rect class="card" x="40" y="257" width="368" height="159" rx="8"/>
+<rect class="accY" x="40" y="257" width="4" height="159" rx="2"/>
+<circle class="accY" cx="62" cy="281" r="10"/>
+<text class="num" x="62" y="285" text-anchor="middle">3</text>
+<text class="ph" x="82" y="286">Set up</text>
+<text class="t" x="82" y="303">Start the workbench, fill the account</text>
+<text class="t" x="82" y="325">profile, log in your platforms in the</text>
+<text class="t" x="82" y="347">Accounts page</text>
+<text class="c" x="82" y="371">easel web</text>
+<text class="comp" x="82" y="394">component: Web workbench</text>
+<rect class="cardT" x="472" y="336" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="336" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="360" r="10"/>
+<text class="num" x="494" y="364" text-anchor="middle">4</text>
+<text class="ph" x="514" y="365">Set up</text>
+<text class="t" x="514" y="382">Boots the gateway; serves chat, the</text>
+<text class="t" x="514" y="404">113-skill library, trend radar,</text>
+<text class="t" x="514" y="426">calendar and publishing center</text>
+<text class="comp" x="514" y="454">component: OpenClaw gateway</text>
+<rect class="card" x="40" y="442" width="368" height="111" rx="8"/>
+<rect class="accY" x="40" y="442" width="4" height="111" rx="2"/>
+<circle class="accY" cx="62" cy="466" r="10"/>
+<text class="num" x="62" y="470" text-anchor="middle">5</text>
+<text class="ph" x="82" y="471">Every cycle</text>
+<text class="t" x="82" y="488">Brief the agent in chat: this week&#x27;s</text>
+<text class="t" x="82" y="510">topics for this account, then a</text>
+<text class="t" x="82" y="532">Xiaohongshu card and a short video</text>
+<rect class="cardT" x="472" y="498" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="498" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="522" r="10"/>
+<text class="num" x="494" y="526" text-anchor="middle">6</text>
+<text class="ph" x="514" y="527">Every cycle</text>
+<text class="t" x="514" y="544">Picks skills, runs real scripts (TTS,</text>
+<text class="t" x="514" y="566">transcription, ffmpeg), archives</text>
+<text class="t" x="514" y="588">deliverables to outputs/</text>
+<text class="comp" x="514" y="616">component: OpenClaw agent</text>
+<rect class="card" x="40" y="579" width="368" height="133" rx="8"/>
+<rect class="accY" x="40" y="579" width="4" height="133" rx="2"/>
+<circle class="accY" cx="62" cy="603" r="10"/>
+<text class="num" x="62" y="607" text-anchor="middle">7</text>
+<text class="ph" x="82" y="608">Every cycle</text>
+<text class="t" x="82" y="625">Preview each platform version, pass</text>
+<text class="t" x="82" y="647">the preflight checks, confirm</text>
+<text class="t" x="82" y="669">publishing (Xiaohongshu: confirm</text>
+<text class="t" x="82" y="691">manually)</text>
+<rect class="cardT" x="472" y="660" width="368" height="136" rx="8"/>
+<rect class="accT" x="472" y="660" width="4" height="136" rx="2"/>
+<circle class="accT" cx="494" cy="684" r="10"/>
+<text class="num" x="494" y="688" text-anchor="middle">8</text>
+<text class="ph" x="514" y="689">Every cycle</text>
+<text class="t" x="514" y="706">Publishes through logged-in accounts</text>
+<text class="t" x="514" y="728">and reads performance back into the</text>
+<text class="t" x="514" y="750">profile</text>
+<text class="comp" x="514" y="778">component: Playwright Chromium</text>
+<rect class="val" x="28" y="828" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="852">VALUE</text>
+<text class="valT" x="48" y="876">Trend hunting, drafting, rendering, per-platform reformatting and manual cross-posting</text>
+<text class="valT" x="48" y="898">disappear; each cycle&#x27;s numbers sharpen the next</text>
+</svg>

@@ -36,47 +36,79 @@
 | harry7557558/spirula-studio | add | done | categories/3d-reconstruction/spirula-studio.md |  | harry7557558/spirula-studio |
 | hydropix/TranslateBooksWithLLMs | add | done | categories/reading-tools/translate-books-with-llms.md |  | hydropix/translatebookswithllms |
 | InfinityLoop1308/PipePipe | add | done | categories/streaming-clients/pipepipe.md |  | infinityloop1308/pipepipe |
-| ix-infrastructure/Ix | add | done | categories/rag-retrieval/ix.md |  | ix-infrastructure/ix |
+| ix-infrastructure/Ix | add | done | categories/rag-retrieval/code-intelligence/ix.md |  | ix-infrastructure/ix |
 | jo-duchan/tapflow | add | done | categories/mobile-automation/tapflow.md |  | jo-duchan/tapflow |
 | kaplayjs/kaplay | add | done | categories/game-dev/kaplay.md |  | kaplayjs/kaplay |
 | Kuddev/pebrel | add | done | categories/terminal-ui/pebrel.md |  | kuddev/pebrel |
 | kunchenguid/backpass | add | done | categories/agent-memory/coding-agent-memory/backpass.md |  | kunchenguid/backpass |
 | leejet/stable-diffusion.cpp | add | done | categories/on-device-ml/stable-diffusion-cpp.md |  | leejet/stable-diffusion.cpp |
 | macro-inc/macro | add | done | categories/team-chat/macro.md |  | macro-inc/macro |
-| mikiarlo3/ai-copywriter | add | running |  |  | mikiarlo3/ai-copywriter |
-| mvanhorn/last30days-skill | add | running |  |  | mvanhorn/last30days-skill |
-| nexu-io/open-design | sync | pending |  |  | nexu-io/open-design |
-| nicedreamzapp/claude-code-local | add | pending |  |  | nicedreamzapp/claude-code-local |
-| op7418/Humanizer-zh | sync | pending |  |  | op7418/humanizer-zh |
-| open-slide/open-slide | add | pending |  |  | open-slide/open-slide |
-| openclaw/openclaw | sync | pending |  |  | openclaw/openclaw |
+| mikiarlo3/ai-copywriter | add | done | categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md |  | mikiarlo3/ai-copywriter |
+| mvanhorn/last30days-skill | add | done | categories/deep-research/last30days.md |  | mvanhorn/last30days-skill |
+| nexu-io/open-design | sync | done | categories/ai-design-generation/open-design.md |  | nexu-io/open-design |
+| nicedreamzapp/claude-code-local | add | done | categories/llm-inference/local-runtimes/claude-code-local.md |  | nicedreamzapp/claude-code-local |
+| op7418/Humanizer-zh | sync | done | categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md | 新鲜页，sync-entry 按阈值未重核，无改动 | op7418/humanizer-zh |
+| open-slide/open-slide | add | done | categories/ai-design-generation/open-slide.md |  | open-slide/open-slide |
+| openclaw/openclaw | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md | 新鲜页，sync-entry 按阈值未重核，无改动 | openclaw/openclaw |
 | openedclaude/claude-reviews-claude | skip | skipped |  | 不收：对 Claude Code 泄露源码的解读文章集，无可复用软件；标签保留待你复核 | openedclaude/claude-reviews-claude |
-| palmier-io/palmier-pro | add | pending |  |  | palmier-io/palmier-pro |
-| paperclipai/paperclip | add | pending |  |  | paperclipai/paperclip |
+| palmier-io/palmier-pro | add | done | categories/media-processing/video-editing/palmier-pro.md |  | palmier-io/palmier-pro |
+| paperclipai/paperclip | add | done | categories/agent-tooling/supervision-surfaces/paperclip.md |  | paperclipai/paperclip |
 | Piebald-AI/claude-code-system-prompts | skip | skipped |  | 不收：闭源产品 Claude Code 的系统提示词提取物，版权/ToS 风险；标签保留待你复核 | piebald-ai/claude-code-system-prompts |
-| pinchtab/pinchtab | add | pending |  |  | pinchtab/pinchtab |
+| pinchtab/pinchtab | add | done | categories/web-automation/agent-browser-tools/pinchtab.md |  | pinchtab/pinchtab |
 | pydantic/monty | add | done | categories/sandboxing/monty.md |  | pydantic/monty |
-| pydantic/pydantic-ai | sync | pending |  |  | pydantic/pydantic-ai |
-| repowise-dev/repowise | add | pending |  |  | repowise-dev/repowise |
-| serengil/deepface | add | pending |  |  | serengil/deepface |
-| shadcn/improve | add | pending |  |  | shadcn/improve |
+| pydantic/pydantic-ai | sync | done | categories/agent-frameworks/agent-runtimes/agent-sdks/pydantic-ai.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pydantic/pydantic-ai |
+| repowise-dev/repowise | add | done | categories/rag-retrieval/code-intelligence/repowise.md |  | repowise-dev/repowise |
+| serengil/deepface | add | done | categories/computer-vision/deepface.md |  | serengil/deepface |
+| shadcn/improve | add | done | categories/agent-dev-methodology/spec-driven-development/improve.md |  | shadcn/improve |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 不收：Claude Code 最佳实践文章/教程合集，无可复用软件；标签保留待你复核 | shanraisshan/claude-code-best-practice |
-| siddharthvaddem/openscreen | add | pending |  | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
-| skillsgate/skillsgate | add | pending |  |  | skillsgate/skillsgate |
-| stanfordnlp/dspy | sync | pending |  |  | stanfordnlp/dspy |
-| supermemoryai/supermemory | add | pending |  |  | supermemoryai/supermemory |
-| synthetic-sciences/openscience | add | pending |  |  | synthetic-sciences/openscience |
-| Thysrael/Horizon | add | pending |  |  | thysrael/horizon |
-| vectorize-io/hindsight | add | pending |  |  | vectorize-io/hindsight |
+| siddharthvaddem/openscreen | add | done | categories/media-processing/video-editing/openscreen.md | archived=true，照收，风险写进 Health | siddharthvaddem/openscreen |
+| skillsgate/skillsgate | add | done | categories/agent-tooling/harness-extensions/skillsgate.md | 首次（Opus）在无头模式把健康评分放后台后提前结束，已补前台规则后重排 | skillsgate/skillsgate |
+| stanfordnlp/dspy | sync | done | categories/agent-frameworks/workflow-builders/dspy.md | 新鲜页，sync-entry 按阈值未重核，无改动 | stanfordnlp/dspy |
+| supermemoryai/supermemory | add | done | categories/agent-memory/app-memory/supermemory.md |  | supermemoryai/supermemory |
+| synthetic-sciences/openscience | add | done | categories/deep-research/openscience.md |  | synthetic-sciences/openscience |
+| Thysrael/Horizon | add | done | categories/reading-tools/horizon.md |  | thysrael/horizon |
+| vectorize-io/hindsight | add | done | categories/agent-memory/app-memory/hindsight.md |  | vectorize-io/hindsight |
 | vercel-labs/scriptc | add | done | categories/dev-utilities/editors-and-runtimes/scriptc.md |  | vercel-labs/scriptc |
-| VictorTaelin/OptMem | add | pending |  |  | victortaelin/optmem |
-| video-db/call.md | add | pending |  |  | video-db/call.md |
+| VictorTaelin/OptMem | add | done | categories/agent-memory/coding-agent-memory/optmem.md |  | victortaelin/optmem |
+| video-db/call.md | add | done | categories/meeting-intelligence/call-md.md |  | video-db/call.md |
 | win4r/MuseAI-Skills | skip | skipped |  | 不收：muse.ai 闭源产品运行环境快照（ELF 二进制 + 技能文本），非官方发布；标签保留待你复核 | win4r/museai-skills |
-| yang0/handraw-style | add | pending |  |  | yang0/handraw-style |
-| zarazhangrui/follow-builders | add | pending |  |  | zarazhangrui/follow-builders |
+| yang0/handraw-style | add | done | categories/agent-skills/visual-content/handraw-style.md |  | yang0/handraw-style |
+| zarazhangrui/follow-builders | add | done | categories/reading-tools/follow-builders.md |  | zarazhangrui/follow-builders |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
-| ZJU-REAL/Easel | add | pending |  |  | zju-real/easel |
-| daeuniverse/dae | add | pending |  | 处理中新开的标签 | daeuniverse/dae |
-| vshulcz/deja-vu | add | pending |  | 处理中新开的标签 | vshulcz/deja-vu |
-| maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |
-| NandhaKishorM/laya | add | pending |  | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
+| ZJU-REAL/Easel | add | done | categories/social-media-management/easel.md |  | zju-real/easel |
+| daeuniverse/dae | add | done | categories/networking/dae.md | 处理中新开的标签 | daeuniverse/dae |
+| vshulcz/deja-vu | add | done | categories/agent-memory/coding-agent-memory/deja-vu.md | 处理中新开的标签 | vshulcz/deja-vu |
+| maziyarpanahi/openmed | add | done | categories/healthcare-ai/openmed.md | 处理中新开的标签 | maziyarpanahi/openmed |
+| NandhaKishorM/laya | add | done | categories/decision-models/laya.md | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |
+| TanStack/query | add | done | categories/web-ui/data-fetching/tanstack-query.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/query |
+| TanStack/table | add | running |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/table |
+| TanStack/router | add | done | categories/web-ui/frameworks/tanstack-router.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/router |
+| TanStack/virtual | add | pending |  | 首次因 provider 连接被重置（13:28 网络抖动）中断，重排 | tanstack/virtual |
+| TanStack/form | add | done | categories/web-ui/forms/tanstack-form.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/form |
+| TanStack/db | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/db |
+| TanStack/ai | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ai |
+| TanStack/cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/cli |
+| TanStack/store | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/store |
+| TanStack/ranger | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/ranger |
+| TanStack/pacer | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/pacer |
+| TanStack/charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/charts |
+| TanStack/hotkeys | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/hotkeys |
+| TanStack/time | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/time |
+| TanStack/devtools | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/devtools |
+| TanStack/markdown | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/markdown |
+| TanStack/config | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/config |
+| TanStack/intent | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/intent |
+| TanStack/redact | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/redact |
+| TanStack/select | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/select |
+| TanStack/workflow | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
+| TanStack/highlight | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
+| TanStack/persist | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
+| TanStack/container | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
+| TanStack/react-charts | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
+| TanStack/bling | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
+| TanStack/alt-cli | add | pending |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |
+| TanStack/preact | skip | skipped |  | 不收：fork 自 preactjs/preact，与上游重复 | tanstack/preact |
+| TanStack/tanstack.com | skip | skipped |  | 不收：TanStack 官网/文档站源码，不是可选型的软件 | tanstack/tanstack.com |
+| TanStack/template | skip | skipped |  | 不收：新库空白模板（6 星、174 KB），无实质内容 | tanstack/template |
+| larashero3-dotcom/lieflat-charts | add | pending |  | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
+| dzhng/jevgrep | add | pending |  | 处理中新开的标签（标签写法 �� | dzhng/jevgrep |

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="871" viewBox="0 0 880 871" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="871" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="735" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="735" rx="10"/>
+<rect class="pillT" x="474" y="40" width="132.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Horizon 做的</text>
+<path class="edge" d="M62,192 L62,216" marker-end="url(#a)"/>
+<path class="edge" d="M62,338 L62,362" marker-end="url(#a)"/>
+<path class="hand" d="M408,424.0 C439.0,424.0 439.0,448 470,448" marker-end="url(#a)"/>
+<path class="edge" d="M494,521 L494,545" marker-end="url(#a)"/>
+<path class="edge" d="M494,644 L494,668" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">克隆后安装，再回答向导的兴趣问题——它生成</text>
+<text class="t" x="82" y="123">data/config.json</text>
+<text class="c" x="82" y="147">uv sync · uv run horizon-wizard</text>
+<text class="comp" x="82" y="170">组件：配置向导</text>
+<rect class="card" x="40" y="218" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">2</text>
+<text class="t" x="82" y="247">把模型 API key 写进 .env——配置里只写环境</text>
+<text class="t" x="82" y="269">变量名，不写密钥本身</text>
+<text class="c" x="82" y="293">OPENAI_API_KEY=sk-your-key</text>
+<text class="comp" x="82" y="316">组件：.env</text>
+<rect class="card" x="40" y="364" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="364" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="388" r="10"/>
+<text class="num" x="62" y="392" text-anchor="middle">3</text>
+<text class="t" x="82" y="393">手动跑一次最近 24 小时的流水线（或用 cron </text>
+<text class="t" x="82" y="415">定时）</text>
+<text class="c" x="82" y="439">uv run horizon</text>
+<text class="comp" x="82" y="462">组件：horizon 命令行</text>
+<rect class="cardT" x="472" y="424" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="424" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="448" r="10"/>
+<text class="num" x="494" y="452" text-anchor="middle">4</text>
+<text class="t" x="514" y="453">抓取所有配置源在时间窗内的条目——RSS、HN、R</text>
+<text class="t" x="514" y="475">eddit 等</text>
+<text class="comp" x="514" y="503">组件：抓取器</text>
+<rect class="cardT" x="472" y="547" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="547" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="571" r="10"/>
+<text class="num" x="494" y="575" text-anchor="middle">5</text>
+<text class="t" x="514" y="576">路由到 profile，按 0–10 打分，低于阈值丢</text>
+<text class="t" x="514" y="598">弃，重复合并</text>
+<text class="comp" x="514" y="626">组件：profile 规则</text>
+<rect class="cardT" x="472" y="670" width="368" height="75" rx="8"/>
+<rect class="accT" x="472" y="670" width="4" height="75" rx="2"/>
+<circle class="accT" cx="494" cy="694" r="10"/>
+<text class="num" x="494" y="698" text-anchor="middle">6</text>
+<text class="t" x="514" y="699">补背景与热门评论摘要，写出中英双语简报</text>
+<text class="comp" x="514" y="727">组件：简报生成</text>
+<rect class="val" x="28" y="777" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="801">价值</text>
+<text class="valT" x="48" y="825">每天读到一份像人工精选过的双语简报——不用再开二十个订阅源</text>
+</svg>

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Repowise does",
+    "zh": "Repowise 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI from PyPI",
+      "zh": "从 PyPI 安装 CLI",
+      "code": "pip install repowise",
+      "component": {
+        "en": "repowise CLI",
+        "zh": "repowise 命令行"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Index the repository without an API key",
+      "zh": "给仓库建一次索引，不用 API key",
+      "code": "repowise init --no-prose -y"
+    },
+    {
+      "lane": "them",
+      "en": "Parses every file with tree-sitter and builds the graph, git, health, dead-code and wiki layers locally",
+      "zh": "用 tree-sitter 解析全部文件，在本机建出五层索引",
+      "component": {
+        "en": "local indexer",
+        "zh": "本地索引器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Wires your agent: writes a repo-root .mcp.json and registers context hooks in ~/.claude/settings.json",
+      "zh": "自动接线 agent：写 .mcp.json、注册 hooks",
+      "component": {
+        "en": "agent wiring",
+        "zh": "agent 接线"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask your agent to answer from the index",
+      "zh": "让 agent 从索引里直接回答",
+      "code": "get_overview"
+    },
+    {
+      "lane": "them",
+      "en": "Answers with cited, graph-grounded context over MCP, stamped with index age and a staleness warning",
+      "zh": "通过 MCP 返回带引用、标注索引新鲜度的答案",
+      "component": {
+        "en": "repowise MCP server",
+        "zh": "repowise MCP 服务"
+      }
+    }
+  ],
+  "value": {
+    "en": "Your agent stops grepping and re-reading the same files to rediscover callers, risk and health on every task",
+    "zh": "agent 不用再每个任务都靠 grep、重读同一批文件去重新发现调用方、风险和健康度"
+  },
+  "sources": [
+    "README.md 'Start in minutes (no API key)': pip install repowise; repowise init --no-prose -y; repowise serve; ask 'Use Repowise get_overview to summarize this repository'",
+    "docs/start/QUICKSTART.md sections 1-3: keyless init builds graph, git, health, dead-code and wiki locally ('No LLM calls, no key, no network'); init writes a repo-root .mcp.json and registers repowise with ~/.claude/settings.json unless --no-editor-setup",
+    "docs/agent/HOOKS.md: agent hooks read only local SQLite (wiki.db) and git, no LLM calls, no network",
+    "README.md 'The ten MCP tools': each response's _meta carries index_age_days, indexed_commit and stale_warning"
+  ]
+}

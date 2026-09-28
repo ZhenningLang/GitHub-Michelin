@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "SkillsGate does",
+    "zh": "SkillsGate 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download the desktop installer from the latest release and open it",
+      "zh": "从最新 release 下载桌面安装包并打开"
+    },
+    {
+      "lane": "them",
+      "en": "Detects your agents and lists every installed skill per agent",
+      "zh": "识别已装的 agent，按 agent 列出全部已装 skill",
+      "component": {
+        "en": "main-process scanner + SQLite",
+        "zh": "主进程扫描器与 SQLite"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Search the Discover tab, tick target agents, press Install",
+      "zh": "在 Discover 页搜索，勾选目标 agent，按 Install"
+    },
+    {
+      "lane": "them",
+      "en": "Clones the source repo and copies its skills into ~/.agents/skills",
+      "zh": "克隆源仓库，把其中 skill 复制进 ~/.agents/skills",
+      "component": {
+        "en": "canonical skills folder",
+        "zh": "真身 skill 目录"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Symlinks each skill into every ticked agent's folder and records it in the lock file",
+      "zh": "把 skill 符号链接进每个勾选 agent 的目录，并记入锁文件"
+    }
+  ],
+  "value": {
+    "en": "One copy per skill, visible across all your agents — no more hand-copying SKILL.md folders into each agent's hidden directory",
+    "zh": "每个 skill 只有一份，所有 agent 一目了然——不再往每个 agent 的隐藏目录里手动拷 SKILL.md"
+  },
+  "sources": [
+    "https://github.com/skillsgate/skillsgate README — Quick Start (download latest release), Features (per-agent management, built-in editor, local-first SQLite)",
+    "apps/desktop/src/main/ipc-handlers.ts @ desktop-v0.7.3 — detectAgents, skills:install (gitClone --depth 1, discoverSkillsInDir), installSkillToAgent (canonical ~/.agents/skills + symlink/copy fallback), writeSkillLock",
+    "apps/desktop/src/renderer/routes/discover.tsx @ desktop-v0.7.3 — Install button with AgentDropdown, handleInstall(source, agentNames)"
+  ]
+}

@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 917
+- Named-but-unindexed alternatives: 969
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -31,13 +31,17 @@ shape and are deliberately excluded here.
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
+| [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/networking/dae.md` |
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
 | [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
+| [sing-box](https://github.com/SagerNet/sing-box) | `categories/networking/dae.md` |
 | [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy) | `categories/networking/amneziawg-installer.md` |
+| [v2rayA](https://github.com/v2rayA/v2rayA) | `categories/networking/dae.md` |
 | [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
 | [wg-easy](https://github.com/wg-easy/wg-easy) | `categories/networking/amneziawg-installer.md` |
 | [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install) | `categories/networking/amneziawg-installer.md` |
@@ -48,7 +52,3 @@ shape and are deliberately excluded here.
 | `bdeansrowe/ltbl-ignorance` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `cake` / SQM (OpenWrt) | `categories/networking/wondershaper.md` |
 | `DeviceFarmer/stf` | `categories/mobile-automation/tapflow.md` |
-| `diffusers` (Hugging Face) | `categories/ml-research/pytorch-gan.md` |
-| `dig` / `drill` / `kdig` (CLI) | `categories/networking/dnspython.md` |
-| `elasticsearch` (elasticsearch-py) | `categories/databases/database-clients/elasticsearch-dsl-py.md` |
-| `getdns` Python bindings | `categories/networking/dnspython.md` |

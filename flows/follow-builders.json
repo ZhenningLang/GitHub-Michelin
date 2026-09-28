@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Follow Builders does",
+    "zh": "Follow Builders 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone it into your agent's skills folder and install the scripts' two npm deps",
+      "zh": "克隆到 agent 的 skills 目录，装好脚本的 npm 依赖",
+      "code": "cd ~/.claude/skills/follow-builders/scripts && npm install",
+      "component": {
+        "en": "skill folder",
+        "zh": "skill 目录"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Invoke the skill and answer onboarding: daily or weekly, time zone, language, delivery channel",
+      "zh": "调用 skill，回答引导问题：日报或周报、时区、语言、推送渠道",
+      "code": "/follow-builders",
+      "component": {
+        "en": "SKILL.md onboarding",
+        "zh": "SKILL.md 引导流程"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Once a day, the author's GitHub Action pulls new X posts, podcast transcripts and blog posts into feed JSON",
+      "zh": "作者的 Action 每天抓 X 帖子、播客转录和博客，写成 feed",
+      "component": {
+        "en": "generate-feed workflow",
+        "zh": "generate-feed 工作流"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask your agent for the digest — or let the OpenClaw cron job fire it",
+      "zh": "让 agent 出一期简报——或交给 OpenClaw 定时任务触发",
+      "component": {
+        "en": "your agent",
+        "zh": "你的 agent"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Fetches the central feeds plus the latest prompt files as one JSON blob, no API keys",
+      "zh": "拉取中央 feed 和最新 prompt，合成一份 JSON，无需 key",
+      "component": {
+        "en": "prepare-digest.js",
+        "zh": "prepare-digest.js"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Your agent rewrites it per the prompts, one source link per item, in EN, ZH or bilingual",
+      "zh": "agent 按 prompt 改写成摘要，每条附原链接，中文、英文或双语",
+      "component": {
+        "en": "prompts/",
+        "zh": "prompts/"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Sends it to Telegram or email, or just prints it in the chat",
+      "zh": "推送到 Telegram 或邮箱，或直接在对话里输出",
+      "component": {
+        "en": "deliver.js",
+        "zh": "deliver.js"
+      }
+    }
+  ],
+  "value": {
+    "en": "A short cited digest of what a fixed list of AI builders said — you stop scrolling X and podcasts to find it",
+    "zh": "一份附原链接的 AI 建造者动态简报——不用再自己刷 X 和听播客"
+  },
+  "sources": [
+    "README.md — Quick Start / Installation (Claude Code clone + `cd ~/.claude/skills/follow-builders/scripts && npm install`, `/follow-builders`)",
+    "SKILL.md — First Run onboarding steps 1–9, Content Delivery steps 1–6, OpenClaw cron setup",
+    ".github/workflows/generate-feed.yml — daily cron `17 6 * * *`, commits feed-x/feed-podcasts/feed-blogs JSON",
+    "scripts/prepare-digest.js — fetches raw.githubusercontent.com feeds + prompts, outputs one JSON",
+    "scripts/deliver.js — Telegram Bot API / Resend email / stdout"
+  ]
+}

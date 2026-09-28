@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "dae does", "zh": "dae 做的"},
+  "steps": [
+    {"lane": "you", "en": "Check the kernel is 5.17+ with BPF/BTF options, then install the dae package", "zh": "确认内核 ≥5.17 且开了 BPF／BTF 选项，再装 dae 包", "code": "sudo apt install dae · sudo pacman -S dae", "component": {"en": "systemd service", "zh": "systemd 服务"}},
+    {"lane": "you", "en": "Write your interfaces, subscription, node group and routing rules into one config file", "zh": "把网卡、订阅、节点组和分流规则写进一个配置文件", "code": "/etc/dae/config.dae"},
+    {"lane": "you", "en": "Start the service", "zh": "启动服务", "code": "sudo systemctl start dae"},
+    {"lane": "them", "en": "Loads an eBPF program at the tc hook of the bound LAN/WAN interfaces and pulls your subscription", "zh": "在绑定的 LAN／WAN 网卡 tc 钩子上加载 eBPF 程序，并拉取订阅", "component": {"en": "eBPF datapath", "zh": "eBPF 数据面"}},
+    {"lane": "them", "en": "Matches each new flow in-kernel by IP, port, MAC, process name or DNS-learned domain", "zh": "在内核里按 IP、端口、MAC、进程名或 DNS 得到的域名匹配每条新连接"},
+    {"lane": "them", "en": "Forwards direct flows in the kernel; hands proxied flows to the lowest-latency node in the group", "zh": "直连流量由内核直接转发，代理流量交给组里延迟最低的节点"}
+  ],
+  "value": {"en": "The whole LAN and host are split-routed without per-app proxy settings, and direct traffic never pays a userspace proxy hop", "zh": "整个局域网和本机都按规则分流，无需逐个应用设代理，直连流量不再绕经用户态代理进程"},
+  "sources": [
+    "docs/en/README.md Linux Kernel Requirements (kernel 5.17, CONFIG_* list) and Installation (sudo apt install dae; sudo pacman -S dae)",
+    "docs/en/README.md Debian/Ubuntu: 'Save your configuration as /etc/dae/config.dae'; Minimal Configuration (global/subscription/dns/group/routing)",
+    "docs/en/README.md Service Management (sudo systemctl start dae)",
+    "docs/en/how-it-works.md (eBPF at tc hook, splitting criteria: IP/port/MAC/process name/domain via DNS)",
+    "README.md Features (Real Direct, split by process name and MAC, automatic node switching by latency policy)"
+  ]
+}

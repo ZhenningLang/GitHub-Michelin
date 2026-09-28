@@ -13,6 +13,7 @@
 | **wondershaper** | 当某块 Linux 网卡需要快速设置上／下行带宽上限、又不想手写 tc 规则时用它——但它基于老式 HTB（不像 cake／fq_codel 那样应对 bufferbloat），仅限 Linux，自 2024 年 7 月起停滞。 | E（4/6） | [→](wondershaper.zh.md) |
 | **ThriftPy** | 仅当你要在迁移前读懂仍在 import thriftpy 的遗留服务时用它——该仓库已归档且废弃，所有新的 Thrift 开发都应转向仍在维护的 thriftpy2。 | B（5/6） | [→](thriftpy.zh.md) |
 | **amneziawg-installer** | 当你所在网络的 DPI 封锁了裸 WireGuard、想在一台干净廉价 VPS 上一条命令装好内核态 AmneziaWG 服务端时用它——但它仅支持 Ubuntu／Debian、要求支持 AWG 2.0 的客户端，且会把整台机器改造成单一用途的加固 VPN 服务器。 | B（6/6） | [→](amneziawg-installer.zh.md) |
+| **dae** | 当 Linux 路由器或主机要给整个局域网按规则分流、又希望直连流量由内核经 eBPF 直接转发时用它——但它要求内核 5.17 以上，没有图形界面和 SOCKS／HTTP 入站，且是 AGPL-3.0。 | B（6/6） | [→](dae.zh.md) |
 
 ## 对比矩阵
 
@@ -24,8 +25,9 @@
 | [wondershaper](wondershaper.zh.md) | ✅ | E（4/6） | 当某块 Linux 网卡需要快速设置上／下行带宽上限、又不想手写 tc 规则时用它——但它基于老式 HTB（不像 cake／fq_codel 那样应对 bufferbloat），仅限 Linux，自 2024 年 7 月起停滞。 |
 | [ThriftPy](thriftpy.zh.md) | ✅ | B（5/6） | 仅当你要在迁移前读懂仍在 import thriftpy 的遗留服务时用它——该仓库已归档且废弃，所有新的 Thrift 开发都应转向仍在维护的 thriftpy2。 |
 | [amneziawg-installer](amneziawg-installer.zh.md) | ✅ | B（6/6） | 当你所在网络的 DPI 封锁了裸 WireGuard、想在一台干净廉价 VPS 上一条命令装好内核态 AmneziaWG 服务端时用它——但它仅支持 Ubuntu／Debian、要求支持 AWG 2.0 的客户端，且会把整台机器改造成单一用途的加固 VPN 服务器。 |
+| [dae](dae.zh.md) | ✅ | B（6/6） | 当 Linux 路由器或主机要给整个局域网按规则分流、又希望直连流量由内核经 eBPF 直接转发时用它——但它要求内核 5.17 以上，没有图形界面和 SOCKS／HTTP 入站，且是 AGPL-3.0。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里
 
-面向**网络协议与链路**的库/工具——SSH、DNS、隧道、RPC、带宽整形。
+面向**网络协议与链路**的库/工具——SSH、DNS、隧道、RPC、带宽整形、透明代理与策略路由。

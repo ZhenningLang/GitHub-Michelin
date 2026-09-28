@@ -25,7 +25,7 @@
 | [Docling](docling.zh.md) | ✅ | A（5/6） | 富文档解析（版面 + 表格）成结构化 Markdown/JSON；模型依赖比纯文本提取更重。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | B（6/6） | 轻量级 Python 库，将办公文档和文件转换为 Markdown 供 LLM 摄入；比 Docling 更简单，但版面感知较弱。 |
 | [olmOCR](olmocr.zh.md) | ✅ | C（5/6） | 基于 VLM 的 PDF 线性化，面向 LLM 数据集；支持公式、表格和手写体，但需要 GPU。 |
-| [PageIndex](../rag-retrieval/pageindex.zh.md) | ✅ | B（6/6） | 在长结构化文档上建检索索引——位于解析之后，本身不是解析器。 |
+| [PageIndex](../rag-retrieval/structured-retrieval/pageindex.zh.md) | ✅ | B（6/6） | 在长结构化文档上建检索索引——位于解析之后，本身不是解析器。 |
 | [any2html](any2html.zh.md) | ✅ | D（5/6） | Use it when you need any2html in this category. |
 | [Dedoc](dedoc.zh.md) | ✅ | B（5/6） | 多格式逻辑树解析，保留表格、注解与附件；结构比轻量 Markdown 转换更深，但 Linux 依赖更重，对困难扫描件也有限制。 |
 | [Bella Domify](bella-domify.zh.md) | ✅ | C（5/6） | 提供 pdf2docx 衍生 DOM 树和服务集成；版面对象丰富，但基础设施重、OCR 可出站，且 GPL v2／v3 声明冲突未解决。 |

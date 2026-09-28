@@ -14,6 +14,8 @@
 | **NetNewsWire** | Use it when you read many feeds on Mac/iPhone and want a fast, ad-free native RSS client you own — but only on Apple platforms, never elsewhere. | B (6/6) | [→](netnewswire.md) |
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | C (6/6) | [→](just-read.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | B (6/6) | [→](freshrss.md) |
+| **Horizon** | Use it when feeds overflow you and you want a self-hosted LLM pipeline that scores, filters, deduplicates and briefs them bilingually every day — not a reader you browse. | B (6/6) | [→](horizon.md) |
+| **Follow Builders** | Use it when you want a no-keys daily digest of what a fixed, author-curated list of AI builders said on X, podcasts and two blogs — but you can't pick the sources and uptime rides on one person's X API bill. | C (4/6) | [→](follow-builders.md) |
 | **Bilingual Book Maker** | Use it when you want a scriptable CLI that turns epub/txt/md/srt/pdf into bilingual books via LLM/MT APIs, with resume and PyPI packaging — not an agent pipeline. | A (5/6) | [→](bilingual-book-maker.md) |
 | **TranslateBooksWithLLMs** | Use it when a non-developer must translate a whole EPUB/DOCX/SRT/TXT into one target language with formatting kept, a glossary, and resume — via a desktop app on Ollama or a cloud key; single-user localhost only. | C (6/6) | [→](translate-books-with-llms.md) |
 
@@ -30,6 +32,8 @@
 | [Just Read](just-read.md) | ✅ | C (6/6) | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. |
 | [Bilingual Book Maker](bilingual-book-maker.md) | ✅ | A (5/6) | The mature CLI path for bilingual ebook files: any LLM/MT backend, resume, PyPI — but paragraph-stream translation without a curated glossary. |
 | [TranslateBooksWithLLMs](translate-books-with-llms.md) | ✅ | C (6/6) | GUI + CLI whole-file translator with placeholder-checked tags, per-book glossary and SQLite resume — but no PDF, no PyPI package, AGPL, single maintainer, and no multi-user auth. |
+| [Horizon](horizon.md) | ✅ | B (6/6) | Self-hosted AI news radar: profile-driven LLM scoring and dedup across RSS/HN/Reddit/Telegram/X, bilingual daily briefing — but ~7 months old, single maintainer, no releases yet. |
+| [Follow Builders](follow-builders.md) | ✅ | C (4/6) | Zero-setup agent skill over the author's central daily feed (26 X builders, 6 podcasts, 2 blogs) — but no source control, no LICENSE file, raw-JSON scheduling on Claude Code, and a single maintainer paying for the X API. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

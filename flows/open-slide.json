@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "open-slide does", "zh": "open-slide 做的"},
+  "steps": [
+    {"lane": "you", "en": "Scaffold a deck workspace and start the dev server", "zh": "生成一个 deck 工作区，启动开发服务器", "code": "npx @open-slide/cli init my-slide · pnpm dev", "component": {"en": "@open-slide/cli scaffolder", "zh": "@open-slide/cli 脚手架"}},
+    {"lane": "them", "en": "Serves a hot-reloading 1920×1080 viewer and drops its agent skills into the workspace", "zh": "起热更新的 1920×1080 预览器，把 agent skill 放进工作区", "component": {"en": "@open-slide/core dev server", "zh": "@open-slide/core 开发服务器"}},
+    {"lane": "you", "en": "Ask your coding agent for a deck in one line", "zh": "在编码 agent 里用一句话要一套 deck", "code": "/create-slide"},
+    {"lane": "them", "en": "Its skill has the agent ask four scoping questions, then write the React pages", "zh": "skill 让 agent 先问四个问题，再写 React 页面", "component": {"en": "create-slide skill", "zh": "create-slide skill"}},
+    {"lane": "you", "en": "Click elements in the browser preview and attach comments", "zh": "在浏览器预览里点选元素，写上修改意见", "component": {"en": "inspector", "zh": "inspector 检查器"}},
+    {"lane": "them", "en": "Saves each comment into the source as a marker next to the element", "zh": "把每条意见作为标记写进源码，贴在对应元素旁", "code": "@slide-comment"},
+    {"lane": "you", "en": "Have the agent apply every pending comment", "zh": "让 agent 一次处理所有待办意见", "code": "/apply-comments"}
+  ],
+  "value": {"en": "A presentable, exportable deck built by your agent, revised by pointing at slides instead of writing JSX yourself", "zh": "一套由 agent 写好、可直接演示和导出的 deck；改稿只需在页面上指指点点，不用自己写 JSX"},
+  "sources": [
+    "https://github.com/open-slide/open-slide README Get started (npx @open-slide/cli init my-slide; cd my-slide; pnpm dev) and Highlights (Agent-native authoring: /create-slide asks four scoping questions; In-browser inspector: comments persisted as @slide-comment markers, /apply-comments applies them)",
+    "apps/web/content/docs/getting-started.mdx (scaffolded tree with slides/, themes/, .agents/skills/; dev server with HMR, inspector and assets panel; /create-slide writes slides/<id>/index.tsx; Iterate visually steps 1-4)",
+    "packages/core/skills/create-slide/SKILL.md (Step 2: four style decisions via AskUserQuestion; writes only under slides/<id>/)",
+    "apps/web/content/docs/primitive/page.mdx (fixed 1920 x 1080 canvas contract)"
+  ]
+}

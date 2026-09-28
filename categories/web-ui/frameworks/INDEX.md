@@ -17,6 +17,7 @@
 | **React** | A declarative, component-based JavaScript library for building user interfaces. Maintained by Meta, it is the most widely adopted UI library in the world, powering everything from single-page apps to native mobile apps via React Native. | A (6/6) | [→](react.md) |
 | **Svelte** | A compile-time frontend framework that transforms components into efficient vanilla JavaScript at build time, eliminating virtual DOM overhead for smaller bundles and faster runtime performance. | A (6/6) | [→](svelte.md) |
 | **SvelteKit** | web development, streamlined | A (6/6) | [→](sveltekit.md) |
+| **TanStack Router** | Use it when the URL is the app's state container and a mistyped link, param or search value must fail the compiler instead of the user — not when routing is a few static pages, or when RSC-first architecture is the requirement (pick Next.js; TanStack Start on top of it is still Release Candidate). | A (6/6) | [→](tanstack-router.md) |
 | **Vue.js** | A progressive JavaScript framework for building user interfaces, created by Evan You. Known for its gentle learning curve, excellent documentation, and incrementally adoptable architecture. | A (6/6) | [→](vue.md) |
 
 ## What belongs here

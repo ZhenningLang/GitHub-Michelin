@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Palmier Pro does", "zh": "Palmier Pro 做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the app on an Apple Silicon Mac (DMG, or build the frozen GPL source)", "zh": "在 Apple 芯片 Mac 上打开应用（DMG，或自编冻结的 GPL 源码）", "code": "swift run"},
+    {"lane": "them", "en": "While open, serves a local MCP endpoint bound to localhost", "zh": "应用开着时，在本机回环地址上提供 MCP 端点", "code": "http://127.0.0.1:19789/mcp", "component": {"en": "in-app MCP HTTP server", "zh": "应用内 MCP HTTP 服务"}},
+    {"lane": "you", "en": "Register that endpoint with your coding agent", "zh": "把这个端点注册给你的编码 agent", "code": "claude mcp add --transport http palmier-pro http://127.0.0.1:19789/mcp"},
+    {"lane": "you", "en": "Ask the agent for an edit in plain words", "zh": "用大白话让 agent 改片子"},
+    {"lane": "them", "en": "The agent calls editing tools that change the open timeline", "zh": "agent 调用剪辑工具，直接改你开着的时间线", "code": "add_clips · split_clips · ripple_delete_ranges", "component": {"en": "52 MCP editing tools", "zh": "52 个 MCP 剪辑工具"}},
+    {"lane": "them", "en": "Each agent edit lands in the same undo history as your own edits", "zh": "agent 的每次改动和你手动的改动进同一条撤销历史"},
+    {"lane": "you", "en": "Review on the timeline, undo or adjust, then export", "zh": "在时间线上检查，撤销或微调，然后导出"}
+  ],
+  "value": {"en": "An agent edits the project you have open, instead of you re-expressing the cut as a script", "zh": "agent 直接改你开着的工程，不用把剪辑再翻译成一份脚本"},
+  "sources": [
+    "https://github.com/palmier-io/palmier-pro README 'MCP server' (http://127.0.0.1:19789/mcp; claude mcp add --transport http palmier-pro http://127.0.0.1:19789/mcp); README FAQ (macOS 26 Apple Silicon only; GPL through v0.7.6 / last-gpl-source)",
+    "AGENTS.md 'Build' (swift build / swift run) and 'Editor mutations and undo' (UI and Agent edits share EditorUndo history)",
+    "Sources/PalmierPro/Agent/Tools/ToolDefinitions.swift enum ToolName (52 cases incl. add_clips, split_clips, ripple_delete_ranges)",
+    "Sources/PalmierPro/Agent/MCP/MCPHTTPServer.swift (requiredLocalEndpoint 127.0.0.1, OriginValidator.localhost)"
+  ]
+}

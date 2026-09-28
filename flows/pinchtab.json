@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "them": {"en": "PinchTab does", "zh": "PinchTab 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Go binary and register it as a background daemon", "zh": "装上 Go 单二进制，把它注册成后台守护进程", "code": "pinchtab daemon install"},
+    {"lane": "them", "en": "A control-plane server starts on 127.0.0.1:9867 with a bearer token and a default headless Chrome", "zh": "起一个带令牌的控制面服务和默认无头 Chrome", "component": {"en": "server", "zh": "控制面服务"}},
+    {"lane": "you", "en": "Drop the shipped skill into your agent's skills directory", "zh": "把随包附带的技能装进 agent 的技能目录", "code": "pinchtab skill update", "component": {"en": "agent skill", "zh": "agent 技能"}},
+    {"lane": "you", "en": "Navigate and snapshot in one call", "zh": "一次调用完成导航加快照", "code": "pinchtab nav https://pinchtab.com --snap"},
+    {"lane": "them", "en": "Drives Chrome over CDP and returns a text snapshot — each interactive element tagged with a ref", "zh": "通过 CDP 驱动 Chrome，返回文本快照——每个可交互元素带一个引用", "component": {"en": "snapshot refs", "zh": "快照引用"}},
+    {"lane": "you", "en": "Act on a ref instead of a selector", "zh": "对着引用动手，而不是对着选择器", "code": "pinchtab click e5"},
+    {"lane": "them", "en": "Profiles keep cookies and storage on disk, so a logged-in session survives restarts", "zh": "配置档把 cookie 和存储留在磁盘上，登录态跨重启存活", "component": {"en": "profiles", "zh": "配置档"}}
+  ],
+  "value": {
+    "en": "A browser step costs one round trip of text, not a screenshot to read or a selector to maintain — and the browser stays warm between steps",
+    "zh": "每一步浏览器操作只是一次文本往返——不用读截图，不用维护选择器，浏览器还一直热着"
+  },
+  "sources": [
+    "README.md “What is PinchTab?” / “Primary Usage” (curl install starts the control-plane server and a default headless Chrome; pinchtab daemon install installs and starts the daemon; point your agent at http://localhost:9867)",
+    "README.md “Agent skill” (npm package ships the pinchtab agent skill; pinchtab skill status / pinchtab skill update install or refresh it into ~/.claude/skills and peers)",
+    "README.md “Use It” and “Examples” (pinchtab nav https://pinchtab.com --snap; pinchtab snap -i; pinchtab click e5; pinchtab fill e3 \"user@pinchtab.com\")",
+    "README.md “Key Features” (accessibility-first element refs — the same e5 survives a change of filter/selector/depth and expires only on navigation; multi-instance with isolated profiles)",
+    "docs/guides/security.md (server.bind = 127.0.0.1, server.token bearer auth, capability gates off by default, IDPI enabled by default)",
+    "docs/core-concepts.md referenced from README (Server manages profiles/instances/routing; Profile = cookies/history/local storage persisted across restarts; Bridge = single-instance runtime)"
+  ]
+}

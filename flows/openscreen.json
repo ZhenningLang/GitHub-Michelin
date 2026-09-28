@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenScreen does", "zh": "OpenScreen 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the app, grant Screen Recording + Accessibility permission", "zh": "装好应用，授予屏幕录制与辅助功能权限", "code": "brew install --cask siddharthvaddem/openscreen/openscreen"},
+    {"lane": "you", "en": "Pick the window or screen to record, then just do the demo", "zh": "选定要录的窗口或整屏，然后照常演示"},
+    {"lane": "them", "en": "Native helper captures screen, system audio, mic, webcam and cursor events", "zh": "原生采集层抓下画面、系统声音、麦克风、摄像头与光标事件", "component": {"en": "SCK / WGC capture helper", "zh": "原生采集 helper"}},
+    {"lane": "them", "en": "Auto-zooms follow the cursor; cursor path is smoothed and clicks animated", "zh": "自动缩放跟随光标，光标轨迹被抹平，点击自带动画"},
+    {"lane": "you", "en": "Trim on the timeline, set per-segment speed, add text/arrow annotations", "zh": "在时间线上修剪、逐段调速，加文字和箭头标注"},
+    {"lane": "you", "en": "Export MP4 or GIF in the aspect ratio you need", "zh": "按需要的画面比例导出 MP4 或 GIF"}
+  ],
+  "value": {"en": "A polished, zoom-following demo from one free local recording pass — no subscription, no watermark", "zh": "一次本地免费录制就得到自动缩放的成品演示——无订阅、无水印"},
+  "sources": [
+    "README Installation (brew install --cask siddharthvaddem/openscreen/openscreen; macOS Screen Recording + Accessibility permissions; winget/installers for Windows and Linux)",
+    "README Core Features (auto zooms that follow the cursor, cursor smoothing and click effects, backgrounds, per-segment speed, MP4/GIF export in multiple aspect ratios)",
+    "README Platform differences (macOS ScreenCaptureKit / Windows Graphics Capture native pipelines; Linux browser pipeline)",
+    "repo tree + package.json (electron/native/screencapturekit Swift helper, electron/native/wgc-capture C++ helper, @xenova/transformers on-device captions, mediabunny/mp4box/gif.js export)"
+  ]
+}

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="885" viewBox="0 0 880 885" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="885" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="749" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="749" rx="10"/>
+<rect class="pillT" x="474" y="40" width="169.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenScience 做的</text>
+<path class="edge" d="M62,206 L62,230" marker-end="url(#a)"/>
+<path class="edge" d="M62,341 L62,365" marker-end="url(#a)"/>
+<path class="hand" d="M408,412.0 C439.0,412.0 439.0,436 470,436" marker-end="url(#a)"/>
+<path class="hand" d="M472,469.0 C441.0,469.0 441.0,507 410,507" marker-end="url(#a)"/>
+<path class="hand" d="M408,516.5 C439.0,516.5 439.0,576 470,576" marker-end="url(#a)"/>
+<path class="edge" d="M494,666 L494,690" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="134" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="134" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">一次性搭建</text>
+<text class="t" x="82" y="118">装好 CLI，指向你的项目文件夹</text>
+<text class="c" x="82" y="142">npm install -g @synsci/openscience ·</text>
+<text class="c" x="82" y="161">openscience ~/research/my-project</text>
+<text class="comp" x="82" y="184">组件：openscience CLI</text>
+<rect class="card" x="40" y="232" width="368" height="109" rx="8"/>
+<rect class="accY" x="40" y="232" width="4" height="109" rx="2"/>
+<circle class="accY" cx="62" cy="256" r="10"/>
+<text class="num" x="62" y="260" text-anchor="middle">2</text>
+<text class="ph" x="82" y="261">一次性搭建</text>
+<text class="t" x="82" y="278">接上模型：自己的 API key，或本地端点</text>
+<text class="c" x="82" y="302">openscience keys add · openscience local</text>
+<text class="c" x="82" y="321">add</text>
+<rect class="card" x="40" y="367" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="367" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="391" r="10"/>
+<text class="num" x="62" y="395" text-anchor="middle">3</text>
+<text class="ph" x="82" y="396">每个任务</text>
+<text class="t" x="82" y="413">用大白话描述研究任务，可先对齐方法再干</text>
+<text class="c" x="82" y="437">/plan</text>
+<rect class="cardT" x="472" y="412" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="412" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="436" r="10"/>
+<text class="num" x="494" y="440" text-anchor="middle">4</text>
+<text class="ph" x="514" y="441">每个任务</text>
+<text class="t" x="514" y="458">主 agent 逐步执行：shell、Python/R 内</text>
+<text class="t" x="514" y="480">核、文件、科学连接器</text>
+<text class="comp" x="514" y="508">组件：主 agent＋工具</text>
+<rect class="card" x="40" y="483" width="368" height="67" rx="8"/>
+<rect class="accY" x="40" y="483" width="4" height="67" rx="2"/>
+<circle class="accY" cx="62" cy="507" r="10"/>
+<text class="num" x="62" y="511" text-anchor="middle">5</text>
+<text class="ph" x="82" y="512">每个任务</text>
+<text class="t" x="82" y="529">它请求危险命令或新网络主机时，你来批</text>
+<rect class="cardT" x="472" y="552" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="552" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="576" r="10"/>
+<text class="num" x="494" y="580" text-anchor="middle">6</text>
+<text class="ph" x="514" y="581">每个任务</text>
+<text class="t" x="514" y="598">有边界的子任务交给并行 worker，综合和结论</text>
+<text class="t" x="514" y="620">留在主线</text>
+<text class="comp" x="514" y="648">组件：子任务 worker</text>
+<rect class="cardT" x="472" y="692" width="368" height="67" rx="8"/>
+<rect class="accT" x="472" y="692" width="4" height="67" rx="2"/>
+<circle class="accT" cx="494" cy="716" r="10"/>
+<text class="num" x="494" y="720" text-anchor="middle">7</text>
+<text class="ph" x="514" y="721">每个任务</text>
+<text class="t" x="514" y="738">答案连同完整轨迹和写好的文件落回你的项目</text>
+<rect class="val" x="28" y="791" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="815">价值</text>
+<text class="valT" x="48" y="839">落到磁盘的可核查结果——数据、代码、图、报告加执行轨迹，而不是一段自信的文本</text>
+</svg>

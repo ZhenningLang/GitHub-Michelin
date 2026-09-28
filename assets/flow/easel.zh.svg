@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="790" viewBox="0 0 880 790" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="790" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="654" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="654" rx="10"/>
+<rect class="pillT" x="474" y="40" width="114.4" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Easel 做的</text>
+<path class="hand" d="M408,140.5 C439.0,140.5 439.0,164 470,164" marker-end="url(#a)"/>
+<path class="hand" d="M472,197.0 C441.0,197.0 441.0,259 410,259" marker-end="url(#a)"/>
+<path class="hand" d="M408,292.5 C439.0,292.5 439.0,316 470,316" marker-end="url(#a)"/>
+<path class="hand" d="M472,349.0 C441.0,349.0 441.0,400 410,400" marker-end="url(#a)"/>
+<path class="hand" d="M408,420.5 C439.0,420.5 439.0,456 470,456" marker-end="url(#a)"/>
+<path class="hand" d="M472,489.0 C441.0,489.0 441.0,515 410,515" marker-end="url(#a)"/>
+<path class="hand" d="M408,535.5 C439.0,535.5 439.0,596 470,596" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="137" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="137" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">搭建</text>
+<text class="t" x="82" y="118">克隆仓库跑引导式安装器，手边备一个模型 API</text>
+<text class="t" x="82" y="140">Key</text>
+<text class="c" x="82" y="164">bash setup.sh</text>
+<text class="comp" x="82" y="187">组件：安装向导</text>
+<rect class="cardT" x="472" y="140" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="140" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="164" r="10"/>
+<text class="num" x="494" y="168" text-anchor="middle">2</text>
+<text class="ph" x="514" y="169">搭建</text>
+<text class="t" x="514" y="186">检查依赖，建隔离 easel profile 和 We</text>
+<text class="t" x="514" y="208">b 工作台</text>
+<text class="comp" x="514" y="236">组件：安装向导</text>
+<rect class="card" x="40" y="235" width="368" height="115" rx="8"/>
+<rect class="accY" x="40" y="235" width="4" height="115" rx="2"/>
+<circle class="accY" cx="62" cy="259" r="10"/>
+<text class="num" x="62" y="263" text-anchor="middle">3</text>
+<text class="ph" x="82" y="264">搭建</text>
+<text class="t" x="82" y="281">启动工作台，填画像，登录各平台</text>
+<text class="c" x="82" y="305">easel web</text>
+<text class="comp" x="82" y="328">组件：Web 工作台</text>
+<rect class="cardT" x="472" y="292" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="292" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="316" r="10"/>
+<text class="num" x="494" y="320" text-anchor="middle">4</text>
+<text class="ph" x="514" y="321">搭建</text>
+<text class="t" x="514" y="338">拉起网关，提供对话、技能库、热点雷达、日历</text>
+<text class="t" x="514" y="360">和发布中心</text>
+<text class="comp" x="514" y="388">组件：OpenClaw 网关</text>
+<rect class="card" x="40" y="376" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="376" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="400" r="10"/>
+<text class="num" x="62" y="404" text-anchor="middle">5</text>
+<text class="ph" x="82" y="405">每一轮</text>
+<text class="t" x="82" y="422">在对话里下需求：本周适合本账号的选题，出小</text>
+<text class="t" x="82" y="444">红书卡片和短视频</text>
+<rect class="cardT" x="472" y="432" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="432" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="456" r="10"/>
+<text class="num" x="494" y="460" text-anchor="middle">6</text>
+<text class="ph" x="514" y="461">每一轮</text>
+<text class="t" x="514" y="478">选技能、跑真脚本（配音、转写、ffmpeg），成</text>
+<text class="t" x="514" y="500">品归档到 outputs/</text>
+<text class="comp" x="514" y="528">组件：OpenClaw Agent</text>
+<rect class="card" x="40" y="491" width="368" height="89" rx="8"/>
+<rect class="accY" x="40" y="491" width="4" height="89" rx="2"/>
+<circle class="accY" cx="62" cy="515" r="10"/>
+<text class="num" x="62" y="519" text-anchor="middle">7</text>
+<text class="ph" x="82" y="520">每一轮</text>
+<text class="t" x="82" y="537">预览各平台版本，过发布前检查，确认发布（小</text>
+<text class="t" x="82" y="559">红书手动确认）</text>
+<rect class="cardT" x="472" y="572" width="368" height="92" rx="8"/>
+<rect class="accT" x="472" y="572" width="4" height="92" rx="2"/>
+<circle class="accT" cx="494" cy="596" r="10"/>
+<text class="num" x="494" y="600" text-anchor="middle">8</text>
+<text class="ph" x="514" y="601">每一轮</text>
+<text class="t" x="514" y="618">走已登录账号发布，把数据表现读回画像</text>
+<text class="comp" x="514" y="646">组件：Playwright Chromium</text>
+<rect class="val" x="28" y="696" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="720">价值</text>
+<text class="valT" x="48" y="744">找热点、写初稿、渲染成品、按平台改格式、逐平台手动发布都省掉；每一轮数据让下一轮更贴账号</text>
+</svg>

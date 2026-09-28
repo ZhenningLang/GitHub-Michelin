@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "DeepFace does", "zh": "DeepFace 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it together with the deep-learning engine you want", "zh": "连同想用的深度学习引擎一起安装", "code": "pip install deepface[tensorflow] · pip install deepface[pytorch]"},
+    {"lane": "you", "en": "Call one function on two photos", "zh": "对两张照片调用一个函数", "code": "DeepFace.verify(img1_path = \"img1.jpg\", img2_path = \"img2.jpg\")"},
+    {"lane": "them", "en": "On first use, downloads the chosen model's pretrained weights and caches them locally", "zh": "第一次用时下载所选模型的预训练权重，缓存到本地", "component": {"en": "~/.deepface/weights", "zh": "~/.deepface/weights"}},
+    {"lane": "them", "en": "Finds and straightens the face in each image (OpenCV detector by default)", "zh": "在每张图里找到人脸并摆正（默认用 OpenCV 检测器）", "component": {"en": "detector backend", "zh": "检测器后端"}},
+    {"lane": "them", "en": "Turns each face into a vector (VGG-Face by default) and checks their distance against a pre-tuned threshold", "zh": "把每张脸变成一串数字（默认 VGG-Face），距离与预调阈值比较", "component": {"en": "recognition model", "zh": "识别模型"}}
+  ],
+  "value": {"en": "One call answers \"same person?\" — you never assemble detection, alignment, embedding and threshold tuning yourself", "zh": "一次调用回答“是不是同一个人”，不必自己拼检测、对齐、提特征和调阈值"},
+  "sources": [
+    "https://github.com/serengil/deepface README: Installation (pip install deepface[tensorflow] / [pytorch]), Face Verification (DeepFace.verify(img1_path = \"img1.jpg\", img2_path = \"img2.jpg\")), 'OpenCV is the default detector and alignment is on by default', 'The default configuration uses VGG-Face model'",
+    "deepface/commons/weight_utils.py (download_weights_if_necessary -> <DEEPFACE_HOME>/.deepface/weights)",
+    "deepface/config/threshold.py (pre-tuned thresholds per model and distance metric)"
+  ]
+}
