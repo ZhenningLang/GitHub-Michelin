@@ -18,6 +18,7 @@
 | **Svelte** | A compile-time frontend framework that transforms components into efficient vanilla JavaScript at build time, eliminating virtual DOM overhead for smaller bundles and faster runtime performance. | A (6/6) | [→](svelte.md) |
 | **SvelteKit** | web development, streamlined | A (6/6) | [→](sveltekit.md) |
 | **TanStack Router** | Use it when the URL is the app's state container and a mistyped link, param or search value must fail the compiler instead of the user — not when routing is a few static pages, or when RSC-first architecture is the requirement (pick Next.js; TanStack Start on top of it is still Release Candidate). | A (6/6) | [→](tanstack-router.md) |
+| **TanStack Redact** | Use it when a Vite + React app's bundle budget is eaten by ~69 KB of React runtime the pages never lean on — one plugin swaps every React import for a ~23 KB synchronous re-implementation — not when the app needs concurrent features, a non-Vite build, or a license file (there is none yet). | D (6/6) | [→](tanstack-redact.md) |
 | **Vue.js** | A progressive JavaScript framework for building user interfaces, created by Evan You. Known for its gentle learning curve, excellent documentation, and incrementally adoptable architecture. | A (6/6) | [→](vue.md) |
 
 ## What belongs here

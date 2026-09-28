@@ -157,6 +157,7 @@ https://github.com/TanStack/intent,tanstack-intent,harness-extensions,categories
 https://github.com/TanStack/pacer,tanstack-pacer,scheduling,categories/web-ui/scheduling/tanstack-pacer.md
 https://github.com/TanStack/query,tanstack-query,data-fetching,categories/web-ui/data-fetching/tanstack-query.md
 https://github.com/TanStack/ranger,tanstack-ranger,component-libraries,categories/web-ui/component-libraries/tanstack-ranger.md
+https://github.com/TanStack/redact,tanstack-redact,frameworks,categories/web-ui/frameworks/tanstack-redact.md
 https://github.com/TanStack/router,tanstack-router,frameworks,categories/web-ui/frameworks/tanstack-router.md
 https://github.com/TanStack/select,tanstack-select,component-libraries,categories/web-ui/component-libraries/tanstack-select.md
 https://github.com/TanStack/store,tanstack-store,state-management,categories/web-ui/state-management/tanstack-store.md

@@ -18,6 +18,7 @@
 | **Svelte** | 编译时前端框架，在构建阶段将组件转换为高效的 vanilla JavaScript，消除虚拟 DOM 开销，获得更小的包体积和更快的运行时性能。 | A（6/6） | [→](svelte.zh.md) |
 | **SvelteKit** | web development, streamlined | A（6/6） | [→](sveltekit.zh.md) |
 | **TanStack Router** | 当 URL 就是应用的状态容器、写错的链接／参数／查询值必须在编译期报错而不是吓到用户时用它——但路由只是寥寥几页静态页面时不要用，需要 RSC 优先架构时选 Next.js；其上的 TanStack Start 仍是 Release Candidate。 | A（6/6） | [→](tanstack-router.zh.md) |
+| **TanStack Redact** | 当 Vite＋React 应用的包体积预算被约 69 KB、页面却用不到的 React 运行时吃掉时用它——一个插件把所有 React 导入换成约 23 KB 的同步重新实现——但应用依赖并发特性、构建工具不是 Vite、或需要许可证文件（目前没有）时不要用。 | D（6/6） | [→](tanstack-redact.zh.md) |
 | **Vue.js** | 由 Evan You 创建的渐进式 JavaScript 用户界面框架，以温和的学习曲线、优秀的文档和可增量采纳的架构著称。 | A（6/6） | [→](vue.zh.md) |
 
 ## 什么该放这里

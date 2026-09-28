@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Redact does", "zh": "Redact 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package", "zh": "安装这个包", "code": "pnpm add @tanstack/redact"},
+    {"lane": "you", "en": "Register the plugin in your Vite config", "zh": "在自己的 Vite 配置里注册插件", "code": "plugins: [redact()]", "component": {"en": "vite plugin", "zh": "Vite 插件"}},
+    {"lane": "them", "en": "Rewrites the React, DOM, server, scheduler and JSX entrypoints to Redact in client and SSR builds", "zh": "把 React、DOM、服务端、调度器与 JSX 入口全部改指 Redact", "component": {"en": "build-time aliasing", "zh": "构建期别名重写"}},
+    {"lane": "you", "en": "Keep importing from react, untouched", "zh": "业务代码照旧从 react 导入", "code": "import { useState, Suspense } from 'react'"},
+    {"lane": "them", "en": "Renders, streams and hydrates synchronously under a ~23 KB gzip runtime instead of React's ~69 KB", "zh": "同步渲染、流式输出并水合，运行时从约 69 KB 降到约 23 KB gzip"}
+  ],
+  "value": {"en": "The same React source ships over a runtime about 66% smaller — no rewrite, no compat aliases, one build plugin", "zh": "同一份 React 源码跑在缩小约 66% 的运行时上——不重写、不配兼容别名，只换一个构建插件"},
+  "sources": [
+    "README.md Quick start (pnpm add @tanstack/redact; vite.config.ts with plugins: [redact()] importing { redact } from '@tanstack/redact/vite'; \"Keep importing from React: import { useState, Suspense } from 'react'\"; \"The plugin handles client and SSR builds\"; bundle table: Redact 23,311 vs React 19.3.0 69,162 gzip bytes)"
+  ]
+}
