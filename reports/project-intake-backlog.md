@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 876
+- Named-but-unindexed alternatives: 881
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -27,6 +27,8 @@ shape and are deliberately excluded here.
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |
+| [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
+| [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
@@ -34,7 +36,10 @@ shape and are deliberately excluded here.
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
+| [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy) | `categories/networking/amneziawg-installer.md` |
 | [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
+| [wg-easy](https://github.com/wg-easy/wg-easy) | `categories/networking/amneziawg-installer.md` |
+| [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install) | `categories/networking/amneziawg-installer.md` |
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
 | `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
@@ -47,8 +52,3 @@ shape and are deliberately excluded here.
 | `getdns` Python bindings | `categories/networking/dnspython.md` |
 | `lich0821/wcfLink` | `categories/im-automation/wechat/wechatferry.md` |
 | `MEMORY USAGE` / `MEMORY DOCTOR` | `categories/databases/database-clients/rdr.md` |
-| `openilink-sdk-node` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-sdk-php` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-sdk-python` | `categories/im-automation/openilink-sdk-go.md` |
-| `openilink-tg` | `categories/im-automation/openilink-hub.md` |
-| `opensearch-py` / opensearch-dsl-py | `categories/databases/database-clients/elasticsearch-dsl-py.md` |

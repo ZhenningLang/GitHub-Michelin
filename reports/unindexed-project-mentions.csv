@@ -4,6 +4,8 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 2captcha-python,categories/captcha/buster.md,,no
 3D-Speaker,categories/speech/antspeaker.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
+[Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
+[angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
@@ -11,7 +13,10 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
+[spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
+[wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
+[wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
 "`/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack",categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 `bdeansrowe/beam`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-brute`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no

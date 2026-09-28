@@ -7,17 +7,17 @@
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | agegr/pi-web | add | done | categories/agent-tooling/supervision-surfaces/pi-web.md |  | agegr/pi-web |
-| aiming-lab/SimpleMem | add | done | categories/agent-memory/simplemem.md |  | aiming-lab/simplemem |
+| aiming-lab/SimpleMem | add | done | categories/agent-memory/app-memory/simplemem.md |  | aiming-lab/simplemem |
 | alexgreensh/token-optimizer | add | done | categories/agent-tooling/work-state/token-optimizer.md |  | alexgreensh/token-optimizer |
 | ant-research/AntSpeaker | add | done | categories/speech/antspeaker.md |  | ant-research/antspeaker |
 | Armur-Ai/Pentest-Swarm-AI | add | done | categories/pentest/pentest-swarm-ai.md |  | armur-ai/pentest-swarm-ai |
 | astaxie/TokenHub | add | done | categories/api-gateway/tokenhub.md |  | astaxie/tokenhub |
-| Asymptote-Labs/agent-beacon | add | done | categories/agent-memory/agent-beacon.md |  | asymptote-labs/agent-beacon |
+| Asymptote-Labs/agent-beacon | add | done | categories/agent-memory/coding-agent-memory/agent-beacon.md |  | asymptote-labs/agent-beacon |
 | Ataraxy-Labs/weave | add | done | categories/agent-tooling/concurrent-editing/weave.md |  | ataraxy-labs/weave |
 | basecamp/hey-cli | add | done | categories/agent-tooling/harness-extensions/hey-cli.md |  | basecamp/hey-cli |
-| bivlked/amneziawg-installer | add | running |  |  | bivlked/amneziawg-installer |
+| bivlked/amneziawg-installer | add | done | categories/networking/amneziawg-installer.md |  | bivlked/amneziawg-installer |
 | cloudflare/computer | add | running |  |  | cloudflare/computer |
-| code-yeongyu/oh-my-openagent | add | pending |  |  | code-yeongyu/oh-my-openagent |
+| code-yeongyu/oh-my-openagent | add | running |  |  | code-yeongyu/oh-my-openagent |
 | Dammyjay93/interface-design | add | pending |  |  | dammyjay93/interface-design |
 | derv82/wifit3 | add | pending |  |  | derv82/wifit3 |
 | devdotfast/whiteboard | add | pending |  |  | devdotfast/whiteboard |
