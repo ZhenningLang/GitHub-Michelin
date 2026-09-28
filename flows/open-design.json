@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenDesign does", "zh": "OpenDesign 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app (macOS/Windows) — or attach your agent instead", "zh": "装桌面应用（macOS/Windows），或直接把 agent 接上", "code": "od mcp install claude"},
+    {"lane": "you", "en": "Pick an artifact type, a plugin/skill and one of the 151 DESIGN.md systems, enter a brief", "zh": "选产物类型、插件与一套 DESIGN.md 设计系统，写简报"},
+    {"lane": "them", "en": "Spawns a coding-agent CLI already on your PATH — or streams your BYOK endpoint", "zh": "启动你 PATH 上已有的编码 agent CLI，或走你的 BYOK 端点", "component": {"en": "local daemon", "zh": "本地 daemon"}},
+    {"lane": "them", "en": "The agent composes skill + template + brand contract into real HTML/CSS files, previewed in a sandboxed iframe", "zh": "把 Skill、模板与品牌契约组装成真实项目文件，沙箱里预览", "component": {"en": "spawned agent", "zh": "被拉起的 agent"}},
+    {"lane": "you", "en": "Iterate in Studio, then export the artifact", "zh": "在 Studio 里迭代，导出成品"}
+  ],
+  "value": {"en": "Prototypes, decks and videos as real files on your machine — no hosted studio, no model lock-in", "zh": "原型、deck、视频都以真实文件留在本机——不用托管工作室，不锁模型"},
+  "sources": [
+    "https://github.com/nexu-io/open-design#quick-start (desktop download macOS/Windows, no Linux artifact)",
+    "https://github.com/nexu-io/open-design#install-into-your-coding-agent-no-ui (`od mcp install <agent>`, e.g. claude)",
+    "https://github.com/nexu-io/open-design#product-tour (Home: artifact type + brief + design system; Studio iterate & export)",
+    "https://github.com/nexu-io/open-design#design-systems (151 DESIGN.md packages) and #skills-and-design-templates",
+    "https://github.com/nexu-io/open-design#architecture (daemon spawns cli with cwd; sandboxed iframe; 127.0.0.1; BYOK proxy)"
+  ]
+}

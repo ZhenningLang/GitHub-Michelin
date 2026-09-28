@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "bitnet.cpp does", "zh": "bitnet.cpp 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and install Python dependencies", "zh": "克隆仓库，装 Python 依赖", "code": "git clone --recursive https://github.com/microsoft/BitNet.git"},
+    {"lane": "you", "en": "Download the official 2B ternary model and run the setup script", "zh": "下载官方 2B 三值模型，跑环境脚本", "code": "python setup_env.py -md models/BitNet-b1.58-2B-4T -q i2_s"},
+    {"lane": "them", "en": "Converts the weights to the I2_S layout and builds the tuned kernels for your CPU", "zh": "把权重转成 I2_S 布局，按你的 CPU 构建调优内核", "component": {"en": "setup_env.py", "zh": "setup_env.py"}},
+    {"lane": "you", "en": "Start a chat loop on the quantized file", "zh": "对量化文件启动聊天循环", "code": "python run_inference.py -m models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf · -cnv"},
+    {"lane": "them", "en": "Decodes with lookup-and-add ternary kernels — fast and low-energy on plain x86/ARM CPUs, no GPU", "zh": "用查表加法的三值内核解码——x86/ARM CPU 上快且省电，不用 GPU", "component": {"en": "I2_S kernel", "zh": "I2_S 内核"}}
+  ],
+  "value": {"en": "A 2.4B ternary LLM chatting on an ordinary laptop CPU — no GPU, with the README's reported multi-x speedup and large energy savings", "zh": "2.4B 三元模型在普通笔记本 CPU 上跑对话——不用 GPU，拿到 README 宣称的数倍加速与大幅省电"},
+  "sources": [
+    "README.md main @ 2026-09-28, Build from source: git clone --recursive https://github.com/microsoft/BitNet.git; pip install -r requirements.txt; huggingface-cli download microsoft/BitNet-b1.58-2B-4T-gguf --local-dir models/BitNet-b1.58-2B-4T; python setup_env.py -md models/BitNet-b1.58-2B-4T -q i2_s",
+    "README.md main @ 2026-09-28, Basic usage: python run_inference.py -m models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf -p \"You are a helpful assistant\" -cnv",
+    "README.md main @ 2026-09-28: I2_S/TL1/TL2 kernel table; ARM 1.37x-5.07x and x86 2.37x-6.17x speedup, energy 55.4-70.0% / 71.9-82.2% (project's own claims)"
+  ]
+}

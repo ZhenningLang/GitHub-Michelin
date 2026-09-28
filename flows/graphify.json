@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "graphify does", "zh": "graphify 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "安装 CLI", "code": "uv tool install graphifyy"},
+    {"lane": "you", "en": "Register the /graphify skill with your AI assistant", "zh": "把 skill 注册进你的 AI 助手", "code": "graphify install"},
+    {"lane": "you", "en": "In the assistant, point it at a folder", "zh": "在助手里把目录交给它", "code": "/graphify ."},
+    {"lane": "them", "en": "Parses code locally with tree-sitter ASTs; docs, PDFs and images go through your model for semantic nodes", "zh": "本地抽代码 AST，文档图片走模型成语义节点", "component": {"en": "Local AST + semantic pass", "zh": "本地 AST + 语义通道"}},
+    {"lane": "them", "en": "Clusters with Leiden and writes graph.json, an interactive graph.html, and GRAPH_REPORT.md", "zh": "Leiden 聚类，写出 json、html 和报告", "component": {"en": "graphify-out/", "zh": "graphify-out/"}},
+    {"lane": "you", "en": "Ask structure questions instead of re-reading files", "zh": "直接问结构问题，不再重读文件", "code": "graphify query \"<question>\""},
+    {"lane": "them", "en": "Returns a scoped subgraph where every edge carries an EXTRACTED or INFERRED confidence tag", "zh": "返回带 EXTRACTED/INFERRED 置信标签的子图"}
+  ],
+  "value": {"en": "An agent answers \"what calls this handler\" from a portable graph, not by burning context on file dumps", "zh": "agent 从可移植的图里回答“谁调用了它”，不再烧上下文去堆文件"},
+  "sources": ["README.md Graphify-Labs/graphify @ v8 (retrieved 2026-09-28): 'uv tool install graphifyy      # install the CLI'; 'graphify install               # register the skill with your AI assistant'; '/graphify .' quickstart block; 'graphify query \"<question>\"' in the query/path example section; graphify-out/ three files (graph.html, GRAPH_REPORT.md, graph.json); tree-sitter local parsing + semantic pass + Leiden clustering described in README", "pyproject.toml @ v8: name = graphifyy, requires-python >=3.10"]
+}

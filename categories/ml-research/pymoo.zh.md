@@ -6,17 +6,17 @@ category: ml-research
 tags: [optimization, multi-objective, evolutionary-algorithms, nsga2, genetic-algorithm, python, operations-research]
 language: Python
 license: Apache-2.0
-maturity: v0.6.x, active (last pushed 2026-06), ~2.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v0.6.2, active, ~3.0k stars (as of 2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-28T22:14:17Z
+  pushed_at: 2026-07-07T01:34:50Z
   default_branch: main
-  default_branch_sha: 04c77b4cbb01a51cd98be8ad74774d4ea588e35a
+  default_branch_sha: 23110c155aa8f31b5f1b86928227fb3931ba7f00
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:42:45Z
+  computed_at: 2026-09-28T07:24:44Z
   overall: B
   overall_score: 2.5
   scored_axes: 6
@@ -29,8 +29,8 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 78
-        active_weeks_13: 3
+        last_commit_age_days: 83
+        active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: B
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3290
-        last_commit_age_days: 78
+        repo_age_days: 3295
+        last_commit_age_days: 83
         cohort: library
     governance:
       grade: D
@@ -77,7 +77,7 @@ health:
 
 # pymoo
 
-一个做单目标与多目标优化的 Python 框架：NSGA-II/III、MOEA/D、GA、DE、CMA-ES、PSO 等等，外加测试问题、约束处理、可视化和决策工具——建立在 NumPy/SciPy 之上，并有可选的编译加速。
+一个做单目标与多目标优化的 Python 框架。你的问题里几个目标在互相打架——既要成本最低又要重量最轻——不存在唯一最优解，只有权衡；pymoo 用你的评估函数演化一个种群，交回一整条 Pareto 前沿（一组互不支配的折中解），算法涵盖 NSGA-II/III、MOEA/D、CMA-ES 等，外加画图与帮你挑解的决策工具。
 
 ![pymoo — 健康度雷达](../../assets/health/pymoo.zh.svg)
 
@@ -86,6 +86,27 @@ health:
 你是个研究者或工程师，手上的优化问题有**多个相互冲突的目标**——既要降成本*又要*减重，既要提吞吐*又要*提可靠性——你需要找出 Pareto 前沿，而非单个标量最优。你定义一个 `Problem`（变量、目标、约束），挑一个像 `NSGA2` 的算法，调 `minimize(problem, algorithm, termination)`，pymoo 就把种群朝权衡前沿演化；然后你用它的可视化（散点、PCP）和决策模块（如 pseudo-weights、折中规划）挑一个解。它自带标准基准套件（ZDT、DTLZ、WFG），让你在把算法指向真实问题前先验证它，并且支持混合/整数变量、约束和自定义算子。
 
 你把它当作**演化式多目标优化的事实标准 Python 库**——当你想要规范算法的、经充分测试的实现（它是 Python 里 NSGA-II/III 的参考），配一个干净、可扩展的 API，而不想自己重写遗传算子或接一个更重的 OR 求解器时。[推断]
+
+## 怎么用起来
+
+你写一个函数（或一个 `Problem` 类）：给它一组决策变量，它返回目标值（以及约束）。搜索循环归 pymoo 管：`minimize(problem, algorithm, termination)` 先采出初始种群，成批调用你的评估函数（你把它写成向量化或并行的，它就成批/并行地跑），然后由算法繁育下一代——比如 NSGA-II 把合并后的池子按非支配排序（没有任何解在**每个**目标上都不比它差）排序，留下铺得开的前沿种群——直到你的终止条件（代数、运行时长或收敛）触发。交回来的不是一个答案，而是最后一整个种群：`res.X`/`res.F` 是幸存的决策向量及其目标值，也就是你对 Pareto 前沿的近似；`pymoo.visualization`（`Scatter`、平行坐标图）能把它和基准问题的已知前沿画在一起对比。仍归你管的：目标函数本身（以及它的计算成本——真正的时间花在这里）、评估预算、可复现用的随机种子，以及最终从前沿里挑哪一个折中解交付——它的 MCDM 模块（伪权重、折中规划）能帮你选。
+
+![pymoo — 主干用户故事](../../assets/flow/pymoo.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pymoo.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装进你的 Python 环境 — `pip install -U pymoo`
+2. **你**：定义问题（或借一个基准问题），挑一个算法 — `problem = get_problem("zdt1") · algorithm = NSGA2(pop_size=100)` — 组件：`Problem / Algorithm`
+3. **你**：设定终止条件与随机种子，开跑 — `res = minimize(problem, algorithm, ('n_gen', 200), seed=1, verbose=True)`
+4. **pymoo**：一代一代演化种群，朝权衡前沿推进 — 组件：`NSGA2`
+5. **你**：从 res.F 读出 Pareto 前沿并画图 — `plot.add(res.F, color="red")`
+
+**价值**：一次 minimize() 调用就得到整条权衡前沿，不用自己写任何演化机制
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -116,7 +137,7 @@ health:
 ## 依赖
 
 - **运行时：** `numpy`、`scipy`、`matplotlib`、`moocore`、`autograd`、`cma`、`alive_progress`、`Deprecated`——全部可 pip 安装，无外部服务。
-- **构建（可选）：** 用 C 编译器加 `Cython` 从源码构建编译加速；`pip install pymoo` 在常见情形下提供 wheel。
+- **构建（可选）：** 用 C 编译器加 `Cython` 从源码构建编译加速；`pip install pymoo` 自带预编译的 Cython wheel，覆盖 macOS/Windows/manylinux（glibc 与 musl）、CPython 3.10–3.14（PyPI，2026-09-28 对 0.6.2 核对）。
 - **硬件：** CPU 密集；核心算法不需要（也不用）GPU。
 - **你的问题：** 目标/约束的评估由你提供——真实世界的成本就在那里（例如封装一个仿真器）。
 
@@ -127,15 +148,13 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：Grade B——中位首次响应时间 4.5 小时，基于 4 个 qualifying issues/PRs。
-- **维护（2026-06）。** 最后 push 于 **2026-06-28**（核实当天），且只有约 2 个 open issue——是一个**积极维护、打理良好**的项目在 v0.6.x 线上的强信号。不在吃老本，也未废弃。[推断]
+- **维护（2026-09）。** `main` 最后一次提交在 **2026-07-07**（`como_cmaes` 算法的缺陷修复工作），核对时 open issue 为 0（GitHub API，2026-09-28）——是一条有人打理的 v0.6.x 线，只是最近一个季度的提交节奏偏温和、不算快。没有废弃。[推断]
 - **治理 / 背书。** 在 `anyoptimization` 组织下开发（Organization 拥有），有一位主维护者（blankjul）和真实的贡献者列表；与学术工作绑定（pymoo 的 IEEE Access 论文）。bus factor 偏向主维护者，但有组织结构和多名贡献者——比孤身作者的仓库更健康。[推断]
 - **年龄与 Lindy 判断。** 2017-09 创建（约 8 到 9 年）**且仍在活跃发布**⇒ **强 Lindy** 信号：一个成熟、久经验证、又保持时新的库，而非被炒作的新秀。[推断]
-- **采用度。** 约 2.9k star / 约 475 fork，有一篇可引用的论文，并在学术/工业优化工作中被使用；它是 Python 里 NSGA-II/III 的标准参考。[未验证]
+- **采用度。** 约 3.0k star / 480 fork（GitHub API，2026-09-28），有一篇可引用的论文，并在学术/工业优化工作中被使用；它是 Python 里 NSGA-II/III 的标准参考。[未验证：生产采用广度]
 - **风险标记。** 不多。Apache-2.0（宽松，未发现 relicense 历史）；主要的实务注意点是 EA 的通病（随机、耗评估），而非项目健康风险。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 2.9k star / 约 475 fork / 约 2 个 open issue；数字对时间敏感，仅供参考。
-- [未验证] v0.6.x 是当前线（观察到 tag 0.6.2 / 0.6.1.x）；确切的最新补丁版本及其发布日期此处未钉死。
 - [推断]「演化式多目标优化的事实标准 / 参考 Python 库」是从采用度加规范算法集加论文推断，并非对每个替代品的实测排名。
-- [推断]「常见情形下提供 wheel、故很少需要编译 Cython」是从典型 PyPI 打包推断；若编译加速路径要紧，请在你的平台上核实。
+- [推断]「在学术/工业优化工作中被使用」这一采用叙述，支撑是可引用的 IEEE Access 论文与 star/fork 数；没有做过生产用户普查。

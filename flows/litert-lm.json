@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "LiteRT-LM does", "zh": "LiteRT-LM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI tool", "zh": "装上命令行工具", "code": "uv tool install litert-lm"},
+    {"lane": "you", "en": "Run a packaged Gemma straight from its Hugging Face repo", "zh": "直接从 HF 仓库拉起一个打包 Gemma 跑起来", "code": "litert-lm run --from-huggingface-repo=google/gemma-3n-E2B-it-litert-lm"},
+    {"lane": "them", "en": "Loads the .litertlm bundle and streams tokens fully on-device", "zh": "加载 .litertlm 包，在端侧全程流式出字", "component": {"en": "LiteRT runtime", "zh": "LiteRT 运行时"}},
+    {"lane": "you", "en": "Switch to accelerated backends and speculative decoding", "zh": "切换加速后端与投机解码", "code": "--backend=gpu · --enable-speculative-decoding=true"},
+    {"lane": "them", "en": "Drives CPU/GPU/NPU for your app through the stable Kotlin/Python/C++ bindings", "zh": "经稳定绑定替你驱动 CPU/GPU/NPU", "component": {"en": "Kotlin/Python/C++ bindings", "zh": "Kotlin/Python/C++ 绑定"}}
+  ],
+  "value": {"en": "A private, offline LLM inside your app on phones, desktops and edge boards — no cloud round-trip, no per-call bill", "zh": "把私密、离线的 LLM 装进手机/桌面/边缘板的 App——不联网、没有按次账单"},
+  "sources": ["README.md main @ 2026-09-28 Quick Start: uv tool install litert-lm; litert-lm run --from-huggingface-repo=google/gemma-3n-E2B-it-litert-lm gemma-3n-E2B-it-int4 --prompt=\"What is the capital of France?\" (multi-line bash block joined to one line)", "README.md What's New v0.16.0 block: --backend=gpu --enable-speculative-decoding=true", "README.md Supported Language APIs table: Python/Kotlin/C++ Stable"]
+}

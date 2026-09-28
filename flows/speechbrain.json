@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "them": { "en": "SpeechBrain does", "zh": "SpeechBrain 做的" },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the library — or clone the repo to work with its recipes",
+      "zh": "安装库，或直接 clone 仓库以便用配方",
+      "code": "pip install speechbrain"
+    },
+    {
+      "lane": "you",
+      "en": "Pick one of 200+ task recipes and launch training from its YAML",
+      "zh": "挑一份任务配方，用它的 YAML 一键启动训练",
+      "code": "python train.py hparams/train.yaml"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the whole experiment the YAML declares — model, data, optimizer — saving checkpoints and logs",
+      "zh": "按 YAML 声明跑完整个实验，保存检查点与日志"
+    },
+    {
+      "lane": "you",
+      "en": "Load your trained result or any Hugging Face checkpoint as a ready inference object",
+      "zh": "用推理 API 加载训练成果或 HF 预训练权重",
+      "code": "from speechbrain.inference import EncoderDecoderASR"
+    }
+  ],
+  "value": {
+    "en": "Train, reproduce, and adapt speech models for many tasks on one PyTorch codebase instead of five glued-together repos",
+    "zh": "在一个 PyTorch 代码库上训练、复现与改造多任务语音模型，不再拼接五个仓库"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/speechbrain/speechbrain/develop/README.md — Quick Start / Installation ('pip install speechbrain'; 'git clone https://github.com/speechbrain/speechbrain.git')",
+    "https://raw.githubusercontent.com/speechbrain/speechbrain/develop/README.md — Training Recipes ('python train.py hparams/train.yaml'; 'over 200 competitive training recipes'; hyperparameters in a YAML, training orchestrated by the Python script)",
+    "https://raw.githubusercontent.com/speechbrain/speechbrain/develop/README.md — Pretrained Models and Inference ('from speechbrain.inference import EncoderDecoderASR')"
+  ]
+}

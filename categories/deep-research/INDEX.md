@@ -9,9 +9,9 @@
 | --- | --- | --- | --- |
 | **deep-research** | Use it when you want a minimal, readable ~500-LOC TypeScript reference deep-research agent to fork and adapt. | B (4/6) | [→](deep-research.md) |
 | **Vane** | Use it when you want a self-hosted, privacy-focused Perplexity-style cited answer engine over your own SearxNG and chosen LLM. | B (5/6) | [→](vane.md) |
-| **Local Deep Research** | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. | B (6/6) | [→](local-deep-research.md) |
+| **Local Deep Research** | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. | B (5/6) | [→](local-deep-research.md) |
 | **Agent-Reach** | Use it when your agent needs to read and search web plus social platforms without paid APIs. | B (5/6) | [→](agent-reach.md) |
-| **MiroThinker** | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. | C (5/6) | [→](mirothinker.md) |
+| **MiroThinker** | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. | B (4/6) | [→](mirothinker.md) |
 | **GPT Researcher** | An autonomous agent that conducts deep research on any data using any LLM providers | A (6/6) | [→](gpt-researcher.md) |
 | **Open Deep Research** | Use it when you need Open Deep Research for the deep-research category. | D (5/6) | [→](open-deep-research.md) |
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | B (6/6) | [→](storm.md) |
@@ -25,9 +25,9 @@
 | --- | --- | --- | --- |
 | [deep-research](deep-research.md) | ✅ | B (4/6) | Use it when you want a minimal, readable ~500-LOC TypeScript reference deep-research agent to fork and adapt. |
 | [Vane](vane.md) | ✅ | B (5/6) | Use it when you want a self-hosted, privacy-focused Perplexity-style cited answer engine over your own SearxNG and chosen LLM. |
-| [Local Deep Research](local-deep-research.md) | ✅ | B (6/6) | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. |
+| [Local Deep Research](local-deep-research.md) | ✅ | B (5/6) | Use it when you need a self-hosted, fully-local deep-research agent that keeps sensitive queries on your own machine. |
 | [Agent-Reach](agent-reach.md) | ✅ | B (5/6) | Use it when your agent needs to read and search web plus social platforms without paid APIs. |
-| [MiroThinker](mirothinker.md) | ✅ | C (5/6) | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. |
+| [MiroThinker](mirothinker.md) | ✅ | B (4/6) | Use it when you want a self-hosted, open-weights deep-research agent you can study and extend on your own GPUs — but it needs a GPU cluster plus paid external APIs and is under a year old with no Lindy. |
 | [Hyperresearch](hyperresearch.md) | ✅ | B (5/6) | Claude-Code-locked 16-step research pipeline with adversarial critics, cite-checking, and a persistent vault; pre-1.0 churn and its leaderboard claim is a self-run projection. |
 | Perplexity / OpenAI Deep Research | 未收录 | — | Other deep-research agents/services named across the pages. |
 

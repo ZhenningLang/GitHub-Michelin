@@ -6,17 +6,17 @@ category: rag-retrieval
 tags: [vector-search, ann, similarity-search, embeddings, ivf, hnsw, pq, gpu, clustering]
 language: C++
 license: MIT
-maturity: v1.14.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v1.15.x, active, 41.0k stars (2026-09)
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-25T22:18:04Z
+  pushed_at: 2026-09-27T18:01:13Z
   default_branch: main
-  default_branch_sha: a6f97750aeaf760c72d0526c3a346513823c4a0c
+  default_branch_sha: fdb9535c15b1b2990fd28f76f0641e65b95162f8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:57:06Z
+  computed_at: 2026-09-28T08:29:38Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 101.7
-        qualifying_issues: 21
+        median_ttfr_hours: 122.1
+        qualifying_issues: 22
         band: default
         window_offset_days: 4
         source: issue
@@ -47,26 +47,26 @@ health:
         registry: pypi.org
         canonical_package: faiss-cpu
         dependent_repos_count: 5592
-        downloads_last_month: 11749699
+        downloads_last_month: 11857165
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 1244
+        cross_check_divergence: null
+        homebrew_installs_90d: 1260
         homebrew_tier: B
         signal_basis: homebrew
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3514
+        repo_age_days: 3520
         last_commit_age_days: 1
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 47
-        top1_share: 0.238
-        top3_share: 0.493
+        active_maintainers_12mo: 51
+        top1_share: 0.233
+        top3_share: 0.484
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,15 +80,36 @@ health:
 
 # FAISS
 
-Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠密向量的高效相似度检索与聚类——它是众多向量库底层那个事实标准的进程内 ANN 索引（IVF / HNSW / PQ，CPU + GPU）。
+你手上已有几百万条 embedding，要在毫秒内拿到它们的最近邻——可手写 IVF、HNSW、乘积量化那套数学相当于另起一个研究项目。FAISS 是 Meta FAIR 的 C++ 库（带 Python/NumPy 绑定），把 ANN 索引（近似最近邻检索）这一步做成进程内的函数调用，CPU 与 GPU 都有。
 
 ![faiss — 健康度雷达](../../assets/health/faiss.zh.svg)
 
 ## 何时使用
 
-你在做 RAG 检索或语义搜索功能，已经有一个 embedding 模型在产出向量；你真正需要的是那个*索引*——给一个 query 向量，就能在毫秒级内从几百万条向量里返回它的最近邻，而不必自己手搓那套数学。你也不想仅仅为了在一个进程内做最近邻查找，就去搭起并运维一个独立的向量数据库服务。你 `pip install faiss-cpu`，先建一个 `IndexFlatL2` 拿到精确基线，等语料变大再升级到 `IndexIVFFlat` 或 `IndexHNSWFlat`（必要时叠加 `IndexIVFPQ` 用乘积量化压内存）。整个索引就活在你的进程内存里，`index.add(xb)` 灌入 embedding，`index.search(xq, k)` 返回 top-k 的 ID 和距离，`faiss.write_index` / `read_index` 让你把它快照成文件。对 ANN 这一步本身来说，它是最快、最久经考验的积木，也是许多上层向量库内部包装的那个引擎。
+你在做 RAG 检索或语义搜索功能，已经有一个 embedding 模型在产出向量；你真正需要的是那个*索引*——给一个 query 向量，就能在毫秒级内从几百万条向量里返回它的最近邻，而不必自己手搓那套数学。你也不想仅仅为了在一个进程内做最近邻查找，就去搭起并运维一个独立的向量数据库服务。你 `pip install faiss-cpu`（或 `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`，后者是 Meta 自称的受支持安装路径），先建一个 `IndexFlatL2` 拿到精确基线，等语料变大再升级到 `IndexIVFFlat` 或 `IndexHNSWFlat`（必要时叠加 `IndexIVFPQ` 用乘积量化压内存）。整个索引就活在你的进程内存里，`index.add(xb)` 灌入 embedding，`index.search(xq, k)` 返回 top-k 的 ID 和距离，`faiss.write_index` / `read_index` 让你把它快照成文件。对 ANN 这一步本身来说，它是最快、最久经考验的积木，也是许多上层向量库内部包装的那个引擎。
 
-当你超出 CPU 时也会选它：同一个库有 GPU 路径（`faiss-gpu`，CUDA），能把索引构建和检索搬到设备上跑大批量；它还把 k-means 聚类和 PQ 码本训练当作一等操作——当任务是「把这堆 embedding 聚类」或「压缩这组向量」而不只是「检索 top-k」时很有用。因为它是库而非服务，能干净地嵌进训练管线、离线批处理或单二进制服务里。
+当你超出 CPU 时也会选它：同一个库有 GPU 路径（`faiss-gpu`，CUDA），能把索引构建和检索搬到设备上跑大批量——如 `GpuIndexFlatL2` 这样的即插即换类——AMD ROCm 与 NVIDIA cuVS 后端可在构建时选配；它还把 k-means 聚类和 PQ 码本训练当作一等操作——当任务是「把这堆 embedding 聚类」或「压缩这组向量」而不只是「检索 top-k」时很有用。因为它是库而非服务，能干净地嵌进训练管线、离线批处理或单二进制服务里。
+
+## 怎么用起来
+
+FAISS 里每个索引都是一个进程内对象：存一堆向量，回答 `search(query, k)`，返回最近邻的 ID 与距离；索引*类型*就是你在检索速度、结果质量、每向量内存与构建时间之间的选择。简单的（`IndexFlat*`）对存下的向量做暴力扫描。可扩展的那一类靠压缩与剪枝：IVF 先对语料 k-means 聚成 `nlist` 个簇，查询时只扫最近的 `nprobe` 个簇；PQ 把每条向量量化成几个字节，让几十亿条装得进 RAM；HNSW 则在原始向量上铺一层可导航小世界图。需要训练的索引先用 `index.train` 建码本，`faiss.write_index` 把整个结构序列化到文件。仍然归你的：为你的数据选对并调好索引类型（召回-延迟-内存的三角），让文件快照跟住数据变化，以及数据库本来会代管的一切——过滤、分片、对外服务。GPU（`GpuIndex*` 类）与 cuVS 后端把同一套 API 换到 CUDA/ROCm 设备上跑。
+
+![faiss — 主干用户故事](../../assets/flow/faiss.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/faiss.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从 pytorch 频道装库 — `conda install -c pytorch -c conda-forge faiss-cpu=1.15.1`
+2. **你**：建一个索引并灌入 embedding — `index = faiss.IndexFlatL2(d) · index.add(xb)`
+3. **你**：对一批查询取 k 个最近邻 — `D, I = index.search(xq, k)`
+4. **FAISS**：在进程内检索，返回距离与 ID 矩阵，无服务往返 — 组件：`Index`
+5. **你**：重启后直接加载已存索引，不重建 — `faiss.read_index(faissindex_file)`
+
+**价值**：在自己进程里对百万向量做毫秒级 top-k，索引类型只是一个可拧的旋钮
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -113,16 +134,16 @@ Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠�
 
 ## 技术栈
 
-- **语言：** C++ 内核 + Python/NumPy 绑定（SWIG 生成）；GPU 构建用 CUDA。
+- **语言：** C++ 内核 + Python/NumPy 绑定（SWIG 生成）；GPU 构建用 CUDA，构建时可选配 AMD ROCm 与 NVIDIA cuVS 后端。
 - **索引家族：** 精确（`IndexFlat`）、IVF（倒排：`IndexIVFFlat`、`IndexIVFPQ`）、图（HNSW、NSG）、量化（PQ / OPQ / 标量 / additive）、二进制索引，以及通过 `index_factory` 字符串 DSL 组合的复合索引。
-- **此外：** k-means 聚类、PQ/码本训练、向量变换（PCA、OPQ），以及 ID 映射包装（`IndexIDMap`）。
-- **构建/分发：** 从源码用 CMake；Python 绑定有预编译的 `faiss-cpu` / `faiss-gpu` wheel 和 conda 包。
+- **此外：** k-means 聚类、PQ/码本训练、向量变换（PCA、OPQ）、ID 映射包装（`IndexIDMap`）；可选的 Intel SVS 后端（`FAISS_ENABLE_SVS`）带来 Vamana 等 SVS 图索引。
+- **构建/分发：** 从源码用 CMake；PyPI 上有预编译的 `faiss-cpu` / `faiss-gpu` / `faiss-gpu-cuvs` wheel，conda 包在 pytorch 频道。
 
 ## 依赖
 
-- **必需：** 一个 BLAS 实现（如 OpenBLAS / MKL）做线性代数 kernel；从源码构建需要 C++17 编译器。
-- **可选（GPU）：** NVIDIA CUDA 用于 GPU 构建；也支持 AMD ROCm 和可选的 NVIDIA cuVS 后端。[未验证]
-- **Python：** 绑定需要 NumPy；`faiss-cpu` / `faiss-gpu` wheel 自带原生库，多数用户根本不用编译。
+- **必需：** 一个 BLAS 实现（Intel 机器上强烈建议 MKL）做线性代数 kernel；从源码构建需要支持 OpenMP ≥ 2 的 C++20 编译器。
+- **可选（GPU）：** NVIDIA CUDA（nvcc + toolkit）用于 GPU 构建；AMD ROCm；经 `libcuvs=26.06` 依赖选配 NVIDIA cuVS 实现。
+- **Python：** 构建绑定需要 Python 3 + NumPy + SWIG；`faiss-cpu` / `faiss-gpu` / `faiss-gpu-cuvs` wheel（及 conda 包）自带原生库，多数用户根本不用编译。
 - **无服务：** 没有数据存储、消息 broker 或网络依赖——索引就是一个进程内对象，你可以选择把它序列化成文件。
 
 ## 运维难度
@@ -131,17 +152,17 @@ Meta FAIR 出品的 C++ 库（带 NumPy 友好的 Python 绑定），用于稠�
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade B——中位首次响应时间 101.7 小时，基于 21 个 qualifying issues/PRs。
-- **维护（2026-06）：** 最后 push 在 2026-06，当前发布线 v1.14.x——**活跃**且稳定发版；是一个长期、维护良好的库，而非停滞的研究投放。[推断]
+- **响应速度**：Grade B——中位首次响应时间约 122 小时，基于 22 个 qualifying issues/PRs。
+- **维护（2026-09）：** 最后 push 在 2026-09-27，最新 release v1.15.1 于 2026-09-16——**活跃**且稳定发版；是一个长期、维护良好的库，而非停滞的研究投放。[推断]
 - **治理 / 背书：** 由 Meta FAIR 维护（`facebookresearch/faiss`，Organization）。[推断] 机构背书消除了单一维护者的巴士因子风险；它对 Meta 自身的检索栈以及更广的向量数据库生态（许多存储都包装它）足够核心，因而有很强的结构性理由长存。
-- **年龄与 Lindy（创建于 2017-02，约 9 年）：** 又老**又**仍活跃——**强 Lindy** 赌注。九年持续使用、并作为众多向量数据库底层那个事实标准的进程内 ANN 索引，几乎是这个领域能给出的最耐久的长寿先验。[推断]
-- **采用 / 生态：** 约 40k star（易波动，见存疑）其实低估了它——FAISS 是嵌在多数向量库内部、或被它们当基准对照的那个*引擎*；生态依赖又深又真实。[未验证]
+- **年龄与 Lindy（创建于 2017-02，约 9.6 年）：** 又老**又**仍活跃——**强 Lindy** 赌注。近十年持续使用、并作为众多向量数据库底层那个事实标准的进程内 ANN 索引，几乎是这个领域能给出的最耐久的长寿先验。[推断]
+- **采用 / 生态：** 约 41k star（易波动，见存疑）其实低估了它——FAISS 是嵌在多数向量库内部、或被它们当基准对照的那个*引擎*；生态依赖又深又真实。[未验证]
 - **风险标记：** MIT（无重新许可风险，无 open-core 门槛）。唯一的“风险”是范围：它是裸库，持久化/分片/过滤都归你——这是工程成本，而非可持续性标记。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 40.4k GitHub star、当前发布线为 v1.14.x——star 数和版本对时间敏感，仅供参考，请对照仓库复核。
+- [未验证] 截至 2026-09-28 约 41.0k GitHub star、最新 release 为 v1.15.1——star 数和版本对时间敏感，仅供参考，请对照仓库复核。
 - [未验证] 语言字节占比（C++ 居多，其次 Python、再次 CUDA）来自核验时的 GitHub 语言统计，随版本变动。
-- [未验证] 支持的索引类型、变换和后端（CUDA / ROCm / cuVS）的确切集合来自核验时的 README/文档；请针对你安装的版本确认具体功能与平台支持。
+- [未验证] 支持的索引类型、变换和后端（CUDA / ROCm / cuVS / Intel SVS）的确切集合来自核验时的 README/INSTALL；请针对你安装的版本确认具体功能与平台支持。
 - [推断]「没有服务级别的持久化/metadata/CRUD/过滤/聚类」是把 FAISS 当库而非向量数据库来刻画；其中部分缺口可用辅助包装部分弥补（如 `IndexIDMap`、手动管理 ID）——动手前请核实你的版本提供了什么，别假设是硬缺失。
 - [推断]「众多向量库内部嵌入 FAISS 风格索引」是对生态的总体刻画，不是针对某个产品的断言；请逐个核实下游存储实际用的引擎。

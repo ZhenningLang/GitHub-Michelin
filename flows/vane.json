@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Vane does", "zh": "Vane 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the prebuilt image with a persistent data volume", "zh": "带持久数据卷启动预构建镜像", "code": "itzcrazykns1337/vane:latest", "component": {"en": "Docker image", "zh": "Docker 镜像"}},
+    {"lane": "them", "en": "Boots the app with a bundled SearxNG and serves the setup screen", "zh": "随内置 SearxNG 启动，提供设置界面", "component": {"en": "bundled SearxNG", "zh": "内置 SearxNG"}},
+    {"lane": "you", "en": "Open the setup screen and configure an LLM provider (Ollama or an API key)", "zh": "打开设置界面，配置一个 LLM provider", "code": "http://localhost:3000"},
+    {"lane": "you", "en": "Ask a question, pick Speed / Balanced / Quality mode and sources", "zh": "提问，选 Speed / Balanced / Quality 模式与来源"},
+    {"lane": "them", "en": "Searches via SearxNG, fetches top pages and retrieves passages over them", "zh": "经 SearxNG 搜索、抓取头部页面并做段落检索"},
+    {"lane": "them", "en": "Writes the answer with inline citations in the chat UI", "zh": "在聊天界面写出带行内引用的答案", "component": {"en": "Next.js app", "zh": "Next.js 应用"}}
+  ],
+  "value": {"en": "A Perplexity-style cited answer box you fully host, with queries never leaving your machine", "zh": "一个完全自托管、带引用的 Perplexity 式应答框，查询不出你的机器"},
+  "sources": [
+    "https://github.com/ItzCrazyKns/Vane README.md (fetched 2026-09-28): docker run -d -p 3000:3000 -v vane-data:/home/vane/data --name vane itzcrazykns1337/vane:latest; 'This will pull and start the Vane container with the bundled SearxNG search engine'; navigate to http://localhost:3000 and configure settings (API keys, models) in the setup screen",
+    "Vane README Features section: Speed Mode / Balanced Mode / Quality Mode; pick your sources (web, discussions, academic papers)"
+  ]
+}

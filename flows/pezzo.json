@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Pezzo does", "zh": "Pezzo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and assemble the root .env.local from the app env files", "zh": "克隆仓库，用各 app 的 env 文件拼出根目录 .env.local", "code": "git clone https://github.com/pezzolabs/pezzo.git"},
+    {"lane": "you", "en": "Bring up the whole stack", "zh": "一条命令拉起整套栈", "code": "docker compose up"},
+    {"lane": "them", "en": "Starts the infrastructure plus Server and Console, applies DB migrations, serves the console at localhost:4200", "zh": "拉起基础设施与 Server/Console，自动迁移，提供控制台", "component": {"en": "Docker Compose stack", "zh": "Docker Compose 栈"}},
+    {"lane": "you", "en": "Move prompts out of code into the console and deploy versions per environment", "zh": "把 prompt 搬进控制台，按环境部署"},
+    {"lane": "you", "en": "Wire the client SDK into your app", "zh": "把客户端 SDK 接进应用", "code": "@pezzo/client"},
+    {"lane": "them", "en": "Traces every LLM call — prompt version, tokens, cost, latency — and caches repeat requests", "zh": "追踪每次调用的版本、成本、延迟，并缓存重复请求", "component": {"en": "Observability + cache", "zh": "可观测性 + 缓存"}}
+  ],
+  "value": {"en": "Roll a prompt forward or back from the UI without a redeploy, with cost and latency visible per call", "zh": "在 UI 里前进或回滚 prompt 而无需重新部署，每次调用的成本与延迟一目了然"},
+  "sources": ["README.md main @ 2026-09 (raw.githubusercontent.com/pezzolabs/pezzo/main/README.md): git clone URL, Node 18+, docker-compose.infra.yaml, console at http://localhost:4200, npm badge @pezzo/client", "docs.pezzo.ai/deployment/docker-compose (retrieved 2026-09-28): cat apps/server/.env >> .env.local; docker compose up; spins up PostgreSQL/Redis etc., applies migrations automatically, console at localhost:4200"]
+}

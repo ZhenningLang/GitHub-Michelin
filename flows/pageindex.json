@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "PageIndex does", "zh": "PageIndex 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SDK", "zh": "安装 SDK", "code": "pip install -U pageindex"},
+    {"lane": "you", "en": "Create a client with your LLM key, naming a cheap index model and your best chat model", "zh": "带着 LLM key 建客户端，索引模型用便宜的，问答模型用最好的", "code": "from pageindex import PageIndexClient"},
+    {"lane": "you", "en": "Submit one long document", "zh": "提交一篇长文档", "code": "client.submit_document(\"report.pdf\")"},
+    {"lane": "them", "en": "Builds a table-of-contents tree from the document's layout; a basic model only summarizes and refines", "zh": "在本地按文档版式建目录树，便宜模型只做摘要与精修", "component": {"en": "PageIndex Flash (local mode)", "zh": "PageIndex Flash（本地模式）"}},
+    {"lane": "you", "en": "Ask questions against the indexed document", "zh": "对着建好的索引提问", "code": "client.chat(\"What was the 2023 operating margin?\", doc_id=doc_id)"},
+    {"lane": "them", "en": "The chat model descends the right branch, returning an answer traceable to pages and sections", "zh": "问答模型沿对的分支下钻，返回可溯源到页和节的答案"}
+  ],
+  "value": {"en": "Relevance-by-reasoning retrieval on one document, with no vector database, no chunk tuning, and citations you can audit", "zh": "在单篇文档上“靠推理找相关”，不搭向量库、不调切块，引用可审计"},
+  "sources": ["README.md VectifyAI/PageIndex @ main (retrieved 2026-09-28) Quickstart: 'pip install -U pageindex'; 'from pageindex import PageIndexClient'; 'doc_id = client.submit_document(\"report.pdf\")[\"doc_id\"]'; 'answer = client.chat(\"What was the 2023 operating margin?\", doc_id=doc_id)'; Model Recommendations: tree extracted from layout without an LLM, index model only summarizes; Aug '26 updates: PageIndex Flash default local indexing, page-level (local) vs block-level (cloud) citations in Local/Cloud table"]
+}
