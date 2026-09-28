@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "them": {"en": "Paramiko does", "zh": "Paramiko 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library into your automation tool", "zh": "在自动化工具里装上库", "code": "pip install paramiko"},
+    {"lane": "you", "en": "Create a client and load the host keys you already trust", "zh": "建客户端，加载你已信任的 host key", "code": "client = SSHClient() · client.load_system_host_keys()"},
+    {"lane": "you", "en": "Connect to the remote host", "zh": "连上远程主机", "code": "client.connect('ssh.example.com')"},
+    {"lane": "them", "en": "Exchanges keys, verifies the server's host key, authenticates, multiplexes channels", "zh": "密钥交换、核验 host key、完成认证，把连接复用成 channel", "component": {"en": "Transport", "zh": "Transport 传输层"}},
+    {"lane": "you", "en": "Run the remote command", "zh": "跑远程命令", "code": "stdin, stdout, stderr = client.exec_command('ls -l')"},
+    {"lane": "them", "en": "Gives back real file objects per stream; failures are Python exceptions you can catch", "zh": "每个流交回真正的文件对象，失败是能被 except 的 Python 异常", "component": {"en": "Channel", "zh": "Channel 通道"}}
+  ],
+  "value": {"en": "Scripted SSH in-process — commands and SFTP without an ssh binary, quoting hacks, or host-key prompts", "zh": "命令与文件传输全在进程内——不依赖 ssh 二进制，也没有引号转义和 host-key 提示"},
+  "sources": ["paramiko.org/installing.html (retrieved 2026-09-28): `pip install paramiko`", "paramiko/client.py docstring main @ 2026-09 (retrieved 2026-09-28): `client = SSHClient()`; `client.load_system_host_keys()`; `client.connect('ssh.example.com')`; `stdin, stdout, stderr = client.exec_command('ls -l')`", "README.rst main @ 2026-09: pure-Python SSHv2 with client and server functionality; open_sftp/SFTP referenced by docs"]
+}

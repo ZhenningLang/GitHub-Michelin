@@ -6,17 +6,17 @@ category: editors-and-runtimes
 tags: [vim, jetbrains, intellij, ide-plugin, editor, keybindings, kotlin]
 language: Kotlin
 license: MIT
-maturity: active, JetBrains-maintained (2026-06)
-last_verified: 2026-06-28
+maturity: "2.47.1 (JetBrains Marketplace), very active, ~10.3k stars (as of 2026-09)"
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T10:59:38Z
+  pushed_at: 2026-09-27T09:00:40Z
   default_branch: master
-  default_branch_sha: 63b76e649f43321efc7dfd00adb89ef0a3f1c48d
+  default_branch_sha: 6e47c141de86a69d9c675fea8a4d6aa4dcd5498f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:43:35Z
+  computed_at: 2026-09-28T05:58:42Z
   overall: A
   overall_score: 3.75
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -41,14 +41,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5676
-        last_commit_age_days: 0
+        repo_age_days: 5682
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 11
-        top1_share: 0.465
+        top1_share: 0.474
         top3_share: 0.965
         window_source: stats_contributors
         carve_out: null
@@ -72,9 +72,30 @@ JetBrains 系 IDE（IntelliJ IDEA、PyCharm、GoLand、WebStorm、Rider 等）�
 
 ## 何时使用
 
-你是一个手指被 Vim 写进肌肉记忆的开发者——`hjkl`、`ciw`、`dd`、visual-block、`.` 重复、宏——但团队真正的活在 IntelliJ/PyCharm/GoLand 里，因为那里的重构、调试和语言智能你不肯放弃。在终端里跑真 Vim/Neovim 就丢了 IDE；用 IDE 自带键位就丢了肌肉记忆。你从插件市场装上 IdeaVim，在家目录放一个 `.ideavimrc`（你 `.vimrc` 的大部分语法能直接搬过来），编辑器面板就开始像 Vim 一样运转——模式、operator、寄存器、mark、宏——同时 `:action` 与 IdeaVim 生态插件（ideavim-sneak、vim-surround、NERDTree 式映射）让你把 IDE 动作绑到 Vim 风格的键上。你在同一个工具里同时拿到 Vim 编辑*和* IntelliJ 的语义重构/调试器。
+你是一个手指被 Vim 写进肌肉记忆的开发者——`hjkl`、`ciw`、`dd`、visual-block、`.` 重复、宏——但团队真正的活在 IntelliJ/PyCharm/GoLand 里，因为那里的重构、调试和语言智能你不肯放弃。在终端里跑真 Vim/Neovim 就丢了 IDE；用 IDE 自带键位就丢了肌肉记忆。你从插件市场装上 IdeaVim，在家目录放一个 `~/.ideavimrc`（你 `.vimrc` 的大部分语法能直接搬过来，甚至可以 `source ~/.vimrc`），编辑器面板就开始像 Vim 一样运转——模式、operator、寄存器、mark、宏——同时 `<Action>(id)` 映射让你把 IDE 动作绑到 Vim 键上（`map <leader>r <Action>(RenameElement)`），`:actionlist` 帮你找到动作 ID，IdeaVim 扩展集（`set surround`、`set multiple-cursors`、easymotion……）复刻你依赖的插件行为。你在同一个工具里同时拿到 Vim 编辑*和* IntelliJ 的语义重构/调试器。
 
 当 IDE 不可妥协（大型 JVM/Kotlin/Go 代码库、重度重构、集成调试器）但你又拒绝像非 Vim 用户那样打字时，你会专门选它。这是 JetBrains 官方背书、最正统的做法。
+
+## 怎么用起来
+
+IdeaVim 是一个用 Kotlin 写的 Vim *引擎*，跑在 IDE 的编辑器组件内部——它并不内嵌一个真正的 Vim 进程。它在编辑器面板里拦截你的按键，运行自己的模式状态机（normal/insert/visual）：你敲下 `ciw`，它把这条 operator 解析出来，直接作用在 IDE 自己的文档模型上——不是缓冲区的副本——所以 IntelliJ 的重构、调试器和索引面对的始终是你正在编辑的同一份文本。归你管的是配置：一个 Vim 语法的 `~/.ideavimrc` 文件、用 `set` 开关点亮内置扩展（surround、multiple-cursors、commentary、easymotion），以及用 `<Action>(ActionId)` 映射从 Vim 键层够到 IDE 功能（README 明确不让你在映射里用 `:action`，`<Action>` 才是受支持的写法）。键位冲突在 IDE 自己的 Vim/Keymap 设置页里解决，`Tools | Vim` 一键关掉整个层、无需重启。
+
+![IdeaVim — 主干用户故事](../../../assets/flow/ideavim.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ideavim.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在 IDE 的插件管理里安装 IdeaVim — `Settings | Plugins`
+2. **IdeaVim**：Vim 引擎接管编辑器面板的按键处理 — 组件：`Vim 引擎`
+3. **你**：把 Vim 风格设置写进 ideavimrc 文件 — `~/.ideavimrc`
+4. **你**：用 Action 映射把 IDE 动作绑到 Vim 键上 — `map <leader>r <Action>(RenameElement)`
+5. **IdeaVim**：模式与宏作用在 IDE 自己的文档上，重构与调试器照常
+
+**价值**：一个编辑器里同时拥有 Vim 肌肉记忆和 JetBrains 语义工具，随时一键切回
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -96,7 +117,7 @@ JetBrains 系 IDE（IntelliJ IDEA、PyCharm、GoLand、WebStorm、Rider 等）�
 
 - **语言：** Kotlin（JetBrains 自家语言；插件跑在 IntelliJ 平台 / JVM 上）。
 - **宿主：** IntelliJ 平台插件 API——它挂接任何基于 IntelliJ 的 IDE 的编辑器组件。
-- **配置：** 一个用 Vim 风格命令/映射写的 `.ideavimrc`，加上 `:action` 来调用 IDE 动作，以及一组 IdeaVim 扩展插件。
+- **配置：** 一个用 Vim 风格命令/映射写的 `~/.ideavimrc`，加上 `<Action>(ActionId)` 映射来调用 IDE 动作（按当前 README 的指引；`:action` 用于一次性调用而非映射），以及一组 IdeaVim 扩展插件。
 - **分发：** JetBrains Marketplace（并在 IntelliJ 平台 IDE 中内置/可安装）。
 
 ## 依赖
@@ -111,17 +132,17 @@ JetBrains 系 IDE（IntelliJ IDEA、PyCharm、GoLand、WebStorm、Rider 等）�
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——issues_disabled。
-- **维护（2026-06）。** 非常活跃——最后 push 2026-06，提交频繁，由一个 JetBrains 小团队（AlexPl292 等）领衔、提交上千。通过 Marketplace 分发而非 GitHub Releases，所以 GitHub 上「无 release」是正常现象，并非停滞信号。未归档。[推断]
+- **响应速度**：无法计算——GitHub issues 已关闭，追踪器是 JetBrains YouTrack（`VIM` 项目），健康度评分器读不到它。这是测量盲区，不是无人维护的信号。
+- **维护（2026-09）。** 非常活跃——最后 push 2026-09-27，提交频繁，由一个 JetBrains 小团队（AlexPl292 等）领衔、提交上千。Marketplace 当前构建 2.47.1（plugins.jetbrains.com API，2026-09-28）。通过 Marketplace 分发而非 GitHub Releases，所以 GitHub 上「无 release」是正常现象，并非停滞信号。未归档。[推断：Marketplace 版本与仓库提交节奏的对应关系未逐一核对]
 - **治理 / 背书。** 由 **JetBrains**（一个组织，也就是 IDE 厂商本身）拥有并维护——第一方、资金充足的治理，且有直接动机让它在历次 IDE 发布间保持可用。在 IDE 插件里属于最强的背书画像之一。[推断]
 - **年龄与 Lindy。** 2011 年创建，约 15 岁且**仍在活跃发布**⇒ **强 Lindy** 信号——它跨越 IntelliJ 平台多个大版本一路跟随，至今仍是 JetBrains 的默认 Vim 层。[推断]
-- **采用度。** 约 10k star，且是大多数 JetBrains-Vim 用户配置里的标配，表明采用广泛且已成定式；周边有健康的扩展生态。[未验证]
+- **采用度。** 约 10.3k GitHub star（API，2026-09-28），且 JetBrains Marketplace API 对插件 164 报出 **2210 万下载量**（2026-09-28）——对一个 IDE 插件来说，包索引数字比 star 更诚实；它是大多数 JetBrains-Vim 用户配置的标配。健康度评分器仍把 adoption 记为 `?`，因为它无法把 Marketplace 制品对应到包注册表。[推断：下载数计的是安装面而非活跃用户]
 - **风险标记。** 很少——宽松 MIT、第一方厂商背书。结构性天花板是内在的：它是绑定 IntelliJ 平台的*模拟*，所以保真缺口与平台版本耦合才是真实（且有界）的风险，而非项目废弃。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 10.2k GitHub star；star 数对时间敏感，仅供参考。
-- [未验证]「GitHub 无 release」反映的是基于 Marketplace 的分发；真正的发布/版本节奏与 IDE 兼容范围在 JetBrains Marketplace 上，这里未逐一列出。
+- [未验证] 截至 2026-09-28 约 10.3k GitHub star（API 核对）；star 数对时间敏感，仅供参考。
+- [未验证] Marketplace 对插件 164 报出 2210 万下载（API，2026-09-28）；这是累计安装量而非活跃用户数，且具体的发布/版本节奏与 IDE 兼容范围在 Marketplace 上，这里未逐一列出。
 - [未验证] 支持的 Vim 特性集与缺口（以及 IdeaVim 扩展目录）随版本变动；请对照当前文档核实你依赖的具体命令/插件。
 - [推断]「第一方、资金充足」是从 JetBrains 所有权推断；具体投入 IdeaVim 的人力/资金未明示。
 - [推断] 与任一 IDE 版本的兼容由插件声明的平台范围决定且随时间变化，这里不断言具体矩阵。

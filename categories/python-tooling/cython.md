@@ -6,17 +6,17 @@ category: python-tooling
 tags: [python, c, compiler, performance, extension-modules, native]
 language: Cython
 license: Apache-2.0
-maturity: v3.2.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v3.3.x, active (2026-09), ~10.9k stars
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-29T10:16:07Z
+  pushed_at: 2026-09-27T23:56:58Z
   default_branch: master
-  default_branch_sha: 9d6ad7fd54ba3d155bdf5e11531352ca509980d4
+  default_branch_sha: 418acffa8c56b1b8767ab9993a5cdfb81d9e766f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:55:56Z
+  computed_at: 2026-09-28T08:23:53Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -47,13 +47,13 @@ health:
         registry: pypi.org
         canonical_package: cython
         dependent_repos_count: 18920
-        downloads_last_month: 80900661
+        downloads_last_month: 78291231
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
-        homebrew_installs_90d: 2098
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 1859
         homebrew_tier: B
-        release_downloads: 1006547
+        release_downloads: 1014046
         release_assets: 3120
         release_tier: B
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 5784
+        repo_age_days: 5790
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 48
-        top1_share: 0.615
-        top3_share: 0.926
+        top1_share: 0.612
+        top3_share: 0.925
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -83,7 +83,7 @@ health:
 
 # Cython
 
-A compiler that turns Python (and an annotated Python-superset) into C, producing native CPython extension modules — the standard way to make hot Python code fast or to wrap a C/C++ library.
+A profiled Python inner loop crawls — pixel math, a parser, an N-body step — and rewriting it in C costs you the Python ergonomics you kept. Cython is a compiler that turns Python (plus optional C-type declarations) into C, built into a native CPython extension module, so the hot part runs near C speed while everything else stays Python.
 
 ![cython — health radar](../../assets/health/cython.svg)
 
@@ -92,6 +92,27 @@ A compiler that turns Python (and an annotated Python-superset) into C, producin
 You profiled your Python program and found a tight numeric loop that dominates the runtime — pixel math, a parser inner loop, an N-body step. Rewriting the whole thing in C is overkill and you'd lose the Python ergonomics, but the pure-Python loop is just too slow. You rename the module `.py` → `.pyx`, add a few `cdef int`/`cdef double` type annotations to the hot variables, compile it with Cython into a C extension, and the loop now runs at near-C speed while the rest of your code stays Python. You didn't rewrite your program; you compiled the part that mattered.
 
 You also reach for Cython when you need to **wrap a C or C++ library** and expose it to Python: you write a thin `.pyx` that declares the external `cdef extern from "lib.h"` signatures and Python-facing wrappers, and Cython generates the glue C that builds into an importable module. It's the workhorse behind a large slice of the scientific Python stack — many packages ship Cython-generated extensions — so it's the proven path when `ctypes`/`cffi` feel too loose or too slow and you want compiled, typed, statically-checkable bindings.
+
+## How it works
+
+Cython is a transpiler plus a language. It reads a `.py` or `.pyx` file and writes **C source** that talks to the CPython C-API; your ordinary C compiler then builds that C into an importable extension module (`.so`/`.pyd`). The speed comes from the optional type declarations: `cdef int a = 0` tells the compiler `a` is a machine integer, so the loop increments a raw register value instead of boxing an object, refcounting it, and dispatching `+` at runtime — untyped code still works, it just keeps Python's dynamic cost. To wrap an existing C/C++ library you declare its signatures in a `cdef extern from "header.h"` block and Cython generates the glue. What it does for you: code generation, the `cythonize()` hook you drop into `setup.py`, a one-shot `cythonize -i` CLI, and a Jupyter `%%cython` magic for experiments. What stays yours: a working C toolchain on every build platform, the wheel matrix if you distribute a library, and the profiling that tells you which loop is worth renaming to `.pyx` in the first place.
+
+![Cython — backbone user story](../../assets/flow/cython.svg)
+
+<!-- flow-steps:begin (generated from flows/cython.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the compiler into your Python environment — `pip install Cython`
+2. **You**: Type the hot loop in a .pyx file — `cdef int a = 0`
+3. **You**: Compile the file in place — `cythonize -i filename.pyx`
+4. **Cython**: Translates it to C and builds a native CPython extension module — component: `generated C + your C compiler`
+5. **You**: Import it like any other module — typed loop now runs at near-C speed
+
+**Value**: A profiled bottleneck running at C speed with one file renamed and a few cdef lines — the rest of the program stays plain Python
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -132,15 +153,15 @@ You also reach for Cython when you need to **wrap a C or C++ library** and expos
 ## Health & viability
 
 - **Responsiveness**: Grade A — median first-response time 3.0 hours across 46 qualifying issues/PRs.
-- **Maintenance (2026-06).** Last pushed 2026-06; releases are frequent and current — 3.2.5/3.2.6 and a 3.3.0a1 alpha all in mid-2026 — clearly **very active**. Not archived.
+- **Maintenance (2026-09).** Last pushed 2026-09-27; releases are frequent and current — 3.2.8 (2026-06-24) and 3.2.9 (2026-07-24) on the 3.2 line, then **3.3.0 stable on 2026-08-22** (GitHub releases) — clearly **very active**. Not archived.
 - **Governance / bus factor.** Organization-owned (`cython`) with a deep, long-standing core team (scoder/Stefan Behnel, robertwb/Robert Bradshaw, da-woods, dalcinl, and others) — a real multi-maintainer project, not a one-person repo. [推断]
 - **Age & Lindy verdict.** This repo dates to 2010-11 (~15 years) and Cython's lineage (from Pyrex) is older still; **continuously active for over a decade** ⇒ **very strong Lindy**. It is foundational infrastructure under much of scientific Python. [推断]
-- **Adoption.** ~10.8k stars, 1.6k forks, and an enormous transitive install base — a large fraction of the PyData/scientific ecosystem ships Cython-compiled extensions. Apache-2.0 licensed. [未验证]
+- **Adoption.** ~10.9k stars, 1.6k forks, and an enormous transitive install base — a large fraction of the PyData/scientific ecosystem ships Cython-compiled extensions; 78,291,231 PyPI downloads last month (health scorer, 2026-09-28; the README itself cites "more than 70 million"). Apache-2.0 licensed. [未验证]
 - **Risk flags.** Few — permissive license, broad governance, heavy real-world dependency. The realistic "risk" is fit, not viability: a JIT (Numba/PyPy) or a Rust binding may suit a given task better than the Cython superset.
 
 ## Caveats (unverified)
 
-- [未验证] ~10.8k stars, 1615 forks, 1520 open issues as of 2026-06 — volatile, date-sensitive; the large open-issue count is consistent with a big, old, widely-used project, not a red flag on its own.
-- [未验证] Latest releases observed: 3.2.6 and a 3.3.0a1 alpha in 2026-06; release lines and dates shift, verify the current stable line before pinning.
+- [未验证] ~10.9k stars, 1629 forks, 1527 open issues as of 2026-09 — volatile, date-sensitive; the large open-issue count is consistent with a big, old, widely-used project, not a red flag on its own.
+- [未验证] Latest release observed: 3.3.0 stable (2026-08-22, GitHub releases API); release lines and dates shift, verify the current stable line before pinning.
 - [推断] The compiler-emits-C / targets-CPython architecture and the typed-superset language model are described from Cython's documented design and the `language: Cython` metadata, not a source audit.
 - [未验证] Exact build-time dependencies (which C/C++ compilers, NumPy headers, build backend) depend on your target and packaging choices; verify against current Cython docs.

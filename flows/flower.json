@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Flower does", "zh": "Flower 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Flower where your Celery app and broker URL are reachable", "zh": "在能触达 Celery 应用与 broker 的环境里装 Flower", "code": "pip install flower"},
+    {"lane": "you", "en": "Point it at the cluster's broker and start the dashboard", "zh": "把它指向集群的 broker 并启动", "code": "celery --broker=amqp://guest:guest@localhost:5672// flower", "component": {"en": "web UI on port 5555", "zh": "Web UI，端口 5555"}},
+    {"lane": "them", "en": "Joins the cluster's event feed and renders live worker and task state", "zh": "接入集群事件流，实时呈现 worker 与任务状态", "component": {"en": "Celery events", "zh": "Celery 事件流"}},
+    {"lane": "you", "en": "Drill in from the UI, or act via the REST API (revoke a task, grow a pool)", "zh": "在 UI 里下钻，或经 REST API 操作（撤销任务、扩池）"},
+    {"lane": "them", "en": "Sends control commands over the broker and serves /metrics for Prometheus scraping", "zh": "控制指令走 broker，/metrics 供 Prometheus 抓取", "component": {"en": "worker control", "zh": "worker 控制"}}
+  ],
+  "value": {"en": "A running Celery cluster becomes visible and operable from one web page, with no agent installed on any worker", "zh": "一个 Celery 集群变得可看可控，只靠一张网页，worker 上零 agent"},
+  "sources": [
+    "README.rst master @ 2026-09: pip install flower; celery --broker=amqp://guest:guest@localhost:5672// flower; default port 5555; REST API examples (/api/worker/pool/grow, /api/task/async-apply, /api/task/revoke)",
+    "docs/prometheus-integration.rst master @ 2026-09: the /metrics endpoint is available as soon as Flower is running, at localhost:5555/metrics"
+  ]
+}

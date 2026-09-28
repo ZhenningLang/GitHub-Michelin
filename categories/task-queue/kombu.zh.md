@@ -6,17 +6,17 @@ category: task-queue
 tags: [messaging, amqp, rabbitmq, redis, sqs, python, transport, broker-abstraction]
 language: Python
 license: BSD-3-Clause
-maturity: v5.6.2, active (2026-06)
-last_verified: 2026-06-28
+maturity: v5.6.2, active (2026-09), ~3.1k stars
+last_verified: 2026-09-28
 type: library
 upstream:
-  pushed_at: 2026-06-27T14:10:46Z
+  pushed_at: 2026-09-28T04:30:32Z
   default_branch: main
-  default_branch_sha: c04ae09fe77454983b632267cb9f779ae88450d2
+  default_branch_sha: 09f26b00c0fbe40da2d111eae17344f07126e7a9
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:05:05Z
+  computed_at: 2026-09-28T09:04:32Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 10
         carve_out: null
     responsiveness:
@@ -47,23 +47,23 @@ health:
         registry: pypi.org
         canonical_package: kombu
         dependent_repos_count: 26706
-        downloads_last_month: 45342092
+        downloads_last_month: 43453410
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.06
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5935
-        last_commit_age_days: 0
+        repo_age_days: 5941
+        last_commit_age_days: 1
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 20
-        top1_share: 0.77
-        top3_share: 0.824
+        active_maintainers_12mo: 19
+        top1_share: 0.787
+        top3_share: 0.836
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -87,6 +87,29 @@ health:
 
 当你要做的是框架级基础设施而非应用本身时，你也会选 Kombu：一个任务队列、一条事件总线，或一个需要精细控制 ack、prefetch 和 consumer mixin 的 worker 池。它正是 Celery 自身使用的底座，所以如果你已经超出 Celery 任务抽象的范围、但仍想要一个久经考验的 broker 层，Kombu 就是可以直接在其上构建的更底层原语。
 
+## 怎么用起来
+
+Kombu 是客户端库而不是服务——它待在你的进程里，替你跟 broker 的协议打交道。你把 AMQP 形状的那几件东西（*exchange*：负责给消息路由的邮局；*queue*：消费者读取的信箱）声明成普通 Python 对象，然后用一个 URL 开出一条 `Connection`。发布走 `Producer`：它把载荷序列化（JSON/pickle/msgpack/YAML），经带连接池、会自动重连的连接交给 exchange。消费走 `Consumer` 加 `conn.drain_events()` 事件循环（在 socket 上等下一条消息），消息被派发给你的回调，直到你调用 `message.ack()` 告诉 broker 这次投递已了结。诀窍在**传输层**：对 RabbitMQ 它经 py-amqp 说真正的 AMQP；对 Redis、SQS、MongoDB 之类，则由「虚拟传输」用后端自己的原语模拟这套语义——所以可移植性在 API 层，不在保证层。留在你手上的事：自己运维 broker，以及按传输层把 ack/可见性超时/prefetch 调对。
+
+![Kombu — 主干用户故事](../../assets/flow/kombu.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/kombu.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把 Kombu 装进你的 Python 服务 — `pip install kombu` — 组件：`应用环境`
+2. **你**：用对象声明 exchange/queue，按 URL 开连接 — `with Connection('amqp://guest:guest@localhost//') as conn:`
+3. **Kombu**：同一传输接口管尽 amqp、redis、SQS 数种后端 — 组件：`传输层`
+4. **你**：经 Producer 发布消息，随消息声明队列 — `producer = conn.Producer(serializer='json')`
+5. **Kombu**：序列化载荷并路由到绑定的队列
+6. **你**：用回调列表加事件循环来消费 — `conn.drain_events()` — 组件：`Consumer`
+7. **Kombu**：把每条消息派发给你的回调，由 message.ack() 确认
+
+**价值**：一套生产/消费 API 横跨 AMQP、Redis、SQS 等——换 broker 只是换 URL，不是重写
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你只是想跑后台任务。** 如果你的目标是“稍后调用某个函数，带重试和 worker 池”，请直接用 [Celery](celery.zh.md)（它就架在 Kombu 之上），而不是手工接生产者/消费者。Kombu 是管道，不是任务框架。
@@ -107,9 +130,9 @@ health:
 
 ## 技术栈
 
-- **语言：** Python（纯 Python 库；支持当前在维护的 CPython 版本）。[未验证]
-- **核心抽象：** 可插拔的**传输**接口——一个真正的 AMQP 传输（经 `py-amqp` 或 `qpid`），外加在其它后端上模拟 AMQP 语义的“虚拟”传输。
-- **内置传输：** Redis、Amazon SQS、MongoDB、ZooKeeper、Pyro、SoftLayer MQ，以及用于单测的内存传输。
+- **语言：** Python——已发布的 5.6.x 要求 Python ≥3.9；5.7 线（2026-09 起 alpha）升到 ≥3.10，分类器覆盖到 3.14。纯 Python 库。
+- **核心抽象：** 可插拔的**传输**接口——一个真正的 AMQP 传输（经 `py-amqp` 或 `qpid`），外加在其它后端上模拟 AMQP 语义的「虚拟」传输。
+- **内置传输：** Redis、Amazon SQS、MongoDB、ZooKeeper、Pyro、SoftLayer MQ，以及用于单测的内存传输；PGMQ 出现在 5.7（main）线的 README 内置清单里。已发布的 5.6.2 还带 Google Cloud Pub/Sub、Confluent Kafka、Azure Storage Queues / Service Bus、Consul 等 extra；SQS 的 fan-out 经 AWS SNS 在一个选项后实现。
 - **序列化与封装：** 可插拔 serializer（JSON、pickle、msgpack、YAML）与压缩；连接池和自动故障切换/重连。
 
 ## 依赖
@@ -124,16 +147,16 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2026-06-27；v5.6.2 于 2025-12 发布，2025 全年保持稳定的小版本/补丁节奏——处于**活跃**而非吃老本。未归档。[推断]
+- **响应速度**：Grade C——中位首次响应 267.4 小时，基于 10 个 qualifying issues/PRs。
+- **维护（2026-09）。** 默认分支保持每日提交流（最后 push 2026-09-28）；最新稳定版 v5.6.2（2025-12），v5.7.0a1 预发布版于 2026-09 放出——发版比提交慢，但项目**活跃**，不是吃老本。未归档。
 - **治理 / bus factor。** 归于 **celery** GitHub 组织，有多名长期维护者（ask、auvipy、thedrow、matusvalo 等），而非单人项目——bus factor 比独立 solo 仓库健康，尽管仍是社区运营而非基金会治理。[推断]
-- **年龄与 Lindy 判断。** 2010-06 创建，约 16 年，且**仍在活跃发布**⇒ **强 Lindy** 信号；它做 Celery 底下的 broker 层已逾十年。[推断]
-- **采用度。** 凡用 Celery 处几乎必然用到它（Celery 依赖它），因此其传递采用度远超约 3.1k 的直接 star；Read the Docs 上文档成熟。[未验证]
-- **风险标记。** BSD-3-Clause，未发现 relicense 历史；主要考量是虚拟传输与真实 AMQP 的语义对齐并不完美，且随版本变动。[推断]
+- **年龄与 Lindy 判断。** 2010-06 创建（GitHub `created_at`），约 16 年，且**仍在活跃发布**⇒ **强 Lindy** 信号；它做 Celery 底下的 broker 层已逾十年。
+- **采用度。** 凡用 Celery 处几乎必然用到它（Celery 依赖它），因此其传递采用度远超约 3.1k 的直接 star（2026-09）；每月 43,453,410 次 PyPI 下载。Read the Docs 上文档成熟。
+- **风险标记。** BSD-3-Clause，未发现 relicense 历史；主要考量是虚拟传输与真实 AMQP 的语义对齐并不完美，且随版本变动。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 3.1k GitHub star、v5.6.2（2025-12）；star/版本号对时间敏感，仅供参考。
-- [未验证] 支持的 Python 版本及 broker extra 的确切集合随版本变化——固定依赖前请查当前 `pyproject.toml`/文档。
+- [未验证] 2026-09-28 从 GitHub/PyPI API 读到的约 3.1k star、稳定版 v5.6.2（2025-12）与 v5.7.0a1 预发布版；star/版本号对时间敏感，仅供参考。
+- [未验证] Python 版本下限随产品线移动（5.6.x 为 3.9，5.7 开发线为 3.10），broker extra 的确切集合也随版本变化——固定依赖前请查当前 `setup.py`/PyPI 元数据。
 - [推断] 虚拟传输（Redis、SQS、MongoDB……）对 AMQP 语义的模拟存在后端相关缺口；“换 URL”的可移植性并不等于跨 broker 行为一致。
 - [未验证] 相对 async 原生 AMQP 客户端，其 async/await 体验有限；核心模型沿用 Celery 的事件循环/同步风格。

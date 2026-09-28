@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "python-mysql-replication does", "zh": "本库做的"},
+  "steps": [
+    {"lane": "you", "en": "Enable row-based binary logging on the MySQL server", "zh": "在 MySQL 服务端开启 ROW 格式 binlog", "code": "binlog-format = ROW"},
+    {"lane": "you", "en": "Install the library", "zh": "安装库", "code": "pip install mysql-replication"},
+    {"lane": "you", "en": "Open a stream as a fake replica", "zh": "以伪从库身份开一条流", "code": "stream = BinLogStreamReader(connection_settings = mysql_settings, server_id=100)", "component": {"en": "BinLogStreamReader", "zh": "BinLogStreamReader"}},
+    {"lane": "them", "en": "Speaks the replication protocol over PyMySQL and pulls binlog events continuously", "zh": "基于 PyMySQL 讲复制协议，持续拉取 binlog"},
+    {"lane": "you", "en": "Iterate the stream and dispatch per change", "zh": "遍历事件流，按变更分派", "code": "for binlogevent in stream:"},
+    {"lane": "them", "en": "Delivers typed row events with values (before/after on updates)", "zh": "交付带值的类型化行事件（更新含前后值）", "component": {"en": "event parser", "zh": "事件解析器"}}
+  ],
+  "value": {"en": "Real-time change data capture in a plain Python loop, without Debezium or a Kafka cluster", "zh": "一个普通 Python 循环就得到实时 CDC，不用架 Debezium 和 Kafka"},
+  "sources": [
+    "github.com/julien-duponchelle/python-mysql-replication README main (retrieved 2026-09-28): pip install mysql-replication; [mysqld] binlog-format = ROW; stream = BinLogStreamReader(connection_settings = mysql_settings, server_id=100); for binlogevent in stream:",
+    "docs/events.rst main @ 2026-09-28 (fetched via commits API): WriteRowsEvent/UpdateRowsEvent/DeleteRowsEvent, row[\"before_values\"]/row[\"after_values\"]"
+  ]
+}

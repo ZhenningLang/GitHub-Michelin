@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Cockpit does", "zh": "Cockpit 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the cockpit package on the server", "zh": "在服务器上安装 cockpit 包", "code": "sudo dnf install cockpit · sudo pacman -S cockpit"},
+    {"lane": "you", "en": "Enable the socket — no daemon runs until someone connects", "zh": "启用 socket——没人连接就没有常驻进程", "code": "sudo systemctl enable --now cockpit.socket"},
+    {"lane": "them", "en": "Serves HTTPS on 9090 and logs you in with the machine's own Linux credentials", "zh": "在 9090 提供 HTTPS，用机器自己的 Linux 账号登录", "code": "https://IP_ADDRESS_OF_MACHINE:9090", "component": {"en": "cockpit-ws", "zh": "cockpit-ws"}},
+    {"lane": "them", "en": "Starts a bridge inside a real login session that runs systemctl, journal, podman for you", "zh": "在真实登录会话里拉起桥，替你跑 systemctl、podman", "component": {"en": "cockpit-bridge", "zh": "cockpit-bridge"}},
+    {"lane": "you", "en": "Manage services, storage, logs and accounts from the browser; CLI and UI stay in sync", "zh": "在浏览器里管服务、存储、日志和账号，命令行与 UI 实时同步"}
+  ],
+  "value": {"en": "A browser pane of glass on the machine's live state — uninstall tomorrow and nothing depended on it", "zh": "一块映照机器实时状态的浏览器面板，明天卸载也没任何东西依赖过它"},
+  "sources": ["cockpit-project.org/running.html (retrieved 2026-09-28): sudo dnf install cockpit; sudo pacman -S cockpit; sudo systemctl enable --now cockpit.socket; https://IP_ADDRESS_OF_MACHINE:9090; cockpit-ws container name", "README.md main @ 2026-09-28: 'interacts directly with the operating system from a real Linux session', tasks include starting containers, storage administration, network configuration, inspecting logs; add other machines via SSH", "src/cockpit/bridge.py main @ 2026-09-28 — Python bridge implementation (cockpit-bridge man page: doc/man/cockpit-bridge.1.adoc)"]
+}

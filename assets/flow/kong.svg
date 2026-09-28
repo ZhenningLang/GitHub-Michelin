@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="777" viewBox="0 0 880 777" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="796" viewBox="0 0 880 796" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -27,59 +27,60 @@
 }
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="777" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="619" rx="10"/>
+<rect class="bg" width="880" height="796" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="638" rx="10"/>
 <rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">You do</text>
-<rect class="laneT" x="460" y="28" width="392" height="619" rx="10"/>
+<rect class="laneT" x="460" y="28" width="392" height="638" rx="10"/>
 <rect class="pillT" x="474" y="40" width="110.7" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">Kong does</text>
-<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
-<path class="edge" d="M62,288 L62,312" marker-end="url(#a)"/>
-<path class="hand" d="M408,361.5 C439.0,361.5 439.0,385 470,385" marker-end="url(#a)"/>
-<path class="edge" d="M494,433 L494,457" marker-end="url(#a)"/>
-<path class="edge" d="M494,531 L494,555" marker-end="url(#a)"/>
-<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="edge" d="M62,307 L62,331" marker-end="url(#a)"/>
+<path class="hand" d="M408,380.5 C439.0,380.5 439.0,404 470,404" marker-end="url(#a)"/>
+<path class="edge" d="M494,452 L494,476" marker-end="url(#a)"/>
+<path class="edge" d="M494,550 L494,574" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
 <text class="num" x="62" y="100" text-anchor="middle">1</text>
 <text class="t" x="82" y="101">Deploy Kong in front of all your</text>
 <text class="t" x="82" y="123">backend services</text>
-<text class="c" x="82" y="147">docker-compose --profile database up</text>
-<rect class="card" x="40" y="193" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="193" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="217" r="10"/>
-<text class="num" x="62" y="221" text-anchor="middle">2</text>
-<text class="t" x="82" y="222">Declare a Service + Route: which path</text>
-<text class="t" x="82" y="244">goes to which backend</text>
-<text class="c" x="82" y="268">Admin API :8001 or decK YAML</text>
-<rect class="card" x="40" y="314" width="368" height="95" rx="8"/>
-<rect class="accY" x="40" y="314" width="4" height="95" rx="2"/>
-<circle class="accY" cx="62" cy="338" r="10"/>
-<text class="num" x="62" y="342" text-anchor="middle">3</text>
-<text class="t" x="82" y="343">Attach bundled plugins to the route</text>
-<text class="t" x="82" y="365">and set their parameters</text>
-<text class="c" x="82" y="389">key-auth · rate-limiting · prometheus</text>
-<rect class="cardT" x="472" y="361" width="368" height="72" rx="8"/>
-<rect class="accT" x="472" y="361" width="4" height="72" rx="2"/>
-<circle class="accT" cx="494" cy="385" r="10"/>
-<text class="num" x="494" y="389" text-anchor="middle">4</text>
-<text class="t" x="514" y="390">A request enters on :8000 and is</text>
-<text class="t" x="514" y="412">matched to a route</text>
-<rect class="cardT" x="472" y="459" width="368" height="72" rx="8"/>
-<rect class="accT" x="472" y="459" width="4" height="72" rx="2"/>
-<circle class="accT" cx="494" cy="483" r="10"/>
-<text class="num" x="494" y="487" text-anchor="middle">5</text>
-<text class="t" x="514" y="488">Runs that route&#x27;s plugins in order;</text>
-<text class="t" x="514" y="510">any plugin can reject the request</text>
-<rect class="cardT" x="472" y="557" width="368" height="72" rx="8"/>
-<rect class="accT" x="472" y="557" width="4" height="72" rx="2"/>
-<circle class="accT" cx="494" cy="581" r="10"/>
-<text class="num" x="494" y="585" text-anchor="middle">6</text>
-<text class="t" x="514" y="586">If all pass, proxies to the backend</text>
-<text class="t" x="514" y="608">and records metrics</text>
-<rect class="val" x="28" y="661" width="824" height="88" rx="10"/>
-<text class="valK" x="48" y="685">VALUE</text>
-<text class="valT" x="48" y="709">Auth, rate limiting and monitoring happen once at the door — backends stop reimplementing</text>
-<text class="valT" x="48" y="731">them</text>
+<text class="c" x="82" y="147">KONG_DATABASE=postgres docker-compose</text>
+<text class="c" x="82" y="166">--profile database up</text>
+<rect class="card" x="40" y="212" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">Declare a Service + Route: which path</text>
+<text class="t" x="82" y="263">goes to which backend</text>
+<text class="c" x="82" y="287">Admin API :8001 or decK YAML</text>
+<rect class="card" x="40" y="333" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="333" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="357" r="10"/>
+<text class="num" x="62" y="361" text-anchor="middle">3</text>
+<text class="t" x="82" y="362">Attach bundled plugins to the route</text>
+<text class="t" x="82" y="384">and set their parameters</text>
+<text class="c" x="82" y="408">key-auth · rate-limiting · prometheus</text>
+<rect class="cardT" x="472" y="380" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="380" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="404" r="10"/>
+<text class="num" x="494" y="408" text-anchor="middle">4</text>
+<text class="t" x="514" y="409">A request enters on :8000 and is</text>
+<text class="t" x="514" y="431">matched to a route</text>
+<rect class="cardT" x="472" y="478" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="478" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="502" r="10"/>
+<text class="num" x="494" y="506" text-anchor="middle">5</text>
+<text class="t" x="514" y="507">Runs that route&#x27;s plugins in order;</text>
+<text class="t" x="514" y="529">any plugin can reject the request</text>
+<rect class="cardT" x="472" y="576" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="576" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="600" r="10"/>
+<text class="num" x="494" y="604" text-anchor="middle">6</text>
+<text class="t" x="514" y="605">If all pass, proxies to the backend</text>
+<text class="t" x="514" y="627">and records metrics</text>
+<rect class="val" x="28" y="680" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="704">VALUE</text>
+<text class="valT" x="48" y="728">Auth, rate limiting and monitoring happen once at the door — backends stop reimplementing</text>
+<text class="valT" x="48" y="750">them</text>
 </svg>

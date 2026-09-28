@@ -6,17 +6,17 @@ category: ops-infra
 tags: [containers, docker, image-optimization, security, seccomp, apparmor, minification, cncf]
 language: Go
 license: Apache-2.0
-maturity: v1.40.11 (2024-02), repo active (2026-06); CNCF Sandbox
-last_verified: 2026-06-28
+maturity: "v1.40.11 (2024-02), coasting, ~23.4k stars (as of 2026-09); CNCF Sandbox"
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-23T07:23:45Z
+  pushed_at: 2026-09-19T23:40:59Z
   default_branch: master
-  default_branch_sha: 1e65da745956d856230898ccd292b78332b8a1b0
+  default_branch_sha: 976805241c0000c0114b095e384657e0e98ccaaa
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:43:36Z
+  computed_at: 2026-09-28T05:51:16Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 8
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -51,7 +51,7 @@ health:
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 493215
+        release_downloads: 493684
         release_assets: 50
         release_tier: C
         signal_basis: releases
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4031
-        last_commit_age_days: 3
+        repo_age_days: 4037
+        last_commit_age_days: 8
         cohort: tool
     governance:
       grade: B
@@ -90,6 +90,27 @@ health:
 你是个平台工程师，接手了一堆基于 `ubuntu:22.04` 或完整 `python:3.12` 基础镜像构建的应用镜像。每个都塞着几百兆运行时根本不碰的 shell 工具、包管理器和共享库——拖慢拉取、扩大攻击面，还让漏洞扫描器为一堆你压根不调用的包疯狂报 CVE。把每个 Dockerfile 重写成 distroless 或多阶段构建才是“正确”的修法，但你手下有几十个团队，这个季度没人想冒着把构建搞挂的风险。于是你跑 `slim build your-image:latest`：SlimToolkit 把容器启起来、对它施加负载（HTTP 探针或你自己的测试命令）、观察实际用到了哪些文件和系统调用，然后产出一个把没用到的东西全剥掉的 `.slim` 变体——经常小上 10–30 倍——而 entrypoint 和行为保持不变。作为附赠，它还能丢出一份生成好的 Seccomp 和 AppArmor 配置，让你不必手工审计 Linux 系统调用就能把容器锁紧。
 
 当你想*现在*就拿到体积和攻击面的收益、对着自己并不掌握源码的镜像、又不想先逼着每个团队做基础镜像迁移时，你会选它。它最大的价值是作为推镜像入库前的一道改造/优化 pass，而不是最初构建镜像的那个东西。
+
+## 怎么用起来
+
+Slim 是一个披着 CLI 外衣的动态分析器，不是静态的 Dockerfile 改写器。你跑 `slim build <image>`，它会通过本地 Docker daemon 拉取镜像、启动一个临时容器并对它*施压*——一个 HTTP 探针去访问容器暴露的端口，加上你用 `--exec` 声明的命令——同时记录运行中的进程实际发生的每一次文件访问和系统调用。施压阶段结束后，它重建一个只包含观察到被用到的产物（外加你用 `--include-path` 白名单强行保留的内容）的新镜像，打上 `.slim` 标签，并写出附属产物：一份 Seccomp 配置（观察到的系统调用集合，可以用 `docker run --security-opt seccomp:...` 直接加载）和一份 AppArmor 配置。仍然归你的部分是：让施压有代表性——探针、测试流量或覆盖你在乎的代码路径的 `--exec` 命令——以及在推镜像之前端到端验证最小化后的镜像确实还能跑。`slim xray` 提供同一套观察流程但不重建，只出一份检查报告。
+
+![SlimToolkit — 主干用户故事](../../../assets/flow/slim.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/slim.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上 CLI — `brew install docker-slim`
+2. **你**：一条命令指向本地任意镜像 — `slim build your-name/your-app`
+3. **SlimToolkit**：启动容器，用 HTTP 探针和你给的 --exec 命令施压 — 组件：`HTTP 探针`
+4. **SlimToolkit**：记录实际用到的文件和系统调用，重建只含这些产物的 .slim 镜像 — 组件：`build 命令`
+5. **你**：跑一下瘦身后的镜像，验证行为不变 — `docker run archlinux:curl curl checkip.amazonaws.com`
+
+**价值**：不改 Dockerfile，镜像最多小 30 倍，还附带生成好的 Seccomp/AppArmor 配置
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -130,8 +151,8 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 仓库**未归档**，默认分支有提交进到 2026-03，但这些近期提交大多是 CI/依赖 bump（dependabot），外加一条 "tmp disable github actions" 提交——而**最后一个打 tag 的 release 是 2024-02 的 v1.40.11**，约 2.4 年的发布断档。读起来像**有人维护但在吃老本**：活着、没废弃，但没在按节奏发功能版本。[推断]
+- **响应速度**：Grade A——中位首次响应时间 0.8 小时，基于 3 个 qualifying PRs（窗口内 issue 流量太薄，未构成样本）。
+- **维护（2026-09）。** 仓库**未归档**，默认分支仍偶有真正的修复——例如 2026-08-02 修畸形 Dockerfile 触发 panic 的提交、2026-09-19 修 HTTP 探针示例的提交（GitHub 提交 API）——夹杂在 dependabot/CI bump 之间，但**最后一个打 tag 的 release 仍是 2024-02 的 v1.40.11**，断档已到约 2.5 年。读起来像**有人维护但在吃老本**：活着、没废弃，但没在按节奏发功能版本。[推断]
 - **治理 / bus factor。** **CNCF Sandbox** 项目（README 中确认），有一份列了两位 maintainer 的 `MAINTAINERS.md`——但创建者 **Kyle Quest（@kcq）**约 816 次提交，下一位人类贡献者远远落后，且 `GOVERNANCE.md` 里直接写着 "TBD"。所以 Sandbox 身份带来的是生态可见度，**而非**深厚的、基金会运营的治理梯队——bus factor 集中在一个人身上。[推断]
 - **背书与长期性。** 据 README 由 **Root.io（前身 Slim.AI）**支持；一家商业厂商的兴趣是长期性加分，但也把势头绑在了那家公司的优先级上。[推断]
 - **年龄与 Lindy。** **2015-09** 创建（作为 DockerSlim）⇒ 约 11 岁且 2026 年仍有改动——一个**偏强的 Lindy** 信号：在其细分领域是个久经使用、广为人知的工具，但被上面那条停滞的发布节奏打了折扣。要把年龄 × 仍活跃一起看——它过关，但在“仍有活跃功能开发”这条轴上只是勉强过。[推断]
@@ -139,8 +160,8 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 23.3k GitHub star、208 个 open issue——star/issue 数对时间敏感，作为健康代理并不可靠，仅供参考。
+- [未验证] 截至 2026-09 约 23.4k GitHub star、213 个 open issue（GitHub API）——star/issue 数对时间敏感，作为健康代理并不可靠，仅供参考。
 - [未验证] “小 10–30 倍” / “最高 30 倍”是项目 README 自己的表述；实际缩减极度依赖镜像本身（README 自己的例子从已是 distroless 基础镜像上的约 1.8 倍，到臃肿的 `ubuntu:14.04` 上的约 284 倍都有）。别承诺一个固定比例。
 - [推断] “维护但吃老本”是从提交内容（多为 dependabot/CI）加上 2024-02 的最后发布推断而来，不是说功能开发已正式停止。
 - [推断] 确切的运行时要求（具体到 Docker daemon，还是任意 OCI 运行时）及最低版本是从 README/用法推断的，这里未钉死——若对你是 load-bearing，请对照你运行时的当前文档核实。
-- [推断] CNCF "Sandbox"（非 Incubating/Graduated）层级，以及两人 maintainer 名单，是 2026-06-28 从 README/MAINTAINERS.md 读到的；CNCF 分层会变——若这点 load-bearing，请去 CNCF landscape 重核。
+- [推断] CNCF "Sandbox"（非 Incubating/Graduated）层级与 Root.io 背书在 2026-09-28 对照 README 再次确认；CNCF 分层会变——若这点 load-bearing，请去 CNCF landscape 重核。

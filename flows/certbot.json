@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "Certbot does", "zh": "Certbot 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Certbot on the web server", "zh": "在 Web 服务器上安装 Certbot", "code": "sudo snap install --classic certbot"},
+    {"lane": "you", "en": "Run it against your web server", "zh": "对着你的 Web 服务器跑一次", "code": "sudo certbot --nginx"},
+    {"lane": "them", "en": "Generates the key locally, orders via ACME, proves domain control over HTTP-01", "zh": "本地生成私钥，走 ACME 下单，用 HTTP-01 证明域名控制权", "component": {"en": "nginx plugin", "zh": "nginx 插件"}},
+    {"lane": "them", "en": "Saves the cert/key and rewrites the server config to serve HTTPS", "zh": "保存证书与私钥，改写服务器配置以提供 HTTPS", "code": "/etc/letsencrypt/live/"},
+    {"lane": "them", "en": "A timer runs certbot renew, which replays each cert's saved config near expiry", "zh": "定时器周期执行 renew，按证书留存配置在临期时静默续期", "code": "certbot renew", "component": {"en": "renew timer (systemd/cron)", "zh": "续期定时器（systemd/cron）"}}
+  ],
+  "value": {"en": "Free, browser-trusted HTTPS that renews itself — no expiry incident, no hand-edited cert paths", "zh": "免费、浏览器信任、会自己续期的 HTTPS——没有过期事故，也不用手改证书路径"},
+  "sources": ["certbot.eff.org instructions (ws=nginx&os=snap, retrieved 2026-09-28): sudo snap install --classic certbot; sudo ln -s /snap/bin/certbot /usr/local/bin/certbot; sudo certbot --nginx; sudo certbot renew --dry-run", "eff-certbot.readthedocs.io using.html (retrieved 2026-09-28): 'saving the certificate to /etc/letsencrypt/live/', 'certbot renew', check systemd timers/crontab for automated renewal, renewal threshold 'less than 1/3rd of its lifetime remains'", "README.rst main @ 2026-09: Apache 2.4+/nginx 0.8.48+ support, ECDSA (default) and RSA keys, http->https redirect"]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "CyberChef does", "zh": "CyberChef 做的"},
+  "steps": [
+    {"lane": "you", "en": "Serve the app locally (or just open the public instance)", "zh": "本地起应用（或直接开公共实例）", "code": "docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest", "component": {"en": "static SPA", "zh": "静态 SPA"}},
+    {"lane": "you", "en": "Paste the unreadable blob into the input box", "zh": "把读不懂的数据粘进输入框"},
+    {"lane": "them", "en": "Magic runs detection heuristics and offers a candidate decode chain", "zh": "Magic 跑识别启发式，给出候选解码链", "component": {"en": "Magic", "zh": "Magic"}},
+    {"lane": "you", "en": "Drag operations into the recipe to chain the transforms", "zh": "把操作拖进 recipe，串起变换链"},
+    {"lane": "them", "en": "Auto Bake re-runs the whole chain and updates the output live, in your browser", "zh": "Auto Bake 在浏览器里重跑整条链，输出实时刷新", "component": {"en": "Auto Bake", "zh": "Auto Bake"}},
+    {"lane": "you", "en": "Copy the URL — the recipe serialises into it — to save or share", "zh": "复制 URL——recipe 序列化在里面——即可保存或分享", "code": "#recipe=Operation()&input="}
+  ],
+  "value": {"en": "A reproducible, shareable transform pipeline that never sends your data to a server", "zh": "一条可复现、可分享的变换流水线，数据从不出你的机器"},
+  "sources": [
+    "https://github.com/gchq/CyberChef README.md (fetched 2026-09-28): docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest; four UI areas (input/output/operations/recipe); Magic 'automated encoding detection' with magic icon in the Output field; Auto Bake 'whenever you modify the input or the recipe, CyberChef will automatically bake'; deep linking format https://gchq.github.io/CyberChef/#recipe=Operation()&input=..."
+  ]
+}

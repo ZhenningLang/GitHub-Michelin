@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "them": {"en": "thriftpy does", "zh": "thriftpy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package under the historical name", "zh": "用历史包名安装", "code": "pip install thriftpy"},
+    {"lane": "them", "en": "Pulls the pinned same-version implementation and exposes it as thriftpy", "zh": "拉入钉死的同版实现，以 thriftpy 之名提供", "code": "thriftpy2==0.7.1", "component": {"en": "shim metadata", "zh": "垫片元数据"}},
+    {"lane": "you", "en": "Point it at your Thrift IDL file", "zh": "指向你的 Thrift IDL 文件", "code": "thriftpy.load(\"pingpong.thrift\", module_name=\"pingpong_thrift\")"},
+    {"lane": "them", "en": "Parses the IDL with ply and materializes client/server stubs in-process — no codegen step", "zh": "以 ply 解析 IDL，就地物化客户端/服务端 stub，免 codegen", "component": {"en": "IDL loader (ply)", "zh": "IDL 加载器（ply）"}},
+    {"lane": "you", "en": "Stand up the server around your Dispatcher and serve Thrift-wire calls", "zh": "把 Dispatcher 包进服务端，应答 Thrift 调用", "code": "server = make_server(pingpong_thrift.PingPong, Dispatcher(), \"127.0.0.1\", 6000)"}
+  ],
+  "value": {"en": "Thrift RPC in Python with no build step — and legacy `import thriftpy` code now runs the maintained thriftpy2 engine", "zh": "免构建步骤的 Thrift RPC——旧 import 名跑的就是维护中的 thriftpy2 引擎"},
+  "sources": ["README.rst master @ 2026-09 (retrieved 2026-09-28): `pip install thriftpy`; `pingpong_thrift = thriftpy.load(\"pingpong.thrift\", module_name=\"pingpong_thrift\")`; `server = make_server(pingpong_thrift.PingPong, Dispatcher(), \"127.0.0.1\", 6000)`; 'a thin compatibility shim around thriftpy2'", "PyPI thriftpy 0.7.1 metadata (retrieved 2026-09-28): requires_dist ['thriftpy2==0.7.1']; requires_python >=3.7; summary 'Compatibility shim that exposes thriftpy2 under the historical thriftpy name'", "PyPI thriftpy2 0.7.1 metadata (retrieved 2026-09-28): ply>=3.4,<4.0 and ijson>=3.0,<4.0 requirements"]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "ngx_lua does", "zh": "ngx_lua 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get the module into an NGINX build — in practice, install OpenResty instead", "zh": "把模块装进 NGINX 构建——实践中直接用 OpenResty 套件", "code": "--add-module=/path/to/lua-nginx-module"},
+    {"lane": "you", "en": "Bind Lua to a request phase in nginx.conf", "zh": "在 nginx.conf 里把 Lua 绑到某个请求阶段", "code": "content_by_lua_block { ngx.say('Hello,world!') }"},
+    {"lane": "them", "en": "Runs your Lua inside the worker's LuaJIT VM at exactly that phase — no IPC, no extra process", "zh": "在该阶段、worker 内的 LuaJIT 虚拟机里执行你的代码", "component": {"en": "per-worker LuaJIT VM", "zh": "每 worker 一个 LuaJIT 虚拟机"}},
+    {"lane": "you", "en": "Talk to Redis, a DB, or an HTTP upstream from the handler", "zh": "在处理器里访问 Redis、数据库或 HTTP 上游", "code": "ngx.socket.tcp"},
+    {"lane": "them", "en": "Your Lua yields on the cosocket; the event loop serves other requests and resumes it when data arrives", "zh": "Lua 在 cosocket 上挂起，事件循环先服务其它请求、数据到达后再恢复", "component": {"en": "cosocket API", "zh": "cosocket API"}}
+  ],
+  "value": {"en": "Per-request logic at NGINX/LuaJIT speed inside the proxy itself — no C module, no extra hop", "zh": "逐请求逻辑以 NGINX/LuaJIT 的速度跑在代理进程内部——不写 C 模块，也不加一跳"},
+  "sources": [
+    "README.markdown master @ 2026-09-28, Installation section: ./configure ... --add-module=/path/to/lua-nginx-module; 'highly recommended to use OpenResty releases which bundle Nginx, ngx_lua (this module), LuaJIT'",
+    "README.markdown master @ 2026-09-28, Synopsis: content_by_lua_block { ngx.say('Hello,world!') }; lua_package_path; rewrite_by_lua_block / access_by_lua_block phase handlers",
+    "README.markdown master @ 2026-09-28, Directives/index: ngx.socket.tcp (cosocket API), lua_shared_dict"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Grafana does", "zh": "Grafana 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the Grafana server", "zh": "启动 Grafana 服务", "code": "docker run -d -p 3000:3000 --name=grafana grafana/grafana"},
+    {"lane": "them", "en": "Serves the web UI backed by an embedded SQLite database — no external DB to provision to start", "zh": "以内嵌 SQLite 支撑起 Web UI——起步无需外接数据库", "component": {"en": "Go server", "zh": "Go 服务器"}},
+    {"lane": "you", "en": "Sign in (admin/admin at first boot) and register your existing backends as data sources", "zh": "登录（首启 admin/admin），把已跑的后端登记为数据源", "code": "http://localhost:3000/"},
+    {"lane": "them", "en": "Forwards each panel's query to that backend in the backend's own language — PromQL, LogQL, SQL", "zh": "把面板查询按后端自己的语言转发——PromQL、LogQL、SQL", "component": {"en": "data-source proxy", "zh": "数据源代理"}},
+    {"lane": "you", "en": "Lay out dashboards mixing metric, log, and trace panels over one shared time range", "zh": "把指标、日志、trace 面板排进同一时间轴"},
+    {"lane": "them", "en": "Evaluates your alert rules continuously and sends notifications to Slack, PagerDuty, or email", "zh": "持续评估告警规则，向 Slack、PagerDuty、邮件发通知"}
+  ],
+  "value": {"en": "One pane of glass over all your telemetry — spike-to-log-to-trace correlation without moving data into Grafana", "zh": "所有遥测一块统一面板——尖刺到日志到追踪的关联，而不必把数据搬进 Grafana"},
+  "sources": [
+    "grafana.com docs 'Run Grafana Docker image' (retrieved 2026-09-28): docker run -d -p 3000:3000 --name=grafana ...; editions 'grafana/grafana' (Open Source) and 'grafana/grafana-enterprise'; 'By default, Grafana uses an embedded SQLite version 3 database'",
+    "grafana.com docs 'Build your first dashboard' (retrieved 2026-09-28): 'go to http://localhost:3000/'; 'enter admin for both the username and password'",
+    "README.md main @ 2026-09-28: 'send notifications to systems like Slack, PagerDuty, VictorOps, OpsGenie'; 'You can specify a data source on a per-query basis'"
+  ]
+}

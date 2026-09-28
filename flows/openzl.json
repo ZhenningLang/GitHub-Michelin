@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenZL does", "zh": "OpenZL 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the CLI from a release-tagged checkout", "zh": "在 release-tag 检出上构建 CLI", "code": "cmake -S . -B cmakebuild · cmake --build cmakebuild --target zli"},
+    {"lane": "you", "en": "Compress a payload with a pre-built format profile", "zh": "用预置格式 profile 压一个数据文件", "code": "./zli compress --profile le-u64 sra0 --output sra0.zl"},
+    {"lane": "them", "en": "Splits records into homogeneous streams and composes codec primitives into a graph", "zh": "把记录拆成同质流，把 codec 原语编排成压缩图", "component": {"en": "Compression graph", "zh": "压缩图"}},
+    {"lane": "you", "en": "Train a compressor specialized for your dataset", "zh": "在自己的数据集上训练专用压缩器", "code": "./zli train --profile le-u64 sra0 --output sra0.zlc"},
+    {"lane": "them", "en": "Searches and benchmarks candidate codec graphs, keeping the best for your data", "zh": "搜索并基准测试候选 codec 图，留下最适合的"},
+    {"lane": "you", "en": "Decompress any frame with the one universal decompressor", "zh": "用同一个通用解压器解压任意帧", "code": "./zli decompress sra0.zl --output sra0.decompressed"},
+    {"lane": "them", "en": "Reads every frame no matter which specialized compressor produced it", "zh": "无论由哪个专用压缩器生成，都能读取该帧", "component": {"en": "Universal decompressor", "zh": "通用解压器"}}
+  ],
+  "value": {"en": "Structured data compressed past generic-compressor ratios, while one decompressor still reads every frame", "zh": "结构化数据压出超过通用压缩器的比率，一个解压器仍通读所有帧"},
+  "sources": [
+    "docs quickstart https://facebook.github.io/openzl/getting-started/quick-start (retrieved 2026-09-28): git clone --depth 1 -b release https://github.com/facebook/openzl.git; cmake -S . -B cmakebuild; cmake --build cmakebuild --target zli; ./zli compress --profile le-u64 sra0 --output sra0.zl; ./zli train --profile le-u64 sra0 --output sra0.zlc; ./zli decompress sra0.zl --output sra0.decompressed",
+    "README.md dev @ 2026-09-28: core library and tools to generate specialized compressors, all compatible with a single universal decompressor; release-tagged frames remain decompressible for years, dev branch offers no guarantees"
+  ]
+}

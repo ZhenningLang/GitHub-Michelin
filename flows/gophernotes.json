@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "gophernotes does", "zh": "gophernotes 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the kernel binary with the Go toolchain", "zh": "用 Go 工具链构建内核二进制", "code": "go install github.com/gopherdata/gophernotes@v0.7.5"},
+    {"lane": "you", "en": "Copy the shipped kernelspec into Jupyter's kernel dir", "zh": "把自带的 kernelspec 复制进 Jupyter 内核目录", "code": "cp kernel/* ~/.local/share/jupyter/kernels/gophernotes"},
+    {"lane": "you", "en": "Rewrite kernel.json to point at the installed binary", "zh": "改写 kernel.json 指向装好的二进制", "code": "sed \"s|gophernotes|$(go env GOPATH)/bin/gophernotes|\""},
+    {"lane": "you", "en": "Start Jupyter and pick Go from the New menu", "zh": "启动 Jupyter，在 New 菜单里选 Go", "code": "jupyter notebook"},
+    {"lane": "them", "en": "Evaluates each cell through its embedded gomacro interpreter, keeping state across cells", "zh": "经内嵌的 gomacro 解释器逐 cell 求值，cell 间状态保持", "component": {"en": "gomacro interpreter", "zh": "gomacro 解释器"}}
+  ],
+  "value": {"en": "Interactive, shareable Go notebooks — run a cell, tweak, re-run — without a compile-link cycle per snippet", "zh": "可交互、可分享的 Go 笔记本——跑一个 cell、改、再跑——不必每个片段都编译链接"},
+  "sources": [
+    "github.com/gopherdata/gophernotes README (master, retrieved 2026-09-28): 'go install github.com/gopherdata/gophernotes@v0.7.5'; 'cp kernel/* ~/.local/share/jupyter/kernels/gophernotes'; 'sed \"s|gophernotes|$(go env GOPATH)/bin/gophernotes|\" < kernel.json.in > kernel.json'; 'jupyter notebook'; 'Select Go from the New drop down menu' (README snippets still pin v0.7.5; latest tag v0.7.6)",
+    "gophernotes GitHub releases API (2026-09-28): v0.7.6 published 2026-09-23, 'Update to latest gomacro: adds minimal support for go/types.Alias'"
+  ]
+}
