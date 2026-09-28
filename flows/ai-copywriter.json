@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "AI Copywriter does",
+    "zh": "AI Copywriter 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent harness",
+      "zh": "把技能装进你的 agent harness",
+      "code": "npx skills add mikiarlo3/ai-copywriter --global"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the copy you need and paste the raw material",
+      "zh": "说要什么文案，把原始材料贴进去",
+      "code": "/ai-copywriter"
+    },
+    {
+      "lane": "them",
+      "en": "Asks in one batch for the reader (ICP), the category and the real story",
+      "zh": "一次性问清读者（ICP）、品类和真实故事",
+      "component": { "en": "SKILL.md copywriting mode", "zh": "SKILL.md 文案模式" }
+    },
+    {
+      "lane": "you",
+      "en": "Answer with the real moment and the real numbers",
+      "zh": "给出真实的那一刻和真实的数字"
+    },
+    {
+      "lane": "them",
+      "en": "Names the reader's feeling, drafts variants across angles",
+      "zh": "说出读者当下的感受，按不同角度起草多个版本"
+    },
+    {
+      "lane": "them",
+      "en": "Audits each line against the 33 AI-writing patterns, returns variants plus a pick",
+      "zh": "逐句对照 33 条 AI 写作模式审查，交回多个版本并给出推荐",
+      "component": { "en": "humanizer patterns 1–33", "zh": "humanizer 模式 1–33" }
+    }
+  ],
+  "value": {
+    "en": "Headlines and UI text written to the reader's moment, with no hype words, no AI tells and no invented numbers",
+    "zh": "标题和界面文字贴着读者当下的处境写，没有吹嘘词、没有机器腔，也没有编出来的数字"
+  },
+  "sources": [
+    "https://github.com/mikiarlo3/ai-copywriter README.md (default branch claude/humanizer-copywriting-skill-u5x4vd) — Installation: `npx skills add mikiarlo3/ai-copywriter --global`; Usage: `/ai-copywriter` + 'Write titles for this blog post'; titles come back as 5 to 10 variants with a pick",
+    "https://github.com/mikiarlo3/ai-copywriter SKILL.md — COPYWRITING MODE: 'The two questions behind every line', 'The intake: ask before you write' (ICP, category, story in one batch), 'Delivering copy'",
+    "https://github.com/mikiarlo3/ai-copywriter SKILL.md — patterns 1–33 and 'Process and Output' (copy audit questions incl. billboard test; copy-request mode delivers variants and a pick)"
+  ]
+}

@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **marketingskills** | 面向 product marketing、CRO、copywriting、SEO、analytics、lifecycle email、ads 和 growth execution 的宽营销 skill pack。 | B（4/5） | [→](marketingskills.zh.md) |
 | **open-seo** | 可自托管 SEO app，加 MCP 和 Agent Skills，用于关键词研究、排名跟踪、竞品、反链、审计和 AI visibility。 | B（5/6） | [→](open-seo.zh.md) |
+| **ai-copywriter** | 单文件 Markdown 技能：先问清读者和真实故事，再写标题、微文案、邮件主题行和 LinkedIn 帖子，并逐句对照 33 种 AI 写作痕迹审查。 | C（3/5） | [→](ai-copywriter.zh.md) |
 
 ## 对比矩阵
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [marketingskills](marketingskills.zh.md) | ✅ | B（4/5） | 最适合 SaaS／growth marketing；不是通用文章写作 pipeline。 |
 | [open-seo](open-seo.zh.md) | ✅ | B（5/6） | SEO workflow 需要自托管 app、MCP 和 DataForSEO 付费数据时最合适。 |
+| [ai-copywriter](ai-copywriter.zh.md) | ✅ | C（3/5） | 最适合先访谈再写的英文转化文案；不是营销策略包，不支持中文，去 AI 味规则是冻结的分叉。 |
 
 ## 什么该放这里
 

@@ -578,6 +578,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **tacit-mining** | Let AI truly understand you. A Claude Code skill that extracts tacit knowledge through structured dialogue. 隐性知识挖掘技能。 | NOASSERTION | D（4/5） | [中](categories/agent-skills/context-engineering/tacit-mining.zh.md) · [EN](categories/agent-skills/context-engineering/tacit-mining.md) |
 | **soul.md** | The best way to build a personality for your agent. Let Claude Code / OpenClaw ingest your data & build your AI soul. | MIT | B（4/5） | [中](categories/agent-skills/context-engineering/soul-md.zh.md) · [EN](categories/agent-skills/context-engineering/soul-md.md) |
 | **marketingskills** | Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/marketing-seo/marketingskills.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/marketingskills.md) |
+| **AI Copywriter** | 单文件 Markdown 技能：先问清读者和真实故事，再写标题、微文案、邮件主题行和 LinkedIn 帖子，并逐句对照 33 种 AI 写作痕迹审查。 | MIT | C（3/5） | [中](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md) |
 
 ### observability
 
