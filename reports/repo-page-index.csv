@@ -157,6 +157,7 @@ https://github.com/TanStack/hotkeys,tanstack-hotkeys,keyboard-shortcuts,categori
 https://github.com/TanStack/intent,tanstack-intent,harness-extensions,categories/agent-tooling/harness-extensions/tanstack-intent.md
 https://github.com/TanStack/markdown,tanstack-markdown,markdown-tools,categories/markdown-tools/tanstack-markdown.md
 https://github.com/TanStack/pacer,tanstack-pacer,scheduling,categories/web-ui/scheduling/tanstack-pacer.md
+https://github.com/TanStack/persist,tanstack-persist,state-management,categories/web-ui/state-management/tanstack-persist.md
 https://github.com/TanStack/query,tanstack-query,data-fetching,categories/web-ui/data-fetching/tanstack-query.md
 https://github.com/TanStack/ranger,tanstack-ranger,component-libraries,categories/web-ui/component-libraries/tanstack-ranger.md
 https://github.com/TanStack/react-charts,tanstack-react-charts,charts,categories/web-ui/charts/tanstack-react-charts.md

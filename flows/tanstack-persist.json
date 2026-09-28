@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Persist does", "zh": "TanStack Persist 做的"},
+  "steps": [
+    {"lane": "you", "en": "Vendor the monorepo — nothing is published to npm yet", "zh": "以源码方式引入——还没有发布到 npm", "code": "@tanstack/react-persist", "component": {"en": "React adapter package", "zh": "React 适配包"}},
+    {"lane": "you", "en": "Create persisted state with a storage key and an initial value", "zh": "用存储键加初始值创建要持久化的状态", "code": "useLocalStorageState('todos-list', [] as Array<string>)", "component": {"en": "useLocalStorageState hook", "zh": "useLocalStorageState 钩子"}},
+    {"lane": "them", "en": "On mount, JSON-parses the stored envelope and returns it, or falls back to your initial value", "zh": "挂载时解析存储里的包装对象并返回，没有就落回你给的初始值"},
+    {"lane": "you", "en": "Read and update it like any useState", "zh": "像普通 useState 一样读和更新", "code": "setTodos((prev) => [...prev, newTodo.trim()])"},
+    {"lane": "them", "en": "Serializes the state back to storage on every change", "zh": "每次变化都把状态序列化写回存储"},
+    {"lane": "them", "en": "On the next load, clears values whose buster or maxAge no longer matches", "zh": "下次读取时清掉版本不符或过期的值"}
+  ],
+  "value": {"en": "State that survives reloads without hand-written parse/save plumbing — at the cost of vendoring an unpublished 0.x", "zh": "状态刷新后还在，不用手写解析和保存的管道——代价是引入一个未发布的 0.x"},
+  "sources": [
+    "docs/installation.md (npm install @tanstack/react-persist — the documented install, though both packages 404 on npm at verification)",
+    "examples/react/useStorageState/src/index.tsx (useLocalStorageState('todos-list', [] as Array<string>), setTodos((prev) => [...prev, newTodo.trim()]))",
+    "packages/react-persist/src/storage-persister/useStorageState.ts (loads persister.loadState() ?? initialValue on mount; saves on every state change)",
+    "packages/persist/src/storage-persister.ts (PersistedStorage envelope { buster, state, timestamp }, JSON.stringify/JSON.parse defaults, buster/maxAge invalidation removes the stored item)"
+  ]
+}

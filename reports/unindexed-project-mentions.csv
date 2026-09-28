@@ -5,6 +5,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 3D-Speaker,categories/speech/antspeaker.md,,no
 @antfu/eslint-config (`antfu/eslint-config`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 @github/hotkey (`github/hotkey`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
+@nanostores/persistent (`nanostores/nanostores`),categories/web-ui/state-management/tanstack-persist.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 @xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
@@ -548,6 +549,7 @@ lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
 LocalAI (mudler/LocalAI),categories/on-device-ml/stable-diffusion-cpp.md,,no
+localForage (`mozilla/localForage`),categories/web-ui/state-management/tanstack-persist.md,,no
 lodash.debounce/throttle (`lodash/lodash`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
 Logitech Options+ (official),categories/peripherals/logiops.md,,no
@@ -984,6 +986,7 @@ unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
 urql (`urql-graphql/urql`),categories/web-ui/data-fetching/tanstack-query.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
+use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/state-management/tanstack-persist.md,,no
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
@@ -1037,5 +1040,6 @@ ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
 zstd,categories/dev-utilities/data-tools/openzl.md,,no
 Zulip Cloud,categories/team-chat/zulip.md,,no
 Zustand (`pmndrs/zustand`),categories/web-ui/state-management/tanstack-store.md,,no
+Zustand persist middleware (`pmndrs/zustand`),categories/web-ui/state-management/tanstack-persist.md,,no
 Zyte Scrapy Cloud,categories/web-scraping/crawling-tools/scrapyd.md,,no
 剪映专业版 / CapCut (closed app),categories/media-processing/nle-automation/INDEX.md,,no
