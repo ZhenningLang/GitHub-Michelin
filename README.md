@@ -1000,6 +1000,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | Unlicensed (EULA) | C (6/6) | [EN](categories/reading-tools/just-read.md) · [中](categories/reading-tools/just-read.zh.md) |
 | **FreshRSS** | A free, self-hostable news aggregator… | AGPL-3.0 | B (6/6) | [EN](categories/reading-tools/freshrss.md) · [中](categories/reading-tools/freshrss.zh.md) |
 | **Bilingual Book Maker** | Make bilingual epub books Using AI translate | MIT | A (5/6) | [EN](categories/reading-tools/bilingual-book-maker.md) · [中](categories/reading-tools/bilingual-book-maker.zh.md) |
+| **TranslateBooksWithLLMs** | Desktop app + CLI that translates whole EPUB/DOCX/SRT/TXT files with local or cloud LLMs, keeping formatting, with glossary and resume. | AGPL-3.0 | C (6/6) | [EN](categories/reading-tools/translate-books-with-llms.md) · [中](categories/reading-tools/translate-books-with-llms.zh.md) |
 
 ### speech
 

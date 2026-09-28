@@ -287,6 +287,7 @@ DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
+Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
@@ -487,6 +488,7 @@ Linux `tc` + `fq_codel` by hand,categories/networking/wondershaper.md,,no
 LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
+LLM-Subtrans (`machinewrapped/llm-subtrans`),categories/reading-tools/translate-books-with-llms.md,,no
 LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
 lm-evaluation-harness,categories/llm-eval/swe-bench.md,,no
