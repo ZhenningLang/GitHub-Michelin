@@ -6,17 +6,17 @@ category: work-state
 tags: [autonomous-loop, claude-code, ralph-technique, exit-detection, bash, circuit-breaker, rate-limiting, tmux-monitor, prd-import, single-provider]
 language: Shell
 license: MIT
-maturity: v0.11.x line per README, active as of 2026-06; no tagged GitHub releases (see caveats)
-last_verified: 2026-06-26
+maturity: v0.11.5 line per README, last main-branch commit 2026-07-10, ~9.6k stars (as of 2026-09); no tagged GitHub releases (see caveats)
+last_verified: 2026-09-28
 type: tool
 upstream:
-  pushed_at: 2026-06-20T02:33:03Z
+  pushed_at: 2026-09-19T02:33:45Z
   default_branch: main
-  default_branch_sha: 0c1d7bf8395ceb669482c3443162e2cf381f2040
+  default_branch_sha: e8533cc3f00900e6f3f4acf8c8761e1db4a26e47
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:56:01Z
+  computed_at: 2026-09-28T04:25:32Z
   overall: C
   overall_score: 2.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 74
+        last_commit_age_days: 79
         active_weeks_13: 1
         carve_out: null
     responsiveness:
@@ -49,15 +49,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 391
-        last_commit_age_days: 74
+        repo_age_days: 397
+        last_commit_age_days: 79
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 25
-        top1_share: 0.669
-        top3_share: 0.838
+        top1_share: 0.641
+        top3_share: 0.824
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -82,6 +82,28 @@ A Bash harness that wraps the Claude Code CLI in an autonomous "Ralph" loop — 
 You're a developer who has a well-scoped backlog — a `fix_plan.md` checklist, or a PRD you can convert into one — and you want Claude Code to grind through it unattended instead of you babysitting one prompt at a time. You've tried naive "just keep saying continue" loops and hit the two failure modes: either Claude declares victory early ("Phase complete!") and stops with work left, or it never stops and you wake up to a depleted API budget and a circuit you wish had tripped. You want the autonomy of Geoffrey Huntley's Ralph technique without hand-rolling the safety rails.
 
 So you `ralph-enable` (or `ralph-import requirements.md`) in your repo, drop your goals into `.ralph/PROMPT.md` and tasks into `.ralph/fix_plan.md`, and run `ralph --monitor`. The harness loops Claude Code, and its exit gate only fires when BOTH heuristic completion indicators AND an explicit `EXIT_SIGNAL: true` agree — so "Phase complete, moving on" with `EXIT_SIGNAL: false` keeps going. Meanwhile the tmux dashboard shows loop count, API calls vs. your hourly cap, and circuit-breaker state; the breaker opens after 3 no-progress loops or 5 identical errors; rate limiting (default 100 calls/hr) and per-loop timeouts keep cost bounded. Git backup branches (`--backup` / `--rollback`) give you an undo, and you can fan it into Docker or E2B sandboxes if you don't want it touching your host.
+
+## How it works
+
+Ralph replaces "you typing continue" with a supervisor script around the Claude Code CLI. Each loop it spawns `claude -p` with your `.ralph/PROMPT.md` as the standing instruction and one unfinished `fix_plan.md` checkbox as the current objective, reading the CLI's JSON output (text parsing as fallback) and resuming the same session via `--resume` so context carries across iterations. A response analyzer then decides two things: did the loop make *progress* (measured by new git commits and checked-off boxes — false-positive-prone heuristics, best-effort by design), and is the work *done*, which requires BOTH two completion indicators and an explicit `EXIT_SIGNAL: true` in Claude's reply before the gate lets the loop stop. Guardrails wrap the whole thing: an hourly rate limit (100 calls/hr default), per-loop timeouts, a circuit breaker that opens on 3 no-progress loops or 5 identical errors, and 5-hour API-cap detection. What stays entirely yours: the quality of the checklist (Ralph executes `fix_plan.md`, it does not write or validate your plan), your API budget, and reviewing the commits the loop produced — backup branches exist because unattended loops make messes.
+
+![ralph-claude-code — backbone user story](../../../assets/flow/ralph-claude-code.svg)
+
+<!-- flow-steps:begin (generated from flows/ralph-claude-code.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the harness once — clone the repo and run the installer — `git clone https://github.com/frankbria/ralph-claude-code.git · ./install.sh`
+2. **You**: Enable Ralph in an existing project, importing tasks from a PRD — `ralph-enable --from prd ./docs/requirements.md`
+3. **Ralph for Claude Code**: Scaffolds the .ralph/ workspace — goals in PROMPT.md, tasks in fix_plan.md — component: `.ralph/ workspace`
+4. **You**: Review the checklist, then start the monitored loop — `ralph --monitor`
+5. **Ralph for Claude Code**: Each loop re-invokes Claude Code; rate limit and circuit breaker cap cost and stalls
+6. **Ralph for Claude Code**: Exits only when completion heuristics AND EXIT_SIGNAL: true both fire — component: `dual-condition exit gate`
+
+**Value**: The checklist gets ground down unattended and the loop stops when work is provably done — not when Claude declares victory
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -125,15 +147,15 @@ So you `ralph-enable` (or `ralph-import requirements.md`) in your repo, drop you
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — unknown.
-- **Maintenance** — last push 2026-06 (as of 2026-06) on a v0.11.x line, so actively worked, but **no tagged GitHub releases** exist — the version comes from in-repo README text, not published artifacts. A v0.10 release already moved all files into `.ralph/` (a breaking layout change needing `ralph-migrate`), so expect flags/layout to keep shifting. [推断]
-- **Governance / bus factor** — `[推断]` single-maintainer, `User`-owned repo (`frankbria`); no releases, no team or foundation. ~9.5k stars on a one-person harness is a bus-factor flag — abandonment and flag/layout drift risk is non-trivial for anything you can't re-tool.
-- **Age & Lindy** — created 2025-08, so under a year old as of 2026-06 and still sub-1.0: too young for a Lindy verdict. It packages an established *technique* (Geoffrey Huntley's Ralph loop), but this particular harness is unproven on longevity.
+- **Maintenance (2026-09).** Last default-branch commit 2026-07-10 (~80 days before this check); GitHub `pushed_at` 2026-09-19 reflects non-default-branch activity only. Still a v0.11.x line per the README (v0.11.5, "final polish" toward v1.0 claimed), but **no tagged GitHub releases** exist — the version comes from in-repo README text, not published artifacts. A v0.10 release already moved all files into `.ralph/` (a breaking layout change needing `ralph-migrate`), so expect flags/layout to keep shifting. The default-branch slowdown since July is the momentum signal to watch.
+- **Governance / bus factor (2026-09).** `[推断]` single-maintainer-led, `User`-owned repo (`frankbria`); top committer holds ~64% of 12-month commits; no releases, no team or foundation. ~9.6k stars on an essentially one-person harness is a bus-factor flag — abandonment and flag/layout drift risk is non-trivial for anything you can't re-tool.
+- **年龄与 Lindy** — created 2025-08, still sub-1.0 as of 2026-09 (~13 months old): too young for a Lindy verdict. It packages an established *technique* (Geoffrey Huntley's Ralph loop), but this particular harness is unproven on longevity.
 - **Risk flags** — `[未验证]` MIT, no relicense history. The structural risk is **provider lock-in**: it wraps Anthropic's `claude` CLI specifically (multi-provider is a *planned*, not shipped, pre-1.0 item). Operationally it makes many unattended paid API calls, so cost runaway is real — the circuit breaker and rate limit are the only guardrails.
 
 ## Caveats (unverified)
 
 - [未验证] **No tagged GitHub releases.** `gh repo view` returns `latestRelease: null` and the Releases page says "There aren't any releases here." The "v0.11.5" / "v0.11.x" version and the entire changelog (784 tests, dual-condition gate fixes, etc.) come from the in-repo README text, not a published release artifact — treat version specifics as repo-self-reported.
-- [未验证] **Star count ~9.5k** (gh reported 9,464 as of 2026-06-26). GitHub stars in this ecosystem are unreliable and date-sensitive; indicative only.
+- [未验证] **Star count ~9.6k** (GitHub API reported 9,640 as of 2026-09-28). GitHub stars in this ecosystem are unreliable and date-sensitive; indicative only.
 - [推断] **Single-maintainer / sub-1.0 churn.** Owner-named repo, no releases, a documented breaking `.ralph/` layout migration, and README notes of bash-3.x and false-positive fixes suggest active-but-unstable surface; abandonment and flag/layout drift risk is non-trivial for anything you can't re-tool.
 - [未验证] **Exact safety-gate behavior** — the dual-condition exit (`completion_indicators >= 2` AND `EXIT_SIGNAL: true`), circuit-breaker thresholds (3 no-progress loops / 5 identical errors), 100 calls/hr default, and 5-hour API-limit detection are all from the README; not independently exercised here, and LLM-driven completion heuristics are inherently best-effort, not guaranteed.
 - [推断] **Multi-provider support is aspirational.** The README frames provider abstraction as a planned pre-1.0 item; as of this verification it is a Claude-Code-CLI-only wrapper.
