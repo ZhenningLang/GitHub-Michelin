@@ -3,6 +3,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 1Password / LastPass,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 2captcha-python,categories/captcha/buster.md,,no
 3D-Speaker,categories/speech/antspeaker.md,,no
+@antfu/eslint-config (`antfu/eslint-config`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 @github/hotkey (`github/hotkey`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 @ngneat/falso,categories/dev-utilities/data-tools/faker-js.md,,no
 @xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
@@ -189,6 +190,7 @@ Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
 cffi / ctypes,categories/python-tooling/cython.md,,no
 chafa,categories/terminal-ui/asciify.md,,no
 Chance.js,categories/dev-utilities/data-tools/faker-js.md,,no
+Changesets (`changesets/changesets`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Character role-play prompt,categories/agent-skills/context-engineering/soul-md.md,,no
 Character.AI and other hosted persona bots,categories/agent-skills/distilly.md,,no
 Charles,categories/debugging-proxy/whistle.md,,no
@@ -867,6 +869,7 @@ SeleniumBase,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
 Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/document-management/paperless-ngx.md,,no
 Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
 Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
+semantic-release (`semantic-release/semantic-release`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Semgrep,categories/agent-governance/skillspector.md,,no
 Semrush / Ahrefs,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
 sentence-transformers (SBERT),categories/rag-retrieval/vector-search/text2vec.md,,no
@@ -949,11 +952,13 @@ TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 TrendRadar,categories/reading-tools/follow-builders.md,,no
 Trivy / Grype (scanners),categories/dev-utilities/ops-infra/slim.md,,no
 TrOCR,categories/ocr/INDEX.md,,no
+tsdown (`rolldown/tsdown`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
 tus JavaScript client (tus-js-client),categories/nginx-modules/tusd.md,,no
 Twenty (twentyhq/twenty),categories/team-chat/macro.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
+TypeDoc (`TypeStrong/typedoc`),categories/dev-utilities/editors-and-runtimes/tanstack-config.md,,no
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no
 TypeSafe System One · Jev (hosted),categories/decision-models/simple-jev.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
