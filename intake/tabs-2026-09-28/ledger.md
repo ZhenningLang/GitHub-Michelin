@@ -76,7 +76,7 @@
 | zarazhangrui/follow-builders | add | done | categories/reading-tools/follow-builders.md |  | zarazhangrui/follow-builders |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | ZJU-REAL/Easel | add | running |  |  | zju-real/easel |
-| daeuniverse/dae | add | running |  | 处理中新开的标签 | daeuniverse/dae |
+| daeuniverse/dae | add | done | categories/networking/dae.md | 处理中新开的标签 | daeuniverse/dae |
 | vshulcz/deja-vu | add | running |  | 处理中新开的标签 | vshulcz/deja-vu |
-| maziyarpanahi/openmed | add | pending |  | 处理中新开的标签 | maziyarpanahi/openmed |
+| maziyarpanahi/openmed | add | running |  | 处理中新开的标签 | maziyarpanahi/openmed |
 | NandhaKishorM/laya | add | pending |  | 处理中新开的标签（标签写法 �� | nandhakishorm/laya |

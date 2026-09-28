@@ -8,13 +8,17 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
+[daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[mihomo](https://github.com/MetaCubeX/mihomo),categories/networking/dae.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
+[sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
+[v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no

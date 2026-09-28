@@ -988,6 +988,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **wondershaper** | Use it when one Linux NIC needs a quick up/down bandwidth ceiling without hand-writing tc rules — but it's HTB-era (not bufferbloat-aware like cake/fq_codel) and Linux-only, coasting since 2024-07. | GPL-2.0 | E (4/6) | [EN](categories/networking/wondershaper.md) · [中](categories/networking/wondershaper.zh.md) |
 | **ThriftPy** | Use it only to understand a legacy service still importing thriftpy before migrating — the repo is archived and deprecated, so all new Thrift work should go to the maintained thriftpy2. | MIT | B (5/6) | [EN](categories/networking/thriftpy.md) · [中](categories/networking/thriftpy.zh.md) |
 | **amneziawg-installer** | Use it when DPI blocks plain WireGuard on your network and you want a one-command, in-kernel AmneziaWG server on a clean cheap VPS — but it's Ubuntu/Debian-only, needs AWG-2.0-capable clients, and rebuilds the box into a single-purpose hardened VPN server. | MIT | B (6/6) | [EN](categories/networking/amneziawg-installer.md) · [中](categories/networking/amneziawg-installer.zh.md) |
+| **dae** | Use it when a Linux router or host must split-route a whole LAN between direct and proxy nodes and you want direct traffic forwarded in-kernel via eBPF — but it needs kernel 5.17+, has no GUI or SOCKS/HTTP inbound, and is AGPL-3.0. | AGPL-3.0 | B (6/6) | [EN](categories/networking/dae.md) · [中](categories/networking/dae.zh.md) |
 
 ### nginx-modules
 
