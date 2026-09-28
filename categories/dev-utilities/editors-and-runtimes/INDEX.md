@@ -17,6 +17,7 @@
 | **TanStack CLI** | Use it when you are starting a TanStack Start/Router app and want auth, database, deployment and monitoring composed in as add-ons — not when the stack isn't TanStack, or the project has no `.cta.json` to reconcile against. | B (6/6) | [→](tanstack-cli.md) |
 | **TanStack Devtools** | Use it when your Vite app mounts several TanStack (or your own) library devtools and you want one dockable in-page panel plus click-to-source, stripped from production — not for React internals (use React DevTools), non-Vite/Rspack builds, or a dev server others can reach (open command-injection issue #464). | B (6/6) | [→](tanstack-devtools.md) |
 | **TanStack Config** | Use it when a TypeScript library in a pnpm monorepo should lint (and, legacy, dual-build ESM/CJS) exactly like TanStack's own packages — not for new builds (TanStack itself moves to tsdown) or release pipelines (use Changesets). | B (6/6) | [→](tanstack-config.md) |
+| **TanStack Container** | Use it when your product must run a real Vite / TanStack Start project inside the visitor's browser — install, processes, preview, save/resume — under MIT source with self-hosted assets instead of a closed commercial core — but the npm packages are unpublished as of 2026-09 and the project disclaims being a security boundary. | C (5/6) | [→](tanstack-container.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [TanStack CLI](tanstack-cli.md) | ✅ | B (6/6) | Use it when you are starting a TanStack Start/Router app and want auth, database, deployment and monitoring composed in as add-ons — not when the stack isn't TanStack, or the project has no `.cta.json` to reconcile against. |
 | [TanStack Devtools](tanstack-devtools.md) | ✅ | B (6/6) | Use it when your Vite app mounts several TanStack (or your own) library devtools and you want one dockable in-page panel plus click-to-source, stripped from production — not for React internals (use React DevTools), non-Vite/Rspack builds, or a dev server others can reach (open command-injection issue #464). |
 | [TanStack Config](tanstack-config.md) | ✅ | B (6/6) | Use it when a TypeScript library in a pnpm monorepo should lint (and, legacy, dual-build ESM/CJS) exactly like TanStack's own packages — not for new builds (TanStack itself moves to tsdown) or release pipelines (use Changesets). |
+| [TanStack Container](tanstack-container.md) | ✅ | C (5/6) | Use it when your product must run a real Vite / TanStack Start project inside the visitor's browser — install, processes, preview, save/resume — under MIT source with self-hosted assets instead of a closed commercial core — but the npm packages are unpublished as of 2026-09 and the project disclaims being a security boundary. |
 
 ## What belongs here
 

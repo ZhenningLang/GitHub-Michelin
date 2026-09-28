@@ -103,12 +103,12 @@
 | TanStack/workflow | add | done | categories/workflow-orchestration/tanstack-workflow.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/workflow |
 | TanStack/highlight | add | done | categories/markdown-tools/tanstack-highlight.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/highlight |
 | TanStack/persist | add | done | categories/web-ui/state-management/tanstack-persist.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/persist |
-| TanStack/container | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
+| TanStack/container | add | done | categories/dev-utilities/editors-and-runtimes/tanstack-container.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/container |
 | TanStack/react-charts | add | done | categories/web-ui/charts/tanstack-react-charts.md | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/react-charts |
 | TanStack/bling | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/bling |
 | TanStack/alt-cli | add | running |  | 来源：用户点名收录 TanStack 组织（2026-09-28） | tanstack/alt-cli |
 | TanStack/preact | skip | skipped |  | 不收：fork 自 preactjs/preact，与上游重复 | tanstack/preact |
 | TanStack/tanstack.com | skip | skipped |  | 不收：TanStack 官网/文档站源码，不是可选型的软件 | tanstack/tanstack.com |
 | TanStack/template | skip | skipped |  | 不收：新库空白模板（6 星、174 KB），无实质内容 | tanstack/template |
-| larashero3-dotcom/lieflat-charts | add | pending |  | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
+| larashero3-dotcom/lieflat-charts | add | running |  | 来源：用户点名（2026-09-28） | larashero3-dotcom/lieflat-charts |
 | dzhng/jevgrep | add | pending |  | 处理中新开的标签（标签写法 �� | dzhng/jevgrep |

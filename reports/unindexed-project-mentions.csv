@@ -166,6 +166,7 @@ Browser built-in translation,categories/reading-tools/pair-translate.md,,no
 Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-frameworks/selenium-wire.md,,no
 Browser-native rich-text compose (Gmail/Outlook toolbars),categories/markdown-tools/markdown-here.md,,no
 Browserbase / hosted browser services,categories/agent-skills/engineering/browser-act-skills.md,,no
+BrowserFS,categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 Browserless,categories/media-processing/image-processing/INDEX.md,,no
 Brush,categories/3d-reconstruction/spirula-studio.md,,no
 "Built-in agent compaction (`/compact`, auto-summarize)",categories/agent-tooling/work-state/context-mode.md,,no
@@ -790,6 +791,7 @@ pygame-ce (community edition),categories/game-dev/pygame.md,,no
 pyglet,categories/game-dev/pygame.md,,no
 Pympler,categories/python-tooling/memory-analyzer.md,,no
 pynput,categories/desktop-automation/pyautogui.md,,no
+Pyodide,categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 PyPy,categories/python-tooling/cython.md,,no
 pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
 PyRIT,categories/llm-eval/ai-infra-guard.md,,no
@@ -863,6 +865,7 @@ Rust + PyO3,categories/python-tooling/cython.md,,no
 RxDB (`pubkey/rxdb`),categories/web-ui/data-fetching/tanstack-db.md,,no
 RYS / `mergekit` passthrough (layer-stacking model merges),categories/ml-research/llm-circuit-finder.md,,no
 SAGA GIS,categories/geospatial/qgis.md,,no
+Sandpack (CodeSandbox),categories/dev-utilities/editors-and-runtimes/tanstack-container.md,,no
 Sarama (Go),categories/kafka-tools/kafka-python.md,,no
 ScaNN (Google),categories/rag-retrieval/vector-search/faiss.md,,no
 schedule-x (`schedule-x/schedule-x`),categories/web-ui/component-libraries/tanstack-time.md,,no

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="881" viewBox="0 0 880 881" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.ph{font:600 10px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#6e7781;letter-spacing:.1em}
+@media (prefers-color-scheme: dark){.ph{fill:#8b949e}}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="881" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="745" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="745" rx="10"/>
+<rect class="pillT" x="474" y="40" width="233.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">TanStack Container 做的</text>
+<path class="edge" d="M62,203 L62,227" marker-end="url(#a)"/>
+<path class="edge" d="M62,366 L62,390" marker-end="url(#a)"/>
+<path class="hand" d="M408,437.0 C439.0,437.0 439.0,461 470,461" marker-end="url(#a)"/>
+<path class="hand" d="M472,494.0 C441.0,494.0 441.0,532 410,532" marker-end="url(#a)"/>
+<path class="hand" d="M408,562.5 C439.0,562.5 439.0,601 470,601" marker-end="url(#a)"/>
+<path class="hand" d="M472,621.5 C441.0,621.5 441.0,667 410,667" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="131" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="131" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="ph" x="82" y="101">搭建一次</text>
+<text class="t" x="82" y="118">从本地 tarball 装上 SDK 与运行时这一对包</text>
+<text class="t" x="82" y="140">（npm 尚未发布）</text>
+<text class="c" x="82" y="164">npm install &quot;$SDK_TARBALL&quot;</text>
+<text class="c" x="82" y="183">&quot;$RUNTIME_TARBALL&quot; --ignore-scripts</text>
+<rect class="card" x="40" y="229" width="368" height="137" rx="8"/>
+<rect class="accY" x="40" y="229" width="4" height="137" rx="2"/>
+<circle class="accY" cx="62" cy="253" r="10"/>
+<text class="num" x="62" y="257" text-anchor="middle">2</text>
+<text class="ph" x="82" y="258">搭建一次</text>
+<text class="t" x="82" y="275">构建时跑一次资产装配，产物由你的站点</text>
+<text class="t" x="82" y="297">静态托管</text>
+<text class="c" x="82" y="321">prepareRuntimeAssets(&#x27;public/sandbox&#x27;)</text>
+<text class="comp" x="82" y="344">组件：资产装配脚本</text>
+<rect class="card" x="40" y="392" width="368" height="90" rx="8"/>
+<rect class="accY" x="40" y="392" width="4" height="90" rx="2"/>
+<circle class="accY" cx="62" cy="416" r="10"/>
+<text class="num" x="62" y="420" text-anchor="middle">3</text>
+<text class="ph" x="82" y="421">每次会话</text>
+<text class="t" x="82" y="438">在页面代码里用项目文件建一个工作区会话</text>
+<text class="c" x="82" y="462">new AgentSession(files,options)</text>
+<rect class="cardT" x="472" y="437" width="368" height="114" rx="8"/>
+<rect class="accT" x="472" y="437" width="4" height="114" rx="2"/>
+<circle class="accT" cx="494" cy="461" r="10"/>
+<text class="num" x="494" y="465" text-anchor="middle">4</text>
+<text class="ph" x="514" y="466">每次会话</text>
+<text class="t" x="514" y="483">访客浏览器里启动内核：虚拟文件系统、QuickJ</text>
+<text class="t" x="514" y="505">S、WASM 编译器</text>
+<text class="comp" x="514" y="533">组件：worker 内核</text>
+<rect class="card" x="40" y="508" width="368" height="109" rx="8"/>
+<rect class="accY" x="40" y="508" width="4" height="109" rx="2"/>
+<circle class="accY" cx="62" cy="532" r="10"/>
+<text class="num" x="62" y="536" text-anchor="middle">5</text>
+<text class="ph" x="82" y="537">每次会话</text>
+<text class="t" x="82" y="554">对虚拟文件系统运行项目命令</text>
+<text class="c" x="82" y="578">session.run({command:&#x27;node&#x27;,args:[&#x27;/check.</text>
+<text class="c" x="82" y="597">cjs&#x27;]})</text>
+<rect class="cardT" x="472" y="577" width="368" height="89" rx="8"/>
+<rect class="accT" x="472" y="577" width="4" height="89" rx="2"/>
+<circle class="accT" cx="494" cy="601" r="10"/>
+<text class="num" x="494" y="605" text-anchor="middle">6</text>
+<text class="ph" x="514" y="606">每次会话</text>
+<text class="t" x="514" y="623">在标签页里跑起宿主进程，把它的端口代理进隔</text>
+<text class="t" x="514" y="645">离预览框</text>
+<rect class="card" x="40" y="643" width="368" height="112" rx="8"/>
+<rect class="accY" x="40" y="643" width="4" height="112" rx="2"/>
+<circle class="accY" cx="62" cy="667" r="10"/>
+<text class="num" x="62" y="671" text-anchor="middle">7</text>
+<text class="ph" x="82" y="672">每次会话</text>
+<text class="t" x="82" y="689">存档写进浏览器存储，重载后恢复，不用</text>
+<text class="t" x="82" y="711">重装依赖</text>
+<text class="c" x="82" y="735">session.snapshot()</text>
+<rect class="val" x="28" y="787" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="811">价值</text>
+<text class="valT" x="48" y="835">真实的 Vite 或 Start 应用在浏览器标签页里运行、预览、存档恢复——服务器只需托管静态文件</text>
+</svg>
