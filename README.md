@@ -882,6 +882,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 
 | **TanStack DB** | Use it when every view demands its own join endpoint and every mutation hand-patches the query cache — normalized client-side collections with differential-dataflow live queries and optimistic transactions; beta 0.x, not a client-state store or a durable offline database. | MIT | B (6/6) | [EN](categories/web-ui/data-fetching/tanstack-db.md) · [中](categories/web-ui/data-fetching/tanstack-db.zh.md) |
 
+| **TanStack Table** | Use it when a table must sort, filter, paginate, group and select rows but the exact `<table>` DOM and styles must stay yours — a headless engine owns the state and row models; it ships no markup, no fetching and no virtualization. | MIT | A (6/6) | [EN](categories/web-ui/component-libraries/tanstack-table.md) · [中](categories/web-ui/component-libraries/tanstack-table.zh.md) |
+
 ### proxy-pool
 
 | Project | Use when | License | Health | Page |

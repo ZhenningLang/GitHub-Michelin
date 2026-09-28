@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Table does", "zh": "TanStack Table 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the adapter for your framework", "zh": "安装本框架的适配包", "code": "npm install @tanstack/react-table"},
+    {"lane": "you", "en": "Declare exactly the features this table uses", "zh": "声明这张表要用的全部功能", "code": "tableFeatures({ rowSortingFeature, sortedRowModel: createSortedRowModel() })", "component": {"en": "tableFeatures()", "zh": "tableFeatures()"}},
+    {"lane": "you", "en": "Define columns and data, then create the table in your component", "zh": "定义列和数据，在组件里创建表格实例", "code": "useTable({ features, columns, data })"},
+    {"lane": "them", "en": "Tracks sorting, filtering, pagination and selection state and computes the rows that should be visible", "zh": "记账排序、过滤、分页与选行状态，算出该显示哪些行", "component": {"en": "table-core (row models)", "zh": "table-core（行模型）"}},
+    {"lane": "you", "en": "Render its header groups, rows and cells as your own markup", "zh": "把它的表头组、行、单元格渲染成你自己的标签", "code": "<table.FlexRender cell={cell} />"},
+    {"lane": "them", "en": "A header click flips the sort order; only the affected row models recompute", "zh": "点击表头即切换排序，只有受影响的部分重算"}
+  ],
+  "value": {"en": "A fully interactive datagrid without hand-writing sorting/filtering/pagination state logic — markup, CSS and design system stay 100% yours", "zh": "不手写排序／过滤／分页的状态逻辑就有可交互表格——标签、样式、设计系统 100% 归你"},
+  "sources": [
+    "docs/framework/react/quick-start.md (npm install @tanstack/react-table; useTable({ features, columns, data }); <table.FlexRender cell={cell} />; sorting example with rowSortingFeature, sortedRowModel: createSortedRowModel(), sortFns; header.column.getToggleSortingHandler())",
+    "docs/guide/features.md (tableFeatures registers features, row models and function maps; feature-gated APIs)",
+    "docs/guide/row-models.md (core row model automatic; factories added per need; memoized pipeline)"
+  ]
+}

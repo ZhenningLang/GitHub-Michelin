@@ -12,6 +12,7 @@
 | **Material UI (MUI)** | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | A（6/6） | [→](material-ui.zh.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | B（6/6） | [→](radix-ui.zh.md) |
 | **shadcn/ui** | 一套精心设计、无障碍的 React 组件，以及一种代码分发平台——你把组件复制进项目，完全拥有它们。基于 Tailwind CSS 和 Radix UI 原语构建。 | A（6/6） | [→](shadcn-ui.zh.md) |
+| **TanStack Table** | 表格要排序、过滤、分页、分组、选行，但 `<table>` 的 DOM 和样式必须完全归你——无头引擎算状态和行模型，标记由你自己渲染。 | A（6/6） | [→](tanstack-table.zh.md) |
 
 ## 什么该放这里
 

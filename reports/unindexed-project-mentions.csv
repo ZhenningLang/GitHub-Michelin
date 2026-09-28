@@ -65,6 +65,7 @@ AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
 AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
+AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
@@ -556,6 +557,7 @@ Markdown plus a hand-rolled template layer,categories/markdown-tools/mdx.md,,no
 markdown-nice (mdnice),categories/ai-design-generation/html-anything.md,,no
 markdown-to-image (gcui-art),categories/ai-design-generation/html-anything.md,,no
 Marp,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
+Material React Table (`KevinVandy/material-react-table`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Mathpix,categories/ocr/latex-ocr.md,,no
 Mattermost Cloud,categories/team-chat/mattermost.md,,no
 Maxwell's Daemon,categories/databases/data-sync/python-mysql-replication.md,,no
@@ -597,6 +599,7 @@ Motion Canvas,categories/video-production/hyperframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
 Mozilla Readability (library),categories/reading-tools/just-read.md,,no
+MUI X Data Grid (`mui/mui-x`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
 Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
@@ -778,6 +781,7 @@ Raycast,categories/dev-utilities/data-tools/flashlight.md,,no
 Raylib (+ python bindings),categories/game-dev/pygame.md,,no
 React Hook Form (`react-hook-form/react-hook-form`),categories/web-ui/forms/tanstack-form.md,,no
 React Router,categories/web-ui/frameworks/tanstack-router.md,,no
+react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-virtualized (`bvaughn/react-virtualized`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-virtuoso (`petyosi/react-virtuoso`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 react-window (`bvaughn/react-window`),categories/web-ui/virtualization/tanstack-virtual.md,,no

@@ -12,6 +12,7 @@
 | **Material UI (MUI)** | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | A (6/6) | [→](material-ui.md) |
 | **Radix UI Primitives** | Radix Primitives is an open-source UI component library for building high-quality, accessible design systems and web apps. Maintained by @workos. | B (6/6) | [→](radix-ui.md) |
 | **shadcn/ui** | A set of beautifully-designed, accessible React components and a code distribution platform that you copy into your project and own completely — built on Tailwind CSS and Radix UI primitives. | A (6/6) | [→](shadcn-ui.md) |
+| **TanStack Table** | Your table must sort, filter, paginate, group and select rows, but the exact `<table>` DOM and styles must stay yours — a headless engine computes the state and row models while you write the markup. | A (6/6) | [→](tanstack-table.md) |
 
 ## What belongs here
 

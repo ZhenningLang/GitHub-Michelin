@@ -879,6 +879,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | **TanStack DB** | 每个视图都要求单开联表接口、每次写操作都要手补查询缓存时用它——客户端规范化集合加差分数据流活查询和乐观事务；beta 0.x，不是客户端状态库，也不是持久离线数据库。 | MIT | B（6/6） | [中](categories/web-ui/data-fetching/tanstack-db.zh.md) · [EN](categories/web-ui/data-fetching/tanstack-db.md) |
 
+| **TanStack Table** | 表格要排序、过滤、分页、分组、选行，但 `<table>` 的 DOM 和样式必须完全归你时用它——无头引擎管状态和行模型；它不交付标记、不取数、不带虚拟滚动。 | MIT | A（6/6） | [中](categories/web-ui/component-libraries/tanstack-table.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-table.md) |
+
 ### proxy-pool
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
