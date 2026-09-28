@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "last30days does",
+    "zh": "last30days 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your coding agent",
+      "zh": "把这个 skill 装进你的编码 agent",
+      "code": "npx skills add mvanhorn/last30days-skill -g",
+      "component": {
+        "en": "SKILL.md + Python engine",
+        "zh": "SKILL.md＋Python 引擎"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "First run: setup wizard installs free CLIs and asks before reading your browser's X cookies",
+      "zh": "首次运行：安装向导装好免费 CLI，读浏览器里的 X 登录前先征求同意",
+      "component": {
+        "en": "setup wizard",
+        "zh": "安装向导"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Type a person, company, product or \"X vs Y\"",
+      "zh": "输入一个人名、公司、产品，或“X vs Y”",
+      "code": "/last30days Peter Steinberger"
+    },
+    {
+      "lane": "them",
+      "en": "Your agent resolves the handles, subreddits and repos that matter and writes a query plan",
+      "zh": "你的 agent 先找出相关的账号、子版块和仓库，写一份查询计划",
+      "component": {
+        "en": "host model as planner",
+        "zh": "宿主模型当规划器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The engine searches every enabled source in parallel, scores by engagement and merges the same story",
+      "zh": "引擎并行搜所有已启用的来源，按互动量打分，把同一件事合并成一簇",
+      "component": {
+        "en": "scripts/last30days.py",
+        "zh": "scripts/last30days.py"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Your agent writes one cited brief and saves it to your research folder",
+      "zh": "你的 agent 写出一份带引用的简报，并存进研究目录",
+      "code": "~/Documents/Last30Days/"
+    }
+  ],
+  "value": {
+    "en": "One cited brief of what people actually said this month across Reddit, X, YouTube and HN — you stop opening tabs thread by thread",
+    "zh": "一份带引用的简报，讲清本月 Reddit、X、YouTube、HN 上的真实讨论——不用再逐个翻帖子"
+  },
+  "sources": [
+    "README top install block (/plugin marketplace add mvanhorn/last30days-skill; npx skills add mvanhorn/last30days-skill -g)",
+    "README 'Install' → 'Manual (developer)' (setup wizard unlocks more sources on first run) and SKILL.md 'Step 0: First-Run Setup Wizard' (cookie consent via AskUserQuestion; installs yt-dlp, Digg, arXiv, Techmeme CLIs)",
+    "README example '/last30days Peter Steinberger' and 'How it works' 1-6",
+    "SKILL.md 'Step 0.55: Pre-Research Intelligence' and 'Step 0.75: Generate Query Plan (YOU are the planner)'",
+    "CONCEPTS.md 'Engine' (scripts/last30days.py) and 'Candidate' (cross-stream fusion by normalized URL)",
+    "README 'Configuration' (LAST30DAYS_MEMORY_DIR defaults to ~/Documents/Last30Days/)"
+  ]
+}

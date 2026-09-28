@@ -44,9 +44,9 @@
 | leejet/stable-diffusion.cpp | add | done | categories/on-device-ml/stable-diffusion-cpp.md |  | leejet/stable-diffusion.cpp |
 | macro-inc/macro | add | done | categories/team-chat/macro.md |  | macro-inc/macro |
 | mikiarlo3/ai-copywriter | add | done | categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md |  | mikiarlo3/ai-copywriter |
-| mvanhorn/last30days-skill | add | running |  |  | mvanhorn/last30days-skill |
+| mvanhorn/last30days-skill | add | done | categories/deep-research/last30days.md |  | mvanhorn/last30days-skill |
 | nexu-io/open-design | sync | running |  |  | nexu-io/open-design |
-| nicedreamzapp/claude-code-local | add | pending |  |  | nicedreamzapp/claude-code-local |
+| nicedreamzapp/claude-code-local | add | running |  |  | nicedreamzapp/claude-code-local |
 | op7418/Humanizer-zh | sync | pending |  |  | op7418/humanizer-zh |
 | open-slide/open-slide | add | pending |  |  | open-slide/open-slide |
 | openclaw/openclaw | sync | pending |  |  | openclaw/openclaw |

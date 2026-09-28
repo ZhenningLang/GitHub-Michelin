@@ -549,6 +549,7 @@ mcp-memory-service,categories/agent-memory/coding-agent-memory/engram.md,,no
 mcp-scan (Invariant Labs),categories/llm-eval/ai-infra-guard.md,,no
 mdcat,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Mechanistic-interpretability circuit tooling (e.g. TransformerLens),categories/ml-research/llm-circuit-finder.md,,no
+MediaCrawler,categories/deep-research/last30days.md,,no
 MediaPipe LLM Inference API (Google),categories/on-device-ml/litert-lm.md,,no
 MediaPipe LLM Inference Studio (Google),categories/on-device-ml/ai-edge-gallery.md,,no
 Megatron-LM,categories/llm-training/colossalai.md,,no

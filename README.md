@@ -265,6 +265,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | MIT | B (6/6) | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | Apache-2.0 | B (4/6) | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
 | **Hyperresearch** | Use it when you're in Claude Code and need a high-stakes, citation-audited research report — a 16-step adversarial pipeline plus a persistent source vault; heavy on time and tokens, Claude-Code-only. | MIT | B (5/6) | [EN](categories/deep-research/hyperresearch.md) · [中](categories/deep-research/hyperresearch.zh.md) |
+| **last30days** | Use it when you want your agent to brief you on what Reddit, X, YouTube, HN and Polymarket said about a topic in the last 30 days, ranked by engagement — but it loads a ~258 KB skill prompt per call and leans on scraping and browser-session cookies. | MIT | B (6/6) | [EN](categories/deep-research/last30days.md) · [中](categories/deep-research/last30days.zh.md) |
 
 ### ai-code-review
 

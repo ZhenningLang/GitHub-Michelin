@@ -262,6 +262,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | MIT | B（6/6） | [EN](categories/deep-research/storm.md) · [中](categories/deep-research/storm.zh.md) |
 | **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | Apache-2.0 | B（4/6） | [EN](categories/deep-research/node-deepresearch.md) · [中](categories/deep-research/node-deepresearch.zh.md) |
 | **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | MIT | B（5/6） | [中](categories/deep-research/hyperresearch.zh.md) · [EN](categories/deep-research/hyperresearch.md) |
+| **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | MIT | B（6/6） | [中](categories/deep-research/last30days.zh.md) · [EN](categories/deep-research/last30days.md) |
 
 ### ai-code-review
 
