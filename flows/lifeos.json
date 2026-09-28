@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {"en": "LifeOS does", "zh": "LifeOS 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Hand the install page to the AI harness you already use and ask it to install",
+      "zh": "把安装页交给你在用的 AI harness，让它来装",
+      "code": "Read https://ourlifeos.ai/install and install LifeOS for me.",
+      "component": {"en": "Agentic installer skill", "zh": "Agent 安装技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Detects your OS, harness, and config root — no path is assumed",
+      "zh": "探测你的系统、harness 与配置根目录，不预设路径",
+      "code": "bun Tools/DetectEnv.ts",
+      "component": {"en": "DetectEnv.ts", "zh": "DetectEnv.ts"}
+    },
+    {
+      "lane": "them",
+      "en": "Copies the skill, runtime, and empty USER tree into the config root — additive, dry-run first",
+      "zh": "把技能、运行时和空的 USER 树增补式复制进配置根目录，先 dry-run",
+      "code": "bun Tools/DeployCore.ts --apply",
+      "component": {"en": "DeployCore.ts", "zh": "DeployCore.ts"}
+    },
+    {
+      "lane": "them",
+      "en": "With your yes per step, merges the hooks and wires the lifeos launch command",
+      "zh": "每步经你同意，合并 hooks 并接好 lifeos 启动命令",
+      "code": "bun Tools/InstallHooks.ts --apply",
+      "component": {"en": "InstallHooks.ts + launcher", "zh": "InstallHooks.ts + 启动器"}
+    },
+    {
+      "lane": "you",
+      "en": "Launch with the new command and ask for the onboarding interview",
+      "zh": "用新命令启动，做一次入职访谈",
+      "code": "lifeos",
+      "component": {"en": "Interview workflow", "zh": "Interview 工作流"}
+    },
+    {
+      "lane": "them",
+      "en": "Captures your TELOS — goals, people, preferences — into your USER tree",
+      "zh": "把你的 TELOS——目标、人际、偏好——收进 USER 树"
+    },
+    {
+      "lane": "them",
+      "en": "Every later turn loads your constitution and context; Pulse shows current → ideal state",
+      "zh": "此后每轮加载你的宪法与上下文，Pulse 展示现状→理想状态",
+      "component": {"en": "Pulse dashboard (:31337)", "zh": "Pulse 仪表盘（:31337）"}
+    }
+  ],
+  "value": {
+    "en": "You stop re-explaining who you are: every AI session starts from your captured context instead of zero.",
+    "zh": "你不再每次重新自我介绍：每个 AI 会话从沉淀好的上下文出发，而不是从零开始。"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/danielmiessler/LifeOS/main/LifeOS/INSTALL.md — install prompt line, bun Tools/DetectEnv.ts, bun Tools/DeployCore.ts --apply, bun Tools/InstallHooks.ts --apply, lifeos alias (step 7)",
+    "https://raw.githubusercontent.com/danielmiessler/LifeOS/main/LifeOS/SKILL.md — Workflow Routing (setup/interview/doctor), skill-as-distribution",
+    "https://raw.githubusercontent.com/danielmiessler/LifeOS/main/LifeOS/GETTING-STARTED.md — TELOS capture, Pulse, Doctor capabilities",
+    "https://github.com/danielmiessler/LifeOS README.md — current state → ideal state, Pulse :31337"
+  ]
+}
