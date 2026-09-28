@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "dbskill makes the agent do",
+    "zh": "dbskill 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install all skills into your agent once",
+      "zh": "一次性把全部技能装进你的 agent",
+      "code": "npx -y skills add dontbesilent2025/dbskill -g --all"
+    },
+    {
+      "lane": "you",
+      "en": "Describe your real business or content problem to the entry skill",
+      "zh": "把真实的生意或内容卡点讲给主入口",
+      "code": "/dbs",
+      "component": {"en": "dbs router skill", "zh": "dbs 路由技能"}
+    },
+    {
+      "lane": "them",
+      "en": "Reads the conversation, picks one lead skill plus at most two helpers",
+      "zh": "读对话，选 1 个主技能，最多再配 2 个辅助"
+    },
+    {
+      "lane": "them",
+      "en": "Hands you a ready-to-send prompt and explains why those skills",
+      "zh": "说明推荐理由，给你一段可直接发送的提示词"
+    },
+    {
+      "lane": "you",
+      "en": "Send that prompt to the chosen skill",
+      "zh": "把提示词发给选中的技能",
+      "code": "/dbs-diagnosis · /dbs-hook · /dbs-content-value"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the author's framework and returns one judgment plus next actions",
+      "zh": "套作者的框架，交回一份判断和下一步动作",
+      "component": {"en": "SKILL.md + knowledge pack", "zh": "SKILL.md + 知识包"}
+    }
+  ],
+  "value": {
+    "en": "You get an opinionated diagnosis with a concrete next step instead of generic advice",
+    "zh": "拿到有立场的诊断和能立刻动手的下一步，而不是泛泛建议"
+  },
+  "sources": [
+    "https://github.com/dontbesilent2025/dbskill README 安装 (npx -y skills add dontbesilent2025/dbskill -g --all), 快速开始 (/dbs, /dbs-diagnosis, /dbs-content-value, /dbs-hook) and dbskill 怎样工作 (1 lead + up to 2 helper skills, ready-to-send prompt) — main @ a0e6fa35, 2026-09-28",
+    "skills/dbs/SKILL.md (router responsibilities: task orchestration, numbered prompts, version check)"
+  ]
+}
