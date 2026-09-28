@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "TanStack Ranger does", "zh": "TanStack Ranger 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the React adapter", "zh": "安装 React 适配层", "code": "npm install @tanstack/react-ranger"},
+    {"lane": "you", "en": "Hand the hook your values, limits and step size", "zh": "把数值、上下限和步长交给 hook", "code": "useRanger({ values, min: 0, max: 100, stepSize: 5, onChange })", "component": {"en": "useRanger()", "zh": "useRanger()"}},
+    {"lane": "them", "en": "While a thumb is pressed it tracks the pointer across the document and snaps pixels to stepped values", "zh": "拖把手时它跟踪 document 上的指针，把像素吸附成步进值", "component": {"en": "Ranger core class", "zh": "Ranger 核心类"}},
+    {"lane": "you", "en": "Place your own track and thumbs using its percentages and handle objects", "zh": "用它的百分比和把手对象摆放自己的轨道与把手", "code": "rangerInstance.getPercentageForValue(value)"},
+    {"lane": "them", "en": "On release or arrow-key step it sorts the values and fires onChange with the final set", "zh": "松手或按方向键后排序数值，带最终结果触发 onChange"}
+  ],
+  "value": {"en": "Multi-handle, stepped sliders in markup and CSS that stay entirely yours — the drag tracking, snapping and value math are no longer yours to write", "zh": "多把手、可步进的滑块，标记和 CSS 完全归你——拖拽跟踪、吸附和数值数学不用再自己写"},
+  "sources": [
+    "docs/framework/react/react-ranger.md (npm install @tanstack/react-ranger)",
+    "docs/quick-start.md and examples/react/basic/src/main.tsx (useRanger({ values, min: 0, max: 100, stepSize: 5, onChange }), rangerInstance.getPercentageForValue(value), handles())",
+    "packages/ranger/src/index.ts (handlePress attaches mousemove/touchmove on document; handleDrag -> roundToStep; handleRelease sorts and calls onChange; handleKeyDown arrow keys)",
+    "docs/framework/react/api/basic.md (onChange called when the handle is released; handles() shape)"
+  ]
+}
