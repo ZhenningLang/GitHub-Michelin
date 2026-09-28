@@ -14,6 +14,7 @@
 | **Bun** | 当你想要一个极速一体化 JavaScript/TypeScript 工具集（运行时、打包器、测试运行器、包管理器）集成在单个二进制文件中时用它——但商用前请核实许可证。 | A（5/6） | [→](bun.zh.md) |
 | **Zed** | 当你想要一个高性能原生代码编辑器，支持实时多人协作时用它——但它的扩展生态远小于 VS Code，且仅约 4 年历史。 | A（4/6） | [→](zed.zh.md) |
 | **scriptc** | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 | C（6/6） | [→](scriptc.zh.md) |
+| **TanStack CLI** | 当你要起一个 TanStack Start／Router 应用、希望认证、数据库、部署、监控以 add-on 方式组合进来时用它——技术栈不在 TanStack 上、或项目没有 `.cta.json` 可对照时不要用。 | B（6/6） | [→](tanstack-cli.zh.md) |
 
 ## 对比矩阵
 
@@ -26,6 +27,7 @@
 | [Bun](bun.zh.md) | ✅ | A（5/6） | 当你想要一个极速一体化 JavaScript/TypeScript 工具集（运行时、打包器、测试运行器、包管理器）集成在单个二进制文件中时用它——但商用前请核实许可证。 |
 | [Zed](zed.zh.md) | ✅ | A（4/6） | 当你想要一个高性能原生代码编辑器，支持实时多人协作时用它——但它的扩展生态远小于 VS Code，且仅约 4 年历史。 |
 | [scriptc](scriptc.zh.md) | ✅ | C（6/6） | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 |
+| [TanStack CLI](tanstack-cli.zh.md) | ✅ | B（6/6） | 当你要起一个 TanStack Start／Router 应用、希望认证、数据库、部署、监控以 add-on 方式组合进来时用它——技术栈不在 TanStack 上、或项目没有 `.cta.json` 可对照时不要用。 |
 
 ## 什么该放这里
 
