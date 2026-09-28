@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "beads does", "zh": "beads 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the bd CLI once, then initialize it inside your project", "zh": "装一次 bd 命令行，再在项目里初始化", "code": "bd init", "component": {"en": "bd CLI binary", "zh": "bd 命令行二进制"}},
+    {"lane": "them", "en": "Creates a local versioned database and wires its workflow into AGENTS.md and agent hooks", "zh": "建一个本地带版本的数据库，并把用法写进 AGENTS.md 和 agent 钩子", "code": ".beads/embeddeddolt/", "component": {"en": "embedded Dolt", "zh": "内嵌 Dolt"}},
+    {"lane": "you", "en": "Your agent files tasks and records which task blocks which", "zh": "agent 登记任务，并记下谁挡着谁", "code": "bd create \"Title\" -p 0 · bd dep add <child> <parent>"},
+    {"lane": "them", "en": "At every session start, hooks inject the workflow plus saved memories", "zh": "每次开新会话，钩子自动注入用法和存下的记忆", "code": "bd prime", "component": {"en": "agent hooks", "zh": "agent 钩子"}},
+    {"lane": "you", "en": "The agent asks for unblocked work, claims one task, closes it when done", "zh": "agent 要一份没被挡住的活，认领一条，做完关掉", "code": "bd ready · bd update <id> --claim · bd close <id>"},
+    {"lane": "them", "en": "Closing releases what it blocked, so the next ready list follows real dependencies", "zh": "关掉的任务放行它挡住的活，下一份清单按真实依赖排"}
+  ],
+  "value": {"en": "After every compaction or fresh session the agent resumes from a dependency-aware task list, not a stale scratch file", "zh": "每次上下文被压缩或重开会话，agent 都从一张懂依赖的任务单接着干，而不是一份过时的草稿"},
+  "sources": [
+    "https://github.com/gastownhall/beads README Quick Start (install script, bd init, bd setup claude/codex; bd init writes AGENTS.md and installs Claude/Codex integrations)",
+    "README Essential Commands (bd ready, bd create \"Title\" -p 0, bd update <id> --claim, bd dep add <child> <parent>, bd prime, bd remember) and README mermaid flow (bd close releases blockers)",
+    "README Storage Modes (embedded default, data in .beads/embeddeddolt/, single writer)",
+    "docs/getting-started/ide-setup.md (hook-enabled agents: bd prime injects full context at session start)"
+  ]
+}
