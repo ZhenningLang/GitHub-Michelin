@@ -806,6 +806,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **PDFMathTranslate** | Use it when a scientific PDF must be translated without losing formulas and columns — CLI/GUI/Docker, many translators; AGPL, and 1.x pins an old BabelDOC. | AGPL-3.0 | C (5/6) | [EN](categories/pdf-tools/pdfmathtranslate.md) · [中](categories/pdf-tools/pdfmathtranslate.zh.md) |
 | **BabelDOC** | Use it when you need the layout-preserving PDF translation engine (current 0.6) to embed or debug — not an end-user app; AGPL, OpenAI-only, API unsupported. | AGPL-3.0 | C (6/6) | [EN](categories/pdf-tools/babeldoc.md) · [中](categories/pdf-tools/babeldoc.zh.md) |
 | **PDFMathTranslate-next** | Use it when you want BabelDOC 0.6 as a CLI/WebUI with SiliconFlowFree by default — AGPL, Google/Bing gone, last push 2026-05. | AGPL-3.0 | D (4/6) | [EN](categories/pdf-tools/pdfmathtranslate-next.md) · [中](categories/pdf-tools/pdfmathtranslate-next.zh.md) |
+| **pdfcn** | Use it when themed React PDF components and whole document blocks (invoices, reports, labels) should be copy-pasted in via the shadcn CLI on Takumi or Forme — it generates new PDFs only. | MIT | B (6/6) | [EN](categories/pdf-tools/pdfcn.md) · [中](categories/pdf-tools/pdfcn.zh.md) |
 
 ### workflow-orchestration
 

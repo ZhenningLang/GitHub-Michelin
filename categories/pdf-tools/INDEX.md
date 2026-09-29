@@ -20,6 +20,7 @@
 | **PDFMathTranslate** | Use it when a scientific PDF must be translated without losing formulas and columns — CLI/GUI/Docker, many translators; AGPL, and 1.x pins an old BabelDOC. | C (5/6) | [→](pdfmathtranslate.md) |
 | **BabelDOC** | Use it when you need the layout-preserving PDF translation engine (current 0.6) to embed or debug — not an end-user app; AGPL, OpenAI-only, API unsupported. | C (6/6) | [→](babeldoc.md) |
 | **PDFMathTranslate-next** | Use it when you want BabelDOC 0.6 as a CLI/WebUI with SiliconFlowFree by default — AGPL, Google/Bing gone, last push 2026-05. | D (4/6) | [→](pdfmathtranslate-next.md) |
+| **pdfcn** | Use it when themed React PDF components and whole document blocks (invoices, reports, labels) should be copy-pasted in via the shadcn CLI on Takumi or Forme — it generates new PDFs only. | B (6/6) | [→](pdfcn.md) |
 
 
 ## Comparison matrix
@@ -29,6 +30,7 @@
 | [PDF.js](pdfjs.md) | ✅ | A (6/6) | Use it when you need to render or read PDFs in the browser/Node (Firefox's engine) — it doesn't create or edit PDFs. |
 | [pdf-lib](pdf-lib.md) | ✅ | C (4/6) | Use it when you need to create or modify PDFs in JS/TS — in the browser, Node, Deno, or React Native — without native dependencies. |
 | [jsPDF](jspdf.md) | ✅ | B (5/6) | Use it when you need client-side PDF generation from HTML, text, and graphics in the browser — it's creation-only, not for editing existing PDFs. |
+| [pdfcn](pdfcn.md) | ✅ | B (6/6) | Copy-paste React PDF components and themed document blocks over Takumi/Forme WASM engines; no releases to pin, generation-only. |
 | [SAPP](sapp.md) | ✅ | B (5/6) | PHP-native incremental PDF signing and object manipulation that preserves revisions; narrower specification coverage than qpdf and no independently validated PAdES/LTV evidence. |
 | [FPDI](fpdi.md) | ✅ | A (5/6) | Import pages from existing PDFs as templates in PHP writers; the free parser rejects encrypted PDFs and compressed cross-reference streams. |
 | [pyHanko](pyhanko.md) | ✅ | A (6/6) | Python PDF signing, timestamping and validation with documented PAdES/LTV workflows; upstream still labels itself beta. |

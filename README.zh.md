@@ -803,6 +803,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | AGPL-3.0 | C（5/6） | [中](categories/pdf-tools/pdfmathtranslate.zh.md) · [EN](categories/pdf-tools/pdfmathtranslate.md) |
 | **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | AGPL-3.0 | C（6/6） | [中](categories/pdf-tools/babeldoc.zh.md) · [EN](categories/pdf-tools/babeldoc.md) |
 | **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | AGPL-3.0 | D（4/6） | [中](categories/pdf-tools/pdfmathtranslate-next.zh.md) · [EN](categories/pdf-tools/pdfmathtranslate-next.md) |
+| **pdfcn** | 要用 shadcn CLI 把带主题的 React PDF 组件和整页文档模板（发票、报告、面单）复制进项目、底下跑 Takumi 或 Forme 时用它——只生成新 PDF。 | MIT | B（6/6） | [中](categories/pdf-tools/pdfcn.zh.md) · [EN](categories/pdf-tools/pdfcn.md) |
 
 ### workflow-orchestration
 
