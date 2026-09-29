@@ -13,7 +13,7 @@
 | Asymptote-Labs/agent-beacon | sync | done | categories/agent-memory/coding-agent-memory/agent-beacon.md | 新鲜页，sync-entry 按阈值未重核，无改动 | asymptote-labs/agent-beacon |
 | openedclaude/claude-reviews-claude | add | done | categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md | 用户 2026-09-29 12:46 改判收录 | openedclaude/claude-reviews-claude |
 | Piebald-AI/claude-code-system-prompts | add | done | categories/agent-skills/prompt-engineering/claude-code-system-prompts.md | 用户 2026-09-29 12:46 改判收录 | piebald-ai/claude-code-system-prompts |
-| shanraisshan/claude-code-best-practice | add | running |  | 用户 2026-09-29 12:46 改判收录 | shanraisshan/claude-code-best-practice |
+| shanraisshan/claude-code-best-practice | add | done | categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md | 用户 2026-09-29 12:46 改判收录 | shanraisshan/claude-code-best-practice |
 | win4r/MuseAI-Skills | add | running |  | 用户 2026-09-29 12:46 改判收录 | win4r/museai-skills |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | Blinue/Magpie | add | done | categories/media-processing/image-processing/magpie.md | 处理中新开的标签（标签写法 �� | blinue/magpie |

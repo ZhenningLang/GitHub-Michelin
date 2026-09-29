@@ -38,6 +38,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
+`hesreallyhim/awesome-claude-code`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
@@ -57,6 +58,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `tcconfig` (Python),categories/networking/wondershaper.md,,no
 `trickle`,categories/networking/wondershaper.md,,no
 `woff2`/`sfnt2woff` CLIs,categories/dev-utilities/data-tools/fonttools.md,,no
+`ykdojo/claude-code-tips`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no
 A blocking Lua Redis client (redis-lua),categories/nginx-modules/lua-resty-redis.md,,no
 A custom userscript/proxy,categories/reading-tools/margin-read.md,,no
