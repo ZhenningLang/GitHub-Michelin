@@ -52,7 +52,6 @@
 | **proxy-pool** | 面向网络爬虫的自托管轮换代理 IP 池。 | [→](categories/proxy-pool/INDEX.zh.md) |
 | **debugging-proxy** | HTTP(S)/WebSocket 调试代理——抓取、检查、改写并 mock 流量。 | [→](categories/debugging-proxy/INDEX.zh.md) |
 | **web-scraping** | 从网页抓取并提取内容/结构——文章正文提取与 HTML 解析。 | [→](categories/web-scraping/INDEX.zh.md) |
-
 | **auth** | 认证与授权库——登录提供方与权限规则。 | [→](categories/auth/INDEX.zh.md) |
 | **databases** | 数据库与数据库工具——客户端、GUI、同步，以及 Redis/ES 兼容存储。 | [→](categories/databases/INDEX.zh.md) |
 | **object-storage** | 你自建的 S3 兼容对象存储服务端。 | [→](categories/object-storage/INDEX.zh.md) |

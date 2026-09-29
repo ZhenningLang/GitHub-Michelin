@@ -232,9 +232,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OmO** | 想把整件任务交给终端 agent 时用它——`ulw`、`mass ulw` 关键词把工作摊成一张按类别路由、跨订阅模型的依赖图，验证通过才算完成，记忆沉淀进 git——但 SUL-1.0 限制商业再分发，token 是按机队花的，十个月的热度 star 是风险信号而不是 Lindy 记录。 | SUL-1.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md) |
 | **Agent-Native** | 你想让产品里的 agent 真的把活干完，并愿意让一个 TypeScript 应用接管界面、服务端与 Postgres，好让按钮和工具共用同一份实现——但它是半年大的 v0.x，且许可证存疑。 | MIT（声明为 MIT，但无 LICENSE 文件） | C（4/6） | [中](categories/agent-frameworks/workflow-builders/agent-native.zh.md) · [EN](categories/agent-frameworks/workflow-builders/agent-native.md) |
 | **TanStack AI** | 当 TypeScript 应用的 AI 界面——流式聊天、带类型的工具、媒体与 agent，横跨七个前端框架——必须站在一套 provider 无关的类型契约上、且不绑任何平台层时用它；agent 活在 Python 里、或你要的是打包好的 `Agent` 类，就不是它。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md) |
-
-| **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
-| **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | — | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
+| **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
+| **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
 
 ### agent-memory
 
@@ -253,13 +252,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | AGPL-3.0 | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/openviking.md) · [中](categories/agent-memory/coding-agent-memory/openviking.zh.md) |
 | **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | MIT | B（5/6） | [EN](categories/agent-memory/app-memory/simplemem.md) · [中](categories/agent-memory/app-memory/simplemem.zh.md) |
 | **Supermemory** | 当你想把整叠上下文管线——事实抽取、矛盾取代、自动到期、按用户画像、RAG 加记忆混合检索——收到一个 API 或一个自托管二进制后面，并接受引擎只发二进制、许可证翻转过一次时用它。 | MIT | A（6/6） | [中](categories/agent-memory/app-memory/supermemory.zh.md) · [EN](categories/agent-memory/app-memory/supermemory.md) |
-
 | **Hindsight** | 当你的 agent 要跨几周记住用户或项目、答得出“谁”“什么时候”这类问题时用它——MIT 许可、自托管的记忆服务（Postgres 加 pgvector），带实体和时间维度召回与 MCP，但每次写入都要花 LLM 调用、认证默认关闭、还没到 1.0。 | MIT | B（4/6） | [EN](categories/agent-memory/app-memory/hindsight.md) · [中](categories/agent-memory/app-memory/hindsight.zh.md) |
 | **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | MIT | B（6/6） | [EN](categories/agent-memory/coding-agent-memory/agent-beacon.md) · [中](categories/agent-memory/coding-agent-memory/agent-beacon.zh.md) |
 | **Engram** | 当你同时用好几个编码 agent、想让它们共用一份由 agent 自己通过 MCP 写入和检索的本地记忆时用它——一个 Go 程序加一个 SQLite 文件，关键词搜索，不做后台采集。 | MIT | B（5/6） | [中](categories/agent-memory/coding-agent-memory/engram.zh.md) · [EN](categories/agent-memory/coding-agent-memory/engram.md) |
 | **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/backpass.zh.md) · [EN](categories/agent-memory/coding-agent-memory/backpass.md) |
 | **OptMem** | 当你想要零活动部件的编码 agent 记忆——一段贴进去的提示块、一个零依赖的 Python 脚本、一份由 agent 自己经营的只追加日志——且能接受自愿捕获、仅正则的检索和没有许可证时用它。 | NONE (no LICENSE file — all rights reserved) | D（5/6） | [中](categories/agent-memory/coding-agent-memory/optmem.zh.md) · [EN](categories/agent-memory/coding-agent-memory/optmem.md) |
-| **deja-vu** | 当你的各家 agent 反复重排你在另一家 agent 里早已修好的问题，而你想直接用 35 家 harness 已经写进磁盘的会话记录建记忆、不要“保存”环节也不要模型账单时用它。 | MIT | — | [中](categories/agent-memory/coding-agent-memory/deja-vu.zh.md) · [EN](categories/agent-memory/coding-agent-memory/deja-vu.md) |
+| **deja-vu** | 当你的各家 agent 反复重排你在另一家 agent 里早已修好的问题，而你想直接用 35 家 harness 已经写进磁盘的会话记录建记忆、不要“保存”环节也不要模型账单时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/deja-vu.zh.md) · [EN](categories/agent-memory/coding-agent-memory/deja-vu.md) |
 
 ### deep-research
 
@@ -395,11 +393,9 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack CLI** | 脚手架 TanStack Start／Router 应用，把认证、数据库、部署、监控当作可互相协调的 add-on 组合进去，另有一组面向 agent 的 JSON 内省命令——但它只认 TanStack 栈（前 1.0 变动频繁，遥测默认开启）。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-cli.md) |
 | **TanStack Devtools** | 一个页内可停靠面板，把 TanStack（及自家）库的调试器装成标签页，配套 Vite／Rspack 插件提供点元素跳源码、console 转发和生产构建自动剥离——但仍是 alpha，会把 Solid.js 带进开发包，开发期事件总线还有一份未修的命令注入报告。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-devtools.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md) |
 | **JumpServer** | 当你需要一台自建堡垒机（PAM）替人保管目标机凭据、录下每个 SSH、RDP、数据库和 Kubernetes 会话时用它——但社区版上限 5000 台资产，高可用、SSO、改密都在企业版，且每年都有严重级漏洞公告。 | GPL-3.0 | B（6/6） | [中](categories/dev-utilities/ops-infra/jumpserver.zh.md) · [EN](categories/dev-utilities/ops-infra/jumpserver.md) |
-
 | **TanStack Config** | TanStack 自家库共用的开发期预设：带类型信息的 ESLint 扁平配置、ESM／CJS 双格式 Vite 库构建、TypeDoc 转 Markdown、按提交信息发版的脚本——检查预设用得很广，构建与发布两半在 TanStack 内部已成遗留（转向 tsdown、Changesets）；只支持 pnpm。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-config.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-config.md) |
-| **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-container.md) |
-
-| **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | — | [中](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md) |
+| **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | C（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-container.md) |
+| **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | D（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | A（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | A（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
@@ -772,7 +768,6 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **markdownlint** | A Node.js style checker and lint tool for Markdown/CommonMark files. | MIT | A（6/6） | [EN](categories/markdown-tools/markdownlint.md) · [中](categories/markdown-tools/markdownlint.zh.md) |
 | **MDX** | 当文档活在 React／Preact／Vue 应用里、正文需要 import 并渲染你自己的组件时用它——但交付物是独立 PDF、书或可发布文档时不要用。 | MIT | B（5/6） | [中](categories/markdown-tools/mdx.zh.md) · [EN](categories/markdown-tools/mdx.md) |
 | **TanStack Markdown** | 当你的文档/博客语料由作者控制、包体积是硬约束，且你要 HTML/React/Octane 三个渲染器从同一份缓存 AST 输出完全一致的页面时用它——不要用它渲染不可信用户 Markdown，也不要指望它严格遵循 CommonMark。 | MIT | C（5/6） | [中](categories/markdown-tools/tanstack-markdown.zh.md) · [EN](categories/markdown-tools/tanstack-markdown.md) |
-
 | **TanStack Highlight** | 当博客或文档只用一小撮已知语言、想要体积极小、同步执行、只带类名且服务端与客户端一致的代码高亮时用它——要 VS Code 级准确度、冷门语言或自动检测语言时不要用。 | MIT | B（6/6） | [中](categories/markdown-tools/tanstack-highlight.zh.md) · [EN](categories/markdown-tools/tanstack-highlight.md) |
 
 ### typesetting
@@ -907,9 +902,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Charts** | 现成图表组件画不出你要的自定义图层、同一张图又要在多个框架和服务端渲染时用它——一份带类型的“标记加比例尺”定义，自带服务端 SVG、键盘焦点和按需 Canvas；它是 Alpha（0.x，小版本会破坏兼容），才两个月大，代码主要出自一位作者。 | MIT | B（6/6） | [中](categories/web-ui/charts/tanstack-charts.zh.md) · [EN](categories/web-ui/charts/tanstack-charts.md) |
 | **TanStack React Charts** | 只在迁移前让 React DOM 应用里已有的 `react-charts` 集成继续活着时用它——序列数组加 `getValue` 轴取值函数，D3 计算、画成带 Voronoi 悬停的 SVG；2025 年已归档，v3 仍是 beta，React 18/Next.js 下的提示框问题没人修，新图请用仍在维护的库。 | MIT | D（5/6） | [中](categories/web-ui/charts/tanstack-react-charts.zh.md) · [EN](categories/web-ui/charts/tanstack-react-charts.md) |
 | **TanStack Hotkeys** | 手写的 keydown 判断在 Mac 的 Cmd 和 Ctrl 上出错、用户打字时误触发、没法录制和显示用户改的键时用它——带类型的 `Mod+S` 绑定、连按、录制器和格式化工具，有 React、Vue、Angular、Solid、Svelte、Preact、Lit 适配；alpha 期 0.x，小版本会破坏兼容，只发 ESM。 | MIT | B（6/6） | [中](categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.zh.md) · [EN](categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md) |
-
 | **TanStack Pacer** | 搜索框、自动保存、滚动处理都靠手写 setTimeout/clearTimeout 裹着时用它——带类型的防抖／节流／限流／排队／批处理，同步异步（重试／中止）两套变体，pending 状态可经 TanStack Store 渲染；它不是服务端配额，且 0.x beta 有 API 变动风险。 | MIT | A（6/6） | [中](categories/web-ui/scheduling/tanstack-pacer.zh.md) · [EN](categories/web-ui/scheduling/tanstack-pacer.md) |
-
 | **TanStack Time** | 产品日历要重复日程、拖拽改时长、超订校验，而 DOM 必须归你时关注它——无头、Temporal 原生的核心算日期网格、重复展开和冲突；仅列观察名单：未发布的 pre-alpha，npm 上还没有包。 | MIT | D（4/6） | [中](categories/web-ui/component-libraries/tanstack-time.zh.md) · [EN](categories/web-ui/component-libraries/tanstack-time.md) |
 
 
