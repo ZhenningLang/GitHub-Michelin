@@ -23,6 +23,7 @@
 | **Axolotl** | Go ahead and axolotl questions | B (6/6) | [→](axolotl.md) |
 | **verl** | verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework | B (6/6) | [→](verl.md) |
 | **Soup** | Use it when one YAML must take a fine-tune from JSONL to a served, exported model and the base does not fit your GPU — not when the config contract must stay stable across upgrades or the model already fits resident and you want speed. | B (6/6) | [→](soup.md) |
+| **Miles** | Use it when you RL-train a large MoE model on multi-node GPUs with SGLang rollout + Megatron training and need train/inference kept in step — not for single-GPU, SFT-only, vLLM-based stacks or a stable API. | B (5/6) | [→](miles.md) |
 
 
 ## Comparison matrix
@@ -35,6 +36,7 @@
 | [Agent Lightning](agent-lightning.md) | ✅ | B (5/6) | Microsoft RL/optimization trainer that improves agents built in any framework (LangChain, AutoGen, OpenAI SDK…) with near-zero code changes by decoupling agent execution from the training backend. |
 | [Colossal-AI](colossalai.md) | ✅ | B (6/6) | Use it when you must train/fine-tune large models across many GPUs with tensor/pipeline/ZeRO parallelism — overkill for single-GPU LoRA. |
 | [Soup](soup.md) | ✅ | B (6/6) | Use it when one YAML must take a fine-tune from JSONL to a served, exported model and the base does not fit your GPU — not when the config contract must stay stable across upgrades or the model already fits resident and you want speed. |
+| [Miles](miles.md) | ✅ | B (5/6) | Use it when you RL-train a large MoE model on multi-node GPUs with SGLang rollout + Megatron training and need train/inference kept in step — not for single-GPU, SFT-only, vLLM-based stacks or a stable API. |
 | [Hugging Face TRL](trl.md) | ✅ | A (6/6) | SFT / DPO / GRPO trainers that plug into the transformers stack; pick it when the rest of your pipeline is already Hugging Face. |
 | [verl](verl.md) | ✅ | B (6/6) | RL post-training framework (HybridFlow) built around separating rollout from training at scale; not a drop-in SFT trainer. |
 
