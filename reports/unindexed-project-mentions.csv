@@ -324,6 +324,7 @@ DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
+Eigent (`eigent-ai/eigent`),categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 ElectricSQL (`electric-sql/electric`),categories/web-ui/data-fetching/tanstack-db.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
@@ -404,6 +405,7 @@ Google Cloud Vision / AWS Textract,categories/ocr/tesseract.md,,no
 Google Photos,categories/document-management/immich.md,,no
 Google reCAPTCHA / hCaptcha,categories/captcha/lepture-captcha.md,,no
 Google Search Console alone,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
+Goose (`aaif-goose/goose`),categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md,,no
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no

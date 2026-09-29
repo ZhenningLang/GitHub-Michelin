@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenWorker does", "zh": "OpenWorker 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app, add a model key or point it at Ollama", "zh": "装桌面应用，填模型 key 或指向 Ollama", "code": "https://download.openworker.com/mac"},
+    {"lane": "them", "en": "Starts a local agent server that holds keys, connectors and the audit log", "zh": "拉起本地 agent 服务，key、连接器和审计日志都在本机", "component": {"en": "local agent server", "zh": "本地 agent 服务"}},
+    {"lane": "you", "en": "Pick a coworker and state the outcome you want", "zh": "选一个 coworker，说出你要的结果", "code": "prepare a customer brief", "component": {"en": "persona manifest", "zh": "persona 清单"}},
+    {"lane": "them", "en": "Breaks it into steps across your files, terminal and connected apps", "zh": "拆成步骤，在你的文件、终端和已连接应用里干活"},
+    {"lane": "them", "en": "Pauses before any send, write or command and shows an approval card", "zh": "发送、写入、跑命令前停下，弹出审批卡", "component": {"en": "permission gates", "zh": "权限闸门"}},
+    {"lane": "you", "en": "Approve, redirect, or make it a standing rule", "zh": "批准、改方向，或设成长期规则"},
+    {"lane": "them", "en": "Delivers the file, PR or thread reply and records who approved each call", "zh": "交出文件、PR 或线程回复，并记下每次调用由谁批准", "component": {"en": "audit trail", "zh": "审计记录"}}
+  ],
+  "value": {
+    "en": "You get the finished deliverable instead of a to-do list — and nothing consequential happened without an approval you can trace",
+    "zh": "拿到的是成品，不是待办清单——而且每个有后果的动作都有一条可追溯的审批"
+  },
+  "sources": [
+    "https://github.com/andrewyng/openworker/blob/main/README.md Download (https://download.openworker.com/mac; add a model key or point it at Ollama)",
+    "https://github.com/andrewyng/openworker/blob/main/README.md How it works (\"prepare a customer brief\"; breaks the task into steps; checks in before sending/changing/running; finished deliverable) and the architecture diagram (local agent server)",
+    "https://github.com/andrewyng/openworker/blob/main/README.md Governed by design (approval-gated by default, standing rules, audit trail with approval provenance)",
+    "https://github.com/andrewyng/openworker/blob/main/coworker/personas/builtin/security/manifest.md (persona manifest: tools, connectors, skills, default_permission_mode)"
+  ]
+}
