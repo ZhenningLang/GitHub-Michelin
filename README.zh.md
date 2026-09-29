@@ -750,6 +750,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **video-shotcraft** | 当 coding agent 应该用 150+ 张镜头配方卡、真实页面截图、2.5D 运镜和一支已验收的 Remotion 模板，把你的产品或网页做成电影感宣传片时用它——仅约 2 个月历史、无 tagged release，且产出 Remotion composition，受引擎「3 人以上需付费」的许可门槛约束。 | Apache-2.0 | B（5/6） | [中](categories/video-production/video-shotcraft.zh.md) · [EN](categories/video-production/video-shotcraft.md) |
 | **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | Apache-2.0 | B（6/6） | [中](categories/video-production/open-creator.zh.md) · [EN](categories/video-production/open-creator.md) |
 | **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | MIT | B（4/5） | [中](categories/video-production/video-use.zh.md) · [EN](categories/video-production/video-use.md) |
+| **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | PolyForm-Noncommercial-1.0.0 | D（4/6） | [中](categories/video-production/seecut.zh.md) · [EN](categories/video-production/seecut.md) |
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（6/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) |
 
 ### llm-chat-ui

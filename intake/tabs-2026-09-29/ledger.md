@@ -26,4 +26,4 @@
 | radixark/miles | add | done | categories/llm-training/miles.md | 用户直接贴的链接 | radixark/miles |
 | feder-cr/invisible_playwright_mcp | add | done | categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md | 用户直接贴的链接 | feder-cr/invisible_playwright_mcp |
 | shadcn-labs/pdfcn | add | done | categories/pdf-tools/pdfcn.md | 处理中新开的标签（Opus 周额度超线，改用 qwen） | shadcn-labs/pdfcn |
-| YeJe-cpu/SeeCut | add | running |  | 处理中新开的标签（Opus 周额度超线，改用 qwen） | yeje-cpu/seecut |
+| YeJe-cpu/SeeCut | add | done | categories/video-production/seecut.md | 处理中新开的标签（Opus 周额度超线，改用 qwen） | yeje-cpu/seecut |

@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "SeeCut makes the agent do",
+    "zh": "SeeCut 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy skill/seecut into your agent's skills folder and run its preflight until every required check is green",
+      "zh": "把 skill/seecut 放进 skills 目录，跑预检直到必需项全绿",
+      "code": "zsh skill/seecut/scripts/preflight.sh",
+      "component": {
+        "en": "preflight.sh",
+        "zh": "preflight.sh"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Drop a 20–30 s vertical talking-head clip (plus optional screenshots) in one folder and invoke the skill",
+      "zh": "把 20–30 秒竖屏口播（可加截图）放进一个文件夹，调用 skill",
+      "code": "/seecut 素材：<你的文件夹>",
+      "component": {
+        "en": "seecut skill",
+        "zh": "seecut skill"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Watches the footage with a video-native model (Gemini via agy) and builds a word-level timeline",
+      "zh": "用能看视频的模型（agy 调 Gemini）看片，并做词级时间轴",
+      "code": "zsh scripts/agy_read.sh <文件> \"<问题>\"",
+      "component": {
+        "en": "agy (Antigravity CLI)",
+        "zh": "agy（Antigravity CLI）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Screenshots real pages the script mentions as on-screen evidence; fake UIs are forbidden",
+      "zh": "按台词截真网页当画面证据，禁止用假界面凑画面",
+      "code": "node scripts/grab_evidence.mjs <素材目录> <url>...",
+      "component": {
+        "en": "grab_evidence.mjs",
+        "zh": "grab_evidence.mjs"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Plans every shot from its design tokens and decision table, then renders the composition with HyperFrames",
+      "zh": "按设计令牌与决策表逐镜编排，用 HyperFrames 渲染成片",
+      "code": "node scripts/render.mjs build probe",
+      "component": {
+        "en": "HyperFrames CLI",
+        "zh": "HyperFrames CLI"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Sign off on the short sample before it spends an hour on the full video (asked first for footage over 60 s)",
+      "zh": "超过 60 秒的素材会先出样片，等你确认风格再跑全片"
+    },
+    {
+      "lane": "them",
+      "en": "Gates each version: a geometry self-check plus an AI critique that watches the rendered video",
+      "zh": "每版过硬门：几何自检，再让 AI 看成片挑硬伤",
+      "code": "node scripts/geom-check.mjs build",
+      "component": {
+        "en": "geom-check.mjs",
+        "zh": "geom-check.mjs"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Adopts a new version only after two order-swapped head-to-head wins against the previous one (max 3)",
+      "zh": "和上一版两两对比、交换顺序各跑一次都赢才采纳（最多 3 版）",
+      "code": "python3 scripts/agy_judge.py pair --a vN.mp4 --b vN-1.mp4",
+      "component": {
+        "en": "agy_judge.py",
+        "zh": "agy_judge.py"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Delivers the MP4, a layered project package, and a JianYing draft if the optional engine is installed",
+      "zh": "交付成片加分层工程包；装了剪映引擎再推剪映分层草稿",
+      "code": "node scripts/jianying_layers.mjs build",
+      "component": {
+        "en": "jianying_layers.mjs",
+        "zh": "分层工程包"
+      }
+    }
+  ],
+  "value": {
+    "en": "No manual keyframes for the motion pass — every version beat a judge that actually watched it, and you keep the final say in JianYing",
+    "zh": "动效不用手 K 帧：每版都是赢过一个真看过片的评委才留下，最终你在剪映逐层定夺"
+  },
+  "sources": [
+    "README.md / README.en.md Quick start (zsh skill/seecut/scripts/preflight.sh; /seecut 素材：<你的文件夹>; deliverables: rendered video + layered package + report)",
+    "skill/seecut/SKILL.md §1–§9 (agy_read.sh, faster-whisper timeline, grab_evidence.mjs, render.mjs build probe/full, geom-check.mjs, agy_judge.py check/pair with order-swapped consensus, sfx.py, jianying_layers.mjs, jianying_plan.py)",
+    "skill/seecut/references/06-质检闭环spec.md (hard gates H1/H2, two order-swapped pair runs, stop conditions, calibration evidence)",
+    "skill/seecut/scripts/preflight.sh (agy live ping, hyperframes npx check, playwright-core / headless Chrome checks)",
+    "skill/seecut/references/00-总纲.md (sample-first over 60 s, real-evidence rule, deliverables, 15-min runlog)"
+  ]
+}

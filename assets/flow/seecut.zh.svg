@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1270" viewBox="0 0 880 1270" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1270" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="1134" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="1134" rx="10"/>
+<rect class="pillT" x="474" y="40" width="203.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">SeeCut 让 agent 做的</text>
+<path class="edge" d="M62,192 L62,216" marker-end="url(#a)"/>
+<path class="hand" d="M408,278.0 C439.0,278.0 439.0,302 470,302" marker-end="url(#a)"/>
+<path class="edge" d="M494,398 L494,422" marker-end="url(#a)"/>
+<path class="edge" d="M494,563 L494,587" marker-end="url(#a)"/>
+<path class="hand" d="M472,649.0 C441.0,649.0 441.0,673 410,673" marker-end="url(#a)"/>
+<path class="hand" d="M408,685.0 C439.0,685.0 439.0,759 470,759" marker-end="url(#a)"/>
+<path class="edge" d="M494,833 L494,857" marker-end="url(#a)"/>
+<path class="edge" d="M494,998 L494,1022" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">把 skill/seecut 放进 skills 目录，跑预检</text>
+<text class="t" x="82" y="123">直到必需项全绿</text>
+<text class="c" x="82" y="147">zsh skill/seecut/scripts/preflight.sh</text>
+<text class="comp" x="82" y="170">组件：preflight.sh</text>
+<rect class="card" x="40" y="218" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">2</text>
+<text class="t" x="82" y="247">把 20–30 秒竖屏口播（可加截图）放进一个文</text>
+<text class="t" x="82" y="269">件夹，调用 skill</text>
+<text class="c" x="82" y="293">/seecut 素材：&lt;你的文件夹&gt;</text>
+<text class="comp" x="82" y="316">组件：seecut skill</text>
+<rect class="cardT" x="472" y="278" width="368" height="120" rx="8"/>
+<rect class="accT" x="472" y="278" width="4" height="120" rx="2"/>
+<circle class="accT" cx="494" cy="302" r="10"/>
+<text class="num" x="494" y="306" text-anchor="middle">3</text>
+<text class="t" x="514" y="307">用能看视频的模型（agy 调 Gemini）看片，并</text>
+<text class="t" x="514" y="329">做词级时间轴</text>
+<text class="c" x="514" y="353">zsh scripts/agy_read.sh &lt;文件&gt; &quot;&lt;问题&gt;&quot;</text>
+<text class="comp" x="514" y="376">组件：agy（Antigravity CLI）</text>
+<rect class="cardT" x="472" y="424" width="368" height="139" rx="8"/>
+<rect class="accT" x="472" y="424" width="4" height="139" rx="2"/>
+<circle class="accT" cx="494" cy="448" r="10"/>
+<text class="num" x="494" y="452" text-anchor="middle">4</text>
+<text class="t" x="514" y="453">按台词截真网页当画面证据，禁止用假界</text>
+<text class="t" x="514" y="475">面凑画面</text>
+<text class="c" x="514" y="499">node scripts/grab_evidence.mjs &lt;素材目录&gt;</text>
+<text class="c" x="514" y="518">&lt;url&gt;...</text>
+<text class="comp" x="514" y="541">组件：grab_evidence.mjs</text>
+<rect class="cardT" x="472" y="589" width="368" height="120" rx="8"/>
+<rect class="accT" x="472" y="589" width="4" height="120" rx="2"/>
+<circle class="accT" cx="494" cy="613" r="10"/>
+<text class="num" x="494" y="617" text-anchor="middle">5</text>
+<text class="t" x="514" y="618">按设计令牌与决策表逐镜编排，用 HyperFrames</text>
+<text class="t" x="514" y="640">渲染成片</text>
+<text class="c" x="514" y="664">node scripts/render.mjs build probe</text>
+<text class="comp" x="514" y="687">组件：HyperFrames CLI</text>
+<rect class="card" x="40" y="649" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="649" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="673" r="10"/>
+<text class="num" x="62" y="677" text-anchor="middle">6</text>
+<text class="t" x="82" y="678">超过 60 秒的素材会先出样片，等你确认风格再</text>
+<text class="t" x="82" y="700">跑全片</text>
+<rect class="cardT" x="472" y="735" width="368" height="98" rx="8"/>
+<rect class="accT" x="472" y="735" width="4" height="98" rx="2"/>
+<circle class="accT" cx="494" cy="759" r="10"/>
+<text class="num" x="494" y="763" text-anchor="middle">7</text>
+<text class="t" x="514" y="764">每版过硬门：几何自检，再让 AI 看成片挑硬伤</text>
+<text class="c" x="514" y="788">node scripts/geom-check.mjs build</text>
+<text class="comp" x="514" y="811">组件：geom-check.mjs</text>
+<rect class="cardT" x="472" y="859" width="368" height="139" rx="8"/>
+<rect class="accT" x="472" y="859" width="4" height="139" rx="2"/>
+<circle class="accT" cx="494" cy="883" r="10"/>
+<text class="num" x="494" y="887" text-anchor="middle">8</text>
+<text class="t" x="514" y="888">和上一版两两对比、交换顺序各跑一次都赢才采</text>
+<text class="t" x="514" y="910">纳（最多 3 版）</text>
+<text class="c" x="514" y="934">python3 scripts/agy_judge.py pair --a</text>
+<text class="c" x="514" y="953">vN.mp4 --b vN-1.mp4</text>
+<text class="comp" x="514" y="976">组件：agy_judge.py</text>
+<rect class="cardT" x="472" y="1024" width="368" height="120" rx="8"/>
+<rect class="accT" x="472" y="1024" width="4" height="120" rx="2"/>
+<circle class="accT" cx="494" cy="1048" r="10"/>
+<text class="num" x="494" y="1052" text-anchor="middle">9</text>
+<text class="t" x="514" y="1053">交付成片加分层工程包；装了剪映引擎再推剪映</text>
+<text class="t" x="514" y="1075">分层草稿</text>
+<text class="c" x="514" y="1099">node scripts/jianying_layers.mjs build</text>
+<text class="comp" x="514" y="1122">组件：分层工程包</text>
+<rect class="val" x="28" y="1176" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="1200">价值</text>
+<text class="valT" x="48" y="1224">动效不用手 K 帧：每版都是赢过一个真看过片的评委才留下，最终你在剪映逐层定夺</text>
+</svg>
