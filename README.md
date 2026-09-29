@@ -543,6 +543,8 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Prompt Engineering Guide** | Reference knowledge base (guides, papers, notebooks) for learning prompt/context engineering, RAG, and agent techniques. | MIT | C (4/5) | [EN](categories/agent-skills/prompt-engineering/prompt-engineering-guide.md) · [中](categories/agent-skills/prompt-engineering/prompt-engineering-guide.zh.md) |
 | **Claude Code System Prompts** | Read and diff every built-in prompt of a given Claude Code version (tool descriptions, subagents, skills, reminders), extracted from the compiled package on each release with a per-version changelog. | MIT | B (4/5) | [EN](categories/agent-skills/prompt-engineering/claude-code-system-prompts.md) · [中](categories/agent-skills/prompt-engineering/claude-code-system-prompts.zh.md) |
 
+| **MuseAI-Skills** | Unofficial, unlicensed snapshot of Meta Muse's 68 agent skills plus permission manifests, eval scenarios and runtime scripts — read it to study production connector/consent design; nothing installs or runs. | NONE (no LICENSE file; README grants no rights over the archived Meta Muse files) | D (4/5) | [EN](categories/agent-skills/prompt-engineering/museai-skills.md) · [中](categories/agent-skills/prompt-engineering/museai-skills.zh.md) |
+
 #### agent-skills / vendor-collections
 
 | Project | Use when | License | Health | Page |

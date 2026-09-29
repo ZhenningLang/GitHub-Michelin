@@ -540,6 +540,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Prompt Engineering Guide** | 提示词/上下文工程、RAG 与 agent 技术的参考知识库（指南、论文、notebook）。 | MIT | C（4/5） | [中](categories/agent-skills/prompt-engineering/prompt-engineering-guide.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompt-engineering-guide.md) |
 | **Claude Code System Prompts** | 查看并对比某个 Claude Code 版本的全部内置提示词（工具说明、子 agent、skill、system reminder），每次发版从编译包里抽取，附逐版本变更日志。 | MIT | B（4/5） | [中](categories/agent-skills/prompt-engineering/claude-code-system-prompts.zh.md) · [EN](categories/agent-skills/prompt-engineering/claude-code-system-prompts.md) |
 
+| **MuseAI-Skills** | Meta Muse 的 68 个 agent skill 及权限清单、评测场景、运行脚本的非官方无授权快照——用来研究生产级连接器与征询设计；什么都装不上、跑不起来。 | 无（无 LICENSE 文件；README 不授予对所存档 Meta Muse 文件的任何权利） | D（4/5） | [中](categories/agent-skills/prompt-engineering/museai-skills.zh.md) · [EN](categories/agent-skills/prompt-engineering/museai-skills.md) |
+
 #### agent-skills / vendor-collections
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

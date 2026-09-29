@@ -11,6 +11,7 @@
 | **prompts.chat** | 可自托管的社区提示词平台：分享、发现、收集现成提示词（前身是 Awesome ChatGPT Prompts）。 | B（5/6） | [→](prompts-chat.zh.md) |
 | **Prompt Engineering Guide** | 提示词/上下文工程、RAG 与 agent 技术的参考知识库（指南、论文、notebook）。 | C（4/5） | [→](prompt-engineering-guide.zh.md) |
 | **Claude Code System Prompts** | 查看并对比某个 Claude Code 版本的全部内置提示词（工具说明、子 agent、skill、system reminder），每次发版从编译包里抽取，附逐版本变更日志。 | B（4/5） | [→](claude-code-system-prompts.zh.md) |
+| **MuseAI-Skills** | Meta Muse 的 68 个 agent skill 及权限清单、评测场景、运行脚本的非官方无授权快照——用来研究生产级连接器与征询设计；什么都装不上、跑不起来。 | D（4/5） | [→](museai-skills.zh.md) |
 
 ## 对比矩阵
 
@@ -20,6 +21,7 @@
 | [prompts.chat](prompts-chat.zh.md) | ✅ | B（5/6） | 浏览并复制社区投票选出的现成提示词，或为组织自托管一个提示词库；没有生成流水线，单条质量参差。 |
 | [prompt-engineering-guide](prompt-engineering-guide.zh.md) | ✅ | C（4/5） | 学习底层技术与研究；教原理而非产出可直接粘贴的提示词，且提交节奏已放缓。 |
 | [claude-code-system-prompts](claude-code-system-prompts.zh.md) | ✅ | B（4/5） | 告诉你某次发版改了 Claude Code 的哪条内置指令；只读、只覆盖 Claude Code，且内容是第三方再分发的 Anthropic 专有提示词。 |
+| [MuseAI-Skills](museai-skills.zh.md) | ✅ | D（4/5） | 研究已上线消费级 agent 如何写连接器 skill、默认权限与评测的参考语料；非官方转载、无许可、冻结在 2026-09，离开 Meta 的容器就跑不起来。 |
 
 ## 什么该放这里
 

@@ -11,6 +11,7 @@
 | **prompts.chat** | Self-hostable community platform for sharing, discovering, and collecting ready-made prompts (f.k.a. Awesome ChatGPT Prompts). | B (5/6) | [→](prompts-chat.md) |
 | **Prompt Engineering Guide** | Reference knowledge base (guides, papers, notebooks) for learning prompt/context engineering, RAG, and agent techniques. | C (4/5) | [→](prompt-engineering-guide.md) |
 | **Claude Code System Prompts** | Read and diff every built-in prompt of a given Claude Code version (tool descriptions, subagents, skills, reminders), extracted from the compiled package on each release with a per-version changelog. | B (4/5) | [→](claude-code-system-prompts.md) |
+| **MuseAI-Skills** | Unofficial, unlicensed snapshot of Meta Muse's 68 agent skills plus permission manifests, eval scenarios and runtime scripts — read it to study production connector/consent design; nothing installs or runs. | D (4/5) | [→](museai-skills.md) |
 
 ## Comparison matrix
 
@@ -20,6 +21,7 @@
 | [prompts.chat](prompts-chat.md) | ✅ | B (5/6) | Browse and copy community-voted ready-made prompts, or self-host a prompt library for your org; no generation pipeline, quality varies per prompt. |
 | [prompt-engineering-guide](prompt-engineering-guide.md) | ✅ | C (4/5) | Learn the underlying techniques and research; it teaches principles rather than producing paste-ready prompts, and commit cadence has slowed. |
 | [claude-code-system-prompts](claude-code-system-prompts.md) | ✅ | B (4/5) | Tells you which Claude Code built-in instruction changed in a release; read-only, Claude Code only, and the text is Anthropic's proprietary prompts redistributed by a third party. |
+| [MuseAI-Skills](museai-skills.md) | ✅ | D (4/5) | A reference corpus for how a shipped consumer agent writes connector skills, permission defaults and evals; unofficial redistribution with no licence, frozen at 2026-09, and non-runnable outside Meta's container. |
 
 ## What belongs here
 
