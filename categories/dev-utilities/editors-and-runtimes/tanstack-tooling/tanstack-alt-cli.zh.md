@@ -2,7 +2,7 @@
 name: TanStack alt-cli
 slug: tanstack-alt-cli
 repo: https://github.com/TanStack/alt-cli
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [scaffolding, cli, code-generator, tanstack, mcp, archived, agent-tooling]
 language: TypeScript
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 你顺着一条 2026 年 1 月的链接点进 `TanStack/alt-cli`——「The official TanStack CLI for scaffolding, MCP, agent skills」——照着它的 README 敲 `npx @tanstack/cli create my-app`，装上来的却是另一套代码：这个仓库是一场只活了一周的实验，早已归档，它发过 0.0.1–0.0.8 的那个 `@tanstack/cli` 包名从 2026-01-29 起就一直归主线 TanStack CLI 所有。本页存在的意义，是让你一眼认出这个坑，并说清这个仓库还剩什么价值。
 
-![TanStack alt-cli — 健康度雷达](../../../assets/health/tanstack-alt-cli.zh.svg)
+![TanStack alt-cli — 健康度雷达](../../../../assets/health/tanstack-alt-cli.zh.svg)
 
 ## 何时使用
 
@@ -86,7 +86,7 @@ health:
 
 这个仓库是 pnpm monorepo，`@tanstack/cli` 包暴露一个 `tanstack` 二进制。你做的事是选集成——交互式地答 @clack 提问（项目名、包管理器），或用逗号分隔的 `--integrations` 旗标一次给足；它替你做的是组合：引擎解析每个集成声明的依赖与冲突，从 GitHub 上这个仓库自己的 `integrations/` 目录拉取集成定义，渲染每个集成的 EJS 资产模板（路由、provider、配置文件），把该集成的 `package.json` 依赖合并进你的项目，安装，最后写一份 `.tanstack.json` 清单记录这次的选择。可以把它想成一个「安装单元不是库而是接好线的集成」的包管理器——Clerk 装下来是 provider、路由和环境变量骨架，而不只是 `@clerk/react`。第二个面是 `tanstack mcp`：一个本地 MCP 服务器（stdio 或 HTTP／SSE），Claude Desktop 这类 agent 客户端连上之后，agent 自己就能列集成、建项目，不用去爬文档。两个面都只服务 TanStack Start 项目，没有任何其他框架模式。
 
-![tanstack-alt-cli — 主干用户故事](../../../assets/flow/tanstack-alt-cli.zh.svg)
+![tanstack-alt-cli — 主干用户故事](../../../../assets/flow/tanstack-alt-cli.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-alt-cli.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| create-next-app（`vercel/next.js`） | ✅ [Next.js](../../web-ui/frameworks/app-frameworks/nextjs.zh.md) | 技术栈决定是「Next.js」时，create-next-app 是唯一候选，alt-cli 根本不在候选列（已归档、只服务 TanStack）；读 alt-cli 只为把它的集成清单模式抄去写你自己的生成器。 | create-next-app 脚手架主流 React 框架且持续维护；alt-cli 展示的是一套冻结在 2026 年 1 月的可组合集成设计——一个是拿来跑的工具，一个是拿来读的模式。 |
+| create-next-app（`vercel/next.js`） | ✅ [Next.js](../../../web-ui/frameworks/app-frameworks/nextjs.zh.md) | 技术栈决定是「Next.js」时，create-next-app 是唯一候选，alt-cli 根本不在候选列（已归档、只服务 TanStack）；读 alt-cli 只为把它的集成清单模式抄去写你自己的生成器。 | create-next-app 脚手架主流 React 框架且持续维护；alt-cli 展示的是一套冻结在 2026 年 1 月的可组合集成设计——一个是拿来跑的工具，一个是拿来读的模式。 |
 | create-vite（`vitejs/vite`） | 未收录 | 任何非 TanStack 的 SPA，用 create-vite 起步、自己加库；alt-cli 从来不服务这个人群，如今在运营意义上也不服务任何人。 | create-vite 给一个极简、框架无关的起点，随 Vite 的节奏持续更新；alt-cli 的 29 个精选集成，换来的是单栈、单周的豪赌。本批次未收录。 |
 | create-t3-app（`t3-oss/create-t3-app`） | 未收录 | 你要的是「一条命令得到接线完整的整栈」，create-t3-app 是它的具名技术栈上活着的答案；alt-cli 是 TanStack Start 上这个答案在 2026 年 1 月的一周版本，今天的答案叫已收录的 TanStack CLI。 | 两者都把认证／数据库／工具链组合进一份脚手架；T3 的主见固定且在维护，alt-cli 的主见可选但随即被弃——选维护者还活着的那边。本批次未收录。 |
 | degit（`Rich-Harris/degit`） | 未收录 | 「把那个模板仓库复制下来但不要 git 历史」用 degit 正合适；alt-cli 那个做依赖解析的引擎对逐字复制来说是错误的机器，何况已归档。 | degit 交付某一刻的冻结状态、零魔法；alt-cli 在生成期解析依赖图——脚手架光谱的两端，且只有一端还在维护。本批次未收录。 |

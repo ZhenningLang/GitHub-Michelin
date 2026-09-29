@@ -2,7 +2,7 @@
 name: TanStack Container
 slug: tanstack-container
 repo: https://github.com/TanStack/container
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [browser-runtime, sandbox, node-compatibility, wasm, quickjs, developer-experience, tanstack]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 你想把「能跑起来的前端项目」直接放进网页交给别人，但访问者的机器上没有 Node、没有 npm、也没有本地工具链。TanStack Container 把整套开发环境搬进浏览器标签页：虚拟文件系统、Node 风格的进程、可安装的依赖、应用预览和可恢复的工作区——你的服务器只需要托管静态文件；截至 2026-09-28，alpha 包尚未发布到 npm。
 
-![TanStack Container — 健康度雷达](../../../assets/health/tanstack-container.zh.svg)
+![TanStack Container — 健康度雷达](../../../../assets/health/tanstack-container.zh.svg)
 
 ## 何时使用
 
@@ -87,7 +87,7 @@ health:
 
 TanStack Container 是你要嵌进去的库，不是要拨打的服务。你装好 SDK 加运行时这一对包，跑一个显式的准备步骤——`prepareRuntimeAssets('public/sandbox')`，它把 worker 脚本和 WASM（esbuild、Rollup 这些上游编译器编译成的 WebAssembly 二进制，以普通 npm 依赖钉版本）拷进一个由你托管的目录——再对着 `AgentSession` 写几个 SDK 调用。其余全部发生在访客的标签页里：worker 内核启动；QuickJS（一个可内嵌的小型 JavaScript 解释器）编译成的 WASM 在强制内存配额与截止时间下，对着虚拟文件系统执行 Node 风格的宿主代码；npm 包在页面内安装且禁用生命周期脚本；`WorkerHTTP` 把宿主进程的端口代理到独立预览源上的 iframe；`session.snapshot()` 和 `session.restore()` 把文件加已装依赖持久化进浏览器存储，再在一个全新运行时里重放。合适的类比是：一台 Node 形状的小机器住在标签页里——文件是模拟的，「进程」是按预算分配的解释器线程，你的服务器自始至终只是静态文件托管。它刻意不做操作系统仿真——原生插件、任意二进制、不受限的网络都在支持范围之外，项目自己也这么说。
 
-![tanstack-container — 主干用户故事](../../../assets/flow/tanstack-container.zh.svg)
+![tanstack-container — 主干用户故事](../../../../assets/flow/tanstack-container.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-container.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ TanStack Container 是你要嵌进去的库，不是要拨打的服务。你装�
 ## 何时不用
 
 - **本季度就要上线的浏览器运行时。** 什么都没发布——两个 `-experimental` 包名在 2026-09-28 都是 404——ALPHA.md 自己写着还没准备好发布。选 StackBlitz WebContainer（闭源但久经实战），或文档游乐场量级的 Sandpack。
-- **要隔离不可信或 AI 生成的代码。** README 明说这「不是针对任意恶意项目的生产安全边界」——权限、配额、截止时间实现了，但兼容性测试不等于安全认证。恶意负载请选有内核/VM 隔离的服务端沙箱：[E2B](../../sandboxing/e2b.zh.md)、[gVisor](../../sandboxing/gvisor.zh.md)、[Firecracker](../../sandboxing/firecracker.zh.md)。别把敏感源码或凭据放进这个沙箱。
+- **要隔离不可信或 AI 生成的代码。** README 明说这「不是针对任意恶意项目的生产安全边界」——权限、配额、截止时间实现了，但兼容性测试不等于安全认证。恶意负载请选有内核/VM 隔离的服务端沙箱：[E2B](../../../sandboxing/e2b.zh.md)、[gVisor](../../../sandboxing/gvisor.zh.md)、[Firecracker](../../../sandboxing/firecracker.zh.md)。别把敏感源码或凭据放进这个沙箱。
 - **需要完整的 Node/npm 面。** 原生插件、任意二进制、依赖安装脚本、esbuild watch/serve 都不支持；已验证的应用面是钉死版本的 Vite 7/Start fixture，不是任意包。长尾兼容性请上真正的容器运行时——或 npm 覆盖面有文档佐证的 WebContainer。
 - **要嵌的是代码片段，不是项目。** [Sandpack](https://github.com/codesandbox/sandpack) 提供轻得多的 React 组件互动游乐场；一个 `<Counter />` 示例不值得塞进一台标签页里的虚拟机。
 - **受众在 Safari 或手机上。** 项目自己声明真 Safari 未验证，手机只是远期目标；那种场景选有厂商 QA 覆盖的托管游乐场更稳。
@@ -122,7 +122,7 @@ TanStack Container 是你要嵌进去的库，不是要拨打的服务。你装�
 | WebContainer (StackBlitz) | 非仓库 | 今天要一个能上生产的浏览器运行时，选 WebContainer；只有当 MIT 开源、可 fork、可自托管的供应链比成熟度更重要时才选本页——WebContainer 的内核运行时闭源（GitHub 仓库不附带代码，运行时经 npm/CDN 分发），你买的是商业条款而不是源码。 | WebContainer：标签页内最广的 npm 覆盖、商业支持、闭源内核加付费条款。本页：完整 MIT 源码、写明白的双源隔离模型，但未发布的 alpha，兼容性只在钉死 fixture 上验证过。 |
 | Sandpack (CodeSandbox) | 未收录 | 文档里嵌 React 示例用 Sandpack——它小、而且早就发布了；要让访客装依赖、跑服务进程、恢复工作区，两者里只有本页会尝试。 | Sandpack：Apache-2.0 组件工具包，最后 push 在 2025-04——采用前先核实现状；本页：整个项目的量级，还在发布前。本批 tab-intake 未收录。 |
 | BrowserFS | 未收录 | 只想自己攒浏览器运行时、缺一个虚拟 `fs` API 时，BrowserFS 是积木；要安装器、进程、预览、快照整套端到端，选本页而不是自己拼装。 | BrowserFS 是一层库（2024 年后停更），上面全要自己接；TanStack Container 是整套沙箱，但处于发布前且对托管方式有强意见。本批 tab-intake 未收录。 |
-| [E2B](../../sandboxing/e2b.zh.md) | ✅ | 跑的是不可信代码、隔离是产品要求时选 E2B 的云端 microVM 沙箱——本页 README 自己否认是安全边界；负载是你自己的演示项目、成本模型必须是「跑在访客标签页里」时选本页。 | E2B：真内核级隔离，但按会话付费、有冷启动延迟。本页：零服务端运行时、计算留在客户端、零安全认证。 |
+| [E2B](../../../sandboxing/e2b.zh.md) | ✅ | 跑的是不可信代码、隔离是产品要求时选 E2B 的云端 microVM 沙箱——本页 README 自己否认是安全边界；负载是你自己的演示项目、成本模型必须是「跑在访客标签页里」时选本页。 | E2B：真内核级隔离，但按会话付费、有冷启动延迟。本页：零服务端运行时、计算留在客户端、零安全认证。 |
 | Pyodide | 未收录 | 负载语言是 Python 时，Pyodide 是已成定论的浏览器运行时——活跃、14.9k star（2026-09 核查）；本页只跑 JavaScript/TypeScript 世界，两边都不模拟对方的生态。 | Pyodide：成熟的 CPython-on-WASM、自带包索引，但没有 Node 语义。TanStack Container：Node 风格的宿主面（`fs`、`http`、进程），alpha 阶段。本批 tab-intake 未收录。 |
 
 ## 技术栈

@@ -2,7 +2,7 @@
 name: Zed
 slug: zed
 repo: https://github.com/zed-industries/zed
-category: editors-and-runtimes
+category: code-editors
 tags: [code-editor, text-editor, rust, collaborative, gpui]
 language: Rust
 license: NOASSERTION
@@ -70,7 +70,7 @@ health:
 
 由 Atom 和 Tree-sitter 的创作者用 Rust 构建的高性能多人协作代码编辑器，提供原生速度体验与实时协作。
 
-![Zed — 健康度雷达](../../../assets/health/zed.zh.svg)
+![Zed — 健康度雷达](../../../../assets/health/zed.zh.svg)
 
 ## 何时使用
 

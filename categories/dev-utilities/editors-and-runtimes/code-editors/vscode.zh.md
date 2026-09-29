@@ -2,7 +2,7 @@
 name: VS Code
 slug: vscode
 repo: https://github.com/microsoft/vscode
-category: editors-and-runtimes
+category: code-editors
 tags: [code-editor, ide, electron, extensible, microsoft]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 Visual Studio Code——一款轻量但强大的代码编辑器，兼具编辑器的简洁与 IDE 的能力，基于 Electron 构建，可通过丰富的扩展市场进行扩展，拥有数以万计的扩展。
 
-![VS Code — 健康度雷达](../../../assets/health/vscode.zh.svg)
+![VS Code — 健康度雷达](../../../../assets/health/vscode.zh.svg)
 
 ## 何时使用
 

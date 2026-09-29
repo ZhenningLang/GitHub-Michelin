@@ -2,7 +2,7 @@
 name: Tauri
 slug: tauri
 repo: https://github.com/tauri-apps/tauri
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [desktop-app, mobile-app, webview, rust, cross-platform]
 language: Rust
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 用 Web 前端构建更小、更快、更安全的桌面与移动应用。Rust 驱动的 Electron 替代方案，使用操作系统原生 Webview 而非捆绑 Chromium。
 
-![Tauri — 健康度雷达](../../../assets/health/tauri.zh.svg)
+![Tauri — 健康度雷达](../../../../assets/health/tauri.zh.svg)
 
 ## 何时使用
 
@@ -103,7 +103,7 @@ health:
 | --- | --- | --- | --- |
 | Electron | 未收录 | 桌面 Web 框架的现任者。 | Electron 捆绑 Chromium，导致二进制体积大、内存占用高；Tauri 使用系统 Webview，轻量得多。 |
 | Flutter | 未收录 | Google 的跨平台 UI 框架，原生渲染。 | Flutter 需要学习 Dart 及其 widget 系统；Tauri 复用 Web 技能，但桌面端原生感较弱。 |
-| [Clash Verge Rev](../ops-infra/clash-verge-rev.zh.md) | ✅ | 基于 Tauri 的 GUI 代理客户端。 | 展示了 Tauri 的生产级应用，但它是特定应用，不是框架选择本身。 |
+| [Clash Verge Rev](../../ops-infra/clash-verge-rev.zh.md) | ✅ | 基于 Tauri 的 GUI 代理客户端。 | 展示了 Tauri 的生产级应用，但它是特定应用，不是框架选择本身。 |
 | Neutralinojs | 未收录 | Electron 的轻量替代，体积更小。 | 比 Electron 小，但生态不如 Tauri 成熟，平台功能也更少。 |
 | WPF / Cocoa / GTK | 未收录 | 平台原生 UI 工具包。 | 真正的原生控件和性能，但每个平台需要独立的代码库和专业知识。 |
 

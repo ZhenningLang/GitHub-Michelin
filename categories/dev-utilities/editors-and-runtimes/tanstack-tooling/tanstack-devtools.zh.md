@@ -2,7 +2,7 @@
 name: TanStack Devtools
 slug: tanstack-devtools
 repo: https://github.com/TanStack/devtools
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [devtools, debugging, vite-plugin, tanstack, react, vue, solid, typescript]
 language: TypeScript
 license: MIT
@@ -80,11 +80,11 @@ health:
 
 页面右下角挤着三个调试按钮：请求缓存一个、路由一个、表单库一个，互相抢层级，各开各的面板、各记各的开关状态。TanStack Devtools 给它们一个共用的抽屉：每个库的调试器变成同一个可停靠面板里的一个标签页；配套的 Vite 插件还能让你点页面元素直接跳到源码，并在生产构建时把这一切删干净。
 
-![TanStack Devtools — 健康度雷达](../../../assets/health/tanstack-devtools.zh.svg)
+![TanStack Devtools — 健康度雷达](../../../../assets/health/tanstack-devtools.zh.svg)
 
 ## 何时使用
 
-你在 Vite 上跑一个 React（或 Solid、Vue、Preact）应用，已经用了两个以上的 TanStack 库，比如 [TanStack Query](../../web-ui/data-fetching/tanstack-query.zh.md) 和 [TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)。开发时你反复开关 `<ReactQueryDevtools />` 和 `<TanStackRouterDevtools />`：两个独立浮层，各自在角落画一个按钮，刷新一次就忘了你拖好的尺寸。现在你只在根部挂一次 `<TanStackDevtools plugins={[…]} />`，把各库的 `*DevtoolsPanel` 当插件传进去，就得到一个可调高度的工作台：标签页切换、最多三个插件并排、统一主题和快捷键，全部存进 `localStorage`。再把 `devtools()` 放在 Vite 插件第一位，你还会得到源码定位（按住 Shift+Alt+Ctrl/Meta 点元素，编辑器直接打开那一行 JSX）和浏览器与终端互通的 console；`vite build` 时这些导入被删掉，一个字节都不进产物。
+你在 Vite 上跑一个 React（或 Solid、Vue、Preact）应用，已经用了两个以上的 TanStack 库，比如 [TanStack Query](../../../web-ui/data-fetching/tanstack-query.zh.md) 和 [TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)。开发时你反复开关 `<ReactQueryDevtools />` 和 `<TanStackRouterDevtools />`：两个独立浮层，各自在角落画一个按钮，刷新一次就忘了你拖好的尺寸。现在你只在根部挂一次 `<TanStackDevtools plugins={[…]} />`，把各库的 `*DevtoolsPanel` 当插件传进去，就得到一个可调高度的工作台：标签页切换、最多三个插件并排、统一主题和快捷键，全部存进 `localStorage`。再把 `devtools()` 放在 Vite 插件第一位，你还会得到源码定位（按住 Shift+Alt+Ctrl/Meta 点元素，编辑器直接打开那一行 JSX）和浏览器与终端互通的 console；`vite build` 时这些导入被删掉，一个字节都不进产物。
 
 第二种触发场景是库作者：你维护一个状态库或内部 SDK，想给它配一个调试面板，但不想自己写触发按钮、拖拽、停靠和持久化。你写一个带类型的 `EventClient` 把状态发出来，再写一个面板组件，外壳就把它和 TanStack 自家的面板放在一起。要面板**长在页面里**、不装浏览器扩展、还要同时容纳好几个库时，选它而不是 React DevTools、Redux DevTools、Vue DevTools 扩展这条路；应用不是 Nuxt 时，选它而不是 Nuxt DevTools，后者是同一思路更成熟的实现，但只存在于 Nuxt 里。
 
@@ -92,7 +92,7 @@ health:
 
 核心包是一个很小的 Solid.js 应用（Solid 是一个和 React 类似、但编译成直接 DOM 操作的 UI 框架），负责画触发按钮、可停靠面板、设置页和标签栏。你的框架从不渲染这个外壳：一层很薄的适配包（`@tanstack/react-devtools`、`vue-devtools` 等）创建它、把它挂到一个 DOM 节点上，再把**你的**插件组件“传送”进外壳留出的空盒子里，所以 React 面板仍然是 React 组件。插件和被调试的代码之间靠 `EventClient` 通信：它是对浏览器 `window` 上 `CustomEvent`（自定义事件）的带类型封装，单页面内无需任何服务器就能工作；Vite 插件运行时还会起一个小的 WebSocket/SSE 服务（默认端口 4206），让事件能跨标签页、到达开发服务器进程。Vite 插件本身是一组构建期代码改写：给每个 JSX 元素打上 `data-tsd-source` 文件和行号属性（供点元素跳源码），改写 `console.*` 调用让它带上出处，并在生产构建时删除所有 `@tanstack/*-devtools` 导入。你决定挂哪些面板、要不要跑 Vite 插件；布局、持久化和传输归外壳管。可以把它想成调试工具的排插：它自己什么都不测，只给每个库的调试器留一个插座。
 
-![tanstack-devtools — 主干用户故事](../../../assets/flow/tanstack-devtools.zh.svg)
+![tanstack-devtools — 主干用户故事](../../../../assets/flow/tanstack-devtools.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-devtools.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,13 +123,13 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| React Developer Tools（`facebook/react` 的 `packages/react-devtools*`） | ✅ [React](../../web-ui/frameworks/view-frameworks/react.zh.md) | 查 React 组件树、props、hooks 和性能分析，就用 React DevTools，TanStack Devtools 替代不了它；只有要在页面里承载库面板（请求缓存、路由状态、你自己的 store）时才选 TanStack Devtools。 | React DevTools 能看到任何用户态面板都够不着的 React 内部，但它活在浏览器扩展（或独立应用）里，不懂你的库状态；TanStack 的外壳只看得到插件发出来的东西，好处是不用装扩展。 |
+| React Developer Tools（`facebook/react` 的 `packages/react-devtools*`） | ✅ [React](../../../web-ui/frameworks/view-frameworks/react.zh.md) | 查 React 组件树、props、hooks 和性能分析，就用 React DevTools，TanStack Devtools 替代不了它；只有要在页面里承载库面板（请求缓存、路由状态、你自己的 store）时才选 TanStack Devtools。 | React DevTools 能看到任何用户态面板都够不着的 React 内部，但它活在浏览器扩展（或独立应用）里，不懂你的库状态；TanStack 的外壳只看得到插件发出来的东西，好处是不用装扩展。 |
 | Vue DevTools（`vuejs/devtools`） | 未收录 | Vue 应用里，Vue DevTools（扩展或它的 Vite 插件浮层）是组件、Pinia、路由的官方调试器；只有同时用了需要宿主的 TanStack 库面板时，才再加 TanStack Devtools。 | Vue DevTools 深而专；TanStack 的 Vue 适配包很新（`@tanstack/vue-devtools` 周下载约 6.3k，2026-09-27），它承载面板，不检查 Vue 本身。本批次（标签页收录）未添加。 |
 | Nuxt DevTools（`nuxt/devtools`） | 未收录 | 在 Nuxt 里选 Nuxt DevTools，它是同样的页内、可插拔标签页设计，并与 Nuxt 模块和服务端集成；没有元框架的纯 Vite/React/Solid/Vue 应用要同样体验时，选 TanStack Devtools。 | Nuxt DevTools 拿得到框架级钩子、历史更长，但只能用于 Nuxt；TanStack 的与框架无关，但还是 alpha。本批次（标签页收录）未添加。 |
 | Redux DevTools（`reduxjs/redux-devtools`） | 未收录 | 用 Redux（或任何接入其扩展协议的 store）且要时间旅行、动作回放、状态差异时，选 Redux DevTools；想给自家 store 做一个页内定制面板、并愿意自己写界面时，选 TanStack Devtools。 | Redux DevTools 通过浏览器扩展给你一整套时间旅行界面；TanStack 给你带类型的传输和宿主外壳，但没有任何针对具体 store 的视图。本批次（标签页收录）未添加。 |
 | React Scan（`aidenybai/react-scan`） | 未收录 | 要找 React 的无效重渲染，直接接入 React Scan；TanStack Devtools 回答的是“我的库状态是什么”，不是“为什么渲染了”。 | React Scan 是零配置的渲染分析浮层；TanStack Devtools 是给别的面板用的宿主，自己不做性能分析。本批次（标签页收录）未添加。 |
 
-TanStack Devtools 是 TanStack 家族自家面板的共用宿主：[TanStack Query](../../web-ui/data-fetching/tanstack-query.zh.md)、[TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)、[TanStack Form](../../web-ui/forms/tanstack-form.zh.md)、TanStack Pacer 等都提供为它设计的 `*DevtoolsPanel` 组件，`@tanstack/form-core` 和 `@tanstack/pacer` 直接依赖它的 `@tanstack/devtools-event-client`（npm，2026-09-28）。用 [TanStack CLI](tanstack-cli.zh.md) 脚手架出的应用是最常见的入口。
+TanStack Devtools 是 TanStack 家族自家面板的共用宿主：[TanStack Query](../../../web-ui/data-fetching/tanstack-query.zh.md)、[TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)、[TanStack Form](../../../web-ui/forms/tanstack-form.zh.md)、TanStack Pacer 等都提供为它设计的 `*DevtoolsPanel` 组件，`@tanstack/form-core` 和 `@tanstack/pacer` 直接依赖它的 `@tanstack/devtools-event-client`（npm，2026-09-28）。用 [TanStack CLI](tanstack-cli.zh.md) 脚手架出的应用是最常见的入口。
 
 ## 技术栈
 

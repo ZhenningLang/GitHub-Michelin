@@ -26,7 +26,7 @@ shape and are deliberately excluded here.
 | 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
-| @antfu/eslint-config (`antfu/eslint-config`) | `categories/dev-utilities/editors-and-runtimes/tanstack-config.md` |
+| @antfu/eslint-config (`antfu/eslint-config`) | `categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md` |
 | @github/hotkey (`github/hotkey`) | `categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md` |
 | @nanostores/persistent (`nanostores/nanostores`) | `categories/web-ui/state-management/tanstack-persist.md` |
 | @ngneat/falso | `categories/dev-utilities/data-tools/faker-js.md` |

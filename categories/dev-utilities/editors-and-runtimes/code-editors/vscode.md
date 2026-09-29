@@ -2,7 +2,7 @@
 name: VS Code
 slug: vscode
 repo: https://github.com/microsoft/vscode
-category: editors-and-runtimes
+category: code-editors
 tags: [code-editor, ide, electron, extensible, microsoft]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 Visual Studio Code — a lightweight but powerful code editor combining the simplicity of an editor with the capabilities of an IDE, built on Electron and extensible through a rich marketplace with tens of thousands of extensions.
 
-![VS Code — health radar](../../../assets/health/vscode.svg)
+![VS Code — health radar](../../../../assets/health/vscode.svg)
 
 ## When to use
 

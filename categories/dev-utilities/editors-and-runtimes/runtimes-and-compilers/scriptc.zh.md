@@ -2,7 +2,7 @@
 name: scriptc
 slug: scriptc
 repo: https://github.com/vercel-labs/scriptc
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [typescript, javascript, compiler, native-binary, llvm, wasm]
 language: TypeScript
 license: Apache-2.0
@@ -84,7 +84,7 @@ health:
 
 你用 TypeScript 写了个小工具，交付却成了麻烦：目标机器要装一整套 Node，或者打出一个比程序本身大几十 MB 的单文件。scriptc 把普通的、带类型的 TypeScript 直接编译成约 320KB 量级的原生可执行文件：二进制里没有 Node、没有 V8、没有任何 JavaScript 引擎。
 
-![scriptc — 健康度雷达](../../../assets/health/scriptc.zh.svg)
+![scriptc — 健康度雷达](../../../../assets/health/scriptc.zh.svg)
 
 ## 何时使用
 
@@ -96,7 +96,7 @@ health:
 
 scriptc 是编译器，不是打包器。真正的 TypeScript 编译器——就是在编辑器里给你做类型检查的那个 tsc——先解析并类型检查你的程序，然后把语法树降成带类型的中间表示（IR：程序的一种可序列化形式，泛型已经特化成具体类型，联合类型变成带标签的值）。从 IR 出发，后端可以写出可读的 C 或 LLVM IR；默认路径把 LLVM IR 交给自带的 LLVM 22 助手生成汇编和目标文件，再由平台链接器把目标文件和一份预编译运行时包（引用计数的值运行时、承载 async/await 的有栈协程、kqueue/epoll 事件循环、原生的 `net`/`http`/`tls` 实现）拼在一起，全程不编译任何 C 代码。内存用引用计数——最后一个引用消失的瞬间值就被释放——引用环则在固定的时点由环收集器回收，没有垃圾回收器。任何构造都不会被悄悄造假：每条语句恰好落在三档之一——编译为原生代码；加了 `--dynamic` 时跑在内嵌的 quickjs-ng 引擎上（为 npm 包的 JavaScript 和 `any` 代码准备，约 620KB）；或者被拒绝，并给出错误码和改写提示。
 
-![scriptc — 主干用户故事](../../../assets/flow/scriptc.zh.svg)
+![scriptc — 主干用户故事](../../../../assets/flow/scriptc.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/scriptc.json by tools/flow_card.py — do not edit) -->
 <details>
