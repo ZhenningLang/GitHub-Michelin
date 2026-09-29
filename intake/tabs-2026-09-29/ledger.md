@@ -29,4 +29,4 @@
 | YeJe-cpu/SeeCut | add | done | categories/video-production/seecut.md | 处理中新开的标签（Opus 周额度超线，改用 qwen） | yeje-cpu/seecut |
 | googleapis/mcp-toolbox | add | done | categories/databases/database-clients/mcp-toolbox.md | 处理中新开的标签 | googleapis/mcp-toolbox |
 | Fenng/Tech-Doc-Style-Chinese | add | done | categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md | 处理中新开的标签 | fenng/tech-doc-style-chinese |
-| zion-sati/NetWasm | add | running |  | 处理中新开的标签 | zion-sati/netwasm |
+| zion-sati/NetWasm | add | done | categories/dev-utilities/editors-and-runtimes/netwasm.md | 处理中新开的标签 | zion-sati/netwasm |
