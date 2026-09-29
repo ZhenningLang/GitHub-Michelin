@@ -649,6 +649,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Dedoc** | 当混合 PDF 与 Office 归档必须转成带表格和附件的逻辑树时用它——本地解析面广，但 Linux 与系统包依赖很重。 | Apache-2.0 | B（5/6） | [中](categories/document-parsing/dedoc.zh.md) · [EN](categories/document-parsing/dedoc.md) |
 | **Bella Domify** | 当 Python RAG 管线需要细粒度 PDF／Office DOM tree 和可选视觉 OCR 时用它——许可证冲突与 provider／基础设施耦合会抬高采用成本。 | GPL-2.0-only | C（5/6） | [中](categories/document-parsing/bella-domify.zh.md) · [EN](categories/document-parsing/bella-domify.md) |
 | **MinerU Skill** | 当 agent 需要一条命令完成云端文档转 Markdown、批处理、续跑和投递时用它——文件会离开本地，质量取决于 MinerU。 | MIT | C（5/6） | [中](categories/document-parsing/mineru-skill.zh.md) · [EN](categories/document-parsing/mineru-skill.md) |
+| **anydoc** | 当管线收到一堆混杂的 Office（含老 .doc/.ppt/.xls）、OpenDocument、RTF、EPUB 和文字版 PDF，需要毫秒级转成风格一致的 Markdown、又不想装 LibreOffice 或模型时用它；不做 OCR，扫描页会直接失败。 | MIT | B（6/6） | [中](categories/document-parsing/anydoc.zh.md) · [EN](categories/document-parsing/anydoc.md) |
 
 ### office-automation
 

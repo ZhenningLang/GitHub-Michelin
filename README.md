@@ -652,6 +652,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Dedoc** | Use it when mixed PDF and Office archives must become logical trees with tables and attachments — broad local parsing, but with heavy Linux and system-package dependencies. | Apache-2.0 | B (5/6) | [EN](categories/document-parsing/dedoc.md) · [中](categories/document-parsing/dedoc.zh.md) |
 | **Bella Domify** | Use it when a Python RAG pipeline needs detailed PDF/Office DOM trees and optional vision OCR — license conflict and provider/infrastructure coupling raise adoption cost. | GPL-2.0-only | C (5/6) | [EN](categories/document-parsing/bella-domify.md) · [中](categories/document-parsing/bella-domify.zh.md) |
 | **MinerU Skill** | Use it when an agent needs one-command cloud document-to-Markdown with batch, resume, and delivery — files leave your environment and quality depends on MinerU. | MIT | C (5/6) | [EN](categories/document-parsing/mineru-skill.md) · [中](categories/document-parsing/mineru-skill.zh.md) |
+| **anydoc** | Use it when a pipeline gets a mixed pile of Office (incl. legacy .doc/.ppt/.xls), OpenDocument, RTF, EPUB and text-PDF files and needs one consistent Markdown in milliseconds with no LibreOffice or models; no OCR — scanned pages fail. | MIT | B (6/6) | [EN](categories/document-parsing/anydoc.md) · [中](categories/document-parsing/anydoc.zh.md) |
 
 ### office-automation
 

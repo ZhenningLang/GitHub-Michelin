@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "anydoc does",
+    "zh": "anydoc 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package for your language; a prebuilt native binary comes with it",
+      "zh": "按语言装包，自带预编译的原生二进制",
+      "code": "npm install @firecrawl/anydoc · pip install firecrawl-anydoc · cargo add anydoc"
+    },
+    {
+      "lane": "you",
+      "en": "Hand it a file path, or raw bytes from your upload or queue",
+      "zh": "把文件路径或上传来的原始字节交给它",
+      "code": "anydoc.to_markdown(\"report.docx\")"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the format from the bytes themselves, so a mislabeled file still converts",
+      "zh": "从字节本身认出格式，扩展名写错也能转",
+      "component": {
+        "en": "format detection",
+        "zh": "格式识别"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Parses the file into one shared model: headings, lists, tables, footnotes, assets",
+      "zh": "解析进同一个文档模型：标题、列表、表格、脚注、附件",
+      "component": {
+        "en": "per-format parser",
+        "zh": "各格式解析器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Renders every format through one Markdown writer; a scanned PDF errors with NeedsOcr",
+      "zh": "所有格式走同一个 Markdown 输出器；扫描版 PDF 报 NeedsOcr",
+      "component": {
+        "en": "GFM serializer",
+        "zh": "GFM 序列化器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Feed the Markdown to your LLM or RAG pipeline; set failed files aside",
+      "zh": "把 Markdown 喂给 LLM 或 RAG 管线，转不了的文件另行处理"
+    }
+  ],
+  "value": {
+    "en": "Mixed Office, OpenDocument, EPUB and text-PDF files become one Markdown style, with no LibreOffice or model",
+    "zh": "各种 Office、EPUB、文字版 PDF 统一成一种 Markdown，不装 LibreOffice"
+  },
+  "sources": [
+    "https://github.com/firecrawl/anydoc README: Quick start (npm install @firecrawl/anydoc, pip install firecrawl-anydoc, cargo add anydoc, anydoc.to_markdown(\"report.docx\")), Format detection, Errors (NeedsOcr), How it works diagram (format detection -> format parser -> Document -> GFM serializer)",
+    "https://github.com/firecrawl/anydoc/blob/main/src/formats/pdf.rs (PDF path via pdf-inspector, NeedsOcr on flagged pages)"
+  ]
+}

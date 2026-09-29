@@ -16,6 +16,7 @@
 | **Dedoc** | 当内网 Python 管线需要把多格式文档恢复为含层级、表格、注解与附件的逻辑树时用它；要接受较重的 Linux 与系统包依赖，以及对困难扫描件的限制。 | B（5/6） | [→](dedoc.zh.md) |
 | **Bella Domify** | 当中文 RAG 摄取需要细粒度 PDF／Office DOM 树和 FastAPI／Kafka／S3 服务集成时用它；许可证声明冲突、可选远端 OCR 与重基础设施是决定性门槛。 | C（5/6） | [→](bella-domify.zh.md) |
 | **MinerU Skill** | 当 coding agent 需要通过 CLI／MCP 一条命令把文档交给 MinerU 云端转成 Markdown，并需要批处理、续传或内容工具投递时用它；文件会跨服务边界，且受配额和 API 变化约束。 | C（5/6） | [→](mineru-skill.zh.md) |
+| **anydoc** | 当管线收到一堆混杂的 Office（含老 .doc/.ppt/.xls）、OpenDocument、RTF、EPUB 和文字版 PDF，需要毫秒级转成风格一致的 Markdown、又不想装 LibreOffice 或模型时用它；不做 OCR，扫描页会直接失败。 | B（6/6） | [→](anydoc.zh.md) |
 
 
 ## 对比矩阵
@@ -30,6 +31,7 @@
 | [Dedoc](dedoc.zh.md) | ✅ | B（5/6） | 多格式逻辑树解析，保留表格、注解与附件；结构比轻量 Markdown 转换更深，但 Linux 依赖更重，对困难扫描件也有限制。 |
 | [Bella Domify](bella-domify.zh.md) | ✅ | C（5/6） | 提供 pdf2docx 衍生 DOM 树和服务集成；版面对象丰富，但基础设施重、OCR 可出站，且 GPL v2／v3 声明冲突未解决。 |
 | [MinerU Skill](mineru-skill.zh.md) | ✅ | C（5/6） | 面向 agent 的 MinerU 云 API CLI／MCP，带批处理、续传和投递；免本地模型部署，但承担上传、配额和第三方 API 风险。 |
+| [anydoc](anydoc.zh.md) | ✅ | B（6/6） | 纯 Rust 转换器，覆盖 20 多种办公、电子书和 PDF 扩展名，带 Node/Python/WASM 绑定；快且无依赖，但不做 OCR、PDF 表格靠启发式，且是年轻的单人 0.x 项目。 |
 | LlamaParse / self-hosted MinerU | 未收录 | — | 各页点到的云端与自托管文档解析路径。 |
 
 

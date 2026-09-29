@@ -16,6 +16,7 @@
 | **Dedoc** | Use it when an on-premises Python pipeline needs multi-format documents recovered as logical trees with tables, annotations, and attachments; expect a heavy Linux/system-package stack and limits on difficult scans. | B (5/6) | [→](dedoc.md) |
 | **Bella Domify** | Use it when Chinese RAG ingestion needs detailed PDF/Office DOM trees plus FastAPI/Kafka/S3 service integration; license ambiguity, optional remote OCR, and heavy infrastructure are decisive constraints. | C (5/6) | [→](bella-domify.md) |
 | **MinerU Skill** | Use it when a coding agent needs one-command cloud document-to-Markdown through CLI/MCP, with batch, resume, or content-tool delivery; files cross a service boundary and remain subject to quotas and API changes. | C (5/6) | [→](mineru-skill.md) |
+| **anydoc** | Use it when a pipeline gets a mixed pile of Office (incl. legacy .doc/.ppt/.xls), OpenDocument, RTF, EPUB and text-PDF files and needs one consistent Markdown in milliseconds with no LibreOffice or models; no OCR — scanned pages fail. | B (6/6) | [→](anydoc.md) |
 
 
 ## Comparison matrix
@@ -30,6 +31,7 @@
 | [Dedoc](dedoc.md) | ✅ | B (5/6) | Multi-format logical-tree parsing with tables, annotations, and attachments; deeper than lightweight Markdown conversion, but heavier on Linux dependencies and limited on difficult scans. |
 | [Bella Domify](bella-domify.md) | ✅ | C (5/6) | Detailed pdf2docx-derived DOM trees and service hooks; rich layout objects, but heavy infrastructure, optional outbound OCR, and an unresolved GPL v2/v3 declaration conflict. |
 | [MinerU Skill](mineru-skill.md) | ✅ | C (5/6) | Agent-facing CLI/MCP over MinerU's cloud API with batch, resume, and delivery; avoids local model deployment but adds upload, quota, and third-party API risk. |
+| [anydoc](anydoc.md) | ✅ | B (6/6) | Pure-Rust converter for 20+ office/ebook/PDF extensions with Node/Python/WASM bindings; fast and dependency-free, but no OCR, heuristic PDF tables, and a young single-author 0.x project. |
 | LlamaParse / self-hosted MinerU | 未收录 | — | Cloud and self-hosted document-parsing routes named across the pages. |
 
 
