@@ -7,6 +7,7 @@
 
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **agent-scripts** | 一位维护者用来在 Codex 与 Claude Code 之间共享一份 `AGENTS.MD` 和约 70 个 skill 的权威仓库，靠软链同步脚本分发；更像参考布局而非可移植的 skill 包（不少 skill 默认作者自己的机器）。 | B（4/5） | [→](agent-scripts.zh.md) |
 | **antfu/skills** | Anthony Fu 个人精选、面向 Vue/Vite/Nuxt 栈的 agent skill 集合（其 ESLint/pnpm/Vitest/UnoCSS 偏好 + 生成与 vendored 的框架 skill），通过 skills CLI 安装。 | B（4/5） | [→](antfu-skills.zh.md) |
 | **claude-code-harness** | 一套个人化 Claude Code harness：以插件形式装入受治理的 plan → work → review → release 循环，并附带 Go 原生 doctor CLI 诊断插件缓存与 skill 漂移。 | B（5/6） | [→](claude-code-harness.zh.md) |
 | **Dimillian Skills** | 某开发者个人精选的 16 个自包含 Codex skill，重心压在 Apple 平台，外加通用评审／重构 swarm。 | C（4/5） | [→](dimillian-skills.zh.md) |
@@ -21,6 +22,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [agent-scripts](agent-scripts.zh.md) | ✅ | B（4/5） | 当你要把自己的规则和 skill 分发到多个仓库与 agent 时最合适；借它的布局，别照搬它的私人 skill。 |
 | [antfu/skills](antfu-skills.zh.md) | ✅ | B（4/5） | 当你的技术栈匹配 Anthony Fu 的 Vue/Vite/Nuxt 约定时最合适。 |
 | [claude-code-harness](claude-code-harness.zh.md) | ✅ | B（5/6） | 需要带 doctor 工具的受治理 Claude Code harness 时最合适。 |
 | [Dimillian Skills](dimillian-skills.zh.md) | ✅ | C（4/5） | 适合 Apple 平台 Codex 工作流和个人评审／重构 swarm。 |

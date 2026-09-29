@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {"en": "agent-scripts does", "zh": "agent-scripts 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo to the path its scripts expect, then run the sync script",
+      "zh": "把仓库克隆到脚本写死的路径，再跑同步脚本",
+      "code": "scripts/sync-skills",
+      "component": {"en": "sync-skills (bash)", "zh": "sync-skills（bash）"}
+    },
+    {
+      "lane": "them",
+      "en": "Links skills/ into Codex whole, and into Claude Code one skill at a time",
+      "zh": "skills/ 整体链给 Codex，逐个链给 Claude Code",
+      "component": {"en": "symlink mirror", "zh": "软链镜像"}
+    },
+    {
+      "lane": "them",
+      "en": "Points each agent's global instruction file at the one shared AGENTS.MD",
+      "zh": "把各 agent 的全局指令文件指向同一份 AGENTS.MD",
+      "code": "~/.claude/CLAUDE.md · ~/.codex/AGENTS.md",
+      "component": {"en": "AGENTS.MD", "zh": "AGENTS.MD"}
+    },
+    {
+      "lane": "you",
+      "en": "Start each downstream repo's AGENTS.MD with the pointer line; repo rules go below it",
+      "zh": "每个下游仓库的 AGENTS.MD 开头放指针行，本仓库规则写在下面",
+      "code": "READ ~/Projects/agent-scripts/AGENTS.MD BEFORE ANYTHING (skip if missing).",
+      "component": {"en": "downstream AGENTS.MD", "zh": "下游 AGENTS.MD"}
+    },
+    {
+      "lane": "them",
+      "en": "The agent reads the shared rules, then loads a skill when its description matches the task",
+      "zh": "agent 先读共享规则，任务命中某个 skill 的描述时再加载它",
+      "component": {"en": "SKILL.md descriptions", "zh": "SKILL.md 描述"}
+    },
+    {
+      "lane": "you",
+      "en": "Edit a rule or skill once in the repo and push",
+      "zh": "规则或 skill 只在本仓库改一次并推送",
+      "component": {"en": "validate-skills hook", "zh": "validate-skills 钩子"}
+    },
+    {
+      "lane": "them",
+      "en": "Every linked agent and repo sees the change on its next session, no copies to update",
+      "zh": "所有已链接的 agent 与仓库下次会话即生效，没有副本要改",
+      "component": {"en": "symlink mirror", "zh": "软链镜像"}
+    }
+  ],
+  "value": {
+    "en": "One edit updates the rules and skills every agent in every repo reads, instead of a dozen drifting copies",
+    "zh": "改一处，所有仓库里的所有 agent 读到的规则和 skill 都跟着变，不再维护一堆逐渐走样的副本"
+  },
+  "sources": [
+    "README.md Skills section (sync-skills: Codex whole-root links, Claude flat per-skill links, one level deep)",
+    "README.md Agent Instructions section (~/.codex/AGENTS.md, ~/.claude/CLAUDE.md, ~/.claude/AGENTS.md -> AGENTS.MD; downstream pointer line verbatim)",
+    "scripts/sync-skills lines 1-8, 44-47, 138-148, 214-216 (hardcoded ~/Projects paths, link() retarget/conflict logic, instruction pointers)",
+    "README.md Helpers section + hooks/pre-commit (scripts/validate-skills as a local pre-commit hook)",
+    "README.md Syncing section (treat this repo as canonical; pull here first; preserve repo-local rules below the pointer)"
+  ]
+}
