@@ -373,6 +373,7 @@ Flutter,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 Follow (RSSNext),categories/reading-tools/horizon.md,,no
 FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
 Fooocus,categories/on-device-ml/comfyui.md,,no
+Forme (`danmolitor/forme`),categories/pdf-tools/pdfcn.md,,no
 Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
@@ -848,6 +849,7 @@ React Scan (`aidenybai/react-scan`),categories/dev-utilities/editors-and-runtime
 react-big-calendar (`bigcalendar/react-big-calendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 react-data-grid (`adodev/react-data-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 react-hotkeys-hook (`JohannesKlauss/react-hotkeys-hook`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
+react-pdf (`diegomura/react-pdf`),categories/pdf-tools/pdfcn.md,,no
 react-range (`twoy/react-range`),categories/web-ui/component-libraries/tanstack-ranger.md,,no
 react-select (`JedWatson/react-select`),categories/web-ui/component-libraries/tanstack-select.md,,no
 react-virtualized (`bvaughn/react-virtualized`),categories/web-ui/virtualization/tanstack-virtual.md,,no
@@ -974,6 +976,7 @@ Swift (ModelScope),categories/llm-training/llamafactory.md,,no
 SWR (`vercel/swr`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no
+Takumi (`kane50613/takumi`),categories/pdf-tools/pdfcn.md,,no
 Taskmaster (claude-task-master),categories/agent-tooling/work-state/ccpm.md,,no
 Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/work-state/INDEX.md,,no
 Taskwarrior,categories/agent-tooling/work-state/beads.md,,no
@@ -1039,6 +1042,7 @@ Vercel AI SDK (`vercel/ai`),categories/agent-frameworks/agent-runtimes/agent-sdk
 vercel/pkg,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Vibe Kanban,categories/agent-tooling/supervision-surfaces/agent-orchestrator.md,,no
 Vibe Kanban (BloopAI/vibe-kanban),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
+video-talkcraft,categories/video-production/seecut.md,,no
 virtua (`inokawa/virtua`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 visx (`airbnb/visx`),categories/web-ui/charts/tanstack-charts.md,,no
 Vite / create-vite (`vitejs/vite`),categories/dev-utilities/editors-and-runtimes/tanstack-cli.md,,no

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "pdfcn does", "zh": "pdfcn 做的"},
+  "steps": [
+    {"lane": "you", "en": "Register the pdfcn namespace in components.json", "zh": "在 components.json 登记 pdfcn 命名空间", "code": "\"@pdfcn\": \"https://pdfcn.dev/r/{name}.json\"", "component": {"en": "components.json", "zh": "components.json"}},
+    {"lane": "you", "en": "Add a component or a whole document block", "zh": "添加一个组件或一整个文档模板", "code": "npx shadcn@latest add @pdfcn/takumi/text", "component": {"en": "shadcn CLI", "zh": "shadcn CLI"}},
+    {"lane": "them", "en": "Copies the TSX into your repo and installs the engine npm packages", "zh": "把 TSX 复制进你的仓库，并装好引擎的 npm 包", "component": {"en": "registry item JSON", "zh": "注册表项 JSON"}},
+    {"lane": "you", "en": "Compose the document inside the shared theme provider", "zh": "在共享主题 Provider 里拼装文档", "code": "<PdfcnThemeProvider>"},
+    {"lane": "you", "en": "Hand the component tree to the engine's render API", "zh": "把组件树交给引擎的渲染 API", "code": "import { render } from \"takumi-pdf/next\""},
+    {"lane": "them", "en": "Lays out pages in WASM and returns selectable-text PDF bytes", "zh": "在 WASM 里分页排版，返回可选中文字的 PDF 字节", "component": {"en": "Takumi / Forme engine", "zh": "Takumi / Forme 引擎"}}
+  ],
+  "value": {"en": "Paginated, themed, selectable-text PDFs composed from components you own — no hand-written page-break logic, no headless browser", "zh": "用你完全拥有的组件拼出分页、带主题、文字可选中的 PDF——不用手写分页逻辑，也不用无头浏览器"},
+  "sources": [
+    "apps/web/content/docs/(root)/installation.mdx — npx shadcn@latest add @pdfcn/takumi/text; PdfcnThemeProvider usage with Document/Page",
+    "apps/web/content/docs/(root)/registry.mdx — components.json registries entry \"@pdfcn\": \"https://pdfcn.dev/r/{name}.json\"",
+    "apps/web/public/r/takumi/table.json — dependencies [takumi-pdf, @takumi-rs/helpers], registryDependencies [@pdfcn/takumi/utils]",
+    "apps/web/app/api/pdf/takumi/route.tsx — import { render } from \"takumi-pdf/next\"; await render(<Demo />, options) returns PDF bytes",
+    "apps/web/registry/bases.ts — per-base dependency lists and WASM-engine descriptions; Forme entered via forme/ namespace"
+  ]
+}

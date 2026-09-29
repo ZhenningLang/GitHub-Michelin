@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1501" viewBox="0 0 880 1501" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1501" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="1343" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="1343" rx="10"/>
+<rect class="pillT" x="474" y="40" width="257.8" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">SeeCut makes the agent do</text>
+<path class="edge" d="M62,214 L62,238" marker-end="url(#a)"/>
+<path class="hand" d="M408,311.0 C439.0,311.0 439.0,335 470,335" marker-end="url(#a)"/>
+<path class="edge" d="M494,453 L494,477" marker-end="url(#a)"/>
+<path class="edge" d="M494,640 L494,664" marker-end="url(#a)"/>
+<path class="hand" d="M472,748.0 C441.0,748.0 441.0,772 410,772" marker-end="url(#a)"/>
+<path class="hand" d="M408,795.0 C439.0,795.0 439.0,880 470,880" marker-end="url(#a)"/>
+<path class="edge" d="M494,998 L494,1022" marker-end="url(#a)"/>
+<path class="edge" d="M494,1185 L494,1209" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="142" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="142" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Copy skill/seecut into your agent&#x27;s</text>
+<text class="t" x="82" y="123">skills folder and run its preflight</text>
+<text class="t" x="82" y="145">until every required check is green</text>
+<text class="c" x="82" y="169">zsh skill/seecut/scripts/preflight.sh</text>
+<text class="comp" x="82" y="192">component: preflight.sh</text>
+<rect class="card" x="40" y="240" width="368" height="142" rx="8"/>
+<rect class="accY" x="40" y="240" width="4" height="142" rx="2"/>
+<circle class="accY" cx="62" cy="264" r="10"/>
+<text class="num" x="62" y="268" text-anchor="middle">2</text>
+<text class="t" x="82" y="269">Drop a 20–30 s vertical talking-head</text>
+<text class="t" x="82" y="291">clip (plus optional screenshots) in</text>
+<text class="t" x="82" y="313">one folder and invoke the skill</text>
+<text class="c" x="82" y="337">/seecut 素材：&lt;你的文件夹&gt;</text>
+<text class="comp" x="82" y="360">component: seecut skill</text>
+<rect class="cardT" x="472" y="311" width="368" height="142" rx="8"/>
+<rect class="accT" x="472" y="311" width="4" height="142" rx="2"/>
+<circle class="accT" cx="494" cy="335" r="10"/>
+<text class="num" x="494" y="339" text-anchor="middle">3</text>
+<text class="t" x="514" y="340">Watches the footage with a</text>
+<text class="t" x="514" y="362">video-native model (Gemini via agy)</text>
+<text class="t" x="514" y="384">and builds a word-level timeline</text>
+<text class="c" x="514" y="408">zsh scripts/agy_read.sh &lt;文件&gt; &quot;&lt;问题&gt;&quot;</text>
+<text class="comp" x="514" y="431">component: agy (Antigravity CLI)</text>
+<rect class="cardT" x="472" y="479" width="368" height="161" rx="8"/>
+<rect class="accT" x="472" y="479" width="4" height="161" rx="2"/>
+<circle class="accT" cx="494" cy="503" r="10"/>
+<text class="num" x="494" y="507" text-anchor="middle">4</text>
+<text class="t" x="514" y="508">Screenshots real pages the script</text>
+<text class="t" x="514" y="530">mentions as on-screen evidence; fake</text>
+<text class="t" x="514" y="552">UIs are forbidden</text>
+<text class="c" x="514" y="576">node scripts/grab_evidence.mjs &lt;素材目录&gt;</text>
+<text class="c" x="514" y="595">&lt;url&gt;...</text>
+<text class="comp" x="514" y="618">component: grab_evidence.mjs</text>
+<rect class="cardT" x="472" y="666" width="368" height="164" rx="8"/>
+<rect class="accT" x="472" y="666" width="4" height="164" rx="2"/>
+<circle class="accT" cx="494" cy="690" r="10"/>
+<text class="num" x="494" y="694" text-anchor="middle">5</text>
+<text class="t" x="514" y="695">Plans every shot from its design</text>
+<text class="t" x="514" y="717">tokens and decision table, then</text>
+<text class="t" x="514" y="739">renders the composition with</text>
+<text class="t" x="514" y="761">HyperFrames</text>
+<text class="c" x="514" y="785">node scripts/render.mjs build probe</text>
+<text class="comp" x="514" y="808">component: HyperFrames CLI</text>
+<rect class="card" x="40" y="748" width="368" height="94" rx="8"/>
+<rect class="accY" x="40" y="748" width="4" height="94" rx="2"/>
+<circle class="accY" cx="62" cy="772" r="10"/>
+<text class="num" x="62" y="776" text-anchor="middle">6</text>
+<text class="t" x="82" y="777">Sign off on the short sample before it</text>
+<text class="t" x="82" y="799">spends an hour on the full video</text>
+<text class="t" x="82" y="821">(asked first for footage over 60 s)</text>
+<rect class="cardT" x="472" y="856" width="368" height="142" rx="8"/>
+<rect class="accT" x="472" y="856" width="4" height="142" rx="2"/>
+<circle class="accT" cx="494" cy="880" r="10"/>
+<text class="num" x="494" y="884" text-anchor="middle">7</text>
+<text class="t" x="514" y="885">Gates each version: a geometry</text>
+<text class="t" x="514" y="907">self-check plus an AI critique that</text>
+<text class="t" x="514" y="929">watches the rendered video</text>
+<text class="c" x="514" y="953">node scripts/geom-check.mjs build</text>
+<text class="comp" x="514" y="976">component: geom-check.mjs</text>
+<rect class="cardT" x="472" y="1024" width="368" height="161" rx="8"/>
+<rect class="accT" x="472" y="1024" width="4" height="161" rx="2"/>
+<circle class="accT" cx="494" cy="1048" r="10"/>
+<text class="num" x="494" y="1052" text-anchor="middle">8</text>
+<text class="t" x="514" y="1053">Adopts a new version only after two</text>
+<text class="t" x="514" y="1075">order-swapped head-to-head wins</text>
+<text class="t" x="514" y="1097">against the previous one (max 3)</text>
+<text class="c" x="514" y="1121">python3 scripts/agy_judge.py pair --a</text>
+<text class="c" x="514" y="1140">vN.mp4 --b vN-1.mp4</text>
+<text class="comp" x="514" y="1163">component: agy_judge.py</text>
+<rect class="cardT" x="472" y="1211" width="368" height="142" rx="8"/>
+<rect class="accT" x="472" y="1211" width="4" height="142" rx="2"/>
+<circle class="accT" cx="494" cy="1235" r="10"/>
+<text class="num" x="494" y="1239" text-anchor="middle">9</text>
+<text class="t" x="514" y="1240">Delivers the MP4, a layered project</text>
+<text class="t" x="514" y="1262">package, and a JianYing draft if the</text>
+<text class="t" x="514" y="1284">optional engine is installed</text>
+<text class="c" x="514" y="1308">node scripts/jianying_layers.mjs build</text>
+<text class="comp" x="514" y="1331">component: jianying_layers.mjs</text>
+<rect class="val" x="28" y="1385" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="1409">VALUE</text>
+<text class="valT" x="48" y="1433">No manual keyframes for the motion pass — every version beat a judge that actually watched</text>
+<text class="valT" x="48" y="1455">it, and you keep the final say in JianYing</text>
+</svg>

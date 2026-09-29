@@ -20,6 +20,7 @@
 | **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | C（5/6） | [→](pdfmathtranslate.zh.md) |
 | **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | C（6/6） | [→](babeldoc.zh.md) |
 | **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | D（4/6） | [→](pdfmathtranslate-next.zh.md) |
+| **pdfcn** | 要用 shadcn CLI 把带主题的 React PDF 组件和整页文档模板（发票、报告、面单）复制进项目、底下跑 Takumi 或 Forme 时用它——只生成新 PDF。 | B（6/6） | [→](pdfcn.zh.md) |
 
 
 ## 对比矩阵
@@ -29,6 +30,7 @@
 | [PDF.js](pdfjs.zh.md) | ✅ | A（6/6） | 当你需要在浏览器/Node 里渲染或读取 PDF（Firefox 的引擎）时用它——它不创建也不编辑 PDF。 |
 | [pdf-lib](pdf-lib.zh.md) | ✅ | C（4/6） | 当你需要在 JS/TS 里创建或修改 PDF——在浏览器、Node、Deno 或 React Native 中——且不需要原生依赖时用它。 |
 | [jsPDF](jspdf.zh.md) | ✅ | B（5/6） | 当你需要在浏览器里从 HTML、文本和图形生成客户端 PDF——它只创建不编辑已有 PDF——时用它。 |
+| [pdfcn](pdfcn.zh.md) | ✅ | B（6/6） | 用 shadcn CLI 复制进项目的 React PDF 组件与整页模板，坐在 Takumi/Forme WASM 引擎上；无版本可锁，只生成不编辑。 |
 | [SAPP](sapp.zh.md) | ✅ | B（5/6） | PHP 原生增量 PDF 签名与对象操作，可保留修订；规范覆盖比 qpdf 窄，也缺少独立验证的 PAdES／LTV 证据。 |
 | [FPDI](fpdi.zh.md) | ✅ | A（5/6） | 在 PHP 写入库里把已有 PDF 的页面当模板导入；免费解析器不支持加密 PDF 与压缩交叉引用流。 |
 | [pyHanko](pyhanko.zh.md) | ✅ | A（6/6） | Python 的 PDF 签名、时间戳与验证，带成文记录的 PAdES/LTV 流程；上游仍自标 beta。 |
