@@ -10,6 +10,7 @@
 | **Baoyu Skills** | 宝玉出品的 20+ 个 coding agent 技能合集（翻译、markdown/HTML 排版、字幕与网页抓取、图片/图表/幻灯片生成），可装入 Claude Code、Codex 等支持 skill 的 harness。 | B（4/5） | [→](baoyu-skills.zh.md) |
 | **huashu-skills** | 中文创作者工具箱，含 21 个文章、选题、调研、视频大纲、配图、PDF 导出和创作流程 skill。 | B（4/5） | [→](huashu-skills.zh.md) |
 | **writing-agent** | 中文长文生产线，包含分阶段策划、证据账本、审稿、去 AI 味、事实核查闸门和最终 clean text。 | B（5/6） | [→](writing-agent.zh.md) |
+| **Tech-Doc-Style-Chinese** | 当 coding agent 要撰写、改写或校对中文技术文档、API 文案和界面文案，需要事实保真的写作合同加可进 CI 的文案检查器时用它。 | B（4/5） | [→](tech-doc-style-chinese.zh.md) |
 
 ## 对比矩阵
 
@@ -18,6 +19,7 @@
 | [Baoyu Skills](baoyu-skills.zh.md) | ✅ | B（4/5） | 20+ 个通用内容／排版工具合集；够宽，但不是小说或营销专用流水线。 |
 | [huashu-skills](huashu-skills.zh.md) | ✅ | B（4/5） | 宽中文创作者工具箱；许可证不清和 per-skill 安装路径让风险更高。 |
 | [writing-agent](writing-agent.zh.md) | ✅ | B（5/6） | 严格的中文文章生产线，带证据账本；比模块化创作者工具更重。 |
+| [Tech-Doc-Style-Chinese](tech-doc-style-chinese.zh.md) | ✅ | B（4/5） | 中文技术文档风格 skill：事实保真规则、排版与 API 状态参考，外加零依赖文案检查器；是风格层，不是生产线。 |
 
 ## 什么该放这里
 

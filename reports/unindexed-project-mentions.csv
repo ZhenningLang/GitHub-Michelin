@@ -293,6 +293,7 @@ date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-ti
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
+DBHub (`bytebase/dbhub`),categories/databases/database-clients/mcp-toolbox.md,,no
 DBOS (`dbos-inc/dbos-transact-ts`),categories/workflow-orchestration/tanstack-workflow.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
 ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
@@ -327,6 +328,7 @@ Docspell,categories/document-management/paperless-ngx.md,,no
 docTR,categories/ocr/easyocr.md,,no
 Dolt directly (raw versioned SQL),categories/agent-tooling/work-state/beads.md,,no
 dotfiles / hand-rolled `~/.claude`,categories/agent-dev-methodology/coding-agent-harnesses/ecc.md,,no
+dotnet/runtime (Microsoft .NET WebAssembly / Blazor),categories/dev-utilities/editors-and-runtimes/netwasm.md,,no
 Downshift (`downshift-js/downshift`),categories/web-ui/component-libraries/tanstack-select.md,,no
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
@@ -340,6 +342,7 @@ Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 ElectricSQL (`electric-sql/electric`),categories/web-ui/data-fetching/tanstack-db.md,,no
 Electron,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
 ElevenLabs,categories/speech/coqui-ai-tts.md,,no
+Emscripten,categories/dev-utilities/editors-and-runtimes/netwasm.md,,no
 endesive,categories/pdf-tools/pdf-transform-signing/pyhanko.md,,no
 endolith/open-interpreter (the old Python OI),categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 ESLint + a11y plugins (eslint-plugin-jsx-a11y),categories/ai-design-generation/impeccable.md,,no
@@ -508,6 +511,7 @@ Java/Scala official client,categories/kafka-tools/kafka-python.md,,no
 jBPM / Flowable web modelers,categories/diagramming/bpmn-js.md,,no
 Jenkins,categories/workflow-orchestration/gaia.md,,no
 JetBrains stock keymap,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
+JetBrains/kotlin (Kotlin/Wasm),categories/dev-utilities/editors-and-runtimes/netwasm.md,,no
 Jev (hosted),categories/decision-models/kev.md,,no
 Jev · TypeSafe System One,categories/decision-models/INDEX.md,,no
 jMetal (Java/Py),categories/ml-research/pymoo.md,,no
@@ -786,6 +790,7 @@ Poetry,categories/python-tooling/uv.md,,no
 Polling (SQLAlchemy / cron),categories/databases/data-sync/python-mysql-replication.md,,no
 Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
 Portkey Gateway,categories/api-gateway/kong.md,,no
+Postgres MCP Pro (`crystaldba/postgres-mcp`),categories/databases/database-clients/mcp-toolbox.md,,no
 Postiz,categories/social-media-management/INDEX.md,,no
 Postiz (gitroomhq/postiz-app),categories/social-media-management/easel.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
@@ -956,6 +961,7 @@ Solid (`solidjs/solid`),categories/web-ui/frameworks/view-frameworks/tanstack-re
 Solid.js,categories/web-ui/frameworks/view-frameworks/svelte.md,,no
 SolidStart,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
+sparanoid/chinese-copywriting-guidelines,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 Special K,categories/media-processing/image-processing/magpie.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
@@ -998,6 +1004,7 @@ throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanst
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
+TinyGo,categories/dev-utilities/editors-and-runtimes/netwasm.md,,no
 tinykeys (`jamiebuilds/tinykeys`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 tldraw,categories/diagramming/excalidraw.md,,no
 tmux + git worktree + agent CLI (DIY),categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md,,no
@@ -1033,6 +1040,7 @@ use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
+Vanna (`vanna-ai/vanna`),categories/databases/database-clients/mcp-toolbox.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
@@ -1081,6 +1089,7 @@ Your own hand-written slash commands,categories/agent-skills/personal-collection
 Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.md,,no
 YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
 Zapier,categories/workflow-orchestration/n8n.md,,no
+zhlint,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 zkui / zk-web,categories/databases/database-clients/prettyzoo.md,,no
 ZoeDepth,categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no

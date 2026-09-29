@@ -12,6 +12,7 @@
 | **elasticsearch-sql** | 用 SQL 而非原生 JSON Query DSL 查询 Elasticsearch——一个社区插件（兼库），把 SQL 解析并翻译成 ES 查询／聚合，发布版与你所跑的 ES 大版本对齐。 | C（5/6） | [→](elasticsearch-sql.zh.md) |
 | **PrettyZoo** | 一个跨平台的 Apache ZooKeeper 桌面 GUI（Win／Mac／Linux）——浏览 znode 树、查看／编辑节点数据、管理 ACL 与连接，无需跌进 `zkCli.sh` shell。**已归档：作者于 2023 年公开宣布停止维护。** | D（5/6） | [→](prettyzoo.zh.md) |
 | **RDR** | 一个快速的离线 Redis RDB 文件解析器（尽管仓库标注语言为 JavaScript，核心其实是 Go 写的），用来揭示哪些 key 和 key 前缀在吃内存——`rdr show` 在本地端口起一个 HTML 内存报告，`rdr keys` 把所有 key 导出。 | D（4/6） | [→](rdr.zh.md) |
+| **MCP Toolbox for Databases** | 当生产 agent 要查多种数据库（57 种数据源、Google Cloud 一等公民），且只能走你在 YAML 里声明的参数化语句时用它——但引擎级只读只在 Cloud SQL／AlloyDB／BigQuery 上有，网络默认值也偏宽松。 | A（6/6） | [→](mcp-toolbox.zh.md) |
 
 ## 什么该放这里
 

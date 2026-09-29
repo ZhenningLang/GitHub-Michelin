@@ -46,6 +46,7 @@ https://github.com/FFmpeg/FFmpeg,ffmpeg,transcoding-and-pipelines,categories/med
 https://github.com/FailSpy/abliterator,abliterator,model-editing,categories/model-editing/abliterator.md
 https://github.com/FalkorDB/FalkorDB,falkordb,structured-retrieval,categories/rag-retrieval/structured-retrieval/falkordb.md
 https://github.com/FareedKhan-dev/train-llm-from-scratch,train-llm-from-scratch,study-and-experiments,categories/llm-training/study-and-experiments/train-llm-from-scratch.md
+https://github.com/Fenng/Tech-Doc-Style-Chinese,tech-doc-style-chinese,content-production,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md
 https://github.com/FlashML-org/FreeToken,freetoken,local-runtimes,categories/llm-inference/local-runtimes/freetoken.md
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
@@ -402,6 +403,7 @@ https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-de
 https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/ax.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
 https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
+https://github.com/googleapis/mcp-toolbox,mcp-toolbox,database-clients,categories/databases/database-clients/mcp-toolbox.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md
@@ -777,5 +779,6 @@ https://github.com/zed-industries/zed,zed,editors-and-runtimes,categories/dev-ut
 https://github.com/zellij-org/zellij,zellij,terminal-ui,categories/terminal-ui/zellij.md
 https://github.com/zhaoxuya520/reverse-skill,reverse-skill,security,categories/agent-skills/security/reverse-skill.md
 https://github.com/zhayujie/CowAgent,cowagent,wechat,categories/im-automation/wechat/cowagent.md
+https://github.com/zion-sati/NetWasm,netwasm,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/netwasm.md
 https://github.com/zulip/zulip,zulip,team-chat,categories/team-chat/zulip.md
 https://gitlab.freedesktop.org/gstreamer/gstreamer,gstreamer,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Tech-Doc-Style-Chinese does",
+    "zh": "这份 Skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into Claude Code or Codex",
+      "zh": "把 Skill 装进 Claude Code 或 Codex",
+      "code": "npx skills add https://github.com/Fenng/tech-doc-style-chinese",
+      "component": {"en": "SKILL.md + references/", "zh": "SKILL.md + references/"}
+    },
+    {
+      "lane": "them",
+      "en": "Auto-fires on Chinese writing tasks from its description",
+      "zh": "按 description 在中文写作任务上自动触发",
+      "component": {"en": "SKILL.md frontmatter", "zh": "SKILL.md frontmatter"}
+    },
+    {
+      "lane": "you",
+      "en": "Hand over the draft and name the task mode",
+      "zh": "交出稿件，说明是撰写、改写还是校对",
+      "code": "Use $tech-doc-style-chinese to rewrite this Chinese technical copy."
+    },
+    {
+      "lane": "them",
+      "en": "Marks facts, limits and machine-readable spans as no-touch boundaries",
+      "zh": "先把事实和机器可读内容划成不可改动边界",
+      "component": {"en": "SKILL.md editing flow", "zh": "SKILL.md 编辑流程"}
+    },
+    {
+      "lane": "them",
+      "en": "Reads the one reference matching the content type",
+      "zh": "按内容类型读取对应的那份参考规则",
+      "component": {"en": "references/*.md", "zh": "references/*.md"}
+    },
+    {
+      "lane": "them",
+      "en": "Rewrites by rule priority, then runs the copy linter",
+      "zh": "按规则优先级改写，再跑内置检查器",
+      "code": "python scripts/lint_copy_rules.py .",
+      "component": {"en": "scripts/lint_copy_rules.py", "zh": "scripts/lint_copy_rules.py"}
+    }
+  ],
+  "value": {
+    "en": "Chinese docs that read native: facts and code untouched, warnings gated by a CI-runnable linter",
+    "zh": "拿到像母语者写的中文文档，事实与代码不动，警告由可进 CI 的检查器把关"
+  },
+  "sources": [
+    "README.md — npx install commands, explicit invocation example, Claude Code auto-trigger note",
+    "SKILL.md — frontmatter description, 规则优先级, 编辑流程, 参考资料路由",
+    ".github/workflows/skill-lint.yml — python scripts/lint_copy_rules.py .",
+    "references/controlled-technical-chinese.md — ASD-STE100 借鉴说明与适用强度"
+  ]
+}

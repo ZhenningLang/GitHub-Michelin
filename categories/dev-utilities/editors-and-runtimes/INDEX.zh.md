@@ -19,6 +19,7 @@
 | **TanStack Config** | 当 pnpm monorepo 里的 TypeScript 库要按 TanStack 自家包的方式做检查（以及遗留的 ESM／CJS 双格式构建）时用它——新项目的构建别用（TanStack 自己已转向 tsdown），发版流水线也别用（用 Changesets）。 | B（6/6） | [→](tanstack-config.zh.md) |
 | **TanStack Container** | 当你要把真实的 Vite／TanStack Start 项目放进访客浏览器里跑——安装、进程、预览、存档恢复——而且要 MIT 开源、资源自托管，而不是闭源商业内核时用它——但 2026-09 时 npm 包还没发布，项目自己也声明不是安全边界。 | C（5/6） | [→](tanstack-container.zh.md) |
 | **TanStack alt-cli** | 只把它当集成组合式脚手架的模式参考——2026 年 1 月只活了一周的 TanStack 实验，已归档，`@tanstack/cli` 包名如今发的是主线 CLI；要跑的东西一律用 TanStack CLI。 | D（5/6） | [→](tanstack-alt-cli.zh.md) |
+| **NetWasm** | 当 C# 程序必须打包成一个极小的独立 WASI 组件交付——GC 链接在产物里、目标机器不装 .NET——时用它；但它是 7 周大的单人 pre-1.0 项目，工具链挂自定义非开源许可证。 | C（4/6） | [→](netwasm.zh.md) |
 
 ## 对比矩阵
 
@@ -36,6 +37,7 @@
 | [TanStack Config](tanstack-config.zh.md) | ✅ | B（6/6） | 当 pnpm monorepo 里的 TypeScript 库要按 TanStack 自家包的方式做检查（以及遗留的 ESM／CJS 双格式构建）时用它——新项目的构建别用（TanStack 自己已转向 tsdown），发版流水线也别用（用 Changesets）。 |
 | [TanStack Container](tanstack-container.zh.md) | ✅ | C（5/6） | 当你要把真实的 Vite／TanStack Start 项目放进访客浏览器里跑——安装、进程、预览、存档恢复——而且要 MIT 开源、资源自托管，而不是闭源商业内核时用它——但 2026-09 时 npm 包还没发布，项目自己也声明不是安全边界。 |
 | [TanStack alt-cli](tanstack-alt-cli.zh.md) | ✅ | D（5/6） | 只把它当集成组合式脚手架的模式参考——2026 年 1 月只活了一周的 TanStack 实验，已归档，`@tanstack/cli` 包名如今发的是主线 CLI；要跑的东西一律用 TanStack CLI。 |
+| [NetWasm](netwasm.zh.md) | ✅ | C（4/6） | 当 C# 程序必须打包成一个极小的独立 WASI 组件交付——GC 链接在产物里、目标机器不装 .NET——时用它；但它是 7 周大的单人 pre-1.0 项目，工具链挂自定义非开源许可证。 |
 
 ## 什么该放这里
 

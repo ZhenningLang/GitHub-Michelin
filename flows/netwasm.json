@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "NetWasm does", "zh": "NetWasm 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the NetWasm templates and create a C# app", "zh": "装上 NetWasm 模板，用它建一个 C# 应用", "code": "dotnet new install NetWasm.Templates · dotnet new netwasm-app -n HelloNetWasm", "component": {"en": "NetWasm.Templates (NuGet)", "zh": "NetWasm.Templates（NuGet）"}},
+    {"lane": "you", "en": "Write ordinary C#, exactly like a console program", "zh": "写普通的 C#，和普通控制台程序一样", "code": "Console.WriteLine(42);"},
+    {"lane": "you", "en": "Restore and publish with the same commands you already know", "zh": "restore 并发布，用的还是熟悉的 dotnet 命令", "code": "dotnet restore · dotnet publish -c Release -o publish/local", "component": {"en": "NetWasm.Sdk (MSBuild)", "zh": "NetWasm.Sdk（MSBuild）"}},
+    {"lane": "them", "en": "Compiles reachable code to Wasm: drops unreachable parts, specializes generics, links the GC it needs", "zh": "把可达代码编成 Wasm：丢掉不可达、特化泛型、按需链接 GC", "component": {"en": "NetWasm compiler", "zh": "NetWasm 编译器"}},
+    {"lane": "them", "en": "Packages the result as one WASI Preview 2 component declaring its host capabilities", "zh": "把结果打包成 WASI P2 组件，声明所需宿主能力", "component": {"en": "Component Model layer", "zh": "组件模型层"}},
+    {"lane": "you", "en": "Run the file wherever a WASI host runs — no .NET needed on the target", "zh": "任何 WASI 宿主上直接运行，目标机器没有 .NET", "code": "wasmtime run publish/local/HelloNetWasm.wasm"}
+  ],
+  "value": {"en": "One standalone .wasm file is the whole program — it runs with no .NET installed anywhere on the target", "zh": "一个独立 .wasm 文件就是整个程序——目标机器不用装 .NET"},
+  "sources": [
+    "README.md Try it (dotnet new install NetWasm.Templates; dotnet new netwasm-app -n HelloNetWasm; dotnet restore; dotnet run; dotnet publish -c Release -o publish/local; wasmtime run publish/local/HelloNetWasm.wasm prints 42)",
+    "docs/sdk-quickstart.md sections 1-3 (same commands; first restore pulls pinned Node/wasm-ld/wasm-opt host-tools package)",
+    "docs/size-and-methodology.md (reference source Console.WriteLine(42); 84,513-byte Release component; runs under Wasmtime 47.0.3)",
+    "docs/ARCHITECTURE.md (closed-world reachability, generic specialization, WIT/WASI Preview 2 component packaging)"
+  ]
+}

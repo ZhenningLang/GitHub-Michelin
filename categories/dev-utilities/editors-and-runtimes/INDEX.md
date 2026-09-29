@@ -19,6 +19,7 @@
 | **TanStack Config** | Use it when a TypeScript library in a pnpm monorepo should lint (and, legacy, dual-build ESM/CJS) exactly like TanStack's own packages — not for new builds (TanStack itself moves to tsdown) or release pipelines (use Changesets). | B (6/6) | [→](tanstack-config.md) |
 | **TanStack Container** | Use it when your product must run a real Vite / TanStack Start project inside the visitor's browser — install, processes, preview, save/resume — under MIT source with self-hosted assets instead of a closed commercial core — but the npm packages are unpublished as of 2026-09 and the project disclaims being a security boundary. | C (5/6) | [→](tanstack-container.md) |
 | **TanStack alt-cli** | Use it only as a pattern source for integration-composition scaffolding — a one-week January-2026 TanStack experiment, archived, whose @tanstack/cli npm name now ships the mainline CLI; for anything you run, use TanStack CLI. | D (5/6) | [→](tanstack-alt-cli.md) |
+| **NetWasm** | Use it when a C# program must ship as one tiny standalone WASI component — GC linked in, no .NET runtime on the target — but it's a 7-week-old, single-maintainer pre-1.0 project whose tooling carries a custom non-open-source license. | C (4/6) | [→](netwasm.md) |
 
 ## Comparison matrix
 
@@ -36,6 +37,7 @@
 | [TanStack Config](tanstack-config.md) | ✅ | B (6/6) | Use it when a TypeScript library in a pnpm monorepo should lint (and, legacy, dual-build ESM/CJS) exactly like TanStack's own packages — not for new builds (TanStack itself moves to tsdown) or release pipelines (use Changesets). |
 | [TanStack Container](tanstack-container.md) | ✅ | C (5/6) | Use it when your product must run a real Vite / TanStack Start project inside the visitor's browser — install, processes, preview, save/resume — under MIT source with self-hosted assets instead of a closed commercial core — but the npm packages are unpublished as of 2026-09 and the project disclaims being a security boundary. |
 | [TanStack alt-cli](tanstack-alt-cli.md) | ✅ | D (5/6) | Use it only as a pattern source for integration-composition scaffolding — a one-week January-2026 TanStack experiment, archived, whose @tanstack/cli npm name now ships the mainline CLI; for anything you run, use TanStack CLI. |
+| [NetWasm](netwasm.md) | ✅ | C (4/6) | Use it when a C# program must ship as one tiny standalone WASI component — GC linked in, no .NET runtime on the target — but it's a 7-week-old, single-maintainer pre-1.0 project whose tooling carries a custom non-open-source license. |
 
 ## What belongs here
 
