@@ -53,7 +53,6 @@
 | **proxy-pool** | Self-hosted rotating proxy-IP pools for web scraping. | [→](categories/proxy-pool/INDEX.md) |
 | **debugging-proxy** | HTTP(S)/WebSocket debugging proxies — capture, inspect, rewrite, and mock traffic. | [→](categories/debugging-proxy/INDEX.md) |
 | **web-scraping** | Fetch and extract content/structure from web pages — article extraction and HTML parsing. | [→](categories/web-scraping/INDEX.md) |
-
 | **auth** | Authentication & authorization libraries — login providers and permission rules. | [→](categories/auth/INDEX.md) |
 | **databases** | Databases and database tooling — clients, GUIs, sync, and Redis/ES-compatible stores. | [→](categories/databases/INDEX.md) |
 | **object-storage** | S3-compatible object storage servers you run yourself. | [→](categories/object-storage/INDEX.md) |
