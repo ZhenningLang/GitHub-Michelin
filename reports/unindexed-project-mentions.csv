@@ -858,6 +858,7 @@ requests,categories/python-tooling/curl-cffi.md,,no
 requests + BeautifulSoup,categories/web-scraping/crawling-tools/requests-html.md,,no
 requests-futures,categories/python-tooling/grequests.md,,no
 requests-oauthlib / oauthlib,categories/auth/authomatic.md,,no
+ReShade,categories/media-processing/image-processing/magpie.md,,no
 resty.redis via OpenResty bundle,categories/nginx-modules/lua-resty-redis.md,,no
 Resumable.js,categories/nginx-modules/tusd.md,,no
 reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,no
@@ -901,6 +902,7 @@ sentence-transformers (SBERT),categories/rag-retrieval/vector-search/text2vec.md
 Serena,categories/rag-retrieval/code-intelligence/ix.md,,no
 Serena (MCP),categories/rag-retrieval/code-intelligence/code-review-graph.md,,no
 SetFit (huggingface/setfit),categories/decision-models/laya.md,,no
+ShaderGlass,categories/media-processing/image-processing/magpie.md,,no
 Shadowrocket / Surge,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Shape Up book / BaseCamp's own materials,categories/agent-skills/personal-collections/engineering-workflows/shaping-skills.md,,no
 ShareX,categories/media-processing/video-editing/openscreen.md,,no
@@ -933,6 +935,7 @@ Solid (`solidjs/solid`),categories/web-ui/frameworks/view-frameworks/tanstack-re
 Solid.js,categories/web-ui/frameworks/view-frameworks/svelte.md,,no
 SolidStart,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
+Special K,categories/media-processing/image-processing/magpie.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no

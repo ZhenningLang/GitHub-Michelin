@@ -10,14 +10,14 @@
 | CopilotKit/OpenBot | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openbot.md |  | copilotkit/openbot |
 | firecrawl/anydoc | add | done | categories/document-parsing/anydoc.md |  | firecrawl/anydoc |
 | google-research/rrsi | add | done | categories/ml-research/rrsi.md |  | google-research/rrsi |
-| Asymptote-Labs/agent-beacon | sync | running |  | 已收录（09-28 批新增），标签又被打开 | asymptote-labs/agent-beacon |
+| Asymptote-Labs/agent-beacon | sync | done | categories/agent-memory/coding-agent-memory/agent-beacon.md | 新鲜页，sync-entry 按阈值未重核，无改动 | asymptote-labs/agent-beacon |
 | openedclaude/claude-reviews-claude | skip | skipped |  | 沿用 09-28 判定：解读文章集，无可复用软件；标签保留 | openedclaude/claude-reviews-claude |
 | Piebald-AI/claude-code-system-prompts | skip | skipped |  | 沿用 09-28 判定：闭源产品系统提示词提取物；标签保留 | piebald-ai/claude-code-system-prompts |
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 沿用 09-28 判定：文章/教程合集；标签保留 | shanraisshan/claude-code-best-practice |
 | win4r/MuseAI-Skills | skip | skipped |  | 沿用 09-28 判定：闭源产品运行环境快照；标签保留 | win4r/museai-skills |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
-| Blinue/Magpie | add | running |  | 处理中新开的标签（标签写法 �� | blinue/magpie |
+| Blinue/Magpie | add | done | categories/media-processing/image-processing/magpie.md | 处理中新开的标签（标签写法 �� | blinue/magpie |
 | harveyai/harvey-labs | add | running |  | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
-| rtk-ai/rtk | sync | pending |  | 处理中新开的标签（标签写法 �� | rtk-ai/rtk |
-| steipete/agent-scripts | add | pending |  | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
-| EverMind-AI/Raven | add | pending |  | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
+| rtk-ai/rtk | sync | done | categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md | 新鲜页，sync-entry 按阈值未重核，无改动 | rtk-ai/rtk |
+| steipete/agent-scripts | add | running |  | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
+| EverMind-AI/Raven | add | running |  | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
