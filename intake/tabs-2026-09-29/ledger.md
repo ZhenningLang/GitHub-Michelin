@@ -17,7 +17,7 @@
 | win4r/MuseAI-Skills | skip | skipped |  | 沿用 09-28 判定：闭源产品运行环境快照；标签保留 | win4r/museai-skills |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | Blinue/Magpie | add | done | categories/media-processing/image-processing/magpie.md | 处理中新开的标签（标签写法 �� | blinue/magpie |
-| harveyai/harvey-labs | add | running |  | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
+| harveyai/harvey-labs | add | done | categories/llm-eval/harvey-labs.md | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
 | rtk-ai/rtk | sync | done | categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md | 新鲜页，sync-entry 按阈值未重核，无改动 | rtk-ai/rtk |
 | steipete/agent-scripts | add | running |  | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
 | EverMind-AI/Raven | add | running |  | 处理中新开的标签（标签写法 �� | evermind-ai/raven |

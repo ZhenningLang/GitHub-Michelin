@@ -150,6 +150,7 @@ Bespoke per-library prompting (write your own SKILL.md),categories/agent-skills/
 Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 bettercap,categories/pentest/wifit3.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/vector-search/text2vec.md,,no
+BigLaw Bench (`harveyai/biglaw-bench`),categories/llm-eval/harvey-labs.md,,no
 Biome,categories/ai-code-review/react-doctor.md,,no
 BleachBit,categories/disk-cleanup/mangodisk.md,,no
 Blender,categories/cad/freecad.md,,no
@@ -485,6 +486,7 @@ Infisical,categories/secrets-management/openbao.md,,no
 Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
 InsightFace / face_recognition / CompreFace / facenet-pytorch,categories/computer-vision/INDEX.md,,no
+Inspect AI,categories/llm-eval/harvey-labs.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
 InvokeAI,categories/on-device-ml/comfyui.md,,no
@@ -530,6 +532,7 @@ LangSmith,categories/llm-eval/promptfoo.md,,no
 LangSmith (LangChain),categories/llm-eval/pezzo.md,,no
 LaunchBar,categories/dev-utilities/data-tools/flashlight.md,,no
 Lean Startup / other startup frameworks,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
+LegalBench,categories/llm-eval/harvey-labs.md,,no
 Legend-State (`LegendApp/legend-state`),categories/web-ui/data-fetching/tanstack-db.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
 Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Harvey LAB does", "zh": "Harvey LAB 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone, run the setup script once, and put API keys in .env", "zh": "克隆仓库，跑一次安装脚本，把 API 密钥写进 .env", "code": "./scripts/setup.sh", "component": {"en": "setup script", "zh": "安装脚本"}},
+    {"lane": "you", "en": "Pick a task and a model and start the agent run", "zh": "选一道题和一个模型，启动 agent 运行", "code": "uv run python -m lab_core.harness.run", "component": {"en": "harness CLI", "zh": "执行框架命令行"}},
+    {"lane": "them", "en": "Runs the tool loop over the case file in an offline Podman sandbox", "zh": "在断网的 Podman 沙箱里对案卷跑工具调用循环", "component": {"en": "agent loop + sandbox", "zh": "agent 循环 + 沙箱"}},
+    {"lane": "them", "en": "Saves deliverables, transcript and metrics under results/", "zh": "把交付物、对话记录和指标存进 results/", "component": {"en": "harness", "zh": "执行框架"}},
+    {"lane": "you", "en": "Start grading for that run ID", "zh": "对这个运行 ID 发起评分", "code": "uv run python -m lab_core.evaluation.run_eval", "component": {"en": "evaluator CLI", "zh": "评分器命令行"}},
+    {"lane": "them", "en": "Two LLM judges mark every criterion pass/fail and write report.html", "zh": "两个大模型评委逐条判通过与否，生成 report.html", "component": {"en": "rubric judges", "zh": "评分评委"}}
+  ],
+  "value": {"en": "An all-or-nothing score per legal task with per-criterion reasoning, instead of hand-checking every memo", "zh": "每道法律题得到全对才算过的分数和逐条理由，不必再人工逐份核对备忘录"},
+  "sources": [
+    "docs/tutorial.md: Step 1 (setup.sh), Step 2 (.env keys), Step 4 (lab_core.harness.run), Step 6 (lab_core.evaluation.run_eval), Step 7 (report.html)",
+    "docs/architecture.md: Harness, Agent Loop, Tools, Security Model (Podman --network=none)",
+    "docs/eval-strategies.md: dual judges and all-pass scoring"
+  ]
+}
