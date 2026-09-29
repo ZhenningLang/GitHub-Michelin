@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {"en": "The server does", "zh": "这个服务器做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install uv, then add the server to your assistant as a plugin",
+      "zh": "装好 uv，再把服务器作为插件装进你的助手",
+      "code": "claude plugin install invisible-playwright-mcp@feder-cr",
+      "component": {"en": "MCP server (uvx)", "zh": "MCP 服务器（uvx）"}
+    },
+    {
+      "lane": "them",
+      "en": "On first start, downloads its patched Firefox (about a quarter of a gigabyte) once",
+      "zh": "首次启动时自己下载一次打过补丁的 Firefox（约 250 MB）",
+      "component": {"en": "invisible-playwright engine", "zh": "invisible-playwright 引擎"}
+    },
+    {
+      "lane": "you",
+      "en": "Give the assistant a browsing task in plain words, with a URL",
+      "zh": "用大白话给助手一个带网址的浏览任务"
+    },
+    {
+      "lane": "them",
+      "en": "Opens a browser whose fingerprint comes from a seed, set inside the engine",
+      "zh": "打开一个浏览器，指纹由种子决定、写在引擎内部",
+      "component": {"en": "invisible_core", "zh": "invisible_core"}
+    },
+    {
+      "lane": "them",
+      "en": "Navigates, clicks and types with a human-looking pointer, and reads the page back",
+      "zh": "像人一样移动指针去导航、点击、输入，再把页面内容读回给助手",
+      "component": {"en": "browser_* tools", "zh": "browser_* 工具"}
+    }
+  ],
+  "value": {
+    "en": "Your assistant browses sites that show stock Playwright a captcha, without you assembling a stealth browser stack",
+    "zh": "助手能浏览那些对普通 Playwright 弹验证码的网站，你不用自己拼一套反检测浏览器"
+  },
+  "sources": [
+    "README.md (Two ways to use this browser agent: uv install blocks; `claude plugin install invisible-playwright-mcp@feder-cr`; What to ask a web browsing agent: plain-English task with a pasted URL)",
+    "skills/setup/SKILL.md and manifest.json long_description (engine about a quarter of a gigabyte, downloaded by the server itself on first start)",
+    "docs/mcp-server.md (browser_open is the first call; seed is the identity; tool list browser_navigate / browser_click / browser_type / browser_read_text)",
+    "feder-cr/invisible_playwright README (fingerprint set inside the engine; Bezier-curve mouse motion) and .github/CONTRIBUTING.md (invisible_core: seed to fingerprint)"
+  ]
+}

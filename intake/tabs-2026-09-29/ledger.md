@@ -24,3 +24,4 @@
 | jumpserver/jumpserver | add | done | categories/dev-utilities/ops-infra/jumpserver.md | 处理中新开的标签 | jumpserver/jumpserver |
 | hpcaitech/Open-Sora | add | done | categories/ml-research/vision-and-multimodal/open-sora.md | 处理中新开的标签 | hpcaitech/open-sora |
 | radixark/miles | add | done | categories/llm-training/miles.md | 用户直接贴的链接 | radixark/miles |
+| feder-cr/invisible_playwright_mcp | add | done | categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md | 用户直接贴的链接 | feder-cr/invisible_playwright_mcp |

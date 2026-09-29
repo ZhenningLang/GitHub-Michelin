@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1086
+- Named-but-unindexed alternatives: 1087
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -34,6 +34,7 @@ shape and are deliberately excluded here.
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [Camoufox](https://github.com/daijro/camoufox) | `categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy) | `categories/networking/amneziawg-installer.md` |
 | [v2rayA](https://github.com/v2rayA/v2rayA) | `categories/networking/dae.md` |
 | [Wan2.2](https://github.com/Wan-Video/Wan2.2) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
-| [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython) | `categories/sandboxing/monty.md` |
