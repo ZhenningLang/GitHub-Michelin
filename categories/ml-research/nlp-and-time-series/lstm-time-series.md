@@ -2,7 +2,7 @@
 name: LSTM Neural Network for Time Series Prediction
 slug: lstm-time-series
 repo: https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction
-category: ml-research
+category: nlp-and-time-series
 tags: [lstm, time-series, keras, tensorflow, educational, forecasting, deep-learning]
 language: Python
 license: AGPL-3.0
@@ -71,7 +71,7 @@ health:
 
 A compact, article-companion codebase showing how to build a Keras LSTM to predict time-series sequences — demoed on a sine wave and S&P 500 data — built to teach the technique, not to ship as a forecasting library.
 
-![lstm-time-series — health radar](../../assets/health/lstm-time-series.svg)
+![lstm-time-series — health radar](../../../assets/health/lstm-time-series.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ You reach for it as a **learning artifact** — a clean, readable reference impl
 | GluonTS | 未收录 | Choose GluonTS when you need a probabilistic time-series toolkit from AWS. | Probabilistic time-series toolkit (AWS); strong for real forecasting at scale, steeper learning curve, not an intro example. |
 | Prophet | 未收录 | Choose Prophet when you need simple decomposition-based forecasting for business seasonality. | Decomposition-based forecasting, trivial to use for business seasonality; not a deep-learning/LSTM demonstration. |
 | Keras official RNN tutorials | 未收录 | Choose Keras official tutorials when you need current maintained TF2 examples of the same techniques. | Up-to-date, maintained, TF2 examples of the same techniques; less narrative than the companion article but won't bit-rot the same way. |
-| [PyTorch-GAN](pytorch-gan.md) | ✅ | Choose PyTorch-GAN when you need the same teaching-repo genre in generative images. | A different domain (generative images) but the same *genre* — a single-author reference-implementation collection meant to teach, not to be a maintained dependency. |
+| [PyTorch-GAN](../vision-and-multimodal/pytorch-gan.md) | ✅ | Choose PyTorch-GAN when you need the same teaching-repo genre in generative images. | A different domain (generative images) but the same *genre* — a single-author reference-implementation collection meant to teach, not to be a maintained dependency. |
 
 ## Tech stack
 

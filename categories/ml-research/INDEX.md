@@ -1,45 +1,31 @@
 # ml-research
 
-> Category node. Small, self-contained ML research demos and reference implementations.
+> Category node. Small, self-contained ML research demos and reference implementations, split by purpose into three sub-categories; two projects that fit none of them sit directly on this node.
 > ← back to [category route](../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
+
+## Sub-categories
+
+| Category | Use when | Route |
+| --- | --- | --- |
+| **research-automation** | Pipelines and harnesses that automate the research loop itself — an agent proposes, runs and scores experiments (or whole papers). | [→](research-automation/INDEX.md) |
+| **vision-and-multimodal** | Vision and vision-language research models and reference code — image embeddings, monocular depth, GAN architectures, early visual tool-routing agents. | [→](vision-and-multimodal/INDEX.md) |
+| **nlp-and-time-series** | Text and sequence research demos — sentiment pretraining, Chinese knowledge-graph pipelines, LSTM time-series forecasting — mostly on dated stacks. | [→](nlp-and-time-series/INDEX.md) |
 
 ## Projects in this category
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **autoresearch** | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. | B (4/6) | [→](autoresearch.md) |
 | **llm-circuit-finder** | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. | D (4/6) | [→](llm-circuit-finder.md) |
-| **CLIP** | Use it when you need zero-shot image classification or image↔text retrieval embeddings — the original frozen reference; OpenCLIP has more checkpoints. | C (5/6) | [→](clip.md) |
-| **TaskMatrix** | Use it only to study an early visual-tool-routing agent (Visual ChatGPT) — abandoned since ~2024, don't build on it. | "?" (2/6) | [→](taskmatrix.md) |
-| **PyTorch-GAN** | Read it to learn GAN architectures from clean reference implementations — idle since 2024 and superseded by diffusion; not production code. | D (3/6) | [→](pytorch-gan.md) |
-| **LSTM Neural Network for Time Series Prediction** | Use it as a readable article-companion example for learning Keras LSTM time-series forecasting — pinned to EOL TF1/Python 3.5 and AGPL-3.0, re-implement from the article rather than vendoring. | E (4/6) | [→](lstm-time-series.md) |
-| **Agriculture Knowledge Graph (AgriKG)** | Use it as a complete blueprint and bundled datasets for a Chinese domain knowledge-graph pipeline (NER, RE, Neo4j, Django) — author-declared unmaintained on a dated GPL-3.0 stack, lift techniques not code. | D (3/6) | [→](agriculture-knowledge-graph.md) |
-| **Senta (SKEP)** | Use it when working inside PaddlePaddle/ERNIE and needing SKEP sentiment checkpoints with a published method — pinned to EOL PaddlePaddle 1.6.3, so environment archaeology is unavoidable. | D (4/6) | [→](senta.md) |
-| **Depth Anything V2** | Use it as the current default monocular-depth foundation model for single-image depth in PyTorch/Transformers — only the Small weights are Apache-2.0; Base/Large/Giant are CC-BY-NC-4.0 (non-commercial). | C (4/6) | [→](depth-anything-v2.md) |
 | **pymoo** | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. | B (6/6) | [→](pymoo.md) |
-| **The AI Scientist** | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. | D (4/6) | [→](ai-scientist.md) |
-| **Agent Laboratory** | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. | C (3/6) | [→](agent-laboratory.md) |
-| **RRSI** | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. | C (5/6) | [→](rrsi.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [autoresearch](autoresearch.md) | ✅ | B (4/6) | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. |
 | [llm-circuit-finder](llm-circuit-finder.md) | ✅ | D (4/6) | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. |
-| [CLIP](clip.md) | ✅ | C (5/6) | Use it when you need zero-shot image classification or image↔text retrieval embeddings — the original frozen reference; OpenCLIP has more checkpoints. |
-| [TaskMatrix](taskmatrix.md) | ✅ | "?" (2/6) | Use it only to study an early visual-tool-routing agent (Visual ChatGPT) — abandoned since ~2024, don't build on it. |
-| [PyTorch-GAN](pytorch-gan.md) | ✅ | D (3/6) | Read it to learn GAN architectures from clean reference implementations — idle since 2024 and superseded by diffusion; not production code. |
-| [LSTM Neural Network for Time Series Prediction](lstm-time-series.md) | ✅ | E (4/6) | Use it as a readable article-companion example for learning Keras LSTM time-series forecasting — pinned to EOL TF1/Python 3.5 and AGPL-3.0, re-implement from the article rather than vendoring. |
-| [Agriculture Knowledge Graph (AgriKG)](agriculture-knowledge-graph.md) | ✅ | D (3/6) | Use it as a complete blueprint and bundled datasets for a Chinese domain knowledge-graph pipeline (NER, RE, Neo4j, Django) — author-declared unmaintained on a dated GPL-3.0 stack, lift techniques not code. |
-| [Senta (SKEP)](senta.md) | ✅ | D (4/6) | Use it when working inside PaddlePaddle/ERNIE and needing SKEP sentiment checkpoints with a published method — pinned to EOL PaddlePaddle 1.6.3, so environment archaeology is unavoidable. |
-| [Depth Anything V2](depth-anything-v2.md) | ✅ | C (4/6) | Use it as the current default monocular-depth foundation model for single-image depth in PyTorch/Transformers — only the Small weights are Apache-2.0; Base/Large/Giant are CC-BY-NC-4.0 (non-commercial). |
 | [pymoo](pymoo.md) | ✅ | B (6/6) | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. |
-| [The AI Scientist](ai-scientist.md) | ✅ | D (4/6) | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. |
-| [Agent Laboratory](agent-laboratory.md) | ✅ | C (3/6) | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. |
-| [RRSI](rrsi.md) | ✅ | C (5/6) | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. |
 | TransformerLens / minGPT | 未收录 | — | Other research demos / interpretability libs named across the pages. |
 
 ## What belongs here
 
-Small, self-contained **ML research demos** and reference implementations meant to read and learn from, not to productionize — including the autonomous-research pipelines ([The AI Scientist](ai-scientist.md), [Agent Laboratory](agent-laboratory.md), [autoresearch](autoresearch.md)) that automate the research loop itself. Not training frameworks (see `llm-training`).
+Small, self-contained **ML research demos** and reference implementations meant to read and learn from, not to productionize. Pipelines that automate the research loop itself live in `research-automation/`, vision and vision-language models in `vision-and-multimodal/`, text and sequence demos in `nlp-and-time-series/`; projects that fit none of those (the LLM layer-surgery experiment [llm-circuit-finder](llm-circuit-finder.md), the evolutionary multi-objective optimization library [pymoo](pymoo.md)) sit directly on this node. Not training frameworks (see `llm-training`).

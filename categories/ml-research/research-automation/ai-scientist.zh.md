@@ -2,7 +2,7 @@
 name: The AI Scientist
 slug: ai-scientist
 repo: https://github.com/SakanaAI/AI-Scientist
-category: ml-research
+category: research-automation
 tags: [autonomous-research, idea-generation, paper-writing, llm-agent-pipeline, research-automation, source-available]
 language: Jupyter Notebook
 license: NOASSERTION (The AI Scientist Source Code License)
@@ -72,19 +72,19 @@ health:
 
 想拿到一个可信的实验结论，得先花掉好几天：读相关工作、写实验代码并调通、画图，最后还要跟 LaTeX 和引用搏斗，只为一个没人要的草稿。The AI Scientist 把这一整圈无人值守地跑完——生成想法、到文献里查新、写出实验代码并在你的 GPU 上执行，最后产出一篇编译好的论文，再由另一轮 LLM 给出评分。
 
-![The AI Scientist — 健康度雷达](../../assets/health/ai-scientist.zh.svg)
+![The AI Scientist — 健康度雷达](../../../assets/health/ai-scientist.zh.svg)
 
 ## 何时使用
 
 你是那个必须产出研究成果的人，想知道这条链路能离你多远：不是要一份文献综述，而是要一个想法、验证它的代码、图，以及一份论文形状的 PDF。你手上有 Linux、至少一张 NVIDIA GPU、一个前沿模型的 API key，并且你的方向能塞进它维护的模板之一（nanoGPT、2D diffusion、grokking）——或者你愿意照着 `experiment.py`、`plot.py`、`prompt.json`、`seed_ideas.json`、`latex/template.tex` 自己写一个模板。
 
-把它当作全自动流水线的**参考实现**来选：它就是那篇「AI Scientist」论文背后的代码，三个模板、想法生成器和 LLM 评审都是别的项目拿来对照的东西。相比 [Agent Laboratory](agent-laboratory.zh.md)，它更适合你想要「一次跑完、自己给自己打分」而不是分阶段让你点头的角色扮演实验室；相比 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，它更适合你不想自己出研究议程、运行命令和算力路由的场景。要付的代价很具体：想法和写作都交给它之后，你会接受一个绑死模板、自成一体、且许可证现在会限制你拿论文去做什么的流水线。
+把它当作全自动流水线的**参考实现**来选：它就是那篇「AI Scientist」论文背后的代码，三个模板、想法生成器和 LLM 评审都是别的项目拿来对照的东西。相比 [Agent Laboratory](agent-laboratory.zh.md)，它更适合你想要「一次跑完、自己给自己打分」而不是分阶段让你点头的角色扮演实验室；相比 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，它更适合你不想自己出研究议程、运行命令和算力路由的场景。要付的代价很具体：想法和写作都交给它之后，你会接受一个绑死模板、自成一体、且许可证现在会限制你拿论文去做什么的流水线。
 
 ## 怎么用起来
 
 这个仓库是一串作用在**模板**上的 LLM 处理：每个模板是一个小型可训练实验，自带 LaTeX 骨架，领域知识只存在于模板里。你先自己把该模板的基线跑一遍（`run_0`），这样之后在你机器上的运行时间才可比；然后 `launch_scientist.py` 按阶段往下走：想法生成器提出候选，并用 Semantic Scholar 或 OpenAlex 查新；一轮代码编辑（依赖里就有 `aider-chat`）在模板之上写出实验；实验作为子进程在你的 GPU 上带超时执行，再由绘图环节把输出变成图；写作环节按模板拼出 LaTeX 论文并编译成 PDF。之后另有一轮评审读编译后的正文，返回 1–10 的分数、弱点清单和接收／拒稿决定，用 `--improvement` 重跑就能把评审意见喂回去。留给你的：选模板、跑基线、选模型、出 GPU——以及判断一个生成出来的结果到底有没有意义。它接过去的：生成想法、代码到实验到画图这一圈、LaTeX，以及第一轮评审。
 
-![The AI Scientist — 主干用户故事](../../assets/flow/ai-scientist.zh.svg)
+![The AI Scientist — 主干用户故事](../../../assets/flow/ai-scientist.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ai-scientist.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -105,21 +105,21 @@ health:
 
 ## 何时不用
 
-- **你需要按自己的条件发布产出。** 这个仓库曾是 Apache-2.0，2025-12-19 改授权为 *The AI Scientist Source Code License v1.0*（仿 Responsible AI License，不是 OSI 认证的开源许可）：任何由它生成或传播的论文都必须显著声明机器生成，禁止用于监控、未标注的合成媒体、无人监督的诊断、犯罪预测等用途，并且要求把这些限制写进下游协议。如果你要交付的东西需要宽松许可，用 [Agent Laboratory](agent-laboratory.zh.md)（MIT）或 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)（MIT），因为一旦生成出来的论文就是交付物，许可证本身就是产品约束。
-- **你的研究问题没法写成它某个模板里的代码。** FAQ 说得很清楚：这个版本仅限于能表达为代码的想法，而作者维护的只有三个模板，`templates/` 里其余全是社区贡献、无人维护。方向不在这三个里的话，不如把这条链路搭在工作台上：[OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 配你自己的 agent——反正你都要自己写模板。
-- **你需要一个还在维护的依赖，或者一个你能辩护的安全姿态。** 最后一次推送是 2025-12-19，而且推的就是改许可证，也就是说代码已经约 9 个月没人动、约 120 个 open issue——其中包括一条至今无回应的 shell 拼接问题报告，指向 `ai_scientist/perform_writeup.py` 里的 `os.popen(f"chktex {writeup_file} …")`。更根本的是，执行模型写出来的代码是它的设计：README 自己的警告就点名了危险包、联网访问和进程生成，并让你用社区 Dockerfile 去做隔离。需要活着维护的项目或沙箱运行时，用 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 或 [OpenHands](../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md)，因为隔离是平台能力，不是这条流水线给你的。
-- **你没有 NVIDIA GPU，也没有前沿模型的预算。** 它面向 Linux 加 NVIDIA 加 CUDA，README 直言模板在纯 CPU 机器上不现实；FAQ 给出每篇论文「通常低于 15 美元」（用 Claude Sonnet 3.5），并警告弱于 GPT-4 级别的模型不行。只要你真正需要的是文献那一半，就用 [Local Deep Research](../deep-research/local-deep-research.zh.md) 这类 deep research agent，别背这套实验机器。
-- **你想逐步插手。** 它默认就是自主的——不说就是 50 个想法——关键决定都由模板里的提示词做了。要插手就用 [Agent Laboratory](agent-laboratory.zh.md) 的 copilot 模式，或者在 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 里自己手动驱动 agent；「让它跑完、我看 PDF」和「下一步做什么我说了算」本来就不是同一个工具。
+- **你需要按自己的条件发布产出。** 这个仓库曾是 Apache-2.0，2025-12-19 改授权为 *The AI Scientist Source Code License v1.0*（仿 Responsible AI License，不是 OSI 认证的开源许可）：任何由它生成或传播的论文都必须显著声明机器生成，禁止用于监控、未标注的合成媒体、无人监督的诊断、犯罪预测等用途，并且要求把这些限制写进下游协议。如果你要交付的东西需要宽松许可，用 [Agent Laboratory](agent-laboratory.zh.md)（MIT）或 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)（MIT），因为一旦生成出来的论文就是交付物，许可证本身就是产品约束。
+- **你的研究问题没法写成它某个模板里的代码。** FAQ 说得很清楚：这个版本仅限于能表达为代码的想法，而作者维护的只有三个模板，`templates/` 里其余全是社区贡献、无人维护。方向不在这三个里的话，不如把这条链路搭在工作台上：[OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 配你自己的 agent——反正你都要自己写模板。
+- **你需要一个还在维护的依赖，或者一个你能辩护的安全姿态。** 最后一次推送是 2025-12-19，而且推的就是改许可证，也就是说代码已经约 9 个月没人动、约 120 个 open issue——其中包括一条至今无回应的 shell 拼接问题报告，指向 `ai_scientist/perform_writeup.py` 里的 `os.popen(f"chktex {writeup_file} …")`。更根本的是，执行模型写出来的代码是它的设计：README 自己的警告就点名了危险包、联网访问和进程生成，并让你用社区 Dockerfile 去做隔离。需要活着维护的项目或沙箱运行时，用 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 或 [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md)，因为隔离是平台能力，不是这条流水线给你的。
+- **你没有 NVIDIA GPU，也没有前沿模型的预算。** 它面向 Linux 加 NVIDIA 加 CUDA，README 直言模板在纯 CPU 机器上不现实；FAQ 给出每篇论文「通常低于 15 美元」（用 Claude Sonnet 3.5），并警告弱于 GPT-4 级别的模型不行。只要你真正需要的是文献那一半，就用 [Local Deep Research](../../deep-research/local-deep-research.zh.md) 这类 deep research agent，别背这套实验机器。
+- **你想逐步插手。** 它默认就是自主的——不说就是 50 个想法——关键决定都由模板里的提示词做了。要插手就用 [Agent Laboratory](agent-laboratory.zh.md) 的 copilot 模式，或者在 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 里自己手动驱动 agent；「让它跑完、我看 PDF」和「下一步做什么我说了算」本来就不是同一个工具。
 - **你需要可复现、可同行评议的结果。** 基线必须每台机器各自重跑才能比较运行时间，成功率是论文报告的数字而不是承诺，这里也不会替你复现任何已发表结果。把产出当成待筛的草稿；数字要紧就回到你自己的实验装置里复现。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) | ✅ | 如果议程、agent 和算力都是你自己的、缺的只是实验记账，选 OpenResearch；如果你想要「想法到论文」这整圈不用你参与就执行完，选 The AI Scientist。 | The AI Scientist 提供议程和论文模板，但没有实验血统、没有多后端路由，许可证还限制发布；OpenResearch 提供血统与算力路由，但不给议程也不写论文。 |
+| [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) | ✅ | 如果议程、agent 和算力都是你自己的、缺的只是实验记账，选 OpenResearch；如果你想要「想法到论文」这整圈不用你参与就执行完，选 The AI Scientist。 | The AI Scientist 提供议程和论文模板，但没有实验血统、没有多后端路由，许可证还限制发布；OpenResearch 提供血统与算力路由，但不给议程也不写论文。 |
 | [Agent Laboratory](agent-laboratory.zh.md) | ✅ | 如果你想要同样的研究流程但每个阶段都要人确认、且用 MIT 条款，选 Agent Laboratory；如果你想要一次性自主跑完并自带 ICLR 式评审，选 The AI Scientist。 | Agent Laboratory 可干预（copilot 模式）、许可宽松，但模型支持窄、停更时间还更长；The AI Scientist 是引用更多的参考实现，而它的许可证现在给发表加了成本。 |
 | [autoresearch](autoresearch.zh.md) | ✅ | 如果你要的是最小闭环——一个文件、一个指标、一块 GPU，让 agent 改 `train.py`，选 autoresearch；如果你要带想法生成和 LaTeX 的完整论文流水线，选 The AI Scientist。 | autoresearch 没有写作、没有文献阶段、也没有许可证问题，但同样没有评审环节，模板也只有一个训练脚本；The AI Scientist 是完整、更重、且带许可负担的那一套。 |
-| [OpenHands](../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 如果你真正需要的是一个能安全跑编码任务的沙箱 agent 平台，选 OpenHands；如果交付物是生成出来的论文而不是一个 issue 修复，选 The AI Scientist。 | OpenHands 给你隔离、自托管和一个在维护的项目，但没有任何科研脚手架；The AI Scientist 给你科研脚手架，代价是这条流水线在设计上就会执行模型写的代码。 |
+| [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 如果你真正需要的是一个能安全跑编码任务的沙箱 agent 平台，选 OpenHands；如果交付物是生成出来的论文而不是一个 issue 修复，选 The AI Scientist。 | OpenHands 给你隔离、自托管和一个在维护的项目，但没有任何科研脚手架；The AI Scientist 给你科研脚手架，代价是这条流水线在设计上就会执行模型写的代码。 |
 | AI-Scientist-v2（SakanaAI/AI-Scientist-v2） | 未收录 | 如果你要的是这个项目的延续线，先去看后继仓库：它把实验阶段换成了 agentic tree search。 | 那是一个独立仓库（约 7.2k star、2025-04 创建、同一许可证家族、最后推送同为 2025-12），不是分支；本页讲的是它背后的 v1 代码，包括模板和评审器。 |
 
 ## 技术栈

@@ -2,7 +2,7 @@
 name: Depth Anything V2
 slug: depth-anything-v2
 repo: https://github.com/DepthAnything/Depth-Anything-V2
-category: ml-research
+category: vision-and-multimodal
 tags: [monocular-depth, depth-estimation, computer-vision, foundation-model, pytorch, dpt, vision-transformer]
 language: Python
 license: Apache-2.0
@@ -68,7 +68,7 @@ health:
 
 一个单目深度估计的基础模型（NeurIPS 2024）：输入一张图，输出稠密深度图——四种基于 ViT 的模型规模，比 V1 和基于 SD 的深度模型更快更锐，围绕已发布 checkpoint 配了一个小巧的 PyTorch 推理仓库。
 
-![depth-anything-v2 — 健康度雷达](../../assets/health/depth-anything-v2.zh.svg)
+![depth-anything-v2 — 健康度雷达](../../../assets/health/depth-anything-v2.zh.svg)
 
 ## 何时使用
 

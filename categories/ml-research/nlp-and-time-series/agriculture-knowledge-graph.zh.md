@@ -2,7 +2,7 @@
 name: Agriculture Knowledge Graph (AgriKG)
 slug: agriculture-knowledge-graph
 repo: https://github.com/qq547276542/Agriculture_KnowledgeGraph
-category: ml-research
+category: nlp-and-time-series
 tags: [knowledge-graph, nlp, named-entity-recognition, relation-extraction, neo4j, django, chinese-nlp]
 language: Python
 license: GPL-3.0
@@ -64,7 +64,7 @@ health:
 
 一个中文研究项目（华师大），端到端构建农业知识图谱——爬虫、实体识别、关系抽取、Neo4j 存储，外加一个带检索与问答的 Django demo——作为参考发布，且作者已明确不再维护。
 
-![agriculture-knowledge-graph — 健康度雷达](../../assets/health/agriculture-knowledge-graph.zh.svg)
+![agriculture-knowledge-graph — 健康度雷达](../../../assets/health/agriculture-knowledge-graph.zh.svg)
 
 ## 何时使用
 
@@ -87,7 +87,7 @@ health:
 | Neo4j（直接用） | 未收录 | 只需要图数据库层、并准备自建入库流水线时，选 Neo4j。 | 本项目灌入的图数据库；生产级存储加 Cypher，但整条 NLP 入库流水线得你自己搭——AgriKG 恰恰就是把那条流水线做成了示例。 |
 | DeepKE | 未收录 | 需要维护中的 transformer 中文知识抽取工具箱时，选 DeepKE。 | 维护中的中文知识抽取工具箱（NER/RE/属性），基于 transformer；是真正可用来搭建的库，而非 AgriKG 那样冻结的端到端 demo。 |
 | OpenKG / CN-DBpedia | 未收录 | 需要中文开放知识图谱数据/资源时，选 OpenKG 或 CN-DBpedia。 | 中文开放知识图谱数据/资源；是数据源，而非可运行的流水线加界面。 |
-| [TaskMatrix](taskmatrix.zh.md) | ✅ | 需要同一货架上的多模态工具编排研究产物时，选 TaskMatrix。 | 任务无关（多模态 agent / 工具编排），但同一货架——主要作为参考产物发布的研究仓库，而非维护中的产品。 |
+| [TaskMatrix](../vision-and-multimodal/taskmatrix.zh.md) | ✅ | 需要同一货架上的多模态工具编排研究产物时，选 TaskMatrix。 | 任务无关（多模态 agent / 工具编排），但同一货架——主要作为参考产物发布的研究仓库，而非维护中的产品。 |
 
 ## 技术栈
 

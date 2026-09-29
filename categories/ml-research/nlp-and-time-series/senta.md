@@ -2,7 +2,7 @@
 name: Senta (SKEP)
 slug: senta
 repo: https://github.com/baidu/Senta
-category: ml-research
+category: nlp-and-time-series
 tags: [sentiment-analysis, nlp, pretraining, skep, paddlepaddle, chinese-nlp, ernie]
 language: Python
 license: Apache-2.0
@@ -72,7 +72,7 @@ health:
 
 Baidu's open-source sentiment-analysis toolkit built on SKEP — a sentiment-knowledge-enhanced pretraining method (ACL 2020) — shipping Chinese/English pretrained models and a one-line prediction tool, all on the PaddlePaddle 1.x framework.
 
-![senta — health radar](../../assets/health/senta.svg)
+![senta — health radar](../../../assets/health/senta.svg)
 
 ## When to use
 
@@ -95,7 +95,7 @@ You reach for it specifically when you're inside the **PaddlePaddle / ERNIE ecos
 | Hugging Face sentiment models | 未收录 | Choose Hugging Face sentiment models when you need a large catalog of fine-tuned models with easy integration. | Huge catalog of fine-tuned sentiment models (incl. Chinese) on PyTorch/Transformers with trivial install; not the specific SKEP method, but far easier to adopt and maintain. |
 | PaddleNLP / ERNIE | 未收录 | Choose PaddleNLP/ERNIE when you need Baidu's actively maintained successor NLP stack on Paddle 2.x. | Baidu's actively-maintained successor NLP stack on Paddle 2.x; where current Baidu NLP (incl. sentiment) development actually happens — Senta is the older, frozen sibling. |
 | SnowNLP / cnsenti | 未收录 | Choose SnowNLP or cnsenti when you need lightweight Chinese sentiment libraries. | Lightweight Chinese sentiment libraries (lexicon/classic ML); trivial to run, far weaker than pretrained transformers — opposite end of the accuracy/effort tradeoff. |
-| [CLIP](clip.md) | ✅ | Choose CLIP when you need a same-shelf reference model release in vision-language rather than sentiment analysis. | Unrelated modality (vision-language) but the same shelf — an org-published reference model release where the *checkpoints + paper* are the asset, not active library maintenance. |
+| [CLIP](../vision-and-multimodal/clip.md) | ✅ | Choose CLIP when you need a same-shelf reference model release in vision-language rather than sentiment analysis. | Unrelated modality (vision-language) but the same shelf — an org-published reference model release where the *checkpoints + paper* are the asset, not active library maintenance. |
 
 ## Tech stack
 

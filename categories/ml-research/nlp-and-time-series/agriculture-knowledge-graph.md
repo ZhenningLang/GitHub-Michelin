@@ -2,7 +2,7 @@
 name: Agriculture Knowledge Graph (AgriKG)
 slug: agriculture-knowledge-graph
 repo: https://github.com/qq547276542/Agriculture_KnowledgeGraph
-category: ml-research
+category: nlp-and-time-series
 tags: [knowledge-graph, nlp, named-entity-recognition, relation-extraction, neo4j, django, chinese-nlp]
 language: Python
 license: GPL-3.0
@@ -64,7 +64,7 @@ health:
 
 A Chinese-language research project (ECNU) that builds an agricultural knowledge graph end-to-end — crawlers, entity recognition, relation extraction, a Neo4j store, and a Django demo with retrieval and Q&A — published as a reference, and explicitly no longer maintained.
 
-![agriculture-knowledge-graph — health radar](../../assets/health/agriculture-knowledge-graph.svg)
+![agriculture-knowledge-graph — health radar](../../../assets/health/agriculture-knowledge-graph.svg)
 
 ## When to use
 
@@ -87,7 +87,7 @@ You reach for it as a **complete, readable blueprint** of a Chinese KG system (a
 | Neo4j (direct) | 未收录 | Choose Neo4j directly when you need the graph database layer and will build ingestion yourself. | The graph database this project stores into; production-grade storage + Cypher, but you build the entire NLP ingestion pipeline yourself — AgriKG is precisely that pipeline as an example. |
 | DeepKE | 未收录 | Choose DeepKE when you need a maintained transformer-based Chinese knowledge-extraction toolkit. | Maintained Chinese knowledge-extraction toolkit (NER/RE/attribute), transformer-based; a real library to build on, vs. AgriKG's frozen end-to-end demo. |
 | OpenKG / CN-DBpedia | 未收录 | Choose OpenKG or CN-DBpedia when you need Chinese open knowledge-graph data/resources. | Chinese open knowledge-graph data/resources; data sources rather than a runnable pipeline+UI. |
-| [TaskMatrix](taskmatrix.md) | ✅ | Choose TaskMatrix when you need another same-shelf research artifact for multimodal tool orchestration. | Unrelated task (multimodal agent / tool orchestration) but same shelf — a research repo published mainly as a reference artifact rather than a maintained product. |
+| [TaskMatrix](../vision-and-multimodal/taskmatrix.md) | ✅ | Choose TaskMatrix when you need another same-shelf research artifact for multimodal tool orchestration. | Unrelated task (multimodal agent / tool orchestration) but same shelf — a research repo published mainly as a reference artifact rather than a maintained product. |
 
 ## Tech stack
 

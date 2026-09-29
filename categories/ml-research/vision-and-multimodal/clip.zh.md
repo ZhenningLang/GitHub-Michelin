@@ -2,7 +2,7 @@
 name: CLIP
 slug: clip
 repo: https://github.com/openai/CLIP
-category: ml-research
+category: vision-and-multimodal
 tags: [zero-shot, image-classification, multimodal, embeddings, retrieval, contrastive, vision-language]
 language: Python
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 OpenAI 官方的 CLIP（Contrastive Language-Image Pre-training）原始参考实现——一个把图像和文本映射到同一个共享 embedding 空间的模型，于是你可以把标签写成纯文本来给图像分类或检索，无需任何任务专属训练。
 
-![clip — 健康度雷达](../../assets/health/clip.zh.svg)
+![clip — 健康度雷达](../../../assets/health/clip.zh.svg)
 
 ## 何时使用
 

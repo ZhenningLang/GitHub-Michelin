@@ -2,7 +2,7 @@
 name: TaskMatrix
 slug: taskmatrix
 repo: https://github.com/chenfei-wu/TaskMatrix
-category: ml-research
+category: vision-and-multimodal
 tags: [visual-chatgpt, tool-routing, foundation-models, multimodal, agent, abandoned, historical-demo]
 language: Python
 license: MIT
@@ -61,7 +61,7 @@ health:
 
 A historical research demo (originally "Visual ChatGPT", from Microsoft) that wires ChatGPT to a fixed set of visual foundation models so you can chat to caption, generate, and edit images — interesting as an early tool-routing-agent design, but unmaintained since early 2024 and superseded by modern multimodal LLMs.
 
-![taskmatrix — health radar](../../assets/health/taskmatrix.svg)
+![taskmatrix — health radar](../../../assets/health/taskmatrix.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ It's also a useful teaching reference when you're building your *own* tool-routi
 | HuggingGPT / JARVIS | 未收录 | Choose HuggingGPT/JARVIS when you need the same-era LLM-controller-over-model-catalog idea. | Same era, same idea — an LLM controller that routes tasks to a catalog of Hugging Face models; broader (not vision-only) task scope, also a research demo rather than a maintained product. |
 | LangChain agents | 未收录 | Choose LangChain agents when you need a maintained general-purpose LLM tool-orchestration framework. | Maintained, general-purpose LLM tool-orchestration framework; you wire your own tools (including vision models) with current function-calling, instead of TaskMatrix's hand-rolled 2023 prompt-router. |
 | Modern agent frameworks (function-calling / MCP-based tooling) | 未收录 | Choose modern agent frameworks when you need current standardized tool access for LLMs. | Current, standardized way to give an LLM tools; far better orchestration, structured tool I/O, and active support than this bespoke demo. |
-| [autoresearch](autoresearch.md) | ✅ | Choose autoresearch when you need another single-author research-demo app for agent-driven ML training loops. | Also a single-author research-demo app, but a single-GPU *training* loop for agent-driven ML research — unrelated problem; shares only the "read-it-as-a-reference, don't deploy" posture. |
+| [autoresearch](../research-automation/autoresearch.md) | ✅ | Choose autoresearch when you need another single-author research-demo app for agent-driven ML training loops. | Also a single-author research-demo app, but a single-GPU *training* loop for agent-driven ML research — unrelated problem; shares only the "read-it-as-a-reference, don't deploy" posture. |
 
 ## Tech stack
 

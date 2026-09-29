@@ -82,7 +82,7 @@ health:
 - **你需要指令跟随、对话或工具调用能力。** 当前 README 只记录了预训练、领域微调（莎士比亚）与采样——仓库里没有 SFT/chat 模板、没有 DPO/RLHF、也没有 Tool Call 阶段。要这些就用 [MiniMind](minimind.zh.md)（SFT → DPO → GRPO → Tool Call → Agentic RL），或在真实的 instruct checkpoint 上用 [LlamaFactory](../llamafactory.zh.md) / [Unsloth](../unsloth.zh.md)，因为这里根本没有对齐流水线可供扩展。
 - **你需要中文能力的模型。** 数据路径是 OpenWebText（英文）加莎士比亚，配 GPT-2 BPE；分词器和语料都得你自己重建。用 [MiniMind](minimind.zh.md)，它是中文优先、自带 6400 词表 BPE，因为重新分词和重新找语料是这项工作的主体，不是边缘情况。
 - **你要现代的多 GPU 并行。** 代码只有 DDP；FSDP 还躺在 README 自己的 TODO 里，模型本身也是朴素的 GPT-2（没有 RoPE、没有 RMSNorm、没有 GQA、没有 MoE）。要 FSDP / 张量并行 / 流水线并行就用 [torchtune](../torchtune.zh.md) 或 [Colossal-AI](../colossalai.zh.md)，因为 nanoGPT 优化的是可读性而不是大规模吞吐。
-- **你要一个还在维护的项目。** 代码自 2024-12-09 起冻结（此后唯一的提交是废弃公告），雷达显示最近 13 周有 0 周活跃，12 个月治理窗口里只有一个作者。要代码继续动，就选 [MiniMind](minimind.zh.md)（几乎每周都有外部贡献者合入）或 [autoresearch](../../ml-research/autoresearch.zh.md)（agent 驱动的实验 harness）。
+- **你要一个还在维护的项目。** 代码自 2024-12-09 起冻结（此后唯一的提交是废弃公告），雷达显示最近 13 周有 0 周活跃，12 个月治理窗口里只有一个作者。要代码继续动，就选 [MiniMind](minimind.zh.md)（几乎每周都有外部贡献者合入）或 [autoresearch](../../ml-research/research-automation/autoresearch.zh.md)（agent 驱动的实验 harness）。
 - **你需要一个能锁版本的依赖。** 没有 `requirements.txt`、没有 `pyproject.toml`、没有 `setup.py`，也没有任何 tagged release；依赖只活在 README 的一行 `pip install` 里，代码是按 PyTorch 2.0 时代写的。要带版本的库用 [torchtune](../torchtune.zh.md)，要持续维护的训练器用 [Unsloth](../unsloth.zh.md)，因为 vendor 一份未锁版本、已冻结的脚本集，等于把此后每次环境变化都变成你自己的问题。
 
 ## 横向对比
@@ -90,7 +90,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [MiniMind](minimind.zh.md) | ✅ | 当你需要现代训练栈——分词器、SFT、MoE、RL、Tool Call——时选 MiniMind；当你需要一个能采样出英文、还能加载 OpenAI checkpoint 的**真** GPT-2 时选 nanoGPT，因为 MiniMind 的 64M 产出是教学产物，而 nanoGPT 的产出是真实（尽管过时）的 GPT-2。 | MiniMind 覆盖的流水线多得多且仍在维护，但在 Mac 上用不了 GPU、也产不出可用模型；nanoGPT 能产出真实 GPT-2 权重、能在 MPS/CPU 上跑，但止步于预训练。 |
-| [autoresearch](../../ml-research/autoresearch.zh.md) | ✅ | 当你想让 agent 在固定时间预算下搜索训练配置时选 autoresearch；当你想自己跑、自己读那个训练循环时选 nanoGPT，因为 autoresearch 恰好替换掉了 nanoGPT 想教你的那部分人工迭代。 | autoresearch 自动化了迭代，但把循环藏在 agent harness 之后；nanoGPT 就是那个循环本身，公开可读，但已停止维护。 |
+| [autoresearch](../../ml-research/research-automation/autoresearch.zh.md) | ✅ | 当你想让 agent 在固定时间预算下搜索训练配置时选 autoresearch；当你想自己跑、自己读那个训练循环时选 nanoGPT，因为 autoresearch 恰好替换掉了 nanoGPT 想教你的那部分人工迭代。 | autoresearch 自动化了迭代，但把循环藏在 agent harness 之后；nanoGPT 就是那个循环本身，公开可读，但已停止维护。 |
 | [torchtune](../torchtune.zh.md) | ✅ | 当你必须用持续维护、带版本的库去后训练真实开源 checkpoint 时选 torchtune；当目标是搞懂这类库内部做了什么时选 nanoGPT，因为 torchtune 的 recipe 不会教你机制，而 nanoGPT 不会给你生产支持。 | torchtune 提供锁定的版本、FSDP 与真实架构；nanoGPT 提供约 670 行可读代码，以及一个废弃且未锁定的环境。 |
 | [Unsloth](../unsloth.zh.md) | ✅ | 当交付物是单卡上的快速微调时选 Unsloth；当交付物是理解本身时选 nanoGPT，因为 Unsloth 的 Triton kernel 存在的意义就是让你不去想训练循环。 | Unsloth 在真实模型上约快 2x、显存占用低得多；nanoGPT 更慢更小且已冻结，但完全可审计。 |
 | [LlamaFactory](../llamafactory.zh.md) | ✅ | 当团队需要覆盖 100+ 模型、带 UI 的配置化 SFT/RLHF 时选 LlamaFactory；当一名工程师需要从第一原理推导 GPT 训练时选 nanoGPT，因为零代码训练器教不了它抽象掉的机制。 | LlamaFactory 到任何交付物都更快且仍在维护；nanoGPT 是教学地板，且已被废弃。 |

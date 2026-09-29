@@ -2,7 +2,7 @@
 name: Agent Laboratory
 slug: agent-laboratory
 repo: https://github.com/SamuelSchmidgall/AgentLaboratory
-category: ml-research
+category: research-automation
 tags: [autonomous-research, llm-agents, literature-review, human-in-the-loop, research-automation, agentrxiv]
 language: Python
 license: MIT
@@ -64,19 +64,19 @@ health:
 
 想法你有，但想法周围那一圈——扫文献、定计划、备数据、跑实验、画图、写报告——是几周的上下文切换，最后才落下第一行字。Agent Laboratory 把这些阶段交给一组扮演角色的 LLM agent 去跑，并提供一个可选的 copilot 模式：每个阶段都停下来等你拍板。
 
-![Agent Laboratory — 健康度雷达](../../assets/health/agent-laboratory.zh.svg)
+![Agent Laboratory — 健康度雷达](../../../assets/health/agent-laboratory.zh.svg)
 
 ## 何时使用
 
 你是做研究的人（或一个小团队），想让「研究什么」由你定，而不是由你写那些胶水代码：你有一个题目或具体想法，清楚自己有什么算力和模型，也更愿意审一个阶段而不是亲手做。你把这些事实写进一份 YAML 配置——模型后端、API key、文献回顾读几篇、同时跑几个 lab，以及按阶段给你的 GPU 和风格写备注——lab 就按文献回顾、计划制定、数据准备、跑实验、结果解读、报告写作、报告精修往下走。把 copilot 打开，每个阶段都会停下来等你确认，这也是它诚实的用法：agent 是通过内置的 MLE-solver 自己写并修实验代码的，所以在它花掉你的 API 预算之前，你最好先看看计划。
 
-在所有自动科研流水线里，它是最可干预的一个：比 [The AI Scientist](ai-scientist.zh.md) 更容易想清楚，因为你逐阶段确认，而不是最后读一份 PDF；它还是 MIT，而那一位不是；它带你可续跑的 checkpoint，还有一个 AgentRxiv 模式，让各个 lab 上传并接着别人的论文往下做。相比 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，它的好处是你不用自带 coding agent、不用写运行命令、也不用想实验血统——代价是没有 git 跟踪的实验树、也没有算力路由。要付的代价很明确：角色化的实验室开箱就给你一套研究流程，但替你写代码的是它的 agent，代码归属你得自己接手。
+在所有自动科研流水线里，它是最可干预的一个：比 [The AI Scientist](ai-scientist.zh.md) 更容易想清楚，因为你逐阶段确认，而不是最后读一份 PDF；它还是 MIT，而那一位不是；它带你可续跑的 checkpoint，还有一个 AgentRxiv 模式，让各个 lab 上传并接着别人的论文往下做。相比 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，它的好处是你不用自带 coding agent、不用写运行命令、也不用想实验血统——代价是没有 git 跟踪的实验树、也没有算力路由。要付的代价很明确：角色化的实验室开箱就给你一套研究流程，但替你写代码的是它的 agent，代码归属你得自己接手。
 
 ## 怎么用起来
 
 这个仓库是一组固定的 LLM 角色（博士生、博士后、ML 工程师、教授），由 `ai_lab_repo.py` 驱动，阶段列表写死在代码里：文献回顾、计划制定、数据准备、跑实验、结果解读、报告写作、报告精修。给角色的不是自由，而是工具：一个 arXiv 搜索工具（`SUMMARY` 找语义相近的论文，`FULL_TEXT` 按 id 取全文）、Hugging Face 与 Python 执行、Semantic Scholar 找引用、LaTeX 写报告；MLE-solver 解析 ML 工程师的命令并写出、修复实验代码，paper-solver 既检索相关工作也给草稿打分——正是它的评分能把 lab 打回去再做一轮实验。每个阶段都把状态写进 checkpoint，每个阶段末尾都有可配置的 copilot 暂停。留给你的：题目、模型与密钥、算力备注、逐阶段确认，以及什么时候停。它接过去的：读文献、定计划、写并修实验代码、画图、产出报告——而且报告用你指定的语言写。
 
-![Agent Laboratory — 主干用户故事](../../assets/flow/agent-laboratory.zh.svg)
+![Agent Laboratory — 主干用户故事](../../../assets/flow/agent-laboratory.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-laboratory.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -98,22 +98,22 @@ health:
 
 ## 何时不用
 
-- **你需要还在维护的代码，或者一个你能辩护的安全姿态。** 自 2025-08-20 起没有任何提交（那一笔还是改 README，最后一次改代码是 2025-03-27），约 61 个 open issue，并且 2026-09-20 有人在公开 issue 里提出安全漏洞披露请求、点名 CVE-2026-35772，至今没有维护者回复。随仓库附带的 AgentRxiv 是一个 Flask 服务，源码里 `SECRET_KEY` 还是占位值。需要一个活着的项目就用 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，因为一个没人维护、又会执行生成代码的 lab，是要持续付代价的负债。
-- **你需要每一处改动都能对回某次提交和某次 run。** lab 在运行过程中自己写并修实验代码，没有「一个想法一条分支」，也没有按 run 的代码快照，所以「这个数字来自哪份代码」只能靠翻日志回答，而不是靠 git。当这份血统本身就是目的时，用 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，因为它的实验树存在的意义正是回答这个问题。
-- **你的工作不是基准测试那种形状。** 它给的工具是 arXiv 加 Hugging Face 加 Python 加 LaTeX，示例与 solver 都瞄准 ML 基准任务（MATH、MLE-bench 式、PaperBench 式），README 的备注技巧也要求你把基线数字和示例评估代码交给它。非 ML 领域、或者需要手工备数据的流程，要么给 [The AI Scientist](ai-scientist.zh.md) 写个模板，要么在 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 里自己驱动 agent，否则你是在跟这里的角色假设较劲。
-- **你需要广泛的模型支持或者开放权重。** README 列出的后端只有 OpenAI（o1、o1-preview、o1-mini、gpt-4o、o3-mini）和 DeepSeek，要好结果还得是付费的前沿模型，示例也是按 o1 时代的模型写的。用本地权重或别的厂商，就用 [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)——你已经有的任何 harness，包括本地模型服务——或者直接跟一个普通 coding agent 对话。
-- **你想要一个又小又省又看得懂的闭环。** 这是一个很重的安装（torch、transformers、spacy、datasets 等等），而且每个 lab 会在各阶段烧掉大量 LLM 调用，开 `parallel-labs` 还会翻倍。一个文件加固定预算够用的话，用 [autoresearch](autoresearch.zh.md)；只需要文献那一半，用 [GPT Researcher](../deep-research/gpt-researcher.zh.md) 这类 deep research agent。
+- **你需要还在维护的代码，或者一个你能辩护的安全姿态。** 自 2025-08-20 起没有任何提交（那一笔还是改 README，最后一次改代码是 2025-03-27），约 61 个 open issue，并且 2026-09-20 有人在公开 issue 里提出安全漏洞披露请求、点名 CVE-2026-35772，至今没有维护者回复。随仓库附带的 AgentRxiv 是一个 Flask 服务，源码里 `SECRET_KEY` 还是占位值。需要一个活着的项目就用 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，因为一个没人维护、又会执行生成代码的 lab，是要持续付代价的负债。
+- **你需要每一处改动都能对回某次提交和某次 run。** lab 在运行过程中自己写并修实验代码，没有「一个想法一条分支」，也没有按 run 的代码快照，所以「这个数字来自哪份代码」只能靠翻日志回答，而不是靠 git。当这份血统本身就是目的时，用 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)，因为它的实验树存在的意义正是回答这个问题。
+- **你的工作不是基准测试那种形状。** 它给的工具是 arXiv 加 Hugging Face 加 Python 加 LaTeX，示例与 solver 都瞄准 ML 基准任务（MATH、MLE-bench 式、PaperBench 式），README 的备注技巧也要求你把基线数字和示例评估代码交给它。非 ML 领域、或者需要手工备数据的流程，要么给 [The AI Scientist](ai-scientist.zh.md) 写个模板，要么在 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) 里自己驱动 agent，否则你是在跟这里的角色假设较劲。
+- **你需要广泛的模型支持或者开放权重。** README 列出的后端只有 OpenAI（o1、o1-preview、o1-mini、gpt-4o、o3-mini）和 DeepSeek，要好结果还得是付费的前沿模型，示例也是按 o1 时代的模型写的。用本地权重或别的厂商，就用 [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md)——你已经有的任何 harness，包括本地模型服务——或者直接跟一个普通 coding agent 对话。
+- **你想要一个又小又省又看得懂的闭环。** 这是一个很重的安装（torch、transformers、spacy、datasets 等等），而且每个 lab 会在各阶段烧掉大量 LLM 调用，开 `parallel-labs` 还会翻倍。一个文件加固定预算够用的话，用 [autoresearch](autoresearch.zh.md)；只需要文献那一半，用 [GPT Researcher](../../deep-research/gpt-researcher.zh.md) 这类 deep research agent。
 - **你需要报告可靠地写完整。** 公开 issue 里有「某些章节总是缺」和阶段长时间卡住的说法——这跟一个带重试的多阶段 agent 循环相符——所以要预留监督和重跑的预算，别指望一遍过。[未验证]
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [OpenResearch](../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) | ✅ | 如果你要保留自己的 agent、并拿到 git 跟踪的实验血统和多后端算力，选 OpenResearch；如果你想把研究流程本身交出去、并愿意逐阶段点头，选 Agent Laboratory。 | OpenResearch 给血统、隔离和算力路由，但不给科研脚手架也不给议程；Agent Laboratory 给阶段和角色，但代码可追溯性与算力路由得你自己补。 |
+| [OpenResearch](../../agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) | ✅ | 如果你要保留自己的 agent、并拿到 git 跟踪的实验血统和多后端算力，选 OpenResearch；如果你想把研究流程本身交出去、并愿意逐阶段点头，选 Agent Laboratory。 | OpenResearch 给血统、隔离和算力路由，但不给科研脚手架也不给议程；Agent Laboratory 给阶段和角色，但代码可追溯性与算力路由得你自己补。 |
 | [The AI Scientist](ai-scientist.zh.md) | ✅ | 想用它的某个模板一次性自主跑完，选 The AI Scientist；想逐阶段确认、并用 MIT 条款，选 Agent Laboratory。 | The AI Scientist 引用更多、不用你参与就能产出编译好的论文，但许可证受限、范围绑死模板；Agent Laboratory 可干预、许可宽松，但模型支持更窄、停更时间一样长。 |
 | [autoresearch](autoresearch.zh.md) | ✅ | 如果一块 GPU、一个指标加 5 分钟固定预算就是全部闭环，选 autoresearch；如果交付物是一份写好的报告而不是一个训练改动，选 Agent Laboratory。 | autoresearch 是单文件脚手架，没有文献阶段、没有报告、没有角色，但读起来毫无负担、依赖面也小；Agent Laboratory 把整套流程脚本化，代价是庞大的安装和模型开销。 |
-| [GPT Researcher](../deep-research/gpt-researcher.zh.md) | ✅ | 只需要「文献加综合」那一半时选 GPT Researcher；文献必须喂给真正的实验和报告时选 Agent Laboratory。 | GPT Researcher 拥有搜索到综合这整圈、也就到此为止；Agent Laboratory 继续走到代码、实验和 LaTeX，但文献阶段做得更浅。 |
-| [OpenHands](../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 如果你更愿意给一个通用 coding agent 一台沙箱机器和一个任务，而不是采用「研究实验室」这个形状，选 OpenHands；如果阶段结构本身就是价值，选 Agent Laboratory。 | OpenHands 是有维护的平台，带隔离、但不带科研观点；Agent Laboratory 是有观点的研究流程，没有平台、也没人维护。 |
+| [GPT Researcher](../../deep-research/gpt-researcher.zh.md) | ✅ | 只需要「文献加综合」那一半时选 GPT Researcher；文献必须喂给真正的实验和报告时选 Agent Laboratory。 | GPT Researcher 拥有搜索到综合这整圈、也就到此为止；Agent Laboratory 继续走到代码、实验和 LaTeX，但文献阶段做得更浅。 |
+| [OpenHands](../../agent-frameworks/coding-agents/orchestration-and-review/openhands.zh.md) | ✅ | 如果你更愿意给一个通用 coding agent 一台沙箱机器和一个任务，而不是采用「研究实验室」这个形状，选 OpenHands；如果阶段结构本身就是价值，选 Agent Laboratory。 | OpenHands 是有维护的平台，带隔离、但不带科研观点；Agent Laboratory 是有观点的研究流程，没有平台、也没人维护。 |
 
 ## 技术栈
 

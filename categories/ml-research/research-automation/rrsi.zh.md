@@ -2,7 +2,7 @@
 name: RRSI
 slug: rrsi
 repo: https://github.com/google-research/rrsi
-category: ml-research
+category: research-automation
 tags: [agent-harness, self-improvement, harness-search, anti-overfitting, reference-implementation, claude, vertex-ai, google-research]
 language: Python
 license: Apache-2.0
@@ -75,19 +75,19 @@ health:
 
 让大模型对着一套题反复改你 agent 的提示词和代码，它很快就学会“背答案”：训练用的题涨了十分，换一套新题一分不涨。RRSI 是 Google Research 放出的“带刹车”的自动改进代码：每轮只许改几处并写明理由，评审先把针对具体题目的小聪明挡掉，涨分还得大于测量误差、并且配得上多烧的 token，才算数。
 
-![RRSI — 健康度雷达](../../assets/health/rrsi.zh.svg)
+![RRSI — 健康度雷达](../../../assets/health/rrsi.zh.svg)
 
 ## 何时使用
 
 你在一个改不了权重的模型上跑 agent——终端里写代码的 agent，或者处理法律文书的 agent——手里已经有一套能打分的任务集。你试过让一个强模型在循环里自动改 agent 的外壳（harness：系统提示、工具封装、上下文管理、子 agent），结果它找到了捷径：提示词里冒出一句 `if the task mentions "fix-git"`，一次 +1.1 分的“提升”重跑后发现只是噪声，还有一版通过率没变、token 却多花了 40%。这时你会想到 RRSI：它同样自动搜索 harness，但把防过拟合的约束写成了代码、可以审计——每轮提议者最多改 *b_t* 处并给每处打上标签（这个上限随轮次收紧），评审在花钱评测之前就驳回点名任务、答案或评分脚本路径的改动，选择器只接受分数越过噪声带、并且新增推理开销被实测收益覆盖的候选。
 
-相比只改提示词的优化器（如 [SkillOpt](../agent-frameworks/workflow-builders/skillopt.zh.md) 或 GEPA），你选 RRSI 的理由是：它能改的是整个 harness 的**代码**——控制流、工具、记忆、子 agent——而不只是一份文本；每个候选都在独立的 git worktree 里，当前最优永远是一个可以 diff 的 commit。它也是一篇 arXiv 论文（2609.24972，2026-09）的参考实现，自带三个实例（Terminal-Bench 2.1、Harvey LAB、EngDesign），所以适合“复现或改造正则化 harness 演化”时去读，而不是拿来即用的产品。
+相比只改提示词的优化器（如 [SkillOpt](../../agent-frameworks/workflow-builders/skillopt.zh.md) 或 GEPA），你选 RRSI 的理由是：它能改的是整个 harness 的**代码**——控制流、工具、记忆、子 agent——而不只是一份文本；每个候选都在独立的 git worktree 里，当前最优永远是一个可以 diff 的 commit。它也是一篇 arXiv 论文（2609.24972，2026-09）的参考实现，自带三个实例（Terminal-Bench 2.1、Harvey LAB、EngDesign），所以适合“复现或改造正则化 harness 演化”时去读，而不是拿来即用的产品。
 
 ## 怎么用起来
 
 RRSI 是套在你 agent 外面的一个搜索循环，分工很清楚：你提供 agent 本身（会被改写的 harness 目录）、一套带打分的任务集，以及一个 Domain 适配器——一个 Python 模块，告诉核心怎样在一批任务上跑 harness、怎样读回单次试验、哪些模式算“泄题”；其余都由 RRSI 负责。每一轮，分析者模型（经 Vertex AI 调用的 Claude Opus）阅读失败和成功的轨迹——也就是 agent 一步步做了什么的完整记录——提议者模型在独立的 git worktree（同一仓库在另一分支上的第二份检出）里改一份 harness 副本，并给每处改动标注它动了哪个组件、在验证什么假设。接着评审用正则黑名单加模型审阅检查 diff，凡是写进了任务名或预期答案的都打回重改；通过的候选在完整演化集上评分，选择器只在它高于历史最好分数减去噪声带（对未改动 harness 重复测量得到的自然波动）、且多花的 token 被收益覆盖时才收下它，然后把 `evolve/<name>` 分支快进到这个 commit。可以把它想成一位拒收“靠背考题提分”补丁的代码评审，加一位拒记“小于测量误差的胜利”的会计。
 
-![rrsi — 主干用户故事](../../assets/flow/rrsi.zh.svg)
+![rrsi — 主干用户故事](../../../assets/flow/rrsi.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/rrsi.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,11 +108,11 @@ RRSI 是套在你 agent 外面的一个搜索循环，分工很清楚：你提�
 
 ## 何时不用
 
-- **你用不了 Google Vertex AI 上的 Claude。** 提议者、分析者、评审三个角色直接调用 `AnthropicVertex`（`rrsi/llm.py`），没设 `RRSI_VERTEX_PROJECTS` 就无法启动；搜索角色没有 OpenAI、Anthropic 直连或本地模型的路径（只有被冻结的*策略*模型是 LiteLLM 模型串）。模型在别处的话，用 GEPA 或 [SkillOpt](../agent-frameworks/workflow-builders/skillopt.zh.md)，它们支持多种后端。
-- **你还没有能打分的任务集。** 每个决定都靠多次试验的实测通过率；没有基准、没有 Domain 适配器（任务划分、`run`、`score`、轨迹读取、泄题模式），就完全没有信号。先把评测搭起来——提示词和 agent 测试集用 [promptfoo](../llm-eval/promptfoo.zh.md)——能给 harness 打分了再来。
-- **你的预算只有几美元。** 仓库自带的 coding 配置每轮要把 2 个候选各在 89 个任务 × 2 次试验上跑一遍，共 20 轮，外加一次基线——在算上提议者和评审的调用之前，就已是约 7000 次完整的 Claude Opus agent 运行 [推断：由 `domains/coding/rrsi.json` 的 T、k、m 与任务数相乘得出，未实际计费]。只想便宜地先调一份提示词，[DSPy](../agent-frameworks/workflow-builders/dspy.zh.md) 的优化器或 SkillOpt 在小开发集上跑，成本低几个数量级。
+- **你用不了 Google Vertex AI 上的 Claude。** 提议者、分析者、评审三个角色直接调用 `AnthropicVertex`（`rrsi/llm.py`），没设 `RRSI_VERTEX_PROJECTS` 就无法启动；搜索角色没有 OpenAI、Anthropic 直连或本地模型的路径（只有被冻结的*策略*模型是 LiteLLM 模型串）。模型在别处的话，用 GEPA 或 [SkillOpt](../../agent-frameworks/workflow-builders/skillopt.zh.md)，它们支持多种后端。
+- **你还没有能打分的任务集。** 每个决定都靠多次试验的实测通过率；没有基准、没有 Domain 适配器（任务划分、`run`、`score`、轨迹读取、泄题模式），就完全没有信号。先把评测搭起来——提示词和 agent 测试集用 [promptfoo](../../llm-eval/promptfoo.zh.md)——能给 harness 打分了再来。
+- **你的预算只有几美元。** 仓库自带的 coding 配置每轮要把 2 个候选各在 89 个任务 × 2 次试验上跑一遍，共 20 轮，外加一次基线——在算上提议者和评审的调用之前，就已是约 7000 次完整的 Claude Opus agent 运行 [推断：由 `domains/coding/rrsi.json` 的 T、k、m 与任务数相乘得出，未实际计费]。只想便宜地先调一份提示词，[DSPy](../../agent-frameworks/workflow-builders/dspy.zh.md) 的优化器或 SkillOpt 在小开发集上跑，成本低几个数量级。
 - **你只需要调一份提示词或 skill 文档。** RRSI 的那套机制（git worktree、组件标签、对工具、记忆、子 agent 的新颖度奖励）在改动对象是 harness *代码*时才值回票价。单份文本用 SkillOpt 的有界文本编辑或 DSPy 的提示词编译更简单，也不绑云厂商。
-- **你想让模型本身变强。** RRSI 从不碰权重，只改冻结模型外面那层脚手架。要用强化学习训练 agent 的策略模型，选 [Agent Lightning](../llm-training/agent-lightning.zh.md) 或 ART。
+- **你想让模型本身变强。** RRSI 从不碰权重，只改冻结模型外面那层脚手架。要用强化学习训练 agent 的策略模型，选 [Agent Lightning](../../llm-training/agent-lightning.zh.md) 或 ART。
 - **你需要一个有人维护的依赖。** 这是论文代码：`pyproject.toml` 里版本 0.1.0，没有 tag，只有四个 commit（2026-09-18 到 09-23），一个提交者；论文表 2 的消融配置还不能切换（issue #2，维护者承诺后续补上），编辑预算的退火曲线也到不了论文说的最后一轮 1 处（issue #2，修复在 PR #3 里待合）。要用就 fork 并锁版本，当参考实现读，别在 `main` 上做产品。
 - **你在没有 Docker 和 sudo 的 macOS 或 Windows 上。** coding 实例通过 `sudo -E docker`（`domains/coding/bin/docker`）驱动任务容器，工程实例用 bubblewrap 隔离 `code_exec`、还要 `apt-get` 装包——实际上需要一台带 Docker 的 Linux 主机。没有这样的机器，就换托管的评测平台或更轻的优化器。
 
@@ -120,11 +120,11 @@ RRSI 是套在你 agent 外面的一个搜索循环，分工很清楚：你提�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [SkillOpt](../agent-frameworks/workflow-builders/skillopt.zh.md) | ✅ | 要改进的只是一份 skill 或提示词文档、又想换着用多家模型时，选 SkillOpt；要改的范围必须包含 harness 代码（工具、控制流、记忆、子 agent），并且需要显式的泄题评审和 token 成本规则时，选 RRSI。 | SkillOpt：有界文本编辑、按留出集分数把关，跨厂商可移植，产物是一份 Markdown；RRSI：可改范围大得多、候选在 git 里可审计，但搜索角色只能走 Vertex，评测账单也重得多。 |
+| [SkillOpt](../../agent-frameworks/workflow-builders/skillopt.zh.md) | ✅ | 要改进的只是一份 skill 或提示词文档、又想换着用多家模型时，选 SkillOpt；要改的范围必须包含 harness 代码（工具、控制流、记忆、子 agent），并且需要显式的泄题评审和 token 成本规则时，选 RRSI。 | SkillOpt：有界文本编辑、按留出集分数把关，跨厂商可移植，产物是一份 Markdown；RRSI：可改范围大得多、候选在 git 里可审计，但搜索角色只能走 Vertex，评测账单也重得多。 |
 | GEPA | 未收录 | 想要一个持续发版、不绑厂商、带 Python API 的反思式优化器来改提示词或代码，选 GEPA；明确需要论文里设计并验证过的那几条防过拟合约束（退火编辑预算、评审、噪声下限、成本规则）时，选 RRSI。本批 tab 收录未添加。 | GEPA 是持续发版、MIT 许可、可嵌入的库；RRSI 是一篇论文的研究循环、绑定三个基准，用通用性换来一套有文档的防“刷榜”配方。 |
 | ADAS（Automated Design of Agentic Systems） | 未收录 | 只把 ADAS 当作“元 agent 用代码写新 agent 设计”的早期参考；现在做这件事选 RRSI，因为它补上了 ADAS 没有的选择侧约束，而 ADAS 仓库自 2025-01 起没有推送。本批 tab 收录未添加。 | ADAS：对 agent 代码做简单的开放式搜索，ICLR 2025 的产物，基本冻结；RRSI：更新、带正则化，但同样是研究产物而不是产品。 |
 | [autoresearch](autoresearch.zh.md) | ✅ | 想让 agent 在单卡上以 5 分钟为预算反复改*训练脚本*，选 autoresearch；被演化的对象是按任务通过率打分的 agent harness 时，选 RRSI。 | 两者都是“agent 改代码、只留实测更好的版本”的循环；autoresearch 小巧、吃 GPU、用 val_bpb 当裁判，RRSI 更重、吃 API，还多了评审、噪声和成本三道约束。 |
-| [Agent Lightning](../llm-training/agent-lightning.zh.md) | ✅ | 能训练策略模型（在 agent 轨迹上做强化学习或提示词优化）时选 Agent Lightning；模型被冻结、只能改脚手架时选 RRSI。 | Agent Lightning 通过训练后端改权重或提示词，agent 代码几乎不用动；RRSI 不碰权重、改的是脚手架代码，收益能跨策略模型迁移，但每轮都要跑完整基准。 |
+| [Agent Lightning](../../llm-training/agent-lightning.zh.md) | ✅ | 能训练策略模型（在 agent 轨迹上做强化学习或提示词优化）时选 Agent Lightning；模型被冻结、只能改脚手架时选 RRSI。 | Agent Lightning 通过训练后端改权重或提示词，agent 代码几乎不用动；RRSI 不碰权重、改的是脚手架代码，收益能跨策略模型迁移，但每轮都要跑完整基准。 |
 
 ## 技术栈
 

@@ -114,7 +114,7 @@ OpenResearch 是你那个 coding agent 外面的工作台，不是又一个 agen
 
 - **你的实验没法写成「一条命令、把结果打印出来」。** 可比性建立在每个节点固定一条运行命令之上，所以交互式 notebook、需要手工准备数据的多段流程、靠人手一步步推的活儿都会跟它打架——一次「什么也没回答」的 run 是要同节点修好重跑的，不是拿去比较的。这类情况用实验记录工具（例如 MLflow，未收录）配你自己的脚本，因为它允许任意代码、不要求命令契约。
 - **任务其实是文献或网页调研，不是做实验。** `orx discover` / `orx paper` 只是 agent 可以调用的检索原语（打的是 alphaXiv、OpenAlex、bioRxiv）；这里没有任何东西会去搜网、综合成报告、附上引用。要自托管的带引用报告，用 [Local Deep Research](../../../deep-research/local-deep-research.zh.md) 或 [GPT Researcher](../../../deep-research/gpt-researcher.zh.md)，因为搜索到综合这一整圈是它们自己的职责。
-- **你想让流水线替你决定研究议程。** 这棵树由你来长：agent 提出一轮假设，但运行命令、每一轮的方向、以及修几次就停下都是你定的。如果需求是「给个题目、还我一篇论文」，那就选 [The AI Scientist](../../../ml-research/ai-scientist.zh.md) 或 [Agent Laboratory](../../../ml-research/agent-laboratory.zh.md)，因为你真正要的是带自己模板的实验室自动化流水线。
+- **你想让流水线替你决定研究议程。** 这棵树由你来长：agent 提出一轮假设，但运行命令、每一轮的方向、以及修几次就停下都是你定的。如果需求是「给个题目、还我一篇论文」，那就选 [The AI Scientist](../../../ml-research/research-automation/ai-scientist.zh.md) 或 [Agent Laboratory](../../../ml-research/research-automation/agent-laboratory.zh.md)，因为你真正要的是带自己模板的实验室自动化流水线。
 - **你需要一个版本稳定、或者以 Windows 为主的平台。** Windows 支持是 beta：命令行要装 Git for Windows 才有 `bash` 和 coreutils，而且会拒绝 `System32` 里那个 WSL 启动器；发布节奏是一到两天一个版本，没有写明 LTS 或回补策略。需要冻结契约的话，直接用 agent 自己的 CLI（[Codex](../terminal-agents/codex.zh.md)、[OpenCode](../terminal-agents/opencode.zh.md)）并保留自己的脚本，因为 agent 才是那个不依赖这层也能用的部分。
 - **你没法在一台多人共用的机器上跑一个只听本机的 HTTP 服务。** `orx up --remote user@host` 是把工作台搬到远程 GPU 旁边，而 README 自己写明：远程服务只绑 loopback、没有应用层认证，所以那台机器上的其他用户能访问到它。留在单人机器上，或者用 SSH 隧道；如果多个人要在同一个部署上分工并接受治理，用为此而生的平台，比如 [OpenHands](openhands.zh.md)。
 - **你不接受依赖一个闭源配套服务。** 账号、组织和托管算力都在 openresearch.sh，不在这个仓库里；本地这一半不需要账号就能用，但开源的是本地这一半，其余部分自托管不了。如果一切都必须自托管，就直接透过 Slurm／Kubernetes 后端驱动你自己的集群，或者用 [SwarmForge](swarm-forge.zh.md)。
@@ -126,9 +126,9 @@ OpenResearch 是你那个 coding agent 外面的工作台，不是又一个 agen
 |---|---|---|---|
 | [OpenHands](openhands.zh.md) | ✅ | 如果 harness 和算力都已经是你自己的、只缺实验记账，选本页项目；如果你想要一个连 agent 和沙箱都一起自带的平台，选 OpenHands。 | OpenHands 是完整的自托管 agent 平台，自带运行时和沙箱——更重，但没剩下什么要你自己接；本页项目只拥有「你自己的 agent 之上」这一层，更轻，代价是依赖那个 harness 继续被支持。 |
 | [SwarmForge](swarm-forge.zh.md) | ✅ | 如果交付物是要上线的软件、你想要 spec→code→clean→architect→harden→QA 这种按角色交接（每个角色一个 worktree），选 SwarmForge；如果交付物是一棵由你往下走的打分实验树，选本页项目。 | 两边的直觉相同（一个 agent 一个 worktree），目标相反：SwarmForge 把软件研发角色串成流水线，但没有许可证也没有发布版本；本页项目是 MIT、每天有发布，却没有评审／QA 流水线，而且要你自己写出那条运行命令。 |
-| [autoresearch](../../../ml-research/autoresearch.zh.md) | ✅ | 如果你要的是一块 GPU、一个指标、一个可编辑的 `train.py`，让 agent 在固定时限下通宵迭代，选 autoresearch；如果你要的是任意仓库、多个后端、以及一棵长期存在的实验树，选本页项目。 | autoresearch 是一份可以 fork 的小参考脚手架，你把它交给 agent；本页项目是一个装好的应用，带存储、仪表盘、技能和算力路由——机器多得多，是要维护的项目，不是读一遍的文件。 |
-| [The AI Scientist](../../../ml-research/ai-scientist.zh.md) | ✅ | 如果你要流水线自己提想法、自己跑、再自己写论文，选 AI-Scientist；如果问题得由你提、agent 只当工人，选本页项目。 | 流水线拥有议程和成稿，自带模板和选题约束；本页项目完全不提供议程，研究品味留在你手上，这既是它的价值也是它的成本。仓库状态查于 2026-09-22：约 14.6k star，最近一次推送 2025-12。 |
-| [Agent Laboratory](../../../ml-research/agent-laboratory.zh.md) | ✅ | 如果你想要开箱即用的多角色研究助手（文献回顾→实验→报告），选 Agent Laboratory；如果你想保留自己的 harness 并把真正的 GPU 任务派出去，选本页项目。 | 同样是 LLM 角色流水线而不是工作台：没有 git 原生的实验血统、没有按 run 的提交快照、也没有跨后端的算力路由。仓库状态查于 2026-09-22：约 5.9k star，最近一次推送 2025-08。 |
+| [autoresearch](../../../ml-research/research-automation/autoresearch.zh.md) | ✅ | 如果你要的是一块 GPU、一个指标、一个可编辑的 `train.py`，让 agent 在固定时限下通宵迭代，选 autoresearch；如果你要的是任意仓库、多个后端、以及一棵长期存在的实验树，选本页项目。 | autoresearch 是一份可以 fork 的小参考脚手架，你把它交给 agent；本页项目是一个装好的应用，带存储、仪表盘、技能和算力路由——机器多得多，是要维护的项目，不是读一遍的文件。 |
+| [The AI Scientist](../../../ml-research/research-automation/ai-scientist.zh.md) | ✅ | 如果你要流水线自己提想法、自己跑、再自己写论文，选 AI-Scientist；如果问题得由你提、agent 只当工人，选本页项目。 | 流水线拥有议程和成稿，自带模板和选题约束；本页项目完全不提供议程，研究品味留在你手上，这既是它的价值也是它的成本。仓库状态查于 2026-09-22：约 14.6k star，最近一次推送 2025-12。 |
+| [Agent Laboratory](../../../ml-research/research-automation/agent-laboratory.zh.md) | ✅ | 如果你想要开箱即用的多角色研究助手（文献回顾→实验→报告），选 Agent Laboratory；如果你想保留自己的 harness 并把真正的 GPU 任务派出去，选本页项目。 | 同样是 LLM 角色流水线而不是工作台：没有 git 原生的实验血统、没有按 run 的提交快照、也没有跨后端的算力路由。仓库状态查于 2026-09-22：约 5.9k star，最近一次推送 2025-08。 |
 
 ## 技术栈
 

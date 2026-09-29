@@ -2,7 +2,7 @@
 name: LSTM Neural Network for Time Series Prediction
 slug: lstm-time-series
 repo: https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction
-category: ml-research
+category: nlp-and-time-series
 tags: [lstm, time-series, keras, tensorflow, educational, forecasting, deep-learning]
 language: Python
 license: AGPL-3.0
@@ -71,7 +71,7 @@ health:
 
 一份配套文章的精简代码库，演示如何用 Keras 搭一个 LSTM 来预测时间序列——以正弦波和标普 500 数据为例——它是用来讲明白这个技术的，不是用来当预测库交付的。
 
-![lstm-time-series — 健康度雷达](../../assets/health/lstm-time-series.zh.svg)
+![lstm-time-series — 健康度雷达](../../../assets/health/lstm-time-series.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ health:
 | GluonTS | 未收录 | 需要 AWS 概率时序工具箱时，选 GluonTS。 | 概率时序工具箱（AWS）；做真实的规模化预测很强，学习曲线更陡，不是入门样例。 |
 | Prophet | 未收录 | 需要对业务季节性极易上手的分解式预测时，选 Prophet。 | 基于分解的预测，对业务季节性极易上手；不是深度学习/LSTM 的演示。 |
 | Keras 官方 RNN 教程 | 未收录 | 需要最新、维护中的 TF2 RNN 示例时，选 Keras 官方教程。 | 同类技术的最新、维护中的 TF2 示例；叙事不如配套文章，但不会以同样方式腐烂。 |
-| [PyTorch-GAN](pytorch-gan.zh.md) | ✅ | 需要生成图像领域里同样的教学参考实现体裁时，选 PyTorch-GAN。 | 领域不同（生成图像），但*体裁*相同——单一作者的参考实现合集，意在教学，而非当作维护中的依赖。 |
+| [PyTorch-GAN](../vision-and-multimodal/pytorch-gan.zh.md) | ✅ | 需要生成图像领域里同样的教学参考实现体裁时，选 PyTorch-GAN。 | 领域不同（生成图像），但*体裁*相同——单一作者的参考实现合集，意在教学，而非当作维护中的依赖。 |
 
 ## 技术栈
 

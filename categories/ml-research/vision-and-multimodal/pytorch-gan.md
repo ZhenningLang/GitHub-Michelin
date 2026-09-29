@@ -2,7 +2,7 @@
 name: PyTorch-GAN
 slug: pytorch-gan
 repo: https://github.com/eriklindernoren/PyTorch-GAN
-category: ml-research
+category: vision-and-multimodal
 tags: [gan, generative, deep-learning, reference-implementation, educational, pytorch, computer-vision]
 language: Python
 license: MIT
@@ -64,7 +64,7 @@ health:
 
 A single-author collection of clean, from-scratch PyTorch implementations of many GAN papers (DCGAN, CycleGAN, WGAN, pix2pix, and dozens more) — built to be *read and learned from*, one self-contained script per architecture, not imported as a dependency.
 
-![pytorch-gan — health radar](../../assets/health/pytorch-gan.svg)
+![pytorch-gan — health radar](../../../assets/health/pytorch-gan.svg)
 
 ## When to use
 

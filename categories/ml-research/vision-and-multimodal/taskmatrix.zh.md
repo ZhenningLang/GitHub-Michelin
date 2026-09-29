@@ -2,7 +2,7 @@
 name: TaskMatrix
 slug: taskmatrix
 repo: https://github.com/chenfei-wu/TaskMatrix
-category: ml-research
+category: vision-and-multimodal
 tags: [visual-chatgpt, tool-routing, foundation-models, multimodal, agent, abandoned, historical-demo]
 language: Python
 license: MIT
@@ -61,7 +61,7 @@ health:
 
 一个历史性的研究 demo（最初叫「Visual ChatGPT」，出自微软）：它把 ChatGPT 接到一组固定的视觉基础模型上，让你能用对话来给图片做描述、生成和编辑——作为早期「工具路由 agent」的设计样本很有意思，但自 2024 年初起已停更，并已被现代多模态大模型取代。
 
-![taskmatrix — 健康度雷达](../../assets/health/taskmatrix.zh.svg)
+![taskmatrix — 健康度雷达](../../../assets/health/taskmatrix.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 | HuggingGPT / JARVIS | 未收录 | 需要同时代、同样“LLM 控制器调模型目录”思路时，选 HuggingGPT/JARVIS。 | 同时代、同思路——一个 LLM 控制器把任务路由到一批 Hugging Face 模型；任务面更广（不限视觉），同样是研究 demo 而非受维护的产品。 |
 | LangChain agents | 未收录 | 需要受维护的通用 LLM 工具编排框架时，选 LangChain agents。 | 受维护的通用 LLM 工具编排框架；你用当下的 function-calling 自己接工具（包括视觉模型），而不是用 TaskMatrix 那套 2023 年手写的 prompt 路由器。 |
 | 现代 agent 框架（function-calling / 基于 MCP 的工具链） | 未收录 | 需要当下标准化的 LLM 工具访问方式时，选现代 agent 框架。 | 当下给 LLM 配工具的标准化做法；编排、结构化工具 I/O 和活跃支持都远胜这个定制 demo。 |
-| [autoresearch](autoresearch.zh.md) | ✅ | 需要另一个面向 agent 驱动 ML 训练循环的单作者研究 demo 时，选 autoresearch。 | 同样是单作者研究 demo 类 app，但它是个面向 agent 驱动 ML 研究的单卡*训练*循环——问题完全无关；只共享「当参考读、别部署」这个姿态。 |
+| [autoresearch](../research-automation/autoresearch.zh.md) | ✅ | 需要另一个面向 agent 驱动 ML 训练循环的单作者研究 demo 时，选 autoresearch。 | 同样是单作者研究 demo 类 app，但它是个面向 agent 驱动 ML 研究的单卡*训练*循环——问题完全无关；只共享「当参考读、别部署」这个姿态。 |
 
 ## 技术栈
 

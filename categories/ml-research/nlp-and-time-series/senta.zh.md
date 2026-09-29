@@ -2,7 +2,7 @@
 name: Senta (SKEP)
 slug: senta
 repo: https://github.com/baidu/Senta
-category: ml-research
+category: nlp-and-time-series
 tags: [sentiment-analysis, nlp, pretraining, skep, paddlepaddle, chinese-nlp, ernie]
 language: Python
 license: Apache-2.0
@@ -72,7 +72,7 @@ health:
 
 百度开源的情感分析工具包，基于 SKEP——一种情感知识增强的预训练方法（ACL 2020）——提供中英文预训练模型和一键预测工具，全部跑在 PaddlePaddle 1.x 框架上。
 
-![senta — 健康度雷达](../../assets/health/senta.zh.svg)
+![senta — 健康度雷达](../../../assets/health/senta.zh.svg)
 
 ## 何时使用
 
@@ -95,7 +95,7 @@ health:
 | Hugging Face 情感模型 | 未收录 | 需要大量微调好的情感模型和简单集成时，选 Hugging Face 情感模型。 | PyTorch/Transformers 上海量微调好的情感模型（含中文），安装极简；不是 SKEP 这个具体方法，但采用与维护都容易得多。 |
 | PaddleNLP / ERNIE | 未收录 | 需要百度在 Paddle 2.x 上维护中的后继 NLP 栈时，选 PaddleNLP/ERNIE。 | 百度在 Paddle 2.x 上积极维护的后继 NLP 栈；当下百度 NLP（含情感）开发实际发生的地方——Senta 是更老、已冻结的同门。 |
 | SnowNLP / cnsenti | 未收录 | 需要轻量中文情感库时，选 SnowNLP 或 cnsenti。 | 轻量中文情感库（词典/经典 ML）；跑起来极简，远弱于预训练 transformer——精度/成本权衡的另一端。 |
-| [CLIP](clip.zh.md) | ✅ | 需要视觉语言方向的同货架参考模型发布时，选 CLIP。 | 模态无关（视觉语言）但同一货架——机构发布的参考模型，资产是*checkpoint 加论文*，而非活跃的库维护。 |
+| [CLIP](../vision-and-multimodal/clip.zh.md) | ✅ | 需要视觉语言方向的同货架参考模型发布时，选 CLIP。 | 模态无关（视觉语言）但同一货架——机构发布的参考模型，资产是*checkpoint 加论文*，而非活跃的库维护。 |
 
 ## 技术栈
 

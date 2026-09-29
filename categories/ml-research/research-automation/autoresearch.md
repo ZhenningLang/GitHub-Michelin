@@ -2,7 +2,7 @@
 name: autoresearch
 slug: autoresearch
 repo: https://github.com/karpathy/autoresearch
-category: ml-research
+category: research-automation
 tags: [llm-training, agentic-research, nanochat, single-gpu, reference-implementation]
 language: Python
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 A self-contained, single-GPU LLM training harness designed so an AI agent can autonomously iterate on `train.py` overnight — running 5-minute experiments, scoring each by validation bits-per-byte, and keeping only changes that lower the loss.
 
-![autoresearch — health radar](../../assets/health/autoresearch.svg)
+![autoresearch — health radar](../../../assets/health/autoresearch.svg)
 
 ## When to use
 
@@ -90,9 +90,9 @@ It's also a clean reference implementation to read or fork when you want to *stu
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [llm-circuit-finder](llm-circuit-finder.md) | ✅ | Choose llm-circuit-finder when you need a small demo of inference-time layer-duplication/circuit routing. | Also a small self-contained research demo, but explores *inference-time* layer-duplication / circuit routing on existing large models — no training loop, no agent-driven iteration; different research question entirely. |
+| [llm-circuit-finder](../llm-circuit-finder.md) | ✅ | Choose llm-circuit-finder when you need a small demo of inference-time layer-duplication/circuit routing. | Also a small self-contained research demo, but explores *inference-time* layer-duplication / circuit routing on existing large models — no training loop, no agent-driven iteration; different research question entirely. |
 | nanochat | 未收录 | Choose nanochat when you need the full single-GPU GPT training project this is simplified from. | The full single-GPU GPT training project this is simplified from; meant for humans to train a real small ChatGPT clone end-to-end, not for an agent to mutate under a time budget. |
-| [nanoGPT](../llm-training/study-and-experiments/nanogpt.md) | ✅ | Choose nanoGPT when you need the canonical minimal GPT-2 reference to read, and you accept that it is deprecated upstream; choose autoresearch when you want an agent to iterate under a fixed time budget, because nanoGPT offers no automation and no fixed evaluation harness. | nanoGPT is the readable but frozen baseline you edit by hand; autoresearch is the automation layer on top of that idea, with a 5-minute budget and a scored loop. |
+| [nanoGPT](../../llm-training/study-and-experiments/nanogpt.md) | ✅ | Choose nanoGPT when you need the canonical minimal GPT-2 reference to read, and you accept that it is deprecated upstream; choose autoresearch when you want an agent to iterate under a fixed time budget, because nanoGPT offers no automation and no fixed evaluation harness. | nanoGPT is the readable but frozen baseline you edit by hand; autoresearch is the automation layer on top of that idea, with a 5-minute budget and a scored loop. |
 | [The AI Scientist](ai-scientist.md) | ✅ | Choose The AI Scientist when you need a heavier idea-to-experiment-to-paper agent-science pipeline. | A heavier end-to-end "agent does science" pipeline (idea→experiment→paper write-up); broader scope and far more moving parts than this single-file training loop. |
 
 ## Tech stack
