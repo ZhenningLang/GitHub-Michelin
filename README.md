@@ -154,6 +154,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Puppeteer** | JavaScript API for Chrome and Firefox | Apache-2.0 | A (6/6) | [EN](categories/web-automation/browser-driver-frameworks/puppeteer.md) · [中](categories/web-automation/browser-driver-frameworks/puppeteer.zh.md) |
 | **Jev Ultrafast** | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. | MIT | C (6/6) | [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) · [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) |
 | **PinchTab** | Use it when an agent needs a resident local browser service that orchestrates multiple isolated Chrome instances/profiles over CLI, HTTP and MCP, with default-deny capability gates and prompt-injection scanning built in; pre-1.0 and effectively single-maintainer. | MIT | B (6/6) | [EN](categories/web-automation/agent-browser-tools/pinchtab.md) · [中](categories/web-automation/agent-browser-tools/pinchtab.zh.md) |
+| **invisible_playwright_mcp** | Use it when an MCP assistant keeps hitting captchas and bot walls — it drives a C++-patched stealth Firefox with seed-derived fingerprints; Windows/Linux only, single maintainer, stars inherited from a renamed job-bot repo. | MIT | B (5/6) | [EN](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md) · [中](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.zh.md) |
 
 ### llm-training
 

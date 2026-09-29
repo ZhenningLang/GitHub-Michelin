@@ -16,6 +16,7 @@
 | **page-agent** | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. | B (6/6) | [→](page-agent.md) |
 | **Jev Ultrafast** | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. | C (6/6) | [→](jev-ultrafast.md) |
 | **PinchTab** | Use it when an agent needs a resident local browser service that orchestrates multiple isolated Chrome instances/profiles over CLI, HTTP and MCP, with default-deny capability gates and prompt-injection scanning built in; pre-1.0 and effectively single-maintainer. | B (6/6) | [→](pinchtab.md) |
+| **invisible_playwright_mcp** | Use it when an MCP assistant keeps hitting captchas and bot walls — it drives a C++-patched stealth Firefox with seed-derived fingerprints; Windows/Linux only, single maintainer, stars inherited from a renamed job-bot repo. | B (5/6) | [→](invisible-playwright-mcp.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [page-agent](page-agent.md) | ✅ | B (6/6) | Use it when you want to control a web UI with natural language in-page via direct DOM read/write, no backend. |
 | [Jev Ultrafast](jev-ultrafast.md) | ✅ | C (6/6) | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. |
 | [PinchTab](pinchtab.md) | ✅ | B (6/6) | One resident Go server gives an agent CLI/HTTP/MCP control of multiple isolated Chrome instances under named profiles, folding action and snapshot into one round trip, with default-deny capability gates and IDPI content scanning; young, pre-1.0, effectively single-maintainer. |
+| [invisible_playwright_mcp](invisible-playwright-mcp.md) | ✅ | B (5/6) | Use it when an MCP assistant keeps hitting captchas and bot walls — it drives a C++-patched stealth Firefox with seed-derived fingerprints; Windows/Linux only, single maintainer, stars inherited from a renamed job-bot repo. |
 
 ## What belongs here
 

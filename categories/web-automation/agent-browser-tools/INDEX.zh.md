@@ -16,6 +16,7 @@
 | **page-agent** | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 | B（6/6） | [→](page-agent.zh.md) |
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | C（6/6） | [→](jev-ultrafast.zh.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | B（6/6） | [→](pinchtab.zh.md) |
+| **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | B（5/6） | [→](invisible-playwright-mcp.zh.md) |
 
 ## 对比矩阵
 
@@ -30,6 +31,7 @@
 | [page-agent](page-agent.zh.md) | ✅ | B（6/6） | 想在页内用自然语言、通过直接读写 DOM 控制 Web 界面、且无需后端时用它。 |
 | [Jev Ultrafast](jev-ultrafast.zh.md) | ✅ | C（6/6） | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 |
 | [PinchTab](pinchtab.zh.md) | ✅ | B（6/6） | 一个常驻 Go 服务让 agent 经 CLI/HTTP/MCP 管多个隔离 Chrome 实例与具名配置档，动作和快照折进一次往返，外加默认全关的能力闸门与 IDPI 内容扫描；年轻、pre-1.0、实际单维护者。 |
+| [invisible_playwright_mcp](invisible-playwright-mcp.zh.md) | ✅ | B（5/6） | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 |
 
 ## 什么该放这里
 
