@@ -519,6 +519,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Humanizer-zh** | 给已有中文稿去套话和模板腔，同时保住事实、确定程度和作者立场；31 个检查点，不是检测器。 | MIT | C（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/humanizer-zh.md) |
 | **Webnovel Writer** | 当 Claude Code 连载小说需要让章节、事实、检索、审查和摘要在长期写作中保持一致时用它。 | GPL-3.0 | C（6/6） | [中](categories/agent-skills/ai-writing/fiction/webnovel-writer.zh.md) · [EN](categories/agent-skills/ai-writing/fiction/webnovel-writer.md) |
 | **chinese-novelist-skill** | 纯提示词、MIT 的中文小说流水线技能包（三层问答、大纲与人物档案、逐章创作、字数校验），无运行时、无检索层。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.zh.md) · [EN](categories/agent-skills/ai-writing/fiction/chinese-novelist-skill.md) |
+| **Tech-Doc-Style-Chinese** | 面向 Claude Code 和 Codex 的中文技术写作风格 Skill——事实保真的改写与校对合同，配排版与 API 状态参考，外加可进 CI 的零依赖文案检查器。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.zh.md) · [EN](categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md) |
 
 #### agent-skills / security
 

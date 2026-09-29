@@ -10,6 +10,7 @@
 | **Baoyu Skills** | A 20+ skill pack for coding agents (translation, markdown/HTML formatting, transcript/URL capture, image/diagram/slide generation), installable into Claude Code, Codex, and other skill-capable harnesses. | B (4/5) | [→](baoyu-skills.md) |
 | **huashu-skills** | Chinese creator toolkit with 21 skills for articles, topics, research, video outlines, images, PDF export, and creator workflows. | B (4/5) | [→](huashu-skills.md) |
 | **writing-agent** | Chinese long-form writing production line with staged planning, evidence ledger, review, de-AI pass, fact-check gate, and final clean text. | B (5/6) | [→](writing-agent.md) |
+| **Tech-Doc-Style-Chinese** | Use it when a coding agent must write, rewrite or proofread Chinese technical docs, API copy or UI text under a fact-preserving style contract with a CI-runnable copy linter. | B (4/5) | [→](tech-doc-style-chinese.md) |
 
 ## Comparison matrix
 
@@ -18,6 +19,7 @@
 | [Baoyu Skills](baoyu-skills.md) | ✅ | B (4/5) | A 20+ general content/formatting utility pack; broad but not a novel- or marketing-specific pipeline. |
 | [huashu-skills](huashu-skills.md) | ✅ | B (4/5) | Broad Chinese creator toolkit; license ambiguity and per-skill install paths make it riskier. |
 | [writing-agent](writing-agent.md) | ✅ | B (5/6) | Strict Chinese article production line with an evidence ledger; heavier than modular creator toolkits. |
+| [Tech-Doc-Style-Chinese](tech-doc-style-chinese.md) | ✅ | B (4/5) | Chinese tech-doc style skill with fact-fidelity rules, typography and API-status references, plus a zero-dependency copy linter; a style layer, not a pipeline. |
 
 ## What belongs here
 

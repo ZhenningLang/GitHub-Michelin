@@ -958,6 +958,7 @@ Solid (`solidjs/solid`),categories/web-ui/frameworks/view-frameworks/tanstack-re
 Solid.js,categories/web-ui/frameworks/view-frameworks/svelte.md,,no
 SolidStart,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 SOPS,categories/secrets-management/openbao.md,,no
+sparanoid/chinese-copywriting-guidelines,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 Special K,categories/media-processing/image-processing/magpie.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
@@ -1084,6 +1085,7 @@ Your own hand-written slash commands,categories/agent-skills/personal-collection
 Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.md,,no
 YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
 Zapier,categories/workflow-orchestration/n8n.md,,no
+zhlint,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 zkui / zk-web,categories/databases/database-clients/prettyzoo.md,,no
 ZoeDepth,categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
