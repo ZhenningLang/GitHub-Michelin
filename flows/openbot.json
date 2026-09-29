@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenBot does",
+    "zh": "OpenBot 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the template, copy the env file and install",
+      "zh": "克隆模板，复制 env 文件并安装依赖",
+      "code": "cp .env.example .env · bun install"
+    },
+    {
+      "lane": "you",
+      "en": "Connect a CopilotKit Intelligence project and add a model key",
+      "zh": "接上 Intelligence 项目，填模型密钥",
+      "code": "npx --yes copilotkit@latest login · bun scripts/setup-learning.ts"
+    },
+    {
+      "lane": "you",
+      "en": "Start the whole stack",
+      "zh": "拉起整套服务",
+      "code": "bash scripts/start.sh"
+    },
+    {
+      "lane": "them",
+      "en": "Brings up Postgres, migrations, API, app and bots; serves localhost:3010",
+      "zh": "拉起数据库、迁移、API、前端和机器人，开在 3010",
+      "component": {
+        "en": "start script + supervisor",
+        "zh": "启动脚本与 supervisor"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Write a deny rule for browser/file/MCP actions",
+      "zh": "为浏览器／文件／MCP 动作写一条拒绝规则",
+      "code": "/admin/boundaries"
+    },
+    {
+      "lane": "you",
+      "en": "Ask a coworker to do a task on the web",
+      "zh": "让一个同事去网上办件事",
+      "code": "Open news.ycombinator.com and tell me the top story."
+    },
+    {
+      "lane": "them",
+      "en": "Checks each tool call against the policy, writes an audit row, then drives the bot's own browser",
+      "zh": "每个调用先查策略、写审计，再驱动它自己的浏览器",
+      "component": {
+        "en": "server gateway",
+        "zh": "服务端闸门"
+      }
+    }
+  ],
+  "value": {
+    "en": "Agents act in real web apps for your staff, and you stop taking their word for it — every action was policy-checked first and is on the record",
+    "zh": "agent 替员工操作真实网页应用，而你不必再靠它自述做了什么——每个动作都先过策略、全部留档"
+  },
+  "sources": [
+    "https://github.com/CopilotKit/OpenBot/blob/main/README.md Quick start (cp .env.example .env, bun install, npx --yes copilotkit@latest login, bun scripts/setup-learning.ts, OPENAI_API_KEY, bash scripts/start.sh, http://localhost:3010)",
+    "https://github.com/CopilotKit/OpenBot/blob/main/README.md Try it (Open news.ycombinator.com and tell me the top story., /admin/audit, /admin/boundaries deny rule)",
+    "https://github.com/CopilotKit/OpenBot/blob/main/README.md Features (gateway resolves target, evaluates policy, writes audit row, then calls the computer; CEL policy fail closed)",
+    "https://github.com/CopilotKit/OpenBot/blob/main/README.md Main surfaces (/admin/boundaries, /admin/audit)"
+  ]
+}

@@ -7,7 +7,7 @@
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | andrewyng/openworker | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md |  | andrewyng/openworker |
-| CopilotKit/OpenBot | add | running |  |  | copilotkit/openbot |
+| CopilotKit/OpenBot | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openbot.md |  | copilotkit/openbot |
 | firecrawl/anydoc | add | running |  |  | firecrawl/anydoc |
 | google-research/rrsi | add | done | categories/ml-research/rrsi.md |  | google-research/rrsi |
 | Asymptote-Labs/agent-beacon | sync | running |  | 已收录（09-28 批新增），标签又被打开 | asymptote-labs/agent-beacon |
@@ -16,7 +16,8 @@
 | shanraisshan/claude-code-best-practice | skip | skipped |  | 沿用 09-28 判定：文章/教程合集；标签保留 | shanraisshan/claude-code-best-practice |
 | win4r/MuseAI-Skills | skip | skipped |  | 沿用 09-28 判定：闭源产品运行环境快照；标签保留 | win4r/museai-skills |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
-| Blinue/Magpie | add | pending |  | 处理中新开的标签（标签写法 �� | blinue/magpie |
+| Blinue/Magpie | add | running |  | 处理中新开的标签（标签写法 �� | blinue/magpie |
 | harveyai/harvey-labs | add | pending |  | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
 | rtk-ai/rtk | sync | pending |  | 处理中新开的标签（标签写法 �� | rtk-ai/rtk |
 | steipete/agent-scripts | add | pending |  | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
+| EverMind-AI/Raven | add | pending |  | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
