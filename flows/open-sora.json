@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Open-Sora does",
+    "zh": "Open-Sora 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo and install it into a Python 3.10 env with torch 2.4, xformers and flash-attn",
+      "zh": "克隆仓库，在 Python 3.10 下装好它和 flash-attn",
+      "code": "pip install -v ."
+    },
+    {
+      "lane": "you",
+      "en": "Download the checkpoint bundle into ./ckpts",
+      "zh": "把权重包下载到 ./ckpts",
+      "code": "huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts",
+      "component": {
+        "en": "11B model + FLUX + VAE + T5 + CLIP",
+        "zh": "11B 模型、FLUX、VAE、T5、CLIP"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Launch it with torchrun, a resolution config and your prompt",
+      "zh": "用 torchrun 带上分辨率配置和提示词启动",
+      "code": "scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py"
+    },
+    {
+      "lane": "them",
+      "en": "Draws the first frame from your prompt with the bundled FLUX.1-dev image model",
+      "zh": "先用随包的 FLUX.1-dev 图像模型按提示词画出第一帧",
+      "component": {
+        "en": "flux1-dev (text-to-image stage)",
+        "zh": "flux1-dev（文生图阶段）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Denoises up to 129 frames conditioned on that frame, the text and a motion score",
+      "zh": "以这一帧、文本和运动分数为条件，去噪生成最多 129 帧",
+      "component": {
+        "en": "Open_Sora_v2.safetensors (11B)",
+        "zh": "Open_Sora_v2 权重（11B）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Decodes the latents with the HunyuanVideo VAE and writes an H.264 MP4 under samples/",
+      "zh": "经 HunyuanVideo VAE 解码，写出 H.264 MP4"
+    }
+  ],
+  "value": {
+    "en": "A ~5 s clip from one command on your own GPU, with the training code that produced the weights in the same repo",
+    "zh": "在自己的 GPU 上一条命令出一段约 5 秒的视频，而且产出这套权重的训练代码就在同一个仓库里"
+  },
+  "sources": [
+    "https://github.com/hpcaitech/Open-Sora README Quickstart > Installation (conda create -n opensora python=3.10; pip install -v .; xformers==0.0.27.post2; flash-attn)",
+    "README Model Download (huggingface-cli download hpcai-tech/Open-Sora-v2 --local-dir ./ckpts); Hugging Face file list of hpcai-tech/Open-Sora-v2 (Open_Sora_v2.safetensors, flux1-dev.safetensors, flux1-dev-ae.safetensors, hunyuan_vae.safetensors, google/t5-v1_1-xxl, openai/clip-vit-large-patch14)",
+    "README Text-to-Video Generation (torchrun --nproc_per_node 1 --standalone scripts/diffusion/inference.py configs/diffusion/inference/t2i2v_256px.py --save-dir samples --prompt \"raining, sea\"; num_frames 4k+1 and less than 129)",
+    "configs/diffusion/inference/plugins/t2i2v.py (img_flux from ./ckpts/flux1-dev.safetensors), configs/diffusion/inference/256px.py (model Open_Sora_v2.safetensors, ae hunyuan_vae, motion_score, num_frames=129, fps_save=24)",
+    "opensora/datasets/utils.py save_sample (write_video ... .mp4, video_codec=h264)"
+  ]
+}

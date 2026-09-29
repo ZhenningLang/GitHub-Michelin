@@ -22,4 +22,4 @@
 | steipete/agent-scripts | add | done | categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
 | EverMind-AI/Raven | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
 | jumpserver/jumpserver | add | done | categories/dev-utilities/ops-infra/jumpserver.md | 处理中新开的标签 | jumpserver/jumpserver |
-| hpcaitech/Open-Sora | add | running |  | 处理中新开的标签 | hpcaitech/open-sora |
+| hpcaitech/Open-Sora | add | done | categories/ml-research/vision-and-multimodal/open-sora.md | 处理中新开的标签 | hpcaitech/open-sora |
