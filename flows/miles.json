@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them":  {"en": "Miles does", "zh": "Miles 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the pinned Miles container on an 8-GPU node", "zh": "在 8 卡节点上启动锁版本的 Miles 容器", "code": "docker pull radixark/miles:latest"},
+    {"lane": "you", "en": "Convert the HuggingFace weights once into Megatron's sharded format", "zh": "把 HF 权重一次性转成 Megatron 分片格式", "code": "tools/convert_hf_to_torch_dist.py"},
+    {"lane": "you", "en": "Launch the model's recipe script; plug in your own reward if needed", "zh": "运行该模型的配方脚本，需要时接入自定义奖励", "code": "python scripts/run_qwen3_dense.py --model-name Qwen3-4B"},
+    {"lane": "them", "en": "Starts Ray; SGLang engines generate and score several answers per prompt", "zh": "拉起 Ray，SGLang 引擎对每个提示生成并打分多个答案", "component": {"en": "SGLang rollout + router", "zh": "SGLang rollout 与路由器"}},
+    {"lane": "them", "en": "Megatron takes a GRPO step on the same tokens and expert routes", "zh": "Megatron 在同样的 token 与专家路由上走一步 GRPO", "component": {"en": "Megatron actor", "zh": "Megatron 训练器"}},
+    {"lane": "them", "en": "Syncs new weights into the engines, checkpoints, and loops again", "zh": "把新权重同步回引擎、存 checkpoint，然后下一轮"}
+  ],
+  "value": {"en": "A live RL run on a large model where rollout and training stay in step — no weight-sync or tokenizer glue to write", "zh": "大模型 RL 跑起来且训推对齐，不用自己写权重同步和切词胶水"},
+  "sources": [
+    "docs/getting-started/quick-start.md @ 2026-09-29: 'docker pull radixark/miles:latest', 'PYTHONPATH=/root/Megatron-LM python tools/convert_hf_to_torch_dist.py', 'python scripts/run_qwen3_dense.py --model-name Qwen3-4B', 'the launcher starts a local Ray cluster', loop steps 1-4 (SGLang generates, reward scores, GRPO step, sync weights), checkpoints every 20 rollouts",
+    "docs/user-guide/customization.md @ 2026-09-29: '--custom-rm-path' replaces reward computation",
+    "README.md @ 2026-09-29: SGLang router spreads requests across engines; Rollout Routing Replay replays expert routing in the trainer; token-in-token-out"
+  ]
+}

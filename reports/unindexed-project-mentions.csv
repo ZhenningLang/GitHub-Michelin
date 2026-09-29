@@ -660,6 +660,7 @@ native `ssh -L` / `autossh`,categories/networking/sshtunnel.md,,no
 Native Query DSL,categories/databases/database-clients/elasticsearch-sql.md,,no
 NATS / Redis Streams (direct),categories/task-queue/kombu.md,,no
 NeMo (NVIDIA),categories/speech/speechbrain.md,,no
+NeMo RL (NVIDIA-NeMo/RL),categories/llm-training/miles.md,,no
 Neo4j,categories/rag-retrieval/structured-retrieval/falkordb.md,,no
 Neo4j (direct),categories/ml-research/nlp-and-time-series/agriculture-knowledge-graph.md,,no
 Neo4j / LightRAG,categories/rag-retrieval/structured-retrieval/INDEX.md,,no
@@ -720,6 +721,7 @@ OpenKG / CN-DBpedia,categories/ml-research/nlp-and-time-series/agriculture-knowl
 OpenPDFSign,categories/pdf-tools/INDEX.md,,no
 openpyxl,categories/office-automation/INDEX.md,,no
 OpenResty (bundle),categories/nginx-modules/lua-nginx-module.md,,no
+OpenRLHF,categories/llm-training/miles.md,,no
 OpenRouter,categories/api-gateway/claude-code-router.md,,no
 OpenSCAD,categories/cad/freecad.md,,no
 OpenSCAD · CadQuery · LibreCAD · Blender,categories/cad/INDEX.md,,no
@@ -940,6 +942,7 @@ Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no
 Slidev,categories/agent-skills/slides-ppt/guizang-ppt.md,,no
 Slidev (`slidevjs/slidev`),categories/ai-design-generation/open-slide.md,,no
 Slidev / Marp,categories/agent-skills/slides-ppt/INDEX.md,,no
+slime (THUDM/slime),categories/llm-training/miles.md,,no
 SmartTube (`yuliskov/SmartTube`),categories/streaming-clients/pipepipe.md,,no
 SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/nlp-and-time-series/senta.md,,no
