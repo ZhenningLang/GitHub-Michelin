@@ -11,10 +11,10 @@
 | firecrawl/anydoc | add | done | categories/document-parsing/anydoc.md |  | firecrawl/anydoc |
 | google-research/rrsi | add | done | categories/ml-research/rrsi.md |  | google-research/rrsi |
 | Asymptote-Labs/agent-beacon | sync | done | categories/agent-memory/coding-agent-memory/agent-beacon.md | 新鲜页，sync-entry 按阈值未重核，无改动 | asymptote-labs/agent-beacon |
-| openedclaude/claude-reviews-claude | skip | skipped |  | 沿用 09-28 判定：解读文章集，无可复用软件；标签保留 | openedclaude/claude-reviews-claude |
-| Piebald-AI/claude-code-system-prompts | skip | skipped |  | 沿用 09-28 判定：闭源产品系统提示词提取物；标签保留 | piebald-ai/claude-code-system-prompts |
-| shanraisshan/claude-code-best-practice | skip | skipped |  | 沿用 09-28 判定：文章/教程合集；标签保留 | shanraisshan/claude-code-best-practice |
-| win4r/MuseAI-Skills | skip | skipped |  | 沿用 09-28 判定：闭源产品运行环境快照；标签保留 | win4r/museai-skills |
+| openedclaude/claude-reviews-claude | add | done | categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md | 用户 2026-09-29 12:46 改判收录 | openedclaude/claude-reviews-claude |
+| Piebald-AI/claude-code-system-prompts | add | running |  | 用户 2026-09-29 12:46 改判收录 | piebald-ai/claude-code-system-prompts |
+| shanraisshan/claude-code-best-practice | add | running |  | 用户 2026-09-29 12:46 改判收录 | shanraisshan/claude-code-best-practice |
+| win4r/MuseAI-Skills | add | running |  | 用户 2026-09-29 12:46 改判收录 | win4r/museai-skills |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | Blinue/Magpie | add | done | categories/media-processing/image-processing/magpie.md | 处理中新开的标签（标签写法 �� | blinue/magpie |
 | harveyai/harvey-labs | add | done | categories/llm-eval/harvey-labs.md | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
@@ -22,3 +22,4 @@
 | steipete/agent-scripts | add | done | categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
 | EverMind-AI/Raven | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
 | jumpserver/jumpserver | add | done | categories/dev-utilities/ops-infra/jumpserver.md | 处理中新开的标签 | jumpserver/jumpserver |
+| hpcaitech/Open-Sora | add | running |  | 处理中新开的标签 | hpcaitech/open-sora |
