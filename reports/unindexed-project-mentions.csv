@@ -66,6 +66,7 @@ ack,categories/dev-utilities/data-tools/ripgrep.md,,no
 acme.sh,categories/dev-utilities/ops-infra/certbot.md,,no
 ad-hoc `if` checks,categories/auth/django-rules.md,,no
 AdalFlow (LightRAG),categories/agent-frameworks/workflow-builders/dspy.md,,no
+ADAS (Automated Design of Agentic Systems),categories/ml-research/rrsi.md,,no
 AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
@@ -376,6 +377,7 @@ Generic LLM chat / hand-written prompt,categories/agent-skills/personal-collecti
 Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/work-state/ralph-claude-code.md,,no
 GeoPandas / Shapely,categories/geospatial/qgis.md,,no
 GeoServer,categories/geospatial/qgis.md,,no
+GEPA,categories/ml-research/rrsi.md,,no
 Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 git submodule / manual `cp`,categories/agent-tooling/harness-extensions/vercel-skills.md,,no

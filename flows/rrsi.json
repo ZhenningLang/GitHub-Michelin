@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "RRSI does",
+    "zh": "RRSI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the search core and point it at GCP projects with Claude on Vertex AI",
+      "zh": "装好搜索核心，配上开通了 Vertex Claude 的 GCP 项目",
+      "code": "pip install -e \".[dev]\"",
+      "component": {
+        "en": "rrsi search core",
+        "zh": "rrsi 搜索核心"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Pick or write a Domain adapter: task splits, run/score, leakage patterns, the harness dir",
+      "zh": "选用或自写 Domain 适配器：任务划分、跑分、泄题模式",
+      "code": "domains/<name>/adapter.py",
+      "component": {
+        "en": "Domain adapter",
+        "zh": "Domain 适配器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Measure the unevolved harness once, then start the rounds",
+      "zh": "先给原始 harness 测一次基线，再开跑多轮搜索",
+      "code": "python3 rrsi.py --domain <name> baseline · python3 rrsi.py --domain <name> run"
+    },
+    {
+      "lane": "them",
+      "en": "Reads trajectories and drafts at most b_t tagged edits per candidate in its own git worktree",
+      "zh": "读轨迹，在独立 worktree 里起草至多 b_t 处带标签的改动",
+      "component": {
+        "en": "analyst + proposer",
+        "zh": "分析者 + 提议者"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Rejects diffs that encode task names, answers or grader paths before any evaluation is spent",
+      "zh": "评测前先驳回写进任务名、答案或评分路径的改动",
+      "component": {
+        "en": "critic",
+        "zh": "评审"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Scores survivors on the full evolve set; keeps a gain only above the noise band and worth its tokens",
+      "zh": "全量评测幸存者，只收越过噪声带且值回 token 的提升",
+      "component": {
+        "en": "selection (Algorithm 2)",
+        "zh": "选择器（算法 2）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Fast-forwards evolve/<name> to the winner and logs every edit with its measured effect",
+      "zh": "把 evolve/<name> 快进到胜者，逐条记录改动及实测效果",
+      "component": {
+        "en": "git branch + edit history",
+        "zh": "git 分支 + 编辑历史"
+      }
+    }
+  ],
+  "value": {
+    "en": "You stop hand-tuning the scaffold and stop mistaking noise or memorised tasks for progress; the incumbent is a commit with an audit trail",
+    "zh": "不再手调脚手架，也不再把噪声或背题当进步；当前最优是一个带审计记录的 commit"
+  },
+  "sources": [
+    "https://github.com/google-research/rrsi README (Quickstart: pip install -e \".[dev]\", RRSI_VERTEX_PROJECTS, rrsi.py --domain <name> smoke/baseline/run/status; Adding a domain: domains/<name>/adapter.py; Key features: git worktrees on evolve/<domain>)",
+    "rrsi/gitops.py (worktree per candidate, fast_forward of evolve/<domain>)",
+    "rrsi/critic.py (deterministic denylist + LLM review before evaluation)",
+    "rrsi/selection.py (noise-adjusted floor, cost rule, argmax)",
+    "rrsi/llm.py (AnthropicVertex, RRSI_VERTEX_PROJECTS)"
+  ]
+}

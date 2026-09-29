@@ -390,6 +390,7 @@ https://github.com/google-ai-edge/LiteRT-LM,litert-lm,on-device-ml,categories/on
 https://github.com/google-ai-edge/gallery,ai-edge-gallery,on-device-ml,categories/on-device-ml/ai-edge-gallery.md
 https://github.com/google-gemini/gemini-cli,gemini-cli,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md
 https://github.com/google-labs-code/stitch-skills,stitch-skills,design-to-code,categories/agent-skills/design/design-to-code/stitch-skills.md
+https://github.com/google-research/rrsi,rrsi,ml-research,categories/ml-research/rrsi.md
 https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-device-ml/timesfm.md
 https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/ax.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md

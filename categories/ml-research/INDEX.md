@@ -19,6 +19,7 @@
 | **pymoo** | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. | B (6/6) | [→](pymoo.md) |
 | **The AI Scientist** | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. | D (4/6) | [→](ai-scientist.md) |
 | **Agent Laboratory** | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. | C (3/6) | [→](agent-laboratory.md) |
+| **RRSI** | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. | C (5/6) | [→](rrsi.md) |
 
 ## Comparison matrix
 
@@ -36,6 +37,7 @@
 | [pymoo](pymoo.md) | ✅ | B (6/6) | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. |
 | [The AI Scientist](ai-scientist.md) | ✅ | D (4/6) | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. |
 | [Agent Laboratory](agent-laboratory.md) | ✅ | C (3/6) | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. |
+| [RRSI](rrsi.md) | ✅ | C (5/6) | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. |
 | TransformerLens / minGPT | 未收录 | — | Other research demos / interpretability libs named across the pages. |
 
 ## What belongs here

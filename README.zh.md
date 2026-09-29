@@ -469,6 +469,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | Apache-2.0 | B（6/6） | [中](categories/ml-research/pymoo.zh.md) · [EN](categories/ml-research/pymoo.md) |
 | **The AI Scientist** | 当你想让「想法到论文」这整圈全自动跑完——想法生成、查新、实验代码、作图，最后编译出带 LLM 评审的 LaTeX 论文——时用它，但要接受一条绑死模板、自改许可证后冻结、且限制你发布其产出的流水线。 | NOASSERTION (The AI Scientist Source Code License) | D（4/6） | [中](categories/ml-research/ai-scientist.zh.md) · [EN](categories/ml-research/ai-scientist.md) |
 | **Agent Laboratory** | 当你想让一组扮演角色的 LLM agent 跑「文献回顾→计划→实验→报告」、每阶段由你确认，并且要 MIT 条款和可续跑 checkpoint 时用它，但它自 2025-03 起没有代码改动，还挂着一条无人回应的安全披露。 | MIT | C（3/6） | [中](categories/ml-research/agent-laboratory.zh.md) · [EN](categories/ml-research/agent-laboratory.md) |
+| **RRSI** | 当你想复现或改造“自动改 agent harness”的搜索、并要一套防背题的刹车（有界带标签改动、泄题评审、噪声下限、token 成本规则）时用它——但搜索角色绑死 Vertex AI 上的 Claude，一次运行要跑几千次完整基准。 | Apache-2.0 | C（5/6） | [中](categories/ml-research/rrsi.zh.md) · [EN](categories/ml-research/rrsi.md) |
 ### agent-skills
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
