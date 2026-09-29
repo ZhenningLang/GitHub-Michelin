@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The series does",
+    "zh": "这套文章做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Open the online site (or the architecture/ folder on GitHub)",
+      "zh": "打开在线站点（或 GitHub 上的 architecture/ 目录）",
+      "code": "https://openedclaude.github.io/claude-reviews-claude/"
+    },
+    {
+      "lane": "them",
+      "en": "Maps 17 subsystems and offers six reading paths by goal",
+      "zh": "画出 17 个子系统全景，按目标给出六条阅读路径",
+      "component": {"en": "00-overview chapter", "zh": "00 总览章"}
+    },
+    {
+      "lane": "you",
+      "en": "Pick the chapter for the subsystem you are designing",
+      "zh": "挑出你正在设计的那个子系统对应的章节",
+      "code": "07-permission-pipeline"
+    },
+    {
+      "lane": "them",
+      "en": "Names the v2.1.88 source files, draws the flow, quotes key excerpts",
+      "zh": "点名 v2.1.88 的源文件，画出流程，摘出关键代码",
+      "component": {"en": "chapter + SVG diagrams", "zh": "章节正文与 SVG 图"}
+    },
+    {
+      "lane": "you",
+      "en": "Re-check the pattern against the Claude Code you run, then adapt it",
+      "zh": "拿你手上的 Claude Code 核对这个模式，再改造成自己的"
+    }
+  ],
+  "value": {
+    "en": "You get a guided map of one shipped build instead of reading ~1,900 unannotated leaked files",
+    "zh": "拿到一个发布版本的导读地图，不用自己啃约 1,900 个无注释的泄露文件"
+  },
+  "sources": [
+    "https://github.com/openedclaude/claude-reviews-claude README_EN.md (Read Online badge + GitHub Pages URL, chapter table, 1,902-file figure) — read 2026-09-29",
+    "architecture/00-overview.md §3 Reading Order: Six Cognitive Paths (Path A 00 → 12 → 01 → 02) — read 2026-09-29",
+    "repo tree: architecture/07-permission-pipeline.md and architecture/assets/*.svg; architecture/01-query-engine.md header 'Source files: QueryEngine.ts …' — read 2026-09-29"
+  ]
+}

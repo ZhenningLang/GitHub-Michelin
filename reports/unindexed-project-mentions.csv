@@ -15,15 +15,19 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
+[LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/networking/dae.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
+[Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
+[Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
 [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install),categories/networking/amneziawg-installer.md,,no
@@ -38,6 +42,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
+`hesreallyhim/awesome-claude-code`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `lich0821/wcfLink`,categories/im-automation/wechat/wechatferry.md,,no
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
@@ -57,6 +62,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `tcconfig` (Python),categories/networking/wondershaper.md,,no
 `trickle`,categories/networking/wondershaper.md,,no
 `woff2`/`sfnt2woff` CLIs,categories/dev-utilities/data-tools/fonttools.md,,no
+`ykdojo/claude-code-tips`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no
 A blocking Lua Redis client (redis-lua),categories/nginx-modules/lua-resty-redis.md,,no
 A custom userscript/proxy,categories/reading-tools/margin-read.md,,no
@@ -127,6 +133,7 @@ ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
 ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
 ascii-magic,categories/terminal-ui/asciify.md,,no
 ascii-magic / cowsay,categories/terminal-ui/art.md,,no
+asgeirtj/system_prompts_leaks,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 AssemblyScript,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
 AsyncSSH,categories/networking/paramiko.md,,no
@@ -208,6 +215,7 @@ ChatGPT / Claude web apps,categories/llm-chat-ui/open-webui.md,,no
 ChatGPT / Claude.ai (commercial SaaS),categories/llm-chat-ui/nextchat.md,,no
 ChatGPT Projects / Claude Projects,categories/knowledge-base/khoj.md,,no
 ChatGPT Team / Claude Team (SaaS),categories/team-chat/hivechat.md,,no
+ChinaSiro/claude-code-sourcemap,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
 Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
@@ -248,6 +256,7 @@ Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
 Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
+Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
@@ -746,6 +755,8 @@ pgvector,categories/rag-retrieval/vector-search/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
+Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
+Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
 pip,categories/python-tooling/uv.md,,no
@@ -1054,6 +1065,7 @@ Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no

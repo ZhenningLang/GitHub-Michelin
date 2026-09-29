@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The repo's demo does",
+    "zh": "仓库自带示例做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Read the concepts table and sourced tips as a course, not as something to install",
+      "zh": "把概念表和带出处的技巧当课程读，而不是当插件装"
+    },
+    {
+      "lane": "you",
+      "en": "Start Claude Code in a clone and run the demo command",
+      "zh": "在克隆下来的仓库里启动 Claude Code，运行示例命令",
+      "code": "/weather-orchestrator"
+    },
+    {
+      "lane": "them",
+      "en": "The command asks whether you want Celsius or Fahrenheit",
+      "zh": "命令先问你要摄氏度还是华氏度",
+      "component": {
+        "en": "slash command",
+        "zh": "斜杠命令"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "A subagent fetches the temperature using a skill preloaded into it",
+      "zh": "子 agent 用预装给它的 skill 去取气温",
+      "component": {
+        "en": "weather-agent subagent",
+        "zh": "weather-agent 子 agent"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "A separate skill, called by the command, writes an SVG card and output.md",
+      "zh": "命令再直接调另一个 skill，写出 SVG 卡片和 output.md",
+      "component": {
+        "en": "weather-svg-creator skill",
+        "zh": "weather-svg-creator skill"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Copy the command → agent → skill split into your own project's files",
+      "zh": "把“命令 → 子 agent → skill”的分工照搬进自己项目的文件",
+      "code": ".claude/commands/ · .claude/agents/ · .claude/skills/"
+    }
+  ],
+  "value": {
+    "en": "You see how commands, subagents and skills hand off on a working example instead of piecing it together from scattered docs and tweets",
+    "zh": "在一个能跑的例子上看清命令、子 agent 和 skill 怎么交接，不用再从零散文档和推文里拼"
+  },
+  "sources": [
+    "https://github.com/shanraisshan/claude-code-best-practice README — How to Use (steps 1, 3, 6: read as a course; run /weather-orchestrator; point Claude at the tips), Orchestration Workflow section (claude + /weather-orchestrator), CONCEPTS table (Location column: .claude/agents/<name>.md, .claude/commands/<name>.md, .claude/skills/<name>/SKILL.md) — read 2026-09-29",
+    "orchestration-workflow/orchestration-workflow.md (Command → Agent → Skill flow: AskUser C°/F°, weather-agent with preloaded weather-fetcher, weather-svg-creator writes weather.svg + output.md)",
+    ".claude/commands/weather-orchestrator.md and .claude/skills/weather-fetcher/SKILL.md (user-invocable: false; fetches Open-Meteo)"
+  ]
+}

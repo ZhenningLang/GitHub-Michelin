@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The snapshot gives you",
+    "zh": "这份快照给你的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the text only, skipping the ~2 GB of LFS binaries",
+      "zh": "只克隆文本，跳过约 2 GB 的 LFS 二进制",
+      "code": "GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/win4r/MuseAI-Skills.git"
+    },
+    {
+      "lane": "them",
+      "en": "68 skill folders from Meta's Muse agent, grouped by domain in the README catalog",
+      "zh": "Muse agent 的 68 个 skill 目录，README 按领域分类",
+      "code": "opt/hatch/skills/"
+    },
+    {
+      "lane": "you",
+      "en": "Pick one skill and read its instructions, then its permission manifest and eval scenarios",
+      "zh": "挑一个 skill，先读指令，再读权限清单和评测场景",
+      "code": "SKILL.md · manifest.yaml · eval/scenarios.yaml"
+    },
+    {
+      "lane": "them",
+      "en": "Shows how a shipped agent scopes triggers, asks before writes, and verifies deliverables",
+      "zh": "展示已上线 agent 怎样限定触发、先问再写、验收交付"
+    },
+    {
+      "lane": "you",
+      "en": "Rewrite the pattern for your own harness: tool names, paths, auth and checks",
+      "zh": "按自己的 harness 重写这套模式：工具名、路径、授权与验收"
+    }
+  ],
+  "value": {
+    "en": "You see a production consumer agent's skill design without reverse-engineering it — patterns to rewrite, not skills to install",
+    "zh": "不用自己逆向，就能看到一个已上线消费级 agent 的 skill 设计——得到的是要重写的模式，不是能装的 skill"
+  },
+  "sources": [
+    "https://github.com/win4r/MuseAI-Skills README.md \"如何阅读与迁移\" (GIT_LFS_SKIP_SMUDGE=1 clone command; read trigger/boundary/output contract then references and manifest; adapt tool names, paths, auth, acceptance steps) — read 2026-09-29",
+    "README.md skill catalog (68 unique SKILL.md files + 4 symlink aliases, 40 manifest.yaml, 12 eval YAML); counts re-checked against the git tree via gh api (72 SKILL.md paths, 40 manifest.yaml) 2026-09-29",
+    "opt/hatch/skills/gmail/SKILL.md, opt/hatch/skills/gmail/manifest.yaml (per-method permission defaults), opt/hatch/skills/artifacts/testing/SKILL.md (deliverable verification) — read 2026-09-29"
+  ]
+}
