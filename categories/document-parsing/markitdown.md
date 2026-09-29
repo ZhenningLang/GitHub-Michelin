@@ -101,7 +101,7 @@ You're building a RAG pipeline, a document QA system, or an agent that needs to 
 | unstructured.io | 未收录 | Enterprise-grade document parsing with chunking and embedding pipelines. | More mature ecosystem and cloud offerings; heavier dependencies and potential licensing costs for enterprise features. |
 | LlamaParse | 未收录 | Parsing service from LlamaIndex with a hosted API. | Cloud-based, API-key required, good for complex PDFs; MarkItDown is local, free, and open-source. |
 | [Marker](marker.md) | ✅ | Fast PDF-to-Markdown converter optimized for academic papers. | Specializes in PDF and claims high accuracy on research papers; MarkItDown covers more formats (Office, audio, HTML, etc.). |
-| [PyMuPDF](../pdf-tools/pymupdf.md) | ✅ | Low-level Python PDF library for extraction and manipulation. | A library for direct PDF page manipulation, not a high-level Markdown converter; more powerful but requires more code. |
+| [PyMuPDF](../pdf-tools/pdf-reading/pymupdf.md) | ✅ | Low-level Python PDF library for extraction and manipulation. | A library for direct PDF page manipulation, not a high-level Markdown converter; more powerful but requires more code. |
 | textract | 未收录 | Python library for extracting text from many formats. | Older project with broader format support but less focus on Markdown structure preservation for LLMs. |
 
 ## Tech stack

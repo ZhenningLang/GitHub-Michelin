@@ -87,7 +87,7 @@ health:
 
 ## 何时不用
 
-- **需要完整 OCR 多页扫描 PDF。** 请改用 [OCRmyPDF](../pdf-tools/ocrmypdf.zh.md) 或专用多页 OCR 管线；Laravel OCR 的 Tesseract driver 只通过 Imagick 转换扫描 PDF 的第 `[0]` 页。
+- **需要完整 OCR 多页扫描 PDF。** 请改用 [OCRmyPDF](../pdf-tools/pdf-transform-signing/ocrmypdf.zh.md) 或专用多页 OCR 管线；Laravel OCR 的 Tesseract driver 只通过 Imagick 转换扫描 PDF 的第 `[0]` 页。
 - **需要实测 word-level bounding box 或可信 confidence score。** 请直接使用 PaddleOCR 或云 provider 原生 SDK；当前 driver 返回空 bounds 和多数 `0.0` confidence，文本层 PDF 抽取则使用硬编码 `0.90`。
 - **需要可靠恢复复杂表格、表单或阅读顺序。** 请改用 [Docling](../document-parsing/docling.zh.md)、[Unstructured](../document-parsing/unstructured.zh.md)，或 AWS Textract 原生结构化 API；本包 table method 主要按重复空白切分 OCR 行。
 - **应用不是 Laravel，或不能使用 PHP 8.2+。** 请改用 [Tesseract](tesseract.zh.md)、PaddleOCR，或独立 [Docling](../document-parsing/docling.zh.md) 服务；该包耦合 Illuminate、Eloquent、Artisan、Facade 和 Laravel service container。
@@ -99,7 +99,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Tesseract](tesseract.zh.md) | ✅ | 需要稳定离线 OCR engine，并完全控制 preprocessing/output 时直接选 Tesseract；Laravel integration、driver switching、template、model 和 command 值得增加抽象层时选 Laravel OCR。 | Laravel OCR 继承 Tesseract 的识别边界，当前还会丢失多数 geometry/confidence 数据，但节省应用 plumbing。 |
-| [OCRmyPDF](../pdf-tools/ocrmypdf.zh.md) | ✅ | 目标是生成可搜索的多页扫描 PDF 时选 OCRmyPDF；OCR 文本要立即进入 Laravel DTO、template、persistence 和业务字段时选 Laravel OCR。 | OCRmyPDF 是 PDF 语义更强的文档处理工具；Laravel OCR 是 PDF 处理更窄的应用 library。 |
+| [OCRmyPDF](../pdf-tools/pdf-transform-signing/ocrmypdf.zh.md) | ✅ | 目标是生成可搜索的多页扫描 PDF 时选 OCRmyPDF；OCR 文本要立即进入 Laravel DTO、template、persistence 和业务字段时选 Laravel OCR。 | OCRmyPDF 是 PDF 语义更强的文档处理工具；Laravel OCR 是 PDF 处理更窄的应用 library。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | 需要 layout、table、reading order 和结构化 Markdown/JSON 时选 Docling；需要围绕 OCR provider 和规则型业务抽取的 Laravel-native wrapper 时选 Laravel OCR。 | Docling 的 Python/模型栈更重，但文档理解更深；Laravel OCR 在 PHP 内更容易用，但结构理解较浅。 |
 | [Unstructured](../document-parsing/unstructured.zh.md) | ✅ | 多格式生产 ingestion、partition 和下游 connector 选 Unstructured；invoice/receipt 工作流已经围绕 Laravel model 与 migration 时选 Laravel OCR。 | Unstructured 是更大的 ETL 平台；Laravel OCR 更小，但抽取逻辑更依赖 template 和正则。 |
 | [PaddleOCR](paddleocr.zh.md) | ✅ | 现代 detection-plus-recognition、中日韩重输入、scene text 或 layout/table model 选 PaddleOCR；framework-native PHP integration 比 OCR 深度更重要时选 Laravel OCR。 | PaddleOCR 带 ML runtime 和模型运维；Laravel OCR 可以使用本地 Tesseract 或托管 API，但对视觉模型控制更少。 |
