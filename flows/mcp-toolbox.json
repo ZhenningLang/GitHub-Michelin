@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Toolbox does", "zh": "Toolbox 做的"},
+  "steps": [
+    {"lane": "you", "en": "Declare a source and a parameterized SQL tool in tools.yaml", "zh": "在 tools.yaml 里声明数据源和一条参数化 SQL 工具", "code": "type: postgres-sql", "component": {"en": "tools.yaml", "zh": "tools.yaml"}},
+    {"lane": "you", "en": "Start the server with your config", "zh": "带上配置启动服务", "code": "./toolbox --config \"tools.yaml\"", "component": {"en": "toolbox binary", "zh": "toolbox 二进制"}},
+    {"lane": "them", "en": "Opens pooled connections and publishes each tool over MCP at /mcp", "zh": "建好连接池，把每个工具通过 MCP 发布在 /mcp", "component": {"en": "Toolbox server", "zh": "Toolbox 服务"}},
+    {"lane": "you", "en": "Load the toolset into your agent", "zh": "在你的 agent 里加载工具集", "code": "client.load_toolset(\"toolset_name\")", "component": {"en": "Toolbox SDK", "zh": "Toolbox SDK"}},
+    {"lane": "them", "en": "On each call, binds the model's arguments into your statement and returns rows", "zh": "每次调用时把模型给的参数绑定进你的语句，返回结果行", "component": {"en": "Toolbox server", "zh": "Toolbox 服务"}}
+  ],
+  "value": {"en": "Agents query your databases only through statements you wrote — no model-written SQL, no per-framework connection and auth glue", "zh": "agent 只能通过你写好的语句查库——不让模型写 SQL，也不用在每个框架里重复写连接和鉴权代码"},
+  "sources": [
+    "README.md Quick Start: Custom Tools — kind: source / kind: tool with type: postgres-sql, statement, parameters",
+    "README.md Run Toolbox — ./toolbox --config \"tools.yaml\"; MCP client url http://127.0.0.1:5000/mcp",
+    "README.md Toolbox SDKs (Python Core) — tools = await client.load_toolset(\"toolset_name\")",
+    "docs/en/reference/faq.md — server-client architecture handles connection pooling and auth centrally"
+  ]
+}

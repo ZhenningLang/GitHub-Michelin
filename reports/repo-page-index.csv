@@ -402,6 +402,7 @@ https://github.com/google-research/timesfm,timesfm,on-device-ml,categories/on-de
 https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/ax.md
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
 https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
+https://github.com/googleapis/mcp-toolbox,mcp-toolbox,database-clients,categories/databases/database-clients/mcp-toolbox.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md

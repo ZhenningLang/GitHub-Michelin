@@ -12,6 +12,7 @@
 | **elasticsearch-sql** | Query Elasticsearch with SQL instead of its native JSON Query DSL — a community plugin (and library) that parses SQL and translates it into ES queries/aggregations, with version-matched releases tracking the ES major you run. | C (5/6) | [→](elasticsearch-sql.md) |
 | **PrettyZoo** | A cross-platform desktop GUI for Apache ZooKeeper (Win/Mac/Linux) — browse the znode tree, view/edit node data, manage ACLs and connections, without dropping into the `zkCli.sh` shell. **Archived: the author publicly announced in 2023 that maintenance has stopped.** | D (5/6) | [→](prettyzoo.md) |
 | **RDR** | A fast, offline Redis RDB-file parser (written in Go despite the repo's reported language tag) that reveals which keys and key-prefixes are eating your memory — `rdr show` serves an HTML memory report on a local port, `rdr keys` dumps every key. | D (4/6) | [→](rdr.md) |
+| **MCP Toolbox for Databases** | Use it when production agents must query many databases (57 source types, Google Cloud first-class) only through parameterized statements you declared in YAML — but engine-level read-only exists only on Cloud SQL/AlloyDB/BigQuery and network defaults are permissive. | A (6/6) | [→](mcp-toolbox.md) |
 
 ## What belongs here
 

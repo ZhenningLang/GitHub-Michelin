@@ -293,6 +293,7 @@ date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-ti
 DaVinci Resolve,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
 DaVinci Resolve / Premiere Pro,categories/media-processing/video-editing/concat.md,,no
 Daytona,categories/sandboxing/opensandbox.md,,no
+DBHub (`bytebase/dbhub`),categories/databases/database-clients/mcp-toolbox.md,,no
 DBOS (`dbos-inc/dbos-transact-ts`),categories/workflow-orchestration/tanstack-workflow.md,,no
 dCode / online decoders,categories/dev-utilities/data-tools/cyberchef.md,,no
 ddddocr,categories/captcha/pytorch-captcha-recognition.md,,no
@@ -786,6 +787,7 @@ Poetry,categories/python-tooling/uv.md,,no
 Polling (SQLAlchemy / cron),categories/databases/data-sync/python-mysql-replication.md,,no
 Portainer,categories/dev-utilities/ops-infra/cockpit.md,,no
 Portkey Gateway,categories/api-gateway/kong.md,,no
+Postgres MCP Pro (`crystaldba/postgres-mcp`),categories/databases/database-clients/mcp-toolbox.md,,no
 Postiz,categories/social-media-management/INDEX.md,,no
 Postiz (gitroomhq/postiz-app),categories/social-media-management/easel.md,,no
 Postlight Reader (ex-Mercury),categories/reading-tools/just-read.md,,no
@@ -1033,6 +1035,7 @@ use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
+Vanna (`vanna-ai/vanna`),categories/databases/database-clients/mcp-toolbox.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,no
 Velocity.js,categories/frontend-animation/anime.md,,no
