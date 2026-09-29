@@ -537,6 +537,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **prompt-master** | 一个 Claude skill：通过意图提取、模板路由和 37 条反模式清单，为 30+ AI 工具（LLM、编码 agent、图像/视频/语音 AI）生成一次性优化提示词。 | MIT | B（4/5） | [中](categories/agent-skills/prompt-engineering/prompt-master.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompt-master.md) |
 | **prompts.chat** | 可自托管的社区提示词平台：分享、发现、收集现成提示词（前身是 Awesome ChatGPT Prompts）。 | MIT（代码）+ CC0（提示词内容） | B（5/6） | [中](categories/agent-skills/prompt-engineering/prompts-chat.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompts-chat.md) |
 | **Prompt Engineering Guide** | 提示词/上下文工程、RAG 与 agent 技术的参考知识库（指南、论文、notebook）。 | MIT | C（4/5） | [中](categories/agent-skills/prompt-engineering/prompt-engineering-guide.zh.md) · [EN](categories/agent-skills/prompt-engineering/prompt-engineering-guide.md) |
+| **Claude Code System Prompts** | 查看并对比某个 Claude Code 版本的全部内置提示词（工具说明、子 agent、skill、system reminder），每次发版从编译包里抽取，附逐版本变更日志。 | MIT | B（4/5） | [中](categories/agent-skills/prompt-engineering/claude-code-system-prompts.zh.md) · [EN](categories/agent-skills/prompt-engineering/claude-code-system-prompts.md) |
 
 #### agent-skills / vendor-collections
 

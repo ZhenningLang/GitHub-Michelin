@@ -127,6 +127,7 @@ ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
 ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
 ascii-magic,categories/terminal-ui/asciify.md,,no
 ascii-magic / cowsay,categories/terminal-ui/art.md,,no
+asgeirtj/system_prompts_leaks,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 AssemblyScript,categories/dev-utilities/editors-and-runtimes/scriptc.md,,no
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
 AsyncSSH,categories/networking/paramiko.md,,no
@@ -249,6 +250,7 @@ Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
 Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
+Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
 CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
@@ -748,6 +750,7 @@ pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
 Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
+Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
 Pillow + ~20 lines,categories/terminal-ui/asciify.md,,no
 pip,categories/python-tooling/uv.md,,no
@@ -1056,6 +1059,7 @@ Windows Terminal,categories/terminal-ui/alacritty.md,,no
 Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-frameworks/nextra.md,,no
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/tauri.md,,no
+x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no

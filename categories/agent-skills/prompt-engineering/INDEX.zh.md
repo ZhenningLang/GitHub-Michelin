@@ -10,6 +10,7 @@
 | **prompt-master** | 一个 Claude skill：通过意图提取、模板路由和 37 条反模式清单，为 30+ AI 工具（LLM、编码 agent、图像/视频/语音 AI）生成一次性优化提示词。 | B（4/5） | [→](prompt-master.zh.md) |
 | **prompts.chat** | 可自托管的社区提示词平台：分享、发现、收集现成提示词（前身是 Awesome ChatGPT Prompts）。 | B（5/6） | [→](prompts-chat.zh.md) |
 | **Prompt Engineering Guide** | 提示词/上下文工程、RAG 与 agent 技术的参考知识库（指南、论文、notebook）。 | C（4/5） | [→](prompt-engineering-guide.zh.md) |
+| **Claude Code System Prompts** | 查看并对比某个 Claude Code 版本的全部内置提示词（工具说明、子 agent、skill、system reminder），每次发版从编译包里抽取，附逐版本变更日志。 | B（4/5） | [→](claude-code-system-prompts.zh.md) |
 
 ## 对比矩阵
 
@@ -18,6 +19,7 @@
 | [prompt-master](prompt-master.zh.md) | ✅ | B（4/5） | 按请求为特定目标工具生成定制提示词；任务新颖时优于从库里复制——但单一维护者，且按模型版本写的路由建议衰减很快。 |
 | [prompts.chat](prompts-chat.zh.md) | ✅ | B（5/6） | 浏览并复制社区投票选出的现成提示词，或为组织自托管一个提示词库；没有生成流水线，单条质量参差。 |
 | [prompt-engineering-guide](prompt-engineering-guide.zh.md) | ✅ | C（4/5） | 学习底层技术与研究；教原理而非产出可直接粘贴的提示词，且提交节奏已放缓。 |
+| [claude-code-system-prompts](claude-code-system-prompts.zh.md) | ✅ | B（4/5） | 告诉你某次发版改了 Claude Code 的哪条内置指令；只读、只覆盖 Claude Code，且内容是第三方再分发的 Anthropic 专有提示词。 |
 
 ## 什么该放这里
 

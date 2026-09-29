@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Piebald's pipeline does",
+    "zh": "Piebald 的流水线做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Star or watch the repo to be notified of each new Claude Code version",
+      "zh": "给仓库点星或 watch，每出一个 Claude Code 新版就收到通知"
+    },
+    {
+      "lane": "them",
+      "en": "After a Claude Code release, pulls the prompt strings out of the compiled package",
+      "zh": "Claude Code 发版后，从编译包里抽出提示词字符串",
+      "component": {"en": "tweakcc prompt extractor", "zh": "tweakcc 抽取器"}
+    },
+    {
+      "lane": "them",
+      "en": "Writes one Markdown file per prompt with version, variables and token count",
+      "zh": "每段提示词写成一个 Markdown 文件，带版本、变量和 token 数",
+      "code": "system-prompts/",
+      "component": {"en": "updatePrompts.js", "zh": "updatePrompts.js"}
+    },
+    {
+      "lane": "them",
+      "en": "Publishes a changelog entry of new, removed and reworded prompts, plus a release",
+      "zh": "发布变更日志条目（新增、删除、改写）和一个 release",
+      "code": "CHANGELOG.md"
+    },
+    {
+      "lane": "you",
+      "en": "Open the entry for your version, then the prompt file that explains the new behaviour",
+      "zh": "打开你这个版本的条目，再点开解释新行为的那个提示词文件"
+    }
+  ],
+  "value": {
+    "en": "You see exactly which built-in instruction changed, without decompiling Claude Code yourself",
+    "zh": "不用自己反编译 Claude Code，就能看清到底是哪条内置指令变了"
+  },
+  "sources": [
+    "https://github.com/Piebald-AI/claude-code-system-prompts README (star for release notifications; Extraction section; system-prompts/ links) and CLAUDE.md (extracted via script, not modifiable source) — read 2026-09-29",
+    "tools/updatePrompts.js in the same repo (renders prompts JSON to system-prompts/*.md, counts tokens via Anthropic count_tokens API, updates README) — read 2026-09-29",
+    "https://github.com/Piebald-AI/tweakcc tools/promptExtractor.js (parses Claude Code cli.js with @babel/parser, include/exclude rules) — read 2026-09-29",
+    "CHANGELOG.md v2.1.284 entry (NEW/REMOVED markers, token delta) and GitHub release v2.1.284 (2026-09-28)"
+  ]
+}
