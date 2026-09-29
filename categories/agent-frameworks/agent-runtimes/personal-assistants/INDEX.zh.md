@@ -13,6 +13,7 @@
 | **Octop** | 家里或小团队要在飞书/企微上共用隔离 Agent、对话留在本机磁盘时用它——不是现成办公技能，LangGraph 内核仍是未公开源码的 wheel。 | B（5/6） | [→](octop.zh.md) |
 | **OpenMuse** | 当你想要一个能派活的自托管个人助理——浏览器接管、隔离 Linux 终端、可恢复且逐项审批的任务——时用它；但它每种模式都强制要求 CopilotKit 云 key，而且是个 12 天大、零 release 的 Alpha。 | B（4/6） | [→](openmuse.zh.md) |
 | **OpenWorker** | 当你想要一个用自己的模型 key、在审批闸门和逐次审计记录下把真活干完的桌面 AI 同事时用它——但命令沙箱要手动开启，一键连接器走闭源 OAuth 中转，而且它是个 71 天大的公测版。 | B（6/6） | [→](openworker.zh.md) |
+| **Raven** | 当你想要一个入口把一大份需求拆成任务图、分给自带的调研/编程/设计/值守 agent 或 Claude Code、Codex 时用它——但它是四个月大的 pre-alpha，沙箱默认关闭，DAG 节点还可能绕过沙箱（#796）。 | B（6/6） | [→](raven.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Octop](octop.zh.md) | ✅ | B（5/6） | 腾讯云的自托管多用户助手，飞书/企微加一个 Python 进程；两个月大，Agent 运行时是 GitHub 404 的 PyPI wheel。 |
 | [OpenMuse](openmuse.zh.md) | ✅ | B（4/6） | CopilotKit 的 MIT 个人助理应用，自带持久浏览器和有界的 Linux 计算机；代价是强制绑定托管的 Intelligence 项目 key。 |
 | [OpenWorker](openworker.zh.md) | ✅ | B（6/6） | 吴恩达团队的桌面 cowork 应用：人工底线、长期审批阶梯和审计溯源，不登录可用约 15 家模型；沙箱默认关闭，两人核心，issue 响应弱。 |
+| [Raven](raven.zh.md) | ✅ | B（6/6） | EverMind 的宿主 agent（nanobot 分叉），把自带专项 agent 和 13 个第三方 agent 按 DAG 调度，带 EverOS 记忆；换来覆盖面，代价是 pre-alpha 的频繁变动和一个要自己开、自己验证的沙箱。 |
 
 ## 什么该放这里
 

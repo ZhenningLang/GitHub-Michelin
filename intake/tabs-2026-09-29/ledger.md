@@ -20,4 +20,4 @@
 | harveyai/harvey-labs | add | done | categories/llm-eval/harvey-labs.md | 处理中新开的标签（标签写法 �� | harveyai/harvey-labs |
 | rtk-ai/rtk | sync | done | categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md | 新鲜页，sync-entry 按阈值未重核，无改动 | rtk-ai/rtk |
 | steipete/agent-scripts | add | done | categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
-| EverMind-AI/Raven | add | running |  | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
+| EverMind-AI/Raven | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md | 处理中新开的标签（标签写法 �� | evermind-ai/raven |

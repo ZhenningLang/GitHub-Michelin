@@ -642,6 +642,7 @@ Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.
 Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
+nanobot (`HKUDS/nanobot`),categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md,,no
 nanochat,categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 Nanostores (`nanostores/nanostores`),categories/web-ui/state-management/tanstack-store.md,,no
 nate-parrott/Flashlight (original),categories/dev-utilities/data-tools/flashlight.md,,no
