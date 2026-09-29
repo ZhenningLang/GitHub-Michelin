@@ -118,7 +118,7 @@ health:
 
 - **只要一份带引用的综述、不需要任何计算。** 桌面端、内核、权限系统全是为“执行”存在的，纯阅读型问题也要付这套安装与 token 成本。要文献综述，用 [GPT Researcher](gpt-researcher.zh.md) 或 [STORM](storm.zh.md)，或托管的深研服务（非仓库）。
 - **你的日常是软件工程而不是科研。** 这套 harness 形似 OpenCode，但提示词、技能与连接器都往科研交付物上引，干仓库杂活纯属领域开销。要轻量通用的底座，用 [OpenCode](../agent-frameworks/coding-agents/terminal-agents/opencode.zh.md)。
-- **你想要无人盯守的“想法到论文”闭环。** OpenScience 刻意把人留在判断位上、在风险步骤前征求批准。要研究自动流水线本身，看 [The AI Scientist](../ml-research/ai-scientist.zh.md) 与 [Agent Laboratory](../ml-research/agent-laboratory.zh.md)——但接受它们产品度更低（后者 2025 年初以来停摆，还挂着一个未答复的安全披露）。
+- **你想要无人盯守的“想法到论文”闭环。** OpenScience 刻意把人留在判断位上、在风险步骤前征求批准。要研究自动流水线本身，看 [The AI Scientist](../ml-research/research-automation/ai-scientist.zh.md) 与 [Agent Laboratory](../ml-research/research-automation/agent-laboratory.zh.md)——但接受它们产品度更低（后者 2025 年初以来停摆，还挂着一个未答复的安全披露）。
 - **每一次查询都必须留在自己的硬件上。** 本地模型只解决推理：交互式首启要登录 OpenScience 账号（README 称无头的 `openscience run` 不需要），桌面端从厂商基础设施自更新，连接器天生要调外部学术 API。要求数据绝不出机器的研究，用 [Local Deep Research](local-deep-research.zh.md)。
 - **你要在稳定接口上盖楼。** 建库约三个月发了 141 个版本，changelog 显示用户可见的行为变化在补丁号上滚动。TypeScript SDK 由服务端 OpenAPI 契约生成，但契约本身只有三个月大——锁版本，每次升级先读 changelog。
 - **环境涉密或受监管。** agent 跑的是真实 shell 和内核（完全授权模式不再询问），发布动作（`git push`、Hugging Face 上传）用这台机器上已有的 GitHub/HF 登录态执行。2026-09-28 有 issue 报告 GitHub 安全咨询表单和 `security@` 地址双双失效，当天关闭，修复未确认。
@@ -131,7 +131,7 @@ health:
 | [OpenCode](../agent-frameworks/coding-agents/terminal-agents/opencode.zh.md) | ✅ | 想要轻量、MIT、自己配置的终端编码 agent，选 OpenCode；想要同一形态的 agent 出厂就装满科学流程、数据库连接器、内核和桌面端，选 OpenScience。 | OpenCode 更小、通用、形状由你定；OpenScience 领域开箱即用，但更年轻，且带账号登录和厂商钱包选项。 |
 | [GPT Researcher](gpt-researcher.zh.md) | ✅ | 交付物是从网页和文档来的带引用报告、还要嵌进自己的 API 后端，选 GPT Researcher；研究问题要靠对自己的数据跑代码来回答，选 OpenScience。 | GPT Researcher 不绑模型、可嵌入、更轻，但没有对你文件的执行面；OpenScience 能执行并产出工件，但整个产品要你来装。 |
 | [Local Deep Research](local-deep-research.zh.md) | ✅ | 查询与资料绝不能离开自己的机器，选 Local Deep Research；要一个有人监督、连着真实内核和集群派发的科研工作区，选 OpenScience。 | LDR 把本地化和零厂商依赖拉满；OpenScience 用账号门槛和外部学术 API 换算力触达与更完整的轨迹 UI。 |
-| [The AI Scientist](../ml-research/ai-scientist.zh.md) | ✅ | 研究对象是“想法到论文”的自动闭环本身，选 The AI Scientist；人在主导科研、只想要一个干活留痕的助理，选 OpenScience。 | AI Scientist 全自动但绑模板、许可变更后对发表产出有约束；OpenScience 交互式、在维护，科学判断留给你。 |
+| [The AI Scientist](../ml-research/research-automation/ai-scientist.zh.md) | ✅ | 研究对象是“想法到论文”的自动闭环本身，选 The AI Scientist；人在主导科研、只想要一个干活留痕的助理，选 OpenScience。 | AI Scientist 全自动但绑模板、许可变更后对发表产出有约束；OpenScience 交互式、在维护，科学判断留给你。 |
 | [Scientific Agent Skills](../agent-skills/engineering/scientific-agent-skills.zh.md) | ✅ | 已经有 Claude Code 或其他 Agent Skills 宿主、只想要流程库，选 Scientific Agent Skills——OpenScience 内置技能里 180 个就来自它；想要围着这些技能把内核、连接器、轨迹 UI 都接线好的运行时，选 OpenScience。 | 技能包是可携带的内容资产，在自己 harness 里接入便宜；OpenScience 是维护中的产品界面，但整套形状你得一起接。 |
 
 ## 技术栈

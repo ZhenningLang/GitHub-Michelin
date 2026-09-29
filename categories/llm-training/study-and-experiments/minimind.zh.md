@@ -97,7 +97,7 @@ health:
 | [torchtune](../torchtune.zh.md) | ✅ | 当你要真的后训练一个真实开源 checkpoint、需要持续维护且可 import 的 PyTorch 原生库时，选 torchtune；只有当目标是亲手重建每个算法时才选 MiniMind，因为 torchtune 的 recipe 恰好隐藏了 MiniMind 暴露的预训练 / RL 内部实现。 | torchtune 给你带版本锁定的维护与真实模型支持；MiniMind 给你一个一下午能读完的完整玩具系统。 |
 | [Unsloth](../unsloth.zh.md) | ✅ | 当交付物是单卡微调好的真实模型时，选 Unsloth；当交付物是你自己的理解时选 MiniMind，因为 Unsloth 的 Triton kernel 优化的正是一条你不该去改内部的流水线。 | Unsloth 用透明度换真实模型上约 2x 的速度；MiniMind 在 64M 尺度上用任何可用产出换完全透明。 |
 | [LlamaFactory](../llamafactory.zh.md) | ✅ | 当团队需要覆盖 100+ 模型、带 Web UI 的配置化 SFT→RLHF 流水线时，选 LlamaFactory；当一名工程师需要看清每个阶段的 loss 到底由什么构成时选 MiniMind，因为零代码训练器教不了它抽象掉的机制。 | LlamaFactory 更快拿到可用模型、模型覆盖更广；MiniMind 到任何产出都更慢，但它是两者中唯一能从自身源码完整推导的那一个。 |
-| [autoresearch](../../ml-research/autoresearch.zh.md) | ✅ | 当你想让 agent 以 validation bits-per-byte 为评分自动跑单卡训练实验时，选 autoresearch；当你想**学会**各阶段而不是自动化搜索时选 MiniMind，因为 autoresearch 假定你已经知道它的循环在做什么。 | autoresearch 自动化了迭代但只是一个窄 harness；MiniMind 覆盖完整阶段谱系（MoE、RL、Tool Use）但没有实验自动化。 |
+| [autoresearch](../../ml-research/research-automation/autoresearch.zh.md) | ✅ | 当你想让 agent 以 validation bits-per-byte 为评分自动跑单卡训练实验时，选 autoresearch；当你想**学会**各阶段而不是自动化搜索时选 MiniMind，因为 autoresearch 假定你已经知道它的循环在做什么。 | autoresearch 自动化了迭代但只是一个窄 harness；MiniMind 覆盖完整阶段谱系（MoE、RL、Tool Use）但没有实验自动化。 |
 | [nanoGPT](nanogpt.zh.md) | ✅ | 当你要最经典的最小 GPT-2 参考实现、且接受它已被上游废弃、止步于预训练时，选 nanoGPT；当你需要中文数据路径、MoE、Tool Call SFT 与 RL/RLAIF 阶段时选 MiniMind，因为那些全都在 nanoGPT 结束之处的下游。 | nanoGPT 更小更干净、能产出真实 GPT-2 权重，但已冻结且单人维护；MiniMind 仍在维护、覆盖完整阶段谱系，代价是 64M 的产出没法用于任何其他用途。 |
 
 ## 技术栈

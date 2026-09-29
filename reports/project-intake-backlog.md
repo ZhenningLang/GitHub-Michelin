@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1058
+- Named-but-unindexed alternatives: 1067
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -42,6 +42,7 @@ shape and are deliberately excluded here.
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
+| [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | `categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md` |
 | [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
 | [sing-box](https://github.com/SagerNet/sing-box) | `categories/networking/dae.md` |
 | [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy) | `categories/networking/amneziawg-installer.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [wiresock/amneziawg-install](https://github.com/wiresock/amneziawg-install) | `categories/networking/amneziawg-installer.md` |
 | `/guard-secure`, `/guard-threat-model` style security skills in a personal/team skill stack | `categories/agent-skills/security/anthropic-cybersecurity-skills.md` |
 | `bdeansrowe/beam` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |
-| `bdeansrowe/ltbl-brute` | `categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md` |

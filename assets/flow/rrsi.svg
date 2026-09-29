@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1167" viewBox="0 0 880 1167" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1167" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="1009" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="1009" rx="10"/>
+<rect class="pillT" x="474" y="40" width="110.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">RRSI does</text>
+<path class="edge" d="M62,214 L62,238" marker-end="url(#a)"/>
+<path class="edge" d="M62,382 L62,406" marker-end="url(#a)"/>
+<path class="hand" d="M408,465.0 C439.0,465.0 439.0,489 470,489" marker-end="url(#a)"/>
+<path class="edge" d="M494,584 L494,608" marker-end="url(#a)"/>
+<path class="edge" d="M494,729 L494,753" marker-end="url(#a)"/>
+<path class="edge" d="M494,874 L494,898" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="142" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="142" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the search core and point it</text>
+<text class="t" x="82" y="123">at GCP projects with Claude on Vertex</text>
+<text class="t" x="82" y="145">AI</text>
+<text class="c" x="82" y="169">pip install -e &quot;.[dev]&quot;</text>
+<text class="comp" x="82" y="192">component: rrsi search core</text>
+<rect class="card" x="40" y="240" width="368" height="142" rx="8"/>
+<rect class="accY" x="40" y="240" width="4" height="142" rx="2"/>
+<circle class="accY" cx="62" cy="264" r="10"/>
+<text class="num" x="62" y="268" text-anchor="middle">2</text>
+<text class="t" x="82" y="269">Pick or write a Domain adapter: task</text>
+<text class="t" x="82" y="291">splits, run/score, leakage patterns,</text>
+<text class="t" x="82" y="313">the harness dir</text>
+<text class="c" x="82" y="337">domains/&lt;name&gt;/adapter.py</text>
+<text class="comp" x="82" y="360">component: Domain adapter</text>
+<rect class="card" x="40" y="408" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="408" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="432" r="10"/>
+<text class="num" x="62" y="436" text-anchor="middle">3</text>
+<text class="t" x="82" y="437">Measure the unevolved harness once,</text>
+<text class="t" x="82" y="459">then start the rounds</text>
+<text class="c" x="82" y="483">python3 rrsi.py --domain &lt;name&gt; baseline ·</text>
+<text class="c" x="82" y="502">python3 rrsi.py --domain &lt;name&gt; run</text>
+<rect class="cardT" x="472" y="465" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="465" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="489" r="10"/>
+<text class="num" x="494" y="493" text-anchor="middle">4</text>
+<text class="t" x="514" y="494">Reads trajectories and drafts at most</text>
+<text class="t" x="514" y="516">b_t tagged edits per candidate in its</text>
+<text class="t" x="514" y="538">own git worktree</text>
+<text class="comp" x="514" y="566">component: analyst + proposer</text>
+<rect class="cardT" x="472" y="610" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="610" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="634" r="10"/>
+<text class="num" x="494" y="638" text-anchor="middle">5</text>
+<text class="t" x="514" y="639">Rejects diffs that encode task names,</text>
+<text class="t" x="514" y="661">answers or grader paths before any</text>
+<text class="t" x="514" y="683">evaluation is spent</text>
+<text class="comp" x="514" y="711">component: critic</text>
+<rect class="cardT" x="472" y="755" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="755" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="779" r="10"/>
+<text class="num" x="494" y="783" text-anchor="middle">6</text>
+<text class="t" x="514" y="784">Scores survivors on the full evolve</text>
+<text class="t" x="514" y="806">set; keeps a gain only above the noise</text>
+<text class="t" x="514" y="828">band and worth its tokens</text>
+<text class="comp" x="514" y="856">component: selection (Algorithm 2)</text>
+<rect class="cardT" x="472" y="900" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="900" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="924" r="10"/>
+<text class="num" x="494" y="928" text-anchor="middle">7</text>
+<text class="t" x="514" y="929">Fast-forwards evolve/&lt;name&gt; to the</text>
+<text class="t" x="514" y="951">winner and logs every edit with its</text>
+<text class="t" x="514" y="973">measured effect</text>
+<text class="comp" x="514" y="1001">component: git branch + edit history</text>
+<rect class="val" x="28" y="1051" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="1075">VALUE</text>
+<text class="valT" x="48" y="1099">You stop hand-tuning the scaffold and stop mistaking noise or memorised tasks for progress;</text>
+<text class="valT" x="48" y="1121">the incumbent is a commit with an audit trail</text>
+</svg>

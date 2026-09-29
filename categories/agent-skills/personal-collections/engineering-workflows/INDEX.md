@@ -7,6 +7,7 @@
 
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **agent-scripts** | One maintainer's canonical repo for sharing a single `AGENTS.MD` and ~70 skills across Codex and Claude Code via a symlink sync script; a reference layout more than a portable pack (many skills assume his machines). | B (4/5) | [→](agent-scripts.md) |
 | **antfu/skills** | Anthony Fu's personal curated agent-skill collection for the Vue/Vite/Nuxt stack (his ESLint/pnpm/Vitest/UnoCSS prefs + generated/vendored framework skills), installed via the skills CLI. | B (4/5) | [→](antfu-skills.md) |
 | **claude-code-harness** | A personal Claude Code harness that installs a governed plan → work → review → release loop as a plugin, with a Go-native doctor CLI for diagnosing plugin-cache and skill drift. | B (5/6) | [→](claude-code-harness.md) |
 | **Dimillian Skills** | One developer's personal collection of 16 self-contained Codex skills, heavily focused on Apple-platform work plus generic review/refactor swarms. | C (4/5) | [→](dimillian-skills.md) |
@@ -21,6 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
+| [agent-scripts](agent-scripts.md) | ✅ | B (4/5) | Best when you need to distribute your own rules and skills across many repos and agents; borrow the layout, not the personal skills. |
 | [antfu/skills](antfu-skills.md) | ✅ | B (4/5) | Best when your stack matches Anthony Fu's Vue/Vite/Nuxt conventions. |
 | [claude-code-harness](claude-code-harness.md) | ✅ | B (5/6) | Best when you want a governed Claude Code harness with doctor tooling. |
 | [Dimillian Skills](dimillian-skills.md) | ✅ | C (4/5) | Best for Apple-platform Codex workflows and personal review/refactor swarms. |

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1013" viewBox="0 0 880 1013" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="1013" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="877" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="877" rx="10"/>
+<rect class="pillT" x="474" y="40" width="105.2" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">RRSI 做的</text>
+<path class="edge" d="M62,192 L62,216" marker-end="url(#a)"/>
+<path class="edge" d="M62,338 L62,362" marker-end="url(#a)"/>
+<path class="hand" d="M408,421.0 C439.0,421.0 439.0,445 470,445" marker-end="url(#a)"/>
+<path class="edge" d="M494,518 L494,542" marker-end="url(#a)"/>
+<path class="edge" d="M494,641 L494,665" marker-end="url(#a)"/>
+<path class="edge" d="M494,764 L494,788" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装好搜索核心，配上开通了 Vertex Claude 的</text>
+<text class="t" x="82" y="123">GCP 项目</text>
+<text class="c" x="82" y="147">pip install -e &quot;.[dev]&quot;</text>
+<text class="comp" x="82" y="170">组件：rrsi 搜索核心</text>
+<rect class="card" x="40" y="218" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">2</text>
+<text class="t" x="82" y="247">选用或自写 Domain 适配器：任务划分、跑分、</text>
+<text class="t" x="82" y="269">泄题模式</text>
+<text class="c" x="82" y="293">domains/&lt;name&gt;/adapter.py</text>
+<text class="comp" x="82" y="316">组件：Domain 适配器</text>
+<rect class="card" x="40" y="364" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="364" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="388" r="10"/>
+<text class="num" x="62" y="392" text-anchor="middle">3</text>
+<text class="t" x="82" y="393">先给原始 harness 测一次基线，再开跑</text>
+<text class="t" x="82" y="415">多轮搜索</text>
+<text class="c" x="82" y="439">python3 rrsi.py --domain &lt;name&gt; baseline ·</text>
+<text class="c" x="82" y="458">python3 rrsi.py --domain &lt;name&gt; run</text>
+<rect class="cardT" x="472" y="421" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="421" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="445" r="10"/>
+<text class="num" x="494" y="449" text-anchor="middle">4</text>
+<text class="t" x="514" y="450">读轨迹，在独立 worktree 里起草至多 b_t 处</text>
+<text class="t" x="514" y="472">带标签的改动</text>
+<text class="comp" x="514" y="500">组件：分析者 + 提议者</text>
+<rect class="cardT" x="472" y="544" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="544" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="568" r="10"/>
+<text class="num" x="494" y="572" text-anchor="middle">5</text>
+<text class="t" x="514" y="573">评测前先驳回写进任务名、答案或评分路</text>
+<text class="t" x="514" y="595">径的改动</text>
+<text class="comp" x="514" y="623">组件：评审</text>
+<rect class="cardT" x="472" y="667" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="667" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="691" r="10"/>
+<text class="num" x="494" y="695" text-anchor="middle">6</text>
+<text class="t" x="514" y="696">全量评测幸存者，只收越过噪声带且值回 token</text>
+<text class="t" x="514" y="718">的提升</text>
+<text class="comp" x="514" y="746">组件：选择器（算法 2）</text>
+<rect class="cardT" x="472" y="790" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="790" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="814" r="10"/>
+<text class="num" x="494" y="818" text-anchor="middle">7</text>
+<text class="t" x="514" y="819">把 evolve/&lt;name&gt; 快进到胜者，逐条记录改动</text>
+<text class="t" x="514" y="841">及实测效果</text>
+<text class="comp" x="514" y="869">组件：git 分支 + 编辑历史</text>
+<rect class="val" x="28" y="919" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="943">价值</text>
+<text class="valT" x="48" y="967">不再手调脚手架，也不再把噪声或背题当进步；当前最优是一个带审计记录的 commit</text>
+</svg>

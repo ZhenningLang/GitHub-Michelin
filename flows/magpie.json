@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Magpie does", "zh": "Magpie 做的"},
+  "steps": [
+    {"lane": "you", "en": "Unzip the release, run Magpie, and pick a scaling mode such as FSR or Anime4K", "zh": "解压发布包运行 Magpie，选一种缩放模式，如 FSR 或 Anime4K", "component": {"en": "profile", "zh": "配置文件"}},
+    {"lane": "you", "en": "Run the game or app windowed at its native (best) resolution", "zh": "让游戏或程序以原生（最佳）分辨率窗口化运行"},
+    {"lane": "you", "en": "Focus that window and press the scale hotkey", "zh": "切到那个窗口，按缩放快捷键"},
+    {"lane": "them", "en": "Captures the window's frames through Windows Graphics Capture, no injection", "zh": "通过 Windows Graphics Capture 抓取窗口画面，不注入进程", "component": {"en": "frame source", "zh": "帧来源"}},
+    {"lane": "them", "en": "Runs your HLSL effect chain on the GPU to enlarge each frame", "zh": "在显卡上跑 HLSL 效果链，逐帧放大", "component": {"en": "MagpieFX effects", "zh": "MagpieFX 效果"}},
+    {"lane": "them", "en": "Shows the result in a topmost window and maps your cursor back to the source", "zh": "在置顶窗口显示结果，并把光标映射回原窗口"}
+  ],
+  "value": {"en": "A small, blurry-when-stretched window plays full-screen and sharper, and nothing is injected into the game", "zh": "拉伸就糊的小窗口变成全屏且更清晰的画面，游戏进程里什么都没注入"},
+  "sources": [
+    "https://github.com/Blinue/Magpie README (Download link to releases, Hints: DPI override and built-in best resolution, system requirements)",
+    "docs/Comparison of capture methods.md (Graphics Capture recommended default)",
+    "docs/Built-in effects.md and docs/MagpieFX (EN).md (HLSL effects, effects folder)",
+    "src/Magpie/AppSettings.cpp (default Scale shortcut action)",
+    "src/Magpie.Core/CursorManager.cpp (maps source cursor position to scaled position)"
+  ]
+}
