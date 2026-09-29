@@ -76,7 +76,6 @@ Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-colle
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/research-automation/ai-scientist.md,,no
-Aider,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no
 aiohttp,categories/python-tooling/curl-cffi.md,,no
@@ -214,7 +213,6 @@ Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 ClashX / ClashX Pro,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 Claude / ChatGPT native apps,categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md,,no
 Claude Code,categories/agent-frameworks/coding-agents/terminal-agents/codex.md,,no
-Claude Code (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 Claude Code / Claude Desktop,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
 Claude Code / similar vendor coding-CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 Claude Code GitHub Action (general),categories/ai-code-review/claude-code-security-review.md,,no
@@ -271,7 +269,6 @@ Custom marketing playbook,categories/agent-skills/ai-writing/marketing-seo/marke
 Custom middleware,categories/agent-governance/agent-governance-toolkit.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
-Custom shell wrappers,categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md,,no
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
 Custom unpack scripts,categories/im-automation/wechat/wxappunpacker.md,,no
 Custom voice guide,categories/agent-skills/ai-writing/de-ai-writing/INDEX.md,,no

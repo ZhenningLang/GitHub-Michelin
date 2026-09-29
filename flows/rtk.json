@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "RTK does", "zh": "RTK 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary", "zh": "装上这一个二进制", "code": "brew install rtk · winget install rtk-ai.rtk"},
+    {"lane": "you", "en": "Run init for your agent, then restart the agent", "zh": "为你的智能体跑一次 init，然后重启它", "code": "rtk init -g · rtk init -g --codex"},
+    {"lane": "them", "en": "Installs a pre-tool hook that rewrites the agent's shell commands to rtk ones", "zh": "装上工具调用前钩子，把智能体的 shell 命令改写成 rtk 版本", "code": "git status → rtk git status", "component": {"en": "agent hook (native binary)", "zh": "智能体钩子（原生二进制）"}},
+    {"lane": "you", "en": "Let the agent work as usual — it runs git, tests, linters", "zh": "照常让智能体干活，它会跑 git、测试、lint"},
+    {"lane": "them", "en": "Runs the real command, keeps the exit code, filters output by command type", "zh": "执行真实命令，保留退出码，按命令类型过滤输出", "component": {"en": "per-command filter", "zh": "按命令的过滤器"}},
+    {"lane": "them", "en": "Hands back failures only or a one-line confirmation; saves full output on failure", "zh": "只交回失败项或一行确认；失败时另存完整输出", "code": "rtk recall <id>"}
+  ],
+  "value": {"en": "The agent reads a few lines instead of pages of shell noise, with no per-command effort from you", "zh": "智能体读几行而不是几屏 shell 噪音，你不用逐条命令操心"},
+  "sources": [
+    "https://github.com/rtk-ai/rtk README Installation (brew install rtk; winget install rtk-ai.rtk)",
+    "README Quick Start + Supported AI Tools (rtk init -g; rtk init -g --codex; restart; git status -> rtk git status; PreToolUse hook native binary)",
+    "README How It Works + Examples (filter/group/truncate/dedupe per command type; git push -> 'ok main'; cargo test failures only)",
+    "README Configuration ([full output: rtk recall 3f9c2a81d4e7] on failure; retriever mode sqlite)",
+    "docs/contributing/ARCHITECTURE.md Design Principles (exit code preservation; fail-safe fallback to original output)"
+  ]
+}
