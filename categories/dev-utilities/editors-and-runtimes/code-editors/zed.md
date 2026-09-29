@@ -2,7 +2,7 @@
 name: Zed
 slug: zed
 repo: https://github.com/zed-industries/zed
-category: editors-and-runtimes
+category: code-editors
 tags: [code-editor, text-editor, rust, collaborative, gpui]
 language: Rust
 license: NOASSERTION
@@ -70,7 +70,7 @@ health:
 
 A high-performance, multiplayer code editor built in Rust from the creators of Atom and Tree-sitter, offering native speed and real-time collaboration.
 
-![Zed — health radar](../../../assets/health/zed.svg)
+![Zed — health radar](../../../../assets/health/zed.svg)
 
 ## When to use
 

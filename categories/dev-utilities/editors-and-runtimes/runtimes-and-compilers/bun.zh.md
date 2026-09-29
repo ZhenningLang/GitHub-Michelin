@@ -2,7 +2,7 @@
 name: Bun
 slug: bun
 repo: https://github.com/oven-sh/bun
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [javascript, typescript, runtime, bundler, test-runner, package-manager]
 language: Rust
 license: NOASSERTION
@@ -83,7 +83,7 @@ health:
 
 一款极速一体化的 JavaScript 与 TypeScript 工具集——将运行时、打包器、测试运行器和包管理器集成在单个二进制文件中。
 
-![Bun — 健康度雷达](../../../assets/health/bun.zh.svg)
+![Bun — 健康度雷达](../../../../assets/health/bun.zh.svg)
 
 ## 何时使用
 

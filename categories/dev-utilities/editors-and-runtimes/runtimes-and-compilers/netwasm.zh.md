@@ -2,7 +2,7 @@
 name: NetWasm
 slug: netwasm
 repo: https://github.com/zion-sati/NetWasm
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [csharp, dotnet, compiler, webassembly, wasi, aot]
 language: C#
 license: NOASSERTION (NetWasm Community License 1.0 on compiler tooling; MIT on CoreLib/runtime/templates)
@@ -77,7 +77,7 @@ health:
 
 把 C# 部署到 WebAssembly，通常意味着连整个 .NET 运行时一起发货：宿主先把运行时、你的 DLL 和中间的胶水全部下载完，才轮到你的程序打印第一行。NetWasm 只把程序真正能执行到的代码编译成单个独立的 `.wasm` 文件——垃圾回收器也链接在里面，一个 hello-world 约 84 KB——任何 WebAssembly 宿主直接就能运行它，目标机器完全不用装 .NET。
 
-![NetWasm — 健康度雷达](../../../assets/health/netwasm.zh.svg)
+![NetWasm — 健康度雷达](../../../../assets/health/netwasm.zh.svg)
 
 ## 何时使用
 
@@ -89,7 +89,7 @@ health:
 
 Roslyn 照常干活——C# 编成 CIL（.NET 编译器产出的字节码）——之后的所有事情都由 NetWasm 替换掉了。它自己的编译器读取 ECMA-335 元数据，从你的入口点出发走完所有可达方法（闭世界意味着不可达代码、没用的泛型、没引用的包根本不会被编译），把泛型特化到具体用法，再把 CIL 直接降成 WebAssembly：没有解释器、没有 JIT、不把 CLR 或 Mono 作为平台随产物发货。活下来的代码对「运行时」的需求——精确垃圾回收器（Boehm 血统的 C 模块；编译器算出精确根，收集器因此不需要保守扫描）、异常与字符串支持——被链接进模块本体，这部分是 MIT 许可。最后组件层把程序真正导入的 WIT 接口（WebAssembly 的接口定义语言）绑定好，打包成一个 WASI Preview 2 组件：文件里声明自己需要哪些宿主能力——时钟、HTTP、随机数、挂载目录——宿主就只给这些，没有任何环境访问。你要做的只是熟悉的 .NET 循环（`dotnet new`／`restore`／`build`／`run`／`publish`／`test`）：工具链以 NuGet 包的形式到来，第一次 `dotnet restore` 会拉取钉死版本的 Node、`wasm-ld` 和 Binaryen，构建机不需要预装任何工具链。
 
-![NetWasm — 主干用户故事](../../../assets/flow/netwasm.zh.svg)
+![NetWasm — 主干用户故事](../../../../assets/flow/netwasm.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/netwasm.json by tools/flow_card.py — do not edit) -->
 <details>

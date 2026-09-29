@@ -2,7 +2,7 @@
 name: TanStack Config
 slug: tanstack-config
 repo: https://github.com/TanStack/config
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [build-tooling, eslint-config, vite, library-publishing, typedoc, monorepo, typescript, tanstack]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 每发一个新的 TypeScript 包，都要重来一遍同样的下午：从上个仓库抄一份 ESLint 配置，和 Vite 较劲到它同时吐出 ESM 和 CommonJS、再配齐 `.d.ts` 与 `.d.cts` 类型、让 `publint` 不再报错，然后再写发版脚本。TanStack Config 就是 TanStack 自家库做这些事用的那几份开发期预设——一套 ESLint 规则、一套双格式 Vite 构建、一套 TypeDoc 转 Markdown——打包出来，别的仓库直接导入即可，不必再从头摸索。
 
-![TanStack Config — 健康度雷达](../../../assets/health/tanstack-config.zh.svg)
+![TanStack Config — 健康度雷达](../../../../assets/health/tanstack-config.zh.svg)
 
 ## 何时使用
 
@@ -93,7 +93,7 @@ health:
 
 它不以服务形式运行：仓库是一个 pnpm + Nx 的 monorepo，发布四个互相独立的开发依赖包，每个都是在某个知名工具上薄薄加一层“主张”。`@tanstack/eslint-config` 导出一组 ESLint “扁平配置”对象（ESLint 9 起的格式，配置就是一个可以直接展开的数组），接好带类型信息的 typescript-eslint——检查时会读取你的 `tsconfig.json` 做类型分析——再加上 import-x、eslint-plugin-n 和代码风格规则，并忽略构建产物目录。`@tanstack/vite-config` 导出一个返回 Vite 配置的函数：以库模式把入口逐文件构建到 `dist/esm/*.js` 与 `dist/cjs/*.cjs`，调用两次 `vite-plugin-dts` 分别生成 `.d.ts` 和 `.d.cts` 声明，把声明里的相对导入补上明确的扩展名，把依赖排除在打包之外，遇到任何类型错误就让构建失败退出。属于你自己的部分——框架插件、Vitest 配置、自定义的检查覆盖——仍由你保留，预设放在**最后**合并，就像在你自己的内容外面套上一个标准相框。`@tanstack/typedoc-config` 提供 `generateReferenceDocs()`，驱动 TypeDoc 配合 Markdown 插件，按 tanstack.com 需要的版式写出 API 参考页；`@tanstack/publish-config` 提供一个移植自 React Router 的 `publish()` 脚本，根据提交信息和 git 标签推算版本号。仓库里还放着几个复合 GitHub Action（`setup`、`changeset-preview`、`comment-on-release`），其他 TanStack 仓库按提交哈希固定引用它们。
 
-![tanstack-config — 主干用户故事](../../../assets/flow/tanstack-config.zh.svg)
+![tanstack-config — 主干用户故事](../../../../assets/flow/tanstack-config.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-config.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -131,7 +131,7 @@ health:
 | @antfu/eslint-config（`antfu/eslint-config`） | 未收录 | 应用或混合多种文件的仓库想用一行配置同时拿到检查与格式化，选 @antfu/eslint-config；要让 TypeScript 库遵守 TanStack 那套带类型信息、不管格式化的规则，选 `@tanstack/eslint-config`。 | antfu 的预设覆盖 TypeScript、JSX、Vue、JSON、YAML、TOML 和 Markdown，并取代 Prettier；TanStack 的更窄、对类型更严（带类型解析），但格式化和非 JS 文件得你自己管。本轮标签页批量收录未添加。 |
 | TypeDoc（`TypeStrong/typedoc`） | 未收录 | 一般的 API 参考文档直接用 TypeDoc；只有想给仿 tanstack.com 搭建的文档站生成 TanStack 版式的 Markdown 页时，才用 `@tanstack/typedoc-config`。 | 原生 TypeDoc 有 HTML 主题和全部选项；预设替你定死了 Markdown 插件、frontmatter 和版式，也就拿走了这些选择。本轮标签页批量收录未添加。 |
 
-这个仓库是其他 TanStack 库背后的共享工具链——[TanStack Query](../../web-ui/data-fetching/tanstack-query.zh.md)、[TanStack Table](../../web-ui/component-libraries/tanstack-table.zh.md)、[TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md) 和 [TanStack Form](../../web-ui/forms/tanstack-form.zh.md) 都在根目录固定引用 `@tanstack/eslint-config`（多数还引用 `@tanstack/typedoc-config`）。选用这些库并不需要它；只有当你要按它们的风格去**做包**时，它才有意义。
+这个仓库是其他 TanStack 库背后的共享工具链——[TanStack Query](../../../web-ui/data-fetching/tanstack-query.zh.md)、[TanStack Table](../../../web-ui/component-libraries/tanstack-table.zh.md)、[TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md) 和 [TanStack Form](../../../web-ui/forms/tanstack-form.zh.md) 都在根目录固定引用 `@tanstack/eslint-config`（多数还引用 `@tanstack/typedoc-config`）。选用这些库并不需要它；只有当你要按它们的风格去**做包**时，它才有意义。
 
 ## 技术栈
 

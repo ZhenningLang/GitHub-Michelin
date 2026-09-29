@@ -2,7 +2,7 @@
 name: NetWasm
 slug: netwasm
 repo: https://github.com/zion-sati/NetWasm
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [csharp, dotnet, compiler, webassembly, wasi, aot]
 language: C#
 license: NOASSERTION (NetWasm Community License 1.0 on compiler tooling; MIT on CoreLib/runtime/templates)
@@ -77,7 +77,7 @@ health:
 
 Shipping C# to WebAssembly normally means shipping the .NET runtime along: the host downloads a runtime, your DLLs, and the glue between them before your program prints anything. NetWasm compiles only the code your program can actually reach into one standalone `.wasm` file — garbage collection linked in, roughly 84 KiB for a hello-world — which runs on any WebAssembly host with no .NET installed anywhere on the target.
 
-![NetWasm — health radar](../../../assets/health/netwasm.svg)
+![NetWasm — health radar](../../../../assets/health/netwasm.svg)
 
 ## When to use
 
@@ -89,7 +89,7 @@ The tradeoff that defines the choice: NetWasm is C# with a deliberately smaller 
 
 Roslyn does what it always does — C# to CIL, the bytecode .NET compilers emit — and NetWasm replaces everything after that. Its own compiler reads ECMA-335 metadata, walks every method reachable from your entry point (closed-world means unreachable code, unused generics, and unreferenced packages are never compiled), specializes generics down to their concrete uses, and lowers CIL directly to WebAssembly: no interpreter, no JIT, no CLR or Mono shipped as a platform. Whatever survived code needs from "the runtime" — a precise garbage collector (Boehm-lineage C modules; the compiler computes the exact roots so the collector needs no conservative scan), exception and string support — is linked into the module itself, MIT-licensed. Finally the component layer binds the WIT interfaces (WebAssembly's interface-definition language) the program actually imports and packages everything as one WASI Preview 2 component: the file declares which host capabilities it needs — clocks, HTTP, randomness, mounted directories — and the host grants exactly those, nothing ambient. You do the normal .NET loop (`dotnet new` / `restore` / `build` / `run` / `publish` / `test`); the toolchain itself arrives as NuGet packages, and the first `dotnet restore` pulls pinned Node, `wasm-ld` and Binaryen so no build-machine toolchain install is required.
 
-![NetWasm — backbone user story](../../../assets/flow/netwasm.svg)
+![NetWasm — backbone user story](../../../../assets/flow/netwasm.svg)
 
 <!-- flow-steps:begin (generated from flows/netwasm.json by tools/flow_card.py — do not edit) -->
 <details>

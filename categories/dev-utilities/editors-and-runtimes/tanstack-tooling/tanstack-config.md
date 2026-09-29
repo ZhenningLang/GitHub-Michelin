@@ -2,7 +2,7 @@
 name: TanStack Config
 slug: tanstack-config
 repo: https://github.com/TanStack/config
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [build-tooling, eslint-config, vite, library-publishing, typedoc, monorepo, typescript, tanstack]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 Every new TypeScript package you publish starts with the same afternoon: copy an ESLint config from the last repo, fight Vite until it emits both ESM and CommonJS with `.d.ts` *and* `.d.cts` types that tools like `publint` stop complaining about, then script the release. TanStack Config is the set of dev-only presets TanStack's own libraries use for that — one ESLint rule set, one dual-format Vite build, one TypeDoc-to-Markdown setup — packaged so another repo can import them instead of re-deriving them.
 
-![TanStack Config — health radar](../../../assets/health/tanstack-config.svg)
+![TanStack Config — health radar](../../../../assets/health/tanstack-config.svg)
 
 ## When to use
 
@@ -93,7 +93,7 @@ Pick it over **@antfu/eslint-config** when you want a narrower, framework-agnost
 
 Nothing runs as a service: the repo is a pnpm/Nx monorepo that publishes four independent dev-dependency packages, each a thin opinion layer over a well-known tool. `@tanstack/eslint-config` exports an array of ESLint "flat config" objects (the ESLint 9+ format where a config is just a list you spread) that wires typescript-eslint with type information — it reads your `tsconfig.json` to check types while linting — plus import-x, eslint-plugin-n and stylistic rules, and ignores build output. `@tanstack/vite-config` exports a function returning a Vite config: it builds your entry in library mode into `dist/esm/*.js` and `dist/cjs/*.cjs` file-by-file, runs `vite-plugin-dts` twice to emit `.d.ts` and `.d.cts` declarations, patches relative imports in those declarations to carry explicit extensions, externalizes your dependencies, and exits the build on any type error. You keep the parts that are yours — your framework plugins, your Vitest config, your custom lint overrides — and merge the preset *last*, like laying a standard frame over your own contents. `@tanstack/typedoc-config` exposes `generateReferenceDocs()`, which drives TypeDoc with a Markdown plugin to write API reference pages in the layout tanstack.com expects; `@tanstack/publish-config` exposes a `publish()` script, ported from React Router's, that derives versions from commit messages and git tags. The repo also hosts composite GitHub Actions (`setup`, `changeset-preview`, `comment-on-release`) that the other TanStack repos pin by commit.
 
-![tanstack-config — backbone user story](../../../assets/flow/tanstack-config.svg)
+![tanstack-config — backbone user story](../../../../assets/flow/tanstack-config.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-config.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -131,7 +131,7 @@ Nothing runs as a service: the repo is a pnpm/Nx monorepo that publishes four in
 | @antfu/eslint-config (`antfu/eslint-config`) | not indexed | For an app or a mixed-language repo that wants linting and formatting from one line of config, pick @antfu/eslint-config; pick `@tanstack/eslint-config` for a TypeScript library that should follow TanStack's type-aware, formatter-free rules. | antfu's preset covers TypeScript, JSX, Vue, JSON, YAML, TOML and Markdown and replaces Prettier; TanStack's is narrower and stricter on types (type-aware parsing) but leaves formatting and non-JS files to you. Not added in this tab-intake batch. |
 | TypeDoc (`TypeStrong/typedoc`) | not indexed | For API reference docs in general, use TypeDoc directly; use `@tanstack/typedoc-config` only when you want TanStack-shaped Markdown pages for a docs site built like tanstack.com. | Raw TypeDoc gives HTML themes and every option; the preset fixes the Markdown plugin, frontmatter and layout for you and removes those choices. Not added in this tab-intake batch. |
 
-This repo is the shared toolchain behind the other TanStack libraries — [TanStack Query](../../web-ui/data-fetching/tanstack-query.md), [TanStack Table](../../web-ui/component-libraries/tanstack-table.md), [TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.md) and [TanStack Form](../../web-ui/forms/tanstack-form.md) all pin `@tanstack/eslint-config` (and most `@tanstack/typedoc-config`) at their roots. Choosing one of those libraries does not require it; it matters only if you build *packages* in their style.
+This repo is the shared toolchain behind the other TanStack libraries — [TanStack Query](../../../web-ui/data-fetching/tanstack-query.md), [TanStack Table](../../../web-ui/component-libraries/tanstack-table.md), [TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.md) and [TanStack Form](../../../web-ui/forms/tanstack-form.md) all pin `@tanstack/eslint-config` (and most `@tanstack/typedoc-config`) at their roots. Choosing one of those libraries does not require it; it matters only if you build *packages* in their style.
 
 ## Tech stack
 

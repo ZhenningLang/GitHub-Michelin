@@ -2,7 +2,7 @@
 name: TanStack alt-cli
 slug: tanstack-alt-cli
 repo: https://github.com/TanStack/alt-cli
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [scaffolding, cli, code-generator, tanstack, mcp, archived, agent-tooling]
 language: TypeScript
 license: MIT
@@ -76,7 +76,7 @@ health:
 
 You follow a January-2026 link to `TanStack/alt-cli` — "The official TanStack CLI for scaffolding, MCP, agent skills" — copy its `npx @tanstack/cli create my-app`, and silently get different software: this repo is a one-week experiment, archived since, and the `@tanstack/cli` npm name it published 0.0.1–0.0.8 under has shipped the mainline TanStack CLI since 2026-01-29. This page exists so you recognize the trap in one read and know what the repo is still good for.
 
-![TanStack alt-cli — health radar](../../../assets/health/tanstack-alt-cli.svg)
+![TanStack alt-cli — health radar](../../../../assets/health/tanstack-alt-cli.svg)
 
 ## When to use
 
@@ -86,7 +86,7 @@ You don't reach for alt-cli to build anything — you arrive at it, usually from
 
 The repo is a pnpm monorepo whose `@tanstack/cli` package exposes a `tanstack` binary. What you do is pick integrations — interactively, via @clack prompts for project name and package manager, or as a comma-separated `--integrations` flag; what it does for you is composition: the engine resolves each integration's declared dependencies and conflicts, fetches integration definitions from the repo's own `integrations/` folder on GitHub, renders every integration's EJS asset templates (routes, providers, config files), merges the integration's `package.json` deps into yours, installs, and writes a `.tanstack.json` manifest of what was chosen. Think of it as a package manager whose install unit is not a library but a wired integration — Clerk comes with its provider, routes and env skeleton, not just `@clerk/react`. A second surface is `tanstack mcp`: a local MCP server (stdio or HTTP/SSE) an agent like Claude Desktop connects to, so the agent can list integrations and scaffold projects itself instead of scraping docs. Both surfaces only ever targeted TanStack Start projects; there is no other framework mode.
 
-![tanstack-alt-cli — backbone user story](../../../assets/flow/tanstack-alt-cli.svg)
+![tanstack-alt-cli — backbone user story](../../../../assets/flow/tanstack-alt-cli.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-alt-cli.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -116,7 +116,7 @@ The repo is a pnpm monorepo whose `@tanstack/cli` package exposes a `tanstack` b
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| create-next-app (`vercel/next.js`) | ✅ [Next.js](../../web-ui/frameworks/app-frameworks/nextjs.md) | The stack decision "Next.js" makes create-next-app the only candidate and alt-cli a non-candidate (archived, TanStack-only); read alt-cli only if you want its integration-manifest pattern to copy for your own generator. | create-next-app scaffolds the dominant React framework and stays current; alt-cli shows a composable-integration design frozen in January 2026 — one is a tool you run, the other a pattern you read. |
+| create-next-app (`vercel/next.js`) | ✅ [Next.js](../../../web-ui/frameworks/app-frameworks/nextjs.md) | The stack decision "Next.js" makes create-next-app the only candidate and alt-cli a non-candidate (archived, TanStack-only); read alt-cli only if you want its integration-manifest pattern to copy for your own generator. | create-next-app scaffolds the dominant React framework and stays current; alt-cli shows a composable-integration design frozen in January 2026 — one is a tool you run, the other a pattern you read. |
 | create-vite (`vitejs/vite`) | not indexed | For any non-TanStack SPA, scaffold with create-vite and add libraries by hand; alt-cli never served that audience and today serves nobody operationally. | create-vite gives a minimal, framework-agnostic starting point maintained at Vite's pace; alt-cli's 29 curated integrations came at the cost of a single-stack, single-week bet. Not added in this tab-intake batch. |
 | create-t3-app (`t3-oss/create-t3-app`) | not indexed | If your question is "one command to a fully wired stack", create-t3-app is the living answer for its named stack; alt-cli was that answer for TanStack Start for one week in January 2026, and the indexed TanStack CLI page is it today. | Both compose auth/db/tooling into one scaffold; T3's opinions are fixed and maintained, alt-cli's were selectable and then abandoned — pick the one whose maintainer still exists. Not added in this tab-intake batch. |
 | degit (`Rich-Harris/degit`) | not indexed | For "copy that template repo without git history", degit is the right tool; alt-cli's dependency-resolving engine is the wrong machinery for a verbatim copy and is archived anyway. | degit ships exactly one frozen state with zero magic; alt-cli resolved a dependency graph at generate time — opposite ends of the scaffolding spectrum, and only one is maintained. Not added in this tab-intake batch. |

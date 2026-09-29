@@ -2,7 +2,7 @@
 name: TanStack CLI
 slug: tanstack-cli
 repo: https://github.com/TanStack/cli
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [scaffolding, cli, code-generator, tanstack, react, solid, typescript, agent-tooling]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 手动起一个 TanStack Start 或 Router 项目，意味着从五份不同的文档里拼装认证、数据库层和部署配置，每样都自带一套 provider 样板；让 coding agent「加个 Clerk」，它只能瞎猜该动哪些其实归框架管的文件。TanStack CLI 一条命令生成整个应用，把这些集成做成可组合的 add-on 逐层叠加，另外提供一组 JSON 内省命令，agent 直接调用就能拿到事实，不用去爬文档站。
 
-![TanStack CLI — 健康度雷达](../../../assets/health/tanstack-cli.zh.svg)
+![TanStack CLI — 健康度雷达](../../../../assets/health/tanstack-cli.zh.svg)
 
 ## 何时使用
 
@@ -93,7 +93,7 @@ health:
 
 `tanstack` 二进制（包名 `@tanstack/cli`）是一层薄命令壳，真正的引擎是 `@tanstack/create`。一个 **add-on** 就是一文件夹的 EJS 模板——带占位符的文件模板，占位符是项目名、启用了哪些选项之类——外加一份 `info.json`，声明它提供什么（路由、包在应用外层的 provider、Vite 插件、环境变量）、依赖谁、和谁冲突、有哪些选项。你以交互方式（CLI 会提问）或旗标方式选 add-on；引擎接着解析依赖图，渲染每个模板，把依赖合并进 `package.json`，调你的包管理器安装，最后写一份 `.cta.json` 清单记录这次的选择——之后 `tanstack add` 就靠读它来对既有项目做增改。可以把它想成给起步项目用的构建系统：你描述终点（「Start ＋ file-router ＋ Clerk ＋ Drizzle ＋ Cloudflare」），它把过去靠复制粘贴的零件拼装到位。第二个面是只读内省：`libraries`、`doc`、`search-docs`、`ecosystem` 和 `--list-add-ons`／`--addon-details` 都支持 `--json`，取代了 CLI 早期内置的 MCP 服务器（`tanstack mcp` 已删除，文档明说不会恢复）。`--intent` 旗标还会写入本地技能映射，让 coding agent 发现脚手架的约定。
 
-![tanstack-cli — 主干用户故事](../../../assets/flow/tanstack-cli.zh.svg)
+![tanstack-cli — 主干用户故事](../../../../assets/flow/tanstack-cli.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-cli.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,13 +123,13 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| create-next-app（`vercel/next.js`） | ✅ [Next.js](../../web-ui/frameworks/app-frameworks/nextjs.zh.md) | 技术栈决定是「Next.js」时，create-next-app 是唯一正确答案，本 CLI 帮不上忙；只有选定 TanStack Start／Router、要 add-on 组合而不是裸应用时才选 TanStack CLI。 | create-next-app 脚手架的是占统治地位的 React 框架及其插件生态；TanStack CLI 换来精心打理的可组合集成，代价是脚手架被锁在仍处前 1.0 边缘的 TanStack 栈上。 |
+| create-next-app（`vercel/next.js`） | ✅ [Next.js](../../../web-ui/frameworks/app-frameworks/nextjs.zh.md) | 技术栈决定是「Next.js」时，create-next-app 是唯一正确答案，本 CLI 帮不上忙；只有选定 TanStack Start／Router、要 add-on 组合而不是裸应用时才选 TanStack CLI。 | create-next-app 脚手架的是占统治地位的 React 框架及其插件生态；TanStack CLI 换来精心打理的可组合集成，代价是脚手架被锁在仍处前 1.0 边缘的 TanStack 栈上。 |
 | Vite／create-vite（`vitejs/vite`） | 未收录 | 要框架无关的 SPA 或 React／Solid 之外的栈，用 create-vite 自己加库；当 add-on 图（彼此知情的认证＋数据库＋部署＋监控）比框架自由更值钱时选 TanStack CLI。 | create-vite 给一个极简、无依赖的起点，覆盖很多框架；本 CLI 自动叠加的每一层都得你手工装配。本批次未收录。 |
 | create-t3-app（`t3-oss/create-t3-app`） | 未收录 | 你的栈就是 Next.js ＋ tRPC ＋ Prisma ＋ Tailwind ＋ NextAuth（T3 栈）时，create-t3-app 是量身定做；栈是 TanStack Start、想在它的 add-on 目录上做同样的一键组合时选 TanStack CLI。 | 两者都是有主见的整栈脚手架；T3 的主见是固定的（一个具名技术栈），TanStack 的按 add-on 逐项可选——框架锁定也随之互换。本批次未收录。 |
-| shadcn CLI（`shadcn-ui/ui`） | ✅ [shadcn/ui](../../web-ui/component-libraries/shadcn-ui.zh.md) | 往既有项目里掉一个组件，shadcn CLI 是范本（拷的是归你所有的代码）；整项目级、带认证／数据库／部署接线的脚手架，TanStack CLI 干的是 shadcn CLI 刻意不干的那一层。 | shadcn add 给你一份可以永远改下去的源码；tanstack add 给你一套归脚手架维护的集成接线——层次不同，TanStack CLI 里的 shadcn add-on 还能把两者组合起来。 |
+| shadcn CLI（`shadcn-ui/ui`） | ✅ [shadcn/ui](../../../web-ui/component-libraries/shadcn-ui.zh.md) | 往既有项目里掉一个组件，shadcn CLI 是范本（拷的是归你所有的代码）；整项目级、带认证／数据库／部署接线的脚手架，TanStack CLI 干的是 shadcn CLI 刻意不干的那一层。 | shadcn add 给你一份可以永远改下去的源码；tanstack add 给你一套归脚手架维护的集成接线——层次不同，TanStack CLI 里的 shadcn add-on 还能把两者组合起来。 |
 | degit（`Rich-Harris/degit`） | 未收录 | 「把那个模板仓库克隆下来但不要 git 历史」用 degit 正合适；组合重要时选 TanStack CLI——27 个声明了依赖与冲突的 add-on 在生成时拼得对，冻结的模板只会随技术栈一起过期。 | degit 零魔法、不限技术栈，但交付的是某一刻的冻结状态；本 CLI 每次运行都重新解析各 add-on 的当前版本，代价是只在自己的生态里成立。本批次未收录。 |
 
-TanStack CLI 是 TanStack 生态的入门界面：它脚手架基于 [TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)（及 Start）的应用，也能预先接好 [TanStack Query](../../web-ui/data-fetching/tanstack-query.zh.md)、TanStack Form 和 TanStack DB 这些 add-on——选这个栈的理由是那些库，CLI 只是你到达的方式。`--intent` 安装的技能映射由 TanStack Intent 生成，那是同家的兄弟项目。
+TanStack CLI 是 TanStack 生态的入门界面：它脚手架基于 [TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.zh.md)（及 Start）的应用，也能预先接好 [TanStack Query](../../../web-ui/data-fetching/tanstack-query.zh.md)、TanStack Form 和 TanStack DB 这些 add-on——选这个栈的理由是那些库，CLI 只是你到达的方式。`--intent` 安装的技能映射由 TanStack Intent 生成，那是同家的兄弟项目。
 
 ## 技术栈
 

@@ -2,7 +2,7 @@
 name: Tauri
 slug: tauri
 repo: https://github.com/tauri-apps/tauri
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [desktop-app, mobile-app, webview, rust, cross-platform]
 language: Rust
 license: Apache-2.0
@@ -83,7 +83,7 @@ health:
 
 Build smaller, faster, and more secure desktop and mobile applications with a web frontend. A Rust-powered alternative to Electron that uses the OS native webview instead of bundling Chromium.
 
-![Tauri — health radar](../../../assets/health/tauri.svg)
+![Tauri — health radar](../../../../assets/health/tauri.svg)
 
 ## When to use
 
@@ -103,7 +103,7 @@ You're choosing a cross-platform desktop or mobile framework and bundle size, me
 | --- | --- | --- | --- |
 | Electron | 未收录 | The incumbent desktop web framework. | Electron bundles Chromium, resulting in large binaries and high memory use; Tauri uses the OS webview and is far lighter. |
 | Flutter | 未收录 | Google's cross-platform UI framework with native rendering. | Flutter requires learning Dart and its widget system; Tauri reuses web skills but is less native-feeling on desktop. |
-| [Clash Verge Rev](../ops-infra/clash-verge-rev.md) | ✅ | A Tauri-based GUI proxy client. | Demonstrates production Tauri usage but is a specific app, not a framework choice. |
+| [Clash Verge Rev](../../ops-infra/clash-verge-rev.md) | ✅ | A Tauri-based GUI proxy client. | Demonstrates production Tauri usage but is a specific app, not a framework choice. |
 | Neutralinojs | 未收录 | Lightweight alternative to Electron with smaller footprint. | Smaller than Electron but less mature ecosystem and fewer platform features than Tauri. |
 | WPF / Cocoa / GTK | 未收录 | Platform-native UI toolkits. | True native widgets and performance, but each platform requires separate codebases and expertise. |
 
@@ -132,7 +132,7 @@ You're choosing a cross-platform desktop or mobile framework and bundle size, me
 - **Maintenance**: Very active — pushed daily as of 2026-07, with v2 stable and active community support (1,442 open issues). [推断]
 - **Governance**: Owned by the `tauri-apps` organization with a dedicated core team and open governance model. Bus factor is reasonable.
 - **Backing**: Backed by the Tauri Collective and Open Collective funding; has corporate sponsors and a non-profit foundation structure. [未验证]
-- **Adoption**: Strong adoption with 108.5k stars and many production apps (e.g., [Clash Verge Rev](../ops-infra/clash-verge-rev.md)). Created in 2019, giving it a 7-year track record with steady growth.
+- **Adoption**: Strong adoption with 108.5k stars and many production apps (e.g., [Clash Verge Rev](../../ops-infra/clash-verge-rev.md)). Created in 2019, giving it a 7-year track record with steady growth.
 - **Risk flags**: No major relicense history. Dual-licensed MIT/Apache-2.0 is permissive. The v1→v2 migration required code changes, so future major versions may also introduce breaking changes. [推断]
 
 ## Caveats (unverified)

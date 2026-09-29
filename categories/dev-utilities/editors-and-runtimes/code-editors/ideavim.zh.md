@@ -2,7 +2,7 @@
 name: IdeaVim
 slug: ideavim
 repo: https://github.com/JetBrains/ideavim
-category: editors-and-runtimes
+category: code-editors
 tags: [vim, jetbrains, intellij, ide-plugin, editor, keybindings, kotlin]
 language: Kotlin
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 JetBrains 系 IDE（IntelliJ IDEA、PyCharm、GoLand、WebStorm、Rider 等）的 Vim 模拟插件——在 IDE 内提供 Vim 的 motion、模式、寄存器、宏，以及 `.ideavimrc`，由 JetBrains 自己维护。
 
-![ideavim — 健康度雷达](../../../assets/health/ideavim.zh.svg)
+![ideavim — 健康度雷达](../../../../assets/health/ideavim.zh.svg)
 
 ## 何时使用
 
@@ -80,7 +80,7 @@ JetBrains 系 IDE（IntelliJ IDEA、PyCharm、GoLand、WebStorm、Rider 等）�
 
 IdeaVim 是一个用 Kotlin 写的 Vim *引擎*，跑在 IDE 的编辑器组件内部——它并不内嵌一个真正的 Vim 进程。它在编辑器面板里拦截你的按键，运行自己的模式状态机（normal/insert/visual）：你敲下 `ciw`，它把这条 operator 解析出来，直接作用在 IDE 自己的文档模型上——不是缓冲区的副本——所以 IntelliJ 的重构、调试器和索引面对的始终是你正在编辑的同一份文本。归你管的是配置：一个 Vim 语法的 `~/.ideavimrc` 文件、用 `set` 开关点亮内置扩展（surround、multiple-cursors、commentary、easymotion），以及用 `<Action>(ActionId)` 映射从 Vim 键层够到 IDE 功能（README 明确不让你在映射里用 `:action`，`<Action>` 才是受支持的写法）。键位冲突在 IDE 自己的 Vim/Keymap 设置页里解决，`Tools | Vim` 一键关掉整个层、无需重启。
 
-![IdeaVim — 主干用户故事](../../../assets/flow/ideavim.zh.svg)
+![IdeaVim — 主干用户故事](../../../../assets/flow/ideavim.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/ideavim.json by tools/flow_card.py — do not edit) -->
 <details>

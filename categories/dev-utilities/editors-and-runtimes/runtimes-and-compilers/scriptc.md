@@ -2,7 +2,7 @@
 name: scriptc
 slug: scriptc
 repo: https://github.com/vercel-labs/scriptc
-category: editors-and-runtimes
+category: runtimes-and-compilers
 tags: [typescript, javascript, compiler, native-binary, llvm, wasm]
 language: TypeScript
 license: Apache-2.0
@@ -84,7 +84,7 @@ health:
 
 You wrote a small tool in TypeScript, and delivering it means installing Node on every target — or shipping a single-file bundle tens of megabytes larger than the program itself. scriptc compiles ordinary, typed TypeScript into a native executable in the ~320KB class: no Node, no V8, no JavaScript engine inside the binary.
 
-![scriptc — health radar](../../../assets/health/scriptc.svg)
+![scriptc — health radar](../../../../assets/health/scriptc.svg)
 
 ## When to use
 
@@ -96,7 +96,7 @@ You reach for scriptc rather than `bun build --compile` or `deno compile` when t
 
 scriptc is a compiler, not a packer. The real TypeScript compiler — the same tsc that type-checks your editor — parses and type-checks the program, then lowers the AST into a typed intermediate representation (IR: a serializable form of your program where generics are already specialized into concrete types and unions become tagged values). From the IR, backends write readable C or LLVM IR, and the default path sends the LLVM IR to a bundled LLVM 22 helper that emits assembly and object code; the platform linker then joins that object with a precompiled runtime pack (a reference-counted value runtime, stackful fibers for async/await, a kqueue/epoll event loop, and native `net`/`http`/`tls` implementations), compiling no C at all. Memory is reference-counted — a value frees the moment its last reference drops — and reference cycles are collected at deterministic points rather than by a garbage collector. Nothing is ever silently faked: every construct lands in exactly one of three tiers — compiled natively, run on an embedded quickjs-ng engine if you pass `--dynamic` (for npm-package JavaScript and `any`-typed code, ~620KB), or rejected with an error code and a rewrite hint.
 
-![scriptc — backbone user story](../../../assets/flow/scriptc.svg)
+![scriptc — backbone user story](../../../../assets/flow/scriptc.svg)
 
 <!-- flow-steps:begin (generated from flows/scriptc.json by tools/flow_card.py — do not edit) -->
 <details>

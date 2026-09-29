@@ -2,7 +2,7 @@
 name: TanStack CLI
 slug: tanstack-cli
 repo: https://github.com/TanStack/cli
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [scaffolding, cli, code-generator, tanstack, react, solid, typescript, agent-tooling]
 language: TypeScript
 license: MIT
@@ -81,7 +81,7 @@ health:
 
 Starting a TanStack Start or Router app by hand means assembling auth, a database layer and a deploy target from five different docs, each with its own provider boilerplate — and a coding agent asked to "add Clerk" guesses at files the framework actually owns. TanStack CLI scaffolds the whole app in one command and layers those integrations as composable add-ons, plus JSON introspection commands an agent can call instead of scraping the docs site.
 
-![TanStack CLI — health radar](../../../assets/health/tanstack-cli.svg)
+![TanStack CLI — health radar](../../../../assets/health/tanstack-cli.svg)
 
 ## When to use
 
@@ -93,7 +93,7 @@ Pick it over **create-next-app** or **create-vite** when you have already chosen
 
 The `tanstack` binary (package `@tanstack/cli`) is a thin command layer over the `@tanstack/create` engine. An **add-on** is a folder of EJS templates — templates with holes like the project name or enabled options — plus an `info.json` that declares what it provides (routes, providers wrapped around the app, Vite plugins, env vars), what it depends on or conflicts with, and its options. You choose add-ons interactively (the CLI prompts) or as flags; the engine then resolves the dependency graph, renders every template, merges dependencies into `package.json`, runs your package manager to install, and writes a `.cta.json` manifest recording what was chosen — that file is what later `tanstack add` calls read to reconcile an existing project. Think of it as a build system for starter projects: you describe the destination ("Start + file-router + Clerk + Drizzle + Cloudflare"), and it composes the pieces that used to be copy-paste. The second surface is read-only introspection: `libraries`, `doc`, `search-docs`, `ecosystem` and `--list-add-ons`/`--addon-details` all accept `--json`, replacing the MCP server the CLI shipped earlier (that `tanstack mcp` command was removed and the docs say it will not be restored). A `--intent` flag additionally writes local skill mappings so coding agents discover the scaffold's conventions.
 
-![tanstack-cli — backbone user story](../../../assets/flow/tanstack-cli.svg)
+![tanstack-cli — backbone user story](../../../../assets/flow/tanstack-cli.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-cli.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -123,13 +123,13 @@ The `tanstack` binary (package `@tanstack/cli`) is a thin command layer over the
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| create-next-app (`vercel/next.js`) | ✅ [Next.js](../../web-ui/frameworks/app-frameworks/nextjs.md) | When the stack decision is "Next.js", create-next-app is the only right answer and this CLI cannot help; pick TanStack CLI only when you have chosen TanStack Start/Router and want add-on composition instead of a bare app. | create-next-app scaffolds the dominant React framework with its full plugin ecosystem; TanStack CLI buys curated, composable integrations but locks the scaffold to the TanStack stack (still pre-1.0 at the framework's edges). |
+| create-next-app (`vercel/next.js`) | ✅ [Next.js](../../../web-ui/frameworks/app-frameworks/nextjs.md) | When the stack decision is "Next.js", create-next-app is the only right answer and this CLI cannot help; pick TanStack CLI only when you have chosen TanStack Start/Router and want add-on composition instead of a bare app. | create-next-app scaffolds the dominant React framework with its full plugin ecosystem; TanStack CLI buys curated, composable integrations but locks the scaffold to the TanStack stack (still pre-1.0 at the framework's edges). |
 | Vite / create-vite (`vitejs/vite`) | not indexed | For a framework-agnostic SPA or a non-React/Solid stack, scaffold with create-vite and add libraries yourself; pick TanStack CLI when the add-on graph (auth + db + deploy + monitoring that know about each other) is worth more than framework freedom. | create-vite gives a minimal, dependency-free starting point across many frameworks; you hand-assemble everything this CLI layers automatically. Not added in this tab-intake batch. |
 | create-t3-app (`t3-oss/create-t3-app`) | not indexed | If your stack is Next.js + tRPC + Prisma + Tailwind + NextAuth (the T3 stack), create-t3-app is purpose-built for it; pick TanStack CLI when the stack is TanStack Start and you want the same one-command composition over its add-on catalog. | Both are opinionated stack scaffolders; T3's opinions are fixed (a named stack), TanStack's are selectable per add-on — and swap the framework lock-in accordingly. Not added in this tab-intake batch. |
-| shadcn CLI (`shadcn-ui/ui`) | ✅ [shadcn/ui](../../web-ui/component-libraries/shadcn-ui.md) | For dropping a component into an existing project, the shadcn CLI is the model (it copies code you own); for whole-project scaffolding with auth/db/deploy wiring, TanStack CLI operates at the project level the shadcn CLI deliberately does not. | shadcn add gives you source files you edit forever; tanstack add gives you integration wiring a scaffold owns — different layers, and the shadcn add-on inside TanStack CLI composes both. |
+| shadcn CLI (`shadcn-ui/ui`) | ✅ [shadcn/ui](../../../web-ui/component-libraries/shadcn-ui.md) | For dropping a component into an existing project, the shadcn CLI is the model (it copies code you own); for whole-project scaffolding with auth/db/deploy wiring, TanStack CLI operates at the project level the shadcn CLI deliberately does not. | shadcn add gives you source files you edit forever; tanstack add gives you integration wiring a scaffold owns — different layers, and the shadcn add-on inside TanStack CLI composes both. |
 | degit (`Rich-Harris/degit`) | not indexed | Degit is the right tool for "clone that template repo without git history"; pick TanStack CLI when combinations matter — 27 add-ons with declared dependencies and conflicts compose correctly at generate time, while a frozen template decays as its stack moves. | degit is zero-magic and stack-agnostic but ships exactly one frozen state; the CLI re-resolves current add-on versions every run but only inside its ecosystem. Not added in this tab-intake batch. |
 
-TanStack CLI is the onboarding surface for the TanStack ecosystem: it scaffolds apps on [TanStack Router](../../web-ui/frameworks/app-frameworks/tanstack-router.md) (and Start), and can pre-wire [TanStack Query](../../web-ui/data-fetching/tanstack-query.md), TanStack Form and TanStack DB as add-ons — those libraries are the reason to pick the stack; the CLI is just how you get there. `--intent` installs skill mappings generated by TanStack Intent, a sibling project.
+TanStack CLI is the onboarding surface for the TanStack ecosystem: it scaffolds apps on [TanStack Router](../../../web-ui/frameworks/app-frameworks/tanstack-router.md) (and Start), and can pre-wire [TanStack Query](../../../web-ui/data-fetching/tanstack-query.md), TanStack Form and TanStack DB as add-ons — those libraries are the reason to pick the stack; the CLI is just how you get there. `--intent` installs skill mappings generated by TanStack Intent, a sibling project.
 
 ## Tech stack
 

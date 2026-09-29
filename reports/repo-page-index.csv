@@ -74,7 +74,7 @@ https://github.com/InternLM/lmdeploy,lmdeploy,serving-engines,categories/llm-inf
 https://github.com/ItzCrazyKns/Vane,vane,deep-research,categories/deep-research/vane.md
 https://github.com/JCodesMore/ai-website-cloner-template,ai-website-cloner-template,design-to-code,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md
 https://github.com/JaidedAI/EasyOCR,easyocr,ocr,categories/ocr/easyocr.md
-https://github.com/JetBrains/ideavim,ideavim,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/ideavim.md
+https://github.com/JetBrains/ideavim,ideavim,code-editors,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md
 https://github.com/JimLiu/baoyu-skills,baoyu-skills,content-production,categories/agent-skills/ai-writing/content-production/baoyu-skills.md
 https://github.com/JonB32/pure-agentic,pure-agentic,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/pure-agentic.md
 https://github.com/JuliusBrussee/caveman,caveman,engineering,categories/agent-skills/engineering/caveman.md
@@ -151,14 +151,14 @@ https://github.com/Sumandora/remove-refusals-with-transformers,remove-refusals-w
 https://github.com/SuperClaude-Org/SuperClaude_Framework,superclaude,coding-agent-harnesses,categories/agent-dev-methodology/coding-agent-harnesses/superclaude.md
 https://github.com/TKkk-iOSer/WeChatPlugin-MacOS,wechatplugin-macos,wechat,categories/im-automation/wechat/wechatplugin-macos.md
 https://github.com/TanStack/ai,tanstack-ai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md
-https://github.com/TanStack/alt-cli,tanstack-alt-cli,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tanstack-alt-cli.md
+https://github.com/TanStack/alt-cli,tanstack-alt-cli,tanstack-tooling,categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md
 https://github.com/TanStack/bling,tanstack-bling,app-frameworks,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md
 https://github.com/TanStack/charts,tanstack-charts,charts,categories/web-ui/charts/tanstack-charts.md
-https://github.com/TanStack/cli,tanstack-cli,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tanstack-cli.md
-https://github.com/TanStack/config,tanstack-config,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tanstack-config.md
-https://github.com/TanStack/container,tanstack-container,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tanstack-container.md
+https://github.com/TanStack/cli,tanstack-cli,tanstack-tooling,categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-cli.md
+https://github.com/TanStack/config,tanstack-config,tanstack-tooling,categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md
+https://github.com/TanStack/container,tanstack-container,tanstack-tooling,categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.md
 https://github.com/TanStack/db,tanstack-db,data-fetching,categories/web-ui/data-fetching/tanstack-db.md
-https://github.com/TanStack/devtools,tanstack-devtools,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md
+https://github.com/TanStack/devtools,tanstack-devtools,tanstack-tooling,categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md
 https://github.com/TanStack/form,tanstack-form,forms,categories/web-ui/forms/tanstack-form.md
 https://github.com/TanStack/highlight,tanstack-highlight,markdown-tools,categories/markdown-tools/tanstack-highlight.md
 https://github.com/TanStack/hotkeys,tanstack-hotkeys,keyboard-shortcuts,categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md
@@ -331,7 +331,7 @@ https://github.com/dbeaver/dbeaver,dbeaver,database-clients,categories/databases
 https://github.com/dealfonso/sapp,sapp,pdf-transform-signing,categories/pdf-tools/pdf-transform-signing/sapp.md
 https://github.com/debezium/debezium,debezium,data-sync,categories/databases/data-sync/debezium.md
 https://github.com/dee1024/pytorch-captcha-recognition,pytorch-captcha-recognition,captcha,categories/captcha/pytorch-captcha-recognition.md
-https://github.com/denoland/deno,deno,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/deno.md
+https://github.com/denoland/deno,deno,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/deno.md
 https://github.com/derv82/wifit3,wifit3,pentest,categories/pentest/wifit3.md
 https://github.com/dessant/buster,buster,captcha,categories/captcha/buster.md
 https://github.com/deusyu/translate-book,translate-book,translation,categories/agent-skills/ai-writing/translation/translate-book.md
@@ -548,7 +548,7 @@ https://github.com/microsoft/playwright,playwright,playwright-family,categories/
 https://github.com/microsoft/playwright-cli,playwright-cli,playwright-family,categories/web-automation/playwright-family/playwright-cli.md
 https://github.com/microsoft/playwright-mcp,playwright-mcp,playwright-family,categories/web-automation/playwright-family/playwright-mcp.md
 https://github.com/microsoft/qlib,qlib,investment-finance,categories/investment-finance/qlib.md
-https://github.com/microsoft/vscode,vscode,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/vscode.md
+https://github.com/microsoft/vscode,vscode,code-editors,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md
 https://github.com/mikf/gallery-dl,gallery-dl,media-download,categories/media-download/gallery-dl.md
 https://github.com/mikiarlo3/ai-copywriter,ai-copywriter,marketing-seo,categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md
 https://github.com/milanvarady/Applite,applite,package-manager-gui,categories/dev-utilities/package-manager-gui/applite.md
@@ -612,7 +612,7 @@ https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,cat
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md
 https://github.com/outsourc-e/hermes-workspace,hermes-workspace,supervision-surfaces,categories/agent-tooling/supervision-surfaces/hermes-workspace.md
-https://github.com/oven-sh/bun,bun,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/bun.md
+https://github.com/oven-sh/bun,bun,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/bun.md
 https://github.com/p-e-w/heretic,heretic,model-editing,categories/model-editing/heretic.md
 https://github.com/pahaz/sshtunnel,sshtunnel,networking,categories/networking/sshtunnel.md
 https://github.com/palmier-io/palmier-pro,palmier-pro,video-editing,categories/media-processing/video-editing/palmier-pro.md
@@ -704,7 +704,7 @@ https://github.com/sveltejs/svelte,svelte,view-frameworks,categories/web-ui/fram
 https://github.com/synthetic-sciences/openscience,openscience,deep-research,categories/deep-research/openscience.md
 https://github.com/tanweai/pua,pua,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/pua.md
 https://github.com/tartley/colorama,colorama,terminal-ui,categories/terminal-ui/colorama.md
-https://github.com/tauri-apps/tauri,tauri,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/tauri.md
+https://github.com/tauri-apps/tauri,tauri,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md
 https://github.com/tddworks/baguette,baguette,mobile-automation,categories/mobile-automation/baguette.md
 https://github.com/teamclairvoyant/airflow-maintenance-dags,airflow-maintenance-dags,workflow-orchestration,categories/workflow-orchestration/airflow-maintenance-dags.md
 https://github.com/temporalio/temporal,temporal,workflow-orchestration,categories/workflow-orchestration/temporal.md
@@ -733,7 +733,7 @@ https://github.com/vercel-labs/agent-browser,agent-browser,agent-browser-tools,c
 https://github.com/vercel-labs/agent-skills,vercel-agent-skills,engineering,categories/agent-skills/engineering/vercel-agent-skills.md
 https://github.com/vercel-labs/json-render,json-render,ai-design-generation,categories/ai-design-generation/json-render.md
 https://github.com/vercel-labs/openreview,openreview,ai-code-review,categories/ai-code-review/openreview.md
-https://github.com/vercel-labs/scriptc,scriptc,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/scriptc.md
+https://github.com/vercel-labs/scriptc,scriptc,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/scriptc.md
 https://github.com/vercel-labs/skills,vercel-skills,harness-extensions,categories/agent-tooling/harness-extensions/vercel-skills.md
 https://github.com/vercel/eve,eve,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/eve.md
 https://github.com/vercel/next.js,nextjs,app-frameworks,categories/web-ui/frameworks/app-frameworks/nextjs.md
@@ -775,10 +775,10 @@ https://github.com/ytdl-org/youtube-dl,youtube-dl,media-download,categories/medi
 https://github.com/yuin/goldmark,goldmark,markdown-tools,categories/markdown-tools/goldmark.md
 https://github.com/zarazhangrui/follow-builders,follow-builders,reading-tools,categories/reading-tools/follow-builders.md
 https://github.com/zarazhangrui/frontend-slides,frontend-slides,slides-ppt,categories/agent-skills/slides-ppt/frontend-slides.md
-https://github.com/zed-industries/zed,zed,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/zed.md
+https://github.com/zed-industries/zed,zed,code-editors,categories/dev-utilities/editors-and-runtimes/code-editors/zed.md
 https://github.com/zellij-org/zellij,zellij,terminal-ui,categories/terminal-ui/zellij.md
 https://github.com/zhaoxuya520/reverse-skill,reverse-skill,security,categories/agent-skills/security/reverse-skill.md
 https://github.com/zhayujie/CowAgent,cowagent,wechat,categories/im-automation/wechat/cowagent.md
-https://github.com/zion-sati/NetWasm,netwasm,editors-and-runtimes,categories/dev-utilities/editors-and-runtimes/netwasm.md
+https://github.com/zion-sati/NetWasm,netwasm,runtimes-and-compilers,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md
 https://github.com/zulip/zulip,zulip,team-chat,categories/team-chat/zulip.md
 https://gitlab.freedesktop.org/gstreamer/gstreamer,gstreamer,transcoding-and-pipelines,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md

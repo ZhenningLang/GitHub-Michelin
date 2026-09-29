@@ -2,7 +2,7 @@
 name: TanStack Container
 slug: tanstack-container
 repo: https://github.com/TanStack/container
-category: editors-and-runtimes
+category: tanstack-tooling
 tags: [browser-runtime, sandbox, node-compatibility, wasm, quickjs, developer-experience, tanstack]
 language: JavaScript
 license: MIT
@@ -75,7 +75,7 @@ health:
 
 You want to hand someone a running frontend project without asking them to install anything — the page you send should run the project itself. TanStack Container is MIT-licensed source for a sandbox that gives a browser tab its own virtual filesystem, Node-style processes, npm installs, app previews and resumable workspaces; as of 2026-09-28 the alpha packages are not published to npm yet.
 
-![TanStack Container — health radar](../../../assets/health/tanstack-container.svg)
+![TanStack Container — health radar](../../../../assets/health/tanstack-container.svg)
 
 ## When to use
 
@@ -87,7 +87,7 @@ Reach for it as a tracking bet, not an adoption bet: as of 2026-09-28 neither `@
 
 TanStack Container is a library you embed, not a service you phone. You install the SDK + runtime package pair, run one explicit setup step — `prepareRuntimeAssets('public/sandbox')`, which copies worker scripts and WASM (WebAssembly binaries of upstream compilers like esbuild and Rollup, pinned as ordinary npm dependencies) into a directory you host — and write a handful of SDK calls against an `AgentSession`. Everything else happens in the visitor's tab: a worker kernel boots; QuickJS (a small embeddable JavaScript interpreter) compiled to WASM executes the Node-style guest code against the virtual filesystem under enforced memory quotas and deadlines; npm packages are installed in-page with lifecycle scripts disabled; `WorkerHTTP` proxies a guest's port into a preview iframe served from a separate preview origin; and `session.snapshot()` / `session.restore()` persist files plus installed dependencies to browser storage and replay them into a fresh runtime. The analogy that fits is a small Node-shaped machine living inside the tab: files are emulated, "processes" are budgeted interpreter threads, and your server is only ever a static-file host. It is deliberately not an OS emulation — native addons, arbitrary binaries and unrestricted networking are outside the supported scope, and the project says so.
 
-![tanstack-container — backbone user story](../../../assets/flow/tanstack-container.svg)
+![tanstack-container — backbone user story](../../../../assets/flow/tanstack-container.svg)
 
 <!-- flow-steps:begin (generated from flows/tanstack-container.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,7 +109,7 @@ TanStack Container is a library you embed, not a service you phone. You install 
 ## When NOT to use
 
 - **You need a browser runtime you can ship this quarter.** Nothing is published — both `-experimental` npm names 404 as of 2026-09-28 — and ALPHA.md itself says the alpha is not ready. Use StackBlitz WebContainer (closed core but battle-tested) or Sandpack for docs-playground scope instead.
-- **Untrusted or AI-generated code that must be isolated.** The README states this is "not a production security boundary for arbitrary hostile projects" — permissions, quotas and deadlines are implemented but compatibility tests are not security certification. For a hostile workload pick a server-side sandbox with kernel/VM isolation: [E2B](../../sandboxing/e2b.md), [gVisor](../../sandboxing/gvisor.md), [Firecracker](../../sandboxing/firecracker.md). Never put sensitive source or credentials in this sandbox.
+- **Untrusted or AI-generated code that must be isolated.** The README states this is "not a production security boundary for arbitrary hostile projects" — permissions, quotas and deadlines are implemented but compatibility tests are not security certification. For a hostile workload pick a server-side sandbox with kernel/VM isolation: [E2B](../../../sandboxing/e2b.md), [gVisor](../../../sandboxing/gvisor.md), [Firecracker](../../../sandboxing/firecracker.md). Never put sensitive source or credentials in this sandbox.
 - **You need full Node/npm surface.** Native addons, arbitrary binaries, dependency install scripts and esbuild watch/serve are unsupported; the verified app surface is pinned Vite 7 / Start fixtures, not arbitrary packages. For the long tail use a real container runtime — or WebContainer, whose npm coverage is documented as much broader.
 - **A code snippet is what you want to embed, not a project.** [Sandpack](https://github.com/codesandbox/sandpack) ships interactive React component playgrounds at a fraction of the weight; a full virtual machine in the tab is overkill for one `<Counter />` example.
 - **Your audience is on Safari or phones.** Actual Safari is unverified by the project itself and phones are a stretch goal; a hosted playground with vendor QA coverage is safer there.
@@ -122,7 +122,7 @@ TanStack Container is a library you embed, not a service you phone. You install 
 | WebContainer (StackBlitz) | not a repo | When you need a browser runtime that works in production today, pick WebContainer; pick this page only when an MIT, forkable, self-hostable supply chain outweighs maturity — WebContainer's core runtime is proprietary (the GitHub repo ships no code; the runtime arrives via npm/CDN), so you are buying vendor terms, not source. | WebContainer: broadest in-tab npm coverage, commercial support, closed core with paid terms. This: full MIT source, an explicit owner/preview-origin isolation model, but unpublished alpha and compatibility verified only on pinned fixtures. |
 | Sandpack (CodeSandbox) | not indexed | When your docs embed live React examples, Sandpack is the small, already-shipped choice; when the visitor must install dependencies, run a server process and resume a workspace, this page is the only one of the two that attempts it. | Sandpack: Apache-2.0 component toolkit with a 2025-04 last push — check its freshness before adopting; this page: whole-project scope, still pre-publication. Not added in this tab-intake batch. |
 | BrowserFS | not indexed | If you are assembling your own in-browser runtime and only need a virtual `fs` API, BrowserFS is the building block; if you want installer + processes + preview + snapshots end to end, pick this page rather than composing them yourself. | BrowserFS is a library layer (stale since 2024), you wire everything above it; TanStack Container is a whole sandbox but pre-release and opinionated about hosting. Not added in this tab-intake batch. |
-| [E2B](../../sandboxing/e2b.md) | ✅ | If the code being run is untrusted and isolation is a product requirement, pick E2B's cloud microVM sandboxes — this page's README explicitly disclaims being a security boundary; if the workload is your own demo project and the cost model must be "it runs in the visitor's tab", pick this page. | E2B: real kernel-level isolation, but per-session server cost and cold-start latency. This page: zero server runtime, compute stays client-side, zero security certification. |
+| [E2B](../../../sandboxing/e2b.md) | ✅ | If the code being run is untrusted and isolation is a product requirement, pick E2B's cloud microVM sandboxes — this page's README explicitly disclaims being a security boundary; if the workload is your own demo project and the cost model must be "it runs in the visitor's tab", pick this page. | E2B: real kernel-level isolation, but per-session server cost and cold-start latency. This page: zero server runtime, compute stays client-side, zero security certification. |
 | Pyodide | not indexed | If the payload language is Python, Pyodide is the settled browser runtime — active, 14.9k stars (as of 2026-09); this page runs the JavaScript/TypeScript world only, and neither emulates the other's ecosystem. | Pyodide: mature CPython-on-WASM with a package index, no Node semantics. TanStack Container: a Node-ish guest surface (`fs`/`http`/processes) at alpha stage. Not added in this tab-intake batch. |
 
 ## Tech stack

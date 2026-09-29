@@ -2,7 +2,7 @@
 name: IdeaVim
 slug: ideavim
 repo: https://github.com/JetBrains/ideavim
-category: editors-and-runtimes
+category: code-editors
 tags: [vim, jetbrains, intellij, ide-plugin, editor, keybindings, kotlin]
 language: Kotlin
 license: MIT
@@ -68,7 +68,7 @@ health:
 
 A Vim emulation plugin for JetBrains IDEs (IntelliJ IDEA, PyCharm, GoLand, WebStorm, Rider, etc.) — Vim motions, modes, registers, macros, and a `.ideavimrc` inside the IDE, maintained by JetBrains itself.
 
-![ideavim — health radar](../../../assets/health/ideavim.svg)
+![ideavim — health radar](../../../../assets/health/ideavim.svg)
 
 ## When to use
 
@@ -80,7 +80,7 @@ You reach for it specifically when the IDE is non-negotiable (large JVM/Kotlin/G
 
 IdeaVim is a Vim *engine* written in Kotlin that runs inside the IDE's editor component — it does not embed a real Vim process. It intercepts your keystrokes in the editor pane and runs its own mode state machine (normal/insert/visual): when you type `ciw` it parses the operator and applies the change directly to the IDE's own document model — not to a buffer copy — so IntelliJ's refactorings, debugger, and indexing still operate on the same text you are editing. What stays yours is the configuration: a `~/.ideavimrc` file in Vim-flavored syntax, `set` flags to switch on bundled emulations (surround, multiple-cursors, commentary, easymotion), and `<Action>(ActionId)` mappings that reach IDE features from the Vim keylayer (the README explicitly steers you away from `:action` inside mappings — `<Action>` is the supported form). Keymap clashes are resolved in the IDE's own Vim/Keymap settings pages, and `Tools | Vim` toggles the whole layer off without a restart.
 
-![IdeaVim — backbone user story](../../../assets/flow/ideavim.svg)
+![IdeaVim — backbone user story](../../../../assets/flow/ideavim.svg)
 
 <!-- flow-steps:begin (generated from flows/ideavim.json by tools/flow_card.py — do not edit) -->
 <details>
