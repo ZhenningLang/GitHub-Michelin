@@ -110,7 +110,7 @@ TBL 是一个本地 Flask 网页服务加浏览器前端（打包成 Windows／m
 
 ## 何时不用
 
-- **源文件是 PDF。** TBL 只读 EPUB、DOCX、SRT、TXT；PDF 支持还在待办清单里（`docs/BACKLOG.md` 第 5.1 条），维护者给的临时方案是先用 pdf-craft 转换。要保住公式和分栏版式的论文，改用 [PDFMathTranslate](../pdf-tools/pdfmathtranslate.zh.md)。
+- **源文件是 PDF。** TBL 只读 EPUB、DOCX、SRT、TXT；PDF 支持还在待办清单里（`docs/BACKLOG.md` 第 5.1 条），维护者给的临时方案是先用 pdf-craft 转换。要保住公式和分栏版式的论文，改用 [PDFMathTranslate](../pdf-tools/pdf-translation/pdfmathtranslate.zh.md)。
 - **你想把它写进流水线或当成包安装。** 它没有 PyPI 包，命令行要从克隆下来的仓库里配 `requirements.txt` 运行。要 `pip install` 加一条命令进 cron／CI，改用 [Bilingual Book Maker](bilingual-book-maker.zh.md)。
 - **你本来就在 Calibre 里管电子书，想在书库里直接翻译。** 改用 Ebook Translator Calibre Plugin（未收录）——它在 Calibre 内部运行、结果写回书库；TBL 是独立服务，产出还得再导回去。
 - **你想把一个实例放到网络上给多人用。** 一个服务就是一个共享工作区，没有用户账号：能连上它的人都看得到所有任务、历史和输出文件，而保护 `/api/` 的令牌就发给每个打开页面的人。只在 `localhost` 上用；真要多人共享，自己在前面加带认证的反向代理，或者每人一个实例。
@@ -124,7 +124,7 @@ TBL 是一个本地 Flask 网页服务加浏览器前端（打包成 Windows／m
 |---|---|---|---|
 | [Bilingual Book Maker](bilingual-book-maker.zh.md) | ✅ | 要一个能 pip 安装、无人值守批量产出左右对照双语 EPUB 的命令行，选 Bilingual Book Maker；要让非开发者用图形界面、带人物性别的术语表、产出保住格式的单语译本，选 TBL。 | BBM 更早（2023 年）、MIT、在 PyPI 上发包，还能把 PDF 读成 txt；TBL 多了带校验的占位符标签保留、DOCX、术语表／文风预设、TTS 和桌面打包，代价是 AGPL 且不发包。 |
 | [translate-book](../agent-skills/ai-writing/translation/translate-book.zh.md) | ✅ | 你本来就在 Claude Code 或 Codex 里干活、想让 agent 编排整本书的翻译，选 translate-book；翻译器要自己对着 Ollama 或 API key 独立跑，选 TBL。 | translate-book 跑在你的 coding agent 会话里，需要 Calibre 和 Pandoc；TBL 是带自有断点库的独立服务／命令行，自带一个只负责调用 `translate.py` 的官方 skill。 |
-| [PDFMathTranslate](../pdf-tools/pdfmathtranslate.zh.md) | ✅ | 输入是 PDF，尤其带公式和多栏排版时，选 PDFMathTranslate；输入是 EPUB／DOCX／SRT／TXT 时，选 TBL。 | PDFMathTranslate 能保住 TBL 根本读不了的 PDF 版式；TBL 覆盖 PDF 工具不管的可重排格式和字幕时间轴。 |
+| [PDFMathTranslate](../pdf-tools/pdf-translation/pdfmathtranslate.zh.md) | ✅ | 输入是 PDF，尤其带公式和多栏排版时，选 PDFMathTranslate；输入是 EPUB／DOCX／SRT／TXT 时，选 TBL。 | PDFMathTranslate 能保住 TBL 根本读不了的 PDF 版式；TBL 覆盖 PDF 工具不管的可重排格式和字幕时间轴。 |
 | Ebook Translator Calibre Plugin（`bookfere/Ebook-Translator-Calibre-Plugin`） | 未收录 | 书已经在 Calibre 里、想把翻译当成书库里的一个操作，选这个插件；要独立程序、术语表、可续跑断点和默认本地模型，选 TBL。 | 插件（GPL-3.0）继承 Calibre 的格式转换能力，但把你绑在 Calibre 上；TBL 不需要 Calibre，但是一个单独的服务。真实仓库，本次标签页收录批次未添加。 |
 | LLM-Subtrans（`machinewrapped/llm-subtrans`） | 未收录 | 只做字幕、需要 SSA／ASS 或 VTT 时，选 LLM-Subtrans；字幕只是书和文档之外的一类任务时，选 TBL。 | LLM-Subtrans 围绕字幕格式和分批设计；TBL 把 SRT 当作四个适配器之一。真实仓库，本次标签页收录批次未添加。 |
 

@@ -791,20 +791,20 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
-| **PDF.js** | 当你需要在浏览器/Node 里渲染或读取 PDF（Firefox 的引擎）时用它——它不创建也不编辑 PDF。 | Apache-2.0 | A（6/6） | [中](categories/pdf-tools/pdfjs.zh.md) · [EN](categories/pdf-tools/pdfjs.md) |
-| **pdf-lib** | 当你需要在 JS/TS 里创建或修改 PDF——在浏览器、Node、Deno 或 React Native 中——且不需要原生依赖时用它。 | MIT | C（4/6） | [中](categories/pdf-tools/pdf-lib.zh.md) · [EN](categories/pdf-tools/pdf-lib.md) |
-| **jsPDF** | 当你需要在浏览器里从 HTML、文本和图形生成客户端 PDF——它只创建不编辑已有 PDF——时用它。 | MIT | B（5/6） | [中](categories/pdf-tools/jspdf.zh.md) · [EN](categories/pdf-tools/jspdf.md) |
-| **PyMuPDF** | PyMuPDF is a high performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents. | AGPL-3.0 | B（6/6） | [EN](categories/pdf-tools/pymupdf.md) · [中](categories/pdf-tools/pymupdf.zh.md) |
-| **pdfplumber** | Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables. | MIT | B（6/6） | [EN](categories/pdf-tools/pdfplumber.md) · [中](categories/pdf-tools/pdfplumber.zh.md) |
-| **OCRmyPDF** | OCRmyPDF adds an OCR text layer to scanned PDF files, allowing them to be searched | MPL-2.0 | B（6/6） | [EN](categories/pdf-tools/ocrmypdf.md) · [中](categories/pdf-tools/ocrmypdf.zh.md) |
-| **qpdf** | qpdf: A content-preserving PDF document transformer | Apache-2.0 | A（6/6） | [EN](categories/pdf-tools/qpdf.md) · [中](categories/pdf-tools/qpdf.zh.md) |
-| **SAPP** | 当 PHP 应用必须追加 PKCS#12 签名、又不能破坏已有 PDF 修订时用它——规范覆盖较窄，也不支持加密 PDF。 | LGPL-3.0-or-later | B（5/6） | [中](categories/pdf-tools/sapp.zh.md) · [EN](categories/pdf-tools/sapp.md) |
-| **FPDI** | 当基于 FPDF／TCPDF／tFPDF 的 PHP 应用要把已有 PDF 的页面当模板导入时用它——免费解析器不支持加密文件与压缩交叉引用流。 | MIT | A（5/6） | [中](categories/pdf-tools/fpdi.zh.md) · [EN](categories/pdf-tools/fpdi.md) |
-| **pyHanko** | 当 Python 需要按成文记录的 PAdES／LTV 流程创建或验证 PDF 签名时用它——上游仍自标 beta。 | MIT | A（6/6） | [中](categories/pdf-tools/pyhanko.zh.md) · [EN](categories/pdf-tools/pyhanko.md) |
-| **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | AGPL-3.0 | C（5/6） | [中](categories/pdf-tools/pdfmathtranslate.zh.md) · [EN](categories/pdf-tools/pdfmathtranslate.md) |
-| **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | AGPL-3.0 | C（6/6） | [中](categories/pdf-tools/babeldoc.zh.md) · [EN](categories/pdf-tools/babeldoc.md) |
-| **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | AGPL-3.0 | D（4/6） | [中](categories/pdf-tools/pdfmathtranslate-next.zh.md) · [EN](categories/pdf-tools/pdfmathtranslate-next.md) |
-| **pdfcn** | 要用 shadcn CLI 把带主题的 React PDF 组件和整页文档模板（发票、报告、面单）复制进项目、底下跑 Takumi 或 Forme 时用它——只生成新 PDF。 | MIT | B（6/6） | [中](categories/pdf-tools/pdfcn.zh.md) · [EN](categories/pdf-tools/pdfcn.md) |
+| **PDF.js** | 当你需要在浏览器/Node 里渲染或读取 PDF（Firefox 的引擎）时用它——它不创建也不编辑 PDF。 | Apache-2.0 | A（6/6） | [中](categories/pdf-tools/pdf-reading/pdfjs.zh.md) · [EN](categories/pdf-tools/pdf-reading/pdfjs.md) |
+| **pdf-lib** | 当你需要在 JS/TS 里创建或修改 PDF——在浏览器、Node、Deno 或 React Native 中——且不需要原生依赖时用它。 | MIT | C（4/6） | [中](categories/pdf-tools/pdf-generation/pdf-lib.zh.md) · [EN](categories/pdf-tools/pdf-generation/pdf-lib.md) |
+| **jsPDF** | 当你需要在浏览器里从 HTML、文本和图形生成客户端 PDF——它只创建不编辑已有 PDF——时用它。 | MIT | B（5/6） | [中](categories/pdf-tools/pdf-generation/jspdf.zh.md) · [EN](categories/pdf-tools/pdf-generation/jspdf.md) |
+| **PyMuPDF** | PyMuPDF is a high performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents. | AGPL-3.0 | B（6/6） | [EN](categories/pdf-tools/pdf-reading/pymupdf.md) · [中](categories/pdf-tools/pdf-reading/pymupdf.zh.md) |
+| **pdfplumber** | Plumb a PDF for detailed information about each char, rectangle, line, et cetera — and easily extract text and tables. | MIT | B（6/6） | [EN](categories/pdf-tools/pdf-reading/pdfplumber.md) · [中](categories/pdf-tools/pdf-reading/pdfplumber.zh.md) |
+| **OCRmyPDF** | OCRmyPDF adds an OCR text layer to scanned PDF files, allowing them to be searched | MPL-2.0 | B（6/6） | [EN](categories/pdf-tools/pdf-transform-signing/ocrmypdf.md) · [中](categories/pdf-tools/pdf-transform-signing/ocrmypdf.zh.md) |
+| **qpdf** | qpdf: A content-preserving PDF document transformer | Apache-2.0 | A（6/6） | [EN](categories/pdf-tools/pdf-transform-signing/qpdf.md) · [中](categories/pdf-tools/pdf-transform-signing/qpdf.zh.md) |
+| **SAPP** | 当 PHP 应用必须追加 PKCS#12 签名、又不能破坏已有 PDF 修订时用它——规范覆盖较窄，也不支持加密 PDF。 | LGPL-3.0-or-later | B（5/6） | [中](categories/pdf-tools/pdf-transform-signing/sapp.zh.md) · [EN](categories/pdf-tools/pdf-transform-signing/sapp.md) |
+| **FPDI** | 当基于 FPDF／TCPDF／tFPDF 的 PHP 应用要把已有 PDF 的页面当模板导入时用它——免费解析器不支持加密文件与压缩交叉引用流。 | MIT | A（5/6） | [中](categories/pdf-tools/pdf-generation/fpdi.zh.md) · [EN](categories/pdf-tools/pdf-generation/fpdi.md) |
+| **pyHanko** | 当 Python 需要按成文记录的 PAdES／LTV 流程创建或验证 PDF 签名时用它——上游仍自标 beta。 | MIT | A（6/6） | [中](categories/pdf-tools/pdf-transform-signing/pyhanko.zh.md) · [EN](categories/pdf-tools/pdf-transform-signing/pyhanko.md) |
+| **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | AGPL-3.0 | C（5/6） | [中](categories/pdf-tools/pdf-translation/pdfmathtranslate.zh.md) · [EN](categories/pdf-tools/pdf-translation/pdfmathtranslate.md) |
+| **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | AGPL-3.0 | C（6/6） | [中](categories/pdf-tools/pdf-translation/babeldoc.zh.md) · [EN](categories/pdf-tools/pdf-translation/babeldoc.md) |
+| **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | AGPL-3.0 | D（4/6） | [中](categories/pdf-tools/pdf-translation/pdfmathtranslate-next.zh.md) · [EN](categories/pdf-tools/pdf-translation/pdfmathtranslate-next.md) |
+| **pdfcn** | 要用 shadcn CLI 把带主题的 React PDF 组件和整页文档模板（发票、报告、面单）复制进项目、底下跑 Takumi 或 Forme 时用它——只生成新 PDF。 | MIT | B（6/6） | [中](categories/pdf-tools/pdf-generation/pdfcn.zh.md) · [EN](categories/pdf-tools/pdf-generation/pdfcn.md) |
 
 ### workflow-orchestration
 

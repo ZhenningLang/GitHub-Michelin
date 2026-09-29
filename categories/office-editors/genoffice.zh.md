@@ -110,7 +110,7 @@ health:
 - **要把浏览器编辑器嵌进自己的产品，或需要实时协同** → “点文件→浏览器里出编辑器”选 [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md) 或 [Collabora Online](collabora-online.zh.md)，要把编辑器做进自己的应用选 [Univer](univer.zh.md)。GenOffice 是单用户桌面应用，README 和代码树里都没有服务端编辑器或多人协作。
 - **离线或禁止外联、却又想用 AI 的环境** → 编辑在本机，但所有 AI 功能都要调远端模型，除非你把自定义槽位指向本地 OpenAI 兼容服务；默认登录走 Genspark 代理，网页搜索兜底用 Parallel 的免费 MCP 或抓 DuckDuckGo，官方安装包**默认发送 Google Analytics 4 使用事件**（可在设置里关闭，见 `PRIVACY.md`）。若策略不允许，用 LibreOffice 加本地模型，或 [office-automation](../office-automation/INDEX.zh.md) 里的库。
 - **服务端或 CI 文档流水线** → 用 [python-docx](../office-automation/python-docx.zh.md) / [python-pptx](../office-automation/python-pptx.zh.md) / [XlsxWriter](../office-automation/xlsxwriter.zh.md)，或单二进制的 [OfficeCLI](../office-automation/officecli.zh.md)。`genoffice` 随桌面应用一起安装（npm 上既没有 `genoffice` 也没有 `@genoffice/cli`），而且 `render`、`convert --to pdf`、`create_pdf` 会拉起一个隐藏的 GenOffice 进程，所以 Linux 服务器得装完整应用外加虚拟显示（`xvfb-run`）。
-- **在 Linux 上转换扫描版 PDF** → README 说扫描页走*系统* OCR，且只写了“macOS 和 Windows”；Linux 上先用 [OCRmyPDF](../pdf-tools/ocrmypdf.zh.md) 处理扫描件。[推断：文档没有写 Linux 的 OCR 路径]
+- **在 Linux 上转换扫描版 PDF** → README 说扫描页走*系统* OCR，且只写了“macOS 和 Windows”；Linux 上先用 [OCRmyPDF](../pdf-tools/pdf-transform-signing/ocrmypdf.zh.md) 处理扫描件。[推断：文档没有写 Linux 的 OCR 路径]
 - **作为多年期的组织标准** → 仓库只有两个月大（2026-07-31 创建），在 `v0.x` 线上约两天一发。要给整个团队定办公套件，在 GenOffice 攒出更长记录之前，二十年的 LibreOffice 或 ONLYOFFICE 更稳。
 
 ## 横向对比

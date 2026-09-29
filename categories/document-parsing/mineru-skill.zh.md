@@ -85,7 +85,7 @@ health:
 
 - **机密、受监管或隔离网环境中的扫描件与 Office 文件不能离开本地。** 请改用 [Docling](docling.zh.md)、[Marker](marker.zh.md)、[olmOCR](olmocr.zh.md) 或自托管 MinerU；默认 cloud engine 会把输入上传到 MinerU。
 - **不能接受云端 quota、文件上限、API 变化或服务不可用。** 请改用自托管 MinerU 或 [Docling](docling.zh.md)；仓库常量把 Agent 路径限制为 10 MB/20 页，把 Standard 路径限制为 200 MB/200 页。
-- **语料主要是干净的 born-digital PDF，而且速度比视觉恢复更重要。** 请直接用 [PyMuPDF](../pdf-tools/pymupdf.zh.md) 或 PyMuPDF4LLM；MinerU Skill 的可选 local engine 在这个场景本身就是薄 PyMuPDF4LLM 路径。
+- **语料主要是干净的 born-digital PDF，而且速度比视觉恢复更重要。** 请直接用 [PyMuPDF](../pdf-tools/pdf-reading/pymupdf.zh.md) 或 PyMuPDF4LLM；MinerU Skill 的可选 local engine 在这个场景本身就是薄 PyMuPDF4LLM 路径。
 - **需要完整 ingestion platform，包括 connector、partition strategy、enrichment 和 schema extraction。** 请改用 [Unstructured](unstructured.zh.md)；MinerU Skill 增加了 Markdown chunking 和 delivery sink，但不是完整文档 ETL 平台。
 - **要求第一方 MinerU 兼容与 release 同步。** 请使用官方 MinerU API/MCP 工具；MinerU Skill 是第三方 wrapper，可能滞后上游变化。
 - **常规输入即使考虑 split 仍超过 Standard API 限制。** 请改用自托管 MinerU、[Marker](marker.zh.md) 或 [Docling](docling.zh.md)；`--split` 只增加客户端分片/合并，不能移除云依赖或 quota 暴露。
@@ -97,7 +97,7 @@ health:
 | Self-hosted MinerU | 未收录 | 隐私、引擎版本控制和摆脱云文件上限值得承担 GPU/模型运维时选自托管 MinerU；需要立即给 agent 使用、又不想部署模型时选 MinerU Skill。 | 两者可以使用 MinerU 解析能力，但前者拥有推理栈，后者只拥有客户端编排和投递层。 |
 | [Docling](docling.zh.md) | ✅ | 需要本地、进程内文档解析和标准 RAG 集成时选 Docling；薄 CLI/MCP、免 token 起步和直接投递内容工具是决定因素时选 MinerU Skill。 | Docling 承担本地模型和包依赖；MinerU Skill 承担网络、quota、隐私和上游服务风险。 |
 | [Marker](marker.zh.md) | ✅ | 需要自托管 PDF 转 Markdown，且能接受本地模型与硬件时选 Marker；不安装模型比文件留在本地更重要时选 MinerU Skill。 | Marker 消耗本地计算与存储；MinerU Skill 消耗云 API 容量，并跨服务边界发送文档。 |
-| [PyMuPDF](../pdf-tools/pymupdf.zh.md) | ✅ | born-digital PDF 需要快速确定性抽取时选 PyMuPDF；扫描、表格、公式、Office 格式、batch 路由和 agent 输出体验值得调用远程 parser 时选 MinerU Skill。 | PyMuPDF 轻且本地，但更底层；MinerU Skill 更广、更适合 agent，也更难控制。 |
+| [PyMuPDF](../pdf-tools/pdf-reading/pymupdf.zh.md) | ✅ | born-digital PDF 需要快速确定性抽取时选 PyMuPDF；扫描、表格、公式、Office 格式、batch 路由和 agent 输出体验值得调用远程 parser 时选 MinerU Skill。 | PyMuPDF 轻且本地，但更底层；MinerU Skill 更广、更适合 agent，也更难控制。 |
 | [Unstructured](unstructured.zh.md) | ✅ | 生产文档 ETL 和 connector-heavy ingestion 选 Unstructured；agent 工作流中的单命令解析与投递选 MinerU Skill。 | Unstructured 是更大的处理平台，运维表面也更大；MinerU Skill 是更小的 client，但核心质量和可用性依赖 MinerU。 |
 
 ## 技术栈
