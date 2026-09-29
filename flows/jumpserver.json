@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "JumpServer does",
+    "zh": "JumpServer 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "On a clean 4-core / 8 GB Linux server, run the quick-start script",
+      "zh": "在一台干净的 4 核 8 GB Linux 上跑快速开始脚本",
+      "code": "quick_start.sh | bash"
+    },
+    {
+      "lane": "them",
+      "en": "Installs Docker and starts core, KoKo, Chen, web, PostgreSQL and Redis",
+      "zh": "装好 Docker，拉起核心、连接器、PostgreSQL 和 Redis",
+      "component": {
+        "en": "installer (jmsctl.sh)",
+        "zh": "安装器 jmsctl.sh"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Log in as admin, add assets and their accounts, grant users access",
+      "zh": "以 admin 登录，录入资产和账号，给用户授权",
+      "code": "http://your-jumpserver-ip/"
+    },
+    {
+      "lane": "you",
+      "en": "Engineers open sessions from the web terminal instead of holding passwords",
+      "zh": "工程师从网页终端发起会话，手里不再有密码"
+    },
+    {
+      "lane": "them",
+      "en": "Checks the permission, fills in the stored credential and proxies the session",
+      "zh": "校验授权，代填保管的凭据，转发会话",
+      "component": {
+        "en": "KoKo connector",
+        "zh": "KoKo 连接器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Records the session and every command for replay and audit",
+      "zh": "录下会话和每条命令，供回放和审计",
+      "component": {
+        "en": "core audit logs",
+        "zh": "核心审计日志"
+      }
+    }
+  ],
+  "value": {
+    "en": "Nobody holds production passwords anymore, and every privileged session has a named owner and a replayable record",
+    "zh": "再没人手握生产密码，每个特权会话都有具名责任人和可回放记录"
+  },
+  "sources": [
+    "jumpserver README.md dev @ 2026-09-29 Quickstart: 4 CPU / 8 GB, curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash, http://your-jumpserver-ip/, admin / ChangeMe",
+    "jumpserver/installer dev @ 2026-09-29: quick_start.sh downloads the installer; scripts/gists/service.sh common_services=(core kael celery koko chen web); compose/postgresql.yml, redis.yml; jmsctl.sh",
+    "jumpserver/koko README @ 2026-09-29: connector for SSH, Telnet, Kubernetes, SFTP and database protocols; Web Terminal",
+    "jumpserver apps/ (accounts, perms, audits, terminal) dev @ 2026-09-29; homepage product nav: Account Management (credential lifecycle), Audit (recording & replay)"
+  ]
+}

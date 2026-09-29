@@ -112,6 +112,7 @@ Apache Avro,categories/networking/thriftpy.md,,no
 Apache Curator,categories/databases/database-clients/prettyzoo.md,,no
 Apache ECharts,categories/agent-skills/visual-content/lieflat-charts.md,,no
 Apache ECharts (`apache/echarts`),categories/web-ui/charts/tanstack-charts.md,,no
+Apache Guacamole (`apache/guacamole-server`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Apache Thrift (official `thrift` Python lib),categories/networking/thriftpy.md,,no
 Apache Tika,categories/web-scraping/article-extraction/boilerpipe.md,,no
 Apollo Client (`apollographql/apollo-client`),categories/web-ui/data-fetching/tanstack-query.md,,no
@@ -663,6 +664,7 @@ New API,categories/api-gateway/funtool.md,,no
 NewPipe (`TeamNewPipe/NewPipe`),categories/streaming-clients/pipepipe.md,,no
 NewsBlur,categories/reading-tools/netnewswire.md,,no
 newspaper4k (`AndyTheFactory/newspaper4k`),categories/web-scraping/article-extraction/newspaper.md,,no
+Next Terminal (`next-terminal/next-terminal`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Nextcloud,categories/document-management/copyparty.md,,no
 Nextcloud (richdocuments),categories/office-editors/collabora-online.md,,no
 Nextcloud Photos,categories/document-management/immich.md,,no
@@ -963,6 +965,7 @@ Taskwarrior,categories/agent-tooling/work-state/beads.md,,no
 TeamViewer,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Teedy / sismics docs,categories/document-management/paperless-ngx.md,,no
 Telefunc,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
+Teleport (`gravitational/teleport`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 termcolor / colored,categories/terminal-ui/colorama.md,,no
 Terminal-Bench,categories/llm-eval/swe-bench.md,,no
 texify,categories/ocr/latex-ocr.md,,no
@@ -1031,6 +1034,7 @@ VSCodeVim,categories/dev-utilities/editors-and-runtimes/ideavim.md,,no
 VSCodium,categories/dev-utilities/editors-and-runtimes/vscode.md,,no
 Vue DevTools (`vuejs/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-devtools.md,,no
 VueUse (`vueuse/vueuse`),categories/web-ui/scheduling/tanstack-pacer.md,,no
+Warpgate (`warp-tech/warpgate`),categories/dev-utilities/ops-infra/jumpserver.md,,no
 Wasmer / Wasmtime,categories/dev-utilities/editors-and-runtimes/deno.md,,no
 Wav2Vec 2.0 / HuBERT,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 Weaviate,categories/rag-retrieval/vector-search/INDEX.md,,no

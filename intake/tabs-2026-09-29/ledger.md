@@ -21,3 +21,4 @@
 | rtk-ai/rtk | sync | done | categories/agent-frameworks/coding-agents/orchestration-and-review/rtk.md | 新鲜页，sync-entry 按阈值未重核，无改动 | rtk-ai/rtk |
 | steipete/agent-scripts | add | done | categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md | 处理中新开的标签（标签写法 �� | steipete/agent-scripts |
 | EverMind-AI/Raven | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md | 处理中新开的标签（标签写法 �� | evermind-ai/raven |
+| jumpserver/jumpserver | add | done | categories/dev-utilities/ops-infra/jumpserver.md | 处理中新开的标签 | jumpserver/jumpserver |

@@ -15,6 +15,7 @@
 | **RustDesk** | 当你需要一款开源、自托管的跨平台远程桌面来访问自己的机器时用它——但需要自己管理中继服务器或接受 P2P 局限。 | A（6/6） | [→](rustdesk.zh.md) |
 | **Vaultwarden** | 当你想要一款自托管的、Rust 编写的 Bitwarden 兼容密码管理器时用它——但它是非官方实现，AGPL-3.0 许可，且核心维护者为单人。 | B（6/6） | [→](vaultwarden.zh.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | A（6/6） | [→](descheduler.zh.md) |
+| **JumpServer** | 当你需要一台自建堡垒机（PAM）替人保管目标机凭据、录下每个 SSH、RDP、数据库和 Kubernetes 会话时用它——但社区版上限 5000 台资产，高可用、SSO、改密都在企业版，且每年都有严重级漏洞公告。 | B（6/6） | [→](jumpserver.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [RustDesk](rustdesk.zh.md) | ✅ | A（6/6） | 当你需要一款开源、自托管的跨平台远程桌面来访问自己的机器时用它——但需要自己管理中继服务器或接受 P2P 局限。 |
 | [Vaultwarden](vaultwarden.zh.md) | ✅ | B（6/6） | 当你想要一款自托管的、Rust 编写的 Bitwarden 兼容密码管理器时用它——但它是非官方实现，AGPL-3.0 许可，且核心维护者为单人。 |
 | [Descheduler](descheduler.zh.md) | ✅ | A（6/6） | 定期驱逐违反 `DeschedulerPolicy` 的 Kubernetes Pod，让 kube-scheduler 重新安置——集群内漂移纠正，不是算出来的 placement 计划。 |
+| [JumpServer](jumpserver.zh.md) | ✅ | B（6/6） | 当你需要一台自建堡垒机（PAM）替人保管目标机凭据、录下每个 SSH、RDP、数据库和 Kubernetes 会话时用它——但社区版上限 5000 台资产，高可用、SSO、改密都在企业版，且每年都有严重级漏洞公告。 |
 
 ## 什么该放这里
 

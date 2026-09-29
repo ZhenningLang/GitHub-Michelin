@@ -15,6 +15,7 @@
 | **RustDesk** | Use it when you need an open-source, self-hosted remote desktop for your own machines across platforms — but it requires managing your own relay server or accepting P2P limitations. | A (6/6) | [→](rustdesk.md) |
 | **Vaultwarden** | Use it when you want a self-hosted, Bitwarden-compatible password manager in Rust — but it is unofficial, AGPL-3.0, and the core maintainer is a single user. | B (6/6) | [→](vaultwarden.md) |
 | **Descheduler** | Use it when a Kubernetes cluster has drifted out of balance and you want a CronJob that evicts pods violating your policy so the scheduler re-places them — not a computed placement plan. | A (6/6) | [→](descheduler.md) |
+| **JumpServer** | Use it when you need a self-hosted bastion / PAM that holds target credentials and records every SSH, RDP, database and Kubernetes session — but Community caps at 5,000 assets, HA/SSO/rotation are Enterprise-only, and critical CVEs arrive yearly. | B (6/6) | [→](jumpserver.md) |
 
 ## Comparison matrix
 
@@ -28,6 +29,7 @@
 | [RustDesk](rustdesk.md) | ✅ | A (6/6) | Use it when you need an open-source, self-hosted remote desktop for your own machines across platforms — but it requires managing your own relay server or accepting P2P limitations. |
 | [Vaultwarden](vaultwarden.md) | ✅ | B (6/6) | Use it when you want a self-hosted, Bitwarden-compatible password manager in Rust — but it is unofficial, AGPL-3.0, and the core maintainer is a single user. |
 | [Descheduler](descheduler.md) | ✅ | A (6/6) | Periodically evicts Kubernetes pods that violate your `DeschedulerPolicy` so kube-scheduler re-places them — in-cluster drift correction, not a computed placement plan. |
+| [JumpServer](jumpserver.md) | ✅ | B (6/6) | Use it when you need a self-hosted bastion / PAM that holds target credentials and records every SSH, RDP, database and Kubernetes session — but Community caps at 5,000 assets, HA/SSO/rotation are Enterprise-only, and critical CVEs arrive yearly. |
 
 ## What belongs here
 
