@@ -16,4 +16,4 @@
 | alphaXiv/OpenResearch | sync | done | categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md | 新鲜页，sync-entry 按阈值未重核，无改动 | alphaxiv/openresearch |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | yetone/magpie | add | done | categories/api-gateway/magpie-model-router.md | 处理中新开的标签；slug 避开已收录的 Blinue/Magpie | yetone/magpie |
-| pingdotgg/t3code | sync | running |  | 已收录，标签又被打开 | pingdotgg/t3code |
+| pingdotgg/t3code | sync | done | categories/agent-frameworks/coding-agents/terminal-agents/t3code.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pingdotgg/t3code |
