@@ -512,6 +512,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Hallmark** | Use it when a Claude Code, Cursor, or Codex agent needs an opinionated anti-slop design brief, audit, redesign, or study workflow. | MIT | B (4/5) | [EN](categories/agent-skills/design/ui-taste/hallmark.md) · [中](categories/agent-skills/design/ui-taste/hallmark.zh.md) |
 | **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | MIT | B (4/5) | [EN](categories/agent-skills/design/visual-artifacts/drawio-skill.md) · [中](categories/agent-skills/design/visual-artifacts/drawio-skill.zh.md) |
 | **Interface Design** | A craft-first design-engineering skill for Claude Code / Codex product UI: intent-first domain exploration, a mandatory per-component decision checkpoint, cross-session memory via `.interface-design/system.md`, plus strict design-review and diff-scoped design-deslop commands. | MIT | C (4/5) | [EN](categories/agent-skills/design/ui-taste/interface-design.md) · [中](categories/agent-skills/design/ui-taste/interface-design.zh.md) |
+| **Anti Slop** | Use it when the agent's UI and copy keep inventing stats, testimonials and dead links: 38 rules plus a PASS/FAIL Delivery Gate, a filter that leaves the look to your `DESIGN.md`. | MIT | C (5/6) | [EN](categories/agent-skills/design/ui-taste/anti-slop.md) · [中](categories/agent-skills/design/ui-taste/anti-slop.zh.md) |
 
 #### agent-skills / writing
 

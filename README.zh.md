@@ -509,6 +509,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Hallmark** | 当 Claude Code、Cursor、Codex agent 需要有主张的反 AI 味设计 brief、审计、重设计或研究流程时用它。 | MIT | B（4/5） | [中](categories/agent-skills/design/ui-taste/hallmark.zh.md) · [EN](categories/agent-skills/design/ui-taste/hallmark.md) |
 | **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | MIT | B（4/5） | [中](categories/agent-skills/design/visual-artifacts/drawio-skill.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/drawio-skill.md) |
 | **Interface Design** | 面向 Claude Code / Codex 产品界面的工艺优先设计工程 skill：意图先行的领域探索、逐组件的强制决策检查点、经 `.interface-design/system.md` 的跨会话记忆，外加严格的 design-review 与限定 diff 范围的 design-deslop 命令。 | MIT | C（4/5） | [中](categories/agent-skills/design/ui-taste/interface-design.zh.md) · [EN](categories/agent-skills/design/ui-taste/interface-design.md) |
+| **Anti Slop** | 当 agent 做的 UI 和文案总在编造数据、评价和死链接时用它：38 条规则加一份 PASS/FAIL 交付闸门报告，只做过滤，外观留给你的 `DESIGN.md`。 | MIT | C（5/6） | [中](categories/agent-skills/design/ui-taste/anti-slop.zh.md) · [EN](categories/agent-skills/design/ui-taste/anti-slop.md) |
 
 #### agent-skills / writing
 

@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "antislop does",
+    "zh": "antislop 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run the installer and pick the skills, the scope and the agents you use",
+      "zh": "运行安装器，选 skill、安装范围和你用的 agent",
+      "code": "npx antislop-ai",
+      "component": {
+        "en": "installer CLI (antislop-ai)",
+        "zh": "安装器 CLI（antislop-ai）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Copies the skill folders into each agent's skills dir and appends a pointer block to the entry file",
+      "zh": "把 skill 拷进各 agent 的目录，在入口文件末尾追加指针块",
+      "code": "<!-- antislop:start -->",
+      "component": {
+        "en": "pointer block in the entry file",
+        "zh": "入口文件里的指针块"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "In a new session, give the UI, copy or comment task and answer During or After",
+      "zh": "新开会话，交代 UI、文案或注释任务，回答 During 还是 After"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the core plus the matching skill and applies the 38 rules while it builds",
+      "zh": "加载核心和对应 skill，边写边套用 38 条规则",
+      "component": {
+        "en": "core skill + antislop-ui etc.",
+        "zh": "核心 skill + antislop-ui 等"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Before handing over, writes a PASS/FAIL Delivery Gate report with evidence for every item",
+      "zh": "交付前写出逐项带证据的 PASS/FAIL 交付闸门报告",
+      "component": {
+        "en": "Delivery Gate",
+        "zh": "交付闸门（Delivery Gate）"
+      }
+    }
+  ],
+  "value": {
+    "en": "You stop combing agent output by hand for invented stats, dead buttons and fake testimonials: the agent has to report each check",
+    "zh": "不用再手动翻 agent 产出找编造的数字、死按钮和假评价：agent 必须逐项交代检查结果"
+  },
+  "sources": [
+    "README.md main @ v3.2.20 (2026-09-29): Install > The installer `npx antislop-ai` (asks which skills, where, which agents; writes the pointer); Usage modes (During / After, Delivery Gate report); What it does (38 rules, three tiers, Delivery Gate)",
+    "skills/antislop/SKILL.md: First-Run Install Wizard step 5 pointer block with `<!-- antislop:start -->` / `<!-- antislop:end -->` markers; Two Usage Modes; Delivery Gate (Mandatory) PASS/FAIL report, four blocks",
+    "cli/lib/install.mjs: per-agent skills dirs and entry files (CLAUDE.md, AGENTS.md, GEMINI.md)"
+  ]
+}
