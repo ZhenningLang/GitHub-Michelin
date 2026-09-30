@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Cursor Plugins does",
+    "zh": "Cursor Plugins 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install one plugin by name from the Cursor chat (or Settings → Plugins)",
+      "zh": "在 Cursor 对话里按名字装一个插件（或去设置的插件页）",
+      "code": "/add-plugin pstack · /add-plugin gmail"
+    },
+    {
+      "lane": "them",
+      "en": "Cursor reads the plugin's manifest and registers its skills, rules, subagents, hooks and MCP servers",
+      "zh": "读插件清单，注册 skill、规则、子 agent、hook 和 MCP",
+      "component": {
+        "en": ".cursor-plugin/plugin.json",
+        "zh": ".cursor-plugin/plugin.json"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Do the one-time setup it asks for: a vendor sign-in, or pstack's model picker",
+      "zh": "做一次它要的设置：连接器走厂商登录，pstack 选模型",
+      "code": "/setup-pstack"
+    },
+    {
+      "lane": "you",
+      "en": "Start a task through the plugin's entry point, or just ask",
+      "zh": "从插件的入口命令开始任务，或者照常提需求",
+      "code": "/poteto-mode"
+    },
+    {
+      "lane": "them",
+      "en": "The agent follows the plugin's playbook or calls the vendor's MCP tools; hooks fire on stop and after edits",
+      "zh": "agent 按剧本干活或调厂商 MCP 工具；hook 按事件触发"
+    }
+  ],
+  "value": {
+    "en": "Cursor-maintained workflows and SaaS connectors land with one command — no hand-written manifests, MCP URLs or OAuth plumbing",
+    "zh": "一条命令装上 Cursor 维护的工作流和 SaaS 连接器，不用手写清单、MCP 地址和 OAuth 接线"
+  },
+  "sources": [
+    "pstack/README.md on main (fetched 2026-09-30): install '/add-plugin pstack'; get started: run '/setup-pstack', then use '/poteto-mode'",
+    "third_party/gmail/README.md: 'Open Cursor Settings → Plugins … complete the Google sign-in prompt. Or run /add-plugin gmail in chat.'; mcp.json points at https://gmailmcp.googleapis.com/mcp/v1",
+    "README.md, Repository structure: root .cursor-plugin/marketplace.json lists all plugins; each plugin has .cursor-plugin/plugin.json plus skills/, rules/, mcp.json",
+    "schemas/plugin.schema.json: manifest fields commands, agents, skills, rules, hooks, mcpServers",
+    "advisor/hooks/hooks.json, ralph-loop/hooks/hooks.json: hooks on afterFileEdit, afterAgentResponse, subagentStop, stop"
+  ]
+}
