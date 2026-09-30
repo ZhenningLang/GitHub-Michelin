@@ -146,6 +146,7 @@ https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/sw
 https://github.com/SakanaAI/AI-Scientist,ai-scientist,research-automation,categories/ml-research/research-automation/ai-scientist.md
 https://github.com/SamuelSchmidgall/AgentLaboratory,agent-laboratory,research-automation,categories/ml-research/research-automation/agent-laboratory.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
+https://github.com/SemiAnalysisAI/InferenceX,inferencex,inference-benchmarks,categories/llm-inference/inference-benchmarks/inferencex.md
 https://github.com/SenteLabsAI/OpenExecutive,open-executive,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/open-executive.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
 https://github.com/Setasign/FPDI,fpdi,pdf-generation,categories/pdf-tools/pdf-generation/fpdi.md

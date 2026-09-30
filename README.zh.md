@@ -855,6 +855,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 | **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
 | **llm-d** | 当 Kubernetes 上一批 vLLM／SGLang pod 需要懂大模型的路由（按前缀缓存和排队派单）、预填充／解码拆分或 KV 缓存卸载，并想直接用跑过基准的 Helm／kustomize 配方时用它——接受一个年轻的 1.0 前 CNCF Sandbox 技术栈、较重的集群运维和版本间频繁的组件变动。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/serving-engines/llm-d.zh.md) · [EN](categories/llm-inference/serving-engines/llm-d.md) |
+| **InferenceX** | 当你要为前沿模型选 GPU 或推理引擎，想看持续重跑、能追溯到配方的 NVIDIA 与 AMD 吞吐—延迟曲线时用它；要测自己的服务（完整流水线需要 Slurm GPU 集群）或需要联盟审计过的结果时别用。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/inference-benchmarks/inferencex.zh.md) · [EN](categories/llm-inference/inference-benchmarks/inferencex.md) |
 
 ### task-queue
 

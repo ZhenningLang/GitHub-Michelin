@@ -92,6 +92,7 @@ aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no
 aiohttp,categories/python-tooling/curl-cffi.md,,no
 aiokafka,categories/kafka-tools/kafka-python.md,,no
+AIPerf (ai-dynamo/aiperf),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 aircrack-ng,categories/pentest/wifit3.md,,no
 airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
 AIStor Free / Enterprise,categories/object-storage/minio.md,,no
@@ -450,6 +451,7 @@ GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.m
 gsplat (Nerfstudio),categories/3d-reconstruction/spirula-studio.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
+GuideLLM (vllm-project/guidellm),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 Gurobi / FICO Xpress,categories/optimization-solvers/highs.md,,no
 Gurobi · FICO Xpress,categories/optimization-solvers/INDEX.md,,no
@@ -580,6 +582,7 @@ LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
 LLM-Subtrans (`machinewrapped/llm-subtrans`),categories/reading-tools/translate-books-with-llms.md,,no
+LLMPerf (ray-project/llmperf),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 llms.txt (`AnswerDotAI/llms-txt`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
@@ -650,6 +653,7 @@ MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
+MLPerf Inference (mlcommons/inference),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no

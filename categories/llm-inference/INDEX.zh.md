@@ -11,6 +11,7 @@
 | **Serving Engines** | 你要把模型放到服务端 GPU 后面以 API 形式暴露，需要批处理、前缀缓存或自动扩缩容时。 | [→](serving-engines/INDEX.zh.md) |
 | **Local Runtimes** | 你要在笔记本、台式机或单机上给自己跑模型，只要它在本机可用时。 | [→](local-runtimes/INDEX.zh.md) |
 | **Structured Generation** | 你掌握模型的 logits，且输出必须符合 JSON Schema、正则、语法或工具调用结构时。 | [→](structured-generation/INDEX.zh.md) |
+| **Inference Benchmarks** | 买算力或调优部署之前，你需要知道模型被服务得有多快——哪种 GPU 或引擎在什么延迟下给出多少吞吐时。 | [→](inference-benchmarks/INDEX.zh.md) |
 
 ## 对比矩阵
 
@@ -19,7 +20,8 @@
 | [Serving Engines](serving-engines/INDEX.zh.md) | 子分类 | vLLM、SGLang、TensorRT-LLM、LMDeploy、TGI、Ray Serve、BentoML、Modular——用 GPU 级运维代价换吞吐与并发。 |
 | [Local Runtimes](local-runtimes/INDEX.zh.md) | 子分类 | llama.cpp、Ollama、Magnitude、omlx、MTPLX——用单用户规模上限换零运维的本地推理。 |
 | [Structured Generation](structured-generation/INDEX.zh.md) | 子分类 | XGrammar——用掩码保证输出可解析，代价是一个 C++ 依赖与 pre-1.0 的 API。 |
+| [Inference Benchmarks](inference-benchmarks/INDEX.zh.md) | 子分类 | InferenceX——持续重跑的跨厂商服务曲线，代价是想自己复现就得有一套 Slurm GPU 集群。 |
 
 ## 什么该放这里
 
-主要职责是 **LLM/模型推理与服务**的引擎与系统语言。不含端侧/边缘运行时（见 `on-device-ml`）、不含 LLM 微调（见 `llm-training`）。按规模或角色选子分类：服务端并发（`serving-engines`）、单用户本地执行（`local-runtimes`），或约束解码器输出（`structured-generation`）。
+主要职责是 **LLM/模型推理与服务**的引擎与系统语言。不含端侧/边缘运行时（见 `on-device-ml`）、不含 LLM 微调（见 `llm-training`）。按规模或角色选子分类：服务端并发（`serving-engines`）、单用户本地执行（`local-runtimes`），约束解码器输出（`structured-generation`），或跨引擎与硬件测量服务性能（`inference-benchmarks`）。
