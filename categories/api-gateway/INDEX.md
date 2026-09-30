@@ -16,6 +16,7 @@
 | **APISIX** | Use it when you want an ASF-governed gateway with etcd-backed live configuration and in-process plugins — you also operate the etcd control plane. | A (6/6) | [→](apisix.md) |
 | **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | A (6/6) | [→](envoy.md) |
 | **TokenHub** | Use it when model access must become governed infrastructure — project keys, quotas, routing policy, audit and provider-bill reconciliation in one self-hosted Go gateway; it is ~3 months old at v0.9.0. | B (6/6) | [→](tokenhub.md) |
+| **Magpie (yetone)** | Use it when one developer wants every coding agent (Claude Code, Codex, OpenCode, ~28 in all) switchable to any vendor's model from a menu bar, via single-key config edits and a local translating gateway — but it is about a week old, single-maintainer, and reusing subscriptions carries account risk. | C (5/6) | [→](magpie-model-router.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [APISIX](apisix.md) | ✅ | A (6/6) | ASF top-level gateway on NGINX/OpenResty with etcd-backed live config and a broad in-process plugin layer; the control plane is a hard dependency you operate. |
 | [Envoy](envoy.md) | ✅ | A (6/6) | CNCF-graduated L4/L7 data plane driven by xDS; you bring the control plane and the API-management policy layer. |
 | [TokenHub](tokenhub.md) | ✅ | B (6/6) | Governance-first self-hosted AI gateway (Go/SQLite): project keys, quotas, routing, audit and provider-bill reconciliation; very young (v0.9.x) and author-dominated. |
+| [Magpie (yetone)](magpie-model-router.md) | ✅ | C (5/6) | Desktop model switcher plus local Anthropic/OpenAI-translating gateway for ~28 coding agents, with subscription logins as providers; days old, single-maintainer, auto-updating. |
 | Tyk / KrakenD / New API | 未收录 | — | Other self-hosted gateways named across the pages. |
 
 ## What belongs here
