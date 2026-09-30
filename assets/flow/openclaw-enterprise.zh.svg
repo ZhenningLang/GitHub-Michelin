@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="610" viewBox="0 0 880 610" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="610" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="474" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="474" rx="10"/>
+<rect class="pillT" x="474" y="40" width="243.1" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OpenClaw Enterprise 做的</text>
+<path class="hand" d="M408,132.0 C439.0,132.0 439.0,156 470,156" marker-end="url(#a)"/>
+<path class="hand" d="M472,168.0 C441.0,168.0 441.0,242 410,242" marker-end="url(#a)"/>
+<path class="hand" d="M408,264.0 C439.0,264.0 439.0,288 470,288" marker-end="url(#a)"/>
+<path class="edge" d="M494,361 L494,385" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">编译 OCC 命令行，启动平台的 Kubernete</text>
+<text class="t" x="82" y="123">s 配置</text>
+<text class="c" x="82" y="147">./bin/occ dev up</text>
+<text class="comp" x="82" y="170">组件：occ 命令行</text>
+<rect class="cardT" x="472" y="132" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="132" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="156" r="10"/>
+<text class="num" x="494" y="160" text-anchor="middle">2</text>
+<text class="t" x="514" y="161">在 k3d 里起 API、worker 和数据库，建好</text>
+<text class="t" x="514" y="183">default 空间</text>
+<rect class="card" x="40" y="218" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="218" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="242" r="10"/>
+<text class="num" x="62" y="246" text-anchor="middle">3</text>
+<text class="t" x="82" y="247">给 agent 起名，提供模型密钥，问第一个问题</text>
+<text class="c" x="82" y="271">node scripts/first-agent.mjs my-agent</text>
+<text class="c" x="82" y="290">--prompt &#x27;What is 2 + 2?&#x27;</text>
+<rect class="cardT" x="472" y="264" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="264" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="288" r="10"/>
+<text class="num" x="494" y="292" text-anchor="middle">4</text>
+<text class="t" x="514" y="293">把密钥存成 Secret，授权给该 agent，并快照</text>
+<text class="t" x="514" y="315">成不可变版本</text>
+<text class="comp" x="514" y="343">组件：API 与 IAM</text>
+<rect class="cardT" x="472" y="387" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="387" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="411" r="10"/>
+<text class="num" x="494" y="415" text-anchor="middle">5</text>
+<text class="t" x="514" y="416">在集群上开出 agent 网关，激活并验证</text>
+<text class="t" x="514" y="438">模型回复</text>
+<text class="comp" x="514" y="466">组件：worker 与 Compute Driver</text>
+<rect class="val" x="28" y="516" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="540">价值</text>
+<text class="valT" x="48" y="564">每个 agent 都是租户命名空间里有权限、有版本、有审计的资源，而不是谁拿自己密钥起的一个网关</text>
+</svg>

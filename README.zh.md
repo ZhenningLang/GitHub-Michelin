@@ -236,6 +236,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack AI** | 当 TypeScript 应用的 AI 界面——流式聊天、带类型的工具、媒体与 agent，横跨七个前端框架——必须站在一套 provider 无关的类型契约上、且不绑任何平台层时用它；agent 活在 Python 里、或你要的是打包好的 `Agent` 类，就不是它。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md) |
 | **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
+| **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | MIT | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) |
 
 ### agent-memory
 

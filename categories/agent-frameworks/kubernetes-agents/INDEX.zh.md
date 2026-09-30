@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | B（6/6） | [→](ax.zh.md) |
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | B（6/6） | [→](kagent.zh.md) |
+| **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | B（5/6） | [→](openclaw-enterprise.zh.md) |
 
 ## 对比矩阵
 
@@ -16,7 +17,8 @@
 | --- | --- | --- | --- |
 | [AX](ax.zh.md) | ✅ | B（6/6） | 叠在密度运行时上、像 kubectl 的 Task YAML——对象在 Redis 不在 etcd，不带 agent 引擎，Substrate 是硬依赖。 |
 | [kagent](kagent.zh.md) | ✅ | B（6/6） | agent 做成 CRD 就拿到 Kubernetes 的发布、RBAC 与审计体系——代价是采用一个年轻项目的资源模型，并给 agent 真实的集群凭据。 |
+| [OpenClaw Enterprise](openclaw-enterprise.zh.md) | ✅ | B（5/6） | 给原版 OpenClaw／Codex agent 套上治理——IAM、密钥、版本和审计都在 PostgreSQL——代价是 Kubernetes、外部数据库，以及一个才一个月、尚未发布的控制面。 |
 
 ## 什么该放这里
 
-执行模型**就是** Kubernetes 集群的控制面——要么把 agent 本身做成 CRD（kagent），要么把沙箱 *任务* 写成 YAML、存在 etcd 之外（AX）。代码优先的 agent 框架放在 `agent-runtimes`；AX 叠着的密度运行时放在 `sandboxing`。
+执行模型**就是** Kubernetes 集群的控制面——要么把 agent 本身做成 CRD（kagent），要么把沙箱 *任务* 写成 YAML、存在 etcd 之外（AX），要么是把原版 agent 运行时部署到集群上的多租户治理层（OpenClaw Enterprise）。代码优先的 agent 框架放在 `agent-runtimes`；AX 叠着的密度运行时放在 `sandboxing`。

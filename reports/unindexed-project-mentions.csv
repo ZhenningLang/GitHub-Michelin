@@ -708,6 +708,7 @@ npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/ver
 Numba,categories/python-tooling/cython.md,,no
 Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 Nuxt.js,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
+NVIDIA NemoClaw,categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
 Observable Plot (`observablehq/plot`),categories/web-ui/charts/tanstack-charts.md,,no
