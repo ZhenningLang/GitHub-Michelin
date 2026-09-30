@@ -650,6 +650,7 @@ Microsoft Presidio,categories/healthcare-ai/openmed.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
+mini-swe-agent,categories/ml-research/context-language-models.md,,no
 Miniflux,categories/reading-tools/netnewswire.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
@@ -786,6 +787,7 @@ pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
 PhoneInfoga,categories/osint/ghosttrack.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
+pi-clm,categories/ml-research/context-language-models.md,,no
 Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
@@ -889,6 +891,7 @@ Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,,no
 reCAPTCHA (Google),categories/captcha/capjs.md,,no
 Recharts (`recharts/recharts`),categories/web-ui/charts/tanstack-charts.md,,no
+Recursive Language Models (`rlm`),categories/ml-research/context-language-models.md,,no
 Redash,categories/data-visualization/superset.md,,no
 Redash / Tableau / Looker,categories/data-visualization/INDEX.md,,no
 redditdownloader (shadowmoose),categories/media-download/bulk-downloader-for-reddit.md,,no

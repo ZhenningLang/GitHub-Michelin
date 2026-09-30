@@ -27,6 +27,6 @@
 | SimoneAvogadro/android-reverse-engineering-skill | add | done | categories/agent-skills/security/android-reverse-engineering.md | 首轮 opus worker 写页时被安全分类器拦截；用户要求改用 qwen（opencode + qwen3.8-flash）重写，主会话抽查 #17/#30/#31、sudo、tag 与清单版本号后合入 | simoneavogadro/android-reverse-engineering-skill |
 | vllm-project/semantic-router | add | done | categories/api-gateway/vllm-semantic-router.md |  | vllm-project/semantic-router |
 | dmtrKovalenko/fframes | add | running |  |  | dmtrkovalenko/fframes |
-| facebookresearch/context-language-models | add | running |  |  | facebookresearch/context-language-models |
+| facebookresearch/context-language-models | add | done | categories/ml-research/context-language-models.md |  | facebookresearch/context-language-models |
 | github/gh-aw | add | running |  |  | github/gh-aw |
 | googlecolab/google-colab-cli | add | done | categories/python-tooling/google-colab-cli.md |  | googlecolab/google-colab-cli |

@@ -374,6 +374,7 @@ https://github.com/facebook/openzl,openzl,data-tools,categories/dev-utilities/da
 https://github.com/facebook/react,react,view-frameworks,categories/web-ui/frameworks/view-frameworks/react.md
 https://github.com/facebook/rebalancer,rebalancer,optimization-solvers,categories/optimization-solvers/rebalancer.md
 https://github.com/facebookarchive/memory-analyzer,memory-analyzer,python-tooling,categories/python-tooling/memory-analyzer.md
+https://github.com/facebookresearch/context-language-models,context-language-models,ml-research,categories/ml-research/context-language-models.md
 https://github.com/facebookresearch/faiss,faiss,vector-search,categories/rag-retrieval/vector-search/faiss.md
 https://github.com/faker-js/faker,faker-js,data-tools,categories/dev-utilities/data-tools/faker-js.md
 https://github.com/farion1231/cc-switch,cc-switch,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md
