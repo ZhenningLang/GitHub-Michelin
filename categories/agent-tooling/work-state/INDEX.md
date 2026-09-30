@@ -14,6 +14,7 @@
 | **Planning with Files** | Use it when a long agent run keeps losing its plan to /clear, compaction, or crashes. | B (5/6) | [→](planning-with-files.md) |
 | **LoopX** | Use it when agent work must keep moving across days, restarts and runtimes, with durable goals, human gates, quotas and evidence governing each turn. | B (6/6) | [→](loopx.md) |
 | **Token Optimizer** | Use it when a coding agent burns tokens on tool output, re-reads and compaction loss, and you want hook-layer compression, compaction checkpoints and a local dollar ledger — accepting its noncommercial license. | C (5/6) | [→](token-optimizer.md) |
+| **RTK** | Your agent's context fills with passing-test spam and `git push` progress lines; RTK hooks the agent's shell commands and hands back only failures and one-line confirmations (Bash output only; Apache-2.0). | A (5/6) | [→](rtk.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [Planning with Files](planning-with-files.md) | ✅ | B (5/6) | The plan as plain files on disk — the cheapest recovery from /clear, with no graph or dependency semantics. |
 | [LoopX](loopx.md) | ✅ | B (6/6) | State kernel plus a quota-gated heartbeat driver across runtimes — the fullest loop governance here, at the cost of a fail-closed protocol and a very young, fast-moving surface. |
 | [Token Optimizer](token-optimizer.md) | ✅ | C (5/6) | Hook-layer compression plus compaction checkpoints plus a local dollar ledger across ~10 coding agents; source-available noncommercial license and a 7-month-old single-maintainer surface. |
+| [RTK](rtk.md) | ✅ | A (5/6) | Shell-output compression only — a single Apache-2.0 Rust binary that rewrites the agent's Bash commands and keeps exit codes; no checkpoints, no ledger beyond `rtk gain`, file reads bypass it. |
 | Taskmaster / GitHub Issues + gh / Linear | 未收录 | — | Other task/work-tracking backends for agents named across the pages. |
 
 ## What belongs here

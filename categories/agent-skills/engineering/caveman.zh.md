@@ -90,7 +90,7 @@ health:
 
 MIT 技能是小入口：一份规则文件覆盖 30 多种 agent，有 `/caveman lite|full|ultra` 档位，并且明确承诺代码、命令、路径和报错从不改写。本地代理是升级路径：`caveman claude`（或 `codex`、`gemini`、`kilo`、`opencode`……）跑在你自己的机器上，在日志、JSON、diff、测试输出到达供应商之前把它们压小，并把字节级原件放进 SQLite，agent 随时可以取回。
 
-约束是账单而不是工作记忆时，选它而不是 [i-have-adhd](i-have-adhd.zh.md)——后者会复述进度，也不会限制分析。浪费不只是 shell 输出时（`Read` 和 `Grep` 会绕过 RTK），选它而不是 [RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md)。想就地压缩并带取回句柄、而不是让 agent 去沙箱里写脚本时，选它而不是 [Context Mode](../../agent-tooling/work-state/context-mode.zh.md)。产物是当场回复而不是要发表的文稿时，选它而不是 [no-ai-slop](../ai-writing/de-ai-writing/no-ai-slop.zh.md)。
+约束是账单而不是工作记忆时，选它而不是 [i-have-adhd](i-have-adhd.zh.md)——后者会复述进度，也不会限制分析。浪费不只是 shell 输出时（`Read` 和 `Grep` 会绕过 RTK），选它而不是 [RTK](../../agent-tooling/work-state/rtk.zh.md)。想就地压缩并带取回句柄、而不是让 agent 去沙箱里写脚本时，选它而不是 [Context Mode](../../agent-tooling/work-state/context-mode.zh.md)。产物是当场回复而不是要发表的文稿时，选它而不是 [no-ai-slop](../ai-writing/de-ai-writing/no-ai-slop.zh.md)。
 
 ## 怎么用起来
 
@@ -123,7 +123,7 @@ MIT 技能是小入口：一份规则文件覆盖 30 多种 agent，有 `/cavema
 - **你要去 AI 味的是将要发布的文档。** 用 [no-ai-slop](../ai-writing/de-ai-writing/no-ai-slop.zh.md) 或 [stop-slop](../ai-writing/de-ai-writing/stop-slop.zh.md)。那些作用于文稿；caveman 作用于 agent 当场的嘴，以及（如果 wrap 了）工具输出。
 - **你按请求计费，不按 token 计费。** README 自己举的例子是 GitHub Copilot premium requests：更短的回答仍是同一次请求。跳过。
 - **工作负载已经是很短的一问一答，或几乎全是代码生成。** 技能会作为输入 token 跟着每一轮走（README：完整技能大约 1,000 估计 token），可能净负；把它当成本承诺前，先在自己的 harness 上测。
-- **压缩引擎必须是纯 OSI 许可证。** 技能、CLI 和客户端 SDK 是 MIT；engine、proxy、MCP、shrink、browse、rewriter 是 BSL-1.1（允许包括生产在内的第一方自托管；向第三方提供托管/托管式/嵌入式服务需要商业许可，该版本在 2030-06-21 或发布满四年二者较早时转为 Apache-2.0）。只要 Apache-2.0 的 shell 输出压缩，用 [RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md)。
+- **压缩引擎必须是纯 OSI 许可证。** 技能、CLI 和客户端 SDK 是 MIT；engine、proxy、MCP、shrink、browse、rewriter 是 BSL-1.1（允许包括生产在内的第一方自托管；向第三方提供托管/托管式/嵌入式服务需要商业许可，该版本在 2030-06-21 或发布满四年二者较早时转为 Apache-2.0）。只要 Apache-2.0 的 shell 输出压缩，用 [RTK](../../agent-tooling/work-state/rtk.zh.md)。
 - **你不能接受 CLI 默认遥测。** 技能和 hook 不外发；`caveman` CLI 会发送匿名命令与 token 计数，除非你运行 `caveman telemetry off`。这条默认是政策红线时，跳过 CLI，或第一次运行前关掉。
 - **你要完整替换 coding agent。** 评估 Caveman Code（未收录，上游标为 frozen）或其他 coding-agent harness；本仓库是技能加可选 wrap，不是新的 agent。
 
@@ -132,7 +132,7 @@ MIT 技能是小入口：一份规则文件覆盖 30 多种 agent，有 `/cavema
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [i-have-adhd](i-have-adhd.zh.md) | ✅ | 痛点是回复形状、读者工作记忆短，选 i-have-adhd；痛点是 token 花销——包括 agent 反复读进去的日志和工具输出——选 caveman。 | i-have-adhd 会复述进度并保留不确定措辞，代价是规则更长、常驻时增加输入 token；caveman 的技能更短，它的代理还会压缩 agent 读进去的东西。 |
-| [RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md) | ✅ | 浪费只在 shell 命令输出、且必须 Apache-2.0 时，选 RTK；Read/Grep/JSON/diff 也会灌进上下文时，选 caveman 的 wrap。 | RTK 是确定性的 shell 代理，遥测默认关闭；caveman 的 wrap 覆盖更多载荷类型并保留原件，但引擎是 BSL-1.1，CLI 遥测默认打开。 |
+| [RTK](../../agent-tooling/work-state/rtk.zh.md) | ✅ | 浪费只在 shell 命令输出、且必须 Apache-2.0 时，选 RTK；Read/Grep/JSON/diff 也会灌进上下文时，选 caveman 的 wrap。 | RTK 是确定性的 shell 代理，遥测默认关闭；caveman 的 wrap 覆盖更多载荷类型并保留原件，但引擎是 BSL-1.1，CLI 遥测默认打开。 |
 | [Context Mode](../../agent-tooling/work-state/context-mode.zh.md) | ✅ | 需要沙箱让原始工具输出永不进入上下文、外加熬过压缩的会话记忆时，选 Context Mode；想让同一个 agent 就地压缩并带取回句柄时，选 caveman。 | Context Mode 让 agent 写脚本，许可证是 Elastic-2.0；caveman 压缩现有数据流并声称字节级可恢复，没有那层执行面。 |
 | [no-ai-slop](../ai-writing/de-ai-writing/no-ai-slop.zh.md) | ✅ | 产物是将要发布、改完仍须像作者本人的文稿，选 no-ai-slop；产物是 agent 当场的回复或它反复读的工具输出，选 caveman。 | no-ai-slop 先盘点并保护你的声音，再就地改文；caveman 从不声称保留作者声音——它让 agent 少说话，可选地少读。 |
 | Headroom | 未收录 | 想要另一个压缩工具输出和历史的本地 wrap 时，评估 Headroom；还想要 MIT 技能覆盖层以及项目自己的并排 wrap 数字时，选 caveman。 | Headroom 的 README 把 caveman 列成可以坐在它后面的东西；caveman 钉住的 wrap 表（此处未独立复现）在该套件上报告了更多输入 token 削减和更少答错，并留着一行红色的 HTML 结果。 |
