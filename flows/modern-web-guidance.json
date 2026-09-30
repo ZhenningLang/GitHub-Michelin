@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Modern Web Guidance does",
+    "zh": "Modern Web Guidance 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your coding agents with the interactive wizard",
+      "zh": "用交互向导把 skill 装进你的编码 agent",
+      "code": "npx modern-web-guidance@latest install",
+      "component": {
+        "en": "npm CLI",
+        "zh": "npm CLI"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Adds SKILL.md telling the agent to search first on every HTML/CSS/JS task",
+      "zh": "装好 SKILL.md，要求 agent 每个前端任务先搜索",
+      "component": {
+        "en": "SKILL.md",
+        "zh": "SKILL.md"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent for a frontend feature in plain words",
+      "zh": "用大白话让 agent 做一个前端功能"
+    },
+    {
+      "lane": "them",
+      "en": "Agent runs a search; the CLI ranks guides with a local embedding model",
+      "zh": "agent 发起搜索，CLI 用本地嵌入模型给指南排序",
+      "code": "npx -y modern-web-guidance@latest search \"<query>\"",
+      "component": {
+        "en": "TF.js MiniLM search",
+        "zh": "TF.js MiniLM 搜索"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Agent retrieves the guide: DO/DO NOT rules, snippets, Baseline data, fallbacks",
+      "zh": "agent 取回指南：要做/不要做、片段、Baseline 数据、降级",
+      "code": "npx -y modern-web-guidance@latest retrieve \"<id>\"",
+      "component": {
+        "en": "guide.md",
+        "zh": "guide.md"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Review the code the agent wrote with the guide in context",
+      "zh": "审阅 agent 带着指南写出的代码"
+    }
+  ],
+  "value": {
+    "en": "Native platform features with sized fallbacks instead of legacy libraries, without you pasting MDN into the prompt",
+    "zh": "拿到用原生平台特性、带适度降级的代码，而不是老库，也不必自己往提示词里贴 MDN"
+  },
+  "sources": [
+    "https://github.com/GoogleChrome/modern-web-guidance-src README.md — Quickstart `npx modern-web-guidance@latest install`; How It Works (activation, local semantic search, guide fetch)",
+    "https://github.com/GoogleChrome/modern-web-guidance skills/modern-web-guidance/SKILL.md — `npx -y modern-web-guidance@latest search \"<query>\"`, `npx -y modern-web-guidance@latest retrieve \"<id>\"`, MANDATORY trigger on HTML/CSS/client JS",
+    "serving/bin/modern-web.ts — search/list/retrieve/install commands; install shells out to `npx -y skills add GoogleChrome/modern-web-guidance`",
+    "serving/lib/search.ts — TF.js embedder + cosine similarity over gzipped guide vectors, top 5, min similarity 0.3"
+  ]
+}

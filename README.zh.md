@@ -559,6 +559,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Remotion Agent Skills** | Remotion 官方的 12 个 skill 捆绑包：教编码 agent（Claude Code、Codex、Cursor、Kimi Code）写出正确的 Remotion React 视频代码——经 `npx skills add remotion-dev/skills` 安装，版本与框架同步锁定。 | Not declared | C（4/5） | [中](categories/agent-skills/vendor-collections/remotion-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/remotion-skills.md) |
 | **HumanLayer Skills** | HumanLayer 官方的六个 skill——把改动画清楚（`show-me`）、PR 说明结构化（`visual-pr`）、重写 CLAUDE.md、收紧 React props，外加两个把重复性 agent 任务做成定时 GitHub Actions 循环的 skill，循环带 agent memory 文件与 `/iterate` 评论通道。 | MIT | B（4/5） | [中](categories/agent-skills/vendor-collections/humanlayer-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/humanlayer-skills.md) |
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/android-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/android-skills.md) |
+| **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) · [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) |
 
 #### agent-skills / subagent-collections
 
