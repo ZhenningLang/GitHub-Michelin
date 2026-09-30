@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "InferenceX does", "zh": "InferenceX 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add a recipe entry: model, pinned engine image, framework, GPU runner, search space", "zh": "加一条配方：模型、固定版本的引擎镜像、框架、GPU 集群、扫描范围",
+     "code": "configs/nvidia-master.yaml · configs/amd-master.yaml", "component": {"en": "master config", "zh": "主配置"}},
+    {"lane": "you", "en": "Append one entry at the very end of the changelog naming that config key", "zh": "在变更日志最末尾追加一条，写明这个配置键",
+     "code": "perf-changelog.yaml", "component": {"en": "perf changelog (append-only)", "zh": "性能变更日志（只追加）"}},
+    {"lane": "you", "en": "Open a PR and label it to run the full sweep", "zh": "开 PR，打上标签触发完整扫描",
+     "code": "full-sweep-fail-fast"},
+    {"lane": "them", "en": "Expands the new keys into a job matrix of parallelism × concurrency points", "zh": "把新增的配置键展开成并行度 × 并发数的任务矩阵",
+     "component": {"en": "infx.matrix planner", "zh": "infx.matrix 规划器"}},
+    {"lane": "them", "en": "Runs each point on its self-hosted Slurm GPU clusters: serve, load-test, eval", "zh": "在自家 Slurm GPU 集群上逐点跑：起服务、压测、跑评测",
+     "component": {"en": "infx.launch + self-hosted runners", "zh": "infx.launch + 自托管 runner"}},
+    {"lane": "them", "en": "After merge, ingests that sweep's artifacts into the public dashboard", "zh": "合并后把这次扫描的产物导入公开仪表板",
+     "component": {"en": "merge-ingest → InferenceX-app", "zh": "合并导入 → InferenceX-app"}}
+  ],
+  "value": {"en": "Your engine + GPU recipe gets a throughput-vs-latency curve on hardware you don't own, re-measured as images move — not a one-off blog number", "zh": "你的引擎 + GPU 配方在你没有的硬件上得到一条吞吐—延迟曲线，镜像更新后还会重测，不再是一次性的博客数字"},
+  "sources": [
+    "https://github.com/SemiAnalysisAI/InferenceX/blob/main/inferencex-e2e/docs/configuration-procedures.md (Add a model + hardware recipe: nvidia-master.yaml / amd-master.yaml; Append the changelog safely: perf-changelog.yaml physical end)",
+    "https://github.com/SemiAnalysisAI/InferenceX/blob/main/CONTRIBUTING.md (PR review flow: full-sweep-fail-fast label, green full sweep, /use <run_id> reuse at merge)",
+    "https://github.com/SemiAnalysisAI/InferenceX/blob/main/inferencex-e2e/docs/architecture.md (infx.matrix.plan/generate, run-sweep.yml fan-out, infx.launch on Slurm, merge-ingest.yml dispatch to InferenceX-app)"
+  ]
+}

@@ -10,6 +10,7 @@
 | **Anthropic Skills** | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 | A（3/5） | [→](anthropic-skills.zh.md) |
 | **Agent Plugins for AWS** | AWS Labs 官方出品的九个 agent 插件集合（serverless、Amplify、SageMaker、迁移、数据库、部署/成本估算等），通过 marketplace 安装、触发短语驱动并接好 AWS MCP server，教 Claude Code / Cursor / Codex 在 AWS 上做架构、部署和运维。 | B（5/6） | [→](aws-agent-plugins.zh.md) |
 | **Claude Plugins (Official)** | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 | A（4/5） | [→](claude-plugins-official.zh.md) |
+| **Cursor Plugins** | Cursor 官方插件市场仓库：`/add-plugin <名字>` 把 skill、规则、子 agent、hook 和 MCP 配置装进 Cursor——16 个第一方插件（主打 poteto 的严谨工程工作流 pstack），外加 80 个连到厂商托管 MCP server 的薄连接器。 | B（3/5） | [→](cursor-plugins.zh.md) |
 | **MiniMax Skills** | MiniMax 官方约 16 个 Agent Skill 成包（前端/移动端/shader 开发，外加 pdf/docx/xlsx/pptx、音乐与多模态生成），经插件市场装进 Claude Code 等编码 agent。 | B（4/5） | [→](minimax-skills.zh.md) |
 | **Anthropic Knowledge Work Plugins** | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 | A（4/5） | [→](knowledge-work-plugins.zh.md) |
 | **Remotion Agent Skills** | Remotion 官方的 12 个 skill 捆绑包：教编码 agent（Claude Code、Codex、Cursor、Kimi Code）写出正确的 Remotion React 视频代码——经 `npx skills add remotion-dev/skills` 安装，版本与框架同步锁定。 | C（4/5） | [→](remotion-skills.zh.md) |
@@ -24,6 +25,7 @@
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | A（3/5） | Anthropic 官方公开的 Agent Skills 合集——自包含的 SKILL.md 目录（文档编辑、设计、MCP 与 skill 编写、沟通），可装进 Claude Code、Claude.ai 或 Claude API。 |
 | [Agent Plugins for AWS](aws-agent-plugins.zh.md) | ✅ | B（5/6） | AWS Labs 官方出品的九个 agent 插件集合（serverless、Amplify、SageMaker、迁移、数据库、部署/成本估算等），通过 marketplace 安装、触发短语驱动并接好 AWS MCP server，教 Claude Code / Cursor / Codex 在 AWS 上做架构、部署和运维。 |
 | [Claude Plugins (Official)](claude-plugins-official.zh.md) | ✅ | A（4/5） | Anthropic 官方的 Claude Code 插件市场：精选的可安装插件目录（命令、agent、skill、MCP server），通过原生 /plugin 系统按名安装。 |
+| [Cursor Plugins](cursor-plugins.zh.md) | ✅ | B（3/5） | Cursor 原生插件（按角色分模型的评审面板、hook、云端 agent 分发）加一键 SaaS 连接器；只认 Cursor 的加载器，装的永远是没有 tag 的 `main`，多数连接器只是指向厂商托管 server 的配置。 |
 | [MiniMax Skills](minimax-skills.zh.md) | ✅ | B（4/5） | MiniMax 官方约 16 个 Agent Skill 成包（前端/移动端/shader 开发，外加 pdf/docx/xlsx/pptx、音乐与多模态生成），经插件市场装进 Claude Code 等编码 agent。 |
 | [Anthropic Knowledge Work Plugins](knowledge-work-plugins.zh.md) | ✅ | A（4/5） | 当你想要 Anthropic 官方面向知识工作（文档、沟通、研究）的开源插件集（用于 Claude）时用它——非常年轻。 |
 | [Remotion Agent Skills](remotion-skills.zh.md) | ✅ | C（4/5） | 厂商权威、版本锁定的 React 视频创作指导；不在带 skill 加载器的 harness 上、或不用 Remotion 就没价值，且内容许可未声明。 |

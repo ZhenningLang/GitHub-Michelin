@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "llm-d does",
+    "zh": "llm-d 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "On a GPU Kubernetes cluster, clone the repo, install the Inference Extension CRDs and an HF token secret",
+      "zh": "克隆仓库，装 Inference Extension CRD 和 HF 密钥",
+      "code": "source ${REPO_ROOT}/guides/env.sh"
+    },
+    {
+      "lane": "you",
+      "en": "Install the llm-d Router with a well-lit-path values file",
+      "zh": "按配方的 values 文件装 llm-d Router",
+      "code": "helm install ${GUIDE_NAME} ${ROUTER_STANDALONE_CHART}",
+      "component": {
+        "en": "Router (Envoy + EPP)",
+        "zh": "Router（Envoy + EPP）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "kubectl-apply the kustomize overlay that matches your hardware to start model-server pods",
+      "zh": "kubectl 应用对应硬件的 overlay，起模型 pod",
+      "code": "-k guides/optimized-baseline/modelserver/gpu/vllm/base/",
+      "component": {
+        "en": "vLLM / SGLang pods",
+        "zh": "vLLM／SGLang pod"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Pods join the InferencePool by label; the EPP starts scraping their queue and KV-cache metrics",
+      "zh": "pod 按标签进 InferencePool，EPP 抓排队和 KV 缓存指标",
+      "component": {
+        "en": "Endpoint Picker (EPP)",
+        "zh": "Endpoint Picker（EPP）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Send OpenAI-compatible requests to the router's address",
+      "zh": "把 OpenAI 兼容请求发到路由器地址",
+      "code": "curl -X POST http://${IP}/v1/completions"
+    },
+    {
+      "lane": "them",
+      "en": "Scores every pod by prefix-cache hit, queue depth and KV-cache load, and forwards to the best one",
+      "zh": "按前缀命中、排队深度和 KV 缓存占用给 pod 打分，转给最合适的"
+    }
+  ],
+  "value": {
+    "en": "Repeated long prompts land on the replica that already cached them, instead of a round-robin pick recomputing them",
+    "zh": "反复出现的长提示落到已缓存它的副本上，不再被轮询派到别处从头重算"
+  },
+  "sources": [
+    "https://github.com/llm-d/llm-d/blob/main/docs/getting-started/quickstart.md (source ${REPO_ROOT}/guides/env.sh; GAIE CRDs; llm-d-hf-token secret; helm install ${GUIDE_NAME} ${ROUTER_STANDALONE_CHART}; kubectl apply -n ${NAMESPACE} -k guides/optimized-baseline/modelserver/gpu/vllm/base/; curl -X POST http://${IP}/v1/completions)",
+    "https://github.com/llm-d/llm-d/blob/main/docs/architecture/README.md (Router = Proxy + EPP; InferencePool label selector; EPP scores pods on real-time metrics and KV-cache affinity)",
+    "https://github.com/llm-d/llm-d/blob/main/docs/architecture/core/model-servers.md (pods join InferencePool via labels; EPP scrapes queue and KV-cache utilization metrics)",
+    "https://github.com/llm-d/llm-d/blob/main/guides/no-kubernetes-deployment/README.md (optimized-baseline scorers: prefix-cache-scorer, queue-scorer, kv-cache-utilization-scorer)"
+  ]
+}

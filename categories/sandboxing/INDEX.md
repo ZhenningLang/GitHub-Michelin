@@ -17,6 +17,7 @@
 | **Microsandbox** | Use it when the sandbox must run on hardware you already own — one binary or SDK, ordinary OCI images, per-sandbox egress policy and host-side secrets, with no daemon and no cluster — but it needs KVM/Apple Silicon/WHP on the host and is still beta. | A (6/6) | [→](microsandbox.md) |
 | **Monty** | Use it when model-written Python must run per request inside your own app — a pip-installed Rust interpreter hands out fresh sandbox sessions in under a millisecond, with no filesystem/network/env inside unless you pass it in — but it speaks a Python subset with no third-party packages, and its boundary is the language, not an OS. | A (6/6) | [→](monty.md) |
 | **Cloudflare Computer** | Use it when your Cloudflare Workers agent needs a durable working directory — files live in the Durable Object's SQLite and one exec API runs commands or code against them in a container or an isolate — accepting an explicitly preview API, ~10 GB workspaces, and single-vendor lock-in. | B (6/6) | [→](cloudflare-computer.md) |
+| **Agent Sandbox** | Use it when agent sandboxes must be ordinary Kubernetes objects — one CRD per sandbox, templates, and warm pools that hand a claim an already-started pod — accepting that isolation comes from the gVisor/Kata runtime class you configure, not from the project, and that the API is still v1beta1. | A (6/6) | [→](agent-sandbox.md) |
 
 ## Comparison matrix
 
@@ -32,7 +33,8 @@
 | [Microsandbox](microsandbox.md) | ✅ | A (6/6) | Local-first microVM sandboxes from ordinary OCI images, with Docker-like verbs and no daemon — cross-platform and unprivileged, but it needs hardware virtualization on the host and is beta. |
 | [Monty](monty.md) | ✅ | A (6/6) | Sub-millisecond Python sandboxes as a library (language-level interpreter confinement) — no containers or fleet to run, but only a Python subset with no third-party packages. |
 | [Cloudflare Computer](cloudflare-computer.md) | ✅ | B (6/6) | Durable per-agent files on one vendor's preview runtime — zero sandbox ops and a typed workspace API, but Cloudflare-only, ~10 GB workspaces, and big-I/O work runs an order of magnitude slower than disk. |
+| [Agent Sandbox](agent-sandbox.md) | ✅ | A (6/6) | A SIG-owned Kubernetes API for pod-per-sandbox lifecycle and warm pools that reuses your RBAC, quotas and GitOps — but it is an orchestrator, not the isolation layer, and its SDKs are uneven. |
 
 ## What belongs here
 
-Layers and products for running code you do not trust: VM/kernel-level isolation runtimes (`gVisor`, `Kata Containers`, `Firecracker`), language-level interpreter sandboxes (`Monty`), and the agent-facing sandbox platforms and clients built on them (`OpenSandbox`, `E2B`, `Agent Substrate`, the `Modal` client SDK). Not general container-runtime selection — that is the platform you already run — and not agent frameworks, which live in `agent-frameworks`.
+Layers and products for running code you do not trust: VM/kernel-level isolation runtimes (`gVisor`, `Kata Containers`, `Firecracker`), language-level interpreter sandboxes (`Monty`), and the agent-facing sandbox platforms and clients built on them (`OpenSandbox`, `E2B`, `Agent Substrate`, the Kubernetes-native `Agent Sandbox` CRDs, the `Modal` client SDK). Not general container-runtime selection — that is the platform you already run — and not agent frameworks, which live in `agent-frameworks`.

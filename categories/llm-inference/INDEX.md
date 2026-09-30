@@ -11,6 +11,7 @@
 | **Serving Engines** | You are putting a model behind an API on server-class GPUs and need batching, prefix caching, or autoscaling. | [→](serving-engines/INDEX.md) |
 | **Local Runtimes** | You are running a model for yourself on a laptop, desktop, or single box and need it to just work locally. | [→](local-runtimes/INDEX.md) |
 | **Structured Generation** | You control the model's logits and the output must conform to a JSON Schema, regex, grammar, or tool-call structure. | [→](structured-generation/INDEX.md) |
+| **Inference Benchmarks** | You need to know how fast a model is served — which GPU or engine gives what throughput at what latency — before buying capacity or tuning a deployment. | [→](inference-benchmarks/INDEX.md) |
 
 ## Comparison matrix
 
@@ -19,7 +20,8 @@
 | [Serving Engines](serving-engines/INDEX.md) | Sub-category | vLLM, SGLang, TensorRT-LLM, LMDeploy, TGI, Ray Serve, BentoML, Modular — throughput and concurrency at the cost of GPU-class ops. |
 | [Local Runtimes](local-runtimes/INDEX.md) | Sub-category | llama.cpp, Ollama, Magnitude, omlx, MTPLX — zero-ops local inference at the cost of single-user scale. |
 | [Structured Generation](structured-generation/INDEX.md) | Sub-category | XGrammar — guarantee parseable output by masking the decoder, at the cost of a C++ dependency and a pre-1.0 API. |
+| [Inference Benchmarks](inference-benchmarks/INDEX.md) | Sub-category | InferenceX — continuously re-run cross-vendor serving curves, at the cost of a Slurm GPU fleet if you want to reproduce them yourself. |
 
 ## What belongs here
 
-Engines and systems languages whose primary job is **LLM/model inference and serving**. Not on-device/edge runtimes (see `on-device-ml`), not LLM fine-tuning (see `llm-training`). Pick a sub-category by scale or role: server-side concurrency (`serving-engines`), single-user local execution (`local-runtimes`), or constraining the decoder's output (`structured-generation`).
+Engines and systems languages whose primary job is **LLM/model inference and serving**. Not on-device/edge runtimes (see `on-device-ml`), not LLM fine-tuning (see `llm-training`). Pick a sub-category by scale or role: server-side concurrency (`serving-engines`), single-user local execution (`local-runtimes`), constraining the decoder's output (`structured-generation`), or measuring serving performance across engines and hardware (`inference-benchmarks`).

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "tuios does", "zh": "tuios 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary", "zh": "装上这一个二进制", "code": "brew install tuios", "component": {"en": "tuios CLI", "zh": "tuios 命令行"}},
+    {"lane": "you", "en": "Wire each agent harness you use to report its state", "zh": "给你用的每个 agent 接上状态上报", "code": "tuios integration install claude-code", "component": {"en": "harness hooks", "zh": "harness 钩子"}},
+    {"lane": "you", "en": "Start tuios and run your agents in tiled panes as usual", "zh": "启动 tuios，照常在平铺 pane 里跑 agent", "code": "tuios"},
+    {"lane": "them", "en": "Daemon keeps the panes alive and marks each agent working / needs input / done / errored", "zh": "守护进程托住 pane，给每个 agent 标上工作中、等你、完成或出错", "component": {"en": "tuios daemon", "zh": "tuios 守护进程"}},
+    {"lane": "them", "en": "Collects approvals, questions and finished turns from every session into one Inbox", "zh": "把各会话里的审批、提问、完成的回合收进一个 Inbox", "component": {"en": "Inbox", "zh": "Inbox"}},
+    {"lane": "you", "en": "Open the Inbox and answer the waiting prompt without going to its pane", "zh": "打开 Inbox，不用切到那个 pane 就能直接回答", "code": "ctrl+b i"}
+  ],
+  "value": {
+    "en": "No more tabbing through panes to find the agent stuck on a permission prompt; every waiting agent is one list you answer from",
+    "zh": "不用再挨个 pane 找卡在权限确认上的 agent；所有在等你的 agent 都在一张列表里，就地回答"
+  },
+  "sources": [
+    "README Installation (brew install tuios) and Quick Start (tuios: attaches to a daemon-backed session)",
+    "docs/AGENT_STATE.md 'Set it up' step 1 (tuios integration install claude-code) and step 2 ('ctrl+b i opens the Inbox')",
+    "docs/AGENT_STATE.md 'What you get' (one state per pane: working, needs_input, idle, done, errored; the Inbox lists approvals, questions, mail, errors, finished turns in every session on every machine; answer from there)",
+    "docs/SESSIONS.md 'Daemon Sessions' (the daemon owns the PTYs; a client is only a viewer)"
+  ]
+}

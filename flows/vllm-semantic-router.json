@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Semantic Router does", "zh": "Semantic Router 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and start the local stack (Router, Envoy, Dashboard)", "zh": "装好 CLI，拉起本地整套（Router、Envoy、控制台）", "code": "vllm-sr serve", "component": {"en": "vllm-sr CLI", "zh": "vllm-sr 命令行"}},
+    {"lane": "you", "en": "Register your model endpoints and write decisions: which signal sends a request to which model", "zh": "登记模型端点，写决策：哪种信号的请求交给哪个模型", "code": "routing.decisions", "component": {"en": "canonical YAML config", "zh": "规范 YAML 配置"}},
+    {"lane": "you", "en": "Point clients at the routed listener and ask for the virtual model", "zh": "客户端改连路由入口，模型名填虚拟模型", "code": "\"model\": \"vllm-sr/auto\""},
+    {"lane": "them", "en": "Envoy hands each request to the Router over ExtProc before forwarding it", "zh": "Envoy 转发前先把每个请求经 ExtProc 交给 Router", "component": {"en": "Envoy ExtProc filter", "zh": "Envoy ExtProc 过滤器"}},
+    {"lane": "them", "en": "Computes signals — domain, jailbreak, PII, keywords, context length — with local classifiers", "zh": "用本地小分类器算信号：领域、越狱、PII、关键词、上下文长度", "component": {"en": "Vela encoder classifiers", "zh": "Vela 编码器分类器"}},
+    {"lane": "them", "en": "Matches the highest-priority decision, picks a model and runs that route's plugins", "zh": "命中优先级最高的决策，选出模型，跑这条路由的插件"},
+    {"lane": "them", "en": "Envoy sends the request to the chosen backend; the choice is written to a header", "zh": "Envoy 把请求发给选中的后端，选择结果写进响应头", "code": "x-vsr-selected-model"}
+  ],
+  "value": {"en": "Apps keep calling one model name — which model serves what, and what gets blocked, lives in one reviewable YAML", "zh": "应用只认一个模型名；谁来答、什么该拦，都收在一份可审的 YAML 里，不再写进业务代码"},
+  "sources": [
+    "https://github.com/vllm-project/semantic-router#install (curl installer)",
+    "website/docs/installation/installation.md (vllm-sr serve, Dashboard :8700, routed listener :8899, \"model\": \"vllm-sr/auto\")",
+    "website/docs/tutorials/decision/single.md (routing.decisions with rules.conditions and modelRefs)",
+    "website/docs/overview/semantic-router-overview.md (Envoy ExtProc data plane, request lifecycle, signals/decisions/plugins)",
+    "website/docs/training/model-catalog.md (Vela 1.0 encoder classifiers: Domain, Guard, PII, ...)",
+    "website/docs/faq.md (x-vsr-selected-model receipt header, x-selected-model for gateway matching)"
+  ]
+}

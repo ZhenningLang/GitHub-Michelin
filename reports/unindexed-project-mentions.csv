@@ -82,14 +82,17 @@ AFFiNE (toeverything/AFFiNE),categories/team-chat/macro.md,,no
 After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
 AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
+Agent Router (formerly Envoy AI Gateway),categories/api-gateway/vllm-semantic-router.md,,no
 Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/research-automation/ai-scientist.md,,no
+AIBrix (vllm-project/aibrix),categories/llm-inference/serving-engines/llm-d.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no
 aiohttp,categories/python-tooling/curl-cffi.md,,no
 aiokafka,categories/kafka-tools/kafka-python.md,,no
+AIPerf (ai-dynamo/aiperf),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 aircrack-ng,categories/pentest/wifit3.md,,no
 airtest / Poco (NetEase),categories/im-automation/douyin-bot.md,,no
 AIStor Free / Enterprise,categories/object-storage/minio.md,,no
@@ -237,6 +240,7 @@ claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtim
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
+claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
@@ -447,6 +451,7 @@ GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.m
 gsplat (Nerfstudio),categories/3d-reconstruction/spirula-studio.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
+GuideLLM (vllm-project/guidellm),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 "guppy3 / heapy, Scalene",categories/python-tooling/memory-analyzer.md,,no
 Gurobi / FICO Xpress,categories/optimization-solvers/highs.md,,no
 Gurobi · FICO Xpress,categories/optimization-solvers/INDEX.md,,no
@@ -545,6 +550,7 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
+KServe (kserve/kserve),categories/llm-inference/serving-engines/llm-d.md,,no
 KTransformers,categories/llm-inference/local-runtimes/freetoken.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangBot,categories/im-automation/wechat/dify-on-wechat.md,,no
@@ -576,6 +582,7 @@ LlamaParse,categories/document-parsing/docling.md,,no
 LlamaParse / self-hosted MinerU,categories/document-parsing/INDEX.md,,no
 LLaVA,categories/on-device-ml/minicpm-v.md,,no
 LLM-Subtrans (`machinewrapped/llm-subtrans`),categories/reading-tools/translate-books-with-llms.md,,no
+LLMPerf (ray-project/llmperf),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 LLMs-from-scratch (rasbt),categories/llm-training/study-and-experiments/train-llm-from-scratch.md,,no
 llms.txt (`AnswerDotAI/llms-txt`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 LM Studio,categories/llm-inference/local-runtimes/llama-cpp.md,,no
@@ -646,6 +653,7 @@ MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
+MLPerf Inference (mlcommons/inference),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no
 Modern agent frameworks (function-calling / MCP-based tooling),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Modern multimodal LLMs (GPT-4o / Gemini / Claude vision / Qwen-VL),categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
@@ -709,6 +717,8 @@ npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/ver
 Numba,categories/python-tooling/cython.md,,no
 Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 Nuxt.js,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
+NVIDIA Dynamo (ai-dynamo/dynamo),categories/llm-inference/serving-engines/llm-d.md,,no
+NVIDIA LLM Router (AI Blueprint),categories/api-gateway/vllm-semantic-router.md,,no
 NVIDIA NemoClaw,categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
@@ -902,6 +912,7 @@ reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,n
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
+RouteLLM,categories/api-gateway/vllm-semantic-router.md,,no
 RSSHub,categories/reading-tools/horizon.md,,no
 RTK Query (`reduxjs/redux-toolkit`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Runway / Pika (SaaS),categories/video-production/hyperframes.md,,no

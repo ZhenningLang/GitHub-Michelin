@@ -17,3 +17,12 @@
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |
 | yetone/magpie | add | done | categories/api-gateway/magpie-model-router.md | 处理中新开的标签；slug 避开已收录的 Blinue/Magpie | yetone/magpie |
 | pingdotgg/t3code | sync | done | categories/agent-frameworks/coding-agents/terminal-agents/t3code.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pingdotgg/t3code |
+| cursor/plugins | add | done | categories/agent-skills/vendor-collections/cursor-plugins.md |  | cursor/plugins |
+| emilkowalski/skills | sync | done | categories/agent-skills/design/ui-taste/emilkowalski-skills.md | 新鲜页（last_verified 2026-07-16，76 天 < 90），sync-entry 按阈值未重核，无改动 | emilkowalski/skills |
+| Gaurav-Gosain/tuios | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md |  | gaurav-gosain/tuios |
+| humanlayer/skills | sync | done | categories/agent-skills/vendor-collections/humanlayer-skills.md | 新鲜页（last_verified 2026-09-22，8 天 < 90），sync-entry 按阈值未重核，无改动 | humanlayer/skills |
+| kubernetes-sigs/agent-sandbox | add | done | categories/sandboxing/agent-sandbox.md |  | kubernetes-sigs/agent-sandbox |
+| llm-d/llm-d | add | done | categories/llm-inference/serving-engines/llm-d.md |  | llm-d/llm-d |
+| SemiAnalysisAI/InferenceX | add | done | categories/llm-inference/inference-benchmarks/inferencex.md |  | semianalysisai/inferencex |
+| SimoneAvogadro/android-reverse-engineering-skill | add | failed |  | worker 调研完成（拟归 agent-skills/security），写页时回复被安全分类器拦截，未改写绕过、未产出页面；标签保留，待用户决定 | simoneavogadro/android-reverse-engineering-skill |
+| vllm-project/semantic-router | add | done | categories/api-gateway/vllm-semantic-router.md |  | vllm-project/semantic-router |

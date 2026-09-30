@@ -16,6 +16,7 @@
 | **BentoML** | Use it when you want to package a model plus its preprocessing into a deployable inference API with multi-model pipelines — accepting a heavier framework than a bare serving engine. | B (6/6) | [→](bentoml.md) |
 | **Modular Platform (MAX + Mojo)** | Use it when you want a high-performance GPU/CPU inference platform (MAX) plus the Mojo systems language — accepting single-vendor lock-in and partly non-production licensing. | B (5/6) | [→](modular.md) |
 | **SIE (Superlinked Inference Engine)** | Use it when an agent pipeline needs many small models (embed, rerank, OCR, extraction, guards) behind one API with LRU model loading and a Helm/KEDA cluster — accepting a ~6-month-old, single-vendor 0.x codebase with frequent breaking minors. | B (6/6) | [→](sie.md) |
+| **llm-d** | Use it when a Kubernetes fleet of vLLM/SGLang pods needs LLM-aware routing (prefix-cache and queue-aware), prefill/decode disaggregation or KV-cache offload from benchmarked Helm/kustomize recipes — accepting a young pre-1.0 CNCF Sandbox stack with heavy cluster ops and component churn between releases. | B (5/6) | [→](llm-d.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [BentoML](bentoml.md) | ✅ | B (6/6) | Packages the model and its business logic into a deployable API; more framework than engine. |
 | [Modular Platform (MAX + Mojo)](modular.md) | ✅ | B (5/6) | Vendor-built GPU/CPU serving platform plus the Mojo language; single-vendor and partly non-production licensing. |
 | [SIE (Superlinked Inference Engine)](sie.md) | ✅ | B (6/6) | One API and cluster for many small task models (embed/rerank/OCR/extract/guard) with on-demand loading; young single-vendor 0.x, delegates LLM generation to SGLang. |
+| [llm-d](llm-d.md) | ✅ | B (5/6) | LLM-aware router plus recipes on top of vLLM/SGLang on Kubernetes (prefix-cache routing, P/D split, KV offload); multi-vendor CNCF Sandbox, young pre-1.0 with heavy cluster ops. |
 
 ## What belongs here
 

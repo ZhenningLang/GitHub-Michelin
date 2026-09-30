@@ -51,6 +51,7 @@ https://github.com/FlashML-org/FreeToken,freetoken,local-runtimes,categories/llm
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
 https://github.com/FreshRSS/FreshRSS,freshrss,reading-tools,categories/reading-tools/freshrss.md
+https://github.com/Gaurav-Gosain/tuios,tuios,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md
 https://github.com/Gentleman-Programming/engram,engram,coding-agent-memory,categories/agent-memory/coding-agent-memory/engram.md
 https://github.com/Giskard-AI/giskard-oss,giskard,llm-eval,categories/llm-eval/giskard.md
 https://github.com/GongRzhe/Office-PowerPoint-MCP-Server,office-powerpoint-mcp-server,office-automation,categories/office-automation/office-powerpoint-mcp-server.md
@@ -145,6 +146,7 @@ https://github.com/SWE-bench/SWE-bench,swe-bench,llm-eval,categories/llm-eval/sw
 https://github.com/SakanaAI/AI-Scientist,ai-scientist,research-automation,categories/ml-research/research-automation/ai-scientist.md
 https://github.com/SamuelSchmidgall/AgentLaboratory,agent-laboratory,research-automation,categories/ml-research/research-automation/agent-laboratory.md
 https://github.com/SeleniumHQ/selenium,selenium,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/selenium.md
+https://github.com/SemiAnalysisAI/InferenceX,inferencex,inference-benchmarks,categories/llm-inference/inference-benchmarks/inferencex.md
 https://github.com/SenteLabsAI/OpenExecutive,open-executive,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/open-executive.md
 https://github.com/Serene-Arc/bulk-downloader-for-reddit,bulk-downloader-for-reddit,media-download,categories/media-download/bulk-downloader-for-reddit.md
 https://github.com/Setasign/FPDI,fpdi,pdf-generation,categories/pdf-tools/pdf-generation/fpdi.md
@@ -320,6 +322,7 @@ https://github.com/constverum/ProxyBroker,proxybroker,proxy-pool,categories/prox
 https://github.com/continuedev/continue,continue,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/continue.md
 https://github.com/coreyhaines31/marketingskills,marketingskills,marketing-seo,categories/agent-skills/ai-writing/marketing-seo/marketingskills.md
 https://github.com/crewAIInc/crewAI,crewai,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/crewai.md
+https://github.com/cursor/plugins,cursor-plugins,vendor-collections,categories/agent-skills/vendor-collections/cursor-plugins.md
 https://github.com/cython/cython,cython,python-tooling,categories/python-tooling/cython.md
 https://github.com/d2lang/d2,d2,diagramming,categories/diagramming/d2.md
 https://github.com/daeuniverse/dae,dae,networking,categories/networking/dae.md
@@ -487,6 +490,7 @@ https://github.com/kkroening/ffmpeg-python,ffmpeg-python,transcoding-and-pipelin
 https://github.com/knative/serving,knative-serving,serverless,categories/serverless/knative-serving.md
 https://github.com/kohlschutter/boilerpipe,boilerpipe,article-extraction,categories/web-scraping/article-extraction/boilerpipe.md
 https://github.com/krillinai/OpenCreator,open-creator,video-production,categories/video-production/open-creator.md
+https://github.com/kubernetes-sigs/agent-sandbox,agent-sandbox,sandboxing,categories/sandboxing/agent-sandbox.md
 https://github.com/kubernetes-sigs/descheduler,descheduler,ops-infra,categories/dev-utilities/ops-infra/descheduler.md
 https://github.com/kunchenguid/backpass,backpass,coding-agent-memory,categories/agent-memory/coding-agent-memory/backpass.md
 https://github.com/langchain-ai/langchain,langchain,workflow-builders,categories/agent-frameworks/workflow-builders/langchain.md
@@ -512,6 +516,7 @@ https://github.com/linagora/twake-drive,twake-drive,document-management,categori
 https://github.com/lingfengQAQ/webnovel-writer,webnovel-writer,fiction,categories/agent-skills/ai-writing/fiction/webnovel-writer.md
 https://github.com/lit/lit,lit,view-frameworks,categories/web-ui/frameworks/view-frameworks/lit.md
 https://github.com/littlecodersh/ItChat,itchat,wechat,categories/im-automation/wechat/itchat.md
+https://github.com/llm-d/llm-d,llm-d,serving-engines,categories/llm-inference/serving-engines/llm-d.md
 https://github.com/lmacken/pyrasite,pyrasite,python-tooling,categories/python-tooling/pyrasite.md
 https://github.com/logseq/logseq,logseq,knowledge-base,categories/knowledge-base/logseq.md
 https://github.com/loopx-project/loopx,loopx,work-state,categories/agent-tooling/work-state/loopx.md
@@ -748,6 +753,7 @@ https://github.com/verl-project/verl,verl,llm-training,categories/llm-training/v
 https://github.com/vibrantlabsai/ragas,ragas,llm-eval,categories/llm-eval/ragas.md
 https://github.com/video-db/call.md,call-md,meeting-intelligence,categories/meeting-intelligence/call-md.md
 https://github.com/virgiliojr94/book-to-skill,book-to-skill,agent-skills,categories/agent-skills/book-to-skill.md
+https://github.com/vllm-project/semantic-router,vllm-semantic-router,api-gateway,categories/api-gateway/vllm-semantic-router.md
 https://github.com/vllm-project/vllm,vllm,serving-engines,categories/llm-inference/serving-engines/vllm.md
 https://github.com/volcengine/OpenViking,openviking,coding-agent-memory,categories/agent-memory/coding-agent-memory/openviking.md
 https://github.com/vran-dev/PrettyZoo,prettyzoo,database-clients,categories/databases/database-clients/prettyzoo.md

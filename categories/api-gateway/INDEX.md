@@ -17,6 +17,7 @@
 | **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | A (6/6) | [→](envoy.md) |
 | **TokenHub** | Use it when model access must become governed infrastructure — project keys, quotas, routing policy, audit and provider-bill reconciliation in one self-hosted Go gateway; it is ~3 months old at v0.9.0. | B (6/6) | [→](tokenhub.md) |
 | **Magpie (yetone)** | Use it when one developer wants every coding agent (Claude Code, Codex, OpenCode, ~28 in all) switchable to any vendor's model from a menu bar, via single-key config edits and a local translating gateway — but it is about a week old, single-maintainer, and reusing subscriptions carries account risk. | C (5/6) | [→](magpie-model-router.md) |
+| **vLLM Semantic Router** | Use it when a platform team serves several models and wants the model chosen per request from its content (domain, difficulty, jailbreak, PII) by YAML policy behind Envoy — it is pre-1.0 and still needs a gateway for keys and rate limits. | B (5/6) | [→](vllm-semantic-router.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [Envoy](envoy.md) | ✅ | A (6/6) | CNCF-graduated L4/L7 data plane driven by xDS; you bring the control plane and the API-management policy layer. |
 | [TokenHub](tokenhub.md) | ✅ | B (6/6) | Governance-first self-hosted AI gateway (Go/SQLite): project keys, quotas, routing, audit and provider-bill reconciliation; very young (v0.9.x) and author-dominated. |
 | [Magpie (yetone)](magpie-model-router.md) | ✅ | C (5/6) | Desktop model switcher plus local Anthropic/OpenAI-translating gateway for ~28 coding agents, with subscription logins as providers; days old, single-maintainer, auto-updating. |
+| [vLLM Semantic Router](vllm-semantic-router.md) | ✅ | B (5/6) | Content-aware model selection as an Envoy ExtProc decision layer with its own classifier models; adds a hop and a multi-service stack, and leaves credentials, rate limits and replica scheduling to other layers. |
 | Tyk / KrakenD / New API | 未收录 | — | Other self-hosted gateways named across the pages. |
 
 ## What belongs here
