@@ -8,7 +8,7 @@
 | 合集 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Designer Skills** | 覆盖面很广的设计实践 skill pack——9 个 plugin 下共 97 个 skill、30 个 command（研究、设计系统、UX 策略、UI、交互、原型/测试、design ops、工具箱、视觉批评），适用于 Claude Code 和 Gemini CLI。 | B（4/5） | [→](designer-skills.zh.md) |
-| **Skills For Design Engineers** | Emil Kowalski 的六技能设计工程包，面向 UI motion、动画词汇、Apple 风格界面原则、严格动画评审和动画改进计划。 | B（4/5） | [→](emilkowalski-skills.zh.md) |
+| **Skills For Design Engineers** | Emil Kowalski 的 13 个 skill：先判断界面该不该动，要动时定曲线、时长和展开位置，附会拦截的动效评审和只读全库体检。 | B（4/5） | [→](emilkowalski-skills.zh.md) |
 | **make-interfaces-feel-better** | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 | B（4/5） | [→](make-interfaces-feel-better.zh.md) |
 | **Taste-Skill** | 一套可移植、与框架无关的 agent skill 包，给 coding agent 注入审美，阻止千篇一律的 AI-slop 前端，转而产出有意图的布局、排版、动效与留白。 | B（4/5） | [→](taste-skill.zh.md) |
 | **UI UX Pro Max Skill** | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 | B（5/6） | [→](ui-ux-pro-max.zh.md) |
@@ -22,7 +22,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Designer Skills](designer-skills.zh.md) | ✅ | B（4/5） | 覆盖面很广的设计实践 skill pack——9 个 plugin 下共 97 个 skill、30 个 command（研究、设计系统、UX 策略、UI、交互、原型/测试、design ops、工具箱、视觉批评），适用于 Claude Code 和 Gemini CLI。 |
-| [Skills For Design Engineers](emilkowalski-skills.zh.md) | ✅ | B（4/5） | 动画和设计工程 taste 是瓶颈时最合适；UX research 或设计系统用更宽的设计包。 |
+| [Skills For Design Engineers](emilkowalski-skills.zh.md) | ✅ | B（4/5） | 页面看着对、动起来不对时最合适；UX research 或设计系统用更宽的设计包。 |
 | [make-interfaces-feel-better](make-interfaces-feel-better.zh.md) | ✅ | B（4/5） | 一个单一、聚焦的 agent skill，把约 16 条具体的 UI 打磨原则（同心圆角、可中断过渡、等宽数字、入场/出场动画）注入 coding agent，让界面「感觉」做完了，而不只是功能正确。 |
 | [Taste-Skill](taste-skill.zh.md) | ✅ | B（4/5） | 一套可移植、与框架无关的 agent skill 包，给 coding agent 注入审美，阻止千篇一律的 AI-slop 前端，转而产出有意图的布局、排版、动效与留白。 |
 | [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | ✅ | B（5/6） | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 |

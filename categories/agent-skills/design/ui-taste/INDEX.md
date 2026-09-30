@@ -8,7 +8,7 @@
 | Collection | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Designer Skills** | A broad design-practice skill pack — 97 skills and 30 commands across 9 plugins (research, design systems, UX strategy, UI, interaction, prototyping/testing, design ops, toolkit, visual critique) for Claude Code and Gemini CLI. | B (4/5) | [→](designer-skills.md) |
-| **Skills For Design Engineers** | Emil Kowalski's six-skill design-engineering pack for UI motion, animation vocabulary, Apple-style interface principles, strict animation review, and animation improvement planning. | B (4/5) | [→](emilkowalski-skills.md) |
+| **Skills For Design Engineers** | Emil Kowalski's 13-skill pack that decides when UI should not animate and, when it should, which curve, duration and origin — with a blocking motion review and a read-only codebase audit. | B (4/5) | [→](emilkowalski-skills.md) |
 | **make-interfaces-feel-better** | A single, focused agent skill that injects ~16 concrete UI-polish principles (concentric radius, interruptible transitions, tabular numbers, enter/exit animation) so a coding agent ships interfaces that feel finished, not merely correct. | B (4/5) | [→](make-interfaces-feel-better.md) |
 | **Taste-Skill** | A portable, framework-agnostic agent skill pack that gives coding agents visual taste — stopping generic AI-slop frontends and pushing intentional layout, typography, motion, and spacing. | B (4/5) | [→](taste-skill.md) |
 | **UI UX Pro Max Skill** | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. | B (5/6) | [→](ui-ux-pro-max.md) |
@@ -22,7 +22,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Designer Skills](designer-skills.md) | ✅ | B (4/5) | A broad design-practice skill pack — 97 skills and 30 commands across 9 plugins (research, design systems, UX strategy, UI, interaction, prototyping/testing, design ops, toolkit, visual critique) for Claude Code and Gemini CLI. |
-| [Skills For Design Engineers](emilkowalski-skills.md) | ✅ | B (4/5) | Best when animation and design-engineering taste are the bottleneck; choose broader design packs for UX research or design systems. |
+| [Skills For Design Engineers](emilkowalski-skills.md) | ✅ | B (4/5) | Best when the page looks right but moves wrong; choose broader design packs for UX research or design systems. |
 | [make-interfaces-feel-better](make-interfaces-feel-better.md) | ✅ | B (4/5) | A single, focused agent skill that injects ~16 concrete UI-polish principles (concentric radius, interruptible transitions, tabular numbers, enter/exit animation) so a coding agent ships interfaces that feel finished, not merely correct. |
 | [Taste-Skill](taste-skill.md) | ✅ | B (4/5) | A portable, framework-agnostic agent skill pack that gives coding agents visual taste — stopping generic AI-slop frontends and pushing intentional layout, typography, motion, and spacing. |
 | [UI UX Pro Max Skill](ui-ux-pro-max.md) | ✅ | B (5/6) | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. |
