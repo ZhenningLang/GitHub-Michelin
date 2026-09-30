@@ -167,6 +167,7 @@ Bespoke per-task prompting (write your own `SKILL.md`),categories/agent-skills/s
 bettercap,categories/pentest/wifit3.md,,no
 BGE / FlagEmbedding (BAAI),categories/rag-retrieval/vector-search/text2vec.md,,no
 BigLaw Bench (`harveyai/biglaw-bench`),categories/llm-eval/harvey-labs.md,,no
+billion-context-dsh (`Tyan66666/billion-context-dsh`),categories/agent-tooling/session-history/dsh-context.md,,no
 Biome,categories/ai-code-review/react-doctor.md,,no
 BleachBit,categories/disk-cleanup/mangodisk.md,,no
 Blender,categories/cad/freecad.md,,no
@@ -343,6 +344,8 @@ Downshift (`downshift-js/downshift`),categories/web-ui/component-libraries/tanst
 Dragonfly,categories/databases/database-engines/pikiwidb.md,,no
 draw.io (diagrams.net),categories/diagramming/mermaid.md,,no
 DrissionPage,categories/web-scraping/crawling-tools/fuck-login.md,,no
+dsh built-in context ring and stats line (`deepseek-ai/deepseek-harness`),categories/agent-tooling/session-history/dsh-context.md,,no
+dsh-TUI (`ccch1mneyyy/dsh-TUI`),categories/agent-tooling/session-history/dsh-context.md,,no
 DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no

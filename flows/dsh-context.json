@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "dsh-context does",
+    "zh": "dsh-context 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the plugin to dsh's web profile, then start the web UI",
+      "zh": "把插件装进 dsh 的 web profile，再启动 Web UI",
+      "code": "dsh plugin --profile web add dsh-context · dsh web"
+    },
+    {
+      "lane": "them",
+      "en": "Registers projection units that fold every session event into a per-request context timeline",
+      "zh": "注册投影单元，把会话每个事件折叠成逐请求的上下文时间线",
+      "component": {
+        "en": "host half (Cordis plugin)",
+        "zh": "宿主端 Cordis 插件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Work in a session as usual",
+      "zh": "照常在会话里干活"
+    },
+    {
+      "lane": "them",
+      "en": "Shows a Context tab beside Chat, plus a right-sidebar panel and a dashboard entry",
+      "zh": "在“对话”旁显示 Context 标签页，另加右侧栏面板和仪表盘入口",
+      "component": {
+        "en": "web client bundle",
+        "zh": "Web 客户端包"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Type the slash command, or open the Context tab",
+      "zh": "输入斜杠命令，或打开 Context 标签页",
+      "code": "/context"
+    },
+    {
+      "lane": "them",
+      "en": "Breaks each request into what it was built from, token-priced, with compactions and prunes marked",
+      "zh": "把每次请求拆成组成部分并标出 token 价，压缩和剪枝事件都钉在图上"
+    }
+  ],
+  "value": {
+    "en": "See which part of the window eats your tokens and what compaction removed, without digging through session logs",
+    "zh": "不翻会话日志，就能看清是哪部分在吃上下文、压缩又删掉了什么"
+  },
+  "sources": [
+    "README.md bowenliang123/dsh-context main @ 2026-09-30: 'Install with dsh cli' verbatim 'dsh plugin --profile web add dsh-context' and 'Then start the web UI with `dsh web`'; '/context command' section: 'Type `/context` (or pick it from the `/` menu) and press Enter'; Context tab / Context panel / Context Dashboard sections; Context Browser and Context Events sections (element-level token price, compaction and prune markers)",
+    "src/host/index.ts @ main 2026-09-30: `inject = ['sessionProjections']`, `ctx.sessionProjections.register(createContextTimelineDefinition(...))` plus headers and activity units",
+    "src/client/index.ts @ main 2026-09-30: registers the Context tab in the `conversation.view` slot; package.json `dsh.client.platform: \"web\"`"
+  ]
+}
