@@ -489,6 +489,7 @@ httpx,categories/python-tooling/curl-cffi.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
 Hugging Face sentiment models,categories/ml-research/nlp-and-time-series/senta.md,,no
+Hugging Face Text Embeddings Inference (TEI),categories/llm-inference/serving-engines/sie.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/site-frameworks/astro.md,,no
@@ -498,6 +499,7 @@ Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
+Infinity (michaelfeil/infinity),categories/llm-inference/serving-engines/sie.md,,no
 Infisical,categories/secrets-management/openbao.md,,no
 Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
@@ -1085,6 +1087,7 @@ Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-f
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
+Xinference (xorbitsai/inference),categories/llm-inference/serving-engines/sie.md,,no
 Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no

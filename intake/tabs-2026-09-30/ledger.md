@@ -8,10 +8,10 @@
 |:---|:---|:---|:---|:---|:---|
 | tursodatabase/turso | add | running |  |  | tursodatabase/turso |
 | OpenBMB/VoxCPM | add | done | categories/speech/voxcpm.md |  | openbmb/voxcpm |
-| superlinked/sie | add | running |  |  | superlinked/sie |
+| superlinked/sie | add | done | categories/llm-inference/serving-engines/sie.md |  | superlinked/sie |
 | miqdadbadjuber/anti-slop | add | done | categories/agent-skills/design/ui-taste/anti-slop.md |  | miqdadbadjuber/anti-slop |
 | GoogleChrome/modern-web-guidance-src | add | running |  |  | googlechrome/modern-web-guidance-src |
-| openclaw/openclaw-enterprise | add | pending |  |  | openclaw/openclaw-enterprise |
+| openclaw/openclaw-enterprise | add | running |  |  | openclaw/openclaw-enterprise |
 | HunxByts/GhostTrack | add | pending |  | 可用于追踪个人位置、无许可证；按用户「安全工具也收」收录，页面须写明法律与隐私风险 | hunxbyts/ghosttrack |
 | alphaXiv/OpenResearch | sync | pending |  | 已收录，标签又被打开 | alphaxiv/openresearch |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang（按规则跳过，标签不动） | zhenninglang/cpu-gpu-basic |

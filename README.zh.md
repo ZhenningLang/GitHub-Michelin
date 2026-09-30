@@ -846,6 +846,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
+| **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
 
 ### task-queue
 

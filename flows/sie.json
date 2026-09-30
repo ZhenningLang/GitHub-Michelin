@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SIE does", "zh": "SIE 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start one SIE server (or the Docker image that matches your GPU and model bundle)", "zh": "起一个 SIE 服务（或按显卡和模型包选对应镜像）",
+     "code": "pip install \"sie-server[local]\" && sie-server serve", "component": {"en": "sie-server", "zh": "sie-server"}},
+    {"lane": "you", "en": "Call it with a catalog model name per request: embed, rerank or extract", "zh": "每次调用写上目录里的模型名：做向量、重排或抽取",
+     "code": "client.encode · client.score · client.extract", "component": {"en": "sie-sdk (Python / TypeScript)", "zh": "sie-sdk（Python／TypeScript）"}},
+    {"lane": "them", "en": "On a model's first call, downloads its weights from Hugging Face and loads it", "zh": "某个模型第一次被调用时，从 Hugging Face 下权重并加载"},
+    {"lane": "them", "en": "Batches concurrent requests by token count and runs them on the GPU", "zh": "按 token 数把并发请求拼成批，送上 GPU 跑"},
+    {"lane": "them", "en": "Keeps several models resident and evicts the least recently used when memory runs short", "zh": "多个模型同时常驻，显存不够时踢掉最久没用的"}
+  ],
+  "value": {"en": "Every small model an agent pipeline needs sits behind one API — no separate server per embedder, reranker, OCR or guard model", "zh": "一条 agent 流水线要用的小模型都在同一个 API 后面，不用给向量、重排、OCR、审核模型各起一个服务"},
+  "sources": [
+    "https://github.com/superlinked/sie#quickstart (pip install \"sie-server[local]\" && sie-server serve; client.encode / client.score / client.extract; first call downloads weights)",
+    "https://github.com/superlinked/sie/blob/main/packages/sie_server/README.md (multi-model serving with LRU eviction, token-based dynamic batching)"
+  ]
+}
