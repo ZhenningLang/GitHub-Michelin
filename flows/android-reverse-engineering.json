@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "the skill does",
+    "zh": "skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the plugin marketplace in Claude Code",
+      "zh": "在 Claude Code 里添加插件市场",
+      "code": "/plugin marketplace add SimoneAvogadro/android-reverse-engineering-skill"
+    },
+    {
+      "lane": "you",
+      "en": "Install the plugin",
+      "zh": "安装插件",
+      "code": "/plugin install android-reverse-engineering@android-reverse-engineering-skill"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at the target file",
+      "zh": "把目标文件交给它",
+      "code": "/decompile path/to/app.apk"
+    },
+    {
+      "lane": "them",
+      "en": "Fingerprints the app first — framework, HTTP stack, obfuscation — and stops if it isn't Java/Kotlin",
+      "zh": "先做指纹分诊：框架、HTTP 栈、混淆度；不是 Java/Kotlin 就叫停",
+      "component": {"en": "fingerprint.sh", "zh": "fingerprint.sh"}
+    },
+    {
+      "lane": "them",
+      "en": "Decompiles with jadx, optionally Fernflower, or both side by side to compare",
+      "zh": "用 jadx 反编译，可选 Fernflower，或两者并排对照",
+      "component": {"en": "decompile.sh", "zh": "decompile.sh"}
+    },
+    {
+      "lane": "them",
+      "en": "Rebuilds real Kotlin class names from metadata R8 cannot strip (a.b.c → LoginRepository)",
+      "zh": "从元数据重建真实类名（a.b.c → LoginRepository）",
+      "component": {"en": "recover-kotlin-names.sh", "zh": "recover-kotlin-names.sh"}
+    },
+    {
+      "lane": "them",
+      "en": "Sweeps the sources for endpoints, URLs and auth headers across Retrofit/Ktor/Apollo",
+      "zh": "扫源码里的端点、URL 与鉴权头（Retrofit/Ktor/Apollo 等）",
+      "component": {"en": "find-api-calls.sh", "zh": "find-api-calls.sh"}
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the flow behind one screen — from LoginActivity to its API calls",
+      "zh": "挑一个界面追问调用链：从 LoginActivity 到它的 API 调用"
+    },
+    {
+      "lane": "them",
+      "en": "Delivers the architecture summary and a two-tier endpoint document",
+      "zh": "交付架构摘要与两层端点文档：全量平表加重点深挖"
+    }
+  ],
+  "value": {
+    "en": "The app's full API surface documented — hosts, paths, auth — without its source code",
+    "zh": "没有源码也拿到整份 API 契约：主机、路径、鉴权"
+  },
+  "sources": [
+    "README.md — Installation (/plugin marketplace add …, /plugin install … verbatim)",
+    "README.md — Usage (slash command /decompile path/to/app.apk verbatim)",
+    "plugins/android-reverse-engineering/skills/android-reverse-engineering/SKILL.md — Phases 0–5 and script names",
+    "plugins/android-reverse-engineering/commands/decompile.md — /decompile workflow",
+    "plugins/android-reverse-engineering/skills/android-reverse-engineering/scripts/ — fingerprint.sh, decompile.sh, recover-kotlin-names.sh, find-api-calls.sh (tree listed 2026-09-30)"
+  ]
+}

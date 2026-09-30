@@ -534,6 +534,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Anthropic Cybersecurity Skills** | 一个大型网络安全技能包（约 817 个技能），由对齐 MITRE ATT&CK、NIST CSF、ATLAS、D3FEND、NIST AI RMF、MITRE F3 的 SKILL.md runbook 组成，按需加载进 coding agent。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/security/anthropic-cybersecurity-skills.zh.md) · [EN](categories/agent-skills/security/anthropic-cybersecurity-skills.md) |
 | **reverse-skill** | 当你的 AI 编码客户端需要一个通往 45 个逆向/渗透/CTF playbook 的路由器、带授权闸门与证据链报告时用它——双用途内容会触发杀软，且要求信任第三方写的 agent 可执行指令。 | MIT | A（4/5） | [中](categories/agent-skills/security/reverse-skill.zh.md) · [EN](categories/agent-skills/security/reverse-skill.md) |
+| **android-reverse-engineering** | 当你只有安卓二进制、要把它调用的 HTTP API 面写成文档时用它——Claude Code 插件，jadx/Fernflower 反编译、恢复被 R8 藏起的 Kotlin 类名、扫 Retrofit/OkHttp/Ktor/Apollo 出端点与鉴权。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/security/android-reverse-engineering.zh.md) · [EN](categories/agent-skills/security/android-reverse-engineering.md) |
 
 #### agent-skills / context-engineering
 

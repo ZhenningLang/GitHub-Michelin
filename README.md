@@ -537,6 +537,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **Anthropic Cybersecurity Skills** | A large (~817 skill) cybersecurity skill pack of SKILL.md runbooks cross-mapped to MITRE ATT&CK, NIST CSF, ATLAS, D3FEND, NIST AI RMF and MITRE F3, loaded on demand into a coding agent. | Apache-2.0 | B (4/5) | [EN](categories/agent-skills/security/anthropic-cybersecurity-skills.md) · [中](categories/agent-skills/security/anthropic-cybersecurity-skills.zh.md) |
 | **reverse-skill** | Use it when your AI coding client needs a router to 45 RE/pentest/CTF playbooks with an authorization gate and evidence-chain reporting — dual-use content that trips AV and requires trusting third-party agent-executable instructions. | MIT | A (4/5) | [EN](categories/agent-skills/security/reverse-skill.md) · [中](categories/agent-skills/security/reverse-skill.zh.md) |
+| **android-reverse-engineering** | Use it when you must document the HTTP API surface of an Android APK/XAPK/JAR/AAR from its binary alone — a Claude Code plugin that decompiles with jadx/Fernflower, recovers Kotlin class names R8 hid, and sweeps Retrofit/OkHttp/Ktor/Apollo for endpoints and auth. | Apache-2.0 | B (4/5) | [EN](categories/agent-skills/security/android-reverse-engineering.md) · [中](categories/agent-skills/security/android-reverse-engineering.zh.md) |
 
 #### agent-skills / context-engineering
 

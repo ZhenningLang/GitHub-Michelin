@@ -89,6 +89,20 @@ at the intake branch tip and the brief in [`worker-brief.md`](worker-brief.md); 
 page procedure plus `make gates` but never commits, pushes, or touches tabs. The main session then
 integrates **serially**, one repo at a time:
 
+**Which runner.** The model the user names decides it — do not reuse an old batch's scripts:
+- Claude models (`opus`, …): the Agent tool with `isolation: "worktree"` and that `model`.
+- Any other provider (qwen, GLM, DeepSeek, …): **opencode**, not kilo (the maintainer moved from
+  kilo to opencode on 2026-09-23). `opencode run` has no directory flag, so start it inside the
+  worker's worktree:
+  `cd <slot> && opencode run -m '<provider/model>' --auto --format json --title "tabs-intake <repo>" "<brief>"`.
+  Look up the exact model id with `opencode models | grep <name>` (e.g.
+  `alibaba-token-plan-cn/qwen3.8-flash`). Add a `#<variant>` suffix only if that model has one —
+  qwen3.8-flash rejects `#high` and exits in seconds with `Variant unavailable`. A minute in,
+  confirm the model actually answering — opencode has been seen to fall back to a default free
+  model without saying so. The JSON log carries the `sessionID`; read its model from opencode's
+  store: `sqlite3 -readonly ~/.local/share/opencode/opencode.db "select data from session_message
+  where session_id='<sessionID>' limit 1"` → `"model":{"id":…,"providerID":…}`.
+
 1. `git -C <slot> add -A && git -C <slot> diff --cached --binary <base> -- . ':(exclude)reports'`
    → `git apply --3way` in the intake worktree. INDEX/README conflicts where both sides appended
    rows: `python3 tools/tab_intake.py union-resolve`; anything else it lists is resolved by hand.
