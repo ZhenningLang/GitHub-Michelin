@@ -14,6 +14,7 @@
 | **GRequests** | Use it when you want to make existing synchronous `requests` code concurrent with minimal diff via `map()` — but gevent monkeypatches the stdlib and can collide with your stack. | C (4/6) | [→](grequests.md) |
 | **uv** | Use it when you want an extremely fast Python package manager and project tool that replaces pip, poetry, and pyenv with a single Rust binary and universal lockfile — but it's only ~3 years old and some edge cases in dependency resolution are still being ironed out. | A (6/6) | [→](uv.md) |
 | **curl_cffi** | Use it when a Python client gets blocked by TLS/JA3 fingerprinting and you need a `requests`-like API that impersonates a real browser — but it ships a native libcurl, so it isn't pure-Python. | A (6/6) | [→](curl-cffi.md) |
+| **Google Colab CLI** | Use it when your GPU is a Colab plan and your code is a local repo or an agent's script — one command rents the Colab VM, runs the file, and releases it — but it rides Colab's web-session endpoints, is pre-1.0, Linux/macOS-only, and its hardware is tier-gated. | B (6/6) | [→](google-colab-cli.md) |
 
 ## Comparison matrix
 
@@ -26,8 +27,9 @@
 | [GRequests](grequests.md) | ✅ | C (4/6) | Use it when you want to make existing synchronous `requests` code concurrent with minimal diff via `map()` — but gevent monkeypatches the stdlib and can collide with your stack. |
 | [uv](uv.md) | ✅ | A (6/6) | Extremely fast Python package manager written in Rust; replaces pip, poetry, pyenv with a single tool and universal lockfile — but only ~3 years old with some edge cases still being resolved. |
 | [curl_cffi](curl-cffi.md) | ✅ | A (6/6) | Use it when a Python client gets blocked by TLS/JA3 fingerprinting and you need a `requests`-like API that impersonates a real browser — but it ships a native libcurl, so it isn't pure-Python. |
+| [Google Colab CLI](google-colab-cli.md) | ✅ | B (6/6) | Your existing Colab plan as a terminal/agent GPU runner (no new vendor or bill) — paid for with undocumented web-session endpoints, tier-gated hardware, idle reclamation and a pre-1.0 client. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
 
-Developer tooling for the **Python** ecosystem — compilers, debuggers/injection, kernels, HTTP helpers.
+Developer tooling for the **Python** ecosystem — compilers, debuggers/injection, kernels, HTTP helpers, and CLIs that run your Python on a remote notebook kernel.

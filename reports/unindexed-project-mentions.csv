@@ -249,6 +249,7 @@ cloudflare/sandbox-sdk,categories/sandboxing/cloudflare-computer.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
 Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
+Colab MCP server (`googlecolab/colab-mcp`),categories/python-tooling/google-colab-cli.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
 Commercial Kubernetes placement / cost-optimization platforms,categories/dev-utilities/ops-infra/descheduler.md,,no
@@ -537,6 +538,7 @@ Kaboom.js,categories/game-dev/kaplay.md,,no
 kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
+Kaggle CLI (`Kaggle/kaggle-cli`),categories/python-tooling/google-colab-cli.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
 Kap,categories/media-processing/video-editing/openscreen.md,,no
 Kdenlive,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
@@ -967,6 +969,7 @@ Skills Hub (qufei1993/skills-hub),categories/agent-tooling/harness-extensions/sk
 Skills Manager (jiweiyeah/Skills-Manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (xingkongliang/skills-manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 skills-npm (`antfu/skills-npm`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
+SkyPilot (`skypilot-org/skypilot`),categories/python-tooling/google-colab-cli.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no

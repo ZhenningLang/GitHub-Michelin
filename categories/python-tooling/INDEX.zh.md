@@ -14,6 +14,7 @@
 | **GRequests** | 当你想用 `map()` 以最小改动让现有同步 `requests` 代码并发时用它——但 gevent 会猴补丁标准库，可能与你的技术栈冲突。 | C（4/6） | [→](grequests.zh.md) |
 | **uv** | 当你想要一个极速 Python 包管理器和项目工具，用单一 Rust 二进制和通用锁文件替代 pip、poetry 和 pyenv 时用它——但它仅约 3 年历史，依赖解析的某些边缘情况仍在完善。 | A（6/6） | [→](uv.zh.md) |
 | **curl_cffi** | 当 Python 客户端被 TLS／JA3 指纹识别拦下、而你需要一个能伪装真实浏览器的 `requests` 风格 API 时用它——但它随包带原生 libcurl，并非纯 Python。 | A（6/6） | [→](curl-cffi.zh.md) |
+| **Google Colab CLI** | 当你的 GPU 来自 Colab 套餐、代码却在本地仓库或 agent 写的脚本里时用它——一条命令租下 Colab 虚拟机、跑完文件再释放——但它依赖 Colab 网页会话接口，尚在 1.0 之前，只支持 Linux／macOS，硬件按档位限制。 | B（6/6） | [→](google-colab-cli.zh.md) |
 
 ## 对比矩阵
 
@@ -26,8 +27,9 @@
 | [GRequests](grequests.zh.md) | ✅ | C（4/6） | 当你想用 `map()` 以最小改动让现有同步 `requests` 代码并发时用它——但 gevent 会猴补丁标准库，可能与你的技术栈冲突。 |
 | [uv](uv.zh.md) | ✅ | A（6/6） | 用 Rust 编写的极速 Python 包管理器；以单一工具加通用锁文件替代 pip、poetry、pyenv——但仅约 3 年历史，部分边缘情况仍在解决。 |
 | [curl_cffi](curl-cffi.zh.md) | ✅ | A（6/6） | 当 Python 客户端被 TLS／JA3 指纹识别拦下、而你需要一个能伪装真实浏览器的 `requests` 风格 API 时用它——但它随包带原生 libcurl，并非纯 Python。 |
+| [Google Colab CLI](google-colab-cli.zh.md) | ✅ | B（6/6） | 把已有的 Colab 套餐变成终端／agent 能用的 GPU 执行器（不多供应商、不多账单）——代价是未公开的网页会话接口、按档位限制的硬件、空闲回收和 1.0 之前的客户端。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里
 
-面向 **Python** 生态的开发者工具——编译器、调试器/注入、内核、HTTP 辅助。
+面向 **Python** 生态的开发者工具——编译器、调试器/注入、内核、HTTP 辅助，以及把你的 Python 送到远程 notebook 内核上跑的 CLI。

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Colab CLI does",
+    "zh": "Colab CLI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI and log in with Colab scopes once",
+      "zh": "装好 CLI，用带 Colab 权限的账号登录一次",
+      "code": "uv tool install google-colab-cli · gcloud auth application-default login",
+      "component": {
+        "en": "colab CLI",
+        "zh": "colab 命令行"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Run a local script on the accelerator you name",
+      "zh": "指定加速器，运行本地脚本",
+      "code": "colab run --gpu T4 train.py"
+    },
+    {
+      "lane": "them",
+      "en": "Reserves a Colab VM with that GPU and connects to its Jupyter kernel",
+      "zh": "向 Colab 预订一台带该 GPU 的虚拟机，连上它的 Jupyter 内核"
+    },
+    {
+      "lane": "them",
+      "en": "Sends your file with its args into the kernel and streams output back",
+      "zh": "把本地文件连同参数送进内核执行，输出实时流回终端"
+    },
+    {
+      "lane": "them",
+      "en": "Releases the VM when the script ends, even on error, and returns its exit code",
+      "zh": "脚本结束即释放虚拟机，出错也释放，并返回退出码"
+    }
+  ],
+  "value": {
+    "en": "A Colab GPU run becomes one terminal command a script or agent can issue — no browser tab to paste into, no idle VM left burning compute units",
+    "zh": "一次 Colab GPU 运行变成脚本或 agent 能发的一条命令——不用往浏览器贴代码，也不会留下空转烧钱的虚拟机"
+  },
+  "sources": [
+    "https://github.com/googlecolab/google-colab-cli README (uv tool install google-colab-cli; colab run --gpu T4 train.py; Ephemeral Accelerator Jobs)",
+    "skills/colab-operator/SKILL.md (gcloud auth application-default login with Colab scopes; colab run = new + exec + stop, exit codes propagate, self-cleans on error)",
+    "docs/05_run_command.md (Allocate via assign, execute script body in kernel with sys.argv, unassign in finally)",
+    "docs/01_session_management.md (tun/m/assign on the session backend)"
+  ]
+}
