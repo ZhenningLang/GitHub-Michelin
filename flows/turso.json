@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Turso does",
+    "zh": "Turso 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the package; it ships the Rust engine as a native addon (or WASM in the browser)",
+      "zh": "装包，Rust 引擎随包以原生扩展（浏览器里是 WASM）带进来",
+      "code": "npm i @tursodatabase/database"
+    },
+    {
+      "lane": "you",
+      "en": "Open a database file — an existing SQLite file works as-is",
+      "zh": "打开一个库文件，现成的 SQLite 文件原样可用",
+      "code": "connect('sqlite.db')"
+    },
+    {
+      "lane": "them",
+      "en": "Opens the SQLite-format file inside your process; no server, no socket",
+      "zh": "在你的进程里直接打开 SQLite 格式文件，没有服务端、没有网络",
+      "component": {
+        "en": "turso_core engine",
+        "zh": "turso_core 引擎"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Write plain SQLite SQL through the binding",
+      "zh": "照写 SQLite 方言的 SQL",
+      "code": "db.prepare('SELECT * FROM users')"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles the SQL to VDBE bytecode and runs it, with async I/O underneath",
+      "zh": "把 SQL 编译成 VDBE 字节码执行，底下走异步 I/O",
+      "component": {
+        "en": "VDBE bytecode VM",
+        "zh": "VDBE 字节码虚拟机"
+      }
+    }
+  ],
+  "value": {
+    "en": "An embedded SQLite-compatible database from JS, Python, Go, Java, .NET or Rust, in a file you can still hand back to sqlite3",
+    "zh": "各主流语言里嵌一个 SQLite 兼容库，不用起服务，文件仍能交回 sqlite3 打开"
+  },
+  "sources": [
+    "https://github.com/tursodatabase/turso README (JavaScript section: npm i @tursodatabase/database, connect('sqlite.db'), db.prepare('SELECT * FROM users'); About: VDBE bytecode)",
+    "bindings/javascript/README.md and package.json (native + wasm packages, napi-rs)",
+    "COMPAT.md Guarantees (existing SQLite files readable; always able to go back to SQLite)",
+    "docs/manual.md Introduction (in-process engine, no network protocol)"
+  ]
+}

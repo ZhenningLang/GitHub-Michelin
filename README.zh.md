@@ -236,6 +236,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack AI** | 当 TypeScript 应用的 AI 界面——流式聊天、带类型的工具、媒体与 agent，横跨七个前端框架——必须站在一套 provider 无关的类型契约上、且不绑任何平台层时用它；agent 活在 Python 里、或你要的是打包好的 `Agent` 类，就不是它。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md) |
 | **AX** | 当一大批空闲、有状态的 agent *任务*必须在 Kubernetes 上用 YAML 声明（工作区、出站、模型）、底下还能挂起／恢复时用它——不是把 agent 本身做成 CRD 的那条路。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/ax.md) |
 | **kagent** | 当 agent 应该是 Kubernetes 对象时用它——用 YAML 声明、由控制器与引擎运行，带模型配置、MCP 工具服务器与 OpenTelemetry 追踪。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) |
+| **OpenClaw Enterprise** | 当多个团队的原版 OpenClaw 或 Codex agent 要在共享 Kubernetes 集群上按租户分命名空间、走 IAM、投递密钥、留不可变版本和审计时用它——不适合个人助手，也还不是正式发布的产品。 | MIT | B（5/6） | [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) · [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) |
 
 ### agent-memory
 
@@ -509,6 +510,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Hallmark** | 当 Claude Code、Cursor、Codex agent 需要有主张的反 AI 味设计 brief、审计、重设计或研究流程时用它。 | MIT | B（4/5） | [中](categories/agent-skills/design/ui-taste/hallmark.zh.md) · [EN](categories/agent-skills/design/ui-taste/hallmark.md) |
 | **drawio-skill** | 一个 agent skill：把自然语言、代码、IaC 和接口 schema 变成可编辑的 `.drawio`，并能在源改动后重新同步而不丢手工版式。 | MIT | B（4/5） | [中](categories/agent-skills/design/visual-artifacts/drawio-skill.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/drawio-skill.md) |
 | **Interface Design** | 面向 Claude Code / Codex 产品界面的工艺优先设计工程 skill：意图先行的领域探索、逐组件的强制决策检查点、经 `.interface-design/system.md` 的跨会话记忆，外加严格的 design-review 与限定 diff 范围的 design-deslop 命令。 | MIT | C（4/5） | [中](categories/agent-skills/design/ui-taste/interface-design.zh.md) · [EN](categories/agent-skills/design/ui-taste/interface-design.md) |
+| **Anti Slop** | 当 agent 做的 UI 和文案总在编造数据、评价和死链接时用它：38 条规则加一份 PASS/FAIL 交付闸门报告，只做过滤，外观留给你的 `DESIGN.md`。 | MIT | C（5/6） | [中](categories/agent-skills/design/ui-taste/anti-slop.zh.md) · [EN](categories/agent-skills/design/ui-taste/anti-slop.md) |
 
 #### agent-skills / writing
 
@@ -558,6 +560,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Remotion Agent Skills** | Remotion 官方的 12 个 skill 捆绑包：教编码 agent（Claude Code、Codex、Cursor、Kimi Code）写出正确的 Remotion React 视频代码——经 `npx skills add remotion-dev/skills` 安装，版本与框架同步锁定。 | Not declared | C（4/5） | [中](categories/agent-skills/vendor-collections/remotion-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/remotion-skills.md) |
 | **HumanLayer Skills** | HumanLayer 官方的六个 skill——把改动画清楚（`show-me`）、PR 说明结构化（`visual-pr`）、重写 CLAUDE.md、收紧 React props，外加两个把重复性 agent 任务做成定时 GitHub Actions 循环的 skill，循环带 agent memory 文件与 `/iterate` 评论通道。 | MIT | B（4/5） | [中](categories/agent-skills/vendor-collections/humanlayer-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/humanlayer-skills.md) |
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/android-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/android-skills.md) |
+| **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) · [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) |
 
 #### agent-skills / subagent-collections
 
@@ -845,6 +848,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
+| **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
 
 ### task-queue
 
@@ -975,6 +979,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **DBeaver** | Free universal database tool and SQL client | Apache-2.0 | A（6/6） | [EN](categories/databases/database-clients/dbeaver.md) · [中](categories/databases/database-clients/dbeaver.zh.md) |
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A（5/6） | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A（6/6） | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
+| **Turso Database** | 已经把数据放在 SQLite 文件里的应用、agent 或边缘服务，想要异步 I/O、实验性的多写者 MVCC 或向量检索时用它（Rust 重写版）——但它还没到 1.0、只支持单进程，也还不是完整的 SQLite 超集。 | MIT | A（6/6） | [中](categories/databases/database-engines/turso.zh.md) · [EN](categories/databases/database-engines/turso.md) |
 
 ### secrets-management
 
@@ -1084,6 +1089,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **GPT-SoVITS** | 想要带 WebUI、且有训练路径可继续提升相似度的本地小样本声音克隆时用它；但它只管 TTS，听写、效果、agent 发声都不在其范围，且版本发布稀疏。 | MIT | A（5/6） | [中](categories/speech/gpt-sovits.zh.md) · [EN](categories/speech/gpt-sovits.md) |
 | **Coqui TTS（idiap 分支）** | 想要带 XTTS v2 克隆与广泛预训练模型覆盖的 Python TTS 库时用它；但它是 MPL-2.0、不提供应用外壳，且是一家已倒闭公司项目的社区分支。 | MPL-2.0 | C（4/6） | [中](categories/speech/coqui-ai-tts.zh.md) · [EN](categories/speech/coqui-ai-tts.md) |
 | **AntSpeaker (MECT)** | 想用零训练的现成微型 PyTorch 检查点（380 万到 960 万参数）判断两段音频是否同一说话人时用它；但权重是 CC-BY-NC-SA（不可商用）、没有训练代码，且仓库是只活了两周的论文发布。 | CC-BY-NC-SA-4.0 | C（3/6） | [中](categories/speech/antspeaker.zh.md) · [EN](categories/speech/antspeaker.md) |
+| **VoxCPM** | 想用代码和权重都是 Apache-2.0 的模型自托管声音克隆、或用文字描述设计音色（覆盖 30 种语言）时用它；但要备好约 8 GB 显存的 GPU，长文本得自己切句（单次长输出会漂移），并发服务还要另起引擎。 | Apache-2.0 | B（5/6） | [中](categories/speech/voxcpm.zh.md) · [EN](categories/speech/voxcpm.md) |
 
 ### terminal-ui
 
@@ -1241,6 +1247,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Maigret** | 跨 3000+ 站点建立用户名档案：ID 提取、递归搜索、HTML/PDF/XMind 报告——本类目维护最活跃的选择。 | MIT | A（6/6） | [中](categories/osint/maigret.zh.md) · [EN](categories/osint/maigret.md) |
 | **Sherlock** | 在 480+ 社交网络做简单、久经考验的用户名存在性核查，组织治理、社区庞大——个人页信号较粗，不做档案提取。 | MIT | A（6/6） | [中](categories/osint/sherlock.zh.md) · [EN](categories/osint/sherlock.md) |
 | **GHunt** | 用你自己的 Google 会话对 Google 账户做认证式深挖 OSINT（Gmail→资料、Gaia ID、Drive、BSSID）——能力强，AGPL-3.0，ToS/法律风险最高。 | AGPL-3.0 | B（5/6） | [中](categories/osint/ghunt.zh.md) · [EN](categories/osint/ghunt.md) |
+| **GhostTrack** | Termux 上零配置的菜单脚本，打印一个 IP（ipwho.is 的地区/ISP）或手机号（国家、原始运营商、时区）的公开元数据，外加 24 站的粗糙用户名检查——并不能真正定位，用户名结果会误报，无许可证，2024-01 起无人维护。 | NONE (no LICENSE file — all rights reserved) | E（5/6） | [中](categories/osint/ghosttrack.zh.md) · [EN](categories/osint/ghosttrack.md) |
 
 ### knowledge-base
 

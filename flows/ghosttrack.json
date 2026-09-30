@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "GhostTrack does",
+    "zh": "GhostTrack 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo and install its two Python dependencies (Linux or Termux)",
+      "zh": "克隆仓库，装上两个 Python 依赖（Linux 或 Termux）",
+      "code": "pip3 install -r requirements.txt"
+    },
+    {
+      "lane": "you",
+      "en": "Start the interactive menu",
+      "zh": "启动交互菜单",
+      "code": "python3 GhostTR.py",
+      "component": {
+        "en": "GhostTR.py (single script)",
+        "zh": "GhostTR.py（单文件脚本）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Pick IP, phone or username tracker and type one target",
+      "zh": "选 IP、电话或用户名追踪，输入一个目标",
+      "code": "Ex [+6281xxxxxxxxx]"
+    },
+    {
+      "lane": "them",
+      "en": "Looks it up: ipwho.is for an IP, offline libphonenumber data for a number, 24 profile URLs for a username",
+      "zh": "查询：IP 问 ipwho.is，号码查离线号段库，用户名请求 24 个主页地址"
+    },
+    {
+      "lane": "them",
+      "en": "Prints one colored screen of results in the terminal; nothing is saved",
+      "zh": "在终端打印一屏彩色结果，不存任何文件"
+    }
+  ],
+  "value": {
+    "en": "A one-screen, no-API-key summary of an IP's registered region and ISP, a number's country, original carrier and timezone, or a rough username presence list",
+    "zh": "免 API key 一屏看到：IP 的登记地区与 ISP、号码的国家、原始运营商与时区，或一份粗略的用户名存在清单"
+  },
+  "sources": [
+    "README.md — Instalation on Linux / Termux, Usage Tool (git clone, pip3 install -r requirements.txt, python3 GhostTR.py)",
+    "GhostTR.py — options list (IP Tracker, Show Your IP, Phone Number Tracker, Username Tracker); phoneGW input prompt 'Ex [+6281xxxxxxxxx]'; IP_Track calls http://ipwho.is/{ip}; TrackLu social_media list (24 entries); output via print only",
+    "requirements.txt — requests, phonenumbers"
+  ]
+}

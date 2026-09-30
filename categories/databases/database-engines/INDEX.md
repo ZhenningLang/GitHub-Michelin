@@ -11,6 +11,7 @@
 | **DuckDB** | DuckDB is an analytical in-process SQL database management system | A (6/6) | [→](duckdb.md) |
 | **PikiwiDB** | A Redis-protocol-compatible, disk-backed KV store (RocksDB engine) built by Qihoo360's infra team — keeps hot data in memory and persists the full dataset to disk so a single node can hold hundreds of GB the way Redis can't. (This repo is the home of the project historically known as **Pika**.) | B (6/6) | [→](pikiwidb.md) |
 | **Supabase** | The open-source Firebase alternative built on Postgres. Provides a dedicated PostgreSQL database, authentication, auto-generated APIs (REST, GraphQL, Realtime), edge functions, file storage, and an AI/vector toolkit — all in one platform. | A (5/6) | [→](supabase.md) |
+| **Turso Database** | Use it when an app, agent or edge service that already stores data in SQLite files needs async I/O, experimental multi-writer MVCC or vector search from a Rust rewrite — but it is pre-1.0, single-process, and not yet a full SQLite superset. | A (6/6) | [→](turso.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | A (6/6) | [→](valkey.md) |
 
 ## What belongs here

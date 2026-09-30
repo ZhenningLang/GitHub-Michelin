@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "VoxCPM does",
+    "zh": "VoxCPM 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the Python package on a CUDA machine (Python 3.10+, PyTorch 2.5+)",
+      "zh": "在带 CUDA 的机器上装 Python 包",
+      "code": "pip install voxcpm"
+    },
+    {
+      "lane": "you",
+      "en": "Load the model by its Hugging Face id",
+      "zh": "按 Hugging Face 上的模型名加载",
+      "code": "\"openbmb/VoxCPM2\"",
+      "component": {
+        "en": "VoxCPM Python API",
+        "zh": "VoxCPM Python API"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Downloads the 2B weights, rebuilds the network from config.json and warms it up with torch.compile",
+      "zh": "下载 2B 权重，重建网络并用 torch.compile 预热",
+      "component": {
+        "en": "core.py loader",
+        "zh": "core.py 加载器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Call generate with the text and a short clip of the voice to copy",
+      "zh": "调用 generate，传入要说的文字和一小段目标音色录音",
+      "code": "reference_wav_path=\"path/to/voice.wav\""
+    },
+    {
+      "lane": "them",
+      "en": "A language model plans the speech as continuous latents; a small diffusion head paints in the acoustic detail",
+      "zh": "语言模型把语音规划成连续潜向量，小扩散头补上声学细节",
+      "component": {
+        "en": "TSLM/RALM + LocDiT",
+        "zh": "TSLM/RALM + LocDiT"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Decodes the latents into a 48kHz waveform and returns it as a NumPy array",
+      "zh": "把潜向量解码成 48kHz 波形，以 NumPy 数组返回",
+      "component": {
+        "en": "AudioVAE V2",
+        "zh": "AudioVAE V2"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Write the array to a WAV file",
+      "zh": "把数组写成 WAV 文件",
+      "code": "sf.write(\"clone.wav\", wav, model.tts_model.sample_rate)"
+    }
+  ],
+  "value": {
+    "en": "A cloned or designed voice in 30 languages at 48kHz from Apache-2.0 weights on your own GPU — no per-character API bill and no non-commercial weight license",
+    "zh": "在自己的 GPU 上用 Apache-2.0 权重合成 30 种语言的克隆或设计音色——不按字付费，也不怕禁商用"
+  },
+  "sources": [
+    "https://github.com/OpenBMB/VoxCPM README (Installation: pip install voxcpm; Requirements: Python >= 3.10 (<3.13), PyTorch >= 2.5.0, CUDA >= 12.0; Python API: VoxCPM.from_pretrained(\"openbmb/VoxCPM2\", load_denoiser=False); Controllable Voice Cloning: reference_wav_path=\"path/to/voice.wav\"; sf.write(\"clone.wav\", wav, model.tts_model.sample_rate))",
+    "https://github.com/OpenBMB/VoxCPM src/voxcpm/core.py (from_pretrained -> huggingface_hub snapshot_download; architecture read from config.json; optimize=True -> torch.compile warm-up generate)",
+    "https://github.com/OpenBMB/VoxCPM README Models & Versions (four-stage pipeline LocEnc -> TSLM -> RALM -> LocDiT in the AudioVAE V2 latent space; 48kHz output)"
+  ]
+}

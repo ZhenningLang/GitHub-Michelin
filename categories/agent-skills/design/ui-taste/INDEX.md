@@ -14,6 +14,7 @@
 | **UI UX Pro Max Skill** | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. | B (5/6) | [→](ui-ux-pro-max.md) |
 | **Hallmark** | Use it when a Claude Code, Cursor, or Codex agent needs an opinionated anti-slop design brief, audit, redesign, or study workflow. | B (4/5) | [→](hallmark.md) |
 | **Interface Design** | Use it when agent-built product UI (dashboards, admin, settings) re-decides every design question each session — the skill enforces an intent-first per-component checkpoint and persists decisions to `.interface-design/system.md` for cross-session consistency. | C (4/5) | [→](interface-design.md) |
+| **Anti Slop** | Use it when the agent's UI and copy keep inventing stats, testimonials and dead links: 38 rules plus a PASS/FAIL Delivery Gate, a filter that leaves the look to your `DESIGN.md`. | C (5/6) | [→](anti-slop.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [UI UX Pro Max Skill](ui-ux-pro-max.md) | ✅ | B (5/6) | A design-intelligence skill pack that gives a coding agent UI/UX taste via a local CSV-backed retrieval engine (style/palette/font/rule databases) plus a pre-delivery accessibility checklist, installed across many agent harnesses. |
 | [Hallmark](hallmark.md) | ✅ | B (4/5) | Opinionated design skill with build, audit, redesign, and study verbs; advisory guidance, not a component library or deterministic linter. |
 | [Interface Design](interface-design.md) | ✅ | C (4/5) | Product-UI craft skill whose signature is cross-session design memory (`.interface-design/system.md`) plus strict design-review / diff-scoped design-deslop commands; advisory like its taste-pack siblings. |
+| [Anti Slop](anti-slop.md) | ✅ | C (5/6) | Style-neutral honesty/completeness filter across UI, copy, accessibility and code comments; self-reported gate, large always-loaded core, no aesthetic direction of its own. |
 
 
 ## What belongs here

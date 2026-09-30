@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenClaw Enterprise does", "zh": "OpenClaw Enterprise 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the OCC CLI and start the Kubernetes profile of the platform", "zh": "编译 OCC 命令行，启动平台的 Kubernetes 配置", "code": "./bin/occ dev up", "component": {"en": "occ CLI", "zh": "occ 命令行"}},
+    {"lane": "them", "en": "Runs API, worker and PostgreSQL in a k3d cluster and bootstraps the default Namespace", "zh": "在 k3d 里起 API、worker 和数据库，建好 default 空间"},
+    {"lane": "you", "en": "Name an agent, supply a model key and ask a first question", "zh": "给 agent 起名，提供模型密钥，问第一个问题", "code": "node scripts/first-agent.mjs my-agent --prompt 'What is 2 + 2?'"},
+    {"lane": "them", "en": "Stores the key as a Secret, grants the agent access and snapshots an immutable revision", "zh": "把密钥存成 Secret，授权给该 agent，并快照成不可变版本", "component": {"en": "API + IAM", "zh": "API 与 IAM"}},
+    {"lane": "them", "en": "Worker provisions the agent's gateway on Kubernetes, activates it and verifies a model reply", "zh": "在集群上开出 agent 网关，激活并验证模型回复", "component": {"en": "worker + Compute Driver", "zh": "worker 与 Compute Driver"}}
+  ],
+  "value": {"en": "Each agent is a permissioned, versioned, audited resource in a tenant namespace — not a gateway someone started with their own keys", "zh": "每个 agent 都是租户命名空间里有权限、有版本、有审计的资源，而不是谁拿自己密钥起的一个网关"},
+  "sources": [
+    "https://github.com/openclaw/openclaw-enterprise/blob/main/README.md (pnpm cli:build; OCC_DEVELOPMENT_* profile variables; ./bin/occ dev up)",
+    "https://github.com/openclaw/openclaw-enterprise/blob/main/docs/guides/first-agent.md (node scripts/first-agent.mjs my-agent --prompt 'What is 2 + 2?'; Secret, access grant, first deployment, Model response verified)",
+    "https://github.com/openclaw/openclaw-enterprise/blob/main/docs/guides/concepts.md (Namespace default, Agent, immutable AgentRevision, Drivers)",
+    "https://github.com/openclaw/openclaw-enterprise/blob/main/docs/design.md (API, worker, PostgreSQL, Compute Driver, provisioning sequence)"
+  ]
+}

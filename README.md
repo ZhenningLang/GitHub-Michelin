@@ -239,6 +239,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **TanStack AI** | Use it when the AI surface of a TypeScript app — streaming chat, typed tools, media, agents across seven front-end frameworks — must sit on one provider-agnostic typed contract with no platform layer; not when your agents live in Python or you need a packaged `Agent` class. | MIT | B (6/6) | [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md) · [中](categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.zh.md) |
 | **AX** | Use it when a large fleet of idle, stateful agent *tasks* must be declared as YAML (workspace, egress, model) on Kubernetes, with suspend/resume underneath — not when you want the agent itself as a CRD. | Apache-2.0 | B (6/6) | [EN](categories/agent-frameworks/kubernetes-agents/ax.md) · [中](categories/agent-frameworks/kubernetes-agents/ax.zh.md) |
 | **kagent** | Use it when agents should be Kubernetes objects — declared in YAML, run by a controller and engine, with model config, MCP tool servers and OpenTelemetry tracing. | Apache-2.0 | B (6/6) | [EN](categories/agent-frameworks/kubernetes-agents/kagent.md) · [中](categories/agent-frameworks/kubernetes-agents/kagent.zh.md) |
+| **OpenClaw Enterprise** | Use it when many teams' stock OpenClaw or Codex agents need per-tenant namespaces, IAM, secret delivery, immutable revisions and audit on a shared Kubernetes cluster — not for one person's assistant, and not yet for a released product. | MIT | B (5/6) | [EN](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md) · [中](categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.zh.md) |
 
 ### agent-memory
 
@@ -512,6 +513,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Hallmark** | Use it when a Claude Code, Cursor, or Codex agent needs an opinionated anti-slop design brief, audit, redesign, or study workflow. | MIT | B (4/5) | [EN](categories/agent-skills/design/ui-taste/hallmark.md) · [中](categories/agent-skills/design/ui-taste/hallmark.zh.md) |
 | **drawio-skill** | An agent skill that turns prose, code, IaC and API schemas into editable `.drawio` files, then re-syncs them from the source without discarding a hand-tuned layout. | MIT | B (4/5) | [EN](categories/agent-skills/design/visual-artifacts/drawio-skill.md) · [中](categories/agent-skills/design/visual-artifacts/drawio-skill.zh.md) |
 | **Interface Design** | A craft-first design-engineering skill for Claude Code / Codex product UI: intent-first domain exploration, a mandatory per-component decision checkpoint, cross-session memory via `.interface-design/system.md`, plus strict design-review and diff-scoped design-deslop commands. | MIT | C (4/5) | [EN](categories/agent-skills/design/ui-taste/interface-design.md) · [中](categories/agent-skills/design/ui-taste/interface-design.zh.md) |
+| **Anti Slop** | Use it when the agent's UI and copy keep inventing stats, testimonials and dead links: 38 rules plus a PASS/FAIL Delivery Gate, a filter that leaves the look to your `DESIGN.md`. | MIT | C (5/6) | [EN](categories/agent-skills/design/ui-taste/anti-slop.md) · [中](categories/agent-skills/design/ui-taste/anti-slop.zh.md) |
 
 #### agent-skills / writing
 
@@ -561,6 +563,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Remotion Agent Skills** | Remotion's official 12-skill bundle that teaches a coding agent (Claude Code, Codex, Cursor, Kimi Code) to write correct Remotion React video code — installable via `npx skills add remotion-dev/skills`, version-locked to the framework. | Not declared | C (4/5) | [EN](categories/agent-skills/vendor-collections/remotion-skills.md) · [中](categories/agent-skills/vendor-collections/remotion-skills.zh.md) |
 | **HumanLayer Skills** | HumanLayer's official six-skill bundle — visual explanation (`show-me`), PR outlining (`visual-pr`), CLAUDE.md rewriting, React prop narrowing, and two skills that turn a repeatable agent job into a scheduled GitHub Actions loop carrying an agent-memory file and an `/iterate` comment channel. | MIT | B (4/5) | [EN](categories/agent-skills/vendor-collections/humanlayer-skills.md) · [中](categories/agent-skills/vendor-collections/humanlayer-skills.zh.md) |
 | **Android Skills** | Google's official 24-skill pack for the Android jobs models still fail (edge-to-edge, R8, Navigation 3, Play policy) — installed with the Android CLI, not `npx skills add`. | Apache-2.0 | B (5/6) | [EN](categories/agent-skills/vendor-collections/android-skills.md) · [中](categories/agent-skills/vendor-collections/android-skills.zh.md) |
+| **Modern Web Guidance** | Google Chrome's search-then-retrieve skill: before writing HTML/CSS/client JS the agent pulls one eval-graded modern-platform guide (native APIs, Baseline support, sized fallbacks) from a local-search npm CLI. | Apache-2.0 | B (5/6) | [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) · [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) |
 
 #### agent-skills / subagent-collections
 
@@ -848,6 +851,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **FreeToken** | Use it when one NVIDIA desktop must serve a Mixture-of-Experts model bigger than its VRAM to your coding agent — experts live in host RAM with a GPU cache — accepting a ~2-month-old, Linux-plus-NVIDIA-only v0.1.x engine with no API auth. | Apache-2.0 | B (6/6) | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **Claude Code Local** | Use it when Claude Code's usage limit or a no-cloud rule stops you and you want the same `claude` session answered by a local model on an Apple Silicon Mac — accepting a six-month-old single-maintainer repo, one-user-at-a-time serving, and abliterated default models. | MIT | B (6/6) | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
 | **XGrammar** | Use it when you control the model's logits and must guarantee parseable output — a JSON Schema, regex, grammar, or tool call — with the tightest mask latency; skip it if you only call a hosted API or already serve on an engine that embeds it. | Apache-2.0 | B (6/6) | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
+| **SIE (Superlinked Inference Engine)** | Use it when an agent pipeline needs many small models (embed, rerank, OCR, extraction, guards) behind one API with LRU model loading and a Helm/KEDA cluster — accepting a ~6-month-old, single-vendor 0.x codebase with frequent breaking minors. | Apache-2.0 | B (6/6) | [EN](categories/llm-inference/serving-engines/sie.md) · [中](categories/llm-inference/serving-engines/sie.zh.md) |
 
 ### task-queue
 
@@ -978,6 +982,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **DBeaver** | Free universal database tool and SQL client | Apache-2.0 | A (6/6) | [EN](categories/databases/database-clients/dbeaver.md) · [中](categories/databases/database-clients/dbeaver.zh.md) |
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A (5/6) | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A (6/6) | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
+| **Turso Database** | Use it when an app, agent or edge service that already stores data in SQLite files needs async I/O, experimental multi-writer MVCC or vector search from a Rust rewrite — but it is pre-1.0, single-process, and not yet a full SQLite superset. | MIT | A (6/6) | [EN](categories/databases/database-engines/turso.md) · [中](categories/databases/database-engines/turso.zh.md) |
 
 ### secrets-management
 
@@ -1087,6 +1092,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **GPT-SoVITS** | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. | MIT | A (5/6) | [EN](categories/speech/gpt-sovits.md) · [中](categories/speech/gpt-sovits.zh.md) |
 | **Coqui TTS (idiap fork)** | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. | MPL-2.0 | C (4/6) | [EN](categories/speech/coqui-ai-tts.md) · [中](categories/speech/coqui-ai-tts.zh.md) |
 | **AntSpeaker (MECT)** | Use it when you need to check whether two voice clips are the same speaker using tiny ready-made PyTorch checkpoints (3.8M–9.6M params) with zero training — but the weights are CC-BY-NC-SA (no commercial use), there is no training code, and the repo is a two-week-old paper release. | CC-BY-NC-SA-4.0 | C (3/6) | [EN](categories/speech/antspeaker.md) · [中](categories/speech/antspeaker.zh.md) |
+| **VoxCPM** | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. | Apache-2.0 | B (5/6) | [EN](categories/speech/voxcpm.md) · [中](categories/speech/voxcpm.zh.md) |
 
 ### terminal-ui
 
@@ -1259,6 +1265,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | **Maigret** | Username→dossier across 3000+ sites with ID extraction, recursive search, and HTML/PDF/XMind reports — the most actively maintained pick in the category. | MIT | A (6/6) | [EN](categories/osint/maigret.md) · [中](categories/osint/maigret.zh.md) |
 | **Sherlock** | Simple, battle-tested username existence checks across 480+ social networks with org governance and a huge community — coarser profile-page signals, no dossier extraction. | MIT | A (6/6) | [EN](categories/osint/sherlock.md) · [中](categories/osint/sherlock.zh.md) |
 | **GHunt** | Authenticated deep-dive OSINT on Google accounts (Gmail→profile, Gaia ID, Drive, BSSID) using your own Google session — powerful, AGPL-3.0, highest ToS/legal risk. | AGPL-3.0 | B (5/6) | [EN](categories/osint/ghunt.md) · [中](categories/osint/ghunt.zh.md) |
+| **GhostTrack** | Zero-setup Termux menu that prints public metadata for an IP (ipwho.is region/ISP) or phone number (country, original carrier, timezone) plus a naive 24-site username check — no real location tracking, false-positive username hits, no license, unmaintained since 2024-01. | NONE (no LICENSE file — all rights reserved) | E (5/6) | [EN](categories/osint/ghosttrack.md) · [中](categories/osint/ghosttrack.zh.md) |
 
 ### knowledge-base
 

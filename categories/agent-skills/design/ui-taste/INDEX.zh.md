@@ -14,6 +14,7 @@
 | **UI UX Pro Max Skill** | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 | B（5/6） | [→](ui-ux-pro-max.zh.md) |
 | **Hallmark** | 当 Claude Code、Cursor、Codex agent 需要有主张的反 AI 味设计 brief、审计、重设计或研究流程时用它。 | B（4/5） | [→](hallmark.zh.md) |
 | **Interface Design** | 当 agent 构建的产品界面（仪表盘、后台、设置页）每个会话都把设计问题重新拍一遍板时用它——skill 强制逐组件的意图检查点，并把决策落盘到 `.interface-design/system.md`，跨会话复用。 | C（4/5） | [→](interface-design.zh.md) |
+| **Anti Slop** | 当 agent 做的 UI 和文案总在编造数据、评价和死链接时用它：38 条规则加一份 PASS/FAIL 交付闸门报告，只做过滤，外观留给你的 `DESIGN.md`。 | C（5/6） | [→](anti-slop.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [UI UX Pro Max Skill](ui-ux-pro-max.zh.md) | ✅ | B（5/6） | 一个设计智能 skill pack，通过本地 CSV 检索引擎（风格/配色/字体/规则数据库）和交付前可访问性清单给 coding agent 注入 UI/UX 品味，可装入多种 agent harness。 |
 | [Hallmark](hallmark.zh.md) | ✅ | B（4/5） | 带 build、audit、redesign、study 动词的有主张设计技能；是建议式指导，不是组件库或确定性 linter。 |
 | [Interface Design](interface-design.zh.md) | ✅ | C（4/5） | 产品界面工艺 skill，招牌是跨会话设计记忆（`.interface-design/system.md`）加严格的 design-review／限定 diff 的 design-deslop 命令；和同类品味包一样是劝导式的。 |
+| [Anti Slop](anti-slop.zh.md) | ✅ | C（5/6） | 不带风格倾向的诚实与完整性过滤器，覆盖 UI、文案、无障碍和代码注释；闸门是自报的，核心体积大且常驻，自己不给审美方向。 |
 
 
 ## 什么该放这里

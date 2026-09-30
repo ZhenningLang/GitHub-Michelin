@@ -55,6 +55,7 @@ https://github.com/Gentleman-Programming/engram,engram,coding-agent-memory,categ
 https://github.com/Giskard-AI/giskard-oss,giskard,llm-eval,categories/llm-eval/giskard.md
 https://github.com/GongRzhe/Office-PowerPoint-MCP-Server,office-powerpoint-mcp-server,office-automation,categories/office-automation/office-powerpoint-mcp-server.md
 https://github.com/GongRzhe/Office-Word-MCP-Server,office-word-mcp-server,office-automation,categories/office-automation/office-word-mcp-server.md
+https://github.com/GoogleChrome/modern-web-guidance-src,modern-web-guidance,vendor-collections,categories/agent-skills/vendor-collections/modern-web-guidance.md
 https://github.com/Graphify-Labs/graphify,graphify,code-intelligence,categories/rag-retrieval/code-intelligence/graphify.md
 https://github.com/GuanYixuan/pyJianYingDraft,pyjianyingdraft,nle-automation,categories/media-processing/nle-automation/pyjianyingdraft.md
 https://github.com/HKUDS/CLI-Anything,cli-anything,harness-extensions,categories/agent-tooling/harness-extensions/cli-anything.md
@@ -68,6 +69,7 @@ https://github.com/HiveNexus/HiveChat,hivechat,team-chat,categories/team-chat/hi
 https://github.com/Homebrew/BrewUI,brewui,package-manager-gui,categories/dev-utilities/package-manager-gui/brewui.md
 https://github.com/Hopding/pdf-lib,pdf-lib,pdf-generation,categories/pdf-tools/pdf-generation/pdf-lib.md
 https://github.com/HughYau/qiushi-skill,qiushi-skill,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/qiushi-skill.md
+https://github.com/HunxByts/GhostTrack,ghosttrack,osint,categories/osint/ghosttrack.md
 https://github.com/ImageMagick/ImageMagick,imagemagick,image-processing,categories/media-processing/image-processing/imagemagick.md
 https://github.com/InfinityLoop1308/PipePipe,pipepipe,streaming-clients,categories/streaming-clients/pipepipe.md
 https://github.com/InternLM/lmdeploy,lmdeploy,serving-engines,categories/llm-inference/serving-engines/lmdeploy.md
@@ -113,6 +115,7 @@ https://github.com/OUBIGFA/De-AI-Prompt-Enhancer-Writer-Booster-SKILL,de-ai-prom
 https://github.com/OpenAtomFoundation/pikiwidb,pikiwidb,database-engines,categories/databases/database-engines/pikiwidb.md
 https://github.com/OpenBB-finance/OpenBB,openbb,investment-finance,categories/investment-finance/openbb.md
 https://github.com/OpenBMB/MiniCPM-V,minicpm-v,on-device-ml,categories/on-device-ml/minicpm-v.md
+https://github.com/OpenBMB/VoxCPM,voxcpm,speech,categories/speech/voxcpm.md
 https://github.com/OpenCut-app/OpenCut,opencut,video-editing,categories/media-processing/video-editing/opencut.md
 https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
@@ -555,6 +558,7 @@ https://github.com/milanvarady/Applite,applite,package-manager-gui,categories/de
 https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories/ai-code-review/react-doctor.md
 https://github.com/milvus-io/milvus,milvus,vector-search,categories/rag-retrieval/vector-search/milvus.md
 https://github.com/minio/minio,minio,object-storage,categories/object-storage/minio.md
+https://github.com/miqdadbadjuber/anti-slop,anti-slop,ui-taste,categories/agent-skills/design/ui-taste/anti-slop.md
 https://github.com/mitmproxy/mitmproxy,mitmproxy,debugging-proxy,categories/debugging-proxy/mitmproxy.md
 https://github.com/miuuyy/codex-chatgpt-web,codex-chatgpt-web,harness-extensions,categories/agent-tooling/harness-extensions/codex-chatgpt-web.md
 https://github.com/mksglu/context-mode,context-mode,work-state,categories/agent-tooling/work-state/context-mode.md
@@ -603,6 +607,7 @@ https://github.com/openai/whisper,whisper,speech-and-subtitles,categories/media-
 https://github.com/openbao/openbao,openbao,secrets-management,categories/secrets-management/openbao.md
 https://github.com/openchamber/openchamber,openchamber,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md
 https://github.com/openclaw/openclaw,openclaw,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openclaw.md
+https://github.com/openclaw/openclaw-enterprise,openclaw-enterprise,kubernetes-agents,categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md
 https://github.com/openedclaude/claude-reviews-claude,claude-reviews-claude,study-and-experiments,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md
 https://github.com/openfga/openfga,openfga,auth,categories/auth/openfga.md
 https://github.com/openilink/openilink-hub,openilink-hub,im-automation,categories/im-automation/openilink-hub.md
@@ -697,6 +702,7 @@ https://github.com/stanfordnlp/dspy,dspy,workflow-builders,categories/agent-fram
 https://github.com/steipete/agent-scripts,agent-scripts,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md
 https://github.com/strands-agents/harness-sdk,harness-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md
 https://github.com/supabase/supabase,supabase,database-engines,categories/databases/database-engines/supabase.md
+https://github.com/superlinked/sie,sie,serving-engines,categories/llm-inference/serving-engines/sie.md
 https://github.com/supermemoryai/supermemory,supermemory,app-memory,categories/agent-memory/app-memory/supermemory.md
 https://github.com/superradcompany/microsandbox,microsandbox,sandboxing,categories/sandboxing/microsandbox.md
 https://github.com/sveltejs/kit,sveltekit,app-frameworks,categories/web-ui/frameworks/app-frameworks/sveltekit.md
@@ -720,6 +726,7 @@ https://github.com/tqdm/tqdm,tqdm,data-tools,categories/dev-utilities/data-tools
 https://github.com/trycua/cua,cua,desktop-automation,categories/desktop-automation/cua.md
 https://github.com/tsinghua-fib-lab/AgentSociety,agentsociety,social-simulation,categories/social-simulation/agentsociety.md
 https://github.com/tt-a1i/archify,archify,visual-artifacts,categories/agent-skills/design/visual-artifacts/archify.md
+https://github.com/tursodatabase/turso,turso,database-engines,categories/databases/database-engines/turso.md
 https://github.com/tus/tusd,tusd,nginx-modules,categories/nginx-modules/tusd.md
 https://github.com/tw93/Waza,waza,engineering,categories/agent-skills/engineering/waza.md
 https://github.com/typst/typst,typst,typesetting,categories/typesetting/typst.md

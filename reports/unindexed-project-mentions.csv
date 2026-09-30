@@ -13,10 +13,13 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Camoufox](https://github.com/daijro/camoufox),categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
+[CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/voxcpm.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
+[Fish Speech](https://github.com/fishaudio/fish-speech),categories/speech/voxcpm.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
+[IndexTTS2](https://github.com/index-tts/index-tts),categories/speech/voxcpm.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/networking/dae.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -256,6 +259,7 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
+Context7,categories/agent-skills/vendor-collections/modern-web-guidance.md,,no
 Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
 Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
@@ -486,6 +490,7 @@ httpx,categories/python-tooling/curl-cffi.md,,no
 httpx + BeautifulSoup / parsel,categories/web-scraping/crawling-tools/requests-html.md,,no
 Hugging Face `transformers` CLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
 Hugging Face sentiment models,categories/ml-research/nlp-and-time-series/senta.md,,no
+Hugging Face Text Embeddings Inference (TEI),categories/llm-inference/serving-engines/sie.md,,no
 Hugging Face Transformers (audio),categories/speech/speechbrain.md,,no
 HuggingGPT / JARVIS,categories/ml-research/vision-and-multimodal/taskmatrix.md,,no
 Hugo,categories/web-ui/frameworks/site-frameworks/astro.md,,no
@@ -495,6 +500,7 @@ Iconify,categories/web-ui/icon-libraries/thesvg.md,,no
 imageio-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/pyav.md,,no
 imageio-ffmpeg / fluent-ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no
 Immersive Translate official repo,categories/reading-tools/fluentread.md,,no
+Infinity (michaelfeil/infinity),categories/llm-inference/serving-engines/sie.md,,no
 Infisical,categories/secrets-management/openbao.md,,no
 Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
@@ -503,6 +509,7 @@ Inspect AI,categories/llm-eval/harvey-labs.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
 InvokeAI,categories/on-device-ml/comfyui.md,,no
+ipinfo CLI,categories/osint/ghosttrack.md,,no
 It-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
 itchat-uos (community fork),categories/im-automation/wechat/itchat.md,,no
 iTerm2,categories/terminal-ui/alacritty.md,,no
@@ -557,6 +564,7 @@ LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
+libSQL (`tursodatabase/libsql`),categories/databases/database-engines/turso.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 LichtFeld Studio,categories/3d-reconstruction/spirula-studio.md,,no
 LichtFeld Studio · Brush · OpenSplat · gsplat,categories/3d-reconstruction/INDEX.md,,no
@@ -701,6 +709,7 @@ npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/ver
 Numba,categories/python-tooling/cython.md,,no
 Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 Nuxt.js,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
+NVIDIA NemoClaw,categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no
 OBS Studio,categories/media-processing/video-editing/openscreen.md,,no
 Observable Plot (`observablehq/plot`),categories/web-ui/charts/tanstack-charts.md,,no
@@ -759,9 +768,11 @@ PentestGPT,categories/pentest/pentest-swarm-ai.md,,no
 "Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
 Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no
+PGlite (`electric-sql/pglite`),categories/databases/database-engines/turso.md,,no
 pgvector,categories/rag-retrieval/vector-search/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
+PhoneInfoga,categories/osint/ghosttrack.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
 Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
@@ -829,6 +840,7 @@ pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
 PyRIT,categories/llm-eval/ai-infra-guard.md,,no
 Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
 Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
+python-phonenumbers,categories/osint/ghosttrack.md,,no
 python-social-auth,categories/auth/authomatic.md,,no
 PyTorch FSDP,categories/llm-training/colossalai.md,,no
 pywinauto,categories/desktop-automation/pyautogui.md,,no
@@ -965,6 +977,7 @@ sparanoid/chinese-copywriting-guidelines,categories/agent-skills/ai-writing/cont
 Special K,categories/media-processing/image-processing/magpie.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
+SQLite,categories/databases/database-engines/turso.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
 Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no
 StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-empirical-research-skills.md,,no
@@ -1082,6 +1095,7 @@ Wiring MDX into your own Next.js app by hand,categories/web-ui/frameworks/site-f
 WisprFlow,categories/speech/voicebox.md,,no
 WPF / Cocoa / GTK,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 x1xhlol/system-prompts-and-models-of-ai-tools,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
+Xinference (xorbitsai/inference),categories/llm-inference/serving-engines/sie.md,,no
 Yeoman (`yeoman/yo`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md,,no
 Your harness's built-in review / simplify commands,categories/agent-skills/personal-collections/engineering-workflows/dimillian-skills.md,,no
 Your own global `CLAUDE.md` / Anthropic built-in guidance,categories/agent-skills/personal-collections/engineering-workflows/karpathy-skills.md,,no

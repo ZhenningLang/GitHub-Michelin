@@ -15,6 +15,7 @@
 | **Ray Serve** | 当你需要通用、可扩展的 Python 模型服务框架，支持多模型组合和自动扩缩容时用它——但要接受 Ray 的运维复杂性和学习曲线。 | A（6/6） | [→](ray-serve.zh.md) |
 | **BentoML** | 当你要把模型连同预处理一起打包成可部署的推理 API、并需要多模型流水线时用它——接受它比裸服务引擎更重。 | B（6/6） | [→](bentoml.zh.md) |
 | **Modular Platform (MAX + Mojo)** | 当你想要高性能 GPU/CPU 推理平台（MAX）加 Mojo 系统语言、并接受单厂商绑定与部分非生产许可时用它。 | B（5/6） | [→](modular.zh.md) |
+| **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | B（6/6） | [→](sie.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [Ray Serve](ray-serve.zh.md) | ✅ | A（6/6） | 通用 Python 模型服务，支持多模型组合与自动扩缩容；基于 Ray，运维要求高。 |
 | [BentoML](bentoml.zh.md) | ✅ | B（6/6） | 把模型与业务逻辑打包成可部署 API；更像框架而不是引擎。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | B（5/6） | 厂商自建的 GPU/CPU 服务引擎加 Mojo 语言；单厂商绑定且部分许可非生产可用。 |
+| [SIE (Superlinked Inference Engine)](sie.zh.md) | ✅ | B（6/6） | 一套 API 和集群服务许多小任务模型（向量／重排／OCR／抽取／审核），按需加载；单厂商、年轻的 0.x，大模型生成交给 SGLang。 |
 
 ## 什么该放这里
 
