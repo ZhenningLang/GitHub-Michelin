@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Emil's skills do",
+    "zh": "Emil 的 skill 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "phase": {
+        "en": "Build",
+        "zh": "做动效"
+      },
+      "en": "Install the pack into your agent with the skills CLI",
+      "zh": "用 skills CLI 把整包装进 agent",
+      "code": "npx skills@latest add emilkowalski/skills",
+      "component": {
+        "en": "13 skill folders",
+        "zh": "13 个 skill 目录"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent to animate a component",
+      "zh": "让 agent 给某个组件加动效",
+      "code": "/animate"
+    },
+    {
+      "lane": "them",
+      "en": "Gates on how often users see it — keyboard or 100+/day actions get no animation",
+      "zh": "先按看到的频率过闸：键盘触发或一天上百次的不做",
+      "component": {
+        "en": "frequency gate",
+        "zh": "频率闸"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Names the purpose, then takes curve and duration from fixed tables",
+      "zh": "先说出用途，再从固定表里取曲线和时长",
+      "code": "--ease-out: cubic-bezier(0.23, 1, 0.32, 1)"
+    },
+    {
+      "lane": "you",
+      "phase": {
+        "en": "Review",
+        "zh": "评审"
+      },
+      "en": "Before merging, call the strict reviewer on the motion diff",
+      "zh": "合并前手动调起严格评审看动效改动",
+      "code": "/review-animations"
+    },
+    {
+      "lane": "them",
+      "en": "Returns Before/After/Why rows and Block or Approve — deleting the animation is fix #1",
+      "zh": "出前后对照表和 Block/Approve，首选删掉动画",
+      "component": {
+        "en": "ten non-negotiable standards",
+        "zh": "十条硬标准"
+      }
+    },
+    {
+      "lane": "you",
+      "phase": {
+        "en": "Whole codebase",
+        "zh": "全库"
+      },
+      "en": "Ask for an audit of every animation in the app",
+      "zh": "让它体检整个应用的动效",
+      "code": "/improve-animations"
+    },
+    {
+      "lane": "them",
+      "en": "Writes read-only plans with exact values and file:line excerpts any agent can run",
+      "zh": "只读分析，写出带精确数值和行号的计划，任何 agent 可照做",
+      "code": "plans/"
+    }
+  ],
+  "value": {
+    "en": "Motion calls get made against one explicit bar — including the call not to animate — instead of the agent's default easing and durations",
+    "zh": "动效怎么做（包括不做）按一把明确的尺子定，而不是 agent 默认的曲线和时长"
+  },
+  "sources": [
+    "README.md @ d16ebe6 (2026-09-24): Install `npx skills@latest add emilkowalski/skills`; Reference list of 13 skills",
+    "skills/animate/SKILL.md @ d16ebe6: 'The Build Sequence' step 1 frequency table ('100+ times/day ... No animation. Ever. Stop here.'), step 2 purpose list, Hard Rules 'No approximated values'",
+    "skills/emil-design-eng/SKILL.md @ d16ebe6: custom easing `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`, 'UI animations should stay under 300ms', 'Never animate from scale(0)'",
+    "skills/review-animations/SKILL.md @ d16ebe6: `disable-model-invocation: true`, 'The Ten Non-Negotiable Standards', 'Remedial Preference Hierarchy' item 1 'Delete the animation', Required Output Format (Before/After/Why table + Block/Approve)",
+    "skills/improve-animations/SKILL.md @ d16ebe6: Hard Rules 'Never modify source code' / files only under `plans/`, 'Plans must be fully self-contained'; PLAN-TEMPLATE.md problem section with file:line excerpts"
+  ]
+}
