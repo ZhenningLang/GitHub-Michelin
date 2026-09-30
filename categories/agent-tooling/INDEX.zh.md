@@ -20,7 +20,7 @@
 | 选项 | 类型 | 一句话取舍 |
 | --- | --- | --- |
 | [Work State](work-state/INDEX.zh.md) | 子分类 | beads、CCPM、Ralph、Context Mode、Planning with Files——任务、计划与上下文放在聊天窗口之外，agent 才接得上活。 |
-| [Session History](session-history/INDEX.zh.md) | 子分类 | AgentsView、Entire——捕获并检索跑过的会话；只读与回放，管不到下一步。 |
+| [Session History](session-history/INDEX.zh.md) | 子分类 | AgentsView、Entire、dsh-context——捕获、检索并拆解跑过的会话；只读与回放，管不到下一步。 |
 | [Supervision Surfaces](supervision-surfaces/INDEX.zh.md) | 子分类 | Plannotator、CloudCLI、Agent Orchestrator、Hermes Workspace——人看的那块屏：批注闸门与驾驶舱，代价是多一个要在本机跑的服务。 |
 | [UI Annotation](ui-annotation/INDEX.zh.md) | 子分类 | Agentation、Vibe Annotations、Pointa、earmark、patch-mark、markupkit——人指着运行中的界面，agent 拿到选择器、源码行和结构化递送。 |
 | [Harness Extensions](harness-extensions/INDEX.zh.md) | 子分类 | Vercel Skills、CLI-Anything、codex-chatgpt-web——拓宽 agent 的触达面（技能包安装器、生成的 CLI harness、模型后端桥），而不是管理它的活。 |

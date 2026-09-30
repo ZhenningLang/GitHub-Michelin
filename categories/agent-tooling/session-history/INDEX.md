@@ -1,6 +1,6 @@
 # session-history
 
-> Category node. What the agents already did, captured so you can query it later — cross-agent session search and token/cost analytics, and sessions checkpointed into git.
+> Category node. What the agents already did, captured so you can query it later — cross-agent session search and token/cost analytics, per-request context breakdowns inside one harness, and sessions checkpointed into git.
 > ← back to [agent-tooling](../INDEX.md) · root: [category route](../../../INDEX.md) · 中文：[INDEX.zh.md](INDEX.zh.md)
 
 ## Projects in this category
@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **AgentsView** | Use it when you run several coding agents and want local-first cross-agent session search and token/cost analytics — but it's months-old and pre-1.0, expect churn. | B (6/6) | [→](agentsview.md) |
 | **Entire** | Use it when you want AI agent sessions captured as Git checkpoints alongside commits, searchable and rewindable. | B (6/6) | [→](entire-cli.md) |
+| **dsh-context** | Use it when you work in DeepSeek Harness's web UI and need to see what each request's context window was built from — per-category tokens, compaction/prune events, tool-to-plugin attribution, a cross-session cost dashboard — but it's dsh-only, web-only, ~7 weeks old and single-maintainer. | B (6/6) | [→](dsh-context.md) |
 
 ## Comparison matrix
 
@@ -16,6 +17,7 @@
 | --- | --- | --- | --- |
 | [AgentsView](agentsview.md) | ✅ | B (6/6) | Index every agent's local session logs into one searchable, cost-aware view — read-side analytics over transcripts. |
 | [Entire](entire-cli.md) | ✅ | B (6/6) | Pair each session with Git checkpoints next to your commits — replay and rewind the work, not just read the transcript. |
+| [dsh-context](dsh-context.md) | ✅ | B (6/6) | Inside one harness (dsh) instead of across agents: opens each request's assembled context and its compaction events, at the cost of running in the host process and tracking dsh's prerelease churn. |
 | grep over `~/.claude` / session dirs | not a repo | — | Not a project but a technique: zero-dependency and fully local, yet no UI, no token/cost math, no cross-agent normalization. |
 
 ## What belongs here
