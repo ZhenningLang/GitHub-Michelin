@@ -14,6 +14,7 @@
 | **OpenMuse** | Use it when you want a self-hosted personal agent with a working computer — persistent browser you can take over, sandboxed Linux terminal, durable approval-gated tasks — but it refuses to start without a CopilotKit cloud key, and the alpha is 12 days old with zero releases. | B (4/6) | [→](openmuse.md) |
 | **OpenWorker** | Use it when you want a desktop AI coworker that finishes real tasks with your own model key behind approval gates and a per-call audit trail — but the command sandbox is opt-in, one-click connectors use a closed OAuth broker, and it is a 71-day-old beta. | B (6/6) | [→](openworker.md) |
 | **Raven** | Use it when you want one surface that splits a big brief into a task graph and hands the nodes to built-in research/code/design/on-call agents or to Claude Code and Codex — but it's a 4-month-old pre-alpha, the sandbox is off by default, and DAG nodes can bypass it (#796). | B (6/6) | [→](raven.md) |
+| **Rakazo** | Use it when you want self-hosted AI teammates — persistent bots, each with its own thread, routines and a Linux computer with a browser you can take over, on your Docker host or a sandbox provider and any model — but it is a 7-week-old beta tracking the `edge` image, and shell/browser actions inside the computer skip approval. | B (6/6) | [→](rakazo.md) |
 
 ## Comparison matrix
 
@@ -26,6 +27,7 @@
 | [OpenMuse](openmuse.md) | ✅ | B (4/6) | CopilotKit's MIT personal-agent app with a persistent browser and bounded Linux computer; buys that working surface at the price of a mandatory Intelligence (hosted) project key. |
 | [OpenWorker](openworker.md) | ✅ | B (6/6) | Desktop cowork app by Andrew Ng's team: human-only floors, standing-approval ladder and audit provenance, ~15 model providers signed-out; sandbox off by default, two-person core, weak issue response. |
 | [Raven](raven.md) | ✅ | B (6/6) | EverMind's host agent (nanobot fork) that orchestrates its own specialists and 13 third-party agents as a DAG, with EverOS memory; buys breadth at the price of pre-alpha churn and a sandbox you must enable and verify. |
+| [Rakazo](rakazo.md) | ✅ | B (6/6) | Elie Steinbock's open alternative to xAI's Grok Bot: Pi agent loop plus a checkpointed Docker/E2B/Daytona/Box computer per bot, web/Electron/Expo clients; buys durable graphical computers with no hosted dependency at the price of heavy ops and container-only isolation. |
 
 ## What belongs here
 

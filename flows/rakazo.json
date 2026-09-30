@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Rakazo does", "zh": "Rakazo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the installer on a Docker host and run it", "zh": "在装了 Docker 的主机上下载并运行安装脚本", "code": "bash install-images.sh"},
+    {"lane": "them", "en": "Writes .env with random secrets and starts the stack at 127.0.0.1:5173", "zh": "生成带随机密钥的 .env，在 127.0.0.1:5173 拉起整套服务", "component": {"en": "API + worker + Postgres", "zh": "API、worker 与 Postgres"}},
+    {"lane": "you", "en": "Create an account, connect a model, create a bot and brief it", "zh": "注册账号、接入模型、建一个 bot 并交代任务"},
+    {"lane": "them", "en": "Runs the bot's Pi session against its own Linux computer: browser, desktop, shell", "zh": "用 Pi 会话驱动这个 bot 自己的 Linux 电脑：浏览器、桌面、终端", "component": {"en": "Docker computer", "zh": "Docker 电脑"}},
+    {"lane": "them", "en": "Checkpoints the workspace and browser profiles to DATA_DIR after each run", "zh": "每次运行结束把工作区和浏览器配置存回 DATA_DIR", "component": {"en": "Workspace checkpoint store", "zh": "工作区存档"}},
+    {"lane": "you", "en": "Step in when it asks for a login or approval, or take over its screen", "zh": "它要登录或要批准时出手，或直接接管它的屏幕"}
+  ],
+  "value": {
+    "en": "You brief a bot once and close the app; it keeps working on a computer that remembers its logins, on hardware and models you chose",
+    "zh": "交代一次就能关掉应用，bot 在一台记得登录态的电脑上继续干活，硬件和模型都是你选的"
+  },
+  "sources": [
+    "https://github.com/elie222/rakazo/blob/main/README.md Quick start (published images): install-images.sh, bash install-images.sh, creates .env with random secrets, http://127.0.0.1:5173, create an account, connect a model, create your first bot",
+    "https://github.com/elie222/rakazo/blob/main/docs/computer-runtime.md (one Pi agent session -> computer tools -> SandboxProvider; Docker default; per-bot Chrome profile; checkpoints into AgentHomeStore / DATA_DIR at run completion)",
+    "https://github.com/elie222/rakazo/blob/main/VISION.md (bot asks for help only for information, judgment, authorization, or protected input; user takeover of one bot's screen)"
+  ]
+}

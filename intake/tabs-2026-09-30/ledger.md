@@ -31,3 +31,4 @@
 | github/gh-aw | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md |  | github/gh-aw |
 | googlecolab/google-colab-cli | add | done | categories/python-tooling/google-colab-cli.md |  | googlecolab/google-colab-cli |
 | bowenliang123/dsh-context | add | done | categories/agent-tooling/session-history/dsh-context.md |  | bowenliang123/dsh-context |
+| elie222/rakazo | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md | 来自 /intake-tabs 命令参数，Chrome 中无此标签 | elie222/rakazo |
