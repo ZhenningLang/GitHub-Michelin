@@ -509,6 +509,7 @@ Inspect AI,categories/llm-eval/harvey-labs.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
 InvokeAI,categories/on-device-ml/comfyui.md,,no
+ipinfo CLI,categories/osint/ghosttrack.md,,no
 It-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
 itchat-uos (community fork),categories/im-automation/wechat/itchat.md,,no
 iTerm2,categories/terminal-ui/alacritty.md,,no
@@ -771,6 +772,7 @@ PGlite (`electric-sql/pglite`),categories/databases/database-engines/turso.md,,n
 pgvector,categories/rag-retrieval/vector-search/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
+PhoneInfoga,categories/osint/ghosttrack.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
 Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
@@ -838,6 +840,7 @@ pyrasite vs gdb + python-gdb,categories/python-tooling/pyrasite.md,,no
 PyRIT,categories/llm-eval/ai-infra-guard.md,,no
 Python (IPython) kernel,categories/python-tooling/gophernotes.md,,no
 Python `Faker`,categories/dev-utilities/data-tools/faker-js.md,,no
+python-phonenumbers,categories/osint/ghosttrack.md,,no
 python-social-auth,categories/auth/authomatic.md,,no
 PyTorch FSDP,categories/llm-training/colossalai.md,,no
 pywinauto,categories/desktop-automation/pyautogui.md,,no

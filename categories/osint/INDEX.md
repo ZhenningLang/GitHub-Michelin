@@ -14,6 +14,7 @@
 | **Maigret** | Use it to build a username dossier across 3000+ sites with ID extraction, recursive search, and HTML/PDF/XMind reports — the most actively maintained pick in this category. | A (6/6) | [→](maigret.md) |
 | **Sherlock** | Use it for simple, battle-tested username checks across 480+ social networks with a huge community — coarser profile-page signals than Maigret, no dossier extraction. | A (6/6) | [→](sherlock.md) |
 | **GHunt** | Use it for authenticated deep-dive OSINT on a Google account (Gmail address → profile, Maps/reviews traces) — powerful, but AGPL-3.0, needs your Google session cookies, and carries high ToS/legal risk. | B (5/6) | [→](ghunt.md) |
+| **GhostTrack** | Use it only as a zero-setup Termux demo of what public metadata reveals about an IP (ipwho.is region/ISP) or phone number (country, original carrier, timezone) — it does not track anyone's location, its username check misreports, it has no license, and it is unmaintained since 2024-01. | E (5/6) | [→](ghosttrack.md) |
 
 ## Comparison matrix
 
@@ -24,6 +25,7 @@
 | [Maigret](maigret.md) | ✅ | A (6/6) | Deepest username dossiers (3000+ sites, ID extraction, recursion, reports), but a heavy dependency surface and slow full scans. |
 | [Sherlock](sherlock.md) | ✅ | A (6/6) | Simplest and most community-tested username checker (480+ sites), but profile-page heuristics produce false positives/negatives. |
 | [GHunt](ghunt.md) | ✅ | B (5/6) | Only tool here that sees inside the Google ecosystem, but it requires an authenticated Google session and carries the highest legal/ToS risk. |
+| [GhostTrack](ghosttrack.md) | ✅ | E (5/6) | Nothing to configure and readable in minutes, but results are shallow metadata plus an HTTP-200 username check that yields false positives; no license, no maintainer. |
 
 ## What belongs here
 
