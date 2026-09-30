@@ -611,6 +611,7 @@ Make (Integromat),categories/workflow-orchestration/n8n.md,,no
 "Managed container apps platforms (Cloud Run, Azure Container Apps, AWS App Runner)",categories/serverless/knative-serving.md,,no
 Managed-cloud node autoscaling and provider rebalancing features,categories/dev-utilities/ops-infra/descheduler.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
+Manim,categories/video-production/fframes.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
 Manual rebuild,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
@@ -664,7 +665,7 @@ Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
 Mole (`tw93/Mole`),categories/disk-cleanup/mangodisk.md,,no
 Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
-Motion Canvas,categories/video-production/hyperframes.md,,no
+Motion Canvas,categories/video-production/fframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
 Mousetrap (`ccampbell/mousetrap`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no

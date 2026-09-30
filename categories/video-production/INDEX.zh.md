@@ -17,6 +17,7 @@
 | **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | B（6/6） | [→](open-creator.zh.md) |
 | **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | B（4/5） | [→](video-use.zh.md) |
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | D（4/6） | [→](seecut.zh.md) |
+| **fframes** | 当代码或 agent 写的动效视频要在自己的 GPU 上、不经浏览器快速渲染时用它——Rust + SVG 写帧、链接 libav 编码，每个项目自带给“看不见的作者”检查画面和响度的命令行；MIT 许可，但要原生工具链，1.0 在 2026-09-28 才发布，单人维护。 | B（4/6） | [→](fframes.zh.md) |
 
 
 ## 对比矩阵
@@ -33,6 +34,7 @@
 | [OpenCreator](open-creator.zh.md) | ✅ | B（6/6） | 本机 Codex 原生创作者桌面，已交付长处是把现成视频做翻译／配音／竖屏；生成和写作共用同一项目。必须 Codex 登录，无 Linux 桌面，嵌套 GPL 的 KrillinAI 核心。 |
 | [video-use](video-use.zh.md) | ✅ | B（4/5） | 给现成 take 用的 coding-agent 剪辑器：打包 Scribe 转写、策略门、ffmpeg 渲染。MIT skill-pack，硬依赖 ElevenLabs，22 次提交／约 2.7 万 star。 |
 | [SeeCut](seecut.zh.md) | ✅ | D（4/6） | 剪已有 A-roll：看片 AI 评委循环加 HyperFrames 渲染；硬依赖 agy/Google 账号、PolyForm 非商用、仅 4 天龄——对比 video-use 的纯转写 MIT 剪辑或 HyperFrames 的纯引擎 Apache。 |
+| [fframes](fframes.zh.md) | ✅ | B（4/6） | Rust + SVG 写帧、Skia 在 GPU 上画、经链接的 libav 编码，带给 agent 用的 inspect／strip／audio analyze 命令；MIT，自测比 Remotion 最优配置快约 1.5 倍，代价是原生构建工具链、没有云渲染、1.0 仅两天、巴士因子为 1。 |
 | Runway / Pika / HeyGen | 未收录 | — | 闭源 SaaS——一键生成更快，但无管线定制、无 agent 审批门、无开源扩展性。 |
 | DaVinci Resolve / Premiere Pro | 未收录 | — | 专业非线性剪辑软件——面向人工剪辑师，非 agent 驱动；需要帧级手动控制与传统后期团队时选它。 |
 

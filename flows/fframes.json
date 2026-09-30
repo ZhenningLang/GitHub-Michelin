@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "them": {"en": "fframes does", "zh": "fframes 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the system codec libraries and the project generator", "zh": "装好系统编解码库和项目生成器",
+     "code": "cargo install --locked cargo-fframes"},
+    {"lane": "you", "en": "Scaffold a video project from a template", "zh": "用模板生成一个视频项目",
+     "code": "cargo fframes new my-video"},
+    {"lane": "them", "en": "Generates a Rust crate: the video, a ready-made CLI, a media folder compiled into the binary", "zh": "生成 Rust 工程：视频本体、现成命令行、编进二进制的素材目录",
+     "component": {"en": "cargo-fframes", "zh": "cargo-fframes"}},
+    {"lane": "you", "en": "Write each frame as an SVG tree in Rust and animate values over time", "zh": "用 Rust 把每一帧写成 SVG 树，按时间给数值做动画",
+     "code": "svgr! · timeline!"},
+    {"lane": "you", "en": "Ask for the final render", "zh": "发起最终渲染",
+     "code": "cargo run --release -- render"},
+    {"lane": "them", "en": "Draws every frame on the GPU (Metal or Vulkan), reusing cached static markup", "zh": "在 GPU（Metal 或 Vulkan）上画出每一帧，静态标记直接复用缓存",
+     "component": {"en": "Skia renderer", "zh": "Skia 渲染器"}},
+    {"lane": "them", "en": "Encodes in-process with linked libav libraries and writes out.mp4", "zh": "在进程内用链接进来的 libav 库编码，写出 out.mp4",
+     "code": "out.mp4", "component": {"en": "fframes-media (libav)", "zh": "fframes-media（libav）"}}
+  ],
+  "value": {"en": "An MP4 straight from code with no browser in the loop — no headless Chrome screenshotting every frame", "zh": "代码直接出 MP4，中间没有浏览器——不用再让无头 Chrome 一帧帧截图"},
+  "sources": [
+    "https://github.com/dmtrKovalenko/fframes README (Without an agent: cargo install --locked cargo-fframes, cargo fframes new my-video; Every command runs as `cargo run --release -- <command>`; render; Why it is fast: Skia on Metal/Vulkan, static markup cached, ffmpeg libav linked; What your agent writes: svgr!, timeline!)",
+    "https://github.com/dmtrKovalenko/fframes/blob/main/cargo-fframes/templates/README.md.tmpl (src/lib.rs, src/main.rs fframes::cli, media/ embedded; `render # the final video, writes out.mp4`)",
+    "https://github.com/dmtrKovalenko/fframes/blob/main/cargo-fframes/templates/main_skia.rs.tmpl (SkiaFFramesRenderer backend, libx264 encoder options)",
+    "https://github.com/dmtrKovalenko/fframes/blob/main/skills/fframes-video/SKILL.md (first build downloads prebuilt Skia and ffmpeg on macOS and Linux)"
+  ]
+}
