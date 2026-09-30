@@ -231,6 +231,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenResearch** | 当 coding agent 和 GPU 都已经到位、缺的只是实验记账——每个实验一条分支的实验树、不可变的提交快照、以及把 run 派到九个算力后端——时用它，代价是接受一个 3.5 个月大、发布极快的应用，且它的托管算力那一半是闭源服务。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md) |
 | **herdr** | 当你同时监管多个编程 agent、要终端复用器自己打上 blocked/working/done 标记、脱离后 agent 继续跑、并且让 agent 之间用 `herdr agent wait/prompt` 互相驱动时用它——但它只有 6 个月大、pre-1.0、实质单人维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.md) |
 | **TUIOS** | 当你在一个终端里同时盯多个编程 agent，想要一个平铺窗口管理器、由守护进程跟踪每个 agent 的状态并把所有待审批和提问收进一个 Inbox 时用它——但它只有 13 个月大、pre-1.0 且有协议破坏、单人维护，pane 默认拥有全部控制权。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md) |
+| **GitHub Agentic Workflows (gh-aw)** | 当你想让 coding agent 在 GitHub 仓库上无人值守地干杂活（issue 分诊、查 CI 失败、写报告、提文档 PR），用 Markdown 写、编译成 Actions 工作流，agent 只读并在防火墙后运行、只有声明过的写操作才会执行时用它——但它只限 GitHub、处于 Public Preview、每周发版，7 周内出了 11 个安全公告。 | MIT | B（4/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md) |
 | **Harness SDK** | 想要一次调用就有能用的 agent——调好的 prompt、shell／文件／web 工具、代码沙箱、子代理、记忆与会话——而且 Python 与 TypeScript 同接口、每个默认值都可覆盖时用它；要托管运行时或可审查的图就不是它。 | Apache-2.0 | A（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md) |
 | **Pi** | 想要一个极简终端 agent、行为由你仓库里的文件决定——技能、prompt 模板、它自己也能写的 TypeScript 扩展——并且愿意自己承担沙箱时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/pi.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/pi.md) |
 | **OmO** | 想把整件任务交给终端 agent 时用它——`ulw`、`mass ulw` 关键词把工作摊成一张按类别路由、跨订阅模型的依赖图，验证通过才算完成，记忆沉淀进 git——但 SUL-1.0 限制商业再分发，token 是按机队花的，十个月的热度 star 是风险信号而不是 Lindy 记录。 | SUL-1.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md) |
@@ -468,6 +469,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **autoresearch** | 自包含的单卡 LLM 训练脚手架，让 AI agent 通宵自主迭代 train.py——每次跑 5 分钟、按验证集 bits-per-byte 打分，只保留能降 loss 的改动。 | MIT | B（4/6） | [中](categories/ml-research/research-automation/autoresearch.zh.md) · [EN](categories/ml-research/research-automation/autoresearch.md) |
+| **Context Language Models (CLM)** | 用来研究或评测“让 agent 的模型自己改写实时上下文”（它用 bash 改写一份对话镜像文件）：跑在 Harbor 任务上，带 FLOPs 记账和一个 SGLang KV 复用补丁——论文代码，CC BY-NC 4.0，仅限非商用。 | CC-BY-NC-4.0 | D（4/6） | [EN](categories/ml-research/context-language-models.md) · [中](categories/ml-research/context-language-models.zh.md) |
 | **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | MIT | D（4/6） | [中](categories/ml-research/llm-circuit-finder.zh.md) · [EN](categories/ml-research/llm-circuit-finder.md) |
 | **CLIP** | 当你需要零样本图像分类或图文互检 embedding 时用它——原始冻结参考实现；OpenCLIP 有更多权重。 | MIT | C（5/6） | [中](categories/ml-research/vision-and-multimodal/clip.zh.md) · [EN](categories/ml-research/vision-and-multimodal/clip.md) |
 | **TaskMatrix** | 仅用于研究早期视觉工具路由 agent（Visual ChatGPT）——约 2024 年起已停更，别在其上构建。 | MIT | "?"（2/6） | [中](categories/ml-research/vision-and-multimodal/taskmatrix.zh.md) · [EN](categories/ml-research/vision-and-multimodal/taskmatrix.md) |
@@ -762,6 +764,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenCreator** | 当双语频道或本地化台要把*这一条*视频做字幕、配音、竖屏重切，同一项目里还要写稿和生成，并且已经有 Codex 登录时用它——不是从零做片的管线，也没有 Linux 桌面版。 | Apache-2.0 | B（6/6） | [中](categories/video-production/open-creator.zh.md) · [EN](categories/video-production/open-creator.md) |
 | **video-use** | 当 coding agent 该对着一文件夹素材、靠打包转写稿来剪——先确认方案再 ffmpeg——而不是生成底片时用它；硬依赖 ElevenLabs Scribe，22 次提交却有 2.7 万 star。 | MIT | B（4/5） | [中](categories/video-production/video-use.zh.md) · [EN](categories/video-production/video-use.md) |
 | **SeeCut** | 当 coding agent 该把真人/数字人口播 A-roll 精剪成高网感动效短视频时用它：画面铺真证据截图，每版都要过一个能看视频的 AI 评委（agy 调 Gemini），交付成片加可选的剪映分层草稿；PolyForm 非商用，验证时仅 4 天龄。 | PolyForm-Noncommercial-1.0.0 | D（4/6） | [中](categories/video-production/seecut.zh.md) · [EN](categories/video-production/seecut.md) |
+| **fframes** | 当代码或 agent 写的动效视频要在自己的 GPU 上、不经浏览器快速渲染时用它——Rust + SVG 写帧、链接 libav 编码，每个项目自带给“看不见的作者”检查画面和响度的命令行；MIT 许可，但要原生工具链，1.0 在 2026-09-28 才发布，单人维护。 | MIT | B（4/6） | [中](categories/video-production/fframes.zh.md) · [EN](categories/video-production/fframes.md) |
 | **claude-video** | 让 Claude “看视频”的 `/watch` skill：下载视频、抽帧、转录，并把这些证据交给 Claude。 | MIT | C（6/6） | [中](categories/media-processing/video-audio/speech-and-subtitles/claude-video.zh.md) · [EN](categories/media-processing/video-audio/speech-and-subtitles/claude-video.md) |
 
 ### llm-chat-ui
@@ -1071,6 +1074,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **memory-analyzer** | 当你需要经 GDB 对一个活的 Python 3 进程做一次性按类型内存快照时用它——但 Meta 已归档它（代码停在 2021，目标是 EOL 的 3.6／3.7），优先选 memray／tracemalloc 这类有维护的工具。 | MIT | D（5/6） | [中](categories/python-tooling/memory-analyzer.zh.md) · [EN](categories/python-tooling/memory-analyzer.md) |
 | **uv** | 用 Rust 编写的极速 Python 包与项目管理器，以单一工具和通用锁文件替代 pip、poetry 和 pyenv——但仅约 3 年历史，部分边缘情况仍在解决。 | Apache-2.0 | A（6/6） | [中](categories/python-tooling/uv.zh.md) · [EN](categories/python-tooling/uv.md) |
 | **curl_cffi** | 当 Python 客户端被 TLS／JA3 指纹识别拦下、而你需要一个能伪装真实浏览器的 `requests` 风格 API 时用它——但它随包带原生 libcurl，并非纯 Python。 | MIT | A（6/6） | [中](categories/python-tooling/curl-cffi.zh.md) · [EN](categories/python-tooling/curl-cffi.md) |
+| **Google Colab CLI** | 当你的 GPU 来自 Colab 套餐、代码却在本地仓库或 agent 写的脚本里时用它——一条命令租下 Colab 虚拟机、跑完文件再释放——但它依赖 Colab 网页会话接口，尚在 1.0 之前，只支持 Linux／macOS，硬件按档位限制。 | Apache-2.0 | B（6/6） | [中](categories/python-tooling/google-colab-cli.zh.md) · [EN](categories/python-tooling/google-colab-cli.md) |
 
 ### reading-tools
 

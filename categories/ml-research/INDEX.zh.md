@@ -1,6 +1,6 @@
 # ml-research
 
-> 分类节点。小而自洽的 ML 研究 demo 与参考实现，按用途分为三个子类；另有两个不属于任何子类的项目直接挂在本节点。
+> 分类节点。小而自洽的 ML 研究 demo 与参考实现，按用途分为三个子类；另有三个不属于任何子类的项目直接挂在本节点。
 > ← 返回[分类路由](../../INDEX.zh.md) · English: [INDEX.md](INDEX.md)
 
 ## 子分类
@@ -15,6 +15,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **context-language-models** | 用来研究或评测“让 agent 的模型自己改写实时上下文”（它用 bash 改写一份对话镜像文件）：跑在 Harbor 任务上，带 FLOPs 记账和一个 SGLang KV 复用补丁——论文代码，CC BY-NC 4.0，仅限非商用。 | D（4/6） | [→](context-language-models.zh.md) |
 | **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | D（4/6） | [→](llm-circuit-finder.zh.md) |
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | B（6/6） | [→](pymoo.zh.md) |
 
@@ -22,10 +23,11 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
+| [context-language-models](context-language-models.zh.md) | ✅ | D（4/6） | 用来研究或评测“让 agent 的模型自己改写实时上下文”（它用 bash 改写一份对话镜像文件）：跑在 Harbor 任务上，带 FLOPs 记账和一个 SGLang KV 复用补丁——论文代码，CC BY-NC 4.0，仅限非商用。 |
 | [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（4/6） | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 |
 | [pymoo](pymoo.zh.md) | ✅ | B（6/6） | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 |
 | TransformerLens / minGPT | 未收录 | — | 各页对比里点到的其他研究 demo / 可解释性库。 |
 
 ## 什么该放这里
 
-小而自洽、用于研读学习而非投产的 **ML 研究 demo** 与参考实现。把研究闭环本身自动化的流水线在 `research-automation/`，视觉与视觉-语言模型在 `vision-and-multimodal/`，文本与序列类 demo 在 `nlp-and-time-series/`；不属于这三类的（LLM 层手术实验 [llm-circuit-finder](llm-circuit-finder.zh.md)、演化式多目标优化库 [pymoo](pymoo.zh.md)）直接挂在本节点。不含训练框架（见 `llm-training`）。
+小而自洽、用于研读学习而非投产的 **ML 研究 demo** 与参考实现。把研究闭环本身自动化的流水线在 `research-automation/`，视觉与视觉-语言模型在 `vision-and-multimodal/`，文本与序列类 demo 在 `nlp-and-time-series/`；不属于这三类的（模型自管上下文的 agent 框架 [context-language-models](context-language-models.zh.md)、LLM 层手术实验 [llm-circuit-finder](llm-circuit-finder.zh.md)、演化式多目标优化库 [pymoo](pymoo.zh.md)）直接挂在本节点。不含训练框架（见 `llm-training`）。

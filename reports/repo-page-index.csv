@@ -345,6 +345,7 @@ https://github.com/deusyu/translate-book,translate-book,translation,categories/a
 https://github.com/deuxfleurs-org/garage,garage,object-storage,categories/object-storage/garage.md
 https://github.com/devdotfast/whiteboard,whiteboard,supervision-surfaces,categories/agent-tooling/supervision-surfaces/whiteboard.md
 https://github.com/dfunckt/django-rules,django-rules,auth,categories/auth/django-rules.md
+https://github.com/dmtrKovalenko/fframes,fframes,video-production,categories/video-production/fframes.md
 https://github.com/docker/docker-agent,docker-agent,agent-runtimes,categories/agent-frameworks/agent-runtimes/docker-agent.md
 https://github.com/docling-project/docling,docling,document-parsing,categories/document-parsing/docling.md
 https://github.com/dongbeixiaohuo/writing-agent,writing-agent,content-production,categories/agent-skills/ai-writing/content-production/writing-agent.md
@@ -374,6 +375,7 @@ https://github.com/facebook/openzl,openzl,data-tools,categories/dev-utilities/da
 https://github.com/facebook/react,react,view-frameworks,categories/web-ui/frameworks/view-frameworks/react.md
 https://github.com/facebook/rebalancer,rebalancer,optimization-solvers,categories/optimization-solvers/rebalancer.md
 https://github.com/facebookarchive/memory-analyzer,memory-analyzer,python-tooling,categories/python-tooling/memory-analyzer.md
+https://github.com/facebookresearch/context-language-models,context-language-models,ml-research,categories/ml-research/context-language-models.md
 https://github.com/facebookresearch/faiss,faiss,vector-search,categories/rag-retrieval/vector-search/faiss.md
 https://github.com/faker-js/faker,faker-js,data-tools,categories/dev-utilities/data-tools/faker-js.md
 https://github.com/farion1231/cc-switch,cc-switch,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md
@@ -396,6 +398,7 @@ https://github.com/getzep/graphiti,graphiti,graph-memory,categories/agent-memory
 https://github.com/getzep/zep,zep,graph-memory,categories/agent-memory/graph-memory/zep.md
 https://github.com/ggml-org/llama.cpp,llama-cpp,local-runtimes,categories/llm-inference/local-runtimes/llama-cpp.md
 https://github.com/gilbarbara/react-joyride,react-joyride,product-tours,categories/web-ui/product-tours/react-joyride.md
+https://github.com/github/gh-aw,gh-aw,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md
 https://github.com/github/spec-kit,spec-kit,spec-driven-development,categories/agent-dev-methodology/spec-driven-development/spec-kit.md
 https://github.com/glincker/thesvg,thesvg,icon-libraries,categories/web-ui/icon-libraries/thesvg.md
 https://github.com/glittercowboy/taches-cc-resources,taches-cc-resources,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md
@@ -411,6 +414,7 @@ https://github.com/google/ax,ax,kubernetes-agents,categories/agent-frameworks/ku
 https://github.com/google/gvisor,gvisor,sandboxing,categories/sandboxing/gvisor.md
 https://github.com/google/or-tools,or-tools,optimization-solvers,categories/optimization-solvers/or-tools.md
 https://github.com/googleapis/mcp-toolbox,mcp-toolbox,database-clients,categories/databases/database-clients/mcp-toolbox.md
+https://github.com/googlecolab/google-colab-cli,google-colab-cli,python-tooling,categories/python-tooling/google-colab-cli.md
 https://github.com/gopherdata/gophernotes,gophernotes,python-tooling,categories/python-tooling/gophernotes.md
 https://github.com/grafana/grafana,grafana,observability,categories/observability/grafana.md
 https://github.com/grafana/loki,loki,observability,categories/observability/loki.md

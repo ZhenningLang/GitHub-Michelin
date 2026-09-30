@@ -117,6 +117,7 @@ Anthropic's official / built-in Agent Skills,categories/agent-skills/personal-co
 Anthropic's official Claude Code skills / built-in commands,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md,,no
 Anthropic's official skills / built-in slash commands,categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md,,no
 Anthropic's own context-engineering guidance / built-in skills,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
+anthropics/claude-code-action,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md,,no
 Anubis,categories/captcha/capjs.md,,no
 AnyDesk,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md,,no
@@ -249,6 +250,7 @@ cloudflare/sandbox-sdk,categories/sandboxing/cloudflare-computer.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
 Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
+Colab MCP server (`googlecolab/colab-mcp`),categories/python-tooling/google-colab-cli.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
 Commercial Kubernetes placement / cost-optimization platforms,categories/dev-utilities/ops-infra/descheduler.md,,no
@@ -537,6 +539,7 @@ Kaboom.js,categories/game-dev/kaplay.md,,no
 kafbat/kafka-ui,categories/kafka-tools/kafka-ui.md,,no
 Kafka KRaft / etcd,categories/databases/database-clients/prettyzoo.md,,no
 kafka-python admin CLI,categories/kafka-tools/kafka-ui.md,,no
+Kaggle CLI (`Kaggle/kaggle-cli`),categories/python-tooling/google-colab-cli.md,,no
 Kaldi,categories/speech/speechbrain.md,,no
 Kap,categories/media-processing/video-editing/openscreen.md,,no
 Kdenlive,categories/media-processing/video-audio/editing-and-cutting/mlt.md,,no
@@ -609,6 +612,7 @@ Make (Integromat),categories/workflow-orchestration/n8n.md,,no
 "Managed container apps platforms (Cloud Run, Azure Container Apps, AWS App Runner)",categories/serverless/knative-serving.md,,no
 Managed-cloud node autoscaling and provider rebalancing features,categories/dev-utilities/ops-infra/descheduler.md,,no
 manhole / remote pdb,categories/python-tooling/pyrasite.md,,no
+Manim,categories/video-production/fframes.md,,no
 Manual interview notes,categories/agent-skills/context-engineering/tacit-mining.md,,no
 Manual rebuild,categories/agent-skills/design/design-to-code/ai-website-cloner-template.md,,no
 Manual review checklist,categories/agent-governance/skillspector.md,,no
@@ -648,6 +652,7 @@ Microsoft Presidio,categories/healthcare-ai/openmed.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 Midjourney / DALL-E,categories/on-device-ml/stable-diffusion-webui.md,,no
+mini-swe-agent,categories/ml-research/context-language-models.md,,no
 Miniflux,categories/reading-tools/netnewswire.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
@@ -661,7 +666,7 @@ Moirai (Salesforce),categories/on-device-ml/timesfm.md,,no
 Mole (`tw93/Mole`),categories/disk-cleanup/mangodisk.md,,no
 Morphic,categories/deep-research/vane.md,,no
 Motion / Framer Motion,categories/frontend-animation/anime.md,,no
-Motion Canvas,categories/video-production/hyperframes.md,,no
+Motion Canvas,categories/video-production/fframes.md,,no
 Motion One,categories/frontend-animation/anime.md,,no
 Mousetrap (`ccampbell/mousetrap`),categories/web-ui/keyboard-shortcuts/tanstack-hotkeys.md,,no
 Mozilla fathom / custom ML,categories/web-scraping/article-extraction/dragnet.md,,no
@@ -739,6 +744,7 @@ OpenAI / Cohere embedding APIs,categories/rag-retrieval/vector-search/text2vec.m
 OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
+openai/codex-action,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md,,no
 OpenCLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
 OpenCV,categories/media-processing/video-audio/editing-and-cutting/moviepy.md,,no
 OpenDocMan,categories/document-management/paperless-ngx.md,,no
@@ -784,6 +790,7 @@ pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
 PhoneInfoga,categories/osint/ghosttrack.md,,no
 PhotoPrism,categories/document-management/immich.md,,no
+pi-clm,categories/ml-research/context-language-models.md,,no
 Piebald-AI/claude-code-system-prompts,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Piebald-AI/tweakcc,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 Pillow (hand-rolled),categories/captcha/lepture-captcha.md,,no
@@ -887,6 +894,7 @@ Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,,no
 reCAPTCHA (Google),categories/captcha/capjs.md,,no
 Recharts (`recharts/recharts`),categories/web-ui/charts/tanstack-charts.md,,no
+Recursive Language Models (`rlm`),categories/ml-research/context-language-models.md,,no
 Redash,categories/data-visualization/superset.md,,no
 Redash / Tableau / Looker,categories/data-visualization/INDEX.md,,no
 redditdownloader (shadowmoose),categories/media-download/bulk-downloader-for-reddit.md,,no
@@ -967,6 +975,7 @@ Skills Hub (qufei1993/skills-hub),categories/agent-tooling/harness-extensions/sk
 Skills Manager (jiweiyeah/Skills-Manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 Skills Manager (xingkongliang/skills-manager),categories/agent-tooling/harness-extensions/skillsgate.md,,no
 skills-npm (`antfu/skills-npm`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
+SkyPilot (`skypilot-org/skypilot`),categories/python-tooling/google-colab-cli.md,,no
 Slack / Discord,categories/team-chat/zulip.md,,no
 Slack / Discord / Microsoft Teams,categories/team-chat/INDEX.md,,no
 Slack / Microsoft Teams,categories/team-chat/mattermost.md,,no

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "The CLM harness does", "zh": "CLM 框架做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and serve a model on an OpenAI-compatible endpoint with tool calling", "zh": "装好包，用支持工具调用的 OpenAI 兼容接口起一个模型", "code": "pip install -e ."},
+    {"lane": "you", "en": "Run a Harbor task with the CLM agent and a context budget", "zh": "用 CLM agent 跑一个 Harbor 任务，给定上下文预算", "code": "clm-harbor run -p <harbor-task> -a clm-minimal -m openai/<model>"},
+    {"lane": "them", "en": "Before every command, mirrors the conversation to a file and nudges as the budget fills", "zh": "每条命令前把对话写成一个文件，预算越满提醒越急", "code": "/tmp/.live_ctx/LIVE_CTX_MAIN.txt", "component": {"en": "ClmAgent + token budget", "zh": "ClmAgent + 预算器"}},
+    {"lane": "them", "en": "The model rewrites stale turns in that file with ordinary shell tools", "zh": "模型用普通 shell 工具改写文件里过时的轮次", "code": "sed · python3 · cat >"},
+    {"lane": "them", "en": "Parses the file back into messages, keeps system prompt and task pinned, gates the edit", "zh": "把文件解析回消息列表，钉住系统提示和任务，过一道编辑闸门", "component": {"en": "context_env edit gate", "zh": "context_env 编辑闸门"}},
+    {"lane": "you", "en": "Compare task score and cost across runs from each trial's logs", "zh": "从每次 trial 的日志里对比得分和花费", "code": "usage.json · trajectory.ctx.json"}
+  ],
+  "value": {"en": "The model decides what stays in its window — no hand-written truncate-or-summarize rule — and every run's cost is logged in USD or FLOPs", "zh": "窗口里留什么由模型自己定，不用手写截断或总结规则，每次运行的花费按美元或 FLOPs 记账"},
+  "sources": [
+    "https://github.com/facebookresearch/context-language-models README Getting started (pip install -e .; clm-harbor run -p <harbor-task> -a clm-minimal -m openai/<model>)",
+    "clm/clm_harness/README.md How a turn works (mirror to /tmp/.live_ctx/LIVE_CTX_MAIN.txt, budget nudges at 25/50/75%, edits with sed, python3 or cat >, read back, pinned system prompt and task, edit gate) and Outputs (usage.json, trajectory.ctx.json)",
+    "clm/clm_harness/README.md Serving (any OpenAI-compatible server, tool calling must be enabled)",
+    "clm/clm_harness/context_env/edit_gate.py (fit vs shrink gate)"
+  ]
+}

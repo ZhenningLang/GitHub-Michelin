@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="863" viewBox="0 0 880 863" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="863" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="705" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="705" rx="10"/>
+<rect class="pillT" x="474" y="40" width="211.9" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The CLM harness does</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,272.0 C439.0,272.0 439.0,296 470,296" marker-end="url(#a)"/>
+<path class="edge" d="M494,414 L494,438" marker-end="url(#a)"/>
+<path class="edge" d="M494,535 L494,559" marker-end="url(#a)"/>
+<path class="hand" d="M472,620.5 C441.0,620.5 441.0,644 410,644" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the package and serve a model</text>
+<text class="t" x="82" y="123">on an OpenAI-compatible endpoint with</text>
+<text class="t" x="82" y="145">tool calling</text>
+<text class="c" x="82" y="169">pip install -e .</text>
+<rect class="card" x="40" y="215" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">Run a Harbor task with the CLM agent</text>
+<text class="t" x="82" y="266">and a context budget</text>
+<text class="c" x="82" y="290">clm-harbor run -p &lt;harbor-task&gt; -a</text>
+<text class="c" x="82" y="309">clm-minimal -m openai/&lt;model&gt;</text>
+<rect class="cardT" x="472" y="272" width="368" height="142" rx="8"/>
+<rect class="accT" x="472" y="272" width="4" height="142" rx="2"/>
+<circle class="accT" cx="494" cy="296" r="10"/>
+<text class="num" x="494" y="300" text-anchor="middle">3</text>
+<text class="t" x="514" y="301">Before every command, mirrors the</text>
+<text class="t" x="514" y="323">conversation to a file and nudges as</text>
+<text class="t" x="514" y="345">the budget fills</text>
+<text class="c" x="514" y="369">/tmp/.live_ctx/LIVE_CTX_MAIN.txt</text>
+<text class="comp" x="514" y="392">component: ClmAgent + token budget</text>
+<rect class="cardT" x="472" y="440" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="440" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="464" r="10"/>
+<text class="num" x="494" y="468" text-anchor="middle">4</text>
+<text class="t" x="514" y="469">The model rewrites stale turns in that</text>
+<text class="t" x="514" y="491">file with ordinary shell tools</text>
+<text class="c" x="514" y="515">sed · python3 · cat &gt;</text>
+<rect class="cardT" x="472" y="561" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="561" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="585" r="10"/>
+<text class="num" x="494" y="589" text-anchor="middle">5</text>
+<text class="t" x="514" y="590">Parses the file back into messages,</text>
+<text class="t" x="514" y="612">keeps system prompt and task pinned,</text>
+<text class="t" x="514" y="634">gates the edit</text>
+<text class="comp" x="514" y="662">component: context_env edit gate</text>
+<rect class="card" x="40" y="620" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="620" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="644" r="10"/>
+<text class="num" x="62" y="648" text-anchor="middle">6</text>
+<text class="t" x="82" y="649">Compare task score and cost across</text>
+<text class="t" x="82" y="671">runs from each trial&#x27;s logs</text>
+<text class="c" x="82" y="695">usage.json · trajectory.ctx.json</text>
+<rect class="val" x="28" y="747" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="771">VALUE</text>
+<text class="valT" x="48" y="795">The model decides what stays in its window — no hand-written truncate-or-summarize rule — and</text>
+<text class="valT" x="48" y="817">every run&#x27;s cost is logged in USD or FLOPs</text>
+</svg>
