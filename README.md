@@ -1088,6 +1088,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **GPT-SoVITS** | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. | MIT | A (5/6) | [EN](categories/speech/gpt-sovits.md) · [中](categories/speech/gpt-sovits.zh.md) |
 | **Coqui TTS (idiap fork)** | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. | MPL-2.0 | C (4/6) | [EN](categories/speech/coqui-ai-tts.md) · [中](categories/speech/coqui-ai-tts.zh.md) |
 | **AntSpeaker (MECT)** | Use it when you need to check whether two voice clips are the same speaker using tiny ready-made PyTorch checkpoints (3.8M–9.6M params) with zero training — but the weights are CC-BY-NC-SA (no commercial use), there is no training code, and the repo is a two-week-old paper release. | CC-BY-NC-SA-4.0 | C (3/6) | [EN](categories/speech/antspeaker.md) · [中](categories/speech/antspeaker.zh.md) |
+| **VoxCPM** | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. | Apache-2.0 | B (5/6) | [EN](categories/speech/voxcpm.md) · [中](categories/speech/voxcpm.zh.md) |
 
 ### terminal-ui
 

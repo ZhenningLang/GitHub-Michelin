@@ -13,10 +13,13 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [Camoufox](https://github.com/daijro/camoufox),categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
+[CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/voxcpm.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
+[Fish Speech](https://github.com/fishaudio/fish-speech),categories/speech/voxcpm.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
 [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
+[IndexTTS2](https://github.com/index-tts/index-tts),categories/speech/voxcpm.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/networking/dae.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no

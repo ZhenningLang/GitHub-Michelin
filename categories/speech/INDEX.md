@@ -12,6 +12,7 @@
 | **GPT-SoVITS** | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. | A (5/6) | [→](gpt-sovits.md) |
 | **Coqui TTS (idiap fork)** | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. | C (4/6) | [→](coqui-ai-tts.md) |
 | **AntSpeaker (MECT)** | Use it when you need to check whether two voice clips are the same speaker using tiny ready-made PyTorch checkpoints (3.8M–9.6M params) with zero training — but the weights are CC-BY-NC-SA (no commercial use), there is no training code, and the repo is a two-week-old paper release. | C (3/6) | [→](antspeaker.md) |
+| **VoxCPM** | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. | B (5/6) | [→](voxcpm.md) |
 
 ## Comparison matrix
 
@@ -22,6 +23,7 @@
 | [GPT-SoVITS](gpt-sovits.md) | ✅ | A (5/6) | Use it when you want local few-shot voice cloning with a WebUI plus a training path to push similarity — but it's TTS-only, so dictation, effects, and agent voice are out of scope, and releases are sparse. |
 | [Coqui TTS (idiap fork)](coqui-ai-tts.md) | ✅ | C (4/6) | Use it when you want a Python TTS library with XTTS v2 cloning and broad pretrained-model coverage — but it's MPL-2.0, ships no app shell, and is a community fork of a shut-down company's project. |
 | [AntSpeaker (MECT)](antspeaker.md) | ✅ | C (3/6) | Use it when you need to check whether two voice clips are the same speaker using tiny ready-made PyTorch checkpoints (3.8M–9.6M params) with zero training — but the weights are CC-BY-NC-SA (no commercial use), there is no training code, and the repo is a two-week-old paper release. |
+| [VoxCPM](voxcpm.md) | ✅ | B (5/6) | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
