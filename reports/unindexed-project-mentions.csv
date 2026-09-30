@@ -87,6 +87,7 @@ Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-colle
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/research-automation/ai-scientist.md,,no
+AIBrix (vllm-project/aibrix),categories/llm-inference/serving-engines/llm-d.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
 aiodns / pycares,categories/networking/dnspython.md,,no
 aiohttp,categories/python-tooling/curl-cffi.md,,no
@@ -547,6 +548,7 @@ Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-cod
 KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/ray-serve.md,,no
+KServe (kserve/kserve),categories/llm-inference/serving-engines/llm-d.md,,no
 KTransformers,categories/llm-inference/local-runtimes/freetoken.md,,no
 Kvrocks (Apache),categories/databases/database-engines/pikiwidb.md,,no
 LangBot,categories/im-automation/wechat/dify-on-wechat.md,,no
@@ -711,6 +713,7 @@ npm / pnpm packaging a skill dir,categories/agent-tooling/harness-extensions/ver
 Numba,categories/python-tooling/cython.md,,no
 Nuxt DevTools (`nuxt/devtools`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md,,no
 Nuxt.js,categories/web-ui/frameworks/app-frameworks/nextjs.md,,no
+NVIDIA Dynamo (ai-dynamo/dynamo),categories/llm-inference/serving-engines/llm-d.md,,no
 NVIDIA LLM Router (AI Blueprint),categories/api-gateway/vllm-semantic-router.md,,no
 NVIDIA NemoClaw,categories/agent-frameworks/kubernetes-agents/openclaw-enterprise.md,,no
 objgraph,categories/python-tooling/memory-analyzer.md,,no

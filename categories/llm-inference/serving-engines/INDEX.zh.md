@@ -16,6 +16,7 @@
 | **BentoML** | 当你要把模型连同预处理一起打包成可部署的推理 API、并需要多模型流水线时用它——接受它比裸服务引擎更重。 | B（6/6） | [→](bentoml.zh.md) |
 | **Modular Platform (MAX + Mojo)** | 当你想要高性能 GPU/CPU 推理平台（MAX）加 Mojo 系统语言、并接受单厂商绑定与部分非生产许可时用它。 | B（5/6） | [→](modular.zh.md) |
 | **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | B（6/6） | [→](sie.zh.md) |
+| **llm-d** | 当 Kubernetes 上一批 vLLM／SGLang pod 需要懂大模型的路由（按前缀缓存和排队派单）、预填充／解码拆分或 KV 缓存卸载，并想直接用跑过基准的 Helm／kustomize 配方时用它——接受一个年轻的 1.0 前 CNCF Sandbox 技术栈、较重的集群运维和版本间频繁的组件变动。 | B（5/6） | [→](llm-d.zh.md) |
 
 ## 对比矩阵
 
@@ -30,6 +31,7 @@
 | [BentoML](bentoml.zh.md) | ✅ | B（6/6） | 把模型与业务逻辑打包成可部署 API；更像框架而不是引擎。 |
 | [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | B（5/6） | 厂商自建的 GPU/CPU 服务引擎加 Mojo 语言；单厂商绑定且部分许可非生产可用。 |
 | [SIE (Superlinked Inference Engine)](sie.zh.md) | ✅ | B（6/6） | 一套 API 和集群服务许多小任务模型（向量／重排／OCR／抽取／审核），按需加载；单厂商、年轻的 0.x，大模型生成交给 SGLang。 |
+| [llm-d](llm-d.zh.md) | ✅ | B（5/6） | Kubernetes 上叠在 vLLM／SGLang 之上的大模型感知路由加配方（前缀缓存路由、P/D 拆分、KV 卸载）；多厂商共建的 CNCF Sandbox，年轻、未到 1.0，集群运维重。 |
 
 ## 什么该放这里
 

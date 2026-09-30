@@ -852,6 +852,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 | **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
+| **llm-d** | 当 Kubernetes 上一批 vLLM／SGLang pod 需要懂大模型的路由（按前缀缓存和排队派单）、预填充／解码拆分或 KV 缓存卸载，并想直接用跑过基准的 Helm／kustomize 配方时用它——接受一个年轻的 1.0 前 CNCF Sandbox 技术栈、较重的集群运维和版本间频繁的组件变动。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/serving-engines/llm-d.zh.md) · [EN](categories/llm-inference/serving-engines/llm-d.md) |
 
 ### task-queue
 
