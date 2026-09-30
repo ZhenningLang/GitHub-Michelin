@@ -24,5 +24,5 @@
 | kubernetes-sigs/agent-sandbox | add | done | categories/sandboxing/agent-sandbox.md |  | kubernetes-sigs/agent-sandbox |
 | llm-d/llm-d | add | done | categories/llm-inference/serving-engines/llm-d.md |  | llm-d/llm-d |
 | SemiAnalysisAI/InferenceX | add | done | categories/llm-inference/inference-benchmarks/inferencex.md |  | semianalysisai/inferencex |
-| SimoneAvogadro/android-reverse-engineering-skill | add | failed |  | worker 调研完成（拟归 agent-skills/security），写页时回复被安全分类器拦截，未改写绕过、未产出页面；标签保留，待用户决定 | simoneavogadro/android-reverse-engineering-skill |
+| SimoneAvogadro/android-reverse-engineering-skill | add | done | categories/agent-skills/security/android-reverse-engineering.md | worker 调研完成（拟归 agent-skills/security），写页时回复被安全分类器拦截，未改写绕过、未产出页面；标签保留，待用户决定 | simoneavogadro/android-reverse-engineering-skill |
 | vllm-project/semantic-router | add | done | categories/api-gateway/vllm-semantic-router.md |  | vllm-project/semantic-router |
