@@ -88,7 +88,7 @@ coding agent 的上下文被 pytest 刷屏、刚编辑过的文件整篇重读�
 
 你重度使用 Claude Code（或 Codex、Cursor、OpenCode、Copilot……），按 API 计费或 Token 配额紧张，而且浪费看得见：564 个 token 的 pytest 输出模型其实只需要 20 个、同一个两千 token 的文件每改一次就被整篇重读、五百行 grep 原样落进窗口。窗口填到八成时 auto-compact 把决策抹掉，agent 开始问你它刚才在干什么。你想要的正是既省钱、又能让会话熬过 compaction 和重启还接得上话头。
 
-于是装上插件，跑一次 `/token-optimizer` 把钩子接好，之后照常干活：PreToolUse 钩子在内容进窗口前拦下 Read/Bash（重读只回差异、未改的代码文件换成签名骨架、CLI 输出压缩），PostToolUse 钩子把原始输出归档到磁盘，检查点包住每次 compaction，每笔节省都写成 SQLite 里的一行，喂给按美元计的仪表盘。和纯输出压缩工具（[RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md)、Headroom）相比，选它的时机是：compaction 丢失、结构性浪费（臃肿的 CLAUDE.md、没人用的 skills）和逐美元记账对你和压缩本身一样重要——代价是接受**非商用许可证**，以及一层会改写模型所见内容的钩子。
+于是装上插件，跑一次 `/token-optimizer` 把钩子接好，之后照常干活：PreToolUse 钩子在内容进窗口前拦下 Read/Bash（重读只回差异、未改的代码文件换成签名骨架、CLI 输出压缩），PostToolUse 钩子把原始输出归档到磁盘，检查点包住每次 compaction，每笔节省都写成 SQLite 里的一行，喂给按美元计的仪表盘。和纯输出压缩工具（[RTK](rtk.zh.md)、Headroom）相比，选它的时机是：compaction 丢失、结构性浪费（臃肿的 CLAUDE.md、没人用的 skills）和逐美元记账对你和压缩本身一样重要——代价是接受**非商用许可证**，以及一层会改写模型所见内容的钩子。
 
 ## 怎么用起来
 
@@ -114,7 +114,7 @@ Token Optimizer 以外部 Python 标准库进程的形式挂在 agent 的钩子�
 
 ## 何时不用
 
-- **在超过小企业线的公司里使用。** 许可证是 PolyForm Noncommercial 1.0.0，外加一份书面免费许可——只覆盖「全职少于 5 人**且**月收入低于 2 万美元」的组织；更大就得找作者买商业授权。如果开放许可（OSI）是硬要求，输出压缩改用 [RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md)（Apache-2.0），或直接用内置 `/compact`。
+- **在超过小企业线的公司里使用。** 许可证是 PolyForm Noncommercial 1.0.0，外加一份书面免费许可——只覆盖「全职少于 5 人**且**月收入低于 2 万美元」的组织；更大就得找作者买商业授权。如果开放许可（OSI）是硬要求，输出压缩改用 [RTK](rtk.zh.md)（Apache-2.0），或直接用内置 `/compact`。
 - **你只想知道花了多少，不想改变模型看到什么。** 改写工具结果的钩子天然可能藏信息（有原始归档和 fail-open 兜底，但这仍是个信任决定）。改用 ccusage 这类只读 JSONL 的分析工具——只测量，零干预。
 - **你的主力不是 Claude Code。** 十个平台都接了线（Codex、OpenCode、OpenClaw、Copilot、Cursor、Hermes、Pi、Antigravity beta、Grok beta），但各运行时的安装路径和钩子覆盖差异很大——Antigravity／Grok 是 beta，Windows 只支持插件安装（`install.sh` 不可用）。押注之前先看对应平台的文档。
 - **你需要稳定不动的基础设施。** 2026 年 2 月创建、单人维护、仅 2026 年 8–9 月就发布 40 多个版本——接口天天在动，版本钉死是你的责任。只要测量不要干预的话，选不碰回路的分析工具。
@@ -125,7 +125,7 @@ Token Optimizer 以外部 Python 标准库进程的形式挂在 agent 的钩子�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [RTK](../../agent-frameworks/coding-agents/orchestration-and-review/rtk.zh.md) | 已收录 | 浪费主要来自命令输出、且要宽松许可证或单个 Rust 代理二进制时选 RTK；compaction 存活、结构性浪费审计和美元记账比许可证纯度更重要时选本页。 | RTK 在 shell 层压缩开发命令（号称 60–90%），Apache-2.0，采用面巨大；但只覆盖输出这部分（约 15–25%）——没有检查点、会话库和行为检测器。 |
+| [RTK](rtk.zh.md) | 已收录 | 浪费主要来自命令输出、且要宽松许可证或单个 Rust 代理二进制时选 RTK；compaction 存活、结构性浪费审计和美元记账比许可证纯度更重要时选本页。 | RTK 在 shell 层压缩开发命令（号称 60–90%），Apache-2.0，采用面巨大；但只覆盖命令输出这部分（Token Optimizer 的 README 称约 15–25%，`[未验证]`）——没有检查点、会话库和行为检测器。 |
 | [Context Mode](context-mode.zh.md) | 已收录 | 想把重活搬进一个沙箱执行器、让 agent 写脚本只拿回 stdout 时选 Context Mode；想让回路原样不动、只压缩它的边缘时选本页。 | Context Mode 的沙箱加 MCP 形态要 Node ≥22.5，还得把任意代码执行交给 `ctx_execute`；Token Optimizer 始终是被动的标准库 Python 钩子层。两者都非 OSI（ELv2 对 PolyForm-NC）。 |
 | Headroom（headroomlabs-ai/headroom） | 未收录 | 想要一个透明代理形态的输出压缩、且覆盖 coding agent 之外的更多 LLM 应用时选它。 | 只压缩工具输出／日志／RAG 分块，没有 compaction 检查点和浪费检测器；有可选遥测。本次 tab-intake 批次未收录。 |
 | ccusage（ccusage/ccusage） | 未收录 | 只需要用量／成本分析、且不允许任何东西改动 agent 上下文时选它。 | 读本地 JSONL，MIT，约 1.88 万 star；只测量不省钱。本次 tab-intake 批次未收录。 |
@@ -165,5 +165,6 @@ Token Optimizer 以外部 Python 标准库进程的形式挂在 agent 的钩子�
 - **「auto-compact 会抹掉 60–70% 的对话」**——`[未验证]` 这是项目对 Claude Code compaction 的描述，被当作动机引用；本次核验没有实测。
 - **平台能力矩阵**——`[未验证]` 各平台的钩子覆盖（以及 Antigravity／Grok 的 beta 标记、Windows 仅插件安装）随版本变动；依赖某项能力前先查对应运行时文档。
 - **87 个夹具的测试套件**——`[未验证]` README 声称任何人可跑；CI 确实在跑 pytest 套件，但夹具数量未独立核对。
+- **「命令输出只占上下文的 15–25%」**——`[未验证]` 这是 RTK 这类工具能覆盖的份额，出自 Token Optimizer 自己的 README（「Why not just use Headroom or RTK?」一节）；没有给出测量或方法，而且是竞品的说法——对比前先量你自己的会话。
 - **`alexgr-agent` 是作者的机器人账号**——`[推断]` 单人维护的仓库里出现同命名规则的账号贡献了 31 次提交；无论真相如何，人力 bus factor 都比贡献者列表显示的更低。
 - **star／fork／watcher 数**——2026-09-28 经 `gh` 查得 2419／188／13；数字波动大，引用前重查。
