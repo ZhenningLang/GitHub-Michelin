@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "them": {"en": "magpie does", "zh": "magpie 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the app (menu bar + CLI in one binary)", "zh": "装上应用（菜单栏和 CLI 同一个二进制）",
+     "code": "curl -fsSL https://usemagpie.ai/install.sh | sh"},
+    {"lane": "you", "en": "Add a vendor as a provider: a preset needs only its key", "zh": "把一家厂商加成 provider：预设只要填 key",
+     "code": "magpie provider add deepseek sk-…"},
+    {"lane": "them", "en": "Asks the vendor which models it serves and adds them to one provider/model catalog", "zh": "向厂商拉真实模型列表，并进统一的 provider/model 目录",
+     "component": {"en": "provider catalog", "zh": "provider 目录"}},
+    {"lane": "you", "en": "Point an agent at any catalog model", "zh": "给某个 agent 选一个目录里的模型",
+     "code": "magpie claude deepseek/deepseek-chat"},
+    {"lane": "them", "en": "Rewrites only that key in the agent's own config file, aiming it at the local gateway", "zh": "只改该 agent 配置文件里那一个键，把它指向本地网关",
+     "component": {"en": "config editor", "zh": "配置编辑器"}},
+    {"lane": "them", "en": "Translates each request between Anthropic and OpenAI APIs and forwards it to the vendor", "zh": "每个请求在 Anthropic 与 OpenAI 协议间翻译后转给厂商",
+     "component": {"en": "gateway on 127.0.0.1:3425", "zh": "127.0.0.1:3425 网关"}}
+  ],
+  "value": {"en": "Any agent runs on any vendor's model without you hand-editing five config formats or running a translation proxy per agent",
+            "zh": "任何 agent 都能跑任何厂商的模型，不用手改五种格式的配置文件，也不用给每个 agent 各配一个协议转换代理"},
+  "sources": [
+    "https://github.com/yetone/magpie#install (curl -fsSL https://usemagpie.ai/install.sh | sh)",
+    "https://github.com/yetone/magpie#providers-and-the-gateway (magpie provider add deepseek sk-…, magpie claude deepseek/deepseek-chat, provider/model catalog, real model lists)",
+    "https://github.com/yetone/magpie#connecting-anything-else (gateway on 127.0.0.1:3425; translation between OpenAI chat/Responses and Anthropic Messages; Claude Code env block edits)",
+    "README bullet 'Edits config files surgically' (only the one key you change is touched)"
+  ]
+}
