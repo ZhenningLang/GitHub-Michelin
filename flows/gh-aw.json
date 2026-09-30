@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "gh-aw does", "zh": "gh-aw 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the GitHub CLI extension", "zh": "装上 GitHub CLI 扩展", "code": "gh extension install github/gh-aw", "component": {"en": "gh CLI extension", "zh": "gh CLI 扩展"}},
+    {"lane": "you", "en": "Write the chore as Markdown: trigger, permissions and allowed writes up top, instructions below", "zh": "把杂活写成 Markdown：头部写触发、权限和允许的写操作，正文写指令", "code": "on: · permissions: · safe-outputs:"},
+    {"lane": "you", "en": "Compile it into a lock file and commit both files", "zh": "编译出 lock 文件，两个文件一起提交", "code": "gh aw compile", "component": {"en": "compiler", "zh": "编译器"}},
+    {"lane": "them", "en": "On the trigger, runs your chosen agent read-only in a firewalled container", "zh": "触发时，在带防火墙的容器里只读地跑你选的 agent", "component": {"en": "agent job + AWF firewall", "zh": "agent 作业 + AWF 防火墙"}},
+    {"lane": "them", "en": "Screens the agent's output, then a separate scoped job files the issue, comment or PR", "zh": "先筛查 agent 的产出，再由单独的限权作业开 issue、评论或 PR", "component": {"en": "threat detection + safe outputs", "zh": "威胁检测 + safe outputs"}}
+  ],
+  "value": {
+    "en": "Judgment chores (triage, CI-failure digging, status reports) run on their own, and the agent never holds a write token",
+    "zh": "分诊、查 CI 失败、写周报这类要动脑的杂活自己跑起来，而 agent 手里始终没有写权限的 token"
+  },
+  "sources": [
+    "README 'Quick Start' (verbatim: gh extension install github/gh-aw) and 'How Agentic Workflows work' (frontmatter + Markdown body; gh aw compile generates the .lock.yml)",
+    "docs/src/content/docs/setup/quick-start.mdx (Step 4: run gh aw compile, commit both the .md source and the generated .lock.yml)",
+    ".github/workflows/daily-team-status.md (frontmatter keys on:, permissions:, safe-outputs: with create-issue)",
+    "docs/src/content/docs/reference/faq.md ('Does the underlying AI engine run in a sandbox?' — agent container + Agent Workflow Firewall; 'Can they write to the repository?' — read-only agent step, safe outputs applied in separate jobs)",
+    "docs/src/content/docs/reference/threat-detection.md (threat detection job runs after the agent job, before safe outputs are applied)"
+  ]
+}

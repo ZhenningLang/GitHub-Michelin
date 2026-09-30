@@ -28,5 +28,5 @@
 | vllm-project/semantic-router | add | done | categories/api-gateway/vllm-semantic-router.md |  | vllm-project/semantic-router |
 | dmtrKovalenko/fframes | add | done | categories/video-production/fframes.md |  | dmtrkovalenko/fframes |
 | facebookresearch/context-language-models | add | done | categories/ml-research/context-language-models.md |  | facebookresearch/context-language-models |
-| github/gh-aw | add | running |  |  | github/gh-aw |
+| github/gh-aw | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md |  | github/gh-aw |
 | googlecolab/google-colab-cli | add | done | categories/python-tooling/google-colab-cli.md |  | googlecolab/google-colab-cli |

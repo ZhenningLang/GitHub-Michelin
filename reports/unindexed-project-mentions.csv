@@ -117,6 +117,7 @@ Anthropic's official / built-in Agent Skills,categories/agent-skills/personal-co
 Anthropic's official Claude Code skills / built-in commands,categories/agent-skills/personal-collections/engineering-workflows/taches-cc-resources.md,,no
 Anthropic's official skills / built-in slash commands,categories/agent-skills/personal-collections/knowledge-content/ljg-skills.md,,no
 Anthropic's own context-engineering guidance / built-in skills,categories/agent-skills/context-engineering/context-engineering-skills.md,,no
+anthropics/claude-code-action,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md,,no
 Anubis,categories/captcha/capjs.md,,no
 AnyDesk,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Apache Airflow / Celery / cron,categories/web-scraping/crawling-tools/scrapyd.md,,no
@@ -743,6 +744,7 @@ OpenAI / Cohere embedding APIs,categories/rag-retrieval/vector-search/text2vec.m
 OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
 OpenAI Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md,,no
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
+openai/codex-action,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md,,no
 OpenCLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
 OpenCV,categories/media-processing/video-audio/editing-and-cutting/moviepy.md,,no
 OpenDocMan,categories/document-management/paperless-ngx.md,,no

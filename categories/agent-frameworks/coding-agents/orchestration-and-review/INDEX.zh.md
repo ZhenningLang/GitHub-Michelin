@@ -18,6 +18,7 @@
 | **OpenResearch** | 当 coding agent 和 GPU 都已经到位、缺的只是实验记账——每个实验一条分支的实验树、不可变的提交快照、以及把 run 派到九个算力后端——时用它，代价是接受一个 3.5 个月大、发布极快的应用，且它的托管算力那一半是闭源服务。 | B（6/6） | [→](openresearch.zh.md) |
 | **herdr** | 当你同时监管多个编程 agent、要复用器本体来打 blocked/working/done 标记、并让 agent 之间用 `herdr agent wait/prompt` 互相驱动时用它——但它只有 6 个月大、pre-1.0、实质单人维护。 | B（6/6） | [→](herdr.zh.md) |
 | **TUIOS** | 当你在一个终端里同时盯多个编程 agent，想要一个平铺窗口管理器、由守护进程跟踪每个 agent 的状态并把所有待审批和提问收进一个 Inbox 时用它——但它只有 13 个月大、pre-1.0 且有协议破坏、单人维护，pane 默认拥有全部控制权。 | B（6/6） | [→](tuios.zh.md) |
+| **GitHub Agentic Workflows (gh-aw)** | 当你想让 coding agent 在 GitHub 仓库上无人值守地干杂活（issue 分诊、查 CI 失败、写报告、提文档 PR），用 Markdown 写、编译成 Actions 工作流，agent 只读并在防火墙后运行、只有声明过的写操作才会执行时用它——但它只限 GitHub、处于 Public Preview、每周发版，7 周内出了 11 个安全公告。 | B（4/6） | [→](gh-aw.zh.md) |
 
 ## 什么该放这里
 
