@@ -21,7 +21,7 @@
 | emilkowalski/skills | sync | done | categories/agent-skills/design/ui-taste/emilkowalski-skills.md | 新鲜页（last_verified 2026-07-16，76 天 < 90），sync-entry 按阈值未重核，无改动 | emilkowalski/skills |
 | Gaurav-Gosain/tuios | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md |  | gaurav-gosain/tuios |
 | humanlayer/skills | sync | done | categories/agent-skills/vendor-collections/humanlayer-skills.md | 新鲜页（last_verified 2026-09-22，8 天 < 90），sync-entry 按阈值未重核，无改动 | humanlayer/skills |
-| kubernetes-sigs/agent-sandbox | add | running |  |  | kubernetes-sigs/agent-sandbox |
+| kubernetes-sigs/agent-sandbox | add | done | categories/sandboxing/agent-sandbox.md |  | kubernetes-sigs/agent-sandbox |
 | llm-d/llm-d | add | done | categories/llm-inference/serving-engines/llm-d.md |  | llm-d/llm-d |
 | SemiAnalysisAI/InferenceX | add | running |  |  | semianalysisai/inferencex |
 | SimoneAvogadro/android-reverse-engineering-skill | add | failed |  | worker 调研完成（拟归 agent-skills/security），写页时回复被安全分类器拦截，未改写绕过、未产出页面；标签保留，待用户决定 | simoneavogadro/android-reverse-engineering-skill |

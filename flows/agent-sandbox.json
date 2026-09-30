@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Agent Sandbox does",
+    "zh": "Agent Sandbox 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the controller, its CRDs and the extensions into your cluster with one manifest",
+      "zh": "用一份清单把控制器、CRD 和扩展装进集群",
+      "code": "sandbox-with-extensions.yaml"
+    },
+    {
+      "lane": "you",
+      "en": "Describe the sandbox once as a template and ask for a pool of pre-started ones",
+      "zh": "把沙箱写成一份模板，再要一个预先启动好的池子",
+      "code": "kubectl apply -f python-sandbox-warmpool.yaml"
+    },
+    {
+      "lane": "them",
+      "en": "Keeps the warm pool topped up with started pods, each with a stable name and the template's network policy",
+      "zh": "持续补满预热池，每个 pod 有稳定名字并带上模板的网络策略",
+      "component": {
+        "en": "agent-sandbox-controller",
+        "zh": "agent-sandbox 控制器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "From your agent, claim a sandbox from the pool and run the code the model wrote",
+      "zh": "在 agent 代码里从池中领一个沙箱，运行模型写的代码",
+      "code": "client.create_sandbox · sandbox.commands.run"
+    },
+    {
+      "lane": "them",
+      "en": "Hands the claim an already-running pod and routes your commands and files to it",
+      "zh": "把已在运行的 pod 交给这次申领，并把命令和文件转发进去",
+      "component": {
+        "en": "sandbox-router",
+        "zh": "sandbox-router 代理"
+      }
+    }
+  ],
+  "value": {
+    "en": "Each agent task gets its own pre-warmed, disposable pod as an ordinary Kubernetes object, with no per-session StatefulSet, Service and volume wiring",
+    "zh": "每个 agent 任务领到一台预热好、用完即弃的 pod，不再按会话手拼 StatefulSet、Service 和卷"
+  },
+  "sources": [
+    "https://github.com/kubernetes-sigs/agent-sandbox/blob/main/README.md — Installation, Standard Install (kubectl apply -f https://github.com/kubernetes-sigs/agent-sandbox/releases/latest/download/sandbox-with-extensions.yaml); Extensions (SandboxTemplate, SandboxClaim, SandboxWarmPool)",
+    "https://github.com/kubernetes-sigs/agent-sandbox/blob/main/clients/python/agentic-sandbox-client/README.md — Setup: Create a Sandbox Warmpool (kubectl apply -f python-sandbox-warmpool.yaml); Tunnel Mode (client.create_sandbox(warmpool=\"python-sandbox-warmpool\", namespace=\"default\"); sandbox.commands.run(\"echo 'Hello from Local!'\"))",
+    "https://github.com/kubernetes-sigs/agent-sandbox/blob/main/docs/security/threat_model.md — Managed NetworkPolicy mode for SandboxTemplate; controller in agent-sandbox-system",
+    "https://github.com/kubernetes-sigs/agent-sandbox/blob/main/sandbox-router/README.md — router routes X-Sandbox-ID traffic to sandbox pods; SDKs target sandbox-router-svc"
+  ]
+}
