@@ -17,6 +17,7 @@
 | **Envoy** | 当你要一个由 xDS 驱动的 L4/L7 数据面、且愿意自备控制面时用它——它比开箱即用的 API 网关更底层。 | A（6/6） | [→](envoy.zh.md) |
 | **TokenHub** | 当模型访问要变成受治理的基础设施——项目 key、配额、路由策略、审计和供应商账单核对装进一个自托管 Go 网关时用它；但它只有约三个月大，还在 v0.9.0。 | B（6/6） | [→](tokenhub.zh.md) |
 | **Magpie (yetone)** | 一个开发者想在菜单栏里把每个 coding agent（Claude Code、Codex、OpenCode 等约 28 个）切到任意厂商的模型时用它——只改单个配置键，再加一个本地协议翻译网关；但它只有约一周历史、单人维护，复用订阅有封号风险。 | C（5/6） | [→](magpie-model-router.zh.md) |
+| **vLLM Semantic Router** | 当平台团队同时服务多个模型，想按请求内容（领域、难度、越狱、PII）用 YAML 策略在 Envoy 后面逐请求选模型时用它；但它还没到 1.0，密钥和限流仍要靠一个网关。 | B（5/6） | [→](vllm-semantic-router.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +33,7 @@
 | [Envoy](envoy.zh.md) | ✅ | A（6/6） | CNCF 毕业的 L4/L7 数据面，由 xDS 驱动；控制面与 API 管理策略层都由你自己带。 |
 | [TokenHub](tokenhub.zh.md) | ✅ | B（6/6） | 治理优先的自托管 AI 网关（Go/SQLite）：项目 key、配额、路由、审计和供应商账单核对；非常年轻（v0.9.x）且作者主导。 |
 | [Magpie (yetone)](magpie-model-router.zh.md) | ✅ | C（5/6） | 给约 28 个 coding agent 用的桌面模型切换器，加一个在 Anthropic/OpenAI 协议间翻译的本地网关，订阅登录可当 provider；只有几天历史、单人维护、会自动更新。 |
+| [vLLM Semantic Router](vllm-semantic-router.zh.md) | ✅ | B（5/6） | 以 Envoy ExtProc 决策层的形式按内容选模型，自带分类器模型；代价是多一跳和一套多服务栈，凭据、限流和副本调度仍归其他层。 |
 | Tyk / KrakenD / New API | 未收录 | — | 各页点到的其他自托管网关。 |
 
 ## 什么该放这里

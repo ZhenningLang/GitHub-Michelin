@@ -429,6 +429,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **Envoy** | Use it when you need an xDS-driven L4/L7 data plane and will supply your own control plane — it is lower-level than a turnkey API gateway. | Apache-2.0 | A (6/6) | [EN](categories/api-gateway/envoy.md) · [中](categories/api-gateway/envoy.zh.md) |
 | **TokenHub** | Governance-first self-hosted AI gateway in Go: project keys, quotas, routing policy, audit and provider-bill reconciliation — very young (v0.9.x, created 2026-06) and author-dominated. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/tokenhub.md) · [中](categories/api-gateway/tokenhub.zh.md) |
 | **Magpie (yetone)** | A menu-bar model switcher for ~28 coding agents plus a local gateway translating between Anthropic and OpenAI APIs, with subscription logins as providers — about a week old and single-maintainer. | MIT | C (5/6) | [EN](categories/api-gateway/magpie-model-router.md) · [中](categories/api-gateway/magpie-model-router.zh.md) |
+| **vLLM Semantic Router** | Envoy ExtProc decision layer that picks the model per request from its content — domain, difficulty, jailbreak, PII signals from its own classifiers — by YAML policy; pre-1.0 (v0.4, created 2025-08) and needs a gateway for keys and rate limits. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/vllm-semantic-router.md) · [中](categories/api-gateway/vllm-semantic-router.zh.md) |
 
 ### geospatial
 
