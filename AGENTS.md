@@ -125,7 +125,9 @@ The schema is the contract: **`tools/schema.md`**. In short:
 
 Skills: `.claude/skills/add-project/` (author a new entry), `.claude/skills/sync-entry/`
 (re-verify a stale entry), `.claude/skills/refactor-index/` (rebalance the tree — split overflowing
-categories into sub-categories, merge thin/overlapping ones). These three are **maintainer** skills,
+categories into sub-categories, merge thin/overlapping ones), `.claude/skills/intake-tabs/` (batch-intake
+the GitHub repos open in the maintainer's Chrome: add or sync each, close its tabs once committed,
+propose the unfit ones; deterministic half in `tools/tab_intake.py`). These are **maintainer** skills,
 marked `metadata.internal: true` so skills.sh hides them from the public install (only `select-oss`
 ships); to install one for contributing, set `INSTALL_INTERNAL_SKILLS=1`.
 
