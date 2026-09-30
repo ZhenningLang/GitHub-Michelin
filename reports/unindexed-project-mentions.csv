@@ -562,6 +562,7 @@ LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
+libSQL (`tursodatabase/libsql`),categories/databases/database-engines/turso.md,,no
 libssh2 / ssh2-python,categories/networking/paramiko.md,,no
 LichtFeld Studio,categories/3d-reconstruction/spirula-studio.md,,no
 LichtFeld Studio · Brush · OpenSplat · gsplat,categories/3d-reconstruction/INDEX.md,,no
@@ -764,6 +765,7 @@ PentestGPT,categories/pentest/pentest-swarm-ai.md,,no
 "Per-agent built-in history (Claude Code `/resume`, etc.)",categories/agent-tooling/session-history/agentsview.md,,no
 Perplexica,categories/deep-research/vane.md,,no
 Perplexity / OpenAI Deep Research,categories/deep-research/INDEX.md,,no
+PGlite (`electric-sql/pglite`),categories/databases/database-engines/turso.md,,no
 pgvector,categories/rag-retrieval/vector-search/faiss.md,,no
 pgvector / Qdrant,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Phaser,categories/game-dev/kaplay.md,,no
@@ -970,6 +972,7 @@ sparanoid/chinese-copywriting-guidelines,categories/agent-skills/ai-writing/cont
 Special K,categories/media-processing/image-processing/magpie.md,,no
 Specstory / agent transcript exporters,categories/agent-tooling/session-history/entire-cli.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
+SQLite,categories/databases/database-engines/turso.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
 Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no
 StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-empirical-research-skills.md,,no

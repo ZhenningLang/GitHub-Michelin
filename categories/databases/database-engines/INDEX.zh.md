@@ -11,6 +11,7 @@
 | **DuckDB** | DuckDB is an analytical in-process SQL database management system | A（6/6） | [→](duckdb.zh.md) |
 | **PikiwiDB** | 一个兼容 Redis 协议、落盘的 KV 存储（RocksDB 引擎），由 Qihoo360 基础架构团队打造——热数据留在内存，全量数据持久化到磁盘，于是单节点能装下 Redis 装不下的几百 GB。（本仓库就是历史上称为 **Pika** 的项目所在地。） | B（6/6） | [→](pikiwidb.zh.md) |
 | **Supabase** | 基于 Postgres 构建的开源 Firebase 替代方案。在一个平台中提供专用 PostgreSQL 数据库、身份认证、自动生成 API（REST、GraphQL、Realtime）、边缘函数、文件存储和 AI/向量工具包。 | A（5/6） | [→](supabase.zh.md) |
+| **Turso Database** | 已经把数据放在 SQLite 文件里的应用、agent 或边缘服务，想要异步 I/O、实验性的多写者 MVCC 或向量检索时用它（Rust 重写版）——但它还没到 1.0、只支持单进程，也还不是完整的 SQLite 超集。 | A（6/6） | [→](turso.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | A（6/6） | [→](valkey.zh.md) |
 
 ## 什么该放这里

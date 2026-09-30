@@ -977,6 +977,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **DBeaver** | Free universal database tool and SQL client | Apache-2.0 | A（6/6） | [EN](categories/databases/database-clients/dbeaver.md) · [中](categories/databases/database-clients/dbeaver.zh.md) |
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A（5/6） | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A（6/6） | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
+| **Turso Database** | 已经把数据放在 SQLite 文件里的应用、agent 或边缘服务，想要异步 I/O、实验性的多写者 MVCC 或向量检索时用它（Rust 重写版）——但它还没到 1.0、只支持单进程，也还不是完整的 SQLite 超集。 | MIT | A（6/6） | [中](categories/databases/database-engines/turso.zh.md) · [EN](categories/databases/database-engines/turso.md) |
 
 ### secrets-management
 

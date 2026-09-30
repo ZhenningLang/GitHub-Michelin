@@ -980,6 +980,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **DBeaver** | Free universal database tool and SQL client | Apache-2.0 | A (6/6) | [EN](categories/databases/database-clients/dbeaver.md) · [中](categories/databases/database-clients/dbeaver.zh.md) |
 | **Debezium** | Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues. | Apache-2.0 | A (5/6) | [EN](categories/databases/data-sync/debezium.md) · [中](categories/databases/data-sync/debezium.zh.md) |
 | **Valkey** | A flexible distributed key-value database that is optimized for caching and other realtime workloads. | BSD-3-Clause | A (6/6) | [EN](categories/databases/database-engines/valkey.md) · [中](categories/databases/database-engines/valkey.zh.md) |
+| **Turso Database** | Use it when an app, agent or edge service that already stores data in SQLite files needs async I/O, experimental multi-writer MVCC or vector search from a Rust rewrite — but it is pre-1.0, single-process, and not yet a full SQLite superset. | MIT | A (6/6) | [EN](categories/databases/database-engines/turso.md) · [中](categories/databases/database-engines/turso.zh.md) |
 
 ### secrets-management
 
