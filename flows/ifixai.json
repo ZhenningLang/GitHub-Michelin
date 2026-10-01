@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "iFixAi does",
+    "zh": "iFixAi 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI with the extra for the provider you will test",
+      "zh": "装上命令行，带上要测的那家厂商的 extra",
+      "code": "pip install \"ifixai[openai]\"",
+      "component": {
+        "en": "ifixai CLI",
+        "zh": "ifixai 命令行"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Answer the wizard once: system under test, judge, suite",
+      "zh": "跑一次向导：选被测系统、评委和套件",
+      "code": "ifixai setup",
+      "component": {
+        "en": "setup wizard",
+        "zh": "设置向导"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Saves your choices to ifixai.yaml, storing key env-var names, never secrets",
+      "zh": "把选择写进 ifixai.yaml，只存密钥的环境变量名，不存密钥",
+      "component": {
+        "en": "ifixai.yaml",
+        "zh": "ifixai.yaml"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start the run, no flags needed",
+      "zh": "开跑，不用加任何参数",
+      "code": "ifixai run"
+    },
+    {
+      "lane": "them",
+      "en": "Sends scripted probe conversations from each inspection to your agent or model",
+      "zh": "按每项检查的剧本向你的 agent 或模型发出试探对话",
+      "component": {
+        "en": "inspections",
+        "zh": "检查项"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "A judge from a different vendor grades each answer against the published rubric",
+      "zh": "由另一家厂商的评委按公开细则给每个回答打分",
+      "component": {
+        "en": "cross-provider judge",
+        "zh": "跨厂商评委"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Weights five pillars into an A–F grade, writes JSON and Markdown to ./ifixai-results/",
+      "zh": "按五大支柱加权出 A–F 等级，写入 ./ifixai-results/",
+      "component": {
+        "en": "scoring + reports",
+        "zh": "计分与报告"
+      }
+    }
+  ],
+  "value": {
+    "en": "A graded, cross-checked answer to whether the agent stays inside its roles and rules, without designing an eval suite yourself",
+    "zh": "拿到一份由他家评委交叉判分的等级，回答 agent 守没守住角色和规则，不用自己设计评测集"
+  },
+  "sources": [
+    "README.md: Quick start / Guided wizard (pip install \"ifixai[openai]\", ifixai setup, ifixai run; reports land in ./ifixai-results/)",
+    "README.md: Reusable config (ifixai.yaml stores the key env-var name, never the secret)",
+    "docs/methodology.md: evaluation paths (structural / judge / atomic_claims), cross-provider judging, pillar weights",
+    "README.md: What you get back (five core pillars, A–F grade)"
+  ]
+}

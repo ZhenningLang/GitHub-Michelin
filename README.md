@@ -333,6 +333,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **SWE-bench** | Use it when you need to grade coding-agent patches against real GitHub issues and their tests — each evaluation run needs Docker and a lot of disk. | MIT | B (6/6) | [EN](categories/llm-eval/swe-bench.md) · [中](categories/llm-eval/swe-bench.zh.md) |
 | **Harvey LAB** | Use it when you need to benchmark an agent on long legal assignments — a synthetic case file in, a memo or markup out, graded by two LLM judges against a lawyer's checklist; needs Podman and both Anthropic and OpenAI keys. | MIT | B (6/6) | [EN](categories/llm-eval/harvey-labs.md) · [中](categories/llm-eval/harvey-labs.zh.md) |
 | **AI-Infra-Guard** | Use it when the audit surface is your whole self-hosted AI stack — live-service CVEs, MCP servers, agent skills, jailbreak evals — from one Tencent-built platform, not a single model endpoint. | Apache-2.0 | B (6/6) | [EN](categories/llm-eval/ai-infra-guard.md) · [中](categories/llm-eval/ai-infra-guard.zh.md) |
+| **iFixAi** | Use it when you need a fast, off-the-shelf audit of whether an agent stays inside its declared roles, tool permissions and honesty rules — 60 fixed inspections, a judge from a different vendor, an A–F grade; young and LLM-judged, with an 18k-star count its usage numbers do not back up. | Apache-2.0 | B (4/6) | [EN](categories/llm-eval/ifixai.md) · [中](categories/llm-eval/ifixai.zh.md) |
 
 ### agent-dev-methodology
 

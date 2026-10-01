@@ -18,6 +18,7 @@
 | **SWE-bench** | Use it when you need to grade coding-agent patches against real GitHub issues and their tests — each evaluation run needs Docker and a lot of disk. | B (6/6) | [→](swe-bench.md) |
 | **Harvey LAB** | Use it when you need to benchmark an agent on long legal assignments — a synthetic case file in, a memo or markup out, graded by two LLM judges against a lawyer's checklist; needs Podman and both Anthropic and OpenAI keys. | B (6/6) | [→](harvey-labs.md) |
 | **AI-Infra-Guard** | Use it when the audit surface is your whole self-hosted AI stack — live-service CVEs, MCP servers, agent skills, jailbreak evals — from one Tencent-built platform, not a single model endpoint. | B (6/6) | [→](ai-infra-guard.md) |
+| **iFixAi** | Use it when you need a fast, off-the-shelf audit of whether an agent stays inside its declared roles, tool permissions and honesty rules — 60 fixed inspections, a judge from a different vendor, an A–F grade; young and LLM-judged, with an 18k-star count its usage numbers do not back up. | B (4/6) | [→](ifixai.md) |
 
 
 ## Comparison matrix
@@ -29,6 +30,7 @@
 | Ragas / OpenAI Evals | partly indexed | — | Other LLM eval / red-team frameworks named across the pages; Ragas is indexed in this category, OpenAI Evals is not. |
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.md) | ✅ | E (4/6) | Dataset/detector resources for AI-text comparison; use eval frameworks when you need a maintained test runner. |
 | [AI-Infra-Guard](ai-infra-guard.md) | ✅ | B (6/6) | Whole-stack AI security self-examination (infra CVEs, MCP, skills, jailbreaks) as a deployed platform; pick garak/promptfoo when a CLI against one model or your own app is enough. |
+| [iFixAi](ifixai.md) | ✅ | B (4/6) | Fixed governance checklist for agents (roles, tool permissions, honesty) with a cross-vendor LLM judge; pick promptfoo when you need your own assertions in CI, garak for attack breadth. |
 | [Harvey LAB](harvey-labs.md) | ✅ | B (6/6) | Legal-agent benchmark with 1,600+ synthetic matter tasks and all-or-nothing LLM-judge grading; pick SWE-bench for coding agents or promptfoo for your own app's regression tests. |
 
 

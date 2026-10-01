@@ -11,7 +11,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | deepseek-ai/dsh-libreoffice-kit | add | done | categories/office-automation/dsh-libreoffice-kit.md |  | deepseek-ai/dsh-libreoffice-kit |
 | dembrandt/dembrandt | add | done | categories/design-tokens/dembrandt.md |  | dembrandt/dembrandt |
 | geekan/HowToLiveLonger | add | done | categories/learning-resources/how-to-live-longer.md |  | geekan/howtolivelonger |
-| ifixai-ai/iFixAi | add | running |  |  | ifixai-ai/ifixai |
+| ifixai-ai/iFixAi | add | done | categories/llm-eval/ifixai.md |  | ifixai-ai/ifixai |
 | index-tts/index-tts | add | running |  |  | index-tts/index-tts |
 | MiniMax-AI/OpenAgentCore | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md |  | minimax-ai/openagentcore |
 | OpenMinis/OpenMinis | add | running |  |  | openminis/openminis |

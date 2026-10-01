@@ -330,6 +330,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | MIT | B（6/6） | [中](categories/llm-eval/swe-bench.zh.md) · [EN](categories/llm-eval/swe-bench.md) |
 | **Harvey LAB** | 当你要让 agent 做完整套法律任务来做基准——虚构案卷进、备忘录或修订稿出，由两个大模型评委按律师清单判分——时用它；需要 Podman，以及 Anthropic 和 OpenAI 两把密钥。 | MIT | B（6/6） | [中](categories/llm-eval/harvey-labs.zh.md) · [EN](categories/llm-eval/harvey-labs.md) |
 | **AI-Infra-Guard** | 当审计面是整套自托管 AI 栈时用它——在线服务 CVE、MCP server、Agent Skill、越狱评测，一个腾讯出品的平台搞定，而不是只盯单个模型端点。 | Apache-2.0 | B（6/6） | [中](categories/llm-eval/ai-infra-guard.zh.md) · [EN](categories/llm-eval/ai-infra-guard.md) |
+| **iFixAi** | 当你想快速、开箱即用地审一审 agent 守没守住声明的角色、工具权限和诚实规则时用它——60 项固定检查、另一家厂商的评委、一个 A–F 等级；项目很年轻、靠大模型判分，1.8 万星和它的实际使用量对不上。 | Apache-2.0 | B（4/6） | [中](categories/llm-eval/ifixai.zh.md) · [EN](categories/llm-eval/ifixai.md) |
 
 ### agent-dev-methodology
 
