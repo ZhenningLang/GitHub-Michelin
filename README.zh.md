@@ -1325,6 +1325,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
+| **HowToLiveLonger（程序员延寿指南）** | 当你想把饮食、饮品、睡眠、运动、体重这些日常习惯，按某项研究报告的全因死亡率变化排在同一页上、每个数字都能追到出处，好决定先改哪件事时用它；不要拿它决定吃药或吃补剂。 | Unlicense | C（3/5） | [中](categories/learning-resources/how-to-live-longer.zh.md) · [EN](categories/learning-resources/how-to-live-longer.md) |
 
 ### model-editing
 

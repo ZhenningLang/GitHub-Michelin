@@ -1343,6 +1343,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **AI Performance Engineering Resources** | Use it when you need to learn or reference GPU/AI performance engineering and want the canonical source per mechanism in dependency order — one request → one GPU → kernels → engines → distributed serving — instead of a pile of blog posts. | MIT (declared) | C (3/5) | [EN](categories/learning-resources/gpu-perf-engineering-resources.md) · [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) |
+| **HowToLiveLonger** | Use it when you want everyday habits — diet, drinks, sleep, exercise, weight — ranked on one page by the change in all-cause mortality some study reported, each number linked to its source, to decide what to change first; not for drug or supplement decisions. | Unlicense | C (3/5) | [EN](categories/learning-resources/how-to-live-longer.md) · [中](categories/learning-resources/how-to-live-longer.zh.md) |
 
 ### model-editing
 

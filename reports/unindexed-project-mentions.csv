@@ -146,6 +146,7 @@ AssemblyScript,categories/dev-utilities/editors-and-runtimes/runtimes-and-compil
 Async PRAW (asyncpraw),categories/web-scraping/crawling-tools/praw.md,,no
 AsyncSSH,categories/networking/paramiko.md,,no
 AsyncSSH (forwarding API),categories/networking/sshtunnel.md,,no
+atilatech/awesome-longevity,categories/learning-resources/how-to-live-longer.md,,no
 Austin,categories/python-tooling/pyrasite.md,,no
 Authlib,categories/auth/authomatic.md,,no
 Autodesk Fusion · Onshape · SolidWorks,categories/cad/freecad.md,,no
@@ -1049,6 +1050,7 @@ Token-Saver-MCP / MCP output-truncation servers,categories/agent-tooling/work-st
 torchgan,categories/ml-research/vision-and-multimodal/pytorch-gan.md,,no
 Tour of Go / interactive docs,categories/python-tooling/gophernotes.md,,no
 tracemalloc (stdlib),categories/python-tooling/memory-analyzer.md,,no
+tradecatlabs/human_infra,categories/learning-resources/how-to-live-longer.md,,no
 Traefik,categories/api-gateway/kong.md,,no
 TransformerLens / minGPT,categories/ml-research/INDEX.md,,no
 TrendRadar,categories/reading-tools/follow-builders.md,,no
@@ -1127,6 +1129,7 @@ Your own modern PyTorch baseline,categories/captcha/pytorch-captcha-recognition.
 YouTube Data API v3 (Captions),categories/media-download/youtube-transcript-api.md,,no
 Zapier,categories/workflow-orchestration/n8n.md,,no
 zhlint,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
+zijie0/HumanSystemOptimization (健康学习到150岁),categories/learning-resources/how-to-live-longer.md,,no
 zkui / zk-web,categories/databases/database-clients/prettyzoo.md,,no
 ZoeDepth,categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
