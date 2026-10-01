@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1142
+- Named-but-unindexed alternatives: 1144
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -48,7 +48,7 @@ shape and are deliberately excluded here.
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
+| [OmniVoice](https://github.com/k2-fsa/OmniVoice) | `categories/speech/voicestudio.md` |
 | [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | `categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md` |
 | [Pyodide](https://github.com/pyodide/pyodide) | `categories/sandboxing/monty.md` |
-| [sing-box](https://github.com/SagerNet/sing-box) | `categories/networking/dae.md` |

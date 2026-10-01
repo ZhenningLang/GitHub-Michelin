@@ -7,7 +7,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 |:---|:---|:---|:---|:---|:---|
 | aws/agent-toolkit-for-aws | add | done | categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md |  | aws/agent-toolkit-for-aws |
 | CodebuffAI/freebuff | add | running |  |  | codebuffai/freebuff |
-| debpalash/VoiceStudio | add | running |  |  | debpalash/voicestudio |
+| debpalash/VoiceStudio | add | done | categories/speech/voicestudio.md |  | debpalash/voicestudio |
 | deepseek-ai/dsh-libreoffice-kit | add | running |  |  | deepseek-ai/dsh-libreoffice-kit |
 | dembrandt/dembrandt | add | running |  |  | dembrandt/dembrandt |
 | geekan/HowToLiveLonger | add | done | categories/learning-resources/how-to-live-longer.md |  | geekan/howtolivelonger |
