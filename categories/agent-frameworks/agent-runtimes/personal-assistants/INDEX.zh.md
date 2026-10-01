@@ -15,6 +15,7 @@
 | **OpenWorker** | 当你想要一个用自己的模型 key、在审批闸门和逐次审计记录下把真活干完的桌面 AI 同事时用它——但命令沙箱要手动开启，一键连接器走闭源 OAuth 中转，而且它是个 71 天大的公测版。 | B（6/6） | [→](openworker.zh.md) |
 | **Raven** | 当你想要一个入口把一大份需求拆成任务图、分给自带的调研/编程/设计/值守 agent 或 Claude Code、Codex 时用它——但它是四个月大的 pre-alpha，沙箱默认关闭，DAG 节点还可能绕过沙箱（#796）。 | B（6/6） | [→](raven.zh.md) |
 | **Rakazo** | 当你想自托管“AI 同事”——每个 bot 有自己的长期对话、定时任务和一台带浏览器、可接管的 Linux 电脑，跑在你的 Docker 主机或沙箱服务上、模型任选——时用它；但它是 7 周大的 beta，实际跟的是 `edge` 镜像，而且 bot 在电脑里执行命令和操作浏览器不经审批。 | B（6/6） | [→](rakazo.zh.md) |
+| **OpenMinis** | 当你想让 AI agent 直接在手机上办事——iOS / Android 应用里自带 Linux shell，健康、日历、提醒事项、HomeKit 都是它的工具，模型用你自己的云端 key——时用它；但模型不在端侧跑，隐私类工具默认放行，仓库是不收 PR 的镜像、只看得到一个提交者。 | C（6/6） | [→](openminis.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [OpenWorker](openworker.zh.md) | ✅ | B（6/6） | 吴恩达团队的桌面 cowork 应用：人工底线、长期审批阶梯和审计溯源，不登录可用约 15 家模型；沙箱默认关闭，两人核心，issue 响应弱。 |
 | [Raven](raven.zh.md) | ✅ | B（6/6） | EverMind 的宿主 agent（nanobot 分叉），把自带专项 agent 和 13 个第三方 agent 按 DAG 调度，带 EverOS 记忆；换来覆盖面，代价是 pre-alpha 的频繁变动和一个要自己开、自己验证的沙箱。 |
 | [Rakazo](rakazo.zh.md) | ✅ | B（6/6） | Elie Steinbock 做的 xAI Grok Bot 开源替代：Pi agent 循环加每个 bot 一台会备份的 Docker/E2B/Daytona/Box 电脑，网页、Electron、Expo 三端；换来不依赖托管服务的持久图形电脑，代价是运维重、隔离只靠容器。 |
+| [OpenMinis](openminis.zh.md) | ✅ | C（6/6） | 免费、自带 key 的手机 agent：应用内 Alpine 沙箱（iOS 用 iSH，Android 用 PRoot）加通向系统数据的原生桥；换来不要服务器的设备集成，代价是 iOS 后台限制、一次一条命令的沙箱和宽松的默认权限。 |
 
 ## 什么该放这里
 

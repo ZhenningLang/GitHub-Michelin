@@ -14,6 +14,7 @@
 | **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | C（6/6） | [→](office-word-mcp-server.zh.md) |
 | **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | C（6/6） | [→](office-powerpoint-mcp-server.zh.md) |
 | **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | B（3/6） | [→](apache-poi.zh.md) |
+| **dsh-libreoffice-kit** | 当 Node.js 应用要离线把收到的 Office 文件转成 PDF／PNG（或重算 `.xlsx`），希望 LibreOffice 引擎随 `npm install` 到位、字体可控时用它——但 Linux 只有 WASM 引擎，项目才几周大，GitHub 仓库是落后于 npm 的镜像。 | C（5/6） | [→](dsh-libreoffice-kit.zh.md) |
 
 
 ## 对比矩阵
@@ -30,10 +31,11 @@
 | openpyxl | 未收录 | — | XlsxWriter 的读写型 `.xlsx` 对手；未收录是因为它的规范仓库在 Heptapod（Mercurial）而非 GitHub，而本索引的健康度／上游快照工具只支持 GitHub。 |
 | [Office-PowerPoint-MCP-Server](office-powerpoint-mcp-server.zh.md) | ✅ | C（6/6） | Word MCP server 的 `.pptx` 姊妹项目；同一作者在 2026-03-03 批量归档（最后一次 push 是 2025-12-31）。新工作应封装 python-pptx 或用 OfficeCLI。 |
 | [Apache POI](apache-poi.zh.md) | ✅ | B（3/6） | 面向 OLE2／OOXML 的 JVM 库；Java 服务要原地改 Office 文件时选它，不是 Python agent 路径。 |
+| [dsh-libreoffice-kit](dsh-libreoffice-kit.zh.md) | ✅ | C（5/6） | DeepSeek 把裁剪过的预编译 LibreOffice 做成 npm 依赖，在进程内做 Office → PDF／PNG，字体可控、每次渲染隔离；补上本分类缺的转换一侧，代价是 Linux 只能走 WASM，仓库只是几周大、单人提交的镜像。 |
 | LibreOffice（无界面） | 未收录 | — | `soffice --headless` 是 LibreOffice 套件的运行模式，不是独立仓库。GitHub 名搜索命中是过期 Docker 包装。套件本身是 git.libreoffice.org 上的真实 git 仓库（GitHub `LibreOffice/core` 是已填充的只读镜像）。 |
 | Aspose | 非仓库 | — | 闭源商业 Office SDK（Aspose.Words／Cells／Slides）。GitHub 组织发布的是付费产品的示例，不是库源码。 |
 
 
 ## 什么该放这里
 
-主职是**生成或修改原生 Office 文件**（`.docx`／`.xlsx`／`.pptx`）的工具和库——无论被脚本、CLI，还是被 agent 通过 MCP 调用。不包括：文档 → Markdown 摄取（见 [document-parsing](../document-parsing/INDEX.zh.md)）、OCR（见 [ocr](../ocr/INDEX.zh.md)）、对文书做归档与全文检索（见 [document-management](../document-management/INDEX.zh.md)），以及产物不是 Office 文件的 HTML／视觉 deck 生成（见 [ai-design-generation](../ai-design-generation/INDEX.zh.md) 和 [agent-skills/slides-ppt](../agent-skills/slides-ppt/INDEX.zh.md)）。Pandoc 这类单向转换器留在各自的格式分类里，在此处交叉链接。
+主职是**生成或修改原生 Office 文件**（`.docx`／`.xlsx`／`.pptx`）的工具和库——无论被脚本、CLI，还是被 agent 通过 MCP 调用。不包括：文档 → Markdown 摄取（见 [document-parsing](../document-parsing/INDEX.zh.md)）、OCR（见 [ocr](../ocr/INDEX.zh.md)）、对文书做归档与全文检索（见 [document-management](../document-management/INDEX.zh.md)），以及产物不是 Office 文件的 HTML／视觉 deck 生成（见 [ai-design-generation](../ai-design-generation/INDEX.zh.md) 和 [agent-skills/slides-ppt](../agent-skills/slides-ppt/INDEX.zh.md)）。Pandoc 这类单向转换器留在各自的格式分类里，在此处交叉链接。把原生 Office 文件读进来、导出 PDF／图片的可嵌入引擎（如 dsh-libreoffice-kit）也放在这里，作为同一条管道的另一端。

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="706" viewBox="0 0 880 706" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="706" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="548" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="548" rx="10"/>
+<rect class="pillT" x="474" y="40" width="156.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The guide does</text>
+<path class="hand" d="M408,131.5 C439.0,131.5 439.0,155 470,155" marker-end="url(#a)"/>
+<path class="edge" d="M494,248 L494,272" marker-end="url(#a)"/>
+<path class="hand" d="M472,332.5 C441.0,332.5 441.0,356 410,356" marker-end="url(#a)"/>
+<path class="hand" d="M408,379.5 C439.0,379.5 439.0,441 470,441" marker-end="url(#a)"/>
+<path class="hand" d="M472,464.0 C441.0,464.0 441.0,488 410,488" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="119" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="119" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Open the Chinese README (or the</text>
+<text class="t" x="82" y="123">English sibling) and read it top to</text>
+<text class="t" x="82" y="145">bottom</text>
+<text class="comp" x="82" y="173">component: README.md · README_en.md</text>
+<rect class="cardT" x="472" y="131" width="368" height="117" rx="8"/>
+<rect class="accT" x="472" y="131" width="4" height="117" rx="2"/>
+<circle class="accT" cx="494" cy="155" r="10"/>
+<text class="num" x="494" y="159" text-anchor="middle">2</text>
+<text class="t" x="514" y="160">Warns first that the numbers are</text>
+<text class="t" x="514" y="182">correlations, cannot be added up, and</text>
+<text class="t" x="514" y="204">some studies disagree</text>
+<text class="c" x="514" y="228">4. 分析 · 4. Analysis</text>
+<rect class="cardT" x="472" y="274" width="368" height="117" rx="8"/>
+<rect class="accT" x="472" y="274" width="4" height="117" rx="2"/>
+<circle class="accT" cx="494" cy="298" r="10"/>
+<text class="num" x="494" y="302" text-anchor="middle">3</text>
+<text class="t" x="514" y="303">Lists about twenty habits, each with</text>
+<text class="t" x="514" y="325">its reported change in all-cause</text>
+<text class="t" x="514" y="347">mortality</text>
+<text class="c" x="514" y="371">5. 行动 · 5. Action</text>
+<rect class="card" x="40" y="332" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="332" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="356" r="10"/>
+<text class="num" x="62" y="360" text-anchor="middle">4</text>
+<text class="t" x="82" y="361">Pick a habit you care about and jump</text>
+<text class="t" x="82" y="383">to its evidence entry</text>
+<text class="c" x="82" y="407">6. 证据 · 6. Reference</text>
+<rect class="cardT" x="472" y="417" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="417" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="441" r="10"/>
+<text class="num" x="494" y="445" text-anchor="middle">5</text>
+<text class="t" x="514" y="446">Shows a popular write-up, usually the</text>
+<text class="t" x="514" y="468">original study link, and the quoted</text>
+<text class="t" x="514" y="490">numbers</text>
+<rect class="card" x="40" y="464" width="368" height="94" rx="8"/>
+<rect class="accY" x="40" y="464" width="4" height="94" rx="2"/>
+<circle class="accY" cx="62" cy="488" r="10"/>
+<text class="num" x="62" y="492" text-anchor="middle">6</text>
+<text class="t" x="82" y="493">Open the original study, judge whether</text>
+<text class="t" x="82" y="515">it applies to you, then change the</text>
+<text class="t" x="82" y="537">habit</text>
+<rect class="val" x="28" y="590" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="614">VALUE</text>
+<text class="valT" x="48" y="638">One page ranks everyday habits by reported mortality effect, each number traceable to a</text>
+<text class="valT" x="48" y="660">source — no more collecting advice article by article</text>
+</svg>

@@ -17,6 +17,7 @@
 | **HumanLayer Skills** | HumanLayer 官方的六个 skill——把改动画清楚（`show-me`）、PR 说明结构化（`visual-pr`）、重写 CLAUDE.md、收紧 React props，外加两个把重复性 agent 任务做成定时 GitHub Actions 循环的 skill，循环带 agent memory 文件与 `/iterate` 评论通道。 | B（4/5） | [→](humanlayer-skills.zh.md) |
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | B（5/6） | [→](android-skills.zh.md) |
 | **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | B（5/6） | [→](modern-web-guidance.zh.md) |
+| **Agent Toolkit for AWS** | 当你的编码 agent 在真实 AWS 账号里干活、你既要 AWS 当前的剧本、又要 IAM 和 CloudTrail 能把 agent 的调用和你的分开时用：约 114 个 skill 加一个托管 MCP 端点；只管 AWS，托管那一半能看到你的流量。 | A（4/5） | [→](agent-toolkit-for-aws.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +33,7 @@
 | [HumanLayer Skills](humanlayer-skills.zh.md) | ✅ | B（4/5） | 厂商出品的六个有主张的开发流程 skill，其中两个附带可运行的 CI 循环机制；仅面向 Claude 生态分发、没有可锁定的 release，循环模板默认使用宽松 agent 权限。 |
 | [Android Skills](android-skills.zh.md) | ✅ | B（5/6） | Google 官方给模型仍会失手的 Android 活准备的剧本；只覆盖 Android、走 CLI 安装、不接受外部贡献。 |
 | [Modern Web Guidance](modern-web-guidance.zh.md) | ✅ | B（5/6） | 浏览器厂商按任务检索的构建指导；`0.0.x` 预览版，每次调用走 npm，遥测默认开启，不检查你的产出。 |
+| [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md) | ✅ | A（4/5） | AWS 对 Labs 插件的继任者：skill 加上经托管端点、打了 agent 标记的调用；只管 AWS，无 tag，不收外部 PR，创业插件带合作伙伴优惠链接。 |
 
 ## 什么该放这里
 

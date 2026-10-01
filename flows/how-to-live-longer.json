@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "The guide does", "zh": "这份指南做的"},
+  "steps": [
+    {"lane": "you", "en": "Open the Chinese README (or the English sibling) and read it top to bottom", "zh": "打开中文 README（或英文版），从头往下读", "component": {"en": "README.md · README_en.md", "zh": "README.md · README_en.md"}},
+    {"lane": "them", "en": "Warns first that the numbers are correlations, cannot be added up, and some studies disagree", "zh": "先提醒：数字只是相关、不能相加、部分研究互相矛盾", "code": "4. 分析 · 4. Analysis"},
+    {"lane": "them", "en": "Lists about twenty habits, each with its reported change in all-cause mortality", "zh": "列出约二十个习惯，每条标出报告的全因死亡率变化", "code": "5. 行动 · 5. Action"},
+    {"lane": "you", "en": "Pick a habit you care about and jump to its evidence entry", "zh": "挑一个你在意的习惯，跳到它的证据条目", "code": "6. 证据 · 6. Reference"},
+    {"lane": "them", "en": "Shows a popular write-up, usually the original study link, and the quoted numbers", "zh": "给出一篇科普转述，多数附原始研究链接和摘录的数字"},
+    {"lane": "you", "en": "Open the original study, judge whether it applies to you, then change the habit", "zh": "打开原始研究，判断是否适用于自己，再调整习惯"}
+  ],
+  "value": {"en": "One page ranks everyday habits by reported mortality effect, each number traceable to a source — no more collecting advice article by article", "zh": "一页纸按报告的死亡率效应排好日常习惯，每个数字都能追到出处——不用再一篇篇攒养生建议"},
+  "sources": [
+    "README.md → headings \"### 4. 分析\", \"### 5. 行动\", \"### 6. 证据\" (the code values are these headings, verbatim)",
+    "README_en.md → headings \"### 4. Analysis\", \"### 5. Action\", \"### 6. Reference\"",
+    "README.md → 4. 分析: \"变量无法简单叠加\", \"存在矛盾观点\", \"研究仅表达相关\"",
+    "README.md → 5. 行动: per-habit ACM deltas, e.g. \"喝咖啡（-22%\\~-12% ACM）\"",
+    "README.md → 6. 证据: entries shaped as a Zhihu/news link, then \"出处：\" with the study link, then quoted figures"
+  ]
+}

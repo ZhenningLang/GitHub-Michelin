@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "IndexTTS does",
+    "zh": "IndexTTS 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo and let uv build its locked Python 3.11 + CUDA 12.8 environment",
+      "zh": "克隆仓库，用 uv 装好锁定版本的环境",
+      "code": "uv sync --all-extras"
+    },
+    {
+      "lane": "you",
+      "en": "Download the IndexTTS-2.5 weights into checkpoints/",
+      "zh": "把 IndexTTS-2.5 权重下载到 checkpoints/",
+      "code": "hf download IndexTeam/IndexTTS-2.5 --local-dir=checkpoints"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the speech GPT, semantic codec, s2mel and vocoder; fetches the small helper models on first run",
+      "zh": "加载语音 GPT、语义编解码器、s2mel 和声码器，首次运行补下小模型",
+      "component": {
+        "en": "IndexTTS2 class (infer_v2_5.py)",
+        "zh": "IndexTTS2 类（infer_v2_5.py）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Call infer with the text, its language, a clip of the voice and a separate clip of the mood",
+      "zh": "调用 infer，传入文字、语种、音色录音和另一段情绪录音",
+      "code": "emo_audio_prompt=\"examples/emo_sad.wav\""
+    },
+    {
+      "lane": "them",
+      "en": "Splits the text into segments; a GPT writes speech tokens with the clip's timbre and the other clip's emotion",
+      "zh": "把文字切段，GPT 按音色和情绪分别取自两段录音写出语音 token",
+      "component": {
+        "en": "UnifiedVoice GPT",
+        "zh": "UnifiedVoice GPT"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "A flow-matching model paints the spectrogram; BigVGAN renders 22.05 kHz audio and the segments are stitched",
+      "zh": "流匹配模型画出频谱，BigVGAN 合成 22.05 kHz 音频并拼成 WAV",
+      "component": {
+        "en": "s2mel + BigVGAN",
+        "zh": "s2mel + BigVGAN"
+      }
+    }
+  ],
+  "value": {
+    "en": "One voice reading any line in five languages with an emotion you pick separately — no sad re-take from the speaker, no per-character API bill",
+    "zh": "同一个声音用五种语言之一念任意台词，情绪单独指定——不必再找本人录一段伤心版，也不按字付费"
+  },
+  "sources": [
+    "https://github.com/index-tts/index-tts README (Getting Started: uv sync --all-extras; Download Models: hf download IndexTeam/IndexTTS-2.5 --local-dir=checkpoints; Python API: from indextts.infer_v2_5 import IndexTTS2; tts.infer(spk_audio_prompt='examples/voice_07.wav', text=text, lang=\"ZH\", output_path=\"gen.wav\", emo_audio_prompt=\"examples/emo_sad.wav\", verbose=True))",
+    "https://github.com/index-tts/index-tts indextts/infer_v2_5.py (IndexTTS2.__init__ loads UnifiedVoice GPT, semantic codec codec.pth, s2mel, CAMPPlus and BigVGAN, calling ensure_models_available for w2v-BERT/CAMPPlus/BigVGAN; infer_generator segments text by max_text_tokens_per_segment=120, sampling_rate = 22050, inserts interval silence and saves output_path)",
+    "https://github.com/index-tts/index-tts pyproject.toml (requires-python >=3.10,<3.12; torch==2.8.* from the cu128 index)"
+  ]
+}

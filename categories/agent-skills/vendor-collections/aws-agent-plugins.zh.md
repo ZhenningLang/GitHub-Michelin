@@ -116,7 +116,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Agent Toolkit for AWS（官方点名的继任者） | 未收录 | 现在开始*新的* AWS 生产 agent 工作时选继任者，因为 AWS 官方推荐它，且补上了区分 agent 与人类操作的 IAM condition key 以及 CloudWatch/CloudTrail 可见性。 | 继任者是活跃的 GitHub 仓库（`aws/agent-toolkit-for-aws`，2026-09-28 约 2.7k star）；本仓库「继续可用」但最有用的项目将迁走——今天装这些插件，等于采用一块官方已标记部分搬迁的表面。 |
+| [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md)（官方点名的继任者） | ✅ | 现在开始*新的* AWS 生产 agent 工作时选继任者，因为 AWS 官方推荐它，且补上了区分 agent 与人类操作的 IAM condition key 以及 CloudWatch/CloudTrail 可见性。 | 继任者是活跃的 GitHub 仓库（`aws/agent-toolkit-for-aws`，2026-09-28 约 2.7k star）；本仓库「继续可用」但最有用的项目将迁走——今天装这些插件，等于采用一块官方已标记部分搬迁的表面。 |
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 需要云中立的厂商级通用 skill 时，选 Anthropic Skills。 | Anthropic 第一方的通用 skill（文档生成、前端、编写规范）。云中立、任务通用；本 AWS 仓库更窄、绑生态，但在 AWS 架构/部署/运维上深得多。价值单位不同。 |
 | [Claude Plugins（官方）](claude-plugins-official.zh.md) | ✅ | 需要 Anthropic 宽的官方市场目录时，选 Claude Plugins。 | Anthropic 的官方插件/市场大全，通用向；本仓库是单一厂商（AWS）的领域合集，叠在同一插件机制上——按你要 AWS 深度还是通用插件集来选。 |
 | [MiniMax skills](minimax-skills.zh.md) | ✅ | 需要非 AWS 厂商的 skill 合集时，选 MiniMax skills。 | 另一厂商绑定其模型/harness 的 skill 合集；同为「官方起步 skill」目标，但没有 AWS 领域内容。混用前先核对格式/loader 兼容性。 |

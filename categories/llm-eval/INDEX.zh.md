@@ -18,6 +18,7 @@
 | **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | B（6/6） | [→](swe-bench.zh.md) |
 | **Harvey LAB** | 当你要让 agent 做完整套法律任务来做基准——虚构案卷进、备忘录或修订稿出，由两个大模型评委按律师清单判分——时用它；需要 Podman，以及 Anthropic 和 OpenAI 两把密钥。 | B（6/6） | [→](harvey-labs.zh.md) |
 | **AI-Infra-Guard** | 当审计面是整套自托管 AI 栈时用它——在线服务 CVE、MCP server、Agent Skill、越狱评测，一个腾讯出品的平台搞定，而不是只盯单个模型端点。 | B（6/6） | [→](ai-infra-guard.zh.md) |
+| **iFixAi** | 当你想快速、开箱即用地审一审 agent 守没守住声明的角色、工具权限和诚实规则时用它——60 项固定检查、另一家厂商的评委、一个 A–F 等级；项目很年轻、靠大模型判分，1.8 万星和它的实际使用量对不上。 | B（4/6） | [→](ifixai.zh.md) |
 
 
 ## 对比矩阵
@@ -29,6 +30,7 @@
 | Ragas / OpenAI Evals | 部分已收录 | — | 各页对比里点到的其他 LLM 评测 / 红队框架；其中 Ragas 已收录在本分类，OpenAI Evals 尚未收录。 |
 | [chatgpt-comparison-detection](chatgpt-comparison-detection.zh.md) | ✅ | E（4/6） | 面向 AI 文本对比的数据集 / 检测器资源；需要维护中的测试 runner 时选 eval framework。 |
 | [AI-Infra-Guard](ai-infra-guard.zh.md) | ✅ | B（6/6） | 整套 AI 栈的安全自查平台（基础设施 CVE、MCP、Skill、越狱）；只对单个模型或自己的应用跑命令行红队时选 garak/promptfoo。 |
+| [iFixAi](ifixai.zh.md) | ✅ | B（4/6） | 面向 agent 的固定治理检查清单（角色、工具权限、诚实度），由跨厂商大模型评委判分；要在 CI 里跑自己写的断言选 promptfoo，要攻击覆盖面选 garak。 |
 | [Harvey LAB](harvey-labs.zh.md) | ✅ | B（6/6） | 法律 agent 基准，1,600 多道虚构案卷题、大模型评委全对才得分；测写代码的 agent 选 SWE-bench，给自家应用做回归测试选 promptfoo。 |
 
 

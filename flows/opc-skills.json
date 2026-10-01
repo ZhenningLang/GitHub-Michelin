@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OPC Skills does",
+    "zh": "OPC Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the pack, or just the SEO skill, into your coding agent",
+      "zh": "把整包或只把 SEO 技能装进你的 coding agent",
+      "code": "npx skills add ReScienceLab/opc-skills --skill seo-geo"
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent to improve your site's search and AI visibility, giving the URL",
+      "zh": "让 agent 提升网站在搜索和 AI 回答里的可见度，给出网址"
+    },
+    {
+      "lane": "them",
+      "en": "Runs a free audit of title, meta, H1, robots.txt, sitemap and load time",
+      "zh": "免费审一遍标题、meta、H1、robots.txt、sitemap 和加载时间",
+      "code": "python3 scripts/seo_audit.py \"https://example.com\"",
+      "component": {
+        "en": "seo-geo audit script",
+        "zh": "seo-geo 审计脚本"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Name your target keywords and competitors; DataForSEO keys are optional",
+      "zh": "说出目标关键词和竞品；DataForSEO 密钥可选"
+    },
+    {
+      "lane": "them",
+      "en": "Researches keywords, applies its GEO rewrite rules, drafts meta tags and FAQPage JSON-LD",
+      "zh": "查关键词，按 GEO 规则改写，起草 meta 和 FAQPage 标记",
+      "component": {
+        "en": "seo-geo SKILL.md steps 2–4",
+        "zh": "seo-geo SKILL.md 第 2–4 步"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Returns an SEO/GEO report: status checklist plus prioritized fixes",
+      "zh": "交回一份 SEO/GEO 报告：现状清单加按优先级排好的修改项"
+    }
+  ],
+  "value": {
+    "en": "A prioritized fix list with ready-to-paste meta tags and schema, without hand-checking robots.txt, sitemap and markup yourself",
+    "zh": "拿到排好优先级的修改清单和可粘贴的 meta 与 schema，不用自己逐项查 robots.txt 和标记"
+  },
+  "sources": [
+    "https://github.com/ReScienceLab/opc-skills README.md — Universal Installation: `npx skills add ReScienceLab/opc-skills --skill reddit` pattern; skills.json install.project for seo-geo: `npx skills add ReScienceLab/opc-skills --skill seo-geo`",
+    "https://github.com/ReScienceLab/opc-skills skills/seo-geo/SKILL.md — description trigger 'improve search visibility'; Step 1 Website Audit: `python3 scripts/seo_audit.py \"https://example.com\"` (title, meta, H1, robots, sitemap, load time; no API needed)",
+    "https://github.com/ReScienceLab/opc-skills skills/seo-geo/SKILL.md — Step 2 Keyword Research (WebSearch with {keyword} and {competitor.com}), Step 3 GEO Optimization (Princeton methods table, FAQPage schema), Step 4 meta tags template, 'Generate Report' template (Current Status / Recommendations)",
+    "https://github.com/ReScienceLab/opc-skills skills.json — seo-geo auth: DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD, both optional"
+  ]
+}

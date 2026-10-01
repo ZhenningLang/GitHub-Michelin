@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Agent Toolkit for AWS does",
+    "zh": "Agent Toolkit for AWS 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the core plugin from Anthropic's default marketplace",
+      "zh": "从 Anthropic 默认市场装核心插件",
+      "code": "/plugin install aws-core@claude-plugins-official"
+    },
+    {
+      "lane": "them",
+      "en": "Adds 14 core skills, a secret-blocking hook and a local proxy to the hosted AWS MCP Server",
+      "zh": "装上 14 个核心 skill、拦密钥的 hook，以及连托管服务器的本地代理",
+      "component": {
+        "en": "aws-core plugin",
+        "zh": "aws-core 插件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Sign in so the proxy can sign calls with your IAM identity",
+      "zh": "登录 AWS，让代理用你的 IAM 身份签名",
+      "code": "aws login"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the AWS job in plain words",
+      "zh": "用大白话交代这件 AWS 的活"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the matching skill and checks current AWS docs before acting",
+      "zh": "加载匹配的 skill，动手前先查最新 AWS 文档",
+      "component": {
+        "en": "SKILL.md + search_documentation",
+        "zh": "SKILL.md + 文档搜索"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs the calls or scripts under your role, tagged as agent traffic in IAM and CloudTrail",
+      "zh": "用你的角色执行调用或脚本，IAM 和 CloudTrail 里都标为 agent",
+      "component": {
+        "en": "AWS MCP Server (hosted)",
+        "zh": "AWS MCP Server（托管）"
+      }
+    }
+  ],
+  "value": {
+    "en": "The agent follows AWS's current procedures instead of stale training data, and its actions are separable from yours in IAM policy and audit logs",
+    "zh": "agent 按 AWS 当前的做法干活而不是凭过时记忆，它的操作在 IAM 策略和审计日志里能和你的分开"
+  },
+  "sources": [
+    "README.md Quick start / Claude Code — `/plugin install aws-core@claude-plugins-official`",
+    "plugins/aws-core/README.md — skill table (14 skills), AWS MCP Server tools",
+    "plugins/aws-core/.mcp.json — `uvx mcp-proxy-for-aws-cli==1.7.0 https://aws-mcp.us-east-1.api.aws/mcp`",
+    "plugins/aws-core/com.anthropic.claude-code/hooks/hooks.json + secret-safety.py — PreToolUse secret-fetch block",
+    "setup-instructions/setup.md Step 3 — `aws login` browser sign-in",
+    "rules/aws-agent-rules.md — load skill via retrieve_skill, verify against documentation",
+    "https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html — run_script sandbox, aws:ViaAWSMCPService / aws:CalledViaAWSMCP, CloudTrail"
+  ]
+}

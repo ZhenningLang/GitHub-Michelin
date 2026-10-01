@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "VoiceStudio does",
+    "zh": "VoiceStudio 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app with the one-line installer (macOS/Linux) or a release download",
+      "zh": "用一行安装脚本或发布包装好桌面应用",
+      "code": "curl -fsSL https://voicestudio.sh/install | sh"
+    },
+    {
+      "lane": "them",
+      "en": "Sets up the Python backend, detects CUDA/MPS/CPU and downloads the default OmniVoice model when you accept",
+      "zh": "搭好 Python 后端、识别显卡，经你同意下载默认 OmniVoice 模型",
+      "component": {
+        "en": "first-run setup",
+        "zh": "首次启动向导"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Open Voice cloning, add a clean 5–15 s reference recording, type your text and generate",
+      "zh": "打开声音克隆，放一段 5 到 15 秒的干净参考录音，输入文字并生成",
+      "component": {
+        "en": "Voice cloning workspace",
+        "zh": "声音克隆工作区"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Transcribes the reference clip once and saves the transcript on the voice profile",
+      "zh": "把参考录音转写一次，转写稿存进该音色档案",
+      "component": {
+        "en": "ASR engine (WhisperX)",
+        "zh": "ASR 引擎（WhisperX 等）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Synthesizes the text chunk by chunk in that voice and adds an inaudible AI watermark",
+      "zh": "按段用该音色合成整段文字，并加上听不见的 AI 水印",
+      "component": {
+        "en": "FastAPI backend on :3900",
+        "zh": "本地 FastAPI 后端（3900 端口）"
+      }
+    }
+  ],
+  "value": {
+    "en": "Speech in a cloned voice generated on your own hardware — no per-character bill and no voice samples uploaded to a cloud",
+    "zh": "在自己机器上用克隆音色生成语音——不按字计费，也不用把声音样本传上云"
+  },
+  "sources": [
+    "https://github.com/debpalash/VoiceStudio README (Get started: curl -fsSL https://voicestudio.sh/install | sh; 'Open Voice cloning, choose a voice or add a clean reference recording, enter your text, and generate. Install the required model when prompted.')",
+    "https://github.com/debpalash/VoiceStudio docs/install/macos.md (first-run setup syncs deps and downloads model weights ~2.4 GB)",
+    "https://github.com/debpalash/VoiceStudio docs/engines/README.md (Voice Clone recommends 5-15 s clean speech; OmniVoice best_window transcription; device auto-detect CUDA/ROCm/MPS/CPU)",
+    "https://github.com/debpalash/VoiceStudio docs/performance.md (auto-transcription saved onto the profile; long texts split into chunks; post-process mastering + watermark)",
+    "https://github.com/debpalash/VoiceStudio pyproject.toml (audioseal watermark, whisperx, fastapi) and docs/speech-platform.md (backend on :3900)"
+  ]
+}

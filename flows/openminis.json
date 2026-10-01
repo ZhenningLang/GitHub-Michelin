@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenMinis does", "zh": "OpenMinis 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the app from the App Store (iOS) or the APK from GitHub Releases (Android)", "zh": "iOS 装 App Store 版，Android 装 GitHub 的 APK"},
+    {"lane": "them", "en": "Unpacks a bundled Alpine Linux rootfs and boots it inside the app", "zh": "解开内置的 Alpine Linux 根文件系统，在应用里启动它", "component": {"en": "iSH (iOS) · PRoot (Android)", "zh": "iSH（iOS）· PRoot（Android）"}},
+    {"lane": "you", "en": "Add a model: paste your own API key or sign in to a provider account", "zh": "接一个模型：填自己的 API key，或登录服务商账号"},
+    {"lane": "you", "en": "Ask in chat, or send it something from the Share Sheet or a Shortcut", "zh": "在聊天里提要求，或从分享菜单、快捷指令把东西丢给它"},
+    {"lane": "them", "en": "Runs the agent loop: the model plans, then installs packages and runs scripts in the sandbox", "zh": "跑 agent 循环：模型做计划，在沙箱里装包、跑脚本", "component": {"en": "Alpine sandbox", "zh": "Alpine 沙箱"}},
+    {"lane": "them", "en": "Hands Health, Calendar, Reminders and HomeKit calls to native code and writes the result", "zh": "把健康、日历、提醒事项、HomeKit 调用交给原生代码，写回结果", "component": {"en": "native offloads", "zh": "原生 offload"}}
+  ],
+  "value": {
+    "en": "You describe a phone errand once and it lands in Health, Calendar or Reminders — no laptop, no server to keep running",
+    "zh": "一句话交代手机上的杂事，结果直接落进健康、日历或提醒事项——不用开电脑，也不用养一台服务器"
+  },
+  "sources": [
+    "https://github.com/OpenMinis/OpenMinis/blob/main/README.md (App Store / GitHub Releases APK badges; Bring your own model: API keys or account sign-in; A real Linux shell: sandboxed Alpine; Device integration: Health, Calendar, Reminders, Contacts, HomeKit…; Native offloads; use cases incl. Share Sheet and Shortcuts)",
+    "https://github.com/OpenMinis/OpenMinis/blob/main/docs/specs/ios-sandbox-ish-summary.md (RootfsManager extracts bundled rootfs; ISHKernel boot sequence; native offload handlers)",
+    "https://github.com/OpenMinis/OpenMinis/blob/main/BUILDING.md (iSH fork on iOS, PRoot fork on Android, Alpine minirootfs)",
+    "https://github.com/OpenMinis/OpenMinis/blob/main/src/ios/Agent/Offload/OffloadPermissionManager.swift (apple-healthkit, apple-calendar, apple-reminders, apple-homekit offload commands)"
+  ]
+}

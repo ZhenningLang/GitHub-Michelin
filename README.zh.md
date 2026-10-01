@@ -197,6 +197,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **OpenWorker** | 当你想要一个用自己的模型 key、在审批闸门和逐次审计记录下把真活干完的桌面 AI 同事时用它——但命令沙箱要手动开启，一键连接器走闭源 OAuth 中转，而且它是个 71 天大的公测版。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md) |
 | **Raven** | 当你想要一个入口把一大份需求拆成任务图、分给自带的调研/编程/设计/值守 agent 或 Claude Code、Codex 时用它——但它是四个月大的 pre-alpha，沙箱默认关闭，DAG 节点还可能绕过沙箱（#796）。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/raven.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md) |
 | **Rakazo** | 当你想自托管“AI 同事”——每个 bot 有自己的长期对话、定时任务和一台带浏览器、可接管的 Linux 电脑，跑在你的 Docker 主机或沙箱服务上、模型任选——时用它；但它是 7 周大的 beta，实际跟的是 `edge` 镜像，而且 bot 在电脑里执行命令和操作浏览器不经审批。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md) |
+| **OpenMinis** | 当你想让 AI agent 直接在手机上办事——iOS / Android 应用里自带 Linux shell，健康、日历、提醒事项、HomeKit 都是它的工具，模型用你自己的云端 key——时用它；但模型不在端侧跑，隐私类工具默认放行，仓库是不收 PR 的镜像、只看得到一个提交者。 | GPL-3.0 | C（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md) |
 | **OpenHuman** | 本地优先的个人 AI 助手：每 20 分钟把邮件、日历、仓库灌成本机 Markdown 记忆，并能在 Rust 内核里强制断网——但它只有 7 个月，绝大多数提交来自一个人，许可是 GPL-3.0-only。 | GPL-3.0-only | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md) |
 | **CC Switch** | 跨平台桌面管理器，统一管理多个 AI 编码智能体（Claude Code、Codex、Gemini CLI 等），支持提供商路由和 MCP——但不足一岁，单人维护，bus factor 为 1。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) |
 | **Hermes Agent** | Nous Research 构建的带学习循环的自我改进 AI 智能体——但不足一岁，学习循环稳定性未经检验。 | MIT | B（5/6） | [中](categories/agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md) |
@@ -205,6 +206,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **LangChain** | 代码优先的 LLM agent、工具与记忆组合框架，集成生态庞大——但简单单 prompt 应用别用它。 | MIT | A（5/6） | [中](categories/agent-frameworks/workflow-builders/langchain.zh.md) · [EN](categories/agent-frameworks/workflow-builders/langchain.md) |
 | **OpenCode** | 开源终端 AI 编码智能体，可编辑文件、执行命令——但极其年轻（2025-04 创建），无 Lindy 记录。 | MIT | A（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/opencode.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/opencode.md) |
 | **Prime Agent** | 当长任务把对话窗口塞烂、你要模型对着持久 Python 内核写程序、派子 agent、断开终端还能接着跑时用它——但它默认不是沙箱，仓库也才四个月。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/prime-agent.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/prime-agent.md) |
+| **Freebuff** | 想要一个不订阅、不填 API key 的终端编码 agent 时用它——但免费模型是拿文字广告、地区分档和提示词分析换来的，后端闭源，shell 命令也没有确认关卡。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/freebuff.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/freebuff.md) |
 | **Langflow** | 可视化拖拽平台，用于构建和部署 LLM 工作流与智能体，内置 API 和 MCP 服务器——但可视化流比代码更难做 diff/审查。 | MIT | B（6/6） | [中](categories/agent-frameworks/workflow-builders/langflow.zh.md) · [EN](categories/agent-frameworks/workflow-builders/langflow.md) |
 | **Gemini CLI** | 基于 Google Gemini 模型的开源终端 AI 智能体，带免费层、内置工具和 MCP 支持——但仅限 Google 模型，且非常年轻。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md) |
 | **RTK** | 挂钩编码智能体的 shell 命令，只交回失败项和一行确认而不是整屏输出——只管 Bash（读文件会绕过），v0.x 每周发版，约 8 个月大。 | Apache-2.0 | A（5/6） | [中](categories/agent-tooling/work-state/rtk.zh.md) · [EN](categories/agent-tooling/work-state/rtk.md) |
@@ -218,6 +220,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Claude Commerce Agents** | 你要在一个卖东西的产品（零售、旅游、票务、电信）里做助手，想直接拿到购物/商家 agent 这一层（prompt、护栏、UI 回填、暂存审批）——当作一份读来 vendor 的蓝图，而不是装来用的依赖。 | Apache-2.0 | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.md) |
 | **eve** | 你的 agent 要为一个人或一个 webhook 等上好几天、要扛住重新部署，还要能在 Slack／Discord／Teams 上应答——并且是一个可部署的 TypeScript 服务。 | Apache-2.0 | A（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/eve.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/eve.md) |
 | **Open Executive** | 小公司要把领导问题收成一个自托管高管声音——背后是专家 agent、公司文档和 Slack——而不是自己组装框架，也不是个人传呼机。 | Apache-2.0 | B（4/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/open-executive.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/open-executive.md) |
+| **OpenAgentCore** | 你的应用要通过 OpenAI Agents API，在自己的基础设施上按会话开沙箱驱动 Codex、Claude Code 或 MiniMax Code——但它只有十天大、还是不做兼容承诺的 v0.0.x，各 harness 功能不对齐，也没有按会话的网络隔离。 | MIT | C（5/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md) |
 | **OpenBot** | 公司要受治理的 AI 同事——每个有自己的浏览器加 shell 容器、每个动作先过策略再留审计、任意 AG-UI agent 可接入——但它是 6 周大的 alpha 模板，缺了 CopilotKit 的 Intelligence 服务就起不来。 | MIT | B（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-services/openbot.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-services/openbot.md) |
 | **aider** | aider is AI pair programming in your terminal | Apache-2.0 | B（6/6） | [EN](categories/agent-frameworks/coding-agents/terminal-agents/aider.md) · [中](categories/agent-frameworks/coding-agents/terminal-agents/aider.zh.md) |
 | **Cline** | 装机量最大的开源编辑器／终端／桌面 coding agent——每一次改动和命令都等你批准并留下 checkpoint，模型自带，一天多发。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/ide-agents/cline.zh.md) · [EN](categories/agent-frameworks/coding-agents/ide-agents/cline.md) |
@@ -266,6 +269,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/backpass.zh.md) · [EN](categories/agent-memory/coding-agent-memory/backpass.md) |
 | **OptMem** | 当你想要零活动部件的编码 agent 记忆——一段贴进去的提示块、一个零依赖的 Python 脚本、一份由 agent 自己经营的只追加日志——且能接受自愿捕获、仅正则的检索和没有许可证时用它。 | NONE (no LICENSE file — all rights reserved) | D（5/6） | [中](categories/agent-memory/coding-agent-memory/optmem.zh.md) · [EN](categories/agent-memory/coding-agent-memory/optmem.md) |
 | **deja-vu** | 当你的各家 agent 反复重排你在另一家 agent 里早已修好的问题，而你想直接用 35 家 harness 已经写进磁盘的会话记录建记忆、不要“保存”环节也不要模型账单时用它。 | MIT | B（6/6） | [中](categories/agent-memory/coding-agent-memory/deja-vu.zh.md) · [EN](categories/agent-memory/coding-agent-memory/deja-vu.md) |
+| **autoharness** | 当你整天用 Claude Code、想让自己会话里的经验自动变成技能——按使用情况修补、合并、淘汰，没有审阅环节——并且能接受后台跳过权限确认的子会话和一个不到四个月的项目时用它。 | MIT | C（6/6） | [中](categories/agent-memory/coding-agent-memory/autoharness.zh.md) · [EN](categories/agent-memory/coding-agent-memory/autoharness.md) |
 
 ### deep-research
 
@@ -328,6 +332,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | MIT | B（6/6） | [中](categories/llm-eval/swe-bench.zh.md) · [EN](categories/llm-eval/swe-bench.md) |
 | **Harvey LAB** | 当你要让 agent 做完整套法律任务来做基准——虚构案卷进、备忘录或修订稿出，由两个大模型评委按律师清单判分——时用它；需要 Podman，以及 Anthropic 和 OpenAI 两把密钥。 | MIT | B（6/6） | [中](categories/llm-eval/harvey-labs.zh.md) · [EN](categories/llm-eval/harvey-labs.md) |
 | **AI-Infra-Guard** | 当审计面是整套自托管 AI 栈时用它——在线服务 CVE、MCP server、Agent Skill、越狱评测，一个腾讯出品的平台搞定，而不是只盯单个模型端点。 | Apache-2.0 | B（6/6） | [中](categories/llm-eval/ai-infra-guard.zh.md) · [EN](categories/llm-eval/ai-infra-guard.md) |
+| **iFixAi** | 当你想快速、开箱即用地审一审 agent 守没守住声明的角色、工具权限和诚实规则时用它——60 项固定检查、另一家厂商的评委、一个 A–F 等级；项目很年轻、靠大模型判分，1.8 万星和它的实际使用量对不上。 | Apache-2.0 | B（4/6） | [中](categories/llm-eval/ifixai.zh.md) · [EN](categories/llm-eval/ifixai.md) |
 
 ### agent-dev-methodology
 
@@ -571,6 +576,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **HumanLayer Skills** | HumanLayer 官方的六个 skill——把改动画清楚（`show-me`）、PR 说明结构化（`visual-pr`）、重写 CLAUDE.md、收紧 React props，外加两个把重复性 agent 任务做成定时 GitHub Actions 循环的 skill，循环带 agent memory 文件与 `/iterate` 评论通道。 | MIT | B（4/5） | [中](categories/agent-skills/vendor-collections/humanlayer-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/humanlayer-skills.md) |
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/android-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/android-skills.md) |
 | **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) · [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) |
+| **Agent Toolkit for AWS** | 当你的编码 agent 在真实 AWS 账号里干活、你既要 AWS 当前的剧本、又要 IAM 和 CloudTrail 能把 agent 的调用和你的分开时用：约 114 个 skill 加一个托管 MCP 端点；只管 AWS，托管那一半能看到你的流量。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md) |
 
 #### agent-skills / subagent-collections
 
@@ -629,6 +635,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **soul.md** | The best way to build a personality for your agent. Let Claude Code / OpenClaw ingest your data & build your AI soul. | MIT | B（4/5） | [中](categories/agent-skills/context-engineering/soul-md.zh.md) · [EN](categories/agent-skills/context-engineering/soul-md.md) |
 | **marketingskills** | Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/marketing-seo/marketingskills.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/marketingskills.md) |
 | **AI Copywriter** | 单文件 Markdown 技能：先问清读者和真实故事，再写标题、微文案、邮件主题行和 LinkedIn 帖子，并逐句对照 33 种 AI 写作痕迹审查。 | MIT | C（3/5） | [中](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md) |
+| **OPC Skills** | 一人公司的十个上线杂活技能——SEO／AI 搜索体检并给出可粘贴的 schema，外加域名、logo、需求调研和 Reddit／X 查询，用你自己的 API 密钥运行。 | Apache-2.0 | B（4/5） | [中](categories/agent-skills/ai-writing/marketing-seo/opc-skills.zh.md) · [EN](categories/agent-skills/ai-writing/marketing-seo/opc-skills.md) |
 
 ### observability
 
@@ -684,6 +691,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Office-Word-MCP-Server** | 只有当既有 LLM 集成已经绑定它那约 55 个 Word tool schema 时才用它——仓库已于 2025-12-31 归档，作者批量归档了约 15 个 MCP server；新工作请用 OfficeCLI，或自己封装 python-docx。 | MIT | C（6/6） | [中](categories/office-automation/office-word-mcp-server.zh.md) · [EN](categories/office-automation/office-word-mcp-server.md) |
 | **Office-PowerPoint-MCP-Server** | 只有当既有 LLM 集成已经绑定它的 PowerPoint tool schema 时才用它——同一作者在 2026-03-03 与 Word 姊妹项目一并归档；新工作请封装 python-pptx 或用 OfficeCLI。 | MIT | C（6/6） | [中](categories/office-automation/office-powerpoint-mcp-server.zh.md) · [EN](categories/office-automation/office-powerpoint-mcp-server.md) |
 | **Apache POI** | 当 JVM 服务必须读取或原地改 Office 文件时用它——不是 Python agent 路径，也不是转换／打印引擎。 | Apache-2.0 | B（3/6） | [中](categories/office-automation/apache-poi.zh.md) · [EN](categories/office-automation/apache-poi.md) |
+| **dsh-libreoffice-kit** | 当 Node.js 应用要离线把收到的 Office 文件转成 PDF／PNG（或重算 `.xlsx`），希望 LibreOffice 引擎随 `npm install` 到位、字体可控时用它——但 Linux 只有 WASM 引擎，项目才几周大，GitHub 仓库是落后于 npm 的镜像。 | MPL-2.0 | C（5/6） | [中](categories/office-automation/dsh-libreoffice-kit.zh.md) · [EN](categories/office-automation/dsh-libreoffice-kit.md) |
 
 
 ### office-editors
@@ -1104,6 +1112,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Coqui TTS（idiap 分支）** | 想要带 XTTS v2 克隆与广泛预训练模型覆盖的 Python TTS 库时用它；但它是 MPL-2.0、不提供应用外壳，且是一家已倒闭公司项目的社区分支。 | MPL-2.0 | C（4/6） | [中](categories/speech/coqui-ai-tts.zh.md) · [EN](categories/speech/coqui-ai-tts.md) |
 | **AntSpeaker (MECT)** | 想用零训练的现成微型 PyTorch 检查点（380 万到 960 万参数）判断两段音频是否同一说话人时用它；但权重是 CC-BY-NC-SA（不可商用）、没有训练代码，且仓库是只活了两周的论文发布。 | CC-BY-NC-SA-4.0 | C（3/6） | [中](categories/speech/antspeaker.zh.md) · [EN](categories/speech/antspeaker.md) |
 | **VoxCPM** | 想用代码和权重都是 Apache-2.0 的模型自托管声音克隆、或用文字描述设计音色（覆盖 30 种语言）时用它；但要备好约 8 GB 显存的 GPU，长文本得自己切句（单次长输出会漂移），并发服务还要另起引擎。 | Apache-2.0 | B（5/6） | [中](categories/speech/voxcpm.zh.md) · [EN](categories/speech/voxcpm.md) |
+| **VoiceStudio** | 想要一个本地桌面应用把声音克隆、视频配音、听写和 agent 发声（MCP）一次装齐、还能切换十几个引擎时用它；但默认模型权重禁止商用，应用是 AGPL 且付费 Pro 档正在成形，项目只有半年历史、由一人维护。 | AGPL-3.0 | C（5/6） | [中](categories/speech/voicestudio.zh.md) · [EN](categories/speech/voicestudio.md) |
+| **IndexTTS** | 想让同一个克隆音色带出不同情绪——音色取自一段录音，情绪取自另一段录音、8 维向量或一句文字——并说中、英、日、西、阿五种语言时用它；但 B 站许可在月活超 1 亿或年收入超 1 亿元（以中文版为准）时要另行授权，精确时长配音尚未开放，也没有训练代码。 | NOASSERTION（B 站自定义许可） | A（3/6） | [中](categories/speech/index-tts.zh.md) · [EN](categories/speech/index-tts.md) |
 
 ### terminal-ui
 
@@ -1325,6 +1335,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
+| **HowToLiveLonger（程序员延寿指南）** | 当你想把饮食、饮品、睡眠、运动、体重这些日常习惯，按某项研究报告的全因死亡率变化排在同一页上、每个数字都能追到出处，好决定先改哪件事时用它；不要拿它决定吃药或吃补剂。 | Unlicense | C（3/5） | [中](categories/learning-resources/how-to-live-longer.zh.md) · [EN](categories/learning-resources/how-to-live-longer.md) |
 
 ### model-editing
 
@@ -1384,3 +1395,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **OpenMed** | 当临床笔记必须在患者数据绝不出网的前提下产出带类型实体与脱敏副本时用它——代价是每个模型都要在你自己的语料上验证，且发布节奏系于一人。 | Apache-2.0 | B（5/6） | [中](categories/healthcare-ai/openmed.zh.md) · [EN](categories/healthcare-ai/openmed.md) |
+
+### design-tokens
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Dembrandt** | 设计系统唯一的来源是一个线上网址，你需要把它真实的颜色、字体和间距导出成 DTCG/Tailwind/DESIGN.md token——或者要一个 token 漂移就让 CI 失败的门禁——时用它；token 本来就是你自己写的、或你担心的是布局回归时不要用。 | MIT | C（5/6） | [中](categories/design-tokens/dembrandt.zh.md) · [EN](categories/design-tokens/dembrandt.md) |

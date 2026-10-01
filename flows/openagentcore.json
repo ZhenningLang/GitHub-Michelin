@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenAgentCore does", "zh": "OpenAgentCore 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the one-line installer from the latest release on a Linux host with Docker", "zh": "在装了 Docker 的 Linux 主机上跑最新版的一行安装脚本"},
+    {"lane": "them", "en": "Starts Core, Web, PostgreSQL and an HTTPS gateway; prints the console address and API base URL", "zh": "拉起 Core、Web、数据库和 HTTPS 网关，打印控制台和 API 地址",
+     "component": {"en": "installer", "zh": "安装器"}},
+    {"lane": "you", "en": "In Web: set the domain, a default model and a Project API key, then add a node or E2B", "zh": "在 Web 里设域名、默认模型、项目密钥，再加节点或 E2B"},
+    {"lane": "you", "en": "Point the official OpenAI SDK at your installation", "zh": "把官方 OpenAI SDK 指向你的安装",
+     "code": "export OPENAI_BASE_URL=https://core.example/v1"},
+    {"lane": "you", "en": "Create a Session with a task and the harness you want (Codex, Claude Code, MiniMax Code)", "zh": "建一个会话，写明任务和要用的 harness",
+     "code": "client.beta.agents.sessions.create"},
+    {"lane": "them", "en": "Gets a sandbox, starts the Runtime daemon and runs the native harness in the workspace", "zh": "要一台沙箱，启动守护进程，在工作目录里跑原生 harness",
+     "component": {"en": "Runtime daemon + harness adapter", "zh": "守护进程与 harness 适配器"}},
+    {"lane": "them", "en": "Persists Turns, Items and events; your app reads or streams them through the same API", "zh": "持久化轮次、条目和事件，应用用同一套 API 读取或流式接收",
+     "component": {"en": "Core + PostgreSQL", "zh": "Core 与 PostgreSQL"}}
+  ],
+  "value": {
+    "en": "Your app drives Codex, Claude Code or MiniMax Code via one OpenAI-shaped API on your machines — no per-agent glue, sandboxing or session store to build",
+    "zh": "一套 OpenAI 形状的 API 驱动三种编码 agent，不再自己搭沙箱和会话存储"
+  },
+  "sources": [
+    "https://github.com/MiniMax-AI/OpenAgentCore/blob/main/README.md Install section (curl -fsSL https://github.com/MiniMax-AI/OpenAgentCore/releases/latest/download/install.sh | bash; sign in to Web, configure domain and HTTPS, set a default model, issue a Project API key, add a node / E2B / own machine)",
+    "https://github.com/MiniMax-AI/OpenAgentCore/blob/main/docs/getting-started/install.md (installer loads Core, Web, PostgreSQL and HTTPS gateway images, starts them with Docker Compose, prints the console address and API base URL)",
+    "https://github.com/MiniMax-AI/OpenAgentCore/blob/main/docs/getting-started/quickstart.md (export OPENAI_BASE_URL=https://core.example/v1; session = client.beta.agents.sessions.create(...) with extra_body x_agents_core harness codex; poll turns and items)",
+    "https://github.com/MiniMax-AI/OpenAgentCore/blob/main/docs/architecture.md 'A Session, end to end' (Sandbox Provider obtains compute, Runtime prepares the workspace and runs the native Harness, Core persists output, tool interactions and receipts)"
+  ]
+}
