@@ -442,6 +442,7 @@ Goose (`aaif-goose/goose`),categories/agent-frameworks/agent-runtimes/personal-a
 Goose3,categories/web-scraping/article-extraction/newspaper.md,,no
 goose3,categories/web-scraping/article-extraction/python-readability.md,,no
 Gotenberg,categories/media-processing/image-processing/screenshot-service.md,,no
+Gotenberg (`gotenberg/gotenberg`),categories/office-automation/dsh-libreoffice-kit.md,,no
 GPT-4o / Qwen-VL / Gemini (VLMs),categories/ocr/latex-ocr.md,,no
 gpu-mode/lectures,categories/learning-resources/gpu-perf-engineering-resources.md,,no
 Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
@@ -579,6 +580,8 @@ LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice,categories/office-editors/collabora-online.md,,no
 LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/office-automation/INDEX.md,,no
+"LibreOffice headless (`LibreOffice/core`, `soffice --headless --convert-to pdf`)",categories/office-automation/dsh-libreoffice-kit.md,,no
+libreoffice-convert (`elwerene/libreoffice-convert`),categories/office-automation/dsh-libreoffice-kit.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
 libSQL (`tursodatabase/libsql`),categories/databases/database-engines/turso.md,,no
@@ -1074,6 +1077,7 @@ TypeSafe System One · Jev (hosted),categories/decision-models/simple-jev.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
 undetected-chromedriver,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
 undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no
+unoserver (`unoconv/unoserver`),categories/office-automation/dsh-libreoffice-kit.md,,no
 unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no
 urql (`urql-graphql/urql`),categories/web-ui/data-fetching/tanstack-query.md,,no
