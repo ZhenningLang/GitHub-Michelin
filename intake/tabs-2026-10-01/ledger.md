@@ -14,7 +14,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | ifixai-ai/iFixAi | add | done | categories/llm-eval/ifixai.md |  | ifixai-ai/ifixai |
 | index-tts/index-tts | add | running |  |  | index-tts/index-tts |
 | MiniMax-AI/OpenAgentCore | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md |  | minimax-ai/openagentcore |
-| OpenMinis/OpenMinis | add | running |  |  | openminis/openminis |
+| OpenMinis/OpenMinis | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md |  | openminis/openminis |
 | ReScienceLab/opc-skills | add | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md |  | resciencelab/opc-skills |
 | tigerless-labs/autoharness | add | running |  |  | tigerless-labs/autoharness |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |

@@ -121,6 +121,7 @@ https://github.com/OpenBMB/MiniCPM-V,minicpm-v,on-device-ml,categories/on-device
 https://github.com/OpenBMB/VoxCPM,voxcpm,speech,categories/speech/voxcpm.md
 https://github.com/OpenCut-app/OpenCut,opencut,video-editing,categories/media-processing/video-editing/opencut.md
 https://github.com/OpenHands/OpenHands,openhands,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md
+https://github.com/OpenMinis/OpenMinis,openminis,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md
 https://github.com/OpenPipe/ART,art,llm-training,categories/llm-training/art.md
 https://github.com/OthmanAdi/planning-with-files,planning-with-files,work-state,categories/agent-tooling/work-state/planning-with-files.md
 https://github.com/Owl-Listener/designer-skills,designer-skills,ui-taste,categories/agent-skills/design/ui-taste/designer-skills.md
