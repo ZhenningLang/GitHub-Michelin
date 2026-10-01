@@ -83,7 +83,6 @@ After Effects,categories/video-production/video-shotcraft.md,,no
 AG Grid,categories/office-editors/jspreadsheet.md,,no
 AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table.md,,no
 Agent Router (formerly Envoy AI Gateway),categories/api-gateway/vllm-semantic-router.md,,no
-Agent Toolkit for AWS (the named successor),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/research-automation/ai-scientist.md,,no
@@ -156,8 +155,10 @@ AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 AWS Elemental MediaConvert,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
+AWS MCP servers (`awslabs/mcp`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
 AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
+Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 Basic Memory,categories/agent-memory/coding-agent-memory/agent-beacon.md,,no
@@ -474,6 +475,7 @@ Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui
 Hand-written project skills,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
+HashiCorp Agent Skills (`hashicorp/agent-skills`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
 HashiCorp Vault,categories/secrets-management/openbao.md,,no
 Hasura,categories/databases/database-engines/supabase.md,,no
 Haystack / django-elasticsearch-dsl,categories/databases/database-clients/elasticsearch-dsl-py.md,,no

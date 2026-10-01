@@ -5,7 +5,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
-| aws/agent-toolkit-for-aws | add | running |  |  | aws/agent-toolkit-for-aws |
+| aws/agent-toolkit-for-aws | add | done | categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md |  | aws/agent-toolkit-for-aws |
 | CodebuffAI/freebuff | add | running |  |  | codebuffai/freebuff |
 | debpalash/VoiceStudio | add | running |  |  | debpalash/voicestudio |
 | deepseek-ai/dsh-libreoffice-kit | add | running |  |  | deepseek-ai/dsh-libreoffice-kit |

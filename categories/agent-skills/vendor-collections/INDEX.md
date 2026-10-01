@@ -17,6 +17,7 @@
 | **HumanLayer Skills** | HumanLayer's official six-skill bundle — visual explanation (`show-me`), PR outlining (`visual-pr`), CLAUDE.md rewriting, React prop narrowing, and two skills that turn a repeatable agent job into a scheduled GitHub Actions loop carrying an agent-memory file and an `/iterate` comment channel. | B (4/5) | [→](humanlayer-skills.md) |
 | **Android Skills** | Google's official 24-skill pack for the Android jobs models still fail (edge-to-edge, R8, Navigation 3, Play policy) — installed with the Android CLI, not `npx skills add`. | B (5/6) | [→](android-skills.md) |
 | **Modern Web Guidance** | Google Chrome's search-then-retrieve skill: before writing HTML/CSS/client JS the agent pulls one eval-graded modern-platform guide (native APIs, Baseline support, sized fallbacks) from a local-search npm CLI. | B (5/6) | [→](modern-web-guidance.md) |
+| **Agent Toolkit for AWS** | Use it when your coding agent works in a real AWS account and you want AWS's current playbooks plus agent calls that IAM and CloudTrail can tell apart from yours: ~114 skills and a hosted MCP endpoint; AWS-only, the hosted half sees your traffic. | A (4/5) | [→](agent-toolkit-for-aws.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [HumanLayer Skills](humanlayer-skills.md) | ✅ | B (4/5) | A vendor's six opinionated dev-process skills, two of which ship runnable CI-loop machinery; Claude-only distribution, no tagged release to pin, and the loop templates default to broad agent permissions. |
 | [Android Skills](android-skills.md) | ✅ | B (5/6) | Google's official Android playbooks for the jobs models still fail; Android-only, CLI-installed, contributions closed. |
 | [Modern Web Guidance](modern-web-guidance.md) | ✅ | B (5/6) | Browser-vendor build guidance retrieved per task; preview `0.0.x`, npm on every call, telemetry on by default, never checks your output. |
+| [Agent Toolkit for AWS](agent-toolkit-for-aws.md) | ✅ | A (4/5) | AWS's successor to its Labs plugins: skills plus agent-tagged calls via a hosted endpoint; AWS-only, no tags, outside PRs closed, startup plugin carries partner-offer links. |
 
 ## What belongs here
 
