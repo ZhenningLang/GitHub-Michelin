@@ -932,6 +932,7 @@ resty.redis via OpenResty bundle,categories/nginx-modules/lua-resty-redis.md,,no
 Resumable.js,categories/nginx-modules/tusd.md,,no
 reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,no
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
+rivet-dev/sandbox-agent,categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md,,no
 Rocket.Chat Cloud,categories/team-chat/rocket-chat.md,,no
 Roll-your-own YOLO + Siamese,categories/captcha/text-select-captcha.md,,no
 RouteLLM,categories/api-gateway/vllm-semantic-router.md,,no

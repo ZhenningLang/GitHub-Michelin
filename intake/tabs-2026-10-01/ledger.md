@@ -13,7 +13,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | geekan/HowToLiveLonger | add | done | categories/learning-resources/how-to-live-longer.md |  | geekan/howtolivelonger |
 | ifixai-ai/iFixAi | add | running |  |  | ifixai-ai/ifixai |
 | index-tts/index-tts | add | running |  |  | index-tts/index-tts |
-| MiniMax-AI/OpenAgentCore | add | running |  |  | minimax-ai/openagentcore |
+| MiniMax-AI/OpenAgentCore | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md |  | minimax-ai/openagentcore |
 | OpenMinis/OpenMinis | add | running |  |  | openminis/openminis |
 | ReScienceLab/opc-skills | add | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md |  | resciencelab/opc-skills |
 | tigerless-labs/autoharness | add | running |  |  | tigerless-labs/autoharness |
