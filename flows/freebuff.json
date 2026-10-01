@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Freebuff does", "zh": "Freebuff 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the launcher, then start it inside your project", "zh": "装上启动器，在项目目录里启动", "code": "npm install -g freebuff · freebuff"},
+    {"lane": "them", "en": "Fetches its checksummed native binary and signs you in through freebuff.com", "zh": "下载校验过的原生二进制，经 freebuff.com 浏览器登录", "component": {"en": "npm launcher + device login", "zh": "npm 启动器与设备码登录"}},
+    {"lane": "you", "en": "Describe the change you want in plain words", "zh": "用大白话说你要改什么"},
+    {"lane": "them", "en": "File-picker agents map the relevant files before anything is edited", "zh": "找文件的子 agent 先圈出相关文件，再动手", "component": {"en": "file-picker agents", "zh": "file-picker 子 agent"}},
+    {"lane": "them", "en": "Edits the code and runs the project's checks on a free hosted model, shown beside text ads", "zh": "在免费托管模型上改代码、跑项目检查，旁边挂文字广告", "component": {"en": "agent runtime + Freebuff backend", "zh": "agent 运行时与 Freebuff 后端"}}
+  ],
+  "value": {
+    "en": "You get a repo-editing terminal agent without a subscription or an API key — paid for with ads, a daily allowance, and your prompts",
+    "zh": "不买订阅、不填 API key 就有一个能改仓库的终端 agent——代价是广告、每日额度和你的提示词"
+  },
+  "sources": [
+    "README.md Quick start (npm install -g freebuff; cd ~/my-project; freebuff; 'Freebuff finds the relevant files, makes changes, and runs the checks that matter'), Free access + data-use sections (text ads, daily Freebucks allowance, prompts may be analyzed to personalize ads)",
+    "freebuff/cli/release/index.js + cli/release-core/launcher.js (npm wrapper downloads a release archive and verifies sha256 against binaryChecksums)",
+    "common/src/constants/hosts.ts (freebuff.com hosts the device-code browser sign-in used by the CLI)",
+    "agents/file-explorer/file-picker.ts and agents/base2/, agents/base3.ts (file-picker subagents and the root coding agents)",
+    "sdk/src/impl/agent-runtime.ts (non-BYOK runs go through the Codebuff backend; BYOK runs call the user's provider directly)"
+  ]
+}

@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **aider** | aider is AI pair programming in your terminal | B（6/6） | [→](aider.zh.md) |
 | **Codex** | OpenAI 出品的轻量级编码智能体，在本地终端运行。可读取文件、执行 shell 命令、编辑代码并提交修改——全部通过自然语言界面完成，内置沙箱隔离和 Git 集成。 | A（5/6） | [→](codex.zh.md) |
+| **Freebuff** | 想要一个不订阅、不填 API key 的终端编码 agent 时用它——托管模型由文字广告和每日额度买单，代价是提示词会被拿去做广告分析，也没有 shell 命令确认关卡。 | B（6/6） | [→](freebuff.zh.md) |
 | **Gemini CLI** | 一款开源 AI 智能体，将 Gemini 的能力直接带入你的终端。提供轻量级访问 Gemini 模型的方式，内置工具、MCP 支持，并为个人 Google 账户提供免费层。 | B（5/6） | [→](gemini-cli.zh.md) |
 | **OmO** | 你把一个大任务交给终端 agent，结果一晚上都在把它拽回正轨。OmO 把这些拖拽的活接了过去：一句 `mass ulw`，任务就变成一张并行 worker 的依赖图，每一块跑在合适的模型上、验证通过才算完成。 | B（5/6） | [→](oh-my-openagent.zh.md) |
 | **Open Interpreter** | 一个终端编码 agent，本质是 **OpenAI Codex CLI 的一个 fork**，重新聚焦在「模拟 agent harness」上——让低成本 / 开源模型（DeepSeek、Kimi、Qwen）跑出更好的行为：它在 OS 原生沙箱里执行命令、改文件，从 TUI 里切换模型与 harness，并暴露 skills / MCP / hooks / `AGENTS.md`。 | A（6/6） | [→](open-interpreter.zh.md) |
