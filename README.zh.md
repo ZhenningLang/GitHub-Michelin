@@ -1113,6 +1113,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **AntSpeaker (MECT)** | 想用零训练的现成微型 PyTorch 检查点（380 万到 960 万参数）判断两段音频是否同一说话人时用它；但权重是 CC-BY-NC-SA（不可商用）、没有训练代码，且仓库是只活了两周的论文发布。 | CC-BY-NC-SA-4.0 | C（3/6） | [中](categories/speech/antspeaker.zh.md) · [EN](categories/speech/antspeaker.md) |
 | **VoxCPM** | 想用代码和权重都是 Apache-2.0 的模型自托管声音克隆、或用文字描述设计音色（覆盖 30 种语言）时用它；但要备好约 8 GB 显存的 GPU，长文本得自己切句（单次长输出会漂移），并发服务还要另起引擎。 | Apache-2.0 | B（5/6） | [中](categories/speech/voxcpm.zh.md) · [EN](categories/speech/voxcpm.md) |
 | **VoiceStudio** | 想要一个本地桌面应用把声音克隆、视频配音、听写和 agent 发声（MCP）一次装齐、还能切换十几个引擎时用它；但默认模型权重禁止商用，应用是 AGPL 且付费 Pro 档正在成形，项目只有半年历史、由一人维护。 | AGPL-3.0 | C（5/6） | [中](categories/speech/voicestudio.zh.md) · [EN](categories/speech/voicestudio.md) |
+| **IndexTTS** | 想让同一个克隆音色带出不同情绪——音色取自一段录音，情绪取自另一段录音、8 维向量或一句文字——并说中、英、日、西、阿五种语言时用它；但 B 站许可在月活超 1 亿或年收入超 1 亿元（以中文版为准）时要另行授权，精确时长配音尚未开放，也没有训练代码。 | NOASSERTION（B 站自定义许可） | A（3/6） | [中](categories/speech/index-tts.zh.md) · [EN](categories/speech/index-tts.md) |
 
 ### terminal-ui
 

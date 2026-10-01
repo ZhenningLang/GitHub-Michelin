@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1158
+- Named-but-unindexed alternatives: 1157
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -36,13 +36,12 @@ shape and are deliberately excluded here.
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Camoufox](https://github.com/daijro/camoufox) | `categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
-| [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/voxcpm.md` |
+| [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
-| [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/voxcpm.md` |
+| [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
-| [IndexTTS2](https://github.com/index-tts/index-tts) | `categories/speech/voxcpm.md` |
 | [LTX-Video](https://github.com/Lightricks/LTX-Video) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/networking/dae.md` |
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
@@ -52,3 +51,4 @@ shape and are deliberately excluded here.
 | [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | `categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md` |
 | [Operit](https://github.com/AAswordman/Operit) | `categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md` |
+| [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai) | `categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md` |

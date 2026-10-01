@@ -12,7 +12,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | dembrandt/dembrandt | add | done | categories/design-tokens/dembrandt.md |  | dembrandt/dembrandt |
 | geekan/HowToLiveLonger | add | done | categories/learning-resources/how-to-live-longer.md |  | geekan/howtolivelonger |
 | ifixai-ai/iFixAi | add | done | categories/llm-eval/ifixai.md |  | ifixai-ai/ifixai |
-| index-tts/index-tts | add | running |  |  | index-tts/index-tts |
+| index-tts/index-tts | add | done | categories/speech/index-tts.md |  | index-tts/index-tts |
 | MiniMax-AI/OpenAgentCore | add | done | categories/agent-frameworks/agent-runtimes/agent-services/openagentcore.md |  | minimax-ai/openagentcore |
 | OpenMinis/OpenMinis | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md |  | openminis/openminis |
 | ReScienceLab/opc-skills | add | done | categories/agent-skills/ai-writing/marketing-seo/opc-skills.md |  | resciencelab/opc-skills |

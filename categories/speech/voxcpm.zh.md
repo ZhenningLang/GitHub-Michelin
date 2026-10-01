@@ -125,7 +125,7 @@ health:
 | [Coqui TTS（idiap 分支）](coqui-ai-tts.zh.md) | ✅ | 需要一个库、用统一 API 覆盖多代模型（XTTS v2、VITS、Tacotron）时选 Coqui；真正要上线的就是一个带宽松权重的新模型时选 VoxCPM。 | Coqui 用广度和 MPL-2.0 代码（外加各模型各自的权重许可）换来社区分支的节奏；VoxCPM 是单一厂商维护的一个模型家族，权重 Apache-2.0。 |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | 未收录 | 想要阿里语音团队出品、自带推理/训练/部署全套工具的 Apache-2.0 多语言 TTS 时选 CosyVoice；文字描述设计音色和 48kHz 输出更重要时选 VoxCPM。 | 两者都宽松许可、中文都强；VoxCPM 自家 README 的 Seed-TTS 数字在相似度上占优，但那是厂商自报，而 CosyVoice 的部署工具链更完整。本批次（标签页收录）未新增该页。 |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | 未收录 | 做研究、个人爱好或评测，并且在意它在 VoxCPM 自家多语言表格里更低的错误率时选 Fish Speech（S2）；任何商业用途选 VoxCPM。 | Fish Audio 的研究许可不授予任何商业权利，需另签书面协议；VoxCPM 的 Apache-2.0 没有这道闸，但在若干语种上得分更低。本批次（标签页收录）未新增该页。 |
-| [IndexTTS2](https://github.com/index-tts/index-tts) | 未收录 | 做配音、需要精确的时长和情绪控制，且你的产品规模在 bilibili 许可的用户数和营收门槛以下时选 IndexTTS2；想要没有规模门槛的标准许可时选 VoxCPM。 | IndexTTS2 多了面向配音的控制能力，但自定义许可规定月活超 1 亿或年营收超 10 亿元须另行授权；VoxCPM 的 Apache-2.0 没有这一条。本批次（标签页收录）未新增该页。 |
+| [IndexTTS2](index-tts.zh.md) | ✅ | 需要把情绪和克隆音色分开控制（另有 0.5–2.0 倍语速系数；论文里的精确时长控制在开源版本中尚未开放），且你的产品规模在 bilibili 许可的用户数和营收门槛以下时选 IndexTTS2；想要没有规模门槛的标准许可时选 VoxCPM。 | IndexTTS2 多了面向配音的控制能力，但自定义许可规定月活超 1 亿或年营收超 1 亿元须另行授权（以中文版为准；英文版写的是 10 亿元）；VoxCPM 的 Apache-2.0 没有这一条。 |
 
 ## 技术栈
 
