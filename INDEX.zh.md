@@ -91,6 +91,7 @@
 | **computer-vision** | 在图片和视频里检测、识别、分析人脸、物体和人——人脸比对／识别、检测和属性分析，作为你调用的库。 | [→](categories/computer-vision/INDEX.zh.md) |
 | **meeting-intelligence** | AI 会议副驾驶与会议记录器——录制线上会议、实时转写、会中智能辅助，并自动完成会后跟进产物。 | [→](categories/meeting-intelligence/INDEX.zh.md) |
 | **healthcare-ai** | 你自己运行的临床文本智能——在自有硬件上做医学实体抽取与 PHI/PII 去标识化，服务于不能离开网络的数据。 | [→](categories/healthcare-ai/INDEX.zh.md) |
+| **design-tokens** | 从渲染后的页面里拿到网站真实的设计 token（颜色、字体、间距、圆角），导出为 DTCG/Tailwind/DESIGN.md，并在它们漂移时让 CI 失败。 | [→](categories/design-tokens/INDEX.zh.md) |
 
 
 

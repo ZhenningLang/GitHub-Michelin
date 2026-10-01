@@ -9,7 +9,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | CodebuffAI/freebuff | add | done | categories/agent-frameworks/coding-agents/terminal-agents/freebuff.md |  | codebuffai/freebuff |
 | debpalash/VoiceStudio | add | done | categories/speech/voicestudio.md |  | debpalash/voicestudio |
 | deepseek-ai/dsh-libreoffice-kit | add | done | categories/office-automation/dsh-libreoffice-kit.md |  | deepseek-ai/dsh-libreoffice-kit |
-| dembrandt/dembrandt | add | running |  |  | dembrandt/dembrandt |
+| dembrandt/dembrandt | add | done | categories/design-tokens/dembrandt.md |  | dembrandt/dembrandt |
 | geekan/HowToLiveLonger | add | done | categories/learning-resources/how-to-live-longer.md |  | geekan/howtolivelonger |
 | ifixai-ai/iFixAi | add | running |  |  | ifixai-ai/ifixai |
 | index-tts/index-tts | add | running |  |  | index-tts/index-tts |

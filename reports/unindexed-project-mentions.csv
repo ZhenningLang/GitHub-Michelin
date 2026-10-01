@@ -162,6 +162,7 @@ AWS official MCP servers (standalone),categories/agent-skills/vendor-collections
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
 Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
+BackstopJS,categories/design-tokens/dembrandt.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
 Basic Memory,categories/agent-memory/coding-agent-memory/agent-beacon.md,,no
 bat,categories/terminal-ui/terminal-markdown-viewer.md,,no
@@ -841,6 +842,7 @@ Presto/Trino + ES connector,categories/databases/database-clients/elasticsearch-
 Prism (`PrismJS/prism`),categories/markdown-tools/tanstack-highlight.md,,no
 Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-prompt-enhancer-writer-booster-skill.md,,no
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
+Project Wallace css-analyzer,categories/design-tokens/dembrandt.md,,no
 Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
 Prompt-only safety rules,categories/agent-governance/agent-governance-toolkit.md,,no
 prompt_toolkit,categories/terminal-ui/asciimatics.md,,no
@@ -1016,6 +1018,8 @@ StatsPAI (brycewang-stanford/StatsPAI),categories/agent-skills/engineering/auto-
 Stencil,categories/web-ui/frameworks/view-frameworks/lit.md,,no
 Streamdown,categories/markdown-tools/tanstack-markdown.md,,no
 streamlink / yt-dlp (as consumers),categories/media-processing/video-audio/transcoding-and-pipelines/m3u8.md,,no
+Style Dictionary,categories/design-tokens/dembrandt.md,,no
+Style Dictionary · Project Wallace css-analyzer · BackstopJS,categories/design-tokens/INDEX.md,,no
 Stylelint,categories/ai-design-generation/impeccable.md,,no
 Sublime Text,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 subprocess + raw ffmpeg,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg-python.md,,no

@@ -1408,3 +1408,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **OpenMed** | Use it when clinical notes must yield typed entities and a redacted copy without patient data ever leaving your network — accepting per-model validation on your own corpus and a single-maintainer release cadence. | Apache-2.0 | B (5/6) | [EN](categories/healthcare-ai/openmed.md) · [中](categories/healthcare-ai/openmed.zh.md) |
+
+### design-tokens
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **Dembrandt** | Use it when the only source of a design system is a live URL and you need its real colours, type and spacing as DTCG/Tailwind/DESIGN.md tokens — or a CI gate that fails when they drift — not when you already author the tokens or fear layout regressions. | MIT | C (5/6) | [EN](categories/design-tokens/dembrandt.md) · [中](categories/design-tokens/dembrandt.zh.md) |

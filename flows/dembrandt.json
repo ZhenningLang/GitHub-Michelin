@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Dembrandt does", "zh": "Dembrandt 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Extract", "zh": "提取"}, "en": "Install the CLI and fetch its matching Chromium once", "zh": "装好 CLI，再拉一次配套的 Chromium", "code": "npm install -g dembrandt · dembrandt install-browser", "component": {"en": "CLI · Playwright browser", "zh": "CLI · Playwright 浏览器"}},
+    {"lane": "you", "en": "Point it at a site and pick an export format", "zh": "给它一个网址，选一种导出格式", "code": "dembrandt dembrandt.com --dtcg", "component": {"en": "CLI", "zh": "CLI"}},
+    {"lane": "them", "en": "Renders the page and reads computed styles off elements that actually paint", "zh": "渲染页面，只从真正画出来的元素上读计算样式", "component": {"en": "extractors", "zh": "提取器"}},
+    {"lane": "them", "en": "Clusters colours, type, spacing and radii, elects a primary, writes tokens", "zh": "把颜色、字体、间距、圆角聚类，选出主色，写成 token", "component": {"en": "token formatters", "zh": "token 格式化器"}},
+    {"lane": "you", "phase": {"en": "Gate in CI", "zh": "CI 门禁"}, "en": "Commit one run as the baseline", "zh": "把一次运行结果提交成基线", "code": "dembrandt https://app.example.com --json-only > baseline.json"},
+    {"lane": "you", "en": "Add the drift-gate step against the preview deployment", "zh": "在预览部署上加一步漂移门禁", "code": "uses: dembrandt/dembrandt@v0.37.0", "component": {"en": "GitHub Action", "zh": "GitHub Action"}},
+    {"lane": "them", "en": "Re-extracts, scores per-token drift, exits 1 and annotates the PR", "zh": "重新提取，逐 token 打漂移分，超阈值退出码 1 并在 PR 上标注", "component": {"en": "drift scorer", "zh": "漂移评分器"}}
+  ],
+  "value": {"en": "No more copying hex codes out of devtools, and a moved brand colour fails the PR instead of reaching production", "zh": "不用再从开发者工具里抄色值；主色被改了，PR 直接红，而不是上线后才发现"},
+  "sources": [
+    "README.md: Install (npm install -g dembrandt, dembrandt install-browser), Flags (--dtcg), Catch design drift in CI (uses: dembrandt/dembrandt@v0.37.0)",
+    "docs/ci.md: Drift gate (dembrandt https://app.example.com --json-only > baseline.json, --compare baseline.json), GitHub Action inputs",
+    "CHANGELOG.md 0.36.0: colours read only off elements that paint text or draw a border; 0.35.0: palette and semantic scored apart",
+    "action.yml: Dembrandt Drift Gate inputs url/baseline/key/args, outputs report/score"
+  ]
+}

@@ -1390,3 +1390,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **OpenMed** | 当临床笔记必须在患者数据绝不出网的前提下产出带类型实体与脱敏副本时用它——代价是每个模型都要在你自己的语料上验证，且发布节奏系于一人。 | Apache-2.0 | B（5/6） | [中](categories/healthcare-ai/openmed.zh.md) · [EN](categories/healthcare-ai/openmed.md) |
+
+### design-tokens
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **Dembrandt** | 设计系统唯一的来源是一个线上网址，你需要把它真实的颜色、字体和间距导出成 DTCG/Tailwind/DESIGN.md token——或者要一个 token 漂移就让 CI 失败的门禁——时用它；token 本来就是你自己写的、或你担心的是布局回归时不要用。 | MIT | C（5/6） | [中](categories/design-tokens/dembrandt.zh.md) · [EN](categories/design-tokens/dembrandt.md) |
