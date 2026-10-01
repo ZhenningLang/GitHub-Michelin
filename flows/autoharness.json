@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "them": {"en": "autoharness does", "zh": "autoharness 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Once", "zh": "装一次"}, "en": "In Claude Code, add its marketplace, install the plugin and reload plugins", "zh": "在 Claude Code 里添加它的插件市场、安装插件并重载", "code": "/plugin install autoharness@autoharness", "component": {"en": "Claude Code plugin (hooks + MCP)", "zh": "Claude Code 插件（hook＋MCP）"}},
+    {"lane": "you", "phase": {"en": "While you work", "zh": "干活时"}, "en": "Work as usual: debug, fix, correct the agent when it gets something wrong", "zh": "照常干活：排错、修复，agent 做错时纠正它"},
+    {"lane": "them", "en": "Counts tool calls; the turn past 50 ends by launching a background reflector on the redacted transcript", "zh": "数工具调用；过 50 次的那轮结束时，用脱敏会话片段在后台起反思会话", "component": {"en": "Stop hook + reflector (Haiku)", "zh": "Stop hook＋反思子代理（Haiku）"}},
+    {"lane": "them", "en": "Reflector stages create/patch/merge intents; the promoter validates each and atomically writes the skill", "zh": "反思会话只提交新建／修补／合并提案；提交器逐条校验后原子写入技能", "code": ".claude/skills/", "component": {"en": "stage_skill MCP + promoter", "zh": "stage_skill MCP＋提交器"}},
+    {"lane": "you", "phase": {"en": "Next session", "zh": "下个会话"}, "en": "Open a new session", "zh": "开一个新会话"},
+    {"lane": "them", "en": "Archives skills unused through probation, then injects an index of its skills and the last run's result", "zh": "归档试用期内从没被用过的技能，再注入自有技能索引和上一轮结果", "component": {"en": "SessionStart hook", "zh": "SessionStart hook"}}
+  ],
+  "value": {
+    "en": "Lessons from your fixes and corrections become skills that get patched, merged and pruned on their own — you stop hand-writing and gardening the skills folder",
+    "zh": "你修过的坑、纠正过的做法自动变成技能，并自己修补、合并、淘汰——你不用再手写和打理技能目录"
+  },
+  "sources": [
+    "README 'Install' (/plugin marketplace add tigerless-labs/autoharness; /plugin install autoharness@autoharness; /reload-plugins)",
+    "README 'Configuration' (AUTOHARNESS_REFLECT_EVERY_N default 50 tool calls; CONSOLIDATE_EVERY_N 250; maturity/capacity defaults)",
+    "README 'Walkthrough' steps 1-7 (.claude/skills/<name>/ layout, ledger, session-start index, archive to .claude/skills/.archive/)",
+    "hooks/hooks.json (SessionStart, Stop, PreToolUse, SessionEnd -> autoharness.hook.dispatch)",
+    "src/autoharness/hook/dispatch.py, on_stop.py, spawn.py (tool-call counter, detached claude -p --agent autoharness:reflector)",
+    "src/autoharness/hook/capture.py (raw transcript byte slice, 200 KB window, redaction)",
+    "src/autoharness/hook/promoter.py + lib/validate.py (deterministic validation, atomic landing)",
+    "src/autoharness/hook/on_session_start.py + lib/lifecycle.py (archive zero-use-and-zero-view after probation, recall index injection)",
+    "agents/reflector.md (model: haiku; tools Read, Grep, Glob, stage_skill)"
+  ]
+}

@@ -739,6 +739,7 @@ https://github.com/temporalio/temporal,temporal,workflow-orchestration,categorie
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
 https://github.com/thedotmack/claude-mem,claude-mem,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-mem.md
 https://github.com/tiagozip/cap,capjs,captcha,categories/captcha/capjs.md
+https://github.com/tigerless-labs/autoharness,autoharness,coding-agent-memory,categories/agent-memory/coding-agent-memory/autoharness.md
 https://github.com/tinyhumansai/openhuman,openhuman,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md
 https://github.com/tirth8205/code-review-graph,code-review-graph,code-intelligence,categories/rag-retrieval/code-intelligence/code-review-graph.md
 https://github.com/titanwings/distilly,distilly,agent-skills,categories/agent-skills/distilly.md

@@ -16,6 +16,7 @@
 | **backpass** | 当你的 `AGENTS.md`／`CLAUDE.md` 跟编码 agent 实际犯的错对不上了，想从磁盘上已有的会话记录里挖出改动——每条有两个会话的原话作证、在 token 预算内逐条由你接受——时用它。 | B（6/6） | [→](backpass.zh.md) |
 | **OptMem** | 当你想要零活动部件的编码 agent 记忆——一段贴进去的提示块、一个零依赖的 Python 脚本、一份由 agent 自己经营的只追加日志——且能接受自愿捕获、仅正则的检索和没有许可证时用它。 | D（5/6） | [→](optmem.zh.md) |
 | **deja-vu** | 当你的各家 agent 反复重排你在另一家 agent 里早已修好的问题，而你想直接用 35 家 harness 已经写进磁盘的会话记录建记忆、不要“保存”环节也不要模型账单时用它。 | B（6/6） | [→](deja-vu.zh.md) |
+| **autoharness** | 当你整天用 Claude Code、想让自己会话里的经验自动变成技能——按使用情况修补、合并、淘汰，没有审阅环节——并且能接受后台跳过权限确认的子会话和一个不到四个月的项目时用它。 | C（6/6） | [→](autoharness.zh.md) |
 
 ## 对比矩阵
 
@@ -30,7 +31,8 @@
 | [backpass](backpass.zh.md) | ✅ | B（6/6） | 离线批处理，从 7 家 agent 已有的会话记录里给记忆文件提出有证据门槛的改动；自己不跑常驻进程、不持有密钥，但记录会发给你已登录的模型，且项目才五周大、只有一位维护者。 |
 | [OptMem](optmem.zh.md) | ✅ | D（5/6） | 一段提示块加一个只依赖标准库的 Python 单文件：agent 自己往只追加日志里写单行记忆，wake 时读摘要树；什么都不自动化、只有正则检索，而且没有许可证。 |
 | [deja-vu](deja-vu.zh.md) | ✅ | B（6/6） | 把 35 家受支持 harness 写在磁盘上的会话记录做成一份词法索引——装上第一天就能搜安装前的历史，一个 Go 单文件、召回不过模型；项目年轻、一人维护、跑分为作者自测。 |
+| [autoharness](autoharness.zh.md) | ✅ | C（6/6） | Claude Code 插件：后台起 Haiku 会话把会话记录提炼成原生技能，过确定性校验器落盘，没人用的自动归档；没有人工闸门，只支持 Claude Code，项目很年轻、star 数有炒作味。 |
 
 ## 什么该放这里
 
-挂在**你正在运行的编码 agent harness**（Claude Code、Codex、Cursor、OpenCode……）上的记忆层——通过 hook、插件、MCP、端点采集，或一段 agent 自己遵守的提示块接入：本地每开发者一份的存储（claude-mem、claude-subconscious、ByteRover、Beacon、Engram、OptMem）、从会话记录里挖改动直接修记忆文件本身的工具（backpass）与多 agent 共享的上下文服务端（OpenViking）。主体是编码会话：决策、约定、轨迹、经验。不含嵌进你自己产品的记忆 API（见 `app-memory`），不含图形态引擎（见 `graph-memory`）。
+挂在**你正在运行的编码 agent harness**（Claude Code、Codex、Cursor、OpenCode……）上的记忆层——通过 hook、插件、MCP、端点采集，或一段 agent 自己遵守的提示块接入：本地每开发者一份的存储（claude-mem、claude-subconscious、ByteRover、Beacon、Engram、OptMem）、从会话记录里挖改动直接修记忆文件本身的工具（backpass）、从会话里自动提炼并自我维护、自我淘汰的技能层（autoharness）与多 agent 共享的上下文服务端（OpenViking）。主体是编码会话：决策、约定、轨迹、经验。不含嵌进你自己产品的记忆 API（见 `app-memory`），不含图形态引擎（见 `graph-memory`）。

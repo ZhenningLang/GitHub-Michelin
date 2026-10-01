@@ -249,10 +249,11 @@ Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/ope
 claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtimes/claude-code-local.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
-claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
+claude-reflect,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 claude-seo (AgriciDaniel/claude-seo),categories/agent-skills/ai-writing/marketing-seo/opc-skills.md,,no
 claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
+Claudeception,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
 Cloudflare Turnstile,categories/captcha/capjs.md,,no
