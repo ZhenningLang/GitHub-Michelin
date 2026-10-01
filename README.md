@@ -634,6 +634,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **soul.md** | The best way to build a personality for your agent. Let Claude Code / OpenClaw ingest your data & build your AI soul. | MIT | B (4/5) | [EN](categories/agent-skills/context-engineering/soul-md.md) · [中](categories/agent-skills/context-engineering/soul-md.zh.md) |
 | **marketingskills** | Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering. | MIT | B (4/5) | [EN](categories/agent-skills/ai-writing/marketing-seo/marketingskills.md) · [中](categories/agent-skills/ai-writing/marketing-seo/marketingskills.zh.md) |
 | **AI Copywriter** | Single Markdown skill that interviews you for the reader and the true story, then writes headlines, microcopy, subject lines and LinkedIn posts and audits every line against 33 AI-writing tells. | MIT | C (3/5) | [EN](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md) · [中](categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.zh.md) |
+| **OPC Skills** | Ten small launch-chore skills for a solo founder — an SEO/AI-search audit with paste-ready schema, plus domain, logo, demand-research and Reddit/X lookups that run on your own API keys. | Apache-2.0 | B (4/5) | [EN](categories/agent-skills/ai-writing/marketing-seo/opc-skills.md) · [中](categories/agent-skills/ai-writing/marketing-seo/opc-skills.zh.md) |
 
 ### observability
 

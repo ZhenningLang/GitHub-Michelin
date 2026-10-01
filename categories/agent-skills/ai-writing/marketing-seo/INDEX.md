@@ -10,6 +10,7 @@
 | **marketingskills** | Broad marketing skill pack for product marketing, CRO, copywriting, SEO, analytics, lifecycle email, ads, and growth execution. | B (4/5) | [→](marketingskills.md) |
 | **open-seo** | Self-hostable SEO app plus MCP and Agent Skills for keyword research, rank tracking, competitors, backlinks, audits, and AI visibility. | B (5/6) | [→](open-seo.md) |
 | **ai-copywriter** | Single Markdown skill that interviews you for the reader and the true story, then writes headlines, microcopy, subject lines and LinkedIn posts and audits every line against 33 AI-writing tells. | C (3/5) | [→](ai-copywriter.md) |
+| **opc-skills** | Ten small launch-chore skills for a solo founder — an SEO/AI-search audit with paste-ready schema, plus domain, logo, demand-research and Reddit/X lookups that run on your own API keys. | B (4/5) | [→](opc-skills.md) |
 
 ## Comparison matrix
 
@@ -18,6 +19,7 @@
 | [marketingskills](marketingskills.md) | ✅ | B (4/5) | Best for SaaS/growth marketing work; not a general article-writing pipeline. |
 | [open-seo](open-seo.md) | ✅ | B (5/6) | Best when SEO workflows need a self-hosted app, MCP, and paid DataForSEO-backed data. |
 | [ai-copywriter](ai-copywriter.md) | ✅ | C (3/5) | Best for English conversion copy written from an intake; not a marketing strategy pack, not Chinese, and its humanizer rules are a frozen fork. |
+| [opc-skills](opc-skills.md) | ✅ | B (4/5) | Best for a solo launch checklist where SEO is one chore among several; its SEO is one shallow file, most skills need paid API keys, and only one skill has changed since April. |
 
 ## What belongs here
 

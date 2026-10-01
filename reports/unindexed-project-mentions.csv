@@ -246,6 +246,7 @@ claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtim
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/backpass.md,,no
+claude-seo (AgriciDaniel/claude-seo),categories/agent-skills/ai-writing/marketing-seo/opc-skills.md,,no
 claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no

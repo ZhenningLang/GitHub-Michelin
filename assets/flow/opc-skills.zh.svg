@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="734" viewBox="0 0 880 734" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="734" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="598" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="598" rx="10"/>
+<rect class="pillT" x="474" y="40" width="160.3" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">OPC Skills 做的</text>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="hand" d="M408,248.0 C439.0,248.0 439.0,272 470,272" marker-end="url(#a)"/>
+<path class="hand" d="M472,317.5 C441.0,317.5 441.0,341 410,341" marker-end="url(#a)"/>
+<path class="hand" d="M408,342.0 C439.0,342.0 439.0,437 470,437" marker-end="url(#a)"/>
+<path class="edge" d="M494,510 L494,534" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">把整包或只把 SEO 技能装进你的 coding</text>
+<text class="t" x="82" y="123">agent</text>
+<text class="c" x="82" y="147">npx skills add ReScienceLab/opc-skills</text>
+<text class="c" x="82" y="166">--skill seo-geo</text>
+<rect class="card" x="40" y="212" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">让 agent 提升网站在搜索和 AI 回答里的可见</text>
+<text class="t" x="82" y="263">度，给出网址</text>
+<rect class="cardT" x="472" y="248" width="368" height="139" rx="8"/>
+<rect class="accT" x="472" y="248" width="4" height="139" rx="2"/>
+<circle class="accT" cx="494" cy="272" r="10"/>
+<text class="num" x="494" y="276" text-anchor="middle">3</text>
+<text class="t" x="514" y="277">免费审一遍标题、meta、H1、robots.txt、sit</text>
+<text class="t" x="514" y="299">emap 和加载时间</text>
+<text class="c" x="514" y="323">python3 scripts/seo_audit.py</text>
+<text class="c" x="514" y="342">&quot;https://example.com&quot;</text>
+<text class="comp" x="514" y="365">组件：seo-geo 审计脚本</text>
+<rect class="card" x="40" y="317" width="368" height="50" rx="8"/>
+<rect class="accY" x="40" y="317" width="4" height="50" rx="2"/>
+<circle class="accY" cx="62" cy="341" r="10"/>
+<text class="num" x="62" y="345" text-anchor="middle">4</text>
+<text class="t" x="82" y="346">说出目标关键词和竞品；DataForSEO 密钥可选</text>
+<rect class="cardT" x="472" y="413" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="413" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="437" r="10"/>
+<text class="num" x="494" y="441" text-anchor="middle">5</text>
+<text class="t" x="514" y="442">查关键词，按 GEO 规则改写，起草 meta 和</text>
+<text class="t" x="514" y="464">FAQPage 标记</text>
+<text class="comp" x="514" y="492">组件：seo-geo SKILL.md 第 2–4 步</text>
+<rect class="cardT" x="472" y="536" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="536" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="560" r="10"/>
+<text class="num" x="494" y="564" text-anchor="middle">6</text>
+<text class="t" x="514" y="565">交回一份 SEO/GEO 报告：现状清单加按优先级</text>
+<text class="t" x="514" y="587">排好的修改项</text>
+<rect class="val" x="28" y="640" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="664">价值</text>
+<text class="valT" x="48" y="688">拿到排好优先级的修改清单和可粘贴的 meta 与 schema，不用自己逐项查 robots.txt 和标记</text>
+</svg>
