@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "the STE100 skill makes the agent do",
+    "zh": "STE100 skill 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your project",
+      "zh": "把 skill 装进项目",
+      "code": "npx skills add danyuchn/asd-ste100-skill"
+    },
+    {
+      "lane": "you",
+      "en": "Paste the text and ask for a rewrite",
+      "zh": "贴上文字，要求改写",
+      "code": "Disambiguate this tool description"
+    },
+    {
+      "lane": "them",
+      "en": "Picks a mode, then flags violations sentence by sentence, optionally running the linter first",
+      "zh": "选好模式，逐句标出违规，可先跑 linter",
+      "code": "scripts/ste-lint.py",
+      "component": {
+        "en": "stdlib Python linter",
+        "zh": "标准库 Python linter"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Rewrites only flagged sentences, keeping every fact, condition and hedge",
+      "zh": "只改被标出的句子，保住每条事实、条件和确定程度"
+    },
+    {
+      "lane": "them",
+      "en": "Returns the rewritten text alone, plus a note when it kept a longer phrase",
+      "zh": "只返回改好的文字，留了长说法时附一行说明"
+    }
+  ],
+  "value": {
+    "en": "Agent-facing English comes back as short one-meaning sentences another agent cannot misparse, with no fact or hedge lost",
+    "zh": "给 agent 读的英文变成一句一义的短句，下游 agent 读不歪，事实和确定程度一个不丢"
+  },
+  "sources": [
+    "https://github.com/danyuchn/asd-ste100-skill README — Installation / Quick Install (npx skills add danyuchn/asd-ste100-skill) and Usage (trigger 'Disambiguate this tool description')",
+    "SKILL.md — Two Modes (Strict / STE-flavored), Process steps 1-6 (scripts/ste-lint.py as mechanical first pass), Output Format (rewritten text alone, 'Kept as-is:' line)",
+    "scripts/ste-lint.py — stdlib-only (imports json, re, sys); ran --selftest and stdin samples locally with Python 3.13 on 2026-10-05"
+  ]
+}
