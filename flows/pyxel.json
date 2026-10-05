@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Pyxel does", "zh": "Pyxel 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "Make", "zh": "做游戏"}, "en": "Install it on Python 3.11+ (wheels ship the Rust core)", "zh": "在 Python 3.11+ 上安装（wheel 自带 Rust 内核）", "code": "pip install -U pyxel", "component": {"en": "pyxel wheel", "zh": "pyxel wheel 包"}},
+    {"lane": "you", "en": "Set the screen size, then hand it your update and draw functions", "zh": "定好画面尺寸，把 update 和 draw 两个函数交给它", "code": "pyxel.run(update, draw)", "component": {"en": "Python API", "zh": "Python API"}},
+    {"lane": "you", "en": "Run the script (watch mode re-runs it on save)", "zh": "运行脚本（watch 模式保存即重跑）", "code": "pyxel run PYTHON_SCRIPT_FILE · pyxel watch WATCH_DIR PYTHON_SCRIPT_FILE", "component": {"en": "pyxel CLI", "zh": "pyxel 命令行"}},
+    {"lane": "them", "en": "Opens the window, calls update every frame and draw when time allows, mixes 4 sound channels", "zh": "开窗口，每帧调 update、来得及才调 draw，混 4 路声音", "component": {"en": "Rust core (SDL2 + OpenGL)", "zh": "Rust 内核（SDL2 + OpenGL）"}},
+    {"lane": "you", "phase": {"en": "Ship", "zh": "发出去"}, "en": "Bundle the game directory into one .pyxapp, then convert it to HTML", "zh": "把游戏目录打成一个 .pyxapp，再转成 HTML", "code": "pyxel package APP_DIR STARTUP_SCRIPT_FILE · pyxel app2html PYXEL_APP_FILE", "component": {"en": "pyxel CLI", "zh": "pyxel 命令行"}},
+    {"lane": "them", "en": "Embeds code and assets in one HTML file that runs its WebAssembly build in the browser", "zh": "把代码和资源嵌进一个 HTML，浏览器里跑它的 WebAssembly 版", "component": {"en": "pyxel.js + Pyodide", "zh": "pyxel.js + Pyodide"}}
+  ],
+  "value": {"en": "No window, game loop, palette renderer or sound mixer to write — and the same Python file plays on desktop and in a browser link", "zh": "不用自己写窗口、游戏循环、调色板渲染和混音——同一份 Python 在桌面和网页链接里都能玩"},
+  "sources": [
+    "https://github.com/kitao/pyxel docs/user-guide.md — How to Install (pip install -U pyxel, Python 3.11+), Pyxel Command usage list (pyxel run PYTHON_SCRIPT_FILE, pyxel watch WATCH_DIR PYTHON_SCRIPT_FILE, pyxel package APP_DIR STARTUP_SCRIPT_FILE, pyxel app2html PYXEL_APP_FILE), Create a Program (pyxel.init(160, 120), pyxel.run(update, draw)), Specifications (16 colors, 4 channels)",
+    "https://github.com/kitao/pyxel docs/faq.md — update is called every frame, draw may be skipped when over budget",
+    "https://github.com/kitao/pyxel docs/web-usage.md — app2html embeds all code and resources in the HTML, version pinned at conversion",
+    "https://github.com/kitao/pyxel python/pyxel/cli.py — app2html writes a script tag for cdn.jsdelivr.net/gh/kitao/pyxel@<version>/wasm/pyxel.js; wasm/pyxel.js loads Pyodide from cdn.jsdelivr.net/pyodide",
+    "https://github.com/kitao/pyxel crates/pyxel-core (Cargo.toml: glow, platform/sdl2) and crates/pyxel-binding (pyo3) — Rust core behind the Python API"
+  ]
+}

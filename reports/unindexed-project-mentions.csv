@@ -156,6 +156,7 @@ Autodesk Fusion · Onshape · SolidWorks,categories/cad/freecad.md,,no
 AutoHotkey,categories/desktop-automation/pyautogui.md,,no
 AUTOMATIC1111 WebUI (img2img / sketch tab),categories/ai-design-generation/sdpaint.md,,no
 AVQT,categories/media-processing/quality-metrics/ssimulacra2.md,,no
+awesome-llm-apps (Shubhamsaboo),categories/learning-resources/ai-engineering-hub.md,,no
 AWS Elemental MediaConvert,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
@@ -246,6 +247,7 @@ Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orche
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
 claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtimes/claude-code-local.md,,no
+claude-cookbooks · openai-cookbook,categories/learning-resources/ai-engineering-hub.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/autoharness.md,,no
@@ -884,6 +886,7 @@ Quartz,categories/task-queue/INDEX.md,,no
 Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
+RAG_Techniques (NirDiamant),categories/learning-resources/ai-engineering-hub.md,,no
 RAPTOR,categories/rag-retrieval/structured-retrieval/pageindex.md,,no
 Rasa,categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 raw `tc` (iproute2),categories/networking/wondershaper.md,,no
@@ -1054,6 +1057,7 @@ Third-party / community knowledge-work packs,categories/agent-skills/vendor-coll
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
+TIC-80,categories/game-dev/pyxel.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
@@ -1095,6 +1099,7 @@ use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/
 v0 (Vercel),categories/ai-design-generation/open-design.md,,no
 v0 / Lovable / other AI UI generators,categories/agent-skills/design/design-to-code/stitch-skills.md,,no
 v0 / Lovable / tldraw make-real,categories/ai-design-generation/INDEX.md,,no
+Vale,categories/agent-skills/ai-writing/de-ai-writing/asd-ste100-skill.md,,no
 Vanna (`vanna-ai/vanna`),categories/databases/database-clients/mcp-toolbox.md,,no
 Vector (Datadog),categories/dev-utilities/ops-infra/telegraf.md,,no
 VeeValidate (`logaretm/vee-validate`),categories/web-ui/forms/tanstack-form.md,,no

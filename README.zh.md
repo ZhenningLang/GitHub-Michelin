@@ -618,6 +618,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **humanizer** | 移除英文文本中 AI 写作痕迹的 Claude Code skill。 | MIT | B（5/6） | [中](categories/agent-skills/ai-writing/de-ai-writing/humanizer.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/humanizer.md) |
 | **avoid-ai-writing** | 可移植的去 AI 味写作 skill：自带确定性 npm 检测器、按命中数卡的 CI / pre-commit 门禁，以及一份公开自身误报率的人控语料测量。 | MIT | B（5/6） | [中](categories/agent-skills/ai-writing/de-ai-writing/avoid-ai-writing.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/avoid-ai-writing.md) |
 | **no-ai-slop** | 英文编辑 skill：第一条规则就是保留作者本人的声音——按 20 多种具名 AI 模式做最小有效修改，带 eval.md 自检闭环，detect 模式只引用证据、不猜作者身份。 | MIT | C（5/6） | [中](categories/agent-skills/ai-writing/de-ai-writing/no-ai-slop.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/no-ai-slop.md) |
+| **asd-ste100-skill** | 按 ASD-STE100 受控语言规则改写给 agent 读的英文（工具说明、报错、提示词）的 Claude Code skill：一句一指令、限长、保留确定程度，附可进 CI 的标准库正则 linter。 | MIT | B（4/5） | [中](categories/agent-skills/ai-writing/de-ai-writing/asd-ste100-skill.zh.md) · [EN](categories/agent-skills/ai-writing/de-ai-writing/asd-ste100-skill.md) |
 | **cangjie-skill** | 把书、长视频、播客、课程、访谈和转写稿蒸馏成可复用、可测试 agent skill pack 的方法论 skill。 | MIT | C（5/6） | [中](categories/agent-skills/context-engineering/cangjie-skill.zh.md) · [EN](categories/agent-skills/context-engineering/cangjie-skill.md) |
 | **archify** | Any agent Skill: generate beautiful architecture diagrams with dark/light theme toggle and PNG/JPEG/WebP/SVG export | MIT | B（4/6） | [中](categories/agent-skills/design/visual-artifacts/archify.zh.md) · [EN](categories/agent-skills/design/visual-artifacts/archify.md) |
 | **mattpocock/skills** | Matt Pocock 的工程 skill 包，面向 Claude Code 和 skills.sh，覆盖 grilling、domain docs、TDD、bug 诊断、架构、review、tickets 和实现流程。 | MIT | B（4/5） | [中](categories/agent-skills/engineering/mattpocock-skills.zh.md) · [EN](categories/agent-skills/engineering/mattpocock-skills.md) |
@@ -1044,6 +1045,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **pygame** | 当你想学做或交付一个带简单游戏循环的小型 2D Python 游戏时用它——但做 3D 或性能敏感的项目它会成瓶颈，请另寻它路。 | LGPL-2.1 | C（5/6） | [中](categories/game-dev/pygame.zh.md) · [EN](categories/game-dev/pygame.md) |
 | **kaplay** | 想用纯 JS/TS 零仪式感地做一个 Jam 规模的 2D 网页游戏时用它——但要做长生命周期产品或 3D，停滞的稳定线和纯 2D 定位说明该另寻它路。 | MIT | B（6/6） | [中](categories/game-dev/kaplay.zh.md) · [EN](categories/game-dev/kaplay.md) |
+| **pyxel** | 想用 Python 做复古像素风小游戏、要自带精灵／音乐编辑器和一条命令导出网页时用它——但做 3D、现代画风、上商店或主机，或需要团队接手引擎时，固定规格和单人维护说明该另寻它路。 | MIT | B（5/6） | [中](categories/game-dev/pyxel.zh.md) · [EN](categories/game-dev/pyxel.md) |
 
 ### kafka-tools
 
@@ -1334,6 +1336,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **AI Engineering Hub** | 当你需要某种 LLM 技术栈组合的可运行样例——本地模型 RAG 应用、带联网兜底的 CrewAI 团队、MCP 服务——好从里面抄胶水代码时用它；它是 MIT 许可的演示代码，没有测试、很多文件夹已过时，不能当依赖。 | MIT | A（5/6） | [中](categories/learning-resources/ai-engineering-hub.zh.md) · [EN](categories/learning-resources/ai-engineering-hub.md) |
 | **AI Performance Engineering Resources** | 当你需要学或查 GPU／AI 性能工程，想要每个机制对应的权威原文、并且按依赖顺序排好——一次请求 → 一张卡 → 算子 → 引擎 → 分布式服务——而不是一堆博客时用它。 | MIT（仅声明） | C（3/5） | [中](categories/learning-resources/gpu-perf-engineering-resources.zh.md) · [EN](categories/learning-resources/gpu-perf-engineering-resources.md) |
 | **HowToLiveLonger（程序员延寿指南）** | 当你想把饮食、饮品、睡眠、运动、体重这些日常习惯，按某项研究报告的全因死亡率变化排在同一页上、每个数字都能追到出处，好决定先改哪件事时用它；不要拿它决定吃药或吃补剂。 | Unlicense | C（3/5） | [中](categories/learning-resources/how-to-live-longer.zh.md) · [EN](categories/learning-resources/how-to-live-longer.md) |
 
