@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "The repo does", "zh": "这个仓库做的"},
+  "steps": [
+    {"lane": "you", "en": "Pick the folder whose stack matches yours from the README's difficulty tiers", "zh": "从 README 的难度分档里挑一个技术栈和你相近的文件夹", "code": "Beginner Projects · Intermediate Projects · Advanced Projects", "component": {"en": "root README.md", "zh": "根目录 README.md"}},
+    {"lane": "them", "en": "Names the model, framework, vector store and vendor APIs that folder wires together", "zh": "写明这个文件夹接了哪个模型、框架、向量库和厂商 API", "component": {"en": "per-folder README", "zh": "各文件夹的 README"}},
+    {"lane": "you", "en": "Put your API keys in .env and install that folder's own dependencies", "zh": "把 API key 填进 .env，装上这个文件夹自己的依赖", "code": "cp .env.example .env · uv sync"},
+    {"lane": "you", "en": "Start the demo app or open its notebook", "zh": "启动演示应用，或打开它的 notebook", "code": "streamlit run app.py"},
+    {"lane": "them", "en": "Runs the whole chain in one place: retrieve, call the model or agents, show the answer", "zh": "在一处跑通整条链：检索、调模型或智能体、把答案显示出来", "component": {"en": "app.py · notebook", "zh": "app.py · notebook"}},
+    {"lane": "you", "en": "Lift the glue code you need into your project and pin its versions yourself", "zh": "把需要的胶水代码搬进自己的项目，版本自己锁定"}
+  ],
+  "value": {"en": "You see model, framework, vector store and vendor API working together in one running file instead of stitching four sets of docs", "zh": "不用再自己把四家文档拼起来——模型、框架、向量库和厂商 API 在一个能跑的文件里接好了"},
+  "sources": [
+    "README.md → \"Projects by Difficulty\" with headings \"🟢 Beginner Projects\", \"🟡 Intermediate Projects\", \"🔴 Advanced Projects\" (code value = those headings without emoji)",
+    "graphiti-mcp/README.md → \"We use:\" list; agentic_rag/README.md → \"Get API Keys\" (FireCrawl); build-code-harness/README.md → E2B / CrewAI / OpenRouter list",
+    "52 top-level folders ship a .env.example (git tree, 2026-10-05); \"cp .env.example .env\" appears verbatim in 7 folder READMEs; \"uv sync\" in 47 folder READMEs (e.g. build-code-harness/README.md)",
+    "\"streamlit run app.py\" appears verbatim in 40 folder READMEs (e.g. audio-analysis-toolkit, biotech-agentic-analyst); simple-rag-workflow/README.md → \"Run the Jupyter notebook workflow.ipynb\"",
+    "Root README → \"Examples to implement, adapt, and scale in your projects\"; per-folder requirements are often unpinned (github-rag 0/10, multimodal-rag-assemblyai 0/16 pinned)"
+  ]
+}

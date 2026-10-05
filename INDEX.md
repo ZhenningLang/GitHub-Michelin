@@ -83,7 +83,7 @@
 | **cad** | Computer-aided design you run yourself — parametric 3D solid modeling, 2D drafting, and the geometry kernels behind them. | [→](categories/cad/INDEX.md) |
 | **desktop-launchers** | Keyboard-driven desktop launchers / command palettes — summon apps, clipboard history, snippets, quicklinks and window management from one hotkey. | [→](categories/desktop-launchers/INDEX.md) |
 | **design-editors** | Open-source design editors you run yourself — local-first or self-hosted Figma-class canvases. | [→](categories/design-editors/INDEX.md) |
-| **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts. | [→](categories/learning-resources/INDEX.md) |
+| **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts — plus tutorial collections of runnable LLM/RAG/agent demo apps to copy from. | [→](categories/learning-resources/INDEX.md) |
 | **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
 | **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |

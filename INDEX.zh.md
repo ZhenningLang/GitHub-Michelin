@@ -82,7 +82,7 @@
 | **cad** | 自己跑的计算机辅助设计——参数化三维实体建模、二维制图，以及其下的几何内核。 | [→](categories/cad/INDEX.zh.md) |
 | **desktop-launchers** | 键盘驱动的桌面启动器／命令面板——应用启动、剪贴板历史、片段、快捷链接、窗口管理，一个快捷键全管。 | [→](categories/desktop-launchers/INDEX.zh.md) |
 | **design-editors** | 你自己跑的开源设计编辑器——本地优先或自托管的 Figma 级画布。 | [→](categories/design-editors/INDEX.zh.md) |
-| **learning-resources** | 策展型阅读路径与资源清单——读它去找某个领域的权威论文、规范或参考实现，而不是一堆博客。 | [→](categories/learning-resources/INDEX.zh.md) |
+| **learning-resources** | 策展型阅读路径与资源清单——读它去找某个领域的权威论文、规范或参考实现，而不是一堆博客；也包括可运行的 LLM／RAG／智能体演示应用教程合集，供照抄。 | [→](categories/learning-resources/INDEX.zh.md) |
 | **model-editing** | 通过编辑模型已保存的权重来改变它的行为——消融（abliteration）及相关模型手术——而不是训练它。 | [→](categories/model-editing/INDEX.zh.md) |
 | **pentest** | 授权范围内 web 应用、API 与本地网络（Wi-Fi）的自主／AI 辅助渗透测试——agent swarm、渗透测试自动化、漏洞利用链（授权优先）。 | [→](categories/pentest/INDEX.zh.md) |
 | **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载。 | [→](categories/disk-cleanup/INDEX.zh.md) |
