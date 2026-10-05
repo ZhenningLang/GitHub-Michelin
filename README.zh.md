@@ -1044,6 +1044,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **pygame** | 当你想学做或交付一个带简单游戏循环的小型 2D Python 游戏时用它——但做 3D 或性能敏感的项目它会成瓶颈，请另寻它路。 | LGPL-2.1 | C（5/6） | [中](categories/game-dev/pygame.zh.md) · [EN](categories/game-dev/pygame.md) |
 | **kaplay** | 想用纯 JS/TS 零仪式感地做一个 Jam 规模的 2D 网页游戏时用它——但要做长生命周期产品或 3D，停滞的稳定线和纯 2D 定位说明该另寻它路。 | MIT | B（6/6） | [中](categories/game-dev/kaplay.zh.md) · [EN](categories/game-dev/kaplay.md) |
+| **pyxel** | 想用 Python 做复古像素风小游戏、要自带精灵／音乐编辑器和一条命令导出网页时用它——但做 3D、现代画风、上商店或主机，或需要团队接手引擎时，固定规格和单人维护说明该另寻它路。 | MIT | B（5/6） | [中](categories/game-dev/pyxel.zh.md) · [EN](categories/game-dev/pyxel.md) |
 
 ### kafka-tools
 

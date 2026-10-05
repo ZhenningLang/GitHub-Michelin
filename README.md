@@ -1047,6 +1047,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **pygame** | Use it when you want to learn or ship a small 2D Python game with a simple loop — but for 3D or performance-critical work it bottlenecks, look elsewhere. | LGPL-2.1 | C (5/6) | [EN](categories/game-dev/pygame.md) · [中](categories/game-dev/pygame.zh.md) |
 | **kaplay** | Use it when you want a jam-scale 2D web game in plain JS/TS with zero engine ceremony — but for a long-lived product or 3D, the stalled stable line and 2D-only scope say look elsewhere. | MIT | B (6/6) | [EN](categories/game-dev/kaplay.md) · [中](categories/game-dev/kaplay.zh.md) |
+| **pyxel** | Use it when you want a retro pixel-art game in Python with built-in sprite/sound editors and one-command web export — but for 3D, a modern look, store/console shipping, or a team-owned engine, its fixed specs and single maintainer say look elsewhere. | MIT | B (5/6) | [EN](categories/game-dev/pyxel.md) · [中](categories/game-dev/pyxel.zh.md) |
 
 ### kafka-tools
 

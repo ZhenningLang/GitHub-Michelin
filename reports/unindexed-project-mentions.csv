@@ -1054,6 +1054,7 @@ Third-party / community knowledge-work packs,categories/agent-skills/vendor-coll
 Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
+TIC-80,categories/game-dev/pyxel.md,,no
 TightVNC / TigerVNC,categories/dev-utilities/ops-infra/rustdesk.md,,no
 TimGPT / Nixtla `nixtla`,categories/on-device-ml/timesfm.md,,no
 TinyBase (`tinyplex/tinybase`),categories/web-ui/data-fetching/tanstack-db.md,,no
