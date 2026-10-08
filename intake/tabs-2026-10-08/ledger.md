@@ -13,5 +13,5 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | K-Dense-AI/scientific-agent-skills | sync | done | categories/agent-skills/engineering/scientific-agent-skills.md | fresh: last_verified 2026-09-27，距今 11 天 ≤ 90，无改动 | k-dense-ai/scientific-agent-skills |
 | microsoft/VibeVoice | add | running |  |  | microsoft/vibevoice |
 | threerocks/hand-drawn-styles | add | running |  |  | threerocks/hand-drawn-styles |
-| tphakala/birdnet-go | add | running |  |  | tphakala/birdnet-go |
+| tphakala/birdnet-go | add | done | categories/on-device-ml/birdnet-go.md |  | tphakala/birdnet-go |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |

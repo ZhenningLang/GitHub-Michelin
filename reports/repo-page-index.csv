@@ -747,6 +747,7 @@ https://github.com/teamclairvoyant/airflow-maintenance-dags,airflow-maintenance-
 https://github.com/temporalio/temporal,temporal,workflow-orchestration,categories/workflow-orchestration/temporal.md
 https://github.com/tesseract-ocr/tesseract,tesseract,ocr,categories/ocr/tesseract.md
 https://github.com/thedotmack/claude-mem,claude-mem,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-mem.md
+https://github.com/threerocks/hand-drawn-styles,hand-drawn-styles,visual-content,categories/agent-skills/visual-content/hand-drawn-styles.md
 https://github.com/tiagozip/cap,capjs,captcha,categories/captcha/capjs.md
 https://github.com/tigerless-labs/autoharness,autoharness,coding-agent-memory,categories/agent-memory/coding-agent-memory/autoharness.md
 https://github.com/tinyhumansai/openhuman,openhuman,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md
