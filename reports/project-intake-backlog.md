@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1174
+- Named-but-unindexed alternatives: 1176
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -45,10 +45,10 @@ shape and are deliberately excluded here.
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
+| [Kokoro](https://github.com/hexgrad/kokoro) | `categories/speech/vibevoice.md` |
 | [LTX-Video](https://github.com/Lightricks/LTX-Video) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/networking/dae.md` |
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
 | [OmniVoice](https://github.com/k2-fsa/OmniVoice) | `categories/speech/voicestudio.md` |
-| [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |

@@ -15,6 +15,7 @@
 | **VoxCPM** | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. | B (5/6) | [→](voxcpm.md) |
 | **VoiceStudio** | Use it when you want one local desktop app for voice cloning, video dubbing, dictation and agent speech (MCP) with a dozen swappable engines — but the default model's weights are non-commercial, the app is AGPL with a forming paid Pro tier, and it is a six-month-old single-maintainer project. | C (5/6) | [→](voicestudio.md) |
 | **IndexTTS** | Use it when you need one cloned voice to carry different emotions — timbre from one clip, emotion from another clip, an 8-value vector or a text cue — in zh/en/ja/es/ar — but the bilibili licence needs a separate grant above 100M MAU or RMB 100M revenue (Chinese text governs), exact-duration dubbing is not released, and there is no training code. | A (3/6) | [→](index-tts.md) |
+| **VibeVoice** | Use it when you want one self-hosted model to turn up to an hour of multi-speaker audio into a who/when/what transcript (plus hotwords, 50+ languages, a vLLM server and a streaming variant), or an English TTS that starts speaking in ~0.3 s — but the 7B ASR model wants more than 24 GB of VRAM, there are no tagged releases, and the famous long multi-speaker TTS code was removed in 2025-09. | A (4/6) | [→](vibevoice.md) |
 
 ## Comparison matrix
 
@@ -28,6 +29,7 @@
 | [VoxCPM](voxcpm.md) | ✅ | B (5/6) | Use it when you need self-hosted voice cloning or text-described voice design in 30 languages under Apache-2.0 code *and* weights — but plan on an ~8 GB-VRAM GPU, splitting long text yourself (long single-pass output drifts), and a separate engine for serving. |
 | [VoiceStudio](voicestudio.md) | ✅ | C (5/6) | Use it when you want one local desktop app for voice cloning, video dubbing, dictation and agent speech (MCP) with a dozen swappable engines — but the default model's weights are non-commercial, the app is AGPL with a forming paid Pro tier, and it is a six-month-old single-maintainer project. |
 | [IndexTTS](index-tts.md) | ✅ | A (3/6) | Use it when you need one cloned voice to carry different emotions — timbre from one clip, emotion from another clip, an 8-value vector or a text cue — in zh/en/ja/es/ar — but the bilibili licence needs a separate grant above 100M MAU or RMB 100M revenue (Chinese text governs), exact-duration dubbing is not released, and there is no training code. |
+| [VibeVoice](vibevoice.md) | ✅ | A (4/6) | Use it when you want one self-hosted model to turn up to an hour of multi-speaker audio into a who/when/what transcript (plus hotwords, 50+ languages, a vLLM server and a streaming variant), or an English TTS that starts speaking in ~0.3 s — but the 7B ASR model wants more than 24 GB of VRAM, there are no tagged releases, and the famous long multi-speaker TTS code was removed in 2025-09. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here
