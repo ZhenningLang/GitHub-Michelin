@@ -450,6 +450,13 @@ Do **not** add:
 That's the whole bar. (Homogeneous fields still get organized via the self-balancing tree in §5, not
 by dropping entries.)
 
+**Gray zone → `propose`, not a second bar.** A repo that clears the bar above can still fail
+`add-project`'s *worth check*: nothing reusable beyond a paper demo or prose, content mostly copied
+from another source, a license that cannot be true, or a live harmful payload with nothing else to
+reuse. Then no page is written; the agent reports `propose` with the evidence and the maintainer
+decides. Risk alone (security tooling, attack demos, young, tiny, archived) is never a reason to
+propose — it goes into the page.
+
 ## 5. The category tree (recursive + self-balancing)
 
 `categories/` is a **recursive tree**, not a fixed 3 levels. A directory containing an `INDEX.md`
