@@ -17,6 +17,7 @@
 | **MLX / mlx-lm** | Run LLMs with MLX | B (6/6) | [→](mlx-mlx-lm.md) |
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction or embeddings offline (29–121M params, 2-bit) — but the base model needs a fine-tune and your own guards on refusals. | B (4/6) | [→](needle.md) |
 | **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | A (6/6) | [→](stable-diffusion-cpp.md) |
+| **BirdNET-Go** | Use it when you want an always-on bird (and bat) sound station on a Raspberry Pi 4/5 or mini PC with a local web dashboard, multiple mics/RTSP streams and MQTT/Home Assistant alerts — but the code and models are non-commercial (CC BY-NC-SA), the default install tracks a single maintainer's nightly build, and batch file analysis belongs to other tools. | B (5/6) | [→](birdnet-go.md) |
 
 
 ## Comparison matrix
@@ -32,6 +33,7 @@
 | [ComfyUI](comfyui.md) | ✅ | B (6/6) | Modular node-graph interface for building complex diffusion-model workflows locally; steep learning curve and significant GPU resources required. |
 | [Needle](needle.md) | ✅ | B (4/6) | English-only on-device tool-calling/extraction/embedding model (29–121M, 2-bit) with grammar-constrained decoding; the base model misses negations, out-of-range values and off-domain requests. |
 | [stable-diffusion.cpp](stable-diffusion-cpp.md) | ✅ | A (6/6) | ggml-based C/C++ diffusion engine (SD, Flux, Qwen-Image, Wan…) with GGUF quantization and a C API; trades ComfyUI/WebUI workflow richness and extensions for a Python-free, embeddable binary. |
+| [BirdNET-Go](birdnet-go.md) | ✅ | B (5/6) | Self-hosted Go app that classifies live audio with BirdNET v2.4 (plus optional Perch v2 and bat models) and logs detections with clips; trades reproducibility and commercial use for a turnkey 24/7 station — non-OSI licence, nightly-by-default, one maintainer. |
 | MLC LLM / ONNX Runtime | 未收录 | — | Other on-device inference runtimes named across the pages (llama.cpp and Ollama are indexed under `llm-inference`). |
 
 ## What belongs here

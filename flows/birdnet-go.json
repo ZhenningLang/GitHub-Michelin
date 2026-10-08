@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "BirdNET-Go does", "zh": "BirdNET-Go 做的"},
+  "steps": [
+    {"lane": "you", "en": "Plug a mono mic into a 64-bit Linux box, run the installer and answer its prompts", "zh": "64 位 Linux 机器接上单声道麦克风，跑安装脚本并回答提问", "code": "bash ./install.sh"},
+    {"lane": "them", "en": "Installs Docker if missing, pulls the image and registers a boot-time systemd service", "zh": "缺 Docker 就装上，拉取镜像，注册开机自启的 systemd 服务", "component": {"en": "install.sh", "zh": "install.sh"}},
+    {"lane": "you", "en": "Open the web UI the installer prints and confirm your latitude/longitude", "zh": "打开安装脚本给出的网页地址，确认经纬度", "code": "http://<your-ip-address>:<port>"},
+    {"lane": "them", "en": "Cuts the live audio into 3-second windows and scores each one with BirdNET v2.4", "zh": "把实时音频切成 3 秒一段，逐段用 BirdNET v2.4 打分"},
+    {"lane": "them", "en": "Drops species implausible at your location and waits for repeat hits before confirming", "zh": "剔除本地不该出现的物种，重复命中后才确认"},
+    {"lane": "them", "en": "Saves the detection and its audio clip, updates the dashboard and fires your alert rules", "zh": "保存检出记录和音频片段，刷新仪表盘并触发告警规则"}
+  ],
+  "value": {"en": "A dated, playable log of which species called near your mic, without anyone holding a phone up", "zh": "得到一份带时间、可回放的鸟种记录，不用有人举着手机守着"},
+  "sources": [
+    "https://github.com/tphakala/birdnet-go#quick-install (curl ... install.sh; bash ./install.sh)",
+    "https://github.com/tphakala/birdnet-go/wiki/installation (what install.sh does: Docker, nightly image, prompts, systemd service; http://<your-ip-address>:<port>)",
+    "https://github.com/tphakala/birdnet-go/wiki/detection-pipeline (3s window at 48kHz for BirdNET v2.4, filtering, DB / clip / SSE / alert dispatch)",
+    "https://github.com/tphakala/birdnet-go/wiki/FAQ (set location for the range filter; false-positive filter needs repeated detections)"
+  ]
+}

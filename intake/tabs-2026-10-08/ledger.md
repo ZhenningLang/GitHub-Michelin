@@ -9,7 +9,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | cloudflare/skills | add | done | categories/agent-skills/vendor-collections/cloudflare-skills.md |  | cloudflare/skills |
 | Effect-TS/effect | add | done | categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md |  | effect-ts/effect |
 | greekr4/playwright-bot-bypass | add | done | categories/web-automation/agent-browser-tools/playwright-bot-bypass.md |  | greekr4/playwright-bot-bypass |
-| jo-inc/camofox-browser | add | running |  |  | jo-inc/camofox-browser |
+| jo-inc/camofox-browser | add | done | categories/web-automation/agent-browser-tools/camofox-browser.md |  | jo-inc/camofox-browser |
 | K-Dense-AI/scientific-agent-skills | sync | done | categories/agent-skills/engineering/scientific-agent-skills.md | fresh: last_verified 2026-09-27，距今 11 天 ≤ 90，无改动 | k-dense-ai/scientific-agent-skills |
 | microsoft/VibeVoice | add | running |  |  | microsoft/vibevoice |
 | threerocks/hand-drawn-styles | add | running |  |  | threerocks/hand-drawn-styles |

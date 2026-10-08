@@ -125,6 +125,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B (6/6) | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | Use it when a tiny on-device model must do English tool calling, typed extraction and embeddings offline — 29–121M params, but the base model needs a fine-tune plus your own guards on refusals. | Apache-2.0 | B (4/6) | [EN](categories/on-device-ml/needle.md) · [中](categories/on-device-ml/needle.zh.md) |
 | **stable-diffusion.cpp** | Use it when you must ship image/video diffusion inside your own app or onto mixed CPU/AMD/Mac/NVIDIA machines as one native binary without Python — but expect a fixed feature set, no semver, and a no-auth single-worker server. | MIT | A (6/6) | [EN](categories/on-device-ml/stable-diffusion-cpp.md) · [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) |
+| **BirdNET-Go** | Use it when you want an always-on bird (and bat) sound station on a Raspberry Pi 4/5 or mini PC with a local web dashboard, multiple mics/RTSP streams and MQTT/Home Assistant alerts — but the code and models are non-commercial (CC BY-NC-SA), the default install tracks a single maintainer's nightly build, and batch file analysis belongs to other tools. | CC-BY-NC-SA-4.0 | B (5/6) | [EN](categories/on-device-ml/birdnet-go.md) · [中](categories/on-device-ml/birdnet-go.zh.md) |
 
 ### function-calling
 
