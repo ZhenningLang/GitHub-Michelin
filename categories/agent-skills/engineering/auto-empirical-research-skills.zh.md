@@ -74,7 +74,7 @@ health:
 
 你是应用经济学家、政治学者或公共卫生实证研究者，正用 Claude Code 赶一篇真要投稿的论文。agent 会调 pandas、`fixest` 或 `reghdfe`，但不知道交错处理时双向固定效应为什么错、HonestDiD 用来干什么、AER 的 Table 1 和事件研究图该长什么样——于是它写教科书 OLS，跳过稳健性关卡，你接下来一周都在返工。你要它按方法审稿人的习惯走：估计式写清楚、识别假设点名、表格一次出齐。
 
-只有任务是社会科学实证、不是生命科学库、也不是办公文档时，才轮到这套包。装一个一等插件（`empirical-analysis-python`、`empirical-analysis-stata`、`empirical-analysis-r` 或 `aer-skills`），或只拷一个合集——不要整库平铺——然后用自然语言下任务。选它而不是 [Scientific Agent Skills](scientific-agent-skills.zh.md)，因为那套封装的是 Scanpy 和 RDKit，不是 Callaway–Sant'Anna；选它而不是 [Anthropic Skills](../vendor-collections/anthropic-skills.zh.md)，因为那是文档／设计参考 skill，不是识别策略；选它而不是 [ljg-skills](../personal-collections/knowledge-content/ljg-skills.zh.md)，因为那套是读中文论文、改写，不是跑双重差分。决定性取舍是：专科覆盖加上“只加载一个子 skill”的路由，代价是 CC-BY-SA 的传染条款、上游许可证混杂，以及 CoPaper.AI 这条商业入口。
+只有任务是社会科学实证、不是生命科学库、也不是办公文档时，才轮到这套包。装一个一等插件（`empirical-analysis-python`、`empirical-analysis-stata`、`empirical-analysis-r` 或 `aer-skills`），或只拷一个合集——不要整库平铺——然后用自然语言下任务。选它而不是 [Scientific Agent Skills](scientific-agent-skills.zh.md)，因为那套封装的是 Scanpy 和 RDKit，不是 Callaway–Sant'Anna；选它而不是 [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md)，因为那是文档／设计参考 skill，不是识别策略；选它而不是 [ljg-skills](../personal-collections/knowledge-content/ljg-skills.zh.md)，因为那套是读中文论文、改写，不是跑双重差分。决定性取舍是：专科覆盖加上“只加载一个子 skill”的路由，代价是 CC-BY-SA 的传染条款、上游许可证混杂，以及 CoPaper.AI 这条商业入口。
 
 ## 怎么用起来
 
@@ -101,10 +101,10 @@ AERS 不是一个 skill。检出里 vendored 了 76 个合集、目录登记 109
 ## 何时不用
 
 - **科学是生物学、化学或药物发现。** 用 [Scientific Agent Skills](scientific-agent-skills.zh.md)。那套封装的是科学 Python 库和数据库；本目录的核心路由是社会科学实证，它自己的 `curation.json` 把自然科学指南排在最后。
-- **你要的是官方厂商的知识工作 skill（文档、幻灯片、收件箱），不是识别策略。** 用 [Anthropic Knowledge Work Plugins](../vendor-collections/knowledge-work-plugins.zh.md) 或 [Anthropic Skills](../vendor-collections/anthropic-skills.zh.md)。那是一等、Apache-2.0，不是把 75 个别人的仓库再目录一遍。
+- **你要的是官方厂商的知识工作 skill（文档、幻灯片、收件箱），不是识别策略。** 用 [Anthropic Knowledge Work Plugins](../vendor-collections/agent-vendors/knowledge-work-plugins.zh.md) 或 [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md)。那是一等、Apache-2.0，不是把 75 个别人的仓库再目录一遍。
 - **你要的是中文论文阅读、拆解和改写，不是回归流水线。** 用 [ljg-skills](../personal-collections/knowledge-content/ljg-skills.zh.md)。AERS 也能润色或去 AIGC，但旗舰路径是估计和期刊表格。
 - **你要的是能 `import` 的库，不是提示 skill。** 用 StatsPAI（`brycewang-stanford/StatsPAI`，本批未收录：它是 Python 库不是 skill-pack，页面类型不同）。INSTALL.md 写明 StatsPAI 合集是镜像，这里不打成插件。
-- **你不能接受 ShareAlike 再加一堆上游许可证不明。** 仓库 LICENSE 是 CC-BY-SA-4.0。生成的许可证审计（2026-07-22）把 25 个合集标成 `UNKNOWN - check upstream`，其余里还有 AGPL、GPL 和 MIT Non-Commercial。再分发条款必须简单时，优先 [Anthropic Skills](../vendor-collections/anthropic-skills.zh.md)（Apache-2.0 示例）或 [Scientific Agent Skills](scientific-agent-skills.zh.md)（MIT）。
+- **你不能接受 ShareAlike 再加一堆上游许可证不明。** 仓库 LICENSE 是 CC-BY-SA-4.0。生成的许可证审计（2026-07-22）把 25 个合集标成 `UNKNOWN - check upstream`，其余里还有 AGPL、GPL 和 MIT Non-Commercial。再分发条款必须简单时，优先 [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md)（Apache-2.0 示例）或 [Scientific Agent Skills](scientific-agent-skills.zh.md)（MIT）。
 - **你只要一种方法。** 拷那一个文件夹（INSTALL.md 方法 3），或直接装上游原仓库。不要装整份目录。
 - **你要的是托管的“跳过组装”产品。** 那是 CoPaper.AI，付费服务（非仓库），不是这个 git 仓库。INSTALL.md 方法 4 就是这条入口。
 
@@ -113,8 +113,8 @@ AERS 不是一个 skill。检出里 vendored 了 76 个合集、目录登记 109
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Scientific Agent Skills](scientific-agent-skills.zh.md) | 已收录 | 当 agent 必须按社会科学识别策略和期刊表格走时选 AERS；当它必须驱动 Scanpy、RDKit 或科学数据库时选 Scientific Agent Skills。 | 同属“给科研装 skill 包”；AERS 是以路由为主的目录，内容大多是别人的拷贝、许可证混杂，K-Dense 那套是一等 MIT skill、封装科学 Python 库。 |
-| [Anthropic Skills](../vendor-collections/anthropic-skills.zh.md) | 已收录 | 要一等的文档／设计／MCP 参考 skill 时选 Anthropic Skills；只有任务是因果识别或实证文稿流水线时才选 AERS。 | 厂商规范的 Agent Skills 格式和 Apache-2.0 示例，但没有双重差分／工具变量／断点回归剧本；AERS 有方法，也有许可证纠缠。 |
-| [Anthropic Knowledge Work Plugins](../vendor-collections/knowledge-work-plugins.zh.md) | 已收录 | 要在 Claude 上做办公／沟通／研究摘要时选 Anthropic 知识工作插件；产出必须是估计式加稳健性、而不是一页纸时选 AERS。 | 一等 Apache-2.0 知识工作基线；AERS 是第三方、ShareAlike、计量形状。 |
+| [Anthropic Skills](../vendor-collections/agent-vendors/anthropic-skills.zh.md) | 已收录 | 要一等的文档／设计／MCP 参考 skill 时选 Anthropic Skills；只有任务是因果识别或实证文稿流水线时才选 AERS。 | 厂商规范的 Agent Skills 格式和 Apache-2.0 示例，但没有双重差分／工具变量／断点回归剧本；AERS 有方法，也有许可证纠缠。 |
+| [Anthropic Knowledge Work Plugins](../vendor-collections/agent-vendors/knowledge-work-plugins.zh.md) | 已收录 | 要在 Claude 上做办公／沟通／研究摘要时选 Anthropic 知识工作插件；产出必须是估计式加稳健性、而不是一页纸时选 AERS。 | 一等 Apache-2.0 知识工作基线；AERS 是第三方、ShareAlike、计量形状。 |
 | [ljg-skills](../personal-collections/knowledge-content/ljg-skills.zh.md) | 已收录 | 要把中文论文蒸馏或改写成给外行看的版本时选 ljg-skills；要跑那篇论文会报告的实证流水线时选 AERS。 | ljg-skills 是小型个人阅读／改写包；AERS 是 1096 个 skill 的目录，价值在估计不在讲解。 |
 | StatsPAI（brycewang-stanford/StatsPAI） | 未收录 | 要的是 DiD／IV／RDD／SCM／DML 的 Python API、而不是给 agent 读的 skill 时选 StatsPAI；要 agent 被 `SKILL.md` 剧本路由时选 AERS。本批故意跳过：制品类型不同（库 vs skill-pack）。 | 库可以 import 并在代码里验证；AERS 是提示层加目录，里面的 StatsPAI 合集是每周镜像，不是插件路径。 |
 

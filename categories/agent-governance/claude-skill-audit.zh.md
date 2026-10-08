@@ -115,7 +115,7 @@ health:
 - **你要明年还有人维护的东西。** 零 star，一位作者，五个 commit 集中在两天，2026-08-06 之后没有动静。看重持续性就用 [SkillSpector](skillspector.zh.md)（NVIDIA 名下）或 AgentShield；只有当你愿意把它当成自己要养的代码时才用它。
 - **你的 agent 不是 Claude Code。** 文件发现逻辑写死了 `.claude/` 的目录结构，以及 Claude Code 的 `settings.json` 和 `.mcp.json` 形状；别的 harness 的配置它根本找不到。
 
-同一领域还有两个扫描器 `snyk/agent-scan` 和 `HTS-Sleeping-Place/skills-scanner`，正和本页在同一批次收录；定选型之前，先到本分类的索引里找它们。
+同一领域还有两个扫描器 [Snyk Agent Scan](agent-scan.zh.md) 和 [skills-scanner](skills-scanner.zh.md)，都在本分类里；定选型之前先读一读它们。
 
 ## 横向对比
 

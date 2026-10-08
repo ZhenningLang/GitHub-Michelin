@@ -168,10 +168,10 @@ awesome-llm-apps (Shubhamsaboo),categories/learning-resources/ai-engineering-hub
 AWS Elemental MediaConvert,categories/media-processing/video-audio/transcoding-and-pipelines/gstreamer.md,,no
 AWS Elemental MediaConvert / cloud transcoders,categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 "AWS Lambda / Fargate, Google Cloud Run",categories/sandboxing/modal-client.md,,no
-AWS MCP servers (`awslabs/mcp`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
-AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/aws-agent-plugins.md,,no
+AWS MCP servers (`awslabs/mcp`),categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md,,no
+AWS official MCP servers (standalone),categories/agent-skills/vendor-collections/product-vendors/aws-agent-plugins.md,,no
 AWS S3 / Cloudflare R2,categories/object-storage/ceph.md,,no
-Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
+Azure Skills (`microsoft/azure-skills`),categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md,,no
 Azure Speech / Google Cloud Speech,categories/media-processing/video-audio/speech-and-subtitles/whisper.md,,no
 BackstopJS,categories/design-tokens/dembrandt.md,,no
 baostock,categories/web-scraping/crawling-tools/gopup.md,,no
@@ -197,6 +197,7 @@ Bootstrap / React-Bootstrap,categories/web-ui/component-libraries/ant-design.md,
 Bootstrap Tour,categories/web-ui/product-tours/intro-js.md,,no
 bottleneck (`SGrondin/bottleneck`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Braintrust,categories/llm-eval/promptfoo.md,,no
+Bright Data MCP server (`brightdata/brightdata-mcp`),categories/agent-skills/vendor-collections/product-vendors/brightdata-skills.md,,no
 Brotli,categories/dev-utilities/data-tools/openzl.md,,no
 Browser built-in translation,categories/reading-tools/pair-translate.md,,no
 Browser MITM Proxy / BrowserMob Proxy,categories/web-automation/browser-driver-frameworks/selenium-wire.md,,no
@@ -244,7 +245,6 @@ ChinaSiro/claude-code-sourcemap,categories/agent-dev-methodology/study-and-exper
 Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
 Cisco skill-scanner (`cisco-ai-defense/skill-scanner`),categories/agent-governance/claude-skill-audit.md,,no
-cisco-ai-defense/mcp-scanner,categories/agent-governance/agent-scan.md,,no
 cisco-ai-defense/skill-scanner,categories/agent-governance/agent-scan.md,,no
 Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 ClashX / ClashX Pro,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
@@ -257,6 +257,7 @@ Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/a
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
+Claude Security Atlas (`RationalEyes/claude-security-atlas`),categories/agent-governance/claude-skills-security-guide.md,,no
 claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtimes/claude-code-local.md,,no
 claude-cookbooks · openai-cookbook,categories/learning-resources/ai-engineering-hub.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
@@ -268,7 +269,7 @@ CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconsc
 Claudeception,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
-Cloudflare API MCP server (`cloudflare/mcp`),categories/agent-skills/vendor-collections/cloudflare-skills.md,,no
+Cloudflare API MCP server (`cloudflare/mcp`),categories/agent-skills/vendor-collections/product-vendors/cloudflare-skills.md,,no
 Cloudflare Turnstile,categories/captcha/capjs.md,,no
 cloudflare/sandbox-sdk,categories/sandboxing/cloudflare-computer.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
@@ -289,8 +290,8 @@ Conduktor,categories/kafka-tools/kafka-ui.md,,no
 Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
-Context7,categories/agent-skills/vendor-collections/modern-web-guidance.md,,no
-Context7 (`upstash/context7`),categories/agent-skills/vendor-collections/cloudflare-skills.md,,no
+Context7,categories/agent-skills/vendor-collections/product-vendors/modern-web-guidance.md,,no
+Context7 (`upstash/context7`),categories/agent-skills/vendor-collections/product-vendors/cloudflare-skills.md,,no
 Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
@@ -483,6 +484,7 @@ gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
 gsplat (Nerfstudio),categories/3d-reconstruction/spirula-studio.md,,no
+GuardDog (`DataDog/guarddog`),categories/agent-governance/agent-guard.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 GuideLLM (vllm-project/guidellm),categories/llm-inference/inference-benchmarks/inferencex.md,,no
@@ -502,7 +504,7 @@ Hand-written project `DESIGN.md` design system,categories/agent-skills/design/ui
 Hand-written project skills,categories/agent-skills/ai-writing/content-production/baoyu-skills.md,,no
 HarfBuzz,categories/dev-utilities/data-tools/fonttools.md,,no
 harness-mem (optional companion),categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md,,no
-HashiCorp Agent Skills (`hashicorp/agent-skills`),categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md,,no
+HashiCorp Agent Skills (`hashicorp/agent-skills`),categories/agent-skills/vendor-collections/product-vendors/agent-toolkit-for-aws.md,,no
 HashiCorp Vault,categories/secrets-management/openbao.md,,no
 Hasura,categories/databases/database-engines/supabase.md,,no
 Haystack / django-elasticsearch-dsl,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
@@ -1074,8 +1076,8 @@ TextGrad,categories/agent-frameworks/workflow-builders/dspy.md,,no
 textract,categories/document-parsing/markitdown.md,,no
 "The app's native scripting backend, driven directly",categories/agent-tooling/harness-extensions/cli-anything.md,,no
 The Silver Searcher (ag),categories/dev-utilities/data-tools/ripgrep.md,,no
-Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/knowledge-work-plugins.md,,no
-Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/claude-plugins-official.md,,no
+Third-party / community knowledge-work packs,categories/agent-skills/vendor-collections/agent-vendors/knowledge-work-plugins.md,,no
+Third-party Claude Code marketplaces / community plugin lists,categories/agent-skills/vendor-collections/agent-vendors/claude-plugins-official.md,,no
 thriftpy2,categories/networking/thriftpy.md,,no
 throttle-debounce (`niksy/throttle-debounce`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 TIC-80,categories/game-dev/pyxel.md,,no

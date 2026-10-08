@@ -79,7 +79,7 @@ health:
 
 你正要发布一个 web 或桌面产品，需要一支上市视频——不是加个标题条的录屏，而是看起来经过美术指导的东西：真实界面的特写、跟着视线走的运镜、落在节拍上的切换。你的 agent 会写 React，而你更愿意让它用一套有文档的镜头词汇把片子拼出来，而不是自己去手 K 关键帧。
 
-你装好 skill、把产品指给 agent，它会先做一次只读的产品检查，然后给出三条路线：替换素材复现内置的 Ink Press 模板、自主自由创作、或与你共同创作（你确认产品简报、styleframe、镜头映射和分镜）。相对官方 [Remotion Agent Skills](../agent-skills/vendor-collections/remotion-skills.zh.md) 的决定性取舍是：后者教 agent 把引擎写对，而这个提供的是**审美层**——一百多张带 demo 的具名镜头配方、一支可模仿的参考成片、一个锁好版本的 Remotion 工程和一遍音效——于是质量来自素材库而不是模型的动效直觉。相对 [HyperFrames](hyperframes.zh.md)：HyperFrames 从里到外都是 Apache-2.0，而这个 skill 自己的代码是 Apache-2.0，但它面向的引擎是 [Remotion](remotion.zh.md)——后者只对个人和员工不超过三人的公司免费——真正决定二选一的通常就是这个许可问题，而不是功能清单。
+你装好 skill、把产品指给 agent，它会先做一次只读的产品检查，然后给出三条路线：替换素材复现内置的 Ink Press 模板、自主自由创作、或与你共同创作（你确认产品简报、styleframe、镜头映射和分镜）。相对官方 [Remotion Agent Skills](../agent-skills/vendor-collections/product-vendors/remotion-skills.zh.md) 的决定性取舍是：后者教 agent 把引擎写对，而这个提供的是**审美层**——一百多张带 demo 的具名镜头配方、一支可模仿的参考成片、一个锁好版本的 Remotion 工程和一遍音效——于是质量来自素材库而不是模型的动效直觉。相对 [HyperFrames](hyperframes.zh.md)：HyperFrames 从里到外都是 Apache-2.0，而这个 skill 自己的代码是 Apache-2.0，但它面向的引擎是 [Remotion](remotion.zh.md)——后者只对个人和员工不超过三人的公司免费——真正决定二选一的通常就是这个许可问题，而不是功能清单。
 
 ## 怎么用起来
 
@@ -117,7 +117,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Remotion Agent Skills](../agent-skills/vendor-collections/remotion-skills.zh.md) | ✅ | 片子是定制的、需要 agent 把引擎写对时选官方 skill；当你想用一套久经验证的镜头库加一支现成模板产出经过美术指导的产品宣传片时选 video-shotcraft，因为官方 skill 给的是 API 知识，没有镜头词汇也没有参考成片。 | 官方 skill 是第一方、与引擎版本同步、对审美不作主张；video-shotcraft 是第三方，带一百多张镜头卡和一支 36.2 秒参考片，同时继承别人的审美和素材结构。 |
+| [Remotion Agent Skills](../agent-skills/vendor-collections/product-vendors/remotion-skills.zh.md) | ✅ | 片子是定制的、需要 agent 把引擎写对时选官方 skill；当你想用一套久经验证的镜头库加一支现成模板产出经过美术指导的产品宣传片时选 video-shotcraft，因为官方 skill 给的是 API 知识，没有镜头词汇也没有参考成片。 | 官方 skill 是第一方、与引擎版本同步、对审美不作主张；video-shotcraft 是第三方，带一百多张镜头卡和一支 36.2 秒参考片，同时继承别人的审美和素材结构。 |
 | [Remotion](remotion.zh.md) | ✅ | 你在自建组合管线、想要六年历史的框架和 Lambda 渲染器时直接选 Remotion；当你想不设计就拿到产品宣传片那一层——镜头配方、模板、音效、Workbench——时选 video-shotcraft，因为 Remotion 是引擎，这个是它的某一种带观点的用法。 | Remotion 给长寿性、生态和分布式渲染，代价是公司规模许可门槛；video-shotcraft 给通往精致宣传片的捷径，但只有几个月历史、单一作者、绑定一个引擎版本。 |
 | [HyperFrames](hyperframes.zh.md) | ✅ | 当许可自由和便于编辑的 HTML 组合模型比动效深度更重要时选 HyperFrames；当成片必须看起来经过刻意编排、且你接受 Remotion 的许可时选 video-shotcraft，因为 HyperFrames 没有任何门槛，但也没有等价的镜头库。 | HyperFrames 是 Apache-2.0、无需打包器且对 CI 友好；video-shotcraft 自身也是 Apache-2.0，但产出的是 Remotion 组合，于是许可与 React 工具链会一并跟来。 |
 | [anything2explainer](anything2explainer.zh.md) | ✅ | 片子要用旁白讲解一个主题、并有人工检查点时选 anything2explainer；当片子要用真实界面特写去卖一个产品、且不需要旁白时选 video-shotcraft，因为两者从不同的输入产出不同的东西。 | anything2explainer 有受治理的 9 阶段流水线、量化 QC 和非商用许可；video-shotcraft 是 Apache-2.0、无旁白，代码库许可宽松但很年轻。 |

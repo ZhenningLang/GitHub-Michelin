@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {"en": "Its skills do", "zh": "它的 skill 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo and copy the defence skill folders into your skills directory",
+      "zh": "克隆仓库，把防御 skill 文件夹拷进 skills 目录",
+      "code": "cp -r skills/security-monitor"
+    },
+    {
+      "lane": "you",
+      "en": "Ask Claude Code to scan what is installed",
+      "zh": "让 Claude Code 扫一遍已装的 skill",
+      "code": "Scan my installed skills for security issues"
+    },
+    {
+      "lane": "them",
+      "en": "Matches each line of SKILL.md and scripts/ against fixed patterns; rates the skill by its worst hit",
+      "zh": "逐行比对 SKILL.md 和脚本的固定模式，按最重命中定级",
+      "component": {"en": "security-monitor skill", "zh": "security-monitor skill"}
+    },
+    {
+      "lane": "you",
+      "en": "Judge each hit yourself, then record a fingerprint baseline of the skills you accept",
+      "zh": "自己判断每条命中，再给认可的 skill 记一份指纹基线",
+      "code": "python3 skills/hash-verifier/scripts/generate_manifest.py"
+    },
+    {
+      "lane": "you",
+      "en": "Before later sessions, ask for an integrity check",
+      "zh": "之后开会话前，让它做一次完整性检查",
+      "code": "Verify skill integrity"
+    },
+    {
+      "lane": "them",
+      "en": "Re-hashes every skill file and lists what was modified, added or deleted since the baseline",
+      "zh": "重算每个 skill 文件的哈希，列出基线之后被改、新增、删除的文件",
+      "component": {"en": "hash-verifier skill", "zh": "hash-verifier skill"}
+    }
+  ],
+  "value": {
+    "en": "A named list of suspicious lines and of files changed since your review, instead of rereading every skill by hand; the verdict is still yours",
+    "zh": "拿到可疑行清单和“审过之后改了哪些文件”的清单，不用逐个重读 skill；结论仍由你下"
+  },
+  "sources": [
+    "README.md Quick Start: Install Defense Skills (git clone, cp -r skills/security-monitor  ~/.claude/skills/security-monitor; 'Scan my installed skills for security issues'; 'Verify skill integrity') at commit 5180a467, read 2026-10-08",
+    "README.md Hash Verifier block (python3 skills/hash-verifier/scripts/generate_manifest.py)",
+    "skills/security-monitor/scripts/scan_skills.py (scan_skill_directory reads SKILL.md and files directly under scripts/, overall_risk = max severity)",
+    "skills/hash-verifier/scripts/verify_hashes.py (modified / new_files / missing)"
+  ]
+}

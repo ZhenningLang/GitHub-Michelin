@@ -119,7 +119,7 @@ superpowers 本质是一组用 Markdown 写的「工作规程」（skill），�
 | [Compound Engineering](compound-engineering.zh.md) | ✅ | 需要围绕复利/自动化模式构建的方法论插件时，选 Compound Engineering。 | 围绕复利/自动化模式构建的方法论插件；同源理念，基元不同。按哪条工作流主轴贴合你的团队来选。 |
 | [ECC](ecc.zh.md) | ✅ | 需要本类目下另一套 agent 开发方法论，并对比生命周期约束时，选 ECC。 | 本类目下另一套 agent 开发方法论；对比点在于各自真正强制 vs 仅建议哪些生命周期阶段。 |
 | [12-Factor Agents](../spec-driven-development/12-factor-agents.zh.md) | ✅ | 需要构建 agent *应用* 的原则，而不是装进编程 agent 的插件式 skill 包时，选 12-Factor Agents。 | 用于构建 agent *应用* 的原则/方法论文档，而非装进编程 agent 的插件式 skill 包——消费单位不同。 |
-| [Anthropic Skills](../../agent-skills/vendor-collections/anthropic-skills.zh.md) / 内置 slash 命令 | 部分已收录 | 需要平台自带的 skill 生态，而不是第三方 SDLC 包时，选 Anthropic Skills。 | Anthropic Skills 是平台侧 skill 生态；Superpowers 是叠在其上的第三方精选包，因此可能与原生 skill 冲突或重复。内置 slash 命令未作为独立仓库收录。 |
+| [Anthropic Skills](../../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) / 内置 slash 命令 | 部分已收录 | 需要平台自带的 skill 生态，而不是第三方 SDLC 包时，选 Anthropic Skills。 | Anthropic Skills 是平台侧 skill 生态；Superpowers 是叠在其上的第三方精选包，因此可能与原生 skill 冲突或重复。内置 slash 命令未作为独立仓库收录。 |
 
 ## 健康度与可持续性
 

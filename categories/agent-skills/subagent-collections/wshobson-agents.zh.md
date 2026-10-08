@@ -113,7 +113,7 @@ health:
 |---|---|---|---|
 | [awesome-claude-code-subagents](awesome-claude-code-subagents.zh.md) | ✅ | 只需要 persona 广度时，选 awesome-claude-code-subagents。 | 同一 leaf 下另一个大型 Claude Code subagent 集合，但**只有 subagent**（丢进 `~/.claude/agents/`）。wshobson/agents 还打包 skill+command+orchestrator 并按 harness 生成；按你只要 persona 广度，还是要多产物、多 harness 的目录来选。 |
 | [gstack](../personal-collections/engineering-workflows/gstack.zh.md) | ✅ | 某创始人的按角色命令集正好贴合你的工作流时，选 gstack。 | 某创始人的**按角色**命令集（CEO/设计/QA persona），为他自己的日常工厂调过。窄得多且个人化；wshobson/agents 是通用领域目录，不是单一操作者的工作流。 |
-| [Claude Plugins（官方）](../vendor-collections/claude-plugins-official.zh.md) | ✅ | 第一方市场 provenance 比目录广度更重要时，选 Claude Plugins。 | 第一方、Anthropic 精选的 `/plugin` 市场，provenance 清晰；范围更窄且仅限 Claude Code。wshobson/agents 是第三方且广得多、跨多个 harness，但 trust/审核成本更高。 |
+| [Claude Plugins（官方）](../vendor-collections/agent-vendors/claude-plugins-official.zh.md) | ✅ | 第一方市场 provenance 比目录广度更重要时，选 Claude Plugins。 | 第一方、Anthropic 精选的 `/plugin` 市场，provenance 清晰；范围更窄且仅限 Claude Code。wshobson/agents 是第三方且广得多、跨多个 harness，但 trust/审核成本更高。 |
 | 自己手写 subagent/skill | 未收录 | 最高贴合度和零栈冲突比现成广度更重要时，选自写 subagent/skill。 | 贴合度最高、与既有栈零冲突，但一切都要你自己写和维护。本仓库用现成广度换取你仍需自行核验的贴合度。 |
 
 ## 健康度与可持续性

@@ -115,7 +115,7 @@ It is a linter for a config directory: it only reads text and compares it agains
 - **You need something that will still be maintained next year.** Zero stars, one author, five commits on two days, silent since 2026-08-06. Use [SkillSpector](skillspector.md) (NVIDIA-owned) or AgentShield if continuity matters; use this only as code you are willing to own.
 - **Your agent is not Claude Code.** File discovery is hard-wired to the `.claude/` layout and Claude Code's `settings.json` / `.mcp.json` shapes; other harnesses' configs are simply not found.
 
-Two more scanners in this space, `snyk/agent-scan` and `HTS-Sleeping-Place/skills-scanner`, are being added to this index in the same batch as this page; look for them in this category's index before settling on a choice.
+Two more scanners in this space, [Snyk Agent Scan](agent-scan.md) and [skills-scanner](skills-scanner.md), sit in this category; read them before settling on a choice.
 
 ## Comparison
 

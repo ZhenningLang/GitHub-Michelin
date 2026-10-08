@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "MCP Scanner does", "zh": "MCP Scanner 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI from PyPI", "zh": "从 PyPI 装上命令行", "code": "uv tool install --python 3.13 cisco-ai-mcp-scanner"},
+    {"lane": "you", "en": "Scan the MCP servers already configured on this machine, rules only", "zh": "只用规则，扫描本机已配置的 MCP 服务", "code": "mcp-scanner --scan-known-configs --analyzers yara --format summary", "component": {"en": "mcp-scanner CLI", "zh": "mcp-scanner 命令行"}},
+    {"lane": "them", "en": "Reads the known client config files, starts or connects to each server, lists its tools", "zh": "读取已知客户端配置，启动或连接每个服务，列出工具", "component": {"en": "config parser + MCP client", "zh": "配置解析 + MCP 客户端"}},
+    {"lane": "them", "en": "Matches each tool's name, description and parameters against the bundled YARA rules", "zh": "用自带 YARA 规则匹配每个工具的名称、描述和参数", "component": {"en": "YARA analyzer", "zh": "YARA 分析器"}},
+    {"lane": "them", "en": "Prints each tool as safe or unsafe with severity and threat names", "zh": "逐个工具打印安全与否、严重级别和威胁名称", "component": {"en": "report generator", "zh": "报告生成器"}}
+  ],
+  "value": {"en": "You see which configured MCP tools carry injection or poisoning text without opening every server and reading every description", "zh": "不用逐个打开服务读描述，就知道已配置的 MCP 工具里哪些带注入或投毒文字"},
+  "sources": [
+    "https://github.com/cisco-ai-defense/mcp-scanner README, Installing as a CLI tool (`uv tool install --python 3.13 cisco-ai-mcp-scanner`)",
+    "README Quick Start Examples, CLI Usage (`mcp-scanner --scan-known-configs --analyzers yara --format summary`)",
+    "README Subcommands Overview (known-configs: well-known client config locations; stdio: launch and scan a stdio MCP server)",
+    "mcpscanner/config/constants.py get_well_known_mcp_paths (Windsurf, Cursor, Claude Desktop, VS Code); mcpscanner/core/scanner.py (stdio_client)",
+    "repo tree mcpscanner/core/analyzers/yara_analyzer.py, mcpscanner/data/yara_rules/*.yara, mcpscanner/core/report_generator.py; README Example Output"
+  ]
+}
