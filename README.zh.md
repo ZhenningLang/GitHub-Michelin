@@ -979,6 +979,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **requests-html** | 可作为小型 requests + HTML 解析脚本参考——基本停更（~2 年没动），JS 渲染路径脆弱；新项目优先 Playwright + parsel。 | MIT | D（3/6） | [中](categories/web-scraping/crawling-tools/requests-html.zh.md) · [EN](categories/web-scraping/crawling-tools/requests-html.md) |
 | **Firecrawl** | 规模化搜索、抓取网页并提取干净 Markdown 或结构化数据的 API——但 AGPL-3.0 可能限制商用。 | AGPL-3.0 | B（5/6） | [中](categories/web-scraping/crawling-tools/firecrawl.zh.md) · [EN](categories/web-scraping/crawling-tools/firecrawl.md) |
 | **Claude Code Skill Scrapling** | 当你想让 Python 机器上的 Claude Code agent 在遇到 Cloudflare 403 后自己从普通请求升级到隐身浏览器、而不是瞎猜时用它——但它是只有四次提交的单人封装，速查卡已和当前 Scrapling 脱节；库自带的官方 skill 才是有人维护的那份。 | MIT | C（4/5） | [中](categories/web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) · [EN](categories/web-scraping/crawling-tools/claude-code-skill-scrapling.md) |
+| **Scrapling** | 当 Python 爬虫被 Cloudflare 拦住、或网站一改版就坏时用它——隐身 Chromium 抓取器、按相似度找回元素的自适应选择器和类 Scrapy 的爬虫层集于一个包；只对付 Cloudflare，0.x 常有破坏性变更，单人维护。 | BSD-3-Clause | B（6/6） | [中](categories/web-scraping/crawling-tools/scrapling.zh.md) · [EN](categories/web-scraping/crawling-tools/scrapling.md) |
 | **trafilatura** | Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML | Apache-2.0 | A（6/6） | [EN](categories/web-scraping/article-extraction/trafilatura.md) · [中](categories/web-scraping/article-extraction/trafilatura.zh.md) |
 
 ### auth
