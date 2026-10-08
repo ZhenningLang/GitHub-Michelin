@@ -16,6 +16,7 @@
 | **OpenFang** | You want autonomous agents that run on a schedule from one self-hosted Rust binary. | C (5/6) | [→](openfang.md) |
 | **Parlant** | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. | C (5/6) | [→](parlant.md) |
 | **Symphony** | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. | C (5/6) | [→](symphony.md) |
+| **Tale** | Use it when teammates and coding agents need one task record for briefs, persistent working files, deliverables, and review — and you can operate its multi-service stack. | B (5/6) | [→](tale.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [OpenFang](openfang.md) | ✅ | C (5/6) | You want autonomous agents that run on a schedule from one self-hosted Rust binary. |
 | [Parlant](parlant.md) | ✅ | C (5/6) | Use it when you build a customer-facing agent that must stay on-rails via behavioral guidelines — overkill for simple or free-form agents. |
 | [Symphony](symphony.md) | ✅ | C (5/6) | Your Linear backlog and Codex agent need a self-hosted orchestrator running isolated per-issue autonomous implementation runs. |
+| [Tale](tale.md) | ✅ | B (5/6) | Use it when teammates and coding agents need one task record for briefs, persistent working files, deliverables, and review — and you can operate its multi-service stack. |
 
 ## What belongs here
 
