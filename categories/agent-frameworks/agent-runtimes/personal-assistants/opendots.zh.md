@@ -77,7 +77,7 @@ health:
 
 你是开发者，或者一个人带小团队，想要的不是一个助理，而是几个常驻的专职 AI：“Scout”查资料，“Quill”写草稿，第三个按计划盯某个页面。你希望它们待在你自己托管、能随便改的工作区里：产出落成类似 Notion 的文档库里的页面，每次保存你来批；有人在 Slack 线程里 @ 它、或你打电话给它时，答话的还是同一个专职 Dot，长任务在后台接着跑。和同厂的 [OpenMuse](openmuse.zh.md)（同一家公司、同一套 AG-UI 内核）相比，当你要的是**多个按角色划权限的专职 Dot，加文档工作区、Slack 和语音通话**，选 OpenDots；OpenMuse 是一个跑腿的助理，配手机 App、Google 邮件日历和断网终端。和 [Rakazo](rakazo.zh.md) 相比，当你想让 MCP 写操作逐个过审批、又想要一份打算自己重写的起步代码，并且能接受对话链路里有一个 CopilotKit 服务时，选 OpenDots；如果不允许依赖任何托管服务，选 Rakazo。它是模板，所以真正的触发点是：“我想做自己的 agent 工作区产品，宁可 fork 一个能跑的，也不想自己把 CopilotKit SDK、模型循环、电脑服务和文档编辑器拼起来。”
 
-别和 `Anil-matcha/open-dots` 混淆：那是另一位作者的 Python 项目，名字和定位相近，但不是同一个东西。
+别和 [Open Dots](../agent-services/open-dots.zh.md)（`Anil-matcha/open-dots`）混淆：那是另一位作者的 Python 项目，名字和定位相近，但不是同一个东西。
 
 ## 怎么用起来
 

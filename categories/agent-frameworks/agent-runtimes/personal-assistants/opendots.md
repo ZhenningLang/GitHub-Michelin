@@ -77,7 +77,7 @@ Your "AI assistant" is a chat tab: the researcher and the writer are the same bl
 
 You are a developer or a one-person team lead who wants several standing AI specialists rather than one assistant — "Scout" researches, "Quill" drafts, a third watches a page on a schedule — and you want them in a workspace you host and can edit: their output lands as pages in a Notion-like document library, you approve each save, and the same specialist answers when you mention it in a Slack thread or call it by voice while it keeps working in the background. You pick OpenDots over its sibling [OpenMuse](openmuse.md) (same vendor, same AG-UI core) when the deciding shape is **multiple role-scoped specialists plus a document workspace, Slack and calls**, rather than OpenMuse's one errand-runner with a phone app, Google mail/calendar and a network-less terminal. You pick it over [Rakazo](rakazo.md) when you want per-tool approval on MCP write actions and a starting codebase you will rewrite, and you accept a CopilotKit service in the chat path; pick Rakazo when nothing hosted may be required. It is a template, so the real trigger is "I want to build my own agent workspace product and would rather fork a working one than assemble the CopilotKit SDK, a model loop, a computer service and a document editor myself."
 
-Not to be confused with `Anil-matcha/open-dots`, a separate Python project by another author with a similar name and pitch.
+Not to be confused with [Open Dots](../agent-services/open-dots.md) (`Anil-matcha/open-dots`), a separate Python project by another author with a similar name and pitch.
 
 ## How it works
 
