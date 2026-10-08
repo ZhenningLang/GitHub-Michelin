@@ -259,6 +259,7 @@ CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconsc
 Claudeception,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
 Cloud function calling (OpenAI / Gemini),categories/function-calling/functionary.md,,no
+Cloudflare API MCP server (`cloudflare/mcp`),categories/agent-skills/vendor-collections/cloudflare-skills.md,,no
 Cloudflare Turnstile,categories/captcha/capjs.md,,no
 cloudflare/sandbox-sdk,categories/sandboxing/cloudflare-computer.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
@@ -280,7 +281,7 @@ Confluent Control Center,categories/kafka-tools/kafka-ui.md,,no
 confluent-kafka-python,categories/kafka-tools/kafka-python.md,,no
 Conform (`edmundhung/conform`),categories/web-ui/forms/tanstack-form.md,,no
 Context7,categories/agent-skills/vendor-collections/modern-web-guidance.md,,no
-Context7 (`upstash/context7`),categories/agent-tooling/harness-extensions/tanstack-intent.md,,no
+Context7 (`upstash/context7`),categories/agent-skills/vendor-collections/cloudflare-skills.md,,no
 Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no

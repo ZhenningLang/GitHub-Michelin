@@ -579,6 +579,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/android-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/android-skills.md) |
 | **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) · [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) |
 | **Agent Toolkit for AWS** | 当你的编码 agent 在真实 AWS 账号里干活、你既要 AWS 当前的剧本、又要 IAM 和 CloudTrail 能把 agent 的调用和你的分开时用：约 114 个 skill 加一个托管 MCP 端点；只管 AWS，托管那一半能看到你的流量。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md) |
+| **Cloudflare Skills** | 当你的编码 agent 在 Cloudflare 上搭东西、总凭过时记忆写时用：16 个官方 skill，帮它选对 Cloudflare 产品并先读当前文档，外加一条托管 MCP 配置；只管 Cloudflare，无 tag，多数是指针，需要联网。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/cloudflare-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/cloudflare-skills.md) |
 
 #### agent-skills / subagent-collections
 
