@@ -15,6 +15,9 @@
 | **Moli** | Use it when a structure-first agent fleet needs ~100 MB single-process browsing with real layout/screenshots only as an opt-in exception, over CDP+WebDriver. | B (6/6) | [→](moli.md) |
 | **Lightpanda** | Use it when mass JS+DOM extraction never needs pixels: a render-engine-free Zig browser, ~16x lighter than Chrome (vendor-reported), with CDP/BiDi/MCP surfaces. | B (6/6) | [→](lightpanda.md) |
 | **Obscura** | Use it when scraping in adversarial lanes wants a self-contained Rust browser with built-in stealth and always-on rendering. | B (6/6) | [→](obscura.md) |
+| **undetected-chromedriver** | Use it only to keep an existing Python Selenium suite running past chromedriver's bot-detection markers — the last PyPI release is from 2024-02, so new work belongs on nodriver or SeleniumBase UC Mode. | C (4/6) | [→](undetected-chromedriver.md) |
+| **Camoufox** | Use it when a Playwright scraper is blocked because the browser itself is detected: a Firefox fork with engine-level fingerprint spoofing — Firefox-only, ~1.3 GB, self-declared not production-stable. | B (6/6) | [→](camoufox.md) |
+| **rebrowser-playwright** | Use it only when an existing Node.js Playwright job pinned to 1.52 is flagged for the `Runtime.Enable` CDP signal on Chrome — a pre-patched drop-in package, frozen since 2025-05. | D (3/6) | [→](rebrowser-playwright.md) |
 
 ## Comparison matrix
 
@@ -28,7 +31,10 @@
 | [Moli](moli.md) | ✅ | B (6/6) | Use it when a structure-first agent fleet needs ~100 MB single-process browsing with real layout/screenshots only as an opt-in exception, over CDP+WebDriver. |
 | [Lightpanda](lightpanda.md) | ✅ | B (6/6) | Use it when mass JS+DOM extraction never needs pixels: a render-engine-free Zig browser, ~16x lighter than Chrome (vendor-reported), with CDP/BiDi/MCP surfaces. |
 | [Obscura](obscura.md) | ✅ | B (6/6) | Use it when scraping in adversarial lanes wants a self-contained Rust browser with built-in stealth and always-on rendering. |
-| undetected-chromedriver / SeleniumBase | 未收录 | — | Selenium-compatible stealth tooling and a batteries-included Python browser-testing framework named on the nodriver page. |
+| [undetected-chromedriver](undetected-chromedriver.md) | ✅ | C (4/6) | Keeps every Selenium call while patching chromedriver's markers out, at the price of GPL-3.0, no sandbox by default, and no release since 2024-02. |
+| SeleniumBase | 未收录 | — | A batteries-included Python browser-testing framework whose UC Mode is built on undetected-chromedriver; named on the nodriver and undetected-chromedriver pages. |
+| [Camoufox](camoufox.md) | ✅ | B (6/6) | Keeps Playwright's API on a Firefox rebuilt to hide automation and rotate device identities; you pay in a gigabyte-class download, no Chrome identity, a 2025 maintenance gap, and ToS/legal exposure. |
+| [rebrowser-playwright](rebrowser-playwright.md) | ✅ | D (3/6) | Keeps the Playwright API while removing one detectable CDP command; frozen at Playwright 1.52.0 with no maintainer activity since 2025-05, so patchright is the live choice for new work. |
 
 ## What belongs here
 

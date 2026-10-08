@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "VibeVoice does",
+    "zh": "VibeVoice 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo inside a CUDA PyTorch container and install it in place",
+      "zh": "在带 CUDA 的 PyTorch 容器里克隆仓库并就地安装",
+      "code": "pip install -e ."
+    },
+    {
+      "lane": "you",
+      "en": "Point the file-inference script at the model id and your recording",
+      "zh": "把推理脚本指向模型名和你的录音文件",
+      "code": "python demo/vibevoice_asr_inference_from_file.py",
+      "component": {
+        "en": "demo inference script",
+        "zh": "demo 推理脚本"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Downloads the 7B checkpoint from Hugging Face and loads it in bfloat16 on the GPU",
+      "zh": "下载 7B 权重，以 bfloat16 加载到 GPU"
+    },
+    {
+      "lane": "them",
+      "en": "Squeezes the whole recording, up to 60 minutes, into 7.5 speech frames per second",
+      "zh": "把整段录音（最长 60 分钟）压成每秒 7.5 帧的语音表示",
+      "component": {
+        "en": "acoustic + semantic tokenizers",
+        "zh": "声学 + 语义 tokenizer"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The language model writes one JSON transcript: start time, end time, speaker ID and text per segment",
+      "zh": "语言模型一次写出 JSON 转写：每段的起止时间、说话人编号和文字",
+      "component": {
+        "en": "Qwen2.5-based decoder",
+        "zh": "基于 Qwen2.5 的解码器"
+      }
+    }
+  ],
+  "value": {
+    "en": "Who said what and when for an hour-long recording from one model call — no separate diarization model, aligner or chunk-stitching code to maintain",
+    "zh": "一次模型调用就拿到一小时录音的“谁、何时、说了什么”——不用再维护说话人分离模型、对齐器和分块拼接代码"
+  },
+  "sources": [
+    "https://github.com/microsoft/VibeVoice docs/vibevoice-asr.md (Installation: NVIDIA PyTorch container nvcr.io/nvidia/pytorch:25.12-py3, git clone, `pip install -e .`; Usage 2: `python demo/vibevoice_asr_inference_from_file.py --model_path microsoft/VibeVoice-ASR --audio_files [add an audio path here]`; Key Features: 60 minutes within 64K token length, joint ASR + diarization + timestamping)",
+    "https://github.com/microsoft/VibeVoice demo/vibevoice_asr_inference_from_file.py (from_pretrained with dtype bfloat16 on CUDA; --max_new_tokens default 32768; post_process_transcription -> segments with start_time/end_time/speaker_id/text)",
+    "https://github.com/microsoft/VibeVoice vibevoice/processor/vibevoice_asr_processor.py (target_sample_rate=24000, speech_tok_compress_ratio=3200 -> 7.5 frames/s; system prompt 'transcribes audio input into text output in JSON format'; keys 'Start time', 'End time', 'Speaker ID', 'Content')",
+    "https://github.com/microsoft/VibeVoice vibevoice/modular/modeling_vibevoice_asr.py (acoustic_tokenizer + semantic_tokenizer); https://huggingface.co/microsoft/VibeVoice-ASR config.json (decoder_config model_type qwen2, hidden_size 3584, 28 layers); README Risks section (Qwen2.5 base model)",
+    "https://huggingface.co/microsoft/VibeVoice-ASR (safetensors: 8,674,021,857 BF16 parameters; license mit)"
+  ]
+}

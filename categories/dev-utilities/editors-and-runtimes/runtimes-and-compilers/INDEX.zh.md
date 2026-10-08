@@ -12,6 +12,7 @@
 | **Tauri** | 当你想用 Rust 和操作系统原生 Webview 构建小巧、快速、安全的跨平台桌面与移动应用，替代 Electron 时用它。 | A（6/6） | [→](tauri.zh.md) |
 | **scriptc** | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 | C（6/6） | [→](scriptc.zh.md) |
 | **NetWasm** | 当 C# 程序必须打包成一个极小的独立 WASI 组件交付——GC 链接在产物里、目标机器不装 .NET——时用它；但它是 7 周大的单人 pre-1.0 项目，工具链挂自定义非开源许可证。 | C（4/6） | [→](netwasm.zh.md) |
+| **Effect** | 当一个要长期维护的 TypeScript 服务老是以类型里没写的方式出错，而你想让错误、依赖和取消都由 `tsc` 检查、跑在一个零依赖的运行时上时用它——但这套模型会传染，4.0 才发布一周，HTTP／SQL／RPC／工作流模块还标着 unstable。 | A（6/6） | [→](effect.zh.md) |
 
 ## 对比矩阵
 
@@ -22,7 +23,8 @@
 | [Tauri](tauri.zh.md) | ✅ | A（6/6） | 当你想用 Rust 和操作系统原生 Webview 构建小巧、快速、安全的跨平台桌面与移动应用，替代 Electron 时用它。 |
 | [scriptc](scriptc.zh.md) | ✅ | C（6/6） | 当类型写干净的 TypeScript CLI 或小型服务要以又小、启动又快的原生二进制或 WASI 模块交付时用它——但它只是两个月大的 Vercel Labs 实验，编不了静态的部分会被直接拒绝。 |
 | [NetWasm](netwasm.zh.md) | ✅ | C（4/6） | 当 C# 程序必须打包成一个极小的独立 WASI 组件交付——GC 链接在产物里、目标机器不装 .NET——时用它；但它是 7 周大的单人 pre-1.0 项目，工具链挂自定义非开源许可证。 |
+| [Effect](effect.zh.md) | ✅ | A（6/6） | 当一个要长期维护的 TypeScript 服务老是以类型里没写的方式出错，而你想让错误、依赖和取消都由 `tsc` 检查、跑在一个零依赖的运行时上时用它——但这套模型会传染，4.0 才发布一周，HTTP／SQL／RPC／工作流模块还标着 unstable。 |
 
 ## 什么该放这里
 
-通用运行时（Deno、Bun），把程序编成独立原生二进制或 WASI 模块的编译器（scriptc、NetWasm），以及把 Web 前端打包成桌面／移动应用的应用运行时（Tauri）。不含绑定某个框架的脚手架或调试工具（见 `tanstack-tooling`），也不含编辑器（见 `code-editors`）。
+通用运行时（Deno、Bun），把程序编成独立原生二进制或 WASI 模块的编译器（scriptc、NetWasm），以及把 Web 前端打包成桌面／移动应用的应用运行时（Tauri）。也包括在语言内部替换平台自带异步与错误模型、供整个应用使用的运行时库（Effect）。不含绑定某个框架的脚手架或调试工具（见 `tanstack-tooling`），也不含编辑器（见 `code-editors`）。

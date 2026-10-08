@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Effect does", "zh": "Effect 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the core package to a strict TypeScript project", "zh": "在开了 strict 的 TypeScript 项目里装上核心包", "code": "npm install effect"},
+    {"lane": "you", "en": "Write the logic as a generator; fail by yielding a tagged error instead of throwing", "zh": "把逻辑写成生成器，出错时 yield 带标签的错误而不是 throw", "code": "Effect.gen · Schema.TaggedError"},
+    {"lane": "you", "en": "Put each outside dependency behind a service and give it a layer that builds it", "zh": "把每个外部依赖收进一个服务，再写一个负责构造它的 layer", "code": "Context.Service · Layer.effect"},
+    {"lane": "them", "en": "The types now list every unhandled error and every service still missing, so tsc flags the gaps", "zh": "类型里列出还没处理的错误和还没提供的服务，漏了 tsc 就报错", "component": {"en": "Effect<A, E, R> type", "zh": "Effect<A, E, R> 类型"}},
+    {"lane": "you", "en": "Hand the finished program to the runtime at the process entrypoint", "zh": "在进程入口把写好的程序交给运行时", "code": "NodeRuntime.runMain", "component": {"en": "@effect/platform-node", "zh": "@effect/platform-node"}},
+    {"lane": "them", "en": "Runs it on fibers, and on SIGINT / SIGTERM interrupts them so cleanup code still runs", "zh": "用纤程执行，收到 SIGINT／SIGTERM 时中断纤程，清理代码照样跑完", "component": {"en": "fiber runtime", "zh": "纤程运行时"}}
+  ],
+  "value": {"en": "Failure modes and dependencies are checked by the compiler, and cancellation and shutdown are handled for you instead of by hand-written try/finally", "zh": "失败方式和依赖由编译器检查，取消与退出由运行时处理，不用再手写 try/finally"},
+  "sources": [
+    "README Installation (npm install effect) and Requirements (strict flag, TypeScript 5.9+, Node.js 18+)",
+    "LLMS.md 'Using Effect.gen' (Effect.gen, yield*, Schema.TaggedError, return yield* new FileProcessingError)",
+    "LLMS.md 'Context.Service' (class Database extends Context.Service, static layer = Layer.effect)",
+    "packages/effect/src/Effect.ts (export interface Effect<out A, out E = never, out R = never>)",
+    "ai-docs/src/01_effect/06_running/10_run-main.ts (NodeRuntime.runMain from @effect/platform-node; installs SIGINT / SIGTERM handlers and interrupts running fibers for graceful shutdown)"
+  ]
+}

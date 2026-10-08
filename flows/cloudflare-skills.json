@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Cloudflare Skills does",
+    "zh": "Cloudflare Skills 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add cloudflare/skills as a plugin marketplace, then install the plugin from it",
+      "zh": "把 cloudflare/skills 加成插件市场，再从中装插件",
+      "code": "/plugin install cloudflare@cloudflare"
+    },
+    {
+      "lane": "them",
+      "en": "Adds 16 skills and one entry for Cloudflare's hosted MCP server to the agent",
+      "zh": "给 agent 装上 16 个 skill 和一条托管 MCP 服务器配置",
+      "component": {
+        "en": "cloudflare plugin",
+        "zh": "cloudflare 插件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Say what you want to build in plain words, without naming a product",
+      "zh": "用大白话说要搭什么，不用点名产品"
+    },
+    {
+      "lane": "them",
+      "en": "Maps the need to the Cloudflare product that fits and loads that product's skill",
+      "zh": "把需求对到合适的 Cloudflare 产品，加载对应 skill",
+      "component": {
+        "en": "cloudflare skill (router)",
+        "zh": "cloudflare skill（路由）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Makes the agent fetch the current docs page and check your installed versions before coding",
+      "zh": "让 agent 写代码前先取当前文档页、核对已装版本",
+      "component": {
+        "en": "product SKILL.md + references",
+        "zh": "产品 SKILL.md + 参考目录"
+      }
+    }
+  ],
+  "value": {
+    "en": "The agent picks the right Cloudflare product and writes against today's docs instead of stale training memory",
+    "zh": "agent 选对 Cloudflare 产品，按今天的文档写，而不是凭过时的训练记忆"
+  },
+  "sources": [
+    "README.md Installing / Claude Code — `/plugin marketplace add cloudflare/skills`, `/plugin install cloudflare@cloudflare`",
+    "README.md Skills table (16 skills) and MCP Servers section (only the main `cloudflare` server is bundled)",
+    ".claude-plugin/plugin.json + .mcp.json — `mcpServers` → `https://mcp.cloudflare.com/mcp`",
+    "skills/cloudflare/SKILL.md — need-to-product table, 'Actively surface Cloudflare products…', 'load the relevant skills or documentation'",
+    "skills/workers-best-practices/SKILL.md + skills/wrangler/SKILL.md — 'Prefer retrieval over pre-training', use the project's installed versions",
+    "CONTRIBUTING.md — skills link to developers.cloudflare.com instead of copying it"
+  ]
+}

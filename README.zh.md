@@ -122,6 +122,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **MLX / mlx-lm** | Run LLMs with MLX | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 | **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/stable-diffusion-cpp.md) |
+| **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | CC-BY-NC-SA-4.0 | B（5/6） | [中](categories/on-device-ml/birdnet-go.zh.md) · [EN](categories/on-device-ml/birdnet-go.md) |
 
 ### function-calling
 
@@ -140,9 +141,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **PhantomJS** | 新项目别用——已归档、停更的可脚本化无头浏览器；改用 Puppeteer/Playwright 的无头 Chrome 或 Selenium。 | BSD-3-Clause | C（5/6） | [中](categories/web-automation/browser-driver-frameworks/phantomjs.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/phantomjs.md) |
 | **Selenium Wire** | 当遗留的 Selenium 测试套件需要读取或改写浏览器后台 HTTP 流量时用它——但它已归档，新项目应改用 Selenium 4 原生 CDP/BiDi 或 Playwright。 | MIT | D（5/6） | [中](categories/web-automation/browser-driver-frameworks/selenium-wire.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/selenium-wire.md) |
 | **nodriver** | 当 Python 异步代码需要绕过 WebDriver、直接控制 Chromium CDP 时用它——只支持 Chromium、采用 AGPL-3.0，且不是完整测试框架。 | AGPL-3.0 | C（5/6） | [中](categories/web-automation/browser-driver-frameworks/nodriver.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/nodriver.md) |
+| **undetected-chromedriver** | 只在要让现成的 Python Selenium 代码绕开 chromedriver 自带的检测标记、又没法重写时用它——PyPI 最后一版停在 2024-02，新项目该用 nodriver 或 SeleniumBase UC Mode。 | GPL-3.0 | C（4/6） | [中](categories/web-automation/browser-driver-frameworks/undetected-chromedriver.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/undetected-chromedriver.md) |
 | **Moli** | 当结构优先的 agent 机群要用约 100 MB 的单进程浏览、真实布局与截图只是按需打开的例外，协议面要 CDP+WebDriver 时用它。 | Apache-2.0 OR MIT | B（6/6） | [中](categories/web-automation/browser-driver-frameworks/moli.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/moli.md) |
 | **Lightpanda** | 当批量 JS+DOM 提取永远不看像素时用它：无渲染引擎的 Zig 浏览器，自报比 Chrome 省 16 倍内存，带 CDP/BiDi/MCP。 | AGPL-3.0 | B（6/6） | [中](categories/web-automation/browser-driver-frameworks/lightpanda.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/lightpanda.md) |
 | **Obscura** | 当对抗性抓取要一个自带 stealth、常开渲染、单文件的 Rust 浏览器时用它。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/browser-driver-frameworks/obscura.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/obscura.md) |
+| **Camoufox** | 当 Playwright 爬虫因为浏览器本身被识别而被拦时用它：在引擎层伪装指纹的 Firefox 分支——只有 Firefox、约 1.3 GB、自己声明不适合稳定生产。 | MPL-2.0 | B（6/6） | [中](categories/web-automation/browser-driver-frameworks/camoufox.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/camoufox.md) |
+| **rebrowser-playwright** | 只在一个钉在 1.52 的现有 Node.js Playwright 任务因 Chrome 上的 `Runtime.Enable` CDP 信号被识别时用它——预先打好补丁的直接替换包，自 2025-05 起冻结。 | Apache-2.0 | D（3/6） | [中](categories/web-automation/browser-driver-frameworks/rebrowser-playwright.zh.md) · [EN](categories/web-automation/browser-driver-frameworks/rebrowser-playwright.md) |
 | **Playwright MCP** | 当支持 MCP 的 agent 需要厂商官方、基于无障碍树快照的确定性浏览器自动化时用它——适合有状态的探索式回路；微软自家 README 把高吞吐 coding agent 引向它的 CLI 兄弟。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/playwright-family/playwright-mcp.zh.md) · [EN](categories/web-automation/playwright-family/playwright-mcp.md) |
 | **Playwright CLI** | 当 coding agent（Claude Code、Copilot）需要便宜、token 高效的浏览器命令并装好 SKILLs 时用它——微软自己推荐给 coding agent 的路径；v0.1.x，刚重新定位。 | Apache-2.0 | A（6/6） | [中](categories/web-automation/playwright-family/playwright-cli.zh.md) · [EN](categories/web-automation/playwright-family/playwright-cli.md) |
 | **OpenCLI** | 当 agent 必须操作藏在你登录态后面的站点时用它——经扩展+daemon 桥接你已登录的 Chrome，并把站点工作流固化成可复用 CLI 命令；要预期适配器 churn 和真实的信任面。 | Apache-2.0 | B（6/6） | [中](categories/web-automation/agent-browser-tools/opencli.zh.md) · [EN](categories/web-automation/agent-browser-tools/opencli.md) |
@@ -154,6 +158,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | MIT | C（6/6） | [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) · [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/pinchtab.zh.md) · [EN](categories/web-automation/agent-browser-tools/pinchtab.md) |
 | **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | MIT | B（5/6） | [中](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md) |
+| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | MIT | C（5/6） | [中](categories/web-automation/agent-browser-tools/playwright-bot-bypass.zh.md) · [EN](categories/web-automation/agent-browser-tools/playwright-bot-bypass.md) |
+| **camofox-browser** | 当一个多用户、常驻的 agent 总被弹验证码时用它——在 Camoufox 反检测 Firefox 之上的常驻 REST/MCP/OpenClaw 服务，带按用户隔离的会话和按编号操作的快照；路由默认敞开、遥测默认开启，提交集中在一人，项目才八个月。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/camofox-browser.zh.md) · [EN](categories/web-automation/agent-browser-tools/camofox-browser.md) |
 
 ### llm-training
 
@@ -372,6 +378,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Guizang PPT Skill** | 当你想让 agent 把文章变成有设计感的单文件 HTML 翻页 PPT（杂志风或瑞士风）时用它。 | AGPL-3.0-only | C（4/5） | [中](categories/agent-skills/slides-ppt/guizang-ppt.zh.md) · [EN](categories/agent-skills/slides-ppt/guizang-ppt.md) |
 | **Guizang Social Card Skill** | 当你在 Claude Code/Codex 里想让 agent 用锁定的编辑风/瑞士风生成小红书图文或公众号封面对（单文件 HTML 渲染成 PNG）时使用。 | AGPL-3.0-only | D（3/5） | [中](categories/agent-skills/visual-content/guizang-social-card.zh.md) · [EN](categories/agent-skills/visual-content/guizang-social-card.md) |
 | **handraw-style** | 当你想把编号化的手绘画风、版面图型与主题色（279/122/36）交给装好的 agent skill 拼成中英双语生图提示词时用它。 | MIT | C（4/5） | [中](categories/agent-skills/visual-content/handraw-style.zh.md) · [EN](categories/agent-skills/visual-content/handraw-style.md) |
+| **hand-drawn-styles** | 当你已经定下几种手绘画风、需要 agent 把每套实测配方原样复现（22 套配方，其中三套带锚点图和验收规则）成可复制的生图提示词时用它。 | MIT | C（5/6） | [中](categories/agent-skills/visual-content/hand-drawn-styles.zh.md) · [EN](categories/agent-skills/visual-content/hand-drawn-styles.md) |
 | **Lieflat Charts** | 当你想让编码助手把数据做成模板锁定、可直接发布的单文件 HTML 图表或 12 套中英双语整页报告、整套交付共用一种编辑风视觉语言时用它。 | PolyForm-Noncommercial-1.0.0 | C（3/5） | [中](categories/agent-skills/visual-content/lieflat-charts.zh.md) · [EN](categories/agent-skills/visual-content/lieflat-charts.md) |
 | **SdPaint** | 当你已在跑 AUTOMATIC1111＋ControlNet、想要一个实时草图转图的绘画循环时用它——但它自 2024 年起停滞，且自身不带任何模型。 | MIT | D（3/6） | [中](categories/ai-design-generation/sdpaint.zh.md) · [EN](categories/ai-design-generation/sdpaint.md) |
 ### dev-utilities
@@ -412,6 +419,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | C（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.md) |
 | **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | D（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md) |
 | **NetWasm** | 把可达的 C# 编译成一个极小的独立 WASI 组件——GC 链接在产物里、目标机器不装 .NET 运行时——但它是 7 周大的单人 pre-1.0 项目，编译器工具链挂自定义非开源许可证。 | NOASSERTION (Community License 1.0 tooling + MIT core) | C（4/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md) |
+| **Effect** | 把 TypeScript 操作的错误、依赖和取消写进类型，并跑在一个零依赖的纤程运行时上，schema、HTTP、SQL 和追踪都在同一个包里——但这套模型会传染，4.0 才发布一周，核心之外的大多数模块还标着 unstable。 | MIT | A（6/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md) |
 | **fzf** | :cherry_blossom: A command-line fuzzy finder | MIT | A（6/6） | [EN](categories/dev-utilities/data-tools/fzf.md) · [中](categories/dev-utilities/data-tools/fzf.zh.md) |
 | **jq** | Command-line JSON processor | NOASSERTION | A（5/6） | [EN](categories/dev-utilities/data-tools/jq.md) · [中](categories/dev-utilities/data-tools/jq.zh.md) |
 | **Descheduler** | 当 Kubernetes 集群已经失衡、你想要一个 CronJob 定期驱逐违反策略的 Pod、让调度器重新安置它们时用它——它不是算出来的 placement 计划。 | Apache-2.0 | A（6/6） | [中](categories/dev-utilities/ops-infra/descheduler.zh.md) · [EN](categories/dev-utilities/ops-infra/descheduler.md) |
@@ -577,6 +585,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Android Skills** | Google 官方 24 个 skill 包，覆盖模型仍会失手的 Android 活（edge-to-edge、R8、Navigation 3、Play 政策）——用 Android CLI 安装，不是 `npx skills add`。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/android-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/android-skills.md) |
 | **Modern Web Guidance** | Google Chrome 官方的“先搜再取”skill：写 HTML/CSS/客户端 JS 前，agent 用本地搜索的 npm CLI 取回一篇经评测打分的现代平台指南（原生 API、Baseline 支持、适度降级）。 | Apache-2.0 | B（5/6） | [中](categories/agent-skills/vendor-collections/modern-web-guidance.zh.md) · [EN](categories/agent-skills/vendor-collections/modern-web-guidance.md) |
 | **Agent Toolkit for AWS** | 当你的编码 agent 在真实 AWS 账号里干活、你既要 AWS 当前的剧本、又要 IAM 和 CloudTrail 能把 agent 的调用和你的分开时用：约 114 个 skill 加一个托管 MCP 端点；只管 AWS，托管那一半能看到你的流量。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.zh.md) · [EN](categories/agent-skills/vendor-collections/agent-toolkit-for-aws.md) |
+| **Cloudflare Skills** | 当你的编码 agent 在 Cloudflare 上搭东西、总凭过时记忆写时用：16 个官方 skill，帮它选对 Cloudflare 产品并先读当前文档，外加一条托管 MCP 配置；只管 Cloudflare，无 tag，多数是指针，需要联网。 | Apache-2.0 | A（4/5） | [中](categories/agent-skills/vendor-collections/cloudflare-skills.zh.md) · [EN](categories/agent-skills/vendor-collections/cloudflare-skills.md) |
 
 #### agent-skills / subagent-collections
 
@@ -867,6 +876,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Airframe** | 当要在自己的 Rust 程序里内嵌 GGUF 推理、且要纯 Rust 构建加一种着色器语言覆盖全显卡（WebGPU）时用它——接受一个约六个月大、单贡献者、只认证 12 个架构家族且含 pending 专利子系统的引擎。 | MIT | C（4/6） | [EN](categories/llm-inference/local-runtimes/airframe.md) · [中](categories/llm-inference/local-runtimes/airframe.zh.md) |
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
+| **DwarfStar (ds4)** | 当你有一台 96 GB 以上的 Mac、DGX Spark 或 Strix Halo 主机，想让少数几个前沿 MoE 模型（DeepSeek V4、GLM 5.x、Qwen3.8）在本地驱动编程智能体、内存不够时溢出到固态硬盘时用它——接受一个五个月大、单人维护、没有发布版本、只认自家 GGUF 文件的引擎。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/ds4.md) · [中](categories/llm-inference/local-runtimes/ds4.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 | **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
 | **llm-d** | 当 Kubernetes 上一批 vLLM／SGLang pod 需要懂大模型的路由（按前缀缓存和排队派单）、预填充／解码拆分或 KV 缓存卸载，并想直接用跑过基准的 Helm／kustomize 配方时用它——接受一个年轻的 1.0 前 CNCF Sandbox 技术栈、较重的集群运维和版本间频繁的组件变动。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/serving-engines/llm-d.zh.md) · [EN](categories/llm-inference/serving-engines/llm-d.md) |
@@ -971,6 +981,8 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **newspaper** | 用来从新闻 URL 批量提取正文、作者和元数据——但原版（newspaper3k）已陈旧，活跃路径是 newspaper4k 分叉。 | MIT | B（5/6） | [中](categories/web-scraping/article-extraction/newspaper.zh.md) · [EN](categories/web-scraping/article-extraction/newspaper.md) |
 | **requests-html** | 可作为小型 requests + HTML 解析脚本参考——基本停更（~2 年没动），JS 渲染路径脆弱；新项目优先 Playwright + parsel。 | MIT | D（3/6） | [中](categories/web-scraping/crawling-tools/requests-html.zh.md) · [EN](categories/web-scraping/crawling-tools/requests-html.md) |
 | **Firecrawl** | 规模化搜索、抓取网页并提取干净 Markdown 或结构化数据的 API——但 AGPL-3.0 可能限制商用。 | AGPL-3.0 | B（5/6） | [中](categories/web-scraping/crawling-tools/firecrawl.zh.md) · [EN](categories/web-scraping/crawling-tools/firecrawl.md) |
+| **Claude Code Skill Scrapling** | 当你想让 Python 机器上的 Claude Code agent 在遇到 Cloudflare 403 后自己从普通请求升级到隐身浏览器、而不是瞎猜时用它——但它是只有四次提交的单人封装，速查卡已和当前 Scrapling 脱节；库自带的官方 skill 才是有人维护的那份。 | MIT | C（4/5） | [中](categories/web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) · [EN](categories/web-scraping/crawling-tools/claude-code-skill-scrapling.md) |
+| **Scrapling** | 当 Python 爬虫被 Cloudflare 拦住、或网站一改版就坏时用它——隐身 Chromium 抓取器、按相似度找回元素的自适应选择器和类 Scrapy 的爬虫层集于一个包；只对付 Cloudflare，0.x 常有破坏性变更，单人维护。 | BSD-3-Clause | B（6/6） | [中](categories/web-scraping/crawling-tools/scrapling.zh.md) · [EN](categories/web-scraping/crawling-tools/scrapling.md) |
 | **trafilatura** | Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML | Apache-2.0 | A（6/6） | [EN](categories/web-scraping/article-extraction/trafilatura.md) · [中](categories/web-scraping/article-extraction/trafilatura.zh.md) |
 
 ### auth
@@ -1116,6 +1128,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **VoxCPM** | 想用代码和权重都是 Apache-2.0 的模型自托管声音克隆、或用文字描述设计音色（覆盖 30 种语言）时用它；但要备好约 8 GB 显存的 GPU，长文本得自己切句（单次长输出会漂移），并发服务还要另起引擎。 | Apache-2.0 | B（5/6） | [中](categories/speech/voxcpm.zh.md) · [EN](categories/speech/voxcpm.md) |
 | **VoiceStudio** | 想要一个本地桌面应用把声音克隆、视频配音、听写和 agent 发声（MCP）一次装齐、还能切换十几个引擎时用它；但默认模型权重禁止商用，应用是 AGPL 且付费 Pro 档正在成形，项目只有半年历史、由一人维护。 | AGPL-3.0 | C（5/6） | [中](categories/speech/voicestudio.zh.md) · [EN](categories/speech/voicestudio.md) |
 | **IndexTTS** | 想让同一个克隆音色带出不同情绪——音色取自一段录音，情绪取自另一段录音、8 维向量或一句文字——并说中、英、日、西、阿五种语言时用它；但 B 站许可在月活超 1 亿或年收入超 1 亿元（以中文版为准）时要另行授权，精确时长配音尚未开放，也没有训练代码。 | NOASSERTION（B 站自定义许可） | A（3/6） | [中](categories/speech/index-tts.zh.md) · [EN](categories/speech/index-tts.md) |
+| **VibeVoice** | 当你想用一个自托管模型把最长一小时的多人录音直接转成“谁、何时、说了什么”的文字稿（带热词、50 多种语言、vLLM 服务和流式版本），或要一个约 0.3 秒就开口的英文 TTS 时用它——但 7B ASR 模型要 24 GB 以上显存，没有任何带 tag 的发布，而且最出名的多人长对话 TTS 代码已在 2025-09 被移除。 | MIT | A（4/6） | [中](categories/speech/vibevoice.zh.md) · [EN](categories/speech/vibevoice.md) |
 
 ### terminal-ui
 
@@ -1255,6 +1268,8 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft 面向生产 AI agent 的 public-preview 治理工具包：策略门控 tool call、身份 / 信任、审计 / 合规、MCP security gateway、SRE 控制，以及围绕 agent framework 的多语言 SDK。 | MIT | B（6/6） | [中](categories/agent-governance/agent-governance-toolkit.zh.md) · [EN](categories/agent-governance/agent-governance-toolkit.md) |
 | **SkillSpector** | NVIDIA 的 AI agent skill 安全扫描器：安装前通过 CLI/MCP 检查 prompt injection、外传、危险脚本、MCP poisoning、依赖，并输出 SARIF/JSON 证据。 | Apache-2.0 | B（5/6） | [中](categories/agent-governance/skillspector.zh.md) · [EN](categories/agent-governance/skillspector.md) |
+| **Snyk Agent Scan** | Snyk 的整机扫描器：清点 14 种编程 agent 里已装的 MCP 服务和 skill；发现在本地做，但每个结论都来自 Snyk 托管的闭源分析接口（要账号、有配额、数据外传）。 | Apache-2.0 | A（6/6） | [中](categories/agent-governance/agent-scan.zh.md) · [EN](categories/agent-governance/agent-scan.md) |
+| **claude-skill-audit** | 离线正则扫描整个 Claude Code `.claude/` 目录（skill、agent、hook、权限、MCP 配置、密钥）的零依赖 TypeScript 小工具；单一作者、0 star、检测浅，只能当快速 lint 用。 | MIT | C（5/6） | [中](categories/agent-governance/claude-skill-audit.zh.md) · [EN](categories/agent-governance/claude-skill-audit.md) |
 ### social-simulation
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |

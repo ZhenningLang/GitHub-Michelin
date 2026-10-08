@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "claude-skill-audit does", "zh": "claude-skill-audit 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and build it from source (there is no npm package yet)", "zh": "克隆仓库并从源码构建（还没有 npm 包）", "code": "npm install · npm run build"},
+    {"lane": "you", "en": "Point the CLI at your Claude Code config directory", "zh": "把 CLI 指向你的 Claude Code 配置目录", "code": "node dist/cli.js ~/.claude"},
+    {"lane": "them", "en": "Collects skills, agents, settings, MCP configs, rule files and archive paths", "zh": "收集 skill、agent、设置、MCP 配置、规则文件和压缩包路径", "component": {"en": "file loader", "zh": "文件加载器"}},
+    {"lane": "them", "en": "Matches each file against six pattern modules, then checks one cross-file chain", "zh": "逐个文件比对六组模式，再查一条跨文件组合链", "component": {"en": "rule modules", "zh": "规则模块"}},
+    {"lane": "them", "en": "Prints findings by severity with file:line and a fix; exits nonzero at high or above", "zh": "按严重度列出命中的文件行号和修法，达到 high 就以非零码退出"}
+  ],
+  "value": {"en": "One offline pass shows which config files to open first, instead of grepping each by hand", "zh": "离线跑一遍就知道先打开哪几个配置文件，不用逐个手工 grep"},
+  "sources": [
+    "https://github.com/tarang-tj/claude-skill-audit README 'One command' (git clone; npm install; npm run build; node dist/cli.js ~/.claude)",
+    "src/loaders.ts loadConfig (SKILL.md, agents/*.md, settings.json, settings.local.json, .mcp.json, .claude.json, CLAUDE.md, rules/*.md, binary paths)",
+    "src/rules/index.ts RULE_MODULES (seven modules: six per-file pattern modules plus escalationRules)",
+    "src/cli.ts (--fail-on default high, exit code 1) and src/report.ts renderText (severity groups, artifact:line, fix)"
+  ]
+}

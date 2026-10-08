@@ -17,6 +17,8 @@
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | C（6/6） | [→](jev-ultrafast.zh.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | B（6/6） | [→](pinchtab.zh.md) |
 | **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | B（5/6） | [→](invisible-playwright-mcp.zh.md) |
+| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | C（5/6） | [→](playwright-bot-bypass.zh.md) |
+| **camofox-browser** | 当一个多用户、常驻的 agent 总被弹验证码时用它——在 Camoufox 反检测 Firefox 之上的常驻 REST/MCP/OpenClaw 服务，带按用户隔离的会话和按编号操作的快照；路由默认敞开、遥测默认开启，提交集中在一人，项目才八个月。 | B（6/6） | [→](camofox-browser.zh.md) |
 
 ## 对比矩阵
 
@@ -32,6 +34,8 @@
 | [Jev Ultrafast](jev-ultrafast.zh.md) | ✅ | C（6/6） | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 |
 | [PinchTab](pinchtab.zh.md) | ✅ | B（6/6） | 一个常驻 Go 服务让 agent 经 CLI/HTTP/MCP 管多个隔离 Chrome 实例与具名配置档，动作和快照折进一次往返，外加默认全关的能力闸门与 IDPI 内容扫描；年轻、pre-1.0、实际单维护者。 |
 | [invisible_playwright_mcp](invisible-playwright-mcp.zh.md) | ✅ | B（5/6） | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 |
+| [playwright-bot-bypass](playwright-bot-bypass.zh.md) | ✅ | C（5/6） | 一个 agent skill 加约 180 行的工厂函数，架在带窗口的真 Chrome 和 rebrowser-playwright 上：指纹破绽不是伪造掉而是不存在，macOS 也能用；只适合桌面机，数据为作者自测，单人维护，核心依赖停滞。 |
+| [camofox-browser](camofox-browser.zh.md) | ✅ | B（6/6） | 一个共享的 Node 服务，把 Camoufox 反检测 Firefox 放到 REST、OpenClaw 和 MCP 工具后面，带按用户隔离的会话、cookie 导入和代理轮换；反检测能力全部继承自上游 Camoufox，不配置的话路由无鉴权、遥测开启，内存泄漏报告反复出现。 |
 
 ## 什么该放这里
 

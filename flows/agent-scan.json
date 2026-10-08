@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Agent Scan does", "zh": "Agent Scan 做的"},
+  "steps": [
+    {"lane": "you", "en": "Sign up at Snyk and export your API token", "zh": "注册 Snyk 账号，把 API token 设成环境变量", "code": "export SNYK_TOKEN=your-api-token-here"},
+    {"lane": "you", "en": "Run it with no arguments to scan the whole machine", "zh": "不带参数运行，扫描整台机器", "code": "uvx snyk-agent-scan@latest", "component": {"en": "snyk-agent-scan CLI", "zh": "snyk-agent-scan 命令行"}},
+    {"lane": "them", "en": "Finds the agents, MCP server configs and skills installed on this machine", "zh": "找出本机装了哪些 agent、MCP 服务配置和 skill", "component": {"en": "per-agent discoverers", "zh": "各 agent 的发现器"}},
+    {"lane": "you", "en": "Approve or decline each MCP server it wants to start or contact", "zh": "逐个批准或拒绝它要启动或连接的 MCP 服务", "component": {"en": "consent prompt (y/n)", "zh": "同意提示（y/n）"}},
+    {"lane": "them", "en": "Starts approved servers, reads their tool descriptions, redacts secrets", "zh": "启动获批的服务，读取工具描述，抹掉密钥", "component": {"en": "MCP client + redaction", "zh": "MCP 客户端 + 脱敏"}},
+    {"lane": "them", "en": "Sends descriptions and skill files to Snyk's API, prints scored risks", "zh": "把描述和 skill 文件发给 Snyk 接口，打印带分数的风险", "component": {"en": "Agent Scan analysis API", "zh": "Agent Scan 分析接口"}}
+  ],
+  "value": {"en": "One command shows which installed MCP servers and skills carry injection or malware risk — no hand-reading every tool description", "zh": "一条命令看出已装的 MCP 服务和 skill 里哪些带注入或恶意代码风险，不用逐个手读工具描述"},
+  "sources": [
+    "https://github.com/snyk/agent-scan README Quick Start (sign up, `export SNYK_TOKEN=your-api-token-here`, `uvx snyk-agent-scan@latest`)",
+    "README Security Warning + Interactive Consent for MCP Servers (y/n consent per server; stdio commands executed, remote URLs contacted)",
+    "README Analysis and Validation (data sent to the Agent Scan API; secrets redacted before transmission)",
+    "docs/scanning.md How It Works; docs/risks.md (scored risk indicators, 100/300/600/1000)",
+    "repo tree src/agent_scan/agents/*.py (one discoverer per agent), src/agent_scan/mcp_client.py, src/agent_scan/redact.py"
+  ]
+}

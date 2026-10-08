@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "hand-drawn-styles does",
+    "zh": "hand-drawn-styles 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Put the whole skill folder into your agent's skills directory and run the install check",
+      "zh": "把整个 skill 目录放进 agent 的技能目录，跑一次安装检查",
+      "code": "python3 -B scripts/check_skill.py",
+      "component": {"en": "protocol + recipes + scripts", "zh": "协议 + 配方 + 脚本"}
+    },
+    {
+      "lane": "you",
+      "en": "Say what to draw and name a style by number, Chinese name or English alias",
+      "zh": "说出要画什么，用编号、中文名或英文别名指定画风",
+      "code": "用吉卜力风画一只在下雨天打伞的猫"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves the style; if you named none, it shows the menu and waits for your pick",
+      "zh": "定位画风；没指定时列出菜单，等你来选",
+      "component": {"en": "PROTOCOL.md", "zh": "PROTOCOL.md"}
+    },
+    {
+      "lane": "them",
+      "en": "Copies that recipe out verbatim and fills the bracketed slots from your description",
+      "zh": "原样取出该配方，按你的描述填好方括号空位",
+      "component": {"en": "render_prompt.py", "zh": "render_prompt.py"}
+    },
+    {
+      "lane": "them",
+      "en": "Returns one copyable prompt — or, for styles 3.1/19/20, a JSON bundle with anchor images",
+      "zh": "交回一段可复制的提示词；3.1/19/20 号则是带锚点图的 JSON 调用包"
+    },
+    {
+      "lane": "you",
+      "en": "Paste it into your own image model and generate",
+      "zh": "贴进你自己的生图模型出图"
+    }
+  ],
+  "value": {
+    "en": "The look you validated once is reproduced word for word every time — no re-assembling style prompts, no agent rewording it",
+    "zh": "验证过一次的画风每次都逐字复现——不用再拼画风提示词，也不怕 agent 改写"
+  },
+  "sources": [
+    "INSTALL.md: 'python3 -B scripts/check_skill.py'; skill directory placement (~/.claude/skills/hand-drawn/, ~/.codex/skills/hand-drawn/)",
+    "README.md 用法要点 → 显式指定: '用吉卜力风画一只在下雨天打伞的猫'",
+    "PROTOCOL.md 执行流程 steps 1–5: style resolution, menu-and-wait, placeholder filling, output",
+    "SKILL.md items 3–6 and README.md 稳定生产调用: scripts/render_prompt.py, JSON call bundles for styles 3.1/19/20",
+    "README.md 这是什么: generation is left to the user's image model (gpt-image, 即梦, Midjourney)"
+  ]
+}

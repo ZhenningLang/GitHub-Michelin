@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Scrapling does", "zh": "Scrapling 做的"},
+  "steps": [
+    {"lane": "you", "phase": {"en": "First run", "zh": "第一次抓"}, "en": "Install the fetchers extra, then download the browsers", "zh": "装 fetchers 扩展，再下载浏览器", "code": "pip install \"scrapling[fetchers]\" · scrapling install", "component": {"en": "PyPI package + CLI", "zh": "PyPI 包 + 命令行"}},
+    {"lane": "you", "en": "Turn on adaptive mode and fetch the page with the stealth fetcher", "zh": "打开自适应开关，用隐身抓取器取页面", "code": "StealthyFetcher.fetch('https://example.com')", "component": {"en": "StealthyFetcher", "zh": "StealthyFetcher"}},
+    {"lane": "them", "en": "Launches a patched Chromium, hides automation traces, returns a parsed page", "zh": "启动打过补丁的 Chromium，抹掉自动化痕迹，返回已解析的页面", "component": {"en": "Patchright + Playwright", "zh": "Patchright + Playwright"}},
+    {"lane": "you", "en": "Select what you want and ask it to remember the element", "zh": "选出要的元素，并让它记住", "code": "p.css('.product', auto_save=True)", "component": {"en": "Selector API", "zh": "Selector API"}},
+    {"lane": "them", "en": "Saves the element's tag, text, attributes, path and parent to SQLite", "zh": "把元素的标签、文字、属性、路径和父节点存进 SQLite", "component": {"en": "SQLite storage", "zh": "SQLite 存储"}},
+    {"lane": "you", "phase": {"en": "After a redesign", "zh": "网站改版后"}, "en": "Run the same selector again, now with adaptive on", "zh": "同一个选择器再跑一次，带上 adaptive", "code": "p.css('.product', adaptive=True)", "component": {"en": "Selector API", "zh": "Selector API"}},
+    {"lane": "them", "en": "Scores every element against the saved one and returns the closest match", "zh": "拿页面上每个元素和存档比相似度，返回最像的", "component": {"en": "adaptive matcher", "zh": "自适应匹配"}}
+  ],
+  "value": {"en": "A redesign no longer means rewriting selectors by hand, and the fetch, stealth browser and parser come from one package", "zh": "网站改版后不用手改选择器；取页面、隐身浏览器和解析出自同一个包"},
+  "sources": [
+    "https://github.com/D4Vinci/Scrapling README.md — Installation > Optional Dependencies (pip install \"scrapling[fetchers]\", scrapling install); opening example (StealthyFetcher.adaptive = True, p.css('.product', auto_save=True), p.css('.product', adaptive=True))",
+    "https://github.com/D4Vinci/Scrapling docs/fetching/choosing.md — page = StealthyFetcher.fetch('https://example.com'); fetcher comparison table (Chromium and Google Chrome, Playwright API)",
+    "https://github.com/D4Vinci/Scrapling docs/fetching/stealthy.md — what StealthyFetcher does (Patchright isolated context, CDP/WebRTC leak patches, solve_cloudflare)",
+    "https://github.com/D4Vinci/Scrapling docs/parsing/adaptive.md — save phase / match phase, the unique properties stored (tag, text, attributes, siblings, path, parent), SQLite by default, highest-similarity element returned",
+    "https://github.com/D4Vinci/Scrapling scrapling/parser.py and scrapling/core/storage.py — __DEFAULT_DB_FILE__ = package dir / elements_storage.db, relocate(percentage=40), SQLiteStorageSystem"
+  ]
+}
