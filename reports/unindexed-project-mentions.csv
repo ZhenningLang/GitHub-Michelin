@@ -97,6 +97,7 @@ AG Grid (`ag-grid/ag-grid`),categories/web-ui/component-libraries/tanstack-table
 Agent Router (formerly Envoy AI Gateway),categories/api-gateway/vllm-semantic-router.md,,no
 AgentBench,categories/llm-eval/swe-bench.md,,no
 agentmemory (rohitg00/agentmemory),categories/agent-memory/coding-agent-memory/deja-vu.md,,no
+AgentShield (`affaan-m/agentshield`),categories/agent-governance/claude-skill-audit.md,,no
 AI-Scientist-v2 (SakanaAI/AI-Scientist-v2),categories/ml-research/research-automation/ai-scientist.md,,no
 AIBrix (vllm-project/aibrix),categories/llm-inference/serving-engines/llm-d.md,,no
 aio-pika,categories/task-queue/kombu.md,,no
@@ -243,6 +244,7 @@ ChatGPT Team / Claude Team (SaaS),categories/team-chat/hivechat.md,,no
 ChinaSiro/claude-code-sourcemap,categories/agent-dev-methodology/study-and-experiments/claude-reviews-claude.md,,no
 Chrome Remote Desktop,categories/dev-utilities/ops-infra/rustdesk.md,,no
 Chronos (Amazon),categories/on-device-ml/timesfm.md,,no
+Cisco skill-scanner (`cisco-ai-defense/skill-scanner`),categories/agent-governance/claude-skill-audit.md,,no
 cisco-ai-defense/mcp-scanner,categories/agent-governance/agent-scan.md,,no
 cisco-ai-defense/skill-scanner,categories/agent-governance/agent-scan.md,,no
 Clash for Windows,categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
@@ -442,6 +444,7 @@ GitHub Copilot,categories/agent-frameworks/coding-agents/terminal-agents/codex.m
 GitHub Copilot CLI,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
+Gitleaks (`gitleaks/gitleaks`),categories/agent-governance/claude-skill-audit.md,,no
 GitNexus,categories/rag-retrieval/code-intelligence/ix.md,,no
 GLiClass (knowledgator/GLiClass),categories/decision-models/laya.md,,no
 GLiNER,categories/healthcare-ai/openmed.md,,no
