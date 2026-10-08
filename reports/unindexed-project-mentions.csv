@@ -257,6 +257,7 @@ Claude Code plugin marketplaces (`.claude-plugin/marketplace.json`),categories/a
 Claude Code subagents (built-in),categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 Claude Cowork,categories/agent-frameworks/agent-runtimes/personal-assistants/openhuman.md,,no
 "Claude Design (Anthropic, hosted)",categories/ai-design-generation/open-design.md,,no
+Claude Security Atlas (`RationalEyes/claude-security-atlas`),categories/agent-governance/claude-skills-security-guide.md,,no
 claude-code-proxy (1rgs/claude-code-proxy),categories/llm-inference/local-runtimes/claude-code-local.md,,no
 claude-cookbooks · openai-cookbook,categories/learning-resources/ai-engineering-hub.md,,no
 claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no

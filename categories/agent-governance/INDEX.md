@@ -13,6 +13,7 @@
 | **claude-skill-audit** | Offline regex scanner for a whole Claude Code `.claude/` directory — skills, agents, hooks, permissions, MCP config, secrets — in zero-dependency TypeScript; one author, 0 stars, shallow checks, use as a quick lint only. | C (5/6) | [→](claude-skill-audit.md) |
 | **skills-scanner** | Zero-dependency Python CLI that inventories skills, commands and MCP configs across Claude Code, Claude Desktop, Cursor and Windsurf, runs offline rules, and diffs against a SQLite baseline. Dormant since 2026-05 and not on PyPI: a pattern source, not a dependency. | C (5/6) | [→](skills-scanner.md) |
 | **agent-guard** | Pre-install gate skill that routes skills, MCP packages, npm/PyPI/Go/cargo packages, release binaries and install scripts to SkillSpector, Cisco mcp-scanner, GuardDog, OpenSSF package-analysis or VirusTotal, and merges them into one fail-closed exit code; no detection of its own, one author, 3 stars. | C (5/6) | [→](agent-guard.md) |
+| **Claude Skills Security Guide** | A written catalogue of twelve Claude skill attack vectors with a manual and six defanged example attacks, plus three demo-grade copy-in defence skills (regex scanner, hash manifest, text sanitizer); unmaintained since 2026-03, read it, do not gate on it. | C (4/5) | [→](claude-skills-security-guide.md) |
 
 
 ## Comparison matrix
@@ -25,6 +26,7 @@
 | [claude-skill-audit](claude-skill-audit.md) | ✅ | C (5/6) | Whole-config pattern scan you can read end to end and run offline; unproven, dormant, and blind to scripts, non-English injection and common key formats. |
 | [skills-scanner](skills-scanner.md) | ✅ | C (5/6) | Machine-wide inventory plus drift baseline with no dependencies; shallow regex/AST rules, one author, silent since 2026-05, install from git only. |
 | [agent-guard](agent-guard.md) | ✅ | C (5/6) | One scan-then-install gate across many target types and every local agent; pays with a deep toolchain (uv, Docker, a privileged container) and an unadopted one-author wrapper over upstream scanners. |
+| [Claude Skills Security Guide](claude-skills-security-guide.md) | ✅ | C (4/5) | Threat vocabulary, training material and attack fixtures for testing a real scanner; its own scanner rates its defence skills CRITICAL, and nothing runs unless you invoke it. |
 
 
 ## What belongs here
