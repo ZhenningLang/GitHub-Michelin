@@ -28,9 +28,11 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
+[Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
+[rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
 [Termux](https://github.com/termux/termux-app) + a CLI agent,categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no

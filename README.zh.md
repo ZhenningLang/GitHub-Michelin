@@ -154,6 +154,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Jev Ultrafast** | 当每步延迟是硬约束、且能接受托管判定 API 时用它——一次请求同时给出每一步的操作与目标元素。 | MIT | C（6/6） | [中](categories/web-automation/agent-browser-tools/jev-ultrafast.zh.md) · [EN](categories/web-automation/agent-browser-tools/jev-ultrafast.md) |
 | **PinchTab** | 当 agent 需要一个常驻本地的浏览器服务、经 CLI/HTTP/MCP 编排多个相互隔离的 Chrome 实例与配置档、且要默认全关的能力闸门加提示注入扫描时用它——pre-1.0，实际单维护者。 | MIT | B（6/6） | [中](categories/web-automation/agent-browser-tools/pinchtab.zh.md) · [EN](categories/web-automation/agent-browser-tools/pinchtab.md) |
 | **invisible_playwright_mcp** | 当 MCP 助手总被验证码和机器人墙拦住时用它——它驱动一个 C++ 层打过补丁、指纹由种子推导的隐身 Firefox；只支持 Windows/Linux，单人维护，星数继承自改名前的投简历机器人仓库。 | MIT | B（5/6） | [中](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.zh.md) · [EN](categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md) |
+| **playwright-bot-bypass** | 当编码 agent 写的脚本在你自己的桌面机上被判成机器人时用它——一个 skill 加一个工厂函数，经 rebrowser-playwright 驱动你带窗口的真 Chrome；必须有显示器，对 IP、行为和验证码类拦截无效，核心依赖自 2025-05 起未发版。 | MIT | C（5/6） | [中](categories/web-automation/agent-browser-tools/playwright-bot-bypass.zh.md) · [EN](categories/web-automation/agent-browser-tools/playwright-bot-bypass.md) |
 
 ### llm-training
 

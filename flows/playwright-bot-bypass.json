@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {"en": "The skill and its template do", "zh": "这个 skill 和模板做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your coding agent",
+      "zh": "把 skill 装进你的编码 agent",
+      "code": "npx skills add greekr4/playwright-bot-bypass",
+      "component": {"en": "SKILL.md + scripts/", "zh": "SKILL.md 和 scripts/"}
+    },
+    {
+      "lane": "you",
+      "en": "Install the patched Playwright build; have real Google Chrome and a display ready",
+      "zh": "装上打过补丁的 Playwright，备好真 Chrome 和显示器",
+      "code": "npm install rebrowser-playwright"
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent for a browser script against a site that flags stock Playwright as a bot",
+      "zh": "让 agent 写脚本去访问把普通 Playwright 判成机器人的站点"
+    },
+    {
+      "lane": "them",
+      "en": "Steers the agent to build the script on its factory instead of plain Playwright",
+      "zh": "引导 agent 基于它的工厂函数写脚本，而不是裸 Playwright",
+      "code": "createStealthBrowser()",
+      "component": {"en": "stealth-template.mjs", "zh": "stealth-template.mjs"}
+    },
+    {
+      "lane": "them",
+      "en": "Launches your installed Chrome in a visible window, so GPU, user agent and plugins are real",
+      "zh": "以有窗口方式启动你装的 Chrome，显卡、UA、插件都是真的",
+      "code": "channel: 'chrome'"
+    },
+    {
+      "lane": "them",
+      "en": "Hides the control channel's tell and deletes Playwright's marker globals on every page load",
+      "zh": "藏住控制通道的痕迹，每次加载都删掉 Playwright 的标记变量",
+      "code": "REBROWSER_PATCHES_RUNTIME_FIX_MODE"
+    }
+  ],
+  "value": {
+    "en": "Fingerprint checkers that flag stock Playwright see an ordinary Chrome, and you hand-write no spoofing patches",
+    "zh": "会拦普通 Playwright 的指纹检测看到的是一个普通 Chrome，你不用手写任何伪装补丁"
+  },
+  "sources": [
+    "README.md Install (`npx skills add greekr4/playwright-bot-bypass`) and Quick start (`npm install rebrowser-playwright`, `createStealthBrowser()`), read on main 26efbde, 2026-10-08",
+    "README.md Requirements (Node.js 18+, real Google Chrome, headed mode with a display)",
+    "skills/playwright-bot-bypass/SKILL.md 'Using the Template (Recommended)' (`createStealthBrowser`) and Quick Start (`channel: 'chrome'`, `REBROWSER_PATCHES_RUNTIME_FIX_MODE`)",
+    "skills/playwright-bot-bypass/scripts/stealth-template.mjs (launchOptions channel 'chrome', env var set before import, stripPlaywrightArtifacts init script)"
+  ]
+}

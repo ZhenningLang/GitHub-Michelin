@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1163
+- Named-but-unindexed alternatives: 1165
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -51,4 +51,4 @@ shape and are deliberately excluded here.
 | [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [openclaw/agent-skills](https://github.com/openclaw/agent-skills) | `categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md` |
 | [Operit](https://github.com/AAswordman/Operit) | `categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md` |
-| [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai) | `categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md` |
+| [Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright) | `categories/web-automation/agent-browser-tools/playwright-bot-bypass.md` |

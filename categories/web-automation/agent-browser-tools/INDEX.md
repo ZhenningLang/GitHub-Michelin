@@ -17,6 +17,7 @@
 | **Jev Ultrafast** | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. | C (6/6) | [→](jev-ultrafast.md) |
 | **PinchTab** | Use it when an agent needs a resident local browser service that orchestrates multiple isolated Chrome instances/profiles over CLI, HTTP and MCP, with default-deny capability gates and prompt-injection scanning built in; pre-1.0 and effectively single-maintainer. | B (6/6) | [→](pinchtab.md) |
 | **invisible_playwright_mcp** | Use it when an MCP assistant keeps hitting captchas and bot walls — it drives a C++-patched stealth Firefox with seed-derived fingerprints; Windows/Linux only, single maintainer, stars inherited from a renamed job-bot repo. | B (5/6) | [→](invisible-playwright-mcp.md) |
+| **playwright-bot-bypass** | Use it when a script your coding agent writes gets flagged as a bot on your own desktop — a skill plus one factory that drives your real headed Chrome through rebrowser-playwright; needs a display, does nothing for IP/behavioural/CAPTCHA gates, and rests on a dependency unreleased since 2025-05. | C (5/6) | [→](playwright-bot-bypass.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [Jev Ultrafast](jev-ultrafast.md) | ✅ | C (6/6) | Use it when per-step latency is the binding constraint and you accept a hosted decision API — one request returns both the operation and the element for each browser step. |
 | [PinchTab](pinchtab.md) | ✅ | B (6/6) | One resident Go server gives an agent CLI/HTTP/MCP control of multiple isolated Chrome instances under named profiles, folding action and snapshot into one round trip, with default-deny capability gates and IDPI content scanning; young, pre-1.0, effectively single-maintainer. |
 | [invisible_playwright_mcp](invisible-playwright-mcp.md) | ✅ | B (5/6) | Use it when an MCP assistant keeps hitting captchas and bot walls — it drives a C++-patched stealth Firefox with seed-derived fingerprints; Windows/Linux only, single maintainer, stars inherited from a renamed job-bot repo. |
+| [playwright-bot-bypass](playwright-bot-bypass.md) | ✅ | C (5/6) | An agent skill plus a ~180-line factory over real headed Chrome and rebrowser-playwright: fingerprint tells are absent rather than faked, on macOS too; desktop-only, self-measured, single maintainer, stale core dependency. |
 
 ## What belongs here
 
