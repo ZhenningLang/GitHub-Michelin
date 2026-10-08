@@ -807,6 +807,7 @@ osint.industries,categories/osint/ghunt.md,,no
 Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
+overwirehq/claude-code-telegram,categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
 p-queue (`sindresorhus/p-queue`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 PaddleNLP / ERNIE,categories/ml-research/nlp-and-time-series/senta.md,,no

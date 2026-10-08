@@ -33,5 +33,5 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | CopilotKit/openmuse | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openmuse.md | fresh: last_verified ≤ 90 天，无改动 | copilotkit/openmuse |
 | DietrichGebert/ponytail | sync | done | categories/agent-skills/engineering/ponytail.md | fresh: last_verified ≤ 90 天，无改动 | dietrichgebert/ponytail |
 | elie222/rakazo | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md | fresh: last_verified ≤ 90 天，无改动 | elie222/rakazo |
-| larashero3-dotcom/lieflat-less-ai-tone | add | running |  |  | larashero3-dotcom/lieflat-less-ai-tone |
+| larashero3-dotcom/lieflat-less-ai-tone | add | done | categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md |  | larashero3-dotcom/lieflat-less-ai-tone |
 | milind-soni/OpenMausBot | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md |  | milind-soni/openmausbot |
