@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "rebrowser-playwright does", "zh": "rebrowser-playwright 做的"},
+  "steps": [
+    {"lane": "you", "en": "Swap the playwright dependency for the patched package at the same version", "zh": "把 playwright 依赖换成同版本的补丁包", "code": "rebrowser-playwright · rebrowser-playwright-core"},
+    {"lane": "you", "en": "Run your existing Playwright script against Chrome, code unchanged", "zh": "原样运行已有的 Playwright 脚本，目标是 Chrome"},
+    {"lane": "them", "en": "Skips the Runtime.Enable command that page scripts can detect", "zh": "不再发送会被页面脚本察觉的 Runtime.Enable 命令", "component": {"en": "rebrowser-playwright-core", "zh": "rebrowser-playwright-core"}},
+    {"lane": "them", "en": "Finds the page's script context through a temporary binding, so evaluate() still works", "zh": "改用临时绑定找到页面脚本上下文，evaluate() 照常可用"}
+  ],
+  "value": {
+    "en": "Your Playwright code stops raising the Runtime.Enable flag — without a private fork or re-patching after every install",
+    "zh": "已有 Playwright 代码不再触发 Runtime.Enable 检测——不用自养分叉，也不用每次安装后重打补丁"
+  },
+  "sources": [
+    "rebrowser/rebrowser-playwright README.md (branch 1.52.0): 'drop-in replacement for the original playwright without changing your codebase'",
+    "rebrowser/rebrowser-playwright package.json (branch 1.52.0): name rebrowser-playwright; dependencies playwright-core -> npm:rebrowser-playwright-core@~1.52.0",
+    "rebrowser/rebrowser-patches README.md 'Is there an easy drop-in replacement?' (Playwright (Node.js): rebrowser-playwright and rebrowser-playwright-core; replace package names, keep versions)",
+    "rebrowser/rebrowser-patches README.md 'Fix Runtime.Enable leak' (disables automatic Runtime.Enable on every frame; addBinding mode creates a binding in the main world and saves its context ID) and 'Playwright support' (addBinding and alwaysIsolated modes, Chrome only)",
+    "rebrowser/rebrowser-playwright-core commit 6844374d 'patched' on branch 1.52.0 (lib/server/chromium/crConnection.js, crPage.js, frames.js, page.js ...)"
+  ]
+}

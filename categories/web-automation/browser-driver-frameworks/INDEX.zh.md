@@ -17,6 +17,7 @@
 | **Obscura** | 当对抗性抓取要一个自带 stealth、常开渲染、单文件的 Rust 浏览器时用它。 | B（6/6） | [→](obscura.zh.md) |
 | **undetected-chromedriver** | 只在要让现成的 Python Selenium 代码绕开 chromedriver 自带的检测标记、又没法重写时用它——PyPI 最后一版停在 2024-02，新项目该用 nodriver 或 SeleniumBase UC Mode。 | C（4/6） | [→](undetected-chromedriver.zh.md) |
 | **Camoufox** | 当 Playwright 爬虫因为浏览器本身被识别而被拦时用它：在引擎层伪装指纹的 Firefox 分支——只有 Firefox、约 1.3 GB、自己声明不适合稳定生产。 | B（6/6） | [→](camoufox.zh.md) |
+| **rebrowser-playwright** | 只在一个钉在 1.52 的现有 Node.js Playwright 任务因 Chrome 上的 `Runtime.Enable` CDP 信号被识别时用它——预先打好补丁的直接替换包，自 2025-05 起冻结。 | D（3/6） | [→](rebrowser-playwright.zh.md) |
 
 ## 对比矩阵
 
@@ -33,6 +34,7 @@
 | [undetected-chromedriver](undetected-chromedriver.zh.md) | ✅ | C（4/6） | 保住每一个 Selenium 调用，同时把 chromedriver 的标记抹掉；代价是 GPL-3.0、默认不开沙箱、2024-02 之后没有发版。 |
 | SeleniumBase | 未收录 | — | 开箱即用的 Python 浏览器测试框架，其 UC Mode 建在 undetected-chromedriver 之上；nodriver 与 undetected-chromedriver 页面都提到它。 |
 | [Camoufox](camoufox.zh.md) | ✅ | B（6/6） | 在重新编译、隐藏自动化并轮换设备身份的 Firefox 上保留 Playwright API；代价是 GB 级下载、扮不了 Chrome、2025 年有过维护空窗，以及条款与法律风险自担。 |
+| [rebrowser-playwright](rebrowser-playwright.zh.md) | ✅ | D（3/6） | 保留 Playwright API 并去掉一条可被检测的 CDP 命令；停在 Playwright 1.52.0，2025-05 之后没有维护者活动，新项目应选仍在更新的 patchright。 |
 
 ## 什么该放这里
 

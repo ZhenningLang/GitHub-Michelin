@@ -815,6 +815,7 @@ pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no
 Parquet + zstd/snappy,categories/dev-utilities/data-tools/openzl.md,,no
 Passbolt,categories/dev-utilities/ops-infra/vaultwarden.md,,no
 Paste-your-own prompt,categories/agent-skills/ai-writing/de-ai-writing/ai-flavor-remover.md,,no
+patchright,categories/web-automation/browser-driver-frameworks/rebrowser-playwright.md,,no
 pdm,categories/python-tooling/uv.md,,no
 PentAGI,categories/pentest/pentest-swarm-ai.md,,no
 PentestGPT,categories/pentest/pentest-swarm-ai.md,,no
@@ -931,6 +932,7 @@ react-window (`bvaughn/react-window`),categories/web-ui/virtualization/tanstack-
 Reader View extensions (various),categories/reading-tools/just-read.md,,no
 Readwise / Obsidian plugins,categories/agent-skills/book-to-skill.md,,no
 Real Vim / Neovim,categories/dev-utilities/editors-and-runtimes/code-editors/ideavim.md,,no
+rebrowser-patches,categories/web-automation/browser-driver-frameworks/rebrowser-playwright.md,,no
 reCAPTCHA (Google),categories/captcha/capjs.md,,no
 Recharts (`recharts/recharts`),categories/web-ui/charts/tanstack-charts.md,,no
 Recursive Language Models (`rlm`),categories/ml-research/context-language-models.md,,no
