@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "lieflat-less-ai-tone does",
+    "zh": "lieflat-less-ai-tone 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent",
+      "zh": "把 skill 装进你的 agent",
+      "code": "npx skills add larashero3-dotcom/lieflat-less-ai-tone"
+    },
+    {
+      "lane": "you",
+      "en": "Hand it a finished Chinese draft; keep any style guide for the author in the same folder",
+      "zh": "把写完的中文稿交给它；作者风格文档放在同一目录"
+    },
+    {
+      "lane": "them",
+      "en": "Locks headings, paragraph order, lists, tables and code blocks; reads the style guide first",
+      "zh": "锁定标题、段落顺序、列表、表格和代码块，先读风格文档",
+      "component": { "en": "SKILL.md", "zh": "SKILL.md" }
+    },
+    {
+      "lane": "them",
+      "en": "Edits only spans that hit one of the 11 numbered rules, and only as much as the hit needs",
+      "zh": "只改命中 11 条编号规则的地方，改动只到解决问题为止"
+    },
+    {
+      "lane": "them",
+      "en": "Runs its acceptance checklist and returns the full text, with no change log unless asked",
+      "zh": "按验收清单复查后交回全文，不附改动说明，问了才讲"
+    }
+  ],
+  "value": {
+    "en": "Measured AI tells are gone while every unmatched sentence, number and hedge stays word for word",
+    "zh": "实测站得住的 AI 痕迹被去掉，没命中的句子、数字和限定词逐字保留"
+  },
+  "sources": [
+    "https://github.com/larashero3-dotcom/lieflat-less-ai-tone README.en.md §4.1 — install `npx skills add larashero3-dotcom/lieflat-less-ai-tone`; submitting text applies the rule set; SKILL.md usable as a system prompt",
+    "https://github.com/larashero3-dotcom/lieflat-less-ai-tone SKILL.md — 有风格参考时先读它 (style document in the same directory wins on conflict); 硬性边界 whitelist + structure lock; 用法 steps 1–4; 不需要解释改了什么，用户问时再说明; 最终验收 checklist; rules 1–11"
+  ]
+}
