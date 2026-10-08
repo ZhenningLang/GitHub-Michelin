@@ -2,7 +2,7 @@
 name: Anthropic Knowledge Work Plugins
 slug: knowledge-work-plugins
 repo: https://github.com/anthropics/knowledge-work-plugins
-category: vendor-collections
+category: agent-vendors
 tags: [knowledge-work, claude, plugins, skills, anthropic, office-tasks]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 Every other session you re-explain to Claude how your team actually works — how a sales call gets prepped, how a reconciliation is structured, which tracker a spec lands in. This repo ships 11 first-party **role plugins** (productivity, sales, support, product-management, marketing, legal, finance, data, enterprise-search, bio-research, plugin-authoring) that bundle the skills, MCP connectors and slash commands for one job function each, built for Claude Cowork and also installable into Claude Code.
 
-![knowledge-work-plugins — health radar](../../../assets/health/knowledge-work-plugins.svg)
+![knowledge-work-plugins — health radar](../../../../assets/health/knowledge-work-plugins.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ You reach for it specifically when you want the *knowledge-work* slice of Anthro
 
 Every plugin is a folder of plain files: a `.claude-plugin/plugin.json` manifest, a `.mcp.json` that wires the role's external tools to MCP servers, a `commands/` directory of slash commands you invoke explicitly, and a `skills/` directory of domain instructions Claude draws on automatically when a task matches. You add the repo as a marketplace and install one role's plugin (or, in Cowork, install straight from claude.com/plugins); after that, activation is invisible — relevant skills fire on their own and namespaced commands appear in your session. What the repo does *not* do is know your company: connectors point at Anthropic's generic picks, workflows are textbook versions, and your data/terminology has to be added by editing the markdown files yourself — that per-company tailoring is explicitly the intended second step, not magic that ships.
 
-![Anthropic Knowledge Work Plugins — backbone user story](../../../assets/flow/knowledge-work-plugins.svg)
+![Anthropic Knowledge Work Plugins — backbone user story](../../../../assets/flow/knowledge-work-plugins.svg)
 
 <!-- flow-steps:begin (generated from flows/knowledge-work-plugins.json by tools/flow_card.py — do not edit) -->
 <details>

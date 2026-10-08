@@ -2,7 +2,7 @@
 name: Bright Data Skills
 slug: brightdata-skills
 repo: https://github.com/brightdata/skills
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, web-scraping, anti-bot, proxy, serp, mcp, claude-code, skill-pack, vendor, paid-service]
 language: Shell
 license: MIT
@@ -70,7 +70,7 @@ health:
 
 编码 agent 去抓一个网页，拿回来的是 403、一页“Just a moment…”验证页，或者一个本该由 JavaScript 填满却空着的壳。这是 Bright Data 自己写的 21 个说明文件夹，教 agent 改走 Bright Data 收费的反封锁网络去请求。文件夹本身免费、MIT 许可；它引导 agent 发出的每一次请求，都记在你的 Bright Data 账上。
 
-![Bright Data Skills — 健康度雷达](../../../assets/health/brightdata-skills.zh.svg)
+![Bright Data Skills — 健康度雷达](../../../../assets/health/brightdata-skills.zh.svg)
 
 ## 何时使用
 
@@ -78,13 +78,13 @@ health:
 
 这时这个仓库才派得上用场，因为有了账号不等于 agent 会用好它。放任不管时，agent 会去抓亚马逊商品页再自己解析 HTML，而 Bright Data 早就把这一页做成结构化记录在卖；它会把验证页当成抓取成功汇报；它会把代理的定向参数写进 URL 查询串，而服务要求的是用连字符拼在用户名后面。这些 skill 针对的正是这几类错误：把每个请求分派给合适的产品（搜索、单页抓取、现成的按站点提取器、云端浏览器），并要求 agent 先在输出里 grep 封锁页特征，确认不是验证页再说成功。
 
-和替代品比，关键在于难的那部分由谁来干。用 [Scrapling](../../web-scraping/crawling-tools/scrapling.zh.md) 或 [Camoufox](../../web-automation/browser-driver-frameworks/camoufox.zh.md)，代码免费、跑在你自己的机器上，但浏览器要你来运维，住宅 IP 也要你自己买。[Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md) 是类似的“给 URL、出 Markdown”服务，而且可以自建。这个包完全没有自建模式：它是一家厂商托管服务的操作手册，只有当你已经选定这家厂商时才有意义。
+和替代品比，关键在于难的那部分由谁来干。用 [Scrapling](../../../web-scraping/crawling-tools/scrapling.zh.md) 或 [Camoufox](../../../web-automation/browser-driver-frameworks/camoufox.zh.md)，代码免费、跑在你自己的机器上，但浏览器要你来运维，住宅 IP 也要你自己买。[Firecrawl](../../../web-scraping/crawling-tools/firecrawl.zh.md) 是类似的“给 URL、出 Markdown”服务，而且可以自建。这个包完全没有自建模式：它是一家厂商托管服务的操作手册，只有当你已经选定这家厂商时才有意义。
 
 ## 怎么用起来
 
 一个 *skill* 就是一个装着 `SKILL.md` 的文件夹：开头一段简短描述，agent 拿它和你的请求比对；匹配上了，才去读后面的操作说明。这个仓库里没有任何东西会自己去抓网页。真正干活的是放在别处的三样东西：命令行工具 `bdata`（另一个 npm 包 `@brightdata/cli`）、Bright Data 托管的 MCP 服务器（MCP 是 agent 调用外部工具的协议），以及 `api.brightdata.com` 上的 REST API。skill 告诉 agent 该调哪一个、带什么参数，以及怎么分辨真页面和封锁页。`bdata login` 会打开浏览器让你授权，把 API 密钥存到本地，并建好两个 *zone*（Bright Data 的叫法，指某个产品的一套具名配置，单独计费）。从这以后，agent 跑的每一条 `bdata scrape`、`bdata search` 或 `bdata pipelines`，都是你账上的一次付费请求。这个包负责挑产品、写命令、查结果；归你的是账号和余额、某个网站到底能不能抓的判断，以及读 agent 带回来的东西。打个比方：它是一家收费快递的说明书，说明书免费，告诉你的助手该订哪档服务，但快递公司照样按件给你开账单。
 
-![brightdata-skills — 主干用户故事](../../../assets/flow/brightdata-skills.zh.svg)
+![brightdata-skills — 主干用户故事](../../../../assets/flow/brightdata-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/brightdata-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,24 +104,24 @@ health:
 
 ## 何时不用
 
-- **你没有预算给按量计费的第三方服务，或者活必须跑在自己的机器上。** 这里每个 skill 最后都落到对 Bright Data 的调用。按 2026-10-08 读到的厂商说明：每月送 5,000 个免费额度（约 7.50 美元，一次请求或一条记录算一个），付费价格起步为：反封锁、搜索和 MCP 产品每 1,000 次请求 1 美元起，按站点抓取器每 1,000 条记录 0.75 美元起，云端浏览器每 GB 5 美元起，住宅代理每 GB 2.50 美元起；代理不在免费额度里。没充值的账号额度用完就停；一旦充了钱，用量会不间断地转到付费价格，开了自动充值还会替你补足余额。想要自己跑的代码，用 [Scrapling](../../web-scraping/crawling-tools/scrapling.zh.md)（BSD-3-Clause，HTTP 和隐身浏览器两类抓取器，自带 agent skill）或 [Camoufox](../../web-automation/browser-driver-frameworks/camoufox.zh.md)；想要托管式 API 又保留自建的可能，用 [Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md)。
+- **你没有预算给按量计费的第三方服务，或者活必须跑在自己的机器上。** 这里每个 skill 最后都落到对 Bright Data 的调用。按 2026-10-08 读到的厂商说明：每月送 5,000 个免费额度（约 7.50 美元，一次请求或一条记录算一个），付费价格起步为：反封锁、搜索和 MCP 产品每 1,000 次请求 1 美元起，按站点抓取器每 1,000 条记录 0.75 美元起，云端浏览器每 GB 5 美元起，住宅代理每 GB 2.50 美元起；代理不在免费额度里。没充值的账号额度用完就停；一旦充了钱，用量会不间断地转到付费价格，开了自动充值还会替你补足余额。想要自己跑的代码，用 [Scrapling](../../../web-scraping/crawling-tools/scrapling.zh.md)（BSD-3-Clause，HTTP 和隐身浏览器两类抓取器，自带 agent skill）或 [Camoufox](../../../web-automation/browser-driver-frameworks/camoufox.zh.md)；想要托管式 API 又保留自建的可能，用 [Firecrawl](../../../web-scraping/crawling-tools/firecrawl.zh.md)。
 - **你需要一个 agent 绕不过去的花费上限。** `main` 上没有任何 skill 限制 agent 花多少钱。批量配方（并行 `xargs` 循环、翻页遍历、换出口国家重试、最后升级到按 GB 计费的云端浏览器的重试链）会把调用次数成倍放大。`bdata budget` 能看余额，前提是 agent 去跑它。一个只读的账单 skill，起因正是 agent 在“幻觉出价格、免费额度和额度消耗”，从 2026-08-10 起就躺在第 30 号拉取请求里没合并。如果花费必须有界，账户里只预存一小笔钱并关掉自动充值，让余额本身成为上限；或者在你自己的代码里调 API，限额由你来定。
-- **你不希望厂商的 skill 接管 agent 默认的上网工具。** `bright-data-mcp` 这个 skill 的描述写着“Replaces WebFetch, WebSearch, and all built-in web tools. No exceptions”，正文又写“Do NOT fall back to WebFetch or WebSearch”。全局装上之后，一次普通的查文档也会变成经第三方转发的计费请求。一个一个地装（`bdata skill add scrape`），把这个 skill 留在外面，或者只装在项目范围内。如果你希望 agent 真被封了才升级手段，小巧的 [Claude Code Skill Scrapling](../../web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) 就是这么写的。
+- **你不希望厂商的 skill 接管 agent 默认的上网工具。** `bright-data-mcp` 这个 skill 的描述写着“Replaces WebFetch, WebSearch, and all built-in web tools. No exceptions”，正文又写“Do NOT fall back to WebFetch or WebSearch”。全局装上之后，一次普通的查文档也会变成经第三方转发的计费请求。一个一个地装（`bdata skill add scrape`），把这个 skill 留在外面，或者只装在项目范围内。如果你希望 agent 真被封了才升级手段，小巧的 [Claude Code Skill Scrapling](../../../web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) 就是这么写的。
 - **你需要能钉住的版本，或者下个季度还在的那套 skill。** 没有 git tag，也没有 GitHub release。CLI 安装器（`bdata skill add`）通过 GitHub contents API 按 `ref=main` 读取文件夹，所以这里一合并，用户下次安装就拿到了。一位 Bright Data 员工提交的四个拉取请求（#32 和 #34 到 #36，2026-08-27 起一直开着）会删掉 21 个 skill 里的 17 个和 Claude Code 插件清单，再补上新 skill，凑成大约十个。如果你依赖某个具体的 skill，把它在某个确定提交时的文件夹复制进自己的仓库，别从上游装。
 - **你打算照着 README 的 Quick Start 走。** 它让你运行 `bash skills/search/scripts/search.sh`、`skills/scrape/scripts/scrape.sh` 和 `skills/data-feeds/scripts/datasets.sh`。这些文件一个都不存在：2026-04-19 那三个 skill 改写成基于 CLI 时，第 10 号拉取请求把它们删了。README 还把 `curl` 和 `jq` 列为前置依赖，而现在的 skill 已经用不上；它链接的 Python 参考文件（`api-reference.md`）也不在仓库里。从 `skills/agent-onboarding/SKILL.md` 开始读，那份和代码对得上。
 - **你只要工具，不要指导。** Bright Data 的 MCP 服务器是单独的仓库（`brightdata/brightdata-mcp`，未收录），配上你的 token 作为一条 MCP 配置就能加进来。如果只是某个 agent 需要一个搜索工具和一个抓取工具，又不想每次会话都加载 21 段 skill 描述（加起来约 14,000 个字符），单用它就够了。
-- **目标网站要登录、存有个人数据，或者条款禁止自动访问。** 这个包就是为绕过机器人检测和验证码写的，还带一个讲住宅和移动代理网络的 skill。除了 `design-mirror` 里有一句提醒你遵守所参考网站的服务条款，对全部 21 个 skill 做关键词搜索，找不到任何关于服务条款、数据保护法或者何时不该抓的指引。这个判断完全在你，责任也在你。平台有官方 API 的就用官方 API：Reddit 用 [PRAW](../../web-scraping/crawling-tools/praw.zh.md)，它走 Reddit 的 OAuth API，守它的限流。
+- **目标网站要登录、存有个人数据，或者条款禁止自动访问。** 这个包就是为绕过机器人检测和验证码写的，还带一个讲住宅和移动代理网络的 skill。除了 `design-mirror` 里有一句提醒你遵守所参考网站的服务条款，对全部 21 个 skill 做关键词搜索，找不到任何关于服务条款、数据保护法或者何时不该抓的指引。这个判断完全在你，责任也在你。平台有官方 API 的就用官方 API：Reddit 用 [PRAW](../../../web-scraping/crawling-tools/praw.zh.md)，它走 Reddit 的 OAuth API，守它的限流。
 - **你的环境不是 Claude Code，却指望全部都能加载。** `.claude-plugin` 下的清单是 Claude Code 的格式，README 从没写插件市场的安装命令（第 13 号 issue，2026-05-01 起未关）。`scraper-studio` 的描述约 1,230 个字符；Codex 拒收超过 1,024 个字符的描述并跳过该 skill（第 28 号 issue，未关；外部贡献者在第 27 号拉取请求里的修复未合并）。CLI 安装器只提供 21 个里的 9 个。在别的环境上，手动复制需要的文件夹，逐个确认能加载。
 - **你要走住宅或移动代理，却没想过 TLS 的事。** `proxy` 这个 skill 说，这两类网络在你做到以下之一之前不放行任意 HTTPS 目标：信任 Bright Data 的 CA 证书（skill 里自带，也可以装进操作系统的信任库），或者通过身份（KYC）验证。它还把关闭证书校验（`verify=False`、`-k`）列为“最后手段”。另外，`design-mirror` 里附带的两个脚本用 `curl -k` 调 API，也就是在一个带着你 API 密钥的请求上关掉了证书校验。如果你的流量里有凭据或个人数据，就用数据中心或 ISP 代理（skill 说它们不需要这些），或者只让那一个客户端加载这张 CA，绝不装到系统级。
-- **你装 skill 从不读内容。** 直到 2026-10-06，`bright-data-mcp` 还在指示 agent 不经询问自行改写用户的 MCP 配置。第 38 号拉取请求删掉了这段，提交信息写的是“remove auto-edit config for security reasons”。装之前读一遍文件夹，或者先用 [SkillSpector](../../agent-governance/skillspector.zh.md) 或 [Agent Scan](../../agent-governance/agent-scan.zh.md) 这类扫描器过一遍。
+- **你装 skill 从不读内容。** 直到 2026-10-06，`bright-data-mcp` 还在指示 agent 不经询问自行改写用户的 MCP 配置。第 38 号拉取请求删掉了这段，提交信息写的是“remove auto-edit config for security reasons”。装之前读一遍文件夹，或者先用 [SkillSpector](../../../agent-governance/skillspector.zh.md) 或 [Agent Scan](../../../agent-governance/agent-scan.zh.md) 这类扫描器过一遍。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Claude Code Skill Scrapling](../../web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) | ✅ | 想让 agent 用自己机器上的免费软件绕过封锁，选那个封装，更好的是 Scrapling 官方的 skill；宁可付钱给厂商也不想自己运维隐身浏览器时，选本包，因为那个封装只有四个提交、一个作者，速查表已经和库对不上了。 | Scrapling 路线：不用账号，没有按次账单，主攻 Cloudflare，代理和 Python 运行环境由你提供。本包：21 个厂商维护的 skill，本地不跑浏览器，但没有 Bright Data 密钥什么都干不了，每次调用都计费。 |
-| [Scrapling](../../web-scraping/crawling-tools/scrapling.zh.md) | ✅ | 抓取代码必须跑在你自己的进程里、许可证要宽松时，选 Scrapling；拦路的是 IP 信誉或验证码数量这种光靠一个库解决不了的问题，你又接受把它当服务买时，选本包。 | Scrapling：BSD-3-Clause，HTTP 加隐身抓取器，自适应选择器，0.x 版本会有破坏性变更，不带代理。本包：自己不含抓取代码，把整个请求交给一张自带 IP 池的托管网络，也把你绑在一家厂商的价格和条款上。 |
-| [Firecrawl](../../web-scraping/crawling-tools/firecrawl.zh.md) | ✅ | 想要“给 URL、出干净的 Markdown 或结构化数据”的 API，又想保留自建的选项，选 Firecrawl；想要指定站点（亚马逊、LinkedIn、TikTok）的固定结构记录，或者直接用代理，选本包，因为 Bright Data 把这些作为单独产品出售，本包会把请求引过去。 | Firecrawl：一个开源服务，自建需遵守 AGPL-3.0，托管版按量计费。本包：MIT 许可的说明，背后是闭源托管、各自定价的多个产品，没有自建路径。 |
+| [Claude Code Skill Scrapling](../../../web-scraping/crawling-tools/claude-code-skill-scrapling.zh.md) | ✅ | 想让 agent 用自己机器上的免费软件绕过封锁，选那个封装，更好的是 Scrapling 官方的 skill；宁可付钱给厂商也不想自己运维隐身浏览器时，选本包，因为那个封装只有四个提交、一个作者，速查表已经和库对不上了。 | Scrapling 路线：不用账号，没有按次账单，主攻 Cloudflare，代理和 Python 运行环境由你提供。本包：21 个厂商维护的 skill，本地不跑浏览器，但没有 Bright Data 密钥什么都干不了，每次调用都计费。 |
+| [Scrapling](../../../web-scraping/crawling-tools/scrapling.zh.md) | ✅ | 抓取代码必须跑在你自己的进程里、许可证要宽松时，选 Scrapling；拦路的是 IP 信誉或验证码数量这种光靠一个库解决不了的问题，你又接受把它当服务买时，选本包。 | Scrapling：BSD-3-Clause，HTTP 加隐身抓取器，自适应选择器，0.x 版本会有破坏性变更，不带代理。本包：自己不含抓取代码，把整个请求交给一张自带 IP 池的托管网络，也把你绑在一家厂商的价格和条款上。 |
+| [Firecrawl](../../../web-scraping/crawling-tools/firecrawl.zh.md) | ✅ | 想要“给 URL、出干净的 Markdown 或结构化数据”的 API，又想保留自建的选项，选 Firecrawl；想要指定站点（亚马逊、LinkedIn、TikTok）的固定结构记录，或者直接用代理，选本包，因为 Bright Data 把这些作为单独产品出售，本包会把请求引过去。 | Firecrawl：一个开源服务，自建需遵守 AGPL-3.0，托管版按量计费。本包：MIT 许可的说明，背后是闭源托管、各自定价的多个产品，没有自建路径。 |
 | Bright Data MCP 服务器（`brightdata/brightdata-mcp`） | 未收录 | 某个 agent 只需要一个搜索工具和一个抓取工具时，单独加 MCP 服务器；agent 还要在 Bright Data 的几个产品之间挑选、或者写集成代码时，再加本包，因为服务器只提供工具，不告诉 agent 哪个最省钱。 | 本次标签批次未添加。只用 MCP：一条配置，MIT，约 2.7k 星，提示里不加任何 skill 文本。本包：产品路由和校验步骤，外加一个让 agent 停用内置上网工具的 skill。 |
 | 直接调用 Bright Data REST API | 非仓库 | 应用只发几种固定请求时，在自己的代码里调 `api.brightdata.com`，不用这些 skill；由 agent 在运行时决定抓什么时用本包，因为路由和封锁页检查正是在那种场景下才值回成本。 | 付费托管服务，不是仓库，所以这里没有页面。直接调用：agent 里什么都不用装，请求代码和花费限额由你来写、来维护。本包：同一个服务，包在 agent 能读的说明里，而这些说明可能在 `main` 上不打招呼就变。 |
 

@@ -2,7 +2,7 @@
 name: Agent Toolkit for AWS
 slug: agent-toolkit-for-aws
 repo: https://github.com/aws/agent-toolkit-for-aws
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, aws, mcp, claude-code, plugin-marketplace, skill-pack, cloud]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 Your coding agent was trained months before AWS shipped the service you need, so it guesses a CLI flag that does not exist, picks Step Functions where Durable Functions fit, and runs API calls you cannot tell apart from your own in CloudTrail. This is AWS's own install kit that fixes the guessing and the attribution together: about 114 AWS-written playbooks the agent loads per task, plus wiring to a hosted AWS endpoint that answers from current docs and runs the agent's calls under your IAM role, tagged as agent traffic.
 
-![Agent Toolkit for AWS — health radar](../../../assets/health/agent-toolkit-for-aws.svg)
+![Agent Toolkit for AWS — health radar](../../../../assets/health/agent-toolkit-for-aws.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ Reach for this repo when you want AWS's own answer to both problems at once. `/p
 
 The repo holds the parts the agent installs on your machine; the part that does the work, the **AWS MCP Server**, is a managed AWS endpoint (`https://aws-mcp.us-east-1.api.aws/mcp`) whose code is not in this repo. A *skill* is a folder with a `SKILL.md` (a description the agent matches against your request, then numbered steps) plus `references/` it reads only when needed, so it costs context only when a task calls for it. A *plugin* bundles a set of skills with an MCP config that launches `mcp-proxy-for-aws-cli`, a small local proxy that signs each request with your AWS credentials (SigV4, AWS's request-signing scheme) and forwards it to the hosted server. In Claude Code, `aws-core` also installs a hook (a script that runs before each tool call) that blocks `secretsmanager get-secret-value` so secrets never land in the chat. What the toolkit does: route the task to a skill, search current AWS docs, and run your calls or Python scripts in AWS's sandbox (`run_script`). What stays yours: the IAM role the agent gets (scope it down; the toolkit inherits whatever it can do), the region, and reviewing any change before it touches production. Think of it as a field manual plus a badge reader: the manual tells the agent how to do the job, the badge makes every door it opens show up as "agent" in the log.
 
-![agent-toolkit-for-aws — backbone user story](../../../assets/flow/agent-toolkit-for-aws.svg)
+![agent-toolkit-for-aws — backbone user story](../../../../assets/flow/agent-toolkit-for-aws.svg)
 
 <!-- flow-steps:begin (generated from flows/agent-toolkit-for-aws.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,7 +104,7 @@ The repo holds the parts the agent installs on your machine; the part that does 
 - **Your cloud isn't AWS, or you want vendor-neutral advice.** Every skill routes to AWS services, and the `aws-startup-advisor` plugin's own session prompt tells the agent the pick "is … usually the AWS service". For Azure, use Microsoft's `microsoft/azure-skills` (not indexed); for Terraform authored to stay cloud-portable, use HashiCorp's `hashicorp/agent-skills` (not indexed). Core skills cover CDK and CloudFormation only; a Terraform core skill is an open request (issue #115).
 - **You must not send agent traffic or source to an AWS-hosted service.** Docs search, runtime skill retrieval, `run_script` and API execution all go through the managed endpoint, and `mcp-proxy-for-aws` collects telemetry unless started with `--disable-telemetry` (the shipped `aws-core` config does not pass it). In an air-gapped or strict-egress setting, install only the skills (`npx skills add aws/agent-toolkit-for-aws/skills`), drop the MCP entry, and let the agent use your own AWS CLI. Or self-host the open-source servers from `awslabs/mcp` (not indexed).
 - **Your harness has many unrelated projects.** `aws-core` fires on generic words ("deploy", "function", "storage", "container") even in non-AWS repos (issue #310, open as of 2026-10-01), loading AWS context and guardrails into unrelated work. Enable it per project rather than globally, or install only the specialized skills you need.
-- **You want neutral startup advice.** `aws-startup-advisor` injects a SessionStart prompt that appends at most one tracked AWS Activate partner-offer link (`?source=ide-startupAdvisor-claude`) under recommendations. That makes it a vendor sales surface. Use `aws-core` alone, or a cloud-neutral planning method such as [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) for the architecture discussion.
+- **You want neutral startup advice.** `aws-startup-advisor` injects a SessionStart prompt that appends at most one tracked AWS Activate partner-offer link (`?source=ide-startupAdvisor-claude`) under recommendations. That makes it a vendor sales surface. Use `aws-core` alone, or a cloud-neutral planning method such as [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) for the architecture discussion.
 - **You need hard guarantees, not guidance.** Skills are Markdown the agent may skip, and they can be wrong themselves: the `aws-cloudformation` skill once told agents to pass `--change-set-id` to `describe-events`, a flag that does not exist (issue #83, fixed). The only enforced pieces are the Secrets Manager hook (Claude Code only, regex-based, fail-open on its 5 s timeout) and whatever IAM you attach. If "the agent must never write to prod" is the requirement, enforce it with a read-only role or the proxy's `--read-only` flag, not with this pack.
 - **You are standardizing on the AWS Labs plugins already.** If your team runs [Agent Plugins for AWS](aws-agent-plugins.md) (`deploy-on-aws`, `aws-serverless`, …), installing `aws-core` beside it gives two overlapping AWS skill routers. Pick one; AWS says this toolkit is the successor.
 - **You want to contribute skills upstream.** CONTRIBUTING says "not accepting external code contributions at this time"; only issues are taken. Keep local AWS skills in your own repo.
@@ -117,7 +117,7 @@ The repo holds the parts the agent installs on your machine; the part that does 
 | AWS MCP servers (`awslabs/mcp`) | not indexed (not added in this tab batch) | Choose `awslabs/mcp` when you must run every MCP server on your own machines or VPC; choose this toolkit when a managed endpoint with audit trails is acceptable, because the open servers give you the data sources without the curated skills. | Self-hosted, many single-purpose servers (~9.7k stars), you assemble and patch them. Toolkit: zero servers to run, but every call transits an AWS-operated service. |
 | Azure Skills (`microsoft/azure-skills`) | not indexed (not added in this tab batch) | If your workloads run on Azure, pick Microsoft's pack; pick this one only for AWS, because each vendor's skills route to its own services and are useless on the other cloud. | Same shape (skills + MCP config in one plugin), different cloud. Running both in one harness invites both routers firing on "deploy". |
 | HashiCorp Agent Skills (`hashicorp/agent-skills`) | not indexed (not added in this tab batch) | When your IaC is Terraform, pair or replace with HashiCorp's skills; this toolkit's core IaC skills teach CDK and CloudFormation, so a Terraform shop gets the wrong authoring guidance from it. | HashiCorp: Terraform/Vault depth, cloud-portable. Toolkit: AWS service depth, IaC limited to CDK/CloudFormation outside the startup plugin. |
-| [Claude Plugins (Official)](claude-plugins-official.md) | ✅ | Browse Anthropic's marketplace to install `aws-core`, `aws-agents`, `aws-data-analytics` or `aws-agents-for-devsecops` by name; add this repo as a marketplace only for `aws-startup-advisor` or for Codex/Cursor, because those paths are served from here. | The official marketplace is a directory; this repo is the source behind four of its AWS entries. Same content, different install handle. |
+| [Claude Plugins (Official)](../agent-vendors/claude-plugins-official.md) | ✅ | Browse Anthropic's marketplace to install `aws-core`, `aws-agents`, `aws-data-analytics` or `aws-agents-for-devsecops` by name; add this repo as a marketplace only for `aws-startup-advisor` or for Codex/Cursor, because those paths are served from here. | The official marketplace is a directory; this repo is the source behind four of its AWS entries. Same content, different install handle. |
 
 ## Health & viability
 

@@ -2,7 +2,7 @@
 name: Android Skills
 slug: android-skills
 repo: https://github.com/android/skills
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, android, google, jetpack-compose, android-cli, skill-pack, vendor]
 language: Python
 license: Apache-2.0
@@ -73,7 +73,7 @@ health:
 
 Your coding agent still ships Android that a 2024 training cutoff would write: XML layouts instead of Compose, buttons under the nav bar, keep-rules copied from a library README. This is Google's official pack of playbooks for the jobs those models still fail — installed with the Android CLI, loaded when the task matches.
 
-![Android Skills — health radar](../../../assets/health/android-skills.svg)
+![Android Skills — health radar](../../../../assets/health/android-skills.svg)
 
 ## When to use
 
@@ -81,13 +81,13 @@ You're an Android engineer using a coding agent (Gemini, Claude, Codex, Antigrav
 
 Install with the Android CLI, not `npx skills add`: `android skills add r8-analyzer --project=.` for one skill in the current tree, or `android skills add --all` for every detected agent. The pack is 24 skills as of the v1.0.12 marketplace list — AGP 9 upgrade, CameraX, App Functions, ML Kit GenAI Prompt API, the `android` CLI itself, restore-credentials, verified email, Compose adaptive / XML-to-Compose / theming, Media3 Cast, Navigation 3, Navigation Event, R8 analyzer, Play Engage / Billing upgrade / policy insights, the Android profiler, intent security, edge-to-edge, testing setup, Leanback-to-Compose TV, Wear Compose M3, Compose Glimmer on display glasses. Reach for it when the stack *is* Android and you want the platform vendor's current opinion, not a community's guess at last year's APIs.
 
-The deciding tradeoff against the closest substitutes: [Vercel Agent Skills](../engineering/vercel-agent-skills.md) is the same shape of vendor pack, but for React/Next.js on Vercel — it will not tell an agent how to consume window insets. [Anthropic Skills](anthropic-skills.md) is the platform's own general bundle (docs, design, MCP authoring) and takes no position on Android. [Agent Plugins for AWS](aws-agent-plugins.md) is the cloud-vendor analogue: first-party playbooks locked to one ecosystem. Pick this when the ecosystem lock-in is the point.
+The deciding tradeoff against the closest substitutes: [Vercel Agent Skills](../../engineering/vercel-agent-skills.md) is the same shape of vendor pack, but for React/Next.js on Vercel — it will not tell an agent how to consume window insets. [Anthropic Skills](../agent-vendors/anthropic-skills.md) is the platform's own general bundle (docs, design, MCP authoring) and takes no position on Android. [Agent Plugins for AWS](aws-agent-plugins.md) is the cloud-vendor analogue: first-party playbooks locked to one ecosystem. Pick this when the ecosystem lock-in is the point.
 
 ## How it works
 
 The repo is a distribution surface, not a tool you import. Each skill is a folder with a `SKILL.md` (YAML `name` + `description`, then a numbered playbook) plus optional `references/` (copied developer.android.com pages, sample snippets) and `scripts/` (Python that the agent is told to run — R8 proto conversion, Play-policy orchestrator). You install through the **Android CLI** (`android skills add …`), which copies those folders into the detected agents' skill directories, or through Android Studio's skill import; Claude/Codex plugin manifests (`.claude-plugin/marketplace.json`, `.codex-plugin/plugin.json`) exist so those harnesses can load the same tree. After install, activation is description-match: you say "Make my app UI edge-to-edge" and the agent should pull `edge-to-edge`; in Studio you can also type `@skill-name`. What lands is a method, not a runtime — `r8-analyzer` tells the agent to run `./gradlew :app:analyzeReleaseR8Config` then a conversion script, and to **suggest only, not edit**; `play-policy-insights` runs `orchestrator.py` against the app tree and writes a compliance report. Google DevRel's bot refreshes the tree from `https://dl.google.com/dac/dac_skills.zip` plus a `github-skills` branch, so the text tracks developer.android.com rather than a volunteer's memory.
 
-![android-skills — backbone user story](../../../assets/flow/android-skills.svg)
+![android-skills — backbone user story](../../../../assets/flow/android-skills.svg)
 
 <!-- flow-steps:begin (generated from flows/android-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,10 +106,10 @@ The repo is a distribution surface, not a tool you import. Each skill is a folde
 
 ## When NOT to use
 
-- **The task is not Android.** These playbooks assume an Android Gradle project, Jetpack libraries, Play Console surfaces, Wear/TV/XR form factors. For React/Next.js/Vercel performance and deploy rules use [Vercel Agent Skills](../engineering/vercel-agent-skills.md); for AWS architecture/deploy/ops use [Agent Plugins for AWS](aws-agent-plugins.md); for document/design/MCP authoring use [Anthropic Skills](anthropic-skills.md).
+- **The task is not Android.** These playbooks assume an Android Gradle project, Jetpack libraries, Play Console surfaces, Wear/TV/XR form factors. For React/Next.js/Vercel performance and deploy rules use [Vercel Agent Skills](../../engineering/vercel-agent-skills.md); for AWS architecture/deploy/ops use [Agent Plugins for AWS](aws-agent-plugins.md); for document/design/MCP authoring use [Anthropic Skills](../agent-vendors/anthropic-skills.md).
 - **You need basic Compose that the model already knows.** The README states they skip "well-established areas where LLMs are already proficient, such as basic Jetpack Compose best practices." If the agent is only missing `Column` / `Modifier.padding`, this pack will not fire — read developer.android.com, or keep a short project rule file.
 - **You have no Android CLI / Studio skill loader, and will not paste by hand.** The documented install path is `android skills add` (or Studio import). Plugin manifests exist for Claude and Codex, but the README does not treat `npx skills add android/skills` as the supported path. On a harness with no skill loader the markdown sits inert — paste the relevant `SKILL.md` or use the CLI.
-- **You want an enforced gate, not advice.** `r8-analyzer` says "No code changes: Research and suggest only." Play-policy insights writes a report and stops. Nothing fails CI unless you wire it. For a methodology the agent must walk on every task, use [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md).
+- **You want an enforced gate, not advice.** `r8-analyzer` says "No code changes: Research and suggest only." Play-policy insights writes a report and stops. Nothing fails CI unless you wire it. For a methodology the agent must walk on every task, use [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md).
 - **You want to send a PR of a new skill.** "Public contributions are not accepted at this time" — issues for feedback and skill requests only. Fork the tree or keep project-local skills under `.skills/` / `.agent/skills/` as the official docs describe.
 - **You needed the Android CLI itself, not the playbooks.** The `android-cli` skill teaches the CLI; the CLI is a separate Google-hosted binary (`curl … dl.google.com/android/cli/…/install.sh`), not this repo. This page is the skill pack.
 
@@ -117,11 +117,11 @@ The repo is a distribution surface, not a tool you import. Each skill is a folde
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Vercel Agent Skills](../engineering/vercel-agent-skills.md) | ✅ | Pick Vercel Agent Skills when the agent is writing React/Next.js on Vercel and the failure is Core Web Vitals or function cost; pick Android Skills when the agent is writing Android and the failure is a current platform API (insets, R8, Navigation 3, Play policy), because the two packs encode different vendors' house rules and are not portable. | Vercel: web/React, `npx skills add`, untagged `main`. Android: mobile platform, Android CLI install, tagged releases, Google-owned. |
+| [Vercel Agent Skills](../../engineering/vercel-agent-skills.md) | ✅ | Pick Vercel Agent Skills when the agent is writing React/Next.js on Vercel and the failure is Core Web Vitals or function cost; pick Android Skills when the agent is writing Android and the failure is a current platform API (insets, R8, Navigation 3, Play policy), because the two packs encode different vendors' house rules and are not portable. | Vercel: web/React, `npx skills add`, untagged `main`. Android: mobile platform, Android CLI install, tagged releases, Google-owned. |
 | [Agent Plugins for AWS](aws-agent-plugins.md) | ✅ | Pick Agent Plugins for AWS when the job is architecting/deploying/operating on AWS; pick Android Skills when the job is an Android app's code, build, or Play listing, because both are first-party ecosystem locks and the lock you want is the one that matches the runtime. | AWS: nine plugins + MCP wiring, cloud. Android: 24 skills + Gradle/device/Play, mobile. |
-| [Anthropic Skills](anthropic-skills.md) | ✅ | Pick Anthropic Skills for document, design, and MCP/skill authoring against the Claude platform; pick Android Skills when the repeated miss is Android-platform procedure, because a general bundle cannot encode AGP 9, R8 keep-radius, or edge-to-edge inset rules. | Anthropic: harness-native, domain-general. Android: one OS, vendor-canonical, CLI-distributed. |
-| [MiniMax Skills](minimax-skills.md) | ✅ | Pick MiniMax Skills when you want that vendor's frontend/shader/office/media generators; pick Android Skills when the subject is Google's Android stack, because overlapping "official starter pack" distribution does not overlap in what they teach. | MiniMax: generative authoring breadth. Android: platform-correctness playbooks. |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | Pick Superpowers when you want one SDLC spine (brainstorm → plan → TDD → verify) the agent follows on every task; pick Android Skills when the miss is domain knowledge on a specific Android job, because a methodology does not know Navigation 3 or Play Data Safety. | Superpowers: process, multi-harness. Android: domain, Android-only. Often stacked, not either/or. |
+| [Anthropic Skills](../agent-vendors/anthropic-skills.md) | ✅ | Pick Anthropic Skills for document, design, and MCP/skill authoring against the Claude platform; pick Android Skills when the repeated miss is Android-platform procedure, because a general bundle cannot encode AGP 9, R8 keep-radius, or edge-to-edge inset rules. | Anthropic: harness-native, domain-general. Android: one OS, vendor-canonical, CLI-distributed. |
+| [MiniMax Skills](../agent-vendors/minimax-skills.md) | ✅ | Pick MiniMax Skills when you want that vendor's frontend/shader/office/media generators; pick Android Skills when the subject is Google's Android stack, because overlapping "official starter pack" distribution does not overlap in what they teach. | MiniMax: generative authoring breadth. Android: platform-correctness playbooks. |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | Pick Superpowers when you want one SDLC spine (brainstorm → plan → TDD → verify) the agent follows on every task; pick Android Skills when the miss is domain knowledge on a specific Android job, because a methodology does not know Navigation 3 or Play Data Safety. | Superpowers: process, multi-harness. Android: domain, Android-only. Often stacked, not either/or. |
 
 ## Health & viability
 

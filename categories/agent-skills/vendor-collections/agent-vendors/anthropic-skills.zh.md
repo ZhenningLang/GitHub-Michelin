@@ -2,7 +2,7 @@
 name: Anthropic Skills
 slug: anthropic-skills
 repo: https://github.com/anthropics/skills
-category: vendor-collections
+category: agent-vendors
 tags: [agent-skills, claude, skill-pack, anthropic, plugin-marketplace]
 language: Python
 license: Apache-2.0
@@ -66,7 +66,7 @@ health:
 
 你反复向 Claude 解释同一类流程任务——从这个 PDF 里抽表单字段、按这份提纲生成 .docx、脚手架一个 MCP server——而手搓的 prompt 每次表现都不一样；这个仓库是 Anthropic 官方的 skill 合集：一组 Claude 在任务命中时按需加载的指令/脚本目录，其中就包含驱动 Claude 自家文件生成的文档 skill。
 
-![anthropic-skills — 健康度雷达](../../../assets/health/anthropic-skills.zh.svg)
+![anthropic-skills — 健康度雷达](../../../../assets/health/anthropic-skills.zh.svg)
 
 ## 何时使用
 
@@ -78,7 +78,7 @@ health:
 
 skill 刻意做得很朴素：一个目录里放一份 `SKILL.md`——YAML frontmatter 只需要 `name` 和 `description` 两个字段（description 就是 Claude 用来匹配「什么时候该加载这个 skill」的依据），后面是纯 markdown 指令，可选再配脚本和参考文件。Claude 平时只廉价地读这份短元数据，任务命中才把完整指令拉进上下文——所以整个目录占用的是路由成本，不是膨胀的系统提示。你要做的只有三件事：把仓库注册为市场（`/plugin marketplace add anthropics/skills`）、装两个捆绑包之一（`document-skills` 或 `example-skills`）、然后用人话点名任务（「Use the PDF skill to extract the form fields from `path/to/some-file.pdf`」）。留在你手上的：验证 skill 确实改善了你的负载——Anthropic 自己的 README 声明这些是示范/教学用途、Claude 线上行为可能与之不同——以及逐 skill 核对授权，因为文档类 skill 是 source-available、并非开源。
 
-![anthropic-skills — 主干用户故事](../../../assets/flow/anthropic-skills.zh.svg)
+![anthropic-skills — 主干用户故事](../../../../assets/flow/anthropic-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/anthropic-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,9 +109,9 @@ skill 刻意做得很朴素：一个目录里放一份 `SKILL.md`——YAML fron
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Claude plugins（官方）](claude-plugins-official.zh.md) | ✅ | 需要 Anthropic 更大的官方插件/市场面时，选 Claude plugins。 | Anthropic 更大的官方插件/市场面；本 `skills` 仓库专指 Agent Skills 合集（文档 + 示例 skill），而非完整插件目录。按「只要 skill 还是要更广的插件集」来选。 |
-| [AWS Labs agent plugins](aws-agent-plugins.zh.md) | ✅ | 需要带 AWS 生态深度的 vendor 合集时，选 AWS Labs agent plugins。 | 另一家厂商发布的合集，带 AWS 生态色彩；按你的云/工具栈倾向来选。格式与 loader 兼容性各异。 |
+| [AWS Labs agent plugins](../product-vendors/aws-agent-plugins.zh.md) | ✅ | 需要带 AWS 生态深度的 vendor 合集时，选 AWS Labs agent plugins。 | 另一家厂商发布的合集，带 AWS 生态色彩；按你的云/工具栈倾向来选。格式与 loader 兼容性各异。 |
 | [MiniMax skills](minimax-skills.zh.md) | ✅ | 需要另一家厂商的模型/媒体 skill 成包时，选 MiniMax skills。 | 另一家厂商的 skill 合集；同样是「官方起步 skill」目标，但绑定其模型/harness。混用前先核对格式兼容性。 |
-| 第三方社区 skill 包（如 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)） | 部分已收录 | 方法论/SDLC 强观点比第一方参考 skill 更重要时，选社区包。 | 偏方法论/SDLC 的强观点合集，叠在 agent 之上。本仓库更窄、且是第一方：参考任务 skill + 编写规范，而非完整工作流方法论。 |
+| 第三方社区 skill 包（如 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)） | 部分已收录 | 方法论/SDLC 强观点比第一方参考 skill 更重要时，选社区包。 | 偏方法论/SDLC 的强观点合集，叠在 agent 之上。本仓库更窄、且是第一方：参考任务 skill + 编写规范，而非完整工作流方法论。 |
 | 自己写 `SKILL.md` skill | n/a | 最高贴合度和零外部依赖高于厂商基线时，选自写 skill。 | 贴合度最高、零外部依赖，但放弃厂商经过验证的文档生成 skill 与权威 spec/template。很多人就是从这里 fork 当基线。 |
 
 ## 健康度与可持续性

@@ -78,7 +78,7 @@ health:
 
 你是 React 优先的工程师，要规模化做数据驱动的视频——每个客户一条个性化营销片、每场比赛一条集锦、PR 转视频的开发者内容、同一模板的十种语言本地化版——你需要视频本身是**代码**：props 进、MP4 出、能在 diff 里 review、能在 CI 里测试。人类剪辑师做不出一万个参数化变体，生成模型又保证不了你的数据渲染得分毫不差。
 
-这时你选 Remotion，因为它是这个形态里验证最充分的引擎：6 年以上持续开发、庞大且可组合的 API 目录（`@remotion/player` 做 web 预览、`@remotion/lambda` 做分布式云渲染、转场、字幕、GIF、经 Three.js 的 3D），以及 59.7k stars 带来的生态引力。相对 [HyperFrames](hyperframes.zh.md) 的决定性取舍：Remotion 要求 React/打包器项目，且对 3 人以上公司收费（Remotion License，超阈值需公司许可证；5.0 条款还会再变），HyperFrames 是无构建步骤的 HTML 加 Apache-2.0——要生态深度和 Lambda 成熟度选 Remotion，要许可证自由和 agent 人体工学选 HyperFrames。这套用法与 AI 无关——同一个引擎既支持在自带的 Studio 里交互式剪辑，也支持纯代码驱动的批量渲染；官方 [Remotion Agent Skills](../agent-skills/vendor-collections/remotion-skills.zh.md) 只是补上了面向 agent 的、把帧模型写对的入口。
+这时你选 Remotion，因为它是这个形态里验证最充分的引擎：6 年以上持续开发、庞大且可组合的 API 目录（`@remotion/player` 做 web 预览、`@remotion/lambda` 做分布式云渲染、转场、字幕、GIF、经 Three.js 的 3D），以及 59.7k stars 带来的生态引力。相对 [HyperFrames](hyperframes.zh.md) 的决定性取舍：Remotion 要求 React/打包器项目，且对 3 人以上公司收费（Remotion License，超阈值需公司许可证；5.0 条款还会再变），HyperFrames 是无构建步骤的 HTML 加 Apache-2.0——要生态深度和 Lambda 成熟度选 Remotion，要许可证自由和 agent 人体工学选 HyperFrames。这套用法与 AI 无关——同一个引擎既支持在自带的 Studio 里交互式剪辑，也支持纯代码驱动的批量渲染；官方 [Remotion Agent Skills](../agent-skills/vendor-collections/product-vendors/remotion-skills.zh.md) 只是补上了面向 agent 的、把帧模型写对的入口。
 
 ## 何时不用
 
@@ -105,7 +105,7 @@ health:
 - 渲染：headless Chrome（Chrome Headless Shell）逐帧渲染 React composition，FFmpeg 编码——Remotion 自带 FFmpeg 二进制 [未验证]。
 - `@remotion/lambda`：AWS Lambda 分布式渲染；`@remotion/player`：可嵌入的 React web 播放器做预览；目录包含转场、字幕、GIF、Lottie、Three.js、media parser 等。
 - 经 `create-video` CLI 脚手架出模板；composition 用代码声明、以 Zod schema 参数化。
-- 库之外的产物：可即插即用的 **Elements** 组件集（图表、字幕、背景、地图、下三分之一）、35+ 模板、可嵌进 web 应用的 `Player` 组件，以及教编码 agent 掌握帧模型的官方 [Agent Skills](../agent-skills/vendor-collections/remotion-skills.zh.md) 捆绑包。
+- 库之外的产物：可即插即用的 **Elements** 组件集（图表、字幕、背景、地图、下三分之一）、35+ 模板、可嵌进 web 应用的 `Player` 组件，以及教编码 agent 掌握帧模型的官方 [Agent Skills](../agent-skills/vendor-collections/product-vendors/remotion-skills.zh.md) 捆绑包。
 
 ## 依赖
 

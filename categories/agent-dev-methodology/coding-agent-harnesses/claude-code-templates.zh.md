@@ -130,7 +130,7 @@ health:
 - **你已经维护着自己调好的 harness**（dotfiles 仓库、同步的 `~/.claude/`、自己的 hook 和 skill）。安装器和你共用同一个 `.claude/` 命名空间，除了覆盖提示外没有冲突检测，同名组件会盖掉你的东西。这时把它当只读读物：在目录里看到喜欢的组件，从 README 的 Attribution 一节找到上游原仓库，把那一个文件抄进你自己的体系。
 - **你想要一套自洽、整体测过的工作流。** 超市货架只给零件不给流程。想要端到端的「头脑风暴→计划→TDD→验证」，装 [Superpowers](superpowers.zh.md)；想要 skill、hook、memory 配套设计好的开箱底座，装 [ECC](ecc.zh.md)。
 - **你用的不是 Claude Code。** 这些组件是按 Claude Code 的形状做的（`.claude/agents`、`.mcp.json`、Claude skill 格式）。想让方法论跟着你跨 Codex、Cursor、OpenCode 等 harness，[Superpowers](superpowers.zh.md) 为各家 agent 分别提供了插件清单。
-- **你对进入配置的东西都要先审一遍。** 这个目录聚合了许多第三方作者的内容，只有一个维护者把关，270 个未关闭 issue（2026-09-23），而且默认命令带赞助商标向——README 第一条快速安装命令装的是赞助商 Bright Data 的 skill 和 MCP。看重来源审核的话，直接用第一方的 [Anthropic Skills](../../agent-skills/vendor-collections/anthropic-skills.zh.md) 合集。
+- **你对进入配置的东西都要先审一遍。** 这个目录聚合了许多第三方作者的内容，只有一个维护者把关，270 个未关闭 issue（2026-09-23），而且默认命令带赞助商标向——README 第一条快速安装命令装的是赞助商 Bright Data 的 skill 和 MCP。看重来源审核的话，直接用第一方的 [Anthropic Skills](../../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) 合集。
 - **你想要的是库或运行时。** 这里没有可以 `import` 的东西——交付物就是拷进来的 Markdown 文件加几个可选监控面板。要以编程方式构建 agent，去看 `agent-frameworks` 分类。
 
 ## 横向对比
@@ -140,7 +140,7 @@ health:
 | [SuperClaude Framework](superclaude.zh.md) | ✅ | 想要一套集成好的 Claude Code 人格、命令、模式框架时选 SuperClaude；想从更大的目录里自由单选时选本页项目。 | SuperClaude 是单一设计好的体系（自洽但只能整体接受）；Claude Code Templates 更广、按组件自选，但部件之间的协同没有保证。 |
 | [Superpowers](superpowers.zh.md) | ✅ | 想要一套跨会话强制执行的 SDLC 纪律时选 Superpowers；只是缺某个具体 agent 或命令时选本页项目。 | Superpowers 窄而深（一条工作流、跨 harness）；本项目宽而浅（100 多个互不相关的组件、只支持 Claude Code）。 |
 | [ECC](ecc.zh.md) | ✅ | 想要单一维护者策划、skill、hook、memory 和安全扫描成套设计的底座时选 ECC。 | ECC 用目录广度换内部一致性；用 Claude Code Templates 选择更自由，但组件间的集成风险归你自己。 |
-| [Anthropic Skills](../../agent-skills/vendor-collections/anthropic-skills.zh.md) | ✅ | 第一方来源和稳定性比丰富度更重要时选 Anthropic Skills。 | Anthropic 官方合集更小更权威（更新慢、厂商维护）；本目录转发了其中一部分，混在质量参差的社区内容里。 |
+| [Anthropic Skills](../../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) | ✅ | 第一方来源和稳定性比丰富度更重要时选 Anthropic Skills。 | Anthropic 官方合集更小更权威（更新慢、厂商维护）；本目录转发了其中一部分，混在质量参差的社区内容里。 |
 
 ## 技术栈
 

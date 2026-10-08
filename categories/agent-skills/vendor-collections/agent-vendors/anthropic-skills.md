@@ -2,7 +2,7 @@
 name: Anthropic Skills
 slug: anthropic-skills
 repo: https://github.com/anthropics/skills
-category: vendor-collections
+category: agent-vendors
 tags: [agent-skills, claude, skill-pack, anthropic, plugin-marketplace]
 language: Python
 license: Apache-2.0
@@ -66,7 +66,7 @@ health:
 
 You keep re-explaining the same procedural job to Claude — extract the form fields from this PDF, turn this outline into a .docx, scaffold an MCP server — and hand-rolled prompts never behave the same twice; this repo is Anthropic's own skill collection, folders of instructions/scripts that Claude loads when your task matches, and it includes the very document skills that power Claude's file generation.
 
-![anthropic-skills — health radar](../../../assets/health/anthropic-skills.svg)
+![anthropic-skills — health radar](../../../../assets/health/anthropic-skills.svg)
 
 ## When to use
 
@@ -78,7 +78,7 @@ You reach for it specifically when you want (a) the document skills (`docx`, `pd
 
 A skill is deliberately low-tech: a folder containing `SKILL.md` — YAML frontmatter with just `name` and `description` (the description is what Claude pattern-matches against to decide when to load the skill), then plain markdown instructions, optionally plus helper scripts and reference files. Claude reads the short metadata cheaply and pulls the full instructions into context only when a task matches — so the whole catalog costs you routing lines, not a bloated system prompt. You do three things: register the repo as a marketplace (`/plugin marketplace add anthropics/skills`), install one of the two bundles (`document-skills` or `example-skills`), then name the job in plain language ("Use the PDF skill to extract the form fields from `path/to/some-file.pdf`"). What stays yours: verifying the skill actually improves your workload — Anthropic's own README disclaimer says these are demonstration/educational implementations and Claude's shipped behavior may differ — and checking per-skill licensing, because the document skills are source-available, not open source.
 
-![anthropic-skills — backbone user story](../../../assets/flow/anthropic-skills.svg)
+![anthropic-skills — backbone user story](../../../../assets/flow/anthropic-skills.svg)
 
 <!-- flow-steps:begin (generated from flows/anthropic-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -109,9 +109,9 @@ A skill is deliberately low-tech: a folder containing `SKILL.md` — YAML frontm
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Claude plugins (official)](claude-plugins-official.md) | ✅ | Choose Claude plugins when you need Anthropic's broader plugin/marketplace surface. | Anthropic's broader official plugin/marketplace surface; this `skills` repo is specifically the Agent Skills collection (document + example skills), not the full plugin catalog. Compare on whether you want skills only or the wider plugin set. |
-| [AWS Labs agent plugins](aws-agent-plugins.md) | ✅ | Choose AWS Labs agent plugins when your vendor collection needs AWS ecosystem depth. | Another vendor-published collection, AWS-ecosystem-flavored; pick by which cloud/tooling bias matches your stack. Format/loader compatibility differs. |
+| [AWS Labs agent plugins](../product-vendors/aws-agent-plugins.md) | ✅ | Choose AWS Labs agent plugins when your vendor collection needs AWS ecosystem depth. | Another vendor-published collection, AWS-ecosystem-flavored; pick by which cloud/tooling bias matches your stack. Format/loader compatibility differs. |
 | [MiniMax skills](minimax-skills.md) | ✅ | Choose MiniMax skills when you need a different vendor's model/media skill bundle. | A different vendor's skill collection; overlapping "official starter skills" goal but tied to that vendor's models/harness. Cross-check format compatibility before mixing. |
-| Third-party community skill packs (e.g. [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md)) | 部分已收录 | Choose community packs when opinionated SDLC/methodology matters more than first-party reference skills. | Opinionated SDLC/methodology bundles layered on top of an agent. This repo is narrower and first-party: reference task skills + the authoring spec, not a full workflow methodology. |
+| Third-party community skill packs (e.g. [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.md)) | 部分已收录 | Choose community packs when opinionated SDLC/methodology matters more than first-party reference skills. | Opinionated SDLC/methodology bundles layered on top of an agent. This repo is narrower and first-party: reference task skills + the authoring spec, not a full workflow methodology. |
 | Roll your own `SKILL.md` skills | n/a | Choose custom skills when maximum fit and zero external dependency outweigh vendor baselines. | Maximum fit and zero external dependency, but you forgo the vendor's tested document-generation skills and the canonical spec/template. Many users fork from here as the baseline. |
 
 ## Health & viability

@@ -2,7 +2,7 @@
 name: MiniMax Skills
 slug: minimax-skills
 repo: https://github.com/MiniMax-AI/skills
-category: vendor-collections
+category: agent-vendors
 tags: [agent-skills, minimax, skill-pack, claude-code, plugin-marketplace, multimodal]
 language: C#
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 MiniMax's official public collection of ~16 Agent Skills — production-quality guidance for frontend / fullstack / Android / iOS / Flutter / React Native / shader dev, plus document & media generation (pdf/docx/xlsx/pptx, music, vision) — installable into Claude Code and other coding agents via a plugin marketplace.
 
-![minimax-skills — health radar](../../../assets/health/minimax-skills.svg)
+![minimax-skills — health radar](../../../../assets/health/minimax-skills.svg)
 
 ## When to use
 
@@ -91,7 +91,7 @@ You reach for it when you want an opinionated, ready-made skill bundle covering 
 |---|---|---|---|
 | [Anthropic Skills](anthropic-skills.md) | ✅ | Choose Anthropic Skills when Claude-format fidelity and general document/frontend skills matter. | First-party Anthropic bundle (document editing, frontend/canvas, MCP/skill authoring). Tighter Claude-format fidelity; narrower domain. MiniMax adds mobile/shader dev + MiniMax-specific media/multimodal skills. |
 | [Claude Plugins (official)](claude-plugins-official.md) | ✅ | Choose Claude Plugins when you need commands, agents, hooks, and MCP beyond skills. | Anthropic's official *plugin* marketplace (commands/agents/hooks/MCP, not just skills). Broader plugin surface, Claude-only. MiniMax is a skill-focused, multi-harness vendor bundle. |
-| [aws-agent-plugins](aws-agent-plugins.md) | ✅ | Choose aws-agent-plugins when AWS cloud-specific depth matters more than media/dev-generalist skills. | Another vendor/official plugin collection; compare on which harnesses each targets and whether you need cloud-specific vs media/dev-generalist skills. |
+| [aws-agent-plugins](../product-vendors/aws-agent-plugins.md) | ✅ | Choose aws-agent-plugins when AWS cloud-specific depth matters more than media/dev-generalist skills. | Another vendor/official plugin collection; compare on which harnesses each targets and whether you need cloud-specific vs media/dev-generalist skills. |
 | Building your own `skills/` folder | n/a | Choose a custom skills folder when full control and zero lock-in outweigh ready-made maintenance. | Full control, zero lock-in, no maintenance bus-factor risk — but you write and curate every skill yourself. MiniMax trades that for a ready-made, vendor-maintained bundle. |
 
 ## Health & viability

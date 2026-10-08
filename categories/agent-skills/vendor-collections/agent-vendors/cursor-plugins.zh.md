@@ -2,7 +2,7 @@
 name: Cursor Plugins
 slug: cursor-plugins
 repo: https://github.com/cursor/plugins
-category: vendor-collections
+category: agent-vendors
 tags: [cursor, plugins, marketplace, skills, mcp, hooks, subagents, pstack]
 language: TypeScript
 license: MIT
@@ -66,7 +66,7 @@ health:
 
 Cursor 里的 agent 写得快但糙；想让它读 Gmail、开 GitHub issue、查 Salesforce，又得自己去找每家的 MCP 地址、配 OAuth。这是 Cursor 官方的插件市场仓库：一条 `/add-plugin <名字>` 装上一整包 skill、规则、子 agent、hook 和 MCP 配置，其中分量最重的是 Cursor 工程师写的严谨工程工作流 pstack。
 
-![Cursor Plugins — 健康度雷达](../../../assets/health/cursor-plugins.zh.svg)
+![Cursor Plugins — 健康度雷达](../../../../assets/health/cursor-plugins.zh.svg)
 
 ## 何时使用
 
@@ -78,7 +78,7 @@ Cursor 里的 agent 写得快但糙；想让它读 Gmail、开 GitHub issue、�
 
 这个仓库是 Cursor 客户端读取的数据，本身不作为服务运行。根目录的 `.cursor-plugin/marketplace.json` 列出 96 个插件，每个插件是一个带 `.cursor-plugin/plugin.json` 清单的目录（CI 脚本按 `schemas/plugin.schema.json` 校验）。清单指向这些东西：`skills/`（agent 在相关时加载的 SKILL.md 指令）、`rules/`（`.mdc` 规则，常驻或按范围生效）、`agents/`（子 agent 定义）、`hooks/hooks.json`（Cursor 在 `stop`、`afterFileEdit` 这类事件上执行的 shell 或 `bun` 脚本）和 `mcp.json`（工具服务器）。你执行 `/add-plugin <名字>`，注册由 Cursor 完成。连接器插件通常只有一个 `mcp.json`，指向厂商托管的地址，像电话簿里的一条号码，告诉 Cursor 该拨给谁；接电话的 server、登录流程都归厂商，你的数据也流向厂商。pstack 正好相反，几乎全是提示词文本：一个路由 skill 负责挑剧本、把剧本步骤抄进待办清单，外加一批原则 skill 和少量 `bun` 脚本（PR 盯梢器、编排状态存储）；`/setup-pstack` 会写 `~/.cursor/rules/pstack-models.mdc`，决定每个角色用哪个模型。留给你的是：信任哪些插件，为 pstack 拉起的前沿模型评审面板付费，以及检查 agent 实际做了什么。
 
-![Cursor Plugins — 主干用户故事](../../../assets/flow/cursor-plugins.zh.svg)
+![Cursor Plugins — 主干用户故事](../../../../assets/flow/cursor-plugins.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/cursor-plugins.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -97,9 +97,9 @@ Cursor 里的 agent 写得快但糙；想让它读 Gmail、开 GitHub issue、�
 
 ## 何时不用
 
-- **你不用 Cursor。** 清单是 `.cursor-plugin/` 格式；hook 用的是 Cursor 的事件名（`afterAgentResponse`、`subagentStop`、带 `loop_limit` 的 `stop`）；pstack 默认你有 Cursor 的 `Task` 子 agent（带模型 slug）、`.mdc` 规则和 `/loop`。换到别的 harness 会悄悄失效：issue #237（未关闭）显示 `poteto-mode` 的 `name: Poteto Mode` 在 Kiro 上根本注册不上，#446 在问到底支不支持 Grok Build。用 Claude Code 的话选 [Claude Plugins（官方）](claude-plugins-official.zh.md)；想要一个自带多宿主安装方式的方法论包，选 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [gstack](../personal-collections/engineering-workflows/gstack.zh.md)。
-- **你想自托管或审计连接器。** 96 个插件里 80 个在 `third_party/` 下，基本就是一个指向厂商托管地址的 `mcp.json`（比如 `gmailmcp.googleapis.com/mcp/v1`、`api.githubcopilot.com/mcp/`），加一份 README 和一个 logo。仓库里的代码只是配置；server、鉴权和数据处理都在厂商那边。要自己跑或检查 server，就直接装厂商的开源 MCP server，比如 [Playwright MCP](../../web-automation/playwright-family/playwright-mcp.zh.md)，这里的 `playwright` 插件也不过是用 `npx @playwright/mcp@latest` 把它拉起来。
-- **你的模型预算很紧。** pstack 默认用最贵的档：`claude-opus-5-5-max`、`gpt-5.6-sol-max`、`grok-4.7-xhigh-fast`；`arena`、`architect`、`interrogate` 按面板里每一项各起一个子 agent，默认就是三个模型。issue #335（未关闭）报告旧的默认 slug 在当前 Cursor 里根本起不来。付不起面板的话，用 `/setup-pstack` 选 `small` 预算或 `inherit-parent`，或者换成单模型也能跑的 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。
+- **你不用 Cursor。** 清单是 `.cursor-plugin/` 格式；hook 用的是 Cursor 的事件名（`afterAgentResponse`、`subagentStop`、带 `loop_limit` 的 `stop`）；pstack 默认你有 Cursor 的 `Task` 子 agent（带模型 slug）、`.mdc` 规则和 `/loop`。换到别的 harness 会悄悄失效：issue #237（未关闭）显示 `poteto-mode` 的 `name: Poteto Mode` 在 Kiro 上根本注册不上，#446 在问到底支不支持 Grok Build。用 Claude Code 的话选 [Claude Plugins（官方）](claude-plugins-official.zh.md)；想要一个自带多宿主安装方式的方法论包，选 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [gstack](../../personal-collections/engineering-workflows/gstack.zh.md)。
+- **你想自托管或审计连接器。** 96 个插件里 80 个在 `third_party/` 下，基本就是一个指向厂商托管地址的 `mcp.json`（比如 `gmailmcp.googleapis.com/mcp/v1`、`api.githubcopilot.com/mcp/`），加一份 README 和一个 logo。仓库里的代码只是配置；server、鉴权和数据处理都在厂商那边。要自己跑或检查 server，就直接装厂商的开源 MCP server，比如 [Playwright MCP](../../../web-automation/playwright-family/playwright-mcp.zh.md)，这里的 `playwright` 插件也不过是用 `npx @playwright/mcp@latest` 把它拉起来。
+- **你的模型预算很紧。** pstack 默认用最贵的档：`claude-opus-5-5-max`、`gpt-5.6-sol-max`、`grok-4.7-xhigh-fast`；`arena`、`architect`、`interrogate` 按面板里每一项各起一个子 agent，默认就是三个模型。issue #335（未关闭）报告旧的默认 slug 在当前 Cursor 里根本起不来。付不起面板的话，用 `/setup-pstack` 选 `small` 预算或 `inherit-parent`，或者换成单模型也能跑的 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。
 - **你的 worktree 里有在乎的未跟踪文件。** issue #449（未关闭，2026-09-28）：pstack 的 `worktree-cleanup` 剧本把未跟踪和被忽略的文件当成可丢弃的，会退到 `git worktree remove --force`，再退到 `rm -rf`。如果 `.env`、运行产物、证据目录放在 agent 的 worktree 里，别用这个剧本，清理交给你自己的流程。
 - **你要锁版本、可复现。** 仓库没有 release 也没有 tag（GitHub API，2026-09-30），装的永远是 `main`，各插件的 `version` 字段只是声明。pstack 在 0.15.3 换了默认模型，之前写下的规则会一直钉着旧模型。要稳定就把插件目录拷进 `~/.cursor/plugins/local/`，自己决定什么时候升级。
 - **你指望上游修你的 bug 或收你的插件。** 截至 2026-09-30，issue 开着 51 个、关掉的只有 7 个；100 个开着的 PR 里 83 个来自外部贡献者（author association 为 `NONE`），合并的 PR 几乎全是协作者提的。把它当厂商策展的目录，而不是社区项目：修问题就 fork 插件，自己的插件放在 `~/.cursor/plugins/local/`（`create-plugin` 默认生成到这里）本地装，别指望这里的 PR 会被合并。
@@ -110,10 +110,10 @@ Cursor 里的 agent 写得快但糙；想让它读 Gmail、开 GitHub issue、�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Claude Plugins（官方）](claude-plugins-official.zh.md) | ✅ | agent 是 Claude Code 就选 Anthropic 的市场；在 Cursor 上选本仓库，因为两边都只能被自家的插件加载器读。 | 形态相同（厂商策展、按名安装的 skill/agent/MCP 配置目录），加载器不同。Anthropic 那边开发工作流类插件更多（LSP、评审、插件编写），并把内部和外部投稿分开；Cursor 条目更多（96 个），但 80 个是 SaaS 连接器，工作流的分量压在一个旗舰包 pstack 上。 |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 想要一个能在 Claude Code、Codex、Cursor 等十几个宿主之间通用的方法论包，选 Superpowers；常驻 Cursor、想要按角色分模型的评审面板、云端 agent 分发和 `/loop` 通宵跑，选这里的 pstack。 | Superpowers 胜在可移植、单模型就能跑（更省钱）；pstack 对 Cursor 原生机制和多模型评审挖得更深，代价是前沿模型开销和绑定 Cursor。 |
-| [gstack](../personal-collections/engineering-workflows/gstack.zh.md) | ✅ | 想要一位知名工程师的个人工作流、并自带十个 agent 的宿主适配，选 gstack；想要 Cursor 工程师通过 Cursor 官方市场发的那套，选 pstack。 | 两者都是把一个人的强主张风格打包成 skill。gstack 自带多宿主安装脚本；pstack 走 Cursor 的安装器，还多一个 `/automate-me`，能从你的对话记录起草你自己的 `-mode` skill。 |
-| [Agent Plugins for AWS](aws-agent-plugins.zh.md) | ✅ | 工作是 AWS 形状的（serverless、成本估算、IaC），就加装 AWS 的插件，它们也能装进 Cursor；通用工作流和 SaaS 连接器用本仓库。 | 两者互补大于竞争。AWS 那套深耕一朵云、跨 harness，而且 AWS 现在已把生产用户引向它的继任工具包；Cursor 这套胜在广度，没有云上深度。 |
-| [Playwright MCP](../../web-automation/playwright-family/playwright-mcp.zh.md) | ✅ | 要能锁版本、能配参数、能在 CI 里无头跑的浏览器控制，直接装 Playwright MCP；这里的 `playwright` 插件只适合在 Cursor 里一键装上。 | 插件只是两行 `mcp.json`，跑 `npx @playwright/mcp@latest`：永远追最新版，server 的参数一个也没暴露。自己接 server 只多改一处配置，换来锁版本和可调参数。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 想要一个能在 Claude Code、Codex、Cursor 等十几个宿主之间通用的方法论包，选 Superpowers；常驻 Cursor、想要按角色分模型的评审面板、云端 agent 分发和 `/loop` 通宵跑，选这里的 pstack。 | Superpowers 胜在可移植、单模型就能跑（更省钱）；pstack 对 Cursor 原生机制和多模型评审挖得更深，代价是前沿模型开销和绑定 Cursor。 |
+| [gstack](../../personal-collections/engineering-workflows/gstack.zh.md) | ✅ | 想要一位知名工程师的个人工作流、并自带十个 agent 的宿主适配，选 gstack；想要 Cursor 工程师通过 Cursor 官方市场发的那套，选 pstack。 | 两者都是把一个人的强主张风格打包成 skill。gstack 自带多宿主安装脚本；pstack 走 Cursor 的安装器，还多一个 `/automate-me`，能从你的对话记录起草你自己的 `-mode` skill。 |
+| [Agent Plugins for AWS](../product-vendors/aws-agent-plugins.zh.md) | ✅ | 工作是 AWS 形状的（serverless、成本估算、IaC），就加装 AWS 的插件，它们也能装进 Cursor；通用工作流和 SaaS 连接器用本仓库。 | 两者互补大于竞争。AWS 那套深耕一朵云、跨 harness，而且 AWS 现在已把生产用户引向它的继任工具包；Cursor 这套胜在广度，没有云上深度。 |
+| [Playwright MCP](../../../web-automation/playwright-family/playwright-mcp.zh.md) | ✅ | 要能锁版本、能配参数、能在 CI 里无头跑的浏览器控制，直接装 Playwright MCP；这里的 `playwright` 插件只适合在 Cursor 里一键装上。 | 插件只是两行 `mcp.json`，跑 `npx @playwright/mcp@latest`：永远追最新版，server 的参数一个也没暴露。自己接 server 只多改一处配置，换来锁版本和可调参数。 |
 
 ## 健康度与可持续性
 

@@ -2,7 +2,7 @@
 name: Agent Plugins for AWS
 slug: aws-agent-plugins
 repo: https://github.com/awslabs/agent-plugins
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, aws, claude-code, plugin-marketplace, skill-pack]
 language: Python
 license: Apache-2.0
@@ -73,7 +73,7 @@ health:
 
 你的 coding agent「多少懂点 AWS」，却总在挑过时的服务默认配置、跳过成本核算、手写需要你返工的 CloudFormation；这是 AWS Labs 官方的九个领域插件市场（serverless、deploy、SageMaker、迁移……），把 playbook、AWS MCP server 和 hook 打包成可安装单元——不过 AWS 自己现在已把生产用户导向它的继任者 Agent Toolkit for AWS。
 
-![aws-agent-plugins — 健康度雷达](../../../assets/health/aws-agent-plugins.zh.svg)
+![aws-agent-plugins — 健康度雷达](../../../../assets/health/aws-agent-plugins.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 这里的插件是一个*容器*，按 README 的说法装四类工件：agent skill（「deploy」「aws-lambda」这类一步步的 playbook）、MCP server（连到 AWS 文档、实时定价、IaC 校验的活连接）、hook（在你的动作上触发的护栏——例如 aws-serverless 插件在每次编辑 `template.yaml` 后跑 `sam validate`）、以及 reference（skill 可随时查阅、不撑爆 prompt 的文档与配置默认值）。你通过 harness 自己的 `/plugin` 流程安装插件；此后 skill 会在自然语句（「deploy to AWS」「add a map」「I inherited this code」）上自动触发，插件声明的 MCP server 也随之接入。明确留在你手上的：按最小权限配好的 AWS 凭据、在任何东西部署之前 review 生成的代码与成本（deploy playbook 依次走 Analyze、Recommend、Estimate、Generate、Deploy 五步，最后一步要你确认才执行），以及保持插件更新。
 
-![aws-agent-plugins — 主干用户故事](../../../assets/flow/aws-agent-plugins.zh.svg)
+![aws-agent-plugins — 主干用户故事](../../../../assets/flow/aws-agent-plugins.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/aws-agent-plugins.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,9 +117,9 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md)（官方点名的继任者） | ✅ | 现在开始*新的* AWS 生产 agent 工作时选继任者，因为 AWS 官方推荐它，且补上了区分 agent 与人类操作的 IAM condition key 以及 CloudWatch/CloudTrail 可见性。 | 继任者是活跃的 GitHub 仓库（`aws/agent-toolkit-for-aws`，2026-09-28 约 2.7k star）；本仓库「继续可用」但最有用的项目将迁走——今天装这些插件，等于采用一块官方已标记部分搬迁的表面。 |
-| [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 需要云中立的厂商级通用 skill 时，选 Anthropic Skills。 | Anthropic 第一方的通用 skill（文档生成、前端、编写规范）。云中立、任务通用；本 AWS 仓库更窄、绑生态，但在 AWS 架构/部署/运维上深得多。价值单位不同。 |
-| [Claude Plugins（官方）](claude-plugins-official.zh.md) | ✅ | 需要 Anthropic 宽的官方市场目录时，选 Claude Plugins。 | Anthropic 的官方插件/市场大全，通用向；本仓库是单一厂商（AWS）的领域合集，叠在同一插件机制上——按你要 AWS 深度还是通用插件集来选。 |
-| [MiniMax skills](minimax-skills.zh.md) | ✅ | 需要非 AWS 厂商的 skill 合集时，选 MiniMax skills。 | 另一厂商绑定其模型/harness 的 skill 合集；同为「官方起步 skill」目标，但没有 AWS 领域内容。混用前先核对格式/loader 兼容性。 |
+| [Anthropic Skills](../agent-vendors/anthropic-skills.zh.md) | ✅ | 需要云中立的厂商级通用 skill 时，选 Anthropic Skills。 | Anthropic 第一方的通用 skill（文档生成、前端、编写规范）。云中立、任务通用；本 AWS 仓库更窄、绑生态，但在 AWS 架构/部署/运维上深得多。价值单位不同。 |
+| [Claude Plugins（官方）](../agent-vendors/claude-plugins-official.zh.md) | ✅ | 需要 Anthropic 宽的官方市场目录时，选 Claude Plugins。 | Anthropic 的官方插件/市场大全，通用向；本仓库是单一厂商（AWS）的领域合集，叠在同一插件机制上——按你要 AWS 深度还是通用插件集来选。 |
+| [MiniMax skills](../agent-vendors/minimax-skills.zh.md) | ✅ | 需要非 AWS 厂商的 skill 合集时，选 MiniMax skills。 | 另一厂商绑定其模型/harness 的 skill 合集；同为「官方起步 skill」目标，但没有 AWS 领域内容。混用前先核对格式/loader 兼容性。 |
 | AWS 官方 MCP server（单独使用） | 未收录 | 只需要数据源、不需要打包 skill/playbook 时，选单独的 AWS MCP server。 | 底层的 AWS MCP server（文档、定价、IaC，见 `awslabs/mcp`）可以不装这些插件直接接；你拿到数据源，但没有打包的 skill、触发短语和护栏。装配更多，观点更少。 |
 | 自己写 AWS skill | 不适用 | 最高贴合度重于维护中的 playbook 与 MCP 接线时，选自写。 | 贴合度最高、无市场依赖，但放弃 AWS 维护的 playbook 与 MCP 接线，服务最佳实践要自己跟新。 |
 

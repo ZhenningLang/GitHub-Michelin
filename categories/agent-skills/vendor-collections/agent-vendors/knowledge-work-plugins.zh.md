@@ -2,7 +2,7 @@
 name: Anthropic Knowledge Work Plugins
 slug: knowledge-work-plugins
 repo: https://github.com/anthropics/knowledge-work-plugins
-category: vendor-collections
+category: agent-vendors
 tags: [knowledge-work, claude, plugins, skills, anthropic, office-tasks]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 每一次会话你都在向 Claude 重新解释团队是怎么干活的——销售电话前怎么准备、对账怎么跑、spec 落在哪个系统。这个仓库提供 11 个第一方的**岗位插件**（效率、销售、客服、产品管理、市场、法务、财务、数据、企业搜索、生物研究、插件编写），每个打包了一个岗位所需的 skill、MCP 连接器和 slash 命令，为 Claude Cowork 构建，也兼容 Claude Code。
 
-![knowledge-work-plugins — 健康度雷达](../../../assets/health/knowledge-work-plugins.zh.svg)
+![knowledge-work-plugins — 健康度雷达](../../../../assets/health/knowledge-work-plugins.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 每个插件就是一个纯文件目录：`.claude-plugin/plugin.json` manifest、`.mcp.json`（把该岗位的外部工具接到 MCP server）、`commands/`（你显式触发的 slash 命令）、`skills/`（任务命中时 Claude 自动取用的领域指令）。你把仓库注册为市场、装上某个岗位的插件（在 Cowork 里则直接从 claude.com/plugins 安装）；之后激活是无感的——相关 skill 自行触发，带命名空间的命令出现在会话里。仓库**不**替你做的事是了解你的公司：连接器指向 Anthropic 的通用选型，流程是教科书版本，你们的数据与术语要你自己改 markdown 补进去——这层按公司定制是明确的第二步，不是出厂自带的魔法。
 
-![Anthropic Knowledge Work Plugins — 主干用户故事](../../../assets/flow/knowledge-work-plugins.zh.svg)
+![Anthropic Knowledge Work Plugins — 主干用户故事](../../../../assets/flow/knowledge-work-plugins.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/knowledge-work-plugins.json by tools/flow_card.py — do not edit) -->
 <details>

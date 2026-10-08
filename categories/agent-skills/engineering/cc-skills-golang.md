@@ -81,7 +81,7 @@ Your coding agent writes Go that compiles but looks like Java: receivers named `
 
 You're shipping production Go through a coding agent (Claude Code, Codex, Cursor, OpenCode). The code `go test`s green, then review finds `if err != nil { log.Print(err); return err }` on every layer, a typed-nil `http.Handler` that never compares equal to `nil`, and `NewHTTPClient` instead of `New`. You do not want to paste Effective Go into every session. You install this pack so the agent loads `golang-error-handling`, `golang-safety`, or `golang-naming` when those jobs come up.
 
-Pick it over [Vercel Agent Skills](vercel-agent-skills.md) when the language is Go, not React/Next. Pick it over [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [mattpocock/skills](mattpocock-skills.md) when the failure is Go idiom — wrapping, nil traps, slice aliasing — not planning or TDD process. Pick it over [Android Skills](../vendor-collections/android-skills.md) when the platform is the Go toolchain, not Android.
+Pick it over [Vercel Agent Skills](vercel-agent-skills.md) when the language is Go, not React/Next. Pick it over [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [mattpocock/skills](mattpocock-skills.md) when the failure is Go idiom — wrapping, nil traps, slice aliasing — not planning or TDD process. Pick it over [Android Skills](../vendor-collections/product-vendors/android-skills.md) when the platform is the Go toolchain, not Android.
 
 ## Q&A
 
@@ -115,7 +115,7 @@ There is no runtime. Each skill is a `SKILL.md` plus optional `references/` mark
 
 ## When NOT to use
 
-- **You're not writing Go.** Use [Vercel Agent Skills](vercel-agent-skills.md) for React/Next, or [Android Skills](../vendor-collections/android-skills.md) for Android. This pack's value is Go idiom; off Go most skills are dead weight.
+- **You're not writing Go.** Use [Vercel Agent Skills](vercel-agent-skills.md) for React/Next, or [Android Skills](../vendor-collections/product-vendors/android-skills.md) for Android. This pack's value is Go idiom; off Go most skills are dead weight.
 - **The failure is process, not idiom.** Use [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [mattpocock/skills](mattpocock-skills.md) when the agent skips planning, TDD, or review. This pack does not own the SDLC loop.
 - **Humans and linters already cover style.** If review plus golangci-lint already catch naming, formatting, and unchecked errors, skip the pack. If the agent still writes Java-in-Go, install only `golang-safety`, `golang-error-handling`, and `golang-concurrency` — not all 45.
 - **You don't want the agent recommending the author's libraries.** The error-handling skill's own summary says to use `samber/oops` for production errors; seven `golang-samber-*` skills exist. Use [Agent Skills (addyosmani)](addyosmani-agent-skills.md) for language-agnostic production checklists, or install this pack without the `samber-*` skills.
@@ -127,7 +127,7 @@ There is no runtime. Each skill is a `SKILL.md` plus optional `references/` mark
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Vercel Agent Skills](vercel-agent-skills.md) | ✅ | When the agent is writing Go, pick this pack; when it is writing React/Next on Vercel, pick Vercel's. | Same shape (on-demand domain skills via skills.sh), different language. Vercel is vendor-backed; this pack is one maintainer's Go handbook plus his own libraries. |
-| [Android Skills](../vendor-collections/android-skills.md) | ✅ | When the jobs the model fails are Go idioms, pick this; when they are Compose, R8, or Play policy, pick Android Skills. | Both are language/platform playbooks. Android Skills is Google-owned and installed with the Android CLI; this pack is MIT, skills.sh / plugin install, and opinionated toward samber/* . |
+| [Android Skills](../vendor-collections/product-vendors/android-skills.md) | ✅ | When the jobs the model fails are Go idioms, pick this; when they are Compose, R8, or Play policy, pick Android Skills. | Both are language/platform playbooks. Android Skills is Google-owned and installed with the Android CLI; this pack is MIT, skills.sh / plugin install, and opinionated toward samber/* . |
 | [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | When the agent drifts on plan → TDD → verify, pick Superpowers; when it writes compiling-but-unidiomatic Go, pick this. | Superpowers shapes *how* the agent works; this pack shapes *what Go it emits*. Often complementary, not either/or. |
 | [mattpocock/skills](mattpocock-skills.md) | ✅ | When you need requirement grilling, tickets, and a TDD/review loop, pick mattpocock; when you need Go error wrapping and nil safety, pick this. | mattpocock is process-and-design across stacks; this pack is Go-only and will not give you that loop. |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.md) | ✅ | When you want language-agnostic quality/security/ship checklists, pick Addy's pack; when the checklist must be Go-specific, pick this. | Addy is broader production engineering without a Go standard library; this pack is deeper on Go and carries the author's library bias. |

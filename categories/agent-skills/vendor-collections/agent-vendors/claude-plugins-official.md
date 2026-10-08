@@ -2,7 +2,7 @@
 name: Claude Plugins (Official)
 slug: claude-plugins-official
 repo: https://github.com/anthropics/claude-plugins-official
-category: vendor-collections
+category: agent-vendors
 tags: [claude-code, plugins, skills, mcp, marketplace, anthropic]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 You keep hand-rebuilding the same Claude Code scaffolding — an LSP hookup, a code-review flow, an MCP-server skeleton. This repo is Anthropic's official plugin marketplace: one `/plugin install` command drops a bundle of commands, agents, skills and MCP config into your session.
 
-![claude-plugins-official — health radar](../../../assets/health/claude-plugins-official.svg)
+![claude-plugins-official — health radar](../../../../assets/health/claude-plugins-official.svg)
 
 ## When to use
 
@@ -81,7 +81,7 @@ You reach for this specifically when you want the *first-party* baseline: plugin
 
 The marketplace is data, not a runtime. The repo splits into `/plugins` (internal, written by Anthropic) and `/external_plugins` (partner/community submissions approved through a submission form); each plugin is a folder holding a `.claude-plugin/plugin.json` manifest plus optional `commands/` (slash commands), `agents/` (subagent definitions), `skills/` (instructions the agent loads when relevant) and `.mcp.json` (MCP server config). You run `/plugin install <name>@claude-plugins-official` — or browse it in `/plugin > Discover` — and Claude Code's plugin loader does the registration inside your harness; nothing runs until the loader pulls the entry in. Marketplace rules protect existing installs over time: plugin names are immutable slugs, unavoidable renames go through a top-level `renames` migration map in `marketplace.json`, and manifest-less "skill-bundle" plugins can be declared with `strict: false` plus an explicit skills array pointing into a foreign repo. What stays yours: choosing which plugins to trust — the README warns explicitly that Anthropic does not control or verify what MCP servers and files an (external) plugin ships, and it points each plugin at its own LICENSE file rather than blanket-applying the repo's Apache-2.0.
 
-![Claude Plugins (Official) — backbone user story](../../../assets/flow/claude-plugins-official.svg)
+![Claude Plugins (Official) — backbone user story](../../../../assets/flow/claude-plugins-official.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-plugins-official.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -110,7 +110,7 @@ The marketplace is data, not a runtime. The repo splits into `/plugins` (interna
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Anthropic Skills](anthropic-skills.md) | ✅ | Choose Anthropic Skills when you want raw standalone `SKILL.md` folders rather than plugin install. | Anthropic's standalone *skills* repo (self-contained `SKILL.md` folders, not the `/plugin`-installable marketplace format). Use it when you want the raw skill content for Claude Code / Claude.ai / the API; use this repo when you want one-command marketplace install into Claude Code. |
-| [awslabs/agent-plugins](aws-agent-plugins.md) | ✅ | Choose awslabs/agent-plugins when AWS-domain plugin depth matters most. | Another vendor (AWS) plugin/skill collection; compare on whose tooling matches your stack and which harness each targets. |
+| [awslabs/agent-plugins](../product-vendors/aws-agent-plugins.md) | ✅ | Choose awslabs/agent-plugins when AWS-domain plugin depth matters most. | Another vendor (AWS) plugin/skill collection; compare on whose tooling matches your stack and which harness each targets. |
 | [MiniMax-AI/skills](minimax-skills.md) | ✅ | Choose MiniMax-AI/skills when you want vendor-authored `SKILL.md` recipes (multimodal, document, frontend/Android dev) that any skill-reading harness can load, rather than Claude Code's `/plugin` install flow. | MiniMax's standalone skill collection (MIT) — readable in Claude Code / Cursor / Codex / OpenCode; compare on whose domain recipes you actually need and how each is installed. |
 | Third-party Claude Code marketplaces / community plugin lists | 未收录 | Choose community plugin lists when breadth and velocity outweigh first-party provenance. | Larger surface and faster-moving, but no Anthropic curation or provenance guarantee. This repo is the first-party baseline; community marketplaces extend it at higher trust cost. |
 

@@ -2,7 +2,7 @@
 name: Cloudflare Skills
 slug: cloudflare-skills
 repo: https://github.com/cloudflare/skills
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, cloudflare, workers, mcp, claude-code, plugin-marketplace, skill-pack, cloud, vendor]
 language: Shell
 license: Apache-2.0
@@ -69,19 +69,19 @@ health:
 
 让编码 agent 在 Cloudflare 上搭东西，它凭去年的记忆写：Cloudflare 现在让新站点走 Workers，它还给你建 Pages 项目；手敲一个早就和配置对不上的 `Env` 类型；用一个已经改掉的命令行参数。这是 Cloudflare 自己出的 16 个说明文件夹：告诉 agent 这件事该用哪个 Cloudflare 产品，并且要它动手前先读今天的文档，另外附一行配置连到 Cloudflare 托管的 API 服务器。
 
-![Cloudflare Skills — 健康度雷达](../../../assets/health/cloudflare-skills.zh.svg)
+![Cloudflare Skills — 健康度雷达](../../../../assets/health/cloudflare-skills.zh.svg)
 
 ## 何时使用
 
 你是开发者，你的编码 agent（Claude Code、Codex、Cursor、VS Code Copilot、OpenCode、Pi）正在写或审一个跑在 Cloudflare 上的东西：一个 Worker API、一个 Durable Object 聊天室、一个 Next.js 站点、一张要加 Turnstile 的注册表单、一次 Zero Trust 上线。agent 交回来的代码能编译，过后才出事。它写 `const { waitUntil } = ctx`，方法脱离了原对象，后台任务被丢掉。它声明 `class Room implements DurableObject`，而平台要的是 `extends`，于是 `this.ctx` 根本不存在。该按房间做协调的活它拿 KV 去存，Cloudflare 现在对新项目的建议是 Workers，它却搭了个 Pages 项目。
 
-想要厂商自己给的纠正，就用这个仓库。装一次，agent 得到一个路由 skill（`cloudflare`），把大约 95 种大白话需求（“存上传文件”“跑一个会重试、能续跑的任务”）对到合适的产品，再加上 Workers、Wrangler、Durable Objects、Agents SDK、Sandbox、Email、Turnstile、Cloudflare One 和网页性能这些产品 skill。在“选哪个产品”这一步，它比 Context7 这类通用的“取最新文档”工具强，因为文档索引里没有哪一页会告诉 agent 这里用 Queues 不对、该用 Workflows。它也比只接 Cloudflare 的 API 服务器强，因为那个服务器让 agent 能动你的账号，却不管该搭成什么样。并且本索引收录的厂商包里只有它覆盖 Cloudflare：[Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md) 和 [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md) 各自只路由到自家平台。
+想要厂商自己给的纠正，就用这个仓库。装一次，agent 得到一个路由 skill（`cloudflare`），把大约 95 种大白话需求（“存上传文件”“跑一个会重试、能续跑的任务”）对到合适的产品，再加上 Workers、Wrangler、Durable Objects、Agents SDK、Sandbox、Email、Turnstile、Cloudflare One 和网页性能这些产品 skill。在“选哪个产品”这一步，它比 Context7 这类通用的“取最新文档”工具强，因为文档索引里没有哪一页会告诉 agent 这里用 Queues 不对、该用 Workflows。它也比只接 Cloudflare 的 API 服务器强，因为那个服务器让 agent 能动你的账号，却不管该搭成什么样。并且本索引收录的厂商包里只有它覆盖 Cloudflare：[Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md) 和 [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md) 各自只路由到自家平台。
 
 ## 怎么用起来
 
 一个 *skill* 就是一个装着 `SKILL.md` 的文件夹：开头一段简短描述，agent 拿它和你的请求比对，对上了才去读后面的说明，所以没用到的 skill 几乎不占上下文。*插件*是可安装的外壳，里面装着全部 16 个 skill 和一条 MCP 配置（MCP 是 agent 调用外部工具的协议），指向 `https://mcp.cloudflare.com/mcp`，这台服务器由 Cloudflare 运行。大多数 skill 是有意写薄的。仓库的贡献规则是“帮 agent 找到对的文档，而不是再维护一份副本”，所以 skill 主要说明*该取哪一页*文档、该指出哪些错误，页面由 agent 在干活时现取。例外是带实货的两个：`cloudflare` 这个 skill 自带 54 个产品参考目录（273 个文件）供离线查阅，`turnstile-spin` 自带四个 shell 脚本，用你的令牌经 Cloudflare API 创建 Turnstile 组件。这个包做的事：选产品、指向当前页面、列出反模式。留给你的事：Cloudflare 账号、API 令牌或 OAuth 授权以及它的权限范围、审查 agent 部署的东西。可以把它想成五金店的店员：把你领到对的货架，递给你今年的安装说明，房子还是得你自己盖。
 
-![cloudflare-skills — 主干用户故事](../../../assets/flow/cloudflare-skills.zh.svg)
+![cloudflare-skills — 主干用户故事](../../../../assets/flow/cloudflare-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/cloudflare-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -100,7 +100,7 @@ health:
 
 ## 何时不用
 
-- **项目不在 Cloudflare 上，或者你要一个中立的平台建议。** 路由 skill 的原文写着要“主动提出能解决问题的 Cloudflare 产品，即使用户没有点名”，它的描述泛泛地匹配应用、API、存储、网络和安全。在多个无关项目共用的 harness 里，它会把 Cloudflare 的建议带进那些项目。在 AWS 上用 [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md)；部署在 Vercel 的 React 应用用 [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md)；要做不偏向某家云的架构讨论，用 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 这类方法包，并且按项目启用本插件，不要全局启用。
+- **项目不在 Cloudflare 上，或者你要一个中立的平台建议。** 路由 skill 的原文写着要“主动提出能解决问题的 Cloudflare 产品，即使用户没有点名”，它的描述泛泛地匹配应用、API、存储、网络和安全。在多个无关项目共用的 harness 里，它会把 Cloudflare 的建议带进那些项目。在 AWS 上用 [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md)；部署在 Vercel 的 React 应用用 [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md)；要做不偏向某家云的架构讨论，用 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 这类方法包，并且按项目启用本插件，不要全局启用。
 - **你需要锁定版本、可复现。** 仓库没有 git tag，也没有 GitHub release，安装跟着 `main` 走。插件清单的版本号靠手改，而且很少改：它在 `1.0.0` 一直停到 2026-09-21，其间捆绑的 MCP 配置从五个服务器变成一个，有用户测到自己加载的还是六个月前的缓存，里面是那五个旧服务器名（issue #196，2026-10-08 仍未关闭）。现在版本号是 `1.0.1`，此后又合入了新 skill，版本号没有再动。要确切知道 agent 读到的是什么，就按某个 commit 克隆，把 `skills/` 拷进你的 harness，不走 marketplace；或者只收编你需要的那几个 skill。
 - **agent 必须离线工作，或出站流量受严格限制。** 大多数 skill 只是指针：让 agent 动手前先去取 `developers.cloudflare.com` 的页面，插件里的 MCP 配置也是 Cloudflare 托管的端点。没有外网时，agent 手里只剩 `cloudflare` 自带的参考目录。这种环境下只装 skill 文件夹（`npx skills add https://github.com/cloudflare/skills`，不带 MCP 配置），把需要的文档镜像下来，并且别指望那些薄 skill 能帮上多少。
 - **你只是要跨很多厂商的最新库文档。** Context7（`upstash/context7`，未收录）用一个 MCP 服务器提供几千个库的当前文档。本包只管一家厂商，价值在路由和反模式清单，不在广度。
@@ -113,7 +113,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Agent Toolkit for AWS](agent-toolkit-for-aws.zh.md) | ✅ | 按负载跑在哪里选：Cloudflare 选本包，AWS 选 AWS 工具包，因为每家厂商的 skill 只路由到自家服务。如果硬性要求在审计里把 agent 的调用和人的调用分开，只有 AWS 工具包写明了做法。 | AWS：约 114 个 skill、一个签名代理、IAM 条件键和一个拦密钥的 hook，不收外部 PR。Cloudflare：16 个更薄、把细节交给在线文档的 skill，没有 hook，接受外部 PR，一条用 OAuth 的远程 MCP 配置。 |
-| [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md) | ✅ | React／Next.js 应用部署到 Vercel 时选 Vercel 的包；同一个应用要上 Workers 时选本包，因为 Vercel 的规则默认 Vercel 的运行时，而本包的 Next.js skill 会把你引向 Workers 上的 vinext。 | Vercel：40 多条写全了的 React 性能规则，可离线使用，有按 sha 打的快照。Cloudflare：平台覆盖面广（存储、队列、Zero Trust、邮件），框架层面的 React 建议很少，也没有快照。 |
+| [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md) | ✅ | React／Next.js 应用部署到 Vercel 时选 Vercel 的包；同一个应用要上 Workers 时选本包，因为 Vercel 的规则默认 Vercel 的运行时，而本包的 Next.js skill 会把你引向 Workers 上的 vinext。 | Vercel：40 多条写全了的 React 性能规则，可离线使用，有按 sha 打的快照。Cloudflare：平台覆盖面广（存储、队列、Zero Trust、邮件），框架层面的 React 建议很少，也没有快照。 |
 | Cloudflare API MCP 服务器（`cloudflare/mcp`） | 未收录 | 活是操作一个现成的账号（读配置、改一条 DNS 记录）时，只加这个 MCP 服务器；agent 还得选产品、写 Worker 代码时再加本包，因为服务器只执行调用，不告诉 agent 好的设计长什么样。 | 本次标签批次未添加。只用 MCP：两个工具覆盖整套 API，约占 1k token 上下文（Cloudflare 自己的数字），不往提示里加任何指导。本包：同一条服务器配置，外加 16 个按请求触发的 skill。 |
 | Context7（`upstash/context7`） | 未收录 | 问题只是 API 知识过时、技术栈又跨很多库时选 Context7；技术栈是 Cloudflare 时选本包，因为取文档的工具没法告诉 agent 新项目里 Workers 已经取代 Pages，也没法告诉它该用哪个存储产品。 | 本次标签批次未添加。Context7：一个服务器、几千个库，没有选产品的逻辑。本包：一家厂商、带立场的路由、供审查用的反模式表，以及厂商推荐自家产品的利益。 |
 

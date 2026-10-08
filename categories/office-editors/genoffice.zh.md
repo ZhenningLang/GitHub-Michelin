@@ -121,7 +121,7 @@ health:
 | ONLYOFFICE 桌面版（`ONLYOFFICE/DesktopEditors`） | 未收录 | 想要和 ONLYOFFICE 服务器同一套 OOXML 原生引擎、以及一个长寿厂商时选 ONLYOFFICE 桌面版；看重编辑器内 agent、自带 key 和面向编码 agent 的 CLI 时选 GenOffice。本批次（标签页收录）未新增此页。 | ONLYOFFICE 是 AGPL-3.0，有多年记录；GenOffice 是 Apache-2.0、AI 优先，但历史短得多，背后只有一家初创公司。 |
 | [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md) | ✅ | 用户要在你的网盘/CRM 里用浏览器编辑并实时协同时选 ONLYOFFICE Docs；一个人带 AI 面板编辑本地文件时选 GenOffice。 | 文档服务器给你多人协作，代价是运行一个 AGPL 服务；GenOffice 不需要服务器，但完全没有协作。 |
 | [OfficeCLI](../office-automation/officecli.zh.md) | ✅ | agent 要在没装图形界面的机器上写 Office 文件、只想要一个自包含二进制时选 OfficeCLI；同一个人还想用桌面编辑器打开并修补 agent 产出时选 GenOffice 的 `genoffice` CLI。 | OfficeCLI 是约 34 MB 的无界面二进制，没有给人用的编辑器；GenOffice 的 CLI 需要整个 Electron 应用（渲染/PDF 还要显示环境），但和完整套件共用引擎。 |
-| [Anthropic Skills](../agent-skills/vendor-collections/anthropic-skills.zh.md) | ✅ | 已经在用带代码执行的 Claude、想要厂商自己的文档流程时选 Anthropic 的 `docx`/`pptx`/`xlsx` skill；想让 agent 调一个稳定的本地引擎、带结构检查（`slides check`、`slides audit`），而不是每次现写 python-docx 代码时选 GenOffice。 | 这些 skill 是源码可见的提示词加脚本，依赖 agent 的沙箱；GenOffice 是 Apache-2.0 软件、有自己的引擎，但你得装它的桌面应用。 |
+| [Anthropic Skills](../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) | ✅ | 已经在用带代码执行的 Claude、想要厂商自己的文档流程时选 Anthropic 的 `docx`/`pptx`/`xlsx` skill；想让 agent 调一个稳定的本地引擎、带结构检查（`slides check`、`slides audit`），而不是每次现写 python-docx 代码时选 GenOffice。 | 这些 skill 是源码可见的提示词加脚本，依赖 agent 的沙箱；GenOffice 是 Apache-2.0 软件、有自己的引擎，但你得装它的桌面应用。 |
 
 ## 技术栈
 

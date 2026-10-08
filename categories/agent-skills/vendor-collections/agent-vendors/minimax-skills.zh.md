@@ -2,7 +2,7 @@
 name: MiniMax Skills
 slug: minimax-skills
 repo: https://github.com/MiniMax-AI/skills
-category: vendor-collections
+category: agent-vendors
 tags: [agent-skills, minimax, skill-pack, claude-code, plugin-marketplace, multimodal]
 language: C#
 license: MIT
@@ -69,7 +69,7 @@ health:
 
 MiniMax 官方公开的约 16 个 Agent Skill 集合 —— 覆盖前端 / 全栈 / Android / iOS / Flutter / React Native / shader 开发，外加文档与媒体生成（pdf/docx/xlsx/pptx、音乐、视觉），通过插件市场安装进 Claude Code 及其他编码 agent。
 
-![minimax-skills — 健康度雷达](../../../assets/health/minimax-skills.zh.svg)
+![minimax-skills — 健康度雷达](../../../../assets/health/minimax-skills.zh.svg)
 
 ## 何时使用
 
@@ -91,7 +91,7 @@ MiniMax 官方公开的约 16 个 Agent Skill 集合 —— 覆盖前端 / 全�
 |---|---|---|---|
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 需要 Claude 格式贴合度更高的一方通用 skill 时，选 Anthropic Skills。 | Anthropic 一手成包（文档编辑、前端/画布、MCP/skill 编写）。Claude 格式贴合度更高、领域更窄。MiniMax 多了移动端/shader 开发 + MiniMax 专属媒体/多模态 skill。 |
 | [Claude Plugins（官方）](claude-plugins-official.zh.md) | ✅ | 需要 commands、agents、hooks、MCP 都覆盖的官方插件市场时，选 Claude Plugins。 | Anthropic 官方*插件*市场（commands/agents/hooks/MCP，不只是 skill）。插件面更广、仅限 Claude。MiniMax 是聚焦 skill、跨 harness 的厂商成包。 |
-| [aws-agent-plugins](aws-agent-plugins.zh.md) | ✅ | 需要 AWS 云架构、部署、运维领域深度时，选 aws-agent-plugins。 | 另一个厂商/官方插件集合；按各自支持哪些 harness、以及你需要云专属还是媒体/开发通用型 skill 来取舍。 |
+| [aws-agent-plugins](../product-vendors/aws-agent-plugins.zh.md) | ✅ | 需要 AWS 云架构、部署、运维领域深度时，选 aws-agent-plugins。 | 另一个厂商/官方插件集合；按各自支持哪些 harness、以及你需要云专属还是媒体/开发通用型 skill 来取舍。 |
 | 自己搭 `skills/` 目录 | 未收录 | 需要完全可控、零锁定且愿意自行维护每个 skill 时，选自建目录。 | 完全可控、零锁定、无维护 bus-factor 风险 —— 但每个 skill 都得自己写自己维护。MiniMax 用这点换一个现成、厂商维护的成包。 |
 
 ## 健康度与可持续性

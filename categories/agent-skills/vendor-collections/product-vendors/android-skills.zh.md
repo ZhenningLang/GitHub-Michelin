@@ -2,7 +2,7 @@
 name: Android Skills
 slug: android-skills
 repo: https://github.com/android/skills
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, android, google, jetpack-compose, android-cli, skill-pack, vendor]
 language: Python
 license: Apache-2.0
@@ -73,7 +73,7 @@ health:
 
 你的编码 agent 仍在按 2024 年的训练截止日期写 Android：该用 Compose 的地方写出 XML，按钮被导航栏挡住，keep 规则从库的 README 整段复制。这是 Google 官方给那些模型仍会失手的活准备的剧本包——用 Android CLI 安装，任务对上就加载。
 
-![Android Skills — 健康度雷达](../../../assets/health/android-skills.zh.svg)
+![Android Skills — 健康度雷达](../../../../assets/health/android-skills.zh.svg)
 
 ## 何时使用
 
@@ -81,13 +81,13 @@ health:
 
 用 Android CLI 装，而不是 `npx skills add`：当前工程装一个 skill 用 `android skills add r8-analyzer --project=.`，给所有检测到的 agent 全装用 `android skills add --all`。v1.0.12 的 marketplace 清单是 24 个 skill——AGP 9 升级、CameraX、App Functions、ML Kit GenAI Prompt API、`android` CLI 本身、restore-credentials、verified email、Compose 自适应／XML 迁 Compose／主题、Media3 Cast、Navigation 3、Navigation Event、R8 分析、Play Engage／Billing 升级／政策洞察、Android profiler、intent 安全、edge-to-edge、测试搭建、Leanback 迁 Compose TV、Wear Compose M3、眼镜上的 Compose Glimmer。栈就是 Android、且你要的是平台厂商此刻的主张、而不是社区对去年 API 的猜测时，选它。
 
-与最近替代品的取舍在这里：[Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md) 是同一形态的厂商包，但面向 Vercel 上的 React／Next.js——它不会告诉 agent 怎么吃 window insets。[Anthropic Skills](anthropic-skills.zh.md) 是平台自家的通用包（文档、设计、MCP 编写），对 Android 不表态。[Agent Plugins for AWS](aws-agent-plugins.zh.md) 是云厂商的同类：第一方剧本锁在一个生态里。生态锁定本身就是目的时，选本页。
+与最近替代品的取舍在这里：[Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md) 是同一形态的厂商包，但面向 Vercel 上的 React／Next.js——它不会告诉 agent 怎么吃 window insets。[Anthropic Skills](../agent-vendors/anthropic-skills.zh.md) 是平台自家的通用包（文档、设计、MCP 编写），对 Android 不表态。[Agent Plugins for AWS](aws-agent-plugins.zh.md) 是云厂商的同类：第一方剧本锁在一个生态里。生态锁定本身就是目的时，选本页。
 
 ## 怎么用起来
 
 这个仓库是分发面，不是你 `import` 的工具。每个 skill 是一个目录：一份 `SKILL.md`（YAML 的 `name` + `description`，后面是编号剧本），外加可选的 `references/`（从 developer.android.com 拷来的页面、示例片段）和 `scripts/`（让 agent 去跑的 Python——R8 proto 转换、Play 政策编排器）。安装走 **Android CLI**（`android skills add …`），它把这些目录拷进检测到的各 agent 的 skill 目录；也可以在 Android Studio 里导入。Claude／Codex 的插件清单（`.claude-plugin/marketplace.json`、`.codex-plugin/plugin.json`）让这两种 harness 能加载同一棵树。装完之后靠描述匹配激活：你说「把应用做成 edge-to-edge」，agent 就该拉起 `edge-to-edge`；在 Studio 里还可以打 `@skill-name`。落到你手里的是方法，不是运行时——`r8-analyzer` 让 agent 跑 `./gradlew :app:analyzeReleaseR8Config` 再跑转换脚本，并且**只建议、不改文件**；`play-policy-insights` 对应用树跑 `orchestrator.py`，写出合规报告。Google DevRel 的 bot 从 `https://dl.google.com/dac/dac_skills.zip` 和 `github-skills` 分支刷新这棵树，所以正文跟着 developer.android.com 走，而不是某个志愿者的记忆。
 
-![android-skills — 主干用户故事](../../../assets/flow/android-skills.zh.svg)
+![android-skills — 主干用户故事](../../../../assets/flow/android-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/android-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -106,10 +106,10 @@ health:
 
 ## 何时不用
 
-- **活根本不是 Android。** 这些剧本假定 Android Gradle 工程、Jetpack 库、Play 控制台、Wear／TV／XR 形态。React／Next.js／Vercel 的性能和部署规则，用 [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md)；AWS 上的架构／部署／运维，用 [Agent Plugins for AWS](aws-agent-plugins.zh.md)；文档／设计／MCP 编写，用 [Anthropic Skills](anthropic-skills.zh.md)。
+- **活根本不是 Android。** 这些剧本假定 Android Gradle 工程、Jetpack 库、Play 控制台、Wear／TV／XR 形态。React／Next.js／Vercel 的性能和部署规则，用 [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md)；AWS 上的架构／部署／运维，用 [Agent Plugins for AWS](aws-agent-plugins.zh.md)；文档／设计／MCP 编写，用 [Anthropic Skills](../agent-vendors/anthropic-skills.zh.md)。
 - **你要的是模型已经会的基础 Compose。** README 写明他们跳过「LLM 已经熟练的成熟领域，例如基础 Jetpack Compose 最佳实践」。agent 只是漏了 `Column`／`Modifier.padding`，这个包不会被触发——去读 developer.android.com，或在项目里留一份短规则。
 - **你没有 Android CLI／Studio 的 skill 加载器，也不打算手工粘贴。** 文档里的安装路径是 `android skills add`（或 Studio 导入）。Claude 和 Codex 的插件清单是有的，但 README 并不把 `npx skills add android/skills` 当成支持路径。没有 skill 加载器的 harness 上，这份 markdown 不会自己生效——把对应 `SKILL.md` 贴进去，或用 CLI。
-- **你要的是强制门禁，不是建议。** `r8-analyzer` 写着「No code changes: Research and suggest only。」Play 政策洞察写出报告就停。除非你自己接进 CI，否则什么都不会红。要一条每个任务都走的方法论，用 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。
+- **你要的是强制门禁，不是建议。** `r8-analyzer` 写着「No code changes: Research and suggest only。」Play 政策洞察写出报告就停。除非你自己接进 CI，否则什么都不会红。要一条每个任务都走的方法论，用 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)。
 - **你想给这个仓库提一个新 skill 的 PR。** 「Public contributions are not accepted at this time」——只收反馈和 skill 请求的 issue。要改就 fork，或按官方文档把项目本地 skill 放在 `.skills/`／`.agent/skills/`。
 - **你要的是 Android CLI 本身，不是这些剧本。** `android-cli` 这个 skill 教的是 CLI；CLI 是 Google 另托管的二进制（`curl … dl.google.com/android/cli/…/install.sh`），不是本仓库。本页是 skill 包。
 
@@ -117,11 +117,11 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md) | ✅ | agent 在写 Vercel 上的 React／Next.js、失手点是 Core Web Vitals 或函数成本时，选 Vercel Agent Skills；agent 在写 Android、失手点是当前平台 API（insets、R8、Navigation 3、Play 政策）时，选 Android Skills，因为两包编码的是不同厂商的内部规矩，不能互换。 | Vercel：Web／React、`npx skills add`、无 tag 的 `main`。Android：移动平台、Android CLI 安装、有 tag 的发布、Google 所有。 |
+| [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md) | ✅ | agent 在写 Vercel 上的 React／Next.js、失手点是 Core Web Vitals 或函数成本时，选 Vercel Agent Skills；agent 在写 Android、失手点是当前平台 API（insets、R8、Navigation 3、Play 政策）时，选 Android Skills，因为两包编码的是不同厂商的内部规矩，不能互换。 | Vercel：Web／React、`npx skills add`、无 tag 的 `main`。Android：移动平台、Android CLI 安装、有 tag 的发布、Google 所有。 |
 | [Agent Plugins for AWS](aws-agent-plugins.zh.md) | ✅ | 活是在 AWS 上做架构／部署／运维，选 Agent Plugins for AWS；活是 Android 应用的代码、构建或 Play 上架，选 Android Skills，因为两者都是第一方生态锁定，你要锁的那个必须对得上运行时。 | AWS：九个插件加 MCP 接线，云。Android：24 个 skill 加 Gradle／设备／Play，移动。 |
-| [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 文档、设计、MCP／skill 编写且要贴 Claude 平台约定，选 Anthropic Skills；反复失手的是 Android 平台流程，选 Android Skills，因为通用包编码不了 AGP 9、R8 keep 半径或 edge-to-edge inset 规则。 | Anthropic：harness 原生、跨域。Android：一个 OS、厂商权威、CLI 分发。 |
-| [MiniMax Skills](minimax-skills.zh.md) | ✅ | 要的是该厂商的前端／shader／办公文档／媒体生成，选 MiniMax Skills；主题是 Google 的 Android 栈，选 Android Skills，因为「官方入门包」这种分发形态重叠，教的内容不重叠。 | MiniMax：生成与创作面的广度。Android：平台正确性剧本。 |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 要一条每个任务都走的 SDLC 主干（brainstorm → plan → TDD → verify），选 Superpowers；失手点是某一件 Android 活上的领域知识，选 Android Skills，因为方法论不知道 Navigation 3 或 Play Data Safety。 | Superpowers：过程、多 harness。Android：领域、只覆盖 Android。常常叠用，不是二选一。 |
+| [Anthropic Skills](../agent-vendors/anthropic-skills.zh.md) | ✅ | 文档、设计、MCP／skill 编写且要贴 Claude 平台约定，选 Anthropic Skills；反复失手的是 Android 平台流程，选 Android Skills，因为通用包编码不了 AGP 9、R8 keep 半径或 edge-to-edge inset 规则。 | Anthropic：harness 原生、跨域。Android：一个 OS、厂商权威、CLI 分发。 |
+| [MiniMax Skills](../agent-vendors/minimax-skills.zh.md) | ✅ | 要的是该厂商的前端／shader／办公文档／媒体生成，选 MiniMax Skills；主题是 Google 的 Android 栈，选 Android Skills，因为「官方入门包」这种分发形态重叠，教的内容不重叠。 | MiniMax：生成与创作面的广度。Android：平台正确性剧本。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 要一条每个任务都走的 SDLC 主干（brainstorm → plan → TDD → verify），选 Superpowers；失手点是某一件 Android 活上的领域知识，选 Android Skills，因为方法论不知道 Navigation 3 或 Play Data Safety。 | Superpowers：过程、多 harness。Android：领域、只覆盖 Android。常常叠用，不是二选一。 |
 
 ## 健康度与可持续性
 

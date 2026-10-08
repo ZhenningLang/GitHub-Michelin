@@ -2,7 +2,7 @@
 name: Agent Plugins for AWS
 slug: aws-agent-plugins
 repo: https://github.com/awslabs/agent-plugins
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, aws, claude-code, plugin-marketplace, skill-pack]
 language: Python
 license: Apache-2.0
@@ -73,7 +73,7 @@ health:
 
 Your coding agent knows AWS "in general" but keeps picking stale service defaults, skipping cost checks and hand-rolling CloudFormation you have to correct; this is AWS Labs' own marketplace of nine domain plugins (serverless, deploy, SageMaker, migration, …) that bundle playbooks, AWS MCP servers and hooks into installable units — though AWS itself now steers production users to its successor, the Agent Toolkit for AWS.
 
-![aws-agent-plugins — health radar](../../../assets/health/aws-agent-plugins.svg)
+![aws-agent-plugins — health radar](../../../../assets/health/aws-agent-plugins.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ This repo is the vendor source: each of the nine plugins (`aws-serverless`, `aws
 
 A plugin here is a *container* of four artifact types, per the README: agent skills (step-by-step playbooks like "deploy" or "aws-lambda"), MCP servers (live connections to AWS docs, real-time pricing, IaC validation), hooks (guardrails that fire on your actions — e.g. the aws-serverless plugin runs `sam validate` on every `template.yaml` edit), and references (docs/config defaults the skills consult without bloating the prompt). You install a plugin through the harness's own `/plugin` flow; from then on the skills auto-trigger on natural phrases ("deploy to AWS", "add a map", "I inherited this code") and the plugin's declared MCP servers come up with it. What stays yours, explicitly: AWS credentials scoped least-privilege, reviewing generated code and costs before anything deploys (the deploy playbook runs its five steps — Analyze, Recommend, Estimate, Generate, Deploy — and asks for your confirmation at the last one), and keeping plugins updated.
 
-![aws-agent-plugins — backbone user story](../../../assets/flow/aws-agent-plugins.svg)
+![aws-agent-plugins — backbone user story](../../../../assets/flow/aws-agent-plugins.svg)
 
 <!-- flow-steps:begin (generated from flows/aws-agent-plugins.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,9 +117,9 @@ A plugin here is a *container* of four artifact types, per the README: agent ski
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Agent Toolkit for AWS](agent-toolkit-for-aws.md) (the named successor) | ✅ | When you're starting *new* production agent work on AWS, pick the successor toolkit, because AWS itself recommends it and adds IAM condition keys to separate agent actions from human ones plus CloudWatch/CloudTrail visibility. | The successor is a live `awslabs`-adjacent repo (`aws/agent-toolkit-for-aws`, ~2.7k stars as of 2026-09-28); this repo "continues to work" while its most useful projects migrate over — installing these plugins today means adopting a surface AWS has flagged for partial relocation. |
-| [Anthropic Skills](anthropic-skills.md) | ✅ | Choose Anthropic Skills when you need cloud-neutral first-party general-purpose skills. | Anthropic's first-party general-purpose skills (document gen, frontend, authoring spec). Cloud-neutral and task-generic; this AWS repo is narrower and ecosystem-locked but far deeper on AWS architecture/deploy/ops. Different unit of value. |
-| [Claude Plugins (official)](claude-plugins-official.md) | ✅ | Choose Claude Plugins when you need Anthropic's broad official marketplace catalog. | Anthropic's broad official plugin/marketplace catalog; general-purpose. This repo is a single-vendor (AWS) domain collection layered on the same plugin mechanism — pick by whether you need AWS depth or a general plugin set. |
-| [MiniMax skills](minimax-skills.md) | ✅ | Choose MiniMax skills when you need a non-AWS vendor skill bundle. | Another vendor's skill collection tied to that vendor's models/harness; overlapping "official starter skills" goal but no AWS domain content. Cross-check format/loader compatibility before mixing. |
+| [Anthropic Skills](../agent-vendors/anthropic-skills.md) | ✅ | Choose Anthropic Skills when you need cloud-neutral first-party general-purpose skills. | Anthropic's first-party general-purpose skills (document gen, frontend, authoring spec). Cloud-neutral and task-generic; this AWS repo is narrower and ecosystem-locked but far deeper on AWS architecture/deploy/ops. Different unit of value. |
+| [Claude Plugins (official)](../agent-vendors/claude-plugins-official.md) | ✅ | Choose Claude Plugins when you need Anthropic's broad official marketplace catalog. | Anthropic's broad official plugin/marketplace catalog; general-purpose. This repo is a single-vendor (AWS) domain collection layered on the same plugin mechanism — pick by whether you need AWS depth or a general plugin set. |
+| [MiniMax skills](../agent-vendors/minimax-skills.md) | ✅ | Choose MiniMax skills when you need a non-AWS vendor skill bundle. | Another vendor's skill collection tied to that vendor's models/harness; overlapping "official starter skills" goal but no AWS domain content. Cross-check format/loader compatibility before mixing. |
 | AWS official MCP servers (standalone) | 未收录 | Choose standalone AWS MCP servers when you only need data sources, not packaged skills/playbooks. | The underlying AWS MCP servers (docs, pricing, IaC, `awslabs/mcp`) can be wired up without these plugins; you get the data sources but not the packaged skills, trigger phrases, and guardrails. More assembly, less opinion. |
 | Roll your own AWS skills | n/a | Choose custom AWS skills when maximum fit outweighs maintained playbooks and MCP wiring. | Maximum fit and no marketplace dependency, but you forgo AWS's maintained playbooks and MCP wiring and must keep service best-practices current yourself. |
 

@@ -2,7 +2,7 @@
 name: Claude Plugins (Official)
 slug: claude-plugins-official
 repo: https://github.com/anthropics/claude-plugins-official
-category: vendor-collections
+category: agent-vendors
 tags: [claude-code, plugins, skills, mcp, marketplace, anthropic]
 language: Python
 license: Apache-2.0
@@ -69,7 +69,7 @@ health:
 
 你总是给 Claude Code 手搓同一套样板——某门语言的 LSP 接入、code-review 流程、MCP server 脚手架。这个仓库是 Anthropic 官方的插件市场：一条 `/plugin install` 命令，把打包好的 slash 命令、agent、skill 和 MCP 配置直接装进你的会话。
 
-![claude-plugins-official — 健康度雷达](../../../assets/health/claude-plugins-official.zh.svg)
+![claude-plugins-official — 健康度雷达](../../../../assets/health/claude-plugins-official.zh.svg)
 
 ## 何时使用
 
@@ -81,7 +81,7 @@ health:
 
 这个市场是数据目录，不是运行时。仓库分为 `/plugins`（Anthropic 自研的内部插件）和 `/external_plugins`（伙伴/社区经提交表单审核进入的第三方插件）；每个插件是一个目录，内含 `.claude-plugin/plugin.json` manifest，外加可选的 `commands/`（slash 命令）、`agents/`（子 agent 定义）、`skills/`（任务命中时 agent 按需加载的指令）与 `.mcp.json`（MCP server 配置）。你运行 `/plugin install <name>@claude-plugins-official`，或在 `/plugin > Discover` 里浏览选择，之后由 Claude Code 的插件 loader 在你的 harness 内完成注册——loader 拉取之前什么都不会发生。市场规则保护既有安装：插件 `name` 是不可变的 slug，实在要改名得走 `marketplace.json` 顶层的 `renames` 迁移映射；没有 manifest 的「skill-bundle」插件可以用 `strict: false` 加显式 skills 数组声明，指向外部仓库的子目录。留在你手上的事：判断该信任哪些插件——README 明确警告 Anthropic 不控制、也无法验证（外部）插件里包含哪些 MCP server 和文件，且各插件的许可证以插件自带的 LICENSE 为准，不是整仓 Apache-2.0 一刀切。
 
-![Claude Plugins（官方）— 主干用户故事](../../../assets/flow/claude-plugins-official.zh.svg)
+![Claude Plugins（官方）— 主干用户故事](../../../../assets/flow/claude-plugins-official.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/claude-plugins-official.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -110,7 +110,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 想要原始独立 `SKILL.md` 目录而不是 plugin 安装时，选 Anthropic Skills。 | Anthropic 独立的 *skills* 仓库（自包含的 `SKILL.md` 目录，不是 `/plugin` 可装的市场格式）。想要原始 skill 内容（用于 Claude Code / Claude.ai / API）用它；想要一条命令装进 Claude Code 用本仓库。 |
-| [awslabs/agent-plugins](aws-agent-plugins.zh.md) | ✅ | 需要 AWS 领域插件/skill 深度时，选 awslabs/agent-plugins。 | 另一家厂商（AWS）的插件/skill 集合；按谁的工具贴你的技术栈、各自面向哪个 harness 来比较。 |
+| [awslabs/agent-plugins](../product-vendors/aws-agent-plugins.zh.md) | ✅ | 需要 AWS 领域插件/skill 深度时，选 awslabs/agent-plugins。 | 另一家厂商（AWS）的插件/skill 集合；按谁的工具贴你的技术栈、各自面向哪个 harness 来比较。 |
 | [MiniMax-AI/skills](minimax-skills.zh.md) | ✅ | 想要厂商自研的 `SKILL.md` 配方（多模态、文档、前端/Android 开发）且任何能读 skill 的 harness 都可加载，而非 Claude Code 的 `/plugin` 安装流时，选 MiniMax-AI/skills。 | MiniMax 的独立 skill 合集（MIT），可在 Claude Code / Cursor / Codex / OpenCode 里读；按你实际需要谁的领域配方、以及各自怎么安装来比较。 |
 | 第三方 Claude Code 市场 / 社区插件清单 | 未收录 | 面更广、迭代更快比第一方来源担保更重要时，选社区插件清单。 | 面更广、迭代更快，但没有 Anthropic 的策展和来源担保。本仓库是第一方基线；社区市场以更高信任成本来扩展它。 |
 

@@ -2,7 +2,7 @@
 name: Modern Web Guidance
 slug: modern-web-guidance
 repo: https://github.com/GoogleChrome/modern-web-guidance-src
-category: vendor-collections
+category: product-vendors
 tags: [agent-skills, web-platform, css, frontend, baseline, google, chrome, eval-harness, cli, vendor]
 language: TypeScript
 license: Apache-2.0
@@ -76,19 +76,19 @@ health:
 
 让编码 agent 写个弹窗，它交回来一个 `div` 遮罩、一个焦点陷阱库，外加四十行锁滚动的 JavaScript——其实 `<dialog>` 配 `@starting-style` 原生就能做。这是 Chrome 团队给的解法：一个 skill，让 agent 动手写代码前，先在本地一套由专家撰写、经过评测的 Web 平台指南里搜一下，把对的那篇塞进上下文。
 
-![Modern Web Guidance — 健康度雷达](../../../assets/health/modern-web-guidance.zh.svg)
+![Modern Web Guidance — 健康度雷达](../../../../assets/health/modern-web-guidance.zh.svg)
 
 ## 何时使用
 
 你用 Claude Code、Codex、Gemini CLI 或 Antigravity 写前端，agent 却总在写 2019 年的代码。要个提示框，它引入 Popper.js，而不是用 CSS 锚点定位；要个折叠面板，它去动画 `max-height: 1000px`，而不是用 `interpolate-size`；注册表单漏掉 `autocomplete="new-password"`；一句“让页面快点”，换来一个懒加载库，而不是给首屏大图（LCP 图片）加上 `fetchpriority="high"`。模型往往知道新 API 存在，但它见过的旧写法远多于正确的新写法，也没人告诉它这些 API 在你要支持的浏览器里能不能直接用。
 
-你装上它（`npx modern-web-guidance@latest install`）之后，agent 碰到任何 HTML/CSS/客户端 JS 任务，都会先跑 `search "<我要做什么>"`，拿到由本机嵌入模型排好序的指南 id，再 `retrieve` 一篇约 1k token 的指南：里面有“要做 / 不要做”规则、代码片段、Baseline 浏览器支持数据，以及控制了体量的降级方案。问题是“写组件时选对平台特性”而不是“对做好的页面按 Lighthouse 体检”时，选它而不是 [web-quality-skills](../engineering/addyosmani-web-quality.zh.md)；问题出在浏览器平台本身、而不是 React/Next.js 的规则时，选它而不是 [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md)。和这两者的决定性差别：指南由 Chrome/Edge 工程师撰写，每一篇都用浏览器测试分别给“带指南”和“不带指南”的 agent 打过分。
+你装上它（`npx modern-web-guidance@latest install`）之后，agent 碰到任何 HTML/CSS/客户端 JS 任务，都会先跑 `search "<我要做什么>"`，拿到由本机嵌入模型排好序的指南 id，再 `retrieve` 一篇约 1k token 的指南：里面有“要做 / 不要做”规则、代码片段、Baseline 浏览器支持数据，以及控制了体量的降级方案。问题是“写组件时选对平台特性”而不是“对做好的页面按 Lighthouse 体检”时，选它而不是 [web-quality-skills](../../engineering/addyosmani-web-quality.zh.md)；问题出在浏览器平台本身、而不是 React/Next.js 的规则时，选它而不是 [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md)。和这两者的决定性差别：指南由 Chrome/Edge 工程师撰写，每一篇都用浏览器测试分别给“带指南”和“不带指南”的 agent 打过分。
 
 ## 怎么用起来
 
 你看到的这个仓库是“工厂”，不是你安装的那个东西。领域专家为每个用例写一份 `guide.md`、一份标杆实现 `demo.html` 和一份 `expectations.md`；`gd dev` 流水线把期望翻成 Playwright 评分脚本（一段在浏览器里检查计算样式、无障碍状态和运行行为的脚本），校准到对标杆实现 100% 通过、对故意写坏的版本 0% 通过，再让编码 agent 在同一任务上分别带指南和不带指南跑一遍，记下提升幅度。构建步骤把通过的指南、一个内置的 MiniLM 句向量模型（把一句话变成一串数字，意思相近的请求会落在相近位置）和预先算好的指南向量，发布到 npm 包 `modern-web-guidance` 和干净的 skill 仓库 `GoogleChrome/modern-web-guidance`。你只装一次 skill；之后 agent 之所以会去调用 CLI，是因为 `SKILL.md` 的描述要求它在每个前端任务上都这样做，CLI 在你的 CPU 上做相似度搜索，指南正文落进 agent 的上下文。它不做的事：没有任何环节检查 agent 在*你的*仓库里是否真的照指南写了。
 
-![modern-web-guidance — 主干用户故事](../../../assets/flow/modern-web-guidance.zh.svg)
+![modern-web-guidance — 主干用户故事](../../../../assets/flow/modern-web-guidance.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/modern-web-guidance.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -108,8 +108,8 @@ health:
 
 ## 何时不用
 
-- **你要给做好的页面测分，而不是让下一个组件写对。** 这些指南引导的是代码生成，不会对你的应用跑 Lighthouse、性能追踪或无障碍扫描。要按阈值体检用 [web-quality-skills](../engineering/addyosmani-web-quality.zh.md)，要让 agent 实测线上页面用 [Chrome DevTools MCP](../../web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md)。
-- **出错的是框架规则，不是平台 API。** skill 自己写明指南“通常与框架无关”。React 重渲染、Next.js 取数、Vercel 部署规则用 [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md)；要任意 npm 库当前版本的文档，形态对的是 Context7（未收录）。
+- **你要给做好的页面测分，而不是让下一个组件写对。** 这些指南引导的是代码生成，不会对你的应用跑 Lighthouse、性能追踪或无障碍扫描。要按阈值体检用 [web-quality-skills](../../engineering/addyosmani-web-quality.zh.md)，要让 agent 实测线上页面用 [Chrome DevTools MCP](../../../web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md)。
+- **出错的是框架规则，不是平台 API。** skill 自己写明指南“通常与框架无关”。React 重渲染、Next.js 取数、Vercel 部署规则用 [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md)；要任意 npm 库当前版本的文档，形态对的是 Context7（未收录）。
 - **你要支持老浏览器，却没写支持策略。** 默认情况下，指南把“Baseline 广泛可用”视为可直接用、不加降级，只对更新的特性加降级。如果必须支持老版企业 Chromium 或 Safari，先把浏览器支持策略写进 `AGENTS.md` / `CLAUDE.md`（skill 会读），或者干脆只用项目规则文件、不装这个 skill。
 - **你在离线环境或严格的网络白名单下工作。** README 说 CLI 可离线，但 skill 让 agent 跑的是 `npx -y modern-web-guidance@latest …`，这会访问 npm 源，并在首次使用时下载约 38 MB 的包；skill 自己也要求先申请联网权限。这种环境下把指南作为静态文件内置，或固定一个本地安装版本。
 - **你的规定不允许把 agent 的查询发给厂商。** 遥测默认开启，会把安装次数、取回的指南 id 和 agent 的搜索词发给 Google；一个未合并的 PR（#1588，2026-09-29）还会上报当前运行的是哪个 agent。设 `DISABLE_TELEMETRY=1`，或把 CC-BY 协议的指南拷成本地 skill、不用 CLI。
@@ -120,9 +120,9 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [web-quality-skills](../engineering/addyosmani-web-quality.zh.md) | ✅ | 想让 agent 按 Core Web Vitals / WCAG / SEO 阈值给现成页面体检，选 web-quality-skills；想让 agent 写组件时就用上对的原生特性，选 Modern Web Guidance，因为前者是事后清单，后者是按任务检索的构建指导。 | web-quality-skills：六个 skill，纯 markdown，无 CLI、无遥测，体检形态。本项目：约 153 篇用例指南藏在搜索 CLI 后面，经过评测打分，但依赖 npm 且遥测默认开启。 |
-| [Vercel Agent Skills](../engineering/vercel-agent-skills.zh.md) | ✅ | 错在 React/Next.js 写法和 Vercel 部署成本时，选 Vercel Agent Skills；错在各框架共用的 HTML/CSS/DOM API 时，选 Modern Web Guidance，因为 Vercel 那套是框架厂商的家规，这套是浏览器厂商的。 | Vercel：绑定框架，纯 skill，无运行时。本项目：与框架无关，但每次调用都要 Node 20 以上和 npm CLI。 |
-| [Chrome DevTools MCP](../../web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) | ✅ | agent 需要看到渲染后的页面（控制台报错、性能追踪、网络、截图）时，选 Chrome DevTools MCP；页面还没写出来、agent 需要知道该用哪个 API 时，选 Modern Web Guidance，因为一个是看运行时的眼睛，一个是写进提示词的知识——两者叠加使用。 | DevTools MCP：要一个跑着的 Chrome，给的是测量。本项目：不需要浏览器，给的是处方，但从不在你的应用里验证。 |
+| [web-quality-skills](../../engineering/addyosmani-web-quality.zh.md) | ✅ | 想让 agent 按 Core Web Vitals / WCAG / SEO 阈值给现成页面体检，选 web-quality-skills；想让 agent 写组件时就用上对的原生特性，选 Modern Web Guidance，因为前者是事后清单，后者是按任务检索的构建指导。 | web-quality-skills：六个 skill，纯 markdown，无 CLI、无遥测，体检形态。本项目：约 153 篇用例指南藏在搜索 CLI 后面，经过评测打分，但依赖 npm 且遥测默认开启。 |
+| [Vercel Agent Skills](../../engineering/vercel-agent-skills.zh.md) | ✅ | 错在 React/Next.js 写法和 Vercel 部署成本时，选 Vercel Agent Skills；错在各框架共用的 HTML/CSS/DOM API 时，选 Modern Web Guidance，因为 Vercel 那套是框架厂商的家规，这套是浏览器厂商的。 | Vercel：绑定框架，纯 skill，无运行时。本项目：与框架无关，但每次调用都要 Node 20 以上和 npm CLI。 |
+| [Chrome DevTools MCP](../../../web-automation/agent-browser-tools/chrome-devtools-mcp.zh.md) | ✅ | agent 需要看到渲染后的页面（控制台报错、性能追踪、网络、截图）时，选 Chrome DevTools MCP；页面还没写出来、agent 需要知道该用哪个 API 时，选 Modern Web Guidance，因为一个是看运行时的眼睛，一个是写进提示词的知识——两者叠加使用。 | DevTools MCP：要一个跑着的 Chrome，给的是测量。本项目：不需要浏览器，给的是处方，但从不在你的应用里验证。 |
 | Context7 | 未收录 | agent 缺的是某个库某个版本的最新 API 时，选 Context7；缺的是浏览器平台本身、以及哪些特性能放心上线时，选 Modern Web Guidance，因为 Context7 原样检索上游文档，这里的指南经过筛选并拿 agent 测过。本批次（标签页收录）未新增它的页面。 | Context7：任意库，原始文档，托管检索。本项目：只管 Web 平台，人工筛选并感知 Baseline，本地搜索。 |
 | [Android Skills](android-skills.zh.md) | ✅ | agent 在写 Android 应用时，选 Android Skills；写浏览器代码时，选 Modern Web Guidance，因为两者都是 Google 官方针对“模型写的是去年的平台”的修正，只是运行时不同，内容不重叠。 | Android：24 份剧本，靠 Android CLI 安装，不接受外部贡献。本项目：搜索加取回的 CLI，评测框架公开，签 CLA 后接受贡献。 |
 

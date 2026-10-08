@@ -81,7 +81,7 @@ health:
 
 你在用 coding agent（Claude Code、Codex、Cursor、OpenCode）交生产 Go。代码 `go test` 是绿的，review 却看到每一层都是 `if err != nil { log.Print(err); return err }`、一个 typed-nil 的 `http.Handler` 永远不等于 `nil`、构造函数叫 `NewHTTPClient` 而不是 `New`。你不想每开一轮会话都把 Effective Go 粘进去。装上这包，agent 碰到这些活会自己加载 `golang-error-handling`、`golang-safety` 或 `golang-naming`。
 
-语言是 Go 而不是 React/Next 时，选它而不是 [Vercel Agent Skills](vercel-agent-skills.zh.md)。失败点是 Go 习惯用法——包装 error、nil 陷阱、slice 别名——而不是规划或 TDD 流程时，选它而不是 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [mattpocock/skills](mattpocock-skills.zh.md)。平台是 Go 工具链而不是 Android 时，选它而不是 [Android Skills](../vendor-collections/android-skills.zh.md)。
+语言是 Go 而不是 React/Next 时，选它而不是 [Vercel Agent Skills](vercel-agent-skills.zh.md)。失败点是 Go 习惯用法——包装 error、nil 陷阱、slice 别名——而不是规划或 TDD 流程时，选它而不是 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [mattpocock/skills](mattpocock-skills.zh.md)。平台是 Go 工具链而不是 Android 时，选它而不是 [Android Skills](../vendor-collections/product-vendors/android-skills.zh.md)。
 
 ## 快问快答
 
@@ -115,7 +115,7 @@ health:
 
 ## 何时不用
 
-- **你不写 Go。** React/Next 用 [Vercel Agent Skills](vercel-agent-skills.zh.md)，Android 用 [Android Skills](../vendor-collections/android-skills.zh.md)。这包的价值是 Go 习惯用法，离开 Go 多半是死重量。
+- **你不写 Go。** React/Next 用 [Vercel Agent Skills](vercel-agent-skills.zh.md)，Android 用 [Android Skills](../vendor-collections/product-vendors/android-skills.zh.md)。这包的价值是 Go 习惯用法，离开 Go 多半是死重量。
 - **失败点是流程，不是习惯用法。** agent 跳过规划、TDD 或 review 时，用 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 或 [mattpocock/skills](mattpocock-skills.zh.md)。这包不管 SDLC 循环。
 - **人和 linter 已经覆盖风格。** review 加上 golangci-lint 已经能抓住命名、格式和没检查的 error，就别装。若 agent 仍在写 Java-in-Go，只装 `golang-safety`、`golang-error-handling` 和 `golang-concurrency`——不要 45 个全上。
 - **你不想让 agent 推荐作者自己的库。** error-handling skill 的摘要就写生产错误用 `samber/oops`；另外还有七个 `golang-samber-*`。要语言无关的生产检查单，用 [Agent Skills (addyosmani)](addyosmani-agent-skills.zh.md)，或者装这包但不要 `samber-*` skill。
@@ -127,7 +127,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [Vercel Agent Skills](vercel-agent-skills.zh.md) | 已收录 | agent 在写 Go 时选这包；在 Vercel 上写 React/Next 时选 Vercel 的。 | 形态相同（skills.sh 按需加载领域 skill），语言不同。Vercel 有厂商背书；这包是单维护者的 Go 手册，外加他自己的库。 |
-| [Android Skills](../vendor-collections/android-skills.zh.md) | 已收录 | 模型栽在 Go 习惯用法上时选这包；栽在 Compose、R8 或 Play 政策上时选 Android Skills。 | 都是语言／平台说明书。Android Skills 归 Google，用 Android CLI 装；这包是 MIT，走 skills.sh／插件，并且偏向 samber/*。 |
+| [Android Skills](../vendor-collections/product-vendors/android-skills.zh.md) | 已收录 | 模型栽在 Go 习惯用法上时选这包；栽在 Compose、R8 或 Play 政策上时选 Android Skills。 | 都是语言／平台说明书。Android Skills 归 Google，用 Android CLI 装；这包是 MIT，走 skills.sh／插件，并且偏向 samber/*。 |
 | [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | 已收录 | agent 在「计划 → TDD → 验证」上跑偏时选 Superpowers；写出能编译但不地道的 Go 时选这包。 | Superpowers 管 agent *怎么干活*；这包管它 *吐出什么样的 Go*。常常互补，不是二选一。 |
 | [mattpocock/skills](mattpocock-skills.zh.md) | 已收录 | 需要需求追问、工单和 TDD／review 循环时选 mattpocock；需要 Go 的 error 包装和 nil 安全时选这包。 | mattpocock 是跨栈的流程和设计；这包只覆盖 Go，不会给你那条循环。 |
 | [Agent Skills (addyosmani)](addyosmani-agent-skills.zh.md) | 已收录 | 要语言无关的质量／安全／发布检查单时选 Addy 这包；检查单必须是 Go 专项时选这包。 | Addy 更宽的生产工程，没有 Go 标准库深度；这包在 Go 上更深，也带着作者的库偏好。 |

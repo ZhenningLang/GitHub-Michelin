@@ -2,7 +2,7 @@
 name: HumanLayer Skills
 slug: humanlayer-skills
 repo: https://github.com/humanlayer/skills
-category: vendor-collections
+category: agent-vendors
 tags: [agent-skills, claude-code, plugin-marketplace, agentic-loops, ci-agents, pull-request, vendor]
 language: TypeScript
 license: MIT
@@ -69,19 +69,19 @@ health:
 
 HumanLayer 官方的六个 skill：把一个改动画清楚、把 PR 说明写出结构、重写 CLAUDE.md、收紧 React props，外加两个把「重复性 agent 任务」做成定时、可人工调参的 CI 循环。
 
-![HumanLayer Skills — 健康度雷达](../../../assets/health/humanlayer-skills.zh.svg)
+![HumanLayer Skills — 健康度雷达](../../../../assets/health/humanlayer-skills.zh.svg)
 
 ## 何时使用
 
 你在真实仓库上跑编码 agent，而且一直在手工重复同几件小事：光看 diff 说不清到底改了什么，于是你让 agent 画出来；PR 说明写成逐文件清单而不是解释；CLAUDE.md 已经长到 agent 不再逐条搭理；某个 React 组件的 props 悄悄放宽，一半只服务于 Storybook；而你真正想要的那个东西——一个定时跑、每次只开一个可评审 PR、被你纠正后还能变好的重复性任务——每次都得从零搭。这个包就是厂商对这套问题的成套回答：`show-me`、`visual-pr`、`improve-claude-md`、`narrow-react-prop-types`、`build-iterated-agentic-loop`、`design-control-loop`，以一个 Claude Code 插件市场的形式分发，用 `npx skills add humanlayer/skills --skill <name>` 安装。
 
-当你要的正是这几个行为、外加循环可用的现成机制，而不是一套方法论、也不是一个目录时，选它。与最近替代品的取舍在这里： [Anthropic Skills](anthropic-skills.zh.md) 是平台自家的包，对你的 agent 改代码时的行为不表态；[Claude Plugins (Official)](claude-plugins-official.zh.md) 是让你浏览的目录，不是一条有立场的编辑路线；[Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 规定的是一整条生命周期（brainstorm → plan → TDD → verify），而不是教你把某一件重复劳动做成循环。本页的差异点在于那两个循环 skill 附带的是**机制**——GitHub Actions workflow 模板、agent memory 文件、分阶段访谈、`/iterate` 评论通道——所以你拿到的是一个能调参的运行中循环，而不是一套要你信奉的哲学。
+当你要的正是这几个行为、外加循环可用的现成机制，而不是一套方法论、也不是一个目录时，选它。与最近替代品的取舍在这里： [Anthropic Skills](anthropic-skills.zh.md) 是平台自家的包，对你的 agent 改代码时的行为不表态；[Claude Plugins (Official)](claude-plugins-official.zh.md) 是让你浏览的目录，不是一条有立场的编辑路线；[Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) 规定的是一整条生命周期（brainstorm → plan → TDD → verify），而不是教你把某一件重复劳动做成循环。本页的差异点在于那两个循环 skill 附带的是**机制**——GitHub Actions workflow 模板、agent memory 文件、分阶段访谈、`/iterate` 评论通道——所以你拿到的是一个能调参的运行中循环，而不是一套要你信奉的哲学。
 
 ## 怎么用起来
 
 这个仓库是插件市场而不是工具。一份 `.claude-plugin/marketplace.json` 列出六个插件，每个插件是一个目录，里面一份 `SKILL.md` 加一个 `references/`：PR 说明模板、GitHub Actions workflow 骨架、四种 agent CLI 的无头调用方式，还有一个拼 `/iterate` 提示词的小脚本。你添加市场、按需装 skill，之后每个 skill 就按常规方式生效——描述匹配上你说的需求，或者你敲它的斜杠命令。它交给你的是**方法**，从不含运行时：`show-me` 给你一条「挑出能说明问题的最小图示」的规则，代码库由你提供；`design-control-loop` 先读你的仓库，就 set point、sensor、controller、actuator 访谈你，再把这几段写成你能手工运行的脚本，CI workflow 只是薄薄一层包装。之后你有两条调参通道：每次定时运行都会注入的简短 memory 文件，以及循环开出的 PR 上的 `/iterate` 评论。
 
-![humanlayer-skills — 主干用户故事](../../../assets/flow/humanlayer-skills.zh.svg)
+![humanlayer-skills — 主干用户故事](../../../../assets/flow/humanlayer-skills.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/humanlayer-skills.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -104,10 +104,10 @@ HumanLayer 官方的六个 skill：把一个改动画清楚、把 PR 说明写�
 
 ## 何时不用
 
-- **你的 harness 不是 Claude Code**（也不是它借以安装的 `skills` CLI）。这些插件带的是 Claude 格式的 manifest（`marketplace.json`、`plugin.json`）和各 skill 的斜杠命令，在没有 skill 加载器的 harness 上这份 markdown 不会被激活。改用 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)，它按 harness 分别提供 Codex、Cursor、Kimi、OpenCode、Pi 的 manifest；或者手工把 `SKILL.md` 文本贴进去。
-- **你要的是一条被强制执行的生命周期，而不是六个点状 skill。** 这个包没有 brainstorm-plan-TDD 主干，它只是修掉六个具体烦人处。若你要的是 agent 每个任务都走一遍的完整 SDLC 方法论，选 [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)，并且不要再往上叠别的。
+- **你的 harness 不是 Claude Code**（也不是它借以安装的 `skills` CLI）。这些插件带的是 Claude 格式的 manifest（`marketplace.json`、`plugin.json`）和各 skill 的斜杠命令，在没有 skill 加载器的 harness 上这份 markdown 不会被激活。改用 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)，它按 harness 分别提供 Codex、Cursor、Kimi、OpenCode、Pi 的 manifest；或者手工把 `SKILL.md` 文本贴进去。
+- **你要的是一条被强制执行的生命周期，而不是六个点状 skill。** 这个包没有 brainstorm-plan-TDD 主干，它只是修掉六个具体烦人处。若你要的是 agent 每个任务都走一遍的完整 SDLC 方法论，选 [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md)，并且不要再往上叠别的。
 - **你要的是平台自家或第一方的目录。** 文档、设计、MCP 编写这类活按 Anthropic 自家约定做，选 [Anthropic Skills](anthropic-skills.zh.md)；想浏览并通过 `/plugin install` 装经过筛选的第一方插件，选 [Claude Plugins (Official)](claude-plugins-official.zh.md)；不要为了这些去接受某个厂商的六条主张。
-- **你需要某个框架的权威指导。** 选 [Remotion Agent Skills](remotion-skills.zh.md)，它的内容与框架自家版本同步锁定；跨域的过程包对具体 API 表面没有权威性。
+- **你需要某个框架的权威指导。** 选 [Remotion Agent Skills](../product-vendors/remotion-skills.zh.md)，它的内容与框架自家版本同步锁定；跨域的过程包对具体 API 表面没有权威性。
 - **你的仓库无法给无人值守的 agent 写权限和开 PR 的权限。** 那两个循环 skill 生成的 workflow 需要 `contents: write`、`pull-requests: write`、所选 agent CLI 的 API key，其 runner 模板还默认使用宽松权限模式（`--permission-mode bypassPermissions`、`--sandbox danger-full-access`、`--dangerously-skip-permissions`）。做不到隔离 runner 时，只取那四个会话内 skill（`show-me`、`visual-pr`、`improve-claude-md`、`narrow-react-prop-types`），循环那两个直接跳过。
 - **你需要能锁定的版本。** 仓库没有 tag、没有 GitHub release，六个插件的 `1.0.x` 是手写在 manifest 里的字符串，所以「我在哪个版本」实际由默认分支回答，而不是某个不可变产物。要冻结版本就 fork，或把 skill 文本 vendor 进来。[推断]
 
@@ -117,8 +117,8 @@ HumanLayer 官方的六个 skill：把一个改动画清楚、把 PR 说明写�
 |---|---|---|---|
 | [Claude Plugins (Official)](claude-plugins-official.zh.md) | ✅ | 想用原生目录去发现并 `/plugin install` 经过筛选的插件，就选 Claude Plugins (Official)；已经确定要这六个行为加循环模板，就选 HumanLayer Skills，因为目录帮你挑，而一个包是有自己编辑立场的。 | 官方：广度、第一方筛选、原生安装；HumanLayer：六个窄 skill 加 CI 与 memory 的搭架。 |
 | [Anthropic Skills](anthropic-skills.zh.md) | ✅ | 任务是文档、设计或 MCP／skill 编写且要贴平台约定，就选 Anthropic Skills；任务是 agent 改你代码时的行为，就选 HumanLayer Skills，因为平台那个包是跨域的，不涉及你的开发循环。 | Anthropic：平台权威、跨域、对流程不表态；HumanLayer：对开发流程有主张，并附可运行的循环机制。 |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 想要一条跨 harness 可移植、每个任务都走的 SDLC 主干（brainstorm → plan → TDD → verify），就选 Superpowers；想要更窄的过程 skill 加「把某件重复劳动做成有界、受 memory 引导的循环」的模板，就选 HumanLayer Skills，因为 Superpowers 规定的是生命周期，不教你怎么造和调一个控制器。 | Superpowers：整条生命周期方法论、靠提示词约束、多 harness；HumanLayer：点状 skill 加你自己运行和调参的循环机制。 |
-| [Remotion Agent Skills](remotion-skills.zh.md) | ✅ | 反复出问题的是 agent 搞错某个框架的 API，就选 Remotion Agent Skills；反复出问题的是你自己的流程，就选 HumanLayer Skills，因为框架权威内容只在该框架内有优势。 | Remotion：单域、与框架版本同步锁定；HumanLayer：跨域过程，版本靠手工维护。 |
+| [Superpowers](../../../agent-dev-methodology/coding-agent-harnesses/superpowers.zh.md) | ✅ | 想要一条跨 harness 可移植、每个任务都走的 SDLC 主干（brainstorm → plan → TDD → verify），就选 Superpowers；想要更窄的过程 skill 加「把某件重复劳动做成有界、受 memory 引导的循环」的模板，就选 HumanLayer Skills，因为 Superpowers 规定的是生命周期，不教你怎么造和调一个控制器。 | Superpowers：整条生命周期方法论、靠提示词约束、多 harness；HumanLayer：点状 skill 加你自己运行和调参的循环机制。 |
+| [Remotion Agent Skills](../product-vendors/remotion-skills.zh.md) | ✅ | 反复出问题的是 agent 搞错某个框架的 API，就选 Remotion Agent Skills；反复出问题的是你自己的流程，就选 HumanLayer Skills，因为框架权威内容只在该框架内有优势。 | Remotion：单域、与框架版本同步锁定；HumanLayer：跨域过程，版本靠手工维护。 |
 | [MiniMax Skills](minimax-skills.zh.md) | ✅ | 想要厂商原生的前端／shader、办公文档与媒体生成能力，就选 MiniMax Skills；主题是开发流程纪律和定时 CI 循环，就选 HumanLayer Skills，因为两者只在分发机制上重叠，教的不是一回事。 | MiniMax：生成与创作面的广度；HumanLayer：过程纪律与循环搭架。 |
 
 ## 健康度与可持续性

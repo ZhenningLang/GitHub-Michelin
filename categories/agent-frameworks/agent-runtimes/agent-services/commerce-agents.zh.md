@@ -112,7 +112,7 @@ Anthropic 的参考蓝图：两个 commerce agent——面向顾客的**购物 a
 - **你要的是一个可部署的服务，而不是一份可读的蓝图。** 示例没有认证授权、没有支付、没有限流，会话放在单进程内存里，只能跑一个 worker。如果你要的是持久的 agent 服务而不是一套照抄的设计，[eve](eve.zh.md) 或 [OpenFang](openfang.zh.md) 是更近的起点。
 - **你不在 Python 加 Claude 这条线上。** 护栏逻辑是 Python，工具契约是 Anthropic 的形状；换语言或换模型厂商，你是**移植**而不是复用。模型无关的框架，比如 [OpenAI Agents SDK](../agent-sdks/openai-agents-sdk.zh.md) 或 [LangGraph](../agent-sdks/langgraph.zh.md)，会丢掉现成护栏，但保住你自己的技术栈。
 - **你的产品不是「一个通过卡片 UI 完成交易动作的对话助手」。** 它的交互语法——一个模型主导对话、每轮一个主组件、chips 收尾、写入暂存待批——写死在 prompt 和 turn loop 里。换个 UX 或换个审批模型就要改核心，而它没有上游可跟。[推断]
-- **你只想要官方那套 Claude Code skill。** 那就取 [Anthropic Skills](../../../agent-skills/vendor-collections/anthropic-skills.zh.md)，或者直接读 `commerce-builder` 插件；把这里的可运行代码一起搬走，等于白白背上它。
+- **你只想要官方那套 Claude Code skill。** 那就取 [Anthropic Skills](../../../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md)，或者直接读 `commerce-builder` 插件；把这里的可运行代码一起搬走，等于白白背上它。
 
 ## 横向对比
 
@@ -120,7 +120,7 @@ Anthropic 的参考蓝图：两个 commerce agent——面向顾客的**购物 a
 |---|---|---|---|
 | [Parlant](parlant.zh.md) | ✅ | 难点在于让一个对客 agent 的**对话**在自己的技术栈上守规时，选 Parlant；还需要把写入路径（购物车来源校验、暂存调价与补货、宿主审批）也一并定下来时，选本页项目。 | Parlant 是一套可配置的行为准则引擎，模型与业务域都无关；本页项目是一套固定的 commerce 架构、护栏已经写进代码——交给你的设计更多，留给你自己的自由更少。 |
 | [LangGraph](../agent-sdks/langgraph.zh.md) | ✅ | 编排本身就是你的产品、且必须与模型厂商无关时，选 LangGraph；编排是已经解决了的问题、你只想照抄，而真正的活在 commerce 护栏上时，选本页项目。 | LangGraph 给你显式控制流与生态，但对业务域不表态，围栏、UI 校验、来源校验和审批全要自己搭；本页项目四样都给，代价是被它的结构绑住。 |
-| [Anthropic Skills](../../../agent-skills/vendor-collections/anthropic-skills.zh.md) | ✅ | 只想要官方 skill/plugin 基线、不需要跑任何东西时，选 Anthropic Skills；需要那些 skill 所描述的 agent、后端与运行时真实存在时，选本页项目。 | Anthropic Skills 几分钟装完且不侵入你的架构；本页项目是四万一千行 Python 实现，要你自己读、自己 vendor、自己接手——它那个 Claude Code 插件只是其中一个面，不是主体。 |
+| [Anthropic Skills](../../../agent-skills/vendor-collections/agent-vendors/anthropic-skills.zh.md) | ✅ | 只想要官方 skill/plugin 基线、不需要跑任何东西时，选 Anthropic Skills；需要那些 skill 所描述的 agent、后端与运行时真实存在时，选本页项目。 | Anthropic Skills 几分钟装完且不侵入你的架构；本页项目是四万一千行 Python 实现，要你自己读、自己 vendor、自己接手——它那个 Claude Code 插件只是其中一个面，不是主体。 |
 | 基于厂商 SDK 自己搭 | 不适用 | 现有交互语法都不贴合时——自定义 UX、不同的审批模型、非 Anthropic 模型——选自己搭，因为这套模板的价值恰恰就是它钉死的那套语法。 | 完全掌控、零继承结构，代价是本页项目已经写好并测过的缓存布局、围栏、来源闸门和审批路径，你得重新推一遍。 |
 
 ## 技术栈
