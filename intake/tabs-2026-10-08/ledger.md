@@ -11,7 +11,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | greekr4/playwright-bot-bypass | add | done | categories/web-automation/agent-browser-tools/playwright-bot-bypass.md |  | greekr4/playwright-bot-bypass |
 | jo-inc/camofox-browser | add | done | categories/web-automation/agent-browser-tools/camofox-browser.md |  | jo-inc/camofox-browser |
 | K-Dense-AI/scientific-agent-skills | sync | done | categories/agent-skills/engineering/scientific-agent-skills.md | fresh: last_verified 2026-09-27，距今 11 天 ≤ 90，无改动 | k-dense-ai/scientific-agent-skills |
-| microsoft/VibeVoice | add | running |  |  | microsoft/vibevoice |
+| microsoft/VibeVoice | add | done | categories/speech/vibevoice.md |  | microsoft/vibevoice |
 | threerocks/hand-drawn-styles | add | done | categories/agent-skills/visual-content/hand-drawn-styles.md |  | threerocks/hand-drawn-styles |
 | tphakala/birdnet-go | add | done | categories/on-device-ml/birdnet-go.md |  | tphakala/birdnet-go |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |
