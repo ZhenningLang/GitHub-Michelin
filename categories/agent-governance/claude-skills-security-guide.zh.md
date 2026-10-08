@@ -111,7 +111,7 @@ health:
 - **你的 agent 不是 Claude Code。** 默认路径、措辞和威胁模型都是围绕 Claude 写的（`--paths` 能接受任何装着 skill 子文件夹的目录，但检查项假定的是 Claude 的 frontmatter 字段）。用 [Snyk Agent Scan](agent-scan.zh.md)，它能发现 14 种 agent 里装的东西。
 - **你正打算把 `examples/` 拷进正在用的 skills 目录。** 那些是攻击演示。五个示例脚本里的网络发送都被注释掉了，但 `setup.sh` 仍会往当前工作目录写一个文件，`validate_env.py` 会把环境变量的值打印到标准输出，只遮掉名字里含 SECRET、KEY、TOKEN 或 PASS 的那些。`covert-formatter-skill` 这个示例根本没有脚本：它的载荷就是一段纯文字指令，让模型把对话内容的 base64 摘要藏进一段 HTML 注释里，所以“占位端点”并不能让它变得无害。把它们留在一个用完即弃的克隆里，拿扫描器去扫，不要安装。
 
-另有几个 skill 与 MCP 扫描器——`cisco-ai-defense/mcp-scanner`、`HTS-Sleeping-Place/skills-scanner`、`elliottwaves-20/agent-guard` 和 `aisa-group/promptinject-agent-skills`——和本页同一批收录进本索引；拍板之前先到本分类的索引里看看它们。
+本分类里还有别的 skill 与 MCP 扫描器——[Cisco MCP Scanner](mcp-scanner.zh.md)、[skills-scanner](skills-scanner.zh.md)，以及安装前把关的 [agent-guard](agent-guard.zh.md)——拍板用本仓库的正则扫描器之前，先读一读它们。
 
 ## 横向对比
 

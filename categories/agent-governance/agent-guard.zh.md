@@ -117,7 +117,7 @@ agent-guard 在它调用的扫描器之上加的就是这层“分派加闸门�
 - **你需要一个有别人替它背书的依赖。** 3 个 star，0 个 fork，从未有人开过 issue 或 pull request，一个个人账号，仓库里没有 CI（截至 2026-10-08）。这个工具会改写每个 agent 的配置，还会启动特权容器；一旦那个唯一的账号被攻破，波及的是你整套 agent 环境。直接用上游扫描器，也就是 SkillSpector（NVIDIA）和 Cisco 的 mcp-scanner；或者只在一个你亲自读过的 commit SHA 上采用 agent-guard。
 - **你在商业流程里用免费的 VirusTotal 密钥扫二进制。** README 注明公共 API 每分钟限 4 次查询，且仅限非商业用途。能力分析可以直接跑 malcontent（`chainguard-dev/malcontent`），或者购买 VirusTotal 授权。
 
-同一批次还在收录另外几个扫描器：`cisco-ai-defense/mcp-scanner`（也就是 agent-guard 自己调用的那个 MCP 运行时扫描器）和 `HTS-Sleeping-Place/skills-scanner`；定选型之前，先到本分类的索引里找它们。
+本分类里还有两个扫描器：[Cisco MCP Scanner](mcp-scanner.zh.md)（也就是 agent-guard 自己调用的那个 MCP 运行时扫描器，只查 MCP 服务的话直接用它）和 [skills-scanner](skills-scanner.zh.md)；定选型之前先读一读。
 
 ## 横向对比
 

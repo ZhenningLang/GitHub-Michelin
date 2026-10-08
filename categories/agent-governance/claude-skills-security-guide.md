@@ -111,7 +111,7 @@ There are two separate things in the box: documents you read, where nothing runs
 - **Your agent is not Claude Code.** Defaults, wording and the threat model are Claude-specific (`--paths` will take any folder of skill subfolders, but the checks assume Claude's frontmatter keys). Use [Snyk Agent Scan](agent-scan.md), which discovers installs across 14 agents.
 - **You were about to copy `examples/` into a live skills directory.** They are attack demonstrations. In all five example scripts the network sends are commented out, but `setup.sh` still writes a file into the working directory and `validate_env.py` prints environment values to stdout, masking only names that contain SECRET, KEY, TOKEN or PASS. The `covert-formatter-skill` example has no script at all: its payload is plain instructions telling the model to hide a base64 summary of the conversation in an HTML comment, so "placeholder endpoints" does not make it harmless. Keep them in a throwaway clone and point a scanner at them; do not install them.
 
-Several other skill and MCP scanners — `cisco-ai-defense/mcp-scanner`, `HTS-Sleeping-Place/skills-scanner`, `elliottwaves-20/agent-guard` and `aisa-group/promptinject-agent-skills` — are being added to this index in the same batch as this page; check this category's index for them before settling.
+Other skill and MCP scanners in this category — [Cisco MCP Scanner](mcp-scanner.md), [skills-scanner](skills-scanner.md) and the pre-install gate [agent-guard](agent-guard.md) — are worth reading before you settle on this repo's regex scanner.
 
 ## Comparison
 

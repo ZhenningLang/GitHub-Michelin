@@ -117,7 +117,7 @@ Think of it as a customs desk, not a customs officer: it does not inspect anythi
 - **You need a dependency someone else is vouching for.** Three stars, zero forks, no issue or pull request ever opened, one personal account, no CI in the repository (as of 2026-10-08). This is a tool that writes into every agent's config and starts a privileged container; if that single account were compromised, the blast radius is your whole agent setup. Use the upstream scanners directly — SkillSpector (NVIDIA) and Cisco's mcp-scanner — or adopt agent-guard only at a commit SHA you have read.
 - **You are scanning binaries in a commercial workflow on a free VirusTotal key.** The README notes the public API is limited to 4 lookups per minute and restricted to non-commercial use. Run malcontent (`chainguard-dev/malcontent`) directly for capability analysis, or pay for a VirusTotal licence.
 
-Other scanners from the same intake batch — `cisco-ai-defense/mcp-scanner` (the runtime MCP scanner agent-guard itself calls), `HTS-Sleeping-Place/skills-scanner` — are being added to this index alongside this page; check this category's index before settling.
+Two more scanners sit in this category: [Cisco MCP Scanner](mcp-scanner.md) (the runtime MCP scanner agent-guard itself calls — use it directly if MCP servers are all you check) and [skills-scanner](skills-scanner.md); read them before settling.
 
 ## Comparison
 

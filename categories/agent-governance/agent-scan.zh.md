@@ -131,7 +131,7 @@ health:
 | cisco-ai-defense/skill-scanner | 未收录 | 想要开放的规则集（YARA-X、AST 与数据流、可选 LLM 裁判）、公开的召回率与误报率数字，以及给 CI 用的 SARIF 时选 Cisco skill-scanner；想要整机发现、不维护任何规则时选 Agent Scan。 | Cisco 的扫描器自己公布了并不高的实测召回（仅靠规则，在一个恶意样本基准上以 HIGH 级别抓到 7.7%），并允许你调策略；Agent Scan 不公布准确率，也不公开规则，但不用任何配置。Apache-2.0，约 2.6 千星（2026-10）；本批未收录。 |
 | [Cisco MCP Scanner](mcp-scanner.zh.md) | ✅ | MCP 服务必须离线检查，或在 CI 里对预先生成的 JSON 检查，并且要用自己掌控的 YARA 规则、可选的源码与依赖扫描时选 Cisco mcp-scanner；更看重一次跑完、自动发现各 agent 和 skill 时选 Agent Scan。 | mcp-scanner 的各种 API key 都是可选的，还有静态离线模式，但只能自动发现四种客户端的配置，而且不覆盖 skill；Agent Scan 在 14 种 agent 上两样都覆盖，但离不开 Snyk 的服务。Apache-2.0，约 1.1 千星（2026-10）。 |
 
-另有两个更小的 Claude skill 审计工具 tarang-tj/claude-skill-audit 和 HTS-Sleeping-Place/skills-scanner 正与本页在同一批次收录进本索引；如果你只审计 Claude Code 的 skill，并且想要一个以 skill 形式跑在 agent 里面的工具，请到分类索引里找它们。
+本分类里另有两个更小的 Claude skill 审计工具 [claude-skill-audit](claude-skill-audit.zh.md) 和 [skills-scanner](skills-scanner.zh.md)；如果你只审计 Claude Code 的 skill，并且想要一个以 skill 形式跑在 agent 里面的工具，先读一读它们。
 
 ## 技术栈
 
