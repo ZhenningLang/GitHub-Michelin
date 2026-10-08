@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Dots does", "zh": "Open Dots 做的"},
+  "steps": [
+    {"lane": "you", "en": "Fill backend/.env (Boat key, Fernet key, hook secret, public tunnel URL) and start everything", "zh": "填好 Boat key、加密密钥、hook 口令和隧道地址，启动",
+     "code": "./scripts/dev.sh"},
+    {"lane": "them", "en": "Starts PostgreSQL, runs migrations, launches the API, the Telegram bot and the web UI", "zh": "拉起 PostgreSQL、跑迁移，启动 API、Telegram 机器人和网页",
+     "component": {"en": "scripts/dev.sh", "zh": "scripts/dev.sh"}},
+    {"lane": "you", "en": "Send /connect to the bot, finish Claude's OAuth login and paste the code back", "zh": "给机器人发 /connect，完成 Claude 登录，把授权码贴回去",
+     "code": "/connect"},
+    {"lane": "them", "en": "Creates a Boat sandbox, copies Claude's credential out of it, encrypts and stores it", "zh": "开一台 Boat 沙箱，取出 Claude 凭据，加密后存库",
+     "component": {"en": "auth flow service", "zh": "登录流程服务"}},
+    {"lane": "you", "en": "Send any plain message as the task", "zh": "随便发一句普通消息，就是任务"},
+    {"lane": "them", "en": "Writes the permission hook into the sandbox and runs Claude Code headless on your prompt", "zh": "往沙箱写入权限 hook，用你的指令无界面跑 Claude Code",
+     "component": {"en": "task execution service", "zh": "任务执行服务"}},
+    {"lane": "you", "en": "When a risky action pauses the task, tap Allow once, Always allow or Deny", "zh": "风险动作把任务停住时，点允许一次、总是允许或拒绝"},
+    {"lane": "them", "en": "Resumes or blocks the action, then replies in the chat with the result", "zh": "放行或拦下该动作，跑完把结果回复到聊天里",
+     "component": {"en": "Telegram bot", "zh": "Telegram 机器人"}}
+  ],
+  "value": {
+    "en": "You run Claude Code tasks from your phone in a throwaway cloud VM and see every risky action before it happens — no laptop session to babysit",
+    "zh": "在手机上派 Claude Code 去一次性云虚拟机里干活，风险动作先过你，不用守着电脑"
+  },
+  "sources": [
+    "https://github.com/Anil-matcha/open-dots/blob/main/README.md Quick start (cp backend/.env.example backend/.env; BOAT_API_KEY, TOKEN_ENCRYPTION_KEYS, HOOK_TOKEN, PERMISSION_HOOK_BASE_URL; ./scripts/dev.sh starts Postgres, migrations, FastAPI, the Telegram bot and the web UI)",
+    "https://github.com/Anil-matcha/open-dots/blob/main/README.md 'Using Open Dots' / 'In Telegram' (/start, /connect creates a sandbox and returns a login URL, paste the code back; send any message, e.g. 'create a webpage that says hello')",
+    "https://github.com/Anil-matcha/open-dots/blob/main/README.md 'Permission prompts' (PermissionRequest hook, Allow once / Always allow / Deny buttons, 110s timeout to deny)",
+    "backend/app/services/auth_flow_service.py (claude auth login; credential_path .claude/.credentials.json) and backend/app/services/task_execution_service.py (writes .claude/settings.json PermissionRequest http hook; runs claude -p {prompt} --output-format json)"
+  ]
+}

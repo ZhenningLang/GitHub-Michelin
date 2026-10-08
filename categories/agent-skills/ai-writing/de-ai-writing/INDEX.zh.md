@@ -16,6 +16,7 @@
 | **avoid-ai-writing** | 英文优先的去 AI 味 skill：自带零依赖 npm 检测器、按命中数卡的 CI / pre-commit 门禁，以及一份公开自身误报率的人控语料。 | B（5/6） | [→](avoid-ai-writing.zh.md) |
 | **no-ai-slop** | 英文编辑 skill：第一条规则就是保留作者本人的声音；按 20 多种具名 AI 模式做最小有效修改，带 eval.md 自检闭环，detect 模式只引用证据、不猜作者身份。 | C（5/6） | [→](no-ai-slop.zh.md) |
 | **asd-ste100-skill** | 按 ASD-STE100 受控语言规则改写给 agent 读的英文（工具说明、报错、提示词）：一句一指令、限长、保留确定程度，附标准库正则 linter；不是去 AI 腔的语气润色。 | B（4/5） | [→](asd-ste100-skill.zh.md) |
+| **lieflat-less-ai-tone** | 中文白名单式去 AI 味 skill：11 条改写规则各附人类与模型的频率倍率，外加一张硬性的“不作为改写理由”表，没命中的句子逐字保留；283 万字语料本身没有公开。 | C（3/5） | [→](lieflat-less-ai-tone.zh.md) |
 
 
 ## 对比矩阵
@@ -33,6 +34,7 @@
 | [avoid-ai-writing](avoid-ai-writing.zh.md) | ✅ | B（5/6） | 英文档里工程化程度最高：需要去 AI 味流程产出可设 CI 门禁的命中数时选它，而不是拿它的分数去判定作者身份。 |
 | [no-ai-slop](no-ai-slop.zh.md) | ✅ | C（5/6） | 声音保留优先的编辑 skill，detect 模式引用证据；稿子改完还得像作者本人时选它。 |
 | [asd-ste100-skill](asd-ste100-skill.zh.md) | ✅ | B（4/5） | 管的是不被读错，不是语气：英文由另一个 agent 来读、读错有代价时选它；会抹平语气，只处理英文。 |
+| [lieflat-less-ai-tone](lieflat-less-ai-tone.zh.md) | ✅ | C（3/5） | 最克制的中文选项：清单外的句子绝不能动、又想每条规则都有实测依据时选它；数字来自看不到的语料，2026-08-24 之后没再更新。 |
 
 
 ## 什么该放这里

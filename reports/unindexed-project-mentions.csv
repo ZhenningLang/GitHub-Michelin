@@ -295,7 +295,7 @@ Context7 (`upstash/context7`),categories/agent-skills/vendor-collections/product
 Continuum-AI-Corp/OrcaPromptVault,categories/agent-skills/prompt-engineering/claude-code-system-prompts.md,,no
 ControlNet scribble in any SD UI,categories/ai-design-generation/sdpaint.md,,no
 CopilotKit,categories/agent-frameworks/workflow-builders/agent-native.md,,no
-CopilotKit (`CopilotKit/CopilotKit`),categories/ai-design-generation/json-render.md,,no
+CopilotKit (`CopilotKit/CopilotKit`),categories/agent-frameworks/agent-runtimes/personal-assistants/opendots.md,,no
 Cozy Drive (upstream),categories/document-management/twake-drive.md,,no
 cPanel / Plesk,categories/dev-utilities/ops-infra/cockpit.md,,no
 Crawl4AI,categories/web-scraping/crawling-tools/scrapling.md,,no
@@ -584,6 +584,7 @@ KeyDB,categories/databases/database-engines/pikiwidb.md,,no
 Kibana,categories/observability/grafana.md,,no
 Kismet,categories/pentest/wifit3.md,,no
 Kitty,categories/terminal-ui/alacritty.md,,no
+KKKKhazix/human-writing,categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md,,no
 Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 KrakenD,categories/api-gateway/apisix.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
@@ -806,6 +807,7 @@ osint.industries,categories/osint/ghunt.md,,no
 Other downloaders / more-active forks,categories/media-download/INDEX.md,,no
 Other live forks (SangeCoder / PyCoreDev / yangyang5214),categories/im-automation/wechat/wxappunpacker.md,,no
 Outlines,categories/llm-inference/structured-generation/xgrammar.md,,no
+overwirehq/claude-code-telegram,categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md,,no
 oxlint,categories/ai-code-review/react-doctor.md,,no
 p-queue (`sindresorhus/p-queue`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 PaddleNLP / ERNIE,categories/ml-research/nlp-and-time-series/senta.md,,no
@@ -1062,6 +1064,7 @@ SWR (`vercel/swr`),categories/web-ui/data-fetching/tanstack-query.md,,no
 Tabby,categories/terminal-ui/warp.md,,no
 Tableau / Power BI,categories/data-visualization/superset.md,,no
 Takumi (`kane50613/takumi`),categories/pdf-tools/pdf-generation/pdfcn.md,,no
+tangwenwen-md/chinese-de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md,,no
 Taskmaster (claude-task-master),categories/agent-tooling/work-state/ccpm.md,,no
 Taskmaster / GitHub Issues + gh / Linear,categories/agent-tooling/work-state/INDEX.md,,no
 Taskwarrior,categories/agent-tooling/work-state/beads.md,,no

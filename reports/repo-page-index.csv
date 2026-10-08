@@ -8,6 +8,7 @@ https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,o
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,visual-artifacts,categories/agent-skills/design/visual-artifacts/drawio-skill.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
 https://github.com/AmElmo/pointa,pointa,ui-annotation,categories/agent-tooling/ui-annotation/pointa.md
+https://github.com/Anil-matcha/open-dots,open-dots,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/open-dots.md
 https://github.com/AprilNEA/OpenLogi,openlogi,peripherals,categories/peripherals/openlogi.md
 https://github.com/Armur-Ai/Pentest-Swarm-AI,pentest-swarm-ai,pentest,categories/pentest/pentest-swarm-ai.md
 https://github.com/Asymptote-Labs/agent-beacon,agent-beacon,coding-agent-memory,categories/agent-memory/coding-agent-memory/agent-beacon.md
@@ -30,6 +31,7 @@ https://github.com/CollaboraOnline/online,collabora-online,office-editors,catego
 https://github.com/Comfy-Org/ComfyUI,comfyui,on-device-ml,categories/on-device-ml/comfyui.md
 https://github.com/Cookee24/PairTranslate,pair-translate,reading-tools,categories/reading-tools/pair-translate.md
 https://github.com/CopilotKit/OpenBot,openbot,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/openbot.md
+https://github.com/CopilotKit/OpenDots,opendots,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/opendots.md
 https://github.com/CopilotKit/openmuse,openmuse,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openmuse.md
 https://github.com/D4Vinci/Scrapling,scrapling,crawling-tools,categories/web-scraping/crawling-tools/scrapling.md
 https://github.com/Dammyjay93/interface-design,interface-design,ui-taste,categories/agent-skills/design/ui-taste/interface-design.md
@@ -534,6 +536,7 @@ https://github.com/langflow-ai/langflow,langflow,workflow-builders,categories/ag
 https://github.com/langfuse/langfuse,langfuse,llm-eval,categories/llm-eval/langfuse.md
 https://github.com/langgenius/dify,dify,workflow-builders,categories/agent-frameworks/workflow-builders/dify.md
 https://github.com/larashero3-dotcom/lieflat-charts,lieflat-charts,visual-content,categories/agent-skills/visual-content/lieflat-charts.md
+https://github.com/larashero3-dotcom/lieflat-less-ai-tone,lieflat-less-ai-tone,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md
 https://github.com/latex3/latex2e,latex,typesetting,categories/typesetting/latex.md
 https://github.com/leejet/stable-diffusion.cpp,stable-diffusion-cpp,on-device-ml,categories/on-device-ml/stable-diffusion-cpp.md
 https://github.com/lepture/captcha,lepture-captcha,captcha,categories/captcha/lepture-captcha.md
@@ -594,6 +597,7 @@ https://github.com/microsoft/vscode,vscode,code-editors,categories/dev-utilities
 https://github.com/mikf/gallery-dl,gallery-dl,media-download,categories/media-download/gallery-dl.md
 https://github.com/mikiarlo3/ai-copywriter,ai-copywriter,marketing-seo,categories/agent-skills/ai-writing/marketing-seo/ai-copywriter.md
 https://github.com/milanvarady/Applite,applite,package-manager-gui,categories/dev-utilities/package-manager-gui/applite.md
+https://github.com/milind-soni/OpenMausBot,openmausbot,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md
 https://github.com/millionco/react-doctor,react-doctor,ai-code-review,categories/ai-code-review/react-doctor.md
 https://github.com/milvus-io/milvus,milvus,vector-search,categories/rag-retrieval/vector-search/milvus.md
 https://github.com/minio/minio,minio,object-storage,categories/object-storage/minio.md

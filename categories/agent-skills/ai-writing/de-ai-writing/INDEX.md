@@ -16,6 +16,7 @@
 | **avoid-ai-writing** | English-first de-AI skill that ships a runnable zero-dependency npm detector, a CI/pre-commit gate on finding count, and a human-control corpus publishing its own false-positive rate. | B (5/6) | [→](avoid-ai-writing.md) |
 | **no-ai-slop** | English editor skill whose first rule is preserving the writer's own voice; minimum effective edits against 20+ named AI patterns, an eval.md self-check loop, and a detect mode that quotes evidence instead of guessing authorship. | C (5/6) | [→](no-ai-slop.md) |
 | **asd-ste100-skill** | English rewriter for text an agent must parse — tool descriptions, error strings, prompts — under ASD-STE100 controlled-language rules: one instruction per sentence, length caps, hedges kept; ships a stdlib regex linter. Not a de-AI tone pass. | B (4/5) | [→](asd-ste100-skill.md) |
+| **lieflat-less-ai-tone** | Chinese whitelist de-AI skill: 11 rewrite rules each backed by a published human-vs-model frequency ratio, a hard "not a reason to rewrite" table, everything unmatched kept verbatim; the 2.83M-character corpus itself is withheld. | C (3/5) | [→](lieflat-less-ai-tone.md) |
 
 
 ## Comparison matrix
@@ -33,6 +34,7 @@
 | [avoid-ai-writing](avoid-ai-writing.md) | ✅ | B (5/6) | Most engineered English option: pick it when the de-AI pass must produce a CI-gateable finding count, not when you need a score to label authorship. |
 | [no-ai-slop](no-ai-slop.md) | ✅ | C (5/6) | Voice-preservation-first editor skill with a detect mode that quotes evidence; pick it when the draft must still sound like its author after the pass. |
 | [asd-ste100-skill](asd-ste100-skill.md) | ✅ | B (4/5) | Parse-safety rather than tone: pick it when another agent reads the English and a misread costs you; it flattens voice and only handles English. |
+| [lieflat-less-ai-tone](lieflat-less-ai-tone.md) | ✅ | C (3/5) | Most restrained Chinese option: pick it when an unlisted sentence must not be touched and you want a measured reason per rule; the numbers come from a corpus you cannot inspect, idle since 2026-08-24. |
 
 
 ## What belongs here
