@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1181
+- Named-but-unindexed alternatives: 1180
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -37,7 +37,6 @@ shape and are deliberately excluded here.
 | [birda](https://github.com/tphakala/birda) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
-| [Camoufox](https://github.com/daijro/camoufox) | `categories/web-automation/agent-browser-tools/camofox-browser.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
@@ -52,3 +51,4 @@ shape and are deliberately excluded here.
 | [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
 | [OmniVoice](https://github.com/k2-fsa/OmniVoice) | `categories/speech/voicestudio.md` |
+| [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |

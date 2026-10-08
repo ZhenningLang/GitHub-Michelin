@@ -17,7 +17,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |
 | daijro/camoufox | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | D4Vinci/Scrapling | add | done | categories/web-scraping/crawling-tools/scrapling.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
-| ultrafunkamsterdam/undetected-chromedriver | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
+| ultrafunkamsterdam/undetected-chromedriver | add | done | categories/web-automation/browser-driver-frameworks/undetected-chromedriver.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | rebrowser/rebrowser-playwright | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | Cedriccmh/claude-code-skill-scrapling | add | done | categories/web-scraping/crawling-tools/claude-code-skill-scrapling.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | snyk/agent-scan | add | done | categories/agent-governance/agent-scan.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |

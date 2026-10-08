@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Camoufox does", "zh": "Camoufox 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the launcher package, then fetch the browser", "zh": "装上启动库，再拉取浏览器", "code": "pip install -U camoufox[geoip] · camoufox fetch"},
+    {"lane": "them", "en": "Downloads the patched Firefox build paired with this launcher version, plus the fingerprint model", "zh": "下载与该启动库版本配对的补丁版 Firefox 和指纹模型", "component": {"en": "camoufox fetch", "zh": "camoufox fetch"}},
+    {"lane": "you", "en": "Swap the browser launch line in your Playwright script; keep the rest", "zh": "把 Playwright 脚本里启动浏览器那一行换掉，其余不动", "code": "with Camoufox() as browser:"},
+    {"lane": "them", "en": "Draws a device identity from real-traffic statistics and rejects impossible combinations", "zh": "按真实流量的统计分布抽一个设备身份，剔除不可能的组合", "component": {"en": "fpgen + coherence check", "zh": "fpgen + 一致性检查"}},
+    {"lane": "them", "en": "Answers the page's fingerprint probes from native code and runs your Playwright calls out of the page's sight", "zh": "用原生代码回答指纹探测，在页面看不到的地方执行你的 Playwright 调用", "component": {"en": "patched Firefox + Juggler", "zh": "补丁版 Firefox + Juggler"}}
+  ],
+  "value": {
+    "en": "Your existing Playwright script keeps its API while the browser underneath stops announcing itself as automated — no injected stealth scripts to maintain",
+    "zh": "Playwright 脚本的 API 不变，浏览器不再自报是自动化——也不用再维护注入式 stealth 脚本"
+  },
+  "sources": [
+    "pythonlib/README.md Installation (pip install -U camoufox[geoip]; camoufox fetch; fetch also installs fpgen's model pinned by sha256; 'Which browser build is used' — each release is paired with one browser build)",
+    "README.md Usage > Python, sync API (from camoufox.sync_api import Camoufox; with Camoufox() as browser:) — 'You only have to change your browser initialization'",
+    "README.md Fingerprint Injection + 'How can Camoufox be detected?' (fpgen; coherence check in pythonlib/camoufox/coherence.py; data intercepted at the C++ implementation level)",
+    "README.md Stealth Overview > 'How Camoufox hides its automation library' and 'CDP-based libraries > Camoufox's approach' (patched Juggler, isolated copy of the page)"
+  ]
+}

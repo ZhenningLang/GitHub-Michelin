@@ -89,7 +89,7 @@ health:
 
 你在跑一个常驻的 agent——OpenClaw 助手、同时服务好几个人的聊天机器人、放在小 VPS 上的调研 agent——它要替这些人读网页、操作网页。换成普通无头浏览器，第一条 Google 查询就返回 `Our systems have detected unusual traffic from your computer network`，挂着 Cloudflare 的站点则永远停在 `Just a moment...`。当你希望把这个问题交给**一个带 HTTP API 的长驻服务**、而不是自己写脚本去调一个库时，就该想到 camofox-browser：一个 Node 进程管一只 Camoufox，每个 `userId` 有自己的 cookie 罐，给模型的是精简的无障碍提纲而不是原始 HTML，没人用的时候自己把浏览器关掉。
 
-和邻居相比，决定性的取舍是这样的：[invisible_playwright_mcp](invisible-playwright-mcp.zh.md) 思路相同（给助手一只 C++ 层打过补丁的 Firefox），但它是每个助手会话各起一个的 MCP 进程，一个浏览器只有一个页面，也没有 macOS 版本；camofox-browser 是共享服务，有多用户会话、标签分组、cookie 导入、会话持久化和代理轮换，可以走 REST、OpenClaw 插件或一个很薄的 MCP 适配器。[PinchTab](pinchtab.zh.md) 是同类的常驻服务，跑在真实 Chrome 上，能力闸门默认全关，但引擎层不做指纹伪装。[Camoufox](https://github.com/daijro/camoufox) 本身是底下的引擎——如果驱动浏览器的是你自己的代码而不是 agent，直接用它。同在反检测这块，`greekr4/playwright-bot-bypass` 走的是相反路线：用一个调校过的真实有头 Chrome 加 agent skill，而不是把打过补丁的 Firefox 放在服务后面。
+和邻居相比，决定性的取舍是这样的：[invisible_playwright_mcp](invisible-playwright-mcp.zh.md) 思路相同（给助手一只 C++ 层打过补丁的 Firefox），但它是每个助手会话各起一个的 MCP 进程，一个浏览器只有一个页面，也没有 macOS 版本；camofox-browser 是共享服务，有多用户会话、标签分组、cookie 导入、会话持久化和代理轮换，可以走 REST、OpenClaw 插件或一个很薄的 MCP 适配器。[PinchTab](pinchtab.zh.md) 是同类的常驻服务，跑在真实 Chrome 上，能力闸门默认全关，但引擎层不做指纹伪装。[Camoufox](../browser-driver-frameworks/camoufox.zh.md) 本身是底下的引擎——如果驱动浏览器的是你自己的代码而不是 agent，直接用它。同在反检测这块，`greekr4/playwright-bot-bypass` 走的是相反路线：用一个调校过的真实有头 Chrome 加 agent skill，而不是把打过补丁的 Firefox 放在服务后面。
 
 ## 怎么用起来
 
@@ -117,13 +117,13 @@ health:
 ## 何时不用
 
 - **目标站点并不拦机器人。** 自己的应用、内网或普通页面，为它背一个 300 MB 的定制 Firefox 再加一个常驻服务毫无收益。改用 [Playwright MCP](../playwright-family/playwright-mcp.zh.md)（微软背书、三种引擎）或 [Agent Browser](agent-browser.zh.md)。
-- **你想写的是 Playwright 或 Puppeteer 代码。** 仓库简介写着“drop-in Puppeteer/Playwright replacement”，但文档里的接口只有 REST 路由、OpenClaw 工具和 MCP 工具——没有可以 import 的 Playwright 兼容客户端。写脚本抓取请直接用 [Camoufox](https://github.com/daijro/camoufox)（它暴露 Playwright 的 API），要不被检测的 Chromium 则用 [nodriver](../browser-driver-frameworks/nodriver.zh.md)。
+- **你想写的是 Playwright 或 Puppeteer 代码。** 仓库简介写着“drop-in Puppeteer/Playwright replacement”，但文档里的接口只有 REST 路由、OpenClaw 工具和 MCP 工具——没有可以 import 的 Playwright 兼容客户端。写脚本抓取请直接用 [Camoufox](../browser-driver-frameworks/camoufox.zh.md)（它暴露 Playwright 的 API），要不被检测的 Chromium 则用 [nodriver](../browser-driver-frameworks/nodriver.zh.md)。
 - **你需要 Chrome、CDP 或 DevTools 数据。** 引擎只有 Firefox；录屏不可用（README 说 `recordVideo` 只支持 Chromium，所以改提供 Playwright trace）。要 trace、网络和堆内存检查，用 [Chrome DevTools MCP](chrome-devtools-mcp.zh.md)。
 - **端口会被你不信任的东西访问到，而你还没设密钥。** 不设 `CAMOFOX_BIND_HOST` 时服务监听所有网卡，不设 `CAMOFOX_ACCESS_KEY` 时全局闸门直接放行——开标签、导航、`evaluate`（在页面里执行 JavaScript）这些路由对任何调用方敞开，而会话里可能正带着导入的登录态。想要默认全关的能力闸门，用 [PinchTab](pinchtab.zh.md)；否则第一件事就是设好 `CAMOFOX_ACCESS_KEY` 并绑定到 `127.0.0.1`。
 - **“不许有任何未经请求的外发流量”是硬规定。** 崩溃、卡死和连续失败的遥测默认开启，发往厂商运营的 Cloudflare Worker，由它在 GitHub 上建**公开** issue；约 120 个知名域名（Google、Amazon、Reddit 等）原样上报，其余域名上报哈希。这些都写在文档里，一个环境变量就能关（`CAMOFOX_CRASH_REPORT_ENABLED=false`），但如果“默认开、自己去关”不可接受，改用 [Playwright MCP](../playwright-family/playwright-mcp.zh.md)，或把 Camoufox 当库用。
 - **你需要内存连续多天保持平稳。** 项目自己的遥测几乎每天都在建 `leak:native-memory` issue，报告单进程内存增长约 200 MB 到 1.3 GB（2026-10-08 时有几十条未关闭）。“空闲约 40 MB”说的是空闲关停把浏览器杀掉之后，不是浏览器运行期间。请预设内存上限和重启策略，或者选按任务起停的浏览器，比如 [Agent Browser](agent-browser.zh.md)。
 - **你想让 agent 用你本人已登录的浏览器。** camofox-browser 跑的是另一只浏览器，登录态要你搬进去（导入 Netscape 格式的 cookie 文件，或通过 noVNC 登录）。要借用你正在用的 Chrome，选 [BrowserSkill](browserskill.zh.md)、[OpenCLI](opencli.zh.md) 或 [Browser Harness](browser-harness.zh.md)。
-- **容器策略要求加固（非 root、只读）。** Dockerfile 没有设置非 root 用户，并且有一条未关闭的 issue 报告：换用户后它会重新下载浏览器并启动失败（#10989，2026-09-20，截至 2026-10-08 无人回复）。索引内的反检测替代品也没解决这一点；请在自己掌控的镜像里直接跑 [Camoufox](https://github.com/daijro/camoufox) 引擎。
+- **容器策略要求加固（非 root、只读）。** Dockerfile 没有设置非 root 用户，并且有一条未关闭的 issue 报告：换用户后它会重新下载浏览器并启动失败（#10989，2026-09-20，截至 2026-10-08 无人回复）。索引内的反检测替代品也没解决这一点；请在自己掌控的镜像里直接跑 [Camoufox](../browser-driver-frameworks/camoufox.zh.md) 引擎。
 - **生产主机是 Windows。** 有一条未关闭的报告称 Camoufox 在 Windows 上经 Playwright 的管道传输启动后立即退出（#9547，2026-08-25）。改走 Docker/WSL2，或用提供 Windows 构建的 [invisible_playwright_mcp](invisible-playwright-mcp.zh.md)。
 - **“绕过检测”这件事本身需要你在法律上站得住。** 绕过机器人防护可能违反站点条款；README 没有谈这一点。无论选哪个工具，这份风险都在你身上。
 
@@ -135,7 +135,7 @@ health:
 | [PinchTab](pinchtab.zh.md) | ✅ | 卡点是“agent 够得着的浏览器服务是否安全”（能力闸门、注入扫描）且用真实 Chrome 即可时，选 PinchTab；卡点是“被弹验证码”时，选 camofox-browser。 | PinchTab 是一个 Go 二进制，闸门默认全关、可管多个 Chrome 实例，但反检测只停在 Chrome 层面；camofox-browser 在引擎里伪装指纹，代价是路由默认敞开、遥测默认开启。 |
 | [Playwright MCP](../playwright-family/playwright-mcp.zh.md) | ✅ | 只要目标站点不拦自动化，就选 Playwright MCP；只有当“被检测出来”才是失败原因时才用 camofox-browser。 | 微软背书、Chromium/Firefox/WebKit 三引擎、没有常驻服务，但浏览器是原装的，会被反爬服务标记；camofox-browser 放弃这份背书，换来一个它自己并不维护的补丁引擎。 |
 | [Agent Browser](agent-browser.zh.md) | ✅ | 如果 agent 有 shell，按任务驱动真实 Chrome，并且同样用“快照加元素编号”的交互方式，选 Agent Browser；如果请求来自多用户 agent、走 HTTP，而且必须过机器人检测，选 camofox-browser。 | Agent Browser 是 CDP 之上的 CLI，没有需要设防的服务，也不伪装指纹；camofox-browser 是长驻服务，带会话隔离和代理/GeoIP 处理，代价是内存增长和一个需要管好的对外端口。 |
-| [Camoufox](https://github.com/daijro/camoufox) | 未收录 | 如果是你自己的 Python 或 Node 代码通过 Playwright API 写脚本驱动浏览器，直接用 Camoufox；如果调用方是需要 HTTP/MCP 工具和省 token 快照的 agent，用 camofox-browser。 | Camoufox 是引擎本体（MPL-2.0，2024-07 创建，约 12.4k stars），指纹修复只会落在那里；camofox-browser 是包装层，钉住的引擎版本比上游落后好几个发布。本批标签页收录中未添加。 |
+| [Camoufox](../browser-driver-frameworks/camoufox.zh.md) | ✅ | 如果是你自己的 Python 或 Node 代码通过 Playwright API 写脚本驱动浏览器，直接用 Camoufox；如果调用方是需要 HTTP/MCP 工具和省 token 快照的 agent，用 camofox-browser。 | Camoufox 是引擎本体（MPL-2.0，2024-07 创建，约 12.4k stars），指纹修复只会落在那里；camofox-browser 是包装层，钉住的引擎版本比上游落后好几个发布。 |
 
 ## 技术栈
 
