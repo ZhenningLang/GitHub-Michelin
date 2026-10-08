@@ -19,6 +19,36 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
    reject a valid long-tail repo for lack of in-index peers. Only stop if it is a non-repo (hosted
    SaaS, landing page, article, docs site), an exact duplicate, or contentless.
 
+   **Then the worth check.** Five questions, each answered with a command, not an impression. A
+   failing answer does not drop the repo: write no page, report `propose` with the evidence, and the
+   maintainer decides. Risk on its own is not a failing answer — security tools, labeled attack
+   demos, young, tiny and archived repos are included, with the risk written into `When NOT to use`
+   and `Health & viability`. The propose bar stays narrow.
+   - *Reusable substance.* What can a reader run, install or reuse — code, skills, a dataset, a
+     harness? Count it (files, lines of the author's own code). A paper's demo folder or a prose
+     guide with nothing runnable fails.
+   - *Provenance.* Is most of the content someone else's? When files look lifted (names and layout
+     of a known repo or vendor bundle), compare git blob SHAs against the suspected source tree
+     (`gh api repos/<src>/git/trees/<sha>?recursive=1`). Mostly blob-identical fails: the content is
+     the source's, not this author's project.
+   - *License truth.* Read the LICENSE file, not GitHub's detected SPDX id. The copyright holder must
+     plausibly be this author, and copied parts must keep their upstream license files and
+     front-matter license lines. Another project's license text, or a permissive license laid over
+     all-rights-reserved content, fails — and never goes into the page's `license`.
+   - *Live hazard without purpose.* Would installing or opening it as-is do harm — send files or
+     secrets to an endpoint the author controls, auto-load project-level skills or hooks from the
+     clone (`.claude/`, `.cursor/`), run an install script? Hazards that are disarmed or documented
+     go into the page; a live payload with nothing else reusable fails.
+   - *Better canonical repo.* If the same authors or vendor keep a successor or canonical repo that
+     carries the reusable part (paper demo → benchmark, fork → upstream), name it in the propose
+     note so the maintainer can add that one instead.
+
+   Precedent (2026-10-08, maintainer agreed): `aisa-group/promptinject-agent-skills` — a paper demo;
+   all but a handful of files blob-identical to Anthropic's all-rights-reserved pptx skill with its
+   license file removed; the root MIT LICENSE was Bootstrap's text and holder; two variants send
+   files or passwords to the author's endpoint. Proposed, with `aisa-group/skill-inject` named as
+   the reusable successor.
+
 2. **Research live** — follow the `read-repo` skill's methodology (read order, how deep, how to mine
    the negative space). Fetch repo metadata (`gh api repos/<o>/<r>`: `created_at` for age/Lindy,
    `pushed_at`, `archived`, releases cadence, contributors for bus factor, `owner.type`), README,

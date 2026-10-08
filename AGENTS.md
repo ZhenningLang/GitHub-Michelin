@@ -142,6 +142,11 @@ ads); an exact duplicate of an already-indexed repo; or an empty/contentless rep
 bar — crowded fields are handled by the self-balancing tree (split into sub-categories), not by
 dropping entries.
 
+Gray zone: nothing reusable beyond a paper demo or prose, content mostly copied from elsewhere, a
+license that cannot be true, or a live harmful payload with nothing else to reuse → write no page,
+report `propose` with evidence, the maintainer decides (checks: `add-project` step 1, "worth
+check"; `tools/schema.md` §4). Risk alone never triggers it.
+
 ## Lint (the structural gate — no tests)
 
 This is a content repo with no runtime logic. The pre-merge gates are the structural linter, the

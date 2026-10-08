@@ -30,9 +30,11 @@ Batch overrides (these win over the skill text):
   report it.
 - Do NOT `git commit/push/checkout/reset`, touch anything outside this worktree except the result
   file, or open/close browser tabs.
-- Inclusion: security tools, archived, young, hyped repos are all included. Only if the repo turns
-  out to be extracted content of a closed product, purely prose/links with no reusable software, an
-  exact duplicate, or empty: write no pages and report `propose` with the specific reason.
+- Inclusion: security tools, archived, young, hyped repos are all included. Run add-project step
+  1's worth check (reusable substance, provenance, license truth, live hazard without purpose,
+  better canonical repo). Only if the repo fails one of those, or turns out to be extracted content
+  of a closed product, an exact duplicate, or empty: write no pages and report `propose` with the
+  evidence (the command and what it showed).
 - Run every command in the foreground and wait for it. This is a one-shot headless session; it ends
   when you stop, and anything still pending is lost.
 
