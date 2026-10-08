@@ -129,7 +129,7 @@ health:
 | [AI-Infra-Guard](../llm-eval/ai-infra-guard.zh.md) | ✅ | 审计范围是整套自托管 AI 资产（带 CVE 的模型服务、MCP 仓库、skill、越狱测试），并且愿意部署一个平台时选 AI-Infra-Guard；只想一条命令检查开发者笔记本时选 Agent Scan。 | A.I.G 自托管、覆盖面更宽，但要两个容器加一个 LLM 密钥，审计的是 MCP 的*源码仓库*；Agent Scan 不用部署任何东西，检查的是*已配置、在运行*的服务，分析由 Snyk 完成。 |
 | [agent-governance-toolkit](agent-governance-toolkit.zh.md) | ✅ | 要求在 agent 运行时拦截或审计工具调用时选 AGT；想在运行之前或两次运行之间弄清哪些已装组件有风险时选 Agent Scan。 | AGT 在运行时执行策略，但必须接进你的 agent 框架；Agent Scan 不往 agent 里装任何东西，因此也拦不住任何东西——它只报告。 |
 | cisco-ai-defense/skill-scanner | 未收录 | 想要开放的规则集（YARA-X、AST 与数据流、可选 LLM 裁判）、公开的召回率与误报率数字，以及给 CI 用的 SARIF 时选 Cisco skill-scanner；想要整机发现、不维护任何规则时选 Agent Scan。 | Cisco 的扫描器自己公布了并不高的实测召回（仅靠规则，在一个恶意样本基准上以 HIGH 级别抓到 7.7%），并允许你调策略；Agent Scan 不公布准确率，也不公开规则，但不用任何配置。Apache-2.0，约 2.6 千星（2026-10）；本批未收录。 |
-| cisco-ai-defense/mcp-scanner | 未收录 | MCP 服务必须离线检查，或在 CI 里对预先生成的 JSON 检查，并且要用自己掌控的 YARA 规则、可选的源码与依赖扫描时选 Cisco mcp-scanner；更看重一次跑完、自动发现各 agent 和 skill 时选 Agent Scan。 | mcp-scanner 的各种 API key 都是可选的，还有静态离线模式，但要你告诉它扫哪些服务，而且不覆盖 skill；Agent Scan 两样都覆盖并且自己去找，但离不开 Snyk 的服务。Apache-2.0，约 1.1 千星（2026-10）；本批未收录。 |
+| [Cisco MCP Scanner](mcp-scanner.zh.md) | ✅ | MCP 服务必须离线检查，或在 CI 里对预先生成的 JSON 检查，并且要用自己掌控的 YARA 规则、可选的源码与依赖扫描时选 Cisco mcp-scanner；更看重一次跑完、自动发现各 agent 和 skill 时选 Agent Scan。 | mcp-scanner 的各种 API key 都是可选的，还有静态离线模式，但只能自动发现四种客户端的配置，而且不覆盖 skill；Agent Scan 在 14 种 agent 上两样都覆盖，但离不开 Snyk 的服务。Apache-2.0，约 1.1 千星（2026-10）。 |
 
 另有两个更小的 Claude skill 审计工具 tarang-tj/claude-skill-audit 和 HTS-Sleeping-Place/skills-scanner 正与本页在同一批次收录进本索引；如果你只审计 Claude Code 的 skill，并且想要一个以 skill 形式跑在 agent 里面的工具，请到分类索引里找它们。
 

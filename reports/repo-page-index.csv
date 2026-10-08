@@ -319,6 +319,7 @@ https://github.com/ceph/ceph,ceph,object-storage,categories/object-storage/ceph.
 https://github.com/certbot/certbot,certbot,ops-infra,categories/dev-utilities/ops-infra/certbot.md
 https://github.com/chakra-ui/chakra-ui,chakra-ui,component-libraries,categories/web-ui/component-libraries/chakra-ui.md
 https://github.com/chenfei-wu/TaskMatrix,taskmatrix,vision-and-multimodal,categories/ml-research/vision-and-multimodal/taskmatrix.md
+https://github.com/cisco-ai-defense/mcp-scanner,mcp-scanner,agent-governance,categories/agent-governance/mcp-scanner.md
 https://github.com/cixingguangming55555/wechat-bot,funtool,api-gateway,categories/api-gateway/funtool.md
 https://github.com/clash-verge-rev/clash-verge-rev,clash-verge-rev,ops-infra,categories/dev-utilities/ops-infra/clash-verge-rev.md
 https://github.com/cline/cline,cline,ide-agents,categories/agent-frameworks/coding-agents/ide-agents/cline.md

@@ -14,6 +14,7 @@
 | **skills-scanner** | Zero-dependency Python CLI that inventories skills, commands and MCP configs across Claude Code, Claude Desktop, Cursor and Windsurf, runs offline rules, and diffs against a SQLite baseline. Dormant since 2026-05 and not on PyPI: a pattern source, not a dependency. | C (5/6) | [→](skills-scanner.md) |
 | **agent-guard** | Pre-install gate skill that routes skills, MCP packages, npm/PyPI/Go/cargo packages, release binaries and install scripts to SkillSpector, Cisco mcp-scanner, GuardDog, OpenSSF package-analysis or VirusTotal, and merges them into one fail-closed exit code; no detection of its own, one author, 3 stars. | C (5/6) | [→](agent-guard.md) |
 | **Claude Skills Security Guide** | A written catalogue of twelve Claude skill attack vectors with a manual and six defanged example attacks, plus three demo-grade copy-in defence skills (regex scanner, hash manifest, text sanitizer); unmaintained since 2026-03, read it, do not gate on it. | C (4/5) | [→](claude-skills-security-guide.md) |
+| **Cisco MCP Scanner** | Cisco's open scanner for MCP servers: pulls every tool, prompt and resource description from a live server, a client config or a saved JSON and flags injection/poisoning text with local YARA rules, plus optional LLM, Cisco-API and LLM-based source-code checks; reports only, no CI exit code or SARIF. | B (6/6) | [→](mcp-scanner.md) |
 
 
 ## Comparison matrix
@@ -27,6 +28,7 @@
 | [skills-scanner](skills-scanner.md) | ✅ | C (5/6) | Machine-wide inventory plus drift baseline with no dependencies; shallow regex/AST rules, one author, silent since 2026-05, install from git only. |
 | [agent-guard](agent-guard.md) | ✅ | C (5/6) | One scan-then-install gate across many target types and every local agent; pays with a deep toolchain (uv, Docker, a privileged container) and an unadopted one-author wrapper over upstream scanners. |
 | [Claude Skills Security Guide](claude-skills-security-guide.md) | ✅ | C (4/5) | Threat vocabulary, training material and attack fixtures for testing a real scanner; its own scanner rates its defence skills CRITICAL, and nothing runs unless you invoke it. |
+| [Cisco MCP Scanner](mcp-scanner.md) | ✅ | B (6/6) | MCP-server-specific checks with rules you can read and an offline mode over saved tool lists; launches the stdio servers it scans, needs an LLM key for anything beyond pattern matching, and you build the CI pass/fail yourself. |
 
 
 ## What belongs here

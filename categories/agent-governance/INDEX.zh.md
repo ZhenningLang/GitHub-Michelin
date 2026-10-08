@@ -14,6 +14,7 @@
 | **skills-scanner** | 零依赖的 Python CLI：盘点 Claude Code、Claude Desktop、Cursor、Windsurf 下的 skill、命令和 MCP 配置，离线跑规则，并与 SQLite 基线比对漂移。2026-05 起休眠且未上 PyPI：当模式来源看，不要当依赖用。 | C（5/6） | [→](skills-scanner.zh.md) |
 | **agent-guard** | 安装前把关的 skill：把 skill、MCP 包、npm/PyPI/Go/cargo 包、release 二进制和安装脚本分派给 SkillSpector、Cisco mcp-scanner、GuardDog、OpenSSF package-analysis 或 VirusTotal，再合并成一个 fail-closed 的退出码；自己没有检测能力，单一作者，3 个 star。 | C（5/6） | [→](agent-guard.zh.md) |
 | **Claude Skills Security Guide** | 一份 Claude skill 十二种攻击向量的书面目录，附手册和六个去掉杀伤力的示例攻击，外加三个演示水平、可直接拷入的防御 skill（正则扫描器、哈希清单、文本净化器）；2026-03 起无人维护，拿来读，别拿来卡流程。 | C（4/5） | [→](claude-skills-security-guide.zh.md) |
+| **Cisco MCP Scanner** | Cisco 开源的 MCP 服务扫描器：从运行中的服务、客户端配置或存好的 JSON 里拉出每个工具、提示词和资源的描述，用本地 YARA 规则标出注入和投毒文字，另可选 LLM、Cisco 接口和基于 LLM 的源码检查；只出报告，没有给 CI 用的退出码，也没有 SARIF。 | B（6/6） | [→](mcp-scanner.zh.md) |
 
 
 ## 对比矩阵
@@ -27,6 +28,7 @@
 | [skills-scanner](skills-scanner.zh.md) | ✅ | C（5/6） | 零依赖的整机盘点加漂移基线；规则只有浅层正则与语法树，单一作者，2026-05 后无更新，只能从 git 安装。 |
 | [agent-guard](agent-guard.zh.md) | ✅ | C（5/6） | 一道“先扫后装”的闸门覆盖多种目标类型和本机所有 agent；代价是很深的工具链（uv、Docker、特权容器），以及一层没人用过、单人维护、包在上游扫描器外面的脚本。 |
 | [Claude Skills Security Guide](claude-skills-security-guide.zh.md) | ✅ | C（4/5） | 威胁词汇、培训材料和测真扫描器用的攻击样本；它自己的扫描器把自家防御 skill 判成 CRITICAL，而且不调用就什么都不运行。 |
+| [Cisco MCP Scanner](mcp-scanner.zh.md) | ✅ | B（6/6） | 专查 MCP 服务，规则读得到，还能对存好的工具清单离线扫描；但会真的启动被扫的 stdio 服务，模式匹配以外的检查都要 LLM key，CI 的通过／失败判定得自己写。 |
 
 
 ## 什么该放这里
