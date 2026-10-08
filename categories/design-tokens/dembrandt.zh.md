@@ -7,17 +7,17 @@ category: design-tokens
 tags: [design-tokens, design-system-extraction, design-drift, dtcg, design-md, tailwind, mcp, playwright, cli, ci-gate]
 language: TypeScript
 license: MIT
-maturity: v0.37.0, active, pre-1.0, ~3.6k stars (as of 2026-10)
-last_verified: 2026-10-01
+maturity: v0.38.0, active, pre-1.0, ~3.6k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-10-01T11:51:03Z
+  pushed_at: 2026-10-07T16:22:19Z
   default_branch: main
-  default_branch_sha: 22cb9f9320f11b383094726646d3200698f232e4
+  default_branch_sha: b4b827b135b7c8c265fb775b30c5c1a6acc318fa
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-01T16:39:11Z
+  computed_at: 2026-10-08T09:29:25Z
   overall: C
   overall_score: 2.4
   scored_axes: 5
@@ -30,7 +30,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 5
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 313
-        last_commit_age_days: 2
+        repo_age_days: 320
+        last_commit_age_days: 5
         cohort: tool
     governance:
       grade: D
@@ -99,7 +99,7 @@ Dembrandt 是一个 Node 命令行工具，驱动一个真正的无头浏览器�
 3. **Dembrandt**（提取）：渲染页面，只从真正画出来的元素上读计算样式 — 组件：`提取器`
 4. **Dembrandt**（提取）：把颜色、字体、间距、圆角聚类，选出主色，写成 token — 组件：`token 格式化器`
 5. **你**（CI 门禁）：把一次运行结果提交成基线 — `dembrandt https://app.example.com --json-only > baseline.json`
-6. **你**（CI 门禁）：在预览部署上加一步漂移门禁 — `uses: dembrandt/dembrandt@v0.37.0` — 组件：`GitHub Action`
+6. **你**（CI 门禁）：在预览部署上加一步漂移门禁 — `uses: dembrandt/dembrandt@v0.38.0` — 组件：`GitHub Action`
 7. **Dembrandt**（CI 门禁）：重新提取，逐 token 打漂移分，超阈值退出码 1 并在 PR 上标注 — 组件：`漂移评分器`
 
 **价值**：不用再从开发者工具里抄色值；主色被改了，PR 直接红，而不是上线后才发现
@@ -113,8 +113,8 @@ Dembrandt 是一个 Node 命令行工具，驱动一个真正的无头浏览器�
 - **你要抓的是布局和视觉回归，不是 token 变化。** Dembrandt 比较的是提取出的值（色板、字号阶梯、间距、圆角、阴影）；栅格错位、弹窗遮挡、图片丢失都不会让任何 token 变化。这类问题用截图比对的视觉回归测试，比如 BackstopJS 或 Playwright 自带的 `toHaveScreenshot`。
 - **界面是画在 canvas 上的。** 项目自己的限制清单写明：Canvas/WebGL 渲染的网站无法分析——没有 DOM 可读。类 Figma 的网页应用、游戏、以地图为主的界面要换个来源（去拿设计稿；手里有 `.fig` 就用 [OpenPencil](../design-editors/open-pencil.zh.md)）。
 - **你想克隆别人的品牌。** README 的“预期用途”把它限定在你拥有或获准分析的网站，并要求不得复制第三方的品牌形象。要注意：robots.txt 检查默认只**警告**然后照样继续，除非设置 `DEMBRANDT_ENFORCE_ROBOTS=1`；而且还有一个 `--stealth` 反检测开关——工具不会拦你，法律上的判断得你自己做。如果是获得授权、要整站重建，[ai-website-cloner-template](../agent-skills/design/design-to-code/ai-website-cloner-template.zh.md) 覆盖截图、素材和视觉验收；如果需求只是“做得像 Linear 那样”，[Awesome DESIGN.md](../agent-skills/design/design-to-code/awesome-design-md.zh.md) 里的现成文件根本不用爬。
-- **你需要一份冻结、可审计的提取契约。** 它还在 1.0 之前，启发式规则几乎每周都在改——v0.34.0、v0.35.0、v0.36.0、v0.37.0（2026-09-19 → 09-29）都记录了未改动网站上的值发生移动（间距阶梯、色板、`semantic.primary`），后三个版本都要求用户重新批准基线。要么锁死 CLI 版本（Action 按 tag 自动锁）并预留升级后重新批准的工作量；做不到的话，就改为对你自己维护的 token 文件做门禁（Style Dictionary），而不是对提取结果做门禁。
-- **提取快照不能离开你的网络。** 按 v0.37.0 源码，本地运行只访问目标网站（渲染品牌手册 PDF 时还会加载 Google Fonts）；但 `--key`（以及 Action 的 `key` 输入）会把完整的提取 JSON 上传到 `dembrandt.com`，而那个 App 的后端并不公开。隔离网络或强监管环境里，只用本地 `--compare` 对比已提交的基线，永远不要设置 key。
+- **你需要一份冻结、可审计的提取契约。** 它还在 1.0 之前，启发式规则几乎每周都在改——v0.34.0、v0.35.0、v0.36.0、v0.37.0（2026-09-19 → 09-29）都记录了未改动网站上的值发生移动（间距阶梯、色板、`semantic.primary`），后三个版本都要求用户重新批准基线（2026-10-03 的 v0.38.0 只做增量：参考站点上波动为 0，但 `frameworks` 与 `iconSystem` 的名称会变一次）。要么锁死 CLI 版本（Action 按 tag 自动锁）并预留升级后重新批准的工作量；做不到的话，就改为对你自己维护的 token 文件做门禁（Style Dictionary），而不是对提取结果做门禁。
+- **提取快照不能离开你的网络。** 按 v0.37.0 与 v0.38.0 源码，本地运行只访问目标网站（渲染品牌手册 PDF 时还会加载 Google Fonts）；但 `--key`（以及 Action 的 `key` 输入）会把完整的提取 JSON 上传到 `dembrandt.com`，而那个 App 的后端并不公开。隔离网络或强监管环境里，只用本地 `--compare` 对比已提交的基线，永远不要设置 key。
 
 ## 横向对比
 
@@ -130,7 +130,7 @@ Dembrandt 是一个 Node 命令行工具，驱动一个真正的无头浏览器�
 
 - **语言与运行时：** TypeScript 编译为 ESM JavaScript；Node.js ≥ 18（见 `package.json` 的 `engines`）；自带的 GitHub Action 默认用 Node 24 运行。
 - **浏览器自动化：** `playwright-core`（锁定 1.62.1），默认驱动 Chromium，可选 Firefox，或通过 `BROWSER_CDP_ENDPOINT` 连接已有浏览器。
-- **CLI 与 MCP：** CLI 用 `commander`、`ora`、`chalk`；`dembrandt-mcp` 是基于 `@modelcontextprotocol/sdk` + `zod` 的 stdio 服务器（v0.37.0 的 `mcp-server.ts` 里有 21 处工具注册）。
+- **CLI 与 MCP：** CLI 用 `commander`、`ora`、`chalk`；`dembrandt-mcp` 是基于 `@modelcontextprotocol/sdk` + `zod` 的 stdio 服务器（v0.38.0 的 `mcp-server.ts` 里有 21 处工具注册）。
 - **输出格式：** W3C DTCG token JSON（自带校验器）、Google 的 DESIGN.md 草案格式、Tailwind v4 `@theme` CSS、shadcn/ui 主题、自包含 HTML 报告、品牌手册 PDF、原始 JSON。
 - **可选机器学习：** 可选依赖 `onnxruntime-node`，运行仓库里自带的一个很小的 ONNX 模型，用于实验性的 `--ai` 主色预测。
 - **库入口：** 提供 `dembrandt/drift`、`dembrandt/dtcg`、`dembrandt/colors` 等子路径导出，可以把漂移评分或格式化器嵌进你自己的代码。
@@ -148,7 +148,7 @@ Dembrandt 是一个 Node 命令行工具，驱动一个真正的无头浏览器�
 
 ## 健康度与可持续性
 
-- **维护情况（截至 2026-10-01）：** 非常活跃——自 2025-11-23 首个版本以来共 67 个 GitHub release，仅 2026 年 9 月就有 10 个（最新 v0.37.0，2026-09-29）；2026-07-01 以来约 130 次提交；CHANGELOG 逐版本记录实测的基线波动。CI 里有冒烟、夜间、存活性和 Action 冒烟等工作流。
+- **维护情况（截至 2026-10-08）：** 非常活跃——自 2025-11-23 首个版本以来共 68 个 GitHub release，仅 2026 年 9 月就有 10 个（最新 v0.38.0，2026-10-03）；2026-07-01 以来约 130 次提交；CHANGELOG 逐版本记录实测的基线波动。CI 里有冒烟、夜间、存活性和 Action 冒烟等工作流。
 - **治理与巴士因子：** 实际上就是一个人。维护者（`thevangelist`）有 351 次提交，其后的人类贡献者每人只有一两次，最近的 PR 几乎都是他自己提的。`dembrandt` 这个 GitHub 组织是个人品牌，不是基金会，也不是有团队的公司。[推断]
 - **年龄与林迪判断：** 创建于 2025-11-22，大约十个月。按林迪先验，这是一个年轻、未经时间检验的项目——十个月约 3.6k star、321 个 fork，说明“被注意到了”，不说明“能长久”。活跃度很高，所以“年龄 × 仍在活跃”这一组合在活跃上加分、在年龄上减分。
 - **采用情况：** 健康度雷达测得最近一个月 npm 下载 16,064 次（2026-10-01；npm 自己的统计接口给出 2026-08-31 → 09-29 为 18,304 次，两者统计窗口不同）——对一个细分领域的 CLI 来说是真实使用。同一组织下还有配套的 agent skill 仓库 `dembrandt-skills`（65 star）和一个 DTCG 校验器。

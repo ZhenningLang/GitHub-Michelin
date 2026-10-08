@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenDots does",
+    "zh": "OpenDots 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the template, install, and copy the config",
+      "zh": "克隆模板、装依赖、复制配置",
+      "code": "npm ci · cp .env.example .env"
+    },
+    {
+      "lane": "you",
+      "en": "Connect a CopilotKit Intelligence project (hosted or local Docker evaluation)",
+      "zh": "接上 Intelligence 项目（托管或本地评估版）",
+      "code": "npx copilotkit@latest login · npx copilotkit@latest project select"
+    },
+    {
+      "lane": "you",
+      "en": "Add the model key and model name to .env, then start the app",
+      "zh": "在 .env 填模型 key 和模型名，启动应用",
+      "code": "npm run dev"
+    },
+    {
+      "lane": "them",
+      "en": "Serves the workspace at 127.0.0.1:5173: Spaces and pages in SQLite, chats as Intelligence Threads",
+      "zh": "提供工作区：页面存 SQLite，对话存 Intelligence",
+      "component": {
+        "en": "Node server + React app",
+        "zh": "Node 服务与 React 应用"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Define a Dot: name, role, instructions, permitted tools and Spaces",
+      "zh": "定义一个 Dot：名字、角色、指令、允许的工具和 Space"
+    },
+    {
+      "lane": "them",
+      "en": "Runs its turns from chat, Slack, calls or schedules and streams browser and tool cards inline",
+      "zh": "从聊天、Slack、通话或定时任务接活，把浏览器和工具卡片流回聊天",
+      "component": {
+        "en": "Dot agent (TanStack AI)",
+        "zh": "Dot agent（TanStack AI）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Stops at Approve & save / Approve & run before saving a page or running a write tool",
+      "zh": "存页面或调写操作工具前停下，等你点批准",
+      "component": {
+        "en": "Human-in-the-loop cards",
+        "zh": "人工审批卡片"
+      }
+    }
+  ],
+  "value": {
+    "en": "A named specialist keeps one conversation, its files and its browser across text, calls and Slack — and nothing is saved or written outside without your click",
+    "zh": "有名字的专职 Dot 在文字、通话、Slack 间共用一段对话和一台浏览器；不经你点头，什么都不存、不外写"
+  },
+  "sources": [
+    "https://github.com/CopilotKit/OpenDots/blob/main/README.md Get started (git clone, npm ci, cp .env.example .env, npm run dev, http://127.0.0.1:5173, npx copilotkit@latest login, npx copilotkit@latest project select, OPENAI_API_KEY, OPENAI_MODEL)",
+    "https://github.com/CopilotKit/OpenDots/blob/main/README.md Overview (Specialist Dots: name, role, instructions, permitted tools; Review before saving: Approve & save; Connections: Approve & run)",
+    "https://github.com/CopilotKit/OpenDots/blob/main/docs/SETUP.md (SQLite pages and thread bindings; Intelligence conversations; local Intelligence evaluation; Slack; Calls)",
+    "https://github.com/CopilotKit/OpenDots/blob/main/src/server/dot-agent.ts (TanStack AI openaiCompatibleText adapter, chat-completions, 90 s turn limit)",
+    "https://github.com/CopilotKit/OpenDots/blob/main/docs/CONNECTIONS.md and src/server/connections.ts (non-read-only MCP tools require approval)"
+  ]
+}

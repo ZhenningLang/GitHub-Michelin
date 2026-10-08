@@ -522,6 +522,51 @@ class CanonicalSelectionTest(unittest.TestCase):
         picked = health._select_canonical(candidates, "mui", "material-ui")
         self.assertEqual(picked["name"], "@mui/material")
 
+    def test_exact_name_beats_containment_across_download_periods(self) -> None:
+        # ecosyste.ms candidates for kitao/pyxel (2026-10-05): crates.io reports
+        # all-time downloads, PyPI last-month, so the sub-crates out-"downloaded" the
+        # package the project ships and `pyxel-engine` became its canonical.
+        candidates = [
+            {"name": "pyxel", "downloads": 10_540, "dependent_repos_count": 85,
+             "registry": "pypi.org"},
+            {"name": "pyxel-engine", "downloads": 89_290, "dependent_repos_count": 0,
+             "registry": "crates.io"},
+            {"name": "pyxel-wrapper", "downloads": 83_996, "dependent_repos_count": 0,
+             "registry": "crates.io"},
+        ]
+        picked = health._select_canonical(candidates, "kitao", "pyxel", "Rust")
+        self.assertEqual(picked["name"], "pyxel")
+
+    def test_exact_name_squatter_does_not_beat_a_depended_on_package(self) -> None:
+        # Dry run over the index (2026-10-08): `pdfjs` on NuGet has the repo's exact
+        # name, but mozilla/pdf.js ships `pdfjs-dist`, which everything depends on.
+        candidates = [
+            {"name": "pdfjs", "downloads": 40_000, "dependent_repos_count": 0,
+             "registry": "nuget.org"},
+            {"name": "pdfjs-dist", "downloads": 9_000_000, "dependent_repos_count": 120_000,
+             "registry": "npmjs.org"},
+        ]
+        picked = health._select_canonical(candidates, "mozilla", "pdfjs", "JavaScript")
+        self.assertEqual(picked["name"], "pdfjs-dist")
+
+    def test_exact_name_under_a_foreign_scope_is_not_the_repo(self) -> None:
+        candidates = [
+            {"name": "@shadanai/openclaw", "downloads": 5_000, "dependent_repos_count": 3,
+             "registry": "npmjs.org"},
+            {"name": "@openclaw/codex", "downloads": 90_000, "dependent_repos_count": 1,
+             "registry": "npmjs.org"},
+        ]
+        picked = health._select_canonical(candidates, "openclaw", "openclaw", "TypeScript")
+        self.assertEqual(picked["name"], "@openclaw/codex")
+
+    def test_containment_still_wins_when_no_exact_name_exists(self) -> None:
+        candidates = [
+            {"name": "openai-whisper", "downloads": 2_000_000, "registry": "pypi.org"},
+            {"name": "whisper-tools", "downloads": 3_000, "registry": "pypi.org"},
+        ]
+        picked = health._select_canonical(candidates, "openai", "whisper", "Python")
+        self.assertEqual(picked["name"], "openai-whisper")
+
     def test_lone_go_pseudo_module_is_not_a_package_for_a_python_repo(self) -> None:
         # The only "candidate" a package-less repo has is the Go proxy's synthetic module
         # with 0 dependents. Accepting it turned "no package anywhere" into a measured
