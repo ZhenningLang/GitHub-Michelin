@@ -6,8 +6,8 @@ category: vision-and-multimodal
 tags: [visual-chatgpt, tool-routing, foundation-models, multimodal, agent, abandoned, historical-demo]
 language: Python
 license: MIT
-maturity: "research demo (orig. 'Visual ChatGPT', Microsoft); last pushed 2024-01, no commits since — abandoned in practice (as of 2026-06)"
-last_verified: 2026-06-28
+maturity: "research demo (orig. 'Visual ChatGPT', Microsoft); last commit 2023-06-29, none since — abandoned in practice (as of 2026-10-08)"
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-01-06T02:41:20Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:17:48Z
+  computed_at: 2026-10-08T08:23:22Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1186
+        last_commit_age_days: 1197
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 1305
-        last_commit_age_days: 1186
+        repo_age_days: 1316
+        last_commit_age_days: 1197
         cohort: app
     governance:
       grade: "?"
@@ -59,7 +59,7 @@ health:
 
 # TaskMatrix
 
-A historical research demo (originally "Visual ChatGPT", from Microsoft) that wires ChatGPT to a fixed set of visual foundation models so you can chat to caption, generate, and edit images — interesting as an early tool-routing-agent design, but unmaintained since early 2024 and superseded by modern multimodal LLMs.
+A historical research demo (originally "Visual ChatGPT", from Microsoft) that wires ChatGPT to a fixed set of visual foundation models so you can chat to caption, generate, and edit images — interesting as an early tool-routing-agent design, but unmaintained since mid-2023 and superseded by modern multimodal LLMs.
 
 ![taskmatrix — health radar](../../../assets/health/taskmatrix.svg)
 
@@ -69,13 +69,36 @@ You're a researcher or engineer studying how the first wave of LLM "tool-routing
 
 It's also a useful teaching reference when you're building your *own* tool-routing agent today and want to see an early, self-contained example of LLM-as-orchestrator over heavyweight specialist models — what the prompt scaffolding looked like, where it was brittle, and why native multimodal models eventually absorbed the whole pattern.
 
+## How it works
+
+TaskMatrix is one Python script, `visual_chatgpt.py`, that turns a text-only language model into a picture-handling assistant by giving it a toolbox. **The toolbox ships with it**: about twenty visual foundation models — large pretrained models that each do one visual job, such as captioning (BLIP), text-to-image (Stable Diffusion), or edge/depth/pose-guided generation (ControlNet) — each wrapped as a LangChain "tool" with a one-line description. You choose at launch which of them to load and on which GPU, supply an OpenAI key, and chat in a Gradio web page. The language model never sees pixels: a long prompt tells it that every image is a file named `image/xxx.png` and lists the tools, so it decides which tool to call, the tool writes a new file, and the model talks about that file name. It is like a manager who cannot see, directing a room of specialists by passing around labeled photos. Hosting the models, paying for the API, and keeping the 2023 dependency pins working are yours.
+
+![taskmatrix — backbone user story](../../../assets/flow/taskmatrix.svg)
+
+<!-- flow-steps:begin (generated from flows/taskmatrix.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Clone, create a Python 3.8 env, install requirements plus GroundingDINO and segment-anything — `pip install -r requirements.txt`
+2. **You**: Export your OpenAI key for the controller LLM — `export OPENAI_API_KEY={Your_Private_Openai_Key}`
+3. **You**: Start it, naming which visual models load on which device — `python visual_chatgpt.py --load "ImageCaptioning_cuda:0,Text2Image_cuda:0"`
+4. **TaskMatrix**: Loads those models as LangChain tools and opens a Gradio chat page — component: `visual_chatgpt.py`
+5. **You**: Upload an image and ask for something in plain words — `find xxx in the image`
+6. **TaskMatrix**: The LLM reads the tool list, picks a model, runs it, and saves the result as image/xxx.png
+7. **TaskMatrix**: Replies in words with the new image threaded back into the chat
+
+**Value**: A text-only chatbot that can see and edit images by delegating to specialist vision models
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **Anything you intend to keep running.** The repo has had no commits since **2024-01-06**; it is abandoned in practice (not formally `archived`, but functionally dead). Read it, don't depend on it.
+- **Anything you intend to keep running.** The default branch has had no commits since **2023-06-29** (more than three years as of 2026-10-08); it is abandoned in practice (not formally `archived`, but functionally dead). Read it, don't depend on it — for a working image-chat assistant use a modern multimodal LLM instead.
 - **You want a current image-chat capability.** Modern multimodal LLMs (GPT-4o, Gemini, Claude with vision, Qwen-VL) do captioning / VQA / grounded reasoning natively, in one model, with no foundation-model zoo to host. The whole reason TaskMatrix existed — text-only ChatGPT couldn't see — no longer holds.
 - **You want a maintained agent/tool-routing framework.** Today's agent frameworks (LangChain, modern function-calling, MCP-based tooling) do orchestration far better and are actively maintained. Don't build new work on TaskMatrix's bespoke prompt-router.
-- **You can't pin old, heavy deps.** It pulls a pinned-circa-2023 stack (specific `transformers`, `diffusers`, `langchain`, Detectron/ControlNet weights, an OpenAI key) onto a multi-GB GPU environment; those versions are stale and may not resolve or run cleanly on current CUDA/PyTorch. [未验证]
-- **Security / supply-chain sensitivity.** Unmaintained for 2+ years means no patches; pinned old dependencies accumulate known CVEs over time. Treat it as throwaway research code, not something to expose or trust with secrets.
+- **You can't pin old, heavy deps.** `requirements.txt` pins `langchain==0.0.101` and `torch==1.13.1` and leaves `transformers`, `diffusers` and ~25 others unpinned, on top of GroundingDINO, segment-anything, many GB of weights and an OpenAI key; a 2026 install will resolve today's `diffusers`/`transformers` against a 2023 LangChain API, so expect breakage. [未验证] If you only want the pattern, rebuild it on a current agent framework instead.
+- **Security / supply-chain sensitivity.** Unmaintained for 3+ years means no patches; pinned old dependencies accumulate known CVEs over time. Treat it as throwaway research code, not something to expose or trust with secrets.
 
 ## Comparison
 
@@ -108,15 +131,17 @@ It's also a useful teaching reference when you're building your *own* tool-routi
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_data.
-- **Maintenance (as of 2026-06):** last pushed **2024-01-06**, no commits since — **abandoned in practice** (not formally `archived` on GitHub, but functionally dead). [推断] No releases, no fixes, no maintainer to file issues against.
+- **Maintenance (as of 2026-10-08):** last commit on `main` **2023-06-29** (the later 2024-01-06 `pushed_at` did not touch the default branch), no releases — **abandoned in practice** (not formally `archived` on GitHub, but functionally dead). No fixes, no maintainer to file issues against.
 - **Governance / bus factor:** the repo lives under an individual `User` account (chenfei-wu) though the work originated at Microsoft Research as "Visual ChatGPT." [推断] Whatever institutional backing it once had is gone; there is no team or roadmap behind the current repo.
 - **Age & Lindy verdict (created 2023-03, ~3 yr):** this is the **fails-Lindy** case — old *enough to be stale* but no longer active. Age here is a negative, not a positive: the longer it sits unmaintained against a fast-moving stack (CUDA/PyTorch/`transformers`/`diffusers`), the less likely a clean install even runs. Read it as a historical artifact of the pre-multimodal tool-routing era; do not bet on it.
-- **Risk flags:** 2+ years unmaintained ⇒ pinned 2023-era deps accumulate known CVEs with no patches — a real supply-chain concern; do not expose it or trust it with secrets. License is MIT (file verified), though GitHub's API shows `NOASSERTION`. [未验证]
+- **Risk flags:** 3+ years unmaintained ⇒ pinned 2023-era deps accumulate known CVEs with no patches — a real supply-chain concern; do not expose it or trust it with secrets. License is MIT (file verified), though GitHub's API shows `NOASSERTION`. [未验证]
 
 ## Caveats (unverified)
 
-- [未验证] ~34.1k GitHub stars (34,070) and `pushed_at` 2024-01-06 as of 2026-06; stars are unreliable and date-sensitive — treat as indicative only.
+- [未验证] ~34.0k GitHub stars (33,965 via the GitHub API on 2026-10-08); stars are unreliable and date-sensitive — treat as indicative only.
+- [推断] The controller is `OpenAI(temperature=0)` from `langchain==0.0.101`, i.e. a completion-style model chosen by that old LangChain default; whether that model is still served by OpenAI, and so whether the chat works at all without a code change, was not tested.
+- [未验证] The README's Quick Start clones `microsoft/TaskMatrix.git` and then runs `cd visual-chatgpt`, which does not match the cloned folder name; follow the intent, not the literal commands.
 - **License:** the repo's `LICENSE.txt` is an MIT License (Copyright 2023 Microsoft) — **verified** by reading the file. Note that GitHub's API reports the license as `NOASSERTION` / "Other" (no SPDX auto-match), so tooling may show it as unlicensed; the file itself is MIT.
-- [推断] The repo is **not** formally `archived` on GitHub, but with no commits since 2024-01-06 it is abandoned in practice — "abandoned" here is inferred from commit history, not a declared project status.
-- [未验证] The exact tool roster (~20 visual foundation models), the controller model family (`gpt-3.5`-era), and the LangChain-based scaffold are paraphrased from the README and project history; the precise set and versions should be read off the current tree before relying on them.
-- [未验证] Dependency staleness / install breakage on current CUDA/PyTorch is inferred from the 2024-01 freeze and 2023-era pins, not from a fresh install attempt here — verify by trying a clean setup if you must run it.
+- [推断] The repo is **not** formally `archived` on GitHub, but with no commits since 2023-06-29 it is abandoned in practice — "abandoned" here is inferred from commit history, not a declared project status.
+- [未验证] The tool roster (~20 visual foundation models; the README's GPU table lists 21 entries and `visual_chatgpt.py` defines a few more, e.g. Text2Box, Segmenting, Inpainting) was counted from the 2026-10-08 tree; which of them still load against current `diffusers`/`transformers` was not tested.
+- [未验证] Dependency staleness / install breakage on current CUDA/PyTorch is inferred from the 2023-06 freeze and 2023-era pins, not from a fresh install attempt here — verify by trying a clean setup if you must run it.

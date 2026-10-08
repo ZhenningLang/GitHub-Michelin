@@ -6,17 +6,17 @@ category: ops-infra
 tags: [password-manager, bitwarden, self-hosted, rust, security, 2fa]
 language: Rust
 license: AGPL-3.0
-maturity: active, ~63k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: 1.37.4 (2026-10-05), active, ~68.7k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-06-05T19:52:52Z
+  pushed_at: 2026-10-07T21:41:03Z
   default_branch: main
-  default_branch_sha: d6a3d539ed13352085ca7dfa63c49017d86c419b
+  default_branch_sha: df2cd3c8693782eeedfd1f70318f6f14033213a8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:14:32Z
+  computed_at: 2026-10-08T08:18:48Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.5
-        qualifying_issues: 29
+        median_ttfr_hours: 0.7
+        qualifying_issues: 25
         band: relaxed_solo
         window_offset_days: 7
         source: issue
@@ -47,7 +47,7 @@ health:
         registry: crates.io
         canonical_package: vaultwarden
         dependent_repos_count: 0
-        downloads_last_month: 2832
+        downloads_last_month: 2839
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3139
-        last_commit_age_days: 4
+        repo_age_days: 3154
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 14
-        top1_share: 0.353
-        top3_share: 0.705
+        active_maintainers_12mo: 26
+        top1_share: 0.303
+        top3_share: 0.63
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,62 +77,88 @@ health:
 
 # Vaultwarden
 
-一款用 Rust 编写的非官方 Bitwarden 兼容服务器，专为自托管场景设计——在官方资源占用较重的服务端不太理想时，它是更轻量的替代方案。
+你想让家人或小团队都用 Bitwarden 的应用，但密码库要放在自己的服务器上——而官方自托管版是一摞 .NET 容器加一个 SQL Server 数据库，树莓派和 5 美元 VPS 都扛不动，组织功能还要付费许可证。Vaultwarden 用一个小小的 Rust 进程加 SQLite 重写了 Bitwarden 的服务端，官方应用不用改就能和它同步。
 
 ![Vaultwarden — 健康度雷达](../../../assets/health/vaultwarden.zh.svg)
 
 ## 何时使用
 
-你是一位注重隐私的个人或小型团队，需要密码管理器却不想把凭据交给不可控的云端服务。你选 Vaultwarden 而不选官方 Bitwarden 云端，是因为你需要把后端跑在自己的硬件上、自己的防火墙后，完全掌控数据——而且官方服务端所需的 Microsoft SQL Server 和 .NET 栈对你的家庭服务器或小型 VPS 来说太重。你选它而不选 KeePassXC，是因为你想要使用官方 Bitwarden 客户端（桌面端、移动端、浏览器扩展）的便利，包括原生同步、Web 保险库和移动应用——而非仅一个本地数据库文件。你选它而不选 Passbolt，是因为你需要功能完整的个人和家庭密码管理器，而非仅一个聚焦团队共享的工具。你通过 Docker 或编译 Rust 二进制安装 Vaultwarden，把 Bitwarden 客户端指向它，就能获得几乎完整的功能集——个人保险库、组织、集合、Send、附件、2FA（TOTP、FIDO2、YubiKey）以及管理员密码重置——而无需重型基础设施。
+你有一台家用服务器或一台小 VPS，全家的密码也是你张罗的。你喜欢 Bitwarden 的应用——浏览器扩展、手机自动填充、桌面端——但不喜欢全家的密码库放在别人的服务器上；官方自托管版的容器要吃掉好几 GB 内存，想共享一个“家庭”集合还得先导入许可证文件。你起一个挂了数据卷的 `vaultwarden/server` 容器，放到你已有的反向代理后面，把每个 Bitwarden 应用切到“自托管”并填上你的网址。共享组织、集合、Send、紧急访问、两步验证都不需要许可证，整个服务空闲时只占几十 MB。
+
+和官方服务端比，决定性的取舍是：占用小、功能不设门槛，对上厂商兜底。Vaultwarden 是非官方的重新实现，你放弃了 Bitwarden 的支持、审计和新版客户端首日兼容，换来一个哪儿都能跑的服务端。和 KeePassXC 比，你选的是带同步的客户端—服务端密码库，而不是一个要自己想办法同步的文件。
+
+## 怎么用起来
+
+Bitwarden 应用不在乎对面是谁家的服务器，只要说的是同一套 HTTP API。Vaultwarden 就是用 Rust（基于 Rocket Web 框架）从头实现的这套 API，外加一份打了小补丁、随容器分发的 Bitwarden 网页版密码库。加密发生在应用里：每个条目上传前都用由主密码派生的密钥加密，所以服务器保存和同步的是它自己读不懂的密文——默认存在 `/data` 下的 SQLite 里，设置 `DATABASE_URL` 也可以用 MySQL 或 PostgreSQL。**API、网页版密码库、组织、两步验证校验、经 WebSocket 的实时同步和管理页面由 Vaultwarden 负责；HTTPS、备份、升级，以及（需要的话）SMTP 和移动端推送由你负责。**网页版密码库只能在 HTTPS 下工作，因为它依赖的 Web Crypto API 浏览器只在安全页面里开放。移动端推送通知要经 Bitwarden 自己的推送中继，为此你得向 Bitwarden 申请一个安装 ID 和密钥。
+
+![vaultwarden — 主干用户故事](../../../assets/flow/vaultwarden.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/vaultwarden.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：跑起容器，传入对外网址并挂载数据卷 — `--env DOMAIN="https://vw.domain.tld"`
+2. **你**：前面加一层 HTTPS 反向代理（没有它网页版密码库不工作）
+3. **Vaultwarden**：一个进程同时提供 Bitwarden 客户端 API 和自带的网页版密码库 — 组件：`vaultwarden 服务`
+4. **你**：注册账号，把每个官方 Bitwarden 应用指向你的域名
+5. **Vaultwarden**：只保存应用上传的密文，并同步到你所有设备 — 组件：`/data 下的 SQLite`
+
+**价值**：各端都用官方 Bitwarden 应用，服务器、数据和组织功能都在你自己的小机器上
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- 如果你需要官方 Bitwarden 支持、SLA 或合规认证，请用官方 Bitwarden 云端或自托管企业版，而不用 Vaultwarden，因为 Vaultwarden 是非官方社区实现，没有厂商支持合同、保障安全审计或企业合规路线图。
-- 如果你需要企业级功能如 SSO（SAML 2.0 / OIDC）、SCIM 或大规模事件日志，请用官方 Bitwarden 企业版，而不用 Vaultwarden，因为 Vaultwarden 虽然实现了许多组织功能，但企业 SSO 和高级目录集成相比官方产品仍有缺口。
-- 如果你不愿自托管和保护服务器，请用官方 Bitwarden 云服务或 1Password，而不用 Vaultwarden，因为 Vaultwarden 把运维责任放在你身上：TLS 终止、备份、更新和主机加固。
-- 如果你需要 FIPS 验证或正式审计的密码保险库，请用官方 Bitwarden 或 1Password，而不用 Vaultwarden，因为 Vaultwarden 是开源社区软件，没有正式认证，其安全模型取决于你自己的加固。
-- 如果你想避开 AGPL-3.0 的 copyleft，请用官方 Bitwarden 云服务或 KeePassXC，而不用 Vaultwarden，因为 AGPL-3.0 对某些商业部署可能带来顾虑，具体取决于你的法律解读。
+- **你没法及时升级服务端**——Bitwarden 应用会自动更新，API 跟着变：Vaultwarden 1.37.0（2026-07-24）是 2026.7.0 及以后客户端的必需版本，同一版还修了九个中危安全通告。如果没人会在客户端或安全更新发布后几天内升级容器，就用官方 Bitwarden 云服务，服务端由他们跟进。
+- **需要厂商支持、审计或合规文件**——Vaultwarden 与 Bitwarden 公司无关，README 明说出了问题不要去找 Bitwarden 的支持渠道。要合同、第三方审计和认证，用官方 [Bitwarden server](https://github.com/bitwarden/server)（未收录）配许可证自托管，或者用 Bitwarden 的云服务。
+- **需要 SAML 单点登录或 SCIM 用户同步**——SSO 从 1.35.0 开始支持，但只走 OpenID Connect；README 的功能列表里既没有 SAML 也没有 SCIM。靠 SAML/SCIM 管企业身份的，用官方 Bitwarden 企业版。[推断]
+- **密码库停机不可接受**——默认是单进程加本地数据库，没有内置集群或故障切换；应用手里有离线副本，但服务挂掉期间谁都存不了修改。用 Bitwarden 云服务，或者把官方服务端放在你已经做了高可用的基础设施上。
+- **压根不想要服务器**——用 [KeePassXC](https://github.com/keepassxreboot/keepassxc)（未收录）：一个本地加密数据库文件，用你现有的同步方式同步，没有需要加固的网络服务。
+- **主要需求是团队按条目权限共享凭据**——用 [Passbolt](https://github.com/passbolt/passbolt_api)（未收录），它围绕成员之间基于 OpenPGP 的共享设计，而不是个人密码库。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| 官方 Bitwarden | 未收录 | 需要轻量、非官方自托管密码管理器且兼容 Bitwarden 客户端时选 Vaultwarden；需要上游支持、SSO、合规和更大团队时，再选官方 Bitwarden。 | 官方支持、SSO、合规、更大团队——但自托管版更重（MSSQL、.NET），且免费层仅限云端。 |
-| KeePassXC | 未收录 | 需要自托管、基于服务器的密码管理器且兼容官方 Bitwarden 客户端时选 Vaultwarden；需要完全离线、本地优先的密码数据库且无需任何服务器时，再选 KeePassXC。 | 无需服务器，但没有原生同步、没有 Web 保险库、没有官方移动客户端——架构完全不同。 |
-| Passbolt | 未收录 | 需要功能完整的个人和团队密码管理器且兼容 Bitwarden 客户端时选 Vaultwarden；需要开源团队密码管理器且聚焦协作与访问控制时，再选 Passbolt。 | 专为团队共享设计，内置访问控制；客户端生态不如 Bitwarden 成熟。 |
-| 1Password / LastPass | 未收录 | 需要自托管、开源密码管理器且完全掌控数据时选 Vaultwarden；需要专有云端密码管理器且体验 polished 和企业支持时，再选 1Password 或 LastPass。 | 闭源、订阅制、依赖云端；便利与可控之间的权衡。 |
+| [Bitwarden server](https://github.com/bitwarden/server) | 未收录 | 需要厂商支持、审计、SAML/SCIM 和新客户端当天兼容，就跑官方服务端（或用云服务）；更看重一个轻量、组织功能不设门槛的自托管服务端而非厂商兜底，选 Vaultwarden。 | 官方、有审计、有支持；部署是更重的多容器 .NET，付费功能靠许可证文件解锁。核心 AGPL-3.0，另有源码可见的 Bitwarden 许可模块。 |
+| [KeePassXC](https://github.com/keepassxreboot/keepassxc) | 未收录 | 一个人用、不想加固任何服务器，选 KeePassXC；几个人需要从同一个服务获得实时同步、共享和手机自动填充，选 Vaultwarden。 | 没有网络攻击面，也没有要追的升级；同步、共享和手机端交给第三方工具和文件同步。 |
+| [Passbolt](https://github.com/passbolt/passbolt_api) | 未收录 | 团队的主要需求是按条目权限共享凭据，选 Passbolt；个人和家庭密码库、顺带共享几个集合，选 Vaultwarden。 | 以团队为先的 OpenPGP 共享模型，AGPL-3.0，PHP 加数据库；终端用户应用比 Bitwarden 生态少，也没那么打磨。 |
+| 1Password | 非仓库 | 想要一个有支持、不用自己管服务器的托管闭源产品，选 1Password；要求服务器和数据都归自己，选 Vaultwarden。 | 应用精致、厂商支持，按订阅付费；密码库在厂商云上，代码无法审查。 |
 
 ## 技术栈
 
-- **Rust** —— 主要实现语言，使用 Rocket Web 框架。
-- **数据库** —— SQLite（默认）、PostgreSQL 或 MySQL，通过 Diesel ORM。
-- **Web 服务器** —— 由 Rocket 内置 HTTP 服务器；通常前置反向代理（Nginx、Traefik、Caddy）处理 TLS。
-- **容器镜像** —— 官方 Docker 镜像发布于 Docker Hub 和 GitHub Container Registry。
+- **Rust**——Rocket 0.5 Web 框架，带 WebSocket 支持（`rocket_ws`），Diesel ORM，管理令牌用 Argon2 哈希。
+- **数据库**——SQLite（默认，`sqlite://data/db.sqlite3`），也可经 `DATABASE_URL` 用 MySQL/MariaDB 或 PostgreSQL。
+- **认证**——TOTP、邮件验证码、FIDO2/WebAuthn（`webauthn-rs`）、YubiKey OTP、Duo；OpenID Connect 单点登录（`openidconnect`）。
+- **存储**——附件和 Send 经 OpenDAL 存本地文件系统；1.37.0 起支持 S3 参数。
+- **网页版密码库**——Bitwarden 的网页客户端，在独立仓库 `bw_web_builds` 里打小补丁后重新构建，打进镜像。
 
 ## 依赖
 
-- **运行时：** 一台服务器（VPS、家庭服务器或容器主机），安装 Docker 或 Rust 构建环境。
-- **反向代理：** 强烈建议用于 TLS 终止（Let's Encrypt 或自有证书）。
-- **SMTP 服务器：** 可选，用于邮件 2FA、管理员密码重置和邀请邮件。
-- **备份方案：** 你必须自行安排数据库和附件备份；Vaultwarden 不包含自动备份。
-- **存储：** 磁盘空间用于 SQLite/PostgreSQL 数据库和文件附件。
+- **运行环境**：Docker/Podman（镜像发布在 ghcr.io、docker.io 和 quay.io）或自行编译的二进制；任意一台小 Linux 主机都行，ARM 开发板也可以。
+- **HTTPS**：反向代理或 Rocket 自带的 TLS——网页版密码库必需。
+- **持久化存储**：`/data` 卷（数据库、附件和服务器密钥）；可选外部 MySQL/PostgreSQL。
+- **可选**：SMTP（邀请、邮件两步验证和通知）；向 Bitwarden 申请的安装 ID 和密钥，用于经其中继开启移动端推送。
 
 ## 运维难度
 
-**低到中等。** 运行官方 Docker 镜像只需一条 docker run 或 docker compose 命令。中等难度来自*安全地*运行它：配置 TLS、设置自动备份、保持镜像更新并加固主机。没有内置高可用模式、集群或自动故障转移——它是一个单进程 Rust 应用。对个人或小型团队部署而言负担适中；对大型组织则需要自己叠加编排层。
+**低到中**。跑起来只要一条 `docker run`，跑得安全才是功夫：用户都注册好后关掉开放注册（`SIGNUPS_ALLOWED` 默认是 true，谁能访问到网址谁就能注册）；用 Argon2 哈希过的 `ADMIN_TOKEN` 保护 `/admin` 页面，或者干脆不启用；定期备份 `/data`（数据库加附件）；跟上版本——上面说的客户端兼容和安全修复意味着“装完就不管”才是最大的运维风险。个人或家庭实例每月花几分钟；公司实例要拿出和任何对公网的认证服务一样的打补丁纪律。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 9 周有提交；最后提交距今 4 天。
-- **响应速度**：Grade A——中位首次响应时间 0.5 小时，基于 29 个 qualifying issues/PRs。
-- **采用广度**：Grade D——crates.io 上月下载量 2,832（包名：vaultwarden）。
-- **长青度**：Grade A——仓库已创建 3139 天。
-- **治理集中度**：Grade A——前三贡献者占比 70.5%（过去 12 个月内 14 位活跃维护者）。
-- **许可风险**：Grade D——AGPL-3.0 许可证。
+
+- **维护活跃度——活跃，发版节奏稳定**。维护活跃度 Grade A：最近 13 周中 10 周有提交；从 1.37.0（2026-07-24）到 1.37.4（2026-10-05）连发五个版本。
+- **响应速度**。响应速度 Grade A：基于 25 个 qualifying issues/PRs，中位首次响应时间 0.7 小时。
+- **治理——个人仓库，活跃核心不大**。治理集中度 Grade A：过去 12 个月 26 位活跃维护者，第一贡献者占比 30.3%，前三贡献者占比 63%。仓库挂在创始人的个人账号（`dani-garcia`）下，但 README 说方向由维护者们共同决定，最近的版本由几位常客（`BlackDex`、`Timshel`、`stefan0xC`）主导。按 README 的说法，有一位活跃维护者受雇于 Bitwarden，用业余时间贡献。
+- **年龄与 Lindy**。长青度 Grade A：创建于 2018-02（原名 bitwarden_rs，2021 年改名），已 3154 天，仍每月发版——对自托管服务来说是很强的 Lindy 先验。
+- **采用度——很高，但不在评分器看的地方**。采用广度 Grade D 反映的是 crates.io（上月下载 2,839 次，没有依赖它的仓库），而没人这样安装它；真实使用量在三个镜像仓库的容器拉取里。GitHub 星标约 6.87 万（2026-10）。
+- **风险信号**。许可证风险 Grade D：AGPL-3.0，没有改许可证的历史。结构性风险在于依赖 Bitwarden：Bitwarden 客户端的变化决定了你的升级节奏，其商标也已经逼它在 2021 年改过一次名。
+
 ## 存疑（未验证）
 
-- [未验证] 仓库事实，截至 2026-07-01 经 GitHub API：2018-02-17 创建、最后推送 2026-06-05、未归档、约 63.2k star、约 3.0k fork、AGPL-3.0、语言报告为 Rust、owner 类型为 User。
-- [未验证] 「几乎完整实现 Bitwarden 客户端 API」的声明及具体功能列表（个人保险库、Send、附件、组织、2FA 方式等）来自 README；与官方服务端的实际功能对等性未经独立验证。
-- [未验证] Docker 镜像拉取数和 ghcr.io 统计来自 README 徽章；可能已过时或仅为近似值。
-- [推断] bus factor 评估（单人维护）基于 GitHub 贡献者图表和合并历史，而非正式治理审计。
-- [未验证] 企业功能缺口（SSO、SCIM、高级事件日志）是从 README 功能列表和 Bitwarden 企业版的常识推断；请对照自身需求验证。
-- [推断] Rust 实现的安全性是社区信任假设；项目未声称进行正式安全审计或认证。
+- [未验证] 内存占用（“几十 MB”）和官方栈的资源需求是自托管实践中的常见数字，本页没有实测。
+- [推断] 缺少 SAML/SCIM 是根据 README 功能列表和更新日志里没有它们推断的（OIDC 单点登录自 1.35.0 起已有）；排除前请查 wiki。
+- [未验证] 1.37.0 的九个安全通告在发布时尚未公开、等待分配 CVE；其可利用性没有评估。
+- [未验证] 官方 Bitwarden 服务端更轻量的单容器部署能把占用差距缩小多少，本页没有重新核实。
+- [推断] “真实使用量在容器拉取里”依据的是 README 的镜像仓库徽章和文档，不是今天拉取的数字。
+- [未验证] 服务端停机期间应用仍有离线副本，取决于 Bitwarden 客户端的行为，不由 Vaultwarden 控制。

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Read Frog does", "zh": "Read Frog 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension from the Chrome, Edge or Firefox store", "zh": "从 Chrome、Edge 或 Firefox 商店装上扩展"},
+    {"lane": "you", "en": "Set your target language and level; optionally add an AI provider key", "zh": "设好目标语言和水平，按需加一个 AI 服务商 key", "component": {"en": "options page", "zh": "设置页"}},
+    {"lane": "you", "en": "On a foreign-language page, click the floating button", "zh": "打开外文网页，点一下悬浮按钮", "component": {"en": "floating button", "zh": "悬浮按钮"}},
+    {"lane": "them", "en": "Picks the page's paragraphs and queues them in batches to the chosen provider", "zh": "挑出页面段落，分批排队发给选定的服务商", "component": {"en": "request + batch queue", "zh": "请求与批处理队列"}},
+    {"lane": "them", "en": "Shows each translation under its original paragraph (bilingual mode)", "zh": "把译文显示在每段原文下方（双语模式）"}
+  ],
+  "value": {"en": "You read the original with a translation beside it, and can select any phrase to translate, explain or hear it", "zh": "对照着原文读译文，遇到不懂的词句还能划选翻译、讲解或朗读"},
+  "sources": [
+    "https://github.com/mengxi-ream/read-frog#download (Chrome / Edge / Firefox store links)",
+    "https://github.com/mengxi-ream/read-frog#-bilingual--translation-only and #-batch-requests and #-selection-translation (bilingual mode, batching, Translate / Explain / Speak toolbar)",
+    "https://github.com/mengxi-ream/read-frog/blob/main/src/utils/constants/config.ts (DEFAULT_CONFIG: language.level, pageTranslation.providerId = Microsoft, mode \"bilingual\", requestQueueConfig, batchQueueConfig, floatingButton.clickAction \"translate\")"
+  ]
+}

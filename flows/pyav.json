@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "PyAV + FFmpeg libs do", "zh": "PyAV + FFmpeg 库做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the binary wheel; FFmpeg is bundled inside it", "zh": "装二进制 wheel，FFmpeg 已打包在里面", "code": "pip install av"},
+    {"lane": "you", "en": "Open the media file and ask for the frames of one stream", "zh": "打开媒体文件，要某一路流的帧", "code": "av.open(path) · container.decode(video=0)"},
+    {"lane": "them", "en": "Demuxes the container and decodes each packet in-process with libavcodec", "zh": "在进程内拆封装，用 libavcodec 逐个包解码", "component": {"en": "Cython extension", "zh": "Cython 扩展模块"}},
+    {"lane": "you", "en": "Ask each decoded frame for an array in the pixel format you want", "zh": "让每一帧按你要的像素格式变成数组", "code": "frame.to_ndarray(format=\"rgb24\")"},
+    {"lane": "them", "en": "Converts the pixels with libswscale and hands back a NumPy array", "zh": "用 libswscale 转像素格式，交回 NumPy 数组"}
+  ],
+  "value": {"en": "FFmpeg's codec coverage, one decoded frame at a time, inside your Python process — no subprocess, no pipe parsing", "zh": "在 Python 进程里一帧一帧拿到 FFmpeg 能解的任何格式，不起子进程、不解析管道"},
+  "sources": [
+    "https://github.com/PyAV-Org/PyAV README (Installation: pip install av, wheels for Linux/macOS/Windows with FFmpeg bundled; requires Python 3.12+)",
+    "https://github.com/PyAV-Org/PyAV/blob/master/examples/numpy/barcode.py (av.open, container.decode(video=0), frame.to_ndarray(format=\"rgb24\"))",
+    "https://github.com/PyAV-Org/PyAV/blob/master/setup.py (cythonize over av/*.py extension modules)"
+  ]
+}

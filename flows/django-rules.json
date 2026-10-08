@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "django-rules does", "zh": "django-rules 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and add its object-permission backend ahead of Django's ModelBackend", "zh": "装好它，把它的对象权限后端加在 ModelBackend 前面", "code": "rules.permissions.ObjectPermissionBackend", "component": {"en": "auth backend", "zh": "认证后端"}},
+    {"lane": "you", "en": "Write predicates and bind their combination to a permission name", "zh": "写判断函数，组合后绑定到一个权限名", "code": "rules.add_perm('books.change_book', is_book_author | is_editor)"},
+    {"lane": "you", "en": "Guard a view or template with that permission name and the object", "zh": "在视图或模板上用这个权限名加对象做守卫", "code": "@permission_required · {% has_perm %}"},
+    {"lane": "them", "en": "On each check, Django asks its backend, which looks up the rule for that name", "zh": "每次检查时 Django 询问它的后端，后端按名字找到规则"},
+    {"lane": "them", "en": "Runs the predicates on user and object, short-circuiting, and returns allow or deny", "zh": "拿用户和对象跑判断函数，短路求值，返回放行或拒绝"}
+  ],
+  "value": {"en": "Per-object authorization lives in named, testable functions — no permission rows to store or sync", "zh": "按对象的授权变成有名字、可测试的函数，不用存也不用同步权限行"},
+  "sources": [
+    "https://github.com/dfunckt/django-rules#configuring-django (INSTALLED_APPS, rules.permissions.ObjectPermissionBackend)",
+    "https://github.com/dfunckt/django-rules#permissions (rules.add_perm('books.change_book', is_book_author | is_editor), has_perm asks each backend)",
+    "https://github.com/dfunckt/django-rules#combining-predicates (& and | short-circuit)",
+    "https://github.com/dfunckt/django-rules#permissions-in-views (@permission_required) and #permissions-and-rules-in-templates ({% has_perm %})"
+  ]
+}

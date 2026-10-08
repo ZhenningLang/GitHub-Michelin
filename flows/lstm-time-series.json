@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "The script does", "zh": "脚本做的"},
+  "steps": [
+    {"lane": "you", "en": "Set up an old Python 3.5 + TensorFlow 1 environment with the pinned requirements", "zh": "搭老版 Python 3.5 + TF1 环境，装锁定依赖", "code": "tensorflow-gpu==1.10.0 · keras==2.2.2"},
+    {"lane": "you", "en": "Pick the CSV, columns, window length, layers and epochs", "zh": "选好 CSV、列、窗口长度、网络层和训练轮数", "code": "config.json"},
+    {"lane": "you", "en": "Run the entry script", "zh": "运行入口脚本", "code": "run.py"},
+    {"lane": "them", "en": "Cuts the series into fixed-length windows and rescales each one relative to its first value", "zh": "把序列切成定长窗口，每个窗口按首个值做相对缩放"},
+    {"lane": "them", "en": "Builds the stacked LSTM described in the config, trains it and saves the model", "zh": "按配置搭出多层 LSTM，训练并保存模型"},
+    {"lane": "them", "en": "Predicts multi-step sequences on the held-out data and plots them against the real series", "zh": "在留出的数据上做多步预测，并和真实序列画在一起"}
+  ],
+  "value": {"en": "You watch windowing, normalisation and LSTM sequence prediction work end to end, in code short enough to read alongside the article", "zh": "在一份能对照文章读完的短代码里，亲眼看到切窗、归一化和 LSTM 序列预测怎么跑通"},
+  "sources": [
+    "https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction#requirements (Python 3.5.x, TensorFlow 1.10.0, Keras 2.2.2) + requirements.txt (tensorflow-gpu==1.10.0, keras==2.2.2)",
+    "https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/config.json (filename, columns, sequence_length 50, train_test_split 0.85, epochs, layers)",
+    "https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/run.py (main: DataLoader, build_model, train/train_generator, predict_sequences_multiple, plot_results_multiple)",
+    "https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction/blob/master/core/data_processor.py (normalise_windows: p / window[0] - 1)"
+  ]
+}

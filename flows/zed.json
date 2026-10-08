@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Zed does",
+    "zh": "Zed 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the native desktop app for your OS",
+      "zh": "按系统装上原生桌面应用",
+      "code": "brew install --cask zed · winget install -e --id ZedIndustries.Zed"
+    },
+    {
+      "lane": "you",
+      "en": "Open your project folder from the terminal",
+      "zh": "在终端里打开项目目录",
+      "code": "zed ~/projects/my-app"
+    },
+    {
+      "lane": "them",
+      "en": "Downloads the matching language server the first time you open a file of that type",
+      "zh": "第一次打开某类文件时，自动下载对应的语言服务器",
+      "component": {
+        "en": "language server manager",
+        "zh": "语言服务器管理"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Parses files incrementally with Tree-sitter and draws every frame on the GPU",
+      "zh": "用 Tree-sitter 增量解析文件，每一帧都交给 GPU 绘制",
+      "component": {
+        "en": "GPUI",
+        "zh": "GPUI 界面框架"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Edit and navigate as in an IDE: go to definition, rename, read diagnostics",
+      "zh": "像在 IDE 里一样编辑和跳转：转到定义、重命名、看报错"
+    },
+    {
+      "lane": "them",
+      "en": "Answers from the language server inline, without blocking your typing",
+      "zh": "把语言服务器的结果就地显示出来，不卡你打字"
+    }
+  ],
+  "value": {
+    "en": "IDE-grade language features in a native editor that opens instantly and stays smooth on large repos",
+    "zh": "原生编辑器里就有 IDE 级的语言功能，秒开，大仓库也不卡"
+  },
+  "sources": [
+    "https://zed.dev/docs/installation (brew install --cask zed, winget install -e --id ZedIndustries.Zed, curl -f https://zed.dev/install.sh | sh)",
+    "https://github.com/zed-industries/zed/blob/main/docs/src/getting-started.md (zed ~/projects/my-app)",
+    "https://zed.dev/docs/configuring-languages (Automatic Download: Zed automatically downloads the appropriate language server)",
+    "https://github.com/zed-industries/zed README (Rust, GPUI, from the creators of Tree-sitter)"
+  ]
+}

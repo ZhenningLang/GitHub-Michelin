@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "PyMuPDF does", "zh": "PyMuPDF 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the wheel — the MuPDF C engine is bundled inside", "zh": "装 wheel，MuPDF C 引擎已打包在内", "code": "pip install pymupdf"},
+    {"lane": "you", "en": "Open the document", "zh": "打开文档", "code": "pymupdf.open(\"document.pdf\")"},
+    {"lane": "them", "en": "Parses the file in-process with MuPDF and exposes its pages", "zh": "在进程内用 MuPDF 解析文件，交出各个页面"},
+    {"lane": "you", "en": "Ask each page for text with layout metadata", "zh": "向每一页要带版式信息的文本", "code": "page.get_text(\"dict\")"},
+    {"lane": "them", "en": "Returns blocks, lines and spans with font, size and bounding box", "zh": "返回块、行、片段，附字体、字号和边框坐标"}
+  ],
+  "value": {"en": "Fast, offline extraction with exact positions — and the same object can render, redact, merge and save", "zh": "快速、离线、坐标精确的提取，同一个对象还能渲染、涂黑、合并、保存"},
+  "sources": [
+    "https://github.com/pymupdf/PyMuPDF#installation (pip install pymupdf; wheels, no mandatory dependencies)",
+    "https://github.com/pymupdf/PyMuPDF#quick-start (pymupdf.open, get_text, get_text(\"dict\") blocks/lines/spans, find_tables, get_pixmap, redaction, insert_pdf)",
+    "https://github.com/pymupdf/PyMuPDF#office-document-processing (PyMuPDF Pro, unlock key, 3-page limit)",
+    "https://pypi.org/project/PyMuPDF/ (Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License)"
+  ]
+}

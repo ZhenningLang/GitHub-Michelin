@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "ClickHouse does", "zh": "ClickHouse 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the single binary; the same file runs local mode, server and client", "zh": "下载单个二进制，本地模式、服务端、客户端都是它", "code": "curl https://clickhouse.com/ | sh"},
+    {"lane": "you", "en": "Create a table with a MergeTree engine and a primary key matching your usual filters", "zh": "建表时指定 MergeTree 引擎，主键按最常用的过滤条件排", "code": "ENGINE = MergeTree"},
+    {"lane": "you", "en": "Load data in large batches, e.g. straight from files in S3", "zh": "大批量写入，比如直接从 S3 上的文件导入", "code": "INSERT INTO nyc_taxi SELECT * FROM s3(...)"},
+    {"lane": "them", "en": "Writes each batch as an immutable, sorted, compressed part and merges parts in the background", "zh": "每批写成一个不可改、已排序、已压缩的数据块，后台再合并", "component": {"en": "MergeTree engine", "zh": "MergeTree 表引擎"}},
+    {"lane": "you", "en": "Ask aggregate questions in ordinary SQL", "zh": "用普通 SQL 提聚合类问题", "code": "SELECT ... GROUP BY"},
+    {"lane": "them", "en": "Reads only the columns the query names, skips blocks the primary key rules out, uses all cores", "zh": "只读查询用到的列，按主键跳过无关数据块，多核并行算"}
+  ],
+  "value": {"en": "Interactive aggregates over large event tables without pre-computing rollups or running a warehouse service", "zh": "大事件表上的聚合能交互式出结果，不用预先算汇总表，也不用买数仓服务"},
+  "sources": [
+    "https://github.com/ClickHouse/ClickHouse README (How To Install: curl https://clickhouse.com/ | sh)",
+    "https://github.com/ClickHouse/clickhouse-docs docs/getting-started/quick-start/oss.mdx (single binary runs clickhouse-local / server / client; CREATE TABLE ... ENGINE = MergeTree PRIMARY KEY; inserts create parts merged in the background; bulk inserts; INSERT INTO nyc_taxi SELECT * FROM s3(...))",
+    "https://github.com/ClickHouse/clickhouse-docs docs/best-practices/_snippets/_avoid_mutations.md (immutable column-oriented parts)"
+  ]
+}

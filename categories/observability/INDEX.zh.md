@@ -8,10 +8,10 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Grafana** | 当你需要在 Prometheus/Loki/Elasticsearch 等多数据源之上加一层统一看板和告警时用它——它做可视化，不做存储。 | B（5/6） | [→](grafana.zh.md) |
-| **Prometheus** | The Prometheus monitoring system and time series database. | A（6/6） | [→](prometheus.zh.md) |
-| **OpenTelemetry Collector** | OpenTelemetry Collector | A（5/6） | [→](opentelemetry-collector.zh.md) |
-| **Loki** | Like Prometheus, but for logs. | B（6/6） | [→](loki.zh.md) |
-| **Jaeger** | CNCF Jaeger, a Distributed Tracing Platform | A（6/6） | [→](jaeger.zh.md) |
+| **Prometheus** | 当你要在 Kubernetes 或已暴露 /metrics 的云原生软件上拿到每个服务的请求率、错误率、延迟直方图，并用 PromQL 设告警时用它——但本地存储是单节点的，长期保留或高可用要加 Thanos、Mimir 或 VictoriaMetrics。 | A（6/6） | [→](prometheus.zh.md) |
+| **OpenTelemetry Collector** | 当多个服务要把链路、指标、日志发往不止一个后端，并希望采样、脱敏、路由都在一份 YAML 里集中配置、而不是写进每个服务时用它——但只有一个服务、一个 OTLP 后端时，它只是多一个进程。 | A（6/6） | [→](opentelemetry-collector.zh.md) |
+| **Loki** | 当你的 Prometheus + Grafana 体系里，日志账单主要花在没人查的全文索引上，而按应用、命名空间、Pod 这类标签圈定范围的查询就够用时用它——但跨几周的全文检索要扫遍每个块，而且它是 AGPL-3.0。 | B（6/6） | [→](loki.zh.md) |
+| **Jaeger** | 当一个慢请求穿过几十个服务，你想要一个自托管、原生支持 OpenTelemetry、自带界面、由 CNCF 治理的链路追踪后端时用它——但存储数据库得你自己运维，而且 v1 二进制和 jaeger-client 库都已停止维护。 | A（6/6） | [→](jaeger.zh.md) |
 
 
 ## 对比矩阵

@@ -15,7 +15,6 @@ https://github.com/Asymptote-Labs/agent-beacon,agent-beacon,coding-agent-memory,
 https://github.com/Ataraxy-Labs/weave,weave,concurrent-editing,categories/agent-tooling/concurrent-editing/weave.md
 https://github.com/AutumnWhj/ChatGPT-wechat-bot,chatgpt-wechat-bot,wechat,categories/im-automation/wechat/chatgpt-wechat-bot.md
 https://github.com/BerriAI/litellm,litellm,api-gateway,categories/api-gateway/litellm.md
-https://github.com/Bistutu/FluentRead,fluentread,reading-tools,categories/reading-tools/fluentread.md
 https://github.com/Blinue/Magpie,magpie,image-processing,categories/media-processing/image-processing/magpie.md
 https://github.com/Bogdanp/dramatiq,dramatiq,task-queue,categories/task-queue/dramatiq.md
 https://github.com/BuilderIO/agent-native,agent-native,workflow-builders,categories/agent-frameworks/workflow-builders/agent-native.md
@@ -55,6 +54,7 @@ https://github.com/FareedKhan-dev/train-llm-from-scratch,train-llm-from-scratch,
 https://github.com/Fenng/Tech-Doc-Style-Chinese,tech-doc-style-chinese,content-production,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md
 https://github.com/FlashML-org/FreeToken,freetoken,local-runtimes,categories/llm-inference/local-runtimes/freetoken.md
 https://github.com/FlowiseAI/Flowise,flowise,workflow-builders,categories/agent-frameworks/workflow-builders/flowise.md
+https://github.com/FluentRead/FluentRead,fluentread,reading-tools,categories/reading-tools/fluentread.md
 https://github.com/FreeCAD/FreeCAD,freecad,cad,categories/cad/freecad.md
 https://github.com/FreshRSS/FreshRSS,freshrss,reading-tools,categories/reading-tools/freshrss.md
 https://github.com/Gaurav-Gosain/tuios,tuios,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md
@@ -655,7 +655,7 @@ https://github.com/openedclaude/claude-reviews-claude,claude-reviews-claude,stud
 https://github.com/openfga/openfga,openfga,auth,categories/auth/openfga.md
 https://github.com/openilink/openilink-hub,openilink-hub,im-automation,categories/im-automation/openilink-hub.md
 https://github.com/openilink/openilink-sdk-go,openilink-sdk-go,im-automation,categories/im-automation/openilink-sdk-go.md
-https://github.com/openinterpreter/open-interpreter,open-interpreter,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md
+https://github.com/openinterpreter/openinterpreter,open-interpreter,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/open-interpreter.md
 https://github.com/openresty/lua-nginx-module,lua-nginx-module,nginx-modules,categories/nginx-modules/lua-nginx-module.md
 https://github.com/openresty/lua-resty-redis,lua-resty-redis,nginx-modules,categories/nginx-modules/lua-resty-redis.md
 https://github.com/opensandbox-group/OpenSandbox,opensandbox,sandboxing,categories/sandboxing/opensandbox.md

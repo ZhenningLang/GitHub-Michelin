@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "SdPaint does",
+    "zh": "SdPaint 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run AUTOMATIC1111's WebUI with the ControlNet extension, its models, and API mode on",
+      "zh": "跑起装了 ControlNet 的 A1111 WebUI，开 API 模式",
+      "code": "--api"
+    },
+    {
+      "lane": "you",
+      "en": "Launch SdPaint",
+      "zh": "启动 SdPaint",
+      "code": "./start.sh · Start.bat"
+    },
+    {
+      "lane": "them",
+      "en": "Writes its config files and fetches the scribble/lineart ControlNet models your WebUI has",
+      "zh": "生成配置文件，从 WebUI 拉取可用的 scribble/lineart 模型",
+      "component": {
+        "en": "configs/*.json",
+        "zh": "configs/*.json"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Type a prompt and start sketching on the canvas",
+      "zh": "输入提示词，在画布上开画",
+      "code": "p"
+    },
+    {
+      "lane": "them",
+      "en": "After each stroke, sends the sketch to the WebUI API as a ControlNet input",
+      "zh": "每画一笔，就把草图作为 ControlNet 输入发给 WebUI API",
+      "code": "sdapi/v1/txt2img",
+      "component": {
+        "en": "cn_requests.py",
+        "zh": "cn_requests.py"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Replaces the preview with the generated image when it returns",
+      "zh": "生成结果一回来，就替换预览画面"
+    }
+  ],
+  "value": {
+    "en": "You compose by drawing rather than re-prompting, and the picture follows your strokes",
+    "zh": "你靠画而不是反复改提示词来构图，画面跟着笔触变"
+  },
+  "sources": [
+    "https://github.com/houseofsecrets/SdPaint README Installation TLDR (WebUI + ControlNet extension, API mode, ControlNet v1.1 models), Configuration (configs\\config.json etc., models fetched from your API), Controls (p = edit prompt) — read 2026-10-08",
+    "INSTALL_MacOS.md (COMMANDLINE_ARGS=\"--api ...\", ./start.sh); repo root Start.bat",
+    "scripts/common/cn_requests.py at default branch (POSTs to sdapi/v1/txt2img or sdapi/v1/img2img)"
+  ]
+}

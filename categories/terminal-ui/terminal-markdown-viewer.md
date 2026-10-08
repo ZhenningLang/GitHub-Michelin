@@ -6,8 +6,8 @@ category: terminal-ui
 tags: [markdown, terminal, cli, viewer, syntax-highlighting, python, ansi]
 language: Python
 license: BSD-3-Clause
-maturity: v0.x, low-activity (2026-06)
-last_verified: 2026-06-28
+maturity: v1.7.5 (PyPI, 2023-10), last commit 2023-10-06, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2024-05-15T12:23:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:28:45Z
+  computed_at: 2026-10-08T08:27:18Z
   overall: D
   overall_score: 0.67
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1087
+        last_commit_age_days: 1098
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,14 +40,14 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 161
+        homebrew_installs_90d: 154
         homebrew_tier: C
         signal_basis: homebrew
     longevity:
       grade: E
       raw:
-        repo_age_days: 4095
-        last_commit_age_days: 1087
+        repo_age_days: 4106
+        last_commit_age_days: 1098
         cohort: tool
     governance:
       grade: "?"
@@ -73,13 +73,34 @@ You're working over SSH on a headless box, or living in a tmux pane, and you wan
 
 You reach for it when the job is specifically *one-shot, read-only rendering of Markdown to a terminal*: previewing a file, glancing at a changelog, eyeballing generated docs in CI logs, or wiring it into a script as the "show this markdown nicely" step. It's a focused viewer/formatter, not an editor and not a TUI app.
 
+## How it works
+
+mdv borrows a ready-made Markdown parser (the Python-Markdown library) to turn your file into a tree of headings, paragraphs, lists, tables and code blocks — the same intermediate step a website takes before producing HTML. Instead of HTML, mdv walks that tree and prints each piece with ANSI color codes (the invisible instructions that tell a terminal "switch to bold blue"), picking colors from one of its 200-plus bundled themes and handing code blocks to Pygments for syntax highlighting. **Parsing, coloring and table layout are all mdv's job; you only choose the file and, if you like, a theme (`-t`) or a fixed width (`-c`).** It asks the `stty` tool for the terminal width and falls back to 80 columns when you pipe into it. The same module also works as a library function that returns the colored string, and it can watch a file or directory and re-render on every change, but those are side doors off the one-shot viewer.
+
+![terminal-markdown-viewer — backbone user story](../../assets/flow/terminal-markdown-viewer.svg)
+
+<!-- flow-steps:begin (generated from flows/terminal-markdown-viewer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it from PyPI — `pip install mdv`
+2. **You**: Point it at a Markdown file, or at - to read from a pipe — `mdv [OPTIONS] MDFILE`
+3. **Terminal Markdown Viewer (mdv)**: Parses the text with Python-Markdown into a tree of headings, lists, tables and code blocks
+4. **Terminal Markdown Viewer (mdv)**: Colors each element from a theme, highlights code with Pygments, fits tables to the terminal width
+5. **Terminal Markdown Viewer (mdv)**: Prints the styled document straight into the terminal
+
+**Value**: A README reads like a formatted document over SSH, with no browser or GUI app in the loop
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **You want an actively-maintained, fast-moving tool.** mdv is low-activity (last pushed 2024-05) and at a 0.x version; for a long-term dependency a more actively-maintained renderer (glow, `rich`'s Markdown, `bat`) may be the safer bet. [推断]
+- **You need a maintained tool — it is effectively unmaintained.** The last commit on `master` is from 2023-10 and the last PyPI release is 1.7.5 (2023-10), with no activity since (as of 2026-10-08). For a long-term dependency use glow or mdcat as a standalone viewer, or [Rich](rich.md)'s `Markdown` inside a Python program.
 - **You want a scrollable pager / interactive browser.** mdv renders to a stream; if you want paging, search, and file navigation inside the terminal, glow's TUI mode or piping into `less -R` plus a renderer fits better.
 - **You're already in a Python app and just need Markdown→ANSI.** `rich` renders Markdown as part of a broader styling library you may already depend on — one fewer standalone tool.
-- **You need faithful, spec-strict CommonMark/GFM rendering.** Terminal renderers approximate; complex nested Markdown, HTML-in-Markdown, or exotic extensions may render imperfectly — verify against your actual documents. [未验证]
-- **You need Windows-first support or zero Python.** It's a Python tool; a single-binary Go renderer (glow) avoids the Python runtime if that matters to your environment.
+- **You need faithful rendering of complex Markdown.** The author calls mdv "a proof of concept hack" that does well on simple structures but not complex ones, and says inline HTML "simply fails". For GitHub-flavored READMEs full of HTML badges and nested lists, use glow or mdcat.
+- **You need Windows support or zero Python.** The README says nothing was tested on Windows and the package classifiers list POSIX only; terminal width comes from the Unix `stty` tool. A single-binary Go renderer (glow) avoids both the Python runtime and that gap.
 
 ## Comparison
 
@@ -94,14 +115,14 @@ You reach for it when the job is specifically *one-shot, read-only rendering of 
 ## Tech stack
 
 - **Language:** Python (CLI entry point `mdv`); packaged via `setup.py`/`setup.cfg` and installable from PyPI.
-- **Rendering:** parses Markdown and emits ANSI-styled text — headings, themed colours, boxed/indented code, syntax highlighting, tables, lists and admonitions.
+- **Rendering:** Python-Markdown parses the source; a custom tree-processor in one module (`mdv/markdownviewer.py`) walks the resulting element tree and emits ANSI-styled text — headings, themed colours, boxed/indented code, Pygments syntax highlighting, tables (via a vendored copy of `tabulate`), lists and admonitions.
 - **Input:** file argument or stdin; theme selection and configuration options.
 - **Packaging:** a `Dockerfile` is present for a containerised run path alongside pip install.
 
 ## Dependencies
 
-- **Runtime:** Python plus a handful of pip dependencies (Markdown parsing, syntax highlighting such as Pygments, terminal styling); exact list is in the packaging metadata.
-- **Terminal:** an ANSI-capable terminal for colour/styling output.
+- **Runtime:** Python (classifiers list 2.7 and 3.6–3.12) plus two pip dependencies, `markdown` and `pygments`; `pyyaml` is an optional extra for YAML config. The README's longer list (docopt, tabulate) is outdated — the code replaces docopt and vendors tabulate.
+- **Terminal:** an ANSI-capable terminal for colour/styling output, and the `stty` command for width detection (otherwise it assumes 80 columns).
 - **No external services or datastore** — it's a local CLI that reads files/stdin and writes to the terminal.
 
 ## Ops difficulty
@@ -111,16 +132,16 @@ You reach for it when the job is specifically *one-shot, read-only rendering of 
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last pushed 2024-05; commit activity is sparse and the version line is 0.x. Reads as **low-activity / coasting** — usable but not actively developed. Not archived. [推断]
+- **Maintenance (2026-10), grade E.** Last commit on `master` 2023-10-06 and last PyPI release 1.7.5 in the same week; GitHub's 2024-05 `pushed_at` matches no commit on either branch. Three years without a commit reads as **unmaintained** — usable as-is, but nothing will be fixed. Not archived.
 - **Governance / backing.** Owned by the Axiros organization (a company), with a small contributor tail. Org ownership is a mild positive over a personal account, but activity, not ownership, is the live signal here. [推断]
-- **Age & Lindy verdict.** ~11 years old (created 2015-07); long-lived but with thin recent activity, so Lindy is **mixed** — old enough to be stable, but age alone doesn't offset the slow cadence (use age × still-active). [推断]
+- **Age & Lindy verdict.** ~11 years old (created 2015-07) but inactive since 2023, so Lindy **does not apply** — age without ongoing activity is staleness, not durability.
 - **Adoption.** ~1.9k stars; a known older entry in the terminal-Markdown niche, now competing with newer Go/Rust renderers (glow, mdcat). [未验证]
-- **Risk flags.** Low maintenance velocity is the main flag. License is BSD-3-Clause (read from the repo's LICENSE.txt; GitHub reports `NOASSERTION`). No relicense history found. [未验证]
+- **Risk flags.** Abandonment is the main flag. License is BSD 3-clause (read from the repo's `LICENSE` / `LICENSE.txt`, Axiros GmbH; GitHub reports `NOASSERTION`). No relicense history found.
 
 ## Caveats (unverified)
 
-- [未验证] GitHub's API reports the license as `NOASSERTION`; the repo's `LICENSE.txt` is a BSD 3-clause license (Axiros GmbH). Recorded as BSD-3-Clause from reading the file, not from the API badge.
-- [未验证] ~1.9k stars and a 2024-05 last-push as of 2026-06; star counts and activity dates drift — indicative only.
-- [未验证] Exact Python version floor and the precise runtime dependency list are governed by the packaging metadata and change over time; not asserting specific values.
-- [推断] "Low-activity / coasting" is inferred from the 2024-05 last-push and sparse commits, not a measured release-frequency figure.
-- [未验证] Fidelity of complex/nested Markdown (HTML-in-Markdown, exotic extensions) is an inherent terminal-renderer limitation, not a measured defect list for this tool.
+- [推断] License recorded as BSD-3-Clause from reading `LICENSE` (three clauses incl. the non-endorsement clause), not from GitHub's `NOASSERTION` badge; the repo carries two near-identical copies with different copyright years.
+- [未验证] ~1.9k stars as of 2026-10-08; star counts drift — indicative only.
+- [推断] "Unmaintained" is inferred from three years without a commit or release, not from a maintainer statement.
+- [未验证] Python 3.13+ compatibility was not tested; the classifiers stop at 3.12 and newer Python-Markdown releases could break the custom tree-processor.
+- [未验证] Rendering failures on complex Markdown are the author's own description in the README, not a measured defect list.

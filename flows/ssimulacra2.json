@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "SSIMULACRA2 does", "zh": "SSIMULACRA2 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the CLI once against Highway, lcms2, libjpeg and libpng", "zh": "装好 Highway、lcms2 等依赖，编译一次命令行工具", "code": "cmake ../src -G Ninja && ninja ssimulacra2", "component": {"en": "ssimulacra2 binary", "zh": "ssimulacra2 程序"}},
+    {"lane": "you", "en": "Encode the same source image with each codec setting you want to compare", "zh": "用每组待比较的编码参数压同一张原图"},
+    {"lane": "you", "en": "Run it with the original first and the compressed image second", "zh": "运行时原图在前、压缩图在后", "code": "ssimulacra2 original.png distorted.png"},
+    {"lane": "them", "en": "Converts both to the XYB colour space and builds SSIM, ringing and blur error maps at 6 scales", "zh": "转到 XYB 色彩空间，在 6 个尺度上算 SSIM、振铃、模糊误差图"},
+    {"lane": "them", "en": "Pools 108 error norms with tuned weights into one score, 100 meaning lossless", "zh": "按调好的权重把 108 个误差范数合成一个分数，100 为无损"}
+  ],
+  "value": {"en": "One number per encode whose anchors (90 visually lossless, 70 high, 50 medium) track human ratings, so codec settings can be ranked without a viewing panel", "zh": "每次编码一个分数，刻度（90 视觉无损、70 高、50 中）对得上人眼评分，不用观测实验也能给参数排序"},
+  "sources": [
+    "https://github.com/cloudinary/ssimulacra2 README — Building (apt install libhwy-dev liblcms2-dev libjpeg62-turbo-dev libpng-dev cmake ninja-build; cmake ../src -G Ninja; ninja ssimulacra2)",
+    "https://github.com/cloudinary/ssimulacra2 README — Usage (ssimulacra2 original.png distorted.png; score range and anchors)",
+    "https://github.com/cloudinary/ssimulacra2 README — How it works (XYB, three error maps, 6 scales, 1-norm and 4-norm, 108 weighted norms)"
+  ]
+}

@@ -6,8 +6,8 @@ category: crawling-tools
 tags: [scrapy, scrapyd, dashboard, admin-ui, scheduler, flask, python]
 language: Python
 license: MIT
-maturity: PyPI v1.2.0 (2017-09), repo stale since 2023-05, ~2.8k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: PyPI v1.2.0 (2017-09), last commit 2018-05-29, quiet since (as of 2026-10-08), ~2.8k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2023-05-04T20:44:05Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:34:18Z
+  computed_at: 2026-10-08T08:28:41Z
   overall: E
   overall_score: 0.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 3044
+        last_commit_age_days: 3054
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3905
-        last_commit_age_days: 3044
+        repo_age_days: 3916
+        last_commit_age_days: 3054
         cohort: app
     governance:
       grade: "?"
@@ -75,9 +75,31 @@ health:
 
 你在 Scrapyd 上跑一个小型抓取，受够了用 `curl` 去敲 JSON 端点来部署和调度爬虫。你想要一个浏览器看板：点一下上传项目 egg、设某个爬虫每晚按 cron 跑、看哪些作业在跑/已完成、瞄一眼统计——而不用自己写 UI。你 `pip install spiderkeeper`，把它指向你的 Scrapyd 服务器（`--server=http://localhost:6800`），就得到一个 5000 端口上的 Flask 看板，带周期调度（经 APScheduler）、作业板和 Swagger API。对一个已经在跑 Scrapyd、想要尽可能简单控制面板的单人或小团队，SpiderKeeper 是那个轻量的经典之选——前提是你接受这软件很老（见下）。
 
+## 怎么用起来
+
+SpiderKeeper 是控制面板，不是爬虫：真正跑 Scrapy 爬虫的是 Scrapyd（一个常驻进程），SpiderKeeper 只调它的 JSON 接口。**你要做**三件事：用 `--server` 指向一台或几台 Scrapyd 启动 SpiderKeeper；上传项目 egg（把 Scrapy 项目打成可安装的 Python 包，用 `scrapyd-client` 生成）；给想定时跑的爬虫填 cron 时间。**剩下的它来做**：把 egg 转交给 Scrapyd 的 `addversion.json`，把项目、爬虫和任务历史存进一个 SQLite 文件，进程内跑一个 APScheduler（Python 的定时任务库），到点就调 Scrapyd 的 `schedule.json`——配了多台服务器时随机挑一台——另有一个后台任务把运行状态同步回来给面板显示。调度器就活在 SpiderKeeper 进程里，所以 SpiderKeeper 一停，所有周期任务都不会触发。
+
+![spiderkeeper — 主干用户故事](../../../assets/flow/spiderkeeper.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/spiderkeeper.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好它，指向已在运行的 Scrapyd 启动 — `pip install spiderkeeper · spiderkeeper --server=http://localhost:6800`
+2. **你**：在 :5000 的网页里建项目，上传爬虫 egg 包 — `scrapyd-deploy --build-egg output.egg` — 组件：`Flask 网页后台`
+3. **SpiderKeeper**：把 egg 推给 Scrapyd，并列出其中的爬虫
+4. **你**：加一个周期任务：选爬虫，填 cron 时间
+5. **SpiderKeeper**：到点就让一台 Scrapyd 启动这个爬虫 — 组件：`APScheduler 调度器`
+6. **SpiderKeeper**：回收任务状态，在面板上列出运行中和已结束的任务
+
+**价值**：Scrapyd 有了点一下就能部署、能按 cron 定时的面板，不用再 curl 它的 JSON 接口
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **别为 2026 年的新项目采用它。** 仓库代码自 2023-05 起陈旧，PyPI release 冻结在 v1.2.0（2017-09）。它钉的是 2017 年的栈（Flask 0.12、SQLAlchemy 1.1、Werkzeug 0.12），所以在现代 Python（3.11+）上安装意味着放宽 pin 的摩擦，还要背着未打补丁的传递依赖。[推断]
+- **别为 2026 年的新项目采用它。** 默认分支最后一次提交在 2018-05，PyPI release 冻结在 v1.2.0（2017-09）。它钉的是 2017 年的栈（Flask 0.12、SQLAlchemy 1.1、Werkzeug 0.12），所以在现代 Python（3.11+）上安装意味着放宽 pin 的摩擦，还要背着未打补丁的传递依赖。[推断]
 - **没有 Scrapyd 它没价值。** 它纯粹是 Scrapyd 之上的 UI——你若不跑 Scrapy/Scrapyd，它对你毫无用处。见 [Scrapyd](scrapyd.zh.md)。
 - **安全弱——别把它暴露在不受信任的网络。** 鉴权只有可选的 HTTP basic，默认 `admin`/`admin`，没有用户管理、RBAC 或 TLS。未为多租户或公网部署加固。
 - **更新的替代更能打。** Gerapy（Django+Vue、更现代、分布式管理）和 ScrapydWeb（多节点、日志解析、告警）是这个细分里更完整的后继；SpiderKeeper 是更老更简单的那个。
@@ -115,15 +137,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_data。
-- **维护（2026-06）。** 陈旧 / 大概率废弃——仓库代码自 2023-05 起未动，PyPI 自 2017-09 冻结在 v1.2.0，无 GitHub release 或 tag，约 70 个 open issue。未 archived，但没有发布节奏。[推断]
+- **维护（2026-10）。** 陈旧 / 大概率废弃——默认分支最后一次提交在 2018-05-29，PyPI 自 2017-09 冻结在 v1.2.0，无 GitHub release 或 tag，约 70 个 open issue。未 archived，但没有发布节奏。[推断]
 - **治理 / bus factor。** bus factor 为 **1**：`DormyMo` 约 93 次提交，其余每个贡献者 1–3 次。单维护者 User 账号，无组织延续性。
-- **年龄 × Lindy。** 自 2016 起存在但沉默约 3 年（且包沉默约 9 年）——不过 Lindy，后者要求又老**又**活；一个无人维护的工具面对演进中的 Scrapy/Python 栈只会腐烂。[推断]
+- **年龄 × Lindy。** 自 2016 起存在，但约 8 年没有提交（且包沉默约 9 年）——不过 Lindy，后者要求又老**又**活；一个无人维护的工具面对演进中的 Scrapy/Python 栈只会腐烂。[推断]
 - **采用度。** 约 2.8k star 反映它作为最简单 Scrapyd 看板的真实过往热度，但势头已转向 Gerapy/ScrapydWeb。厂商 demo homepage 大概率已下线。[未验证]
 - **风险标记。** 陈旧的依赖底线、默认凭据的弱鉴权、单一维护者，以及不完整的许可证（声明了 MIT 但仓库里缺许可证文件）。[推断]
 
 ## 存疑（未验证）
 
 - [推断] 许可证是*声明*的 MIT（setup.py + README 徽章），但被引用的 `LICENSE.md` 文件在仓库里不存在，所以 MIT 授予是声明了却没随实际许可证文本交付；GitHub 元数据报告无许可证。
-- [推断] PyPI v1.2.0（2017-09）比仓库（最后 push 2023-05）陈旧得多；已发布的包在现代 Python 上不放宽 pin 就能装这一点存疑，本次未实测。
+- [推断] PyPI v1.2.0（2017-09）只比最后一次代码改动早一点（最后提交 2018-05-29；2023-05 的 `pushed_at` 不是默认分支提交）；已发布的包在现代 Python 上不放宽 pin 就能装这一点存疑，本次未实测。
 - [未验证] 厂商 demo homepage 是否还活，以及 ScrapydWeb 与 Gerapy 当前的相对陈旧度，本次未独立抓取。
 - [未验证] 截至 2026-06 约 2.8k star / 约 70 个 open issue；计数对时间敏感，仅供参考。

@@ -8,8 +8,8 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Apache Superset** | Use it when you want self-hosted SQL BI dashboards and exploration over a warehouse — not infra metrics/observability. | A (6/6) | [→](superset.md) |
-| **Evidence** | Business intelligence as code: build fast, interactive data visualizations in SQL and markdown | A (6/6) | [→](evidence.md) |
-| **Metabase** | The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart: | A (4/6) | [→](metabase.md) |
+| **Evidence** | Use it when analytics engineers want reports as Markdown plus SQL files in git that can be diffed, reviewed and edited by coding agents — but business users cannot click-build questions, and self-hosting gets only Basic Auth after a 2026 rewrite reset the codebase. | B (6/6) | [→](evidence.md) |
+| **Metabase** | Use it when non-SQL staff keep queueing simple data questions and you want a self-hosted app, up the same afternoon, where they click a table, filter and save to a shared dashboard — but SSO, row-level security and Git sync are paid; core is AGPL. | A (4/6) | [→](metabase.md) |
 
 
 ## Comparison matrix

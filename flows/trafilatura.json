@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "trafilatura does", "zh": "trafilatura 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package (Python API and CLI come together)", "zh": "安装这个包（Python API 和命令行一起装上）", "code": "pip install trafilatura", "component": {"en": "PyPI package", "zh": "PyPI 包"}},
+    {"lane": "you", "en": "Download the page, or pass in HTML you already fetched", "zh": "下载页面，或者直接交入你已抓好的 HTML", "code": "downloaded = fetch_url(url)", "component": {"en": "downloader (urllib3)", "zh": "下载器（urllib3）"}},
+    {"lane": "you", "en": "Ask for the main text in the format you want, with metadata", "zh": "按你要的格式要正文，顺带元数据", "code": "extract(downloaded, output_format=\"markdown\", with_metadata=True)"},
+    {"lane": "them", "en": "Parses the HTML and keeps the block that looks like the article, dropping nav, footers and widgets", "zh": "解析 HTML，留下最像正文的那块，丢掉导航、页脚和小组件", "component": {"en": "lxml + extraction rules", "zh": "lxml + 提取规则"}},
+    {"lane": "them", "en": "If the result is too short, retries with readability and jusText and keeps the better one", "zh": "结果太短就换 readability 和 jusText 再试，留更好的", "component": {"en": "fallback extractors", "zh": "兜底提取器"}},
+    {"lane": "them", "en": "Reads title, author and date from the page's markup and returns everything in your format", "zh": "从页面标记里读出标题、作者、日期，按你的格式一起返回", "component": {"en": "htmldate + metadata parser", "zh": "htmldate + 元数据解析"}}
+  ],
+  "value": {"en": "Clean article text plus metadata from any site, without writing a selector per domain", "zh": "任何网站都能拿到干净正文和元数据，不用按域名写选择器"},
+  "sources": [
+    "https://github.com/adbar/trafilatura README.md — opening example (from trafilatura import fetch_url, extract; downloaded = fetch_url(...); extract(downloaded, output_format=\"json\", with_metadata=True)); Features (own extractor with jusText and readability-lxml as fallbacks; metadata)",
+    "https://github.com/adbar/trafilatura docs/quickstart.rst — pip install trafilatura; extract(downloaded, output_format=\"markdown\", with_metadata=True); Fast mode note (cascade of own rules, then readability and jusText)",
+    "https://github.com/adbar/trafilatura docs/troubleshooting.rst — 'Trafilatura works on raw HTML' (no JS rendering)",
+    "https://github.com/adbar/trafilatura pyproject.toml — dependencies (lxml, urllib3, htmldate, justext, courlan), requires-python >=3.10"
+  ]
+}

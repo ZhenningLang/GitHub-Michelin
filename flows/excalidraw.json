@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Excalidraw does", "zh": "Excalidraw 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package with its React peers", "zh": "装上这个包和它要求的 React", "code": "npm install react react-dom @excalidraw/excalidraw"},
+    {"lane": "you", "en": "Render the Excalidraw component in a container with a real height; import its CSS", "zh": "在有实际高度的容器里渲染 Excalidraw 组件，并引入它的 CSS", "code": "import \"@excalidraw/excalidraw/index.css\""},
+    {"lane": "them", "en": "Runs the whole editor on a canvas: tools, arrow binding, undo, libraries, hand-drawn rendering", "zh": "在画布上跑起整个编辑器：工具、箭头吸附、撤销、素材库、手绘风渲染"},
+    {"lane": "them", "en": "Reports every edit as plain JSON elements plus app state", "zh": "每次编辑都以纯 JSON 元素加应用状态回报给你", "code": "onChange"},
+    {"lane": "you", "en": "Store that JSON in your backend and hand it back when the page reopens", "zh": "把这份 JSON 存进你的后端，页面重开时再交还给它", "code": "initialData"}
+  ],
+  "value": {"en": "A whiteboard inside your own product whose data is JSON you own, without building a canvas editor", "zh": "你的产品里多了一块白板，数据是你自己掌握的 JSON，不用自己写画布编辑器"},
+  "sources": [
+    "https://github.com/excalidraw/excalidraw/blob/master/packages/excalidraw/README.md (npm install react react-dom @excalidraw/excalidraw; import \"@excalidraw/excalidraw/index.css\"; container with non-zero height)",
+    "https://github.com/excalidraw/excalidraw/blob/master/dev-docs/docs/@excalidraw/excalidraw/api/props/props.mdx (onChange receives elements and app state; initialData)",
+    "https://github.com/excalidraw/excalidraw#features (tools, arrow binding, undo/redo, shape libraries, i18n, export)"
+  ]
+}

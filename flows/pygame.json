@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "pygame does", "zh": "pygame 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the wheel, which bundles SDL on common platforms", "zh": "装 wheel 包，常见平台上 SDL 已经打包在里面", "code": "pip install pygame"},
+    {"lane": "you", "en": "Open a window and load your images, sounds and fonts", "zh": "开一个窗口，加载图片、声音和字体", "code": "pygame.display.set_mode · pygame.image.load"},
+    {"lane": "you", "en": "Write the game loop: read events, update positions, blit, flip, tick", "zh": "写游戏循环：读事件、改位置、贴图、刷新、限帧", "code": "pygame.event.get() · pygame.display.flip() · clock.tick(60)"},
+    {"lane": "them", "en": "Collects keyboard, mouse and window events from the OS into a queue via SDL", "zh": "通过 SDL 把键盘、鼠标、窗口事件收进一个队列"},
+    {"lane": "them", "en": "Copies your surfaces into the window and shows the finished frame on flip", "zh": "把你的图层拷进窗口，flip 时显示出完整的一帧"},
+    {"lane": "them", "en": "Paces the loop to your frame rate while the mixer plays sound alongside", "zh": "把循环卡在你定的帧率上，同时由混音器放声音"}
+  ],
+  "value": {"en": "A playable window with input and sound from plain Python — no engine or editor to learn", "zh": "用纯 Python 就有了能玩的窗口、输入和声音，不用学引擎或编辑器"},
+  "sources": [
+    "https://github.com/pygame/pygame#installation (pip install pygame; python3 -m pygame.examples.aliens)",
+    "https://github.com/pygame/pygame/blob/main/examples/chimp.py (display.set_mode, image loading, event.get(), blit, display.flip(), clock.tick(60), sprite groups)",
+    "https://www.pygame.org/docs/ (display, image, event, mixer, time.Clock reference)"
+  ]
+}

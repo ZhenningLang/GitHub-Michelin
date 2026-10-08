@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "react-joyride does", "zh": "react-joyride 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the package to your React app", "zh": "把这个包加进你的 React 应用", "code": "npm i react-joyride"},
+    {"lane": "you", "en": "List the steps: which element to point at and what to say", "zh": "列出步骤：指向哪个元素、说什么", "code": "target: '.my-first-step'"},
+    {"lane": "you", "en": "Render the tour and switch it on", "zh": "渲染引导组件并打开开关", "code": "<Joyride run steps={steps} />"},
+    {"lane": "them", "en": "Waits for each target, scrolls it into view, draws the overlay, spotlight and tooltip", "zh": "等目标出现，滚进视口，画遮罩、聚光和气泡", "component": {"en": "Floating UI positioning", "zh": "Floating UI 定位"}},
+    {"lane": "them", "en": "Advances on Next/Back/Skip with focus trapped, re-tracking targets that move", "zh": "随下一步/上一步/跳过推进，锁住焦点，目标移动就重新跟踪"},
+    {"lane": "them", "en": "Reports every transition to your handler so app state can steer the tour", "zh": "每次切换都回调给你，应用状态可以反过来驱动引导"}
+  ],
+  "value": {"en": "A product tour that lives as a React component, tracking re-renders instead of fighting them", "zh": "引导成为一个 React 组件，跟着重渲染走而不是和它打架"},
+  "sources": [
+    "gilbarbara/react-joyride README.md (main, retrieved 2026-10-08): npm i react-joyride; steps array { target: '.my-first-step', content: 'This is my awesome feature!' }; <Joyride run steps={steps} />; useJoyride hook",
+    "website/src/app/docs/new-in-v3/new-in-v3.mdx (same retrieval): onEvent with typed events; Floating UI positioning; targets as selector/ref/function polled up to targetWaitTimeout; live target tracking; focus trap",
+    "website/src/app/docs/migration/migration.mdx (same retrieval): callback renamed to onEvent, run defaults to false, named export",
+    "docs/architecture.md (same retrieval): tour status and step lifecycle state machines, controlled vs uncontrolled"
+  ]
+}

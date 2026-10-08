@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "AnyProxy does",
+    "zh": "AnyProxy 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it globally, generate its root CA and trust that CA on the device",
+      "zh": "全局安装，生成根证书并在设备上信任它",
+      "code": "npm install -g anyproxy · anyproxy-ca"
+    },
+    {
+      "lane": "you",
+      "en": "Write a rule module whose hooks rewrite requests or return a mock response",
+      "zh": "写一个规则模块，在钩子里改请求或直接回假响应",
+      "code": "*beforeSendRequest(requestDetail)"
+    },
+    {
+      "lane": "you",
+      "en": "Start it with the rule (add --intercept to decrypt HTTPS), then point the client's proxy at :8001",
+      "zh": "带规则启动（解 HTTPS 加 --intercept），代理设为 :8001",
+      "code": "anyproxy --rule ./rule.js"
+    },
+    {
+      "lane": "them",
+      "en": "Decrypts intercepted HTTPS with per-host certs signed by its CA and calls your hooks",
+      "zh": "用自家 CA 签的证书解开被拦截的 HTTPS，并调用你的钩子"
+    },
+    {
+      "lane": "them",
+      "en": "Forwards the possibly rewritten request, or answers directly if a hook returned a response",
+      "zh": "转发改过的请求，或在钩子给了响应时直接回给客户端"
+    },
+    {
+      "lane": "them",
+      "en": "Lists every request and response in its web UI on port 8002",
+      "zh": "在 8002 端口的网页里列出每一条请求和响应"
+    }
+  ],
+  "value": {
+    "en": "You see and rewrite an app's real traffic with a few lines of JavaScript, without touching the app or the server",
+    "zh": "不改 App 也不改服务端，几行 JavaScript 就能看清并改写真实流量"
+  },
+  "sources": [
+    "https://github.com/alibaba/anyproxy/blob/master/docs-src/en/src_doc.md (npm install -g anyproxy; proxy on 127.0.0.1:8001; web UI http://127.0.0.1:8002; anyproxy-ca; anyproxy --intercept; anyproxy --rule ./rule.js; *beforeSendRequest(requestDetail); returning a response skips the target server)"
+  ]
+}

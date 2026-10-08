@@ -7,7 +7,7 @@ tags: [elasticsearch, python, query-dsl, orm, search, deprecated, merged]
 language: Python
 license: Apache-2.0
 maturity: v8.18.0, ARCHIVED — merged into elasticsearch-py, 3.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-04-18T13:50:16Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T15:53:42Z
+  computed_at: 2026-10-08T08:16:51Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 527
+        last_commit_age_days: 538
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -46,10 +46,10 @@ health:
         canonical_package: elasticsearch-dsl
         package_link: ecosystems_repository_url
         dependent_repos_count: 3207
-        downloads_last_month: 5280991
+        downloads_last_month: 4346505
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.21
+        cross_check_divergence: 1.03
         release_downloads: 421
         release_assets: 8
         release_tier: D
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4589
-        last_commit_age_days: 527
+        repo_age_days: 4600
+        last_commit_age_days: 538
         cohort: library
     governance:
       grade: "?"
@@ -87,6 +87,27 @@ health:
 你是 Python 工程师，在 Elasticsearch 上做搜索功能，已经厌倦了手工拼嵌套查询字典——原始客户端逼你为每个 bool/filter/aggregation 写深层嵌套的 JSON，改一个查询就得编辑 dict 字面量、编辑器还帮不上忙。用 elasticsearch-dsl，你写 `Search().query("match", title="python").filter("term", published=True)`，把文档定义成带类型字段的 Python 类，让库序列化成正确的请求体——比起裸 JSON，更接近 ORM／查询构建器的体验。
 
 但在 2026 年的新代码里你**不应安装这个包**——你应安装官方 `elasticsearch` 客户端（≥8.18）并 `import elasticsearch.dsl`，那是如今在主仓内维护的同一份代码。你只有在维护一份锁死在 `elasticsearch-dsl` 8.17 或更老的遗留代码库、需要理解或迁移它时，才会去读这个独立仓库。
+
+## 怎么用起来
+
+Elasticsearch 的查询语言是 JSON：一次搜索就是一棵层层嵌套的 `bool`、`must`、`filter` 和聚合对象树，底层客户端要你用 Python 字典把这棵树手写出来。这个 DSL 把字典换成了对象。**你做的**：新建一个 `Search`，链式调用 `.filter(...)`、`.query(...)`、`.exclude(...)`，用 `s.aggs.bucket(...)` 加聚合，最后调 `execute()`。**它做的**：按名字（`"match"`、`"term"`）找到对应的查询类型，合成一个复合 `bool` 查询，把过滤条件放进 *filter 上下文*（bool 查询里不参与打分的那一半），通过官方底层客户端发出请求，再把返回结果包一层，让你写 `hit.title` 而不是 `hit['_source']['title']`。还有一层可选的 `Document`，把一个索引映射成带类型字段的 Python 类：`Article.init()` 建映射，`article.save()` 写文档，大致相当于单个索引的 ORM。打个比方，它是造句器而不是短语手册：你一块块说出想要什么，它拼出语法正确的 JSON。这些功能现在都随 `elasticsearch` 8.18+ 一起发布，这个独立仓库是已归档的原版。
+
+![elasticsearch-dsl-py — 主干用户故事](../../../assets/flow/elasticsearch-dsl-py.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/elasticsearch-dsl-py.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装官方客户端 8.18+，从它里面导入 DSL（老代码改一下 import） — `elasticsearch_dsl → elasticsearch.dsl`
+2. **你**：基于客户端和索引新建搜索，链式追加过滤、查询和聚合 — `Search(using=client, index="my-index")`
+3. **elasticsearch-dsl-py**：按名字生成查询对象，合成一个 bool 查询，过滤条件放进 filter 上下文
+4. **你**：执行搜索 — `response = s.execute()`
+5. **elasticsearch-dsl-py**：经底层客户端发出请求，把返回包装成可按属性读取的命中和分桶
+
+**价值**：查询成了能重构的 Python 代码，而不是错一个括号就坏掉的嵌套字典
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

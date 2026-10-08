@@ -6,8 +6,8 @@ category: proxy-pool
 tags: [proxy, proxy-pool, scrapy, redis, distributed, scraping, python, self-hosted]
 language: Python
 license: MIT
-maturity: last release v0.1 (2018), repo dormant (pushed 2022-12), ~5.5k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: last release v0.1 (2018-03-11), last commit 2019-07-16, quiet since (as of 2026-10-08), ~5.5k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2022-12-26T11:50:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:21:07Z
+  computed_at: 2026-10-08T08:25:11Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2630
+        last_commit_age_days: 2641
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3298
-        last_commit_age_days: 2630
+        repo_age_days: 3309
+        last_commit_age_days: 2641
         cohort: app
     governance:
       grade: "?"
@@ -80,12 +80,33 @@ health:
 
 当规模和可用性才是真正的问题时，它是对的选择——Redis 支撑的任务路由、分布式爬虫和一个消费者客户端都很要紧——且你接受随之而来的更重基建。
 
+## 怎么用起来
+
+haipproxy 是一组共用一个 Redis（内存数据库，这里同时当任务队列和代理池用）的 Python 进程。**采集和校验归它**：基于 Scrapy（爬虫框架）的采集进程去公开网站抓免费代理列表——需要跑 JavaScript 的来源交给 Splash（一个无头渲染服务）——把 IP 推进 Redis；调度进程定时重新派活，校验进程拿每个 IP 去测你关心的具体网站，按网站分别打分，因为同一个代理可能对这个网站好用、对那个网站不行。**你负责跑起 Redis 和这些组件，然后取用**：它不提供 HTTP API——你的爬虫引入自带的 `ProxyFetcher` 客户端，按目标网站要一个校验过的代理；或者走自带的 Squid 二级代理（3128 端口）。README 自己也说要下载 release 版本，`master` 分支的代码不保证能跑。
+
+![haipproxy — 主干用户故事](../../assets/flow/haipproxy.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/haipproxy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在配置里填好 Redis 和 Splash 地址，把各组件都启动起来 — `docker-compose up` — 组件：`config/settings.py`
+2. **haipproxy**：采集器抓公开代理网站，把 IP 推进 Redis 队列 — 组件：`crawler_booter.py`
+3. **haipproxy**：调度器定时派活，校验器按目标网站逐个测 IP 并打分 — 组件：`调度器 + 校验器`
+4. **你**：在你的爬虫里，向客户端要针对目标网站校验过的代理 — `ProxyFetcher('zhihu', strategy='greedy', redis_args=args)`
+5. **haipproxy**：每次从该网站的已评分代理池里返回一个代理
+
+**价值**：大规模分布式爬取有一个会自己刷新的免费代理池，不用花钱买代理
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **小规模或单机爬取。** 对几十个请求而言，Scrapy + Redis + scrapy-splash 这套是杀鸡用牛刀；单节点池（或干脆一个付费代理）要跑的东西少得多。
 - **你跑不了 Redis（也可能跑不了 Splash）。** Redis 是任务队列和池状态的硬依赖；JS 渲染的来源还会拉进 scrapy-splash。若你运维不了这些，这不是你的工具。
 - **在免费代理上要生产可靠性。** 它池化*免费公开*代理——天生不稳；README 自己指出，因地理限制有些代理连不上 Google 这类站点。不能失败的任务请买商业代理。
-- **你需要一个在维护的依赖。** 仓库**长期休眠**——最后发布约 2018，最后 push 2022-12。你采纳并运维的实质上是冻结的、Python 2/3 时代的代码；预期要做兼容工作（见健康度）。[未验证]
+- **你需要一个在维护的依赖。** 仓库**长期休眠**——最后发布 v0.1（2018-03），默认分支最后提交 2019-07-16。你采纳并运维的实质上是冻结的、Python 2/3 时代的代码；预期要做兼容工作（见健康度）。[未验证]
 - **敏感流量。** 把凭据/私密数据经由未知收割代理转发是数据暴露风险。[推断]
 
 ## 横向对比
@@ -118,15 +139,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** **休眠。** 最后发布 v0.1 来自 2018；最后 push 2022-12，此后无活动——未在积极开发，虽未正式归档。当作冻结的、Python 2/3 过渡期代码对待。
+- **维护（截至 2026-10-08）。** **休眠。** 最后发布 v0.1 来自 2018-03；默认分支最后提交 2019-07-16（距今 2641 天；2022-12 那次 push 没有动默认分支代码），此后无活动——未在积极开发，虽未正式归档。当作冻结的、Python 2/3 过渡期代码对待。
 - **治理 / bus factor。** 一个 **Organization** 账号（SpiderClub），但活跃核心贡献者很少；org 外壳改变不了真实维护已停止这一事实。bus factor 实质上等同于一个被弃的单维护者仓库。[推断]
-- **年龄与 Lindy 判断。** 约 9 年（2017-09 创建）但**自约 2022 起休眠**⇒ Lindy *失效*：有年龄而无持续活动是弃用信号，不是耐久性。老 + 休眠是红旗，不是社会证明。
+- **年龄与 Lindy 判断。** 约 9 年（2017-09 创建）但**自 2019-07 起休眠**⇒ Lindy *失效*：有年龄而无持续活动是弃用信号，不是耐久性。老 + 休眠是红旗，不是社会证明。
 - **采用度。** 约 5.5k star、约 900 fork 反映真实的历史人气（尤其在中文爬虫圈），但在休眠仓库上这是*遗产*采用——不是它能在今天的栈上跑的证据。[未验证]
 - **风险标记。** 长期休眠 + 很可能与现代栈不兼容是头号风险，外加免费公开代理固有的不可靠/安全暴露。MIT，无 relicense 顾虑。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 5.5k star；最后发布 v0.1（2018）、最后 push 2022-12——数字对时间敏感，来自 GitHub API。
+- [未验证] 截至 2026-10-08 约 5.5k star；最后发布 v0.1（2018-03-11）、默认分支最后提交 2019-07-16、最后 push 2022-12——数字对时间敏感，来自 GitHub API。
 - [未验证] 与当前 Python/Scrapy 的兼容性此处未测试；约 2018 年代代码很可能需移植/钉死，但具体崩点未确认。
 - [未验证] 约「8 万请求/11 小时」的数字是项目 README 自己的基准，未独立复现。
 - [推断] 「org 账号但实质被弃」是从提交/发布断档推断，而非官方弃用声明；免费代理安全风险是普遍属性，并非对其来源的实测断言。

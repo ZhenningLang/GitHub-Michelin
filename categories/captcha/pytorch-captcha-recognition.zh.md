@@ -7,7 +7,7 @@ tags: [captcha, ocr, cnn, pytorch, deep-learning, fixed-length, tutorial, chines
 language: Python
 license: Apache-2.0
 maturity: no tagged releases, last push 2020-01, stale/abandoned (verified 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2020-01-09T10:47:29Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:51:19Z
+  computed_at: 2026-10-08T08:16:23Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2765
+        last_commit_age_days: 2776
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3106
-        last_commit_age_days: 2765
+        repo_age_days: 3116
+        last_commit_age_days: 2776
         cohort: library
     governance:
       grade: "?"
@@ -75,9 +75,32 @@ health:
 
 ## 何时使用
 
-你在学验证码识别是怎么回事，或者你需要为最简单的情形找一个极小、可读的基线：**定长**图中文字验证码——比如纯背景上的 4 位数字或 4 位字母数字码。你不想搭 CTC 或序列模型，只想要最朴素的做法：一个 CNN，每个字符位置一个分类头，在合成生成的验证码上端到端训练。这个仓库正是如此——它生成训练图、定义一个小 CNN、训练并预测，README 称纯数字约 99.99%、数字+字母约 96%。它是一份干净的教学脚手架，你能从头读到尾并改用，而这种定长多头设计是一种值得在动用更重的序列模型之前先学会的模式。
+你在学验证码识别是怎么回事，或者你需要为最简单的情形找一个极小、可读的基线：**定长**图中文字验证码——比如纯背景上的 4 位数字或 4 位字母数字码。你不想搭 CTC 或序列模型，只想要最朴素的做法：一个 CNN，每个字符位置一个分类头，在合成生成的验证码上端到端训练。这个仓库正是如此——它生成训练图、定义一个小 CNN、训练并预测，README 称纯数字约 99.9999%、数字+字母约 96%。它是一份干净的教学脚手架，你能从头读到尾并改用，而这种定长多头设计是一种值得在动用更重的序列模型之前先学会的模式。
 
 你把它当作**研习参考或起步模板**，而非在维护的依赖——把思路（或代码）拷进你自己的项目并现代化它。
+
+## 怎么用起来
+
+整个项目就是围绕一个窍门的五个短脚本：**训练数据自己给自己打标注**。`captcha_gen.py` 调 [captcha（lepture）](lepture-captcha.zh.md) 库随机画 4 位验证码，把答案直接写进图片文件名，于是你不用碰任何标注工具就有成千上万张带标注的样本。模型是一个小 *CNN*（卷积神经网络：一叠会自己学“哪些形状重要”的图像滤镜），最后一层输出 4 × 36 个分数：每个字符位置一段 36 个，每个可能的字符一个分。训练时把每段里正确字符的分数往上推；预测时每段取最高分，四个字拼起来就是答案。**它替你做的**：造数据、搭网络、训练/测试/预测这一圈。**你要做的**：改 `captcha_setting.py`（字符集、位数、图片尺寸），改 `captcha_gen.py` 里写死的样本数 `count` 和输出目录来分别造训练、测试、预测集，再把这份 2020 年的代码（兼容 Python 2.7、用 `torch.autograd.Variable`）移植到当前 PyTorch。`captcha_predict.py` 里按 4 段切分是写死的，换位数就得连它一起改。
+
+![pytorch-captcha-recognition — 主干用户故事](../../assets/flow/pytorch-captcha-recognition.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pytorch-captcha-recognition.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 PyTorch 和 captcha 库，在设置文件里定字符集和位数 — `pip install captcha · captcha_setting.py`
+2. **你**：运行生成脚本，造出自带标注的合成验证码 — `python captcha_gen.py`
+3. **pytorch-captcha-recognition**：把图片写进 dataset/train/，答案就编在文件名里
+4. **你**：开始训练 — `python captcha_train.py`
+5. **pytorch-captcha-recognition**：训练一个小 CNN，输出按字符位置切成若干段打分，存成 model.pkl — 组件：`captcha_cnn_model.py`
+6. **你**：对 predict 目录里的图片跑预测 — `python captcha_predict.py`
+7. **pytorch-captcha-recognition**：每段取得分最高的字符，拼出 4 位验证码打印出来
+
+**价值**：一个读得懂的端到端基线：不切字符、不手工标注，标注由生成器顺带完成
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -85,7 +108,7 @@ health:
 - **变长或困难验证码。** 定位多头设计假设字符数已知且布局简单；变长需要 CTC 或 seq2seq，而对扭曲/重叠/点选式验证码，这套方法撑不住。
 - **你想要打包好的 solver。** 这是示例/训练代码，不是可 `pip install`、带稳定 API 的库——用起来要做集成工作，且无支持。
 - **合法性 / ToS。** 与任何验证码 solver 一样，针对你不掌控的站点使用它可能违反条款或法律；本项目用于学习。
-- **你需要头条准确率落到真实验证码上。** “99.99%/96%”是在仓库*自己的合成*验证码上得到的；在真实目标的字体/噪声上，准确率会不同——别把它们当作你的预期结果引用。
+- **你需要头条准确率落到真实验证码上。** “99.9999%/96%”是在仓库*自己的合成*验证码上得到的；在真实目标的字体/噪声上，准确率会不同——别把它们当作你的预期结果引用。
 
 ## 横向对比
 
@@ -99,7 +122,7 @@ health:
 
 ## 技术栈
 
-- **框架：** PyTorch——一个小卷积网络，**每个字符位置一个分类头**（定长多输出），端到端训练。[推断]
+- **框架：** PyTorch——三个小卷积块接一层全连接，输出 `MAX_CAPTCHA × 字符集` 个分数（默认 4 × 36），按**每个字符位置一段**来读（定长多输出），用 one-hot 标注端到端训练。
 - **数据：** 用合成生成的验证码图做训练/验证（仓库含生成），而非真实站点数据集。
 - **管线：** 生成数据、训练模型、运行预测的脚本——一个极小的训练/评估/预测循环，不是服务。
 
@@ -125,7 +148,6 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 1.2k star，最后 push 2020-01；无 GitHub Releases，故不断言版本号。
-- [未验证] “纯数字 99.99% / 数字+字母 96%”是 README 在仓库*自己的合成*验证码上的说法——未经独立验证，也不代表真实站点准确率。
-- [推断] 架构（CNN、每个定长字符位置一个分类头、端到端）由项目描述推断，未对源码逐行重新核实。
+- [未验证] “纯数字 99.9999% / 数字+字母 96%”是 README 在仓库*自己的合成*验证码上的说法——未经独立验证，也不代表真实站点准确率。
 - [推断] 在当前 PyTorch 上跑它多半需要更新依赖/API；“需要现代化”是由 2020 的最后 push 日期推断，而非实测结果。
 - [推断] “废弃/冻结”由约 6 年无提交推断；仓库未被 GitHub 归档，故原则上维护者可能回归（并不暗示会）。

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "SvelteKit does",
+    "zh": "SvelteKit 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a project",
+      "zh": "生成一个项目",
+      "code": "npx sv create my-app"
+    },
+    {
+      "lane": "you",
+      "en": "Add a page in src/routes and, beside it, a load function for its data",
+      "zh": "在 src/routes 加页面，旁边写给它取数的 load 函数",
+      "code": "+page.svelte · +page.server.js"
+    },
+    {
+      "lane": "them",
+      "en": "Generates route types and server-renders the first visit, then its client router takes over",
+      "zh": "生成路由类型，首次访问服务器渲染，之后客户端路由接管"
+    },
+    {
+      "lane": "you",
+      "en": "Pick an adapter for your deployment target in the Vite config",
+      "zh": "在 Vite 配置里为部署目标选一个 adapter",
+      "code": "sveltekit({ adapter: adapter() })"
+    },
+    {
+      "lane": "them",
+      "en": "On build, compiles once, then the adapter reshapes output for Node, serverless, edge or static hosting",
+      "zh": "构建时先编译一次，再由 adapter 改造成目标平台的产物",
+      "component": {
+        "en": "adapter",
+        "zh": "adapter"
+      }
+    }
+  ],
+  "value": {
+    "en": "A server-rendered Svelte app with co-located data loading and forms that work without JavaScript, deployable anywhere an adapter exists",
+    "zh": "服务器渲染的 Svelte 应用：取数紧挨页面，表单无 JS 也能用，到处可部署"
+  },
+  "sources": [
+    "documentation/docs/10-getting-started/20-creating-a-project.md ('npx sv create my-app', 'npm run dev'; pages are Svelte components in src/routes, server-rendered first then a client-side app takes over)",
+    "documentation/docs/20-core-concepts/10-routing.md (src/routes filesystem router; +page.svelte, +layout, +server files)",
+    "documentation/docs/20-core-concepts/20-load.md (load in +page.js / +page.server.js returns the page's data prop; generated ./$types)",
+    "documentation/docs/20-core-concepts/30-form-actions.md (form actions work without client-side JavaScript; use:enhance for progressive enhancement)",
+    "documentation/docs/25-build-and-deploy/10-building-your-app.md ('vite build' usually via 'npm run build'; build then adapter stage)",
+    "documentation/docs/25-build-and-deploy/20-adapters.md (adapter set in vite.config.js as sveltekit({ adapter: adapter() }); official adapters cloudflare, netlify, node, bun, static, vercel)",
+    "@sveltejs/kit@3.0.0 release notes (2026-10-01 breaking changes: Node 22, Vite 8, TypeScript 6, $app/stores removed, $lib -> #lib)"
+  ]
+}

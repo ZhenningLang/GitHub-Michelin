@@ -3,22 +3,22 @@ name: micromark
 slug: micromark
 repo: https://github.com/micromark/micromark
 category: markdown-tools
-tags: [markdown, parser, commonmark, gfm, tokenizer, lexer, streaming, javascript, low-level]
+tags: [markdown, parser, commonmark, gfm, mdx, tokenizer, positional-info, javascript, low-level]
 language: JavaScript
 license: MIT
-maturity: v4.0.x, active, ~1k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v4.0.3 (2026-09-26; v4 API stable since 2023-06), active, ~2.2k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2025-05-10T18:46:45Z
+  pushed_at: 2026-09-26T15:53:43Z
   default_branch: main
-  default_branch_sha: 774a70c6bae6dd94486d3385dbd9a0f14550b709
+  default_branch_sha: 6577c200155e9c6b85a42b26d298f8affc348f2f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:34:37Z
+  computed_at: 2026-10-08T08:21:34Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.33
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 11
-        active_weeks_13: 1
-        carve_out: mature_library_lindy
+        last_commit_age_days: 12
+        active_weeks_13: 2
+        carve_out: null
     responsiveness:
-      grade: B
+      grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 3
+        qualifying_issues: 15
         band: default
         window_offset_days: 5
         source: pr
@@ -45,18 +45,18 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: micromark-util-character
-        dependent_repos_count: 49741
-        downloads_last_month: 233026619
+        canonical_package: micromark-util-symbol
+        dependent_repos_count: 49751
+        downloads_last_month: 291441560
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.01
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2870
-        last_commit_age_days: 11
+        repo_age_days: 2886
+        last_commit_age_days: 12
         cohort: library
     governance:
       grade: D
@@ -74,66 +74,89 @@ health:
         relicense_36mo: false
         content_license: null
 ---
-
 # micromark
 
 
-A low-level, streaming-friendly CommonMark/GFM tokenizer for JavaScript — the engine underneath the remark/unified ecosystem. It turns Markdown into a token stream, not HTML; you build the rendering layer yourself.
+You need Markdown parsed in JavaScript exactly the way the reference C parsers (`cmark`, `cmark-gfm`) do it — in a ~14 kB bundle, safe by default — or you are building a linter or editor and must know which exact characters every heading, link and emphasis came from. micromark is a small state-machine parser that accounts for every byte as a positioned token and, by default, compiles those tokens straight to HTML.
 
 
 ![micromark — health radar](../../assets/health/micromark.svg)
 
 ## When to use
 
-You're building a custom Markdown processor — maybe a linting tool, a syntax highlighter, a streaming preview pane, or a converter that emits something other than HTML (JSON, custom AST, PDF markup). You need full control over the tokenization pipeline, not a black-box `parse(src)` call. You want spec-compliant CommonMark and GFM behavior, and you care about correctness over convenience. You reach for micromark, feed it chunks of Markdown incrementally, and receive events you can route into your own rendering, transformation, or analysis layer. The unified collective uses it as the foundation for remark, so the tokenization is battle-tested and correct.
+You are in one of two seats. Either you render Markdown to HTML in a browser or edge bundle and the 100 kB-class parsers are too big, but "close enough to CommonMark" is not good enough because users paste content from GitHub and expect the same result. Or you are writing tooling — a Markdown linter, an editor with precise highlighting, a converter that needs source positions — and a parser that hands you only HTML or a lossy tree leaves you guessing where `**bold**` started. In both seats micromark fits: it is 100% CommonMark-compliant and follows the reference parsers' behavior with ±2k tests, its GFM, MDX, math, frontmatter and directive extensions are separate packages, and it is the parser underneath [remark](remark.md) and [markdownlint](markdownlint.md).
+
+Pick it over [markdown-it](markdown-it.md) when spec exactness, bundle size or byte-level positions decide it; pick markdown-it when you need many custom syntax plugins quickly. Pick it over [marked](marked.md) when content is untrusted or must match CommonMark/GFM. If you need a syntax tree to transform, you usually do not call micromark directly — use remark, which builds on it.
+
+## How it works
+
+micromark reads your Markdown as a state machine — a reader that moves through fixed states such as "inside a code fence" or "after a list marker" one character at a time — and emits concrete tokens ("events") that cover every byte with start and end positions. By default it then compiles those events directly to an HTML string, so for plain rendering it is a one-function library: `micromark(markdown)` in, HTML out. What it does for you: CommonMark parsing to the reference parsers' behavior, and safety — raw HTML and dangerous protocols such as `javascript:` are encoded or dropped unless you set `allowDangerousHtml` / `allowDangerousProtocol`. What you do: pick syntax extensions (each comes as a syntax half and an HTML half, e.g. `gfm()` + `gfmHtml()`), and, for tooling, consume the events through the mdast utilities that remark uses rather than through micromark's narrow API. A `micromark/stream` entry accepts piped input, but it buffers before finishing — some work happens as chunks arrive, the result does not.
+
+![micromark — backbone user story](../../assets/flow/micromark.svg)
+
+<!-- flow-steps:begin (generated from flows/micromark.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install micromark, plus extension packages such as micromark-extension-gfm — `npm install micromark`
+2. **You**: Call it with the syntax and HTML halves of each extension — `micromark(value, {extensions: [gfm()], htmlExtensions: [gfmHtml()]})`
+3. **micromark**: Runs its state machine over every byte, emitting positioned tokens per the reference parsers — component: `micromark-core-commonmark`
+4. **micromark**: Compiles the tokens to HTML, encoding or dropping raw HTML and dangerous protocols — component: `compiler`
+
+**Value**: HTML that matches cmark/cmark-gfm from a ~14 kB parser that is safe on untrusted input by default
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You just need to render Markdown to HTML.** micromark is a tokenizer, not a renderer. If you want `parse(src)` → HTML string, use [marked](marked.md) or markdown-it. [推断]
-- **You want an off-the-shelf Markdown toolchain with plugins.** micromark is a low-level building block. For a full AST pipeline with plugins, linting, and serialization, use [remark](remark.md) or the unified ecosystem instead.
-- **You're not comfortable building your own rendering layer.** micromark emits events/tokens; turning those into HTML or any other output format is your job. If you don't want to wire token handlers, a higher-level parser is the better fit.
-- **You need the largest plugin ecosystem for Markdown extensions.** markdown-it has a rich catalog of ready-made plugins (footnotes, containers, KaTeX, etc.); micromark's extension surface is lower-level and requires more manual wiring.
+- **You want to transform, lint or serialize Markdown.** micromark gives tokens or HTML, not a tree you can edit and write back; use [remark](remark.md), which wraps micromark with mdast trees and the unified plugin ecosystem.
+- **You need several custom syntax extensions fast.** micromark's own README says its extensions are "rather complex to write"; [markdown-it](markdown-it.md) has an easier rule API and a large catalog of ready plugins.
+- **You need true streaming of a growing document**, such as rendering an LLM reply token by token. micromark's stream "in the end" buffers the whole input; for incremental AI output look at [TanStack Markdown](tanstack-markdown.md)'s streaming extension, which tolerates half-open constructs while text accumulates.
+- **Your toolchain is CommonJS-only or runs Node < 16.** micromark is ESM only; [markdown-it](markdown-it.md) ships CJS builds.
+- **You are not in JavaScript.** In Go use [Goldmark](goldmark.md); in Rust the same authors maintain the sibling `markdown-rs` (not indexed).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [marked](marked.md) | ✅ | Choose marked when you want a fast, one-call Markdown→HTML renderer with a small API surface. | Fast, low-level Markdown→HTML parser; not spec-strict and requires output sanitization, but the right fit when you need HTML now. |
-| [markdown-it](markdown-it.md) | ✅ | Choose markdown-it when you need a strict CommonMark/GFM-compliant, pluggable Markdown→HTML parser with a rich plugin ecosystem. | CommonMark-strict, pluggable architecture with a rich plugin ecosystem; heavier API than marked, but the choice when spec conformance and plugins matter. |
-| [remark](remark.md) | ✅ | Choose remark when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown. | Full mdast AST pipeline built on top of micromark; far more powerful and far heavier — a toolchain, not a raw tokenizer. |
-| [CommonMark](commonmark.md) | ✅ | Choose CommonMark when you need the spec's reference implementation instead of the tokenizer layer remark uses. | The spec's own reference implementation; the conformance yardstick, but fewer GFM niceties and not optimized as a production tokenizer. |
-| [Pandoc](pandoc.md) | ✅ | Choose Pandoc when you need a universal document converter across dozens of formats. | Universal document converter; not a JS library, and overkill if you only need Markdown tokenization. |
-| [Goldmark](goldmark.md) | ✅ | Choose Goldmark when you need a fast, extensible Markdown parser in Go. | Fast, extensible Markdown parser in Go; not JavaScript, so choose it for Go projects, not JS/browser stacks. |
+| [remark](remark.md) | ✅ | When you need to inspect or transform Markdown as a tree (plugins, linting, MDX, Markdown output), pick remark; when you only need HTML or raw positioned tokens, pick micromark directly. | remark adds mdast trees and a large plugin ecosystem on top of micromark at the cost of more packages and a pipeline to configure. |
+| [markdown-it](markdown-it.md) | ✅ | For Markdown→HTML with lots of custom syntax, pick markdown-it; for the smallest bundle and the strictest match to cmark, pick micromark. | markdown-it extensions are easy to write and plentiful and it ships CJS; micromark is smaller and stricter but ESM-only with hard-to-write extensions. |
+| [marked](marked.md) | ✅ | For trusted content and a familiar, long-lived API, pick marked; for untrusted input or exact CommonMark/GFM output, pick micromark. | marked is not CommonMark-strict and is unsafe by default; micromark is safe by default but its option names and extension pairs take more learning. |
+| [CommonMark](commonmark.md) | ✅ | Use commonmark.js when you want the spec's own JS reference implementation and its AST; use micromark when you need GFM, MDX or math extensions and a smaller parser. | commonmark.js tracks the spec by definition but has no extension system; micromark matches it in behavior and adds extensions. |
+| markdown-rs | not indexed | In Rust (or when compiling a Rust parser to WASM), pick markdown-rs; in JS, pick micromark — they are siblings from the same authors. | Same design and extensions in Rust; using it from JS means a WASM boundary. |
+| [Goldmark](goldmark.md) | ✅ | In Go services pick Goldmark; in JS pick micromark. | Both are CommonMark-compliant with extensions; Goldmark's extension API is easier, micromark is smaller and stricter. |
 
 ## Tech stack
 
-- **Language:** JavaScript (ships as ESM and CJS; distributed on npm).
-- **Runtime targets:** Node.js and browsers (the tokenizer runs in both environments).
-- **Architecture:** Event-driven tokenizer that emits a stream of tokens/events as it parses Markdown incrementally; designed for streaming input where you may not have the full document in memory at once.
-- **Standards:** CommonMark-compliant core with GFM extensions (tables, strikethrough, autolinks, task lists, etc.) available as separate extension packages.
-- **Size:** Very small, zero runtime dependencies.
+- **Language:** JavaScript, shipping `.d.ts` TypeScript declarations; published as ESM only (`"type": "module"`), with `micromark` and `micromark/stream` entries and a `development` export condition for instrumented debug builds.
+- **Architecture:** preprocess → parse (state-machine "constructs" emitting events) → postprocess → compile to HTML; the monorepo splits this into `micromark-core-commonmark`, `micromark-factory-*` and `micromark-util-*` packages.
+- **Spec:** 100% CommonMark; extensions for GFM, MDX, directives, frontmatter and math live in separate `micromark-extension-*` packages.
+- **Testing:** ~650 CommonMark tests plus more than 1.2k extra tests checked against the reference parsers, 100% coverage, fuzzing.
 
 ## Dependencies
 
-- **Runtime:** none — micromark is dependency-free by design.
-- **Ecosystem:** sits at the base of the unified/remark ecosystem; remark and related packages consume micromark as their tokenizer.
-- **Install:** `npm install micromark` (or `micromark-util-*` / `micromark-extension-*` packages for utilities and GFM extensions).
+- **Runtime (npm):** 18 declared dependencies, mostly its own `micromark-core-commonmark`, `micromark-factory-*` and `micromark-util-*` pieces, plus `debug`, `devlop` and `decode-named-character-reference`. No services. (Earlier versions of this page said "zero dependencies"; that is wrong for the npm package.)
+- **Optional:** `micromark-extension-*` packages for GFM, MDX, math, frontmatter, directives.
+- **Install:** `npm install micromark` (Node 16+, Deno or browsers via esm.sh).
 
 ## Ops difficulty
 
-**Low.** It's a library with no runtime services to deploy. The operational burden is limited to understanding its low-level API: you must wire your own token handlers to produce useful output, and you should pin the major version since the tokenizer API is deliberately narrow but may shift across major versions. No datastore, no daemon, no infra.
+**Low.** A library with no service to run. Two operational notes from its security docs: keep `allowDangerousHtml` / `allowDangerousProtocol` off for user content, and cap input size (it suggests 500 kB) and parse in a worker you can stop, because large or adversarial inputs — thousands of unclosed links or emphasis — can exhaust memory or time.
 
 ## Health & viability
 
-- **Maintenance — active (last verified 2026-07).** The v4.0.x line is actively maintained by the unified collective; regular releases keep pace with CommonMark spec evolution and GFM updates.
-- **Governance & bus factor.** Maintained by the unified collective (Titus Wormer and contributors), not a single maintainer's free-time project. The unified ecosystem has a long track record of steady, principled maintenance across its many packages.
-- **Age & Lindy verdict — young but proven by ecosystem weight.** micromark itself is a more recent rewrite/extraction (the unified ecosystem dates back to ~2015), but it powers remark and the entire unified markdown toolchain, which gives it production-grade credibility despite a modest ~1k star count.
-- **Adoption & ecosystem.** Used as the tokenizer for remark, mdast, and the entire unified ecosystem — a significant production dependency even if the direct star count looks small. [推断]
-- **Risk flags — minimal.** MIT-licensed, no relicensing history, no open-core gating. The unified collective has a consistent governance model across its packages.
+- **Maintenance — mature and still patched.** v4.0.3 shipped 2026-09-26 with performance and correctness fixes, after a 19-month gap since v4.0.2 (2025-02); the API has been stable since v4.0.0 (2023-06). This is a finished core that gets fixes, not a feature treadmill (maintenance B).
+- **Responsiveness — fast.** Pull requests get a first response almost immediately in the scorer's window (responsiveness A, up from B).
+- **Governance — effectively one maintainer.** Titus Wormer (`wooorm`) wrote about 636 of the commits; others contribute single digits (governance D). It sits in the unified collective, funded through OpenCollective and GitHub Sponsors, so the backing is a collective but the bus factor is one person.
+- **Age & Lindy — ~8 years and still active.** Created 2018-11 and now the engine under remark and markdownlint; age × still-active is solid.
+- **Adoption — very high, mostly indirect.** Its packages see hundreds of millions of npm downloads a month (the scorer's 2026-10-08 figure for `micromark-util-symbol` is 291,441,560), almost all pulled in through remark, MDX and markdownlint; the ~2.2k stars understate this.
+- **Risk flags.** MIT, no relicensing, semver since 3.0.0.
 
 ## Caveats (unverified)
 
-- [未验证] ~1k GitHub stars as of 2026-07; star count is low because this is a low-level library, not an end-user tool — verify current count against the repo.
-- [未验证] v4.0.x active as of 2026-07; version and release cadence should be verified against the repo's latest tags.
-- [推断] "Zero runtime dependencies" is micromark's design intent; confirm against the current `package.json` for your pinned version.
-- [未验证] Streaming correctness and incremental parsing behavior for very large documents or edge-case Markdown constructs should be tested against your specific workload if streaming is a hard requirement.
+- [未验证] "~14 kB" and "smallest CommonMark parser" are the README's own claims; bundle size was not measured here.
+- [推断] Consuming events through the mdast utilities rather than micromark's API is inferred from the README's API section (only `micromark` and `stream` are documented exports) and remark's design.
+- [未验证] TanStack Markdown's streaming extension as a substitute for incremental AI output rests on that page's description; the two were not benchmarked against each other.
+- [未验证] The download figure is for one utility package and is counted by the health scorer; downloads of the `micromark` package itself were not checked separately.
+- [推断] The "rather complex to write" extension judgment is the authors' own; how it compares to writing a markdown-it rule depends on the syntax.

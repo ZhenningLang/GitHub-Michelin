@@ -3,20 +3,20 @@ name: Bun
 slug: bun
 repo: https://github.com/oven-sh/bun
 category: runtimes-and-compilers
-tags: [javascript, typescript, runtime, bundler, test-runner, package-manager]
+tags: [javascript, typescript, runtime, bundler, test-runner, package-manager, node-compatible]
 language: Rust
-license: NOASSERTION
-maturity: v1.x, stable, 93.5k stars (as of 2026-07)
-last_verified: 2026-07-01
+license: MIT (statically links LGPL-2 JavaScriptCore; GitHub reports NOASSERTION)
+maturity: v1.4.2 (2026-09-05), stable; v1.4 rewrote the codebase from Zig to Rust, 96.2k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-06T09:04:41Z
+  pushed_at: 2026-10-08T08:41:58Z
   default_branch: main
-  default_branch_sha: 9f29e551236e048e2da3950c05b0deedc43059d0
+  default_branch_sha: 620b50f6abea3413a30235c5885bfe8cbffd592d
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:10:38Z
+  computed_at: 2026-10-08T08:18:32Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.1
-        qualifying_issues: 28
+        median_ttfr_hours: 16.6
+        qualifying_issues: 35
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -47,13 +47,13 @@ health:
         registry: npmjs.org
         canonical_package: bun-types
         dependent_repos_count: 3705
-        downloads_last_month: 54257858
+        downloads_last_month: 66142679
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 17627
+        cross_check_divergence: 1.08
+        homebrew_installs_90d: 18434
         homebrew_tier: A
-        release_downloads: 116679289
+        release_downloads: 126369044
         release_assets: 2128
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1988
+        repo_age_days: 2003
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 63
-        top1_share: 0.564
-        top3_share: 0.846
+        active_maintainers_12mo: 61
+        top1_share: 0.577
+        top3_share: 0.855
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,60 +81,88 @@ health:
 
 # Bun
 
-一款极速一体化的 JavaScript 与 TypeScript 工具集——将运行时、打包器、测试运行器和包管理器集成在单个二进制文件中。
+一个普通的 TypeScript 项目要装 node、npm、ts-node、打包器和 Jest，各有各的配置，个个启动都慢；Bun 是一个二进制，直接运行 `.ts` 文件，同时负责装包、打包和跑测试，目标是直接顶替 Node.js。
 
 ![Bun — 健康度雷达](../../../../assets/health/bun.zh.svg)
 
 ## 何时使用
 
-你正在选择 JavaScript 或 TypeScript 运行时与工具链，而速度和集成度是决定性因素。你选 Bun 而不是 Node.js，因为厌倦了 Node.js 工具链的臃肿：一个运行时、一个打包器、一个测试框架、再加上一个包管理器。你想要一个单一、极速的二进制文件来搞定一切——`bun run` 直接执行 TypeScript，`bun test` 做内置测试，`bun build` 打包，`bun install` 管理依赖——全部比 Node.js 的等价工具快得多。你选 Bun 而不是 Deno，因为你看重 JavaScriptCore 引擎相比 V8 更快的启动时间和更低的内存占用，且你想要一体化的工具集，而非 Deno 以安全权限为核心的模式。
+你维护一个跑在 Node.js 上的 TypeScript 服务或命令行工具，`package.json` 里已经长出一整套工具链：用 `ts-node` 或 `tsx` 跑代码，用 `npm` 或 `pnpm` 装包，用 `esbuild` 打包，用带 Babel 转换的 `jest` 跑测试。CI 里 `npm ci` 要一分多钟，`jest` 跑第一个用例前要先空转几秒，每个工具一份配置，还各自慢慢走样。你希望同一个项目照常工作——同样的 `package.json`、同样的 `node_modules`、同样的 npm 源——只是少几个零件、少等一会儿。**当“一个又快又兼容 Node 的二进制顶掉好几个工具”比 Node 本身久经考验的稳定性更值钱时**，选 Bun：`bun install`、`bun run index.ts`、`bun test`、`bun build --compile` 覆盖日常循环，中间不需要编译步骤。
+
+工具链臃肿和启动慢是主要痛点、而且你的依赖树能在 Bun 的兼容层上跑通时，它胜过 Node.js；想让一个标准 `package.json` 项目原样提速、不想接受 Deno 的权限模型和约定时，它胜过 Deno。它可以分步引入——很多团队先用 `bun install` 和 `bun test`，生产环境仍跑 Node。
+
+## 怎么用起来
+
+Bun 是单个可执行文件：一个基于 JavaScriptCore（Safari 里的 JS 引擎，而不是 Chrome 和 Node 用的 V8）的 JavaScript 运行时，包管理器、打包器和测试运行器都编进了同一个二进制。从 v1.4（2026 年 8 月）起，整个代码库已从 Zig 重写为 Rust。你运行 `.ts` 或 `.tsx` 文件时，Bun 在加载每个文件时就把类型去掉、把 JSX 转好，所以没有编译步骤；它还实现了 Node 的内置模块（`node:fs`、`node:http` 等）和 `require`，这正是大多数 npm 包能原样运行的原因。`bun install` 读取你现有的 `package.json`，从磁盘上的全局缓存填好 `node_modules`，再写出它自己的 `bun.lock`。Bun 不承诺的是与 Node 完全一致：你的具体依赖和用到的 Node API 能不能跑，仍要你自己验证——这也是为什么引入它通常从包管理器和测试运行器开始。
+
+![bun — 主干用户故事](../../../../assets/flow/bun.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bun.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上唯一的 bun 可执行文件 — `curl -fsSL https://bun.com/install | bash · npm install -g bun`
+2. **你**：在现有 Node 项目里用 Bun 装依赖 — `bun install`
+3. **Bun**：读 package.json，从全局缓存装好依赖，写出 bun.lock — 组件：`包管理器`
+4. **你**：直接运行 TypeScript 入口文件，不先编译 — `bun run index.tsx`
+5. **Bun**：加载时转译 TS/JSX，在 JavaScriptCore 上运行 — 组件：`运行时`
+6. **你**：用内置测试器跑测试 — `bun test`
+7. **Bun**：找到测试文件，用兼容 Jest 的 API 跑完 — 组件：`测试运行器`
+
+**价值**：日常开发里一个二进制顶掉 node、npm、ts-node 和 Jest，每一步都更快
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- 如果你依赖原生 Node.js 插件或复杂的 C++ 绑定，请使用 Node.js 而不是 Bun，因为 Bun 目标是兼容 Node.js，但某些原生模块和 `node-gyp` 依赖可能无法直接运行。
-- 如果你需要成熟的生态工具链和深度 npm 兼容性，请使用 Node.js 或 Deno 而不是 Bun，因为 Bun 较年轻，某些带 post-install 脚本或深入 Node.js 内部的 npm 包可能出现异常。
-- 如果你要求完全受管的开源许可证，请使用 Deno 或 Node.js 而不是 Bun，因为 Bun 采用自定义许可证（NOASSERTION），并非标准的 MIT 或 Apache-2.0 等 OSI 认证许可证。
-- 如果你已在 Node.js 工具链上深度投入，CI/CD、Docker 镜像和团队经验全是 Node 原生，请使用 Node.js 而不是 Bun，因为迁移成本可能超过性能收益。
-- 如果你需要以 WebAssembly 为优先的运行时支持，请使用 Deno 而不是 Bun，因为 Deno 在 WebAssembly 集成和原生模块支持上更强。
+- 如果生产环境依赖 Bun 只实现了一部分的 Node API——它的 v1.4 发布说明里，`node:inspector` 只通过 Node 自身测试的 22/110，`node:test` 只通过 28/81——运行时继续用 Node.js，因为“还没有 100% 兼容”是项目自己的说法，缺口会在运行时才暴露，而不是安装时。
+- 如果你的依赖里有基于 V8 C++ API（而不是 Node-API 这个稳定的插件接口）编译的原生插件，继续用 Node.js，因为 Bun 跑在 JavaScriptCore 上，只为个别包重新实现了它们需要的 V8 API。
+- 如果你要以受限的文件、网络、环境变量权限运行不可信的第三方脚本，用 [Deno](deno.zh.md) 而不是 Bun，因为 Deno 默认全部拒绝，而 Bun 没有权限沙箱。
+- 如果你承受不起一次刚完成的重写带来的回归——v1.4 在 2026 年 8 月把整个代码库从 Zig 换成了 Rust——生产环境继续用 Node.js，Bun 只拿来做 `bun install` / `bun test`，或者锁定一个你测过的 Bun 版本。
+- 如果组织要求运行时由中立基金会治理，用 Node.js（OpenJS 基金会）而不是 Bun，因为 Bun 的路线图由一家公司掌握——Oven，现已并入 Anthropic——而且一位维护者贡献了一半以上的提交。
+- 如果部署目标是老 Linux 主机（内核低于 5.1），或者缺少 Bun 默认构建所需指令集的 x64 CPU，用 Node.js，因为 Bun 文档建议内核 5.6+，老 CPU 上会报“illegal instruction”崩溃。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| Node.js | 未收录 | 拥有最庞大生态的既有 JS/TS 运行时。 | Node.js 生态最深、托管支持最广；Bun 更快但较年轻、尚未充分验证。 |
-| [Deno](deno.zh.md) | ✅ | 具备安全默认设置和内置工具链的现代 JS/TS 运行时。 | Deno 更成熟，采用标准 OSI 许可证；Bun 更快、工具更集成，但许可证模糊。 |
-| [Tauri](tauri.zh.md) | ✅ | 非运行时对比，但两者都是基于 Rust 的开发工具。 | Tauri 构建桌面应用，Bun 运行 JS/TS。互补而非竞争。 |
-| pnpm / Yarn | 未收录 | 拥有成熟工作区功能的专用包管理器。 | pnpm 和 Yarn 在工作区与 monorepo 上功能深厚；Bun 的包管理器很快，但可能缺少一些高级特性。 |
+| Node.js | 未收录 | 生产服务要求每个依赖都和测试时表现完全一致时，选 Node.js；工具链臃肿和启动时间的代价超过残余兼容风险时，选 Bun。 | Node.js 是参考实现，有基金会治理、所有托管平台都支持，但 TypeScript 运行器、打包器和测试框架要你自己拼。 |
+| [Deno](deno.zh.md) | ✅ | 想以默认权限隔离和 Web 标准 API 作为项目地基时选 Deno；目标是让现有 `package.json` 项目以最小改动提速时选 Bun。 | Deno 提供带沙箱、MIT 许可、自带 lint 和格式化的运行时，但会把你引向它自己的约定（`deno.json`、JSR、`npm:` 前缀），而不是原样的 Node 目录结构。 |
+| pnpm | 未收录 | 只想在 Node 上装包更快、更省磁盘、依赖隔离更严时选 pnpm；还想把运行时和测试器装进同一个二进制时选 Bun。 | pnpm 完全不改变代码的运行方式，没有运行时兼容风险，但只解决装包这一步。 |
+| Vitest | 未收录 | 测试必须共用 Vite 配置、并且要和生产一样跑在 Node 上时选 Vitest；最在意测试启动速度时选 `bun test`。 | Vitest 和生产用同一个引擎、能接入 Vite，`bun test` 启动更快，但测试跑在 JavaScriptCore 上而不是 V8。 |
+| esbuild | 未收录 | 需要在 Node 工具链里放一个成熟的独立打包器时选 esbuild；已经在用 Bun、想用同一个工具打包并产出单文件可执行程序时选 `bun build`。 | esbuild 插件生态更大、也不用换运行时，但它是运行时之外的又一个工具，而不是运行时的一部分。 |
 
 ## 技术栈
 
-- **Rust** — 核心运行时与打包器实现
-- **JavaScriptCore（JSC）** — 驱动 Bun 的 JavaScript 引擎，以启动快著称
-- **TypeScript** — 原生语言支持（内部转译）
-- **Zig** — 部分底层系统实现
-- **SQLite** — 嵌入用于包管理元数据
+- **Rust**——从 v1.4 起，运行时、包管理器、打包器和测试运行器都用 Rust 实现（由 Zig 重写而来）
+- **JavaScriptCore / WebKit**——JavaScript 引擎，从 Oven 维护的 WebKit 分支静态链接
+- **C / C++**——JavaScriptCore 绑定和静态链接的库（BoringSSL、uSockets、mimalloc、zstd 等）
+- **TypeScript / JSX**——加载时转译；`bun check` 用 `typescript-go` 的移植版做类型检查
 
 ## 依赖
 
-- Bun 二进制文件（单个可执行文件，无需外部运行时）
-- macOS、Linux 或 Windows（x64/ARM64）
-- 如需 npm 兼容：现有 `package.json` 与 `node_modules` 可直接使用
-- 典型使用场景无需后端或数据库服务器
+- 只需要一个 `bun` 二进制；可通过安装脚本、`npm install -g bun`、Homebrew 或 `oven/bun` Docker 镜像安装
+- Linux x64/arm64（建议内核 5.6+，最低 5.1）、macOS x64/Apple Silicon、Windows x64/arm64
+- npm 源（或你的私有源）提供包；现有 `package.json` 和 `node_modules` 原样使用
+- 可选：需要 `node-gyp` 编译原生插件的包，要有 C 工具链
 
 ## 运维难度
 
-**低。** Bun 是单个二进制文件，可通过 shell 脚本、npm 或系统包管理器安装。无需维护服务器。运维负担主要在于保持二进制更新，并验证你的依赖树在 npm 兼容性上是否有边缘情况。CI/CD 中将 `node` 替换为 `bun` 通常很直接，但需针对原生模块做边缘测试。
+**低。** 没有要运行的服务——它就是一个二进制，在 CI 和 Docker 镜像（`oven/bun`）里锁定版本即可。真正的运维成本在兼容性测试：切换生产运行时之前，用 Bun 跑一遍完整测试；关注更新日志（发版频繁，`main` 上每个提交都会出 canary 构建）；对表现异常的依赖保留 Node 后备。只把 `npm install` 换成 `bun install` 是代价最小的第一步，运行时完全不变。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
-- **响应速度**：Grade A——中位首次响应时间 0.1 小时，基于 28 个 qualifying issues/PRs。
-- **采用广度**：无法计算——unknown。
-- **长青度**：Grade A——仓库已创建 1988 天。
-- **治理集中度**：Grade B——前三贡献者占比 84.6%（过去 12 个月内 63 位活跃维护者）。
-- **许可风险**：无法计算——unknown。
+
+- **维护活跃度**：Grade A——过去一个季度每周都有提交；v1.4.0（2026-08-20）之后接连发布 v1.4.1 和 v1.4.2（2026-09-05）。
+- **响应速度**：Grade A——35 个 qualifying issues/PRs 的中位首次响应时间 16.6 小时，但仍有 9,389 个 issue 未关闭。
+- **采用广度**：Grade A——`bun-types` 在 npm 上月下载 66,142,679 次，release 资产下载 126,369,044 次，Homebrew 90 天安装 18,434 次；Claude Code 这类大型应用就跑在它上面。
+- **长青度**：Grade A——仓库已存在 2,003 天（2021-04-14 创建），2023 年进入 1.x，如今已换到第二种实现语言；Lindy 先验中等。
+- **治理集中度**：Grade B——过去 12 个月有 61 位活跃提交者，但前三名占 85.5%，创始人一人占 57.7%；路线图属于已并入 Anthropic 的 Oven，延续性取决于这家公司的优先级，而不是基金会。
+- **许可风险**：`?`（license_unparsed）——GitHub 显示 `NOASSERTION`，因为 `LICENSE.md` 是一份复合文件：Bun 本体是 MIT，静态链接的 JavaScriptCore/WebKit 是 LGPL-2，只有在你分发修改过的 Bun 时才多出“允许用户重新链接”的义务。
+
 ## 存疑（未验证）
 
-- [未验证] Bun 的准确许可证条款尚模糊；未标注标准 SPDX 许可证，商用或嵌入式部署可能存在使用限制。
-- [推断] 原生 Node.js 插件兼容性正在改善，但复杂的 `node-gyp` 依赖仍可能不兼容。
-- [未验证] 生产部署与企业用户的准确数量尚未从一手来源核实。
-- [推断] Oven 的风险投资与商业模式可能影响开源路线图；需关注是否出现商业层级功能或重新许可。
+- [推断] v1.4 的 Zig→Rust 重写刚发生不久，生产环境中的回归率还无法从发版历史判断。
+- [推断] 被 Anthropic 收购后，优先级可能向其自家产品的需求倾斜；目前没有宣布更改 MIT 许可。
+- [未验证] 速度说法（装包、测试、启动“明显更快”）来自项目自己的基准，本页没有复现。
+- [未验证] 默认 x64 构建的具体 CPU 指令集要求没有从安装文档里逐条读到；部署到老硬件前请先核对。

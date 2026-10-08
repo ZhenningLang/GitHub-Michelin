@@ -7,7 +7,7 @@ tags: [zero-shot, image-classification, multimodal, embeddings, retrieval, contr
 language: Python
 license: MIT
 maturity: stable reference release, low ongoing maintenance, ~33.9k stars (last pushed 2026-03, as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: model
 upstream:
   pushed_at: 2026-03-25T18:46:40Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:13:47Z
+  computed_at: 2026-10-08T08:23:13Z
   overall: C
   overall_score: 2.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 186
+        last_commit_age_days: 197
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: clip-openai
         dependent_repos_count: 1
-        downloads_last_month: 2941
+        downloads_last_month: 1335
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 2111
-        last_commit_age_days: 186
+        repo_age_days: 2122
+        last_commit_age_days: 197
         cohort: model
     governance:
       grade: C
@@ -79,9 +79,31 @@ OpenAI 官方的 CLIP（Contrastive Language-Image Pre-training）原始参考�
 
 ## 何时使用
 
-你是一名 ML 工程师或研究者，需要在不收集标注数据集、不训练分类器的前提下给图像打标签或做搜索。也许你手里有一堆商品图和一份类目名称清单，或者你想在一个大图库里找出「一只狗接飞盘的照片」。你加载一个预训练 CLIP checkpoint，对图像跑 `clip.encode_image`、对候选 prompt 跑 `clip.encode_text`，把两边归一化后取余弦相似度——得分最高的那个文本标签就是你的零样本预测，而同一批 embedding 又可以直接当检索索引用。因为图像和文本活在同一个向量空间里，分类、检索和粗粒度语义相似都能用一个模型、几行 PyTorch 搞定。
+你是一名 ML 工程师或研究者，需要在不收集标注数据集、不训练分类器的前提下给图像打标签或做搜索。也许你手里有一堆商品图和一份类目名称清单，或者你想在一个大图库里找出「一只狗接飞盘的照片」。你加载一个预训练 CLIP checkpoint，对图像跑 `model.encode_image`、对候选 prompt 跑 `model.encode_text`，把两边归一化后取余弦相似度——得分最高的那个文本标签就是你的零样本预测，而同一批 embedding 又可以直接当检索索引用。因为图像和文本活在同一个向量空间里，分类、检索和粗粒度语义相似都能用一个模型、几行 PyTorch 搞定。
 
 当你想要那份规范、最小的参考时，你也会选这个具体的仓库：原始的 ViT-B/32、ViT-L/14 和 ResNet（RN50 等）权重，以及 OpenAI 当年发布的那套确切预处理，用来复现论文数字，或读懂模型和 tokenizer 究竟是怎么接线的。在转向更重的框架之前，它是理解 CLIP 的最小忠实起点。
+
+## 怎么用起来
+
+CLIP 是两个一起训练出来的编码器——一个把图片变成一串数字（向量），另一个把一句话变成同样长度的向量——训练目标是让描述同一件事的图片和文字落在彼此附近。**权重和配套的图像预处理都来自 OpenAI，本仓库在第一次 `clip.load` 时下载并缓存。**你要做的是把关心的标签写成短句（「a photo of a dog」），做 tokenize（切成文本编码器认的子词单元），再把图片和文本一起送进去；CLIP 给每个图文对返回一个相似度分数，得分最高的那句话就是答案。它像一个把图片和短语放进同一张坐标图的翻译：你从不教它你的类目，只是问哪句话离这张图最近。存向量、建检索索引、打磨 prompt 措辞，这些归你。
+
+![clip — 主干用户故事](../../../assets/flow/clip.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/clip.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 PyTorch 和几个小依赖，再把本仓库装成包 — `pip install git+https://github.com/openai/CLIP.git`
+2. **你**：按名字加载一个 checkpoint — `clip.load("ViT-B/32", device=device)`
+3. **CLIP**：首次使用时下载并缓存权重，返回模型和配套的图像预处理 — 组件：`预训练权重`
+4. **你**：预处理图片，把候选标签写成普通文本 — `clip.tokenize(["a diagram", "a dog", "a cat"])`
+5. **CLIP**：把图片和文本编码进同一个向量空间 — 组件：`图像编码器 + 文本编码器`
+6. **CLIP**：按余弦相似度给每个图文对打分，最高分标签即零样本预测
+
+**价值**：把标签写成文字就能给图片分类、检索，不用标注数据也不用训练
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -113,7 +135,7 @@ OpenAI 官方的 CLIP（Contrastive Language-Image Pre-training）原始参考�
 - **运行时：** Python 和 PyTorch 1.7.1+，加 torchvision，外加小助手 `ftfy`、`regex` 和 `tqdm`（依 README）。
 - **预训练权重：** checkpoint 在首次 `clip.load(...)` 时下载（需要网络）并缓存到本地；权重才是实质依赖，不只是代码。
 - **硬件：** 能在 CPU 上跑，但除了寥寥几张图以外，强烈建议用 CUDA GPU；更大的 ViT-L/14 需要相应更多显存。[推断]
-- **安装：** `pip install git+https://github.com/openai/CLIP.git`——该仓库没有单独有版本的 PyPI release。
+- **安装：** README 给的唯一安装方式是 `pip install git+https://github.com/openai/CLIP.git`。PyPI 上有个 `clip-openai` 包（1.0.post20230121）指回本仓库，但 README 没提它，所以把 git ref 当作受支持的路径。
 
 ## 运维难度
 
@@ -122,7 +144,7 @@ OpenAI 官方的 CLIP（Contrastive Language-Image Pre-training）原始参考�
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护（截至 2026-06）：** 最后一次 push 约在 2026-03，但它实质上是个**冻结的参考**——固定 checkpoint 集、推送稀疏，并非一个仍在演进的代码库。[推断] 把它当作「按设计躺平」：它仍能安装、能跑，但别指望这里出新 backbone、修复或有版本的 PyPI release。
+- **维护（截至 2026-10-08）：** 最后一次提交在 2026-03-25，此后没有新提交；它实质上是个**冻结的参考**——固定 checkpoint 集、推送稀疏，并非一个仍在演进的代码库。[推断] 把它当作「按设计躺平」：它仍能安装、能跑，但别指望这里出新 backbone、修复或有版本的 PyPI release。
 - **治理 / 背书：** 由 OpenAI 这个组织持有——是原始论文仓库，而非社区项目。这带来出处（这是*那份*参考权重 / 预处理），但不承诺持续维护；活跃生态早已迁往 OpenCLIP 和 Hugging Face `transformers`。
 - **年龄与 Lindy 判定（创建于 2020-12，约 6 年）：** 既老*又仍被广泛使用*，对 **CLIP 这一思路及这批权重**作为稳定基线而言是强 Lindy 信号。判定是分裂的：*概念 / checkpoint* 经 Lindy 验证、可放心在其上构建；*把这个具体仓库当受维护依赖*则不行——它的长寿是「出名且冻结」，而非「持续维护」。
 - **采用度：** CLIP embedding 在检索、零样本分类，以及作为众多下游系统的文 / 图编码器中是基础件；尽管多数生产用户经由 OpenCLIP/`transformers` 而非本仓库消费，这个范式已根深蒂固。
@@ -130,7 +152,8 @@ OpenAI 官方的 CLIP（Contrastive Language-Image Pre-training）原始参考�
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06，约 33.9k GitHub star、最后一次 push 约在 2026-03；star 数不可靠且对日期敏感——仅作参考。
+- [未验证] 约 34.4k GitHub star（GitHub API，2026-10-08），最后一次提交在 2026-03-25；star 数不可靠且对日期敏感——仅作参考。
+- [未验证] PyPI 上的 `clip-openai` 包（1.0.post20230121，元数据作者写「OpenAI」，主页指向本仓库）没有被 README 提及；发布者是谁、是否跟随 `main` 均未核实。
 - [推断]「稳定参考发布 / 低维护」是从「这是带固定 checkpoint 集、推送不频繁的原始论文仓库」推断出来的，并非项目声明的状态——依赖前请核对近期的 commit/issue 活跃度。
 - [未验证] 确切的依赖下限（PyTorch 1.7.1、torchvision、ftfy、regex、tqdm）取自 README；实际最低版本可能漂移——请对照当前代码树里的 `setup.py`/requirements 核实。
 - [未验证] 可用 checkpoint 的集合与名称（RN50、ViT-B/32、ViT-B/16、ViT-L/14 及更大）是从 README/`clip.available_models()` 转述的；确切清单请对照当前仓库确认。

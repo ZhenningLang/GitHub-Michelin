@@ -6,8 +6,8 @@ category: proxy-pool
 tags: [proxy, proxy-pool, web-scraping, crawler, ip-rotation, redis, flask, python]
 language: Python
 license: MIT
-maturity: last release 2.4.1 (2023-02), repo still pushed 2026-06, ~23.4k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: last release 2.4.1 (2023-02), tag 2.4.2 (2024-01), last commit 2026-06-15 (as of 2026-10-08), ~23.8k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-06-15T14:36:35Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:22:24Z
+  computed_at: 2026-10-08T08:25:12Z
   overall: C
   overall_score: 2.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 104
+        last_commit_age_days: 115
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        docker_pulls: 213721
+        docker_pulls: 214297
         docker_image: jhao104/proxy_pool
         docker_tier: D
         signal_basis: docker
     longevity:
       grade: B
       raw:
-        repo_age_days: 3593
-        last_commit_age_days: 104
+        repo_age_days: 3604
+        last_commit_age_days: 115
         cohort: app
     governance:
       grade: C
@@ -81,6 +81,28 @@ You're building a Python web scraper that keeps getting rate-limited or IP-banne
 
 It fits best when proxy *quality* is negotiable but you need *rotation and freshness* for free: scraping public data at modest volume, distributing requests across many ephemeral IPs, or experimenting before deciding whether a paid proxy service is worth it.
 
+## How it works
+
+proxy_pool is two small Python processes around one Redis database (an in-memory key-value store that holds the whole pool). **It does the sourcing and checking for you**: the *scheduler* process wakes on a timer, runs every enabled source fetcher in `fetcher/sources/` — each one scrapes a public free-proxy site — then tests each candidate IP and keeps only the ones that still answer, evicting the dead. The *server* process is a tiny Flask web API (Flask is a minimal Python web framework) that hands out proxies from that store. **You run Redis and the two processes, and your scraper calls the API**: `/get/` for a random live proxy, `/delete/?proxy=host:port` when one fails, `/count/` to watch pool size. Adding a source is writing one small fetcher class that yields `ip:port` strings; the scheduler picks it up on its next run.
+
+![proxy-pool — backbone user story](../../assets/flow/proxy-pool.svg)
+
+<!-- flow-steps:begin (generated from flows/proxy-pool.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Point the database setting at your Redis instance — `DB_CONN = 'redis://:pwd@127.0.0.1:8888/0'` — component: `setting.py`
+2. **You**: Start the scheduler and the API server — `python proxyPool.py schedule · python proxyPool.py server`
+3. **proxy_pool**: On a timer, fetches candidate IPs from every enabled free-proxy source — component: `scheduler`
+4. **proxy_pool**: Tests each candidate, keeps the live ones in Redis and drops the dead
+5. **You**: In your scraper, ask the API for a proxy before each request — `requests.get("http://127.0.0.1:5010/get/")`
+6. **proxy_pool**: Returns a random currently-live proxy from the pool — component: `Flask web API`
+
+**Value**: Your scraper rotates through a self-refreshing set of free IPs without you maintaining a proxy list
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need reliability, speed, or security — free proxies have none of these.** Free proxies are scraped from public lists: most are dead, slow, overloaded, or vanish within hours, and an unknown third party operates each one. For anything that matters in production, paid residential/datacenter proxies are the correct tool — proxy_pool is a *free-tier convenience*, not a dependable transport.
@@ -97,13 +119,13 @@ It fits best when proxy *quality* is negotiable but you need *rotation and fresh
 | Paid proxy services (Bright Data / Decodo) | 未收录 | Choose paid proxy services when production needs SLAs, clean IP ranges, and support. | Commercial residential/datacenter/ISP proxies with SLAs, large clean IP ranges, and support — reliable and fast, but paid (often metered per-GB) and not open-source. The right call for production. |
 | [ProxyBroker](proxybroker.md) | ✅ | Choose ProxyBroker when you need a Python async library/CLI that finds and checks public proxies. | Python async library/CLI that finds and checks public proxies; more of a toolkit/library than a packaged service-with-API + storage. Maintenance has been intermittent. [未验证] |
 | [scylla](scylla.md) | ✅ | Choose scylla when you need a self-hosted intelligent free-proxy pool with web UI and API. | Self-hosted intelligent free-proxy pool with a web UI and API (Python); similar niche, different stack and feature emphasis. [未验证] |
-| [haipproxy](haipproxy.md) | ✅ | Choose haipproxy when you need a Scrapy/Redis-based high-availability proxy pool for scraping. | Scrapy/Redis-based high-availability proxy pool aimed at scraping; heavier Scrapy-centric design vs proxy_pool's small Flask service. [未验证] |
+| [haipproxy](haipproxy.md) | ✅ | Read haipproxy only as a design reference for a Scrapy/Redis proxy pool; for anything you run, prefer proxy_pool, because haipproxy's default branch has had no commit since 2019-07. | Scrapy/Redis high-availability design aimed at scraping, but dormant since 2019-07 and heavier than proxy_pool's small Flask service. |
 | scrapy-rotating-proxies | 未收录 | Choose scrapy-rotating-proxies when you already have a proxy list and only need Scrapy rotation middleware. | A Scrapy *downloader middleware* that rotates a list you supply and bans dead ones — it consumes proxies, it does not source/validate them; pair it with a pool like this one rather than treat it as a substitute. |
 
 ## Tech stack
 
 - **Language:** Python.
-- **API:** Flask serving a small REST surface (`/get`, `/get_all`, `/count`, `/delete`, `/pop`), run under gunicorn.
+- **API:** Flask serving a small REST surface (`/get`, `/all`, `/count`, `/delete`, `/pop`, `/refresh`), run under gunicorn.
 - **Storage:** Redis is the default/primary backend; SSDB is also supported (configured via a `redis://` / `ssdb://` `DB_CONN` URL).
 - **Crawling / validation:** `requests` + `lxml` to fetch and parse free-proxy source pages; `APScheduler` drives the periodic crawl-and-validate cycle.
 - **Architecture:** two roles — a *scheduler* process (crawl proxies, then validate/evict on a timer) and a *web API* process (serve proxies to clients) — sharing the Redis store.
@@ -122,16 +144,16 @@ It fits best when proxy *quality* is negotiable but you need *rotation and fresh
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Repo is **not archived** and was last pushed 2026-06-15, so commit activity is recent — but the **last tagged release is 2.4.1 from 2023-02**; treat it as actively-tended-but-not-actively-released rather than fast-moving. [推断]
+- **Maintenance (as of 2026-10-08).** Repo is **not archived**; last commit 2026-06-15 (a burst of unit tests and packaging fixes), none in the last 13 weeks — but the **last tagged release is 2.4.1 from 2023-02**; treat it as actively-tended-but-not-actively-released rather than fast-moving. [推断]
 - **Governance / bus factor.** A **single-maintainer User repo** (owner jhao104, ~533 of the commits; the next contributor has ~13) — that's a clear **bus-factor flag**: roadmap and continuity rest on one person. [推断]
 - **Age & Lindy verdict.** Created **2016-11 (~9.5 years)** and still receiving commits ⇒ a **decent Lindy** signal for its niche — long-lived and well-known in the Chinese scraping community, not a hyped newcomer. [推断]
-- **Adoption.** ~23.4k stars and ~5.4k forks indicate broad, sustained popularity as a reference free-proxy-pool implementation. [未验证]
+- **Adoption.** ~23.8k stars and ~5.4k forks indicate broad, sustained popularity as a reference free-proxy-pool implementation. [未验证]
 - **Risk flags — the real one is the model, not the repo.** MIT licensed, no relicense history found. The dominant risk is **inherent**: a free-proxy pool is only as good as the public sources it scrapes, so reliability is structurally low regardless of how healthy the code is. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~23.4k stars / ~5.4k forks as of 2026-06 — star/fork counts are date-sensitive and unreliable as a quality signal; treat as indicative only.
-- [未验证] Latest release 2.4.1 dated 2023-02; the repo shows a more recent `pushed_at` (2026-06-15), but commits-since-release content and significance were not audited line-by-line.
+- [未验证] ~23.8k stars / ~5.4k forks as of 2026-10-08 — star/fork counts are date-sensitive and unreliable as a quality signal; treat as indicative only.
+- [未验证] Latest GitHub release 2.4.1 dated 2023-02 (a 2.4.2 tag exists from 2024-01 without a release); the 2026-06 commits were skimmed by message only (tests, tox/uv compatibility), not audited line-by-line.
 - [推断] "Single-maintainer / bus-factor" is inferred from the contributor distribution (one dominant author), not from any stated governance doc.
 - [推断] The substitute projects (ProxyBroker, scylla, haipproxy, scrapy-rotating-proxies) are positioned from their general reputation/role, not from a fresh per-repo audit this pass — verify current state before relying on the comparison.
 - [未验证] The set and stability of the free-proxy source sites proxy_pool crawls changes over time; the effective live-proxy yield was not measured.

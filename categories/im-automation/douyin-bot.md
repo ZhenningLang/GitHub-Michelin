@@ -7,7 +7,7 @@ tags: [douyin, adb, android-automation, face-recognition, bot, python, demo]
 language: Python
 license: MIT
 maturity: v0.0.1 demo, no commits since 2020-05, ~9.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2023-10-03T21:08:46Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:02:07Z
+  computed_at: 2026-10-08T08:19:48Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2335
+        last_commit_age_days: 2346
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3045
-        last_commit_age_days: 2335
+        repo_age_days: 3056
+        last_commit_age_days: 2346
         cohort: app
     governance:
       grade: "?"
@@ -71,6 +71,28 @@ A 2018 Python toy/demo that drives a physical Android phone over ADB to auto-swi
 You're a developer who wants a concrete, readable example of *screen-coordinate phone automation* — how to drive a real Android device from Python via ADB: take a `screencap`, compress it, send it somewhere for analysis, then issue `input swipe` / `input tap` based on the result. Douyin-Bot is a compact, well-known reference for exactly that loop: it screenshots the Douyin app, POSTs the frame to a cloud face-recognition API, reads back a "beauty" score, and taps like/follow when the score crosses a threshold before swiping to the next video.
 
 Realistically that is the *only* defensible use today: reading it as a historical ADB-automation sample. As a working tool it is not — see below. Do not deploy it.
+
+## How it works
+
+Douyin-Bot is one Python loop plus a remote API. **It drives the phone for you** through ADB (Android Debug Bridge, Google's USB command channel into an Android phone): `adb screencap` grabs the screen, the script shrinks the image under 1 MB and posts it to Tencent's `ai.qq.com` face-detection API, and when the returned beauty score beats `BEAUTY_THRESHOLD` (80 in the source) it sends `adb shell input tap` at the like and follow buttons, then `input swipe` to the next video. **You supply everything it assumes**: a USB-connected Android phone, a Tencent AppID/AppKey, and pixel coordinates for each button in a `config/` JSON matching your exact screen. Nothing reads the app's UI structure — it is a blindfolded finger tapping memorised spots — which is why a 2018 coordinate file and a face API presumed retired leave it inert today. Read it as an ADB-automation sample; do not run it.
+
+![douyin-bot — backbone user story](../../assets/flow/douyin-bot.svg)
+
+<!-- flow-steps:begin (generated from flows/douyin-bot.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Connect an Android phone over USB with ADB debugging on, Douyin open
+2. **You**: Get Tencent AI AppID/AppKey and set your screen's button coordinates — `center_point · follow_bottom · star_bottom`
+3. **You**: Install the 2018-pinned requirements and start the loop — `python douyin-bot.py`
+4. **Douyin-Bot**: Screenshots the phone over ADB and compresses it under 1 MB
+5. **Douyin-Bot**: Sends it to the ai.qq.com face API and reads back age and beauty score
+6. **Douyin-Bot**: Above BEAUTY_THRESHOLD taps like and follow, then swipes to the next video
+
+**Value**: Historically a hands-free swipe-and-like loop; inert today — 2018 coordinates, face API presumed gone
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

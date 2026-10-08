@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Letta Code does", "zh": "Letta Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Letta Code, the maintained successor named in this repo's README", "zh": "安装 Letta Code，即本仓库 README 指向的现行实现", "code": "npm install -g @letta-ai/letta-code"},
+    {"lane": "you", "en": "Run it in your project and choose Letta Cloud or local state", "zh": "在项目目录里运行，选择状态放 Letta Cloud 还是本地", "code": "letta · letta backend local"},
+    {"lane": "you", "en": "Connect your own model keys and talk to the agent", "zh": "接上你自己的模型 key，然后和 agent 对话", "code": "/connect"},
+    {"lane": "them", "en": "The agent rewrites memory blocks pinned in its own system prompt as it learns", "zh": "agent 边学边改写钉在自己系统提示里的记忆块", "component": {"en": "memory blocks", "zh": "记忆块"}},
+    {"lane": "them", "en": "Every memory change is tracked in git, so it can be diffed or synced", "zh": "每次记忆改动都用 git 跟踪，可对比、可同步", "component": {"en": "MemFS", "zh": "MemFS"}},
+    {"lane": "them", "en": "Next session, on any interface, the same agent resumes with its memory", "zh": "下次会话，无论从哪个入口进来，都是带着记忆的同一个 agent"}
+  ],
+  "value": {"en": "One persistent agent that remembers you across sessions and devices, without you building a memory store", "zh": "一个跨会话、跨设备记得你的持久 agent，不用你自己搭记忆存储"},
+  "sources": [
+    "https://github.com/letta-ai/letta README (main @ 2026-10-08): current source lives in letta-ai/letta-code; `npm install -g @letta-ai/letta-code`, `letta`, `letta server`",
+    "https://github.com/letta-ai/letta-code README (2026-10-08): Get started (`letta`, `letta backend cloud` / `letta backend local`, `/connect`), Feature Overview (memory blocks, MemFS tracked via git, /sleeptime), desktop/chat/channels share agents",
+    "https://github.com/letta-ai/letta/blob/main/AGENTS.md and SECURITY.md: V1 server retired, archive branch, letta/letta images retired"
+  ]
+}

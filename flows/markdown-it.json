@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them":  {"en": "markdown-it does", "zh": "markdown-it 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package", "zh": "安装包", "code": "npm install markdown-it"},
+    {"lane": "you", "en": "Create an instance and register the plugins your syntax needs", "zh": "建一个实例，注册你的语法需要的插件", "code": "new MarkdownIt().use(markdownItFootnote)"},
+    {"lane": "you", "en": "Render each document", "zh": "渲染每篇文档", "code": "const result = md.render('# markdown-it rulezz!')"},
+    {"lane": "them", "en": "Runs the core, block and inline rule chains, plugins included, into a token stream", "zh": "跑 core、block、inline 规则链（含插件），产出 token 流", "component": {"en": "parser rule chains", "zh": "解析规则链"}},
+    {"lane": "them", "en": "Renders tokens to HTML, refusing javascript: links and (by default) raw HTML", "zh": "渲染成 HTML，默认拒绝 javascript: 链接和原始 HTML", "component": {"en": "renderer", "zh": "渲染器"}}
+  ],
+  "value": {"en": "CommonMark-conformant, safe-by-default HTML, with house syntax added as plugins instead of a forked parser", "zh": "得到符合 CommonMark、默认安全的 HTML；团队自定义语法以插件形式加入，不必分叉解析器"},
+  "sources": [
+    "README.md master @ 2026-10-08 (gh api repos/markdown-it/markdown-it/readme): 'npm install markdown-it'; 'const md = new MarkdownIt()'; \"const result = md.render('# markdown-it rulezz!')\"; 'Safe by default'",
+    "docs/usage.md: 'const md = new MarkdownIt()' + '.use(markdownItFootnote)' plugin loading; docs/architecture.md: core/block/inline rule chains, 'The result of parsing is a token stream that will be passed to the renderer to generate HTML content'; docs/safety.md: HTML disabled by default, javascript:/vbscript:/file:/data: links prohibited"
+  ]
+}

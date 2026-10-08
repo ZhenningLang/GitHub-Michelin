@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **OpenAI Whisper** | OpenAI's general-purpose automatic speech recognition model that transcribes and translates audio to English across 99 languages, with multiple size/quality tradeoffs. | A (5/6) | [→](whisper.md) |
+| **OpenAI Whisper** | Use it when hours of multilingual recordings need searchable transcripts and .srt subtitles produced on your own machine instead of a per-minute cloud API — but there is no streaming mode, so live captions need whisper.cpp or faster-whisper. | A (5/6) | [→](whisper.md) |
 | **ffsubsync** | A language-agnostic CLI that automatically re-times an out-of-sync subtitle file against the video (or a reference subtitle), aligning speech segments via FFT cross-correlation. | B (5/6) | [→](ffsubsync.md) |
 | **claude-video** | Agent-facing `/watch` workflow that downloads videos, extracts frames, gets captions/transcripts, and hands visual/audio evidence to Claude or another skill host. | C (6/6) | [→](claude-video.md) |
 
@@ -15,7 +15,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [OpenAI Whisper](whisper.md) | ✅ | A (5/6) | Pick it when you need the transcript itself, with model-size/quality tradeoffs you control; pick [ffsubsync](ffsubsync.md) when subtitles already exist and only their timing is wrong. |
+| [OpenAI Whisper](whisper.md) | ✅ | A (5/6) | OpenAI's reference implementation and open weights, in exchange for the slow PyTorch path (large needs ~10 GB VRAM), no speaker diarization, and hallucinated text over silence or music unless you gate it. |
 | [ffsubsync](ffsubsync.md) | ✅ | B (5/6) | Pick it when subtitles exist but their timing is off by a global offset; pick [OpenAI Whisper](whisper.md) when there are no subtitles at all, because ffsubsync aligns existing text rather than producing it. |
 | [claude-video](claude-video.md) | ✅ | C (6/6) | Pick it when an agent needs to *watch* a video (frames plus captions as evidence); pick [OpenAI Whisper](whisper.md) when the transcript alone is the deliverable, because claude-video is a harness workflow, not an ASR engine. |
 

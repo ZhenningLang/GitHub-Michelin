@@ -7,13 +7,13 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Read Frog** | Use it when you want a feature-rich open-source immersive/bilingual translation extension with BYOK AI providers, local Ollama/custom endpoints, TTS, and YouTube subtitle translation. | B (6/6) | [→](read-frog.md) |
-| **FluentRead** | Use it when you want a Chinese-first open immersive-translation browser extension with many engines, bilingual/full-page translation, and Ollama/custom OpenAI-compatible setup. | C (6/6) | [→](fluentread.md) |
-| **Margin Read** | Use it when MIT licensing, explicit BYOK/local endpoint support, and a written privacy threat model matter more than feature completeness. | C (5/6) | [→](margin-read.md) |
-| **Pair Translate** | Use it when you want a lighter bilingual webpage translator with direct provider requests, LLM templates, and Chrome/Firefox/Edge distribution. | C (5/6) | [→](pair-translate.md) |
+| **Read Frog** | Use it when you learn languages by reading and want bilingual paragraphs, level-aware explanations, read-aloud, custom AI actions, and spaced-repetition word cards with your own AI provider — but its company-controlled dual license and a proprietary layout package since 2026-09 block fully free forks. | B (6/6) | [→](read-frog.md) |
+| **FluentRead** | Use it when you want one open-source extension covering bilingual webpages, PDF/ePub, OCR, and video subtitles, with free, bring-your-own-key, or in-browser engines — but it is GPL-3.0, effectively one maintainer, and its zero-config default sends text to public translation endpoints. | C (6/6) | [→](fluentread.md) |
+| **Margin Read** | Use it when page text may only go to your own Ollama, LM Studio, or company gateway and you want an MIT extension with a written threat model — but it is a young, now-quiet, single-maintainer Chrome MVP without PDF, subtitles, or OCR. | C (5/6) | [→](margin-read.md) |
+| **Pair Translate** | Use it when Read Frog and FluentRead feel too heavy and you want a small bilingual translator sending text straight from the browser to Microsoft, DeepL, or your own LLM including local Ollama — but it is GPL-3.0 and effectively one person's year-old project. | C (5/6) | [→](pair-translate.md) |
 | **NetNewsWire** | Use it when you read many feeds on Mac/iPhone and want a fast, ad-free native RSS client you own — but only on Apple platforms, never elsewhere. | B (6/6) | [→](netnewswire.md) |
 | **Just Read** | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. | C (6/6) | [→](just-read.md) |
-| **FreshRSS** | A free, self-hostable news aggregator… | B (6/6) | [→](freshrss.md) |
+| **FreshRSS** | Use it when you want your feed subscriptions and read state on your own VPS, NAS, or Raspberry Pi, synced to any Google Reader–API client — but updates, backups, and TLS are yours forever, and Miniflux is leaner if you skip extensions. | B (6/6) | [→](freshrss.md) |
 | **Horizon** | Use it when feeds overflow you and you want a self-hosted LLM pipeline that scores, filters, deduplicates and briefs them bilingually every day — not a reader you browse. | B (6/6) | [→](horizon.md) |
 | **Follow Builders** | Use it when you want a no-keys daily digest of what a fixed, author-curated list of AI builders said on X, podcasts and two blogs — but you can't pick the sources and uptime rides on one person's X API bill. | C (4/6) | [→](follow-builders.md) |
 | **Bilingual Book Maker** | Use it when you want a scriptable CLI that turns epub/txt/md/srt/pdf into bilingual books via LLM/MT APIs, with resume and PyPI packaging — not an agent pipeline. | A (5/6) | [→](bilingual-book-maker.md) |
@@ -24,10 +24,10 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Read Frog](read-frog.md) | ✅ | B (6/6) | Richest open-source AI reading/translation extension here: BYOK providers, local/custom endpoints, TTS, subtitles, and batching — but GPL/commercial-dual licensed and broad-permission. |
-| [FluentRead](fluentread.md) | ✅ | C (6/6) | Translation-first open immersive translator with many engines and store links — less explicit than Margin Read on endpoint/privacy boundaries and more single-maintainer concentrated. |
-| [Margin Read](margin-read.md) | ✅ | C (5/6) | Best when MIT, BYOK, local OpenAI-compatible runtimes, and privacy docs decide the choice — but early Chrome/Chromium MVP with tiny adoption. |
-| [Pair Translate](pair-translate.md) | ✅ | C (5/6) | Lightweight bilingual translator with verified LLM/local templates and active releases — but GPL, young, and browser-side API-key handling remains a trust boundary. |
+| [Read Frog](read-frog.md) | ✅ | B (6/6) | The richest learning feature set and a fast release cadence, traded for GPL plus commercial dual licensing, a contributor grant to FEELIO, and a closed-source dependency. |
+| [FluentRead](fluentread.md) | ✅ | C (6/6) | The broadest reading coverage in one extension, paid for with GPL licensing, a single-maintainer bus factor, and less control over where text goes by default. |
+| [Margin Read](margin-read.md) | ✅ | C (5/6) | An auditable data flow and permissive license, traded for a minimal feature set, tiny adoption, and no release since June 2026. |
+| [Pair Translate](pair-translate.md) | ✅ | C (5/6) | A lighter footprint with direct provider requests, traded for fewer immersive-translation workflows, adoption an order of magnitude below Read Frog, and broad all-URLs permissions. |
 | [NetNewsWire](netnewswire.md) | ✅ | B (6/6) | Use it when you read many feeds on Mac/iPhone and want a fast, ad-free native RSS client you own — but only on Apple platforms, never elsewhere. |
 | [Just Read](just-read.md) | ✅ | C (6/6) | Use it when you want to strip ads and clutter from an article in-browser, your way, with per-site selectors — but it's EULA-licensed source, not real OSS. |
 | [Bilingual Book Maker](bilingual-book-maker.md) | ✅ | A (5/6) | The mature CLI path for bilingual ebook files: any LLM/MT backend, resume, PyPI — but paragraph-stream translation without a curated glossary. |

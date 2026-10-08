@@ -6,8 +6,8 @@ category: proxy-pool
 tags: [proxy, proxy-pool, scrapy, redis, distributed, scraping, python, self-hosted]
 language: Python
 license: MIT
-maturity: last release v0.1 (2018), repo dormant (pushed 2022-12), ~5.5k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: last release v0.1 (2018-03-11), last commit 2019-07-16, quiet since (as of 2026-10-08), ~5.5k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2022-12-26T11:50:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:21:07Z
+  computed_at: 2026-10-08T08:25:11Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2630
+        last_commit_age_days: 2641
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3298
-        last_commit_age_days: 2630
+        repo_age_days: 3309
+        last_commit_age_days: 2641
         cohort: app
     governance:
       grade: "?"
@@ -80,12 +80,33 @@ You're running a *large, distributed* crawl — many spiders across machines ham
 
 This is the right reach when scale and availability are the actual problem — Redis-backed task routing, distributed crawlers, and a consumer client matter — and you accept the heavier infra that comes with it.
 
+## How it works
+
+haipproxy is a set of cooperating Python processes that share one Redis database (an in-memory store used here as both the job queue and the proxy pool). **It does the harvesting and checking for you**: crawler processes built on Scrapy (a scraping framework) fetch free proxy lists from public sites — Splash, a headless rendering service, handles the ones that need JavaScript — and push the IPs into Redis; scheduler processes re-queue that work on a timer, and validator processes test each IP against the specific sites you care about, scoring it per site, because one proxy can work for one site and fail on another. **You run Redis and the components, then consume**: there is no HTTP API — your spider imports the bundled `ProxyFetcher` client and asks for a proxy validated for its target, or routes through the bundled Squid forwarder on port 3128. The README itself says to download a release rather than run `master`, which is not guaranteed to work.
+
+![haipproxy — backbone user story](../../assets/flow/haipproxy.svg)
+
+<!-- flow-steps:begin (generated from flows/haipproxy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Point the settings at Redis and Splash, then start every component — `docker-compose up` — component: `config/settings.py`
+2. **haipproxy**: Crawlers scrape public proxy-list sites and push the IPs into Redis queues — component: `crawler_booter.py`
+3. **haipproxy**: Schedulers re-queue the work; validators test each IP against specific target sites and score it — component: `scheduler + validator`
+4. **You**: In your spider, ask the client for proxies validated for your target site — `ProxyFetcher('zhihu', strategy='greedy', redis_args=args)`
+5. **haipproxy**: Hands back a proxy from that site's scored pool on each request
+
+**Value**: A large distributed crawl keeps a self-refreshing pool of free proxies without buying any
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **A small or single-machine scrape.** The Scrapy + Redis + scrapy-splash stack is overkill for a handful of requests; a single-node pool (or just a paid proxy) is far less to run.
 - **You can't run Redis (and possibly Splash).** Redis is a hard dependency for the task queues and pool state; JS-rendered sources pull in scrapy-splash. If you can't operate those, this isn't your tool.
 - **Production reliability on free proxies.** It pools *free public* proxies — flaky by nature; the README itself notes some proxies can't reach sites like Google due to geo-restrictions. For must-not-fail jobs, buy commercial proxies.
-- **You need a maintained dependency.** The repo is **long-dormant** — last release ~2018, last push 2022-12. You'd be adopting and operating effectively-frozen, Python-2/3-era code; expect compatibility work (see Health). [未验证]
+- **You need a maintained dependency.** The repo is **long-dormant** — last release v0.1 (2018-03), last default-branch commit 2019-07-16. You'd be adopting and operating effectively-frozen, Python-2/3-era code; expect compatibility work (see Health). [未验证]
 - **Sensitive traffic.** Routing credentials/private data through unknown harvested proxies is a data-exposure risk. [推断]
 
 ## Comparison
@@ -118,15 +139,15 @@ This is the right reach when scale and availability are the actual problem — R
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** **Dormant.** Last release v0.1 is from 2018; last push 2022-12 with no activity since — not actively developed, though not formally archived. Treat as frozen, Python-2/3-transition-era code.
+- **Maintenance (as of 2026-10-08).** **Dormant.** Last release v0.1 is from 2018-03; last default-branch commit 2019-07-16 (2641 days ago; the 2022-12 push touched no default-branch code), no activity since — not actively developed, though not formally archived. Treat as frozen, Python-2/3-transition-era code.
 - **Governance / bus factor.** An **Organization** account (SpiderClub) but with a very small active contributor core; the org wrapper doesn't change that real maintenance has stopped. Bus factor is effectively the same as an abandoned single-maintainer repo. [推断]
-- **Age & Lindy verdict.** ~9 years old (created 2017-09) but **dormant since ~2022** ⇒ Lindy *fails*: age without continued activity signals abandonment, not durability. Old + dormant is a red flag, not social proof.
+- **Age & Lindy verdict.** ~9 years old (created 2017-09) but **dormant since 2019-07** ⇒ Lindy *fails*: age without continued activity signals abandonment, not durability. Old + dormant is a red flag, not social proof.
 - **Adoption.** ~5.5k stars and ~900 forks reflect real historical popularity (especially in the Chinese scraping community), but on a dormant repo this is *legacy* adoption — not evidence it works on today's stack. [未验证]
 - **Risk flags.** Long dormancy + likely modern-stack incompatibility are the headline risks, on top of the inherent unreliability/security exposure of free public proxies. MIT, no relicense concern.
 
 ## Caveats (unverified)
 
-- [未验证] ~5.5k stars as of 2026-06; last release v0.1 (2018), last push 2022-12 — figures are date-sensitive and from the GitHub API.
+- [未验证] ~5.5k stars as of 2026-10-08; last release v0.1 (2018-03-11), last default-branch commit 2019-07-16, last push 2022-12 — figures are date-sensitive and from the GitHub API.
 - [未验证] Compatibility with current Python/Scrapy is not tested here; ~2018-era code likely needs porting/pinning, but the specific failures are unconfirmed.
 - [未验证] The ~80k-requests/11-hours figure is the project's own benchmark from the README, not independently reproduced.
 - [推断] "Org account but effectively abandoned" is inferred from the commit/release gap, not an official deprecation notice; free-proxy security risk is a general property, not a measured claim about its sources.

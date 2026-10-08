@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "cobalt does",
+    "zh": "cobalt 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy the sample compose file, set your instance URL, and start the API container",
+      "zh": "复制示例 compose 文件，填上实例地址，启动 API 容器",
+      "code": "API_URL · docker compose up -d",
+      "component": {
+        "en": "processing API",
+        "zh": "处理 API"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Build the static web frontend pointed at that API",
+      "zh": "构建静态 Web 前端，指向这个 API",
+      "code": "WEB_DEFAULT_API · pnpm run build",
+      "component": {
+        "en": "SvelteKit web app",
+        "zh": "SvelteKit 前端"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Paste a public post link into the page (or POST it to the API)",
+      "zh": "把公开帖子的链接粘进页面（或 POST 给 API）",
+      "code": "POST /"
+    },
+    {
+      "lane": "them",
+      "en": "Matches the link to a service and extracts the media streams",
+      "zh": "识别链接属于哪个站点，抽出媒体流"
+    },
+    {
+      "lane": "them",
+      "en": "Answers redirect, tunnel or picker; a tunnel streams the file through, remuxed by ffmpeg, without caching",
+      "zh": "回给你直链或多选列表，或由它中转文件，不留缓存",
+      "code": "GET /tunnel"
+    }
+  ],
+  "value": {
+    "en": "Anyone on your network gets a file from a link in one paste — no CLI install, no ads, on an instance you control",
+    "zh": "网络里任何人粘一次链接就拿到文件——不用装 CLI，没有广告，实例在你手里"
+  },
+  "sources": [
+    "https://github.com/imputnet/cobalt/blob/main/docs/run-an-instance.md (docker compose up -d, sample compose with API_URL, watchtower)",
+    "https://github.com/imputnet/cobalt/blob/main/web/README.md (static SvelteKit + Vite build, WEB_DEFAULT_API required, pnpm run build)",
+    "https://github.com/imputnet/cobalt/blob/main/docs/api.md (POST /, GET /tunnel, response status tunnel/redirect/picker/local-processing)",
+    "https://github.com/imputnet/cobalt#ethics ('never caches any content', works like a proxy); api/README.md (ffmpeg for muxing/encoding)"
+  ]
+}

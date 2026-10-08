@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "wxpy does", "zh": "wxpy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into Python 3.4–3.6 or 2.7", "zh": "装进 Python 3.4–3.6 或 2.7", "code": "pip install -U wxpy"},
+    {"lane": "you", "en": "Create a bot and scan the QR code with your phone", "zh": "创建机器人，用手机扫码登录", "code": "bot = Bot()"},
+    {"lane": "them", "en": "Logs in through its pinned ItChat and turns friends, groups and official accounts into objects", "zh": "通过钉死版本的 ItChat 登录，把好友、群、公众号变成对象", "component": {"en": "ItChat 1.2.32 underneath", "zh": "底层 ItChat 1.2.32"}},
+    {"lane": "you", "en": "Register a reply function for a chat, a friend, or a message type", "zh": "给某个聊天、好友或消息类型注册回复函数", "code": "@bot.register(my_friend)"},
+    {"lane": "them", "en": "Routes each new message to the last-registered matching function, on worker threads", "zh": "把每条新消息交给最后注册的匹配函数，用多线程处理"},
+    {"lane": "them", "en": "Sends the function's return value back into that chat", "zh": "把函数的返回值发回那个聊天"}
+  ],
+  "value": {"en": "Personal-account automation in object-style Python instead of raw ItChat dicts — while the web login worked", "zh": "用对象式 Python 写个人号自动化，不用摆弄 ItChat 的原始字典——前提是网页登录还能用"},
+  "sources": [
+    "README.rst @ master (archived; last commit 2017-07-29): 轻松安装 ('wxpy 支持 Python 3.4-3.6，以及 2.7 版本'; pip install -U wxpy); 简单上手 (bot = Bot() 扫码登陆; @bot.register(my_friend) with return value as reply; '优先匹配后注册的函数'; bot.join()); 模块特色 ('全面对象化接口', '默认多线程响应消息', '可混合使用 itchat 的原接口')",
+    "setup.py @ master (install_requires: itchat==1.2.32, requests, future)"
+  ]
+}

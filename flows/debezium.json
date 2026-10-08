@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Debezium does", "zh": "Debezium 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run Kafka and a Kafka Connect worker from Debezium's connect image", "zh": "跑起 Kafka，再用 Debezium 镜像起 Kafka Connect", "code": "quay.io/debezium/connect"},
+    {"lane": "you", "en": "Turn on the database's change log and create a user with replication rights", "zh": "打开数据库的变更日志，建一个有复制权限的用户"},
+    {"lane": "you", "en": "Register a connector: which database, which tables, which topic prefix", "zh": "注册一个连接器：连哪个库、哪些表、主题前缀是什么", "code": "POST localhost:8083/connectors/", "component": {"en": "Kafka Connect REST API", "zh": "Kafka Connect REST API"}},
+    {"lane": "them", "en": "Snapshots the existing rows, then reads the transaction log from that point on", "zh": "先给现有数据做一次快照，再从那个位置起读事务日志", "component": {"en": "source connector", "zh": "源连接器"}},
+    {"lane": "them", "en": "Emits one event per committed row change, with before/after values, to a topic per table", "zh": "每条已提交的行变更发一条事件（含前后值），每张表一个主题"},
+    {"lane": "you", "en": "Consume the table's topic from your service or a sink connector", "zh": "在你的服务或 sink 连接器里消费这张表的主题", "code": "dbserver1.inventory.customers"}
+  ],
+  "value": {"en": "Caches, search indexes and other services see every committed change, in order, without dual writes or polling", "zh": "缓存、搜索索引和其他服务按顺序拿到每一次已提交的变更，不用双写，也不用轮询"},
+  "sources": [
+    "https://github.com/debezium/debezium#basic-architecture (Kafka Connect, one topic per table, committed changes only)",
+    "documentation/modules/ROOT/partials/modules/tutorial/proc-starting-kafka-connect.adoc (quay.io/debezium/connect image, port 8083)",
+    "documentation/modules/ROOT/partials/modules/tutorial/proc-registering-connector-monitor-inventory-database.adoc (curl POST localhost:8083/connectors/, topic.prefix dbserver1)",
+    "documentation/modules/ROOT/partials/modules/tutorial/proc-viewing-create-event.adoc (dbserver1.inventory.customers topic)"
+  ]
+}

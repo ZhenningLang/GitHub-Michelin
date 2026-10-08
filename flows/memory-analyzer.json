@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "memory-analyzer does", "zh": "memory-analyzer 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install its two helpers where the target process can import them, and allow ptrace (or run as root)", "zh": "把两个辅助库装到目标能 import 的位置，放开 ptrace", "code": "objgraph · pympler"},
+    {"lane": "you", "en": "Point it at the live process by PID", "zh": "按 PID 指向那个活进程", "code": "memory_analyzer run $PID", "component": {"en": "memory_analyzer CLI", "zh": "memory_analyzer 命令行"}},
+    {"lane": "them", "en": "Attaches GDB and pauses the process and all its threads", "zh": "用 GDB 附着，暂停进程及其全部线程", "component": {"en": "GDB", "zh": "GDB"}},
+    {"lane": "them", "en": "Counts live objects per type and their sizes inside the target, saves a snapshot file, releases it", "zh": "在目标内部按类型清点活对象和大小，存快照文件，放开进程"},
+    {"lane": "you", "en": "Some time later, run again against the same PID with the earlier snapshot", "zh": "过一段时间，带上前一次快照对同一 PID 再跑", "code": "memory_analyzer run $PID --snapshot <previous snapshot file>"},
+    {"lane": "them", "en": "Shows a comparison page in its terminal UI: which object types grew in count and size", "zh": "在终端界面里给出对比页：哪些类型的数量和大小在涨"}
+  ],
+  "value": {"en": "See which object types are leaking inside a running process without adding code, redeploying or restarting it", "zh": "不加代码、不重新部署、不重启，就能看到一个运行中的进程里哪类对象在泄漏"},
+  "sources": [
+    "https://github.com/facebookarchive/memory-analyzer#memory_analyzer (install objgraph and pympler in the target binary's library path; process and all threads paused)",
+    "https://github.com/facebookarchive/memory-analyzer#how-to-run (memory_analyzer run $PID; ncurses UI; memory_analyzer_out/ snapshot file; ptrace_scope or root)",
+    "https://github.com/facebookarchive/memory-analyzer#comparing-snapshots (memory_analyzer run $PID --snapshot <previous snapshot file>; snapshot page in the UI)",
+    "https://github.com/facebookarchive/memory-analyzer#specify-the-executable (launches GDB)"
+  ]
+}

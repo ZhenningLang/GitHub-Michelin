@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Marker does",
+    "zh": "Marker 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install Marker plus an inference backend (vLLM via Docker on GPU, llama.cpp on CPU)",
+      "zh": "装 Marker 和推理后端（vLLM 或 llama.cpp）",
+      "code": "pip install marker-pdf · brew install llama.cpp"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at one PDF or a whole folder",
+      "zh": "指给它一个 PDF 或一整个目录",
+      "code": "marker_single /path/to/file.pdf · marker /path/to/input/folder"
+    },
+    {
+      "lane": "them",
+      "en": "Reads the PDF text layer and detects the layout: columns, tables, headers, figures",
+      "zh": "读出 PDF 文字层，识别版面：分栏、表格、页眉、插图"
+    },
+    {
+      "lane": "them",
+      "en": "Starts a local Surya OCR server and sends it only scanned or garbled pages, equations and shaky tables",
+      "zh": "拉起本地 Surya OCR 服务，只送扫描页、乱码页、公式和存疑表格"
+    },
+    {
+      "lane": "them",
+      "en": "Strips headers/footers, rebuilds tables and writes Markdown/JSON with extracted images",
+      "zh": "去掉页眉页脚、重建表格，写出带图片的 Markdown/JSON"
+    }
+  ],
+  "value": {
+    "en": "PDFs become clean Markdown with tables and LaTeX math, on your own hardware, ready for RAG or training",
+    "zh": "PDF 在自己的机器上变成带表格和 LaTeX 公式的干净 Markdown，直接喂给 RAG 或训练"
+  },
+  "sources": [
+    "https://github.com/datalab-to/marker#installation (pip install marker-pdf, brew install llama.cpp, vLLM via Docker + NVIDIA Container Toolkit)",
+    "https://github.com/datalab-to/marker#convert-a-single-file (marker_single /path/to/file.pdf) and #convert-multiple-files (marker /path/to/input/folder)",
+    "https://github.com/datalab-to/marker#usage (pdftext text layer, layout model, Surya VLM server spawned on first use, selective OCR)",
+    "https://github.com/datalab-to/marker/releases/tag/v2.0.0 (selective OCR design, modes)"
+  ]
+}

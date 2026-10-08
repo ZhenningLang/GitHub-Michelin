@@ -6,8 +6,8 @@ category: networking
 tags: [traffic-shaping, bandwidth, qos, tc, htb, linux, shell]
 language: Shell
 license: GPL-2.0
-maturity: stable, low activity (last push 2024-07), ~1.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v1.4.1 (VERSION file, no tagged releases), last commit 2021-10-15, quiet since (as of 2026-10-08), ~1.9k stars
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2024-07-25T02:46:32Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:19:08Z
+  computed_at: 2026-10-08T08:23:33Z
   overall: E
   overall_score: 0.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1808
+        last_commit_age_days: 1819
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5129
-        last_commit_age_days: 1808
+        repo_age_days: 5140
+        last_commit_age_days: 1819
         cohort: tool
     governance:
       grade: "?"
@@ -79,13 +79,34 @@ You're on a Linux box — a home server seeding torrents, a CI runner, a shared 
 
 It fits ad-hoc and lightweight-persistent QoS on a *single host's* adapter: throttle a backup job, keep a downloader from eating the whole pipe, or give a low-powered router a simple upload/download ceiling.
 
+## How it works
+
+wondershaper is one Bash script that writes Linux traffic-control rules for you. Linux can already throttle a network card in the kernel through `tc`, but you have to describe queues ("qdiscs" — the waiting lines packets join before they leave), classes and filters in a terse mini-language. **The script ships that whole recipe**: for outgoing traffic it builds an HTB tree (Hierarchical Token Bucket — a meter that hands out sending permission at your chosen rate) with three priority classes, and since Linux cannot directly delay packets that are already arriving, it redirects incoming traffic through a virtual interface, `ifb0`, and caps it there. You only name the interface and the two rates in kilobits per second; the script sets the rules and exits, and the kernel enforces them until you clear them with `-c` or reboot. Keeping the cap after a reboot is a config file plus the bundled systemd unit — also yours to switch on.
+
+![wondershaper — backbone user story](../../assets/flow/wondershaper.svg)
+
+<!-- flow-steps:begin (generated from flows/wondershaper.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Clone the repo; optionally install the script system-wide — `git clone https://github.com/magnific0/wondershaper.git · sudo make install`
+2. **You**: Pick the interface and set download/upload ceilings in Kbps — `sudo ./wondershaper -a wlp4s0 -u 4096 -d 8192`
+3. **wondershaper**: Builds an HTB tree on the interface's outgoing side with three priority classes — component: `tc qdisc: htb + sfq`
+4. **wondershaper**: Redirects incoming traffic through the ifb0 virtual device to cap downloads too — component: `ifb0`
+5. **wondershaper**: Exits; the kernel enforces the caps until cleared or reboot
+
+**Value**: One command caps a link's bandwidth, without hand-writing tc qdisc/class/filter rules
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need real multi-class QoS / per-flow prioritization.** wondershaper sets a simple overall up/down ceiling (with some prioritization heuristics); for fine-grained per-application/per-IP traffic classes, write `tc`/`nftables` rules directly or use a router OS (OpenWrt's SQM/`cake`).
-- **You want modern bufferbloat-aware shaping.** The script's lineage is HTB-based; for latency-under-load, **`cake`** / `fq_codel` (often via SQM) is the current best practice — verify what qdisc this version applies before relying on it for bufferbloat control. [未验证]
+- **You want modern bufferbloat-aware shaping.** Version 1.4.1 applies HTB with `sfq` leaves (and an `ifb0` redirect for downloads) — no `cake` or `fq_codel`. For latency under load, use **`cake`** / `fq_codel`, typically via OpenWrt SQM or a hand-written `tc` line.
 - **You're not on Linux with `tc`.** It's a Bash wrapper around `iproute2`'s `tc`; no Windows/macOS, and it needs `iproute2` present. Containers/network namespaces add caveats.
 - **You need shaping across many hosts centrally.** It's a per-host CLI, not a fleet/SDN controller — no central policy, no coordination between machines.
-- **You require active upstream support.** Last repo push is **2024-07** and it's an old, thin script; it works, but treat it as stable-but-coasting, and test on your kernel/`iproute2` version. [未验证]
+- **You require active upstream support.** The last commit on `master` is **2021-10-15** (five years quiet as of 2026-10-08); it's an old, thin script with no one fixing it. Read it once and test on your kernel/`iproute2` version, or write the few `tc` lines yourself so you own them. [未验证]
 
 ## Comparison
 
@@ -107,7 +128,7 @@ It fits ad-hoc and lightweight-persistent QoS on a *single host's* adapter: thro
 
 - **Runtime:** a Linux kernel with traffic-control support and **`iproute2`** (`tc`, `ip`) installed; **root/sudo** to apply rules. Optionally **systemd** for the persistent service.
 - **External services:** none — it's purely local kernel queueing configuration.
-- **Install:** clone the repo / `make install`, or distro packages where available; it's just a script + optional unit file. [推断]
+- **Install:** clone the repo and run `./wondershaper` in place, or `sudo make install` to put it in `/usr/bin`; persistent mode reads `/etc/systemd/wondershaper.conf` via the bundled `wondershaper.service`. Distro packages may exist but were not checked.
 
 ## Ops difficulty
 
@@ -116,7 +137,7 @@ It fits ad-hoc and lightweight-persistent QoS on a *single host's* adapter: thro
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last repo push **2024-07**; no GitHub tagged releases here. Effectively **stable / low-activity** — a small mature script that rarely needs changes, but not actively developed. Not archived. [未验证]
+- **Maintenance (as of 2026-10-08).** Last commit on `master` **2021-10-15** (the 2024-07 `pushed_at` did not touch the default branch); version 1.4.1 per the `VERSION` file, no tagged GitHub releases, not archived. **Dormant**, not merely low-activity: a small script that still does what it says, but nobody is responding to kernel or `iproute2` changes.
 - **Governance / bus factor.** Owner type **User** (magnific0, ~20 commits) with a few minor contributors — a **single-maintainer** small utility; bus factor is thin but the surface is tiny. [推断]
 - **Age & Lindy verdict.** Created **2012** (and itself a continuation of the much older Wondershaper lineage from the Linux Advanced Routing HOWTO) — ~14 years; old **but quiet**, so Lindy is *moderate*: long-lived and still works, yet HTB-era design is dated next to modern `cake`/`fq_codel`. [推断]
 - **Adoption.** ~1.9k stars and a long history as the go-to "simple bandwidth limit" script in Linux how-tos; widely copied. [未验证]
@@ -124,8 +145,8 @@ It fits ad-hoc and lightweight-persistent QoS on a *single host's* adapter: thro
 
 ## Caveats (unverified)
 
-- [未验证] ~1.9k stars / ~277 forks as of 2026-06 — date-sensitive, indicative only.
-- [未验证] No GitHub releases are tagged; versioning/changelog lives in the script/README — verify the version and qdisc behavior of what you install.
-- [推断] Exact qdisc applied by the current version (HTB vs anything newer) and its bufferbloat behavior are not verified here — test on your kernel.
-- [推断] Install path (make/package/manual) depends on your distro; the repo is essentially one script plus an optional systemd unit.
+- [未验证] ~1.9k stars / ~277 forks per the GitHub API on 2026-10-08 — date-sensitive, indicative only.
+- [未验证] No GitHub releases are tagged; the version (1.4.1) lives in the `VERSION` file and `ChangeLog`. A distro package may ship a different version — check what you install.
+- [推断] The qdisc layout (HTB + `sfq`, `ifb0` for ingress) was read from the script on 2026-10-08; its actual latency-under-load behavior was not measured — test on your kernel.
+- [未验证] Distro packages (and whether they match this repo) were not checked.
 - [未验证] Behavior inside containers / network namespaces and on non-systemd inits is not verified.

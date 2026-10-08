@@ -7,7 +7,7 @@ tags: [selenium, browser-automation, http-interception, mitm-proxy, python, arch
 language: Python
 license: MIT
 maturity: v5.1.0 (2022-10), archived & unmaintained, ~2.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-01-03T15:34:32Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:29:54Z
+  computed_at: 2026-10-08T08:28:17Z
   overall: D
   overall_score: 1.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 998
+        last_commit_age_days: 1009
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,7 +45,7 @@ health:
         registry: pypi.org
         canonical_package: selenium-wire
         dependent_repos_count: 297
-        downloads_last_month: 510069
+        downloads_last_month: 495770
         graph_tier: C
         volume_tier: B
         cross_check_divergence: 1.0
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3022
-        last_commit_age_days: 998
+        repo_age_days: 3033
+        last_commit_age_days: 1009
         cohort: library
     governance:
       grade: "?"
@@ -82,6 +82,28 @@ Extends Selenium's Python bindings so you can inspect and modify the browser's u
 You're maintaining a legacy Python scraping or test suite built on Selenium, and you need to read the *responses* the page fetches in the background — an API call that returns a JSON payload, an auth token in a request header, a redirect chain — not just the rendered DOM. Plain Selenium drives the browser but hands you no view of its network layer. You add `from seleniumwire import webdriver`, keep all your existing Selenium code, and now every request/response is captured: you can read `driver.requests`, assert on headers and bodies, modify requests on the fly, block or mock responses, inject basic-auth, and export a HAR. Under the hood it stands up its own man-in-the-middle proxy and a generated CA cert to decrypt HTTPS.
 
 For an *existing* project already pinned to it, that's still a working pattern. For anything new, see the next section first — this library is frozen.
+
+## How it works
+
+Plain Selenium tells the browser what to do but cannot see what the browser fetches over the network. Selenium Wire closes that gap by putting itself in the middle: **when you create the driver, it starts its own man-in-the-middle proxy — a relay that sits between the browser and the internet, decrypts HTTPS with its own root certificate, and records everything that passes through — and points the browser at it.** You change one import and otherwise write ordinary Selenium; the library captures the traffic behind the scenes and exposes it as `driver.requests` (URL, status, headers, body per request). If you want to change traffic rather than just read it, you assign a function to `driver.request_interceptor` / `driver.response_interceptor` and it is called on every request or response in flight — add a header, block a URL, return a mocked response. What you still own: a browser and matching webdriver, OpenSSL, the "Not Secure" padlock the self-signed certificate causes, and a working version combination now that nobody upstream will fix breakage.
+
+![selenium-wire — backbone user story](../../../assets/flow/selenium-wire.svg)
+
+<!-- flow-steps:begin (generated from flows/selenium-wire.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it next to Selenium 4, a browser and its webdriver on PATH — `pip install selenium-wire`
+2. **You**: Swap one import; the rest of your Selenium code stays as it is — `from seleniumwire import webdriver`
+3. **Selenium Wire**: Routes the browser through its own MITM proxy and has it accept its root certificate
+4. **You**: Drive the browser exactly as before — `driver.get('https://www.google.com')`
+5. **Selenium Wire**: Decrypts and stores every request and response the page makes, running your interceptors
+6. **You**: Read the captured traffic: URL, status, headers, body — `driver.requests · driver.wait_for_request(pat, timeout=10)`
+
+**Value**: The background API calls and headers behind a Selenium page, without leaving Selenium — on a library frozen since 2024
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -127,7 +149,6 @@ For an *existing* project already pinned to it, that's still a working pattern. 
 
 ## Caveats (unverified)
 
-- [未验证] Last PyPI publish date is inferred (~2022-10) from tag 5.1.0; PyPI was not queried directly.
 - [未验证] Exact archive date — only the last commit (2024-01-03) is known; the repo was archived sometime after that.
 - [推断] The bundled MITM proxy is selenium-wire's own implementation and mitmproxy is dev/test-only, inferred from its placement in setup.py's extras, not from reading the proxy source.
 - [推断] Selenium 4 CDP/BiDi feature parity for interception versus selenium-wire was reasoned, not benchmarked.

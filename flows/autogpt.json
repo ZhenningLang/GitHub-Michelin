@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "AutoGPT Platform does", "zh": "AutoGPT Platform 做的"},
+  "steps": [
+    {"lane": "you", "en": "Bring up the self-hosted platform (or sign up for the hosted one)", "zh": "启动自托管平台（或注册托管版）", "code": "make init-env · docker compose up -d --build"},
+    {"lane": "you", "en": "Describe the job to AutoPilot, or drag blocks onto the Build canvas and wire their pins", "zh": "把活描述给 AutoPilot，或在 Build 画布上拖积木块、连接口", "component": {"en": "AutoPilot / Builder", "zh": "AutoPilot / 构建器"}},
+    {"lane": "you", "en": "Add the app credentials once and schedule the agent", "zh": "一次配好应用凭据，给 agent 设定时"},
+    {"lane": "them", "en": "At the scheduled time or on a webhook, queues a run for an executor", "zh": "到点或收到 webhook，把一次运行排给执行器", "component": {"en": "scheduler + executor", "zh": "调度器 + 执行器"}},
+    {"lane": "them", "en": "Fires each block once its required inputs arrive; independent branches run in parallel", "zh": "每个块的必填输入一到齐就执行，互不依赖的分支并行"},
+    {"lane": "them", "en": "Records outputs, cost and status for every run in the Agents dashboard", "zh": "在 Agents 面板记下每次运行的产出、成本和状态"}
+  ],
+  "value": {"en": "A recurring multi-app chore runs itself; you only read the results", "zh": "反复出现的跨应用杂活自己跑完，你只看结果"},
+  "sources": [
+    "docs/platform/getting-started.md (make init-env; docker compose up -d --build in autogpt_platform/)",
+    "https://github.com/Significant-Gravitas/AutoGPT#four-surfaces-one-platform (AutoPilot, Agents, Marketplace, Build)",
+    "docs/platform/scheduling-and-triggers.md (Schedule Task; webhook triggers)",
+    "docs/platform/data-flow-and-execution.md (blocks run when required inputs arrive)",
+    "autogpt_platform/docker-compose.platform.yml (scheduler_server, executor services)"
+  ]
+}

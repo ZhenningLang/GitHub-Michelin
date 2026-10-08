@@ -7,30 +7,30 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **DevToys** | 想把 Base64/JSON/哈希/diff 等开发小工具离线本地化、收进一个跨平台桌面应用、不再用不可信在线网站时，用它。 | B（5/6） | [→](devtoys.zh.md) |
+| **DevToys** | 当你想把 JWT/Base64 解码、JSON 格式化、diff、哈希等约 30 个开发小工具收进一个离线桌面应用、不再把密钥粘进在线网站时用它——但所有 2.x 构建都是预发布版，更新稀疏且成批出现。 | B（5/6） | [→](devtoys.zh.md) |
 | **CyberChef** | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 | A（6/6） | [→](cyberchef.zh.md) |
 | **OpenZL** | 当你要把 TB 级的某种高度结构化/数值格式压得比通用 zstd 更狠时使用。 | C（5/6） | [→](openzl.zh.md) |
 | **tqdm** | 当你想给 Python 循环/CLI/notebook 加一个快速、低开销的进度条时用它。 | B（5/6） | [→](tqdm.zh.md) |
 | **Faker (faker-js)** | 当你需要在 JS/TS 里生成逼真的假/mock 数据（姓名、地址、金融…）用于测试和填充时用它。 | A（5/6） | [→](faker-js.zh.md) |
 | **fontTools** | 当你需要对字体做程序化处理——子集化网页字体、转格式、查改表——时用它——但它只编辑字体文件，不绘制字形也不做文字排版。 | A（6/6） | [→](fonttools.zh.md) |
-| **Flashlight** | 当你在维护一台 10.10–10.15 的老 macOS、想给 Spotlight 加插件时用它——但它自 2020 年起已弃，且需关闭 SIP，日常机器上别碰。 | E（3/6） | [→](flashlight.zh.md) |
-| **ripgrep** | 当你需要一个快速、智能、跨平台的搜索工具，默认遵守 gitignore，且在 Windows、macOS 和 Linux 上行为一致时用它。 | B（6/6） | [→](ripgrep.zh.md) |
-| **fzf** | :cherry_blossom: A command-line fuzzy finder | A（6/6） | [→](fzf.zh.md) |
-| **jq** | Command-line JSON processor | A（5/6） | [→](jq.zh.md) |
+| **Flashlight** | 仅当你守着一台 macOS 10.10–10.15 老机器、想让原生 Spotlight 直接跑 Python 插件给出结果时用它——但它自 2020 年起已弃，Big Sur 及以后基本不可用，且要关闭 SIP 向系统进程注入代码。 | E（3/6） | [→](flashlight.zh.md) |
+| **ripgrep** | 当你或编码 agent 一天要在代码库里搜几十次、想要默认递归、遵守 .gitignore 的快速文本搜索时用它——但不适合要在任意 POSIX 机器上跑的可移植脚本、归档内部搜索，或只知道行为不知道标识符的场景。 | B（6/6） | [→](ripgrep.zh.md) |
+| **fzf** | 当你在终端里频繁从长列表（历史命令、文件、分支、进程）里挑一项、想用 CTRL-R、CTRL-T 边敲边筛时用它——但它只过滤喂给它的行、不搜文件内容，而且实际上是单人维护。 | A（6/6） | [→](fzf.zh.md) |
+| **jq** | 当终端里满是嵌套 JSON（kubectl、aws、gh api、webhook 负载），你要用一行能接管道的命令抽取或过滤字段时用它——但不适合几 GB 的分析型查询、非 JSON 输入，或超过 2^53 的整数运算。 | A（5/6） | [→](jq.zh.md) |
 
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [DevToys](devtoys.zh.md) | ✅ | B（5/6） | 想把 Base64/JSON/哈希/diff 等开发小工具离线本地化、收进一个跨平台桌面应用、不再用不可信在线网站时，用它。 |
+| [DevToys](devtoys.zh.md) | ✅ | B（5/6） | 换来本地运行、能识别剪贴板的一站式便利，代价是工具多为一次性、不能串成 recipe，版本线也慢且只有预发布版。 |
 | [CyberChef](cyberchef.zh.md) | ✅ | A（6/6） | 当你需要在浏览器里离线串联编解码、加解密、压缩和数据分析变换、且数据不能外发时用它。 |
 | [OpenZL](openzl.zh.md) | ✅ | C（5/6） | 当你要把 TB 级的某种高度结构化/数值格式压得比通用 zstd 更狠时使用。 |
 | [tqdm](tqdm.zh.md) | ✅ | B（5/6） | 当你想给 Python 循环/CLI/notebook 加一个快速、低开销的进度条时用它。 |
 | [Faker (faker-js)](faker-js.zh.md) | ✅ | A（5/6） | 当你需要在 JS/TS 里生成逼真的假/mock 数据（姓名、地址、金融…）用于测试和填充时用它。 |
 | [fontTools](fonttools.zh.md) | ✅ | A（6/6） | 当你需要对字体做程序化处理——子集化网页字体、转格式、查改表——时用它——但它只编辑字体文件，不绘制字形也不做文字排版。 |
-| [Flashlight](flashlight.zh.md) | ✅ | E（3/6） | 当你在维护一台 10.10–10.15 的老 macOS、想给 Spotlight 加插件时用它——但它自 2020 年起已弃，且需关闭 SIP，日常机器上别碰。 |
-| [ripgrep](ripgrep.zh.md) | ✅ | B（6/6） | 当你需要一个快速、智能、跨平台的搜索工具，默认遵守 gitignore，且在 Windows、macOS 和 Linux 上行为一致时用它。 |
+| [Flashlight](flashlight.zh.md) | ✅ | E（3/6） | 换来不另装启动器就能扩展 Spotlight；代价是向系统进程注入代码、关闭 SIP，且不会再有修复——要维护中的方案请用 Alfred 或 Raycast。 |
+| [ripgrep](ripgrep.zh.md) | ✅ | B（6/6） | 换来贴合项目布局的默认行为和速度，代价是它不预装、不守任何标准，且主要靠一位维护者。 |
 
 ## 什么该放这里
 

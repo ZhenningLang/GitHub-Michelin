@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Casbin does", "zh": "Casbin 做的"},
+  "steps": [
+    {"lane": "you", "en": "Describe the access model once in a CONF file: request shape, rule shape, matcher", "zh": "在 CONF 文件里一次写好访问模型：请求格式、规则格式、匹配式", "code": "[request_definition] · [policy_definition] · [matchers]"},
+    {"lane": "you", "en": "List who may do what as policy rows, in a CSV file or a database via an adapter", "zh": "把谁能做什么写成策略行，放 CSV 文件或经适配器存数据库", "code": "p, alice, data1, read"},
+    {"lane": "you", "en": "Add the library and create an enforcer from model and policy", "zh": "引入库，用模型和策略创建一个 enforcer", "code": "casbin.NewEnforcer(\"path/to/model.conf\", \"path/to/policy.csv\")"},
+    {"lane": "them", "en": "Loads model and policy into memory and resolves role inheritance", "zh": "把模型和策略加载进内存，解析角色继承", "component": {"en": "enforcer + role manager", "zh": "enforcer 与角色管理器"}},
+    {"lane": "you", "en": "Call it right before each protected operation", "zh": "在每个受保护操作之前调用它", "code": "e.Enforce(sub, obj, act)"},
+    {"lane": "them", "en": "Evaluates the matcher against the rules, applies allow/deny effect, returns true or false", "zh": "用匹配式比对规则，套用允许或拒绝的合并方式，返回真或假"}
+  ],
+  "value": {"en": "Who-can-do-what becomes a model file plus policy rows you edit, not if-statements spread across handlers", "zh": "谁能做什么变成一份模型文件加若干策略行，不再是散落在各个处理函数里的 if 判断"},
+  "sources": [
+    "https://github.com/apache/casbin#how-it-works (PERM model CONF: request_definition, policy_definition, policy_effect, matchers; policy p, alice, data1, read)",
+    "https://github.com/apache/casbin#get-started (casbin.NewEnforcer(\"path/to/model.conf\", \"path/to/policy.csv\"); e.Enforce(sub, obj, act))",
+    "https://github.com/apache/casbin-website/blob/master/docs/Adapters.mdx (policy storage via adapters)"
+  ]
+}

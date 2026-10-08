@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Langfuse does", "zh": "Langfuse 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a self-hosted instance (or sign up for Langfuse Cloud)", "zh": "起一个自托管实例（或注册 Langfuse Cloud）", "code": "docker compose up"},
+    {"lane": "you", "en": "Create a project and API keys, and put them in your app's environment", "zh": "建项目、生成 API key，放进应用的环境变量", "code": "LANGFUSE_SECRET_KEY · LANGFUSE_PUBLIC_KEY · LANGFUSE_BASE_URL"},
+    {"lane": "you", "en": "Decorate your functions and swap in the wrapped OpenAI client", "zh": "给函数加装饰器，换上包装过的 OpenAI 客户端", "code": "@observe() · from langfuse.openai import openai"},
+    {"lane": "them", "en": "Sends each request's nested calls, with prompts, outputs and model parameters, as one trace", "zh": "把每个请求里嵌套的调用连同提示词、输出、模型参数作为一条轨迹发出", "component": {"en": "Langfuse SDK", "zh": "Langfuse SDK"}},
+    {"lane": "them", "en": "Processes events asynchronously and stores traces in ClickHouse", "zh": "异步处理事件，把轨迹写进 ClickHouse", "component": {"en": "langfuse-worker", "zh": "langfuse-worker"}},
+    {"lane": "them", "en": "Shows each request as a trace tree you can search, with sessions, latency and cost", "zh": "把每个请求展示成可搜索的调用树，附带会话、耗时和费用", "component": {"en": "langfuse-web UI", "zh": "langfuse-web 界面"}}
+  ],
+  "value": {"en": "A bad answer can be traced to the exact retrieval, prompt version and model call that caused it, instead of guessed from a final log line", "zh": "一个坏回答能追到具体是哪次检索、哪个提示词版本、哪次模型调用导致的，而不是对着最后一行日志猜"},
+  "sources": [
+    "https://github.com/langfuse/langfuse#self-host-langfuse (git clone --depth=1 …; docker compose up)",
+    "https://github.com/langfuse/langfuse#-quickstart (API credentials; LANGFUSE_SECRET_KEY / LANGFUSE_PUBLIC_KEY / LANGFUSE_BASE_URL; @observe(); from langfuse.openai import openai)",
+    "https://github.com/langfuse/langfuse/releases/tag/v3.0.0 (worker container processes events asynchronously; ClickHouse stores traces, observations, scores)",
+    "https://github.com/langfuse/langfuse/blob/main/docker-compose.yml (langfuse-web, langfuse-worker, clickhouse, postgres, redis, minio)"
+  ]
+}

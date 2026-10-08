@@ -3,22 +3,22 @@ name: MLT
 slug: mlt
 repo: https://github.com/mltframework/mlt
 category: editing-and-cutting
-tags: [video, editing, nle, timeline, compositing, c++, ffmpeg, kdenlive, shotcut]
-language: C++
+tags: [video, editing, nle, timeline, compositing, c, ffmpeg, kdenlive, shotcut]
+language: C
 license: LGPL-2.1-or-later
-maturity: v7.30.x, active, ~1.5k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v7.42.0 (2026-10-03), active, ~1.9k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-03T22:11:16Z
+  pushed_at: 2026-10-07T17:33:51Z
   default_branch: master
-  default_branch_sha: 76be5018b717d353459db4258093aff8c7d1ec7a
+  default_branch_sha: 77ae5f8f8cb4e2f502c5dc868d6c7cf7b45bfc54
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:48:09Z
+  computed_at: 2026-10-08T08:22:18Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,41 +29,41 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.0
-        qualifying_issues: 7
+        median_ttfr_hours: 0.6
+        qualifying_issues: 6
         band: default
         window_offset_days: 10
         source: issue
         inferred: false
     adoption:
-      grade: B
+      grade: C
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 577
-        homebrew_tier: B
-        release_downloads: 586031
-        release_assets: 40
+        homebrew_installs_90d: 461
+        homebrew_tier: C
+        release_downloads: 586909
+        release_assets: 41
         release_tier: C
         signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5275
-        last_commit_age_days: 1
+        repo_age_days: 5291
+        last_commit_age_days: 2
         cohort: framework
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 23
-        top1_share: 0.614
-        top3_share: 0.846
+        active_maintainers_12mo: 27
+        top1_share: 0.605
+        top3_share: 0.828
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,75 +77,91 @@ health:
 
 # MLT
 
+你的应用需要一条真正的剪辑时间线——片段精确裁到某一帧、两段之间交叉淡化、上面压一层标题、底下混一轨音乐——而每剪一刀调一次 FFmpeg，你就得手算偏移量，改一处就整个重新编码。MLT 是 Shotcut 和 Kdenlive 两款剪辑软件底下的开源引擎：你描述轨道、片段、滤镜和转场，它按顺序把帧从中拉过去，再播放或渲染出结果，真正的解码和编码交给 FFmpeg。
 
-用于构建非线性视频编辑器（NLE）的多媒体框架——支持时间线轨道、片段、转场、滤镜与合成，底层实际的编解码工作全部委托给 FFmpeg/libav 完成。它不是独立的剪辑软件，而是 Shotcut 和 Kdenlive 的底层引擎。
-
-![mlt — 健康度雷达](../../../../assets/health/mlt.zh.svg)
-
-
-![MLT — health radar](../../../../assets/health/mlt.zh.svg)
+![MLT — 健康度雷达](../../../../assets/health/mlt.zh.svg)
 
 ## 何时使用
 
-你正在构建一款需要时间线的视频应用：面向小众工作流的定制 NLE、按规则自动组装片段的自动化剪辑管线，或一台负责拼接与渲染序列的无头服务器。你不想从零手写时间线模型、转场引擎或滤镜图，而是想要一个已经理解轨道、片段、入出点、混音器与合成的 C++ 框架。你把项目建模成 XML 时间线，加载进 MLT，它负责逐帧精度的底层 plumbing：通过 FFmpeg 解码、应用滤镜、混合转场、编码输出。你也可以通过 C++ 或绑定接口以编程方式驱动它，在上方搭建编辑器 UI，由 MLT 处理媒体后端。如果你需要开箱即用的剪辑软件，可以直接用 Shotcut 或 Kdenlive（两者都基于 MLT）；但当你需要嵌入或扩展引擎本身时，MLT 才是该拿的层。
+你在做一个需要时间线的视频应用：给某个小众工作流定制的剪辑器，按规则自动拼片段的管线（集锦、模板化宣传片），或者一台在后台拼接、渲染序列的无头服务器，可能还要输出到广播硬件。你不想从零写时间线模型、转场引擎或滤镜图。用 MLT，你描述这次剪辑——用 `melt` 命令行、写一份 MLT XML，或者调 C / C++ API——它负责逐帧精确的底层活：经 FFmpeg 解码，把每个片段统一到同一帧率和分辨率，套滤镜，混合转场，编码输出。
+
+当任务是**剪辑性质**的（很多片段、入点出点、重叠的转场、带关键帧的滤镜）而不是一次转码时，你选它而不是直接驱动 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)；当你需要一个被两款生产级剪辑软件信任的引擎、实时预览和播放，以及 Shotcut、Kdenlive 工程赖以构建的工程格式（MLT XML）时，你选它而不是 [MoviePy](moviepy.zh.md) 这类 Python 库。如果你只是需要一个能用的剪辑软件，直接用 Shotcut 或 Kdenlive。
+
+## 怎么用起来
+
+MLT 把媒体建模成串在一起的**服务**：**生产者**（producer）产出帧（一个经 FFmpeg 解码的视频文件、一张色卡、一段标题），**滤镜**（filter）修改帧（变灰、加水印、调音量），**转场**（transition）把两条轨合在一起（亮度擦除、叠化），**消费者**（consumer）把成品帧拉走并处理（弹出 SDL2 预览窗口、经 FFmpeg 编码成文件、写成 MLT XML，或输出到 DeckLink SDI 采集卡）。**播放列表**（playlist）把片段首尾相接；**tractor** 把几条轨叠起来同步拉取。帧是消费者*拉*出来的，而不是源头推过去的——就像一台印刷机，准备好了才要下一页——所以播放和渲染跑在同一张图上。你描述剪辑；解码、缩放、重采样、合成、混音、编码都由 MLT 完成。除了下面展示的 `melt` 命令行，你也可以用 C（`mlt_factory_producer`、`mlt_consumer_start`）、C++（mlt++）或面向 Python 等语言的 SWIG 绑定搭出同一张图。
+
+![mlt — 主干用户故事](../../../../assets/flow/mlt.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/mlt.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：备好 FFmpeg 开发库，编译安装 MLT — `cmake .. && cmake --build . && sudo cmake --install .` — 组件：`libmlt + 模块 + melt`
+2. **你**：排好片段，中间加一段 25 帧的亮度转场 — `melt clip1.dv clip2.dv -mix 25 -mixer luma`
+3. **你**：把输出指向编码器，而不是预览窗口 — `-consumer avformat:output.avi acodec=libmp3lame vcodec=libx264`
+4. **MLT**：生产者经 FFmpeg 解码每个片段，统一到同一套参数 — 组件：`avformat 生产者`
+5. **MLT**：按时间线顺序取帧，套滤镜、混合转场 — 组件：`playlist / tractor`
+6. **MLT**：消费者把成品帧编码写进输出文件 — 组件：`avformat 消费者`
+
+**价值**：多轨剪辑变成一条可重复的命令或一份 MLT XML，按帧精确渲染，不用自己写时间线引擎
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你需要一个开箱即用的视频剪辑软件。** MLT 是框架，不是应用。如果你想打开就能剪辑，直接用 Shotcut、Kdenlive 或其他 NLE，而不是直接使用 MLT。
-- **你只需要批量转码或格式转换。** MLT 会增加你根本不需要的时间线复杂度。对于纯解码/编码/转码，直接用 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)——它更快、更简单，社区支持也广得多。
-- **你需要实时流处理或持久化媒体管线。** MLT 面向离线/顺序时间线渲染，而非实时流处理。实时管线请考虑 GStreamer。
-- **你想要一个原生 Python、友好的视频编辑 API。** MLT 的主要接口是 C++ 加 XML 项目描述。如果以 Python 优先的编程化剪辑为目标，考虑 MoviePy 或 PyAV。
-- **你在构建专有闭源产品，需要对 LGPL 链接边界有绝对把握。** MLT 采用 LGPL-2.1+；虽然以库形式链接通常被 LGPL 允许，但动态链接与静态链接的边界以及插件-滤镜组合必须针对你的具体分发模式进行审查。若许可纯净度是硬约束，请先与法务核实。 [未验证]
-- **你需要庞大的社区、丰富的教程或快速的问题响应。** MLT 的社区比 FFmpeg 更小、更垂直；排错可能需要读源码或翻邮件列表。 [推断]
+- **你要的是一个开箱即用的剪辑软件。** MLT 是框架，不是应用。用基于 MLT 的 Shotcut（未收录）或 Kdenlive（未收录），别直接用 MLT。
+- **你只需要批量转码或格式转换。** MLT 带来的时间线机制你用不上；直接用 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)，或者用 [HandBrake](../transcoding-and-pipelines/handbrake.zh.md) 做预设驱动的转码。
+- **你需要一条通用的直播媒体管线（接入 RTSP/WebRTC、混流、转推）。** MLT 能实时播放时间线、也能输出到广播采集卡，但它是围绕剪辑作品组织的，不是任意的直播元件图；用 [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md)。
+- **你想要 Python 优先的剪辑 API。** MLT 的原生接口是 C、C++ 和 XML；Python 走 SWIG 绑定，而构建时默认是关的。用 Python 写剪辑脚本，选 [MoviePy](moviepy.zh.md)；要帧级的编解码控制，选 [PyAV](../transcoding-and-pipelines/pyav.zh.md)。
+- **你在发布闭源产品，并且以为“它是 LGPL”。** 只有核心是 LGPL-2.1-or-later。默认的 CMake 配置会打开 `GPL` 和 `GPL3` 组件（Qt6、plusgpl、resample、rubberband、vid.stab、xine、OpenFX，以及 LADSPA/LV2/VST2 支持等），所以原样构建或发行版的包会把 GPL 代码带进你的进程。构建时用 `-DGPL=OFF -DGPL3=OFF`，并检查 FFmpeg 构建本身的许可证选项；或者改选核心为 LGPL 的 [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md)。
+- **你嵌入了 C API，承受不了小版本里的行为变化。** v7.42.0（2026-10）把 `mlt_frame_s::convert_image` 改成只读、由新的分发器接管——这是在小版本里公告的 API 行为变更。锁定版本，升级前读发布说明。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 用 FFmpeg 做原始解码/编码/转码/滤镜管线；用 MLT 当需要在其之上叠加时间线语义时。 | 通用媒体瑞士军刀；API 陡峭，且有 LGPL/GPL 构建授权陷阱。MLT 坐在它之上，提供编辑级时间线语义。 |
-| [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md) | ✅ | 用 GStreamer 做实时、持久化、嵌入应用的管线；用 MLT 做离线时间线式剪辑/合成。 | 面向实时/流媒体与嵌入应用的管线/元件图框架；编程模型更重，但实时场景更灵活。 |
-| [HandBrake](../transcoding-and-pipelines/handbrake.zh.md) | ✅ | 用 HandBrake 做终端用户预设驱动转码；用 MLT 做程序化时间线编辑。 | 预设驱动的 GUI 与 CLI，用于翻录/转码为现代 MP4/MKV；终端用户应用，不是库，远比原生 FFmpeg 窄。 |
-| [MoviePy](moviepy.zh.md) | ✅ | 用 MoviePy 做友好的 Python API 批量视频编辑；用 MLT 做需要编辑精度的 C++ 时间线框架。 | 友好的 Python API 用于程序化视频编辑——剪辑、合成、文字、特效——但纯离线批处理，对大文件比原生 FFmpeg 慢。 |
-| [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 用 PyAV 做 Pythonic 的 FFmpeg 绑定；用 MLT 做时间线模型与编辑语义。 | Pythonic 绑定到 FFmpeg 的 libav*；给你 Python 里的编解码级控制，但无时间线或 NLE 抽象。 |
-| Shotcut | 未收录 | Shotcut 基于 MLT 构建。需要开箱即用的开源 NLE 时选 Shotcut；需要嵌入或扩展引擎时直接用 MLT。 | 基于 MLT 构建的开源 NLE；需要编辑器而非框架时选它。 |
-| Kdenlive | 未收录 | Kdenlive 基于 MLT 构建。需要 KDE 集成 NLE 时选 Kdenlive；需要引擎时直接用 MLT。 | 另一款基于 MLT 构建的开源 NLE；KDE/Qt 集成，某些方面功能比 Shotcut 多，但仍是应用而非库。 |
-| DaVinci Resolve | 未收录 | 用 DaVinci Resolve 做专业级调色、特效与剪辑——它是商业 NLE，不是开源框架。 | 专业商业 NLE，带世界级调色；有免费版但非开源，也不能作为库嵌入。 |
-| Premiere Pro | 未收录 | 用 Premiere Pro 做 Adobe 生态专业剪辑；作为可嵌入的开源框架，它不具备可比性。 | 商业 Adobe NLE；仅订阅制、闭源，属于 Creative Cloud 工作流的一环。 |
-| OpenTimelineIO | 未收录 | 用 OpenTimelineIO 做应用间时间线交换（Adobe 格式）；用 MLT 做实际渲染与播放引擎。 | Adobe 主导的时间线交换格式——解决「从 A 软件导出时间线到 B 软件」，而非渲染或播放本身。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 单次的解码、编码、转码、滤镜任务，直接调 FFmpeg；任务是带入出点、重叠转场和关键帧滤镜的多片段剪辑时，在它之上加一层 MLT。 | FFmpeg 是通用编解码引擎，社区巨大，但它的滤镜图没有剪辑时间线的概念；MLT 补上这个模型，代价是多一个要构建、要学的框架。 |
+| [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md) | ✅ | 直播、长期运行、嵌入应用的管线（采集、推流、设备内播放），选 GStreamer；剪辑作品的时间线编辑与渲染，选 MLT。 | GStreamer 的元件图更通用，核心是 LGPL；它的剪辑层（GES）不在 GitHub 上，剪辑生态也比不上以 Shotcut/Kdenlive 为基础的 MLT。 |
+| [MoviePy](moviepy.zh.md) | ✅ | 用 Python 快速写剪辑脚本，选 MoviePy；需要实时预览、广播输出，或一个经两款生产级剪辑软件验证过的引擎，选 MLT。 | MoviePy 上手容易得多，但渲染走 Python，也没有实时播放；MLT 更快、功能更全，但以 C 和 XML 为先。 |
+| [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 要在 Python 里控制到 FFmpeg 的帧和数据包级别，选 PyAV；要时间线模型和剪辑语义，选 MLT。 | PyAV 直接暴露 libav*，没有时间线或 NLE 抽象；用它等于自己再写一遍 MLT 已有的时间线引擎。 |
+| Shotcut | 未收录 | 有人要手动剪片，就用 Shotcut；需要嵌入或自动化这个引擎时，直接用 MLT。 | 与 MLT 同一维护方（Meltytech）出品的 GPL-3.0 Qt 桌面剪辑软件；是应用，不是库。 |
+| Kdenlive | 未收录 | 想要和 KDE 集成、剪辑工具更进阶的软件，选 Kdenlive；要嵌入时直接用 MLT。 | 基于 MLT 的 GPL-3.0 KDE/Qt 剪辑软件；有自己的发布节奏，不是可嵌入的 API。 |
+| OpenTimelineIO | 未收录 | 问题是在工具之间交换剪辑决策（Resolve、Premiere、Avid、你自己的应用）时，用 OpenTimelineIO；需要真正渲染或播放时间线时，用 MLT。 | 学院软件基金会（ASWF）的时间线交换项目（Apache-2.0）；它不解码也不渲染媒体。 |
+| DaVinci Resolve | 非仓库 | 需要专业调色和成片由人来做时，用 Resolve；它没法像 MLT 那样被嵌入或自动化。 | 有免费版的商业剪辑软件；闭源，只有脚本 API，没有可链接的库。 |
 
 ## 技术栈
 
-- **语言：** C++（核心框架），带 C 绑定及部分语言封装器。
-- **编解码引擎：** FFmpeg/libav——MLT 把所有实际的解码/编码/封装/滤镜工作都委托给 FFmpeg 的库（`libavformat`、`libavcodec`、`libavfilter` 等）。
-- **时间线模型：** 基于 XML 的项目格式，描述轨道、片段（producer）、转场以及可链式挂载在片段/轨道上的滤镜（property）。
-- **模块/插件：** producer、filter、transition、consumer 的插件系统——自带 FFmpeg、SDL、OpenGL 等后端。
-- **构建：** CMake 构建系统；跨平台（Linux、macOS、Windows）。
+- **语言：** C 核心（`libmlt`，即 `src/framework` 下的框架），C++ 封装（`mlt++`，按 C++20 构建），`melt` 命令行用 C 写成。
+- **编解码引擎：** 通过 `avformat` 模块调用 FFmpeg 的 libavformat/libavcodec/libavfilter/libswscale/libswresample（启用该模块时必需，默认启用）。
+- **模块：** 按后端分组的插件——avformat、core、xml、sdl2、qt（Qt6）、movit（OpenGL）、placebo（libplacebo GPU，7.42 新增）、frei0r、rubberband、vid.stab、decklink、NDI、OpenFX 等——各自提供生产者、滤镜、转场或消费者。
+- **工程格式：** MLT XML，即服务图的序列化形式；Shotcut 保存的也是它。
+- **构建：** CMake（>= 3.14）配 Ninja 或 Make；支持 Linux、macOS 和 Windows。
 
 ## 依赖
 
-- **运行时：** FFmpeg 库（libavformat、libavcodec、libavfilter、libavutil、libswscale、libswresample）——核心编解码工作完全委托给 FFmpeg。
-- **可选后端：** SDL2（用于预览/播放显示）、OpenGL（用于 GPU 加速合成）、Jack/PulseAudio/ALSA（用于 Linux 音频输出）。
-- **构建工具：** C++ 编译器、CMake、FFmpeg 开发头文件与库。
-- **语言绑定：** C++ 为原生接口；其他语言访问取决于社区绑定（例如通过发行版提供的 `mlt` Python 绑定）。 [未验证]
+- **必需：** 支持 C/C++20 的工具链、CMake，以及默认 avformat 模块所需的 FFmpeg 开发库。
+- **按模块可选：** SDL2（预览窗口与音频）、Qt6（标题与图片加载）、movit/OpenGL 和 libplacebo（GPU 合成）、frei0r、LADSPA/LV2、rubberband、vid.stab、sox、JACK/RtAudio、DeckLink SDK。
+- **语言绑定：** SWIG 绑定覆盖 Python、Java、C#、Lua、Node.js、Perl、PHP、Ruby 和 Tcl——默认全部 `OFF`，你得在构建时打开，或依赖打开了它们的发行版包。
+- **没有服务：** 它是库加命令行，不需要任何后台进程。
 
 ## 运维难度
 
-**中等。** MLT 本身是库/框架，不是可部署的服务——你需要把它链接或嵌入到自己的应用里。运维负担主要在周边构建与集成：（1）**FFmpeg 依赖管理**——你需要兼容的 FFmpeg 构建（版本匹配很重要），且 MLT 的功能集取决于 FFmpeg 的编译选项；（2）**插件可用性**——并非所有转场/滤镜类型都可用，取决于构建标志与可选依赖；（3）**时间线正确性**——逐帧精度的剪辑、转场时机与滤镜顺序需要谨慎构造 XML 或编程逻辑；（4）**资源管理**——渲染时间线跟任何视频管线一样消耗 CPU/GPU 与内存，因此需要并发控制与输出 staging。基于 MLT 自托管应用的难度取决于你在其上构建的应用本身；框架本身稳定，但对终端用户并非「开箱即用」。
+**中等。** MLT 是库，不是可部署的服务，所以功夫在构建和集成上：（1）**FFmpeg 配对**——MLT 支持哪些格式和编解码器，取决于链接的 FFmpeg 怎么编的，版本不匹配会表现为缺编解码器或构建失败；（2）**模块可用性**——某个滤镜或转场只有在对应模块及其可选依赖被编进来时才存在（`melt -query filters` 能列出当前构建有哪些）；（3）**许可证配置**——`GPL`/`GPL3` 开还是关要有意识地决定，默认是开；（4）**渲染资源**——渲染吃 CPU/GPU 和内存，服务端管线需要自己的任务队列和并发上限。无头服务器上用不到 SDL2 预览消费者，直接用 `avformat` 消费者渲染。
 
 ## 健康度与可持续性
 
-- **维护——活跃且长寿。** 截至 2026 年中为 v7.30.x，多年来持续发布。项目自 2000 年代初以来一直存在，并继续推出更新。 [未验证]
-- **治理与 bus factor——小型核心团队。** 项目由一小群 dedicated 贡献者维护，而非大型基金会；bus factor  modest，但项目已在数十年间证明了自己的韧性。 [推断]
-- **背书与寿命——无大型企业或基金会背书。** MLT 由社区驱动；它能存活是因为它是多个可见下游项目（Shotcut、Kdenlive）的共享引擎。这种生态依赖是它的保险——只要编辑器还需要它，它就会被维护。 [推断]
-- **年龄与 Lindy 判断——老而活跃，Lindy 信号强劲。** 一个在视频领域被持续维护约 20 余年的项目，比年轻替代者更安全。MLT 的寿命因它作为多款知名编辑器后端的位置而得到强化。 [推断]
-- **采用度——小众但根深蒂固。** 你选择 MLT 不是因为它 star 多（约 1.5k），而是因为 Shotcut 和 Kdenlive 都依赖它。对专业框架而言，这种生产用户验证比原始 popularity 更有意义。 [推断]
-- **风险旗标——稳定的 LGPL-2.1+，无 relicense 历史。** 无已知 relicense 风波、无 open-core 阉割、无 CLA 要求。主要风险是社区规模相对 FFmpeg 较小——补丁和 niche 功能可能推进较慢。 [未验证]
+- **维护——非常活跃。** 大多数周都有提交，大约每两到四个月发一个版本（v7.38.0 于 2026-04，v7.40.0 于 2026-06，v7.42.0 于 2026-10-03）；雷达给维护和响应速度都打 A。
+- **治理——一位主导者，加上真实的贡献者。** Dan Dennedy（ddennedy）主导，贡献了近期 60.5% 的提交，bmatherly 和 Kdenlive 开发者（如 j-b-m）持续参与；雷达统计 12 个月内有 27 位活跃贡献者，治理打 C。版权归 Meltytech, LLC，也就是同时开发 Shotcut 的那家小公司。
+- **背书与延续性——Lindy 很强。** 2004 年 5 月首次发布，持续维护超过 22 年，并且是两款广泛使用的剪辑软件赖以生存的引擎；雷达给延续性打 A。
+- **采用——雷达 C，实际使用更广。** 本轮采用度从 B 降到 C：评分器只能看到 90 天内 461 次 Homebrew 安装和 586,909 次 GitHub 发布下载，而大多数用户是随 Shotcut、Kdenlive 捆绑或从 Linux 发行版包里拿到 MLT 的，这些渠道评分器统计不到。
+- **风险信号——在于许可证配置，而不是改许可证。** 核心为 LGPL-2.1-or-later，GPL 模块默认开启（雷达许可证风险打 C）；没有改许可证的历史，没有 CLA，也没有开源核心加闭源增值的拆分。
 
 ## 存疑（未验证）
 
-- [未验证] v7.30.x 与约 1.5k stars（截至 2026-07）；具体 star 数与最新版本标签具有时效性。
-- [未验证] LGPL-2.1-or-later 在专有闭源产品中的动态链接与静态链接边界——请针对你的分发模式与法务核实。
-- [未验证] Python 及其他语言绑定的可用性与维护状态因平台/发行版而异；在绑定策略上投入前，请先检查目标环境。
-- [未验证] OpenTimelineIO 与 MLT 的精确关系——两者都面向时间线，但 OTIO 聚焦交换，而 MLT 聚焦渲染；直接对比仅为近似。
-- [推断] Bus factor 与具体维护者人数是从 GitHub 活动模式与项目历史推断的，并非来自公开的治理文档。
-- [推断] 「约 20 余年」的年龄估算为近似值；MLT 的早期历史早于 GitHub 广泛普及之前。
+- [推断] “实际使用比采用度评分更广”依据的是 MLT 被 Shotcut、Kdenlive 捆绑以及被 Linux 发行版打包；这些渠道没有下载数据。
+- [未验证] 各发行版的 MLT 包具体开了哪些 GPL 模块，本轮没有检查，因发行版而异。
+- [未验证] SWIG Python 绑定的成熟度（API 覆盖、非 Linux 平台上的打包）本轮没有测试。
+- [推断] Kdenlive 比 Shotcut “剪辑工具更进阶”是笼统的概括，不是逐项功能对比。
+- [未验证] GStreamer Editing Services 相对 MLT 的规模和活跃度本轮没有测量。

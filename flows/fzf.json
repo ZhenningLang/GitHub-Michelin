@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "fzf does", "zh": "fzf 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single binary from your package manager", "zh": "用包管理器装上这个单一二进制", "code": "brew install fzf · sudo apt install fzf · winget install fzf"},
+    {"lane": "you", "en": "Source its shell integration once in your rc file", "zh": "在 shell 配置文件里 source 一次它的集成脚本", "code": "eval \"$(fzf --bash)\" · source <(fzf --zsh)", "component": {"en": "shell key bindings", "zh": "shell 快捷键"}},
+    {"lane": "you", "en": "Press a key binding — or pipe any list into fzf", "zh": "按一个快捷键——或把任意列表用管道喂给 fzf", "code": "CTRL-T · CTRL-R · ALT-C"},
+    {"lane": "them", "en": "Collects the list (walks the directory or reads history) and opens the finder", "zh": "收集列表（遍历目录或读历史），打开挑选界面", "component": {"en": "built-in walker", "zh": "内置遍历器"}},
+    {"lane": "you", "en": "Type a few scattered letters of what you want", "zh": "随手敲几个想要的那项里的字母"},
+    {"lane": "them", "en": "Re-ranks every line by fuzzy-match score on each keystroke", "zh": "每敲一个键，按模糊匹配分数把整张列表重新排序"},
+    {"lane": "them", "en": "On Enter, writes the selection to stdout or onto your command line", "zh": "回车后把选中项写到标准输出或贴到命令行上"}
+  ],
+  "value": {"en": "Any long list — files, history, branches, PIDs — becomes pick-by-typing a few letters, without leaving the shell", "zh": "文件、历史命令、分支、PID，任何长列表都变成敲几个字母就能挑中，不用离开 shell"},
+  "sources": [
+    "https://github.com/junegunn/fzf README (fetched 2026-10-08): 'Using Homebrew' brew install fzf; 'Linux packages' sudo apt install fzf; 'Windows packages' winget install fzf; 'Setting up shell integration' eval \"$(fzf --bash)\" / source <(fzf --zsh); 'Key bindings for command-line' CTRL-T / CTRL-R / ALT-C; 'Usage' reads the list from STDIN, writes the selected item to STDOUT, and without a pipe traverses the file system",
+    "https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1 (fetched 2026-10-08): --walker-skip default .git,node_modules; --filter non-interactive mode"
+  ]
+}

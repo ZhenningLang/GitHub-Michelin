@@ -6,8 +6,8 @@ category: proxy-pool
 tags: [proxy, proxy-pool, scraping, web-ui, json-api, python, self-hosted]
 language: Python
 license: Apache-2.0
-maturity: last release 1.2.0 (2022-03), repo touched 2025-06, ~4.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: last release 1.2.0 (2022-03-06), last commit 2024-08-31, quiet since (as of 2026-10-08); ~4.0k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2025-06-09T01:51:36Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:23:42Z
+  computed_at: 2026-10-08T08:25:35Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 757
+        last_commit_age_days: 768
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3092
-        last_commit_age_days: 757
+        repo_age_days: 3103
+        last_commit_age_days: 768
         cohort: app
     governance:
       grade: "?"
@@ -76,15 +76,37 @@ A self-hosted "intelligent proxy pool" app that continuously crawls public proxi
 
 ## When to use
 
-You're running scrapers that keep getting rate-limited or IP-blocked, and you want a *standing service* that maintains a pool of vetted free proxies for you to draw from — not a CLI you re-run by hand. You `docker run` Scylla, wait a minute or two while it populates, then hit `http://localhost:8899/api/v1/proxies?https=true&anonymous=true&country=US` to get a JSON list of currently-valid proxies filtered by HTTPS support, anonymity, and country — and feed those straight into requests/Scrapy with minimal code. You can also point traffic at its built-in forward-proxy port and let it pick a validated IP for you, and watch the pool's health and a geographical distribution map in the web UI. It's the "runnable service with an API" form factor: stand it up once, query it from many jobs.
+You're running scrapers that keep getting rate-limited or IP-blocked, and you want a *standing service* that maintains a pool of vetted free proxies for you to draw from — not a CLI you re-run by hand. You `docker run` Scylla, wait a minute or two while it populates, then hit `http://localhost:8899/api/v1/proxies?https=true&anonymous=true&countries=US` to get a JSON list of currently-valid proxies filtered by HTTPS support, anonymity, and country — and feed those straight into requests/Scrapy with minimal code. You can also point traffic at its built-in forward-proxy port and let it pick a validated IP for you, and watch the pool's health and a geographical distribution map in the web UI. It's the "runnable service with an API" form factor: stand it up once, query it from many jobs.
 
 This is the right reach when you want a *queryable, always-on* free-proxy pool with quality scoring and a dashboard, and you're comfortable self-hosting a small Python service (ideally via Docker).
+
+## How it works
+
+Scylla is a small always-on server with three parts running in one process. **A crawler and a validator do the work for you**: on a schedule they fetch proxy lists from public sources, try each proxy, and record whether it works, how fast it answers (latency), how often it has worked across attempts (stability), whether it hides your IP (anonymity) and whether it handles HTTPS. Everything lands in a single SQLite file — one database file on disk, no database server to run. A web server on port 8899 then serves that table as a JSON API and a browser UI with a world map. **Your part is only to query it**: ask `/api/v1/proxies` with filters and plug the addresses into your own client. There is also a forward proxy on port 8081 — you set it as your client's proxy and it picks a recently-validated proxy at random per request — but it handles plain HTTP only, so HTTPS traffic must take the API route.
+
+![scylla — backbone user story](../../assets/flow/scylla.svg)
+
+<!-- flow-steps:begin (generated from flows/scylla.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Run its Docker image once, exposing port 8899 (API and UI) and 8081 (forward proxy) — `wildcat/scylla:latest`
+2. **Scylla**: Keeps crawling public proxy sources in the background and saves candidates to a local database — component: `crawler + scheduler`
+3. **Scylla**: Re-validates each proxy and records latency, stability, anonymity and HTTPS support — component: `validator`
+4. **You**: Ask the JSON API for proxies, filtered by HTTPS, anonymity or country — `http://localhost:8899/api/v1/proxies`
+5. **Scylla**: Returns only proxies currently marked valid, each with its latency and stability score
+6. **You**: Plug the returned ip:port into your requests or Scrapy client
+
+**Value**: A standing, scored free-proxy pool that many scraping jobs can query, instead of each job harvesting its own
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
 - **HTTPS through the built-in forward proxy.** The docs state the forward-proxy server does **not** support HTTPS requests — for HTTPS you consume the JSON API's proxy list and connect yourself, rather than chaining through Scylla's proxy port. A real constraint to design around.
 - **Production reliability.** It pools *free public* proxies — inherently flaky, slow, and sometimes malicious. For anything that must not fail, buy commercial proxies; Scylla is for low-stakes/experimental scraping.
-- **A frequently-maintained dependency.** The last tagged release is 2022 and activity since is sparse (a 2025 touch). You're adopting near-frozen code — fine for experiments, risky as a load-bearing dependency (see Health).
+- **A frequently-maintained dependency.** The last tagged release is 2022 and activity since is sparse (last default-branch commit 2024-08). You're adopting near-frozen code — fine for experiments, risky as a load-bearing dependency (see Health).
 - **Sensitive traffic.** Routing credentials or private data through unknown harvested proxies is a data-exposure risk. [推断]
 - **Zero-ops expectations.** It's a service with a datastore and crawlers; while Docker makes startup easy, you still operate a running process and accept that the pool quality fluctuates.
 
@@ -117,7 +139,7 @@ This is the right reach when you want a *queryable, always-on* free-proxy pool w
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last tagged release 1.2.0 is from 2022-03; the repo was touched as recently as 2025-06 but without a fresh release — **coasting toward dormant**, not actively developed. This is a fork-lineage repo (`MikeChongCan/scylla`) whose description was repurposed with AI/LLM framing. Not archived.
+- **Maintenance (2026-10).** Last tagged release 1.2.0 is from 2022-03; the last default-branch commit is 2024-08-31 (GitHub's 2025-06 `pushed_at` brought no new commit to `main`) — **coasting toward dormant**, not actively developed. The repo is the original project moved from `imWildCat/scylla` to `MikeChongCan/scylla` (the old URL redirects, and the README still points at the old org); its description was repurposed with AI/LLM framing. Not archived.
 - **Governance / bus factor.** A User-account repo with a small contributor set (incl. dependabot); single-maintainer bus-factor risk, no foundation backing. The ~4.0k stars on a User repo with stalled releases is a flag worth weighing, not social proof. [推断]
 - **Age & Lindy verdict.** ~8 years old (created 2018-04) but with a stalled release line ⇒ Lindy is **weak-to-mixed**: long-lived, but the "still-active" half is shaky given no recent releases.
 - **Adoption.** ~4.0k stars indicate historical popularity for self-hosted proxy pooling; current adoption/health is less clear given the release gap. [未验证]
@@ -125,7 +147,7 @@ This is the right reach when you want a *queryable, always-on* free-proxy pool w
 
 ## Caveats (unverified)
 
-- [未验证] ~4.0k stars as of 2026-06 and last release 1.2.0 (2022-03) — figures are date-sensitive; the 2025-06 push is from the API but its substance is not inspected.
-- [未验证] Exact datastore, headless-browser usage, and the precise current source list are from the README/docs, not confirmed against the code in this pass.
+- [未验证] ~4.0k stars as of 2026-10 — date-sensitive. GitHub's 2025-06 `pushed_at` was not traced to a branch; `main` has no commit after 2024-08-31.
+- [未验证] Headless-browser usage and the precise current source list are from the README/docs, not confirmed against the code (the SQLite datastore was confirmed in `scylla/database.py`).
 - [推断] "Coasting toward dormant" is inferred from the release gap (2022) vs sporadic later commits, not an official status.
 - [推断] Free-proxy security/reliability risks are general properties of harvested public proxies, not measured against Scylla's specific sources.

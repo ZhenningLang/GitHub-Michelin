@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Lit does",
+    "zh": "Lit 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the library",
+      "zh": "安装这个库",
+      "code": "npm i lit"
+    },
+    {
+      "lane": "you",
+      "en": "Write a class that extends LitElement and register its tag name",
+      "zh": "写一个继承 LitElement 的类，注册标签名",
+      "code": "@customElement('my-element')"
+    },
+    {
+      "lane": "you",
+      "en": "Declare reactive properties and return the markup from render()",
+      "zh": "声明响应式属性，在 render() 里返回模板",
+      "code": "@property() · render()"
+    },
+    {
+      "lane": "them",
+      "en": "On each property change, re-renders and patches only the template's dynamic parts",
+      "zh": "属性一变就重新渲染，只修补模板里的动态部分",
+      "component": {"en": "lit-html", "zh": "lit-html"}
+    },
+    {
+      "lane": "them",
+      "en": "Scopes styles to the element's shadow root, so they neither leak out nor get overridden",
+      "zh": "把样式限定在元素的 shadow root 里，不外泄也不被覆盖"
+    },
+    {
+      "lane": "you",
+      "en": "Use the tag in any page or framework",
+      "zh": "在任何页面或框架里直接用这个标签",
+      "code": "<my-element mood=\"awesome\"></my-element>"
+    }
+  ],
+  "value": {
+    "en": "One component library that React, Vue, Angular and plain HTML pages all consume as standard elements",
+    "zh": "一套组件库，React、Vue、Angular 和纯 HTML 页面都能当作标准元素直接使用"
+  },
+  "sources": [
+    "README.md npm section ('npm i lit') and package list (lit, lit-element, lit-html, @lit/reactive-element, @lit/context, @lit/react, @lit-labs/ssr, @lit-labs/router)",
+    "packages/lit/README.md Overview example (LitElement, html, css from 'lit'; @customElement('my-element'); @property() mood; static styles applied to the shadow root; render() returns a Lit template; '<my-element mood=\"awesome\"></my-element>' used anywhere you use HTML)",
+    "CODE_OF_CONDUCT.md ('As a member project of the OpenJS Foundation')"
+  ]
+}

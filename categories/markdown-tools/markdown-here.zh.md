@@ -7,7 +7,7 @@ tags: [inline]
 language: JavaScript
 license: MIT
 maturity: "v2.16.0, low-cadence/effectively stale, ~60.2k stars (last pushed 2025-08)"
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2025-08-22T00:21:50Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:06:20Z
+  computed_at: 2026-10-08T08:21:32Z
   overall: C
   overall_score: 1.75
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 445
+        last_commit_age_days: 455
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 13458
+        release_downloads: 13463
         release_assets: 6
         release_tier: D
         signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 5251
-        last_commit_age_days: 445
+        repo_age_days: 5261
+        last_commit_age_days: 455
         cohort: tool
     governance:
       grade: "?"
@@ -76,6 +76,27 @@ health:
 你是个写大量邮件的工程师——code review 笔记、事故复盘、“按这步复现”的操作说明——而你的网页邮箱给你的只是一个干巴巴的 textarea 配一个笨重的所见即所得工具栏。你想要一个带项目符号的列表、一段带语法高亮的代码块、一张表格、再加几个链接，用工具栏手动排出这些又慢又难看。于是你装上 Markdown Here，像写 `README` 那样用纯 Markdown 把信打出来，写好后按一下切换键（或快捷键）：扩展会把那个字段里的 Markdown 解析掉，就地替换成渲染好的 HTML，于是收件人在任意邮件客户端里看到的都是排好版的内容。要是哪里写错了，可以切回 Markdown 源码改好再重渲染。它在不少非邮件的网页 textarea 里也会生效（Google Groups、部分博客/论坛的撰写框），同一套肌肉记忆在邮件之外也用得上。
 
 它之所以站得住脚，恰恰在于它是*就地、按需*地作用在你掌控不了的字段上：你不是导出文件、也不是跑构建，而是在发送那一刻把撰写框里已有的文本变成 HTML。对于“这一封邮件用 Markdown 写”这个很窄的活，它比在外部编辑器里起草再粘回来轻得多。
+
+## 怎么用起来
+
+Markdown Here 是一个浏览器扩展，直接作用在你已经打开的邮件撰写框上；Markdown 解析器（`marked.js`）和代码高亮器（highlight.js，给代码块里的关键字上色的那部分）都打包在扩展里，所以普通的转换不需要服务器，也不需要账号。**它替你做的：**你按下转换开关时，它读取撰写框里的 Markdown（或者只读你选中的那一段），渲染成 HTML，再原地替换进撰写框；回复邮件时，被引用的原邮件不会被动。它还会留着你写的 Markdown 原文，再按一次开关就把渲染结果变回源码——不过你在渲染后的 HTML 上做的修改，还原时会丢掉。**你要做的：**装好扩展，确认撰写框处在富文本/HTML 模式（纯文本撰写框放不下 HTML），用 Markdown 写，发送前按一次开关。可以把它理解成一个看得懂 Markdown 的“一键排版”按钮，而不是一排格式工具栏。
+
+![markdown-here — 主干用户故事](../../assets/flow/markdown-here.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/markdown-here.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从浏览器扩展商店装好，再刷新网页邮箱 — 组件：`浏览器扩展`
+2. **你**：把撰写框切到富文本模式，用纯 Markdown 写邮件 — `Compose messages in HTML format`
+3. **你**：对整封邮件或选中的一段触发转换 — `Markdown Toggle · SHIFT+ALT+M`
+4. **Markdown Here**：就地把 Markdown 渲染成 HTML，代码块带语法高亮
+5. **Markdown Here**：不动回复里引用的原邮件，并记住原文，再按一次就还原
+
+**价值**：收件人看到排版好、带代码块的邮件，你没碰过工具栏，也不用从别的编辑器复制粘贴
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -113,15 +134,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护——事实上停滞（最近一次 push 约 2025-08，截至 2026-06）。** 没有 archive 标记，但相对于它的人气，发布节奏很低、积压很长；当作「滑向废弃的吃老本」而非「积极维护」来看待 [推断]。README 并未宣告项目已死——但别指望及时修复。
+- **维护——事实上停滞（最后一次提交和 v2.16.0 发版都在 2025-07-10，之后再无动静；截至 2026-10-08）。** 没有 archive 标记；2025 年 6、7 月连发三版后已沉寂 15 个月，相对于它的人气积压很长；当作「滑向废弃的吃老本」而非「积极维护」来看待 [推断]。README 并未宣告项目已死——但别指望及时修复。
 - **治理与 bus factor——单人维护风险。** `User` 所有（`adam-p/`），约 60k star：典型的 bus factor 风险，海量采用全压在一个人的注意力上，而这份注意力显然已减弱。社区的回应是「Markdown Here Revival」分叉，这本身就是「原项目不再是维护中那条路」的信号 [推断]。
 - **年龄与 Lindy 判断——老但已废弃 ⇒ Lindy 不成立。** 创建于 2012 年（约 14 岁）：单看年龄令人安心，但检验标准是「年龄 × 仍活跃」，而活跃已停止。一个长寿后停滞的项目，正是 Lindy 先验转为*负面*的情形——押维护中的分叉，别押原项目。
 - **风险标记。** Manifest V3 下的浏览器扩展可用性：一个无人维护的 MV3 content-script 扩展，可能被浏览器更新下架或弄坏而无修复落地——这是你掌控之外的可用性风险 [未验证]。MIT 许可，所以分叉无负担（Revival 分叉即由此而来）。
 
 ## 存疑（未验证）
 
-- [未验证] 约 60.2k GitHub star、v2.16.0、最近一次 push 约在 2025-08（据仓库，2026-06 核对）；star 数和日期对时间敏感，仅供参考——请对照当前仓库重核。
+- 约 60.3k GitHub star，默认分支最后一次提交和 v2.16.0 发版都在 2025-07-10（GitHub API，2026-10-08 核对）；star 数对时间敏感。
 - [推断] “低维护 / 事实上停滞”是从发布节奏慢、相对 star 数而言积压大推断出来的，而非 README 里有什么废弃声明——README 并未宣告项目已死。
 - [未验证] Manifest V3 状态、以及该扩展当前是否在各浏览器商店上架/可安装，会随时间变化；依赖前请在目标浏览器里核实。
 - [未验证] 受支持的邮件客户端与网页 textarea 的确切清单、以及每个集成的可用程度各不相同且可能已回退——请确认你具体的撰写界面能用。
 - [未验证] “Markdown Here Revival”作为社区分叉/后继确有其事（尤其面向 Thunderbird），但其权威托管位置和当前维护状态本次未能确认——采用前请核实。
+- [未验证] 普通 Markdown 和代码块转换用的是扩展自带的 `marked.js` 与 highlight.js；可选的 TeX 数学公式渲染是否会调用外部图片服务，本轮（2026-10-08）没有核对——处理机密邮件前先看一下选项页。

@@ -7,17 +7,17 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Zep** | Zep \| Examples, Integrations, & More | A（4/6） | [→](zep.zh.md) |
-| **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | B（6/6） | [→](graphiti.zh.md) |
-| **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A（6/6） | [→](cognee.zh.md) |
+| **Zep** | 当你想把带时间维度的用户记忆交给托管服务，并直接用 LangGraph、CrewAI、ADK 或 Pydantic AI 的现成适配包时用它——但这个仓库只是示例和客户端，引擎是闭源付费的 Zep Cloud，自托管的社区版已弃用。 | A（4/6） | [→](zep.zh.md) |
+| **Graphiti** | 当用户的偏好、工作、住址会随时间变化，智能体必须分清哪条事实仍然成立、何时成立时用它——但它从第一天就要 Neo4j、FalkorDB 或 Neptune，每条消息写入都要走几次 LLM 调用。 | B（6/6） | [→](graphiti.zh.md) |
+| **Cognee** | 当 agent 记忆覆盖的是彼此关联的材料（文档、工单、会议纪要、代码），普通 RAG 一遇到多跳问题就答不上时用它——但每次写入都要花 LLM 调用做图谱抽取，用 Postgres 当图存储只是演示，不能上生产。 | A（5/6） | [→](cognee.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Zep](zep.zh.md) | ✅ | A（4/6） | 面向用户事实的时间知识图谱记忆，事实会过期或被取代；是应用记忆的后端，不是编码 agent 的钩子层。 |
-| [Graphiti](graphiti.zh.md) | ✅ | B（6/6） | 面向 AI agent 的实时知识图谱库；图管线你来搭，边由它维护。 |
-| [Cognee](cognee.zh.md) | ✅ | A（6/6） | 自托管的知识图谱记忆引擎，面向文档形态的 agent 记忆；比文件或 SQLite 存储更重。 |
+| [Zep](zep.zh.md) | ✅ | A（4/6） | 换来不用自己运维图数据库、也不用写用户和会话管理的时序图记忆；代价是依赖一个闭源 SaaS 的价格和条款，仓库还关了 GitHub issues。 |
+| [Graphiti](graphiti.zh.md) | ✅ | B（6/6） | 换来一张时序图：新事实让旧事实失效，还能追溯到来源消息；代价是要运维图数据库、逐条写入很慢，库仍在 1.0 之前、由单一厂商主导。 |
+| [Cognee](cognee.zh.md) | ✅ | A（5/6） | 换来四个调用就能用的知识图谱加 embedding，项目已有三年且非常活跃；代价是依赖树很重，每篇文档都有抽取成本，1.x API 还很年轻。 |
 
 ## 什么该放这里
 

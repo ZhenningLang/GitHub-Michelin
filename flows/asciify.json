@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "asciify does", "zh": "asciify 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Pillow and clone the repo", "zh": "装好 Pillow，克隆仓库", "code": "pip install pillow"},
+    {"lane": "you", "en": "Run the script with an image path (or an http/https URL) as its one argument", "zh": "运行脚本，唯一的参数是图片路径（或 http/https 网址）", "code": "python asciify.py octocat.png"},
+    {"lane": "them", "en": "Shrinks the picture to 100 characters wide, keeping its proportions, and turns it grey", "zh": "把图缩到 100 个字符宽、保持比例，再转成灰度"},
+    {"lane": "them", "en": "Sorts every pixel's brightness into 11 buckets and swaps it for one character, from @ (dark) to . (light)", "zh": "把每个像素按亮度分进 11 档，换成一个字符：最暗 @，最亮 ."},
+    {"lane": "them", "en": "Prints the text picture and also writes it to img.txt in the current directory", "zh": "把文字画打印出来，同时写进当前目录的 img.txt"}
+  ],
+  "value": {"en": "A picture becomes plain text you can paste into a terminal banner or a README", "zh": "一张图变成纯文本，能直接贴进终端欢迎语或 README"},
+  "sources": [
+    "https://github.com/RameshAditya/asciify#how-to-use-asciify (pip install pillow; clone; pass the image path; prints and writes img.txt)",
+    "https://github.com/RameshAditya/asciify/blob/master/asciify.py (sys.argv[1] path or http/https URL; resize new_width=100 keeping aspect ratio; convert('L'); ASCII_CHARS 11 chars reversed, pixel_value//25; print + open('img.txt','w'))",
+    "https://github.com/RameshAditya/asciify/blob/master/octocat.png (sample image shipped in the repo)"
+  ]
+}

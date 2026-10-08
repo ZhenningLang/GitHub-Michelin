@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Vue does", "zh": "Vue 做的"},
+  "steps": [
+    {"lane": "you", "en": "Scaffold a Vite project, or drop the CDN build into an existing page", "zh": "生成一个 Vite 项目，或者把 CDN 版本直接放进现有页面", "code": "npm create vue@latest"},
+    {"lane": "you", "en": "Write a component: an HTML-like template plus the reactive values it shows", "zh": "写组件：一段类 HTML 模板，加上它要显示的响应式值", "code": "<script setup> · ref()"},
+    {"lane": "you", "en": "Create the app and mount it on one element", "zh": "创建应用，挂到一个元素上", "code": "createApp(App).mount('#app')"},
+    {"lane": "them", "en": "Compiles the template and records which reactive values each component reads while rendering", "zh": "编译模板，渲染时记下每个组件读了哪些响应式值", "component": {"en": "template compiler + reactivity", "zh": "模板编译器 + 响应式系统"}},
+    {"lane": "them", "en": "When a value changes, re-renders only the components that read it and patches the DOM", "zh": "某个值一变，只重渲染读了它的组件，并把差异补到 DOM 上"}
+  ],
+  "value": {"en": "You change data; Vue already knows which parts of the page depend on it, so you never write update code or tune re-renders", "zh": "你只改数据；哪些界面依赖它 Vue 早就记下了，不用写更新代码，也不用调重渲染"},
+  "sources": [
+    "https://vuejs.org/guide/quick-start.html (npm create vue@latest; CDN build with createApp, ref and .mount('#app'))",
+    "https://vuejs.org/guide/extras/reactivity-in-depth.html (dependency tracking during render)",
+    "https://github.com/vuejs/core/blob/minor/CHANGELOG.md (3.6: Vapor mode via <script setup vapor>, alien-signals reactivity refactor)"
+  ]
+}

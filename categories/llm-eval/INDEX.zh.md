@@ -9,11 +9,11 @@
 | --- | --- | --- | --- |
 | **promptfoo** | 当你要用声明式 YAML 给自己的 LLM 应用做评测+红队并接进 CI 时用它。 | A（6/6） | [→](promptfoo.zh.md) |
 | **Pezzo** | 当小团队想要一个自托管的统一控制台来做 prompt 版本管理加成本／延迟可观测时用它——但它自 2025 年中起疑似停更，请做好自己维护的准备。 | C（5/6） | [→](pezzo.zh.md) |
-| **DeepEval** | The LLM Evaluation Framework | A（6/6） | [→](deepeval.zh.md) |
-| **Ragas** | Supercharge Your LLM Application Evaluations 🚀 | B（6/6） | [→](ragas.zh.md) |
-| **garak** | the LLM vulnerability scanner | A（6/6） | [→](garak.zh.md) |
-| **Giskard OSS** | 🐢 Open-Source Evaluation & Testing library for LLM Agents | B（6/6） | [→](giskard.zh.md) |
-| **Langfuse** | 🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 | A（5/6） | [→](langfuse.zh.md) |
+| **DeepEval** | 当 Python 团队想给 RAG 应用或智能体写 pytest 式回归测试，在 CI 里用忠实度、幻觉等大模型评审指标打分时用它——但每次运行都花评审 token，分数会浮动，配套看板是厂商的商业托管平台。 | A（6/6） | [→](deepeval.zh.md) |
+| **Ragas** | 当你改了 RAG 链路的分块、向量模型或生成模型，需要评审大模型为每次改动打出忠实度和上下文召回／精确率时用它——但它只给分数，不提供 CI 通过／失败闸门，且自 2026-02 起再无 PR 合并。 | B（6/6） | [→](ragas.zh.md) |
+| **garak** | 当模型上线前要由你签字放行，需要一套可重复的扫描，按探针给出越狱、注入、数据泄露、恶意代码生成等已知攻击的失败率时用它——但它只测模型本身，不测应用的回答质量或整套部署。 | A（6/6） | [→](garak.zh.md) |
+| **Giskard OSS** | 当用 Python 3.12+ 的团队想把 RAG 或 agent 的故障钉成带大模型裁判检查的场景测试、上线前还要自动生成攻击提示词时用它——但表格模型扫描只在已不再积极维护的 v2 里，v3 正式版才发布几周。 | B（6/6） | [→](giskard.zh.md) |
+| **Langfuse** | 当生产中的大模型功能需要给每个请求记嵌套调用轨迹，再加打分、提示词版本和数据集，并且要能自托管时用它——但自托管要运维 Postgres、ClickHouse、Redis 和 S3 存储，部分管理功能还走企业许可。 | A（5/6） | [→](langfuse.zh.md) |
 | **chatgpt-comparison-detection** | Human ChatGPT Comparison Corpus（HC3）、检测器和相关 AI 文本检测资源。 | E（4/6） | [→](chatgpt-comparison-detection.zh.md) |
 | **SWE-bench** | 当你要用真实 GitHub issue 及其测试给 coding agent 的补丁打分时用它——每次评测都要 Docker 和大量磁盘。 | B（6/6） | [→](swe-bench.zh.md) |
 | **Harvey LAB** | 当你要让 agent 做完整套法律任务来做基准——虚构案卷进、备忘录或修订稿出，由两个大模型评委按律师清单判分——时用它；需要 Podman，以及 Anthropic 和 OpenAI 两把密钥。 | B（6/6） | [→](harvey-labs.zh.md) |

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Authomatic does", "zh": "Authomatic 做的"},
+  "steps": [
+    {"lane": "you", "en": "Register your app with each provider and put its keys in a CONFIG dict, one entry per provider", "zh": "到各家 provider 注册应用，key 写进 CONFIG 字典", "code": "\"class_\": oauth2.Facebook"},
+    {"lane": "you", "en": "Create one Authomatic instance and one login route that accepts the provider name", "zh": "建一个 Authomatic 实例和一个带 provider 名的登录路由", "code": "Authomatic(CONFIG, \"your secret string\")"},
+    {"lane": "you", "en": "In that route, call login through your framework's adapter", "zh": "在路由里通过框架适配器调用 login", "code": "authomatic.login(WerkzeugAdapter(request, response), provider_name)"},
+    {"lane": "them", "en": "Redirects the user to the provider and, on the callback, exchanges the code for credentials", "zh": "把用户重定向到 provider，回调时用授权码换回凭据"},
+    {"lane": "them", "en": "Returns a result with a normalized user you can fill in from the provider's API", "zh": "返回一个结果，带统一格式的 user，可再向 provider API 补全资料", "code": "result.user.update()"}
+  ],
+  "value": {"en": "\"Sign in with X\" for many providers through one call, with no framework or user model imposed", "zh": "一个调用接上多家“用 X 登录”，不强加框架和用户模型"},
+  "sources": [
+    "https://github.com/authomatic/authomatic examples/flask/werkzeug_adapter/main.py (Authomatic(CONFIG, \"your secret string\", ...), authomatic.login(WerkzeugAdapter(request, response), provider_name), result.user.update()) — read 2026-10-08",
+    "examples/flask/werkzeug_adapter/config-template.py (\"class_\": oauth2.Facebook, consumer_key / consumer_secret / scope)"
+  ]
+}

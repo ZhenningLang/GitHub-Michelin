@@ -6,8 +6,8 @@ category: agent-vendors
 tags: [agent-skills, minimax, skill-pack, claude-code, plugin-marketplace, multimodal]
 language: C#
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-04 (12.8k stars [未验证])
-last_verified: 2026-06-26
+maturity: no tagged releases; last commit 2026-04-18, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-04-18T09:48:47Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:46:16Z
+  computed_at: 2026-10-08T08:15:21Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 162
+        last_commit_age_days: 173
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 194
-        last_commit_age_days: 162
+        repo_age_days: 205
+        last_commit_age_days: 173
         cohort: skill-pack
     governance:
       grade: A
@@ -77,12 +77,32 @@ MiniMax 官方公开的约 16 个 Agent Skill 集合 —— 覆盖前端 / 全�
 
 当你想要一个现成、厂商定调的 skill 包，同时覆盖软件开发与 MiniMax 自家的媒体/文档/多模态能力，并且你正用在受支持的 harness 上时，就用它。一次性通过市场安装（`claude plugin marketplace add MiniMax-AI/skills` 然后安装该包），或在 Cursor/Codex/OpenCode 上 clone 仓库并指向各 harness 的 manifest 目录（`.claude-plugin`、`.cursor-plugin`、`.codex`、`.opencode`）。之后这套方法论通过平台原生的 skill 加载机制激活，而不是你去 `import` 它。
 
+## 怎么用起来
+
+每个 skill 是 `skills/` 下的一个文件夹，里面一份 `SKILL.md`（Markdown 文件，开头写一行 description——agent 拿你的请求去比对的触发文字，正文是做法）再加可选的 `references/` 参考文档。**仓库提供的是做法本身和各 harness 的安装清单；“哪条请求该用哪个 skill”由 harness 自带的 skill 加载器来判断**——请求对上某个 description，agent 就把那一份 `SKILL.md` 读进上下文照着做（比如 `android-native-dev` 会先让 `./gradlew assembleDebug` 跑通，再写业务代码）。你只需装一次，之后照常提需求。媒体那一半（音乐、语音合成、视频、图片、GIF 表情包）不一样：这些 skill 通过 `mmx` 命令行调 MiniMax 的付费接口，所以你还得装上它（`npm install -g mmx-cli`）并用自己的 MiniMax API key 登录；开发类和文档类 skill 不需要 key。
+
+![minimax-skills — 主干用户故事](../../../../assets/flow/minimax-skills.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/minimax-skills.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：加上市场源，安装整包 — `claude plugin install minimax-skills`
+2. **你**：照常提需求，比如写个 Android 原生页面、出一份 .docx
+3. **MiniMax Skills**：描述匹配的 skill 被触发，它的 SKILL.md 读进上下文 — `android-native-dev · minimax-docx`
+4. **MiniMax Skills**：按 skill 的检查单和参考文档干活，如先让 Gradle 构建跑通
+
+**价值**：agent 本来要临场发挥的领域做法，现成写好，几个 harness 都能用
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你已有一套信得过的 skill 栈。** 这是厂商定调的成包；把 16 个 skill 叠在既有方法论栈之上，容易引入重叠或冲突的路由 —— 选一个唯一事实源。
 - **你只要软件开发纪律、不要媒体生成。** 这里很大一部分价值是 MiniMax 专属的媒体/文档/多模态 skill（音乐生成、视觉、GIF/PPTX/DOCX）。若你只想要开发流程指导，一个聚焦的 dev-methodology 包比装整包更轻。
 - **你不在受支持的 harness 上。** skill 靠各平台的 loader 激活（Claude Code 市场；Cursor/Codex/OpenCode 的 manifest 目录）。在自制或不受支持的 agent 上没有 loader 触发它们，单凭 markdown 不会自动激活。
-- **你需要最新、频繁更新的厂商源。** 无 tag 发布、最近一次 push 是 2026-04 [未验证] —— 依赖某个具体 skill 行为前先核实新鲜度；你在意的领域里一个失维的 skill 比没有更糟。
+- **你需要最新、频繁更新的厂商源。** 无 tag 发布，2026-04-18 之后再无 push（2026-10-08 复查）—— 依赖某个具体 skill 行为前先核实新鲜度；你在意的领域里一个失维的 skill 比没有更糟。
 - **你期望硬保证。** 行为存在于 agent 加载的提示词/markdown skill 里，「生产级指导」是 advisory 而非强制 —— agent 仍可能偏离。
 
 ## 横向对比
@@ -97,15 +117,15 @@ MiniMax 官方公开的约 16 个 Agent Skill 集合 —— 覆盖前端 / 全�
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护** —— [未验证] 最近一次 push 在 **2026-04**，无 tag release；对照今天（2026-06）已停滞约 2 个月——读作**滑行（coasting），未废弃**：依赖某个具体 skill 前先核实新鲜度，因为你在意领域里一个失维的 skill 比没有更糟。
+- **维护** —— 最近一次 push 在 **2026-04-18**，无 tag release，默认分支此后一直没动（2026-10-08 复查）：已**沉寂约半年**，而 README 仍标着 *Beta*、提示格式可能随时变。读作**停滞，但未正式废弃**——依赖某个具体 skill 前先核实新鲜度，因为你在意领域里一个失维的 skill 比没有更糟。
 - **治理与背书** —— [推断] 组织所有，由 **MiniMax** 背书；provenance 强但单厂商，且绑定 MiniMax 的模型/harness 假设。路线图跟随厂商。
-- **年龄与 Lindy** —— [推断] 创建于 2026-03，截至 2026-06 仅约 3 个月：**全新，无 Lindy 履历**，且已出现 2 个月的活动空档——耐久性未经证实。
-- **风险标记** —— [推断] 活动空档是主要标记；约 1.28 万 star（2026-06）代表早期热度而非维护承诺。MIT 许可，未见 relicense/CVE 信号。
+- **年龄与 Lindy** —— 创建于 2026-03-17，到 2026-10-08 约 7 个月，且只在头一个月有提交：**没有 Lindy 履历**，此后的长空档恰好与 Lindy 要的“年龄 × 仍活跃”信号相反。
+- **风险标记** —— [推断] 活动空档是主要标记；star 在没有任何提交的情况下仍在涨（2026-10-08 约 1.37 万），代表关注度而非维护承诺。MIT 许可，未见 relicense/CVE 信号。
 
 ## 存疑（未验证）
 
 - [未验证] License 为 MIT、主语言为 C#（约 68.5%，Python 约 24.3%），据 GitHub 元数据 2026-06-26；C# 占比高被归因于文档类 skill（如 `minimax-docx`）背后的 .NET/OpenXML 辅助代码 —— 假定某条构建工具链前请对仓库核实。
-- [未验证] 最近一次 push 为 2026-04-18，截至 2026-06-26 **无 tag 发布**；把该包当作快照看待，依赖任一具体 skill 前先核实新鲜度。
+- [未验证] 最近一次 push 为 2026-04-18，截至 2026-10-08 仍**无 tag 发布**；把该包当作快照看待，依赖任一具体 skill 前先核实新鲜度。
 - [未验证] star 数（GitHub 2026-06-26 约 1.28 万）不可靠且对日期敏感；仅作参考，勿当质量信号。
 - [未验证] skill 列表（约 16 个：前端/全栈/android/ios/flutter/react-native/shader 开发，外加 pdf/docx/xlsx/pptx、gif-sticker、vision、multimodal、music-gen/playlist、buddy-sings）读自 README 与 `skills/` 列表；请以当前 `skills/` 目录为准，而非本枚举。
 - [未验证] 受支持 harness 的说法（Claude Code 市场；Cursor/Codex/OpenCode 经 clone 后的 manifest 目录）来自 README；各 harness 的实际激活保真度此处未独立确认。

@@ -7,7 +7,7 @@ tags: [redis, rdb, memory-analysis, offline, cli, profiling]
 language: JavaScript
 license: Apache-2.0
 maturity: v0.0.1 (only tagged release 2019), low activity, ~1.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2024-04-03T02:31:46Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:55:47Z
+  computed_at: 2026-10-08T08:16:54Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2266
+        last_commit_age_days: 2277
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 26768
+        release_downloads: 26787
         release_assets: 3
         release_tier: D
         signal_basis: releases
     longevity:
       grade: E
       raw:
-        repo_age_days: 3496
-        last_commit_age_days: 2266
+        repo_age_days: 3507
+        last_commit_age_days: 2277
         cohort: tool
     governance:
       grade: "?"
@@ -77,13 +77,35 @@ health:
 
 你专门在分析必须**离线且快**时选它：作者的卖点是它能在几分钟内啃完一个数 GB 的 RDB，而这在替代品（更老的 Python `redis-rdb-tools`）对大 dump 明显更慢时很重要。[未验证]
 
+## 怎么用起来
+
+RDB 文件是 Redis 写到磁盘上的快照——某一时刻所有 key 和 value 的紧凑二进制副本。RDR 是一个 Go 写的单文件程序，直接读这个文件，所以**解码和统计都由它来做**：它逐个走过每个 key，估算每个占多少字节，再按数据类型（string、hash、list……）、按 key 前缀（`session:`、`cache:`……）和按最大的单个 key 汇总，最后在本地端口上用一个 HTML 报告展示（换成 `rdr keys` 则只打印所有 key 名）。**你负责搬运**：拿到一份快照文件——拷 Redis 已经写好的那份，或在从库上触发一次快照——挪到工作机上，跑命令。这就像等搬家箱子出了门再过秤，而不是趁家人还在屋里用东西时去称：生产 Redis 一条多余的命令都收不到。报告里的字节数是从文件里重建出来的近似值，不是从运行中的服务器测出来的。
+
+![rdr — 主干用户故事](../../../assets/flow/rdr.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/rdr.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：下载对应系统的预编译二进制，加上执行权限 — `chmod a+x ./rdr*`
+2. **你**：把一个或几个 Redis 的 RDB 快照文件拷到工作机
+3. **你**：用 show 命令指向这些快照 — `./rdr show -p 8080 *.rdb`
+4. **RDR**：离线逐个解码 key，不连任何在线 Redis
+5. **RDR**：按数据类型、key 前缀和最大 key 统计近似内存
+6. **RDR**：在你指定的本地端口上提供 HTML 报告
+
+**价值**：不给生产 Redis 加一条命令的负载，就知道是哪些 key 前缀吃掉了内存
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要在线、持续的监控。** RDR 分析的是某一时刻的静态 RDB 快照。要做持续的内存看板，你想要的是 Redis exporter + Prometheus/Grafana，而不是一次性的文件解析器。
 - **你拿不出 RDB 文件。** 如果持久化被关掉了（`save ""`）且你又不能 `BGSAVE`，那 RDR 就没东西可读。它不与活实例通信。
 - **你需要精确到字节的核算。** README 自己就标注 `show` 的内存数字是**近似值**——适合找出大 key，不适合用来精确算容量账。
 - **你跑的是非常新的 Redis/RDB 版本。** RDB 是带版本的二进制格式；一个针对老版本写的解析器可能读不懂新版 Redis 里新增的编码或类型——请先核实它能干净解析你的 RDB 版本。[推断]
-- **你想要一个在积极维护、有支持渠道的工具。** 唯一的 tag 发布是 v0.0.1（2019），仓库最后一次 push 在 2024 年；把它当成一个好用但在吃老本的小工具，而非有支持通道的产品。[未验证]
+- **你想要一个在积极维护、有支持渠道的工具。** 唯一的 tag 发布是 v0.0.1（2019），`master` 上最后一次提交在 2020-07（就是加入 RDB 9／Stream 支持的那次）；把它当成一个好用但已冻结的小工具，而非有支持通道的产品。要有人维护的方案，对在线实例用 RedisInsight 的内存分析，或在需要更丰富的离线导出时用 `redis-rdb-tools`。
 
 ## 横向对比
 
@@ -113,7 +135,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 仓库最后 push 于 2024-04；唯一的 tag 发布是 **v0.0.1（2019）**。未归档，但实质上在**吃老本 / 低活跃**——可以拿来用，但别指望及时修 bug 或跟进新 RDB 版本。[未验证]
+- **维护（2026-10）。** `master` 上最后一次提交在 2020-07（仓库 `pushed_at` 显示的 2024-04 并不是默认分支上的代码改动）；唯一的 tag 发布是 **v0.0.1（2019）**。没有归档，但实际上已**冻结**——现状可用，但别指望修 bug，也别指望支持比 RDB 9 更新的版本。
 - **治理 / bus factor。** 归 **雪球（Xueqiu）** 组织所有（一家中国投资社区公司），但贡献集中在少数几位作者——这是「内部工具开源」典型的薄 bus factor。[推断]
 - **年龄与 Lindy 判断。** 2017 年创建，约 9 岁，但**并未在积极发布**——这里的年龄*不是*强 Lindy 信号，因为 Lindy 要求又老**又**仍活跃；这是又老又安静。[推断]
 - **采用度。** 约 1.2k star / 311 fork 说明它在 Redis 运维圈作为事故工具有真实使用，但没有发布节奏或活跃的 issue 处理可依赖。[未验证]

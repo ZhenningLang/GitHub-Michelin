@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "wondershaper does",
+    "zh": "wondershaper 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo; optionally install the script system-wide",
+      "zh": "克隆仓库，可选地把脚本装到系统里",
+      "code": "git clone https://github.com/magnific0/wondershaper.git · sudo make install"
+    },
+    {
+      "lane": "you",
+      "en": "Pick the interface and set download/upload ceilings in Kbps",
+      "zh": "选好网卡，按 Kbps 设下行 / 上行上限",
+      "code": "sudo ./wondershaper -a wlp4s0 -u 4096 -d 8192"
+    },
+    {
+      "lane": "them",
+      "en": "Builds an HTB tree on the interface's outgoing side with three priority classes",
+      "zh": "在网卡出方向建一棵 HTB 树，分三个优先级类",
+      "component": {
+        "en": "tc qdisc: htb + sfq",
+        "zh": "tc 队列：htb + sfq"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Redirects incoming traffic through the ifb0 virtual device to cap downloads too",
+      "zh": "把入站流量重定向到虚拟网卡 ifb0，下行也一起限住",
+      "component": {
+        "en": "ifb0",
+        "zh": "ifb0"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Exits; the kernel enforces the caps until cleared or reboot",
+      "zh": "脚本退出，内核一直执行限速，直到清除或重启"
+    }
+  ],
+  "value": {
+    "en": "One command caps a link's bandwidth, without hand-writing tc qdisc/class/filter rules",
+    "zh": "一条命令给网卡限速，不用手写 tc 的 qdisc/class/filter 规则"
+  },
+  "sources": [
+    "https://github.com/magnific0/wondershaper#installation (git clone https://github.com/magnific0/wondershaper.git, sudo ./wondershaper -a wlp4s0 -u 4096 -d 8192, sudo make install)",
+    "https://github.com/magnific0/wondershaper/blob/master/wondershaper (tc qdisc add ... root handle 1: htb, classes 1:10/1:20/1:30 with sfq leaves, IFB=\"ifb0\" ingress redirect)"
+  ]
+}

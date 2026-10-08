@@ -7,17 +7,17 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Zep** | Zep \| Examples, Integrations, & More | A (4/6) | [→](zep.md) |
-| **Graphiti** | Build Real-Time Knowledge Graphs for AI Agents | B (6/6) | [→](graphiti.md) |
-| **Cognee** | Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine. | A (6/6) | [→](cognee.md) |
+| **Zep** | Use it when you want temporal user memory as a hosted service with ready adapters for LangGraph, CrewAI, ADK or Pydantic AI — but this repo holds only examples and clients; the engine is closed, paid Zep Cloud, and the self-hosted Community Edition is deprecated. | A (4/6) | [→](zep.md) |
+| **Graphiti** | Use it when users change preferences, jobs or addresses over time and the agent must know which fact is still true and when it held — but it needs Neo4j, FalkorDB or Neptune from day one, and every message costs several LLM calls to ingest. | B (6/6) | [→](graphiti.md) |
+| **Cognee** | Use it when agent memory spans connected material (docs, tickets, meeting notes, code) and plain RAG keeps failing multi-hop questions — but every ingest costs LLM graph extraction, and Postgres-as-graph-store is a demo, not a production path. | A (5/6) | [→](cognee.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Zep](zep.md) | ✅ | A (4/6) | Temporal knowledge-graph memory for facts about users that expire or get superseded; a backend for app memory rather than a coding-agent hook layer. |
-| [Graphiti](graphiti.md) | ✅ | B (6/6) | Real-time knowledge-graph library for AI agents; you build the graph pipeline, it maintains the edges. |
-| [Cognee](cognee.md) | ✅ | A (6/6) | Self-hosted knowledge-graph memory engine for document-shaped agent memory; heavier to run than a file or SQLite store. |
+| [Zep](zep.md) | ✅ | A (4/6) | Buys temporal-graph memory with no graph database or user and thread plumbing to run; costs dependence on a closed SaaS's pricing and terms, with GitHub issues disabled on the repo. |
+| [Graphiti](graphiti.md) | ✅ | B (6/6) | Buys a temporal graph where new facts invalidate old ones, with provenance back to source messages; costs running a graph database, slow per-message ingest, and a pre-1.0 library steered by one vendor. |
+| [Cognee](cognee.md) | ✅ | A (5/6) | Buys a knowledge graph plus embeddings behind four calls, on a three-year-old, very active project; costs a heavy dependency tree, extraction cost per document, and a young 1.x API. |
 
 ## What belongs here
 

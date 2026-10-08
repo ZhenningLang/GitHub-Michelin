@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Zep Cloud does", "zh": "Zep Cloud 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get a Zep Cloud API key and install the SDK", "zh": "拿到 Zep Cloud 的 API 密钥，装上 SDK", "code": "pip install zep-cloud", "component": {"en": "zep-cloud SDK", "zh": "zep-cloud SDK"}},
+    {"lane": "you", "en": "Register the user and open a thread for the conversation", "zh": "登记用户，为这段对话开一个 thread", "code": "client.user.add(...) · client.thread.create(...)"},
+    {"lane": "you", "en": "Send each message as the conversation happens", "zh": "对话进行中，每条消息都发过去", "code": "client.thread.add_messages(...)"},
+    {"lane": "them", "en": "Builds the user's temporal graph and retires facts that were superseded", "zh": "构建该用户的时序图谱，让被取代的事实失效", "component": {"en": "Zep Cloud (hosted)", "zh": "Zep Cloud（托管）"}},
+    {"lane": "you", "en": "Before the agent replies, ask for this thread's context", "zh": "智能体回复前，要这段对话的上下文", "code": "client.thread.get_user_context(thread_id)"},
+    {"lane": "them", "en": "Returns a ready-to-paste block of the relevant current facts", "zh": "返回一段可直接放进提示词的相关事实"}
+  ],
+  "value": {"en": "Cross-session memory that drops outdated facts, with no graph database or extraction workers to run", "zh": "跨会话记忆会自动丢掉过时事实，而你不用运行图数据库或抽取 worker"},
+  "sources": [
+    "https://github.com/getzep/zep README (not Zep's product; zep-cloud SDKs; integrations/; Community Edition deprecated, moved to legacy/)",
+    "https://github.com/getzep/zep/blob/main/examples/python/simple.py (client.user.add, client.thread.create, client.thread.add_messages)",
+    "https://github.com/getzep/zep/blob/main/examples/python/chat_history/memory.py (client.thread.get_user_context)",
+    "https://github.com/getzep/graphiti README 'Graphiti and Zep' (Zep powered by Graphiti on a proprietary Context Graph Engine)"
+  ]
+}

@@ -7,7 +7,7 @@ tags: [macos, spotlight, plugins, productivity, launcher, python]
 language: Python
 license: MIT AND GPL-2.0-only (component split)
 maturity: no releases, abandoned (last push 2020-11)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2020-11-15T20:48:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:59:50Z
+  computed_at: 2026-10-08T08:17:59Z
   overall: E
   overall_score: 0.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2142
+        last_commit_age_days: 2152
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3759
-        last_commit_age_days: 2142
+        repo_age_days: 3769
+        last_commit_age_days: 2152
         cohort: tool
     governance:
       grade: "?"
@@ -75,6 +75,28 @@ health:
 你是 macOS 重度用户，仍在跑**较老的系统（大致 10.10–10.15）**，希望 Spotlight 不止能启动应用、搜文件——还能回答「weather」、算 `pi * 2`、查词、换汇，或跑一个你自己写的小 Python 插件——又不想另装 Alfred 那样的启动器。你能接受关闭 System Integrity Protection，装上 MacForge/MacEnhance（SIMBL 式注入器），放入 Flashlight，从它的安装器里挑插件；你敲进*原生* Spotlight 栏的查询如今会经过你的插件并把结果就地渲染出来。
 
 现实地说，在 2026 年这是一个**怀旧 / 遗留机器**的用例：一台老 Mac、一个锁死旧系统的环境，或研究 Spotlight 插件注入当年是怎么做的。在当前 macOS 上它并不适用。[推断]
+
+## 怎么用起来
+
+Flashlight 分两半。**管道它来出**：一个小代理，由 MacForge 注入进 Spotlight 进程（MacForge 是 SIMBL 一类的加载器，也就是在别的程序运行时往里塞代码的工具），外加一个查询解析器和一个插件执行器。**插件你来出**：每个插件是 `~/Library/FlashlightPlugins` 下的一个 `.bundle` 文件夹，里面放 `info.json`（名字、描述）、`examples.txt`（示例短语，用 `~message(...)` 这类标记指出哪几个词是输入）和 `plugin.py`。你一边打字，Flashlight 一边拿查询和所有插件的示例短语比对，填好标记的槽位，调用该插件的 `results()`，把返回的标题画成 Spotlight 里的一行；按回车就调用它的 `run()`。可以把它想成私接在苹果电话线上的一台总机——所以它要求关掉 SIP（System Integrity Protection，macOS 对系统进程的保护锁），每次 macOS 更新也都可能把这根私接的线剪断。
+
+![flashlight — 主干用户故事](../../../assets/flow/flashlight.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/flashlight.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：老版 macOS 上关掉 SIP，装 MacForge 和 Flashlight
+2. **你**：装插件，或写插件包并在 examples.txt 里标出槽位 — `say ~message(Good Morning)`
+3. **你**：在 plugin.py 里把填好的槽位变成一条结果标题 — `def results(fields, original_query)`
+4. **Flashlight**：注入 Spotlight，把你输入的查询和各插件的例句比对 — 组件：`SpotlightSIMBL 注入代理`
+5. **Flashlight**：调用插件的 results()，把标题显示成 Spotlight 里的一行
+6. **Flashlight**：你按回车时，用 run_args 调用插件的 run()
+
+**价值**：原生 Spotlight 能回答你自定义的查询——但只限 macOS 10.10–10.15
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

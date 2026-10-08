@@ -3,20 +3,20 @@ name: BentoML
 slug: bentoml
 repo: https://github.com/bentoml/BentoML
 category: serving-engines
-tags: [llm-inference, serving, bentoml, service]
+tags: [llm-inference, serving, model-packaging, adaptive-batching, docker, bentoml, service]
 language: Python
 license: Apache-2.0
-maturity: active, ~8,708 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: v1.4.39 (2026-05-07), slowed after Modular acquisition (2026-02), ~8,884 stars (as of 2026-10)
+last_verified: 2026-10-08
 type: service
 upstream:
-  pushed_at: 2026-06-22T09:02:52Z
+  pushed_at: 2026-10-05T17:17:22Z
   default_branch: main
-  default_branch_sha: 73c4dbead99be6515fa25fcd91e348ac30f5c22e
+  default_branch_sha: 517b343b81aeb0b01bbd908e58e53ad9c12ef7eb
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:29:05Z
+  computed_at: 2026-10-08T08:20:45Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 15
+        last_commit_age_days: 31
         active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: C
       raw:
         median_ttfr_hours: 667.5
-        qualifying_issues: 5
+        qualifying_issues: 3
         band: default
         window_offset_days: 3
         source: issue
@@ -47,7 +47,7 @@ health:
         registry: pypi.org
         canonical_package: bentoml
         dependent_repos_count: 499
-        downloads_last_month: 148871
+        downloads_last_month: 134418
         graph_tier: C
         volume_tier: C
         cross_check_divergence: null
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2731
-        last_commit_age_days: 15
+        repo_age_days: 2746
+        last_commit_age_days: 31
         cohort: service
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.5
-        top3_share: 0.735
+        active_maintainers_12mo: 11
+        top1_share: 0.492
+        top3_share: 0.738
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -76,59 +76,86 @@ health:
 ---
 # BentoML
 
-The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more!
+模型在笔记本里跑通了——一个摘要模型、一个 Whisper 转写、一个向量模型加重排模型——现在要把它变成一个 HTTP 接口：请求要攒成批送进 GPU，还要打成运维肯收的 Docker 镜像，通常这意味着手写一个 FastAPI 应用，再在 Dockerfile 里和 CUDA 折腾一周。BentoML 让你只写一个加了装饰器的 Python 类，由它生成服务端、请求批处理和容器镜像。
 
 ![BentoML — 健康度雷达](../../../assets/health/bentoml.zh.svg)
 
 ## 何时使用
 
-你正在为一个落在 `llm-inference` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 BentoML 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
+你是产品团队里的机器学习工程师，要上线的不只是聊天大模型：一条摘要流水线、一串 OCR → 向量化 → 分类器、一个扩散模型、一个语音模型，每个外面都包着你自己写的前处理和后处理代码。第一版你用 FastAPI 写；一上压力，每个请求都单独跑一次模型，GPU 利用率停在 15%，延迟却一路上涨；每次有人升级 `torch`，Docker 镜像就坏一次，因为 CUDA 基础镜像和 pip 版本锁对不上。
 
-这个首版页面存在，是因为 BentoML 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+BentoML 替掉的就是这层胶水。你写一个加了 `@bentoml.service` 的类，在 `__init__` 里加载模型，用 `@bentoml.api` 暴露方法；把某个方法标成 `batchable=True`，服务端就开始把并发请求合并成批。服务之间可以互相调用，拼成多模型流水线；`bentoml serve` 在本地跑起来，`bentoml build` 加 `bentoml containerize` 产出一个可复现的 Docker 镜像，Python 版本和依赖包就是你在代码里声明的那些。当你要服务的是“任意模型加 Python 逻辑”、而不是把单个大模型的每秒 token 数推到极限时，选它而不是 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md)（你仍然可以在 BentoML 服务里跑 vLLM）；当你想一个服务一个容器、又不想运维一个 Ray 集群时，选它而不是 [Ray Serve](ray-serve.zh.md)。
+
+## 怎么用起来
+
+你写一个 Python 类，BentoML 把它变成服务端。`@bentoml.service` 标记这个类，同时声明它的容器镜像（Python 版本、依赖包）；`__init__` 在每个工作进程里只跑一次，用来加载模型；`@bentoml.api` 把一个方法变成 HTTP 接口，输入输出的格式直接取自你的 Python 类型注解。加上 `batchable=True` 后，服务端会把进来的请求先攒几毫秒，再把一整个列表交给你的方法——这叫“自适应批处理”，像电梯稍等片刻、一趟多载几个人——于是 GPU 一次就能处理很多条输入。`bentoml build` 把代码、依赖声明和模型引用冻结成一个“Bento”（BentoML 的可部署包），`bentoml containerize` 再把它变成 Docker 镜像。BentoML 替你做的：HTTP 服务端、批处理、工作进程、带类型的接口格式、指标和链路追踪的接入点，以及镜像构建。你要做的：写推理代码，选批处理和资源配置，并找地方把容器跑起来——跨主机的自动扩缩容和缩到零，文档里都放在厂商的托管平台 BentoCloud 名下，不属于开源服务端。
+
+![bentoml — 主干用户故事](../../../assets/flow/bentoml.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bentoml.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好后写一个服务类：在 __init__ 里加载模型，标出推理方法 — `@bentoml.service · @bentoml.api(batchable=True)`
+2. **你**：在本地把服务跑起来 — `bentoml serve`
+3. **BentoML**：把方法变成 :3000 上的 HTTP 接口，把并发请求合并成批 — 组件：`BentoServer`
+4. **你**：打包服务并构建镜像 — `bentoml build · bentoml containerize summarization:latest`
+5. **BentoML**：把代码、依赖和模型引用冻结成 Bento，并生成 Docker 镜像 — 组件：`Bento 构建`
+
+**价值**：一个 Python 类变成带批处理的接口和可复现的镜像，不用手写服务端和 Dockerfile
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 BentoML。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+- **你只是想把一个热门开源大模型尽可能快地跑起来。** 直接用 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md)——它们自己就提供 OpenAI 兼容接口。只有当你要在引擎外面包一层自定义 Python 逻辑时，多出来的 BentoML 这一层才值得。
+- **你要厂商支持的、自托管的 Kubernetes 自动扩缩容。** BentoML 的 Kubernetes operator Yatai 已归档，自动扩缩容文档放在 BentoCloud 名下。要开源的集群服务加自动扩缩容，用 [Ray Serve](ray-serve.zh.md) 或 KServe（未收录）；用 BentoML 的话，Kubernetes HPA 得你自己接。
+- **一个超大模型要跨多台机器，或者大模型流量需要在整个集群里按缓存做路由。** 那是建在 vLLM/SGLang 之上的 [llm-d](llm-d.zh.md)，或者用 Ray Serve 做 Ray 原生的分布式组合。
+- **你需要一个高性能、多框架、带模型仓库和 C++ 后端（TensorRT、ONNX、TorchScript）的推理服务器。** 用 NVIDIA Triton Inference Server（未收录）；BentoML 以 Python 为先，请求路径上跑的是你的 Python 代码。
+- **你需要上游快速修 bug。** Modular 收购 BentoML（2026-02-09 宣布）之后，开源活跃度下降了：最近一个版本是 2026-05-07 的 v1.4.39，主分支在过去 13 周里只有 3 周有提交，issue 要等好几周才有第一条回复。如果这对你重要，就锁定版本、准备自己打补丁，或者优先考虑 Ray Serve。
+- **你的环境不允许默认向外回传。** 除非加 `--do-not-track` 或设置 `BENTOML_DO_NOT_TRACK=True`，BentoML 会上报匿名使用统计。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [llama.cpp](../local-runtimes/llama-cpp.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Ollama](../local-runtimes/ollama.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [oMLX](../local-runtimes/omlx.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 BentoML 对照。 | BentoML 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 BentoML 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
+| [Ray Serve](ray-serve.zh.md) | ✅ | 需要自动扩缩容、多节点组合和仍在积极维护的开源扩缩容能力，选 Ray Serve；一个 Python 类构建出一个服务一个容器就够用，选 BentoML。 | Ray Serve 能扩得更远，但你要运维 Ray；BentoML 运行起来更轻，但把集群扩缩容留给你自己或 BentoCloud。 |
+| [vLLM](vllm.zh.md) | ✅ | 要以最高吞吐、通过 OpenAI 兼容接口服务一个大模型，选 vLLM；服务的是任意模型加 Python 前后处理（里面也可以套 vLLM），选 BentoML。 | vLLM 是专门的推理引擎；BentoML 是通用的打包与服务框架，除非包着一个引擎，否则纯大模型吞吐不如它。 |
+| KServe | 未收录 | 你在 Kubernetes 上、想要带自动扩缩容和缩到零的标准 InferenceService 资源，选 KServe；想从 Python 代码和一个 Docker 镜像起步、不要 Kubernetes 控制面，选 BentoML。 | KServe 带来 Kubernetes 原生的扩缩容和多运行时支持；BentoML 上手更简单，但没有仍在维护的开源 operator。 |
+| NVIDIA Triton Inference Server | 未收录 | 要从模型仓库以最高吞吐服务导出好的模型（TensorRT、ONNX），选 Triton；请求路径大部分是自定义 Python，选 BentoML。 | Triton 跑导出的计算图更快，但对任意 Python 不友好；BentoML 处处都能跑 Python，代价是一些性能。 |
+| [Modular Platform (MAX + Mojo)](modular.zh.md) | ✅ | 想用 Modular 自家优化过的 GPU/CPU 推理引擎，选 MAX；要给已有模型套一层与框架无关的服务层，选 BentoML，但要记得它现在归 Modular 所有。 | MAX 优化的是引擎本身；BentoML 负责打包任意模型。收购之后，BentoML 的方向可能会偏向与 MAX 集成。 |
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 Python。
-- **仓库：** `bentoml/BentoML`。
-- **项目形态：** atlas 路由暂归为 `service`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `main`，最后 push `2026-06-22T09:02:52Z`，archived 为 `false`。
+- **语言：** Python（要求 ≥3.9）。
+- **服务端：** 基于 Starlette 和 uvicorn 的 ASGI；服务间调用用 aiohttp/httpx；用 pydantic 做带类型的输入输出。
+- **可观测性：** 内置 OpenTelemetry 链路追踪和 Prometheus 指标。
+- **打包：** 按服务里的 `bentoml.images.Image` 声明生成 Dockerfile 和镜像；自带 BentoCloud 命令行（`bentoml cloud login`、`bentoml deploy`）。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- **运行时：** Python 3.9+ 和你用的机器学习框架（PyTorch、Transformers 等）；不需要数据库或消息中间件。
+- **容器化：** `bentoml containerize` 需要 Docker。
+- **GPU：** 模型用 GPU 时需要 NVIDIA 驱动/CUDA（`nvidia-ml-py` 是用于 GPU 监控的核心依赖）。
+- **可选：** 走托管部署、自动扩缩容和 BYOC 路线时需要 BentoCloud 账号。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+**起步低，生产环境中等。** `bentoml serve` 和 `bentoml containerize` 很快就能产出一个能用的镜像。之后容器平台要的一切都归你：负载均衡、自动扩缩容（Kubernetes HPA 之类，没有仍在维护的 BentoML operator）、GPU 调度、发布，以及把内置的 Prometheus 指标接进监控。
 
 ## 健康度与可持续性
 
-- **维护快照：** 截至 2026-07-06，GitHub 返回 `archived=false`，`pushed_at=2026-06-22T09:02:52Z`。
-- **采用快照：** 2026-07 约 8,708 个 GitHub stars；stars 只是有噪声的采用信号。
-- **许可证快照：** GitHub API 返回 `Apache-2.0`；许可证关键时必须检查仓库内许可证文件。
-- **Lindy 与治理：** 本次 intake 未完整复核。长期采用前，请继续检查组织归属、项目年龄、发布节奏和 bus factor。
-- **风险信号：** 本页是从 backlog 元数据生成的首版页面。
+- **维护——在滑行（2026-10-08）。** 最近一个版本是 v1.4.39（2026-05-07）；主分支最后提交在 31 天前，过去 13 周只有 3 周有提交，内容多是修复和新增的 agent skill 文档。
+- **响应速度——慢。** 近期 issue 的首次响应中位数约 667.5 小时（约四周），样本很小。
+- **背书——已被收购。** Modular 于 2026 年 2 月收购 BentoML；Modular 表示许可证保持 Apache 2.0，创始人也说会按原来的速度继续发布，但此后的节奏低于这个承诺。
+- **年龄 / Lindy——先验很强，被放缓削弱。** 仓库建于 2019-04（约 7.5 年），上月 PyPI 下载量 134,418 次，依赖仓库 499 个；Lindy 偏向它，但“年龄 × 仍活跃”现在只部分成立。
+- **风险信号。** Apache-2.0，无改许可证历史；它的 Kubernetes operator Yatai 已归档；使用统计默认开启；路线图如今归一家有自家竞品引擎的收购方。
 
 ## 存疑（未验证）
 
-- [未验证] 这是依据 GitHub 元数据和 2026-07-06 backlog 生成的首版 intake 页面；高风险选型前，请重新阅读上游 README、文档、许可证文件和 release notes。
-- [推断] 横向对比表先使用同分类已收录页面作为起点；后续语义复核应把泛化邻居替换成最接近的真实替代品。
+- [推断] “自动扩缩容和缩到零只在 BentoCloud 上有”是根据文档结构（自动扩缩容指南放在“Scale with BentoCloud”下）和已归档的 Yatai 推出来的，没有做代码层面的核对。
+- [未验证] “朴素 FastAPI 部署下 GPU 闲置”是常见现象，不是在某个具体模型上测出来的。
+- [推断] 节奏放缓是暂时的（团队忙于集成 MAX）还是长期的优先级调整，目前不清楚。
+- [未验证] 对比表里 KServe 和 Triton 的能力来自一般了解，本索引里没有它们的页面。
+- [未验证] 收购日期和引语来自 Modular 论坛公告（2026-02-09）。

@@ -6,8 +6,8 @@ category: networking
 tags: [traffic-shaping, bandwidth, qos, tc, htb, linux, shell]
 language: Shell
 license: GPL-2.0
-maturity: stable, low activity (last push 2024-07), ~1.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v1.4.1 (VERSION file, no tagged releases), last commit 2021-10-15, quiet since (as of 2026-10-08), ~1.9k stars
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2024-07-25T02:46:32Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:19:08Z
+  computed_at: 2026-10-08T08:23:33Z
   overall: E
   overall_score: 0.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1808
+        last_commit_age_days: 1819
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5129
-        last_commit_age_days: 1808
+        repo_age_days: 5140
+        last_commit_age_days: 1819
         cohort: tool
     governance:
       grade: "?"
@@ -79,13 +79,34 @@ health:
 
 它适合*单台主机*网卡上的临时和轻量持久 QoS：给备份任务限速、别让某个下载器吃光整条管道，或给一台低功耗路由器一个简单的上下行上限。
 
+## 怎么用起来
+
+wondershaper 是一个替你写 Linux 流量控制规则的 Bash 脚本。Linux 内核本来就能通过 `tc` 给网卡限速，但你得用一套很简省的小语言去描述队列（qdisc——数据包出门前要排的队）、类和过滤器。**这整套配方脚本里都写好了**：出方向它建一棵 HTB 树（分层令牌桶——按你设的速率发放“发送许可”的计量器），分三个优先级类；入方向的包已经到了门口，Linux 没法直接让它们慢下来，所以脚本把入站流量转到一块虚拟网卡 `ifb0` 上再在那里限速。你只需报出网卡名和两个以千比特每秒计的速率；脚本设好规则就退出，内核一直执行，直到你用 `-c` 清除或重启。想让限速在重启后还在，就填一个配置文件、启用附带的 systemd unit——这一步也由你来开。
+
+![wondershaper — 主干用户故事](../../assets/flow/wondershaper.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/wondershaper.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆仓库，可选地把脚本装到系统里 — `git clone https://github.com/magnific0/wondershaper.git · sudo make install`
+2. **你**：选好网卡，按 Kbps 设下行 / 上行上限 — `sudo ./wondershaper -a wlp4s0 -u 4096 -d 8192`
+3. **wondershaper**：在网卡出方向建一棵 HTB 树，分三个优先级类 — 组件：`tc 队列：htb + sfq`
+4. **wondershaper**：把入站流量重定向到虚拟网卡 ifb0，下行也一起限住 — 组件：`ifb0`
+5. **wondershaper**：脚本退出，内核一直执行限速，直到清除或重启
+
+**价值**：一条命令给网卡限速，不用手写 tc 的 qdisc/class/filter 规则
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要真正的多类 QoS / 按流优先级。** wondershaper 设的是一个简单的整体上/下行上限（带一些优先级启发式）；要做细粒度的按应用/按 IP 流量分类，请直接写 `tc`/`nftables` 规则，或用路由器系统（OpenWrt 的 SQM/`cake`）。
-- **你想要现代的抗 bufferbloat 整形。** 这脚本的血统是基于 HTB 的；要做负载下低延迟，**`cake`** / `fq_codel`（常经 SQM）才是当前最佳实践——在依赖它做 bufferbloat 控制前，先核实这个版本用的是哪种 qdisc。[未验证]
+- **你想要现代的抗 bufferbloat 整形。** 1.4.1 版用的是 HTB 加 `sfq` 叶子队列（下行另走 `ifb0` 重定向），没有 `cake` 或 `fq_codel`。要做负载下低延迟，用 **`cake`** / `fq_codel`，通常经 OpenWrt 的 SQM，或者手写一行 `tc`。
 - **你不在带 `tc` 的 Linux 上。** 它是围绕 `iproute2` 的 `tc` 的 Bash 封装；没有 Windows/macOS，且需要 `iproute2` 存在。容器/网络命名空间另有注意事项。
 - **你需要跨多台主机集中整形。** 它是按主机的 CLI，不是机群/SDN 控制器——没有中央策略，机器间不协调。
-- **你要求上游积极支持。** 仓库最后 push 在 **2024-07**，而且是个又老又薄的脚本；它能用，但当作稳定但吃老本，并对照你的内核/`iproute2` 版本测试。[未验证]
+- **你要求上游积极支持。** `master` 最后一次提交在 **2021-10-15**（截至 2026-10-08 已沉寂五年）；这是个又老又薄、没人修的脚本。读一遍，在你的内核/`iproute2` 版本上测过再用，或者干脆自己写那几行 `tc`，出了问题自己能改。[未验证]
 
 ## 横向对比
 
@@ -107,7 +128,7 @@ health:
 
 - **运行时：** 带流量控制支持的 Linux 内核，并装好 **`iproute2`**（`tc`、`ip`）；施加规则需 **root/sudo**。持久服务可选 **systemd**。
 - **外部服务：** 没有——它纯粹是本地内核排队配置。
-- **安装：** clone 仓库 / `make install`，或在有的发行版上用包；它就是一个脚本 + 可选的 unit 文件。[推断]
+- **安装：** clone 仓库后直接运行 `./wondershaper`，或 `sudo make install` 装到 `/usr/bin`；持久模式经附带的 `wondershaper.service` 读取 `/etc/systemd/wondershaper.conf`。发行版里可能有包，但未核查。
 
 ## 运维难度
 
@@ -116,7 +137,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 仓库最后 push **2024-07**；这里没有 GitHub tag 发布。实质上**稳定 / 低活跃**——一个少有改动的小而成熟的脚本，但并非积极开发。未归档。[未验证]
+- **维护（截至 2026-10-08）。** `master` 最后一次提交在 **2021-10-15**（2024-07 的 `pushed_at` 没有动默认分支）；按 `VERSION` 文件是 1.4.1，没有 GitHub tag 发布，未归档。是**休眠**而不只是低活跃：这个小脚本仍然做得到它说的事，但没人跟进内核或 `iproute2` 的变化。
 - **治理 / bus factor。** owner 类型 **User**（magnific0，约 20 次提交），有几位次要贡献者——一个**单一维护者**的小工具；bus factor 薄，但面也极小。[推断]
 - **年龄与 Lindy 判断。** **2012** 年创建（且本身是更古老的 Wondershaper 血统——源自 Linux Advanced Routing HOWTO——的延续）——约 14 岁；老**但安静**，所以 Lindy *中等*：长寿且仍能用，但 HTB 时代的设计相比现代 `cake`/`fq_codel` 已显陈旧。[推断]
 - **采用度。** 约 1.9k star，作为 Linux how-to 里首选的「简单带宽限制」脚本有悠久历史；被广泛抄用。[未验证]
@@ -124,8 +145,8 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 1.9k star / 约 277 fork——对时间敏感，仅供参考。
-- [未验证] 未打 GitHub release；版本/changelog 在脚本/README 里——核实你所装版本的版本号和 qdisc 行为。
-- [推断] 当前版本实际施加的 qdisc（HTB 还是更新的）及其 bufferbloat 行为这里未经核实——在你的内核上测。
-- [推断] 安装路径（make/包/手动）取决于你的发行版；仓库本质上就是一个脚本加一个可选 systemd unit。
+- [未验证] 2026-10-08 GitHub API 显示约 1.9k star / 约 277 fork——对时间敏感，仅供参考。
+- [未验证] 未打 GitHub release；版本号（1.4.1）在 `VERSION` 文件和 `ChangeLog` 里。发行版的包可能是别的版本——核实你装的是哪个。
+- [推断] 队列结构（HTB + `sfq`，入方向走 `ifb0`）是 2026-10-08 从脚本里读出来的；它在负载下的实际延迟表现没有实测——在你的内核上测。
+- [未验证] 发行版包（以及是否与本仓库一致）未经核查。
 - [未验证] 在容器 / 网络命名空间内以及非 systemd init 上的行为未经核实。

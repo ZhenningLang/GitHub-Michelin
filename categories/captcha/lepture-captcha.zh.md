@@ -7,7 +7,7 @@ tags: [captcha, image-captcha, audio-captcha, pillow, python, accessibility]
 language: Python
 license: BSD-3-Clause
 maturity: v0.7.1, low-volume but maintained, ~1.1k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-10-21T06:24:16Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:50:37Z
+  computed_at: 2026-10-08T08:16:22Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 341
+        last_commit_age_days: 352
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,11 +41,11 @@ health:
         registry: pypi.org
         canonical_package: captcha
         dependent_repos_count: 506
-        downloads_last_month: 234580
+        downloads_last_month: 226541
         graph_tier: C
         volume_tier: B
         cross_check_divergence: 1.0
-        release_downloads: 33264
+        release_downloads: 33334
         release_assets: 4
         release_tier: D
         signal_basis: releases
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 4324
-        last_commit_age_days: 341
+        repo_age_days: 4335
+        last_commit_age_days: 352
         cohort: library
     governance:
       grade: D
@@ -86,6 +86,28 @@ health:
 你在做一个 Django 或 Flask 表单——注册页、评论框、密码重置流程——想要一个自托管、不调第三方的验证码，挡住机器人猛刷端点。你不想接 reCAPTCHA（会把用户数据送给 Google，还需要一次网络往返），也不想专门起一个服务；你只想在服务端生成一个随机的 4 到 6 位字符串，渲染成带噪点的 PNG，把答案存进 session，提交时比对用户输入。你 `pip install captcha`，调 `ImageCaptcha().generate('A3K9')`，把图片字节交给模板，提交时做相等比较。为视障用户，你再调 `AudioCaptcha().generate(...)`，用同一串码生成读数字的 WAV。它只依赖 Pillow，因此能塞进任何 Python web 栈而无需额外基础设施。
 
 你选它，正是因为想在自己的进程里完全掌控挑战的生命周期——这个库刻意只做*渲染器*。文本生成、与 session/存储的绑定、过期、相等校验都得你自己写，而这恰好是你在规避任何外部验证码依赖时想要的。
+
+## 怎么用起来
+
+captcha 就是两个渲染器，别无其他。`ImageCaptcha` 拿到你给的字符串，每个字符随机挑一种字体来画，再旋转、*扭曲*（用随机的四角变形把字拉歪），最后撒上噪点、画一条干扰曲线，以内存里的 PNG 字节交还给你；`AudioCaptcha` 把逐字符的语音片段拼成一段 WAV，再混入背景噪声。**图片之外的事全归你**：出什么题、记住答案、设过期、比对用户输入，通常就是表单视图里一个 session 键加一次相等比较。可以把它想成刻章师傅：你给什么字它就刻什么，但不登记刻过哪些章。自带的字体和语音数据只是起点，README 建议都换成你自己的。
+
+![lepture-captcha — 主干用户故事](../../assets/flow/lepture-captcha.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/lepture-captcha.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装后建一个渲染器，最好换上自己的字体（音频则换语音文件） — `ImageCaptcha(fonts=['/path/A.ttf', '/path/B.ttf'])`
+2. **你**：自己生成随机验证码文本，把答案存进会话
+3. **你**：让它把这串文本渲染成图片或音频 — `image.generate('1234') · audio.generate('1234')`
+4. **captcha (lepture)**：每个字符随机挑字体、旋转、扭曲，再撒噪点、画干扰线 — 组件：`captcha.image`
+5. **captcha (lepture)**：把 PNG（或混了噪声的 WAV）以内存字节返回，不留任何状态
+6. **你**：把字节发给页面；提交时拿用户输入和存好的答案比对
+
+**价值**：自托管的图片/音频验证码，不调第三方，只在你自己进程里用 Pillow
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -125,7 +147,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2025-10；最新 tag 为 v0.7.1。提交量低但并未死掉——小修复在落、依赖（Pillow）有跟进。**维护中、低速**——对一个稳定、范围窄的库而言恰如其分。[推断]
+- **维护（2026-06）。** 最后 push 于 2025-10；最新 release 为 v0.7.1（2025-03-01，见 GitHub Releases）。提交量低但并未死掉——小修复在落、依赖（Pillow）有跟进。**维护中、低速**——对一个稳定、范围窄的库而言恰如其分。[推断]
 - **治理 / bus factor。** 单一高产维护者（lepture，也是 Authlib/mistune 作者）的个人项目；贡献者列表由 owner 主导。bus-factor 风险真实存在，但被极小的表面积缓解——这个库与其说「活跃」，不如说「做完了」。[推断]
 - **年龄与 Lindy 判断。** 2014-11 创建（约 11 年）且仍偶有更新⇒ 对一个小工具来说是不错的 Lindy 信号；它早已活得比多数验证码库都久。[推断]
 - **采用度。** 约 1.1k star、约 189 fork，作为轻量自托管验证码生成器散见于 Python web 项目。规模不大但稳定。[未验证]
@@ -134,6 +156,5 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 1.1k star / 约 189 fork；星标/fork 数对时间敏感，仅供参考。
-- [未验证] 观察到的最新 tag 为 v0.7.1；确切发布日期此处未确认（API 只返回 tag，没有 GitHub Releases 条目）。
 - [推断]「被现代 OCR/打码服务攻破」是扭曲文字验证码的普遍状态，而非对该渲染器具体产物的实测结论。
 - [推断]「维护中、低速」是从提交近况加单一主导贡献者推断而来，并非来自明确的维护策略声明。

@@ -3,20 +3,20 @@ name: qpdf
 slug: qpdf
 repo: https://github.com/qpdf/qpdf
 category: pdf-transform-signing
-tags: [pdf, document, qpdf, tool]
+tags: [pdf, merge-split, encryption, linearization, pdf-repair, cli, cpp-library]
 language: C++
 license: Apache-2.0
-maturity: active, ~5,204 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: "active, v12.4.2 (2026-09-26), ~5,466 stars (as of 2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-06-19T09:06:43Z
+  pushed_at: 2026-09-26T23:55:04Z
   default_branch: main
-  default_branch_sha: 503d401615a842f7c5220a3ee425f5db2f25f537
+  default_branch_sha: 4eba95899886e851cc41d76886483b347612f2a8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T03:12:27Z
+  computed_at: 2026-10-08T08:25:09Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 16
-        active_weeks_13: 6
+        last_commit_age_days: 11
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 49.4
-        qualifying_issues: 8
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 5
         source: issue
@@ -46,24 +46,24 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 22316
+        homebrew_installs_90d: 27061
         homebrew_tier: A
-        release_downloads: 2099067
-        release_assets: 777
+        release_downloads: 2199030
+        release_assets: 801
         release_tier: B
         signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5224
-        last_commit_age_days: 16
+        repo_age_days: 5240
+        last_commit_age_days: 11
         cohort: tool
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 12
-        top1_share: 0.795
-        top3_share: 0.95
+        top1_share: 0.744
+        top3_share: 0.939
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -76,59 +76,85 @@ health:
 ---
 # qpdf
 
-qpdf: A content-preserving PDF document transformer
+You need to merge, split, reorder, encrypt or repair PDFs in a script, and most tools that "edit" a PDF quietly re-render it — fonts get substituted, images recompressed, form fields or signatures lost. qpdf rewrites the file's internal structure (pages, objects, encryption, layout) while copying the page content itself byte for byte, so what you see does not change.
 
 ![qpdf — health radar](../../../assets/health/qpdf.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `pdf-tools` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for qpdf when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You maintain a back-end job that assembles customer statements: a cover page from one system, a contract from another, appendices from a third, all PDFs. Your first attempt went through a "print to PDF" path and the output came back three times larger, with blurry images and a broken form field. Another day, a vendor sends a file that half your readers refuse to open — `Error: xref table damaged`. What you want is a command-line tool you can call from any language that will concatenate, pick page ranges, decrypt or encrypt, linearize for fast web viewing, and fix broken cross-reference tables, without touching how pages look.
 
-This first-pass page exists because qpdf was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+qpdf is that tool: `qpdf in.pdf --pages . a.pdf b.pdf 1-z:even -- out.pdf` appends pages at the object level instead of re-rendering them. Pick it over Ghostscript-style pipelines when visual fidelity and file size must stay put; over PDFtk because qpdf is actively maintained, permissively licensed, also a C++ library, and has much deeper structural options (JSON dump/update, QDF inspection mode, repair). If you work in Python, you usually reach it through pikepdf, its official-recommended binding.
+
+## How it works
+
+A PDF is internally a graph of numbered objects (pages, fonts, images, content streams — the drawing instructions for a page) plus a cross-reference table that says where each object sits in the file. qpdf parses that graph — reconstructing the cross-reference table when it is damaged — applies the transformations you ask for at the object level (copy these pages, drop those, add or remove encryption, regroup objects), and writes a new, valid file. It does not render pages or extract text, and it does not edit what is drawn on a page; the content streams are carried over unchanged unless you explicitly ask to normalize or recompress them. You decide the operations with command-line flags (or the C++/C API, or a QPDFJob JSON spec); qpdf takes care of renumbering objects, rewriting references and producing a consistent file. Like a bookbinder, it can re-collate, re-cover and lock the book, but never redraws a page.
+
+![qpdf — backbone user story](../../../assets/flow/qpdf.svg)
+
+<!-- flow-steps:begin (generated from flows/qpdf.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install qpdf from your distribution or drop in a release binary — component: `qpdf CLI + libqpdf`
+2. **You**: Run one command naming the input, the transformations and the output — `qpdf in.pdf --pages . a.pdf b.pdf 1-z:even -- out.pdf`
+3. **qpdf**: Parses each file's object graph, rebuilding a damaged cross-reference table if needed
+4. **qpdf**: Copies, drops or re-encrypts objects; page content streams are carried over unchanged
+5. **qpdf**: Renumbers objects and writes a new, valid PDF (optionally linearized)
+
+**Value**: Merged, split, encrypted or repaired PDFs that look exactly like the originals
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on qpdf.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **You need to render pages or extract text.** qpdf does neither by design. Use [PyMuPDF](../pdf-reading/pymupdf.md) or [PDF.js](../pdf-reading/pdfjs.md) to render, [pdfplumber](../pdf-reading/pdfplumber.md) to extract text and tables.
+- **You need to draw new content (text, stamps, charts) or fill forms from code.** qpdf only supports creating content "if you supply all the content yourself". Use [pdf-lib](../pdf-generation/pdf-lib.md) in JavaScript, or [PyMuPDF](../pdf-reading/pymupdf.md) in Python, which have high-level drawing APIs.
+- **You want Pythonic objects instead of shelling out.** Use pikepdf (not indexed), the Python binding the qpdf manual recommends — same engine, native objects.
+- **Scanned PDFs that need to become searchable.** qpdf does no OCR. Use [OCRmyPDF](ocrmypdf.md), which uses pikepdf/qpdf internally for the PDF plumbing.
+- **Digital signatures.** qpdf can preserve existing structure but does not create or validate signatures. Use [pyHanko](pyhanko.md) (Python, PAdES/LTV) or [SAPP](sapp.md) (PHP).
+- **Compression of image-heavy files.** qpdf can recompress streams and pack objects, but it does not downsample images; for aggressive size reduction use Ghostscript (not indexed; AGPL) — accepting the re-render tradeoff.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [jsPDF](../pdf-generation/jspdf.md) | ✅ | When you need the established in-index option for this category, compare it against qpdf before switching. | qpdf is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose qpdf only after verifying the repo-specific caveats below. |
-| [OCRmyPDF](ocrmypdf.md) | ✅ | When you need the established in-index option for this category, compare it against qpdf before switching. | qpdf is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose qpdf only after verifying the repo-specific caveats below. |
-| [pdf-lib](../pdf-generation/pdf-lib.md) | ✅ | When you need the established in-index option for this category, compare it against qpdf before switching. | qpdf is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose qpdf only after verifying the repo-specific caveats below. |
-| [PDF.js](../pdf-reading/pdfjs.md) | ✅ | When you need the established in-index option for this category, compare it against qpdf before switching. | qpdf is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose qpdf only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| pikepdf | not indexed | In a Python codebase, use pikepdf for page manipulation and metadata; use the qpdf CLI from shell scripts or non-Python languages. | pikepdf is the same qpdf engine with Python objects and MPL-2.0 licensing; the CLI needs no Python but you script it with flags and subprocesses. |
+| PDFtk | not indexed | Pick qpdf for new automation that needs merge/split/encrypt; keep PDFtk only for existing scripts that already depend on its command syntax. | PDFtk Server has familiar `cat`/`burst` verbs and form-fill shortcuts; qpdf is more actively maintained, Apache-2.0 rather than GPL, and exposes far more structural control. |
+| pdfcpu | not indexed | Choose pdfcpu when you want a pure-Go library or single static binary in a Go service; choose qpdf for the widest repair/linearization coverage and C/C++ embedding. | pdfcpu avoids C/C++ dependencies and adds stamping/watermark commands; qpdf has a longer track record on malformed files and a richer low-level object model. |
+| [PyMuPDF](../pdf-reading/pymupdf.md) | ✅ | Use PyMuPDF when one Python library must render, extract text and edit pages together; use qpdf when you only restructure files and want no rendering engine in the dependency tree. | PyMuPDF bundles MuPDF's renderer and high-level editing but is AGPL or commercial; qpdf is narrower, Apache-2.0, and never re-renders content. |
+| [pdf-lib](../pdf-generation/pdf-lib.md) | ✅ | In browser or Node code that must add content or fill forms, pick pdf-lib; for server-side batch merging, encryption and repair of untrusted files, pick qpdf. | pdf-lib runs in JavaScript with no native binary and can draw; qpdf needs a native install but handles encryption, linearization and damaged files that pdf-lib does not attempt. |
 
 ## Tech stack
 
-- **Primary language:** C++ per GitHub metadata.
-- **Repository:** `qpdf/qpdf`.
-- **Project shape:** categorized as `tool` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-06-19T09:06:43Z`, archived `false`.
+- **Language:** C++ (C++20 to build, C++17 to link), with a C API (`qpdf/qpdf-c.h`) for other languages; v12.4.2 as of 2026-09-26.
+- **Build:** CMake; `pkg-config` package `libqpdf`, CMake package `qpdf`.
+- **Interfaces:** `qpdf` CLI, `libqpdf` C++ library, QPDFJob (drive the CLI's operations from JSON or code), JSON export/import of a whole file (`--json`, `--json-input`, `--update-from-json`), and `fix-qdf` / `zlib-flate` helper tools.
+- **Crypto:** selectable providers — `gnutls`, `openssl`, or `native` (no external dependency).
+- **Bindings (third-party):** pikepdf (Python).
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **Required libraries:** zlib and libjpeg (or libjpeg-turbo) — present on every Linux distribution.
+- **Optional:** GnuTLS or OpenSSL as crypto provider; zopfli for slower but smaller flate compression (`QPDF_ZOPFLI`).
+- **No services:** a single binary/library; no daemon, network access or database.
+- **Distribution:** packaged in most Linux distributions; GitHub releases ship Windows, Linux (including AppImage and arm64) and, since 12.4.2, unsigned macOS binaries, signed with cosign.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low.** Install from your distribution or drop in a release binary, then call it from scripts; there is nothing to run or monitor. Two things need care: pin the version in reproducible pipelines (12.4.2 changed linearization output for some files and rejected malformed numeric option values that earlier versions accepted), and treat untrusted input as untrusted — qpdf parses hostile files routinely and ships frequent hardening fixes, so keep it patched. The library is thread-safe only per object instance.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-06-19T09:06:43Z` as of 2026-07-06.
-- **Adoption snapshot:** ~5,204 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `Apache-2.0` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (2026-10-08): active.** Three releases in Aug–Sep 2026 (12.4.0 → 12.4.2), commits within the last two weeks, and new binary platforms in 12.4.2.
+- **Governance: two-person core.** Jay Berkenbilt (original author since 2005) and Manfred Holger together account for ~94% of commits (top-1 ~74%), and both are listed release signers — better than a single maintainer, but still a small bus factor.
+- **Age / Lindy: very strong.** The copyright line dates the project to 2005 and the GitHub repo to 2012; ~20 years and still releasing every few weeks.
+- **Adoption: broad.** Shipped in most Linux distributions, ~2.2M release-asset downloads, and the engine under pikepdf and therefore OCRmyPDF.
+- **Risk flags:** Apache-2.0 (relicensed from Artistic-2.0 at version 7; both permissive). No open-core split, no CLA found. Security exposure is inherent to parsing untrusted PDFs.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [未验证] Release-asset download counts and "most Linux distributions" packaging are taken from the health scorer and the manual's download page, not audited per distribution.
+- [未验证] The comparative claims about PDFtk (maintenance level, GPL licensing) and pdfcpu (repair coverage) were not re-checked against their repositories in this pass.
+- [推断] "Content streams are carried over unchanged" holds for default options; flags such as `--normalize-content`, `--recompress-flate` or `--qdf` deliberately rewrite stream data.

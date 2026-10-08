@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "The Action does", "zh": "这个 Action 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the Quick Start workflow to .github/workflows/security.yml with your Claude API key secret", "zh": "加上 workflow 文件，填好 API key 的 secret", "code": "uses: anthropics/claude-code-security-review@main"},
+    {"lane": "you", "en": "Make fork PRs wait for a maintainer before workflows run", "zh": "让外部贡献者的 PR 等维护者批准后才跑 workflow", "code": "Require approval for all external contributors"},
+    {"lane": "them", "en": "On each PR, Claude Code reads the changed files and reasons about them in context", "zh": "每个 PR 上，Claude Code 读改动的文件，结合上下文推理", "component": {"en": "github_action_audit.py", "zh": "github_action_audit.py"}},
+    {"lane": "them", "en": "A filtering pass drops low-impact findings such as DoS, rate limiting and open redirects", "zh": "再过一遍过滤，丢掉 DoS、限流、开放重定向这类低影响发现", "component": {"en": "findings_filter.py", "zh": "findings_filter.py"}},
+    {"lane": "them", "en": "Posts what is left as review comments on the exact lines, with severity and a fix", "zh": "把剩下的发现贴成行级评论，附严重度和修法"}
+  ],
+  "value": {"en": "Logic-level vulnerabilities in a diff are flagged on the PR before merge, with no rules to write", "zh": "diff 里的逻辑层漏洞在合并前就标在 PR 上，不用自己写规则"},
+  "sources": [
+    "https://github.com/anthropics/claude-code-security-review README Quick Start (.github/workflows/security.yml, uses: anthropics/claude-code-security-review@main, claude-api-key secret) — read 2026-10-08",
+    "README Security Considerations (\"Require approval for all external contributors\")",
+    "README How It Works / Architecture and Workflow (github_action_audit.py, findings_filter.py, false-positive filtering list, line-level PR comments)"
+  ]
+}

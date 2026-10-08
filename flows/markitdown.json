@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "MarkItDown does", "zh": "MarkItDown 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it with the extras for the formats you need", "zh": "按需要的格式装上可选依赖", "code": "pip install 'markitdown[all]' · pip install 'markitdown[pdf, docx, pptx]'"},
+    {"lane": "you", "en": "Point it at a file from the CLI, or call convert() from Python", "zh": "命令行指给它一个文件，或在 Python 里调用 convert()", "code": "markitdown path-to-file.pdf -o document.md"},
+    {"lane": "them", "en": "Detects the real file type and picks the matching converter", "zh": "识别文件真实类型，挑出对应的转换器"},
+    {"lane": "them", "en": "The format library extracts text, headings, lists, tables and links", "zh": "用该格式的库抽出文字、标题、列表、表格和链接"},
+    {"lane": "them", "en": "Writes everything out as one Markdown document", "zh": "统一写成一份 Markdown"}
+  ],
+  "value": {"en": "One call turns a mixed pile of Office, HTML and PDF files into Markdown an LLM can read", "zh": "一次调用，把一堆混杂的 Office、HTML、PDF 文件变成大模型读得懂的 Markdown"},
+  "sources": [
+    "https://github.com/microsoft/markitdown#installation (pip install 'markitdown[all]')",
+    "https://github.com/microsoft/markitdown#optional-dependencies (pip install 'markitdown[pdf, docx, pptx]')",
+    "https://github.com/microsoft/markitdown#command-line (markitdown path-to-file.pdf -o document.md)",
+    "https://github.com/microsoft/markitdown/blob/main/packages/markitdown/pyproject.toml (magika, pdfminer.six, pdfplumber, mammoth, python-pptx, pandas converters)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenClaw does", "zh": "OpenClaw 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the installer on a computer that stays on", "zh": "在一台常开的电脑上运行安装脚本", "code": "curl -fsSL https://openclaw.ai/install.sh | bash"},
+    {"lane": "you", "en": "Onboard: verify model access, create the workspace, install the Gateway daemon", "zh": "走引导：确认模型可用、建工作区、装好 Gateway 后台服务", "code": "openclaw onboard --install-daemon", "component": {"en": "Gateway", "zh": "Gateway 网关"}},
+    {"lane": "you", "en": "Connect a chat channel and approve who may message it", "zh": "接上一个聊天渠道，批准谁可以给它发消息", "code": "openclaw pairing approve <channel> <code>"},
+    {"lane": "them", "en": "The Gateway receives each message and routes it to a session", "zh": "Gateway 收到每条消息，分派到对应会话", "component": {"en": "Gateway", "zh": "Gateway 网关"}},
+    {"lane": "them", "en": "Runs the model with tools and skills, then replies in the same chat", "zh": "调用模型和工具、技能把事办了，在同一个聊天里回复"},
+    {"lane": "them", "en": "Writes notes to Markdown memory files and searches them in later chats", "zh": "把要点写进 Markdown 记忆文件，以后聊天时再检索出来", "component": {"en": "workspace memory files", "zh": "工作区记忆文件"}}
+  ],
+  "value": {"en": "One assistant, running on your own hardware, answers you inside the chat apps you already use", "zh": "一个跑在你自己硬件上的助手，在你本来就用的聊天软件里回你"},
+  "sources": [
+    "https://github.com/openclaw/openclaw#install (install.sh one-liner)",
+    "https://github.com/openclaw/openclaw#quick-start (openclaw onboard --install-daemon; onboarding verifies model access, creates the workspace, configures the Gateway)",
+    "https://github.com/openclaw/openclaw#security (openclaw pairing approve <channel> <code>; tools run on the host unless sandboxing is configured)",
+    "https://docs.openclaw.ai/concepts/memory (MEMORY.md, daily notes, memory_search)"
+  ]
+}

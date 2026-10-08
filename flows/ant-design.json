@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Ant Design does", "zh": "Ant Design 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the package to your React 18+ app", "zh": "把这个包加进你的 React 18+ 应用", "code": "npm install antd", "component": {"en": "npm package antd", "zh": "npm 包 antd"}},
+    {"lane": "you", "en": "Set a few seed tokens once on the root ConfigProvider", "zh": "在根部的 ConfigProvider 上设一次几个种子令牌", "code": "token: { colorPrimary: '#1890ff' }", "component": {"en": "ConfigProvider", "zh": "ConfigProvider"}},
+    {"lane": "them", "en": "Derives the full palette, states and dark or compact variants from those seeds", "zh": "从种子令牌推导出整套色板、状态色和暗色/紧凑变体", "component": {"en": "theme algorithm", "zh": "主题算法"}},
+    {"lane": "you", "en": "Import the components each screen needs and pass them data and callbacks", "zh": "按页面引入需要的组件，传入数据和回调", "code": "import { Button, DatePicker } from 'antd';"},
+    {"lane": "them", "en": "Generates each component's CSS from the tokens at runtime and injects it", "zh": "运行时按令牌生成各组件的 CSS 并注入页面", "component": {"en": "@ant-design/cssinjs", "zh": "@ant-design/cssinjs"}},
+    {"lane": "them", "en": "Handles sorting, filtering, validation, popups and keyboard states inside each component", "zh": "在组件内部处理排序、筛选、校验、弹层和键盘状态", "component": {"en": "@rc-component/* packages", "zh": "@rc-component/* 包"}}
+  ],
+  "value": {"en": "A consistent, themed back-office UI built from finished components, with no component CSS or widget logic written by you", "zh": "用成品组件拼出风格统一、可换主题的中后台，组件 CSS 和控件逻辑一行不用写"},
+  "sources": [
+    "https://github.com/ant-design/ant-design README.md — Install (npm install antd); Usage (import { Button, DatePicker } from 'antd';); Features (theme customization based on CSS-in-JS)",
+    "https://github.com/ant-design/ant-design docs/react/customize-theme.en-US.md — Seed Token example (token: { colorPrimary: '#1890ff' }), Seed → Map → Alias derivation, preset algorithms, zeroRuntime (6.0.0)",
+    "https://github.com/ant-design/ant-design package.json — peerDependencies react >=18; dependencies @ant-design/cssinjs, @rc-component/*",
+    "https://github.com/ant-design/ant-design docs/react/migration-v6.en-US.md — React >= 18, CSS variables by default"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "lux does", "zh": "lux 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single lux binary and put FFmpeg on PATH", "zh": "装好 lux 这一个二进制，并把 FFmpeg 放进 PATH", "code": "go install github.com/iawia002/lux@latest · brew install lux"},
+    {"lane": "you", "en": "Run it on one or more video page URLs", "zh": "对一个或几个视频页面地址运行它", "code": "lux [OPTIONS] URL [URL...]"},
+    {"lane": "them", "en": "Picks the extractor for that site and lists the available streams and sizes", "zh": "按站点挑出对应的抽取器，列出可用的清晰度和大小", "component": {"en": "per-site extractor", "zh": "站点抽取器"}},
+    {"lane": "them", "en": "Downloads the top stream (or the one you pick), in parallel threads if you ask", "zh": "下载排在最前的流（或你指定的那个），要求时多线程并行", "code": "-f 248 · -m"},
+    {"lane": "them", "en": "Merges the downloaded parts into one video file with FFmpeg", "zh": "用 FFmpeg 把下好的分段合并成一个视频文件"}
+  ],
+  "value": {"en": "One static binary turns a Bilibili/Douyin/YouTube page into a local video file, with no Python runtime to manage", "zh": "一个静态二进制就能把 B 站、抖音、YouTube 页面变成本地视频文件，不用管 Python 运行时"},
+  "sources": [
+    "https://github.com/iawia002/lux#installation (FFmpeg prerequisite, go install github.com/iawia002/lux@latest, brew install lux)",
+    "https://github.com/iawia002/lux#getting-started (lux [OPTIONS] URL [URL...], -i lists streams, -f picks a stream)",
+    "https://github.com/iawia002/lux#multi-thread (-m / --multi-thread, -n threads)"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Puppeteer does",
+    "zh": "Puppeteer 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package",
+      "zh": "安装这个包",
+      "code": "npm i puppeteer"
+    },
+    {
+      "lane": "them",
+      "en": "Downloads a Chrome for Testing build pinned to this Puppeteer version",
+      "zh": "下载与本版 Puppeteer 锁定的 Chrome for Testing",
+      "component": {
+        "en": "@puppeteer/browsers",
+        "zh": "@puppeteer/browsers"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Write a script that launches the browser and opens a page",
+      "zh": "写脚本启动浏览器、打开页面",
+      "code": "await puppeteer.launch() · await page.goto(url)"
+    },
+    {
+      "lane": "them",
+      "en": "Starts Chrome headless and drives it over the DevTools Protocol from a separate process",
+      "zh": "以无头模式启动 Chrome，从独立进程经 DevTools 协议驱动"
+    },
+    {
+      "lane": "you",
+      "en": "Describe the interactions with locators and keyboard or mouse calls",
+      "zh": "用定位器和键盘鼠标调用描述要做的交互",
+      "code": "page.locator('::-p-aria(Search)').fill('…')"
+    },
+    {
+      "lane": "them",
+      "en": "Waits for each element, fires real user input events, and returns content, screenshots or PDFs",
+      "zh": "等元素就绪、触发真实输入事件，返回内容、截图或 PDF"
+    }
+  ],
+  "value": {
+    "en": "A real Chrome does the clicking, typing and rendering your script describes, without you speaking the raw browser protocol",
+    "zh": "一个真正的 Chrome 照你的脚本去点击、输入和渲染，你不用自己去说底层浏览器协议"
+  },
+  "sources": [
+    "https://github.com/puppeteer/puppeteer/blob/main/README.md Installation (npm i puppeteer downloads compatible Chrome; npx puppeteer browsers install) and Example (puppeteer.launch, page.goto, page.locator('::-p-aria(Search)').fill)",
+    "https://github.com/puppeteer/puppeteer/blob/main/docs/faq.md (CDP for Chrome, WebDriver BiDi for Firefox; trusted input events; each release bundled with a specific browser)",
+    "https://github.com/puppeteer/puppeteer/blob/main/docs/guides/system-requirements.md (Node 22.12+, Chrome for Testing)"
+  ]
+}

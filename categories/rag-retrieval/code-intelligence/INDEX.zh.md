@@ -10,8 +10,8 @@
 | **graphify** | 当 agent 需要把整个仓库的代码、schema 和文档当成知识图谱来查询、而非反复 grep 时用它。 | C（5/6） | [→](graphify.zh.md) |
 | **code-review-graph** | 当 AI 评审在大仓库里反复烧上下文、你只想喂给它一次改动真正触及（blast-radius）的文件时用它。 | B（6/6） | [→](code-review-graph.zh.md) |
 | **Understand-Anything** | 当你想把任意代码库变成可探索、可提问的知识图谱给 agent 用时用它——比 graphify 更年轻、未经检验。 | B（6/6） | [→](understand-anything.zh.md) |
-| **SCIP** | SCIP Code Intelligence Protocol | A（6/6） | [→](scip.zh.md) |
-| **Sourcegraph** | Code AI platform with Code Search & Cody | D（4/6） | [→](sourcegraph.zh.md) |
+| **SCIP** | 当你做代码搜索、评审机器人或 agent 检索层，需要跨多语言代码库拿到编译器级精确的定义和引用、并在 CI 里每个提交索引一次时用它——但它只是格式，不是查询服务，而且代码要能构建才能被索引。 | A（6/6） | [→](scip.zh.md) |
+| **Sourcegraph** | 当你要为几百个仓库设计代码搜索、想读一个真实产品如何处理克隆同步、建索引和代码导航时用它——但这是已归档的快照，2023-06 之后的代码适用企业许可，要部署请改用 Zoekt。 | D（4/6） | [→](sourcegraph.zh.md) |
 | **Ix** | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 | B（6/6） | [→](ix.zh.md) |
 | **Repowise** | 当你的 agent 每个任务都在大仓库里重新烧上下文摸底、而你要一个不用 key 的本机索引通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 | C（6/6） | [→](repowise.zh.md) |
 | **Jevgrep** | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 | C（4/6） | [→](jevgrep.zh.md) |
@@ -26,8 +26,8 @@
 | [Ix](ix.zh.md) | ✅ | B（6/6） | 当你的编码 agent 总在多语言仓库里 grep 找调用方和影响面、而你能跑 Docker 时用它——代价是后端镜像闭源、项目才七个月大还在 v0.x。 |
 | [Repowise](repowise.zh.md) | ✅ | C（6/6） | 当你的 agent 每个任务都在大仓库里重新烧上下文找结构、而你想要一个不用 key 的本机索引，通过 MCP 回答图、git、健康度、死代码与决策问题时用它——代价是六个月大、v0.x、AGPL 的厂商项目。 |
 | [Jevgrep](jevgrep.zh.md) | ✅ | C（4/6） | 当你的 agent 要在没建过索引的陌生仓库里靠“这段代码在干什么”来定位、并接受按次付费把源码发给托管评测模型时用它——代价是出生两天、单人维护、只有 macOS/Linux。 |
-| [SCIP](scip.zh.md) | ✅ | A（6/6） | SCIP Code Intelligence Protocol |
-| [Sourcegraph](sourcegraph.zh.md) | ✅ | D（4/6） | Code AI platform with Code Search & Cody |
+| [SCIP](scip.zh.md) | ✅ | A（6/6） | grep 和 tree-sitter 图都比不上的类型检查级精度；代价是每种语言要各自维护索引器、只能索引能构建的代码，提交集中在一两位维护者手里。 |
+| [Sourcegraph](sourcegraph.zh.md) | ✅ | D（4/6） | 换来整个产品架构集中在一棵可读代码树里、还附自带的架构文档；代价是 2024-08 后再无补丁、生产使用需订阅，要么自己 fork 一个落后三年的 Apache-2.0 提交。 |
 
 ## 实地证据：agent 真的会用这些工具吗（截至 2026-09-30）
 

@@ -7,7 +7,7 @@ tags: [research-agent, firecrawl, vercel-ai-sdk, typescript, iterative-search]
 language: TypeScript
 license: MIT
 maturity: untagged (no GitHub releases), active, last pushed 2026-04 (as of 2026-06)
-last_verified: 2026-06-26
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-04-11T23:58:25Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:57:11Z
+  computed_at: 2026-10-08T08:17:32Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 169
+        last_commit_age_days: 179
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 601
-        last_commit_age_days: 169
+        repo_age_days: 611
+        last_commit_age_days: 179
         cohort: app
     governance:
       grade: D
@@ -76,6 +76,29 @@ You're an engineer who wants to *understand* how a deep-research loop actually w
 
 You're also a good fit if you already have a Firecrawl key and an OpenAI-compatible endpoint and just want a scriptable agent that turns a question into a sourced report from the command line or a thin Express API — without standing up a database, a vector store, or a UI. The default path uses OpenAI's `o3-mini` reasoning model and auto-switches to DeepSeek R1 if you supply a Fireworks key, and it accepts any OpenAI-compatible base URL (OpenRouter, Gemini-compatible gateways, etc.), so you can keep your own model/provider choice.
 
+## How it works
+
+A "deep research" agent is a loop: think up search queries, read what comes back, decide what is still unknown, and search again — like a librarian who keeps returning to the stacks with sharper questions. This repo is that loop and little else. **It does the looping for you**: from your question it asks the LLM for a few web-search queries, sends them to Firecrawl (a hosted search-and-scrape API that returns pages as clean text), has the LLM pull short "learnings" and follow-up directions out of the results, and — while depth remains — recurses on those directions carrying everything learned so far. *Breadth* is how many queries it fires per round; *depth* is how many rounds it goes down. When depth runs out it writes `report.md` (or a short `answer.md`) listing the learnings with their source URLs. **You supply the keys and the knobs**: a Firecrawl key, an OpenAI-compatible LLM key or endpoint, the question, breadth and depth, and answers to the clarifying questions it asks first. Everything else you change by editing its few hundred lines of TypeScript.
+
+![deep-research — backbone user story](../../assets/flow/deep-research.svg)
+
+<!-- flow-steps:begin (generated from flows/deep-research.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install dependencies and put a Firecrawl key and an LLM key in .env.local — `FIRECRAWL_KEY · OPENAI_KEY`
+2. **You**: Start it, type the question, and pick breadth and depth — `npm start`
+3. **deep-research**: Asks follow-up questions to pin down what you actually want
+4. **You**: Answer the follow-up questions
+5. **deep-research**: Generates search queries, scrapes the hits via Firecrawl, extracts learnings and next directions
+6. **deep-research**: While depth remains, recurses on the new directions, carrying the learnings so far
+7. **deep-research**: Writes all learnings and their source URLs into a Markdown report
+
+**Value**: A question becomes a sourced report through a loop short enough to read in one sitting and fork
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You want a turnkey product or UI.** This is a CLI/script and a minimal Express endpoint, not an app with auth, history, or a frontend. If you want a hosted answer engine, look at [Vane](vane.md) or a SaaS.
@@ -108,7 +131,7 @@ You're also a good fit if you already have a Firecrawl key and an OpenAI-compati
 - **Runtime:** Node.js 22.x (`engines` pins 22.x); run via `tsx` (no build step) or the provided Docker image / `docker compose`.
 - **External services (required):** a Firecrawl API key (`FIRECRAWL_KEY`) for web search + scraping, and an LLM key — `OPENAI_KEY` (OpenAI / compatible) and/or `FIREWORKS_KEY` for DeepSeek R1. Optional `OPENAI_ENDPOINT` / `FIRECRAWL_BASE_URL` for custom/self-hosted endpoints.
 - **No datastore/vector DB/queue** — state is in-process; reports land on the local filesystem.
-- **Install:** clone, `npm install`, set `.env` keys, `npm start`. Docker path: `docker compose up -d` then `docker exec -it deep-research npm run docker`.
+- **Install:** clone, `npm install`, set keys in `.env.local`, `npm start`. Docker path: `docker compose up -d` then `docker exec -it deep-research npm run docker`.
 
 ## Ops difficulty
 

@@ -7,7 +7,7 @@ tags: [selenium, browser-automation, http-interception, mitm-proxy, python, arch
 language: Python
 license: MIT
 maturity: v5.1.0 (2022-10), archived & unmaintained, ~2.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-01-03T15:34:32Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:29:54Z
+  computed_at: 2026-10-08T08:28:17Z
   overall: D
   overall_score: 1.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 998
+        last_commit_age_days: 1009
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,7 +45,7 @@ health:
         registry: pypi.org
         canonical_package: selenium-wire
         dependent_repos_count: 297
-        downloads_last_month: 510069
+        downloads_last_month: 495770
         graph_tier: C
         volume_tier: B
         cross_check_divergence: 1.0
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3022
-        last_commit_age_days: 998
+        repo_age_days: 3033
+        last_commit_age_days: 1009
         cohort: library
     governance:
       grade: "?"
@@ -82,6 +82,28 @@ health:
 你在维护一套基于 Selenium 的遗留 Python 抓取或测试代码，需要读取页面在后台拉取的*响应*——某个返回 JSON 的 API 调用、请求头里的 auth token、一串重定向——而不只是渲染出来的 DOM。原生 Selenium 只驱动浏览器，不给你看它的网络层。你换成 `from seleniumwire import webdriver`，原有 Selenium 代码全保留，于是每个请求/响应都被捕获：你可以读 `driver.requests`、对 header 和 body 做断言、动态改请求、拦截或 mock 响应、注入 basic-auth、导出 HAR。其底层会起一个自己的中间人代理，并用生成的 CA 证书来解密 HTTPS。
 
 对一个*已有*、已经钉死在它上面的项目，这仍是个能用的模式。但任何新东西，请先看下一节——这个库已经冻结。
+
+## 怎么用起来
+
+原版 Selenium 能指挥浏览器干活，却看不到浏览器在网络上取了些什么。Selenium Wire 的办法是把自己插到中间：**你创建 driver 时，它启动一个自带的中间人代理——一个夹在浏览器和互联网之间的中转站，用它自己的根证书解开 HTTPS，把经过的流量全部记下来——再让浏览器走这个代理。** 你只换一行 import，其余照常写 Selenium；流量在背后被抓下来，以 `driver.requests` 的形式交给你（每条请求的网址、状态码、请求头、正文）。如果你不只想看、还想改，就给 `driver.request_interceptor` / `driver.response_interceptor` 赋一个函数，每个经过的请求或响应都会先过它——加个请求头、拦掉某个网址、返回一个假响应都行。仍然归你的事：浏览器和配套的 webdriver、OpenSSL、自签证书导致地址栏显示“不安全”，以及在上游不再修 bug 之后自己找出一组能跑的版本组合。
+
+![selenium-wire — 主干用户故事](../../../assets/flow/selenium-wire.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/selenium-wire.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上它，配好 Selenium 4、浏览器和 webdriver — `pip install selenium-wire`
+2. **你**：只换一行 import，其余 Selenium 代码原样不动 — `from seleniumwire import webdriver`
+3. **Selenium Wire**：让浏览器走它自带的中间人代理，并放行它的根证书
+4. **你**：照旧驱动浏览器 — `driver.get('https://www.google.com')`
+5. **Selenium Wire**：解密并记下页面发出的每个请求和响应，顺带跑你设的拦截函数
+6. **你**：读抓到的流量：网址、状态码、请求头、正文 — `driver.requests · driver.wait_for_request(pat, timeout=10)`
+
+**价值**：不离开 Selenium 就能看到页面背后的接口调用和请求头——只是这个库 2024 年起已冻结
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -127,7 +149,6 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 最后一次 PyPI 发布日期是从 tag 5.1.0 推断的（约 2022-10）；未直接查询 PyPI。
 - [未验证] 确切的 archive 日期——只知道最后一次提交（2024-01-03），仓库是在那之后某时被 archive 的。
 - [推断] 内置 MITM 代理是 selenium-wire 自己的实现、mitmproxy 仅用于 dev/test，是从其在 setup.py extras 中的位置推断，而非读代理源码得出。
 - [推断] Selenium 4 CDP/BiDi 拦截相对 selenium-wire 的功能对等是推理出来的，未做基准测试。

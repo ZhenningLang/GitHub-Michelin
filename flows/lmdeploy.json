@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "LMDeploy does", "zh": "LMDeploy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into a Python 3.10–3.13 environment on the GPU host", "zh": "在 GPU 主机的 Python 3.10–3.13 环境里安装", "code": "pip install lmdeploy"},
+    {"lane": "you", "en": "Quantize the model's weights to 4-bit into a work directory", "zh": "把模型权重量化成 4-bit，写进一个工作目录", "code": "lmdeploy lite auto_awq"},
+    {"lane": "them", "en": "Calibrates on sample text and writes AWQ 4-bit weights to the directory", "zh": "用样本文本校准，把 AWQ 4-bit 权重写进该目录", "component": {"en": "lmdeploy lite", "zh": "lmdeploy lite"}},
+    {"lane": "you", "en": "Serve the quantized model", "zh": "把量化后的模型对外服务", "code": "lmdeploy serve api_server"},
+    {"lane": "them", "en": "Loads it into the TurboMind engine and batches concurrent requests with a paged KV cache", "zh": "装进 TurboMind 引擎，用分页 KV 缓存把并发请求合批处理", "component": {"en": "TurboMind engine", "zh": "TurboMind 引擎"}},
+    {"lane": "them", "en": "Answers OpenAI-compatible requests on port 23333", "zh": "在 23333 端口响应 OpenAI 兼容请求", "code": "/v1/chat/completions", "component": {"en": "api_server", "zh": "api_server"}}
+  ],
+  "value": {"en": "A model that did not fit in FP16 serves several concurrent users on the same GPU, behind an API your OpenAI clients already speak", "zh": "原本 FP16 放不下的模型，在同一块 GPU 上同时服务多个用户，接口还是现有 OpenAI 客户端能直接调的"},
+  "sources": [
+    "https://github.com/InternLM/lmdeploy#installation (pip install lmdeploy; python 3.10 - 3.13)",
+    "https://github.com/InternLM/lmdeploy/blob/main/docs/en/quantization/w4a16.md (lmdeploy lite auto_awq internlm/internlm2_5-7b-chat --work-dir internlm2_5-7b-chat-4bit; lmdeploy serve api_server ./internlm2_5-7b-chat-4bit --backend turbomind --model-format awq)",
+    "https://github.com/InternLM/lmdeploy/blob/main/docs/en/llm/api_server.md (port 23333; /v1/chat/completions)",
+    "https://github.com/InternLM/lmdeploy#introduction (persistent batching, blocked KV cache)"
+  ]
+}

@@ -7,7 +7,7 @@ tags: [python, memory, debugging, profiling, gdb, introspection, archived]
 language: Python
 license: MIT
 maturity: v0.1.2, ARCHIVED by Meta (read-only), last code push 2021-09 (2026-06)
-last_verified: 2026-06-29
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2021-09-15T20:30:34Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-28T09:53:14Z
+  computed_at: 2026-10-08T08:25:39Z
   overall: D
   overall_score: 1.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 1839
+        last_commit_age_days: 1848
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2623
-        last_commit_age_days: 1839
+        repo_age_days: 2633
+        last_commit_age_days: 1848
         cohort: tool
     governance:
       grade: "?"
@@ -83,6 +83,28 @@ A one-shot tool to inspect the memory of a **running** Python process — it att
 You're an SRE or backend engineer chasing a memory leak in a long-running Python 3 daemon on Linux. You can't reproduce it locally, you don't want to redeploy with extra instrumentation, and you'd rather not restart the process and lose the in-flight state that's exhibiting the bloat. You find the PID, run `memory_analyzer run $PID`, and it launches GDB against the live interpreter, briefly pauses the process (and all its threads), and drops you into an ncurses UI showing how many objects of each type are alive, their total size, and — on demand — the forward and backward reference chains that are keeping the largest objects pinned. Run it again later against the same PID with `--snapshot` and it diffs the two captures so you can watch which object types are growing over time. For a single point-in-time "what is eating memory inside this live process" snapshot, it does exactly that.
 
 The honest caveat is that this is the *legitimate* use case for a tool that is **no longer maintained**: it was archived by Meta and last saw code changes in 2021, it targets Python 3.6/3.7, and the reference-graph feature still tries to upload PNGs to **Phabricator** (a Meta-internal leftover). Even when it fits, treat it as a borrowed-from-the-attic tool and verify it runs on your interpreter first — or reach for a maintained alternative (see Comparison).
+
+## How it works
+
+memory-analyzer is a remote control for a Python process it did not start. It uses **GDB** — the standard Linux debugger, which can attach to any running program the kernel's **ptrace** permission lets it touch — to freeze the target (every thread stops) and make the target's own interpreter run a short script. That script calls **pympler** and **objgraph**, two memory-inspection libraries, *inside* the target to count live objects per type, sum their sizes and, if you ask, trace who references whom; the results are written to a snapshot file and the process is released. **It does the attaching, pausing and heap walking for you**; you supply the PID, make sure ptrace is allowed, and pre-install pympler and objgraph where the *target* interpreter can import them — the analyzer cannot inject libraries the target cannot find. Each run is a photograph, not a video: leak hunting means taking two snapshots some time apart and letting it diff them.
+
+![memory-analyzer — backbone user story](../../assets/flow/memory-analyzer.svg)
+
+<!-- flow-steps:begin (generated from flows/memory-analyzer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install its two helpers where the target process can import them, and allow ptrace (or run as root) — `objgraph · pympler`
+2. **You**: Point it at the live process by PID — `memory_analyzer run $PID` — component: `memory_analyzer CLI`
+3. **memory-analyzer**: Attaches GDB and pauses the process and all its threads — component: `GDB`
+4. **memory-analyzer**: Counts live objects per type and their sizes inside the target, saves a snapshot file, releases it
+5. **You**: Some time later, run again against the same PID with the earlier snapshot — `memory_analyzer run $PID --snapshot <previous snapshot file>`
+6. **memory-analyzer**: Shows a comparison page in its terminal UI: which object types grew in count and size
+
+**Value**: See which object types are leaking inside a running process without adding code, redeploying or restarting it
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

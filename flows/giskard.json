@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Giskard does", "zh": "Giskard 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it with an LLM-provider extra and set that provider's API key", "zh": "装上带大模型服务扩展的包，设好对应的 API key", "code": "pip install \"giskard[openai]\""},
+    {"lane": "you", "en": "Wrap your agent as a function and write a scenario: inputs plus checks", "zh": "把 agent 包成函数，写一个场景：输入加检查", "code": "from giskard.checks import Scenario, Groundedness"},
+    {"lane": "you", "en": "Run the scenario from your test code", "zh": "在测试代码里运行这个场景", "code": "await scenario.run()"},
+    {"lane": "them", "en": "Calls your function with the inputs and records the exchange as a trace", "zh": "用这些输入调用你的函数，把这次往来记成一条轨迹", "component": {"en": "giskard-checks", "zh": "giskard-checks"}},
+    {"lane": "them", "en": "Grades every check, sending LLM-judge checks such as Groundedness to the judge model", "zh": "逐条判定检查，Groundedness 这类裁判检查交给裁判模型打分", "component": {"en": "giskard-llm judge client", "zh": "giskard-llm 裁判客户端"}},
+    {"lane": "them", "en": "Prints a pass/fail report per check", "zh": "按检查逐条打印通过/失败报告"}
+  ],
+  "value": {"en": "A wrong or ungrounded answer becomes a failing test you can rerun after every change, instead of a user screenshot", "zh": "答错或没有依据的回答变成一条每次改动后都能重跑的失败测试，而不是等用户截图"},
+  "sources": [
+    "https://github.com/Giskard-AI/giskard-oss#install (pip install \"giskard[openai]\", Python 3.12+)",
+    "https://github.com/Giskard-AI/giskard-oss#quickstart (from giskard.checks import Scenario, Groundedness; await scenario.run(); result.print_report(); default judge openai/gpt-4o-mini)",
+    "https://github.com/Giskard-AI/giskard-oss/blob/main/pyproject.toml (provider extras via giskard-llm)"
+  ]
+}

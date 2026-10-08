@@ -6,8 +6,8 @@ category: research-automation
 tags: [llm-training, agentic-research, nanochat, single-gpu, reference-implementation]
 language: Python
 license: MIT
-maturity: no tagged release, active, master @ ~36 commits (as of 2026-03)
-last_verified: 2026-06-26
+maturity: no tagged release, last commit 2026-03-26, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-03-26T00:07:37Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:12:15Z
+  computed_at: 2026-10-08T08:23:13Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,14 +29,14 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 186
+        last_commit_age_days: 196
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.7
-        qualifying_issues: 4
+        median_ttfr_hours: 3.9
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 6
         source: issue
@@ -47,8 +47,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 205
-        last_commit_age_days: 186
+        repo_age_days: 215
+        last_commit_age_days: 196
         cohort: app
     governance:
       grade: C
@@ -78,11 +78,33 @@ You're an ML researcher or a tinkerer with one H100 (or similar single GPU) and 
 
 It's also a clean reference implementation to read or fork when you want to *study* the "agent-as-researcher" pattern — the val_bpb metric is deliberately vocab-size-independent so architectural changes (different model dims, optimizers like Muon vs AdamW) compare fairly. If you're building your own autonomous-experimentation harness, this is a minimal, legible starting point rather than a heavyweight framework.
 
+## How it works
+
+autoresearch is three files and a contract between them, not a program that runs the research for you. `prepare.py` downloads the data, trains the tokenizer (the piece that chops text into the units the model reads) and holds the scoring function; it is frozen, so every run is judged the same way. `train.py` holds the whole GPT model, optimizer and training loop, and is the only file the agent may change. `program.md` is plain-language instructions — you edit it, the agent reads it. **What the repo does not ship is the agent**: you start your own coding agent (Claude Code, Codex, …) in the folder, and it follows `program.md` — commit an idea, train for exactly 5 minutes, read `val_bpb` (validation bits per byte: how many bits the model needs per byte of held-out text, lower is better), then keep the commit or `git reset` it. Think of it as a lab notebook and a stopwatch handed to a tireless intern: the repo fixes the rules and the clock, the intern does the trying.
+
+![autoresearch — backbone user story](../../../assets/flow/autoresearch.svg)
+
+<!-- flow-steps:begin (generated from flows/autoresearch.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: On one NVIDIA GPU, install deps, download data and train the tokenizer once — `uv sync · uv run prepare.py` — component: `prepare.py (frozen)`
+2. **You**: Write the research strategy the agent should follow — `program.md`
+3. **You**: Start your own coding agent in the repo and point it at program.md
+4. **autoresearch**: Opens a fresh run branch, edits train.py with one idea, commits — `git checkout -b autoresearch/<tag>` — component: `train.py`
+5. **autoresearch**: Trains for a fixed 5 minutes and reads val_bpb from the log — `uv run train.py > run.log 2>&1`
+6. **autoresearch**: Keeps the commit if val_bpb dropped, else resets; logs the row and loops — `results.tsv`
+
+**Value**: You wake up to ~100 logged experiments and a branch holding only the changes that lowered val_bpb
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You want a production training framework.** This is a research demo / reference implementation, not a maintained library — no tagged releases, no plugin API, no multi-GPU/distributed story. For real fine-tuning use a framework, not this.
 - **You don't have an NVIDIA GPU.** It targets a single NVIDIA GPU (tested on H100); other platforms rely on community forks. The 5-minute fixed budget also means results are explicitly *not comparable* across different compute.
-- **You expect the agent to be plug-and-play.** autoresearch supplies the training scaffold and metric; it does **not** ship the agent loop or LLM API wiring — you bring/configure your own coding agent and pay its inference costs.
+- **You expect the agent to be plug-and-play.** autoresearch supplies the training scaffold, the metric and the loop *as Markdown instructions* (`program.md`); it ships **no** agent runner or LLM API wiring — you bring/configure your own coding agent (Claude Code, Codex) and pay its inference costs. If you want the whole idea-to-paper pipeline wired up, use [The AI Scientist](ai-scientist.md) instead.
 - **You need reproducible, publishable benchmarks.** The wall-clock-bounded design trades cross-machine comparability for fast iteration by construction; numbers are local to your hardware.
 - **You want to train a useful model.** The point is the research *loop*, not the resulting checkpoint — a 5-minute single-GPU run yields a toy-scale model, not something to deploy.
 
@@ -116,17 +138,17 @@ It's also a clean reference implementation to read or fork when you want to *stu
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 7.7 hours across 4 qualifying issues/PRs.
-- **Maintenance (as of 2026-06):** last pushed 2026-03, ~36 commits on master, no tagged release. [推断] Active in the sense of recently touched, but this is a demo branch, not a maintained product — there is no release cadence to read, and it can change commit-to-commit.
-- **Governance / bus factor:** a single-maintainer repo under Karpathy's personal account (`User`-owned) carrying ~88k stars — a textbook **bus-factor flag**: the stars reflect the author's reach, not a team or sustained roadmap. [推断] No governance, no contributors process implied; if the author moves on, it freezes.
+- **Responsiveness**: Grade A — median first-response time 3.9 hours across 5 qualifying issues/PRs.
+- **Maintenance (as of 2026-10-08):** last commit on master 2026-03-26, nothing since (~6.5 months), no tagged release. It is a demo that was published and then left as-is, not a maintained product — there is no release cadence to read; pin a commit or fork rather than expecting fixes.
+- **Governance / bus factor:** a single-maintainer repo under Karpathy's personal account (`User`-owned) carrying ~97k stars — a textbook **bus-factor flag**: the stars reflect the author's reach, not a team or sustained roadmap. [推断] No governance, no contributors process implied; if the author moves on, it freezes.
 - **Age & Lindy verdict (created 2026-03, ~0 yr):** brand-new and ridden on hype/star count, not survival. [推断] **Unproven by Lindy** — judge it as a reference artifact and a pattern to study, not a long-term dependency. Its value is the *idea* (agent-as-researcher under a fixed budget), which outlives any specific commit.
 - **Risk flags:** no versioning/API stability; the agent loop and LLM costs are BYO; "research demo" posture is explicit. MIT-licensed, so forking to pin a known-good state is the safe move. [推断]
 
 ## Caveats (unverified)
 
-- [未验证] Star/fork counts (~88.7k stars, ~12.8k forks) and "~36 commits on master" are from the GitHub page on 2026-03-26 / 2026-06-26; stars are unreliable and date-sensitive — treat as indicative only.
-- [未验证] No tagged release exists; "maturity" reflects an active master branch, not a versioned, API-stable project — behavior can change commit-to-commit.
-- [未验证] Optimizer set (Muon + AdamW), BPE tokenization, and ~12 experiments/hour throughput are paraphrased from the README/summary, not independently run — verify against the current `train.py`/`prepare.py` before relying on them.
+- [未验证] Star count (~97.5k on 2026-10-08 via the GitHub API; ~12.8k forks as of 2026-06-26) is date-sensitive and reflects the author's reach — treat as indicative only.
+- [未验证] License: the README ends with "License: MIT", but the repo has no `LICENSE` file and the GitHub API reports no license (2026-10-08). Treat MIT as the author's stated intent; a compliance review may want an explicit license file.
+- [未验证] Optimizer set (Muon + AdamW), BPE tokenization, and ~12 experiments/hour throughput are stated in the README/`program.md`, not independently run — verify against the current `train.py`/`prepare.py` before relying on them.
 - [未验证] "Tested on H100" and "5 minutes wall-clock excluding startup/compilation" are the author's stated figures; actual runtime varies with GPU, driver, and compile cache.
-- [推断] The agent loop is BYO (bring-your-own coding agent + LLM API); the repo is the training scaffold and metric. Inferred from file roles (`program.md` human-edited, `train.py` agent-edited) — confirm whether any agent runner is bundled in the current tree.
+- [推断] No agent runner is bundled: the 2026-10-08 tree is only `prepare.py`, `train.py`, `program.md`, `analysis.ipynb` and project files, and the README says to "spin up your Claude/Codex or whatever you want". How well the loop works therefore depends on which agent you bring — not measured here.
 - [未验证] Cross-platform (non-NVIDIA) support is described as existing only via community forks; not verified in this repo.

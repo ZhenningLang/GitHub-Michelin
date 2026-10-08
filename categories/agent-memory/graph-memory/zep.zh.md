@@ -6,17 +6,17 @@ category: graph-memory
 tags: [agent-memory, knowledge-graph, zep, service]
 language: Python
 license: Apache-2.0
-maturity: active, ~4,732 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: active examples/integrations repo for hosted Zep Cloud; Community Edition deprecated (2025); ~4.9k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: service
 upstream:
-  pushed_at: 2026-07-03T21:21:39Z
+  pushed_at: 2026-10-08T05:17:23Z
   default_branch: main
-  default_branch_sha: 826c5492d9cc3a7caf92a9870529f29b5a8546e3
+  default_branch_sha: b6b129bf70541945ba2c7502b656b3f32755d707
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:40:35Z
+  computed_at: 2026-10-08T08:14:35Z
   overall: A
   overall_score: 3.75
   scored_axes: 4
@@ -29,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 11
-        active_weeks_13: 10
+        last_commit_age_days: 3
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: "?"
@@ -41,15 +41,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1242
-        last_commit_age_days: 11
+        repo_age_days: 1258
+        last_commit_age_days: 3
         cohort: service
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 7
-        top1_share: 0.42
-        top3_share: 0.83
+        top1_share: 0.417
+        top3_share: 0.835
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -65,59 +65,83 @@ health:
 ---
 # Zep
 
-Zep \| Examples, Integrations, & More
+你想让智能体跨会话记住每个用户，包括“喜欢 Adidas”在用户改投 Puma 之后就不再成立，但又不想自己运维图数据库、自己写用户和会话那一层。Zep 是一个替你做这件事的托管记忆服务；这个仓库只是它的客户端一侧：SDK 示例、各智能体框架的现成适配包和一个批量导入工具，因为可自托管的服务端已在 2025 年退役。
 
 ![Zep — 健康度雷达](../../../assets/health/zep.zh.svg)
 
 ## 何时使用
 
-你正在为一个落在 `agent-memory` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 Zep 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
+你在 LangGraph、CrewAI、Google ADK、Pydantic AI 或 Vercel AI SDK 上做一个助手，用户抱怨它每次会话都不认识自己，更糟的是还在复述他们几周前就改掉的偏好。你了解过时序知识图谱（每条事实带“何时起生效、何时失效”），觉得对路，但团队没精力运维 Neo4j，也不想围着一个库再搭用户、会话、权限管理。于是你注册 Zep Cloud，装上 `zep-cloud`，从本仓库 `integrations/` 里拿对应框架的适配包，每轮对话推送进去；每次回复前向 Zep 要这个用户的上下文块。
 
-这个首版页面存在，是因为 Zep 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+和 [Graphiti](graphiti.zh.md)（Zep 底下的开源引擎）比，当你宁可付费买托管服务、也不想运维图数据库和自己写外围系统时选 Zep。和 [Mem0](../app-memory/mem0.zh.md) 比，当“事实会随时间变化”是核心、希望旧事实自动失效而不是越堆越多时选 Zep。如果你必须自托管，这一页就选错了，去看 Graphiti。
+
+## 怎么用起来
+
+记忆本身存放在 Zep Cloud 这个付费服务里，本仓库里没有任何东西在运行它。你通过 SDK 建一个用户、一个 thread（一段对话），消息一产生就发过去；Zep 的服务器把这些消息整理成每个用户一张的时序知识图谱：人、物和事实，每条事实都记着何时开始成立，被取代时再记下何时失效，底层用的是 Graphiti 加一个专有图引擎。智能体回答前，你调一个方法，拿回一段可直接贴进提示词的上下文，内容是与这段对话相关的事实。仓库给你的是胶水：Python、TypeScript、Go 的可运行示例，每个智能体框架一个可安装的适配包（让记忆挂在框架自己的扩展点上，而不用手写调用），把 Slack 导出、文档、邮件和 CSV/JSON 回灌进图谱的 `zep-ingest`，一个 MCP 服务器，以及基准测试和评测工具。API 密钥、发送什么、怎么用返回的上下文，归你。
+
+![zep — 主干用户故事](../../../assets/flow/zep.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/zep.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：拿到 Zep Cloud 的 API 密钥，装上 SDK — `pip install zep-cloud` — 组件：`zep-cloud SDK`
+2. **你**：登记用户，为这段对话开一个 thread — `client.user.add(...) · client.thread.create(...)`
+3. **你**：对话进行中，每条消息都发过去 — `client.thread.add_messages(...)`
+4. **Zep**：构建该用户的时序图谱，让被取代的事实失效 — 组件：`Zep Cloud（托管）`
+5. **你**：智能体回复前，要这段对话的上下文 — `client.thread.get_user_context(thread_id)`
+6. **Zep**：返回一段可直接放进提示词的相关事实
+
+**价值**：跨会话记忆会自动丢掉过时事实，而你不用运行图数据库或抽取 worker
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 Zep。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+- **你必须自托管，或数据必须留在自己的基础设施上。** Zep 社区版已弃用且不再支持，代码在 2025 年年中被挪进 `legacy/`。改用 Zep 底下那个 Apache-2.0 的引擎 [Graphiti](graphiti.zh.md)，自己跑 Neo4j 或 FalkorDB；或者自托管 [Mem0](../app-memory/mem0.zh.md)、[Cognee](cognee.zh.md)。
+- **你把这个仓库当成产品本身来评估。** README 写得很直白：它“不是 Zep 的产品或服务”。Apache-2.0 覆盖的是示例和适配包，不是你实际依赖的记忆引擎；你真正依赖的是一个闭源付费服务及其价格和条款 [未验证：未查价格]。
+- **你要在这里提 bug 或求助。** 这个仓库关闭了 GitHub issues，支持走 Zep 自己的渠道。如果公开的问题跟踪对你重要，选开放的项目，例如 [Graphiti](graphiti.zh.md) 或 [Mem0](../app-memory/mem0.zh.md)。
+- **你的记忆需求只是一串稳定的偏好。** 事实很少变时，时序图谱是杀鸡用牛刀，逐条消息做图谱抽取比简单的记忆库更贵。用 [Mem0](../app-memory/mem0.zh.md)（库或它自己的托管平台）。
+- **你要给编码智能体做离线、隔离网络或单二进制的记忆。** Zep 是面向应用智能体的网络服务。本地编码智能体记忆用钩子层方案，例如 [claude-mem](../coding-agent-memory/claude-mem.zh.md)。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [ByteRover CLI](../coding-agent-memory/byterover.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Zep 对照。 | Zep 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [claude-mem](../coding-agent-memory/claude-mem.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Zep 对照。 | Zep 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Claude Subconscious](../coding-agent-memory/claude-subconscious.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Zep 对照。 | Zep 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Letta (MemGPT)](../app-memory/letta.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Zep 对照。 | Zep 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Zep 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
+| [Graphiti](graphiti.zh.md) | ✅ | 必须在 Apache-2.0 下自托管时序图谱时选 Graphiti；宁可付费、也不想运维图数据库和自己搭用户、会话、面板时选 Zep。 | Graphiti 给你引擎和完整的数据控制权，但 Neo4j、FalkorDB 或 Neptune 要你运维，外围系统要你写；Zep 以闭源服务的形式把这些都包了。 |
+| [Mem0](../app-memory/mem0.zh.md) | ✅ | 想要今天就能自己跑的记忆、或针对稳定偏好的更简单托管档时选 Mem0；矛盾事实必须自动失效时选 Zep。 | Mem0 从头到尾开源，单次写入更轻；它的抽取只增不改，过时记忆要你自己清理。 |
+| [Cognee](cognee.zh.md) | ✅ | 必须自托管、记忆来自文档和代码时选 Cognee；输入是实时对话、而且一台服务器都不想管时选 Zep。 | Cognee 跑在你掌控的嵌入式存储上；Zep 免运维，但数据链路锁在厂商云里。 |
+| [Supermemory](../app-memory/supermemory.zh.md) | ✅ | 想要托管记忆 API、同时保留自托管二进制这条退路时选 Supermemory；框架适配包和时序事实图谱是决定因素时选 Zep。 | Supermemory 留着自托管的后路；Zep 的逐框架集成更全，但没有受支持的自托管方案。 |
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 Python。
-- **仓库：** `getzep/zep`。
-- **项目形态：** atlas 路由暂归为 `service`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `main`，最后 push `2026-07-03T21:21:39Z`，archived 为 `false`。
+- **本仓库：** Python（示例、大部分适配包、`zep-ingest`），TypeScript（Google ADK、Mastra、Vercel AI SDK 适配包），Go（Google ADK 适配包，`mcp/` 下的 MCP 服务器）。
+- **官方 SDK（在其他仓库）：** `zep-cloud`（Python）、`@getzep/zep-cloud`（TypeScript）、`github.com/getzep/zep-go/v3`（Go）。
+- **API 背后（不在本仓库）：** Zep Cloud，建立在 [Graphiti](graphiti.zh.md) 时序图框架和一个专有的“Context Graph Engine”图数据库之上。
+- **遗留：** `legacy/` 下已弃用的社区版服务端（Go），不再支持。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- **一个 Zep Cloud 账号和 API 密钥**（`ZEP_API_KEY`）：硬性的、外部的、付费的依赖。
+- **你所用语言的 SDK**，加上对应智能体框架的适配包（例如 PyPI 上的 `zep-crewai`、`zep-adk`、`zep-autogen`、`zep-livekit`）。
+- **可选：** 用 `zep-ingest` 批量回灌历史；若开启它的 LLM 上下文补全，还需要 Anthropic 或 OpenAI 密钥。
+- 你这一侧不需要数据库、队列或 GPU。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+**你这一侧低，代价是厂商依赖。** 除了你的应用什么都不用跑：没有图数据库，没有抽取 worker。成本转移到了账单上，转移到 `zep-ingest` README 警告过的限流和 episode 大小限制上（单个 episode 一万字符上限，不传时间戳就悄悄默认成导入时间），也转移到你无法自己化解的服务中断或涨价上。回灌历史是唯一较重的活，`zep-ingest` 就是为了把分块、时间戳和批量提交做对而存在的。
 
 ## 健康度与可持续性
 
-- **维护快照：** 截至 2026-07-06，GitHub 返回 `archived=false`，`pushed_at=2026-07-03T21:21:39Z`。
-- **采用快照：** 2026-07 约 4,732 个 GitHub stars；stars 只是有噪声的采用信号。
-- **许可证快照：** GitHub API 返回 `Apache-2.0`；许可证关键时必须检查仓库内许可证文件。
-- **Lindy 与治理：** 本次 intake 未完整复核。长期采用前，请继续检查组织归属、项目年龄、发布节奏和 bus factor。
-- **风险信号：** 本页是从 backlog 元数据生成的首版页面。
+- **维护（2026-10-08）：** 活跃，最近几天仍有提交（2026-10-04 新增了一个参考智能体），导入工具和适配包发版频繁（`zep-ingest` 在 2026-07-30 到 2026-08-28 之间从 v0.1.0 发到 v0.3.0）。雷达上的维护 A 衡量的是这个示例仓库，不是服务本身。
+- **治理：** 单一厂商（Zep）；一位维护者（`danielchalef`）贡献了约三分之二的提交。仓库关闭了 issues，所以雷达无法给响应度打分；它也不是单个软件包，采用度同样无法打分。
+- **年龄与 Lindy：** 仓库始于 2023-04（约 3.5 年），但它的角色在 2025 年从开源服务端变成了 SaaS 的示例集。Lindy 在这里作用很弱：你真正押注的是这家公司和它的云服务，而它的履历里已经有过亲手退役自家开源版的一笔。
+- **风险信号：** 仓库是 Apache-2.0，但依赖的是闭源服务；社区版已弃用；开源引擎 Graphiti 很健康，这是服务不再合适时你的退路。
 
 ## 存疑（未验证）
 
-- [未验证] 这是依据 GitHub 元数据和 2026-07-06 backlog 生成的首版 intake 页面；高风险选型前，请重新阅读上游 README、文档、许可证文件和 release notes。
-- [推断] 横向对比表先使用同分类已收录页面作为起点；后续语义复核应把泛化邻居替换成最接近的真实替代品。
+- [未验证] Zep Cloud 的价格、免费档限制、数据驻留选项，以及 Graphiti README 提到的“部署在你的云里”，都没有对照 Zep 当前条款核实。
+- [未验证] “Zep Cloud 用 Graphiti 加专有图引擎”来自 Graphiti README，服务内部无法查看。
+- [推断] 适配包清单（截至 2026-10 共 13 个框架/语言包）和各自的发布状态会很快变化，选型前先读 `integrations/README.md`。
+- [未验证] 社区版的弃用时间取自 `legacy/` 重组提交（2025-06-29）和其链接的博客文章，博客本身的日期没有核对。

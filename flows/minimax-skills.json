@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "MiniMax Skills makes the agent do",
+    "zh": "MiniMax Skills 让 agent 做"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the marketplace and install the bundle",
+      "zh": "加上市场源，安装整包",
+      "code": "claude plugin install minimax-skills"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the task in plain words, e.g. a native Android screen or a .docx report",
+      "zh": "照常提需求，比如写个 Android 原生页面、出一份 .docx"
+    },
+    {
+      "lane": "them",
+      "en": "The matching skill's description fires and its SKILL.md is loaded into context",
+      "zh": "描述匹配的 skill 被触发，它的 SKILL.md 读进上下文",
+      "code": "android-native-dev · minimax-docx"
+    },
+    {
+      "lane": "them",
+      "en": "Follows the skill's checklist and reference files, e.g. getting the Gradle build green before writing features",
+      "zh": "按 skill 的检查单和参考文档干活，如先让 Gradle 构建跑通"
+    }
+  ],
+  "value": {
+    "en": "Domain recipes the agent would otherwise improvise arrive pre-written, across several harnesses",
+    "zh": "agent 本来要临场发挥的领域做法，现成写好，几个 harness 都能用"
+  },
+  "sources": [
+    "https://github.com/MiniMax-AI/skills README Installation (Claude Code / Cursor / Codex / OpenCode commands) and Skills table — read 2026-10-08",
+    "skills/android-native-dev/SKILL.md section 1 (./gradlew assembleDebug must succeed before business logic)",
+    "skills/minimax-music-gen/SKILL.md Prerequisites (mmx CLI, mmx auth login --api-key <your-minimax-api-key>)"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "mdv does", "zh": "mdv 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it from PyPI", "zh": "从 PyPI 安装", "code": "pip install mdv"},
+    {"lane": "you", "en": "Point it at a Markdown file, or at - to read from a pipe", "zh": "把一个 Markdown 文件交给它，或传 - 从管道读入", "code": "mdv [OPTIONS] MDFILE"},
+    {"lane": "them", "en": "Parses the text with Python-Markdown into a tree of headings, lists, tables and code blocks", "zh": "用 Python-Markdown 把文本解析成一棵树：标题、列表、表格、代码块"},
+    {"lane": "them", "en": "Colors each element from a theme, highlights code with Pygments, fits tables to the terminal width", "zh": "按主题给每个元素上色，用 Pygments 高亮代码，按终端宽度排表格"},
+    {"lane": "them", "en": "Prints the styled document straight into the terminal", "zh": "把排好样式的文档直接打印到终端里"}
+  ],
+  "value": {"en": "A README reads like a formatted document over SSH, with no browser or GUI app in the loop", "zh": "通过 SSH 也能像看排版好的文档一样读 README，全程不用浏览器或图形界面应用"},
+  "sources": [
+    "https://github.com/axiros/terminal_markdown_viewer#installation (pip install mdv)",
+    "https://github.com/axiros/terminal_markdown_viewer#cli (mdv [OPTIONS] MDFILE; -t THEME; stty for terminal size, 80 cols when piped)",
+    "https://github.com/axiros/terminal_markdown_viewer/blob/master/mdv/markdownviewer.py (read_md: filename '-' reads sys.stdin; markdown Treeprocessor AnsiPrinter; vendored tabulate; pygments)",
+    "https://github.com/axiros/terminal_markdown_viewer/blob/master/setup.py (version 1.7.5; install_requires pygments, markdown; extras yaml; console_scripts mdv)"
+  ]
+}

@@ -8,14 +8,14 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Claude Code Skill Scrapling** | 当你想让 Python 机器上的 Claude Code agent 在遇到 Cloudflare 403 后自己从普通请求升级到隐身浏览器、而不是瞎猜时用它——但它是只有四次提交的单人封装，速查卡已和当前 Scrapling 脱节；库自带的官方 skill 才是有人维护的那份。 | C（4/5） | [→](claude-code-skill-scrapling.zh.md) |
-| **Firecrawl** | 一款可规模化搜索、抓取并与网页交互的 API——将原始网页转化为干净的 Markdown 或结构化数据，供你的 agent 直接使用。 | B（5/6） | [→](firecrawl.zh.md) |
-| **fuck-login** | 一批约 20 个 Python 脚本，逐个复刻知名网站（多为中文站：知乎、微博、百度、京东、B 站、GitHub、豆瓣）的登录流程，让你把拿到的会话 cookie 带进爬虫。这是一个 2016 年的教学仓库，作者已明确**不再维护**。 | E（5/6） | [→](fuck-login.zh.md) |
-| **gopup** | 一个 Python 库，把一大堆（多为中文的）公开数据源封装成返回 pandas DataFrame 的单行调用——百度/微博/谷歌搜索指数、中国宏观指标（CPI/PPI/PMI、货币供应量、汇率）、Shibor/LPR 利率、独角兽公司名单、影视票房和疫情数据等等。 | E（4/6） | [→](gopup.zh.md) |
+| **Firecrawl** | 当你的 agent 或 RAG 入库要把 URL、搜索结果或整站变成干净的 Markdown 或 JSON，又不想自己扛渲染、代理和爬取队列时用它——但自托管拿不到只在云上的反爬、页面动作和 Agent，核心还是 AGPL-3.0。 | B（6/6） | [→](firecrawl.zh.md) |
+| **fuck-login** | 当你想通过可读的 Python 脚本学习 2016–2018 年中文网站登录的底层机制（CSRF token、RSA 加密密码、验证码图片）时用它——但仓库已废弃，多数脚本大概率已失效，且没有许可证。 | E（5/6） | [→](fuck-login.zh.md) |
+| **gopup** | 当你在 notebook 里做探索性研究、想不写爬虫就拿到中文公开数据（微博或百度指数、CPI、Shibor）的 DataFrame 时用它——但它自 2023-09 起停滞，TOKEN 接口所在站点已下线，失败还会悄悄返回 `None`。 | E（4/6） | [→](gopup.zh.md) |
 | **PRAW** | “Python Reddit API Wrapper”——一个 Python 包，在 Reddit 官方 OAuth API 之上给你类型化、Pythonic 的对象（Submission、Comment、Subreddit、Redditor），并替你处理限速合规，让你不必在代码里到处撒 `sleep`。 | B（5/6） | [→](praw.zh.md) |
-| **requests-html** | "HTML Parsing for Humans"——一个 Python 库，把 `requests`、PyQuery/lxml 解析，以及可选的 JavaScript 渲染（经 pyppeteer/Chromium）打包到一套顺手的 API 后面，让一个小脚本无需把三个库接线串起来就能抓页面、选元素。 | D（3/6） | [→](requests-html.zh.md) |
+| **requests-html** | 当你在维护一个已经用它、靠一个 `requests` 风格对象完成抓取和 CSS 选择服务端渲染 HTML 的旧脚本时用它——但它自 2019 年起没发过版，JS 渲染还依赖无人维护的 pyppeteer。 | D（3/6） | [→](requests-html.zh.md) |
 | **Scrapling** | 你的 Python 爬虫拿到的是 403 或 Cloudflare 验证页，网站一改版选择器又全空——一个 BSD 许可的包，带 HTTP、浏览器和隐身三种抓取器，一个按相似度找回元素的解析器，外加 Scrapy 形状的爬虫层。只对付 Cloudflare，0.x 且常有破坏性变更，单人维护。 | B（6/6） | [→](scrapling.zh.md) |
 | **Scrapyd** | 一个通过 JSON HTTP API 部署并运行 Scrapy 爬虫的服务守护进程——把 Scrapy 项目打成 egg、上传，然后远程调度/取消/监控抓取作业。它是 Scrapy 官方组织出品、把“在生产里跑 Scrapy”这件事标准化的守护进程。 | B（5/6） | [→](scrapyd.zh.md) |
-| **SpiderKeeper** | 一个基于 Flask、叠在 Scrapyd 之上的 Scrapy 爬虫管理 web UI / 看板——在浏览器里部署项目、调度周期作业、查看运行统计。它自己什么都不抓；它是覆盖在一个或多个 Scrapyd 服务器之上的管理层。轻量、流行，且大体已陈旧。 | E（3/6） | [→](spiderkeeper.zh.md) |
+| **SpiderKeeper** | 当已经在跑 Scrapyd 的小团队想要一个极简浏览器看板来上传 egg、按 cron 调度爬虫、查看作业统计时用它——但最后提交在 2018-05，钉着 2017 年的 Flask 栈，默认账号密码是 admin/admin。 | E（3/6） | [→](spiderkeeper.zh.md) |
 
 ## 什么该放这里
 

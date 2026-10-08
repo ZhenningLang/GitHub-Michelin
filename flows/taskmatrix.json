@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TaskMatrix does", "zh": "TaskMatrix 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone, create a Python 3.8 env, install requirements plus GroundingDINO and segment-anything", "zh": "克隆仓库，建 Python 3.8 环境，装好全部依赖", "code": "pip install -r requirements.txt"},
+    {"lane": "you", "en": "Export your OpenAI key for the controller LLM", "zh": "导出 OpenAI key，给充当调度者的 LLM 用", "code": "export OPENAI_API_KEY={Your_Private_Openai_Key}"},
+    {"lane": "you", "en": "Start it, naming which visual models load on which device", "zh": "启动它，指定哪些视觉模型加载到哪块设备", "code": "python visual_chatgpt.py --load \"ImageCaptioning_cuda:0,Text2Image_cuda:0\""},
+    {"lane": "them", "en": "Loads those models as LangChain tools and opens a Gradio chat page", "zh": "把这些模型注册成 LangChain 工具，打开 Gradio 聊天页", "component": {"en": "visual_chatgpt.py", "zh": "visual_chatgpt.py"}},
+    {"lane": "you", "en": "Upload an image and ask for something in plain words", "zh": "上传一张图，用大白话提要求", "code": "find xxx in the image"},
+    {"lane": "them", "en": "The LLM reads the tool list, picks a model, runs it, and saves the result as image/xxx.png", "zh": "LLM 读工具清单、选模型、运行，把结果存成 image/xxx.png"},
+    {"lane": "them", "en": "Replies in words with the new image threaded back into the chat", "zh": "用文字回复，把新图接回对话里"}
+  ],
+  "value": {"en": "A text-only chatbot that can see and edit images by delegating to specialist vision models", "zh": "只懂文字的聊天模型，借专业视觉模型之手也能看图、改图"},
+  "sources": [
+    "https://github.com/chenfei-wu/TaskMatrix#quick-start (conda create -n visgpt python=3.8, pip install -r requirements.txt, GroundingDINO / segment-anything installs, export OPENAI_API_KEY={Your_Private_Openai_Key}, python visual_chatgpt.py --load \"ImageCaptioning_cuda:0,Text2Image_cuda:0\")",
+    "https://github.com/chenfei-wu/TaskMatrix#updates (say `find xxx in the image`)",
+    "https://github.com/chenfei-wu/TaskMatrix/blob/main/visual_chatgpt.py (import gradio, langchain initialize_agent / Tool, OpenAI(temperature=0), prefix prompt: each image has a file name formed as \"image/xxx.png\")"
+  ]
+}

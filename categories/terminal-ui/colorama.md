@@ -7,7 +7,7 @@ tags: [terminal, ansi, colors, cross-platform, windows, python, cli]
 language: Python
 license: BSD-3-Clause
 maturity: stable, active, ~3.8k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2026-05-13T18:21:46Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:28:04Z
+  computed_at: 2026-10-08T08:26:55Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 137
+        last_commit_age_days: 148
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: colorama
         dependent_repos_count: 189970
-        downloads_last_month: 243994780
+        downloads_last_month: 246918496
         graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 4546
-        last_commit_age_days: 137
+        repo_age_days: 4557
+        last_commit_age_days: 148
         cohort: library
     governance:
       grade: D
@@ -79,13 +79,34 @@ A tiny pure-Python library that makes ANSI color/style escape codes work on Wind
 
 ## When to use
 
-You're writing a Python CLI — a build tool, a test runner, a deploy script — and you want red errors, green successes, and dim secondary text. On Linux and macOS you just print ANSI escape codes (`\033[31m...`). But your users on older Windows (cmd.exe, pre-modern conhost) see literal garbage like `←[31m` instead of color, because those terminals didn't interpret ANSI. You add `from colorama import init, Fore, Style; init()` at startup, and colorama intercepts stdout/stderr on Windows and translates the ANSI codes into the Win32 console API calls that actually set colors — while doing nothing (passing ANSI straight through) on platforms that already support it. The result: one code path, colored output everywhere, no `if platform == 'windows'` branching. Its `Fore`, `Back`, and `Style` constants also give you readable names instead of raw escape numbers.
+You're writing a Python CLI — a build tool, a test runner, a deploy script — and you want red errors, green successes, and dim secondary text. On Linux and macOS you just print ANSI escape codes (`\033[31m...`). But your users on older Windows (cmd.exe, pre-modern conhost) see literal garbage like `←[31m` instead of color, because those terminals didn't interpret ANSI. You add `from colorama import just_fix_windows_console; just_fix_windows_console()` at startup (or the older `init()`), and colorama intercepts stdout/stderr on Windows and translates the ANSI codes into the Win32 console API calls that actually set colors — while doing nothing (passing ANSI straight through) on platforms that already support it. The result: one code path, colored output everywhere, no `if platform == 'windows'` branching. Its `Fore`, `Back`, and `Style` constants also give you readable names instead of raw escape numbers.
 
 It's the de-facto compatibility shim under a huge slice of Python CLIs and is bundled with many higher-level color/UI libraries — reach for it when you need *cross-platform colored terminal text* with a near-zero dependency footprint, not a full TUI.
 
+## How it works
+
+ANSI escape codes are invisible instructions mixed into printed text — `\033[31m` means "switch to red" — and Unix terminals have always obeyed them, while older Windows consoles print them as junk. colorama sits between your program and the Windows console. **The translation is entirely colorama's job; you only call one function at startup and keep printing ANSI as you would on Linux.** On Windows 10 or later it simply flips the console's own switch for understanding ANSI; on older Windows it wraps `sys.stdout`/`sys.stderr` in a stand-in object that strips each code out and replays it as the matching Win32 console call (the Windows API that sets text color). On Linux and macOS, or when output is redirected to a file, it does nothing. The `Fore` / `Back` / `Style` constants are deliberately rudimentary — the maintainers say they will not accept new ANSI-generating features, and suggest pairing colorama with termcolor, blessings or Rich for nicer styling.
+
+![colorama — backbone user story](../../assets/flow/colorama.svg)
+
+<!-- flow-steps:begin (generated from flows/colorama.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the dependency — it needs nothing beyond the standard library — `pip install colorama`
+2. **You**: Call it once at program start — `just_fix_windows_console()`
+3. **colorama**: On a Windows console, turns on built-in ANSI support, or on old Windows wraps stdout/stderr to translate codes
+4. **You**: Print colored text with its constants or any ANSI-emitting library — `print(Fore.RED + 'some red text')`
+5. **colorama**: Colors render on Windows; on Linux/macOS it does nothing and the codes pass through untouched
+
+**Value**: One code path prints colored text on every OS, with no platform branch and no third-party dependency
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **You only target Linux/macOS (or modern Windows Terminal).** On platforms that already honor ANSI — including Windows 10+ Terminal/conhost with VT processing — colorama is largely a no-op; you can print escape codes (or use a lighter helper) without it. Its core value is *legacy Windows*. [推断]
+- **You only target Linux/macOS (or Windows 10+).** On Linux/macOS colorama does nothing, and on Windows 10+ `just_fix_windows_console()` only flips the console's built-in ANSI switch — so if you already control that switch or only run in Windows Terminal, print escape codes directly (or use `termcolor`) without it. Its core value is *legacy Windows*.
 - **You want rich terminal UI — tables, layout, progress bars, markdown.** colorama only translates color/style codes. For styled tables, spinners, live layouts, syntax highlighting, reach for **Rich** (which is a far larger library) or **Textual** for full TUIs.
 - **You want high-level styling ergonomics.** colorama gives you raw-ish `Fore.RED + text + Style.RESET_ALL`; libraries like **Rich** or **click.style** offer nicer APIs. colorama is the low-level shim, often *underneath* them.
 - **Non-Python stacks.** It's Python-only; other ecosystems have their own (chalk for Node, etc.).
@@ -109,27 +130,26 @@ It's the de-facto compatibility shim under a huge slice of Python CLIs and is bu
 
 ## Dependencies
 
-- **Runtime:** Python only — **no third-party runtime dependencies** (it uses ctypes/stdlib to call the Windows console API). That zero-dep footprint is a big reason it's so widely bundled. [推断]
+- **Runtime:** Python only — **no third-party runtime dependencies** (it uses ctypes/stdlib to call the Windows console API). The README states "No requirements other than the standard library", and PyPI metadata lists no `requires_dist`; that zero-dep footprint is a big reason it's so widely bundled.
 - **External services:** none.
 - **Install:** `pip install colorama`.
 
 ## Ops difficulty
 
-**Trivial.** It's a `pip install` and one `init()` call (or `just_fix_windows_console()`); there's nothing to deploy, configure, or operate. The only practical care is calling `init()` early, remembering to `Style.RESET_ALL` so colors don't bleed, and being aware it's mainly a no-op on already-ANSI-capable terminals — so don't expect it to add capabilities (truecolor, TUI) it was never meant to provide.
+**Trivial.** It's a `pip install` and one `just_fix_windows_console()` call (or the older `init()`, which the README warns is unsafe to call twice and will not get further fixes); there's nothing to deploy, configure, or operate. The only practical care is calling it early, remembering to `Style.RESET_ALL` so colors don't bleed, and being aware it's mainly a no-op on already-ANSI-capable terminals — so don't expect it to add capabilities (truecolor, TUI) it was never meant to provide.
 
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Repo last pushed 2026-05 — **active**, not archived; a stable, mature library that doesn't need frequent change but is kept current. (No GitHub tagged releases listed here; it ships via **PyPI**.) [未验证]
+- **Maintenance (2026-10).** Last commit 2026-05-13, not archived; the latest PyPI release is still **0.4.6 (2022-10)**. Read it as a finished library that gets occasional housekeeping commits, not one that ships new versions — fine for a problem this stable, but do not wait on new features.
 - **Governance / bus factor.** Owner type **User** (tartley / Jonathan Hartley) with multiple steady contributors (wiggin15, hugovk, njsmith, jdufresne) — better bus factor than a one-person script, though still individually owned rather than foundation-backed. [推断]
 - **Age & Lindy verdict.** Created **2014**, ~12 years old and **still maintained** ⇒ a **strong Lindy** signal; it's a settled, ubiquitous dependency whose problem (legacy-Windows ANSI) is itself stable. [推断]
 - **Adoption.** ~3.8k stars but the real signal is **transitive ubiquity** — it's a dependency of a vast number of Python CLIs and color/UI libraries (historically pip, Click, pytest tooling, etc. bundle or depend on it). [未验证]
-- **Risk flags.** **BSD-3-Clause**, permissive, no relicense history found. As legacy Windows recedes (Windows Terminal supports ANSI natively), the library's *relevance* slowly narrows, but it remains the safe default for broad compatibility. [推断]
+- **Risk flags.** **BSD-3-Clause**, permissive, no relicense history found. As legacy Windows recedes (Windows 10+ consoles support ANSI natively), the library's *relevance* slowly narrows, but it remains the safe default for broad compatibility.
 
 ## Caveats (unverified)
 
 - [未验证] ~3.8k stars / ~279 forks / ~137 open issues as of 2026-06 — date-sensitive, indicative only.
-- [未验证] Ships via PyPI; the empty GitHub Releases list doesn't mean inactivity — verify the current version on PyPI/changelog.
-- [推断] "Zero third-party runtime deps" is inferred from its design/footprint; confirm against the version's metadata if it matters.
-- [推断] On modern ANSI-capable terminals colorama is largely a pass-through; the "no-op there" claim is an inference about behavior, not a guarantee for every terminal/version.
+- [推断] "Narrowing relevance" is a judgment about legacy Windows usage declining, not a measured trend.
+- [推断] The README's Windows 10+ behavior ("flip the magic configuration switch") is taken at its word; colorama's behavior on third-party Windows terminals not attached to a console was not tested.
 - [未验证] Truecolor (24-bit) behavior across terminals is outside colorama's guaranteed scope and not verified here.

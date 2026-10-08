@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Dimillian Skills makes Codex do", "zh": "这套 skill 让 Codex 做的"},
+  "steps": [
+    {"lane": "you", "en": "Copy the skill folders into Codex's skills directory", "zh": "把 skill 文件夹拷进 Codex 的 skills 目录", "code": "$CODEX_HOME/skills"},
+    {"lane": "them", "en": "Each folder's SKILL.md description tells Codex when that skill applies", "zh": "每个文件夹的 SKILL.md 描述告诉 Codex 这个 skill 何时适用", "component": {"en": "SKILL.md", "zh": "SKILL.md"}},
+    {"lane": "you", "en": "Ask Codex for Apple-platform work as usual, e.g. split a long SwiftUI view", "zh": "照常派 Apple 平台的活，比如拆一个过长的 SwiftUI 视图"},
+    {"lane": "them", "en": "Loads the matching skill and its reference notes", "zh": "加载匹配的 skill 和它附带的参考资料", "code": "swiftui-view-refactor"},
+    {"lane": "them", "en": "Applies its house rules: small subview types, MV over MVVM, a fixed property order", "zh": "按其中的规矩改：拆成小的子视图类型、MV 优先于 MVVM、固定的属性顺序"}
+  ],
+  "value": {"en": "Codex applies one experienced iOS developer's SwiftUI and Swift conventions without you retyping them each time", "zh": "Codex 照着一位资深 iOS 开发者的 SwiftUI / Swift 习惯干活，不用你每次重敲"},
+  "sources": [
+    "https://github.com/Dimillian/Skills README — Install: place these skill folders under `$CODEX_HOME/skills`; Skills table (16 skills); Usage (each skill's SKILL.md holds triggers, workflow, examples, references)",
+    "swiftui-view-refactor/SKILL.md (description triggers; View ordering; Default to MV, not MVVM; prefer dedicated subview types) + references/ folder"
+  ]
+}

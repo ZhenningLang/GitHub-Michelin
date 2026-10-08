@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Interpreter does", "zh": "Open Interpreter 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the binary, then type i in your repo to open a session", "zh": "装好二进制，在仓库里敲 i 打开会话", "code": "curl -fsSL https://www.openinterpreter.com/install | sh"},
+    {"lane": "you", "en": "Pick a provider and a low-cost model", "zh": "选 provider 和一个低成本模型", "code": "/model"},
+    {"lane": "you", "en": "Switch to the harness that model family is used to, then give it the task", "zh": "换上该模型家族习惯的 harness，再交代任务", "code": "/harness"},
+    {"lane": "them", "en": "Talks to the model with that harness's prompts, tools and edit format", "zh": "按这个 harness 的提示词、工具和编辑格式与模型对话", "component": {"en": "Rust-native harness", "zh": "Rust 原生 harness"}},
+    {"lane": "them", "en": "Runs commands and edits files inside the OS sandbox, asking per your approval rules", "zh": "在 OS 沙箱里跑命令、改文件，按你的审批规则询问", "component": {"en": "Codex sandbox + exec", "zh": "Codex 沙箱与 exec"}},
+    {"lane": "them", "en": "Loops run → observe → edit until the task is done", "zh": "跑 → 看结果 → 再改，循环到任务完成"}
+  ],
+  "value": {"en": "A cheap or open model works inside the scaffolding it does best in, with Codex's sandbox still underneath", "zh": "便宜或开源模型跑在最适合它的脚手架里，底下照样是 Codex 的沙箱"},
+  "sources": [
+    "https://github.com/openinterpreter/openinterpreter#installation (install one-liner; type i or interpreter)",
+    "https://github.com/openinterpreter/openinterpreter#harness-emulation (/harness list; fork of OpenAI Codex)",
+    "https://github.com/openinterpreter/openinterpreter#features (/model; native sandboxing; Rust-native model harnesses; exec, permissions)"
+  ]
+}

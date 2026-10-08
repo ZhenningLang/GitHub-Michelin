@@ -6,8 +6,8 @@ category: ml-research
 tags: [layer-duplication, circuit-finding, gguf, llama-cpp, interpretability, no-training, eval-harness]
 language: Python
 license: MIT
-maturity: research demo, no tagged release, last pushed 2026-03 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: research demo, no tagged release, 18 commits all 2026-03-18..20, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-03-20T01:51:23Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:14:42Z
+  computed_at: 2026-10-08T08:22:57Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 192
+        last_commit_age_days: 202
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 193
-        last_commit_age_days: 192
+        repo_age_days: 203
+        last_commit_age_days: 202
         cohort: tool
     governance:
       grade: D
@@ -77,6 +77,28 @@ A small Python toolkit that searches a GGUF model for contiguous "reasoning circ
 ## When to use
 
 You're a hobbyist or independent researcher with a couple of consumer GPUs and a quantized GGUF of some open model (Devstral, Qwen2.5-Coder, Phi-4, whatever you have locally). You read David Ng's RYS post about duplicating layers to make a model "think twice," and you want to actually try it on *your* model without renting an H200 or kicking off a fine-tune. The problem is that "which layers do I duplicate?" has no general answer — the right block is model-specific and the boundaries are sharp. llm-circuit-finder is built for exactly this loop: `sweep.py` performs GGUF surgery to physically duplicate layer ranges, spins up `llama-server` on the modified model, runs three probe suites (math, EQ, BBH-derived reasoning), scores against baseline, deletes the temp GGUF, and moves to the next config — coarse blocks first to find the hot zone, then stride-1 to pin the exact boundaries. Once you've found a circuit, `layer_path.py` lets you bake an explicit execution path (`0..9,7,8,9,10..63`) into a new GGUF and `compare_eval.py` confirms it on standard benchmarks. It's a learn-by-running research demo, not a product: you keep the artifacts (the modified GGUF, the eval JSON) and own the whole pipeline.
+
+## How it works
+
+The technique is RYS layer duplication: a transformer model is a stack of layers that each refine the hidden state (the model's running internal representation of the text), and sending that state through a particular block of layers a second time can shift how well the model reasons. The tool's job is the *search*. You give `sweep.py` your GGUF (llama.cpp's single-file model format) and your `llama-server` binary; for every candidate block it writes a temporary copy of the model with those layers physically duplicated, serves it, runs three small probe suites (math, EQ, BBH-derived reasoning), compares against the unmodified model, and deletes the copy — coarse blocks first to find the hot zone, then stride-1 to pin the boundaries. Picture tasting a soup after adding one more pass of each spice, one spice at a time. Reading the sweep table and deciding which block is a real win is your call; `layer_path.py` then writes the final GGUF with an explicit execution path, and validating it on standard benchmarks with `lm_eval` + `compare_eval.py` is an extra step you run yourself.
+
+![llm-circuit-finder — backbone user story](../../assets/flow/llm-circuit-finder.svg)
+
+<!-- flow-steps:begin (generated from flows/llm-circuit-finder.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Build llama.cpp for your GPU, put a GGUF model on disk, install the Python deps — `pip install gguf requests tqdm`
+2. **You**: Start a sweep: your model, your llama-server, block sizes and the layer range to scan — `python sweep.py --model /path/to/model.gguf`
+3. **llm-circuit-finder**: For each candidate block, writes a temp GGUF with those layers physically duplicated
+4. **llm-circuit-finder**: Serves it with llama-server, runs math/EQ/reasoning probes, scores vs baseline, deletes it
+5. **You**: Take the best-scoring block and spell it out as an explicit layer execution path — `python layer_path.py model.gguf improved.gguf -p "0..14,12,13,14,15..39"`
+6. **llm-circuit-finder**: Writes a new GGUF whose forward pass runs that block twice, ready for llama-server
+
+**Value**: You find which layer block, run twice, shifts your local model's reasoning — and get a GGUF to test it, with no training
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -118,15 +140,15 @@ You're a hobbyist or independent researcher with a couple of consumer GPUs and a
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — too_young.
-- **Maintenance (as of 2026-06):** last pushed 2026-03 (~2026-03-20), no tagged release, no test suite or CI visible. [推断] Recently active but with the shape of a one-off research drop, not a maintained tool — there's no cadence to track.
-- **Governance / bus factor:** a **single-author** repo under a personal account with only ~239 stars — minimal bus factor and no community process. If the author stops, it stops; you should expect to read and adapt the scripts yourself rather than file issues and wait.
+- **Maintenance (as of 2026-10-08):** all 18 commits landed 2026-03-18..20 and nothing has been pushed since (~6.5 months), no tagged release, no test suite or CI visible. [推断] It has the shape of a one-off research drop, not a maintained tool — there's no cadence to track.
+- **Governance / bus factor:** a **single-author** repo under a personal account with only ~240 stars — minimal bus factor and no community process. If the author stops, it stops; you should expect to read and adapt the scripts yourself rather than file issues and wait.
 - **Age & Lindy verdict (created 2026-03, ~0 yr):** brand-new and tiny. [推断] **Unproven by Lindy** — neither old nor widely adopted; its credibility rests on the technique (RYS layer-duplication) and the author's own checked-in evals, not on survival or usage. Treat it as a learn-by-running demo.
-- **Risk flags:** README claims MIT but GitHub's API detected no license file as of 2026-06 — a real licensing ambiguity to resolve before depending on it. Results are directional (small probe suites, `--limit`-capped runs) and the headline gains are net-negative on some metrics, so don't read it as a validated capability boost. [未验证]
+- **Risk flags:** README claims MIT but the repo has no LICENSE file and GitHub's API detects no license (re-checked 2026-10-08) — a real licensing ambiguity to resolve before depending on it. Results are directional (small probe suites, `--limit`-capped runs) and the headline gains are net-negative on some metrics, so don't read it as a validated capability boost. [未验证]
 
 ## Caveats (unverified)
 
-- [未验证] License is stated as "MIT" in the README, but GitHub's API reports no detected license file (no SPDX match) for the repo as of 2026-06 — verify a LICENSE file before relying on it.
-- [未验证] Star count ~239 and last push 2026-03-20 as of 2026-06; GitHub stars are unreliable and date-sensitive — treat as indicative only.
+- [未验证] License is stated as "MIT" in the README, but GitHub's API reports no detected license file (no SPDX match) for the repo, and the file tree has no LICENSE file (re-checked 2026-10-08) — the only grant is the README's one-word `## License` section.
+- [未验证] Star count ~242 and last commit 2026-03-20 as of 2026-10-08; GitHub stars are unreliable and date-sensitive — treat as indicative only.
 - [未验证] Headline result claims (e.g. logical deduction 0.22→0.76, reasoning +23% on Qwen2.5-Coder-32B, the Devstral all-metric average 0.7610→0.7488) are the author's own probe/eval numbers on specific quantized models with capped sample sizes; not independently reproduced here.
 - [未验证] The README's one-line summary cites "Qwen2.5-32B" while the Results section uses "Qwen2.5-Coder-32B" and gives different duplicated-layer indices (7-9 vs the summary's "3 specific layers"); the exact model/layers for each headline figure should be read off the results folder, not the summary.
 - [推断] No tagged release, test suite, or CI is visible in the file tree, so the "maturity: research demo" framing is inferred from repo structure (standalone scripts + a results/ folder), not a declared project status.

@@ -7,7 +7,7 @@ tags: [headless-browser, webkit, scriptable-browser, web-scraping, screenshots, 
 language: C++
 license: BSD-3-Clause
 maturity: archived/abandoned — development suspended since 2018, repo archived (last pushed 2022-11); ~29.5k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2022-11-26T19:43:12Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:29:24Z
+  computed_at: 2026-10-08T08:28:03Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 2267
+        last_commit_age_days: 2278
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,7 +45,7 @@ health:
         registry: nuget.org
         canonical_package: phantomjs
         dependent_repos_count: 0
-        downloads_last_month: 4710259
+        downloads_last_month: 4713999
         graph_tier: E
         volume_tier: A
         cross_check_divergence: null
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5753
-        last_commit_age_days: 2267
+        repo_age_days: 5764
+        last_commit_age_days: 2278
         cohort: tool
     governance:
       grade: "?"
@@ -82,6 +82,27 @@ health:
 你是一名工程师，接手了一条多年前围绕 PhantomJS 搭起来的老 CI 流水线，或一个老旧的抓取/截图服务——某个 `phantomjs script.js` 调用被接进了测试运行器（Karma、老式 Jasmine 配置），一个渲染成 PNG/PDF 的任务，或某个早已离职的同事写的 `page.evaluate` 抓取脚本。替换它在 backlog 里，但这个季度没排上预算，你眼下的活儿只是让现有这套撑住，撑到能规划迁移为止。在这种狭窄的维护场景里，你之所以还碰 PhantomJS，唯一原因是它已经钉死在系统里：你把现有二进制/版本冻住，把它隔离（一个容器、一台锁死的主机），并且绝不喂它任何不可信的东西。
 
 这是 2026 年还去碰它的*唯一*现实理由。对任何新的测试、抓取或截图工作——哪怕是在一个现有项目里——你都该转向由 Puppeteer 或 Playwright 驱动的 headless Chrome/Chromium，或者 [Selenium](selenium.zh.md)，而不是 PhantomJS。把每一次遇到它，都当成迁移的触发信号，而不是一次工具选型。
+
+## 怎么用起来
+
+PhantomJS 是把一整个浏览器引擎——WebKit，也就是 Safari 底下那套负责排版和绘制的引擎——塞进一个命令行二进制里，全程不开窗口。**引擎和一小套用来遥控它的 JavaScript API 都装在这个二进制里；驱动它的脚本由你来写。** 你的脚本跑在页面*外面*：它建一个 `page` 对象、打开一个网址，在页面加载完成后触发的回调里，要么调 `page.render` 把页面画成 PNG/JPEG/PDF，要么调 `page.evaluate` 把一个函数送进页面*里面*执行、再把 DOM 里的值带出来。下载、排版、执行页面脚本、绘制这些活由二进制干；外围的事归你——等那些晚到的内容、记得调 `phantom.exit()`（忘了它进程就永远不退出）、把这次运行接进你的测试运行器或定时任务。可以把它想成一台拔掉了显示器的浏览器——只不过这台浏览器在 2018 年中止开发后就再没更新过，同一段脚本看到的现代网页会越来越走样。
+
+![phantomjs — 主干用户故事](../../../assets/flow/phantomjs.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/phantomjs.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：下载对应系统的预编译二进制，解压，放进 PATH
+2. **你**：写一个 .js 脚本：打开网址，在加载完的回调里截图，然后退出 — `page.render('github.png') · phantom.exit()`
+3. **你**：用这个二进制运行脚本 — `phantomjs github.js`
+4. **PhantomJS**：用自带的 WebKit 加载页面、执行 JS 和 CSS，不开窗口
+5. **PhantomJS**：触发你的回调，写出 PNG、JPEG 或 PDF 文件
+
+**价值**：在无显示器的服务器上用真实浏览器引擎拿到截图、PDF 或 DOM 数据——只是引擎停在 2018 年
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

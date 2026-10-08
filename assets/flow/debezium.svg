@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="786" viewBox="0 0 880 786" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="786" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="628" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="628" rx="10"/>
+<rect class="pillT" x="474" y="40" width="147.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Debezium does</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="edge" d="M62,265 L62,289" marker-end="url(#a)"/>
+<path class="hand" d="M408,351.0 C439.0,351.0 439.0,375 470,375" marker-end="url(#a)"/>
+<path class="edge" d="M494,470 L494,494" marker-end="url(#a)"/>
+<path class="hand" d="M472,543.0 C441.0,543.0 441.0,567 410,567" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Run Kafka and a Kafka Connect worker</text>
+<text class="t" x="82" y="123">from Debezium&#x27;s connect image</text>
+<text class="c" x="82" y="147">quay.io/debezium/connect</text>
+<rect class="card" x="40" y="193" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">Turn on the database&#x27;s change log and</text>
+<text class="t" x="82" y="244">create a user with replication rights</text>
+<rect class="card" x="40" y="291" width="368" height="120" rx="8"/>
+<rect class="accY" x="40" y="291" width="4" height="120" rx="2"/>
+<circle class="accY" cx="62" cy="315" r="10"/>
+<text class="num" x="62" y="319" text-anchor="middle">3</text>
+<text class="t" x="82" y="320">Register a connector: which database,</text>
+<text class="t" x="82" y="342">which tables, which topic prefix</text>
+<text class="c" x="82" y="366">POST localhost:8083/connectors/</text>
+<text class="comp" x="82" y="389">component: Kafka Connect REST API</text>
+<rect class="cardT" x="472" y="351" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="351" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="375" r="10"/>
+<text class="num" x="494" y="379" text-anchor="middle">4</text>
+<text class="t" x="514" y="380">Snapshots the existing rows, then</text>
+<text class="t" x="514" y="402">reads the transaction log from that</text>
+<text class="t" x="514" y="424">point on</text>
+<text class="comp" x="514" y="452">component: source connector</text>
+<rect class="cardT" x="472" y="496" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="496" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="520" r="10"/>
+<text class="num" x="494" y="524" text-anchor="middle">5</text>
+<text class="t" x="514" y="525">Emits one event per committed row</text>
+<text class="t" x="514" y="547">change, with before/after values, to a</text>
+<text class="t" x="514" y="569">topic per table</text>
+<rect class="card" x="40" y="543" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="543" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="567" r="10"/>
+<text class="num" x="62" y="571" text-anchor="middle">6</text>
+<text class="t" x="82" y="572">Consume the table&#x27;s topic from your</text>
+<text class="t" x="82" y="594">service or a sink connector</text>
+<text class="c" x="82" y="618">dbserver1.inventory.customers</text>
+<rect class="val" x="28" y="670" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="694">VALUE</text>
+<text class="valT" x="48" y="718">Caches, search indexes and other services see every committed change, in order, without dual</text>
+<text class="valT" x="48" y="740">writes or polling</text>
+</svg>

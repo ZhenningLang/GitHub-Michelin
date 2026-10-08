@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "node-DeepResearch does", "zh": "node-DeepResearch 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and install dependencies", "zh": "克隆仓库，安装依赖", "code": "npm install"},
+    {"lane": "you", "en": "Export an LLM key and a Jina key", "zh": "导出一个 LLM key 和一个 Jina key", "code": "GEMINI_API_KEY · JINA_API_KEY"},
+    {"lane": "you", "en": "Ask a question from the command line", "zh": "在命令行里提一个问题", "code": "npm run dev $QUERY"},
+    {"lane": "them", "en": "Each step, the LLM picks one action: search, visit, reflect or answer", "zh": "每一步由 LLM 选一个动作：搜索、访问、反思或作答"},
+    {"lane": "them", "en": "Reads pages through Jina Reader and stores findings and sub-questions", "zh": "经 Jina Reader 读网页，记下发现和子问题"},
+    {"lane": "them", "en": "Grades each candidate answer for definitiveness and references; loops on failure", "zh": "检查候选答案是否确定、有无出处，不合格就继续循环"},
+    {"lane": "them", "en": "Returns the answer with footnote citations, or forces one when the budget runs out", "zh": "返回带脚注引用的答案，预算耗尽时强行作答"}
+  ],
+  "value": {"en": "A hard multi-hop question gets a short, referenced answer, with a token budget capping the cost", "zh": "一个要跳好几步的难问题，换来一个简短、带出处的答案，花费由 token 预算封顶"},
+  "sources": [
+    "https://github.com/jina-ai/node-DeepResearch README \"Install\" (git clone, npm install) and \"Usage\" (export GEMINI_API_KEY, JINA_API_KEY; npm run dev $QUERY)",
+    "https://github.com/jina-ai/node-DeepResearch README \"How Does it Work?\" (actions search/visit/reflect/answer, evaluate answer: definitive + references, token budget, Beast Mode)",
+    "https://github.com/jina-ai/node-DeepResearch README \"Client integration guidelines\" (footnote-format citations)",
+    "https://github.com/jina-ai/node-DeepResearch/blob/main/src/tools/read.ts (r.jina.ai with JINA_API_KEY)"
+  ]
+}

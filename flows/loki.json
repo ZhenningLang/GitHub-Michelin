@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Loki does", "zh": "Loki 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start Loki, the Alloy agent and Grafana from the quick-start compose file", "zh": "用示例 compose 拉起 Loki、Alloy 和 Grafana", "code": "docker compose up -d"},
+    {"lane": "you", "en": "Tell the agent which logs to tail and which few labels to stamp on them", "zh": "告诉采集器盯哪些日志、给它们打哪几个标签", "component": {"en": "Grafana Alloy agent", "zh": "Grafana Alloy 采集器"}},
+    {"lane": "them", "en": "Receives pushed lines and groups those with identical labels into one stream", "zh": "接收推来的日志行，标签完全相同的归成一条流", "component": {"en": "distributor + ingester", "zh": "distributor + ingester"}},
+    {"lane": "them", "en": "Compresses each stream into chunks in object storage, indexing only its labels", "zh": "把每条流压缩成块写进对象存储，只给标签建索引", "component": {"en": "ingester", "zh": "ingester"}},
+    {"lane": "you", "en": "In Grafana, select streams by label, then filter lines like grep", "zh": "在 Grafana 里先按标签选流，再像 grep 一样过滤行", "code": "{container=\"evaluate-loki-flog-1\"} |= \"GET\""},
+    {"lane": "them", "en": "Finds the matching chunks via the label index and scans them in parallel", "zh": "靠标签索引找到相关的块，并行扫描后返回结果", "component": {"en": "query frontend + querier", "zh": "query frontend + querier"}}
+  ],
+  "value": {"en": "Every pod's logs stay searchable at object-storage prices, under the same labels as your Prometheus metrics", "zh": "所有 Pod 的日志按对象存储的价钱留着可查，标签和 Prometheus 指标是同一套"},
+  "sources": [
+    "https://github.com/grafana/loki/blob/main/docs/sources/get-started/quick-start/quick-start.md (docker compose up -d; LogQL {container=\"evaluate-loki-flog-1\"} |= \"GET\")",
+    "https://github.com/grafana/loki/blob/main/docs/sources/get-started/overview.md (agent adds labels and pushes over HTTP; chunks in object storage; label-only index)",
+    "https://github.com/grafana/loki/blob/main/docs/sources/get-started/components.md (distributor, ingester, query frontend, querier)"
+  ]
+}

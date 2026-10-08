@@ -7,7 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **OpenAI Whisper** | OpenAI 的通用自动语音识别模型，支持 99 种语言的转写与英译，提供多种尺寸/质量权衡。 | A（5/6） | [→](whisper.zh.md) |
+| **OpenAI Whisper** | 当几百小时多语言录音需要在自己机器上转出可检索的文字稿和 .srt 字幕、而不是按分钟付费给云端 API 时用它——但它没有流式模式，实时字幕请用 whisper.cpp 或 faster-whisper。 | A（5/6） | [→](whisper.zh.md) |
 | **ffsubsync** | 一个语言无关的命令行工具，把时间轴对不上的字幕文件自动重新对齐到视频（或一份参考字幕）上，靠 FFT 互相关来对齐语音段。 | B（5/6） | [→](ffsubsync.zh.md) |
 | **claude-video** | 面向 agent 的 `/watch` 工作流：下载视频、抽帧、获取字幕 / 转录，并把视觉 / 音频证据交给 Claude 或其他 skill host。 | C（6/6） | [→](claude-video.zh.md) |
 
@@ -15,7 +15,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [OpenAI Whisper](whisper.zh.md) | ✅ | A（5/6） | 你要的就是转写文本、并且想自己控制模型尺寸／质量时选它；字幕已经有了、只是时间轴不对时，选 [ffsubsync](ffsubsync.zh.md)。 |
+| [OpenAI Whisper](whisper.zh.md) | ✅ | A（5/6） | OpenAI 的参考实现和公开权重；代价是 PyTorch 慢路径（large 要约 10 GB 显存）、不区分说话人，静音或音乐段不先过滤就会编出文字。 |
 | [ffsubsync](ffsubsync.zh.md) | ✅ | B（5/6） | 已经有字幕、只是整体时间轴偏移时选它；完全没有字幕时选 [OpenAI Whisper](whisper.zh.md)，因为 ffsubsync 是对齐已有文本而不是生成文本。 |
 | [claude-video](claude-video.zh.md) | ✅ | C（6/6） | agent 需要**看**视频（抽帧加字幕作为证据）时选它；只要转录文本作为交付物时选 [OpenAI Whisper](whisper.zh.md)，因为 claude-video 是 harness 工作流而不是 ASR 引擎。 |
 

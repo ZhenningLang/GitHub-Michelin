@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "jq does", "zh": "jq 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get the standalone binary (release page, package manager or Docker image)", "zh": "拿到独立二进制（release 页、包管理器或 Docker 镜像）", "code": "ghcr.io/jqlang/jq:latest", "component": {"en": "jq binary", "zh": "jq 二进制"}},
+    {"lane": "you", "en": "Pipe JSON into it from a file, curl or another CLI", "zh": "把文件、curl 或别的命令行工具输出的 JSON 管道给它", "code": "curl 'https://api.github.com/repos/jqlang/jq/commits?per_page=5' | jq '.'"},
+    {"lane": "them", "en": "Parses each JSON value and pretty-prints it, so you can see the shape", "zh": "解析每个 JSON 值并格式化打印，让你看清结构"},
+    {"lane": "you", "en": "Write a filter: walk the path, iterate, select, reshape", "zh": "写一个过滤器：沿路径取值、展开、筛选、重组", "code": ".[] | {message: .commit.message, name: .commit.committer.name}"},
+    {"lane": "them", "en": "Runs the filter on every input value and emits a stream of results", "zh": "对每个输入值跑一遍过滤器，输出一串结果"},
+    {"lane": "them", "en": "Prints JSON — or bare strings with -r for the next shell command", "zh": "打印 JSON——加 -r 则输出纯字符串，交给下一个 shell 命令", "code": "-r"}
+  ],
+  "value": {"en": "Any question about any JSON is one shell line, not a throwaway script per question", "zh": "对任意 JSON 的任何问题，都是一行 shell，而不是每个问题写一个用完就扔的脚本"},
+  "sources": [
+    "https://github.com/jqlang/jq README (fetched 2026-10-08): prebuilt standalone executables; Docker image ghcr.io/jqlang/jq:latest; 'zero runtime dependencies'",
+    "https://jqlang.org/tutorial/ (fetched 2026-10-08): curl 'https://api.github.com/repos/jqlang/jq/commits?per_page=5' | jq '.'; filter .[] | {message: .commit.message, name: .commit.committer.name}",
+    "https://jqlang.org/manual/ (fetched 2026-10-08): a filter takes an input and produces an output; filters run on a stream of JSON data; --raw-output / -r; --arg; --slurp / -s; --stream for very large inputs"
+  ]
+}

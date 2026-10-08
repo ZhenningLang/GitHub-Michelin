@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "RDR does", "zh": "RDR 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the prebuilt binary for your OS and make it executable", "zh": "下载对应系统的预编译二进制，加上执行权限", "code": "chmod a+x ./rdr*"},
+    {"lane": "you", "en": "Copy one or more RDB dump files from Redis to your workstation", "zh": "把一个或几个 Redis 的 RDB 快照文件拷到工作机"},
+    {"lane": "you", "en": "Point the show command at the dumps", "zh": "用 show 命令指向这些快照", "code": "./rdr show -p 8080 *.rdb"},
+    {"lane": "them", "en": "Decodes every key offline, without connecting to a live Redis", "zh": "离线逐个解码 key，不连任何在线 Redis"},
+    {"lane": "them", "en": "Tallies approximate memory by data type, key prefix and largest keys", "zh": "按数据类型、key 前缀和最大 key 统计近似内存"},
+    {"lane": "them", "en": "Serves the result as an HTML report on the chosen local port", "zh": "在你指定的本地端口上提供 HTML 报告"}
+  ],
+  "value": {"en": "You learn which key prefixes eat the memory without adding a single command of load to production", "zh": "不给生产 Redis 加一条命令的负载，就知道是哪些 key 前缀吃掉了内存"},
+  "sources": [
+    "https://github.com/xueqiu/rdr README \"Usage\" / \"Exapmle\" (rdr show --port default 8080, rdr keys, chmod a+x ./rdr*, ./rdr show -p 8080 *.rdb, \"memory usage is approximate\")",
+    "https://github.com/xueqiu/rdr/blob/master/dump/counter.go (typeBytes, keyPrefixBytes, largestKeyPrefixes, GetLargestEntries)"
+  ]
+}

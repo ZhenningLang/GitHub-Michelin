@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "flowchart.js does", "zh": "flowchart.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Load Raphaël and flowchart.js on the page, e.g. from CDNJS", "zh": "在页面里引入 Raphaël 和 flowchart.js，比如走 CDNJS"},
+    {"lane": "you", "en": "Write the chart as text: node definitions, then the connections", "zh": "把图写成文本：先定义节点，再写连线", "code": "op1=>operation: My Operation · st->getInfo->op1->cond"},
+    {"lane": "you", "en": "Parse the text and draw it into a container element", "zh": "解析这段文本，画进一个容器元素", "code": "flowchart.parse(code) · chart.drawSVG('canvas')"},
+    {"lane": "them", "en": "Parses the DSL into typed nodes and the edges between them", "zh": "把 DSL 解析成带类型的节点和它们之间的边"},
+    {"lane": "them", "en": "Lays the nodes out and draws shapes and arrows as SVG via Raphaël", "zh": "排好节点位置，通过 Raphaël 画出 SVG 图形和箭头"}
+  ],
+  "value": {"en": "The flowchart lives as diffable text next to your docs — no drawing tool to open", "zh": "流程图就是一段能 diff 的文本，跟文档放在一起，不用打开画图工具"},
+  "sources": [
+    "https://github.com/adrai/flowchart.js#example (node definitions, st->getInfo->op1->cond)",
+    "https://github.com/adrai/flowchart.js#browser-usage (CDNJS, Raphaël required)",
+    "https://github.com/adrai/flowchart.js/blob/master/example/index.html (flowchart.parse(code); chart.drawSVG('canvas', ...))"
+  ]
+}

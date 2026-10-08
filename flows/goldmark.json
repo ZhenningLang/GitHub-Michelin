@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them":  {"en": "Goldmark does", "zh": "Goldmark 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the v2 module to your Go project", "zh": "给 Go 项目加上 v2 模块", "code": "go get github.com/yuin/goldmark/v2"},
+    {"lane": "you", "en": "Create a parser and register the extensions you want", "zh": "建一个解析器，注册要用的扩展", "code": "parser.New(parser.WithExtensions(extension.StrikethroughParser))"},
+    {"lane": "you", "en": "Parse the source bytes", "zh": "把源文本交给解析器", "code": "doc := p.Parse(source)"},
+    {"lane": "them", "en": "Builds a CommonMark-compliant AST in which every node keeps its source position", "zh": "按 CommonMark 规则建出语法树，每个节点都记着它在源文中的位置", "component": {"en": "parser", "zh": "解析器"}},
+    {"lane": "you", "en": "Render the tree with the HTML renderer and the matching extension halves", "zh": "用 HTML 渲染器（带上对应的扩展渲染半边）渲染这棵树", "code": "r.Render(&buf, source, doc)"},
+    {"lane": "them", "en": "Writes HTML, dropping raw HTML and dangerous links unless you opted into unsafe mode", "zh": "写出 HTML；除非你开了 unsafe，原始 HTML 和危险链接都会被丢弃", "component": {"en": "renderer/html", "zh": "renderer/html"}}
+  ],
+  "value": {"en": "Spec-conformant, safe-by-default HTML from a dependency-free Go library you can extend with your own syntax", "zh": "从一个零第三方依赖、可加自定义语法的 Go 库里拿到合规且默认安全的 HTML"},
+  "sources": [
+    "README.md v2 @ 2026-10-08 (gh api repos/yuin/goldmark/readme): Installation 'go get github.com/yuin/goldmark/v2'; Custom parser and renderer example 'parser.New(parser.WithAttribute(), parser.WithExtensions(extension.StrikethroughParser))', 'html.New(... html.WithExtensions(extension.StrikethroughHTMLRenderer))', 'doc := p.Parse(source)', 'r.Render(&buf, source, doc)'",
+    "README.md v2 @ 2026-10-08: 'v2 all nodes hold the start position'; Security 'By default, goldmark does not render raw HTML or potentially-dangerous URLs'; html.WithUnsafe option table; 'Depends only on standard libraries'"
+  ]
+}

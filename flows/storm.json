@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "STORM does", "zh": "STORM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package", "zh": "安装这个包", "code": "pip install knowledge-storm"},
+    {"lane": "you", "en": "Put an LLM key and a search-API key in secrets.toml", "zh": "把 LLM 和搜索 API 的 key 写进 secrets.toml", "code": "OPENAI_API_KEY · SERPER_API_KEY"},
+    {"lane": "you", "en": "Run the example script with a retriever and type the topic", "zh": "带上检索器跑示例脚本，输入话题", "code": "python examples/storm_examples/run_storm_wiki_gpt.py"},
+    {"lane": "them", "en": "Finds perspectives from related articles and simulates writer–expert interviews grounded in search", "zh": "从相关文章里找出视角，模拟写手采访靠搜索作答的专家"},
+    {"lane": "them", "en": "Drafts an outline and refines it against the collected references", "zh": "起草大纲，再对照攒下的资料修订"},
+    {"lane": "them", "en": "Writes each section with inline citations, then polishes the article", "zh": "逐节写正文并标注引用，最后润色全文"}
+  ],
+  "value": {"en": "A cited, outlined first draft of a long overview article, with every source it used saved beside it", "zh": "拿到一篇有大纲、带引用的长文初稿，用过的每个来源都另存在旁边"},
+  "sources": [
+    "https://github.com/stanford-oval/storm README \"Installation\" (pip install knowledge-storm)",
+    "https://github.com/stanford-oval/storm README \"Quick Start with Example Scripts\" (secrets.toml with OPENAI_API_KEY; python examples/storm_examples/run_storm_wiki_gpt.py --retriever ...)",
+    "https://github.com/stanford-oval/storm/blob/main/examples/storm_examples/run_storm_wiki_gpt.py (env vars incl. SERPER_API_KEY; --retriever choices bing/you/brave/duckduckgo/serper/tavily/searxng/azure_ai_search; output files)",
+    "https://github.com/stanford-oval/storm README \"How STORM & Co-STORM works\" (perspective-guided question asking, simulated conversation, outline, article with citations, polishing)"
+  ]
+}

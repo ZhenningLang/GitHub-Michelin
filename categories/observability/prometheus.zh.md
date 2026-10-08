@@ -3,20 +3,20 @@ name: Prometheus
 slug: prometheus
 repo: https://github.com/prometheus/prometheus
 category: observability
-tags: [observability, monitoring, prometheus, service]
+tags: [observability, monitoring, metrics, time-series, promql, alerting, kubernetes, cncf]
 language: Go
 license: Apache-2.0
-maturity: active, ~64,970 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: active, v3.15.0 (2026-09-25), ~66.4k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: service
 upstream:
-  pushed_at: 2026-07-06T10:51:37Z
+  pushed_at: 2026-10-08T08:54:22Z
   default_branch: main
-  default_branch_sha: 9a6814cdfbb04825022877e4d4c0d518b3b1d9b3
+  default_branch_sha: d4467eede8e6d171c7ee06c0307a34878339a237
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:46:39Z
+  computed_at: 2026-10-08T08:23:57Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 32.8
-        qualifying_issues: 52
+        median_ttfr_hours: 24.3
+        qualifying_issues: 50
         band: default
         window_offset_days: 0
         source: issue
@@ -47,29 +47,29 @@ health:
         registry: npmjs.org
         canonical_package: "@prometheus-io/lezer-promql"
         dependent_repos_count: 296
-        downloads_last_month: 412781
+        downloads_last_month: 742640
         graph_tier: C
-        volume_tier: C
-        cross_check_divergence: null
-        homebrew_installs_90d: 4138
+        volume_tier: B
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 4506
         homebrew_tier: A
-        release_downloads: 23611823
-        release_assets: 3604
+        release_downloads: 25358840
+        release_assets: 3606
         release_tier: A
         signal_basis: homebrew+releases
         tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 5050
-        last_commit_age_days: 0
+        repo_age_days: 5066
+        last_commit_age_days: 1
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 110
-        top1_share: 0.208
-        top3_share: 0.437
+        active_maintainers_12mo: 114
+        top1_share: 0.216
+        top3_share: 0.449
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,58 +80,91 @@ health:
         relicense_36mo: false
         content_license: null
 ---
+
 # Prometheus
 
-The Prometheus monitoring system and time series database.
+结账服务变慢，你是从客户的吐槽里知道的，而不是有什么东西提醒你；回头去查，也没人说得清错误率是在发版之前还是之后涨起来的。Prometheus 每隔几秒去拉一遍每个服务的 `/metrics` 页面，把数字存进自带的时序数据库，让你用同一门查询语言画图、设告警。
 
 ![Prometheus — 健康度雷达](../../assets/health/prometheus.zh.svg)
 
 ## 何时使用
 
-你正在为一个落在 `observability` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 Prometheus 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
+你刚接手一个 Kubernetes 集群的值班，上面跑着十来个服务。还没有任何指标系统——只有 `kubectl top` 和翻日志——第一份事故复盘就抛来一个你答不上的问题：“故障前十分钟 `/checkout` 的 p99 延迟是多少？它跟 14:02 那次发版有没有关系？”你需要按服务、按 Pod、按接口的请求速率、错误比例和延迟分布，保留几周，并且在错误比例连续五分钟超过 2% 时把人叫起来。
 
-这个首版页面存在，是因为 Prometheus 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+这正是 Prometheus 的主场，它是这件事的事实标准：Kubernetes 组件、数据库和大多数云原生软件本来就以它的文本格式暴露指标，主流语言都有客户端库，一台带本地盘的服务器就能抓取并存储——不用另外跑数据库。你选它而不选 InfluxDB 或 Graphite，是因为标签（`service`、`pod`、`status`）加上 PromQL，让“按服务算错误比例”变成一行查询；不选托管 SaaS，是因为数据、告警规则和成本都留在你自己手里。
+
+## 怎么用起来
+
+Prometheus 靠**拉取**干活。每个服务暴露一个纯文本的 `/metrics` 页面，列出当前的计数器和仪表值，每个值都带着标签，比如 `{service="checkout", status="500"}`；每个抓取间隔（示例配置里是 15 秒），Prometheus 服务器通过 HTTP 把这些页面取回来，把数值作为带时间戳的样本追加进内置的 **TSDB**——一个放在本地盘上的时序数据库，默认保留 15 天。抓取目标来自 `prometheus.yml` 里的静态列表，或者来自服务发现（Kubernetes、Consul、云厂商 API），所以新起的 Pod 会被自动纳入。你用 **PromQL** 提问——一门针对这些带标签序列的查询语言（`rate(...)`、`sum by (service)`、`histogram_quantile(...)`），在自带界面或 Grafana 里都能用；同样的表达式写成规则就会被持续计算，触发的告警交给独立的 **Alertmanager**，由它去重并路由到 Slack、PagerDuty 或邮件。它就像按时挨家挨户抄表的抄表员，而不是坐等各家打电话报数。**Prometheus 替你做的**：发现目标、抓取、存储、查询、计算规则。**你要做的**：给代码埋点（主机这类改不了代码的东西就部署 node_exporter 等 exporter）、写抓取配置、告警规则和看板，以及运行 Alertmanager。
+
+![prometheus — 主干用户故事](../../assets/flow/prometheus.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/prometheus.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：启动 Prometheus 服务，界面和 API 在 9090 端口 — `docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus`
+2. **你**：用客户端库让服务暴露 /metrics 页面，或者跑一个 exporter
+3. **你**：在 prometheus.yml 里列出要抓取的目标和间隔 — `scrape_configs`
+4. **Prometheus**：每个间隔通过 HTTP 拉取各目标的 /metrics，样本存进本地时序库 — 组件：`抓取器 + 本地时序库`
+5. **你**：用 PromQL 写图表查询和告警规则 — `rate(prometheus_tsdb_head_chunks_created_total[1m])`
+6. **Prometheus**：持续计算规则，把触发的告警发给 Alertmanager — 组件：`规则管理器`
+
+**价值**：所有服务的健康状况都变成可查询的数字，规则越线就告警——不需要外部数据库
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 Prometheus。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+- **你开箱就需要长期、高可用或全局的存储。**上游文档写明本地存储“没有集群也没有副本”，可扩展性和持久性都受限于单个节点。需要几个月到几年的保留期、高可用，或者跨集群的全局查询时，请加一个 remote-write 后端，比如 Thanos、Grafana Mimir 或 VictoriaMetrics——或者直接把它们当主存储。
+- **你的数据是事件或高基数标识，而不是聚合值。**每一种不同的标签组合都是一条新序列，常驻内存；按用户 ID、请求 ID 或完整 URL 路径打标签会把内存吃光。逐请求的细节应该进日志（[Loki](loki.zh.md)）或链路（[Jaeger](jaeger.zh.md)）；要对原始事件做分析查询，请用 [ClickHouse](../databases/database-engines/clickhouse.zh.md) 这类列式库。
+- **你需要逐条精确的数字——计费、审计计数。**抓取是按间隔采样当时的状态，`rate()` 还会做外推；进程崩溃和下一次抓取之间的计数增量可能丢失。必须精确对账的数字请用事务型数据库或事件日志。
+- **你的数据源没法被抓取。**短命的批处理任务、NAT 后面的设备、Serverless 函数都没有一个稳定的 `/metrics` 地址可拉。批处理任务可以用 Pushgateway；其他情况就推送 OTLP 或 remote-write（Prometheus 可以用 `--web.enable-otlp-receiver` / `--web.enable-remote-write-receiver` 接收），或者用 [OpenTelemetry Collector](opentelemetry-collector.zh.md)、[Telegraf](../dev-utilities/ops-infra/telegraf.zh.md) 这类面向推送的采集器，接一个原生支持推送的存储。
+- **你只要日志、看板或一个开箱即用的产品。**Prometheus 只有一个简单的查询界面，不存日志，告警*投递*在独立的 Alertmanager 里。看板请用 [Grafana](grafana.zh.md)；想要指标、日志、链路一张账单全包，托管的可观测性 SaaS 运维更省事。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Grafana](grafana.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Prometheus 对照。 | Prometheus 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Prometheus 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
+| VictoriaMetrics | 未收录 | 单个 Prometheus 内存或磁盘不够用、又想要一个资源更省、仍兼容 PromQL 风格查询和 remote-write 的直接替换时，选 VictoriaMetrics；一个节点加 15–90 天保留期还够用时，留在 Prometheus。 | 每条序列占的内存和磁盘更少，自带集群模式；但它是单一厂商项目，MetricsQL 和 PromQL 有细微差别。 |
+| Thanos / Grafana Mimir | 未收录 | 需要高可用、在对象存储里保留数年、或跨多个集群统一查询时，在 Prometheus 后面接 Thanos 或 Mimir；单台服务器能满足保留期和可用性要求时就别加。 | 它们用对象存储和好几个额外服务换来持久性和全局视图；只用 Prometheus 则始终是一个二进制。 |
+| InfluxDB | 未收录 | 数据是设备或应用主动推送、想要 SQL 或行协议写入时，选 InfluxDB；监控云原生服务、依赖 Kubernetes 的 exporter 生态时，选 Prometheus。 | InfluxDB 更自然地处理推送和较高基数的数据；Prometheus 的 exporter 生态更大，也是大多数 Kubernetes 工具默认假设的告警模型。 |
+| [OpenTelemetry Collector](opentelemetry-collector.zh.md) | ✅ | 互补关系，不是存储：用 Collector 接收应用发来的 OTLP 指标再转给 Prometheus（或别处）；它不能查询也不能告警。 | 让埋点不绑厂商，代价是多一个管线组件；存储、PromQL 和规则仍由 Prometheus 负责。 |
+| [Grafana](grafana.zh.md) | ✅ | 互补关系：Grafana 是大多数 Prometheus 用户加在上面的看板层；它替代不了抓取和 TSDB。 | 看板和跨数据源关联远比 Prometheus 自带界面丰富；代价是多运维一个服务。 |
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 Go。
-- **仓库：** `prometheus/prometheus`。
-- **项目形态：** atlas 路由暂归为 `service`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `main`，最后 push `2026-07-06T10:51:37Z`，archived 为 `false`。
+- **语言：**Go 写的服务器和 `promtool` 命令行工具；网页界面是编进二进制的 React 应用（从源码构建还需要 Node.js/npm）。
+- **存储：**内嵌的本地 TSDB，带预写日志（WAL），按 2 小时一块压实；默认保留 15 天（`--storage.tsdb.retention.time`）。
+- **查询语言：**PromQL；记录规则和告警规则都是写在 YAML 规则文件里的 PromQL 表达式。
+- **接口：**按 Prometheus/OpenMetrics 文本格式拉取抓取；Remote Write（1.0 稳定规范和 2.0 规范）发送端，以及可选的接收端；可选的 OTLP 接收端；HTTP 查询 API。
+- **运行模式：**完整服务器，或者**agent 模式**（只抓取和 remote-write，不能在本地查询），适合边缘集群。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- **运行时：**一个静态二进制或 `prom/prometheus` 镜像；不需要外部数据库。需要本地 POSIX 文件系统（文档明确不支持 NFS，包括 AWS EFS），容量按保留期 × 写入速率估算。
+- **Alertmanager**（独立仓库、独立进程）负责投递告警；没有它，规则照样计算，但不会通知任何人。
+- **Exporter 与埋点：**代码里用客户端库，加上 node_exporter、blackbox_exporter、各种数据库 exporter，覆盖你改不了代码的东西。
+- **可选：**Grafana 做看板；remote-write 后端（Thanos、Mimir、VictoriaMetrics 或 SaaS）做长期或高可用存储；Kubernetes 上的 Prometheus Operator / kube-prometheus-stack（独立项目）。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+**单台服务器时低，随规模上升。**用一个配置文件跑一台 Prometheus 很容易，而且就算它和外界的网络断了也照常工作——这是刻意的设计。功夫在后面：容量规划（内存随活跃序列数增长，所以基数评审会变成例行工作）、保留期与磁盘的配比、告警高可用要跑两台一模一样的服务器（因为没有内置复制）、把抓取负载分片到多台服务器，以及在想要长期保留或全局视图时接一个 remote-write 后端。发版节奏是每 6 周一个小版本，另有给升级慢的团队准备的 LTS 线（v3.5）；从 2.x 到 3.0 有不向后兼容的改动（PromQL 范围选择器语义、UTF-8 指标名、移除的特性开关、新界面），跨大版本升级前先读迁移指南。
 
 ## 健康度与可持续性
 
-- **维护快照：** 截至 2026-07-06，GitHub 返回 `archived=false`，`pushed_at=2026-07-06T10:51:37Z`。
-- **采用快照：** 2026-07 约 64,970 个 GitHub stars；stars 只是有噪声的采用信号。
-- **许可证快照：** GitHub API 返回 `Apache-2.0`；许可证关键时必须检查仓库内许可证文件。
-- **Lindy 与治理：** 本次 intake 未完整复核。长期采用前，请继续检查组织归属、项目年龄、发布节奏和 bus factor。
-- **风险信号：** 本页是从 backlog 元数据生成的首版页面。
+- **维护（截至 2026-10-08）：**非常活跃——上个季度每周都有提交，2026-09-25 发布 v3.15.0，2026-10-02 发布 v3.13.4，按成文的 6 周小版本计划走，每个版本有指定的发版负责人。
+- **治理与背书：****CNCF 毕业**项目，维护者来自多家公司、规模很大（过去 12 个月 114 位活跃维护者，前三名占比约 45%）；没有哪一家厂商拥有它。
+- **年龄与 Lindy（2012-11 创建，约 13.9 年）：**最早的一批云原生项目之一，至今每隔几周就发版——是本类目里最强的 Lindy 先验。
+- **响应速度：**快——新 issue 首次响应中位数 24.3 小时。
+- **采用：**Kubernetes 和大多数云原生软件暴露指标用的就是它的格式；exporter 和客户端库生态极大；它也被当作库来引用（雷达的采用轴统计到上个月 742,640 次模块下载，外加 Homebrew 和 release 下载量）。
+- **风险信号：**Apache-2.0，没有改许可的历史。实际风险在规模而不在存续：单节点存储意味着你迟早要为长期或高可用指标再加一套系统。
 
 ## 存疑（未验证）
 
-- [未验证] 这是依据 GitHub 元数据和 2026-07-06 backlog 生成的首版 intake 页面；高风险选型前，请重新阅读上游 README、文档、许可证文件和 release notes。
-- [推断] 横向对比表先使用同分类已收录页面作为起点；后续语义复核应把泛化邻居替换成最接近的真实替代品。
+- [未验证] Star 数（约 66.4k）、版本号和日期取自 2026-10-08 的 GitHub API。
+- [未验证] v3.13.4 为什么在 v3.15.0 之后发布（一条仍受支持的旧版本线）没有核实；发版计划表里只把 v3.5 标为 LTS。
+- [未验证] “CNCF 毕业”来自项目广为人知的 CNCF 历史，这次同步没有去 CNCF 网站复核；README 只写了“a Cloud Native Computing Foundation project”。
+- [推断] 每条序列占多少内存、一台服务器在什么时候“不够用”，很大程度取决于抓取间隔、序列更替和查询负载；没有统一公布的上限。
+- [推断] 对比表里 VictoriaMetrics、Thanos、Mimir、InfluxDB 的特点基于它们的一般定位，没有为本页重新读它们的仓库。

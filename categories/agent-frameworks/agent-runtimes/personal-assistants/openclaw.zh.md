@@ -6,20 +6,20 @@ category: personal-assistants
 tags: [personal-ai, assistant, multi-channel, self-hosted]
 language: TypeScript
 license: MIT
-maturity: v0.x, active, 381k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: date-versioned releases (stable v2026.9.8, 2026-10-03; 2026.10.1 in beta), active, ~392k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: app
 upstream:
-  pushed_at: 2026-07-06T09:16:01Z
+  pushed_at: 2026-10-08T08:27:37Z
   default_branch: main
-  default_branch_sha: 40814a8599be67367994b6a022d34400345c5bb1
+  default_branch_sha: fc3e0973643225f56ac51c9bb8228d0d5df5c3a8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:32:53Z
+  computed_at: 2026-10-08T08:13:11Z
   overall: B
-  overall_score: 3.25
-  scored_axes: 4
+  overall_score: 3.2
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -36,21 +36,21 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: A
+      grade: B
       raw:
         registry: npmjs.org
-        canonical_package: "@openclaw/brave-plugin"
+        canonical_package: "@openclaw/codex"
         dependent_repos_count: 0
-        downloads_last_month: 10026677
+        downloads_last_month: 649552
         graph_tier: E
-        volume_tier: A
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 3342
-        homebrew_tier: A
-        release_downloads: 901542
-        release_assets: 331
-        release_tier: C
-        docker_pulls: 225897
+        volume_tier: B
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 2953
+        homebrew_tier: B
+        release_downloads: 1023671
+        release_assets: 400
+        release_tier: B
+        docker_pulls: 276223
         docker_image: openclaw/openclaw
         docker_tier: D
         signal_basis: homebrew+releases+docker
@@ -58,79 +58,111 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 302
+        repo_age_days: 318
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 486
-        top1_share: 0.555
+        top1_share: 0.56
         top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
     risk_license:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        spdx_id: MIT
+        permissiveness: permissive
+        relicense_36mo: false
+        content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
-    risk_license: { reason: license_unparsed }
 ---
 # OpenClaw
 
-一款在自有设备上运行的个人 AI 助手。它在你已使用的消息渠道上应答——包括 WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、IRC、Microsoft Teams、Matrix、Feishu、LINE、Mattermost、Nextcloud Talk、Nostr、Synology Chat、Tlon、Twitch、Zalo、WeChat、QQ 和 WebChat——并可在 macOS、iOS 和 Android 上说话、收听，以及渲染你控制的实时 Canvas。
+你的 AI 助手住在别人服务器上的一个浏览器标签页里：它没法在 WhatsApp 上回你，碰不到你 Mac 上的文件，你一换应用上下文就断了。OpenClaw 把助手作为常驻后台服务跑在你自己的电脑上，接进你本来就在用的聊天软件——Discord、iMessage、Slack、Teams、Telegram、WhatsApp 等 20 多个渠道——手机和桌面上还有配套 App。
 
-![OpenClaw — health radar](../../../../assets/health/openclaw.zh.svg)
+![OpenClaw — 健康度雷达](../../../../assets/health/openclaw.zh.svg)
 
 ## 何时使用
 
-你是一位注重隐私的专业人士，想要一个能跟随你穿梭于所有设备与消息应用之间的单一 AI 助手。你试过 Claude 或 ChatGPT 这类纯云服务，但你不愿把对话交给别人的服务器，也希望在 WhatsApp、Telegram、Slack、Discord、iMessage 和 WeChat 等渠道上无需切换不同机器人即可被助手响应。你选择 OpenClaw 而不是 Hermes Agent，因为 OpenClaw 开箱即用地覆盖多渠道——Hermes 是学习循环框架，不是消息原生助手。你选择它而不是 Claude Code 或 OpenCode，因为后者是编程专用工具，不是通用对话助手。你在自己的硬件上安装 OpenClaw，连接偏好的 LLM 提供商，它就成了一个常驻的个人智能体，在你已用的渠道上随时应答。
+你想要一个能像给朋友发消息那样使唤的个人助手：通勤时在手机 WhatsApp 上找它，上班时在 Slack 上找它，回家后在 iMessage 上找它——而且必须是**同一个**助手，记忆相同，还能读写你桌下那台 Mac Mini 上的文件、调用工具。托管助手把对话存在它们的服务器上，只活在自家 App 里；自己给每个聊天平台接机器人，就得一个渠道写一套集成。你选 OpenClaw，是因为你机器上的一个 Gateway 进程把这些全包了：它连接各个渠道，把会话和 Markdown 记忆存在你的硬盘上，对接你配置的任意托管或本地模型。
+
+和 [Hermes Agent](hermes-agent.zh.md) 比，当渠道覆盖面、原生配套 App（macOS/iOS/Android 上的语音、摄像头、屏幕）和基金会治理比“智能体自己写技能”更重要时选 OpenClaw；和 [OpenCode](../../coding-agents/terminal-agents/opencode.zh.md) 等编码智能体比，它们是为在代码仓库里干活而造的，不是为了让你从手机上找到它。同一个 Gateway 也能扩展到一个互相信任的小团队：配上基于身份的登录和具名的操作员角色，同事可以在白名单频道里 @ 一个共享机器人。
+
+## 怎么用起来
+
+OpenClaw 是跑在 Node.js 上的 TypeScript 应用；安装脚本会准备合适版本的 Node，然后启动引导向导。**你**要做三件事：走完引导（它会确认你的模型 key 能用、创建一个工作区文件夹、把 Gateway 装成后台服务），接上你想用的聊天渠道，批准谁可以跟它说话——陌生发送者会被挡在“配对”环节，你在命令行里批准一个一次性验证码才放行。**它**负责其余部分：Gateway——常驻的本地控制中枢——收到每条消息，分派到对应会话，调用模型及其工具、技能和插件，再在同一个聊天里回复；长期事实和每日笔记以普通 Markdown 文件存在工作区里，之后的对话会检索它们。默认情况下工具直接在宿主机上执行，相当于把你的键盘交给助手，除非你配置了沙箱——所以安全设置是安装的一部分，不是事后补的。
+
+![openclaw — 主干用户故事](../../../../assets/flow/openclaw.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/openclaw.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在一台常开的电脑上运行安装脚本 — `curl -fsSL https://openclaw.ai/install.sh | bash`
+2. **你**：走引导：确认模型可用、建工作区、装好 Gateway 后台服务 — `openclaw onboard --install-daemon` — 组件：`Gateway 网关`
+3. **你**：接上一个聊天渠道，批准谁可以给它发消息 — `openclaw pairing approve <channel> <code>`
+4. **OpenClaw**：Gateway 收到每条消息，分派到对应会话 — 组件：`Gateway 网关`
+5. **OpenClaw**：调用模型和工具、技能把事办了，在同一个聊天里回复
+6. **OpenClaw**：把要点写进 Markdown 记忆文件，以后聊天时再检索出来 — 组件：`工作区记忆文件`
+
+**价值**：一个跑在你自己硬件上的助手，在你本来就用的聊天软件里回你
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **多用户或团队场景**——OpenClaw 设计为单用户个人助手，没有 RBAC、团队工作区或共享管理后台。如需团队协作，请改用 AutoGPT 或 Hermes Agent，因为这些平台支持多用户编排。
-- **零配置 SaaS 偏好**——自托管需要管理 Node.js 运行时、LLM API 凭证和每个渠道的配置，没有托管云选项。如果你希望无需安装即可使用，请改用 Claude 或 ChatGPT，因为它们是云原生服务，零配置负担。
-- **企业合规需求**——无审计日志、企业 SSO 或正式安全认证，这是个人工具，不是受治理的企业平台。如需企业治理，请改用 Dify 或 n8n，因为这些平台提供 RBAC、审计轨迹和 SSO。
-- **编程专用智能体工作**——OpenClaw 是通用对话助手。如需代码生成与重构等软件工程任务，请改用 OpenCode 或 Claude Code，因为它们是专为编码设计的，具备文件编辑与终端执行能力。
-- **你需要从经验中自我改进的学习循环**——OpenClaw 不会创建技能或以自我改进的方式跨会话持久化知识。如果你希望智能体越用越聪明，请改用 Hermes Agent，因为 Hermes 内置了从对话中合成技能的学习循环。
+- **互不信任的用户共用一套部署。** 文档明说一个 Gateway 就是一个信任域：谁能给带工具的智能体发消息，谁就共享它的工具权限，角色只是协作护栏，不是隔离。多个团队或租户需要各自的密钥和权限时，改用 [OpenClaw Enterprise](../../kubernetes-agents/openclaw-enterprise.zh.md)（在 Kubernetes 上为每个租户跑一个隔离的智能体）。
+- **你需要 SSO、审计日志或正式合规。** 团队模式有操作员角色，身份来自 Tailscale、可信代理或 GitHub，但没有审计日志，也没有 SSO 产品。改用 [Dify](../../workflow-builders/dify.zh.md) 或 [OpenClaw Enterprise](../../kubernetes-agents/openclaw-enterprise.zh.md)，因为它们把智能体放在受管的访问控制之后。
+- **你想零配置。** 没有托管云版本；你需要一台常开的主机（VPS 或办公室里的 Mac）和每个渠道的凭证。嫌麻烦的话，ChatGPT 或 Claude 这类托管应用（非仓库）更省事，代价是数据留在它们的服务器上。
+- **你没精力做安全加固。** 入站消息是不可信输入，不配沙箱时工具直接在宿主机上跑；不读安全、暴露和沙箱这几份指南就把 Gateway 暴露出去是有风险的。如果你只是要一个本机上的编码助手，改用 [OpenCode](../../coding-agents/terminal-agents/opencode.zh.md)，它不会被公开聊天渠道访问到。
+- **你的活主要是在代码仓库里写代码。** OpenClaw 是通用助手；[OpenCode](../../coding-agents/terminal-agents/opencode.zh.md) 这类编码智能体专门为改文件、看 diff、跑测试循环而造。
+- **你希望智能体自己编写、整理操作步骤。** OpenClaw 有 Markdown 记忆，但 [Hermes Agent](hermes-agent.zh.md) 是围绕“智能体自己写技能、后台整理器定期清理”构建的；如果你要的正是这个循环，选 Hermes。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Hermes Agent](hermes-agent.zh.md) | ✅ | Nous Research 出品的带学习循环的自我改进智能体。 | Hermes 侧重技能进化与记忆；OpenClaw 侧重多渠道无处不在与对话触达。 |
-| [AutoGPT](../../workflow-builders/autogpt.zh.md) | ✅ | 复杂的工作流自动化平台，带部署 UI。 | AutoGPT 面向自主多步任务执行；OpenClaw 是轻量个人聊天助手。 |
-| [OpenCode](../../coding-agents/terminal-agents/opencode.zh.md) | ✅ | 模型无关的终端编码智能体。 | OpenCode 用于 shell 中的软件工程；OpenClaw 是通用消息聊天机器人。 |
-| [LangChain](../../workflow-builders/langchain.zh.md) | ✅ | 构建自定义智能体管线的底层框架。 | LangChain 是供你构建的库；OpenClaw 是开箱即用的个人助手应用。 |
-| Claude / ChatGPT 原生应用 | 未收录 | 闭源、纯云端的助手。 | 专有且需联网；OpenClaw 可自托管、MIT 许可、不绑定渠道。 |
+| [Hermes Agent](hermes-agent.zh.md) | ✅ | 想要一个在服务器上自己写技能、自己整理技能的智能体，选 Hermes；更看重最广的渠道覆盖、配套 App 和基金会治理，选 OpenClaw。 | Hermes 终端后端更多，还有智能体自写的技能；OpenClaw 渠道更多，有原生 App、团队模式和签名发布流程，而且 Hermes 能导入 OpenClaw 的配置。 |
+| [OpenClaw Enterprise](../../kubernetes-agents/openclaw-enterprise.zh.md) | ✅ | 一个组织要为不同团队跑很多智能体、彼此不能共享密钥和权限，选 OpenClaw Enterprise；一个人或一个互信的小团队，选 OpenClaw。 | Enterprise 多了基于 PostgreSQL 的租户、密钥管理和可审计的 Kubernetes 发布；普通 OpenClaw 是一台机器上的一个进程，要运维的东西少得多。 |
+| [AutoGPT](../../workflow-builders/autogpt.zh.md) | ✅ | 想用积木式搭建器构建并部署自主工作流智能体，选 AutoGPT；想要一个能从聊天软件里找到的对话助手，选 OpenClaw。 | AutoGPT 面向自动化多步骤业务任务；OpenClaw 面向跨设备、跨渠道的个人触达。 |
+| [OpenCode](../../coding-agents/terminal-agents/opencode.zh.md) | ✅ | 在代码仓库里做软件工程选 OpenCode；要一个常驻、能从手机上找到的通用助手选 OpenClaw。 | OpenCode 为终端里改代码调优；OpenClaw 拿这份深度换来渠道、记忆和设备操作。 |
+| ChatGPT / Claude 应用 | 非仓库 | 想零配置、接受数据由厂商保管，选托管应用；看重自托管和渠道触达，选 OpenClaw。 | 闭源托管产品，没有安装负担；OpenClaw 是 MIT 许可、跑在你的硬件上、支持多家模型，但运维和安全要你自己扛。 |
 
 ## 技术栈
 
-- **TypeScript**——主要实现语言
-- **Node.js**——网关与控制平面运行时
-- **跨平台**——支持 macOS、iOS、Android 及服务器操作系统
+- **TypeScript + Node.js**（`>=24.16 <25` 或 `>=26.1`，推荐 Node 26）；仓库是 pnpm workspace。
+- **Gateway**——负责会话、工具、事件和渠道连接的本地控制中枢，配有网页版 Control UI、CLI 和 TUI。
+- **配套 App / 节点**：macOS、iOS、Android、Windows 和 Linux（语音、Canvas、摄像头、屏幕、设备本地操作）。
+- **扩展：** 工具、技能和插件（插件 SDK，通过 ClawHub 分享）；记忆是 Markdown 文件，用语义加关键词的混合检索。
 
 ## 依赖
 
-- LLM 提供商（OpenAI API、Anthropic API 或本地模型端点）
-- 网关所需的 Node.js 运行时
-- 托管助手的设备或服务器
+- 一台常开的主机（笔记本、办公室的 Mac、小 VPS），系统为 macOS、Linux 或 Windows；需要时安装脚本会自带 Node.js。文档还给出了 Docker 和 Nix 部署方式。
+- 至少一个托管或本地模型来源及其凭证。
+- 每个接入渠道的凭证或桥接（有些渠道，比如 iMessage，依赖特定平台的配置）。
+- 可选：团队身份用 Tailscale Serve、可信代理（如 Cloudflare Access）或 GitHub 登录；沙箱需要容器运行时。
 
 ## 运维难度
 
-**低**。网关是单一控制平面；对习惯运行 Node.js 应用的用户来说安装简单。主要持续负担是配置消息渠道和轮换 LLM 凭证。
+**中等。** 安装和引导是向导式的，`openclaw gateway status` / `openclaw dashboard` 能看它是否在跑。持续的工作在安全和维护上：批准配对，决定哪些工具在宿主机上跑、哪些进沙箱，除非照着暴露手册操作，否则别把 Gateway 放到公网（`openclaw security audit` 能帮忙检查），维护各渠道凭证，并跟上分稳定版和测试版两条通道的快速发布节奏。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
-- **响应速度**：无法计算——unknown。
-- **采用广度**：Grade A——npmjs.org 上月下载量 10,026,677（包名：@openclaw/brave-plugin）。
-- **长青度**：Grade C——仓库已创建 302 天。
-- **治理集中度**：Grade B——前三贡献者占比 74.6%（过去 12 个月内 486 位活跃维护者）。
-- **许可风险**：`?`（license_unparsed）——2026-07-03 已验证：GitHub 返回 `NOASSERTION`，但 LICENSE 正文是标准 MIT（`Permission is hereby granted...` 完整段落）；识别失败是因为末尾附加了第三方声明指针，且无重新授权历史。
+
+- **维护（2026-10-08）：** 极其活跃——每天都有提交，按日期编号的稳定版一周好几个（v2026.9.8 发布于 2026-10-03），另有测试通道（2026.10.1 的 beta）。
+- **治理：** 由 OpenClaw 基金会开发，这是一家独立的 501(c)(3) 非营利机构，雇佣核心团队并签署发布；捐助方包括 OpenAI、Amazon、Red Hat 等，都不拥有项目。治理集中度 B：创始人 Peter Steinberger 仍贡献了约 56% 的提交（过去 12 个月 486 位活跃维护者中，前三贡献者占比 74.6%）。
+- **年龄 / Lindy：** 约 10 个半月（318 天，2025-11 创建），长青度 C——基金会架构比仓库年龄更能说明它能活多久。
+- **采用：** 约 39.2 万 star、8.2 万 fork。雷达的采用广度是 B，因为评分器取的是 `@openclaw/codex` 插件包（npm 月下载 649,552）；主包 `openclaw` 在截至 2026-10-04 的一个月里下载约 1560 万次，真实采用比这个等级高。
+- **许可风险：** MIT（版权归 OpenClaw 基金会），这次已被正确识别为 A；收编的第三方代码列在 `THIRD_PARTY_NOTICES.md` 里。
+- **总评：** 雷达总评 B；响应速度未评分（`?`）。
 
 ## 存疑（未验证）
 
-- [已验证 → 可移除] GitHub 元数据中的 `NOASSERTION` 许可与 README 上的 MIT badge 一致。LICENSE 文件为标准 MIT，识别失败因尾部附加第三方声明指针。商用安全，但需同步查看 `THIRD_PARTY_NOTICES.md` 中收编代码的各自许可。
-- [推断] 该仓库 2025 年末创建却已有 381k star，star 数可能受炒作推动，而非有机生产级采用。
-- [未验证] “20 余条消息渠道”列表中包含 WeChat、QQ 等平台，其集成 API 可能不稳定或为非官方方案。
-- [推断] 健康雷达显示 volume tier 为 A 而 graph tier 为 E，可能表明大部分 npm 下载为直接安装而非传递依赖，暗示个人探索而非嵌入生产使用。
+- [推断] 一个不到一年的仓库有近 39.2 万 star，推动它的既有生产使用，也有同等分量的热度。
+- [未验证] 20 多个渠道里有些（如 WeChat、QQ、iMessage）依赖非官方或特定平台的桥接，稳定性没有测试。
+- [未验证] OpenClaw 的智能体会不会像 Hermes 那样自己创建或改写技能，从读到的文档里没能确认；记忆文档只描述了 Markdown 记忆、记忆检索和“做梦”式整理。
+- [推断] 基金会独立于最大捐助方（OpenAI）是项目自己的说法；没有查看外部治理文件。
+- [未验证] 团队模式的细节（角色、身份来源、没有审计日志）来自 2026-10-08 读到的文档页面，可能很快变化。

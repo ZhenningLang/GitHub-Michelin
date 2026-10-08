@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Spec Kit + your agent do", "zh": "Spec Kit 与智能体做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and scaffold the project for your agent", "zh": "装好 CLI，为你的智能体初始化项目", "code": "specify init my-project --integration copilot", "component": {"en": "specify CLI", "zh": "specify 命令行"}},
+    {"lane": "them", "en": "Writes the spec/plan/tasks templates, scripts and /speckit-* skills into the project", "zh": "把 spec、方案、任务模板、脚本和 /speckit-* 技能写进项目"},
+    {"lane": "you", "en": "In the agent chat, describe what to build and why", "zh": "在智能体对话里说清要做什么、为什么", "code": "/speckit-specify"},
+    {"lane": "them", "en": "Agent fills the template into specs/NNN-feature/spec.md", "zh": "智能体按模板写出 specs/NNN-功能/spec.md", "component": {"en": "your coding agent", "zh": "你的编码智能体"}},
+    {"lane": "you", "en": "Review the spec, then give the tech stack", "zh": "审过 spec，再给出技术栈", "code": "/speckit-plan · /speckit-tasks"},
+    {"lane": "them", "en": "Writes a technical plan and an ordered task list", "zh": "写出技术方案和有顺序的任务清单"},
+    {"lane": "you", "en": "Start the build and the spec check", "zh": "启动实现和对照检查", "code": "/speckit-implement · /speckit-converge"},
+    {"lane": "them", "en": "Builds task by task; converge adds unbuilt work as tasks until Converged", "zh": "逐个任务实现；converge 把没做完的追加成任务，直到 Converged"}
+  ],
+  "value": {"en": "Every feature leaves a spec, plan and task list a reviewer can check the code against", "zh": "每个功能都留下 spec、方案和任务清单，评审能拿它们对照代码"},
+  "sources": [
+    "https://github.com/github/spec-kit#get-started (uv tool install specify-cli; specify init my-project --integration copilot; /speckit-* are agent skills)",
+    "https://github.com/github/spec-kit#spec-driven-development (/speckit-constitution, -specify, -plan, -tasks, -implement, -converge; repeat implement → converge until Converged)",
+    "https://github.com/github/spec-kit/blob/main/templates/commands/specify.md (spec written to specs/<NNN-name>/spec.md from spec-template)",
+    "https://github.com/github/spec-kit/blob/main/templates/commands/converge.md (assess code vs spec/plan/tasks, append unbuilt work as new tasks)"
+  ]
+}

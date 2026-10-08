@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Scylla does",
+    "zh": "Scylla 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run its Docker image once, exposing port 8899 (API and UI) and 8081 (forward proxy)",
+      "zh": "用 Docker 镜像起一次，开放 8899 和 8081 两个端口",
+      "code": "wildcat/scylla:latest"
+    },
+    {
+      "lane": "them",
+      "en": "Keeps crawling public proxy sources in the background and saves candidates to a local database",
+      "zh": "在后台持续爬公开代理来源，候选存进本地数据库",
+      "component": {
+        "en": "crawler + scheduler",
+        "zh": "爬虫 + 调度器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Re-validates each proxy and records latency, stability, anonymity and HTTPS support",
+      "zh": "反复校验每个代理，记下延迟、稳定性、匿名性和 HTTPS 支持",
+      "component": {
+        "en": "validator",
+        "zh": "校验器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Ask the JSON API for proxies, filtered by HTTPS, anonymity or country",
+      "zh": "向 JSON API 要代理，按 HTTPS、匿名性或国家过滤",
+      "code": "http://localhost:8899/api/v1/proxies"
+    },
+    {
+      "lane": "them",
+      "en": "Returns only proxies currently marked valid, each with its latency and stability score",
+      "zh": "只返回当前判定有效的代理，附带延迟和稳定性分数"
+    },
+    {
+      "lane": "you",
+      "en": "Plug the returned ip:port into your requests or Scrapy client",
+      "zh": "把返回的 ip:port 填进 requests 或 Scrapy 客户端"
+    }
+  ],
+  "value": {
+    "en": "A standing, scored free-proxy pool that many scraping jobs can query, instead of each job harvesting its own",
+    "zh": "一个常驻、带打分的免费代理池，多个爬虫任务都来查它，不用各自去收割"
+  },
+  "sources": [
+    "https://github.com/MikeChongCan/scylla#install-with-docker-highly-recommended (docker run command, ports 8899 and 8081)",
+    "https://github.com/MikeChongCan/scylla#json-api (/api/v1/proxies with anonymous, https, countries parameters; sample result fields latency, stability, is_valid)",
+    "https://github.com/MikeChongCan/scylla/tree/main/scylla (scheduler.py, validator.py, database.py: peewee SqliteDatabase)"
+  ]
+}

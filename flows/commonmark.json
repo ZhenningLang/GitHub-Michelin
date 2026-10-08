@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them":  {"en": "commonmark.js does", "zh": "commonmark.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package (or load the browser bundle)", "zh": "安装 npm 包（或在浏览器加载打包文件）", "code": "npm install commonmark"},
+    {"lane": "you", "en": "Create a parser and hand it the Markdown string", "zh": "创建解析器，把 Markdown 字符串交给它", "code": "reader.parse(\"Hello *world*\")"},
+    {"lane": "them", "en": "Builds blocks first, then inline elements, into a node tree per the spec", "zh": "按规范先建块、再解析行内元素，生成节点树", "component": {"en": "Parser", "zh": "解析器 Parser"}},
+    {"lane": "you", "en": "Walk the tree and rewrite the nodes you care about", "zh": "遍历这棵树，改写你关心的节点", "code": "parsed.walker()"},
+    {"lane": "you", "en": "Render with a renderer, turning on safe mode for untrusted input", "zh": "用渲染器输出，不受信任的输入要开安全模式", "code": "new commonmark.HtmlRenderer({safe: true})"},
+    {"lane": "them", "en": "Emits spec-exact HTML, replacing raw HTML and unsafe URLs when safe is on", "zh": "输出严格合规的 HTML，开安全模式时替换原始 HTML 和危险链接", "component": {"en": "HtmlRenderer", "zh": "渲染器 HtmlRenderer"}}
+  ],
+  "value": {"en": "Markdown interpreted exactly as the CommonMark spec says, with a tree you can edit before it becomes HTML", "zh": "严格按 CommonMark 规范理解 Markdown，并在变成 HTML 之前给你一棵可改的树"},
+  "sources": [
+    "README.md @ 2026-10-08 'Installing': 'npm install commonmark', dist/ browser bundles",
+    "README.md @ 2026-10-08 'Usage': 'var reader = new commonmark.Parser();', 'reader.parse(\"Hello *world*\")', 'writer.render(parsed)'; HtmlRenderer option 'safe' replaces raw HTML and javascript:/vbscript:/file:/data: URLs; 'parsed.walker()' NodeWalker transform examples",
+    "https://spec.commonmark.org/0.31.2/ Appendix 'A parsing strategy': 'Parsing has two phases' (block structure, then inlines)"
+  ]
+}

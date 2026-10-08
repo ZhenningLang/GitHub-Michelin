@@ -7,17 +7,17 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **MoviePy** | A Python library for programmatic video editing — cutting, concatenating, compositing, text overlays, and effects — that builds FFmpeg commands under the hood but presents a higher-level, friendlier API. | B (6/6) | [→](moviepy.md) |
-| **MLT** | A multimedia framework for building non-linear video editors (NLEs) — timeline tracks, clips, transitions, filters, and compositing, with the actual codec work delegated to FFmpeg/libav underneath. Not a standalone editor; it's the engine that powers Shotcut and Kdenlive. | B (6/6) | [→](mlt.md) |
+| **MoviePy** | Use it when a batch of clips must be cut, captioned and composited from a script and FFmpeg filter strings have become unreadable — but maintenance is coasting: no release since 2025-05 and the README asks for maintainers. | B (6/6) | [→](moviepy.md) |
+| **MLT** | Use it when you are building a video editor or an automated pipeline that needs a frame-accurate timeline with tracks, filters and transitions, rendered through FFmpeg — but it is a framework, not an app; to just edit video, use Shotcut or Kdenlive. | B (6/6) | [→](mlt.md) |
 | **Auto-Editor** | A CLI first-pass editor that labels every moment by loudness (or motion), cuts the silent stretches with a margin, and can export an importable timeline for Premiere/Resolve/Final Cut/ShotCut/Kdenlive instead of a rendered file. | A (6/6) | [→](auto-editor.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [MoviePy](moviepy.md) | ✅ | B (6/6) | Pick it when the edit is a batch job you express in Python and you know the desired timeline; pick [Auto-Editor](auto-editor.md) when the timeline is the unknown (where are the silences?) rather than the input. |
+| [MoviePy](moviepy.md) | ✅ | B (6/6) | Edits written as plain Python objects with every frame a NumPy array, in exchange for always re-encoding, throughput below raw FFmpeg, and slow responses from a very small maintainer group. |
 | [Auto-Editor](auto-editor.md) | ✅ | A (6/6) | Pick it to derive the cut from the media (loudness or motion) and hand the result to an NLE as a timeline; pick [MoviePy](moviepy.md) when you need to execute a cut you already decided inside Python. |
-| [MLT](mlt.md) | ✅ | B (6/6) | Pick it when you are *building* an editor and need a timeline model with transitions and filters; pick [MoviePy](moviepy.md) when you only need to render a fixed composition, because MLT is a framework, not a finished API. |
+| [MLT](mlt.md) | ✅ | B (6/6) | The timeline engine behind Shotcut and Kdenlive, with melt, XML and C/C++ entry points; you pay with no Python-first API, editorial rather than live-pipeline design, and one lead holding about 60% of commits. |
 | [Concat](../../video-editing/concat.md) | ✅ | C (6/6) | Pick Concat when a human should cut in a GUI that happens to be scriptable; pick this leaf when the edit must run headless in a pipeline, because a desktop editor cannot be scheduled as a batch job. |
 
 ## What belongs here

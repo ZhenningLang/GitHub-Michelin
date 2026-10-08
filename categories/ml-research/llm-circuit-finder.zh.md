@@ -6,8 +6,8 @@ category: ml-research
 tags: [layer-duplication, circuit-finding, gguf, llama-cpp, interpretability, no-training, eval-harness]
 language: Python
 license: MIT
-maturity: research demo, no tagged release, last pushed 2026-03 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: research demo, no tagged release, 18 commits all 2026-03-18..20, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-03-20T01:51:23Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:14:42Z
+  computed_at: 2026-10-08T08:22:57Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 192
+        last_commit_age_days: 202
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 193
-        last_commit_age_days: 192
+        repo_age_days: 203
+        last_commit_age_days: 202
         cohort: tool
     governance:
       grade: D
@@ -77,6 +77,28 @@ health:
 ## 何时使用
 
 你是个手头有两张消费级显卡、本地存着某个开源模型量化 GGUF（Devstral、Qwen2.5-Coder、Phi-4，手边有啥都行）的业余爱好者或独立研究者。你读了 David Ng 关于「复制层让模型多想一遍」的 RYS 文章，想在*你自己的*模型上真刀真枪试一下，又不想去租 H200、也不想跑微调。难点在于「到底复制哪几层」没有通用答案——正确的层块依模型而定，而且边界很尖锐。llm-circuit-finder 正是为这个循环而生：`sweep.py` 做 GGUF 手术、物理复制某段层范围，在改过的模型上拉起 `llama-server`，跑三套探针（数学、EQ、BBH 衍生的推理），与基线打分对比，删掉临时 GGUF，再换下一个配置——先用大块粗扫找到热区，再用 stride-1 钉死精确边界。一旦找到电路，`layer_path.py` 让你把显式执行路径（`0..9,7,8,9,10..63`）烤进一个新的 GGUF，`compare_eval.py` 在标准基准上复核。它是个边跑边学的研究 demo，不是产品：产物（改过的 GGUF、eval JSON）归你，整条流水线也由你掌控。
+
+## 怎么用起来
+
+它用的技术叫 RYS 层复制：transformer 模型是一摞层，每层都在加工隐藏状态（模型对这段文本的内部表示，边算边更新），让这个状态把某一段层再走一遍，可能改变模型推理的好坏。这个工具负责的是*搜索*。你把自己的 GGUF（llama.cpp 用的单文件模型格式）和 `llama-server` 交给 `sweep.py`；它对每个候选层块写出一份把这几层物理复制一遍的临时模型，加载起来，跑三组小探针（数学、情商、基于 BBH 的推理），和原模型比分，再删掉临时文件——先用大块找“热区”，再按步长 1 卡准边界。好比一锅汤，每次只给一种调料多加一遍，尝一口再决定。看扫描结果、判断哪个层块是真收益，是你的事；之后用 `layer_path.py` 按显式执行路径写出最终 GGUF，再用 `lm_eval` 加 `compare_eval.py` 在标准基准上验证，也要你自己额外去跑。
+
+![llm-circuit-finder — 主干用户故事](../../assets/flow/llm-circuit-finder.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/llm-circuit-finder.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：按你的显卡编好 llama.cpp，备好 GGUF 模型，装 Python 依赖 — `pip install gguf requests tqdm`
+2. **你**：启动扫描：给出模型、llama-server、块大小和要扫的层范围 — `python sweep.py --model /path/to/model.gguf`
+3. **llm-circuit-finder**：对每个候选层块，写出一个把这几层物理复制一遍的临时 GGUF
+4. **llm-circuit-finder**：用 llama-server 加载，跑数学/情商/推理探针，与基线比分，然后删掉
+5. **你**：挑出得分最好的层块，写成一条显式的层执行路径 — `python layer_path.py model.gguf improved.gguf -p "0..14,12,13,14,15..39"`
+6. **llm-circuit-finder**：写出新的 GGUF，前向时把这块层跑两遍，可直接给 llama-server 用
+
+**价值**：不训练就找出哪几层“多想一遍”能改变你本地模型的推理表现，并拿到可直接测的 GGUF
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -118,15 +140,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——too_young。
-- **维护（截至 2026-06）：** 最后一次 push 在 2026-03（约 2026-03-20），无打 tag 的 release，也看不到测试套件或 CI。[推断] 最近虽有动作，但形态像一次性的研究投放，而非受维护的工具——没有节奏可追踪。
-- **治理 / bus factor：** 这是挂在个人账号下的**单作者**仓库，仅约 239 star——bus factor 极低、无社区流程。作者一停它就停；你应预期自己读代码、改脚本，而不是提 issue 等回应。
+- **维护（截至 2026-10-08）：** 全部 18 个提交都落在 2026-03-18 至 20 日，此后再无推送（约 6.5 个月），无打 tag 的 release，也看不到测试套件或 CI。[推断] 形态像一次性的研究投放，而非受维护的工具——没有节奏可追踪。
+- **治理 / bus factor：** 这是挂在个人账号下的**单作者**仓库，仅约 240 star——bus factor 极低、无社区流程。作者一停它就停；你应预期自己读代码、改脚本，而不是提 issue 等回应。
 - **年龄与 Lindy 判定（创建于 2026-03，约 0 年）：** 全新且体量很小。[推断] **Lindy 上未经证明**——既不老也未被广泛采用；它的可信度建立在技术本身（RYS 层复制）和作者自带的 eval 上，而非存活或使用量。把它当作边跑边学的 demo。
-- **风险标记：** README 称 MIT，但截至 2026-06 GitHub API 未检测到 license 文件——这是依赖前需先解决的真实许可歧义。结果是方向性的（小探针套件、`--limit` 截断的运行），且头条收益在部分指标上净为负，所以别把它读成一次已验证的能力提升。[未验证]
+- **风险标记：** README 称 MIT，但仓库里没有 LICENSE 文件，GitHub API 也检测不到许可证（2026-10-08 复核）——这是依赖前需先解决的真实许可歧义。结果是方向性的（小探针套件、`--limit` 截断的运行），且头条收益在部分指标上净为负，所以别把它读成一次已验证的能力提升。[未验证]
 
 ## 存疑（未验证）
 
-- [未验证] README 里写着 license 为「MIT」，但 GitHub API 在 2026-06 报告仓库未检测到 license 文件（无 SPDX 匹配）——依赖前请核对仓库里是否真有 LICENSE 文件。
-- [未验证] 截至 2026-06，star 约 239、最后一次 push 为 2026-03-20;GitHub star 不可靠且与日期强相关——仅作参考。
+- [未验证] README 里写着 license 为「MIT」，但 GitHub API 报告仓库未检测到 license（无 SPDX 匹配），文件树里也没有 LICENSE 文件（2026-10-08 复核）——唯一的授权依据是 README 里一个词的 `## License` 小节。
+- [未验证] 截至 2026-10-08，star 约 242、最后一次提交为 2026-03-20；GitHub star 不可靠且与日期强相关——仅作参考。
 - [未验证] 头条结果（如 logical deduction 0.22→0.76、Qwen2.5-Coder-32B 推理 +23%、Devstral 全指标平均 0.7610→0.7488）是作者本人在特定量化模型上、用受限样本量跑出的探针/eval 数字；本页未做独立复现。
 - [未验证] README 摘要写的是「Qwen2.5-32B」，而 Results 小节用的是「Qwen2.5-Coder-32B」且给出了不同的复制层序号（7-9 对摘要里的「3 specific layers」）；每个头条数字对应的确切模型/层数应从 results 文件夹读取，而非摘要。
 - [推断] 文件树里看不到打 tag 的 release、测试套件或 CI，所以「maturity: research demo」这一定性是从仓库结构（独立脚本 + 一个 results/ 文件夹）推断的，并非项目声明的状态。

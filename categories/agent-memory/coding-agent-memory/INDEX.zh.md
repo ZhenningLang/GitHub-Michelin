@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | **Claude Subconscious** | 当你想让一个后台 Letta agent 通过 hook 给 Claude Code 加上跨会话记忆时使用（仅 demo，非生产）。 | C（5/6） | [→](claude-subconscious.zh.md) |
 | **claude-mem** | 当你的编码 agent 跨会话丢失上下文、你想要本地 hook/MCP 捕获并压缩后再注入的记忆时用它（star 数存疑）。 | B（6/6） | [→](claude-mem.zh.md) |
-| **ByteRover CLI** | 当你想要一款可移植的、带 git 式版本控制和云同步的结构化编码 agent 记忆层时用它——但它极其年轻（2025-06 创建），且许可情况模糊。 | D（6/6） | [→](byterover.zh.md) |
+| **ByteRover CLI** | 只把它当设计参考，或在迁出 `brv` 时看它——但仓库已于 2026 年归档，已知的卡死缺陷不会再修，许可是 Elastic 2.0 而非 OSI；要仍在维护的编码 agent 记忆，改用 Engram 或 claude-mem。 | D（6/6） | [→](byterover.zh.md) |
 | **OpenViking** | 当多个编码 agent 或一个团队需要共用同一份既装文档又装长期记忆的存储、且你能跑一个服务端时用它——但主仓是 AGPL-3.0，仓库自标 alpha。 | B（6/6） | [→](openviking.zh.md) |
 | **Beacon** | 当你各家的 agent 经验互相隔绝、想要一份覆盖所有编码会话的本地轨迹加人工把关的经验沉淀时用它。 | B（6/6） | [→](agent-beacon.zh.md) |
 | **Engram** | 当你同时用好几个编码 agent、想让它们共用一份由 agent 自己通过 MCP 写入和检索的本地记忆时用它——一个 Go 程序加一个 SQLite 文件，关键词搜索，不做后台采集。 | B（5/6） | [→](engram.zh.md) |
@@ -24,7 +24,7 @@
 | --- | --- | --- | --- |
 | [Claude Subconscious](claude-subconscious.zh.md) | ✅ | C（5/6） | 后台 Letta agent 通过 hook 向 Claude Code 低语记忆；探索性 demo，不用于生产。 |
 | [claude-mem](claude-mem.zh.md) | ✅ | B（6/6） | 接进编码 agent 会话生命周期的 hook/MCP 记忆（非与模型无关的应用内记忆 API）；所报 star 数存疑。 |
-| [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 面向编码 agent 的可移植结构化记忆，带 git 式版本控制和云同步；极其年轻（2025-06 创建），许可模糊（NOASSERTION 与 Elastic 2.0）。 |
+| [ByteRover CLI](byterover.zh.md) | ✅ | D（6/6） | 换来用 git 管版本、可评审、任何 agent 都能查的知识树；代价是代码已归档、只是源码可见，要用就得自己 fork 自己养。 |
 | [OpenViking](openviking.zh.md) | ✅ | B（6/6） | 自托管上下文数据库，把文档 RAG 与会话记忆统一在一个 `viking://` 目录树下并做账号级隔离；代价是一个服务端、两个模型依赖，以及 AGPL-3.0。 |
 | [Beacon](agent-beacon.zh.md) | ✅ | B（6/6） | 跨工具会话采集加人工审核的经验沉淀；仓库年轻、厂商驱动、带托管商业层。 |
 | [Engram](engram.zh.md) | ✅ | B（5/6） | 不挑 agent 的 MCP 记忆，一个 Go 程序加 SQLite FTS5；没有额外运行时和 LLM 账单，但召回取决于 agent 肯不肯存，且项目年轻、发版极其频繁。 |

@@ -7,7 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **autoresearch** | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. | B (4/6) | [→](autoresearch.md) |
+| **autoresearch** | Use it when you have one NVIDIA GPU and want your own coding agent to edit train.py overnight in fixed 5-minute runs, keeping only changes that lower validation bits-per-byte — but it ships no agent runner, and it is an untagged demo idle since 2026-03. | B (4/6) | [→](autoresearch.md) |
 | **The AI Scientist** | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. | D (4/6) | [→](ai-scientist.md) |
 | **Agent Laboratory** | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. | C (3/6) | [→](agent-laboratory.md) |
 | **RRSI** | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. | C (5/6) | [→](rrsi.md) |
@@ -16,7 +16,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [autoresearch](autoresearch.md) | ✅ | B (4/6) | Self-contained single-GPU LLM training harness so an AI agent can iterate on train.py overnight — 5-minute experiments scored by validation bits-per-byte, keeping only loss-lowering changes. |
+| [autoresearch](autoresearch.md) | ✅ | B (4/6) | Buys a tight, ready-made experiment loop and metric for agent-driven ML research; costs bringing and paying for your own agent, single-GPU scale, and results not comparable across hardware. |
 | [The AI Scientist](ai-scientist.md) | ✅ | D (4/6) | Use it when you want the fully automatic idea-to-paper loop — idea generation, novelty check, experiment code, plots and a compiled LaTeX paper with an LLM review — but accept a template-bound pipeline that has been frozen since the licence changed and now constrains publishing its output. |
 | [Agent Laboratory](agent-laboratory.md) | ✅ | C (3/6) | Use it when you want role-played LLM agents to run literature review → plan → experiments → report with per-phase human approval, MIT terms and resumable checkpoints — but it has had no code change since 2025-03 and carries an unanswered security disclosure. |
 | [RRSI](rrsi.md) | ✅ | C (5/6) | Use it when you want to reproduce or adapt automated agent-harness search with anti-overfitting brakes (bounded tagged edits, a leakage critic, a noise floor, a token-cost rule) — but the search roles are hard-wired to Claude on Vertex AI and a run costs thousands of full benchmark episodes. |

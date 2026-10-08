@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Nuxt does",
+    "zh": "Nuxt 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a starter project",
+      "zh": "生成一个起步项目",
+      "code": "npm create nuxt@latest <project-name>"
+    },
+    {
+      "lane": "you",
+      "en": "Add Vue files under app/pages — each file is a URL",
+      "zh": "在 app/pages 下放 Vue 文件，一个文件就是一个网址",
+      "code": "app/pages/posts/[id].vue"
+    },
+    {
+      "lane": "them",
+      "en": "Generates the vue-router routes, code-splits per page and auto-imports components",
+      "zh": "生成 vue-router 路由，按页面拆分代码，自动导入组件"
+    },
+    {
+      "lane": "you",
+      "en": "Write an API handler in server/api and fetch it from the page",
+      "zh": "在 server/api 写接口，并在页面里取数",
+      "code": "useFetch('/api/data')",
+      "component": {"en": "Nitro server", "zh": "Nitro 服务端"}
+    },
+    {
+      "lane": "them",
+      "en": "Renders on the server and ships HTML plus a payload, so the browser hydrates without refetching",
+      "zh": "服务器先渲染，HTML 附带 payload，浏览器不再重复取数"
+    },
+    {
+      "lane": "you",
+      "en": "Build for your target",
+      "zh": "按部署目标构建",
+      "code": "nuxt build"
+    },
+    {
+      "lane": "them",
+      "en": "Packages server and client for a Node server, serverless or edge platform, or static hosting",
+      "zh": "把服务端和客户端打包成 Node 服务、Serverless/边缘包或静态站点",
+      "component": {"en": "Nitro preset", "zh": "Nitro 预设"}
+    }
+  ],
+  "value": {
+    "en": "One Vue codebase serves SEO-ready server-rendered pages and its own API, deployable almost anywhere",
+    "zh": "一套 Vue 代码同时提供可被搜索引擎收录的服务器渲染页面和自己的接口，几乎能部署到任何地方"
+  },
+  "sources": [
+    "README.md Getting Started ('npm create nuxt@latest <my-project>') and feature list (SSR/SSG/hybrid/edge rendering, automatic routing with code-splitting, auto imports, server/ directory, 300+ modules)",
+    "docs/1.getting-started/07.routing.md on branch 4.x (every Vue file in app/pages/ creates a route; routes generated for vue-router; pages/posts/[id].vue -> /posts/:id; code-splitting by default)",
+    "docs/1.getting-started/10.data-fetching.md on branch 4.x (useFetch / useAsyncData / $fetch; data forwarded to the client in the payload to avoid refetching during hydration; example useFetch('/api/data'))",
+    "docs/1.getting-started/13.server.md on branch 4.x (server powered by Nitro on h3; server/api/test.ts with defineEventHandler; 15+ deployment presets)",
+    "docs/1.getting-started/16.deployment.md on branch 4.x ('nuxt build' with the Node server preset; NODE_ENV=production node .output/server/index.mjs; port 3000; static, serverless and edge targets)"
+  ]
+}

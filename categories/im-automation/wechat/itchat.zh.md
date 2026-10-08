@@ -6,8 +6,8 @@ category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account]
 language: Python
 license: MIT
-maturity: abandoned — last pushed 2023-09 (~3y dormant); built on WeChat's now-defunct web protocol, mostly non-functional for new accounts (2026-06)
-last_verified: 2026-06-28
+maturity: abandoned — last commit 2018-09-26 (the 2023-09 push added no default-branch commits), last release v1.3.9 (2017-07); built on WeChat's now-defunct web protocol, mostly non-functional for new accounts (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2023-09-28T07:46:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:02:56Z
+  computed_at: 2026-10-08T08:19:49Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2923
+        last_commit_age_days: 2934
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: itchat
         dependent_repos_count: 394
-        downloads_last_month: 8523
+        downloads_last_month: 9617
         graph_tier: C
         volume_tier: D
         cross_check_divergence: null
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3904
-        last_commit_age_days: 2923
+        repo_age_days: 3915
+        last_commit_age_days: 2934
         cohort: library
     governance:
       grade: "?"
@@ -73,7 +73,7 @@ health:
 
 # ItChat
 
-面向微信**个人号**的优雅 Python API——历史上用来在网页版（`wx.qq.com`）微信协议之上搭聊天机器人和 IM 自动化。**话说白了：这个项目已基本废弃（最后 push 约 2023-09），而它依赖的微信网页协议早已被大面积关停，所以对绝大多数账号而言，ItChat 已经登不上、跑不起来了。** 它如今主要还有意义的地方在于作为参考代码，而不是你今天能拿来交付的工具。
+面向微信**个人号**的优雅 Python API——历史上用来在网页版（`wx.qq.com`）微信协议之上搭聊天机器人和 IM 自动化。**话说白了：这个项目已基本废弃（最后一次提交在 2018-09，默认分支已经八年没有新代码），而它依赖的微信网页协议早已被大面积关停，所以对绝大多数账号而言，ItChat 已经登不上、跑不起来了。** 它如今主要还有意义的地方在于作为参考代码，而不是你今天能拿来交付的工具。
 
 ![itchat — 健康度雷达](../../../assets/health/itchat.zh.svg)
 
@@ -83,10 +83,32 @@ health:
 
 这基本上是 2026 年还去碰它的唯一稳妥理由。如果你的真实目标是*运行*新的微信自动化，ItChat 是错误的起点（见下文）；把它当成解释这条技术脉络的博物馆藏品，而不是新项目的依赖。
 
+## 怎么用起来
+
+ItChat 把自己伪装成微信网页版（`wx.qq.com`）——就是那个用手机扫二维码登录的浏览器版微信。**协议层的活它替你干**：拉二维码、保持登录会话（加上 `hotReload=True` 还会把会话存进文件，程序重启不用重新扫码），再对 `synccheck` 接口做长轮询——也就是挂着一个请求不放，直到服务器说“有新东西了”。每条进来的消息都被包成一个类字典对象，键也能当属性读。**你要写的只有处理函数**：对关心的每种消息类型，写一个贴了 `@itchat.msg_register(...)` 装饰器的函数，函数返回什么，就把什么作为回复发回去。下面这张图画的是网页登录还开着时的路径——如今对大多数账号来说，它在登录那一步就停了。
+
+![itchat — 主干用户故事](../../../assets/flow/itchat.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/itchat.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在 Python 2.7 或 3.5 里装上这个包 — `pip install itchat`
+2. **你**：给某类消息注册一个处理函数 — `@itchat.msg_register(itchat.content.TEXT)`
+3. **你**：用手机微信扫码登录，再启动主循环 — `itchat.auto_login(hotReload=True) · itchat.run()`
+4. **ItChat**：保持网页版微信会话，长轮询 synccheck 接口拉新消息
+5. **ItChat**：把每条消息包成类字典对象，调用你的处理函数
+6. **ItChat**：把处理函数的返回值作为回复发回给对方
+
+**价值**：不到三十行写出个人号自动回复机器人——前提是网页登录还能用
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你想要今天还能真正跑起来的微信自动化。** 这是最主要的理由。微信（腾讯）逐步关停了 ItChat 依赖的**网页版 / `wx.qq.com` 登录协议**；**绝大多数账号——尤其是较新的账号——已经根本无法通过它登录。**[未验证] 与其说库本身坏了，不如说平台把它脚下的地抽走了。
-- **它已废弃。** 最后 push 约 2023-09，已沉寂约 3 年，单一维护者，约 284 个 open issue 无人 triage。没有人会替你去修这套协议层面的失效。
+- **它已废弃。** 最后一次提交在 2018-09-26，已沉寂约 8 年（2023-09 的 `pushed_at` 没有给默认分支带来新提交），单一维护者，约 284 个 open issue 无人 triage。没有人会替你去修这套协议层面的失效。
 - **封号 / 违反 ToS 的风险。** 用非官方逆向出来的协议去驱动*个人*微信号，是**违反微信服务条款**的，并带有真实的账号**被限流、冻结或永久封禁**风险。别拿你在乎的账号去试。
 - **你需要受支持的 IM 自动化路径。** 改用**官方**通道：**企业微信（WeCom / WeChat Work）API**，以及**微信公众号 / 小程序**服务端 API，才是受支持、有维护的正规面。若想要接近个人号风格的自动化，**wechaty** 是维护更活跃的后继抽象（但它继承了同样的上游平台风险和 ToS 风险，需谨慎采用）。
 - **生产环境或任何面向客户的场景。** 一个跑在已失效协议上的无人维护库，撑不起一款产品或一项业务承诺。
@@ -109,7 +131,7 @@ health:
 
 ## 依赖
 
-- **运行时：** 一个 Python 解释器加上 `requests`（以及在典型配置里用于终端渲染二维码的 `pyqrcode`/`pypng`）。很少，pip 即可装。[未验证]
+- **运行时：** 一个 Python 解释器（README 徽章标的是 2.7 和 3.5），加上 `requests`、`pyqrcode`、`pypng`——这就是 `setup.py` 里 `install_requires` 的全部。很少，pip 即可装。
 - **真正的依赖是一个可用的网页版微信会话**——而*那*正是断掉的一环：它需要腾讯的网页登录端点接受你的账号，而对大多数账号它已不再接受。再怎么管理本地依赖，也修不好服务端的封堵。
 - **一个可扫码的微信账号**（在手机上）来完成每次会话的二维码登录；会话不持久，需要频繁重新登录。
 
@@ -120,7 +142,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）：已废弃。** 最后 push 约 2023-09 → 大约**沉寂 3 年**；约 284 个 open issue，单一维护者（owner `littlecodersh`），无新发布、无 triage。这是一个滑向死亡、而非活跃的项目。[未验证]
+- **维护（2026-10）：已废弃。** 默认分支最后一次提交是 **2018-09-26** → 大约**沉寂 8 年**（GitHub 显示的 2023-09 `pushed_at` 是一次没有给 `master` 带来新提交的推送）；最后发布 v1.3.9（2017-07）；约 284 个 open issue，单一维护者（owner `littlecodersh`），无人 triage。这是一个已经死掉、而不是在滑行的项目。
 - **平台抽走了地基——决定性信号。** 与仓库变冷无关，**微信已大面积关停 ItChat 所依赖的网页登录协议**，所以无论维护与否，这个库对大多数账号都是*不可用*的。既废弃**又**在结构上过时。[未验证]
 - **Lindy 判断：硬性不通过。** 创建于 **2016-01**（约 10 年），单看年龄像是 Lindy——但 Lindy 是**年龄 × 仍然活跃**，绝不是单看年龄。这里是**长寿*且*已死*且*跑在平台已移除的协议上**，正是年龄信号被*抵消*而非*兑现*的教科书案例。别把它的长寿读成耐久。[推断]
 - **治理 / bus factor。** 单一维护者的爱好项目，没有基金会、厂商或后继接管——bus factor 为一，而这个一已经离场。[推断]
@@ -129,8 +151,7 @@ health:
 ## 存疑（未验证）
 
 - [未验证] “约 26.5k star” 与 “约 284 个 open issue” 取自 2026-06 的 GitHub 仓库页；star / issue 数对时间敏感且不可靠，仅供参考。
-- [未验证] “最后 push 约 2023-09” 是本页通篇承重的维护事实；仓库最显眼的*发布*标签更早（2017 年中），无论按哪个口径，项目都已实质沉寂多年——确切的最后提交日期请对照线上仓库核实。
 - [未验证] “微信**关停网页登录协议**导致 ItChat 对新账号'基本不可用'” 这一说法被社区广泛报道，也与其沉寂状态相符，但仓库 README **并无显式弃用声明**——这是从平台行为推断而来，并非引自腾讯或 ItChat 的官方声明。
 - [未验证] 对比表各行（wechaty 当前活跃度、`itchat-uos` 分叉的维护程度、企业微信 / 公众号 API 的确切范围）描述的是大致格局，未对各项目当前状态做新一轮核实。
 - [推断] 封号 / 违反 ToS 风险是从工具的非官方协议性质做出的推断，而非实测封禁率；严重程度因账号和用法而异。
-- [未验证] 依赖细节（`requests`、`pyqrcode`/`pypng`、`@itchat.msg_register` 装饰器、Py2/Py3 支持）来自对该库的一般了解，未对照当前 `setup.py`/源码重新核对。
+- [推断] “最后一次提交 2018-09-26” 取自 `master` 分支的 commits API（2026-10-08 查）；2023-09 的 `pushed_at` 推测是分支或 tag 推送，没有追查。

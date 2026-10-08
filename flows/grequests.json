@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "GRequests does", "zh": "GRequests 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it with pip, then import it before requests or anything else that opens sockets", "zh": "用 pip 装上，并在 requests 等库之前 import 它", "code": "import grequests"},
+    {"lane": "them", "en": "On import, gevent patches the stdlib so a request waiting on the network yields to the others", "zh": "import 时由 gevent 给标准库打补丁，等网络的请求会让出控制权"},
+    {"lane": "you", "en": "Build unsent request objects with the same arguments you would pass to requests", "zh": "用和 requests 相同的参数构造还没发出的请求对象", "code": "grequests.get(u)"},
+    {"lane": "you", "en": "Hand the whole batch to map, optionally with a pool size and an exception handler", "zh": "把整批交给 map，可选设池大小和异常处理函数", "code": "grequests.map(rs, exception_handler=exception_handler)"},
+    {"lane": "them", "en": "Sends them concurrently from a gevent pool inside your one thread", "zh": "在你这一个线程里用 gevent 池并发发出"},
+    {"lane": "them", "en": "Returns Response objects in request order; failures come back as None or your handler's value", "zh": "按请求顺序返回 Response，失败的位置是 None 或处理函数的返回值"}
+  ],
+  "value": {"en": "Existing synchronous requests code fans out concurrently with a few changed lines — no async/await rewrite, no thread pool", "zh": "现有的同步 requests 代码改几行就能并发，不用改写成 async/await，也不用自己管线程池"},
+  "sources": [
+    "https://github.com/spyoungtech/grequests#installation (pip install grequests)",
+    "https://github.com/spyoungtech/grequests#usage (grequests.get(u) unsent requests, grequests.map(rs), same keyword arguments as requests)",
+    "https://github.com/spyoungtech/grequests#error-handling (grequests.map(reqs, exception_handler=exception_handler); None for failures)",
+    "https://github.com/spyoungtech/grequests#gevent---when-things-go-wrong (import grequests before requests)",
+    "https://github.com/spyoungtech/grequests/blob/master/grequests.py (curious_george.patch_all(thread=False, select=False) at import)"
+  ]
+}

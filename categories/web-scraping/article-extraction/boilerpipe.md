@@ -6,8 +6,8 @@ category: article-extraction
 tags: [content-extraction, boilerplate-removal, java, html, fulltext]
 language: Java
 license: Apache-2.0
-maturity: effectively abandoned (last pushed 2018-01), ~1.1k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: effectively abandoned (last commit on master 2015-08, last push 2018-01), ~1.1k stars (as of 2026-06)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2018-01-03T21:47:34Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:30:24Z
+  computed_at: 2026-10-08T08:28:23Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 4046
+        last_commit_age_days: 4056
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4319
-        last_commit_age_days: 4046
+        repo_age_days: 4329
+        last_commit_age_days: 4056
         cohort: library
     governance:
       grade: "?"
@@ -68,6 +68,28 @@ A Java library for boilerplate removal and full-text extraction from HTML — th
 You're on the JVM, building a search indexer, a corpus builder, or a text-mining pipeline, and you need to strip the article body out of raw HTML without dragging in a headless browser or a Python service. You reach for boilerpipe: it implements well-known extractors (e.g. `ArticleExtractor`, `DefaultExtractor`) from Kohlschütter et al's "Boilerplate Detection using Shallow Text Features" — you pass HTML and get back the cleaned main text. Because the algorithms are language-agnostic statistical heuristics (not site-specific rules), it generalizes across many pages, and its ideas are influential enough that later extractors (including dragnet) cite it as inspiration.
 
 You'd realistically reach for it today only if you specifically need a **Java, dependency-light, classic-algorithm** extractor and are comfortable adopting an **unmaintained** library — vendoring it, building it yourself, and owning any fixes. For a new project, its main value is conceptual/algorithmic and JVM-native availability, not active support.
+
+## How it works
+
+boilerpipe treats a web page as a sequence of **text blocks** — runs of text between HTML tags — and decides block by block whether each one is article or *boilerplate* (the menus, footers, link lists and ad copy that repeat across a site). **The decision rules ship with the library as ready-made, named extractors (`ArticleExtractor`, `DefaultExtractor`, …); you only choose one and pass it the HTML.** Each rule looks at shallow features of a block rather than understanding the language: how many words it has, what share of its words sit inside links, how dense the text is compared to its neighbours — a long paragraph with few links is probably article, a short block that is mostly links is probably navigation. Like skimming a newspaper page by shape alone, it works without reading a word, which is why it is language-agnostic. The library parses, scores and returns plain text; you own getting the HTML (a convenience `getText(URL)` exists, but its own demo recommends a real crawler), getting the jar (build it from this repo's Maven source), and checking its accuracy on today's layouts.
+
+![boilerpipe — backbone user story](../../../assets/flow/boilerpipe.svg)
+
+<!-- flow-steps:begin (generated from flows/boilerpipe.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Build the Maven project from source and put its jar on your classpath (no recent release)
+2. **You**: Fetch the page yourself and pick a named extractor for it — `ArticleExtractor · DefaultExtractor · CommonExtractors.CANOLA_EXTRACTOR`
+3. **You**: Hand it the HTML — `ArticleExtractor.INSTANCE.getText(html)`
+4. **boilerpipe**: Parses the HTML with its bundled NekoHTML into a sequence of text blocks
+5. **boilerpipe**: Scores each block on shallow features like word count and link density; drops boilerplate
+6. **boilerpipe**: Returns the blocks it kept as plain text
+
+**Value**: The article body without menus, footers and link lists, inside a JVM process with no external service
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -98,7 +120,7 @@ You'd realistically reach for it today only if you specifically need a **Java, d
 
 - **Runtime:** a JVM and the boilerpipe jars plus its HTML-parser dependency (NekoHTML-derived); no external services, no datastore.
 - **Build:** Maven and a JDK to compile from source — and since there are no recent published artifacts, building yourself is the likely install path.
-- **Input:** you supply the HTML; it does not fetch URLs.
+- **Input:** usually you supply the HTML (string, `Reader` or `InputSource`). There is also a `getText(URL)` convenience that downloads the page with a bare built-in fetcher — no retries, no crawling; its own demo says to fetch with a fault-tolerant crawler in real use.
 - **Transitive risk:** being 8 years stale, its (vendored) parser and any transitive deps are old.
 
 ## Ops difficulty
@@ -108,7 +130,7 @@ You'd realistically reach for it today only if you specifically need a **Java, d
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_data.
-- **Maintenance (2026-06).** Last pushed **2018-01** — **~8 years stale**. Although the GitHub flag `archived` is **false**, the cadence and the README ("work-in-progress transmit from Google Code") make it **effectively abandoned**. No recent releases. [推断]
+- **Maintenance (2026-10).** Last commit on master **2015-08**, last push **2018-01** — **8–11 years stale**. Although the GitHub flag `archived` is **false**, the cadence and the README ("work-in-progress transmit from Google Code") make it **effectively abandoned**. No recent releases. [推断]
 - **Governance / bus factor.** Essentially a single-author project (Christian Kohlschütter / `kohlschutter`) with a few historical contributors — minimal bus factor, and no active stewardship. [推断]
 - **Age × Lindy (2026-06).** Created 2014-12 on GitHub (the algorithm/codebase is older, originally on Google Code) — but **age without activity fails Lindy**: long-lived in influence, but a long-*dormant* repo is a risk, not a safety signal. Use age × still-active; "still-active" is absent here. [推断]
 - **Adoption & ecosystem.** ~1.1k stars and strong historical/academic influence (its algorithms shaped later extractors), but the ecosystem has moved on to maintained alternatives (Tika, trafilatura, readability ports). [未验证]
@@ -121,3 +143,4 @@ You'd realistically reach for it today only if you specifically need a **Java, d
 - [推断] "Effectively abandoned" is inferred from the 2018 push date plus the README's own "work-in-progress transmit from Google Code" framing — `archived` is false on GitHub, but activity is not.
 - [推断] The NekoHTML-based parsing and vendored/relocated NekoHTML are inferred from the repo's directory layout (`nekohtml`, `nekohtml-relocated`), not from reading the build wiring in detail.
 - [未验证] Comparative extraction accuracy on the modern web vs Tika/trafilatura reflects general positioning, not a measured benchmark; the available published artifacts and exact installable coordinates were not confirmed.
+- [推断] The How it works mechanism (text blocks scored on shallow features such as word count, link density and neighbouring-block text density) is summarized from the Kohlschütter et al. paper the library implements, not from reading each extractor's decision rules in the source.

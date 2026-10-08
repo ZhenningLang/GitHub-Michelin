@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "ffmpeg-python does", "zh": "ffmpeg-python 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the wrapper; FFmpeg itself must already be on your PATH", "zh": "装上这个封装；FFmpeg 本体得自己先装好、放进 PATH", "code": "pip install ffmpeg-python"},
+    {"lane": "you", "en": "Open each media file as a stream node", "zh": "把每个媒体文件打开成一个流节点", "code": "ffmpeg.input('input.mp4')"},
+    {"lane": "you", "en": "Chain filters on the streams, merge branches, end with an output file", "zh": "在流上串滤镜、合并分支，最后指定输出文件", "code": ".trim() · .overlay() · .output('out.mp4')"},
+    {"lane": "you", "en": "Call run on the finished graph", "zh": "对搭好的图调用 run", "code": ".run()"},
+    {"lane": "them", "en": "Walks the graph and compiles it into one ffmpeg argument list with -filter_complex", "zh": "遍历这张图，编译成一条带 -filter_complex 的 ffmpeg 参数"},
+    {"lane": "them", "en": "Starts the ffmpeg binary as a subprocess and waits for it to exit", "zh": "以子进程启动 ffmpeg 二进制，等它跑完"},
+    {"lane": "them", "en": "Returns once ffmpeg has written the output; a non-zero exit raises ffmpeg.Error", "zh": "ffmpeg 写完输出就返回；非零退出码抛 ffmpeg.Error"}
+  ],
+  "value": {"en": "A trim-concat-overlay graph stays readable, testable Python instead of a hand-escaped -filter_complex string", "zh": "“裁剪—拼接—叠加”这种图写成可读、可测的 Python，不用再手拼转义 -filter_complex 字符串"},
+  "sources": [
+    "https://github.com/kkroening/ffmpeg-python#quickstart (ffmpeg.input('input.mp4'), .hflip(), .output('output.mp4'), .run())",
+    "https://github.com/kkroening/ffmpeg-python#complex-filter-graphs (in_file.trim(...), .overlay(...), .output('out.mp4'), .run())",
+    "https://github.com/kkroening/ffmpeg-python#installation (pip install ffmpeg-python; FFmpeg must be on $PATH, not installed by the wrapper)",
+    "https://github.com/kkroening/ffmpeg-python/blob/master/ffmpeg/_run.py (get_args adds -filter_complex; run_async uses subprocess.Popen; run raises Error on non-zero retcode)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Dify does", "zh": "Dify 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the stack with Docker Compose", "zh": "用 Docker Compose 启动整套服务", "code": "cp .env.example .env · docker compose up -d"},
+    {"lane": "you", "en": "Finish setup in the console and connect a model provider", "zh": "在控制台完成初始化，接入模型 provider", "code": "http://localhost/install"},
+    {"lane": "you", "en": "Upload your documents into a knowledge base", "zh": "把文档上传进知识库"},
+    {"lane": "them", "en": "Chunks, embeds and indexes them in the vector store", "zh": "切块、生成 embedding，写入向量库建索引", "component": {"en": "vector store (Weaviate default)", "zh": "向量库（默认 Weaviate）"}},
+    {"lane": "you", "en": "Build the app on the Workflow canvas and publish it", "zh": "在 Workflow 画布上搭好应用并发布"},
+    {"lane": "them", "en": "Per request: retrieves chunks, calls the model, runs each node, logs every step", "zh": "每个请求：取回文本块、调用模型、执行各节点、记录每一步", "component": {"en": "API server + workers", "zh": "API 服务 + worker"}},
+    {"lane": "them", "en": "Serves the app as a web app and a REST API with its own key", "zh": "把应用以网页和带独立 key 的 REST API 对外提供"}
+  ],
+  "value": {"en": "Many AI apps share one workspace, knowledge base and log — no separate service to build per app", "zh": "多个 AI 应用共用一个工作区、知识库和日志，不用每个应用单独写一个服务"},
+  "sources": [
+    "https://github.com/langgenius/dify#quick-start (cp .env.example .env; docker compose up -d; http://localhost/install)",
+    "https://github.com/langgenius/dify#key-features (Workflow canvas, RAG pipeline, Backend-as-a-Service APIs, LLMOps logs)",
+    "docker/docker-compose.yaml and docker/.env.example (api, worker, plugin_daemon, sandbox services; VECTOR_STORE=weaviate)"
+  ]
+}

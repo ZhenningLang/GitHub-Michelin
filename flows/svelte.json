@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Svelte does",
+    "zh": "Svelte 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a project (SvelteKit by default, or plain Vite) and start the dev server",
+      "zh": "生成项目（默认带 SvelteKit，也可用纯 Vite），启动开发服务器",
+      "code": "npx sv create myapp · npm create vite@latest"
+    },
+    {
+      "lane": "you",
+      "en": "Write a .svelte file: markup, a script block and a style block",
+      "zh": "写一个 .svelte 文件：标记、script 块和 style 块放在一起",
+      "component": {
+        "en": "component file",
+        "zh": "组件文件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Declare the values that change as reactive state",
+      "zh": "把会变的值声明成响应式状态",
+      "code": "let count = $state(0)"
+    },
+    {
+      "lane": "them",
+      "en": "At build time, compiles each component into JS that builds its DOM and tracks which node reads which state",
+      "zh": "构建时把每个组件编译成 JS：建好 DOM，记住哪个节点读了哪个状态",
+      "component": {
+        "en": "compiler (Vite plugin)",
+        "zh": "编译器（Vite 插件）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Scopes the component's CSS so it cannot leak to other components",
+      "zh": "把组件的 CSS 限定在组件内部，不会漏到别处"
+    },
+    {
+      "lane": "them",
+      "en": "When state changes in the browser, updates only the DOM nodes that read it — no virtual DOM diff",
+      "zh": "浏览器里状态一变，只更新读了它的 DOM 节点，不做虚拟 DOM 比对"
+    }
+  ],
+  "value": {
+    "en": "Components written close to plain HTML ship as small direct-DOM JavaScript, with no framework runtime diffing on every update",
+    "zh": "写法接近普通 HTML 的组件，发布成直接操作 DOM 的小段 JavaScript，更新时没有框架在后台比对"
+  },
+  "sources": [
+    "https://svelte.dev/docs/svelte/getting-started (npx sv create myapp; npm create vite@latest with the svelte option)",
+    "https://svelte.dev/docs/svelte/$state (let count = $state(0))",
+    "https://svelte.dev/docs/svelte/scoped-styles (component-scoped CSS)",
+    "https://github.com/sveltejs/svelte#what-is-svelte (compiler that converts components into JavaScript that surgically updates the DOM)"
+  ]
+}

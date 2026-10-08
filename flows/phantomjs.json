@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "PhantomJS does",
+    "zh": "PhantomJS 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Download the prebuilt binary for your OS, unpack it, put it on PATH",
+      "zh": "下载对应系统的预编译二进制，解压，放进 PATH"
+    },
+    {
+      "lane": "you",
+      "en": "Write a .js script: open a URL, and in the load callback render the page, then exit",
+      "zh": "写一个 .js 脚本：打开网址，在加载完的回调里截图，然后退出",
+      "code": "page.render('github.png') · phantom.exit()"
+    },
+    {
+      "lane": "you",
+      "en": "Run the script with the binary",
+      "zh": "用这个二进制运行脚本",
+      "code": "phantomjs github.js"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the page in its bundled WebKit, running its JS and CSS with no window or X11",
+      "zh": "用自带的 WebKit 加载页面、执行 JS 和 CSS，不开窗口"
+    },
+    {
+      "lane": "them",
+      "en": "Fires your callback and writes the PNG, JPEG or PDF file",
+      "zh": "触发你的回调，写出 PNG、JPEG 或 PDF 文件"
+    }
+  ],
+  "value": {
+    "en": "A screenshot, PDF or scraped DOM value from a real browser engine on a headless server — on a 2018-frozen engine",
+    "zh": "在无显示器的服务器上用真实浏览器引擎拿到截图、PDF 或 DOM 数据——只是引擎停在 2018 年"
+  },
+  "sources": [
+    "https://github.com/ariya/phantomjs#readme (download, unpack; pure headless, no X11 on Linux; development suspended, #15344)",
+    "https://phantomjs.org/quick-start.html (phantomjs hello.js; phantom.exit must be called)",
+    "https://phantomjs.org/screen-capture.html (require('webpage').create(), page.open, page.render('github.png'), phantomjs github.js; PNG/JPEG/GIF/PDF)",
+    "https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js (page.open callback, page.render(output))"
+  ]
+}

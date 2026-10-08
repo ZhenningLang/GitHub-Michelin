@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them":  {"en": "markdownlint does", "zh": "markdownlint 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the library as a dev dependency", "zh": "把库装成开发依赖", "code": "npm install markdownlint --save-dev"},
+    {"lane": "you", "en": "Switch off or tune the rules your house style disagrees with", "zh": "关掉或调整和团队风格不合的规则", "code": "{ \"hr-style\": { \"style\": \"---\" }, \"no-trailing-spaces\": false }"},
+    {"lane": "you", "en": "Lint your files or strings", "zh": "对文件或字符串跑检查", "code": "const results = lintSync(options)"},
+    {"lane": "them", "en": "Parses each file with micromark and runs every enabled rule over it", "zh": "用 micromark 解析每个文件，逐条跑启用的规则", "component": {"en": "rule engine", "zh": "规则引擎"}},
+    {"lane": "them", "en": "Returns violations per file: line, rule name and alias, detail, and fixInfo when the rule can repair it", "zh": "按文件返回违规：行号、规则名、细节，可修的附 fixInfo"},
+    {"lane": "you", "en": "Apply the fixes to the original text", "zh": "把修复应用到原文上", "code": "const fixed = applyFixes(original, results.content)"}
+  ],
+  "value": {"en": "Formatting nits stop reaching code review: the same ~50 rules run in CI, pre-commit and the editor, and the mechanical ones fix themselves", "zh": "格式挑刺不再进入代码评审：同一套约 50 条规则在 CI、提交钩子和编辑器里一致地跑，机械性问题自动修好"},
+  "sources": [
+    "README.md main @ 2026-10-08 (gh api repos/DavidAnson/markdownlint/readme): Install 'npm install markdownlint --save-dev'; Usage 'const results = lintSync(options);' with result fields lineNumber/ruleNames/errorDetail/fixInfo; Fixing 'const fixed = applyFixes(original, results.content);'",
+    "README.md Configuration: configure-file example JSON '\"hr-style\": { \"style\": \"---\" }, \"no-trailing-spaces\": false'; 'Two kinds of text are ignored by most rules: HTML comments, Front matter'; Overview: 'uses the micromark parser'"
+  ]
+}

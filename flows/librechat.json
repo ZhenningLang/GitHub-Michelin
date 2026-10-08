@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "LibreChat does",
+    "zh": "LibreChat 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Clone the repo and copy the env template; put provider keys or user_provided in .env",
+      "zh": "克隆仓库，复制 env 模板，填好服务商 key",
+      "code": "git clone https://github.com/LibreChat-AI/LibreChat.git · cp .env.example .env"
+    },
+    {
+      "lane": "you",
+      "en": "Start the compose stack",
+      "zh": "启动 compose 整套服务",
+      "code": "docker compose up -d"
+    },
+    {
+      "lane": "them",
+      "en": "Brings up the app with MongoDB, Meilisearch, pgvector and the RAG API, serving on port 3080",
+      "zh": "拉起应用及 MongoDB、搜索、向量库和 RAG 服务",
+      "component": {
+        "en": "docker-compose stack",
+        "zh": "docker-compose 服务组"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Declare extra endpoints such as Ollama or OpenRouter in librechat.yaml",
+      "zh": "在 librechat.yaml 里声明 Ollama 等额外端点",
+      "code": "librechat.yaml"
+    },
+    {
+      "lane": "you",
+      "en": "Users sign up or log in, pick a model from the menu, and chat",
+      "zh": "用户注册或登录，在菜单里挑模型开聊",
+      "code": "http://localhost:3080"
+    },
+    {
+      "lane": "them",
+      "en": "Routes each message to the chosen provider, streams the reply, and saves it per user",
+      "zh": "把每条消息转给所选服务商，流式返回，并按用户存档",
+      "component": {
+        "en": "API + MongoDB",
+        "zh": "API + MongoDB"
+      }
+    }
+  ],
+  "value": {
+    "en": "One logged-in, searchable chat workspace over every provider, with history and files kept on your servers",
+    "zh": "一个统一登录、可搜索的聊天工作台接入所有服务商，历史和文件都留在自己服务器上"
+  },
+  "sources": [
+    "https://www.librechat.ai/docs/local/docker (git clone https://github.com/LibreChat-AI/LibreChat.git; cp .env.example .env; docker compose up -d; open http://localhost:3080; mount librechat.yaml via docker-compose.override.yml for custom endpoints)",
+    "docker-compose.yml @ main 2026-10-08 (services api, admin-panel, mongodb, meilisearch, vectordb pgvector, rag_api)",
+    ".env.example @ main 2026-10-08 (PORT=3080; OPENAI_API_KEY=user_provided; ANTHROPIC_API_KEY=user_provided)",
+    "README.md @ main 2026-10-08 (custom endpoints incl. Ollama and OpenRouter; multi-user auth with OAuth2, LDAP, email login)"
+  ]
+}

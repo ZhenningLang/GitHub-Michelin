@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them":  {"en": "torchtune does", "zh": "torchtune 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch and torchao yourself, then the library", "zh": "先自己装 PyTorch 和 torchao，再装这个库", "code": "pip install torch torchvision torchao · pip install torchtune"},
+    {"lane": "you", "en": "Download the base model's weights from the Hugging Face Hub", "zh": "从 Hugging Face Hub 下载基座模型权重", "code": "tune download meta-llama/Meta-Llama-3.1-8B-Instruct"},
+    {"lane": "them", "en": "Ships a ready YAML config per model, size and method", "zh": "按模型、尺寸和方法备好现成的 YAML 配置", "component": {"en": "recipes/configs", "zh": "配置目录 recipes/configs"}},
+    {"lane": "you", "en": "Run a recipe with a config, overriding fields on the command line", "zh": "用某份配置运行配方，在命令行覆盖字段", "code": "tune run lora_finetune_single_device --config llama3_1/8B_lora_single_device"},
+    {"lane": "them", "en": "Builds model, tokenizer and dataset from the config in plain PyTorch", "zh": "按配置用纯 PyTorch 搭好模型、分词器和数据集", "component": {"en": "recipe script", "zh": "配方脚本"}},
+    {"lane": "them", "en": "Runs the training loop with the memory switches you set and saves checkpoints", "zh": "按你打开的省显存开关跑训练循环，并保存 checkpoint"}
+  ],
+  "value": {"en": "A LoRA or full fine-tune from one command, with every line of the training loop readable PyTorch", "zh": "一条命令跑起 LoRA 或全量微调，训练循环每一行都是看得懂的 PyTorch"},
+  "sources": [
+    "README.md @ 2026-10-08 'Install stable release': 'pip install torch torchvision torchao', 'pip install torchtune'",
+    "README.md @ 2026-10-08 'Downloading a model': 'tune download meta-llama/Meta-Llama-3.1-8B-Instruct --output-dir ...'",
+    "README.md @ 2026-10-08 'Running finetuning recipes': 'tune run lora_finetune_single_device --config llama3_1/8B_lora_single_device'; 'Modify Configs': config overrides on the command line, 'tune cp'",
+    "README.md @ 2026-10-08 'Overview' and 'Optimization flags': hackable recipes, YAML configs, plain PyTorch model implementations, activation checkpointing/offloading toggled in config"
+  ]
+}

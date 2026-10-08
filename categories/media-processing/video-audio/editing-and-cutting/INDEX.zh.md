@@ -7,17 +7,17 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **MoviePy** | 一个用于程序化视频编辑的 Python 库——剪辑、拼接、合成、文字叠加、特效——在底层拼装 FFmpeg 命令，但对外提供更高层、更友好的 API。 | B（6/6） | [→](moviepy.zh.md) |
-| **MLT** | 用于构建非线性视频编辑器（NLE）的多媒体框架——支持时间线轨道、片段、转场、滤镜与合成，底层实际的编解码工作全部委托给 FFmpeg/libav 完成。它不是独立的剪辑软件，而是 Shotcut 和 Kdenlive 的底层引擎。 | B（6/6） | [→](mlt.zh.md) |
+| **MoviePy** | 当你要用脚本批量截取、加字幕、合成一批片段，而 FFmpeg 的滤镜字符串已经没人看得懂时用它——但维护处于滑行状态：2025-05 之后没有新版本，README 还在招维护者。 | B（6/6） | [→](moviepy.zh.md) |
+| **MLT** | 当你要造一个视频编辑器，或做一条需要精确到帧的时间线（轨道、滤镜、转场）、经 FFmpeg 渲染的自动化流水线时用它——但它是框架不是应用，只想剪片请用 Shotcut 或 Kdenlive。 | B（6/6） | [→](mlt.zh.md) |
 | **Auto-Editor** | 命令行粗剪工具：按响度（或画面运动）给每个时间点打标签，带缓冲地剪掉静音段；也可以不输出成片，而是导出 Premiere／Resolve／Final Cut／ShotCut／Kdenlive 可导入的时间线。 | A（6/6） | [→](auto-editor.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [MoviePy](moviepy.zh.md) | ✅ | B（6/6） | 剪辑是你用 Python 表达的批处理任务、时间线已知时选它；时间线本身是未知量（静音在哪）时，选 [Auto-Editor](auto-editor.zh.md)。 |
+| [MoviePy](moviepy.zh.md) | ✅ | B（6/6） | 剪辑写成普通 Python 对象、每帧都是 NumPy 数组；代价是永远重编码、吞吐低于直接用 FFmpeg，维护者很少、响应很慢。 |
 | [Auto-Editor](auto-editor.zh.md) | ✅ | A（6/6） | 从素材里推导切点（响度或运动）并把结果交回 NLE 当时间线时选它；要在 Python 里执行你已经定好的切点，选 [MoviePy](moviepy.zh.md)。 |
-| [MLT](mlt.zh.md) | ✅ | B（6/6） | 你在**造**编辑器、需要带转场和滤镜的时间线模型时选它；只需要渲染一份固定合成时选 [MoviePy](moviepy.zh.md)，因为 MLT 是框架而不是成品 API。 |
+| [MLT](mlt.zh.md) | ✅ | B（6/6） | Shotcut 和 Kdenlive 背后的时间线引擎，可从 melt、XML、C/C++ 进入；代价是没有 Python 优先的 API，围绕剪辑而非直播管线设计，约六成提交出自一位主导者。 |
 | [Concat](../../video-editing/concat.zh.md) | ✅ | C（6/6） | 需要人在一个恰好可脚本化的 GUI 里剪时选 Concat；需要在管线里无头运行时选本子类，因为桌面编辑器没法当批处理任务排期。 |
 
 ## 什么该放这里

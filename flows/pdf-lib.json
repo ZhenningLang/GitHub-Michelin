@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "pdf-lib does", "zh": "pdf-lib 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the package to a browser, Node or Deno project", "zh": "把包装进浏览器、Node 或 Deno 项目", "code": "npm install --save pdf-lib"},
+    {"lane": "you", "en": "Load an existing PDF's bytes, or start a blank document", "zh": "读入已有 PDF 的字节，或新建一个空文档", "code": "PDFDocument.load(existingPdfBytes) · PDFDocument.create()"},
+    {"lane": "them", "en": "Parses the file in memory into pages, fonts and form fields you can edit", "zh": "在内存里把文件拆成可编辑的页面、字体和表单字段"},
+    {"lane": "you", "en": "Draw text and images on pages, or fill named form fields", "zh": "在页面上写字、贴图，或按名字填表单字段", "code": "firstPage.drawText(...) · form.getTextField('Age')"},
+    {"lane": "them", "en": "Turns each call into PDF drawing instructions and field updates on the document", "zh": "把每次调用变成 PDF 绘制指令和字段更新，写进文档"},
+    {"lane": "you", "en": "Serialize to bytes and download, upload or attach them", "zh": "序列化成字节，拿去下载、上传或当附件", "code": "await pdfDoc.save()"}
+  ],
+  "value": {"en": "Invoices, stamped pages and filled forms built in plain JS — no server-side PDF service or native binary", "zh": "发票、加章页面、填好的表单都用纯 JS 生成，不需要服务端 PDF 服务或原生二进制"},
+  "sources": [
+    "https://github.com/Hopding/pdf-lib#installation (npm install --save pdf-lib)",
+    "https://github.com/Hopding/pdf-lib#create-document (PDFDocument.create(), embedFont, addPage, page.drawText, pdfDoc.save() → Uint8Array)",
+    "https://github.com/Hopding/pdf-lib#modify-document (PDFDocument.load(existingPdfBytes), firstPage.drawText)",
+    "https://github.com/Hopding/pdf-lib#fill-form (pdfDoc.getForm(), form.getTextField('Age'))"
+  ]
+}

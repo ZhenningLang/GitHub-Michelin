@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "AgriKG does", "zh": "AgriKG 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Python 3 and Neo4j, then the project's pinned pip dependencies", "zh": "装好 Python 3 和 Neo4j，再装项目锁定的 pip 依赖", "code": "sudo pip3 install -r requirement.txt"},
+    {"lane": "you", "en": "Copy the bundled CSVs into Neo4j's import folder and run the README's Cypher loads", "zh": "把自带 CSV 放进 Neo4j 的 import 目录，跑 Cypher 导入", "code": "LOAD CSV WITH HEADERS FROM \"file:///hudong_pedia.csv\" AS line"},
+    {"lane": "you", "en": "Put your Neo4j password into the demo's model file and start the Django demo", "zh": "在 demo 里填好 Neo4j 密码，启动 Django 演示", "code": "sudo sh django_server_start.sh"},
+    {"lane": "them", "en": "Segments your Chinese text with THULAC and matches words to pre-classified entities in the graph", "zh": "用 THULAC 给输入分词，匹配图里已分类的实体"},
+    {"lane": "them", "en": "Answers entity, relation and shortest-path queries from Neo4j on port 8000", "zh": "在 8000 端口从 Neo4j 回答实体、关系和最短路径查询"}
+  ],
+  "value": {"en": "A working Chinese agricultural knowledge graph to explore and a full crawl-to-UI pipeline to copy, without crawling and labeling ~150k entities yourself", "zh": "直接拿到一个能查的中文农业知识图谱和一条从爬取到界面的完整流水线可抄，不用自己爬取、标注十几万个实体"},
+  "sources": [
+    "https://github.com/qq547276542/Agriculture_KnowledgeGraph#项目配置 (python3 + Neo4j; sudo pip3 install -r requirement.txt; LOAD CSV WITH HEADERS FROM \"file:///hudong_pedia.csv\" AS line; demo/Model/neo_models.py credentials; sudo sh django_server_start.sh; port 8000)",
+    "https://github.com/qq547276542/Agriculture_KnowledgeGraph#思路 (THULAC segmentation/POS/NER, filtering, matching against the classified entity base; KNN entity classification)",
+    "https://github.com/qq547276542/Agriculture_KnowledgeGraph#关系查询 and update 2018.10.26 (entity1-[relation]->entity2 queries, shortest path between two entities)"
+  ]
+}

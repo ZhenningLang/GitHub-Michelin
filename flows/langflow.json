@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "Langflow does", "zh": "Langflow 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and start the Langflow server", "zh": "安装并启动 Langflow 服务",
+     "code": "uv pip install langflow -U · uv run langflow run"},
+    {"lane": "you", "en": "On the canvas, connect components (input, model, retriever, tools, output) and add model keys", "zh": "在画布上把组件（输入、模型、检索器、工具、输出）连起来，填好模型密钥",
+     "code": "http://127.0.0.1:7860", "component": {"en": "canvas + components", "zh": "画布 + 组件"}},
+    {"lane": "them", "en": "Runs the flow step by step in the Playground, showing each component's output", "zh": "在 Playground 里一步步运行流程，展示每个组件的输出",
+     "component": {"en": "Playground", "zh": "Playground 调试面板"}},
+    {"lane": "you", "en": "Call the saved flow from your app with an API key", "zh": "在你的应用里带上 API key 调用这个流程",
+     "code": "POST /api/v1/run/FLOW_ID · x-api-key"},
+    {"lane": "them", "en": "Executes the stored flow per request and returns its chat output; also serves it as an MCP tool", "zh": "每次请求都执行存好的流程并返回结果，同时把它作为 MCP 工具提供",
+     "component": {"en": "API + per-project MCP server", "zh": "API + 项目级 MCP 服务器"}}
+  ],
+  "value": {"en": "A prototype you tested visually becomes an API and MCP tool without writing the integration glue", "zh": "可视化试通的原型直接变成 API 和 MCP 工具，不用写集成胶水代码"},
+  "sources": [
+    "https://github.com/langflow-ai/langflow#-quickstart (uv pip install langflow -U, uv run langflow run, http://127.0.0.1:7860; visual builder, interactive playground, deploy as API / MCP server)",
+    "https://docs.langflow.org/concepts-publish (curl --request POST --url http://LANGFLOW_SERVER_ADDRESS/api/v1/run/FLOW_ID --header x-api-key: LANGFLOW_API_KEY; each project has an MCP server exposing its flows as tools)",
+    "https://github.com/langflow-ai/langflow/blob/main/src/lfx/README.md (lfx run / lfx serve)"
+  ]
+}

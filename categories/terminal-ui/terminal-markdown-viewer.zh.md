@@ -6,8 +6,8 @@ category: terminal-ui
 tags: [markdown, terminal, cli, viewer, syntax-highlighting, python, ansi]
 language: Python
 license: BSD-3-Clause
-maturity: v0.x, low-activity (2026-06)
-last_verified: 2026-06-28
+maturity: v1.7.5 (PyPI, 2023-10), last commit 2023-10-06, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2024-05-15T12:23:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:28:45Z
+  computed_at: 2026-10-08T08:27:18Z
   overall: D
   overall_score: 0.67
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1087
+        last_commit_age_days: 1098
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,14 +40,14 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 161
+        homebrew_installs_90d: 154
         homebrew_tier: C
         signal_basis: homebrew
     longevity:
       grade: E
       raw:
-        repo_age_days: 4095
-        last_commit_age_days: 1087
+        repo_age_days: 4106
+        last_commit_age_days: 1098
         cohort: tool
     governance:
       grade: "?"
@@ -73,13 +73,34 @@ health:
 
 当任务正是*一次性、只读地把 Markdown 渲染到终端*时你会选它：预览一个文件、瞄一眼 changelog、在 CI 日志里看生成的文档，或在脚本里把它接成“把这段 markdown 漂亮地显示出来”那一步。它是个聚焦的查看器/格式化器，不是编辑器，也不是 TUI 应用。
 
+## 怎么用起来
+
+mdv 借用一个现成的 Markdown 解析器（Python-Markdown 库），先把你的文件变成一棵由标题、段落、列表、表格、代码块组成的树——网站生成 HTML 之前走的也是这一步。mdv 不生成 HTML，而是顺着这棵树，给每一块打上 ANSI 颜色码（夹在文字里、告诉终端“接下来变成粗体蓝色”的隐形指令）再打印出来，颜色取自它自带的两百多套主题之一，代码块交给 Pygments 做语法高亮。**解析、上色、表格排版都是 mdv 的事；你只管挑文件，愿意的话再指定一个主题（`-t`）或固定宽度（`-c`）。** 终端宽度是它向 `stty` 工具问来的，用管道喂给它时就按 80 列算。同一个模块也能当库函数用、返回上好色的字符串，还能盯着某个文件或目录、一有改动就重新渲染，但这些都是一次性查看之外的旁路。
+
+![terminal-markdown-viewer — 主干用户故事](../../assets/flow/terminal-markdown-viewer.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/terminal-markdown-viewer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从 PyPI 安装 — `pip install mdv`
+2. **你**：把一个 Markdown 文件交给它，或传 - 从管道读入 — `mdv [OPTIONS] MDFILE`
+3. **Terminal Markdown Viewer (mdv)**：用 Python-Markdown 把文本解析成一棵树：标题、列表、表格、代码块
+4. **Terminal Markdown Viewer (mdv)**：按主题给每个元素上色，用 Pygments 高亮代码，按终端宽度排表格
+5. **Terminal Markdown Viewer (mdv)**：把排好样式的文档直接打印到终端里
+
+**价值**：通过 SSH 也能像看排版好的文档一样读 README，全程不用浏览器或图形界面应用
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **你想要一个活跃维护、迭代快的工具。** mdv 活跃度低（最后 push 于 2024-05）且停在 0.x 版本；对长期依赖来说，维护更活跃的渲染器（glow、`rich` 的 Markdown、`bat`）可能更稳。[推断]
+- **你需要一个有人维护的工具——它实际上已无人维护。** `master` 最后一次提交在 2023-10，PyPI 最新版本 1.7.5 也发布于 2023-10，此后再无动静（截至 2026-10-08）。要长期依赖，独立查看器用 glow 或 mdcat，Python 程序内部用 [Rich](rich.zh.md) 的 `Markdown`。
 - **你想要可滚动的 pager / 交互式浏览器。** mdv 是渲染成一段流；如果你要终端内分页、搜索和文件导航，glow 的 TUI 模式或“渲染器 + `less -R`”更合适。
 - **你已经在一个 Python 应用里、只需要 Markdown→ANSI。** `rich` 把 Markdown 渲染作为更大样式库的一部分，而你可能本就依赖它——少一个独立工具。
-- **你需要忠实、严格符合规范的 CommonMark/GFM 渲染。** 终端渲染器是近似的；复杂的嵌套 Markdown、Markdown 里的 HTML、冷门扩展可能渲染不完美——请对照你的实际文档核实。[未验证]
-- **你需要 Windows 优先支持或完全不要 Python。** 它是 Python 工具；若环境在意，单二进制的 Go 渲染器（glow）能省掉 Python 运行时。
+- **你需要忠实渲染复杂的 Markdown。** 作者自己称 mdv 是“概念验证式的 hack”：简单结构做得不错，复杂的就不行，遇到内嵌 HTML“直接失败”。满是 HTML 徽章和嵌套列表的 GitHub 风格 README，请用 glow 或 mdcat。
+- **你需要 Windows 支持或完全不要 Python。** README 写明没在 Windows 上测过任何东西，打包分类也只列了 POSIX；终端宽度还是靠 Unix 的 `stty` 工具取的。单二进制的 Go 渲染器（glow）能同时省掉 Python 运行时、绕开这个缺口。
 
 ## 横向对比
 
@@ -94,14 +115,14 @@ health:
 ## 技术栈
 
 - **语言：** Python（CLI 入口 `mdv`）；通过 `setup.py`/`setup.cfg` 打包，可从 PyPI 安装。
-- **渲染：** 解析 Markdown 并输出 ANSI 样式文本——标题、主题色、带框/缩进代码、语法高亮、表格、列表和提示框。
+- **渲染：** 由 Python-Markdown 解析源文；一个模块（`mdv/markdownviewer.py`）里的自定义树处理器遍历解析出的元素树，输出 ANSI 样式文本——标题、主题色、带框/缩进代码、Pygments 语法高亮、表格（用仓库内置的一份 `tabulate`）、列表和提示框。
 - **输入：** 文件参数或 stdin；可选主题和配置项。
 - **打包：** 仓库带 `Dockerfile`，在 pip 安装之外提供容器化运行路径。
 
 ## 依赖
 
-- **运行时：** Python 加少量 pip 依赖（Markdown 解析、语法高亮如 Pygments、终端样式）；确切清单见打包元数据。
-- **终端：** 一个支持 ANSI 的终端用于彩色/样式输出。
+- **运行时：** Python（分类标签列了 2.7 和 3.6–3.12）加两个 pip 依赖：`markdown` 和 `pygments`；`pyyaml` 是读 YAML 配置的可选 extra。README 里更长的清单（docopt、tabulate）已经过时——代码里替换掉了 docopt，tabulate 则直接内置。
+- **终端：** 一个支持 ANSI 的终端用于彩色/样式输出，外加用于探测宽度的 `stty` 命令（没有就按 80 列算）。
 - **无外部服务或数据存储**——它是读文件/stdin、写终端的本地 CLI。
 
 ## 运维难度
@@ -111,16 +132,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2024-05；提交稀疏，版本停在 0.x 线。读作**低活跃 / 吃老本**——能用但非活跃开发。未归档。[推断]
+- **维护（2026-10），E 级。** `master` 最后一次提交在 2023-10-06，PyPI 最后一个版本 1.7.5 也在同一周；GitHub 显示的 2024-05 `pushed_at` 在两个分支上都对应不到任何提交。三年没有提交，读作**无人维护**——现状能用，但不会再有人修。未归档。
 - **治理 / 背书。** 归 Axiros 组织（一家公司）所有，外加一小撮贡献者尾巴。组织归属比个人账号略好，但这里的活信号是活跃度而非归属。[推断]
-- **年龄与 Lindy 判断。** 约 11 年（2015-07 创建）；存活久但近期活动单薄，所以 Lindy **参半**——够老够稳，但仅凭年龄抵不过缓慢节奏（要用年龄 × 仍活跃一起看）。[推断]
+- **年龄与 Lindy 判断。** 约 11 年（2015-07 创建），但自 2023 年起不再活动，所以 Lindy **不适用**——没有持续活动的年龄是陈旧，不是耐久。
 - **采用度。** 约 1.9k star；终端 Markdown 这一小众里一个为人知的老牌项目，如今与更新的 Go/Rust 渲染器（glow、mdcat）竞争。[未验证]
-- **风险标记。** 维护速度低是主要一项。许可为 BSD-3-Clause（读自仓库的 LICENSE.txt；GitHub 报 `NOASSERTION`）。未发现 relicense 历史。[未验证]
+- **风险标记。** 弃坑是头号风险。许可为 BSD 三条款版（读自仓库的 `LICENSE` / `LICENSE.txt`，Axiros GmbH；GitHub 报 `NOASSERTION`）。未发现 relicense 历史。
 
 ## 存疑（未验证）
 
-- [未验证] GitHub API 把许可报为 `NOASSERTION`；仓库的 `LICENSE.txt` 是 BSD 三句版许可（Axiros GmbH）。这里按读文件记为 BSD-3-Clause，而非依据 API 徽章。
-- [未验证] 截至 2026-06 约 1.9k star、2024-05 最后 push；star 数和活动日期会漂移，仅供参考。
-- [未验证] 确切的 Python 最低版本和精确的运行时依赖清单由打包元数据决定且随时间变化，这里不断言具体数值。
-- [推断] “低活跃 / 吃老本”是从 2024-05 最后 push 和稀疏提交推断，而非实测的发布频率数字。
-- [未验证] 复杂/嵌套 Markdown（Markdown 里的 HTML、冷门扩展）的还原度是终端渲染器固有的局限，而非针对本工具实测的缺陷清单。
+- [推断] 许可按读 `LICENSE` 原文（三条款，含“不得用名义背书”条款）记为 BSD-3-Clause，而非依据 GitHub 的 `NOASSERTION` 徽章；仓库里有两份几乎相同、版权年份不同的副本。
+- [未验证] 截至 2026-10-08 约 1.9k star；star 数会漂移，仅供参考。
+- [推断] “无人维护”是从三年无提交、无发版推断的，而非维护者声明。
+- [未验证] 没测过 Python 3.13 及以上的兼容性；分类标签止于 3.12，较新的 Python-Markdown 版本可能弄坏它的自定义树处理器。
+- [未验证] 复杂 Markdown 渲染失败是 README 里作者自己的说法，不是实测的缺陷清单。

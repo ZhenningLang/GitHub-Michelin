@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Pydantic AI does", "zh": "Pydantic AI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Describe the answer as a Pydantic model; create an agent from a model string", "zh": "把想要的答案写成 Pydantic 模型，用一个模型字符串建 Agent", "code": "Agent('openai:gpt-6-sol', output_type=Sentiment)", "component": {"en": "Agent", "zh": "Agent"}},
+    {"lane": "you", "en": "Decorate plain Python functions as tools", "zh": "给普通 Python 函数贴上装饰器，变成工具", "code": "@agent.tool"},
+    {"lane": "you", "en": "Start a run with your prompt", "zh": "带着提示词发起一次运行", "code": "agent.run_sync"},
+    {"lane": "them", "en": "Builds tool schemas from signatures and docstrings, sends them with the prompt", "zh": "从函数签名和 docstring 生成工具说明，连同提示词发给模型"},
+    {"lane": "them", "en": "Validates each tool call's arguments, runs your function, returns the result", "zh": "校验每次工具调用的参数，再执行你的函数，把结果交回模型"},
+    {"lane": "them", "en": "Validates the final answer; on failure sends the error back so the model retries", "zh": "校验最终答案，不合格就把错误发回去让模型重答"}
+  ],
+  "value": {"en": "result.output is a typed object your IDE and type checker know — no string parsing, and switching provider is a string edit", "zh": "result.output 直接是 IDE 和类型检查器认识的对象，不用再解析字符串；换模型厂商只改一个字符串"},
+  "sources": [
+    "https://github.com/pydantic/pydantic-ai#data-extraction (uv add pydantic-ai, Agent('openai:gpt-6-sol', output_type=Sentiment), @agent.tool, agent.run_sync)",
+    "https://github.com/pydantic/pydantic-ai/blob/main/docs/output.md (validation failures and ModelRetry go back to the model as retries; Agent(retries={'output': N}))"
+  ]
+}

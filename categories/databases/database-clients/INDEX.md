@@ -7,11 +7,11 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **DBeaver** | Free universal database tool and SQL client | A (6/6) | [→](dbeaver.md) |
-| **elasticsearch-dsl-py** | A high-level, Pythonic DSL over the low-level Elasticsearch client — query objects, a Document ORM-style mapping layer, and chainable search builders instead of hand-writing query JSON. **Archived: as of v8.18.0 it lives inside the official `elasticsearch` Python client as `elasticsearch.dsl`.** | C (5/6) | [→](elasticsearch-dsl-py.md) |
+| **DBeaver** | Use it when you hop between Postgres, SQL Server, Oracle, ClickHouse and SQLite and want one free desktop client with the same editor, data grid and ER diagrams for all — but NoSQL drivers are Pro-only, and it is a heavy single-user Eclipse app. | A (6/6) | [→](dbeaver.md) |
+| **elasticsearch-dsl-py** | Use it only to read or migrate legacy code pinned to elasticsearch-dsl 8.17 or older — but it is archived; for new code install `elasticsearch>=8.18` and import `elasticsearch.dsl` instead. | C (5/6) | [→](elasticsearch-dsl-py.md) |
 | **elasticsearch-sql** | Query Elasticsearch with SQL instead of its native JSON Query DSL — a community plugin (and library) that parses SQL and translates it into ES queries/aggregations, with version-matched releases tracking the ES major you run. | C (5/6) | [→](elasticsearch-sql.md) |
-| **PrettyZoo** | A cross-platform desktop GUI for Apache ZooKeeper (Win/Mac/Linux) — browse the znode tree, view/edit node data, manage ACLs and connections, without dropping into the `zkCli.sh` shell. **Archived: the author publicly announced in 2023 that maintenance has stopped.** | D (5/6) | [→](prettyzoo.md) |
-| **RDR** | A fast, offline Redis RDB-file parser (written in Go despite the repo's reported language tag) that reveals which keys and key-prefixes are eating your memory — `rdr show` serves an HTML memory report on a local port, `rdr keys` dumps every key. | D (4/6) | [→](rdr.md) |
+| **PrettyZoo** | Use it when you want a desktop GUI to browse and lightly edit a ZooKeeper znode tree, node data and ACLs instead of typing zkCli.sh commands — but it is archived; the author stopped maintenance in 2024-01. | D (5/6) | [→](prettyzoo.md) |
+| **RDR** | Use it when Redis hit maxmemory and you need to find which key prefixes eat memory by parsing an RDB snapshot offline, with no load on production — but it has been frozen since 2020 and its memory figures are approximate. | D (4/6) | [→](rdr.md) |
 | **MCP Toolbox for Databases** | Use it when production agents must query many databases (57 source types, Google Cloud first-class) only through parameterized statements you declared in YAML — but engine-level read-only exists only on Cloud SQL/AlloyDB/BigQuery and network defaults are permissive. | A (6/6) | [→](mcp-toolbox.md) |
 
 ## What belongs here

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "youtube-dl does", "zh": "youtube-dl 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the script (and ffmpeg if you want best quality or audio extraction)", "zh": "装好脚本（要最佳画质或抽音频就再装 ffmpeg）", "code": "sudo -H pip install --upgrade youtube-dl"},
+    {"lane": "you", "en": "Run it on a video or playlist URL, with an output template for file names", "zh": "对视频或播放列表地址运行它，用输出模板定文件名", "code": "youtube-dl -o '%(title)s.%(ext)s' URL"},
+    {"lane": "them", "en": "Finds the extractor for that site and reads the page's formats and metadata", "zh": "找到这个站点的抽取器，读出可用格式和元数据", "component": {"en": "per-site extractor", "zh": "站点抽取器"}},
+    {"lane": "them", "en": "Picks best video plus best audio by default, downloads both and muxes them with ffmpeg", "zh": "默认挑最佳视频和最佳音频，分别下载后用 ffmpeg 合成一个文件", "code": "-f bestvideo+bestaudio/best"},
+    {"lane": "them", "en": "Writes the file under the name your template produced", "zh": "按模板生成的名字把文件写到磁盘"}
+  ],
+  "value": {"en": "A script gets the same download command for every supported site, with predictable file names", "zh": "脚本对每个支持的站点都用同一条下载命令，文件名可预期"},
+  "sources": [
+    "https://github.com/ytdl-org/youtube-dl#installation (sudo -H pip install --upgrade youtube-dl)",
+    "https://github.com/ytdl-org/youtube-dl#output-template (-o '%(title)s.%(ext)s')",
+    "https://github.com/ytdl-org/youtube-dl#format-selection (default -f bestvideo+bestaudio/best, muxed with ffmpeg/avconv)"
+  ]
+}

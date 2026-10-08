@@ -6,8 +6,8 @@ category: engineering-workflows
 tags: [claude-code, slash-commands, skills, subagents, meta-prompting, hooks]
 language: TypeScript
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-04, ~1.9k stars (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; last pushed 2026-04, ~2.0k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-04-01T15:10:58Z
@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:45:45Z
-  overall: B
-  overall_score: 2.5
+  computed_at: 2026-10-08T08:15:12Z
+  overall: C
+  overall_score: 2.25
   scored_axes: 4
   applicable_axes: 5
   capped: false
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 179
+        last_commit_age_days: 190
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -39,10 +39,10 @@ health:
       grade: "N/A"
       raw: {}
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 318
-        last_commit_age_days: 179
+        repo_age_days: 329
+        last_commit_age_days: 190
         cohort: skill-pack
     governance:
       grade: D
@@ -77,12 +77,33 @@ You're a solo dev or small-team builder who lives in Claude Code and keeps re-wr
 
 You reach for TÂCHES CC Resources because it's a curated, batteries-included starter kit: install the marketplace plugin (`glittercowboy/taches-cc-resources`) and you get meta-skills like *Create Agent Skills*, *Create Slash Commands*, *Create Subagents*, *Create Hooks*, and *Create MCP Servers* that walk Claude through producing well-formed extensions, plus three auditor subagents (skill-auditor, slash-command-auditor, subagent-auditor) to sanity-check what you generate. It's most useful as a "factory for your own Claude Code customizations" rather than a domain skill set — you adopt one person's house style for authoring extensions and iterate from there.
 
+## How it works
+
+Everything here is Markdown that Claude Code loads: slash commands (a saved prompt you trigger by typing `/name`), skills (longer instructions Claude pulls in when a task matches), subagents (separate Claude instances with their own instructions and context), and example hooks. **You** install the plugin once — or copy `commands/` and `skills/` into `~/.claude/` by hand — and then invoke what you need. The core of the pack is a set of generators: run `/create-slash-command` (or `/create-subagent`, `/create-hook`, `/create-agent-skill`) and describe what you want, and **the generator skill** asks follow-up questions and writes the file in the author's house format, with YAML front matter for arguments and tool restrictions. A matching `/audit-*` command then hands the result to an auditor subagent that reports problems with file and line. Around that core sit thinking frames (`/consider:pareto`, `/consider:5-whys`…), a `/debug` protocol, todo and handoff helpers, and project planners (`/create-plan`, `/run-plan`). Think of it as a jig in a woodshop: it does not build your furniture, it makes every piece you cut come out the same shape.
+
+![taches-cc-resources — backbone user story](../../../../assets/flow/taches-cc-resources.svg)
+
+<!-- flow-steps:begin (generated from flows/taches-cc-resources.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add its marketplace, install the plugin, start a new session — `claude plugin install taches-cc-resources`
+2. **You**: Describe the slash command you want — `/create-slash-command`
+3. **TÂCHES CC Resources**: The generator skill writes the command file: YAML arguments, tool restrictions, dynamic context — component: `create-slash-commands skill`
+4. **You**: Ask for an audit of the new file — `/audit-slash-command <command-path>`
+5. **TÂCHES CC Resources**: An auditor subagent checks it against best practices and reports file:line fixes — component: `slash-command-auditor`
+
+**Value**: New Claude Code extensions come out in one consistent, reviewed shape instead of hand-crafted prompt files
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You already run a curated command/skill stack.** Many entries here are meta-generators ("Create Slash Commands", "Create Subagents", "Create Hooks") and thinking frames that overlap with whatever scaffolding discipline you already have; layering both invites duplicate routes and conflicting house styles — pick one source of truth.
-- **You're not on Claude Code.** The pack targets Claude Code's native loaders (`~/.claude/commands`, `~/.claude/skills`, `.claude-plugin` marketplace). There's no documented Codex/Cursor/OpenCode/Droid manifest, so on another harness the markdown won't auto-fire. [推断]
+- **You're not on Claude Code.** The pack targets Claude Code's native loaders (`~/.claude/commands`, `~/.claude/skills`, `.claude-plugin` marketplace). The only other harness mentioned is a community OpenCode port (`stephenschoettler/taches-oc-prompts`, 未收录); there is no Codex/Cursor/Droid manifest, so on those harnesses the markdown won't auto-fire. [推断]
 - **You want enforced behavior, not suggestions.** These are prompt/markdown extensions the agent loads on demand; "auditors" and "debug protocols" are advisory prompts, not hard gates — the agent can still skip or deviate. [推断]
-- **You need a maintained, versioned dependency.** It's a single-maintainer personal collection with no tagged releases and a last push in 2026-04; treat it as a snapshot to fork and own, not a stable upstream you track.
+- **You need a maintained, versioned dependency.** It's a single-maintainer personal collection with no tagged releases and no push since 2026-04-01 (about six months as of 2026-10); treat it as a snapshot to fork and own, not a stable upstream you track.
 - **You want runtime domain skills (DB, frontend, security).** This is mostly tooling-about-tooling (scaffolding extensions, meta-prompts); it doesn't ship deep per-domain expertise the way some sibling collections do.
 
 ## Comparison
@@ -99,15 +120,15 @@ You reach for TÂCHES CC Resources because it's a curated, batteries-included st
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance** — last pushed 2026-04, not archived (as of 2026-06): a couple of months quiet, no tagged releases. Reads as a recently-touched personal collection rather than abandoned, but cadence is low and there's no semver to pin.
-- **Governance & bus factor** — single-maintainer personal repo (`User`-owned, glittercowboy/TÂCHES), ~1.9k stars. One author's house style for authoring extensions; no team backstop — treat as a snapshot to fork and own.
-- **Age & Lindy** — created 2025-11, ~0.5 years old as of 2026-06: young, Lindy-unproven. Too new to have weathered Claude Code's loader/marketplace changes — adopt for the scaffolding, not for stability.
-- **Risk flags** — MIT-licensed (as of 2026-06), so reuse is clear, but "Setup Ralph" wires an autonomous coding loop whose safety envelope is undocumented — review before running unattended. Enforcement is advisory only.
+- **Maintenance (2026-10)** — last pushed 2026-04-01, not archived: about six months quiet, no tagged releases, 16 open issues (maintenance C). Coasting rather than abandoned, but there is no semver to pin and no sign of the next update.
+- **Governance & bus factor** — single-maintainer personal repo (`User`-owned, glittercowboy/TÂCHES), ~2.0k stars; the scorer sees one active committer in 12 months (governance D). One author's house style for authoring extensions; no team backstop — treat as a snapshot to fork and own.
+- **Age & Lindy** — created 2025-11, ~11 months old as of 2026-10: young, and with half its life spent quiet the longevity grade has slipped to C (overall C). Too new to have weathered many Claude Code loader/marketplace changes — adopt for the scaffolding, not for stability.
+- **Risk flags** — MIT-licensed (as of 2026-10), so reuse is clear, but "Setup Ralph" wires an autonomous coding loop whose safety envelope is undocumented — review before running unattended. Enforcement is advisory only.
 
 ## Caveats (unverified)
 
-- [未验证] GitHub metadata (license MIT, primary language TypeScript ~57% / Shell ~36% / Python ~6%, not archived, no tagged release, last pushed 2026-04-01) read on 2026-06-26 — re-verify before relying on specifics.
-- [未验证] Star count (~1,952 on 2026-06-26) is unreliable and date-sensitive; treat as indicative only, not a quality signal.
+- [未验证] GitHub metadata (license MIT, primary language TypeScript ~57% / Shell ~36% / Python ~6%, not archived, no tagged release, last pushed 2026-04-01) — language split read on 2026-06-26, the rest re-checked 2026-10-08; re-verify before relying on specifics.
+- [未验证] Star count (~1,980 on 2026-10-08) is unreliable and date-sensitive; treat as indicative only, not a quality signal.
 - [未验证] Inventory counts (27 commands, 9 skills, 3 subagents, hooks present) come from the README/repo listing and may drift as the author edits; re-count the `commands/`, `skills/`, `agents/` dirs before depending on a specific item.
 - [推断] Activation is Claude Code-specific (native skill/command/marketplace loaders); cross-harness use isn't documented and would require manual porting.
 - [推断] Because behavior lives in prompt/markdown, the auditor subagents and debug protocols are advisory — they shape but don't enforce agent behavior.

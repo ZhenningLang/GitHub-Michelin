@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "FluentRead does",
+    "zh": "FluentRead 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the extension from your browser's store and refresh the page",
+      "zh": "从浏览器商店装上扩展，刷新网页"
+    },
+    {
+      "lane": "you",
+      "en": "Pick a service: the no-key free default, your own API key, Ollama, or a downloaded local model",
+      "zh": "选翻译服务：默认免费服务、自带 API key、Ollama 或本地模型"
+    },
+    {
+      "lane": "you",
+      "en": "Choose the target language and click Translate this page",
+      "zh": "选目标语言，点“翻译此页面”"
+    },
+    {
+      "lane": "them",
+      "en": "Sends the page's paragraphs to that service, rotating free endpoints when one is throttled",
+      "zh": "把页面段落发给所选服务，免费端点被限流就换下一个"
+    },
+    {
+      "lane": "them",
+      "en": "Inserts each translation beneath its original paragraph, restorable in one click",
+      "zh": "把译文插在每段原文下面，一键可恢复原页面"
+    }
+  ],
+  "value": {
+    "en": "Foreign pages read with the original and the translation side by side, on the engine you choose — free, your own key, or fully on-device",
+    "zh": "外文网页原文译文对照着读，引擎由你定——免费、自带密钥，或完全在本机跑"
+  },
+  "sources": [
+    "README.md Installation @ main 2026-10-08: install the extension and refresh the webpage; select a target language; choose 'Translate page'",
+    "docs/en/guide/getting-started.md: 'Click Translate this page. Translations appear below the original paragraphs'; 'Restore this page'; default Free translation service works without configuration",
+    "docs/en/config/translation-engines.md: free service rotates enabled free endpoints with rate-limit cooldown; Ollama (local) at http://127.0.0.1:11434, start Ollama with OLLAMA_ORIGINS=*; local model translation downloads OPUS-MT packs / Hy-MT2 1.8B"
+  ]
+}

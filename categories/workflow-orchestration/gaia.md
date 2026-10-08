@@ -7,7 +7,7 @@ tags: [pipelines, automation, ci-cd, golang-plugins, hashicorp-go-plugin, archiv
 language: Go
 license: Apache-2.0
 maturity: v0.2.9 (2022-01), archived/abandoned (2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-01-10T15:10:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:36:02Z
+  computed_at: 2026-10-08T08:32:20Z
   overall: D
   overall_score: 1.0
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 260
+        last_commit_age_days: 271
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,7 +49,7 @@ health:
         graph_tier: D
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 628
+        release_downloads: 633
         release_assets: 21
         release_tier: D
         signal_basis: releases
@@ -58,8 +58,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3195
-        last_commit_age_days: 260
+        repo_age_days: 3206
+        last_commit_age_days: 271
         cohort: app
     governance:
       grade: D
@@ -90,9 +90,31 @@ Honestly, in 2026 you mostly *shouldn't* — the repo is archived. But the histo
 
 Today this is a *read-only reference*: study it if you're researching the "pipelines-as-compiled-plugins" design or evaluating whether to fork it, but it should not be chosen for new production work — see "When NOT to use".
 
+## How it works
+
+Gaia turns any program that speaks gRPC into a pipeline. **You write** ordinary functions ("jobs") in Go, Python, Java, C++, Ruby or Node.js, put them in a list, and hand the list to the language SDK's `Serve` call — the SDK implements the plugin interface so your program can talk to Gaia over gRPC (a binary remote-call protocol on top of HTTP/2). **Gaia does** the rest: it clones your git repo, compiles the pipeline into an executable (rebuilding on push when polling or a webhook is on), starts it as an out-of-process plugin via HashiCorp's go-plugin (the plugin mechanism behind Terraform and Vault), calls the jobs in the order their `DependsOn` declarations allow, and streams logs and results back to its web UI; state sits in an embedded boltDB file, so there is no external database. All of this is historical now: the repo is archived, and its archive notice points users to Dagger.
+
+![gaia — backbone user story](../../assets/flow/gaia.svg)
+
+<!-- flow-steps:begin (generated from flows/gaia.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Start the Gaia server (all language toolchains bundled in the image) — `docker run -d -p 8080:8080 -v $PWD:/data gaiapipeline/gaia:latest`
+2. **You**: Write pipeline jobs as plain functions and serve them through the SDK — `sdk.Serve(jobs)` — component: `language SDK (gRPC plugin side)`
+3. **You**: Push the code to a git repo and register it in the Gaia UI
+4. **Gaia**: Clones the repo, compiles the pipeline to a binary, rebuilds on push
+5. **Gaia**: Runs the binary as a plugin over gRPC, calling jobs in dependency order — component: `HashiCorp go-plugin`
+6. **Gaia**: Streams each job's logs and result status back to the UI
+
+**Value**: Pipeline logic lives in real code in your own language instead of YAML
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **Any new production deployment.** The repo is **archived** (read-only) with its last release v0.2.9 in 2022-01 — no security patches, no bug fixes, no roadmap. Treat it as abandoned. [推断]
+- **Any new production deployment.** The repo is **archived** (read-only) with its last release v0.2.9 in 2022-01 — no security patches, no bug fixes, no roadmap. Treat it as abandoned; its own archive notice sends users to Dagger. [推断]
 - **You need an actively-governed orchestrator.** For scheduled DAGs and a living ecosystem, [Apache Airflow](airflow.md), Dagster, or Prefect are maintained alternatives with communities behind them.
 - **You want a low-friction declarative pipeline.** Gaia required compiling your jobs into plugins against its SDK — heavier than writing YAML in a CI system (GitHub Actions, GitLab CI, Argo Workflows).
 - **You can't take on fork/maintenance risk.** Adopting an archived project means *you* own all future patches; only do this with eyes open and a fork plan.
@@ -105,6 +127,7 @@ Today this is a *read-only reference*: study it if you're researching the "pipel
 | [Apache Airflow](airflow.md) | ✅ | Choose Airflow for new DAG scheduling work; keep Gaia only as an archived compiled-plugin design reference. | Mature, actively-maintained DAG scheduler with a huge ecosystem; Python-DAG model rather than compiled-plugin jobs, and not archived — the safe default for new work. |
 | [Argo Workflows](argo-workflows.md) | ✅ | Choose Argo Workflows when Kubernetes-native, container-per-step YAML workflows fit better than Gaia's plugin-server model. | Kubernetes-native, container-per-step workflows; actively maintained, declarative YAML, no "write jobs in any language as plugins" model. |
 | [Dagster](dagster.md) / [Prefect](prefect.md) | ✅ | Choose Dagster or Prefect for maintained Python-first orchestration instead of adopting an archived Gaia fork. | Modern Python-first orchestration with active development and SaaS options; different programming model, maintained — pick over an archived project. |
+| Dagger | 未收录 | Choose Dagger when you want what Gaia promised — pipelines written as code in a general-purpose language — on a maintained project; Gaia's archive notice names it as the replacement. | Pipelines as code through language SDKs, with each step run in containers instead of as a compiled go-plugin binary on a Gaia server; a different execution model, but alive. |
 | Jenkins | 未收录 | Choose Jenkins when the problem is CI/CD with a vast plugin ecosystem rather than general-purpose Gaia-style workflow plugins. | Old but still-maintained CI/CD server with vast plugin ecosystem; Groovy/declarative pipelines instead of compiled-code plugins. |
 | GitHub Actions / GitLab CI | 未收录 | Choose hosted CI when VCS-tied YAML pipelines matter more than self-hosting a pipeline server. | Hosted, YAML-driven CI/CD tied to your VCS; far lower setup friction than self-hosting a pipeline server. |
 
@@ -140,3 +163,4 @@ Today this is a *read-only reference*: study it if you're researching the "pipel
 - [推断] "Archived = abandoned" is inferred from GitHub's archived flag + no release since 2022; there is no guarantee a maintainer returns, and none is implied.
 - [未验证] Internal architecture (HashiCorp `go-plugin`/gRPC, Vue frontend, embedded metadata store) is stated from the project's historical README/docs and not re-verified against current source.
 - [未验证] Supported pipeline languages and the exact SDK surface are from the project's marketing; verify against the (frozen) source before any fork decision.
+- [未验证] Dagger's container-per-step model and maintenance status are summarized from general knowledge, not read from its repo this session; only the archive notice's pointer to dagger.io was read (2026-10-08).

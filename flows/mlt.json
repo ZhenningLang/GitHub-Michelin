@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "MLT does", "zh": "MLT 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build and install MLT with the FFmpeg development libraries present", "zh": "备好 FFmpeg 开发库，编译安装 MLT", "code": "cmake .. && cmake --build . && sudo cmake --install .", "component": {"en": "libmlt + modules + melt", "zh": "libmlt + 模块 + melt"}},
+    {"lane": "you", "en": "Line up the clips and put a 25-frame luma transition between them", "zh": "排好片段，中间加一段 25 帧的亮度转场", "code": "melt clip1.dv clip2.dv -mix 25 -mixer luma"},
+    {"lane": "you", "en": "Point the output at an encoder instead of the preview window", "zh": "把输出指向编码器，而不是预览窗口", "code": "-consumer avformat:output.avi acodec=libmp3lame vcodec=libx264"},
+    {"lane": "them", "en": "Producers decode each clip through FFmpeg and normalise it to one profile", "zh": "生产者经 FFmpeg 解码每个片段，统一到同一套参数", "component": {"en": "avformat producer", "zh": "avformat 生产者"}},
+    {"lane": "them", "en": "Pulls frames in timeline order, applying filters and blending the transition", "zh": "按时间线顺序取帧，套滤镜、混合转场", "component": {"en": "playlist / tractor", "zh": "playlist / tractor"}},
+    {"lane": "them", "en": "The consumer encodes the finished frames into the output file", "zh": "消费者把成品帧编码写进输出文件", "component": {"en": "avformat consumer", "zh": "avformat 消费者"}}
+  ],
+  "value": {"en": "A multitrack edit becomes a repeatable command or MLT XML file, rendered frame-accurately without writing a timeline engine", "zh": "多轨剪辑变成一条可重复的命令或一份 MLT XML，按帧精确渲染，不用自己写时间线引擎"},
+  "sources": [
+    "https://github.com/mltframework/mlt README (cmake .., cmake --build ., sudo cmake --install .)",
+    "https://github.com/mltframework/mlt/blob/master/CMakeLists.txt (MOD_AVFORMAT requires FFmpeg components)",
+    "https://www.mltframework.org/docs/melt/ (melt clip1.dv clip2.dv -mix 25 -mixer luma; -consumer avformat:output.avi acodec=libmp3lame vcodec=libx264; producers normalised to the profile; xml consumer)",
+    "https://www.mltframework.org/docs/framework/ (producers, consumers, playlist/tractor services; C API mlt_factory_producer / mlt_consumer_start)"
+  ]
+}

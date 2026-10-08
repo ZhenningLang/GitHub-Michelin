@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "kafka-ui does",
+    "zh": "kafka-ui 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Start the container with the in-browser config editor switched on",
+      "zh": "启动容器，并打开浏览器内配置功能",
+      "code": "docker run -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui"
+    },
+    {
+      "lane": "you",
+      "en": "Open the UI and enter your cluster's bootstrap servers",
+      "zh": "打开界面，填上集群的 bootstrap 地址",
+      "code": "http://localhost:8080"
+    },
+    {
+      "lane": "them",
+      "en": "Connects as a Kafka client and reads brokers, topics, partitions and consumer-group offsets live",
+      "zh": "以 Kafka 客户端连上集群，实时读 broker、topic、分区和位点",
+      "component": {
+        "en": "Spring Boot backend",
+        "zh": "Spring Boot 后端"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Click into a topic or a consumer group",
+      "zh": "点进某个 topic 或某个消费组"
+    },
+    {
+      "lane": "them",
+      "en": "Shows per-partition lag and decodes messages as JSON, text, Avro or Protobuf",
+      "zh": "显示各分区积压，把消息解码成 JSON、文本、Avro 或 Protobuf",
+      "component": {
+        "en": "serdes + Schema Registry",
+        "zh": "serde + Schema Registry"
+      }
+    }
+  ],
+  "value": {
+    "en": "Anyone on the team can see what's in a topic and why a consumer lags, without CLI tools or client configs",
+    "zh": "团队里谁都能看到 topic 里有什么、消费组为什么积压，不用命令行工具和客户端配置"
+  },
+  "sources": [
+    "README.md @ master (last commit 2024-04-08): Quick start (docker run -it -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui — the card drops the interactive -it flag to fit; 'access the web UI at http://localhost:8080'); Persistent installation (config.yml mounted at /etc/kafkaui/dynamic_config.yaml); 'Web UI Cluster Configuration Wizard'; Features (View Consumer Groups — per-partition parked offsets and lag; Browse Messages — JSON, plain text, Avro; custom serde plugins); Schema registry (Avro, JSON Schema, Protobuf)"
+  ]
+}

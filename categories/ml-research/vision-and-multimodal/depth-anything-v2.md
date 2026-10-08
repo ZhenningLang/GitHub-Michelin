@@ -6,8 +6,8 @@ category: vision-and-multimodal
 tags: [monocular-depth, depth-estimation, computer-vision, foundation-model, pytorch, dpt, vision-transformer]
 language: Python
 license: Apache-2.0
-maturity: NeurIPS 2024 release, code active, ~8.3k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: NeurIPS 2024 release, last commit 2026-03-24 (requirements fix), quiet since (as of 2026-10-08), ~8.9k stars
+last_verified: 2026-10-08
 type: model
 upstream:
   pushed_at: 2026-03-24T10:59:06Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:14:11Z
+  computed_at: 2026-10-08T08:23:20Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 187
+        last_commit_age_days: 198
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 836
-        last_commit_age_days: 187
+        repo_age_days: 847
+        last_commit_age_days: 198
         cohort: model
     governance:
       grade: D
@@ -76,12 +76,34 @@ You're a CV engineer, roboticist, or creative-tools developer who needs depth fr
 
 You reach for it as the **current default monocular-depth foundation model** when relative-depth quality, speed, and easy PyTorch/Transformers integration matter more than building anything yourself — it's the most-cited, best-supported option in this niche right now. [推断]
 
+## How it works
+
+Depth Anything V2 is a released set of trained weights plus a small PyTorch wrapper around them. **The authors did the hard part — training a DINOv2 vision transformer (a general-purpose image encoder) with a DPT head (a decoder that turns its features back into a full-resolution map) on large amounts of synthetic and pseudo-labeled images.** You download one checkpoint (Small 24.8M to Large 335M parameters), build the matching model in a few lines, and call `infer_image` on an OpenCV image; it resizes the picture to a 518-pixel input, predicts depth, scales the result back to your image size and returns it as a NumPy array. The output is *relative* depth — it tells you which pixels are nearer than others, not how many meters away they are; for meters you switch to the separate `metric_depth/` models. Everything after the array — point clouds, masks, serving, export to ONNX or Core ML — is yours.
+
+![depth-anything-v2 — backbone user story](../../../assets/flow/depth-anything-v2.svg)
+
+<!-- flow-steps:begin (generated from flows/depth-anything-v2.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Clone the repo, install requirements, and put a downloaded checkpoint under checkpoints/ — `pip install -r requirements.txt`
+2. **You**: Pick a model size and load its weights (Small is the only Apache-2.0 one) — `encoder = 'vitl' # or 'vits', 'vitb', 'vitg'`
+3. **You**: Read an image with OpenCV and hand it to the model — `depth = model.infer_image(raw_img)`
+4. **Depth Anything V2**: Resizes the image to a 518-pixel input and runs the DINOv2 encoder plus DPT head — component: `DINOv2 encoder + DPT head`
+5. **Depth Anything V2**: Scales the prediction back to your image size and returns an HxW NumPy depth map
+
+**Value**: A per-pixel depth map from one ordinary photo — no stereo rig, no LiDAR, no training
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need metric depth out of the box from the main models.** The headline relative-depth checkpoints give *relative* depth (scale/shift ambiguous); for absolute metric depth you must use the separate `metric_depth/` models, and accuracy there is domain-dependent. Don't assume the default output is in meters. [推断]
 - **You have stereo/LiDAR already.** A calibrated stereo pair or a depth sensor gives metrically-grounded depth directly; a monocular model is a fallback for the single-camera case, not a replacement for real depth hardware.
 - **License: watch the model weights, not just the code.** The *code* is Apache-2.0, but per the README **only the Small model is Apache-2.0; Base/Large/Giant weights are CC-BY-NC-4.0 (non-commercial)**. For a commercial product, the larger checkpoints are off-limits unless you arrange otherwise — this is the single most important caveat.
 - **Hard real-time on edge with no GPU.** The Large model is heavy; even Small benefits from a GPU. Tight latency/power budgets on CPU-only edge need a smaller/quantized model and benchmarking.
+- **You need a maintained code path.** This repo's code has not changed since mid-2024 apart from a requirements fix; if you want an integration that keeps up with new PyTorch releases, load the same weights through the Hugging Face Transformers `depth-estimation` pipeline instead — accepting the README's warning that its Pillow resizing makes predictions differ slightly from the repo's OpenCV path.
 - **Guaranteed correctness on out-of-distribution scenes.** It's robust but still a learned model — transparent/reflective surfaces, extreme scenes, and unusual cameras can fail; verify on your data.
 
 ## Comparison
@@ -115,16 +137,16 @@ You reach for it as the **current default monocular-depth foundation model** whe
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance (2026-06).** Last pushed 2026-03; active issue flow (~240 open, consistent with high usage). Code repo is **actively maintained** post-release, with follow-on projects (Video Depth Anything, Prompt Depth Anything) in the same lineage. [推断]
+- **Maintenance (as of 2026-10-08).** A **frozen research release**: after 2024-07 the default branch only saw README news updates (2024-12, 2025-01) and one `requirements.txt` fix merged 2026-03-24; ~244 open issues accumulate without code changes. The team's new work ships as separate repos (Video Depth Anything, Prompt Depth Anything), not here. Pin the code and expect no fixes.
 - **Governance / backing.** Authored by researchers at **HKU and TikTok/ByteDance** (Organization-owned repo, `DepthAnything` org). Institutional + big-vendor backing and a NeurIPS 2024 paper — strong viability signals; roadmap is research-team-led. [推断]
-- **Age & Lindy verdict.** Created 2024-06 (~2 years) — **young**, so Lindy gives little prior either way; the bet rests on adoption + active maintenance + backing, which are currently strong, not on longevity. [推断]
+- **Age & Lindy verdict.** Created 2024-06 (~2.3 years) — **young and already quiet**, so Lindy offers no support; the bet rests on the weights staying useful and on downstream integrations (Transformers, Core ML, ONNX/TensorRT ports) that are maintained elsewhere, not on this repo's own upkeep. [推断]
 - **Adoption.** ~8.3k stars / ~865 forks, Hugging Face Spaces demo, Transformers integration, and Apple Core ML support — broad, fast adoption as the go-to monocular-depth model. [未验证]
 - **Risk flags.** The decisive flag is the **split licensing of the weights** (Small Apache-2.0 vs Base/Large/Giant CC-BY-NC-4.0) — a commercial-use trap distinct from the Apache-2.0 code. Also: young project (less track record), and a brief 2024 GitHub takedown noted in the README (repo restored). [推断]
 
 ## Caveats (unverified)
 
-- [未验证] ~8.3k stars / ~865 forks / ~240 open issues as of 2026-06; counts are date-sensitive and indicative only.
+- [未验证] ~8.9k stars / ~922 forks / ~244 open issues per the GitHub API on 2026-10-08; counts are date-sensitive and indicative only.
 - [未验证] Model license split (Small Apache-2.0; Base/Large/Giant CC-BY-NC-4.0) is taken from the README's LICENSE note — verify the exact license on each checkpoint's Hugging Face page before commercial use.
-- [未验证] "Giant" model is listed as "coming soon"; its availability/license at any given time should be checked directly.
+- [未验证] The "Giant" (1.3B) model is still listed as "Coming soon" in the README on 2026-10-08, more than two years after release — do not plan on it; check directly if it matters.
 - [推断] "Most-cited / current default monocular-depth model" is an inference from stars + Transformers/Core ML integration + the NeurIPS paper, not a measured ranking.
 - [推断] "Surpasses MiDaS/DPT on detail/robustness" reflects the authors' claims plus general reception, not an independent benchmark run here.

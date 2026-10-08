@@ -6,8 +6,8 @@ category: nlp-and-time-series
 tags: [lstm, time-series, keras, tensorflow, educational, forecasting, deep-learning]
 language: Python
 license: AGPL-3.0
-maturity: educational article companion, idle since ~2023-03, ~5.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: educational article companion, last commit 2019-04, quiet since (as of 2026-10-08), ~5.2k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2023-03-24T21:54:57Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:15:39Z
+  computed_at: 2026-10-08T08:23:02Z
   overall: E
   overall_score: 0.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2707
+        last_commit_age_days: 2718
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3570
-        last_commit_age_days: 2707
+        repo_age_days: 3581
+        last_commit_age_days: 2718
         cohort: library
     governance:
       grade: "?"
@@ -79,13 +79,35 @@ health:
 
 你把它当作一件**学习品**——一份干净、可读、与文字讲解绑定的参考实现——当你的目标是理解窗口化、归一化、用循环网络做序列预测的机制，而不是部署一个生产级预测器时。
 
+## 怎么用起来
+
+这里没有可 import 的包：仓库就是一个脚本（`run.py`）、一个小小的 `core/` 模块和一个 `config.json`，你要改的东西全在这份配置里。你指定 `data/` 下的一个 CSV（自带的正弦波或标普 500 价格），选好列、窗口长度（模型一次看多少个过去的时间步，默认 50）、网络层和训练轮数。之后运行 `run.py`，整堂课由它替你走完：把序列切成相互重叠的窗口，每个窗口按自己的首个值做相对缩放，让网络学的是涨跌百分比而不是绝对价位；按配置原样搭出多层 LSTM（一种循环层，会把一份“记忆”从上一个时间步带到下一个）；训练；再在留出的 15% 数据上做多步预测，和真实序列画在一张图里。逐点预测和整段预测只差 `run.py` 里一行注释。这张图*说明*了什么——以及为什么一张好看的标普曲线不是交易信号——要看配套文章，代码本身不讲。
+
+![lstm-time-series — 主干用户故事](../../../assets/flow/lstm-time-series.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/lstm-time-series.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：搭老版 Python 3.5 + TF1 环境，装锁定依赖 — `tensorflow-gpu==1.10.0 · keras==2.2.2`
+2. **你**：选好 CSV、列、窗口长度、网络层和训练轮数 — `config.json`
+3. **你**：运行入口脚本 — `run.py`
+4. **LSTM Neural Network for Time Series Prediction**：把序列切成定长窗口，每个窗口按首个值做相对缩放
+5. **LSTM Neural Network for Time Series Prediction**：按配置搭出多层 LSTM，训练并保存模型
+6. **LSTM Neural Network for Time Series Prediction**：在留出的数据上做多步预测，并和真实序列画在一起
+
+**价值**：在一份能对照文章读完的短代码里，亲眼看到切窗、归一化和 LSTM 序列预测怎么跑通
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要一个生产级、乃至当下能用的预测库。** 它钉死在 TensorFlow 1.10 / Keras 2.2 / Python 3.5 时代的栈上（2018 年的东西）；这些在现代环境里不下大力气是装不干净的。它是冻结的教学样例，不是维护中的工具。[推断]
 - **你想要顶尖的时序精度。** 现代预测会用 Darts、GluonTS、Prophet 或基于 transformer 的模型；一个 2018 年手搓的堆叠 LSTM 是基线，不是有竞争力的方法。
 - **尤其是炒股价预测。** 标普 500 的 demo 只是示意；金融价格序列近乎随机游走，这不是交易系统——把 demo 当成 alpha 是经典陷阱。
 - **AGPL-3.0 对你是个问题。** 这是强 copyleft / 网络 copyleft 许可；把它嵌进闭源或 SaaS 产品会带来义务，多数团队不会为一段 200 行的样例承担。不如照着文章自己重写。
-- **你以为会有持续支持。** 单一作者，自 2023 年起停摆，约 50 个 open issue 无人应答——你提 issue，没人会来。
+- **你以为会有持续支持。** 单一作者，自 2019-04 起再无提交，约 40 个 open issue 无人应答——你提 issue，没人会来。
 
 ## 横向对比
 
@@ -117,15 +139,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2023-03；无 release/tag。约 50 个 open issue 且维护者近期无动作⇒ 作为维护中的项目实际上已**冻结/废弃**——对教学品无妨，但作为依赖则不合格。[推断]
-- **治理 / bus factor。** 单一作者（jaungiers）；bus factor = 1。一个一人、停摆、约 7 年的仓库上有约 5.2k star，那是**人气，不是健康**——经典的「名教程」信号，照此标注。[推断]
-- **年龄与 Lindy 判断。** 2016-12 创建（约 9 年）但**已不活跃**（自 2023 起停摆）⇒ 此处单凭年龄*不算* Lindy；老而停滞通不过「仍活跃」检验。它的长寿在于被当作参考样例，而非活的软件。[推断]
+- **维护（2026-10）。** 默认分支最后提交在 2019-04（2023-03 的 `pushed_at` 没有带来默认分支提交）；无 release/tag。约 40 个 open issue 且维护者毫无动作⇒ 作为维护中的项目实际上已**冻结/废弃**——对教学品无妨，但作为依赖则不合格。[推断]
+- **治理 / bus factor。** 单一作者（jaungiers）；bus factor = 1。一个一人、已停摆约 7 年的仓库上有约 5.2k star，那是**人气，不是健康**——经典的「名教程」信号，照此标注。[推断]
+- **年龄与 Lindy 判断。** 2016-12 创建（约 10 年）但**已不活跃**（2019 年后再无提交）⇒ 此处单凭年龄*不算* Lindy；老而停滞通不过「仍活跃」检验。它的长寿在于被当作参考样例，而非活的软件。[推断]
 - **采用度。** 约 5.2k star / 约 1.9k fork——作为学习参考被广泛 clone、为课程作业被 fork；这才是它真正的角色。[未验证]
 - **风险标记。** 复用时的头号风险是 **AGPL-3.0**（网络 copyleft 义务）；外加一个彻底 EOL 的 TF1 栈。两者都把你推向重写思路、而非把仓库 vendoring 进来。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 5.2k star / 约 1.9k fork / 约 50 个 open issue；数字对时间敏感，仅供参考。
+- [未验证] 截至 2026-10-08 约 5.2k star / 约 2.0k fork / 约 42 个 open issue（含 PR 约 50）；数字对时间敏感，仅供参考。
 - [未验证] README 引用了配套文章和视频链接（altumintelligence.com / YouTube）；其是否仍可访问此处未核实。
 - [推断]「现代环境装不干净」是从钉死的 TF 1.10 / Python 3.5 时代依赖推断（TF1 已 EOL），并非来自实测安装。
-- [推断]「废弃」是从最后 push 日期加无 release 加无人应答的 issue 推断，并非来自明确的弃用声明。
+- [推断]「废弃」是从 2019-04 的最后提交日期加无 release 加无人应答的 issue 推断，并非来自明确的弃用声明。

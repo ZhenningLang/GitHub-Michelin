@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "nginx-upload-module does", "zh": "nginx-upload-module 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build NGINX with the module compiled in", "zh": "编译 NGINX，把模块编进去"},
+    {"lane": "you", "en": "In the upload location, set where files land and which backend gets the request", "zh": "在上传 location 里指定文件落盘目录和接请求的后端", "code": "upload_store /tmp 1 · upload_pass @test", "component": {"en": "nginx.conf directives", "zh": "nginx.conf 指令"}},
+    {"lane": "you", "en": "Declare the fields that replace each file in the forwarded form", "zh": "声明转发表单里用哪些字段替代每个文件", "code": "upload_set_form_field $upload_field_name.path \"$upload_tmp_path\""},
+    {"lane": "them", "en": "Parses the multipart body as it arrives and writes each file into upload_store", "zh": "边收边解析 multipart 请求体，把每个文件写进 upload_store"},
+    {"lane": "them", "en": "Strips the file bytes, fills in name/type/path (plus md5/size) and passes the form on", "zh": "去掉文件字节，填上文件名、类型、路径（及 md5、大小），把表单转给后端"},
+    {"lane": "you", "en": "Your backend reads the path field and moves or processes the file on disk", "zh": "后端读路径字段，直接搬走或处理磁盘上的文件"}
+  ],
+  "value": {"en": "Slow multi-GB uploads are absorbed by NGINX; your app gets a small POST describing files already on disk", "zh": "慢速大文件上传由 NGINX 接住，应用只收到一个描述已落盘文件的小 POST"},
+  "sources": [
+    "https://github.com/fdintino/nginx-upload-module#description (upload_store / upload_pass / upload_set_form_field / $upload_tmp_path)",
+    "https://github.com/fdintino/nginx-upload-module#example-configuration (upload_pass @test, upload_store /tmp 1, upload_set_form_field $upload_field_name.path \"$upload_tmp_path\")"
+  ]
+}

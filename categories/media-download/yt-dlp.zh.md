@@ -6,8 +6,8 @@ category: media-download
 tags: [video-downloader, audio-downloader, cli, youtube, python, extractor]
 language: Python
 license: Unlicense
-maturity: active, 174k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: 2026.08.19 stable (nightly builds in between), active, ~196k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-07-04T22:41:31Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:36:22Z
+  computed_at: 2026-10-08T08:22:04Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 10
+        last_commit_age_days: 10
+        active_weeks_13: 9
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 9.3
-        qualifying_issues: 15
+        median_ttfr_hours: 2.5
+        qualifying_issues: 17
         band: relaxed_solo
         window_offset_days: 13
         source: issue
@@ -46,14 +46,15 @@ health:
       raw:
         registry: pypi.org
         canonical_package: yt-dlp
+        package_link: ecosystems_repository_url
         dependent_repos_count: 3540
-        downloads_last_month: 13137179
+        downloads_last_month: 12757314
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.07
-        homebrew_installs_90d: 142372
+        cross_check_divergence: null
+        homebrew_installs_90d: 137327
         homebrew_tier: A
-        release_downloads: 226465698
+        release_downloads: 230045878
         release_assets: 1633
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,15 +62,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2158
-        last_commit_age_days: 6
+        repo_age_days: 2173
+        last_commit_age_days: 10
         cohort: tool
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 40
-        top1_share: 0.514
-        top3_share: 0.748
+        top1_share: 0.506
+        top3_share: 0.751
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,65 +81,89 @@ health:
         relicense_36mo: false
         content_license: null
 ---
-
 # yt-dlp
 
-一款功能丰富的命令行音视频下载器，是 youtube-dl 的活跃维护分叉，支持数千站点，具备更快的提取器修复和现代化功能。
+你想把一场讲座、一期播客或整个播放列表存成本地文件，但网站只给一个播放器——你看到的网址只是网页，不是视频：真正的流被拆成独立的视频轨和音频轨，藏在每次访问都会变的令牌后面。yt-dlp 知道几千个站点各自怎么藏流，挑出最好的视频和音频，合并成一个名字可预期的文件。
 
 ![yt-dlp — 健康度雷达](../../assets/health/yt-dlp.zh.svg)
 
 ## 何时使用
 
-你在构建媒体管线、归档内容，或需要从流媒体站点抓取音视频以便本地处理。你想要一个开箱即支持数百站点的 CLI 工具，能自动选择最佳质量流、合并格式、嵌入字幕、跳过赞助片段，并能作为 cron 任务或内嵌在 Python 脚本中运行。你选择 yt-dlp 而不是 youtube-dl，因为原始上游的提取器修复已严重放缓；你选它而不是 lux，因为 lux 是单二进制 Go 工具，站点列表更窄、提取器更新更慢；你选它而不是 you-get，因为 you-get 的提取器目录更小、维护节奏更低。一次 pip 安装，一条命令，yt-dlp 就能解析 URL、选择格式、按可预测的文件名模板写入文件。
+你在搭媒体处理流水线、归档一个频道、给转写模型喂音频，或者只是想从一个没有下载按钮的页面拿到 `talk.mp4`。你用 yt-dlp，是因为它自带几千个站点的提取器（YouTube、Vimeo、Twitch 回放、哔哩哔哩、新闻站、播客），一条 `yt-dlp -f "bv*+ba/b" URL` 就会解析页面、选出最好的纯视频流加最好的纯音频流、下载后交给 ffmpeg 合并；加 `-x` 同一次运行就变成抽音频，`--sponsorblock-remove` 剪掉赞助片段，`--download-archive` 让定时任务只抓新上传的内容。
+
+选它而不是 [youtube-dl](youtube-dl.zh.md)，是因为 youtube-dl 最后一个打标签的版本停在 2021 年，而 YouTube 这类站点每个月都在变；yt-dlp 大约每月发一次稳定版，中间还有每夜构建。当你需要站点覆盖面、细粒度的格式选择和后处理，而不是一个只盯几个平台的小巧二进制时，选它而不是 [you-get](you-get.zh.md) 或 [lux](lux.zh.md)。
+
+## 怎么用起来
+
+yt-dlp 是一个 Python 命令行程序，每个站点对应一个*提取器*——知道如何把该站点的页面或 API 变成一份可用格式清单的代码（每个“格式”就是一条特定分辨率、编码和码率的流）。对 YouTube 来说，这一步现在还包括破解播放器里的一道 JavaScript 挑战，yt-dlp 通过 `yt-dlp-ejs` 组件把它交给外部 JavaScript 运行时（默认 Deno）去算。你提供网址，以及可选的格式选择器（`-f`）、输出文件名模板（`-o`，默认 `%(title)s [%(id)s].%(ext)s`）、登录内容用的 cookie（`--cookies-from-browser`）和后处理参数。其余都由 yt-dlp 完成：按你的规则挑格式，下载（HLS/DASH 这类流媒体站常用的分段格式会按分片下载），再调用 ffmpeg 合并、转封装、抽音频，或嵌入字幕、封面和章节。同一套引擎也能在 Python 里导入（`yt_dlp.YoutubeDL`），但 README 建议其他语言的程序调用 CLI 并解析 `-J` 输出的 JSON，而不是解析普通输出。
+
+![yt-dlp — 主干用户故事](../../assets/flow/yt-dlp.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/yt-dlp.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装 yt-dlp，再配上 ffmpeg 和 Deno 等 JS 运行时 — `python3 -m pip install -U "yt-dlp[default]"` — 组件：`yt-dlp 命令行`
+2. **你**：对页面网址运行它，可选地带上格式选择器 — `yt-dlp -f "bv*+ba/b"`
+3. **yt-dlp**：匹配站点提取器，列出所有可用的流；YouTube 的 JS 挑战也替你解 — 组件：`提取器 + yt-dlp-ejs`
+4. **yt-dlp**：按你的规则挑出最好的纯视频和纯音频格式
+5. **yt-dlp**：两路都下载，交给 ffmpeg 合并成一个按模板命名的文件 — 组件：`ffmpeg 后处理器`
+
+**价值**：一个页面网址变成最高画质的本地文件，不用自己找流地址、手工合并
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **DRM 保护内容。**如果你需要解密 Widevine、PlayReady 或 FairPlay DRM，请改用授权流媒体服务或专用 DRM 工具，而不是 yt-dlp，因为它无法解密受保护流，只会失败或仅返回未加密部分。
-- **批量商业用途或违反服务条款的使用。**如果你需要产品级带 Web UI 的媒体保存服务，请改用 [cobalt](cobalt.zh.md)，而不是 yt-dlp，因为许多站点在服务条款中禁止下载，youtube-dl 本身也曾在 2020 年遭受 DMCA 下架（后恢复）。
-- **无提取器的重度 JS 单页应用。**如果你需要执行任意页面 JavaScript 才能获取媒体，请改用 Puppeteer 或 Playwright 等无头浏览器爬虫，而不是 yt-dlp，因为它不运行客户端 JavaScript，对把媒体藏在按请求令牌方案之后的站点若无书面提取器就会失败。
-- **大规模地理限制或登录墙内容。**如果你需要验证码破解、身份轮换或反爬虫保护，请改用 Firecrawl 等专用爬取平台或住宅代理服务，而不是 yt-dlp，因为它只能传递 cookie 和代理，无法屏蔽 IP 封禁。
-- **需要稳定的库 API。**如果你需要语义化版本稳定的编程接口，请改用 [youtube-dl](youtube-dl.zh.md) 作为更稳定（但已停滞）的库，或写专用爬虫，而不是 yt-dlp，因为它的内部 API 和提取器行为会不经通知地改变，作为 shipped 产品的硬依赖有风险。
-- **直播抓取或极高并发。**如果你需要可靠的直播 HLS/DASH 抓取或大规模并行作业，请改用 FFmpeg 直接调用或专用流媒体采集工具，而不是 yt-dlp，因为它的直播抓取和并发支持很脆弱。
+- **受 DRM 保护的流。** yt-dlp 不解密 Widevine、PlayReady 或 FairPlay；Netflix 这类服务会失败。请用服务商正版应用里的离线下载功能。
+- **你想在不装 JavaScript 运行时的情况下完整支持 YouTube。** 从 2025 年底起，README 把 `yt-dlp-ejs` 加一个 JS 运行时（推荐 Deno，也可用 Node、Bun 或 QuickJS）列为完整支持 YouTube 的必需项；没有它，可用的客户端和格式会变少。如果你的环境跑不了 Deno 或 Node，就要接受 YouTube 效果打折——元数据改用站点官方 API，或者接受较低画质的格式。
+- **站点不受支持，或需要执行任意页面 JavaScript。** yt-dlp 只为特定提取器的挑战运行 JS，并不渲染页面。不支持的站点，先用 [Playwright](../web-automation/playwright-family/playwright.zh.md) 这类浏览器自动化工具抓到流地址，再交给 yt-dlp 或 [FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md)。
+- **对抗反爬的大规模抓取。** yt-dlp 能带 cookie 和代理，也能伪装浏览器 TLS 指纹（经 curl_cffi 的 `--impersonate`），但 YouTube 越来越多地要求 PO token 并限制 IP。批量拿元数据，请用平台官方 API（比如 YouTube Data API），不要靠轮换账号——同时看清站点条款；youtube-dl 本身在 2020 年就收到过 DMCA 下架（后来撤回）。
+- **要可靠地连续录几个小时直播。** README 把 `--live-from-start` 标为实验性功能。专门录直播，用 Streamlink（未收录）接 [FFmpeg](../media-processing/video-audio/transcoding-and-pipelines/ffmpeg.zh.md)。
+- **给只想在网页里贴链接的非技术用户用。** yt-dlp 是命令行工具；要浏览器界面和 API，自托管 [cobalt](cobalt.zh.md)。
+- **你要再分发打包好的二进制，并且在意许可证。** 仓库和 PyPI 包是 Unlicense，但 README 指出用 PyInstaller 打的可执行文件含 GPLv3+ 代码，整体按 GPLv3+ 授权。在意这一点就分发 PyPI wheel 或 zipimport 版本。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [youtube-dl](youtube-dl.zh.md) | ✅ | 原始上游项目。 | youtube-dl 是发布已放缓的 legacy 上游；yt-dlp 是活跃维护分叉，修复更快、功能更多。面向 YouTube 和热门站点时默认用 yt-dlp。 |
-| [you-get](you-get.zh.md) | ✅ | 面向中文站点的极简 Python CLI。 | 比 yt-dlp 更轻更简单，但提取器目录更小、维护活跃度更低。 |
-| [lux](lux.zh.md) | ✅ | 快速的单二进制 Go 下载器。 | 无需 Python 运行时，但站点列表更窄、提取器更新慢于 yt-dlp。 |
-| [cobalt](cobalt.zh.md) | ✅ | 可自托管的 Web UI + API 媒体下载器。 | 面向浏览器的友好服务，不是用于自动化管线的可脚本化 CLI。 |
-| [gallery-dl](gallery-dl.zh.md) | ✅ | 专注于图像和图库站点。 | 与视频/音频提取互补，而非替代品。 |
+| [youtube-dl](youtube-dl.zh.md) | ✅ | 凡是要在 YouTube 等快速变化的站点上持续可用的场景，都选 yt-dlp；只有改不动参数的老脚本才留着 youtube-dl，因为它最后一个打标签的版本是 2021.12.17。 | youtube-dl 支持非常老的 Python、参数大家都熟；yt-dlp 放弃了停止维护的 Python 版本，但每月都有提取器修复，还多了 SponsorBlock、浏览器 cookie 和更好的格式排序。 |
+| [you-get](you-get.zh.md) | ✅ | 只需要几个国内视频站、想要一个小脚本时，you-get 还能用；其他情况选 yt-dlp，因为 you-get 自 2025-04 起默认分支就没有提交了。 | you-get 更简单、参数更少；yt-dlp 覆盖的站点多得多且在积极维护，代价是参数面更大。 |
+| [lux](lux.zh.md) | ✅ | 想要不依赖 Python 的单个 Go 二进制、且你的站点在它的列表里时选 lux；要覆盖面和格式控制时选 yt-dlp。 | lux 一个静态文件就能部署；它最后一个打标签的版本在 2024-05，站点列表也短得多。 |
+| [cobalt](cobalt.zh.md) | ✅ | 要一个非技术用户能贴链接的自托管网页界面或 HTTP API，选 cobalt；要脚本化流水线、归档和后处理，选 yt-dlp。 | cobalt 友好、方便分享，但站点和选项更少；yt-dlp 是命令行工具，控制力深，没有界面。 |
+| [gallery-dl](gallery-dl.zh.md) | ✅ | 图集、booru 图站和美术站用 gallery-dl；视频和音频用 yt-dlp——gallery-dl 遇到视频时自己也会调用 yt-dlp。 | 两者互补：gallery-dl 管图片翻页和按元数据命名，yt-dlp 管流的选择和封装。 |
 
 ## 技术栈
 
-- **Python**——主要实现语言
-- **按站点提取器类**——面向不同托管站点的模块化插件架构
-- **格式选择引擎**——按用户标准选择最佳可用流
-- **后处理管线**——调用外部工具进行 remux、元数据嵌入和缩略图转换
+- **语言：** Python（CPython 3.10+、PyPy 3.11+），Unlicense 许可。
+- **架构：** 按站点划分的提取器类 → 格式选择与排序引擎 → 下载器（原生 HTTP、HLS/DASH 分片下载器，可选 aria2c 等外部下载器）→ 后处理器（主要靠 ffmpeg/ffprobe 做合并、转封装、抽音频、嵌入）。
+- **YouTube JS 挑战：** `yt-dlp-ejs` 的 JavaScript 组件在外部运行时里执行（默认启用 Deno；Node、Bun、QuickJS 需经 `--js-runtimes` 开启）。
+- **扩展性：** 插件系统支持第三方提取器和后处理器；可在 Python 里通过 `yt_dlp.YoutubeDL` 嵌入。
+- **分发：** PyPI（`yt-dlp[default]`）、Windows/macOS/Linux 独立可执行文件、zipimport 二进制以及第三方包管理器；发布渠道分 `stable`、`nightly`、`master`。
 
 ## 依赖
 
-- **Python 解释器**——基本操作的唯一硬性要求
-- **可选 ffmpeg**——强烈建议用于音频提取、格式合并和 remux（`--extract-audio`、`--merge-output-format`）
-- **可选 ffprobe**——用于元数据和格式探测
-- **网络访问**——出站 HTTP(S) 到目标站点；可选代理或 cookie 文件用于登录墙内容
-- **无服务需运行**——执行后退出；无守护进程或数据库
+- **必需：** Python 3.10+（用独立可执行文件则不需要）。
+- **强烈推荐：** `ffmpeg` 和 `ffprobe`（合并分开的视频/音频、抽音频、嵌入），`yt-dlp-ejs` 加 Deno 等 JavaScript 运行时（完整支持 YouTube）。
+- **可选：** `curl_cffi`（浏览器伪装）、`certifi`、`brotli`、`websockets`、`requests`、`mutagen`/AtomicParsley（嵌入封面）、`secretstorage`（读取 Linux 上 GNOME 钥匙环里的浏览器 cookie）。
+- **没有服务要跑：** 执行完就退出，不需要托管任何东西。
 
 ## 运维难度
 
-**运行低，保持更新中等。** 安装 trivial（`pip install yt-dlp` 或独立二进制）。真正的运维负担在于提取器时效性：流媒体站点频繁变化，虽然 yt-dlp 比 youtube-dl 更新快得多，你仍需保持较新版本。对一次性脚本没问题；对长期自动化管线，要为版本锁定和定期更新预留预算。`--update` 标志有帮助，但 CI 环境应锁定版本并测试新版本。
+**跑起来低，保持最新中等。** 安装是一条命令，运行也是一条命令。持续的工作是跟版本：站点一变提取器就会坏，YouTube 尤甚，所以长期运行的流水线应该锁定版本、测试升级并经常更新（二进制用 `yt-dlp -U`，否则重跑 pip；超过 90 天的版本会打印警告）。最近 YouTube 要求 JS 运行时、部分客户端要求 PO token，这意味着要改环境，而不只是升版本。cookie、代理和限速都得你自己管。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 10 周有提交；最后提交距今 6 天。
-- **响应速度**：Grade A——中位首次响应时间 9.3 小时，基于 15 个 qualifying issues/PRs。
-- **采用广度**：Grade A——pypi.org 上月下载量 13,137,179（包名：yt-dlp）。
-- **长青度**：Grade A——仓库已创建 2158 天。
-- **治理集中度**：Grade B——前三贡献者占比 74.8%（过去 12 个月内 40 位活跃维护者）。
-- **许可风险**：Grade A——Unlicense 许可证。
+
+- **维护——非常活跃（2026-10-08）。** 稳定版大约每月一次（2026.06.09、2026.07.04、2026.08.19），中间有每夜构建；默认分支多数周都有提交。
+- **治理——团队而非单人。** `yt-dlp` GitHub 组织近 12 个月有 40 位活跃的维护者和贡献者；雷达治理轴的 B 反映前三名贡献者占近期提交的约 75%，核心仍是一个小团队在扛。
+- **背书与 Lindy。** 志愿者运营，没有公司所有者。这个分叉始于 2020 年，但继承了 youtube-dl 自 2008 年起的血统；“年龄 × 仍活跃”让它成为本品类最稳的选择，前提是志愿者的精力和法律环境都还在。
+- **采用度。** 是 GitHub 上星标最多的 Python 工具之一，也是许多图形界面、机器人和归档工具背后的事实标准引擎；[gallery-dl](gallery-dl.zh.md) 下载视频时就依赖它。
+- **风险信号。** 真正的风险是针对下载器的法律压力（2020 年 youtube-dl 的 DMCA）和平台的对抗措施（JS 挑战、PO token），而不是许可证；Unlicense 的核心很宽松，但打包好的可执行文件是 GPLv3+。
+
 ## 存疑（未验证）
 
-- 支持的站点精确数量（“数千”）随时间变化；请用 `--list-extractors` 核实你的具体目标站点。
-- SponsorBlock 集成和其他高级功能可能需要额外依赖或默认未启用的配置。
-- [推断] 高 star 数（174k）既反映真实实用性，也得益于作为广为人知的 youtube-dl 项目继任者的曝光加成。
-- 某些区域或 niche 站点的提取器可能由社区贡献，测试深度不如核心 YouTube 提取器。
+- [推断] “几千个站点”是 README 的说法；2026-10-08 的 `supportedsites.md` 列了约 1,700 个提取器条目，其中不少只部分可用或需要登录。
+- [推断] JS 运行时要求“从 2025 年底起”，是根据 2025.10.22 和 2025.11.12 的发布说明首次提到 EJS/Deno 推断的；具体哪一版开始把它列为完整支持 YouTube 的必需项没有确认。
+- [未验证] “许多图形界面和机器人背后的事实标准引擎”基于对生态的了解，不是依赖普查。
+- [未验证] Streamlink 能否胜任数小时的直播录制，没有为本页重新核实。

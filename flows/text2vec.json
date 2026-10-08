@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "text2vec does", "zh": "text2vec 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch, then the library", "zh": "先装 PyTorch，再装这个库", "code": "pip install torch · pip install -U text2vec"},
+    {"lane": "you", "en": "Load a released Chinese model by its Hugging Face name", "zh": "按 Hugging Face 名字加载一个已发布的中文模型", "code": "SentenceModel(\"shibing624/text2vec-base-chinese\")"},
+    {"lane": "them", "en": "Downloads and caches the weights on first use, then runs locally", "zh": "首次使用时下载并缓存权重，之后在本地运行"},
+    {"lane": "you", "en": "Encode your whole answer corpus once", "zh": "把整份答案库编码一次", "code": "corpus_embeddings = embedder.encode(corpus)"},
+    {"lane": "them", "en": "Turns each sentence into a fixed-length vector (768 numbers for the base model)", "zh": "把每句话变成一条定长向量（base 模型是 768 个数）"},
+    {"lane": "you", "en": "Encode the user's question and search the corpus", "zh": "编码用户的问题，到答案库里搜", "code": "semantic_search(query_embedding, corpus_embeddings, top_k=5)"},
+    {"lane": "them", "en": "Scores every corpus vector by cosine similarity and returns the top-k ids with scores", "zh": "用余弦相似度给每条答案打分，返回前 k 条的编号和分数"}
+  ],
+  "value": {"en": "Chinese question matching works out of the box — no training set to collect and no retrieval service to run", "zh": "中文问句匹配开箱即用：不用先攒训练集，也不用起一个检索服务"},
+  "sources": [
+    "https://github.com/shibing624/text2vec#install (pip install torch; pip install -U text2vec)",
+    "https://github.com/shibing624/text2vec#usage (SentenceModel(\"shibing624/text2vec-base-chinese\"), m.encode -> Embedding shape: (768,))",
+    "https://github.com/shibing624/text2vec/blob/master/examples/semantic_search_demo.py (corpus_embeddings = embedder.encode(corpus); semantic_search(query_embedding, corpus_embeddings, top_k=5))",
+    "https://github.com/shibing624/text2vec/blob/master/text2vec/similarity.py (semantic_search: score_function=cos_sim, corpora up to about 1 Million entries)",
+    "https://github.com/shibing624/text2vec/blob/master/text2vec/sentence_model.py (transformers AutoTokenizer/AutoModel, encoder_type default MEAN)"
+  ]
+}

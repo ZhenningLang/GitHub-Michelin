@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "ComfyUI does", "zh": "ComfyUI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch for your GPU plus the requirements, then start the server", "zh": "装好对应显卡的 PyTorch 和依赖，启动服务", "code": "python main.py"},
+    {"lane": "you", "en": "Drop the model files you downloaded into the matching models/ subfolders", "zh": "把下载好的模型文件放进 models/ 下对应的子目录", "code": "models/checkpoints"},
+    {"lane": "them", "en": "Serves the node-graph editor in your browser on port 8188", "zh": "在浏览器里提供节点图编辑器，默认端口 8188", "component": {"en": "Python server + web frontend", "zh": "Python 服务端 + 网页前端"}},
+    {"lane": "you", "en": "Open a template or wire loader, text encoder, sampler and decoder nodes, then queue it", "zh": "打开模板，或自己连好加载、编码、采样、解码节点，然后排队执行", "code": "Ctrl + Enter"},
+    {"lane": "them", "en": "Runs only the nodes whose inputs changed, moving weights between VRAM and RAM as needed", "zh": "只重跑输入变了的节点，按需在显存和内存之间搬动权重", "component": {"en": "execution engine", "zh": "执行引擎"}},
+    {"lane": "them", "en": "Saves the output with the whole workflow and seeds embedded in the file", "zh": "保存结果，文件里嵌着完整工作流和随机种子"}
+  ],
+  "value": {"en": "A reusable, shareable generation pipeline on your own hardware — drag any output back in to get its exact graph", "zh": "一条在自己机器上跑、可复用可分享的生成管线——把任何一张结果拖回来，就能还原它的整张图"},
+  "sources": [
+    "https://github.com/Comfy-Org/ComfyUI/blob/master/README.md (Manual Install: pip install -r requirements.txt, python main.py; Put your SD checkpoints in models/checkpoints; Ctrl + Enter queues the graph; only changed parts re-execute; dragging a generated png restores the full workflow including seeds)",
+    "https://github.com/Comfy-Org/ComfyUI/blob/master/comfy/cli_args.py (--port default 8188, --listen default 127.0.0.1)",
+    "https://github.com/Comfy-Org/ComfyUI/blob/master/script_examples/basic_api_example.py (File -> Export (API); POST to http://127.0.0.1:8188/prompt)"
+  ]
+}

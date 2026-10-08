@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "DuckDB does", "zh": "DuckDB 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the client package; the whole engine ships inside it", "zh": "装客户端包，整个引擎就在包里", "code": "pip install duckdb"},
+    {"lane": "you", "en": "Point SQL straight at your files or DataFrames — no load step", "zh": "SQL 直接指向文件或 DataFrame，不用先导入", "code": "duckdb.sql(\"SELECT * FROM 'example.parquet'\")"},
+    {"lane": "them", "en": "Runs the query inside your process: reads only the needed columns, in parallel on all cores", "zh": "在你的进程里执行：只读需要的列，多核并行", "component": {"en": "in-process engine", "zh": "进程内引擎"}},
+    {"lane": "you", "en": "Open a database file when results should outlive the script", "zh": "结果要留到脚本之后，就打开一个库文件", "code": "duckdb.connect(\"file.db\")"},
+    {"lane": "them", "en": "Stores tables in that one file, which any DuckDB client can reopen later", "zh": "表存进这一个文件，之后任何 DuckDB 客户端都能再打开"}
+  ],
+  "value": {"en": "Warehouse-style SQL over local and remote files from a script, notebook or CLI — no server, no import job", "zh": "在脚本、notebook 或命令行里对本地和远程文件跑数仓式 SQL，不用起服务、不用写导入任务"},
+  "sources": [
+    "https://github.com/duckdb/duckdb README (Data Import: SELECT * FROM 'myfile.parquet')",
+    "https://github.com/duckdb/duckdb-web docs/current/clients/python/overview.md (pip install duckdb; duckdb.sql(\"SELECT * FROM 'example.parquet'\"); duckdb.connect(\"file.db\") persists and can be reopened from other DuckDB clients; querying pandas/Polars DataFrames)",
+    "https://github.com/duckdb/duckdb-web docs/current/connect/concurrency.md (in-process mode)"
+  ]
+}

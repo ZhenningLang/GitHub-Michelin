@@ -7,7 +7,7 @@ tags: [elasticsearch, python, query-dsl, orm, search, deprecated, merged]
 language: Python
 license: Apache-2.0
 maturity: v8.18.0, ARCHIVED — merged into elasticsearch-py, 3.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-04-18T13:50:16Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T15:53:42Z
+  computed_at: 2026-10-08T08:16:51Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 527
+        last_commit_age_days: 538
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -46,10 +46,10 @@ health:
         canonical_package: elasticsearch-dsl
         package_link: ecosystems_repository_url
         dependent_repos_count: 3207
-        downloads_last_month: 5280991
+        downloads_last_month: 4346505
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.21
+        cross_check_divergence: 1.03
         release_downloads: 421
         release_assets: 8
         release_tier: D
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4589
-        last_commit_age_days: 527
+        repo_age_days: 4600
+        last_commit_age_days: 538
         cohort: library
     governance:
       grade: "?"
@@ -87,6 +87,27 @@ A high-level, Pythonic DSL over the low-level Elasticsearch client — query obj
 You're a Python engineer building search features against Elasticsearch and you're tired of assembling nested query dictionaries by hand — the raw client makes you write deeply-nested JSON for every bool/filter/aggregation, and refactoring a query means editing dict literals with no help from your editor. With elasticsearch-dsl you write `Search().query("match", title="python").filter("term", published=True)`, define your documents as Python classes with typed fields, and let the library serialize to the right request body — closer to an ORM/query-builder experience than raw JSON.
 
 But for new code in 2026 you should **not install this package** — you install the official `elasticsearch` client (≥8.18) and `import elasticsearch.dsl`, which is the same code now maintained in-tree. You'd only read this standalone repo if you maintain a legacy codebase pinned to `elasticsearch-dsl` 8.17 or older and need to understand or migrate it.
+
+## How it works
+
+Elasticsearch's query language is JSON: a search is a nested tree of `bool`, `must`, `filter` and aggregation objects, and the low-level client makes you write that tree as Python dicts. The DSL replaces the dicts with objects. **You** start a `Search`, chain `.filter(...)`, `.query(...)` and `.exclude(...)`, add aggregations with `s.aggs.bucket(...)`, and call `execute()`. **It** looks up each query type by name (`"match"`, `"term"`), folds them into one compound `bool` query, puts filters in *filter context* (the non-scoring half of a bool query), sends the request through the official low-level client, and wraps the response so you read `hit.title` instead of `hit['_source']['title']`. A second, optional layer, `Document`, maps an index to a Python class with typed fields, so `Article.init()` creates the mapping and `article.save()` writes a document — roughly an ORM for one index. It is a sentence builder rather than a phrasebook: you say what you want piece by piece and it produces the grammatical JSON. All of this now ships inside `elasticsearch` 8.18+; this standalone repo is the archived original.
+
+![elasticsearch-dsl-py — backbone user story](../../../assets/flow/elasticsearch-dsl-py.svg)
+
+<!-- flow-steps:begin (generated from flows/elasticsearch-dsl-py.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the official client 8.18+ and import the DSL from it (legacy code: swap the old import) — `elasticsearch_dsl → elasticsearch.dsl`
+2. **You**: Start a search on a client and index, then chain filters, queries and aggregations — `Search(using=client, index="my-index")`
+3. **elasticsearch-dsl-py**: Builds query objects by name and composes them into one bool query, filters in filter context
+4. **You**: Execute the search — `response = s.execute()`
+5. **elasticsearch-dsl-py**: Sends it through the low-level client and wraps the reply so hits and buckets read as attributes
+
+**Value**: Queries are Python you can refactor, not nested dicts where one misplaced bracket breaks the search
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "boilerpipe does", "zh": "boilerpipe 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build the Maven project from source and put its jar on your classpath (no recent release)", "zh": "从 Maven 源码自行构建，把 jar 放进 classpath（无近期发布）"},
+    {"lane": "you", "en": "Fetch the page yourself and pick a named extractor for it", "zh": "自己把网页下载好，挑一个命名提取器", "code": "ArticleExtractor · DefaultExtractor · CommonExtractors.CANOLA_EXTRACTOR"},
+    {"lane": "you", "en": "Hand it the HTML", "zh": "把 HTML 交给它", "code": "ArticleExtractor.INSTANCE.getText(html)"},
+    {"lane": "them", "en": "Parses the HTML with its bundled NekoHTML into a sequence of text blocks", "zh": "用自带的 NekoHTML 解析 HTML，切成一串文本块"},
+    {"lane": "them", "en": "Scores each block on shallow features like word count and link density; drops boilerplate", "zh": "按词数、链接密度等浅层特征给每块打分，丢掉样板块"},
+    {"lane": "them", "en": "Returns the blocks it kept as plain text", "zh": "把留下的文本块拼成纯文本返回"}
+  ],
+  "value": {"en": "The article body without menus, footers and link lists, inside a JVM process with no external service", "zh": "拿到去掉菜单、页脚、链接列表的正文，全在 JVM 进程里完成，不用外部服务"},
+  "sources": [
+    "https://github.com/kohlschutter/boilerpipe#readme (work-in-progress transmit from Google Code; Maven multi-module pom.xml, version 2.0-SNAPSHOT)",
+    "https://github.com/kohlschutter/boilerpipe/blob/master/boilerpipe-demo/src/main/java/com/kohlschutter/boilerpipe/demo/Oneliner.java (ArticleExtractor.INSTANCE.getText(url); DefaultExtractor; CommonExtractors.CANOLA_EXTRACTOR; advice to download with a fault-tolerant crawler first)",
+    "https://github.com/kohlschutter/boilerpipe/blob/master/boilerpipe-common/src/main/java/com/kohlschutter/boilerpipe/extractors/ExtractorBase.java (getText(String html), getText(Reader), getText(URL) via HTMLFetcher)",
+    "Kohlschütter et al., Boilerplate Detection using Shallow Text Features (WSDM 2010) — shallow text features such as word count and link density, cited on the page"
+  ]
+}

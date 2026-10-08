@@ -6,8 +6,8 @@ category: media-download
 tags: [video-download, youtube, cli, media, extractor, python, downloader]
 language: Python
 license: Unlicense
-maturity: "active-but-slowing, last tagged release 2021.12.17, master still pushed ~2026-02, ~140.6k stars (2026-06)"
-last_verified: 2026-06-28
+maturity: "last tagged release 2021.12.17 (still the PyPI version); last master commit 2025-11-26, quiet since (as of 2026-10-08), ~141.4k stars (2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-02-19T16:45:25Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:09:17Z
+  computed_at: 2026-10-08T08:22:02Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 306
+        last_commit_age_days: 316
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 33.7
-        qualifying_issues: 3
+        median_ttfr_hours: 31.5
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 1
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: pypi.org
         canonical_package: youtube_dl
         dependent_repos_count: 3990
-        downloads_last_month: 148672
+        downloads_last_month: 146459
         graph_tier: B
         volume_tier: C
         cross_check_divergence: 1.0
-        release_downloads: 62789396
+        release_downloads: 62798190
         release_assets: 990
         release_tier: A
         signal_basis: releases
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 5810
-        last_commit_age_days: 306
+        repo_age_days: 5821
+        last_commit_age_days: 316
         cohort: tool
     governance:
       grade: D
@@ -91,9 +91,30 @@ You're scripting a small archival or ingest job — pulling a handful of confere
 
 You also use it when the source isn't YouTube at all — the value is the extractor catalog (~1000 sites: Vimeo, SoundCloud, generic HTML5 `<video>`, many regional and niche hosts). You point it at a URL, and if an extractor exists it normalizes the site's quirks (auth, pagination, manifest parsing) into a uniform `--list-formats` / format-selection interface, so your script treats every supported site the same way.
 
+## How it works
+
+youtube-dl is a Python script that runs, downloads and exits. **What it does for you:** for each URL it finds the matching *extractor* — a per-site module that knows how that site's player hides its real media URLs — and gets back a list of formats plus metadata (title, uploader, playlist position). By default it then takes the best video-only and best audio-only formats, downloads both and has ffmpeg (a separate media tool) mux them into one file; without ffmpeg it falls back to the best single-file format. It names the file from your output template, so a script sees the same command and the same naming scheme whatever site the link came from. **What you do:** install it, install ffmpeg, pass URLs and options, and keep it current. That last part is the catch: `pip install` gives you the 2021.12.17 release (and the README's `yt-dl.org/downloads/latest` link now ends in a 404), while the later site fixes live only on master, so on YouTube you either install from git or move to [yt-dlp](yt-dlp.md).
+
+![youtube-dl — backbone user story](../../assets/flow/youtube-dl.svg)
+
+<!-- flow-steps:begin (generated from flows/youtube-dl.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the script (and ffmpeg if you want best quality or audio extraction) — `sudo -H pip install --upgrade youtube-dl`
+2. **You**: Run it on a video or playlist URL, with an output template for file names — `youtube-dl -o '%(title)s.%(ext)s' URL`
+3. **youtube-dl**: Finds the extractor for that site and reads the page's formats and metadata — component: `per-site extractor`
+4. **youtube-dl**: Picks best video plus best audio by default, downloads both and muxes them with ffmpeg — `-f bestvideo+bestaudio/best`
+5. **youtube-dl**: Writes the file under the name your template produced
+
+**Value**: A script gets the same download command for every supported site, with predictable file names
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **You need it to actually keep working on YouTube today.** This is the decisive filter. youtube-dl's last *tagged* release is 2021.12.17 and the master branch updates have slowed sharply; the actively-maintained fork **yt-dlp** ships fixes far faster and is what most people now run when YouTube changes its player/signature code. For anything load-bearing against YouTube, default to yt-dlp and treat youtube-dl as the legacy upstream. [推断]
+- **You need it to actually keep working on YouTube today.** This is the decisive filter. youtube-dl's last *tagged* release is 2021.12.17 (still what `pip install` gives you) and master has had no commits since 2025-11-26 (~10 months as of 2026-10-08); the actively-maintained fork **yt-dlp** ships fixes far faster and is what most people now run when YouTube changes its player/signature code. For anything load-bearing against YouTube, default to yt-dlp and treat youtube-dl as the legacy upstream. [推断]
 - **JS-heavy / SPA sites with no extractor.** It does not run a browser or execute arbitrary page JavaScript; sites that gate media behind heavy client-side JS, DRM (Widevine/PlayReady), or per-request token schemes without a written extractor will simply fail. It is not a headless-browser scraper.
 - **Geo-restricted, login-walled, or rate-limited at scale.** It can pass cookies/proxies, but it won't solve CAPTCHAs, rotate identities, or shield you from IP bans; bulk-downloading from one IP gets throttled or blocked. Treat geo/ToS bypass as your problem, not the tool's.
 - **Legal / ToS exposure.** Downloading copyrighted media or violating a site's Terms of Service is on you; many target sites prohibit downloading, and youtube-dl itself was the subject of a 2020 DMCA takedown of its GitHub repo (later reinstated). Don't build a product on top of it without checking the law and the ToS.
@@ -130,17 +151,18 @@ You also use it when the source isn't YouTube at all — the value is the extrac
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 33.7 hours across 3 qualifying issues/PRs.
-- **Maintenance — coasting; the active path is the fork (last push ~2026-02, last tagged release 2021.12.17, as of 2026-06).** Not archived and master still gets occasional commits, but the tagged-release gap of 4+ years against a fast-moving target (YouTube player/signature changes) is the decisive signal: upstream lags, and yt-dlp ships the fixes. Treat youtube-dl as legacy upstream [推断].
+- **Responsiveness**: Grade A — median first-response time 31.5 hours across 6 qualifying issues/PRs.
+- **Maintenance — coasting; the active path is the fork (last master commit 2025-11-26, last tagged release 2021.12.17, as of 2026-10-08).** Not archived and master took occasional YouTube fixes through late 2025, though none since, but the tagged-release gap of 4+ years against a fast-moving target (YouTube player/signature changes) is the decisive signal: upstream lags, and yt-dlp ships the fixes. Treat youtube-dl as legacy upstream [推断].
 - **Governance & succession.** `Org`-owned (`ytdl-org/`) — a community org, no vendor or foundation. Roadmap momentum has effectively migrated to the **yt-dlp** fork, which is now the de-facto successor for YouTube extraction; the project's longevity lives on through that fork, not the original tag line [推断].
 - **Age & Lindy verdict — old and historically vindicated, but for *durability* not *currency*.** Created 2010 (~16y old), ~140k stars: among the longest-Lindy tools in this index, and it survived a 2020 GitHub DMCA takedown (later reinstated). But age proves the *idea* endures, not that the upstream binary works on YouTube today — for currency, age × *still-active* points you to yt-dlp.
 - **Risk flags.** Unlicense (public-domain) — no copyleft/relicense friction. The real risks are the 2020 DMCA legal history, the general legal/ToS exposure of downloading, and above all extractor staleness on the upstream tags. For anything load-bearing against YouTube, default to yt-dlp.
 
 ## Caveats (unverified)
 
-- [未验证] ~140.6k GitHub stars as of 2026-06; star counts are date-sensitive and unreliable — indicative only.
-- [未验证] Last *tagged* release is 2021.12.17; the master branch reportedly still received commits around 2026-02 (the "nightly"/master builds are what stay current). The gap between tagged and master is the key maintenance signal — verify current master activity before relying on it.
+- [未验证] ~141.4k GitHub stars as of 2026-10; star counts are date-sensitive and unreliable — indicative only.
+- [未验证] Last *tagged* release is 2021.12.17 (also the latest on PyPI, checked 2026-10-08); the last master commit is 2025-11-26 per the commits API, while the repo's `pushed_at` of 2026-02-19 presumably reflects non-default-branch activity. Only git/nightly builds carry the master fixes. The gap between tagged and master is the key maintenance signal — verify current master activity before relying on it.
 - [推断] yt-dlp being the more-active fork and the de-facto successor for YouTube is the widely-held community position; treat the "default to yt-dlp" recommendation as inference, and re-confirm both projects' activity at decision time.
 - [未验证] README-stated Python support (2.6/2.7/3.2+) and the "~1000 sites" figure come from project docs and shift over time; verify against the current repo and `--list-extractors`.
 - [未验证] The 2020 GitHub DMCA takedown and subsequent reinstatement are reported history, not re-verified here; check current repo status and any legal context yourself.
 - [推断] License is Unlicense (public domain) per the repo; confirm the LICENSE file if license terms are load-bearing for your use.
+- [未验证] On 2026-10-08 the README's install URL `https://yt-dl.org/downloads/latest/youtube-dl` redirected to a GitHub URL under `yt-dlp/yt-dlp` that returned 404; this may be temporary, so re-check before scripting an install from it.

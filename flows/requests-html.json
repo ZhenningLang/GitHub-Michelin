@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "requests-html does", "zh": "requests-html 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library", "zh": "装上这个库", "code": "pipenv install requests-html"},
+    {"lane": "you", "en": "Open an HTMLSession and GET the page", "zh": "开一个 HTMLSession，GET 目标页面", "code": "r = session.get('https://python.org/')", "component": {"en": "HTMLSession (wraps requests)", "zh": "HTMLSession（包着 requests）"}},
+    {"lane": "them", "en": "Fetches it with a browser-like user agent, following redirects and keeping cookies", "zh": "用伪装的浏览器 UA 去取，自动跟重定向、保留 cookie"},
+    {"lane": "them", "en": "Parses the response into r.html, with page links already collected and made absolute", "zh": "把响应解析成 r.html，页面链接已收齐并转成绝对地址"},
+    {"lane": "you", "en": "Select what you need with a CSS selector (or XPath)", "zh": "用 CSS 选择器（或 XPath）挑出要的元素", "code": "r.html.find('#about', first=True)"},
+    {"lane": "them", "en": "Returns elements whose text, attributes and links are ready to use", "zh": "返回元素对象，文本、属性、链接直接可用"}
+  ],
+  "value": {"en": "One object fetches and parses — no wiring requests, a parser and URL-joining together", "zh": "一个对象同时管抓取和解析，不用自己把 requests、解析器和 URL 拼接接到一起"},
+  "sources": [
+    "https://github.com/psf/requests-html#readme (Installation: pipenv install requests-html; Tutorial & Usage: HTMLSession, session.get, r.html.links / absolute_links, r.html.find('#about', first=True), xpath; feature list: mocked user-agent, redirects, connection pooling and cookie persistence)"
+  ]
+}

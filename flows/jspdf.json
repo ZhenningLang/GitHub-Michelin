@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "jsPDF does", "zh": "jsPDF 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the library to your front-end (or Node) project", "zh": "把库加进前端（或 Node）项目", "code": "npm install jspdf"},
+    {"lane": "you", "en": "Create a document; default is A4 portrait in millimetres", "zh": "新建文档，默认 A4 纵向、单位毫米", "code": "const doc = new jsPDF()"},
+    {"lane": "you", "en": "Place text, images and shapes at explicit x/y positions", "zh": "按 x/y 坐标放文字、图片和图形", "code": "doc.text(\"Hello world!\", 10, 10)"},
+    {"lane": "them", "en": "Encodes fonts, images and vectors into PDF objects in memory", "zh": "在内存里把字体、图片、矢量编码成 PDF 对象"},
+    {"lane": "you", "en": "Ask for the file", "zh": "要文件", "code": "doc.save(\"a4.pdf\")"},
+    {"lane": "them", "en": "Serializes a valid PDF and downloads it in the browser, or writes it to disk in Node", "zh": "序列化成合法 PDF，浏览器里直接下载，Node 里写到磁盘"}
+  ],
+  "value": {"en": "The PDF is produced where the data already is — no PDF server, no round-trip, data never leaves the browser", "zh": "PDF 在数据所在之处生成——不用 PDF 服务器、没有往返，数据不出浏览器"},
+  "sources": [
+    "https://github.com/parallax/jsPDF#install (npm install jspdf; unpkg UMD)",
+    "https://github.com/parallax/jsPDF#usage (new jsPDF(), doc.text, doc.save; Node build saves to the working directory)",
+    "https://github.com/parallax/jsPDF/blob/master/src/modules/html.js (html() via html2canvas replayed onto context2d)"
+  ]
+}

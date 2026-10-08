@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="769" viewBox="0 0 880 769" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="769" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="611" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="611" rx="10"/>
+<rect class="pillT" x="474" y="40" width="193.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Markdown Here does</text>
+<path class="edge" d="M62,191 L62,215" marker-end="url(#a)"/>
+<path class="edge" d="M62,334 L62,358" marker-end="url(#a)"/>
+<path class="hand" d="M408,407.5 C439.0,407.5 439.0,431 470,431" marker-end="url(#a)"/>
+<path class="edge" d="M494,501 L494,525" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="119" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="119" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the extension from your</text>
+<text class="t" x="82" y="123">browser&#x27;s add-on store, then reload</text>
+<text class="t" x="82" y="145">your webmail</text>
+<text class="comp" x="82" y="173">component: browser extension</text>
+<rect class="card" x="40" y="217" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="217" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="241" r="10"/>
+<text class="num" x="62" y="245" text-anchor="middle">2</text>
+<text class="t" x="82" y="246">Switch the compose box to its rich</text>
+<text class="t" x="82" y="268">editor and type the email in plain</text>
+<text class="t" x="82" y="290">Markdown</text>
+<text class="c" x="82" y="314">Compose messages in HTML format</text>
+<rect class="card" x="40" y="360" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="360" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="384" r="10"/>
+<text class="num" x="62" y="388" text-anchor="middle">3</text>
+<text class="t" x="82" y="389">Trigger the toggle on the whole body</text>
+<text class="t" x="82" y="411">or on a selection</text>
+<text class="c" x="82" y="435">Markdown Toggle · SHIFT+ALT+M</text>
+<rect class="cardT" x="472" y="407" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="407" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="431" r="10"/>
+<text class="num" x="494" y="435" text-anchor="middle">4</text>
+<text class="t" x="514" y="436">Renders that Markdown to HTML in</text>
+<text class="t" x="514" y="458">place, with highlighted fenced code</text>
+<text class="t" x="514" y="480">blocks</text>
+<rect class="cardT" x="472" y="527" width="368" height="94" rx="8"/>
+<rect class="accT" x="472" y="527" width="4" height="94" rx="2"/>
+<circle class="accT" cx="494" cy="551" r="10"/>
+<text class="num" x="494" y="555" text-anchor="middle">5</text>
+<text class="t" x="514" y="556">Leaves quoted reply text alone and</text>
+<text class="t" x="514" y="578">remembers the source, so toggling</text>
+<text class="t" x="514" y="600">again reverts</text>
+<rect class="val" x="28" y="653" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="677">VALUE</text>
+<text class="valT" x="48" y="701">Recipients get a formatted email with real code blocks; you never touched the toolbar or</text>
+<text class="valT" x="48" y="723">pasted from another editor</text>
+</svg>

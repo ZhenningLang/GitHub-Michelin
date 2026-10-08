@@ -5,20 +5,20 @@ repo: https://github.com/astral-sh/uv
 category: python-tooling
 tags: [python, packaging, dependency-manager, rust, cli]
 language: Rust
-license: Apache-2.0
-maturity: v0.x, active, 87k stars (as of 2026-07)
-last_verified: 2026-07-01
+license: Apache-2.0 OR MIT
+maturity: "v0.12.23 (2026-10-03), active, ~90.5k stars (as of 2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-06T08:47:56Z
+  pushed_at: 2026-10-08T08:37:22Z
   default_branch: main
-  default_branch_sha: 648f5a3bd2be7c6e8465863693d4e625462fcbc1
+  default_branch_sha: 301799d971bccd6af1bc8549b89f834692af7e44
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:56:35Z
+  computed_at: 2026-10-08T08:25:41Z
   overall: A
-  overall_score: 3.83
+  overall_score: 4.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.3
-        qualifying_issues: 53
+        median_ttfr_hours: 7.8
+        qualifying_issues: 37
         band: relaxed_solo
         window_offset_days: 2
         source: issue
@@ -47,29 +47,29 @@ health:
         registry: pypi.org
         canonical_package: uv
         dependent_repos_count: 2
-        downloads_last_month: 128564586
+        downloads_last_month: 127754131
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.04
-        homebrew_installs_90d: 523657
+        cross_check_divergence: null
+        homebrew_installs_90d: 538228
         homebrew_tier: A
-        release_downloads: 630576062
+        release_downloads: 668984073
         release_assets: 4180
         release_tier: A
         signal_basis: homebrew+releases
         tier_source: registry
     longevity:
-      grade: B
+      grade: A
       raw:
-        repo_age_days: 1086
+        repo_age_days: 1102
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 152
-        top1_share: 0.36
-        top3_share: 0.632
+        active_maintainers_12mo: 145
+        top1_share: 0.357
+        top3_share: 0.639
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,61 +80,89 @@ health:
         relicense_36mo: false
         content_license: null
 ---
-
 # uv
 
-用 Rust 编写的极速 Python 包与项目管理器，旨在以单一工具加通用锁文件替代 pip、pip-tools、pipx、poetry、pyenv 等。
+一个 Python 项目往往要拼四五个工具——pip 装包、pip-tools 或 Poetry 锁版本、pyenv 装对 Python、pipx 装命令行工具——CI 上一次全新 `pip install` 还要等好几分钟。uv 是一个 Rust 写的单文件程序，从一份 `pyproject.toml` 和一个锁文件出发把这些活全包了，并从共享缓存安装，重复安装只要几秒。
 
 ![uv — 健康度雷达](../../assets/health/uv.zh.svg)
 
 ## 何时使用
 
-你是一位 Python 开发者，厌倦了等待 `pip install` 解析依赖，或疲于在多个工具间切换——pip 安装、pip-tools 锁定、pipx 管理 CLI 工具、pyenv 管理 Python 版本、poetry 管理项目。你考虑过 Poetry 的成熟项目管理和发布工作流，但你想要更快、更统一的体验，用单一工具和通用锁文件即可。你选择 uv，因为它用基于 Rust 的 CLI 替代了整个工具栈，比 pip 快 10–100 倍安装包、管理 Python 版本、运行带内联依赖元数据的脚本，并产出可入 Git 的锁文件。需要现代解析器和锁文件，而非旧版依赖算法时，选 uv 而非 pip；优先考虑安装速度和统一 CLI，而非成熟发布工作流时，选 uv 而非 Poetry；管理纯 Python 包，而非需要预编译二进制分发的科学栈时，选 uv 而非 Conda。你正在启动新 Python 项目或现代化现有项目，想要最快、最可靠的打包体验。
+你维护一个 Python 服务和它的 CI。新同事的环境搭建文档有一整页：装 pyenv、编译 Python 3.12、建虚拟环境、`pip install -r requirements.txt`，依赖一改还得跑 `pip-compile`——结果某人笔记本解析出的 `urllib3` 版本还是和 CI 不一样。每个 CI 任务跑测试前都要先在 `pip install` 上耗掉一两分钟。你想要一条命令：拉对 Python 版本，一次解析出在 macOS、Linux、Windows 上都成立的锁文件，然后在任何机器上还原出一模一样的环境。
 
+这就是 uv：`uv init`、`uv add requests`、`uv run pytest`。它用一个独立二进制替掉 pip、pip-tools、virtualenv、pipx 和 pyenv，写出跨平台的 `uv.lock`，并复用全局缓存让重复安装几乎瞬间完成。想要锁文件和 Python 版本管理、又不想自己拼工具时，选它而不是 pip + pip-tools；安装速度、Python 版本管理和随手跑脚本或工具比 Poetry 的插件生态更重要时，选它而不是 Poetry；依赖都是普通 PyPI wheel、而不是非 Python 的原生库时，选它而不是 Conda。
+
+## 怎么用起来
+
+你用标准的 `pyproject.toml` 描述项目，剩下的交给 uv。执行 `uv add` 或 `uv lock` 时，它用 PubGrub（一种求解器：要么找出一组彼此兼容的版本，要么明确告诉你是哪几条要求冲突）解析全部依赖，写出 `uv.lock`——一个*通用*锁文件，一份文件里已经为项目支持的每个平台和 Python 版本记好了该用的版本。每次 `uv run` 之前，它都会检查锁文件和项目的 `.venv` 是否还对得上 `pyproject.toml`，哪边落后就悄悄补齐，“你重装依赖了吗”这个问题从此不存在。包只下载一次进全局缓存，再链接到各个环境里，速度主要就来自这里。缺少所需的 Python 时，uv 会自己下载一份托管的 Python 构建。老项目还可以用 `uv pip` 接口：保留 `requirements.txt` 的工作方式，只把解析和安装换成 uv。
+
+![uv — 主干用户故事](../../assets/flow/uv.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/uv.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装独立的 uv 二进制 — `curl -LsSf https://astral.sh/uv/install.sh | sh` — 组件：`uv 命令行`
+2. **你**：建项目并声明依赖 — `uv init example · uv add ruff`
+3. **uv**：解析全部依赖，写出一份跨平台锁文件 — `uv.lock` — 组件：`PubGrub 解析器`
+4. **uv**：建好 .venv，缺 Python 就下载，从全局缓存链接包
+5. **你**：通过 uv 运行命令，不用手动激活环境 — `uv run ruff check`
+6. **uv**：每次运行前，按 pyproject.toml 同步锁文件和环境
+
+**价值**：一个工具、一份锁文件，在每台笔记本和 CI 上几秒内还原出同一个环境
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **如果你需要成熟、久经考验的生态**——如果你需要 20 余年稳定性和边缘情况覆盖的打包工具，用 pip + virtualenv 代替 uv，因为 uv 相对较新（2023 年创建），某些依赖解析的边缘情况或平台特定构建可能仍不如 pip 或 poetry 平滑。
-- **如果你依赖 poetry 的特有功能**——如果你需要 Poetry 的 `pyproject.toml` extras、插件和构建后端生态，用 Poetry 代替 uv，因为迁移现有 poetry 项目可能需要手动调整，且尚未完全实现功能对等。[未验证]
-- **如果你需要 conda-forge 或科学计算二进制包**——如果你需要预编译二进制分发用于科学栈（NumPy、带 CUDA 的 PyTorch），用 Conda 或 Mamba 代替 uv，因为 uv 是 pip 的替代，不是 Conda 的替代，不处理科学计算二进制分发。
-- **如果你在使用没有 Rust 工具链的冷门平台**——如果你需要面向小众架构、无预编译二进制的包管理器，用 pip + 源码构建代替 uv，因为 uv 为常见平台提供预编译二进制，但小众架构可能需要从源码构建。
-- **如果你的团队还没准备好改变工作流**——如果你有稳定的老项目，pip/virtualenv 工作流根深蒂固且没有迁移预算，用 pip + pip-tools 代替 uv，因为 uv 引入了新的命令（`uv pip`、`uv run`、`uv lock`），对于重视稳定性胜过速度的团队，学习曲线可能不值得。
-
+- **你需要它替你管理非 Python 的原生库**（GDAL、CUDA 工具包、MKL、R、编译器）。uv 只从 PyPI 风格的索引安装 Python 包。改用 Conda/Mamba，或 Pixi（它把 conda 包和 uv 的 PyPI 解析器结合在一起）。
+- **你的构建依赖 Poetry 插件或 Poetry 特有的流程。** uv 读取标准的 PEP 621 元数据，有自己的构建后端（`uv_build`，只支持纯 Python 项目）和 `uv publish`，但没有对应 Poetry 插件生态的东西。插件没替换掉之前，继续用 Poetry。
+- **你的包含 C/C++/Rust 扩展模块，又想用 uv 自带的构建后端。** `uv_build` 不构建扩展；构建后端请继续用 scikit-build-core、maturin、setuptools 或 meson-python（uv 仍可以驱动它们）。
+- **你不能接受单一厂商掌控路线图。** uv 由 Astral 主导，这是一家风投支持的公司，OpenAI 于 2026-03-19 宣布将收购它。如果厂商中立是硬要求，改用社区治理的 pip + pip-tools 或 PDM。
+- **你需要一个多年不变、无人值守脚本可以依赖的接口。** uv 仍是 0.x 版本，破坏性变更通过升次版本号发布（2026-07-28 从 0.11 升到 0.12）。CI 里锁定 uv 版本，或者继续用命令行变化很慢的 pip。
+- **团队没有预算改习惯。** 稳定的老项目用 `uv pip install` 就能拿到大部分速度，工作方式不用变；需要重新培训的是完整的 `uv run` / `uv lock` 模式。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| pip | 未收录 | Python 默认包安装器。 | pip 通用且稳定，但慢；uv 快 10–100 倍，自带现代解析器和锁文件。 |
-| Poetry | 未收录 | Python 依赖管理与打包工具。 | Poetry 的项目管理与发布工作流更成熟；uv 更快但较新，功能对等仍在追赶。 |
-| pdm | 未收录 | 支持 PEP 582 的 Python 包管理器。 | pdm 现代且规范合规；uv 更快，但可能缺少一些 pdm 特有的工作流功能。 |
-| Conda | 未收录 | 面向任意语言的跨平台包管理器，尤其适合科学 Python。 | Conda 处理科学计算二进制分发；uv 仅限 Python，不能替代 Conda 的二进制打包能力。 |
+| pip + pip-tools | 未收录 | 老项目或只允许 PyPA 官方工具的环境，继续用 pip + pip-tools；CI 安装耗时或锁文件漂移开始伤人时，换成 uv。 | pip 是默认工具、社区治理，但慢，锁版本、虚拟环境、Python 版本都要另配工具；uv 把这些收进一个快速二进制，代价是归单一厂商所有。 |
+| Poetry | 未收录 | 构建或发布依赖 Poetry 插件就留在 Poetry；新项目更看重速度和 Python 版本管理时选 uv。 | Poetry 插件生态成熟、发布流程久经考验；uv 安装快得多、自己管 Python、能跑脚本和工具，但没有插件机制。 |
+| PDM | 未收录 | 想要遵循标准、由社区而非厂商维护的项目管理器时选 PDM；纯速度和一体化二进制更重要时选 uv。 | PDM 遵循同样的 PEP 标准并支持插件；uv 快得多，还能顶替 pyenv 和 pipx，代价是单一厂商治理。 |
+| Conda / Mamba | 未收录 | 需要把非 Python 二进制（CUDA 工具包、GDAL、R）和 Python 一起求解时用 Conda/Mamba；所需的一切都有 PyPI wheel 时用 uv。 | Conda 能管跨语言的任意原生包，但环境更重、更慢；uv 只管 Python，更轻。 |
+| Pixi | 未收录 | 项目同时混用 conda-forge 二进制和 PyPI 包、又想要锁文件时选 Pixi；纯 PyPI 项目选 uv。 | Pixi 封装 conda 包，并用 uv 的解析器处理 PyPI 依赖；单独的 uv 不支持 conda 频道。 |
 
 ## 技术栈
 
-- **Rust**——主要实现语言，追求性能与内存安全
-- **PubGrub**——依赖解析算法（cargo 与 dart 也在使用）
-- **PEP 517/518/621/660**——现代 Python 打包标准支持
+- **Rust**——整个工具是一个独立的 Rust 二进制（运行 uv 本身不需要 Python）；截至 2026-10-03 为 v0.12.23。
+- **PubGrub**——依赖解析算法（通过 `pubgrub` crate）。
+- **源自 Cargo 的 Git 实现**——用于 Git 依赖。
+- **Python 打包标准**——PEP 517 构建后端（含自家的 `uv_build`）、PEP 621 项目元数据、PEP 723 脚本内联元数据。
+- **托管 Python 构建**——`uv python install` 会下载独立的 CPython/PyPy 构建。
 
 ## 依赖
 
-- 受支持的平台（macOS、Linux、Windows；x86_64 与 ARM64）
-- 安装无需 Python 运行时（自包含 Rust 二进制）
-- 要管理的 Python 解释器（uv 可为你安装）
+- 受支持的平台：macOS、Linux、Windows（分级和架构见 uv 的平台支持页面）。
+- 安装 uv 本身不需要别的东西：用 `curl`/PowerShell 独立安装脚本，或 `pip install uv` / `pipx install uv`。
+- 需要能访问 PyPI 或你的私有索引；如果让 uv 安装 Python，还要能访问 Astral 托管的 Python 构建（可改指镜像）。
+- 只有在没有预编译 wheel 的平台上从源码构建 uv 时，才需要 Rust 工具链。
 
 ## 运维难度
 
-**低**。单一静态二进制——通过 `curl`、Homebrew 或 PyPI 安装。无守护进程、无后台服务。对团队而言，主要成本是工作流迁移与培训。
+**低。** 一个二进制，没有守护进程或后台服务；独立安装的版本用 `uv self update` 升级。真正的成本在别处：因为破坏性变更会在次版本里发布，CI 要锁定 uv 版本；要决定 CI runner 上全局缓存放哪、怎么缓存；私有索引和认证要一次配好；还要为迁移 `requirements.txt` / Poetry 项目和团队培训留出时间。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
-- **响应速度**：Grade A——中位首次响应时间 3.3 小时，基于 53 个 qualifying issues/PRs。
-- **采用广度**：Grade A——pypi.org 上月下载量 128,564,586（包名：uv）。
-- **长青度**：Grade B——仓库已创建 1086 天。
-- **治理集中度**：Grade A——前三贡献者占比 63.2%（过去 12 个月内 152 位活跃维护者）。
-- **许可风险**：Grade A——Apache-2.0 许可证。
+
+- **维护（2026-10-08）：极其活跃。** 每隔几天一个补丁版本（2026-09-25 到 2026-10-03 从 0.12.19 发到 0.12.23），每天都有提交，issue 首次响应通常在几小时内（雷达中位数 7.8 小时，覆盖 37 个合格 issue）。
+- **治理：贡献者广，归属单一。** 近 12 个月有 145 位活跃维护者，前三贡献者占 63.9%，代码不系于一人——但路线图属于 Astral 这一家风投支持的公司，OpenAI 已于 2026-03-19 宣布将收购它。
+- **年龄 / Lindy：年轻，但已过了炒作期的考验。** 2023 年 10 月创建（约 3 年）。使用量增长很快，但 Lindy 先验仍弱于 pip（约 18 年）。
+- **采用：非常高。** PyPI 近一个月下载量 127,754,131 次，release 资产下载约 6.7 亿次，Homebrew 90 天安装约 53.8 万次。
+- **风险信号：** MIT / Apache-2.0 双许可，随时可以 fork；悬而未决的是 OpenAI 收购后的厂商方向，以及 Astral 将来是否推出商业层。仍是 0.x，次版本里会有破坏性变更。
+
 ## 存疑（未验证）
 
-- [未验证] 实际加速倍数因平台、缓存状态和网络条件而异；10–100 倍是项目自身的基准测试声明。
-- [未验证] 截至验证日期，uv 尚未完全实现与 Poetry 的构建和发布工作流的功能对等。
-- [推断] 鉴于 Astral 的融资模式，随着产品成熟，可能会引入商业层级或功能阉割。
+- [未验证] 比 pip 快 10–100 倍是 Astral 自己的基准测试（热缓存、特定项目）；实际收益取决于缓存状态、网络和构建步骤。
+- [未验证] OpenAI 对 Astral 的收购是否已完成、会给 uv 路线图带来什么，均无法确认；查到的报道只描述了 2026-03-19 的宣布，称尚待监管批准。
+- [推断] Astral 或其新东家可能围绕 uv 推出商业服务或功能分级；目前仓库里看不到这类迹象。
+- [未验证] Pixi 用 uv 解析 PyPI 依赖、PDM 支持插件，这两点出自对这些项目的一般了解，本次未回到其仓库复核。

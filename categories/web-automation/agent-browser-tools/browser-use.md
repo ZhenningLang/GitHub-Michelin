@@ -6,19 +6,19 @@ category: agent-browser-tools
 tags: [browser-automation, testing, browser-use, framework]
 language: Python
 license: MIT
-maturity: active, ~103,084 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: active, v0.13.11 (2026-10-07), ~117k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-03T20:27:33Z
+  pushed_at: 2026-10-07T18:42:14Z
   default_branch: main
-  default_branch_sha: 18484f23ac96bb955259a1c54530a7d265dfffdb
+  default_branch_sha: c75e8476e26d18b7617643bc2ae082fae8eae431
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:11:05Z
+  computed_at: 2026-10-08T08:28:01Z
   overall: A
-  overall_score: 3.67
+  overall_score: 3.5
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 7
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 35.0
-        qualifying_issues: 26
+        median_ttfr_hours: 51.1
+        qualifying_issues: 23
         band: default
         window_offset_days: 13
         source: issue
@@ -47,27 +47,27 @@ health:
         registry: pypi.org
         canonical_package: browser-use
         dependent_repos_count: 0
-        downloads_last_month: 15057294
+        downloads_last_month: 8061974
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.46
-        release_downloads: 368
-        release_assets: 3
+        cross_check_divergence: 1.0
+        release_downloads: 44
+        release_assets: 1
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 691
-        last_commit_age_days: 7
+        repo_age_days: 707
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 131
-        top1_share: 0.37
-        top3_share: 0.629
+        active_maintainers_12mo: 126
+        top1_share: 0.353
+        top3_share: 0.622
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -78,61 +78,89 @@ health:
         relicense_36mo: false
         content_license: null
 ---
+
 # browser-use
 
-🌐 Make websites accessible for AI agents. Automate tasks online with ease.
+A scripted browser job — log in, find the right menu, fill a form, export a file — needs a hard-coded selector for every click, and it dies with `TimeoutError` the day the site moves a button. browser-use hands the browser to an LLM instead: you write the task as one sentence, and its agent loop reads the page, picks the next click or keystroke, and repeats until it can return an answer.
 
 ![browser-use — health radar](../../../assets/health/browser-use.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `web-automation` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for browser-use when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You are a Python developer building a product or back-office job that has to do things on websites you do not control: pull invoices from a dozen supplier portals, each with a different layout; check availability and book a slot; copy data from one web app into another. You tried Playwright scripts, and the maintenance is the problem — `page.click("#export-btn-2")` works until a portal redesigns, then fails with `TimeoutError: locator.click: Timeout 30000ms exceeded`, and you have one such script per site.
 
-This first-pass page exists because browser-use was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+You reach for browser-use when you want the agent loop *inside your own Python code*: `Agent(task="Download last month's invoice from …", llm=...)`, then `await agent.run()`. You pick it over Playwright MCP or Browser Harness because those give an external coding agent (Claude Code, Cursor) browser access, while browser-use is the agent — you embed it in your app, choose the model, add custom tools and get structured results back. You pick it over Stagehand when your stack is Python rather than TypeScript and you want the whole task delegated to the loop rather than mixing hand-written steps with AI calls. The deciding tradeoff: you trade the determinism, speed and near-zero per-run cost of a script for tolerance to layout changes, paying an LLM call per step.
+
+## How it works
+
+The `Agent` runs a loop. Each step it captures the browser state — current URL, open tabs, and a condensed tree of the page in which every clickable or typeable element gets a numeric index like `[35]<input placeholder=Enter name />`, optionally with a screenshot with those boxes drawn on it — and sends that plus your task and the step history to the model. The model answers with actions ("click 35", "type into 12", "scroll", "extract"), which browser-use executes over the Chrome DevTools Protocol (CDP, the debugging socket Chromium exposes; it uses its own `cdp-use` client rather than Playwright), and the loop repeats until the model calls `done`. What it does for you: launching or attaching to the browser, building the indexed page view, the system prompt, executing actions, retries and the run history. What stays yours: the task wording, the model and its API key, any custom tools you register with `@tools.action`, and the choice of browser — a fresh local Chromium, your own Chrome profile via `Browser.from_system_chrome()`, or a paid Browser Use Cloud browser with `Browser(use_cloud=True)`. Anonymous usage telemetry (PostHog) is on unless you set `ANONYMIZED_TELEMETRY=false`.
+
+![browser-use — backbone user story](../../../assets/flow/browser-use.svg)
+
+<!-- flow-steps:begin (generated from flows/browser-use.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the package and put a model API key in .env — `uv add browser-use`
+2. **You**: Create an Agent with a one-sentence task and the model you chose, then run it — `Agent(task=..., llm=ChatOpenAI(...)) · await agent.run()`
+3. **browser-use**: Opens a browser and turns the page into an indexed list of clickable elements — component: `browser session (CDP)`
+4. **browser-use**: Asks the model for the next actions and executes them, step after step, until done — component: `Agent loop`
+5. **You**: Read the final answer from the run history — `history.final_result()`
+
+**Value**: A website task described in one sentence gets done without a hand-written selector per click, and survives layout changes that break scripts
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on browser-use.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **The flow is stable and runs thousands of times.** Write a Playwright script instead (see [Playwright](../playwright-family/playwright.md)), because every browser-use step is an LLM round-trip: slower, billed per token, and not guaranteed to take the same path twice, while a script is milliseconds and free per run.
+- **You want your existing coding agent (Claude Code, Codex, Cursor) to drive a browser.** Use [Browser Harness](browser-harness.md), [Playwright MCP](../playwright-family/playwright-mcp.md) or [Agent Browser](agent-browser.md) instead, because those expose the browser as tools to an agent you already run; embedding browser-use would put a second agent loop inside the first.
+- **Your stack is TypeScript/Node.** Use Stagehand or a Playwright-based agent tool instead, because browser-use is a Python ≥3.11 library; the vendor's TypeScript options live in separate repos (Browser Harness JS, Browser Use Pi).
+- **You need bot-detection evasion or CAPTCHA handling on your own infrastructure.** Look at [Camoufox](../browser-driver-frameworks/camoufox.md)-based tools instead, because the README routes stealth, proxies and CAPTCHA handling to the paid Browser Use Cloud; the open-source library drives an ordinary Chromium.
+- **You cannot send page content to a hosted model.** Either run a local model through the Ollama wrapper (and accept much weaker task success on hard sites) or use a scripted driver, because the loop sends the page's text and element tree — and screenshots when vision is on — to whichever LLM you configure.
+- **You need a frozen API.** Pin an exact version or wrap it, because the library is still `0.x` (0.13.11 on 2026-10-07) with frequent releases, and the default-recommended model (`ChatBrowserUse` / BU2) is the vendor's own paid gateway, which pulls the defaults toward its cloud.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Agent Browser](agent-browser.md) | ✅ | When you need the established in-index option for this category, compare it against browser-use before switching. | browser-use is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose browser-use only after verifying the repo-specific caveats below. |
-| [Chrome DevTools MCP](chrome-devtools-mcp.md) | ✅ | When you need the established in-index option for this category, compare it against browser-use before switching. | browser-use is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose browser-use only after verifying the repo-specific caveats below. |
-| [Cua](../../desktop-automation/cua.md) | ✅ | When you need the established in-index option for this category, compare it against browser-use before switching. | browser-use is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose browser-use only after verifying the repo-specific caveats below. |
-| [page-agent](page-agent.md) | ✅ | When you need the established in-index option for this category, compare it against browser-use before switching. | browser-use is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose browser-use only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| [Browser Harness](browser-harness.md) | ✅ | Choose Browser Harness when an external coding agent should drive the Chrome you are already logged into; choose browser-use when your own Python program needs to own the agent loop end to end. | Same vendor; Harness has no inner agent loop and costs no extra model calls, but it needs a coding agent to supply the decisions. |
+| [Playwright MCP](../playwright-family/playwright-mcp.md) | ✅ | Choose Playwright MCP when an MCP client (Claude Desktop, VS Code, Cursor) is already your agent and only needs browser tools; choose browser-use when you are writing the agent into an application. | Vendor-official, cross-browser, deterministic tools, but no task loop, memory or custom-tool framework of its own. |
+| [Agent Browser](agent-browser.md) | ✅ | Choose Agent Browser when an agent should shell-drive Chrome with stable element refs from the command line; choose browser-use when you want a Python library that plans and acts by itself. | CLI-first and agent-agnostic, but leaves planning and retries to the calling agent. |
+| Stagehand | 未收录 | Choose Stagehand when you write TypeScript and want to mix deterministic Playwright steps with AI calls per step; choose browser-use when you are in Python and want to delegate the whole task. | Finer control over which steps are AI-driven, but a Node stack and a different vendor cloud (Browserbase). |
+| Skyvern | 未收录 | Choose Skyvern when you want a self-hosted, workflow-oriented service with a UI for repeatable business-form automations; choose browser-use when you want a lightweight library inside your own code. | More product around the agent (workflows, UI, API server), but an AGPL service you deploy rather than a pip dependency. |
 
 ## Tech stack
 
-- **Primary language:** Python per GitHub metadata.
-- **Repository:** `browser-use/browser-use`.
-- **Project shape:** categorized as `framework` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-03T20:27:33Z`, archived `false`.
+- **Python ≥3.11**, async (`asyncio`), packaged as `browser-use` on PyPI (MIT).
+- **Browser control over CDP** via the vendor's `cdp-use` client; the `browser-harness` package is a dependency for the CLI path.
+- **LLM wrappers** for OpenAI, Anthropic, Google, Groq, Ollama and the vendor's own `ChatBrowserUse` gateway; `mcp` for exposing or consuming MCP tools.
+- **Pydantic** for actions and structured output; **PostHog** for anonymous telemetry.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **A Chromium-based browser** on the machine (local), your installed Chrome profile, or a Browser Use Cloud browser.
+- **An LLM endpoint and key** — OpenAI, Anthropic, Google, Groq, a local Ollama model, or `BROWSER_USE_API_KEY` for the vendor's BU2 model / gateway.
+- **Python 3.11+** with a fairly heavy pinned dependency set (provider SDKs, Google API client, PDF/DOCX libraries).
+- **Optional:** Browser Use Cloud for stealth browsers, proxies, CAPTCHA handling and profile sync.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low to try, medium to high to run in production.** A local run is `uv add browser-use`, an API key and a short script. Production is where the cost lands: each task makes many model calls, so you budget tokens and latency per task; runs are non-deterministic, so you need step limits, result validation and retries; real-world sites bring bot detection, logins and CAPTCHAs that the open-source library does not solve; and you host and scale headful or headless Chromium yourself unless you pay for the vendor's cloud browsers. Also decide on telemetry (`ANONYMIZED_TELEMETRY=false`) before deploying in a regulated environment.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-03T20:27:33Z` as of 2026-07-06.
-- **Adoption snapshot:** ~103,084 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `MIT` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (as of 2026-10-08):** very active — commits every week of the last quarter and roughly monthly `0.13.x` releases (latest 0.13.11 on 2026-10-07).
+- **Responsiveness:** median first response on issues is about 51.1 hours (roughly two days) — good for a project this size, a step down from the September 2026 scoring.
+- **Governance & backing:** owned by Browser Use, a venture-backed company that monetizes the cloud browser, hosted agent API and BU2 model; well over 100 people contributed in the last year, though the top committer (co-founder Magnus Müller) holds roughly a third of recent commits, and the roadmap follows the company's cloud products.
+- **Age / Lindy:** about two years old (created 2024-10-31) — young; adoption is huge (~117k stars, millions of monthly PyPI downloads), but the Lindy prior is weak and the API is still `0.x`.
+- **Risk flags:** MIT and no relicense history; the main risk is open-core gravity — stealth, CAPTCHA handling and the recommended model are paid cloud features — plus default-on telemetry.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [推断] Per-task cost, latency and success rate on hard sites were not measured for this sync; the "many model calls per task" claim follows from the documented step loop.
+- [未验证] Task success with small local Ollama models on real sites is not benchmarked here; the README only says local models are possible "subject to your hardware and model requirements".
+- [未验证] Comparison facts about Stagehand (TypeScript, Browserbase) and Skyvern (AGPL, workflow UI) are from general knowledge, not re-read in this sync.
+- [推断] Identifying the top committer `MagMueller` as co-founder Magnus Müller relies on the README citation block (authors Müller and Žunič), not on an account-ownership check.
+- [未验证] Monthly PyPI downloads (~8M per the health scorer on 2026-10-08) swing a lot between scrapes and include CI installs.

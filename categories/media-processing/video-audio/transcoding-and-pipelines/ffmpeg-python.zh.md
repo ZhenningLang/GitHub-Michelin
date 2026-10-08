@@ -6,8 +6,8 @@ category: transcoding-and-pipelines
 tags: [ffmpeg, python, bindings, filter-graph, video, audio, transcoding]
 language: Python
 license: Apache-2.0
-maturity: v0.2.x, last commit 2024-08 (coasting), 11k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v0.2.0 on PyPI (2019-07), last commit 2022-07, quiet since (as of 2026-10-08), 11k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-08-04T00:07:08Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:10:08Z
+  computed_at: 2026-10-08T08:22:38Z
   overall: C
   overall_score: 2.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1539
+        last_commit_age_days: 1549
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,16 +41,16 @@ health:
         registry: pypi.org
         canonical_package: ffmpeg-python
         dependent_repos_count: 5000
-        downloads_last_month: 7960226
+        downloads_last_month: 7657974
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.02
         tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 3423
-        last_commit_age_days: 1539
+        repo_age_days: 3434
+        last_commit_age_days: 1549
         cohort: library
     governance:
       grade: "?"
@@ -79,12 +79,35 @@ FFmpeg 的 Python 绑定，让你把复杂的滤镜图写成链式 Python 表达
 
 它的最佳场景正是*复杂*滤镜图——README 的整个卖点就是别的 wrapper 能处理简单情形却缺乏复杂滤镜支持。如果你在用 Python 编排非平凡的转码/合成管线、且已懂 FFmpeg 的概念，这就是顺手的前端。[推断]
 
+## 怎么用起来
+
+你用 Python 对象描述一张处理图，ffmpeg-python 把它翻译成命令行。`ffmpeg.input(...)` 给你一个流节点，每个滤镜方法（`.trim()`、`.overlay()`，或用 `.filter('name', ...)` 调任意 FFmpeg 滤镜）都返回一个新节点，`.output(...)` 标出结果写到哪里——于是“分叉再合并”的图就只是几个变量和方法调用。调用 `.run()` 时，库遍历这张图，写出对应的 `-filter_complex` 参数串（FFmpeg 用来把滤镜连起来的小语言），再以子进程启动 `ffmpeg` 二进制，非零退出就抛 `ffmpeg.Error`。它自己一帧都不解码——它像个替你敲 FFmpeg 命令的打字员，不是第二个视频引擎。FFmpeg 安装、滤镜知识和输入文件由你准备；出问题时用 `.compile()` 看它到底要跑哪条命令。
+
+![ffmpeg-python — 主干用户故事](../../../../assets/flow/ffmpeg-python.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ffmpeg-python.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上这个封装；FFmpeg 本体得自己先装好、放进 PATH — `pip install ffmpeg-python`
+2. **你**：把每个媒体文件打开成一个流节点 — `ffmpeg.input('input.mp4')`
+3. **你**：在流上串滤镜、合并分支，最后指定输出文件 — `.trim() · .overlay() · .output('out.mp4')`
+4. **你**：对搭好的图调用 run — `.run()`
+5. **ffmpeg-python**：遍历这张图，编译成一条带 -filter_complex 的 ffmpeg 参数
+6. **ffmpeg-python**：以子进程启动 ffmpeg 二进制，等它跑完
+7. **ffmpeg-python**：ffmpeg 写完输出就返回；非零退出码抛 ffmpeg.Error
+
+**价值**：“裁剪—拼接—叠加”这种图写成可读、可测的 Python，不用再手拼转义 -filter_complex 字符串
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你没装也不想装 FFmpeg。** 这是个*薄封装、靠外部进程执行*的库——它要求系统上有 `ffmpeg` 二进制；它自己不做任何编码。
 - **你不在 Python 里。** 它是 Python 专用；从别的语言你会直接调 FFmpeg 或用那门语言的绑定。
 - **你需要进程内的帧访问 / 解码。** 它为 FFmpeg CLI 拼命令行；要按帧拿 numpy，你应改用 PyAV（libav 绑定）或 OpenCV。[未验证]
-- **你需要一个长期有维护的依赖。** 项目正**吃老本**——最后提交 2024-08，open issue 积压很大（约 525）；关键管线要把上游修复慢这件事算进去。[推断]
+- **你需要一个长期有维护的依赖。** 项目正**吃老本**——最后提交 2022-07，open issue 积压很大（约 525）；关键管线要把上游修复慢这件事算进去。[推断]
 - **简单的一次性转换。** 如果你只需要 `ffmpeg -i a.mp4 b.mp4`，一个 `subprocess` 调用（或一个小辅助函数）比一个建图的库少不少活动部件。
 - **你想要 FFmpeg 版本/功能的抽象层。** 它把你的图交给系统里装的那个 `ffmpeg`；滤镜的可用性/行为是二进制的，所以它不会替你屏蔽 FFmpeg 的版本差异。
 
@@ -117,7 +140,7 @@ FFmpeg 的 Python 绑定，让你把复杂的滤镜图写成链式 Python 表达
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** **吃老本。** 最后提交 2024-08（停滞约 2 年），open issue 积压很大（约 525）——未归档、未死，但显然不在被主动推进。当作功能冻结看待。[推断]
+- **维护（2026-10）。** **吃老本。** 默认分支最后提交在 2022-07（已静默约 3 年；PyPI 最后一版 0.2.0 发布于 2019-07），open issue 积压很大（约 525）——未归档、未死，但显然不在被主动推进。当作功能冻结看待。[推断]
 - **治理 / bus factor。** 单维护者（`kkroening`）的 `User` 仓库。一个单作者、正停滞的库拿 11k star，是个 **bus-factor 标记**：流行且有用，但背后没有团队或组织。高 open issue 数加上提交缓慢更印证了这点。
 - **年龄与 Lindy 判断。** 2017-05 创建，约 9 岁；API *稳定且久经验证*（它只是包 FFmpeg 的命令拼装，这部分变化不大），所以即便停滞仍可用——但“老 + 吃老本”是弱 Lindy，而非强。[推断]
 - **采用与生态。** 用得非常广（11k star，常见于教程/StackOverflow 回答）；对简单到中等的图它实际上是社区标准，这缓冲了维护缓慢。[推断]
@@ -126,7 +149,7 @@ FFmpeg 的 Python 绑定，让你把复杂的滤镜图写成链式 Python 表达
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 11k star / 946 fork、约 525 个 open issue；计数对时间敏感，issue 数更多反映积压而非危险。
-- [未验证] 本轮 API 未返回 GitHub tagged release；tag（`v0.2.x`）在 PyPI 上存在——锁版本前应对照 PyPI 确认具体版本。
-- [推断] “吃老本 / 功能冻结”是从 2024-08 最后提交日期加 open issue 积压推断的，并非维护者声明。
+- [未验证] 仓库没有发布 GitHub release；git tag 最高到 `0.2.0`，与 PyPI 最新版（0.2.0，2019-07）一致，核对于 2026-10-08。
+- [推断] “吃老本 / 功能冻结”是从 2022-07 最后提交日期加 open issue 积压推断的，并非维护者声明。
 - [未验证] 确切的滤镜覆盖、async 支持和 Python 版本下限取自 README/一般认知，未重读 manifest。
 - [未验证] 与 PyAV/MoviePy 的能力对比取自对生态的一般认知，本轮未再核验。

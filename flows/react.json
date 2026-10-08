@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "React does", "zh": "React 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start from a framework, or add React to an existing bundler project", "zh": "用框架起一个项目，或者给已有的打包项目加上 React", "code": "npx create-next-app@latest · npm install react react-dom"},
+    {"lane": "you", "en": "Write components as functions that return JSX for the current state", "zh": "把界面写成函数组件，按当前状态返回 JSX", "code": "useState"},
+    {"lane": "you", "en": "Mount the root component into one DOM element", "zh": "把根组件挂到页面上的一个 DOM 元素里", "code": "createRoot(domNode).render(<App />)"},
+    {"lane": "them", "en": "Calls your components and builds the DOM they describe", "zh": "调用你的组件，生成它们描述的 DOM"},
+    {"lane": "them", "en": "On each state change, re-runs affected components and diffs the new output against the old", "zh": "每次状态变化，重跑受影响的组件，把新结果和旧结果比对"},
+    {"lane": "them", "en": "Applies only the DOM changes the diff found, keeping focus, scroll and input intact", "zh": "只把比对出的差异写进 DOM，焦点、滚动和输入框内容都保住"}
+  ],
+  "value": {"en": "You describe what the screen looks like for each state; you never hand-write the DOM updates between states", "zh": "你只描述每种状态下界面长什么样，状态之间的 DOM 增删改不用再手写"},
+  "sources": [
+    "https://react.dev/learn/creating-a-react-app (npx create-next-app@latest, npx create-react-router@latest)",
+    "https://react.dev/learn/add-react-to-an-existing-project (npm install react react-dom; createRoot(domNode).render(...))",
+    "https://github.com/facebook/react#examples (createRoot + JSX example)",
+    "https://react.dev/learn/state-a-components-memory (useState)"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "m3u8 does", "zh": "m3u8 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library", "zh": "装上这个库", "code": "pip install m3u8"},
+    {"lane": "you", "en": "Load a playlist from a URL, a file path, or a string you already have", "zh": "从 URL、文件路径或手头的字符串加载播放列表", "code": "m3u8.load('http://videoserver.com/playlist.m3u8')"},
+    {"lane": "them", "en": "Fetches the text and remembers its base URI so relative segment paths resolve", "zh": "取回文本，记下基准地址，让相对的分片路径能解析"},
+    {"lane": "them", "en": "Parses every tag into typed objects: segments, variant streams, keys, ad cue markers", "zh": "把每个标签解析成带类型的对象：分片、多码率子流、密钥、广告插入标记"},
+    {"lane": "you", "en": "Read or change the fields your job is about", "zh": "读取或改动你关心的字段", "code": "playlist.segments · playlist.target_duration"},
+    {"lane": "you", "en": "Write the result back out to a string or a file", "zh": "把结果写回字符串或文件", "code": "playlist.dumps() · playlist.dump('playlist.m3u8')"},
+    {"lane": "them", "en": "Serializes the object model back into HLS playlist text", "zh": "把对象模型重新序列化成 HLS 播放列表文本"}
+  ],
+  "value": {"en": "You edit an HLS manifest as Python objects instead of regexing #EXT tags line by line", "zh": "改 HLS 清单就是改 Python 对象，不用再逐行正则匹配 #EXT 标签"},
+  "sources": [
+    "https://github.com/globocom/m3u8#loading-a-playlist (m3u8.load('http://videoserver.com/playlist.m3u8'), m3u8.loads, playlist.segments, playlist.target_duration)",
+    "https://github.com/globocom/m3u8#dumping-a-playlist (playlist.dumps(), playlist.dump('playlist.m3u8'))",
+    "https://github.com/globocom/m3u8#supported-tags (EXT-X-STREAM-INF, EXT-X-KEY, EXT-X-CUE-OUT/CUE-IN ...)",
+    "https://github.com/globocom/m3u8/blob/master/m3u8/__init__.py (load: URL via http_client.download, else file; base_uri set) + m3u8/httpclient.py (urllib, gzip-aware)"
+  ]
+}

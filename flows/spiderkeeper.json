@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SpiderKeeper does", "zh": "SpiderKeeper 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and start it against your running Scrapyd server", "zh": "装好它，指向已在运行的 Scrapyd 启动", "code": "pip install spiderkeeper · spiderkeeper --server=http://localhost:6800"},
+    {"lane": "you", "en": "In the web UI on :5000, create a project and upload your spider egg", "zh": "在 :5000 的网页里建项目，上传爬虫 egg 包", "code": "scrapyd-deploy --build-egg output.egg", "component": {"en": "Flask web UI", "zh": "Flask 网页后台"}},
+    {"lane": "them", "en": "Pushes the egg to Scrapyd and lists the spiders it contains", "zh": "把 egg 推给 Scrapyd，并列出其中的爬虫"},
+    {"lane": "you", "en": "Add a periodic job: pick a spider and give it cron fields", "zh": "加一个周期任务：选爬虫，填 cron 时间"},
+    {"lane": "them", "en": "At each due time, asks a Scrapyd server to start the spider", "zh": "到点就让一台 Scrapyd 启动这个爬虫", "component": {"en": "APScheduler", "zh": "APScheduler 调度器"}},
+    {"lane": "them", "en": "Syncs job status back and shows running and finished jobs on the dashboard", "zh": "回收任务状态，在面板上列出运行中和已结束的任务"}
+  ],
+  "value": {"en": "Scrapyd gets a click-to-deploy, cron-scheduling dashboard instead of curl calls to its JSON API", "zh": "Scrapyd 有了点一下就能部署、能按 cron 定时的面板，不用再 curl 它的 JSON 接口"},
+  "sources": [
+    "https://github.com/DormyMo/SpiderKeeper#readme (Installing: pip install spiderkeeper; Deployment: spiderkeeper --server=http://localhost:6800, port default 5000; Usage: create project, scrapyd-deploy --build-egg output.egg, upload egg)",
+    "SpiderKeeper/app/proxy/contrib/scrapy.py (addversion.json, listspiders.json, schedule.json, listjobs.json calls to Scrapyd)",
+    "SpiderKeeper/app/schedulers/common.py (APScheduler cron jobs run_spider_job, sync_job_execution_status_job)"
+  ]
+}

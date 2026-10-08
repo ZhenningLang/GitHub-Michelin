@@ -7,7 +7,7 @@ tags: [django, authorization, permissions, object-level-permissions, rbac, predi
 language: Python
 license: MIT
 maturity: v3.x, active (2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-10-11T06:42:08Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:49:46Z
+  computed_at: 2026-10-08T08:16:04Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 351
+        last_commit_age_days: 362
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,16 +41,16 @@ health:
         registry: pypi.org
         canonical_package: rules
         dependent_repos_count: 487
-        downloads_last_month: 465827
+        downloads_last_month: 466047
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 4588
-        last_commit_age_days: 351
+        repo_age_days: 4598
+        last_commit_age_days: 362
         cohort: library
     governance:
       grade: "?"
@@ -78,6 +78,27 @@ health:
 你在做一个 Django 应用，“这个用户能不能做这件事”取决于*对象*而非仅仅一个全局角色——作者能编辑自己的帖子、项目成员能看到项目、经理能批自己团队的请求。Django 内置权限是模型级、靠数据库的；逐对象检查通常要么是散落在视图里的临时 `if` 逻辑，要么是 `django-guardian` 这类重型的逐行数据库权限系统。用 django-rules，你改为写小谓词函数（`is_author`、`is_project_member`），用 `&`、`|`、`~` 组合成 rules，再注册到权限名上。这样 `user.has_perm('posts.change_post', post)` 就即时求值你的逻辑，没有要存或同步的权限行，而同一套 rules 还能驱动 `@permission_required` 装饰器、`{% has_perm %}` 模板标签和 DRF 权限类。
 
 当你的授权是*逻辑*而非*数据*时你会选它——规则源自关系和对象状态，而非管理员勾选的行。它也能在 Django 之外当独立规则引擎用，因为谓词内核不依赖框架。它的长处在于让授权保持声明式、可测试，并把它从视图体里拿出去。
+
+## 怎么用起来
+
+django-rules 接在 Django 本来就会问权限的那个位置上。Django 的 `user.has_perm(name, obj)` 会依次询问每个*认证后端*（Django 做登录和权限判断时会去问的一类类），django-rules 自带一个这样的后端，它不查权限表，而是现场跑代码作答。**你要写的是判断函数**（官方叫 predicate）：接收 `(user, obj)`、返回真或假的普通函数，比如 `is_book_author`；再用 `&`、`|`、`~` 把它们组合起来，绑定到 `books.change_book` 这样的权限名上。**剩下的归它**：按名字找规则、短路求值（`|` 遇到第一个真就停），以及视图装饰器、类视图 mixin、模板标签和 DRF 权限类，这些最后都汇到同一个 `has_perm` 调用上。打个比方：它把“宾客名单”换成了“照章办事的门卫”，谁能进不存在任何地方，每次都在门口现算。README 里有个容易踩的点：对超级用户调用 `has_perm` 永远返回真，你的规则根本不会跑。
+
+![django-rules — 主干用户故事](../../assets/flow/django-rules.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/django-rules.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好它，把它的对象权限后端加在 ModelBackend 前面 — `rules.permissions.ObjectPermissionBackend` — 组件：`认证后端`
+2. **你**：写判断函数，组合后绑定到一个权限名 — `rules.add_perm('books.change_book', is_book_author | is_editor)`
+3. **你**：在视图或模板上用这个权限名加对象做守卫 — `@permission_required · {% has_perm %}`
+4. **django-rules**：每次检查时 Django 询问它的后端，后端按名字找到规则
+5. **django-rules**：拿用户和对象跑判断函数，短路求值，返回放行或拒绝
+
+**价值**：按对象的授权变成有名字、可测试的函数，不用存也不用同步权限行
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

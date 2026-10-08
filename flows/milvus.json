@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "them": {"en": "Milvus does", "zh": "Milvus 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a standalone server in Docker", "zh": "用 Docker 起一个单机版服务",
+     "code": "bash standalone_embed.sh start"},
+    {"lane": "them", "en": "Runs Milvus with embedded etcd and local storage, serving on port 19530", "zh": "带内置 etcd 和本地存储跑起来，在 19530 端口提供服务",
+     "component": {"en": "milvus-standalone container", "zh": "milvus-standalone 容器"}},
+    {"lane": "you", "en": "Connect with the Python SDK and create a collection sized to your embeddings", "zh": "用 Python SDK 连上，按向量维度建一个集合",
+     "code": "client.create_collection(collection_name=\"demo_collection\", dimension=768)"},
+    {"lane": "you", "en": "Insert your vectors together with their metadata fields", "zh": "把向量连同元数据字段一起写进去",
+     "code": "client.insert(collection_name=\"demo_collection\", data=data)"},
+    {"lane": "them", "en": "Logs the writes, packs them into segments and builds an ANN index over them", "zh": "先记日志，再把数据打包成分段并建好近邻索引"},
+    {"lane": "you", "en": "Search with a batch of query vectors and a top-k limit", "zh": "拿一批查询向量去搜，指定取前 k 条",
+     "code": "client.search(collection_name=\"demo_collection\", data=query_vectors, limit=2)"},
+    {"lane": "them", "en": "Searches the loaded segments, applies filters and merges one top-k answer", "zh": "在已加载的分段里检索、套用过滤条件，合并出一份 top-k",
+     "component": {"en": "query node", "zh": "查询节点"}}
+  ],
+  "value": {"en": "Filtered nearest-neighbor search over a collection that can grow from one container to a sharded cluster without changing client code", "zh": "带过滤的近邻检索，集合从一个容器长到分片集群，客户端代码不用改"},
+  "sources": [
+    "scripts/standalone_embed.sh @ master 2026-10-08: usage 'bash standalone_embed.sh restart|start|stop|upgrade|delete'; embedEtcd.yaml, COMMON_STORAGETYPE=local, -p 19530:19530",
+    "README.md Quickstart @ master 2026-10-08: pip install -U pymilvus; MilvusClient(uri=..., token=...); client.create_collection(collection_name=\"demo_collection\", dimension=768); client.insert(collection_name=\"demo_collection\", data=data); client.search(collection_name=\"demo_collection\", data=query_vectors, limit=2, ...)",
+    "README.md Why Milvus: distributed architecture separating compute and storage, query nodes for read-heavy workloads, metadata filtering",
+    "configs/milvus.yaml @ master 2026-10-08: mq.type valid values [default, pulsar, kafka, rocksmq, woodpecker]"
+  ]
+}

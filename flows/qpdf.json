@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "qpdf does", "zh": "qpdf 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install qpdf from your distribution or drop in a release binary", "zh": "从发行版安装 qpdf，或直接放一个 release 二进制", "component": {"en": "qpdf CLI + libqpdf", "zh": "qpdf 命令行 + libqpdf"}},
+    {"lane": "you", "en": "Run one command naming the input, the transformations and the output", "zh": "一条命令写明输入、要做的变换和输出", "code": "qpdf in.pdf --pages . a.pdf b.pdf 1-z:even -- out.pdf"},
+    {"lane": "them", "en": "Parses each file's object graph, rebuilding a damaged cross-reference table if needed", "zh": "解析每个文件的对象图，交叉引用表坏了就重建"},
+    {"lane": "them", "en": "Copies, drops or re-encrypts objects; page content streams are carried over unchanged", "zh": "在对象层面复制、删除或重新加密，页面内容流原样搬过去"},
+    {"lane": "them", "en": "Renumbers objects and writes a new, valid PDF (optionally linearized)", "zh": "重新编号对象，写出一个新的合法 PDF（可选线性化）"}
+  ],
+  "value": {"en": "Merged, split, encrypted or repaired PDFs that look exactly like the originals", "zh": "合并、拆分、加密或修复后的 PDF，看起来和原件完全一样"},
+  "sources": [
+    "https://github.com/qpdf/qpdf#readme (content-preserving transformations, linearization, encryption, splitting/merging; no rendering or text extraction)",
+    "https://github.com/qpdf/qpdf/blob/main/manual/cli.rst (Basic Invocation; page selection example qpdf in.pdf --pages . a.pdf b.pdf 1-z:even -- out.pdf; --linearize)",
+    "https://github.com/qpdf/qpdf/blob/main/manual/download.rst (included in most Linux distributions; GitHub release binaries)"
+  ]
+}

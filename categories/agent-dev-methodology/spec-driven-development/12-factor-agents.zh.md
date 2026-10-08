@@ -6,8 +6,8 @@ category: spec-driven-development
 tags: [methodology, principles, context-engineering, agent-design, production-llm]
 language: Markdown
 license: CC-BY-SA-4.0 (content) / Apache-2.0 (code examples)
-maturity: no tagged releases; content stable, last pushed 2025-09 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; content stable, last pushed 2025-09 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2025-09-21T14:37:40Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:43:20Z
+  computed_at: 2026-10-08T08:10:15Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 371
+        last_commit_age_days: 382
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 546
-        last_commit_age_days: 371
+        repo_age_days: 556
+        last_commit_age_days: 382
         cohort: skill-pack
     governance:
       grade: "?"
@@ -70,12 +70,33 @@ health:
 
 当你想用一套原则来指导一个手写或薄框架的 agent、评审一个既有设计、或者让团队对齐一套共同心智模型时，就会拿它出来。它是阅读材料加上示例代码片段和一个 workshop——你读它、吃透这些 factor，然后在你已有的任何技术栈里落地；没有任何东西要 `pip install`，也没有库要依赖。
 
+## 怎么用起来
+
+这里没有能跑的东西：12-Factor Agents 是一组文章，每篇讲一条工程习惯，再附一小段示例代码。**它给你词汇和目标形状，工程全在你自己的技术栈里做。** 核心图景是 agent 循环——模型以工具调用（一段结构化 JSON，写明调哪个函数、带什么参数）的形式选出下一步，你的代码去执行，结果追加进 context window（模型一次调用能看到的全部内容）。大部分 factor 讲的都是从框架手里把这个循环的零件拿回来：prompt 自己写，上下文里放什么自己定，在你自己的 `while` 循环里按模型的选择分支，这样遇到高风险调用前就能停下来等人确认。可以把它当成建筑规范而不是预制房：它告诉你结实的结构长什么样，房子还得你自己盖。
+
+![12-factor-agents — 主干用户故事](../../../assets/flow/12-factor-agents.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/12-factor-agents.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：读完 12 条 factor（README 里一页清单）
+2. **12-Factor Agents**：给你踩的坑命名：看不见的 prompt、黑箱上下文、停不下来的循环
+3. **你**：逐条对照你的 agent，挑出它违反的几条
+4. **12-Factor Agents**：每条附一段代码范式，比如自己写循环、按模型选的下一步分支 — `next_step.intent == 'request_clarification'`
+5. **你**：把范式搬进你现有的代码：自己的 prompt、循环和存档的对话线程 — `await db.save_thread(thread)`
+
+**价值**：agent 的行为变成你自己的代码：看得到真实 prompt，高风险工具调用前能停下，之后再接着跑
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要的是能跑的代码，不是要读的原则。** 这是方法论文档；它不发布可安装包、没有运行时、没有 SDK。如果你需要一个真去做编排的框架，看 LangGraph、OpenAI Agents SDK 或 PydanticAI——12-factor 告诉你该瞄准什么，而不是给你一个可 import 的库。
 - **你要一个开箱即用的 agent harness / 人设包给你的 coding agent。** 同类目里的 skill-pack（[Superpowers](../coding-agent-harnesses/superpowers.zh.md)、[SuperClaude Framework](../coding-agent-harnesses/superclaude.zh.md)、[get-shit-done](get-shit-done.zh.md)）发布的是真正可安装的 prompt/命令；12-factor 是上游理论，不是即插即用的配置。
 - **你需要分步规定或保证。** 这些 factor 是方向性原则，刻意保持框架无关。它不会告诉你用哪个向量库、哪个模型，也不给可复制粘贴的生产代码——工程还是你自己做。
-- **维护/时效风险。** 内容本质上是一套稳定的文集；仓库没有 tagged release，最后一次 push 在 2025-09 [未验证]。它跟踪的是其写作时点的 agent 全景，某些具体细节（模型行为、工具链）可能落后于当前生态——把它当作恒久原则，而非活跃的 API 参考。
+- **维护/时效风险。** 内容本质上是一套稳定的文集；仓库没有 tagged release，最后一次 push 在 2025-09-21，截至 2026-10 已一年多没动。它跟踪的是其写作时点的 agent 全景，某些具体细节（模型行为、工具链）可能落后于当前生态——把它当作恒久原则，而非活跃的 API 参考。
 - **你不认同其强观点。** “自己掌控控制流”“让 agent 成为无状态 reducer”都是强立场；如果你的团队铁了心用高抽象框架，这些建议是逆着你来的。
 
 ## 横向对比
@@ -93,7 +114,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护（2026-06）：** 最后一次 push 在 2025-09，且无 tagged release——约 9 个月没动。若是活跃的 API，这会读作 coasting；但它是一套文集，[推断] 内容本质上是「已完成/稳定」，而非弃坑。把陈旧性当作对原则低风险、对它引用的任何模型/工具具体细节较高风险来看待。
+- **维护（2026-10）：** 最后一次 push 在 2025-09-21，且无 tagged release——一年多没动。若是活跃的 API，这会读作 coasting；但它是一套文集，[推断] 内容本质上是「已完成/稳定」，而非弃坑。把陈旧性当作对原则低风险、对它引用的任何模型/工具具体细节较高风险来看待。
 - **治理与背书：** Organization 持有（HumanLayer / Dex Horthy），在其商业产品之外维护。实质上是小厂商/单作者的声音，而非基金会——路线图是一个团队的编辑主张，尽管这些 factor 读起来是厂商中立的。
 - **年龄与 Lindy（2026-06）：** 创建于 2025-03，约 1 岁。年轻、以理念驱动，不是久经考验的代码库——约 23k star 反映的是声量而非寿命。Lindy 裁决：**按年龄看属未经验证**；但它是方法论文档，价值偏概念、不依赖维护，因此「年轻且被热捧」的常见风险更多落在具体细节上，而非核心原则。
 - **风险标记：** 无可安装产物 = 没有 relicense/CVE/供应链面；真正的风险是**内容漂移**（agent 生态走在一篇被冻结的文集之前）。除 HumanLayer 关联外，未公布治理/资金模型。
@@ -101,7 +122,6 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 声称的双许可：内容为 CC BY-SA 4.0，示例代码为 Apache-2.0（GitHub 把仓库 license 报为 "Other"）；复用前请按文件核实确切条款。
-- [未验证] 仓库最后一次 push 在 2025-09-21，无 tagged release（`gh repo view` 显示 `latestRelease: null`）;“最后 push 2025-09”是新鲜度信号，不是版本号。
 - [未验证] GitHub 把主语言报为 TypeScript，但实质内容是 Markdown；其中的 TS/Python 是示例代码，不是可发布的库。本页将其归类为方法论 `skill-pack`，而非 framework。
 - [未验证] Star 约 23.5k（截至 2026-06）——GitHub star 不可靠且对时间敏感，仅供参考。
 - [推断] 由 HumanLayer（Dex Horthy）在其商业产品之外维护；此推断的来源不使它成为产品营销——这些 factor 读起来是厂商中立的原则。

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Prefect does", "zh": "Prefect 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Prefect and start a local API server with its UI", "zh": "安装 Prefect，启动带 UI 的本地 API 服务", "code": "pip install -U prefect · prefect server start", "component": {"en": "Prefect server", "zh": "Prefect 服务端"}},
+    {"lane": "you", "en": "Decorate the functions of your existing script", "zh": "给现有脚本里的函数加上装饰器", "code": "@flow · @task(log_prints=True)"},
+    {"lane": "them", "en": "Reports each flow and task run's state and logs to the UI on port 4200", "zh": "把每次 flow、task 运行的状态和日志上报到 4200 端口的 UI"},
+    {"lane": "you", "en": "Turn the flow into a scheduled deployment", "zh": "把 flow 变成一个定时部署", "code": ".serve(name=\"first-deployment\", cron=\"* * * * *\")"},
+    {"lane": "them", "en": "The serving process polls for due runs, executes them and applies retries", "zh": "服务进程轮询到期的运行，执行并按声明重试", "component": {"en": ".serve() process", "zh": ".serve() 进程"}}
+  ],
+  "value": {"en": "An ordinary Python script becomes a scheduled job with retries and a run history, without a rewrite", "zh": "一段普通 Python 脚本不用重写，就成了带重试和运行记录的定时任务"},
+  "sources": [
+    "PrefectHQ/prefect README.md (main, retrieved 2026-10-08): pip install -U prefect; from prefect import flow, task; @task(log_prints=True); prefect server start, UI at http://localhost:4200; github_stars.serve(name=\"first-deployment\", cron=\"* * * * *\") — 'a process running locally that is looking for scheduled deployments'",
+    "PrefectHQ/prefect docs/v3/how-to-guides/self-hosted/server-cli.mdx (main, retrieved 2026-10-08): SQLite default at ~/.prefect/prefect.db, PostgreSQL option"
+  ]
+}

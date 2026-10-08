@@ -7,7 +7,7 @@ tags: [zookeeper, gui, desktop, javafx, client, archived]
 language: Java
 license: Apache-2.0
 maturity: v2.1.1 (2023-02), ARCHIVED — maintenance stopped, 3.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-01-09T14:17:44Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T15:54:51Z
+  computed_at: 2026-10-08T08:16:53Z
   overall: D
   overall_score: 1.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 992
+        last_commit_age_days: 1003
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -44,7 +44,7 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 147654
+        release_downloads: 147802
         release_assets: 123
         release_tier: C
         signal_basis: releases
@@ -52,8 +52,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2557
-        last_commit_age_days: 992
+        repo_age_days: 2567
+        last_commit_age_days: 1003
         cohort: app
     governance:
       grade: "?"
@@ -71,7 +71,7 @@ health:
 
 # PrettyZoo
 
-A cross-platform desktop GUI for Apache ZooKeeper (Win/Mac/Linux) — browse the znode tree, view/edit node data, manage ACLs and connections, without dropping into the `zkCli.sh` shell. **Archived: the author publicly announced in 2023 that maintenance has stopped.**
+A cross-platform desktop GUI for Apache ZooKeeper (Win/Mac/Linux) — browse the znode tree, view/edit node data, manage ACLs and connections, without dropping into the `zkCli.sh` shell. **Archived: the author's README notice (dated 2024-01-09) says maintenance has stopped.**
 
 ![prettyzoo — health radar](../../../assets/health/prettyzoo.svg)
 
@@ -81,9 +81,30 @@ You're a backend or platform engineer operating systems that lean on ZooKeeper �
 
 It's most useful as a **developer/operator convenience GUI** for inspection and light editing during development and incident triage — the "I just need to see what's in ZooKeeper right now" tool.
 
+## How it works
+
+PrettyZoo is a desktop window onto ZooKeeper — the small coordination database that systems like Kafka or Dubbo use to keep config and service-registry entries as a tree of nodes called *znodes*. Think of it as a file manager where every folder is a znode. **It does the plumbing for you**: it connects through Apache Curator (a standard Java ZooKeeper client library), loads the tree, keeps it in sync as nodes change, reconnects on its own if the session drops, and pretty-prints JSON/XML node data. **You do the deciding**: which cluster to connect to (directly or through an SSH tunnel), which node to open, what to change, and which ACLs — access-control lists saying who may read or write a node — to set. When a click is not enough there is a built-in terminal for zkCli-style commands. Nothing runs on the server side; connection profiles live on your machine.
+
+![prettyzoo — backbone user story](../../../assets/flow/prettyzoo.svg)
+
+<!-- flow-steps:begin (generated from flows/prettyzoo.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Download the msi, dmg, or rpm/deb installer from GitHub Releases and install it
+2. **You**: Add a ZooKeeper server connection, optionally through an SSH tunnel
+3. **PrettyZoo**: Connects via Apache Curator, loads the znode tree and keeps it synced live
+4. **You**: Click a node to read or edit its data, create or delete nodes, set ACLs
+5. **PrettyZoo**: Pretty-prints and highlights JSON/XML data and writes your edits back
+
+**Value**: You see and fix what is in ZooKeeper by clicking, without memorizing zkCli.sh commands
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **It's archived — no future fixes.** The author announced end of maintenance (2023) and the repo is archived; bugs, OS-compatibility breakage (new macOS/JDK), and security issues won't be patched upstream. For ongoing reliance, factor in fork-or-replace. [推断]
+- **It's archived — no future fixes.** The author's README notice (dated 2024-01-09) announced end of maintenance and the repo is archived; bugs, OS-compatibility breakage (new macOS/JDK), and security issues won't be patched upstream. For ongoing reliance, factor in fork-or-replace. [推断]
 - **Production automation / scripting.** A GUI is for humans; for repeatable ops, config-as-code, or CI you want `zkCli.sh`, the ZooKeeper APIs, or Curator — not click-ops in a desktop app.
 - **You don't run ZooKeeper at all.** Many stacks have moved coordination off ZooKeeper (Kafka KRaft removes the ZK dependency; etcd/Consul elsewhere). If you're not on ZooKeeper, this tool has no job.
 - **Locked-down / headless environments.** A desktop JavaFX app needs a GUI session; for servers, bastions, or headless clusters you'll be back to the CLI anyway.
@@ -102,7 +123,7 @@ It's most useful as a **developer/operator convenience GUI** for inspection and 
 ## Tech stack
 
 - **Language:** Java, with a **JavaFX** desktop UI.
-- **ZooKeeper client:** built on a ZooKeeper Java client (likely Apache Curator) for connection/znode operations.
+- **ZooKeeper client:** built on the Apache Curator Framework (stated in the README) for connection/znode operations.
 - **Packaging:** native installers for Windows / macOS / Linux published as GitHub releases (last v2.1.1, 2023-02).
 - **Form factor:** a standalone desktop application — no server component.
 
@@ -120,7 +141,7 @@ It's most useful as a **developer/operator convenience GUI** for inspection and 
 ## Health & viability
 
 - **Responsiveness**: Grade E.
-- **Maintenance (2026-06).** **Archived / abandoned.** The author posted an explicit "I have decided to stop maintaining the project" notice; repo is archived, last release v2.1.1 (2023-02), last push 2024-01, 0 open issues (closed out on archival). [推断]
+- **Maintenance (2026-10).** **Archived / abandoned.** The author posted an explicit "I have decided to stop maintaining the project" notice in the README (dated 2024-01-09); repo is archived, last release v2.1.1 (2023-02), last push 2024-01, 0 open issues (closed out on archival). [推断]
 - **Governance / bus factor.** A **single-author** project (vran-dev, `owner.type: User`) that has now ended — bus factor is effectively zero going forward; any future life depends on community forks. [推断]
 - **Age & Lindy verdict.** Created 2019-09 (~6 years) **but no longer maintained** ⇒ Lindy **does not** apply — it had a solid run, but an abandoned repo's age is not a durability signal. [推断]
 - **Adoption.** 3.2k stars, ~378 forks — it was a popular, well-liked ZK GUI in its active years (the README thanks its users on archival); the stars reflect past, not ongoing, momentum. [未验证]
@@ -129,6 +150,6 @@ It's most useful as a **developer/operator convenience GUI** for inspection and 
 ## Caveats (unverified)
 
 - [未验证] Stars ~3.2k, forks ~378 as of 2026-06 — volatile, indicative only; 0 open issues reflects archival, not active triage.
-- [未验证] JavaFX UI and Curator-based client are inferred from the project's nature and ecosystem norms, not re-confirmed from the current source for this entry.
+- [未验证] The README states "created by JavaFX and Apache Curator Framework"; the exact Curator/ZooKeeper client versions bundled in v2.1.1 were not checked against the build files.
 - [未验证] Whether the 2023-era release runs cleanly on current macOS/JDK versions was not tested; treat OS/JDK compatibility as unverified.
 - [推断] "Single author / bus factor zero" is inferred from `owner.type: User` plus the author's own maintenance-ended notice.

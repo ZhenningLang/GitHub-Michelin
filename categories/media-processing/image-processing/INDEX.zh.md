@@ -7,8 +7,8 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **ImageMagick** | 使用覆盖 200 多种格式的通用命令行套件与 API，创建、编辑、合成和转换图像。 | B（5/6） | [→](imagemagick.zh.md) |
-| **sharp** | 通过 libvips 构建高吞吐的 Node.js 位图缩放与格式转换管线。 | A（6/6） | [→](sharp.zh.md) |
+| **ImageMagick** | 当脚本或 CI 任务要用一条 shell 命令把 TIFF、PSD、EPS、HEIC、多页 PDF 等 200 多种格式转换、缩放、合成时用它——但不加隔离就去解码不可信的上传图片，CVE 风险源源不断。 | B（5/6） | [→](imagemagick.zh.md) |
+| **sharp** | 当 Node.js 的上传处理、构建步骤或 API 路由要在进程内快速把大图转成缩略图和 WebP/AVIF 时用它——但它的预编译二进制解不了 HEIC、PDF、PSD 和相机 RAW。 | A（6/6） | [→](sharp.zh.md) |
 | **Screenshot Service** | 通过可隔离、可加固的小型内部 HTTP 服务，把受控 HTML 与 CSS 渲染成 PNG、JPEG 或 WebP。 | D（4/6） | [→](screenshot-service.zh.md) |
 | **Magpie** | 在不注入进程的前提下，用 GPU 滤镜（FSR、Anime4K、CRT）把小的或不支持高 DPI 的 Windows 游戏／程序窗口实时放大到全屏。 | B（6/6） | [→](magpie.zh.md) |
 
@@ -16,8 +16,8 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [ImageMagick](imagemagick.zh.md) | ✅ | B（5/6） | 需要广泛格式覆盖、命令行自动化与通用图像合成时选它；它不如 sharp 适合 Node.js 热路径，也不能像浏览器一样排版任意 HTML。 |
-| [sharp](sharp.zh.md) | ✅ | A（6/6） | 需要在 Node.js 进程内高速处理已有图片时选它；它避开 Chromium 开销，但不能渲染 HTML、CSS 或 Web font。 |
+| [ImageMagick](imagemagick.zh.md) | ✅ | B（5/6） | 格式覆盖最广、命令行可脚本化、各语言都有绑定；代价是解码器攻击面极大、缩放比 sharp 慢，开发集中在两位维护者身上。 |
+| [sharp](sharp.zh.md) | ✅ | A（6/6） | 一句 npm install 就拿到 libvips 的速度和低内存；代价是预编译格式集窄、运行时必须能加载 Node-API 原生扩展，项目实际上只靠一位维护者。 |
 | [Screenshot Service](screenshot-service.zh.md) | ✅ | D（4/6） | 只有可信 HTML 经隔离内部 endpoint 处理时才选它；浏览器保真度的代价是 Chromium 成本、不安全默认值、仓库许可证未确立，以及大量加固工作。 |
 | [Magpie](magpie.zh.md) | ✅ | B（6/6） | 需要不注入进程、带画质滤镜地实时放大某一个 Windows 窗口时选它；它是 GUI 应用而不是库，只支持 Windows，没有 HDR 和补帧，发版也落后于活跃的 dev 分支。 |
 | Browserless | 未收录 | — | 需要带队列、并发与 session 控制的共享 headless browser 服务时选它；代价是更大的运维面和 SSPL／商业许可约束。 |

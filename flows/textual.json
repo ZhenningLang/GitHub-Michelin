@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Textual does", "zh": "Textual 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the framework and its dev tools", "zh": "装上框架和开发工具", "code": "pip install textual textual-dev"},
+    {"lane": "you", "en": "Subclass App, yield widgets from compose() and style them with CSS", "zh": "继承 App，在 compose() 里产出控件，用 CSS 定样式", "code": "def compose(self) -> ComposeResult"},
+    {"lane": "them", "en": "Lays the widgets out by your CSS rules and draws them in the terminal", "zh": "按你的 CSS 规则排版控件，画到终端里"},
+    {"lane": "you", "en": "Write on_… handlers that react to events and update widgets", "zh": "写 on_… 处理函数，响应事件、更新控件", "code": "def on_ready(self) -> None"},
+    {"lane": "them", "en": "Turns keys, mouse clicks and resizes into messages, calls your handlers and redraws", "zh": "把按键、鼠标点击和窗口缩放变成消息，调用你的处理函数并重绘"}
+  ],
+  "value": {"en": "A keyboard-and-mouse app that runs anywhere Python and a terminal do, including over SSH — and in a browser via textual serve", "zh": "键盘鼠标都能用的应用，有 Python 和终端就能跑，SSH 上也行，还能用 textual serve 进浏览器"},
+  "sources": [
+    "https://github.com/Textualize/textual#installing (pip install textual textual-dev)",
+    "https://github.com/Textualize/textual#textual (ClockApp example: App subclass, CSS, compose() -> ComposeResult, on_ready, query_one().update)",
+    "https://github.com/Textualize/textual#textual-️-web (textual serve)",
+    "https://textual.textualize.io/guide/events/ (events and messages dispatched to on_ handlers)"
+  ]
+}

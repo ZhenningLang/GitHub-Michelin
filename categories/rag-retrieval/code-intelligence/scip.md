@@ -3,20 +3,20 @@ name: SCIP
 slug: scip
 repo: https://github.com/scip-code/scip
 category: code-intelligence
-tags: [rag, retrieval, scip, tool]
+tags: [code-intelligence, code-navigation, protocol, protobuf, indexing, cross-references]
 language: Go
 license: Apache-2.0
-maturity: active, ~678 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: "active, v0.10.0 (2026-09-03), ~827 stars (as of 2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-06T05:34:18Z
+  pushed_at: 2026-10-07T04:31:43Z
   default_branch: main
-  default_branch_sha: e01e97efac2f6b8c266b4d04825f1f1eab7b8f6c
+  default_branch_sha: 5e03215598d6d11048f53af966b6004d6804efc3
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:57:59Z
+  computed_at: 2026-10-08T08:25:41Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -29,8 +29,8 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 11
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
@@ -47,11 +47,11 @@ health:
         registry: crates.io
         canonical_package: scip
         dependent_repos_count: 139
-        downloads_last_month: 2584792
+        downloads_last_month: 2663285
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 3.86
-        release_downloads: 480746
+        cross_check_divergence: 4.07
+        release_downloads: 500159
         release_assets: 216
         release_tier: C
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1596
-        last_commit_age_days: 2
+        repo_age_days: 1612
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 9
-        top1_share: 0.902
-        top3_share: 0.927
+        active_maintainers_12mo: 8
+        top1_share: 0.912
+        top3_share: 0.938
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -80,59 +80,85 @@ health:
 ---
 # SCIP
 
-SCIP Code Intelligence Protocol
+Text search and tree-sitter graphs guess: `grep handleRequest` returns the definition, three unrelated methods with the same name and a comment, and nothing tells you which call actually resolves where. SCIP is a file format plus tooling for *compiler-accurate* code indexes — a per-language indexer type-checks your code and writes down, for every identifier, exactly which definition it refers to, so tools can answer "go to definition" and "find references" precisely, even across repositories.
 
 ![SCIP — health radar](../../../assets/health/scip.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `rag-retrieval` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for SCIP when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You are building developer tooling — a code-search service, a code-review bot, an internal "who calls this?" dashboard, or a retrieval layer that feeds a coding agent — and you need precise cross-references for a large polyglot codebase. Running a language server per language per request is slow and stateful; tree-sitter graphs are fast but miss anything that needs type information (overloads, interface dispatch, re-exports), so your tool sometimes says a function has zero callers when it has twenty. You want to index each commit once in CI and query the result offline.
 
-This first-pass page exists because SCIP was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+SCIP is the interchange format for exactly that: run a SCIP indexer for each language (`scip-typescript index`, `scip-python index`, `scip-java`, `rust-analyzer scip`, `scip-clang`…), get one `index.scip` Protobuf file per project, and read it with the Go/Rust bindings, the `scip` CLI or a consumer like Sourcegraph. Pick it over tree-sitter-based graph tools when correctness of references matters more than zero-setup; over LSIF because SCIP is its successor (Sourcegraph has removed LSIF support) with human-readable string symbol IDs and a smaller encoding; over Kythe or Glean when you want a lightweight file format with maintained indexers for mainstream languages instead of a whole indexing platform.
+
+## How it works
+
+A SCIP index is one Protobuf file (Protobuf is Google's compact binary serialization format) describing a project's documents, the symbols defined in them and every occurrence of each symbol with its exact source range. Each symbol gets a globally unique, human-readable string name — package manager, package name, version and descriptor path — so a reference in one repository can be matched to a definition in another without a shared database. The heavy work is done by per-language **indexers**, separate projects that reuse the language's real compiler or type checker; this repository provides the schema (`scip.proto`), Go and Rust bindings (plus generated TypeScript, Haskell, Java, Kotlin and .NET bindings), and the `scip` CLI to lint, print, snapshot-test, report stats on and experimentally convert indexes to SQLite. You choose and run the indexers (usually in CI), store the files and build or deploy the consumer that answers queries; SCIP itself never runs a server.
+
+![scip — backbone user story](../../../assets/flow/scip.svg)
+
+<!-- flow-steps:begin (generated from flows/scip.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the SCIP indexer for your language — `npm install -g @sourcegraph/scip-typescript` — component: `per-language indexer`
+2. **You**: Run it at the project root, usually as a CI step on each commit — `scip-typescript index · rust-analyzer scip .`
+3. **SCIP**: Type-checks the project with the real compiler and resolves every identifier to its definition
+4. **SCIP**: Writes one Protobuf index with a globally unique string name for every symbol — `index.scip`
+5. **You**: Load the index into your consumer: Sourcegraph, or your own tool via the Go/Rust bindings — component: `scip bindings`
+6. **SCIP**: Bindings expose documents, symbols and exact occurrence ranges for definition/reference lookups
+
+**Value**: Compiler-accurate go-to-definition and find-references, computed once per commit and queryable offline
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on SCIP.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **You want ready-to-use code search or navigation, not a format.** SCIP gives you index files; something still has to serve queries. For an agent that should ask structural questions today, use [code-review-graph](code-review-graph.md) or [graphify](graphify.md) (lower precision, but turnkey MCP tools), or a hosted Sourcegraph instance (not a repo).
+- **Your language has no maintained SCIP indexer.** Coverage depends entirely on separate indexer projects (Java/Scala/Kotlin, TypeScript/JavaScript, Python, Rust, C/C++, Ruby, C#/VB, Dart, PHP listed upstream). For other languages use tree-sitter-based graphs or live language servers instead.
+- **Your code must be indexed without building it.** Indexers need the project to type-check (dependencies installed, `tsconfig`/build files resolvable); broken or partial checkouts produce partial indexes. Tree-sitter tools such as [code-review-graph](code-review-graph.md) work on unbuildable code.
+- **You need live, as-you-type answers in an editor.** SCIP indexes are snapshots per commit. For interactive editing use the language server (LSP) directly.
+- **You need a semantic/natural-language retrieval layer.** SCIP knows symbols and references, not meaning; pair it with an embedding index such as [FAISS](../vector-search/faiss.md) rather than expecting it to answer "where do we handle retries?".
+- **You want a vendor-neutral standard body.** Governance is a Core Steering Committee that Sourcegraph financially sponsors and can appoint members to; if neutrality is a hard constraint, Kythe (Google) or Glean (Meta) are the alternatives, with their own single-sponsor caveats.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [code-review-graph](code-review-graph.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| [FAISS](../vector-search/faiss.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| [FalkorDB](../structured-retrieval/falkordb.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| [graphify](graphify.md) | ✅ | When you need the established in-index option for this category, compare it against SCIP before switching. | SCIP is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose SCIP only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| LSIF | not indexed | Do not start new work on LSIF; choose SCIP, its successor, because Sourcegraph — the main LSIF consumer — has removed LSIF support. | LSIF is a graph-shaped JSON format closely tied to LSP requests; SCIP uses string symbol IDs and Protobuf, giving smaller files and indexers that are easier to debug. |
+| Kythe | not indexed | Choose Kythe when you already run Bazel and want Google's full cross-reference graph pipeline; choose SCIP when you want per-language indexers that run without a build-system integration. | Kythe models richer semantic edges but needs its extractor/serving pipeline; SCIP is just a file per project with simpler tooling. |
+| Glean | not indexed | Pick Glean when you need a queryable fact database with its own query language at very large scale; pick SCIP for a portable file format consumed by lightweight tools. | Glean is a full storage and query system to operate; SCIP leaves storage and querying to you. |
+| [code-review-graph](code-review-graph.md) | ✅ | For an agent-facing blast-radius tool you can install in minutes, pick code-review-graph; for compiler-accurate references across a large polyglot codebase, pick SCIP indexes. | Tree-sitter parsing works on any checkout with no build, but misses type-resolved calls; SCIP needs a working build per language and gives exact references. |
+| [Sourcegraph](sourcegraph.md) | ✅ | Treat the archived public Sourcegraph snapshot only as a reference for how SCIP is consumed; use SCIP directly when you are building your own consumer. | Sourcegraph is the main SCIP consumer and sponsor, but its current product is closed and the indexed public repo is archived; SCIP itself stays Apache-2.0. |
 
 ## Tech stack
 
-- **Primary language:** Go per GitHub metadata.
-- **Repository:** `scip-code/scip`.
-- **Project shape:** categorized as `tool` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-06T05:34:18Z`, archived `false`.
+- **Schema:** Protocol Buffers (`scip.proto`), managed with `buf`.
+- **CLI and core bindings:** Go (`scip` CLI v0.10.0 as of 2026-09-03) and Rust (`scip` crate on crates.io); generated bindings for TypeScript, Haskell, Java, Kotlin and .NET.
+- **Indexers (separate repos):** scip-java, scip-typescript, scip-python, scip-clang, scip-ruby, scip-dotnet (mostly under `sourcegraph/`), rust-analyzer's built-in `scip` command, and community indexers for Dart and PHP.
+- **Build/dev:** Go modules, Nix flake.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **To produce indexes:** the indexer for each language plus that language's toolchain and installed project dependencies (e.g. Node 22/24 and `npm install` for scip-typescript).
+- **To consume indexes:** the Go or Rust bindings, any Protobuf toolchain for other languages, or the `scip` CLI binary from GitHub releases (or `go build ./cmd/scip`).
+- **No runtime service:** SCIP has no server or database; storage and query serving belong to whatever consumer you build or deploy.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Medium overall, low for SCIP itself.** The CLI and bindings are a single binary or library. The real cost is the indexing pipeline: wiring one indexer per language into CI, keeping each project buildable so the indexer can type-check it, tracking indexer versions independently, storing an index per commit, and building or running the consumer that serves queries. Indexing large monorepos can take as long as a full type-check.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-06T05:34:18Z` as of 2026-07-06.
-- **Adoption snapshot:** ~678 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `Apache-2.0` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (2026-10-08): active.** Regular releases (v0.7.0 in March to v0.10.0 on 2026-09-03), commits within the last day, and the main Sourcegraph indexers also pushed this week.
+- **Governance: concentrated, now formalized.** Moved from `sourcegraph/scip` to the `scip-code` organization (created 2026-01) with a published governance model: a Core Steering Committee that Sourcegraph financially sponsors and can appoint members to. Recent commits are dominated by a couple of maintainers (radar: top-1 share 91.2%), so the bus factor is low.
+- **Age / Lindy: moderate.** Created May 2022 (~4.4 years), and it replaced LSIF as Sourcegraph's format; still young for a protocol, but continuously maintained.
+- **Adoption: high via Rust.** 2,663,285 crates.io downloads in the last month and 139 dependent repos, largely because rust-analyzer emits SCIP; beyond Sourcegraph and rust-analyzer, independent consumers are fewer.
+- **Risk flags:** Apache-2.0, no relicensing. The ecosystem depends on Sourcegraph-maintained indexers and sponsorship; Sourcegraph's own product has moved to a private monorepo (the public snapshot is archived).
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [推断] The motive for moving the repository to the `scip-code` organization is not stated on the project site; this page records the move and the governance document, not the reason.
+- [推断] The large crates.io download count is attributed to rust-analyzer depending on the `scip` crate; the download breakdown was not checked.
+- [未验证] Indexer quality and maintenance for community indexers (scip-dart, scip-php, debian-lsp) were not checked individually.
+- [未验证] Comparative claims about Kythe and Glean (Bazel coupling, operational weight) come from general knowledge of those projects, not re-read in this pass.

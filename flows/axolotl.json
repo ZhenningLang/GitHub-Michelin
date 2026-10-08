@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Axolotl does", "zh": "Axolotl 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install Axolotl into a fresh uv environment and fetch the example configs", "zh": "在新的 uv 环境里装好 Axolotl，拉下示例配置", "code": "uv pip install --no-build-isolation axolotl[deepspeed] · axolotl fetch examples"},
+    {"lane": "you", "en": "Edit one YAML: base model, dataset and its format, LoRA or full tuning", "zh": "改一份 YAML：底座模型、数据集及格式、LoRA 还是全参", "code": "base_model · datasets · adapter: lora", "component": {"en": "config file", "zh": "配置文件"}},
+    {"lane": "you", "en": "Start the run", "zh": "启动训练", "code": "axolotl train examples/llama-3/lora-1b.yml"},
+    {"lane": "them", "en": "Downloads the base model and attaches LoRA/QLoRA adapter layers", "zh": "下载底座模型，挂上 LoRA/QLoRA adapter 层"},
+    {"lane": "them", "en": "Formats and tokenizes the dataset, packing short samples together", "zh": "按格式处理数据并分词，把短样本拼接在一起"},
+    {"lane": "them", "en": "Runs the training loop with the configured FSDP2/DeepSpeed parallelism", "zh": "按配置的 FSDP2/DeepSpeed 并行方式跑训练循环"},
+    {"lane": "them", "en": "Saves the adapter or full weights to the output directory", "zh": "把 adapter 或完整权重存到输出目录", "code": "output_dir: ./outputs/lora-out"}
+  ],
+  "value": {"en": "A fine-tune is one reviewable YAML file instead of a fragile training script per model and cluster", "zh": "一次微调就是一份可审阅的 YAML，不再是每个模型、每个集群一份脆弱的训练脚本"},
+  "sources": [
+    "https://github.com/axolotl-ai-cloud/axolotl#-quick-start---llm-fine-tuning-in-minutes (uv pip install --no-build-isolation axolotl[deepspeed], axolotl fetch examples, axolotl train examples/llama-3/lora-1b.yml)",
+    "https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-3/lora-1b.yml (base_model, datasets, adapter: lora, output_dir: ./outputs/lora-out, sample_packing)",
+    "https://github.com/axolotl-ai-cloud/axolotl/blob/main/docs/getting-started.qmd (what axolotl train does: download model, apply LoRA, process dataset, train, save)"
+  ]
+}

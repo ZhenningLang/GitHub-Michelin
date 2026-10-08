@@ -9,8 +9,8 @@
 | --- | --- | --- | --- |
 | **lua-nginx-module (ngx_lua)** | Use it when you need real per-request programmability on NGINX (auth, routing, rate-limit) via LuaJIT cosockets — but one blocking call stalls a worker, and you're bound to OpenResty's version-coupled, founder-concentrated core. | A (4/6) | [→](lua-nginx-module.md) |
 | **lua-resty-redis** | Use it when your OpenResty edge logic must hit Redis non-blocking on the request hot path with pooling and pipelining — but it works only inside ngx_lua and has no built-in Redis Cluster slot-routing. | B (3/6) | [→](lua-resty-redis.md) |
-| **nginx-upload-module** | Use it when you want NGINX to stream large multipart uploads to disk and hand your backend just file metadata — but you're compiling an aging, single-maintainer C fork (last push 2024-07); direct-to-S3 presigned uploads often beat it now. | "?" (2/6) | [→](nginx-upload-module.md) |
-| **tusd** | Use it when you need a robust, protocol-based resumable upload server that can stream to local disk or cloud storage — but it's a separate service, not an NGINX module, and may be overkill for small, reliable uploads. | B (6/6) | [→](tusd.md) |
+| **nginx-upload-module** | Use it when your app behind NGINX takes huge multipart uploads and you want NGINX to land them on disk and pass only file metadata upstream — but it's a quiet single-maintainer C fork (last commit 2023-06) you must compile into NGINX. | "?" (2/6) | [→](nginx-upload-module.md) |
+| **tusd** | Use it when users upload multi-GB files over flaky networks and must resume where they broke off, with bytes streamed to disk or S3/GCS/Azure instead of through your app — but there is no built-in distributed lock, so scaling out needs sticky routing. | B (5/6) | [→](tusd.md) |
 
 ## Comparison matrix
 
@@ -18,8 +18,8 @@
 | --- | --- | --- | --- |
 | [lua-nginx-module (ngx_lua)](lua-nginx-module.md) | ✅ | A (4/6) | Use it when you need real per-request programmability on NGINX (auth, routing, rate-limit) via LuaJIT cosockets — but one blocking call stalls a worker, and you're bound to OpenResty's version-coupled, founder-concentrated core. |
 | [lua-resty-redis](lua-resty-redis.md) | ✅ | B (3/6) | Use it when your OpenResty edge logic must hit Redis non-blocking on the request hot path with pooling and pipelining — but it works only inside ngx_lua and has no built-in Redis Cluster slot-routing. |
-| [nginx-upload-module](nginx-upload-module.md) | ✅ | "?" (2/6) | Use it when you want NGINX to stream large multipart uploads to disk and hand your backend just file metadata — but you're compiling an aging, single-maintainer C fork (last push 2024-07); direct-to-S3 presigned uploads often beat it now. |
-| [tusd](tusd.md) | ✅ | B (6/6) | Use it when you need a robust, protocol-based resumable upload server that can stream to local disk or cloud storage — but it's a separate service, not an NGINX module, and may be overkill for small, reliable uploads. |
+| [nginx-upload-module](nginx-upload-module.md) | ✅ | "?" (2/6) | Frees app workers from slow multi-GB uploads and adds resumable uploads and per-file hashing; costs a custom NGINX build, disk cleanup you own, and patching C yourself if an NGINX release breaks it. |
+| [tusd](tusd.md) | ✅ | B (5/6) | The reference tus protocol server that any tus client can resume against, in exchange for running an extra service, wiring hooks for auth and post-processing, and one storage backend per process. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

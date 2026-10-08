@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "OCRmyPDF does", "zh": "OCRmyPDF 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install OCRmyPDF, Tesseract and the language packs you need", "zh": "装好 OCRmyPDF、Tesseract 和需要的语言包", "code": "apt install ocrmypdf · brew install ocrmypdf", "component": {"en": "ocrmypdf CLI", "zh": "ocrmypdf 命令行"}},
+    {"lane": "you", "en": "Run it on a scanned PDF, naming the languages and cleanup options", "zh": "对扫描 PDF 运行它，指定语言和清理选项", "code": "ocrmypdf -l eng+fra --deskew input.pdf output.pdf"},
+    {"lane": "them", "en": "Rasterizes each page and runs Tesseract on it, pages in parallel across CPU cores", "zh": "把每页渲染成图交给 Tesseract 识别，多核并行", "component": {"en": "Tesseract engine", "zh": "Tesseract 引擎"}},
+    {"lane": "them", "en": "Places the recognized words as an invisible text layer under the untouched page image", "zh": "把识别出的字作为隐形文字层垫在原图下方，原图不动"},
+    {"lane": "them", "en": "Optimizes images, converts to PDF/A when it can, and validates the output file", "zh": "压缩图像，能转就转成 PDF/A，并校验输出文件"}
+  ],
+  "value": {"en": "The scan looks exactly the same but is now searchable, copyable and archive-ready", "zh": "扫描件外观完全不变，但能搜索、能复制、能长期归档"},
+  "sources": [
+    "https://github.com/ocrmypdf/OCRmyPDF#installation (apt install ocrmypdf, brew install ocrmypdf)",
+    "https://github.com/ocrmypdf/OCRmyPDF#feature-demo (ocrmypdf -l eng+fra, --deskew input.pdf output.pdf)",
+    "https://github.com/ocrmypdf/OCRmyPDF#main-features (text placed below the image, PDF/A, image optimization, validation, multi-core)",
+    "https://github.com/ocrmypdf/OCRmyPDF/blob/main/docs/releasenotes/version17.md (v17.0.0 rasterizer/--ocr-engine, v17.13.0 PDF/A backend)"
+  ]
+}

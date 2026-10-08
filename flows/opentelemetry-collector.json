@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "The Collector does", "zh": "Collector 做的"},
+  "steps": [
+    {"lane": "you", "en": "Pull the Collector image and run it with the OTLP ports open: 4317 for gRPC, 4318 for HTTP", "zh": "拉取并启动 Collector，开放 OTLP 端口 4317 和 4318", "code": "docker pull otel/opentelemetry-collector"},
+    {"lane": "you", "en": "Declare receivers, processors and exporters in YAML, then wire them into per-signal pipelines", "zh": "在 YAML 里声明接收器、处理器、导出器，再按信号类型连成管线", "code": "otelcol --config=customconfig.yaml"},
+    {"lane": "you", "en": "Point your apps' OpenTelemetry SDKs at the Collector instead of at a vendor", "zh": "让应用的 OTel SDK 改发给 Collector，不再直连厂商"},
+    {"lane": "them", "en": "Receives traces, metrics and logs and converts them into one internal data model", "zh": "接收链路、指标和日志，统一转换成一种内部数据格式", "component": {"en": "receivers", "zh": "接收器"}},
+    {"lane": "them", "en": "Batches, filters, samples and enriches the data in flight", "zh": "在传输途中批量打包、过滤、采样、补充元数据", "component": {"en": "processors", "zh": "处理器"}},
+    {"lane": "them", "en": "Sends each signal to one or more backends, queueing and retrying on failure", "zh": "把每类信号发往一个或多个后端，失败时排队重试", "component": {"en": "exporters", "zh": "导出器"}}
+  ],
+  "value": {"en": "Changing or adding a backend is a YAML edit in one place — your apps keep emitting OTLP and are never re-instrumented", "zh": "换后端或加后端只改一处 YAML——应用照旧发 OTLP，不用重新埋点"},
+  "sources": [
+    "https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/collector/quick-start.md (docker pull otel/opentelemetry-collector; docker run opening 4317 gRPC and 4318 HTTP)",
+    "https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/collector/configuration.md (otelcol --config=customconfig.yaml; receivers/processors/exporters wired in service.pipelines)",
+    "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md (receive, process and export telemetry; vendor-agnostic; single codebase for traces, metrics and logs)"
+  ]
+}

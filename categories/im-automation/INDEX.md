@@ -14,7 +14,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **Douyin-Bot** | Use it only as a historical reference for ADB screen-coordinate phone automation — never deploy it, its 2018 coordinates and dead Tencent face API mean it no longer works. | D (3/6) | [→](douyin-bot.md) |
+| **Douyin-Bot** | Use it only to read a compact example of driving an Android phone from Python over ADB (screencap, score, input swipe/tap) — it is dead since 2020, hard-codes 2018 Douyin coordinates, and its Tencent face API is gone, so never deploy it. | D (3/6) | [→](douyin-bot.md) |
 | **OpeniLink Hub** | Use it when several iLink-connected WeChat bots need a self-hosted control plane, persistence, tracing, and Apps; it is young and explicitly not affiliated with or endorsed by iLink's official team. | B (6/6) | [→](openilink-hub.md) |
 | **OpeniLink Go SDK** | Use it when you need raw iLink transport inside an existing Go service and prefer the smallest trust boundary over a control plane; you then own persistence, auth, retrying and operations. | C (5/6) | [→](openilink-sdk-go.md) |
 
@@ -22,7 +22,7 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [Douyin-Bot](douyin-bot.md) | ✅ | D (3/6) | Use it only as a historical reference for ADB screen-coordinate phone automation — never deploy it, its 2018 coordinates and dead Tencent face API mean it no longer works. |
+| [Douyin-Bot](douyin-bot.md) | ✅ | D (3/6) | Buys a short, famous walkthrough of the screenshot-analyze-tap loop; costs everything practical — no working target, no backend, no tests, single author. |
 | [OpeniLink Hub](openilink-hub.md) | ✅ | B (6/6) | Young multi-bot control plane with persistence, tracing, and Apps, without official iLink affiliation or endorsement. |
 | [OpeniLink SDK (Go)](openilink-sdk-go.md) | ✅ | C (5/6) | The raw iLink transport for Go services underneath the indexed Hub: smallest trust boundary, and you own persistence, auth, retrying and operations. |
 

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "unstructured does", "zh": "unstructured 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library with the extras and system tools your file types need", "zh": "按文件类型装上可选依赖和系统工具", "code": "pip install \"unstructured[all-docs]\" · pip install \"unstructured[docx,pptx]\""},
+    {"lane": "you", "en": "Call partition on any file", "zh": "对任意文件调用 partition", "code": "elements = partition(\"example-docs/layout-parser-paper.pdf\")"},
+    {"lane": "them", "en": "Detects the file type and routes it to the matching partitioner", "zh": "识别文件类型，交给对应的分区函数"},
+    {"lane": "them", "en": "For PDFs and images, reads the text layer or runs a layout model plus OCR, per strategy", "zh": "PDF 和图片按策略读文字层，或跑版面模型加 OCR"},
+    {"lane": "them", "en": "Returns typed elements (Title, NarrativeText, Table…) with page and source metadata", "zh": "返回带页码和来源元数据的分类型元素（标题、正文、表格……）"},
+    {"lane": "you", "en": "Chunk the elements along section boundaries for your index", "zh": "沿章节边界把元素分块，送进索引", "code": "chunk_by_title(elements)"}
+  ],
+  "value": {"en": "Every file type becomes the same structured element list, so chunks follow sections instead of cutting tables in half", "zh": "所有文件类型都变成同一种结构化元素列表，分块顺着章节走，不再把表格拦腰切断"},
+  "sources": [
+    "https://github.com/Unstructured-IO/unstructured#installing-the-library (pip install \"unstructured[all-docs]\", \"unstructured[docx,pptx]\", libmagic/poppler/tesseract/libreoffice)",
+    "https://github.com/Unstructured-IO/unstructured#pdf-document-parsing-example (from unstructured.partition.auto import partition; elements = partition(\"example-docs/layout-parser-paper.pdf\"))",
+    "https://github.com/Unstructured-IO/unstructured/blob/main/unstructured/partition/utils/constants.py (PartitionStrategy: auto, fast, ocr_only, hi_res)",
+    "https://github.com/Unstructured-IO/unstructured/blob/main/unstructured/chunking/title.py (chunk_by_title)",
+    "https://github.com/Unstructured-IO/unstructured/blob/main/unstructured/documents/elements.py (Title, NarrativeText, ListItem, Table element types)"
+  ]
+}

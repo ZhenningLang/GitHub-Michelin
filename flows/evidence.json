@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Evidence does", "zh": "Evidence 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single-binary CLI", "zh": "装上单文件 CLI", "code": "curl -fsSL https://evidence.studio/install.sh | sh", "component": {"en": "evidence CLI", "zh": "evidence CLI"}},
+    {"lane": "you", "en": "Scaffold a project and fill in connection.yaml for your warehouse", "zh": "建项目，在 connection.yaml 里填好仓库连接", "code": "evidence init my-project --warehouse snowflake"},
+    {"lane": "you", "en": "Write a Markdown page with chart tags that name a table and the measures", "zh": "写一页 Markdown，用图表标签点名表和指标", "code": "{% line_chart data=\"orders\" x=\"date\" y=\"sum(sales)\" /%}"},
+    {"lane": "them", "en": "Each chart tag writes its own SQL in your warehouse's dialect and runs it", "zh": "每个图表标签自己生成你仓库方言的 SQL 并执行", "component": {"en": "core renderer", "zh": "core 渲染器"}},
+    {"lane": "you", "en": "Ship the project in the official serve image", "zh": "用官方 serve 镜像把项目跑起来", "code": "FROM evidencedev/serve:latest"},
+    {"lane": "them", "en": "Re-runs the queries on every page load and serves the report behind Basic Auth", "zh": "每次打开页面都重跑查询，在 Basic Auth 后面把报告发给同事", "component": {"en": "evidence serve", "zh": "evidence serve"}}
+  ],
+  "value": {"en": "Reports are text files in git — diffable, reviewable, agent-editable — with live data and no rebuild pipeline", "zh": "报告就是 git 里的文本文件，能 diff、能评审、能让 agent 改，数据实时，不用维护构建流水线"},
+  "sources": [
+    "https://github.com/evidence-dev/evidence#install (install.sh, evidence init / evidence dev)",
+    "https://github.com/evidence-dev/evidence/blob/main/docs/cli/connections.mdx (evidence init --warehouse, connection.yaml)",
+    "https://github.com/evidence-dev/evidence/blob/main/docs/migration-guide.mdx (Markdoc line_chart syntax; components write their own SQL; queries re-run on page load)",
+    "https://github.com/evidence-dev/evidence/blob/main/docs/self-host/index.mdx (evidencedev/serve image, evidence serve, HTTP Basic Auth)"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Metabase does", "zh": "Metabase 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the open-source container (point MB_DB_* at Postgres for production)", "zh": "启动开源版容器（生产环境用 MB_DB_* 指向 Postgres）", "code": "docker run -d -p 3000:3000 --name metabase metabase/metabase"},
+    {"lane": "you", "en": "Open the setup page, create the admin and add your database connection", "zh": "打开设置页，建管理员，填上你的数据库连接", "code": "http://localhost:3000"},
+    {"lane": "them", "en": "Syncs the schema and samples column values so it knows tables, keys and filter options", "zh": "同步表结构、抽样列值，摸清有哪些表、主外键和过滤选项", "component": {"en": "sync and scan", "zh": "同步与扫描任务"}},
+    {"lane": "you", "en": "Anyone picks a table, filters and summarizes by clicking — or writes SQL", "zh": "任何人点选表、过滤、汇总——或者直接写 SQL", "component": {"en": "query builder", "zh": "查询构建器"}},
+    {"lane": "them", "en": "Turns the clicks into SQL for that database, runs it and picks a chart", "zh": "把点选翻译成该数据库的 SQL，执行并自动选图"},
+    {"lane": "them", "en": "Serves saved questions on shared dashboards with filters for the whole team", "zh": "把保存的问题放上带筛选器的共享看板，全队都能看"}
+  ],
+  "value": {"en": "People outside the data team answer their own questions without filing a SQL request", "zh": "数据团队以外的人不用再提 SQL 需求单，自己就能查到答案"},
+  "sources": [
+    "https://github.com/metabase/metabase/blob/master/docs/installation-and-operation/running-metabase-on-docker.md (docker run, localhost:3000, MB_DB_* for Postgres app DB)",
+    "https://github.com/metabase/metabase/blob/master/docs/databases/sync-scan.md (sync schema, scan field values, fingerprinting)",
+    "https://github.com/metabase/metabase#key-features (ask questions without SQL, SQL editor, dashboards with filters)"
+  ]
+}

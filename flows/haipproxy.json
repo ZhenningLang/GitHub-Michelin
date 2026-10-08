@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "haipproxy does", "zh": "haipproxy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Point the settings at Redis and Splash, then start every component", "zh": "在配置里填好 Redis 和 Splash 地址，把各组件都启动起来", "code": "docker-compose up", "component": {"en": "config/settings.py", "zh": "config/settings.py"}},
+    {"lane": "them", "en": "Crawlers scrape public proxy-list sites and push the IPs into Redis queues", "zh": "采集器抓公开代理网站，把 IP 推进 Redis 队列", "component": {"en": "crawler_booter.py", "zh": "crawler_booter.py"}},
+    {"lane": "them", "en": "Schedulers re-queue the work; validators test each IP against specific target sites and score it", "zh": "调度器定时派活，校验器按目标网站逐个测 IP 并打分", "component": {"en": "scheduler + validator", "zh": "调度器 + 校验器"}},
+    {"lane": "you", "en": "In your spider, ask the client for proxies validated for your target site", "zh": "在你的爬虫里，向客户端要针对目标网站校验过的代理", "code": "ProxyFetcher('zhihu', strategy='greedy', redis_args=args)"},
+    {"lane": "them", "en": "Hands back a proxy from that site's scored pool on each request", "zh": "每次从该网站的已评分代理池里返回一个代理"}
+  ],
+  "value": {"en": "A large distributed crawl keeps a self-refreshing pool of free proxies without buying any", "zh": "大规模分布式爬取有一个会自己刷新的免费代理池，不用花钱买代理"},
+  "sources": [
+    "https://github.com/SpiderClub/haipproxy#快速开始 (REDIS_HOST / SPLASH_URL in config/settings.py, crawler_booter.py / scheduler_booter.py --usage crawler|validator, docker-compose up)",
+    "https://github.com/SpiderClub/haipproxy#python客户端调用示例 (ProxyFetcher('zhihu', strategy='greedy', redis_args=args), fetcher.get_proxy())"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Deno does",
+    "zh": "Deno 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the single deno binary",
+      "zh": "装上唯一的 deno 可执行文件",
+      "code": "curl -fsSL https://deno.land/install.sh | sh · brew install deno"
+    },
+    {
+      "lane": "you",
+      "en": "Write a TypeScript server against web-standard Request and Response",
+      "zh": "用 Web 标准 Request / Response 写个 TS 服务",
+      "code": "Deno.serve((_req: Request) => new Response(...))"
+    },
+    {
+      "lane": "you",
+      "en": "Run it and grant only network access",
+      "zh": "运行它，只授予网络权限",
+      "code": "deno run --allow-net server.ts"
+    },
+    {
+      "lane": "them",
+      "en": "Runs the .ts file directly, with no tsconfig or build step",
+      "zh": "直接运行 .ts 文件，不用 tsconfig、不用先编译"
+    },
+    {
+      "lane": "them",
+      "en": "Denies file, env and subprocess access you did not grant",
+      "zh": "没授权的文件、环境变量、子进程访问一律拒绝",
+      "component": {
+        "en": "permission sandbox",
+        "zh": "权限沙箱"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Serves requests on http://localhost:8000",
+      "zh": "在 http://localhost:8000 上响应请求"
+    }
+  ],
+  "value": {
+    "en": "A TypeScript service with no build pipeline that can only touch what you explicitly allowed",
+    "zh": "没有构建流水线的 TypeScript 服务，而且只能碰你明确放行的资源"
+  },
+  "sources": [
+    "https://github.com/denoland/deno README (install.sh, brew install deno, Deno.serve server.ts, deno run --allow-net server.ts, localhost:8000)",
+    "https://docs.deno.com/runtime/fundamentals/security/ (no access to file system, network, environment or subprocesses by default)"
+  ]
+}

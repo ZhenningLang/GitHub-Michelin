@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "PyAutoGUI does",
+    "zh": "PyAutoGUI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it; on macOS/Linux it pulls in the OS input backend",
+      "zh": "装上它；macOS/Linux 会顺带装好系统输入后端",
+      "code": "pip install pyautogui"
+    },
+    {
+      "lane": "you",
+      "en": "Save a cropped screenshot of the button you need, e.g. button.png",
+      "zh": "把要点的按钮截一小张图存下来，比如 button.png"
+    },
+    {
+      "lane": "you",
+      "en": "Script it: find the button, then click and type",
+      "zh": "写脚本：先找按钮，再点击、打字",
+      "code": "pyautogui.locateCenterOnScreen('button.png') · pyautogui.click(buttonx, buttony)"
+    },
+    {
+      "lane": "them",
+      "en": "Screenshots the primary monitor and finds where your image matches",
+      "zh": "截主屏，找出你那张图在屏幕上的位置"
+    },
+    {
+      "lane": "them",
+      "en": "Turns each call into native mouse/keyboard events (Win32, Cocoa, X11)",
+      "zh": "把每个调用翻译成系统原生的鼠标键盘事件"
+    },
+    {
+      "lane": "them",
+      "en": "The focused window receives them exactly as if a person clicked and typed",
+      "zh": "当前焦点窗口收到的，和真人点击打字一模一样"
+    }
+  ],
+  "value": {
+    "en": "A GUI-only app gets driven by a script — no API, CLI or accessibility hooks needed",
+    "zh": "只有图形界面的软件也能被脚本操作，不需要它有 API 或命令行"
+  },
+  "sources": [
+    "https://github.com/asweigart/pyautogui#readme (pip install pyautogui; Dependencies; Example Usage: click, write, locateCenterOnScreen('button.png'); focused-window note; primary-monitor note)",
+    "https://github.com/asweigart/pyautogui#how-does-pyautogui-work (Windows API via ctypes, Cocoa on macOS, Xlib on Linux)",
+    "https://github.com/asweigart/pyautogui/blob/master/setup.py (install_requires: pyobjc-core / pyobjc-framework-quartz on Darwin, python3-Xlib on Linux, pyscreeze)"
+  ]
+}

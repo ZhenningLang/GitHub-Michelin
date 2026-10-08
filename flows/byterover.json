@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "ByteRover does", "zh": "ByteRover 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI (archived at v3.16.1; existing installs only)", "zh": "安装 CLI（已归档，停在 v3.16.1，仅适用于已有安装）", "code": "curl -fsSL https://byterover.dev/install.sh | sh · npm install -g byterover-cli"},
+    {"lane": "you", "en": "Start it in your project and connect an LLM provider", "zh": "在项目里启动它，接一个 LLM 提供方", "code": "brv · brv providers connect"},
+    {"lane": "you", "en": "Curate a fact, pointing at the code it is about", "zh": "整理一条事实，并指向它涉及的代码", "code": "/curate \"Auth uses JWT with 24h expiry\" @src/middleware/auth.ts"},
+    {"lane": "them", "en": "Its agent reads the code and files the knowledge into the project's context tree", "zh": "它的 agent 读代码，把这条知识归档进项目的上下文树", "component": {"en": ".brv/context-tree/", "zh": ".brv/context-tree/"}},
+    {"lane": "you", "en": "Later, you or your coding agent ask about it", "zh": "之后你或你的编码 agent 来问", "code": "/query How is authentication implemented?"},
+    {"lane": "them", "en": "Searches the context tree and answers from the curated knowledge", "zh": "检索上下文树，依据整理过的知识作答", "component": {"en": "query agent", "zh": "查询 agent"}}
+  ],
+  "value": {"en": "Project knowledge survives across sessions and agents as reviewed, versioned files instead of being re-explained", "zh": "项目知识以经过审核、带版本的文件跨会话、跨 agent 留存，不用再反复解释"},
+  "sources": [
+    "https://github.com/campfirein/byterover-cli README (main @ 1052ac1, archived; read 2026-10-08): Quick Start (install.sh, npm install -g byterover-cli, brv, /curate ... @src/middleware/auth.ts, /query How is authentication implemented?); CLI Usage (brv providers connect, brv review, brv vc, brv mcp)",
+    "src/agent/infra/file-system/context-tree-file-system-factory.ts: file operations confined to .brv/context-tree/"
+  ]
+}

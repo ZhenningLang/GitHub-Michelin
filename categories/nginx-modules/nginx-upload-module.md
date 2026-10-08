@@ -6,8 +6,8 @@ category: nginx-modules
 tags: [nginx, file-upload, multipart, c-module, web-server]
 language: C
 license: BSD-3-Clause
-maturity: v2.3.0 tag line, low activity (last push 2024-07), ~1.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v2.3.0 tag line (no GitHub releases), last commit 2023-06-21, quiet since (as of 2026-10-08), ~1.0k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-07-17T20:13:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:19:45Z
+  computed_at: 2026-10-08T08:23:39Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1194
+        last_commit_age_days: 1205
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 6488
-        last_commit_age_days: 1194
+        repo_age_days: 6499
+        last_commit_age_days: 1205
         cohort: library
     governance:
       grade: "?"
@@ -69,9 +69,31 @@ You're running an app behind NGINX that accepts large file uploads, and you don'
 
 It also fits when you need **resumable uploads** (the module supports a resumable upload protocol via `Content-Range`) or per-file hashing/CRC32 so the backend can verify integrity without re-reading the payload. The classic use case is an upload tier in front of a PHP/Python/Ruby app that would otherwise choke on big multipart bodies — offload the heavy lifting to NGINX, keep the app stateless and fast.
 
+## How it works
+
+The module sits inside NGINX and reads the upload body itself, so the slow part — a client trickling bytes over a bad connection — is absorbed by NGINX's event loop instead of an app worker. As the `multipart/form-data` body (the browser's encoding for file forms) streams in, it writes each file into the `upload_store` directory, then rewrites the request: the file bytes are removed and replaced by small fields you declare with `upload_set_form_field` (original name, content type, the temporary path on disk, optionally md5/size). That much smaller request is forwarded to the location named by `upload_pass`, which usually proxies to your app. **The module does the receiving, parsing and writing; you write the NGINX config and the backend handler that reads a path and moves the file** — plus the cleanup of anything left in `upload_store`. Think of a mailroom that signs for the parcel and sends you only the shelf number.
+
+![nginx-upload-module — backbone user story](../../assets/flow/nginx-upload-module.svg)
+
+<!-- flow-steps:begin (generated from flows/nginx-upload-module.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Build NGINX with the module compiled in
+2. **You**: In the upload location, set where files land and which backend gets the request — `upload_store /tmp 1 · upload_pass @test` — component: `nginx.conf directives`
+3. **You**: Declare the fields that replace each file in the forwarded form — `upload_set_form_field $upload_field_name.path "$upload_tmp_path"`
+4. **nginx-upload-module**: Parses the multipart body as it arrives and writes each file into upload_store
+5. **nginx-upload-module**: Strips the file bytes, fills in name/type/path (plus md5/size) and passes the form on
+6. **You**: Your backend reads the path field and moves or processes the file on disk
+
+**Value**: Slow multi-GB uploads are absorbed by NGINX; your app gets a small POST describing files already on disk
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **Low-activity, fork-of-a-fork lineage — the headline caution.** The original module (by Valery Kholodkov) went unmaintained; this `fdintino` fork is the de-facto continuation but is itself **low-activity** (last push 2024-07; see Health). Compiling an aging third-party C module into NGINX is a real maintenance and security commitment — weigh it before adopting.
+- **Low-activity, fork-of-a-fork lineage — the headline caution.** The original module (by Valery Kholodkov) went unmaintained; this `fdintino` fork is the de-facto continuation but is itself **quiet** (last default-branch commit 2023-06-21; see Health). Compiling an aging third-party C module into NGINX is a real maintenance and security commitment — weigh it before adopting.
 - **You can offload to object storage.** If clients can upload directly to S3/GCS via presigned URLs, you avoid the upload-tier disk, the NGINX recompile, and the cleanup problem entirely. That's the modern default for many apps.
 - **You're not willing to compile NGINX.** It's a static C module (no dynamic-module guarantee across versions) — you build NGINX with it, and re-validate on every NGINX upgrade. If you want config-only or a managed setup, this is friction.
 - **You need a maintained, vendor-supported path.** No foundation/company backing; if a future NGINX release breaks it, you may be patching C yourself. For supported large-upload handling, NGINX's own `client_body_*` buffering plus an app-level chunked/tus protocol may be safer.
@@ -109,7 +131,7 @@ It also fits when you need **resumable uploads** (the module supports a resumabl
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_data.
-- **Maintenance (2026-06) — low activity.** Last push **2024-07** (≈2 years stale at writing); tags through **v2.3.0**. Not archived, but reads as **maintenance-mode / low-activity**, not actively developed. This fork exists precisely because the upstream stalled — so the lineage is "kept alive when needed," not vibrant. [推断]
+- **Maintenance (2026-10) — low activity.** Last default-branch commit **2023-06-21** (the 2024-07 push touched no default-branch code); no commit in 3+ years as of 2026-10-08; tags through **v2.3.0**. Not archived, but reads as **maintenance-mode / low-activity**, not actively developed. This fork exists precisely because the upstream stalled — so the lineage is "kept alive when needed," not vibrant. [推断]
 - **Governance / bus factor.** `User`-owned (Frankie Dintino's fork of Valery Kholodkov's original). A ~1k-star `User`-owned C module with low activity is a **clear bus-factor flag** — survival depends on one maintainer's continued attention, and there's no organizational backing. [推断]
 - **Age × Lindy.** The lineage is old (this repo created **2008-12**, ~17 years) — Lindy on the *concept* and the original code is strong, but the **low recent activity weakens the "still-active" half**: old-and-coasting, not old-and-thriving. Use age × activity together; here activity is the weak factor. [推断]
 - **Adoption.** Historically well-known for NGINX upload offload (~1k stars, ~378 forks); but the modern trend toward direct-to-object-storage and dedicated tus servers has reduced its centrality. License is **BSD-3-Clause** (read from the `LICENCE` file: © 2006, 2008 Valery Kholodkov, 3-clause BSD text). [推断]
@@ -117,7 +139,7 @@ It also fits when you need **resumable uploads** (the module supports a resumabl
 
 ## Caveats (unverified)
 
-- [未验证] ~1.0k stars / ~55 open issues / last push 2024-07 / tags through v2.3.0 as of 2026-06 — volatile, re-check.
+- [未验证] ~1.0k stars / ~55 open issues / last push 2024-07 (last default-branch commit 2023-06-21) / tags through v2.3.0 as of 2026-10-08 — volatile, re-check.
 - [未验证] License: GitHub's API reported `NOASSERTION`; the repo's `LICENCE` file is a **3-clause BSD** license (© 2006, 2008 Valery Kholodkov — "Neither the name... may be used to endorse...") — recorded as BSD-3-Clause from reading that file.
 - [未验证] Resumable-upload protocol support and CRC32/hash fields are from the module's docs/feature list; exact current behavior and NGINX-version compatibility not verified against the code here.
 - [未验证] Whether a clean dynamic-module build works against current NGINX releases is version-sensitive and not verified.

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "BDFR does",
+    "zh": "BDFR 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI with pip or pipx (Python 3.9+)",
+      "zh": "用 pip 或 pipx 装好命令行（Python 3.9+）",
+      "code": "python3 -m pipx install bdfr"
+    },
+    {
+      "lane": "you",
+      "en": "Pick a mode, an output folder and the Reddit sources to pull from",
+      "zh": "选一种模式、一个输出目录和要抓的 Reddit 来源",
+      "code": "bdfr download ./path/to/output --subreddit Python -L 10"
+    },
+    {
+      "lane": "them",
+      "en": "Lists the submissions from each source through the Reddit API",
+      "zh": "通过 Reddit API 列出每个来源下的帖子",
+      "component": {
+        "en": "PRAW client",
+        "zh": "PRAW 客户端"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Resolves each post's link with a per-site downloader or yt-dlp and fetches the media",
+      "zh": "按站点挑下载器或交给 yt-dlp，解析帖子链接并下载媒体",
+      "component": {
+        "en": "site downloaders + yt-dlp",
+        "zh": "站点下载器 + yt-dlp"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Saves each file under your folder and file-name scheme, and records the run in a log",
+      "zh": "按你的目录和文件名模板落盘，并把这次运行记进日志",
+      "code": "--file-scheme '{POSTID}'"
+    }
+  ],
+  "value": {
+    "en": "Hundreds of posts' media (or their JSON/YAML data with `archive`) land in a predictable tree from one command you can re-run",
+    "zh": "成百上千个帖子的媒体（用 `archive` 则是 JSON/YAML 数据）按可预期的目录落盘，一条命令就能重跑"
+  },
+  "sources": [
+    "https://github.com/Serene-Arc/bulk-downloader-for-reddit#installation (pipx install bdfr, Python 3.9+)",
+    "https://github.com/Serene-Arc/bulk-downloader-for-reddit#usage (download/archive/clone modes; quick reference commands incl. --file-scheme '{POSTID}')",
+    "https://github.com/Serene-Arc/bulk-downloader-for-reddit#list-of-currently-supported-sources (per-site downloaders, yt-dlp fallback)",
+    "pyproject.toml on master (praw, yt-dlp dependencies)"
+  ]
+}

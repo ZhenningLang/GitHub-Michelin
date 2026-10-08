@@ -6,20 +6,20 @@ category: personal-assistants
 tags: [ai-agent, learning-loop, self-improving, multi-channel]
 language: Python
 license: MIT
-maturity: v0.x, active, 207k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: date-versioned releases (latest v2026.9.24, 2026-09-24), active, ~252k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-06T09:08:42Z
+  pushed_at: 2026-10-08T08:08:40Z
   default_branch: main
-  default_branch_sha: 7e7e3af5b06f85715c0353874fa07eff57dadac8
+  default_branch_sha: dde8800ed91c6e128064a17d5db914d74622594b
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:32:19Z
-  overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  computed_at: 2026-10-08T08:12:22Z
+  overall: A
+  overall_score: 3.5
+  scored_axes: 4
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -41,13 +41,13 @@ health:
         registry: pypi.org
         canonical_package: hermes-agent
         dependent_repos_count: 0
-        downloads_last_month: 142147
+        downloads_last_month: 162501
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
-        homebrew_installs_90d: 7846
+        homebrew_installs_90d: 8150
         homebrew_tier: A
-        release_downloads: 27481
+        release_downloads: 27640
         release_assets: 18
         release_tier: D
         signal_basis: homebrew+releases
@@ -55,17 +55,12 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 427
+        repo_age_days: 442
         last_commit_age_days: 0
         cohort: framework
     governance:
-      grade: B
-      raw:
-        active_maintainers_12mo: 496
-        top1_share: 0.441
-        top3_share: 0.65
-        window_source: stats_contributors
-        carve_out: null
+      grade: "?"
+      raw: {}
     risk_license:
       grade: A
       raw:
@@ -75,63 +70,91 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: no_window_signal }
+    governance: { reason: unattributable }
 ---
 # Hermes Agent
 
-The self-improving AI agent built by Nous Research. It is the only agent with a built-in learning loop — it creates skills from experience, improves them during use, nudges itself to persist knowledge, searches its own past conversations, and builds a deepening model of who you are across sessions. You can run it on a $5 VPS, a GPU cluster, or serverless infrastructure that costs nearly nothing when idle, and talk to it from Telegram while it works on a cloud VM.
+Every chat with an AI assistant starts from zero: you re-explain that the project is a Rust service on Ubuntu, re-paste the same deploy checklist, and the procedure it worked out yesterday is gone. Hermes Agent is an assistant you run on your own machine or server that keeps short notes about you and your environment, saves the procedures it works out as reusable skill files, and searches its past conversations — and you can reach it from the terminal or from Telegram, Slack, Discord and other chat apps.
 
 ![Hermes Agent — health radar](../../../../assets/health/hermes-agent.svg)
 
 ## When to use
 
-You are a solo developer or small team running AI agents on a $5 VPS or a GPU cluster, and you need an agent that gets better over time without manual prompt engineering. You have looked at OpenClaw, but OpenClaw is a messaging-native personal assistant with no learning loop — it does not evolve from your conversations. You have looked at AutoGPT, but AutoGPT is a workflow-automation platform focused on task execution, not on accumulating knowledge and skills across sessions. You choose Hermes Agent over both because it is the only one with a built-in learning loop that creates skills from experience, persists knowledge across sessions, and builds a deepening model of you. You also want to talk to it from Telegram while it works on a cloud VM, using any LLM provider you choose.
+You're a developer or a small team lead who wants one long-lived assistant on a $5 VPS or a spare cloud VM: it should run shell commands, check on a nightly job, send you a report on Telegram every morning, and remember that "deploy" means your specific three-step script. With ChatGPT-style apps you paste that context in every new conversation; with a coding agent like OpenCode you get great file editing but nothing that lives on a server, answers your phone, or runs a cron job. You reach for Hermes because persistence is the point: a bounded memory file about you, a growing folder of skills it writes after solving something new (pruned by a background curator so it does not fill up with near-duplicates), full-text search over old sessions, and a built-in scheduler — all under your control and with any model provider you choose.
+
+Pick it over [OpenClaw](openclaw.md) when you care more about the agent accumulating procedures and memory on a server than about the broadest set of chat channels and companion apps; OpenClaw is the wider-reach assistant, and Hermes even ships `hermes claw migrate` for moving an OpenClaw setup across.
+
+## How it works
+
+Hermes is a Python application you install with one script; it provisions its own Python 3.14 environment and tools. **You** choose a model provider (`hermes model`), decide where its tools run — locally, in Docker, over SSH, or in a serverless sandbox such as Modal or Daytona that sleeps when idle — and talk to it through the terminal UI or through the *gateway*, one background process that connects it to your chat apps. **It** does the rest of the loop on its own: it calls tools to do the task, writes what it learned about you into two small capped files (`MEMORY.md` and `USER.md`, a few hundred tokens each, loaded into every new session), saves a reusable skill — a Markdown instruction file in `~/.hermes/skills/` — after solving something new, and indexes every session so later conversations can search them. Think of it as an assistant that keeps a notebook and a recipe box, rather than one with a better memory: what it "learns" is text you can open, edit, pin or delete.
+
+![hermes-agent — backbone user story](../../../../assets/flow/hermes-agent.svg)
+
+<!-- flow-steps:begin (generated from flows/hermes-agent.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it on a laptop, VPS or cloud VM — `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
+2. **You**: Pick the LLM provider and model — `hermes model`
+3. **You**: Talk to it in the terminal, or start the gateway and message it from chat apps — `hermes · hermes gateway start` — component: `CLI / messaging gateway`
+4. **Hermes Agent**: Does the work with its tools in the configured terminal backend — component: `terminal backend`
+5. **Hermes Agent**: After a novel task, saves a skill and notes what it learned about you — component: `~/.hermes/skills · memories`
+6. **Hermes Agent**: Next session, loads those notes and reuses matching skills and past sessions
+
+**Value**: You stop re-explaining your setup and re-pasting the same procedure every conversation
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **Deterministic, repeatable systems** — The learning loop means behavior changes over time, which can make outputs non-deterministic and harder to debug. If you need deterministic automation, use n8n or traditional scripts instead of Hermes Agent, because those tools produce repeatable, predictable outputs.
-- **Simple, stateless chatbots** — Hermes is overkill for one-off Q&A; the value is in accumulated memory and skill evolution. If you just need a quick conversational assistant, use OpenClaw instead of Hermes Agent, because OpenClaw is lighter and designed for immediate messaging responses.
-- **Enterprise security compliance** — Nous Research is an AI research lab, not an enterprise vendor; there are no SOC 2, SSO, or audit-trail guarantees. If you need enterprise governance, use Dify or AutoGPT's cloud beta instead of Hermes Agent, because those platforms are built for organizational compliance.
-- **Coding-only agents** — Hermes is a general-purpose agent framework, not optimized for software engineering tasks. If you need a coding-specific agent, use OpenCode or Claude Code instead of Hermes Agent, because they are purpose-built for terminal-based code editing and execution.
-- **Teams needing multi-agent orchestration** — Hermes focuses on single-agent self-improvement, not multi-agent collaboration. If you need multi-agent teams, use LangChain with LangGraph or CrewAI instead of Hermes Agent, because those frameworks are designed for multi-agent orchestration.
+- **You need deterministic, repeatable automation.** Skills and memory change as the agent works, so the same request can take a different path next week. For fixed workflows use [n8n](../../../workflow-orchestration/n8n.md) or plain scripts instead, because they do exactly what you wrote every time.
+- **You want an embeddable library, not an app.** Hermes is a whole assistant with its own CLI, gateway and state directory; to put an agent loop inside your own Python service, use [Pydantic AI](../agent-sdks/pydantic-ai.md) or [LangChain](../../workflow-builders/langchain.md) instead.
+- **You need enterprise governance.** There is command approval and DM pairing, but no SSO, RBAC or audit trail, and memory is scoped to one profile ("one agent per Hermes home"). For organisation-wide agents with access control, use [Dify](../../workflow-builders/dify.md) instead.
+- **Your job is mainly writing code in a repository.** Hermes can edit files and run shells, but purpose-built coding agents such as [OpenCode](../../coding-agents/terminal-agents/opencode.md) are better at repo-scale editing, diffs and review loops.
+- **You need designed multi-agent teams.** Hermes delegates to subagents for parallel work, but the unit is still one assistant; for explicit role-based teams use [CrewAI](../agent-sdks/crewai.md) instead.
+- **You cannot run Python 3.14 or tolerate a moving target.** The project now supports only Python 3.14 (older interpreters are allowed just long enough to self-update), ships date-versioned releases every few days, and carries a very large open issue and PR backlog; if you need a stable, slow-changing assistant, pin a release and test upgrades, or prefer [OpenClaw](openclaw.md), which is governed by a foundation with a signed-release process.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.md) | ✅ | Personal assistant focused on multi-channel ubiquity. | OpenClaw is a ready-to-run messaging assistant; Hermes is a learning framework you extend. |
-| [AutoGPT](../../workflow-builders/autogpt.md) | ✅ | Autonomous workflow platform with deployment focus. | AutoGPT targets autonomous task execution and deployment; Hermes targets self-improvement through learning. |
-| [OpenCode](../../coding-agents/terminal-agents/opencode.md) | ✅ | Model-agnostic terminal coding agent. | OpenCode is for coding in the terminal; Hermes is a general conversational agent with a learning loop. |
-| [LangChain](../../workflow-builders/langchain.md) | ✅ | Lower-level framework for building custom agent pipelines. | LangChain is a toolkit for building from scratch; Hermes is a higher-level agent with built-in memory and skill synthesis. |
-| [CrewAI](../agent-sdks/crewai.md) | ✅ | Multi-agent orchestration framework. | CrewAI focuses on multi-agent teams; Hermes focuses on single-agent self-improvement. |
+| [OpenClaw](openclaw.md) | ✅ | Pick OpenClaw when you want the assistant on the most chat channels and devices with companion apps and team mode; pick Hermes when a server-side agent that accumulates skills and memory matters more. | Both keep Markdown memory files; OpenClaw adds wider reach and foundation governance, Hermes adds skills the agent writes itself (pruned by a curator), many terminal backends, and an optional single subscription (Nous Portal) for models and tools. |
+| [AutoGPT](../../workflow-builders/autogpt.md) | ✅ | Pick AutoGPT when you want to build and deploy autonomous agent workflows as blocks in a web UI; pick Hermes when you want one conversational assistant that you talk to and that remembers you. | AutoGPT is a platform for many workflow agents with a builder UI; Hermes is a single personal agent with chat and terminal front ends. |
+| [OpenCode](../../coding-agents/terminal-agents/opencode.md) | ✅ | Pick OpenCode for coding sessions inside a repository; pick Hermes for an always-on general assistant that also runs shell tasks and scheduled jobs. | OpenCode is tuned for editing code with tight review loops; Hermes trades that depth for persistence, messaging and cron. |
+| [LangChain](../../workflow-builders/langchain.md) | ✅ | Pick LangChain when you are building your own agent product and want components; pick Hermes when you want a finished assistant you install and use today. | LangChain gives full control and you own every piece; Hermes is opinionated and ready, but its behaviour is the project's, not yours. |
+| [CrewAI](../agent-sdks/crewai.md) | ✅ | Pick CrewAI to script a team of role-based agents for a business process; pick Hermes for one personal agent that learns your environment. | CrewAI is a framework for orchestrated multi-agent runs; Hermes is an end-user agent with memory and skills, not an orchestration library. |
 
 ## Tech stack
 
-- **Python** — primary implementation language
-- **CLI tooling** — interactive shell, setup wizard, migration tools (`hermes`, `hermes setup`, `hermes doctor`, `hermes claw migrate`)
-- **Gateway** — messaging gateway for Telegram, Discord, and other channels (`hermes gateway`)
-- **Model-agnostic** — supports any LLM provider via `hermes model`
+- **Python 3.14** application (`requires-python >=3.11,<3.15`, but only 3.14 is supported); direct dependencies are exact-pinned as a supply-chain defence.
+- **Interfaces:** terminal UI (`hermes`), messaging gateway (`hermes gateway`) for Telegram, Discord, Slack, WhatsApp, Signal, email and Home Assistant, Hermes Desktop, an Android/Termux package.
+- **Terminal backends:** local, Docker, SSH, Singularity, Modal, Daytona, Vercel Sandbox.
+- **State:** Markdown memory and skill files under `~/.hermes/`, SQLite FTS5 full-text search over sessions; optional Honcho user modelling and external memory providers; MCP client.
 
 ## Dependencies
 
-- Python runtime (3.10+ recommended)
-- An LLM provider (OpenAI, Anthropic, or local models)
-- A server or VPS (can run on a $5 VPS)
-- Messaging app credentials if using gateway features
+- A machine to host it (laptop, VPS, GPU box) running Linux, macOS, WSL2, native Windows or Termux; the installer brings Python 3.14, Node.js, ripgrep and FFmpeg via its package manager.
+- At least one LLM provider: OpenRouter, OpenAI, Anthropic, your own OpenAI-compatible endpoint, or the paid Nous Portal subscription, which also bundles web search, image generation, TTS and a cloud browser.
+- Bot credentials for each chat platform you connect; accounts with Modal/Daytona if you use those sandboxes.
 
 ## Ops difficulty
 
-**Low to medium**. Installation is straightforward via CLI (`hermes setup`); the agent can run on minimal hardware. The learning loop and skill persistence add some operational complexity — you need to manage the knowledge store and monitor skill quality over time.
+**Medium.** Installing is one script and `hermes setup`, and `hermes doctor` diagnoses problems. The ongoing work is what makes it different: you are running an agent with shell access that strangers could message, so you must configure command approval, DM pairing and a sandboxed backend; you should review the skills and memory it writes; and you need to keep up with frequent releases (`hermes update`). Running one gateway per profile and not sharing a Hermes home between two processes avoids corrupted memory.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade A — 142,147 monthly downloads via pypi.org (package: hermes-agent).
-- **Longevity**: Grade C — 427 days old.
-- **Governance**: Grade B — top-3 contributor share 65.0% (496 active maintainers in the trailing 12 months).
-- **Risk / License**: Grade A — MIT license.
+
+- **Maintenance (2026-10-08):** extremely active — commits daily and date-versioned releases every few days (v2026.9.24 is the latest stable as of today).
+- **Governance:** backed by Nous Research, an AI lab, under MIT. The radar's governance axis is `?` this time (the scorer could not attribute commits); the contributor list is dominated by one maintainer (`teknium1`, roughly four times the next contributor's commits), so treat the bus factor as concentrated even though hundreds of people contribute.
+- **Responsiveness:** not scored (`?`, no usable signal); with roughly 14.6k open issues and 33k open PRs as of 2026-10-08, assume your bug report may not get a quick answer.
+- **Age / Lindy:** about 15 months old (442 days; created 2025-07), longevity C — too young for the Lindy prior to help.
+- **Adoption:** ~252k stars and over 54k forks; adoption grade A from PyPI (162,501 monthly downloads), Homebrew and release downloads. Overall radar grade A.
+- **Risk flags:** MIT with no relicense history; an optional paid service (Nous Portal) is promoted in the README but not required.
+
 ## Caveats (unverified)
 
-- [推断] With 207k stars in under a year, the star count may reflect hype rather than verified production adoption.
-- [未验证] The "learning loop" that creates skills from experience may produce low-quality or unexpected skills; human review of generated skills may be necessary.
-- [未验证] The $5 VPS claim is likely for minimal usage; production workloads with large models may require significantly more resources.
-- [未验证] The long-term stability of the skill-persistence mechanism and knowledge store has not been proven in production environments.
+- [推断] Star and fork counts this high for a 15-month-old repo likely reflect hype and AI-assisted contribution volume as much as production use.
+- [推断] The open-PR count (≈33k) suggests many automated or low-effort submissions; how much of it maintainers actually review was not checked.
+- [未验证] Quality of agent-written skills over months of use was not tested; the curator prunes unused skills but its optional LLM consolidation pass is off by default.
+- [未验证] The "$5 VPS" claim covers the agent process with remote model APIs; local models or heavy browser tools need far more.
+- [推断] Bus-factor concentration is inferred from the GitHub contributors API, which counts commits on the default branch only.

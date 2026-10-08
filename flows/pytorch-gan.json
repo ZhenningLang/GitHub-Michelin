@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "The script does", "zh": "脚本做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and install its requirements", "zh": "克隆仓库，装好依赖", "code": "pip3 install -r requirements.txt"},
+    {"lane": "you", "en": "Go into one architecture's folder and run its single script", "zh": "进入某个架构的目录，运行它唯一的脚本", "code": "cd implementations/dcgan/ · python3 dcgan.py"},
+    {"lane": "them", "en": "Downloads the toy dataset (MNIST for DCGAN) into data/", "zh": "把玩具数据集（DCGAN 用 MNIST）下载到 data/", "component": {"en": "torchvision datasets", "zh": "torchvision 数据集"}},
+    {"lane": "them", "en": "Trains generator and discriminator against each other, one Adam step each per batch", "zh": "让生成器和判别器对抗训练，每批各走一步 Adam"},
+    {"lane": "them", "en": "Saves a grid of generated samples to images/ every few hundred batches", "zh": "每隔几百批把一格格生成样本存进 images/"},
+    {"lane": "you", "en": "Read the script top to bottom beside the samples; change a layer or loss and rerun", "zh": "对照样本把脚本从头读到尾，改一层或一个损失再跑"}
+  ],
+  "value": {"en": "You see a GAN paper's core idea as one readable, runnable file instead of a framework", "zh": "一篇 GAN 论文的核心思路变成一个能读、能跑的文件，而不是一套框架"},
+  "sources": [
+    "https://github.com/eriklindernoren/PyTorch-GAN#installation (git clone, sudo pip3 install -r requirements.txt)",
+    "https://github.com/eriklindernoren/PyTorch-GAN#deep-convolutional-gan (cd implementations/dcgan/, python3 dcgan.py)",
+    "https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/dcgan/dcgan.py (datasets.MNIST into ../../data/mnist, Adam optimizer_G / optimizer_D per batch, save_image to images/ every sample_interval=400 batches)"
+  ]
+}

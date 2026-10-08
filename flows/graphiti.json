@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Graphiti does", "zh": "Graphiti 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library and start a graph database", "zh": "装好库，起一个图数据库", "code": "pip install graphiti-core · docker compose up", "component": {"en": "graphiti-core + graph DB", "zh": "graphiti-core + 图数据库"}},
+    {"lane": "you", "en": "Connect to the database, with an LLM key in the environment", "zh": "连上数据库，环境里放好 LLM 密钥", "code": "Graphiti(neo4j_uri, neo4j_user, neo4j_password)"},
+    {"lane": "you", "en": "Feed each new message or JSON record in as an episode", "zh": "每来一条消息或 JSON 记录，就作为一个 episode 喂进去", "code": "await graphiti.add_episode(...)"},
+    {"lane": "them", "en": "An LLM extracts entities and facts and merges them with known ones", "zh": "用 LLM 抽出实体和事实，与已有的合并去重"},
+    {"lane": "them", "en": "Older facts the new one contradicts get an end date, not deleted", "zh": "被新事实推翻的旧事实打上失效时间，不删除"},
+    {"lane": "you", "en": "Before the agent answers, search the graph", "zh": "智能体回答前，先查一下图", "code": "await graphiti.search('...')"},
+    {"lane": "them", "en": "Returns matching facts via embeddings, keywords and graph links", "zh": "综合语义、关键词和图上关系，返回相关事实"}
+  ],
+  "value": {"en": "The agent answers from what is true now, and can still trace when and from which message each fact came", "zh": "智能体按“现在为真”的事实回答，还能追溯每条事实何时成立、出自哪条消息"},
+  "sources": [
+    "https://github.com/getzep/graphiti README (Installation: pip install graphiti-core; Running with Docker Compose: docker compose up; Why Graphiti: facts invalidated not deleted, hybrid semantic + BM25 + graph traversal)",
+    "https://github.com/getzep/graphiti/blob/main/examples/quickstart/quickstart_neo4j.py (Graphiti(neo4j_uri, neo4j_user, neo4j_password), graphiti.add_episode, graphiti.search)"
+  ]
+}

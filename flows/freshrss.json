@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "them": {"en": "FreshRSS does", "zh": "FreshRSS 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the official Docker image with a data volume and a refresh schedule", "zh": "用官方 Docker 镜像跑起来，挂数据卷、设刷新时间",
+     "code": "-e CRON_MIN=1,31 · freshrss/freshrss:edge"},
+    {"lane": "you", "en": "Finish the web installer: pick a database and create your user", "zh": "走完网页安装向导：选数据库，建用户"},
+    {"lane": "you", "en": "Subscribe to feeds or import your OPML file", "zh": "订阅 feed，或导入你的 OPML 文件"},
+    {"lane": "them", "en": "Refreshes every feed on schedule (or on WebSub push) and stores new articles", "zh": "按时刷新所有 feed（或收到 WebSub 推送即刷），存下新文章",
+     "component": {"en": "built-in cron", "zh": "内置 cron"}},
+    {"lane": "you", "en": "Allow API access, set an API password, and add the server to your phone app", "zh": "打开 API 访问、设 API 密码，在手机应用里填上服务器",
+     "code": "https://rss.example.net/api/"},
+    {"lane": "them", "en": "Serves articles and keeps read/starred state in sync across web and every app", "zh": "提供文章，并在网页和所有应用之间同步已读/星标状态",
+     "component": {"en": "Google Reader API", "zh": "Google Reader API"}}
+  ],
+  "value": {"en": "One feed list and one read state, on a server you own, shared by every device and client app", "zh": "一份订阅、一份已读状态，放在你自己的服务器上，所有设备和客户端共用"},
+  "sources": [
+    "Docker/README.md Quick run @ edge 2026-10-08: docker run ... -e CRON_MIN=1,31 ... freshrss/freshrss:edge; 'With an automatic cron job to refresh feeds'",
+    "README.md Manual install: 'Access FreshRSS with your browser and follow the installation process'; Requirements: PostgreSQL 10+ or SQLite or MariaDB 10.6+ or MySQL 8.0+",
+    "README.md: WebSub instant push; APIs & native apps: Google Reader API (best) and Fever API",
+    "docs/en/users/06_Mobile_access.md: enable 'Allow API access (required for mobile apps)'; fill 'API password'; link like https://rss.example.net/api/"
+  ]
+}

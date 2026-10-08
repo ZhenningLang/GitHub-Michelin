@@ -7,7 +7,7 @@ tags: [scraping, login-automation, requests, captcha, python, education, abandon
 language: Python
 license: NONE
 maturity: no tagged releases, archived on GitHub (abandoned since 2018), 5.8k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2018-06-08T02:23:56Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:31:53Z
+  computed_at: 2026-10-08T08:28:37Z
   overall: E
   overall_score: 0.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 3034
+        last_commit_age_days: 3044
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3877
-        last_commit_age_days: 3034
+        repo_age_days: 3888
+        last_commit_age_days: 3044
         cohort: library
     governance:
       grade: "?"
@@ -82,12 +82,34 @@ health:
 
 实事求是讲，今天也就只剩这一种安全用法。这些脚本针对的登录流程在最后一次提交（2018-06）之后已多次改版，所以请把任一脚本当作示意性伪代码，而非可用工具。[推断]
 
+## 怎么用起来
+
+这里没有可安装、可导入的库：每个目录是一个独立脚本，用**裸 HTTP 请求**重放某一个网站的登录过程——也就是浏览器在 2016–2018 年会发出的那几个请求。**某个网站的请求编排由脚本替你做；账号、密码，以及网站要验证码时你的一双眼睛，由你提供。** 以知乎脚本为例：它先打开登录页，从里面抠出一次性的防伪令牌（`_xsrf`，网站用它确认表单确实来自自家页面），带着令牌提交你的账号密码；如果网站不认、要求验证码，它就下载验证码图片、用 pillow 打开给你看，等你手动输入。别的脚本还会补上网站前端 JavaScript 原本做的那一步，比如先用网站的 RSA 公钥加密密码再发送。登录成功后，会话 cookie——告诉网站“这个客户端已登录”的小令牌——被存进本地文件，爬虫就能接着用。可以把它想成一套录下来的舞步，可舞伴早就改了编舞：动作你能学会，但对方已经不按这个跳了。
+
+![fuck-login — 主干用户故事](../../../assets/flow/fuck-login.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/fuck-login.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上脚本依赖的三个库 — `requests · pillow · rsa`
+2. **你**：运行目标网站那一个脚本，按提示输入账号和密码 — `001 zhihu/zhihu.py`
+3. **fuck-login**：打开登录页，抠出表单要用的一次性令牌
+4. **fuck-login**：照网页的方式提交账号密码（部分脚本先用 RSA 加密密码）
+5. **你**：网站要验证码时，看它弹出的图片，手动输入
+6. **fuck-login**：把登录后的会话 cookie 存进本地文件，下次直接用
+
+**价值**：一份看得懂的样例：怎样用裸 HTTP 重放某网站 2016–2018 年的登录——而不是一个今天还能登上的工具
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你指望它今天真能登录。** 仓库已废弃（最后 push 在 2018-06），针对的是 2016–2018 年的登录流程；这里的主流站点早已改了鉴权、加了验证码/风控、换了端点，大多数脚本预计已失效。[推断]
 - **任何生产或规模化场景。** 没有 package、没有测试、没有 release、没有 API——它是一堆 demo 脚本，不是你能 import 的库。
 - **你想要真正的验证码方案。** 它只是把验证码图片显示给人看，并不能破解现代的行为/滑块/JS 验证码。
-- **你在意授权。** 仓库里**没有 LICENSE 文件**，按默认版权即“保留所有权利”，你没有任何合法的复用授权。[未验证]
+- **你在意授权。** 仓库里**没有 LICENSE 文件**，按默认版权即“保留所有权利”，你没有任何合法的复用授权。[推断]
 - **你对 ToS / 法律敏感。** 自动化登录去爬取常常违反站点服务条款，在某些司法辖区还触及反规避或未授权访问法律；这是用来学习的，不是用来绕过站点管控的。
 - **你需要有人维护的爬虫基础设施。** 用有维护的框架（Scrapy、Playwright）自己处理鉴权；这个仓库不会再打补丁。
 
@@ -129,7 +151,7 @@ health:
 ## 存疑（未验证）
 
 - 已在 GitHub 归档（截至 2026-06-28 经 GitHub API 确认 `archived: true`），且自 2018 年起已废弃；仓库为只读，不会再有新提交。
-- [未验证] 截至 2026-06 仓库内没有 LICENSE 文件；默认版权意味着没有复用授权。视为未授权；`license` 字段填 `NONE` 以如实反映。
+- [推断] 仓库文件树里没有 LICENSE 文件（2026-10-08 经 GitHub API 核实）；据此认定按默认版权、没有复用授权，是一般性的法律推断，不是法律意见。视为未授权；`license` 字段填 `NONE` 以如实反映。
 - [推断] “今天大多数脚本已失效”是从 2018 年冻结加上目标站已知的鉴权/验证码改版推断而来，并非逐个跑过。
 - [未验证] 截至 2026-06 约 5.8k star / 1.97k fork；star 数对时间敏感，这里反映的是历史相关性而非当前。
 - [未验证] 约 20 个站点脚本的确切集合与当前可用状态会变；依赖任一具体脚本前请对照活站核实。

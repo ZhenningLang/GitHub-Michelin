@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "SCIP indexer + tooling do", "zh": "SCIP 索引器和工具做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the SCIP indexer for your language", "zh": "装上对应语言的 SCIP 索引器", "code": "npm install -g @sourcegraph/scip-typescript", "component": {"en": "per-language indexer", "zh": "各语言索引器"}},
+    {"lane": "you", "en": "Run it at the project root, usually as a CI step on each commit", "zh": "在项目根目录运行，通常作为每次提交的 CI 步骤", "code": "scip-typescript index · rust-analyzer scip ."},
+    {"lane": "them", "en": "Type-checks the project with the real compiler and resolves every identifier to its definition", "zh": "用真正的编译器做类型检查，把每个标识符解析到它的定义"},
+    {"lane": "them", "en": "Writes one Protobuf index with a globally unique string name for every symbol", "zh": "写出一个 Protobuf 索引，每个符号一个全局唯一的字符串名", "code": "index.scip"},
+    {"lane": "you", "en": "Load the index into your consumer: Sourcegraph, or your own tool via the Go/Rust bindings", "zh": "把索引交给消费方：Sourcegraph，或用 Go/Rust 绑定写的自家工具", "component": {"en": "scip bindings", "zh": "scip 绑定"}},
+    {"lane": "them", "en": "Bindings expose documents, symbols and exact occurrence ranges for definition/reference lookups", "zh": "绑定暴露文档、符号和精确出现位置，供跳转定义和查找引用使用"}
+  ],
+  "value": {"en": "Compiler-accurate go-to-definition and find-references, computed once per commit and queryable offline", "zh": "编译器级精确的跳转定义和查找引用，每个提交算一次，之后离线可查"},
+  "sources": [
+    "https://github.com/scip-code/scip#readme (schema, Go/Rust bindings, scip CLI, list of indexers)",
+    "https://github.com/sourcegraph/scip-typescript#quick-start (npm install -g @sourcegraph/scip-typescript, scip-typescript index)",
+    "https://github.com/rust-lang/rust-analyzer/blob/master/crates/rust-analyzer/src/cli/flags.rs (cmd scip <path>, output defaults to index.scip)",
+    "https://github.com/scip-code/scip/blob/main/docs/DESIGN.md (string symbol IDs, Protobuf encoding)",
+    "https://github.com/scip-code/scip/blob/main/docs/CLI.md (scip lint /path/to/index.scip)"
+  ]
+}

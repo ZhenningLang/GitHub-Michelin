@@ -9,8 +9,8 @@
 | --- | --- | --- | --- |
 | **Mem0** | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 | A（6/6） | [→](mem0.zh.md) |
 | **Memori** | 当你想要 LLM 无关、通过包裹现有客户端自动捕获并召回的持久化 agent 记忆时使用。 | B（5/6） | [→](memori.zh.md) |
-| **Letta (MemGPT)** | Platform for stateful agents: AI with advanced memory that can learn and self-improve over time. | B（6/6） | [→](letta.zh.md) |
-| **LangMem** | 当你需要在 `agent-memory` 分类中评估 LangMem 时用它。 | B（5/6） | [→](langmem.zh.md) |
+| **Letta (MemGPT)** | 只在你跑着自托管的 Letta V1 服务器、或被教程带到这个仓库、需要规划迁移时看它——但该服务器已于 2026 年 8 月退役、挪到 `archive` 分支，不再有安全修复；还在维护的 Letta 现在是 Letta Code。 | B（6/6） | [→](letta.zh.md) |
+| **LangMem** | 当你的 agent 本来就跑在 LangGraph 上，想要直接用同一个 `BaseStore` 存取记忆的现成工具时用它——但它会拉进整套 LangChain，发版也停在 2025-10 的 0.0.30。 | B（5/6） | [→](langmem.zh.md) |
 | **SimpleMem** | 当你的 LLM 智能体要回答关于长期对话的问题、又不想把原始历史重放进上下文时用它——写入时压缩、有 LoCoMo 公开数字，但仓库年轻学术、PyPI 停在 0.1.0、音视频支持没有基准验证。 | B（5/6） | [→](simplemem.zh.md) |
 | **Supermemory** | 当你想把整叠上下文管线——事实抽取、矛盾取代、自动到期、按用户画像、RAG 加记忆混合检索——收到一个 API 或一个自托管二进制后面，并接受引擎只发二进制、许可证翻转过一次时用它。 | A（6/6） | [→](supermemory.zh.md) |
 | **Hindsight** | 当你的 agent 要跨几周记住用户或项目、答得出“谁”“什么时候”这类问题时用它——MIT 许可、自托管的记忆服务（Postgres 加 pgvector），带实体和时间维度召回与 MCP，但每次写入都要花 LLM 调用、认证默认关闭、还没到 1.0。 | B（4/6） | [→](hindsight.zh.md) |
@@ -21,8 +21,8 @@
 | --- | --- | --- | --- |
 | [Mem0](mem0.zh.md) | ✅ | A（6/6） | 当你的 LLM agent 需要跨会话记住用户、又不想撑爆 prompt 上下文时用它。 |
 | [Memori](memori.zh.md) | ✅ | B（5/6） | SQL 优先、包裹客户端的应用记忆，带一个有主张的云与 BYODB 之分。 |
-| [Letta (MemGPT)](letta.zh.md) | ✅ | B（6/6） | 有状态 agent 平台，记忆 OS 由运行时自己掌管；适合让 Letta 接管 agent 循环，不适合只想给现有 harness 加上下文。 |
-| [LangMem](langmem.zh.md) | ✅ | B（5/6） | 绑在 LangChain／LangGraph 生态上的记忆工具，留在该栈内使用。 |
+| [Letta (MemGPT)](letta.zh.md) | ✅ | B（6/6） | 能换来的只是 MemGPT 那套自我改写记忆的设计思路；代价是要把已有部署从冻结的服务器和不再打补丁的 `letta/letta` Docker 镜像上迁走。 |
+| [LangMem](langmem.zh.md) | ✅ | B（5/6） | 换来直接放在现有 LangGraph 存储里的记忆，以及对话结束后的后台提炼；代价是绑定框架，合进 `main` 的修复可能永远发不到 PyPI。 |
 | [SimpleMem](simplemem.zh.md) | ✅ | B（5/6） | 写入时压缩的记忆库，带 LoCoMo 公开证据；PyPI 冻在 0.1.0（只能源码安装）、存储 bug 未修、音视频支持无基准。 |
 | [Supermemory](supermemory.zh.md) | ✅ | A（6/6） | API 优先的记忆＋画像＋混合 RAG，形态是托管服务或单个自托管二进制；引擎源码不公开、基准由厂商自跑、server 通道 v0.0.x，许可证走过 MIT → CC BY-NC-SA → MIT。 |
 | [Hindsight](hindsight.zh.md) | ✅ | B（4/6） | 自托管记忆服务：LLM 抽取事实、后台合并、四路召回；写入更重、要多跑一个服务，换来答得出实体和时间维度的问题。 |

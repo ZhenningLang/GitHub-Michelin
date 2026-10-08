@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Agents SDK does", "zh": "Agents SDK 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and set your model key", "zh": "装好包，设置模型密钥", "code": "pip install openai-agents"},
+    {"lane": "you", "en": "Declare agents with instructions, function tools and who they may hand off to", "zh": "声明智能体：指令、函数工具、可以转交给谁", "code": "Agent(name=…, instructions=…, tools=[…], handoffs=[…])"},
+    {"lane": "you", "en": "Start a run with the first agent and the user input", "zh": "用入口智能体和用户输入启动一次运行", "code": "Runner.run_sync(agent, \"…\")", "component": {"en": "Runner", "zh": "Runner"}},
+    {"lane": "them", "en": "Calls the model, runs requested tools, loops; a handoff switches the active agent", "zh": "调模型、执行要求的工具、循环；遇到交接就切换当前智能体", "component": {"en": "agent loop", "zh": "智能体循环"}},
+    {"lane": "them", "en": "Checks guardrails and stops at text with no tool calls, or at max_turns", "zh": "跑护栏检查；返回不含工具调用的文本或到 max_turns 时停止"},
+    {"lane": "them", "en": "Returns final_output and records a trace of every model, tool and handoff step", "zh": "返回 final_output，并记下每次模型、工具、交接的追踪", "component": {"en": "tracing", "zh": "追踪"}}
+  ],
+  "value": {"en": "A multi-agent loop with handoffs, guardrails and traces without writing the loop yourself", "zh": "带交接、护栏和追踪的多智能体循环，不用自己写"},
+  "sources": [
+    "https://github.com/openai/openai-agents-python#get-started (pip install openai-agents; OPENAI_API_KEY)",
+    "https://github.com/openai/openai-agents-python#run-a-text-agent (Agent(name=..., instructions=...), Runner.run_sync, result.final_output)",
+    "https://github.com/openai/openai-agents-python/blob/main/docs/handoffs.md (handoffs=[...]; handoffs appear to the LLM as transfer_to_<agent> tools)",
+    "https://github.com/openai/openai-agents-python/blob/main/docs/running_agents.md (agent loop, final output rule, max_turns)",
+    "https://github.com/openai/openai-agents-python/blob/main/docs/tracing.md (tracing enabled by default)"
+  ]
+}

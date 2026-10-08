@@ -6,8 +6,8 @@ category: crawling-tools
 tags: [html-parsing, web-scraping, requests, pyquery, javascript-rendering, pyppeteer, css-selectors, python]
 language: Python
 license: MIT
-maturity: "v0.10.0, effectively unmaintained — last pushed 2024-04 (~2y idle as of 2026-06)"
-last_verified: 2026-06-28
+maturity: "v0.10.0 (2019-02), effectively unmaintained — last commit 2023-04-03, quiet since (as of 2026-10-08)"
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-04-16T18:50:38Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:33:29Z
+  computed_at: 2026-10-08T08:28:39Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1273
+        last_commit_age_days: 1284
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3137
-        last_commit_age_days: 1273
+        repo_age_days: 3148
+        last_commit_age_days: 1284
         cohort: library
     governance:
       grade: "?"
@@ -72,9 +72,31 @@ health:
 
 偶尔你抓的某个页面需要一点 JavaScript 才能填充内容，`r.html.render()` 会拉起一个无头 Chromium（pyppeteer）先执行 JS 再交给你解析——对一次性场景挺顺手，否则你得搬出一整套浏览器自动化栈。**但在 2026 年做任何新工作时，请把它当成只用于遗留代码的选择**：这个库已基本无人维护（见健康度），所以主要在你维护一个已经依赖它的旧脚本时才考虑它，而不是从零起步时。
 
+## 怎么用起来
+
+requests-html 是把三个库藏在一个对象后面。**底层接线它替你做了**：`HTMLSession` 就是一个 `requests` 会话（连接池、cookie、重定向都有），外加伪装成浏览器的 UA；每个响应都带一个 `r.html` 属性——页面已经被 PyQuery/lxml（把原始 HTML 变成可查询的树的解析器）解析好，链接也已收齐并转成绝对地址。**你要做的**只是挑元素：`find()` 接 CSS 选择器（和样式表里一样的 `#id .class` 写法），`xpath()` 接 XPath，`search()` 按文本模板匹配，比如 `'Python is a {} language'`。只有当内容是页面加载后由 JavaScript 画出来的，你才调用 `r.html.render()`：第一次调用会把一个 Chromium 下载到 `~/.pyppeteer/`，在里面把页面跑一遍再让你挑元素——这正是最脆弱的那条路（见“何时不用”）。真正的爬取逻辑——队列、重试、限速、去重——仍是你自己的代码；`AsyncHTMLSession.run()` 只是把几个请求并发发出去。
+
+![requests-html — 主干用户故事](../../../assets/flow/requests-html.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/requests-html.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上这个库 — `pipenv install requests-html`
+2. **你**：开一个 HTMLSession，GET 目标页面 — `r = session.get('https://python.org/')` — 组件：`HTMLSession（包着 requests）`
+3. **requests-html**：用伪装的浏览器 UA 去取，自动跟重定向、保留 cookie
+4. **requests-html**：把响应解析成 r.html，页面链接已收齐并转成绝对地址
+5. **你**：用 CSS 选择器（或 XPath）挑出要的元素 — `r.html.find('#about', first=True)`
+6. **requests-html**：返回元素对象，文本、属性、链接直接可用
+
+**价值**：一个对象同时管抓取和解析，不用自己把 requests、解析器和 URL 拼接接到一起
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **2026 年的任何新东西——它已基本无人维护。** 最后 push 于 2024-04（截至 2026-06 闲置约 2 年）；是典型的 kennethreitz 项目套路（快速造出、广泛采用，然后吃老本）。新代码请优先 **httpx + parsel** 或 **requests + BeautifulSoup/selectolax**——同样的活、仍在活跃维护、没有死依赖风险。[未验证]
+- **2026 年的任何新东西——它已基本无人维护。** 默认分支最后一次提交在 2023-04-03，最后一次发布是 2019-02 的 v0.10.0（截至 2026-10 已约 3 年半没有提交）；是典型的 kennethreitz 项目套路（快速造出、广泛采用，然后吃老本）。新代码请优先 **httpx + parsel** 或 **requests + BeautifulSoup/selectolax**——同样的活、仍在活跃维护、没有死依赖风险。[未验证]
 - **你需要可靠的 JavaScript 渲染。** `render()` 路径驱动 **pyppeteer**——一个老旧、自身也无人维护的 Chromium 驱动，它会下载一个重量级浏览器，且在不同 Chromium/OS 版本间很脆。真要渲染 JS 页面，请用 **Playwright（Python）** 做抓取、用 **selectolax/BeautifulSoup**（或 Playwright 自己的 locator）做解析——比 `requests-html` 内置的 pyppeteer 稳健得多。[推断]
 - **大规模或生产爬取。** 它没有内建的并发模型、调度、重试/限流、去重或 pipeline——它是个便利封装，不是爬虫。要广度/吞吐请用 **Scrapy**（或在 httpx 上写一个异步抓取循环）。
 - **你在意大文档的解析速度。** 它经 PyQuery/lxml 解析；若 HTML 解析是你的瓶颈，**selectolax**（Modest/lexbor）会快得多。
@@ -110,7 +132,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（DATED 2026-06）。** **最后 push 于 2024-04——大约闲置 2 年**；无近期发布或提交活动。这读起来就是**基本无人维护/吃老本**，也是 2026 年任何选型决策的主导信号。未正式归档，但时效性已死。[未验证]
+- **维护（DATED 2026-10）。** **最后一次提交在 2023-04-03（修一个文档错字），最后一次发布是 2019-02 的 v0.10.0**——七年多没有发过代码版本。这读起来就是**基本无人维护/吃老本**，也是 2026 年任何选型决策的主导信号。未正式归档，但时效性已死。[未验证]
 - **kennethreitz 套路。** 这是 kennethreitz 作者的项目（像 `requests` 本身和他另外几个项目一样）：快速造出、极其顺手、广泛采用，然后在注意力转移后就放任吃老本。这里请把“流行且优雅”与“当前仍在维护”当成正交两件事。[推断]
 - **治理 / bus factor。** 仓库挂在 **PSF（`psf`）组织**下（owner 类型为 Organization），这只是*名义上*的托管——PSF 持有这个仓库**并不**意味着有活跃维护者在出修复。未发现活跃维护者；对新修复而言可把 bus factor 视为接近零。[未验证]
 - **年龄与 Lindy 判断。** 2018-02 创建（约 8 年），单看年龄像是 Lindy——但 **Lindy 要的是 年龄 × *仍然活跃***，而它在“仍然活跃”这一半上不及格。一个长寿**却闲置**的项目不是安全押注；这里的年龄并不保护你。[推断]
@@ -119,7 +141,7 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 13.8k GitHub star、MIT 许可——star 数对时间敏感、作为健康代理不可靠，仅供参考。
-- [未验证] “最后 push 于 2024-04 / 闲置约 2 年 / 基本无人维护”是主导论断，也是整份推荐的依据——依赖前请重新核实仓库实际的 last-commit/last-release 日期；项目并未正式归档。
+- [推断] “基本无人维护”是主导论断，也是整份推荐的依据；依据是 2026-10-08 从 GitHub API 读到的最后提交（2023-04-03）和最后发布（v0.10.0，2019-02）——没有维护者声明这一点，项目也并未正式归档。
 - [未验证] 记录显示 PSF（`psf`）是拥有方组织（owner 类型 Organization），但 PSF 拥有并不能确认有*活跃*维护者；未核实当前的维护者/路线图。
 - [推断] “kennethreitz 项目套路”（造完即吃老本）是从作者更广的项目历史所做的概括，而非项目明文政策。
 - [推断] pyppeteer 老旧/无人维护、以及 `render()` 路径在不同 Chromium/OS 版本间脆弱，是从 pyppeteer 的总体状态和内置 Chromium 路径的工作方式推断而来——依赖 JS 渲染前请对照你的目标环境核实。

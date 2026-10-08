@@ -6,8 +6,8 @@ category: engineering-workflows
 tags: [codex, agent-skills, swiftui, ios, macos, code-review]
 language: Shell
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-03 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; last pushed 2026-03 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-03-29T15:28:02Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:44:21Z
+  computed_at: 2026-10-08T08:14:57Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 182
+        last_commit_age_days: 193
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 271
-        last_commit_age_days: 182
+        repo_age_days: 282
+        last_commit_age_days: 193
         cohort: skill-pack
     governance:
       grade: D
@@ -77,6 +77,27 @@ health:
 
 你专门为「Apple 味」的活儿伸手拿它：包里有 `swiftui-liquid-glass`（iOS 26+ Liquid Glass API）、`swift-concurrency-expert`（Swift 6.2+ actor / `Sendable` 修复）、`swiftui-view-refactor`、`swiftui-performance-audit`、`macos-menubar-tuist-app`、`macos-spm-app-packaging`、`ios-debugger-agent`（基于 XcodeBuildMCP）。其余非 Apple 的 skill（`github`、`review-swarm`、`bug-hunt-swarm`、`review-and-simplify-changes`、`orchestrate-batch-refactor`、`react-component-performance`、`project-skill-audit`）也有用，但更通用——真正的差异化在 SwiftUI / Swift 的深度，这是大多数通用 agent-skill 包没有的。
 
+## 怎么用起来
+
+这里没有会自己运行的东西：每个 skill 是一个文件夹，里面一份 `SKILL.md`——开头的描述说明它什么时候适用，后面用文字写工作流和规矩——再加上可选的 `references/` 参考笔记，有的还带子 agent 定义。**你**把这些文件夹拷进 `$CODEX_HOME/skills`，然后照常干活；**Codex** 能看到每个 skill 的简短描述，当你的请求对上其中一个（“把这个 SwiftUI body 拆开”“写 App Store 更新说明”）时，它会加载全文照着做。价值在于写下来的那些主张：比如 `swiftui-view-refactor` 规定了视图里属性的先后顺序，优先用原生 SwiftUI 状态而不是 view model，并要求 agent 抽出真正的子视图类型，而不是一堆 `some View` 辅助属性。swarm 类 skill（`review-swarm`、`bug-hunt-swarm`）更进一步，让 Codex 派出四个只读子 agent，各从一个角度看 diff 或 bug。可以把它想成订在 agent 身上的一位资深同事的检查清单：会影响它怎么做，但没有任何东西强制执行。
+
+![dimillian-skills — 主干用户故事](../../../../assets/flow/dimillian-skills.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/dimillian-skills.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把 skill 文件夹拷进 Codex 的 skills 目录 — `$CODEX_HOME/skills`
+2. **Dimillian Skills**：每个文件夹的 SKILL.md 描述告诉 Codex 这个 skill 何时适用 — 组件：`SKILL.md`
+3. **你**：照常派 Apple 平台的活，比如拆一个过长的 SwiftUI 视图
+4. **Dimillian Skills**：加载匹配的 skill 和它附带的参考资料 — `swiftui-view-refactor`
+5. **Dimillian Skills**：按其中的规矩改：拆成小的子视图类型、MV 优先于 MVVM、固定的属性顺序
+
+**价值**：Codex 照着一位资深 iOS 开发者的 SwiftUI / Swift 习惯干活，不用你每次重敲
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你不写 Apple 平台代码。** 把 Swift / SwiftUI / macOS 那批 skill 抽掉，剩下的（评审 swarm、github、重构编排、react 性能）与更通用的包高度重叠——等于为了那几个通用 skill 装了一整套以 iOS 为主的包。
@@ -98,15 +119,15 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护（2026-06）：** 半荒废——最后 push 于 2026-03，截至 2026-06 已停滞约 3 个月，约 9 个 open issue，且无打 tag 的 release。这种停滞在*这里*是实打实的风险，因为 SwiftUI/Swift-6.2/Liquid-Glass 这些 skill 跟着快速变动的 Apple beta 走，两次 push 之间就会快速过时。应视为一份快照，而非被维护的产品。
-- **治理与 bus factor：** 单作者的 `User` 个人合集（Dimillian，一位知名 iOS 开发者）。无团队、基金会或厂商；一人 pack 约 3k star，是 bus-factor 风险信号。路线图完全由作者决定。
-- **年龄与 Lindy 判断：** 创建于 2025-12，截至 2026-06 约半岁——既年轻*又*已半荒废。年轻 + 当前不活跃属于弱象限：既无存续可依，近期活动又已停滞。别指望它持续跟上最新。
+- **维护（2026-10）：** 半荒废——最后 push 于 2026-03-29，截至 2026-10 已停滞约 6 个月，11 个 open issue，且无打 tag 的 release。这种停滞在*这里*是实打实的风险，因为 SwiftUI/Swift-6.2/Liquid-Glass 这些 skill 跟着快速变动的 Apple beta 走，两次 push 之间就会快速过时。应视为一份快照，而非被维护的产品。
+- **治理与 bus factor：** 单作者的 `User` 个人合集（Dimillian，一位知名 iOS 开发者）。无团队、基金会或厂商；一人 pack 约 4k star，是 bus-factor 风险信号。路线图完全由作者决定。
+- **年龄与 Lindy 判断：** 创建于 2025-12，截至 2026-10 约 9 个月——既年轻*又*已半荒废。年轻 + 当前不活跃属于弱象限：既无存续可依，近期活动又已停滞。别指望它持续跟上最新。
 - **风险标记：** 安装目标仅限 Codex（`$CODEX_HOME/skills`）；其它 harness 需移植。MCP/swarm 类 skill 默认了你环境里可能不存在的工具。仅为建议性，无强制。
 
 ## 存疑（未验证）
 
-- [未验证] License MIT、主语言 Shell（GitHub 显示 Shell 84.6% / Python 12.8% / Swift 2.6%）、未归档、无打 tag 的 release、最后 push 于 2026-03-29——均为 GitHub 元数据，截至 2026-06-26；依赖某个具体 commit 的行为前请重新核对。
-- [未验证] star 数（2026-06-26 GitHub 上约 3.7k）不可靠且对日期敏感，仅作参考，不作质量信号。
+- [未验证] License MIT、主语言 Shell（GitHub 显示 Shell 84.6% / Python 12.8% / Swift 2.6%）、未归档、无打 tag 的 release、最后 push 于 2026-03-29——均为 GitHub 元数据（语言占比截至 2026-06-26，其余于 2026-10-08 复核）；依赖某个具体 commit 的行为前请重新核对。
+- [未验证] star 数（2026-10-08 GitHub 上约 4.0k）不可靠且对日期敏感，仅作参考，不作质量信号。
 - [未验证] 这 16 个 skill 的清单与文件夹名取自本次核对时的 README；实际 `skills/` 内容与 `SKILL.md` 触发条件会随 push 变化——请直接读仓库，别只信此清单。
 - [推断] 安装目标是 OpenAI Codex（`$CODEX_HOME/skills`）；在其他 harness（Claude Code、Cursor）上的激活未经确认，需要移植。
 - [推断] 依赖 MCP / swarm 的 skill（`ios-debugger-agent` 走 XcodeBuildMCP，`review-swarm`、`bug-hunt-swarm` 多 agent）默认了你环境里可能不存在的工具 / 运行时；其效果取决于环境，此处未独立验证。

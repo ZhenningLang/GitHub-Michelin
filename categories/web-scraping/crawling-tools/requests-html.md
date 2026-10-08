@@ -6,8 +6,8 @@ category: crawling-tools
 tags: [html-parsing, web-scraping, requests, pyquery, javascript-rendering, pyppeteer, css-selectors, python]
 language: Python
 license: MIT
-maturity: "v0.10.0, effectively unmaintained — last pushed 2024-04 (~2y idle as of 2026-06)"
-last_verified: 2026-06-28
+maturity: "v0.10.0 (2019-02), effectively unmaintained — last commit 2023-04-03, quiet since (as of 2026-10-08)"
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-04-16T18:50:38Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:33:29Z
+  computed_at: 2026-10-08T08:28:39Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1273
+        last_commit_age_days: 1284
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3137
-        last_commit_age_days: 1273
+        repo_age_days: 3148
+        last_commit_age_days: 1284
         cohort: library
     governance:
       grade: "?"
@@ -72,9 +72,31 @@ You're a backend or data engineer writing a quick scraper for an internal report
 
 Occasionally a page you scrape needs a little JavaScript to populate content, and `r.html.render()` will spin up a headless Chromium (pyppeteer) to execute it before you parse — handy for a one-off where you'd otherwise reach for a full browser-automation stack. **For any new work in 2026, though, treat this as a legacy-only choice**: the library is effectively unmaintained (see Health), so reach for it mainly when you're maintaining an existing script that already depends on it, not when starting fresh.
 
+## How it works
+
+requests-html is three libraries behind one object. **The plumbing is done for you**: an `HTMLSession` is a `requests` session (connection pooling, cookies, redirects) that also sends a browser-like user agent, and every response comes back with an `r.html` attribute — the page already parsed by PyQuery/lxml (the parsers that turn raw markup into a searchable tree), with its links collected and resolved to absolute URLs. **What you do** is pick elements: `find()` takes a CSS selector (the same `#id .class` syntax a stylesheet uses), `xpath()` takes an XPath, and `search()` matches a text template such as `'Python is a {} language'`. Only when the content is drawn by JavaScript after page load do you call `r.html.render()`, which on first use downloads a Chromium into `~/.pyppeteer/` and runs the page in it before you select — that is the fragile path (see When NOT to use). Crawling itself — queues, retries, throttling, dedup — stays your code; `AsyncHTMLSession.run()` only fires a handful of fetches concurrently.
+
+![requests-html — backbone user story](../../../assets/flow/requests-html.svg)
+
+<!-- flow-steps:begin (generated from flows/requests-html.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the library — `pipenv install requests-html`
+2. **You**: Open an HTMLSession and GET the page — `r = session.get('https://python.org/')` — component: `HTMLSession (wraps requests)`
+3. **requests-html**: Fetches it with a browser-like user agent, following redirects and keeping cookies
+4. **requests-html**: Parses the response into r.html, with page links already collected and made absolute
+5. **You**: Select what you need with a CSS selector (or XPath) — `r.html.find('#about', first=True)`
+6. **requests-html**: Returns elements whose text, attributes and links are ready to use
+
+**Value**: One object fetches and parses — no wiring requests, a parser and URL-joining together
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **Anything new in 2026 — it is largely unmaintained.** Last pushed 2024-04 (~2 years idle as of 2026-06); a classic kennethreitz-project pattern (built fast, widely adopted, then coasting). For new code prefer **httpx + parsel** or **requests + BeautifulSoup/selectolax** — same job, actively maintained, no dead-dependency risk. [未验证]
+- **Anything new in 2026 — it is largely unmaintained.** Last default-branch commit 2023-04-03 and last release v0.10.0 in 2019-02 (~3.5 years without a commit as of 2026-10); a classic kennethreitz-project pattern (built fast, widely adopted, then coasting). For new code prefer **httpx + parsel** or **requests + BeautifulSoup/selectolax** — same job, actively maintained, no dead-dependency risk. [未验证]
 - **You need reliable JavaScript rendering.** The `render()` path drives **pyppeteer**, an aging, itself-unmaintained Chromium driver that downloads a heavyweight browser and is fragile across Chromium/OS versions. For real JS-rendered pages use **Playwright (Python)** for the fetch and **selectolax/BeautifulSoup** (or Playwright's own locators) for parsing — far more robust than `requests-html`'s bundled pyppeteer. [推断]
 - **Large-scale or production crawling.** No built-in concurrency model, scheduling, retry/throttle, dedup, or pipeline — it's a convenience wrapper, not a crawler. For breadth/throughput use **Scrapy** (or an async fetch loop over httpx). 
 - **You care about parse speed on big documents.** It parses via PyQuery/lxml; if HTML parsing is your bottleneck, **selectolax** (Modest/lexbor) is dramatically faster.
@@ -110,7 +132,7 @@ Occasionally a page you scrape needs a little JavaScript to populate content, an
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (DATED 2026-06).** **Last pushed 2024-04 — roughly 2 years idle**; no recent releases or commit activity. This reads as **effectively unmaintained / coasting**, the dominant signal for any 2026 selection decision. Not formally archived, but currency is dead. [未验证]
+- **Maintenance (DATED 2026-10).** **Last commit 2023-04-03 (a docs typo fix), last release v0.10.0 in 2019-02** — no code release in over seven years. This reads as **effectively unmaintained / coasting**, the dominant signal for any 2026 selection decision. Not formally archived, but currency is dead. [未验证]
 - **The kennethreitz pattern.** A kennethreitz-authored project (like `requests` itself and several others): built fast, beautifully ergonomic, widely adopted, then left to coast once attention moved on. Treat "popular and elegant" as orthogonal to "currently maintained" here. [推断]
 - **Governance / bus factor.** Repo lives under the **PSF (`psf`) organization** (owner type Organization), which is *nominal* stewardship — PSF holding the repo does **not** imply an active maintainer is shipping fixes. No evidence of an active maintainer found; treat bus factor as effectively zero for new fixes. [未验证]
 - **Age & Lindy verdict.** Created 2018-02 (~8 years old), so age alone looks Lindy — but **Lindy requires age × *still-active***, and this fails the still-active half. A long-lived **but idle** project is not a safe bet; the age is not protective here. [推断]
@@ -119,7 +141,7 @@ Occasionally a page you scrape needs a little JavaScript to populate content, an
 ## Caveats (unverified)
 
 - [未验证] ~13.8k GitHub stars and MIT license as of 2026-06 — star counts are date-sensitive and unreliable as a health proxy; treat as indicative only.
-- [未验证] "Last pushed 2024-04 / ~2 years idle / effectively unmaintained" is the dominant claim and the basis for the whole recommendation — re-confirm the repo's actual last-commit/last-release date before relying on it; the project is not formally archived.
+- [推断] "Effectively unmaintained" is the dominant claim and the basis for the whole recommendation; it rests on the last commit (2023-04-03) and last release (v0.10.0, 2019-02) read from the GitHub API on 2026-10-08 — no maintainer statement says so, and the project is not formally archived.
 - [未验证] PSF (`psf`) is recorded as the owning organization (owner type Organization), but PSF ownership does not confirm an *active* maintainer; no current maintainer/roadmap was verified.
 - [推断] The "kennethreitz-project pattern" (build-fast-then-coast) is a characterization from the author's broader project history, not a stated project policy.
 - [推断] pyppeteer being aging/unmaintained and the `render()` path being fragile across Chromium/OS versions is inferred from pyppeteer's general status and how the bundled-Chromium path works — verify against your target environment before depending on JS rendering.

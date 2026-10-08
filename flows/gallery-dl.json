@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "gallery-dl does", "zh": "gallery-dl 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "装上命令行工具", "code": "python -m pip install -U gallery-dl · brew install gallery-dl", "component": {"en": "gallery-dl CLI", "zh": "gallery-dl 命令行"}},
+    {"lane": "you", "en": "Pass it a gallery, profile or tag-search URL", "zh": "把图集、主页或标签搜索的网址交给它", "code": "gallery-dl \"https://danbooru.donmai.us/posts?tags=bonocho\""},
+    {"lane": "them", "en": "Matches the URL to the site's extractor", "zh": "按网址匹配到该站点的提取器", "component": {"en": "per-site extractor", "zh": "站点提取器"}},
+    {"lane": "them", "en": "Pages through the whole gallery, collecting each file's URL and metadata", "zh": "翻完整个图集，收集每个文件的直链和元数据"},
+    {"lane": "them", "en": "Downloads originals under ./gallery-dl/, named from metadata, skipping files it already has", "zh": "把原图下到 ./gallery-dl/ 下，按元数据命名，已有的跳过"}
+  ],
+  "value": {"en": "A whole gallery lands on disk in one command, and reruns fetch only what is new", "zh": "一条命令把整个图集落盘，再跑只抓新增的"},
+  "sources": [
+    "https://codeberg.org/mikf/gallery-dl#installation (python -m pip install -U gallery-dl; brew install gallery-dl)",
+    "https://codeberg.org/mikf/gallery-dl#usage (gallery-dl \"https://danbooru.donmai.us/posts?tags=bonocho\")",
+    "https://codeberg.org/mikf/gallery-dl/src/branch/master/docs/configuration.rst (extractor.*.base-directory default ./gallery-dl/, extractor.*.skip default true)"
+  ]
+}

@@ -7,19 +7,19 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **Authomatic** | 当需要框架无关的 Python 应用通过 OAuth1／OAuth2／OpenID 实现轻量「用 X 登录」、且会话持久化自己负责时用它——但它迭代缓慢，而认证库修复迟缓本身就是安全风险。 | C（5/6） | [→](authomatic.zh.md) |
-| **django-rules** | 当 Django 的对象级权限是由逻辑（谓词）计算得出、而非存储授权、且不想加数据库表时用它——但若管理员需在运行时为单个对象分配权限，则应改用 django-guardian。 | B（4/6） | [→](django-rules.zh.md) |
-| **Keycloak** | Open Source Identity and Access Management For Modern Applications and Services | A（6/6） | [→](keycloak.zh.md) |
-| **Casbin** | Apache Casbin: an authorization library that supports access control models like ACL, RBAC, ABAC. | B（6/6） | [→](casbin.zh.md) |
-| **OpenFGA** | A high performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar | A（6/6） | [→](openfga.zh.md) |
+| **Authomatic** | 当 Flask、Django 或其他 WSGI 应用需要一层轻薄的“用 Google／GitHub 登录”，横跨 OAuth 1.0a、OAuth 2.0 和 OpenID、会话由你自己管时用它——但发版停在 2024 年的 1.3.0，尚未发布的 2.0 还要移除 OAuth 1.0a。 | C（5/6） | [→](authomatic.zh.md) |
+| **django-rules** | 当 Django 的对象级权限由逻辑决定（如“作者能改自己的帖子”）、你想用可组合的谓词且不加数据库表时用它——但若管理员要在运行时逐对象授权，请用 django-guardian。 | B（4/6） | [→](django-rules.zh.md) |
+| **Keycloak** | 当一堆应用各有各的登录，你想用一台自托管服务器统一处理密码、二次验证、社交和 SAML 登录，并签发带角色的令牌时用它——但它要运维 JVM、数据库和缓存，只有一个应用时太重。 | A（6/6） | [→](keycloak.zh.md) |
+| **Casbin** | 当角色判断散落在各个处理函数里，你想用一份模型文件加一张策略表、在进程内一次库调用完成鉴权，Go 或其他七种语言都行时用它——但它不做身份认证，策略集也必须装得进应用内存。 | B（6/6） | [→](casbin.zh.md) |
+| **OpenFGA** | 当访问权限顺着关系走（文件夹分享给团队、编辑权限沿目录树继承），横跨好几个服务，“列出 Anne 能看到的一切”已经超时时用它——但每次成员或分享变化都得同步写成元组，漏写就会给出错误答案。 | A（6/6） | [→](openfga.zh.md) |
 
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [Authomatic](authomatic.zh.md) | ✅ | C（5/6） | 当需要框架无关的 Python 应用通过 OAuth1／OAuth2／OpenID 实现轻量「用 X 登录」、且会话持久化自己负责时用它——但它迭代缓慢，而认证库修复迟缓本身就是安全风险。 |
-| [django-rules](django-rules.zh.md) | ✅ | B（4/6） | 当 Django 的对象级权限是由逻辑（谓词）计算得出、而非存储授权、且不想加数据库表时用它——但若管理员需在运行时为单个对象分配权限，则应改用 django-guardian。 |
+| [Authomatic](authomatic.zh.md) | ✅ | C（5/6） | 换来一个框架无关、统管多家 provider 登录握手的接口；代价是持久化要自己写，而这个认证关键库的安全与 provider 修复来得慢。 |
+| [django-rules](django-rules.zh.md) | ✅ | B（4/6） | 换来声明式、可测试、一处定义就驱动 `has_perm`、装饰器、模板与 DRF 的规则；代价是不存任何授权记录，且每次检查都要重跑谓词。 |
 | （各页对比里点到的替代品） | 未收录 | — | 详见各页 Comparison。 |
 
 ## 什么该放这里

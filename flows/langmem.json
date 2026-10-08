@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "LangMem does", "zh": "LangMem 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and set an LLM provider key", "zh": "安装包，配好一个 LLM 提供方的 key", "code": "pip install -U langmem"},
+    {"lane": "you", "en": "Create a LangGraph store with an embedding index", "zh": "建一个带 embedding 索引的 LangGraph 存储", "code": "InMemoryStore(index=...) · AsyncPostgresStore"},
+    {"lane": "you", "en": "Give your agent the two memory tools", "zh": "把两件记忆工具交给你的 agent", "code": "create_manage_memory_tool · create_search_memory_tool"},
+    {"lane": "them", "en": "Mid-chat, the model decides a fact is worth keeping and writes or updates it in the store", "zh": "对话中模型判断某条事实值得留下，写入或更新到存储", "component": {"en": "manage-memory tool", "zh": "记忆管理工具"}},
+    {"lane": "them", "en": "In a later conversation, it searches the namespace by meaning and answers from what it recalls", "zh": "之后的对话里按语义检索该命名空间，用找回的记忆作答", "component": {"en": "search-memory tool", "zh": "记忆检索工具"}}
+  ],
+  "value": {"en": "Your LangGraph agent remembers users across threads without you writing extraction prompts or storage code", "zh": "你的 LangGraph agent 跨线程记得用户，而不用你自己写抽取提示词和存储代码"},
+  "sources": [
+    "https://github.com/langchain-ai/langmem README (main @ 2026-10-08): Installation `pip install -U langmem`, API key env; Creating an Agent: InMemoryStore(index={dims, embed}), AsyncPostgresStore note, create_manage_memory_tool / create_search_memory_tool with namespace=(\"memories\",); usage notes on agent deciding what to store and searching later",
+    "src/langmem/__init__.py exports (create_memory_store_manager, ReflectionExecutor, create_prompt_optimizer)"
+  ]
+}

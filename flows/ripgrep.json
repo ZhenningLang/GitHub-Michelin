@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "ripgrep does", "zh": "ripgrep 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the rg binary from a package manager or the release page", "zh": "从包管理器或 release 页装上 rg 二进制", "code": "brew install ripgrep · choco install ripgrep", "component": {"en": "rg binary", "zh": "rg 二进制"}},
+    {"lane": "you", "en": "From the project root, search for a pattern — optionally limited to a file type", "zh": "在项目根目录搜一个模式——可以只限某种文件类型", "code": "rg -tpy foo"},
+    {"lane": "them", "en": "Walks the tree on many threads, skipping gitignored, hidden and binary files", "zh": "多线程遍历目录树，跳过被 gitignore 的、隐藏的和二进制文件", "component": {"en": "ignore crate", "zh": "ignore crate"}},
+    {"lane": "them", "en": "Pre-filters by literal fragments, then runs the full regex on the remaining lines", "zh": "先按字面片段预筛，再对剩下的行跑完整正则", "component": {"en": "regex crate", "zh": "regex crate"}},
+    {"lane": "them", "en": "Prints matches grouped by file, with line numbers and colour", "zh": "按文件分组打印命中，带行号和颜色"}
+  ],
+  "value": {"en": "Search a whole codebase interactively without wading through node_modules, build output or binaries", "zh": "随想随搜整个代码库，不用在 node_modules、构建产物和二进制文件里蹚水"},
+  "sources": [
+    "https://github.com/BurntSushi/ripgrep README (fetched 2026-10-08): 'Installation' brew install ripgrep / choco install ripgrep; 'Why should I use ripgrep?' rg -tpy foo, automatic filtering of .gitignore/.ignore/.rgignore, hidden and binary files, rg -uuu; 'Is it really faster' Rust regex engine (finite automata, SIMD, literal optimizations), lock-free parallel recursive directory iterator via the ignore crate",
+    "https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md (fetched 2026-10-08): any file with a NUL byte is binary; RIPGREP_CONFIG_PATH"
+  ]
+}

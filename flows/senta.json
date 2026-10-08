@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Senta does", "zh": "Senta 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PaddlePaddle 1.x first, then the Senta package", "zh": "先装 PaddlePaddle 1.x，再装 Senta 包", "code": "python -m pip install Senta"},
+    {"lane": "you", "en": "Create the predictor and choose a SKEP model and a task", "zh": "创建预测器，选一个 SKEP 模型和一个任务", "code": "init_model(model_class=\"ernie_1.0_skep_large_ch\", task=\"sentiment_classify\")"},
+    {"lane": "them", "en": "Downloads that task's fine-tuned checkpoint, checks its md5, loads it with its tokenizer", "zh": "下载该任务的微调权重，校验 md5，连同分词器一起加载"},
+    {"lane": "you", "en": "Pass in a list of texts (plus aspect terms for aspect-level tasks)", "zh": "传入一组文本（评价对象级任务再加上评价对象）", "code": "my_senta.predict(texts)"},
+    {"lane": "them", "en": "Tokenizes each text, runs the SKEP model and returns its sentiment prediction", "zh": "逐条分词，跑 SKEP 模型，返回情感预测结果"}
+  ],
+  "value": {"en": "Sentence- and aspect-level sentiment from a published SKEP model in a few lines, with no pretraining or fine-tuning of your own", "zh": "几行代码就用上论文发布的 SKEP 模型做句子级和评价对象级情感分析，不用自己预训练或微调"},
+  "sources": [
+    "https://github.com/baidu/Senta#一键化工具 (python -m pip install Senta; PaddlePaddle must be installed first; from senta import Senta; my_senta.init_model(model_class=\"ernie_1.0_skep_large_ch\", task=\"sentiment_classify\", use_cuda=use_cuda); my_senta.predict(texts) / predict(texts, aspects))",
+    "https://github.com/baidu/Senta/blob/master/senta/train.py (init_model: download_data(model_file_http_url, md5 url) into model_files, load inference model, build tokenizer)",
+    "https://github.com/baidu/Senta#环境安装 (paddlepaddle-gpu==1.6.3.post107)"
+  ]
+}

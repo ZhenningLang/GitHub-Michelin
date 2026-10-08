@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "TGI does", "zh": "TGI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the official container on a GPU host with a Hub model id and a weights volume", "zh": "在 GPU 主机上启动官方容器，给出 Hub 模型 id 和权重缓存卷", "code": "docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data"},
+    {"lane": "them", "en": "Downloads the weights and starts one model shard per GPU plus the router", "zh": "下载权重，按 GPU 各起一个模型分片，再起 router", "code": "--model-id $model", "component": {"en": "text-generation-launcher", "zh": "text-generation-launcher"}},
+    {"lane": "you", "en": "Point clients at its HTTP routes", "zh": "让调用方打它的 HTTP 接口", "code": "/generate_stream · /v1/chat/completions"},
+    {"lane": "them", "en": "Queues requests and slots new ones into the running GPU batch as room frees up", "zh": "请求排队，一有空位就把新请求插进 GPU 上正在跑的批次", "component": {"en": "router", "zh": "router"}},
+    {"lane": "them", "en": "Streams generated tokens back to each caller as they are produced", "zh": "生成一个字就推回给对应的调用方"}
+  ],
+  "value": {"en": "One GPU box serves many concurrent callers through an OpenAI-compatible API without you writing a server", "zh": "一台 GPU 机器同时服务很多调用方，接口兼容 OpenAI，服务器不用你自己写"},
+  "sources": [
+    "https://github.com/huggingface/text-generation-inference#docker (docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:3.3.5 --model-id $model; curl /generate_stream and /v1/chat/completions)",
+    "https://github.com/huggingface/text-generation-inference#architecture and README feature list (launcher, router, continuous batching, SSE token streaming, Messages API)",
+    "launcher/src/main.rs (text-generation-launcher)"
+  ]
+}

@@ -6,8 +6,8 @@ category: work-state
 tags: [spec-driven, project-management, github-issues, git-worktrees, parallel-agents, agent-skill, prd, epics, claude-code, shell]
 language: Shell
 license: MIT
-maturity: v2 (Agent Skills compatible), active; last push 2026-03, no tagged GitHub releases (as of 2026-06)
-last_verified: 2026-06-26
+maturity: v2 (Agent Skills compatible); last commit 2026-03-18, quiet since; no tagged GitHub releases (as of 2026-10-08)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-03-18T12:15:24Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:46:55Z
+  computed_at: 2026-10-08T08:15:30Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 193
+        last_commit_age_days: 204
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 405
-        last_commit_age_days: 193
+        repo_age_days: 415
+        last_commit_age_days: 204
         cohort: skill-pack
     governance:
       grade: D
@@ -77,6 +77,29 @@ health:
 
 于是你把 harness 指向 CCPM 这个 skill，说“咱们规划一下支付功能”。它带你从 brainstorm 走到一份落在 `.claude/prds/` 下的 PRD，把它解析成技术 epic，再把 epic 拆成带 `depends_on` / `parallel` / `conflicts_with` 标签的任务，然后把这些任务同步成 GitHub Issues——而 Issues 就成了整支队伍（人或 agent）共读的事实源。接着你说“开始做 issue 1234”，它会拉起一个 git worktree，让一个 agent 在隔离环境里专攻这条流，而另一个 agent 处理互不冲突的另一条。确定性查询（"standup"“哪些被卡住了”）以纯 bash 脚本跑出，所以状态是一次脚本调用，而不是一次幻觉。每个提交都能回溯到一份成文规格，这正是重点：你要的是有据可查的意图加上合并安全的并行，而不是更快地丢失上下文。
 
+## 怎么用起来
+
+CCPM 就是一个 skill 文件夹（`skill/ccpm/`）：一份 `SKILL.md` 负责从你的话里认出“这是项目管理的事”，再把 agent 引到五个阶段指南之一（规划、拆解、同步、执行、跟踪），外加 14 个 bash 脚本，专门回答那些有确定答案的问题。**skill 告诉 agent 每个阶段怎么走；状态则放在 GitHub Issues 和 `.claude/` 下的普通 markdown 文件里**——所以换一个新会话、换一个 agent、换一个人，都能从上次停下的地方接着干。你只用说大白话（“break down the X epic”）；agent 负责写 PRD、epic 和任务文件，用 `gh` 建 issue，并为这个 epic 开一个 git worktree（同一仓库在旁边文件夹里的第二份检出，`../epic-<name>/`）。你让它开工某个 issue 时，它把这个 issue 拆成改不同文件的几路，在那个 worktree 里同时跑几个 agent，靠 git 提交互相协调。“standup”“what's blocked”这类问题根本不过模型：bash 脚本扫一遍文件就把答案打出来。
+
+![ccpm — 主干用户故事](../../../assets/flow/ccpm.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/ccpm.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把 skill 链进 harness，gh 登录项目所在的 GitHub 仓库 — `ln -s /path/to/ccpm/skill/ccpm .claude/skills/ccpm` — 组件：`skill/ccpm/SKILL.md`
+2. **你**：用大白话说你想做什么 — `"I want to build X"`
+3. **CCPM**：先追问范围写成 PRD，再转成技术 epic — `.claude/prds/<name>.md · .claude/epics/<name>/epic.md`
+4. **你**：让它拆解 epic，并同步到 GitHub — `"break down the X epic" · "sync the X epic to GitHub"`
+5. **CCPM**：写带依赖标记的任务文件，建 epic 和子 issue，开 worktree — `depends_on · parallel · conflicts_with`
+6. **你**：挑一个 issue 开工 — `"start working on issue N"`
+7. **CCPM**：把 issue 拆成互不冲突的几路，并行派 agent，按 issue 提交 — `Issue #N: description` — 组件：`references/execute.md`
+
+**价值**：每个提交都能追到写下来的需求，进度在 GitHub Issues 里而不是聊天记录里
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **小规模 / 单条流的活。** 改一个文件、或一次会话能装下的任务，不需要 PRD → epic → issue 的仪式；CCPM 的 5 阶段纪律在某个规模之下纯属负担。
@@ -84,7 +107,7 @@ health:
 - **想要给人类团队用的看板。** 这是给 agent 和工程师用的流程工具，不是 PM 仪表盘——除了 GitHub Issues 本身提供的之外，没有 board、sprint、通知或非工程师 UI。
 - **超大 epic。** 工作流默认每个 epic 大致上限 ≤10 个任务；很大的工程需要手动拆成多个 epic。
 - **你不信那些头条数字。** 营销口径的数据（“上下文切换减少 89%”“bug 减少 75%”“最高 3 倍提速”、内部 4/4-对-0/4 的 eval）都是自报、未经独立复现——为了**工作流**采纳，别为了百分比采纳。[未验证]
-- **成熟度 / 变动风险。** 没有打 tag 的 release，且刚经历 v1→v2（"Agent Skills"）重构，意味着 skill 表面和文件布局仍可能随版本漂移；需要稳定就钉死某个 commit。
+- **成熟度 / 停滞风险。** 2026-03-18 之后再无提交（2026-10-08 查），没有打 tag 的 release，又经历过 v1→v2（“Agent Skills”）重构，意味着 skill 表面和文件布局随时可能漂移；需要稳定就钉死某个 commit。
 - **对 worktree 不友好的工程。** 并行执行依赖 git worktree；带大量 submodule、生成产物、或环境无法在 worktree 检出后存活的仓库，会和这套并行模型对着干。
 
 ## 横向对比
@@ -101,9 +124,9 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护** —— 截至 2026-06 最后 push 在 2026-03，即距上次提交约 3 个月、且无 tagged release；近期的 v1→v2（「Agent Skills」）重构说明有真实维护，但数月空档意味着它在滑行而非快速迭代。仅约 4 个未关 issue——backlog 很低，但要结合约 8k 这个不算高的 star 数一起看。[推断]
+- **维护** —— 最后 push 在 2026-03-18，默认分支此后没再动过（2026-10-08 复查）：约 7 个月没有提交，仍无 tagged release。v1→v2（“Agent Skills”）重构说明当时有真实维护，但之后的长空档读作**停滞，但未正式废弃**——钉死某个 commit，别指望按需修复。[推断]
 - **治理 / 巴士因子** —— `Organization` 所有（`automazeio`），多少缓解了单维护者风险，但它仍是个小型厂商主导的 skill 仓库，而非基金会项目；路线图由运营 automaze 的人说了算，没有可指认的正式治理。[推断]
-- **年龄与 Lindy** —— 创建于 2025-08，截至 2026-06 不足一年，且已经历过一次破坏性重构（v1→v2）：太年轻，给不出 Lindy 裁决，接口面仍在沉淀——需要稳定就钉死某个 commit。
+- **年龄与 Lindy** —— 创建于 2025-08-18，到 2026-10-08 约 14 个月，其中最后 7 个月没有动静，此前还经历过一次破坏性重构（v1→v2）：太年轻，给不出 Lindy 裁决，而且“年龄 × 仍活跃”的信号在变弱而不是在积累。
 - **风险旗标** —— `[未验证]` MIT，无重新授权历史。对 GitHub Issues + `gh` 的硬依赖是一个锁定面（没有 GitLab/Jira 后端），而头条指标（「上下文切换减少 89%」「bug 减少 75%」「3 倍提速」）都是自报、未经独立复现——为工作流而采纳，别为百分比而采纳。
 
 ## 存疑（未验证）

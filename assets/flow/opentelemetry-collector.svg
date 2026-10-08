@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="929" viewBox="0 0 880 929" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="929" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="771" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="771" rx="10"/>
+<rect class="pillT" x="474" y="40" width="193.5" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">The Collector does</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="edge" d="M62,332 L62,356" marker-end="url(#a)"/>
+<path class="hand" d="M408,394.0 C439.0,394.0 439.0,418 470,418" marker-end="url(#a)"/>
+<path class="edge" d="M494,513 L494,537" marker-end="url(#a)"/>
+<path class="edge" d="M494,636 L494,660" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Pull the Collector image and run it</text>
+<text class="t" x="82" y="123">with the OTLP ports open: 4317 for</text>
+<text class="t" x="82" y="145">gRPC, 4318 for HTTP</text>
+<text class="c" x="82" y="169">docker pull otel/opentelemetry-collector</text>
+<rect class="card" x="40" y="215" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">Declare receivers, processors and</text>
+<text class="t" x="82" y="266">exporters in YAML, then wire them into</text>
+<text class="t" x="82" y="288">per-signal pipelines</text>
+<text class="c" x="82" y="312">otelcol --config=customconfig.yaml</text>
+<rect class="card" x="40" y="358" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="358" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="382" r="10"/>
+<text class="num" x="62" y="386" text-anchor="middle">3</text>
+<text class="t" x="82" y="387">Point your apps&#x27; OpenTelemetry SDKs at</text>
+<text class="t" x="82" y="409">the Collector instead of at a vendor</text>
+<rect class="cardT" x="472" y="394" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="394" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="418" r="10"/>
+<text class="num" x="494" y="422" text-anchor="middle">4</text>
+<text class="t" x="514" y="423">Receives traces, metrics and logs and</text>
+<text class="t" x="514" y="445">converts them into one internal data</text>
+<text class="t" x="514" y="467">model</text>
+<text class="comp" x="514" y="495">component: receivers</text>
+<rect class="cardT" x="472" y="539" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="539" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="563" r="10"/>
+<text class="num" x="494" y="567" text-anchor="middle">5</text>
+<text class="t" x="514" y="568">Batches, filters, samples and enriches</text>
+<text class="t" x="514" y="590">the data in flight</text>
+<text class="comp" x="514" y="618">component: processors</text>
+<rect class="cardT" x="472" y="662" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="662" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="686" r="10"/>
+<text class="num" x="494" y="690" text-anchor="middle">6</text>
+<text class="t" x="514" y="691">Sends each signal to one or more</text>
+<text class="t" x="514" y="713">backends, queueing and retrying on</text>
+<text class="t" x="514" y="735">failure</text>
+<text class="comp" x="514" y="763">component: exporters</text>
+<rect class="val" x="28" y="813" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="837">VALUE</text>
+<text class="valT" x="48" y="861">Changing or adding a backend is a YAML edit in one place — your apps keep emitting OTLP and</text>
+<text class="valT" x="48" y="883">are never re-instrumented</text>
+</svg>

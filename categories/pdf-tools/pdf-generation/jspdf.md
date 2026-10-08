@@ -6,17 +6,17 @@ category: pdf-generation
 tags: [pdf, javascript, browser, nodejs, generate, client-side, html2pdf, text, graphics]
 language: JavaScript
 license: MIT
-maturity: v2.5.x, active maintenance, ~28k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v4.2.1 (2026-03-17), security-fix releases, ~31k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-07-06T02:20:06Z
+  pushed_at: 2026-09-30T20:48:08Z
   default_branch: master
-  default_branch_sha: a3930ce03a585a26b2c76d12a0f413ce96f6d1a3
+  default_branch_sha: 20d32998267745aa5336e299baa65d4f45916fb5
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:52:54Z
+  computed_at: 2026-10-08T08:24:34Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 9
+        last_commit_age_days: 25
         active_weeks_13: 1
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,23 +41,23 @@ health:
         registry: npmjs.org
         canonical_package: jspdf
         dependent_repos_count: 21994
-        downloads_last_month: 52701611
+        downloads_last_month: 62913711
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 6134
-        last_commit_age_days: 9
+        repo_age_days: 6150
+        last_commit_age_days: 25
         cohort: library
     governance:
       grade: C
       raw:
-        active_maintainers_12mo: 10
-        top1_share: 0.615
-        top3_share: 0.769
+        active_maintainers_12mo: 5
+        top1_share: 0.724
+        top3_share: 0.897
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,69 +70,90 @@ health:
   unknowns:
     responsiveness: { reason: no_window_signal }
 ---
-
 # jsPDF
 
-
-A client-side JavaScript library for generating PDFs from HTML, text, and graphics — popular for invoices, reports, and tickets in the browser without a server round-trip.
-
+Your web app needs a "Download PDF" button for an invoice or a ticket, and the obvious fix — a server endpoint that renders PDFs — means another service, a round-trip, and customer data leaving the browser. jsPDF builds the PDF file in JavaScript right where the data already is: you place text, images and shapes on a page by coordinates and it hands the user a finished file.
 
 ![jsPDF — health radar](../../../assets/health/jspdf.svg)
 
 ## When to use
 
-You're a front-end developer building a web app where users need to download a PDF — an invoice, a shipping label, a ticket, or a simple report — and you want to generate it right there in the browser without sending data to a server and waiting for a response. You have HTML templates or raw text and graphics to assemble, and you need a quick, lightweight way to build a PDF document client-side. You pull in `jspdf`, create a document instance, add text, images, and tables (via the `autotable` plugin), and call `save()` to drop the file into the user's downloads — no backend PDF service required, no latency, and the data never leaves the client.
+You're a front-end developer on a SaaS dashboard, and support keeps asking for "a PDF version" of things the page already shows: an order receipt, a shipping label, a certificate, a one-page summary. Spinning up a headless-Chrome endpoint for that means a new service, a cold start of a few seconds on every click, and invoice data travelling to a server you now have to secure. With jsPDF the whole thing is `const doc = new jsPDF(); doc.text("Invoice #1042", 10, 10); doc.save("invoice.pdf")` in the click handler — the file is built in the tab and downloaded, offline-capable, with no backend.
 
-The same library fits when you already have styled HTML and want a PDF that looks close to it: the built-in `html` method (powered by html2canvas under the hood) lets you point at a DOM element, render it, and embed the result into a PDF page — handy for receipts, certificates, and data summaries that were already rendered for the screen.
+It is the pick over its JS neighbours when the document is *drawn* rather than *laid out*: fixed-position labels, tickets, receipts, forms you design on a grid. It has the longest track record in the space (since 2009) and by far the largest install base, and the same code runs in Node for batch jobs. If you need automatic flowing layout, pdfmake or react-pdf fit better; if you need to edit an existing PDF, pdf-lib does.
+
+## How it works
+
+jsPDF is a PDF writer with a drawing API: you create a document (A4 portrait in millimetres by default) and call methods such as `text`, `addImage`, `line`, `rect` with explicit x/y positions — like drawing on graph paper, nothing moves unless you move it. **What it does for you:** encode text in the 14 standard PDF fonts or a TrueType font you register, embed JPEG/PNG/WebP/GIF/BMP images, write vectors, links, outlines, AcroForm fields and metadata, and serialize all of it into a valid PDF that `save()` downloads (in the browser) or writes to disk (in Node). **What stays yours:** layout — line breaks (`splitTextToSize` helps), page breaks, tables (the third-party `jspdf-autotable` plugin is the usual answer), and embedding a TTF font yourself for any non-Latin text such as Chinese. The optional `html()` method is the shortcut: html2canvas walks a DOM element and its drawing calls are replayed onto jsPDF's canvas-like `context2d`, so you get a PDF of an on-screen block without hand-placing it, at html2canvas's level of CSS fidelity.
+
+![jspdf — backbone user story](../../../assets/flow/jspdf.svg)
+
+<!-- flow-steps:begin (generated from flows/jspdf.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the library to your front-end (or Node) project — `npm install jspdf`
+2. **You**: Create a document; default is A4 portrait in millimetres — `const doc = new jsPDF()`
+3. **You**: Place text, images and shapes at explicit x/y positions — `doc.text("Hello world!", 10, 10)`
+4. **jsPDF**: Encodes fonts, images and vectors into PDF objects in memory
+5. **You**: Ask for the file — `doc.save("a4.pdf")`
+6. **jsPDF**: Serializes a valid PDF and downloads it in the browser, or writes it to disk in Node
+
+**Value**: The PDF is produced where the data already is — no PDF server, no round-trip, data never leaves the browser
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need to modify existing PDFs.** jsPDF is creation-only — it builds new documents from scratch. It cannot open an existing PDF, edit its pages, fill pre-existing forms, merge files, or stamp content onto an existing document. For that, use pdf-lib (JS) or a server-side tool.
-- **You need pixel-perfect HTML-to-PDF conversion.** The `html` plugin relies on html2canvas, which has known CSS support gaps (flexbox/grid can be fragile, complex layouts may drift) and can struggle with large tables or multi-page content. [推断] For print-quality HTML-to-PDF, a headless browser (Puppeteer/Playwright) or a dedicated server-side renderer is more reliable.
-- **Your PDFs are complex or large.** While jsPDF handles text, images, and basic shapes well, it is not designed for heavy document manipulation — complex layouts, rich typography, embedded interactive forms, or very large multi-page documents may exceed what the library comfortably supports. For heavy server-side generation, reportlab (Python) or similar tools are better suited.
-- **You need the smallest possible bundle.** jsPDF is featureful but not tiny; for extremely constrained environments, evaluate whether a lighter dedicated tool or a server-side generation endpoint is more appropriate.
-- **You need structured document parsing for AI/RAG.** jsPDF generates PDFs; it does not parse or extract structured content from them. For layout-aware parsing of existing documents, use [Docling](../../document-parsing/docling.md) or similar.
+- **You need to edit, merge or fill an existing PDF.** jsPDF only writes new documents. Use [pdf-lib](pdf-lib.md) to modify PDFs in JS (note its repo has been quiet since mid-2024), or [FPDI](fpdi.md) on PHP, or a server-side tool such as [qpdf](../pdf-transform-signing/qpdf.md).
+- **You want "print this web page" fidelity.** `html()` is limited to what html2canvas understands; modern CSS layouts, web fonts and long multi-page content drift. Use [Playwright](../../web-automation/playwright-family/playwright.md) or [Puppeteer](../../web-automation/browser-driver-frameworks/puppeteer.md) `page.pdf()` — a real browser engine — on a server.
+- **Your document flows: long reports, tables that break across pages, headers/footers.** Hand-placing coordinates gets painful fast. Use pdfmake (not indexed; declarative document definition with automatic page breaks) or react-pdf (not indexed; React components with a flexbox layout engine), or typeset server-side with [Typst](../../typesetting/typst.md).
+- **The text is Chinese, Japanese, Arabic or anything outside Latin-1, and you can't ship a font.** The standard fonts only cover ASCII-range glyphs; you must embed a TTF (often several MB for CJK) via `addFont`, otherwise you get garbled characters.
+- **You are pinned to jsPDF < 4.2.1.** Ten security advisories were published between January and March 2026 (path traversal in the Node build, PDF/JavaScript injection via AcroForm and `addJS`, HTML injection in output methods, DoS via malformed images), all fixed in 4.x. If you can't upgrade, don't feed it untrusted input; v4.0.0 also restricts Node file-system reads by default, which can break existing server code.
+- **You need to read or extract from PDFs.** It is write-only; use [PDF.js](../pdf-reading/pdfjs.md) in the browser, or [PyMuPDF](../pdf-reading/pymupdf.md) / [pdfplumber](../pdf-reading/pdfplumber.md) in Python.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [PDF.js](../pdf-reading/pdfjs.md) | ✅ | Choose PDF.js when you need to render or read existing PDFs in the browser. | A renderer/viewer, not a generator — complementary. PDF.js displays PDFs; jsPDF builds them. |
-| [pdf-lib](pdf-lib.md) | ✅ | Choose pdf-lib when you need to create AND modify PDFs in JS, including forms, merging, and drawing, without native deps. | JS library to create and modify PDFs — covers the edit/modify case jsPDF doesn't handle. |
-| [PyMuPDF](../pdf-reading/pymupdf.md) / [pdfplumber](../pdf-reading/pdfplumber.md) | ✅ | Choose PyMuPDF / pdfplumber when you need fast server-side PDF text/table extraction or rendering. | Python libraries for server-side PDF work; not a browser generator. |
-| [Docling](../../document-parsing/docling.md) | ✅ | Choose Docling when you need layout-aware document parsing into structured output for AI/RAG. | A parser, not a generator — it reads documents into structured Markdown/JSON, never creates them. |
-| Native `<embed>` / browser PDF plugin | 未收录 | Choose native embed when you only need to display an existing PDF with zero integration work. | Zero-dependency display, but no generation, no programmatic control, and inconsistent across browsers. |
+| [pdf-lib](pdf-lib.md) | ✅ | When you must open and change existing PDFs (stamp, merge, fill forms) in JS, pick pdf-lib; for generating new documents from scratch with the largest ecosystem, pick jsPDF. | pdf-lib adds modification and a typed API but its upstream repo has been quiet since 2024-07; jsPDF is write-only but actively patched (4.2.1, 2026-03). |
+| pdfmake (`bpampuch/pdfmake`) | not indexed | When the document is a flowing report with tables, columns and automatic page breaks, pick pdfmake; pick jsPDF when you position elements yourself on fixed-layout pages. | pdfmake's declarative JSON layout saves you the coordinate math but gives less low-level drawing control; jsPDF is the reverse. |
+| react-pdf (`diegomura/react-pdf`) | not indexed | In a React codebase that wants PDFs written as components with flexbox styling, pick react-pdf; pick jsPDF for framework-agnostic code or drawn, fixed layouts. | react-pdf brings a real layout engine and JSX but ties you to React and a heavier runtime; jsPDF is framework-free but leaves layout to you. |
+| [Playwright](../../web-automation/playwright-family/playwright.md) | ✅ | When the PDF must look exactly like a styled web page, render it server-side with Playwright's `page.pdf()`; pick jsPDF when the PDF must be built client-side with no server. | A headless browser gives full CSS fidelity at the cost of a server, a Chromium binary and per-request latency; jsPDF costs nothing to run but has limited HTML fidelity. |
+| [Typst](../../typesetting/typst.md) | ✅ | When documents are typeset (long text, math, consistent styles) and generated in a backend or CLI, pick Typst; pick jsPDF when generation happens in the user's browser. | Typst gives real typography and automatic layout but is a compiler you run outside the page (or as WASM); jsPDF is a small JS dependency with manual layout. |
 
 ## Tech stack
 
-- **Language:** JavaScript (ES5/ES6+), with TypeScript definitions available.
-- **Execution model:** Runs in modern browsers and Node.js; works with bundlers (Webpack, Vite, Rollup) and can be loaded via CDN.
-- **Architecture:** Plugin-based — core library is small, and features like `autotable` (tables), `html` (HTML-to-PDF via html2canvas), and SVG import are added as separate plugins.
-- **HTML-to-PDF pipeline:** The `html` plugin delegates to html2canvas to rasterize DOM elements to canvas, then embeds the image data into the PDF.
+- **Language:** JavaScript with bundled TypeScript typings; shipped as ES module, UMD and a dedicated Node build (`dist/jspdf.node.*.js`).
+- **Core modules:** text and standard-font metrics, TTF embedding (`ttfsupport`, virtual file system `addFileToVFS`), image codecs (JPEG, PNG via `fast-png`, WebP, GIF, BMP), compression via `fflate`, AcroForm, annotations, outlines, XMP metadata, and a canvas-like `context2d` API.
+- **API modes:** a default "compat" API matching the original MrRio API (plugin-compatible) and an "advanced" API (transformation matrices, patterns, FormObjects) from the merged yWorks fork, switched with `doc.advancedAPI(...)`.
+- **HTML path:** `html()` lazy-loads `html2canvas` (and `dompurify` for string input) and replays the rendering through `context2d`.
 
 ## Dependencies
 
-- **Runtime:** a JavaScript environment — modern browser or Node.js. No native binary dependencies.
-- **Install:** `npm install jspdf` for the core library; plugins like `jspdf-autotable` are separate npm packages.
-- **html2canvas:** Required when using the `html` plugin for HTML-to-PDF conversion; this is a separate dependency that must be installed alongside jsPDF.
-- **Node specifics:** server-side usage in Node may need a canvas polyfill for some operations; plain text + image generation works without one. [未验证]
+- **Runtime:** a modern browser or Node.js; v3.0 dropped Internet Explorer (polyfills still available for older browsers).
+- **Install:** `npm install jspdf` (or the unpkg UMD build). Hard deps are small: `@babel/runtime`, `fflate`, `fast-png`.
+- **Optional, loaded on demand:** `html2canvas` and `dompurify` for `html()`, `canvg` for SVG, `core-js` for polyfills. Mark unused ones as bundler externals to avoid extra chunks.
+- **Plugins are separate projects:** tables usually come from `jspdf-autotable` (a different repo and maintainer).
+- **Fonts:** any non-Latin text needs a TTF you supply (via `addFont` or the upstream font converter).
 
 ## Ops difficulty
 
-**Low.** jsPDF is a client-side library — there is no service to deploy, no datastore, no clustering. The "ops" burden is primarily dependency management: keeping the library and its plugins current, and being aware that html2canvas (the HTML-to-PDF engine) has its own release cadence and CSS compatibility limitations. For browser use, it is a standard npm install or CDN include; for Node, confirm that the operations you need (text vs. images vs. canvas-backed features) work in your Node version without additional polyfills.
+**Low.** No service, no datastore — it is a library in your bundle or Node process. The real work is (1) keeping it current, because 2026 brought a burst of security fixes and one breaking change (Node file-system reads off by default in 4.0); (2) bundle weight when you add custom fonts and the optional html2canvas/dompurify chunks; and (3) in Node, granting file access deliberately via `node --permission --allow-fs-read=...` (recommended upstream) or `jsPDF.allowFsRead`.
 
 ## Health & viability
 
-- **Maintenance (2026-07):** Active maintenance with ongoing releases in the v2.5.x line; the project has been around since 2014 and shows sustained development. [推断]
-- **Governance / backing:** Community-maintained (`parallax/jsPDF`); not backed by a major corporation or foundation. This means maintenance depends on volunteer contributors rather than a funded team — a moderate bus-factor risk compared to vendor-backed alternatives. [推断]
-- **Age & Lindy (created ~2014, ~12yr):** old and still active — a decent Lindy signal. A 12-year-old library with ~28k stars that is still receiving updates is a safer bet than a young hyped alternative, though the community-maintenance model means longevity is less guaranteed than a foundation-backed project. [推断]
-- **Adoption:** ~28k stars (volatile, see Caveats) and widely used for client-side PDF generation in web apps; the plugin ecosystem (autotable, html2canvas integration, etc.) provides real utility. [未验证]
-- **Risk flags:** MIT license (no relicense risk). No open-core gating or CLA requirements observed. The main watch-item is the community-maintenance model: while active now, there is no corporate backstop if contributor interest wanes. [推断]
+- **Maintenance (2026-10-08):** coasting but alive — 4.0 → 4.2.1 shipped January–March 2026 as security releases, and since then only docs and process commits (latest 2026-09-13). It fixes reported vulnerabilities quickly; new features are rare.
+- **Governance & backing:** created by James Hall (MrRio) and now co-maintained by yWorks GmbH, whose fork was merged in; a handful of maintainers do almost all commits (governance is the weakest axis on the radar). A company co-maintaining it is a better backstop than pure volunteers, but the bus factor is small.
+- **Age / Lindy:** repo created December 2009 — about 17 years old and still releasing. Older than pdfmake (2014), react-pdf (2016) and pdf-lib (2017), so the strongest Lindy signal among JS PDF generators.
+- **Adoption:** ~31k stars, 62,913,711 npm downloads in the last month and 21,994 dependent repos; the de-facto default for client-side PDF generation.
+- **Risk flags:** MIT, no relicense history. The 2026 advisory cluster (including critical ones) shows the attack surface is real when user input reaches it — stay on the latest 4.x and sanitize input, as the README itself advises.
 
 ## Caveats (unverified)
 
-- [未验证] ~28k GitHub stars and "active maintenance" reflect a point-in-time snapshot (v2.5.x, 2026-07); star counts are noisy and date-sensitive — treat as indicative.
-- [未验证] html2canvas CSS support gaps and large-table breakage are reported by the community; exact failure modes vary by document complexity and browser version.
-- [未验证] Node.js canvas polyfill requirements for specific features (e.g., certain image formats) depend on the Node version and installed packages; verify against your target environment.
-- [推断] Plugin ecosystem health and maintenance cadence of individual plugins (autotable, html, etc.) are separate from core jsPDF maintenance; some plugins may lag behind core releases.
-- [推断] Community maintenance implies that bug-fix priority and feature roadmap are driven by volunteer availability rather than a commercial roadmap; evaluate against your project's support needs.
+- [推断] "Coasting" is inferred from commit history after 2026-03 (docs/process only); maintainers may have unreleased work on other branches.
+- [推断] The yWorks role ("co-maintained") is taken from the README; how much paid time yWorks commits is not public.
+- [未验证] html2canvas CSS gaps (modern layout, web fonts, very long content) are community-reported; exact failures depend on the page and browser.
+- [未验证] The claim that CJK TTF fonts add several MB to the bundle depends on the font and any subsetting you do.
+- [未验证] Star, download and dependent-repo counts are a 2026-10-08 snapshot from the GitHub API, npm and the health scorer.

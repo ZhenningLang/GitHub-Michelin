@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Metis does", "zh": "Metis 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone and install it, and export a model API key", "zh": "clone 并安装，导出模型 API 密钥", "code": "uv pip install .", "component": {"en": "metis CLI", "zh": "metis 命令行"}},
+    {"lane": "you", "en": "Run the review and triage graph over your source tree", "zh": "对你的代码树运行审查加分诊流程", "code": "uv run metis --codebase-path \"/path/to/src\" --verbose"},
+    {"lane": "them", "en": "Loads your SECURITY and threat-model files as review scope", "zh": "把你的 SECURITY 和威胁模型文件读进来，作为审查范围"},
+    {"lane": "them", "en": "Splits code with tree-sitter; the LLM reviews each part, plus reachability for C/C++", "zh": "用 tree-sitter 切分代码，让模型逐块审查，C/C++ 另做可达性分析"},
+    {"lane": "them", "en": "Re-checks each finding against nearby code and writes SARIF/JSON with a verdict", "zh": "对照周边代码复核每条发现，写出带结论的 SARIF/JSON"},
+    {"lane": "you", "en": "Read the explanations and mitigations, and fix the real bugs", "zh": "读原因说明和修复建议，修掉真正的漏洞"}
+  ],
+  "value": {"en": "A deep first-pass security audit of a large codebase, with findings already filtered for false positives", "zh": "对大型代码库做一遍深入的安全初审，误报已先过滤一轮"},
+  "sources": [
+    "https://github.com/arm/metis README (Installation: uv pip install .; OPENAI_API_KEY; Run Analysis: uv run metis --codebase-path \"/path/to/src\" --verbose; init loads SECURITY.* / threat-model files; review_code: simple LLM + CodeGraph Reachability for C/C++; example output Why/Mitigation/Confidence)",
+    "https://github.com/arm/metis/blob/main/docs/triage-flow.md (evidence collection, structured valid/invalid/inconclusive decision, SARIF annotation)"
+  ]
+}

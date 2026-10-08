@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Markdown Here does", "zh": "Markdown Here 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension from your browser's add-on store, then reload your webmail", "zh": "从浏览器扩展商店装好，再刷新网页邮箱", "component": {"en": "browser extension", "zh": "浏览器扩展"}},
+    {"lane": "you", "en": "Switch the compose box to its rich editor and type the email in plain Markdown", "zh": "把撰写框切到富文本模式，用纯 Markdown 写邮件", "code": "Compose messages in HTML format"},
+    {"lane": "you", "en": "Trigger the toggle on the whole body or on a selection", "zh": "对整封邮件或选中的一段触发转换", "code": "Markdown Toggle · SHIFT+ALT+M"},
+    {"lane": "them", "en": "Renders that Markdown to HTML in place, with highlighted fenced code blocks", "zh": "就地把 Markdown 渲染成 HTML，代码块带语法高亮"},
+    {"lane": "them", "en": "Leaves quoted reply text alone and remembers the source, so toggling again reverts", "zh": "不动回复里引用的原邮件，并记住原文，再按一次就还原"}
+  ],
+  "value": {"en": "Recipients get a formatted email with real code blocks; you never touched the toolbar or pasted from another editor", "zh": "收件人看到排版好、带代码块的邮件，你没碰过工具栏，也不用从别的编辑器复制粘贴"},
+  "sources": [
+    "https://github.com/adam-p/markdown-here#installation-instructions (store install, reload webmail)",
+    "https://github.com/adam-p/markdown-here#usage-instructions (rich editor, Thunderbird 'Compose messages in HTML format', Markdown Toggle, SHIFT+ALT+M)",
+    "https://github.com/adam-p/markdown-here#revert-to-markdown and #replies (toggle back; existing blockquote blocks left intact)"
+  ]
+}

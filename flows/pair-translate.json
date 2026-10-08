@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Pair Translate does", "zh": "Pair Translate 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension from the Chrome, Firefox or Edge store", "zh": "从 Chrome、Firefox 或 Edge 商店装上扩展"},
+    {"lane": "you", "en": "Keep the free Microsoft default, or add a service from a template and fill its endpoint and key", "zh": "用默认的微软翻译，或从模板加一个服务，填上地址和 key", "code": "baseUrl · apiKey", "component": {"en": "options page", "zh": "设置页"}},
+    {"lane": "you", "en": "On a foreign-language page, press the translate shortcut", "zh": "打开外文网页，按下翻译快捷键", "code": "Alt+T"},
+    {"lane": "them", "en": "Collects the page's text and sends it in batches straight to your chosen service", "zh": "收集页面文字，分批直接发给你选的服务", "component": {"en": "content script", "zh": "内容脚本"}},
+    {"lane": "them", "en": "Inserts each translation right after its original text", "zh": "把每段译文插在对应原文后面"}
+  ],
+  "value": {"en": "Original and translation sit side by side on the page, with no middleman server in between", "zh": "原文和译文在页面上并排对照，中间没有第三方服务器"},
+  "sources": [
+    "https://github.com/Cookee24/PairTranslate#installation (Chrome / Firefox / Edge store links)",
+    "https://github.com/Cookee24/PairTranslate#privacy (requests go directly from the browser to the provider)",
+    "https://github.com/Cookee24/PairTranslate/blob/master/utils/settings/default.ts (keyboardShortcut \"Alt+T\", default Microsoft translator service, LLMServiceTemplates with baseUrl/apiSpec, queue requestConcurrency/maxBatchSize/tokensPerMinute)",
+    "https://github.com/Cookee24/PairTranslate/blob/master/locales/en.toml (keyboardShortcutEnabledDesc \"Toggle translation with keyboard shortcut\"; paragraph translation by holding Ctrl/Option and dragging)",
+    "https://github.com/Cookee24/PairTranslate/tree/master/entrypoints (background, content, options, popup)"
+  ]
+}

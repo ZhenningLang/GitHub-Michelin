@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "AutoGen does", "zh": "AutoGen 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install AgentChat plus a model-client extension", "zh": "装 AgentChat 和一个模型客户端扩展", "code": "pip install -U \"autogen-agentchat\" \"autogen-ext[openai]\""},
+    {"lane": "you", "en": "Define expert agents, each with a system message, and hand them to a lead agent as tools", "zh": "定义各带指令的专家 agent，包成主 agent 的工具", "code": "AgentTool(math_agent, return_value_as_last_message=True)", "component": {"en": "AgentChat API", "zh": "AgentChat API"}},
+    {"lane": "you", "en": "Run a task on the lead agent", "zh": "让主 agent 跑一个任务", "code": "agent.run_stream(task=\"What is the integral of x^2?\")"},
+    {"lane": "them", "en": "Calls the model; the model picks a tool or an expert agent to call", "zh": "调用模型，由模型决定调哪个工具或哪个专家 agent", "component": {"en": "model client (autogen-ext)", "zh": "模型客户端（autogen-ext）"}},
+    {"lane": "them", "en": "Runs that expert's own model loop and returns its last message as the tool result", "zh": "跑那个专家自己的模型循环，把它最后一句话当工具结果交回"},
+    {"lane": "them", "en": "Repeats until the lead answers or hits max_tool_iterations, streaming each message", "zh": "循环到出答案或到 max_tool_iterations，消息流式输出"}
+  ],
+  "value": {"en": "Several LLM agents cooperate on one task without you writing the message routing or the tool-call loop", "zh": "几个大模型 agent 协作完成一个任务，消息路由和工具调用循环都不用你写"},
+  "sources": [
+    "https://github.com/microsoft/autogen README — Installation (pip install -U \"autogen-agentchat\" \"autogen-ext[openai]\"); Quickstart / Multi-Agent Orchestration (AgentTool(math_agent, return_value_as_last_message=True), max_tool_iterations=10, Console(agent.run_stream(task=\"What is the integral of x^2?\")))",
+    "README — Why AutoGen? (Core API / AgentChat API / Extensions API layering; Extensions implement LLM clients)"
+  ]
+}

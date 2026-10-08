@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Bun does",
+    "zh": "Bun 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the single bun binary",
+      "zh": "装上唯一的 bun 可执行文件",
+      "code": "curl -fsSL https://bun.com/install | bash · npm install -g bun"
+    },
+    {
+      "lane": "you",
+      "en": "In your existing Node project, install dependencies with Bun",
+      "zh": "在现有 Node 项目里用 Bun 装依赖",
+      "code": "bun install"
+    },
+    {
+      "lane": "them",
+      "en": "Reads package.json, fills node_modules from a global cache and writes bun.lock",
+      "zh": "读 package.json，从全局缓存装好依赖，写出 bun.lock",
+      "component": {
+        "en": "package manager",
+        "zh": "包管理器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Run the TypeScript entry file directly, no build step",
+      "zh": "直接运行 TypeScript 入口文件，不先编译",
+      "code": "bun run index.tsx"
+    },
+    {
+      "lane": "them",
+      "en": "Transpiles TS/JSX on load and runs it on JavaScriptCore",
+      "zh": "加载时转译 TS/JSX，在 JavaScriptCore 上运行",
+      "component": {
+        "en": "runtime",
+        "zh": "运行时"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Run the test suite with the built-in runner",
+      "zh": "用内置测试器跑测试",
+      "code": "bun test"
+    },
+    {
+      "lane": "them",
+      "en": "Finds the test files and runs them with a Jest-compatible API",
+      "zh": "找到测试文件，用兼容 Jest 的 API 跑完",
+      "component": {
+        "en": "test runner",
+        "zh": "测试运行器"
+      }
+    }
+  ],
+  "value": {
+    "en": "One binary stands in for node, npm, ts-node and Jest in the daily loop, each step noticeably faster",
+    "zh": "日常开发里一个二进制顶掉 node、npm、ts-node 和 Jest，每一步都更快"
+  },
+  "sources": [
+    "https://github.com/oven-sh/bun README (install script, npm install -g bun, bun run index.tsx, bun test, bun install)",
+    "https://bun.com/docs/pm/lockfile (bun install creates a lockfile called bun.lock)",
+    "https://bun.com/docs/pm/global-cache (global cache)",
+    "https://bun.com/docs/test (built-in, Jest-compatible test runner)"
+  ]
+}

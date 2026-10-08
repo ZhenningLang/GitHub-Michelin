@@ -7,7 +7,7 @@ tags: [kafka, web-ui, cluster-management, monitoring, schema-registry, kafka-con
 language: Java
 license: Apache-2.0
 maturity: v0.7.2 (2024-04), upstream stalled — see Health, ~12.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-07-26T08:00:52Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:05:32Z
+  computed_at: 2026-10-08T08:20:08Z
   overall: C
   overall_score: 1.8
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 902
+        last_commit_age_days: 913
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 8
+        qualifying_issues: 7
         band: relaxed_solo
         window_offset_days: 5
         source: pr
@@ -46,15 +46,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 94436
+        release_downloads: 94956
         release_assets: 15
         release_tier: D
         signal_basis: releases
     longevity:
       grade: E
       raw:
-        repo_age_days: 2497
-        last_commit_age_days: 902
+        repo_age_days: 2508
+        last_commit_age_days: 913
         cohort: app
     governance:
       grade: "?"
@@ -81,6 +81,27 @@ health:
 你是运行着一个或多个 Kafka 集群的工程师或 SRE，每次有人问「这个 topic 在收消息吗？」或「这个消费组为什么有 lag？」时，你都受够了 `kafka-console-consumer.sh` 和一长串 CLI 参数。你想要一个一条 `docker run` 就能起的轻量看板，能显示 broker、topic、分区分配、消费组 lag，并且能点进某个 topic 真正*读到*消息——JSON、纯文本、Avro、Protobuf——而不必自己写个消费者。你把它指向你的 bootstrap servers（可选地再加上 Schema Registry 和一个 Connect 集群），打开 `:8080`，你的数据流对整个团队都可见了，而不只是笔记本上装了 CLI 和正确配置的那一个人。
 
 当你需要一个自托管、零授权成本、用来替代商业版 Kafka 控制台的方案时，它也合适——带 OAuth（GitHub/GitLab/Google）、基于角色的访问控制，以及对敏感字段的数据脱敏——治理能力足以摆在团队面前而不暴露原始 PII。临时生产测试消息、手动创建/配置 topic、点几下就注册 schema，这些都帮你省掉很多控制台摩擦。
+
+## 怎么用起来
+
+kafka-ui 是一个放在 Kafka 集群旁边的 Web 应用，替你扮演一个普通的 Kafka 客户端。**读数据、解码都是它的事；你只要告诉它集群在哪。** 设了 `DYNAMIC_CONFIG_ENABLED=true`，就能在浏览器里的向导中填入集群的 bootstrap 地址（客户端第一次连接时用的 broker 地址），不必先写配置文件；要长期使用，就把一个 `config.yml` 挂进容器。之后它实时向集群询问 broker、topic、分区以及每个消费组已提交的位点，并算出积压（lag）——也就是消费组的位点落后最新消息多少条。你点开一个 topic，它就拉取消息并用对应的反序列化器解码（JSON、文本，或经由 Schema Registry 的 Avro / Protobuf），没人需要再去配一个参数正确的命令行消费者。基础配置下它不带自己的数据库；你看到的就是集群那一刻报告的状态。
+
+![kafka-ui — 主干用户故事](../../assets/flow/kafka-ui.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/kafka-ui.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：启动容器，并打开浏览器内配置功能 — `docker run -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui`
+2. **你**：打开界面，填上集群的 bootstrap 地址 — `http://localhost:8080`
+3. **UI for Apache Kafka (provectus/kafka-ui)**：以 Kafka 客户端连上集群，实时读 broker、topic、分区和位点 — 组件：`Spring Boot 后端`
+4. **你**：点进某个 topic 或某个消费组
+5. **UI for Apache Kafka (provectus/kafka-ui)**：显示各分区积压，把消息解码成 JSON、文本、Avro 或 Protobuf — 组件：`serde + Schema Registry`
+
+**价值**：团队里谁都能看到 topic 里有什么、消费组为什么积压，不用命令行工具和客户端配置
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -122,7 +143,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）——上游停滞。** `provectus/kafka-ui` 最后发布 v0.7.2 在 **2024-04**，最后 push 在 **2024-07**；截至撰写已约 2 年没有发布。API 并**未**把它标记为 `archived`，但它读起来是**休眠**而非活跃。活跃开发在社区分叉 **`kafbat/kafka-ui`** 中延续（2026-06 有 push）。这是主导结论：把上游当作冻结。[推断]
+- **维护（2026-10）——上游停滞。** `provectus/kafka-ui` 最后发布 v0.7.2 在 **2024-04**（默认分支最后一次提交 2024-04-08，最后 push 在 2024-07）；截至撰写已约两年半既没有发布也没有提交。API 并**未**把它标记为 `archived`，但它读起来是**休眠**而非活跃。活跃开发在社区分叉 **`kafbat/kafka-ui`** 中延续（2026-10 有 push，2026-04 发布 v1.5.0）。这是主导结论：把上游当作冻结。[推断]
 - **治理 / 背书。** `Organization` 所有（Provectus，一家咨询公司）；README 声称保持免费/开源、无付费档。但一个由单一厂商策划的 OSS 项目在厂商停更后，正是那种已经上演的 bus-factor 情形——社区不得不分叉来续命。[推断]
 - **年龄 × Lindy。** 2019-11 创建（约 6–7 年）。年龄中等，但*上游的* Lindy 被维护停摆削弱——老而停滞过不了「仍活跃」这一关。把 Lindy 往前延续的是**分叉**，不是这个仓库。[推断]
 - **采用度。** 历史采用度强（约 12.2k star、约 1.4k fork、大量 Docker 拉取历史）——代码库久经验证、部署广泛；问题在于后续维护，而非它能不能用。[未验证]
@@ -131,6 +152,6 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 12.2k star / 346 open issue / 最后 push 2024-07 / 最后发布 v0.7.2（2024-04）——易变，请重新核实。
-- [推断]「上游休眠、开发已转移到 kafbat/kafka-ui」由两个仓库的发布/push 时间推断（kafbat 在 2026-06 有 push，约 2.5k star）加上广为人知的社区分叉；上游并未被 API 标记为 `archived`。
+- [推断]「上游休眠、开发已转移到 kafbat/kafka-ui」由两个仓库的发布/push 时间推断（kafbat 在 2026-10-05 有 push，2026-04-20 发布 v1.5.0，约 2.8k star，2026-10-08 查）加上广为人知的社区分叉；上游并未被 API 标记为 `archived`。
 - [推断]「基础场景不需要自己的数据库」由其实时读取架构推断，未对每种部署模式核实（某些功能可能需要额外存储）。
 - [未验证] provectus 上游与 kafbat 分叉之间当前确切的功能对等和配置差异这里未核实——迁移前请对照分叉文档确认。

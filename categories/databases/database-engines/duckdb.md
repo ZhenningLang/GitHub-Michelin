@@ -3,23 +3,23 @@ name: DuckDB
 slug: duckdb
 repo: https://github.com/duckdb/duckdb
 category: database-engines
-tags: [database, data, duckdb, service]
+tags: [database, olap, analytics, embedded, sql, parquet]
 language: C++
 license: MIT
-maturity: active, ~39,203 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: active, v1.5.6 (2026-09-28; v1.4 LTS line; v2.0.0 scheduled 2026-10-21), ~41,976 stars (as of 2026-10)
+last_verified: 2026-10-08
 type: service
 upstream:
-  pushed_at: 2026-07-06T14:49:41Z
-  default_branch: main
-  default_branch_sha: 36c64ee8b5a9c96276efa983eff6b41a7cc63102
+  pushed_at: 2026-10-08T08:31:56Z
+  default_branch: v2.0-cyanoptera
+  default_branch_sha: 26e63077ac75b8221f905e49154f6e6cfd0b0a9e
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:05:13Z
+  computed_at: 2026-10-08T08:17:01Z
   overall: A
-  overall_score: 3.83
-  scored_axes: 6
+  overall_score: 4.0
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -33,30 +33,24 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 26.5
-        qualifying_issues: 4
-        band: default
-        window_offset_days: 8
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: A
       raw:
         registry: pypi.org
         canonical_package: duckdb-cli
         dependent_repos_count: 0
-        downloads_last_month: 43625
+        downloads_last_month: 80617
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
-        homebrew_installs_90d: 12429
+        homebrew_installs_90d: 13871
         homebrew_tier: A
-        release_downloads: 7845529
-        release_assets: 1189
+        release_downloads: 8563723
+        release_assets: 1218
         release_tier: B
-        docker_pulls: 203207
+        docker_pulls: 229338
         docker_image: duckdb/duckdb
         docker_tier: D
         signal_basis: homebrew+releases+docker
@@ -64,15 +58,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3010
+        repo_age_days: 3026
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 221
-        top1_share: 0.267
-        top3_share: 0.41
+        active_maintainers_12mo: 227
+        top1_share: 0.261
+        top3_share: 0.397
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -82,62 +76,92 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 # DuckDB
 
-DuckDB is an analytical in-process SQL database management system
+You have a 20 GB folder of Parquet or CSV files and a question to ask it, and pandas runs out of memory while standing up a database server just to run one `GROUP BY` feels absurd. DuckDB is an analytical SQL engine that runs inside your Python, R or CLI process and queries those files where they lie.
 
 ![DuckDB — health radar](../../../assets/health/duckdb.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `databases` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for DuckDB when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You are a data scientist, analytics engineer or backend developer with data sitting in files — exports in S3, Parquet from a pipeline, a few CSVs from finance — and you need joins, window functions and aggregates over it. pandas either chokes on memory or makes you hand-write the join logic; a Postgres or ClickHouse server would mean provisioning, loading and access control for what is really one script or notebook. You `pip install duckdb`, write `SELECT … FROM 'events/*.parquet'`, and the query runs in-process at warehouse speed on your laptop or a single CI runner.
 
-This first-pass page exists because DuckDB was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+Pick DuckDB over ClickHouse when there is one consumer process and no service to operate; pick ClickHouse when many users must query one continuously growing dataset. Pick it over SQLite or Turso when the workload is analytical scans rather than many small transactional writes. Pick it over Polars when you want SQL (and a persistent database file) rather than a DataFrame API; pick it over Spark when the data fits on one machine — which, with DuckDB's out-of-core execution, covers far more than RAM size.
+
+## How it works
+
+DuckDB is a library: the entire database engine is linked into your process, the way SQLite is, so there is no server, port or user management. You hand it SQL; it plans the query, reads only the columns it needs from Parquet, CSV, JSON, DataFrames or its own file format, and executes it with a *vectorized* engine — one that processes batches of values per operation instead of one row at a time — across all CPU cores. Without a filename it works purely in memory; `duckdb.connect("file.db")` gives you a single-file database that persists and can be reopened from any DuckDB client. What it does for you: parsing files, parallel execution, spilling to a temporary directory when memory runs out, and installing *extensions* (add-on modules such as `httpfs` for S3/HTTP) automatically the first time a query needs them. What stays yours: concurrency — exactly one process may write a database file at a time — plus pinning a version and deciding whether extensions may be downloaded from DuckDB's repository at runtime.
+
+![duckdb — backbone user story](../../../assets/flow/duckdb.svg)
+
+<!-- flow-steps:begin (generated from flows/duckdb.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the client package; the whole engine ships inside it — `pip install duckdb`
+2. **You**: Point SQL straight at your files or DataFrames — no load step — `duckdb.sql("SELECT * FROM 'example.parquet'")`
+3. **DuckDB**: Runs the query inside your process: reads only the needed columns, in parallel on all cores — component: `in-process engine`
+4. **You**: Open a database file when results should outlive the script — `duckdb.connect("file.db")`
+5. **DuckDB**: Stores tables in that one file, which any DuckDB client can reopen later
+
+**Value**: Warehouse-style SQL over local and remote files from a script, notebook or CLI — no server, no import job
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on DuckDB.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **Several processes or services must write the same database concurrently.** In-process DuckDB allows one read-write process per file (others may only open it read-only). Use PostgreSQL for a shared transactional store, or [ClickHouse](clickhouse.md) for a shared analytical server. Within DuckDB, the docs' stable answer is DuckLake with a PostgreSQL catalog; the Quack client-server protocol is still beta (introduced in v1.5.3, maturity targeted for v2.0).
+- **The workload is OLTP — many small inserts/updates from concurrent users.** DuckDB's optimistic concurrency fails the second of two transactions touching the same row ("Transaction conflict"), and its storage is tuned for scans. Use SQLite or [Turso](turso.md) for embedded transactional storage, PostgreSQL for a server.
+- **The data genuinely exceeds one machine, or many analysts need a governed shared warehouse.** DuckDB scales up, not out. Use Spark or Trino for distributed processing, or a ClickHouse cluster for a shared low-latency store.
+- **The database file lives on a network share accessed from several hosts.** DuckDB coordinates through file locks and its docs ask for extra caution on NAS and cross-OS shared directories. Give each host its own copy, or move to a server database.
+- **You run air-gapped or under strict supply-chain rules and cannot vet runtime downloads.** Autoloading fetches core extensions from DuckDB's extension repository on first use. Pre-install and pin extensions, or disable autoloading; if that is impractical, Polars or pandas (plain PyPI wheels) may be easier to audit.
+- **You cannot absorb a major-version upgrade soon.** DuckDB v2.0.0 is scheduled for 2026-10-21 and the default branch is already `v2.0-cyanoptera`. If stability matters more than features, pin the v1.4 LTS line (one year of community support per LTS) and test v2.0 separately.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [elasticsearch-dsl-py](../database-clients/elasticsearch-dsl-py.md) | ✅ | When you need the established in-index option for this category, compare it against DuckDB before switching. | DuckDB is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose DuckDB only after verifying the repo-specific caveats below. |
-| [elasticsearch-sql](../database-clients/elasticsearch-sql.md) | ✅ | When you need the established in-index option for this category, compare it against DuckDB before switching. | DuckDB is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose DuckDB only after verifying the repo-specific caveats below. |
-| [go-mysql-elasticsearch](../data-sync/go-mysql-elasticsearch.md) | ✅ | When you need the established in-index option for this category, compare it against DuckDB before switching. | DuckDB is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose DuckDB only after verifying the repo-specific caveats below. |
-| [PikiwiDB](pikiwidb.md) | ✅ | When you need the established in-index option for this category, compare it against DuckDB before switching. | DuckDB is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose DuckDB only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| [ClickHouse](clickhouse.md) | ✅ | Pick ClickHouse when many users and services query one continuously growing dataset through a server; pick DuckDB when a single process analyses files and you want nothing to operate. | ClickHouse handles concurrent ingestion and dashboards but is a service to deploy and tune; DuckDB is zero-ops but single-writer per file. |
+| [Turso](turso.md) | ✅ | Pick Turso (or SQLite) when an app needs embedded transactional storage with many small writes; pick DuckDB when the embedded workload is scans, joins and aggregates. | Row-oriented SQLite-format storage is fast for point reads/writes and slow for wide scans; DuckDB's columnar engine is the reverse. |
+| Polars | 未收录 | Pick Polars when your team thinks in DataFrame expressions inside Python/Rust; pick DuckDB when you want SQL, a persistent database file and the same engine from Python, R, Java, Wasm and a CLI. | Both are fast single-node columnar engines; Polars gives a typed DataFrame API but no database file, DuckDB gives a full SQL database and can query Polars frames directly. |
+| Apache Spark | 未收录 | Pick Spark when data and compute must span a cluster; pick DuckDB when one machine is enough, which removes the cluster entirely. | Spark scales out with JVM cluster overhead and slower small-job latency; DuckDB starts in milliseconds but stops at one node. |
+| pandas | 未收录 | Pick pandas for small in-memory frames inside an existing pandas codebase; pick DuckDB once joins or aggregates outgrow RAM or get hard to express. | pandas is ubiquitous and flexible but eager and memory-bound; DuckDB can run SQL over pandas DataFrames directly, so the two often coexist. |
 
 ## Tech stack
 
-- **Primary language:** C++ per GitHub metadata.
-- **Repository:** `duckdb/duckdb`.
-- **Project shape:** categorized as `service` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-06T14:49:41Z`, archived `false`.
+- **Language:** C++ (C++17 compiler required to build; CMake + Python 3 for the build tooling).
+- **Engine:** columnar, vectorized query execution with MVCC and optimistic concurrency control inside one process; own single-file storage format plus direct readers for Parquet, CSV and JSON.
+- **Clients:** standalone CLI and clients for Python, R, Java, Wasm and others (several live in separate repos, e.g. `duckdb/duckdb-python`).
+- **Extensions:** loadable modules (core and community repositories) for remote storage, formats and catalogs; some are built in, others are downloaded on demand.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **Runtime:** none beyond the client package or CLI binary — no server, no external database. Python ≥ 3.10 for the Python client.
+- **Network (optional but default-on):** extension autoloading downloads core extensions such as `httpfs` from DuckDB's extension repository the first time a query needs them.
+- **For multi-writer setups:** DuckLake needs a catalog database (PostgreSQL recommended) and object storage; Quack needs a DuckDB instance acting as server (beta).
+- **Storage:** local disk for the database file and a temporary directory for spilling.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low.** There is nothing to deploy: it is a dependency in your `requirements.txt` or a single CLI binary, and a database is one file you can copy. The real operational work is version discipline — pick a release line (LTS vs latest), re-test before major upgrades, and pin or pre-install extensions in production and CI — plus designing around the one-writer-process rule. Memory defaults to 80% of RAM for the buffer manager, so containerised jobs should set `memory_limit` explicitly.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-06T14:49:41Z` as of 2026-07-06.
-- **Adoption snapshot:** ~39,203 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `MIT` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (as of 2026-10-08):** very active. v1.5.6 shipped 2026-09-28, patch releases roughly monthly, a published release calendar, and v2.0.0 scheduled for 2026-10-21. Every other minor release is an LTS with a year of community support; DuckDB Labs sells support beyond that.
+- **Governance / bus factor:** the code is copyrighted to the Stichting DuckDB Foundation (a Dutch non-profit foundation), while the core team works at DuckDB Labs. 227 contributors were active in the last 12 months; the top contributor carries roughly a quarter of recent commits — a real team, though with an identifiable lead maintainer.
+- **Backing & longevity:** repo created 2018-06 (about 8 years) and continuously active, with a foundation holding the IP and a company funding development — a solid Lindy prior for an analytical engine.
+- **Adoption:** ~42k stars, ~3.9k forks, ~8.6M release-asset downloads and broad embedding in data tools. The scorer's registry signal (80,617 downloads last month of the `duckdb-cli` PyPI package) still grades A but undercounts the main `duckdb` package.
+- **Risk flags:** MIT license, no relicense history. The responsiveness axis was not scorable in this run (no qualifying issues in the scorer's window; the previous run graded it B on only 4 issues), so read it as unknown rather than poor. The imminent v2.0 major release is the main near-term change risk.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [未验证] Whether DuckDB v2.0 changes the on-disk storage format or breaks client APIs was not checked; the release calendar marks dates as tentative.
+- [推断] Vectorized, columnar execution and reading only needed columns from Parquet are DuckDB's documented design, summarised here without re-reading the internals docs for this sync.
+- [推断] Characterisations of Polars, Spark and pandas in the comparison come from general knowledge of those projects, not re-read for this page.
+- [未验证] The health scorer's adoption registry signal uses the `duckdb-cli` PyPI package (~81k downloads/month), which likely understates use of the main `duckdb` package; the adoption grade was not hand-corrected.
+- [未验证] "Top contributor ≈ a quarter of recent commits" is the scorer's `top1_share` (0.261), not an independent count.
+- [推断] The page keeps `type: service` from the original intake, although DuckDB is primarily an in-process library; the type was not changed because the health score's longevity cohort is derived from it.

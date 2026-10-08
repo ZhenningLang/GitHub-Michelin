@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "n8n does", "zh": "n8n 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a self-hosted n8n with the Docker install script", "zh": "用 Docker 安装脚本启动一套自托管 n8n", "code": "curl -fsSL https://get.n8n.io | sh"},
+    {"lane": "you", "en": "Open the editor; chain a trigger node to connector nodes, add a Code node where none fits", "zh": "打开编辑器，把触发节点连到连接器节点，缺的地方补 Code 节点", "code": "http://localhost:5678", "component": {"en": "workflow editor", "zh": "工作流编辑器"}},
+    {"lane": "them", "en": "Handles each service's auth, pagination and API calls inside its node", "zh": "在节点内部替你处理各服务的认证、分页和 API 调用"},
+    {"lane": "you", "en": "Publish the workflow so the saved version goes live", "zh": "点 Publish，让保存的版本上线"},
+    {"lane": "them", "en": "On every trigger, passes JSON items node to node; Code nodes run in a sandboxed task runner", "zh": "每次触发逐节点传递 JSON 条目，Code 节点进沙箱运行", "component": {"en": "task runner", "zh": "task runner"}},
+    {"lane": "them", "en": "Stores every execution with each node's input and output for inspection and retry", "zh": "保存每次执行及各节点的输入输出，供排查和重试"}
+  ],
+  "value": {"en": "SaaS-to-SaaS glue lives on one self-hosted canvas that non-engineers can read, with code only where needed", "zh": "SaaS 之间的胶水集中在一张自托管画布上，非工程师也看得懂，只在需要时写代码"},
+  "sources": [
+    "n8n-io/n8n README.md (master, retrieved 2026-10-08): Quick Start — curl -fsSL https://get.n8n.io | sh; Access the editor at http://localhost:5678; 1500+ integrations",
+    "n8n-io/n8n-docs docs/changelog/v20-breaking-changes.md (retrieved 2026-10-08): Publish/Unpublish replaces Activate; task runners enabled by default; Python Code node needs external-mode runners (n8nio/runners)",
+    "n8n-io/n8n-docs docs/deploy/host-n8n/keep-n8n-running/backup-and-restore.md (retrieved 2026-10-08): credentials stored encrypted; execution data storage"
+  ]
+}

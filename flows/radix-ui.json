@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Radix does", "zh": "Radix 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single package that bundles every primitive", "zh": "装上打包了全部原语的单一包", "code": "npm install radix-ui@latest"},
+    {"lane": "you", "en": "Compose a primitive from its named parts", "zh": "用具名部件拼出一个原语", "code": "<Popover.Root> · <Popover.Trigger> · <Popover.Content>"},
+    {"lane": "them", "en": "Tracks open/closed state and exposes it as a data attribute on each part", "zh": "管理开合状态，并以 data 属性暴露在每个部件上"},
+    {"lane": "you", "en": "Write all visual styles yourself, keyed on that state", "zh": "所有视觉样式自己写，按这个状态来切换", "code": "[data-state=\"open\"]"},
+    {"lane": "them", "en": "Handles focus, keyboard keys, Esc/outside-click dismissal and ARIA roles", "zh": "处理焦点、键盘按键、Esc 和点外部关闭，以及 ARIA 角色"},
+    {"lane": "them", "en": "Positions floating content next to its trigger and flips it on collision", "zh": "把浮层定位在触发器旁边，碰到边缘自动翻转"}
+  ],
+  "value": {"en": "Accessible, keyboard-correct widgets with no visual opinions — the look is entirely your design system's", "zh": "无障碍、键盘行为正确的控件，不带任何视觉主张——长什么样完全由你的设计系统决定"},
+  "sources": [
+    "https://github.com/radix-ui/website/blob/main/data/primitives/docs/overview/getting-started.mdx (npm install radix-ui@latest; Popover.Root/Trigger/Portal/Content; add your own className styles)",
+    "https://github.com/radix-ui/website/blob/main/data/primitives/docs/guides/styling.mdx (state exposed via data-state, e.g. data-state=\"open\")",
+    "https://github.com/radix-ui/website/blob/main/data/primitives/docs/components/popover.mdx (focus managed; collision handling; keyboard interactions incl. Esc)"
+  ]
+}

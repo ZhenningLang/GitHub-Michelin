@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Reactour does",
+    "zh": "Reactour 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the tour package to your React app",
+      "zh": "给 React 应用装上引导包",
+      "code": "npm i -S @reactour/tour"
+    },
+    {
+      "lane": "you",
+      "en": "Wrap the app root with the provider, passing steps: which element, what to say",
+      "zh": "用 provider 包住应用根部，传入步骤：指哪个元素、说什么",
+      "code": "<TourProvider steps={steps}>",
+      "component": {
+        "en": "TourProvider",
+        "zh": "TourProvider 组件"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "From any component, open the tour through the hook",
+      "zh": "在任意组件里通过 hook 打开引导",
+      "code": "const { setIsOpen } = useTour()"
+    },
+    {
+      "lane": "them",
+      "en": "Finds the element, dims the page around it and shows the popover beside it",
+      "zh": "找到元素，把周围压暗，在旁边弹出说明卡片",
+      "component": {
+        "en": "@reactour/mask + @reactour/popover",
+        "zh": "mask、popover 子包"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Moves between steps on buttons, dots and arrow keys, keeping focus in the popover",
+      "zh": "随按钮、圆点和方向键切换步骤，焦点锁在卡片里"
+    }
+  ],
+  "value": {
+    "en": "A guided tour that lives in React state and points users at the exact element, not a help page",
+    "zh": "一段放在 React 状态里的引导，直接把用户指到那个元素上，而不是丢给他一篇帮助文档"
+  },
+  "sources": [
+    "https://github.com/elrumordelaluz/reactour/tree/main/packages/tour#readme (Install: npm i -S @reactour/tour; Usage: <TourProvider steps={steps}>, selector: '.first-step', const { setIsOpen } = useTour(); props disableFocusLock, disableKeyboardNavigation 'esc' | 'left' | 'right', disableDotsNavigation)",
+    "https://github.com/elrumordelaluz/reactour#readme (Packages: @reactour/tour uses @reactour/mask to highlight and @reactour/popover to show content)"
+  ]
+}

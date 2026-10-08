@@ -3,20 +3,20 @@ name: Material UI (MUI)
 slug: material-ui
 repo: https://github.com/mui/material-ui
 category: component-libraries
-tags: [frontend, ui, material-ui, library]
+tags: [frontend, ui, react, material-design, component-library, design-system]
 language: JavaScript
 license: MIT
-maturity: active, ~98,542 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: v9.4.0 (2026-08-28), active, ~99.1k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-07-06T11:42:03Z
+  pushed_at: 2026-10-08T08:36:43Z
   default_branch: master
-  default_branch_sha: a5faab53e647b92b5efb8ea26ce1ae758778736e
+  default_branch_sha: bd66a84d810d5ec34230d5b3da97622717386a24
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:15:40Z
+  computed_at: 2026-10-08T08:29:08Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.4
-        qualifying_issues: 44
+        median_ttfr_hours: 9.8
+        qualifying_issues: 40
         band: default
         window_offset_days: 0
         source: issue
@@ -47,7 +47,7 @@ health:
         registry: npmjs.org
         canonical_package: "@mui/material"
         dependent_repos_count: 163982
-        downloads_last_month: 36513050
+        downloads_last_month: 42047495
         graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4418
+        repo_age_days: 4434
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 42
-        top1_share: 0.182
-        top3_share: 0.464
+        active_maintainers_12mo: 43
+        top1_share: 0.183
+        top3_share: 0.465
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -74,61 +74,91 @@ health:
         relicense_36mo: false
         content_license: null
 ---
+
 # Material UI (MUI)
 
-Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.
+下个季度要交四十个表单、表格、弹窗页面，团队里没有设计师，每个手写的下拉框都带着不一样的焦点 bug。Material UI 直接给你一整套做好的、可换主题的组件，长着 Google Material Design 的样子，你只管拼页面，不用从头画控件。
 
 ![Material UI (MUI) — 健康度雷达](../../../assets/health/material-ui.zh.svg)
 
 ## 何时使用
 
-你正在为一个落在 `web-ui` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 Material UI (MUI) 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
+你带一个小团队，用 React 做内部管理后台或 B2B 仪表盘，需求基本是增删改查：一个可筛选的列表、一个带日期选择和自动补全的编辑表单、一个确认弹窗、一条侧边导航。不用组件库的话，第一次评审就能看到代价：自己写的 `<Select>` 按 `Escape` 关不掉，弹窗里按 `Tab` 焦点会跑到遮罩后面，三个工程师写出了三种略有差别的按钮内边距。你选 Material UI，是因为这些组件它都做完了：有样式、能用键盘操作、自适应屏幕，而且全由一个主题对象驱动，品牌色和字体只设一次。
 
-这个首版页面存在，是因为 Material UI (MUI) 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+和邻居比，关键取舍是“现成外观”还是“自己拥有代码”。对比 [shadcn/ui](shadcn-ui.zh.md)，你放弃了拥有组件源码和 Tailwind 原生的外观，换来一个能靠升级版本拿修复的 npm 依赖，而不是自己打补丁。对比 [Radix UI](radix-ui.zh.md) 这类无样式库，你放弃了一张白纸，换来好几天已经做完的样式活。对比 [Ant Design](ant-design.zh.md)，主要是视觉语言和生态之争：Material 的外观加上 MUI X 扩展（数据表格、日期选择器、图表），还是 Ant 更密集的企业级控件。
+
+## 怎么用起来
+
+Material UI 就是一个普通的 npm 包，里面是 React 组件，而且每个组件开箱就带样式：渲染时它读取当前的“主题”（一个 JavaScript 对象，装着调色板、字体、间距和断点），再由 Emotion（一种 CSS-in-JS 库，即在 JavaScript 里写 CSS，运行时注入页面）把这些值变成组件的样式。你要做的是：安装，用 `createTheme()` 写一次主题，用 `<ThemeProvider>` 包住应用，然后拿 `Button`、`TextField`、`Dialog`、`Autocomplete` 这些组件拼页面，通过 props（`variant`、`color`、`sx`）选变体、做局部覆盖。剩下的归它：焦点管理、键盘操作、ARIA 属性、弹出层定位、响应式行为都在组件内部。可以把它想成精装修的出租房：墙刷什么颜色、家具怎么摆你说了算，但椅子不用你自己做。把 Emotion 换成 styled-components，或者通过 `@mui/material-nextjs` 接 Next.js 服务端渲染，都是文档里写好的旁路，不是主路。
+
+![material-ui — 主干用户故事](../../../assets/flow/material-ui.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/material-ui.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上组件库和它默认的样式引擎 Emotion — `npm install @mui/material @emotion/react @emotion/styled`
+2. **你**：把品牌色、字体、间距写进一个主题，包住整个应用 — `createTheme() · <ThemeProvider theme={theme}>`
+3. **你**：导入现成组件，用 props 选样式变体 — `<Button variant="contained">`
+4. **Material UI (MUI)**：每个组件读取主题，运行时生成自己的 CSS — 组件：`MUI System + Emotion`
+5. **Material UI (MUI)**：键盘、焦点、ARIA 和响应式布局都在组件内部处理好
+
+**价值**：整套风格一致的 Material 界面，不用自己逐个设计、写样式
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 Material UI (MUI)。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+- **如果设计稿明确不能长得像 Material Design，用 [shadcn/ui](shadcn-ui.zh.md) 或 [Radix UI](radix-ui.zh.md) 这类无样式库，而不是 Material UI，因为**每个组件都从 Material 的形状、阴影层级和动效出发；要贴合一个辨识度强的品牌，就得一个组件一个组件地改主题插槽和 `styleOverrides`，而这层覆盖正是下次大版本升级时最容易坏的地方。
+- **如果技术栈以 Tailwind 为主，用 [shadcn/ui](shadcn-ui.zh.md) 而不是 Material UI，因为** Material UI 默认的样式走 Emotion 运行时生成；它能和 Tailwind 共存（文档有 CSS layers 集成方案），但同一个页面上你就要维护两套样式体系。
+- **如果需要高级数据表格（透视、行分组、导出 Excel）又不想买商业授权，用 [TanStack Table](tanstack-table.zh.md) 而不是 MUI X Data Grid，因为** MUI X 是 open-core：Community 层是 MIT，Pro 和 Premium 功能按开发者收费授权。Material UI 本体仍是 MIT。
+- **如果不是 React 项目，用 Vuetify（Vue，未收录）或 Angular Material（未收录）而不是 Material UI，因为** Material UI 只支持 React，没有官方的其他框架版本。
+- **如果承受不了大约每年一次的破坏性升级，优先选一个自己包一层的轻量无样式库（如 [Radix UI](radix-ui.zh.md)），而不是 Material UI，因为** 2021 到 2026 年间 v5、v6、v7、v9 都是带破坏性变更的大版本，v9（2026-04）还把默认浏览器目标提到了 Chrome 117 / Safari 17——每个大版本都要预留迁移时间。
+- **如果主要靠 React Server Components 在服务端渲染、又想要零运行时 CSS，用编译期样式方案（基于 Tailwind 的 [shadcn/ui](shadcn-ui.zh.md)），而不是 Material UI 的默认配置，因为** Emotion 在浏览器运行时生成样式，带样式的组件在 Next.js App Router 里得作为客户端组件运行；可选的 Pigment CSS 路线存在，但不是默认。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Angular](../frameworks/view-frameworks/angular.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Material UI (MUI) 对照。 | Material UI (MUI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Ant Design](ant-design.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Material UI (MUI) 对照。 | Material UI (MUI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Driver.js](../product-tours/driver-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Material UI (MUI) 对照。 | Material UI (MUI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [Intro.js](../product-tours/intro-js.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Material UI (MUI) 对照。 | Material UI (MUI) 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Material UI (MUI) 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
+| [shadcn/ui](shadcn-ui.zh.md) | 已收录 | 想在 Tailwind 代码库里拥有并随意改每个组件，选 shadcn/ui；宁愿升级一个有人维护的包、也不想给拷进来的源码打补丁，选 Material UI。 | shadcn/ui 换来完全掌控和零运行时 CSS，代价是你成了每个拷贝文件的维护者；Material UI 靠 `npm update` 就能拿到修复，代价是视觉语言固定。 |
+| [Ant Design](ant-design.zh.md) | 已收录 | 做信息密集的企业后台，尤其团队已经在 Ant 生态里，选 Ant Design；Material 外观和 MUI X 的表格、日期选择器更贴合产品时，选 Material UI。 | Ant Design 一个包里内置的企业级控件更多；Material UI 的英文生态更大，高级组件单独收费授权。 |
+| [Chakra UI](chakra-ui.zh.md) | 已收录 | 想要外观更中性、视觉包袱更轻的带样式组件库，选 Chakra UI；需要更大的组件目录和更长的成熟记录，选 Material UI。 | Chakra 更容易改成看不出出处的样子；Material UI 组件更多，持续维护大版本的历史更长。 |
+| [Radix UI](radix-ui.zh.md) | 已收录 | 在自建设计系统、只要行为和无障碍能力，选 Radix UI；想让样式活已经做完，选 Material UI。 | Radix 每个像素都交给你，没有视觉锁定；Material UI 省掉样式工作，但每个组件都带着 Material 的主张。 |
+| Mantine | 未收录 | 想要一个自带大量 hooks、默认主题更中性的全家桶 React 组件库，可以评估 Mantine；更看重生态规模和 MUI X 表格时，选 Material UI。 | Mantine 把 hooks、表单、通知放在一个 MIT 项目里；Material UI 历史更长、背后有公司，但高级组件拆成了付费层。 |
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 JavaScript。
-- **仓库：** `mui/material-ui`。
-- **项目形态：** atlas 路由暂归为 `library`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `master`，最后 push `2026-07-06T11:42:03Z`，archived 为 `false`。
+- **语言：** pnpm monorepo 中的 JavaScript 和 TypeScript 源码，自带类型声明。
+- **包结构：** `@mui/material`（组件）构建在 `@mui/system`（主题 + `sx` 样式引擎）和 `@mui/utils` 之上；图标在 `@mui/icons-material`；Next.js 辅助在 `@mui/material-nextjs`。
+- **样式：** 默认 Emotion（`@emotion/react`、`@emotion/styled`）；通过 `@mui/styled-engine-sc` 可换 styled-components；可选 Pigment CSS 集成（`@mui/material-pigment-css`）。
+- **运行时库：** 弹出层定位用 `@popperjs/core`，过渡动画用 `react-transition-group`，另有 `clsx`、`prop-types`、`react-is`。
+- **版本（2026-10-08）：** v9.4.0（2026-08-28）；v9.0.0 于 2026-04-08 发布，仓库里已经有 upgrade-to-v10 迁移指南。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- **对等依赖：** `react` 和 `react-dom` 17、18 或 19。React 18 及以下时，文档要求用 `overrides`/`resolutions` 把 `react-is` 钉到和 React 相同的版本，因为 Material UI 自带的是 `react-is@19`。
+- **样式引擎：** `@emotion/react` 和 `@emotion/styled`（或配 `@mui/styled-engine-sc` 适配器用 styled-components）。
+- **浏览器：** v9 默认目标是 Chrome 117、Edge 121、Firefox 121、Safari 17；更老的浏览器要自己配转译和 polyfill。
+- **无后端、无服务：** 纯客户端库，不需要托管任何东西。只有用到 MUI X Pro/Premium 付费组件时才需要授权密钥。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+**部署低，维护中等。** 没有任何要运行的服务，像普通 React 库一样打进应用。真正的成本在升级：大版本大约一年一次，配有 codemod 和迁移指南，而你积累的主题 `styleOverrides` 和 `sx` 覆盖越多，每次大版本就越贵。服务端渲染需要按文档配置 Emotion 缓存（Next.js App Router 用 `AppRouterCacheProvider`），否则首屏会闪样式。包体积和运行时样式开销随页面上组件数量增长，对轻量营销页有影响，对仪表盘一般不是问题。
 
 ## 健康度与可持续性
 
-- **维护快照：** 截至 2026-07-06，GitHub 返回 `archived=false`，`pushed_at=2026-07-06T11:42:03Z`。
-- **采用快照：** 2026-07 约 98,542 个 GitHub stars；stars 只是有噪声的采用信号。
-- **许可证快照：** GitHub API 返回 `MIT`；许可证关键时必须检查仓库内许可证文件。
-- **Lindy 与治理：** 本次 intake 未完整复核。长期采用前，请继续检查组织归属、项目年龄、发布节奏和 bus factor。
-- **风险信号：** 本页是从 backlog 元数据生成的首版页面。
+- **维护（2026-10-08）：** 非常活跃——过去 13 周每周都有提交，稳定版小版本大约每月一次（2026 年 7 到 8 月从 v9.2 到 v9.4）。雷达评级 A。
+- **治理与背书：** 归属 MUI 公司，靠 MUI X 商业授权、MUI Store 和赞助养全职工程师；创始人仍是头号贡献者，但贡献分散在一个较大的团队里（治理评级 A）。路线图由公司掌握。
+- **年龄与 Lindy：** 2014 年首发，十二年后仍在发大版本——既老又活跃，是 React 组件库里 Lindy 位置最强的之一。长期性评级 A。
+- **采用度：** npm 上被依赖最多的 React UI 库之一（采用评级 A），模板、社区问答和第三方集成的生态都很深。
+- **风险信号：** 是 open-core，不是改协议——MUI X 的 README 写明已经以 MIT 发布的东西永远是 MIT，高级表格、日期选择器和图表功能则是商业授权。实际风险是跨大版本的升级成本，而不是被弃坑。
 
 ## 存疑（未验证）
 
-- [未验证] 这是依据 GitHub 元数据和 2026-07-06 backlog 生成的首版 intake 页面；高风险选型前，请重新阅读上游 README、文档、许可证文件和 release notes。
-- [推断] 横向对比表先使用同分类已收录页面作为起点；后续语义复核应把泛化邻居替换成最接近的真实替代品。
+- [推断] “大量 `styleOverrides` 定制是大版本升级时最容易坏的地方”这一判断，来自 v6/v7/v9 迁移指南里的破坏性变更清单，没有在真实代码库里测量过。
+- [推断] Emotion 组件在 Next.js App Router 里需要作为客户端组件运行，依据是 Emotion 运行时注入样式的机制和 MUI 的 Next.js 集成文档，没有逐个组件核对。
+- [未验证] 大页面里运行时 CSS-in-JS 的性能开销本页没有做基准测试；这是基于 Emotion 的组件库常见的批评点，Pigment CSS 是 MUI 给出的应对。
+- [未验证] MUI X 功能在 Community、Pro、Premium 之间的划分会随版本变化；依赖某个具体功能前，先查 MUI X 授权页面。
+- [推断] `master` 上已有 upgrade-to-v10 指南，说明下一个破坏性大版本可能在准备中；读到的资料里没有公布时间。
+- [未验证] 截至 2026-10-08 约 9.91 万 GitHub star；star 只是嘈杂的采用信号。

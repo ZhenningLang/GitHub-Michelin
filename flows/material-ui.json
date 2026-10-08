@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Material UI does", "zh": "Material UI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library plus its default styling engine, Emotion", "zh": "装上组件库和它默认的样式引擎 Emotion", "code": "npm install @mui/material @emotion/react @emotion/styled"},
+    {"lane": "you", "en": "Put your brand colors, type and spacing into one theme and wrap the app", "zh": "把品牌色、字体、间距写进一个主题，包住整个应用", "code": "createTheme() · <ThemeProvider theme={theme}>"},
+    {"lane": "you", "en": "Import finished components and pick variants through props", "zh": "导入现成组件，用 props 选样式变体", "code": "<Button variant=\"contained\">"},
+    {"lane": "them", "en": "Each component reads the theme and generates its own CSS at runtime", "zh": "每个组件读取主题，运行时生成自己的 CSS", "component": {"en": "MUI System + Emotion", "zh": "MUI System + Emotion"}},
+    {"lane": "them", "en": "Handles keyboard, focus, ARIA and responsive layout inside every component", "zh": "键盘、焦点、ARIA 和响应式布局都在组件内部处理好"}
+  ],
+  "value": {"en": "A complete, consistent Material-style UI without designing or styling each widget yourself", "zh": "整套风格一致的 Material 界面，不用自己逐个设计、写样式"},
+  "sources": [
+    "https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/installation/installation.md (npm install @mui/material @emotion/react @emotion/styled; Emotion is the default styling engine)",
+    "https://github.com/mui/material-ui/blob/master/docs/data/material/customization/theming/theming.md (createTheme, ThemeProvider)",
+    "https://github.com/mui/material-ui/blob/master/docs/data/material/getting-started/usage/ButtonUsage.js (<Button variant=\"contained\">)"
+  ]
+}

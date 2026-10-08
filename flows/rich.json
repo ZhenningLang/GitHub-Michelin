@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Rich does", "zh": "Rich 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it, and optionally run the demo card to see what your terminal can show", "zh": "装上它，可以先跑一下演示卡看看你的终端能显示什么", "code": "python -m pip install rich · python -m rich"},
+    {"lane": "you", "en": "Create one Console object and share it across the program", "zh": "建一个 Console 对象，全程序共用", "code": "console = Console()"},
+    {"lane": "them", "en": "Detects the terminal's size, encoding, color support and whether output is a terminal at all", "zh": "探测终端的尺寸、编码、颜色能力，以及输出到底是不是终端"},
+    {"lane": "you", "en": "Print text with inline style markup, or pass a ready-made object such as a Table", "zh": "打印带样式标记的文字，或直接交给它一个现成对象，比如表格", "code": "console.print(\"Hello\", \"World!\", style=\"bold red\")"},
+    {"lane": "them", "en": "Wraps and lays it out to the width, converts colors the terminal lacks, and writes the escape codes", "zh": "按宽度换行排版，把终端不支持的颜色换成近似色，再输出转义码"}
+  ],
+  "value": {"en": "Readable colored output, tables and progress bars without hand-writing escape codes or measuring the terminal yourself", "zh": "彩色输出、表格、进度条都能直接用，不用手写转义码，也不用自己量终端宽度"},
+  "sources": [
+    "https://github.com/Textualize/rich#installing (python -m pip install rich; python -m rich)",
+    "https://github.com/Textualize/rich#using-the-console (console = Console(); console.print(\"Hello\", \"World!\", style=\"bold red\"); word-wraps to terminal width; markup)",
+    "https://rich.readthedocs.io/en/latest/console.html (auto-detects size, encoding, is_terminal, color_system and converts colors if necessary; TERM=dumb, NO_COLOR, FORCE_COLOR, TTY_COMPATIBLE)"
+  ]
+}

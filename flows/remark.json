@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "remark does", "zh": "remark 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and the lint/format plugins you want as dev dependencies", "zh": "把命令行和想要的 lint、格式化插件装成开发依赖", "code": "npm install --save-dev remark-cli remark-preset-lint-recommended remark-toc", "component": {"en": "remark-cli", "zh": "remark-cli"}},
+    {"lane": "you", "en": "List the plugins, their order and stringify settings in package.json", "zh": "在 package.json 里列出插件、顺序和输出设置", "code": "\"remarkConfig\": {\"plugins\": [...]}"},
+    {"lane": "you", "en": "Run remark over the project and let it rewrite files", "zh": "对整个项目跑 remark，允许它改写文件", "code": "remark . --output"},
+    {"lane": "them", "en": "Parses every Markdown file into an mdast syntax tree", "zh": "把每个 Markdown 文件解析成 mdast 语法树", "component": {"en": "remark-parse (micromark)", "zh": "remark-parse（micromark）"}},
+    {"lane": "them", "en": "Runs the plugins in order: lint rules report, transforms like remark-toc change the tree", "zh": "按顺序跑插件：lint 规则报警告，remark-toc 之类的变换改树"},
+    {"lane": "them", "en": "Serializes each tree back to Markdown, writes the files and prints warnings with line:column", "zh": "把树序列化回 Markdown 写进文件，并按行列号打印警告", "component": {"en": "remark-stringify", "zh": "remark-stringify"}}
+  ],
+  "value": {"en": "Every Markdown file follows one style and its generated parts stay current, without hand edits", "zh": "所有 Markdown 文件统一风格、生成的部分自动更新，不用手改"},
+  "sources": [
+    "https://github.com/remarkjs/remark#example-checking-and-formatting-markdown-on-the-cli (npm install --save-dev remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc; \"format\": \"remark . --output\"; remarkConfig plugins/settings)",
+    "https://github.com/remarkjs/remark#example-checking-markdown (lint warnings with line:column)",
+    "https://github.com/remarkjs/remark#syntax (micromark parsing) and #what-is-this (remark-parse / remark-stringify / remark-cli packages)"
+  ]
+}

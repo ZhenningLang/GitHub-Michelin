@@ -8,21 +8,21 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **FFmpeg** | The universal audio/video framework — `ffmpeg`/`ffprobe`/`ffplay` CLIs plus the `libav*` libraries that decode, encode, transcode, mux, demux, and filter virtually any media format in existence. | A (4/6) | [→](ffmpeg.md) |
-| **ffmpeg-python** | Python bindings for FFmpeg that let you build complex filter graphs as chained Python expressions instead of hand-writing `-filter_complex` strings — it constructs the FFmpeg command line for you and shells out to the `ffmpeg` binary. | C (4/6) | [→](ffmpeg-python.md) |
-| **GStreamer** | A pipeline-based multimedia framework for building real-time audio/video processing applications — not a CLI tool, but a graph of pluggable elements you wire together in code. | A (4/6) | [→](gstreamer.md) |
-| **HandBrake** | Open-source video transcoder for converting video from nearly any format to modern, widely supported codecs — built on FFmpeg, x264, and x265 with a preset-driven GUI and a matching `HandBrakeCLI` command-line tool. | A (5/6) | [→](handbrake.md) |
-| **PyAV** | Pythonic bindings to FFmpeg's `libav*` libraries — in-process decode/encode with frame-by-frame access to NumPy arrays and Python bytes, no subprocess spawning. | A (6/6) | [→](pyav.md) |
-| **m3u8** | A Python parser and serializer for HLS (HTTP Live Streaming) `.m3u8` playlists — load a playlist from a URL, file, or string into a typed object model, inspect/modify segments and variants, and dump it back out (RFC 8216). | C (3/6) | [→](m3u8.md) |
+| **ffmpeg-python** | Use it when Python code builds trim, concat and overlay filter graphs that would be unreadable as -filter_complex strings — but it only assembles a command line for an installed ffmpeg binary, gives no per-frame access, and has been feature-frozen since 2022. | C (4/6) | [→](ffmpeg-python.md) |
+| **GStreamer** | Use it when a camera, kiosk or analytics box must run a capture-overlay-encode-stream pipeline around the clock inside your own C, Rust or Python program, changing settings live — but for one-shot file transcodes the FFmpeg CLI is far less code. | A (4/6) | [→](gstreamer.md) |
+| **HandBrake** | Use it when a pile of phone videos, screen recordings or unencrypted discs must become smaller MP4/MKV files that play everywhere, chosen by a named preset in a GUI or HandBrakeCLI — but it always re-encodes and will not open copy-protected discs. | A (5/6) | [→](handbrake.md) |
+| **PyAV** | Use it when Python code needs each decoded video frame, with its timestamp, as a NumPy array inside the same process — for ML preprocessing or custom encoding — but if the ffmpeg command already does the job, PyAV only adds work. | A (6/6) | [→](pyav.md) |
+| **m3u8** | Use it when Python code must read, inspect or rewrite HLS .m3u8 playlists — segments, variants, keys, discontinuities — as typed objects instead of regexes — but it touches only the manifest text, never the media, and has been quiet since 2025-01. | C (4/6) | [→](m3u8.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [FFmpeg](ffmpeg.md) | ✅ | A (4/6) | Pick it when any format must go in or out and you accept writing the command line; pick [PyAV](pyav.md) when you need frames inside a Python process instead of a subprocess. |
-| [PyAV](pyav.md) | ✅ | A (6/6) | Pick it for in-process frame access with NumPy interop; the price is a heavier install (Cython against FFmpeg headers) and libav-level APIs rather than convenience. |
-| [GStreamer](gstreamer.md) | ✅ | A (4/6) | Pick it for a long-running real-time or embedded pipeline; pick [ffmpeg-python](ffmpeg-python.md) when the job is a batch command you want to express in Python. |
-| [HandBrake](handbrake.md) | ✅ | A (5/6) | Pick it for preset-driven rips and transcodes with a GUI or `HandBrakeCLI`; it is an end-user application, so reach for FFmpeg when you need to script the filter graph itself. |
-| [m3u8](m3u8.md) | ✅ | C (3/6) | Pick it to parse or rewrite HLS playlists as typed objects; for downloading or muxing the segments themselves use [FFmpeg](ffmpeg.md). |
+| [PyAV](pyav.md) | ✅ | A (6/6) | In-process FFmpeg libraries with frame-level access, paid for with a major release every one to three months that breaks APIs, Python 3.12+ on current versions, and one maintainer writing most commits. |
+| [GStreamer](gstreamer.md) | ✅ | A (4/6) | Live, hardware-accelerated pipelines built from pluggable elements and steered at runtime; the price is a steep learning curve — caps negotiation, pads, states — and plugin packaging that varies per distro and board. |
+| [HandBrake](handbrake.md) | ✅ | A (5/6) | Good transcodes without learning encoder flags, from a GUI or a headless CLI, in exchange for no remuxing, no joining or editing, and no stable library API to embed in your own app. |
+| [m3u8](m3u8.md) | ✅ | C (4/6) | Buys a small RFC 8216 parse-and-dump round trip; you still need an HTTP client or FFmpeg for the segments, and a separate parser for DASH. |
 
 ## What belongs here
 

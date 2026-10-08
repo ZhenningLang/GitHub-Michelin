@@ -6,17 +6,17 @@ category: serving-engines
 tags: [llm-serving, inference-engine, nvidia, tensorrt, gpu, cuda, python, c++, quantization, fp8]
 language: Python / C++
 license: Apache-2.0
-maturity: v0.18.x, active, ~11k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: "v1.2.1 stable (2026-04-20), v1.3.0rc29 (2026-09-29), active, ~14.8k stars (as of 2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-06T08:55:43Z
+  pushed_at: 2026-10-08T09:04:41Z
   default_branch: main
-  default_branch_sha: 0044d5b5c9818d194aadbe1778dab5fcc2a4b52f
+  default_branch_sha: b90ff2158e710ba9a94cb4bf07faaaaba4bdd9b3
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:29:51Z
+  computed_at: 2026-10-08T08:20:59Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 29.1
-        qualifying_issues: 6
+        median_ttfr_hours: 33.5
+        qualifying_issues: 15
         band: relaxed_solo
         window_offset_days: 12
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: pypi.org
         canonical_package: tensorrt-llm
         dependent_repos_count: 0
-        downloads_last_month: 10477
+        downloads_last_month: 13654
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
-        release_downloads: 183
+        release_downloads: 198
         release_assets: 5
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 1133
+        repo_age_days: 1149
         last_commit_age_days: 0
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 99
-        top1_share: 0.081
-        top3_share: 0.176
+        active_maintainers_12mo: 357
+        top1_share: 0.084
+        top3_share: 0.161
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -79,77 +79,101 @@ health:
 
 # TensorRT-LLM
 
-
-NVIDIA 基于 TensorRT 优化的 LLM 推理引擎，通过定制 CUDA 内核、FP8/INT8 量化以及激进内核融合，在 NVIDIA GPU 上提供最大吞吐。Python 编排层是开源的（Apache-2.0），但性能关键的 CUDA 内核是闭源二进制 blob。
+你按小时租 H100 或 B200，每百万 token 的成本取决于推理引擎到底用上了多少 GPU——而新硬件的特性（4 位 FP4 运算、整机柜 NVLink）总是先出现在 NVIDIA 自己的代码里，通用引擎要晚几个月才跟上。TensorRT-LLM（现在官方写作“TensorRT LLM”）是 NVIDIA 自家的大模型服务引擎：你把它指向一个 Hugging Face 模型，它用 NVIDIA 调优的内核跑起来，前面挂一个 OpenAI 兼容服务。
 
 
 ![TensorRT-LLM — health radar](../../../assets/health/tensorrt-llm.zh.svg)
 
 ## 何时使用
 
-你是一名 ML 基础设施工程师，在 NVIDIA A100 或 H100 集群上提供高流量 LLM API，且已经用基于 Python 的服务栈做了一切优化——但性能分析显示你仍在浪费 GPU FLOPs。你需要榨干每一毫秒的 token 吞吐，并愿意用灵活性换取 raw 性能。你选用 TensorRT-LLM：将模型（Llama、Mistral、GPT、Falcon 或数十种支持架构之一）编译成 **TensorRT engine**——一个静态、融合、GPU 架构特化的二进制文件，运行 NVIDIA 的手调内核，配合 FP8 或 INT8 量化。结果是一个服务端点，在相同 NVIDIA 硬件上通常 outperform 动态基于 Python 的引擎，尤其在批大小足够让内核融合和量化发挥作用的场景。
+你是一名 ML 基础设施工程师，在 Hopper 或 Blackwell GPU 上服务一个高流量模型——比如 DeepSeek 或 Qwen3 这类大型混合专家模型——手上已经在跑一个开源引擎。基准测试显示，NVIDIA 公布的同模型、同 GPU 的每秒 token 数你复现不出来，因为那些数字依赖 FP4 checkpoint、跨 NVL72 机柜的大规模专家并行，或针对这套硬件调过的预填充/解码拆分。在你的流量规模下，20% 的吞吐差距就是预算表上的一行。
+
+这时你会想到 TensorRT-LLM：对 NVIDIA 预量化合集里的模型跑一条 `trtllm-serve`，就得到一个运行 NVIDIA 自家内核的 OpenAI 兼容端点；横向扩展时，同一套 LLM API 能接进 NVIDIA Dynamo 或 Triton Inference Server。过去回避它的理由——每种 GPU 单独“构建引擎”的那一步——已经没了：1.0 起默认后端是 PyTorch，Hugging Face checkpoint 直接加载。和 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md) 比，起决定作用的取舍是 **NVIDIA 优先的性能与支持 vs 可移植性与社区治理**：你更早拿到 NVIDIA 的最新优化，代价是只能用 NVIDIA、跟着 NVIDIA 的发版节奏走，并接受默认开启的遥测。
+
+## 怎么用起来
+
+今天的 TensorRT-LLM 是一个 PyTorch 程序，底下是 NVIDIA 专门写的 GPU 代码。**你选模型、精度和并行方式；调度、显存管理和 GPU 运算由 NVIDIA 的引擎负责。** 启动 `trtllm-serve`（或在 Python 里创建一个 `LLM` 对象）后，它把 Hugging Face checkpoint 加载成 PyTorch 模块，并为每个 GPU rank 起一个工作进程。每个工作进程跑一个循环：调度器挑出这一步要跑的请求，KV 缓存管理器为它们预留显存（KV 缓存存放已处理 token 的注意力结果，免得重算），模型在 NVIDIA 的内核上运行——一部分是开源 CUDA，一部分只以预编译的 GPU 二进制形式提供——最后采样器把原始打分变成下一个 token。好比赛车队：车和车手你来选，NVIDIA 的维修组按这条赛道把发动机调好。把模型量化成 FP8/FP4 是另一步，用 NVIDIA 的 Model Optimizer 做，或者直接用 NVIDIA 已量化好的 checkpoint 跳过。
+
+![tensorrt-llm — 主干用户故事](../../../assets/flow/tensorrt-llm.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/tensorrt-llm.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在 NVIDIA GPU 主机上拉取并启动 NVIDIA 的正式版容器 — `docker pull nvcr.io/nvidia/tensorrt-llm/release:x.y.z`
+2. **你**：服务 Hugging Face 模型，可选 NVIDIA 量化好的 FP8 版 — `trtllm-serve "nvidia/Qwen3-8B-FP8"`
+3. **TensorRT-LLM**：把 checkpoint 直接载入 PyTorch，每张卡起一个工作进程 — 组件：`PyExecutor`
+4. **TensorRT-LLM**：每步调度请求、留 KV 缓存、跑 NVIDIA 内核、采样 — 组件：`调度器 + KV 缓存管理器`
+5. **你**：用现有客户端发送 OpenAI 格式的请求 — `http://localhost:8000/v1/chat/completions`
+6. **TensorRT-LLM**：以 NVIDIA 调优过的吞吐把回答返回
+
+**价值**：标准 OpenAI API 背后就是 NVIDIA 自家的 GPU 优化，不用再为每种 GPU 构建引擎
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你没有 NVIDIA GPU。** TensorRT-LLM **仅限 NVIDIA**——需要 NVIDIA GPU、CUDA 工具包和 TensorRT SDK。无法在 AMD、Intel 或 Apple Silicon 上运行。如需跨厂商或非 NVIDIA 部署，请使用 **vLLM**、**TGI** 或 **Modular MAX**。
-- **你需要动态切换模型或同时服务多种架构。** 每个模型都要编译成 **TensorRT engine**，且 engine 是 **GPU 架构特化**的——为 A100 编译的 engine 无法在 H100 上运行。为新模型或新 GPU 架构重新编译需要时间和专业知识。如需动态“加载任意 Hugging Face 模型”的服务体验，**vLLM** 或 **TGI** 灵活得多。
-- **你的运维团队无法承受构建复杂度。** TensorRT-LLM 的构建过程出了名地复杂：CUDA、cuDNN 和 TensorRT 版本必须精确对齐，从源码构建很痛苦。预构建容器存在，但版本锁定且体积巨大。如果你的运维团队搞不定 NVIDIA 的依赖栈，这会成为反复摩擦的来源。
-- **你想要完全开源的栈。** Python 编排层是开源的（Apache-2.0），但 **性能关键的 CUDA 内核是闭源二进制 blob**——你无法查看、修改或调试那些让它变快的内核。如需完全开源的推理栈，**vLLM** 或 **SGLang** 是更好选择。
-- **你需要通用模型服务编排。** TensorRT-LLM 是推理引擎，不是请求路由器或自动扩缩容框架。如需多模型 A/B 测试、金丝雀部署或集群级编排，你仍需在其前面加 Kubernetes 或 **Ray Serve** 等层。
-- **你只在单卡或小规模上运行。** 编译和调优开销只有在吞吐收益跨大规模 GPU 集群摊销时才值得。对于单卡或低流量服务，**vLLM** 甚至 **Ollama** 更简单，且在小批大小下几乎一样快。
+- **你没有 NVIDIA GPU，或者想保留换厂商的余地。** 它只跑在 NVIDIA 上（从 Ampere A100 到 Blackwell）。AMD、TPU 或混合集群用 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md)；想要跨厂商的编译栈，看 [Modular MAX](modular.zh.md)。
+- **你的 GPU 偏旧或是消费级。** NVIDIA 的支持清单列的是 A100、Ada L20/L40/L40S、Hopper 和 Blackwell；V100/T4 和大多数 RTX 卡不在其中。用 vLLM，本地用途则用 [llama.cpp](../local-runtimes/llama-cpp.zh.md)。
+- **你要求每个性能关键的内核都能读源码。** 大部分内核是开源 CUDA，但 trtllm-gen 的注意力和 GEMM 内核以数千个预编译 cubin 文件和静态库的形式分发——能调用，不能读也不能改。需要审计到内核层时，开源选项是 [vLLM](vllm.zh.md) 或 [SGLang](sglang.zh.md)。
+- **你不能接受默认开启的遥测。** 它会收集匿名使用数据（GPU 型号、模型架构、配置开关、生命周期事件），除非用 `TRTLLM_NO_USAGE_STATS=1`、`DO_NOT_TRACK=1`、`--no-telemetry` 或 `~/.config/trtllm/do_not_track` 文件关闭。在管控严格的环境里，要把关闭写进镜像——或者换一个没有遥测的引擎。
+- **你需要频繁且稳定的正式版。** 正式版很稀疏（1.2.0 在 2026 年 3 月，1.2.1 在 2026 年 4 月），而 1.3 从 2026 年 1 月起一直在发候选版（9 月底已到 rc29）。只跑正式版的团队要晚几个月拿到新特性，跑候选版的团队要承担候选版风险。vLLM 和 SGLang 每几周就发一个稳定版。
+- **你还依赖预先构建好的 TensorRT 引擎。** 引擎构建路径（`trtllm-build`、`convert_checkpoint.py`）在 2026 年已从主干移除，只有 1.2.x 线还作为遗留选项保留。要么规划迁移到直接加载 Hugging Face checkpoint，要么钉住版本并接受新修复不会进到那条路径。
+- **你需要多模型编排或自动扩缩。** 它只负责服务一个模型；集群级路由在前面加 [Ray Serve](ray-serve.zh.md)、NVIDIA Dynamo（未收录），Kubernetes 上则用 [llm-d](llm-d.zh.md)。
+- **你在单卡上跑小流量。** 调优投入要到集群规模才划算；单卡或开发机用 [vLLM](vllm.zh.md) 或 [Ollama](../local-runtimes/ollama.zh.md) 更简单，效果也差不太多。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [vLLM](vllm.zh.md) | ✅ | 需要 NVIDIA 硬件上最大吞吐时用 TensorRT-LLM；需要开源灵活性、庞大社区和动态模型加载时选 vLLM。 | 事实上的开源 LLM 服务引擎（PagedAttention、连续批处理），庞大社区与模型覆盖；NVIDIA 优先，在相同硬件上峰值吞吐低于 TensorRT-LLM。 |
-| [Text Generation Inference（TGI）](text-generation-inference.zh.md) | ✅ | 需要 NVIDIA 专属峰值吞吐时用 TensorRT-LLM；需要 Hugging Face 生产服务器和紧密 HF 生态集成时选 TGI。 | Hugging Face 的生产服务器，紧密 HF 生态集成；许可证历史有过摇摆（Apache→HFOIL→Apache），NVIDIA 专属调优不如 TensorRT-LLM。 |
-| [Modular Platform（MAX + Mojo）](modular.zh.md) | ✅ | 需要 NVIDIA 自家引擎和最大吞吐时用 TensorRT-LLM；需要跨厂商编译器+语言平台及其内核语言时选 MAX。 | 厂商构建的跨厂商 GPU/CPU 服务引擎 + Mojo 内核语言；单厂商绑定，社区更年轻，NVIDIA 专属调优不如 TensorRT-LLM。 |
-| [oMLX](../local-runtimes/omlx.zh.md) | ✅ | 数据中心 NVIDIA GPU 服务用 TensorRT-LLM；需要 Mac（Apple Silicon）本地推理服务带 SSD 分层 KV 缓存时选 oMLX。 | 仅限 Mac 的 Apple Silicon 本地服务器，带 Swift 菜单栏应用；不是数据中心多 GPU 引擎。 |
-| [Ray Serve](ray-serve.zh.md) | ✅ | 需要专用 LLM 推理引擎时用 TensorRT-LLM；需要通用 Python 模型服务编排和跨多种模型类型扩缩容时选 Ray Serve。 | 通用 Python 模型服务/编排框架，用于扩缩容和组合服务；不是手调的单模型推理引擎。 |
-| [SGLang](sglang.zh.md) | ✅ | 需要 NVIDIA 编译引擎峰值吞吐时用 TensorRT-LLM；需要 RadixAttention 前缀缓存和结构化生成优化时选 SGLang。 | 高吞吐服务引擎，带 RadixAttention 前缀缓存；更新、更小生态，NVIDIA 专属调优不如 TensorRT-LLM。 |
-| [Ollama](../local-runtimes/ollama.zh.md) / [llama.cpp](../local-runtimes/llama-cpp.zh.md) | ✅ | 数据中心吞吐服务用 TensorRT-LLM；需要轻量本地/边缘 CPU 或消费级 GPU 推理时选 Ollama/llama.cpp。 | 可移植 C/C++ 推理引擎（GGUF），到处运行包括 Mac 和手机；不是数据中心多 GPU 吞吐引擎。 |
+| [vLLM](vllm.zh.md) | ✅ | 跨厂商、跨新旧 GPU 的默认开源引擎选 vLLM；在 Hopper/Blackwell 上大规模服务、且 NVIDIA 内核在你的模型上实测更快时，选 TensorRT-LLM。 | vLLM 可移植、社区治理、稳定版发得勤；TensorRT-LLM 最先拿到 NVIDIA 新优化，但把你锁在 NVIDIA 上。 |
+| [SGLang](sglang.zh.md) | ✅ | 前缀复用多的 agent 流量、强化学习 rollout 或多厂商硬件，选 SGLang；成本由 NVIDIA 专属特性（FP4、NVL72 规模的专家并行）决定时，选 TensorRT-LLM。 | SGLang 厂商中立、迭代快；TensorRT-LLM 由 NVIDIA 主导，部分内核是二进制，正式版稀疏。 |
+| [Modular Platform（MAX + Mojo）](modular.zh.md) | ✅ | 想要一套同时面向 NVIDIA 和 AMD 的单厂商栈时，选 MAX；只用 NVIDIA、想要 GPU 厂商自家引擎时，选 TensorRT-LLM。 | 两者都是单一厂商；MAX 用 NVIDIA 专属深度换跨厂商覆盖，且部分许可不允许生产使用。 |
+| [LMDeploy](lmdeploy.zh.md) | ✅ | 在书生/昇腾生态里要 TurboMind 引擎和量化工具链时，选 LMDeploy；要最深的 NVIDIA 数据中心优化时，选 TensorRT-LLM。 | LMDeploy 还覆盖昇腾；TensorRT-LLM 只覆盖 NVIDIA，但在新 NVIDIA 硬件上走得更远。 |
+| [Ray Serve](ray-serve.zh.md) | ✅ | 不是二选一：引擎用 TensorRT-LLM，只有它要和其他模型一起组合、自动扩缩时才加 Ray Serve。 | Ray Serve 加的是 Python 级编排，代价是运维 Ray 集群；它不会让引擎变快。 |
+| [Text Generation Inference（TGI）](text-generation-inference.zh.md) | ✅ | 不要在 TGI 上开新部署——仓库已归档；选维护中的引擎（vLLM、SGLang 或 TensorRT-LLM）。 | TGI 的 Hugging Face 集成不再获得上游的新模型和安全工作。 |
+| [Ollama](../local-runtimes/ollama.zh.md) / [llama.cpp](../local-runtimes/llama-cpp.zh.md) | ✅ | 笔记本和消费级 GPU 上的本地或边缘推理，选 Ollama/llama.cpp；数据中心 NVIDIA 集群，选 TensorRT-LLM。 | 本地运行时几乎哪里都能跑、配置极少；TensorRT-LLM 需要数据中心 GPU 和 NVIDIA 软件栈。 |
 
 ## 技术栈
 
-- **Python**——主要编排语言：模型定义、编译工作流、engine 构建和运行时调度。
-- **C++**——运行时执行层和 API 绑定；性能关键路径是 C++ 调用 NVIDIA 的二进制内核。
-- **TensorRT**——NVIDIA 的深度学习推理优化器；TensorRT-LLM 构建于 TensorRT 的图优化、层融合和内核自动调优之上。
-- **定制 CUDA 内核**——NVIDIA 分发的闭源二进制 blob，用于 attention、MLP 和量化操作；这些是吞吐优势的来源，但不可修改。
-- **量化**——通过 NVIDIA 工具支持 FP8、INT8 和 INT4 权重/激活量化；通常需要校准或参考权重以保证精度。
-- **OpenAI 兼容 API**——可选的基于 Python 的服务器，暴露 `/v1/completions` 和 `/v1/chat/completions`，实现客户端即插即用兼容。
+- **Python + PyTorch** —— 主干上唯一的执行后端（1.0 起为默认）：`LLM` API、`trtllm-serve`、每个 rank 的 `PyExecutor` 循环（调度器、KV 缓存管理器、模型引擎、采样器）；Python 3.10+，torch 2.14。
+- **C++ 运行时与 CUDA 内核** —— 约 350 个开源 `.cu` 源文件，外加以预编译 cubin 和静态库分发的 trtllm-gen 注意力/GEMM 内核。
+- **优化能力** —— FP8/FP4（NVFP4）量化推理、投机解码、预填充/解码拆分、大规模专家并行、CUDA graph、引导解码（XGrammar/llguidance）。
+- **服务** —— `trtllm-serve` 暴露 OpenAI 兼容 API（快速上手里是 8000 端口上的 `/v1/chat/completions`）；集群场景接 NVIDIA Dynamo 和 Triton Inference Server。
+- **遥测** —— `tensorrt_llm/usage/` 里的匿名使用数据收集器，默认开启，有文档化的关闭方式。
+- **TensorRT** —— 项目名字的来源、遗留的引擎后端；2026 年已从主干移除，1.2.x 中仍作为遗留选项存在。
 
 ## 依赖
 
-- **硬件——仅限 NVIDIA GPU。** 面向服务器级 NVIDIA GPU（A100、H100、A10、L40S 等）。消费级 GPU（RTX 4090 等）受支持，但不是主要优化目标。
-- **GPU 驱动与运行时——NVIDIA 栈。** 主机上的 NVIDIA GPU 驱动、CUDA 工具包（12.x+）、cuDNN 和 TensorRT SDK；版本必须与 TensorRT-LLM 发布版对齐。
-- **运行环境——Python 3.10+**，带 PyTorch 和 NVIDIA 的 CUDA/TensorRT wheel。预构建 Docker 容器存在，但版本锁定且体积巨大（数十 GB）。 [推断]
-- **模型——Hugging Face 兼容 checkpoint。** 自带模型权重（safetensors 或 PyTorch checkpoint）；TensorRT-LLM 将其编译成 engine。编译步骤是强制的，且 engine 是 GPU 架构特化的。
-- **构建工具链（痛苦）。** 从源码构建需要匹配 CUDA、cuDNN、TensorRT 和 CMake 版本；许多团队使用预构建容器来规避这种依赖地狱。 [推断]
+- **硬件** —— 仅 NVIDIA GPU：Blackwell（B200/GB200/B300/GB300、DGX Spark）、Hopper（H100/H200/GH200）、Ada（L20、L40/L40S）、Ampere A100。
+- **软件栈** —— CUDA 13.x（pip 路径要求 CUDA Toolkit 13.4 并设置 `CUDA_HOME`）、匹配的 PyTorch 构建、OpenMPI；在 Ubuntu 24.04 上测试。
+- **安装路径** —— 最省事的是 NGC 正式版容器（`nvcr.io/nvidia/tensorrt-llm/release:x.y.z`）；PyPI wheel 基于公开 PyTorch 构建，可能和 NGC 的 PyTorch 容器不匹配。
+- **模型** —— Hugging Face checkpoint 直接加载；NVIDIA 发布了预量化的 FP8/FP4 checkpoint，也可以用 NVIDIA Model Optimizer 自己量化。
+- **可选** —— 拆分式服务需要 `libzmq`；多节点集群用 Dynamo 或 Triton。
 
 ## 运维难度
 
-**高。** 即使是运行预构建容器的“快乐路径”，也比 `pip install` 复杂：
+**高。** PyTorch 后端消除了过去最痛的构建问题，但这仍是 NVIDIA 数据中心级的活：
 
-1. **版本对齐地狱**——CUDA、cuDNN、TensorRT 和 TensorRT-LLM 版本必须精确匹配。任何一个不匹配都会导致晦涩的构建或运行时错误。预构建容器有帮助，但将你锁定在 NVIDIA 的发布节奏。
-2. **Engine 编译是强制且缓慢的**——每个模型都必须编译成 TensorRT engine，且每种 GPU 架构都需要自己的 engine。为 A100 编译的 engine 无法在 H100 上运行。这意味着冷启动时间以分钟而非秒计，模型更新需要重新编译。
-3. **GPU 集群异构性很痛苦**——如果你有混合 A100 和 H100 节点，需要每种架构单独的 engine 二进制文件，或者你为最低公分母编译并损失性能。
-4. **调优需要专业知识**——获得最佳吞吐需要调整批大小、量化方案、精度模式（FP16 vs FP8）和内核融合设置。默认值偏保守，通常留有余量；榨取峰值性能需要 NVIDIA 专属知识。
-5. **无内置高可用、路由或自动扩缩容**——TensorRT-LLM 是单进程推理引擎。你把它跑在负载均衡器后面或 Kubernetes pod 里，但引擎本身不处理多节点路由、请求排队或模型 A/B 测试。
+1. **栈对齐** —— 驱动、CUDA 13.x、PyTorch 构建和容器标签必须匹配；NGC 容器阻力最小，但把你绑在 NVIDIA 的镜像节奏上。
+2. **发布线选择** —— 正式版间隔数月、候选版每周都来；你得在“旧但稳”和“新但是候选版”之间选，每次跳版本都重新验证。
+3. **调优门槛** —— 精度（FP8 还是 FP4）、并行布局、CUDA graph 批大小和拆分比例，决定你是否真的跑赢开源引擎；热门模型有 NVIDIA 部署指南，其余要靠基准测试。
+4. **遥测策略** —— 在受监管环境里，关闭遥测要写进镜像和启动命令。
+5. **横向扩展另算** —— 路由、自动扩缩和多模型服务来自 Dynamo、Triton、Kubernetes 或 Ray Serve，引擎本身不管。
 
 ## 健康度与可持续性
 
-- **维护（2026-07）。** 处于 v0.18.x 的活跃开发中，NVIDIA 定期发布；项目显然在维护，非躺平。未归档。 [推断]
-- **治理 / 巴士系数。** NVIDIA 掌控路线图和闭源内核。Python 层是开源的（Apache-2.0），但性能关键路径是 **单厂商黑盒**。这是典型的 NVIDIA：项目受重视时文档和支持都很好，但 NVIDIA 对开源项目的记录是 mixed——有些蓬勃发展，有些被悄悄降级。 [推断]
-- **年龄与 Lindy（2026-07）。** TensorRT-LLM 是相对年轻的项目（首版约 2023 年发布），构建于更古老的 TensorRT（始于 2016 年）。TensorRT 基础赋予它 **中等 Lindy 先验**——优化技术已被验证，但 LLM 专属层较新，NVIDIA 对其长期承诺相对核心 TensorRT 而言尚未被证实。 [推断]
-- **采用度。** ~11k stars 且增长中；在 NVIDIA 自家的基准测试和文档中广泛使用，也被提供 NVIDIA GPU 实例的云服务商引用。但在 NVIDIA 策划环境之外，真实世界的采用比 vLLM 更窄，因为构建复杂度和 NVIDIA 专属绑定。 [未验证]
-- **风险标志——关键标志。** **闭源内核** 既是核心价值主张也是核心风险：如果 NVIDIA 更改内核 ABI、弃用旧 GPU 架构支持或调整许可证条款，下游用户没有 recourse。模型编译步骤也制造了 **硬件锁定**（engine 是 GPU 架构特化的），加剧了厂商锁定。 [推断]
+- **维护（2026-10）。** 主干非常活跃——每天都有提交，1.3 候选版每一两周一个（2026-09-29 发布 rc29）——但最近的正式版是 1.2.1（2026-04-20），1.3 从 2026 年 1 月起一直处于候选版。活跃，但正式版节奏慢。
+- **治理 / 巴士因子。** 路线图由 NVIDIA 掌控。过去 12 个月有 357 个账号提交过代码，头号提交者约占 8%（前三约 16%），不是单人项目；注意头部贡献者里有两个是 CI/agent 机器人账号。
+- **年龄与 Lindy。** 2023 年 8 月公开，约三年，已经经历过一次架构更换（从 TensorRT 引擎到 PyTorch）。Lindy 先验中等：项目年轻，但背后是最有动力让它保持竞争力的 GPU 厂商。
+- **采用度。** 约 1.48 万 GitHub star；PyPI 上个月只有 13,654 次下载，依赖图上没有统计到依赖仓库，因为多数用户跑的是 NVIDIA 的 NGC 容器而不是 pip——注册表信号低估了真实使用（NVIDIA Dynamo 和 Triton 都把它作为后端）。
+- **风险标志。** LICENSE 文件写明项目整体为 Apache-2.0，并附带第三方声明（评分器解析不了，所以许可证轴是未知）。真正的风险是：单一厂商控制、部分内核以二进制分发、遥测默认开启，以及后端大改带来的 API 变动。
 
 ## 存疑（未验证）
 
-- [未验证] ~11k stars 计数来自 2026-07-01 的 GitHub API；star 数仅具指示性，不代表采用度或质量。
-- [未验证] 在相同硬件上相对 vLLM 的确切性能优势来自 NVIDIA 自家基准测试和社区报告；此处未独立验证。
-- [未验证] 支持的模型架构、量化方案及其精度取舍的确切集合来自项目 README 和文档；并非所有组合都经独立测试。
-- [推断] 构建复杂度和“版本对齐地狱”是从社区报告、issue 讨论和 NVIDIA 自家文档推断而来；精确依赖矩阵随发布版变化。
-- [推断] GPU 架构特化 engine 行为（A100 engine 无法在 H100 运行）是从 TensorRT 的文档行为和 NVIDIA 发布说明推断而来。
-- [推断] NVIDIA“对开源项目记录 mixed”是基于历史观察（如某些工具包弃用）的启发式评估，而非正式治理研究。
+- [未验证] 在相同 NVIDIA 硬件上相对 vLLM/SGLang 的吞吐优势来自 NVIDIA 的博客和基准；本页没有复现。
+- [推断] “多数用户跑 NGC 容器而不是 pip”是从安装指南的排序和偏低的 PyPI 数字推断的，没有使用数据支撑。
+- [未验证] 每一代 GPU 上支持的模型和量化格式的确切组合，除支持硬件页外未做核对。
+- [推断] 预编译内核的数量（`cpp/tensorrt_llm/kernels/` 下约 9300 个 cubin 文件）来自 2026-10-08 的仓库文件树；哪些在某个模型的热路径上没有追踪。
+- [未验证] 1.3 正式版是否会和主干一样不带 TensorRT 后端，要等发布说明出来才能确认。

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "dragnet does", "zh": "dragnet 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone master and build it with its pinned numeric stack — Docker is the easy path", "zh": "克隆 master，连同锁死的数值计算栈一起构建，Docker 最省事", "code": "docker build -t dragnet ."},
+    {"lane": "you", "en": "Fetch the page's HTML yourself and pass it to one function", "zh": "自己下载网页 HTML，交给一个函数", "code": "extract_content(r.content) · extract_content_and_comments(r.content)"},
+    {"lane": "them", "en": "Splits the HTML into text blocks", "zh": "把 HTML 切成一个个文本块"},
+    {"lane": "them", "en": "Computes features per block; a pre-trained scikit-learn model labels each content or not", "zh": "给每块算特征，由预训练的 scikit-learn 模型判定是不是正文"},
+    {"lane": "them", "en": "Joins the blocks labelled content into one string and returns it", "zh": "把判为正文的块拼成一个字符串返回"}
+  ],
+  "value": {"en": "The article body — with or without the comment thread — chosen by a model you can retrain on your own pages", "zh": "拿到正文（可选带评论区），而做判断的模型可以拿你自己的网页重新训练"},
+  "sources": [
+    "https://github.com/dragnet-org/dragnet#getting-started (extract_content(r.content), extract_content_and_comments(r.content); load_pickled_model pre-trained models; sklearn-style fit/predict)",
+    "https://github.com/dragnet-org/dragnet#installing-with-docker (git clone master; docker build -t dragnet .)",
+    "https://github.com/dragnet-org/dragnet#more-details-about-the-code-structure (Extractor = blockifier + feature extractors + model; blockify returns blocks; model predicts content/no-content per block)",
+    "https://github.com/dragnet-org/dragnet/blob/master/requirements.txt (scikit-learn>=0.15.2,<0.21.0; ftfy<5.0.0)"
+  ]
+}
