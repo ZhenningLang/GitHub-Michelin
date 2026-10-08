@@ -21,3 +21,5 @@ memory/
 
 # Scorer instrument caches (Homebrew index etc.) — regenerable, TTL-bound
 .health-cache/
+
+.claude/worktrees/
