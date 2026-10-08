@@ -17,9 +17,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-05T14:17:41Z
+  computed_at: 2026-10-08T09:27:59Z
   overall: B
-  overall_score: 2.8
+  overall_score: 2.6
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -30,23 +30,23 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 54
-        active_weeks_13: 4
+        last_commit_age_days: 57
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: D
       raw:
-        registry: crates.io
-        canonical_package: pyxel-engine
-        dependent_repos_count: 0
-        downloads_last_month: 89290
-        graph_tier: E
-        volume_tier: C
+        registry: pypi.org
+        canonical_package: pyxel
+        dependent_repos_count: 85
+        downloads_last_month: 10540
+        graph_tier: D
+        volume_tier: D
         cross_check_divergence: null
-        release_downloads: 7580
+        release_downloads: 8550
         release_assets: 773
         release_tier: D
         signal_basis: releases
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3039
-        last_commit_age_days: 54
+        repo_age_days: 3042
+        last_commit_age_days: 57
         cohort: framework
     governance:
       grade: D
@@ -154,7 +154,7 @@ Pyxel 是一个 Python 包，重活由 Rust 内核完成（`pyxel-core`，经 Py
 - **维护（2026-10-05）。** 非常活跃：v2.9.9 发布于 2026-08-12，2026-04 到 2026-08 之间发了 10 个版本，最近一次推送 2026-09-28，近期的更新日志满是崩溃和健壮性修复。开放的 issue／PR 只有 12 个。
 - **治理／巴士系数。** 北尾崇（Takashi Kitao）一个人的项目（个人账号仓库；contributors API：kitao 7348 次提交，第二名 12 次）。README 自己写明“由一个人开发”。外部 PR 有，但好几个被不合并就关掉（例如 #676 `resize`，这个功能后来由作者自己的代码发布）或挂了几个月——路线图由他一人决定。巴士系数为 1。
 - **背书与 Lindy。** 没有公司或基金会；靠 GitHub Sponsors 和 Ko-fi 资助，2025 年出了日文官方指南书。约 7.3 年（仓库 2018-06 创建）× 仍非常活跃 ⇒ 对业余游戏引擎来说是不错的 Lindy 先验，但要按单人维护打折。
-- **采用。** 1.84 万星、963 fork（2026-10），PyPI 近一个月约 1 万次下载（pypistats，2026-10-05；雷达里的 89290 是已停更的 `pyxel-engine` crate 的累计下载量，不是 Python 侧的月安装量），有精选的用户作品集、英文和日文两个 Discord 服务器。在教学和业余圈很强；没看到规模化的商业作品。[推断]
+- **采用。** 1.84 万星、963 fork（2026-10），PyPI 近一个月约 1.05 万次下载、85 个仓库依赖它（2026-10-08 起雷达的采用度一轴按 PyPI 包 `pyxel` 计分，评为 D），有精选的用户作品集、英文和日文两个 Discord 服务器。在教学和业余圈很强；没看到规模化的商业作品。[推断]
 - **风险旗标。** 一开始就是 MIT（LICENSE 文件；GitHub API 显示 `NOASSERTION` 只是因为文件里多了一行项目说明）。真正的风险是小版本之间的破坏性 API 变更（2.4 的声音／MML）和钉死的 nightly Rust 工具链，而不是许可证。
 
 ## 存疑（未验证）
@@ -166,5 +166,4 @@ Pyxel 是一个 Python 包，重活由 Rust 内核完成（`pyxel-core`，经 Py
 - [未验证] 截至 2026-10-05，命令行和文档里都没找到原生 iOS／Android 或主机导出；第三方封装可能存在。
 - [推断] `NOASSERTION` 归因于在标准 MIT 文本里多出的那行“This license applies to Pyxel”；pyproject.toml 和 Cargo.toml 都声明为 `MIT`。
 - [未验证] PICO-8 的细节（付费授权、Lua、128×128）来自对该产品的一般了解，没有回到其商店页面核对。
-- [推断] 健康度雷达的采用度这一轴是按 crates.io 上的 `pyxel-engine` 打分的（同一个仓库，但最后发布是 2026-02 的 2.6.8；89290 是累计下载量，近 90 天约 183 次），而不是用户真正安装的 PyPI 包 `pyxel`；机器分数低估了 Python 侧的采用度，保留原计算结果未手改。
 - [未验证] 星数、fork 数和 PyPI 下载数是 2026-10-05 的时点快照，很快会过期。

@@ -17,9 +17,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-05T14:17:41Z
+  computed_at: 2026-10-08T09:27:59Z
   overall: B
-  overall_score: 2.8
+  overall_score: 2.6
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -30,23 +30,23 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 54
-        active_weeks_13: 4
+        last_commit_age_days: 57
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: C
+      grade: D
       raw:
-        registry: crates.io
-        canonical_package: pyxel-engine
-        dependent_repos_count: 0
-        downloads_last_month: 89290
-        graph_tier: E
-        volume_tier: C
+        registry: pypi.org
+        canonical_package: pyxel
+        dependent_repos_count: 85
+        downloads_last_month: 10540
+        graph_tier: D
+        volume_tier: D
         cross_check_divergence: null
-        release_downloads: 7580
+        release_downloads: 8550
         release_assets: 773
         release_tier: D
         signal_basis: releases
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3039
-        last_commit_age_days: 54
+        repo_age_days: 3042
+        last_commit_age_days: 57
         cohort: framework
     governance:
       grade: D
@@ -154,7 +154,7 @@ Pyxel is a Python package whose heavy lifting is done by a Rust core (`pyxel-cor
 - **Maintenance (2026-10-05).** Very active: v2.9.9 on 2026-08-12, ten releases between 2026-04 and 2026-08, last push 2026-09-28, and recent changelogs full of crash and robustness fixes. Only 12 open issues/PRs.
 - **Governance / bus factor.** A one-person project by Takashi Kitao (User-owned repo; contributors API: kitao 7,348 commits, next 12). The README itself says it is "developed by one person". External PRs exist but several were closed unmerged (e.g. #676 `resize`, whose feature then shipped from the author's own code) or left open for months — the roadmap is his. Bus factor is 1.
 - **Backing & Lindy.** No company or foundation; funded through GitHub Sponsors and Ko-fi, with a Japanese official guidebook published in 2025. Age ~7.3 years (repo created 2018-06) × still very active ⇒ a solid Lindy prior for a hobby engine, discounted by the single maintainer.
-- **Adoption.** 18.4k stars and 963 forks (2026-10), ~10k PyPI downloads in the last month (pypistats, 2026-10-05; the radar's 89,290 is the all-time total of the stale `pyxel-engine` crate, not monthly Python installs), a curated user-examples gallery, Discord servers in English and Japanese. Strong among education and hobbyists; there is no sign of commercial titles at scale. [推断]
+- **Adoption.** 18.4k stars and 963 forks (2026-10), ~10.5k PyPI downloads in the last month and 85 dependent repositories (the radar's adoption axis reads the PyPI package `pyxel` since 2026-10-08 and grades it D), a curated user-examples gallery, Discord servers in English and Japanese. Strong among education and hobbyists; there is no sign of commercial titles at scale. [推断]
 - **Risk flags.** MIT license from the start (LICENSE file; GitHub's API shows `NOASSERTION` only because the file has an extra project line). Breaking API changes across minor versions (2.4 sound/MML) and a pinned nightly Rust toolchain are the real risks, not licensing.
 
 ## Caveats (unverified)
@@ -166,5 +166,4 @@ Pyxel is a Python package whose heavy lifting is done by a Rust core (`pyxel-cor
 - [未验证] No native iOS/Android or console export was found in the CLI or docs as of 2026-10-05; third-party wrappers may exist.
 - [推断] The `NOASSERTION` license reading is attributed to the extra "This license applies to Pyxel" line in an otherwise standard MIT text; pyproject.toml and Cargo.toml both declare `MIT`.
 - [未验证] PICO-8 details (paid license, Lua, 128×128) are from general knowledge of the product, not re-checked on its store page.
-- [推断] The health radar's adoption axis was scored from the crates.io crate `pyxel-engine` (the same repo, but last published 2.6.8 in 2026-02; its 89,290 figure is all-time downloads, ~183 in the last 90 days) rather than the PyPI package `pyxel` that users actually install; the machine grade understates Python-side adoption and was left as computed.
 - [未验证] Stars, forks and PyPI download counts are 2026-10-05 snapshots and go stale quickly.
