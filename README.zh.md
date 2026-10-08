@@ -1263,6 +1263,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | --- | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft 面向生产 AI agent 的 public-preview 治理工具包：策略门控 tool call、身份 / 信任、审计 / 合规、MCP security gateway、SRE 控制，以及围绕 agent framework 的多语言 SDK。 | MIT | B（6/6） | [中](categories/agent-governance/agent-governance-toolkit.zh.md) · [EN](categories/agent-governance/agent-governance-toolkit.md) |
 | **SkillSpector** | NVIDIA 的 AI agent skill 安全扫描器：安装前通过 CLI/MCP 检查 prompt injection、外传、危险脚本、MCP poisoning、依赖，并输出 SARIF/JSON 证据。 | Apache-2.0 | B（5/6） | [中](categories/agent-governance/skillspector.zh.md) · [EN](categories/agent-governance/skillspector.md) |
+| **Snyk Agent Scan** | Snyk 的整机扫描器：清点 14 种编程 agent 里已装的 MCP 服务和 skill；发现在本地做，但每个结论都来自 Snyk 托管的闭源分析接口（要账号、有配额、数据外传）。 | Apache-2.0 | A（6/6） | [中](categories/agent-governance/agent-scan.zh.md) · [EN](categories/agent-governance/agent-scan.md) |
 ### social-simulation
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |

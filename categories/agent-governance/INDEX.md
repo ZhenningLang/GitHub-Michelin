@@ -9,6 +9,7 @@
 | --- | --- | --- | --- |
 | **agent-governance-toolkit** | Microsoft's public-preview governance toolkit for AI agents: policy-gated tool calls, identity/trust, audit/compliance, MCP security gateway, SRE controls, and multi-language SDKs. | B (6/6) | [→](agent-governance-toolkit.md) |
 | **SkillSpector** | NVIDIA's security scanner for AI agent skills: pre-install CLI/MCP scanning for prompt injection, exfiltration, dangerous scripts, MCP poisoning, dependencies, and SARIF/JSON evidence. | B (5/6) | [→](skillspector.md) |
+| **Snyk Agent Scan** | Snyk's machine-wide scanner for installed MCP servers and agent skills across 14 coding agents; discovery is local, but every verdict comes from Snyk's hosted, closed analysis API (account, quota, data egress). | A (6/6) | [→](agent-scan.md) |
 
 
 ## Comparison matrix
@@ -17,6 +18,7 @@
 | --- | --- | --- | --- |
 | [agent-governance-toolkit](agent-governance-toolkit.md) | ✅ | B (6/6) | Broad Microsoft-backed agent governance stack; strong for production policy/audit, heavy if you only need a small middleware check. |
 | [SkillSpector](skillspector.md) | ✅ | B (5/6) | Narrow install-time scanner for skill artifacts; pair with runtime governance when tool-call policy and audit are the real problem. |
+| [Snyk Agent Scan](agent-scan.md) | ✅ | A (6/6) | One command inventories and risk-scores everything installed, including live MCP tool descriptions; closed hosted detectors, unstable output, and it executes the servers it scans. |
 
 
 ## What belongs here
