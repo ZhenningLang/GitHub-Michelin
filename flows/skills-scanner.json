@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "skillscan does", "zh": "skillscan 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install from the git source (the PyPI name in the README is not published)", "zh": "从 git 源码安装（README 里的 PyPI 包名并未发布）"},
+    {"lane": "you", "en": "Scan a repo root; your home-directory agent configs are included by default", "zh": "扫描一个仓库根目录，默认连同家目录下的 agent 配置", "code": "skillscan scan ."},
+    {"lane": "them", "en": "Visits known skill, agent, command and MCP config locations and lists what exists", "zh": "走一遍已知的 skill、命令与 MCP 配置位置，列出清单", "component": {"en": "discovery walkers", "zh": "发现模块"}},
+    {"lane": "them", "en": "Runs offline regex, syntax-tree and permission rules, then cross-checks item pairs", "zh": "离线跑正则、语法树与权限规则，再做跨项交叉检查", "component": {"en": "rule pipeline", "zh": "规则流水线"}},
+    {"lane": "you", "en": "Save this state as the baseline, then re-run later against it", "zh": "把当前状态存为基线，之后再跑一次与它对比", "code": "--save-baseline · --baseline"},
+    {"lane": "them", "en": "Reports what changed since the baseline and exits non-zero above your threshold", "zh": "报告相对基线的变化，超过阈值时以非零码退出", "code": "--fail-on {critical,high,medium,low}", "component": {"en": "SQLite fingerprint store", "zh": "SQLite 指纹库"}}
+  ],
+  "value": {"en": "One report of every agent extension on the machine, and a diff when one of them changes", "zh": "一份报告列全机器上的 agent 扩展，哪个变了会给出差异"},
+  "sources": [
+    "https://github.com/HTS-Sleeping-Place/skills-scanner README Quickstart (skillscan scan .)",
+    "README CLI section (--fail-on {critical,high,medium,low}; --baseline / --save-baseline / --db PATH)",
+    "README Drift + provenance (skillscan scan --save-baseline; re-run with --baseline)",
+    "src/skillscan/discover/claude.py and discover/mcp.py (fixed discovery locations)",
+    "src/skillscan/rules/__init__.py (module pipeline), src/skillscan/collusion.py, src/skillscan/store.py (SQLite fingerprints)",
+    "https://pypi.org/pypi/skills-scanner/json returned 404 on 2026-10-08 (install step written without a command)"
+  ]
+}
