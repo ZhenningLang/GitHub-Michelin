@@ -7,6 +7,7 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
+| **Claude Code Skill Scrapling** | Use it when a Claude Code agent on a Python machine should escalate from a plain request to a stealth browser on its own instead of guessing after a Cloudflare 403 — but it is a four-commit, single-author wrapper whose cheat sheet has drifted from current Scrapling; the library's official skill is the maintained one. | C (4/5) | [→](claude-code-skill-scrapling.md) |
 | **Firecrawl** | The API to search, scrape, and interact with the web at scale — turning raw web pages into clean Markdown or structured data your agents can ship with. | B (5/6) | [→](firecrawl.md) |
 | **fuck-login** | A collection of ~20 Python scripts that script the login flow of well-known (mostly Chinese) websites — Zhihu, Weibo, Baidu, JD, Bilibili, GitHub, Douban — so you can carry the resulting session cookies into a scraper. A 2016-era teaching repo, explicitly **no longer maintained**. | E (5/6) | [→](fuck-login.md) |
 | **gopup** | A Python library that wraps a grab-bag of (mostly Chinese) public data sources behind one-line calls returning pandas DataFrames — Baidu/Weibo/Google search indices, Chinese macro indicators (CPI/PPI/PMI, money supply, FX rates), Shibor/LPR rates, unicorn-company lists, box-office and epidemic data, and more. | E (4/6) | [→](gopup.md) |

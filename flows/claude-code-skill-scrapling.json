@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The skill makes the agent do",
+    "zh": "这个 skill 让 agent 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install Scrapling and its browsers, then copy this repo into your skills folder",
+      "zh": "装好 Scrapling 和浏览器，再把仓库拷进 skills 目录",
+      "code": "cp -r . ~/.claude/skills/scrapling"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the page in plain words",
+      "zh": "用一句话说要抓什么",
+      "code": "This site has Cloudflare, scrape it anyway: https://protected.example.com"
+    },
+    {
+      "lane": "them",
+      "en": "Checks the Scrapling version, then reads the safety and site-pattern notes",
+      "zh": "先查 Scrapling 版本，再读安全说明和站点笔记",
+      "component": {
+        "en": "SKILL.md + references/",
+        "zh": "SKILL.md 与 references/"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Tries the one-line CLI first, with page text cleaned for the model",
+      "zh": "先试一行 CLI，网页文本清洗后再给模型",
+      "code": "scrapling extract get \"https://example.com/article\" article.md --ai-targeted"
+    },
+    {
+      "lane": "them",
+      "en": "For anything harder, picks a fetcher from the decision tree and fills in a template",
+      "zh": "更难的情况按决策树选 Fetcher，填好模板脚本",
+      "code": "templates/stealth_cloudflare.py",
+      "component": {
+        "en": "templates/",
+        "zh": "templates/"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs it, returns the fields you asked for, and notes the site pattern for next time",
+      "zh": "执行并返回你要的字段，顺手记下站点模式",
+      "code": "references/site-patterns.md"
+    }
+  ],
+  "value": {
+    "en": "You stop telling the agent which fetcher, cookie shape and timeout unit each kind of site needs",
+    "zh": "不用再告诉 agent 每类站点该用哪个 Fetcher、cookie 什么格式、超时什么单位"
+  },
+  "sources": [
+    "README.md Installation: `pip install \"scrapling[fetchers]\"`, `scrapling install`, `cp -r . ~/.claude/skills/scrapling`",
+    "README.md Examples: `This site has Cloudflare, scrape it anyway: https://protected.example.com`",
+    "SKILL.md 步骤 0 检查版本; 步骤 1 安全预检与 quick path (references/security.md); 步骤 3 item 3 (references/site-patterns.md)",
+    "SKILL.md 步骤 1 / README.md Usage: `scrapling extract get \"https://example.com/article\" article.md --ai-targeted`",
+    "SKILL.md 步骤 2 选择 Fetcher decision tree and 模板索引: `templates/stealth_cloudflare.py`",
+    "SKILL.md 步骤 3 items 6-7: 执行脚本 / CLI → 返回最小必要结果; 沉淀经验（必做）→ references/site-patterns.md"
+  ]
+}

@@ -21,5 +21,5 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | rebrowser/rebrowser-playwright | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | Cedriccmh/claude-code-skill-scrapling | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | snyk/agent-scan | add | done | categories/agent-governance/agent-scan.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
-| tarang-tj/claude-skill-audit | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
+| tarang-tj/claude-skill-audit | add | done | categories/agent-governance/claude-skill-audit.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | HTS-Sleeping-Place/skills-scanner | add | failed |  | 中文页写入被基础设施泄露护栏拦下（第 27 行命中 credential-location：扫描器自己的 SQLite 路径），未绕过，等用户放行；草稿在 worker 工作区 | (session) |

@@ -19,6 +19,7 @@ https://github.com/Blinue/Magpie,magpie,image-processing,categories/media-proces
 https://github.com/Bogdanp/dramatiq,dramatiq,task-queue,categories/task-queue/dramatiq.md
 https://github.com/BuilderIO/agent-native,agent-native,workflow-builders,categories/agent-frameworks/workflow-builders/agent-native.md
 https://github.com/BurntSushi/ripgrep,ripgrep,data-tools,categories/dev-utilities/data-tools/ripgrep.md
+https://github.com/Cedriccmh/claude-code-skill-scrapling,claude-code-skill-scrapling,crawling-tools,categories/web-scraping/crawling-tools/claude-code-skill-scrapling.md
 https://github.com/Chachamaru127/claude-code-harness,claude-code-harness,engineering-workflows,categories/agent-skills/personal-collections/engineering-workflows/claude-code-harness.md
 https://github.com/ChatGPTNextWeb/NextChat,nextchat,llm-chat-ui,categories/llm-chat-ui/nextchat.md
 https://github.com/ChromeDevTools/chrome-devtools-mcp,chrome-devtools-mcp,agent-browser-tools,categories/web-automation/agent-browser-tools/chrome-devtools-mcp.md

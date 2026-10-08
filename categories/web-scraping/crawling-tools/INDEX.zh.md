@@ -7,6 +7,7 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
+| **Claude Code Skill Scrapling** | 当你想让 Python 机器上的 Claude Code agent 在遇到 Cloudflare 403 后自己从普通请求升级到隐身浏览器、而不是瞎猜时用它——但它是只有四次提交的单人封装，速查卡已和当前 Scrapling 脱节；库自带的官方 skill 才是有人维护的那份。 | C（4/5） | [→](claude-code-skill-scrapling.zh.md) |
 | **Firecrawl** | 一款可规模化搜索、抓取并与网页交互的 API——将原始网页转化为干净的 Markdown 或结构化数据，供你的 agent 直接使用。 | B（5/6） | [→](firecrawl.zh.md) |
 | **fuck-login** | 一批约 20 个 Python 脚本，逐个复刻知名网站（多为中文站：知乎、微博、百度、京东、B 站、GitHub、豆瓣）的登录流程，让你把拿到的会话 cookie 带进爬虫。这是一个 2016 年的教学仓库，作者已明确**不再维护**。 | E（5/6） | [→](fuck-login.zh.md) |
 | **gopup** | 一个 Python 库，把一大堆（多为中文的）公开数据源封装成返回 pandas DataFrame 的单行调用——百度/微博/谷歌搜索指数、中国宏观指标（CPI/PPI/PMI、货币供应量、汇率）、Shibor/LPR 利率、独角兽公司名单、影视票房和疫情数据等等。 | E（4/6） | [→](gopup.zh.md) |
