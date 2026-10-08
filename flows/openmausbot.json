@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenMausBot does", "zh": "OpenMausBot 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install at least one agent CLI and log in with your own account", "zh": "装好至少一个 agent CLI，用自己的账号登录", "code": "claude · codex · grok"},
+    {"lane": "you", "en": "Install and open OpenMausBot (desktop download, or from a terminal)", "zh": "安装并打开 OpenMausBot（下载桌面版，或在终端里跑）", "code": "npx openmausbot"},
+    {"lane": "them", "en": "Starts its harness on 127.0.0.1 and lists the logged-in CLIs' models in the picker", "zh": "在 127.0.0.1 起 harness，把已登录 CLI 的模型列进选择器", "component": {"en": "harness server", "zh": "harness 服务"}},
+    {"lane": "you", "en": "Create a bot: name, personality, model, optional computer and apps", "zh": "建一个 bot：名字、性格、模型，可选电脑和连接的应用"},
+    {"lane": "them", "en": "Runs each turn by starting that CLI and streams its work into the chat", "zh": "每轮对话启动对应 CLI，把它的工作过程实时推进聊天", "component": {"en": "provider driver", "zh": "provider 驱动"}},
+    {"lane": "them", "en": "Turns the CLI's permission requests into Allow / Deny cards", "zh": "把 CLI 的权限请求变成“允许 / 拒绝”卡片", "component": {"en": "permission broker", "zh": "权限代理"}},
+    {"lane": "you", "en": "Message bots like contacts and answer their cards", "zh": "像给联系人发消息一样派活，回答它们的卡片"}
+  ],
+  "value": {
+    "en": "Several agents you already pay for become contacts you message and approve in one app, instead of terminal tabs you babysit",
+    "zh": "已经付费的几个 agent 变成一个应用里能发消息、能审批的联系人，不用再守着一排终端标签页"
+  },
+  "sources": [
+    "https://github.com/milind-soni/OpenMausBot/blob/main/README.md Quick start (requirements: claude, codex or grok installed and logged in; 'They appear in the model picker automatically'), 'Run from a terminal or on a server' (npm install -g openmausbot / npx openmausbot), How it works (harness server 127.0.0.1:8799, drivers over local CLIs, permission broker, one SSE stream)",
+    "https://github.com/milind-soni/OpenMausBot/blob/main/README.md Features (bot personality, model picker, computer panel, connected apps, approval cards: Allow / Deny)",
+    "https://github.com/milind-soni/OpenMausBot/blob/main/docs/approval-levels.md (approval levels pass through the provider's native permission modes)"
+  ]
+}

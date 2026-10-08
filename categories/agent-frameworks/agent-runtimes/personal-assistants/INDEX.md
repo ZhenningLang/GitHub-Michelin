@@ -16,6 +16,7 @@
 | **Raven** | Use it when you want one surface that splits a big brief into a task graph and hands the nodes to built-in research/code/design/on-call agents or to Claude Code and Codex — but it's a 4-month-old pre-alpha, the sandbox is off by default, and DAG nodes can bypass it (#796). | B (6/6) | [→](raven.md) |
 | **Rakazo** | Use it when you want self-hosted AI teammates — persistent bots, each with its own thread, routines and a Linux computer with a browser you can take over, on your Docker host or a sandbox provider and any model — but it is a 7-week-old beta tracking the `edge` image, and shell/browser actions inside the computer skip approval. | B (6/6) | [→](rakazo.md) |
 | **OpenMinis** | Use it when you want an AI agent that does errands on the phone itself — a Linux shell inside an iOS/Android app plus Health, Calendar, Reminders and HomeKit as tools, with your own cloud model — but no model runs on-device, privacy tools default to Bypass, and the repo is a no-PR mirror with one visible committer. | C (6/6) | [→](openminis.md) |
+| **OpenMausBot** | Use it when you already pay for Claude Code, Codex or the Grok CLI and want them as a roster of named bots in one chat app — each with its own model, computer and connected apps, permission prompts as Allow/Deny cards — but approvals are the CLIs' own modes, analytics are on by default, `enterprise/` is source-available, and it is 8 weeks old with near-daily releases. | B (6/6) | [→](openmausbot.md) |
 
 ## Comparison matrix
 
@@ -30,6 +31,7 @@
 | [Raven](raven.md) | ✅ | B (6/6) | EverMind's host agent (nanobot fork) that orchestrates its own specialists and 13 third-party agents as a DAG, with EverOS memory; buys breadth at the price of pre-alpha churn and a sandbox you must enable and verify. |
 | [Rakazo](rakazo.md) | ✅ | B (6/6) | Elie Steinbock's open alternative to xAI's Grok Bot: Pi agent loop plus a checkpointed Docker/E2B/Daytona/Box computer per bot, web/Electron/Expo clients; buys durable graphical computers with no hosted dependency at the price of heavy ops and container-only isolation. |
 | [OpenMinis](openminis.md) | ✅ | C (6/6) | Free BYOK phone agent with an in-app Alpine sandbox (iSH on iOS, PRoot on Android) and native bridges to Apple/Android data; buys no-server device integration at the price of iOS background limits, a one-command-at-a-time sandbox and permissive default permissions. |
+| [OpenMausBot](openmausbot.md) | ✅ | B (6/6) | Milind Soni's open Grok Bot alternative that drives the agent CLIs you already log into (claude, codex, grok) from a Telegram-style app, with Boat/Local VM/your-own-Mac computers and Composio apps; buys BYO-agent with light ops at the price of passthrough approvals, default-on analytics and an open-core `enterprise/` layer. |
 
 ## What belongs here
 

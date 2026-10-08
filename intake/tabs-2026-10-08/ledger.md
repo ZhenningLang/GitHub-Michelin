@@ -28,3 +28,10 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | RationalEyes/claude-skills-security-guide | add | done | categories/agent-governance/claude-skills-security-guide.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | elliottwaves-20/agent-guard | add | done | categories/agent-governance/agent-guard.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | brightdata/skills | add | done | categories/agent-skills/vendor-collections/product-vendors/brightdata-skills.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
+| Anil-matcha/open-dots | add | running |  |  | anil-matcha/open-dots |
+| CopilotKit/OpenDots | add | running |  |  | copilotkit/opendots |
+| CopilotKit/openmuse | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openmuse.md | fresh: last_verified ≤ 90 天，无改动 | copilotkit/openmuse |
+| DietrichGebert/ponytail | sync | done | categories/agent-skills/engineering/ponytail.md | fresh: last_verified ≤ 90 天，无改动 | dietrichgebert/ponytail |
+| elie222/rakazo | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md | fresh: last_verified ≤ 90 天，无改动 | elie222/rakazo |
+| larashero3-dotcom/lieflat-less-ai-tone | add | running |  |  | larashero3-dotcom/lieflat-less-ai-tone |
+| milind-soni/OpenMausBot | add | running |  |  | milind-soni/openmausbot |
