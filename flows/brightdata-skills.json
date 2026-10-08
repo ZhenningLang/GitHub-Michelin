@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Bright Data skills + CLI do",
+    "zh": "Bright Data 包与 CLI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the Bright Data CLI and approve the login in your browser",
+      "zh": "装好 Bright Data CLI，在浏览器里批准登录",
+      "code": "bdata login"
+    },
+    {
+      "lane": "them",
+      "en": "Stores the API key locally and creates two billed zones on your account",
+      "zh": "把 API 密钥存到本地，在你账上建好两个计费 zone",
+      "component": {
+        "en": "bdata CLI",
+        "zh": "bdata 命令行"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Install the skills you want into the agent, one at a time",
+      "zh": "把需要的 skill 逐个装进 agent",
+      "code": "bdata skill add scrape"
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent in plain words for a page, a search, or records from a site",
+      "zh": "用大白话让 agent 取一个页面、一次搜索或某个站点的记录"
+    },
+    {
+      "lane": "them",
+      "en": "Routes the job to search, page fetch, a per-site extractor or the cloud browser, and runs the call",
+      "zh": "把活分给搜索、单页抓取、按站点提取器或云端浏览器，并发出调用",
+      "component": {
+        "en": "onboarding + task skill",
+        "zh": "onboarding 加任务 skill"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Greps the result for block-page signatures before reporting success; each call is billed",
+      "zh": "汇报成功前先 grep 封锁页特征；每次调用都计费",
+      "component": {
+        "en": "scrape skill",
+        "zh": "scrape skill"
+      }
+    }
+  ],
+  "value": {
+    "en": "The agent brings back the real page or record instead of a 403 or challenge page; you pay per request instead of running browsers and proxies",
+    "zh": "agent 带回真页面或真记录，而不是 403 或验证页；你按次付费，不用自己运维浏览器和代理"
+  },
+  "sources": [
+    "README.md Agent Onboarding Skill / How it works: `curl -fsSL https://cli.brightdata.com/install.sh | bash`, `npm install -g @brightdata/cli`, `bdata login`; 'saves the API key locally, auto-creates the cli_unlocker and cli_browser zones'",
+    "skills/agent-onboarding/SKILL.md Install + path routing (A/B/M/C/D) and the `bdata skill add scrape` lines",
+    "skills/brightdata-cli/SKILL.md: `bdata skill add scrape`, `bdata budget`",
+    "skills/scrape/SKILL.md 'Not a block page' check (Access Denied, Just a moment, Attention Required, Checking your browser, captcha)",
+    "skills/bright-data-mcp/SKILL.md BEST/GOOD/WORST tool choice for an Amazon product; skills/data-feeds/SKILL.md `bdata pipelines <type> <url>`",
+    "brightdata/cli src/commands/skill-add.ts: fetches skill folders via GitHub contents API at ref=main"
+  ]
+}
