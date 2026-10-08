@@ -406,6 +406,7 @@ Fooocus,categories/on-device-ml/comfyui.md,,no
 Forme (`danmolitor/forme`),categories/pdf-tools/pdf-generation/pdfcn.md,,no
 Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
+fp-ts,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
 FullCalendar (`fullcalendar/fullcalendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
@@ -715,9 +716,11 @@ Neo4j / LightRAG,categories/rag-retrieval/structured-retrieval/INDEX.md,,no
 Neovim,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Neptune (AWS),categories/rag-retrieval/structured-retrieval/falkordb.md,,no
 Nested Kubernetes clusters / VM-per-tenant infrastructure,categories/sandboxing/kata-containers.md,,no
+NestJS,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
 Netflix VMAF cloud/SaaS scorers,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 Nethereum.Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 Neutralinojs,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
+neverthrow,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
 New API,categories/api-gateway/funtool.md,,no
 NewPipe (`TeamNewPipe/NewPipe`),categories/streaming-clients/pipepipe.md,,no
 NewsBlur,categories/reading-tools/netnewswire.md,,no
@@ -1156,6 +1159,7 @@ Zapier,categories/workflow-orchestration/n8n.md,,no
 zhlint,categories/agent-skills/ai-writing/content-production/tech-doc-style-chinese.md,,no
 zijie0/HumanSystemOptimization (健康学习到150岁),categories/learning-resources/how-to-live-longer.md,,no
 zkui / zk-web,categories/databases/database-clients/prettyzoo.md,,no
+Zod,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
 ZoeDepth,categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 ZooInspector,categories/databases/database-clients/prettyzoo.md,,no
 zstd,categories/dev-utilities/data-tools/openzl.md,,no

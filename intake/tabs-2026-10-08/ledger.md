@@ -8,7 +8,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | antirez/ds4 | add | done | categories/llm-inference/local-runtimes/ds4.md |  | antirez/ds4 |
 | cloudflare/skills | add | running |  |  | cloudflare/skills |
 | Effect-TS/effect | add | running |  |  | effect-ts/effect |
-| greekr4/playwright-bot-bypass | add | running |  |  | greekr4/playwright-bot-bypass |
+| greekr4/playwright-bot-bypass | add | done | categories/web-automation/agent-browser-tools/playwright-bot-bypass.md |  | greekr4/playwright-bot-bypass |
 | jo-inc/camofox-browser | add | running |  |  | jo-inc/camofox-browser |
 | K-Dense-AI/scientific-agent-skills | sync | done | categories/agent-skills/engineering/scientific-agent-skills.md | fresh: last_verified 2026-09-27，距今 11 天 ≤ 90，无改动 | k-dense-ai/scientific-agent-skills |
 | microsoft/VibeVoice | add | running |  |  | microsoft/vibevoice |
