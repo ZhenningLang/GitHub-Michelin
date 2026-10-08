@@ -12,6 +12,7 @@
 | **Snyk Agent Scan** | Snyk's machine-wide scanner for installed MCP servers and agent skills across 14 coding agents; discovery is local, but every verdict comes from Snyk's hosted, closed analysis API (account, quota, data egress). | A (6/6) | [→](agent-scan.md) |
 | **claude-skill-audit** | Offline regex scanner for a whole Claude Code `.claude/` directory — skills, agents, hooks, permissions, MCP config, secrets — in zero-dependency TypeScript; one author, 0 stars, shallow checks, use as a quick lint only. | C (5/6) | [→](claude-skill-audit.md) |
 | **skills-scanner** | Zero-dependency Python CLI that inventories skills, commands and MCP configs across Claude Code, Claude Desktop, Cursor and Windsurf, runs offline rules, and diffs against a SQLite baseline. Dormant since 2026-05 and not on PyPI: a pattern source, not a dependency. | C (5/6) | [→](skills-scanner.md) |
+| **agent-guard** | Pre-install gate skill that routes skills, MCP packages, npm/PyPI/Go/cargo packages, release binaries and install scripts to SkillSpector, Cisco mcp-scanner, GuardDog, OpenSSF package-analysis or VirusTotal, and merges them into one fail-closed exit code; no detection of its own, one author, 3 stars. | C (5/6) | [→](agent-guard.md) |
 
 
 ## Comparison matrix
@@ -23,6 +24,7 @@
 | [Snyk Agent Scan](agent-scan.md) | ✅ | A (6/6) | One command inventories and risk-scores everything installed, including live MCP tool descriptions; closed hosted detectors, unstable output, and it executes the servers it scans. |
 | [claude-skill-audit](claude-skill-audit.md) | ✅ | C (5/6) | Whole-config pattern scan you can read end to end and run offline; unproven, dormant, and blind to scripts, non-English injection and common key formats. |
 | [skills-scanner](skills-scanner.md) | ✅ | C (5/6) | Machine-wide inventory plus drift baseline with no dependencies; shallow regex/AST rules, one author, silent since 2026-05, install from git only. |
+| [agent-guard](agent-guard.md) | ✅ | C (5/6) | One scan-then-install gate across many target types and every local agent; pays with a deep toolchain (uv, Docker, a privileged container) and an unadopted one-author wrapper over upstream scanners. |
 
 
 ## What belongs here

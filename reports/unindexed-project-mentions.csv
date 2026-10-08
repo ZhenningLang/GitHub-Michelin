@@ -483,6 +483,7 @@ gRPC + Protocol Buffers,categories/networking/thriftpy.md,,no
 GSAP (GreenSock),categories/frontend-animation/anime.md,,no
 GSAP / Motion (Framer Motion) / Theatre.js,categories/frontend-animation/INDEX.md,,no
 gsplat (Nerfstudio),categories/3d-reconstruction/spirula-studio.md,,no
+GuardDog (`DataDog/guarddog`),categories/agent-governance/agent-guard.md,,no
 Guidance,categories/llm-inference/structured-generation/xgrammar.md,,no
 Guidance / Guardrails (AI),categories/agent-frameworks/agent-runtimes/agent-services/parlant.md,,no
 GuideLLM (vllm-project/guidellm),categories/llm-inference/inference-benchmarks/inferencex.md,,no

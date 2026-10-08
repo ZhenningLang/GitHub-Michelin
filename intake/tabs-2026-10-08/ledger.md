@@ -24,7 +24,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | tarang-tj/claude-skill-audit | add | done | categories/agent-governance/claude-skill-audit.md | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | HTS-Sleeping-Place/skills-scanner | add | done | categories/agent-governance/skills-scanner.md | 用户 2026-10-08 同意：正文不写具体路径，改写后补完 | (session) |
 | cisco-ai-defense/mcp-scanner | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
-| aisa-group/promptinject-agent-skills | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
+| aisa-group/promptinject-agent-skills | propose | proposed |  | paper demo: copies of Anthropic all-rights-reserved pptx skill + exfil-to-onrender variants; reusable follow-up is aisa-group/skill-inject | (session) |
 | RationalEyes/claude-skills-security-guide | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | elliottwaves-20/agent-guard | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |
 | brightdata/skills | add | running |  | 来源：opencode 会话 ses_ee6870c0cffem2MHIWn7R7blVn，非标签 | (session) |

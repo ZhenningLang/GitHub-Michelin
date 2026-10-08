@@ -12,6 +12,7 @@
 | **Snyk Agent Scan** | Snyk 的整机扫描器：清点 14 种编程 agent 里已装的 MCP 服务和 skill；发现在本地做，但每个结论都来自 Snyk 托管的闭源分析接口（要账号、有配额、数据外传）。 | A（6/6） | [→](agent-scan.zh.md) |
 | **claude-skill-audit** | 离线正则扫描整个 Claude Code `.claude/` 目录（skill、agent、hook、权限、MCP 配置、密钥）的零依赖 TypeScript 小工具；单一作者、0 star、检测浅，只能当快速 lint 用。 | C（5/6） | [→](claude-skill-audit.zh.md) |
 | **skills-scanner** | 零依赖的 Python CLI：盘点 Claude Code、Claude Desktop、Cursor、Windsurf 下的 skill、命令和 MCP 配置，离线跑规则，并与 SQLite 基线比对漂移。2026-05 起休眠且未上 PyPI：当模式来源看，不要当依赖用。 | C（5/6） | [→](skills-scanner.zh.md) |
+| **agent-guard** | 安装前把关的 skill：把 skill、MCP 包、npm/PyPI/Go/cargo 包、release 二进制和安装脚本分派给 SkillSpector、Cisco mcp-scanner、GuardDog、OpenSSF package-analysis 或 VirusTotal，再合并成一个 fail-closed 的退出码；自己没有检测能力，单一作者，3 个 star。 | C（5/6） | [→](agent-guard.zh.md) |
 
 
 ## 对比矩阵
@@ -23,6 +24,7 @@
 | [Snyk Agent Scan](agent-scan.zh.md) | ✅ | A（6/6） | 一条命令清点并给所有已装组件打风险分，连运行中的 MCP 工具描述也读；检测器闭源托管、输出不稳定，而且会执行被扫描的服务。 |
 | [claude-skill-audit](claude-skill-audit.zh.md) | ✅ | C（5/6） | 能从头读完、可离线运行的整套配置模式扫描；未经验证且已停更，看不到脚本、非英文注入和常见密钥格式。 |
 | [skills-scanner](skills-scanner.zh.md) | ✅ | C（5/6） | 零依赖的整机盘点加漂移基线；规则只有浅层正则与语法树，单一作者，2026-05 后无更新，只能从 git 安装。 |
+| [agent-guard](agent-guard.zh.md) | ✅ | C（5/6） | 一道“先扫后装”的闸门覆盖多种目标类型和本机所有 agent；代价是很深的工具链（uv、Docker、特权容器），以及一层没人用过、单人维护、包在上游扫描器外面的脚本。 |
 
 
 ## 什么该放这里

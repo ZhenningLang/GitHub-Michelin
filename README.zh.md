@@ -1271,6 +1271,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | **Snyk Agent Scan** | Snyk 的整机扫描器：清点 14 种编程 agent 里已装的 MCP 服务和 skill；发现在本地做，但每个结论都来自 Snyk 托管的闭源分析接口（要账号、有配额、数据外传）。 | Apache-2.0 | A（6/6） | [中](categories/agent-governance/agent-scan.zh.md) · [EN](categories/agent-governance/agent-scan.md) |
 | **claude-skill-audit** | 离线正则扫描整个 Claude Code `.claude/` 目录（skill、agent、hook、权限、MCP 配置、密钥）的零依赖 TypeScript 小工具；单一作者、0 star、检测浅，只能当快速 lint 用。 | MIT | C（5/6） | [中](categories/agent-governance/claude-skill-audit.zh.md) · [EN](categories/agent-governance/claude-skill-audit.md) |
 | **skills-scanner** | 零依赖的 Python CLI：盘点 Claude Code、Claude Desktop、Cursor、Windsurf 下的 skill、命令和 MCP 配置，离线跑规则，并与 SQLite 基线比对漂移。2026-05 起休眠且未上 PyPI：当模式来源看，不要当依赖用。 | Apache-2.0 | C（5/6） | [中](categories/agent-governance/skills-scanner.zh.md) · [EN](categories/agent-governance/skills-scanner.md) |
+| **agent-guard** | 安装前把关的 skill：把 skill、MCP 包、npm/PyPI/Go/cargo 包、release 二进制和安装脚本分派给 SkillSpector、Cisco mcp-scanner、GuardDog、OpenSSF package-analysis 或 VirusTotal，再合并成一个 fail-closed 的退出码；自己没有检测能力，单一作者，3 个 star。 | MIT | C（5/6） | [中](categories/agent-governance/agent-guard.zh.md) · [EN](categories/agent-governance/agent-guard.md) |
 ### social-simulation
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |

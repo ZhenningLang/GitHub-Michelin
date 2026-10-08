@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "agent-guard does", "zh": "agent-guard 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the skill, then run the one-time setup that installs the scanners it drives", "zh": "装上这个 skill，再跑一次性安装脚本装好它调用的扫描器", "code": "npx skills add elliottwaves-20/agent-guard · bash setup.sh"},
+    {"lane": "you", "en": "Hand it the link of the skill, MCP package or archive you are about to install", "zh": "把准备安装的 skill、MCP 包或压缩包链接交给它", "code": "python scripts/scan_url.py"},
+    {"lane": "them", "en": "Fetches one exact commit as a ZIP snapshot; nothing is cloned or executed", "zh": "按确定的 commit 下载 ZIP 快照，不克隆也不执行任何东西", "component": {"en": "URL resolver", "zh": "URL 解析器"}},
+    {"lane": "them", "en": "Routes the target to the matching scanner and runs its LLM pass in a separate tool-less process", "zh": "按目标类型分派给对应扫描器，LLM 评审放在无工具的独立进程里", "component": {"en": "scanner wrappers", "zh": "扫描器包装脚本"}},
+    {"lane": "them", "en": "Merges every stage into one verdict: exit 0 SAFE, 1 BLOCK, 2 no verdict", "zh": "把各阶段合并成一个结论：退出码 0 安全、1 拦截、2 无结论"},
+    {"lane": "you", "en": "After a SAFE verdict, install that same scanned copy", "zh": "拿到 SAFE 之后，安装刚才扫过的同一份内容", "code": "python scripts/install_skill.py skill"},
+    {"lane": "them", "en": "Re-scans a staging copy, then links it into every agent it detects on the machine", "zh": "对暂存副本再扫一遍，然后链接进本机检测到的每个 agent", "component": {"en": "universal installer", "zh": "通用安装器"}}
+  ],
+  "value": {"en": "One scan and one verdict cover all your agents, and what got installed is exactly what was scanned", "zh": "扫一次、判一次就覆盖你所有的 agent，装进去的正是扫过的那一份"},
+  "sources": [
+    "https://github.com/elliottwaves-20/agent-guard README 'Quick start' Option A (npx skills add elliottwaves-20/agent-guard; bash setup.sh) and setup.sh (uv tool install of SkillSpector at a pinned commit and cisco-ai-mcp-scanner)",
+    "README 'Scan any URL' (python scripts/scan_url.py; GitHub links fetched as commit-pinned ZIP snapshots; PyPI/npm pages routed to the MCP source scanner)",
+    "README 'The right professional scanner for each target' and 'LLM provider support' (separate tool-less LLM process)",
+    "README 'Exit codes' (0 SAFE, 1 BLOCK/REVIEW, 2 no verdict) and CHANGELOG 0.4.0 (stage merging: any BLOCK wins)",
+    "README 'Install after a SAFE verdict' (python scripts/install_skill.py skill; fresh scan of a staging copy; all detected agents) and 'Skill distribution: the pinned skills CLI'"
+  ]
+}
