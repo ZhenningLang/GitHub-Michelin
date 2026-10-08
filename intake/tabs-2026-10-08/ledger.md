@@ -34,4 +34,4 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | DietrichGebert/ponytail | sync | done | categories/agent-skills/engineering/ponytail.md | fresh: last_verified ≤ 90 天，无改动 | dietrichgebert/ponytail |
 | elie222/rakazo | sync | done | categories/agent-frameworks/agent-runtimes/personal-assistants/rakazo.md | fresh: last_verified ≤ 90 天，无改动 | elie222/rakazo |
 | larashero3-dotcom/lieflat-less-ai-tone | add | running |  |  | larashero3-dotcom/lieflat-less-ai-tone |
-| milind-soni/OpenMausBot | add | running |  |  | milind-soni/openmausbot |
+| milind-soni/OpenMausBot | add | done | categories/agent-frameworks/agent-runtimes/personal-assistants/openmausbot.md |  | milind-soni/openmausbot |
