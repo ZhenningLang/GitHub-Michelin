@@ -101,7 +101,7 @@ health:
 ## 何时不用
 
 - **SEO 是你的正业，不是上线杂活。** `seo-geo` 只是一份 250 行的说明文件加十个小脚本；不配 DataForSEO 密钥时，关键词调研就是拿 Ahrefs／Semrush 的页面去做网页搜索。要技术 SEO 的深度（E-E-A-T、本地、国际化、电商、按审计领域拆分的子 agent）用 claude-seo（未收录）；要长期排名跟踪和存下来的竞品数据，用 [open-seo](open-seo.zh.md)。
-- **你需要 GEO 数字是真的。** 技能里的表格给每种方法标了提升幅度（“引用来源”+40%、加统计数据 +37%、FAQPage schema “+40% AI 可见度”），出处写的是普林斯顿 GEO 论文。那篇论文研究的是内容改写，不是 schema 标记，所以 FAQPage 那个数字不来自论文[推断]。把这张表当经验法则，向别人汇报提升之前，先自己统计 AI 回答里引用你的次数。
+- **你需要 GEO 数字是真的。** 技能里的表格给每种方法标了提升幅度（“引用来源”+40%、加统计数据 +37%、FAQPage schema “+40% AI 可见度”），出处写的是普林斯顿 GEO 论文。对照论文的表 1（arXiv:2311.09735，按位置加权的字数指标，未优化时为 19.5），排序对不上：加引语约提升 43%、加统计数据 33%、引用来源 28%、权威语气 12%、生僻词 6%，技能表里写的是 30%、37%、40%、25%、15%。论文的九种方法里没有 schema 标记，所以 FAQPage 那个数字不来自论文。把这张表当经验法则，向别人汇报提升之前，先自己统计 AI 回答里引用你的次数。
 - **你想做需求调研，又不想开供应商账号。** `requesthunt` 是 RequestHunt 的薄客户端，而 RequestHunt 是同一家实验室按积分计费的 SaaS（免费档每月 100 积分）。它的 CLI 只发预编译二进制：`requesthunt-cli` 仓库里只有一份 README 和发布附件，所以技能里“用 `cargo install --path cli` 从源码构建”在公开仓库上做不到。要从近一个月的 Reddit／X／YouTube 里拿一份带引用的简报，用 [last30days](../../../deep-research/last30days.zh.md)；要直接读这些平台，用 [Agent-Reach](../../../deep-research/agent-reach.zh.md)。
 - **你不能或不想按 API 付费。** X 技能要 twitterapi.io 密钥，出图要 Gemini 密钥，`logo-creator` 去背景和转矢量还要 remove.bg 和 Recraft 密钥，Product Hunt 要开发者令牌。不需要任何密钥的只有 `reddit`（公开 JSON 端点）和 `seo-geo` 的体检脚本。如果硬约束是零费用读平台，用 [Agent-Reach](../../../deep-research/agent-reach.zh.md)。
 - **你走 Claude Code 插件市场安装，并且需要它能通过校验。** 每个插件清单都写着 `"skills": ["./SKILL.md"]`——指向一个文件，而 Claude Code 要的是目录。issue #87（2026-07-26）报告 `claude plugin validate` 在全部九个插件上失败；修复 PR #80 未合并就被关闭，PR #95 到 2026-10-01 仍无人审。改用 `npx skills add ReScienceLab/opc-skills`，这条路径仓库的 CI 在 Linux、macOS 和 Windows 上都测过。
@@ -130,7 +130,6 @@ health:
 
 ## 存疑（未验证）
 
-- [推断]FAQPage“+40% AI 可见度”这个数字不来自普林斯顿 GEO 论文（Aggarwal 等），那篇论文测的是内容层面的改写；本轮也没有把 `seo-geo` 表格里各方法的百分比和论文结果表逐项核对。
 - [未验证]issue #87 说 `claude plugin validate` 在全部九个插件上失败，本轮没有在本地复现；已核实的是清单内容（`skills/seo-geo/.claude-plugin/plugin.json` 里的 `"skills": ["./SKILL.md"]`），以及修复 PR #80 于 2026-06-23 未合并即关闭。
 - [未验证]安装数（总计 70,828，`seo-geo` 50,000）取自仓库的 `website/install-stats.json`，由仓库自己的工作流从 skills.sh 抓来写入；本轮没有直接查询 skills.sh，而 50,000 这个整数像是经过取整或封顶的展示值。
 - [未验证]`npx skills add` 路径由仓库 `test-installer.yml` 的 CI 矩阵覆盖（三种操作系统、九个技能——`archive` 不在矩阵里）；本轮没有实际安装，也没有对任何 Python 脚本调用真实 API。

@@ -97,7 +97,7 @@
 <text class="ph" x="82" y="705">Gate in CI</text>
 <text class="t" x="82" y="722">Add the drift-gate step against the</text>
 <text class="t" x="82" y="744">preview deployment</text>
-<text class="c" x="82" y="768">uses: dembrandt/dembrandt@v0.37.0</text>
+<text class="c" x="82" y="768">uses: dembrandt/dembrandt@v0.38.0</text>
 <text class="comp" x="82" y="791">component: GitHub Action</text>
 <rect class="cardT" x="472" y="744" width="368" height="114" rx="8"/>
 <rect class="accT" x="472" y="744" width="4" height="114" rx="2"/>

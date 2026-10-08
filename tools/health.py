@@ -1027,7 +1027,8 @@ def _split_scope(pkg_name: str) -> tuple[str | None, str]:
 def _match_quality(entry: dict, repo_owner: str, repo_name: str) -> int:
     """How strongly a candidate package claims to BE this repo. Higher is better.
 
-    2 = its name matches the repo name.
+    3 = its name IS the repo name, after normalizing case and punctuation.
+    2 = its name contains the repo name or the reverse (`openai-whisper` for `whisper`).
     1 = it is scoped to the repo's owner (`@mui/material` for `mui/material-ui`) — the
         monorepo case, where no single package carries the repo's name.
     0 = neither; usable only as a last resort.
@@ -1043,6 +1044,12 @@ def _match_quality(entry: dict, repo_owner: str, repo_name: str) -> int:
         # tail `v3`, which matches nothing.
         path = re.sub(r"/v\d+$", "", name)
         tail = path.rsplit("/", 1)[-1]
+    norm = lambda v: re.sub(r"[^a-z0-9]", "", (v or "").lower())
+    # A scoped package counts as the exact name only under the repo owner's own scope:
+    # `@shadanai/openclaw` is someone else's package that happens to share the name.
+    own_scope = scope is None or _name_fuzzy_match(scope, repo_owner)
+    if norm(repo_name) and own_scope and any(norm(n) == norm(repo_name) for n in (name, bare, tail)):
+        return 3
     if any(_name_fuzzy_match(n, repo_name) for n in (name, bare, tail)):
         return 2
     if scope and _name_fuzzy_match(scope, repo_owner):
@@ -1110,8 +1117,22 @@ def _select_canonical(candidates: list[dict], repo_owner: str, repo_name: str,
         return c.get("downloads") or 0
 
     scored = [(c, _match_quality(c, repo_owner, repo_name)) for c in pool]
+    # An exact name beats a containment match before downloads are compared at all:
+    # registries report different periods (crates.io all-time, PyPI last month), so
+    # `pyxel-engine`'s 89k lifetime crate downloads outranked the `pyxel` PyPI package
+    # (10.5k/month, 85 dependents) that the project actually ships (2026-10-05).
+    # Only when nothing containing the name is depended on more: an exact name on an
+    # unrelated registry is how squatters look (`pdfjs` on NuGet next to npm's
+    # `pdfjs-dist`), and dependents, unlike downloads, mean the same on every registry.
+    def deps(c):
+        return c.get("dependent_repos_count") or 0
+
+    exact = [c for c, q in scored if q == 3 and dl(c) >= NOISE_FLOOR_DOWNLOADS]
+    contained = [c for c, q in scored if q == 2 and dl(c) >= NOISE_FLOOR_DOWNLOADS]
+    if exact and deps(max(exact, key=deps)) >= max(map(deps, contained), default=0):
+        return max(exact, key=dl)
     for want in (2, 1):
-        tier = [c for c, q in scored if q == want and dl(c) >= NOISE_FLOOR_DOWNLOADS]
+        tier = [c for c, q in scored if min(q, 2) == want and dl(c) >= NOISE_FLOOR_DOWNLOADS]
         if tier:
             return max(tier, key=dl)
     # Nothing claims the repo by name or scope. Do NOT fall back to whichever candidate
