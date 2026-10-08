@@ -17,6 +17,7 @@
 | **Airframe** | Use it when you embed GGUF inference in your own Rust program and need a pure-Rust build with one-shader-language GPU coverage (WebGPU) — accepting a six-month-old, single-contributor engine with 12 certified architecture families and a pending-patent subsystem. | C (4/6) | [→](airframe.md) |
 | **FreeToken** | Use it when one NVIDIA desktop must serve a Mixture-of-Experts model bigger than its VRAM to your coding agent — experts live in host RAM with a GPU cache — accepting a ~2-month-old, Linux-plus-NVIDIA-only v0.1.x engine with no API auth. | B (6/6) | [→](freetoken.md) |
 | **Claude Code Local** | Use it when Claude Code's usage limit or a no-cloud rule stops you and you want the same `claude` session answered by a local model on an Apple Silicon Mac — accepting a six-month-old single-maintainer repo, one-user-at-a-time serving, and abliterated default models. | B (6/6) | [→](claude-code-local.md) |
+| **DwarfStar (ds4)** | Use it when you own a 96 GB+ Mac, a DGX Spark or a Strix Halo box and want one of a few frontier MoE models (DeepSeek V4, GLM 5.x, Qwen3.8) driving your coding agent locally, spilling to SSD when RAM runs out — accepting a five-month-old, single-maintainer, release-less engine that loads only its own GGUF files. | B (6/6) | [→](ds4.md) |
 
 ## Comparison matrix
 
@@ -32,6 +33,7 @@
 | [Airframe](airframe.md) | ✅ | — | Pure-Rust WebGPU (WGSL) GGUF inference engine — `cargo build` covers NVIDIA/AMD/Intel/Apple Silicon; young, single-contributor, no LICENSE file, and the FSE subsystem carries a pending US patent. |
 | [FreeToken](freetoken.md) | ✅ | — | Serves frontier MoE checkpoints (safetensors) on one consumer NVIDIA card by keeping experts in host RAM and auto-sizing a GPU expert cache, with OpenAI/Anthropic APIs and `ft launch` for coding agents; Linux+NVIDIA only, needs RAM ≈ expert weights, v0.1.x format churn, no HTTP auth. |
 | [Claude Code Local](claude-code-local.md) | ✅ | — | MLX server that speaks the Anthropic Messages API to Claude Code and repairs local models' tool calls, with a RAM-sized installer and Desktop launchers; Mac-only, single-threaded, one global prompt cache, no speculative decoding. |
+| [DwarfStar (ds4)](ds4.md) | ✅ | — | Narrow C engine hand-fitted to a few frontier MoE models on Metal, CUDA and ROCm, with 2-bit expert quantization, SSD streaming for models larger than RAM, two-machine RDMA tensor parallelism and OpenAI/Anthropic APIs; loads only its own GGUFs, no releases, single maintainer, no API auth. |
 
 ## What belongs here
 

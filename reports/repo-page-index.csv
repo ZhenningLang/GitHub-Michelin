@@ -251,6 +251,7 @@ https://github.com/anthropics/claude-plugins-official,claude-plugins-official,ve
 https://github.com/anthropics/commerce-agents,commerce-agents,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/commerce-agents.md
 https://github.com/anthropics/knowledge-work-plugins,knowledge-work-plugins,vendor-collections,categories/agent-skills/vendor-collections/knowledge-work-plugins.md
 https://github.com/anthropics/skills,anthropic-skills,vendor-collections,categories/agent-skills/vendor-collections/anthropic-skills.md
+https://github.com/antirez/ds4,ds4,local-runtimes,categories/llm-inference/local-runtimes/ds4.md
 https://github.com/anyoptimization/pymoo,pymoo,ml-research,categories/ml-research/pymoo.md
 https://github.com/apache/airflow,airflow,workflow-orchestration,categories/workflow-orchestration/airflow.md
 https://github.com/apache/apisix,apisix,api-gateway,categories/api-gateway/apisix.md

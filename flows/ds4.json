@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "ds4 does", "zh": "ds4 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and build the target for your hardware", "zh": "克隆仓库，按自己的硬件选一个目标编译", "code": "make · make cuda-spark · make strix-halo"},
+    {"lane": "you", "en": "Download one of the project's own model files", "zh": "下载项目自己产出的模型文件", "code": "./download_model.sh ds4f-q2"},
+    {"lane": "them", "en": "Fetches about 81 GiB into gguf/, resumable, and links it as the default model", "zh": "把约 81 GiB 下到 gguf/，可断点续传，并设为默认模型", "component": {"en": "download_model.sh", "zh": "download_model.sh 脚本"}},
+    {"lane": "you", "en": "Start the server with the context size you can afford", "zh": "按内存余量定上下文长度，启动服务", "code": "./ds4-server --ctx 32768"},
+    {"lane": "them", "en": "Loads the model on the GPU and serves OpenAI- and Anthropic-style APIs on 127.0.0.1:8000", "zh": "载入模型，在本机 8000 端口提供 OpenAI／Anthropic 接口", "component": {"en": "ds4-server", "zh": "ds4-server 服务"}},
+    {"lane": "you", "en": "Point your coding agent at the local address", "zh": "把编程智能体指向本机地址", "code": "export ANTHROPIC_BASE_URL=\"http://127.0.0.1:8000\""},
+    {"lane": "them", "en": "Keeps the conversation state so a resent history only costs its new tail", "zh": "记住对话状态，重发的历史只需处理新增的尾部", "component": {"en": "KV cache (live + disk)", "zh": "KV 缓存（内存加磁盘）"}}
+  ],
+  "value": {"en": "A frontier open model drives your coding agent from your own Mac, Spark or Strix Halo, with no hosted endpoint involved", "zh": "前沿开源模型在你自己的 Mac、Spark 或 Strix Halo 上驱动编程智能体，全程不经过任何云端接口"},
+  "sources": [
+    "README.md Start Here (git clone; build table: make / make cuda-spark / make strix-halo / make cuda-generic; ./download_model.sh ds4f-q2; downloads go in gguf/, repeat to resume)",
+    "README.md Everyday Use (./ds4-server --ctx 32768; default model ds4flash.gguf is a link updated by main-model downloads; server listens at http://127.0.0.1:8000)",
+    "docs/MODELS.md (ds4f-q2: Flash 0731, about 81 GiB)",
+    "docs/SERVER.md APIs (/v1/chat/completions, /v1/responses, /v1/completions, /v1/messages) and Disk KV cache (live token prefix, then disk prefixes, prefill only the new suffix)",
+    "docs/CLIENTS.md Claude Code (export ANTHROPIC_BASE_URL=\"http://127.0.0.1:8000\")"
+  ]
+}
