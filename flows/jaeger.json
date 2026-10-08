@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Jaeger does",
+    "zh": "Jaeger 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Start Jaeger: one container with collector, query service, UI and in-memory storage",
+      "zh": "启动 Jaeger：一个容器里有采集器、查询服务、界面和内存存储",
+      "code": "docker run -p 16686:16686 -p 4317:4317 -p 4318:4318 jaegertracing/jaeger:latest"
+    },
+    {
+      "lane": "you",
+      "en": "Instrument each service with the OpenTelemetry SDK and export spans over OTLP",
+      "zh": "用 OpenTelemetry SDK 给各服务埋点，经 OTLP 发 span",
+      "code": "OTLP gRPC :4317 · OTLP HTTP :4318"
+    },
+    {
+      "lane": "them",
+      "en": "Receives spans from every service, batches them and writes them to trace storage",
+      "zh": "接收各服务发来的 span，攒批写入链路存储",
+      "component": {
+        "en": "collector pipeline",
+        "zh": "采集管线"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Joins spans that share a trace ID into one end-to-end request timeline",
+      "zh": "把同一 trace ID 的 span 拼成一条端到端的请求时间线",
+      "component": {
+        "en": "jaeger_query",
+        "zh": "jaeger_query"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Search by service, operation, tag or duration and open the slow trace",
+      "zh": "按服务、操作、标签或耗时搜索，打开那条慢请求",
+      "code": "http://localhost:16686"
+    }
+  ],
+  "value": {
+    "en": "One slow request across a dozen services shows exactly which call, in which service, ate the time",
+    "zh": "一个跨十几个服务的慢请求，能直接看出时间耗在哪个服务的哪一次调用上"
+  },
+  "sources": [
+    "https://github.com/jaegertracing/jaeger README (Quick Start: docker run jaegertracing/jaeger:latest with ports 16686/4317/4318, all-in-one includes UI, collector, query, in-memory storage; Architecture: OpenTelemetry SDK -> collector -> storage <- query <- UI)",
+    "https://github.com/jaegertracing/jaeger/blob/main/cmd/jaeger/config.yaml (otlp/jaeger/zipkin receivers, batch processor, jaeger_storage_exporter, jaeger_query extension)"
+  ]
+}

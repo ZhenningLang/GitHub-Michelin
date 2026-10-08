@@ -6,8 +6,8 @@ category: article-extraction
 tags: [content-extraction, machine-learning, boilerplate-removal, python, scikit-learn]
 language: Python
 license: MIT
-maturity: v2.0.x, low-activity / aging deps, ~1.3k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v2.0.4 (2019-04), last commit on master 2021-05, quiet since (as of 2026-10-08); aging deps, ~1.3k stars (as of 2026-06)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-07-08T00:53:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:31:09Z
+  computed_at: 2026-10-08T08:28:24Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1967
+        last_commit_age_days: 1977
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5212
-        last_commit_age_days: 1967
+        repo_age_days: 5222
+        last_commit_age_days: 1977
         cohort: library
     governance:
       grade: "?"
@@ -80,9 +80,30 @@ health:
 
 当你有（或能标注）训练数据、想要能靠重训改进的抽取质量、而不愿接受一刀切启发式时，你会专门选它。它是 Python 正文抽取领域里的 ML 选项。
 
+## 怎么用起来
+
+dragnet 把网页 HTML 切成一个个**块**——结构标签之间连续的一段段文字——再逐块问一个训练好的分类器：“这块属于正文吗？”。**切块器、特征计算和预训练模型都随包附带；你交进去一段 HTML 字符串，拿回正文字符串。** 它给每个块算一组*特征*——描述这块的数字，比如有多少文字、其中多少是链接文字、文字和标签的比例（这些思路借自 boilerpipe 和 CETR 标签比论文）——再由 scikit-learn（Python 里最常用的机器学习库）的模型判定是不是正文。常见需求有两个现成函数：只要正文用 `extract_content`，连读者评论也要就用 `extract_content_and_comments`。因为提取器遵循 scikit-learn 的 `fit`/`predict` 接口，模型可以换：拿你自己领域的网页标注后重新训练，而不是手调规则。归你的是：下载 HTML、在它老旧的 scikit-learn 版本锁定下把包构建出来（文档给的省事路径是 Docker），以及重训时的标注工作。
+
+![dragnet — 主干用户故事](../../../assets/flow/dragnet.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/dragnet.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆 master，连同锁死的数值计算栈一起构建，Docker 最省事 — `docker build -t dragnet .`
+2. **你**：自己下载网页 HTML，交给一个函数 — `extract_content(r.content) · extract_content_and_comments(r.content)`
+3. **dragnet**：把 HTML 切成一个个文本块
+4. **dragnet**：给每块算特征，由预训练的 scikit-learn 模型判定是不是正文
+5. **dragnet**：把判为正文的块拼成一个字符串返回
+
+**价值**：拿到正文（可选带评论区），而做判断的模型可以拿你自己的网页重新训练
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **你今天就要一个有维护、好安装的依赖。** 这是最大的存疑：dragnet **低活跃**（最后 push 2025-07，最后发布 2.0.4 在 2019），且 pin 了**老化、狭窄的依赖范围**——尤其 `scikit-learn>=0.15.2,<0.21.0` 和 `ftfy<5.0.0`——与现代 Python/科学栈冲突，会让安装很痛。[推断]
+- **你今天就要一个有维护、好安装的依赖。** 这是最大的存疑：dragnet **已近停摆**（master 最后一次提交在 2021-05，最后发布 2.0.4 在 2019；`mp/py3.10` 分支 2025-07 有过一次提交，但未合并），且 pin 了**老化、狭窄的依赖范围**——尤其 `scikit-learn>=0.15.2,<0.21.0` 和 `ftfy<5.0.0`——与现代 Python/科学栈冲突，会让安装很痛。[推断]
 - **你不想要 numpy/scipy/Cython 构建。** 它建在数值栈上、带 Cython 扩展；安装/编译比纯 Python 启发式抽取器重。
 - **你只要零训练的像样文章抽取。** 一个启发式库（[Readability.js](readability-js.zh.md)、[python-readability](python-readability.zh.md) 或 trafilatura）轻得多，对许多管线已足够；dragnet 的优势是 ML/评论，而你可能并不需要。
 - **你需要现代元数据或爬取支持。** 它返回正文（和评论）字符串；不是像 trafilatura 那样的完整元数据/爬取框架。
@@ -119,7 +140,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2025-07；最新发布 2.0.4 可追溯到 **2019**。这是**低活跃/吃老本**——偶有改动但非活跃开发。未正式归档，但节奏近乎停滞。[推断]
+- **维护（2026-10）。** master 最后一次提交在 **2021-05**；最新发布 2.0.4 可追溯到 **2019**。2025-07 那次 push 进的是未合并的 `mp/py3.10` 分支，不是 master。这是**低活跃/吃老本**——偶有改动但非活跃开发。未正式归档，但节奏近乎停滞。[推断]
 - **治理 / bus factor。** 归一个 **Organization**（`dragnet-org`）所有、有若干历史贡献者，但活动已变稀——鉴于停滞节奏，有效 bus factor 偏低。[推断]
 - **年龄 × Lindy（2026-06）。** 2012-06 创建——约 14 岁，但**没有当前活跃的年龄不算 Lindy 通过**：一个长寿却*吃老本*的项目在代码上耐用、在支持上脆弱。要用 年龄 × 仍活跃，而这里“仍活跃”那一半很弱。[推断]
 - **采用度与生态。** 约 1.3k star 和学术血统（WWW 2013）给过它真实的历史采用；如今 Python 社区大体已转向 trafilatura 等有维护的替代品。[未验证]
@@ -127,8 +148,9 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 1.3k star；最新发布 2.0.4（2019），最后 push 2025-07——数字对时间敏感，发布/push 之间的落差是吃老本信号。
+- [未验证] 截至 2026-06 约 1.3k star；最新发布 2.0.4（2019），master 最后提交 2021-05，最后 push 2025-07（推到旁支）——数字对时间敏感，发布/push 之间的落差是吃老本信号。
 - [推断] `scikit-learn>=0.15.2,<0.21.0` 和 `ftfy<5.0.0` 的 pin 读自仓库的 requirements/setup；其与现代栈不兼容是推断，且*当前*在某个 Python 版本上的可安装性这里未实际试装。
-- [推断] “低活跃/吃老本”和“有效 bus factor 偏低”由节奏（2019 发布、2025-07 push）推断，而非维护者声明。
+- [推断] “低活跃/吃老本”和“有效 bus factor 偏低”由节奏（2019 发布、2021-05 master 最后提交、2025-07 旁支提交）推断，而非维护者声明。
 - [未验证] 内置 pickle 模型在当前 numpy/scikit-learn 下是否仍能干净加载未核实；pickle 跨 sklearn 版本兼容性是已知的脆弱点。
 - [未验证] 与 trafilatura/启发式抽取器的相对精度反映总体定位，而非实测基准。
+- [推断] 怎么用起来一节举的特征（文字量、链接文字占比、文字与标签比）是依据 README 自称借鉴的论文（Kohlschütter 浅层文本特征、Weninger CETR 标签比）概括的，没有逐个读 `features.py` 核对。

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "SGLang does", "zh": "SGLang 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get SGLang on a GPU host: the Docker image or a uv install", "zh": "在 GPU 主机上装好 SGLang：Docker 镜像或 uv 安装", "code": "docker pull lmsysorg/sglang:latest · uv pip install --prerelease=allow sglang"},
+    {"lane": "you", "en": "Start one server on your model", "zh": "在你的模型上启动一个服务", "code": "sglang serve MODEL_PATH --host 0.0.0.0 --port 30000"},
+    {"lane": "them", "en": "Loads the weights and opens an OpenAI-compatible API on :30000", "zh": "加载权重，在 :30000 开放 OpenAI 兼容 API", "component": {"en": "HTTP server", "zh": "HTTP 服务"}},
+    {"lane": "you", "en": "Point your existing OpenAI client at it, adding a JSON schema where output must parse", "zh": "把 OpenAI 客户端指过去，要可解析的请求带上 schema", "code": "http://localhost:30000/v1/chat/completions"},
+    {"lane": "them", "en": "Batches requests and reuses the cached prefix any earlier request already computed", "zh": "把请求合批，复用之前请求已算好的相同开头", "component": {"en": "RadixAttention cache", "zh": "RadixAttention 缓存"}},
+    {"lane": "them", "en": "Blocks any next token that would break the schema, so the reply always parses", "zh": "挡掉会破坏 schema 的下一个 token，回复必然能解析", "component": {"en": "XGrammar backend", "zh": "XGrammar 后端"}}
+  ],
+  "value": {"en": "Repeated prompts stop costing GPU time and structured replies stop needing retries", "zh": "重复的开头不再白耗 GPU，结构化回复不再需要重试"},
+  "sources": [
+    "https://github.com/sgl-project/sglang#get-started (docker pull lmsysorg/sglang:latest, uv pip install --prerelease=allow sglang)",
+    "https://github.com/sgl-project/sglang/blob/main/docs/docs/get-started/quickstart.mdx (sglang serve MODEL_PATH --host 0.0.0.0 --port 30000, curl http://localhost:30000/v1/chat/completions)",
+    "https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/structured_outputs.mdx (json_schema / regex / ebnf; XGrammar default backend)",
+    "https://github.com/sgl-project/sglang/tree/main/docs/docs/advanced_features (session_radix_cache, radix_eviction_policy)"
+  ]
+}

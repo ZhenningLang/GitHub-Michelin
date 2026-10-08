@@ -6,8 +6,8 @@ category: python-tooling
 tags: [python, debugging, code-injection, introspection, gdb, diagnostics]
 language: Python
 license: GPL-3.0
-maturity: v2.0 (old), low-cadence maintenance (2026-06)
-last_verified: 2026-06-28
+maturity: v2.0 (2012-05-09), last commit 2025-04-07, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2025-04-07T02:52:38Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:25:21Z
+  computed_at: 2026-10-08T08:25:40Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 539
+        last_commit_age_days: 549
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: pyrasite
         dependent_repos_count: 14
-        downloads_last_month: 7825
+        downloads_last_month: 8288
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 5496
-        last_commit_age_days: 539
+        repo_age_days: 5507
+        last_commit_age_days: 549
         cohort: tool
     governance:
       grade: "?"
@@ -79,10 +79,32 @@ health:
 
 当替代方案——杀掉重启再加更多埋点——不可接受、而普通调试器 attach 又不够（因为你想在目标上下文里*执行代码*：遍历它的对象图、调它的模块、给状态拍快照）时，你会专门拿出它。对于一个卡死或漏内存的 Python 服务做事故现场的内省，它是一把锋利、狭窄的工具。
 
+## 怎么用起来
+
+pyrasite 不是给你开一个要手动操作的调试会话；它只是借 **gdb**——标准调试器，只要内核的 **ptrace** 权限（允许一个进程控制另一个进程的机制）放行，就能附着到任何运行中的程序——调用几下就松手。它以批处理模式跑 `gdb -p <PID>`，拿到 **GIL**（全局解释器锁——CPython 线程执行 Python 代码必须持有的那把锁），让目标自己的解释器 `exec` 你指定的文件，再把锁还回去。**注入的管道是 pyrasite 的活，跑的代码是你的**：要么是它自带的载荷（打印所有线程栈、统计对象内存占用、强制垃圾回收、开反向 shell），要么是你自己写的任意 `.py` 文件，它在目标里运行，能直接访问目标的模块和对象。输出默认打到目标进程自己的 stdout/stderr；加 `--output localterm` 就送回你的终端。想交互式操作就用 `pyrasite-shell <PID>`，它注入一个反向 Python shell，你在提示符里敲的每一行都在那个活进程内部执行。
+
+![pyrasite — 主干用户故事](../../assets/flow/pyrasite.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pyrasite.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 gdb 7.3+ 和 pyrasite，并在主机上放开 ptrace — `echo 0 > /proc/sys/kernel/yama/ptrace_scope`
+2. **你**：挑一个自带载荷（线程栈、内存统计……）或自己写个 .py 文件 — `pyrasite --list-payloads`
+3. **你**：对活进程的 PID 执行，并要求把输出送回你的终端 — `--output localterm` — 组件：`pyrasite 命令行`
+4. **pyrasite**：用 gdb 附着到该 PID，拿到解释器锁 — 组件：`注入器（借 gdb）`
+5. **pyrasite**：让目标解释器 exec 你的文件，可直接访问它的模块和对象
+6. **pyrasite**：还锁并脱离，进程继续运行
+
+**价值**：不重启、也不用事先埋点，就能看到卡住或漏内存的 Python 进程内部的线程栈和对象
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **在生产里不理解爆炸半径就用。** 经 gdb 往活进程注入代码可能让它崩溃、损坏状态或触发安全控制。这是事故/诊断工具，不是常规埋点——把每次注入都当作可能对目标致命来对待。
-- **在非 Linux / 没有 gdb 的环境里。** 它依赖 **gdb** 挂到进程上（以 Linux 为中心）；在 ptrace/gdb attach 受限的平台或加固主机上（`ptrace_scope`、容器、加固生产），它根本用不了。[未验证]
+- **跑不了 gdb、或不能 ptrace 目标的地方。** 它需要 **gdb 7.3+** 才能附着；macOS 上要用签过名的 gdb，而限制 ptrace 的主机（Ubuntu 的 `ptrace_scope`、Fedora 的 `deny_ptrace` SELinux 开关、没给 ptrace 能力的容器、加固过的生产机）会直接挡住它。如果能提前规划，就在服务里预先嵌入 **manhole** 或远程 pdb，事后就不用附着。
 - **做日常调试。** 普通开发里，`pdb`/`breakpoint()`、`py-spy` 或 profiler 更安全且为此而生。pyrasite 是给你没法停掉进程那种情况用的。
 - **当你需要一个有维护、推进快的工具时。** 项目基本**休眠**——最近的真实发布（2.0）是很多年前的；它仍偶有修复但并非活跃开发。依赖前请核实它在你当前 Python/gdb 上能用。[未验证]
 - **做采样式 profiling / 火焰图。** 想要低开销地“我的 Python 时间花在哪”，**py-spy** 不注入代码就能读取目标，是更现代、更安全的选择。
@@ -99,10 +121,10 @@ health:
 
 ## 技术栈
 
-- **语言：** Python，驱动 **gdb** 挂到目标进程并在运行中的 CPython 解释器内执行注入的载荷。[推断]
+- **语言：** Python，驱动 **gdb** 挂到目标进程并在运行中的 CPython 解释器内执行注入的载荷（`pyrasite/injector.py`：`PyGILState_Ensure` → `PyRun_SimpleString` → `PyGILState_Release`）。
 - **机制：** 用 ptrace/gdb 暂停进程、调进去并运行注入代码；附带一个载荷运行 harness 和几个现成工具（对象 dump、线程栈、反向 shell）。
-- **接口：** 一个 CLI（`pyrasite`），以及历史上的一个 GUI（`pyrasite-gui`）做交互检查。
-- **目标：** Linux 上允许 gdb attach 的 CPython 进程。
+- **接口：** 一个 CLI（`pyrasite <pid> <payload>`）、交互式的 `pyrasite-shell <pid>`，以及放在独立仓库 `lmacken/pyrasite-gui` 里的 GUI。
+- **目标：** 允许 gdb attach 的 CPython 进程（README 写的是 Python 2.4 及以上，2 与 3 之间可以互相注入）——主要是 Linux；macOS 要用签过名的 gdb。
 
 ## 依赖
 
@@ -117,7 +139,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 仓库最后 push 于 2025-04，有零星合并活动（2025 和 2023 各几个 PR），但最近的真实发布标签（**2.0**）是很多年前的——最好读作**低节奏 / 近休眠维护**，是吃老本而非废弃。未归档。[推断]
+- **维护（2026-10）。** 最后一次提交在 2025-04-07，此后没有新提交；在那之前有零星合并活动（2025 和 2023 各几个 PR），但最近的真实发布标签（**2.0**）是很多年前的——最好读作**低节奏 / 近休眠维护**，是吃老本而非废弃。未归档。[推断]
 - **治理 / bus factor。** **User** 所有、单作者项目（`lmacken`/Luke Macken），加少数偶尔的贡献者——对这种敏感度的工具而言是明显的单维护者 bus-factor 风险。[推断]
 - **年龄与 Lindy 判断。** 2011-09 创建（约 14 年）⇒寿命长，但 Lindy 要求年龄**×仍活跃**；这里活跃度极低，所以判断是“老资格但在吃老本”——它存活下来了，但别把它的年龄当作持续投入的信号。[推断]
 - **采用度。** 约 2.9k star 反映出它作为*那个* Python 活进程注入工具的长期认可，但注意力已转向不注入的只观察工具（py-spy）；把 star 当历史而非当前势头。[未验证]
@@ -127,6 +149,6 @@ health:
 
 - [未验证] 截至 2026-06 约 2.9k star、220 fork、46 个 open issue——易变且对时间敏感；这里很可能反映历史人气多于当前活跃度。
 - [未验证] 最新发布标签是 2.0（旧）；近期仓库活动是偶尔的 PR 合并（2025-04、2023-10）而非新发布——“近休眠”是从该节奏推断的，并非维护者声明。
-- [未验证] gdb/ptrace 依赖和以 Linux 为中心的 attach 是从项目描述的机制推断的；确切要求（gdb 版本、`ptrace_scope`、容器 capability）随主机而异，这里不断言。
-- [推断] CLI 加历史 GUI 的面以及现成工具（对象 dump、线程栈、反向 shell）取自项目文档化特性，并非当前版本审计——请对照最新代码核实。
+- [未验证] gdb 7.3+ 的要求和 `ptrace_scope`／`deny_ptrace` 的说明来自 README 与 `docs/Installing.rst`；容器 capability 下的表现、`injector.py` 里的 Windows 注入路径是否仍可用，都没有实测。
+- [推断] 自带载荷（线程栈、内存统计、反向 shell）是从 `docs/Payloads.rst` 读到的，没在当前 CPython 上跑过——即便注入本身能成功，载荷也可能在新解释器上出错。
 - [未验证] 鉴于项目年龄，与当前 CPython 和 gdb 版本的兼容性未经确认；事故中依赖前请先测试。

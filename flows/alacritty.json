@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Alacritty does", "zh": "Alacritty 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it from your package manager, a release binary, or Cargo", "zh": "用包管理器、release 二进制或 Cargo 装上", "code": "cargo install alacritty"},
+    {"lane": "you", "en": "Optionally write a TOML config for fonts, colors and key bindings", "zh": "按需写一个 TOML 配置，定字体、配色和快捷键", "code": "$HOME/.config/alacritty/alacritty.toml"},
+    {"lane": "them", "en": "Starts your shell behind a pseudo-terminal and parses what it prints into a grid of cells", "zh": "在伪终端后启动你的 shell，把它的输出解析成字符格子", "component": {"en": "alacritty_terminal crate", "zh": "alacritty_terminal 库"}},
+    {"lane": "them", "en": "Draws that grid on the GPU with OpenGL, so floods of output stay smooth", "zh": "用 OpenGL 在 GPU 上画这张格子，大量输出也不卡", "component": {"en": "OpenGL renderer", "zh": "OpenGL 渲染器"}},
+    {"lane": "them", "en": "Watches the config file and applies changes when you save it", "zh": "盯着配置文件，你一保存就生效"}
+  ],
+  "value": {"en": "A fast, identical terminal on every OS; tabs and splits stay with tmux or your window manager", "zh": "每个系统上都是同一个快速终端；标签页和分屏仍交给 tmux 或窗口管理器"},
+  "sources": [
+    "https://github.com/alacritty/alacritty/blob/master/INSTALL.md (cargo install alacritty; package managers)",
+    "https://github.com/alacritty/alacritty#configuration (config search paths incl. $HOME/.config/alacritty/alacritty.toml; Alacritty does not create the file)",
+    "https://github.com/alacritty/alacritty#faq (no tabs or splits; left to a window manager or tmux)",
+    "https://github.com/alacritty/alacritty/tree/master/alacritty_terminal (terminal emulation library); alacritty/Cargo.toml (glutin OpenGL contexts, notify file watcher)",
+    "https://github.com/alacritty/alacritty/blob/master/CHANGELOG.md (0.17.0: fixed error popup when saving the config file — live reload on save)"
+  ]
+}

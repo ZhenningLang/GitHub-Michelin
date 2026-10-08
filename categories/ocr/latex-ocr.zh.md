@@ -6,8 +6,8 @@ category: ocr
 tags: [ocr, latex, math, equations, vit, transformer, pytorch, cli, gui]
 language: Python
 license: MIT
-maturity: ~v0.0.31, coasting — last pushed 2025-01 (~1.5 yr idle as of 2026-06), ~16.5k stars
-last_verified: 2026-06-28
+maturity: ~v0.0.31 (release 2023-04), last commit 2025-01-18, quiet since (as of 2026-10-08), ~16.6k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-01-18T15:23:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:20:27Z
+  computed_at: 2026-10-08T08:24:02Z
   overall: C
   overall_score: 2.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 617
+        last_commit_age_days: 628
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 344524
+        release_downloads: 348664
         release_assets: 2
         release_tier: C
         signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 2116
-        last_commit_age_days: 617
+        repo_age_days: 2127
+        last_commit_age_days: 628
         cohort: library
     governance:
       grade: "?"
@@ -77,12 +77,34 @@ health:
 
 当工作单元是*一个已经裁好（或可裁出）的数学公式*、而你要的输出是 *LaTeX 源码*而非散文时，你才会专门选它。它在你自己机器上本地跑（CPU 或 GPU），所以来自未发表或敏感材料的公式不会离开你的笔记本；MIT 许可意味着你能把这个库接进自己的笔记或文档工具，且没有按次计费的云账单。
 
+## 怎么用起来
+
+pix2tex 是一个训练好的模型，外面包了几层薄薄的入口，不是按规则解析的程序。你给它一张图，先有一个小的预处理网络估出最合适的分辨率，把截图缩放成接近训练时那种渲染公式的样子；然后 ViT 编码器（一种把图片切成小方块来读的 Transformer）把图变成特征，Transformer 解码器再逐个 token 写出 LaTeX——token 就是 `\frac`、`{` 这样的一小段 LaTeX 语法，每一步挑最可能的下一段。**模型、权重下载和缩放都替你做了；你负责给出只含一个公式的紧凑截图，并核对答案**——对着 MathJax 预览看，因为输出是最佳猜测，不是保证正确。GUI（`latexocr`）是“截图 → 粘贴”这条路；同一个模型也能通过 `pix2tex` CLI 处理磁盘文件和剪贴板图片，在 Python 里用 `LatexOCR()` 调，或起一个小 HTTP API 做脚本化批处理。
+
+![latex-ocr — 主干用户故事](../../assets/flow/latex-ocr.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/latex-ocr.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 PyTorch 再装包，模型权重首次运行时自动下载 — `pip install "pix2tex[gui]"`
+2. **你**：打开 GUI，在屏幕上框选一个公式 — `latexocr` — 组件：`截图 GUI`
+3. **LaTeX-OCR (pix2tex)**：一个小网络估出最合适的分辨率，把截图缩放成接近训练数据的样子
+4. **LaTeX-OCR (pix2tex)**：图像编码器读截图，解码器逐个 token 写出 LaTeX
+5. **LaTeX-OCR (pix2tex)**：用 MathJax 渲染结果，并把 LaTeX 复制到剪贴板
+6. **你**：对照预览和原图核一遍，粘进你的文档
+
+**价值**：公式变成可编译的 LaTeX，不用手敲，图片也不出本机
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要通用文档 OCR，而不只是数学公式。** 这是最锋利的边界：pix2tex *只*识别公式。正文文字、扫描页、表格或混排文档，请用通用 OCR 引擎如 [Tesseract](tesseract.zh.md) 或云端 OCR/Vision 服务——pix2tex 不会替你转录普通散文。
 - **手写体、复杂多行块或大矩阵。** 它主要在渲染/印刷体公式上训练；手写公式、大段 `align`/`cases` 块、密集矩阵正是准确率掉链子的地方，你修输出的时间会比自己敲还多。
 - **你无法容忍准确率天花板 / 必须每次校验的工作流。** 它是模型，不是解析器：它产出的是*最可能的* LaTeX 字符串，不是保证正确的（项目自报的 token 准确率约 0.60、BLEU 约 0.88）。[未验证] 下标、定界符、运算符出现细微错误很常见——每个输出都得人眼对着渲染预览扫一遍。
-- **你押注于长期维护。** 这是个单作者项目，一直在**滑行**（最后一次 push 在 2025-01——截至 2026-06 大约空闲了 1.5 年）。Issue 和 PR 在堆积；别指望有新功能或积极的 triage。
+- **你押注于长期维护。** 这是个单作者项目，一直在**滑行**（最后一次提交在 2025-01-18——截至 2026-10-08 大约空闲了 1.7 年）。Issue 和 PR 在堆积；别指望有新功能或积极的 triage。
 - **现代 VLM 可能已经赢它了。** 通用多模态模型（GPT-4o、Qwen-VL、Gemini 之类）能零样本把公式转成 LaTeX，往往还更能扛脏输入和上下文；如果你已经在为某个付费，专门的模型可能不值得再加一个依赖。
 
 ## 横向对比
@@ -115,7 +137,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（截至 2026-06）：** **滑行中。** 最后一次 push 在 2025-01-18——大约空闲 1.5 年；未归档，但没有近期提交，open issue（约 159）在没有积极 triage 的情况下堆积。[未验证] 把它当成“现状可用”，而非“在积极开发”。
+- **维护（截至 2026-10-08）：** **滑行中。** 最后一次提交在 2025-01-18——大约空闲 1.7 年；最后一次 release 是 2023-04 的 v0.0.31；未归档，但没有近期提交，open issue（约 158）在没有积极 triage 的情况下堆积。[未验证] 把它当成“现状可用”，而非“在积极开发”。
 - **治理 / bus factor：** 一个**单作者**项目（owner `lukas-blecher`，一个个人 User 账号，不是组织也不是基金会）。单人 bus factor——作者一旦离开，没有团队或赞助方接手。[推断]
 - **年龄与 Lindy 判定：** 创建于 2020-12（约 6 岁）。年龄给了它一些 Lindy 分量，*而且*它在自己的小众领域里是个真正有用、广为人知的工具——但 Lindy 只在 **年龄 × 仍活跃** 时才算数，而这里“仍活跃”这一半很弱。一个长寿但如今空闲的单作者仓库，是个*可用*的押注，不是个*耐久*的押注。
 - **采用度 / 生态：** 约 16.5k star，被广泛认作开源公式 OCR 的首选仓库；MIT 许可让嵌入它没有摩擦。[未验证] 在笔记和学术工具里有真实采用。
@@ -123,8 +145,8 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 约 16.5k GitHub star、最后 push 于 2025-01-18、约 159 个 open issue、最新 tag 约 v0.0.31、创建于 2020-12-11——据仓库/GitHub API 截至 2026-06；star/issue 数对时间敏感，仅供参考。
-- [未验证] “滑行 / 约 1.5 年空闲”是从最后 push 日期推断的；依赖它之前请重核仓库近期的提交与发版活动——维护者可能恢复。
+- [未验证] 约 16.6k GitHub star、最后提交于 2025-01-18、约 158 个 open issue、最新 release v0.0.31（2023-04-13）、创建于 2020-12-11——据仓库/GitHub API 截至 2026-10-08；star/issue 数对时间敏感，仅供参考。
+- [未验证] “滑行 / 约 1.7 年空闲”是从最后提交日期推断的；依赖它之前请重核仓库近期的提交与发版活动——维护者可能恢复。
 - [未验证] 自报指标（token 准确率约 0.60、BLEU 约 0.88、归一化编辑距离约 0.10）是项目在自己测试集上的自报数字，不是在你输入上的实测——请在你真实的公式上跑基准。
 - [推断] 在手写、大段多行块和矩阵上的准确率下滑，是从训练数据偏重渲染/印刷体公式以及常见反馈推断的，不是对你文档的实测。
 - [推断] ViT 编码器 + ResNet 骨干 + Transformer 解码器架构，以及 GUI/CLI/API/训练脚本的特性集，是按项目 README 和惯例描述的；请对照当前仓库核实确切组件与安装额外项。

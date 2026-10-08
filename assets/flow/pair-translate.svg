@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="728" viewBox="0 0 880 728" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="728" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="592" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="592" rx="10"/>
+<rect class="pillT" x="474" y="40" width="202.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">Pair Translate does</text>
+<path class="edge" d="M62,144 L62,168" marker-end="url(#a)"/>
+<path class="edge" d="M62,312 L62,336" marker-end="url(#a)"/>
+<path class="hand" d="M408,385.5 C439.0,385.5 439.0,409 470,409" marker-end="url(#a)"/>
+<path class="edge" d="M494,504 L494,528" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the extension from the Chrome,</text>
+<text class="t" x="82" y="123">Firefox or Edge store</text>
+<rect class="card" x="40" y="170" width="368" height="142" rx="8"/>
+<rect class="accY" x="40" y="170" width="4" height="142" rx="2"/>
+<circle class="accY" cx="62" cy="194" r="10"/>
+<text class="num" x="62" y="198" text-anchor="middle">2</text>
+<text class="t" x="82" y="199">Keep the free Microsoft default, or</text>
+<text class="t" x="82" y="221">add a service from a template and fill</text>
+<text class="t" x="82" y="243">its endpoint and key</text>
+<text class="c" x="82" y="267">baseUrl · apiKey</text>
+<text class="comp" x="82" y="290">component: options page</text>
+<rect class="card" x="40" y="338" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="338" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="362" r="10"/>
+<text class="num" x="62" y="366" text-anchor="middle">3</text>
+<text class="t" x="82" y="367">On a foreign-language page, press the</text>
+<text class="t" x="82" y="389">translate shortcut</text>
+<text class="c" x="82" y="413">Alt+T</text>
+<rect class="cardT" x="472" y="385" width="368" height="119" rx="8"/>
+<rect class="accT" x="472" y="385" width="4" height="119" rx="2"/>
+<circle class="accT" cx="494" cy="409" r="10"/>
+<text class="num" x="494" y="413" text-anchor="middle">4</text>
+<text class="t" x="514" y="414">Collects the page&#x27;s text and sends it</text>
+<text class="t" x="514" y="436">in batches straight to your chosen</text>
+<text class="t" x="514" y="458">service</text>
+<text class="comp" x="514" y="486">component: content script</text>
+<rect class="cardT" x="472" y="530" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="530" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="554" r="10"/>
+<text class="num" x="494" y="558" text-anchor="middle">5</text>
+<text class="t" x="514" y="559">Inserts each translation right after</text>
+<text class="t" x="514" y="581">its original text</text>
+<rect class="val" x="28" y="634" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="658">VALUE</text>
+<text class="valT" x="48" y="682">Original and translation sit side by side on the page, with no middleman server in between</text>
+</svg>

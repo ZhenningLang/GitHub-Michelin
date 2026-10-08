@@ -6,8 +6,8 @@ category: article-extraction
 tags: [content-extraction, machine-learning, boilerplate-removal, python, scikit-learn]
 language: Python
 license: MIT
-maturity: v2.0.x, low-activity / aging deps, ~1.3k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v2.0.4 (2019-04), last commit on master 2021-05, quiet since (as of 2026-10-08); aging deps, ~1.3k stars (as of 2026-06)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-07-08T00:53:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:31:09Z
+  computed_at: 2026-10-08T08:28:24Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1967
+        last_commit_age_days: 1977
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5212
-        last_commit_age_days: 1967
+        repo_age_days: 5222
+        last_commit_age_days: 1977
         cohort: library
     governance:
       grade: "?"
@@ -80,9 +80,30 @@ You're building a content-extraction pipeline in Python and pure heuristic extra
 
 You reach for it specifically when you have (or can label) training data and want extraction quality you can improve by retraining, rather than accepting a one-size-fits-all heuristic. It's the ML option in the Python content-extraction space.
 
+## How it works
+
+dragnet cuts a page's HTML into **blocks** — consecutive runs of text between structural tags — and asks a trained classifier, block by block, "is this part of the article?". **The block splitter, the feature calculators and pre-trained models ship with the package; you hand over an HTML string and get back the content string.** For each block it computes *features* — numbers describing the block, such as how much text it has, how much of it is link text, and its ratio of text to tags (ideas borrowed from boilerpipe and the CETR tag-ratio paper) — and a scikit-learn model, the standard Python machine-learning library, predicts content or not. Two ready functions cover the usual cases: `extract_content` for the article only, and `extract_content_and_comments` when you also want the reader comments. Because the extractor follows scikit-learn's `fit`/`predict` interface, the model is replaceable: label pages from your own domain and retrain, rather than tuning heuristics by hand. You own fetching the HTML, building the package against its old scikit-learn pin (Docker is the documented easy path), and any labelling if you retrain.
+
+![dragnet — backbone user story](../../../assets/flow/dragnet.svg)
+
+<!-- flow-steps:begin (generated from flows/dragnet.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Clone master and build it with its pinned numeric stack — Docker is the easy path — `docker build -t dragnet .`
+2. **You**: Fetch the page's HTML yourself and pass it to one function — `extract_content(r.content) · extract_content_and_comments(r.content)`
+3. **dragnet**: Splits the HTML into text blocks
+4. **dragnet**: Computes features per block; a pre-trained scikit-learn model labels each content or not
+5. **dragnet**: Joins the blocks labelled content into one string and returns it
+
+**Value**: The article body — with or without the comment thread — chosen by a model you can retrain on your own pages
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **You want a maintained, easy-to-install dependency today.** This is the biggest caveat: dragnet is **low-activity** (last pushed 2025-07, last release 2.0.4 in 2019) and pins **aging, narrow dependency ranges** — notably `scikit-learn>=0.15.2,<0.21.0` and `ftfy<5.0.0` — which conflict with modern Python/scientific stacks and can make installation painful. [推断]
+- **You want a maintained, easy-to-install dependency today.** This is the biggest caveat: dragnet is **dormant** (last commit on master 2021-05, last release 2.0.4 in 2019; a `mp/py3.10` branch saw a commit in 2025-07 but is unmerged) and pins **aging, narrow dependency ranges** — notably `scikit-learn>=0.15.2,<0.21.0` and `ftfy<5.0.0` — which conflict with modern Python/scientific stacks and can make installation painful. [推断]
 - **You don't want a numpy/scipy/Cython build.** It's built on the numerical stack with Cython extensions; installing/compiling it is heavier than a pure-Python heuristic extractor.
 - **You only need decent article extraction with zero training.** A heuristic library ([Readability.js](readability-js.md), [python-readability](python-readability.md), or trafilatura) is far lighter and good enough for many pipelines; dragnet's edge is ML/comments, which you may not need.
 - **You need modern metadata or crawl support.** It returns content (and comments) strings; it's not a full metadata/crawl framework like trafilatura.
@@ -119,7 +140,7 @@ You reach for it specifically when you have (or can label) training data and wan
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last pushed 2025-07; latest release 2.0.4 dates to **2019**. This is **low-activity / coasting** — touched occasionally but not actively developed. Not formally archived, but cadence is near-dormant. [推断]
+- **Maintenance (2026-10).** Last commit on master **2021-05**; latest release 2.0.4 dates to **2019**. The 2025-07 push went to an unmerged `mp/py3.10` branch, not to master. This is **low-activity / coasting** — touched occasionally but not actively developed. Not formally archived, but cadence is near-dormant. [推断]
 - **Governance / bus factor.** Owned by an **Organization** (`dragnet-org`) with several historical contributors, but activity has thinned — effective bus factor is low given the dormant cadence. [推断]
 - **Age × Lindy (2026-06).** Created 2012-06 — ~14 years old, but **age without current activity is not a Lindy pass**: a long-lived *coasting* project is durable in code, fragile in support. Use age × still-active, and the "still-active" half is weak here. [推断]
 - **Adoption & ecosystem.** ~1.3k stars and an academic pedigree (WWW 2013) gave it real historical adoption; today the Python community has largely moved toward maintained alternatives like trafilatura. [未验证]
@@ -127,8 +148,9 @@ You reach for it specifically when you have (or can label) training data and wan
 
 ## Caveats (unverified)
 
-- [未验证] ~1.3k stars as of 2026-06; latest release 2.0.4 (2019), last push 2025-07 — numbers are date-sensitive and the release/push gap signals coasting.
+- [未验证] ~1.3k stars as of 2026-06; latest release 2.0.4 (2019), last master commit 2021-05, last push 2025-07 (to a side branch) — numbers are date-sensitive and the release/push gap signals coasting.
 - [推断] The `scikit-learn>=0.15.2,<0.21.0` and `ftfy<5.0.0` pins are read from the repo's requirements/setup; their incompatibility with modern stacks is inferred, and the *current* installability on a given Python version was not test-installed here.
-- [推断] "Low-activity / coasting" and "effective bus factor is low" are inferred from cadence (2019 release, 2025-07 push), not from a maintainer statement.
+- [推断] "Low-activity / coasting" and "effective bus factor is low" are inferred from cadence (2019 release, 2021-05 last master commit, a 2025-07 side-branch commit), not from a maintainer statement.
 - [未验证] Whether the bundled pickled models still load cleanly under current numpy/scikit-learn was not verified; pickle compatibility across sklearn versions is a known fragility.
 - [未验证] Comparative accuracy vs trafilatura/heuristic extractors reflects general positioning, not a measured benchmark.
+- [推断] The example features named in How it works (text amount, link-text share, text-to-tag ratio) are summarized from the papers the README cites as its inspiration (Kohlschütter shallow text features, Weninger CETR tag ratios), not read off `features.py` one by one.

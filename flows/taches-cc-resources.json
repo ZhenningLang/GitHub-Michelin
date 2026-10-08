@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "TÂCHES makes Claude Code do", "zh": "TÂCHES 让 Claude Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add its marketplace, install the plugin, start a new session", "zh": "加上它的 marketplace，装插件，开新会话", "code": "claude plugin install taches-cc-resources"},
+    {"lane": "you", "en": "Describe the slash command you want", "zh": "描述你想要的斜杠命令", "code": "/create-slash-command"},
+    {"lane": "them", "en": "The generator skill writes the command file: YAML arguments, tool restrictions, dynamic context", "zh": "生成器 skill 写出命令文件：YAML 参数、工具限制、动态上下文", "component": {"en": "create-slash-commands skill", "zh": "create-slash-commands"}},
+    {"lane": "you", "en": "Ask for an audit of the new file", "zh": "要求审一遍新文件", "code": "/audit-slash-command <command-path>"},
+    {"lane": "them", "en": "An auditor subagent checks it against best practices and reports file:line fixes", "zh": "审计子 agent 对照最佳实践检查，给出带 file:line 的修改建议", "component": {"en": "slash-command-auditor", "zh": "slash-command-auditor"}}
+  ],
+  "value": {"en": "New Claude Code extensions come out in one consistent, reviewed shape instead of hand-crafted prompt files", "zh": "新的 Claude Code 扩展按统一、审过的格式产出，不再每次手搓 prompt 文件"},
+  "sources": [
+    "https://github.com/glittercowboy/taches-cc-resources README — Installation Option 1 (claude plugin marketplace add glittercowboy/taches-cc-resources; claude plugin install taches-cc-resources); Create Slash Commands (YAML configuration with arguments, tool restrictions, dynamic context loading; /create-slash-command, /audit-slash-command)",
+    "commands/audit-slash-command.md (argument-hint <command-path>; invokes slash-command-auditor subagent; findings with file:line locations)"
+  ]
+}

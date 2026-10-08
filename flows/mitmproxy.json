@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "mitmproxy does", "zh": "mitmproxy 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and start the browser UI on localhost:8080", "zh": "安装后启动浏览器界面，监听 localhost:8080", "code": "brew install --cask mitmproxy · mitmweb"},
+    {"lane": "you", "en": "Point the client's proxy at it and install its CA from mitm.it once", "zh": "把客户端代理指向它，在 mitm.it 装一次 CA 证书", "code": "http://mitm.it"},
+    {"lane": "them", "en": "Forges a certificate per site, decrypts TLS and records every flow", "zh": "为每个网站现场伪造证书，解密 TLS，记录每条流量", "component": {"en": "CA in ~/.mitmproxy", "zh": "~/.mitmproxy 里的 CA"}},
+    {"lane": "you", "en": "Write a Python addon with a request/response hook and load it", "zh": "写一个带 request/response 钩子的 Python 插件并加载", "code": "mitmproxy -s anatomy.py"},
+    {"lane": "them", "en": "Calls your hook on every matching message so you can modify, block or replay it", "zh": "每条匹配的消息都调用你的钩子，可改、可拦、可重放", "component": {"en": "addon manager", "zh": "插件管理器"}}
+  ],
+  "value": {"en": "See and script a client's real encrypted traffic without changing the client's code", "zh": "不改客户端一行代码，就能看清并脚本化处理它真实的加密流量"},
+  "sources": [
+    "https://docs.mitmproxy.org/stable/overview/installation/ (brew install --cask mitmproxy; uv tool install mitmproxy)",
+    "https://docs.mitmproxy.org/stable/overview/getting-started/ (mitmproxy / mitmweb / mitmdump; listens on http://localhost:8080; install CA via http://mitm.it)",
+    "https://docs.mitmproxy.org/stable/concepts/certificates/ (CA generated in ~/.mitmproxy, dummy certificate per visited site)",
+    "https://github.com/mitmproxy/mitmproxy/blob/main/examples/addons/anatomy.py (Run as follows: mitmproxy -s anatomy.py; request(flow) hook)"
+  ]
+}

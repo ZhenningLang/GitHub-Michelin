@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The maintenance DAG does",
+    "zh": "维护 DAG 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy the cleanup DAG file into your Airflow dags folder",
+      "zh": "把清理 DAG 文件拷进 Airflow 的 dags 目录",
+      "code": "db-cleanup/airflow-db-cleanup.py"
+    },
+    {
+      "lane": "you",
+      "en": "Edit the globals at the top: schedule, owner, alert emails, whether to delete",
+      "zh": "改文件顶部的全局变量：调度频率、负责人、告警邮箱、是否真删",
+      "code": "SCHEDULE_INTERVAL · ENABLE_DELETE"
+    },
+    {
+      "lane": "you",
+      "en": "Set the retention age as an Airflow Variable, then enable the DAG",
+      "zh": "在 Airflow Variables 里设保留天数，然后启用 DAG",
+      "code": "airflow_db_cleanup__max_db_entry_age_in_days"
+    },
+    {
+      "lane": "them",
+      "en": "Runs on Airflow's own scheduler (@daily by default) and computes the cutoff date",
+      "zh": "由 Airflow 自己的调度器跑（默认每天），先算出截止日期"
+    },
+    {
+      "lane": "them",
+      "en": "Deletes DagRun, TaskInstance, Log, XCom and other rows older than the cutoff",
+      "zh": "删掉早于截止日期的运行、任务、日志、XCom 等记录"
+    }
+  ],
+  "value": {
+    "en": "The metadata DB stops growing without you writing and testing your own DELETE SQL",
+    "zh": "元数据库不再无限膨胀，而且不用自己写、自己测 DELETE SQL"
+  },
+  "sources": [
+    "https://github.com/teamclairvoyant/airflow-maintenance-dags/blob/master/db-cleanup/README.md (Deploy steps: wget the file, update SCHEDULE_INTERVAL / DAG_OWNER_NAME / ALERT_EMAIL_ADDRESSES / ENABLE_DELETE, set Variable airflow_db_cleanup__max_db_entry_age_in_days, enable the DAG)",
+    "db-cleanup/airflow-db-cleanup.py (SCHEDULE_INTERVAL = \"@daily\", ENABLE_DELETE = True, models DagRun/TaskInstance/Log/XCom/SlaMiss imported from airflow.models)"
+  ]
+}

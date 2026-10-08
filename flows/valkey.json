@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "Valkey does", "zh": "Valkey 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build it (or install a package or the official image) and start the server", "zh": "编译（或装发行版包、官方镜像），启动服务端", "code": "make · ./valkey-server"},
+    {"lane": "them", "en": "Keeps every key in memory and speaks the Redis wire protocol on the usual port", "zh": "把所有键放在内存里，在常用端口上说 Redis 协议", "component": {"en": "valkey-server", "zh": "valkey-server"}},
+    {"lane": "you", "en": "Point your existing Redis client at it — the commands do not change", "zh": "把现有的 Redis 客户端指过来，命令不用改", "code": "set foo bar · get foo · incr mycounter"},
+    {"lane": "them", "en": "Answers each command from memory, applying data-structure operations atomically", "zh": "直接从内存应答每条命令，数据结构操作原子执行"}
+  ],
+  "value": {"en": "A drop-in, BSD-licensed Redis replacement for caches, sessions, counters and queues", "zh": "可直接替换 Redis、BSD 许可的内存库，用于缓存、会话、计数器和队列"},
+  "sources": [
+    "https://github.com/valkey-io/valkey README (Building Valkey: make; Running Valkey: ./valkey-server, --replicaof 127.0.0.1 6379; Playing with Valkey: set foo bar / get foo / incr mycounter; Installing: redis-server/redis-cli compatibility symlinks)",
+    "https://github.com/valkey-io/valkey README header (forked from Redis right before the source-available license change; key/value data structure server)"
+  ]
+}

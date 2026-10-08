@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Immich does", "zh": "Immich 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the release compose file and .env, set the photo path and DB password, start it", "zh": "下载发布版 compose 和 .env，填照片路径和数据库密码，启动", "code": "docker compose up -d"},
+    {"lane": "you", "en": "Register the admin in the web UI, then log in from the phone app with your server URL", "zh": "在网页端注册管理员，再用手机 App 填服务器地址登录", "code": "http://<machine-ip-address>:2283"},
+    {"lane": "you", "en": "Pick which phone albums to back up and turn backup on", "zh": "选好要备份的手机相册，打开备份"},
+    {"lane": "them", "en": "The app uploads new photos in the background; the server stores originals and skips duplicates", "zh": "App 在后台上传新照片，服务端保存原图并跳过重复"},
+    {"lane": "them", "en": "Background jobs make thumbnails, transcode videos and read EXIF for the map", "zh": "后台任务生成缩略图、转码视频、读 EXIF 画地图"},
+    {"lane": "them", "en": "The ML container finds faces and computes CLIP vectors, so text search finds photos by content", "zh": "机器学习容器识别人脸、算 CLIP 向量，文字就能按画面内容搜到照片"}
+  ],
+  "value": {"en": "The family's whole photo library is searchable on your own disk, with no cloud subscription", "zh": "全家的照片库在自己硬盘上就能按内容搜索，不再交云相册月费"},
+  "sources": [
+    "https://github.com/immich-app/immich/blob/main/docs/docs/partials/_docker-compose-install-steps.mdx (wget docker-compose.yml / example.env, docker compose up -d)",
+    "https://github.com/immich-app/immich/blob/main/docker/docker-compose.yml (port 2283, immich-machine-learning, valkey, postgres with vectorchord)",
+    "https://github.com/immich-app/immich/blob/main/docs/docs/install/post-install.mdx (register admin, mobile app login, mobile backup)",
+    "https://github.com/immich-app/immich#features (background backup, dedup, faces, CLIP search, EXIF map)"
+  ]
+}

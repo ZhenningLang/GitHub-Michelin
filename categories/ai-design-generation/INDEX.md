@@ -12,7 +12,7 @@
 | **Open Design** | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. | B (6/6) | [→](open-design.md) |
 | **Impeccable** | Use it when your AI agent keeps shipping same-looking frontend slop and you want deterministic detection plus design critique. | B (6/6) | [→](impeccable.md) |
 | **open-slide** | Use it when your coding agent should write a React slide deck on a fixed 1920×1080 canvas and you revise it by clicking elements and leaving comments — not when the deck must live as an editable PowerPoint file or be exported headlessly in CI. | C (6/6) | [→](open-slide.md) |
-| **SdPaint** | Use it when you already run AUTOMATIC1111 + ControlNet and want a live sketch-to-image painting loop — but it's stalled since 2024 and provides no model of its own. | D (3/6) | [→](sdpaint.md) |
+| **SdPaint** | Use it when you already run AUTOMATIC1111 with ControlNet and want each brushstroke turned into a generated image live — but it has no model of its own and has been stalled since 2024-04. | D (3/6) | [→](sdpaint.md) |
 
 ## Comparison matrix
 
@@ -23,7 +23,7 @@
 | [Open Design](open-design.md) | ✅ | B (6/6) | Use it when you want a local-first, BYOK desktop studio that makes your coding agent generate HTML prototypes, decks, images and HTML→MP4. |
 | [Impeccable](impeccable.md) | ✅ | B (6/6) | Use it when your AI agent keeps shipping same-looking frontend slop and you want deterministic detection plus design critique. |
 | [open-slide](open-slide.md) | ✅ | C (6/6) | Use it when your coding agent should write a React slide deck on a fixed 1920×1080 canvas and you revise it by clicking elements and leaving comments — not when the deck must live as an editable PowerPoint file or be exported headlessly in CI. |
-| [SdPaint](sdpaint.md) | ✅ | D (3/6) | Use it when you already run AUTOMATIC1111 + ControlNet and want a live sketch-to-image painting loop — but it's stalled since 2024 and provides no model of its own. |
+| [SdPaint](sdpaint.md) | ✅ | D (3/6) | Buys a paint-not-prompt loop on your own GPU; costs a prerequisite A1111 plus ControlNet setup and an unmaintained client that may drift out of API compatibility. |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.md) | ✅ | C (4/5) | Portable deck-generation skill; moved to agent-skills because the consumable unit is a skill pack. |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.md) | ✅ | D (3/5) | Portable social-card skill; moved to agent-skills because it is installed into an agent harness. |
 | [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.md) | ✅ | B (4/5) | Portable article-illustration skill; moved to agent-skills because it is selected as a skill. |

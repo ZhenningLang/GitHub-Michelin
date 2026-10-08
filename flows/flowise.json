@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Flowise does",
+    "zh": "Flowise 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install and start the Flowise server (Node.js ≥ 20)",
+      "zh": "装好并启动 Flowise 服务（Node.js ≥ 20）",
+      "code": "npm install -g flowise · npx flowise start",
+      "component": {
+        "en": "flowise CLI",
+        "zh": "flowise 命令行"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "On the canvas, drag in a chat model, tools or a document loader, connect them, add API keys",
+      "zh": "在画布上拖入聊天模型、工具或文档加载器，连线并填好密钥",
+      "code": "http://localhost:3000",
+      "component": {
+        "en": "React canvas (ui)",
+        "zh": "React 画布（ui）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Saves the graph as a chatflow and lets you chat with it in the test panel",
+      "zh": "把这张图存成 chatflow，并在测试面板里让你直接对话",
+      "component": {
+        "en": "server + database",
+        "zh": "服务端 + 数据库"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Call the saved chatflow from your app over HTTP",
+      "zh": "在你的应用里通过 HTTP 调用这个 chatflow",
+      "code": "POST /api/v1/prediction/{chatflowId}"
+    },
+    {
+      "lane": "them",
+      "en": "Rebuilds the node graph, calls the model and tools, keeps chat history, returns the answer",
+      "zh": "重建节点图，调用模型和工具，保存对话历史，返回答案",
+      "component": {
+        "en": "LangChain.js nodes",
+        "zh": "LangChain.js 节点"
+      }
+    }
+  ],
+  "value": {
+    "en": "A document Q&A bot or tool-using agent behind an HTTP endpoint without hand-written wiring; since 2026-08 every patch is yours",
+    "zh": "不手写串联代码，就得到一个挂在 HTTP 接口后的文档问答或工具型 agent；但 2026-08 起补丁都归你"
+  },
+  "sources": [
+    "https://github.com/FlowiseAI/Flowise#quick-start (npm install -g flowise, npx flowise start, http://localhost:3000, NodeJS >= 20)",
+    "https://github.com/FlowiseAI/Flowise/blob/main/packages/server/src/routes/index.ts (router.use('/prediction')) + packages/server/src/index.ts (app.use('/api/v1')) + routes/predictions/index.ts (POST /:id)",
+    "https://github.com/FlowiseAI/Flowise/tree/main/packages/components/nodes (chatmodels, tools, documentloaders, vectorstores, agentflow node folders)",
+    "https://github.com/FlowiseAI/Flowise/blob/main/packages/components/package.json (@langchain/core, langchain deps)",
+    "https://github.com/FlowiseAI/Flowise/discussions/6727 (EOL timeline)"
+  ]
+}

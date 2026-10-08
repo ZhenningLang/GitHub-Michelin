@@ -3,20 +3,20 @@ name: OpenHands
 slug: openhands
 repo: https://github.com/OpenHands/OpenHands
 category: orchestration-and-review
-tags: [coding-agent, developer-tool, openhands, app]
-language: Python
-license: NOASSERTION
-maturity: active, ~79,621 stars (as of 2026-07)
-last_verified: 2026-07-07
+tags: [coding-agent, agent-control-center, acp, self-hosted, automation, app]
+language: TypeScript
+license: MIT
+maturity: v1.25.0 (2026-10-06, Agent Canvas, beta badge), very active, ~90.2k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: app
 upstream:
-  pushed_at: 2026-07-06T14:48:26Z
+  pushed_at: 2026-10-08T06:02:25Z
   default_branch: main
-  default_branch_sha: 4bde696f1fbac42b59083d612b90bb515813a640
+  default_branch_sha: baf1cbef090fce793d3017276c1025c057920a4b
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:35:11Z
+  computed_at: 2026-10-08T08:13:11Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 10.3
-        qualifying_issues: 11
+        median_ttfr_hours: 6.1
+        qualifying_issues: 9
         band: relaxed_solo
         window_offset_days: 2
         source: issue
@@ -47,27 +47,27 @@ health:
         registry: pypi.org
         canonical_package: openhands-ai
         dependent_repos_count: 0
-        downloads_last_month: 252478
+        downloads_last_month: 435732
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.0
-        release_downloads: 21574
-        release_assets: 64
+        cross_check_divergence: 1.06
+        release_downloads: 25032
+        release_assets: 76
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 924
+        repo_age_days: 939
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 49
-        top1_share: 0.317
-        top3_share: 0.564
+        active_maintainers_12mo: 51
+        top1_share: 0.315
+        top3_share: 0.554
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -78,62 +78,90 @@ health:
         relicense_36mo: false
         content_license: null
 ---
+
 # OpenHands
 
-🙌 OpenHands: AI-Driven Development
+Your coding agents are scattered: a `claude` session in one terminal tab, `codex` over SSH on a spare server, and a crontab line that was meant to triage new issues every morning but died silently last week. OpenHands (since mid-2026 shipped from this repo as **Agent Canvas**) is one self-hosted browser control center that starts conversations with OpenHands, Claude Code, Codex or Gemini CLI on whichever machine you choose, and runs scheduled or webhook-triggered agent jobs.
 
 ![OpenHands — health radar](../../../../assets/health/openhands.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `coding-agents` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for OpenHands when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You're a developer or small-team lead who already uses coding agents every day, but each one lives in its own terminal on its own machine. You want to fire off "update the dependencies in repo X" against the always-on box in the closet, check on it from your laptop's browser, and have a job that every weekday morning splits new GitHub issues into tasks and posts a summary to Slack — without gluing `cron`, `ssh` and three CLIs together yourself. You install `@openhands/agent-canvas`, point it at one or more *agent backends* (an Agent Server process on your laptop, in Docker, on a VM, or on OpenHands Cloud), and drive all of them from one UI.
 
-This first-pass page exists because OpenHands was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+Pick it over [T3 Code](../terminal-agents/t3code.md) when you need remote backends and scheduled/webhook automations, not just a local GUI over CLIs you're already signed into; over [Background Agents (Open-Inspect)](background-agents.md) when you are one developer or a small team who wants to start on a laptop rather than stand up an organization-wide sandbox control plane; and over [gh-aw](gh-aw.md) when your automations should reach Slack, Linear or your own servers instead of living only inside GitHub Actions. The deciding tradeoff: one MIT, self-hosted UI that is agent-agnostic (it speaks ACP, the Agent Client Protocol, so third-party CLIs plug in), paid for by running a young beta product whose agent server has real shell access to the machine you put it on.
+
+## How it works
+
+Three pieces run together. The **Agent Server** (from the separate `OpenHands/software-agent-sdk` repo, Python) is a REST service on one host that actually runs agents: either the built-in OpenHands agent with whatever LLM you configure, or an ACP agent — Agent Canvas spawns that agent's own CLI (Claude Code, Codex, Gemini CLI) as a subprocess and relays each turn over JSON-RPC, so that CLI keeps its own login and model. **Agent Canvas** (this repo, React/TypeScript) is the browser UI that renders the chat, terminal, file and browser panes and can switch between several Agent Servers. An optional **Automation Server** decides *when* work runs — on a schedule or on a webhook — and dispatches a conversation to an Agent Server. The project gives you the launcher, UI, sandbox options and the agent loop; you supply the machine, the model keys or CLI logins, the firewall and API key if you expose it, and the review of whatever the agents change. Think of it as a dispatch desk: the desk tracks every job and every worker's radio channel, but the workers (and their tools) are whoever you hire.
+
+![openhands — backbone user story](../../../../assets/flow/openhands.svg)
+
+<!-- flow-steps:begin (generated from flows/openhands.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the control center and start the local stack — `npm install -g @openhands/agent-canvas · agent-canvas` — component: `agent-canvas CLI`
+2. **OpenHands**: Starts the UI, an Agent Server and the automation backend behind one port — component: `ingress + Agent Server`
+3. **You**: Open the UI, pick an agent and give it a model key or reuse its CLI login — `http://localhost:8000`
+4. **You**: Start a conversation on a project folder and describe the task
+5. **OpenHands**: Runs the agent on that backend: it edits files and runs shell commands — component: `Agent Server`
+6. **OpenHands**: Streams chat, terminal and file changes back to the same UI for you to review — component: `Agent Canvas UI`
+
+**Value**: One browser tab drives every agent on every machine, instead of a terminal per agent per host
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on OpenHands.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **You want the classic OpenHands agent as a Python app or library.** The repo was cleared for the Agent Canvas migration on 2026-07-27; the old `openhands-ai` PyPI package stops at 1.11.0 (2026-07). For an embeddable agent, use `OpenHands/software-agent-sdk` (not indexed) directly, or a terminal agent such as [OpenCode](../terminal-agents/opencode.md) / [Codex](../terminal-agents/codex.md) — guides and blog posts about `openhands-ai` describe a codebase this repo no longer contains.
+- **You need a stable, long-term-supported control plane today.** The README badge says **beta**, releases arrive every few days (v1.21–v1.25 in two weeks), and the Agent Canvas codebase has lived in this repo only since late July 2026. If you only need a local GUI over CLIs you already use, [T3 Code](../terminal-agents/t3code.md) is smaller; if you need org-wide, attributed background PRs, evaluate [Background Agents (Open-Inspect)](background-agents.md).
+- **You cannot give an agent shell access to a real machine.** The "without a sandbox" install runs the Agent Server directly on your host, and the README warns the agent gets full filesystem access. Use the Docker-sandbox options (Option 2/3), or keep agents inside CI with [gh-aw](gh-aw.md), whose agent job runs read-only behind a network firewall.
+- **You plan to expose it on the internet without hardening.** Anyone who can reach the Agent Server can run commands as the agent; `SELF_HOSTING.md` asks for a firewall, `--public` mode, a strong `LOCAL_BACKEND_API_KEY` and TLS. If you can't operate that, run it on loopback only or use the hosted OpenHands Cloud (not a repo).
+- **You only ever use one agent in one terminal.** The control center adds Node.js 24, `uv`, ports and a web UI to what a single [Codex](../terminal-agents/codex.md) or [Gemini CLI](../terminal-agents/gemini-cli.md) session already gives you.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [aider](../terminal-agents/aider.md) | ✅ | When you need the established in-index option for this category, compare it against OpenHands before switching. | OpenHands is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenHands only after verifying the repo-specific caveats below. |
-| [CC Switch](cc-switch.md) | ✅ | When you need the established in-index option for this category, compare it against OpenHands before switching. | OpenHands is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenHands only after verifying the repo-specific caveats below. |
-| [Claude Octopus](claude-octopus.md) | ✅ | When you need the established in-index option for this category, compare it against OpenHands before switching. | OpenHands is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenHands only after verifying the repo-specific caveats below. |
-| [Cline](../ide-agents/cline.md) | ✅ | When you need the established in-index option for this category, compare it against OpenHands before switching. | OpenHands is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenHands only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| [T3 Code](../terminal-agents/t3code.md) | ✅ | If you want a local GUI over Codex/Claude/OpenCode CLIs you're already signed into, pick T3 Code; pick OpenHands when you also need remote backends and scheduled or webhook automations. | T3 Code is lighter and stays a thin wrapper; OpenHands adds an Agent Server, Docker sandboxes and an Automation Server at the cost of more moving parts and beta churn. |
+| [Background Agents (Open-Inspect)](background-agents.md) | ✅ | For one trusted organization that wants cloud sandboxes started from Slack/Linear/Sentry and attributed PRs across many repos, pick Open-Inspect; for a developer or small team starting on a laptop, pick OpenHands. | Open-Inspect is built around org-scale sandbox lifecycle and integrations; OpenHands starts on one machine and grows by adding backends, with less built-in org plumbing. |
+| [gh-aw](gh-aw.md) | ✅ | If your recurring agent chores are all GitHub-repo chores and you want them firewalled inside Actions, pick gh-aw; pick OpenHands when jobs must reach Slack, Linear or your own hosts. | gh-aw inherits GitHub's runners, permissions and audit trail but is GitHub-only; OpenHands runs anywhere but you own the host security. |
+| [OpenChamber](openchamber.md) | ✅ | If OpenCode is your only agent and you want cross-device sessions with multi-model diffs, pick OpenChamber; pick OpenHands when you mix OpenHands, Claude Code, Codex and Gemini CLI. | OpenChamber goes deeper on one runtime's review workflow; OpenHands is broader across agents via ACP but shallower per agent. |
+| `OpenHands/software-agent-sdk` | not indexed | When you are embedding an agent loop in your own Python service, use the SDK directly; use this repo only if you want the ready-made UI and launchers on top. | The SDK is the engine with no UI; Agent Canvas adds the control center but also Node.js and a browser surface to secure. |
 
 ## Tech stack
 
-- **Primary language:** Python per GitHub metadata.
-- **Repository:** `OpenHands/OpenHands`.
-- **Project shape:** categorized as `app` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-06T14:48:26Z`, archived `false`.
+- **Agent Canvas (this repo):** TypeScript, React 19, React Router 7, Vite, Tailwind, Zustand/React Query; also packaged as an npm library and an Electron desktop build.
+- **Agent Server:** Python service from `OpenHands/software-agent-sdk`, launched by the CLI via `uv`/`uvx`; LLM access through LiteLLM-style model settings [推断].
+- **Automation Server:** separate `OpenHands/automation` service for schedules, webhooks and run history.
+- **Agent integration:** ACP (Agent Client Protocol, JSON-RPC over stdio) for Claude Code, Codex and Gemini CLI.
+- **Packaging:** npm package `@openhands/agent-canvas` (CLI `agent-canvas`), Docker image `ghcr.io/openhands/agent-canvas`, a Helm chart directory in the repo.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **Node.js ≥ 24** and **`uv`** for the npm/source launchers; **Docker** (Desktop or Engine) for the sandboxed options.
+- **Model access:** an LLM API key for the built-in OpenHands agent, or an existing subscription login / API key for each ACP agent (Claude Code, Codex, Gemini CLI).
+- **Optional:** an always-on host (VM, Mac Mini), nginx + TLS for remote access, Slack/GitHub/Linear credentials for automations, an OpenHands Cloud account for hosted backends.
+- **Telemetry:** the frontend bundles `posthog-js`; check the settings for an opt-out before deploying in a restricted network [未验证].
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low to start, medium to run for a team.** On a laptop it is `npm install -g @openhands/agent-canvas && agent-canvas`, bound to loopback. Running it as the "always-on team" the README pitches means operating a host that executes agent shell commands: firewall, `--public` mode with `LOCAL_BACKEND_API_KEY`, TLS via nginx, Docker sandboxes per conversation, and keeping three version-coupled services (Canvas, Agent Server, Automation Server) upgraded together on a release train that moves several times a week.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-06T14:48:26Z` as of 2026-07-07.
-- **Adoption snapshot:** ~79,621 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `NOASSERTION` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** license needs manual verification; first-pass page generated from backlog metadata.
+- **Maintenance (2026-10-08):** very active — pushed today, releases v1.21.0–v1.25.0 between 2026-09-22 and 2026-10-06. Velocity is high because the product was rebuilt in July 2026; treat that churn as a stability cost, not only as a health signal.
+- **Governance / bus factor:** owned by the `OpenHands` organization (the company behind OpenHands Cloud/Enterprise); about 50 active contributors in the past year and no single person dominates. The roadmap is the company's, and the system is split across several repos (`software-agent-sdk`, `automation`, `enterprise`).
+- **Age / Lindy:** the repo dates from 2024-03 (it started as OpenDevin), but the current Agent Canvas codebase only moved in at the end of July 2026. The repo's age says the *team* lasts; it says little about this *product's* stability.
+- **Adoption:** ~90k stars, largely earned by the earlier agent app. The radar's adoption axis is scored from PyPI downloads of `openhands-ai` (435,732 last month), a package frozen since 2026-07 — read that grade with care.
+- **Risk flags:** MIT `LICENSE` in this repo; commercial Cloud/Enterprise tiers sit alongside (open-core shape). A product pivot within a single repo has already happened once, so pin versions.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [未验证] GitHub API returned no SPDX license or NOASSERTION; inspect the repository license files before commercial or redistribution use.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [未验证] Whether every Agent Canvas feature works fully offline from OpenHands Cloud was not tested; the docs list Cloud APIs as an optional runtime service.
+- [未验证] `posthog-js` is a frontend dependency; whether telemetry is on by default and how to disable it was not checked.
+- [推断] The Agent Server's LLM access goes through LiteLLM-style model settings, inferred from the "use with any LLM" docs link and OpenHands' history; not read in `software-agent-sdk` source.
+- [推断] The radar's adoption grade reflects the frozen `openhands-ai` PyPI package rather than `@openhands/agent-canvas` on npm, so it may misstate current adoption.
+- [未验证] The ~90k star count and contributor figures are from the GitHub API on 2026-10-08 and include the pre-pivot history.

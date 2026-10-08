@@ -3,20 +3,20 @@ name: OCRmyPDF
 slug: ocrmypdf
 repo: https://github.com/ocrmypdf/OCRmyPDF
 category: pdf-transform-signing
-tags: [pdf, document, ocrmypdf, tool]
+tags: [pdf, ocr, pdf-a, searchable-pdf, tesseract, cli]
 language: Python
 license: MPL-2.0
-maturity: active, ~34,093 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: "active, v17.13.0 (2026-09-28), ~34,955 stars (as of 2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-03T23:21:22Z
+  pushed_at: 2026-10-07T08:18:33Z
   default_branch: main
-  default_branch_sha: 5569d4db07604211fa947ed4b8164362f778c84d
+  default_branch_sha: 58048daf960472e944caf4aefec904c6f3481245
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:53:17Z
+  computed_at: 2026-10-08T08:24:41Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 17.8
-        qualifying_issues: 13
+        qualifying_issues: 19
         band: relaxed_solo
         window_offset_days: 6
         source: issue
@@ -50,23 +50,23 @@ health:
         downloads_last_month: 1217669
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.03
-        release_downloads: 20579
-        release_assets: 178
+        cross_check_divergence: 1.13
+        release_downloads: 21069
+        release_assets: 182
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4659
-        last_commit_age_days: 0
+        repo_age_days: 4675
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 12
-        top1_share: 0.966
+        active_maintainers_12mo: 13
+        top1_share: 0.967
         top3_share: 0.976
         window_source: stats_contributors
         carve_out: null
@@ -80,59 +80,87 @@ health:
 ---
 # OCRmyPDF
 
-OCRmyPDF adds an OCR text layer to scanned PDF files, allowing them to be searched
+A scanned PDF is just pictures of pages: Ctrl+F finds nothing, copy-paste grabs nothing, and your search index sees an empty file. OCRmyPDF runs OCR on each page and slides an invisible, correctly positioned text layer under the original image, so the file looks the same but becomes searchable and copyable.
 
 ![OCRmyPDF — health radar](../../../assets/health/ocrmypdf.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `pdf-tools` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for OCRmyPDF when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You run the back office for a small firm, a lab or a household archive, and a scanner drops hundreds of PDFs a week into a shared folder. Someone asks for "the 2024 lease with the parking clause" and `grep`, Spotlight and your document search all come back empty, because every page is a JPEG wrapped in a PDF. You want the same files — same look, same page images, ideally archival PDF/A — but with real text behind them, produced unattended by a cron job or a watched folder.
 
-This first-pass page exists because OCRmyPDF was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+That is the exact job OCRmyPDF was built for: `ocrmypdf -l eng+deu in.pdf out.pdf` and the output is the original page images with an OCR text layer placed underneath, optimized and validated. Pick it over calling Tesseract directly because Tesseract only reads images — OCRmyPDF does the PDF work around it (rasterizing pages, keeping image resolution, skipping or redoing pages that already have text, PDF/A conversion, multi-core page parallelism). Pick it over Docling or Marker when the deliverable is still a *PDF* a human opens, not Markdown for an LLM pipeline; pick it over paperless-ngx when you only need the OCR step, not a whole document-management web app (paperless-ngx calls OCRmyPDF internally anyway).
+
+## How it works
+
+OCRmyPDF is a Python pipeline around external engines: it splits the PDF into pages, rasterizes each page to an image (with pypdfium2 or Ghostscript — the renderer that turns a PDF page into pixels), and hands that image to Tesseract, the OCR engine that turns pixels into words with positions. It then writes those words in an invisible "glyphless" font exactly under where they appear in the image, grafts that text layer onto the *original* page, so the visible image is untouched, and optionally converts the result to PDF/A (the ISO archival flavour of PDF). Pages run in parallel across CPU cores. You choose the languages, the mode for pages that already contain text (`--mode skip`, `redo` or `force`; the default stops with an error), and cleanup options like `--deskew`; you must install Tesseract and the language packs yourself. There is also a Python API, `ocrmypdf.ocr(...)`, which the docs recommend calling from a child process because it forks workers and runs subprocesses.
+
+![ocrmypdf — backbone user story](../../../assets/flow/ocrmypdf.svg)
+
+<!-- flow-steps:begin (generated from flows/ocrmypdf.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install OCRmyPDF, Tesseract and the language packs you need — `apt install ocrmypdf · brew install ocrmypdf` — component: `ocrmypdf CLI`
+2. **You**: Run it on a scanned PDF, naming the languages and cleanup options — `ocrmypdf -l eng+fra --deskew input.pdf output.pdf`
+3. **OCRmyPDF**: Rasterizes each page and runs Tesseract on it, pages in parallel across CPU cores — component: `Tesseract engine`
+4. **OCRmyPDF**: Places the recognized words as an invisible text layer under the untouched page image
+5. **OCRmyPDF**: Optimizes images, converts to PDF/A when it can, and validates the output file
+
+**Value**: The scan looks exactly the same but is now searchable, copyable and archive-ready
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on OCRmyPDF.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **You want text or Markdown out, not a searchable PDF.** OCRmyPDF's product is a PDF with a hidden text layer; it does not reconstruct tables, headings or reading order. For LLM/RAG ingestion use [Docling](../../document-parsing/docling.md) or [Marker](../../document-parsing/marker.md) instead.
+- **The PDF is born-digital (already has a text layer).** There is nothing to recognize; by default OCRmyPDF exits with an error on a page that already has text. To extract text use [pdfplumber](../pdf-reading/pdfplumber.md) or [PyMuPDF](../pdf-reading/pymupdf.md); to restructure the file use [qpdf](qpdf.md).
+- **Handwriting, degraded photos or complex non-Latin layouts.** The default engine is Tesseract, which is weak on handwriting and camera photos. Use a deep-learning engine such as [PaddleOCR](../../ocr/paddleocr.md) (there is a community OCRmyPDF-PaddleOCR plugin, GPU strongly advised) or a vision-model pipeline like [olmOCR](../../document-parsing/olmocr.md) instead.
+- **You need a document archive with users, tags and full-text search.** OCRmyPDF is one CLI step; use [paperless-ngx](../../document-management/paperless-ngx.md), which embeds OCRmyPDF and adds ingestion, storage and a search UI.
+- **You cannot install native binaries (serverless, locked-down hosts).** Tesseract (and, for some PDF/A paths, Ghostscript) must be installed outside pip. Run the official Docker image, or call a hosted OCR API (not a repo) instead.
+- **Licensing of a bundled distribution matters.** OCRmyPDF itself is MPL-2.0, but if your PDF/A path falls back to Ghostscript, that engine is AGPL-3.0 (commercial licence from Artifex). Pin `--pdfa-backend internal` or `--output-type pdf` to keep Ghostscript out, or use [Tesseract](../../ocr/tesseract.md) directly with your own PDF assembly.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [jsPDF](../pdf-generation/jspdf.md) | ✅ | When you need the established in-index option for this category, compare it against OCRmyPDF before switching. | OCRmyPDF is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OCRmyPDF only after verifying the repo-specific caveats below. |
-| [pdf-lib](../pdf-generation/pdf-lib.md) | ✅ | When you need the established in-index option for this category, compare it against OCRmyPDF before switching. | OCRmyPDF is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OCRmyPDF only after verifying the repo-specific caveats below. |
-| [PDF.js](../pdf-reading/pdfjs.md) | ✅ | When you need the established in-index option for this category, compare it against OCRmyPDF before switching. | OCRmyPDF is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OCRmyPDF only after verifying the repo-specific caveats below. |
-| [pdfplumber](../pdf-reading/pdfplumber.md) | ✅ | When you need the established in-index option for this category, compare it against OCRmyPDF before switching. | OCRmyPDF is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OCRmyPDF only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| [Tesseract](../../ocr/tesseract.md) | ✅ | Use Tesseract alone when your input is images and you only need text or hOCR; pick OCRmyPDF when the input and output are PDFs, because it handles rasterizing, text-layer placement and PDF/A for you. | Tesseract is one dependency fewer and gives full engine control; OCRmyPDF adds the PDF plumbing, page parallelism and validation that you would otherwise write yourself. |
+| [paperless-ngx](../../document-management/paperless-ngx.md) | ✅ | Choose paperless-ngx when people need to browse, tag and search a document archive; choose OCRmyPDF when OCR is one step in your own script or pipeline. | paperless-ngx gives a full web app (database, workers, UI) built on OCRmyPDF; OCRmyPDF is just the CLI/library with no storage or UI to operate. |
+| [Docling](../../document-parsing/docling.md) | ✅ | When the goal is structured text (Markdown, JSON, tables) for LLMs or RAG, pick Docling; when the goal is a searchable PDF that looks identical to the scan, pick OCRmyPDF. | Docling reconstructs layout and tables but does not give you back the original PDF; OCRmyPDF preserves the document but leaves structure extraction to you. |
+| [PaddleOCR](../../ocr/paddleocr.md) | ✅ | For handwriting, photos or dense CJK where Tesseract accuracy is not enough, use PaddleOCR (optionally via the OCRmyPDF-PaddleOCR plugin); otherwise OCRmyPDF's default Tesseract path is simpler to run. | PaddleOCR is more accurate on hard inputs but brings a deep-learning stack and ideally a GPU; Tesseract runs on any CPU with small language packs. |
+| Stirling-PDF | 未收录 | Pick Stirling-PDF when non-technical users want OCR among many PDF tools in a self-hosted web UI; pick OCRmyPDF for headless batch jobs and scripting. | Stirling-PDF wraps many PDF operations behind a browser UI; OCRmyPDF is a single-purpose CLI that is easier to automate and audit. |
 
 ## Tech stack
 
-- **Primary language:** Python per GitHub metadata.
-- **Repository:** `ocrmypdf/OCRmyPDF`.
-- **Project shape:** categorized as `tool` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-03T23:21:22Z`, archived `false`.
+- **Language:** Python ≥ 3.11 (pure Python package `ocrmypdf`, built with hatchling), v17.13.0 as of 2026-09-28.
+- **PDF internals:** pikepdf (the maintainer's Python binding to qpdf) for structure and PDF/A repair/validation, pypdfium2 for rasterizing, fpdf2 + uharfbuzz for rendering the invisible text layer, pdfminer.six for text detection, img2pdf and Pillow for images.
+- **Engines:** Tesseract OCR (default, 100+ languages) via subprocess; Ghostscript optional for rasterizing and fallback PDF/A conversion.
+- **Extensibility:** a pluggy-based plugin interface; the `--ocr-engine` option and community plugins swap in EasyOCR, PaddleOCR or Apple Vision.
+- **Distribution:** PyPI, most Linux/BSD package managers, Homebrew, and Docker images for x64 and ARM.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **Required native binary:** Tesseract 4.1.1+ on `PATH`, plus a Tesseract language pack for every language you pass with `-l`.
+- **Optional native binary:** Ghostscript — needed only when the internal PDF/A path cannot produce a valid file, or when you request a Ghostscript-only option; v17 made it optional.
+- **Python packages:** pulled in by pip (pikepdf with the `pdfa` extra, pypdfium2, fpdf2, pdfminer.six, Pillow, pydantic, pluggy, rich, uharfbuzz).
+- **Optional extras:** `heic` (bundles GPLv2 x265 — opt-in), `watcher` (watch-folder service), `webservice` (Streamlit demo UI).
+- **No external services:** OCR runs locally; documents do not leave the machine.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low for a single machine, medium at volume.** Installing is one package-manager command or a Docker pull; the main friction is getting the right Tesseract language packs and keeping native versions compatible — the v17 release notes are full of Ghostscript-version-specific workarounds. At volume, CPU is the cost: OCR is per-page and CPU-bound, so throughput scales with cores and `--jobs`. Embedding the Python API in a long-running service needs care, because it forks workers and spawns subprocesses; the docs recommend running each job in a child process. There is no daemon, database or state to operate unless you use the optional watcher.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-03T23:21:22Z` as of 2026-07-06.
-- **Adoption snapshot:** ~34,093 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `MPL-2.0` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (2026-10-08): very active.** Releases roughly every two weeks (v17.10 → v17.13 between 2026-08-05 and 2026-09-28), commits within the last day, and issue first responses typically within a day.
+- **Governance: single-maintainer risk.** James R. Barlow (`jbarlow83`) authored ~97% of commits; the GitHub org and paid consulting are the only visible backing. The roadmap and release process depend on one person.
+- **Age / Lindy: strong.** Started in 2013 and actively maintained for ~13 years through several major versions — old *and* still active, the best case for the Lindy prior.
+- **Adoption: broad (radar B).** 1,217,669 PyPI downloads in the last month and 108 dependent repos on the registry graph; packaged by Debian, Fedora, Homebrew and the BSDs, and embedded in paperless-ngx.
+- **Risk flags:** MPL-2.0 (file-level copyleft: publish changes to OCRmyPDF's own files); Ghostscript fallback is AGPL-3.0; v17 brought breaking changes to the plugin API and removed lossy JBIG2. No relicensing found.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [推断] The README's "Requirements" section still says Ghostscript is required, while the v17.0.0 and v17.13.0 release notes say it is optional; this page follows the release notes.
+- [未验证] Accuracy claims ("battle-tested on millions of PDFs", handles thousands of pages) are the upstream's own statements; not benchmarked here.
+- [未验证] The OCRmyPDF-PaddleOCR and OCRmyPDF-AppleOCR plugins are third-party repositories named in the README; their maintenance and compatibility with v17 were not checked.
+- [推断] OCR quality on CJK and mixed-script documents depends mainly on Tesseract and its language data, not OCRmyPDF; v17 improved text-layer font handling for CJK/Devanagari/Arabic but not recognition itself.

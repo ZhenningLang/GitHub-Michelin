@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "The guidelines make the agent do", "zh": "这份准则让 agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add its marketplace and install the Claude Code plugin (or curl CLAUDE.md into a project)", "zh": "加上它的 marketplace，装 Claude Code 插件", "code": "/plugin install andrej-karpathy-skills@karpathy-skills"},
+    {"lane": "them", "en": "Four principles join the agent's standing instructions in every project", "zh": "四条原则进入 agent 在每个项目里的常驻指令", "component": {"en": "karpathy-guidelines skill", "zh": "karpathy-guidelines skill"}},
+    {"lane": "you", "en": "Give a task, ideally with a checkable goal like a failing test", "zh": "布置任务，最好带一个可检验的目标，比如一个会失败的测试"},
+    {"lane": "them", "en": "States its assumptions and asks when the request is ambiguous, before writing code", "zh": "动手前先摆出假设，需求有歧义就先问"},
+    {"lane": "them", "en": "Writes the minimum change, touches only lines your request needs, loops until the check passes", "zh": "只写最少的改动、只碰需求涉及的行，循环到检查通过"}
+  ],
+  "value": {"en": "Smaller diffs, questions before mistakes instead of after, and no drive-by refactoring", "zh": "diff 更小，问题在犯错前问而不是犯错后，也没有顺手的重构"},
+  "sources": [
+    "https://github.com/multica-ai/andrej-karpathy-skills README — Install Option A (/plugin marketplace add forrestchang/andrej-karpathy-skills; /plugin install andrej-karpathy-skills@karpathy-skills), Option B (curl -o CLAUDE.md …); The Four Principles in Detail; How to Know It's Working",
+    "repo tree: skills/karpathy-guidelines, .claude-plugin/plugin.json + marketplace.json"
+  ]
+}

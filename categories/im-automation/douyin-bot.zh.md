@@ -7,7 +7,7 @@ tags: [douyin, adb, android-automation, face-recognition, bot, python, demo]
 language: Python
 license: MIT
 maturity: v0.0.1 demo, no commits since 2020-05, ~9.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2023-10-03T21:08:46Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:02:07Z
+  computed_at: 2026-10-08T08:19:48Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2335
+        last_commit_age_days: 2346
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3045
-        last_commit_age_days: 2335
+        repo_age_days: 3056
+        last_commit_age_days: 2346
         cohort: app
     governance:
       grade: "?"
@@ -71,6 +71,28 @@ health:
 你是开发者，想要一个具体、可读的*屏幕坐标手机自动化*示例——即如何用 Python 经 ADB 驱动一部真机：`screencap` 截图、压缩、发去某处分析，再根据结果发 `input swipe` / `input tap`。Douyin-Bot 正是这个循环的一个小巧而知名的参考：它截抖音 app 的屏、把帧 POST 给一个云端人脸识别 API、读回一个“颜值”分，分数过阈值就点赞/关注，然后划到下一个视频。
 
 实事求是地说，这是它今天*唯一*站得住脚的用法：当历史性的 ADB 自动化样本来读。作为能用的工具，它不行——见下。别部署它。
+
+## 怎么用起来
+
+Douyin-Bot 就是一个 Python 循环加一个远程接口。**操作手机的活它来干**，靠的是 ADB（Android Debug Bridge，谷歌提供的、经 USB 向安卓手机下命令的通道）：`adb screencap` 截屏，脚本把图片压到 1 MB 以下，发给腾讯 `ai.qq.com` 的人脸检测接口；返回的颜值分高过 `BEAUTY_THRESHOLD`（源码里是 80）时，就用 `adb shell input tap` 点赞、点关注，再用 `input swipe` 划到下一条。**它预设的一切由你来准备**：一部 USB 连着的安卓手机、腾讯的 AppID/AppKey，以及 `config/` 里一份和你屏幕完全对应的按钮像素坐标 JSON。整个过程不读取 App 的界面结构——它是一根蒙着眼、按记忆位置去戳的手指——所以 2018 年的坐标文件加上大概率已经下线的接口，让它今天只剩空转。把它当 ADB 自动化的样例读，别去运行。
+
+![douyin-bot — 主干用户故事](../../assets/flow/douyin-bot.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/douyin-bot.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用 USB 连上开了 ADB 调试的安卓手机，打开抖音
+2. **你**：申请腾讯 AI 的 AppID/AppKey，填好你屏幕的按钮坐标 — `center_point · follow_bottom · star_bottom`
+3. **你**：装上 2018 年钉死的依赖，启动循环 — `python douyin-bot.py`
+4. **Douyin-Bot**：通过 ADB 截手机屏，压到 1 MB 以下
+5. **Douyin-Bot**：发给 ai.qq.com 人脸接口，拿回年龄和颜值分
+6. **Douyin-Bot**：超过 BEAUTY_THRESHOLD 就点赞关注，然后划到下一条
+
+**价值**：当年是免手动的刷视频点赞循环；今天已失效——坐标停在 2018 年，人脸接口大概率已下线
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

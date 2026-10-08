@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "PR-Agent does", "zh": "PR-Agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the PR-Agent workflow to the repo, triggered on PR open and new commits", "zh": "在仓库里加上 PR-Agent 工作流，PR 打开或有新提交时触发", "code": "uses: the-pr-agent/pr-agent@main", "component": {"en": "GitHub Action", "zh": "GitHub Action"}},
+    {"lane": "you", "en": "Store an LLM API key as a repository secret", "zh": "把大模型 API key 存成仓库 secret", "code": "OPENAI_KEY"},
+    {"lane": "them", "en": "Fetches the PR diff through the host API and compresses a large one to fit the model", "zh": "通过平台 API 拉取 PR 改动，太大就压缩到模型装得下", "component": {"en": "PR compression", "zh": "PR 压缩"}},
+    {"lane": "them", "en": "Runs describe, review and improve automatically, one model call each", "zh": "自动跑 describe、review、improve，每个只调一次模型"},
+    {"lane": "them", "en": "Posts the description, review and code suggestions back to the PR", "zh": "把描述、评审和代码建议贴回 PR"}
+  ],
+  "value": {"en": "Every PR arrives already summarized and pre-reviewed, on a model you chose and pay for directly", "zh": "每个 PR 到人手里时已经有说明和一轮预审，用的是你自己选、自己付费的模型"},
+  "sources": [
+    "https://github.com/The-PR-Agent/pr-agent#readme (Quick Start: GitHub Action with uses: the-pr-agent/pr-agent@main, OPENAI_KEY, GITHUB_TOKEN)",
+    "https://github.com/The-PR-Agent/pr-agent/blob/main/docs/docs/installation/github.md (on pull_request opened/synchronize; secret OPENAI_KEY)",
+    "https://github.com/The-PR-Agent/pr-agent/blob/main/pr_agent/servers/github_action_runner.py (auto_describe / auto_review / auto_improve default on)",
+    "https://github.com/The-PR-Agent/pr-agent/blob/main/docs/docs/core-abilities/compression_strategy.md (PR compression for large diffs)"
+  ]
+}

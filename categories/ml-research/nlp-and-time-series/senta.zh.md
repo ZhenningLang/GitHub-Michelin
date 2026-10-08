@@ -6,8 +6,8 @@ category: nlp-and-time-series
 tags: [sentiment-analysis, nlp, pretraining, skep, paddlepaddle, chinese-nlp, ernie]
 language: Python
 license: Apache-2.0
-maturity: research release (ACL 2020 SKEP), idle since ~2024-08, ~2.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: research release (ACL 2020 SKEP), PyPI Senta 2.0.0 (2020-05), last commit 2020-06, quiet since (as of 2026-10-08), ~2.0k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-08-20T16:16:48Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:17:07Z
+  computed_at: 2026-10-08T08:23:03Z
   overall: D
   overall_score: 1.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2280
+        last_commit_age_days: 2291
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3010
-        last_commit_age_days: 2280
+        repo_age_days: 3020
+        last_commit_age_days: 2291
         cohort: library
     governance:
       grade: "?"
@@ -80,10 +80,31 @@ health:
 
 你选它，正是当你身处 **PaddlePaddle / ERNIE 生态**、想要一个背后有发表方法的情感专用预训练模型时——价值在于 SKEP 模型和可复现的基准设置，而非一个通用、框架无关的库。
 
+## 怎么用起来
+
+真正的资产是 SKEP：百度拿通用预训练语言模型（ERNIE、RoBERTa——已经从海量无标注文本里学会一门语言的模型），再用情感知识继续预训练：遮住情感词和“评价对象—观点”词对让模型去猜，从而学会哪些词带情绪。Senta 把这些模型针对三个任务微调好了——句子级情感极性、评价对象级情感（文本对某个具体对象的态度，比如“电池”）和观点抽取。走一键化路径时，你自己装好 PaddlePaddle 1.x，`pip install Senta`，创建 `Senta()` 对象，用模型名和任务名调用 `init_model()`；Senta 会下载对应权重、校验 md5、配好分词器加载起来，之后 `predict()` 给你的文本打分。老旧的 Paddle/CUDA 环境仍得你自己维护；重训或复现论文数字是另一条路，要用 `script/` 下的 shell 脚本和 `model_files/` 里的下载脚本。
+
+![senta — 主干用户故事](../../../assets/flow/senta.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/senta.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：先装 PaddlePaddle 1.x，再装 Senta 包 — `python -m pip install Senta`
+2. **你**：创建预测器，选一个 SKEP 模型和一个任务 — `init_model(model_class="ernie_1.0_skep_large_ch", task="sentiment_classify")`
+3. **Senta (SKEP)**：下载该任务的微调权重，校验 md5，连同分词器一起加载
+4. **你**：传入一组文本（评价对象级任务再加上评价对象） — `my_senta.predict(texts)`
+5. **Senta (SKEP)**：逐条分词，跑 SKEP 模型，返回情感预测结果
+
+**价值**：几行代码就用上论文发布的 SKEP 模型做句子级和评价对象级情感分析，不用自己预训练或微调
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你不在 PaddlePaddle 上。** 它专门面向 PaddlePaddle 1.6.3——一个老的、2.0 之前的 Paddle 版本。若你的栈是 PyTorch/TF/HF Transformers，集成成本很高，这里也没有一流的移植。对多数团队，Hugging Face 上的情感模型是摩擦更小的路径。[推断]
-- **你需要维护中的、当下的工具包。** 自约 2024-08 起停摆，钉死在早被取代的 Paddle 1.x 和老 NLP 依赖上；预期要做环境考古且无上游修复。百度更新的 NLP 工作在 PaddleNLP/ERNIE 仓库里，不在这。
+- **你需要维护中的、当下的工具包。** 自 2020-06 起再无提交，钉死在早被取代的 Paddle 1.x 和老 NLP 依赖上；预期要做环境考古且无上游修复。百度更新的 NLP 工作在 PaddleNLP/ERNIE 仓库里，不在这。
 - **你想要轻松、现代的安装。** PaddlePaddle 1.6.3 加 CUDA 10.1 加 cuDNN 7.4 加 NCCL2，还要手设 `LD_LIBRARY_PATH`（见 `env.sh`），是一套又重又旧的 GPU 配置，不是 `pip install` 就走。[推断]
 - **以英文为先或要广覆盖多语言。** 它确实带英文 SKEP，但项目的重心和最强的故事是中文情感；广覆盖的多语言情感在别处更合适。
 - **规模化的生产推理服务。** 这是研究/参考代码；你得自己封装加固，而且是在一个 EOL 框架版本上做。
@@ -119,15 +140,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2024-08；无 release/tag；约 74 个 open issue。实际上**停摆/吃老本**——SKEP 工作「发布即冻结」，百度活跃的 NLP 开发已转到 PaddleNLP/ERNIE。[推断]
+- **维护（2026-10）。** 默认分支最后提交在 2020-06（2024-08 的 `pushed_at` 没有带来默认分支提交）；PyPI 上 `Senta` 最后一版 2.0.0 发布于 2020-05；无 GitHub release；约 74 个 open issue。实际上**停摆/吃老本**——SKEP 工作「发布即冻结」，百度活跃的 NLP 开发已转到 PaddleNLP/ERNIE。[推断]
 - **治理 / 背书。** 由**百度**背书（Organization owner）——有真正的机构分量，背后是经同行评审的方法（ACL 2020）。但大厂背书不等于*这个仓库*在被维护；百度显然把 NLP 路线图挪到了别处。bus-factor 的顾虑是「被同门项目取代」，而非「孤身爱好者」。[推断]
-- **年龄与 Lindy 判断。** 2018-07 创建（约 8 年）但**当下不活跃**⇒ 此处年龄本身不算 Lindy；它持久的价值是 SKEP 方法/checkpoint，而非活的维护。[推断]
-- **采用度。** 约 2.0k star / 约 365 fork；经 SKEP ACL 2020 论文被引用，并在 Paddle/ERNIE 社区中使用。[未验证]
-- **风险标记。** **EOL 框架钉死**（PaddlePaddle 1.6.3）是主导风险——它卡住了其他一切；许可本身（Apache-2.0）宽松，不是顾虑。[推断]
+- **年龄与 Lindy 判断。** 2018-07 创建（约 8 年，近约 6 年无提交）但**当下不活跃**⇒ 此处年龄本身不算 Lindy；它持久的价值是 SKEP 方法/checkpoint，而非活的维护。[推断]
+- **采用度。** 约 2.0k star / 约 360 fork；经 SKEP ACL 2020 论文被引用，并在 Paddle/ERNIE 社区中使用。[未验证]
+- **风险标记。** **EOL 框架钉死**（PaddlePaddle 1.6.3）是主导风险——它卡住了其他一切；许可本身（Apache-2.0）宽松，不是顾虑。一键化预测器下载权重时还关掉了 TLS 证书校验（`senta/train.py` 里的 `requests.get(url, verify=False, ...)`；它会比对 md5，但 md5 也走同一条通道取回）。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 2.0k star / 约 365 fork / 约 74 个 open issue；数字对时间敏感，仅供参考。
+- [未验证] 截至 2026-10-08 约 2.0k star / 约 360 fork / 约 74 个 open issue；数字对时间敏感，仅供参考。
 - [未验证] SKEP checkpoint 下载的确切可用性/位置此处未重新核实；README 指向 `model_files/` 的下载步骤。
 - [推断]「PaddlePaddle 1.6.3 加 CUDA 10.1 在现代机器上不易安装」是从钉死版本和 `env.sh` 推断，并非来自在当前硬件上的实测安装。
+- [未验证] `init_model()` 要下载的权重地址中只 HEAD 探测了一个（`senta.bj.bcebos.com/skep/1a/model_files.tar.gz`，约 1.2 GB），2026-10-08 返回 200；其他模型的地址未查，任何一个失效都会让该模型的一键化路径断掉。
 - [推断]「开发已转到 PaddleNLP/ERNIE」是从本仓库停摆加百度已知的活跃 NLP 仓库推断，并非来自 Senta 内明确的弃用声明。

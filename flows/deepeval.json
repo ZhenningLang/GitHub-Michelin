@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "DeepEval does", "zh": "DeepEval 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and give it a judge model (OpenAI key by default, or your own model)", "zh": "安装，并给它一个评审模型（默认 OpenAI key，也可换自己的）", "code": "pip install -U deepeval"},
+    {"lane": "you", "en": "Write a test: input, your app's actual output, expected output, plus a metric and threshold", "zh": "写测试：输入、应用实际输出、期望输出，再配指标和阈值", "code": "LLMTestCase · GEval · assert_test"},
+    {"lane": "you", "en": "Run the test file, locally or in CI", "zh": "在本地或 CI 里跑测试文件", "code": "deepeval test run test_chatbot.py"},
+    {"lane": "them", "en": "Asks the judge model to score each output against the criteria, from 0 to 1, with a reason", "zh": "让评审模型按标准给每条输出打 0 到 1 分，并写出理由", "component": {"en": "metric (LLM judge)", "zh": "指标（LLM 评审）"}},
+    {"lane": "them", "en": "Fails any test whose score is under the threshold, like a failing pytest assertion", "zh": "分数低于阈值的测试判为失败，就像 pytest 断言失败", "component": {"en": "pytest runner", "zh": "pytest 运行器"}}
+  ],
+  "value": {"en": "A prompt or model change that makes answers worse fails the build instead of reaching users", "zh": "改提示词或换模型让回答变差时，构建直接失败，而不是等用户发现"},
+  "sources": [
+    "README.md @ main 2026-10-08 Human QuickStart (pip install -U deepeval; test_chatbot.py with GEval, LLMTestCase, assert_test, threshold=0.5; export OPENAI_API_KEY; deepeval test run test_chatbot.py; 'All metric scores range from 0 - 1'; custom model option)",
+    "pyproject.toml @ main (pytest, pytest-xdist, openai as runtime dependencies)"
+  ]
+}

@@ -6,8 +6,8 @@ category: media-download
 tags: [video-download, bilibili, douyin, cli, go, downloader, single-binary]
 language: Go
 license: MIT
-maturity: "active-but-slowing, master pushed ~2026-03, last tagged release v0.24.1 (2024-05), ~31.4k stars (2026-06)"
-last_verified: 2026-06-28
+maturity: "last commit 2025-12-29, quiet since (as of 2026-10-08); last tagged release v0.24.1 (2024-05), ~31.8k stars (2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-03-29T18:18:56Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:08:39Z
+  computed_at: 2026-10-08T08:21:58Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 272
+        last_commit_age_days: 283
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,9 +45,9 @@ health:
         graph_tier: B
         volume_tier: "?"
         cross_check_divergence: null
-        homebrew_installs_90d: 240
+        homebrew_installs_90d: 216
         homebrew_tier: C
-        release_downloads: 561766
+        release_downloads: 564963
         release_assets: 1248
         release_tier: C
         signal_basis: homebrew+releases
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 3137
-        last_commit_age_days: 272
+        repo_age_days: 3148
+        last_commit_age_days: 283
         cohort: tool
     governance:
       grade: B
@@ -89,10 +89,31 @@ health:
 
 当来源是**中文站点**时你尤其会选它——Bilibili、抖音以及类似的站点，lux 历来在这些站点上的 extractor 比那些以西方站点为中心的工具更锋利、维护得更好。你在归档一个 Bilibili 系列、或拉抖音短片，想要多线程分段下载提速，也想要同一个二进制无论交互调用还是脚本调用都行为一致。
 
+## 怎么用起来
+
+lux 是一个每次任务跑一次的程序：启动、下载、退出。**它替你做的：**认出 URL 属于哪个站点，把它交给那个站点的*抽取器*——一小段专门知道这个站点把真正的视频文件藏在哪里的代码——抽取器返回可用的流列表（清晰度、格式、大小）。然后 lux 下载排在最前的流，或者你用 `-f` 指定的那个，可以选择多线程并行（`-m`）；如果站点把视频切成多段，或者视频和音频分开给，它会调用 FFmpeg（另装的媒体处理工具）把它们拼成一个文件。**你要做的：**装好二进制和 FFmpeg，把 URL 交给它；遇到要登录或要换地区的站点，自己提供 cookies 或代理。能下哪些站点，以 README 的支持站点表为准，偏重国内平台（抖音、B 站、优酷、爱奇艺、芒果 TV）；没有抽取器的站点就直接失败。
+
+![lux — 主干用户故事](../../assets/flow/lux.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/lux.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 lux 这一个二进制，并把 FFmpeg 放进 PATH — `go install github.com/iawia002/lux@latest · brew install lux`
+2. **你**：对一个或几个视频页面地址运行它 — `lux [OPTIONS] URL [URL...]`
+3. **lux**：按站点挑出对应的抽取器，列出可用的清晰度和大小 — 组件：`站点抽取器`
+4. **lux**：下载排在最前的流（或你指定的那个），要求时多线程并行 — `-f 248 · -m`
+5. **lux**：用 FFmpeg 把下好的分段合并成一个视频文件
+
+**价值**：一个静态二进制就能把 B 站、抖音、YouTube 页面变成本地视频文件，不用管 Python 运行时
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要尽可能宽的站点覆盖和最新的 extractor。** 这是决定性的筛子。lux 支持的站点目录比 yt-dlp **更小**，extractor 修复的节奏也更慢——当某站点改了播放器或签名逻辑，通常是 yt-dlp 先被打补丁。论广度（尤其是 YouTube），默认用 yt-dlp / [youtube-dl](youtube-dl.zh.md)，把 lux 当作「中文站点 + 单二进制」的专才。[推断]
-- **你押注的是长期、快周转的维护。** 贡献高度集中在单一维护者（iawia002）手上，最后一个*打 tag* 的发布（v0.24.1）来自 2024-05，尽管 master 仍有提交——一旦某个被大量使用的站点崩了而修复迟迟不到，这就是 bus-factor 和节奏风险。要给「崩→修」的循环留预算。
+- **你押注的是长期、快周转的维护。** 贡献高度集中在单一维护者（iawia002）手上，最后一个*打 tag* 的发布（v0.24.1）来自 2024-05，master 本身自 2025-12-29 起也没有新提交（截至 2026-10-08 约 9 个月）——一旦某个被大量使用的站点崩了而修复迟迟不到，这就是 bus-factor 和节奏风险。要给「崩→修」的循环留预算。
 - **你想要一个转码器或后处理工具箱。** lux 能下载、也能合并分段，但它不是编码器——合并和任何重编码/格式转换都靠调用 **FFmpeg**。如果你真正的需求是转码，直接上 FFmpeg；lux 是「取」这一步，不是媒体处理那一步。
 - **重 JS / DRM / 登录墙、且没有 extractor 的来源。** 和同类一样，它不跑浏览器，也不破解 Widevine/PlayReady、不解 CAPTCHA、不为对抗限流轮换身份。没有现成 extractor 的站点只会直接失败。
 - **法律 / ToS 暴露。** 下载受版权保护的媒体、或违反站点服务条款，责任在你；很多目标站点禁止下载。在没核对法律和 ToS 前，别拿它做产品底座。
@@ -127,16 +148,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——unknown。
-- **维护——活跃但放缓；发布落后于 master（master 约 2026-03 push，最后一个打 tag 的发布 v0.24.1 在 2024-05，截至 2026-06）。** 未归档、默认分支仍有提交，但面对一个移动的目标（站点改播放器），距上一个 tag 发布约 2 年的落差正是要盯的信号：在依赖它覆盖很多站点前，先核实它是真活跃还是在吃老本。[推断]
+- **维护——放缓，眼下沉寂（master 最后一次提交 2025-12-29，最后一个打 tag 的发布 v0.24.1 在 2024-05，截至 2026-10-08）。** 未归档，master 到 2025-12 还在收功能提交（YouTube 字幕、导出进度条），但之后就没有了；再加上面对一个移动的目标（站点改播放器），距上一个 tag 发布约 2 年的落差，这正是要盯的信号：在依赖它覆盖很多站点前，先核实它是真活跃还是在吃老本。[推断]
 - **治理与 bus factor——单维护者的 `User` 仓库（iawia002）。** 归属一个个人账号，而非组织或基金会，贡献高度集中在 owner（iawia002 约 497 次，紧随其后者约 14 次）。这是实打实的 bus-factor 标记：路线图和 extractor 维护在很大程度上系于一人。[推断]
-- **年龄与 Lindy——创建于 2018 年（约 8 岁），约 31.4k star：年龄和采用度都不错。** 一个多年、仍在收提交的项目跨过了基本的 Lindy 门槛——这个*点子*和代码库已经存续（它早于 *annie* 改名）。但对下载器而言，耐久风险不在年龄，而在 **extractor 过时/节奏**：老且活跃对核心是宽慰，但不保证任意某个站点今天还能下。
+- **年龄与 Lindy——创建于 2018 年（约 8 岁），约 31.4k star：年龄和采用度都不错。** 一个存续多年、到 2025 年底还在收提交的项目跨过了基本的 Lindy 门槛——这个*点子*和代码库已经存续（它早于 *annie* 改名）。但对下载器而言，耐久风险不在年龄，而在 **extractor 过时/节奏**：老且活跃对核心是宽慰，但不保证任意某个站点今天还能下。
 - **风险标记——MIT，无 relicense 历史。** 宽松许可，未见 copyleft/relicense 摩擦。当前风险就是上面那个节奏/bus-factor，以及下载本身普遍的法律/ToS 暴露。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 31.4k GitHub star;star 数对时间敏感，仅供参考。
-- [未验证] master 最近一次 push 约 2026-03，最后一个打 tag 的发布是 v0.24.1（2024-05），依据仓库的 releases;tag 与 master 的落差是关键维护信号——依赖前请重新确认当前提交活跃度、以及是否有更新的发布。
+- [未验证] 截至 2026-10 约 31.8k GitHub star；star 数对时间敏感，仅供参考。
+- [未验证] 按 commits 和 releases API（2026-10-08），master 最后一次提交是 2025-12-29，最后一个打 tag 的发布是 v0.24.1（2024-05）；仓库的 `pushed_at` 是更晚的 2026-03-29，推测是非默认分支上的活动 [推断]；tag 与 master 的落差是关键维护信号——依赖前请重新确认当前提交活跃度、以及是否有更新的发布。
 - [推断]「站点覆盖比 yt-dlp 更小、extractor 更新更慢」是普遍认知，并非此处核过的计数；决策时请查当前支持站点列表和近期 extractor 提交。
 - [推断] 单维护者/bus-factor 判断由 `User` 所有的仓库和贡献集中度数据（iawia002 约 497 vs 次位约 14）推断而来；若此点至关重要，请重新核对贡献者图谱。
-- [未验证] 合并/转换需 FFmpeg、以及并行多分段下载的说法来自项目文档；若任一点至关重要，请对照当前 README 并自行跑一遍确认。
+- [未验证] README 把 FFmpeg 列为前置依赖，并说明它“不影响下载，只影响最后的文件合并”；并行下载在 README 里是要手动打开的（`-m`，线程数用 `-n`）；这两点本轮都没有实际跑过。
 - [推断] License 为 MIT 依据仓库元数据；若 license 条款对你的用途至关重要，请确认 LICENSE 文件。

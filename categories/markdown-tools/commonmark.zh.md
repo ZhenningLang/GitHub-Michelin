@@ -5,18 +5,18 @@ repo: https://github.com/commonmark/commonmark.js
 category: markdown-tools
 tags: [markdown, commonmark, reference-implementation, parser, specification, javascript, ast, compliance]
 language: JavaScript
-license: BSD-3-Clause
-maturity: v0.31.0, stable reference impl, ~1.5k stars (as of 2026-07)
-last_verified: 2026-07-01
+license: BSD-2-Clause
+maturity: v0.31.2 (2024-09-19), tracks CommonMark spec 0.31.2, ~1.6k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-03-01T10:10:09Z
+  pushed_at: 2026-09-14T23:19:19Z
   default_branch: master
-  default_branch_sha: 497bdcc8f8bf8400e99d7741f049233820048c8a
+  default_branch_sha: 49df475be81bfebef0223a24561cc188b02fa0ee
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:33:35Z
+  computed_at: 2026-10-08T08:21:21Z
   overall: B
   overall_score: 3.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 8
+        last_commit_age_days: 23
         active_weeks_13: 4
         carve_out: null
     responsiveness:
@@ -47,16 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: commonmark
         dependent_repos_count: 6702
-        downloads_last_month: 2684204
+        downloads_last_month: 2771418
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.12
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4259
-        last_commit_age_days: 8
+        repo_age_days: 4275
+        last_commit_age_days: 23
         cohort: library
     governance:
       grade: A
@@ -72,72 +72,86 @@ health:
   unknowns:
     risk_license: { reason: license_unparsed }
 ---
-
 # CommonMark
 
+同一份 Markdown 在两个工具里渲染得不一样——嵌套列表被压平了，紧挨标点的 `*强调*` 原样露出星号——而你判断不了到底是哪个工具错了。commonmark.js 是 CommonMark 规范的 JavaScript 参考实现，由规范作者本人编写：它把 Markdown 解析成一棵你能查看、能修改的树，再严格按规范渲染成 HTML。
 
-CommonMark 规范的官方 JavaScript 参考实现——生成可遍历的 Concrete Syntax Tree（AST），但不以生产环境渲染速度为目标。
-
-
-![CommonMark — health radar](../../assets/health/commonmark.zh.svg)
+![CommonMark — 健康度雷达](../../assets/health/commonmark.zh.svg)
 
 ## 何时使用
 
-你正在构建需要对照规范验证 Markdown 解析器正确性的工具，或者正在撰写关于 Markdown 解析的学术论文，需要一套权威的、符合规范的基准。你是一名开发者，在构建新的 Markdown 解析器或 linter，需要一份保证符合规范的参考实现来进行对比。你引入 commonmark.js，喂给它边界情况的 Markdown 输入，检查它生成的 AST——你知道它的输出就是其他解析器被衡量时所对照的“真相”。你遍历这棵具体的语法树来分析文档结构、构建自定义渲染器，或验证你自己的解析器是否正确处理了每一种规范的边界情况。
+你在做的东西，核心问题是“按规范这段 Markdown 到底是什么意思”：一个必须和 CommonMark 一致的新解析器或 linter、一套合规测试工具、一个展示文档结构的编辑器，或者一个改写旧文档的迁移工具。你现有的渲染器把 `- a\n - b` 渲染成一个平铺列表，GitHub 却把它嵌套了，你需要一个可以对照的标准答案。你引入 commonmark.js，把这个边界情况喂进去，检查它生成的树——它的作者 John MacFarlane 也是规范的作者，库跟踪的是规范 0.31.2，并用规范自带的测试用例做测试。
 
-它也适合用于必须保证规范合规的工具——合规测试套件、Markdown 教学工具，或任何“规范怎么说”比“多快能出 HTML”更重要的场景。
+选它的第二个理由是这棵树本身。它不是把 Markdown 直接变成一串 HTML，而是给你一棵节点树（`document`、`paragraph`、`emph`、`link`、`code_block`……），配一个遍历器，你可以在渲染前改写节点——去掉链接、剥离原始 HTML、把代码块交给高亮库——再用内置的 HTML 或 XML 渲染器输出。相对 [markdown-it](markdown-it.zh.md) 或 [marked](marked.zh.md)，你得到严格的规范行为和一棵可编辑的树；相对 [remark](remark.zh.md)，你得到的是一个小巧的单一库，而不是一整套插件生态。代价是只有 CommonMark：没有表格、任务列表和删除线。
+
+## 怎么用起来
+
+解析按规范自己描述的两个阶段进行：先把各行切分成块（段落、列表、引用、代码块），同时收集链接引用定义；再把每个段落和标题里的文字解析成行内元素，比如强调、链接和代码片段。结果是一棵抽象语法树——由节点对象组成的树，每个节点有类型、子节点和源码位置。commonmark.js 替你做的：规范的全部解析规则，包括最难的那些（紧挨标点的强调、惰性续行、链接引用解析），外加两个渲染器（HTML，以及把树导出成 XML）和一个 `commonmark` 命令行工具。你自己要做的：对树的任何改写、任何 Markdown 扩展（它没有插件 API），以及安全——原始 HTML 和 `javascript:` 链接默认会原样通过，除非你打开渲染器的 `safe` 选项，或者把输出交给消毒器处理。可以把它想成其他渲染器拿来对照的那本词典，而不是印得最快的那台印刷机。
+
+![commonmark — 主干用户故事](../../assets/flow/commonmark.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/commonmark.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装 npm 包（或在浏览器加载打包文件） — `npm install commonmark`
+2. **你**：创建解析器，把 Markdown 字符串交给它 — `reader.parse("Hello *world*")`
+3. **CommonMark**：按规范先建块、再解析行内元素，生成节点树 — 组件：`解析器 Parser`
+4. **你**：遍历这棵树，改写你关心的节点 — `parsed.walker()`
+5. **你**：用渲染器输出，不受信任的输入要开安全模式 — `new commonmark.HtmlRenderer({safe: true})`
+6. **CommonMark**：输出严格合规的 HTML，开安全模式时替换原始 HTML 和危险链接 — 组件：`渲染器 HtmlRenderer`
+
+**价值**：严格按 CommonMark 规范理解 Markdown，并在变成 HTML 之前给你一棵可改的树
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你需要一个快速的生产环境 Markdown→HTML 渲染器。** 这是一个参考实现，不以速度为优化目标——marked 和 markdown-it 在生产渲染上都更快。[推断]
-- **你需要 GFM 特性（表格、任务列表、删除线、自动链接）。** commonmark.js 仅支持 CommonMark；GitHub Flavored Markdown 不是内置的。[推断]
-- **你需要插件生态。** 与 markdown-it 或 remark 不同，它没有插件架构——所见即所得。[推断]
-- **你要渲染不受信任的用户 Markdown 且不做消毒。** 和大多数解析器一样，commonmark.js 不会消毒输出的 HTML；原始 HTML 会透传，因此不经处理直接使用会有 XSS 漏洞。你必须自行通过消毒器处理输出。
-- **你想要一个“一键调用给我 HTML”的库。** 它给你的是 AST；你需要自己遍历这棵树并渲染。内置的 HTML 渲染器非常基础，主要供演示和验证使用，不适合生产环境。
+- **你需要 GitHub Flavored Markdown（表格、任务列表、删除线、扩展自动链接）。** commonmark.js 只实现 CommonMark，也没有扩展 API。改用 [markdown-it](markdown-it.zh.md)（自带 GFM 表格和删除线，另有插件）或配合 `remark-gfm` 的 [remark](remark.zh.md)。
+- **你需要插件生态——数学公式、脚注、容器块、作为插件的语法高亮。** 它没有插件生态，你只能自己写树变换。markdown-it 或 remark／[micromark](micromark.zh.md) 有庞大的插件目录。
+- **你要渲染不受信任的用户输入，还打算用默认配置。** 默认情况下原始 HTML 会透传、链接 URL 不做消毒（README 的安全说明）。设置 `new commonmark.HtmlRenderer({safe: true})`，并且仍然套一层 DOMPurify 之类的消毒器做纵深防御——或者选一个默认禁用 HTML 的渲染器，比如 markdown-it（默认 `html: false`）。
+- **你需要在非 JavaScript 技术栈里使用参考实现。** C 语言参考实现 cmark（未收录）被嵌入到许多语言中，而且快得多；Go 项目用 [Goldmark](goldmark.zh.md)。
+- **你需要的速度超出“与 marked 相当”。** README 里的基准测试是 2015 年的（commonmark.js 0.22 对 marked 0.3.5）；现代的 markdown-it 和 marked 早已变化，没找到当前的数据。吞吐量重要的话自己测，并考虑通过原生绑定使用 cmark。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [marked](marked.zh.md) | ✅ | 更需要速度和简单的一次调用渲染器，而不是规范参考实现时，选 marked。 | 快速、底层的 Markdown→HTML 解析器，API 极小；不严格遵循规范，且你必须自己做输出消毒。 |
-| [markdown-it](markdown-it.zh.md) | ✅ | 需要生产级 Markdown→HTML 渲染、CommonMark/GFM 合规和插件生态时，选 markdown-it。 | 严格遵循 CommonMark/GFM，可插拔，插件目录丰富；比 marked 重，且仍需做输出消毒。 |
-| [remark](remark.zh.md) | ✅ | 需要完整的 mdast AST 管线来做解析、变换、lint 和序列化时，选 remark。 | 完整的 mdast AST 工具链，插件生态庞大；远比单个库强大，但也重得多——是工具链，不是一次调用的渲染器。 |
-| [micromark](micromark.zh.md) | ✅ | 需要 remark 底层的低层 tokenizer，而不是参考 AST 解析器时，选 micromark。 | 流式导向的 CommonMark/GFM tokenizer，为 remark 提供动力；你需要自己构建渲染层。 |
-| [Pandoc](pandoc.zh.md) | ✅ | 需要通用文档转换，而不是只做 Markdown 解析或一致性测试时，选 Pandoc。 | 通用文档转换器，可读写数十种格式；但它是重型 CLI 工具，不是 JS 库。 |
-| [Goldmark](goldmark.zh.md) | ✅ | 需要在 Go 中有一个快速、可扩展的 Markdown 解析器时，选 Goldmark。 | 用 Go 编写的快速、可扩展的 CommonMark/GFM 解析器；不适用于 JS 项目。 |
+| [markdown-it](markdown-it.zh.md) | ✅ | 在 JS 里做生产级 Markdown→HTML、需要 GFM 表格和插件时，选 markdown-it；当严格合规的输出和可编辑的节点树比扩展更重要时，选 commonmark.js。 | markdown-it 在合规之外还有扩展和更安全的默认值；它暴露的是 token 流，而不是嵌套节点树。 |
+| [marked](marked.zh.md) | ✅ | 只想要一个默认开启 GFM、一次调用就出结果的快速渲染器，选 marked；必须在边界情况上与规范一致时，选 commonmark.js。 | marked 优先速度和简单，不严格遵循规范；commonmark.js 为了规范保真放弃了 GFM。 |
+| [remark](remark.zh.md) | ✅ | 需要一条能 lint、变换、再序列化 Markdown 且插件众多的 AST 管线时，选 remark；想要一个依赖很少的解析器加渲染器时，选 commonmark.js。 | remark 的 mdast 生态宽得多，但更重、由多个包组成；commonmark.js 是一个只有三个依赖的小包。 |
+| [micromark](micromark.zh.md) | ✅ | 需要一个底层、可扩展的 CommonMark 分词器（GFM 通过扩展获得）来搭自己的工具时，选 micromark；想要现成的节点树和渲染器时，选 commonmark.js。 | micromark 是 remark 底下那个可扩展引擎；树和渲染层要你自己搭。 |
+| cmark（commonmark/cmark） | 未收录 | 在 JavaScript 之外需要参考实现，或解析速度很重要时，选 cmark；在浏览器或 Node 里、不想引入原生代码时，选 commonmark.js。 | 同一作者、同一规范；cmark 用 C 写成、有多种语言绑定，commonmark.js 是纯 JavaScript。 |
 
 ## 技术栈
 
-- **语言：** JavaScript（ES 模块，可在 Node.js 和浏览器中运行）。
-- **架构：** 解析器生成 Concrete Syntax Tree（AST）作为嵌套对象；你需要自己遍历并渲染该树。内置的 HTML 渲染器非常基础，主要供规范验证和演示使用。
-- **规范对齐：** 精确实现 CommonMark 规范；规范的更新驱动版本号的提升（v0.31.0 与 CommonMark 规范 0.31 对齐）。
+- **语言：** JavaScript；源码是 `lib/` 下的 ES 模块，由 Rollup 打包出 `dist/` 里的 CommonJS 版本，Node.js 和浏览器都能用。
+- **API：** `Parser`（选项 `smart` 把直引号和连字符变成印刷体）、`HtmlRenderer` 和 `XmlRenderer`（选项 `safe`、`sourcepos`、`softbreak`、`esc`）、带树编辑方法的 `Node`，以及用于遍历的 `NodeWalker`。
+- **命令行：** `commonmark` 可执行文件，把文件或标准输入转成 HTML。
+- **规范对齐：** 跟踪 CommonMark 规范 0.31.2（2024-01-28 发布）；测试套件运行规范里的示例。
 
 ## 依赖
 
-- **运行时：** 无——零运行时依赖。
-- **安装：** `npm install commonmark`，或从 CDN 加载捆绑的浏览器构建文件。
-- **输出处理：** 库输出 AST；HTML 渲染由你负责。包内包含一个基础 HTML 渲染器，但没有输出消毒功能——处理不受信任内容时你必须自行添加 DOMPurify 或等效工具。
+- **运行时：** 三个小型 npm 包——`entities`（HTML 实体解码）、`mdurl`（URL 编码）和 `minimist`（命令行参数解析）。
+- **安装：** `npm install commonmark`，或在浏览器里加载 `dist/commonmark.js`／`commonmark.min.js`（unpkg 也有托管）。
+- **输出安全：** 没有内置消毒器；处理不受信任的输入时，用 `safe` 渲染选项和／或 HTML 消毒器。
 
 ## 运维难度
 
-**低。** 它是一个库，没有需要运维的服务器或数据库。唯一的注意事项是：如果你要用于生产环境，必须基于 AST 自行构建渲染和消毒管线。无数据存储、无运行时、无基础设施。
+**低。** 它是一个库，没有服务器、数据库，也没有原生编译步骤。运维上要做的是：为用户内容选定并强制使用 `safe` 选项（或消毒器），以及为核心 CommonMark 之外的需求自己写树变换。升级不频繁，跟随规范修订。
 
 ## 健康度与可持续性
 
-- **维护——稳定、低变动。** 作为与 CommonMark 规范绑定的参考实现，发布由规范修订驱动，而非功能迭代。v0.31.0 与 CommonMark 规范版本对齐。
-- **治理与 bus factor。** 由 John MacFarlane（CommonMark 和 Pandoc 的创建者）维护，由 CommonMark 项目背书。参考实现采用单作者维护在规范项目中是常态；规范本身有更广泛的治理。
-- **寿命与 Lindy 判断——老且仍活跃 ⇒ 强 Lindy。** CommonMark 项目始于 2014 年，JS 参考实现作为合规基准已有十年。一个与规范如此紧密跟踪的参考实现，是长期可持续性的非常安全的选择。
-- **采用度与生态。** 按设计来看社区较小——它是参考工具，不是生产渲染器。衡量标准应看多少解析器测试套件依赖它，而非 npm 下载量。
-- **风险旗标——极小。** BSD-3-Clause 许可，无 relicense 历史，无商业层级。其“风险”在于范围狭窄：它将保持为参考实现，而不会扩展成全功能的渲染器。
+- **维护——缓慢、稳定、由规范驱动（截至 2026-10-08）。** 最新发布是 0.31.2（2024-09-19），但修复仍在不断合入 master（2026-09 修了自动链接里的实体，以及引用标签的大小写折叠）。雷达维护轴的 B 反映的是最近 13 周里有 4 周有提交。
+- **治理与 bus factor——本质上是单一作者。** John MacFarlane（jgm）贡献了约 926 次提交；近期修复来自少数几位贡献者。雷达治理轴的 A 衡量的是过去 12 个月里 6 位活跃维护者之间的分布，高估了长期演进上的 bus factor [推断]。
+- **年龄与 Lindy——强。** 仓库创建于 2015-01（CommonMark 本身始于 2014 年），十多年后仍在接收修复：又老又仍活跃。
+- **采用度。** 据雷达，上个月 npm 下载 2,771,418 次，依赖仓库 6,702 个——生产使用远比“参考实现”这个标签暗示的多。
+- **风险信号。** BSD-2-Clause（`LICENSE` 文件是两条款文本；GitHub 报告为 `NOASSERTION`，所以雷达的许可证轴是 `?`）。无改协议历史，无商业版本。真正的风险是范围：它会一直只做 CommonMark。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-07 的确切 star 数和最新发布版本——如果这些数字对你的决策有影响，请对照 GitHub 仓库核实。
-- [推断] “比 marked/markdown-it 慢”是从项目作为参考实现的自述目标推断而来，并非基于基准测试；如果吞吐量是你的关注点，请自行运行基准测试。
-- [推断] “不支持 GFM”基于项目文档；请自上次检查以来是否已添加任何 GFM 扩展进行验证。
-- [推断] “无运行时依赖”是项目自身的表述；请对照你锁定版本的 `package.json` 确认。
-- [未验证] v0.31.0 与 CommonMark 规范 0.31 的对齐关系——请对照仓库中的当前规范版本与包版本核实。
-- [推断] John MacFarlane 的作者身份与 CommonMark 项目背书是从公开文档和仓库所有权推断而来；请针对你的评估窗口确认当前维护者。
-- [推断] “年龄 × 仍活跃”的 Lindy 评估基于项目的公开历史（CommonMark 约始于 2014 年）；如果近期活跃度对你重要，请核实当前提交和发布节奏。
-- [推断] 内置 HTML 渲染器被描述为 minimal／基础——请对照你当前的渲染需求核实其能力。
-- [推断] “无消毒功能”适用于 AST 输出；你基于 AST 构建的任何 HTML 渲染器都必须包含自身的消毒功能，才能处理不受信任的输入。
+- [未验证] 相对当前 markdown-it 和 marked 的性能未知；唯一公开的数据是 README 里 2015 年的基准测试。
+- [推断] bus factor 的判断基于累计提交数（jgm 约占 1,000 次中的 926 次）；它衡量不了谁在审阅和分拣 issue。
+- [未验证] 没有测试 `safe: true` 是否覆盖你关心的所有 XSS 途径（例如经自定义渲染器注入属性）；README 本身也把消毒器列为另一种做法。
+- [推断] 依赖仓库数和下载量包含经由其他包的间接使用，因此高估了直接选用 commonmark.js 的程度。

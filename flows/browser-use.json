@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "browser-use does",
+    "zh": "browser-use 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Add the package and put a model API key in .env",
+      "zh": "装上包，把模型 API 密钥写进 .env",
+      "code": "uv add browser-use"
+    },
+    {
+      "lane": "you",
+      "en": "Create an Agent with a one-sentence task and the model you chose, then run it",
+      "zh": "用一句话任务和选好的模型创建 Agent，然后运行",
+      "code": "Agent(task=..., llm=ChatOpenAI(...)) · await agent.run()"
+    },
+    {
+      "lane": "them",
+      "en": "Opens a browser and turns the page into an indexed list of clickable elements",
+      "zh": "打开浏览器，把页面变成带编号的可交互元素列表",
+      "component": {"en": "browser session (CDP)", "zh": "浏览器会话（CDP）"}
+    },
+    {
+      "lane": "them",
+      "en": "Asks the model for the next actions and executes them, step after step, until done",
+      "zh": "每一步问模型要下一组动作并执行，直到完成",
+      "component": {"en": "Agent loop", "zh": "Agent 循环"}
+    },
+    {
+      "lane": "you",
+      "en": "Read the final answer from the run history",
+      "zh": "从运行历史里取出最终结果",
+      "code": "history.final_result()"
+    }
+  ],
+  "value": {
+    "en": "A website task described in one sentence gets done without a hand-written selector per click, and survives layout changes that break scripts",
+    "zh": "一句话描述的网站任务就能完成，不用为每次点击手写选择器，页面改版也不会像脚本那样直接挂掉"
+  },
+  "sources": [
+    "https://github.com/browser-use/browser-use/blob/main/README.md Path 3: Python Library (uv add browser-use, .env OPENAI_API_KEY, Agent(task=..., llm=...), await agent.run(), history.final_result())",
+    "https://github.com/browser-use/browser-use/blob/main/browser_use/agent/system_prompts/system_prompt.md (browser_state with indexed interactive elements, iterative loop)",
+    "https://github.com/browser-use/browser-use/blob/main/pyproject.toml (cdp-use dependency, Python >=3.11)",
+    "https://github.com/browser-use/browser-use/blob/main/browser_use/config.py (ANONYMIZED_TELEMETRY default true)"
+  ]
+}

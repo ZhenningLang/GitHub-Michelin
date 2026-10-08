@@ -7,7 +7,7 @@ tags: [reddit, downloader, archiver, scraping, yt-dlp, python, cli]
 language: Python
 license: GPL-3.0
 maturity: v2.6.2 (2023-01), commits ongoing to 2026-04, ~2.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-04-12T02:28:43Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:07:00Z
+  computed_at: 2026-10-08T08:21:45Z
   overall: D
   overall_score: 0.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1336
+        last_commit_age_days: 1346
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -38,17 +38,24 @@ health:
     adoption:
       grade: D
       raw:
-        registry: null
-        canonical_package: null
-        release_downloads: 31163
+        registry: pypi.org
+        canonical_package: bdfr
+        package_link: ecosystems_repository_url
+        dependent_repos_count: 3
+        downloads_last_month: 3852
+        graph_tier: D
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 31164
         release_assets: 60
         release_tier: D
         signal_basis: releases
+        tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 3027
-        last_commit_age_days: 1336
+        repo_age_days: 3038
+        last_commit_age_days: 1346
         cohort: tool
     governance:
       grade: "?"
@@ -73,16 +80,37 @@ health:
 
 ## 何时使用
 
-你在一个子版块转私前抢救性归档它，或者备份你自己收藏/点赞过的帖子，又或者从几个社区攒一份个人的图片和视频数据集。你不想点开成百上千个帖子，而且你既要*文件*（图片、相册、Redgifs/Imgur/YouTube 上的片段），也要*上下文*（帖子标题、得分、评论树）落到磁盘上，按一个可预期的目录布局。你注册一个 Reddit API 应用拿到 OAuth 凭据，然后跑 `bdfr download ./out --subreddit pics --limit 200 --sort top`，或 `bdfr clone ./out --user me --upvoted` 把文件和元数据一并抓下。BDFR 用自带解析器加 yt-dlp 把每个帖子的链接解出来，按你控制的模板命名文件，按哈希去重，并留一份日志，让重跑是增量的，而非把所有东西重下一遍。
+你在一个子版块转私前抢救性归档它，或者备份你自己收藏/点赞过的帖子，又或者从几个社区攒一份个人的图片和视频数据集。你不想点开成百上千个帖子，而且你既要*文件*（图片、相册、Redgifs/Imgur/YouTube 上的片段），也要*上下文*（帖子标题、得分、评论树）落到磁盘上，按一个可预期的目录布局。你 `pipx install bdfr`，然后跑 `bdfr download ./out --subreddit pics --limit 200 --sort top`；公开列表不用登录，要抓你自己点赞或收藏的帖子时加一次 `--authenticate`（`bdfr clone ./out --user me --upvoted --authenticate`），把文件和元数据一并抓下。BDFR 用自带解析器加 yt-dlp 把每个帖子的链接解出来，按你控制的模板命名文件；加上 `--search-existing --no-dupes` 时，它会先给磁盘上已有的文件算哈希，重跑就跳过已经下过的文件。
 
 当你想要一份*可脚本化、可复现*的 Reddit 归档时，它是对的选择——三种模式（`download` 只下文件、`archive` 只下元数据、`clone` 两者都要）、用于可重复任务的 YAML 配置，以及一套你能钉死的目录/命名方案——而不是用某个浏览器扩展一次性抓一把。
+
+## 怎么用起来
+
+BDFR 是一条在你自己机器上跑的命令，没有服务器。**你要做的：**在三种模式里选一种——`download`（下载帖子链接指向的文件）、`archive`（保存帖子本身：标题、得分、正文和评论，存成 JSON、XML 或 YAML）或 `clone`（两者都要）——再指定来源（子版块、用户、multireddit、单个链接）和目录/文件名模板，可以写成命令行参数，也可以写进一个 YAML 选项文件。**它替你做的：**通过 PRAW 这个客户端库向 Reddit API 要每个来源下的帖子，再把每个帖子的链接交给对应的下载器——Imgur、Redgifs、Reddit 相册/视频这类有专门的站点下载器，其余交给通用视频下载工具 yt-dlp——然后按你的模板写到磁盘上。只有私有列表（比如你收藏或点赞的帖子）需要登录：`--authenticate` 会打开一次浏览器授权页，并把令牌存下来。重跑时它不会自己记得抓过什么；要靠 `--search-existing --no-dupes`（先给磁盘上已有文件算哈希，跳过重复的），或者用运行日志生成一个 `--exclude-id-file`。
+
+![bulk-downloader-for-reddit — 主干用户故事](../../assets/flow/bulk-downloader-for-reddit.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bulk-downloader-for-reddit.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用 pip 或 pipx 装好命令行（Python 3.9+） — `python3 -m pipx install bdfr`
+2. **你**：选一种模式、一个输出目录和要抓的 Reddit 来源 — `bdfr download ./path/to/output --subreddit Python -L 10`
+3. **bulk-downloader-for-reddit**：通过 Reddit API 列出每个来源下的帖子 — 组件：`PRAW 客户端`
+4. **bulk-downloader-for-reddit**：按站点挑下载器或交给 yt-dlp，解析帖子链接并下载媒体 — 组件：`站点下载器 + yt-dlp`
+5. **bulk-downloader-for-reddit**：按你的目录和文件名模板落盘，并把这次运行记进日志 — `--file-scheme '{POSTID}'`
+
+**价值**：成百上千个帖子的媒体（用 `archive` 则是 JSON/YAML 数据）按可预期的目录落盘，一条命令就能重跑
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
 - **你想从单个来源拉超过约 1000 个帖子。** 这是 Reddit API 的硬上限（列表上限约 1000），README 直说：「我们绕不过去。」要做深历史归档你得换路子（比如 Pushshift 式数据转储，在其仍可用时）。
 - **你想要一份忠实、可浏览的 Reddit 克隆。** `clone` 取的是原始数据，不是可导航的副本——没有渲染好的站点，评论树也不保证完整。
-- **你不能 / 不愿注册 Reddit API 凭据。** 鉴权访问用 OAuth2；没有 API 应用，许多操作不可用。
-- **你需要一个持续维护、频繁发版的工具。** 最后一个打标版本（v2.6.2）来自 2023 年初；提交还在继续，但发版节奏实质上停滞了——你可能在跑 `master` 而非某个加持过的版本（见健康度）。
+- **你的任务依赖 Reddit 登录今天就能用。** 私有列表（收藏、点赞、私有 multireddit）要走 `--authenticate`，它用的是 BDFR 默认配置里内置的 OAuth client id；2025-12 和 2026-01 都有未关闭的报告说鉴权失败、未授权会话报错，修复即使有也只会落在未发版的分支上。如果是丢不起的收藏备份，先试跑一次，并准备后路，比如同样支持 Reddit 的 [gallery-dl](gallery-dl.zh.md)，或者用你自己的 API 应用写个小 PRAW 脚本。
+- **你需要一个持续维护、频繁发版的工具。** 最后一个打标版本（v2.6.2）来自 2023 年初；提交还在继续，但发版节奏实质上停滞了——之后的提交都在 `development` 分支上，想拿到修复就得从那个分支装，而不是用某个加持过的版本（见健康度）。
 - **位于 BDFR/yt-dlp 解析不了的站点的内容。** 它能处理 Imgur、Redgifs、相册、YouTube，以及「yt-dlp 支持的一切」，但某个不支持或刚改过的宿主，对那些链接就会直接失败。[推断]
 
 ## 横向对比
@@ -104,26 +132,26 @@ health:
 ## 依赖
 
 - **运行时：** Python 3.9+，经 `pip install bdfr` / pipx 安装（Arch 上有 AUR 包）。
-- **凭据：** 一个 Reddit API 应用（OAuth2 客户端）用于鉴权访问。
-- **打包的库：** yt-dlp 和各站点解析器代码；Reddit API 客户端。[推断]
+- **凭据：** 公开来源不需要；私有来源要在浏览器里做一次 OAuth 授权，用的是 BDFR 自带的 client id（想用自己的 API key/secret，可以改 `config.cfg`）。
+- **打包的库：** 按 `pyproject.toml`，有 PRAW（Reddit API 客户端）、yt-dlp、requests、BeautifulSoup、click、PyYAML、dict2xml，外加 BDFR 自己的各站点解析器代码。
 - **无数据库 / 无服务**——它把文件和日志写到本地磁盘；状态就是磁盘上的输出 + 日志。
 
 ## 运维难度
 
-**低。** 就是 `pip`/pipx 安装加一次性的 Reddit API 应用注册，然后一条 CLI 调用（或一个 cron 的 YAML 任务）。没有服务器、数据存储或队列要运维；增量日志让重跑便宜、近似幂等。现实摩擦在运维层面而非基建：要尊重约 1000 帖的上限、宿主一改时解析器偶有崩坏，以及你可能在跑未发布的 `master` 代码，所以保持更新并验证它仍能用是你自己的事。
+**低。** 就是 `pip`/pipx 安装（碰私有列表时再加一次浏览器授权），然后一条 CLI 调用（或一个 cron 的 YAML 任务）。没有服务器、数据存储或队列要运维；`--search-existing --no-dupes`（或用日志生成的 `--exclude-id-file`）让重跑便宜、近似幂等。现实摩擦在运维层面而非基建：要尊重约 1000 帖的上限、宿主一改时解析器偶有崩坏，以及最近的修复都在未发版的 `development` 分支上，所以保持更新并验证它仍能用是你自己的事。
 
 ## 健康度与可持续性
 
-- **维护活跃度**：Grade E——最近 13 周中 0 周有提交；最后提交距今 1331 天。
+- **维护活跃度**：Grade E——最近 13 周中 0 周有提交；默认分支最后提交距今 1346 天（2023-01-31）；之后的工作在 `development` 分支，最近一次合并是 2026-04-12。
 - **响应速度**：无法计算——no_traffic。
 - **采用广度**：Grade D。
-- **长青度**：Grade E——仓库已创建 3022 天。
+- **长青度**：Grade E——仓库已创建 3038 天。
 - **治理集中度**：无法计算——unattributable。
 - **许可风险**：Grade D——GPL-3.0 许可证。
 
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 2.6k star，最后标签为 v2.6.2（2023-01）——数字对时间敏感；到 2026-04 的提交活动来自 API，但「在维护但不发版」是一个判断。
-- [未验证] 确切的 Reddit API 客户端（PRAW 还是自定义 OAuth 客户端）与当前精确的解析器清单，是从 README 推断，本轮未对照清单核实。
-- [推断] 多数操作需要 OAuth 凭据是 Reddit API 的标准姿态；具体哪些功能免鉴权可用，此处未验证。
+- [未验证] 当前精确的解析器清单取自 README；Reddit 客户端按 `pyproject.toml` 是 PRAW（2026-10-08 核对）。
+- [未验证] 截至 2026-10，`--authenticate` 和匿名访问公开列表是否还能对 Reddit API 正常工作，本轮没有实测；README 说只有私有列表才需要登录，但 2025-12（“Exception not allowing to even authenticate”）和 2026-01（“JSONDecodeError on unauthorized session”）都有未关闭的失败报告。
 - [推断] 对不支持/变动站点的逐宿主失败，是从「解析器 + yt-dlp」架构推断，并非实测枚举。

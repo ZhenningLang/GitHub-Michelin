@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "12-Factor Agents gives you", "zh": "12-Factor Agents 给你的"},
+  "steps": [
+    {"lane": "you", "en": "Read the twelve factors (the short version is one list in the README)", "zh": "读完 12 条 factor（README 里一页清单）"},
+    {"lane": "them", "en": "Names each failure you hit: a hidden prompt, an opaque context, a loop you can't pause", "zh": "给你踩的坑命名：看不见的 prompt、黑箱上下文、停不下来的循环"},
+    {"lane": "you", "en": "Audit your agent factor by factor and pick the ones it breaks", "zh": "逐条对照你的 agent，挑出它违反的几条"},
+    {"lane": "them", "en": "Shows a code pattern per factor, e.g. your own loop branching on the model's chosen step", "zh": "每条附一段代码范式，比如自己写循环、按模型选的下一步分支", "code": "next_step.intent == 'request_clarification'"},
+    {"lane": "you", "en": "Port the pattern into your existing code: your prompt, your loop, your saved thread", "zh": "把范式搬进你现有的代码：自己的 prompt、循环和存档的对话线程", "code": "await db.save_thread(thread)"}
+  ],
+  "value": {"en": "Agent behavior becomes code you own: you can read the exact prompt, pause before a risky tool call, and resume later", "zh": "agent 的行为变成你自己的代码：看得到真实 prompt，高风险工具调用前能停下，之后再接着跑"},
+  "sources": [
+    "https://github.com/humanlayer/12-factor-agents README — The Short Version: The 12 Factors; Agents as loops",
+    "content/factor-08-own-your-control-flow.md (handle_next_step loop: next_step.intent == 'request_clarification', await db.save_thread(thread))"
+  ]
+}

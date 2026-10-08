@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "CCPM makes the agent do", "zh": "CCPM 让 agent 做"},
+  "steps": [
+    {"lane": "you", "en": "Link the skill into your harness and log gh into the project's GitHub repo", "zh": "把 skill 链进 harness，gh 登录项目所在的 GitHub 仓库", "code": "ln -s /path/to/ccpm/skill/ccpm .claude/skills/ccpm", "component": {"en": "skill/ccpm/SKILL.md", "zh": "skill/ccpm/SKILL.md"}},
+    {"lane": "you", "en": "Say what you want to build, in plain words", "zh": "用大白话说你想做什么", "code": "\"I want to build X\""},
+    {"lane": "them", "en": "Brainstorms scope with you, writes a PRD, then parses it into a technical epic", "zh": "先追问范围写成 PRD，再转成技术 epic", "code": ".claude/prds/<name>.md · .claude/epics/<name>/epic.md"},
+    {"lane": "you", "en": "Ask it to break the epic down and sync it to GitHub", "zh": "让它拆解 epic，并同步到 GitHub", "code": "\"break down the X epic\" · \"sync the X epic to GitHub\""},
+    {"lane": "them", "en": "Writes task files with dependency flags, opens an epic issue plus sub-issues, sets up a worktree", "zh": "写带依赖标记的任务文件，建 epic 和子 issue，开 worktree", "code": "depends_on · parallel · conflicts_with"},
+    {"lane": "you", "en": "Pick an issue to start", "zh": "挑一个 issue 开工", "code": "\"start working on issue N\""},
+    {"lane": "them", "en": "Splits the issue into independent streams and launches parallel agents that commit per issue", "zh": "把 issue 拆成互不冲突的几路，并行派 agent，按 issue 提交", "code": "Issue #N: description", "component": {"en": "references/execute.md", "zh": "references/execute.md"}}
+  ],
+  "value": {"en": "Every commit traces back to a written spec, and progress sits in GitHub Issues instead of a chat log", "zh": "每个提交都能追到写下来的需求，进度在 GitHub Issues 里而不是聊天记录里"},
+  "sources": [
+    "https://github.com/automazeio/ccpm README Install (Claude Code: ln -s /path/to/ccpm/skill/ccpm .claude/skills/ccpm; prerequisites gh auth login) — read 2026-10-08",
+    "README Usage / Natural language triggers (\"I want to build X\", \"break down the X epic\", \"sync the X epic to GitHub\", \"start working on issue N\")",
+    "README Workflow Phases (.claude/prds/<name>.md, .claude/epics/<name>/epic.md, depends_on / parallel / conflicts_with, commit format Issue #N: description)",
+    "README Skill Structure (skill/ccpm/SKILL.md, references/execute.md)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "pyrasite does", "zh": "pyrasite 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install gdb 7.3+ and pyrasite, and allow ptrace on the host", "zh": "装好 gdb 7.3+ 和 pyrasite，并在主机上放开 ptrace", "code": "echo 0 > /proc/sys/kernel/yama/ptrace_scope"},
+    {"lane": "you", "en": "Pick a bundled payload (thread stacks, memory dump…) or write your own .py file", "zh": "挑一个自带载荷（线程栈、内存统计……）或自己写个 .py 文件", "code": "pyrasite --list-payloads"},
+    {"lane": "you", "en": "Run it against the live PID, asking for the output on your own terminal", "zh": "对活进程的 PID 执行，并要求把输出送回你的终端", "code": "--output localterm", "component": {"en": "pyrasite CLI", "zh": "pyrasite 命令行"}},
+    {"lane": "them", "en": "Attaches gdb to the PID and takes the interpreter lock", "zh": "用 gdb 附着到该 PID，拿到解释器锁", "component": {"en": "injector (via gdb)", "zh": "注入器（借 gdb）"}},
+    {"lane": "them", "en": "Makes the target's interpreter exec your file, with full access to its modules and objects", "zh": "让目标解释器 exec 你的文件，可直接访问它的模块和对象"},
+    {"lane": "them", "en": "Releases the lock and detaches; the process keeps running", "zh": "还锁并脱离，进程继续运行"}
+  ],
+  "value": {"en": "See inside a stuck or leaking Python process — its thread stacks, its objects — without restarting it or having instrumented it in advance", "zh": "不重启、也不用事先埋点，就能看到卡住或漏内存的 Python 进程内部的线程栈和对象"},
+  "sources": [
+    "https://github.com/lmacken/pyrasite/blob/develop/docs/Installing.rst (gdb 7.3+; echo 0 > /proc/sys/kernel/yama/ptrace_scope; pip install)",
+    "https://github.com/lmacken/pyrasite/blob/develop/docs/CLI.rst (pyrasite pid [filepath|payloadname]; --list-payloads; --output localterm)",
+    "https://github.com/lmacken/pyrasite/blob/develop/docs/Payloads.rst (dump_stacks.py, dump_memory.py, force_garbage_collection.py, reverse shells)",
+    "https://github.com/lmacken/pyrasite/blob/develop/pyrasite/injector.py (gdb -p PID -batch; PyGILState_Ensure, PyRun_SimpleString exec, PyGILState_Release)"
+  ]
+}

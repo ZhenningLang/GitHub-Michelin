@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Pandoc does", "zh": "Pandoc 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the single self-contained pandoc binary", "zh": "装上自包含的 pandoc 二进制", "code": "brew install pandoc · choco install pandoc", "component": {"en": "pandoc CLI", "zh": "pandoc 命令行"}},
+    {"lane": "you", "en": "Write the document once in Markdown, with footnotes, citations and math", "zh": "用 Markdown 写一遍，脚注、引文、公式都写在里面"},
+    {"lane": "you", "en": "Run pandoc naming the input and the output file", "zh": "运行 pandoc，写明输入和输出文件名", "code": "pandoc test.txt -o test.pdf"},
+    {"lane": "them", "en": "Guesses both formats from the file extensions and parses the input into its AST", "zh": "按扩展名猜出两端格式，把输入解析成 AST", "component": {"en": "reader", "zh": "读取器"}},
+    {"lane": "them", "en": "Renders the AST with the target writer; for PDF, hands the result to a PDF engine", "zh": "用目标格式的写出器渲染 AST；要 PDF 就交给 PDF 引擎", "component": {"en": "writer + --pdf-engine", "zh": "写出器 + --pdf-engine"}},
+    {"lane": "them", "en": "Writes the output file, keeping structure and dropping layout details the AST cannot hold", "zh": "写出文件：结构保住，AST 装不下的版式细节丢掉"}
+  ],
+  "value": {"en": "One source becomes HTML, Word, PDF or EPUB without hand-copying between tools", "zh": "一份源文件出 HTML、Word、PDF、EPUB，不用在工具之间手工搬"},
+  "sources": [
+    "https://github.com/jgm/pandoc/blob/main/INSTALL.md (brew install pandoc, choco install pandoc)",
+    "https://github.com/jgm/pandoc/blob/main/MANUAL.txt#using-pandoc, #specifying-formats (formats guessed from extensions), #creating-a-pdf (pandoc test.txt -o test.pdf, LaTeX by default, --pdf-engine)",
+    "https://github.com/jgm/pandoc#the-universal-markup-converter (readers -> AST -> writers; lossy conversions)"
+  ]
+}

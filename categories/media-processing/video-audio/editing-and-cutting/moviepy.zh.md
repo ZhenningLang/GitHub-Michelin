@@ -6,17 +6,17 @@ category: editing-and-cutting
 tags: [video, python, editing, compositing, ffmpeg, effects, text, animation]
 language: Python
 license: MIT
-maturity: v2.0.x, active but slower than peak, ~13k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v2.2.1 (2025-05-21), maintained at low cadence, ~15k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-03-07T02:47:15Z
+  pushed_at: 2026-08-26T06:17:08Z
   default_branch: master
-  default_branch_sha: 7ffa4f00376237137a25fe1c777355c37753e9af
+  default_branch_sha: 211e4b15f6ce4f34a6a9efbfff40590e43a68f77
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:39:02Z
+  computed_at: 2026-10-08T08:22:22Z
   overall: B
   overall_score: 3.17
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 27
+        last_commit_age_days: 43
         active_weeks_13: 2
         carve_out: null
     responsiveness:
       grade: C
       raw:
-        median_ttfr_hours: 283.7
-        qualifying_issues: 9
+        median_ttfr_hours: 228.3
+        qualifying_issues: 10
         band: default
         window_offset_days: 2
         source: pr
@@ -47,16 +47,16 @@ health:
         registry: pypi.org
         canonical_package: moviepy
         dependent_repos_count: 5431
-        downloads_last_month: 5642863
+        downloads_last_month: 4336274
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.29
+        cross_check_divergence: 1.03
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4789
-        last_commit_age_days: 27
+        repo_age_days: 4805
+        last_commit_age_days: 43
         cohort: library
     governance:
       grade: C
@@ -78,64 +78,90 @@ health:
 # MoviePy
 
 
-一个用于程序化视频编辑的 Python 库——剪辑、拼接、合成、文字叠加、特效——在底层拼装 FFmpeg 命令，但对外提供更高层、更友好的 API。
+你要把 200 段素材各截一段、打上标题、再拼成几个版本，FFmpeg 的 `-filter_complex` 写到第三层叠加就没人看得懂了。MoviePy 让你用普通的 Python 对象写这段剪辑——片段、截取、叠加、导出——读帧和编码交给它背后的 FFmpeg。
 
 
 ![MoviePy — health radar](../../../../assets/health/moviepy.zh.svg)
 
 ## 何时使用
 
-你是数据科学家或内容自动化工程师，需要程序化地生成视频片段——拼接多个片段、添加动态文字叠加、应用交叉淡入淡出过渡，或从模板批量产出变体缩略图。你知道 FFmpeg 存在，但不想为每个操作手搓 `-filter_complex` 字符串。你 `pip install moviepy`，写 `VideoFileClip("input.mp4").subclip(0, 10).fx(vfx.fadeout, 2).write_videofile("output.mp4")`，库在后台处理 FFmpeg 调用、帧提取与重组，对外暴露 Pythonic 的接口。它的最佳场景是批量视频编辑与简单合成管线，在这里可读性与快速迭代比实时性能更重要。
+你是数据科学家或内容自动化工程师，手里一文件夹录像，外加一张表写着要做什么：“每段保留 00:10–00:20，音量降到 80%，正中间打上讲者名字，输出 `result.mp4`”。用裸 FFmpeg，每个文件都是一串 `-ss 10 -t 10 -i … -filter_complex "[0:v]drawtext=…[v];[0:a]volume=0.8[a]" -map "[v]" -map "[a]"`，等第二次要加交叉淡化时，团队里已经没人读得懂这条命令。你 `pip install moviepy`，写 `VideoFileClip("in.mp4").subclipped(10, 20).with_volume_scaled(0.8)`，用 `CompositeVideoClip` 叠一层 `TextClip`，再在循环里调 `write_videofile`。每一帧都是 NumPy 数组，所以自定义特效就是几行 Python，不用去 FFmpeg 手册里找滤镜。
+
+当你写的是一次“剪辑”（片段、图层、时间点、转场），而不是滤镜图或逐包解码循环时，选它而不是 ffmpeg-python 或 PyAV；当整条管线本来就在 Python 里时，选它而不是 Remotion。代价是速度：MoviePy 会把每一帧解码进 Python 再重新编码，一旦瓶颈变成吞吐量而不是写代码的时间，它就不对了。
+
+## 怎么用起来
+
+MoviePy 把媒体变成 Python 对象。打开文件时，它启动一个 FFmpeg 进程，把原始帧（未压缩的像素网格）经管道流进 NumPy 数组，于是每个像素都能在代码里摸到。片段是“惰性配方”：`subclipped`、`with_volume_scaled`、`with_position`、`with_effects` 都返回一个新片段，只记录“第 t 秒那一帧该怎么算出来”，此刻什么都不计算。调用 `write_videofile` 时，MoviePy 沿时间线逐帧走一遍，向 `CompositeVideoClip` 的每一层要像素、叠好，再经管道送进第二个 FFmpeg 进程编码成文件——像描图台上每一帧都重新手描一遍。你决定剪什么（哪些片段、哪几秒、哪些图层和特效）；MoviePy 负责帧时序、合成、混音和 FFmpeg 那一套管道。FFmpeg 本身由 `imageio-ffmpeg` 在首次使用时下载，常规用法不用再装别的。
+
+![moviepy — 主干用户故事](../../../../assets/flow/moviepy.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/moviepy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上库，FFmpeg 二进制首次使用时自动下载 — `pip install moviepy`
+2. **你**：打开素材，写下要截哪段、音量怎么调 — `VideoFileClip("in.mp4").subclipped(10, 20).with_volume_scaled(0.8)`
+3. **你**：用 TextClip 做标题，叠到片段上 — `CompositeVideoClip([clip, txt_clip])`
+4. **你**：指定输出文件 — `final_video.write_videofile("result.mp4")`
+5. **MoviePy**：从 FFmpeg 把源帧流进 NumPy 数组，只取剪辑用到的那几秒 — 组件：`FFMPEG_VideoReader`
+6. **MoviePy**：逐帧按时间 t 合成各图层，同时混好音频 — 组件：`CompositeVideoClip`
+7. **MoviePy**：把帧经管道送进 FFmpeg 编码，写出文件 — 组件：`FFMPEG_VideoWriter`
+
+**价值**：多图层剪辑写成可读的 Python，能对几百个文件循环跑，不用手写滤镜图
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **实时或流式处理。** MoviePy 严格是离线/批处理工具；它读取文件、处理帧、写入输出——不适合直播流或低延迟管线。
-- **大文件性能敏感的工作流。** 它会把中间帧写入磁盘（虽然 v2 有所改善），对大文件或高分辨率素材比原生 FFmpeg 慢。
-- **需要绝对最快的转码。** 裸 FFmpeg CLI 或 HandBrake 等专业转码器在速度上会更胜一筹。
-- **你不在 Python 生态里。** MoviePy 是 Python 专属。
-- **需要高级编解码器调参或 exotic 格式支持。** MoviePy 对 FFmpeg 做了抽象，可能没有暴露每一个参数或最新的编解码器选项。
-- **需要维护速度快的依赖。** 社区活跃度比巅峰期下降；存在一些 fork，但主仓库的提交频率已降低。
+- **⚠ 维护处于滑行状态（截至 2026-10）。** 最新发布是 2025-05-21 的 v2.2.1；2025 年 9 月以来默认分支只进了文档修正，README 里自己挂着“Maintainers wanted!”。没有被弃——仍有 issue 进来、偶尔有人回——但如果你需要 bug 按期修好，改用更贴近 FFmpeg、自身代码更少的 [PyAV](../transcoding-and-pipelines/pyav.zh.md) 或 [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.zh.md)。
+- **只要截取或拼接、不想重编码。** MoviePy 永远解码再重编码，对单纯裁剪来说又慢又有损。改用 [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) 的流复制（`-c copy`）。
+- **吞吐量比写代码的时间更重要。** 每帧都经过 Python，按 README 的原话，比直接用 FFmpeg 慢。长片或高分辨率素材的批量转码，用 FFmpeg 或 [HandBrake](../transcoding-and-pipelines/handbrake.zh.md)。
+- **直播或低延迟媒体。** MoviePy 只做文件进、文件出。摄像头流、RTSP/WebRTC 或任何要持续运行的场景，用 [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md)。
+- **你的代码、教程或大模型生成的片段是 MoviePy 1.x 写法。** v2.0 破坏了 API：`moviepy.editor` 没了，`subclip` 改成 `subclipped`，`clip.fx(...)` 改成 `with_effects([...])`，而 v1 已不再维护。按上游“updating to v2”指南预留迁移工作量，而不是锁死 `moviepy<2`。
+- **你要时间线剪辑器或图形界面。** MoviePy 没有工程文件、没有边预览边剪、没有撤销。要真正的非线性剪辑，用 [MLT](mlt.zh.md) / Shotcut。
+- **技术栈是 Web/React，视频本质是模板化界面。** 用把 React 组件渲染成视频的 [Remotion](../../../video-production/remotion.zh.md)，别在 Python 里重搭版式。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 当你需要通用引擎、最大速度或完整编解码器控制时选 FFmpeg——代价是手搓命令。 | 底层通用引擎；能力与速度最大，但 CLI 语法陡峭，复杂图的 `-filter_complex` 几乎是只写不可读。 |
-| [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.zh.md) | ✅ | 当你想用 Python 搭建 FFmpeg 滤镜图的 DAG、而非更高层的视频编辑抽象时选 ffmpeg-python。 | 对 FFmpeg CLI 滤镜图的薄 Python 封装；更接近 FFmpeg 的概念，「视频剪辑感」弱于 MoviePy。 |
-| [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 当你需要进程内 libav* 绑定来做按帧访问或自定义编解码管线时选 PyAV。 | 对 libav* 库的 Pythonic 绑定——进程内帧访问，不靠外部进程；安装更重，比 MoviePy 更底层。 |
-| [HandBrake](../transcoding-and-pipelines/handbrake.zh.md) | ✅ | 当你需要 GUI 或预设驱动的批量编码器（自带质量调优），而非程序化编辑时选 HandBrake。 | 桌面/预设批量编码器，质量预设优秀；不是可编程的编辑库。 |
-| [GStreamer](../transcoding-and-pipelines/gstreamer.zh.md) | ✅ | 当你需要流媒体框架与管线图和插件生态，而非简单 Python 脚本时选 GStreamer。 | 工业级流媒体框架；学习曲线陡峭，对简单片段编辑是杀鸡用牛刀。 |
-| [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 当你需要专业非线性剪辑引擎（带时间线支持），而非快速 Python 脚本时选 MLT。 | 专业 NLE 引擎（MLT）与 GUI（Shotcut）；重量级，面向时间线，不适合轻量脚本化。 |
-| OpenCV | 未收录 | 当计算机视觉或帧级图像处理是主要任务、视频只是副产品时选 OpenCV。 | 计算机视觉优先；能读写视频，但缺乏剪辑、过渡、合成层等编辑概念。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 一条命令能表达的裁剪、拼接、转码，直接用 FFmpeg；只有当剪辑带图层和时间点、以后还要回头读时，才换 MoviePy。 | 最快，还能流复制不损画质；代价是滤镜图语法，叠加超过几层就难以维护。 |
+| [ffmpeg-python](../transcoding-and-pipelines/ffmpeg-python.zh.md) | ✅ | 想要 FFmpeg 的速度、又想从 Python 生成命令，选 ffmpeg-python；需要逐帧 Python 特效或片段/图层模型时选 MoviePy。 | 帧不进 Python，所以快；但你仍然在用 FFmpeg 滤镜思考，而不是片段。 |
+| [PyAV](../transcoding-and-pipelines/pyav.zh.md) | ✅ | 要在单进程里自定义解码/编码循环或按包控制，选 PyAV；想要合成和文字、又不想自己写循环，选 MoviePy。 | 进程内 libav 绑定、不起子进程；更底层，剪辑概念得自己搭。 |
+| [Remotion](../../../video-production/remotion.zh.md) | ✅ | 视频是设计出来的版式（图表、字幕、品牌模板）且团队写 React，选 Remotion；管线和数据在 Python、输入是现成素材，留在 MoviePy。 | Web 级排版和预览工具；多出 Node、无头浏览器，以及面向公司的单独许可条款。 |
+| [MLT](mlt.zh.md) / Shotcut | 部分已收录 | 由人在多轨时间线上剪，选 MLT/Shotcut；每条视频都不该有人手动碰时，选 MoviePy。 | 真正的非线性剪辑引擎，有工程文件；更重，也不是为“用 Python 代码写剪辑”设计的。 |
+| OpenCV | 未收录 | 帧是计算机视觉的输入时用 OpenCV；产出是一段剪好的视频时用 MoviePy。 | 逐帧图像处理很强；没有片段、音频、图层、转场的概念。 |
 
 ## 技术栈
 
-- **语言：** Python 3.7+；纯 Python 实现，部分依赖通过 C 扩展。
-- **核心思路：** 高层视频编辑 API，通过 `VideoClip`、`AudioClip`、`CompositeVideoClip` 对象链式操作（剪辑、拼接、叠加、应用特效），并在底层编译为 FFmpeg 命令。
-- **接口面：** `VideoFileClip`、`ImageClip`、`TextClip`、`CompositeVideoClip`、`concatenate_videoclips`，以及 `fx` 特效和自定义 `clip.fl` 帧滤镜。
+- **语言：** Python ≥ 3.9（见 `pyproject.toml`）。
+- **核心思路：** 片段是惰性对象（`VideoFileClip`、`ImageClip`、`TextClip`、`CompositeVideoClip`、`AudioFileClip`），帧是 NumPy 数组；v2 用效果对象加 `with_effects` 取代了 v1 的函数式特效。
+- **I/O：** FFmpeg 子进程以原始视频格式经管道读帧，输出也同样经管道编码；`ffplay` 只用于预览。
+- **图像处理：** v2.2.1 发布版用 Pillow 渲染文字和处理图像；默认分支在 2025-08 合入了重新引入 `opencv-python-headless` 的改动，用于加速缩放/旋转，尚未进入正式发布版。
 
 ## 依赖
 
-- **运行时：** Python 3.7+，以及必须安装且在 PATH 上的 **FFmpeg** 和 **ImageMagick**（用于文字渲染与部分特效）。
-- **Python 依赖：** NumPy（数组操作）、Pillow（图像 I/O）、imageio 及其 ffmpeg 插件；经 `pip install moviepy` 安装。
-- **无服务/数据库：** 客户端库；媒体文件与外部二进制由你自备。
+- **Python 包（v2.2.1）：** `numpy`、`pillow`（`<12.0`）、`imageio`、`imageio_ffmpeg`、`decorator`、`proglog`、`python-dotenv`。默认分支另加 `opencv-python-headless`。
+- **FFmpeg：** 首次使用时由 `imageio-ffmpeg` 自动下载；要用自己的版本，设 `FFMPEG_BINARY`（环境变量或 `.env`）。v2.0 起不再使用 ImageMagick。
+- **字体：** `TextClip` 要传字体文件路径（如 `font="Arial.ttf"`），所以渲染机器上必须真有这个字体。
+- **无服务、无数据库。** 客户端库；只吃 CPU 和输出所需的磁盘。
 
 ## 运维难度
 
-**低。** 安装 MoviePy 只需 `pip install moviepy`，并确保 FFmpeg 与 ImageMagick 已就位。运维分量在外部二进制上：FFmpeg 版本兼容性（某些滤镜在不同版本表现不同）、ImageMagick 策略/安全设置（如 policy.xml 可能阻断文字渲染），以及中间帧写入带来的磁盘 I/O。无需运行服务器、数据库或网络服务。
+**低。** 一般 `pip install moviepy` 就装完了，因为 FFmpeg 二进制会随之下载。实际踩坑在这些地方：渲染耗时（每帧过 Python，长视频受 CPU 限制）、高分辨率多图层合成时的内存、开发机上有而容器里没有的字体，以及照搬旧示例时撞上的 v1→v2 API 断裂。没有服务器、守护进程或状态要维护。
 
 ## 健康度与可持续性
 
-- **维护（2026-07）。** 比巅峰期慢。v2.0.x 已发布，项目未死，但提交频率已从高峰期下降；当作「仍在维护但演进不快」看待。[推断]
-- **治理 / bus factor。** 最初由 Zulko 创建（单人作者）；仓库在约 10 年间吸引了贡献者，但缺乏专门基金会或厂商团队。存在社区 fork 生态。[推断]
-- **年龄与 Lindy 判断。** 约 2014 年创建，约 12 岁；API 稳定且被广泛教学，给出中等 Lindy 信号——但「老 + 比巅峰慢」是混合信号，不算强。[推断]
-- **采用与生态。** 在教程、数据科学 notebook 和内容自动化中极广泛使用；约 13k star 与大量 StackOverflow 存在意味着它是 Python 视频编辑的事实标准，这缓冲了维护放缓。[推断]
-- **风险标记。** 主要风险是维护速度——修复与新功能比 2015–2020 年更慢；另外 FFmpeg 与 ImageMagick 的版本耦合意味着这些外部二进制如果有 breaking change，可能影响 MoviePy 行为。MIT 许可宽松且清晰。[推断]
+- **维护（2026-10）。** 滑行。最新发布是 v2.2.1（2025-05-21）；默认分支最近的提交是文档修正（2026-07、2026-08），2025 年 10 月以来只合并了两个 PR。雷达上维护 B、响应 C（首次响应中位数 228.3 小时，约 9.5 天）与此一致。
+- **治理 / bus factor。** 仓库挂在原作者 Zulko 的个人账号下；README 列了四位活跃维护者，并公开求助。雷达统计过去 12 个月只有 2 位活跃维护者（治理 C），项目依赖一个很小的志愿者群体。
+- **年龄与 Lindy。** 2013 年创建，约 13 岁，2024 年落地了一次大的 v2 重写——长寿 A。“老且仍活着”给出中等 Lindy 先验；维护者梯队太薄，是它算不上强信号的原因。
+- **采用。** 非常高：PyPI 上月下载量 4,336,274、依赖仓库 5,431 个（采用 A），外加大量教程。采用量大让它不太可能突然消失，但换不来更快的修复。
+- **风险标记。** MIT，无改许可历史（风险/许可 A）。真正的风险是 v1→v2 断裂导致网上示例分裂，以及遇到 bug 时上游响应慢。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-07 约 13k star 与具体 fork 数；star 计数对时间敏感。
-- [推断] 「比巅峰慢」和提交频率降低是从一般生态观察与 GitHub 活跃趋势推断的，并非维护者声明。
-- [未验证] v2.0 对中间帧处理改进的确切范围是从发布说明摘要而来，本轮未做基准测试。
-- [未验证] 社区 fork 的名称与活跃程度取自一般认知，未对活仓库再核验。
-- [未验证] ImageMagick policy.xml 的阻断行为是已知问题类别，但未在当前版本上重新测试。
+- [未验证] 截至 2026-10-08 约 15k star、约 2.1k fork；数字易变、对日期敏感。
+- [推断] “滑行”是从提交历史、发布日期和 README 的求维护者声明读出来的，不是维护者对项目前景的表态。
+- [未验证] OpenCV 带来的加速幅度（缩放/旋转“最多 10 倍”）是该 PR 作者的说法，本页未做基准测试，且尚未进入正式发布版。
+- [推断] “永远重编码”是由架构推出的（帧经过 NumPy 再送进编码器）；本页读过的文档里没找到无损直通模式。

@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "MoviePy does",
+    "zh": "MoviePy 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the library; the FFmpeg binary is fetched for you on first use",
+      "zh": "装上库，FFmpeg 二进制首次使用时自动下载",
+      "code": "pip install moviepy"
+    },
+    {
+      "lane": "you",
+      "en": "Open the source and describe the cut and audio change",
+      "zh": "打开素材，写下要截哪段、音量怎么调",
+      "code": "VideoFileClip(\"in.mp4\").subclipped(10, 20).with_volume_scaled(0.8)"
+    },
+    {
+      "lane": "you",
+      "en": "Make a TextClip title and stack it over the clip",
+      "zh": "用 TextClip 做标题，叠到片段上",
+      "code": "CompositeVideoClip([clip, txt_clip])"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for the output file",
+      "zh": "指定输出文件",
+      "code": "final_video.write_videofile(\"result.mp4\")"
+    },
+    {
+      "lane": "them",
+      "en": "Streams source frames from FFmpeg into NumPy arrays, only the seconds the edit needs",
+      "zh": "从 FFmpeg 把源帧流进 NumPy 数组，只取剪辑用到的那几秒",
+      "component": {
+        "en": "FFMPEG_VideoReader",
+        "zh": "FFMPEG_VideoReader"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Renders every output frame by blending the layers at time t, and mixes the audio",
+      "zh": "逐帧按时间 t 合成各图层，同时混好音频",
+      "component": {
+        "en": "CompositeVideoClip",
+        "zh": "CompositeVideoClip"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Pipes the frames into an FFmpeg encoder and writes the file",
+      "zh": "把帧经管道送进 FFmpeg 编码，写出文件",
+      "component": {
+        "en": "FFMPEG_VideoWriter",
+        "zh": "FFMPEG_VideoWriter"
+      }
+    }
+  ],
+  "value": {
+    "en": "A multi-layer edit lives as readable Python you can loop over hundreds of files — no hand-written filter graphs",
+    "zh": "多图层剪辑写成可读的 Python，能对几百个文件循环跑，不用手写滤镜图"
+  },
+  "sources": [
+    "https://github.com/Zulko/moviepy README @ 211e4b1 (2026-08-17): pip install moviepy; example with VideoFileClip(...).subclipped(10, 20).with_volume_scaled(0.8), TextClip(font=\"Arial.ttf\", text=\"Hello there!\"), CompositeVideoClip([clip, txt_clip]), write_videofile(\"result.mp4\"); 'How MoviePy works' (frames as numpy arrays, encoded back to mp4)",
+    "docs/getting_started/install.rst: ffmpeg downloaded automatically by ImageIO on first use; FFMPEG_BINARY override",
+    "moviepy/video/io/ffmpeg_reader.py (FFMPEG_VideoReader, rawvideo over stdout pipe) and moviepy/video/io/ffmpeg_writer.py (FFMPEG_VideoWriter, rawvideo piped to ffmpeg)",
+    "moviepy/video/compositing/CompositeVideoClip.py (layer blending per frame)"
+  ]
+}

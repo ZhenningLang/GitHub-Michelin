@@ -7,8 +7,8 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **OpenClaw** | Use it when you want a personal AI assistant that runs on your own devices and answers you across 20+ messaging channels — but it's extremely young with no Lindy track record. | B (4/6) | [→](openclaw.md) |
-| **Hermes Agent** | Use it when you want a self-improving AI agent with a learning loop that creates skills from experience and runs on a $5 VPS — but it's under a year old and the learning-loop stability is unproven. | B (5/6) | [→](hermes-agent.md) |
+| **OpenClaw** | Use it when you want one personal assistant on your own computer answering across WhatsApp, iMessage, Slack, Telegram and 20+ more channels with shared memory — but one Gateway is one trust domain, so users who do not trust each other must not share it. | B (5/6) | [→](openclaw.md) |
+| **Hermes Agent** | Use it when you want one long-lived assistant on your own VPS that runs shell commands and scheduled jobs, remembers your environment and answers on Telegram or Slack — but its behaviour drifts as skills and memory change, and it is about 15 months old. | A (4/6) | [→](hermes-agent.md) |
 | **OpenHuman** | Use it when you want a local-first personal assistant that ingests your mail, calendar and repos into Markdown memory on a 20-minute loop and can be forced offline in its Rust core — but it's 7 months old, one author holds most commits, and it's GPL-3.0-only. | B (6/6) | [→](openhuman.md) |
 | **Octop** | Use it when a household or small team needs isolated agents on Feishu/WeCom with chats on your disk — not when you want finished office skills, and the LangGraph core is still a private wheel. | B (5/6) | [→](octop.md) |
 | **OpenMuse** | Use it when you want a self-hosted personal agent with a working computer — persistent browser you can take over, sandboxed Linux terminal, durable approval-gated tasks — but it refuses to start without a CopilotKit cloud key, and the alpha is 12 days old with zero releases. | B (4/6) | [→](openmuse.md) |
@@ -21,8 +21,8 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [OpenClaw](openclaw.md) | ✅ | B (4/6) | Use it when you want a personal AI assistant that runs on your own devices and answers you across 20+ messaging channels — but it's extremely young with no Lindy track record. |
-| [Hermes Agent](hermes-agent.md) | ✅ | B (5/6) | Use it when you want a self-improving AI agent with a learning loop that creates skills from experience and runs on a $5 VPS — but it's under a year old and the learning-loop stability is unproven. |
+| [OpenClaw](openclaw.md) | ✅ | B (5/6) | Buys the widest chat-channel coverage plus phone and desktop companion apps; costs tenant isolation, SSO and audit logs, on a project less than a year old. |
+| [Hermes Agent](hermes-agent.md) | ✅ | A (4/6) | Buys persistence under your control — bounded memory, self-written skills, session search and a scheduler; costs determinism, enterprise governance (no SSO, RBAC or audit) and any Lindy track record. |
 | [OpenHuman](openhuman.md) | ✅ | B (6/6) | Local-first desktop assistant that buys context by ingesting your accounts on a 20-minute loop instead of waiting for a learning loop; GPL-3.0-only, heavy build, vendor account by default. |
 | [Octop](octop.md) | ✅ | B (5/6) | TencentCloud's self-hosted multi-user assistant for Feishu/WeCom on one Python process; two months old, and the agent runtime is a PyPI wheel whose GitHub repo 404s. |
 | [OpenMuse](openmuse.md) | ✅ | B (4/6) | CopilotKit's MIT personal-agent app with a persistent browser and bounded Linux computer; buys that working surface at the price of a mandatory Intelligence (hosted) project key. |

@@ -6,8 +6,8 @@ category: engineering-workflows
 tags: [claude-code, cursor, claude-md, coding-discipline, plugin]
 language: Markdown
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-04 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; last pushed 2026-04 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-04-20T10:05:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:44:57Z
+  computed_at: 2026-10-08T08:15:04Z
   overall: C
   overall_score: 2.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 160
+        last_commit_age_days: 171
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 243
-        last_commit_age_days: 160
+        repo_age_days: 254
+        last_commit_age_days: 171
         cohort: skill-pack
     governance:
       grade: B
@@ -74,6 +74,27 @@ health:
 
 你把它当作一个 drop-in 的基础层来用，而不是一个庞大的多技能集合。可以作为 Claude Code marketplace 插件安装（`/plugin install andrej-karpathy-skills@karpathy-skills`），或直接把 `CLAUDE.md` curl 进项目；Cursor 侧有对应的 `CURSOR.md` / `.cursor/rules/` 规则文件。它刻意做得很小（核心文件约 65 行），定位为“与你项目特定指令合并使用”的指引，并显式留了“琐碎任务自行判断”的逃生口。
 
+## 怎么用起来
+
+它是一份指令文件，不是程序：一份简短的 `CLAUDE.md`（同时被打包成 Claude Code 插件里的 `karpathy-guidelines` skill，以及一条 Cursor 项目规则）。`CLAUDE.md` 是 Claude Code 每次开会话时读进模型上下文的文件，所以里面写的东西就成了 agent 的常驻指令。**你**装一次——要么作为插件对所有项目生效，要么把文件追加到某个项目自己的 `CLAUDE.md` 后面——之后照常布置任务，最好写成可检验的形式（“先写一个能复现的测试，再让它通过”）。**agent** 读了这四条原则，会被推着在写代码前先说出假设、有疑问先问，只写够用的最小改动，不碰旁边的代码和注释，并一直循环到写明的检查通过为止。它是贴在 agent 显示器上的便利贴，不是锁住键盘的锁：没有任何东西拦得住一个铺得过大的 diff，README 自己也说，小改动就凭判断来。
+
+![karpathy-skills — 主干用户故事](../../../../assets/flow/karpathy-skills.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/karpathy-skills.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：加上它的 marketplace，装 Claude Code 插件 — `/plugin install andrej-karpathy-skills@karpathy-skills`
+2. **andrej-karpathy-skills**：四条原则进入 agent 在每个项目里的常驻指令 — 组件：`karpathy-guidelines skill`
+3. **你**：布置任务，最好带一个可检验的目标，比如一个会失败的测试
+4. **andrej-karpathy-skills**：动手前先摆出假设，需求有歧义就先问
+5. **andrej-karpathy-skills**：只写最少的改动、只碰需求涉及的行，循环到检查通过
+
+**价值**：diff 更小，问题在犯错前问而不是犯错后，也没有顺手的重构
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你已经在跑一套强势、有主见的全局规则。** 四条宽泛原则（“简单优先”“外科式改动”）和大多数团队已有的 `CLAUDE.md` / 全局 agent 配置、以及像 Superpowers 这样的方法论包高度重叠；叠在上面只会重复或与你已经在强制的东西冲突。
@@ -95,18 +116,19 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护（2026-06）：** 维护偏轻 / 近乎半荒废——最后 push 于 2026-04，截至 2026-06 停滞约 2 个月，约 126 个 open issue，且无打 tag 的 release。对一份约 65 行的原则文件而言本就没多少要维护，但停滞加 open issue 显示投入在减弱。
+- **维护（2026-10）：** 半荒废——最后 push 于 2026-04-20，截至 2026-10 停滞约 5 个半月，131 个 open issue，且无打 tag 的 release。对一份约 65 行的原则文件而言本就没多少要维护，但停滞加 open issue 显示投入在减弱。
 - **治理与 bus factor：** 由 `Organization`（multica-ai）所有，而非单一个人账号，对延续性而言比本叶子里 User 所有的 pack 略好——但它仍是个小 org、薄薄一份单文件 pack。内容是第三方对 Karpathy 公开言论的提炼，**并非 Karpathy 本人撰写或背书**；这个名字是灵感来源的署名，而非作者署名。
-- **年龄与 Lindy 判断：** 创建于 2026-01，截至 2026-06 约 5 个月——年轻，而其约 183k star 反映的远多是名人效应，而非任何经验证的存续。star 数不等于 Lindy：没有履历，实质只是四条通用原则。未经验证。
-- **采用度提示：** 约 183k star 是一个小仓库上由名气驱动的人气信号，而非成熟度或正确性信号——请审慎看待。
+- **年龄与 Lindy 判断：** 创建于 2026-01，截至 2026-10 约 8 个月——年轻，而其约 218k star 反映的远多是名人效应，而非任何经验证的存续。star 数不等于 Lindy：没有履历，实质只是四条通用原则。未经验证。
+- **采用度提示：** 约 218k star 是一个小仓库上由名气驱动的人气信号，而非成熟度或正确性信号——请审慎看待。
 - **风险标记：** 注入上下文的建议性散文（无 hook/闸门）；与大多数团队已有的全局 `CLAUDE.md` 高度重叠。尽管声称 MIT，许可证自动识别却返回 `null`——依赖前请确认。
 
 ## 存疑（未验证）
 
 - [未验证] README 页脚报告 license 为 MIT，仓库也列出了 LICENSE 文件，但 GitHub 仓库元数据 API 在 2026-06-26 返回 `licenseInfo: null`（未自动识别出 SPDX）——依赖 MIT 前请确认 LICENSE 文件内容。
-- [未验证] 无打 tag 的 release（`latestRelease: null`）；GitHub 元数据（截至 2026-06-26）显示最后推送 2026-04-20。依赖某一版本前请重新核验新鲜度与内容。
-- [未验证] 报告的 star 数（2026-06-26 GitHub 约 182k）不可靠且对日期敏感；仅作参考，不代表质量或正确性。
+- [未验证] 无打 tag 的 release；GitHub 元数据（2026-10-08 复核）显示最后推送 2026-04-20。依赖某一版本前请重新核验新鲜度与内容。
+- [未验证] 报告的 star 数（2026-10-08 GitHub 约 218k）不可靠且对日期敏感；仅作参考，不代表质量或正确性。
 - [未验证] 文件结构（`CLAUDE.md`、`CURSOR.md`、`EXAMPLES.md`、`.claude-plugin/`、`.cursor/rules/karpathy-guidelines.mdc`、`skills/karpathy-guidelines/`）与 marketplace 安装命令来自 README 和目录读取，未在此独立运行验证。
 - [未验证] 此处把主语言记为 "Markdown"，因为 GitHub 元数据未返回 `primaryLanguage`；该仓库是文档/配置，没有真正的实现语言。
 - [推断] 由于内容是注入 agent 上下文的建议性散文，强制力是尽力而为——agent 可以偏离；这些“原则”是指令，不是硬保证。
+- [未验证] README 里的安装命令仍指向 `forrestchang/andrej-karpathy-skills`，即仓库先前的所有者路径；能否用取决于 GitHub 的改名重定向，此处未实测。
 - [推断] "Karpathy" 署名反映的是对其公开观察的灵感来源，而非他本人撰写或背书；维护方是 multica-ai 组织。

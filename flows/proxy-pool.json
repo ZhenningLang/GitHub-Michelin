@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "proxy_pool does", "zh": "proxy_pool 做的"},
+  "steps": [
+    {"lane": "you", "en": "Point the database setting at your Redis instance", "zh": "把数据库配置指向你的 Redis", "code": "DB_CONN = 'redis://:pwd@127.0.0.1:8888/0'", "component": {"en": "setting.py", "zh": "setting.py"}},
+    {"lane": "you", "en": "Start the scheduler and the API server", "zh": "启动调度程序和 API 服务", "code": "python proxyPool.py schedule · python proxyPool.py server"},
+    {"lane": "them", "en": "On a timer, fetches candidate IPs from every enabled free-proxy source", "zh": "定时从所有启用的免费代理源抓候选 IP", "component": {"en": "scheduler", "zh": "调度程序"}},
+    {"lane": "them", "en": "Tests each candidate, keeps the live ones in Redis and drops the dead", "zh": "逐个测试候选，活的存进 Redis，死的剔掉"},
+    {"lane": "you", "en": "In your scraper, ask the API for a proxy before each request", "zh": "爬虫每次请求前向 API 要一个代理", "code": "requests.get(\"http://127.0.0.1:5010/get/\")"},
+    {"lane": "them", "en": "Returns a random currently-live proxy from the pool", "zh": "从池里随机返回一个当前可用的代理", "component": {"en": "Flask web API", "zh": "Flask Web API"}}
+  ],
+  "value": {"en": "Your scraper rotates through a self-refreshing set of free IPs without you maintaining a proxy list", "zh": "爬虫在一批会自动刷新的免费 IP 之间轮换，你不用自己维护代理列表"},
+  "sources": [
+    "https://github.com/jhao104/proxy_pool#配置参数 (DB_CONN = 'redis://:pwd@127.0.0.1:8888/0', sources auto-scanned from fetcher/sources/)",
+    "https://github.com/jhao104/proxy_pool#启动项目 (python proxyPool.py schedule / python proxyPool.py server; docker-compose up -d)",
+    "https://github.com/jhao104/proxy_pool#使用 (API on http://127.0.0.1:5010: /get /pop /all /count /delete; requests.get(\"http://127.0.0.1:5010/get/\"))",
+    "https://github.com/jhao104/proxy_pool/blob/master/api/proxyApi.py (routes /get/ /pop/ /refresh/ /all/ /delete/ /count/; gunicorn)"
+  ]
+}

@@ -6,8 +6,8 @@ category: ai-code-review
 tags: [security, sast, github-action, claude, pr-review, slash-command]
 language: Python
 license: MIT
-maturity: no tagged release, pinned via @main, active (2026-02)
-last_verified: 2026-06-26
+maturity: no tagged release, pinned via @main; last commit 2026-02-11, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-02-11T18:01:23Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:47:33Z
+  computed_at: 2026-10-08T08:15:35Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 228
+        last_commit_age_days: 239
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 419
-        last_commit_age_days: 228
+        repo_age_days: 430
+        last_commit_age_days: 239
         cohort: tool
     governance:
       grade: C
@@ -75,6 +75,27 @@ Anthropic 出的 AI 安全审查器：一个 GitHub Action（外加 Claude Code 
 你是一个中小型仓库的维护者，想要一道比正则/AST 模式匹配更进一步的 PR 安全闸门。传统 SAST 反复命中相同形状，却漏掉逻辑层面的 bug——比如一个 IDOR，它之所以成立是因为两个 handler 共享了 session；又比如一个注入，只有走某条特定代码路径才可达。你把这个 Action 加进 `.github/workflows/`，给它一个 Claude API key，之后每个 PR 它只分析改动过的文件、结合上下文推理 diff，并在它认为有漏洞的具体行留下带严重级别和修复建议的 review 评论。因为它“与语言无关”（本质是 Claude 在读代码，而非按语言写死规则集），同一套 workflow 就能覆盖你的 Python 服务、TypeScript 前端和 Terraform，无需分别配工具。
 
 你也可能是一个日常用 Claude Code 的开发者，想在还没开 PR 之前就跑同样的检查。你对未提交的改动运行 `/security-review`，在本地拿到审查结果；还能把 `security-review.md` 拷进你仓库的 `.claude/commands/`，针对你的项目调 prompt。这个工具的整体卖点正是嘈杂扫描器的反面：一套有主张的误报过滤器，会丢掉 DoS/限流/开放重定向之类的 finding，让落地的评论都是值得动手处理的那些。
+
+## 怎么用起来
+
+它是一个 GitHub Action，在你的 CI 任务里跑 Claude Code（Anthropic 的命令行编码 agent），所以**安全审查提示词、误报过滤和 PR 评论都随 Action 一起提供；你要给的是一个 workflow 文件、一个 API key，以及“哪些 PR 能让它看”的决定。** 每来一个 PR，它检出最新提交，只把改动过的文件连同一份审查提示词（一张固定的漏洞类型清单：注入、鉴权绕过、泄露密钥、不安全的反序列化等）交给 agent，让它给出带严重度和修法的发现。接着第二道 `findings_filter.py` 把大多是噪音的类别——拒绝服务、限流、开放重定向——在发出去之前扔掉，所以它更像一个被提前交代过“这些别来烦我”的审查人，而不是 linter。剩下的发现以行级评论落在 PR 上，另有一份 JSON 结果文件作为构建产物。因为审查器读的是攻击者能控制的文字（diff 本身），你还要打开“外部贡献者需批准才跑 workflow”，免得陌生人的 PR 不经你看就送到它面前。
+
+![claude-code-security-review — 主干用户故事](../../assets/flow/claude-code-security-review.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/claude-code-security-review.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：加上 workflow 文件，填好 API key 的 secret — `uses: anthropics/claude-code-security-review@main`
+2. **你**：让外部贡献者的 PR 等维护者批准后才跑 workflow — `Require approval for all external contributors`
+3. **Claude Code Security Review**：每个 PR 上，Claude Code 读改动的文件，结合上下文推理 — 组件：`github_action_audit.py`
+4. **Claude Code Security Review**：再过一遍过滤，丢掉 DoS、限流、开放重定向这类低影响发现 — 组件：`findings_filter.py`
+5. **Claude Code Security Review**：把剩下的发现贴成行级评论，附严重度和修法
+
+**价值**：diff 里的逻辑层漏洞在合并前就标在 PR 上，不用自己写规则
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -119,9 +140,9 @@ Anthropic 出的 AI 安全审查器：一个 GitHub Action（外加 Claude Code 
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）：** [推断] **在滑行，而非废弃。** 最近 push 在 2026-02——截至 2026-06 约四个月没动——且从未打过 tag release（用法 pin 的是 `@main`）。对一道安全闸门来说，这意味着：没有可锚定的版本线，行为可能在没有任何信号的情况下变化（甚至默默不再跟随当前 Claude 模型默认值）。没死，但比同类同侪走得更慢。
+- **维护（2026-10）：** [推断] **停滞，但未废弃。** 最近 push 在 2026-02-11，默认分支此后没再动过（2026-10-08 复查）——约八个月没有提交——且从未打过 tag release（用法 pin 的是 `@main`）。对一道安全闸门来说，这意味着：没有可锚定的版本线，README 的默认模型仍是 `claude-opus-4-1-20250805`，行为可能在没有任何信号的情况下变化（甚至默默不再跟随当前 Claude 模型默认值）。没死，但比同类同侪走得更慢。
 - **治理与背书：** [推断] 归属 `anthropics`（Anthropic 官方组织），这家厂商对它所驱动的 Claude-Code 生态有直接利益。相比单人维护，这降低了 bus-factor 风险，但它是厂商的橱窗/配套工具，而非基金会治理的项目——Anthropic 可以随时重新划定范围或悄悄降低优先级。
-- **年龄与 Lindy：** [推断] 创建于 2025-08，截至 2026-06 约 10 个月——**偏年轻、Lindy 先验弱。** 在不足一岁的基础上叠加四个月的停滞，意味着它既无寿命也无强劲的近期势头；把它当成有用但未经证明的工具，而非长期押注。
+- **年龄与 Lindy：** [推断] 创建于 2025-08-04，截至 2026-10 约 14 个月——**年轻、Lindy 先验弱。** 十四个月里有八个月没动静，意味着它既无寿命也无近期势头；把它当成有用但未经证明的工具，而非长期押注。
 - **风险标记：** [推断] 这是硬约束，不是可以推后的标记：README 声明它**未针对 prompt injection 做加固**，只能审查可信 PR——这是 LLM 审查器的结构性限制，不是一个会被补丁修掉的 bug。外加按次的 Claude API 成本与非确定性（见「何时不用」）。MIT 许可证，未发现 relicense 历史。
 
 ## 存疑（未验证）

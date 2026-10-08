@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1184
+- Named-but-unindexed alternatives: 1286
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -23,7 +23,6 @@ shape and are deliberately excluded here.
 | Alternative | First page |
 |---|---|
 | (alternatives named across the pages) | `categories/auth/INDEX.md` |
-| 1Password / LastPass | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | 2captcha-python | `categories/captcha/buster.md` |
 | 3D-Speaker | `categories/speech/antspeaker.md` |
 | @antfu/eslint-config (`antfu/eslint-config`) | `categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md` |
@@ -37,18 +36,19 @@ shape and are deliberately excluded here.
 | [birda](https://github.com/tphakala/birda) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
+| [Bitwarden server](https://github.com/bitwarden/server) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
+| [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
+| [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
+| [KeePassXC](https://github.com/keepassxreboot/keepassxc) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Kokoro](https://github.com/hexgrad/kokoro) | `categories/speech/vibevoice.md` |
 | [LTX-Video](https://github.com/Lightricks/LTX-Video) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
-| [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/networking/dae.md` |
+| [MeshCentral](https://github.com/Ylianst/MeshCentral) | `categories/dev-utilities/ops-infra/rustdesk.md` |
+| [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
-| [Official Codex (openai/codex)](https://github.com/openai/codex) | `categories/agent-tooling/harness-extensions/codex-chatgpt-web.md` |
-| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | `categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md` |
-| [OmniVoice](https://github.com/k2-fsa/OmniVoice) | `categories/speech/voicestudio.md` |
-| [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | `categories/ml-research/vision-and-multimodal/open-sora.md` |

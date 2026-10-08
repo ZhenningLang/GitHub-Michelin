@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "The DSL does", "zh": "DSL 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the official client 8.18+ and import the DSL from it (legacy code: swap the old import)", "zh": "装官方客户端 8.18+，从它里面导入 DSL（老代码改一下 import）", "code": "elasticsearch_dsl → elasticsearch.dsl"},
+    {"lane": "you", "en": "Start a search on a client and index, then chain filters, queries and aggregations", "zh": "基于客户端和索引新建搜索，链式追加过滤、查询和聚合", "code": "Search(using=client, index=\"my-index\")"},
+    {"lane": "them", "en": "Builds query objects by name and composes them into one bool query, filters in filter context", "zh": "按名字生成查询对象，合成一个 bool 查询，过滤条件放进 filter 上下文"},
+    {"lane": "you", "en": "Execute the search", "zh": "执行搜索", "code": "response = s.execute()"},
+    {"lane": "them", "en": "Sends it through the low-level client and wraps the reply so hits and buckets read as attributes", "zh": "经底层客户端发出请求，把返回包装成可按属性读取的命中和分桶"}
+  ],
+  "value": {"en": "Queries are Python you can refactor, not nested dicts where one misplaced bracket breaks the search", "zh": "查询成了能重构的 Python 代码，而不是错一个括号就坏掉的嵌套字典"},
+  "sources": [
+    "https://github.com/elastic/elasticsearch-dsl-py#deprecation-notice (8.18.0: part of elasticsearch client; replace elasticsearch_dsl with elasticsearch.dsl)",
+    "https://github.com/elastic/elasticsearch-dsl-py#search-example (Search(using=client, index=\"my-index\"), .filter/.query/.exclude, s.aggs.bucket, response = s.execute(); 'the library took care of' list)",
+    "https://github.com/elastic/elasticsearch-dsl-py#persistence-example (Document, Article.init(), article.save())"
+  ]
+}

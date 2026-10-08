@@ -7,7 +7,7 @@ tags: [proxy, mitm, http, https, nodejs, debugging, traffic-capture]
 language: JavaScript
 license: Apache-2.0
 maturity: v4.x (npm 4.1.3), master frozen since 2020-06, coasting, ~7.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2023-03-06T17:20:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:56:35Z
+  computed_at: 2026-10-08T08:17:19Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2292
+        last_commit_age_days: 2303
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: npmjs.org
         canonical_package: anyproxy
         dependent_repos_count: 238
-        downloads_last_month: 7372
+        downloads_last_month: 9765
         graph_tier: C
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4430
-        last_commit_age_days: 2292
+        repo_age_days: 4441
+        last_commit_age_days: 2303
         cohort: tool
     governance:
       grade: "?"
@@ -78,6 +78,28 @@ A fully configurable HTTP/HTTPS man-in-the-middle proxy in Node.js: route your m
 You're a mobile or web engineer debugging an app's network layer, and you need to *see and rewrite* what it sends — inspect live HTTP/HTTPS traffic, mock a slow or broken backend response, or flip a request's path/headers to test an edge case before the server change ships. You point your phone or browser at AnyProxy, trust its generated root CA so it can decrypt HTTPS, and open its web UI (default port 8002) to watch requests stream by — there's even a QR-code helper to point a mobile device at the proxy. To modify traffic you write a small JS rule file with generator/Promise hooks (`*beforeSendRequest`, `*beforeSendResponse`, `*beforeDealHttpsRequest`) that return modified request/response details, and you can throttle bandwidth or record sessions to an embedded datastore. Install is `npm install -g anyproxy`.
 
 It's a reasonable pick when you specifically want a *scriptable* Node.js proxy whose rules are plain JavaScript you already know — versus a GUI tool like Charles. But weigh its staleness first (below).
+
+## How it works
+
+AnyProxy is a middleman you deliberately put between an app and the internet: the device's HTTP proxy setting points at it (port 8001 by default), so every request passes through it before reaching the real server. For HTTPS it plays a *man-in-the-middle* — it presents the app with a certificate for each site, signed by a root certificate authority (CA) it generated for you, which works only after you tell the device to trust that CA; by default HTTPS is passed through untouched until you turn on `--intercept` or decide per request in your rule. **It does the plumbing for you**: forwarding, decrypting, recording every request into its web UI on port 8002, and throttling bandwidth if asked. **You write the behaviour**: a rule module — a plain JavaScript file whose hook functions (`*beforeSendRequest`, `*beforeSendResponse`) receive each request or response and return a modified one, or return a ready-made response so the real server is never called. Think of a mail-room clerk who opens every letter, lets you edit it, and logs a copy before passing it on.
+
+![anyproxy — backbone user story](../../assets/flow/anyproxy.svg)
+
+<!-- flow-steps:begin (generated from flows/anyproxy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it globally, generate its root CA and trust that CA on the device — `npm install -g anyproxy · anyproxy-ca`
+2. **You**: Write a rule module whose hooks rewrite requests or return a mock response — `*beforeSendRequest(requestDetail)`
+3. **You**: Start it with the rule (add --intercept to decrypt HTTPS), then point the client's proxy at :8001 — `anyproxy --rule ./rule.js`
+4. **AnyProxy**: Decrypts intercepted HTTPS with per-host certs signed by its CA and calls your hooks
+5. **AnyProxy**: Forwards the possibly rewritten request, or answers directly if a hook returned a response
+6. **AnyProxy**: Lists every request and response in its web UI on port 8002
+
+**Value**: You see and rewrite an app's real traffic with a few lines of JavaScript, without touching the app or the server
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "ImageMagick does", "zh": "ImageMagick 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a build with the delegates you need", "zh": "装一个带齐所需委托库的版本", "code": "brew install imagemagick · winget install ImageMagick.Q16-HDRI", "component": {"en": "magick binary", "zh": "magick 程序"}},
+    {"lane": "you", "en": "Pick a security policy that matches how far you trust the input", "zh": "按输入可信程度选一份安全策略", "code": "policy.xml"},
+    {"lane": "you", "en": "Write one command: inputs, operators in order, output", "zh": "写一条命令：输入、按顺序的操作、输出", "code": "magick mogrify -resize 256x256 *.jpg"},
+    {"lane": "them", "en": "Sniffs each file's format and decodes it, natively or via a delegate", "zh": "识别每个文件的格式并解码，自己解或交给委托库", "component": {"en": "coders + delegates", "zh": "编解码模块 + 委托库"}},
+    {"lane": "them", "en": "Checks the policy, then applies the operators in order on the pixel cache", "zh": "先查策略，再在像素缓存上按顺序执行操作", "component": {"en": "MagickCore", "zh": "MagickCore"}},
+    {"lane": "them", "en": "Encodes to the format named by the output extension", "zh": "按输出文件扩展名编码成目标格式"}
+  ],
+  "value": {"en": "One shell line converts, resizes or composites a whole folder across 200+ formats, with no code to write", "zh": "一行命令就能把整个文件夹在 200 多种格式间转换、缩放或合成，不用写代码"},
+  "sources": [
+    "https://imagemagick.org/download/ (brew install imagemagick, winget install ImageMagick.Q16-HDRI)",
+    "https://imagemagick.org/security-policy/ (policy.xml, open by default, open/limited/secure/websafe policies)",
+    "https://imagemagick.org/mogrify/ (magick mogrify -resize 256x256 *.jpg)",
+    "https://imagemagick.org/command-line-processing/ (command structure: input, operators, output; explicit formats)",
+    "https://imagemagick.org/formats/ (delegate libraries and programs: Ghostscript, libheif, ffmpeg)",
+    "https://github.com/ImageMagick/ImageMagick README (pixel cache, OpenMP threads)"
+  ]
+}

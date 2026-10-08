@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "uv does", "zh": "uv 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the standalone uv binary", "zh": "安装独立的 uv 二进制", "code": "curl -LsSf https://astral.sh/uv/install.sh | sh", "component": {"en": "uv CLI", "zh": "uv 命令行"}},
+    {"lane": "you", "en": "Create a project and declare its dependencies", "zh": "建项目并声明依赖", "code": "uv init example · uv add ruff"},
+    {"lane": "them", "en": "Resolves all dependencies and writes one cross-platform lockfile", "zh": "解析全部依赖，写出一份跨平台锁文件", "code": "uv.lock", "component": {"en": "PubGrub resolver", "zh": "PubGrub 解析器"}},
+    {"lane": "them", "en": "Creates .venv, fetching a Python build if needed, and links packages from its global cache", "zh": "建好 .venv，缺 Python 就下载，从全局缓存链接包"},
+    {"lane": "you", "en": "Run commands through uv instead of activating the environment", "zh": "通过 uv 运行命令，不用手动激活环境", "code": "uv run ruff check"},
+    {"lane": "them", "en": "Before each run, re-syncs the lockfile and environment with pyproject.toml", "zh": "每次运行前，按 pyproject.toml 同步锁文件和环境"}
+  ],
+  "value": {"en": "One tool and one lockfile reproduce the same environment on every laptop and CI runner, in seconds", "zh": "一个工具、一份锁文件，在每台笔记本和 CI 上几秒内还原出同一个环境"},
+  "sources": [
+    "https://github.com/astral-sh/uv#installation (curl -LsSf https://astral.sh/uv/install.sh | sh)",
+    "https://github.com/astral-sh/uv#projects (uv init example, uv add ruff, uv run ruff check, uv lock, uv sync)",
+    "https://github.com/astral-sh/uv/blob/main/docs/concepts/projects/layout.md (uv.lock is a universal / cross-platform lockfile)",
+    "https://github.com/astral-sh/uv/blob/main/docs/concepts/projects/run.md (uv run ensures the project environment is up-to-date before running)",
+    "https://github.com/astral-sh/uv/blob/main/docs/concepts/cache.md (global cache, hardlinks / copy-on-write)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Depth Anything V2 does", "zh": "Depth Anything V2 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, install requirements, and put a downloaded checkpoint under checkpoints/", "zh": "克隆仓库、装依赖，把下载的 checkpoint 放进 checkpoints/", "code": "pip install -r requirements.txt"},
+    {"lane": "you", "en": "Pick a model size and load its weights (Small is the only Apache-2.0 one)", "zh": "选模型尺寸并加载权重（只有 Small 是 Apache-2.0）", "code": "encoder = 'vitl' # or 'vits', 'vitb', 'vitg'"},
+    {"lane": "you", "en": "Read an image with OpenCV and hand it to the model", "zh": "用 OpenCV 读一张图，交给模型", "code": "depth = model.infer_image(raw_img)"},
+    {"lane": "them", "en": "Resizes the image to a 518-pixel input and runs the DINOv2 encoder plus DPT head", "zh": "把图缩放到 518 像素输入，跑 DINOv2 编码器和 DPT 头", "component": {"en": "DINOv2 encoder + DPT head", "zh": "DINOv2 编码器 + DPT 头"}},
+    {"lane": "them", "en": "Scales the prediction back to your image size and returns an HxW NumPy depth map", "zh": "把预测缩放回原图尺寸，返回 HxW 的 NumPy 深度图"}
+  ],
+  "value": {"en": "A per-pixel depth map from one ordinary photo — no stereo rig, no LiDAR, no training", "zh": "一张普通照片就能得到逐像素深度图，不用双目、LiDAR，也不用训练"},
+  "sources": [
+    "https://github.com/DepthAnything/Depth-Anything-V2#usage (git clone, pip install -r requirements.txt, checkpoints directory, encoder = 'vitl' # or 'vits', 'vitb', 'vitg', depth = model.infer_image(raw_img) # HxW raw depth map in numpy)",
+    "https://github.com/DepthAnything/Depth-Anything-V2/blob/main/depth_anything_v2/dpt.py (infer_image: input_size=518, DPT head, F.interpolate back to (h, w))",
+    "https://github.com/DepthAnything/Depth-Anything-V2#license (Small Apache-2.0; Base/Large/Giant CC-BY-NC-4.0)"
+  ]
+}

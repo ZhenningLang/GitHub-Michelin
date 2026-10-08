@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Intro.js does", "zh": "Intro.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the package and load its JS plus introjs.css", "zh": "装上包，引入它的 JS 和 introjs.css", "code": "npm install intro.js --save"},
+    {"lane": "you", "en": "Mark each element to explain with its text and order", "zh": "给要讲解的元素写上说明文字和顺序", "code": "data-intro · data-step"},
+    {"lane": "you", "en": "Start the tour from your page script", "zh": "在页面脚本里启动引导", "code": "introJs.tour().start()"},
+    {"lane": "them", "en": "Collects the marked elements in order, dims the page and spotlights the first one", "zh": "按顺序收集标记过的元素，把页面压暗，聚光第一个"},
+    {"lane": "them", "en": "Places a tooltip beside it, scrolls it into view, wires Next/Back, arrow keys and Esc", "zh": "在旁边摆好提示框，滚到可见处，接好下一步、上一步、方向键和 Esc"},
+    {"lane": "them", "en": "Walks step by step to the last element, then removes the overlay and fires your exit callback", "zh": "一步步走到最后一个元素，然后撤掉遮罩，调用你的退出回调"}
+  ],
+  "value": {"en": "A guided walkthrough of an existing page with no framework, no runtime deps and no backend — only attributes and one call", "zh": "不用框架、不带运行时依赖、不要后端，只靠几个属性加一行调用，就给现有页面加上分步讲解"},
+  "sources": [
+    "https://github.com/usablica/intro.js#readme (Where to get: npm install intro.js --save; How to use: include intro.js + introjs.css, add data-intro and data-step)",
+    "https://introjs.com/docs/getting-started/start (introJs.tour().start())",
+    "https://github.com/usablica/intro.js/blob/master/src/index.ts (introJs() deprecated in favour of introJs.tour() / introJs.hint())",
+    "https://github.com/usablica/intro.js/blob/master/src/packages/tour/option.ts (keyboardNavigation, exitOnEsc, scrollToElement defaults)",
+    "https://github.com/usablica/intro.js/blob/master/package.json (no runtime dependencies)"
+  ]
+}

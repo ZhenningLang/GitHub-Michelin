@@ -3,20 +3,20 @@ name: shadcn/ui
 slug: shadcn-ui
 repo: https://github.com/shadcn-ui/ui
 category: component-libraries
-tags: [react, components, tailwind, radix, design-system, ui-library, accessibility, nextjs]
+tags: [react, components, tailwind, radix, base-ui, design-system, ui-library, accessibility, nextjs]
 language: TypeScript
 license: MIT
-maturity: active, ~117.7k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: shadcn CLI 4.21.4 (2026-10-07), active, ~125.3k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-07-03T12:29:04Z
+  pushed_at: 2026-10-08T09:29:29Z
   default_branch: main
-  default_branch_sha: d0fae528221011f75a8c64a917073904c2847493
+  default_branch_sha: 0132174664c07d41262fb51012d0cc782e458e6c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:16:20Z
+  computed_at: 2026-10-08T09:58:55Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -29,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 41.2
+        median_ttfr_hours: 29.1
         qualifying_issues: 30
         band: default
         window_offset_days: 10
@@ -47,23 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: "@shadcn/react"
         dependent_repos_count: 0
-        downloads_last_month: 6084607
+        downloads_last_month: 9931380
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1357
-        last_commit_age_days: 1
+        repo_age_days: 1373
+        last_commit_age_days: 0
         cohort: library
     governance:
       grade: C
       raw:
         active_maintainers_12mo: 74
-        top1_share: 0.773
-        top3_share: 0.798
+        top1_share: 0.783
+        top3_share: 0.806
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,67 +77,89 @@ health:
 
 # shadcn/ui
 
-一套精心设计、无障碍的 React 组件，以及一种代码分发平台——你把组件复制进项目，完全拥有它们。基于 Tailwind CSS 和 Radix UI 原语构建。
+装了一个组件库，结果一半时间花在覆盖它的样式上：这里一个 `!important`，那里包一层，设计师改的那一处偏偏没有对应的主题插槽。shadcn/ui 给你的不是一个包，而是组件“源码”——一个 CLI 把精致、无障碍的 React 组件拷进你的仓库，你像改自己的代码一样改它们。
 
 ![shadcn/ui — 健康度雷达](../../../assets/health/shadcn-ui.zh.svg)
 
 ## 何时使用
 
-你是一名 React 开发者，正在开发新产品，需要一套可靠、无障碍的 UI 基础。你考虑过 Material UI，但它的主题系统强迫你覆盖那些你无法控制的层级，而且它的视觉语言 unmistakably 是 Google 风格。你考虑过 Radix UI，但它只是无样式原语——你仍需从零构建每个按钮、对话框和下拉菜单。你选择 shadcn/ui，因为它取两者之长：它给你开箱即好看、预先打磨好的组件，却以源文件形式复制进你的仓库，让你完全拥有。你运行 `npx shadcn@latest add button dialog`，组件便进入你的代码库，使用 Tailwind CSS 做样式，Radix UI 处理无障碍和行为。你免费获得键盘导航、ARIA 属性和焦点管理，而视觉层由你完全自定义，无需等待库更新。
+你是一名 React 开发者，正在用 Tailwind CSS 起一个新产品，需要一个靠谱、无障碍的 UI 底座。你考虑过 [Material UI](material-ui.zh.md)，但它的主题系统逼你去覆盖自己控制不了的层，视觉语言也一眼就是 Google。你考虑过 [Radix UI](radix-ui.zh.md)，但它只是无样式原语——每个按钮、弹窗、下拉框的样式都得从零写。shadcn/ui 正好折中：运行 `npx shadcn@latest add dialog`，一个做好的 `dialog.tsx` 就落进 `components/ui/`，用 Tailwind 类写好了样式，底下架在一个无样式库上（2026 年 7 月起默认是 Base UI，也可以选 Radix 或 React Aria），由它提供键盘操作、焦点和 ARIA。设计师想把弹窗的关闭按钮挪个位置，你打开文件挪就是了。
 
-当你想要一个留在仓库里、不在 `node_modules` 里的设计系统时，你也会选它。因为 shadcn/ui 是复制-拥有模式，没有运行时依赖需要版本锁定，也不用担心上游破坏性变更。如果上游加了新组件，你可以选择性采用；如果你需要定制变体，直接编辑复制进来的文件即可。这就是你选 shadcn/ui 而不是 Chakra UI 或 MUI 的原因——你想拥有每个像素，却不想从零重建原语。
+当你希望设计系统住在自己的仓库里而不是 `node_modules` 里，或者有编码 agent 在改你的界面时，也会想到它：组件就是普通文件，agent 能直接读和改，项目还为此专门提供了 MCP 服务和 agent skills。和 MUI 或 [Chakra UI](chakra-ui.zh.md) 相比，决定性的取舍是“拥有”还是“省心”——每个像素都能改，但上游的修复不再能靠 `npm update` 拿到。
+
+## 怎么用起来
+
+shadcn/ui 是两样东西：一套组件源码（一个“注册表”，即描述每个组件的文件和依赖的 JSON 条目目录），加上一个从里面安装条目的 CLI。`npx shadcn@latest init` 负责初始化项目：把你的选择记进 `components.json`（底层库、风格、图标集、路径别名），安装依赖，加一个合并 Tailwind 类名的 `cn` 工具函数，并把主题写成 CSS 变量。之后 `npx shadcn@latest add <名字>` 会把该组件的源码拷进你的 `components/ui/` 目录，并装上它底下需要的东西——比如负责行为的 `@base-ui/react`。无样式那一层始终是普通的 npm 依赖，靠升级拿修复；只有最上面的视觉层被拷过来、归你所有。可以把它想成一张菜谱卡而不是一份成品饭：厨具（无样式库）是买来的，菜在你自己的厨房里做，咸淡你说了算。同一个 CLI 还能发布你自己的注册表，公司可以用同样的方式分发内部组件。
+
+![shadcn-ui — 主干用户故事](../../../assets/flow/shadcn-ui.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/shadcn-ui.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：初始化 React + Tailwind 项目，选好底层组件库和风格 — `npx shadcn@latest init`
+2. **shadcn/ui**：安装依赖，加上 cn 工具函数，写好主题 CSS 变量 — 组件：`shadcn CLI`
+3. **你**：按名字要你需要的组件 — `npx shadcn@latest add card`
+4. **shadcn/ui**：把组件源码拷进你的仓库，并装上它依赖的底层库 — 组件：`组件注册表`
+5. **你**：从你自己的目录导入，像改自己的代码一样改它 — `import { Button } from "@/components/ui/button"`
+
+**价值**：精致、无障碍的组件，源码就在你的仓库里——想改样式、想重写都不用等组件库发版
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **如果你使用 Vue、Angular 或 Svelte，请用 Vuetify、Angular Material 或 Skeleton UI，而不是 shadcn/ui，因为** shadcn/ui 仅限 React，该生态没有针对这些框架的等价复制-拥有组件体系。
-- **如果你想要零配置、从不碰组件代码的 UI kit，请用 Material UI 或 Chakra UI，而不是 shadcn/ui，因为** shadcn/ui 要求你在仓库里拥有并维护组件文件。导入 `<Button>` 后从不看实现的方式，不是这个模型的玩法。
-- **如果你需要严格的企业级设计系统与治理，请用 Ant Design 或 MUI，而不是 shadcn/ui，因为** shadcn/ui 是起点，不是受治理的设计系统。它不强制 token 使用、组件使用规则或跨团队视觉一致性——你必须自己建立治理。
-- **如果你已经深度绑定另一个组件库，请继续使用那个库，而不是迁移到 shadcn/ui，因为** 从 Material UI、Ant Design 或 Chakra 迁移意味着逐个替换组件，并在 Tailwind 里重建主题层。回报是所有权，但迁移成本真实存在。
-- **如果你需要开箱即用的复杂数据网格或图表组件，请用 AG Grid、TanStack Table 或 Recharts，而不是 shadcn/ui，因为** shadcn/ui 提供原语和基础表格模式；重型数据网格、透视表或图表终究需要集成专用库。
-- **如果你不用 Tailwind CSS，请用 Chakra UI 或 MUI，而不是 shadcn/ui，因为** 组件用 Tailwind 工具类样式；如果你的项目用 CSS-in-JS、Styled Components 或纯 CSS，需要把整个样式层重新接线。
+- **如果用的是 Vue 或 Svelte，用社区移植版 shadcn-vue（未收录）、shadcn-svelte（未收录），或者 Vuetify 这类原生组件库，而不是 shadcn/ui，因为** shadcn/ui 本身只支持 React；移植版沿用同样的“拷贝即拥有”模式，但由别人按自己的节奏维护。
+- **如果想要一个永远不用打开组件代码的现成 UI 套件，用 [Material UI](material-ui.zh.md) 或 [Chakra UI](chakra-ui.zh.md) 而不是 shadcn/ui，因为** shadcn/ui 让你成为每个拷贝文件的拥有者和维护者。导入 `<Button>` 之后再也不看它的实现，不是这个模式的用法。
+- **如果需要在很多团队之间执行一套严格、受管控的设计系统，用 [Ant Design](ant-design.zh.md) 或 [Material UI](material-ui.zh.md) 这类带版本的包，而不是 shadcn/ui，因为**各团队的拷贝会各自漂移；shadcn/ui 给你的是起点和注册表机制，不会强制 token 或使用规则——那层管控要你自己建。
+- **如果已经深度绑定了另一个组件库，就留在原库上，不要迁到 shadcn/ui，因为**从 Material UI、Ant Design 或 Chakra 迁过来意味着逐个替换组件、用 Tailwind 重建主题。回报是拥有权，但迁移成本是实打实的。
+- **如果开箱就需要重型数据表格或图表，用 [TanStack Table](tanstack-table.zh.md)、AG Grid（未收录）或图表库，而不是指望 shadcn/ui，因为**它的表格和图表组件只是这些引擎外面的一层样式封装（数据表格基于 TanStack Table，图表基于 Recharts），不是完整的表格产品。
+- **如果不用 Tailwind CSS，用 [Chakra UI](chakra-ui.zh.md) 或 [Material UI](material-ui.zh.md) 而不是 shadcn/ui，因为**每个组件都用 Tailwind 工具类写样式；换成 CSS-in-JS、Styled Components 或纯 CSS，你得重写每个文件的样式。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Material UI（MUI）](material-ui.zh.md) | ✅ | 需要全面、Google Material 主题且拥有庞大企业生态的组件库时，选 MUI。 | 全面、Google-Material 主题的 React 组件库，企业采用广泛，有付费支持；比 shadcn/ui 更重、更有主见。 |
-| [Chakra UI](chakra-ui.zh.md) | ✅ | 需要更简单、基于 styled-system 且 DX 好的 React 组件库时，选 Chakra UI。 | 简单、基于 styled-system 的 React 库，DX 好，主题 API 一致；文件级可定制性不如 shadcn/ui 的复制-拥有模式。 |
-| [Ant Design](ant-design.zh.md) | ✅ | 需要全功能企业级 UI 框架和大量内置组件时，选 Ant Design。 | 全功能企业级 UI 框架，组件集庞大，社区以中文为先；比 shadcn/ui 更重，也不那么 Tailwind 原生。 |
-| [Radix UI](radix-ui.zh.md) | ✅ | 需要无样式、headless 原语，并计划从零自建样式层时，选 Radix UI。 | 无样式、headless 无障碍原语；shadcn/ui 在 Radix 之上加了 Tailwind 样式和分发工作流。 |
-| Headless UI | 未收录 | 需要 Tailwind 团队出品的无样式组件时，选 Headless UI。 | Tailwind 团队维护的无样式组件；原语比 Radix 少，没有内置的「复制到自有」分发系统。 |
+| [Material UI (MUI)](material-ui.zh.md) | ✅ | 想要一个有人维护、外观固定为 Material、还有企业级扩展（MUI X）的包，选 MUI；必须全面改样式且已经用 Tailwind，选 shadcn/ui。 | MUI 靠升级版本交付修复，但视觉语言很难摆脱；shadcn/ui 给你完全的控制权，代价是维护拷贝来的文件。 |
+| [Chakra UI](chakra-ui.zh.md) | ✅ | 团队更喜欢用 props 驱动样式而不是 Tailwind 类、只想导入一个库就用，选 Chakra UI；文件级的拥有权比稳定的包 API 更重要，选 shadcn/ui。 | Chakra 把组件放在一致的主题 API 后面，整体一起升级；shadcn/ui 让你直接改任何组件，但每份拷贝都成了你要保持同步的代码。 |
+| [Ant Design](ant-design.zh.md) | ✅ | 做信息密集、内置控件多、外观受管控的企业后台，选 Ant Design；做品牌外观和 Tailwind 集成优先的产品界面，选 shadcn/ui。 | Ant Design 开箱就有更大的控件集和一致的规则；shadcn/ui 更轻、Tailwind 原生，但管控留给你自己。 |
+| [Radix UI](radix-ui.zh.md) | ✅ | 设计系统已经定义好全部视觉、只缺行为，直接用 Radix；想在无样式层之上要一套带样式的起步组件，选 shadcn/ui。 | Radix 是 shadcn/ui 可选的底座之一（现在默认是 Base UI）；直接用它省掉了拷贝来的样式层，但所有样式活都留给你。 |
+| Headless UI | 未收录 | 只需要 Tailwind 团队出的几个无样式控件，Headless UI 就够；想要一大套做好的组件外加 CLI 和注册表，选 shadcn/ui。 | Headless UI 更小、无样式，仓库自 2026-04 起较冷清；shadcn/ui 覆盖的组件多得多，而且还在持续增加。 |
 
 ## 技术栈
 
-- **语言：** TypeScript，编译为 JavaScript；所有组件带类型，支持 tree-shaking。
-- **样式：** Tailwind CSS 工具类负责全部视觉样式；没有单独的 CSS 文件或 CSS-in-JS 运行时。
-- **原语：** 基于 Radix UI 原语实现无障碍（ARIA、键盘导航、焦点捕获、portal 行为）与交互（对话框、下拉菜单、手风琴等）。
-- **分发：** CLI（`npx shadcn@latest add <component>`）把源文件复制到你项目的 `components/ui/` 目录；组件库本身不作为 npm 依赖存在。
-- **框架支持：** 针对 Next.js 和 React 18+ 优化；也支持 Vite、Remix 和其他 React 框架。
+- **语言：** TypeScript（组件是归你所有的 `.tsx` 源文件；也有输出 JavaScript 的选项）。
+- **样式：** Tailwind CSS 工具类；新项目从 Tailwind v4 起步，主题色以 CSS 变量（OKLCH）表示。一个小小的 `shadcn/tailwind.css` 导入提供共享的变体，`npx shadcn eject` 可以把它内联掉。
+- **行为层（每个项目选一个）：** Base UI（`--base base`，2026-07-02 起为默认）、Radix（`--base radix`）或 React Aria（`--base aria`，2026-07-17 加入）。
+- **分发：** `shadcn` CLI（`init`、`add`、`view`、`search`、`build`、`migrate`、`apply`、`eject`）加一套注册表 schema；`shadcn build` 可以发布你自己的注册表，也支持托管在 GitHub 上的注册表（包括私有的）。
+- **框架：** 提供 Next.js、Vite、TanStack Start、React Router、Laravel、Astro 的项目模板；Remix 和 Gatsby 也有文档。
+- **版本（2026-10-08）：** `shadcn` CLI 4.21.4（2026-10-07），每周发好几次版。
 
 ## 依赖
 
-- **运行时：** React 18+ 和 Tailwind CSS 项目。组件假设 Tailwind 已配置且工具类在构建中可用。
-- **库依赖：** 复制进来的组件可能引入少量 Radix UI 子包和 `clsx` / `tailwind-merge` 做类名合并；这些是你已经在管理的正常运行时依赖。
-- **无后端：** 客户端 UI 库，无需服务器、数据库或服务。
-- **构建集成：** 你的打包器（Vite、Next.js、webpack）必须处理 Tailwind CSS 和 TypeScript/JSX 组件文件。
+- **运行时：** React（新项目以 React 19 为目标；已有的 React 18 + Tailwind v3 项目继续可用）和一套 Tailwind CSS 构建。
+- **CLI 会装的库依赖：** 你选的无样式库（`@base-ui/react`、`radix-ui` 或 `react-aria-components`），用于 `cn` 的 `clsx` + `tailwind-merge`，`tw-animate-css`，你选的图标库（lucide、tabler、hugeicons、phosphor 或 remixicon），以及各组件自己的额外依赖（如 toast 用 `sonner`，图表用 `recharts`）。
+- **`shadcn` 包本身：** 只为 `shadcn/tailwind.css` 这个导入；`npx shadcn eject` 能把它去掉。
+- **无后端：** 客户端 UI 代码，不需要服务器、数据库或任何服务。托管的 shadcn/create 网站是可选的——它只帮你生成一条 `init` 命令。
 
 ## 运维难度
 
-**低。** 除了正常的 React 构建管线，没有额外东西要部署或运维。运维负担在于**复制组件的维护**：升级 shadcn/ui CLI 或添加新组件时，可能需要调和样式变更或 Tailwind 配置更新。因为组件活在仓库里，发现 bug 时你必须自己 patch——不能简单在 `package.json` 里升版本。好处是你永远不会被上游发布节奏卡住。对小团队而言，复制-拥有模式摩擦很小；对大型组织多团队而言，可能需要自建内部分发机制，以保持组件变体一致性。
+**低。** 除了正常的 React 构建，没有要部署的东西。负担在维护拷贝来的组件：上游改进了某个组件，你得自己把改动合进你的文件（`shadcn add` 加 `--dry-run` 可以预览会写入什么，`migrate` 能处理一些批量变更，比如 Radix 导入改写或换图标库），因为这一层没法靠升级版本号解决。无样式库里的行为修复仍然通过正常的依赖升级拿到。对小团队来说摩擦很小；对有很多应用的大组织，你会需要一个自己的注册表来保持变体一致。
 
 ## 健康度与可持续性
-- **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 1 天。
-- **响应速度**：Grade A——中位首次响应时间 41.2 小时，基于 30 个 qualifying issues/PRs。
-- **采用广度**：Grade A——npmjs.org 上月下载量 6,084,607（包名：@shadcn/react）。
-- **长青度**：Grade B——仓库已创建 1357 天。
-- **治理集中度**：无法计算——unknown。
-- **许可风险**：Grade A——MIT 许可证。
+
+- **维护（2026-10-08）：** 非常活跃——维护评级 A，过去一个季度每周都有提交，CLI 每周发好几次版，每月的更新日志里都是实打实的功能（Base UI 设为默认、React Aria 底座、私有注册表）。
+- **治理与巴士系数：** 2026-10-08 重新评分后治理轴为 C：12 个月内有 74 名活跃维护者，但第一名一人就占提交的 78.3%（前三名 80.6%）。项目由创建者（GitHub 用户 `shadcn`）掌舵，更新日志由他撰写、方向由他决定，所以尽管有很多贡献者提交组件和修复，项目仍然倚重一个人的判断。[推断]
+- **年龄与 Lindy：** 2023 年 1 月发布，不到四年——长期性评级 B。作为 UI 底座还年轻，但它已经消化了一次大转向（在 Radix 之外加入 Base UI 和 React Aria），没有弄坏已有项目。
+- **采用度：** 按评分器选的 npm 包，采用评级 A；`shadcn` CLI 本身也是安装量最大的 React 工具包之一；GitHub star 超过 12.5 万，第三方注册表和移植版（shadcn-vue、shadcn-svelte）的生态很大。
+- **风险信号：** MIT，没有改协议。结构性风险比普通库低，因为组件就是你自己的文件——即便项目停滞，你的应用照样运行，损失的只是新组件和 CLI 更新。
+
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-07-01 约 117.7k GitHub star；star 数为近似值且对时间敏感。
-- [未验证] React 版本兼容性和框架支持（Next.js、Vite、Remix）随 CLI 版本变动；安装前请核实当前文档。
-- [未验证] `npx shadcn` CLI 分发模式和可安装组件注册表正在快速演进；可安装组件集合及其选项可能变化。
-- [推断] 复制-拥有模式意味着你需要自行把上游修复合并到本地组件文件中；没有自动补丁机制。
-- [推断] 大型组织可能难以在多个团队各自复制和修改组件的情况下保持一致性；需要内部治理。
-- [推断] 虽然原语本身无障碍，但最终应用的无障碍程度取决于你如何在自己的代码中组合和配置这些复制进来的组件。
-- [推断] Next.js 和 React 18+ 之外的框架支持因 CLI 版本而异，可能需要手动配置。
+- [推断] 治理判断（由创建者一人掌舵）依据的是更新日志的第一人称写法和公开的项目历史，不是治理文档；提交占比（第一名 78.3%）能说明集中，但说明不了方向由谁定。
+- [未验证] 截至 2026-10-08 约 12.53 万 GitHub star；star 数是近似值，会随时间变化。
+- [未验证] 评分器的采用轴量的是较新的 `@shadcn/react` 包；CLI 包 `shadcn` 更能代表真实使用量，它的数字是另外从 npm 下载量 API 读到的。
+- [推断] 把上游改动合进已经拷贝过来的组件仍然要手工做；CLI 能预览和迁移特定变更，但不会对你的修改做三方合并。
+- [推断] 大组织里每个团队各自拷贝、修改组件，可能难以保持一致；私有注册表能缓解，但那是你自己要运营的系统。
+- [推断] 底层原语是无障碍的，但应用最终的无障碍程度取决于你怎么修改和组合拷贝来的组件。

@@ -7,7 +7,7 @@ tags: [zookeeper, gui, desktop, javafx, client, archived]
 language: Java
 license: Apache-2.0
 maturity: v2.1.1 (2023-02), ARCHIVED — maintenance stopped, 3.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-01-09T14:17:44Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T15:54:51Z
+  computed_at: 2026-10-08T08:16:53Z
   overall: D
   overall_score: 1.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 992
+        last_commit_age_days: 1003
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -44,7 +44,7 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 147654
+        release_downloads: 147802
         release_assets: 123
         release_tier: C
         signal_basis: releases
@@ -52,8 +52,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2557
-        last_commit_age_days: 992
+        repo_age_days: 2567
+        last_commit_age_days: 1003
         cohort: app
     governance:
       grade: "?"
@@ -71,7 +71,7 @@ health:
 
 # PrettyZoo
 
-一个跨平台的 Apache ZooKeeper 桌面 GUI（Win／Mac／Linux）——浏览 znode 树、查看／编辑节点数据、管理 ACL 与连接，无需跌进 `zkCli.sh` shell。**已归档：作者于 2023 年公开宣布停止维护。**
+一个跨平台的 Apache ZooKeeper 桌面 GUI（Win／Mac／Linux）——浏览 znode 树、查看／编辑节点数据、管理 ACL 与连接，无需跌进 `zkCli.sh` shell。**已归档：作者在 README 里的公告（落款 2024-01-09）宣布停止维护。**
 
 ![prettyzoo — 健康度雷达](../../../assets/health/prettyzoo.zh.svg)
 
@@ -81,9 +81,30 @@ health:
 
 它最有用的定位是一个**开发者／运维便利 GUI**，用于开发和事故排查中的查看与轻量编辑——那个「我只是想看看 ZooKeeper 里现在有什么」的工具。
 
+## 怎么用起来
+
+PrettyZoo 是一扇看 ZooKeeper 的桌面窗口。ZooKeeper 是 Kafka、Dubbo 这类系统用来存配置和服务注册信息的小型协调数据库，数据排成一棵树，树上每个节点叫 *znode*。可以把 PrettyZoo 想成一个文件管理器，每个文件夹就是一个 znode。**它替你做的是管道活**：通过 Apache Curator（一个常用的 Java 版 ZooKeeper 客户端库）连上集群、加载整棵树、节点变化时实时同步、会话断了自动重连，并把 JSON／XML 节点数据格式化显示。**你做的是决定**：连哪个集群（直连或走 SSH 隧道）、打开哪个节点、改什么、设什么 ACL（访问控制列表，规定谁能读写这个节点）。点鼠标不够用时，它还内置一个终端，可以敲 zkCli 风格的命令。服务器端什么都不用装，连接配置只存在你本机。
+
+![prettyzoo — 主干用户故事](../../../assets/flow/prettyzoo.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/prettyzoo.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：从 Releases 下载 msi、dmg 或 rpm／deb 安装包装好
+2. **你**：添加 ZooKeeper 连接，需要时走 SSH 隧道
+3. **PrettyZoo**：通过 Apache Curator 连上，加载 znode 树并实时同步
+4. **你**：点开节点读写数据、增删节点、设置 ACL
+5. **PrettyZoo**：把 JSON／XML 数据格式化高亮，并把你的改动写回集群
+
+**价值**：点几下就能看清、改掉 ZooKeeper 里的内容，不用背 zkCli.sh 命令
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **它已归档——没有未来修复。** 作者宣布结束维护（2023）且仓库已归档；bug、操作系统兼容性破坏（新 macOS／JDK）和安全问题上游都不会修。若要持续依赖，请把 fork-或-替换计入。[推断]
+- **它已归档——没有未来修复。** 作者在 README 公告（落款 2024-01-09）里宣布结束维护，且仓库已归档；bug、操作系统兼容性破坏（新 macOS／JDK）和安全问题上游都不会修。若要持续依赖，请把 fork-或-替换计入。[推断]
 - **生产自动化／脚本化。** GUI 是给人用的；对可重复运维、配置即代码或 CI，你要的是 `zkCli.sh`、ZooKeeper API 或 Curator——而非桌面应用里的点点点。
 - **你根本不跑 ZooKeeper。** 许多技术栈已把协调从 ZooKeeper 上挪走（Kafka KRaft 去掉了 ZK 依赖；别处用 etcd／Consul）。若你不用 ZooKeeper，这工具没活儿。
 - **封闭／无头环境。** 桌面 JavaFX 应用需要图形会话；对服务器、堡垒机或无头集群，你终究还得回到 CLI。
@@ -102,7 +123,7 @@ health:
 ## 技术栈
 
 - **语言：** Java，带 **JavaFX** 桌面 UI。
-- **ZooKeeper 客户端：** 构建于某个 ZooKeeper Java 客户端（很可能是 Apache Curator）做连接／znode 操作。
+- **ZooKeeper 客户端：** 构建于 Apache Curator Framework（README 明写）做连接／znode 操作。
 - **打包：** Windows／macOS／Linux 的原生安装包作为 GitHub release 发布（末版 v2.1.1，2023-02）。
 - **形态：** 独立桌面应用——无服务端组件。
 
@@ -120,7 +141,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：Grade E。
-- **维护（2026-06）。** **已归档／已废弃。** 作者发了明确的「我决定停止维护这个项目」通知；仓库已归档，末版 v2.1.1（2023-02），最后 push 2024-01，0 个 open issue（归档时清空）。[推断]
+- **维护（2026-10）。** **已归档／已废弃。** 作者在 README 里发了明确的「我决定停止维护这个项目」通知（落款 2024-01-09）；仓库已归档，末版 v2.1.1（2023-02），最后 push 2024-01，0 个 open issue（归档时清空）。[推断]
 - **治理／bus factor。** 一个**单作者**项目（vran-dev，`owner.type: User`），如今已终结——往后 bus factor 实际为零；任何未来生命取决于社区 fork。[推断]
 - **年龄与 Lindy 判断。** 2019-09 创建（约 6 年）**但不再维护** ⇒ Lindy **不**适用——它曾跑得不错，但一个废弃仓库的年龄不是持久性信号。[推断]
 - **采用度。** 3.2k star、约 378 fork——在它活跃的年头里曾是受欢迎、被喜爱的 ZK GUI（README 在归档时感谢了用户）；star 反映的是过去而非持续的势头。[未验证]
@@ -129,6 +150,6 @@ health:
 ## 存疑（未验证）
 
 - [未验证] 截至 2026-06 约 3.2k star、约 378 fork——易变，仅供参考；0 个 open issue 反映归档而非活跃 triage。
-- [未验证] JavaFX UI 与基于 Curator 的客户端是从项目性质与生态惯例推断，本条目未对照当前源码重新确认。
+- [未验证] README 写明“由 JavaFX 和 Apache Curator Framework 构建”；v2.1.1 实际打包的 Curator／ZooKeeper 客户端版本未对照构建文件核实。
 - [未验证] 2023 时代的发布在当前 macOS／JDK 版本上能否干净运行未经测试；请把操作系统／JDK 兼容性当作未验证。
 - [推断] 「单作者／bus factor 为零」是从 `owner.type: User` 加上作者自己的停止维护通知推断的。

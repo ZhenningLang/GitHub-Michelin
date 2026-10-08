@@ -16,7 +16,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **context-language-models** | 用来研究或评测“让 agent 的模型自己改写实时上下文”（它用 bash 改写一份对话镜像文件）：跑在 Harbor 任务上，带 FLOPs 记账和一个 SGLang KV 复用补丁——论文代码，CC BY-NC 4.0，仅限非商用。 | D（4/6） | [→](context-language-models.zh.md) |
-| **llm-circuit-finder** | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 | D（4/6） | [→](llm-circuit-finder.zh.md) |
+| **llm-circuit-finder** | 当你手里有本地 GGUF 模型、想搜出该复制哪段连续层块再用探针和 lm-evaluation-harness 量效果时用它——但收益是此消彼长（Devstral 全指标平均反而下降），且它是只支持 GGUF 的一次性 demo。 | D（4/6） | [→](llm-circuit-finder.zh.md) |
 | **pymoo** | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 | B（6/6） | [→](pymoo.zh.md) |
 
 ## 对比矩阵
@@ -24,7 +24,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [context-language-models](context-language-models.zh.md) | ✅ | D（4/6） | 用来研究或评测“让 agent 的模型自己改写实时上下文”（它用 bash 改写一份对话镜像文件）：跑在 Harbor 任务上，带 FLOPs 记账和一个 SGLang KV 复用补丁——论文代码，CC BY-NC 4.0，仅限非商用。 |
-| [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（4/6） | Python 工具集：在 GGUF 模型里搜索连续的「推理电路」层块并在前向传播中复制（不训练、不改权重），再用内置探针验证效果。 |
+| [llm-circuit-finder](llm-circuit-finder.zh.md) | ✅ | D（4/6） | 换来在消费级显卡上免训练做层手术实验；代价是能力画像只是偏移而非提升，代码单人所写、无发布无测试，得自己改着用。 |
 | [pymoo](pymoo.zh.md) | ✅ | B（6/6） | 当需要 Python 演化式多目标优化（NSGA-II/III、MOEA/D）求 Pareto 前沿时用它——若问题是凸／线性／单目标，LP 或梯度求解器要快得多。 |
 | TransformerLens / minGPT | 未收录 | — | 各页对比里点到的其他研究 demo / 可解释性库。 |
 

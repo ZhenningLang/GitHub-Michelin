@@ -3,40 +3,40 @@ name: Textual
 slug: textual
 repo: https://github.com/Textualize/textual
 category: terminal-ui
-tags: [terminal-ui, textual, framework]
+tags: [terminal-ui, tui, python, framework, asyncio, css]
 language: Python
 license: MIT
-maturity: active, ~36,491 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: v8.2.8 (2026-06-30), active, ~37.4k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-06-30T06:53:30Z
+  pushed_at: 2026-07-11T06:02:34Z
   default_branch: main
-  default_branch_sha: 1d99508b928a771b51e1a527319c6b87dcff9e05
+  default_branch_sha: 06dbeef4bb70fb718236aa418ed658ef4667a126
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:07:33Z
+  computed_at: 2026-10-08T08:27:27Z
   overall: B
-  overall_score: 3.17
+  overall_score: 3.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
-  needs_human_review: true
+  needs_human_review: false
   axes:
     maintenance:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 73
-        active_weeks_13: 3
-        carve_out: null
+        last_commit_age_days: 89
+        active_weeks_13: 1
+        carve_out: mature_library_lindy
     responsiveness:
-      grade: B
+      grade: C
       raw:
-        median_ttfr_hours: 141.7
-        qualifying_issues: 19
+        median_ttfr_hours: 190.0
+        qualifying_issues: 16
         band: default
         window_offset_days: 0
         source: issue
@@ -47,22 +47,22 @@ health:
         registry: pypi.org
         canonical_package: textual
         dependent_repos_count: 249
-        downloads_last_month: 223231392
+        downloads_last_month: 55518787
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 3.26
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 1993
-        last_commit_age_days: 73
+        repo_age_days: 2009
+        last_commit_age_days: 89
         cohort: framework
     governance:
       grade: D
       raw:
-        active_maintainers_12mo: 18
-        top1_share: 0.915
+        active_maintainers_12mo: 17
+        top1_share: 0.924
         top3_share: 0.953
         window_source: stats_contributors
         carve_out: null
@@ -76,59 +76,87 @@ health:
 ---
 # Textual
 
-The lean application framework for Python.  Build sophisticated user interfaces with a simple Python API. Run your apps in the terminal and a web browser.
+你的 Python 脚本长出了十五个参数，跑它的同事老是把 `--since` 填错；可做个网页界面又意味着要服务器、前端和登录。Textual 让你把脚本变成一个全屏终端应用——表格、表单、标签页、鼠标键盘都能用——纯 Python 写、用 CSS 定样式，能在 SSH 上跑，也能放进浏览器。
 
 ![Textual — 健康度雷达](../../assets/health/textual.zh.svg)
 
 ## 何时使用
 
-你正在为一个落在 `terminal-ui` 分类里的任务选择开源基础设施，需要评估一个真实仓库，而不是只在对比表里看到一个名字。当 Textual 的上游描述贴合任务，并且采用现成项目比从零写胶水代码更划算时，你把它列入候选。
+你是 Python 开发者或 SRE，手上有个内部工具已经超出了 `argparse` 能承受的范围：大家要浏览一列任务、筛选、点开其中一个、按个按钮重试，而且是在 SSH 登进去、没有浏览器的服务器上做这些事。为此做个网页应用，就得管托管、鉴权和一套 JavaScript 前端；直接用 `curses`，又得手工摆放每个字符、自己处理每一次窗口缩放。用 Textual，你继承 `App`，组合现成的控件（`DataTable`、`Input`、`Tree`、`TextArea`、标签页、`ctrl+p` 命令面板），用一种 CSS 方言排版，鼠标支持、主题和无界面测试工具都是白送的。
 
-这个首版页面存在，是因为 Textual 在 atlas backlog 里反复作为对比候选出现。请把它当作有 intake 依据的起点：先核验上游 README 和许可证，再和下方已收录的邻近页面对照，然后再决定是否引入依赖。
+想要现代控件、类 CSS 排版和 async 集成，而不是 curses 风格的 API 时，选它而不是 [asciimatics](asciimatics.zh.md) 或 urwid；输出必须能*交互*、而不是打印一次就完时，选它而不是 [Rich](rich.zh.md)；用户都待在终端里时，选它而不是网页框架。代价是：只能用 Python，大版本变得快，而且背后的公司 2025 年关门后，它只靠一位维护者。
+
+## 怎么用起来
+
+Textual 建在 [Rich](rich.zh.md)（同一作者写的终端彩色输出库）之上，补上终端缺的那一块：应用的事件循环。**你负责描述界面**——一个 `App` 子类，它的 `compose()` 方法产出控件，再加几条管尺寸、颜色和布局的 CSS 规则——**再写处理函数**，名字叫 `on_<事件>`，对发生的事做出反应。**剩下的 Textual 来做**：按 CSS 算出布局，用 Rich 画出来，把每次按键、鼠标点击和窗口缩放变成一条*消息*放进队列——像餐馆柜台前排队的订单，厨师一单一单地做——然后调用你对应的处理函数并重绘。这个队列跑在 Python 的 `asyncio` 上，处理函数可以 await 网络请求而不卡住界面，但普通同步代码也照样能用。同一个应用可以用 `textual serve` 在浏览器里打开；因为应用本身占满了屏幕，`textual-dev` 另开一个终端当控制台，让你照样能 `print` 调试。
+
+![textual — 主干用户故事](../../assets/flow/textual.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/textual.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上框架和开发工具 — `pip install textual textual-dev`
+2. **你**：继承 App，在 compose() 里产出控件，用 CSS 定样式 — `def compose(self) -> ComposeResult`
+3. **Textual**：按你的 CSS 规则排版控件，画到终端里
+4. **你**：写 on_… 处理函数，响应事件、更新控件 — `def on_ready(self) -> None`
+5. **Textual**：把按键、鼠标点击和窗口缩放变成消息，调用你的处理函数并重绘
+
+**价值**：键盘鼠标都能用的应用，有 Python 和终端就能跑，SSH 上也行，还能用 textual serve 进浏览器
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你今天就需要一篇已经深度审过的 atlas 页面。** 在本页完成上游文档语义复核前，优先使用横向对比表里更成熟的已收录页面。
-- **GitHub 元数据暴露了你的硬约束。** 如果许可证、归档状态或维护节奏是关键约束，优先选择本分类里核验更充分的替代品，而不是直接依赖 Textual。
-- **你的任务需要更窄、更专门的替代品。** 如果某个现有页面的“何时不用”已经点名你的约束，应优先按那个页面选型；本页只是较宽的首版入口。
-- **你承受不了上游变动或运维未知数。** 请选择 Lindy 记录更长、运维画像更清楚的已收录项目。
+- **你只想让输出好看点**——彩色日志、进度条、打印一次的表格。用 [Rich](rich.zh.md)：Textual 是建在它上面的交互层，对一闪而过的输出来说，全屏应用是杀鸡用牛刀。
+- **你要的是留在普通滚动终端里的提示输入或 REPL**（自动补全、历史、多行输入），而不是全屏应用。用 prompt_toolkit（未收录）或基于它的提示库；Textual 默认会接管整个屏幕。
+- **你的工具不是 Python 写的，或者必须是一个启动即用的静态二进制。** 用 Ratatui（Rust）或 Bubble Tea（Go）（都未收录）；Textual 应用要求每台机器都有 Python 3.9+ 运行时和它的依赖。
+- **你要做多用户的网页应用。** 用正经的 Web 技术栈；`textual serve` 和 Textual Web 是把终端应用放进浏览器，不是用来搭可扩展、带鉴权的网站的。
+- **你承受不了 API 频繁变动。** Textual 从 1.0（2024-12）走到 8.0（2026-02），大约十四个月出了八个大版本。锁定版本并预留升级成本，或者选变化更慢的库，比如 urwid（未收录）或 [asciimatics](asciimatics.zh.md)。
+- **你需要依赖背后有厂商。** Textualize 这家公司 2025 年已经收尾；框架现在由作者以社区项目的方式维护，没有商业支持。如果 SLA 或付费支持是硬要求，Textual 给不了——把 UI 层做薄，保证以后能换。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Alacritty](alacritty.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Textual 对照。 | Textual 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [ART](art.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Textual 对照。 | Textual 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [asciify](asciify.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Textual 对照。 | Textual 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| [asciimatics](asciimatics.zh.md) | ✅ | 当你需要本分类里已经收录、约束更明确的方案时，先用它和 Textual 对照。 | Textual 是从 intake backlog 新增的首版页面；现有页面的“不用场景”如果更贴近任务，应优先按现有页面选择。 |
-| 自写集成 | 未收录 | 只有需求很小、维护成本明确低于引入 Textual 时，才自写。 | 自写能少一个依赖，但会失去上游项目、生态和本页记录的选型取舍。 |
+| [Rich](rich.zh.md) | ✅ | 只要格式化的、不交互的输出（日志、表格、进度），选 Rich；一旦用户要在界面里移动、点击或输入，选 Textual。 | Rich 是轻量的打印式库，几乎没有学习成本；Textual 加上了布局、事件和控件，代价是要按应用架构来写。 |
+| [asciimatics](asciimatics.zh.md) | ✅ | 新写一个交互式 Python TUI，选 Textual，图它的 CSS 布局、async 模型和控件广度；要 ASCII 动画特效，或更看重 curses 式 API、几乎不变的接口时，选 asciimatics。 | Textual 更丰富、文档更好，但大版本换得勤；asciimatics 风格老、控件朴素，PyPI 发版很少。 |
+| urwid | 未收录 | 想要历史长、变化慢的 Python TUI 工具包，并接受回调式的低层 API，选 urwid；更看重开发速度、CSS 样式和内置测试，选 Textual。 | urwid 历史长得多、破坏性发版少；Textual 生产力高得多，但更年轻、只有一位维护者。 |
+| prompt_toolkit | 未收录 | 做留在滚动终端里的交互提示、REPL 和行编辑器，选 prompt_toolkit；做全屏、多控件的应用，选 Textual。 | prompt_toolkit 擅长输入处理、不打断 shell 流程；Textual 占满整个屏幕，给你布局和控件。 |
+| Ratatui | 未收录 | 工具用 Rust 写，或必须是单个快速二进制，选 Ratatui；团队和代码都是 Python，选 Textual。 | Ratatui 有原生速度、分发简单，但它是要你自己拼装的即时模式绘制库；Textual 控件开箱即用，但需要 Python 运行时。 |
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 Python。
-- **仓库：** `Textualize/textual`。
-- **项目形态：** atlas 路由暂归为 `framework`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `main`，最后 push `2026-06-30T06:53:30Z`，archived 为 `false`。
+- **语言：** Python（要求 >= 3.9；classifiers 列出 3.9～3.14），完整类型标注（`py.typed`）。
+- **渲染：** 建在 [Rich](rich.zh.md)（`rich >= 14.2`）之上，负责向终端输出带样式的文字。
+- **运行模型：** `asyncio`——每个应用和控件都有一条消息队列，由 asyncio 任务处理。
+- **样式：** Textual CSS（TCSS），一种管布局、尺寸、颜色和主题的 CSS 方言。
+- **其他依赖：** `markdown-it-py` + `mdit-py-plugins`（Markdown 控件）、`platformdirs`、`typing-extensions`；可选的 `syntax` extra 会装 `tree-sitter` 语法包（Python >= 3.10），给 `TextArea` 做代码高亮。
+- **周边工具：** `textual-dev`（开发控制台、`textual run --dev`）、`textual serve`／Textual Web 负责浏览器分发，打包用 Poetry。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要数据库、队列、云 API、浏览器运行时、GPU 或模型供应商凭据。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- **运行时：** Python 3.9+ 解释器和上面那些 pip 包；不需要数据库或常驻服务。
+- **终端：** macOS、Linux 或 Windows 10／11 上任意现代终端模拟器；颜色、鼠标和按键处理的效果取决于终端（8.2.x 版本还在修扩展按键的解析）。
+- **可选：** 开发时用 `textual-dev`；代码高亮用 `tree-sitter` extras；用 `textual serve` 时需要浏览器。
 
 ## 运维难度
 
-**在重读上游文档前，按未知到中等处理。** library 形态的项目可能很容易试用，但仍需要 pin 版本并审查升级。app、service、framework 形态可能隐藏数据库、worker、存储、认证、浏览器、GPU 或云厂商要求，因此请把这个首版页面当成 intake 标记，而不是完整运维手册。
+**跑起来低，长期维护中等。** 分发一个 Textual 工具就是分发一个 Python 包：每台机器 `pip install`（或 `pipx`／`uv tool`），不需要服务器。真正的成本在升级——大版本发得勤，意味着要锁定 `textual` 版本，升级前重跑快照测试——以及终端差异：在一个终端里排得好好的布局，换个终端可能变样，所以要在用户真正用的终端里测。
 
 ## 健康度与可持续性
 
-- **维护快照：** 截至 2026-07-06，GitHub 返回 `archived=false`，`pushed_at=2026-06-30T06:53:30Z`。
-- **采用快照：** 2026-07 约 36,491 个 GitHub stars；stars 只是有噪声的采用信号。
-- **许可证快照：** GitHub API 返回 `MIT`；许可证关键时必须检查仓库内许可证文件。
-- **Lindy 与治理：** 本次 intake 未完整复核。长期采用前，请继续检查组织归属、项目年龄、发布节奏和 bus factor。
-- **风险信号：** 本页是从 backlog 元数据生成的首版页面。
+- **维护（2026-10），B 级。** v8.2.8 发布于 2026-06-30，默认分支最后一次提交是 2026-07-11，已经安静了大约三个月；评分器按成熟库的豁免处理，没有因为这段停顿扣分。2026 年年中以前，几周就发一版。
+- **响应速度，C 级。** 新 issue 要等好几天才有第一次回复——和公司关门后一个人维护的状况相符。
+- **治理，D 级。** bus factor 基本是 1：Will McGugan（Rich 的作者）贡献了最近绝大部分提交。出钱支持全职开发的 Textualize 公司在 2025-05-07 宣布收尾；作者承诺继续把 Textual 和 Rich 当作开源社区项目维护。
+- **年龄与 Lindy，长青度 A 级。** 2021-04 创建，五年后仍在发版；API 标为 production／stable，但大版本换得勤，所以这里的“稳定”说的是质量，不是接口冻结。
+- **采用，A 级。** PyPI 下载量很大，还有一批看得见的终端应用（数据库客户端、日志查看器、API 工具）基于它；约 37.4k star。
+- **风险与许可，A 级。** MIT，没有改过许可。要盯的是维护力量而不是许可——如果到 2027 年提交仍然稀疏，就该把它当成“吃老本”。
 
 ## 存疑（未验证）
 
-- [未验证] 这是依据 GitHub 元数据和 2026-07-06 backlog 生成的首版 intake 页面；高风险选型前，请重新阅读上游 README、文档、许可证文件和 release notes。
-- [推断] 横向对比表先使用同分类已收录页面作为起点；后续语义复核应把泛化邻居替换成最接近的真实替代品。
+- [未验证] 2026-07 到 2026-10 的提交停顿可能只是暂时的；2026-10-08 这天无法判断开发是否会恢复。
+- [未验证] 横向对比里关于 urwid、prompt_toolkit 和 Ratatui 的说法，是对它们广为人知的定位的概括，本轮没有重读它们的仓库。
+- [推断] `textual serve`／Textual Web 不适合做多用户、带鉴权的网页应用，是从它们声明的用途（把终端应用分享到浏览器）推出来的；它们的扩展性和鉴权模型没有审计。
+- [推断] “一批基于它的终端应用”依据的是文档和社区展示的项目，没有做依赖方审计。

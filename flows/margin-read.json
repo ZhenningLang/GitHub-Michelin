@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Margin Read does",
+    "zh": "Margin Read 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Start your local model server, or have a provider API key ready",
+      "zh": "启动本地模型服务，或准备好服务商 API key"
+    },
+    {
+      "lane": "you",
+      "en": "In Margin options, pick a provider, set endpoint and key, fetch and choose a model",
+      "zh": "在 Margin 设置里选服务商，填端点和 key，拉取并选定模型",
+      "code": "http://localhost:11434/v1/chat/completions"
+    },
+    {
+      "lane": "you",
+      "en": "Open a webpage and click Translate this page in the popup",
+      "zh": "打开网页，在弹窗里点“Translate this page”"
+    },
+    {
+      "lane": "them",
+      "en": "Detects readable blocks and skips navigation, forms, buttons and code",
+      "zh": "识别可读文本块，跳过导航、表单、按钮和代码",
+      "component": {
+        "en": "content script",
+        "zh": "内容脚本"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Sends only uncached text segments to your endpoint, in batches",
+      "zh": "只把未缓存的文本片段分批发到你配置的端点",
+      "component": {
+        "en": "service worker",
+        "zh": "service worker"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Inserts each translation below its source block, keeping the original in place",
+      "zh": "把译文插在对应原文块下面，原文保留不动"
+    }
+  ],
+  "value": {
+    "en": "Bilingual pages where page text goes only to the endpoint you chose — no bundled service, account, or default telemetry",
+    "zh": "双语网页阅读，页面文字只发往你选的端点——没有内置服务、账号或默认统计"
+  },
+  "sources": [
+    "README.md Local LLMs @ main 2026-10-08: 'Start the local model server'; select OpenAI Compatible or Anthropic Compatible; Ollama: http://localhost:11434/v1/chat/completions; click Fetch models",
+    "README.md Install From Source: 'Configure a provider, API key, model, target language, and cache behavior'; 'click Translate this page from the Margin popup'",
+    "README.md Features: detect readable text blocks; avoid navigation, forms, buttons, code blocks; insert translations below matching source blocks",
+    "docs/THREAT_MODEL.md Data Flow: content script detects blocks and sends segments to the service worker; service worker checks cache and sends uncached segments to the configured provider endpoint"
+  ]
+}

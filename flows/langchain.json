@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "LangChain does",
+    "zh": "LangChain 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install LangChain and set a model provider's API key",
+      "zh": "安装 LangChain，配好一家模型厂商的 API key",
+      "code": "uv add langchain"
+    },
+    {
+      "lane": "you",
+      "en": "Write each tool as a plain Python function with a docstring",
+      "zh": "把每个工具写成带 docstring 的普通 Python 函数",
+      "code": "def get_weather(city: str) -> str"
+    },
+    {
+      "lane": "you",
+      "en": "Create the agent from a model string, your tools and a system prompt, then invoke it",
+      "zh": "用模型字符串、工具和系统提示词创建 agent，然后调用它",
+      "code": "create_agent(model=\"openai:gpt-5.5\", tools=[get_weather])",
+      "component": {
+        "en": "langchain.agents",
+        "zh": "langchain.agents"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Translates the messages for that provider and sends them to the model",
+      "zh": "把消息翻译成该厂商的格式，发给模型",
+      "component": {
+        "en": "partner pkg (langchain-openai…)",
+        "zh": "合作包（langchain-openai 等）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs each tool the model asks for, feeds the result back, repeats until a final answer",
+      "zh": "模型要调哪个工具就执行哪个，结果喂回去，循环到给出最终答案",
+      "component": {
+        "en": "agent loop on LangGraph",
+        "zh": "跑在 LangGraph 上的 agent 循环"
+      }
+    }
+  ],
+  "value": {
+    "en": "A tool-using agent you can move between model providers by changing one string, without re-coding the loop",
+    "zh": "一个会用工具的 agent，换模型厂商只改一个字符串，循环不用重写"
+  },
+  "sources": [
+    "https://github.com/langchain-ai/langchain#quickstart (uv add langchain, model strings like openai:gpt-5.5)",
+    "https://docs.langchain.com/oss/python/langchain/quickstart.md (Build a basic agent: def get_weather(city: str) -> str, create_agent(model=..., tools=[get_weather], system_prompt=...), agent.invoke)",
+    "https://github.com/langchain-ai/langchain/blob/master/libs/langchain_v1/README.md (agents built on top of LangGraph)",
+    "https://github.com/langchain-ai/langchain/blob/master/libs/langchain_v1/pyproject.toml (partner package extras, langgraph dependency)"
+  ]
+}

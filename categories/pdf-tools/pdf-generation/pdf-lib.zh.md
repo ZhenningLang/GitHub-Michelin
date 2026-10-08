@@ -6,8 +6,8 @@ category: pdf-generation
 tags: [pdf, javascript, typescript, browser, nodejs, create, modify, forms, merge, draw]
 language: TypeScript
 license: MIT
-maturity: v1.17.x, maintenance mode (original author stepped back, community maintains), ~9k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v1.17.1 (release 2021-11-06), last commit 2021-11-12, quiet since (as of 2026-10-08), ~8.7k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-07-17T12:18:51Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:53:20Z
+  computed_at: 2026-10-08T08:24:36Z
   overall: C
   overall_score: 2.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1776
+        last_commit_age_days: 1791
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,11 +41,11 @@ health:
         registry: npmjs.org
         canonical_package: pdf-lib
         dependent_repos_count: 2364
-        downloads_last_month: 45341723
+        downloads_last_month: 57272378
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.0
-        release_downloads: 5629
+        cross_check_divergence: 1.08
+        release_downloads: 5685
         release_assets: 40
         release_tier: D
         signal_basis: releases
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3305
-        last_commit_age_days: 1776
+        repo_age_days: 3321
+        last_commit_age_days: 1791
         cohort: library
     governance:
       grade: "?"
@@ -85,13 +85,35 @@ health:
 
 同样的场景也适用于你需要在客户端对现有 PDF 做外科手术式修改：加水印、追加额外页面、压平表单，或提取并重组页面——全部不离开 JS 运行时。
 
+## 怎么用起来
+
+pdf-lib 用纯 JavaScript 自己读写 PDF 文件格式：一个 PDF 是一棵对象树（页面、字体、图片、表单字段），加上“内容流”——一串绘制指令，比如“在坐标 x、y 处写这行字”。**你在自己的代码里调它的 API，格式层面的活归它**：把已有文件解析成这棵对象树，把你的 `drawText`、`drawImage`、表单字段调用变成对应的对象和指令，最后用 `save()` 把整份文档序列化回字节。全程不出你的进程：没有服务端、无头浏览器或原生二进制，所以同一份代码能跑在浏览器标签页、Node、Deno 或 React Native 里。它不替你排版——每一行字放在哪个坐标得你自己算；它也不能把页面渲染成图片。
+
+![pdf-lib — 主干用户故事](../../../assets/flow/pdf-lib.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pdf-lib.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把包装进浏览器、Node 或 Deno 项目 — `npm install --save pdf-lib`
+2. **你**：读入已有 PDF 的字节，或新建一个空文档 — `PDFDocument.load(existingPdfBytes) · PDFDocument.create()`
+3. **pdf-lib**：在内存里把文件拆成可编辑的页面、字体和表单字段
+4. **你**：在页面上写字、贴图，或按名字填表单字段 — `firstPage.drawText(...) · form.getTextField('Age')`
+5. **pdf-lib**：把每次调用变成 PDF 绘制指令和字段更新，写进文档
+6. **你**：序列化成字节，拿去下载、上传或当附件 — `await pdfDoc.save()`
+
+**价值**：发票、加章页面、填好的表单都用纯 JS 生成，不需要服务端 PDF 服务或原生二进制
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要渲染或查看 PDF。** pdf-lib 用于创建和编辑 PDF，不能显示它。若要在浏览器或 Node 里渲染，请用 [PDF.js](../pdf-reading/pdfjs.zh.md)。
 - **你需要 HTML 转 PDF。** pdf-lib 没有内置 HTML 转 PDF 引擎，你得直接操作 PDF API。如需 HTML 转 PDF，请用 Puppeteer/Playwright（headless 浏览器）或 WeasyPrint 等服务端工具。
 - **包体积是硬约束。** 浏览器构建产物约 500KB+（minified）；若只是生成一份极小的 PDF，或应用对带宽极度敏感，这个体积可能得不偿失。
 - **你需要大规模服务端批处理。** Python 库如 PyMuPDF 或 pdfplumber 通常在服务端批量提取、渲染和重度修改时更快、更轻。
-- **你需要前沿 PDF 特性或快速迭代的生态。** pdf-lib 已进入维护模式，新功能和 spec 合规修复推进缓慢，原作者也已退出日常维护。
+- **你需要有人维护的库——首要提醒。** 默认分支自 2021-11-12（v1.17.1）起没有提交；最近的 PR（2026-04 到 2026-08）都没合并就关闭了，所以 bug 和安全修复进不了上游。需要修复或新功能，请改用有人维护的 fork `@cantoo/pdf-lib`（截至 2026-09 npm 上为 v2.11.1，未收录），它基本可以直接替换；只生成简单文档的话，用 [jsPDF](jspdf.zh.md)。
 - **你需要版面感知的结构化解析（供 AI/RAG 使用）。** pdf-lib 操控 PDF 结构，但不提取阅读顺序、表格或语义文档结构——如需这些，请用 [Docling](../../document-parsing/docling.zh.md)。
 - **你需要治理健全、路线图明确的项目。** 治理模式为非正式的社区维护，无基金会或企业背书，bus factor 较低。[推断]
 
@@ -121,20 +143,21 @@ health:
 
 ## 运维难度
 
-**低。** pdf-lib 是一个进程内库——无需部署服务、数据库或集群。「运维」本质上就是依赖管理：保持 npm 包版本最新、把约 500KB+ 的浏览器构建产物纳入打包管线预算、并处理版本间偶尔的破坏性变更（API 历年来有过调整）。由于是纯 JS/TS，没有平台相关的编译或部署顾虑。主要的运维注意点是维护速度：如果你遇到 spec 边缘情况或 bug，修复可能取决于社区 PR 的速度，而非由专职维护者推进。
+**低。** pdf-lib 是一个进程内库——无需部署服务、数据库或集群。「运维」本质上就是依赖管理：保持 npm 包版本最新、把约 500KB+ 的浏览器构建产物纳入打包管线预算、并处理版本间偶尔的破坏性变更（API 历年来有过调整）。由于是纯 JS/TS，没有平台相关的编译或部署顾虑。主要的运维注意点是上游已冻结：遇到 spec 边缘情况或 bug，要么自己打补丁，要么换到有人维护的 fork。
 
 ## 健康度与可持续性
 
-- **维护（2026-07）：** 最新主线为 v1.17.x；原作者（Hopding）已退出主动开发，项目处于社区维护模式。PR 仍会被审阅和合并，但节奏明显慢于巅峰期。[推断]
-- **治理 / bus factor：** 原作者单人退出，无基金会或企业承诺维护路线图。社区维护让项目存活，但治理非正式，bus factor 较低。[推断]
-- **背书与 longevity：** 无企业或基金会背书；存续取决于持续的社区兴趣和 fork 活跃度。项目自约 2018 年存在（约 8 年），具备中等 Lindy 信号，但维护模式削弱了「仍活跃」这一乘数。[推断]
-- **采用度：** 约 9k stars（截至 2026-07），在 JS/TS 生态中稳定用于客户端 PDF 生成；知名下游包括表单填写和发票生成工具。[未验证]
-- **风险旗标：** MIT 许可（无 relicense 风险）；无 open-core 阉割或 CLA。主要风险是维护速度：bug 和 spec 合规缺口可能比活跃驱动项目拖得更久。虽有 fork 存在，但尚未有哪一个明显成为 canonical 继任者。[推断]
+- **维护（截至 2026-10-08）——评级 E，已冻结。** 默认分支最后一次提交在 2021-11-12（距今 1791 天）；最后一个 release 是 v1.17.1（2021-11-06）。最近的 PR 都没合并就关闭了。这不是社区慢慢维护，而是上游停了。
+- **治理 / bus factor。** 单个 `User` 持有的仓库（Hopding），没有基金会或厂商；只有作者有合并权，而他自 2021 年起就没再用过。[推断]
+- **年龄 × Lindy——长青度评级 E。** 2017-09 创建（3321 天，约 9 年），但“仍活跃”那一半已经缺席约 4 年：这是老而废弃，Lindy 救不回来。
+- **采用度——评级 A，用得极广。** 上个月 npm 下载 57272378 次、约 8.7k star——JS 生态里有一大片东西压在它身上，这大概也是会冒出有人维护的 fork（`@cantoo/pdf-lib`）的原因。[推断]
+- **风险标记——许可评级 A。** MIT，没有改许可、没有 open-core 或 CLA。真正的风险是：一个装得这么广的依赖，bug 和安全报告没人修。
 
 ## 存疑（未验证）
 
-- [未验证] 约 9k stars 和「维护模式」状态均为截至 2026-07 的时间点快照；star 数波动大，维护态势也可能因新维护者或 dominant fork 出现而改变。
+- [未验证] 约 8.7k star 和“自 2021-11 起冻结”的状态是截至 2026-10-08 的快照；star 数波动大，若作者移交仓库，情况可能改变。
+- [未验证] `@cantoo/pdf-lib` 作为有人维护的继任者：看到的是一个活跃 fork（2026-09 有推送、npm 上 v2.11.1）；它与上游 v1.17.1 的 API 兼容性和它自己的治理，此处未审阅。
 - [未验证] 浏览器构建产物体积（约 500KB+）来自已发布构建产物的近似值；你的打包器按实际导入功能做 tree-shaking 后结果可能不同。
 - [未验证] Deno 和 React Native 的支持在文档中有声明，但本次审核未亲自验证；运行时兼容性取决于具体环境和版本。
-- [推断] 社区维护的精确节奏以及哪些 fork 最活跃，是从 GitHub 活动模式推断而来，并非对维护者承诺或 fork 下载量的直接审计。
+- [推断] 哪个 fork 用得最多，是从 GitHub 和 npm 的活动推断的，并未审计各 fork 的下载量。
 - [推断] 「PyMuPDF / pdfplumber 在服务端批量任务中更快更轻」这一说法是从它们的原生/C++ 实现推断而来，并非针对特定负载与 pdf-lib 的 head-to-head 基准测试。

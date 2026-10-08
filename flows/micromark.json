@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them":  {"en": "micromark does", "zh": "micromark 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install micromark, plus extension packages such as micromark-extension-gfm", "zh": "安装 micromark 及所需的扩展包", "code": "npm install micromark"},
+    {"lane": "you", "en": "Call it with the syntax and HTML halves of each extension", "zh": "调用它，传入每个扩展的语法半边和 HTML 半边", "code": "micromark(value, {extensions: [gfm()], htmlExtensions: [gfmHtml()]})"},
+    {"lane": "them", "en": "Runs its state machine over every byte, emitting positioned tokens per the reference parsers", "zh": "用状态机走过每个字节，按参考解析器的行为产出带位置的 token", "component": {"en": "micromark-core-commonmark", "zh": "micromark-core-commonmark"}},
+    {"lane": "them", "en": "Compiles the tokens to HTML, encoding or dropping raw HTML and dangerous protocols", "zh": "把 token 编译成 HTML，原始 HTML 和危险协议被编码或丢弃", "component": {"en": "compiler", "zh": "编译器"}}
+  ],
+  "value": {"en": "HTML that matches cmark/cmark-gfm from a ~14 kB parser that is safe on untrusted input by default", "zh": "从约 14 kB 的解析器里得到与 cmark/cmark-gfm 一致的 HTML，面对不可信输入默认安全"},
+  "sources": [
+    "readme.md main @ 2026-10-08 (gh api repos/micromark/micromark/readme): Install 'npm install micromark'; Use 'const result = micromark(value, { extensions: [gfm()], htmlExtensions: [gfmHtml()] })'; What is this: 'state machine that emits concrete tokens ... with positional info. It then compiles those tokens directly to HTML'; follows cmark/cmark-gfm",
+    "readme.md Security: 'micromark makes any markdown safe by default ... it encodes or drops them'; Feature highlights: 'smallest CM parser at ±14kb'"
+  ]
+}

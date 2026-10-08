@@ -23,14 +23,14 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **book-to-skill** | 当你想把技术书籍 PDF（及其他文档格式）转成可安装的 agent 技能以用于 Claude Code、Copilot CLI 或 Amp 时用它。 | B（6/6） | [→](book-to-skill.zh.md) |
+| **book-to-skill** | 当编码智能体总要参考几本技术书或一个文档目录，你想把每本变成按章索引的技能、不再每次重贴 PDF 时用它——但它是概括而不是摘录原文，项目也才五个月左右。 | B（6/6） | [→](book-to-skill.zh.md) |
 | **distilly** | 当你想把某个人的聊天记录、文档与访谈蒸馏成可安装的 agent 技能，让它用这个人的判断与语气回答时用它。 | B（4/5） | [→](distilly.zh.md) |
 
 ## 对比矩阵
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [book-to-skill](book-to-skill.zh.md) | ✅ | B（6/6） | 将技术书籍和文档转成可安装的 agent 技能；批处理工具，不是 live RAG 系统。 |
+| [book-to-skill](book-to-skill.zh.md) | ✅ | B（6/6） | 换来按章加载，每本书一次性转换约 1 美元；代价是丢掉逐字保真，源一变就得重跑，还要认准原仓库安装，因为有恶意的重传版本。 |
 | [Docling](../document-parsing/docling.zh.md) | ✅ | A（5/6） | 面向 RAG 流水线的通用文档解析器；book-to-skill 是专门针对 agent harness 的技能生成器。 |
 | [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.zh.md) | ✅ | D（5/6） | 查询外部 Google 服务；book-to-skill 处理本地 PDF，无外部依赖。 |
 | [distilly](distilly.zh.md) | ✅ | B（4/5） | 从你的私有材料生成某一具体人物的 work/persona 技能；没有检索层，唯一的自动保真门只有关键词级别。 |

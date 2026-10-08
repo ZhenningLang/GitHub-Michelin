@@ -6,8 +6,8 @@ category: engineering-workflows
 tags: [codex, agent-skills, swiftui, ios, macos, code-review]
 language: Shell
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-03 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; last pushed 2026-03 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-03-29T15:28:02Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:44:21Z
+  computed_at: 2026-10-08T08:14:57Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 182
+        last_commit_age_days: 193
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 271
-        last_commit_age_days: 182
+        repo_age_days: 282
+        last_commit_age_days: 193
         cohort: skill-pack
     governance:
       grade: D
@@ -77,6 +77,27 @@ You're an iOS / macOS engineer who runs OpenAI Codex as your daily coding agent,
 
 You reach for this pack specifically when your work is Apple-flavored: it ships `swiftui-liquid-glass` (iOS 26+ Liquid Glass APIs), `swift-concurrency-expert` (Swift 6.2+ actor/`Sendable` fixes), `swiftui-view-refactor`, `swiftui-performance-audit`, `macos-menubar-tuist-app`, `macos-spm-app-packaging`, `ios-debugger-agent` (XcodeBuildMCP-driven). The non-Apple skills (`github`, `review-swarm`, `bug-hunt-swarm`, `review-and-simplify-changes`, `orchestrate-batch-refactor`, `react-component-performance`, `project-skill-audit`) are useful but more generic — the differentiator is the SwiftUI/Swift depth, which most general agent-skill packs don't have.
 
+## How it works
+
+Nothing here executes on its own: each skill is a folder holding a `SKILL.md` — a front-matter description saying when it applies, then the workflow and rules in prose — plus optional `references/` notes and, for some, subagent definitions. **You** copy the folders into `$CODEX_HOME/skills` and keep working as usual; **Codex** sees each skill's short description, and when your request matches one ("split this SwiftUI body", "write the App Store notes") it loads the full text and follows it. The value is in the opinions written down: `swiftui-view-refactor`, for example, fixes the order of properties in a view, prefers plain SwiftUI state over a view model, and tells the agent to extract real subview types instead of `some View` helpers. The swarm skills (`review-swarm`, `bug-hunt-swarm`) go one step further and have Codex dispatch four read-only subagents, each looking at the diff or bug from one angle. Think of it as a senior colleague's checklists stapled to the agent: they shape what it does, but nothing enforces them.
+
+![dimillian-skills — backbone user story](../../../../assets/flow/dimillian-skills.svg)
+
+<!-- flow-steps:begin (generated from flows/dimillian-skills.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Copy the skill folders into Codex's skills directory — `$CODEX_HOME/skills`
+2. **Dimillian Skills**: Each folder's SKILL.md description tells Codex when that skill applies — component: `SKILL.md`
+3. **You**: Ask Codex for Apple-platform work as usual, e.g. split a long SwiftUI view
+4. **Dimillian Skills**: Loads the matching skill and its reference notes — `swiftui-view-refactor`
+5. **Dimillian Skills**: Applies its house rules: small subview types, MV over MVVM, a fixed property order
+
+**Value**: Codex applies one experienced iOS developer's SwiftUI and Swift conventions without you retyping them each time
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You don't write Apple-platform code.** Strip out the Swift/SwiftUI/macOS skills and what's left (review swarms, github, refactor orchestration, react perf) overlaps heavily with more general packs — you'd be installing a mostly-iOS bundle for its few generic skills.
@@ -98,15 +119,15 @@ You reach for this pack specifically when your work is Apple-flavored: it ships 
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance (2026-06):** coasting — last pushed 2026-03, i.e. ~3 months stale as of 2026-06, with ~9 open issues and no tagged releases. That staleness is a real risk *here* because the SwiftUI/Swift-6.2/Liquid-Glass skills track fast-moving Apple betas and rot quickly between pushes. Treat as a snapshot, not a maintained product.
-- **Governance & bus factor:** single-author `User`-owned personal collection (Dimillian, a known iOS developer). No team, foundation, or vendor; ~3k stars on a one-person pack is a bus-factor flag. Roadmap is entirely the author's.
-- **Age & Lindy verdict:** created 2025-12, ~6 months old as of 2026-06 — young *and* already coasting. Young + not-currently-active is the weak quadrant: no longevity to lean on and recent activity has stalled. Don't bank on it staying current.
+- **Maintenance (2026-10):** coasting — last pushed 2026-03-29, i.e. ~6 months stale as of 2026-10, with 11 open issues and no tagged releases. That staleness is a real risk *here* because the SwiftUI/Swift-6.2/Liquid-Glass skills track fast-moving Apple betas and rot quickly between pushes. Treat as a snapshot, not a maintained product.
+- **Governance & bus factor:** single-author `User`-owned personal collection (Dimillian, a known iOS developer). No team, foundation, or vendor; ~4k stars on a one-person pack is a bus-factor flag. Roadmap is entirely the author's.
+- **Age & Lindy verdict:** created 2025-12, ~9 months old as of 2026-10 — young *and* already coasting. Young + not-currently-active is the weak quadrant: no longevity to lean on and recent activity has stalled. Don't bank on it staying current.
 - **Risk flags:** Codex-only install target (`$CODEX_HOME/skills`); other harnesses need porting. MCP/swarm skills assume tooling that may be absent. Advisory-only, no enforcement.
 
 ## Caveats (unverified)
 
-- [未验证] License MIT, primary language Shell (84.6% Shell / 12.8% Python / 2.6% Swift per GitHub), not archived, no tagged releases, last pushed 2026-03-29 — all per GitHub metadata as of 2026-06-26; re-verify before relying on a specific commit's behavior.
-- [未验证] Star count (~3.7k per GitHub on 2026-06-26) is unreliable and date-sensitive; treat as indicative only, not a quality signal.
+- [未验证] License MIT, primary language Shell (84.6% Shell / 12.8% Python / 2.6% Swift per GitHub), not archived, no tagged releases, last pushed 2026-03-29 — per GitHub metadata (language split as of 2026-06-26; the rest re-checked 2026-10-08); re-verify before relying on a specific commit's behavior.
+- [未验证] Star count (~4.0k per GitHub on 2026-10-08) is unreliable and date-sensitive; treat as indicative only, not a quality signal.
 - [未验证] The 16-skill list and their folder names are from the README as of this check; the actual `skills/` contents and `SKILL.md` triggers can change between pushes — read the repo directly rather than relying on this list.
 - [推断] Install target is OpenAI Codex (`$CODEX_HOME/skills`); activation on other harnesses (Claude Code, Cursor) is not confirmed and would require porting.
 - [推断] MCP/swarm-dependent skills (`ios-debugger-agent` via XcodeBuildMCP, `review-swarm`, `bug-hunt-swarm` multi-agent) assume tooling/runtime that may not be present in your environment; their effectiveness is environment-dependent and not independently verified here.

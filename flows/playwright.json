@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Playwright does",
+    "zh": "Playwright 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a test project",
+      "zh": "初始化一个测试项目",
+      "code": "npm init playwright@latest"
+    },
+    {
+      "lane": "them",
+      "en": "Writes a config and an example test, and downloads its Chromium, Firefox and WebKit builds",
+      "zh": "生成配置和示例测试，下载三种浏览器引擎的构建"
+    },
+    {
+      "lane": "you",
+      "en": "Write tests with user-facing locators and web-first assertions",
+      "zh": "用面向用户的定位器和自动重试的断言写测试",
+      "code": "page.getByRole('link', { name: 'Get started' }).click()"
+    },
+    {
+      "lane": "you",
+      "en": "Run the suite locally or in CI",
+      "zh": "在本地或 CI 里运行整套测试",
+      "code": "npx playwright test"
+    },
+    {
+      "lane": "them",
+      "en": "Runs tests in parallel across the configured browsers, each in a fresh browser context",
+      "zh": "在配置的各浏览器上并行跑测试，每个测试一个全新浏览器上下文",
+      "component": {"en": "Playwright Test runner", "zh": "Playwright Test 运行器"}
+    },
+    {
+      "lane": "them",
+      "en": "Waits for each element to be actionable and retries assertions until they pass or time out",
+      "zh": "等每个元素可操作，断言反复重试直到通过或超时"
+    }
+  ],
+  "value": {
+    "en": "One suite covers Chromium, Firefox and WebKit without hand-written sleeps, and failures come with traces you can replay",
+    "zh": "一套测试覆盖 Chromium、Firefox、WebKit，不用手写 sleep，失败时还有可回放的 trace"
+  },
+  "sources": [
+    "https://github.com/microsoft/playwright/blob/main/README.md Playwright Test (npm init playwright@latest, getByRole example, npx playwright test, auto-wait, test isolation, tracing, parallelism)",
+    "https://github.com/microsoft/playwright/blob/main/docs/src/browsers.md (each version needs specific browser builds; patched Firefox/WebKit; install-deps)",
+    "https://github.com/microsoft/playwright/blob/main/packages/playwright-core/package.json (engines node >=20)"
+  ]
+}

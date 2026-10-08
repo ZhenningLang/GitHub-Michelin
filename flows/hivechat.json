@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "HiveChat does", "zh": "HiveChat 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo, copy the env file, set AUTH_SECRET and ADMIN_CODE, start it", "zh": "克隆仓库，在 .env 设好 AUTH_SECRET、ADMIN_CODE，启动", "code": "cp .env.example .env · docker compose up -d"},
+    {"lane": "them", "en": "Runs the app on :3000 next to a bundled Postgres that creates its tables on first start", "zh": "在 :3000 跑起应用和自带的 Postgres，首次启动自动建表"},
+    {"lane": "you", "en": "Open the setup page and create the admin account with your ADMIN_CODE", "zh": "打开 setup 页面，凭 ADMIN_CODE 建管理员账号", "code": "http://localhost:3000/setup"},
+    {"lane": "you", "en": "In the admin console, add provider keys, create user groups, pick each group's models and monthly token limit", "zh": "在管理后台填供应商 key、建用户分组，给每组选可见模型和每月 token 额度"},
+    {"lane": "them", "en": "Lets teammates sign in by email, Feishu, WeCom or DingTalk and shows only their group's models", "zh": "让同事用邮箱、飞书、企业微信或钉钉登录，只显示其分组可用的模型"},
+    {"lane": "them", "en": "Sends each chat to the chosen provider with the admin-held key and tracks the group's token usage", "zh": "用管理员的 key 把对话转给供应商，并记下该组 token 用量"}
+  ],
+  "value": {"en": "The whole team reaches many models through one URL, while the keys and the usage caps stay with the admin", "zh": "全团队从一个网址用上多家模型，key 和用量上限都握在管理员手里"},
+  "sources": [
+    "https://github.com/HiveNexus/HiveChat#方法-2docker-部署 (git clone; cp .env.example .env; AUTH_SECRET, ADMIN_CODE; docker compose up -d; http://localhost:3000/setup)",
+    "https://github.com/HiveNexus/HiveChat/blob/main/docker-compose.yml (hivenexus/hivechat:latest on 3000, postgres:16.8-alpine with ./docker mounted at /docker-entrypoint-initdb.d/)",
+    "https://github.com/HiveNexus/HiveChat#1-功能概览 (email / WeCom / DingTalk / Feishu login; per-group visible models and monthly token limits; admin configures providers)"
+  ]
+}

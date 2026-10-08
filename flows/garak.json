@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "garak does", "zh": "garak 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and export the target provider's API key", "zh": "安装，并导出目标服务商的 API key", "code": "python -m pip install -U garak"},
+    {"lane": "you", "en": "Name the model to scan and the probe families to run", "zh": "指定要扫的模型和要跑的探针类别", "code": "garak --target_type openai --target_name gpt-5-nano --spec probes.encoding"},
+    {"lane": "them", "en": "Sends every attack prompt of those probes to the model, several generations each", "zh": "把这些探针的攻击提示逐条发给模型，每条生成多次", "component": {"en": "probes + generator", "zh": "探针 + 生成器"}},
+    {"lane": "them", "en": "Runs each probe's detectors on the replies and prints a failure rate per probe", "zh": "用每个探针配套的检测器判读回复，按探针输出失败率", "component": {"en": "detectors", "zh": "检测器"}},
+    {"lane": "them", "en": "Writes a JSONL report and a hit log of the prompts that made the model fail", "zh": "写出 JSONL 报告和一份命中日志，列出让模型失守的提示", "component": {"en": "report + hit log", "zh": "报告 + 命中日志"}}
+  ],
+  "value": {"en": "A repeatable, per-attack failure rate for a model before launch, instead of a handful of jailbreaks tried by hand", "zh": "上线前拿到可重复的、按攻击类型统计的失败率，而不是手动试几个越狱提示"},
+  "sources": [
+    "README.md @ main 2026-10-08 (python -m pip install -U garak; python3 -m garak --target_type openai --target_name gpt-5-nano --spec probes.encoding; general syntax garak <options>; probes pick their recommended detectors; more than one generation per prompt, by default 10; FAIL and failure rate per detector; JSONL report and hit log)"
+  ]
+}

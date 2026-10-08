@@ -6,8 +6,8 @@ category: python-tooling
 tags: [http, async, gevent, requests, concurrency, python]
 language: Python
 license: BSD-2-Clause
-maturity: v0.7.0, low-activity (2026-06)
-last_verified: 2026-06-28
+maturity: v0.7.0 (2023-06-08), last commit 2024-08-08, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-08-08T21:52:34Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:24:43Z
+  computed_at: 2026-10-08T08:25:35Z
   overall: C
   overall_score: 1.75
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 780
+        last_commit_age_days: 790
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -44,7 +44,7 @@ health:
         downloads_last_month: 293723
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.06
+        cross_check_divergence: null
         release_downloads: 40
         release_assets: 2
         release_tier: D
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5253
-        last_commit_age_days: 780
+        repo_age_days: 5263
+        last_commit_age_days: 790
         cohort: library
     governance:
       grade: "?"
@@ -83,10 +83,32 @@ Requests + Gevent：用熟悉的 `requests` API 并发发出大量 HTTP 请求�
 
 当周边技术栈本就基于 gevent（或你能接受 gevent 的 monkeypatching）、且诉求是「用最小 diff 让现有同步 `requests` 代码并发起来」时，你才会专门选它。对顺序不敏感的流式消费，则用 `imap()` / `imap_enumerated()` 按完成顺序取响应。
 
+## 怎么用起来
+
+grequests 就是一个把两个库粘在一起的小 Python 模块。每一次真正的 HTTP 调用仍由 `requests` 完成；gevent 提供 **greenlet**——一种轻量的“绿色线程”，在同一个系统线程里轮流运行，谁在等网络就把控制权让给别人。**你一 `import grequests`，它就给标准库打猴子补丁**（把会阻塞的 socket、ssl 函数换成 gevent 版本，等待时会让出控制权），所以它必须在 `requests` 之前 import。**你的活是描述请求，而不是发请求**：`grequests.get(u)` 返回一个还没发出的请求对象，关键字参数和 `requests.get` 完全一样。之后 `grequests.map(...)` 把整张列表交给一个 gevent 池（`size` 限制同时在途的数量），等全部完成，按原顺序返回普通的 `Response` 对象——失败的请求变成 `None`，或你的 `exception_handler` 返回的值。好比把一摞信交给一个办事员，他挨个投进邮筒、回信到了就拆，而不是在柜台前一封封等回音。
+
+![grequests — 主干用户故事](../../assets/flow/grequests.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/grequests.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：用 pip 装上，并在 requests 等库之前 import 它 — `import grequests`
+2. **GRequests**：import 时由 gevent 给标准库打补丁，等网络的请求会让出控制权
+3. **你**：用和 requests 相同的参数构造还没发出的请求对象 — `grequests.get(u)`
+4. **你**：把整批交给 map，可选设池大小和异常处理函数 — `grequests.map(rs, exception_handler=exception_handler)`
+5. **GRequests**：在你这一个线程里用 gevent 池并发发出
+6. **GRequests**：按请求顺序返回 Response，失败的位置是 None 或处理函数的返回值
+
+**价值**：现有的同步 requests 代码改几行就能并发，不用改写成 async/await，也不用自己管线程池
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **全新的异步代码。** 对新项目，原生 `asyncio` 配 `httpx` 或 `aiohttp` 是更受支持、维护更活跃的路线——grequests 的定位是给*已有*同步代码做改造，而非充当你的异步 HTTP 栈。
-- **你无法容忍 gevent 的 monkeypatching。** gevent 在 import 时就给标准库（socket、ssl、threading）打补丁；这可能和其他库冲突，README 也警告你往往必须在 `requests` 等之前**先** import grequests。在混用原生 asyncio、多进程或不预期被打补丁 I/O 的 C 扩展的代码里，这是个真实的坑。[未验证]
+- **你无法容忍 gevent 的 monkeypatching。** import grequests 时会执行 gevent 的 `patch_all(thread=False, select=False)`，给标准库（socket、ssl 等；threading 和 select 被刻意跳过）打补丁；这可能和其他库冲突，README 也警告你往往必须在 `requests` 等之前**先** import grequests。在混用原生 asyncio、多进程或不预期被打补丁 I/O 的 C 扩展的代码里，这是个真实的坑。[未验证]
 - **CPU 密集或需要真并行。** greenlet 是单线程协作式并发——它救 I/O 等待，不救 CPU 计算。要并行跑 CPU，你仍得用多进程。
 - **你需要 HTTP/2、现代 TLS 特性或流式优先的 API。** 它只是经典 `requests` 上的薄封装，继承了 requests 的能力与局限。
 - **你想要一个被高频维护的依赖。** 发布节奏偏慢（见健康度）——作为稳定工具尚可，但若你需要上游快速修问题，要权衡。
@@ -110,7 +132,7 @@ Requests + Gevent：用熟悉的 `requests` API 并发发出大量 HTTP 请求�
 
 - **运行时：** Python，外加 `requests` 与 `gevent`（后者拉入 `greenlet` 及编译好的事件循环后端）。[未验证]
 - **服务/基础设施：** 无——它是客户端库，没有服务端或数据存储。
-- **import 顺序约束：** 因为 gevent 要 monkeypatch，README 建议尽早 import grequests；这是对你*如何*组织 import 的运维约束，而非一个软件包。[未验证]
+- **import 顺序约束：** 因为 gevent 要 monkeypatch，README 要求在其他库（尤其是 `requests`）之前 import grequests；这是对你*如何*组织 import 的运维约束，而非一个软件包。
 
 ## 运维难度
 
@@ -119,7 +141,7 @@ Requests + Gevent：用熟悉的 `requests` API 并发发出大量 HTTP 请求�
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最近发布 v0.7.0（2023-06）；仓库最后 push 于 2024-08。发布稀疏、近期间隔很长——更像一个**稳定、低活跃**的工具，靠一小块稳定面吃老本，而非在积极开发。未归档。[推断]
+- **维护（2026-10）。** 最近发布 v0.7.0（2023-06）；最后一次提交在 2024-08-08，此后没有新提交。发布稀疏、近期间隔很长——更像一个**稳定、低活跃**的工具，靠一小块稳定面吃老本，而非在积极开发。未归档。[推断]
 - **治理 / bus factor。** owner 是 **User** 账号（spyoungtech），他接手了项目；最初的提交可追溯到 Kenneth Reitz（`requests` 作者）。实质上是单一维护者——一个 bus-factor 标记。[推断]
 - **年龄与 Lindy。** 2012 年创建，约 14 岁且仍被广泛安装。年龄加上窄而稳的范围是中等 Lindy 信号——但 Lindy 需要*仍然活跃*，而这里活跃度偏低，所以应按「稳定的遗留库」而非「蓬勃维护」来权衡。[推断]
 - **采用度。** 约 4.6k star 与长期的 PyPI 存在表明历史采用真实；新项目大多已转向 asyncio 客户端（httpx/aiohttp）。[未验证]
@@ -127,7 +149,7 @@ Requests + Gevent：用熟悉的 `requests` API 并发发出大量 HTTP 请求�
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 4.6k GitHub star；star 数对时间敏感且不可靠，仅供参考。
+- [未验证] 截至 2026-10 约 4.6k GitHub star；star 数对时间敏感且不可靠，仅供参考。
 - [未验证] 支持的 Python 版本这里不断言——README 有版本徽章，但确切矩阵跟随 gevent/requests 的支持范围、随版本变动；请对照当前打包元数据核实。
 - [推断]「低活跃 / 吃老本」是从发布日期（2023 的 v0.7.0、2024 的 push）推断，而非维护者声明。
 - [未验证] gevent 的 import 顺序与 monkeypatching 冲突在 README 与 gevent 通行行为中有描述；在你具体栈里的精确失败模式因环境而异，这里未验证。

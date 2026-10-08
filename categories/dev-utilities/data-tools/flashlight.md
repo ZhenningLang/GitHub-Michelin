@@ -7,7 +7,7 @@ tags: [macos, spotlight, plugins, productivity, launcher, python]
 language: Python
 license: MIT AND GPL-2.0-only (component split)
 maturity: no releases, abandoned (last push 2020-11)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2020-11-15T20:48:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:59:50Z
+  computed_at: 2026-10-08T08:17:59Z
   overall: E
   overall_score: 0.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2142
+        last_commit_age_days: 2152
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3759
-        last_commit_age_days: 2142
+        repo_age_days: 3769
+        last_commit_age_days: 2152
         cohort: tool
     governance:
       grade: "?"
@@ -75,6 +75,28 @@ An "unofficial Spotlight API" for older macOS — a plugin system that injects i
 You're a macOS power user still running an **older OS (roughly 10.10–10.15)** and you want Spotlight to do more than launch apps and search files — answer "weather", do `pi * 2`, define a word, convert currency, or run a small Python plugin you wrote — without installing a separate launcher like Alfred. You're comfortable disabling System Integrity Protection, you install MacForge/MacEnhance (the SIMBL-style injector), drop in Flashlight, and pick plugins from its installer; queries you type into the *native* Spotlight bar now route through your plugins and render results inline.
 
 Realistically, in 2026 this is a **retro / legacy-machine** use case: a vintage Mac, a locked-old-OS environment, or studying how Spotlight plugin injection worked. On a current macOS it does not apply. [推断]
+
+## How it works
+
+Flashlight comes in two halves. **It supplies the plumbing**: a small agent that MacForge — a SIMBL-style loader, i.e. a tool that injects extra code into another app while it runs — loads into Spotlight's process, plus a query parser and a plugin runner. **You supply the plugins**: each one is a `.bundle` folder in `~/Library/FlashlightPlugins` holding an `info.json` (name, description), an `examples.txt` (sample phrases where `~message(...)`-style markers show which words are the input) and a `plugin.py`. As you type, Flashlight matches the query against every plugin's example phrases, fills the marked slots, calls that plugin's `results()` and draws the returned title as a row inside Spotlight; pressing Enter calls its `run()`. Think of it as a private switchboard spliced into Apple's phone line — which is exactly why it needs SIP (System Integrity Protection, macOS's lock on system processes) switched off, and why each macOS update could cut the splice.
+
+![flashlight — backbone user story](../../../assets/flow/flashlight.svg)
+
+<!-- flow-steps:begin (generated from flows/flashlight.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: On macOS 10.10–10.15, disable SIP, install MacForge, then Flashlight
+2. **You**: Install plugins in the app, or write a bundle whose examples.txt marks the slots — `say ~message(Good Morning)`
+3. **You**: In plugin.py, turn the filled slots into a result title — `def results(fields, original_query)`
+4. **Flashlight**: Injected into Spotlight, matches each typed query against plugin examples — component: `SpotlightSIMBL agent`
+5. **Flashlight**: Calls the plugin's results() and shows its title as a row inside Spotlight
+6. **Flashlight**: When you press Enter, calls the plugin's run() with the run_args
+
+**Value**: The native Spotlight bar answers your own queries — but only on macOS 10.10–10.15
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

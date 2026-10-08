@@ -6,19 +6,19 @@ category: diagramming
 tags: [whiteboard, diagram, canvas, collaboration, hand-drawn, sketch, react, export]
 language: TypeScript
 license: MIT
-maturity: active, ~126.5k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: npm 0.18.1 (2026-04-21), active, ~134k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-07-05T20:21:54Z
+  pushed_at: 2026-10-08T08:29:49Z
   default_branch: master
-  default_branch_sha: 9357f98a9b6c4f8af3ada6ccce38e54330f2627c
+  default_branch_sha: 2559257bb2bcf7f6b8815d6796ba2fd65d8f2b98
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:15:54Z
-  overall: A
-  overall_score: 3.67
+  computed_at: 2026-10-08T08:18:50Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 12
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 34.4
-        qualifying_issues: 26
+        median_ttfr_hours: 52.5
+        qualifying_issues: 36
         band: default
         window_offset_days: 5
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: npmjs.org
         canonical_package: "@excalidraw/excalidraw"
         dependent_repos_count: 523
-        downloads_last_month: 1918275
+        downloads_last_month: 2399436
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.02
-        release_downloads: 31973
+        cross_check_divergence: 1.04
+        release_downloads: 32027
         release_assets: 14
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2456
-        last_commit_age_days: 0
+        repo_age_days: 2471
+        last_commit_age_days: 1
         cohort: library
     governance:
-      grade: B
+      grade: C
       raw:
         active_maintainers_12mo: 13
-        top1_share: 0.599
-        top3_share: 0.889
+        top1_share: 0.629
+        top3_share: 0.905
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -81,65 +81,88 @@ health:
 
 # Excalidraw
 
-A virtual whiteboard for sketching hand-drawn style diagrams — collaborative, end-to-end encrypted, and embeddable as a React component or used standalone on excalidraw.com.
+Sketching an architecture idea in a formal diagram tool means twenty minutes of snapping boxes to a grid, and then the meeting argues about colours instead of the design. Excalidraw is a whiteboard that draws everything in a deliberately rough, hand-drawn style, in the browser at excalidraw.com or as a React component inside your own app, so a two-minute sketch looks like the draft it is.
 
 ![Excalidraw — health radar](../../assets/health/excalidraw.svg)
 
 ## When to use
 
-You're a product manager or designer who needs to quickly whiteboard an architecture sketch, a user flow, or a wireframe in a meeting and share it with the team. You pick Excalidraw over Mermaid because you want the result to look informal and approachable — like a napkin sketch rather than a rendered text diagram — so stakeholders focus on the idea, not the syntax. You pick it over draw.io because you want a lightweight, hand-drawn aesthetic without the complexity of a full WYSIWYG canvas with rich shapes and integrations. You pick it over Figma because you need a quick whiteboard, not a high-fidelity design tool with component variants, constraints, and responsive preview. You open excalidraw.com, draw rectangles and arrows on an infinite canvas, drop in images, and share the link; the collaboration is end-to-end encrypted and the `.excalidraw` JSON format is open. You also reach for it when you're a React developer building a docs site or an app that needs an embedded whiteboard: the `@excalidraw/excalidraw` npm package gives you a drop-in component with dark mode, shape libraries, i18n, and PNG/SVG/clipboard export.
+You're an engineer about to explain a design in a call, or writing a design doc that needs one picture of "request goes here, then here". Opening draw.io means picking shape libraries and aligning connectors; Mermaid means writing `A --> B` and accepting whatever layout it produces. You open excalidraw.com, drag out boxes and arrows (arrows stay attached when you move a box), and paste the PNG or SVG into the doc, or share a live session where everyone draws at once. The rough look tells readers "this is a sketch" and keeps the review on the idea.
+
+The second trigger is product work: you're building a docs site, a learning app or an internal tool and need a whiteboard *inside* it. Instead of writing a canvas editor, you add the MIT-licensed `@excalidraw/excalidraw` React component, which brings the whole editor, and you store its scene as JSON in your own backend. Pick it over [draw.io](drawio.md) when informality and a small embeddable component matter more than formal shape libraries; pick it over tldraw when you need a permissive licence with no production licence key.
+
+## How it works
+
+A drawing is a list of JSON elements — rectangle, ellipse, arrow, text, image — each with position, style and, for arrows, which shapes it is bound to. The editor renders them onto an HTML canvas through rough.js, a library that adds small random wobble to every stroke so lines look hand-drawn; the "sloppiness" setting turns that down to near-straight lines. **As a library, Excalidraw gives you the entire editor — tools, selection, undo, shape libraries, i18n, export — and you decide where the scene lives:** you read changes from `onChange`, save the JSON, pass it back as `initialData`, and call `exportToSvg` or `exportToBlob` when you need an image. Real-time collaboration, shareable links and end-to-end encryption are features of the excalidraw.com app (whose source is in the same repo), not of the npm component. Self-hosting those means running the app plus a WebSocket room server and a Firebase-style storage backend.
+
+![excalidraw — backbone user story](../../assets/flow/excalidraw.svg)
+
+<!-- flow-steps:begin (generated from flows/excalidraw.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the package with its React peers — `npm install react react-dom @excalidraw/excalidraw`
+2. **You**: Render the Excalidraw component in a container with a real height; import its CSS — `import "@excalidraw/excalidraw/index.css"`
+3. **Excalidraw**: Runs the whole editor on a canvas: tools, arrow binding, undo, libraries, hand-drawn rendering
+4. **Excalidraw**: Reports every edit as plain JSON elements plus app state — `onChange`
+5. **You**: Store that JSON in your backend and hand it back when the page reopens — `initialData`
+
+**Value**: A whiteboard inside your own product whose data is JSON you own, without building a canvas editor
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- If you need diagrams as version-controlled plain text, use Mermaid or PlantUML instead of Excalidraw, because Excalidraw stores drawings as JSON (or binary PNG/SVG), not as a text-to-diagram syntax that can be diffed in Git.
-- If you need pixel-precise or auto-layout diagrams, use draw.io or bpmn-js instead of Excalidraw, because the hand-drawn aesthetic is the point; it does not enforce BPMN compliance, UML strictness, or automatic graph layout.
-- If you need to generate diagrams programmatically from code, use Mermaid or PlantUML instead of Excalidraw, because there is no declarative text syntax to render, and producing diagrams from CI pipelines or LLM output requires scripting the JSON format or using a different tool.
-- If you need a full design/prototyping tool, use Figma instead of Excalidraw, because Excalidraw is a whiteboard with no component variants, constraints, responsive preview, or design handoff.
-- If you must work completely offline without any build step, use draw.io or a desktop diagram app instead of Excalidraw, because the web app requires a browser, and while the React component works offline after bundling, the zero-friction path is the hosted app. [推断]
-- If you need real-time collaboration at enterprise scale, use Figma or draw.io Enterprise instead of Excalidraw, because the free tier runs on excalidraw.com and heavy team usage may need Excalidraw+ (paid) or self-hosted infrastructure not provided out of the box. [未验证]
+- **Diagrams should live as text in Git and render in Markdown.** A `.excalidraw` file is JSON full of coordinates and random seeds, so diffs are unreadable. Use [Mermaid](mermaid.md), [PlantUML](plantuml.md) or [D2](d2.md); if you start in Mermaid and want to hand-edit later, the [mermaid-to-excalidraw](https://github.com/excalidraw/mermaid-to-excalidraw) converter (not indexed) bridges one way.
+- **You need formal notation or automatic layout.** No BPMN/UML semantics and no auto-layout: use [bpmn-js](bpmn-js.md) for executable process models, [draw.io](drawio.md) for precise shape libraries and layout, or a text tool for layout from structure.
+- **You want collaboration inside your embedded editor without building it.** The npm package has no multiplayer. The open-source path is self-hosting the excalidraw.com app plus [excalidraw-room](https://github.com/excalidraw/excalidraw-room) (not indexed), whose last push was 2024-07, plus Firebase-style storage. If you need a maintained multiplayer canvas SDK and accept its licence terms, evaluate [tldraw](https://github.com/tldraw/tldraw) (not indexed), which requires a licence key in production.
+- **You need UI design, prototyping or design handoff.** Excalidraw has no components, auto-layout frames or inspect mode; use [Penpot](../design-editors/penpot.md) (open source) or Figma.
+- **The embed must run fully offline.** By default the component fetches its fonts from a CDN; in air-gapped deployments you must copy the font files into your static assets and set `window.EXCALIDRAW_ASSET_PATH`, or text renders in a fallback font.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Mermaid](mermaid.md) | ✅ | Use Excalidraw for hand-drawn, collaborative whiteboarding; choose Mermaid when you need diagrams as plain text, diffable in Git, rendered in Markdown. | Plain-text, diffable diagrams rendered in Markdown and docs; trades visual style for version-control portability. |
-| [flowchart.js](flowchart-js.md) | ✅ | Use Excalidraw for hand-drawn, collaborative whiteboarding; choose flowchart.js when you need a narrow, lightweight flowchart renderer in the browser. | Narrow JS flowchart renderer only; Mermaid covers more types and has broader host support. |
-| [draw.io](drawio.md) | ✅ | Use Excalidraw for lightweight, hand-drawn sketch whiteboarding; choose draw.io when you need a full WYSIWYG canvas with rich shapes and integrations. | Full-featured WYSIWYG canvas editor with Google Drive / OneDrive / GitHub integrations; heavier and more formal than Excalidraw's sketch style. |
-| tldraw | 未收录 | Use Excalidraw for the de-facto standard hand-drawn whiteboard; choose tldraw when you want a newer, more extensible whiteboard library with a stronger dev-focused API. | Newer whiteboard library with strong programmatic API; smaller ecosystem but more flexible for custom apps. |
-| Figma | 未收录 | Use Excalidraw for quick, informal sketch whiteboarding; choose Figma when you need high-fidelity UI design, prototyping, and design-system management. | Industry-standard design tool for UI/UX; not a sketch whiteboard, requires a paid team plan for full features. |
+| [Mermaid](mermaid.md) | ✅ | When the diagram belongs next to code, reviewed in pull requests and rendered by GitHub or your docs site, pick Mermaid; pick Excalidraw when a person is sketching freehand and the layout is part of the message. | Plain text, diffable and auto-laid-out; you give up control over placement and the informal look. |
+| [draw.io](drawio.md) | ✅ | For precise diagrams with large shape libraries (network, cloud, UML) that must look formal, pick draw.io; pick Excalidraw for quick, deliberately rough sketches and a lighter embeddable component. | Huge stencil sets, layers and exact alignment; heavier editor, Apache-2.0 but not designed as a React drop-in. |
+| [D2](d2.md) | ✅ | When you want diagrams compiled from text with real layout engines and themes, pick D2; pick Excalidraw when the picture is drawn by hand rather than generated from a model. | Declarative source and good automatic layout (it even offers a sketch theme); no freehand editing or live whiteboard. |
+| [tldraw](https://github.com/tldraw/tldraw) | not indexed | When you are building a product on an extensible canvas SDK with multiplayer sync and custom shapes, and can accept a licence key for production, pick tldraw; pick Excalidraw for an MIT-licensed whiteboard you can embed and ship without a vendor agreement. | Richer SDK and first-party sync tooling; source-available licence with production restrictions instead of MIT. |
+| [Penpot](../design-editors/penpot.md) | ✅ | For UI design, prototypes and developer handoff in open source, pick Penpot; pick Excalidraw for low-fidelity whiteboarding where precision would slow you down. | Full design tool with components and flex layout; a server deployment and a learning curve that a whiteboard does not need. |
 
 ## Tech stack
 
-- **Language:** TypeScript, compiled to JavaScript; distributed as an npm package (`@excalidraw/excalidraw`) and a CDN-ready bundle.
-- **Frontend:** React component built on the HTML5 Canvas API (and an interactive SVG layer for export); uses `rough.js` for the hand-drawn, sketch-like rendering style.
-- **Collaboration:** End-to-end encrypted real-time collaboration via WebSockets on the hosted instance; self-hosted or embedded usage omits this.
-- **Export:** PNG, SVG, clipboard copy, and `.excalidraw` JSON open format; dark mode and shape libraries are built-in.
-- **Styling:** Customizable theme colors and element styles; the "sketchy" look is a core design choice, not an after-effect.
+- **TypeScript + React** — the editor is a React component (`@excalidraw/excalidraw`, React 17, 18 or 19 as peer dependency).
+- **HTML Canvas + rough.js** — rendering and the hand-drawn stroke style; SVG and PNG export through `exportToSvg` / `exportToBlob`.
+- **Vite** — builds the excalidraw.com app (`excalidraw-app/`), a PWA that works offline.
+- **Collaboration (app only)** — Socket.IO room server (`excalidraw-room`), Firebase for scene and file persistence, client-side end-to-end encryption.
+- **Format** — `.excalidraw` JSON; libraries as `.excalidrawlib`.
 
 ## Dependencies
 
-- **Runtime:** A modern web browser with Canvas support. For embedded use, a React 18+ application.
-- **Library deps:** Install via `npm i @excalidraw/excalidraw` or load from CDN; the package bundles its own rendering logic and does not require a separate backend to draw.
-- **Collaboration backend:** The hosted app uses a server for WebSocket relay and end-to-end encryption; self-hosted collaboration requires setting up your own signaling server.
-- **No database:** The whiteboard state is client-side JSON; persistence is via export, local storage, or your own backend.
+- **Embedding:** React and React DOM, a bundler, the package's CSS, and a container with non-zero height; in Next.js or other SSR frameworks, client-only rendering (`"use client"` plus `dynamic(..., { ssr: false })`).
+- **Fonts:** fetched from a CDN at runtime unless you self-host them and set `window.EXCALIDRAW_ASSET_PATH`.
+- **Persistence:** none built in for the component — your backend stores the JSON.
+- **Self-hosting the full app with collaboration:** a WebSocket room server, a Firebase project (or a replacement you wire in), and, for share links, a JSON storage backend; the production build points at excalidraw.com's services by default.
 
 ## Ops difficulty
 
-**Low** for the common case: use the free hosted app at excalidraw.com, export your drawings, and move on. **Medium** when embedding the React component: you pin the npm package, handle version upgrades (the component API can shift), and bundle it into your build pipeline. **Medium–High** if you want self-hosted real-time collaboration: you must operate a WebSocket relay server, manage encryption keys, and handle NAT/firewall traversal. As a client-side library, the main maintenance burden is staying current with React/TypeScript compatibility and occasional breaking API changes in the npm package. [推断]
+**Low** to use excalidraw.com. **Low to medium** to embed: the two most common integration failures — missing CSS and a zero-height parent — are documented, but the stable npm release is infrequent (0.18.0 in 2025-03, 0.18.1 in 2026-04) while fixes land continuously on the `@next` tag, so you either wait about a year for a stable bump or pin a snapshot build; 0.18 also changed import paths. **Medium to high** to self-host the collaborative app: you rebuild it with your own environment variables, run the room server, provide Firebase-compatible storage, and maintain all three yourself.
 
 ## Health & viability
-- **Maintenance**: Grade A — 12/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Grade A — median first-response time 34.4 hours across 26 qualifying issues/PRs.
-- **Adoption**: Grade B — 1,918,275 monthly downloads via npmjs.org (package: @excalidraw/excalidraw).
-- **Longevity**: Grade A — 2456 days old.
-- **Governance**: Grade B — top-3 contributor share 88.9% (13 active maintainers in the trailing 12 months).
-- **Risk / License**: Grade A — MIT license.
+
+- **Maintenance — active.** Maintenance Grade A: commits in 12 of the last 13 weeks, last commit 1 day ago. Stable npm releases are rare even so (see Ops difficulty).
+- **Responsiveness — slower than before.** Responsiveness Grade B (down from A at the 2026-09-22 scoring): median first response 52.5 hours across 36 qualifying issues/PRs. Expect a couple of days for a first reply, not hours.
+- **Governance — concentrated in a small core.** Governance Grade C (down from B): top-1 contributor share 62.9% and top-3 90.5% among 13 active maintainers in the last 12 months. The repo is owned by the `excalidraw` organisation and funded through Excalidraw+ (a paid hosted product) and Open Collective, but day-to-day work rests on very few people; that concentration is the main viability risk, not inactivity.
+- **Age & Lindy.** Longevity Grade A: created 2020-01, 2471 days old and still active — a good Lindy prior.
+- **Adoption — broad.** Adoption Grade B: 2,399,436 npm downloads last month for `@excalidraw/excalidraw` and 523 dependent repositories; integrations listed in the README include Notion, Replit, CodeSandbox and an Obsidian plugin. About 134k GitHub stars (2026-10).
+- **Risk flags.** Risk/License Grade A: MIT, no relicense history. The open-core edge is Excalidraw+, which keeps team workspaces and some features in the hosted product.
+
 ## Caveats (unverified)
 
-- [未验证] ~126.5k GitHub stars as of 2026-07-01; star counts are approximate and time-sensitive.
-- [未验证] The exact npm package API version and React compatibility requirements shift release-to-release; verify the current `@excalidraw/excalidraw` docs before embedding.
-- [未验证] End-to-end encryption details for the hosted collaboration are summarized from the project README; confirm the current encryption model and key handling for sensitive use cases.
-- [未验证] Self-hosted collaboration server requirements are inferred from the repo architecture; the official docs should be consulted for production deployment guidance.
-- [未验证] Styling customization and theme color details are summarized from the project description; confirm the current theming API for your version.
-- [推断] The "sketchy" rendering style is core to the product and cannot be disabled for a clean vector look; if you need crisp line art, evaluate other tools.
-- [推断] Large canvas performance with thousands of elements may degrade in browser memory; test with your expected diagram complexity before committing.
+- [未验证] Star and download counts are from GitHub and npm on 2026-10-08 and drift daily.
+- [推断] "Stable npm releases are rare" is read from the GitHub release list and npm dist-tags (`latest` 0.18.1, frequent `next` builds); the team may treat `next` as production-ready.
+- [未验证] The self-hosted collaboration setup (room server plus Firebase plus JSON backend) is read from the app's `.env.production` and repo layout; there is no official self-hosting guide for it.
+- [未验证] Which features Excalidraw+ reserves for paying users changes over time and was not re-checked here.
+- [推断] Large canvases with thousands of elements may slow down in the browser; test with your expected scene size.
+- [未验证] tldraw's production licence-key requirement is from its LICENSE.md on 2026-10-08; check current terms before deciding.

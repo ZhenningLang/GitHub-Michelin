@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "aider does", "zh": "aider 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install aider, cd into your git repo and start it with a model", "zh": "装好 aider，进到你的 git 仓库，指定模型启动", "code": "aider --model sonnet --api-key anthropic=<key>"},
+    {"lane": "them", "en": "Builds a repo map: a ranked outline of the code's classes and functions", "zh": "生成仓库地图：按相关度排序的类和函数提纲", "component": {"en": "repo map (tree-sitter)", "zh": "仓库地图（tree-sitter）"}},
+    {"lane": "you", "en": "Add the files to edit to the chat and ask for the change", "zh": "把要改的文件加进对话，提出改动要求", "code": "/add"},
+    {"lane": "them", "en": "Sends those files plus the relevant map to the model and applies its edits", "zh": "把这些文件和相关地图发给模型，再把它的修改落到文件里"},
+    {"lane": "them", "en": "Shows the diff and git-commits the change with a generated message", "zh": "展示 diff，并用生成的提交信息做一次 git commit"}
+  ],
+  "value": {"en": "Every AI edit lands as its own reviewable git commit, with any model you choose, without leaving the terminal", "zh": "每次 AI 修改都是一次可审查的 git 提交，模型随你选，不用离开终端"},
+  "sources": [
+    "https://github.com/Aider-AI/aider README — Getting Started (aider-install; aider --model sonnet --api-key anthropic=<key>)",
+    "aider/website/docs/usage.md (add files to the chat on the command line or with /add; aider shows diffs and git commits all of its changes)",
+    "aider/website/docs/repomap.md (repo map built with a graph ranking algorithm); aider/website/docs/git.md (/undo, /commit, --no-auto-commits)"
+  ]
+}

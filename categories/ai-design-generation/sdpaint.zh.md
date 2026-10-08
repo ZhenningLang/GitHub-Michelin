@@ -7,7 +7,7 @@ tags: [stable-diffusion, controlnet, painting, sketch-to-image, automatic1111, p
 language: Python
 license: MIT
 maturity: v1.2a, stalled (last push 2024-04)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-04-25T10:42:31Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:48:22Z
+  computed_at: 2026-10-08T08:15:55Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 885
+        last_commit_age_days: 896
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 1259
-        last_commit_age_days: 885
+        repo_age_days: 1270
+        last_commit_age_days: 896
         cohort: app
     governance:
       grade: "?"
@@ -71,6 +71,28 @@ health:
 你是一名艺术家或爱好者，本机已经在跑**带 ControlNet 扩展的 AUTOMATIC1111 Stable Diffusion WebUI**，并且想要一种比敲 prompt、点 Generate 更快、更有手感的循环。你启动 SdPaint，它打开一个 pygame 窗口，你一边画（scribble 或 lineart），它就把每一笔连同一个 ControlNet 模型流式发往 WebUI 的 API，于是生成的画面近乎实时更新——还可选用 LCM LoRA 加速、减少步数。你设好 prompt 与预设，涂出构图，看着 SD 把它填满，靠*画*而不是*重写 prompt* 来迭代。
 
 当你想要**在自己机器上做交互式、由涂鸦驱动的生成**、且已经付出了搭好 A1111 ＋ ControlNet 的成本、宁愿画也不愿不停写 prompt 时，你会专门选它。它是那个后端之上一层很薄的本地前端，而非托管的创作套件。
+
+## 怎么用起来
+
+SdPaint 就是一个 Python 脚本：它打开一个绘图窗口（pygame，一个 Python 的游戏/图形库），把你的每一笔都当成一次新请求。**它自己不生成任何图像：生成全由你本机上装了 ControlNet 扩展的 AUTOMATIC1111 WebUI 来做——SdPaint 只负责抓下你的草图，连同提示词和参数打包发出去，再把结果显示出来。** 让涂鸦起作用的是 ControlNet：它让 Stable Diffusion 按你画的线条来出图，所以结果保留你的构图，而不只是贴合提示词。每画完一笔，脚本就把画布 POST 到 WebUI 的 `sdapi/v1/txt2img` 接口，附上 scribble 或 lineart 的 ControlNet 模型，然后用返回的图替换预览；几乎所有参数（采样器、种子、重绘强度、ControlNet 模型和权重、高清修复）都有快捷键，预设存在 `configs/*.json` 里。“快速”模式（`q`）借助 LCM LoRA——一个让 Stable Diffusion 几步就能出图的小附加模型——跟上你下笔的速度；另有 img2img 模式，盯着一个图片文件而不是画布。
+
+![sdpaint — 主干用户故事](../../assets/flow/sdpaint.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/sdpaint.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：跑起装了 ControlNet 的 A1111 WebUI，开 API 模式 — `--api`
+2. **你**：启动 SdPaint — `./start.sh · Start.bat`
+3. **SdPaint**：生成配置文件，从 WebUI 拉取可用的 scribble/lineart 模型 — 组件：`configs/*.json`
+4. **你**：输入提示词，在画布上开画 — `p`
+5. **SdPaint**：每画一笔，就把草图作为 ControlNet 输入发给 WebUI API — `sdapi/v1/txt2img` — 组件：`cn_requests.py`
+6. **SdPaint**：生成结果一回来，就替换预览画面
+
+**价值**：你靠画而不是反复改提示词来构图，画面跟着笔触变
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -110,9 +132,9 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** **停滞。** 最近一次发布 v1.2a（2024-04），最后 push 在 2024-04——大约两年没动静。未归档，但近期无活动；视作吃老本/很可能已废弃。[推断]
+- **维护（2026-10）。** **停滞。** 最近一次发布 v1.2a（2024-04-25），默认分支此后没再动过（2026-10-08 复查）——大约两年半没动静。未归档，但近期无活动；视作很可能已废弃。[推断]
 - **治理 / bus factor。** owner 是 **User** 账号（houseofsecrets）；头部贡献者（Danamir）写了大部分提交——实质上是一两人的爱好项目，bus factor 弱。[推断]
-- **年龄与 Lindy。** 2023-04 创建，约 3 岁**但其中约 2 年不活跃**⇒ Lindy **不适用**——它是个停下来了的年轻项目，而非耐久项目。快速演进的 SD 生态让一个停更客户端尤其容易漂移。[推断]
+- **年龄与 Lindy。** 2023-04-17 创建，约三年半**但其中约两年半不活跃**⇒ Lindy **不适用**——它是个停下来了的年轻项目，而非耐久项目。快速演进的 SD 生态让一个停更客户端尤其容易漂移。[推断]
 - **采用度。** 约 1.6k star 反映的是 2023 年 ControlNet 浪潮中的一阵兴趣；当前使用未经核实，生态已转向 ComfyUI/Krita-AI。[未验证]
 - **风险标记。** 对特定年代 A1111 ＋ ControlNet API 的硬外部依赖；无人维护的客户端有兼容性破裂风险；宽松 MIT，无 relicense 顾虑。[推断]
 

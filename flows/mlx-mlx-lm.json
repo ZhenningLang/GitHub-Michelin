@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "mlx-lm does", "zh": "mlx-lm 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package on an Apple-silicon Mac", "zh": "在 Apple 芯片 Mac 上装好这个包", "code": "pip install mlx-lm"},
+    {"lane": "you", "en": "Load a model by Hugging Face repo id, usually a pre-quantized mlx-community one", "zh": "按 Hub 仓库名加载模型，常用 mlx-community 量化版", "code": "load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")"},
+    {"lane": "them", "en": "Downloads weights and tokenizer from the Hub and caches them on disk", "zh": "从 Hub 下载权重和分词器，缓存到本地磁盘"},
+    {"lane": "them", "en": "Builds the architecture in MLX and loads weights into memory shared by CPU and GPU", "zh": "用 MLX 搭好模型结构，把权重装进 CPU 和 GPU 共用的内存"},
+    {"lane": "you", "en": "Apply the chat template and ask it to generate", "zh": "套上对话模板，调用生成", "code": "generate(model, tokenizer, prompt=prompt)"},
+    {"lane": "them", "en": "Runs the prompt on the Apple GPU and returns tokens, reusing a KV cache", "zh": "在苹果 GPU 上跑提示并输出 token，复用 KV 缓存"}
+  ],
+  "value": {"en": "A Hugging Face model runs on your Mac from plain Python — no GGUF conversion, no separate server", "zh": "Hugging Face 模型直接用 Python 在 Mac 上跑起来，不用转 GGUF，也不用另起服务"},
+  "sources": [
+    "https://github.com/ml-explore/mlx-lm#readme (pip install mlx-lm; Python API: load, apply_chat_template, generate; mlx-community models)",
+    "https://github.com/ml-explore/mlx-lm/blob/main/pyproject.toml (dependencies, CLI entry points)",
+    "https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/SERVER.md (mlx_lm.server, production warning, --kv-bits disables batching)",
+    "https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LORA.md (mlx_lm.lora --train, lora/dora/full)"
+  ]
+}

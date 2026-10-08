@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenReview does", "zh": "OpenReview 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy the app to your Vercel account", "zh": "把应用部署到你的 Vercel 账号", "code": "Deploy with Vercel"},
+    {"lane": "you", "en": "Create a GitHub App pointing at the deployment, set its keys as env vars, install it on repos", "zh": "建 GitHub App 指向部署地址，配好环境变量，装到仓库上", "code": "https://your-deployment.vercel.app/api/webhooks · ANTHROPIC_API_KEY"},
+    {"lane": "you", "en": "Mention the bot in a PR comment, optionally with an instruction", "zh": "在 PR 评论里 @ 它，可以附一句要求", "code": "@openreview run the linter and fix any issues"},
+    {"lane": "them", "en": "Starts a durable workflow, clones the PR branch into a sandbox and installs dependencies", "zh": "起一个持久化工作流，把 PR 分支克隆进沙箱并装依赖", "component": {"en": "Vercel Workflow + Sandbox", "zh": "Vercel Workflow + Sandbox"}},
+    {"lane": "them", "en": "Claude reads the diff, explores the code and runs project tooling inside the sandbox", "zh": "Claude 读 diff、翻代码，在沙箱里跑项目自带的工具", "component": {"en": "Claude agent + skills", "zh": "Claude agent + skill"}},
+    {"lane": "them", "en": "Posts inline comments with suggestion blocks; commits and pushes any fixes it made", "zh": "贴出带 suggestion 块的行内评论，有改动就提交推回分支"}
+  ],
+  "value": {"en": "A reviewer that has actually run your linter and tests answers on the PR, and small fixes arrive as commits", "zh": "真跑过你的 lint 和测试的审查意见回到 PR 上，小修复直接以提交的形式送到"},
+  "sources": [
+    "https://github.com/vercel-labs/openreview README Setup (Deploy with Vercel button; GitHub App webhook URL https://your-deployment.vercel.app/api/webhooks; env vars incl. ANTHROPIC_API_KEY) — read 2026-10-08",
+    "README Usage (@openreview run the linter and fix any issues)",
+    "README How it works sequence (workflow, sandbox clone + install, agent runs tools, inline comments, commit & push)",
+    "workflow/index.ts at 672deb2 (checkPushAccess, createSandbox, installDependencies, runAgent, commitAndPush)"
+  ]
+}

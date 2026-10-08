@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "olmOCR does",
+    "zh": "olmOCR 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install poppler and fonts, then the GPU package in a clean Python 3.11 env",
+      "zh": "装 poppler 和字体，在 Python 3.11 新环境里装 GPU 版",
+      "code": "pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at a workspace folder and your PDFs",
+      "zh": "指定一个工作区目录和你的 PDF",
+      "code": "olmocr ./localworkspace --markdown --pdfs tests/gnarly_pdfs/*.pdf"
+    },
+    {
+      "lane": "them",
+      "en": "Starts a local vLLM server with the olmOCR 7B vision model",
+      "zh": "在本机起一个 vLLM 推理服务，加载 olmOCR 7B 视觉模型",
+      "component": {
+        "en": "vLLM + olmOCR-2-7B-1025-FP8",
+        "zh": "vLLM + olmOCR 7B 模型"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Queues pages in groups, renders each page and has the model read it in order",
+      "zh": "把页面分组排队，逐页渲染成图，让模型按阅读顺序转写"
+    },
+    {
+      "lane": "them",
+      "en": "Retries failed pages, then writes Dolma JSONL plus one Markdown file per PDF",
+      "zh": "失败页重试，写出 Dolma JSONL 和每个 PDF 的 Markdown",
+      "component": {
+        "en": "./localworkspace/markdown/",
+        "zh": "./localworkspace/markdown/"
+      }
+    }
+  ],
+  "value": {
+    "en": "Scanned and multi-column PDFs become clean reading-order Markdown, ready for a training corpus",
+    "zh": "扫描件和多栏 PDF 变成按阅读顺序排好的干净 Markdown，可直接进训练语料"
+  },
+  "sources": [
+    "https://github.com/allenai/olmocr#installation (poppler-utils + fonts; conda create -n olmocr python=3.11; pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128; 12 GB GPU RAM)",
+    "https://github.com/allenai/olmocr#usage-examples (olmocr ./localworkspace --markdown --pdfs tests/gnarly_pdfs/*.pdf; output in ./localworkspace/markdown/; Dolma files)",
+    "https://github.com/allenai/olmocr#full-documentation (--pages_per_group, --max_page_retries, workspace work queue; vLLM arguments)",
+    "https://github.com/allenai/olmocr#using-an-inference-provider-or-external-server (spawns a local vLLM instance unless --server is given)"
+  ]
+}

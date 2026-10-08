@@ -7,7 +7,7 @@ tags: [gui-automation, mouse, keyboard, screenshot, cross-platform, python, rpa]
 language: Python
 license: BSD-3-Clause
 maturity: stable, coasting, ~12.6k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-08-20T18:34:57Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:58:16Z
+  computed_at: 2026-10-08T08:17:54Z
   overall: C
   overall_score: 2.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1208
+        last_commit_age_days: 1219
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,16 +41,16 @@ health:
         registry: pypi.org
         canonical_package: pyautogui
         dependent_repos_count: 1028
-        downloads_last_month: 2739820
+        downloads_last_month: 2674247
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.02
+        cross_check_divergence: 1.12
         tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 4455
-        last_commit_age_days: 1208
+        repo_age_days: 4465
+        last_commit_age_days: 1219
         cohort: library
     governance:
       grade: "?"
@@ -79,6 +79,28 @@ health:
 
 当你想要一个*可见的*、模仿真人的机器人时，你也会选它——按键发给当前获得焦点的窗口，就像真人在敲键盘——用来给 UI 做冒烟测试、脚本化重复录入，或搭一个演示。`pytweening` 的缓动函数甚至能让光标走出像人一样的弧线，内置的 `alert`/`confirm`/`prompt` 消息框还能让脚本停下来等输入。
 
+## 怎么用起来
+
+PyAutoGUI 是你的 Python 调用和操作系统输入机制之间的一层薄翻译。**各平台的底层接口它替你包好了**——Windows 上走 Win32 API（通过 Python 自带的 C 库桥接模块 `ctypes`），macOS 上走 Cocoa/Quartz，Linux 上走 Xlib（X11 的客户端库）——所以 `click(200, 220)` 在三个系统上意思一样。**它不懂屏幕上是什么**：它只认像素和坐标，不认按钮和输入框。这部分要你来提供——要么是你量好的坐标，要么是目标按钮的一张小截图，由 `locateOnScreen` 做模板匹配（拿你的小图在一张新截图上逐个位置比对，直到像素对上）。所有按键都发给当前焦点窗口，像一个坐在你键盘前的机器人：真人能做的它都能做，窗口一挪位置，它也会像真人的肌肉记忆一样点空。
+
+![pyautogui — 主干用户故事](../../assets/flow/pyautogui.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pyautogui.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上它；macOS/Linux 会顺带装好系统输入后端 — `pip install pyautogui`
+2. **你**：把要点的按钮截一小张图存下来，比如 button.png
+3. **你**：写脚本：先找按钮，再点击、打字 — `pyautogui.locateCenterOnScreen('button.png') · pyautogui.click(buttonx, buttony)`
+4. **PyAutoGUI**：截主屏，找出你那张图在屏幕上的位置
+5. **PyAutoGUI**：把每个调用翻译成系统原生的鼠标键盘事件
+6. **PyAutoGUI**：当前焦点窗口收到的，和真人点击打字一模一样
+
+**价值**：只有图形界面的软件也能被脚本操作，不需要它有 API 或命令行
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **无显示器的服务器 / CI。** PyAutoGUI 驱动的是真实屏幕和获焦窗口。没有显示服务（X11/Wayland/Windows 桌面会话）就没法自动化；它不是无头工具。
@@ -86,7 +108,7 @@ health:
 - **Web 自动化。** 对浏览器而言，Selenium/Playwright/Puppeteer 直接驱动 DOM，远比在渲染页面上点像素可靠。
 - **多显示器 / 后台作业。** 它面向主显示器和前台窗口，会接管真实光标和键盘，所以脚本运行期间这台机器干不了别的。第二显示器行为依赖操作系统，按文档说法不可靠。
 - **你需要元素级内省。** 它读不到控件文本、列不出控件、查不到状态——它只看像素。若需要这些，请搭配 `pywinauto`（Windows）或平台无障碍 API。
-- **对维护敏感的押注。** 开发基本进入吃老本状态（最后 push 于 2024-08，见健康度）——写脚本够用，但若你要在未来若干年里对着新系统版本长期维护它，请掂量。
+- **对维护敏感的押注。** 开发基本进入吃老本状态（默认分支最后一次提交在 2023-06，见健康度）——写脚本够用，但若你要在未来若干年里对着新系统版本长期维护它，请掂量。
 
 ## 横向对比
 
@@ -119,8 +141,8 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2024-08（截至撰写约停滞 2 年）；项目读起来是**稳定但吃老本**，而非废弃——API 已成熟、核心问题已解决，但新开发极少。未归档。约 583 个 open issue，与一个流行库的维护预算偏薄相符。[推断]
+- **响应速度**：无法计算——no_window_signal。
+- **维护（2026-10）。** 默认分支最后一次提交是 2023-06-07，PyPI 最新版 0.9.54 发布于 2023-05-24；2024-08 的 `pushed_at` 并非默认分支上的活动。算下来已安静约 3 年；项目读起来是**稳定但吃老本**，而非废弃——API 已成熟、核心问题已解决，但新开发极少。未归档。约 583 个 open issue，与一个流行库的维护预算偏薄相符。[推断]
 - **治理 / bus factor。** `User` 所有（Al Sweigart），实际上是单一维护者（在 PyAutoGUI 及其 `pyscreeze`/`pymsgbox`/`pytweening` 兄弟项目里，作者都是遥遥领先的头号贡献者）。单人项目却高 star，是个 **bus-factor 风险**——方向和寿命系于一个人是否还有兴趣。[推断]
 - **年龄 × Lindy。** 约 12 年（2014-07 创建）且仍被广泛安装 ⇒ 对*库本身*的存续与 API 稳定性是**强 Lindy** 先验，尽管活跃开发已放缓。老而吃老本胜过新而被炒，但要核实它在你当前系统上还能用。[推断]
 - **采用度。** 很高——是 Python 里简单桌面自动化的事实标准（star/fork 庞大，教程和脚本里随处可见）。BSD-3-Clause 宽松许可，未发现 relicense 历史。[推断]
@@ -133,3 +155,4 @@ health:
 - [未验证] 现代 Linux 上对 Wayland 的支持有限/间接，行为取决于合成器，这里未核实。
 - [推断]「稳定但吃老本」是从 push 时间 + 成熟的单人维护库推断，而非来自官方项目状态声明。
 - [推断] 单一维护者 / bus-factor 判断由贡献者列表推断，而非治理文档。
+- [未验证] README 的“How Does PyAutoGUI Work?”一节说 macOS 走 `rubicon-objc`，而它自己的 Dependencies 一节和 `setup.py`（`pyobjc-core`、`pyobjc-framework-quartz`）说的是 PyObjC；本页以 `pip` 实际安装的 `setup.py` 为准，未对照源码模块核实。

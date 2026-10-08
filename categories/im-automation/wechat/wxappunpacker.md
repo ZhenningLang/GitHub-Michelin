@@ -5,9 +5,9 @@ repo: https://github.com/xdmjun/wxappUnpacker
 category: wechat
 tags: [wechat, miniprogram, wxapkg, decompiler, reverse-engineering, nodejs]
 language: JavaScript
-license: GPL-3.0-or-later
+license: NONE (no LICENSE file; the forks' package.json declare GPL-3.0-or-later)
 maturity: tombstone — repo emptied 2023-04, lineage archived, ~2.4k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2023-04-08T12:38:11Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:04:09Z
+  computed_at: 2026-10-08T08:20:00Z
   overall: E
   overall_score: 0.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1268
+        last_commit_age_days: 1279
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2492
-        last_commit_age_days: 1268
+        repo_age_days: 2503
+        last_commit_age_days: 1279
         cohort: tool
     governance:
       grade: "?"
@@ -74,21 +74,42 @@ A WeChat mini-program (微信小程序) `.wxapkg` decompiler/unpacker — except
 
 You're a mobile security researcher (or a developer who lost the source of your *own* WeChat mini-program) holding a `.wxapkg` bundle pulled off a device, and you need to turn that packed blob back into readable `.wxml` / `.wxss` / `.json` / `.js` so you can audit what it does or recover assets. The wxappUnpacker family of Node.js scripts (`wuWxapkg.js`, `wuWxss.js`, `wuWxml.js`, `wuJs.js`) is the canonical community decompiler for exactly this — point it at the package, run the launcher, and it restores the project tree.
 
-But note what you're actually reaching for: **not this repo.** `xdmjun/wxappUnpacker` is an empty shell. If you want working code you must find a maintained fork (the lineage traces back to `qwerty472123/wxappUnpacker`, itself archived/read-only since 2020). Treat this page as a warning marker on a dead entry in the chain, not an install target.
+But note what you're actually reaching for: **not this repo.** `xdmjun/wxappUnpacker` is an empty shell. If you want working code you must find a maintained fork (the lineage traces back to `qwerty472123/wxappUnpacker`, which its owner also emptied with an `rm` commit in 2020-04 and then archived). Treat this page as a warning marker on a dead entry in the chain, not an install target.
+
+## How it works
+
+A `.wxapkg` is the file WeChat downloads to run a mini-program: one archive holding the pages, but with the page templates and styles already compiled into JavaScript. The unpacker undoes both layers — **you only fetch the package and run one script; it does the rest.** First it splits the archive back into the files it stores, and splits the one big bundled `app-service.js` into the original per-file scripts. Then, to rebuild `.wxml` (page templates), `.wxss` (styles) and `.json` (page config), it actually executes the compiled code inside a `vm2` sandbox — a fenced-off JavaScript runtime — and records what that code would have generated. That last step is also the hazard: running an untrusted package's code relies on a sandbox library that is now deprecated. None of this exists in `xdmjun/wxappUnpacker` itself; the card below follows the `PyCoreDev` fork's README, which still carries the code.
+
+![wxappunpacker — backbone user story](../../../assets/flow/wxappunpacker.svg)
+
+<!-- flow-steps:begin (generated from flows/wxappunpacker.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Copy the cached mini-program packages off an Android phone — `adb pull /data/data/com.tencent.mm/MicroMsg/{User}/appbrand/pkg`
+2. **You**: Clone a fork that still has the code (this repo is empty) and install its packages — `npm install`
+3. **You**: Point the main script at one .wxapkg file — `node wuWxapkg.js`
+4. **wxappUnpacker**: Splits the package into its stored files, then splits the bundled app-service.js back into per-file JS — component: `wuWxapkg.js + wuJs.js`
+5. **wxappUnpacker**: Runs the compiled page code in a vm2 sandbox to rebuild .json, .wxss and .wxml sources — component: `wuConfig · wuWxss · wuWxml`
+
+**Value**: A readable mini-program project tree from a packed .wxapkg, for auditing or recovering your own app
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **This repo has no code — there is nothing to install or run.** The sole HEAD commit ("del", 2023-04-08) replaced everything with the string `del`. `language` is null, no LICENSE file, no releases, no tags. Selecting `xdmjun/wxappUnpacker` specifically is a dead end. [未验证]
-- **The whole lineage is abandoned.** Upstream `qwerty472123/wxappUnpacker` is archived (read-only) since 2020-04; this fork self-deleted in 2023. Bus factor is effectively zero — no maintainer will fix a `.wxapkg` format change.
+- **This repo has no code — there is nothing to install or run.** The sole HEAD commit ("del", 2023-04-08) replaced everything with the string `del`. `language` is null, no LICENSE file, no releases, no tags — the git tree holds `README.md` and nothing else (checked 2026-10-08). Selecting `xdmjun/wxappUnpacker` specifically is a dead end.
+- **The whole lineage is abandoned.** Upstream `qwerty472123/wxappUnpacker` was emptied by an `rm` commit on 2020-04-18 and archived (read-only); this fork self-deleted in 2023. Bus factor is effectively zero — no maintainer will fix a `.wxapkg` format change.
 - **Deprecated `vm2` dependency.** The preserved fork code depends on `vm2@^3.6.0`, which its own maintainer deprecated after multiple critical sandbox-escape CVEs. Feeding it untrusted package input is a real supply-chain/RCE exposure. [推断]
 - **Legal / ToS risk.** Decompiling third-party `.wxapkg` bundles reverse-engineers other people's mini-programs; that typically violates the WeChat platform terms and can infringe the target app's copyright. Defensible only for apps you own or with explicit authorization.
-- **No defined license on this fork.** GPL-3.0 is declared only in the forks' `package.json`; `xdmjun` ships no LICENSE file at all, so its redistribution terms are undefined. [未验证]
+- **No defined license on this fork.** GPL-3.0 is declared only in the forks' `package.json`; `xdmjun` ships no LICENSE file at all, so its redistribution terms are undefined.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| qwerty472123/wxappUnpacker (upstream) | 未收录 | Choose upstream when original lineage and more complete archived code matter. | The original lineage; more complete than this gutted fork, but **archived/read-only since 2020** — also unmaintained, just not deleted. |
+| qwerty472123/wxappUnpacker (upstream) | 未收录 | Choose the upstream's git history (check out the commit before its 2020-04 `rm`) when you want the original code rather than a fork's edits. | The original lineage, but its HEAD is **as empty as this repo** — an `rm` commit, then archived read-only; the code survives only in history and forks, and nobody maintains it. |
 | Other live forks (SangeCoder / PyCoreDev / yangyang5214) | 未收录 | Choose live forks when working code survival matters more than this gutted repo. | Where working code survives; PyCoreDev (2023-02) retains full code + `package.json`. None are large or clearly maintained — pick by recency and read the diff yourself. |
 | Custom unpack scripts | 未收录 | Choose custom scripts when you only need asset extraction from `.wxapkg`. | The `.wxapkg` format is documented enough that ad-hoc scripts exist; viable if you only need asset extraction, not full source restore. |
 
@@ -110,9 +131,9 @@ But note what you're actually reaching for: **not this repo.** `xdmjun/wxappUnpa
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_data.
-- **Maintenance (2026-06).** Abandoned — the sole real commit gutted the repo on 2023-04-08; the 2026-06 `updated_at` is a metadata touch, not activity. The upstream `qwerty472123` lineage is archived since 2020. **Dead, not coasting.** [未验证]
+- **Maintenance (2026-10).** Abandoned — the repo's only commit ("del", 2023-04-08) left nothing but a one-word README; later `updated_at` changes are metadata touches, not activity. The upstream `qwerty472123` repo was emptied the same way in 2020-04 and archived. **Dead, not coasting.**
 - **Governance / bus factor.** Bus factor **0**: deleted by a single User-account owner, upstream frozen. No releases, tags, or active contributors anywhere in the chain.
-- **Age × Lindy.** Created 2019-12; the lineage is older (~2020 upstream). Age means nothing here because it is *not active* — Lindy requires old **and** alive, and this fails the second test. [推断]
+- **Age × Lindy.** Created 2019-12; the lineage is older (upstream created 2018-03). Age means nothing here because it is *not active* — Lindy requires old **and** alive, and this fails the second test. [推断]
 - **Adoption.** ~2.4k stars / ~1.35k forks accrued to code that no longer exists in this repo; the stars are a fossil of past popularity, not a maintenance signal — exactly the "popular but dead" anomaly to distrust. [未验证]
 - **Risk flags.** Voluntary self-deletion (motive unconfirmed, plausibly legal/ToS), undefined license on this fork, deprecated `vm2` in the working forks, and the underlying ToS/copyright exposure of `.wxapkg` decompilation. [推断]
 
@@ -122,4 +143,4 @@ But note what you're actually reaching for: **not this repo.** `xdmjun/wxappUnpa
 - [推断] The owner likely scrubbed the repo themselves over legal/ToS concerns, but the motive is unconfirmed.
 - [未验证] This repo's original README, supported scope, and exact tech stack were overwritten; function and dependencies here are reconstructed from the `PyCoreDev` fork, which mirrors the `qwerty472123` lineage but may not be byte-identical to what `xdmjun` once shipped.
 - [推断] `vm2`'s deprecation and sandbox-escape CVE history are well established; exploitability in this specific usage was not audited.
-- [未验证] GPL-3.0-or-later is taken from the forks' `package.json`; the `xdmjun` repo ships no LICENSE file, so its actual terms are undefined.
+- [未验证] The frontmatter records `NONE` because the `xdmjun` repo ships no LICENSE file (GitHub API `license: null`, 2026-10-08); GPL-3.0-or-later comes from the forks' `package.json`, which is not a LICENSE file, so the terms of the original code are not settled either.

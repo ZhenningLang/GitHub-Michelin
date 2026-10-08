@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "The scripts do", "zh": "脚本做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch and the ImageCaptcha generator; set the charset and length in its settings file", "zh": "装好 PyTorch 和 captcha 库，在设置文件里定字符集和位数", "code": "pip install captcha · captcha_setting.py"},
+    {"lane": "you", "en": "Run the generator to make auto-labeled synthetic captchas", "zh": "运行生成脚本，造出自带标注的合成验证码", "code": "python captcha_gen.py"},
+    {"lane": "them", "en": "Writes images into dataset/train/, the answer encoded in each file name", "zh": "把图片写进 dataset/train/，答案就编在文件名里"},
+    {"lane": "you", "en": "Start training", "zh": "开始训练", "code": "python captcha_train.py"},
+    {"lane": "them", "en": "Trains a small CNN whose output has one score slice per character position; saves model.pkl", "zh": "训练一个小 CNN，输出按字符位置切成若干段打分，存成 model.pkl", "component": {"en": "captcha_cnn_model.py", "zh": "captcha_cnn_model.py"}},
+    {"lane": "you", "en": "Run prediction on the images in the predict folder", "zh": "对 predict 目录里的图片跑预测", "code": "python captcha_predict.py"},
+    {"lane": "them", "en": "Picks the top-scoring character in each slice and prints the 4-character code", "zh": "每段取得分最高的字符，拼出 4 位验证码打印出来"}
+  ],
+  "value": {"en": "A readable end-to-end baseline: no character segmentation, no hand labeling — the generator labels the data for you", "zh": "一个读得懂的端到端基线：不切字符、不手工标注，标注由生成器顺带完成"},
+  "sources": [
+    "https://github.com/dee1024/pytorch-captcha-recognition#快速开始 (pip install captcha; python captcha_gen.py → dataset/train/; python captcha_train.py → model.pkl; python captcha_test.py; python captcha_predict.py)",
+    "https://github.com/dee1024/pytorch-captcha-recognition/blob/master/captcha_setting.py (ALL_CHAR_SET, MAX_CAPTCHA = 4, dataset paths)",
+    "https://github.com/dee1024/pytorch-captcha-recognition/blob/master/captcha_cnn_model.py (3 conv blocks + FC to MAX_CAPTCHA*ALL_CHAR_SET_LEN outputs)",
+    "https://github.com/dee1024/pytorch-captcha-recognition/blob/master/captcha_predict.py (argmax per 36-wide slice, c0..c3 concatenated)"
+  ]
+}

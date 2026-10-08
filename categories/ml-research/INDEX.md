@@ -16,7 +16,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **context-language-models** | Use it to study or benchmark letting an agent's model edit its own live context (a mirrored transcript file it rewrites with bash) on Harbor tasks, with FLOPs accounting and an SGLang KV-reuse patch — paper code under CC BY-NC 4.0, non-commercial only. | D (4/6) | [→](context-language-models.md) |
-| **llm-circuit-finder** | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. | D (4/6) | [→](llm-circuit-finder.md) |
+| **llm-circuit-finder** | Use it when you have a local GGUF model and want to search which contiguous layer block to duplicate in the forward pass, then measure it with probes and lm-evaluation-harness — but gains are trade-offs (Devstral's average dropped) and it is a one-off GGUF-only demo. | D (4/6) | [→](llm-circuit-finder.md) |
 | **pymoo** | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. | B (6/6) | [→](pymoo.md) |
 
 ## Comparison matrix
@@ -24,7 +24,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [context-language-models](context-language-models.md) | ✅ | D (4/6) | Use it to study or benchmark letting an agent's model edit its own live context (a mirrored transcript file it rewrites with bash) on Harbor tasks, with FLOPs accounting and an SGLang KV-reuse patch — paper code under CC BY-NC 4.0, non-commercial only. |
-| [llm-circuit-finder](llm-circuit-finder.md) | ✅ | D (4/6) | Python toolkit that searches a GGUF model for contiguous reasoning-circuit layer blocks and duplicates them in the forward pass (no training, no weight edits), validated with built-in probes. |
+| [llm-circuit-finder](llm-circuit-finder.md) | ✅ | D (4/6) | Buys training-free layer-surgery experiments on consumer GPUs; costs a shifted rather than improved capability profile and an unreleased, untested single-author codebase to adapt. |
 | [pymoo](pymoo.md) | ✅ | B (6/6) | Use it as the de-facto Python library for evolutionary multi-objective optimization (NSGA-II/III, MOEA/D) to find Pareto fronts — for convex/linear/single-objective problems an LP/gradient solver is far faster. |
 | TransformerLens / minGPT | 未收录 | — | Other research demos / interpretability libs named across the pages. |
 

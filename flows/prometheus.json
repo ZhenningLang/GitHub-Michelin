@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Prometheus does", "zh": "Prometheus 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the Prometheus server; its UI and API listen on port 9090", "zh": "启动 Prometheus 服务，界面和 API 在 9090 端口", "code": "docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus"},
+    {"lane": "you", "en": "Expose a /metrics page from your service with a client library, or run an exporter", "zh": "用客户端库让服务暴露 /metrics 页面，或者跑一个 exporter"},
+    {"lane": "you", "en": "List the targets to scrape and how often in prometheus.yml", "zh": "在 prometheus.yml 里列出要抓取的目标和间隔", "code": "scrape_configs"},
+    {"lane": "them", "en": "Pulls every target's /metrics over HTTP on each interval and stores the samples locally", "zh": "每个间隔通过 HTTP 拉取各目标的 /metrics，样本存进本地时序库", "component": {"en": "scraper + local TSDB", "zh": "抓取器 + 本地时序库"}},
+    {"lane": "you", "en": "Write PromQL for graphs and alert rules", "zh": "用 PromQL 写图表查询和告警规则", "code": "rate(prometheus_tsdb_head_chunks_created_total[1m])"},
+    {"lane": "them", "en": "Evaluates the rules continuously and sends firing alerts to Alertmanager", "zh": "持续计算规则，把触发的告警发给 Alertmanager", "component": {"en": "rule manager", "zh": "规则管理器"}}
+  ],
+  "value": {"en": "Every service's health as queryable numbers, and a page when a rule crosses its threshold — with no external database", "zh": "所有服务的健康状况都变成可查询的数字，规则越线就告警——不需要外部数据库"},
+  "sources": [
+    "https://github.com/prometheus/prometheus/blob/main/README.md (docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus; pull model; no dependency on distributed storage)",
+    "https://github.com/prometheus/prometheus/blob/main/documentation/examples/prometheus.yml (scrape_configs, rule_files, alerting.alertmanagers)",
+    "https://github.com/prometheus/prometheus/blob/main/docs/getting_started.md (rate(prometheus_tsdb_head_chunks_created_total[1m]); /metrics endpoint)"
+  ]
+}

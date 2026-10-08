@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them":  {"en": "verl does", "zh": "verl 做的"},
+  "steps": [
+    {"lane": "you", "en": "Use the recommended Docker image, or let uv build the env from uv.lock", "zh": "用推荐的 Docker 镜像，或让 uv 按 uv.lock 建环境", "code": "uv run --frozen --all-packages --extra vllm --extra fsdp"},
+    {"lane": "you", "en": "Convert your dataset to parquet with the fields the reward needs", "zh": "把数据集转成带奖励所需字段的 parquet", "code": "python3 examples/data_preprocess/gsm8k.py --local_save_dir ~/data/gsm8k"},
+    {"lane": "you", "en": "Launch the trainer with overrides for data, model, rollout engine and GPUs", "zh": "启动训练器，覆盖数据、模型、生成引擎和 GPU 配置", "code": "python3 -m verl.trainer.main_ppo"},
+    {"lane": "them", "en": "Starts Ray and places actor, rollout, reference and critic workers on GPUs", "zh": "拉起 Ray，把演员、生成、参考、评论家工作进程放到 GPU 上", "component": {"en": "single-controller trainer", "zh": "单控制器训练器"}},
+    {"lane": "them", "en": "vLLM or SGLang generates answers; your reward scores them; advantages computed", "zh": "vLLM 或 SGLang 生成回答，你的奖励打分，算出优势"},
+    {"lane": "them", "en": "FSDP or Megatron updates the actor, reshards weights to the rollout engine, checkpoints", "zh": "FSDP 或 Megatron 更新演员，权重重分片回生成引擎并存档", "component": {"en": "3D-HybridEngine", "zh": "3D-HybridEngine"}}
+  ],
+  "value": {"en": "An RL run whose generation and training engines share or split GPUs efficiently, with no weight-sync glue to write", "zh": "一次生成与训练高效共用或分用 GPU 的 RL 训练，不用自己写权重同步胶水"},
+  "sources": [
+    "docs/start/quickstart.rst @ 2026-10-08: Docker image recommended; 'UV_RUN=\"uv run --frozen --all-packages --extra vllm --extra fsdp\"'; 'python3 examples/data_preprocess/gsm8k.py --local_save_dir ~/data/gsm8k'; 'python3 -m verl.trainer.main_ppo' with data.*, actor_rollout_ref.model.path, 'actor_rollout_ref.rollout.name=vllm', trainer.n_gpus_per_node, trainer.save_freq; GPU with at least 24 GB",
+    "README.md @ 2026-10-08: hybrid-controller programming model; FSDP/FSDP2/Megatron-LM training, vLLM/SGLang/HF rollout; '3D-HybridEngine' actor resharding between training and generation",
+    "docs/start/install.rst @ 2026-10-08: Python >= 3.10, CUDA >= 12.8, choose vllm or sglang extra"
+  ]
+}

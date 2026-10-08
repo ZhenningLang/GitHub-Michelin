@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "book-to-skill does", "zh": "book-to-skill 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into your agent as a skill", "zh": "把它作为技能装进你的智能体", "code": "npx skills add virgiliojr94/book-to-skill"},
+    {"lane": "you", "en": "Point it at a book, a folder or a glob", "zh": "指向一本书、一个目录或一个通配路径", "code": "/book-to-skill ./my-book.pdf"},
+    {"lane": "them", "en": "Asks technical or text-heavy, then extracts clean text with the matching tool", "zh": "先问是技术书还是文字书，再用对应工具提取干净文本", "component": {"en": "Python extractor", "zh": "Python 提取器"}},
+    {"lane": "them", "en": "Has your agent's model write SKILL.md plus one file per chapter, glossary and cheatsheet", "zh": "让你的智能体模型写出 SKILL.md、每章一个文件、术语表和速查表", "component": {"en": "SKILL.md generator spec", "zh": "SKILL.md 生成规范"}},
+    {"lane": "you", "en": "Later, ask the new skill about a topic", "zh": "之后按主题向这个新技能提问", "code": "/my-book replication"},
+    {"lane": "them", "en": "Loads only the matching chapter and answers from its notes", "zh": "只加载对应的那一章，依据其中的笔记作答"}
+  ],
+  "value": {"en": "The book is on tap in every session for a few thousand tokens instead of the whole text", "zh": "每个会话只花几千 token 就能随时调用这本书，而不是整本塞进上下文"},
+  "sources": [
+    "https://github.com/virgiliojr94/book-to-skill README (How it works in 3 steps: /book-to-skill ./my-book.pdf, /my-book replication; What it generates; Install: npx skills add virgiliojr94/book-to-skill)",
+    "https://github.com/virgiliojr94/book-to-skill/blob/master/docs/how-it-works.md (technical vs text-heavy choice, extractor then agent-generated SKILL.md, chapter files, glossary, patterns, cheatsheet)"
+  ]
+}

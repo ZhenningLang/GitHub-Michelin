@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Tauri does",
+    "zh": "Tauri 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold an app and pick your frontend framework",
+      "zh": "生成项目骨架，选好前端框架",
+      "code": "npm create tauri-app@latest"
+    },
+    {
+      "lane": "you",
+      "en": "Put native work in a Rust function and mark it as a command",
+      "zh": "把原生能力写成 Rust 函数，标成命令",
+      "code": "#[tauri::command]"
+    },
+    {
+      "lane": "you",
+      "en": "Call that command from your frontend code",
+      "zh": "在前端代码里调用这个命令",
+      "code": "invoke(\"my_custom_command\")"
+    },
+    {
+      "lane": "you",
+      "en": "Start the dev loop",
+      "zh": "启动开发模式",
+      "code": "npm run tauri dev"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles the Rust side, opens a native window and renders your UI in the OS webview",
+      "zh": "编译 Rust 部分，打开原生窗口，用系统自带的 webview 渲染界面",
+      "component": {
+        "en": "WRY + TAO",
+        "zh": "WRY + TAO"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Passes each invoke call across the bridge to your Rust function and back",
+      "zh": "把每次 invoke 经桥接层转给你的 Rust 函数，再把结果送回"
+    },
+    {
+      "lane": "you",
+      "en": "Build release bundles",
+      "zh": "打发布包",
+      "code": "npm run tauri build"
+    },
+    {
+      "lane": "them",
+      "en": "Produces .msi/.exe, .app/.dmg, .deb/.rpm/.AppImage installers with no bundled browser",
+      "zh": "产出 .msi、.dmg、.AppImage 等原生安装包，不带浏览器内核",
+      "component": {
+        "en": "tauri-bundler",
+        "zh": "tauri-bundler"
+      }
+    }
+  ],
+  "value": {
+    "en": "A desktop app built from your web skills, whose installer does not carry its own copy of Chromium",
+    "zh": "用 Web 技能做出桌面应用，安装包里不用捎带一整个 Chromium"
+  },
+  "sources": [
+    "https://github.com/tauri-apps/tauri README (npm create tauri-app@latest, WRY/TAO, system webviews, bundle formats .app .dmg .deb .rpm .AppImage NSIS .exe WiX .msi)",
+    "https://v2.tauri.app/develop/calling-rust/ (#[tauri::command], invoke(\"my_custom_command\"))",
+    "https://v2.tauri.app/start/create-project/ (npm run tauri dev)",
+    "https://v2.tauri.app/distribute/ (npm run tauri build)"
+  ]
+}

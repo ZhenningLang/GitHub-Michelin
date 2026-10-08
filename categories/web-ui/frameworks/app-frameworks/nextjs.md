@@ -3,23 +3,23 @@ name: Next.js
 slug: nextjs
 repo: https://github.com/vercel/next.js
 category: app-frameworks
-tags: [nextjs, react, ssr, ssg, fullstack, vercel, typescript, app-router, edge]
+tags: [nextjs, react, ssr, ssg, fullstack, vercel, typescript, app-router, server-components, turbopack]
 language: TypeScript / JavaScript
 license: MIT
-maturity: v15.x, stable, ~138k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v16.4.0 stable (2026-10-07), v16.5 in canary, ~143.2k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-06T08:21:40Z
+  pushed_at: 2026-10-08T08:29:27Z
   default_branch: canary
-  default_branch_sha: 00598045032a0e5b313de7b6ef0af60ed9390c2a
+  default_branch_sha: 25cfbd6ac1caf1e68f8752182815a663f7a57ae3
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:17:48Z
-  overall: A
-  overall_score: 3.83
-  scored_axes: 6
+  computed_at: 2026-10-08T08:29:24Z
+  overall: B
+  overall_score: 3.4
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -33,37 +33,31 @@ health:
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: B
-      raw:
-        median_ttfr_hours: 23.7
-        qualifying_issues: 3
-        band: default
-        window_offset_days: 9
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
-      grade: A
+      grade: D
       raw:
         registry: npmjs.org
-        canonical_package: next
-        dependent_repos_count: 345645
-        downloads_last_month: 192615857
-        graph_tier: A
-        volume_tier: A
-        cross_check_divergence: 1.03
+        canonical_package: "@vercel/devlow-bench"
+        dependent_repos_count: 0
+        downloads_last_month: 10618
+        graph_tier: E
+        volume_tier: D
+        cross_check_divergence: null
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3639
+        repo_age_days: 3654
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 79
-        top1_share: 0.098
-        top3_share: 0.276
+        active_maintainers_12mo: 80
+        top1_share: 0.093
+        top3_share: 0.273
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -73,85 +67,106 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Next.js
 
-
-The default full-stack React framework, created and maintained by Vercel. Ships with App Router, React Server Components, automatic static optimization, ISR, and a built-in API layer — with tight Vercel integration as the "happy path."
-
+Your React single-page app shows Google an empty `<div id="root">`, the first screen takes seconds while a JavaScript bundle downloads, and every feature needs a matching endpoint in a separate API service. Next.js renders your React components on the server and lets the same codebase hold its backend routes, so pages arrive as real HTML and the frontend and backend ship together.
 
 ![Next.js — health radar](../../../../assets/health/nextjs.svg)
 
 ## When to use
 
-You're a product team building a modern web application that needs to balance SEO, performance, and dynamic interactivity. You start with a simple React SPA but soon hit a wall: search engines can't index your client-rendered content, initial page loads are slow, and your "backend" is a separate API service you have to deploy and maintain. You reach for Next.js because it lets you stay in the React ecosystem while solving these problems natively. You write React components, but some of them render on the server — sending HTML to the browser for instant first paint — while others hydrate into fully interactive client components. You add API routes directly in the same codebase, so your frontend and backend share types, utilities, and deployment. You deploy to Vercel and get edge caching, image optimization, and incremental static regeneration without configuring a CDN. For you, Next.js is the pragmatic choice when "React plus a full-stack framework" is the requirement, not "React plus a week of architecture decisions."
+You're a product team building a web application that has to be both findable and interactive: a marketplace, a SaaS dashboard with public marketing pages, a content site with logged-in features. You started with a client-rendered React SPA and hit the wall — "View source" on a product page shows no product, Lighthouse flags a slow first paint, and your "backend" is a second service with its own deploy pipeline and duplicated types. You reach for Next.js because it lets you stay in React while fixing all three: components render on the server by default and only the interactive pieces ship JavaScript, route handlers and server actions live in the same repo and share your types, and the build decides per route whether to prerender, cache or render on demand.
+
+The deciding tradeoff against its neighbours is *ecosystem and defaults versus simplicity and neutrality*. Against [React](../view-frameworks/react.md) alone with a bundler you trade freedom for routing, rendering and data fetching already decided. Against React Router's framework mode (the former Remix) or TanStack Start you get the largest community, template and hiring pool among React meta-frameworks, but accept a more opinionated caching model and a roadmap set by one vendor, Vercel. If your team writes Vue or Svelte, the same role is played by [Nuxt](nuxt.md) or [SvelteKit](sveltekit.md).
+
+## How it works
+
+Next.js is a framework around React: you write components, and it decides where and when they run. Your folders are your URLs — `app/blog/[slug]/page.tsx` becomes `/blog/:slug` — and every page and layout is a *server component* by default, meaning it runs only on the server (or at build time), can `await` a database query directly, and sends the browser finished HTML plus a compact description of the tree instead of its code. Components that need clicks or browser APIs opt in with `'use client'`, and only those are bundled for the browser. Next.js owns the plumbing: routing, bundling with Turbopack (its Rust-based bundler, default for both `next dev` and `next build` since v16), code splitting per route, caching and revalidating rendered output, image and font optimization, and streaming slow parts of a page in later. You own the components, the data access, and the decision of where to host — `next start` on any Node.js server or container supports every feature, static export supports a subset, and platform adapters (Vercel's own among them) customize the build for specific hosts. Think of it as a restaurant kitchen layout where the pass, the ovens and the order tickets are already installed: you cook, it routes the plates.
+
+![nextjs — backbone user story](../../../../assets/flow/nextjs.svg)
+
+<!-- flow-steps:begin (generated from flows/nextjs.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Scaffold a new app with TypeScript and Tailwind in one command — `npx create-next-app@latest my-app --yes`
+2. **You**: Add a route by creating a folder with a page file; fetch data right inside it — `app/blog/[slug]/page.tsx`
+3. **You**: Mark only the interactive pieces as client components — `'use client'`
+4. **Next.js**: Renders server components on the server, caches or streams the HTML to the browser — component: `App Router + Server Components`
+5. **Next.js**: Bundles per route and ships JavaScript only for the client components — component: `Turbopack`
+6. **You**: Build once and run it on any Node.js host, container or adapter platform — `next build · next start`
+
+**Value**: One React codebase that serves fast, indexable HTML and its own backend endpoints — no separate API service or SSR plumbing to build
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **If you need a simple content-heavy static site without React interactivity, use Astro instead of Next.js, because** Next.js is a React framework at its core. For blogs, documentation, and marketing sites that are mostly static text, Astro's islands architecture delivers smaller bundles and faster loads.
-- **If you want to avoid vendor lock-in and Vercel-specific deployment, use Remix or Nuxt instead of Next.js, because** while Next.js is MIT-licensed, some features (Edge runtime, image optimization, certain caching behaviors) are designed around Vercel's infrastructure. Self-hosting is possible but you will fight the framework to match the "happy path" experience.
-- **If your team uses Vue, Angular, or Svelte, use Nuxt, Angular, or SvelteKit instead of Next.js, because** Next.js is React-only. There is no incremental adoption path from other frameworks.
-- **If you need a lightweight client-side SPA without server rendering, use Vite + React instead of Next.js, because** Next.js's server-rendering pipeline, file-system routing, and build complexity are overkill for a simple SPA. You will carry unnecessary overhead.
-- **If you are unwilling to accept framework opinionation, do not use Next.js, because** Next.js is highly opinionated about routing, data fetching, and rendering modes. Fighting the framework (e.g., custom routing, bypassing the App Router conventions) leads to pain and workaround code.
-- **If you need zero backend or Node.js runtime, use a static site generator or JAMstack host instead of Next.js, because** Next.js requires a Node.js runtime for SSR, API routes, and middleware. Even "static export" mode has limitations compared to purpose-built static generators.
+- **If you are building a mostly static content site (blog, docs, marketing), use [Astro](../site-frameworks/astro.md) instead of Next.js, because** Astro ships zero JavaScript by default and hydrates only the interactive islands, while Next.js still carries the React runtime and its router to every page.
+- **If you want a lean client-only SPA (an internal tool behind login, no SEO), use [React](../view-frameworks/react.md) with Vite instead of Next.js, because** server rendering, the caching model and server/client component boundaries add concepts and failure modes you get no benefit from.
+- **If you self-host and cannot commit to a fast security patch cadence, prefer a smaller-surface stack (a plain React SPA plus your existing API, or React Router's framework mode) over Next.js, because** Next.js published 41 security advisories between January and early October 2026 alone — 3 critical (including remote code execution in image handling) and 14 high, many of them middleware/proxy bypasses and cache poisoning in self-hosted setups. Running it safely means upgrading within days, not quarters.
+- **If you want to stay away from a single vendor's roadmap, use React Router's framework mode (formerly Remix, not indexed) or TanStack Start (not indexed) instead of Next.js, because** Vercel employs the core team and sets direction; self-hosting on Node.js or Docker is officially supported for all features, but the defaults, docs and newest features are shaped around Vercel's platform first.
+- **If your team writes Vue or Svelte, use [Nuxt](nuxt.md) or [SvelteKit](sveltekit.md) instead of Next.js, because** Next.js is React-only.
+- **If you cannot absorb churn in rendering and caching APIs, think twice before adopting the newest App Router features, because** the App Router (v13), async request APIs (v15), and the `middleware` → `proxy` rename plus Turbopack-by-default builds (v16) each forced migrations; a custom `webpack` config now makes `next build` fail until you migrate it or pass `--webpack`.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [Angular](../view-frameworks/angular.md) | ✅ | Full-stack TypeScript framework with deep enterprise tooling and strong opinions. | Angular ships more built-in features and is framework-agnostic of React; Next.js dominates the React SSR/SSG niche and has a larger React job market. |
-| [React](../view-frameworks/react.md) | ✅ | Choose React alone when you want the UI library without Next.js routing, SSR, or full-stack conventions. | React alone gives you maximum flexibility and smaller bundles; Next.js gives you routing, SSR, and full-stack conventions but adds complexity. |
-| [Vue.js](../view-frameworks/vue.md) | ✅ | Choose Vue when you want a progressive non-React framework that is easier to adopt incrementally. | Vue is framework-agnostic and easier to adopt incrementally; Next.js is React-only and more opinionated. |
-| [Svelte](../view-frameworks/svelte.md) | ✅ | Choose Svelte when you want the compile-time component model without committing to React. | Svelte is leaner and simpler for component-heavy small-to-medium apps; Next.js has a vastly larger ecosystem and job market. |
-| [SvelteKit](sveltekit.md) | ✅ | Choose SvelteKit when you want a leaner full-stack framework built around Svelte's compile-time model. | SvelteKit is leaner and simpler for small-to-medium apps; Next.js has a vastly larger ecosystem, more mature tooling, and deeper job market. |
-| Nuxt.js | 未收录 | Full-stack Vue framework — the Vue ecosystem's equivalent of Next.js. | Nuxt is for Vue teams; Next.js is for React teams. The choice is usually determined by your UI framework preference. |
-| Remix | 未收录 | Full-stack React framework focused on web standards, progressive enhancement, and less vendor coupling. | Remix is less opinionated about deployment and avoids some Vercel-specific features; Next.js has more built-in optimizations (image, font, script) and a larger community. |
-| [Astro](../site-frameworks/astro.md) | ✅ | Content-focused static site builder with islands architecture and multi-framework support. | Astro is better for static content sites and mixed-framework projects; Next.js is better for dynamic, full-stack React applications with heavy interactivity. |
+| [React](../view-frameworks/react.md) | ✅ | For a client-only app with no SEO need, pick React with Vite; pick Next.js when server rendering, file routing and backend endpoints in one codebase are the point. | React alone keeps the stack small and fully under your control; Next.js adds routing, SSR and caching conventions at the cost of more concepts and a bigger security surface. |
+| React Router (framework mode, formerly Remix) | not indexed | When you want server rendering in React with web-standard request/response handling and no dominant hosting vendor, pick React Router's framework mode; pick Next.js when its larger ecosystem and built-in image/font optimization matter more. | React Router keeps closer to web standards and is less tied to one platform; Next.js has the bigger community, more templates and more batteries included. |
+| TanStack Start | not indexed | If your team already uses TanStack Router or Query and wants type-safe routing with explicit server functions, evaluate TanStack Start; pick Next.js for the mature, widely hired default. | TanStack Start offers end-to-end type safety and less implicit caching; Next.js offers years of production use and far more learning material. |
+| [Nuxt](nuxt.md) | ✅ | For a Vue team, pick Nuxt; pick Next.js for a React team — the UI framework your team already writes decides this row. | Both cover SSR, file routing and server routes; Nuxt brings the Vue ecosystem, Next.js the larger React one. |
+| [SvelteKit](sveltekit.md) | ✅ | For small-to-medium apps where bundle size and simplicity outweigh hiring pool, pick SvelteKit; pick Next.js when you need the React ecosystem and a large talent market. | SvelteKit ships less JavaScript and has fewer concepts; Next.js has a vastly larger ecosystem of libraries, components and developers. |
+| [Astro](../site-frameworks/astro.md) | ✅ | For content-heavy, mostly static sites, pick Astro; pick Next.js for dynamic, logged-in applications with heavy interactivity. | Astro sends near-zero JavaScript and mixes UI frameworks; Next.js handles app-like interactivity and server logic but costs more client JavaScript per page. |
+| [Angular](../view-frameworks/angular.md) | ✅ | For a large enterprise team that wants one batteries-included, strongly structured TypeScript framework with long support windows, pick Angular; pick Next.js when the team is React-based. | Angular bundles DI, forms, routing and SSR under one Google-backed release train; Next.js rides React's ecosystem and moves faster, with more breaking churn. |
 
 ## Tech stack
 
-- **React** — the underlying UI library; Next.js is a React framework
-- **TypeScript / JavaScript** — primary development languages; first-class TS support
-- **Node.js** — runtime for SSR, API routes, middleware, and the build process
-- **Turbopack** — Rust-based bundler, successor to Webpack, used in development (production builds still use Webpack as of v15, with Turbopack targeting production)
-- **React Server Components** — server-side component rendering in the App Router (v13+), enabling zero-client-js server UI
-- **Edge Runtime** — lightweight V8 isolate for Edge API routes, middleware, and Vercel Edge Functions
-- **Built-in optimizations** — image optimization (`next/image`), font optimization (`next/font`), and script optimization (`next/script`)
-- **ISR (Incremental Static Regeneration)** — hybrid static/dynamic rendering that updates pages in the background without full rebuilds
+- **React** — the UI layer; the App Router builds on React Server Components, Server Actions and React 19.2 features; the Pages Router remains supported.
+- **TypeScript / JavaScript** — first-class TypeScript; `create-next-app` defaults to TypeScript, Tailwind CSS, ESLint and the App Router.
+- **Node.js** — runtime for the server, route handlers, server actions and `proxy` (the v16 name for middleware, Node.js runtime only); the Edge runtime remains available for `middleware`.
+- **Turbopack** — Rust-based bundler, default for `next dev` and `next build` since v16, with on-disk caching; webpack stays available via `--webpack`.
+- **Rendering & caching** — static prerendering, server rendering, streaming, incremental regeneration and Cache Components (`use cache`, `cacheLife`, `cacheTag`); optional React Compiler support.
+- **Built-in optimizations** — `next/image`, `next/font`, `next/script`.
+- **Version (2026-10-08)** — v16.4.0 stable (2026-10-07); v16.0.0 shipped 2025-10-22; daily canary releases on the `canary` default branch.
 
 ## Dependencies
 
-- **Node.js (LTS recommended)** — required for the build, dev server, SSR, and API routes
-- **React 18+** — peer dependency; Next.js is a React framework and cannot be used without React
-- **A package manager** — npm, yarn, pnpm, or bun
-- **Optional: Vercel** — for the "happy path" deployment with all features (Edge, image optimization, ISR) working out of the box
-- **Optional: Docker / container platform** — for self-hosting the Node.js server in production
-- **Optional: Database / ORM** — for full-stack data layers (Prisma, Drizzle, Mongoose, etc. are common pairings)
-- **Optional: Redis / cache layer** — for ISR revalidation, session storage, or rate limiting in self-hosted setups
+- **Node.js 20.9 or newer** — required for the build, dev server and production server.
+- **React and React DOM** — peer dependencies, `^18.2.0` or `^19`; App Router features target React 19.
+- **A package manager** — npm, pnpm, yarn or bun.
+- **Optional: hosting platform or adapter** — Vercel, or another host via a deployment adapter; plain Node.js servers and Docker run all features.
+- **Image optimization on self-hosted servers** — `next/image` runs in-process; the self-hosting guide warns that on glibc-based Linux it may need Sharp's memory-allocator configuration to avoid excessive memory use.
+- **Optional: shared cache store** — a custom cache handler (the docs ship a Redis example) when several self-hosted instances or pods must share cached output; the default cache is in memory and on local disk, per instance.
 
 ## Ops difficulty
 
-**Medium to High**. Next.js is a full-stack framework with a complex build system and multiple rendering modes (SSG, SSR, ISR, client-side, Edge). Deploying on Vercel is the "happy path" — largely zero-config with edge caching, image optimization, and serverless scaling. Self-hosting increases complexity significantly:
-- You must run a Node.js server for SSR, API routes, and middleware; static export mode exists but sacrifices many features
-- ISR requires a persistent cache and invalidation strategy; self-hosting means you manage this yourself
-- Image optimization (`next/image`) works best with Vercel's edge infrastructure; self-hosting requires a custom loader or a compatible image optimization service
-- Middleware and Edge API routes require a V8-isolate-compatible runtime (Node.js 18+ or a custom Edge runtime)
-- Build times can be long for large applications; Turbopack improves development speed but production build optimization remains compute-heavy
-- The App Router (v13+) introduces new concepts (Server Components, Server Actions, parallel routes) that increase mental overhead and migration cost
+**Medium on a managed platform, medium-to-high self-hosted.** On Vercel (or another platform with a verified adapter) deployment is close to zero-config. Self-hosting is officially supported and runs every feature, but the work moves to you:
+- Run `next build` + `next start` (or the `output: "standalone"` Docker image) behind a reverse proxy, and size memory for server rendering.
+- With more than one instance, configure a shared cache handler, or cached pages and revalidation diverge between instances.
+- Keep up with security releases — the 2026 advisory volume (cache poisoning, proxy bypass, SSRF, image optimizer RCE) makes "upgrade within days" an operational requirement.
+- Major upgrades come roughly yearly with codemods (`npx @next/codemod`) and an AI-agent upgrade path in the docs; budget time for caching and request-API changes.
+- Large apps still have heavy builds; Turbopack's filesystem cache reduces rebuild time.
 
 ## Health & viability
 
-- **Maintenance**: Actively maintained by Vercel with a fast release cadence. The default branch is `canary`, and major versions ship roughly annually. The repo shows consistent daily activity.
-- **Governance / bus factor**: Single-vendor governance — Vercel owns the roadmap and employs the core maintainers. The MIT license permits forks, but the ecosystem (templates, tutorials, deployment guides) is Vercel-centric.
-- **Backing & longevity**: Vercel is a well-funded company and Next.js is its flagship open-source project. First released in 2016 (~8 years old), making it a strong Lindy prior for a React framework — old enough to have survived multiple paradigm shifts, still actively maintained.
-- **Adoption & ecosystem**: The dominant full-stack React framework with ~138k GitHub stars and massive production adoption. Largest ecosystem of starter templates, third-party integrations, and hiring market among React meta-frameworks.
-- **Risk flags**: Vendor lock-in tension — some features are optimized for Vercel and degrade or require extra configuration when self-hosted. The App Router migration (v13+) was controversial and disruptive for teams using the Pages Router. No relicense history (remains MIT).
+- **Maintenance (2026-10-08):** extremely active — maintenance grade A, commits every week, a stable release on 2026-10-07 and canary builds most days.
+- **Responsiveness:** could not be scored this round (no usable issue-response window in the scorer); the repo carries 3,500+ open issues and pull requests, so do not expect quick answers on niche bugs. [推断]
+- **Governance & backing:** governance grade A on contributor spread — dozens of active maintainers and no single dominant committer — but it is single-vendor governance: Vercel employs the core team and owns the roadmap. Vercel is well funded and Next.js is its flagship.
+- **Age & Lindy:** open-sourced in 2016 and still shipping majors — about ten years, longevity grade A; it has survived the Pages→App Router and webpack→Turbopack shifts.
+- **Adoption:** the radar's adoption grade D is a scorer artifact — it resolved the project to `@vercel/devlow-bench`, an internal benchmarking package in the monorepo, instead of the `next` package. On the real package, Next.js is the most-used React meta-framework on npm by a wide margin; the overall radar score is understated as a result.
+- **Risk flags:** MIT with no relicense history. The live risks are the 2026 security-advisory volume and vendor-shaped defaults, not license or abandonment.
 
 ## Caveats (unverified)
 
-- [推断] The exact proportion of Next.js features that degrade when self-hosted versus deployed on Vercel has not been independently benchmarked.
-- [未验证] ~138k GitHub stars as of 2026-07; star counts are approximate and time-sensitive.
-- [未验证] Turbopack production readiness and exact build-time performance gains over Webpack are based on Vercel marketing claims and may vary by application.
-- [推断] The App Router migration friction for existing teams depends heavily on Pages Router usage patterns and third-party library compatibility.
-- [推断] The future direction of React Server Components and Server Actions may shift Next.js architecture significantly; long-term stability of the App Router model is still being proven in production at scale.
+- [未验证] npm reported 253,413,359 downloads of `next` for 2026-09-05 → 2026-10-04 (npm downloads API, read 2026-10-08); this is the figure the scorer should have used.
+- [未验证] Advisory counts (41 in 2026, 3 critical, 14 high) come from GitHub's repository security advisories API on 2026-10-08; severity is as published by Vercel.
+- [推断] The degree to which the newest features land first or best on Vercel's platform is inferred from defaults and docs emphasis; it has not been benchmarked.
+- [未验证] ~143.2k GitHub stars as of 2026-10-08; star counts are approximate and time-sensitive.
+- [推断] The long-term stability of the Cache Components model is still being proven at scale; caching APIs have changed across v14, v15 and v16.

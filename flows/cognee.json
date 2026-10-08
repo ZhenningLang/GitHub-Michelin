@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Cognee does", "zh": "Cognee 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it; the gliner extra allows extraction with no LLM key", "zh": "安装；带上 gliner 扩展就能不用 LLM key 做抽取", "code": "uv pip install \"cognee[gliner]\""},
+    {"lane": "you", "en": "Feed it text, documents or code into a named dataset", "zh": "把文本、文档或代码喂进一个命名数据集", "code": "await cognee.remember(text, dataset_name=...)"},
+    {"lane": "them", "en": "Chunks it and extracts entities and relationships into a graph", "zh": "切块，抽出实体和关系写进图谱", "component": {"en": "GLiNER or LLM extraction", "zh": "GLiNER 或 LLM 抽取"}},
+    {"lane": "them", "en": "Embeds the chunks and stores graph, vectors and metadata in local files", "zh": "给文本块做 embedding，把图、向量、元数据存进本地文件", "component": {"en": "SQLite · LanceDB · graph engine", "zh": "SQLite · LanceDB · 图引擎"}},
+    {"lane": "you", "en": "Ask a question against that dataset", "zh": "对这个数据集提问", "code": "await cognee.recall(question, datasets=[...])"},
+    {"lane": "them", "en": "Routes the question to graph traversal and/or vector search and returns the evidence", "zh": "把问题分派给图遍历和 / 或向量检索，返回证据"}
+  ],
+  "value": {"en": "Multi-hop answers over connected sources without assembling a chunker, extractor, graph DB and vector store yourself", "zh": "跨关联资料的多跳回答，而不用自己拼切块器、抽取器、图数据库和向量库"},
+  "sources": [
+    "https://github.com/topoteretes/cognee README (main @ 2026-10-08): Quickstart `uv pip install \"cognee[gliner]\"`; `await cognee.remember(..., dataset_name=\"local_quickstart\")`; `await cognee.recall(..., datasets=[\"local_quickstart\"])`; How Cognee works (entities, relationships, chunks; retrieval selects graph, vector or code context); remember/recall/improve/forget table",
+    ".env.template: DB_PROVIDER=sqlite, VECTOR_DB_PROVIDER=lancedb, GRAPH_DATABASE_PROVIDER=kuzu; pyproject.toml v1.6.3: ladybug graph engine, lancedb, fastembed"
+  ]
+}

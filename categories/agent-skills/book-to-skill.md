@@ -6,19 +6,19 @@ category: agent-skills
 tags: [agent-skills, pdf, claude-code, copilot, skill-generation, documentation]
 language: Python
 license: MIT
-maturity: no tagged releases, active, 7.4k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: active, v1.4.0 (2026-08-10), ~34k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-04T03:58:25Z
+  pushed_at: 2026-10-05T22:51:12Z
   default_branch: master
-  default_branch_sha: 7d3310f92e7d392cd2889a7e324b669a7e7a5084
+  default_branch_sha: e180fc46365e8c1aab0120778cc8a40b9515324b
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:43:05Z
+  computed_at: 2026-10-08T08:14:50Z
   overall: B
-  overall_score: 2.67
+  overall_score: 2.83
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 12
+        last_commit_age_days: 2
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 39.9
-        qualifying_issues: 27
+        median_ttfr_hours: 47.3
+        qualifying_issues: 37
         band: relaxed_solo
         window_offset_days: 8
         source: issue
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 145
-        last_commit_age_days: 4
+        repo_age_days: 160
+        last_commit_age_days: 2
         cohort: tool
     governance:
-      grade: B
+      grade: A
       raw:
-        active_maintainers_12mo: 41
-        top1_share: 0.447
-        top3_share: 0.617
+        active_maintainers_12mo: 51
+        top1_share: 0.396
+        top3_share: 0.571
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -74,72 +74,88 @@ health:
         relicense_36mo: false
         content_license: null
 ---
-
 # book-to-skill
 
-A Python CLI tool that turns technical book PDFs (and other document formats) into structured agent skills — installable into Claude Code, GitHub Copilot CLI, Amp, and other skill-capable harnesses.
+You bought a 400-page technical book, read it once, and three months later your coding agent either makes up what chapter 7 says or wants the whole PDF pasted in again at ~200K tokens a session. book-to-skill has your agent read the book once and write it up as a skill — a short index of the core ideas plus one small file per chapter — so later questions load only the chapter they need.
 
 ![book-to-skill — health radar](../../assets/health/book-to-skill.svg)
 
 ## When to use
 
-You're a software engineer who has accumulated a shelf of technical PDFs — language specs, framework guides, algorithm references — and you want your coding agent (Claude Code, Copilot CLI, Amp) to have that knowledge on tap while you work. Instead of manually summarizing each book or copying excerpts into context, you want a repeatable pipeline: feed the PDF into a tool, get back a structured skill with chunked, referenceable content that the agent can load on demand. You choose book-to-skill over Docling because Docling parses documents for RAG pipelines but does not output installable agent skills; you pick it over MarkItDown because MarkItDown converts to plain Markdown without the structural segmentation and SKILL.md format needed by agent harnesses; you prefer it over the NotebookLM Claude Code Skill because that queries an external Google service while book-to-skill keeps everything local and offline. You install book-to-skill, point it at a PDF directory, and it generates a skill pack ready to install into your agent harness — turning static documents into living, queryable expertise.
+You're an engineer working in Claude Code, Copilot CLI, Codex, Amp or OpenCode, and you keep a few reference books, an internal `docs/` folder or a pile of RFCs you consult constantly. Asking the agent about them fails one of two ways: it answers from vague training memory ("chapter 5 covers… something about replication"), or you paste the PDF and pay for 200K tokens on every turn while it re-reads the table of contents. You install book-to-skill as a skill, run `/book-to-skill ./designing-data-intensive-apps.pdf`, and after a one-time conversion costing roughly a dollar of model tokens you can type `/designing-data-intensive-apps replication` and get an answer grounded in that chapter's distilled notes.
+
+You pick it over [MarkItDown](../document-parsing/markitdown.md) or [Docling](../document-parsing/docling.md) because those stop at clean Markdown — the agent would still re-read the whole text each time — while book-to-skill uses them (Docling is its technical-PDF extractor) and then synthesizes the skill structure on top. You pick it over a RAG stack such as [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.md) because there is no embedding store or server to run — the result is plain Markdown files your agent already knows how to load. And you pick it over [distilly](distilly.md) when the source is knowledge to consult, not a person whose judgment and voice you want imitated.
+
+## How it works
+
+The project has two halves. A deterministic Python extractor turns each source — PDF, EPUB, DOCX, HTML, RTF, MOBI, Markdown and more — into clean text plus metadata, choosing a fast text tool for prose books or Docling for technical ones with tables and code (it asks you which kind of book it is). Then the `SKILL.md` that you installed instructs **your own agent** — the model you are already paying for — to read that text, detect the chapters, and write the output: a front-loaded `SKILL.md` with the book's core mental models and a chapter index (~4K tokens), one ~1K-token summary per chapter, a glossary, a patterns file and a cheatsheet. Think of it as your agent taking structured study notes once, so future sessions open the notebook to one page instead of re-reading the book. The files land in the shared `~/.agents/skills/<slug>/` folder (with a verified symlink into `~/.claude/skills/` under Claude Code); you choose the source, the slug, and whether to optionally publish the skill to a private GitHub repo.
+
+![book-to-skill — backbone user story](../../assets/flow/book-to-skill.svg)
+
+<!-- flow-steps:begin (generated from flows/book-to-skill.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it into your agent as a skill — `npx skills add virgiliojr94/book-to-skill`
+2. **You**: Point it at a book, a folder or a glob — `/book-to-skill ./my-book.pdf`
+3. **book-to-skill**: Asks technical or text-heavy, then extracts clean text with the matching tool — component: `Python extractor`
+4. **book-to-skill**: Has your agent's model write SKILL.md plus one file per chapter, glossary and cheatsheet — component: `SKILL.md generator spec`
+5. **You**: Later, ask the new skill about a topic — `/my-book replication`
+6. **book-to-skill**: Loads only the matching chapter and answers from its notes
+
+**Value**: The book is on tap in every session for a few thousand tokens instead of the whole text
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **Non-technical or narrative books.** If you need to process novels, essays, or unstructured prose, use Readwise or an Obsidian plugin instead of book-to-skill, because the tool is optimized for technical documentation with structured headings, code examples, and reference material.
-- **Documents you don't own or can't process.** If you need to process copyrighted material without appropriate rights, use public-domain document sources or a licensed library service instead of book-to-skill, because the tool is for your own documents and public-domain or licensed technical content.
-- **Real-time query needs.** If you need dynamic retrieval over a large document corpus with embeddings and semantic search, use a LlamaIndex RAG pipeline or FAISS + vector DB instead of book-to-skill, because this is a batch conversion tool, not a live RAG system.
-- **You need editing or authoring features.** If you need to edit, annotate, or augment the source material after conversion, use NotebookLM or manual SKILL.md authoring instead of book-to-skill, because the tool only extracts and structures content without post-conversion editing.
-- **Agent harness without skill support.** If your coding agent doesn't support the Agent Skills standard (SKILL.md) or plugin installation, use [MarkItDown](../document-parsing/markitdown.md) to convert to Markdown instead of book-to-skill, because the generated output won't be loadable in a harness without skill support.
-- **High-frequency updates.** If the source document changes frequently and you need live synchronization, use a live RAG integration with the document source instead of book-to-skill, because you'll need to re-run the conversion pipeline each time the source changes.
-- **Production-grade accuracy requirements.** If you need guaranteed preservation of subtle technical details, edge cases, or nuanced explanations, use [Docling](../document-parsing/docling.md) with manual review or write the SKILL.md by hand instead of book-to-skill, because the extraction and chunking are heuristic-based and may lose or mangle content.
+- **You need exact text, not synthesized notes.** The generator deliberately "never copies raw passages" — it summarizes into frameworks and rules, so an exact clause of a spec or a precise table can be lost. When verbatim fidelity matters, convert with [Docling](../document-parsing/docling.md) and keep the Markdown alongside, or write the `SKILL.md` by hand.
+- **The corpus is large or changes daily.** Each source is a one-shot LLM conversion (~$1 per book in the project's own estimate) and must be re-run or folded in when the source changes. For thousands of documents or live sources, use a retrieval pipeline such as [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.md).
+- **Your book has no "Chapter N" headings or is a scanned PDF.** Auto-detection needs explicit chapter headings (the docs show *Pro Git* and *Moby-Dick* not auto-segmenting), and scanned PDFs have no text layer — the extractor stops and tells you to run `ocrmypdf` first. If you can't do that preparation, use [MarkItDown](../document-parsing/markitdown.md) for a flat conversion instead.
+- **The content must not leave your machine.** Extraction is local, but the distillation is done by your agent's model, so a cloud-hosted agent receives the whole book text. For confidential material, run the agent against a local model or keep it in a self-hosted RAG stack.
+- **You want to share skills built from books you bought.** The README says skills generated from copyrighted third-party books must stay private; the publish step defaults to a private repo for that reason. For shareable knowledge packs, build from your own or openly licensed material, or use curated packs such as [Waza](engineering/waza.md).
+- **Your agent has no skill support.** Output is an Agent Skills `SKILL.md` folder. If your harness can't load skills, use [MarkItDown](../document-parsing/markitdown.md) to produce Markdown you can attach manually.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Docling](../document-parsing/docling.md) | ✅ | Document parser for RAG pipelines. | Docling is a general document parser for RAG pipelines; book-to-skill is specifically a skill-generator for agent harnesses. |
-| [MarkItDown](../document-parsing/markitdown.md) | ✅ | Lightweight document-to-Markdown converter. | MarkItDown converts documents to Markdown but doesn't structure them as agent skills or handle multi-format book sources. |
-| [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.md) | ✅ | Claude Code skill that queries Google NotebookLM. | Queries an external Google service; book-to-skill converts your own local PDFs into local skills with no external dependency. |
-| [Waza](engineering/waza.md) | ✅ | Engineering habit skills for coding agents. | Waza provides curated engineering skills; book-to-skill generates skills from your own book collection. |
-| [Scientific Agent Skills](engineering/scientific-agent-skills.md) | ✅ | Scientific/research skill pack. | A curated scientific skill pack; book-to-skill is a tool to create your own domain-specific skills from any technical book. |
-| [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.md) | ✅ | Choose LlamaIndex when you need dynamic retrieval and indexing over changing corpora; choose book-to-skill when you want a static installable skill from owned documents. | LlamaIndex represents the heavier RAG-pipeline path with embeddings and retrieval infrastructure; book-to-skill is simpler but batch-oriented and static. |
-| Readwise / Obsidian plugins | 未收录 | Read-later and note-taking integrations. | Consumer read-later tools for personal knowledge management; book-to-skill targets agent harness integration, not human note-taking. |
+| [Docling](../document-parsing/docling.md) | ✅ | Pick Docling when you need faithful Markdown or JSON of a document for your own pipeline; pick book-to-skill when the goal is an agent skill you query by chapter. | Docling keeps tables and code exactly and needs no LLM, but leaves structuring and retrieval to you; book-to-skill calls Docling and then spends model tokens to synthesize notes. |
+| [MarkItDown](../document-parsing/markitdown.md) | ✅ | Pick MarkItDown for a quick, free conversion to Markdown when the agent can afford to read it whole; pick book-to-skill when the book is too big to load every session. | MarkItDown is one command with no model cost; the output is flat text, so the per-session token bill stays. |
+| [distilly](distilly.md) | ✅ | Pick distilly when the source is one person's traces and you want the agent to imitate their judgment; pick book-to-skill when the source is reference knowledge to consult. | distilly produces behavior and voice rules; book-to-skill produces chapter notes, glossary and cheatsheets. |
+| [LlamaIndex](../agent-frameworks/workflow-builders/llamaindex.md) | ✅ | Pick LlamaIndex for retrieval over a large or changing corpus; pick book-to-skill for a handful of books you want as static, installable notes. | LlamaIndex needs embeddings, a store and code; book-to-skill needs nothing running but must be re-run when sources change. |
+| [NotebookLM Claude Code Skill](context-engineering/notebooklm-skill.md) | ✅ | Treat this archived skill as a pattern source only; pick book-to-skill when you want local files rather than answers routed through Google NotebookLM. | NotebookLM gives citation-backed answers but depends on Google's UI and service, and the repo was archived in 2026-09; book-to-skill output is files you own. |
 
 ## Tech stack
 
-- **Python** — primary implementation language and CLI interface
-- **Document parsing** — multi-format ingestion (PDF, EPUB, DOCX, HTML, RTF, MOBI, Markdown) [未验证]
-- **Agent Skills standard** — SKILL.md generation for installable skill packs
-- **Chunking and structural analysis** — heuristic pipeline for breaking documents into agent-loadable segments
+- **Python ≥ 3.9** extractor (`scripts/extract.py` / `book_to_skill` package), with format parsers for PDF, EPUB, DOCX, HTML, RTF, MOBI/AZW (via Calibre), TXT, Markdown, reStructuredText and AsciiDoc.
+- **PDF extraction:** `pdftotext` (poppler) → `pypdf` → `pdfminer.six` for prose; `docling` for technical books; `pdf-inspector` in the `pdf` extra.
+- **Generator:** a `SKILL.md` spec executed by the host agent's LLM, plus `tools/validate_skill.py` to check output against per-host rules and `tools/discovery_tax.py` for token measurements.
+- **Output format:** the open Agent Skills standard (`SKILL.md` + on-demand chapter files).
 
 ## Dependencies
 
-- **Python 3.9+** — runtime environment
-- **Document parsing libraries** — format-specific dependencies (e.g., for PDF text extraction, EPUB parsing) [未验证]
-- **No GPU required** — rule-based and traditional extraction, no neural model inference
-- **No external services or databases** — pure local CLI tool; generates files on disk
+- **A skill-capable coding agent and its model** — Claude Code, Copilot CLI, Codex, Amp, OpenCode, OpenClaw or Hermes Agent. The model does the distillation, so its token cost is the main running cost.
+- **Optional extractors per format:** `poppler-utils`, `pypdf`, `pdfminer.six`, `docling` (slow on CPU, ~1.5 s/page), `ebooklib` + `beautifulsoup4`, `python-docx`, `striprtf`, Calibre for MOBI. `python3 scripts/extract.py --check` reports what is missing.
+- **Optional:** the `gh` CLI if you publish generated skills to GitHub; `ocrmypdf` for scanned PDFs.
+- No database, server or GPU.
 
 ## Ops difficulty
 
-**Low.** `pip install` and run as a CLI. The tool is stateless and generates local files. The main operational concern is managing the input document collection and keeping the generated skills updated when source documents change. No service to deploy, no database to manage, and no persistent infrastructure.
+**Low.** Install is a `git clone` into your skills folder or `npx skills add virgiliojr94/book-to-skill`; the standalone pip CLI (installed from the git URL — not on PyPI) gives only the extractor. Nothing runs between conversions. The real work is per book: picking the extraction mode, fixing chapter segmentation when headings are non-standard, OCR-ing scans, and re-running or folding in when sources change.
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 39.9 hours across 27 qualifying issues/PRs.
-- **Maintenance:** Active — last push 2026-06-30, very recent. Created 2026-05-01, so only ~2 months old as of 2026-07. [未验证]
-- **Governance:** Single-user repo (`virgiliojr94`). Bus factor is 1. The project is extremely young with no organizational backing. [推断]
-- **Backing:** No institutional backing — maintained by an individual contributor. GitHub Sponsors is available but does not constitute an organizational commitment. [推断]
-- **Age & Lindy:** Created 2026-05-01 (~2 months old). No Lindy track record whatsoever. The rapid accumulation of 7.4k stars in 2 months suggests viral hype rather than proven longevity. Treat as experimental. [推断]
-- **Adoption:** 7.4k stars in ~2 months is a high growth rate, but for a tool this young, star count reflects hype and marketing (e.g., trending on GitHub) more than production adoption. [推断]
-- **Risk flags:** MIT license is clean and permissive. However, the extreme youth, single maintainer, and unproven maintenance commitment are major risks. The Agent Skills standard itself is evolving, so the generated skill format may need updates. The high star count on a 2-month-old project is suspiciously high and may not reflect actual usage.
+- **Maintenance (2026-10-08):** active — commits within the last few days, semver releases from v1.0.0 (2026-06-08) to v1.4.0 (2026-08-10), a changelog, a pytest suite and evals.
+- **Governance:** a personal-account project — the maintainer (`virgiliojr94`) owns the roadmap and merges, but contributions are broad: 51 active contributors in the last 12 months and the top contributor's share is about 40% (radar governance moved from B to A in this re-score). Bus factor for decisions is still one person, funded via GitHub Sponsors.
+- **Age / Lindy:** created 2026-05-01 (~5 months). No Lindy record; treat as young.
+- **Adoption:** ~34k stars and ~3.6k forks in five months (as of 2026-10), plus a community use-case index. The growth is real attention but far ahead of any production track record; a star curve this steep on a tool this young is a hype signal as much as an adoption one.
+- **Risk flags:** MIT license, clean. A **malicious re-upload** (`Leutenegger/book-to-skill`) that steals wallet data was reported in the repo's SECURITY-NOTICE (2026-08-17) — install only from `virgiliojr94/book-to-skill`. The Agent Skills format and host skill paths are still moving, which is why the docs carry per-host install notes.
 
 ## Caveats (unverified)
 
-- [未验证] The exact list of supported formats (PDF, EPUB, DOCX, HTML, RTF, MOBI, Markdown) and parsing quality per format is from the README; actual coverage and extraction fidelity may vary significantly.
-- [未验证] The generated skill format compatibility with each agent harness (Claude Code, Copilot CLI, Amp, etc.) is claimed but not independently verified.
-- [未验证] The 7.4k star count and "trending" status are point-in-time observations; they may change rapidly and do not indicate long-term viability.
-- [未验证] The chunking and structural analysis pipeline is heuristic-based; nuanced technical content, code snippets, and cross-references may be lost or mangled.
-- [推断] The high star count on a 2-month-old project is likely amplified by social media hype and the "turn books into AI skills" narrative.
-- [推断] Single-maintainer projects with no organizational backing have a high risk of abandonment if the author loses interest or changes priorities.
+- [未验证] The "24×–51× fewer tokens" and "~$1 per book" figures are the project's own measurements on a few books and one model (Claude Sonnet 4.5 pricing); this page did not reproduce them.
+- [未验证] Compatibility with each host (Copilot CLI, Amp, Codex, OpenCode, OpenClaw, Hermes Agent) is as claimed by the README and `validate_skill.py`; not tested here.
+- [未验证] Quality of the synthesized chapter notes depends on the host model; nuanced detail, code and cross-references may be compressed away.
+- [推断] Star velocity (~34k in five months) is likely amplified by social-media trending rather than proportional to production use.

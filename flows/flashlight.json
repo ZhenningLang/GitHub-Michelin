@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Flashlight does",
+    "zh": "Flashlight 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "On macOS 10.10–10.15, disable SIP, install MacForge, then Flashlight",
+      "zh": "老版 macOS 上关掉 SIP，装 MacForge 和 Flashlight"
+    },
+    {
+      "lane": "you",
+      "en": "Install plugins in the app, or write a bundle whose examples.txt marks the slots",
+      "zh": "装插件，或写插件包并在 examples.txt 里标出槽位",
+      "code": "say ~message(Good Morning)"
+    },
+    {
+      "lane": "you",
+      "en": "In plugin.py, turn the filled slots into a result title",
+      "zh": "在 plugin.py 里把填好的槽位变成一条结果标题",
+      "code": "def results(fields, original_query)"
+    },
+    {
+      "lane": "them",
+      "en": "Injected into Spotlight, matches each typed query against plugin examples",
+      "zh": "注入 Spotlight，把你输入的查询和各插件的例句比对",
+      "component": {
+        "en": "SpotlightSIMBL agent",
+        "zh": "SpotlightSIMBL 注入代理"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Calls the plugin's results() and shows its title as a row inside Spotlight",
+      "zh": "调用插件的 results()，把标题显示成 Spotlight 里的一行"
+    },
+    {
+      "lane": "them",
+      "en": "When you press Enter, calls the plugin's run() with the run_args",
+      "zh": "你按回车时，用 run_args 调用插件的 run()"
+    }
+  ],
+  "value": {
+    "en": "The native Spotlight bar answers your own queries — but only on macOS 10.10–10.15",
+    "zh": "原生 Spotlight 能回答你自定义的查询——但只限 macOS 10.10–10.15"
+  },
+  "sources": [
+    "https://github.com/w0lfschild/Flashlight#installation-requires-system-integrity-protection-to-be-disabled (SIP, MacForge, install plugins)",
+    "https://github.com/w0lfschild/Flashlight/tree/master/Example%20Plugins/Simple%20Say%20Plugin/say.bundle (examples.txt: say ~message(Good Morning); plugin.py: def results(fields, original_query), run_args, def run)",
+    "https://github.com/nate-parrott/Flashlight/wiki/Creating-a-Plugin (bundle layout, ~/Library/FlashlightPlugins, results invoked before Enter)",
+    "https://github.com/w0lfschild/Flashlight/blob/master/LICENSE (FlashlightApp/SpotlightSIMBL component)"
+  ]
+}

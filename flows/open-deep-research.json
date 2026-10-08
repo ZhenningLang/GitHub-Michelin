@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Open Deep Research does", "zh": "Open Deep Research 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone, install with uv, and put model and Tavily keys in .env", "zh": "克隆仓库，用 uv 安装，把模型和 Tavily 的 key 写进 .env", "code": "uv sync · cp .env.example .env"},
+    {"lane": "you", "en": "Start the local LangGraph server; Studio opens in the browser", "zh": "启动本地 LangGraph 服务，浏览器里打开 Studio", "code": "langgraph dev --allow-blocking"},
+    {"lane": "you", "en": "Type a question in the messages field and submit", "zh": "在 messages 输入框里写下问题并提交", "component": {"en": "LangGraph Studio", "zh": "LangGraph Studio"}},
+    {"lane": "them", "en": "Asks a clarifying question if needed, then writes a research brief", "zh": "必要时先问一个澄清问题，再写出调研简报", "component": {"en": "clarify + brief nodes", "zh": "澄清与简报节点"}},
+    {"lane": "them", "en": "A supervisor splits the brief and runs researcher sub-agents in parallel, each compressing its findings", "zh": "主管拆分简报，并行派出研究员子智能体，各自压缩发现", "component": {"en": "supervisor subgraph", "zh": "主管子图"}},
+    {"lane": "them", "en": "Writes the final cited report from the compressed findings", "zh": "根据压缩后的发现写出带引用的最终报告", "component": {"en": "final_report_generation", "zh": "final_report_generation"}}
+  ],
+  "value": {"en": "A working multi-agent research graph you can read, rewire and benchmark node by node", "zh": "一张能跑的多智能体调研图，可以逐个节点阅读、改线、跑基准"},
+  "sources": [
+    "https://github.com/langchain-ai/open_deep_research#-quickstart (uv venv; uv sync; cp .env.example .env; uvx ... langgraph dev --allow-blocking; Studio UI; ask in the messages input field and click Submit)",
+    "https://github.com/langchain-ai/open_deep_research/blob/main/src/open_deep_research/deep_researcher.py (nodes clarify_with_user, write_research_brief, research_supervisor, researcher/compress_research, final_report_generation)",
+    "https://github.com/langchain-ai/open_deep_research/blob/main/src/open_deep_research/configuration.py (max_concurrent_research_units default 5; SearchAPI default TAVILY)"
+  ]
+}

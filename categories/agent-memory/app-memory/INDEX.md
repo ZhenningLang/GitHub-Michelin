@@ -9,8 +9,8 @@
 | --- | --- | --- | --- |
 | **Mem0** | Use it when your LLM agent must remember users across sessions without bloating the prompt context. | A (6/6) | [→](mem0.md) |
 | **Memori** | Use it when you want LLM-agnostic persistent agent memory captured by wrapping your existing client. | B (5/6) | [→](memori.md) |
-| **Letta (MemGPT)** | Platform for stateful agents: AI with advanced memory that can learn and self-improve over time. | B (6/6) | [→](letta.md) |
-| **LangMem** | Use it when you need LangMem for the agent-memory category. | B (5/6) | [→](langmem.md) |
+| **Letta (MemGPT)** | Use it only to plan a migration if you run a self-hosted Letta V1 server or a tutorial sent you here — but the server was retired to an `archive` branch in August 2026 with no security fixes; maintained Letta is now Letta Code. | B (6/6) | [→](letta.md) |
+| **LangMem** | Use it when your agents already run on LangGraph and you want ready-made save-memory and search-memory tools backed by the same `BaseStore` — but it pulls in the LangChain stack, and releases have stalled at 0.0.30 (2025-10). | B (5/6) | [→](langmem.md) |
 | **SimpleMem** | Use it when your LLM agent must recall long-horizon dialogues without replaying raw history — write-time compression with published LoCoMo numbers, but a young academic repo, a stale PyPI package, and audio/video support that is not benchmark-validated. | B (5/6) | [→](simplemem.md) |
 | **Supermemory** | Use it when you want the whole context stack — fact extraction, contradiction supersession, auto-expiry, per-user profiles, hybrid RAG+memory — behind one API or one self-hosted binary, accepting that the engine itself ships binary-only and the license has flip-flopped once. | A (6/6) | [→](supermemory.md) |
 | **Hindsight** | Use it when your agent must remember users or projects across weeks and answer who/when questions — a self-hosted MIT memory server (Postgres + pgvector) with entity/temporal recall and MCP, but every write costs LLM calls, auth is off by default, and it is pre-1.0. | B (4/6) | [→](hindsight.md) |
@@ -21,8 +21,8 @@
 | --- | --- | --- | --- |
 | [Mem0](mem0.md) | ✅ | A (6/6) | Use it when your LLM agent must remember users across sessions without bloating the prompt context. |
 | [Memori](memori.md) | ✅ | B (5/6) | SQL-first client-wrapper memory for application code; an opinionated cloud vs the BYODB split. |
-| [Letta (MemGPT)](letta.md) | ✅ | B (6/6) | Stateful-agent platform whose memory OS the runtime owns; pick it when Letta should own the agent loop, not when you only want context under an existing harness. |
-| [LangMem](langmem.md) | ✅ | B (5/6) | Memory utilities tied to the LangChain/LangGraph ecosystem; stays inside that stack. |
+| [Letta (MemGPT)](letta.md) | ✅ | B (6/6) | Buys a historically important self-editing-memory design (MemGPT) to learn from; costs migrating any install base off a frozen server whose `letta/letta` Docker image gets no patches. |
+| [LangMem](langmem.md) | ✅ | B (5/6) | Buys memory that lives in your existing LangGraph store, plus background extraction from finished threads; costs framework lock-in and fixes on `main` that may never reach PyPI. |
 | [SimpleMem](simplemem.md) | ✅ | B (5/6) | Write-time compression memory library with published LoCoMo evidence; PyPI frozen at 0.1.0 (source-only install), open storage bugs, audio/video support unbenchmarked. |
 | [Supermemory](supermemory.md) | ✅ | A (6/6) | API-first memory + profiles + hybrid RAG as a hosted service or a single self-hosted binary; the engine source is not public, benchmarks are vendor-run, server channel is v0.0.x, and the license went MIT → CC BY-NC-SA → MIT. |
 | [Hindsight](hindsight.md) | ✅ | B (4/6) | Self-hosted memory server with LLM fact extraction, background consolidation and four-way recall; heavier writes and a service to run, in exchange for entity/temporal answers. |

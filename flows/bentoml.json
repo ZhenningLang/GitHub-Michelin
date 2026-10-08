@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "BentoML does", "zh": "BentoML 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and write a service class: load the model in __init__, mark the inference method", "zh": "装好后写一个服务类：在 __init__ 里加载模型，标出推理方法", "code": "@bentoml.service · @bentoml.api(batchable=True)"},
+    {"lane": "you", "en": "Run the service locally", "zh": "在本地把服务跑起来", "code": "bentoml serve"},
+    {"lane": "them", "en": "Serves the method as an HTTP API on :3000, merging concurrent requests into batches", "zh": "把方法变成 :3000 上的 HTTP 接口，把并发请求合并成批", "component": {"en": "BentoServer", "zh": "BentoServer"}},
+    {"lane": "you", "en": "Package the service and build an image", "zh": "打包服务并构建镜像", "code": "bentoml build · bentoml containerize summarization:latest"},
+    {"lane": "them", "en": "Freezes code, dependencies and model references into a Bento and generates a Docker image", "zh": "把代码、依赖和模型引用冻结成 Bento，并生成 Docker 镜像", "component": {"en": "Bento build", "zh": "Bento 构建"}}
+  ],
+  "value": {"en": "One Python class becomes a batched REST API in a reproducible Docker image, without hand-writing the server or the Dockerfile", "zh": "一个 Python 类变成带批处理的接口和可复现的镜像，不用手写服务端和 Dockerfile"},
+  "sources": [
+    "https://github.com/bentoml/BentoML#getting-started (pip install -U bentoml; @bentoml.service; @bentoml.api(batchable=True); bentoml serve on http://localhost:3000)",
+    "https://github.com/bentoml/BentoML#-deploy-using-docker (bentoml build; bentoml containerize summarization:latest)",
+    "https://docs.bentoml.com/en/latest/get-started/adaptive-batching.html (adaptive batching)"
+  ]
+}

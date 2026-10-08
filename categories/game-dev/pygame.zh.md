@@ -6,8 +6,8 @@ category: game-dev
 tags: [python, game-library, sdl, 2d-graphics, multimedia, gamedev]
 language: C
 license: LGPL-2.1
-maturity: v2.6.x, active (2026-06)
-last_verified: 2026-06-28
+maturity: v2.6.1 (2024-09), last commit 2025-10-05, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-11-01T03:05:13Z
@@ -16,27 +16,27 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:01:20Z
+  computed_at: 2026-10-08T08:19:43Z
   overall: C
-  overall_score: 2.4
-  scored_axes: 5
+  overall_score: 2.0
+  scored_axes: 4
   applicable_axes: 6
   capped: false
   cap_reason: null
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: D
       raw:
         archived: false
-        last_commit_age_days: 357
+        last_commit_age_days: 367
         active_weeks_13: 0
-        carve_out: mature_library_lindy
+        carve_out: null
     responsiveness:
       grade: C
       raw:
-        median_ttfr_hours: 272.8
-        qualifying_issues: 4
+        median_ttfr_hours: 460.0
+        qualifying_issues: 3
         band: default
         window_offset_days: 6
         source: issue
@@ -47,33 +47,29 @@ health:
         registry: pypi.org
         canonical_package: pygame
         dependent_repos_count: 17300
-        downloads_last_month: 2407387
+        downloads_last_month: 2217050
         graph_tier: A
         volume_tier: A
         cross_check_divergence: null
-        release_downloads: 2841241
+        release_downloads: 2921212
         release_assets: 1777
         release_tier: B
         signal_basis: releases
         tier_source: registry
     longevity:
-      grade: C
-      raw:
-        repo_age_days: 3472
-        last_commit_age_days: 357
-        cohort: library
-    governance:
       grade: D
       raw:
-        active_maintainers_12mo: 1
-        top1_share: 1.0
-        top3_share: 1.0
-        window_source: stats_contributors
-        carve_out: null
+        repo_age_days: 3483
+        last_commit_age_days: 367
+        cohort: library
+    governance:
+      grade: "?"
+      raw: {}
     risk_license:
       grade: "?"
       raw: {}
   unknowns:
+    governance: { reason: unattributable }
     risk_license: { reason: license_declared_unverifiable }
 ---
 
@@ -89,13 +85,35 @@ health:
 
 当你想做一个*小*的 2D 游戏或交互多媒体玩具、而你已经习惯用 Python 思考时，你也会选它：一次 game-jam 作品、一个带键鼠交互的可视化、一个教学 demo，或一个原型。你能往 surface 上 blit、加载图像和字体、用 mixer 做音频、用带碰撞检测的精灵组、用 clock 控帧率——足够你不离开 Python 生态、不上重量级引擎就交付一个完整的小 2D 游戏。
 
+## 怎么用起来
+
+pygame 给你的是积木，不是游戏。**平台层的活它来干**：通过 SDL（Simple DirectMedia Layer，一个和各操作系统的窗口、输入、图形、音频打交道的 C 库）开窗口、收键盘鼠标事件、加载图片声音字体，并在后台混音。**构成游戏本身的那个循环由你来写**：每一帧用 `pygame.event.get()` 取事件，移动你的对象，把你的 surface（内存里的图像）blit——也就是拷贝——到屏幕 surface 上，调用 `pygame.display.flip()` 显示这一帧，再用 `clock.tick(60)` 把帧率卡住。`pygame.sprite` 精灵组、矩形碰撞检测这类辅助能省掉样板代码，但场景、物理、编辑器都得你自己搭。它是一盒乐高积木，不是拼好的模型。
+
+![pygame — 主干用户故事](../../assets/flow/pygame.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pygame.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装 wheel 包，常见平台上 SDL 已经打包在里面 — `pip install pygame`
+2. **你**：开一个窗口，加载图片、声音和字体 — `pygame.display.set_mode · pygame.image.load`
+3. **你**：写游戏循环：读事件、改位置、贴图、刷新、限帧 — `pygame.event.get() · pygame.display.flip() · clock.tick(60)`
+4. **pygame**：通过 SDL 把键盘、鼠标、窗口事件收进一个队列
+5. **pygame**：把你的图层拷进窗口，flip 时显示出完整的一帧
+6. **pygame**：把循环卡在你定的帧率上，同时由混音器放声音
+
+**价值**：用纯 Python 就有了能玩的窗口、输入和声音，不用学引擎或编辑器
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要做 3D 游戏或任何性能敏感的东西。** pygame 是 2D、CPU blitting 的库；没有场景图、没有内置 3D，Python 游戏循环在任何吃力的场景下都会成为瓶颈。要 3D 或 AAA 级，那是 Godot/Unity/Unreal 的地盘。
 - **你想要编辑器、场景系统或资源管线。** 它是*库*，不是引擎——没有可视化编辑器、没有场景格式、没有动画时间轴。想要“打开工程拖实体”，去看 Godot。
 - **你需要一个打磨完善、功能齐全的 2D 引擎。** 想要更多结构（内置物理、tilemap、GUI、部署到主机），考虑 pyglet、Arcade 或一个真引擎；pygame 刻意保持底层。
 - **你把 web 或移动端当作一等平台。** pygame 桌面优先（Windows/macOS/Linux）；web（经 pygbag/WASM）和移动端可行，但不是主要的、铺好的路。
-- **你对 SDL2-vs-SDL3 / pygame-vs-pygame-ce 的分裂敏感。** 存在一个社区分叉（**pygame-ce**），发布更快，部分教程现在以它为目标；请核实你的依赖和教程假设的是哪一个。[未验证]
+- **你要开新项目，并且想用仍在积极维护的那条线。** 本仓库自 2025-10-05 起没有提交，2.6.1（2024-09）之后没有发版。社区分叉 **pygame-ce**（`pip install pygame-ce`，导入名仍是 `pygame`）2026-10-06 还有推送，PyPI 上到了 2.5.8；除非课程或依赖钉死了原版包，否则优先选它。先确认你的教程和依赖假设的是哪一个——两个包装进同一个环境会抢同一个 `pygame` 导入名。
 
 ## 横向对比
 
@@ -126,18 +144,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade C——中位首次响应时间 272.8 小时，基于 4 个 qualifying issues/PRs。
-- **维护（2026-06）。** 本仓库最近的*发布*标签是 2.6.1（2024-09）和 2.6.0（2024-06），仓库最后 push 于 2025-11——**有维护，但发布节奏明显比其社区分叉慢**。未归档。[推断]
-- **治理 / bus factor。** 组织所有（`pygame`），有多人贡献历史（illume/René Dudfield、MyreMylar、Starbuck5、ankith26，以及初代作者 PeterShinners/llindstrom）——是个真实社区，尽管近期势头大多转移到了 **pygame-ce** 分叉。[推断]
-- **年龄与 Lindy 判断。** 这个 GitHub 仓库始于 2017-03，但 **pygame 这个项目约有 25 年历史**（2000 年代初）且仍在使用⇒**非常强的 Lindy**——它是寿命最长的 Python 游戏库之一。（仓库年龄低估了真实年龄。[未验证]）
-- **采用度。** 约 8.8k star、4k+ fork，作为默认的“用 Python 学游戏编程”库有庞大的安装基数；在教程和课程里无处不在。[未验证]
-- **风险标记。** **pygame-ce 社区分叉**是要权衡的主要一项——它发布更快，许多教程现在以它为目标；项目名称周边存在过治理/relicense 争议历史。请确认你的代码和教程依赖的是哪个发行版。[未验证]
+- **响应速度**：Grade C——中位首次响应时间 460.0 小时，基于 3 个 qualifying issues/PRs。
+- **维护（2026-10）：吃老本。** 最近的发布是 2.6.1（2024-09）和 2.6.0（2024-06）；默认分支最后的提交是 2025-10-05 的一批合并（Python 3.14 的 Windows 构建配置、文档修正），之后再无提交。这次重算里雷达的维护轴从 B 掉到 D：一年没有提交，已经抵消了成熟库的宽限。未归档。
+- **治理 / bus factor。** 组织所有（`pygame`），有多人贡献历史（illume/René Dudfield、MyreMylar、Starbuck5、ankith26，以及初代作者 PeterShinners/llindstrom）。评分器已经无法归属近期活动（统计窗口内没有提交），而活跃开发大多转到了 **pygame-ce** 分叉（`pygame-community/pygame-ce`，2026-10-06 仍有推送）。[推断]
+- **年龄与 Lindy 判断。** 这个 GitHub 仓库始于 2017-03（长青度轴现在是 D，因为年龄只在仓库仍活跃时才算数），但 **pygame 这个项目约有 25 年历史**，每月仍有约 220 万次安装——*这套 API 和生态*有非常强的 Lindy 先验；*这个发行版*的发布线已经没有了。想要 Lindy 的稳妥又要有人维护，pygame-ce 继承了同一套 API。
+- **采用度。** Grade A——PyPI 上月下载量 2,217,050、依赖仓库 17,300 个；在教程和课程里无处不在。
+- **风险标记。** 和 **pygame-ce** 的分裂是要权衡的主要一项：导入名相同，发布线分道扬镳。README 声明 LGPL-2.1（GitHub 不报 SPDX id，所以雷达的许可轴无法打分）。
 
 ## 存疑（未验证）
 
 - [未验证] 许可：README 声明 GNU **LGPL v2.1**（文件 `docs/LGPL.txt`）并明确保留为未来版本重新许可的权利；GitHub API 未报告 SPDX id，所以 LGPL-2.1 取自 README/LICENSE 文件而非 API 徽章。
-- [未验证] 截至 2026-06 约 8.8k star、4126 fork、777 个 open issue——易变且对时间敏感。
-- [未验证] **pygame-ce** 分叉的存在、关系和相对势头（更快节奏、更新 SDL）基于社区认知；选择前请核实两个项目的当前状态。
+- [未验证] 截至 2026-10 约 9.0k star（4126 fork、777 个 open issue 为 2026-06 数据）——易变且对时间敏感。
+- [未验证] pygame-ce 的活跃度（2026-10-06 推送、PyPI 2.5.8）已于 2026-10-08 核实；它与原版 API 的兼容程度、对更新 SDL 的支持，以及“导入名仍是 `pygame`、两个包装在同一环境会冲突”的说法来自社区认知，不是来自它的 README 或代码对比。
 - [未验证] 真实项目年龄（约 25 年、2000 年代初起源）远超 GitHub 仓库 2017 的 `created_at`；Lindy 判断依赖更早的起源，而非仅凭本仓库元数据断言。
 - [推断] SDL/SDL_image/SDL_mixer 后端拆分和内置依赖许可是从仓库 `docs/licenses` 目录和标准 pygame 架构推断的，并非代码审计。
 - [未验证] web（pygbag/WASM）和移动端支持存在但不是主要受支持路径；状态随时间变化。

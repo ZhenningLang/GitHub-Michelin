@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Text_select_captcha does", "zh": "Text_select_captcha 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo and install its requirements; the ONNX models ship in model/", "zh": "克隆仓库装好依赖，ONNX 模型已随仓库放在 model/ 里", "code": "pip install -r requirements.txt"},
+    {"lane": "you", "en": "Save the captcha image and hand its path to the recognizer", "zh": "把验证码图片存下来，把路径交给识别器", "code": "cap = TextSelectCaptcha() · cap.run(image_path)", "component": {"en": "src/captcha.py", "zh": "src/captcha.py"}},
+    {"lane": "them", "en": "A YOLO detector boxes every glyph, splitting prompt glyphs from the ones to click", "zh": "YOLO 检测器框出每个字，分开提示字和待点击的字"},
+    {"lane": "them", "en": "A Siamese network scores every prompt/candidate pair and picks the best overall match", "zh": "孪生网络给每对提示字和候选字打相似分，整体取最优匹配"},
+    {"lane": "them", "en": "Returns the boxes (or centre points) already in the order they must be clicked", "zh": "按需要点击的顺序返回框坐标（或中心点）"},
+    {"lane": "you", "en": "Click those points with your own browser automation", "zh": "用你自己的浏览器自动化依次点这些坐标"}
+  ],
+  "value": {"en": "A working CPU-only click-select solver for Chinese glyphs without building detection + matching yourself", "zh": "现成的纯 CPU 中文点选识别流程，不用自己拼检测和匹配两段模型"},
+  "sources": [
+    "https://github.com/MgArcher/Text_select_captcha#-快速开始 (git clone, pip install -r requirements.txt, python service.py, Python API: cap = TextSelectCaptcha(), cap.run(image_path), cap.run_dict(image_path); returned order is the click order)",
+    "https://github.com/MgArcher/Text_select_captcha#-技术架构 (YOLO detection, Siamese matching, ONNX export for CPU inference)",
+    "https://github.com/MgArcher/Text_select_captcha/blob/main/src/captcha.py (TextSelectCaptcha loads model/best_v3.onnx + pre_model_v7.onnx; run(): split boxes by class, reason_all_batch, find_overall_index_fast)"
+  ]
+}

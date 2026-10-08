@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "DevToys does",
+    "zh": "DevToys 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app for your OS",
+      "zh": "按操作系统安装桌面应用",
+      "code": "winget install DevToys-app.DevToys · brew install --cask devtoys"
+    },
+    {
+      "lane": "you",
+      "en": "Copy the thing you need to inspect — a JWT, a JSON blob, a timestamp — and open DevToys",
+      "zh": "复制要处理的内容（JWT、JSON、时间戳），打开 DevToys"
+    },
+    {
+      "lane": "them",
+      "en": "Smart Detection checks the clipboard and suggests the tool that fits",
+      "zh": "智能检测读取剪贴板，推荐对应的工具",
+      "component": {
+        "en": "Smart Detection",
+        "zh": "智能检测"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The tool decodes, formats or converts it on your machine as you type — no network call",
+      "zh": "工具在本机边输入边解码、格式化或转换，不联网",
+      "component": {
+        "en": "built-in tool (~30)",
+        "zh": "内置工具（约 30 个）"
+      }
+    }
+  ],
+  "value": {
+    "en": "Everyday decode/format/convert chores in one offline window — sensitive payloads never touch a third-party website",
+    "zh": "日常的解码、格式化、转换都在一个离线窗口里完成，敏感内容不再经过第三方网站"
+  },
+  "sources": [
+    "https://devtoys.app/download (winget install DevToys-app.DevToys; brew install --cask devtoys; .deb; DevToys CLI download)",
+    "https://github.com/DevToys-app/DevToys#introduction (30 default tools; Smart Detection selects the best tool for the data on your clipboard)",
+    "https://github.com/DevToys-app/DevToys/blob/main/PRIVACY-POLICY.md (usage data is not sent to the developer)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "go-mysql-elasticsearch does", "zh": "同步器做的"},
+  "steps": [
+    {"lane": "you", "en": "Set MySQL binlog to row format with a full row image, and create the ES indices and mappings", "zh": "binlog 设为 row 格式、full 镜像，建好 ES 索引和映射"},
+    {"lane": "you", "en": "Build the binary and list which tables go to which index in the TOML config", "zh": "编出二进制，在 TOML 配置里写清哪些表进哪个索引", "code": "[[source]] · [[rule]]"},
+    {"lane": "you", "en": "Start it next to a local mysqldump", "zh": "在装有 mysqldump 的机器上启动它", "code": "./bin/go-mysql-elasticsearch -config=./etc/river.toml"},
+    {"lane": "them", "en": "Runs mysqldump once and indexes every existing row, keyed by its primary key", "zh": "先跑一次 mysqldump，把现有行按主键写成 ES 文档"},
+    {"lane": "them", "en": "Joins as a fake replica and turns each binlog row event into batched ES bulk requests", "zh": "伪装成从库读 binlog，把每个行事件攒成批量请求写进 ES", "component": {"en": "river (on go-mysql canal)", "zh": "river（基于 go-mysql canal）"}},
+    {"lane": "them", "en": "Saves the binlog position to master.info so a restart resumes where it stopped", "zh": "把 binlog 位点存进 master.info，重启后从断点续传"}
+  ],
+  "value": {"en": "Elasticsearch follows MySQL on its own — your app writes to one database instead of two", "zh": "ES 自动跟着 MySQL 变，应用只写一个库，不用双写"},
+  "sources": [
+    "https://github.com/go-mysql-org/go-mysql-elasticsearch#how-to-use (river.toml, ./bin/go-mysql-elasticsearch -config=./etc/river.toml)",
+    "https://github.com/go-mysql-org/go-mysql-elasticsearch#notice (row binlog, full row image, PK as id, mysqldump on same node, MySQL < 8.0, ES < 6.0)",
+    "https://github.com/go-mysql-org/go-mysql-elasticsearch#source and #rule ([[source]], [[rule]] sections)",
+    "https://github.com/go-mysql-org/go-mysql-elasticsearch/blob/master/river/sync.go (OnRow → elastic.BulkRequest, bulk_size / flush_bulk_time) and river/master.go (master.info position file)"
+  ]
+}

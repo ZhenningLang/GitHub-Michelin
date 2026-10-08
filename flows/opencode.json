@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenCode does", "zh": "OpenCode 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "安装 CLI", "code": "curl -fsSL https://opencode.ai/install | bash · npm i -g opencode-ai@latest"},
+    {"lane": "you", "en": "Connect one or more providers and pick a model", "zh": "接入一个或多个 provider，选好模型", "code": "/connect"},
+    {"lane": "you", "en": "Run it in your project and ask it to initialize", "zh": "在项目里运行它，让它初始化", "code": "/init"},
+    {"lane": "them", "en": "Analyzes the repo and writes AGENTS.md for later sessions", "zh": "分析仓库，写出供后续会话使用的 AGENTS.md"},
+    {"lane": "you", "en": "Describe the change; Tab to the plan agent first, Tab back to build", "zh": "描述要改的内容；先按 Tab 用 plan 出方案，再按 Tab 回 build"},
+    {"lane": "them", "en": "Reads, edits and runs shell commands under your permission rules", "zh": "按你的权限规则读文件、改文件、跑 shell 命令", "component": {"en": "build agent", "zh": "build agent"}},
+    {"lane": "them", "en": "Feeds language-server diagnostics back to the model so it can fix the errors it introduced", "zh": "把语言服务器诊断回喂给模型，让它修掉自己引入的错误", "component": {"en": "LSP integration", "zh": "LSP 集成"}}
+  ],
+  "value": {"en": "The same agent workflow works with whichever provider or model you connect", "zh": "同一套 agent 工作流，接哪家 provider、用哪个模型都照用"},
+  "sources": [
+    "https://github.com/anomalyco/opencode#installation (install script; npm i -g opencode-ai@latest)",
+    "https://github.com/anomalyco/opencode#agents (build / plan agents switched with Tab)",
+    "packages/web/src/content/docs/index.mdx (/connect, /init creates AGENTS.md, Plan mode via Tab)",
+    "packages/web/src/content/docs/lsp.mdx (LSP diagnostics as feedback for the agent)",
+    "packages/web/src/content/docs/permissions.mdx (allow / ask / deny rules)"
+  ]
+}

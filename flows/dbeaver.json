@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "DBeaver does", "zh": "DBeaver 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Community edition (installer, ZIP or snap); a Java runtime is bundled", "zh": "装上社区版（安装包、ZIP 或 snap），自带 Java 运行时", "code": "snap install dbeaver-ce --stable"},
+    {"lane": "you", "en": "Create a connection: pick the database type, enter host and credentials, test and save", "zh": "新建连接：选数据库类型，填主机和账号，测试后保存", "component": {"en": "connection dialog", "zh": "连接对话框"}},
+    {"lane": "them", "en": "Fetches the JDBC driver if it is not bundled, then loads the schema into the Connections tree", "zh": "驱动没打包就自动下载，再把库表结构读进连接树", "component": {"en": "driver manager", "zh": "驱动管理器"}},
+    {"lane": "you", "en": "Open an SQL editor on the connection and run queries, or open a table's data", "zh": "在连接上打开 SQL 编辑器跑查询，或者直接打开表数据", "code": "Ctrl+Enter"},
+    {"lane": "them", "en": "Shows results in an editable grid and keeps your row edits pending", "zh": "把结果放进可编辑表格，先把你改的行记为待提交"},
+    {"lane": "them", "en": "On Save, applies the added, changed and deleted rows to the database", "zh": "点保存时，把新增、修改、删除的行写回数据库", "component": {"en": "data editor", "zh": "数据编辑器"}}
+  ],
+  "value": {"en": "One desktop app browses, queries and edits 100+ databases instead of one native client per engine", "zh": "一个桌面应用就能浏览、查询、编辑 100 多种数据库，不用每种库装一个客户端"},
+  "sources": [
+    "https://github.com/dbeaver/dbeaver#running (installer/ZIP, bundled OpenJDK 25)",
+    "https://github.com/dbeaver/dbeaver/wiki/Installation (snap install dbeaver-ce --stable)",
+    "https://github.com/dbeaver/dbeaver/wiki/Create-Connection (test the connection and save it; Connections tree)",
+    "https://github.com/dbeaver/dbeaver/wiki/Database-drivers (drivers bundled or downloaded automatically)",
+    "https://github.com/dbeaver/dbeaver/wiki/SQL-Editor (Ctrl+Enter in the Connections view opens the SQL editor)",
+    "https://github.com/dbeaver/dbeaver/wiki/Data-Editor (Save applies added, duplicated, deleted rows and inline edits)"
+  ]
+}

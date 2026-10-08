@@ -7,11 +7,11 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **DBeaver** | Free universal database tool and SQL client | A（6/6） | [→](dbeaver.zh.md) |
-| **elasticsearch-dsl-py** | 一层架在底层 Elasticsearch 客户端之上的高层、Pythonic DSL——用查询对象、类 ORM 的 Document 映射层和可链式的搜索构建器，取代手写查询 JSON。**已归档：自 v8.18.0 起，它已并入官方 `elasticsearch` Python 客户端，作为 `elasticsearch.dsl`。** | C（5/6） | [→](elasticsearch-dsl-py.zh.md) |
+| **DBeaver** | 当你要在 Postgres、SQL Server、Oracle、ClickHouse、SQLite 之间来回切，想用一个免费桌面客户端给它们统一配上编辑器、数据表格和 ER 图时用它——但 NoSQL 驱动只在 Pro 版，它也是个偏重的单用户 Eclipse 应用。 | A（6/6） | [→](dbeaver.zh.md) |
+| **elasticsearch-dsl-py** | 只在阅读或迁移锁定 elasticsearch-dsl 8.17 及更老版本的遗留代码时用它——但它已归档；新代码请装 `elasticsearch>=8.18` 并改用 `elasticsearch.dsl`。 | C（5/6） | [→](elasticsearch-dsl-py.zh.md) |
 | **elasticsearch-sql** | 用 SQL 而非原生 JSON Query DSL 查询 Elasticsearch——一个社区插件（兼库），把 SQL 解析并翻译成 ES 查询／聚合，发布版与你所跑的 ES 大版本对齐。 | C（5/6） | [→](elasticsearch-sql.zh.md) |
-| **PrettyZoo** | 一个跨平台的 Apache ZooKeeper 桌面 GUI（Win／Mac／Linux）——浏览 znode 树、查看／编辑节点数据、管理 ACL 与连接，无需跌进 `zkCli.sh` shell。**已归档：作者于 2023 年公开宣布停止维护。** | D（5/6） | [→](prettyzoo.zh.md) |
-| **RDR** | 一个快速的离线 Redis RDB 文件解析器（尽管仓库标注语言为 JavaScript，核心其实是 Go 写的），用来揭示哪些 key 和 key 前缀在吃内存——`rdr show` 在本地端口起一个 HTML 内存报告，`rdr keys` 把所有 key 导出。 | D（4/6） | [→](rdr.zh.md) |
+| **PrettyZoo** | 当你想用桌面 GUI 浏览、轻量编辑 ZooKeeper 的 znode 树、节点数据和 ACL，而不想敲 `zkCli.sh` 时用它——但它已归档，作者 2024-01 宣布停止维护。 | D（5/6） | [→](prettyzoo.zh.md) |
+| **RDR** | 当 Redis 撞上 maxmemory、你要离线解析 RDB 快照找出吃内存的 key 前缀、又不想给生产加负载时用它——但它自 2020 年起冻结，内存数字也只是近似值。 | D（4/6） | [→](rdr.zh.md) |
 | **MCP Toolbox for Databases** | 当生产 agent 要查多种数据库（57 种数据源、Google Cloud 一等公民），且只能走你在 YAML 里声明的参数化语句时用它——但引擎级只读只在 Cloud SQL／AlloyDB／BigQuery 上有，网络默认值也偏宽松。 | A（6/6） | [→](mcp-toolbox.zh.md) |
 
 ## 什么该放这里

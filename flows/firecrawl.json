@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Firecrawl does", "zh": "Firecrawl 做的"},
+  "steps": [
+    {"lane": "you", "en": "Get an API key at firecrawl.dev and install the SDK", "zh": "在 firecrawl.dev 拿 API key，装上 SDK", "code": "pip install firecrawl-py", "component": {"en": "Python SDK", "zh": "Python SDK"}},
+    {"lane": "you", "en": "Ask for a page as Markdown (crawl, map and search work the same way)", "zh": "请求某个页面的 Markdown（crawl、map、search 用法相同）", "code": "app.scrape(\"https://firecrawl.dev\", formats=[\"markdown\"])"},
+    {"lane": "them", "en": "Queues the job and picks an engine: plain fetch, or a headless browser that runs the page's JS", "zh": "把任务放进队列，选抓取引擎：普通请求，或先跑完 JS 的无头浏览器", "component": {"en": "API + workers", "zh": "API + worker"}},
+    {"lane": "them", "en": "On the cloud, routes through rotating proxies and its anti-bot engine when a site blocks", "zh": "在云版上，遇到拦截就走轮换代理和它的反爬引擎", "component": {"en": "Fire-engine (cloud only)", "zh": "Fire-engine（仅云版）"}},
+    {"lane": "them", "en": "Converts the rendered page to clean Markdown with its metadata and returns it", "zh": "把渲染后的页面转成干净的 Markdown，连同元数据一起返回", "component": {"en": "Go HTML-to-Markdown converter", "zh": "Go 版 HTML 转 Markdown"}}
+  ],
+  "value": {"en": "LLM-ready page text from JS-heavy or blocking sites without running browsers, proxies or crawl queues yourself", "zh": "JS 重或会拦截的网站也能拿到可直接喂给大模型的正文，不用自己跑浏览器、代理和爬取队列"},
+  "sources": [
+    "https://github.com/firecrawl/firecrawl README.md — Quick Start (sign up at firecrawl.dev for an API key); SDKs > Python (pip install firecrawl-py; app.scrape(\"https://firecrawl.dev\", formats=[\"markdown\"]); app.crawl; app.search); Why Firecrawl (rotating proxies, JS-blocked content)",
+    "https://github.com/firecrawl/firecrawl SELF_HOST.md and docker-compose.yaml — API + workers, playwright-service, Redis, RabbitMQ, NuQ PostgreSQL; bundled Playwright with basic fetch fallback",
+    "https://docs.firecrawl.dev/contributing/self-host — self-hosted feature support table (Fire-engine and advanced anti-bot not included; screenshots/actions require Fire-engine)",
+    "https://github.com/firecrawl/firecrawl apps/api/src/lib/html-to-markdown.ts — Go converter via koffi shared library or HTTP service, postProcessMarkdown from @mendable/firecrawl-rs; apps/ — go-html-to-md-service, playwright-service-ts, api"
+  ]
+}

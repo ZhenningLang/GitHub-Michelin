@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Vaultwarden does",
+    "zh": "Vaultwarden 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Run the container with your public URL and a data volume",
+      "zh": "跑起容器，传入对外网址并挂载数据卷",
+      "code": "--env DOMAIN=\"https://vw.domain.tld\""
+    },
+    {
+      "lane": "you",
+      "en": "Put an HTTPS reverse proxy in front (the web vault refuses to work without it)",
+      "zh": "前面加一层 HTTPS 反向代理（没有它网页版密码库不工作）"
+    },
+    {
+      "lane": "them",
+      "en": "Serves the Bitwarden client API and a bundled web vault from one process",
+      "zh": "一个进程同时提供 Bitwarden 客户端 API 和自带的网页版密码库",
+      "component": {
+        "en": "vaultwarden server",
+        "zh": "vaultwarden 服务"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Create accounts and point every official Bitwarden app at your domain",
+      "zh": "注册账号，把每个官方 Bitwarden 应用指向你的域名"
+    },
+    {
+      "lane": "them",
+      "en": "Stores only the ciphertext the apps upload, and syncs it to all your devices",
+      "zh": "只保存应用上传的密文，并同步到你所有设备",
+      "component": {
+        "en": "SQLite under /data",
+        "zh": "/data 下的 SQLite"
+      }
+    }
+  ],
+  "value": {
+    "en": "The official Bitwarden apps everywhere, with the server, the data and the organisation features on your own small box",
+    "zh": "各端都用官方 Bitwarden 应用，服务器、数据和组织功能都在你自己的小机器上"
+  },
+  "sources": [
+    "https://github.com/dani-garcia/vaultwarden#dockerpodman-cli (docker run ... --env DOMAIN=\"https://vw.domain.tld\" --volume /vw-data/:/data/ vaultwarden/server:latest)",
+    "https://github.com/dani-garcia/vaultwarden#usage (web vault requires HTTPS / secure context; reverse proxy recommended)",
+    "https://github.com/dani-garcia/vaultwarden#features (Bitwarden Client API, modified web vault bundled in containers)",
+    "https://github.com/dani-garcia/vaultwarden/blob/main/.env.template (DATABASE_URL default sqlite://data/db.sqlite3)"
+  ]
+}

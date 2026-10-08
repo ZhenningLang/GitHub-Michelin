@@ -7,10 +7,10 @@
 
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
-| **ItChat** | Study it only as legacy WeChat-bot code — abandoned, and the web protocol it relies on is defunct, so it mostly doesn't work. | C (4/6) | [→](itchat.md) |
-| **WeChatPlugin-MacOS** | Avoid for current WeChat — a macOS WeChat.app binary tweak that breaks on every WeChat update and is ~2y idle; account-ban & security risk. | D (4/6) | [→](wechatplugin-macos.md) |
-| **wxpy** | Study it only as legacy WeChat-bot code — archived since 2019 and built on the now-defunct WeChat web protocol, so it mostly doesn't work. | D (5/6) | [→](wxpy.md) |
-| **wxappUnpacker** | Use it when you must decompile a WeChat .wxapkg bundle you own back into readable source — but this exact repo is an empty tombstone, so grab a live fork instead. | E (3/6) | [→](wxappunpacker.md) |
+| **ItChat** | Use it only to read or maintain legacy WeChat-bot code built on its QR-login and msg_register API — it is abandoned since 2018, the web WeChat login it needs is shut for most accounts, and driving a personal account risks a ban. | C (4/6) | [→](itchat.md) |
+| **WeChatPlugin-MacOS** | Use it only on a Mac with WeChat pinned to an old 2.3–3.7 build when you want anti-revoke, auto-reply and multi-instance back — it patches the WeChat.app binary, breaks on every update, has been idle ~3.5 years, and risks a ban. | D (4/6) | [→](wechatplugin-macos.md) |
+| **wxpy** | Use it only to read or maintain 2017–2019 WeChat-bot code written against its friendlier Bot/Friend/Group API — the repo is archived, it rides on ItChat's web-WeChat login that most accounts can no longer use, and personal-account automation risks a ban. | D (5/6) | [→](wxpy.md) |
+| **wxappUnpacker** | Use it only as a pointer to the wxappUnpacker family when you must decompile a .wxapkg mini-program you own — this repo is an empty tombstone (a one-word README), the whole lineage is abandoned, and preserved forks rely on the deprecated vm2 sandbox. | E (3/6) | [→](wxappunpacker.md) |
 | **WeChat Bot** | Use it for a maintained multi-channel Node.js CLI with many LLM backends and local chat analysis, only if you accept that its unofficial personal-WeChat path can trigger warnings or bans. | B (5/6) | [→](wechat-bot.md) |
 | **ChatGPT-wechat-bot** | Use it only as a compact 2022–2023 Wechaty/ChatGPT reference; it is stale, hard-codes an old model path, and exposes a personal WeChat account to unofficial-puppet risk. | D (3/6) | [→](chatgpt-wechat-bot.md) |
 | **Dify Enterprise WeChat Bot** | Use it only for an isolated Windows prototype pinned to a specific Enterprise WeChat client; the message path includes a closed binary, Workflow support is unfinished, and the project is stale. | C (3/6) | [→](dify-enterprise-wechat-bot.md) |
@@ -23,10 +23,10 @@
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
-| [ItChat](itchat.md) | ✅ | C (4/6) | Study it only as legacy WeChat-bot code — abandoned, and the web protocol it relies on is defunct, so it mostly doesn't work. |
-| [WeChatPlugin-MacOS](wechatplugin-macos.md) | ✅ | D (4/6) | Avoid for current WeChat — a macOS WeChat.app binary tweak that breaks on every WeChat update and is ~2y idle; account-ban & security risk. |
-| [wxpy](wxpy.md) | ✅ | D (5/6) | Study it only as legacy WeChat-bot code — archived since 2019 and built on the now-defunct WeChat web protocol, so it mostly doesn't work. |
-| [wxappUnpacker](wxappunpacker.md) | ✅ | E (3/6) | Use it when you must decompile a WeChat .wxapkg bundle you own back into readable source — but this exact repo is an empty tombstone, so grab a live fork instead. |
+| [ItChat](itchat.md) | ✅ | C (4/6) | Buys a clean reference for how web-WeChat bots worked; costs any working automation today — no maintainer, a dead protocol, and Terms-of-Service exposure. |
+| [WeChatPlugin-MacOS](wechatplugin-macos.md) | ✅ | D (4/6) | Buys classic client conveniences on a frozen WeChat; costs third-party code injected into your private-message client, no updates, and Terms-of-Service exposure. |
+| [wxpy](wxpy.md) | ✅ | D (5/6) | Buys a nicer object model than raw ItChat for studying old bots; costs stacked dead dependencies — an archived wrapper over an abandoned library over a shut protocol. |
+| [wxappUnpacker](wxappunpacker.md) | ✅ | E (3/6) | Buys nothing installable — only the name to search forks by; any surviving fork brings no maintainer, no license file here, and sandbox-escape exposure on untrusted packages. |
 | [WeChat Bot](wechat-bot.md) | ✅ | B (5/6) | Maintained multi-channel CLI and model adapters, but the unofficial personal-WeChat route carries warning and ban risk. |
 | [ChatGPT-wechat-bot](chatgpt-wechat-bot.md) | ✅ | D (3/6) | Small historical Wechaty/ChatGPT example, now stale and still dependent on an unsupported personal-account path. |
 | [Dify Enterprise WeChat Bot](dify-enterprise-wechat-bot.md) | ✅ | C (3/6) | Fixed-version Windows Enterprise WeChat bridge to Dify whose helper is a closed binary and whose Workflow path is unfinished. |

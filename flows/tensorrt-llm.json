@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "TensorRT-LLM does", "zh": "TensorRT-LLM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Pull and start NVIDIA's release container on an NVIDIA GPU host", "zh": "在 NVIDIA GPU 主机上拉取并启动 NVIDIA 的正式版容器", "code": "docker pull nvcr.io/nvidia/tensorrt-llm/release:x.y.z"},
+    {"lane": "you", "en": "Serve a Hugging Face model, optionally one NVIDIA already quantized to FP8", "zh": "服务 Hugging Face 模型，可选 NVIDIA 量化好的 FP8 版", "code": "trtllm-serve \"nvidia/Qwen3-8B-FP8\""},
+    {"lane": "them", "en": "Loads the checkpoint directly into PyTorch and starts a worker per GPU rank", "zh": "把 checkpoint 直接载入 PyTorch，每张卡起一个工作进程", "component": {"en": "PyExecutor", "zh": "PyExecutor"}},
+    {"lane": "them", "en": "Each step: schedules requests, reserves KV cache, runs NVIDIA's kernels, samples tokens", "zh": "每步调度请求、留 KV 缓存、跑 NVIDIA 内核、采样", "component": {"en": "scheduler + KV-cache manager", "zh": "调度器 + KV 缓存管理器"}},
+    {"lane": "you", "en": "Send OpenAI-format requests from your existing client", "zh": "用现有客户端发送 OpenAI 格式的请求", "code": "http://localhost:8000/v1/chat/completions"},
+    {"lane": "them", "en": "Streams the answers back at NVIDIA-tuned throughput", "zh": "以 NVIDIA 调优过的吞吐把回答返回"}
+  ],
+  "value": {"en": "NVIDIA's own GPU optimizations behind a standard OpenAI API, without building per-GPU engines", "zh": "标准 OpenAI API 背后就是 NVIDIA 自家的 GPU 优化，不用再为每种 GPU 构建引擎"},
+  "sources": [
+    "https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/installation/installation-guide.md (docker pull nvcr.io/nvidia/tensorrt-llm/release:x.y.z)",
+    "https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/quick-start-guide.md (trtllm-serve \"nvidia/Qwen3-8B-FP8\", curl http://localhost:8000/v1/chat/completions)",
+    "https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/developer-guide/overview.md (LLM class, PyExecutor per rank: Scheduler, KVCacheManager, ModelEngine, Sampler)",
+    "https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/legacy/tensorrt-backend-removal.md (no engine-build step; Hugging Face checkpoints load directly)"
+  ]
+}

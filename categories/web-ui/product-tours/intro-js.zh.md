@@ -4,21 +4,21 @@ slug: intro-js
 repo: https://github.com/usablica/intro.js
 category: product-tours
 tags: [product-tour, onboarding, walkthrough, feature-highlight, spotlight, commercial, licensing]
-language: JavaScript
+language: TypeScript
 license: AGPL-3.0
-maturity: v7.x, active, ~22k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v8.6.0 (2026-09-21), active, single active maintainer, ~23k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-01-04T18:23:52Z
+  pushed_at: 2026-09-21T10:44:06Z
   default_branch: master
-  default_branch_sha: b50a24316febe87e9ee430542587c6ece5ab4cad
+  default_branch_sha: 5b12889b4b7f82bd935a5153af574869eeaab755
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:19:45Z
+  computed_at: 2026-10-08T08:30:26Z
   overall: B
-  overall_score: 3.2
+  overall_score: 2.8
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -26,20 +26,20 @@ health:
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 6
+        last_commit_age_days: 17
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 22
+        median_ttfr_hours: 3.2
+        qualifying_issues: 3
         band: default
         window_offset_days: 1
-        source: pr
+        source: issue
         inferred: false
     adoption:
       grade: B
@@ -47,16 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: intro.js
         dependent_repos_count: 1272
-        downloads_last_month: 696730
+        downloads_last_month: 798473
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.03
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4944
-        last_commit_age_days: 1
+        repo_age_days: 4960
+        last_commit_age_days: 17
         cohort: library
     governance:
       grade: D
@@ -76,69 +76,90 @@ health:
 # Intro.js
 
 
-一款成熟、框架无关的 JavaScript 库，用于分步产品引导、功能高亮与用户 onboarding——它是现存最古老、使用最广的引导库之一，但附带**双协议授权**（非商用采用 AGPL-3.0，商用/闭源需购买商业授权），这一点在绝大多数选型决策中都是决定性门槛。
+新用户打开你的后台，面对四十个按钮不知从哪下手，转身就去提工单问“创建课程在哪”。Intro.js 把页面压暗，一次聚光一个元素，带着他们一步步看完，配置只是几个 HTML 属性；但它的开源协议是 AGPL-3.0，商用要另买授权，这一点决定了多数团队选不选它。
 
 
 ![Intro.js — health radar](../../../assets/health/intro-js.zh.svg)
 
 ## 何时使用
 
-你是某开源教育平台的前端开发者，需要引导新用户熟悉界面：在仪表盘上放一个欢迎提示，高亮“创建课程”按钮，再一步一步带用户走完评分工作流——每一步都带进度指示器和键盘导航。你的站点是原生 HTML 和原生 JS，没有 React，也没有 Vue，你想要一个不需要框架绑定、没有运行时依赖的引导库。你还想要详尽的文档和丰富的示例，以便快速上手。于是你选了 Intro.js：加一个 `<script>` 标签或 `npm install intro.js`，给 DOM 元素加上 `data-intro` 和 `data-step` 属性，调用 `introJs().start()`，它就渲染出引导遮罩、提示气泡和进度条——没有构建工具的麻烦，也没有框架锁定。
+你是一个开源课程平台的前端，站点是原生 HTML 加原生 JS，没有 React 也没有 Vue。新来的讲师在论坛里反复问同一句话：“去哪里批改作业？”你想在仪表盘放一个欢迎提示，给“创建课程”按钮打个聚光，再把批改流程拆成五步讲一遍，带进度点和方向键翻页，而且不想为此引入框架或后端。于是你用 Intro.js：`npm install intro.js`（或者 CDN 的 `<script>`），在元素上写 `data-intro="…"` 和 `data-step="2"`，调用 `introJs.tour().start()`，遮罩、提示框和翻页它都替你画好。v8 起它还自带中文、日文、俄文等多种界面翻译和浅色、深色、跟随系统三套主题，学员不以英语为母语时这很省事。
 
-当你需要自动播放的引导、编程式步骤控制，或者跨页面导航仍能持久化的多页引导流程时，你也会选它。因为它自 2013 年起就在持续维护，API 稳定、文档全面，这对需要理解和扩展引导逻辑的新贡献者团队来说尤为重要。
+你不选 Driver.js，是因为你要的是这些现成配件：步骤编号、进度点、靠 cookie 记住的“不再显示”勾选框、多语言，而不是一个最小的聚光库；你不选 react-joyride 或 Reactour，是因为页面里根本没有 React。你的项目本身就是兼容 AGPL 的开源软件，协议对你零成本；正是这个前提让 Intro.js 在这里是正确选择，而不是隐患。
+
+## 怎么用起来
+
+Intro.js 是一段浏览器端脚本，把现有页面上标记过的元素串成一次导览。**你**决定每一步说什么、按什么顺序：要么在元素上写 `data-intro`（说明文字）和 `data-step`（顺序）属性，要么在 JavaScript 里传一个 `steps` 数组，然后调用 `introJs.tour().start()`。**它**负责其余的事：收集这些目标元素，用一层遮罩（盖在整个页面上的半透明层）把页面压暗，同时在当前元素周围挖出一块亮区作为“聚光”，在旁边摆好提示框，把元素滚到可见处，并接好“下一步”“上一步”按钮、方向键和 Esc。可以把它想成博物馆讲解员拿着手电筒带游客逐个看展品，你只负责写展牌。另一种模式 `introJs.hint()` 在元素上放会闪的小圆点，点开才显示说明，适合不打断用户的帮助提示。老的 `introJs()` 入口在 v8 里还能用，但会在控制台打出弃用警告。
+
+![intro-js — 主干用户故事](../../../assets/flow/intro-js.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/intro-js.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装上包，引入它的 JS 和 introjs.css — `npm install intro.js --save`
+2. **你**：给要讲解的元素写上说明文字和顺序 — `data-intro · data-step`
+3. **你**：在页面脚本里启动引导 — `introJs.tour().start()`
+4. **Intro.js**：按顺序收集标记过的元素，把页面压暗，聚光第一个
+5. **Intro.js**：在旁边摆好提示框，滚到可见处，接好下一步、上一步、方向键和 Esc
+6. **Intro.js**：一步步走到最后一个元素，然后撤掉遮罩，调用你的退出回调
+
+**价值**：不用框架、不带运行时依赖、不要后端，只靠几个属性加一行调用，就给现有页面加上分步讲解
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **你在构建商用或闭源产品，且没有购买商业授权。** Intro.js 在非商用场景下采用 AGPL-3.0，商用必须购买付费授权。这不是脚注——而是具有法律约束力的要求，已有公司因把它当作“GitHub 上就是免费”而陷入合规纠纷。[未验证]
-- **你想要完全宽松（MIT）的授权，不想面对授权摩擦。** Driver.js 和 Shepherd.js 都是 MIT 授权，可以完全避开 AGPL/商业授权的分叉。如果你的法务团队对 copyleft 敏感，或者你不想在团队成员间追踪授权合规，请直接选它们。
-- **包体积是你的绝对硬约束。** Intro.js gzip 后约 10KB——比 Driver.js（约 5KB）大，与 Shepherd.js 相当。如果只是对单个元素做一次高亮，这个开销可能不划算。
-- **SPA 里高度动态/异步的 DOM。** 步骤靠选择器锚定元素。如果元素还不存在（路由未挂载、数据仍在加载、虚拟列表、模态框正在动画进入），引导就会指向空或乱跳。你得自己写定时/`MutationObserver` 胶水去等元素，并在滚动/缩放时重新定位。[推断]
-- **严格的无障碍/键盘/读屏要求。** 遮罩加聚光式引导是公认的 a11y 雷区（焦点陷阱、注入气泡上的 `aria-*`、键盘导航、reduced-motion）。请对照你的 WCAG 标准核实当前版本的无障碍行为，别假设它已经处理好了。[未验证]
-- **你需要的是完整的 onboarding/采用*平台*，而不只是引导。** Intro.js 只渲染引导；它没有人群分层、没有埋点分析、没有 A/B 定向、没有 checklist、也没有问卷。要这些，你要的是 Appcues / Userflow / Userpilot（商业产品）——或者自己搭那层状态/ feature-flag。
-- **你需要开箱即用的深度引导分支/条件流程。** 复杂的多路径引导（按用户操作分支、跳步、稍后续接）能做，但要靠你自己的代码编排；这个库给的是步骤加一套命令式 API，而不是一个流程引擎。
+- **你做的是商用或闭源产品，又不打算买授权：改用 Driver.js，因为** Intro.js 的开源协议是 AGPL-3.0，上游 LICENSE 写明商业项目需要购买商业授权（据官网 2026-10 的定价，一次性 9.99 到 299.99 美元）。Driver.js 是 MIT。注意 **Shepherd.js 已经不是宽松协议的退路**：它当前的 README 声明的也是 AGPL-3.0 加商业授权的双协议。
+- **法务一律不接受 AGPL，买授权也不在选项里：改用 Driver.js（MIT），或在 React 里用 react-joyride、Reactour（MIT），因为**买授权只解决“能不能用”，之后哪些产品、多少席位已授权还得有人一直跟踪，这几个项目没有这笔流程成本。
+- **你只要给一个元素打一次聚光，包越小越好：改用 Driver.js，因为** Intro.js 带着整套导览机制（进度点、进度条、hint、多语言、主题），一次性高亮用不上这些。
+- **你的应用是 React 单页应用，目标元素挂载得晚（懒加载路由、虚拟列表、正在动画进入的弹窗）：改用 react-joyride，因为** Intro.js 的步骤要锚定在 DOM 里已存在的元素上；窗口缩放时它会重新定位，但等待一个还没渲染出来的元素要你自己写胶水代码，而 react-joyride 跑在 React 的渲染周期里。
+- **你需要人群分层、埋点分析、A/B 定向、清单或问卷：改用 Appcues、Userflow 这类托管的用户引导平台，因为** Intro.js 只渲染导览和 hint，没有用户分群和漏斗数据的概念。
+- **你需要分支导览（按用户操作跳步、下次登录接着走）：改用 Userflow 这类托管流程编辑器，或者自己在上面搭一层状态，因为** Intro.js 给你的是线性步骤列表加回调（`onBeforeChange`、`onExit` 等），分支和跨页续接都要你自己编排。
+- **你正从 v7 或更早版本升级：要预留迁移工作量，因为** v8 把 API 拆成了 `introJs.tour()` 和 `introJs.hint()`，老的 `introJs()`、`addHints()` 调用现在只会打印弃用错误，hint 相关代码会悄悄失效。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Driver.js](driver-js.zh.md) | ✅ | 需要 MIT 授权、更轻、零依赖的替代品时，选 Driver.js。 | MIT 授权，包体积更小（约 5KB），零依赖；但内置功能和定位选项比 Intro.js 少。 |
-| [Shepherd.js](shepherd-js.zh.md) | ✅ | 需要 MIT 授权、API 更丰富、定位选项更多的引导库时，选 Shepherd.js。 | MIT 授权，内置步骤/定位选项更多、API 更丰富；用 Floating UI / popper 风格定位，比 Driver.js 更重。 |
-| [Reactour](reactour.zh.md) / [react-joyride](react-joyride.zh.md) | ✅ | 需要 React 专属的 hooks 或 JSX 原生引导组件时，选 Reactour / react-joyride。 | React 专属组件（hooks/JSX 原生）；在 React 内 DX 更好，但被框架锁定，对比 Intro.js 的 vanilla 内核。 |
-| Appcues / Userflow / Userpilot | 未收录 | 需要商业无代码 onboarding **平台**时，选 Appcues、Userflow 或 Userpilot。 | 商业平台——分层、分析、定向、checklist、问卷；不是开源仓库，有持续的 SaaS 订阅成本。 |
-| Bootstrap Tour | 未收录 | 新项目不要选 Bootstrap Tour；它已弃用且不再维护。 | 已弃用；曾是依赖 Bootstrap 的引导插件，现已不再维护。 |
+| [Driver.js](driver-js.zh.md) | ✅ | 商用产品又不想为导览库付费，选 Driver.js；想要现成的进度点、多语言和“不再显示”，并且能接受 AGPL 或商业授权，选 Intro.js。 | Driver.js：MIT、更小、零依赖，但进度界面和持久化要自己拼；Intro.js：导览界面更齐全，代价是要跟踪授权。 |
+| [Shepherd.js](shepherd-js.zh.md) | ✅ | 两者协议现在相同（都是 AGPL-3.0 加商业授权）时，要基于 Floating UI 的定位和更细的单步配置选 Shepherd.js；只想在静态页面上写属性就跑起来选 Intro.js。 | Shepherd：对步骤位置和内容控制更多，API 更重；Intro.js：`data-intro` 标记零配置，定位可调项更少。 |
+| [react-joyride](react-joyride.zh.md) / [Reactour](reactour.zh.md) | ✅ | React 应用里选 react-joyride 或 Reactour，因为它们把步骤渲染成 React 组件，跟着组件挂载周期走；只有非 React 或混合页面才选 Intro.js。 | 与 React 原生集成且是 MIT，但绑死框架；Intro.js 任何页面都能用，却游离在 React 渲染周期之外。 |
+| Appcues / Userflow / Userpilot | 非仓库 | 产品或增长团队要不靠工程师自己编导览、还要看数据，选托管平台；导览由工程师在代码里维护时选 Intro.js。 | 托管 SaaS：无代码编辑、分群、分析，但有持续订阅费和第三方脚本。不是仓库。 |
+| Bootstrap Tour | 未收录 | 新项目别用 Bootstrap Tour，它已无人维护且绑定 Bootstrap，改选 Intro.js 或 Driver.js。 | 曾是依赖 Bootstrap 的导览插件，目前没有维护。 |
 
 ## 技术栈
 
-- **语言：** JavaScript（ES5+），编译成一个 JS bundle（npm 上发布 ESM + UMD 两种构建）。
-- **渲染：** 纯 DOM + CSS——直接向页面注入遮罩、提示气泡和高亮聚光，相对目标元素定位，并暴露命令式 `introJs()` API（`start()`、`goToStep()`、`exit()` 以及生命周期回调）。
-- **依赖：** 运行时零依赖——纯 JavaScript 库，无任何框架依赖或外部库。
-- **主题：** 通过 CSS class 覆盖和自定义主题来定制样式，以贴合宿主设计系统。
+- **语言：** TypeScript 源码（`src/`），用 Rollup 打成 UMD（`intro.js`）和 ESM（`intro.module.js`）两种构建，附带类型声明。
+- **渲染：** 纯 DOM 加 CSS，向页面注入遮罩层、高亮层、提示框和 hint 元素，并相对目标元素定位；没有虚拟 DOM，不依赖框架。
+- **API：** `introJs.tour()`（分步导览）和 `introJs.hint()`（点开才显示的提示），用 `data-*` 属性或选项对象配置，另有生命周期回调。
+- **主题与多语言：** CSS 主题文件，内置浅色、深色、跟随系统三套主题，可用 `registerTheme()` 注册；内置翻译通过 `language` 选项切换（v8.5 起）。
+- **测试：** Jest 单元测试、Cypress 浏览器测试，以及基于 axe 的无障碍测试（v8.4 加入）。
 
 ## 依赖
 
-- **运行时：** 无。一个 `<script>` 标签（CDN/UMD）或 `npm install intro.js` 导入即可；它完全在浏览器端运行，无后端、无服务。
-- **构建（应用作者侧）：** 一个能解析该 npm 包的打包器（Vite/webpack/esbuild/Rollup），同时导入它的 JS 和 CSS；可无框架使用，也可嵌入任意框架（React、Vue、Angular、Svelte）。
-- **浏览器：** 现代常青浏览器；具体的最低/旧版支持取决于版本——请对照你的目标浏览器矩阵核实。
+- **运行时：** 无，`package.json` 没有声明任何运行时依赖。用 `<script>` 标签从 jsDelivr 或 cdnjs 加载，或者 `npm install intro.js` 后引入 JS 和 `introjs.css`。
+- **构建（应用作者侧）：** 任何能解析 npm 包及其 CSS 的打包器（Vite、webpack、esbuild、Rollup）。可以用在无框架页面，也能塞进 React、Vue、Angular、Svelte，但不感知框架的生命周期。
+- **授权：** 产品属于商用且不满足 AGPL 时，需要从 introjs.com 购买商业授权。
 
 ## 运维难度
 
-**低。** 这是个客户端库，不是服务——没有任何东西要部署或运维。这里的“运维“只是：加上依赖、把 JS+CSS 打进你的 bundle，就完事了；没有服务器、没有数据存储、没有扩容问题。真正的成本在于你自己应用里的**集成/维护**：定义步骤、在 UI 变化时让选择器保持同步（你一改类名或重构 DOM，引导就会无声地坏掉）、处理 SPA 时序、做主题。这些都不是运维负担——而是你自己拥有并要测试的前端代码。
-
-**授权**才是实质上的运维/政策考量：如果你在商用产品中使用 Intro.js，必须购买并追踪商业授权，且法务/合规团队必须知晓 AGPL 的边界。这是一个 MIT 授权替代品（Driver.js、Shepherd.js）不会带来的持续性流程成本。
+**低。** 它是浏览器端的库，不是服务：没有东西要部署，没有服务器，也没有数据存储。真正的成本在你自己的应用里：UI 一改，步骤选择器和 `data-intro` 属性就得跟着改（改个类名，导览就静悄悄地指向空处），单页应用里还要处理晚挂载的元素，再按你的设计系统调主题。唯一一项代码之外的流程成本是授权：产品是商用的话，得有人去买并跟踪商业授权，Driver.js（MIT）没有这件事。
 
 ## 健康度与可持续性
 
-- **维护（2026-07）。** 活跃于 v7.x，持续发版；GitHub 约 22k star，长期社区使用。未归档。[未验证]
-- **年龄与 Lindy 判断。** 2013 年创建（约 13 年）且**仍在活跃维护**⇒ 一个**非常强劲的 Lindy** 信号——JavaScript 生态里最长寿、最经实战检验的引导库之一。用年龄 × 仍活跃来看：授权模式才是对冲风险，年龄本身不是。[推断]
-- **治理 / bus factor。** 由 `usablica`（原作者 Afshin Mehrabani 的组织）维护。该项目比许多竞争对手活得更久，贡献者基础也比单维护者项目更广泛。[未验证]
-- **采用度与生态。** 在 Web 上被广泛采用；文档详尽、示例丰富、社区认知度高。由于授权模式，商业采用被分成“已购买授权的用户”和“迁移到 MIT 替代品的用户”两类。[推断]
-- **风险标记。** **双协议授权**（AGPL-3.0 / 商业授权）是首要风险标记。已有公司因忽视商业授权要求而陷入合规纠纷。在承诺前请核实当前定价与条款；确认你的使用场景属于非商用豁免，还是需要付费授权。[未验证]
+- **维护（2026-10）。** 活跃但一阵一阵的：v8.3.2（2025-07）之后停了一年，2026 年 7 月连发 v8.4、v8.5，2026-09-21 发了 v8.6.0。健康雷达的维护和响应两轴都是 B：打分时最后一次提交在 17 天前，最近 13 周里有 5 周有提交；新 issue 不多，几小时内有回应。
+- **治理与 bus factor：最弱的一轴。** 2026 年的提交和发版说明都出自同一位贡献者（Parvinmh）；仓库和商业授权归原作者 Afshin Mehrabani 的 `usablica` 组织。治理轴是 D（12 个月内活跃维护者 1 人）。这个人一停，项目很可能再次沉寂。
+- **年龄与 Lindy。** 2013 年创建（约 13.5 年），至今还在加功能（主题、多语言、无障碍测试），在“会不会继续存在”上 Lindy 先验很强，但要按单人维护的节奏打折。
+- **采用度。** 最近一个月 npm 下载 798,473 次，1,272 个仓库依赖它（健康雷达，2026-10-08）；GitHub 约 2.3 万 star。
+- **风险标记。** AGPL-3.0 加商业授权的双协议（GitHub API 显示 `NOASSERTION`，因为 LICENSE 开头先写了商业条款）。按 LICENSE 原文，v2.0.0 起才是双协议，更早的版本不需要商业授权。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-07 约 22k GitHub star——star 数对时间敏感，作为健康度代理并不可靠，仅供参考。
-- [未验证] bundle 体积（“约 10KB gzip”）是近似值，随版本/构建而变（ESM 还是 UMD、含不含 CSS）——请对照你实际的构建去测量。
-- [未验证] 商业授权价格引述为约 $20–50 一次性或订阅（视方案而定）——请在预算前直接到 Intro.js 官网核实当前定价。
-- [未验证] 双协议授权模式及其执行史基于对项目授权条款的一般了解；在依赖这一区别前，请直接确认当前的授权文本与商业条款。
-- [推断] SPA 时序/动态 DOM 的摩擦，以及 a11y/键盘/读屏行为，都是从遮罩式引导库的一般工作方式推断而来——请对照你为具体应用锁定的版本和 WCAG 标准核实。
-- [推断] “治理 / bus factor”和“更广泛的贡献者基础”判断基于 GitHub 可见度与项目 longevity，而非对贡献者分布或治理文档的详细分析。
+- [未验证] 商业授权价格（Starter 9.99 美元、Business 49.99 美元、Premium 299.99 美元，一次性买断）是 2026-10-08 从 introjs.com 读到的；做预算前请核对条款和席位定义。
+- [未验证] 某种具体用法算不算 LICENSE 措辞里的“商用”，是法律问题，本页不下结论。
+- [推断] 单页应用里晚挂载的目标元素需要宿主侧写等待逻辑；这是从步骤模型（运行时按选择器查找元素）推出来的，没有在 v8.6 上实测。
+- [未验证] 无障碍：v8.4 起有基于 axe 的测试，但是否满足某个具体 WCAG 等级（焦点锁定、读屏播报）没有核实。
+- [推断] “只有一位活跃维护者”的判断来自 2026 年的提交作者和健康雷达的贡献者统计，没有治理文档可依。
+- [未验证] 截至 2026-10-08 约 2.3 万 GitHub star；star 数会变。

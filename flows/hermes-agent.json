@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Hermes Agent does", "zh": "Hermes Agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it on a laptop, VPS or cloud VM", "zh": "装到笔记本、VPS 或云主机上", "code": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash"},
+    {"lane": "you", "en": "Pick the LLM provider and model", "zh": "选好大模型厂商和模型", "code": "hermes model"},
+    {"lane": "you", "en": "Talk to it in the terminal, or start the gateway and message it from chat apps", "zh": "在终端里跟它聊，或启动网关后从聊天软件发消息", "code": "hermes · hermes gateway start", "component": {"en": "CLI / messaging gateway", "zh": "CLI / 消息网关"}},
+    {"lane": "them", "en": "Does the work with its tools in the configured terminal backend", "zh": "在配置好的终端后端里调用工具把活干完", "component": {"en": "terminal backend", "zh": "终端后端"}},
+    {"lane": "them", "en": "After a novel task, saves a skill and notes what it learned about you", "zh": "解决新问题后存成技能，并记下关于你的要点", "component": {"en": "~/.hermes/skills · memories", "zh": "~/.hermes/skills 与记忆文件"}},
+    {"lane": "them", "en": "Next session, loads those notes and reuses matching skills and past sessions", "zh": "下次会话载入这些笔记，复用对得上的技能和旧对话"}
+  ],
+  "value": {"en": "You stop re-explaining your setup and re-pasting the same procedure every conversation", "zh": "不用每次对话都重新交代环境、重新粘贴同一套操作步骤"},
+  "sources": [
+    "https://github.com/NousResearch/hermes-agent#quick-install (install.sh one-liner)",
+    "https://github.com/NousResearch/hermes-agent#getting-started (hermes, hermes model, hermes gateway; CLI vs Messaging: hermes gateway start)",
+    "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/features/skills.md (~/.hermes/skills, agent-created skills)",
+    "https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/features/memory.md (MEMORY.md / USER.md in ~/.hermes/memories, loaded at session start)"
+  ]
+}

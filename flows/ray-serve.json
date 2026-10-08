@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Ray Serve does",
+    "zh": "Ray Serve 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install Serve into the Python environment that reaches your Ray cluster",
+      "zh": "在能连上 Ray 集群的 Python 环境里装上 Serve",
+      "code": "pip install \"ray[serve]\""
+    },
+    {
+      "lane": "you",
+      "en": "Wrap each model in a class and declare its replicas and CPU/GPU needs",
+      "zh": "把每个模型包成一个类，声明副本数和 CPU/GPU 需求",
+      "code": "@serve.deployment",
+      "component": {
+        "en": "deployment",
+        "zh": "部署"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Bind the models into one app, passing downstream models into the ingress",
+      "zh": "把模型绑成一个应用，下游模型作为参数传给入口部署",
+      "code": ".bind()"
+    },
+    {
+      "lane": "you",
+      "en": "Run the application on the cluster",
+      "zh": "把应用跑到集群上",
+      "code": "serve run serve_quickstart_composed:app"
+    },
+    {
+      "lane": "them",
+      "en": "Starts each deployment's replicas as Ray actors on nodes with the right resources",
+      "zh": "把每个部署的副本作为 Ray actor 起在资源合适的节点上",
+      "component": {
+        "en": "Serve controller",
+        "zh": "Serve 控制器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Takes HTTP on :8000, load-balances to the ingress, which calls the other models",
+      "zh": "在 :8000 收 HTTP，均衡分给入口部署，入口再调其他模型",
+      "component": {
+        "en": "HTTP proxy",
+        "zh": "HTTP 代理"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Adds or removes replicas per deployment as its own traffic changes",
+      "zh": "按各部署自己的流量增减副本"
+    }
+  ],
+  "value": {
+    "en": "Several models sit behind one endpoint and each scales on its own — no per-model service and scaling script",
+    "zh": "多个模型挂在同一个入口后面、各自扩缩，不用每个模型一套服务和扩容脚本"
+  },
+  "sources": [
+    "https://github.com/ray-project/ray/blob/master/doc/source/serve/getting_started.md (pip install \"ray[serve]\", serve run serve_quickstart_composed:app, http://127.0.0.1:8000/, autoscaling_config / num_replicas / num_gpus per deployment)",
+    "https://github.com/ray-project/ray/blob/master/doc/source/serve/key-concepts.md (@serve.deployment, .bind(), replicas as Ray actors, ingress deployment, DeploymentHandle)",
+    "https://github.com/ray-project/ray/blob/master/doc/source/serve/architecture.md (Controller actor manages replicas; HTTP Proxy actor on the head node by default)"
+  ]
+}

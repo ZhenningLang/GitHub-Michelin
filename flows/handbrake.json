@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "HandBrake does",
+    "zh": "HandBrake 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the app (installer on Windows/macOS, Flathub on Linux)",
+      "zh": "装好应用（Windows/macOS 用安装包，Linux 用 Flathub）",
+      "code": "flatpak install fr.handbrake.ghb"
+    },
+    {
+      "lane": "you",
+      "en": "Open a file or disc folder as the source",
+      "zh": "打开一个文件或光盘目录作为源"
+    },
+    {
+      "lane": "them",
+      "en": "Scans titles, chapters, audio and subtitle tracks",
+      "zh": "扫描出标题、章节、音轨和字幕轨",
+      "component": {
+        "en": "libhb scan",
+        "zh": "libhb 扫描"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Pick a preset and the tracks, then add the job to the queue",
+      "zh": "选预设和要保留的轨道，把任务加进队列",
+      "code": "Fast 1080p30 · HQ 2160p60 4K AV1 Surround"
+    },
+    {
+      "lane": "them",
+      "en": "Decodes, filters and re-encodes with the encoder the preset names (x264, x265, SVT-AV1 or GPU)",
+      "zh": "用预设指定的编码器（x264、x265、SVT-AV1 或 GPU）重编码",
+      "component": {
+        "en": "libhb encode pipeline",
+        "zh": "libhb 编码流水线"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Muxes the result into an MP4, MKV, WebM or MOV file",
+      "zh": "封装成 MP4、MKV、WebM 或 MOV 文件"
+    }
+  ],
+  "value": {
+    "en": "Smaller files that play on your devices, at a quality decided once in a preset — no encoder flags to learn",
+    "zh": "更小、各设备都能播的文件，画质在预设里一次定好，不用学编码参数"
+  },
+  "sources": [
+    "handbrake-docs source/docs/en/latest/get-handbrake/download-and-install.markdown: flatpak install fr.handbrake.ghb",
+    "handbrake-docs source/docs/en/latest/technical/official-presets.markdown: Fast 1080p30 (default), HQ 2160p60 4K AV1 Surround",
+    "handbrake-docs source/docs/en/latest/cli/command-line-reference.markdown: HandBrakeCLI [options] -i <source> -o <destination>, -Z/--preset",
+    "https://github.com/HandBrake/HandBrake README @ de24f9c (2026-10-08) and 1.11.0 release notes (MOV container, ProRes, DNxHR; FFmpeg 8.0.1 decoding); docs introduction/about.markdown (video is always converted)"
+  ]
+}

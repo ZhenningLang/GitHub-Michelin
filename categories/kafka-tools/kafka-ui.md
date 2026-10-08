@@ -7,7 +7,7 @@ tags: [kafka, web-ui, cluster-management, monitoring, schema-registry, kafka-con
 language: Java
 license: Apache-2.0
 maturity: v0.7.2 (2024-04), upstream stalled — see Health, ~12.2k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-07-26T08:00:52Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:05:32Z
+  computed_at: 2026-10-08T08:20:08Z
   overall: C
   overall_score: 1.8
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 902
+        last_commit_age_days: 913
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 8
+        qualifying_issues: 7
         band: relaxed_solo
         window_offset_days: 5
         source: pr
@@ -46,15 +46,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 94436
+        release_downloads: 94956
         release_assets: 15
         release_tier: D
         signal_basis: releases
     longevity:
       grade: E
       raw:
-        repo_age_days: 2497
-        last_commit_age_days: 902
+        repo_age_days: 2508
+        last_commit_age_days: 913
         cohort: app
     governance:
       grade: "?"
@@ -81,6 +81,27 @@ A free, open-source web UI for managing and observing Apache Kafka clusters — 
 You're an engineer or SRE running one or more Kafka clusters and you're tired of `kafka-console-consumer.sh` and a wall of CLI flags every time someone asks "is this topic getting messages?" or "why is this consumer group lagging?". You want a lightweight dashboard you can stand up in one `docker run` that shows brokers, topics, partition assignments, consumer-group lag, and lets you click into a topic and actually *read* the messages — JSON, plain text, Avro, Protobuf — without writing a consumer. You point it at your bootstrap servers (and optionally Schema Registry and a Connect cluster), open `:8080`, and your data flows are suddenly observable to the whole team, not just whoever has the CLI and the right configs on their laptop.
 
 It also fits when you need a self-hosted, no-license-cost alternative to commercial Kafka consoles, with OAuth (GitHub/GitLab/Google), role-based access control, and data masking for sensitive fields — enough governance to put in front of a team without exposing raw PII. For ad-hoc producing of test messages, creating/configuring topics by hand, and registering schemas through a few clicks, it removes a lot of console friction.
+
+## How it works
+
+kafka-ui is a web app that sits beside your Kafka cluster and acts as an ordinary Kafka client on your behalf. **It does the reading and decoding; you only tell it where the cluster is.** With `DYNAMIC_CONFIG_ENABLED=true` you can enter the cluster's bootstrap servers — the broker addresses a client first connects to — in a wizard in the browser, instead of writing a config file first; for a lasting setup you mount a `config.yml` into the container. From then on it asks the cluster live for its brokers, topics, partitions and each consumer group's committed offsets, and computes lag — how far a group's offset trails the newest message. When you open a topic it fetches messages and decodes them with the right deserializer (JSON, text, or Avro/Protobuf via Schema Registry), so nobody needs a CLI consumer with the right flags. It keeps no database of its own in the basic setup; what you see is what the cluster reports at that moment.
+
+![kafka-ui — backbone user story](../../assets/flow/kafka-ui.svg)
+
+<!-- flow-steps:begin (generated from flows/kafka-ui.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Start the container with the in-browser config editor switched on — `docker run -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui`
+2. **You**: Open the UI and enter your cluster's bootstrap servers — `http://localhost:8080`
+3. **UI for Apache Kafka (provectus/kafka-ui)**: Connects as a Kafka client and reads brokers, topics, partitions and consumer-group offsets live — component: `Spring Boot backend`
+4. **You**: Click into a topic or a consumer group
+5. **UI for Apache Kafka (provectus/kafka-ui)**: Shows per-partition lag and decodes messages as JSON, text, Avro or Protobuf — component: `serdes + Schema Registry`
+
+**Value**: Anyone on the team can see what's in a topic and why a consumer lags, without CLI tools or client configs
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -122,7 +143,7 @@ It also fits when you need a self-hosted, no-license-cost alternative to commerc
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06) — upstream stalled.** `provectus/kafka-ui` last released v0.7.2 in **2024-04** and last pushed **2024-07**; ~2 years without a release at time of writing. The API does **not** flag it `archived`, but it reads as **dormant**, not active. Active development continued in the community fork **`kafbat/kafka-ui`** (pushed 2026-06). This is the dominant verdict: treat the upstream as frozen. [推断]
+- **Maintenance (2026-10) — upstream stalled.** `provectus/kafka-ui` last released v0.7.2 in **2024-04** (last default-branch commit 2024-04-08, last push 2024-07); ~2.5 years without a release or commit at time of writing. The API does **not** flag it `archived`, but it reads as **dormant**, not active. Active development continued in the community fork **`kafbat/kafka-ui`** (pushed 2026-10; v1.5.0 released 2026-04). This is the dominant verdict: treat the upstream as frozen. [推断]
 - **Governance / backing.** `Organization`-owned (Provectus, a consulting company); the README states it stays free/open-source with no paid tier. But a single-vendor-curated OSS project that the vendor stops shipping is exactly the bus-factor scenario that played out — the community had to fork to keep it alive. [推断]
 - **Age × Lindy.** Created 2019-11 (~6–7 years). Moderate age, but the *upstream's* Lindy is undercut by the maintenance halt — old-and-stalled fails the "still active" test. The **fork** carries the Lindy forward, not this repo. [推断]
 - **Adoption.** Strong historical adoption (~12.2k stars, ~1.4k forks, large Docker-pull history) — the codebase is proven and widely deployed; the question is forward maintenance, not whether it works. [未验证]
@@ -131,6 +152,6 @@ It also fits when you need a self-hosted, no-license-cost alternative to commerc
 ## Caveats (unverified)
 
 - [未验证] ~12.2k stars / 346 open issues / last push 2024-07 / last release v0.7.2 (2024-04) as of 2026-06 — volatile, re-check.
-- [推断] "Upstream dormant, development moved to kafbat/kafka-ui" is inferred from release/push recency on both repos (kafbat pushed 2026-06, ~2.5k stars) plus the well-known community fork; the upstream is not API-flagged `archived`.
+- [推断] "Upstream dormant, development moved to kafbat/kafka-ui" is inferred from release/push recency on both repos (kafbat pushed 2026-10-05, v1.5.0 on 2026-04-20, ~2.8k stars, checked 2026-10-08) plus the well-known community fork; the upstream is not API-flagged `archived`.
 - [推断] "No own database required" for the basic case is inferred from its live-read architecture, not confirmed against every deployment mode (some features may need extra stores).
 - [未验证] Exact current feature parity and config differences between provectus upstream and the kafbat fork are not verified here — confirm against the fork's docs before migrating.

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Warp does",
+    "zh": "Warp 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app and sign in",
+      "zh": "装好桌面应用并登录",
+      "code": "brew install --cask warp · winget install Warp.Warp"
+    },
+    {
+      "lane": "them",
+      "en": "Starts your existing shell and wraps each command plus its output into a block",
+      "zh": "启动你原有的 shell，把每条命令连同输出包成一个块",
+      "component": {
+        "en": "client (open source)",
+        "zh": "客户端（开源）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Describe the task to the built-in agent in plain language",
+      "zh": "用大白话把任务告诉内置 agent"
+    },
+    {
+      "lane": "them",
+      "en": "Plans the next steps server-side and runs the commands back in your session",
+      "zh": "在服务端规划下一步，再回到你的会话里执行命令",
+      "component": {
+        "en": "agent harness (server-side)",
+        "zh": "agent harness（服务端）"
+      }
+    }
+  ],
+  "value": {
+    "en": "Command output, the agent and your follow-up commands live in one terminal instead of being copy-pasted between a terminal and a chat window",
+    "zh": "命令输出、agent 和后续命令都在同一个终端里，不再在终端和聊天窗口之间来回复制粘贴"
+  },
+  "sources": [
+    "https://www.warp.dev/download (brew install --cask warp, winget install Warp.Warp; macOS/Linux/Windows packages)",
+    "https://github.com/warpdotdev/warp/blob/master/README.md About (built-in coding agent or bring your own CLI agent) and Licensing",
+    "https://github.com/warpdotdev/warp/blob/master/FAQ.md (built-in agent harness runs server-side; server, Drive backend, Oz not in repo)",
+    "https://github.com/warpdotdev/warp/blob/master/AGENTS.md Architecture Overview (WarpUI GPU front-end, headless TUI)",
+    "https://docs.warp.dev Blocks section (block basics, block actions, block sharing)"
+  ]
+}

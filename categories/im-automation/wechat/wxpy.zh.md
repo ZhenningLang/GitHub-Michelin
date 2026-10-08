@@ -6,8 +6,8 @@ category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account, itchat]
 language: Python
 license: MIT
-maturity: abandoned — archived 2019-07 (last pushed 2019-07, ~7y frozen); built on the same now-defunct WeChat web protocol as ItChat, mostly non-functional for new accounts (2026-06)
-last_verified: 2026-06-28
+maturity: abandoned — archived (last push 2019-07; last commit 2017-07-29, last release 0.3.9.8 2017-06); built on the same now-defunct WeChat web protocol as ItChat, mostly non-functional for new accounts (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2019-07-14T17:59:47Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:05:04Z
+  computed_at: 2026-10-08T08:20:05Z
   overall: D
   overall_score: 1.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 3347
+        last_commit_age_days: 3358
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -44,18 +44,19 @@ health:
       raw:
         registry: pypi.org
         canonical_package: wxpy
+        package_link: ecosystems_repository_url
         dependent_repos_count: 182
-        downloads_last_month: 1051
+        downloads_last_month: 542
         graph_tier: C
-        volume_tier: D
+        volume_tier: E
         cross_check_divergence: null
         tier_source: registry
         archived: true
     longevity:
       grade: E
       raw:
-        repo_age_days: 3506
-        last_commit_age_days: 3347
+        repo_age_days: 3517
+        last_commit_age_days: 3358
         cohort: library
     governance:
       grade: "?"
@@ -83,10 +84,32 @@ health:
 
 这基本上是 2026 年还去碰它的唯一稳妥理由。如果你的真实目标是*运行*新的微信自动化，wxpy 是错误的起点（见下文）：它是一个跑在失效协议之上的、已被 archive 的封装层——展示了良好 API 品味的博物馆藏品，而不是新项目的依赖。
 
+## 怎么用起来
+
+wxpy 自己并不和微信对话：它装上一个钉死的老版本 ItChat（`itchat==1.2.32`），网页版微信的登录和消息轮询都交给那个库。**wxpy 加的是对象这一层**：`Bot()` 让你扫码登录之后，好友、群和公众号都成了 Python 对象，可以搜（`bot.friends().search(...)`）、可以直接调用（`my_friend.send(...)`），而不是 ItChat 返回的原始字典。**你写的是回复函数**，用 `@bot.register(...)` 把它挂到某个聊天、某个好友或某类消息上；每来一条新消息，wxpy 交给最后注册的那个匹配函数，放在工作线程里跑，再把函数的返回值发回去。进程靠 `bot.join()` 或交互式的 `embed()` 控制台保持运行。和 ItChat 一样，这张卡画的是网页登录还开着时的路径——如今大多数账号在扫码那一步就停了。
+
+![wxpy — 主干用户故事](../../../assets/flow/wxpy.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/wxpy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装进 Python 3.4–3.6 或 2.7 — `pip install -U wxpy`
+2. **你**：创建机器人，用手机扫码登录 — `bot = Bot()`
+3. **wxpy**：通过钉死版本的 ItChat 登录，把好友、群、公众号变成对象 — 组件：`底层 ItChat 1.2.32`
+4. **你**：给某个聊天、好友或消息类型注册回复函数 — `@bot.register(my_friend)`
+5. **wxpy**：把每条新消息交给最后注册的匹配函数，用多线程处理
+6. **wxpy**：把函数的返回值发回那个聊天
+
+**价值**：用对象式 Python 写个人号自动化，不用摆弄 ItChat 的原始字典——前提是网页登录还能用
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你想要今天还能真正跑起来的微信自动化。** 这是最主要的理由。wxpy 架在 ItChat 之上，ItChat 又架在微信的**网页版 / `wx.qq.com` 登录协议**之上——而腾讯逐步关停了那套协议。**绝大多数账号、尤其是较新的账号，已经根本无法通过它登录。**[未验证] 与其说封装本身坏了，不如说平台把它下面那一层脚下的地抽走了。
-- **它已被 archive、已废弃。** 仓库于 **2019-07 被 archive**（GitHub 只读，最后 push 约 2019-07，已冻结约 7 年），单一维护者（owner `youfou`）。不会再有 PR、不会再有发布、不会再有协议修复落地——archive 就是维护者明确发出的“到此为止”信号。
+- **它已被 archive、已废弃。** 仓库已被 **archive**（GitHub 只读；最后 push 在 2019-07，最后一次提交在 2017-07-29——约 9 年没有代码变动），单一维护者（owner `youfou`）。不会再有 PR、不会再有发布、不会再有协议修复落地——archive 就是维护者明确发出的“到此为止”信号。
 - **封号 / 违反 ToS 的风险。** 用非官方逆向出来的协议去驱动*个人*微信号，是**违反微信服务条款**的，并带有真实的账号**被限流、冻结或永久封禁**风险。别拿你在乎的账号去试。
 - **你需要受支持的 IM 自动化路径。** 改用**官方**面：**企业微信（WeCom / WeChat Work）API**，以及**微信公众号 / 小程序**服务端 API，才是受认可、有维护的正规通道。若想要接近个人号风格的自动化，**wechaty** 是维护更活跃的后继抽象——但它继承了同样的上游平台风险和 ToS 风险，需谨慎采用。
 - **生产环境或任何面向客户的场景。** 一个跑在已失效协议上、已被 archive 的封装层，撑不起一款产品或一项业务承诺——而且和它的基座不同，它连一个滑行中项目还可能有的依赖漂移修复都不会再收到。
@@ -102,14 +125,14 @@ health:
 
 ## 技术栈
 
-- **语言：** Python 3（纯 Python，无原生扩展）。
-- **架在 ItChat 之上：** wxpy 本质上是对 [ItChat](itchat.zh.md) 的**封装**——它复用 ItChat 的网页版微信机制（对 `wx.qq.com` 扫码登录、管理会话 / cookie、跑长轮询的 `synccheck` 消息循环），并在其上叠加一层对象模型。[未验证]
+- **语言：** Python——README 写的是 3.4–3.6 和 2.7（纯 Python，无原生扩展）；更新的版本从未声明过。
+- **架在 ItChat 之上：** wxpy 本质上是对 [ItChat](itchat.zh.md) 的**封装**——它复用 ItChat 的网页版微信机制（对 `wx.qq.com` 扫码登录、管理会话 / cookie、跑长轮询的 `synccheck` 消息循环），并在其上叠加一层对象模型；`setup.py` 钉死了 `itchat==1.2.32`，README 也说可以混用 ItChat 的原始接口。
 - **API 面：** 比裸用 ItChat 更友好的抽象——`Bot`、`Friend`、`Group`、`MP`、`Chat` 对象；`@bot.register(...)` 消息处理装饰器；搜索 / 过滤辅助方法；外加在其活跃年代文档里给出的便捷集成（如图灵机器人、puppet 式自动回复）。
 - **能力面：** 收发文本、图片、文件；好友与群（chatroom）管理——全部局限在单个已登录的个人号范围内。
 
 ## 依赖
 
-- **运行时：** 一个 Python 3 解释器，加上 **ItChat**（它的核心依赖），以及 ItChat 拉进来的常规 HTTP/二维码栈（`requests`、终端二维码渲染）。pip 即可装。[未验证]
+- **运行时：** 一个 Python 解释器，加上 `setup.py` 里的三项依赖——**`itchat==1.2.32`**（钉死在一个较老的确切版本）、`requests`、`future`——以及 ItChat 再拉进来的 `pyqrcode`、`pypng`。pip 即可装。
 - **真正的依赖是一个可用的网页版微信会话**——而*那*正是断掉的一环：它需要腾讯的网页登录端点接受你的账号，而对大多数账号它已不再接受。再怎么管理本地依赖，也修不好服务端的封堵。
 - **一个可扫码的微信账号**（在手机上）来完成每次会话的二维码登录；会话不持久，需要频繁重新登录。
 
@@ -120,7 +143,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：Grade E。
-- **维护（2026-06）：已 archive → 已死。** 仓库于 **2019-07 被 archive**（最后 push 约 2019-07），使其在 GitHub 上只读——单一维护者（owner `youfou`），无发布、无 triage、不接 PR。archive 是维护者明确的生命周期终止标记；这不是“滑行中”，而是已经关闭。
+- **维护（2026-10）：已 archive → 已死。** 仓库已被 **archive**（最后 push 在 2019-07；最后一次提交在 **2017-07-29**，最后发布 0.3.9.8 在 2017-06），使其在 GitHub 上只读——单一维护者（owner `youfou`），无发布、无 triage、不接 PR。archive 是维护者明确的生命周期终止标记；这不是“滑行中”，而是已经关闭。
 - **平台抽走了地基——还被基座放大。** wxpy 封装的是 **ItChat**，而**微信已大面积关停两者都依赖的网页登录协议**，所以无论 wxpy 自身代码如何，它对大多数账号都是*不可用*的。它既废弃**又**在结构上过时**又**比协议失效层多隔了一层——比它所架的基座处境更糟。[未验证]
 - **Lindy 判断：硬性不通过。** 创建于 **2017-02**（约 9 年），单看年龄或许像是 Lindy——但 Lindy 是**年龄 × 仍然活跃**，绝不是单看年龄。这里是**长寿*且*已被显式 archive*且*跑在平台已移除的协议上**——正是年龄信号被*抵消*而非*兑现*的教科书案例。它的长寿不是耐久。[推断]
 - **治理 / bus factor。** 单一维护者的爱好项目，没有基金会、厂商或后继接管——bus factor 为一，而且仓库已冻结，连这个一也已正式离场。[推断]
@@ -129,8 +152,8 @@ health:
 ## 存疑（未验证）
 
 - [未验证] “约 14.3k star” 取自 2026-06 的 GitHub 仓库页；star 数对时间敏感且不可靠，仅供参考。
-- [未验证] “2019-07 被 archive / 最后 push 约 2019-07” 是本页通篇承重的维护事实；确切的 archive 日期与最后提交日期请对照线上仓库的 GitHub 头部核实（无论确切到哪一天，archived 横幅本身就是决定性信号）。
+- [推断] API 不提供 archive 日期；“约 2019-07 被 archive” 是从最后一次 `pushed_at`（2019-07-14）推断的。最后一次提交（2017-07-29）和 `archived: true` 已于 2026-10-08 核实。
 - [未验证] “微信**关停网页登录协议**导致 wxpy/ItChat 对新账号'基本不可用'” 这一说法被社区广泛报道，也与两个项目的沉寂状态相符，但两个仓库都没有腾讯的显式弃用声明——这是从平台行为推断而来，并非引自官方声明。
-- [未验证] “wxpy 是对 ItChat 的封装” 反映了项目的文档化设计和广为人知的脉络，但确切的依赖面（它复用了 ItChat 的哪些内部 vs 自己重新实现）未对照当前源码 /`setup.py` 重新核对。
+- [未验证] “wxpy 是对 ItChat 的封装” 已由 `setup.py`（`itchat==1.2.32`）和 README 证实；它复用了 ItChat 的哪些内部、又自己重写了哪些，没有在源码里追查。
 - [未验证] 对比表各行（wechaty 当前活跃度、企业微信 / 公众号 API 的确切范围）描述的是大致格局，未对各项目当前状态做新一轮核实。
 - [推断] 封号 / 违反 ToS 风险是从工具的非官方协议性质做出的推断，而非实测封禁率；严重程度因账号和用法而异。

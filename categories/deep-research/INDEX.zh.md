@@ -7,15 +7,15 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **deep-research** | 想要一个极简可读、约 500 行的 TypeScript 深度研究 agent 作为 fork 底座时用它。 | B（4/6） | [→](deep-research.zh.md) |
+| **deep-research** | 当你想读懂并 fork 一个约 500 行的 TypeScript 深度研究循环（Firecrawl 搜索加广度／深度递归，产出带引用的报告）时用它——但它是单作者的 0.0.1 演示，错误处理极简，也没有成本上限。 | B（4/6） | [→](deep-research.zh.md) |
 | **Vane** | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 | B（5/6） | [→](vane.zh.md) |
 | **Local Deep Research** | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 | B（5/6） | [→](local-deep-research.zh.md) |
 | **Agent-Reach** | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 | B（5/6） | [→](agent-reach.zh.md) |
 | **MiroThinker** | 当你想要一个可在自有 GPU 上研究改造的自托管开源深研 Agent 时用它——但它要 GPU 集群加付费外部 API，且不到一岁、毫无 Lindy 沉淀。 | B（4/6） | [→](mirothinker.zh.md) |
-| **GPT Researcher** | An autonomous agent that conducts deep research on any data using any LLM providers | A（6/6） | [→](gpt-researcher.zh.md) |
-| **Open Deep Research** | 当你需要在 `deep-research` 分类中评估 Open Deep Research 时用它。 | D（5/6） | [→](open-deep-research.zh.md) |
-| **STORM** | An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations. | B（6/6） | [→](storm.zh.md) |
-| **node-DeepResearch** | Keep searching, reading webpages, reasoning until it finds the answer (or exceeding the token budget) | B（4/6） | [→](node-deepresearch.zh.md) |
+| **GPT Researcher** | 当你要一个开箱即用的应用，把一个问题变成一份基于网页或你自己文件、处处带出处的多页报告时用它——但默认配置会把数据发给 OpenAI 和 Tavily，纯本地运行要自己改配置。 | A（6/6） | [→](gpt-researcher.zh.md) |
+| **Open Deep Research** | 当你在 LangGraph 上自建调研智能体、想要一份“主管加并行研究员”的可读蓝图和现成基准脚手架时用它——但仓库已于 2026 年归档，只适合学习或 fork，不适合当依赖运行。 | D（5/6） | [→](open-deep-research.zh.md) |
+| **STORM** | 当你要为一个陌生话题写一篇带编号引用、由多视角调研和大纲搭起来的维基风长文初稿时用它——但它自 2025-09 起没再合入任何改动，当作方法的参考实现看待。 | C（5/6） | [→](storm.zh.md) |
+| **node-DeepResearch** | 当用户问需要跳好几步的事实题、你想要一个自部署、兼容 OpenAI 接口、一直搜到能给出带出处短答案的服务时用它——但读网页离不开 Jina 的托管 API，它的代码执行工具也没有沙箱。 | B（4/6） | [→](node-deepresearch.zh.md) |
 | **Hyperresearch** | 当你在 Claude Code 里、需要一份引用逐条核验的高风险研究报告时用它——16 步对抗式流水线加持久来源 vault；时间与 token 开销都重，且只支持 Claude Code。 | B（5/6） | [→](hyperresearch.zh.md) |
 | **last30days** | 当你想让 agent 汇总最近 30 天 Reddit、X、YouTube、HN、Polymarket 上关于某个主题的讨论、并按互动量排好序时用它——但每次调用要加载约 258 KB 的 skill 提示词，且部分来源依赖抓取和浏览器登录 cookie。 | B（6/6） | [→](last30days.zh.md) |
 | **OpenScience** | 当研究任务必须真的在自己的文件上跑代码时用它——文献与数据库检索、Python/R 内核、集群作业、每一步都留在可审计的轮次轨迹里。 | B（6/6） | [→](openscience.zh.md) |
@@ -25,7 +25,7 @@
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [deep-research](deep-research.zh.md) | ✅ | B（4/6） | 想要一个极简可读、约 500 行的 TypeScript 深度研究 agent 作为 fork 底座时用它。 |
+| [deep-research](deep-research.zh.md) | ✅ | B（4/6） | 换来一个能整个装进脑子的研究循环；代价是硬依赖 Firecrawl 和云端 LLM，毫无生产级加固。 |
 | [Vane](vane.zh.md) | ✅ | B（5/6） | 想要一个自托管、注重隐私的「Perplexity 式」带引用应答引擎，接你自己的 SearxNG 和自选 LLM 时用它。 |
 | [Local Deep Research](local-deep-research.zh.md) | ✅ | B（5/6） | 当你需要一个自托管、可纯本地运行的深度研究 agent、把敏感查询留在自己机器上时用它。 |
 | [Agent-Reach](agent-reach.zh.md) | ✅ | B（5/6） | 当你的 agent 需要免付费 API 地读取和搜索网页与社交平台内容时用它。 |

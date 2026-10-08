@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "WebUI does", "zh": "WebUI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Clone the repo (Python 3.10 and git installed) and run the launch script", "zh": "装好 Python 3.10 和 git，克隆仓库，运行启动脚本", "code": "webui.sh · webui-user.bat", "component": {"en": "launch script", "zh": "启动脚本"}},
+    {"lane": "them", "en": "First run creates a venv, installs PyTorch and deps, fetches a default SD 1.5 checkpoint", "zh": "首次运行建虚拟环境、装 PyTorch 和依赖，下载默认的 SD 1.5 模型"},
+    {"lane": "them", "en": "Serves the Gradio interface on a local address", "zh": "在本机地址上起好 Gradio 网页界面", "code": "http://127.0.0.1:7860"},
+    {"lane": "you", "en": "Pick a checkpoint, write a prompt, set sampler, steps and size", "zh": "选模型、写提示词，设采样器、步数和尺寸"},
+    {"lane": "them", "en": "Runs the diffusion model on your GPU and saves each image with its generation parameters", "zh": "在你的 GPU 上跑扩散模型，出图并把生成参数存进图片"}
+  ],
+  "value": {"en": "Text-to-image and image editing on your own GPU — no per-image fees, prompts and outputs stay local", "zh": "在自己的显卡上文生图、改图，没有按张计费，提示词和图片都留在本机"},
+  "sources": [
+    "https://github.com/AUTOMATIC1111/stable-diffusion-webui#installation-and-running (Python 3.10.6, git clone, Run webui.sh / webui-user.bat)",
+    "https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Install-and-Run-on-NVidia-GPUs (first launch downloads files, 'Running on local URL: http://127.0.0.1:7860', models/Stable-diffusion skips the default stable-diffusion-v1-5 download)",
+    "https://github.com/AUTOMATIC1111/stable-diffusion-webui#features (generation parameters are saved with that image)"
+  ]
+}

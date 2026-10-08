@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "SWE-agent does", "zh": "SWE-agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install from source and put a model API key in the environment", "zh": "从源码安装，把大模型 API key 放进环境变量", "code": "pip install --editable . · export ANTHROPIC_API_KEY=<your key>"},
+    {"lane": "you", "en": "Run it on one issue: name the model, cost cap, repo and issue", "zh": "对一个 issue 运行：指定模型、费用上限、仓库和 issue", "code": "sweagent run --problem_statement.github_url=…", "component": {"en": "sweagent CLI", "zh": "sweagent 命令行"}},
+    {"lane": "them", "en": "Starts a Docker sandbox with the repo and installs its file/search/edit tools", "zh": "启动装好仓库的 Docker 沙箱，把查看、搜索、编辑工具装进去", "component": {"en": "SWE-ReX deployment", "zh": "SWE-ReX 部署"}},
+    {"lane": "them", "en": "Loops: the model picks a command, it runs it and returns the output", "zh": "循环：模型选一条命令，它执行后把输出喂回去"},
+    {"lane": "them", "en": "When the model submits, extracts the patch and saves the full trajectory", "zh": "模型提交后，抽出补丁并保存完整的操作轨迹", "component": {"en": "trajectory file", "zh": "轨迹文件"}},
+    {"lane": "you", "en": "Review the patch, or score a batch of them with SWE-bench", "zh": "审这份补丁，或者把一批补丁交给 SWE-bench 打分"}
+  ],
+  "value": {"en": "An unattended, sandboxed fix attempt per issue, with a replayable log of every step", "zh": "每个 issue 都有一次无人值守、在沙箱里完成的修复尝试，外加可回放的逐步日志"},
+  "sources": [
+    "https://github.com/SWE-agent/SWE-agent/blob/main/docs/installation/source.md (git clone, pip install --editable .)",
+    "https://github.com/SWE-agent/SWE-agent/blob/main/docs/usage/hello_world.md (sweagent run flags, ANTHROPIC_API_KEY, deployment via SWE-ReX, tools, main loop, submit, trajectory)",
+    "https://github.com/SWE-agent/SWE-agent#readme (mini-swe-agent supersedes SWE-agent; SWE-bench link)"
+  ]
+}

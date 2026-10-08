@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Argo Workflows does", "zh": "Argo Workflows 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the controller and server into your Kubernetes cluster", "zh": "把控制器和服务端装进你的 Kubernetes 集群", "code": "quick-start-minimal.yaml"},
+    {"lane": "you", "en": "Write a Workflow in YAML: each template is a container, ordered as steps or a DAG", "zh": "用 YAML 写 Workflow：每步一个容器，排成 steps 或 DAG", "code": "kind: Workflow"},
+    {"lane": "you", "en": "Submit it to the cluster", "zh": "提交到集群", "code": "argo submit -n argo --watch"},
+    {"lane": "them", "en": "Creates one pod per step in order, passing parameters and artifacts between them", "zh": "按顺序为每一步创建一个 pod，在步骤间传递参数和产物", "component": {"en": "workflow-controller", "zh": "workflow-controller"}},
+    {"lane": "them", "en": "Retries failed steps and writes each node's status back into the Workflow", "zh": "重试失败的步骤，把每个节点的状态写回 Workflow"},
+    {"lane": "them", "en": "Shows the run as a graph with per-step logs in the UI and CLI", "zh": "在界面和 CLI 里把整次运行显示成图，附每步日志", "component": {"en": "argo-server UI (:2746)", "zh": "argo-server 界面（:2746）"}}
+  ],
+  "value": {"en": "Container pipelines get ordering, retries and a visible run history without a separate scheduler or worker fleet", "zh": "容器流水线有了顺序、重试和可见的运行记录，不用另建调度器或 worker 集群"},
+  "sources": [
+    "argoproj/argo-workflows docs/quick-start.md (main, retrieved 2026-10-08): kubectl apply --server-side -n argo -f .../quick-start-minimal.yaml; argo submit -n argo --watch .../examples/hello-world.yaml; port-forward service/argo-server 2746",
+    "examples/hello-world.yaml (same retrieval): apiVersion argoproj.io/v1alpha1, kind: Workflow, templates with container",
+    "README.md (same retrieval): Kubernetes CRD, each step a container, steps or DAG, retry, artifacts, UI",
+    "docs/workflow-executors.md and docs/offloading-large-workflows.md (same retrieval): emissary executor; node status stored in the Workflow resource"
+  ]
+}

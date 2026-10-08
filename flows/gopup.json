@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "gopup does", "zh": "gopup 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package", "zh": "装上这个包", "code": "pip install gopup"},
+    {"lane": "you", "en": "Import it and call the one function for the dataset you want", "zh": "导入后，调用你要的那个数据集对应的函数", "code": "gp.weibo_index(word=\"疫情\", time_type=\"1hour\")"},
+    {"lane": "them", "en": "Calls the source site's own background endpoint with browser-like headers", "zh": "带着伪装成浏览器的请求头，调用源站自己的后台接口"},
+    {"lane": "them", "en": "Parses the reply into a pandas DataFrame — or returns None if anything failed", "zh": "把结果整理成 pandas DataFrame，出错则返回 None"}
+  ],
+  "value": {"en": "A ready DataFrame for a Chinese public dataset without writing that site's scraper — while the source still looks the way the code expects", "zh": "不用给那个站点写爬虫就拿到一张现成的 DataFrame——前提是源站还是代码预期的样子"},
+  "sources": [
+    "https://github.com/justinzm/gopup#readme (pip install gopup; import gopup as gp; gp.weibo_index(word=\"疫情\", time_type=\"1hour\"); 部分接口需要TOKEN)",
+    "https://github.com/justinzm/gopup/blob/master/gopup/index/index_weibo.py (posts to data.weibo.com/index/ajax endpoints with index_weibo_headers 伪装游览器; builds pd.DataFrame; bare except returns None)",
+    "https://github.com/justinzm/gopup/blob/master/gopup/pro/client.py (DataApi posts token to http://www.gopup.cn/api/v1)"
+  ]
+}

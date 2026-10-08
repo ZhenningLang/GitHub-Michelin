@@ -6,8 +6,8 @@ category: ai-code-review
 tags: [security, sast, github-action, claude, pr-review, slash-command]
 language: Python
 license: MIT
-maturity: no tagged release, pinned via @main, active (2026-02)
-last_verified: 2026-06-26
+maturity: no tagged release, pinned via @main; last commit 2026-02-11, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-02-11T18:01:23Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:47:33Z
+  computed_at: 2026-10-08T08:15:35Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 228
+        last_commit_age_days: 239
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 419
-        last_commit_age_days: 228
+        repo_age_days: 430
+        last_commit_age_days: 239
         cohort: tool
     governance:
       grade: C
@@ -75,6 +75,27 @@ Anthropic's AI security reviewer: a GitHub Action (plus a `/security-review` Cla
 You're a maintainer of a small-to-mid repo and you want a security gate on pull requests that goes beyond regex/AST pattern matching. Traditional SAST flags the same shapes over and over and misses logic-level bugs — an IDOR that only matters because of how two handlers share a session, an injection that's only reachable through a specific code path. You add this Action to `.github/workflows/`, give it a Claude API key, and on every PR it analyzes only the changed files, reasons about the diff in context, and leaves review comments on the exact lines it thinks are vulnerable, with severity and remediation. Because it's "language agnostic" (it's Claude reading code, not a per-language ruleset), the same workflow covers your Python service, your TypeScript frontend, and your Terraform without separate tooling.
 
 You're also a developer using Claude Code day-to-day who wants the same check before you even open a PR. You run `/security-review` on your pending changes and get the audit locally; you can copy `security-review.md` into your repo's `.claude/commands/` and tune the prompt for your project. The tool's whole pitch is the inverse of noisy scanners: an opinionated false-positive filter that drops DoS/rate-limit/open-redirect-style findings so the comments that land are the ones worth acting on.
+
+## How it works
+
+It is a GitHub Action that runs Claude Code — Anthropic's command-line coding agent — inside your CI job, so **the security prompt, the filtering and the PR commenting ship with the Action; you supply a workflow file, an API key, and the decision of which PRs it may see.** On each pull request it checks out the head commit, hands the agent only the changed files plus an audit prompt (a fixed list of vulnerability classes: injection, auth bypass, exposed secrets, unsafe deserialization and so on), and asks for findings with severity and a suggested fix. A second pass, `findings_filter.py`, throws away categories that are mostly noise — denial of service, rate limiting, open redirects — before anything is posted, so it behaves more like a reviewer who has been told what not to bother you with than a linter. What survives lands as review comments on the exact lines, plus a JSON results file as a build artifact. Because the reviewer reads attacker-controllable text (the diff), you also switch on "require approval for all external contributors", so a stranger's PR cannot reach it unseen.
+
+![claude-code-security-review — backbone user story](../../assets/flow/claude-code-security-review.svg)
+
+<!-- flow-steps:begin (generated from flows/claude-code-security-review.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the Quick Start workflow to .github/workflows/security.yml with your Claude API key secret — `uses: anthropics/claude-code-security-review@main`
+2. **You**: Make fork PRs wait for a maintainer before workflows run — `Require approval for all external contributors`
+3. **Claude Code Security Review**: On each PR, Claude Code reads the changed files and reasons about them in context — component: `github_action_audit.py`
+4. **Claude Code Security Review**: A filtering pass drops low-impact findings such as DoS, rate limiting and open redirects — component: `findings_filter.py`
+5. **Claude Code Security Review**: Posts what is left as review comments on the exact lines, with severity and a fix
+
+**Value**: Logic-level vulnerabilities in a diff are flagged on the PR before merge, with no rules to write
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -119,9 +140,9 @@ You're also a developer using Claude Code day-to-day who wants the same check be
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06):** [推断] **coasting, not abandoned.** Last push 2026-02 — roughly four months stale as of 2026-06 — and there has never been a tagged release (usage pins `@main`). For a security gate that means: no version line to anchor on, and behavior can change (or silently stop tracking the current Claude model default) without a signal. Not dead, but slower-moving than its peers here.
+- **Maintenance (2026-10):** [推断] **stalled, not abandoned.** Last push 2026-02-11 and the default branch has not moved since (re-checked 2026-10-08) — about eight months without a commit — and there has never been a tagged release (usage pins `@main`). For a security gate that means: no version line to anchor on, the README default model is still `claude-opus-4-1-20250805`, and behavior can change (or silently stop tracking the current Claude model default) without a signal. Not dead, but slower-moving than its peers here.
 - **Governance & backing:** [推断] owned by `anthropics` (the Anthropic org), a vendor with a direct interest in the Claude-Code ecosystem this drives. That cuts bus-factor risk versus a single maintainer, but it's a vendor showcase/companion tool, not a foundation-governed project — Anthropic can re-scope or quietly de-prioritize it.
-- **Age & Lindy:** [推断] created 2025-08, ~10 months old as of 2026-06 — **young-to-middling, weak Lindy prior.** The 4-month-stale push on top of a sub-1-year age means it has neither longevity nor strong recent momentum; treat it as a useful-but-unproven tool, not a long-term bet.
+- **Age & Lindy:** [推断] created 2025-08-04, ~14 months old as of 2026-10 — **young, weak Lindy prior.** Eight quiet months out of fourteen means it has neither longevity nor recent momentum; treat it as a useful-but-unproven tool, not a long-term bet.
 - **Risk flags:** [推断] hard constraint, not a flag you can defer: README states it is **not hardened against prompt injection** and must only review trusted PRs — a structural limitation of an LLM reviewer, not a bug that gets patched. Plus per-run Claude API cost and non-determinism (see When NOT to use). MIT license, no relicense history found.
 
 ## Caveats (unverified)

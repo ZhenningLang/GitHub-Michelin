@@ -6,19 +6,19 @@ category: data-tools
 tags: [developer-tools, offline, desktop, cross-platform, converters, encoders, formatters, extensible]
 language: C#
 license: MIT
-maturity: v2.0.9.0 (prerelease, 2026-01), active (2026-06)
-last_verified: 2026-06-26
+maturity: v2.0.9.0 (prerelease, 2026-01), bursty commits through 2026-09, ~32.1k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: app
 upstream:
-  pushed_at: 2026-02-25T11:53:38Z
+  pushed_at: 2026-09-29T00:45:51Z
   default_branch: main
-  default_branch_sha: 7e12df8448aa1f6aec4a8736b3e06a1c90530715
+  default_branch_sha: 2dbbc8aa594978d11165a0e8112243c96a277dbc
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:58:58Z
+  computed_at: 2026-10-08T08:17:57Z
   overall: B
-  overall_score: 2.6
+  overall_score: 3.2
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -29,8 +29,8 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 214
-        active_weeks_13: 0
+        last_commit_age_days: 9
+        active_weeks_13: 1
         carve_out: null
     responsiveness:
       grade: "?"
@@ -45,25 +45,25 @@ health:
         graph_tier: E
         volume_tier: "?"
         cross_check_divergence: null
-        homebrew_installs_90d: 862
+        homebrew_installs_90d: 814
         homebrew_tier: B
-        release_downloads: 594196
+        release_downloads: 599209
         release_assets: 299
         release_tier: C
         signal_basis: homebrew+releases
         tier_source: homebrew+releases
     longevity:
-      grade: C
+      grade: A
       raw:
-        repo_age_days: 1825
-        last_commit_age_days: 214
+        repo_age_days: 1835
+        last_commit_age_days: 9
         cohort: app
     governance:
-      grade: C
+      grade: B
       raw:
-        active_maintainers_12mo: 2
-        top1_share: 0.75
-        top3_share: 1.0
+        active_maintainers_12mo: 4
+        top1_share: 0.545
+        top3_share: 0.909
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -79,67 +79,86 @@ health:
 
 # DevToys
 
-An offline, cross-platform desktop "Swiss Army knife" that bundles ~30 small developer utilities (converters, encoders, formatters, generators, testers) behind one native GUI — plus a separate CLI for automation.
+To decode a JWT or pretty-print a JSON blob you paste it into some ad-funded "online formatter" — and a production token has just left your machine. DevToys puts ~30 such small utilities (decoders, formatters, converters, generators, testers) in one offline desktop app for Windows, macOS and Linux, and picks the right one from whatever is on your clipboard.
 
 ![devtoys — health radar](../../../assets/health/devtoys.svg)
 
 ## When to use
 
-You're a developer who, twenty times a day, needs to Base64-decode a token, pretty-print a blob of JSON, diff two strings, generate a UUID, convert JSON↔YAML, or hash a file — and you're tired of pasting potentially-sensitive payloads into random "json formatter online" sites whose ad-funded business model you don't trust. DevToys installs as a normal desktop app (Windows, macOS, or Linux), opens instantly, and runs every transformation locally with no network call, so a JWT or a config secret never leaves your machine. You get one searchable window with ~30 tools instead of thirty browser tabs, and a "Smart Detection" feature that guesses which tool you want from whatever you paste.
+You're a developer who, twenty times a day, needs to Base64-decode a token, pretty-print a blob of JSON, diff two strings, generate a UUID, convert JSON↔YAML, or hash a file — and you're tired of pasting potentially-sensitive payloads into random "json formatter online" sites whose ad-funded business model you don't trust. DevToys installs as a normal desktop app (Windows, macOS, or Linux), opens instantly, and runs every transformation locally with no network call, so a JWT or a config secret never leaves your machine. You get one searchable window with ~30 tools instead of thirty browser tabs, and a "Smart Detection" feature that picks the tool for whatever is on your clipboard.
 
-It also fits when you want the same conveniences in automation: DevToys ships a separate CLI app that exposes the tools for scripting and CI, and both the GUI and CLI are extensible — you can pull in community tools or write your own as a NuGet-distributed extension. So the personal scratchpad and the pipeline step can share the same tool implementations.
+It also fits when you want the same conveniences in automation: DevToys ships a separate CLI app (`DevToys.CLI`) that exposes the tools for scripting, and both the GUI and CLI are extensible — you can install community tools or write your own as a NuGet-packaged .NET extension. So the personal scratchpad and the pipeline step can share the same tool implementations. Pick it over [CyberChef](cyberchef.md) when you want a native app with clipboard detection rather than a browser tab, and over IT-Tools when you want it on your own machine rather than on a server.
+
+## How it works
+
+Each tool in DevToys is a small .NET plugin with its own little screen: an input box, a few options, an output box. **The tools, their UI and the clipboard detection ship with the app** — when you paste or copy something, DevToys asks every tool "does this look like your kind of input?" (a JWT, a Unix timestamp, a JSON document…) and offers the best match, then the tool recomputes the output on your machine as you type. **You do the pasting, pick or confirm the tool, and copy the result out.** The desktop shell is a native window per OS (WPF on Windows, a native macOS app, GTK on Linux) hosting a web-style UI rendered locally — nothing is served from the internet. The same tools are reachable from the separate CLI, and extensions you install from the "Manage extensions" page are unpacked from NuGet packages into the app's own folder. Think of a kitchen drawer of small gadgets with a helper who hands you the right one when you hold up an ingredient.
+
+![devtoys — backbone user story](../../../assets/flow/devtoys.svg)
+
+<!-- flow-steps:begin (generated from flows/devtoys.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the desktop app for your OS — `winget install DevToys-app.DevToys · brew install --cask devtoys`
+2. **You**: Copy the thing you need to inspect — a JWT, a JSON blob, a timestamp — and open DevToys
+3. **DevToys**: Smart Detection checks the clipboard and suggests the tool that fits — component: `Smart Detection`
+4. **DevToys**: The tool decodes, formats or converts it on your machine as you type — no network call — component: `built-in tool (~30)`
+
+**Value**: Everyday decode/format/convert chores in one offline window — sensitive payloads never touch a third-party website
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You live in the terminal and want a single binary, not a desktop app.** DevToys is GUI-first; the CLI is a separate companion. For a pure browser/CLI text-transform pipeline, [CyberChef](cyberchef.md) (browser, chainable "recipes") or plain `jq`/`xxd`/`openssl` are lighter weight.
-- **You need to chain transforms into a reproducible recipe.** DevToys tools are mostly one-shot, single-tool screens; CyberChef's whole model is composing many operations into a saved, shareable pipeline. DevToys does not (as of v2) offer an equivalent recipe graph. [推断]
-- **You need server/headless infrastructure or remote management.** This is a local devtools box, not a service. For host administration use [Cockpit](../ops-infra/cockpit.md); for metrics collection use [Telegraf](../ops-infra/telegraf.md).
-- **You depend on a frozen, long-term-stable release.** The current cross-platform 2.x line is published as **prerelease** builds; the last non-prerelease GitHub release is the older Windows-only 1.0.13.0 (2023). If your org bars prerelease software, that's a real gate. [未验证] release-channel policy may change.
-- **You need a tool DevToys doesn't have and can't justify an extension.** The built-in set is fixed (~30); anything beyond means finding or authoring an extension, with the maintenance/trust cost that implies.
-- **Browser-embeddable / scriptable-in-JS use.** DevToys is a .NET desktop app; you can't drop it into a web page the way CyberChef (pure client-side JS) embeds.
+- **You live in the terminal and want a single binary, not a desktop app.** DevToys is GUI-first; the CLI is a separate companion download. For a pure terminal pipeline, plain [`jq`](jq.md) / `xxd` / `openssl` are lighter, and for a browser-only chain, [CyberChef](cyberchef.md).
+- **You need to chain transforms into a reproducible recipe.** DevToys tools are mostly one-shot, single-tool screens; CyberChef's whole model is composing many operations into a saved, shareable pipeline. DevToys (as of v2.0.9) offers no equivalent recipe graph. [推断]
+- **You want one shared tool page for a whole team, served over HTTP.** DevToys is installed per machine; for a self-hosted web page with a similar grab-bag of utilities that everyone opens in a browser, use IT-Tools (not indexed, GPL-3.0, Docker image).
+- **You depend on a stable, regularly-patched release.** Every 2.x build is published as a GitHub **prerelease** — the last non-prerelease is the Windows-only 1.0.13.0 (2023-07) — and 2.x releases are far apart (v2.0.8.0 in 2024-11, then v2.0.9.0 in 2026-01). If your org bars prerelease software or expects regular security patches for desktop tools, that is a real gate; CyberChef (a GCHQ-maintained static web page) or CLI primitives are safer defaults.
+- **You need a tool DevToys doesn't have and can't justify an extension.** The built-in set is fixed (~30); anything beyond means finding or authoring an extension, and the extension manager does not check for extension updates (per its publishing docs) — you track those yourself.
+- **Browser-embeddable / scriptable-in-JS use.** DevToys is a .NET desktop app; you can't drop it into a web page the way [CyberChef](cyberchef.md) (pure client-side JS) embeds.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [CyberChef](cyberchef.md) | ✅ | Choose CyberChef when you need browser-based, chainable "recipe" pipelines and deeper crypto/forensics operations. | Browser-based, chainable "recipe" pipelines and crypto/forensics depth; runs anywhere with a browser. DevToys is a native desktop app with OS integration, a CLI companion, and an offline-by-default install, but mostly one-shot tools (no recipe graph). |
-| [Cockpit](../ops-infra/cockpit.md) | ✅ | Choose Cockpit when you need web server-administration UI for Linux hosts. | Web server-administration UI for Linux hosts (services, logs, storage); a different job — remote host management vs local dev string-wrangling. |
-| [Telegraf](../ops-infra/telegraf.md) | ✅ | Choose Telegraf when you need a metrics/event collection agent for observability pipelines. | Metrics/event collection agent for observability pipelines; not an interactive devtools box. |
-| It-Tools | 未收录 | Choose It-Tools when you need a self-hostable web app with a similar grab-bag of dev utilities. | Self-hostable web app with a very similar grab-bag of dev utilities; runs in any browser / Docker. DevToys is native desktop + offline + a CLI; It-Tools is zero-install over HTTP. |
-| DevUtils (macOS) | 未收录 | Choose DevUtils when you need a polished native macOS-only equivalent and accept a paid app. | Polished native macOS-only equivalent (paid); DevToys is free, MIT, and cross-platform. |
-| [`jq`](jq.md) / `xxd` / `openssl` (CLI) | 部分已收录 | Choose Unix CLI primitives when you need scriptable pipelines with no GUI. | Scriptable Unix primitives, no GUI; better for pipelines, worse for "I just need to eyeball this once." |
+| [CyberChef](cyberchef.md) | ✅ | When you need chained "recipes" or deeper crypto/forensics operations, or must run in any browser with nothing installed, pick CyberChef; for quick single-tool jobs from the clipboard in a native app, pick DevToys. | CyberChef composes operations into shareable pipelines and runs anywhere a browser does; DevToys adds clipboard Smart Detection, OS integration and a CLI, but its tools are one-shot screens. |
+| IT-Tools | not indexed | For a self-hosted page the whole team opens in a browser, pick IT-Tools; for an offline tool on each developer's own machine, pick DevToys. | IT-Tools is zero-install for users and actively maintained, but someone runs the server and it is GPL-3.0; DevToys needs a per-machine install and its 2.x line is still prerelease. |
+| DevUtils (macOS) | not a repo | If your whole team is on macOS and a polished paid native app is acceptable, DevUtils fits; for free, MIT, cross-platform with extensions, pick DevToys. | DevUtils is closed-source and Mac-only; DevToys trades some polish for cross-platform reach and an extension SDK. |
+| [`jq`](jq.md) / `xxd` / `openssl` (CLI) | partly indexed | When the transform belongs in a script or CI step, pick the Unix CLI primitives (only `jq` has a page here); when you just need to eyeball a value once, DevToys is faster. | CLI tools compose and version-control well but have no GUI and need you to remember flags; DevToys is point-and-paste but awkward to automate beyond its CLI companion. |
 
 ## Tech stack
 
-- **Language:** C# (≈73% of the repo) on .NET; UI assets in HTML/SCSS/TypeScript (Blazor Hybrid front end). PowerShell for build/packaging. (percentages per GitHub language stats, 2026-06)
-- **UI:** WinUI on Windows and a cross-platform shell rendering a Blazor Hybrid (WebView) UI on macOS/Linux; Fluent/Mica design language. (exact cross-platform host framework not re-confirmed from source this pass — see Caveats)
-- **Form factors:** a GUI app and a separate CLI app, sharing the same tool/extension model.
-- **Extensibility:** tools are plugins; community + first-party extensions are distributed as NuGet packages and discovered in-app.
+- **Language:** C# on .NET 8 (`net8.0` targets; C# ≈ 73% of the repo), with SCSS/HTML/TypeScript UI assets; PowerShell/Shell build scripts (GitHub language stats, 2026-10).
+- **UI:** a Blazor Hybrid UI (Razor components rendered in a local WebView) hosted by a native shell per OS — WPF + `WebView.Wpf` on Windows, a `net8.0-macos` app on macOS, GTK 4 + WebKitGTK via GirCore on Linux (per the platform `.csproj` files under `src/app/dev/platforms/desktop/`).
+- **Form factors:** `DevToys.Windows` / `DevToys.MacOS` / `DevToys.Linux` GUI apps and a separate `DevToys.CLI`, sharing `DevToys.Api` (the extension SDK) and the same tool implementations.
+- **Extensibility:** tools are plugins discovered via reflection; extensions are NuGet packages installed from the in-app "Manage extensions" page; an SDK and docs at devtoys.app/doc.
 
 ## Dependencies
 
-- **Runtime:** none for the user — DevToys ships as a self-contained desktop install per OS (Windows / macOS / Linux). No database, no server, no internet connection required to run the built-in tools.
-- **Install:** OS-native installers / package managers (e.g. Microsoft Store / winget on Windows, and macOS/Linux packages); see the project's releases and site for the current channel (exact package-manager IDs not re-verified this pass — see Caveats).
-- **Build-from-source:** .NET SDK toolchain (C#), plus the JS/TS asset pipeline for the Blazor UI.
-- **Extensions:** optional; pulled as NuGet packages at the user's discretion.
+- **Runtime:** none for the user — DevToys ships self-contained per OS. No database, no server, no internet connection required to run the built-in tools. Its privacy policy states usage data (errors, performance) stays local, visible under Settings → Logs, and is not sent to the developer.
+- **Install:** `winget install DevToys-app.DevToys` (Windows), `brew install --cask devtoys` (macOS), a `.deb` for Debian/Ubuntu, plus the Microsoft Store and direct downloads (devtoys.app/download, 2026-10). The CLI is a separate download.
+- **Linux runtime libraries:** the Linux build uses GTK 4 and WebKitGTK, so those system libraries must be present on the machine.
+- **Build-from-source:** .NET 8 SDK plus the TypeScript/SCSS asset pipeline.
+- **Extensions:** optional NuGet packages, installed at the user's discretion.
 
 ## Ops difficulty
 
-**Low.** For the end user it is a single desktop install with zero services to run, no config, and no network exposure — essentially "install and use," and uninstall is clean. The only ongoing burden is keeping up with prerelease 2.x builds if you want the cross-platform line, and vetting any third-party extension you add (an extension is arbitrary code from NuGet, so it inherits that trust/maintenance cost). There is no deployment, scaling, or backup story because there is no server.
+**Low.** For the end user it is a single desktop install with zero services to run, no config, and no network exposure — "install and use," and uninstall is clean. The ongoing burden is release hygiene: 2.x builds are prereleases that arrive months apart, so you decide when to update; Linux users depend on the distro's GTK/WebKitGTK; and any third-party extension is arbitrary .NET code from NuGet that the app will not auto-update, so you vet and track it. There is no deployment, scaling, or backup story because there is no server.
 
 ## Health & viability
 
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06):** **active but in prerelease limbo** — repo pushed 2026-02; the cross-platform 2.x line ships only as **prerelease** builds (latest v2.0.9.0, 2026-01), and the last *stable* GitHub release is the Windows-only 1.0.13.0 (2023). Developing, but with no current stable tag. [未验证]
-- **Governance & bus factor:** `Organization`-owned (`DevToys-app`) with ~31k stars — community/org project, no large vendor behind it; a small maintainer team rather than a single person. [推断]
-- **Age & Lindy (~5yr, created 2021-09):** **mid-aged and active** — enough history to clear a basic Lindy bar, but the unfinished 2.x stabilization tempers the verdict: proven concept, not-yet-frozen current line.
-- **Risk flags:** if your org bars prerelease software, the cross-platform line is a real gate; third-party extensions are arbitrary NuGet code (trust/maintenance cost). MIT, no relicense/open-core history.
+- **Maintenance (2026-10): bursty, not steady.** Commits come in clusters months apart — 2024-11, 2025-02, 2026-01/02, then a three-commit burst on 2026-09-29 (Linux WebView and macOS/Linux Text Comparer fixes). The radar's maintenance grade stays C, while longevity rose from C to A only because that late-September burst reset "last commit" to days ago; read it as "alive, slow", not "active". No release since v2.0.9.0 (2026-01-08, prerelease).
+- **Responsiveness:** cannot be scored — the scorer found no usable issue-response window (`no_window_signal`); 338 open issues (2026-10) suggest a backlog.
+- **Governance & bus factor.** Organization-owned (`DevToys-app`), but the project is effectively one creator's: the `veler` account (Etienne Baudoux) authored ~861 commits against 38 for the next contributor. The governance grade rose from C to B because four people committed in the last 12 months (top contributor ~55%) — a slightly wider bench, not a team. No company or foundation behind it.
+- **Age & Lindy (~5 years, created 2021-09).** Mid-aged and still receiving fixes, but the 2.x line has been "prerelease" for over two years; the concept is proven, the current line is not finished — a modest Lindy prior.
+- **Adoption.** ~32k stars, ~1.8k forks, ~600k release-asset downloads and steady Homebrew installs (health raw, 2026-10); a well-known name among developer utilities.
+- **Risk flags.** MIT, no relicense or open-core history. Risks are the prerelease status, long gaps between releases, a single core maintainer, and unaudited third-party extensions.
 
 ## Caveats (unverified)
 
-- [未验证] Latest release is v2.0.9.0 published 2026-01-08 and marked **prerelease**; the most recent non-prerelease GitHub release is v1.0.13.0 (2023-07-25, Windows-only 1.x). Repo `pushedAt` 2026-02-25, so development is ongoing — but "stable 2.0" status should be confirmed before relying on it.
-- [未验证] Star count ~31.7k as of 2026-06 — GitHub stars are unreliable and date-sensitive; indicative only.
-- [推断] Built-in tool count "~30" comes from the project's own "30 tools" framing for 2.0; the exact catalog shifts release-to-release — verify a specific tool exists in your installed build.
-- [推断] Cross-platform UI is described as WinUI (Windows) + a Blazor Hybrid WebView shell elsewhere; the precise cross-platform host framework (Uno Platform vs custom) was not re-confirmed from source this pass.
-- [未验证] Installation methods (winget / Store / brew / Linux packages) and the CLI's exact command surface were not exhaustively re-verified; check the official site/releases.
-- [推断] CyberChef-style recipe chaining is absent in DevToys based on its single-tool UI model; not exhaustively confirmed against the current feature set.
+- [未验证] Star, fork, download and open-issue counts are GitHub/scorer snapshots from 2026-10-08 and drift.
+- [推断] Built-in tool count "~30" comes from the README's "30 default tools" for 2.0; the catalog may shift between releases — verify a specific tool exists in your installed build.
+- [推断] CyberChef-style recipe chaining is absent in DevToys based on its single-tool UI model and docs; not exhaustively confirmed against every extension.
+- [推断] "Effectively one creator's project" is inferred from all-time commit counts (`veler` ~861 vs 38) and the recent changelog/release commits being authored by that account; review authority was not examined.
+- [未验证] The privacy-policy statement that usage data stays local is taken from `PRIVACY-POLICY.md` (dated 2021-09); the 2.x network behavior was not traced in source or with a packet capture.

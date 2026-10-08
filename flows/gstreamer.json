@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "GStreamer does",
+    "zh": "GStreamer 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the core, the plugin sets you need and the tools",
+      "zh": "装好核心、需要的插件集和命令行工具",
+      "code": "gstreamer1.0-plugins-good · gstreamer1.0-libav · gstreamer1.0-tools"
+    },
+    {
+      "lane": "you",
+      "en": "Prototype the pipeline on the command line",
+      "zh": "先在命令行里试出管线",
+      "code": "gst-launch-1.0 videotestsrc ! videoconvert ! autovideosink"
+    },
+    {
+      "lane": "you",
+      "en": "Build the same pipeline in your app and set it to PLAYING",
+      "zh": "在应用里搭同一条管线，切到 PLAYING",
+      "code": "gst_parse_launch · gst_element_set_state"
+    },
+    {
+      "lane": "them",
+      "en": "Negotiates the media format on every link and loads the plugins each element needs",
+      "zh": "在每个连接上协商媒体格式，加载各元素需要的插件"
+    },
+    {
+      "lane": "them",
+      "en": "Streams buffers through the elements on its own threads, in sync with the pipeline clock",
+      "zh": "用自己的流线程推着数据穿过各元素，按管线时钟同步"
+    },
+    {
+      "lane": "them",
+      "en": "Reports errors and end-of-stream as messages on the bus",
+      "zh": "把错误和流结束作为消息投到总线上"
+    }
+  ],
+  "value": {
+    "en": "A media path that runs continuously inside your app, and whose sources, encoders and sinks you swap per device without rewriting it",
+    "zh": "一条在你应用里持续运行的媒体通路，换设备时只换源、编码器、输出，不用重写"
+  },
+  "sources": [
+    "subprojects/gst-docs/markdown/installing/on-linux.md (main @ 80c184b4): apt-get install … gstreamer1.0-plugins-good gstreamer1.0-libav gstreamer1.0-tools …",
+    "subprojects/gst-docs/markdown/tutorials/basic/gstreamer-tools.md: gst-launch-1.0 videotestsrc ! videoconvert ! autovideosink",
+    "subprojects/gst-docs/examples/tutorials/basic-tutorial-1.c: gst_parse_launch, gst_element_set_state (pipeline, GST_STATE_PLAYING), gst_bus_timed_pop_filtered",
+    "https://gstreamer.freedesktop.org/documentation/ (caps negotiation, streaming threads, bus) and README.md (main)"
+  ]
+}

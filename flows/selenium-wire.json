@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Selenium Wire does", "zh": "Selenium Wire 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it next to Selenium 4, a browser and its webdriver on PATH", "zh": "装上它，配好 Selenium 4、浏览器和 webdriver", "code": "pip install selenium-wire"},
+    {"lane": "you", "en": "Swap one import; the rest of your Selenium code stays as it is", "zh": "只换一行 import，其余 Selenium 代码原样不动", "code": "from seleniumwire import webdriver"},
+    {"lane": "them", "en": "Routes the browser through its own MITM proxy and has it accept its root certificate", "zh": "让浏览器走它自带的中间人代理，并放行它的根证书"},
+    {"lane": "you", "en": "Drive the browser exactly as before", "zh": "照旧驱动浏览器", "code": "driver.get('https://www.google.com')"},
+    {"lane": "them", "en": "Decrypts and stores every request and response the page makes, running your interceptors", "zh": "解密并记下页面发出的每个请求和响应，顺带跑你设的拦截函数"},
+    {"lane": "you", "en": "Read the captured traffic: URL, status, headers, body", "zh": "读抓到的流量：网址、状态码、请求头、正文", "code": "driver.requests · driver.wait_for_request(pat, timeout=10)"}
+  ],
+  "value": {"en": "The background API calls and headers behind a Selenium page, without leaving Selenium — on a library frozen since 2024", "zh": "不离开 Selenium 就能看到页面背后的接口调用和请求头——只是这个库 2024 年起已冻结"},
+  "sources": [
+    "https://github.com/wkeeling/selenium-wire#readme (no longer maintained notice; Installation: pip install selenium-wire; Browser Setup: webdriver on PATH)",
+    "https://github.com/wkeeling/selenium-wire#creating-the-webdriver (from seleniumwire import webdriver)",
+    "https://github.com/wkeeling/selenium-wire#simple-example (driver.get('https://www.google.com'), driver.requests, request.response.status_code)",
+    "https://github.com/wkeeling/selenium-wire#accessing-requests (driver.wait_for_request(pat, timeout=10))",
+    "https://github.com/wkeeling/selenium-wire#intercepting-requests-and-responses (driver.request_interceptor / response_interceptor)",
+    "https://github.com/wkeeling/selenium-wire#certificates (own root certificate; browser told to add it as an exception)"
+  ]
+}

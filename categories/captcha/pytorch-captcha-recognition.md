@@ -7,7 +7,7 @@ tags: [captcha, ocr, cnn, pytorch, deep-learning, fixed-length, tutorial, chines
 language: Python
 license: Apache-2.0
 maturity: no tagged releases, last push 2020-01, stale/abandoned (verified 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2020-01-09T10:47:29Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:51:19Z
+  computed_at: 2026-10-08T08:16:23Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2765
+        last_commit_age_days: 2776
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3106
-        last_commit_age_days: 2765
+        repo_age_days: 3116
+        last_commit_age_days: 2776
         cohort: library
     governance:
       grade: "?"
@@ -75,9 +75,32 @@ A small PyTorch example that trains an "end-to-end" CNN to read **fixed-length i
 
 ## When to use
 
-You're learning how CAPTCHA recognition works, or you need a minimal, readable baseline for the simplest case: a **fixed-length** text-in-image CAPTCHA — say a 4-digit or 4-char alphanumeric code on a plain background. Rather than wiring up CTC or a sequence model, you want the dead-simple approach: a CNN with one classification head per character position, trained end-to-end on synthetically generated captchas. This repo is exactly that — it generates training images, defines a small CNN, trains it, and predicts, with the README claiming ~99.99% on pure digits and ~96% on digits+letters. It's a clean teaching scaffold you can read top to bottom and adapt, and the multi-head fixed-length design is a useful pattern to learn before reaching for heavier sequence models.
+You're learning how CAPTCHA recognition works, or you need a minimal, readable baseline for the simplest case: a **fixed-length** text-in-image CAPTCHA — say a 4-digit or 4-char alphanumeric code on a plain background. Rather than wiring up CTC or a sequence model, you want the dead-simple approach: a CNN with one classification head per character position, trained end-to-end on synthetically generated captchas. This repo is exactly that — it generates training images, defines a small CNN, trains it, and predicts, with the README claiming ~99.9999% on pure digits and ~96% on digits+letters. It's a clean teaching scaffold you can read top to bottom and adapt, and the multi-head fixed-length design is a useful pattern to learn before reaching for heavier sequence models.
 
 You reach for it as a **study reference or a starting template**, not as a maintained dependency — copy the idea (or the code) into your own project and modernize it.
+
+## How it works
+
+The whole project is five short scripts around one trick: **the training data labels itself**. `captcha_gen.py` asks the [captcha (lepture)](lepture-captcha.md) library to draw random 4-character codes and saves each image with its answer in the file name, so you get thousands of labeled samples without touching a labeling tool. The model is a small *CNN* (a convolutional network — a stack of image filters that learns which shapes matter) whose last layer outputs 4 × 36 scores: one block of 36 per character position, one score per possible character. Training pushes the right score up in every block; prediction just takes the highest score in each block and glues the four winners together. **What it does for you**: data generation, the network, the train/test/predict loop. **What you do**: edit `captcha_setting.py` (character set, length, image size), adjust the hard-coded sample `count` and output path in `captcha_gen.py` to build train/test/predict sets, and port the 2020-era code (Python 2.7-compatible, `torch.autograd.Variable`) to current PyTorch. The four-way split in `captcha_predict.py` is hard-coded, so a different length means editing that script too.
+
+![pytorch-captcha-recognition — backbone user story](../../assets/flow/pytorch-captcha-recognition.svg)
+
+<!-- flow-steps:begin (generated from flows/pytorch-captcha-recognition.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install PyTorch and the ImageCaptcha generator; set the charset and length in its settings file — `pip install captcha · captcha_setting.py`
+2. **You**: Run the generator to make auto-labeled synthetic captchas — `python captcha_gen.py`
+3. **pytorch-captcha-recognition**: Writes images into dataset/train/, the answer encoded in each file name
+4. **You**: Start training — `python captcha_train.py`
+5. **pytorch-captcha-recognition**: Trains a small CNN whose output has one score slice per character position; saves model.pkl — component: `captcha_cnn_model.py`
+6. **You**: Run prediction on the images in the predict folder — `python captcha_predict.py`
+7. **pytorch-captcha-recognition**: Picks the top-scoring character in each slice and prints the 4-character code
+
+**Value**: A readable end-to-end baseline: no character segmentation, no hand labeling — the generator labels the data for you
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -85,7 +108,7 @@ You reach for it as a **study reference or a starting template**, not as a maint
 - **Variable-length or hard CAPTCHAs.** The fixed-position multi-head design assumes a known character count and plain layout; for variable length you need CTC or seq2seq, and for distorted/overlapping/click-select CAPTCHAs this approach won't hold.
 - **You want a packaged solver.** This is example/training code, not a `pip install`-able library with a stable API — there's integration work to use it, and no support.
 - **Legality / ToS.** As with any CAPTCHA solver, using it against a site you don't control may violate terms or law; the project is for learning.
-- **You need the headline accuracy on real captchas.** The "99.99%/96%" numbers are on the repo's *own synthetic* captchas; on a real target's font/noise, accuracy will differ — don't quote them as your expected result.
+- **You need the headline accuracy on real captchas.** The "99.9999%/96%" numbers are on the repo's *own synthetic* captchas; on a real target's font/noise, accuracy will differ — don't quote them as your expected result.
 
 ## Comparison
 
@@ -99,7 +122,7 @@ You reach for it as a **study reference or a starting template**, not as a maint
 
 ## Tech stack
 
-- **Framework:** PyTorch — a small convolutional network with **one classification head per character position** (fixed-length multi-output), trained end-to-end. [推断]
+- **Framework:** PyTorch — three small conv blocks feeding one fully-connected layer that emits `MAX_CAPTCHA × charset` scores (4 × 36 by default), read as **one slice per character position** (fixed-length multi-output), trained end-to-end on one-hot labels.
 - **Data:** synthetically generated CAPTCHA images for training/validation (the repo includes generation), rather than a real-site dataset.
 - **Pipeline:** scripts to generate data, train the model, and run prediction — a minimal train/eval/predict loop, not a service.
 
@@ -125,7 +148,6 @@ You reach for it as a **study reference or a starting template**, not as a maint
 ## Caveats (unverified)
 
 - [未验证] ~1.2k stars and last push 2020-01 as of 2026-06; no GitHub Releases, so no version number is asserted.
-- [未验证] "99.99% on digits / 96% on digits+letters" are the README's claims on the repo's *own synthetic* captchas — not independently verified and not representative of real-site accuracy.
-- [推断] The architecture (CNN with one classification head per fixed character position, end-to-end) is inferred from the project description; not re-verified line-by-line against the source.
+- [未验证] "99.9999% on digits / 96% on digits+letters" are the README's claims on the repo's *own synthetic* captchas — not independently verified and not representative of real-site accuracy.
 - [推断] Running it on current PyTorch likely requires dependency/API updates; "needs modernization" is an inference from the 2020 last-push date, not a tested result.
 - [推断] "Abandoned/frozen" is inferred from ~6 years without commits; the repo is not GitHub-archived, so a maintainer could in principle return (none implied).

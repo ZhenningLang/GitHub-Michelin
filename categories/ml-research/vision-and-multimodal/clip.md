@@ -7,7 +7,7 @@ tags: [zero-shot, image-classification, multimodal, embeddings, retrieval, contr
 language: Python
 license: MIT
 maturity: stable reference release, low ongoing maintenance, ~33.9k stars (last pushed 2026-03, as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: model
 upstream:
   pushed_at: 2026-03-25T18:46:40Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:13:47Z
+  computed_at: 2026-10-08T08:23:13Z
   overall: C
   overall_score: 2.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 186
+        last_commit_age_days: 197
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: clip-openai
         dependent_repos_count: 1
-        downloads_last_month: 2941
+        downloads_last_month: 1335
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 2111
-        last_commit_age_days: 186
+        repo_age_days: 2122
+        last_commit_age_days: 197
         cohort: model
     governance:
       grade: C
@@ -79,9 +79,31 @@ OpenAI's original reference implementation of CLIP (Contrastive Language-Image P
 
 ## When to use
 
-You're an ML engineer or researcher who needs to label or search images without collecting a labeled dataset and training a classifier. Maybe you have a pile of product photos and a list of category names, or you want to find "a photo of a dog catching a frisbee" inside a large image collection. You load a pretrained CLIP checkpoint, run `clip.encode_image` over your images and `clip.encode_text` over your candidate prompts, normalize both, and take cosine similarity — the highest-scoring text label is your zero-shot prediction, and the same embeddings double as a retrieval index. Because image and text live in the same vector space, classification, retrieval, and rough semantic similarity all fall out of one model with a handful of lines of PyTorch.
+You're an ML engineer or researcher who needs to label or search images without collecting a labeled dataset and training a classifier. Maybe you have a pile of product photos and a list of category names, or you want to find "a photo of a dog catching a frisbee" inside a large image collection. You load a pretrained CLIP checkpoint, run `model.encode_image` over your images and `model.encode_text` over your candidate prompts, normalize both, and take cosine similarity — the highest-scoring text label is your zero-shot prediction, and the same embeddings double as a retrieval index. Because image and text live in the same vector space, classification, retrieval, and rough semantic similarity all fall out of one model with a handful of lines of PyTorch.
 
 You also reach for this specific repo when you want the canonical, minimal reference: the original ViT-B/32, ViT-L/14, and ResNet (RN50, etc.) weights and the exact preprocessing OpenAI shipped, to reproduce paper numbers or to read how the model and tokenizer are actually wired. It's the smallest faithful starting point for understanding CLIP before you move to a heavier framework.
+
+## How it works
+
+CLIP is two encoders trained together — one turns an image into a list of numbers (a vector), the other turns a sentence into a vector of the same length — so that a picture and a caption that describe the same thing land close together. **The weights and the matching image preprocessing come from OpenAI; this repo downloads them on the first `clip.load` and caches them.** What you do is write the labels you care about as short sentences ("a photo of a dog"), tokenize them (chop them into the sub-word units the text encoder reads), and pass images and texts in; CLIP returns a similarity score for every image-text pair, and the best-scoring sentence is the answer. It is like a translator that maps pictures and phrases into one shared coordinate system: you never teach it your categories, you just ask which phrase sits nearest. Storing the vectors, building a search index, or tuning the wording of the prompts is yours.
+
+![clip — backbone user story](../../../assets/flow/clip.svg)
+
+<!-- flow-steps:begin (generated from flows/clip.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install PyTorch, the small helpers, then this repo as a package — `pip install git+https://github.com/openai/CLIP.git`
+2. **You**: Load a named checkpoint — `clip.load("ViT-B/32", device=device)`
+3. **CLIP**: Downloads and caches the weights on first use; returns the model plus its image transform — component: `pretrained weights`
+4. **You**: Preprocess your images and write the candidate labels as plain text — `clip.tokenize(["a diagram", "a dog", "a cat"])`
+5. **CLIP**: Encodes images and texts into one shared vector space — component: `image + text encoders`
+6. **CLIP**: Scores every image-text pair by cosine similarity; the top label is the zero-shot prediction
+
+**Value**: Classify or search images by writing labels as text — no labeled dataset, no training run
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -113,7 +135,7 @@ You also reach for this specific repo when you want the canonical, minimal refer
 - **Runtime:** Python and PyTorch 1.7.1+ with torchvision, plus small helpers `ftfy`, `regex`, and `tqdm` (per the README).
 - **Pretrained weights:** the checkpoints are downloaded on first `clip.load(...)` (network access required) and cached locally; the weights are the substantive dependency, not just the code.
 - **Hardware:** runs on CPU, but a CUDA GPU is strongly recommended for anything beyond a few images; larger ViT-L/14 needs correspondingly more VRAM. [推断]
-- **Install:** `pip install git+https://github.com/openai/CLIP.git` — there is no separately versioned PyPI release of this repo.
+- **Install:** `pip install git+https://github.com/openai/CLIP.git` is the README's only install path. A `clip-openai` package (1.0.post20230121) on PyPI points back to this repo, but the README does not mention it, so treat the git ref as the supported route.
 
 ## Ops difficulty
 
@@ -122,7 +144,7 @@ You also reach for this specific repo when you want the canonical, minimal refer
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance (as of 2026-06):** last pushed ~2026-03 but effectively a **frozen reference** — a fixed checkpoint set and infrequent commits, not an evolving codebase. [推断] Treat it as coasting-by-design: it still installs and runs, but don't expect new backbones, fixes, or a versioned PyPI release here.
+- **Maintenance (as of 2026-10-08):** last commit 2026-03-25, nothing since, but effectively a **frozen reference** — a fixed checkpoint set and infrequent commits, not an evolving codebase. [推断] Treat it as coasting-by-design: it still installs and runs, but don't expect new backbones, fixes, or a versioned PyPI release here.
 - **Governance / backing:** organization-owned by OpenAI — the original paper repo, not a community project. That gives provenance (these are *the* reference weights/preprocessing) but no commitment to ongoing maintenance; the live ecosystem moved to OpenCLIP and Hugging Face `transformers`.
 - **Age & Lindy verdict (created 2020-12, ~6 yr):** old *and still widely used*, which is a strong Lindy signal for the **CLIP idea and these weights** as a stable baseline. The verdict is split: the *concept/checkpoints* are Lindy-proven and safe to build on; *this specific repo as a maintained dependency* is not — its longevity is "famous and frozen," not "actively maintained."
 - **Adoption:** CLIP embeddings are foundational across retrieval, zero-shot classification, and as the text/image encoder in many downstream systems; the pattern is deeply entrenched even though most production users consume it via OpenCLIP/`transformers` rather than this repo.
@@ -130,7 +152,8 @@ You also reach for this specific repo when you want the canonical, minimal refer
 
 ## Caveats (unverified)
 
-- [未验证] ~33.9k GitHub stars and last push around 2026-03 as of 2026-06; star counts are unreliable and date-sensitive — treat as indicative only.
+- [未验证] ~34.4k GitHub stars (GitHub API, 2026-10-08) and last commit 2026-03-25; star counts are unreliable and date-sensitive — treat as indicative only.
+- [未验证] The `clip-openai` PyPI package (1.0.post20230121, metadata author "OpenAI", homepage this repo) is not referenced by the README; who publishes it and whether it tracks `main` was not verified.
 - [推断] "Stable reference release / low ongoing maintenance" is inferred from this being the original paper repo with a fixed checkpoint set and infrequent pushes, not a declared project status — verify recent commit/issue activity before relying on it.
 - [未验证] Exact dependency floors (PyTorch 1.7.1, torchvision, ftfy, regex, tqdm) are read off the README; the actual minimum versions can drift — check `setup.py`/`requirements` in the current tree.
 - [未验证] The set and names of available checkpoints (RN50, ViT-B/32, ViT-B/16, ViT-L/14, and larger) are paraphrased from the README/`clip.available_models()`; confirm against the current repo for the exact list.

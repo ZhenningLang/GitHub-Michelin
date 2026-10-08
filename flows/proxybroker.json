@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "ProxyBroker does", "zh": "ProxyBroker 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package from PyPI", "zh": "从 PyPI 装上这个包", "code": "pip install proxybroker"},
+    {"lane": "you", "en": "Start a local rotating server, saying which proxy types and anonymity level you accept", "zh": "起一个本地轮换服务器，说明要哪类代理、什么匿名级别", "code": "proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High", "component": {"en": "proxybroker CLI", "zh": "proxybroker 命令行"}},
+    {"lane": "them", "en": "Scrapes ~50 public proxy-list sources for candidate addresses and drops duplicates", "zh": "从约 50 个公开代理列表抓候选地址，去掉重复"},
+    {"lane": "them", "en": "Checks each candidate concurrently: protocol, anonymity level, Cookie/Referer support; keeps the survivors", "zh": "并发检查每个候选的协议、匿名级别和 Cookie/Referer 支持，留下活的"},
+    {"lane": "you", "en": "Point your scraper's HTTP proxy setting at that local host and port", "zh": "把爬虫的 HTTP 代理设置指向这个本地端口"},
+    {"lane": "them", "en": "Forwards each incoming request through a proxy from the pool, rotating automatically", "zh": "把每个进来的请求转给池里的某个代理，自动轮换"}
+  ],
+  "value": {"en": "One local endpoint that rotates across free, pre-checked public proxies — no paid provider needed, but the pool is as flaky as free proxies are", "zh": "一个本地端点在免费、已检查过的公开代理间轮换，不用买代理；但池子和免费代理一样不稳"},
+  "sources": [
+    "https://github.com/constverum/ProxyBroker#installation (pip install proxybroker)",
+    "https://github.com/constverum/ProxyBroker#serve (proxybroker serve --host 127.0.0.1 --port 8888 --types HTTP HTTPS --lvl High; distributes incoming requests to a pool of found proxies)",
+    "https://github.com/constverum/ProxyBroker#features (~50 sources, checks Cookies/Referer, removes duplicates, automatic rotation)"
+  ]
+}

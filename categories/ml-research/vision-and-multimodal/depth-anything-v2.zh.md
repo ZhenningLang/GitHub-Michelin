@@ -6,8 +6,8 @@ category: vision-and-multimodal
 tags: [monocular-depth, depth-estimation, computer-vision, foundation-model, pytorch, dpt, vision-transformer]
 language: Python
 license: Apache-2.0
-maturity: NeurIPS 2024 release, code active, ~8.3k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: NeurIPS 2024 release, last commit 2026-03-24 (requirements fix), quiet since (as of 2026-10-08), ~8.9k stars
+last_verified: 2026-10-08
 type: model
 upstream:
   pushed_at: 2026-03-24T10:59:06Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:14:11Z
+  computed_at: 2026-10-08T08:23:20Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 187
+        last_commit_age_days: 198
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 836
-        last_commit_age_days: 187
+        repo_age_days: 847
+        last_commit_age_days: 198
         cohort: model
     governance:
       grade: D
@@ -76,12 +76,34 @@ health:
 
 你把它当作**当下默认的单目深度基础模型**，当相对深度的质量、速度、以及与 PyTorch/Transformers 的易集成，比自己造任何东西更重要时——它是这个细分领域里当前被引用最多、支持最好的选择。[推断]
 
+## 怎么用起来
+
+Depth Anything V2 是一组训练好的权重，外加一层很薄的 PyTorch 包装。**最难的部分作者已经做完：用大量合成图和伪标注图，训练了一个 DINOv2 视觉 Transformer（通用图像编码器）加 DPT 头（把编码特征还原成整幅图的解码器）。**你下载一个 checkpoint（从 Small 2480 万参数到 Large 3.35 亿参数），几行代码建出对应的模型，对一张 OpenCV 读入的图调 `infer_image`；它把图缩放到 518 像素输入，预测深度，再缩放回原图尺寸，以 NumPy 数组返回。输出是*相对*深度——告诉你哪些像素比另一些更近，而不是离你几米；要米制深度得换用单独的 `metric_depth/` 模型。拿到数组之后的事——点云、蒙版、服务化、导出 ONNX 或 Core ML——都归你。
+
+![depth-anything-v2 — 主干用户故事](../../../assets/flow/depth-anything-v2.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/depth-anything-v2.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆仓库、装依赖，把下载的 checkpoint 放进 checkpoints/ — `pip install -r requirements.txt`
+2. **你**：选模型尺寸并加载权重（只有 Small 是 Apache-2.0） — `encoder = 'vitl' # or 'vits', 'vitb', 'vitg'`
+3. **你**：用 OpenCV 读一张图，交给模型 — `depth = model.infer_image(raw_img)`
+4. **Depth Anything V2**：把图缩放到 518 像素输入，跑 DINOv2 编码器和 DPT 头 — 组件：`DINOv2 编码器 + DPT 头`
+5. **Depth Anything V2**：把预测缩放回原图尺寸，返回 HxW 的 NumPy 深度图
+
+**价值**：一张普通照片就能得到逐像素深度图，不用双目、LiDAR，也不用训练
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要主模型开箱即用的 metric 深度。** 招牌的相对深度 checkpoint 给的是*相对*深度（尺度/位移不定）；要绝对 metric 深度，必须用单独的 `metric_depth/` 模型，且那里的精度依赖领域。别以为默认输出就是以米为单位。[推断]
 - **你已经有双目/LiDAR。** 标定好的双目对或深度传感器直接给出有度量基准的深度；单目模型是单相机情形的退路，不是真实深度硬件的替代。
 - **许可：盯模型权重，别只看代码。** *代码*是 Apache-2.0，但按 README，**只有 Small 模型是 Apache-2.0；Base/Large/Giant 权重是 CC-BY-NC-4.0（非商用）**。对商业产品而言，较大的 checkpoint 除非另行安排否则禁用——这是最重要的一条注意事项。
 - **无 GPU 的边缘端硬实时。** Large 模型很重；连 Small 也受益于 GPU。仅 CPU 的边缘端、又有紧的延迟/功耗预算，需要更小/量化的模型并实测。
+- **你需要一条有人维护的代码路径。** 本仓库的代码自 2024 年年中以来除了一次依赖修正就没动过；想要跟得上新版 PyTorch 的集成，改用 Hugging Face Transformers 的 `depth-estimation` pipeline 加载同一批权重——但要接受 README 的提醒：它用 Pillow 缩放，预测会和仓库的 OpenCV 路径略有差异。
 - **分布外场景的正确性保证。** 它鲁棒，但仍是学习得到的模型——透明/反光表面、极端场景、异常相机都可能失败；请在你自己的数据上验证。
 
 ## 横向对比
@@ -115,16 +137,16 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——type_na。
-- **维护（2026-06）。** 最后 push 于 2026-03；issue 流活跃（约 240 个 open，与高使用量相符）。代码仓库在发布后**积极维护**，同一脉络下有后续项目（Video Depth Anything、Prompt Depth Anything）。[推断]
+- **维护（截至 2026-10-08）。** 这是一个**冻结的研究发布**：2024-07 之后，默认分支只有 README 新闻更新（2024-12、2025-01）和 2026-03-24 合入的一次 `requirements.txt` 修正；约 244 个 open issue 在没有代码变更的情况下累积。团队的新工作以独立仓库发布（Video Depth Anything、Prompt Depth Anything），不在这里。代码要钉死版本，别指望修复。
 - **治理 / 背书。** 由 **港大与 TikTok/字节跳动**的研究者撰写（Organization 拥有的仓库，`DepthAnything` 组织）。机构加大厂背书，加一篇 NeurIPS 2024 论文——很强的可持续性信号；路线图由研究团队主导。[推断]
-- **年龄与 Lindy 判断。** 2024-06 创建（约 2 年）——**年轻**，故 Lindy 在任一方向都给不了多少先验；这个赌注靠采用度加活跃维护加背书，目前都很强，而非靠长寿。[推断]
+- **年龄与 Lindy 判断。** 2024-06 创建（约 2.3 年）——**年轻且已沉寂**，Lindy 给不了支撑；这个赌注靠的是权重本身持续有用，以及在别处维护的下游集成（Transformers、Core ML、ONNX/TensorRT 移植），而不是本仓库自身的维护。[推断]
 - **采用度。** 约 8.3k star / 约 865 fork，有 Hugging Face Spaces demo、Transformers 集成、Apple Core ML 支持——作为首选单目深度模型，被广泛而迅速地采用。[未验证]
 - **风险标记。** 决定性的一项是**权重的拆分许可**（Small 为 Apache-2.0，Base/Large/Giant 为 CC-BY-NC-4.0）——一个区别于 Apache-2.0 代码的商用陷阱。另外：项目年轻（履历较短），以及 README 提到的 2024 年一次短暂的 GitHub 下架（仓库已恢复）。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 8.3k star / 约 865 fork / 约 240 个 open issue；数字对时间敏感，仅供参考。
+- [未验证] 2026-10-08 GitHub API 显示约 8.9k star / 约 922 fork / 约 244 个 open issue；数字对时间敏感，仅供参考。
 - [未验证] 模型许可拆分（Small 为 Apache-2.0；Base/Large/Giant 为 CC-BY-NC-4.0）取自 README 的 LICENSE 说明——商用前请在每个 checkpoint 的 Hugging Face 页面核实确切许可。
-- [未验证]「Giant」模型标注为「即将推出」；其在任一时刻的可用性/许可应直接核查。
+- [未验证]「Giant」（13 亿参数）模型在 2026-10-08 的 README 里仍标注「Coming soon」，距发布已两年多——别指望它；真需要时直接核查。
 - [推断]「被引用最多 / 当下默认单目深度模型」是从星标加 Transformers/Core ML 集成加 NeurIPS 论文推断，并非实测排名。
 - [推断]「在细节/鲁棒性上超过 MiDaS/DPT」反映作者主张加普遍反响，并非此处独立跑的基准。

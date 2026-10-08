@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "tusd does", "zh": "tusd 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the tusd binary and tell it where uploads land: a local directory or a bucket", "zh": "启动 tusd 二进制，告诉它上传落到哪：本地目录或存储桶", "code": "tusd -upload-dir=./data · tusd -s3-bucket=my-test-bucket.com"},
+    {"lane": "you", "en": "Point any tus client at its upload creation URL", "zh": "把任意 tus 客户端指向它的上传创建地址", "code": "endpoint: 'http://localhost:8080/files/'"},
+    {"lane": "them", "en": "Creates an upload resource and returns its own URL to the client", "zh": "创建一个上传资源，把它专属的 URL 回给客户端"},
+    {"lane": "them", "en": "Streams each chunk into storage, keeping the upload's state in a .info record beside the data", "zh": "把每段数据流式写进存储，上传状态记在数据旁边的 .info 记录里", "component": {"en": "filestore / s3store", "zh": "filestore / s3store"}},
+    {"lane": "them", "en": "After a dropped connection, answers the client's HEAD with the bytes it holds, so the upload resumes there", "zh": "连接断了以后，用已收到的字节数回应客户端的 HEAD，让它从那里接着传"}
+  ],
+  "value": {"en": "A 4 GB upload that dies at 3.9 GB continues from 3.9 GB, and the bytes never pass through your application server", "zh": "传到 3.9 GB 断掉的 4 GB 文件从 3.9 GB 接着传，而且字节从不经过你的应用服务器"},
+  "sources": [
+    "https://github.com/tus/tusd/blob/main/docs/_getting-started/usage.md (tusd -upload-dir=./data, upload creation URL http://[::]:8080/files/, tus-js-client endpoint option)",
+    "https://github.com/tus/tusd/blob/main/docs/_storage-backends/aws-s3.md (tusd -s3-bucket=my-test-bucket.com, .info object holding upload meta information)",
+    "https://github.com/tus/tusd/blob/main/docs/_advanced-topics/locks.md (HEAD/PATCH resume flow, filelocker/memorylocker)"
+  ]
+}

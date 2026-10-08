@@ -7,7 +7,7 @@ tags: [captcha, click-captcha, text-select, yolo, siamese-network, onnx, pytorch
 language: Python
 license: NONE (no LICENSE file — all rights reserved)
 maturity: no tagged releases, active, last push 2026-05 (verified 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2026-05-08T05:01:15Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:51:57Z
+  computed_at: 2026-10-08T08:16:28Z
   overall: D
   overall_score: 1.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 142
+        last_commit_age_days: 153
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 2226
-        last_commit_age_days: 142
+        repo_age_days: 2237
+        last_commit_age_days: 153
         cohort: library
     governance:
       grade: D
@@ -68,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_window_signal }
+    responsiveness: { reason: no_traffic }
 ---
 
 # Text_select_captcha
@@ -82,6 +82,28 @@ health:
 你是 Python 开发者，写的爬虫或自动化要打一个被*点选文字*验证码挡住的站点——就是那种显示一堆打乱的中文字、让你“按顺序点 春、夏、秋”的。光靠 OCR 解不了：你得*定位*每个候选字形，再把它们对着提示*排序*。这个库正好把整条管线打包好了——用 YOLO 检测器找出字符框，加一个孪生/双生网络把目标字形与候选匹配——并以一个简单调用（外加可选的 FastAPI 服务）暴露出来，返回坐标。它走 ONNX runtime 推理，所以你能在一台普通机器上纯 CPU 跑（README 称 1 核 2G 服务器即可），还能用你自己约 300 张标注图重训，以适配某个站点的字体/风格。
 
 你专门选它，是当你的目标属于交互式*点选*这一族（文字点选 / 选字 / 消消乐式）而非普通图中文字验证码，且你想要一条现成的中文字形管线，而不是自己拼检测 + 匹配。
+
+## 怎么用起来
+
+文字点选验证码其实是两个问题粘在一起：字在*哪儿*，以及*哪个*字对应提示里的哪个字。这个仓库用两个预训练模型分别回答，都以 ONNX 文件随仓库发布（ONNX 是一种可移植的模型格式，靠 ONNX Runtime 在 CPU 上跑）。先由 *YOLO* 检测器（一次扫描就给图中物体画框的模型）框出每个字，分成两类：标明顺序的小号提示字，和散落在图里、要你去点的字。再由*孪生网络*（同一个编码器的两份拷贝，用来给两张图打“有多像”的分）把每个提示字和每个候选字两两比较，整体取最优配对，按点击顺序返回候选字的框。**看图归它，操作浏览器归你**：抓验证码图片、用你自己的自动化工具去点返回的坐标，都得你来做（仓库里的 `bilbil.py` 是一个示例）。同一个识别器也可以起成 HTTP 服务（`python service.py`，文档在 `:8000/docs`），不必在进程内调用。如果目标站的字体和随附权重差别大，重训得你自己来，而详细的训练教程在作者的付费课程里。
+
+![text-select-captcha — 主干用户故事](../../assets/flow/text-select-captcha.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/text-select-captcha.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：克隆仓库装好依赖，ONNX 模型已随仓库放在 model/ 里 — `pip install -r requirements.txt`
+2. **你**：把验证码图片存下来，把路径交给识别器 — `cap = TextSelectCaptcha() · cap.run(image_path)` — 组件：`src/captcha.py`
+3. **Text_select_captcha**：YOLO 检测器框出每个字，分开提示字和待点击的字
+4. **Text_select_captcha**：孪生网络给每对提示字和候选字打相似分，整体取最优匹配
+5. **Text_select_captcha**：按需要点击的顺序返回框坐标（或中心点）
+6. **你**：用你自己的浏览器自动化依次点这些坐标
+
+**价值**：现成的纯 CPU 中文点选识别流程，不用自己拼检测和匹配两段模型
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -102,7 +124,7 @@ health:
 
 ## 技术栈
 
-- **模型：** 用于定位字形的 YOLO 系检测器 + 用于把目标与候选匹配的孪生/双生网络；经 **ONNX Runtime** 推理。[推断]
+- **模型：** 用于定位字形的 YOLO 系检测器 + 用于把目标与候选匹配的孪生/双生网络，两者都导出为 ONNX 放在 `model/` 里（`best_v3.onnx`、`pre_model_v7.onnx`）；经 **ONNX Runtime** 推理。
 - **服务：** 可选的 **FastAPI** + `uvicorn` HTTP 服务（RESTful API）封装识别器；用 `python-multipart` 上传图片。
 - **图像：** OpenCV（`opencv-python-headless`）、Pillow、NumPy；`playwright`/`aiohttp`/`requests` 似用于示例抓取/自动化。
 - **训练：** 可在你自己的标注集上训练（README 称约 300 张即可）；更重的训练教程被锁在一门付费课程后。
@@ -130,6 +152,6 @@ health:
 
 - [未验证] 仓库内不存在 LICENSE 文件（GitHub 报告无许可）；记为“NONE——保留所有权利”。在没有明确授权的情况下，你无权使用/修改/再分发——依赖前请与作者确认。
 - [未验证] 截至 2026-06 约 1.6k star，最后 push 2026-05；无 tag 发布，故不断言版本号。
-- [未验证] “96% 准确率”"300–500ms"“约 300 张训练”是作者在自己数据上的 README 说法——未经独立测量；你的结果取决于目标验证码。
-- [推断] 模型架构（YOLO 检测器 + Siamese 匹配器、ONNX 推理）是由 README 和 `requirements.txt` 推断，未对源码重新核实。
+- [未验证] “96% 准确率”“300–500ms”“约 300 张训练”是作者在自己数据上的 README 说法——未经独立测量；你的结果取决于目标验证码。
+- [推断] 检测器的哪一类是提示字、哪一类是待点击的字，是从 `src/captcha.py` 推断的（一类按从左到右排序给出顺序，另一类作为点击框返回）；README 对标注的说明很简略，也没有检查模型权重。
 - [推断] 最详尽的训练教程链到付费课程；免费仓库究竟是完整还是引流，属于推断。

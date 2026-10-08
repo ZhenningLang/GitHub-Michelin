@@ -6,8 +6,8 @@ category: spec-driven-development
 tags: [methodology, principles, context-engineering, agent-design, production-llm]
 language: Markdown
 license: CC-BY-SA-4.0 (content) / Apache-2.0 (code examples)
-maturity: no tagged releases; content stable, last pushed 2025-09 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; content stable, last pushed 2025-09 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2025-09-21T14:37:40Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:43:20Z
+  computed_at: 2026-10-08T08:10:15Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 371
+        last_commit_age_days: 382
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 546
-        last_commit_age_days: 371
+        repo_age_days: 556
+        last_commit_age_days: 382
         cohort: skill-pack
     governance:
       grade: "?"
@@ -70,12 +70,33 @@ You're an engineer who built a demo agent with a big framework, it dazzled in th
 
 You reach for it when you want principles to guide a hand-rolled or thinly-framed agent, to review an existing design, or to onboard a team to a shared mental model. It is reading material plus illustrative code snippets and a workshop — you read it, internalize the factors, and apply them in whatever stack you already use; there is nothing to `pip install` and no library to depend on.
 
+## How it works
+
+Nothing here runs: 12-Factor Agents is a set of essays, each naming one engineering habit and showing a short code snippet of it. **It gives you the vocabulary and the target shape; you do all the engineering in your own stack.** The core picture is the agent loop — the model picks the next step as a tool call (structured JSON naming a function and its arguments), your code runs it, and the result is appended to the context window (everything the model sees in one call). Most factors are about taking pieces of that loop back from a framework: write the prompt yourself, decide what goes into the context, and branch on the model's choice in your own `while` loop so you can stop and wait for a human before a risky call. Think of it as a building code, not a prefab house — it tells you what a sound structure looks like and leaves the building to you.
+
+![12-factor-agents — backbone user story](../../../assets/flow/12-factor-agents.svg)
+
+<!-- flow-steps:begin (generated from flows/12-factor-agents.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Read the twelve factors (the short version is one list in the README)
+2. **12-Factor Agents**: Names each failure you hit: a hidden prompt, an opaque context, a loop you can't pause
+3. **You**: Audit your agent factor by factor and pick the ones it breaks
+4. **12-Factor Agents**: Shows a code pattern per factor, e.g. your own loop branching on the model's chosen step — `next_step.intent == 'request_clarification'`
+5. **You**: Port the pattern into your existing code: your prompt, your loop, your saved thread — `await db.save_thread(thread)`
+
+**Value**: Agent behavior becomes code you own: you can read the exact prompt, pause before a risky tool call, and resume later
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You want code to run, not principles to read.** This is a methodology document; it ships no installable package, no runtime, no SDK. If you need a framework that *does* the orchestration, look at LangGraph, the OpenAI Agents SDK, or PydanticAI — 12-factor tells you what to aim for, not a library to import.
 - **You want a turnkey agent harness / persona pack for your coding agent.** Sibling skill-packs ([Superpowers](../coding-agent-harnesses/superpowers.md), [SuperClaude Framework](../coding-agent-harnesses/superclaude.md), [get-shit-done](get-shit-done.md)) ship actual installable prompts/commands; 12-factor is upstream theory, not drop-in config.
 - **You need step-by-step prescriptions or guarantees.** The factors are directional principles, deliberately framework-agnostic. They will not tell you which vector DB, which model, or give you copy-paste production code — you still do the engineering.
-- **Maintenance/recency risk.** The content is essentially a stable essay set; the repo has no tagged releases and was last pushed 2025-09 [未验证]. It tracks the agent landscape as of its writing, so some specifics (model behaviors, tooling) may lag the current ecosystem — treat it as enduring principles, not a living API reference.
+- **Maintenance/recency risk.** The content is essentially a stable essay set; the repo has no tagged releases and was last pushed 2025-09-21 — over a year idle as of 2026-10. It tracks the agent landscape as of its writing, so some specifics (model behaviors, tooling) may lag the current ecosystem — treat it as enduring principles, not a living API reference.
 - **You disagree with the opinionated stances.** "Own your control flow" and "make your agent a stateless reducer" are strong positions; if your team is committed to a high-abstraction framework, the advice pushes against that grain.
 
 ## Comparison
@@ -93,7 +114,7 @@ You reach for it when you want principles to guide a hand-rolled or thinly-frame
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance (2026-06):** last pushed 2025-09 with no tagged releases — ~9 months idle. For a living API this would read as coasting, but it's an essay set; [推断] the content is "done/stable" by nature, not abandoned. Treat staleness as low-risk for principles, higher-risk for any model-/tooling-specific specifics it cites.
+- **Maintenance (2026-10):** last pushed 2025-09-21 with no tagged releases — over a year idle. For a living API this would read as coasting, but it's an essay set; [推断] the content is "done/stable" by nature, not abandoned. Treat staleness as low-risk for principles, higher-risk for any model-/tooling-specific specifics it cites.
 - **Governance & backing:** an Organization-owned repo (HumanLayer / Dex Horthy), maintained alongside a commercial product. Effectively a small-vendor / single-author voice, not a foundation — the roadmap is one team's editorial line, though the factors read vendor-neutral.
 - **Age & Lindy (2026-06):** created 2025-03, ~1 year old. Young and idea-driven, not a battle-tested codebase — its ~23k stars reflect mindshare, not longevity. Lindy verdict: **unproven by age**, but it's a methodology doc whose value is conceptual rather than maintenance-dependent, so the usual young-and-hyped risk applies more to specifics than to the core principles.
 - **Risk flags:** no installable artifact = no relicense/CVE/supply-chain surface; the real risk is **content drift** (the agent landscape moving past a frozen essay). No governance/funding model is published beyond the HumanLayer association.
@@ -101,7 +122,6 @@ You reach for it when you want principles to guide a hand-rolled or thinly-frame
 ## Caveats (unverified)
 
 - [未验证] Stated dual license: content under CC BY-SA 4.0, code examples under Apache-2.0 (GitHub reports the repo license as "Other"); confirm exact terms per file before reuse.
-- [未验证] Repo last pushed 2025-09-21 and has no tagged releases (`latestRelease: null` from `gh repo view`); "last pushed 2025-09" is the freshness signal, not a version.
 - [未验证] Primary language is reported as TypeScript by GitHub, but the substance is Markdown content; the TS/Python is illustrative example code, not a shippable library. Classified here as a methodology `skill-pack`, not a framework.
 - [未验证] Star count ~23.5k (as of 2026-06) — GitHub stars are unreliable and date-sensitive; indicative only.
 - [推断] Maintained by HumanLayer (Dex Horthy) alongside their commercial product; this inferred provenance does not make it product marketing — the factors read as vendor-neutral principles.

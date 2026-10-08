@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "pix2tex does", "zh": "pix2tex 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch, then the package; model checkpoints download on first run", "zh": "装好 PyTorch 再装包，模型权重首次运行时自动下载", "code": "pip install \"pix2tex[gui]\""},
+    {"lane": "you", "en": "Open the GUI and drag a box around an equation on screen", "zh": "打开 GUI，在屏幕上框选一个公式", "code": "latexocr", "component": {"en": "screenshot GUI", "zh": "截图 GUI"}},
+    {"lane": "them", "en": "A small network picks the best resolution and resizes the crop to look like training data", "zh": "一个小网络估出最合适的分辨率，把截图缩放成接近训练数据的样子"},
+    {"lane": "them", "en": "The image encoder reads the crop; the decoder writes LaTeX one token at a time", "zh": "图像编码器读截图，解码器逐个 token 写出 LaTeX"},
+    {"lane": "them", "en": "Renders the result with MathJax and copies the LaTeX to your clipboard", "zh": "用 MathJax 渲染结果，并把 LaTeX 复制到剪贴板"},
+    {"lane": "you", "en": "Compare the preview with the original, then paste it into your document", "zh": "对照预览和原图核一遍，粘进你的文档"}
+  ],
+  "value": {"en": "Equations become compilable LaTeX without retyping, and the image never leaves your machine", "zh": "公式变成可编译的 LaTeX，不用手敲，图片也不出本机"},
+  "sources": [
+    "https://github.com/lukas-blecher/LaTeX-OCR#using-the-model (pip install \"pix2tex[gui]\", checkpoints downloaded automatically, latexocr GUI, MathJax render + clipboard, resolution-predicting preprocessing network, 'Always double check the result')",
+    "https://github.com/lukas-blecher/LaTeX-OCR#model (ViT encoder with ResNet backbone + Transformer decoder)"
+  ]
+}

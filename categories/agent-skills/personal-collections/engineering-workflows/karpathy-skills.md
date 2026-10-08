@@ -6,8 +6,8 @@ category: engineering-workflows
 tags: [claude-code, cursor, claude-md, coding-discipline, plugin]
 language: Markdown
 license: MIT
-maturity: no tagged releases, active, last pushed 2026-04 (as of 2026-06)
-last_verified: 2026-06-26
+maturity: no tagged releases; last pushed 2026-04 (as of 2026-10)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-04-20T10:05:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:44:57Z
+  computed_at: 2026-10-08T08:15:04Z
   overall: C
   overall_score: 2.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 160
+        last_commit_age_days: 171
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 243
-        last_commit_age_days: 160
+        repo_age_days: 254
+        last_commit_age_days: 171
         cohort: skill-pack
     governance:
       grade: B
@@ -74,6 +74,27 @@ You're a developer running Claude Code (or Cursor) and your agent keeps making t
 
 You reach for it as a drop-in base layer rather than a big multi-skill collection. Install it as a Claude Code marketplace plugin (`/plugin install andrej-karpathy-skills@karpathy-skills`) or just curl the `CLAUDE.md` into a project; for Cursor there's a parallel `CURSOR.md` / `.cursor/rules/` rule file. It's deliberately tiny (the core file is ~65 lines) and framed as guidance to be combined with your project-specific instructions, with an explicit "for trivial tasks, use judgment" escape hatch.
 
+## How it works
+
+It is one file of instructions, not a program: a short `CLAUDE.md` (also packaged as a `karpathy-guidelines` skill inside a Claude Code plugin, and as a Cursor project rule). `CLAUDE.md` is the file Claude Code reads into the model's context at the start of every session, so whatever it says becomes part of the agent's standing orders. **You** install it once — as a plugin across all projects, or by appending the file to a project's own `CLAUDE.md` — and then give tasks as usual, ideally phrased as something checkable ("write a test that reproduces it, then make it pass"). **The agent**, reading the four principles, is pushed to say its assumptions and ask before coding, write the smallest change that does the job, leave neighbouring code and comments alone, and keep looping until a stated check passes. It is a sticky note on the agent's monitor, not a lock on its keyboard: nothing blocks a sprawling diff, and the README itself says to use judgment on trivial tasks.
+
+![karpathy-skills — backbone user story](../../../../assets/flow/karpathy-skills.svg)
+
+<!-- flow-steps:begin (generated from flows/karpathy-skills.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add its marketplace and install the Claude Code plugin (or curl CLAUDE.md into a project) — `/plugin install andrej-karpathy-skills@karpathy-skills`
+2. **andrej-karpathy-skills**: Four principles join the agent's standing instructions in every project — component: `karpathy-guidelines skill`
+3. **You**: Give a task, ideally with a checkable goal like a failing test
+4. **andrej-karpathy-skills**: States its assumptions and asks when the request is ambiguous, before writing code
+5. **andrej-karpathy-skills**: Writes the minimum change, touches only lines your request needs, loops until the check passes
+
+**Value**: Smaller diffs, questions before mistakes instead of after, and no drive-by refactoring
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You already run a strong, opinionated global ruleset.** Four broad principles ("simplicity first," "surgical changes") overlap heavily with most teams' existing `CLAUDE.md` / global agent config and with methodology packs like Superpowers; layering it on duplicates or contradicts what you already enforce.
@@ -95,18 +116,19 @@ You reach for it as a drop-in base layer rather than a big multi-skill collectio
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance (2026-06):** lightly maintained / near-coasting — last pushed 2026-04, ~2 months stale as of 2026-06, with ~126 open issues and no tagged releases. For a ~65-line principles file there's little to maintain, but staleness + open issues suggest attention has tapered.
+- **Maintenance (2026-10):** coasting — last pushed 2026-04-20, ~5.5 months stale as of 2026-10, with 131 open issues and no tagged releases. For a ~65-line principles file there's little to maintain, but staleness + open issues suggest attention has tapered.
 - **Governance & bus factor:** `Organization`-owned (multica-ai), not a single personal account, which is marginally better for continuity than the User-owned packs here — but it's still a small org and a thin single-file pack. The content is a third party's distillation of Karpathy's public remarks, **not authored or endorsed by Karpathy**; the name is attribution of inspiration, not authorship.
-- **Age & Lindy verdict:** created 2026-01, ~5 months old as of 2026-06 — young, and its ~183k stars reflect the famous name far more than any proven longevity. Star count ≠ Lindy: there's no track record, and the substance is four generic principles. Unproven.
-- **Adoption note:** ~183k stars is a name-driven popularity signal on a tiny repo, not a maturity or correctness signal — read it skeptically.
+- **Age & Lindy verdict:** created 2026-01, ~8 months old as of 2026-10 — young, and its ~218k stars reflect the famous name far more than any proven longevity. Star count ≠ Lindy: there's no track record, and the substance is four generic principles. Unproven.
+- **Adoption note:** ~218k stars is a name-driven popularity signal on a tiny repo, not a maturity or correctness signal — read it skeptically.
 - **Risk flags:** advisory prose injected into context (no hook/gate); overlaps heavily with most teams' existing global `CLAUDE.md`. License auto-detect returned `null` despite a stated MIT — confirm before relying on it.
 
 ## Caveats (unverified)
 
 - [未验证] License reported as MIT by the README footer and a LICENSE file is listed in the repo, but the GitHub repo-metadata API returned `licenseInfo: null` (no auto-detected SPDX) as of 2026-06-26 — confirm the LICENSE file contents before relying on MIT.
-- [未验证] No tagged releases (`latestRelease: null`); last pushed 2026-04-20 per GitHub metadata as of 2026-06-26. Re-verify freshness and content before relying on a specific version.
-- [未验证] Reported star count (~182k per GitHub on 2026-06-26) is unreliable and date-sensitive; treat as indicative only, not a quality or correctness signal.
+- [未验证] No tagged releases; last pushed 2026-04-20 per GitHub metadata re-checked 2026-10-08. Re-verify freshness and content before relying on a specific version.
+- [未验证] Reported star count (~218k per GitHub on 2026-10-08) is unreliable and date-sensitive; treat as indicative only, not a quality or correctness signal.
 - [未验证] File structure (`CLAUDE.md`, `CURSOR.md`, `EXAMPLES.md`, `.claude-plugin/`, `.cursor/rules/karpathy-guidelines.mdc`, `skills/karpathy-guidelines/`) and the marketplace install command are from the README and a directory read, not independently exercised here.
 - [未验证] Primary language is reported as "Markdown" here because GitHub's metadata returned no `primaryLanguage`; the repo is documentation/config, so there is no real implementation language.
 - [推断] Because the content is advisory prose loaded into agent context, enforcement is best-effort — the agent can deviate; the "principles" are instructions, not hard guarantees.
+- [未验证] The README's install commands still point at `forrestchang/andrej-karpathy-skills`, the repo's earlier owner path; they rely on GitHub's rename redirect, which was not exercised here.
 - [推断] The "Karpathy" attribution reflects inspiration from his public observations, not authorship or endorsement by him; the maintainer is the multica-ai organization.

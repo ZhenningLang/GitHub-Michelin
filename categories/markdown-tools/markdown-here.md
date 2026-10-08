@@ -7,7 +7,7 @@ tags: [inline]
 language: JavaScript
 license: MIT
 maturity: "v2.16.0, low-cadence/effectively stale, ~60.2k stars (last pushed 2025-08)"
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2025-08-22T00:21:50Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:06:20Z
+  computed_at: 2026-10-08T08:21:32Z
   overall: C
   overall_score: 1.75
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 445
+        last_commit_age_days: 455
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -40,15 +40,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 13458
+        release_downloads: 13463
         release_assets: 6
         release_tier: D
         signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 5251
-        last_commit_age_days: 445
+        repo_age_days: 5261
+        last_commit_age_days: 455
         cohort: tool
     governance:
       grade: "?"
@@ -76,6 +76,27 @@ A Chrome/Firefox/Thunderbird browser extension that converts Markdown you type i
 You're an engineer who writes a lot of email — code review notes, incident summaries, "here's how to reproduce it" walkthroughs — and your webmail compose box gives you a bare textarea with a clumsy WYSIWYG toolbar. You want a bulleted list, a fenced code block with syntax highlighting, a table, and a couple of links, and hand-formatting all of that with the toolbar is slow and ugly. You install Markdown Here, type the message in plain Markdown the way you'd write a `README`, and when it's ready you hit the toggle (or a hotkey): the extension parses the Markdown in that field and replaces it with rendered HTML right inside the compose area, so the recipient sees a properly formatted message in any mail client. If you got something wrong you can toggle back to the Markdown source, fix it, and re-render. It also lights up in a number of non-mail web textareas (Google Groups, some blogging/forum compose fields), so the same muscle memory works beyond email.
 
 It earns its place precisely because it's *inline and on-demand* in fields you don't control: you're not exporting a file or running a build, you're turning the text already in the compose box into HTML at the moment you send. For the narrow job of "write this one email in Markdown," it's far lighter than drafting in an external editor and pasting.
+
+## How it works
+
+Markdown Here is a browser extension that works on the compose box you already have open; the Markdown parser (`marked.js`) and the code highlighter (highlight.js, the part that colours keywords inside fenced code blocks) ship inside the extension, so ordinary conversion needs no server or account. **What it does for you:** when you hit the toggle, it reads the Markdown in the compose field (or just the text you selected), renders it to HTML, and swaps that HTML into the field in place, leaving any quoted email you are replying to untouched. It also keeps your original Markdown, so a second toggle turns the rendered block back into source — but edits you made to the rendered HTML are lost when you do. **What you do:** install it, make sure the compose box is in rich/HTML mode (a plain-text compose box has nowhere to put HTML), write Markdown, and press the toggle before you hit send. Think of it as a "format this" button that understands Markdown rather than a toolbar.
+
+![markdown-here — backbone user story](../../assets/flow/markdown-here.svg)
+
+<!-- flow-steps:begin (generated from flows/markdown-here.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the extension from your browser's add-on store, then reload your webmail — component: `browser extension`
+2. **You**: Switch the compose box to its rich editor and type the email in plain Markdown — `Compose messages in HTML format`
+3. **You**: Trigger the toggle on the whole body or on a selection — `Markdown Toggle · SHIFT+ALT+M`
+4. **Markdown Here**: Renders that Markdown to HTML in place, with highlighted fenced code blocks
+5. **Markdown Here**: Leaves quoted reply text alone and remembers the source, so toggling again reverts
+
+**Value**: Recipients get a formatted email with real code blocks; you never touched the toolbar or pasted from another editor
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -113,15 +134,16 @@ It earns its place precisely because it's *inline and on-demand* in fields you d
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance — effectively stale (last push ~2025-08, as of 2026-06).** No archive flag, but the release cadence is low and the backlog long relative to popularity; treat as coasting-toward-abandoned, not actively maintained [推断]. The README does not declare it dead — but don't expect timely fixes.
+- **Maintenance — effectively stale (last commit and release v2.16.0 on 2025-07-10, nothing since; as of 2026-10-08).** No archive flag; after three releases in 2025-06/07 the repo went quiet for 15 months, and the backlog is long and the backlog long relative to popularity; treat as coasting-toward-abandoned, not actively maintained [推断]. The README does not declare it dead — but don't expect timely fixes.
 - **Governance & bus factor — single-maintainer flag.** `User`-owned (`adam-p/`) with ~60k stars: a classic bus-factor risk where huge adoption rests on one person's attention, which has clearly tapered. The community response is the "Markdown Here Revival" fork, signalling the original is no longer the maintained path [推断].
 - **Age & Lindy verdict — old but abandoned ⇒ fails Lindy.** Created 2012 (~14y old): age alone looks reassuring, but age × *still-active* is the test, and activity has stopped. A long-lived-then-stalled project is the case where the Lindy prior turns *negative* — bet on the maintained fork, not the original.
 - **Risk flags.** Browser-extension viability under Manifest V3: an unmaintained MV3 content-script extension can be delisted or broken by a browser update with no fix landing — an availability risk outside your control [未验证]. MIT-licensed, so forking is unencumbered (the Revival fork exists).
 
 ## Caveats (unverified)
 
-- [未验证] ~60.2k GitHub stars and v2.16.0 with a last push around 2025-08 (per the repo, 2026-06); star counts and dates are time-sensitive and indicative only — re-check against the current repo.
+- ~60.3k GitHub stars, last default-branch commit and v2.16.0 release on 2025-07-10 (GitHub API, 2026-10-08); star counts are time-sensitive.
 - [推断] "Low-maintenance / effectively stale" is inferred from the slow release cadence and large open backlog relative to the star count, not from any deprecation notice in the README — the README does not declare the project dead.
 - [未验证] Manifest V3 status and whether the extension is currently listed/installable in each browser's store shift over time; verify in the target browser before relying on it.
 - [未验证] The exact set of supported mail clients and web textareas, and how each integration holds up, varies and may have regressed — confirm your specific compose surface works.
 - [未验证] "Markdown Here Revival" exists as a community fork/successor (notably for Thunderbird) but its canonical hosting and current maintenance status were not confirmed here — verify before adopting it.
+- [未验证] Ordinary Markdown/code-block conversion uses the bundled `marked.js` + highlight.js; whether the optional TeX-math rendering calls an external image service was not checked in this pass (2026-10-08) — check the options page before using it on confidential mail.

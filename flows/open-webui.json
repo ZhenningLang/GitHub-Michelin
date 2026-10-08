@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Open WebUI does", "zh": "Open WebUI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install and start the server (or run the Docker image with a data volume)", "zh": "安装并启动服务（或带数据卷跑 Docker 镜像）", "code": "pip install open-webui · open-webui serve"},
+    {"lane": "you", "en": "Open the page and sign up; the first account becomes the administrator", "zh": "打开页面注册，第一个账号就是管理员", "code": "http://localhost:8080"},
+    {"lane": "you", "en": "Point it at Ollama or an OpenAI-compatible API", "zh": "把它指向 Ollama 或 OpenAI 兼容接口", "code": "OLLAMA_BASE_URL · OPENAI_API_KEY"},
+    {"lane": "them", "en": "Lists every backend's models in one picker and stores users and chats in SQLite", "zh": "把各后端的模型列进同一个选择器，用户和对话存进 SQLite", "component": {"en": "FastAPI backend", "zh": "FastAPI 后端"}},
+    {"lane": "you", "en": "Upload a document, or pull one into the chat with #, and ask about it", "zh": "上传文档，或在对话里用 # 引入文档，然后提问", "code": "#"},
+    {"lane": "them", "en": "Extracts, chunks, and embeds the file, then puts the matching passages into the prompt", "zh": "抽取、切块、向量化文件，把命中的段落塞进提示词", "component": {"en": "RAG pipeline + ChromaDB", "zh": "RAG 管线 + ChromaDB"}}
+  ],
+  "value": {"en": "A shared ChatGPT-style page over your own models that answers from your own files, with nothing leaving your network", "zh": "一个共享的 ChatGPT 式页面接自己的模型，能按自己的文件回答，数据不出内网"},
+  "sources": [
+    "README.md @ main 2026-10-08 (pip install open-webui; open-webui serve; http://localhost:8080; docker run ... -v open-webui:/app/backend/data ... ghcr.io/open-webui/open-webui:main; OLLAMA_BASE_URL; OPENAI_API_KEY; '#' command loads documents into chat; HF_HUB_OFFLINE=1)",
+    "https://docs.openwebui.com/getting-started/quick-start/ ('That first account is the administrator'; default SQLite and local files)",
+    "backend/open_webui/env.py @ main (DATABASE_URL defaults to sqlite:///{DATA_DIR}/webui.db); backend/open_webui/config.py @ main (VECTOR_DB defaults to chroma; RAG_EMBEDDING_MODEL defaults to sentence-transformers/all-MiniLM-L6-v2)"
+  ]
+}

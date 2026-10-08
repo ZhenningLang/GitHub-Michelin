@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "CC Switch does",
+    "zh": "CC Switch 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the desktop app (Homebrew on macOS, installer packages elsewhere)",
+      "zh": "装上桌面应用（macOS 用 Homebrew，其他系统用安装包）",
+      "code": "brew install --cask cc-switch"
+    },
+    {
+      "lane": "you",
+      "en": "Pick a tool in the sidebar, add a provider from a preset and paste its key",
+      "zh": "在侧栏选一个工具，从预设里添加厂商，填上 key"
+    },
+    {
+      "lane": "you",
+      "en": "Click Enable, or switch from the system tray",
+      "zh": "点“启用”，或者从系统托盘切换"
+    },
+    {
+      "lane": "them",
+      "en": "Backs up the tool's config, then rewrites only endpoint, key and model",
+      "zh": "先备份该工具的配置文件，再只改端点、key 和模型",
+      "component": {
+        "en": "~/.cc-switch (SQLite + backups)",
+        "zh": "~/.cc-switch（SQLite 与备份）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "The tool's next request goes to the new provider; plugins, hooks and MCP stay as they were",
+      "zh": "该工具的下一次请求就发往新厂商，插件、钩子和 MCP 原样保留"
+    }
+  ],
+  "value": {
+    "en": "Switching provider for Claude Code, Codex, Gemini CLI and seven other tools is one click, not hand-editing JSON, TOML or .env files",
+    "zh": "给十个编码工具换厂商只要点一下，不用再手改 JSON、TOML 或 .env 文件"
+  },
+  "sources": [
+    "https://github.com/farion1231/cc-switch#download--installation (brew install --cask cc-switch; MSI/DEB/RPM/AppImage)",
+    "https://github.com/farion1231/cc-switch#quick-start (Add Provider from a preset, Enable, system tray switching; takes effect without restart for Claude Code)",
+    "https://github.com/farion1231/cc-switch#provider-management (key fields only; automatic backup before first rewrite)",
+    "https://github.com/farion1231/cc-switch#faq (~/.cc-switch: cc-switch.db SQLite, backups/)"
+  ]
+}

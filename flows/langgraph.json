@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "LangGraph does", "zh": "LangGraph 做的"},
+  "steps": [
+    {"lane": "you", "en": "Declare the shared state and write each step as a plain function node", "zh": "声明共享状态，把每一步写成普通函数节点", "code": "StateGraph(MessagesState) · add_node"},
+    {"lane": "you", "en": "Wire the steps with edges; a conditional edge lets the model pick the next node", "zh": "用边把步骤连起来；条件边让模型选下一个节点", "code": "add_edge · add_conditional_edges"},
+    {"lane": "you", "en": "Compile with a checkpointer and run under a thread id", "zh": "挂上检查点存储编译，用一个线程 ID 运行", "code": "compile(checkpointer=checkpointer)", "component": {"en": "checkpointer", "zh": "检查点存储"}},
+    {"lane": "them", "en": "Runs nodes along the edges, merging each node's update into the state", "zh": "沿着边执行节点，把每个节点的更新合并进状态", "component": {"en": "Pregel runtime", "zh": "Pregel 运行时"}},
+    {"lane": "them", "en": "Saves a checkpoint after every super-step under that thread id", "zh": "每个超步结束，按线程 ID 存一个检查点"},
+    {"lane": "them", "en": "On interrupt() or a crash it stops; re-invoking the thread resumes from the last checkpoint", "zh": "遇到 interrupt() 或崩溃就停；再次调用同一线程从最后检查点接着跑"}
+  ],
+  "value": {"en": "Long-running agents can pause for humans and survive restarts without you building a state store", "zh": "长时间运行的智能体能停下来等人、扛过重启，不用自己造状态存储"},
+  "sources": [
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/overview.mdx (StateGraph(MessagesState), add_node, add_edge, compile)",
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/quickstart.mdx (add_conditional_edges)",
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/persistence.mdx (builder.compile(checkpointer=checkpointer), thread_id, InMemorySaver/SqliteSaver/PostgresSaver)",
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/graph-api.mdx (super-steps; checkpoints saved at super-step boundaries)",
+    "https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/interrupts.mdx (interrupt(), Command(resume=...))"
+  ]
+}

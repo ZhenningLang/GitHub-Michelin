@@ -10,8 +10,8 @@
 | **graphify** | Use it when an agent needs to query a whole repo's code, schemas and docs as a knowledge graph instead of grepping. | C (5/6) | [→](graphify.md) |
 | **code-review-graph** | Use it when an AI reviewer keeps burning context on a large repo and you want only the blast-radius files. | B (6/6) | [→](code-review-graph.md) |
 | **Understand-Anything** | Use it when you want any codebase turned into an explorable, queryable knowledge graph for an agent — younger and less proven than graphify. | B (6/6) | [→](understand-anything.md) |
-| **SCIP** | SCIP Code Intelligence Protocol | A (6/6) | [→](scip.md) |
-| **Sourcegraph** | Code AI platform with Code Search & Cody | D (4/6) | [→](sourcegraph.md) |
+| **SCIP** | Use it when code search, review bots or agent retrieval need compiler-accurate definitions and references across a polyglot codebase, indexed once per commit in CI — but it is a format, not a query service, and code must build to be indexed. | A (6/6) | [→](scip.md) |
+| **Sourcegraph** | Use it when designing code search across hundreds of repos and you want to read how a real product handled clone syncing, indexing and code navigation — but it is an archived snapshot, Enterprise-licensed after 2023-06, so deploy Zoekt instead. | D (4/6) | [→](sourcegraph.md) |
 | **Ix** | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. | B (6/6) | [→](ix.md) |
 | **Repowise** | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. | C (6/6) | [→](repowise.md) |
 | **Jevgrep** | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. | C (4/6) | [→](jevgrep.md) |
@@ -26,8 +26,8 @@
 | [Ix](ix.md) | ✅ | B (6/6) | Use it when your coding agent keeps grepping a polyglot repo to find callers and blast radius and you can run Docker — accepting a closed-source backend image and a seven-month-old v0.x project. |
 | [Repowise](repowise.md) | ✅ | C (6/6) | Use it when your agent re-expends context rediscovering a big repo every task and you want one keyless local index answering graph, git, health, dead-code and decision questions over MCP — accepting a six-month-old v0.x AGPL vendor project. |
 | [Jevgrep](jevgrep.md) | ✅ | C (4/6) | Use it when your agent must orient in an unfamiliar repo by asking what the code does — no index to build — accepting per-query API cost and source uploaded to a hosted evaluator model; two days old, solo-maintained, macOS/Linux only. |
-| [SCIP](scip.md) | ✅ | A (6/6) | SCIP Code Intelligence Protocol |
-| [Sourcegraph](sourcegraph.md) | ✅ | D (4/6) | Code AI platform with Code Search & Cody |
+| [SCIP](scip.md) | ✅ | A (6/6) | Type-checked precision that grep and tree-sitter graphs cannot match, at the cost of per-language indexers that must each be maintained, indexing only buildable code, and commits concentrated in a couple of maintainers. |
+| [Sourcegraph](sourcegraph.md) | ✅ | D (4/6) | Gets the whole product's architecture in one readable tree with its own design docs; costs no patches since 2024-08, a subscription for production use, or forking a three-year-old Apache-2.0 commit yourself. |
 
 ## Field evidence: do agents actually use these? (as of 2026-09-30)
 

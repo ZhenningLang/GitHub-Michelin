@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="654" viewBox="0 0 880 654" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="654" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="518" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="518" rx="10"/>
+<rect class="pillT" x="474" y="40" width="178.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">unstructured 做的</text>
+<path class="edge" d="M62,164 L62,188" marker-end="url(#a)"/>
+<path class="hand" d="M408,245.5 C439.0,245.5 439.0,269 470,269" marker-end="url(#a)"/>
+<path class="edge" d="M494,295 L494,319" marker-end="url(#a)"/>
+<path class="edge" d="M494,393 L494,417" marker-end="url(#a)"/>
+<path class="hand" d="M472,455.0 C441.0,455.0 441.0,479 410,479" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="92" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="92" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">按文件类型装上可选依赖和系统工具</text>
+<text class="c" x="82" y="125">pip install &quot;unstructured[all-docs]&quot; · pip</text>
+<text class="c" x="82" y="144">install &quot;unstructured[docx,pptx]&quot;</text>
+<rect class="card" x="40" y="190" width="368" height="111" rx="8"/>
+<rect class="accY" x="40" y="190" width="4" height="111" rx="2"/>
+<circle class="accY" cx="62" cy="214" r="10"/>
+<text class="num" x="62" y="218" text-anchor="middle">2</text>
+<text class="t" x="82" y="219">对任意文件调用 partition</text>
+<text class="c" x="82" y="243">elements =</text>
+<text class="c" x="82" y="262">partition(&quot;example-docs/layout-parser-pape</text>
+<text class="c" x="82" y="281">r.pdf&quot;)</text>
+<rect class="cardT" x="472" y="245" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="245" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="269" r="10"/>
+<text class="num" x="494" y="273" text-anchor="middle">3</text>
+<text class="t" x="514" y="274">识别文件类型，交给对应的分区函数</text>
+<rect class="cardT" x="472" y="321" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="321" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="345" r="10"/>
+<text class="num" x="494" y="349" text-anchor="middle">4</text>
+<text class="t" x="514" y="350">PDF 和图片按策略读文字层，或跑版面模型加</text>
+<text class="t" x="514" y="372">OCR</text>
+<rect class="cardT" x="472" y="419" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="419" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="443" r="10"/>
+<text class="num" x="494" y="447" text-anchor="middle">5</text>
+<text class="t" x="514" y="448">返回带页码和来源元数据的分类型元素（标题、</text>
+<text class="t" x="514" y="470">正文、表格……）</text>
+<rect class="card" x="40" y="455" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="455" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="479" r="10"/>
+<text class="num" x="62" y="483" text-anchor="middle">6</text>
+<text class="t" x="82" y="484">沿章节边界把元素分块，送进索引</text>
+<text class="c" x="82" y="508">chunk_by_title(elements)</text>
+<rect class="val" x="28" y="560" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="584">价值</text>
+<text class="valT" x="48" y="608">所有文件类型都变成同一种结构化元素列表，分块顺着章节走，不再把表格拦腰切断</text>
+</svg>

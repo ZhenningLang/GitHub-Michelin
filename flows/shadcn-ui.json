@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "shadcn CLI does", "zh": "shadcn CLI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Initialize your React + Tailwind project, picking a base library and style", "zh": "初始化 React + Tailwind 项目，选好底层组件库和风格", "code": "npx shadcn@latest init"},
+    {"lane": "them", "en": "Installs dependencies, adds the cn helper and writes theme CSS variables", "zh": "安装依赖，加上 cn 工具函数，写好主题 CSS 变量", "component": {"en": "shadcn CLI", "zh": "shadcn CLI"}},
+    {"lane": "you", "en": "Ask for the components you need by name", "zh": "按名字要你需要的组件", "code": "npx shadcn@latest add card"},
+    {"lane": "them", "en": "Copies each component's source into your repo and installs its base-library deps", "zh": "把组件源码拷进你的仓库，并装上它依赖的底层库", "component": {"en": "registry", "zh": "组件注册表"}},
+    {"lane": "you", "en": "Import the file from your own folder and edit it like any of your code", "zh": "从你自己的目录导入，像改自己的代码一样改它", "code": "import { Button } from \"@/components/ui/button\""}
+  ],
+  "value": {"en": "Polished, accessible components whose source lives in your repo — restyle or rewrite any of them without waiting on a library release", "zh": "精致、无障碍的组件，源码就在你的仓库里——想改样式、想重写都不用等组件库发版"},
+  "sources": [
+    "https://github.com/shadcn-ui/ui/blob/main/apps/v4/content/docs/(root)/cli.mdx (init installs dependencies, adds the cn util, configures CSS variables; --base base|radix|aria; add command)",
+    "https://github.com/shadcn-ui/ui/blob/main/apps/v4/content/docs/installation/next.mdx (npx shadcn@latest add card)",
+    "https://github.com/shadcn-ui/ui/blob/main/apps/v4/content/docs/installation/vite.mdx (import { Button } from \"@/components/ui/button\")"
+  ]
+}

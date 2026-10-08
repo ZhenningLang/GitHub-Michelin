@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Clash Verge Rev does", "zh": "Clash Verge Rev 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the desktop app (release installer or a package manager)", "zh": "装上桌面应用（发布页安装包或包管理器）", "code": "winget install ClashVergeRev.ClashVergeRev"},
+    {"lane": "you", "en": "Import your subscription URL as a profile", "zh": "把订阅链接导入成一个配置文件", "code": "clash://install-config?url=..."},
+    {"lane": "them", "en": "Fetches it and applies your global and per-profile extend configs and scripts", "zh": "下载订阅，依次套上全局和单个订阅的扩展配置与脚本"},
+    {"lane": "you", "en": "Pick a node and a mode, then switch on System Proxy or TUN", "zh": "选节点和模式，打开系统代理或 TUN"},
+    {"lane": "them", "en": "Starts the mihomo kernel (via its privileged service for TUN) and points the OS at it", "zh": "拉起 mihomo 内核（TUN 经特权服务），把系统流量指过去", "component": {"en": "mihomo kernel", "zh": "mihomo 内核"}},
+    {"lane": "them", "en": "Routes each connection by your rules: matched traffic via the node, the rest direct", "zh": "按规则分流：命中的走节点，其余直连"}
+  ],
+  "value": {"en": "Rule-based split routing for the whole desktop, terminal tools included, without hand-editing YAML or OS proxy settings", "zh": "整台电脑按规则分流，命令行工具也算在内，不用手改 YAML 和系统代理设置"},
+  "sources": [
+    "https://clash-verge-rev.github.io/install.html (WinGet: winget install ClashVergeRev.ClashVergeRev)",
+    "https://clash-verge-rev.github.io/guide/url_schemes.html (clash://install-config?url=<URI-encoded url>)",
+    "https://clash-verge-rev.github.io/guide/quickstart.html (import subscription, pick node and mode, enable system proxy or TUN)",
+    "https://clash-verge-rev.github.io/guide/extend.html (execution chain: app settings, global extend config, global script, profile config, profile script, settings write-back)",
+    "https://clash-verge-rev.github.io/guide/term.html (service mode launches the kernel with admin rights so TUN works without running the GUI as admin)",
+    "https://github.com/clash-verge-rev/clash-verge-rev#features (built-in Clash.Meta / mihomo kernel)"
+  ]
+}

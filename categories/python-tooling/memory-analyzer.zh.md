@@ -7,7 +7,7 @@ tags: [python, memory, debugging, profiling, gdb, introspection, archived]
 language: Python
 license: MIT
 maturity: v0.1.2, ARCHIVED by Meta (read-only), last code push 2021-09 (2026-06)
-last_verified: 2026-06-29
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2021-09-15T20:30:34Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-28T09:53:14Z
+  computed_at: 2026-10-08T08:25:39Z
   overall: D
   overall_score: 1.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 1839
+        last_commit_age_days: 1848
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -55,8 +55,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 2623
-        last_commit_age_days: 1839
+        repo_age_days: 2633
+        last_commit_age_days: 1848
         cohort: tool
     governance:
       grade: "?"
@@ -83,6 +83,28 @@ health:
 你是个 SRE 或后端工程师，正在追一个长期运行的 Python 3 守护进程（跑在 Linux 上）的内存泄漏。你在本地复现不出来，又不想重新部署加埋点，也不愿重启进程（重启就会丢掉那个正在表现出膨胀的在途状态）。你找到 PID，跑 `memory_analyzer run $PID`，它就对那个活的解释器启动 GDB，短暂暂停进程（以及它所有的线程），把你丢进一个 ncurses UI，里面显示每种类型有多少活对象、它们的总大小，以及——按需——把最大那些对象钉住不放的前向和后向引用链。过一会儿带 `--snapshot` 再对同一个 PID 跑一次，它会 diff 两次捕获，让你看哪些对象类型在随时间增长。对于一次性看「这个活进程内部到底什么在吃内存」的快照，它正好能干这件事。
 
 诚实的提醒是：这是一个**已不再维护**的工具的*合法*用法——它被 Meta 归档、代码最后改动停在 2021 年，目标是 Python 3.6／3.7，而且它的引用图功能还在试图把 PNG 上传到 **Phabricator**（一个 Meta 内部的遗留物）。即便场景吻合，也把它当作从阁楼里翻出来借用的工具，先核实它在你的解释器上能跑——或者直接换一个有维护的替代品（见横向对比）。
+
+## 怎么用起来
+
+memory-analyzer 相当于一个遥控器，用来操纵一个不是它启动的 Python 进程。它借助 **GDB**——Linux 上的标准调试器，只要内核的 **ptrace** 权限（允许一个进程控制另一个进程的机制）放行，就能附着到任何运行中的程序——把目标进程冻住（所有线程都停下），再让目标自己的解释器执行一小段脚本。这段脚本在目标进程*内部*调用 **pympler** 和 **objgraph** 这两个内存检查库，按类型清点活对象、累加大小，需要时再追出谁引用了谁；结果写进一个快照文件，然后放开进程。**附着、暂停、遍历堆是它替你做的**；你要提供 PID、确保 ptrace 被允许，并提前把 pympler 和 objgraph 装到*目标*解释器能 import 的位置——目标找不到的库，分析器没法替它塞进去。每跑一次就是拍一张照片而不是录像：追泄漏要隔一段时间拍两张，让它对比差异。
+
+![memory-analyzer — 主干用户故事](../../assets/flow/memory-analyzer.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/memory-analyzer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：把两个辅助库装到目标能 import 的位置，放开 ptrace — `objgraph · pympler`
+2. **你**：按 PID 指向那个活进程 — `memory_analyzer run $PID` — 组件：`memory_analyzer 命令行`
+3. **memory-analyzer**：用 GDB 附着，暂停进程及其全部线程 — 组件：`GDB`
+4. **memory-analyzer**：在目标内部按类型清点活对象和大小，存快照文件，放开进程
+5. **你**：过一段时间，带上前一次快照对同一 PID 再跑 — `memory_analyzer run $PID --snapshot <previous snapshot file>`
+6. **memory-analyzer**：在终端界面里给出对比页：哪些类型的数量和大小在涨
+
+**价值**：不加代码、不重新部署、不重启，就能看到一个运行中的进程里哪类对象在泄漏
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

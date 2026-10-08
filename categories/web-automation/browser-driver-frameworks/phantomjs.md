@@ -7,7 +7,7 @@ tags: [headless-browser, webkit, scriptable-browser, web-scraping, screenshots, 
 language: C++
 license: BSD-3-Clause
 maturity: archived/abandoned — development suspended since 2018, repo archived (last pushed 2022-11); ~29.5k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2022-11-26T19:43:12Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:29:24Z
+  computed_at: 2026-10-08T08:28:03Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 2267
+        last_commit_age_days: 2278
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -45,7 +45,7 @@ health:
         registry: nuget.org
         canonical_package: phantomjs
         dependent_repos_count: 0
-        downloads_last_month: 4710259
+        downloads_last_month: 4713999
         graph_tier: E
         volume_tier: A
         cross_check_divergence: null
@@ -54,8 +54,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 5753
-        last_commit_age_days: 2267
+        repo_age_days: 5764
+        last_commit_age_days: 2278
         cohort: tool
     governance:
       grade: "?"
@@ -82,6 +82,27 @@ A scriptable **headless WebKit** browser — historically the way to run a real 
 You're an engineer inheriting a legacy CI pipeline or an old scraping/screenshot service that was built around PhantomJS years ago — a `phantomjs script.js` invocation wired into test runners (Karma, old Jasmine setups), a render-to-PNG/PDF job, or a `page.evaluate` scraper that some long-departed colleague wrote. Replacing it is on the backlog but not funded this quarter, and your job right now is just to keep the existing thing running long enough to plan a migration. In that narrow maintenance context you reach for PhantomJS only because it's already pinned in the system: you keep the existing binary/version frozen, isolate it (a container, a locked-down host), and avoid feeding it anything untrusted.
 
 That is the *only* realistic reason to touch it in 2026. For any new testing, scraping, or screenshot work — even on an existing project — you should be reaching for headless Chrome/Chromium driven by Puppeteer or Playwright, or [Selenium](selenium.md), not PhantomJS. Treat every encounter with it as a migration trigger, not a tool choice.
+
+## How it works
+
+PhantomJS is a whole browser engine — WebKit, the layout-and-rendering engine behind Safari — packed into one command-line binary that never opens a window. **The engine and a small JavaScript control API ship in the binary; you write the script that drives it.** Your script runs *outside* the page: it creates a `page` object, opens a URL, and in the callback that fires when loading finishes either calls `page.render` to rasterize the page into a PNG/JPEG/PDF, or `page.evaluate` to run a function *inside* the page and hand DOM values back out. The binary does the fetching, layout, script execution and drawing; you own everything around it — waiting for content that loads late, calling `phantom.exit()` (forget it and the process never terminates), and wiring the run into your test runner or job. Think of it as a browser with the screen unplugged — except the browser stopped receiving updates when development was suspended in 2018, so the same script sees an increasingly old view of the modern web.
+
+![phantomjs — backbone user story](../../../assets/flow/phantomjs.svg)
+
+<!-- flow-steps:begin (generated from flows/phantomjs.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Download the prebuilt binary for your OS, unpack it, put it on PATH
+2. **You**: Write a .js script: open a URL, and in the load callback render the page, then exit — `page.render('github.png') · phantom.exit()`
+3. **You**: Run the script with the binary — `phantomjs github.js`
+4. **PhantomJS**: Loads the page in its bundled WebKit, running its JS and CSS with no window or X11
+5. **PhantomJS**: Fires your callback and writes the PNG, JPEG or PDF file
+
+**Value**: A screenshot, PDF or scraped DOM value from a real browser engine on a headless server — on a 2018-frozen engine
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

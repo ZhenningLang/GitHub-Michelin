@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenFGA does", "zh": "OpenFGA 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the OpenFGA server (in-memory to try it; PostgreSQL or MySQL in production)", "zh": "启动 OpenFGA 服务（试用放内存，生产接数据库）", "code": "docker run -p 8080:8080 -p 3000:3000 openfga/openfga run"},
+    {"lane": "you", "en": "Write the authorization model: object types and how each relation is derived", "zh": "写授权模型：有哪些对象类型，每种关系怎么推导出来", "code": "define can_read: viewer or owner or viewer from parent"},
+    {"lane": "you", "en": "Whenever ownership, membership or sharing changes in your app, write a relationship tuple", "zh": "应用里所有权、成员或分享一变，就写一条关系元组", "code": "user:anne can_view document:roadmap"},
+    {"lane": "them", "en": "Stores the tuples in its database alongside the versioned model", "zh": "把元组和带版本的模型一起存进它的数据库", "component": {"en": "datastore", "zh": "数据存储"}},
+    {"lane": "you", "en": "Before a protected action — or to build a list — the app asks the API", "zh": "受保护操作之前、或要列出可见对象时，应用调用它的 API", "code": "Check · ListObjects"},
+    {"lane": "them", "en": "Walks the relation graph through groups and parents and returns allowed or the object list", "zh": "沿着群组、上级目录等关系图查找，返回是否允许或对象列表"}
+  ],
+  "value": {"en": "Sharing, groups and nested folders are decided by one service from one model, not by join-heavy SQL in every app", "zh": "分享、群组、多层文件夹都由同一个服务按同一个模型判断，不再在每个应用里写多表联查"},
+  "sources": [
+    "https://github.com/openfga/openfga#quickstart (docker run -p 8080:8080 -p 3000:3000 openfga/openfga run; Write Authorization Model, Write Relationship Tuples, Perform Authorization Checks)",
+    "https://github.com/openfga/sample-stores/blob/main/stores/gdrive/model.fga (define can_read: viewer or owner or viewer from parent)",
+    "https://github.com/openfga/cli#readme (fga tuple write user:anne can_view document:roadmap; fga query check / list-objects)",
+    "https://github.com/openfga/openfga#production-readiness (PostgreSQL 14+, MySQL 8; memory adapter for development only)"
+  ]
+}

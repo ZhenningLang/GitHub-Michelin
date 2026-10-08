@@ -7,7 +7,7 @@ tags: [captcha, click-captcha, text-select, yolo, siamese-network, onnx, pytorch
 language: Python
 license: NONE (no LICENSE file — all rights reserved)
 maturity: no tagged releases, active, last push 2026-05 (verified 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2026-05-08T05:01:15Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:51:57Z
+  computed_at: 2026-10-08T08:16:28Z
   overall: D
   overall_score: 1.4
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 142
+        last_commit_age_days: 153
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 2226
-        last_commit_age_days: 142
+        repo_age_days: 2237
+        last_commit_age_days: 153
         cohort: library
     governance:
       grade: D
@@ -68,7 +68,7 @@ health:
         relicense_36mo: false
         content_license: null
   unknowns:
-    responsiveness: { reason: no_window_signal }
+    responsiveness: { reason: no_traffic }
 ---
 
 # Text_select_captcha
@@ -82,6 +82,28 @@ A Chinese deep-learning library for **click/text-select CAPTCHA** recognition �
 You're a Python developer building a scraper or automation that hits a site guarded by a *click-to-select-text* CAPTCHA — the kind that shows scrambled Chinese characters and tells you "click 春, 夏, 秋 in that order". OCR alone won't solve it: you need to *locate* each candidate glyph and *rank* it against the prompt. This library packages exactly that pipeline — a YOLO detector to find the character boxes plus a Siamese/twin network to match a target glyph against the candidates — and exposes it behind a simple call (and an optional FastAPI service) that returns coordinates. It ships ONNX runtime inference so you can run it CPU-only on a modest box (the README claims a 1-core/2G server works), and it can be retrained on ~300 of your own labeled images to adapt to a specific site's font/style.
 
 You reach for it specifically when your target is the interactive *click-select* family (文字点选 / 选字 / 消消乐-style) rather than plain text-in-image CAPTCHAs, and you want a working Chinese-glyph pipeline rather than assembling detection + matching yourself.
+
+## How it works
+
+A click-select CAPTCHA is two problems glued together: *where* are the characters, and *which* one matches each prompt character. This repo answers them with two pre-trained models shipped as ONNX files (a portable model format that runs on CPU through ONNX Runtime). First a *YOLO* detector — a model that draws boxes around objects in one pass — boxes every glyph and sorts them into two kinds: the small prompt glyphs that spell out the order, and the scattered glyphs you have to click. Then a *Siamese network* — two copies of the same encoder that score how alike two images are — compares every prompt glyph against every candidate, picks the best overall pairing, and returns the candidate boxes in click order. **It does the vision; you do the browser**: fetching the image, and clicking the returned points with your own automation (the repo's `bilbil.py` is one example), are yours. The same recognizer can also run as an HTTP service (`python service.py`, docs at `:8000/docs`) instead of an in-process call. If your target's fonts differ from the shipped weights, retraining is on you, and the detailed training guide is behind the author's paid course.
+
+![text-select-captcha — backbone user story](../../assets/flow/text-select-captcha.svg)
+
+<!-- flow-steps:begin (generated from flows/text-select-captcha.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Clone the repo and install its requirements; the ONNX models ship in model/ — `pip install -r requirements.txt`
+2. **You**: Save the captcha image and hand its path to the recognizer — `cap = TextSelectCaptcha() · cap.run(image_path)` — component: `src/captcha.py`
+3. **Text_select_captcha**: A YOLO detector boxes every glyph, splitting prompt glyphs from the ones to click
+4. **Text_select_captcha**: A Siamese network scores every prompt/candidate pair and picks the best overall match
+5. **Text_select_captcha**: Returns the boxes (or centre points) already in the order they must be clicked
+6. **You**: Click those points with your own browser automation
+
+**Value**: A working CPU-only click-select solver for Chinese glyphs without building detection + matching yourself
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -102,7 +124,7 @@ You reach for it specifically when your target is the interactive *click-select*
 
 ## Tech stack
 
-- **Models:** a YOLO-family detector for locating glyphs + a Siamese/twin network for matching a target to candidates; inference via **ONNX Runtime**. [推断]
+- **Models:** a YOLO-family detector for locating glyphs + a Siamese/twin network for matching a target to candidates, both exported to ONNX and shipped in `model/` (`best_v3.onnx`, `pre_model_v7.onnx`); inference via **ONNX Runtime**.
 - **Serving:** an optional **FastAPI** + `uvicorn` HTTP service (RESTful API) wrapping the recognizer; `python-multipart` for image upload.
 - **Imaging:** OpenCV (`opencv-python-headless`), Pillow, NumPy; `playwright`/`aiohttp`/`requests` appear for example fetching/automation.
 - **Training:** trainable on your own labeled set (README claims ~300 images suffice); the heavier training tutorial is gated behind a paid course.
@@ -131,5 +153,5 @@ You reach for it specifically when your target is the interactive *click-select*
 - [未验证] No LICENSE file exists in the repo (GitHub reports no license); recorded as "NONE — all rights reserved". Absent an explicit grant, you have no permission to use/modify/redistribute — confirm with the author before relying on it.
 - [未验证] ~1.6k stars and last push 2026-05 as of 2026-06; no tagged releases, so no version number is asserted.
 - [未验证] "96% accuracy", "300–500ms", and "~300 images to train" are the author's README claims on their own data — not independently measured; your results depend on the target captcha.
-- [推断] The model architecture (YOLO detector + Siamese matcher, ONNX inference) is inferred from the README and `requirements.txt`; not re-verified against the source.
+- [推断] Which detector class is the prompt strip and which is the clickable glyphs is inferred from `src/captcha.py` (one class is sorted left-to-right to give the order, the other is returned as click boxes); the README's labeling note is terse and the model weights were not inspected.
 - [推断] The most detailed training tutorial is linked to a paid course; the extent to which the free repo is complete vs. a funnel is an inference.

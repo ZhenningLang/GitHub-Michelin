@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The script does",
+    "zh": "脚本做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the three libraries the scripts are built on",
+      "zh": "装上脚本依赖的三个库",
+      "code": "requests · pillow · rsa"
+    },
+    {
+      "lane": "you",
+      "en": "Run the one site's script and type your account and password at the prompt",
+      "zh": "运行目标网站那一个脚本，按提示输入账号和密码",
+      "code": "001 zhihu/zhihu.py"
+    },
+    {
+      "lane": "them",
+      "en": "Loads the login page and scrapes the one-time token the form needs",
+      "zh": "打开登录页，抠出表单要用的一次性令牌"
+    },
+    {
+      "lane": "them",
+      "en": "Posts the credentials as the site's page would (some scripts RSA-encrypt the password first)",
+      "zh": "照网页的方式提交账号密码（部分脚本先用 RSA 加密密码）"
+    },
+    {
+      "lane": "you",
+      "en": "If the site asks for a captcha, read the image it opens and type it in",
+      "zh": "网站要验证码时，看它弹出的图片，手动输入"
+    },
+    {
+      "lane": "them",
+      "en": "Saves the logged-in session cookies to a local file for the next run",
+      "zh": "把登录后的会话 cookie 存进本地文件，下次直接用"
+    }
+  ],
+  "value": {
+    "en": "A readable worked example of replaying one site's 2016–2018 login over raw HTTP — not a login that still works",
+    "zh": "一份看得懂的样例：怎样用裸 HTTP 重放某网站 2016–2018 年的登录——而不是一个今天还能登上的工具"
+  },
+  "sources": [
+    "https://github.com/xchaoinfo/fuck-login#readme (not maintained notice 2018.06.08; requests 处理登录, pillow 处理验证码, rsa 处理加密问题; per-site list)",
+    "https://github.com/xchaoinfo/fuck-login/blob/master/001%20zhihu/zhihu.py (input account/password; get_xsrf scrapes _xsrf; session.post login; get_captcha shows captcha.jpg via PIL and reads input; session.cookies.save() to LWPCookieJar 'cookies')",
+    "https://github.com/xchaoinfo/fuck-login/blob/master/007%20weibo.com/weibo.com.py (rsa.PublicKey + rsa.encrypt of the password)"
+  ]
+}

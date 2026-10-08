@@ -6,13 +6,13 @@ category: transcoding-and-pipelines
 tags: [media, pipeline, streaming, real-time, gstreamer, c, plugins, audio, video, multimedia]
 language: C
 license: LGPL-2.1-or-later
-maturity: v1.26.x, very active, ~25 years old (as of 2026-07)
-last_verified: 2026-07-01
+maturity: 1.28.7 stable (2026-09-07), 1.29.x development, very active, ~25 years old (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-06T07:52:56Z
+  pushed_at: 2026-10-08T07:58:39Z
   default_branch: main
-  default_branch_sha: f3213d6ad0999944f4eae4a0d024d5ffe817e336
+  default_branch_sha: 80c184b4c5ee8ba28b2540ba58f40b8d44b61622
   archived: false
 health:
   schema: 1
@@ -63,70 +63,92 @@ health:
 # GStreamer
 
 
-A pipeline-based multimedia framework for building real-time audio/video processing applications — not a CLI tool, but a graph of pluggable elements you wire together in code.
+Your product has to keep a camera or network stream running for hours — decode it, draw on it, encode it, send it somewhere — and calling `ffmpeg` once per file does not fit a process that never ends. GStreamer is the C framework you embed for that: you connect ready-made processing blocks into a pipeline, and it moves the media through them continuously, in sync, inside your own application.
 
 
 ![GStreamer — health radar](../../../../assets/health/gstreamer.svg)
 
 ## When to use
 
-You're an embedded Linux engineer building an in-car infotainment system that must capture camera feeds, apply overlays, encode to H.264, and stream to a display — all with sub-frame latency and a tight CPU budget. You need fine-grained control over every stage: when buffers arrive, how they pass through filters, when they hit the encoder, and how the pipeline handles format negotiation between heterogeneous hardware. You don't want to shell out to a CLI per frame; you want a persistent, hot media graph running inside your application. You reach for GStreamer: you create a `GstPipeline`, add `v4l2src` → `videoconvert` → `x264enc` → `rtmpsink` elements, link their pads, set properties on the fly, and handle bus messages for EOS and errors. The same framework lets you swap the camera source for a network stream, or the encoder for a hardware-accelerated `vaapih264enc`, without rewriting the pipeline structure.
+You're an embedded Linux engineer on a camera product, an in-car display or a video-analytics box. The device must capture from `/dev/video0`, overlay a timestamp, hardware-encode to H.264 and push to an RTSP or WebRTC endpoint — around the clock, at a fixed latency, on a CPU budget where a stray copy of each frame shows up in the power bill. You try `ffmpeg` in a `subprocess` loop and hit the wall: no way to change the bitrate without restarting, no clean signal when the camera drops, and switching to the SoC's hardware encoder means rewriting the command per board. With GStreamer you prototype the chain as `gst-launch-1.0 v4l2src ! videoconvert ! … ! autovideosink`, then build the same pipeline inside your C, Rust or Python program, change element properties while it runs, and react to errors and end-of-stream messages on its bus.
 
-You also reach for it when you're a desktop developer building a GTK media player and want GObject-integrated media handling with play/pause/seek state machines. GStreamer's `playbin` and `decodebin` auto-plug elements for you, and its deep integration with GLib/GObject fits naturally into a GNOME/GTK app. You also reach for it when you need real-time audio processing — VoIP pipelines, DAW effects chains, or broadcast mixing — where sample-accurate synchronization and low-latency routing matter more than batch transcode throughput.
+Pick it over FFmpeg when the media path is a long-running part of your application rather than a batch job, and when you need to swap sources, encoders or sinks per platform (V4L2, VA-API, NVIDIA, Apple VideoToolbox, Direct3D 12) without changing the pipeline's shape. It is also the native choice for GTK/GNOME players (`playbin` builds the whole playback chain for you) and for WebRTC or analytics pipelines where the 1.28 release added ready-made elements.
+
+## How it works
+
+GStreamer is a plumbing kit. Every capability — a camera source, a decoder, a text overlay, an encoder, a network sink — is an **element** shipped in a plugin; you connect elements through their **pads** (input/output sockets) into a **pipeline**, either from a text description (`gst_parse_launch`) or element by element in code. When you set the pipeline to `PLAYING`, GStreamer negotiates **caps** — the media format each link will carry, such as "raw video, NV12, 1920×1080" — so that adjacent elements agree, loads the plugins it needs, and starts streaming threads that push buffers through the chain against a shared clock. Problems and milestones come back to you as messages on the pipeline's **bus**. What GStreamer does for you: format negotiation, threading, timing and A/V sync, and the codec/device plugins themselves. What you do: choose the elements, set their properties, handle bus messages, and make sure the right plugin packages are installed on the target — like plumbing, the pipes are provided, but you decide the layout and check the fittings exist on site.
+
+![gstreamer — backbone user story](../../../../assets/flow/gstreamer.svg)
+
+<!-- flow-steps:begin (generated from flows/gstreamer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the core, the plugin sets you need and the tools — `gstreamer1.0-plugins-good · gstreamer1.0-libav · gstreamer1.0-tools`
+2. **You**: Prototype the pipeline on the command line — `gst-launch-1.0 videotestsrc ! videoconvert ! autovideosink`
+3. **You**: Build the same pipeline in your app and set it to PLAYING — `gst_parse_launch · gst_element_set_state`
+4. **GStreamer**: Negotiates the media format on every link and loads the plugins each element needs
+5. **GStreamer**: Streams buffers through the elements on its own threads, in sync with the pipeline clock
+6. **GStreamer**: Reports errors and end-of-stream as messages on the bus
+
+**Value**: A media path that runs continuously inside your app, and whose sources, encoders and sinks you swap per device without rewriting it
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You just need to transcode a batch of files.** Use FFmpeg CLI instead. GStreamer is a programming framework, not a shell tool; writing a GStreamer pipeline in C/Python/Rust to do what `ffmpeg -i in -c:v libx264 out` does is massive overkill.
-- **You want a quick one-liner or script without learning a new API.** GStreamer's learning curve is steep. You must understand elements, pads, bins, caps negotiation, bus messages, and state changes. Budget days or weeks, not minutes.
-- **You're building a non-linear video editor (NLE).** GStreamer has editing primitives, but it is not a timeline editor. For multitrack cutting, effects authoring, and compositing, use an NLE framework like MLT/Shotcut or a dedicated editor.
-- **You need end-user transcoding with presets.** HandBrake (GUI + CLI) is built for that; GStreamer is a library/framework for developers.
-- **You're on Windows and want native media plumbing.** DirectShow and Media Foundation are the native Windows media frameworks; GStreamer runs on Windows but is not the idiomatic choice for Windows-only apps.
-- **You just need audio routing on a Linux desktop.** For simple desktop audio (app-to-speaker, app-to-app), PulseAudio or PipeWire is the right layer. JACK is the right layer for pro-audio low-latency. GStreamer sits above them as the processing framework, not the audio server.
+- **You just need to transcode or trim files.** For `in.mkv` → `out.mp4` in a script, use [FFmpeg](ffmpeg.md); writing a GStreamer program for a one-shot conversion is far more code and more failure modes.
+- **End users need presets and a GUI for batch conversion.** Use [HandBrake](handbrake.md); GStreamer is a developer framework with no end-user transcoder UI.
+- **You want quick Python video edits.** Cuts, titles and composites written as a script are easier in [MoviePy](../editing-and-cutting/moviepy.md) (or [PyAV](pyav.md) for frame access); GStreamer's Python bindings still require you to understand elements, pads, caps and states.
+- **You're building a timeline editor.** GStreamer has an editing library (GES), but for a multitrack NLE engine with project files [MLT](../editing-and-cutting/mlt.md) is the more direct fit.
+- **You can't afford the learning curve or the plugin packaging.** Debugging caps negotiation failures, "no element" errors from a missing plugin package, and state-change deadlocks takes real time. If a fixed set of formats is all you need, linking FFmpeg's libraries directly via [PyAV](pyav.md) or the C API is simpler.
+- **Your binary must stay closed-source and you have not audited plugins.** The core is LGPL-2.1+, but some plugin sets carry GPL or patent-encumbered codecs (notably `-ugly`, and x264 via GPL). Ship only an audited plugin list, or use OS codecs (VideoToolbox, Media Foundation) through the corresponding GStreamer elements.
+- **Your app is Windows-only and should use OS media APIs.** Media Foundation is the native path and avoids shipping a GStreamer runtime; GStreamer's Windows support (Direct3D 11/12, MSVC builds) is strong, so choose it there only when you also need Linux/macOS or its plugin catalog.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [FFmpeg](ffmpeg.md) | ✅ | Use FFmpeg for CLI batch transcoding, format conversion, and universal decode/encode. | FFmpeg is the universal CLI + library; GStreamer is a pipeline graph framework. FFmpeg excels at one-shot transformations; GStreamer excels at real-time, persistent, application-embedded pipelines. GStreamer often uses FFmpeg/libav codecs under the hood via plugins. |
-| [HandBrake](handbrake.md) | ✅ | Use HandBrake for end-user preset-driven transcoding (GUI + CLI). | Built on FFmpeg/x264/x265; great for "rip to MP4/MKV" UX, not a library or pipeline framework. |
-| [MLT](../editing-and-cutting/mlt.md) / Shotcut | 部分已收录 | Use MLT/Shotcut for NLE editing/compositing with a timeline model. | Multimedia framework for editing; sits above FFmpeg for codec work. Reach for it when you need an editor, not a real-time pipeline. |
-| AWS Elemental MediaConvert | 未收录 | Use cloud transcoders for managed, elastic, pay-per-minute transcoding. | SaaS, not a self-hosted framework. Zero ops but vendor lock-in and per-minute cost. Often FFmpeg-derived internally. |
-| VLC | 未收录 | Use VLC for a standalone media player with broad format support. | End-user player, not a framework for building your own app. |
-| JACK / PulseAudio | 未收录 | Use JACK/PulseAudio for Linux desktop audio routing and pro-audio low-latency. | Audio servers, not video pipelines. GStreamer can use them as sinks but is a higher-level processing framework. |
-| DirectShow / Media Foundation | 未收录 | Use Windows native frameworks for Windows-only media apps. | Windows-native; GStreamer is cross-platform but not the idiomatic Windows choice. |
+| [FFmpeg](ffmpeg.md) | ✅ | For batch conversion and one-shot processing, pick FFmpeg; pick GStreamer when the media pipeline lives inside a long-running application and must be reconfigured while it runs. | FFmpeg is simpler to start and has the widest codec coverage; GStreamer adds runtime graph control, clocking and a plugin model, at the cost of a steeper API (it can even use FFmpeg's codecs via `gst-libav`). |
+| [PyAV](pyav.md) | ✅ | For Python code that needs frame-level decode/encode in one process, pick PyAV; pick GStreamer when you need live sources, sinks and hardware elements wired into a continuous pipeline. | PyAV is a thin binding over FFmpeg's libraries; you write the loop, threading and timing yourself. |
+| [HandBrake](handbrake.md) | ✅ | For people converting files with presets, pick HandBrake; GStreamer is for developers building media features. | Polished GUI + CLI on top of FFmpeg/x264/x265; not embeddable and file-to-file only. |
+| [MLT](../editing-and-cutting/mlt.md) / Shotcut | 部分已收录 | For timeline editing and rendering projects, pick MLT/Shotcut; for capture, streaming and playback pipelines, pick GStreamer. | MLT models tracks and transitions; GStreamer models live data flow and leaves editing semantics to GES or to you. |
+| VLC | 未收录 | For a ready-made player (or libVLC when you just need to play anything), pick VLC; pick GStreamer when you must build custom processing between source and sink. | libVLC gives playback with little code; its pipeline is far less open to inserting your own processing elements. |
+| PipeWire / JACK | 未收录 | For routing audio between apps and devices on a Linux desktop or studio, use PipeWire or JACK; use GStreamer to process the media that flows through them. | They are audio/video servers, not processing frameworks; GStreamer talks to them through source/sink elements. |
+| AWS Elemental MediaConvert and other cloud transcoders | 非仓库 | For elastic, managed file transcoding without running infrastructure, use a cloud service; use GStreamer when processing has to run on your device or servers. | No ops and pay per minute; vendor lock-in and no on-device or real-time control. |
 
 ## Tech stack
 
-- **Language:** C (core), with GObject type system for element introspection and property binding.
-- **Bindings:** Python (gst-python), Rust (gstreamer-rs), Java (gst1-java-core), JavaScript (GJS), Vala, C++.
-- **Plugin architecture:** Everything is a plugin — sources, sinks, filters, codecs, muxers. Plugins are shared libraries loaded at runtime.
-- **Core abstractions:** Elements (processing nodes), Pads (connection points), Bins/Pipelines (containers that manage state and linking), Buses (message passing for errors/EOS/state changes).
-- **Auto-plugging:** `decodebin` and `playbin` auto-instantiate and link elements based on stream caps.
-- **Hardware integration:** VAAPI, VA-API, VideoToolbox (macOS), DXVA/D3D11 (Windows), OpenMAX, V4L2 M2M.
+- **Core:** C on GLib/GObject (type system, properties, signals); built with Meson. All official modules live in one monorepo (`subprojects/`: `gstreamer`, `gst-plugins-base`, `-good`, `-bad`, `-ugly`, `gst-libav`, `gst-editing-services`, `gst-python`, …).
+- **Rust:** a growing share of new plugins is written in Rust (`gst-plugins-rs`, a separate repository), including WebRTC sinks, GIF decoding and inference elements highlighted in 1.28.
+- **Bindings:** Python (`gst-python`/PyGObject), Rust (`gstreamer-rs`), C++ (new "Peel" bindings in 1.28), plus others via GObject Introspection.
+- **Hardware paths:** VA-API, V4L2 stateful/stateless codecs, NVIDIA (NVCODEC), AMD (AMF, new HIP plugin), Apple VideoToolbox, Direct3D 11/12, Vulkan Video, OpenGL.
+- **Tooling:** `gst-launch-1.0` (prototype pipelines), `gst-inspect-1.0` (list elements and caps), `GST_DEBUG` logging and `.dot` graph dumps.
 
 ## Dependencies
 
-- **Core runtime:** GLib/GObject (GStreamer is deeply tied to the GLib ecosystem).
-- **Build:** Meson build system, C toolchain, GLib development headers.
-- **Optional codec/libs (selected via plugins):** FFmpeg/libav (via gst-libav), x264, x265, libvpx, libaom, libopus, etc. License of the final application depends on which plugins you load.
-- **Platform-specific:** V4L2 (Linux video capture), ALSA/PulseAudio/PipeWire/JACK (Linux audio), Core Audio (macOS), DirectSound/WASAPI (Windows), OpenGL/Vulkan for GPU processing.
-- **Note:** Some plugins are GPL-licensed; the LGPL-2.1+ core stays clean only if you avoid GPL plugins or comply with GPL terms.
+- **Mandatory:** GLib, plus libintl, zlib and libffi — all fetched as Meson subprojects if the system lacks them.
+- **Optional, per plugin:** FFmpeg (via `gst-libav`), x264, openh264, libvpx, dav1d, Opus, Qt, GTK, etc. Plugins whose dependency is missing are simply not built, which is why packaging matters.
+- **Build:** Meson ≥ 1.4, Ninja, Python 3.8+ (from source); or distro packages (`gstreamer1.0-plugins-*`), official macOS/Windows/Android/iOS binaries, and Cerbero for cross-platform SDK builds.
+- **Platform:** V4L2/ALSA/PulseAudio/PipeWire on Linux, Core Audio/VideoToolbox on macOS, WASAPI/Direct3D on Windows.
+- **Licensing note:** the final license obligations depend on which plugins you ship; the core and most of `-base`/`-good` are LGPL.
 
 ## Ops difficulty
 
-**Medium-High.** As a framework embedded in your application, "ops" means build integration and runtime plugin management: (1) **Plugin hell** — the right plugin must be present on the target system; missing plugins produce cryptic "no such element" errors at runtime. You must control the plugin set in your deployment (static linking, custom builds, or strict package manifests). (2) **Version coupling** — GStreamer releases are monolithic (1.x with matching -base, -good, -bad, -ugly, -libav packages), and mixing versions breaks ABI. (3) **Debugging complexity** — pipeline graphs, caps negotiation, pad linking, and state-machine transitions are opaque; you need `GST_DEBUG` logging, `gst-launch-1.0` prototyping, and `dot` graph dumps to diagnose issues. (4) **Memory and latency tuning** — buffer pools, thread scheduling, and queue depths need tuning for real-time constraints. The framework is stable, but operating it well in production requires expertise.
+**Medium-high.** It runs inside your application, so "ops" is packaging and debugging. (1) **Plugin set** — a pipeline fails at runtime with "no element" if the target lacks a plugin package; pin and ship an explicit plugin list. (2) **Version matching** — core and plugin modules are released together and should stay on the same 1.x version. (3) **Debugging** — caps negotiation, pad linking and state changes are opaque until you learn `GST_DEBUG`, `gst-inspect-1.0` and pipeline graph dumps. (4) **Latency and memory tuning** — queue sizes, buffer pools and thread placement need tuning for real-time targets. The framework itself is very stable; the expertise is the cost.
 
 ## Health & viability
 
-- **Maintenance — very active, long-lived (since ~2001).** Regular releases (1.26.x as of 2026-07), continuous development by the GStreamer team. One of the most mature and consistently maintained multimedia frameworks.
-- **Governance & bus factor — dedicated team under freedesktop.org.** Not a single maintainer; the GStreamer project has a core team with sustained contributions. Backed by the freedesktop.org infrastructure, not a single vendor's roadmap.
-- **Age & Lindy verdict — ~25 years old and still active ⇒ extremely strong Lindy signal.** A framework that has survived multiple paradigm shifts (desktop → mobile → embedded → streaming) and remains the default choice for Linux embedded media. This is one of the safest longevity bets in the multimedia space.
-- **Adoption & ecosystem — embedded Linux standard.** Widely used in automotive (IVI), set-top boxes, IoT cameras, and GTK desktop apps. Strong plugin ecosystem (good/bad/ugly/libav). Good documentation and a large body of community knowledge.
-- **Risk flags — plugin licensing is the main trap.** The core is LGPL-2.1+, but the `-bad` and `-ugly` plugin sets contain GPL-licensed and patent-encumbered codecs. Some plugins also depend on FFmpeg/libav, inheriting its LGPL/GPL build complexity. Verify your plugin set before distributing proprietary binaries. No relicense history concerns.
+- **Maintenance (2026-10).** Very active. Stable series 1.28 (1.28.0 on 2026-01-27, bug-fix 1.28.7 on 2026-09-07) alongside a 1.29 development series; the main branch receives commits almost daily (at least 300 since 2026-07-01). The health radar on this page is still the 2026-07-03 value — the scorer does not support GitLab-hosted repositories, so it was not recomputed this pass.
+- **Governance & bus factor.** Community project hosted on freedesktop.org GitLab, with work funded by several consultancies rather than one vendor: in the 300 most recent main-branch commits, Centricular, Igalia and Collabora authors dominate, alongside independents and product companies (e.g. Netflix, Amazon). No single company can kill it.
+- **Age & Lindy.** Around 25 years old and still shipping a new stable series roughly once a year (1.24 in 2024, 1.26 in 2025, 1.28 in 2026) — an extremely strong Lindy signal; it has survived the move from desktop to embedded, mobile, WebRTC and now ML inference pipelines.
+- **Adoption & ecosystem.** Default media framework of GNOME and many embedded Linux stacks (automotive, set-top boxes, cameras); NVIDIA DeepStream and other vendor SDKs build on it. Large plugin catalog, annual conference, active Discourse forum.
+- **Risk flags.** No relicense history. The trap is plugin licensing and patents, not the core license — audit what you ship.
 
 ## Caveats (unverified)
 
-- [未验证] Exact active contributor count and bus-factor breakdown for the GStreamer core team as of 2026-07.
-- [未验证] Specific plugin licensing within `-bad` and `-ugly` sets may vary by version and distro packaging; verify against your target's package manifest.
-- [推断] GStreamer's dominance in "embedded Linux" is inferred from its prevalence in automotive and set-top-box documentation; actual market share is not publicly quantified.
-- [推断] The "often uses FFmpeg/libav under the hood" claim applies to the gst-libav plugin set; native GStreamer plugins exist for many codecs and do not require FFmpeg.
+- [未验证] The health radar (frontmatter `health:` block and card) still holds the 2026-07-03 values; `tools/health.py` and `tools/upstream_snapshot.py` only support GitHub, so the radar was not re-scored and the `upstream` block was updated by hand from the GitLab API.
+- [推断] The multi-vendor funding picture is read from author e-mail domains in a sample of 300 recent commits, not from a governance document.
+- [推断] "Default in many embedded Linux stacks" and the DeepStream dependency are based on vendor documentation and general knowledge, not a market survey.
+- [未验证] Exact plugin license per element varies by version and distribution packaging; check `gst-inspect-1.0` output on your target.

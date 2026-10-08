@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="689" viewBox="0 0 880 689" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="689" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="553" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="553" rx="10"/>
+<rect class="pillT" x="474" y="40" width="198.8" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">SCIP 索引器和工具做的</text>
+<path class="edge" d="M62,189 L62,213" marker-end="url(#a)"/>
+<path class="hand" d="M408,272.0 C439.0,272.0 439.0,296 470,296" marker-end="url(#a)"/>
+<path class="edge" d="M494,344 L494,368" marker-end="url(#a)"/>
+<path class="hand" d="M472,417.5 C441.0,417.5 441.0,441 410,441" marker-end="url(#a)"/>
+<path class="hand" d="M408,465.5 C439.0,465.5 439.0,515 470,515" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="117" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="117" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装上对应语言的 SCIP 索引器</text>
+<text class="c" x="82" y="125">npm install -g</text>
+<text class="c" x="82" y="144">@sourcegraph/scip-typescript</text>
+<text class="comp" x="82" y="167">组件：各语言索引器</text>
+<rect class="card" x="40" y="215" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="215" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="239" r="10"/>
+<text class="num" x="62" y="243" text-anchor="middle">2</text>
+<text class="t" x="82" y="244">在项目根目录运行，通常作为每次提交的 C</text>
+<text class="t" x="82" y="266">I 步骤</text>
+<text class="c" x="82" y="290">scip-typescript index · rust-analyzer scip</text>
+<text class="c" x="82" y="309">.</text>
+<rect class="cardT" x="472" y="272" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="272" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="296" r="10"/>
+<text class="num" x="494" y="300" text-anchor="middle">3</text>
+<text class="t" x="514" y="301">用真正的编译器做类型检查，把每个标识符解析</text>
+<text class="t" x="514" y="323">到它的定义</text>
+<rect class="cardT" x="472" y="370" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="370" width="4" height="95" rx="2"/>
+<circle class="accT" cx="494" cy="394" r="10"/>
+<text class="num" x="494" y="398" text-anchor="middle">4</text>
+<text class="t" x="514" y="399">写出一个 Protobuf 索引，每个符号一个全局唯</text>
+<text class="t" x="514" y="421">一的字符串名</text>
+<text class="c" x="514" y="445">index.scip</text>
+<rect class="card" x="40" y="417" width="368" height="97" rx="8"/>
+<rect class="accY" x="40" y="417" width="4" height="97" rx="2"/>
+<circle class="accY" cx="62" cy="441" r="10"/>
+<text class="num" x="62" y="445" text-anchor="middle">5</text>
+<text class="t" x="82" y="446">把索引交给消费方：Sourcegraph，或用</text>
+<text class="t" x="82" y="468">Go/Rust 绑定写的自家工具</text>
+<text class="comp" x="82" y="496">组件：scip 绑定</text>
+<rect class="cardT" x="472" y="491" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="491" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="515" r="10"/>
+<text class="num" x="494" y="519" text-anchor="middle">6</text>
+<text class="t" x="514" y="520">绑定暴露文档、符号和精确出现位置，供跳转定</text>
+<text class="t" x="514" y="542">义和查找引用使用</text>
+<rect class="val" x="28" y="595" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="619">价值</text>
+<text class="valT" x="48" y="643">编译器级精确的跳转定义和查找引用，每个提交算一次，之后离线可查</text>
+</svg>

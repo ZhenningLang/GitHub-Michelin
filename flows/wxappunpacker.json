@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "The unpacker does",
+    "zh": "解包脚本做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Copy the cached mini-program packages off an Android phone",
+      "zh": "从安卓手机里拷出缓存的小程序包",
+      "code": "adb pull /data/data/com.tencent.mm/MicroMsg/{User}/appbrand/pkg"
+    },
+    {
+      "lane": "you",
+      "en": "Clone a fork that still has the code (this repo is empty) and install its packages",
+      "zh": "克隆一个代码还在的分叉（本仓库是空的），装好依赖",
+      "code": "npm install"
+    },
+    {
+      "lane": "you",
+      "en": "Point the main script at one .wxapkg file",
+      "zh": "把主脚本指向一个 .wxapkg 文件",
+      "code": "node wuWxapkg.js"
+    },
+    {
+      "lane": "them",
+      "en": "Splits the package into its stored files, then splits the bundled app-service.js back into per-file JS",
+      "zh": "拆开包里存的文件，再把合并的 app-service.js 拆回单个 JS",
+      "component": {
+        "en": "wuWxapkg.js + wuJs.js",
+        "zh": "wuWxapkg.js + wuJs.js"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Runs the compiled page code in a vm2 sandbox to rebuild .json, .wxss and .wxml sources",
+      "zh": "在 vm2 沙箱里执行编译后的代码，还原 .json、.wxss、.wxml",
+      "component": {
+        "en": "wuConfig · wuWxss · wuWxml",
+        "zh": "wuConfig · wuWxss · wuWxml"
+      }
+    }
+  ],
+  "value": {
+    "en": "A readable mini-program project tree from a packed .wxapkg, for auditing or recovering your own app",
+    "zh": "从打包好的 .wxapkg 得到一棵可读的小程序项目目录，用于审计或找回自己的应用"
+  },
+  "sources": [
+    "xdmjun/wxappUnpacker README.md @ master (2023-04-08): entire content is 'del' — no code in this repo",
+    "PyCoreDev/wxappUnpacker README.md @ master (2023-02): wxapkg 包的获取 (adb pull /data/data/com.tencent.mm/MicroMsg/{User}/appbrand/pkg); 安装 (npm install); 使用 (node wuWxapkg.js .wxapkg 的文件路径); deps cssbeautify, CSSTree, VM2, Esprima, UglifyES, js-beautify",
+    "PyCoreDev/wxappUnpacker wuWxapkg.js ('Split app-service.js and make up configs & wxss & wxml & wxs'; wuCfg.doConfig, wuJs.splitJs, wuSs.doWxss); wuConfig.js / wuWxss.js / wuWxml.js / wuJs.js (const {VM} = require('vm2'))"
+  ]
+}

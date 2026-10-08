@@ -7,7 +7,7 @@ tags: [knowledge-graph, nlp, named-entity-recognition, relation-extraction, neo4
 language: Python
 license: GPL-3.0
 maturity: research project, maintenance stopped (per README), ~4.4k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2025-02-11T14:23:01Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:11:21Z
+  computed_at: 2026-10-08T08:22:58Z
   overall: D
   overall_score: 1.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 593
+        last_commit_age_days: 604
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 3228
-        last_commit_age_days: 593
+        repo_age_days: 3239
+        last_commit_age_days: 604
         cohort: app
     governance:
       grade: "?"
@@ -72,6 +72,27 @@ You're a student or researcher building a domain knowledge graph in Chinese — 
 
 You reach for it as a **complete, readable blueprint** of a Chinese KG system (and for its bundled datasets), accepting that it's coursework-grade research code you'll adapt, not a product you'll run as-is.
 
+## How it works
+
+AgriKG is a finished pipeline you replay, not a library you call. The heavy lifting already happened upstream: crawlers pulled agricultural encyclopedia pages, a KNN classifier (labels each page by comparing it with its most similar hand-labeled pages) sorted ~150k of them into entity types, and relations were matched against Wikidata — all of it shipped as CSV files. You install Python 3 and Neo4j (a graph database: entities are nodes, relations are edges), copy those CSVs into Neo4j and run the README's `LOAD CSV` Cypher statements, put your Neo4j password in `demo/Model/neo_models.py`, and start the Django demo. From then on the demo does the work: it splits your Chinese input into words with THULAC (a Chinese word segmenter), keeps the words that match a classified agricultural entity, and answers entity, relation and shortest-path queries from the graph on port 8000. Re-running the crawl, the hand-labeling page (which also needs MongoDB) or the classifier training is optional and yours to revive.
+
+![agriculture-knowledge-graph — backbone user story](../../../assets/flow/agriculture-knowledge-graph.svg)
+
+<!-- flow-steps:begin (generated from flows/agriculture-knowledge-graph.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install Python 3 and Neo4j, then the project's pinned pip dependencies — `sudo pip3 install -r requirement.txt`
+2. **You**: Copy the bundled CSVs into Neo4j's import folder and run the README's Cypher loads — `LOAD CSV WITH HEADERS FROM "file:///hudong_pedia.csv" AS line`
+3. **You**: Put your Neo4j password into the demo's model file and start the Django demo — `sudo sh django_server_start.sh`
+4. **Agriculture Knowledge Graph (AgriKG)**: Segments your Chinese text with THULAC and matches words to pre-classified entities in the graph
+5. **Agriculture Knowledge Graph (AgriKG)**: Answers entity, relation and shortest-path queries from Neo4j on port 8000
+
+**Value**: A working Chinese agricultural knowledge graph to explore and a full crawl-to-UI pipeline to copy, without crawling and labeling ~150k entities yourself
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need maintained software.** The README states plainly that the project has stopped being maintained ("由于工作原因，该项目已停止维护"); treat it as a frozen reference, expect no fixes, and budget time to revive an old Django/py2neo stack. [推断]
@@ -99,19 +120,19 @@ You reach for it as a **complete, readable blueprint** of a Chinese KG system (a
 
 ## Dependencies
 
-- **Runtime services:** Neo4j (graph store) and MongoDB (crawl store) must be running; the Django app talks to both.
+- **Runtime services:** Neo4j (graph store) is required for the Django demo; MongoDB (crawl store) is additionally needed for the crawlers and the `/tagging` hand-labeling page, per the README.
 - **Python libs (pinned, old):** `Django>=1.11.7`, `py2neo==4.1.0`, `thulac`, `pyfasttext==0.4.5`, `Cython>=0.28.5`, `pinyin`, `pymongo` — several are dated and may not install cleanly on a modern Python without pinning an old interpreter. [推断]
 - **Data:** ships sizable CSVs (`hudong_pedia.csv`, `labels.txt`, predicted labels, weather/plant relations) so you don't have to re-crawl to explore the graph.
 - **Models:** trained classifier/RE artifacts referenced by the pipeline (some may need regeneration).
 
 ## Ops difficulty
 
-**High for what it is.** It is not a single binary or pip install — to run the full demo you must stand up Neo4j *and* MongoDB, load the bundled data, and get an old Django + py2neo 4.x + pyfasttext stack working on a compatible (old) Python. `pyfasttext` and `py2neo==4.1.0` in particular are the kind of dated, C-extension/version-pinned dependencies that fight modern environments. Because it's unmaintained, any breakage is yours to debug with no upstream help. Running just the *data* (CSVs) or a single sub-pipeline is far cheaper than reviving the end-to-end app.
+**High for what it is.** It is not a single binary or pip install — to run the full demo you must stand up Neo4j (plus MongoDB if you want the crawlers and the labeling page), load the bundled data, and get an old Django + py2neo 4.x + pyfasttext stack working on a compatible (old) Python. `pyfasttext` and `py2neo==4.1.0` in particular are the kind of dated, C-extension/version-pinned dependencies that fight modern environments. Because it's unmaintained, any breakage is yours to debug with no upstream help. Running just the *data* (CSVs) or a single sub-pipeline is far cheaper than reviving the end-to-end app.
 
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** README explicitly declares maintenance has stopped. Last pushed 2025-02 (likely housekeeping, not feature work); no releases/tags. **Abandoned by author's own statement** — reference-only. [推断]
+- **Maintenance (2026-10).** README explicitly declares maintenance has stopped. The last commits (2024-07, 2025-02) are all "Update README.md" edits, nothing since (as of 2026-10-08); no releases/tags. **Abandoned by author's own statement** — reference-only. [推断]
 - **Governance / bus factor.** A university (ECNU) course/research project, primarily one student author (qq547276542) with a couple of contributors; bus factor ~1. The ~4.4k stars are **academic popularity on an abandoned repo** — a citation/learning signal, not a maintenance signal; flag accordingly. [推断]
 - **Age & Lindy verdict.** Created 2017-11 (~8 years) but **declared unmaintained** ⇒ age does *not* confer Lindy here; it persists as a referenced artifact, not as living software. [推断]
 - **Adoption.** ~4.4k stars / ~1.6k forks and an associated DASFAA 2019 paper — widely cited and forked as a Chinese-KG blueprint and dataset source. [未验证]
@@ -119,7 +140,7 @@ You reach for it as a **complete, readable blueprint** of a Chinese KG system (a
 
 ## Caveats (unverified)
 
-- [未验证] ~4.4k stars / ~1.6k forks as of 2026-06; counts are date-sensitive and indicative only.
+- [未验证] ~4.4k stars / ~1.6k forks as of 2026-10-08; counts are date-sensitive and indicative only.
 - [未验证] Exact state/regenerability of bundled trained models is not confirmed; some artifacts may require retraining to reproduce the demo.
 - [推断] "Dependencies won't install cleanly on modern Python" is inferred from the pinned old versions (`py2neo==4.1.0`, `pyfasttext==0.4.5`, `Django>=1.11.7`), not from a tested install.
-- [推断] "Last push 2025-02 is housekeeping, not features" is inferred from the README's explicit unmaintained notice plus the gap to feature activity, not from inspecting each commit.
+- [推断] "The demo runs without MongoDB" is read from the README setup steps (only Python 3 + Neo4j listed; MongoDB named for the `/tagging` page), not from a tested run.

@@ -6,8 +6,8 @@ category: python-tooling
 tags: [python, debugging, code-injection, introspection, gdb, diagnostics]
 language: Python
 license: GPL-3.0
-maturity: v2.0 (old), low-cadence maintenance (2026-06)
-last_verified: 2026-06-28
+maturity: v2.0 (2012-05-09), last commit 2025-04-07, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2025-04-07T02:52:38Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:25:21Z
+  computed_at: 2026-10-08T08:25:40Z
   overall: D
   overall_score: 1.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 539
+        last_commit_age_days: 549
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: pyrasite
         dependent_repos_count: 14
-        downloads_last_month: 7825
+        downloads_last_month: 8288
         graph_tier: D
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 5496
-        last_commit_age_days: 539
+        repo_age_days: 5507
+        last_commit_age_days: 549
         cohort: tool
     governance:
       grade: "?"
@@ -79,10 +79,32 @@ You have a long-running Python process in trouble — a daemon that's leaking me
 
 You reach for it specifically when the alternative — kill and restart with more instrumentation — is unacceptable, and when a normal debugger attach isn't enough because you want to *execute code* in the target's context (walk its object graph, call into its modules, snapshot state). For incident-time introspection of a stuck or leaking Python service, it's a sharp, narrow tool.
 
+## How it works
+
+pyrasite does not attach a debugger session you then drive by hand; it borrows **gdb** — the standard debugger, which can attach to any running program the kernel's **ptrace** permission lets it touch — for a few calls and then lets go. It runs `gdb -p <PID>` in batch mode, grabs the **GIL** (the global interpreter lock — the token a CPython thread must hold to run Python code), asks the target's own interpreter to `exec` the file you named, and releases the lock. **The injection plumbing is pyrasite's job; the code that runs is yours**: either a payload it ships (dump all thread stacks, dump object memory usage, force garbage collection, open a reverse shell) or any `.py` file you write, which then executes with full access to the target's modules and objects. Output lands in the target's own stdout/stderr by default; `--output localterm` pipes it back to your terminal. For an interactive session there is `pyrasite-shell <PID>`, which injects a reverse Python shell so you can type at a prompt that runs inside the live process.
+
+![pyrasite — backbone user story](../../assets/flow/pyrasite.svg)
+
+<!-- flow-steps:begin (generated from flows/pyrasite.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install gdb 7.3+ and pyrasite, and allow ptrace on the host — `echo 0 > /proc/sys/kernel/yama/ptrace_scope`
+2. **You**: Pick a bundled payload (thread stacks, memory dump…) or write your own .py file — `pyrasite --list-payloads`
+3. **You**: Run it against the live PID, asking for the output on your own terminal — `--output localterm` — component: `pyrasite CLI`
+4. **pyrasite**: Attaches gdb to the PID and takes the interpreter lock — component: `injector (via gdb)`
+5. **pyrasite**: Makes the target's interpreter exec your file, with full access to its modules and objects
+6. **pyrasite**: Releases the lock and detaches; the process keeps running
+
+**Value**: See inside a stuck or leaking Python process — its thread stacks, its objects — without restarting it or having instrumented it in advance
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **In production without understanding the blast radius.** Injecting code into a live process via gdb can crash it, corrupt state, or trip security controls. This is an incident/diagnostic tool, not routine instrumentation — treat every injection as potentially fatal to the target.
-- **On non-Linux / no-gdb environments.** It relies on **gdb** to attach to the process (Linux-centric); on platforms or hardened hosts where ptrace/gdb attach is restricted (`ptrace_scope`, containers, hardened prod), it simply won't work. [未验证]
+- **Where you can't run gdb or ptrace the target.** It needs **gdb 7.3+** to attach; macOS needs a codesigned gdb, and hosts that restrict ptrace (Ubuntu's `ptrace_scope`, Fedora's `deny_ptrace` SELinux boolean, containers without the ptrace capability, hardened prod) block it. If you can plan ahead, embed **manhole** or a remote pdb in the service instead, so no attach is needed later.
 - **For everyday debugging.** For normal development, `pdb`/`breakpoint()`, `py-spy`, or a profiler are safer and purpose-built. pyrasite is for the case where you can't stop the process.
 - **When you need a maintained, fast-moving tool.** The project is largely **dormant** — last real release (2.0) is many years old; it still gets occasional fixes but is not actively developed. Verify it works against your current Python/gdb before relying on it. [未验证]
 - **For sampling profiling / flame graphs.** If you want low-overhead "where is my Python spending time," **py-spy** reads the target without injecting code and is the modern, safer choice.
@@ -99,10 +121,10 @@ You reach for it specifically when the alternative — kill and restart with mor
 
 ## Tech stack
 
-- **Language:** Python, driving **gdb** to attach to the target process and execute injected payloads inside the running CPython interpreter. [推断]
+- **Language:** Python, driving **gdb** to attach to the target process and execute injected payloads inside the running CPython interpreter (`pyrasite/injector.py`: `PyGILState_Ensure` → `PyRun_SimpleString` → `PyGILState_Release`).
 - **Mechanism:** uses ptrace/gdb to pause the process, call into it, and run the injected code; ships a payload-running harness and a few canned tools (object dumps, thread stacks, reverse shell).
-- **Interfaces:** a CLI (`pyrasite`) plus, historically, a GUI (`pyrasite-gui`) for interactive inspection.
-- **Targets:** CPython processes on Linux where gdb attach is permitted.
+- **Interfaces:** a CLI (`pyrasite <pid> <payload>`), an interactive `pyrasite-shell <pid>`, plus a GUI that lives in the separate `lmacken/pyrasite-gui` repo.
+- **Targets:** CPython processes (README: Python 2.4 and newer, injection works across 2↔3) where gdb attach is permitted — mainly Linux; macOS with a codesigned gdb.
 
 ## Dependencies
 
@@ -117,7 +139,7 @@ You reach for it specifically when the alternative — kill and restart with mor
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Repo last pushed 2025-04 with sporadic merge activity (a few PRs in 2025 and 2023), but the last real release tag (**2.0**) is many years old — best read as **low-cadence / near-dormant maintenance**, coasting rather than abandoned. Not archived. [推断]
+- **Maintenance (2026-10).** Last commit 2025-04-07, nothing since, with sporadic merge activity before that (a few PRs in 2025 and 2023), but the last real release tag (**2.0**) is many years old — best read as **low-cadence / near-dormant maintenance**, coasting rather than abandoned. Not archived. [推断]
 - **Governance / bus factor.** **User**-owned, single-author project (`lmacken`/Luke Macken) with a handful of occasional contributors — a clear single-maintainer bus-factor risk for a tool of this sensitivity. [推断]
 - **Age & Lindy verdict.** Created 2011-09 (~14 years) ⇒ long-lived, but Lindy requires age **× still-active**; here activity is minimal, so the verdict is "venerable but coasting" — it has persisted, but don't read its age as a sign of ongoing investment. [推断]
 - **Adoption.** ~2.9k stars reflect long-standing recognition as *the* Python live-injection tool, but mindshare has shifted toward observe-only tools (py-spy) that don't inject; treat stars as historical, not current momentum. [未验证]
@@ -127,6 +149,6 @@ You reach for it specifically when the alternative — kill and restart with mor
 
 - [未验证] ~2.9k stars, 220 forks, 46 open issues as of 2026-06 — volatile, date-sensitive; here likely reflecting historical popularity more than current activity.
 - [未验证] The newest release tag is 2.0 (old); recent repo activity is occasional PR merges (2025-04, 2023-10) rather than new releases — "near-dormant" is inferred from that cadence, not a maintainer statement.
-- [未验证] gdb/ptrace dependency and Linux-centric attach are inferred from the project's described mechanism; exact requirements (gdb version, `ptrace_scope`, container caps) vary by host and aren't asserted here.
-- [推断] The CLI + historical GUI surface and the canned tools (object dumps, thread stacks, reverse shell) are from the project's documented features, not a current-version audit — verify against the latest code.
+- [未验证] The gdb 7.3+ requirement and the `ptrace_scope` / `deny_ptrace` notes come from the README and `docs/Installing.rst`; the container-capability behavior and whether the Windows injector path in `injector.py` still works were not tested.
+- [推断] The bundled payloads (thread stacks, memory dump, reverse shell) were read from `docs/Payloads.rst`, not run against a current CPython — a payload can break on newer interpreters even if injection works.
 - [未验证] Compatibility with current CPython and gdb versions is unconfirmed given the project's age; test before relying on it in an incident.

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Dagster does", "zh": "Dagster 做的"},
+  "steps": [
+    {"lane": "you", "en": "Scaffold a Dagster project and install it", "zh": "用脚手架生成 Dagster 项目并安装", "code": "uvx create-dagster@latest project dagster-quickstart"},
+    {"lane": "you", "en": "Write each table or model as a decorated function; its parameters name its inputs", "zh": "把每张表或模型写成带装饰器的函数，参数即上游", "code": "@dg.asset"},
+    {"lane": "you", "en": "Start Dagster locally", "zh": "在本地启动 Dagster", "code": "dg dev"},
+    {"lane": "them", "en": "Builds the asset dependency graph and shows its lineage in the UI", "zh": "构建资产依赖图，在界面上展示血缘", "component": {"en": "webserver UI (localhost:3000)", "zh": "界面（localhost:3000）"}},
+    {"lane": "them", "en": "On Materialize or a schedule, runs assets in dependency order and stores outputs", "zh": "点 Materialize 或定时触发时，按依赖顺序运行并保存产出"},
+    {"lane": "them", "en": "Records each materialization with metadata, so stale assets are visible", "zh": "记录每次物化及其元数据，过期的资产一眼可见"}
+  ],
+  "value": {"en": "You can answer which data is stale, what built it and what depends on it, instead of grepping cron logs", "zh": "哪份数据过期了、谁构建的、谁依赖它，都能直接回答，不用翻 cron 日志"},
+  "sources": [
+    "dagster-io/dagster docs/docs/getting-started/quickstart.md (master, retrieved 2026-10-08): uvx create-dagster@latest project dagster-quickstart; dg scaffold defs dagster.asset assets.py; dg dev; http://localhost:3000; Materialize button; dg launch --assets",
+    "README.md (same retrieval): import dagster as dg; @dg.asset functions whose parameters are upstream assets; asset graph in the web UI",
+    "docs/docs/deployment/oss/oss-deployment-architecture.md (same retrieval): webserver, daemon, code location servers; SqliteRunStorage default, PostgresRunStorage; run launcher and executor"
+  ]
+}

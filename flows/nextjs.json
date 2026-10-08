@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Next.js does",
+    "zh": "Next.js 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Scaffold a new app with TypeScript and Tailwind in one command",
+      "zh": "一条命令生成带 TypeScript 和 Tailwind 的新应用",
+      "code": "npx create-next-app@latest my-app --yes"
+    },
+    {
+      "lane": "you",
+      "en": "Add a route by creating a folder with a page file; fetch data right inside it",
+      "zh": "建一个文件夹放一个 page 文件就是一条路由，数据直接在里面取",
+      "code": "app/blog/[slug]/page.tsx"
+    },
+    {
+      "lane": "you",
+      "en": "Mark only the interactive pieces as client components",
+      "zh": "只把需要交互的部分标成客户端组件",
+      "code": "'use client'"
+    },
+    {
+      "lane": "them",
+      "en": "Renders server components on the server, caches or streams the HTML to the browser",
+      "zh": "在服务端渲染服务端组件，把 HTML 缓存或流式发给浏览器",
+      "component": {
+        "en": "App Router + Server Components",
+        "zh": "App Router + 服务端组件"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Bundles per route and ships JavaScript only for the client components",
+      "zh": "按路由打包，只为客户端组件下发 JavaScript",
+      "component": {
+        "en": "Turbopack",
+        "zh": "Turbopack"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Build once and run it on any Node.js host, container or adapter platform",
+      "zh": "构建一次，跑在任何 Node.js 主机、容器或适配平台上",
+      "code": "next build · next start"
+    }
+  ],
+  "value": {
+    "en": "One React codebase that serves fast, indexable HTML and its own backend endpoints — no separate API service or SSR plumbing to build",
+    "zh": "一套 React 代码同时产出能被搜索引擎收录的快速 HTML 和后端接口，不用另搭 API 服务"
+  },
+  "sources": [
+    "https://github.com/vercel/next.js/blob/canary/docs/01-app/01-getting-started/01-installation.mdx (npx create-next-app@latest my-app --yes; default TypeScript, Tailwind, ESLint, App Router, Turbopack)",
+    "https://github.com/vercel/next.js/blob/canary/docs/01-app/01-getting-started/03-layouts-and-pages.mdx (app/blog/[slug]/page.tsx; export default async function Page)",
+    "https://github.com/vercel/next.js/blob/canary/docs/01-app/01-getting-started/05-server-and-client-components.mdx (Server Components by default; 'use client'; RSC Payload streamed)",
+    "https://github.com/vercel/next.js/blob/canary/docs/01-app/01-getting-started/17-deploying.mdx (next build / next start; Node.js server, Docker, static export, adapters)"
+  ]
+}

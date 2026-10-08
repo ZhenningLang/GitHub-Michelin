@@ -7,7 +7,7 @@ tags: [proxy, mitm, http, https, nodejs, debugging, traffic-capture]
 language: JavaScript
 license: Apache-2.0
 maturity: v4.x (npm 4.1.3), master frozen since 2020-06, coasting, ~7.9k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2023-03-06T17:20:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:56:35Z
+  computed_at: 2026-10-08T08:17:19Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2292
+        last_commit_age_days: 2303
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: npmjs.org
         canonical_package: anyproxy
         dependent_repos_count: 238
-        downloads_last_month: 7372
+        downloads_last_month: 9765
         graph_tier: C
         volume_tier: D
         cross_check_divergence: null
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 4430
-        last_commit_age_days: 2292
+        repo_age_days: 4441
+        last_commit_age_days: 2303
         cohort: tool
     governance:
       grade: "?"
@@ -78,6 +78,28 @@ health:
 你是移动或 Web 工程师，在调试一个 app 的网络层，需要*看到并改写*它发出的内容——检视实时 HTTP/HTTPS 流量、mock 一个慢的或坏的后端响应、或者在服务端改动上线前翻转某个请求的 path/header 来测边界情况。你把手机或浏览器指向 AnyProxy、信任它生成的根 CA 以便解密 HTTPS，再打开它的 web UI（默认 8002 端口）看请求流过——它甚至带个二维码助手让手机指向代理。要改流量，你写一个小 JS 规则文件，用 generator/Promise 钩子（`*beforeSendRequest`、`*beforeSendResponse`、`*beforeDealHttpsRequest`）返回修改后的请求/响应细节；你还能限带宽或把会话录进内嵌数据存储。安装是 `npm install -g anyproxy`。
 
 当你特别想要一个*可脚本化*的 Node.js 代理、其规则就是你已熟悉的纯 JavaScript 时（相对 Charles 这类 GUI 工具），它是个合理选择。但先掂量它的陈旧程度（见下）。
+
+## 怎么用起来
+
+AnyProxy 是你故意插在 App 和互联网之间的中间人：把设备的 HTTP 代理设置指向它（默认 8001 端口），每个请求在到达真实服务器之前都会先经过它。对 HTTPS，它扮演“中间人”——给 App 出示每个网站的证书，这些证书由它替你生成的根证书颁发机构（CA）签发，所以只有在你让设备信任这个 CA 之后才行得通；默认情况下 HTTPS 原样透传，直到你打开 `--intercept`，或在规则里逐个请求决定拦不拦。**管道活由它来做**：转发、解密、把每条请求记进 8002 端口的网页界面，需要时还能限速。**行为由你来写**：一个规则模块——普通的 JavaScript 文件，里面的钩子函数（`*beforeSendRequest`、`*beforeSendResponse`）拿到每个请求或响应，返回改过的版本，或者直接返回一个现成的响应，这样真实服务器根本不会被调用。可以把它想成收发室的办事员：每封信都拆开，让你改，留一份底，再送出去。
+
+![anyproxy — 主干用户故事](../../assets/flow/anyproxy.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/anyproxy.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：全局安装，生成根证书并在设备上信任它 — `npm install -g anyproxy · anyproxy-ca`
+2. **你**：写一个规则模块，在钩子里改请求或直接回假响应 — `*beforeSendRequest(requestDetail)`
+3. **你**：带规则启动（解 HTTPS 加 --intercept），代理设为 :8001 — `anyproxy --rule ./rule.js`
+4. **AnyProxy**：用自家 CA 签的证书解开被拦截的 HTTPS，并调用你的钩子
+5. **AnyProxy**：转发改过的请求，或在钩子给了响应时直接回给客户端
+6. **AnyProxy**：在 8002 端口的网页里列出每一条请求和响应
+
+**价值**：不改 App 也不改服务端，几行 JavaScript 就能看清并改写真实流量
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 

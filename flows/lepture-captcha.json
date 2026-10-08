@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "captcha does", "zh": "captcha 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it and build a renderer, ideally with your own fonts (and voice files for audio)", "zh": "安装后建一个渲染器，最好换上自己的字体（音频则换语音文件）", "code": "ImageCaptcha(fonts=['/path/A.ttf', '/path/B.ttf'])"},
+    {"lane": "you", "en": "Pick a random challenge string and keep the answer in your session", "zh": "自己生成随机验证码文本，把答案存进会话"},
+    {"lane": "you", "en": "Ask it to render that string as an image or as audio", "zh": "让它把这串文本渲染成图片或音频", "code": "image.generate('1234') · audio.generate('1234')"},
+    {"lane": "them", "en": "Draws each character with a random font, rotation and warp, then adds noise dots and a curve", "zh": "每个字符随机挑字体、旋转、扭曲，再撒噪点、画干扰线", "component": {"en": "captcha.image", "zh": "captcha.image"}},
+    {"lane": "them", "en": "Returns the PNG (or a noise-mixed WAV) as in-memory bytes and keeps no state", "zh": "把 PNG（或混了噪声的 WAV）以内存字节返回，不留任何状态"},
+    {"lane": "you", "en": "Serve the bytes; on submit, compare the user's input with the stored answer", "zh": "把字节发给页面；提交时拿用户输入和存好的答案比对"}
+  ],
+  "value": {"en": "A self-hosted image/audio CAPTCHA with no third-party call — only Pillow in your own process", "zh": "自托管的图片/音频验证码，不调第三方，只在你自己进程里用 Pillow"},
+  "sources": [
+    "https://github.com/lepture/captcha#usage (pip install captcha, ImageCaptcha(fonts=[...]), AudioCaptcha(voicedir=...), image.generate('1234'), audio.generate('1234'))",
+    "https://github.com/lepture/captcha/blob/main/src/captcha/image.py (_draw_character: random font, rotate, warp; create_noise_dots / create_noise_curve; generate returns BytesIO)",
+    "https://github.com/lepture/captcha/blob/main/src/captcha/audio.py (create_background_noise mixed into the wave body)"
+  ]
+}

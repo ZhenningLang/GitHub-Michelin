@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Chakra UI does", "zh": "Chakra UI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the React package and its Emotion peer", "zh": "安装 React 包和它的 Emotion peer 依赖", "code": "npm i @chakra-ui/react @emotion/react", "component": {"en": "@chakra-ui/react", "zh": "@chakra-ui/react"}},
+    {"lane": "you", "en": "Add the snippets, then wrap your app root in the generated Provider", "zh": "加入片段，再用生成的 Provider 包住应用根部", "code": "npx @chakra-ui/cli snippet add", "component": {"en": "@chakra-ui/cli", "zh": "@chakra-ui/cli"}},
+    {"lane": "them", "en": "The Provider wires up the styling system and color mode for the whole tree", "zh": "Provider 为整棵组件树接好样式系统和明暗模式", "component": {"en": "ChakraProvider + next-themes", "zh": "ChakraProvider+next-themes"}},
+    {"lane": "you", "en": "Compose screens from Chakra components and style props", "zh": "用 Chakra 组件和样式属性拼页面", "code": "import { Button, HStack } from \"@chakra-ui/react\""},
+    {"lane": "them", "en": "Resolves each style prop against theme tokens and generates the CSS at runtime", "zh": "把每个样式属性对到主题令牌上，运行时生成 CSS", "component": {"en": "Emotion styling engine", "zh": "Emotion 样式引擎"}},
+    {"lane": "them", "en": "Gives menus, dialogs and tabs their focus, keyboard and ARIA behavior", "zh": "为菜单、对话框、标签页提供焦点、键盘和 ARIA 行为", "component": {"en": "Ark UI", "zh": "Ark UI"}}
+  ],
+  "value": {"en": "Consistent, accessible, themeable React screens styled inline with props, without writing a stylesheet or focus logic per component", "zh": "用属性就地写样式，得到风格一致、无障碍、可换主题的 React 页面，不用每个组件写样式表和焦点逻辑"},
+  "sources": [
+    "https://github.com/chakra-ui/chakra-ui apps/www/content/docs/get-started/installation.mdx — npm i @chakra-ui/react @emotion/react; npx @chakra-ui/cli snippet add; Provider composes ChakraProvider and next-themes; import { Button, HStack } from \"@chakra-ui/react\"; Styling roadmap (Emotion at runtime, zero-runtime direction inspired by Panda CSS)",
+    "https://github.com/chakra-ui/chakra-ui apps/www/content/docs/styling/overview.mdx — 'All components are designed to be styled using props'; style props are css styles as props",
+    "https://github.com/chakra-ui/chakra-ui packages/react/package.json — peerDependencies @emotion/react, react >=18; dependencies @ark-ui/react, @emotion/*"
+  ]
+}

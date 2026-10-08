@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "pdfplumber does", "zh": "pdfplumber 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it into your Python environment", "zh": "装进 Python 环境", "code": "pip install pdfplumber"},
+    {"lane": "you", "en": "Open the PDF and pick the page that holds your data", "zh": "打开 PDF，选出数据所在的那一页", "code": "pdfplumber.open(\"path/to/file.pdf\")"},
+    {"lane": "them", "en": "Parses the page via pdfminer.six into chars, lines and rects with coordinates", "zh": "借 pdfminer.six 把页面解析成带坐标的字符、线、矩形"},
+    {"lane": "you", "en": "Crop to the table region if needed and ask for the table", "zh": "必要时裁到表格区域，然后要表格", "code": "page.extract_table()"},
+    {"lane": "them", "en": "Finds drawn or text-implied lines, intersects them into cells, groups cells into a table", "zh": "找出画出的或文字暗示的线，求交成单元格，再归成表格"},
+    {"lane": "them", "en": "Returns rows as lists of cell strings", "zh": "按行返回单元格字符串列表"}
+  ],
+  "value": {"en": "Table rows come out of a machine-generated PDF as clean lists you can load into pandas", "zh": "机器生成的 PDF 里的表格，变成能直接装进 pandas 的干净行列表"},
+  "sources": [
+    "https://github.com/jsvine/pdfplumber#installation (pip install pdfplumber)",
+    "https://github.com/jsvine/pdfplumber#python-library (pdfplumber.open, Page objects)",
+    "https://github.com/jsvine/pdfplumber#extracting-tables (table-finding method, extract_table, crop note, strategies)",
+    "https://github.com/jsvine/pdfplumber#visual-debugging (to_image, debug_tablefinder)"
+  ]
+}

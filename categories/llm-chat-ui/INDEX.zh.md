@@ -8,8 +8,8 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **NextChat** | 当你想要一个私有、可自部署、跨 web/桌面/移动 的多 provider AI 聊天前端时用它——不是多用户 RBAC 团队平台。 | B（6/6） | [→](nextchat.zh.md) |
-| **Open WebUI** | 当你想要一个自托管 AI 聊天平台，内置 RAG、支持 Ollama、可完全离线运行时用它——但默认偏单用户。 | B（5/6） | [→](open-webui.zh.md) |
-| **LibreChat** | Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active | B（5/6） | [→](librechat.zh.md) |
+| **Open WebUI** | 当你用 Ollama 跑本地模型，想要一个带账号、分组权限和文档问答的 ChatGPT 式网页界面，甚至完全离线运行时用它——但许可证不是 OSI 认可的，超过 50 个用户的部署未经许可不得换品牌。 | B（5/6） | [→](open-webui.zh.md) |
+| **LibreChat** | 当一个组织想要一套挂在 SSO 后面的自托管聊天应用，让员工在同一个菜单里选 OpenAI、Anthropic、Bedrock、Azure 或本地模型，聊天记录留在自己的数据库里时用它——但必须用 MongoDB，且自 2025 年起归 ClickHouse 所有。 | B（5/6） | [→](librechat.zh.md) |
 
 
 ## 对比矩阵
@@ -17,7 +17,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [NextChat](nextchat.zh.md) | ✅ | B（6/6） | 轻量、跨平台、一键部署的聊天前端；偏单用户，不做 RBAC/配额团队管理。 |
-| [Open WebUI](open-webui.zh.md) | ✅ | B（5/6） | 自托管 AI 聊天平台，内置 RAG 且支持 Ollama；可离线运行，但默认偏单用户。 |
+| [Open WebUI](open-webui.zh.md) | ✅ | B（5/6） | 从本地模型到多人共享聊天工作台的最短路径，代价是带品牌条款的自定义许可、CLA 和创始人主导的路线图。 |
 | [HiveChat](../team-chat/hivechat.zh.md) | ✅ | D（3/6） | 管理员统管的多用户团队聊天，带分组模型权限和 token 配额。 |
 | Lobe Chat | 未收录 | — | 各页对比里点到的其他自托管聊天前端（部分带多用户/RBAC）。 |
 

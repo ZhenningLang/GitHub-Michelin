@@ -6,8 +6,8 @@ category: diagramming
 tags: [flowchart, diagram, svg, dsl, raphael, javascript, browser]
 language: JavaScript
 license: MIT
-maturity: v1.18.0, active, ~8.7k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v1.18.0 (2023-12), last commit 2026-01-15, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2026-01-15T10:51:12Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:00:42Z
+  computed_at: 2026-10-08T08:18:50Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 255
+        last_commit_age_days: 266
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: npmjs.org
         canonical_package: flowchart.js
         dependent_repos_count: 1725
-        downloads_last_month: 149566
+        downloads_last_month: 164142
         graph_tier: B
         volume_tier: C
         cross_check_divergence: 1.0
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 4820
-        last_commit_age_days: 255
+        repo_age_days: 4831
+        last_commit_age_days: 266
         cohort: library
     governance:
       grade: D
@@ -82,6 +82,27 @@ health:
 你是前端开发，要给一个内部文档站或 wiki 加一个“流程”视图，希望用户（或你自己）能把流程图写成纯文本、和正文放在一起——可在 git 里 diff、不用画图工具就能改。你不想嵌入一个笨重的图编辑器，也不想发一个 canvas 应用；你只需要几个判断框和箭头被干净地画出来。你引入 flowchart.js（外加 Raphael.js），写一小段像 `st=>start: Begin` / `op=>operation: Do work` / `cond=>condition: OK?` 加上连线，调 `flowchart.parse(text).drawSVG('diagram')`，库就完成布局并画出 SVG。因为节点和连线是分开定义的，你可以复用节点、用 `flowstate` 修饰符给它们设样式，还能把节点链接到外部 URL。
 
 当图*简单且不多*时它很合适——上手流程、某段脚本的控制流、一个审批流程——而且你看重“文本即事实源”胜过视觉精度或交互性。
+
+## 怎么用起来
+
+flowchart.js 是你在自己页面里调用的两段式流水线。**图由你写成文本**：每个节点一行（`id=>type: label`，type 从一组固定形状里选——start、end、operation、condition、input/output、subroutine、parallel），然后是几行连线（`a->b`、`cond(yes)->c`）。**剩下的它来做**：`flowchart.parse()` 把文本变成节点和边组成的图，`drawSVG()` 排好节点位置，通过 Raphaël 画进你页面上的一个元素里（Raphaël 是一个较老的 JavaScript 库，封装了浏览器的矢量图格式 SVG）。节点定义和连线是分开写的，所以改流程走向只是改箭头，不用重画方框。整个过程不需要服务端——两个 script 标签加一段字符串。
+
+![flowchart-js — 主干用户故事](../../assets/flow/flowchart-js.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/flowchart-js.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在页面里引入 Raphaël 和 flowchart.js，比如走 CDNJS
+2. **你**：把图写成文本：先定义节点，再写连线 — `op1=>operation: My Operation · st->getInfo->op1->cond`
+3. **你**：解析这段文本，画进一个容器元素 — `flowchart.parse(code) · chart.drawSVG('canvas')`
+4. **flowchart.js**：把 DSL 解析成带类型的节点和它们之间的边
+5. **flowchart.js**：排好节点位置，通过 Raphaël 画出 SVG 图形和箭头
+
+**价值**：流程图就是一段能 diff 的文本，跟文档放在一起，不用打开画图工具
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
@@ -120,9 +141,9 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2026-01；最新 tag v1.18.0。仓库仍偶尔发布、**未归档**，但节奏慢，且 open issue 数（约 104）相对活跃度偏多——算“维护但缓慢”。[推断]
+- **维护（2026-10）。** 最近一次代码发布是 v1.18.0（2023-12-08）；之后的两次提交（2025-04、2026-01-15）都是“update site”，雷达的维护轴能保持 B 靠的就是它们。仓库**未归档**，但库本身**自 2023 年起就在吃老本**，open issue 数（约 104）相对活跃度也偏多。[推断]
 - **治理 / bus factor。** **单一维护者**项目（adrai），外加贡献者长尾；bus factor 实际为一。约 8.7k star 是有力的采用证明，但不保证持续支持。[推断]
-- **年龄与 Lindy 判断。** 2013-07 创建，约 13 年且仍偶有更新——**强 Lindy** 信号：它远比多数同代项目活得久，仍是一个小而稳定的工具。这里的年龄是真正的加分项。[推断]
+- **年龄与 Lindy 判断。** 2013-07 创建，约 13 年，至今仍被安装和托管（未归档，文档站 2026 年还在更新）——**强 Lindy** 信号：它远比多数同代项目活得久，仍是一个小而稳定的工具。这里的年龄是真正的加分项。[推断]
 - **采用度。** 在文档站和教程里广泛嵌入（约 8.7k star、约 1.2k fork）；即便 Mermaid 主导了更大的品类，这个轻量、文本为先的小生态仍让它保持相关性。[未验证]
 - **风险标记。** MIT（干净）。主要标记：单一维护者 + 慢节奏，以及对 Raphael.js（一个老化的 SVG 库）的传递依赖——都是寿命层面的考量，而非即时阻断项。[推断]
 
@@ -130,6 +151,6 @@ health:
 
 - [未验证] 截至 2026-06 约 8.7k star / 约 1.2k fork、版本 v1.18.0；计数对时间敏感——仅供参考。
 - [推断] “Raphael.js 实际处于维护模式”是对一个传递依赖的推断，而非已核实的上游状态——若你看重寿命，请核查 Raphael 当前状况。
-- [推断] “维护但缓慢”是从提交近况和 open issue 积压推断的，而非来自声明的支持政策。
+- [推断] “自 2023 年起吃老本”是从 tag 日期和 v1.18.0 之后的提交说明（全是“update site”）推断的，而非来自声明的支持政策。
 - [未验证] 节点类型数（约 9）与 3 条并行路径上限取自 README——请对照当前语法文档核实。
 - [未验证] 对比行（Mermaid、Graphviz、PlantUML）描述的是来自公开认知的一般能力，而非对 flowchart.js 的逐特性实测。

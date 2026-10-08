@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "RustDesk does", "zh": "RustDesk 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run the ID server and the relay on a public host and open their ports", "zh": "在有公网地址的主机上跑起 ID 服务器和中继，开放端口", "code": "rustdesk/rustdesk-server hbbs · rustdesk/rustdesk-server hbbr"},
+    {"lane": "them", "en": "On first start, hbbs generates the server key pair", "zh": "hbbs 首次启动时生成服务器密钥对", "code": "id_ed25519.pub", "component": {"en": "hbbs (ID / rendezvous)", "zh": "hbbs（ID 与会合服务）"}},
+    {"lane": "you", "en": "In each client's Settings → Network, enter your ID server and that public key", "zh": "在每台客户端的设置 → 网络里填上你的 ID 服务器和这把公钥"},
+    {"lane": "them", "en": "Every client registers its ID with your server and keeps a heartbeat", "zh": "每台客户端向你的服务器登记 ID 并保持心跳", "component": {"en": "hbbs (ID / rendezvous)", "zh": "hbbs（ID 与会合服务）"}},
+    {"lane": "you", "en": "Type the remote machine's ID and password", "zh": "输入远端机器的 ID 和密码"},
+    {"lane": "them", "en": "Brokers a direct hole-punched link, else relays it; streams encrypted screen and input", "zh": "撮合一条打洞直连，打不通就走中继；加密传输画面和键鼠"}
+  ],
+  "value": {"en": "Remote control across NATs where the broker and the relay are your own servers, not a vendor's cloud", "zh": "跨 NAT 远程控制，撮合和中继都在你自己的服务器上，不经厂商的云"},
+  "sources": [
+    "https://rustdesk.com/docs/en/self-host/rustdesk-server-oss/docker/ (docker run ... rustdesk/rustdesk-server hbbs / hbbr; ports 21115-21119, 21116 TCP+UDP)",
+    "https://rustdesk.com/docs/en/self-host/rustdesk-server-oss/ (hbbs = ID, rendezvous and signaling; hbbr = relay when direct P2P is not possible)",
+    "https://rustdesk.com/docs/en/self-host/client-configuration/ (Settings → Network: ID, Relay, API, Key; key generated on first run of hbbs in id_ed25519.pub)",
+    "https://github.com/rustdesk/rustdesk#readme (use the public rendezvous/relay server or set up your own)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Keycloak does", "zh": "Keycloak 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a Keycloak server (dev mode to try it; a real database for production)", "zh": "启动 Keycloak 服务（试用用开发模式，生产要接真正的数据库）", "code": "docker run quay.io/keycloak/keycloak start-dev"},
+    {"lane": "you", "en": "In the admin console, create a realm and its users, or connect LDAP / Active Directory", "zh": "在管理控制台建 realm 和用户，或接入 LDAP、AD", "code": "http://localhost:8080/admin"},
+    {"lane": "you", "en": "Register each app as an OpenID Connect client with its redirect URIs", "zh": "把每个应用注册成 OpenID Connect 客户端，填好回调地址", "code": "Valid redirect URIs"},
+    {"lane": "them", "en": "Users hitting the app are sent to Keycloak's login page; it checks password, 2FA or an external IdP", "zh": "用户被转到 Keycloak 登录页，由它校验密码、二次验证或外部身份源", "component": {"en": "login flows + SSO session", "zh": "登录流程与单点登录会话"}},
+    {"lane": "them", "en": "Redirects back to the app with signed tokens carrying identity and roles", "zh": "带着签名令牌跳回应用，令牌里有身份和角色"},
+    {"lane": "you", "en": "The app verifies the token with a standard OIDC library and reads the roles", "zh": "应用用标准 OIDC 库校验令牌，读出角色"}
+  ],
+  "value": {"en": "One login, one place to disable an account or require 2FA — apps stop storing passwords", "zh": "一次登录，一个地方停用账号或强制二次验证——各应用不再自己存密码"},
+  "sources": [
+    "https://github.com/keycloak/keycloak#getting-started (docker run quay.io/keycloak/keycloak start-dev)",
+    "https://github.com/keycloak/keycloak/blob/main/docs/guides/getting-started/getting-started-docker.adoc (Admin Console at http://localhost:8080/admin)",
+    "https://github.com/keycloak/keycloak/blob/main/docs/guides/getting-started/templates/realm-config.adoc (create realm, create user)",
+    "https://github.com/keycloak/keycloak/blob/main/docs/guides/getting-started/templates/first-app.adoc (create OpenID Connect client, Valid redirect URIs, sign in via Keycloak)"
+  ]
+}

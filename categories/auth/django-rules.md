@@ -7,7 +7,7 @@ tags: [django, authorization, permissions, object-level-permissions, rbac, predi
 language: Python
 license: MIT
 maturity: v3.x, active (2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-10-11T06:42:08Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:49:46Z
+  computed_at: 2026-10-08T08:16:04Z
   overall: B
   overall_score: 3.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 351
+        last_commit_age_days: 362
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,16 +41,16 @@ health:
         registry: pypi.org
         canonical_package: rules
         dependent_repos_count: 487
-        downloads_last_month: 465827
+        downloads_last_month: 466047
         graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.0
+        cross_check_divergence: null
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 4588
-        last_commit_age_days: 351
+        repo_age_days: 4598
+        last_commit_age_days: 362
         cohort: library
     governance:
       grade: "?"
@@ -78,6 +78,27 @@ A tiny Django app that provides **object-level permissions without a database** 
 You're building a Django app where "can this user do this?" depends on the *object*, not just a global role — the author can edit their own post, a project member can see a project, a manager can approve their team's requests. Django's built-in permissions are model-level and DB-backed; per-object checks usually mean either ad-hoc `if` logic scattered through views or a heavyweight DB-row permission system like `django-guardian`. With django-rules you instead write small predicate functions (`is_author`, `is_project_member`) and compose them with `&`, `|`, `~` into rules, then register them against permission names. Now `user.has_perm('posts.change_post', post)` evaluates your logic on the fly, with no permission rows to store or sync, and the same rules drive `@permission_required` decorators, the `{% has_perm %}` template tag, and DRF permission classes.
 
 You reach for it when your authorization is *logic*, not *data* — rules derived from relationships and object state rather than rows an admin toggles. It's also usable as a standalone rule-engine outside Django, since the predicate core doesn't depend on the framework. It shines for keeping authorization declarative, testable, and out of your view bodies.
+
+## How it works
+
+django-rules plugs into the spot where Django already asks permission questions. Django's `user.has_perm(name, obj)` polls each *authentication backend* — a class Django consults for login and permission checks — in turn; django-rules ships one that answers by running code instead of reading permission rows. **You write the predicates** — plain functions taking `(user, obj)` and returning True or False, like `is_book_author` — combine them with `&`, `|`, `~`, and bind the result to a permission name such as `books.change_book`. **The library does the rest**: the lookup by name, short-circuit evaluation (an `|` stops at the first True), and the view decorator, class-based-view mixins, template tag and DRF classes that all funnel into that same `has_perm` call. Think of it as replacing a guest list with a bouncer who follows written rules: nothing is stored about who may enter; the answer is worked out at the door each time. One sharp edge from the README: `has_perm` on a superuser always returns True, so your rules never run for superusers.
+
+![django-rules — backbone user story](../../assets/flow/django-rules.svg)
+
+<!-- flow-steps:begin (generated from flows/django-rules.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it and add its object-permission backend ahead of Django's ModelBackend — `rules.permissions.ObjectPermissionBackend` — component: `auth backend`
+2. **You**: Write predicates and bind their combination to a permission name — `rules.add_perm('books.change_book', is_book_author | is_editor)`
+3. **You**: Guard a view or template with that permission name and the object — `@permission_required · {% has_perm %}`
+4. **django-rules**: On each check, Django asks its backend, which looks up the rule for that name
+5. **django-rules**: Runs the predicates on user and object, short-circuiting, and returns allow or deny
+
+**Value**: Per-object authorization lives in named, testable functions — no permission rows to store or sync
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 

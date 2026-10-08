@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Gaia does", "zh": "Gaia 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start the Gaia server (all language toolchains bundled in the image)", "zh": "启动 Gaia 服务（镜像里带齐各语言编译器）", "code": "docker run -d -p 8080:8080 -v $PWD:/data gaiapipeline/gaia:latest"},
+    {"lane": "you", "en": "Write pipeline jobs as plain functions and serve them through the SDK", "zh": "把流水线任务写成普通函数，交给 SDK 暴露出去", "code": "sdk.Serve(jobs)", "component": {"en": "language SDK (gRPC plugin side)", "zh": "各语言 SDK（gRPC 插件端）"}},
+    {"lane": "you", "en": "Push the code to a git repo and register it in the Gaia UI", "zh": "把代码推到 git 仓库，在 Gaia 网页里登记"},
+    {"lane": "them", "en": "Clones the repo, compiles the pipeline to a binary, rebuilds on push", "zh": "克隆仓库，把流水线编译成二进制，有新提交就重编"},
+    {"lane": "them", "en": "Runs the binary as a plugin over gRPC, calling jobs in dependency order", "zh": "以插件方式经 gRPC 运行它，按依赖顺序调用各任务", "component": {"en": "HashiCorp go-plugin", "zh": "HashiCorp go-plugin"}},
+    {"lane": "them", "en": "Streams each job's logs and result status back to the UI", "zh": "把每个任务的日志和结果状态回传到网页"}
+  ],
+  "value": {"en": "Pipeline logic lives in real code in your own language instead of YAML", "zh": "流水线逻辑写成你自己语言的真代码，而不是 YAML"},
+  "sources": [
+    "https://github.com/gaia-pipeline/gaia#readme (Using docker: docker run -d -p 8080:8080 -v $PWD:/data gaiapipeline/gaia:latest; How does it work: go-plugin over gRPC, clones repo and builds pipeline, rebuild on git push, logs returned; Example Pipelines: sdk.Serve(jobs) in the Go SDK; DependsOn for job order)"
+  ]
+}

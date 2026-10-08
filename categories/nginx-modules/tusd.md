@@ -6,20 +6,20 @@ category: nginx-modules
 tags: [upload, resumable-upload, tus-protocol, go, server, file-transfer, http, chunking]
 language: Go
 license: MIT
-maturity: v2.6.x, active, ~6k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v2.10.1 (2026-09-16), maintained, ~3.9k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-07-01T07:36:56Z
+  pushed_at: 2026-10-07T07:18:00Z
   default_branch: main
-  default_branch_sha: ad7fb31344e0629cb8a5af67bb1e630f90507890
+  default_branch_sha: 78cc2291823e171b20d915570e3b68f554eab908
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:44:41Z
+  computed_at: 2026-10-08T08:23:47Z
   overall: B
-  overall_score: 3.33
-  scored_axes: 6
+  overall_score: 3.2
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,32 +29,32 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 6
-        active_weeks_13: 5
+        last_commit_age_days: 1
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 117.7
-        qualifying_issues: 4
-        band: relaxed_solo
-        window_offset_days: 7
-        source: pr
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: B
       raw:
-        registry: null
-        canonical_package: null
-        release_downloads: 1101835
+        registry: proxy.golang.org
+        canonical_package: github.com/tus/tusd
+        dependent_repos_count: 120
+        downloads_last_month: null
+        graph_tier: C
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 1121404
         release_assets: 1081
         release_tier: B
         signal_basis: releases
+        tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4938
-        last_commit_age_days: 6
+        repo_age_days: 4953
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: C
@@ -71,72 +71,98 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # tusd
 
-The official reference server for the **tus** resumable upload protocol — a high-performance Go binary that receives large file uploads over HTTP, supports resuming from any byte offset, and streams them to local disk or cloud storage (S3, GCS, Azure, Alibaba Cloud, R2) without your application ever buffering the raw bytes.
-
-
+A user's 4 GB video upload dies at 97% when the train enters a tunnel, and your multipart form handler makes them start again from zero. tusd is a standalone upload server that remembers how many bytes of each upload it already has, so any tus client can resume from exactly that point, while the bytes stream straight into disk or S3/GCS/Azure instead of through your app.
 
 ![tusd — health radar](../../assets/health/tusd.svg)
 
 ## When to use
 
-You're building a web or mobile app where users upload large files — videos, high-res images, backups — and the upload frequently fails due to spotty Wi-Fi, mobile network handoffs, or users killing the app mid-transfer. You need a robust, protocol-based solution so that when a transfer breaks, the client can resume exactly where it left off instead of restarting from byte zero. You deploy tusd as a standalone HTTP server (or embed it as a Go library), point your client at its `/files/` endpoint, and configure the backend you want — local disk for staging, or S3/GCS for permanent storage. The tus protocol is supported by client libraries in JavaScript, Java, Python, Go, and more, so your front-end team plugs in `tus-js-client` or Uppy and gets resumable uploads with retry logic for free. It fits when you want the resumable-upload behavior without implementing the protocol state machine yourself.
+You're building a web or mobile app where users upload large files — videos, raw photos, backups — and uploads keep failing on spotty Wi-Fi, mobile network handoffs, or users closing the app mid-transfer. Your support inbox has "it got to 95% and started over" tickets, and your app servers spend their worker slots holding slow upload connections open. You want a protocol, not a homemade chunking scheme, so that when a transfer breaks the client asks the server "how much do you have?" and continues from there. You run tusd as its own HTTP service (or embed its handler in a Go service), point the front end's `tus-js-client` or Uppy at its `/files/` endpoint, and send the bytes to local disk or a bucket. Your application only hears about uploads through hooks — a `pre-create` call to authorize, a `post-finish` call when the file is complete.
+
+Pick tusd over S3 presigned multipart uploads when you want one open protocol across web, iOS, Android and CLI clients and storage you can switch, rather than client code tied to one cloud's API; pick it over a framework upload handler when files are big enough that resumability and keeping slow connections off your app servers matter.
+
+## How it works
+
+tus is an open HTTP protocol for resumable uploads: the client first `POST`s to create an upload and gets back a URL for it, then sends the bytes with `PATCH` requests; if the connection drops, it sends a `HEAD` to learn the current offset (how many bytes the server already has) and continues from there. **tusd implements the server side of that protocol for you** — it creates upload resources, streams incoming bytes into the storage backend you configured, keeps each upload's state in a JSON `.info` file or object next to the data, and holds a per-upload lock so two overlapping requests for the same upload cannot corrupt it. **You choose** the storage backend with CLI flags, put it behind your reverse proxy, and connect your application through hooks: small programs, HTTP endpoints, gRPC services or Go plugins that tusd calls at points such as `pre-create` (accept or reject an upload) and `post-finish` (hand the finished file to your pipeline). It is like a coat check that keeps a ticket for every partial delivery: the courier can leave and return, show the ticket, and keep adding to the same pile.
+
+![tusd — backbone user story](../../assets/flow/tusd.svg)
+
+<!-- flow-steps:begin (generated from flows/tusd.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Start the tusd binary and tell it where uploads land: a local directory or a bucket — `tusd -upload-dir=./data · tusd -s3-bucket=my-test-bucket.com`
+2. **You**: Point any tus client at its upload creation URL — `endpoint: 'http://localhost:8080/files/'`
+3. **tusd**: Creates an upload resource and returns its own URL to the client
+4. **tusd**: Streams each chunk into storage, keeping the upload's state in a .info record beside the data — component: `filestore / s3store`
+5. **tusd**: After a dropped connection, answers the client's HEAD with the bytes it holds, so the upload resumes there
+
+**Value**: A 4 GB upload that dies at 3.9 GB continues from 3.9 GB, and the bytes never pass through your application server
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **Simple, small-file uploads on reliable networks.** If your uploads are under a few MB and happen on stable corporate LANs, the complexity of a dedicated resumable-upload server is overkill — a standard multipart form POST handled by your framework is simpler and has fewer moving parts.
-- **You can go direct-to-object-storage.** If your clients can upload straight to S3/GCS via presigned URLs, you bypass tusd entirely and save the infrastructure hop. Modern SDKs handle retry and multipart upload for you; tusd adds value when you need the open protocol and cross-client compatibility.
-- **You're not running Go or HTTP.** tusd is a Go server; while it exposes a plain HTTP protocol, if your stack is deeply gRPC or WebSocket-native and you don't want an HTTP upload tier, this is friction.
-- **You need real-time collaboration on uploads.** tusd handles single-client resumable streams; it is not a real-time sync or multi-participant upload service. For collaborative upload scenarios, look elsewhere.
-- **No ops bandwidth for another service.** Even as a single binary, tusd is a separate service to deploy, monitor, secure, and upgrade. If your team is already stretched and uploads are not a core pain point, the added infrastructure may not justify the benefit.
-- **You need NGINX module-level integration.** tusd is a standalone HTTP server, not an NGINX module. It typically sits behind NGINX as a reverse proxy, but the bytes still traverse your infrastructure stack. If you need NGINX itself to handle the upload stream directly (e.g., to avoid proxy buffering), this is not that tool.
+- **Small files on reliable networks.** If uploads are a few MB over stable connections, a standard multipart form POST handled by your framework is simpler — no extra service, no hooks to wire up.
+- **Your clients can upload straight to the bucket.** If every client can use S3/GCS presigned URLs and the cloud SDK's multipart upload, the bytes skip your infrastructure entirely; use that instead of adding a tusd hop. tusd earns its place when you need one protocol across many client platforms or storage you can swap.
+- **You plan to scale out across several instances without sticky routing.** tusd's locks are either PID files on local disk or in-process mutexes (the default for S3/GCS/Azure), and the docs state there is no built-in distributed lock yet. Behind a round-robin load balancer, a client's resume can hit another instance while the first is still writing, risking corrupted uploads. Use sticky sessions, the separately maintained `tusd-etcd3-locker`, or embed the handler in a Go service where you supply your own locker.
+- **You need one server writing to different backends per tenant or file size.** The tusd binary loads one storage backend at startup and cannot switch dynamically; route between backends by embedding `github.com/tus/tusd/v2/pkg/handler` in your own Go service with several handlers, or run several tusd instances.
+- **You need NGINX itself to take the upload at the edge.** tusd is a standalone HTTP server, not an NGINX module; it sits behind NGINX as a proxy target (with request buffering off). If the requirement is that NGINX writes the body to disk without another service, use [nginx-upload-module](nginx-upload-module.md) — at the cost of resumability.
+- **Your stack has no Go and you want the upload server inside your Node app.** tus also maintains `@tus/server` (tus-node-server), which mounts into Express/Fastify/Next.js; use it rather than operating a separate Go binary.
+- **No ops bandwidth for another service.** Even as a single binary, tusd needs deploying, TLS, monitoring (it exposes `/metrics`), cleanup of abandoned uploads, and upgrades.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [nginx-upload-module](nginx-upload-module.md) | ✅ | Choose nginx-upload-module when NGINX itself must stream multipart uploads to disk at the edge. | No separate service, but it is a low-activity third-party C module with less resumable-upload depth than full tus. |
-| NGINX `client_body_*` buffering + app handling | 未收录 | Choose built-in NGINX buffering when first-party, no-module handling is enough. | Simpler, but your app still processes uploads and you build resumability yourself. |
-| Direct-to-S3 presigned uploads | 未收录 | Choose direct-to-S3 when bypassing your servers for the bytes is more valuable than an open resumable protocol. | Best scalability, but ties client logic to object storage rather than a cross-vendor tus server. |
-| Application framework upload handling (Django/Rails/Express) | 未收录 | Choose framework upload handling when uploads are small, rare, and ops bandwidth is the binding constraint. | Zero infra beyond your app, but slow clients and retries land on the app server. |
-| tus JavaScript client (tus-js-client) | 未收录 | This is the *client* companion, not a server alternative. You use tus-js-client in the browser to talk to tusd. | A client library, not a substitute. It pairs with tusd (or any tus server). |
-| Uppy | 未收录 | Choose Uppy when the missing piece is the browser upload UI, not the resumable upload server. | Polished widget with many plugins; often pairs with tusd, but is not a server replacement. |
-| Resumable.js | 未收录 | Choose Resumable.js when an older, simpler resumable upload library and legacy browser support are enough. | Older library, not a protocol reference implementation, with a less active ecosystem than tus. |
+| [nginx-upload-module](nginx-upload-module.md) | ✅ | When NGINX itself must stream multipart uploads to disk with no extra service, pick nginx-upload-module; when interrupted uploads must resume, pick tusd. | No separate service, but a low-activity third-party C module without the tus resume protocol. |
+| tus-node-server (`@tus/server`) | not indexed | When your backend is Node.js and you want the tus server mounted inside it, pick tus-node-server; pick tusd for a standalone binary independent of your app's language. | Same protocol and store types from the same organization, but runs in your Node process instead of beside it. |
+| Direct-to-S3 presigned (multipart) uploads | not indexed | When all clients can talk to one cloud's object storage, pick presigned uploads and skip the server hop; pick tusd when you need a vendor-neutral protocol across many client platforms. | Best scalability and no upload tier to run, but client code is tied to one provider's multipart API. |
+| Framework upload handling (Django/Rails/Express) | not indexed | When uploads are small and rare and ops time is the binding constraint, keep them in the framework; pick tusd once large files and flaky networks make restarts costly. | Zero extra infrastructure, but slow clients occupy app workers and a failed upload restarts from zero. |
+| Uppy | not indexed | When the missing piece is the browser upload UI, add Uppy — it is a client and usually pairs with tusd rather than replacing it. | Polished widget with a tus plugin, but no server: it still needs tusd or another tus server behind it. |
+| Resumable.js | not indexed | When a legacy app already uses Resumable.js chunking, keep it; for new work pick tusd, because tus is an open protocol with maintained clients on many platforms. | A simple browser-side chunking library, but its server half is yours to write and it has no cross-platform protocol. |
 
 ## Tech stack
 
-- **Language:** Go — compiles to a single static binary.
-- **Protocol:** tus resumable upload protocol over HTTP/1.1 and HTTP/2 (PATCH, HEAD, OPTIONS for upload control).
-- **Storage backends:** local disk, Amazon S3, Google Cloud Storage, Azure Blob Storage, Alibaba Cloud OSS, Cloudflare R2.
-- **Hooks:** emits events (pre-create, post-create, pre-finish, post-finish, pre-terminate, post-terminate) to external HTTP endpoints or Go functions so you can validate, transform, or trigger workflows.
-- **Go library:** can be imported as a package (`github.com/tus/tusd/v2/pkg/handler`) to embed the protocol into your own Go service.
+- **Language:** Go — ships as a single static binary and as Docker image `tusproject/tusd`.
+- **Protocol:** tus resumable upload protocol 1.0.0 over HTTP/1.1 and HTTP/2 (`POST` to create, `PATCH` to append, `HEAD` for the offset, `DELETE` to terminate); extensions creation, creation-with-upload, termination, concatenation, creation-defer-length.
+- **Storage backends:** local disk (`filestore`), Amazon S3 and S3-compatible stores via `-s3-endpoint` (e.g. MinIO), Google Cloud Storage, Azure Blob Storage.
+- **Locking:** `filelocker` (PID files) or `memorylocker` (in-process).
+- **Hooks:** `pre-create`, `post-create`, `post-receive`, `pre-finish`, `post-finish`, `pre-terminate`, `post-terminate`, delivered as executable files (`-hooks-dir`), HTTP(S) (`-hooks-http`, 15 s timeout and 3 retries by default), gRPC (`-hooks-grpc`) or Go plugins.
+- **Embedding:** `github.com/tus/tusd/v2/pkg/handler` plus the store and locker packages; Prometheus metrics at `/metrics`.
 
 ## Dependencies
 
-- **A place to run the binary** — tusd is a single Go binary; run it as a container, systemd service, or k8s deployment.
-- **A storage backend** — local disk (with a `data/` directory) or credentials for S3/GCS/Azure/etc.
-- **A reverse proxy** (optional but typical) — NGINX, Traefik, or Caddy in front for TLS termination and path routing.
-- **No external database** — tusd stores upload state in the storage backend itself (e.g., S3 multipart info or local `.info` files). [未验证]
+- **A place to run the binary** — a container, systemd service or Kubernetes deployment; Go is only needed if you embed or build it.
+- **A storage backend** — a local directory (default `./data`) or bucket credentials for S3/S3-compatible, GCS or Azure.
+- **No database** — upload state lives in the `.info` file/object beside each upload's data in the storage backend.
+- **Typically a reverse proxy** — NGINX, Traefik or Caddy for TLS and routing, configured not to buffer request bodies.
+- **Your hook receiver** — if you want authorization or post-processing, an endpoint or script that tusd calls.
 
 ## Ops difficulty
 
-**Low to medium.** As a single Go binary, deployment is straightforward: one container, one port, one config file. The operational surface is in three places. First, **storage backend credentials and permissions**: getting IAM policies right for S3 multipart uploads and abort rules is the part that takes the most time. Second, **hook reliability**: if you configure webhooks for upload validation, a slow or failing hook endpoint stalls the upload — you need timeouts and circuit-breakers. Third, **reverse proxy tuning**: if NGINX sits in front, you must ensure `client_max_body_size` and proxy timeouts are generous enough for large chunked uploads. Once configured, it runs quietly with minimal memory and CPU.
+**Low to medium.** One binary, one port, flags instead of a config file. The work sits in four places. **Storage permissions:** getting the S3 IAM policy right for multipart uploads, and a lifecycle rule for abandoned multipart parts. **Hooks:** `pre-create` and `pre-finish` block the upload, so a slow hook endpoint stalls clients — tune `-hooks-http-timeout` and retries. **Reverse proxy:** start tusd with `-behind-proxy`, turn off the proxy's request buffering, and raise body-size limits and timeouts for long `PATCH` requests. **Scaling and cleanup:** more than one instance needs sticky routing or an external locker, and finished uploads' `.info` files are not deleted automatically, so cleanup of old and abandoned uploads is yours. Once configured, it runs quietly.
 
 ## Health & viability
 
-- **Maintenance (2026-07) — active.** Regular releases through v2.6.x, active issue triage, and ongoing feature work. The project is the reference implementation of the tus protocol and is maintained by the same team that stewards the protocol. [推断]
-- **Governance / bus factor.** Maintained by the `tus` GitHub organization (Transloadit-backed), not a single individual. The protocol has a community of implementers across multiple languages, so the server is not a one-off. [推断]
-- **Age × Lindy.** The tus protocol and tusd have been in production use for roughly a decade (first commit ~2013). A long-lived, still-active project with a stable protocol is a strong Lindy signal. [推断]
-- **Adoption.** ~6k stars, used in production by many file-transfer and media pipelines. The protocol is supported by major client libraries (Uppy, tus-js-client, tus-java-client, etc.) and storage backends. [推断]
-- **Risk flags.** MIT license with no relicense history. No open-core feature gating observed. The principal risk is not project abandonment but rather architectural fit — adding a dedicated upload tier is a commitment. [推断]
+- **Maintenance (2026-10) — steady, fix-driven (grade B).** v2.10.1 shipped 2026-09-16 after v2.10.0 (2026-06-16) and v2.9.x (February–March 2026); before that came a ten-month gap after v2.8.0 (April 2025). Commits landed in 3 of the last 13 weeks, about half of them dependency bumps. It is in maintenance mode around a stable protocol rather than feature growth.
+- **Responsiveness — not scorable this run.** The scorer found no qualifying recent issue/PR window (the previous run graded it A on a small PR sample); 85 open issues as of 2026-10-08.
+- **Governance / bus factor (grade C).** 12 people committed in the last 12 months, but one maintainer (Acconut) wrote ~66% of those commits and the top three ~80%. The repo belongs to the `tus` organization, which also runs the protocol spec and client libraries, but day-to-day stewardship rests largely on one person.
+- **Backing & longevity (grade A).** Created March 2013 (~13.5 years) and still releasing — a strong Lindy prior — with a protocol at 1.0.0 that several independent servers and clients implement, so even a slowdown here would not strand your clients.
+- **Adoption (grade B).** 120 dependent Go modules and ~1.1M release-asset downloads; Uppy and tus-js-client are its usual front ends.
+- **Risk flags.** MIT, no relicense history, no open-core gating found.
 
 ## Caveats (unverified)
 
-- [未验证] ~6k stars / exact open issue count as of 2026-07 — volatile, re-check.
-- [未验证] Storage backends beyond S3 and GCS (Azure, Alibaba, R2) are documented but their exact current stability and feature parity not verified against the code here.
-- [未验证] Hook/event system behavior and exact configuration surface from v2.6.x not verified against running code.
-- [未验证] The claim that tusd stores state without an external database is from the documentation; exact behavior for all backends not verified.
-- [推断] "Active maintenance" and "Transloadit-backed" are inferred from GitHub activity and org ownership, not a stated corporate guarantee.
+- [未验证] ~3.9k stars / 555 forks / 85 open issues as of 2026-10-08 — volatile.
+- [推断] Transloadit's backing is inferred from the tus project's history and its maintainers' affiliations, not from a written commitment in the repo.
+- [推断] "Maintenance mode around a stable protocol" is a reading of the 2025–2026 release notes (mostly fixes, few features) and the dependabot share of recent commits.
+- [未验证] `tusd-etcd3-locker` is linked from tusd's docs as a distributed-lock option; its maintenance state and compatibility with tusd v2 were not checked.
+- [未验证] Azure and GCS backends are documented; their feature parity with the S3 backend was not verified against code.

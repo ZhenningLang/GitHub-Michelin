@@ -6,17 +6,17 @@ category: ops-infra
 tags: [password-manager, bitwarden, self-hosted, rust, security, 2fa]
 language: Rust
 license: AGPL-3.0
-maturity: active, ~63k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: 1.37.4 (2026-10-05), active, ~68.7k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: tool
 upstream:
-  pushed_at: 2026-06-05T19:52:52Z
+  pushed_at: 2026-10-07T21:41:03Z
   default_branch: main
-  default_branch_sha: d6a3d539ed13352085ca7dfa63c49017d86c419b
+  default_branch_sha: df2cd3c8693782eeedfd1f70318f6f14033213a8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:14:32Z
+  computed_at: 2026-10-08T08:18:48Z
   overall: B
   overall_score: 3.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 4
-        active_weeks_13: 9
+        last_commit_age_days: 1
+        active_weeks_13: 10
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 0.5
-        qualifying_issues: 29
+        median_ttfr_hours: 0.7
+        qualifying_issues: 25
         band: relaxed_solo
         window_offset_days: 7
         source: issue
@@ -47,7 +47,7 @@ health:
         registry: crates.io
         canonical_package: vaultwarden
         dependent_repos_count: 0
-        downloads_last_month: 2832
+        downloads_last_month: 2839
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
@@ -55,15 +55,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3139
-        last_commit_age_days: 4
+        repo_age_days: 3154
+        last_commit_age_days: 1
         cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 14
-        top1_share: 0.353
-        top3_share: 0.705
+        active_maintainers_12mo: 26
+        top1_share: 0.303
+        top3_share: 0.63
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -77,64 +77,88 @@ health:
 
 # Vaultwarden
 
-An unofficial Bitwarden-compatible server written in Rust, designed for self-hosted deployment where the official resource-heavy service might not be ideal.
+You want your family or small team on Bitwarden's apps, but with the vault on your own server — and the official self-hosted Bitwarden is a stack of .NET containers plus a SQL Server database, too heavy for a Raspberry Pi or a $5 VPS, with org features behind a paid licence. Vaultwarden reimplements the server side of Bitwarden as one small Rust process with SQLite, and the official apps sync against it unchanged.
 
 ![Vaultwarden — health radar](../../../assets/health/vaultwarden.svg)
 
 ## When to use
 
-You're a privacy-conscious individual or small team who needs a password manager but doesn't want to trust your credentials to a cloud service you don't control. You pick Vaultwarden over the official Bitwarden cloud because you need to run the backend on your own hardware, behind your own firewall, with full control over the data — and the official server's Microsoft SQL Server and .NET stack are too heavy for your homelab or small VPS. You pick it over KeePassXC because you want the convenience of official Bitwarden clients (desktop, mobile, browser extensions) with native sync, a web vault, and mobile apps — not a local-only database file. You pick it over Passbolt because you need a full-featured personal and family password manager, not just a team-focused sharing tool. You install Vaultwarden via Docker or build the Rust binary, point your Bitwarden clients at it, and get nearly the full feature set — personal vaults, organizations, collections, Send, attachments, 2FA (TOTP, FIDO2, YubiKey), and admin password reset — without the heavy infrastructure.
+You run a homelab or a small VPS and you're the one who set up everyone's passwords. You like Bitwarden's apps — browser extension, phone autofill, desktop app — but not the idea of the family's vault living on someone else's servers, and the official self-hosted install wants a couple of gigabytes of RAM for its containers and a licence file before you can share a "Family" collection. You start one `vaultwarden/server` container with a data volume, put it behind the reverse proxy you already run, and switch every Bitwarden app to "self-hosted" with your URL. Shared organisations, collections, Send, emergency access and 2FA work without a licence, and the whole thing idles in tens of megabytes.
+
+The deciding tradeoff against the official server is footprint and unlocked features versus vendor backing: Vaultwarden is an unofficial reimplementation, so you trade Bitwarden's support, audits and day-one client compatibility for a server that fits on anything. Against KeePassXC you are choosing a synced client-server vault over a file you sync yourself.
+
+## How it works
+
+Bitwarden apps don't care whose server they talk to, as long as it speaks the same HTTP API. Vaultwarden is a from-scratch Rust implementation of that API (on the Rocket web framework), plus a lightly patched copy of Bitwarden's web vault bundled in the container. Encryption happens in the apps: each item is encrypted with a key derived from your master password before it is uploaded, so the server stores and syncs ciphertext it cannot read — SQLite under `/data` by default, MySQL or PostgreSQL if you set `DATABASE_URL`. **Vaultwarden does the API, the web vault, organisations, 2FA checks, live-sync over WebSocket and the admin page; you supply HTTPS, backups, upgrades and, if you want them, SMTP and mobile push.** The web vault only works over HTTPS, because browsers expose the Web Crypto API it needs only to secure pages. Mobile push notifications go through Bitwarden's own push relay, for which you request an installation ID and key from Bitwarden.
+
+![vaultwarden — backbone user story](../../../assets/flow/vaultwarden.svg)
+
+<!-- flow-steps:begin (generated from flows/vaultwarden.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Run the container with your public URL and a data volume — `--env DOMAIN="https://vw.domain.tld"`
+2. **You**: Put an HTTPS reverse proxy in front (the web vault refuses to work without it)
+3. **Vaultwarden**: Serves the Bitwarden client API and a bundled web vault from one process — component: `vaultwarden server`
+4. **You**: Create accounts and point every official Bitwarden app at your domain
+5. **Vaultwarden**: Stores only the ciphertext the apps upload, and syncs it to all your devices — component: `SQLite under /data`
+
+**Value**: The official Bitwarden apps everywhere, with the server, the data and the organisation features on your own small box
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- If you need official Bitwarden support, SLA, or compliance certifications, use the official Bitwarden cloud or self-hosted Enterprise plan instead of Vaultwarden, because Vaultwarden is an unofficial, community implementation with no vendor support contract, guaranteed security audit, or enterprise compliance roadmap.
-- If you need enterprise features like SSO (SAML 2.0 / OIDC), SCIM, or Event Logging at scale, use the official Bitwarden enterprise plan instead of Vaultwarden, because Vaultwarden implements many organization features but enterprise SSO and advanced directory integration are gaps compared to the official offering.
-- If you are not comfortable self-hosting and securing a server, use the official Bitwarden cloud service or 1Password instead of Vaultwarden, because Vaultwarden places the operational burden on you: TLS termination, backups, updates, and securing the host.
-- If you need a FIPS-validated or formally audited password vault, use the official Bitwarden or 1Password instead of Vaultwarden, because Vaultwarden is open-source community software with no formal certification, and the security model depends on your own hardening.
-- If you want to avoid AGPL-3.0 copyleft, use the official Bitwarden cloud service or KeePassXC instead of Vaultwarden, because the AGPL-3.0 license may raise concerns for some commercial deployments depending on your legal interpretation.
+- **You cannot upgrade the server promptly.** Bitwarden's apps auto-update and the API moves with them: Vaultwarden 1.37.0 (2026-07-24) was required for clients 2026.7.0 and later, and the same release fixed nine medium-severity security advisories. If nobody will update the container within days of a client or security release, use the official Bitwarden cloud, where the server keeps pace for you.
+- **You need vendor support, audits or compliance paperwork.** Vaultwarden is unaffiliated with Bitwarden, Inc.; its README tells you not to use Bitwarden's support channels at all. For a contract, third-party audits and certifications, use the official [Bitwarden server](https://github.com/bitwarden/server) (not indexed) self-hosted with a licence, or Bitwarden's cloud.
+- **You need SAML SSO or SCIM provisioning.** SSO arrived in 1.35.0, but only via OpenID Connect; neither SAML nor SCIM appears in the README's feature list. For SAML/SCIM-driven enterprise identity, use official Bitwarden Enterprise. [推断]
+- **A vault outage is unacceptable.** It is a single process with a local database by default and no built-in clustering or failover; the apps keep an offline copy, but nobody can save changes while it is down. Use Bitwarden's cloud, or the official server on infrastructure you already run highly available.
+- **You don't want a server at all.** Use [KeePassXC](https://github.com/keepassxreboot/keepassxc) (not indexed): a local encrypted database file you sync with whatever you already use, no network service to secure.
+- **The main job is team credential sharing with per-item permissions.** Use [Passbolt](https://github.com/passbolt/passbolt_api) (not indexed), which is built around OpenPGP-based sharing between team members rather than personal vaults.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| Official Bitwarden | 未收录 | Use Vaultwarden for lightweight, unofficial self-hosted password management with Bitwarden client compatibility; choose the official Bitwarden for upstream support, SSO, compliance, and a larger team. | Official support, SSO, compliance, and a larger team — but the self-hosted version is heavier (MSSQL, .NET) and the free tier is cloud-only. |
-| KeePassXC | 未收录 | Use Vaultwarden for self-hosted server-based password management with official Bitwarden clients; choose KeePassXC when you want an offline, local-first password database with no server at all. | No server to run, but no native sync, no web vault, and no official mobile clients — a different architecture entirely. |
-| Passbolt | 未收录 | Use Vaultwarden for full-featured personal and team password management with Bitwarden client compatibility; choose Passbolt when you need an open-source team password manager focused on collaboration and access control. | Purpose-built for team sharing with built-in access controls; less mature client ecosystem than Bitwarden. |
-| 1Password / LastPass | 未收录 | Use Vaultwarden for self-hosted, open-source password management with full data control; choose 1Password or LastPass when you want a proprietary cloud password manager with polished UX and enterprise support. | Closed-source, subscription-based, and cloud-dependent; convenience vs. control tradeoff. |
+| [Bitwarden server](https://github.com/bitwarden/server) | not indexed | When you need vendor support, audits, SAML/SCIM and same-day client compatibility, run the official server (or the cloud); pick Vaultwarden when a light self-hosted server with org features unlocked matters more than vendor backing. | Official, audited, supported; a heavier multi-container .NET deployment, and paid features gated by a licence file. AGPL-3.0 core plus source-available Bitwarden-licensed modules. |
+| [KeePassXC](https://github.com/keepassxreboot/keepassxc) | not indexed | When one person wants a password database with no server to secure, pick KeePassXC; pick Vaultwarden when several people need live sync, sharing and phone autofill from one service. | No network attack surface and no upgrades to chase; syncing, sharing and mobile apps are left to third-party tools and file sync. |
+| [Passbolt](https://github.com/passbolt/passbolt_api) | not indexed | For a team whose main need is sharing credentials with per-item permissions, pick Passbolt; pick Vaultwarden for personal and family vaults that also share a few collections. | Team-first OpenPGP sharing model, AGPL-3.0, PHP stack with a database; fewer and less polished end-user apps than the Bitwarden ecosystem. |
+| 1Password | not a repo | When you want a managed, closed-source product with support and no server, pick 1Password; pick Vaultwarden when owning the server and the data is the requirement. | Polished apps and vendor support for a subscription; your vault lives in the vendor's cloud and the code cannot be inspected. |
 
 ## Tech stack
 
-- **Rust** — primary implementation language, using the Rocket web framework.
-- **Database** — SQLite (default), PostgreSQL, or MySQL via Diesel ORM.
-- **Web server** — built-in HTTP server via Rocket; typically fronted by a reverse proxy (Nginx, Traefik, Caddy) for TLS.
-- **Container images** — official Docker images published to Docker Hub and GitHub Container Registry.
+- **Rust** — Rocket 0.5 web framework with WebSocket support (`rocket_ws`), Diesel ORM, Argon2 for admin-token hashing.
+- **Database** — SQLite (default, `sqlite://data/db.sqlite3`), MySQL/MariaDB or PostgreSQL via `DATABASE_URL`.
+- **Auth** — TOTP, email codes, FIDO2/WebAuthn (`webauthn-rs`), YubiKey OTP, Duo; OpenID Connect SSO (`openidconnect`).
+- **Storage** — attachments and Sends on the local filesystem through OpenDAL; S3 parameters supported since 1.37.0.
+- **Web vault** — Bitwarden's web client, rebuilt with small patches in the separate `bw_web_builds` repo and shipped in the image.
 
 ## Dependencies
 
-- **Runtime:** a server (VPS, homelab, or container host) with Docker or a Rust build environment.
-- **Reverse proxy:** strongly recommended for TLS termination (Let's Encrypt or own certs).
-- **SMTP server:** optional, needed for email-based 2FA, admin password reset, and invitation emails.
-- **Backup solution:** you must arrange your own database and attachment backups; Vaultwarden does not include automated backup.
-- **Storage:** disk space for the SQLite/PostgreSQL database and file attachments.
+- **Runtime:** Docker/Podman (images on ghcr.io, docker.io and quay.io) or a self-built binary; any small Linux host, ARM boards included.
+- **HTTPS:** a reverse proxy or Rocket's own TLS — mandatory for the web vault.
+- **Persistent storage:** the `/data` volume (database, attachments and server keys); optional external MySQL/PostgreSQL.
+- **Optional:** SMTP for invitations, email 2FA and notifications; an installation ID/key from Bitwarden to enable mobile push through its relay.
 
 ## Ops difficulty
 
-**Low to medium.** Running the official Docker image is a single `docker run` or `docker compose` command. The medium difficulty comes from doing it *safely*: configuring TLS, setting up automated backups, keeping the image updated, and hardening the host. There is no built-in high-availability mode, clustering, or automated failover — it's a single-process Rust application. For a personal or small-team deployment, the burden is modest; for a large organization, you'll need to layer your own orchestration.
+**Low to medium.** Starting it is one `docker run`; doing it safely is the work. Disable open sign-ups once your users exist (`SIGNUPS_ALLOWED` defaults to true, so anyone who can reach the URL can register), protect the `/admin` page with an Argon2-hashed `ADMIN_TOKEN` or leave it disabled, back up `/data` (database plus attachments) on a schedule, and keep up with releases — the client-compatibility and security points above mean "set and forget" is the main operational risk. A personal or family instance needs minutes a month; a company instance needs the same patch discipline as any internet-facing auth service.
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 0.5 hours across 29 qualifying issues/PRs.
-- **Maintenance — actively maintained, single-core-maintainer model.** Pushed 2026-06-05; not archived. The project has a steady release cadence and a large contributor base, but the core maintainer (`dani-garcia`) is the decisive factor. [推断]
-- **Governance — user-owned, high bus-factor risk.** Owned by a single GitHub user (`dani-garcia`), not an organization. While there are many contributors, the roadmap and merge decisions rest with one person. This is the classic high-bus-factor open-source model — common, but a risk if the maintainer steps away. [推断]
-- **Age & Lindy — ~8 years old, still active.** Created 2018-02, actively maintained since. Eight years of continuous maintenance is a solid Lindy signal for a security tool, provided it stays active. [推断]
-- **Adoption & ecosystem — large unofficial install base.** ~63k stars, ~3k forks, widely discussed in self-hosting communities. The unofficial status means adoption is driven by the self-hosting community rather than enterprise sales. [未验证]
-- **Risk flags — AGPL-3.0 and unofficial status.** The AGPL-3.0 license is a conscious copyleft choice. The "unofficial" status means it tracks Bitwarden's client API but could fall behind if Bitwarden changes the protocol. No relicense history. [推断]
+- **Maintenance — active, with a steady release train.** Maintenance Grade A: commits in 10 of the last 13 weeks; five releases from 1.37.0 (2026-07-24) to 1.37.4 (2026-10-05).
+- **Responsiveness.** Responsiveness Grade A: median first response 0.7 hours across 25 qualifying issues/PRs.
+- **Governance — personal repo, small active core.** Governance Grade A: top-1 contributor share 30.3% and top-3 63% across 26 active maintainers in the last 12 months. The repo is under its founder's personal account (`dani-garcia`), but the README describes maintainers setting direction together, and recent releases are led by several regulars (`BlackDex`, `Timshel`, `stefan0xC`). One active maintainer is employed by Bitwarden and contributes on their own time, per the README.
+- **Age & Lindy.** Longevity Grade A: created 2018-02 (as bitwarden_rs, renamed in 2021), 3154 days old and still releasing monthly — a strong Lindy prior for a self-hosted service.
+- **Adoption — high, but not where the scorer looks.** Adoption Grade D reflects crates.io (2,839 downloads last month, no dependent repositories), which is not how anyone installs it; real usage is container pulls from three registries. About 68.7k GitHub stars (2026-10).
+- **Risk flags.** Risk/License Grade D: AGPL-3.0, no relicense history. The structural risk is dependency on Bitwarden: Bitwarden's client changes set the upgrade pace, and its trademark already forced the 2021 rename.
 
 ## Caveats (unverified)
 
-- [未验证] Repo facts as of 2026-07-01 via GitHub API: created 2018-02-17, last push 2026-06-05, not archived, ~63.2k stars, ~3.0k forks, AGPL-3.0, language reported as Rust, owner type User.
-- [未验证] The "nearly complete implementation of the Bitwarden Client API" claim and the specific feature list (personal vault, Send, attachments, organizations, 2FA methods, etc.) are from the README; exact parity with the official server is not independently verified.
-- [未验证] The Docker image pull counts and ghcr.io stats are from README badges; they may be outdated or approximate.
-- [推断] The bus-factor assessment (single maintainer) is based on GitHub contributor graphs and merge history, not a formal governance audit.
-- [未验证] Enterprise feature gaps (SSO, SCIM, advanced Event Logging) are inferred from the README feature list and common knowledge of Bitwarden's enterprise tier; verify against your own requirements.
-- [推断] Security of the Rust implementation is a community trust assumption; no formal security audit or certification is claimed by the project.
+- [未验证] Memory footprint ("tens of megabytes") and the official stack's resource needs are typical figures from self-hosting practice, not measured for this page.
+- [推断] Missing SAML/SCIM is inferred from their absence in the README feature list and release notes (OIDC SSO is present since 1.35.0); check the wiki before ruling it out.
+- [未验证] The nine 1.37.0 advisories were private and pending CVE assignment at release time; their exploitability was not assessed.
+- [未验证] Whether the official Bitwarden server's lighter single-container deployment narrows the footprint gap was not re-checked for this page.
+- [推断] The "real usage is container pulls" reading rests on the README's registry badges and docs, not on pull numbers fetched today.
+- [未验证] The claim that apps keep an offline copy during a server outage depends on Bitwarden client behaviour, which Vaultwarden does not control.

@@ -13,7 +13,7 @@
 | **Rocket.Chat** | Self-hosted communications platform (MIT CE) with an app marketplace, omnichannel customer support, and native federation — but MongoDB + NATS + microservices ops. | A (5/6) | [→](rocket-chat.md) |
 | **Buzz** | Self-hosted Nostr workspace where humans and AI agents are signed, co-equal members over one event log — agent-first, pre-1.0, heavy infrastructure. | B (4/6) | [→](buzz.md) |
 | **Macro** | One workspace replacing Slack + Linear + Notion + a CRM + a Gmail client, with everything @-linked in one database and exposed to agents over MCP — AGPL, hosted-first, self-host is still a developer stack. | B (6/6) | [→](macro.md) |
-| **HiveChat** | Self-hostable, admin-managed AI chat for small/medium teams: one admin wires many LLM providers; the team chats with per-group model access and token quotas. | D (3/6) | [→](hivechat.md) |
+| **HiveChat** | Use it when a 5–50 person team needs a self-hosted chat front-end where an admin holds API keys for many LLM providers and sets per-group model access and token quotas — but it has had no commit since 2025-09 and is still v0.1.0. | D (3/6) | [→](hivechat.md) |
 
 ## Comparison matrix
 
@@ -24,7 +24,7 @@
 | [Rocket.Chat](rocket-chat.md) | ✅ | A (5/6) | Richest extension surface (marketplace, omnichannel, federation), at the cost of MongoDB + NATS + microservices operations and an EE feature split. |
 | [Buzz](buzz.md) | ✅ | B (4/6) | Only option where agents are key-holding members in the same signed log as humans, but it is ~6 months old, pre-1.0, and needs Postgres + Redis + S3. |
 | [Macro](macro.md) | ✅ | B (6/6) | Links chat, Gmail, tasks, docs and CRM in one graph agents can read, but it is a young vendor's hosted-first product with a ~40-service, build-from-source self-host. |
-| [HiveChat](hivechat.md) | ✅ | D (3/6) | Admin-managed multi-LLM team chat with quotas; different job from the comms platforms above. |
+| [HiveChat](hivechat.md) | ✅ | D (3/6) | Gets central key custody, group quotas and Feishu/DingTalk/WeCom login in one deployment; costs a mandatory Postgres, a dormant v0.1.0 with no releases, and a license that restricts distributing derivatives. |
 | Lobe Chat | 未收录 | — | Other self-hosted chat UIs named on the pages. |
 | Slack / Discord / Microsoft Teams | 未收录 | — | Hosted SaaS team chat named across the pages. |
 

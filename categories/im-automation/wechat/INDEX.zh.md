@@ -7,10 +7,10 @@
 
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
-| **ItChat** | 仅作为旧版微信机器人代码学习——已停更，且其依赖的网页协议已失效，基本不可用。 | C（4/6） | [→](itchat.zh.md) |
-| **WeChatPlugin-MacOS** | 当前微信别用——一个 patch macOS 微信客户端二进制的小助手，每次微信更新就失效、已 ~2 年没动；有封号与安全风险。 | D（4/6） | [→](wechatplugin-macos.zh.md) |
-| **wxpy** | 仅作为旧版微信机器人代码学习——2019 年起已归档，且基于已失效的微信网页协议，基本不可用。 | D（5/6） | [→](wxpy.zh.md) |
-| **wxappUnpacker** | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 | E（3/6） | [→](wxappunpacker.zh.md) |
+| **ItChat** | 仅当你要读懂或接手基于它扫码登录、msg_register 接口写成的老微信机器人代码时用它——它自 2018 年起已废弃，所依赖的网页版微信登录对绝大多数账号已关停，用个人号跑还有封号风险。 | C（4/6） | [→](itchat.zh.md) |
+| **WeChatPlugin-MacOS** | 仅当你在 Mac 上把微信刻意钉在 2.3–3.7 这类老版本、想找回防撤回、自动回复和多开时用它——它给 WeChat.app 二进制打补丁，微信每更新一次就坏一次，已约 3 年半没有提交，还有封号风险。 | D（4/6） | [→](wechatplugin-macos.zh.md) |
+| **wxpy** | 仅当你要读懂或接手 2017–2019 年用它更顺手的 Bot／Friend／Group 接口写成的微信机器人代码时用它——仓库已归档，它架在 ItChat 的网页版微信登录上，绝大多数账号已登不上，个人号自动化还有封号风险。 | D（5/6） | [→](wxpy.zh.md) |
+| **wxappUnpacker** | 仅当你要反编译自有小程序的 .wxapkg 包、需要顺藤找到 wxappUnpacker 这一系工具时把它当线索——本仓库已清空成只剩一个词的 README，整条血缘都已废弃，留存的 fork 还依赖已弃用的 vm2 沙箱。 | E（3/6） | [→](wxappunpacker.zh.md) |
 | **WeChat Bot** | 当你需要仍在维护、支持多 IM 通道和多种 LLM 后端的 Node.js CLI，并接受非官方个人微信通道可能触发警告或封号时用它。 | B（5/6） | [→](wechat-bot.zh.md) |
 | **ChatGPT-wechat-bot** | 只把它当作 2022 至 2023 年的精简 Wechaty／ChatGPT 参考；项目已停更、模型路径陈旧，个人微信号仍承担非官方 puppet 风险。 | D（3/6） | [→](chatgpt-wechat-bot.zh.md) |
 | **Dify Enterprise WeChat Bot** | 只用于固定企业微信客户端版本的隔离 Windows 原型；消息链路含闭源二进制，Workflow 支持未完成，项目也已停滞。 | C（3/6） | [→](dify-enterprise-wechat-bot.zh.md) |
@@ -23,10 +23,10 @@
 
 | 选项 | 已收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
-| [ItChat](itchat.zh.md) | ✅ | C（4/6） | 仅作为旧版微信机器人代码学习——已停更，且其依赖的网页协议已失效，基本不可用。 |
-| [WeChatPlugin-MacOS](wechatplugin-macos.zh.md) | ✅ | D（4/6） | 当前微信别用——一个 patch macOS 微信客户端二进制的小助手，每次微信更新就失效、已 ~2 年没动；有封号与安全风险。 |
-| [wxpy](wxpy.zh.md) | ✅ | D（5/6） | 仅作为旧版微信机器人代码学习——2019 年起已归档，且基于已失效的微信网页协议，基本不可用。 |
-| [wxappUnpacker](wxappunpacker.zh.md) | ✅ | E（3/6） | 当你需要把自有的微信小程序 .wxapkg 包反编译回可读源码时用它——但本仓库已被清空成墓碑，请改用仍存活的 fork。 |
+| [ItChat](itchat.zh.md) | ✅ | C（4/6） | 换来一份讲清网页版微信机器人原理的规整范本；代价是今天跑不起任何自动化——无人维护、协议已死，还违反服务条款。 |
+| [WeChatPlugin-MacOS](wechatplugin-macos.zh.md) | ✅ | D（4/6） | 换来冻结版本微信上的经典体验增强；代价是把第三方代码注入装着你私人聊天的客户端、没有更新，还违反服务条款。 |
+| [wxpy](wxpy.zh.md) | ✅ | D（5/6） | 换来比裸用 ItChat 更顺手、便于研究老机器人的对象模型；代价是层层死依赖——已归档的封装、废弃的底层库、关停的协议。 |
+| [wxappUnpacker](wxappunpacker.zh.md) | ✅ | E（3/6） | 装不到任何东西，只换来一个去找 fork 的名字；能找到的 fork 也没人维护、本仓库无许可证文件，处理不可信包时还有沙箱逃逸风险。 |
 | [WeChat Bot](wechat-bot.zh.md) | ✅ | B（5/6） | 仍在维护的多通道 CLI 和模型 adapter，但非官方个人微信路径伴随账号警告与封禁风险。 |
 | [ChatGPT-wechat-bot](chatgpt-wechat-bot.zh.md) | ✅ | D（3/6） | 小型历史 Wechaty／ChatGPT 示例，已经停更，仍依赖不受支持的个人号通道。 |
 | [Dify Enterprise WeChat Bot](dify-enterprise-wechat-bot.zh.md) | ✅ | C（3/6） | 固定版本 Windows 企业微信到 Dify 的桥接，helper 为闭源二进制，Workflow 通道也未完成。 |

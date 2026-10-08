@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Your agent, via program.md, does", "zh": "agent 照 program.md 做的"},
+  "steps": [
+    {"lane": "you", "en": "On one NVIDIA GPU, install deps, download data and train the tokenizer once", "zh": "在一块 NVIDIA 卡上装依赖，一次性下数据、训 tokenizer", "code": "uv sync · uv run prepare.py", "component": {"en": "prepare.py (frozen)", "zh": "prepare.py（冻结）"}},
+    {"lane": "you", "en": "Write the research strategy the agent should follow", "zh": "写好要 agent 遵循的研究策略", "code": "program.md"},
+    {"lane": "you", "en": "Start your own coding agent in the repo and point it at program.md", "zh": "在仓库里开你自己的 coding agent，让它读 program.md"},
+    {"lane": "them", "en": "Opens a fresh run branch, edits train.py with one idea, commits", "zh": "开一条新运行分支，按一个想法改 train.py 并提交", "code": "git checkout -b autoresearch/<tag>", "component": {"en": "train.py", "zh": "train.py"}},
+    {"lane": "them", "en": "Trains for a fixed 5 minutes and reads val_bpb from the log", "zh": "固定训练 5 分钟，从日志读出 val_bpb", "code": "uv run train.py > run.log 2>&1"},
+    {"lane": "them", "en": "Keeps the commit if val_bpb dropped, else resets; logs the row and loops", "zh": "val_bpb 降了就保留提交，否则回退；记一行后继续循环", "code": "results.tsv"}
+  ],
+  "value": {"en": "You wake up to ~100 logged experiments and a branch holding only the changes that lowered val_bpb", "zh": "醒来时有约 100 条实验记录，分支上只留下让 val_bpb 变低的改动"},
+  "sources": [
+    "https://github.com/karpathy/autoresearch#quick-start (uv sync, uv run prepare.py, uv run train.py, single NVIDIA GPU)",
+    "https://github.com/karpathy/autoresearch#running-the-agent (spin up Claude/Codex, point it at program.md)",
+    "https://github.com/karpathy/autoresearch/blob/master/program.md (git checkout -b autoresearch/<tag>, uv run train.py > run.log 2>&1, results.tsv, keep/reset loop)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "VS Code does", "zh": "VS Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install VS Code from the download page or your package manager", "zh": "从下载页或包管理器装上 VS Code", "component": {"en": "Electron desktop app", "zh": "Electron 桌面应用"}},
+    {"lane": "you", "en": "Open your project folder from the terminal", "zh": "在终端里打开项目目录", "code": "code ."},
+    {"lane": "you", "en": "Install the extension for your language or framework", "zh": "装上对应语言或框架的扩展", "code": "code --install-extension publisher.extension"},
+    {"lane": "them", "en": "Runs the extension in its extension host, which starts the language's tooling", "zh": "在扩展宿主里运行扩展，由它拉起该语言的工具链", "component": {"en": "extension host", "zh": "扩展宿主"}},
+    {"lane": "them", "en": "Serves completion, go-to-definition, inline errors and debugging in the editor", "zh": "在编辑器里提供补全、跳转定义、行内报错和调试"}
+  ],
+  "value": {"en": "One editor and one set of keybindings for every language, with capabilities added per project by extensions", "zh": "一个编辑器、一套快捷键覆盖所有语言，能力按项目靠扩展补上"},
+  "sources": [
+    "https://github.com/microsoft/vscode README (fetched 2026-10-08): Code - OSS vs Visual Studio Code distribution under the Microsoft product license; download for Windows, macOS and Linux; built-in extensions provide language features",
+    "https://code.visualstudio.com/docs/configure/command-line (fetched 2026-10-08): open a folder with `code .`; --install-extension takes the full extension name publisher.extension",
+    "https://code.visualstudio.com/api/advanced-topics/extension-host (fetched 2026-10-08): the Extension Host is responsible for running extensions; local, web and remote extension host kinds"
+  ]
+}

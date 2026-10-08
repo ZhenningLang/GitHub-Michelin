@@ -6,8 +6,8 @@ category: nginx-modules
 tags: [nginx, file-upload, multipart, c-module, web-server]
 language: C
 license: BSD-3-Clause
-maturity: v2.3.0 tag line, low activity (last push 2024-07), ~1.0k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: v2.3.0 tag line (no GitHub releases), last commit 2023-06-21, quiet since (as of 2026-10-08), ~1.0k stars
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2024-07-17T20:13:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:19:45Z
+  computed_at: 2026-10-08T08:23:39Z
   overall: "?"
   overall_score: null
   scored_axes: 2
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1194
+        last_commit_age_days: 1205
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 6488
-        last_commit_age_days: 1194
+        repo_age_days: 6499
+        last_commit_age_days: 1205
         cohort: library
     governance:
       grade: "?"
@@ -69,9 +69,31 @@ health:
 
 当你需要**断点续传**（模块通过 `Content-Range` 支持一种可续传上传协议）或逐文件哈希/CRC32（让后端不必重读 payload 就能校验完整性）时，它也合适。经典用例是给一个 PHP/Python/Ruby 应用前面加一层上传层——那种应用本来会被大 multipart 体噎住——把重活卸给 NGINX，让应用保持无状态且快。
 
+## 怎么用起来
+
+模块住在 NGINX 里面，自己读上传请求体，于是最慢的那一段——客户端在烂网络上一点点传字节——由 NGINX 的事件循环接住，而不是占着一个应用 worker。`multipart/form-data`（浏览器提交文件表单时用的编码）一边流进来，模块一边把每个文件写进 `upload_store` 目录，然后改写请求：去掉文件字节，换成你用 `upload_set_form_field` 声明的小字段（原文件名、内容类型、磁盘上的临时路径，可选 md5 和大小）。这个小得多的请求被转给 `upload_pass` 指定的 location，通常再代理到你的应用。**接收、解析、落盘归模块；你写 NGINX 配置，以及后端那个“读路径、搬文件”的处理函数**——还有 `upload_store` 里残留文件的清理。好比收发室替你签收包裹，只把货架号转给你。
+
+![nginx-upload-module — 主干用户故事](../../assets/flow/nginx-upload-module.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/nginx-upload-module.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：编译 NGINX，把模块编进去
+2. **你**：在上传 location 里指定文件落盘目录和接请求的后端 — `upload_store /tmp 1 · upload_pass @test` — 组件：`nginx.conf 指令`
+3. **你**：声明转发表单里用哪些字段替代每个文件 — `upload_set_form_field $upload_field_name.path "$upload_tmp_path"`
+4. **nginx-upload-module**：边收边解析 multipart 请求体，把每个文件写进 upload_store
+5. **nginx-upload-module**：去掉文件字节，填上文件名、类型、路径（及 md5、大小），把表单转给后端
+6. **你**：后端读路径字段，直接搬走或处理磁盘上的文件
+
+**价值**：慢速大文件上传由 NGINX 接住，应用只收到一个描述已落盘文件的小 POST
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **低活跃、分叉的分叉血统——首要提醒。** 原模块（Valery Kholodkov 所作）已无人维护；这个 `fdintino` 分叉是事实上的延续，但它本身也**低活跃**（最后 push 2024-07，见健康度）。把一个老化的第三方 C 模块编进 NGINX，是一项实打实的维护与安全承诺——采用前请掂量。
+- **低活跃、分叉的分叉血统——首要提醒。** 原模块（Valery Kholodkov 所作）已无人维护；这个 `fdintino` 分叉是事实上的延续，但它本身也**已沉寂**（默认分支最后提交 2023-06-21，见健康度）。把一个老化的第三方 C 模块编进 NGINX，是一项实打实的维护与安全承诺——采用前请掂量。
 - **你能把上传卸给对象存储。** 若客户端能用预签名 URL 直传 S3/GCS，你就完全省掉了上传层磁盘、NGINX 重编和清理问题。这是许多应用的现代默认。
 - **你不愿意编译 NGINX。** 它是静态 C 模块（不保证跨版本动态加载）——你要把它编进 NGINX，并在每次 NGINX 升级时重新验证。若你想要纯配置或托管式安装，这就是摩擦。
 - **你需要有维护、有厂商支持的路线。** 没有基金会/公司背书；若将来某个 NGINX 版本把它弄坏了，你可能得自己改 C。要有支持的大上传处理，NGINX 自带的 `client_body_*` 缓冲加上应用层的 chunked/tus 协议或许更稳。
@@ -109,7 +131,7 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_data。
-- **维护（2026-06）——低活跃。** 最后 push 在 **2024-07**（截至撰写约停滞 2 年）；tag 到 **v2.3.0**。未归档，但读起来是**维护态 / 低活跃**，而非积极开发。这个分叉正是因为上游停摆而存在——所以血统是「需要时续命」，而非生机勃勃。[推断]
+- **维护（2026-10）——低活跃。** 默认分支最后一次提交在 **2023-06-21**（2024-07 那次 push 没有动默认分支代码）；截至 2026-10-08 已超过 3 年无提交；tag 到 **v2.3.0**。未归档，但读起来是**维护态 / 低活跃**，而非积极开发。这个分叉正是因为上游停摆而存在——所以血统是「需要时续命」，而非生机勃勃。[推断]
 - **治理 / bus factor。** `User` 所有（Frankie Dintino 对 Valery Kholodkov 原作的分叉）。一个约 1k star、`User` 所有、低活跃的 C 模块是**明确的 bus-factor 风险**——存续系于一个维护者是否还上心，且无组织背书。[推断]
 - **年龄 × Lindy。** 血统很老（本仓库 **2008-12** 创建，约 17 年）——对*概念*和原始代码的 Lindy 很强，但**近期低活跃削弱了「仍活跃」那一半**：老而吃老本，而非老而兴旺。要把年龄 × 活跃度合看；这里活跃度是弱项。[推断]
 - **采用度。** 历史上以 NGINX 上传卸载闻名（约 1k star、约 378 fork）；但向对象存储直传和专门 tus 服务器的现代趋势削弱了它的中心地位。许可为 **BSD-3-Clause**（读自 `LICENCE` 文件：© 2006, 2008 Valery Kholodkov，3 句 BSD 文本）。[推断]
@@ -117,7 +139,7 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 1.0k star / 约 55 open issue / 最后 push 2024-07 / tag 到 v2.3.0——易变，请重新核实。
+- [未验证] 截至 2026-10-08 约 1.0k star / 约 55 open issue / 最后 push 2024-07（默认分支最后提交 2023-06-21）/ tag 到 v2.3.0——易变，请重新核实。
 - [未验证] 许可：GitHub API 报 `NOASSERTION`；仓库的 `LICENCE` 文件是 **3 句 BSD** 许可（© 2006, 2008 Valery Kholodkov——「Neither the name... may be used to endorse...」）——此处依据阅读该文件记为 BSD-3-Clause。
 - [未验证] 可续传上传协议支持和 CRC32/哈希字段来自模块文档/特性列表；确切的当前行为和 NGINX 版本兼容性未对此处代码核实。
 - [未验证] 对当前 NGINX 版本能否干净地做动态模块构建对版本敏感，未核实。

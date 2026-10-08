@@ -4,21 +4,21 @@ slug: intro-js
 repo: https://github.com/usablica/intro.js
 category: product-tours
 tags: [product-tour, onboarding, walkthrough, feature-highlight, spotlight, commercial, licensing]
-language: JavaScript
+language: TypeScript
 license: AGPL-3.0
-maturity: v7.x, active, ~22k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v8.6.0 (2026-09-21), active, single active maintainer, ~23k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-01-04T18:23:52Z
+  pushed_at: 2026-09-21T10:44:06Z
   default_branch: master
-  default_branch_sha: b50a24316febe87e9ee430542587c6ece5ab4cad
+  default_branch_sha: 5b12889b4b7f82bd935a5153af574869eeaab755
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:19:45Z
+  computed_at: 2026-10-08T08:30:26Z
   overall: B
-  overall_score: 3.2
+  overall_score: 2.8
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -26,20 +26,20 @@ health:
   needs_human_review: false
   axes:
     maintenance:
-      grade: A
+      grade: B
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 6
+        last_commit_age_days: 17
+        active_weeks_13: 5
         carve_out: null
     responsiveness:
-      grade: A
+      grade: B
       raw:
-        median_ttfr_hours: 0.0
-        qualifying_issues: 22
+        median_ttfr_hours: 3.2
+        qualifying_issues: 3
         band: default
         window_offset_days: 1
-        source: pr
+        source: issue
         inferred: false
     adoption:
       grade: B
@@ -47,16 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: intro.js
         dependent_repos_count: 1272
-        downloads_last_month: 696730
+        downloads_last_month: 798473
         graph_tier: B
         volume_tier: B
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.03
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4944
-        last_commit_age_days: 1
+        repo_age_days: 4960
+        last_commit_age_days: 17
         cohort: library
     governance:
       grade: D
@@ -76,69 +76,90 @@ health:
 # Intro.js
 
 
-A mature, framework-agnostic JavaScript library for step-by-step product tours, feature highlights, and user onboarding — one of the oldest and most widely used tour libraries, with a **dual-licensing model** (AGPL-3.0 for non-commercial use; commercial license required for business/closed-source use) that is the decisive filter for most selection decisions.
+New users land on your dashboard, stare at forty buttons, and file a support ticket asking where "Create course" is. Intro.js dims the page and walks them through it one highlighted element at a time, driven by a few HTML attributes — but it is AGPL-3.0 with a paid commercial license, and that license is the decisive filter for most teams.
 
 
 ![Intro.js — health radar](../../../assets/health/intro-js.svg)
 
 ## When to use
 
-You're a frontend developer building an open-source educational platform, and you need to guide new users through the interface: a welcome tooltip on the dashboard, a highlight around the "Create course" button, a step-by-step walkthrough of the grading workflow, each with a progress indicator and keyboard navigation. Your site is built with plain HTML and vanilla JS — no React, no Vue — and you want a tour library that drops in without framework bindings or runtime dependencies. You also want extensive documentation and examples to get started quickly. You reach for Intro.js: you add a `<script>` tag or `npm install intro.js`, annotate your DOM elements with `data-intro` and `data-step` attributes, call `introJs().start()`, and it renders the tour overlay, tooltips, and progress — no build step drama, no framework lock-in.
+You're the frontend developer on an open-source course platform written in plain HTML and vanilla JS — no React, no Vue. New instructors keep asking the same thing in the forum: "where do I grade submissions?" You want a welcome tooltip on the dashboard, a spotlight on the "Create course" button, and a five-step walkthrough of grading, with progress dots and arrow-key navigation, without adding a framework or a backend. You reach for Intro.js: `npm install intro.js` (or a CDN `<script>`), put `data-intro="…"` and `data-step="2"` on the elements, call `introJs.tour().start()`, and it draws the overlay, tooltips and navigation for you. Since v8 it also ships built-in translations (Chinese, Japanese, Russian and others) and light/dark/auto themes, which matters when your learners are not English-first.
 
-You also reach for it when you need auto-play tours, programmatic step control, or multi-page tour flows that persist across navigation. Because it has been actively maintained since 2013, the API is stable and the documentation is comprehensive, which matters when you're onboarding a team of contributors who need to understand and extend the tour logic.
+You pick it over Driver.js when you want those batteries — step numbering, bullets, a "don't show again" checkbox backed by a cookie, translations — rather than the smallest possible spotlight library, and over react-joyride/Reactour because there is no React to bind to. Because your project is itself AGPL-compatible open source, the license costs you nothing; that condition is what makes Intro.js the right choice here rather than a liability.
+
+## How it works
+
+Intro.js is a client-side script that turns marked-up elements of an existing page into a guided tour. **You** decide what each step says and in which order — either by putting `data-intro` (the text) and `data-step` (the order) attributes on elements, or by passing a `steps` array in JavaScript — and you call `introJs.tour().start()`. **It** does the rest: collects the targets, darkens the page with an overlay (a semi-transparent layer over everything) while cutting a bright "spotlight" around the current element, places a tooltip next to it, scrolls it into view, and wires Next/Back buttons, arrow keys and Esc. Think of it as a museum docent who walks visitors from exhibit to exhibit with a flashlight; you only write the placards. A second mode, `introJs.hint()`, puts small pulsing dots on elements that open a note on click, for help that does not interrupt the user. The old `introJs()` entry point still works in v8 but logs a deprecation warning.
+
+![intro-js — backbone user story](../../../assets/flow/intro-js.svg)
+
+<!-- flow-steps:begin (generated from flows/intro-js.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Add the package and load its JS plus introjs.css — `npm install intro.js --save`
+2. **You**: Mark each element to explain with its text and order — `data-intro · data-step`
+3. **You**: Start the tour from your page script — `introJs.tour().start()`
+4. **Intro.js**: Collects the marked elements in order, dims the page and spotlights the first one
+5. **Intro.js**: Places a tooltip beside it, scrolls it into view, wires Next/Back, arrow keys and Esc
+6. **Intro.js**: Walks step by step to the last element, then removes the overlay and fires your exit callback
+
+**Value**: A guided walkthrough of an existing page with no framework, no runtime deps and no backend — only attributes and one call
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You are building a commercial or closed-source product without purchasing a commercial license.** Intro.js is dual-licensed under AGPL-3.0 for non-commercial use; business use requires a paid commercial license. This is not a footnote — it is a binding legal requirement that has caused real compliance issues for companies who treated it as "free because it's on GitHub." [未验证]
-- **You want a fully permissive (MIT) license without licensing friction.** Driver.js and Shepherd.js are MIT-licensed alternatives that avoid the AGPL/commercial-license bifurcation entirely. If your legal team bristles at copyleft or you don't want to track license compliance across team members, pick one of those instead.
-- **Bundle size is your absolute constraint.** Intro.js is ~10KB gzipped — larger than Driver.js (~5KB) and competitive with Shepherd.js. For a single spotlight on one element, the overhead may not be worth it.
-- **Heavily dynamic / async DOM in an SPA.** Steps anchor to elements by selector. If the element doesn't exist yet (route not mounted, data loading, virtualized list, modal animating in), the tour targets nothing or jumps. You'll write timing/`MutationObserver` glue to wait for elements and re-position on scroll/resize. [推断]
-- **Strict accessibility / keyboard / screen-reader requirements.** Overlay-and-spotlight tours are a known a11y minefield (focus trapping, `aria-*` on injected popovers, keyboard navigation, reduced-motion). Verify the current version's a11y behavior against your WCAG bar rather than assuming it's handled. [未验证]
-- **You need a full onboarding/adoption *platform*, not just tours.** Intro.js renders tours; it has no segmentation, analytics, A/B targeting, checklists, or surveys. If you need that, you want Appcues / Userflow / Userpilot (commercial) or you'll build the state layer yourself.
-- **You want deep tour branching / conditional flows out of the box.** Complex multi-path tours (branch on user action, skip steps, resume later) are doable but you orchestrate them in your own code; the library gives you steps + an imperative API, not a flow engine.
+- **You ship a commercial or closed-source product and won't buy a license — use Driver.js instead of Intro.js, because** Intro.js's open-source license is AGPL-3.0 and the upstream LICENSE states that commercial projects need a paid commercial license (one-time, $9.99–$299.99 per the vendor's pricing as of 2026-10). Driver.js is MIT. Note that **Shepherd.js is no longer a permissive escape hatch**: its current README declares the same AGPL-3.0 + commercial dual license.
+- **Your legal team rejects AGPL outright and the vendor license is not an option — use Driver.js (MIT) or React-specific react-joyride/Reactour (MIT) instead, because** buying the license only covers you; tracking which products and seats are licensed is an ongoing process cost those projects do not impose.
+- **You need a single spotlight on one element with the smallest possible bundle — use Driver.js instead, because** Intro.js carries tour machinery (bullets, progress bar, hints, i18n, themes) you will not use for a one-off highlight.
+- **Your app is a React SPA where targets mount late (lazy routes, virtualized lists, animating modals) — use react-joyride instead, because** Intro.js anchors steps to elements that must already exist in the DOM; it re-positions on resize, but waiting for a not-yet-rendered element is your glue code, whereas react-joyride lives inside React's render cycle.
+- **You need segmentation, analytics, A/B targeting, checklists or surveys — use a hosted adoption platform such as Appcues or Userflow instead, because** Intro.js renders tours and hints only; it has no notion of user segments or funnel data.
+- **You need branching tours (skip steps by user action, resume next session) — use a hosted flow builder such as Userflow, or put your own state layer on top, because** Intro.js gives you a linear step list plus callbacks (`onBeforeChange`, `onExit` and the like); any branching or cross-page resume is code you orchestrate.
+- **You are upgrading from v7 or earlier — budget a migration, because** v8 split the API into `introJs.tour()` and `introJs.hint()`; the old `introJs()` and `addHints()` calls now only log deprecation errors, so hint code silently stops working.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Driver.js](driver-js.md) | ✅ | Choose Driver.js when you want a MIT-licensed, lighter, zero-dependency alternative. | MIT-licensed, smaller bundle (~5KB), zero dependencies; fewer built-in features and positioning options than Intro.js. |
-| [Shepherd.js](shepherd-js.md) | ✅ | Choose Shepherd.js when you want a MIT-licensed tour library with a richer API and more positioning options. | MIT-licensed, more built-in step/positioning options and a richer API; uses Floating UI / popper-style positioning, heavier than Driver.js. |
-| [Reactour](reactour.md) / [react-joyride](react-joyride.md) | ✅ | Choose Reactour / react-joyride when you need React-specific tour components with hooks or JSX-native APIs. | React-specific components (hooks/JSX-native); nicer DX inside React but framework-locked vs Intro.js's vanilla core. |
-| Appcues / Userflow / Userpilot | 未收录 | Choose Appcues, Userflow, or Userpilot when you need a commercial no-code onboarding **platform**. | Commercial platforms with segmentation, analytics, targeting, checklists, surveys; not open-source repos, recurring SaaS cost. |
-| Bootstrap Tour | 未收录 | Avoid Bootstrap Tour for new work because it is abandoned and unmaintained. | Abandoned; was a Bootstrap-dependent tour plugin, no longer viable. |
+| [Driver.js](driver-js.md) | ✅ | For a commercial product that won't pay for a tour library, pick Driver.js; pick Intro.js when you want built-in step bullets, i18n and "don't show again" and the AGPL/commercial license is acceptable. | Driver.js: MIT, smaller, zero deps, but you assemble progress UI and persistence yourself. Intro.js: more built-in tour UI, but a license you must track. |
+| [Shepherd.js](shepherd-js.md) | ✅ | When license is equal (both now AGPL-3.0 + commercial), pick Shepherd.js for Floating UI positioning and richer per-step configuration; pick Intro.js for the attribute-only setup on a static page. | Shepherd: more control over step placement and content, heavier API. Intro.js: zero-config `data-intro` markup, fewer positioning knobs. |
+| [react-joyride](react-joyride.md) / [Reactour](reactour.md) | ✅ | In a React app, pick react-joyride or Reactour, because they render steps as React components and follow your components' mount lifecycle; pick Intro.js only for non-React or mixed pages. | React-native integration and MIT license, but framework-locked; Intro.js works on any page but sits outside React's render cycle. |
+| Appcues / Userflow / Userpilot | not a repo | When product or growth teams need to author tours without engineers and measure them, pick a hosted platform; Intro.js is the choice when engineers own the tour in code. | Hosted SaaS: no-code authoring, segmentation, analytics, but a recurring subscription and a third-party script. Not a repository. |
+| Bootstrap Tour | not indexed | Do not start new work on Bootstrap Tour; it is unmaintained and tied to Bootstrap, so pick Intro.js or Driver.js instead. | Was a Bootstrap-dependent tour plugin; no current maintenance. |
 
 ## Tech stack
 
-- **Language:** JavaScript (ES5+), compiled to a small JS bundle with ESM + UMD builds published to npm.
-- **Rendering:** pure DOM + CSS — injects overlay, tooltip popovers, and spotlight highlights directly into the page, positions them relative to target elements, and exposes an imperative `introJs()` API (`start()`, `goToStep()`, `exit()`, lifecycle callbacks).
-- **Dependencies:** none at runtime — a pure JavaScript library with zero framework dependencies or external libraries.
-- **Theming:** styled via CSS class overrides and custom themes so it can match a host design system.
+- **Language:** TypeScript source (`src/`), bundled with Rollup into UMD (`intro.js`) and ESM (`intro.module.js`) builds with bundled type declarations.
+- **Rendering:** plain DOM + CSS — injects overlay, helper layer, tooltip and hint elements into the page and positions them against target elements; no virtual DOM, no framework.
+- **API:** `introJs.tour()` (step-by-step tour) and `introJs.hint()` (click-to-open hints), configured via `data-*` attributes or an options object; lifecycle callbacks.
+- **Theming & i18n:** CSS theme files with built-in light/dark/auto themes and `registerTheme()`; built-in translations selected via a `language` option (v8.5+).
+- **Tests:** Jest unit tests, Cypress browser tests, and axe-based accessibility tests (added in v8.4).
 
 ## Dependencies
 
-- **Runtime:** none. A `<script>` tag (CDN/UMD) or `npm install intro.js` import; it runs entirely client-side in the browser, no backend, no services.
-- **Build (for app authors):** a bundler that resolves the npm package (Vite/webpack/esbuild/Rollup) and imports both the JS and its CSS; usable framework-free or inside any framework (React, Vue, Angular, Svelte).
-- **Browser:** modern evergreen browsers; exact minimum/legacy support is version-dependent — verify against your target browser matrix.
+- **Runtime:** none — `package.json` declares no runtime dependencies. Load it from a `<script>` tag (jsDelivr / cdnjs) or `npm install intro.js` and import the JS plus `introjs.css`.
+- **Build (for app authors):** any bundler that resolves an npm package and its CSS (Vite, webpack, esbuild, Rollup). Works on framework-free pages or inside React, Vue, Angular or Svelte, but without framework-aware lifecycle.
+- **License:** a commercial license from introjs.com if the product is commercial and not AGPL-compliant.
 
 ## Ops difficulty
 
-**Low.** This is a client-side library, not a service — there is nothing to deploy or operate. "Ops" here is just: add the dependency, ship the JS+CSS in your bundle, and you're done; no server, no datastore, no scaling concern. The real cost is **integration/maintenance** in your own app: defining the steps, keeping selectors in sync as the UI changes (a tour silently breaks when you rename a class or restructure the DOM), handling SPA timing, and theming. None of that is operational burden — it's frontend code you own and test.
-
-The **license** is the real operational/policy consideration: if you use Intro.js in a commercial product, you must purchase and track a commercial license, and your legal/ compliance team must be aware of the AGPL boundary. That is a recurring process cost that MIT-licensed alternatives (Driver.js, Shepherd.js) do not impose.
+**Low.** It is a browser library, not a service: nothing to deploy, no server, no datastore. The real cost is integration in your own app — keeping step selectors and `data-intro` attributes in sync as the UI changes (rename a class and the tour silently targets nothing), handling late-mounting elements in SPAs, and theming to your design system. The one non-code process cost is the license: if the product is commercial, someone must buy and track the commercial license, which Driver.js (MIT) does not require.
 
 ## Health & viability
 
-- **Maintenance (2026-07).** Active at v7.x with regular releases; ~22k GitHub stars and a long history of community use. Not archived. [未验证]
-- **Age & Lindy verdict.** Created in 2013 (~13 years old) and **still actively maintained** ⇒ a **very strong Lindy** signal — one of the longest-lived, most-proven tour libraries in the JavaScript ecosystem. Use age × still-active: this is a safe bet for continued existence, though the licensing model is the offsetting risk, not the age. [推断]
-- **Governance / bus factor.** Maintained by `usablica` (the organization of original author Afshin Mehrabani). The project has outlived many of its competitors and has a broader contributor base than single-maintainer alternatives. [未验证]
-- **Adoption & ecosystem.** Very widely adopted across the web; extensive documentation, many examples, and broad community familiarity. The licensing model means commercial adoption is split between licensed users and those who migrate to MIT alternatives. [推断]
-- **Risk flags.** The **dual-licensing model** (AGPL-3.0 / commercial) is the primary risk flag. It has caused confusion and legal compliance issues for companies that missed the commercial-license requirement. Verify current pricing and terms before committing; confirm whether your use case falls under the non-commercial exception or requires a paid license. [未验证]
+- **Maintenance (2026-10).** Active but bursty: v8.6.0 shipped 2026-09-21 after v8.4/8.5 in July 2026, following a year-long gap after v8.3.2 (2025-07). The health radar's maintenance and responsiveness axes both read B — the last commit was 17 days before scoring, with activity in 5 of the last 13 weeks; few new issues, answered within hours.
+- **Governance / bus factor — the weak axis.** All 2026 commits and release notes come from one contributor (Parvinmh); original author Afshin Mehrabani's `usablica` org owns the repo and the commercial license. Governance scores D (1 active maintainer in the last 12 months). If that person stops, the project likely goes quiet again.
+- **Age & Lindy.** Created 2013 (~13.5 years) and still shipping features (themes, i18n, a11y tests) — a strong Lindy prior on *existence*, discounted by the single-maintainer cadence.
+- **Adoption.** 798,473 npm downloads in the last month and 1,272 dependent repos (health radar, 2026-10-08); ~23k GitHub stars.
+- **Risk flags.** AGPL-3.0 + commercial dual license (the GitHub API reports `NOASSERTION` because LICENSE prepends the commercial terms). The license has been dual since v2.0.0; versions before that are exempt per the LICENSE file.
 
 ## Caveats (unverified)
 
-- [未验证] ~22k GitHub stars as of 2026-07 — star count is date-sensitive and unreliable as a health proxy; treat as indicative only.
-- [未验证] Bundle size (~10KB gzipped) is approximate and varies by version/build (ESM vs UMD, with/without CSS) — measure against your actual build.
-- [未验证] Commercial license pricing cited as ~$20–50 one-time or subscription depending on plan — verify current pricing directly on the Intro.js website before budgeting.
-- [未验证] The dual-licensing model and its enforcement history are based on general knowledge of the project's licensing terms; confirm the current license text and commercial terms directly before relying on this distinction.
-- [推断] SPA timing/dynamic-DOM friction and a11y/keyboard/screen-reader behavior are inferred from how overlay-tour libraries generally work — verify against the version you pin for your specific app and WCAG bar.
-- [推断] "Governance / bus factor" and "broader contributor base" assessments are based on GitHub visibility and project longevity, not a detailed analysis of contributor distribution or a governance document.
+- [未验证] Commercial pricing ($9.99 Starter / $49.99 Business / $299.99 Premium, one-time) was read from introjs.com on 2026-10-08; check terms and seat definitions before budgeting.
+- [未验证] Whether a particular use counts as "commercial" under the LICENSE wording is a legal question; the page does not settle it.
+- [推断] Late-mounting targets in SPAs need host-side waiting logic; inferred from the step model (selectors resolved at runtime) and not tested against v8.6.
+- [未验证] Accessibility: axe-based tests exist since v8.4, but conformance to a specific WCAG level (focus trapping, screen-reader announcements) was not verified.
+- [推断] The bus-factor reading (one active maintainer) comes from 2026 commit authors and the health radar's contributor stats, not a governance document.
+- [未验证] ~23k GitHub stars as of 2026-10-08; star counts drift.

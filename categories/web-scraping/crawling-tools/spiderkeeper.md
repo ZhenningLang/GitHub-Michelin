@@ -6,8 +6,8 @@ category: crawling-tools
 tags: [scrapy, scrapyd, dashboard, admin-ui, scheduler, flask, python]
 language: Python
 license: MIT
-maturity: PyPI v1.2.0 (2017-09), repo stale since 2023-05, ~2.8k stars (as of 2026-06)
-last_verified: 2026-06-28
+maturity: PyPI v1.2.0 (2017-09), last commit 2018-05-29, quiet since (as of 2026-10-08), ~2.8k stars
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2023-05-04T20:44:05Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:34:18Z
+  computed_at: 2026-10-08T08:28:41Z
   overall: E
   overall_score: 0.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 3044
+        last_commit_age_days: 3054
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -50,8 +50,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3905
-        last_commit_age_days: 3044
+        repo_age_days: 3916
+        last_commit_age_days: 3054
         cohort: app
     governance:
       grade: "?"
@@ -75,9 +75,31 @@ A Flask-based admin web UI / dashboard for Scrapy spiders that sits on top of Sc
 
 You're running a small crawl operation on Scrapyd and you're tired of `curl`-ing JSON endpoints to deploy and schedule spiders. You want a browser dashboard: upload a project egg with a click, set a spider to run every night on a cron, see which jobs are running/finished, and glance at stats — without writing your own UI. You `pip install spiderkeeper`, point it at your Scrapyd server (`--server=http://localhost:6800`), and get a Flask dashboard on port 5000 with periodic scheduling (via APScheduler), a job board, and a Swagger API. For a single developer or a small team that already runs Scrapyd and wants the simplest possible control panel, SpiderKeeper is the lightweight classic — provided you accept that the software is old (see below).
 
+## How it works
+
+SpiderKeeper is a control panel, not a crawler: Scrapyd (the daemon that actually runs Scrapy spiders) does all the crawling, and SpiderKeeper only calls its JSON API. **You do** three things: start SpiderKeeper with `--server` pointing at one or more Scrapyd servers, upload a project egg (your Scrapy project zipped into an installable Python package, built with `scrapyd-client`), and fill in cron fields for each spider you want on a timer. **It does the rest**: it forwards the egg to Scrapyd's `addversion.json`, keeps projects, spiders and job history in a SQLite file, and runs an in-process APScheduler (a Python cron library) that calls Scrapyd's `schedule.json` when a job is due — picking one of your servers at random when you list several — while a background job syncs run status back for the dashboard. Because the scheduler lives inside the SpiderKeeper process, no periodic job fires while SpiderKeeper is down.
+
+![spiderkeeper — backbone user story](../../../assets/flow/spiderkeeper.svg)
+
+<!-- flow-steps:begin (generated from flows/spiderkeeper.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it and start it against your running Scrapyd server — `pip install spiderkeeper · spiderkeeper --server=http://localhost:6800`
+2. **You**: In the web UI on :5000, create a project and upload your spider egg — `scrapyd-deploy --build-egg output.egg` — component: `Flask web UI`
+3. **SpiderKeeper**: Pushes the egg to Scrapyd and lists the spiders it contains
+4. **You**: Add a periodic job: pick a spider and give it cron fields
+5. **SpiderKeeper**: At each due time, asks a Scrapyd server to start the spider — component: `APScheduler`
+6. **SpiderKeeper**: Syncs job status back and shows running and finished jobs on the dashboard
+
+**Value**: Scrapyd gets a click-to-deploy, cron-scheduling dashboard instead of curl calls to its JSON API
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **Don't adopt it for new 2026 projects.** Repo code is stale since 2023-05 and the PyPI release is frozen at v1.2.0 (2017-09). It pins a 2017-era stack (Flask 0.12, SQLAlchemy 1.1, Werkzeug 0.12), so installing on modern Python (3.11+) means pin-relaxation friction and carrying unpatched transitive deps. [推断]
+- **Don't adopt it for new 2026 projects.** The last default-branch commit is from 2018-05 and the PyPI release is frozen at v1.2.0 (2017-09). It pins a 2017-era stack (Flask 0.12, SQLAlchemy 1.1, Werkzeug 0.12), so installing on modern Python (3.11+) means pin-relaxation friction and carrying unpatched transitive deps. [推断]
 - **No value without Scrapyd.** It's purely a UI over Scrapyd — if you don't run Scrapy/Scrapyd it does nothing for you. See [Scrapyd](scrapyd.md).
 - **Weak security — don't expose it on an untrusted network.** Auth is optional HTTP basic only, defaulting to `admin`/`admin`, with no user management, RBAC, or TLS. Not hardened for multi-tenant or public deployment.
 - **Newer alternatives are more capable.** Gerapy (Django+Vue, more modern, distributed management) and ScrapydWeb (multi-node, log parsing, alerts) are the fuller successors in this niche; SpiderKeeper is the older, simpler one.
@@ -115,15 +137,15 @@ You're running a small crawl operation on Scrapyd and you're tired of `curl`-ing
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_data.
-- **Maintenance (2026-06).** Stale / likely abandoned — repo code untouched since 2023-05, PyPI frozen at v1.2.0 since 2017-09, no GitHub releases or tags, ~70 open issues. Not archived, but no release cadence. [推断]
+- **Maintenance (2026-10).** Stale / likely abandoned — last default-branch commit 2018-05-29, PyPI frozen at v1.2.0 since 2017-09, no GitHub releases or tags, ~70 open issues. Not archived, but no release cadence. [推断]
 - **Governance / bus factor.** Bus factor **1**: `DormyMo` has ~93 commits, every other contributor 1–3. A single-maintainer User account with no org continuity.
-- **Age × Lindy.** Alive since 2016 but silent ~3 years (and the package silent ~9 years) — fails Lindy, which needs old **and** active; an unmaintained tool against a moving Scrapy/Python stack only rots. [推断]
+- **Age × Lindy.** Alive since 2016 but without a commit for ~8 years (and the package silent ~9 years) — fails Lindy, which needs old **and** active; an unmaintained tool against a moving Scrapy/Python stack only rots. [推断]
 - **Adoption.** ~2.8k stars reflect real past popularity as the simplest Scrapyd dashboard, but momentum has moved to Gerapy/ScrapydWeb. The vendor demo homepage is likely down. [未验证]
 - **Risk flags.** Stale dependency floor, default-credential weak auth, single maintainer, and an incomplete license (MIT declared but the license file is missing from the repo). [推断]
 
 ## Caveats (unverified)
 
 - [推断] License is *declared* MIT (setup.py + README badge) but the referenced `LICENSE.md` file does not exist in the repo, so the MIT grant is asserted without the actual license text shipping; GitHub metadata reports no license.
-- [推断] PyPI v1.2.0 (2017-09) is far staler than the repo (last push 2023-05); the published package being installable on modern Python without pin relaxation is doubtful but untested here.
+- [推断] PyPI v1.2.0 (2017-09) is barely older than the last code change (last commit 2018-05-29; the 2023-05 `pushed_at` is not a default-branch commit); the published package being installable on modern Python without pin relaxation is doubtful but untested here.
 - [未验证] The vendor demo homepage liveness, and the current relative staleness of ScrapydWeb vs Gerapy, were not independently fetched this session.
 - [未验证] ~2.8k stars / ~70 open issues as of 2026-06; counts are date-sensitive and indicative only.

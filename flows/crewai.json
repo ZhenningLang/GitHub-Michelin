@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "CrewAI does", "zh": "CrewAI 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and scaffold a crew project", "zh": "装好 CLI，生成一个团队项目", "code": "uv tool install crewai · crewai create crew <project_name>", "component": {"en": "crewai CLI", "zh": "crewai 命令行"}},
+    {"lane": "you", "en": "Describe each agent's role, goal, backstory and tools, then the ordered tasks", "zh": "写每个智能体的角色、目标、背景和工具，再按顺序列任务", "code": "agents/*.jsonc · crew.jsonc"},
+    {"lane": "you", "en": "Put your model key in .env and start the crew", "zh": "把模型密钥写进 .env，启动团队", "code": "crewai install · crewai run"},
+    {"lane": "them", "en": "Builds each agent's prompt from its role and hands tasks out in process order", "zh": "用角色信息拼出各自的提示词，按流程顺序分派任务", "component": {"en": "Crew process", "zh": "Crew 流程"}},
+    {"lane": "them", "en": "Each agent loops over the model and its tools until it meets expected_output", "zh": "每个智能体反复调模型和工具，直到产出符合 expected_output", "component": {"en": "Agent", "zh": "Agent"}},
+    {"lane": "them", "en": "Passes each result on as context and writes the final output", "zh": "把每步结果作为上下文往下传，写出最终产物"}
+  ],
+  "value": {"en": "A multi-role job runs as a team you described, not one prompt that forgets half the work", "zh": "多角色的活按你描述的团队分工跑完，不再是一个丢三落四的大提示词"},
+  "sources": [
+    "https://github.com/crewAIInc/crewAI#1-installation (uv tool install crewai)",
+    "https://github.com/crewAIInc/crewAI#2-setting-up-your-crew (crewai create crew <project_name>; agents/*.jsonc; crew.jsonc; expected_output; context)",
+    "https://github.com/crewAIInc/crewAI#3-running-your-crew (.env keys; crewai install; crewai run; output/report.md; sequential vs hierarchical process)"
+  ]
+}

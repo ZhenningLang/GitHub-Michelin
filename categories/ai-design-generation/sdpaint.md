@@ -7,7 +7,7 @@ tags: [stable-diffusion, controlnet, painting, sketch-to-image, automatic1111, p
 language: Python
 license: MIT
 maturity: v1.2a, stalled (last push 2024-04)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2024-04-25T10:42:31Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:48:22Z
+  computed_at: 2026-10-08T08:15:55Z
   overall: D
   overall_score: 1.33
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 885
+        last_commit_age_days: 896
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 1259
-        last_commit_age_days: 885
+        repo_age_days: 1270
+        last_commit_age_days: 896
         cohort: app
     governance:
       grade: "?"
@@ -71,6 +71,28 @@ A real-time sketch-to-image painting app: you draw on a pygame canvas and each s
 You're an artist or hobbyist who already runs **AUTOMATIC1111's Stable Diffusion WebUI with the ControlNet extension** locally, and you want a faster, more tactile loop than typing prompts and clicking Generate. You launch SdPaint, it opens a pygame window, and as you sketch (scribble or lineart), it streams each stroke to the WebUI's API with a ControlNet model so the generated picture updates in near-real-time — optionally accelerated with an LCM LoRA for fewer steps. You set a prompt and preset, doodle the composition, and watch SD fill it in, iterating by drawing rather than re-prompting.
 
 You reach for it specifically when you want **interactive scribble-driven generation on your own machine**, you've already paid the cost of a working A1111 + ControlNet setup, and you'd rather paint than prompt. It's a thin, local front-end over that backend, not a hosted creative suite.
+
+## How it works
+
+SdPaint is a single Python script that opens a drawing window (pygame, a Python game/graphics library) and treats every brush stroke as a new request. **It does no image generation itself: AUTOMATIC1111's WebUI, running on your machine with the ControlNet extension, does all of that — SdPaint only captures your sketch, packages it with your prompt and settings, and shows what comes back.** ControlNet is the piece that makes a scribble matter: it conditions Stable Diffusion on the lines you drew, so the output keeps your composition instead of just matching the prompt. After each stroke the script POSTs the canvas to the WebUI's `sdapi/v1/txt2img` endpoint with a scribble or lineart ControlNet model attached, then swaps the preview for the returned image; nearly every knob (sampler, seed, denoising, ControlNet model and weight, hires fix) is a keyboard shortcut, and presets live in `configs/*.json`. A "quick" mode (`q`) uses an LCM LoRA — a small add-on model that lets Stable Diffusion finish in a handful of steps — to keep up with fast drawing; an img2img mode watches an image file instead of the canvas.
+
+![sdpaint — backbone user story](../../assets/flow/sdpaint.svg)
+
+<!-- flow-steps:begin (generated from flows/sdpaint.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Run AUTOMATIC1111's WebUI with the ControlNet extension, its models, and API mode on — `--api`
+2. **You**: Launch SdPaint — `./start.sh · Start.bat`
+3. **SdPaint**: Writes its config files and fetches the scribble/lineart ControlNet models your WebUI has — component: `configs/*.json`
+4. **You**: Type a prompt and start sketching on the canvas — `p`
+5. **SdPaint**: After each stroke, sends the sketch to the WebUI API as a ControlNet input — `sdapi/v1/txt2img` — component: `cn_requests.py`
+6. **SdPaint**: Replaces the preview with the generated image when it returns
+
+**Value**: You compose by drawing rather than re-prompting, and the picture follows your strokes
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -110,9 +132,9 @@ You reach for it specifically when you want **interactive scribble-driven genera
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** **Stalled.** Last release v1.2a (2024-04), last push 2024-04 — roughly two years quiet. Not archived, but no recent activity; treat as coasting/likely-abandoned. [推断]
+- **Maintenance (2026-10).** **Stalled.** Last release v1.2a (2024-04-25) and the default branch has not moved since (re-checked 2026-10-08) — about two and a half years quiet. Not archived, but no recent activity; treat as likely abandoned. [推断]
 - **Governance / bus factor.** Owner is a **User** account (houseofsecrets); a top contributor (Danamir) authored most commits — effectively a one-to-two-person hobby project, weak bus factor. [推断]
-- **Age & Lindy.** Created 2023-04; ~3 years old **but inactive for ~2 of them** ⇒ Lindy does **not** apply — it's a young project that stopped, not a durable one. The fast-moving SD ecosystem makes a stale client especially prone to drift. [推断]
+- **Age & Lindy.** Created 2023-04-17; about three and a half years old **but inactive for roughly two and a half of them** ⇒ Lindy does **not** apply — it's a young project that stopped, not a durable one. The fast-moving SD ecosystem makes a stale client especially prone to drift. [推断]
 - **Adoption.** ~1.6k stars reflect a burst of interest during the 2023 ControlNet wave; current usage is unverified and the ecosystem has moved toward ComfyUI/Krita-AI. [未验证]
 - **Risk flags.** Hard external dependency on a specific-era A1111 + ControlNet API; unmaintained client risks compatibility breakage; permissive MIT, no relicense concerns. [推断]
 

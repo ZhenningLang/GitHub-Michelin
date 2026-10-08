@@ -6,8 +6,8 @@ category: wechat
 tags: [wechat, im-automation, chatbot, python, web-protocol, deprecated, personal-account]
 language: Python
 license: MIT
-maturity: abandoned — last pushed 2023-09 (~3y dormant); built on WeChat's now-defunct web protocol, mostly non-functional for new accounts (2026-06)
-last_verified: 2026-06-28
+maturity: abandoned — last commit 2018-09-26 (the 2023-09 push added no default-branch commits), last release v1.3.9 (2017-07); built on WeChat's now-defunct web protocol, mostly non-functional for new accounts (as of 2026-10-08)
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2023-09-28T07:46:58Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:02:56Z
+  computed_at: 2026-10-08T08:19:49Z
   overall: C
   overall_score: 1.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 2923
+        last_commit_age_days: 2934
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,7 +41,7 @@ health:
         registry: pypi.org
         canonical_package: itchat
         dependent_repos_count: 394
-        downloads_last_month: 8523
+        downloads_last_month: 9617
         graph_tier: C
         volume_tier: D
         cross_check_divergence: null
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3904
-        last_commit_age_days: 2923
+        repo_age_days: 3915
+        last_commit_age_days: 2934
         cohort: library
     governance:
       grade: "?"
@@ -73,7 +73,7 @@ health:
 
 # ItChat
 
-A graceful Python API for WeChat **personal** accounts — historically used to build chatbots and IM automation on top of the web (`wx.qq.com`) WeChat protocol. **Read this plainly: the project is effectively abandoned (last pushed ~2023-09) and the WeChat web protocol it depends on has been largely shut down, so for most accounts ItChat no longer logs in or works at all.** It remains interesting mainly as reference code, not as a tool you can ship today.
+A graceful Python API for WeChat **personal** accounts — historically used to build chatbots and IM automation on top of the web (`wx.qq.com`) WeChat protocol. **Read this plainly: the project is effectively abandoned (last commit 2018-09; nothing has landed on the default branch for eight years) and the WeChat web protocol it depends on has been largely shut down, so for most accounts ItChat no longer logs in or works at all.** It remains interesting mainly as reference code, not as a tool you can ship today.
 
 ![itchat — health radar](../../../assets/health/itchat.svg)
 
@@ -83,10 +83,32 @@ You're a developer or researcher digging through an older generation of WeChat-b
 
 That is realistically the only safe reason to reach for it in 2026. If your actual goal is to *run* new WeChat automation, ItChat is the wrong starting point (see below) — treat it as a museum piece that explains the lineage, not as a dependency for a new build.
 
+## How it works
+
+ItChat pretends to be the WeChat web page (`wx.qq.com`) — the browser version of WeChat that you log into by scanning a QR code with your phone. **The library does the protocol work for you**: it fetches the QR code, keeps the logged-in session (and, with `hotReload=True`, saves it to a file so a restart doesn't need a new scan), and long-polls the `synccheck` endpoint — it keeps one request open until the server says "something new arrived". Each incoming message becomes a dict-like object whose keys you can also read as attributes. **What you write is only the handlers**: a function decorated with `@itchat.msg_register(...)` for each message type you care about; whatever the function returns is sent back as the reply. The flow below shows the path as it worked when the web login was still open — today, for most accounts, it stops at the login step.
+
+![itchat — backbone user story](../../../assets/flow/itchat.svg)
+
+<!-- flow-steps:begin (generated from flows/itchat.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the package into Python 2.7 or 3.5 — `pip install itchat`
+2. **You**: Register a handler function for a message type — `@itchat.msg_register(itchat.content.TEXT)`
+3. **You**: Log in by scanning the QR code with your phone, then start the loop — `itchat.auto_login(hotReload=True) · itchat.run()`
+4. **ItChat**: Holds the web-WeChat session and long-polls its synccheck endpoint for new messages
+5. **ItChat**: Wraps each message as a dict-like object and calls your handler
+6. **ItChat**: Sends your handler's return value back to the sender as a reply
+
+**Value**: A personal-account auto-reply bot in under thirty lines — when the web login still worked
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You want WeChat automation that actually works today.** This is the dominant reason. WeChat (Tencent) progressively disabled the **web/`wx.qq.com` login protocol** ItChat relies on; **most accounts — especially newer ones — simply cannot log in through it anymore.** [未验证] The library is not broken in its own code so much as the platform pulled the rug out from under it.
-- **It is abandoned.** Last pushed ~2023-09, ~3 years dormant, single-maintainer, ~284 open issues with no triage. No one is going to fix the protocol breakage for you.
+- **It is abandoned.** Last commit 2018-09-26, ~8 years dormant (the 2023-09 `pushed_at` added no default-branch commits), single-maintainer, ~284 open issues with no triage. No one is going to fix the protocol breakage for you.
 - **Account-ban / ToS risk.** Driving a *personal* WeChat account through an unofficial reverse-engineered protocol is **against WeChat's Terms of Service** and carries a real risk of the account being **rate-limited, frozen, or permanently banned.** Don't point it at an account you care about.
 - **You need a supported path for IM automation.** Use **official** channels instead: the **WeCom (企业微信 / WeChat Work) API** and **WeChat Official Account / Mini-Program** server APIs are the sanctioned, maintained surfaces. For personal-account-style automation, **wechaty** is the more actively maintained successor abstraction (though it inherits the same upstream-platform and ToS risk, so adopt it with caution).
 - **Production or anything customer-facing.** An unmaintained library on a defunct protocol is not a foundation you can build a product or a business commitment on.
@@ -109,7 +131,7 @@ That is realistically the only safe reason to reach for it in 2026. If your actu
 
 ## Dependencies
 
-- **Runtime:** a Python interpreter plus `requests` (and `pyqrcode`/`pypng` for terminal QR rendering in its typical setup). Minimal, pip-installable. [未验证]
+- **Runtime:** a Python interpreter (README badges: 2.7 and 3.5) plus `requests`, `pyqrcode` and `pypng` — the whole of `setup.py`'s `install_requires`. Minimal, pip-installable.
 - **The real dependency is a working web-WeChat session** — and *that* is the broken link: it needs Tencent's web-login endpoint to accept your account, which for most accounts it no longer does. No amount of local dependency management fixes a server-side block.
 - **A scannable WeChat account** on a phone to complete QR login each session; sessions are not durable and re-login is frequent.
 
@@ -120,7 +142,7 @@ That is realistically the only safe reason to reach for it in 2026. If your actu
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06): abandoned.** Last pushed ~2023-09 → roughly **3 years dormant**; ~284 open issues, single maintainer (owner `littlecodersh`), no recent releases or triage. This is a coasting-to-dead project, not an active one. [未验证]
+- **Maintenance (2026-10): abandoned.** Last default-branch commit **2018-09-26** → roughly **8 years dormant** (GitHub's 2023-09 `pushed_at` is a push with no new commit on `master`); last release v1.3.9 (2017-07); ~284 open issues, single maintainer (owner `littlecodersh`), no triage. This is a dead project, not a coasting one.
 - **Platform pulled the rug — the decisive signal.** Independent of the repo going quiet, **WeChat largely disabled the web-login protocol ItChat is built on**, so the library is *non-functional for most accounts* regardless of maintenance. Abandoned **and** structurally obsolete. [未验证]
 - **Lindy verdict: FAILS, hard.** Created **2016-01** (~10 years old), so on age alone it looks Lindy — but Lindy is **age × still-active**, never age alone. Here it is **long-lived *and* dead *and* running on a protocol the platform removed**, which is the textbook case where the age signal is *negated*, not earned. Do not read its longevity as durability. [推断]
 - **Governance / bus factor.** Single-maintainer hobby project with no foundation, vendor, or successor stewardship — bus factor of one, and that one has moved on. [推断]
@@ -129,8 +151,7 @@ That is realistically the only safe reason to reach for it in 2026. If your actu
 ## Caveats (unverified)
 
 - [未验证] "~26.5k stars" and "~284 open issues" are from the GitHub repo page as of 2026-06; star/issue counts are date-sensitive and unreliable — treat as indicative only.
-- [未验证] "Last pushed ~2023-09" is the load-bearing maintenance fact used throughout this page; the repo's most visible *release* tags are older still (mid-2017), so the project has been effectively dormant for years either way — confirm the exact last-commit date against the live repo.
 - [未验证] The claim that WeChat **disabled the web-login protocol** so ItChat "mostly doesn't work for new accounts" is widely reported by the community and consistent with the dormancy, but the repo README carries **no explicit deprecation notice** — this is inferred from platform behavior, not quoted from an official Tencent or ItChat statement.
 - [未验证] Comparison rows (wechaty's current activity, the `itchat-uos` fork's degree of maintenance, exact WeCom/Official-Account API scope) describe the general landscape and were not freshly re-verified against each project's current state.
 - [推断] Account-ban / ToS-violation risk is an inference from the unofficial-protocol nature of the tool, not a measured ban rate; severity varies by account and usage.
-- [未验证] Dependency details (`requests`, `pyqrcode`/`pypng`, the `@itchat.msg_register` decorator, Py2/Py3 support) are from general knowledge of the library and were not re-checked against the current `setup.py`/source.
+- [推断] The "last commit 2018-09-26" date comes from the commits API on `master` (checked 2026-10-08); the 2023-09 `pushed_at` is assumed to be a branch or tag push, which was not traced.

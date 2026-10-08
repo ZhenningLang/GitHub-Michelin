@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Shepherd.js does", "zh": "Shepherd.js 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package and import its stylesheet", "zh": "安装这个包并导入它的样式表", "code": "npm install shepherd.js --save"},
+    {"lane": "you", "en": "Create a tour with the darkened overlay switched on", "zh": "创建一个开启压暗遮罩的引导", "code": "new Shepherd.Tour({ useModalOverlay: true })"},
+    {"lane": "you", "en": "Add steps: which element to attach to, the text, and what advances it", "zh": "添加步骤：贴在哪个元素上、说什么、什么动作推进", "code": "attachTo · advanceOn"},
+    {"lane": "you", "en": "Start the tour", "zh": "启动引导", "code": "tour.start()"},
+    {"lane": "them", "en": "Waits for the target, scrolls to it, cuts an opening in the overlay and pins the step dialog", "zh": "等目标出现、滚过去、在遮罩上开口并钉上步骤对话框", "component": {"en": "Floating UI positioning", "zh": "Floating UI 定位"}},
+    {"lane": "them", "en": "Advances on buttons, arrow keys or your page event, firing show/complete/cancel events", "zh": "随按钮、方向键或页面事件推进，发出 show/complete 等事件"}
+  ],
+  "value": {"en": "One tour engine that behaves the same in React, Angular, Vue and plain pages", "zh": "一个引导引擎，在 React、Angular、Vue 和纯页面里表现一致"},
+  "sources": [
+    "shipshapecode/shepherd docs-src/src/content/docs/guides/install.mdx (main, retrieved 2026-10-08): npm install shepherd.js --save; import 'shepherd.js/dist/css/shepherd.css'",
+    "docs-src/src/content/docs/guides/usage.md (same retrieval): new Shepherd.Tour({ useModalOverlay: true, ... }); tour.addStep({ attachTo: { element, on }, buttons }); tour.start(); advanceOn; waitForElement; exitOnEsc; keyboardNavigation; events complete/cancel/show",
+    "docs-src/src/content/docs/guides/analytics.mdx (same retrieval): active/cancel/complete/show events",
+    "shepherd.js/src/components/shepherd-modal.ts (same retrieval): SVG overlay path with opening around the target"
+  ]
+}

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="654" viewBox="0 0 880 654" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="654" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="518" rx="10"/>
+<rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">你做的</text>
+<rect class="laneT" x="460" y="28" width="392" height="518" rx="10"/>
+<rect class="pillT" x="474" y="40" width="123.6" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">AgriKG 做的</text>
+<path class="edge" d="M62,167 L62,191" marker-end="url(#a)"/>
+<path class="edge" d="M62,307 L62,331" marker-end="url(#a)"/>
+<path class="hand" d="M408,380.5 C439.0,380.5 439.0,404 470,404" marker-end="url(#a)"/>
+<path class="edge" d="M494,430 L494,454" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">装好 Python 3 和 Neo4j，再装项目锁定的</text>
+<text class="t" x="82" y="123">pip 依赖</text>
+<text class="c" x="82" y="147">sudo pip3 install -r requirement.txt</text>
+<rect class="card" x="40" y="193" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="193" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="217" r="10"/>
+<text class="num" x="62" y="221" text-anchor="middle">2</text>
+<text class="t" x="82" y="222">把自带 CSV 放进 Neo4j 的 import 目录，跑</text>
+<text class="t" x="82" y="244">Cypher 导入</text>
+<text class="c" x="82" y="268">LOAD CSV WITH HEADERS FROM</text>
+<text class="c" x="82" y="287">&quot;file:///hudong_pedia.csv&quot; AS line</text>
+<rect class="card" x="40" y="333" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="333" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="357" r="10"/>
+<text class="num" x="62" y="361" text-anchor="middle">3</text>
+<text class="t" x="82" y="362">在 demo 里填好 Neo4j 密码，启动 Djan</text>
+<text class="t" x="82" y="384">go 演示</text>
+<text class="c" x="82" y="408">sudo sh django_server_start.sh</text>
+<rect class="cardT" x="472" y="380" width="368" height="50" rx="8"/>
+<rect class="accT" x="472" y="380" width="4" height="50" rx="2"/>
+<circle class="accT" cx="494" cy="404" r="10"/>
+<text class="num" x="494" y="408" text-anchor="middle">4</text>
+<text class="t" x="514" y="409">用 THULAC 给输入分词，匹配图里已分类的实体</text>
+<rect class="cardT" x="472" y="456" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="456" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="480" r="10"/>
+<text class="num" x="494" y="484" text-anchor="middle">5</text>
+<text class="t" x="514" y="485">在 8000 端口从 Neo4j 回答实体、关系和最短</text>
+<text class="t" x="514" y="507">路径查询</text>
+<rect class="val" x="28" y="560" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="584">价值</text>
+<text class="valT" x="48" y="608">直接拿到一个能查的中文农业知识图谱和一条从爬取到界面的完整流水线可抄，不用自己爬取、标注十几万个实体</text>
+</svg>

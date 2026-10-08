@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Whisper does", "zh": "Whisper 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the ffmpeg CLI and the package", "zh": "装好 ffmpeg 命令行和 Whisper 包", "code": "brew install ffmpeg · pip install -U openai-whisper"},
+    {"lane": "you", "en": "Point it at your audio files and pick a model size", "zh": "把音频文件交给它，选一个模型尺寸", "code": "whisper audio.flac audio.mp3 audio.wav --model turbo"},
+    {"lane": "them", "en": "Downloads the model weights on first use and caches them locally", "zh": "首次使用时下载模型权重，缓存在本地", "code": "~/.cache/whisper"},
+    {"lane": "them", "en": "Decodes the audio with ffmpeg to 16 kHz and slices it into 30-second spectrogram windows", "zh": "用 ffmpeg 解码成 16 kHz 音频，切成 30 秒一段的频谱图窗口"},
+    {"lane": "them", "en": "Detects the language and writes timestamped text window by window", "zh": "识别语种，逐个窗口写出带时间戳的文字"},
+    {"lane": "them", "en": "Saves every output format next to each input", "zh": "为每个输入文件写出全部输出格式", "code": "txt · srt · vtt"}
+  ],
+  "value": {"en": "Searchable transcripts and ready-to-load subtitles in many languages, produced on your own hardware with no per-minute fees", "zh": "多语种的可检索文字稿和可直接加载的字幕，在自己的机器上生成，不按分钟付费"},
+  "sources": [
+    "https://github.com/openai/whisper README @ 8609812 (2026-08-31): Setup (pip install -U openai-whisper; brew install ffmpeg), Command-line usage (whisper audio.flac audio.mp3 audio.wav --model turbo), sliding 30-second window",
+    "whisper/__init__.py load_model: default download_root ~/.cache/whisper",
+    "whisper/audio.py: SAMPLE_RATE = 16000, CHUNK_LENGTH = 30, ffmpeg subprocess",
+    "whisper/transcribe.py cli: --output_format choices txt/vtt/srt/tsv/json/jsonl/all, default all"
+  ]
+}

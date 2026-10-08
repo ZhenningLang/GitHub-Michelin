@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "sshtunnel + Paramiko do", "zh": "sshtunnel + Paramiko 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install it; Paramiko comes along as its only runtime dependency", "zh": "安装；Paramiko 作为唯一运行时依赖一起装上", "code": "pip install sshtunnel"},
+    {"lane": "you", "en": "Name the SSH host, your credentials and the address to reach behind it", "zh": "写明 SSH 主机、登录凭证，以及它背后要访问的地址", "code": "open_tunnel(..., remote_bind_address=(PRIVATE_SERVER_IP, 22))"},
+    {"lane": "them", "en": "Logs in to the SSH host with Paramiko and listens on a local port", "zh": "用 Paramiko 登录 SSH 主机，在本机开一个监听端口", "component": {"en": "SSHTunnelForwarder", "zh": "SSHTunnelForwarder"}},
+    {"lane": "you", "en": "Point your client at the local port it reports", "zh": "把客户端指向它报告的本地端口", "code": "server.local_bind_port"},
+    {"lane": "them", "en": "Relays each local connection through an SSH channel to the remote address", "zh": "把每条本地连接经 SSH 通道转发到远端地址", "component": {"en": "forward server threads", "zh": "转发服务线程"}}
+  ],
+  "value": {"en": "A private service behind a bastion is reachable from your script as 127.0.0.1:<port>, with no ssh child process to babysit", "zh": "堡垒机后面的私网服务，在脚本里就是 127.0.0.1:<端口>，不用看管 ssh 子进程"},
+  "sources": [
+    "https://github.com/pahaz/sshtunnel README (Installation: pip install sshtunnel; Usage examples 1-3: SSHTunnelForwarder / open_tunnel, remote_bind_address, local_bind_port, with-context start and stop)",
+    "https://github.com/pahaz/sshtunnel/blob/master/sshtunnel.py (direct-tcpip channel per connection, _ThreadingForwardServer, set_keepalive=5.0 default)"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Ragas does",
+    "zh": "Ragas 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the library and set the judge model's API key",
+      "zh": "装上库，配好评审模型的 API key",
+      "code": "pip install ragas"
+    },
+    {
+      "lane": "you",
+      "en": "Run your RAG app on test questions; keep each question, answer and retrieved passages",
+      "zh": "用测试问题跑一遍 RAG 应用，记下每条的问题、回答和检索到的段落",
+      "code": "SingleTurnSample · EvaluationDataset"
+    },
+    {
+      "lane": "you",
+      "en": "Pick metrics and a judge LLM, then call evaluate on the dataset",
+      "zh": "选好指标和评审模型，对数据集调用 evaluate",
+      "code": "LLMContextRecall() · Faithfulness() · FactualCorrectness()"
+    },
+    {
+      "lane": "them",
+      "en": "For each answer, has the judge list its claims and check each against the retrieved passages",
+      "zh": "对每条回答，让评审模型列出其中的论断，逐条对照检索段落核对",
+      "component": {
+        "en": "metric prompts (LLM judge)",
+        "zh": "指标提示词（LLM 评审）"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Turns the verdicts into 0–1 scores per sample and per metric",
+      "zh": "把判定折算成分数：每条样本、每个指标一个 0 到 1 的数"
+    }
+  ],
+  "value": {
+    "en": "Each pipeline change comes with numbers for grounding and retrieval instead of a hand-read sample",
+    "zh": "每次改动检索链路，都有“回答是否有据”“检索是否找全”的分数，而不是手翻几条"
+  },
+  "sources": [
+    "README.md @ main (298b682, 2026-02-24): Installation (pip install ragas); Quickstart (llm_factory, OPENAI_API_KEY note, ragas quickstart rag_eval)",
+    "docs/getstarted/rag_eval.md @ main (from ragas import evaluate; from ragas.metrics import LLMContextRecall, Faithfulness, FactualCorrectness; evaluate(dataset=evaluation_dataset, metrics=[...], llm=evaluator_llm))",
+    "docs/getstarted/evals.md @ main (SingleTurnSample with user_input, response, reference, retrieved_contexts; EvaluationDataset(samples=...))",
+    "docs/concepts/metrics/available_metrics/faithfulness.md @ main (identify claims in the response, check each against retrieved context, score = supported claims / total claims, 0 to 1)"
+  ]
+}

@@ -7,7 +7,7 @@ tags: [captcha, image-captcha, audio-captcha, pillow, python, accessibility]
 language: Python
 license: BSD-3-Clause
 maturity: v0.7.1, low-volume but maintained, ~1.1k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-10-21T06:24:16Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:50:37Z
+  computed_at: 2026-10-08T08:16:22Z
   overall: B
   overall_score: 2.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 341
+        last_commit_age_days: 352
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -41,11 +41,11 @@ health:
         registry: pypi.org
         canonical_package: captcha
         dependent_repos_count: 506
-        downloads_last_month: 234580
+        downloads_last_month: 226541
         graph_tier: C
         volume_tier: B
         cross_check_divergence: 1.0
-        release_downloads: 33264
+        release_downloads: 33334
         release_assets: 4
         release_tier: D
         signal_basis: releases
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 4324
-        last_commit_age_days: 341
+        repo_age_days: 4335
+        last_commit_age_days: 352
         cohort: library
     governance:
       grade: D
@@ -86,6 +86,28 @@ A small Python library that renders distorted image CAPTCHAs and synthesizes aud
 You're building a Django or Flask form — a signup page, a comment box, a password-reset flow — and you want a self-hosted, no-third-party-call CAPTCHA so bots don't pound the endpoint. You don't want to wire in reCAPTCHA (sends user data to Google, needs a network round-trip) or stand up a service; you just want to generate a random 4–6 character string server-side, render it as a noisy PNG, stash the answer in the session, and check what the user typed. You `pip install captcha`, do `ImageCaptcha().generate('A3K9')`, hand the image bytes to your template, and compare on submit. For visually impaired users you also call `AudioCaptcha().generate(...)` to produce a spoken-digits WAV from the same code. It depends only on Pillow, so it drops into any Python web stack without extra infrastructure.
 
 You reach for it specifically when you want full control of the challenge lifecycle in your own process — the library is deliberately just the *renderer*. The text generation, the session/store binding, the expiry, and the equality check are yours to write, which is exactly what you want when you're avoiding any external CAPTCHA dependency.
+
+## How it works
+
+captcha is two renderers and nothing else. `ImageCaptcha` takes a string you chose, draws each character in a randomly picked font, rotates and *warps* it (stretches it with a random four-corner transform), scatters noise dots and a noise curve over the result, and hands back PNG bytes in memory; `AudioCaptcha` strings together per-character voice clips into a WAV and mixes background noise into it. **Everything around the picture is yours**: choosing the text, remembering the answer, expiring it, and checking what the user typed — typically a session key plus an equality check in your form view. Think of it as a rubber-stamp carver: it carves whatever text you hand it but keeps no record of what it carved. The bundled font and voice data are only a starting point; the README suggests replacing both with your own.
+
+![lepture-captcha — backbone user story](../../assets/flow/lepture-captcha.svg)
+
+<!-- flow-steps:begin (generated from flows/lepture-captcha.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it and build a renderer, ideally with your own fonts (and voice files for audio) — `ImageCaptcha(fonts=['/path/A.ttf', '/path/B.ttf'])`
+2. **You**: Pick a random challenge string and keep the answer in your session
+3. **You**: Ask it to render that string as an image or as audio — `image.generate('1234') · audio.generate('1234')`
+4. **captcha (lepture)**: Draws each character with a random font, rotation and warp, then adds noise dots and a curve — component: `captcha.image`
+5. **captcha (lepture)**: Returns the PNG (or a noise-mixed WAV) as in-memory bytes and keeps no state
+6. **You**: Serve the bytes; on submit, compare the user's input with the stored answer
+
+**Value**: A self-hosted image/audio CAPTCHA with no third-party call — only Pillow in your own process
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
@@ -125,7 +147,7 @@ You reach for it specifically when you want full control of the challenge lifecy
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Maintenance (2026-06).** Last pushed 2025-10; latest tag v0.7.1. Low commit volume but not dead — small fixes land and dependencies (Pillow) get tracked. **Maintained, low-velocity** — appropriate for a stable, narrow-scope library. [推断]
+- **Maintenance (2026-06).** Last pushed 2025-10; latest release v0.7.1 (2025-03-01, GitHub Releases). Low commit volume but not dead — small fixes land and dependencies (Pillow) get tracked. **Maintained, low-velocity** — appropriate for a stable, narrow-scope library. [推断]
 - **Governance / bus factor.** Personal project by a single prolific maintainer (lepture, also author of Authlib/mistune); contributor list is dominated by the owner. Bus-factor risk is real but mitigated by the tiny surface area — the library is "done" more than it is "active". [推断]
 - **Age & Lindy verdict.** Created 2014-11 (~11 years old) and still receiving occasional updates ⇒ a solid Lindy signal for a small utility; it has long outlived most CAPTCHA libraries. [推断]
 - **Adoption.** ~1.1k stars, ~189 forks, used as a lightweight self-hosted CAPTCHA generator across Python web projects. Modest but steady. [未验证]
@@ -134,6 +156,5 @@ You reach for it specifically when you want full control of the challenge lifecy
 ## Caveats (unverified)
 
 - [未验证] ~1.1k stars / ~189 forks as of 2026-06; star/fork counts are date-sensitive and indicative only.
-- [未验证] v0.7.1 is the latest tag observed; exact release date not confirmed here (no GitHub Releases entries returned by the API — tags only).
 - [推断] "Broken by modern OCR/solving services" is the general state of distorted-text CAPTCHA, not a measured claim about this specific renderer's outputs.
 - [推断] "Maintained, low-velocity" is inferred from commit recency + a single dominant contributor, not from a stated maintenance policy.

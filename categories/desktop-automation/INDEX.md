@@ -8,14 +8,14 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | B (5/6) | [→](cua.md) |
-| **PyAutoGUI** | Use it when you must script a desktop app with no API across Windows/macOS/Linux — but coordinate/pixel automation breaks silently on resolution, DPI, or theme changes, and dev has coasted since 2024. | C (4/6) | [→](pyautogui.md) |
+| **PyAutoGUI** | Use it when a Python script must click and type into a GUI-only desktop app on Windows, macOS or Linux — but pixel/coordinate automation breaks silently on DPI, resolution or theme changes, needs a real display, and upstream has been quiet since 2023. | C (4/6) | [→](pyautogui.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [Cua](cua.md) | ✅ | B (5/6) | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. |
-| [PyAutoGUI](pyautogui.md) | ✅ | C (4/6) | Use it when you must script a desktop app with no API across Windows/macOS/Linux — but coordinate/pixel automation breaks silently on resolution, DPI, or theme changes, and dev has coasted since 2024. |
+| [PyAutoGUI](pyautogui.md) | ✅ | C (4/6) | Buys a dozen-line, cross-platform mouse/keyboard robot with no RPA platform to learn; costs brittleness, no headless mode, and no accessibility-tree awareness. |
 | (alternatives named across the pages) | 未收录 | — | Substitutes referenced in each page's Comparison. |
 
 ## What belongs here

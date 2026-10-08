@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "llm-circuit-finder does", "zh": "llm-circuit-finder 做的"},
+  "steps": [
+    {"lane": "you", "en": "Build llama.cpp for your GPU, put a GGUF model on disk, install the Python deps", "zh": "按你的显卡编好 llama.cpp，备好 GGUF 模型，装 Python 依赖", "code": "pip install gguf requests tqdm"},
+    {"lane": "you", "en": "Start a sweep: your model, your llama-server, block sizes and the layer range to scan", "zh": "启动扫描：给出模型、llama-server、块大小和要扫的层范围", "code": "python sweep.py --model /path/to/model.gguf"},
+    {"lane": "them", "en": "For each candidate block, writes a temp GGUF with those layers physically duplicated", "zh": "对每个候选层块，写出一个把这几层物理复制一遍的临时 GGUF"},
+    {"lane": "them", "en": "Serves it with llama-server, runs math/EQ/reasoning probes, scores vs baseline, deletes it", "zh": "用 llama-server 加载，跑数学/情商/推理探针，与基线比分，然后删掉"},
+    {"lane": "you", "en": "Take the best-scoring block and spell it out as an explicit layer execution path", "zh": "挑出得分最好的层块，写成一条显式的层执行路径", "code": "python layer_path.py model.gguf improved.gguf -p \"0..14,12,13,14,15..39\""},
+    {"lane": "them", "en": "Writes a new GGUF whose forward pass runs that block twice, ready for llama-server", "zh": "写出新的 GGUF，前向时把这块层跑两遍，可直接给 llama-server 用"}
+  ],
+  "value": {"en": "You find which layer block, run twice, shifts your local model's reasoning — and get a GGUF to test it, with no training", "zh": "不训练就找出哪几层“多想一遍”能改变你本地模型的推理表现，并拿到可直接测的 GGUF"},
+  "sources": [
+    "https://github.com/alainnothere/llm-circuit-finder#quick-start (pip install gguf requests tqdm; python sweep.py --model /path/to/model.gguf --llama-server ...; python layer_path.py model.gguf improved.gguf -p \"0..14,12,13,14,15..39\" -v)",
+    "https://github.com/alainnothere/llm-circuit-finder#how-the-sweep-works (GGUF surgery per config, llama-server, three probe suites, compare to baseline, delete modified GGUF; tmpfs /dev/shm)",
+    "https://github.com/alainnothere/llm-circuit-finder#requirements (Linux, llama.cpp built for CPU/CUDA/Vulkan/Metal, Python 3.10+)"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Gemini CLI does",
+    "zh": "Gemini CLI 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install it, or run it once with npx",
+      "zh": "安装，或者用 npx 直接跑一次",
+      "code": "npm install -g @google/gemini-cli · npx @google/gemini-cli",
+      "component": {
+        "en": "gemini CLI (Node.js)",
+        "zh": "gemini 命令行（Node.js）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Start it in your project and choose Sign in with Google",
+      "zh": "在项目目录里启动，选择用 Google 账号登录",
+      "code": "gemini"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for what you want in plain language",
+      "zh": "用大白话说出你要什么"
+    },
+    {
+      "lane": "them",
+      "en": "Reads files, searches Google and fetches pages to gather context",
+      "zh": "读文件、用 Google 搜索、抓网页，把上下文凑齐"
+    },
+    {
+      "lane": "them",
+      "en": "Proposes edits and shell commands, pausing for your approval on each",
+      "zh": "提出改动和 shell 命令，每一步停下来等你批准"
+    },
+    {
+      "lane": "them",
+      "en": "Applies what you approved and reports what changed",
+      "zh": "执行你批准的部分，并汇报改了什么"
+    }
+  ],
+  "value": {
+    "en": "A working terminal agent on a free personal Google account, with no API key or billing setup",
+    "zh": "用免费的个人 Google 账号就能用上终端 agent，不用配 API key，也不用绑卡"
+  },
+  "sources": [
+    "https://github.com/google-gemini/gemini-cli#-installation (npx @google/gemini-cli, npm install -g @google/gemini-cli)",
+    "https://github.com/google-gemini/gemini-cli#-authentication-options (run gemini, choose Sign in with Google, free tier)",
+    "https://github.com/google-gemini/gemini-cli#-key-features (built-in Google Search grounding, file operations, shell, web fetch)",
+    "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/configuration.md (approval mode 'default' prompts for approval on each tool call)"
+  ]
+}

@@ -6,8 +6,8 @@ category: auth
 tags: [oauth, oauth2, oauth1, openid, authentication, social-login, python, federated-identity]
 language: Python
 license: MIT
-maturity: v1.x, low-activity (2026-06)
-last_verified: 2026-06-28
+maturity: "v1.3.0 on PyPI (2024-05); 2.0 announced on main, unreleased (as of 2026-10-08)"
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2025-12-12T08:28:51Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:49:10Z
+  computed_at: 2026-10-08T08:16:01Z
   overall: C
   overall_score: 2.2
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 289
+        last_commit_age_days: 300
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 4980
-        last_commit_age_days: 289
+        repo_age_days: 4991
+        last_commit_age_days: 300
         cohort: library
     governance:
       grade: D
@@ -83,12 +83,34 @@ health:
 
 当你想要一个*轻、可嵌入*、不强加框架或用户模型的社交登录客户端时你会选它——它把认证身份给你后就让开，会话/用户持久化交回你的应用。它很适合中小型应用，以及那种用完整身份平台属于杀鸡用牛刀的胶水代码。
 
+## 怎么用起来
+
+Authomatic 是进程内的 Python 库，不是一个服务：你在一个普通的 `CONFIG` 字典里把每家 provider 描述一次（用哪个 provider 类、你的 client key 和 secret、要申请的权限范围 scope），再把一个登录路由指向它。**整个与 provider 的握手——把用户重定向到 Google 或 GitHub、接回调、用一次性授权码换 access token、给 OAuth 1.0a 请求签名——都由库来做；“登录成功的用户在你的应用里算什么”由你决定。** 你的路由通过*适配器*调用 `authomatic.login()`——适配器是一层薄包装，让库能读你框架的请求、写它的响应（自带 Werkzeug/Flask、Django、Pyramid、webapp2 几种）；第一次调用时它什么都不返回，但已经安排好重定向，等 provider 把用户送回来，它返回一个结果，里面是统一格式的 `user` 和凭据。之后你把这个用户存进应用自己的用户表，还可以继续拿凭据调 provider 的 API。注意：`main` 分支的 README 宣布了一个去掉 OAuth 1.0a 和 OpenID 的 2.0，而 PyPI 上仍是三种协议都支持的 1.3.0（2024-05）。
+
+![authomatic — 主干用户故事](../../assets/flow/authomatic.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/authomatic.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：到各家 provider 注册应用，key 写进 CONFIG 字典 — `"class_": oauth2.Facebook`
+2. **你**：建一个 Authomatic 实例和一个带 provider 名的登录路由 — `Authomatic(CONFIG, "your secret string")`
+3. **你**：在路由里通过框架适配器调用 login — `authomatic.login(WerkzeugAdapter(request, response), provider_name)`
+4. **Authomatic**：把用户重定向到 provider，回调时用授权码换回凭据
+5. **Authomatic**：返回一个结果，带统一格式的 user，可再向 provider API 补全资料 — `result.user.update()`
+
+**价值**：一个调用接上多家“用 X 登录”，不强加框架和用户模型
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你想要完整的认证/身份平台（会话、RBAC、MFA、后台）。** Authomatic 是*登录客户端*，不是 IdP 或认证服务器——要托管身份、SSO、SAML、MFA 和用户管理，你要的是 Keycloak、Auth0/Okta，或 Django 自带 auth + allauth。
 - **你在 Django 上、想要开箱即用。** `django-allauth` 把社交 + 本地账号与 Django 的用户/会话模型开箱集成；Authomatic 把持久化留给你，在 Django 上具体而言更费事。
 - **你需要 SAML / 企业 SSO。** Authomatic 面向 OAuth/OpenID 的消费级登录；企业 SAML2 联合请用 SAML 库（python3-saml）或一个 IdP。
 - **你需要一个活跃、快速维护的依赖。** 活跃度低、发布节奏慢；OAuth provider 的怪癖和安全修复可能滞后——下注前请核实近期提交和 provider 支持。[推断]
+- **你长期依赖 OAuth 1.0a 或 OpenID 的 provider。** `main` 分支的 README 宣布 2.0 将移除 OAuth 1.0a（Twitter、Flickr、Xero 等要么迁到 OAuth 2.0、要么去掉）和 OpenID，并要求 Python 3.10 以上；可 PyPI 上还没有 2.0，老模块也仍在代码树里（2026-10-08 查）。要么心里有数地钉住 `authomatic<2`，要么改用仍保留 OAuth 1 客户端的 `requests-oauthlib`。
 - **你是熟练的 OAuth 实现者、只对接一个 provider。** 单个 OAuth2 provider，用聚焦的客户端（`authlib`、`requests-oauthlib`）或 provider SDK 可能比多协议抽象更简单。
 
 ## 横向对比
@@ -122,9 +144,9 @@ health:
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** 最后 push 于 2025-12；有近期活动但节奏慢、issue 数不低。读作**有维护但低速**，并非废弃。未归档。[推断]
+- **维护（2026-10）。** 最后 push 在 2025-12-12（加了一个 FUNDING 文件）；最后一次代码改动是 2025-10-21 合入的 2.0 分支，来自一次 Google Summer of Code 项目。2026-02 到 2026-05 之间提的五个 PR 都没人审，PyPI 上最新的仍是 2024-05 的 1.3.0。读作**低速、两波之间趋于停滞**，并非废弃；未归档。[推断]
 - **治理 / bus factor。** 托管在 `authomatic` GitHub **组织**下，历来有多位贡献者，但明显由一小撮核心主导。组织归属比个人账号略好。[推断]
-- **年龄与 Lindy 判断。** 约 13 年（2013-02 创建）且仍在偶尔更新⇒ **尚可的 Lindy** 信号：存活久、稳定，但被近期低速所抵消一部分。[推断]
+- **年龄与 Lindy 判断。** 约 13 年半（2013-02 创建），仍会一阵一阵地有人投入，最近一次是 2025 年的 GSoC⇒ **尚可的 Lindy** 信号：存活久、稳定，但被近期低速和一个尚未发布的破坏性 2.0 抵消一部分。[推断]
 - **采用度。** 约 1k star；一个成熟但小众的选择，如今与更活跃的 Authlib 和（在 Django 上）allauth 竞争。[未验证]
 - **风险标记。** 认证库带安全敏感性，所以修复节奏慢很要紧：依赖前请确认 provider 支持和近期安全提交。MIT 许可，未发现 relicense 历史。[推断]
 
@@ -133,5 +155,6 @@ health:
 - [未验证] 截至 2026-06 约 1k star、2025-12 最后 push；star 数和日期会漂移，仅供参考。
 - [未验证] 确切的 Python 最低版本、支持的框架 adapter 和运行时依赖清单由当前打包元数据决定且随版本变化。
 - [未验证] 预配置 OAuth provider 的集合及其当前可用状态取决于会变的第三方端点；请对照当前仓库核实你需要的那个 provider。
-- [推断] “有维护但低速”是从 2025-12 最后 push 和缓慢的 tag 节奏推断，而非实测的发布间隔数字。
+- [未验证] 截至 2026-10-08，2.0 的状态自相矛盾：`main` 上的 README 和 `setup.cfg`（`version = 2.0`）宣布移除 OAuth 1.0a/OpenID 和 Python 3.10 以下支持，但 `authomatic/providers/oauth1.py`、`openid.py` 仍定义着各自的 provider 类，`setup.py` 仍列着 OpenID 可选依赖，PyPI 最新版仍是 1.3.0。按哪种行为来用之前先复查。
+- [推断] “低速”是从 2025-12 最后 push 和缓慢的 tag 节奏推断，而非实测的发布间隔数字。
 - [推断] 安全节奏的提醒是认证库的一般属性加上观察到的低速，而非发现了某个具体未修补漏洞。

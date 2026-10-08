@@ -4,19 +4,19 @@ slug: markdown-it
 repo: https://github.com/markdown-it/markdown-it
 category: markdown-tools
 tags: [markdown, parser, commonmark, gfm, plugin, javascript, html, tokenization]
-language: JavaScript
+language: TypeScript
 license: MIT
-maturity: v14.0.x, active, ~18k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v15.0.2 (2026-09-11; v15.0.0 2026-07-30), active, ~22k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: library
 upstream:
-  pushed_at: 2026-07-03T11:55:46Z
+  pushed_at: 2026-09-12T05:27:05Z
   default_branch: master
-  default_branch_sha: 2d9bbea7df2ab1a48caecfafc39cb8599f193d3c
+  default_branch_sha: 3c51991c32aaa2b002a52c009334ebe5752c84b3
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:34:05Z
+  computed_at: 2026-10-08T08:21:32Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 12
+        last_commit_age_days: 27
         active_weeks_13: 8
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 47.7
-        qualifying_issues: 7
+        median_ttfr_hours: 28.5
+        qualifying_issues: 8
         band: default
         window_offset_days: 3
         source: issue
@@ -47,16 +47,16 @@ health:
         registry: npmjs.org
         canonical_package: markdown-it
         dependent_repos_count: 205037
-        downloads_last_month: 105103424
+        downloads_last_month: 119440414
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4295
-        last_commit_age_days: 12
+        repo_age_days: 4310
+        last_commit_age_days: 27
         cohort: library
     governance:
       grade: D
@@ -74,68 +74,88 @@ health:
         relicense_36mo: false
         content_license: null
 ---
-
 # markdown-it
 
-
-A fast, pluggable JavaScript markdown parser that follows CommonMark and GFM, tokenizing to an AST before rendering to HTML — the safer, stricter, more extensible alternative to marked.
-
+Your site renders authors' Markdown in JavaScript, and you keep hitting one of two walls: the simple renderer turns edge cases into HTML that differs from what GitHub or CommonMark (the de-facto Markdown spec) would show, or your team wants its own syntax — `::: warning` boxes, footnotes, heading anchors — and there is no clean place to add it. markdown-it is a CommonMark parser for Node and browsers whose every syntax rule is a replaceable plugin, and it is safe by default: raw HTML is off and `javascript:` links are refused.
 
 ![markdown-it — health radar](../../assets/health/markdown-it.svg)
 
 ## When to use
 
-You're building a static site generator, a documentation system, or a content platform where authors write Markdown and you need reliable, spec-compliant HTML output. You want a parser that strictly follows CommonMark with GFM extensions, and you need the ability to plug in extras — emoji, math rendering, heading anchors, syntax-highlighted code blocks — without rebuilding the parser from scratch. You install `markdown-it`, configure a few plugins, and get clean, safe HTML that you can cache, transform, or inject into your templates. It's the right reach when *correctness and extensibility* matter: your docs site, your CMS, your server-side renderer, or any place where Markdown is user-facing content.
+You are building a docs site, a static site generator, a CMS editor preview or a chat UI in JavaScript/TypeScript, and authors write Markdown that you turn into HTML. The pain is concrete: a link like `[docs](https://example.com/a_(b))` or a nested list renders differently from what authors see on GitHub, and product asks for "callout boxes", footnotes and `#` anchors on every heading. You reach for markdown-it because its core follows the CommonMark spec, it ships tables, strikethrough, typographer and linkify as options, and everything else is an npm plugin you register with `.use()` — `markdown-it-container`, `markdown-it-footnote`, `markdown-it-anchor` and hundreds more. VitePress builds on it, so the docs-site plugin catalog is large.
+
+Pick it over [marked](marked.md) when spec conformance, safe defaults and custom syntax matter more than the smallest one-call API; pick it over [remark](remark.md) when you want Markdown→HTML with plugins, not a syntax-tree toolchain for linting, rewriting or MDX.
+
+## How it works
+
+markdown-it parses in three nested rule chains — `core`, `block` (headings, lists, fences, tables) and `inline` (emphasis, links, code spans) — and produces a flat token stream: a list of objects like "paragraph opens", "text", "link opens" that record what was found. A renderer then walks those tokens and writes HTML. What it does for you: the CommonMark algorithm, link validation (it refuses `javascript:`, `vbscript:`, `file:` and most `data:` URLs), and the built-in options (`html`, `linkify`, `typographer`, the `commonmark` / `default` / `zero` presets). What you do: choose a preset and options, register plugins, and — when you need custom syntax or output — add or replace a rule in a chain or override a renderer rule for one token type. Think of it as an assembly line with named stations: plugins insert, swap or remove stations, the line itself stays the same.
+
+![markdown-it — backbone user story](../../assets/flow/markdown-it.svg)
+
+<!-- flow-steps:begin (generated from flows/markdown-it.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the package — `npm install markdown-it`
+2. **You**: Create an instance and register the plugins your syntax needs — `new MarkdownIt().use(markdownItFootnote)`
+3. **You**: Render each document — `const result = md.render('# markdown-it rulezz!')`
+4. **markdown-it**: Runs the core, block and inline rule chains, plugins included, into a token stream — component: `parser rule chains`
+5. **markdown-it**: Renders tokens to HTML, refusing javascript: links and (by default) raw HTML — component: `renderer`
+
+**Value**: CommonMark-conformant, safe-by-default HTML, with house syntax added as plugins instead of a forked parser
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a full AST manipulation toolchain.** markdown-it is a parse-and-render pipeline, not a general document-transform engine. For linting, rewriting, MDX, or arbitrary AST passes, use remark / unified.
-- **You want the absolute smallest bundle for simple Markdown→HTML.** marked is leaner and has a smaller API surface for one-call rendering; markdown-it's plugin architecture and token model add weight you may not need.
-- **You need non-HTML output natively.** markdown-it renders to HTML; producing PDF, React elements, or other formats requires extra adapters or custom renderer rules. [未验证]
-- **You're parsing untrusted Markdown without a sanitizer.** Like marked, markdown-it does not sanitize output HTML by default — raw HTML passes through unless you enable `html: false` or run the output through a sanitizer. [推断]
-- **You want a streaming or memory-constrained parser.** For very large documents or streaming tokenization, micromark's streaming-oriented design may be more appropriate.
+- **You need a syntax-tree toolchain** — linting, rewriting Markdown back to Markdown, MDX, arbitrary AST passes. markdown-it's flat token stream is built for rendering; use [remark](remark.md) (mdast trees, unified plugins).
+- **You want the smallest, simplest one-call renderer for trusted content.** [marked](marked.md) has a smaller API and fewer concepts; markdown-it's rule chains and plugin model are weight you only need if you extend it.
+- **You must let users write raw HTML.** That requires `html: true`, and then the output is no longer safe by default — add a sanitizer such as DOMPurify or sanitize-html (not indexed), or keep HTML off and offer the feature through plugins, as markdown-it's own safety docs recommend.
+- **You need React elements or non-HTML output.** The core renderer emits HTML strings; for React components from Markdown use react-markdown (not indexed, remark-based), and for DOCX/LaTeX/EPUB use [Pandoc](pandoc.md).
+- **You depend on third-party plugins or deep imports and cannot touch them yet.** v15.0.0 (2026-07-30) removed `markdown-it/lib/*` subpath exports, removed `StateBlock#ddIndent`, and moved to `linkify-it` v6 (no fuzzy `example.com` links by default). Plugins from the markdown-it org are v15-compatible; for others, pin 14.x until their authors confirm v15.
+- **You need byte-exact positions for every construct** (editors, linters reporting columns). Use [micromark](micromark.md), which emits concrete tokens with positional info for everything.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [marked](marked.md) | ✅ | Choose marked when you want a simpler, faster one-call renderer with a smaller footprint. | Simpler, faster one-call renderer with a smaller footprint; less spec-strict and a smaller plugin catalog. |
-| [remark](remark.md) | ✅ | Choose remark when you need a full mdast AST pipeline for parsing, transforming, linting, and serializing Markdown or MDX. | Full mdast AST pipeline for parsing, transforming, linting, and serializing (Markdown, MDX); far more powerful and far heavier — a toolchain, not a one-call renderer. |
-| [micromark](micromark.md) | ✅ | Choose micromark when you need the low-level CommonMark/GFM tokenizer underneath remark. | The low-level CommonMark/GFM tokenizer underneath remark; correct and streaming-oriented, but you build the rendering layer yourself. |
-| [CommonMark](commonmark.md) | ✅ | Choose CommonMark when you need the spec's own reference implementation rather than a production renderer with plugins. | The spec's own reference implementation; the conformance yardstick, but fewer GFM niceties and not optimized as a production renderer. |
-| [Pandoc](pandoc.md) | ✅ | Choose Pandoc when you need a universal document converter across dozens of formats, not just Markdown→HTML. | Haskell-based universal doc converter across dozens of formats; far heavier and not embeddable in a JS app. |
-| Showdown | 未收录 | Choose Showdown only when maintaining legacy code that already depends on it. | Older JS markdown converter; less active, less spec-compliant, and generally superseded by markdown-it or marked. |
-| [Goldmark](goldmark.md) | ✅ | Choose Goldmark when you're in the Go ecosystem, for example Hugo. | Go's markdown parser, used in Hugo; not available in JS. |
+| [marked](marked.md) | ✅ | For trusted Markdown where a tiny API and quick setup matter most, pick marked; when you need CommonMark conformance, safe defaults or custom syntax plugins, pick markdown-it. | marked is simpler and long-established but not CommonMark-strict and does not sanitize; markdown-it costs more concepts (rules, tokens) in exchange for extensibility. |
+| [remark](remark.md) | ✅ | When the job is transforming, linting or serializing Markdown/MDX, pick remark; when the job is rendering Markdown to HTML with a few extensions, pick markdown-it. | remark gives a full mdast tree and the unified plugin ecosystem, at the cost of a multi-package pipeline; markdown-it is one package with a render call. |
+| [micromark](micromark.md) | ✅ | Pick micromark when you need the smallest spec-exact parser or positional tokens for every byte; pick markdown-it when you want a large catalog of ready-made syntax plugins. | micromark matches the reference parsers more strictly and powers remark, but its syntax extensions are hard to write; markdown-it extensions are easy to write and plentiful. |
+| [CommonMark](commonmark.md) | ✅ | Use commonmark.js as a conformance yardstick or when you want the reference implementation verbatim; use markdown-it for production rendering with GFM tables and plugins. | The reference implementation tracks the spec exactly but has no plugin system or GFM extras. |
+| Showdown | not indexed | Keep Showdown only in legacy code that already depends on it; new projects should pick markdown-it for its CommonMark core and safe defaults. | Showdown is an older converter that predates CommonMark; switching costs a migration of options and extensions. |
+| [Goldmark](goldmark.md) | ✅ | In Go services (Hugo, Go backends) pick Goldmark; in JavaScript/TypeScript pick markdown-it — the runtime decides. | Both are CommonMark parsers with extension APIs; Goldmark has no third-party deps and keeps source positions, markdown-it has the bigger plugin catalog. |
 
 ## Tech stack
 
-- **Language:** JavaScript (ES2015+); ships with TypeScript type definitions.
-- **Runtime targets:** Node.js and browser; distributed as ESM and UMD builds.
-- **Architecture:** Token-based pipeline — a parser turns Markdown into a token stream/AST, then a renderer walks the tokens to emit HTML. Plugins hook into both phases.
-- **Standards:** CommonMark spec-compliant core with GFM extensions (tables, strikethrough, task lists, autolinks) available via `@markdown-it/gfm` or built-in options depending on version. [推断]
+- **Language:** TypeScript since v15.0.0 (was JavaScript); bundled type declarations replace `@types/markdown-it`.
+- **Distribution:** prebuilt ESM and CJS under `dist/`, plus a `markdown-it/browser` export (ESM and UMD minified); a `markdown-it` CLI binary.
+- **Architecture:** `core` → `block` → `inline` rule chains producing a token stream; a renderer with per-token-type rules; plugins hook in via `.use()`.
+- **Syntax:** CommonMark core; tables and strikethrough built in; linkify and typographer as options. Footnotes, task lists, containers, anchors, math come from plugins.
 
 ## Dependencies
 
-- **Runtime:** none required for the core parser — it is self-contained.
-- **Plugins:** the ecosystem is npm-based (`markdown-it-emoji`, `markdown-it-anchor`, `markdown-it-math`, `markdown-it-container`, etc.) — each is a separate package you install and register with `.use()`.
-- **Install:** `npm install markdown-it`; also available via CDN.
+- **Runtime (npm):** `entities`, `linkify-it` (v6), `mdurl`, `punycode.js`, `uc.micro`, and `argparse` for the CLI. No services.
+- **Plugins:** each is a separate npm package registered with `.use()`; the markdown-it org maintains the common ones.
+- **Install:** `npm install markdown-it`, or a CDN mirror of npm for browsers.
 
 ## Ops difficulty
 
-**Low.** It's a library — add it to your dependency tree, require/import it, and call `.render()`. No service to deploy, no datastore to operate. The only operational note is plugin hygiene: each plugin you add is a new dependency to audit and update, and the security model (raw HTML passthrough) requires you to configure `html: false` or sanitize output if your Markdown is untrusted.
+**Low.** A library with no service, datastore or daemon. The upkeep is plugin hygiene — each plugin is another dependency to audit and keep compatible across majors (v15 just broke deep imports) — and the security posture: keep `html` off for untrusted input, or sanitize when you turn it on. Cap input size if users can submit huge documents; v15.0.1 and v15.0.2 fixed several quadratic-time cases.
 
 ## Health & viability
 
-- **Maintenance — active (last push 2026-07).** v14.0.x releases through mid-2026; regular commits and releases for a mature, scope-settled parser. [推断]
-- **Governance & bus factor.** Community-maintained under the `markdown-it` org on GitHub — a small team rather than a single person, which de-risks the bus factor versus a one-author library [推断]. Not vendor-controlled; no commercial tier gating features.
-- **Age & Lindy verdict — old and still active ⇒ strong Lindy.** Created ~2014 (~12 years old) and still shipping in 2026: a solid age × still-active signal. A parser that has been the default choice for VuePress, VitePress, and many static site generators for years is a safer long-term bet than a young alternative.
-- **Adoption & ecosystem.** Widely adopted in the JS static-site ecosystem — VuePress, VitePress, and numerous documentation generators use it. The plugin ecosystem is extensive (emoji, math, anchors, diagrams, containers, etc.) and well-documented. [推断]
-- **Risk flags — minimal.** MIT-licensed, no relicensing history, no open-core gating. The main caveat is the same as any Markdown parser: security is on you — raw HTML is not sanitized by default, so configure appropriately for untrusted input.
+- **Maintenance — active (as of 2026-10-08).** v15.0.0 (2026-07-30) was a TypeScript migration and packaging overhaul; v15.0.1 (2026-08-27) and v15.0.2 (2026-09-11) followed with parsing and security fixes.
+- **Governance — small team, one lead.** Owned by the `markdown-it` GitHub org; Vitaly Puzrin (`puzrin`) wrote nearly all recent commits, and over the last year most commits come from one person (governance D). Not vendor-controlled, no commercial tier.
+- **Age & Lindy — ~12 years old and still shipping majors.** Created 2014-12; a strong age × still-active signal.
+- **Adoption — very high.** 119,440,414 npm downloads last month and 205,037 dependent repositories (2026-10-08 scorer); VitePress depends on it.
+- **Risk flags.** MIT, no relicensing. v15 broke internal imports and changed linkify defaults — check third-party plugins before upgrading.
 
 ## Caveats (unverified)
 
-- [未验证] ~18k GitHub stars and v14.0.x line as of 2026-07; star counts and versions drift release-to-release — treat as indicative.
-- [推断] "Faster than marked in many benchmarks" reflects community benchmarks; your actual throughput depends on document size, plugin count, and runtime.
-- [推断] "Used by VuePress, VitePress" is based on public documentation and dependency trees; confirm for your specific version.
-- [未验证] No built-in non-HTML output: producing React elements, PDF, or other formats requires custom renderer rules or third-party adapters.
-- [未验证] Plugin count and bundle size correlate — loading many plugins can noticeably increase parse time and bundle size.
+- [未验证] The plugin-catalog size ("hundreds") is not counted; it rests on the npm `markdown-it-plugin` keyword the README links.
+- [推断] marked not sanitizing and not being CommonMark-strict is taken from the micromark README's comparison and the marked page, not re-tested here.
+- [未验证] VuePress's dependency on markdown-it was not re-checked in this pass; VitePress's `package.json` lists `markdown-it ^14.3.2` (2026-10-08), so it had not yet moved to v15.
+- [推断] Performance relative to marked or micromark depends on document size, plugin count and runtime; no benchmark was run.
+- [未验证] The download and dependent-repo figures come from the health scorer's registry query on 2026-10-08.

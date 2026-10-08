@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Codex does", "zh": "Codex 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI", "zh": "安装命令行工具", "code": "npm install -g @openai/codex · brew install --cask codex", "component": {"en": "codex binary (Rust)", "zh": "codex 可执行文件（Rust）"}},
+    {"lane": "you", "en": "Run it inside your repo and sign in with your ChatGPT account", "zh": "在仓库目录里运行，用 ChatGPT 账号登录", "code": "codex"},
+    {"lane": "you", "en": "Describe the change you want in the terminal UI", "zh": "在终端界面里说清楚要改什么"},
+    {"lane": "them", "en": "Reads the relevant files and plans edits and commands with the model", "zh": "读相关文件，和模型一起规划要改的代码和要跑的命令"},
+    {"lane": "them", "en": "Edits and runs tests inside the OS sandbox, asking before leaving its bounds", "zh": "在操作系统沙箱里改代码、跑测试，越界前先问你", "component": {"en": "Seatbelt · bubblewrap sandbox", "zh": "Seatbelt / bubblewrap 沙箱"}},
+    {"lane": "you", "en": "Review the diff it shows and keep or redirect the work", "zh": "审它给出的 diff，留下或让它改方向"}
+  ],
+  "value": {"en": "The edit-run-fix loop happens on your machine without you copy-pasting between chat and terminal", "zh": "改代码、跑测试、再修的循环直接在你机器上完成，不用在聊天窗口和终端之间来回粘贴"},
+  "sources": [
+    "https://github.com/openai/codex#quickstart (npm install -g @openai/codex, brew install --cask codex, run codex, Sign in with ChatGPT)",
+    "https://developers.openai.com/codex/concepts/sandboxing (default permissions mode sandboxes commands; Seatbelt on macOS, bubblewrap on Linux)",
+    "https://developers.openai.com/codex/agent-approvals-security (Auto preset edits and runs in the workspace, asks for approval outside it)"
+  ]
+}

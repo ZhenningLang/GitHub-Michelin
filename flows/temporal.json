@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Temporal does", "zh": "Temporal 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and start a local dev server", "zh": "安装 CLI，启动本地开发服务端", "code": "brew install temporal · temporal server start-dev", "component": {"en": "Temporal CLI", "zh": "Temporal CLI"}},
+    {"lane": "them", "en": "Runs the server services with a Web UI for inspecting workflows", "zh": "跑起服务端各服务，并提供查看工作流的 Web UI", "code": "http://localhost:8233"},
+    {"lane": "you", "en": "Write the flow as a deterministic workflow plus side-effecting activities in an SDK", "zh": "用 SDK 把流程写成确定性的 workflow 加有副作用的 activity", "code": "@workflow.defn · @activity.defn"},
+    {"lane": "you", "en": "Run a worker on a task queue and start the workflow from a client", "zh": "在一个任务队列上跑 worker，再从客户端启动工作流", "code": "task_queue=\"my-task-queue\"", "component": {"en": "your worker process", "zh": "你的 worker 进程"}},
+    {"lane": "them", "en": "Appends every step to the workflow's event history and retries failed activities", "zh": "把每一步追加进工作流的事件历史，失败的 activity 自动重试", "component": {"en": "History service", "zh": "History 服务"}},
+    {"lane": "them", "en": "If a worker dies, another replays the history and resumes at the same step", "zh": "worker 挂了，另一个 worker 重放历史，从同一步继续"}
+  ],
+  "value": {"en": "Multi-step processes survive crashes and deploys without hand-written state tables, retry loops or polling crons", "zh": "多步流程扛得住崩溃和发布，不用再手写状态表、重试循环和轮询 cron"},
+  "sources": [
+    "temporalio/temporal README.md (main, retrieved 2026-10-08): brew install temporal; temporal server start-dev; Temporal Web UI at http://localhost:8233",
+    "temporalio/temporal docs/architecture/README.md (main, retrieved 2026-10-08): event sourcing — append-only history replayed to recreate state; workers poll task queues; History/Matching/Frontend services",
+    "temporalio/sdk-python README.md (main, retrieved 2026-10-08): @workflow.defn; @activity.defn; Worker(client, task_queue=\"my-task-queue\", ...); await client.execute_workflow(...)"
+  ]
+}

@@ -7,7 +7,7 @@ tags: [research-agent, firecrawl, vercel-ai-sdk, typescript, iterative-search]
 language: TypeScript
 license: MIT
 maturity: untagged (no GitHub releases), active, last pushed 2026-04 (as of 2026-06)
-last_verified: 2026-06-26
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-04-11T23:58:25Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:57:11Z
+  computed_at: 2026-10-08T08:17:32Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 169
+        last_commit_age_days: 179
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 601
-        last_commit_age_days: 169
+        repo_age_days: 611
+        last_commit_age_days: 179
         cohort: app
     governance:
       grade: D
@@ -76,6 +76,29 @@ health:
 
 如果你已经有 Firecrawl key 和一个 OpenAI 兼容端点，只想要一个可脚本化的 agent——从命令行或一个很薄的 Express API 把问题变成带来源的报告，而不用搭数据库、向量库或 UI——它也很合适。默认路径用 OpenAI 的 `o3-mini` 推理模型，检测到 Fireworks key 时自动切到 DeepSeek R1，并接受任意 OpenAI 兼容的 base URL（OpenRouter、Gemini 兼容网关等），所以你能保留自己的模型/供应商选择。
 
+## 怎么用起来
+
+所谓“深度研究”agent，就是一个循环：想出搜索词，读回来的结果，判断还有什么不知道，再搜一轮——像一个图书管理员带着越来越尖的问题反复跑回书库。这个仓库就是这个循环，几乎没别的。**循环由它来跑**：拿到你的问题后，它让 LLM 想几条网页搜索词，交给 Firecrawl（一个托管的搜索加抓取 API，把网页还原成干净文本），再让 LLM 从结果里提炼简短的“要点”和后续方向；深度还没用完，就带着到目前为止学到的一切，沿新方向递归下去。*广度*是每轮发几条搜索，*深度*是往下走几轮。深度用完后，它写出 `report.md`（或简短的 `answer.md`），把要点连同来源链接列出来。**钥匙和旋钮由你来给**：一个 Firecrawl key、一个兼容 OpenAI 接口的 LLM key 或地址、问题本身、广度和深度，以及它开头反问的几个澄清问题的答案。其余想改的，直接改它那几百行 TypeScript。
+
+![deep-research — 主干用户故事](../../assets/flow/deep-research.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/deep-research.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好依赖，Firecrawl 与 LLM key 写进 .env.local — `FIRECRAWL_KEY · OPENAI_KEY`
+2. **你**：启动后输入问题，选好广度和深度 — `npm start`
+3. **deep-research**：反问几个追问，弄清你到底想要什么
+4. **你**：回答这些追问
+5. **deep-research**：生成搜索词，经 Firecrawl 抓取结果，提炼要点和下一步方向
+6. **deep-research**：深度没用完就带着已有要点沿新方向递归
+7. **deep-research**：把所有要点和来源链接写成一份 Markdown 报告
+
+**价值**：一个问题变成一份带出处的报告，而背后的循环短到一口气就能读完、拿去改
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你要一个开箱即用的产品或 UI。** 这是一个 CLI/脚本加一个极简 Express 端点，没有鉴权、历史记录或前端。想要托管式问答引擎请看 [Vane](vane.zh.md) 或某个 SaaS。
@@ -108,7 +131,7 @@ health:
 - **运行时：** Node.js 22.x(`engines` pin 22.x)；通过 `tsx` 运行（无构建步骤），或用自带的 Docker 镜像 / `docker compose`。
 - **外部服务（必需）:** 一个 Firecrawl API key（`FIRECRAWL_KEY`）用于搜索+抓取，以及一个 LLM key——`OPENAI_KEY`（OpenAI / 兼容）和/或用于 DeepSeek R1 的 `FIREWORKS_KEY`。可选 `OPENAI_ENDPOINT` / `FIRECRAWL_BASE_URL` 接自定义/自托管端点。
 - **无数据库/向量库/队列**——状态在进程内；报告落在本地文件系统。
-- **安装：** clone、`npm install`、配 `.env` key、`npm start`。Docker 路径：`docker compose up -d` 后 `docker exec -it deep-research npm run docker`。
+- **安装：** clone、`npm install`、在 `.env.local` 里配 key、`npm start`。Docker 路径：`docker compose up -d` 后 `docker exec -it deep-research npm run docker`。
 
 ## 运维难度
 

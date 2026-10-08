@@ -6,8 +6,8 @@ category: media-download
 tags: [video-download, youtube, cli, media, extractor, python, downloader]
 language: Python
 license: Unlicense
-maturity: "active-but-slowing, last tagged release 2021.12.17, master still pushed ~2026-02, ~140.6k stars (2026-06)"
-last_verified: 2026-06-28
+maturity: "last tagged release 2021.12.17 (still the PyPI version); last master commit 2025-11-26, quiet since (as of 2026-10-08), ~141.4k stars (2026-10)"
+last_verified: 2026-10-08
 type: tool
 upstream:
   pushed_at: 2026-02-19T16:45:25Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:09:17Z
+  computed_at: 2026-10-08T08:22:02Z
   overall: B
   overall_score: 2.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 306
+        last_commit_age_days: 316
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 33.7
-        qualifying_issues: 3
+        median_ttfr_hours: 31.5
+        qualifying_issues: 6
         band: relaxed_solo
         window_offset_days: 1
         source: issue
@@ -47,11 +47,11 @@ health:
         registry: pypi.org
         canonical_package: youtube_dl
         dependent_repos_count: 3990
-        downloads_last_month: 148672
+        downloads_last_month: 146459
         graph_tier: B
         volume_tier: C
         cross_check_divergence: 1.0
-        release_downloads: 62789396
+        release_downloads: 62798190
         release_assets: 990
         release_tier: A
         signal_basis: releases
@@ -59,8 +59,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 5810
-        last_commit_age_days: 306
+        repo_age_days: 5821
+        last_commit_age_days: 316
         cohort: tool
     governance:
       grade: D
@@ -91,9 +91,30 @@ health:
 
 当来源根本不是 YouTube 时你也会用它——它的价值在于 extractor 目录（约 1000 个站点：Vimeo、SoundCloud、通用 HTML5 `<video>`，以及大量地区性和小众站点）。你把一个 URL 丢给它，只要存在对应 extractor，它就把该站点的各种怪癖（鉴权、分页、manifest 解析）归一化成统一的 `--list-formats` / 格式选择接口，于是你的脚本可以对每个受支持的站点一视同仁地处理。
 
+## 怎么用起来
+
+youtube-dl 是一个 Python 脚本：运行、下载、退出。**它替你做的：**对每个 URL 找到匹配的*抽取器*——按站点写的一段代码，知道这个站点的播放器把真正的媒体地址藏在哪里——拿回一份格式列表和元数据（标题、上传者、在播放列表里的位置）。默认情况下，它挑出最佳的纯视频格式和最佳的纯音频格式，分别下载，再让 ffmpeg（另装的媒体处理工具）合成一个文件；没装 ffmpeg 就退回到最佳的单文件格式。文件名按你的输出模板生成，所以不管链接来自哪个站点，脚本看到的都是同一条命令、同一套命名。**你要做的：**装好它和 ffmpeg，传入 URL 和选项，并保持它是最新的。问题就出在最后这一步：`pip install` 给你的是 2021.12.17 这个版本（README 里 `yt-dl.org/downloads/latest` 的下载链接现在会跳到 404），之后的站点修复只在 master 上，所以要下 YouTube，要么从 git 装，要么换 [yt-dlp](yt-dlp.zh.md)。
+
+![youtube-dl — 主干用户故事](../../assets/flow/youtube-dl.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/youtube-dl.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好脚本（要最佳画质或抽音频就再装 ffmpeg） — `sudo -H pip install --upgrade youtube-dl`
+2. **你**：对视频或播放列表地址运行它，用输出模板定文件名 — `youtube-dl -o '%(title)s.%(ext)s' URL`
+3. **youtube-dl**：找到这个站点的抽取器，读出可用格式和元数据 — 组件：`站点抽取器`
+4. **youtube-dl**：默认挑最佳视频和最佳音频，分别下载后用 ffmpeg 合成一个文件 — `-f bestvideo+bestaudio/best`
+5. **youtube-dl**：按模板生成的名字把文件写到磁盘
+
+**价值**：脚本对每个支持的站点都用同一条下载命令，文件名可预期
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **你需要它今天还能真的在 YouTube 上工作。** 这是决定性的筛子。youtube-dl 最后一个*打了 tag* 的发布是 2021.12.17,master 分支的更新也已明显放缓；真正在积极维护的分叉 **yt-dlp** 修复速度快得多，也是大多数人在 YouTube 改播放器/签名逻辑后实际会去跑的那个。任何对 YouTube 有硬依赖的场景，默认用 yt-dlp，把 youtube-dl 当作遗留上游。[推断]
+- **你需要它今天还能真的在 YouTube 上工作。** 这是决定性的筛子。youtube-dl 最后一个*打了 tag* 的发布是 2021.12.17（`pip install` 装到的仍是它），master 自 2025-11-26 起也没有新提交（截至 2026-10-08 约 10 个月）；真正在积极维护的分叉 **yt-dlp** 修复速度快得多，也是大多数人在 YouTube 改播放器/签名逻辑后实际会去跑的那个。任何对 YouTube 有硬依赖的场景，默认用 yt-dlp，把 youtube-dl 当作遗留上游。[推断]
 - **重 JS / SPA、且没有 extractor 的站点。** 它不跑浏览器，也不执行任意页面 JavaScript；那些把媒体锁在重客户端 JS、DRM（Widevine/PlayReady）或逐请求 token 机制背后、又没有现成 extractor 的站点，只会直接失败。它不是 headless 浏览器爬虫。
 - **大规模下的地区限制、登录墙或限流。** 它能传 cookie/代理，但不会帮你解 CAPTCHA、轮换身份或挡 IP 封禁；用单个 IP 批量下载会被限速或封掉。绕地区/ToS 是你的问题，不是工具的。
 - **法律 / ToS 暴露。** 下载受版权保护的媒体、或违反站点服务条款，责任在你；很多目标站点禁止下载，而 youtube-dl 本身在 2020 年也曾遭遇 GitHub 仓库被 DMCA 下架（后被恢复）。在没核对法律和 ToS 前，别拿它做产品底座。
@@ -130,17 +151,18 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 33.7 小时，基于 3 个 qualifying issues/PRs。
-- **维护——吃老本；活跃路径在分叉上（最近一次 push 约 2026-02，最后一个打 tag 的发布是 2021.12.17，截至 2026-06）。** 未归档、master 仍偶有提交，但面对一个快速变动的目标（YouTube 改播放器/签名），打 tag 发布落下 4 年以上正是决定性信号：上游落后，yt-dlp 才发修复。把 youtube-dl 当遗留上游看待 [推断]。
+- **响应速度**：Grade A——中位首次响应时间 31.5 小时，基于 6 个 qualifying issues/PRs。
+- **维护——吃老本；活跃路径在分叉上（master 最后一次提交 2025-11-26，最后一个打 tag 的发布是 2021.12.17，截至 2026-10-08）。** 未归档，master 到 2025 年底还零星收过 YouTube 修复，此后没有，但面对一个快速变动的目标（YouTube 改播放器/签名），打 tag 发布落下 4 年以上正是决定性信号：上游落后，yt-dlp 才发修复。把 youtube-dl 当遗留上游看待 [推断]。
 - **治理与继任。** `Org` 所有（`ytdl-org/`）——一个社区组织，没有厂商或基金会。路线图的势头实际上已迁移到 **yt-dlp** 分叉，后者如今是 YouTube 抽取的事实继任者；项目的寿命是通过那个分叉延续，而非原来的 tag 线 [推断]。
 - **年龄与 Lindy 判断——老且历经验证，但证明的是*耐久*而非*时效*。** 创建于 2010 年（约 16 岁），约 140k star：本索引里 Lindy 最强的工具之一，还挺过了 2020 年 GitHub DMCA 下架（后被恢复）。但年龄证明的是这个*点子*会长存，而非上游二进制今天还能在 YouTube 上工作——论时效，「年龄 × 仍活跃」会把你指向 yt-dlp。
 - **风险标记。** Unlicense（公共领域）——无 copyleft/relicense 摩擦。真正的风险是 2020 年那段 DMCA 法律历史、下载本身的法律/ToS 暴露，以及最重要的——上游 tag 上的抽取器过时。任何对 YouTube 有硬依赖的场景，默认用 yt-dlp。
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 140.6k GitHub star；star 数对时间敏感且不可靠——仅供参考。
-- [未验证] 最后一个*打 tag* 的发布是 2021.12.17；master 分支据称在 2026-02 前后仍有提交（"nightly"/master 构建才是保持最新的那个）。tag 与 master 之间的落差是关键维护信号——依赖前请核实当前 master 活跃度。
+- [未验证] 截至 2026-10 约 141.4k GitHub star；star 数对时间敏感且不可靠——仅供参考。
+- [未验证] 最后一个*打 tag* 的发布是 2021.12.17（2026-10-08 核对，PyPI 上最新的也是它）；按 commits API，master 最后一次提交是 2025-11-26，仓库 `pushed_at` 的 2026-02-19 推测是非默认分支上的活动。只有 git/nightly 构建才带 master 上的修复。tag 与 master 之间的落差是关键维护信号——依赖前请核实当前 master 活跃度。
 - [推断] “yt-dlp 是更活跃的分叉、且在 YouTube 上是事实继任者”是社区普遍看法；把“默认用 yt-dlp”当作推断，决策时请重新确认两个项目各自的活跃度。
 - [未验证] README 声称的 Python 支持范围（2.6/2.7/3.2+）和“约 1000 站点”数字来自项目文档且随时间变化；请对照当前仓库和 `--list-extractors` 核实。
 - [未验证] 2020 年 GitHub DMCA 下架及后续恢复是被报道的历史，此处未重新核验；请自行检查仓库现状和相关法律背景。
 - [推断] License 为 Unlicense（公共领域）依据仓库；若 license 条款对你的用途至关重要，请确认 LICENSE 文件。
+- [未验证] 2026-10-08 访问 README 里的安装地址 `https://yt-dl.org/downloads/latest/youtube-dl`，它跳转到 `yt-dlp/yt-dlp` 下的一个 GitHub 地址并返回 404；这可能是临时的，写安装脚本前再查一次。

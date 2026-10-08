@@ -3,23 +3,23 @@ name: Gemini CLI
 slug: gemini-cli
 repo: https://github.com/google-gemini/gemini-cli
 category: terminal-agents
-tags: [ai-agent, cli, gemini, mcp-client, mcp-server, terminal]
+tags: [coding-agent, terminal, ai-agent, gemini, google, mcp-client]
 language: TypeScript
 license: Apache-2.0
-maturity: v0.x, active, 105.7k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v0.63.0 (2026-10-06), pre-1.0 with weekly stable releases, very active, ~107k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-06T01:31:22Z
+  pushed_at: 2026-10-08T01:35:49Z
   default_branch: main
-  default_branch_sha: f7af4e5180cf92eea8190e383fd5daeeb2578c2d
+  default_branch_sha: 44d764ee579610bf73c43107f5e0422cd92588b9
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:36:05Z
-  overall: B
-  overall_score: 3.4
-  scored_axes: 5
+  computed_at: 2026-10-08T08:13:11Z
+  overall: A
+  overall_score: 3.5
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,39 +29,45 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 0.0
+        qualifying_issues: 6
+        band: default
+        window_offset_days: 13
+        source: issue
+        inferred: false
     adoption:
       grade: B
       raw:
         registry: npmjs.org
         canonical_package: "@google/gemini-cli"
         dependent_repos_count: 0
-        downloads_last_month: 1331337
+        downloads_last_month: 1630541
         graph_tier: E
         volume_tier: B
-        cross_check_divergence: 1.02
-        release_downloads: 10558
-        release_assets: 290
+        cross_check_divergence: 1.0
+        release_downloads: 10489
+        release_assets: 288
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 523
-        last_commit_age_days: 1
+        repo_age_days: 539
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 79
-        top1_share: 0.085
-        top3_share: 0.205
+        top1_share: 0.083
+        top3_share: 0.201
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,67 +77,90 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: no_window_signal }
 ---
 
 # Gemini CLI
 
-An open-source AI agent that brings the power of Gemini directly into your terminal. Provides lightweight access to Gemini models with built-in tools, MCP support, and a free tier for personal Google accounts.
+You want an AI agent that reads your whole repo and runs commands from the terminal, but every option seems to start with "paste your API key" and a monthly bill. Gemini CLI is Google's open-source terminal agent that you sign into with an ordinary Google account and use for free within a daily quota, with Gemini's very large context window for big codebases.
 
 ![Gemini CLI — health radar](../../../../assets/health/gemini-cli.svg)
 
 ## When to use
 
-You're a developer who lives in the terminal and wants an AI assistant that can reason about your codebase, run shell commands, search the web, and read files — all without leaving your command line. You pick Gemini CLI over [OpenCode](opencode.md) because its generous free tier (60 req/min, 1,000 req/day with a personal Google account) eliminates the need to bring and pay for your own API keys across every model provider. You pick it over Claude Code (Anthropic's closed-source terminal agent) because Gemini CLI is open-source under Apache-2.0 and free-tier accessible, whereas Claude Code requires an Anthropic subscription. You pick it over [Open Interpreter](open-interpreter.md) when you want deep Gemini integration — especially the 1M token context window and built-in Google Search grounding — rather than a model-agnostic harness where you must configure every provider yourself. You install via npm, authenticate with your Google account, and delegate tasks: refactoring code, explaining APIs, generating tests, or fetching documentation. The MCP extensibility means you can wire it into your existing tool ecosystem without switching to a different agent framework.
+You're a developer — a student, a hobbyist, or someone whose employer hasn't bought an AI tool yet — and you want to ask "summarise every change that went into this repo yesterday" or "write a Discord bot that answers from this FAQ.md" and have the agent actually open files, search the web, and run shell commands. You don't want to manage API keys or a credit card for an experiment. You run `npx @google/gemini-cli`, choose *Sign in with Google*, and get the free tier (the README states 60 requests/minute and 1,000/day) with Gemini models and a 1M-token context, which matters when the question spans a large codebase. Later the same tool scripts into CI with `gemini -p "…" --output-format json`, plugs into GitHub through the `run-gemini-cli` Action, or is driven by other front-ends over ACP (`gemini --acp`).
+
+Pick it over [Codex](codex.md) when you have no paid ChatGPT plan and want the no-cost path; over [OpenCode](opencode.md) when you would rather sign in once with Google than configure provider keys; over Claude Code (not indexed) when you need the agent's source under Apache-2.0. The deciding tradeoff: the cheapest way into a capable terminal agent and the biggest context window, in exchange for being Gemini-only and having its sandbox switched off by default.
+
+## How it works
+
+Gemini CLI is a Node.js program with an interactive terminal UI. You type a request; it sends the request, your project's `GEMINI.md` context file (persistent instructions for this repo), and the definitions of its built-in tools to a Gemini model. The model replies by calling tools — read or write a file, run a shell command, fetch a URL, or search Google ("grounding": letting the model cite fresh search results instead of guessing from memory) — and the CLI runs them and feeds the results back until the task is done. By default every tool call waits for your approval; `--approval-mode auto_edit` approves file edits only, and `--yolo` approves everything (and turns on the sandbox by default). Sandboxing — running commands inside macOS Seatbelt or a Docker/Podman container so they cannot touch the rest of your machine — is **off** unless you pass `-s` or set `GEMINI_SANDBOX`. Think of it as a capable intern who asks before every action unless you hand over the keys. It does the loop, the tools, checkpointing and MCP plumbing (MCP, the Model Context Protocol, is a plug format for adding external tools); you choose the login, write `GEMINI.md`, approve actions, and decide whether to sandbox.
+
+![gemini-cli — backbone user story](../../../../assets/flow/gemini-cli.svg)
+
+<!-- flow-steps:begin (generated from flows/gemini-cli.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install it, or run it once with npx — `npm install -g @google/gemini-cli · npx @google/gemini-cli` — component: `gemini CLI (Node.js)`
+2. **You**: Start it in your project and choose Sign in with Google — `gemini`
+3. **You**: Ask for what you want in plain language
+4. **Gemini CLI**: Reads files, searches Google and fetches pages to gather context
+5. **Gemini CLI**: Proposes edits and shell commands, pausing for your approval on each
+6. **Gemini CLI**: Applies what you approved and reports what changed
+
+**Value**: A working terminal agent on a free personal Google account, with no API key or billing setup
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **If you need to switch between OpenAI, Anthropic, or local models** — use [OpenCode](opencode.md) or [Open Interpreter](open-interpreter.md) instead of Gemini CLI, because Gemini CLI is tightly coupled to Google's Gemini API and does not support other providers.
-- **If your organization blocks Google authentication or requires enterprise SSO** — use a self-hosted platform like [Dify](https://github.com/langgenius/dify) or [n8n](https://github.com/n8n-io/n8n) instead of Gemini CLI, because the free tier requires a personal Google account and there is no RBAC or admin layer.
-- **If you work in an offline or air-gapped environment** — use Ollama with a local chat UI like [Open WebUI](../../../llm-chat-ui/open-webui.md) instead of Gemini CLI, because Gemini CLI requires internet access to reach the Gemini API and does not support local model inference.
-- **If you need complex multi-agent orchestration** — use LangChain or AutoGPT instead of Gemini CLI, because Gemini CLI is a single-agent CLI tool without built-in workflows for multiple collaborating agents.
-- **If you need enterprise audit logging, RBAC, or compliance guarantees** — use a governed platform like Dify or n8n instead of Gemini CLI, because it is a personal developer tool with no built-in audit logging or admin controls.
+- **You need to switch between OpenAI, Anthropic or local models.** Gemini CLI talks only to Gemini (via Google login, Gemini API key or Vertex AI). Use [OpenCode](opencode.md) for multi-provider work, or Qwen Code (not indexed) — a project that began as a Gemini CLI fork and now supports OpenAI, Anthropic, Gemini and local models.
+- **You work offline or air-gapped.** There is no local-model path; every turn goes to Google's API. Use [OpenCode](opencode.md) or [Codex](codex.md) (`--oss` with Ollama / LM Studio) against a local model server instead.
+- **You expect safe defaults on an unsandboxed machine.** The sandbox is opt-in; with `--yolo` or a broad `--allowed-tools`, shell commands run with your user's rights. If you can't enforce `-s` or a system settings file, prefer [Codex](codex.md), whose OS sandbox is on by default, or keep agents in CI with [gh-aw](../orchestration-and-review/gh-aw.md).
+- **Your code may not leave the company under consumer terms.** The free tier rides on a personal Google account; organisations should use Vertex AI or a paid Gemini Code Assist licence and lock settings down with the system settings file (login-domain restriction, tool allowlists, enforced sandbox, OpenTelemetry export). The enterprise guide itself warns these are guardrails against accidents, not a security boundary against a determined local admin. If you need a hard server-side boundary, run agents in CI ([gh-aw](../orchestration-and-review/gh-aw.md)) rather than on laptops.
+- **You need complex multi-agent orchestration.** Gemini CLI is one agent per session; for supervising several agents across machines use [OpenHands](../orchestration-and-review/openhands.md) (which can drive Gemini CLI over ACP).
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [OpenCode](opencode.md) | ✅ | Open-source terminal coding agent. | OpenCode is model-agnostic and self-hostable; Gemini CLI is Google-only but offers a generous free tier and deep Gemini integration. |
-| [Open Interpreter](open-interpreter.md) | ✅ | Terminal coding agent with swappable harnesses for open models. | Open Interpreter supports multiple model providers and local models; Gemini CLI is Gemini-only but has stronger Google ecosystem integration. |
-| Claude Code | 未收录 | Official Anthropic terminal coding agent. | Closed-source, Anthropic-only; Gemini CLI is open-source and free-tier friendly but locked to Google models. |
-| [CC Switch](../orchestration-and-review/cc-switch.md) | ✅ | Desktop manager for multiple coding agents. | CC Switch can manage Gemini CLI alongside other agents; they are complementary, not competing. |
-| GitHub Copilot CLI | 未收录 | AI-powered CLI from GitHub/Microsoft. | Copilot CLI is Copilot-subscription based and IDE-integrated; Gemini CLI is standalone and free-tier accessible. |
+| [Codex](codex.md) | ✅ | If you already pay for ChatGPT and want sandboxing on by default, pick Codex; if you want a free personal-account tier and a 1M-token context, pick Gemini CLI. | Codex sandboxes every command by default but is OpenAI-centric and closed to outside PRs; Gemini CLI accepts PRs and costs nothing to start, but its sandbox is opt-in. |
+| [OpenCode](opencode.md) | ✅ | If you need to swap providers or run local models, pick OpenCode; if one Google login and Gemini's context window are enough, pick Gemini CLI. | OpenCode is provider-agnostic but you bring and pay for keys; Gemini CLI is single-vendor but free to try. |
+| [Open Interpreter](open-interpreter.md) | ✅ | If your budget is cheap or open-weight models and you need a harness tuned for them, pick Open Interpreter; for Gemini models, pick Gemini CLI. | Open Interpreter (a Codex fork) works across providers with OS sandboxing; Gemini CLI has first-party Gemini tooling such as Search grounding. |
+| Qwen Code | 未收录 | If you like Gemini CLI's workflow but need OpenAI, Anthropic, Qwen or local models, pick Qwen Code; stay on Gemini CLI for the official Google tooling and free tier. | Qwen Code forked from Gemini CLI v0.8.2 and diverged; you gain providers but lose upstream fixes and Google-specific features. |
+| Claude Code | 未收录 | If your team standardises on Anthropic models and accepts a closed-source binary, pick Claude Code; if you need an open-source agent with a free tier, pick Gemini CLI. | Claude Code is closed-source and subscription-based; Gemini CLI is Apache-2.0 but Gemini-only. |
 
 ## Tech stack
 
-- **TypeScript** — primary implementation language
-- **Node.js** — runtime environment
-- **Gemini API** — backend LLM provider (Google)
-- **MCP (Model Context Protocol)** — extensibility layer for custom integrations
-- **Google Search** — built-in grounding tool
+- **TypeScript on Node.js ≥ 20** — monorepo (`packages/cli`, `core`, `sdk`, `a2a-server`, `vscode-ide-companion`); npm package `@google/gemini-cli`.
+- **Gemini API / Vertex AI** — the only model back ends; Google OAuth, Gemini API key or Vertex credentials.
+- **Built-in tools** — file system, shell, web fetch, Google Search grounding; MCP client configured in `~/.gemini/settings.json`; extensions and custom slash commands.
+- **Sandboxing (opt-in)** — macOS Seatbelt (`sandbox-exec`), Docker/Podman (prebuilt `gemini-cli-sandbox` image), plus `runsc`/`lxc` options.
+- **Integrations** — headless mode with JSON / stream-JSON output, ACP mode, VS Code companion, GitHub Action, OpenTelemetry telemetry.
 
 ## Dependencies
 
-- Node.js runtime (npm-installable)
-- A Google account (for the free tier API access)
-- Internet connectivity (to reach Gemini API endpoints)
-- Terminal / shell environment
+- Node.js 20+ with npm/npx (or Homebrew, MacPorts, conda-provided Node).
+- A Google account for the free tier, or a Gemini API key, or a Google Cloud project with Vertex AI / a Code Assist licence.
+- Internet access to Google's APIs on every turn.
+- Docker or Podman only if you enable container sandboxing.
 
 ## Ops difficulty
 
-**Low**. Gemini CLI is installed via npm and runs as a local Node.js process. There is no server to maintain. The operational burden is limited to keeping the CLI updated and managing your Google API credentials. The free tier has rate limits that may require upgrading for heavy usage, but there is no infrastructure to operate.
+**Low** for one developer: `npm install -g @google/gemini-cli`, run `gemini`, sign in. Expect weekly stable releases (Tuesdays, plus preview and nightly channels), so pin a version in CI. **Medium** in a company: to make it governable you deploy a system `settings.json` (and possibly a wrapper script that forces it), restrict login domains, allowlist tools and MCP servers, enforce sandboxing, and route telemetry to your collector with prompt logging off.
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 1 days ago.
-- **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade B — 1,331,337 monthly downloads via npmjs.org (package: @google/gemini-cli).
-- **Longevity**: Grade C — 523 days old.
-- **Governance**: Grade A — top-3 contributor share 20.5% (79 active maintainers in the trailing 12 months).
-- **Risk / License**: Grade A — Apache-2.0 license.
+
+- **Maintenance (2026-10-08):** very active — commits every week of the last quarter, nightly builds daily and a stable v0.63.0 on 2026-10-06 on a fixed weekly train.
+- **Responsiveness:** now measurable and strong — the radar's responsiveness axis moved from unscored to A in this refresh, and the overall grade rose from B to A.
+- **Governance / bus factor:** Google-owned roadmap, but the commit history is broad (79 active contributors in the past year; the top three hold about 20%), and the project accepts outside PRs under a public roadmap.
+- **Backing & longevity:** the repo is about 18 months old (created 2025-04), so the Lindy prior is weak. Google has a record of retiring developer products, but this CLI is tied to its Gemini Code Assist offering. [推断]
+- **Adoption & risk:** ~107k stars and 1,630,541 npm downloads last month; Apache-2.0 with no relicense. The main risk is free-tier terms and quotas changing at Google's discretion.
+
 ## Caveats (unverified)
 
-- [未验证] The exact relationship between `google-gemini` and the broader Google DeepMind / Gemini product organization has not been verified.
-- [推断] Google has a track record of launching and later deprecating open-source and consumer projects; the long-term commitment to Gemini CLI is unproven.
-- [未验证] The free tier rate limits (60 req/min, 1,000 req/day) may be reduced or changed as the product matures.
-- [未验证] The MCP server ecosystem and third-party integration quality are new and unverified.
+- [未验证] The free-tier quotas (60 requests/minute, 1,000/day) are as stated in the README on 2026-10-08; Google can change them, and they may differ by model.
+- [未验证] How prompts and code sent under the free personal-account tier are used for model training was not checked; read the linked Terms & Privacy before using it on private code.
+- [推断] Long-term commitment depends on Google keeping Gemini Code Assist as a product; inferred from the auth options, not from any public commitment.
+- [未验证] The quality and security of third-party MCP servers and extensions were not reviewed.

@@ -7,7 +7,7 @@ tags: [pipelines, automation, ci-cd, golang-plugins, hashicorp-go-plugin, archiv
 language: Go
 license: Apache-2.0
 maturity: v0.2.9 (2022-01), archived/abandoned (2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-01-10T15:10:21Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:36:02Z
+  computed_at: 2026-10-08T08:32:20Z
   overall: D
   overall_score: 1.0
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 260
+        last_commit_age_days: 271
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,7 +49,7 @@ health:
         graph_tier: D
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 628
+        release_downloads: 633
         release_assets: 21
         release_tier: D
         signal_basis: releases
@@ -58,8 +58,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3195
-        last_commit_age_days: 260
+        repo_age_days: 3206
+        last_commit_age_days: 271
         cohort: app
     governance:
       grade: D
@@ -90,9 +90,31 @@ health:
 
 如今这只是一份*只读参考*：若你在研究“流水线即编译插件”这种设计，或评估是否要 fork 它，可以拿来研读，但不该被选来做新的生产工作——见“何时不用”。
 
+## 怎么用起来
+
+Gaia 把任何会说 gRPC 的程序变成一条流水线。**你来写**普通函数（叫“job”），语言可以是 Go、Python、Java、C++、Ruby 或 Node.js，把它们放进一个列表交给该语言 SDK 的 `Serve` 调用——SDK 实现了插件接口，让你的程序能经 gRPC（跑在 HTTP/2 上的二进制远程调用协议）和 Gaia 对话。**剩下的 Gaia 来做**：克隆你的 git 仓库，把流水线编译成可执行文件（开了轮询或 webhook 时，有新提交就重编），通过 HashiCorp 的 go-plugin（Terraform、Vault 用的同一套插件机制）把它作为独立进程的插件启动，按 `DependsOn` 声明的依赖顺序调用各个 job，再把日志和结果回传到网页；状态存在内嵌的 boltDB 文件里，不需要外部数据库。不过这些都已是历史：仓库已归档，归档说明直接让用户去用 Dagger。
+
+![gaia — 主干用户故事](../../assets/flow/gaia.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/gaia.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：启动 Gaia 服务（镜像里带齐各语言编译器） — `docker run -d -p 8080:8080 -v $PWD:/data gaiapipeline/gaia:latest`
+2. **你**：把流水线任务写成普通函数，交给 SDK 暴露出去 — `sdk.Serve(jobs)` — 组件：`各语言 SDK（gRPC 插件端）`
+3. **你**：把代码推到 git 仓库，在 Gaia 网页里登记
+4. **Gaia**：克隆仓库，把流水线编译成二进制，有新提交就重编
+5. **Gaia**：以插件方式经 gRPC 运行它，按依赖顺序调用各任务 — 组件：`HashiCorp go-plugin`
+6. **Gaia**：把每个任务的日志和结果状态回传到网页
+
+**价值**：流水线逻辑写成你自己语言的真代码，而不是 YAML
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
-- **任何新的生产部署。** 仓库已**归档**（只读），最后一次发布是 2022-01 的 v0.2.9——没有安全补丁、没有 bug 修复、没有路线图。当作已废弃。[推断]
+- **任何新的生产部署。** 仓库已**归档**（只读），最后一次发布是 2022-01 的 v0.2.9——没有安全补丁、没有 bug 修复、没有路线图。当作已废弃；它自己的归档说明也让用户改用 Dagger。[推断]
 - **你需要一个仍在活跃治理的编排器。** 要定时 DAG 和活的生态，[Apache Airflow](airflow.zh.md)、Dagster 或 Prefect 都是有社区支撑、仍在维护的替代品。
 - **你想要低摩擦的声明式流水线。** Gaia 要求把 job 针对其 SDK 编译成插件——比在 CI 系统（GitHub Actions、GitLab CI、Argo Workflows）里写 YAML 更重。
 - **你承担不起 fork/维护风险。** 采用一个已归档项目意味着*你*得负责今后所有补丁；只有在想清楚并有 fork 计划时才这么做。
@@ -105,6 +127,7 @@ health:
 | [Apache Airflow](airflow.zh.md) | ✅ | 新的 DAG 调度工作选 Airflow；Gaia 只适合作为已归档的编译插件设计参考。 | 成熟、仍在活跃维护的 DAG 调度器，生态庞大；是 Python-DAG 模型而非编译插件 job，且未归档——新工作的稳妥默认。 |
 | [Argo Workflows](argo-workflows.zh.md) | ✅ | Kubernetes 原生、每步一容器的 YAML 工作流比 Gaia 的插件服务器模型更合适时，选 Argo Workflows。 | Kubernetes 原生、每步一容器的工作流；活跃维护、声明式 YAML，没有“用任意语言把 job 写成插件”的模型。 |
 | [Dagster](dagster.zh.md) / [Prefect](prefect.zh.md) | ✅ | 需要维护中的 Python-first 编排时，选 Dagster 或 Prefect，不要接手归档 Gaia fork。 | 现代 Python 优先的编排，开发活跃且有 SaaS 选项；编程模型不同但有人维护——优先于一个已归档项目。 |
+| Dagger | 未收录 | 想要 Gaia 当年承诺的东西——用通用编程语言把流水线写成代码——又要项目还活着时，选 Dagger；Gaia 的归档说明点名它作为替代。 | 也是通过各语言 SDK 把流水线写成代码，但每一步在容器里跑，而不是在 Gaia 服务器上跑编译好的 go-plugin 二进制；执行模型不同，但仍在维护。 |
 | Jenkins | 未收录 | 问题是带庞大插件生态的 CI/CD，而不是 Gaia 式通用工作流插件时，选 Jenkins。 | 老牌但仍在维护的 CI/CD 服务器，插件生态庞大；用 Groovy/声明式 pipeline 而非编译代码插件。 |
 | GitHub Actions / GitLab CI | 未收录 | 绑定 VCS 的托管 YAML pipeline 比自托管流水线服务器更重要时，选托管 CI。 | 托管、YAML 驱动、绑定你 VCS 的 CI/CD；比自托管一台流水线服务器的搭建摩擦低得多。 |
 
@@ -140,3 +163,4 @@ health:
 - [推断] “归档=废弃”是由 GitHub 归档标记 + 自 2022 无发布推断；不保证有维护者回归，也不暗示会。
 - [未验证] 内部架构（HashiCorp `go-plugin`/gRPC、Vue 前端、内嵌元数据存储）取自项目历史 README/文档，未对当前源码重新核实。
 - [未验证] 支持的流水线语言与确切 SDK 面取自项目宣传；做任何 fork 决策前请对照（已冻结的）源码核实。
+- [未验证] Dagger 的“每步一个容器”模型和维护状态来自通用认知，本次没有读它的仓库；只读到了归档说明里指向 dagger.io 的那句话（2026-10-08）。

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "colorama does", "zh": "colorama 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the dependency — it needs nothing beyond the standard library", "zh": "加上依赖，它除了标准库什么都不要", "code": "pip install colorama"},
+    {"lane": "you", "en": "Call it once at program start", "zh": "在程序启动时调用一次", "code": "just_fix_windows_console()"},
+    {"lane": "them", "en": "On a Windows console, turns on built-in ANSI support, or on old Windows wraps stdout/stderr to translate codes", "zh": "在 Windows 上打开控制台自带的 ANSI 支持，老版本则代为翻译"},
+    {"lane": "you", "en": "Print colored text with its constants or any ANSI-emitting library", "zh": "用它的常量或任何输出 ANSI 的库打印彩色文字", "code": "print(Fore.RED + 'some red text')"},
+    {"lane": "them", "en": "Colors render on Windows; on Linux/macOS it does nothing and the codes pass through untouched", "zh": "Windows 上正常显示颜色；Linux/macOS 上它不插手，原样放行"}
+  ],
+  "value": {"en": "One code path prints colored text on every OS, with no platform branch and no third-party dependency", "zh": "一条代码路径在所有系统上都能打出彩色文字，不用按平台分支，也不引第三方依赖"},
+  "sources": [
+    "https://github.com/tartley/colorama#installation (pip install colorama; no requirements other than the standard library)",
+    "https://github.com/tartley/colorama#initialisation (just_fix_windows_console(): Windows 10+ flips the built-in ANSI switch, older Windows wraps sys.stdout/sys.stderr and issues Win32 calls, other platforms nothing)",
+    "https://github.com/tartley/colorama#colored-output (print(Fore.RED + 'some red text'); use with termcolor / blessings / rich)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "CLIP does", "zh": "CLIP 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install PyTorch, the small helpers, then this repo as a package", "zh": "装好 PyTorch 和几个小依赖，再把本仓库装成包", "code": "pip install git+https://github.com/openai/CLIP.git"},
+    {"lane": "you", "en": "Load a named checkpoint", "zh": "按名字加载一个 checkpoint", "code": "clip.load(\"ViT-B/32\", device=device)"},
+    {"lane": "them", "en": "Downloads and caches the weights on first use; returns the model plus its image transform", "zh": "首次使用时下载并缓存权重，返回模型和配套的图像预处理", "component": {"en": "pretrained weights", "zh": "预训练权重"}},
+    {"lane": "you", "en": "Preprocess your images and write the candidate labels as plain text", "zh": "预处理图片，把候选标签写成普通文本", "code": "clip.tokenize([\"a diagram\", \"a dog\", \"a cat\"])"},
+    {"lane": "them", "en": "Encodes images and texts into one shared vector space", "zh": "把图片和文本编码进同一个向量空间", "component": {"en": "image + text encoders", "zh": "图像编码器 + 文本编码器"}},
+    {"lane": "them", "en": "Scores every image-text pair by cosine similarity; the top label is the zero-shot prediction", "zh": "按余弦相似度给每个图文对打分，最高分标签即零样本预测"}
+  ],
+  "value": {"en": "Classify or search images by writing labels as text — no labeled dataset, no training run", "zh": "把标签写成文字就能给图片分类、检索，不用标注数据也不用训练"},
+  "sources": [
+    "https://github.com/openai/CLIP#usage (pip install git+https://github.com/openai/CLIP.git, clip.load(\"ViT-B/32\", device=device), clip.tokenize([\"a diagram\", \"a dog\", \"a cat\"]))",
+    "https://github.com/openai/CLIP#api (clip.load downloads the model as necessary and returns the TorchVision transform; model(image, text) returns cosine similarities times 100)"
+  ]
+}

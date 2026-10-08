@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "ItChat does",
+    "zh": "ItChat 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the package into Python 2.7 or 3.5",
+      "zh": "在 Python 2.7 或 3.5 里装上这个包",
+      "code": "pip install itchat"
+    },
+    {
+      "lane": "you",
+      "en": "Register a handler function for a message type",
+      "zh": "给某类消息注册一个处理函数",
+      "code": "@itchat.msg_register(itchat.content.TEXT)"
+    },
+    {
+      "lane": "you",
+      "en": "Log in by scanning the QR code with your phone, then start the loop",
+      "zh": "用手机微信扫码登录，再启动主循环",
+      "code": "itchat.auto_login(hotReload=True) · itchat.run()"
+    },
+    {
+      "lane": "them",
+      "en": "Holds the web-WeChat session and long-polls its synccheck endpoint for new messages",
+      "zh": "保持网页版微信会话，长轮询 synccheck 接口拉新消息"
+    },
+    {
+      "lane": "them",
+      "en": "Wraps each message as a dict-like object and calls your handler",
+      "zh": "把每条消息包成类字典对象，调用你的处理函数"
+    },
+    {
+      "lane": "them",
+      "en": "Sends your handler's return value back to the sender as a reply",
+      "zh": "把处理函数的返回值作为回复发回给对方"
+    }
+  ],
+  "value": {
+    "en": "A personal-account auto-reply bot in under thirty lines — when the web login still worked",
+    "zh": "不到三十行写出个人号自动回复机器人——前提是网页登录还能用"
+  },
+  "sources": [
+    "README.md @ master (d5ce5db) 安装 (pip install itchat); 简单入门实例 (@itchat.msg_register(itchat.content.TEXT), return msg.text, itchat.auto_login(), itchat.run()); 退出程序后暂存登陆状态 (itchat.auto_login(hotReload=True)); py27/py35 badges; '使用不到三十行的代码'",
+    "setup.py @ master (install_requires: requests, pyqrcode, pypng)",
+    "itchat/components/login.py @ master (start_receiving; '%s/synccheck' long-poll URL; wx.qq.com hosts)"
+  ]
+}

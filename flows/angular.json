@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Angular does",
+    "zh": "Angular 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the CLI and create a workspace",
+      "zh": "安装 CLI，创建工作区",
+      "code": "npm install -g @angular/cli · ng new <project-name>"
+    },
+    {
+      "lane": "you",
+      "en": "Write components: a class, a selector and a template; inject services where needed",
+      "zh": "写组件：一个类、一个选择器和一段模板，按需注入服务",
+      "code": "@Component"
+    },
+    {
+      "lane": "them",
+      "en": "Compiles templates ahead of time and hands each component the services it asks for",
+      "zh": "预先编译模板，并把组件要的服务注入进去",
+      "component": {"en": "compiler + DI", "zh": "编译器 + 依赖注入"}
+    },
+    {
+      "lane": "you",
+      "en": "Build for production",
+      "zh": "构建生产版本",
+      "code": "ng build"
+    },
+    {
+      "lane": "them",
+      "en": "Bundles with esbuild; with @angular/ssr also emits a Node server and prerendered routes",
+      "zh": "用 esbuild 打包；有 SSR 时另出 Node 服务和预渲染页",
+      "component": {"en": "@angular/build:application", "zh": "@angular/build:application"}
+    }
+  ],
+  "value": {
+    "en": "Every team's code follows the same router, forms, DI and build pipeline, upgraded together on a published schedule",
+    "zh": "所有团队的代码走同一套路由、表单、依赖注入和构建流程，并按公开的节奏一起升级"
+  },
+  "sources": [
+    "README.md Setting Up a Project ('npm install -g @angular/cli', 'ng new [PROJECT NAME]', 'ng serve')",
+    "adev/src/content/introduction/essentials/components.md (@Component decorator with selector, template, styles; TypeScript class)",
+    "adev/src/content/tools/cli/build.md ('ng build'; @angular/build:application builds a client bundle, a Node server and build-time prerendered routes with esbuild; default for ng new)",
+    "adev/src/content/guide/ssr.md ('ng new --ssr', 'ng add @angular/ssr'; prerenders by default; RenderMode server routes)",
+    "adev/src/content/guide/zoneless.md (zoneless is the default in Angular v21+)",
+    "adev/src/content/reference/releases.md (12-month major cadence from v22; 24-month support; v20-v22 supported)"
+  ]
+}

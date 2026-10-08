@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Supabase does", "zh": "Supabase 做的"},
+  "steps": [
+    {"lane": "you", "en": "Start a project: hosted, or the official Docker Compose bundle on your own server", "zh": "开一个项目：用托管版，或在自己服务器上跑官方 Docker Compose 包", "code": "curl -fsSL https://supabase.link/setup.sh | sh · sh run.sh start"},
+    {"lane": "them", "en": "Runs Postgres plus Auth, REST, Realtime, Storage and Functions behind one API gateway", "zh": "跑起 Postgres 和认证、REST、实时、存储等服务，挂在同一网关后", "component": {"en": "Docker Compose stack", "zh": "Docker Compose 服务栈"}},
+    {"lane": "you", "en": "Define tables and row-level security policies in plain SQL", "zh": "用普通 SQL 建表、写行级安全策略", "code": "alter table ... enable row level security"},
+    {"lane": "them", "en": "Exposes every table as a REST endpoint automatically, no API code written", "zh": "自动把每张表暴露成 REST 接口，不用写 API 代码", "component": {"en": "PostgREST", "zh": "PostgREST"}},
+    {"lane": "you", "en": "Call it from the browser or app with the client library and a publishable key", "zh": "在浏览器或 App 里用客户端库和公开 key 直接调用", "code": "createClient('https://xyzcompany.supabase.co', 'your-publishable-key')"},
+    {"lane": "them", "en": "Signs users in, then lets Postgres apply your policies to every request", "zh": "负责用户登录，再由 Postgres 对每个请求执行你的策略", "component": {"en": "Auth (GoTrue) + Postgres RLS", "zh": "Auth（GoTrue）+ Postgres RLS"}}
+  ],
+  "value": {"en": "Auth, APIs, realtime and storage on a real Postgres — the server-side code you write is mostly SQL", "zh": "在真正的 Postgres 上拿到认证、API、实时和存储，你写的服务端代码基本只剩 SQL"},
+  "sources": [
+    "https://github.com/supabase/supabase apps/docs/content/guides/self-hosting/docker.mdx (Quick start: curl -fsSL https://supabase.link/setup.sh | sh; cd supabase-project && sh run.sh start; all APIs behind one gateway on :8000, /rest/v1/ /auth/v1/ /storage/v1/ /realtime/v1/)",
+    "https://github.com/supabase/supabase docker/README.md and docker/docker-compose.yml (Envoy gateway, Auth, PostgREST, Realtime, Storage, Edge Runtime, Supavisor, Postgres services)",
+    "https://github.com/supabase/supabase apps/docs/content/guides/database/postgres/row-level-security.mdx (alter table public.announcements enable row level security; create policy ...)",
+    "https://github.com/supabase/supabase-js packages/core/supabase-js/README.md (createClient('https://xyzcompany.supabase.co', 'your-publishable-key'))",
+    "https://github.com/supabase/supabase README How it works (PostgREST turns Postgres into a RESTful API; GoTrue JWT auth)"
+  ]
+}

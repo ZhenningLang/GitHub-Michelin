@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "deep-research does", "zh": "deep-research 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install dependencies and put a Firecrawl key and an LLM key in .env.local", "zh": "装好依赖，Firecrawl 与 LLM key 写进 .env.local", "code": "FIRECRAWL_KEY · OPENAI_KEY"},
+    {"lane": "you", "en": "Start it, type the question, and pick breadth and depth", "zh": "启动后输入问题，选好广度和深度", "code": "npm start"},
+    {"lane": "them", "en": "Asks follow-up questions to pin down what you actually want", "zh": "反问几个追问，弄清你到底想要什么"},
+    {"lane": "you", "en": "Answer the follow-up questions", "zh": "回答这些追问"},
+    {"lane": "them", "en": "Generates search queries, scrapes the hits via Firecrawl, extracts learnings and next directions", "zh": "生成搜索词，经 Firecrawl 抓取结果，提炼要点和下一步方向"},
+    {"lane": "them", "en": "While depth remains, recurses on the new directions, carrying the learnings so far", "zh": "深度没用完就带着已有要点沿新方向递归"},
+    {"lane": "them", "en": "Writes all learnings and their source URLs into a Markdown report", "zh": "把所有要点和来源链接写成一份 Markdown 报告"}
+  ],
+  "value": {"en": "A question becomes a sourced report through a loop short enough to read in one sitting and fork", "zh": "一个问题变成一份带出处的报告，而背后的循环短到一口气就能读完、拿去改"},
+  "sources": [
+    "https://github.com/dzhng/deep-research README \"Setup\" (npm install; .env.local with FIRECRAWL_KEY, OPENAI_KEY)",
+    "https://github.com/dzhng/deep-research README \"Usage\" (npm start; prompts for query, breadth, depth, follow-up questions; report saved as report.md or answer.md)",
+    "https://github.com/dzhng/deep-research README \"How It Works\" (SERP queries, learnings, directions, recurse while depth > 0, markdown report with sources)"
+  ]
+}

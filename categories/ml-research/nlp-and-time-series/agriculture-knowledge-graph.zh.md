@@ -7,7 +7,7 @@ tags: [knowledge-graph, nlp, named-entity-recognition, relation-extraction, neo4
 language: Python
 license: GPL-3.0
 maturity: research project, maintenance stopped (per README), ~4.4k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2025-02-11T14:23:01Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:11:21Z
+  computed_at: 2026-10-08T08:22:58Z
   overall: D
   overall_score: 1.0
   scored_axes: 3
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 593
+        last_commit_age_days: 604
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 3228
-        last_commit_age_days: 593
+        repo_age_days: 3239
+        last_commit_age_days: 604
         cohort: app
     governance:
       grade: "?"
@@ -72,6 +72,27 @@ health:
 
 你把它当作一份中文 KG 系统的**完整、可读蓝图**（以及它自带的数据集），接受它是课程级研究代码、需要你改造，而非拿来即用的产品。
 
+## 怎么用起来
+
+AgriKG 是一条已经跑完、你照着重放的流水线，不是一个你去调用的库。重活上游已经做完：爬虫抓下农业百科页面，用 KNN 分类器（拿每个页面和最像它的那些人工标注页面比，按它们的类别给它打标签）把约 15 万个页面分成实体类型，关系则和 Wikidata 对齐——这些都以 CSV 文件随仓库提供。你要做的是：装好 Python 3 和 Neo4j（图数据库：实体是节点，关系是边），把这些 CSV 放进 Neo4j，照 README 跑 `LOAD CSV` 的 Cypher 语句，在 `demo/Model/neo_models.py` 填上 Neo4j 密码，再启动 Django 演示。之后由演示接手：用 THULAC（中文分词工具）把你输入的中文切成词，留下能匹配到已分类农业实体的词，并在 8000 端口从图里回答实体、关系和最短路径查询。重跑爬虫、人工标注页面（还要 MongoDB）或重训分类器都不在主干上，想用得你自己去修复。
+
+![agriculture-knowledge-graph — 主干用户故事](../../../assets/flow/agriculture-knowledge-graph.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/agriculture-knowledge-graph.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：装好 Python 3 和 Neo4j，再装项目锁定的 pip 依赖 — `sudo pip3 install -r requirement.txt`
+2. **你**：把自带 CSV 放进 Neo4j 的 import 目录，跑 Cypher 导入 — `LOAD CSV WITH HEADERS FROM "file:///hudong_pedia.csv" AS line`
+3. **你**：在 demo 里填好 Neo4j 密码，启动 Django 演示 — `sudo sh django_server_start.sh`
+4. **Agriculture Knowledge Graph (AgriKG)**：用 THULAC 给输入分词，匹配图里已分类的实体
+5. **Agriculture Knowledge Graph (AgriKG)**：在 8000 端口从 Neo4j 回答实体、关系和最短路径查询
+
+**价值**：直接拿到一个能查的中文农业知识图谱和一条从爬取到界面的完整流水线可抄，不用自己爬取、标注十几万个实体
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你需要维护中的软件。** README 明白写着项目已停止维护（「由于工作原因，该项目已停止维护」）；把它当冻结的参考，别指望修复，并预留时间复活一套老的 Django/py2neo 栈。[推断]
@@ -99,19 +120,19 @@ health:
 
 ## 依赖
 
-- **运行时服务：** 必须跑起 Neo4j（图存储）和 MongoDB（爬取存储）；Django 应用与两者通信。
+- **运行时服务：** Django 演示必须有 Neo4j（图存储）；按 README，爬虫和 `/tagging` 人工标注页面另外还需要 MongoDB（爬取存储）。
 - **Python 库（钉死、偏老）：** `Django>=1.11.7`、`py2neo==4.1.0`、`thulac`、`pyfasttext==0.4.5`、`Cython>=0.28.5`、`pinyin`、`pymongo`——其中数个年代久远，在现代 Python 上不钉老解释器可能装不干净。[推断]
 - **数据：** 自带不小的 CSV（`hudong_pedia.csv`、`labels.txt`、预测标签、天气/植物关系），免得你为探索图谱而重爬。
 - **模型：** 流水线引用的已训练分类器/RE 产物（部分可能需要重生成）。
 
 ## 运维难度
 
-**就其形态而言偏高。** 它不是单一二进制或 pip install——要跑完整 demo，你必须起 Neo4j *和* MongoDB、灌入自带数据，并让一套老的 Django 加 py2neo 4.x 加 pyfasttext 跑在兼容的（老）Python 上。尤其 `pyfasttext` 和 `py2neo==4.1.0` 正是那种会跟现代环境对着干的、带 C 扩展/钉死版本的旧依赖。因为无人维护，任何崩坏都得你自己排查，没有上游支援。只跑*数据*（CSV）或某个子流水线，远比复活整条端到端应用便宜。
+**就其形态而言偏高。** 它不是单一二进制或 pip install——要跑完整 demo，你必须起 Neo4j（想用爬虫和标注页面还得加 MongoDB）、灌入自带数据，并让一套老的 Django 加 py2neo 4.x 加 pyfasttext 跑在兼容的（老）Python 上。尤其 `pyfasttext` 和 `py2neo==4.1.0` 正是那种会跟现代环境对着干的、带 C 扩展/钉死版本的旧依赖。因为无人维护，任何崩坏都得你自己排查，没有上游支援。只跑*数据*（CSV）或某个子流水线，远比复活整条端到端应用便宜。
 
 ## 健康度与可持续性
 
 - **响应速度**：无法计算——no_traffic。
-- **维护（2026-06）。** README 明确宣布维护已停止。最后 push 于 2025-02（多半是杂务而非功能开发）；无 release/tag。**按作者自述已废弃**——仅供参考。[推断]
+- **维护（2026-10）。** README 明确宣布维护已停止。最后几次提交（2024-07、2025-02）都是“Update README.md”，此后再无提交（截至 2026-10-08）；无 release/tag。**按作者自述已废弃**——仅供参考。[推断]
 - **治理 / bus factor。** 一个大学（华师大）课程/研究项目，主要由一名学生作者（qq547276542）加几位贡献者；bus factor 约 1。约 4.4k star 是**废弃仓库上的学术人气**——是引用/学习信号，不是维护信号；照此标注。[推断]
 - **年龄与 Lindy 判断。** 2017-11 创建（约 8 年）但**已声明不维护**⇒ 此处年龄*不赋予* Lindy；它作为被引用的产物存续，而非活的软件。[推断]
 - **采用度。** 约 4.4k star / 约 1.6k fork，并有一篇 DASFAA 2019 论文——作为中文 KG 蓝图和数据源被广泛引用与 fork。[未验证]
@@ -119,7 +140,7 @@ health:
 
 ## 存疑（未验证）
 
-- [未验证] 截至 2026-06 约 4.4k star / 约 1.6k fork；数字对时间敏感，仅供参考。
+- [未验证] 截至 2026-10-08 约 4.4k star / 约 1.6k fork；数字对时间敏感，仅供参考。
 - [未验证] 自带已训练模型的确切状态/可重生成性未确认；部分产物可能需要重训才能复现 demo。
 - [推断]「依赖在现代 Python 上装不干净」是从钉死的旧版本（`py2neo==4.1.0`、`pyfasttext==0.4.5`、`Django>=1.11.7`）推断，并非来自实测安装。
-- [推断]「2025-02 的最后 push 是杂务而非功能」是从 README 明确的不维护声明加与功能活动的间隔推断，并非逐 commit 检查所得。
+- [推断]“演示不需要 MongoDB”读自 README 的配置步骤（只列 Python 3 和 Neo4j，MongoDB 只在 `/tagging` 页面处提到），并非实跑验证。

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Sourcegraph does", "zh": "Sourcegraph 做的"},
+  "steps": [
+    {"lane": "you", "en": "Check out the last Apache-2.0 commit; later code is Enterprise-licensed", "zh": "检出最后一个 Apache-2.0 提交，之后的代码是企业许可", "code": "1cd36d2dbbd2a9ab638cc437d208d2717eaefb0b"},
+    {"lane": "you", "en": "Install the toolchain and start the whole stack with the repo's dev tool", "zh": "用仓库自带的开发工具装好工具链，拉起整套服务", "code": "sg setup · sg start", "component": {"en": "sg developer tool", "zh": "sg 开发工具"}},
+    {"lane": "you", "en": "Connect your code hosts with a token that can read every repo", "zh": "接入代码托管平台，给一个能读所有仓库的 token"},
+    {"lane": "them", "en": "Lists the repos and keeps a full clone of each in sync, within code-host rate limits", "zh": "列出所有仓库，在限流范围内为每个仓库保持一份完整克隆", "component": {"en": "repo-updater + gitserver", "zh": "repo-updater + gitserver"}},
+    {"lane": "them", "en": "Builds a trigram index of every default branch", "zh": "给每个默认分支建三字母组索引", "component": {"en": "Zoekt", "zh": "Zoekt"}},
+    {"lane": "you", "en": "Type one query in the web UI across all repositories", "zh": "在网页界面里输入一条查询，覆盖所有仓库"},
+    {"lane": "them", "en": "Answers from the index, scans unindexed branches directly, and links matches to definitions and references", "zh": "从索引里回答，未索引的分支直接扫，并把结果连到定义和引用", "component": {"en": "frontend + searcher", "zh": "frontend + searcher"}}
+  ],
+  "value": {"en": "One search box over every repository and branch — and, for this snapshot, a readable blueprint of how that product was built", "zh": "一个搜索框搜遍所有仓库和分支；对这份快照来说，它更是一份能读懂的产品架构蓝图"},
+  "sources": [
+    "https://github.com/sourcegraph/sourcegraph-public-snapshot#readme (notice: commit 1cd36d2dbbd2a9ab638cc437d208d2717eaefb0b is the last one under an Apache License)",
+    "https://github.com/sourcegraph/sourcegraph-public-snapshot/blob/main/doc/dev/setup/quickstart.md (sg setup; sg start)",
+    "https://github.com/sourcegraph/sourcegraph-public-snapshot/blob/main/doc/dev/background-information/architecture/index.md (repo-updater, gitserver, zoekt trigram index of default branches, searcher for unindexed search, search-based and precise code navigation)"
+  ]
+}

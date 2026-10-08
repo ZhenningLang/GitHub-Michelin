@@ -6,8 +6,8 @@ category: research-automation
 tags: [llm-training, agentic-research, nanochat, single-gpu, reference-implementation]
 language: Python
 license: MIT
-maturity: no tagged release, active, master @ ~36 commits (as of 2026-03)
-last_verified: 2026-06-26
+maturity: no tagged release, last commit 2026-03-26, quiet since (as of 2026-10-08)
+last_verified: 2026-10-08
 type: app
 upstream:
   pushed_at: 2026-03-26T00:07:37Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T16:12:15Z
+  computed_at: 2026-10-08T08:23:13Z
   overall: B
   overall_score: 2.5
   scored_axes: 4
@@ -29,14 +29,14 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 186
+        last_commit_age_days: 196
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.7
-        qualifying_issues: 4
+        median_ttfr_hours: 3.9
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 6
         source: issue
@@ -47,8 +47,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 205
-        last_commit_age_days: 186
+        repo_age_days: 215
+        last_commit_age_days: 196
         cohort: app
     governance:
       grade: C
@@ -78,11 +78,33 @@ health:
 
 它同样是一个干净的参考实现，适合用来*研读*或 fork「agent 即研究员」这个范式——val_bpb 这个指标刻意做成与词表大小无关，于是不同架构改动（不同模型维度、Muon 还是 AdamW 等优化器）能被公平比较。如果你想自建一套自主实验 harness，这里是一个最小、易读的起点，而不是一个笨重的框架。
 
+## 怎么用起来
+
+autoresearch 是三个文件加一份约定，不是一个替你跑研究的程序。`prepare.py` 负责下数据、训 tokenizer（把文本切成模型读的小单元的那一步），并装着打分函数；它是冻结的，所以每次运行都按同一把尺子评。`train.py` 装着整个 GPT 模型、优化器和训练循环，是 agent 唯一能改的文件。`program.md` 是一份大白话指令——你来改，agent 来读。**仓库不附带 agent 本身**：你在目录里启动自己的 coding agent（Claude Code、Codex 等），它照 `program.md` 干活——提交一个想法、训练整整 5 分钟、读出 `val_bpb`（验证集每字节比特数：模型描述一字节没见过的文本要用几个比特，越低越好），然后保留这次提交或 `git reset` 掉。好比给一个不知疲倦的实习生一本实验记录本和一块秒表：仓库定规则和时钟，实习生负责一遍遍去试。
+
+![autoresearch — 主干用户故事](../../../assets/flow/autoresearch.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/autoresearch.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在一块 NVIDIA 卡上装依赖，一次性下数据、训 tokenizer — `uv sync · uv run prepare.py` — 组件：`prepare.py（冻结）`
+2. **你**：写好要 agent 遵循的研究策略 — `program.md`
+3. **你**：在仓库里开你自己的 coding agent，让它读 program.md
+4. **autoresearch**：开一条新运行分支，按一个想法改 train.py 并提交 — `git checkout -b autoresearch/<tag>` — 组件：`train.py`
+5. **autoresearch**：固定训练 5 分钟，从日志读出 val_bpb — `uv run train.py > run.log 2>&1`
+6. **autoresearch**：val_bpb 降了就保留提交，否则回退；记一行后继续循环 — `results.tsv`
+
+**价值**：醒来时有约 100 条实验记录，分支上只留下让 val_bpb 变低的改动
+
+</details>
+<!-- flow-steps:end -->
+
 ## 何时不用
 
 - **你想要生产级训练框架。** 这是研究 demo / 参考实现，不是受维护的库——没有打 tag 的发布、没有插件 API、没有多卡 / 分布式方案。真要做微调请用框架，而不是它。
 - **你没有 NVIDIA GPU。** 它面向单块 NVIDIA GPU（在 H100 上测试过）；其它平台靠社区 fork。而且 5 分钟固定预算意味着结果在不同算力之间明确*不可比*。
-- **你以为 agent 是开箱即用的。** autoresearch 提供训练脚手架和指标，但它**不**附带 agent 循环或 LLM API 接线——你得自带 / 自配 coding agent，并自付它的推理费用。
+- **你以为 agent 是开箱即用的。** autoresearch 提供训练脚手架、指标，以及一份*写成 Markdown 的*循环说明（`program.md`）；它**不**附带 agent 运行器或 LLM API 接线——你得自带 / 自配 coding agent（Claude Code、Codex），并自付推理费用。想要从想法到论文整条流水线都接好，改用 [The AI Scientist](ai-scientist.zh.md)。
 - **你需要可复现、可发表的 benchmark。** 这套以墙钟时间封顶的设计，是用「跨机可比性」换「快速迭代」，这是设计本身决定的；数字只对你的硬件成立。
 - **你想训出一个有用的模型。** 重点是研究*循环*，不是训出来的 checkpoint——5 分钟单卡跑出来的是玩具规模的模型，不是能部署的东西。
 
@@ -116,17 +138,17 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 7.7 小时，基于 4 个 qualifying issues/PRs。
-- **维护（截至 2026-06）：** 最后一次 push 在 2026-03，master 约 36 个 commit，无打 tag 的发布。[推断] 说它「活跃」只是指最近被动过，但这是个 demo 分支、不是受维护的产品——没有可读的发布节奏，且可能逐 commit 变化。
-- **治理 / bus factor：** 这是挂在 Karpathy 个人账号下（`User`-owned）的单人维护仓库，却背着约 88k star——典型的 **bus-factor 警示**：star 反映的是作者影响力，而非一支团队或持续路线图。[推断] 不含治理结构、也没有隐含的贡献者流程；作者一旦转向，它就会冻结。
+- **响应速度**：Grade A——中位首次响应时间 3.9 小时，基于 5 个 qualifying issues/PRs。
+- **维护（截至 2026-10-08）：** master 最后一次提交在 2026-03-26，此后约 6.5 个月没有新提交，也没有打 tag 的发布。它是发布后就原样放着的 demo，不是受维护的产品——没有发布节奏可看；要用就钉死某个 commit 或 fork，别指望上游修 bug。
+- **治理 / bus factor：** 这是挂在 Karpathy 个人账号下（`User`-owned）的单人维护仓库，却背着约 97k star——典型的 **bus-factor 警示**：star 反映的是作者影响力，而非一支团队或持续路线图。[推断] 不含治理结构、也没有隐含的贡献者流程；作者一旦转向，它就会冻结。
 - **年龄与 Lindy 判定（创建于 2026-03，约 0 年）：** 全新，靠热度 / star 数而非存活验证撑起来。[推断] **Lindy 上未经证明**——请把它当作参考样本和值得研读的范式，而非长期依赖。它的价值在于那个*想法*（固定预算下「agent 即研究员」），这比任何具体 commit 都更长寿。
 - **风险标记：** 无版本 / API 稳定性；agent 循环和 LLM 成本都要自带；「研究 demo」的姿态是明示的。采用 MIT 许可，所以 fork 一份钉死已知可用状态是稳妥之举。[推断]
 
 ## 存疑（未验证）
 
-- [未验证] Star / fork 数（约 88.7k stars、约 12.8k forks）和「master 约 36 个 commit」取自 2026-03-26 / 2026-06-26 的 GitHub 页面；star 不可靠且对日期敏感——只作参考。
-- [未验证] 不存在打 tag 的发布；「maturity」反映的是活跃的 master 分支，而非一个有版本、API 稳定的项目——行为可能逐 commit 变化。
-- [未验证] 优化器集合（Muon + AdamW）、BPE 分词、约 12 实验/小时的吞吐都来自 README / 摘要转述，未独立运行验证——依赖前请对照当前的 `train.py` / `prepare.py`。
+- [未验证] Star 数（2026-10-08 经 GitHub API 约 97.5k；fork 约 12.8k，截至 2026-06-26）对日期敏感，反映的是作者影响力——只作参考。
+- [未验证] 许可证：README 末尾写着「License: MIT」，但仓库里没有 `LICENSE` 文件，GitHub API 也报告无许可证（2026-10-08）。把 MIT 当作作者声明的意图；合规审查可能需要一份明确的许可证文件。
+- [未验证] 优化器集合（Muon + AdamW）、BPE 分词、约 12 实验/小时的吞吐都写在 README / `program.md` 里，未独立运行验证——依赖前请对照当前的 `train.py` / `prepare.py`。
 - [未验证]「在 H100 上测试过」和「5 分钟墙钟、不含启动 / 编译」是作者自述数字；实际运行时间随 GPU、驱动和编译缓存而变。
-- [推断] agent 循环是 BYO（自带 coding agent + LLM API）；仓库本身是训练脚手架和指标。该判断由文件分工推断（`program.md` 人类编辑、`train.py` agent 编辑）——请确认当前代码树是否打包了某个 agent runner。
+- [推断] 仓库没有打包 agent 运行器：2026-10-08 的代码树只有 `prepare.py`、`train.py`、`program.md`、`analysis.ipynb` 和项目文件，README 也说「启动你的 Claude/Codex 或任何你想用的」。循环效果因此取决于你自带哪个 agent——此处未实测。
 - [未验证] 跨平台（非 NVIDIA）支持据称只通过社区 fork 存在；本仓库内未经验证。

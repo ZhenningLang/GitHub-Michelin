@@ -4,19 +4,19 @@ slug: svelte
 repo: https://github.com/sveltejs/svelte
 category: view-frameworks
 tags: [svelte, frontend, framework, compiler, reactive, typescript, no-vdom, sveltekit]
-language: TypeScript
+language: JavaScript (JSDoc-typed)
 license: MIT
-maturity: v5.x, active, ~82k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: v5.57.2 (2026-10-06), active, ~88k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: framework
 upstream:
-  pushed_at: 2026-07-03T14:17:03Z
+  pushed_at: 2026-10-07T14:53:24Z
   default_branch: main
-  default_branch_sha: b1cadd1eae6a709fc5bdc596256b617986a71aaf
+  default_branch_sha: 707c28146b0f0a6d5404a1bd4769874c3c24851a
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:19:00Z
+  computed_at: 2026-10-08T08:30:17Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 12
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 8.1
-        qualifying_issues: 37
+        median_ttfr_hours: 7.6
+        qualifying_issues: 28
         band: default
         window_offset_days: 7
         source: issue
@@ -47,23 +47,23 @@ health:
         registry: npmjs.org
         canonical_package: svelte
         dependent_repos_count: 56439
-        downloads_last_month: 20786696
+        downloads_last_month: 25015672
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.05
+        cross_check_divergence: 1.0
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3593
-        last_commit_age_days: 0
+        repo_age_days: 3609
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 58
-        top1_share: 0.381
-        top3_share: 0.709
+        active_maintainers_12mo: 59
+        top1_share: 0.379
+        top3_share: 0.716
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -78,72 +78,91 @@ health:
 # Svelte
 
 
-编译时前端框架，在构建阶段将组件转换为高效的 vanilla JavaScript，消除虚拟 DOM 开销，获得更小的包体积和更快的运行时性能。
+你的营销站或中等规模应用，还没显示出一个按钮，就先下载了一整份框架运行时；之后每次状态变化，这份运行时都要把整个组件重渲染一遍再做比对。Svelte 把这些工作挪到构建阶段：编译器把每个组件变成一小段 JavaScript，只更新真正变了的那几个 DOM 节点，浏览器里不再有框架做比对。
 
 
 ![Svelte — health radar](../../../../assets/health/svelte.zh.svg)
 
 ## 何时使用
 
-你是一支中小型团队，正在构建一个对性能和包体积有要求的 Web 应用。你评估过 React，但它的虚拟 DOM 和运行时开销意味着初始 JavaScript 负载比你期望的更大，尤其对慢网络用户而言。你评估过 Vue，但你想找更轻量、可读性更强的方案。你选择 Svelte，因为它的编译器将组件直接编译成操作 DOM 的纯 JavaScript——没有虚拟 DOM 比对，没有运行时框架重量。你的 `.svelte` 文件看起来像是增强版 HTML，JavaScript 和 CSS 默认作用域隔离，让熟悉 Web 平台的开发者很容易上手。你交付得更快，应用感觉更流畅，而且不需要学习复杂的响应式 API，因为编译器已经帮你处理了响应性。
+你是一家小产品公司的三名开发之一，要做一个客户门户和配套的营销页。一半用户用的是中端安卓手机，移动网络时好时坏，Lighthouse 已经在那些主要是表单和列表的页面上标出“减少未使用的 JavaScript”。你想要组件化，但不想每个页面都背一份框架运行时，而且团队写 HTML 和 CSS 比写 JavaScript 抽象顺手得多。
+
+于是你用 Svelte：一个 `.svelte` 文件就是标记、一个 `<script>` 块和一个 `<style>` 块，CSS 默认只作用于本组件，编译器产出的 JavaScript 只碰依赖了那个变化值的 DOM 节点。你不选 React，是因为用不到它那么深的生态，也不想花心思调重渲染；不选 Vue，是因为 Svelte 的产物带的框架运行时更少，组件文件也更接近普通 HTML。等门户以后需要路由、服务端渲染和表单提交处理时，Svelte 官方的应用框架 SvelteKit 能补上这些，你写组件的方式不用变。
+
+## 怎么用起来
+
+Svelte 是一个**编译器**，而不只是运行时库：它在构建时读你的组件，写出真正在浏览器里运行的 JavaScript。**你**写 `.svelte` 文件，用 **runes** 标出会变的值。runes 是编译器认识的关键字，比如 `$state`（响应式变量）、`$derived`（由其他状态算出来的值）和 `$effect`（它读到的东西一变就重跑的代码）。**Svelte** 把每个组件变成这样的代码：一次性建好 DOM，并把每个 DOM 节点直接连到它读的状态上，所以 `count` 变了，就只更新那一个文本节点，不需要虚拟 DOM（React 这类框架每次更新都要比对的一份页面内存副本）。好比电工给每盏灯单独接一个开关，而不是让物业每次挨层巡查哪些灯该亮。Svelte 只管到组件为止：路由、服务端渲染、数据加载和部署适配器由 SvelteKit 提供，`npx sv create` 默认就会把它配好。
+
+![svelte — 主干用户故事](../../../../assets/flow/svelte.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/svelte.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：生成项目（默认带 SvelteKit，也可用纯 Vite），启动开发服务器 — `npx sv create myapp · npm create vite@latest`
+2. **你**：写一个 .svelte 文件：标记、script 块和 style 块放在一起 — 组件：`组件文件`
+3. **你**：把会变的值声明成响应式状态 — `let count = $state(0)`
+4. **Svelte**：构建时把每个组件编译成 JS：建好 DOM，记住哪个节点读了哪个状态 — 组件：`编译器（Vite 插件）`
+5. **Svelte**：把组件的 CSS 限定在组件内部，不会漏到别处
+6. **Svelte**：浏览器里状态一变，只更新读了它的 DOM 节点，不做虚拟 DOM 比对
+
+**价值**：写法接近普通 HTML 的组件，发布成直接操作 DOM 的小段 JavaScript，更新时没有框架在后台比对
+
+</details>
+<!-- flow-steps:end -->
 
 ## 何时不用
 
-- **如果你需要尽可能庞大的生态和第三方库选择，请用 React 而不是 Svelte，因为** React 的生态系统大了一个数量级。几乎每个细分 UI 需求都有 React 库可用；而用 Svelte 时，你常常需要自己写组件，或通过兼容层包裹 React 库。
-- **如果你需要快速、低成本地招聘前端开发者，请用 React 或 Vue 而不是 Svelte，因为** Svelte 的人才池明显更小。在大多数就业市场，找到有经验的 Svelte 开发者比找 React 或 Vue 开发者更难。
-- **如果你需要成熟的 meta-framework，带深度 SSR/SSG 和托管集成，请用 Next.js 或 Nuxt 而不是 Svelte，因为** 虽然 SvelteKit 存在且在不断改进，但它的生态和托管集成比 Next.js 小。如果你的团队已经在 Vercel 上运行，Next.js 有更深度的一流支持。
-- **如果你对框架范式迁移风险敏感，请用 Vue 或 React 而不是 Svelte，因为** Svelte 5 引入了 runes，与 Svelte 4 基于标签的响应性模型有显著差异。这引起了社区摩擦，也意味着现有 Svelte 4 代码需要迁移成本。
-- **如果你需要深度企业级工具、内置依赖注入和严格的架构主张，请用 Angular 而不是 Svelte，因为** Svelte 有意保持轻量且不做强制规定。它不会自带 CLI 脚手架模块系统、表单验证或 HTTP 客户端。
-- **如果你需要把框架渐进式混入一个已有的庞大 React 或 Vue 代码库，请用 React 或 Vue 而不是 Svelte，因为** 虽然 Svelte 可以被嵌入，但用于渐进式迁移的工具链和社区实践不如 React 或 Vue 成熟。
+- **你需要每个细分需求都有现成的第三方库（数据表格、整套图表、设计系统）：改用 React，因为** React 的生态大得多；用 Svelte 时你会更常自己写组件，或者去包装与框架无关的库。
+- **你得很快招到一批前端：改用 React 或 Vue，因为** 在大多数招聘市场里，有 Svelte 生产经验的开发者明显更少。
+- **全栈应用需要最深的 SSR 与托管集成、最多的第三方示例：改用 Next.js（React）或 Nuxt（Vue），因为** SvelteKit 能力够用，但集成、模板和针对各托管平台的指南都更少。
+- **你有一个大型 Svelte 3/4 代码库，又没有迁移预算：有意识地留在 Svelte 4，或者排期升级，因为** Svelte 5 用 runes 取代了 `$:` 标签和 `export let`；旧语法在非 runes 模式下仍能编译，但新文档、示例和库都默认你用 runes。
+- **你的 SSR 应用会渲染用户可控的属性或元素名，而你没法快速升级：改用 React 或 Vue 并沿用现有的加固措施，或者承诺快速打补丁，因为** Svelte 在 2026 年连续发布了一批 SSR 跨站脚本（XSS）安全公告（展开属性、`<svelte:element>` 标签名、`<option>`、`bind:innerText`、水合标记），修复都在 5.x 版本里，你得真的升上去。
+- **你想要一个内置依赖注入、表单和 HTTP 的强约定框架：改用 Angular，因为** Svelte 有意只提供组件这一层。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [React](react.zh.md) | ✅ | 需要生态最大、招聘池最广的主流 UI 库时，选 React。 | React 的库和招聘池 vastly 更大；Svelte 对中小型应用更快、更简单，包体积更小。 |
-| [Vue.js](vue.zh.md) | ✅ | 需要渐进式框架、温和学习曲线和更强第三方集成时，选 Vue。 | Vue 更容易招到人，第三方集成更多；Svelte 编译出的包更小，运行时开销更低。 |
-| [Angular](angular.zh.md) | ✅ | 企业级、有主见的框架，与 TypeScript 深度集成。 | Angular 为大型团队内置了一切；Svelte 更轻更快，但缺乏企业级工具深度和 CLI 脚手架。 |
-| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | 需要全栈 React、成熟 SSR/SSG 和 Vercel 深度集成时，选 Next.js。 | Next.js 主导 React meta-framework 领域；SvelteKit 是 Svelte 的对应方案，但生态和集成更小。 |
-| [SvelteKit](../app-frameworks/sveltekit.zh.md) | ✅ | 基于 Svelte 构建的官方 meta-framework（类似 React 的 Next.js）。 | SvelteKit 是全栈 Svelte 的自然搭档；仅在不需要 SSR、路由或后端时才单独用 Svelte。 |
-| Solid.js | 未收录 | 细粒度响应式 UI 库，无虚拟 DOM，性能极佳。 | Solid 更聚焦性能，社区更小；Svelte 生态更大，有 SvelteKit，学习曲线更温和。 |
+| [React](react.zh.md) | ✅ | 需要最大的库生态、React Native 和最深的招聘池，选 React；下载体积和少写样板代码比生态广度更重要，选 Svelte。 | React：现成组件和候选人更多，但运行时更大，要手动调重渲染；Svelte：产物更小，库更少。 |
+| [Vue.js](vue.zh.md) | ✅ | 团队想要模板语法、官方路由和状态库、能嵌进现有页面渐进引入，选 Vue；想要最精简的编译产物和以 HTML 为主的组件文件，选 Svelte。 | Vue：生态和招聘池更大，运行时也小；Svelte：完全没有虚拟 DOM，社区更小。 |
+| [Angular](angular.zh.md) | ✅ | 大型企业团队想要开箱即用的依赖注入、表单、HTTP 和严格约定，选 Angular；小团队想快速交付轻量页面，选 Svelte。 | Angular：内置一致性，代价是体积和繁文缛节；Svelte：表面积最小，其余自己挑。 |
+| [SvelteKit](../app-frameworks/sveltekit.zh.md) | ✅ | 不是二选一：凡是需要路由、SSR 或服务端接口的 Svelte 应用，都在 Svelte 之上用 SvelteKit；只有小组件或纯客户端单页应用才用裸 Svelte（经由 Vite）。 | SvelteKit：文件路由、SSR、表单 action、部署适配器，但要多跑一个服务端；裸 Svelte：只有组件编译器。 |
+| [Next.js](../app-frameworks/nextjs.zh.md) | ✅ | 全栈应用要待在 React 生态里、要成熟的托管集成，选 Next.js；客户端下载体积更要紧，选 Svelte 加 SvelteKit。 | Next.js：最大的元框架生态，背着 React 的运行时成本；SvelteKit：产物更小，集成更少。 |
+| Solid | 未收录 | 想用 JSX 而不是模板、同样要细粒度信号，选 Solid；想要以 HTML 为主的文件、作用域 CSS、更大的社区和官方应用框架，选 Svelte。 | Solid：更新粒度相当，用 JSX，生态更小；Svelte：模板语法，有 SvelteKit，学习资料更多。 |
 
 ## 技术栈
 
-- **TypeScript** —— 主要实现语言；Svelte 提供一流 TS 支持
-- **基于编译器** —— 无虚拟 DOM；编译器在构建时将 `.svelte` 文件转换为高效的 vanilla JavaScript
-- **Runes（Svelte 5）** —— 细粒度显式响应式系统，使用 `$state`、`$derived`、`$effect` 等
-- **Vite** —— 默认且推荐的构建工具（SvelteKit 基于 Vite）
-- **CSS 作用域** —— 样式默认组件级作用域，无需额外配置
-- **SvelteKit** —— 可选的 meta-framework，增加路由、SSR、服务端端点和部署目标适配器
+- **带 JSDoc 类型的 JavaScript**：`svelte` 包的源码是用 JSDoc 做类型检查的 JavaScript，并发布 TypeScript 类型声明；组件本身可以用 TypeScript 写。
+- **编译器**：解析 `.svelte` 文件（基于 Acorn），为客户端产出直接操作 DOM 的 JavaScript，为 SSR 产出拼字符串的渲染代码；没有虚拟 DOM。
+- **Runes（Svelte 5）**：`$state`、`$derived`、`$effect`、`$props` 等，基于信号的细粒度响应式。5.29 起有 attachments（`{@attach}`）；5.36 起可通过编译选项试用组件内 `await`（实验性）。
+- **作用域 CSS**：组件样式靠生成的 class 限定作用域，除非标成 `:global`。
+- **Vite**：标准构建集成（`vite-plugin-svelte`）；SvelteKit 本身构建在 Vite 上。
 
 ## 依赖
 
-- **Node.js** —— 用于编译器、构建工具和 SvelteKit（建议 LTS）
-- **现代浏览器** —— Svelte 编译到 evergreen JavaScript；无需加载运行时框架
-- **可选：SvelteKit** —— 如需 SSR、文件系统路由、API 端点和静态站点生成
-- **可选：TypeScript** —— 完全支持但可选；纯 JavaScript 也能正常工作
-- **构建工具**：Vite 是默认选择；Rollup 或 Webpack 可用于自定义场景
+- **Node.js ≥ 18**：编译器和构建工具需要；如果用 Node 跑 SvelteKit 的 SSR，运行时也需要。
+- **Vite**（经由 `npx sv create` 或 `npm create vite@latest`）：用其他打包器要靠社区插件。
+- **浏览器运行时**：编译产物里只带一份很小的内部运行时，不需要另装别的。
+- **可选：** SvelteKit 加一个部署适配器（Node、静态、Vercel、Cloudflare、Netlify），提供路由和 SSR；TypeScript。
 
 ## 运维难度
 
-**低**。Svelte 应用编译为静态 JavaScript，可部署到任何 CDN 或静态托管服务。编译器和 Vite 处理构建管线。复杂度来自：
-- 需要 SSR 并运行 SvelteKit，这要求 Node.js 服务器或边缘 Runtime（如 Vercel、Cloudflare Workers）
-- 从 Svelte 4 升级到 Svelte 5，需要将 `$:` 标签的响应式逻辑重写成 runes
-- 需要自定义编译器插件或预处理器（如 Pug、Sass 或自定义转换）
-- 将 Svelte 组件嵌入非 Svelte 应用，需要管理构建边界
+**纯客户端构建低，用 SvelteKit 做 SSR 时中等。** Svelte 单页应用构建出来是静态文件，放任何 CDN 都行。通过 SvelteKit 做 SSR 就要跑一个 Node 或边缘运行时，并持续给 `svelte` 和 `@sveltejs/kit` 打补丁；2026 年出了好几条 SSR XSS 公告，升级节奏很重要。把 Svelte 4 代码库迁到 runes 是实打实的工作量（`npx sv migrate svelte-5` 能帮忙，新旧语法的组件可以混用，能逐个迁）。自定义预处理器（Sass、Pug）会增加构建配置。
 
 ## 健康度与可持续性
 
-- **维护活跃度**：活跃 —— Svelte 5 于 2024 年底发布，核心团队持续定期发版。编译器和 SvelteKit 都在持续开发中。
-- **治理集中度**：由 Rich Harris 创始者主导，现受雇于 Vercel。Bus factor 为中等 —— 社区热情高，但核心团队集中。治理模式是 benevolent-dictator 风格，而非基金会驱动。
-- **背书与长青度**：Vercel 雇佣 Rich Harris 并资助 Svelte 开发。这是强劲的背书信号，但 Vercel 同时也拥有 Next.js，形成双框架动态，资源分配并不透明。[推断] 项目约 8 年的年龄 × 仍活跃，给出中等 Lindy 信号 —— 它已建立，但不如 React 或 Angular 悠久。
-- **采用广度与生态**：稳步增长，但比 React 小一个数量级。著名生产用户包括 The New York Times 和 Apple（部分产品）。SvelteKit 正在成熟，但第三方集成比 Next.js 或 Nuxt 少。文档质量高。
-- **风险旗标**：Svelte 5 的 runes 与 Svelte 4 的 `$:` 标签相比引入了显著范式转变，给现有代码库带来了真实的迁移摩擦。无 relicense 历史（MIT 保持稳定）。无显著 CVE。较小的生态系统意味着经过实战检验的第三方解决方案更少。
+- **维护（2026-10）。** 非常活跃：5.57.2 于 2026-10-06 发布，小版本大约每月一个，补丁版本每周都有。雷达的维护和响应两轴都是 A（打分时最后一次提交在 1 天前）。
+- **治理与 bus factor。** 由 Rich Harris 创建（Vercel 雇他全职做 Svelte）；几位核心维护者承担了大部分改动。雷达统计 12 个月内有 59 位活跃贡献者，头号贡献者占 38% 的提交：集中，但不是一个人撑着。没有基金会；README 说开发靠志愿者，资金来自 Open Collective。
+- **背书与长青度。** Svelte 始于 2016 年（约 10 年），至今还在加功能，Lindy 先验扎实，只是比 React、Angular 年轻。Vercel 雇用创作者是有力的背书，但 Vercel 同时拥有 Next.js，优先级由一家公司说了算。
+- **采用度与生态。** 最近一个月 npm 下载 25,015,672 次（雷达，2026-10-08），远少于 React 和 Vue，但已站稳。SvelteKit 是默认的应用路线；第三方组件生态是主要短板。
+- **风险标记。** MIT 协议，没有改协议的历史。安全方面：GitHub 安全公告列表显示 2024 年有一条 XSS，2026 年 1 月到 5 月有十多条 SSR XSS 和 ReDoS 公告，都在 5.x 补丁版本里修了。这不是回避 Svelte 的理由，但是要及时升级的理由。runes 是 5.0（2024 年）带来的破坏性范式变化。
 
 ## 存疑（未验证）
 
-- [未验证] 与 React 或 Vue 相比的确切包体积缩减幅度因应用和构建优化配置而异。
-- [推断] Svelte 开发者就业市场相对于 React 的规模是从职位发布和社区调查推断的，并非硬数据。
-- [未验证] 生产部署中使用 SvelteKit 与独立 Svelte 的确切比例未经独立核实。
-- [未验证] Apple 和 The New York Times 在生产中使用 Svelte 的程度基于公开案例和会议演讲，而非独立审计。
-- [推断] 从 Svelte 4 到 Svelte 5 runes 的实际社区摩擦和迁移工作量基于开发者报告和社交媒体情绪，而非测量数据。
+- [未验证] 相对 React 和 Vue 的包体积和更新速度优势因应用而异；本页没有跑基准测试。
+- [推断] 招聘池相对 React 和 Vue 的大小是从招聘信息和调查推断的，没有硬数据。
+- [未验证] 除 Rich Harris 外，哪些核心维护者由 Vercel 或其他公司付薪，没有确认。
+- [未验证] 截至 5.57，组件内 `await`（`experimental.async`）是否已脱离实验状态，没有确认。
+- [推断] 2026 年集中出现的安全公告，更可能反映的是一轮集中的 SSR 安全审查（很多条同日发布），而不是代码质量在变差；这是对日期的解读，不是维护者的说法。
+- [未验证] 截至 2026-10-08 约 8.8 万 GitHub star；star 数会变。

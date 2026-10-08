@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpenHands does", "zh": "OpenHands 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the control center and start the local stack", "zh": "装上控制台，启动本地整套服务", "code": "npm install -g @openhands/agent-canvas · agent-canvas", "component": {"en": "agent-canvas CLI", "zh": "agent-canvas 命令行"}},
+    {"lane": "them", "en": "Starts the UI, an Agent Server and the automation backend behind one port", "zh": "在同一个端口后面拉起界面、Agent Server 和自动化后端", "component": {"en": "ingress + Agent Server", "zh": "入口代理 + Agent Server"}},
+    {"lane": "you", "en": "Open the UI, pick an agent and give it a model key or reuse its CLI login", "zh": "打开界面，选一个 agent，填模型 key 或沿用它命令行的登录", "code": "http://localhost:8000"},
+    {"lane": "you", "en": "Start a conversation on a project folder and describe the task", "zh": "在某个项目目录上开一个对话，把任务说清楚"},
+    {"lane": "them", "en": "Runs the agent on that backend: it edits files and runs shell commands", "zh": "在选定的后端上跑 agent：改文件、执行命令", "component": {"en": "Agent Server", "zh": "Agent Server"}},
+    {"lane": "them", "en": "Streams chat, terminal and file changes back to the same UI for you to review", "zh": "把对话、终端输出和文件改动实时推回同一个界面，等你审", "component": {"en": "Agent Canvas UI", "zh": "Agent Canvas 界面"}}
+  ],
+  "value": {"en": "One browser tab drives every agent on every machine, instead of a terminal per agent per host", "zh": "一个浏览器标签页就能驱动各台机器上的各个 agent，不用每个 agent 每台机器各开一个终端"},
+  "sources": [
+    "https://github.com/OpenHands/OpenHands#quickstart (npm install -g @openhands/agent-canvas, agent-canvas, http://localhost:8000)",
+    "https://github.com/OpenHands/OpenHands/blob/main/docs/SELF_HOSTING.md (ingress proxy fronting static server, agent server and automation backend)",
+    "https://github.com/OpenHands/OpenHands/blob/main/docs/ACP_AGENTS.md (pick OpenHands or an ACP agent; subscription login or API key)",
+    "https://github.com/OpenHands/OpenHands/blob/main/docs/architecture.md (Agent Canvas renders conversation, terminal, files; Agent Server executes)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "WeChatPlugin does", "zh": "微信小助手做的"},
+  "steps": [
+    {"lane": "you", "en": "Keep a supported WeChat build (up to 3.7.0) in Applications and stop it updating", "zh": "在“应用程序”里留一个受支持的微信版本（最高 3.7.0），别让它更新", "code": "/Applications/WeChat.app"},
+    {"lane": "you", "en": "Clone the repo and run its install script in Terminal", "zh": "克隆仓库，在终端里跑安装脚本", "code": "./WeChatPlugin-MacOS/Other/Install.sh"},
+    {"lane": "them", "en": "Backs up WeChat's executable, copies in its framework and patches the binary to load it", "zh": "备份微信可执行文件，拷入插件 framework，改写二进制让它启动时加载", "component": {"en": "Install.sh + insert_dylib", "zh": "Install.sh + insert_dylib"}},
+    {"lane": "you", "en": "Restart WeChat and switch features on from the 微信小助手 menu", "zh": "重启微信，在菜单栏“微信小助手”里打开功能", "code": "command + t · command + k"},
+    {"lane": "them", "en": "Swaps WeChat's own methods for its versions, so revoked messages stay and keyword replies go out", "zh": "把微信自己的方法换成它的版本：撤回的消息留下，命中关键字就自动回复", "component": {"en": "WeChatPlugin.framework hooks", "zh": "WeChatPlugin.framework 钩子"}}
+  ],
+  "value": {"en": "Anti-revoke, auto-reply and multi-instance inside the official client — until the next WeChat update", "zh": "在官方客户端里就有防撤回、自动回复和多开——直到微信下一次更新"},
+  "sources": [
+    "README.md @ master (113b9a0, 2023-03-21) 功能 ('支持微信 3.7.0', '新增禁止微信检测更新开关(非App Store版本)'); 使用 (消息防撤回 command + t; 自动回复 conmand + k [sic]); 安装 (git clone ... && ./WeChatPlugin-MacOS/Other/Install.sh; 重启微信，在菜单栏中看到微信小助手); 依赖 (insert_dylib, fishhook, GCDWebServer)",
+    "Other/Install.sh @ master (wechat_path=/Applications/WeChat.app; cp WeChat WeChat_backup; cp -r WeChatPlugin.framework into Contents/MacOS; insert_dylib --all-yes)",
+    "WeChatPlugin/Sources/Hook/WeChat+hook.m @ master (tk_hookMethod swaps methods on WeChat classes such as FFProcessReqsvrZZ, AccountService, MMSessionMgr)"
+  ]
+}

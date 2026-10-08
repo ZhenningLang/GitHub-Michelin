@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "PrettyZoo does", "zh": "PrettyZoo 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the msi, dmg, or rpm/deb installer from GitHub Releases and install it", "zh": "从 Releases 下载 msi、dmg 或 rpm／deb 安装包装好"},
+    {"lane": "you", "en": "Add a ZooKeeper server connection, optionally through an SSH tunnel", "zh": "添加 ZooKeeper 连接，需要时走 SSH 隧道"},
+    {"lane": "them", "en": "Connects via Apache Curator, loads the znode tree and keeps it synced live", "zh": "通过 Apache Curator 连上，加载 znode 树并实时同步"},
+    {"lane": "you", "en": "Click a node to read or edit its data, create or delete nodes, set ACLs", "zh": "点开节点读写数据、增删节点、设置 ACL"},
+    {"lane": "them", "en": "Pretty-prints and highlights JSON/XML data and writes your edits back", "zh": "把 JSON／XML 数据格式化高亮，并把你的改动写回集群"}
+  ],
+  "value": {"en": "You see and fix what is in ZooKeeper by clicking, without memorizing zkCli.sh commands", "zh": "点几下就能看清、改掉 ZooKeeper 里的内容，不用背 zkCli.sh 命令"},
+  "sources": [
+    "https://github.com/vran-dev/PrettyZoo README \"What\" (GUI created by JavaFX and Apache Curator Framework; Release installers: Windows (msi), Mac (dmg), Linux (rpm & deb))",
+    "https://github.com/vran-dev/PrettyZoo README \"Feature\" (multi-server manage, real-time node synchronize, ACL, SSH tunnel, node create/search/update/delete, terminal operation, JSON/XML pretty format, auto reconnect)"
+  ]
+}

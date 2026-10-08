@@ -6,20 +6,20 @@ category: spec-driven-development
 tags: [spec-driven, prd, methodology, ai-coding, copilot, agent-dev, development-process]
 language: Python
 license: MIT
-maturity: active, ~116.8k stars (as of 2026-07)
-last_verified: 2026-07-01
+maturity: "v1.1.2 (2026-10-07), active, ~140.6k stars (as of 2026-10-08)"
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
-  pushed_at: 2026-07-02T21:53:31Z
+  pushed_at: 2026-10-07T22:48:11Z
   default_branch: main
-  default_branch_sha: bba473c223dc298fb76ecf8f87f86d5d2b8ed11c
+  default_branch_sha: 1e933c49fd6d5d5390b28f18faefa5728c95b2e3
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:30:01Z
+  computed_at: 2026-10-08T08:10:15Z
   overall: A
-  overall_score: 3.75
-  scored_axes: 4
+  overall_score: 3.8
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -45,19 +45,24 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
-        homebrew_installs_90d: 4842
+        homebrew_installs_90d: 4520
         homebrew_tier: A
         signal_basis: homebrew
         tier_source: homebrew
     longevity:
       grade: B
       raw:
-        repo_age_days: 397
+        repo_age_days: 412
         last_commit_age_days: 0
         cohort: skill-pack
     governance:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        active_maintainers_12mo: 92
+        top1_share: 0.233
+        top3_share: 0.515
+        window_source: stats_contributors
+        carve_out: null
     risk_license:
       grade: A
       raw:
@@ -67,54 +72,77 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: type_na }
-    governance: { reason: empty_or_gated }
 ---
 
 # Spec Kit
 
-An open-source toolkit from GitHub that helps you get started with Spec-Driven Development — focusing on product scenarios and predictable outcomes instead of vibe coding every piece from scratch.
+You ask a coding agent for "a photo organizer with albums" and get something that runs but quietly decided the storage, the grouping and half the scope for you — and nothing written down says what it was supposed to do. Spec Kit makes the agent write that down first: a spec, then a technical plan, then a task list, and only then code that is checked back against them.
 
 ![Spec Kit — health radar](../../../assets/health/spec-kit.svg)
 
 ## When to use
 
-You're a developer or product manager who uses AI coding agents (Copilot, Claude Code, Codex, etc.) and you're tired of "vibe coding" — writing a vague prompt, getting code that almost works, and then iterating by feel. You've seen [Superpowers](../coding-agent-harnesses/superpowers.md) and [get-shit-done](get-shit-done.md), but you want a methodology backed by a major vendor with CLI tooling, PRD templates, and GitHub-native integrations rather than a drop-in skill pack. You reach for Spec Kit because it provides a structured spec-driven workflow: write a spec first, define the scenario and expected outcomes, and let the agent build against that contract. It gives you the `specify` CLI, PRD templates, role-based bundles, and AI-agent integrations that turn "build me a feature" into "here is the spec, implement it to these acceptance criteria." Pick Spec Kit over [12-Factor Agents](12-factor-agents.md) when you need a prescriptive day-to-day coding workflow rather than high-level design principles; pick it over [Compound Engineering](../coding-agent-harnesses/compound-engineering.md) when you want a spec-authoring toolkit rather than a session-persistence loop; pick it over [ECC](../coding-agent-harnesses/ecc.md) when you want a focused methodology layer rather than a batteries-included agent harness. It is especially useful when you work on GitHub and want your coding agent to respect a disciplined development process rather than generating ad-hoc solutions.
+You lead a small product team that already lets Copilot, Claude Code, Codex or Cursor write most feature code. The pattern you keep seeing: a one-line prompt turns into a 900-line PR whose reviewer asks "where did we agree it should store metadata in SQLite?" — and the answer is "the agent picked it". You want every feature to leave a reviewable trail (what and why → how → task list → code) without hand-writing a process doc for each agent your team uses. You reach for Spec Kit because one `specify init` drops the same templates and `/speckit-*` skills into the project for any of ~40 agent integrations, and the core loop (constitution → specify → plan → tasks → implement → converge) makes the agent fill a spec template before it touches code, then re-check the code against that spec.
 
-You also reach for it when you want to standardize how your team uses AI agents. Spec Kit provides extensions, presets, and a documented process (brainstorm → plan → build → review → ship) that can be shared across team members, making agent-assisted development more predictable and reviewable.
+Pick it over [Superpowers](../coding-agent-harnesses/superpowers.md) or [get-shit-done](get-shit-done.md) when the deciding factor is written artifacts a human reviews (spec, plan, task list per feature) plus a vendor-maintained CLI with a versioned catalog of extensions and presets your whole team installs the same way, rather than a methodology that lives only inside the agent's behaviour. Pick it over [12-Factor Agents](12-factor-agents.md) when you need a day-to-day coding procedure, not design principles for building agents. Since v1.0 (2026-08) it also ships opt-in `bug` (assess → fix → test) and `assess` (go / clarify / kill an idea) extensions, so the same scaffolding covers bug repair and idea triage, not only greenfield features.
 
+## How it works
+
+Spec Kit is two things: a Python CLI (`specify`) that scaffolds a project, and a set of Markdown templates plus agent "skills" (slash-command prompts the agent reads and follows) that it installs into that project. **The CLI and templates are Spec Kit's job; the writing is done by your own coding agent following those skills, and the reviewing is yours** — Spec Kit itself never calls a model. You run `specify init` once with your agent's integration key, set project principles once with `/speckit-constitution`, then per feature walk the agent through `/speckit-specify` (fills `specs/NNN-<feature>/spec.md` from the template: what and why, no tech choices), `/speckit-plan` and `/speckit-tasks` (you supply the tech stack; it writes the plan and an ordered task list), and `/speckit-implement`. `/speckit-converge` then compares the code with spec, plan and tasks and appends whatever is still unbuilt as new tasks — you repeat implement → converge until it reports *Converged*. Think of it as a building permit process: the agent may not pour concrete until drawings exist, and an inspector walks the site against those drawings afterwards.
+
+![spec-kit — backbone user story](../../../assets/flow/spec-kit.svg)
+
+<!-- flow-steps:begin (generated from flows/spec-kit.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the CLI and scaffold the project for your agent — `specify init my-project --integration copilot` — component: `specify CLI`
+2. **Spec Kit**: Writes the spec/plan/tasks templates, scripts and /speckit-* skills into the project
+3. **You**: In the agent chat, describe what to build and why — `/speckit-specify`
+4. **Spec Kit**: Agent fills the template into specs/NNN-feature/spec.md — component: `your coding agent`
+5. **You**: Review the spec, then give the tech stack — `/speckit-plan · /speckit-tasks`
+6. **Spec Kit**: Writes a technical plan and an ordered task list
+7. **You**: Start the build and the spec check — `/speckit-implement · /speckit-converge`
+8. **Spec Kit**: Builds task by task; converge adds unbuilt work as tasks until Converged
+
+**Value**: Every feature leaves a spec, plan and task list a reviewer can check the code against
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You don't use AI coding agents.** If you write code without AI assistance, use traditional test-driven development or behavior-driven development practices instead of Spec Kit, because Spec Kit is designed around the agent-assisted workflow and loses its primary integration point without a coding agent.
-- **You prefer lightweight, ad-hoc coding without formal specs.** If your projects are small experiments, prototypes, or one-off scripts, use direct prompting or [get-shit-done](get-shit-done.md) instead of Spec Kit, because the overhead of writing a PRD and running through a spec-driven phase pipeline may be slower than simply prompting the agent directly.
-- **You need a mature, battle-tested methodology.** If you need a spec-driven practice with a proven multi-year track record, use [Superpowers](../coding-agent-harnesses/superpowers.md) or [Compound Engineering](../coding-agent-harnesses/compound-engineering.md) instead of Spec Kit, because Spec Kit was created in 2025-08 and is less than a year old; the practices it encodes are still evolving. [推断]
-- **You are not in the GitHub ecosystem.** If you use GitLab or Bitbucket, use [get-shit-done](get-shit-done.md) or [Compound Engineering](../coding-agent-harnesses/compound-engineering.md) instead of Spec Kit, because the tooling and integrations (Copilot-centric bundles, GitHub Pages docs) are optimized for GitHub users and the integration surface is thinner elsewhere. [推断]
-- **You need a comprehensive project-management platform.** If you need to track sprints, manage backlogs, or handle cross-team dependencies, use Jira or Linear instead of Spec Kit, because Spec Kit is a methodology and CLI toolkit for agent-driven implementation, not a project lifecycle manager.
-- **You want guaranteed outcome quality.** If you need deterministic code generation, use formal methods or traditional TDD with comprehensive human review instead of Spec Kit, because Spec-Driven Development improves predictability but does not eliminate the inherent uncertainty of AI-generated code.
-
+- **You don't use AI coding agents.** Spec Kit's processes are skills an agent executes; without one there is nothing to run them. Use plain test-driven or behaviour-driven development practice instead.
+- **The change is a one-off script or a 20-line fix.** Six skill invocations and three Markdown artifacts per feature cost more than they save. Prompt the agent directly; if you still want a light guard rail, a single-skill habit such as Superpowers' brainstorm-then-plan step is cheaper than a full spec directory.
+- **You mostly change an existing codebase in small, overlapping increments.** Spec Kit's core artifact is a per-feature spec directory; evolving specs across many small brownfield changes is a separate guide, not the default loop. OpenSpec (not indexed) is built around change proposals with ADDED/MODIFIED requirement deltas that archive into a living spec, which fits that workflow more directly.
+- **Your team cannot absorb tooling churn.** 1.0.0 shipped 2026-08-21 and 1.1.2 on 2026-10-07 — 16 releases in seven weeks — and earlier flags (`--ai`, `--no-git`) were deprecated along the way; invocation syntax also differs per agent integration. Pin a release (the install docs cover pinned versions) or use a slower-moving prompt-only methodology such as [Superpowers](../coding-agent-harnesses/superpowers.md).
+- **You cannot install Python 3.11+ and `uv` on developer machines.** The CLI requires both. OpenSpec (not indexed) ships the same spec-first idea as an npm / Homebrew package on Node.js.
+- **You need project management.** Sprints, backlogs and cross-team dependencies belong in an issue tracker (Jira, Linear, GitHub Projects); Spec Kit's `taskstoissues` only turns a feature's task list into GitHub issues, it does not manage the work.
+- **You expect the spec to guarantee correct code.** Converge checks code against the spec using the same agent that wrote it; it is a structured self-review, not verification. Keep human review and real tests.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 | --- | --- | --- | --- |
-| [12-Factor Agents](12-factor-agents.md) | ✅ | Choose 12-Factor Agents when you want high-level design principles for production agents rather than a coding-phase spec methodology. | High-level design principles for production agent architecture; more abstract and less prescriptive about the day-to-day coding workflow than Spec Kit. |
-| [Superpowers](../coding-agent-harnesses/superpowers.md) | ✅ | Choose Superpowers when you want a drop-in brainstorm→plan→TDD→verify SDLC methodology installed into your coding agent. | Drop-in brainstorm→plan→TDD→verify SDLC methodology for Claude Code; overlapping goals but different packaging (skill/plugin vs CLI toolkit). |
-| [get-shit-done](get-shit-done.md) | ✅ | Choose get-shit-done when you want an opinionated phase pipeline that fights context rot with fresh contexts per stage. | Opinionated phase pipeline with fresh-context-per-stage discipline; narrower workflow focus vs Spec Kit's broader spec-driven development toolkit. |
-| [Compound Engineering](../coding-agent-harnesses/compound-engineering.md) | ✅ | Choose Compound Engineering when you want a turnkey loop that persists learnings across coding-agent sessions. | Turnkey brainstorm→plan→work→review→compound loop with session-persistence; less about spec authoring and more about iterative improvement. |
-| [ECC](../coding-agent-harnesses/ecc.md) | ✅ | Choose ECC when you want a batteries-included Claude Code harness with skills, agents, hooks, memory, and security scanning. | Batteries-included Claude Code harness with a broad feature set; the methodology layer is one part of a larger agent infrastructure. |
+| OpenSpec | not indexed | For incremental brownfield changes on a Node.js toolchain, pick OpenSpec; pick Spec Kit when each feature deserves its own full spec → plan → tasks trail and you want GitHub-backed upkeep. | OpenSpec's change-proposal folders and requirement deltas are lighter per change; Spec Kit's per-feature artifacts are heavier but give a fuller design record and a larger extension/preset catalog. |
+| [Superpowers](../coding-agent-harnesses/superpowers.md) | ✅ | If you want the agent itself to brainstorm, plan, implement test-first through subagents and verify, with you only approving the design, pick Superpowers; pick Spec Kit when the spec, plan and task files are the record your reviewers need. | Superpowers installs as a plugin with no CLI and enforces test-first execution; Spec Kit adds a Python CLI, artifacts and a catalog but leaves test discipline to your constitution and extensions. |
+| [get-shit-done](get-shit-done.md) | ✅ | When context rot across long sessions is the main pain, pick get-shit-done's fresh-context-per-phase pipeline; pick Spec Kit when the main pain is unreviewable decisions and you want spec documents as the record. | get-shit-done optimises the agent's working context; Spec Kit optimises the paper trail a human reviewer reads. |
+| [BMAD Method](bmad-method.md) | ✅ | If you want role-played agile personas (analyst, PM, architect, scrum master) producing PRD and architecture docs, pick BMAD; pick Spec Kit for a shorter, single-role spec → plan → tasks loop. | BMAD covers more of the product lifecycle with more ceremony; Spec Kit is narrower and quicker to adopt per feature. |
+| [12-Factor Agents](12-factor-agents.md) | ✅ | Read 12-Factor Agents when you are designing an LLM-powered product's architecture; use Spec Kit when you need a procedure for building any feature with a coding agent. | 12-Factor is principles with no tooling; Spec Kit is tooling with an opinionated procedure. |
 
 ## Health & viability
-- **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
-- **Responsiveness**: Cannot be scored — unknown.
-- **Adoption**: Grade A — 1,919 monthly downloads via pypi.org (package: spec-kit-redist).
-- **Longevity**: Grade B — 397 days old.
-- **Governance**: Cannot be scored — unknown.
-- **Risk / License**: Grade A — MIT license.
+
+- **Maintenance (2026-10-08)**: very active — commits in every one of the last 13 weeks and a release roughly every few days (1.0.0 on 2026-08-21, 1.1.2 on 2026-10-07). The flip side is churn, covered under When NOT to use.
+- **Governance & backing**: owned by the `github` organization; 92 distinct contributors were active in the past 12 months and the top contributor accounts for about 23% of commits, so the project does not hinge on one person. The roadmap is still GitHub's, not a foundation's.
+- **Age / Lindy**: created 2025-08-21, about 14 months old. Active and growing, but too young for the Lindy prior to say much; treat long-term continuity as GitHub's product decision.
+- **Adoption**: ~140.6k stars and ~12.6k forks (2026-10-08), a Homebrew formula with ~4.5k installs in 90 days, and a community catalog of extensions, presets and bundles. Star count is inflated by GitHub branding and should not be read as production adoption.
+- **Risk flags**: MIT license, no relicense history. The main risk is breaking changes in a fast-moving 1.x CLI, not licensing.
+
 ## Caveats (unverified)
 
-- [未验证] ~116.8k GitHub stars as of 2026-07-01; the star count is heavily influenced by GitHub branding and AI hype, not necessarily organic production adoption.
-- [未验证] The exact CLI commands (`specify`), bundle contents, and AI-agent integrations are evolving rapidly; verify the current release docs before adopting.
-- [未验证] GitHub's long-term commitment to Spec Kit as a standalone open-source project (vs. an internal GitHub feature) is unclear; the project may pivot or be absorbed into Copilot workflows.
-- [推断] Spec-Driven Development is a promising methodology, but its effectiveness with AI agents depends heavily on the quality of the spec writer and the capabilities of the agent harness; it is not a magic bullet.
-- [推断] The project is extremely young (created 2025-08); expect API changes, CLI redesigns, and methodology shifts as it matures.
-- [推断] "Predictable outcomes" is an aspirational goal, not a guaranteed property; AI-generated code still requires testing, review, and iteration regardless of how good the spec is.
+- [未验证] The integration catalog listed 42 agent keys on 2026-10-08; exact command spelling (`/speckit-specify` vs other forms) varies by integration and mode, so check the integrations reference for your agent.
+- [推断] Star and fork counts are amplified by the GitHub brand and AI-tooling hype; they do not show how many teams run the full process in production.
+- [推断] The claim that OpenSpec fits incremental brownfield changes better comes from OpenSpec's own README ("built for brownfield not just greenfield") and its change-proposal design, not from a side-by-side trial.
+- [未验证] GitHub's long-term commitment to Spec Kit as a standalone open-source project, versus folding it into Copilot features, is not stated anywhere public.
+- [推断] Converge's completion check is done by the same agent that wrote the code; how reliably it catches missed requirements depends on the model and has not been benchmarked here.
+- [推断] Whether a spec-first loop actually reduces rework depends on the quality of the spec writer and reviewer; the project does not publish outcome data.

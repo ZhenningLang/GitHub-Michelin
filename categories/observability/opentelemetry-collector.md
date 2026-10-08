@@ -3,23 +3,23 @@ name: OpenTelemetry Collector
 slug: opentelemetry-collector
 repo: https://github.com/open-telemetry/opentelemetry-collector
 category: observability
-tags: [observability, monitoring, opentelemetry-collector, service]
+tags: [observability, opentelemetry, otlp, telemetry-pipeline, tracing, metrics, logging, cncf]
 language: Go
 license: Apache-2.0
-maturity: active, ~7,211 stars (as of 2026-07)
-last_verified: 2026-07-06
+maturity: active, v0.162.0 (2026-09-28), ~7.6k stars (as of 2026-10)
+last_verified: 2026-10-08
 type: service
 upstream:
-  pushed_at: 2026-07-04T13:54:14Z
+  pushed_at: 2026-10-07T23:12:28Z
   default_branch: main
-  default_branch_sha: 00f6354e6f8b7daf031908f7bb0637c6aeb1201d
+  default_branch_sha: 36f113c7c648f6c4bf67277527d85371cb578a72
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:49:08Z
+  computed_at: 2026-10-08T08:23:57Z
   overall: A
-  overall_score: 3.6
-  scored_axes: 5
+  overall_score: 3.5
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,12 +29,18 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: B
+      raw:
+        median_ttfr_hours: 64.2
+        qualifying_issues: 49
+        band: default
+        window_offset_days: 0
+        source: issue
+        inferred: false
     adoption:
       grade: C
       raw:
@@ -45,23 +51,23 @@ health:
         graph_tier: D
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 426910
-        release_assets: 140
+        release_downloads: 411562
+        release_assets: 133
         release_tier: C
         signal_basis: releases
         tier_source: releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 2693
-        last_commit_age_days: 1
+        repo_age_days: 2709
+        last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 34
-        top1_share: 0.282
-        top3_share: 0.478
+        active_maintainers_12mo: 35
+        top1_share: 0.308
+        top3_share: 0.494
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -71,62 +77,92 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: github_unavailable }
 ---
+
 # OpenTelemetry Collector
 
-OpenTelemetry Collector
+Every observability vendor wants its own agent on your hosts and its own SDK in your code, so switching from one backend to another — or sending the same traces to two — means redeploying agents and re-instrumenting services. The Collector is one vendor-neutral relay that sits between your apps and your backends: apps send standard OpenTelemetry data to it, and a YAML file decides what gets filtered, enriched, and forwarded where.
 
 ![OpenTelemetry Collector — health radar](../../assets/health/opentelemetry-collector.svg)
 
 ## When to use
 
-You're choosing open-source infrastructure for a task that falls into `observability` and you need a real repository to evaluate, not just a product name from a comparison table. You reach for OpenTelemetry Collector when its upstream description matches the job and when adopting an existing project is preferable to writing custom glue from scratch.
+You run the platform team for a few dozen services. Traces go to Jaeger, metrics to Prometheus, logs to Loki — and finance now wants a commercial APM trial on top for the payment services, with production traces only, PII stripped. Today that means a second agent per node and a second exporter wired into every service's code, and when the trial ends someone has to undo it all. Meanwhile each team configures sampling and retry behaviour slightly differently.
 
-This first-pass page exists because OpenTelemetry Collector was repeatedly useful as a comparison candidate in the atlas backlog. Use it as an intake-backed starting point: verify the upstream README and license, then compare it against the linked neighboring pages before committing to the dependency.
+You reach for the OpenTelemetry Collector to put one hop in between. Services emit OTLP — the OpenTelemetry wire protocol — to a local Collector; the Collector's YAML decides which spans to drop, which attributes to delete, which Kubernetes metadata to add, and which backends receive which signals. Adding the APM trial becomes one more exporter in one config file. You pick it over vendor agents because the pipeline stays vendor-neutral and CNCF-governed; over Telegraf, Fluent Bit or Vector because it handles traces, metrics and logs in the OpenTelemetry data model natively rather than as an add-on.
+
+## How it works
+
+The Collector is a Go binary assembled from three kinds of plug-in components. **Receivers** accept data — OTLP over gRPC (port 4317) or HTTP (4318), plus, in the contrib distribution, Prometheus scrapes, Jaeger, Kafka, log files and about a hundred other sources — and convert it into one internal data model. **Processors** act on data in flight: batching, filtering, sampling, attribute redaction, memory limiting, adding Kubernetes pod metadata. **Exporters** send the result to one or more backends, with a sending queue that buffers and retries when a backend is down. You wire these together per signal (traces, metrics, logs) in the `service.pipelines` section of a YAML file — think of a mail-sorting room where you only write the routing rules. The same binary runs as an **agent** next to each app or as a central **gateway** tier. **What the Collector does for you:** protocol translation, buffering, retry, fan-out. **What you do:** choose a distribution (core, contrib, k8s, or a custom build made with the `ocb` builder), write the pipeline config, and run the storage backends — the Collector stores and queries nothing.
+
+![opentelemetry-collector — backbone user story](../../assets/flow/opentelemetry-collector.svg)
+
+<!-- flow-steps:begin (generated from flows/opentelemetry-collector.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Pull the Collector image and run it with the OTLP ports open: 4317 for gRPC, 4318 for HTTP — `docker pull otel/opentelemetry-collector`
+2. **You**: Declare receivers, processors and exporters in YAML, then wire them into per-signal pipelines — `otelcol --config=customconfig.yaml`
+3. **You**: Point your apps' OpenTelemetry SDKs at the Collector instead of at a vendor
+4. **OpenTelemetry Collector**: Receives traces, metrics and logs and converts them into one internal data model — component: `receivers`
+5. **OpenTelemetry Collector**: Batches, filters, samples and enriches the data in flight — component: `processors`
+6. **OpenTelemetry Collector**: Sends each signal to one or more backends, queueing and retrying on failure — component: `exporters`
+
+**Value**: Changing or adding a backend is a YAML edit in one place — your apps keep emitting OTLP and are never re-instrumented
+
+</details>
+<!-- flow-steps:end -->
 
 ## When NOT to use
 
-- **You need a fully reviewed, deeply researched atlas page today.** Use a more mature in-index page from the comparison table until this intake page has been semantically reviewed with the upstream docs.
-- **The GitHub metadata flags a blocker for your environment.** If license, archival status, or maintenance cadence is load-bearing, choose a better-verified alternative in this category instead of relying on OpenTelemetry Collector.
-- **Your task needs a narrower or more specialized substitute.** Prefer the existing page whose `When NOT to use` section names your exact constraint; this page is a broad first-pass entry.
-- **You cannot afford upstream churn or operational unknowns.** Pick an older in-index project with a clearer Lindy record and documented ops profile.
+- **You have one service and one backend that already accepts OTLP.** The SDK can export straight to the backend; a Collector adds a process to deploy, monitor and upgrade for no routing benefit. Add it later, when a second backend, central sampling or redaction shows up.
+- **You are looking for somewhere to store, query or graph telemetry.** The Collector only moves data. Pair it with [Prometheus](prometheus.md) for metrics, [Loki](loki.md) for logs, [Jaeger](jaeger.md) for traces and [Grafana](grafana.md) for dashboards.
+- **You need stable config and Go APIs across every upgrade.** The binary is still versioned 0.x (v0.162.0 as of 2026-09-28) with a release about every two weeks; components move through alpha/beta/stable levels, and config keys get renamed — the core OTLP gRPC exporter's type changed from `otlp` to `otlp_grpc`, with the old name kept as a deprecated alias. If you cannot absorb that churn, pin a version and upgrade deliberately, or use a vendor-supported distribution (for example Grafana Alloy) that tracks it for you.
+- **Your pipeline is metrics-only from heterogeneous devices and protocols.** For SNMP, Modbus/OPC UA, or InfluxDB line-protocol sources feeding a single time-series store, [Telegraf](../dev-utilities/ops-infra/telegraf.md)'s plugin catalog is broader there and the TOML config is simpler.
+- **You want a programmable log-transformation language.** If your work is mostly parsing and reshaping log lines with complex logic, Vector's VRL language is purpose-built for that; the Collector's transform processor (OTTL) covers common cases but is younger.
+- **You expect "core" to include the components you need.** The core repository ships only OTLP receivers/exporters, the debug exporter, and batch and memory-limiter processors. Prometheus scraping, file logs, Kubernetes attributes and almost every vendor exporter live in `opentelemetry-collector-contrib`, whose components have their own, often lower, stability levels.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [Grafana](grafana.md) | ✅ | When you need the established in-index option for this category, compare it against OpenTelemetry Collector before switching. | OpenTelemetry Collector is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenTelemetry Collector only after verifying the repo-specific caveats below. |
-| [Prometheus](prometheus.md) | ✅ | When you need the established in-index option for this category, compare it against OpenTelemetry Collector before switching. | OpenTelemetry Collector is newly indexed from the intake backlog; use the existing page when its documented constraints match better, and choose OpenTelemetry Collector only after verifying the repo-specific caveats below. |
-| Hand-rolled integration | 未收录 | Choose custom code only when the needed scope is tiny and the maintenance burden is clearly lower than adopting this repo. | Custom code avoids a dependency but loses the upstream project, ecosystem, and documented tradeoffs captured here. |
+| Grafana Alloy | 未收录 | If your backends are the Grafana stack and you want one vendor-supported agent with a programmable config language, pick Alloy; pick the upstream Collector when vendor neutrality and the plain OpenTelemetry YAML matter more. | Alloy embeds Collector components and adds Grafana-specific features and support, but ties you to Grafana Labs' release train and config syntax. |
+| Vector | 未收录 | If the job is mostly high-volume log routing with heavy per-event transformation, pick Vector; pick the Collector when traces and the OpenTelemetry data model are first-class requirements. | Vector's VRL language is strong for log reshaping; its OpenTelemetry trace support is narrower than the Collector's native pipeline. |
+| Fluent Bit | 未收录 | On constrained nodes that mainly forward container logs, pick Fluent Bit; pick the Collector when one pipeline must carry traces, metrics and logs with OpenTelemetry semantics. | Fluent Bit is a small C binary with a long log-forwarding track record; OpenTelemetry signals other than logs are a newer addition there. |
+| [Telegraf](../dev-utilities/ops-infra/telegraf.md) | ✅ | For metrics from many heterogeneous systems (SNMP, industrial protocols, databases) into one store, pick Telegraf; pick the Collector for application telemetry from OpenTelemetry SDKs. | Telegraf has the broader input-plugin catalog and simpler TOML; it is metrics-first and has no tracing pipeline. |
+| Vendor agents (e.g. Datadog Agent) | 未收录 | If you are committed to one commercial backend and want its full feature set, use its agent; use the Collector to keep the option of switching or dual-shipping. | Vendor agents unlock proprietary features with zero glue; the Collector keeps you portable at the cost of running and configuring it yourself. |
 
 ## Tech stack
 
-- **Primary language:** Go per GitHub metadata.
-- **Repository:** `open-telemetry/opentelemetry-collector`.
-- **Project shape:** categorized as `service` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `main`, last pushed `2026-07-04T13:54:14Z`, archived `false`.
+- **Language:** Go; built from Go modules, with core libraries such as `pdata`, `component` and `confmap` released as stable v1.x (v1.68.0) while the Collector binary and many components are still 0.x.
+- **Protocol:** OTLP v1.10.0 (stable) over gRPC and HTTP; the internal data model mirrors OTLP for traces, metrics, logs, and (alpha) profiles.
+- **Configuration:** YAML with `receivers`, `processors`, `exporters`, `connectors`, `extensions`, wired in `service.pipelines`; config can be merged from files, environment variables, or HTTP(S) URLs.
+- **Distributions:** official builds `otelcol` (core), `otelcol-contrib`, `otelcol-k8s`, `otelcol-otlp`, `otelcol-prometheus`, `otelcol-ebpf-profiler`; custom builds with the OpenTelemetry Collector Builder (`ocb`). Release images are signed with cosign.
 
 ## Dependencies
 
-- **Runtime dependencies:** not exhaustively verified in this intake pass; inspect the upstream dependency manifest before production use.
-- **External services:** not exhaustively verified in this intake pass; check whether the project requires databases, queues, cloud APIs, browser runtimes, GPUs, or model-provider credentials.
-- **Operational input:** at minimum, you depend on the GitHub repository and its release/update process.
+- **Runtime:** none beyond the binary or container image; runs on Linux, Windows and macOS, as a sidecar, DaemonSet, or Deployment.
+- **Backends:** whatever you export to (Prometheus, Loki, Jaeger, a commercial APM…) — they are yours to run or pay for.
+- **Optional:** the OpenTelemetry Operator or Helm charts for Kubernetes; a `file_storage` extension for a persistent on-disk queue; Kubernetes API access for metadata enrichment (contrib `k8sattributes` processor).
+- **Instrumentation:** applications need an OpenTelemetry SDK or auto-instrumentation agent (or another protocol a receiver understands) to send data in.
 
 ## Ops difficulty
 
-**Unknown to medium until the upstream docs are reread.** Library-style entries may be low effort to try but still need version pinning and upgrade review. App/service/framework entries can carry hidden database, worker, storage, auth, browser, GPU, or cloud-provider requirements, so treat this first-pass entry as an intake marker rather than an ops runbook.
+**Low to start, medium in production.** A single container with the default config accepts OTLP in minutes. Production work is mostly about the pipeline: choosing agent vs gateway topology, sizing memory limits and sending queues so a slow backend does not cause dropped data or OOM kills, tail sampling (which needs all spans of a trace to reach the same gateway instance, usually via a load-balancing exporter tier), and monitoring the Collector's own metrics. Upgrades every few weeks are routine, but read the changelog: renamed config keys, deprecated components, and contrib components with alpha/beta stability can break a pipeline. Binding receivers to `0.0.0.0` exposes them to the network — the docs default to `localhost` for that reason.
 
 ## Health & viability
 
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2026-07-04T13:54:14Z` as of 2026-07-06.
-- **Adoption snapshot:** ~7,211 GitHub stars as of 2026-07; stars are only a noisy adoption signal.
-- **License snapshot:** `Apache-2.0` from GitHub API; inspect repository license files when the license matters.
-- **Lindy and governance:** not fully reviewed in this intake pass. Treat org ownership, project age, release cadence, and bus factor as open review items before long-term adoption.
-- **Risk flags:** first-pass page generated from backlog metadata.
+- **Maintenance (as of 2026-10-08):** very active — commits every week of the last quarter and a minor release roughly every two weeks (v0.162.0 on 2026-09-28).
+- **Governance / backing:** an OpenTelemetry project under the **CNCF**, run by the Collector SIG with maintainers and approvers from Grafana Labs, Snowflake, Splunk, Dynatrace, Datadog, Elastic and Microsoft — multi-vendor governance, no single company owns the roadmap.
+- **Age & Lindy (created 2019-05, ~7.4 years):** mature and still active; the default telemetry pipeline that most observability vendors now accept or ship as their own distribution — a strong prior.
+- **Responsiveness:** now scored B — a median first response of 64.2 hours on new issues (previously unscored because GitHub data was unavailable).
+- **Adoption:** the radar's adoption axis is only C because it counts Go-module dependents and GitHub release downloads; most users pull the `otel/*` container images or vendor distributions instead, so this underestimates real use.
+- **Risk flags:** Apache-2.0, no relicense history. The main risk is churn: pre-1.0 binary versioning and frequent config/component deprecations.
 
 ## Caveats (unverified)
 
-- [未验证] This is a first-pass intake page generated from GitHub metadata and the 2026-07-06 backlog; before relying on it for a high-stakes selection, reread the upstream README, docs, license file, and release notes.
-- [推断] The comparison table uses nearby in-index pages as a starting point; a later semantic review should replace generic neighboring rows with the closest true substitutes.
+- [未验证] Star count (~7.6k for the core repo, ~5.0k for contrib), versions and dates were read from the GitHub API on 2026-10-08.
+- [未验证] The exact CNCF maturity level of OpenTelemetry (incubating vs graduated) was not re-checked during this sync.
+- [推断] "About a hundred" contrib receivers is an approximation from the contrib repository's `receiver/` directory listing; component counts and stability levels change every release.
+- [推断] The comparisons with Vector, Fluent Bit and Grafana Alloy are based on their general positioning, not on a fresh reading of their repositories for this page.
+- [推断] The radar's adoption grade C reflects what the scorer can measure (Go-module dependents, release downloads), not container-image pulls; real adoption is likely much higher.

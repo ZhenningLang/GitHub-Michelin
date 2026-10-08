@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "LlamaIndex does", "zh": "LlamaIndex 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install core plus the model integration you want, and set its API key", "zh": "装好核心包和你要的模型集成包，配好 API key",
+     "code": "pip install llama-index-core · pip install llama-index-llms-openai"},
+    {"lane": "you", "en": "Load a folder of files and build an index over them", "zh": "读入一个文件夹，在上面建索引",
+     "code": "VectorStoreIndex.from_documents(documents)", "component": {"en": "SimpleDirectoryReader", "zh": "SimpleDirectoryReader"}},
+    {"lane": "them", "en": "Splits the files into chunks, embeds each chunk, stores the vectors (in memory by default)", "zh": "把文件切成小段，逐段向量化，存起向量（默认放内存）",
+     "component": {"en": "VectorStoreIndex", "zh": "VectorStoreIndex"}},
+    {"lane": "you", "en": "Ask a question through a query engine", "zh": "通过查询引擎提一个问题",
+     "code": "query_engine.query(\"YOUR_QUESTION\")"},
+    {"lane": "them", "en": "Retrieves the closest chunks, writes them into the prompt, returns the LLM's grounded answer", "zh": "取回最相近的几段写进提示词，返回大模型基于这些段落的回答",
+     "component": {"en": "query engine", "zh": "查询引擎"}}
+  ],
+  "value": {"en": "Answers come from your own documents instead of the model's memory, without hand-writing chunking, embedding or retrieval", "zh": "答案来自你自己的文档而不是模型的记忆，切分、向量化、检索都不用手写"},
+  "sources": [
+    "https://github.com/run-llama/llama_index#-example-usage (pip install llama-index-core / llama-index-llms-openai, SimpleDirectoryReader, VectorStoreIndex.from_documents, index.as_query_engine, query_engine.query(\"YOUR_QUESTION\"), in-memory by default)",
+    "https://github.com/run-llama/llama_index/blob/main/llama-index-core/pyproject.toml (requires-python >=3.10, core dependencies)"
+  ]
+}

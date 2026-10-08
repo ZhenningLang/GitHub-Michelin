@@ -6,8 +6,8 @@ category: work-state
 tags: [spec-driven, project-management, github-issues, git-worktrees, parallel-agents, agent-skill, prd, epics, claude-code, shell]
 language: Shell
 license: MIT
-maturity: v2 (Agent Skills compatible), active; last push 2026-03, no tagged GitHub releases (as of 2026-06)
-last_verified: 2026-06-26
+maturity: v2 (Agent Skills compatible); last commit 2026-03-18, quiet since; no tagged GitHub releases (as of 2026-10-08)
+last_verified: 2026-10-08
 type: skill-pack
 upstream:
   pushed_at: 2026-03-18T12:15:24Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T15:46:55Z
+  computed_at: 2026-10-08T08:15:30Z
   overall: C
   overall_score: 2.25
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 193
+        last_commit_age_days: 204
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -41,8 +41,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 405
-        last_commit_age_days: 193
+        repo_age_days: 415
+        last_commit_age_days: 204
         cohort: skill-pack
     governance:
       grade: D
@@ -77,6 +77,29 @@ You're leading a feature that's too big for one agent session — a multi-file s
 
 So you point your harness at CCPM's skill and say "let's plan the payments feature." It walks you through a brainstorm into a PRD under `.claude/prds/`, parses that into a technical epic, decomposes the epic into tasks tagged with `depends_on` / `parallel` / `conflicts_with`, then syncs those tasks up as GitHub Issues — which become the shared source of truth a whole team (human or agent) reads. From there you say "start working on issue 1234" and it spins up a git worktree so an agent can grind on that stream in isolation while another works a non-conflicting one. Deterministic queries ("standup", "what's blocked") run as plain bash scripts, so status is a script call, not a hallucination. Every commit traces back to a written spec, which is the whole point: you wanted documented intent and merge-safe parallelism, not a faster way to lose context.
 
+## How it works
+
+CCPM is one skill folder (`skill/ccpm/`): a `SKILL.md` that recognises project-management intent in what you say and routes to one of five phase guides (plan, structure, sync, execute, track), plus 14 bash scripts for the questions that have a deterministic answer. **The skill tells the agent how to run each phase; GitHub Issues and plain markdown files under `.claude/` hold the state** — so a fresh session, another agent, or a human can pick up where the last one stopped. You speak in plain sentences ("break down the X epic"); the agent writes the PRD, epic and task files, creates the issues with `gh`, and sets up one git *worktree* — a second checkout of the same repo in a sibling folder, `../epic-<name>/` — for the epic. When you start an issue, it splits that issue into streams that touch different files and runs several agents on them at once inside that worktree, coordinating through git commits. "Standup" or "what's blocked" never goes to the model: a bash script scans the files and prints the answer.
+
+![ccpm — backbone user story](../../../assets/flow/ccpm.svg)
+
+<!-- flow-steps:begin (generated from flows/ccpm.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Link the skill into your harness and log gh into the project's GitHub repo — `ln -s /path/to/ccpm/skill/ccpm .claude/skills/ccpm` — component: `skill/ccpm/SKILL.md`
+2. **You**: Say what you want to build, in plain words — `"I want to build X"`
+3. **CCPM**: Brainstorms scope with you, writes a PRD, then parses it into a technical epic — `.claude/prds/<name>.md · .claude/epics/<name>/epic.md`
+4. **You**: Ask it to break the epic down and sync it to GitHub — `"break down the X epic" · "sync the X epic to GitHub"`
+5. **CCPM**: Writes task files with dependency flags, opens an epic issue plus sub-issues, sets up a worktree — `depends_on · parallel · conflicts_with`
+6. **You**: Pick an issue to start — `"start working on issue N"`
+7. **CCPM**: Splits the issue into independent streams and launches parallel agents that commit per issue — `Issue #N: description` — component: `references/execute.md`
+
+**Value**: Every commit traces back to a written spec, and progress sits in GitHub Issues instead of a chat log
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **Small / single-stream work.** A one-file fix or a task that fits in a single agent session doesn't need PRD → epic → issue ceremony; CCPM's 5-phase discipline is pure overhead below a certain size.
@@ -84,7 +107,7 @@ So you point your harness at CCPM's skill and say "let's plan the payments featu
 - **You want a human-team tracker.** This is agent-and-engineer workflow tooling, not a PM dashboard — no boards, sprints, notifications, or non-engineer UI beyond what GitHub Issues itself provides.
 - **Large epics.** The workflow caps at roughly ≤10 tasks per epic by default; very large efforts need manual splitting into multiple epics.
 - **You distrust the headline numbers.** Marketing claims ("89% less context-switching", "75% fewer bugs", "up to 3× faster", a 4/4-vs-0/4 internal eval) are self-reported and not independently reproduced — adopt for the *workflow*, not the percentages. [未验证]
-- **Maturity / churn risk.** No tagged releases and a recent v1→v2 ("Agent Skills") restructure mean the skill surface and file layout can still shift release-to-release; pin a commit if you need stability.
+- **Maturity / stall risk.** No commits since 2026-03-18 (checked 2026-10-08), no tagged releases, and a v1→v2 ("Agent Skills") restructure mean the skill surface and file layout can still shift release-to-release; pin a commit if you need stability.
 - **Worktree-hostile setups.** Parallel execution leans on git worktrees; repos with heavy submodules, generated artifacts, or env that doesn't survive a worktree checkout will fight the parallel model.
 
 ## Comparison
@@ -101,9 +124,9 @@ So you point your harness at CCPM's skill and say "let's plan the payments featu
 ## Health & viability
 
 - **Responsiveness**: Cannot be scored — type_na.
-- **Maintenance** — last push 2026-03 (as of 2026-06), so ~3 months since the last commit and no tagged releases; the recent v1→v2 ("Agent Skills") restructure shows real upkeep, but a multi-month gap means it's coasting rather than rapidly iterating. Only ~4 open issues — low backlog, but read alongside the modest ~8k stars. [推断]
+- **Maintenance** — last push 2026-03-18 and the default branch has not moved since (re-checked 2026-10-08): about seven months without a commit and still no tagged releases. The v1→v2 ("Agent Skills") restructure showed real upkeep, but the long gap since reads as **stalled, not formally abandoned** — pin a commit and expect no fixes on demand. [推断]
 - **Governance / bus factor** — `Organization`-owned (`automazeio`), which softens single-maintainer risk somewhat, but it's still a small vendor-led skill repo, not a foundation project; the roadmap is whoever runs automaze. No formal governance to point to. [推断]
-- **Age & Lindy** — created 2025-08, so under a year old as of 2026-06 and already through one breaking restructure (v1→v2): too young for a Lindy verdict, and the surface is still settling — pin a commit if you need stability.
+- **Age & Lindy** — created 2025-08-18, so about 14 months old at 2026-10-08, and quiet for the last seven of them, after one breaking restructure (v1→v2): too young for a Lindy verdict, and the age-plus-activity signal is weakening rather than building.
 - **Risk flags** — `[未验证]` MIT, no relicense history. Hard dependency on GitHub Issues + `gh` is a lock-in surface (no GitLab/Jira backend), and the headline metrics ("89% less context-switching", "75% fewer bugs", "3× faster") are self-reported, not independently reproduced — adopt for the workflow, not the percentages.
 
 ## Caveats (unverified)

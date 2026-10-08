@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them":  {"en": "TRL does", "zh": "TRL 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library from PyPI", "zh": "从 PyPI 安装", "code": "pip install trl"},
+    {"lane": "you", "en": "Load a prompt dataset and pick or write a reward function", "zh": "加载提示数据集，选用或自写奖励函数", "code": "reward_funcs=accuracy_reward"},
+    {"lane": "you", "en": "Create the trainer with a Hub model id and start training", "zh": "用 Hub 模型 id 创建训练器并开训", "code": "GRPOTrainer(model=\"Qwen/Qwen2.5-0.5B-Instruct\", ...) · trainer.train()"},
+    {"lane": "them", "en": "Generates a group of completions per prompt, in-process or via vLLM", "zh": "对每个提示生成一组回答，进程内或交给 vLLM", "component": {"en": "GRPOTrainer", "zh": "GRPOTrainer 训练器"}},
+    {"lane": "them", "en": "Scores them with your rewards and compares each to its group's average", "zh": "用你的奖励打分，并与本组平均分比较"},
+    {"lane": "them", "en": "Takes a gradient step near the reference model, scaled out via Accelerate", "zh": "在贴近参考模型的约束下走一步梯度，经 Accelerate 扩展到多卡"}
+  ],
+  "value": {"en": "SFT, DPO or GRPO on any transformers model without writing or debugging a training loop", "zh": "在任意 transformers 模型上跑 SFT、DPO 或 GRPO，不用自己写、自己排查训练循环"},
+  "sources": [
+    "README.md @ 2026-10-08 'Installation': 'pip install trl'",
+    "README.md @ 2026-10-08 'GRPOTrainer' quick start: load_dataset(\"trl-lib/DeepMath-103K\"), GRPOTrainer(model=\"Qwen/Qwen2.5-0.5B-Instruct\", reward_funcs=accuracy_reward, train_dataset=dataset), trainer.train(); 'light wrapper around the Transformers trainer', DDP/DeepSpeed ZeRO/FSDP",
+    "docs/source/grpo_trainer.md @ 2026-10-08: generating completions, group-relative advantage, KL to reference policy",
+    "docs/source/vllm_integration.md @ 2026-10-08: use_vllm=True, vllm_mode colocate (default) or server"
+  ]
+}

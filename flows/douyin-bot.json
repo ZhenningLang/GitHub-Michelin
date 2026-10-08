@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Douyin-Bot does",
+    "zh": "Douyin-Bot 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Connect an Android phone over USB with ADB debugging on, Douyin open",
+      "zh": "用 USB 连上开了 ADB 调试的安卓手机，打开抖音"
+    },
+    {
+      "lane": "you",
+      "en": "Get Tencent AI AppID/AppKey and set your screen's button coordinates",
+      "zh": "申请腾讯 AI 的 AppID/AppKey，填好你屏幕的按钮坐标",
+      "code": "center_point · follow_bottom · star_bottom"
+    },
+    {
+      "lane": "you",
+      "en": "Install the 2018-pinned requirements and start the loop",
+      "zh": "装上 2018 年钉死的依赖，启动循环",
+      "code": "python douyin-bot.py"
+    },
+    {
+      "lane": "them",
+      "en": "Screenshots the phone over ADB and compresses it under 1 MB",
+      "zh": "通过 ADB 截手机屏，压到 1 MB 以下"
+    },
+    {
+      "lane": "them",
+      "en": "Sends it to the ai.qq.com face API and reads back age and beauty score",
+      "zh": "发给 ai.qq.com 人脸接口，拿回年龄和颜值分"
+    },
+    {
+      "lane": "them",
+      "en": "Above BEAUTY_THRESHOLD taps like and follow, then swipes to the next video",
+      "zh": "超过 BEAUTY_THRESHOLD 就点赞关注，然后划到下一条"
+    }
+  ],
+  "value": {
+    "en": "Historically a hands-free swipe-and-like loop; inert today — 2018 coordinates, face API presumed gone",
+    "zh": "当年是免手动的刷视频点赞循环；今天已失效——坐标停在 2018 年，人脸接口大概率已下线"
+  },
+  "sources": [
+    "https://github.com/wangshub/Douyin-Bot#原理 (screenshot, compress < 1MB, ai.qq.com face API, BEAUTY_THRESHOLD, like + follow, next page)",
+    "https://github.com/wangshub/Douyin-Bot#使用教程 (AppKey/AppID from ai.qq.com; pip install -r requirements.txt; python douyin-bot.py)",
+    "https://github.com/wangshub/Douyin-Bot#注意 (config.json keys center_point, follow_bottom, star_bottom; OnePlus 5 1920x1080)",
+    "https://github.com/wangshub/Douyin-Bot/blob/master/douyin-bot.py (adb shell input swipe/tap; BEAUTY_THRESHOLD = 80)"
+  ]
+}

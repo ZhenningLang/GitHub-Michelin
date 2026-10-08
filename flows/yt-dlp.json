@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "yt-dlp does", "zh": "yt-dlp 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install yt-dlp with its default extras, plus ffmpeg and a JS runtime such as Deno", "zh": "装 yt-dlp，再配上 ffmpeg 和 Deno 等 JS 运行时", "code": "python3 -m pip install -U \"yt-dlp[default]\"", "component": {"en": "yt-dlp CLI", "zh": "yt-dlp 命令行"}},
+    {"lane": "you", "en": "Run it on a page URL, optionally with a format selector", "zh": "对页面网址运行它，可选地带上格式选择器", "code": "yt-dlp -f \"bv*+ba/b\""},
+    {"lane": "them", "en": "Matches the site's extractor and lists every available stream, solving YouTube's JS challenge", "zh": "匹配站点提取器，列出所有可用的流；YouTube 的 JS 挑战也替你解", "component": {"en": "extractor + yt-dlp-ejs", "zh": "提取器 + yt-dlp-ejs"}},
+    {"lane": "them", "en": "Picks the best video-only and audio-only formats by your rules", "zh": "按你的规则挑出最好的纯视频和纯音频格式"},
+    {"lane": "them", "en": "Downloads both and has ffmpeg merge them into one file named by the template", "zh": "两路都下载，交给 ffmpeg 合并成一个按模板命名的文件", "component": {"en": "ffmpeg post-processor", "zh": "ffmpeg 后处理器"}}
+  ],
+  "value": {"en": "A page URL becomes a best-quality local file without hunting for stream URLs or muxing by hand", "zh": "一个页面网址变成最高画质的本地文件，不用自己找流地址、手工合并"},
+  "sources": [
+    "https://github.com/yt-dlp/yt-dlp/wiki/Installation (python3 -m pip install -U \"yt-dlp[default]\")",
+    "https://github.com/yt-dlp/yt-dlp#dependencies (ffmpeg/ffprobe, yt-dlp-ejs, JavaScript runtime such as deno)",
+    "https://github.com/yt-dlp/yt-dlp#format-selection (default bestvideo*+bestaudio/best; example yt-dlp -f \"bv*+ba/b\")",
+    "https://github.com/yt-dlp/yt-dlp#output-template (default %(title)s [%(id)s].%(ext)s)"
+  ]
+}

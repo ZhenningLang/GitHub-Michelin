@@ -7,7 +7,7 @@ tags: [scraping, login-automation, requests, captcha, python, education, abandon
 language: Python
 license: NONE
 maturity: no tagged releases, archived on GitHub (abandoned since 2018), 5.8k stars (as of 2026-06)
-last_verified: 2026-06-28
+last_verified: 2026-10-08
 type: library
 upstream:
   pushed_at: 2018-06-08T02:23:56Z
@@ -16,7 +16,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-09-27T16:31:53Z
+  computed_at: 2026-10-08T08:28:37Z
   overall: E
   overall_score: 0.0
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 3034
+        last_commit_age_days: 3044
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -53,8 +53,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 3877
-        last_commit_age_days: 3034
+        repo_age_days: 3888
+        last_commit_age_days: 3044
         cohort: library
     governance:
       grade: "?"
@@ -82,12 +82,34 @@ You're a Python beginner learning how site logins actually work under the hood �
 
 Realistically that's the only safe use today. The login flows these scripts target have changed repeatedly in the years since the last commit (2018-06), so treat any individual script as illustrative pseudo-code, not a working tool. [推断]
 
+## How it works
+
+There is no library here to install or import: each folder holds one standalone script that replays one website's login **as raw HTTP requests**, the way a browser would have sent them in 2016–2018. **The script does the request choreography for that one site; you supply the account, the password, and — when the site asks — your own eyes for the captcha.** Taking the Zhihu script as the example: it loads the login page, scrapes a one-time anti-forgery token (`_xsrf`, which the site checks to make sure the form came from its own page), posts your credentials with that token, and if the site refuses without a captcha, downloads the captcha image, opens it with pillow and waits for you to type it. Other scripts add a step the site's JavaScript performed, such as encrypting the password with the site's RSA public key before sending. On success the session cookies — the small tokens that tell the site "this client is logged in" — are saved to a local file, so a scraper can reuse them. Think of it as a recorded set of dance steps for a partner who has since changed the choreography: you can learn the moves, but the partner no longer follows them.
+
+![fuck-login — backbone user story](../../../assets/flow/fuck-login.svg)
+
+<!-- flow-steps:begin (generated from flows/fuck-login.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Install the three libraries the scripts are built on — `requests · pillow · rsa`
+2. **You**: Run the one site's script and type your account and password at the prompt — `001 zhihu/zhihu.py`
+3. **fuck-login**: Loads the login page and scrapes the one-time token the form needs
+4. **fuck-login**: Posts the credentials as the site's page would (some scripts RSA-encrypt the password first)
+5. **You**: If the site asks for a captcha, read the image it opens and type it in
+6. **fuck-login**: Saves the logged-in session cookies to a local file for the next run
+
+**Value**: A readable worked example of replaying one site's 2016–2018 login over raw HTTP — not a login that still works
+
+</details>
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
 - **You need it to actually log in today.** The repo is abandoned (last push 2018-06) and targets login flows from 2016–2018; the major sites here have changed auth, added captcha/risk-control, and rotated endpoints since. Expect most scripts to be broken. [推断]
 - **Anything production or at scale.** No package, no tests, no releases, no API — it is a folder of demo scripts, not a library you import.
 - **You want a real captcha solution.** It surfaces captcha images for a human; it does not solve modern behavioral/sliding/JS captchas.
-- **You care about licensing.** There is **no LICENSE file** in the repo, so the code is "all rights reserved" by default copyright — you have no legal grant to reuse it. [未验证]
+- **You care about licensing.** There is **no LICENSE file** in the repo, so the code is "all rights reserved" by default copyright — you have no legal grant to reuse it. [推断]
 - **You have ToS / legal sensitivity.** Automating logins to scrape often violates site Terms of Service and, in some jurisdictions, anti-circumvention or unauthorized-access law; this is for learning, not for evading site controls.
 - **You need maintained scraping infra.** Use a maintained framework (Scrapy, Playwright) and handle auth yourself; this repo will not be patched.
 
@@ -129,7 +151,7 @@ Realistically that's the only safe use today. The login flows these scripts targ
 ## Caveats (unverified)
 
 - Archived on GitHub (`archived: true` via the GitHub API as of 2026-06-28) and abandoned since 2018; the repo is read-only and will receive no further commits.
-- [未验证] No LICENSE file present in the repo as of 2026-06; default copyright means no reuse grant. Treat as unlicensed; the `license` field is set to `NONE` to reflect this.
+- [推断] No LICENSE file in the repo tree (checked via the GitHub API on 2026-10-08); reading that as default copyright with no reuse grant is a general legal inference, not legal advice. Treat as unlicensed; the `license` field is set to `NONE` to reflect this.
 - [推断] "Most scripts are broken today" is inferred from the 2018 freeze plus known auth/captcha changes on the target sites, not from running each script.
 - [未验证] ~5.8k stars / 1.97k forks as of 2026-06; star counts are date-sensitive and here reflect historical, not current, relevance.
 - [未验证] The exact set and current working state of the ~20 site scripts shift; verify any specific one against the live site before relying on it.
