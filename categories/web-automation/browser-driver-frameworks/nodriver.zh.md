@@ -99,7 +99,7 @@ health:
 | [Playwright](../playwright-family/playwright.zh.md) | 已收录 | 需要跨浏览器测试、fixture、trace 和团队级 CI 时选 Playwright；需要 Python 通过直接 CDP 轻量控制 Chromium 时，选 nodriver。 | Playwright 更全面、治理更强；nodriver 的抽象更小，也更偏反检测场景。 |
 | [Selenium](selenium.zh.md) | 已收录 | WebDriver 标准、Grid、多语言和旧测试套件兼容，比直接 CDP 控制更重要时，选 Selenium。 | Selenium 生态大得多，但保留了 nodriver 刻意移除的 driver 与协议抽象层。 |
 | [Puppeteer](puppeteer.zh.md) | 已收录 | Node.js 加 Chrome-first 的代码库选 Puppeteer；Python async 易用性是决定因素时，选 nodriver。 | 两者都能自动化 Chromium，但语言生态和 helper surface 不同。 |
-| undetected-chromedriver | 未收录 | 只有既有 Selenium 代码无法迁移时，才选 undetected-chromedriver；要使用维护者更新的直接 CDP 设计，选 nodriver。 | 前代项目保留 Selenium 兼容性；nodriver 移除 WebDriver，因此必须迁移 API。 |
+| [undetected-chromedriver](undetected-chromedriver.zh.md) | ✅ | 只有既有 Selenium 代码无法迁移时，才选 undetected-chromedriver；要使用维护者更新的直接 CDP 设计，选 nodriver。 | 前代项目保留 Selenium 兼容性；nodriver 移除 WebDriver，因此必须迁移 API。 |
 | SeleniumBase | 未收录 | 需要带断言和多种浏览器模式的完整 Python 测试框架时，选 SeleniumBase；需要更小、更底层的异步库时，选 nodriver。 | SeleniumBase 增加 test runner 结构和依赖；nodriver 用更少框架换取更直接的 CDP 访问。 |
 
 ## 技术栈

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "them": {"en": "uc does", "zh": "uc 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the package next to an already installed Chrome", "zh": "在已装好 Chrome 的机器上安装这个包", "code": "pip install undetected-chromedriver"},
+    {"lane": "you", "en": "Swap Selenium's Chrome class for this one", "zh": "把 Selenium 的 Chrome 类换成它的", "code": "driver = uc.Chrome()"},
+    {"lane": "them", "en": "Downloads chromedriver and blanks out the marker-injecting block inside the binary", "zh": "下载 chromedriver，把二进制里注入标记的那段代码抹掉", "component": {"en": "patcher", "zh": "patcher"}},
+    {"lane": "them", "en": "Starts your Chrome itself with a temporary profile, then attaches Selenium to it", "zh": "用临时 profile 自行拉起 Chrome，再让 Selenium 接上"},
+    {"lane": "you", "en": "Keep calling the ordinary Selenium API", "zh": "照旧调用普通的 Selenium API", "code": "driver.get('https://nowsecure.nl')"}
+  ],
+  "value": {
+    "en": "An existing Selenium script keeps its code and loses chromedriver's own giveaway markers — your IP reputation is still yours to fix",
+    "zh": "现有 Selenium 脚本不用改写，就去掉了 chromedriver 自带的暴露标记——IP 信誉仍归你管"
+  },
+  "sources": [
+    "README.md Installation (pip install undetected-chromedriver)",
+    "README.md 'What this is not' + Usage > easy (import undetected_chromedriver as uc; driver = uc.Chrome(); driver.get('https://nowsecure.nl'))",
+    "undetected_chromedriver/patcher.py (auto(): fetch_release_number/fetch_package from chrome-for-testing, patch_exe() replaces the {window.cdc...} block)",
+    "undetected_chromedriver/__init__.py (tempfile.mkdtemp() user-data-dir, --remote-debugging-port, subprocess.Popen/start_detached of the browser, then ChromiumService(self.patcher.executable_path))",
+    "example/example.py (ordinary Selenium calls: find_element, WebDriverWait, execute_script on a uc.Chrome() driver)"
+  ]
+}

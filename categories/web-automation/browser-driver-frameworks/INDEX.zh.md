@@ -15,6 +15,7 @@
 | **Moli** | 当结构优先的 agent 机群要用约 100 MB 的单进程浏览、真实布局与截图只是按需打开的例外，协议面要 CDP+WebDriver 时用它。 | B（6/6） | [→](moli.zh.md) |
 | **Lightpanda** | 当批量 JS+DOM 提取永远不看像素时用它：无渲染引擎的 Zig 浏览器，自报比 Chrome 省 16 倍内存，带 CDP/BiDi/MCP。 | B（6/6） | [→](lightpanda.zh.md) |
 | **Obscura** | 当对抗性抓取要一个自带 stealth、常开渲染、单文件的 Rust 浏览器时用它。 | B（6/6） | [→](obscura.zh.md) |
+| **undetected-chromedriver** | 只在要让现成的 Python Selenium 代码绕开 chromedriver 自带的检测标记、又没法重写时用它——PyPI 最后一版停在 2024-02，新项目该用 nodriver 或 SeleniumBase UC Mode。 | C（4/6） | [→](undetected-chromedriver.zh.md) |
 
 ## 对比矩阵
 
@@ -28,7 +29,8 @@
 | [Moli](moli.zh.md) | ✅ | B（6/6） | 结构优先的 agent 机群要 ~100 MB 单进程浏览、渲染按需打开、一个端点说 CDP+WebDriver 时用它；兼容性长尾让给真实 Chrome。 |
 | [Lightpanda](lightpanda.zh.md) | ✅ | B（6/6） | 批量 JS+DOM 提取且永不渲染时最划算；要截图/几何就得换引擎，AGPL 也要先过法务。 |
 | [Obscura](obscura.zh.md) | ✅ | B（6/6） | 对抗性赛道要 stealth+常开渲染的单文件浏览器时用它；协议面以 CDP 为主，治理面还很薄。 |
-| undetected-chromedriver / SeleniumBase | 未收录 | — | nodriver 页面提到的 Selenium 兼容 stealth 工具与开箱即用 Python 浏览器测试框架。 |
+| [undetected-chromedriver](undetected-chromedriver.zh.md) | ✅ | C（4/6） | 保住每一个 Selenium 调用，同时把 chromedriver 的标记抹掉；代价是 GPL-3.0、默认不开沙箱、2024-02 之后没有发版。 |
+| SeleniumBase | 未收录 | — | 开箱即用的 Python 浏览器测试框架，其 UC Mode 建在 undetected-chromedriver 之上；nodriver 与 undetected-chromedriver 页面都提到它。 |
 
 ## 什么该放这里
 

@@ -988,7 +988,7 @@ Seafile,categories/document-management/copyparty.md,,no
 seccomp / AppArmor / SELinux hardening,categories/sandboxing/gvisor.md,,no
 Security MCP servers (e.g. tool-wrapping SIEM/scanner MCPs),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
 selectolax,categories/web-scraping/crawling-tools/requests-html.md,,no
-SeleniumBase,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
+SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no
 Self-built (Tesseract + Meilisearch/Elasticsearch + object storage),categories/document-management/paperless-ngx.md,,no
 Self-hosted MinerU,categories/document-parsing/mineru-skill.md,,no
 Self-hosted Postgres + PostgREST + Keycloak,categories/databases/database-engines/supabase.md,,no
@@ -1108,8 +1108,6 @@ TypeDoc (`TypeStrong/typedoc`),categories/dev-utilities/editors-and-runtimes/tan
 TypeSafe System One (hosted API),categories/decision-models/kev.md,,no
 TypeSafe System One · Jev (hosted),categories/decision-models/simple-jev.md,,no
 UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools/page-agent.md,,no
-undetected-chromedriver,categories/web-automation/browser-driver-frameworks/nodriver.md,,no
-undetected-chromedriver / SeleniumBase,categories/web-automation/browser-driver-frameworks/INDEX.md,,no
 unoserver (`unoconv/unoserver`),categories/office-automation/dsh-libreoffice-kit.md,,no
 unstructured.io,categories/document-parsing/docling.md,,no
 Uppy,categories/nginx-modules/tusd.md,,no

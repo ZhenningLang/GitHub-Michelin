@@ -15,6 +15,7 @@
 | **Moli** | Use it when a structure-first agent fleet needs ~100 MB single-process browsing with real layout/screenshots only as an opt-in exception, over CDP+WebDriver. | B (6/6) | [→](moli.md) |
 | **Lightpanda** | Use it when mass JS+DOM extraction never needs pixels: a render-engine-free Zig browser, ~16x lighter than Chrome (vendor-reported), with CDP/BiDi/MCP surfaces. | B (6/6) | [→](lightpanda.md) |
 | **Obscura** | Use it when scraping in adversarial lanes wants a self-contained Rust browser with built-in stealth and always-on rendering. | B (6/6) | [→](obscura.md) |
+| **undetected-chromedriver** | Use it only to keep an existing Python Selenium suite running past chromedriver's bot-detection markers — the last PyPI release is from 2024-02, so new work belongs on nodriver or SeleniumBase UC Mode. | C (4/6) | [→](undetected-chromedriver.md) |
 
 ## Comparison matrix
 
@@ -28,7 +29,8 @@
 | [Moli](moli.md) | ✅ | B (6/6) | Use it when a structure-first agent fleet needs ~100 MB single-process browsing with real layout/screenshots only as an opt-in exception, over CDP+WebDriver. |
 | [Lightpanda](lightpanda.md) | ✅ | B (6/6) | Use it when mass JS+DOM extraction never needs pixels: a render-engine-free Zig browser, ~16x lighter than Chrome (vendor-reported), with CDP/BiDi/MCP surfaces. |
 | [Obscura](obscura.md) | ✅ | B (6/6) | Use it when scraping in adversarial lanes wants a self-contained Rust browser with built-in stealth and always-on rendering. |
-| undetected-chromedriver / SeleniumBase | 未收录 | — | Selenium-compatible stealth tooling and a batteries-included Python browser-testing framework named on the nodriver page. |
+| [undetected-chromedriver](undetected-chromedriver.md) | ✅ | C (4/6) | Keeps every Selenium call while patching chromedriver's markers out, at the price of GPL-3.0, no sandbox by default, and no release since 2024-02. |
+| SeleniumBase | 未收录 | — | A batteries-included Python browser-testing framework whose UC Mode is built on undetected-chromedriver; named on the nodriver and undetected-chromedriver pages. |
 
 ## What belongs here
 
