@@ -11,7 +11,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
-[Camoufox](https://github.com/daijro/camoufox),categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md,,no
+[Camoufox](https://github.com/daijro/camoufox),categories/web-automation/agent-browser-tools/camofox-browser.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no

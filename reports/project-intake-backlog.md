@@ -34,7 +34,7 @@ shape and are deliberately excluded here.
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
-| [Camoufox](https://github.com/daijro/camoufox) | `categories/web-automation/agent-browser-tools/invisible-playwright-mcp.md` |
+| [Camoufox](https://github.com/daijro/camoufox) | `categories/web-automation/agent-browser-tools/camofox-browser.md` |
 | [Cipher](https://github.com/campfirein/cipher) | `categories/agent-memory/coding-agent-memory/claude-subconscious.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |

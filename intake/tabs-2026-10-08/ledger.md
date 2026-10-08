@@ -6,7 +6,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | 规范名 | 动作 | 结果 | 页面路径 | 备注 | 标签里的写法 |
 |:---|:---|:---|:---|:---|:---|
 | antirez/ds4 | add | done | categories/llm-inference/local-runtimes/ds4.md |  | antirez/ds4 |
-| cloudflare/skills | add | running |  |  | cloudflare/skills |
+| cloudflare/skills | add | done | categories/agent-skills/vendor-collections/cloudflare-skills.md |  | cloudflare/skills |
 | Effect-TS/effect | add | done | categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md |  | effect-ts/effect |
 | greekr4/playwright-bot-bypass | add | done | categories/web-automation/agent-browser-tools/playwright-bot-bypass.md |  | greekr4/playwright-bot-bypass |
 | jo-inc/camofox-browser | add | running |  |  | jo-inc/camofox-browser |

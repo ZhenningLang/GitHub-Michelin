@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "them": {"en": "camofox-browser does", "zh": "camofox-browser 做的"},
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Start the server once on the machine your agent can reach",
+      "zh": "在 agent 够得着的机器上把服务启动一次",
+      "code": "npx @askjo/camofox-browser",
+      "component": {"en": "REST server (Node)", "zh": "REST 服务（Node）"}
+    },
+    {
+      "lane": "them",
+      "en": "Fetches the Camoufox browser (~300MB) once, then listens on port 9377 and stays idle",
+      "zh": "下载一次 Camoufox（约 300MB），随后监听 9377 端口待命",
+      "component": {"en": "camoufox-js downloader", "zh": "camoufox-js 下载器"}
+    },
+    {
+      "lane": "you",
+      "en": "Your agent opens a tab with a user id and a URL",
+      "zh": "你的 agent 带上用户标识和网址开一个标签页",
+      "code": "POST /tabs"
+    },
+    {
+      "lane": "them",
+      "en": "Launches the fingerprint-spoofed Firefox on demand and loads the page in that user's own session",
+      "zh": "按需拉起伪装过指纹的 Firefox，在该用户独立的会话里打开页面",
+      "component": {"en": "Camoufox engine", "zh": "Camoufox 引擎"}
+    },
+    {
+      "lane": "you",
+      "en": "Your agent asks what is on the page",
+      "zh": "你的 agent 问页面上有什么",
+      "code": "GET /tabs/:id/snapshot"
+    },
+    {
+      "lane": "them",
+      "en": "Returns a compact text outline of the page with numbered elements (e1, e2, …)",
+      "zh": "返回一份精简的页面文字提纲，可操作元素带编号（e1、e2……）",
+      "component": {"en": "accessibility snapshot", "zh": "无障碍快照"}
+    },
+    {
+      "lane": "you",
+      "en": "Your agent clicks or types by element number, then snapshots again",
+      "zh": "你的 agent 按编号点击或输入，再取一次快照",
+      "code": "POST /tabs/:id/click"
+    }
+  ],
+  "value": {
+    "en": "Your agent reads and operates sites that block stock Playwright, without you wiring a stealth browser or parsing raw HTML",
+    "zh": "agent 能读、能操作那些拦普通 Playwright 的网站，你不用自己接反检测浏览器，也不用解析原始 HTML"
+  },
+  "sources": [
+    "README.md Quick Start > Standalone (`npx @askjo/camofox-browser`; `npm start  # downloads Camoufox on first run (~300MB)`; default port 9377)",
+    "README.md API tables (`POST /tabs`, `GET /tabs/:id/snapshot`, `POST /tabs/:id/click`) and Usage > Basic Browsing (userId/sessionKey/url body, snapshot with element refs e1/e2, click by ref)",
+    "README.md Features + Architecture (lazy browser launch and idle shutdown; one BrowserContext per user with isolated cookies/storage)",
+    "lib/camoufox-download.js (camoufox-js CamoufoxFetcher downloads the pinned Camoufox release) and mcp/README.md Workflow (snapshot before you act)"
+  ]
+}
