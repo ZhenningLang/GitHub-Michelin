@@ -1253,7 +1253,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **awesome-deep-trading** | List of awesome resources for machine learning-based algorithmic trading | NOASSERTION | D（4/6） | [中](categories/investment-finance/awesome-deep-trading.zh.md) · [EN](categories/investment-finance/awesome-deep-trading.md) |
-| **OpenBB** | Open Data Platform for analysts, quants and AI agents. | NOASSERTION | B（5/6） | [中](categories/investment-finance/openbb.zh.md) · [EN](categories/investment-finance/openbb.md) |
+| **OpenBB** | 每个行情、宏观、公告数据源只封装一次，同时供 Python、REST、MCP 智能体和 Workspace 使用；V5（Apache-2.0）删掉了 yfinance/FMP，安装很重 | Apache-2.0 | B（5/6） | [中](categories/investment-finance/openbb.zh.md) · [EN](categories/investment-finance/openbb.md) |
 | **FinRL** | FinRL®:  Financial Reinforcement Learning. 🔥 | NOASSERTION | B（5/6） | [中](categories/investment-finance/finrl.zh.md) · [EN](categories/investment-finance/finrl.md) |
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | NOASSERTION | B（6/6） | [中](categories/investment-finance/qlib.zh.md) · [EN](categories/investment-finance/qlib.md) |
 | **backtrader** | Python Backtesting library for trading strategies | NOASSERTION | D（4/6） | [中](categories/investment-finance/backtrader.zh.md) · [EN](categories/investment-finance/backtrader.md) |
