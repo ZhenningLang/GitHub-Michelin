@@ -23,7 +23,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | storytold/pdfcraft | add | pending |  |  | storytold/pdfcraft |
 | storytold/photocraft | add | pending |  |  | storytold/photocraft |
 | storytold/vectorcraft | add | pending |  |  | storytold/vectorcraft |
-| trymirai/uzu | add | running |  |  | trymirai/uzu |
+| trymirai/uzu | add | done | categories/on-device-ml/uzu.md |  | trymirai/uzu |
 | xpzouying/xiaohongshu-mcp | add | running |  |  | xpzouying/xiaohongshu-mcp |
 | zerobrewhq/zerobrew | add | running |  |  | zerobrewhq/zerobrew |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |

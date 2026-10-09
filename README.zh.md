@@ -124,6 +124,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
 | **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/stable-diffusion-cpp.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | CC-BY-NC-SA-4.0 | B（5/6） | [中](categories/on-device-ml/birdnet-go.zh.md) · [EN](categories/on-device-ml/birdnet-go.md) |
+| **uzu** | 当你要把大模型直接跑在自己的 iOS/macOS 应用里，想要一个 Swift/Python/TS SDK 替你挑模型、下载转换好的版本并在苹果 GPU 上运行时用它——但系统要 26.4 以上，只用 Mirai 自有模型格式和托管注册服务，遥测默认开启。 | MIT | B（6/6） | [中](categories/on-device-ml/uzu.zh.md) · [EN](categories/on-device-ml/uzu.md) |
 
 ### function-calling
 

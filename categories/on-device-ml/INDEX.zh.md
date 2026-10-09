@@ -19,6 +19,7 @@
 | **Needle** | 当需要一个小体积端侧模型离线完成**英文**工具调用、类型化抽取或嵌入时用它（29–121M 参数、2-bit）——但基座模型需要微调，拒绝类请求要自建守卫。 | B（4/6） | [→](needle.zh.md) |
 | **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | A（6/6） | [→](stable-diffusion-cpp.zh.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | B（5/6） | [→](birdnet-go.zh.md) |
+| **uzu** | 当你要把大模型直接跑在自己的 iOS/macOS 应用里，想要一个 Swift/Python/TS SDK 替你挑模型、下载转换好的版本并在苹果 GPU 上运行时用它——但系统要 26.4 以上，只用 Mirai 自有模型格式和托管注册服务，遥测默认开启。 | B（6/6） | [→](uzu.zh.md) |
 
 
 ## 对比矩阵
@@ -36,6 +37,7 @@
 | [Needle](needle.zh.md) | ✅ | B（4/6） | 英语专用的端侧工具调用/抽取/嵌入模型（29–121M、2-bit），解码受 grammar 约束；基座模型在否定、越界取值与域外请求上会失手。 |
 | [stable-diffusion.cpp](stable-diffusion-cpp.zh.md) | ✅ | A（6/6） | 基于 ggml 的 C/C++ 扩散推理引擎（SD、Flux、Qwen-Image、Wan 等），支持 GGUF 量化和 C API；用 ComfyUI/WebUI 的工作流丰富度和插件生态，换一个不带 Python、可嵌入的二进制。 |
 | [BirdNET-Go](birdnet-go.zh.md) | ✅ | B（5/6） | 自托管的 Go 应用，用 BirdNET v2.4（可加装 Perch v2 和蝙蝠模型）给实时音频分类，把检出连同录音片段记下来；用可复现性和商用权换一个开箱即用的全天候站点——非 OSI 许可证、默认跟 nightly、单人维护。 |
+| [uzu](uzu.zh.md) | ✅ | B（6/6） | Mirai 用 Rust 写的引擎，配 Swift/Python/TS 绑定和手写 Metal 4 内核：报目录里的模型名，下载转换好的版本在应用内运行；只限苹果（系统 26.4+），自有模型格式、厂商注册服务、默认开启遥测，单一公司的年轻项目。 |
 | MLC LLM / ONNX Runtime | 未收录 | — | 各页对比里点到的其他端侧推理运行时（llama.cpp 与 Ollama 已收录在 `llm-inference`）。 |
 
 ## 什么该放这里

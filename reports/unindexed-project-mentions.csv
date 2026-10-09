@@ -745,6 +745,7 @@ Miniflux,categories/reading-tools/freshrss.md,,no
 MinIO,categories/document-management/copyparty.md,,no
 mistral.rs,categories/llm-inference/local-runtimes/airframe.md,,no
 MITRE ATT&CK Navigator / framework docs (read the source mappings yourself),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
+MLC LLM (`mlc-ai/mlc-llm`),categories/on-device-ml/uzu.md,,no
 MLC LLM / ONNX Runtime,categories/on-device-ml/INDEX.md,,no
 MLPerf Inference (mlcommons/inference),categories/llm-inference/inference-benchmarks/inferencex.md,,no
 mlx-lm (`mlx_lm.server`),categories/llm-inference/local-runtimes/omlx.md,,no

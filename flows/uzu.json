@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "them": {"en": "uzu does", "zh": "uzu 做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the Swift package to your iOS/macOS app (iOS/macOS 26.4+)", "zh": "把 Swift 包加进你的 iOS/macOS 应用（系统需 26.4+）",
+     "code": ".package(url: \"https://github.com/trymirai/uzu.git\", from: \"0.6.2\")", "component": {"en": "prebuilt uzu binary", "zh": "预编译 uzu 二进制"}},
+    {"lane": "you", "en": "Create an engine and ask for a model by its catalog id", "zh": "创建引擎，按目录 id 要一个模型",
+     "code": "engine.model(identifier: \"alibaba:qwen3.5:0.8b:mirai:mirai-m:4\")"},
+    {"lane": "them", "en": "Looks the id up in Mirai's hosted registry, filtered to builds that fit this device", "zh": "到 Mirai 托管的模型目录查这个 id，只给本机能跑的版本",
+     "component": {"en": "Mirai registry client", "zh": "Mirai 目录客户端"}},
+    {"lane": "you", "en": "Start the download and show its progress", "zh": "发起下载，显示进度",
+     "code": "engine.download(model: model)"},
+    {"lane": "them", "en": "Fetches the pre-converted weights from Hugging Face and caches them on the device", "zh": "从 Hugging Face 拉取已转换好的权重，缓存在设备上"},
+    {"lane": "you", "en": "Open a chat session and send the messages", "zh": "开一个对话会话，发出消息",
+     "code": "session.reply(input: messages, config: .create())"},
+    {"lane": "them", "en": "Runs the model on the Apple GPU with its Metal kernels and returns reasoning and text", "zh": "用自带的 Metal 内核在苹果 GPU 上跑模型，返回推理过程和正文",
+     "component": {"en": "Metal backend", "zh": "Metal 后端"}}
+  ],
+  "value": {"en": "A language model answers inside your app on the user's device — no server to run, no per-token bill", "zh": "语言模型在用户设备上、在你的应用里直接作答：不用自建服务，也没有按 token 计费"},
+  "sources": [
+    "https://github.com/trymirai/uzu#quick-start (Swift: .package(url:from:), Engine.create, engine.model(identifier:), engine.download(model:), engine.chat, session.reply(input:config:))",
+    "https://github.com/trymirai/uzu/blob/main/Package.swift (platforms iOS/macOS/macCatalyst 26.4; binaryTarget from artifacts.trymirai.com)",
+    "https://github.com/trymirai/uzu/blob/main/crates/legacy/uzu/src/registry/mirai/registry.rs (fetch/models from sdk.trymirai.com with device + backends; HF resolution)",
+    "https://github.com/trymirai/uzu/blob/main/crates/legacy/uzu/src/registry/mirai/api.rs (REGISTRY_URL, TELEMETRY_URL, HUGGING_FACE_URL)",
+    "https://github.com/trymirai/uzu#development (backends metal, cpu)"
+  ]
+}
