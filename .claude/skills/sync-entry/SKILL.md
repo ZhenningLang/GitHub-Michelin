@@ -70,6 +70,13 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
 > frontmatter**. Apply every fact/frontmatter change to both files, and update both bodies if a
 > material fact moved. `last_verified` must match across the pair.
 
+0. **Rename / transfer probe**: `python3 tools/repo_moves.py --page categories/<cat>/<slug>.md`.
+   A renamed or transferred repo still answers under its old name through a GitHub redirect,
+   so nothing else notices. `moved` / `case` → rerun with `--apply --yes` (rewrites `repo:` and
+   every `github.com/<old>` link, prints bare `owner/repo` mentions in prose for you to
+   re-judge), then continue. `gone` (404) → read the listed candidates; a candidate holding the
+   page's `default_branch_sha` shares history but may be a fork or re-upload — decide by hand,
+   and if nothing official exists, record the vanished upstream in `maturity` / When NOT to use.
 1. **Cheap upstream probe**: compare `upstream` frontmatter against GitHub repo state. If unchanged,
    skip steps 2–7 (prose/facts) but **still do steps 8–9** — health grades decay with elapsed time
    even when upstream is frozen.

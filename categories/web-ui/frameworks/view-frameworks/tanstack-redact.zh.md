@@ -122,7 +122,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| React（`facebook/react`） | ✅ [react](react.zh.md) | 应用用着 transitions、actions 或乐观 UI，或者 DevTools、StrictMode、React Native 是硬需求时，选 React；Vite 应用的包体积预算是头等大事、UI 从不依赖并发调度时，选 Redact。 | React 19.3 运行时实测 69.2 KB gzip，但带着完整并发渲染器、MIT 许可、每周 2.03 亿下载和十几年打磨；Redact 自测 23.3 KB，代价是同步降级、0.x 变动和没有许可证。 |
+| React（`react/react`） | ✅ [react](react.zh.md) | 应用用着 transitions、actions 或乐观 UI，或者 DevTools、StrictMode、React Native 是硬需求时，选 React；Vite 应用的包体积预算是头等大事、UI 从不依赖并发调度时，选 Redact。 | React 19.3 运行时实测 69.2 KB gzip，但带着完整并发渲染器、MIT 许可、每周 2.03 亿下载和十几年打磨；Redact 自测 23.3 KB，代价是同步降级、0.x 变动和没有许可证。 |
 | Preact（`preactjs/preact`） | 未收录 | 要最小、久经考验、许可宽松的 React 兼容运行时，选 Preact＋`preact/compat`；想要一个 Vite 插件就罩住 React 19.3 新 API（`Activity`、`ViewTransition`、`use`）、不用逐打包器维护兼容别名时，选 Redact。 | Preact 核心约 4 KB、MIT、2015 年至今每周 3923 万下载，但兼容层跟不上新 React API，别名配置得自己背；Redact 在插件内盖住 19.3 API 面，代价是五个月大、只支持 Vite、无许可。本次 tab-intake 批次未收录。 |
 | Solid（`solidjs/solid`） | 未收录 | 只有当用 signals API 重写组件也在桌上时才考虑 Solid——细粒度更新、无虚拟 DOM；现有 React 源码必须原样保留时，选 Redact。 | Solid（每周 643 万下载、MIT）换的是编程模型，是重写不是替换；Redact 保留 React API、只换底下跑的东西，代价是运行时还很年轻。本次 tab-intake 批次未收录。 |
 | Svelte（`sveltejs/svelte`） | ✅ [svelte](svelte.zh.md) | 绿地项目想要一个没有虚拟 DOM 运行时的编译器框架，选 Svelte；既有 React 代码库、只允许换脚下运行时的，选 Redact。 | Svelte 把组件编译成命令式代码、整个模型都变小，但要学新语法、做迁移；Redact 只要构建配置里加一行，也拿不到 Svelte 的编译器优化。 |

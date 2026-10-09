@@ -13,7 +13,7 @@
   "sources": [
     "https://react.dev/learn/creating-a-react-app (npx create-next-app@latest, npx create-react-router@latest)",
     "https://react.dev/learn/add-react-to-an-existing-project (npm install react react-dom; createRoot(domNode).render(...))",
-    "https://github.com/facebook/react#examples (createRoot + JSX example)",
+    "https://github.com/react/react#examples (createRoot + JSX example)",
     "https://react.dev/learn/state-a-components-memory (useState)"
   ]
 }

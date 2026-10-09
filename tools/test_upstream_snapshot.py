@@ -53,6 +53,20 @@ class UpstreamSnapshotTest(unittest.TestCase):
         self.assertNotIn("default_branch_sha: old", text)
         self.assertEqual(text.count("upstream:"), 1)
 
+    def test_404_reports_gone_instead_of_crashing(self) -> None:
+        import tempfile
+        from unittest import mock
+
+        root = Path(tempfile.mkdtemp())
+        page = root / "categories" / "demo" / "demo.md"
+        page.parent.mkdir(parents=True)
+        page.write_text(PAGE, encoding="utf-8")
+        page.with_name("demo.zh.md").write_text(PAGE, encoding="utf-8")
+        argv = ["upstream_snapshot.py", "--root", str(root), "--page", "categories/demo/demo.md", "--check"]
+        with mock.patch.object(sys, "argv", argv), \
+             mock.patch.object(upstream_snapshot, "fetch_snapshot", side_effect=RuntimeError("gh: Not Found (HTTP 404)")):
+            self.assertEqual(upstream_snapshot.main(), 1)
+
     def test_parse_upstream_round_trips_rendered_block(self) -> None:
         text, _ = upstream_snapshot.upsert_snapshot(PAGE, SNAPSHOT)
 

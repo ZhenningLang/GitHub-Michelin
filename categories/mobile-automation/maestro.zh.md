@@ -1,7 +1,7 @@
 ---
 name: Maestro
 slug: maestro
-repo: https://github.com/mobile-dev-inc/maestro
+repo: https://github.com/mobile-dev-inc/Maestro
 category: mobile-automation
 tags: [ios, android, web, e2e-testing, yaml, flakiness]
 language: Kotlin

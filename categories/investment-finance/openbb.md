@@ -1,7 +1,7 @@
 ---
 name: OpenBB
 slug: openbb
-repo: https://github.com/OpenBB-finance/OpenBB
+repo: https://github.com/openbq-org/OpenBB
 category: investment-finance
 tags: [investment-finance, openbb, framework]
 language: Python
@@ -107,7 +107,7 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 ## Tech stack
 
 - **Primary language:** Python per GitHub metadata.
-- **Repository shape:** `OpenBB-finance/OpenBB`; this first-pass page has not exhaustively read every dependency manifest.
+- **Repository shape:** `openbq-org/OpenBB` (moved from `OpenBB-finance/OpenBB` by 2026-10-09); this first-pass page has not exhaustively read every dependency manifest.
 - **Default branch snapshot:** last pushed `2026-07-16T03:54:27Z`; archived `false`.
 
 ## Dependencies
@@ -134,3 +134,4 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 - [未验证] This page is generated from public GitHub metadata plus the user-provided intake list; upstream README, docs, examples, releases, and dependency manifests still need deeper review.
 - [未验证] License, install commands, supported harnesses, and runtime requirements may differ from GitHub metadata; verify them in the repository before use.
 - [推断] The comparison table starts from nearby atlas categories rather than a complete substitute survey; refine it after reading the full upstream project and adjacent alternatives.
+- [推断] The repository was transferred from `OpenBB-finance` to `openbq-org`, an organization created 2026-09-11 with no profile; the long-time core maintainer still commits there, and the org also holds an `openbb-brightquery` repository, so the move likely follows a tie-up with BrightQuery. The `OpenBB-finance` organization still exists with 45 other repositories; the reason for the move was not confirmed.

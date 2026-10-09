@@ -1,7 +1,7 @@
 ---
 name: LibreChat
 slug: librechat
-repo: https://github.com/danny-avila/LibreChat
+repo: https://github.com/LibreChat-AI/LibreChat
 category: llm-chat-ui
 tags: [llm-chat-ui, librechat, app]
 language: TypeScript
