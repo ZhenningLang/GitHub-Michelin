@@ -1047,6 +1047,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | --- | --- | --- | --- | --- |
 | **Cua** | Use it when an agent must operate a whole computer — native desktop apps and OS dialogs, not just a web page — and the run should be isolated. | MIT | B (5/6) | [EN](categories/desktop-automation/cua.md) · [中](categories/desktop-automation/cua.zh.md) |
 | **PyAutoGUI** | Use it when a Python script must click and type into a GUI-only desktop app on Windows, macOS or Linux — but pixel/coordinate automation breaks silently on DPI, resolution or theme changes, needs a real display, and upstream has been quiet since 2023. | BSD-3-Clause | C (4/6) | [EN](categories/desktop-automation/pyautogui.md) · [中](categories/desktop-automation/pyautogui.zh.md) |
+| **Windows-MCP** | Use it when an agent in Claude/Codex/Gemini must click and type inside native Windows apps by control name (UI Automation tree), directly on your real session — no sandbox, PowerShell/registry tools on by default, telemetry on by default. | MIT | B (6/6) | [EN](categories/desktop-automation/windows-mcp.md) · [中](categories/desktop-automation/windows-mcp.zh.md) |
 
 ### mobile-automation
 

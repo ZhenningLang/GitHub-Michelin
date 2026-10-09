@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "them": {"en": "Windows-MCP does", "zh": "Windows-MCP 做的"},
+  "steps": [
+    {"lane": "you", "en": "Register the server in your MCP client once", "zh": "在 MCP 客户端里登记一次这个服务", "code": "claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve", "component": {"en": "MCP client config", "zh": "MCP 客户端配置"}},
+    {"lane": "them", "en": "Starts on your Windows session over stdio and exposes Click, Type, Snapshot, App and more", "zh": "在你的 Windows 会话里经 stdio 启动，暴露点击、输入、快照等工具", "code": "uvx windows-mcp serve", "component": {"en": "windows-mcp server", "zh": "windows-mcp 服务进程"}},
+    {"lane": "you", "en": "Ask the agent in plain words to do a task in a native Windows app", "zh": "用大白话让 agent 去某个原生 Windows 程序里办事"},
+    {"lane": "them", "en": "Reads the window's accessibility tree into labelled, clickable elements with coordinates", "zh": "读窗口的无障碍树，列出带编号和坐标的可点元素", "component": {"en": "Snapshot tool", "zh": "Snapshot 工具"}},
+    {"lane": "them", "en": "Turns the chosen label into screen coordinates and injects real mouse and keyboard input", "zh": "把选中的编号换成屏幕坐标，注入真实的鼠标键盘输入", "component": {"en": "Click / Type tools", "zh": "Click / Type 工具"}}
+  ],
+  "value": {
+    "en": "The agent works native Windows apps by element name, not hard-coded pixels, and you write no automation script",
+    "zh": "agent 按控件名而不是写死的像素去操作原生 Windows 程序，你不用写一行自动化脚本"
+  },
+  "sources": [
+    "README.md — Install in Claude Code: 'claude mcp add --transport stdio windows-mcp -- uvx windows-mcp serve'; Running Windows-MCP: 'uvx windows-mcp serve' (stdio default)",
+    "README.md — MCP Tools list (Click, Type, Snapshot, Screenshot, App, PowerShell, FileSystem, ...)",
+    "src/windows_mcp/tools/snapshot.py — Snapshot description: interactive elements with coordinates, scrollable areas, use_dom",
+    "src/windows_mcp/tools/input.py — Click/Type take 'loc' or 'label'; _resolve_label converts a UI element label to screen coordinates"
+  ]
+}

@@ -736,6 +736,7 @@ Microsoft GraphRAG,categories/agent-memory/graph-memory/graphiti.md,,no
 Microsoft GraphRAG (`microsoft/graphrag`),categories/agent-memory/graph-memory/cognee.md,,no
 Microsoft Presidio,categories/healthcare-ai/openmed.md,,no
 Microsoft T-MAC,categories/on-device-ml/bitnet.md,,no
+microsoft/UFO,categories/desktop-automation/windows-mcp.md,,no
 MiDaS / DPT (Intel ISL),categories/ml-research/vision-and-multimodal/depth-anything-v2.md,,no
 MinerU,categories/document-parsing/marker.md,,no
 mini-swe-agent,categories/agent-frameworks/coding-agents/orchestration-and-review/swe-agent.md,,no

@@ -1044,6 +1044,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Cua** | 当 agent 需要操作整台电脑（原生桌面应用、系统弹窗，而非仅网页）、且这次运行需要隔离时使用。 | MIT | B（5/6） | [中](categories/desktop-automation/cua.zh.md) · [EN](categories/desktop-automation/cua.md) |
 | **PyAutoGUI** | 当你要用 Python 脚本在 Windows、macOS 或 Linux 上点击、输入一个只有图形界面的桌面程序时用它——但基于坐标和像素的自动化会因 DPI、分辨率或主题变化静默失效，必须有真实显示器，且上游自 2023 年起已无新提交。 | BSD-3-Clause | C（4/6） | [中](categories/desktop-automation/pyautogui.zh.md) · [EN](categories/desktop-automation/pyautogui.md) |
+| **Windows-MCP** | 当 Claude、Codex、Gemini 里的 agent 需要按控件名（UI Automation 树）在原生 Windows 程序里点击、输入，并且直接作用在你的真实会话上时使用——没有沙箱，PowerShell、注册表工具和遥测都默认开启。 | MIT | B（6/6） | [中](categories/desktop-automation/windows-mcp.zh.md) · [EN](categories/desktop-automation/windows-mcp.md) |
 
 ### mobile-automation
 
