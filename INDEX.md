@@ -86,13 +86,14 @@
 | **learning-resources** | Curated reading paths and resource lists — read them to find the canonical paper, spec, or reference implementation for a field, instead of a pile of blog posts — plus tutorial collections of runnable LLM/RAG/agent demo apps to copy from. | [→](categories/learning-resources/INDEX.md) |
 | **model-editing** | Change what a model does by editing its saved weights — abliteration and related model surgery — instead of training it. | [→](categories/model-editing/INDEX.md) |
 | **pentest** | Autonomous / AI-assisted penetration testing of authorized web apps, APIs & local networks (Wi-Fi) — agent swarms, pentest automation, exploit chaining (authorization-first). | [→](categories/pentest/INDEX.md) |
-| **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders and app uninstallers. | [→](categories/disk-cleanup/INDEX.md) |
+| **disk-cleanup** | Reclaim disk space and tidy a desktop OS — cache and build-artifact cleaners, space analyzers, duplicate finders, app uninstallers and Windows debloat scripts. | [→](categories/disk-cleanup/INDEX.md) |
 | **3d-reconstruction** | Turn photos, video or scans into 3D scenes — structure-from-motion, Gaussian-splatting / radiance-field training, and meshing the result. | [→](categories/3d-reconstruction/INDEX.md) |
 | **streaming-clients** | Alternative client apps for watching and listening to streaming services (YouTube, BiliBili, SoundCloud…) without the official app — no ads, no account, background play. | [→](categories/streaming-clients/INDEX.md) |
 | **computer-vision** | Detect, recognize and analyze faces, objects and people in images and video — face verification/recognition, detection and attribute analysis as libraries you call. | [→](categories/computer-vision/INDEX.md) |
 | **meeting-intelligence** | AI meeting copilots and note-takers — record calls, transcribe live, assist in-meeting, and automate the post-meeting follow-up. | [→](categories/meeting-intelligence/INDEX.md) |
 | **healthcare-ai** | Clinical text intelligence you run yourself — medical entity extraction and PHI/PII de-identification on your own hardware, for data that cannot leave the network. | [→](categories/healthcare-ai/INDEX.md) |
 | **design-tokens** | Get a site's real design tokens (colours, type, spacing, radii) out of the rendered page, export them as DTCG/Tailwind/DESIGN.md, and fail CI when they drift. | [→](categories/design-tokens/INDEX.md) |
+| **photo-editing** | Edit your own photographs — raw development, photo libraries for culling and non-destructive edits, and raster image editing you run locally instead of renting Lightroom or Photoshop. | [→](categories/photo-editing/INDEX.md) |
 
 
 

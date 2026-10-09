@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "xiaohongshu-mcp does", "zh": "xiaohongshu-mcp 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the release binaries and run the login tool; scan the QR code with the Xiaohongshu app", "zh": "下载发布版二进制，跑登录工具，用小红书 App 扫码", "code": "./xiaohongshu-login-darwin-arm64", "component": {"en": "login binary", "zh": "登录工具"}},
+    {"lane": "them", "en": "Fetches its bundled fingerprint browser once (SHA256-checked) and saves the session to cookies.json", "zh": "首次下载内置指纹浏览器并校验，把登录态存进 cookies.json", "component": {"en": "built-in browser", "zh": "内置浏览器"}},
+    {"lane": "you", "en": "Start the server binary (headless by default)", "zh": "启动服务二进制（默认无头模式）", "code": "./xiaohongshu-mcp-darwin-arm64", "component": {"en": "MCP server", "zh": "MCP 服务"}},
+    {"lane": "them", "en": "Serves MCP tools and a REST API on port 18060, reusing the saved login", "zh": "在 18060 端口提供 MCP 工具和 REST 接口，复用已存登录态", "component": {"en": "MCP server", "zh": "MCP 服务"}},
+    {"lane": "you", "en": "Register its URL in your MCP client", "zh": "把服务地址登记到你的 MCP 客户端", "code": "claude mcp add --transport http xiaohongshu-mcp http://localhost:18060/mcp"},
+    {"lane": "you", "en": "Ask in plain words: write a post about spring with these local images and publish it", "zh": "用大白话下指令：配这几张本地图写一篇春天的帖子并发布"},
+    {"lane": "them", "en": "Fills the creator page in a headless browser with human-like clicks and typing, then publishes", "zh": "在无头浏览器里拟人化点击、输入，填好创作页并发布", "component": {"en": "headless browser", "zh": "无头浏览器"}}
+  ],
+  "value": {"en": "No more pasting agent-written copy and images into the creator page by hand; search, note details and comments also come back as data your agent can read", "zh": "不用再把 Agent 写好的文案和图片手动搬进创作页；搜索、笔记详情和评论也直接以数据形式回到 Agent 手里"},
+  "sources": [
+    "https://github.com/xpzouying/xiaohongshu-mcp README 1.1 快速开始 (release binaries xiaohongshu-login-darwin-arm64 / xiaohongshu-mcp-darwin-arm64; first run downloads a ~150MB browser) and 1.2 登录 / 1.3 启动 MCP 服务",
+    "README 2.1 Claude Code CLI 接入 (claude mcp add --transport http xiaohongshu-mcp http://localhost:18060/mcp) and 2.4 使用示例 (natural-language publish prompt with local images)",
+    "browser/browser_download.go (download from the self-hosted CDN, SHA256SUMS verification) and cookies/cookies.go (cookies.json session file)",
+    "routes.go (/mcp and /api/v1/* on the same server), main.go (-port default :18060), humanize/ (log-normal timing for clicks, typing, scrolling)"
+  ]
+}

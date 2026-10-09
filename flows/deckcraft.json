@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "DeckCraft does",
+    "zh": "DeckCraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install a release build and start the app with its local control channel open",
+      "zh": "装好发布版，启动应用并打开本地控制通道",
+      "code": "deckcraft --control 7990"
+    },
+    {
+      "lane": "you",
+      "en": "Point your agent's MCP config at the running app",
+      "zh": "把 agent 的 MCP 配置指向这个正在运行的应用",
+      "code": "deckcraft-cli mcp --connect 7990"
+    },
+    {
+      "lane": "you",
+      "en": "Ask the agent for the deck: slides, charts, transitions",
+      "zh": "让 agent 做稿：页面、图表、切换效果"
+    },
+    {
+      "lane": "them",
+      "en": "Runs each agent call as the same undoable command a ribbon button runs",
+      "zh": "把 agent 的每次调用当成功能区按钮的同一条命令执行，可撤销",
+      "component": {
+        "en": "engine command set",
+        "zh": "engine 命令集"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Renders slides back as images so the agent can check its own layout",
+      "zh": "把页面渲染成图片回传，agent 能自己检查版面",
+      "component": {
+        "en": "MCP server",
+        "zh": "MCP server"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Fix what you dislike by hand in the same window, or undo the agent's steps",
+      "zh": "在同一个窗口里手工改不满意的地方，或撤销 agent 的步骤"
+    },
+    {
+      "lane": "them",
+      "en": "Saves the deck as .pptx, or exports PDF with a selectable text layer",
+      "zh": "存成 .pptx，或导出带可选中文字层的 PDF"
+    }
+  ],
+  "value": {
+    "en": "A PowerPoint-format deck you and an agent built together in one open-source app — no Office licence, no blind .pptx scripting",
+    "zh": "你和 agent 在一个开源应用里合做出 PowerPoint 格式的稿子，不要 Office 授权，也不盲写脚本"
+  },
+  "sources": [
+    "https://github.com/storytold/deckcraft/blob/main/README.md — Agents, CLI and MCP: `deckcraft-cli mcp --connect 7990  # drive the running app (deckcraft --control 7990)`; Downloads table (fetched 2026-10-09)",
+    "https://github.com/storytold/deckcraft/blob/main/docs/mcp.md — connected mode drives a running DeckCraft started with --control PORT; tools run_command, batch, render_slide, save_presentation, export (fetched 2026-10-09)",
+    "https://github.com/storytold/deckcraft/blob/main/AGENTS.md — §4 Architecture: everything is a command; UI, CLI, control channel and MCP do exactly the same thing (fetched 2026-10-09)",
+    "https://github.com/storytold/deckcraft/blob/main/ROADMAP.md — unlimited undo; PDF export with a selectable real-text layer (fetched 2026-10-09)",
+    "Local run 2026-10-09: built deckcraft-cli at 4b09f35; `deckcraft-cli mcp --sample` answered tools/list with 25 tools incl. render_slide; `run --save hello.pptx` wrote a .pptx that LibreOffice 26.8 opened"
+  ]
+}

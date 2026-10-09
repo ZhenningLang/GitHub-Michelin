@@ -11,6 +11,7 @@
 | **运维基础设施** | 服务器管理、指标采集、TLS 自动化、镜像瘦身、代理、远程桌面与密码基础设施。 | [→](ops-infra/INDEX.zh.md) |
 | **编辑器与运行时** | 代码编辑器、IDE 扩展、应用运行时与 JS/TS 工具链。 | [→](editors-and-runtimes/INDEX.zh.md) |
 | **包管理器 GUI** | 命令行包管理器的桌面前端——不用终端就能浏览、安装与升级（当前是 macOS 上的 Homebrew）。 | [→](package-manager-gui/INDEX.zh.md) |
+| **包管理器** | 命令行包管理器本身——解析、下载并把软件包装进前缀的那个工具（当前是一个更快的 Homebrew 客户端）。 | [→](package-managers/INDEX.zh.md) |
 
 ## 对比矩阵
 
@@ -20,6 +21,7 @@
 | [运维基础设施](ops-infra/INDEX.zh.md) | 子分类 | 服务器管理、指标采集、TLS 自动化、镜像瘦身、代理、远程桌面与密码基础设施。 |
 | [编辑器与运行时](editors-and-runtimes/INDEX.zh.md) | 子分类 | 代码编辑器、IDE 扩展、应用运行时与 JS/TS 工具链。 |
 | [包管理器 GUI](package-manager-gui/INDEX.zh.md) | 子分类 | 命令行包管理器的桌面前端——不用终端就能浏览、安装与升级（当前是 macOS 上的 Homebrew）。 |
+| [包管理器](package-managers/INDEX.zh.md) | 子分类 | 命令行包管理器本身——解析、下载并把软件包装进前缀的那个工具（当前是一个更快的 Homebrew 客户端）。 |
 
 ## 什么该放这里
 

@@ -117,12 +117,14 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Google AI Edge Gallery** | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 | Apache-2.0 | B（6/6） | [中](categories/on-device-ml/ai-edge-gallery.zh.md) · [EN](categories/on-device-ml/ai-edge-gallery.md) |
 | **TimesFM** | 当你需要在本地 CPU/GPU 上对时间序列做零样本预测、又不想逐数据集训练时用它。 | Apache-2.0 | A（5/6） | [中](categories/on-device-ml/timesfm.zh.md) · [EN](categories/on-device-ml/timesfm.md) |
 | **MiniCPM-V** | 当你需要小体积、可在端侧/边缘运行的多模态（图像+视频）理解时用它——注意逐权重许可。 | Apache-2.0 | A（4/6） | [中](categories/on-device-ml/minicpm-v.zh.md) · [EN](categories/on-device-ml/minicpm-v.md) |
-| **Stable Diffusion WebUI** | 当你想在 NVIDIA GPU 上用一个标签页式本地 Web UI、完整调参并借用庞大的 A1111 扩展生态做 SD 1.5/SDXL 出图时用它——但核心自 2024-07 起再无提交，新模型家族请用 ComfyUI。 | AGPL-3.0 | D（4/6） | [中](categories/on-device-ml/stable-diffusion-webui.zh.md) · [EN](categories/on-device-ml/stable-diffusion-webui.md) |
-| **ComfyUI** | 当你在自己的 GPU 上用开放权重模型生成图像或视频，需要一张可复现的节点图（ControlNet、LoRA、局部重绘、放大），并且只重算改动过的部分时用它——但它没有登录、配额和租户隔离。 | GPL-3.0 | B（5/6） | [中](categories/on-device-ml/comfyui.zh.md) · [EN](categories/on-device-ml/comfyui.md) |
+| **MiniCPM** | 当聊天、编码或调工具的助手必须以 1–2B 体量离线跑在笔记本、手机或 CPU 盒子上时用它（MiniCPM5，Apache-2.0，GGUF 0.66–1.56GB）——但 4 bit 版要调采样参数，并选能解析其 XML 工具调用的运行时。 | Apache-2.0 | B（5/6） | [中](categories/on-device-ml/minicpm.zh.md) · [EN](categories/on-device-ml/minicpm.md) |
+| **Stable Diffusion WebUI** | 当你想在 NVIDIA GPU 上用一个标签页式本地 Web UI、完整调参并借用庞大的 A1111 扩展生态做 SD 1.5/SDXL 出图时用它——但核心自 2024-07 起再无提交，新模型家族请用 ComfyUI。 | AGPL-3.0 | D（4/6） | [中](categories/on-device-ml/local-image-generation/stable-diffusion-webui.zh.md) · [EN](categories/on-device-ml/local-image-generation/stable-diffusion-webui.md) |
+| **ComfyUI** | 当你在自己的 GPU 上用开放权重模型生成图像或视频，需要一张可复现的节点图（ControlNet、LoRA、局部重绘、放大），并且只重算改动过的部分时用它——但它没有登录、配额和租户隔离。 | GPL-3.0 | B（5/6） | [中](categories/on-device-ml/local-image-generation/comfyui.zh.md) · [EN](categories/on-device-ml/local-image-generation/comfyui.md) |
 | **MLX / mlx-lm** | 当你在 Apple 芯片的 Mac 上试 Hugging Face 新模型，想用一个 Python 包完成生成、量化和 LoRA 微调、不必先转 GGUF 时用它——但 mlx_lm.server 不适合生产或多用户服务。 | MIT | B（6/6） | [EN](categories/on-device-ml/mlx-mlx-lm.md) · [中](categories/on-device-ml/mlx-mlx-lm.zh.md) |
 | **Needle** | 当需要一个小体积端侧模型离线完成英文工具调用、类型化抽取与嵌入时用它——29–121M 参数，但基座模型需要微调，拒绝类请求要自建守卫。 | Apache-2.0 | B（4/6） | [中](categories/on-device-ml/needle.zh.md) · [EN](categories/on-device-ml/needle.md) |
-| **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/stable-diffusion-cpp.md) |
+| **stable-diffusion.cpp** | 当你要把图片/视频扩散生成做成一个不带 Python 的原生二进制，嵌进自己的应用或发到混杂的 CPU/AMD/Mac/NVIDIA 机器上时用它——但功能集固定、没有语义化版本，自带服务无鉴权且单线程排队。 | MIT | A（6/6） | [中](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.zh.md) · [EN](categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md) |
 | **BirdNET-Go** | 当你想在树莓派 4/5 或小主机上搭一个全天候的鸟类（及蝙蝠）声音监测站，带本地网页仪表盘、多路麦克风和 RTSP 音源、MQTT 与 Home Assistant 告警时用它——但代码和模型都禁止商用（CC BY-NC-SA），默认安装跟的是单人维护的每夜构建，批量文件分析要交给别的工具。 | CC-BY-NC-SA-4.0 | B（5/6） | [中](categories/on-device-ml/birdnet-go.zh.md) · [EN](categories/on-device-ml/birdnet-go.md) |
+| **uzu** | 当你要把大模型直接跑在自己的 iOS/macOS 应用里，想要一个 Swift/Python/TS SDK 替你挑模型、下载转换好的版本并在苹果 GPU 上运行时用它——但系统要 26.4 以上，只用 Mirai 自有模型格式和托管注册服务，遥测默认开启。 | MIT | B（6/6） | [中](categories/on-device-ml/uzu.zh.md) · [EN](categories/on-device-ml/uzu.md) |
 
 ### function-calling
 
@@ -244,9 +246,11 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SwarmForge** | 当你想要一个自托管的角色流水线（spec→code→clean→architect→harden→QA）跑在自己的仓库上、每个角色一个 git worktree、以 commit 交接时用它——但它没有许可证，也没有 tagged release。 | NONE（无 LICENSE 文件——保留所有权利） | D（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/swarm-forge.md) |
 | **OpenChamber** | 当你用 OpenCode，想要一个跨设备的运行工作台——按目标审计的会话、一条提示词最多五个模型（可各带 worktree）、变更讲解，以及紧挨对话的 git/PR 面板——但要接受一个 12 个月大、单人主控、只绑一个 agent runtime 的应用时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openchamber.md) |
 | **OpenResearch** | 当 coding agent 和 GPU 都已经到位、缺的只是实验记账——每个实验一条分支的实验树、不可变的提交快照、以及把 run 派到九个算力后端——时用它，代价是接受一个 3.5 个月大、发布极快的应用，且它的托管算力那一半是闭源服务。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/openresearch.md) |
-| **herdr** | 当你同时监管多个编程 agent、要终端复用器自己打上 blocked/working/done 标记、脱离后 agent 继续跑、并且让 agent 之间用 `herdr agent wait/prompt` 互相驱动时用它——但它只有 6 个月大、pre-1.0、实质单人维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.md) |
-| **TUIOS** | 当你在一个终端里同时盯多个编程 agent，想要一个平铺窗口管理器、由守护进程跟踪每个 agent 的状态并把所有待审批和提问收进一个 Inbox 时用它——但它只有 13 个月大、pre-1.0 且有协议破坏、单人维护，pane 默认拥有全部控制权。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md) |
+| **herdr** | 当你同时监管多个编程 agent、要终端复用器自己打上 blocked/working/done 标记、脱离后 agent 继续跑、并且让 agent 之间用 `herdr agent wait/prompt` 互相驱动时用它——但它只有 6 个月大、pre-1.0、实质单人维护。 | Apache-2.0 | B（6/6） | [中](categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md) · [EN](categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.md) |
+| **TUIOS** | 当你在一个终端里同时盯多个编程 agent，想要一个平铺窗口管理器、由守护进程跟踪每个 agent 的状态并把所有待审批和提问收进一个 Inbox 时用它——但它只有 13 个月大、pre-1.0 且有协议破坏、单人维护，pane 默认拥有全部控制权。 | MIT | B（6/6） | [中](categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.zh.md) · [EN](categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md) |
+| **cmux** | 当你在 Mac 上并排跑好几个命令行编码 agent，想让终端应用本身给正在等你的那个窗格套上光圈、在竖排侧边栏显示分支/PR/最新消息、旁边再开一个 agent 能操作的浏览器窗格时用它——但它只支持 macOS、才 8 个月大、遥测默认开启，服务端是 BUSL-1.1。 | GPL-3.0-or-later (macOS app, CLI, cmux-tui) + BUSL-1.1 (web/, workers and relay services; production use needs a commercial license) | D（5/6） | [中](categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.zh.md) · [EN](categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.md) |
 | **GitHub Agentic Workflows (gh-aw)** | 当你想让 coding agent 在 GitHub 仓库上无人值守地干杂活（issue 分诊、查 CI 失败、写报告、提文档 PR），用 Markdown 写、编译成 Actions 工作流，agent 只读并在防火墙后运行、只有声明过的写操作才会执行时用它——但它只限 GitHub、处于 Public Preview、每周发版，7 周内出了 11 个安全公告。 | MIT | B（4/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md) |
+| **Codex plugin for Claude Code** | 当你以 Claude Code 为主、手上已有 Codex 登录，想让 OpenAI 的 Codex 不离开会话就审你的改动、或接手卡住的任务时用它——但它只接一家厂商，rescue 默认可写，会泄漏中转进程，而且 2026-07 之后没有合并过任何东西。 | Apache-2.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.zh.md) · [EN](categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md) |
 | **Harness SDK** | 想要一次调用就有能用的 agent——调好的 prompt、shell／文件／web 工具、代码沙箱、子代理、记忆与会话——而且 Python 与 TypeScript 同接口、每个默认值都可覆盖时用它；要托管运行时或可审查的图就不是它。 | Apache-2.0 | A（6/6） | [中](categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.zh.md) · [EN](categories/agent-frameworks/agent-runtimes/agent-sdks/harness-sdk.md) |
 | **Pi** | 想要一个极简终端 agent、行为由你仓库里的文件决定——技能、prompt 模板、它自己也能写的 TypeScript 扩展——并且愿意自己承担沙箱时用它。 | MIT | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/pi.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/pi.md) |
 | **OmO** | 想把整件任务交给终端 agent 时用它——`ulw`、`mass ulw` 关键词把工作摊成一张按类别路由、跨订阅模型的依赖图，验证通过才算完成，记忆沉淀进 git——但 SUL-1.0 限制商业再分发，token 是按机队花的，十个月的热度 star 是风险信号而不是 Lindy 记录。 | SUL-1.0 | B（5/6） | [中](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.zh.md) · [EN](categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md) |
@@ -420,6 +424,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TanStack Devtools** | 一个页内可停靠面板，把 TanStack（及自家）库的调试器装成标签页，配套 Vite／Rspack 插件提供点元素跳源码、console 转发和生产构建自动剥离——但仍是 alpha，会把 Solid.js 带进开发包，开发期事件总线还有一份未修的命令注入报告。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-devtools.md) |
 | **JumpServer** | 当你需要一台自建堡垒机（PAM）替人保管目标机凭据、录下每个 SSH、RDP、数据库和 Kubernetes 会话时用它——但社区版上限 5000 台资产，高可用、SSO、改密都在企业版，且每年都有严重级漏洞公告。 | GPL-3.0 | B（6/6） | [中](categories/dev-utilities/ops-infra/jumpserver.zh.md) · [EN](categories/dev-utilities/ops-infra/jumpserver.md) |
 | **TanStack Config** | TanStack 自家库共用的开发期预设：带类型信息的 ESLint 扁平配置、ESM／CJS 双格式 Vite 库构建、TypeDoc 转 Markdown、按提交信息发版的脚本——检查预设用得很广，构建与发布两半在 TanStack 内部已成遗留（转向 tsdown、Changesets）；只支持 pnpm。 | MIT | B（6/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md) |
+| **zerobrew** | 当你经常重装同一批 Homebrew 命令行 formula，想让一个和 `brew` 并排的 Rust 客户端把同样的 bottle 快几倍地装上时用它——但它是实验性的，不执行 `post_install`，cask 只支持带二进制产物的。 | Apache-2.0 OR MIT | B（6/6） | [中](categories/dev-utilities/package-managers/zerobrew.zh.md) · [EN](categories/dev-utilities/package-managers/zerobrew.md) |
 | **TanStack Container** | 把真实的 Vite／TanStack Start 项目（安装、进程、预览、存档恢复）整个跑在访客的浏览器标签页里，MIT 开源、资源自己托管——但 2026-09 时 npm 包还没发布：这是值得跟踪的 pre-alpha 押注，还不是能上线依赖的东西。 | MIT | C（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-container.md) |
 | **TanStack alt-cli** | 2026 年 1 月只活了一周的 TanStack 实验：用 29 个带元数据声明的集成组合出 TanStack Start 项目，并以 MCP 面向 agent 开放脚手架——已归档，`@tanstack/cli` 包名被主线 CLI 收回；当模式参考读，脚手架用 TanStack CLI。 | MIT | D（5/6） | [中](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-alt-cli.md) |
 | **NetWasm** | 把可达的 C# 编译成一个极小的独立 WASI 组件——GC 链接在产物里、目标机器不装 .NET 运行时——但它是 7 周大的单人 pre-1.0 项目，编译器工具链挂自定义非开源许可证。 | NOASSERTION (Community License 1.0 tooling + MIT core) | C（4/6） | [中](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.zh.md) · [EN](categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/netwasm.md) |
@@ -449,6 +454,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TokenHub** | 治理优先的自托管 Go AI 网关：项目 key、配额、路由策略、审计和供应商账单核对——非常年轻（v0.9.x，建于 2026-06）且作者主导。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/tokenhub.zh.md) · [EN](categories/api-gateway/tokenhub.md) |
 | **Magpie (yetone)** | 给约 28 个 coding agent 用的菜单栏模型切换器，外加在 Anthropic 与 OpenAI 接口间翻译的本地网关，订阅登录也能当 provider——只有约一周历史，单人维护。 | MIT | C（5/6） | [中](categories/api-gateway/magpie-model-router.zh.md) · [EN](categories/api-gateway/magpie-model-router.md) |
 | **vLLM Semantic Router** | 挂在 Envoy ExtProc 上的决策层，用自带分类器算出的领域、难度、越狱、PII 信号，按 YAML 策略逐请求选模型；还没到 1.0（v0.4，建于 2025-08），密钥和限流仍要靠网关。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/vllm-semantic-router.zh.md) · [EN](categories/api-gateway/vllm-semantic-router.md) |
+| **Monid** | “工具版 OpenRouter”的开源连接器标准和引擎：约 700 个数据和媒体厂商端点写成声明式文件，自带按次用量计量——`discover` 路由、单一 key 和定价在闭源托管侧；仓库约六周大。 | MIT | B（6/6） | [中](categories/api-gateway/monid.zh.md) · [EN](categories/api-gateway/monid.md) |
 
 ### geospatial
 
@@ -722,6 +728,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ONLYOFFICE Docs** | 当你的网盘/CRM/LMS 需要「点一下 .docx 就进入带实时协同的完整编辑器」、一个 Docker 容器搞定且要真实 OOXML 保真度时用它——但它是 AGPL，社区版建议并发 ≤20，GitHub 仓库只是打包壳。 | AGPL-3.0 | B（6/6） | [中](categories/office-editors/onlyoffice-documentserver.zh.md) · [EN](categories/office-editors/onlyoffice-documentserver.md) |
 | **Collabora Online** | 当你运行（或对接）Nextcloud 这类支持 WOPI 的文件平台、想在浏览器里用上 LibreOffice 渲染引擎时用它——但活跃开发在 Gerrit 而非这个 GitHub 仓库，这里也没有可嵌入的 UI SDK。 | MPL-2.0 | A（5/6） | [中](categories/office-editors/collabora-online.zh.md) · [EN](categories/office-editors/collabora-online.md) |
 | **GenOffice** | 当*你自己*（而不是你产品的用户）想让 AI 在桌面上直接改真正的 `.docx`/`.xlsx`/`.pptx`、改动以可审阅的修订落下、模型自带 key，还想要 `genoffice` CLI/MCP 让编码 agent 也能这样做时用它——但它是一家初创公司两个月大的 `v0.x` 套件，使用统计默认开启，也不支持 `.doc`/ODF。 | Apache-2.0 | C（5/6） | [中](categories/office-editors/genoffice.zh.md) · [EN](categories/office-editors/genoffice.md) |
+| **DeckCraft** | 当你想要一个原生构建、开源的 PowerPoint 式编辑器（macOS/Windows/Linux/FreeBSD/网页），而且每个按钮同时是 agent 能调用、还能看渲染结果的 CLI/MCP 命令时用它——但它是诞生两天、主要由 AI agent 写成的 alpha 前版本，`.pptx` 兼容性只在自己生成的稿子上测过。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/office-editors/deckcraft.zh.md) · [EN](categories/office-editors/deckcraft.md) |
 ### diagramming
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |
@@ -767,10 +774,12 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ImageMagick** | 当脚本或 CI 任务要用一条 shell 命令把 TIFF、PSD、EPS、HEIC、多页 PDF 等 200 多种格式转换、缩放、合成时用它——但不加隔离就去解码不可信的上传图片，CVE 风险源源不断。 | ImageMagick | B（5/6） | [EN](categories/media-processing/image-processing/imagemagick.md) · [中](categories/media-processing/image-processing/imagemagick.zh.md) |
 | **Screenshot Service** | 仅适合作为隔离的内部 HTML 转图片 worker——API 鉴权已禁用，Chromium 还关闭了 sandbox 与 Web 安全。 | NOASSERTION | D（4/6） | [中](categories/media-processing/image-processing/screenshot-service.zh.md) · [EN](categories/media-processing/image-processing/screenshot-service.md) |
 | **Magpie** | 老游戏或固定尺寸的 Windows 程序窗口在高分屏上太小或被拉糊、又不想往进程里注入东西时，用它做实时 GPU 放大（FSR、Anime4K）——但只支持 Windows，没有 HDR 和补帧，发版落后于 dev 分支。 | GPL-3.0 | B（6/6） | [EN](categories/media-processing/image-processing/magpie.md) · [中](categories/media-processing/image-processing/magpie.zh.md) |
+| **PhotoCraft** | 没有 Photoshop 席位、又要离线改分层 PSD 时用它——调整图层、蒙版和文字保持可编辑，命令行／MCP 驱动同一个引擎——但它是一个九天大、由 agent 写成的早期 alpha，团队自评日常专业可用度约 25–35%。 | MIT OR Apache-2.0 | B（6/6） | [EN](categories/photo-editing/photocraft.md) · [中](categories/photo-editing/photocraft.zh.md) |
 | **Concat** | 当你需要一款当下就能安装运行、原生、离线、可脚本化的类 CapCut 视频编辑器时用它——但它是仅有约 25 天历史的 0.2.x beta、只有一位维护者，且专业能力（遮罩、跟踪、关键帧曲线）仍在路线图上。 | AGPL-3.0-or-later | C（6/6） | [中](categories/media-processing/video-editing/concat.zh.md) · [EN](categories/media-processing/video-editing/concat.md) |
 | **OpenCut** | 仅当你打算跟进或基于浏览器／WASM 重写架构开发时用它——其仓库正在重写、不接受外部贡献、不产出可用版本，能用的 classic 版本在已归档仓库里。 | MIT | B（5/6） | [中](categories/media-processing/video-editing/opencut.zh.md) · [EN](categories/media-processing/video-editing/opencut.md) |
 | **Palmier Pro** | 当你想让编码 agent 通过本机 MCP 服务，直接改你在 macOS 26 Apple 芯片 Mac 上开着的时间线时用它——但只有 v0.7.6 之前的源码是 GPL，之后的二进制已闭源，AI 生成走厂商按额度计费的后端。 | GPL-3.0 | C（6/6） | [中](categories/media-processing/video-editing/palmier-pro.zh.md) · [EN](categories/media-processing/video-editing/palmier-pro.md) |
 | **OpenScreen** | 当你想免费得到 Screen Studio 那种成片感的屏幕演示——录屏后自动出跟随光标的缩放、抹平光标、背景与本地字幕，导出 MP4／GIF——时用它；代价是上游仓库 2026-06 已归档，维护只在社区分支里继续。 | MIT | C（6/6） | [中](categories/media-processing/video-editing/openscreen.zh.md) · [EN](categories/media-processing/video-editing/openscreen.md) |
+| **EffectCraft** | 当你想免费、在 Linux 上、或让 agent 通过 MCP 来做 After Effects 式的动态图形——图层、关键帧、表达式、306 个同名效果、Lottie 导出——时用它；代价是只有 8 天历史、代码大多由 agent 编写、打不开 `.aep`，与 After Effects 的保真度也没测过。 | MIT OR Apache-2.0 | B（5/6） | [中](categories/media-processing/video-editing/effectcraft.zh.md) · [EN](categories/media-processing/video-editing/effectcraft.md) |
 | **Jianying Headless** | 当 macOS 上的剪映工作流需要 agent 生成**可编辑**草稿——真实多轨工程，并可用应用自己的引擎原生导出 MP4——时用它；代价是仅 5 天历史、单一维护者、绑定某一个应用版本、且仅限非商用。 | Personal Learning and Non-Commercial Use License（NOASSERTION，非 OSI） | D（4/6） | [中](categories/media-processing/nle-automation/jianying-headless.zh.md) · [EN](categories/media-processing/nle-automation/jianying-headless.md) |
 | **pyJianYingDraft** | 当 Python 管线需要跨平台产出可编辑剪映草稿、且接受 Apache-2.0 时用它——代价是新版剪映草稿已加密、它自己不做渲染、自带批量导出只支持 Windows 加剪映 6 及更早版本。 | Apache-2.0 | C（5/6） | [中](categories/media-processing/nle-automation/pyjianyingdraft.zh.md) · [EN](categories/media-processing/nle-automation/pyjianyingdraft.md) |
 | **JianYing Editor Skill** | 当 coding agent 应该把一句自然语言需求变成真实剪映时间轴——素材、TTS 配音、对齐字幕、配乐与具名特效——而由你在剪映里判断并导出时用它；代价是没有 tagged release、无人值守导出只在 Windows、且会接管屏幕。 | MIT | C（3/5） | [中](categories/media-processing/nle-automation/jianying-editor-skill.zh.md) · [EN](categories/media-processing/nle-automation/jianying-editor-skill.md) |
@@ -841,6 +850,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **SAPP** | 当 PHP 应用必须追加 PKCS#12 签名、又不能破坏已有 PDF 修订时用它——规范覆盖较窄，也不支持加密 PDF。 | LGPL-3.0-or-later | B（5/6） | [中](categories/pdf-tools/pdf-transform-signing/sapp.zh.md) · [EN](categories/pdf-tools/pdf-transform-signing/sapp.md) |
 | **FPDI** | 当基于 FPDF／TCPDF／tFPDF 的 PHP 应用要把已有 PDF 的页面当模板导入时用它——免费解析器不支持加密文件与压缩交叉引用流。 | MIT | A（5/6） | [中](categories/pdf-tools/pdf-generation/fpdi.zh.md) · [EN](categories/pdf-tools/pdf-generation/fpdi.md) |
 | **pyHanko** | 当 Python 需要按成文记录的 PAdES／LTV 流程创建或验证 PDF 签名时用它——上游仍自标 beta。 | MIT | A（6/6） | [中](categories/pdf-tools/pdf-transform-signing/pyhanko.zh.md) · [EN](categories/pdf-tools/pdf-transform-signing/pyhanko.md) |
+| **PdfCraft** | 当 macOS、Windows 或 Linux 上的人需要一个离线、免账号的桌面应用来整理、批注、填写、涂黑和加密 PDF（或让 agent 经 MCP 做同样的事）时用它——但它才九天大、尚未 1.0，渲染器是借的，与 Acrobat 的保真度也没测过。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/pdf-tools/pdf-transform-signing/pdfcraft.zh.md) · [EN](categories/pdf-tools/pdf-transform-signing/pdfcraft.md) |
 | **PDFMathTranslate** | 科研 PDF 必须保住公式和双栏再翻译时用它——CLI/GUI/Docker，翻译后端多；AGPL，且 1.x 钉着旧版 BabelDOC。 | AGPL-3.0 | C（5/6） | [中](categories/pdf-tools/pdf-translation/pdfmathtranslate.zh.md) · [EN](categories/pdf-tools/pdf-translation/pdfmathtranslate.md) |
 | **BabelDOC** | 要嵌入或调试当前 0.6 的保留排版 PDF 翻译引擎时用它——不是面向用户的成品；AGPL，只接 OpenAI，API 不受支持。 | AGPL-3.0 | C（6/6） | [中](categories/pdf-tools/pdf-translation/babeldoc.zh.md) · [EN](categories/pdf-tools/pdf-translation/babeldoc.md) |
 | **PDFMathTranslate-next** | 要把 BabelDOC 0.6 当 CLI/网页来跑、默认走硅基流动免费通道时用它——AGPL，Google/Bing 已撤，最后推送 2026-05。 | AGPL-3.0 | D（4/6） | [中](categories/pdf-tools/pdf-translation/pdfmathtranslate-next.zh.md) · [EN](categories/pdf-tools/pdf-translation/pdfmathtranslate-next.md) |
@@ -883,6 +893,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/local-runtimes/freetoken.md) · [中](categories/llm-inference/local-runtimes/freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/claude-code-local.md) · [中](categories/llm-inference/local-runtimes/claude-code-local.zh.md) |
 | **DwarfStar (ds4)** | 当你有一台 96 GB 以上的 Mac、DGX Spark 或 Strix Halo 主机，想让少数几个前沿 MoE 模型（DeepSeek V4、GLM 5.x、Qwen3.8）在本地驱动编程智能体、内存不够时溢出到固态硬盘时用它——接受一个五个月大、单人维护、没有发布版本、只认自家 GGUF 文件的引擎。 | MIT | B（6/6） | [EN](categories/llm-inference/local-runtimes/ds4.md) · [中](categories/llm-inference/local-runtimes/ds4.zh.md) |
+| **Edge0** | 当你想在 16–24 GB 的 Mac（或手机）上跑 35B 档的 MoE 模型、卡住你的是内存而不是模型选择时用它——专家从固态硬盘流式读取，并由训练过的预测器提前一步取来——接受只有两个预览模型、相对 fp16 有少量精度损失、以及一个只有一个月大且没有发布版本的仓库。 | Apache-2.0 | C（6/6） | [EN](categories/llm-inference/local-runtimes/edge0.md) · [中](categories/llm-inference/local-runtimes/edge0.zh.md) |
 | **XGrammar** | 当你掌握模型的 logits、必须保证输出可解析——JSON Schema、正则、语法或工具调用——且要尽可能低的掩码延迟时用它；只调托管 API、或已在集成它的引擎上服务时不必用。 | Apache-2.0 | B（6/6） | [EN](categories/llm-inference/structured-generation/xgrammar.md) · [中](categories/llm-inference/structured-generation/xgrammar.zh.md) |
 | **SIE (Superlinked Inference Engine)** | 当一条 agent 流水线要把许多小模型（向量、重排、OCR、抽取、审核）放在同一个 API 后面、按需加载并用 Helm／KEDA 集群扩缩时用它——接受一个约 6 个月大、单厂商维护、minor 版本常带破坏性变更的 0.x 代码库。 | Apache-2.0 | B（6/6） | [中](categories/llm-inference/serving-engines/sie.zh.md) · [EN](categories/llm-inference/serving-engines/sie.md) |
 | **llm-d** | 当 Kubernetes 上一批 vLLM／SGLang pod 需要懂大模型的路由（按前缀缓存和排队派单）、预填充／解码拆分或 KV 缓存卸载，并想直接用跑过基准的 Helm／kustomize 配方时用它——接受一个年轻的 1.0 前 CNCF Sandbox 技术栈、较重的集群运维和版本间频繁的组件变动。 | Apache-2.0 | B（5/6） | [中](categories/llm-inference/serving-engines/llm-d.zh.md) · [EN](categories/llm-inference/serving-engines/llm-d.md) |
@@ -1044,6 +1055,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | --- | --- | --- | --- | --- |
 | **Cua** | 当 agent 需要操作整台电脑（原生桌面应用、系统弹窗，而非仅网页）、且这次运行需要隔离时使用。 | MIT | B（5/6） | [中](categories/desktop-automation/cua.zh.md) · [EN](categories/desktop-automation/cua.md) |
 | **PyAutoGUI** | 当你要用 Python 脚本在 Windows、macOS 或 Linux 上点击、输入一个只有图形界面的桌面程序时用它——但基于坐标和像素的自动化会因 DPI、分辨率或主题变化静默失效，必须有真实显示器，且上游自 2023 年起已无新提交。 | BSD-3-Clause | C（4/6） | [中](categories/desktop-automation/pyautogui.zh.md) · [EN](categories/desktop-automation/pyautogui.md) |
+| **Windows-MCP** | 当 Claude、Codex、Gemini 里的 agent 需要按控件名（UI Automation 树）在原生 Windows 程序里点击、输入，并且直接作用在你的真实会话上时使用——没有沙箱，PowerShell、注册表工具和遥测都默认开启。 | MIT | B（6/6） | [中](categories/desktop-automation/windows-mcp.zh.md) · [EN](categories/desktop-automation/windows-mcp.md) |
 
 ### mobile-automation
 
@@ -1354,8 +1366,10 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
+| **DesignCraft** | 需要按 InDesign 的方式排印刷页面——读写 IDML、导出 CMYK/PDF/X 印刷 PDF、用 CLI 或 MCP 驱动每条命令——而且要在任何系统上、不用 Creative Cloud 座位时用它；必须打开 `.indd`、今天就要过认证印前检查、或需要格式稳定（v0.x，才八天大）时不要用。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/design-editors/designcraft.zh.md) · [EN](categories/design-editors/designcraft.md) |
 | **OpenPencil** | 需要打开已有的 Figma `.fig` 文件并对它做脚本化处理——查看结构、检查、转换、导出成 JSX——或者想要一个 local-first、AI 原生、没有服务器、没有账号、不上传的编辑器时用它。 | MIT | B（6/6） | [中](categories/design-editors/open-pencil.zh.md) · [EN](categories/design-editors/open-pencil.md) |
 | **Penpot** | 一个团队必须在你自己控制的服务器上编辑同一份设计文件——浏览器编辑器、实时多人协作、组件/变体、原型和 design token——而按席位租托管 SaaS 不可行时用它。 | MPL-2.0 | B（5/6） | [中](categories/design-editors/penpot.zh.md) · [EN](categories/design-editors/penpot.md) |
+| **VectorCraft** | 想要 Illustrator 的布局和快捷键又不想付订阅——在 Linux、FreeBSD 或浏览器里——打开 `.ai`/PDF/EPS/Affinity 文件，或者让 agent 通过它的 CLI/MCP 命令接口画图并导出矢量图时用它；项目才几天大，赶工期的活别用。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/design-editors/vectorcraft.zh.md) · [EN](categories/design-editors/vectorcraft.md) |
 
 ### learning-resources
 
@@ -1387,6 +1401,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **MangoDisk** | 一个清理工具要同时覆盖 macOS、Windows 和 Linux，而且你想读懂每条被删路径背后的规则时用它——代价是永久删除、代码库只有两个月、只有一位维护者。 | GPL-3.0-only | C（6/6） | [中](categories/disk-cleanup/mangodisk.zh.md) · [EN](categories/disk-cleanup/mangodisk.md) |
+| **Win11Debloat** | 要在一台不受管的 Windows 10／11 电脑上，用一张清单清掉预装应用、广告、Copilot 和遥测，并留注册表备份可撤回时用它——不适合域管理的机器群、镜像瘦身或 PowerShell 被锁定的环境。 | MIT | B（6/6） | [中](categories/disk-cleanup/win11debloat.zh.md) · [EN](categories/disk-cleanup/win11debloat.md) |
 
 ### 3d-reconstruction
 
@@ -1417,6 +1432,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Easel** | 在中文平台（小红书／抖音／知乎／B 站等）运营账号，想要一个自托管智能体工作台覆盖发现→创作→发布→归因、且带账号画像时用它——代价是项目只有一个月大（v0.x），小红书自动化有作者自述的风控暴露。 | Apache-2.0 | B（5/6） | [中](categories/social-media-management/easel.zh.md) · [EN](categories/social-media-management/easel.md) |
+| **xiaohongshu-mcp** | 想让你现有的 Agent 通过一个自部署、自带指纹浏览器的 MCP／REST 服务在小红书上搜索、阅读、发帖、评论、点赞时用它——代价是真实的封号风险、单人维护，以及从作者 CDN 下发的不透明预编译浏览器。 | Apache-2.0 | B（6/6） | [中](categories/social-media-management/xiaohongshu-mcp.zh.md) · [EN](categories/social-media-management/xiaohongshu-mcp.md) |
 
 ### healthcare-ai
 
@@ -1429,3 +1445,9 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Dembrandt** | 设计系统唯一的来源是一个线上网址，你需要把它真实的颜色、字体和间距导出成 DTCG/Tailwind/DESIGN.md token——或者要一个 token 漂移就让 CI 失败的门禁——时用它；token 本来就是你自己写的、或你担心的是布局回归时不要用。 | MIT | C（5/6） | [中](categories/design-tokens/dembrandt.zh.md) · [EN](categories/design-tokens/dembrandt.md) |
+
+### photo-editing
+
+| 项目 | 何时用 | 许可证 | 健康度 | 页面 |
+| --- | --- | --- | --- | --- |
+| **LightCraft** | 想在本机用上 Lightroom 那套挑片、冲洗、导出的流程又不交订阅，还想让智能体通过 MCP／CLI 来操作时用它——代价是它只有九天大、尚在 1.0 之前，相机色彩靠估算，RAW 格式覆盖也还薄。 | MIT OR Apache-2.0 | B（5/6） | [中](categories/photo-editing/lightcraft.zh.md) · [EN](categories/photo-editing/lightcraft.md) |

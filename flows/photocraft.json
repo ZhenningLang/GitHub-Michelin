@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "PhotoCraft does", "zh": "PhotoCraft 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a release build (or build from source) and open a layered PSD", "zh": "装发布版（或从源码编译），打开一个分层 PSD", "code": "cargo run --release -p photocraft -- image.psd", "component": {"en": "desktop app", "zh": "桌面应用"}},
+    {"lane": "them", "en": "Reads it into its own layer model and carries unmodelled blocks instead of dropping them", "zh": "读进自己的图层模型，认不出的数据块原样带着走而不丢弃", "component": {"en": "photocraft-psd crate", "zh": "photocraft-psd crate"}},
+    {"lane": "you", "en": "Edit with familiar menus and shortcuts: adjustment layers, masks, layer styles, type", "zh": "用熟悉的菜单和快捷键编辑：调整图层、蒙版、图层样式、文字"},
+    {"lane": "them", "en": "Runs every click as a named command and redraws the layer stack live on the GPU", "zh": "每次点击都执行一条具名命令，在显卡上实时重绘图层栈", "component": {"en": "command engine + wgpu", "zh": "命令引擎 + wgpu"}},
+    {"lane": "you", "en": "Save back to PSD, or Export As PNG/JPEG", "zh": "存回 PSD，或导出为 PNG／JPEG"},
+    {"lane": "them", "en": "Writes a layered PSD that re-opens with the same render for 307 of 309 corpus files", "zh": "写出分层 PSD，测试集 309 个文件里 307 个重开后渲染一致"}
+  ],
+  "value": {"en": "You edit and hand back layered PSDs offline without a Photoshop subscription, as long as the file stays inside what it models", "zh": "不用订阅 Photoshop、离线就能改分层 PSD 再交回去，前提是文件没超出它支持的范围"},
+  "sources": [
+    "https://github.com/storytold/photocraft README › Get started (cargo run --release -p photocraft -- image.psd) and Downloads (release installers)",
+    "README › PSD without compromise (unmodelled blocks carried over; 307/309 psd-tools round trips, crates/io/tests/corpus.rs)",
+    "README › Built for agents and AGENTS.md › Golden rules 1 (every action is a command in one registry)",
+    "README › Under the hood and AGENTS.md › Workspace map (wgpu compositor, photocraft-psd crate)",
+    "README › Ship it anywhere (Export As, Quick Export to PNG)"
+  ]
+}

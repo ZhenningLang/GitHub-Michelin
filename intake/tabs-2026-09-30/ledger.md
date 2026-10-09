@@ -19,7 +19,7 @@
 | pingdotgg/t3code | sync | done | categories/agent-frameworks/coding-agents/terminal-agents/t3code.md | 新鲜页，sync-entry 按阈值未重核，无改动 | pingdotgg/t3code |
 | cursor/plugins | add | done | categories/agent-skills/vendor-collections/cursor-plugins.md |  | cursor/plugins |
 | emilkowalski/skills | sync | done | categories/agent-skills/design/ui-taste/emilkowalski-skills.md | 新鲜页（last_verified 2026-07-16，76 天 < 90），sync-entry 按阈值未重核，无改动 | emilkowalski/skills |
-| Gaurav-Gosain/tuios | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md |  | gaurav-gosain/tuios |
+| Gaurav-Gosain/tuios | add | done | categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md |  | gaurav-gosain/tuios |
 | humanlayer/skills | sync | done | categories/agent-skills/vendor-collections/humanlayer-skills.md | 新鲜页（last_verified 2026-09-22，8 天 < 90），sync-entry 按阈值未重核，无改动 | humanlayer/skills |
 | kubernetes-sigs/agent-sandbox | add | done | categories/sandboxing/agent-sandbox.md |  | kubernetes-sigs/agent-sandbox |
 | llm-d/llm-d | add | done | categories/llm-inference/serving-engines/llm-d.md |  | llm-d/llm-d |

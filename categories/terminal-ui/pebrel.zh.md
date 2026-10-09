@@ -80,7 +80,7 @@ health:
 
 你在 Windows 10/11 上写代码，一天里同时开着三四个 AI 编程命令行，外加几台服务器。现在的做法是 Windows Terminal 开一排标签，另装一个 SSH/SFTP 客户端传文件，然后反复遇到这种时刻：Codex 停在 `Allow this command? (y/n)` 上等了二十分钟，而那个标签你早忘了。你选 Pebrel，是因为它把三样东西装进一个原生窗口：本地／WSL／SSH 面板加分屏和布局保存，旁边一个 SFTP 文件浏览器，以及真正起决定作用的部分——给 Claude Code／Codex／opencode／Pi 装钩子，把每一轮对话变成面板上的状态圆点、一个 AI 活动侧栏和一条能带你回到来源面板的通知。在 Windows 上关掉窗口时它还能驻留托盘，让会话继续活着。
 
-选它而不选 [Windows Terminal](https://github.com/microsoft/terminal) 或 [Alacritty](alacritty.zh.md)，是因为后两者都不知道面板里跑的是什么；不选 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)，是因为你要的是带 SSH/SFTP 和 Markdown／公式阅读器的图形应用，而不是跑在另一个终端里的 TUI 复用器；不选 [Warp](warp.zh.md)，是因为 Pebrel 的源码真的开放（GPL-3.0），而且以 Windows 为第一平台。代价是押注一个只有十二周、基本由一个人维护的项目。
+选它而不选 [Windows Terminal](https://github.com/microsoft/terminal) 或 [Alacritty](alacritty.zh.md)，是因为后两者都不知道面板里跑的是什么；不选 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，是因为你要的是带 SSH/SFTP 和 Markdown／公式阅读器的图形应用，而不是跑在另一个终端里的 TUI 复用器；不选 [Warp](warp.zh.md)，是因为 Pebrel 的源码真的开放（GPL-3.0），而且以 Windows 为第一平台。代价是押注一个只有十二周、基本由一个人维护的项目。
 
 ## 怎么用起来
 
@@ -106,7 +106,7 @@ Pebrel 是一个桌面应用：终端核心来自 Alacritty（负责把程序输
 
 ## 何时不用
 
-- **你不在 Windows 上。** Linux 和 macOS 版本标着 Preview；托盘驻留、全局快捷终端热键、AI 钩子自动配置和自动更新都只有 Windows 有，macOS 的 DMG 只做了 ad-hoc 签名、没有公证（INSTALL.md，2026-09-28）。macOS／Linux 上终端用 [WezTerm](https://github.com/wezterm/wezterm) 或 [Alacritty](alacritty.zh.md)，要看 agent 状态再加 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)。
+- **你不在 Windows 上。** Linux 和 macOS 版本标着 Preview；托盘驻留、全局快捷终端热键、AI 钩子自动配置和自动更新都只有 Windows 有，macOS 的 DMG 只做了 ad-hoc 签名、没有公证（INSTALL.md，2026-09-28）。macOS／Linux 上终端用 [WezTerm](https://github.com/wezterm/wezterm) 或 [Alacritty](alacritty.zh.md)，要看 agent 状态再加 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)。
 - **你自己手工管理 agent 的钩子配置。** 首次启动会改 Claude Code、Codex、opencode 和 Pi 的配置，加入 Pebrel 自有的钩子。INSTALL.md 说用户自己的条目会保留，但有一个未关闭的 issue（#297，2026-09-26）报告生成的 opencode 钩子在 OpenCode 2.x 下加载失败。如果你的钩子放在受版本管理的 dotfiles 里，就继续用 Windows Terminal 或 [tmux](tmux.zh.md)／[Zellij](zellij.zh.md)，自己接通知，别让一个图形应用和你共同持有这些文件。
 - **你要给团队选一个长期、低变动的工具。** 仓库才十二周，所有者账号 2026 年 6 月才注册，约 840 个提交里一个作者占了大约八成，七周内发了 15 个版本。团队默认终端选 [Windows Terminal](https://github.com/microsoft/terminal)（微软维护，2017 年起）或 Alacritty。
 - **你要在共享主机上把攻击面压到最小。** 运行时 API 让任何以你身份运行的进程都能往任意面板打字（`pane send`、`agent send`）；它的文档自己写明，随机 token 挡不住已经能读你用户文件的攻击者。多租户或敏感机器上选没有控制面的终端（Alacritty），agent 监督放到别处做。
@@ -119,7 +119,7 @@ Pebrel 是一个桌面应用：终端核心来自 Alacritty（负责把程序输
 |---|---|---|---|
 | Windows Terminal | 未收录 | 要一个能让全团队统一的稳定 Windows 终端，选 Windows Terminal；只有当面板级 AI agent 状态和内置 SSH/SFTP 值得你去用一个十二周大的项目时，才选 Pebrel。 | Windows Terminal：MIT，微软 2017 年起维护，约 10.5 万星，但看不见 agent、没有 SFTP。Pebrel：感知 agent、带 SSH/SFTP、托盘驻留，单维护者风险。本批次 tab 收录未添加。 |
 | [Warp](warp.zh.md) | ✅ | 想要自带 agent 和命令块的 AI 优先终端、能接受闭源，选 Warp；想要在 Windows 上开源、承载你自己的命令行（Claude Code、Codex）而不是自带 agent，选 Pebrel。 | Warp：打磨好的商业产品，代码闭源，部分功能要账号。Pebrel：GPL 源码，自带 agent 命令行由你选，年轻得多且以 Windows 为先。 |
-| [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md) | ✅ | 要能跑在 SSH 上、嵌进任何终端的 agent 状态监督，选 herdr；要在原生图形界面里拿到同样的“哪个 agent 在等我”信号，外加 SFTP、阅读器和 Windows 托盘驻留，选 Pebrel。 | herdr：TUI 复用器，跨平台，可脚本化，没有图形界面。Pebrel：图形应用，Windows 为先，功能面更大；两者都是 2026 年的新项目。 |
+| [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md) | ✅ | 要能跑在 SSH 上、嵌进任何终端的 agent 状态监督，选 herdr；要在原生图形界面里拿到同样的“哪个 agent 在等我”信号，外加 SFTP、阅读器和 Windows 托盘驻留，选 Pebrel。 | herdr：TUI 复用器，跨平台，可脚本化，没有图形界面。Pebrel：图形应用，Windows 为先，功能面更大；两者都是 2026 年的新项目。 |
 | [Alacritty](alacritty.zh.md) | ✅ | 要极简、快、长寿的 GPU 终端，选 Alacritty 再配一个复用器；要标签、分屏、SSH 和 agent 感知开箱即用，选 Pebrel。 | Alacritty：健康度 A，刻意不做标签和分屏，没有网络面。Pebrel：复用了 Alacritty 的终端核心，但加了很大的应用面和本机控制 API。 |
 | WezTerm | 未收录 | 在 macOS／Linux 上，或者想要 Lua 可编程、自带复用器和 SSH 域的跨平台终端，选 WezTerm；Pebrel 只在 Windows 加 AI 命令行钩子这个场景胜出。 | WezTerm：成熟（2018 年起），跨平台，最近一个正式标签是 2024-02，之后靠 nightly 构建。Pebrel：更新、感知 agent、Windows 为先。本批次 tab 收录未添加。 |
 

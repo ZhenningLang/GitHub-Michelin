@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "The plugin does", "zh": "插件做的"},
+  "steps": [
+    {"lane": "you", "en": "Add the openai/codex-plugin-cc marketplace in Claude Code and install the plugin", "zh": "在 Claude Code 里添加 OpenAI 的插件市场并装上插件", "code": "/plugin install codex@openai-codex"},
+    {"lane": "you", "en": "Run setup once to confirm Codex is installed and signed in", "zh": "跑一次 setup，确认 Codex 已安装且已登录", "code": "/codex:setup"},
+    {"lane": "them", "en": "Finds your local Codex CLI and login, offering to npm-install Codex if it is missing", "zh": "找到本机 Codex CLI 和登录状态；缺 Codex 时提议用 npm 装", "component": {"en": "codex-companion.mjs", "zh": "codex-companion.mjs"}},
+    {"lane": "you", "en": "Before opening the PR, ask Codex to review your branch", "zh": "开 PR 之前，让 Codex 审一遍你的分支", "code": "/codex:review --base main"},
+    {"lane": "them", "en": "Starts the Codex app server and runs Codex's built-in review in a read-only sandbox", "zh": "拉起 Codex app server，在只读沙箱里跑 Codex 自带的评审", "component": {"en": "codex app-server broker", "zh": "codex app-server 中转进程"}},
+    {"lane": "them", "en": "Returns Codex's findings verbatim into the Claude session, without changing your code", "zh": "把 Codex 的审查意见原样带回 Claude 会话，不改你的代码"}
+  ],
+  "value": {"en": "A model from a different lab reviews the diff inside the same Claude session — no pasting patches into a second tool", "zh": "另一家厂商的模型在同一个 Claude 会话里审你的改动——不用再把补丁粘进第二个工具"},
+  "sources": [
+    "README.md main @ db52e28 (2026-07-08): Install (/plugin marketplace add openai/codex-plugin-cc; /plugin install codex@openai-codex; /reload-plugins; /codex:setup offers npm install of Codex), Usage /codex:review (--base main, read-only, same review as /review in Codex), Codex Integration (wraps the Codex app server, uses the global codex binary)",
+    "plugins/codex/commands/review.md: return Codex output verbatim, do not fix issues",
+    "plugins/codex/scripts/lib/codex.mjs: review/start request, sandbox read-only; plugins/codex/scripts/lib/app-server.mjs: spawn(\"codex\", [\"app-server\"])"
+  ]
+}

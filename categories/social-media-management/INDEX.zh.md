@@ -8,12 +8,14 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **Easel** | 在中文平台（小红书／抖音／知乎／B 站等）运营账号，想要一个自托管智能体工作台覆盖发现→创作→发布→归因，且带账号画像——能接受一个月大的 v0.x 项目和平台风控暴露时用它。 | B（5/6） | [→](easel.zh.md) |
+| **xiaohongshu-mcp** | 想让你现有的 Agent（Claude Code、Cursor、n8n 等）通过一个自部署、自带指纹浏览器的 MCP／REST 服务在小红书上搜索、阅读、发帖、评论、点赞时用它——代价是真实的封号风险、单人维护，以及从作者 CDN 下发的不透明预编译浏览器。 | B（6/6） | [→](xiaohongshu-mcp.zh.md) |
 
 ## 横向对比
 
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [Easel](easel.zh.md) | ✅ | B（5/6） | 中文平台完整内容闭环（热点、创作、发布、归因），跑在 OpenClaw 上；验证时仅一个月大，小红书自动化连作者自己都警告有账号风控风险。 |
+| [xiaohongshu-mcp](xiaohongshu-mcp.zh.md) | ✅ | B（6/6） | 一个 Go 二进制，让任何 MCP 客户端在小红书上能读能写；可无头跑在服务器上，代价是多一个可被识别的登录，自家 issue 区就有封号报告。 |
 | [OpenClaw](../agent-frameworks/agent-runtimes/personal-assistants/openclaw.zh.md) | ✅ | B（5/6） | Easel 底下那层通用 Agent 运行时；活儿不是中文社媒内容运营时直接用它。 |
 | [MoneyPrinterTurbo](../video-production/moneyprinter-turbo.zh.md) | ✅ | B（6/6） | 主题→口播短视频家电；到视频文件为止——没有账号、没有发布、没有学习闭环。 |
 | social-auto-upload | 未收录 | — | 只做上传的浏览器自动化，面向做好的视频；本批次未收录。 |

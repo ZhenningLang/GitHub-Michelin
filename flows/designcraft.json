@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "DesignCraft does",
+    "zh": "DesignCraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install a release build for your OS",
+      "zh": "装上对应系统的发布版",
+      "code": "designcraft-<ver>-windows-x64.msi · designcraft-<ver>-macos-universal.dmg",
+      "component": {
+        "en": "desktop app",
+        "zh": "桌面应用"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Open an IDML file exported from InDesign",
+      "zh": "打开一份从 InDesign 导出的 IDML",
+      "component": {
+        "en": "IDML importer",
+        "zh": "IDML 导入器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Rebuilds spreads, parent pages, styles, swatches and threaded stories as an editable document",
+      "zh": "还原跨页、主页、样式、色板和串接文章，成为可编辑文档",
+      "component": {
+        "en": "document model",
+        "zh": "文档模型"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Edit with InDesign's tools, panels and shortcuts",
+      "zh": "用 InDesign 那套工具、面板和快捷键排版",
+      "component": {
+        "en": "egui UI",
+        "zh": "egui 界面"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Recomposes every paragraph with a Knuth–Plass composer and hyphenation",
+      "zh": "用 Knuth–Plass 排版器和断字词典重排每一段",
+      "component": {
+        "en": "text engine",
+        "zh": "排版引擎"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Export the print PDF, or IDML back to InDesign",
+      "zh": "导出印刷 PDF，或导回 InDesign 的 IDML",
+      "code": "File › Export PDF… · File → Export IDML…",
+      "component": {
+        "en": "PDF / IDML exporters",
+        "zh": "PDF / IDML 导出器"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Writes real text with embedded font subsets, CMYK and spot inks, bleed and marks",
+      "zh": "写出真文字、内嵌字体子集、CMYK 与专色、出血和裁切标记",
+      "component": {
+        "en": "PDF writer (krilla)",
+        "zh": "PDF 写出器（krilla）"
+      }
+    }
+  ],
+  "value": {
+    "en": "You lay out and hand off print pages without an InDesign seat, a licence server or a cloud account",
+    "zh": "不用 InDesign 席位、授权服务器和云账号，也能排版并交付印刷页面"
+  },
+  "sources": [
+    "README.md: Quick start, Downloads (Windows/macOS file names), Why DesignCraft (composer, hyphenation, IDML)",
+    "ROADMAP.md: Status — PDF export (krilla) via File › Export PDF…; IDML interchange via File → Export IDML… / file.openIdml",
+    "Local run 2026-10-09 of designcraft-cli 0.4.0 (macOS): run --sample --export sample.pdf / sample.idml, then --in sample.idml --export roundtrip.pdf"
+  ]
+}

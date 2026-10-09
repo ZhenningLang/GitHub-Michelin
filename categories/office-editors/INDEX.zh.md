@@ -15,6 +15,7 @@
 | **ONLYOFFICE Docs** | 当你的网盘/CRM/LMS 需要「点一下 .docx 就进入带实时协同的完整编辑器」、一个 Docker 容器搞定且要真实 OOXML 保真度时用它——但它是 AGPL，社区版建议并发 ≤20，GitHub 仓库只是打包壳。 | B（6/6） | [→](onlyoffice-documentserver.zh.md) |
 | **Collabora Online** | 当你运行（或对接）Nextcloud 这类支持 WOPI 的文件平台、想在浏览器里用上 LibreOffice 渲染引擎时用它——但活跃开发在 Gerrit 而非这个 GitHub 仓库，这里也没有可嵌入的 UI SDK。 | A（5/6） | [→](collabora-online.zh.md) |
 | **GenOffice** | 当*你自己*（而不是你产品的用户）想让 AI 在桌面上直接改真正的 `.docx`/`.xlsx`/`.pptx`、改动以可审阅的修订落下、模型自带 key，还想要 `genoffice` CLI/MCP 让编码 agent 也能这样做时用它——但它是一家初创公司两个月大的 `v0.x` 套件，使用统计默认开启，也不支持 `.doc`/ODF。 | C（5/6） | [→](genoffice.zh.md) |
+| **DeckCraft** | 当你想要一个原生构建、开源的 PowerPoint 式编辑器（macOS/Windows/Linux/FreeBSD/网页），而且每个按钮同时是 agent 能调用、还能看渲染结果的 CLI/MCP 命令时用它——但它是诞生两天、主要由 AI agent 写成的 alpha 前版本，`.pptx` 兼容性只在自己生成的稿子上测过。 | C（5/6） | [→](deckcraft.zh.md) |
 
 ## 对比矩阵
 
@@ -28,6 +29,7 @@
 | [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md) | ✅ | B（6/6） | 一体化 AGPL 文档服务器：真实 .docx/.xlsx/.pptx 保真、内置协同、一个容器——适合网盘式「点文件进编辑器」，不适合重做产品 UI。 |
 | [Collabora Online](collabora-online.zh.md) | ✅ | A（5/6） | WOPI 后面的 LibreOffice 引擎文档服务器：格式覆盖最广、C++ 团队成熟——但 GitHub 只是 issue 镜像（代码在 Gerrit），集成意味着自建 WOPI host。 |
 | [GenOffice](genoffice.zh.md) | ✅ | C（5/6） | 把 AI agent 放进文件里的桌面套件：保留原字节的 OOXML 编辑、以修订形式落下、自带 key，外加给编码 agent 的 CLI/MCP——单用户、只做 OOXML/PDF，只有两个月历史。 |
+| [DeckCraft](deckcraft.zh.md) | ✅ | C（5/6） | 纯 Rust 的只做幻灯片的 PowerPoint 仿制品，带一整套 agent 命令面（约 220 条可撤销命令，经 CLI、本地控制端口和 MCP 调用），许可宽松——广度几天就堆出来了，真实文件兼容和打印还缺。 |
 
 ## 收录范围
 

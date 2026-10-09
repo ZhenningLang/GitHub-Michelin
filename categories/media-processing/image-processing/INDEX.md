@@ -25,4 +25,4 @@
 
 ## What belongs here
 
-Image processing, conversion, resizing, composition, format tooling, HTML-to-image rendering, and real-time upscaling of a live desktop window. General browser automation belongs under `web-automation`; document-first PDF conversion belongs under document or PDF tooling.
+Image processing, conversion, resizing, composition, format tooling, HTML-to-image rendering, real-time upscaling of a live desktop window. General browser automation belongs under `web-automation`; document-first PDF conversion belongs under document or PDF tooling.

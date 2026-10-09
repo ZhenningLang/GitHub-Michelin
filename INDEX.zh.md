@@ -85,13 +85,14 @@
 | **learning-resources** | 策展型阅读路径与资源清单——读它去找某个领域的权威论文、规范或参考实现，而不是一堆博客；也包括可运行的 LLM／RAG／智能体演示应用教程合集，供照抄。 | [→](categories/learning-resources/INDEX.zh.md) |
 | **model-editing** | 通过编辑模型已保存的权重来改变它的行为——消融（abliteration）及相关模型手术——而不是训练它。 | [→](categories/model-editing/INDEX.zh.md) |
 | **pentest** | 授权范围内 web 应用、API 与本地网络（Wi-Fi）的自主／AI 辅助渗透测试——agent swarm、渗透测试自动化、漏洞利用链（授权优先）。 | [→](categories/pentest/INDEX.zh.md) |
-| **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载。 | [→](categories/disk-cleanup/INDEX.zh.md) |
+| **disk-cleanup** | 腾出磁盘空间、整理桌面系统——缓存与构建产物清理、空间分析、重复文件查找、应用卸载、Windows 减负脚本。 | [→](categories/disk-cleanup/INDEX.zh.md) |
 | **3d-reconstruction** | 把照片、视频或扫描变成三维场景——运动恢复结构、高斯泼溅／辐射场训练，以及把结果转成网格。 | [→](categories/3d-reconstruction/INDEX.zh.md) |
 | **streaming-clients** | 替代官方 App 观看、收听流媒体平台（YouTube、B 站、SoundCloud……）的第三方客户端——无广告、免账号、可后台播放。 | [→](categories/streaming-clients/INDEX.zh.md) |
 | **computer-vision** | 在图片和视频里检测、识别、分析人脸、物体和人——人脸比对／识别、检测和属性分析，作为你调用的库。 | [→](categories/computer-vision/INDEX.zh.md) |
 | **meeting-intelligence** | AI 会议副驾驶与会议记录器——录制线上会议、实时转写、会中智能辅助，并自动完成会后跟进产物。 | [→](categories/meeting-intelligence/INDEX.zh.md) |
 | **healthcare-ai** | 你自己运行的临床文本智能——在自有硬件上做医学实体抽取与 PHI/PII 去标识化，服务于不能离开网络的数据。 | [→](categories/healthcare-ai/INDEX.zh.md) |
 | **design-tokens** | 从渲染后的页面里拿到网站真实的设计 token（颜色、字体、间距、圆角），导出为 DTCG/Tailwind/DESIGN.md，并在它们漂移时让 CI 失败。 | [→](categories/design-tokens/INDEX.zh.md) |
+| **photo-editing** | 编辑你自己的照片——RAW 冲洗、用于挑片和无损编辑的照片图库，以及在本机运行的位图编辑，用来替代按月租用的 Lightroom 或 Photoshop。 | [→](categories/photo-editing/INDEX.zh.md) |
 
 
 

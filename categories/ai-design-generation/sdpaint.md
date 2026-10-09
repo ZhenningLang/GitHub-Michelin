@@ -107,7 +107,7 @@ SdPaint is a single Python script that opens a drawing window (pygame, a Python 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | Krita + AI Diffusion plugin | 未收录 | Choose Krita with AI Diffusion when you need a full painting app with an SD plugin. | Full painting app with an SD plugin and live generation inside a real art tool; far richer canvas, heavier setup, more actively developed. |
-| [ComfyUI](../on-device-ml/comfyui.md) | ✅ | Choose ComfyUI when you need a flexible node-graph Stable Diffusion front-end. | Node-graph SD front-end with huge flexibility and an active ecosystem; powerful but not a draw-and-watch scribble loop. |
+| [ComfyUI](../on-device-ml/local-image-generation/comfyui.md) | ✅ | Choose ComfyUI when you need a flexible node-graph Stable Diffusion front-end. | Node-graph SD front-end with huge flexibility and an active ecosystem; powerful but not a draw-and-watch scribble loop. |
 | AUTOMATIC1111 WebUI (img2img / sketch tab) | 未收录 | Choose AUTOMATIC1111 when you need the backend SdPaint sits on. | The backend SdPaint sits on; can do sketch→image in-browser, but the click-Generate loop is less immediate than live stroke streaming. |
 | ControlNet scribble in any SD UI | 未收录 | Choose ControlNet scribble when you need the underlying technique without SdPaint's front-end. | The underlying technique SdPaint wraps; available everywhere, but without SdPaint's real-time painting front-end. |
 

@@ -18,6 +18,7 @@
 | **FreeToken** | 当一台 NVIDIA 台式机要把比显存还大的 MoE 模型提供给你的编程智能体时用它——专家放内存、显卡只做缓存——接受一个约两个月大、只支持 Linux 加 NVIDIA、接口无鉴权的 v0.1.x 引擎。 | B（6/6） | [→](freetoken.zh.md) |
 | **Claude Code Local** | 当 Claude Code 额度用完或代码不许上云、想让同一个 `claude` 会话改由 Apple Silicon Mac 上的本地模型回答时用它——接受一个约六个月大、一人维护、一次只服务一个用户、默认用 abliterated 模型的仓库。 | B（6/6） | [→](claude-code-local.zh.md) |
 | **DwarfStar (ds4)** | 当你有一台 96 GB 以上的 Mac、DGX Spark 或 Strix Halo 主机，想让少数几个前沿 MoE 模型（DeepSeek V4、GLM 5.x、Qwen3.8）在本地驱动编程智能体、内存不够时溢出到固态硬盘时用它——接受一个五个月大、单人维护、没有发布版本、只认自家 GGUF 文件的引擎。 | B（6/6） | [→](ds4.zh.md) |
+| **Edge0** | 当你想在 16–24 GB 的 Mac（或手机）上跑 35B 档的 MoE 模型、卡住你的是内存而不是模型选择时用它——专家从固态硬盘流式读取，并由训练过的预测器提前一步取来——接受只有两个预览模型、相对 fp16 有少量精度损失、以及一个只有一个月大且没有发布版本的仓库。 | C（6/6） | [→](edge0.zh.md) |
 
 ## 对比矩阵
 
@@ -34,6 +35,7 @@
 | [FreeToken](freetoken.zh.md) | ✅ | — | 把专家放在内存、自动分配显卡上的专家缓存，让一张消费级 NVIDIA 显卡跑前沿 MoE 检查点（safetensors），提供 OpenAI／Anthropic 接口和接编程智能体的 `ft launch`；只支持 Linux 加 NVIDIA，内存要装下全部专家，v0.1.x 格式常变，HTTP 接口无鉴权。 |
 | [Claude Code Local](claude-code-local.zh.md) | ✅ | — | 用 Anthropic Messages 接口直接应答 Claude Code、并修补本地模型工具调用的 MLX 服务器，带按内存挑模型的安装脚本和桌面启动器；只限 Mac、单线程、一份全局提示词缓存、没有投机解码。 |
 | [DwarfStar (ds4)](ds4.zh.md) | ✅ | — | 只为少数几个前沿 MoE 模型手工适配的 C 引擎，覆盖 Metal、CUDA 和 ROCm，带 2 比特专家量化、模型比内存大时的 SSD 流式读取、双机 RDMA 张量并行和 OpenAI／Anthropic 接口；只加载自家 GGUF，没有发布版本，单人维护，接口无鉴权。 |
+| [Edge0](edge0.zh.md) | ✅ | — | 用训练过的预路由头加 Recover-LoRA 从固态硬盘流式读取 MoE 专家，35B 档在 Apple 芯片上峰值活跃内存约 3 GiB，并配有 iOS／Android／macOS／Windows 应用；只能跑自家两个预览检查点，Python 框架只支持 macOS，mlx 版本锁死，服务端单槽串行且无鉴权。 |
 
 ## 什么该放这里
 

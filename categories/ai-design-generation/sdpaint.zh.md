@@ -107,7 +107,7 @@ SdPaint 就是一个 Python 脚本：它打开一个绘图窗口（pygame，一�
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | Krita ＋ AI Diffusion 插件 | 未收录 | 需要配 SD 插件的完整绘画应用时，选 Krita ＋ AI Diffusion 插件。 | 完整绘画应用，配 SD 插件，在真正的美术工具里实时生成；画布丰富得多、安装更重、开发更活跃。 |
-| [ComfyUI](../on-device-ml/comfyui.zh.md) | ✅ | 需要灵活的节点图式 Stable Diffusion 前端时，选 ComfyUI。 | 节点图式 SD 前端，灵活度极高、生态活跃；强大但不是「边画边看」的涂鸦循环。 |
+| [ComfyUI](../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 需要灵活的节点图式 Stable Diffusion 前端时，选 ComfyUI。 | 节点图式 SD 前端，灵活度极高、生态活跃；强大但不是「边画边看」的涂鸦循环。 |
 | AUTOMATIC1111 WebUI（img2img / sketch 标签） | 未收录 | 需要 SdPaint 所依托的后端时，选 AUTOMATIC1111 WebUI。 | SdPaint 所依托的后端；浏览器内也能做草图→图像，但点 Generate 的循环不如逐笔流式那样即时。 |
 | 任意 SD UI 里的 ControlNet scribble | 未收录 | 需要底层 ControlNet scribble 技术而非 SdPaint 前端时，选任意支持它的 SD UI。 | SdPaint 封装的底层技术；到处都有，但没有 SdPaint 的实时绘画前端。 |
 

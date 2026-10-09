@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="773" viewBox="0 0 880 773" role="img">
+<style>
+.bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
+.hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.hY{fill:#0969da}.hT{fill:#9a6700}
+.pillY{fill:#ddf4ff}.pillT{fill:#fff1c2}
+.card{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+.cardT{fill:#ffffff;stroke:#e3c46a;stroke-width:1}
+.accY{fill:#0969da}.accT{fill:#bf8700}
+.t{font:500 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1f2328}
+.c{font:12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#57606a}
+.num{font:700 11px 'SF Mono',Menlo,Consolas,monospace;fill:#ffffff}
+.edge{stroke:#8c959f;stroke-width:1.5;fill:none}
+.hand{stroke:#8c959f;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.ah{fill:#8c959f}
+.val{fill:#dafbe1;stroke:#4ac26b;stroke-width:1}
+.valK{font:700 12px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37;letter-spacing:.08em}
+.valT{font:600 15px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#1a7f37}
+@media (prefers-color-scheme: dark){
+.bg{fill:#0d1117}.lane{fill:#161b22}.laneT{fill:#1c1a14}
+.hY{fill:#58a6ff}.hT{fill:#d4a72c}.pillY{fill:#0c2d6b}.pillT{fill:#3b2e0a}
+.card{fill:#0d1117;stroke:#30363d}.cardT{fill:#0d1117;stroke:#6e5a1f}
+.accY{fill:#1f6feb}.accT{fill:#9e6a03}
+.t{fill:#e6edf3}.c{fill:#8b949e}
+.edge,.hand{stroke:#6e7681}.ah{fill:#6e7681}
+.val{fill:#0f2d1a;stroke:#2ea043}.valK,.valT{fill:#3fb950}
+}
+
+.comp{font:600 12.5px 'SF Mono',Menlo,Consolas,monospace;fill:#8250df}
+@media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+<rect class="bg" width="880" height="773" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="615" rx="10"/>
+<rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
+<text class="hdr hY" x="56" y="57">You do</text>
+<rect class="laneT" x="460" y="28" width="392" height="615" rx="10"/>
+<rect class="pillT" x="474" y="40" width="110.7" height="24" rx="12"/>
+<text class="hdr hT" x="488" y="57">cmux does</text>
+<path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
+<path class="hand" d="M408,248.5 C439.0,248.5 439.0,272 470,272" marker-end="url(#a)"/>
+<path class="hand" d="M472,296.5 C441.0,296.5 441.0,335 410,335" marker-end="url(#a)"/>
+<path class="hand" d="M408,358.5 C439.0,358.5 439.0,395 470,395" marker-end="url(#a)"/>
+<path class="edge" d="M494,468 L494,492" marker-end="url(#a)"/>
+<path class="hand" d="M472,530.0 C441.0,530.0 441.0,554 410,554" marker-end="url(#a)"/>
+<rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
+<rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
+<circle class="accY" cx="62" cy="96" r="10"/>
+<text class="num" x="62" y="100" text-anchor="middle">1</text>
+<text class="t" x="82" y="101">Install the Mac app; your Ghostty</text>
+<text class="t" x="82" y="123">config carries over</text>
+<text class="c" x="82" y="147">brew tap manaflow-ai/cmux · brew install</text>
+<text class="c" x="82" y="166">--cask cmux</text>
+<rect class="card" x="40" y="212" width="368" height="73" rx="8"/>
+<rect class="accY" x="40" y="212" width="4" height="73" rx="2"/>
+<circle class="accY" cx="62" cy="236" r="10"/>
+<text class="num" x="62" y="240" text-anchor="middle">2</text>
+<text class="t" x="82" y="241">Wire your agent CLIs into cmux once</text>
+<text class="c" x="82" y="265">cmux hooks setup</text>
+<rect class="cardT" x="472" y="248" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="248" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="272" r="10"/>
+<text class="num" x="494" y="276" text-anchor="middle">3</text>
+<text class="t" x="514" y="277">Writes hook entries into each agent&#x27;s</text>
+<text class="t" x="514" y="299">config so its hooks call cmux notify</text>
+<text class="comp" x="514" y="327">component: cmux CLI</text>
+<rect class="card" x="40" y="311" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="311" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="335" r="10"/>
+<text class="num" x="62" y="339" text-anchor="middle">4</text>
+<text class="t" x="82" y="340">Open a workspace per task, split</text>
+<text class="t" x="82" y="362">panes, launch agents as usual</text>
+<text class="c" x="82" y="386">⌘ N · ⌘ D</text>
+<rect class="cardT" x="472" y="371" width="368" height="97" rx="8"/>
+<rect class="accT" x="472" y="371" width="4" height="97" rx="2"/>
+<circle class="accT" cx="494" cy="395" r="10"/>
+<text class="num" x="494" y="399" text-anchor="middle">5</text>
+<text class="t" x="514" y="400">Sidebar tab shows branch, PR, cwd,</text>
+<text class="t" x="514" y="422">ports and the latest agent message</text>
+<text class="comp" x="514" y="450">component: sidebar</text>
+<rect class="cardT" x="472" y="494" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="494" width="4" height="72" rx="2"/>
+<circle class="accT" cx="494" cy="518" r="10"/>
+<text class="num" x="494" y="522" text-anchor="middle">6</text>
+<text class="t" x="514" y="523">When an agent waits for you, rings its</text>
+<text class="t" x="514" y="545">pane and badges its tab</text>
+<rect class="card" x="40" y="530" width="368" height="95" rx="8"/>
+<rect class="accY" x="40" y="530" width="4" height="95" rx="2"/>
+<circle class="accY" cx="62" cy="554" r="10"/>
+<text class="num" x="62" y="558" text-anchor="middle">7</text>
+<text class="t" x="82" y="559">Jump straight to the agent that needs</text>
+<text class="t" x="82" y="581">you</text>
+<text class="c" x="82" y="605">⌘ ⇧ U</text>
+<rect class="val" x="28" y="657" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="681">VALUE</text>
+<text class="valT" x="48" y="705">No more cycling through tabs to find which agent is stuck on &quot;Claude is waiting for your</text>
+<text class="valT" x="48" y="727">input&quot; — the one that needs you is lit</text>
+</svg>

@@ -89,7 +89,7 @@ tmux 什么都能干，但长得像 2007 年的东西，逼你先背一套前缀
 
 ## 何时使用
 
-你在一个团队里干活（或者要跟未来的自己配合），“先学会 `C-b %`“是真实的 onboarding 成本，而你想要复用器的持久化能力却不想做考古。你敲 `zellij`，屏幕底部的提示条实时告诉你每个键此刻是干什么的。相对 [tmux](tmux.zh.md)，你选 Zellij 是因为可发现性、鼠标友好、声明式 session 布局（KDL 文件写明“这个标签是编辑器、那个是 server”）和开箱的额外件——浮动 pane、堆叠 pane、多人共享 session、WASM 插件——价值超过了 tmux 二十年冻结的行为和“什么脚本都调 `tmux` 子命令“的生态。相对 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)，你选它是因为 pane 里装的是人不是被监管的编程 agent：Zellij 刻意不建模 pane 里*跑的是什么*，所以没有 blocked/working 概念；换来的是带哈希登录 token 和只读 token 的一等公民浏览器接入——herdr 根本不跑 web 服务。
+你在一个团队里干活（或者要跟未来的自己配合），“先学会 `C-b %`“是真实的 onboarding 成本，而你想要复用器的持久化能力却不想做考古。你敲 `zellij`，屏幕底部的提示条实时告诉你每个键此刻是干什么的。相对 [tmux](tmux.zh.md)，你选 Zellij 是因为可发现性、鼠标友好、声明式 session 布局（KDL 文件写明“这个标签是编辑器、那个是 server”）和开箱的额外件——浮动 pane、堆叠 pane、多人共享 session、WASM 插件——价值超过了 tmux 二十年冻结的行为和“什么脚本都调 `tmux` 子命令“的生态。相对 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，你选它是因为 pane 里装的是人不是被监管的编程 agent：Zellij 刻意不建模 pane 里*跑的是什么*，所以没有 blocked/working 概念；换来的是带哈希登录 token 和只读 token 的一等公民浏览器接入——herdr 根本不跑 web 服务。
 
 ## 怎么用起来
 
@@ -116,7 +116,7 @@ tmux 什么都能干，但长得像 2007 年的东西，逼你先背一套前缀
 
 ## 何时不用
 
-- **你的负载是监管编程 agent。** 没有 pane 会被打 working/blocked/idle 标记——Zellij 不知道也不关心里面跑什么。要“哪个 agent 此刻在等我”，用 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)，或 [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 这类驾驶舱。
+- **你的负载是监管编程 agent。** 没有 pane 会被打 working/blocked/idle 标记——Zellij 不知道也不关心里面跑什么。要“哪个 agent 此刻在等我”，用 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，或 [CloudCLI](../agent-tooling/supervision-surfaces/claudecodeui.zh.md) 这类驾驶舱。
 - **你的服务器跑的是 tmux，你的肌肉记忆也是。** 全机群脚本、tpm 生态、`C-b` 如今已是社会基础设施；[tmux](tmux.zh.md) 的二十年稳定就是功能本身，Zellij 的另一套按键模型是纯成本。
 - **你要尽可能小的攻击面。** Zellij 是一个 Rust 二进制，但功能面大得多（web server、插件运行时、底下的一整套 WASM 机制）。如果机器的规矩是“这里永远不许 bind web 端口”，得编译掉（`zellij-no-web` 变体就是为此存在）——而 [tmux](tmux.zh.md) 是压根没有东西可关。
 - **你要 bug 有人秒回。** 查检时（2026-09-27，GitHub API）1,938 个 open issues，挂在一个 6 岁、个人主导治理的项目上，意味着分诊延迟；tmux 的筛选文化、herdr 作者的响应节奏是另一种取舍。“延迟”这个读法是 [推断]。
@@ -127,7 +127,7 @@ tmux 什么都能干，但长得像 2007 年的东西，逼你先背一套前缀
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [tmux](tmux.zh.md) | ✅ | 团队应该*看见*按键在干什么（模式 + 提示条、鼠标、布局、插件、web client），且你能接受 6 年项目的动荡，选 Zellij；要求是“自 2007 年起没人重学过”的底座和已存在的脚本，选 tmux。 | Zellij：电池全含，一个 Rust 二进制，自带浏览器接入。tmux：极简 C，无处不在，对 agent 失明、对新人指引也失明——UI 那层由你自己充当。 |
-| [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md) | ✅ | pane 里是编程 agent、其状态（blocked？done？）应当驱动通知与脚本时选 herdr；pane 里是人、且需要 token 控制的浏览器/手机接入时选 Zellij（herdr 没有 web server）。 | herdr：6 个月、pre-1.0、感知 agent。Zellij：6 年、MIT、人本位、刻意对 pane 内容失明。 |
+| [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md) | ✅ | pane 里是编程 agent、其状态（blocked？done？）应当驱动通知与脚本时选 herdr；pane 里是人、且需要 token 控制的浏览器/手机接入时选 Zellij（herdr 没有 web server）。 | herdr：6 个月、pre-1.0、感知 agent。Zellij：6 年、MIT、人本位、刻意对 pane 内容失明。 |
 | GNU Screen | 未收录 | 今天做选择就选 Zellij（或 tmux）；Screen 的角色是两者都装不进的老系统。 | 真实项目，有意不收录——已被取代；同样论证见 tmux 页的对比行。 |
 | [Warp](warp.zh.md) | ✅ | 如果全部愿望就是“现代终端 UX”而并不需要复用与持久化，Warp 把命令块和 AI 装进一个应用；Zellij 是开源、可组合的一层，跑在你已有的任何终端里——而且不会因为模拟器转闭源而翻车。 | Warp：专有产品（仓库只有 issue 区），打磨好但不可脚本化的基建。Zellij：端到端开源，接入自建自管。 |
 

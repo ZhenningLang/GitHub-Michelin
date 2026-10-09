@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "zerobrew does",
+    "zh": "zerobrew 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the zb binary with the standalone installer (or the Homebrew tap)",
+      "zh": "用独立安装脚本（或 Homebrew tap）装上 zb",
+      "code": "curl -fsSL https://zerobrew.rs/install | bash",
+      "component": {"en": "installer script", "zh": "安装脚本"}
+    },
+    {
+      "lane": "them",
+      "en": "Creates its root under /opt/zerobrew with one sudo and puts its prefix on your PATH",
+      "zh": "sudo 一次建好 /opt/zerobrew，前缀加进 PATH",
+      "component": {"en": "zb init", "zh": "zb init"}
+    },
+    {
+      "lane": "you",
+      "en": "Install packages by name or from your existing Brewfile",
+      "zh": "按名字装包，或直接用现有的 Brewfile",
+      "code": "zb install jq · zb bundle"
+    },
+    {
+      "lane": "them",
+      "en": "Resolves formulae from a local index of Homebrew's API and downloads Homebrew's own bottles",
+      "zh": "按 Homebrew API 本地索引解析，下载官方 bottle"
+    },
+    {
+      "lane": "them",
+      "en": "Relocates each bottle in-process once and keeps the finished keg in a content-addressed store",
+      "zh": "在进程内把每个 bottle 重定位一次，成品存进内容寻址仓库",
+      "component": {"en": "store", "zh": "仓库"}
+    },
+    {
+      "lane": "them",
+      "en": "Clones the finished keg into the Cellar and links it into the prefix",
+      "zh": "把成品克隆进 Cellar，并链接到前缀"
+    }
+  ],
+  "value": {
+    "en": "The same Homebrew packages, without waiting on Ruby and per-file relocation — and a reinstall is a clone, not a rebuild",
+    "zh": "装的还是 Homebrew 的包，却不用再等 Ruby 和逐文件重定位——重装只是一次克隆，不是重新处理"
+  },
+  "sources": [
+    "README.md Install (curl -fsSL https://zerobrew.rs/install | bash; brew install zerobrewhq/zerobrew/zerobrew)",
+    "README.md Quick start (zb install jq; zb bundle)",
+    "install.sh (ZEROBREW_ROOT=/opt/zerobrew on macOS; zb_init after installing the binary)",
+    "zb_cli/src/init.rs (sudo mkdir -p / sudo chown -R on the root and prefix; shell PATH setup)",
+    "CHANGELOG.md 0.4.0 (local index of Homebrew's bulk API file; in-process relocation; relocate once when entering the store, then clone into the Cellar)",
+    "zb_io/src/cellar/materialize.rs (clonefile, then hardlink, then copy)",
+    "README.md 'A note on how we are achieving these speeds' (same bottles from Homebrew's build farm; content-addressed store)"
+  ]
+}

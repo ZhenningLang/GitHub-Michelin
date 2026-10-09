@@ -102,8 +102,8 @@ Open-Sora 是一个扩散 Transformer：它从“潜空间”里的纯噪声出�
 
 - **你在做商业产品，需要许可证干净的整套技术栈。** 代码和 Hugging Face 卡片写的是 Apache-2.0，但默认文生视频流程会加载 `flux1-dev.safetensors`，Black Forest Labs 对它用的是 FLUX.1 [dev] 非商用许可证；技术报告写明视频模型本身是从 Flux 初始化的；默认自编码器是 HunyuanVideo VAE，其腾讯混元社区许可证（原文就印在 Open-Sora 自己的 `LICENSE` 里）排除了欧盟、英国和韩国，并禁止用输出去改进其他模型。改用 Wan2.2，它在 Hugging Face 卡片上的权重许可证是 Apache-2.0——或者在发布任何 Open-Sora 生成的内容前先做法务审查。
 - **你想要一个有人维护、能长期依赖的模型。** 最后一次代码提交是 2025-03-26；之后只有一次 README 修改（2026-04-09），13 个开放 PR 无人审阅（有贡献者等了五个月没人理，自己撤回了修复），机器人会把 14 天无动静的 issue 自动关掉。选 Wan2.2（默认分支 2026-09-21 仍有推送）或 Lightricks 的 LTX-2，出了 bug 还有人修。
-- **你只有一张 24 GB 的消费级显卡。** README 自己在 H100／H800 上的测试显示：单卡生成 256×256 片段、即使开了 `--offload True`，峰值显存也要 52.5 GB；单卡 768×768 要 1656 秒、60.3 GB。桌面显卡请换更小或量化过的模型——LTX-Video、Wan2.2 的 5B 版本，或者用 [stable-diffusion.cpp](../../on-device-ml/stable-diffusion-cpp.zh.md) 跑量化的 Wan 权重。
-- **你想要节点图或图形界面。** [ComfyUI](../../on-device-ml/comfyui.zh.md) 的 README 列出的视频工作流支持 Wan 2.1／2.2、LTX-Video、HunyuanVideo 1.5、CogVideoX 和 Mochi——没有 Open-Sora，所以你得自己写 `torchrun` 脚本。
+- **你只有一张 24 GB 的消费级显卡。** README 自己在 H100／H800 上的测试显示：单卡生成 256×256 片段、即使开了 `--offload True`，峰值显存也要 52.5 GB；单卡 768×768 要 1656 秒、60.3 GB。桌面显卡请换更小或量化过的模型——LTX-Video、Wan2.2 的 5B 版本，或者用 [stable-diffusion.cpp](../../on-device-ml/local-image-generation/stable-diffusion-cpp.zh.md) 跑量化的 Wan 权重。
+- **你想要节点图或图形界面。** [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) 的 README 列出的视频工作流支持 Wan 2.1／2.2、LTX-Video、HunyuanVideo 1.5、CogVideoX 和 Mochi——没有 Open-Sora，所以你得自己写 `torchrun` 脚本。
 - **你需要长镜头或高分辨率。** 生成长度上限是 `num_frames` 小于 129（约 5 秒），分辨率只有 256px 和 768px 两档。更长的镜头只能拼接，或者换一个为长输出设计的模型。
 - **你要的是成片——脚本、配音、剪辑——而不是一段素材。** Open-Sora 每条提示词输出一段无声 MP4。要由 agent 驱动端到端出片，用 [video-production](../../video-production/INDEX.zh.md) 里的流水线，比如 [OpenMontage](../../video-production/open-montage.zh.md)，它把这类生成器当作其中一步来调用。
 - **你把“20 万美元”读成了“复现很便宜”。** 报告按每 H200 GPU 小时 2 美元计价，折算约 10 万 H200 GPU 小时量级 [推断]，训练文档的批大小也是按 140 GB 的 H200、`--nproc_per_node 8` 调的。如果你只想在几张卡上改造一个模型，去微调一个更小的开源模型，而不是重跑这份配方。
@@ -116,7 +116,7 @@ Open-Sora 是一个扩散 Transformer：它从“潜空间”里的纯噪声出�
 | [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | 未收录 | 想要腾讯更大、仍在更新的模型，并能接受其社区许可证时选 HunyuanVideo；只有当开放的训练流水线比成片质量更重要时才选 Open-Sora。 | Open-Sora 2.0 发布时的人类偏好评测声称与 HunyuanVideo 11B 打平，但 Open-Sora 本身就依赖 HunyuanVideo 的 VAE——选 Open-Sora 并不能绕开腾讯许可证的地域限制。本批次（标签页收录）未新增该页。 |
 | [LTX-Video](https://github.com/Lightricks/LTX-Video) | 未收录 | 延迟和消费级硬件说了算时，选 LTX-Video（或其后继 LTX-2）；需要在数据中心 GPU 上按公开配方重训时选 Open-Sora。 | 截至 2026-09-29，LTX-Video 近 30 天 Hugging Face 下载约 77.5 万次，Open-Sora-v2 约 1100 次——用户基数大得多；但它的权重是自定义的 other 许可证，必须自己读。本批次（标签页收录）未新增该页。 |
 | [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan) | 未收录 | 想找另一个同样以“公开 Sora 配方”为目标、MIT 许可的学术复现项目时，对比 Open-Sora-Plan；看重基于 ColossalAI 的效率工程和成本报告时，选潞晨的 Open-Sora。 | 两者目标和年龄相近；Open-Sora-Plan 默认分支在 2026-03-08 还有推送，比 Open-Sora 最后一次代码改动晚一年，但两者都不是快速迭代的上游。本批次（标签页收录）未新增该页。 |
-| [ComfyUI](../../on-device-ml/comfyui.zh.md) | ✅ | 如果你要的是用现成模型交互式出视频而不是训练模型，用 ComfyUI 加 Wan／LTX／Hunyuan 节点，而不是 Open-Sora 的 torchrun 脚本。 | ComfyUI 是运行时和界面，不是模型：它给你可视化工作流和大量模型，但没有训练配方，而且它的支持列表里没有 Open-Sora。 |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 如果你要的是用现成模型交互式出视频而不是训练模型，用 ComfyUI 加 Wan／LTX／Hunyuan 节点，而不是 Open-Sora 的 torchrun 脚本。 | ComfyUI 是运行时和界面，不是模型：它给你可视化工作流和大量模型，但没有训练配方，而且它的支持列表里没有 Open-Sora。 |
 
 ## 技术栈
 
