@@ -1442,6 +1442,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Easel** | Use it when you run accounts on the Chinese platforms (Xiaohongshu/Douyin/Zhihu/Bilibili/…) and want one self-hosted agent workbench covering discover → create → publish → attribute with per-account profiles — accepting a one-month-old, v0.x project and platform risk-control exposure. | Apache-2.0 | B (5/6) | [EN](categories/social-media-management/easel.md) · [中](categories/social-media-management/easel.zh.md) |
+| **xiaohongshu-mcp** | Use it when your existing agent should search, read, post, comment and like on Xiaohongshu through a self-hosted MCP/REST server with its own fingerprint browser — accepting real account-ban risk, a single maintainer and an opaque prebuilt browser from the author's CDN. | Apache-2.0 | B (6/6) | [EN](categories/social-media-management/xiaohongshu-mcp.md) · [中](categories/social-media-management/xiaohongshu-mcp.zh.md) |
 
 ### healthcare-ai
 

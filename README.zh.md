@@ -1424,6 +1424,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **Easel** | 在中文平台（小红书／抖音／知乎／B 站等）运营账号，想要一个自托管智能体工作台覆盖发现→创作→发布→归因、且带账号画像时用它——代价是项目只有一个月大（v0.x），小红书自动化有作者自述的风控暴露。 | Apache-2.0 | B（5/6） | [中](categories/social-media-management/easel.zh.md) · [EN](categories/social-media-management/easel.md) |
+| **xiaohongshu-mcp** | 想让你现有的 Agent 通过一个自部署、自带指纹浏览器的 MCP／REST 服务在小红书上搜索、阅读、发帖、评论、点赞时用它——代价是真实的封号风险、单人维护，以及从作者 CDN 下发的不透明预编译浏览器。 | Apache-2.0 | B（6/6） | [中](categories/social-media-management/xiaohongshu-mcp.zh.md) · [EN](categories/social-media-management/xiaohongshu-mcp.md) |
 
 ### healthcare-ai
 
