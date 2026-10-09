@@ -727,6 +727,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **ONLYOFFICE Docs** | 当你的网盘/CRM/LMS 需要「点一下 .docx 就进入带实时协同的完整编辑器」、一个 Docker 容器搞定且要真实 OOXML 保真度时用它——但它是 AGPL，社区版建议并发 ≤20，GitHub 仓库只是打包壳。 | AGPL-3.0 | B（6/6） | [中](categories/office-editors/onlyoffice-documentserver.zh.md) · [EN](categories/office-editors/onlyoffice-documentserver.md) |
 | **Collabora Online** | 当你运行（或对接）Nextcloud 这类支持 WOPI 的文件平台、想在浏览器里用上 LibreOffice 渲染引擎时用它——但活跃开发在 Gerrit 而非这个 GitHub 仓库，这里也没有可嵌入的 UI SDK。 | MPL-2.0 | A（5/6） | [中](categories/office-editors/collabora-online.zh.md) · [EN](categories/office-editors/collabora-online.md) |
 | **GenOffice** | 当*你自己*（而不是你产品的用户）想让 AI 在桌面上直接改真正的 `.docx`/`.xlsx`/`.pptx`、改动以可审阅的修订落下、模型自带 key，还想要 `genoffice` CLI/MCP 让编码 agent 也能这样做时用它——但它是一家初创公司两个月大的 `v0.x` 套件，使用统计默认开启，也不支持 `.doc`/ODF。 | Apache-2.0 | C（5/6） | [中](categories/office-editors/genoffice.zh.md) · [EN](categories/office-editors/genoffice.md) |
+| **DeckCraft** | 当你想要一个原生构建、开源的 PowerPoint 式编辑器（macOS/Windows/Linux/FreeBSD/网页），而且每个按钮同时是 agent 能调用、还能看渲染结果的 CLI/MCP 命令时用它——但它是诞生两天、主要由 AI agent 写成的 alpha 前版本，`.pptx` 兼容性只在自己生成的稿子上测过。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/office-editors/deckcraft.zh.md) · [EN](categories/office-editors/deckcraft.md) |
 ### diagramming
 
 | 项目 | 何时用 | 许可 | 健康度 | 页面 |

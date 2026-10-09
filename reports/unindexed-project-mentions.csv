@@ -660,6 +660,7 @@ LibreOffice,categories/office-editors/collabora-online.md,,no
 LibreOffice (`LibreOffice/core`),categories/office-editors/genoffice.md,,no
 LibreOffice (headless),categories/markdown-tools/pandoc.md,,no
 "LibreOffice headless (`LibreOffice/core`, `soffice --headless --convert-to pdf`)",categories/office-automation/dsh-libreoffice-kit.md,,no
+LibreOffice Impress (`LibreOffice/core`),categories/office-editors/deckcraft.md,,no
 libreoffice-convert (`elwerene/libreoffice-convert`),categories/office-automation/dsh-libreoffice-kit.md,,no
 LibrePhotos,categories/document-management/immich.md,,no
 LibreTube (`libre-tube/LibreTube`),categories/streaming-clients/pipepipe.md,,no
@@ -848,7 +849,7 @@ Okular,categories/pdf-tools/pdf-transform-signing/pdfcraft.md,,no
 Ollama,categories/on-device-ml/ai-edge-gallery.md,,no
 One API,categories/api-gateway/cliproxyapi.md,,no
 One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill.md,,no
-ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/genoffice.md,,no
+ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/deckcraft.md,,no
 ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 OPA (Open Policy Agent),categories/auth/casbin.md,,no
 Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
