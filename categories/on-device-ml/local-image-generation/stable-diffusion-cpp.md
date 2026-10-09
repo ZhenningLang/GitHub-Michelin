@@ -2,7 +2,7 @@
 name: stable-diffusion.cpp
 slug: stable-diffusion-cpp
 repo: https://github.com/leejet/stable-diffusion.cpp
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion, stable-diffusion, flux, image-generation, video-generation, ggml, gguf, quantization, cpp, local-inference]
 language: C++
 license: MIT
@@ -77,19 +77,19 @@ health:
 
 You want to generate images on a laptop, a Mac, an AMD card or a machine with no GPU at all, and every Stable Diffusion tool starts by asking you to install a Python environment with a PyTorch build that matches your CUDA driver. stable-diffusion.cpp is one native binary (plus a C library) that loads the same checkpoints — SD, SDXL, Flux, Qwen-Image, Wan video and more — and runs them on CPU, CUDA, Vulkan, Metal or ROCm, with llama.cpp-style quantization to fit small memory.
 
-![stable-diffusion.cpp — health radar](../../assets/health/stable-diffusion-cpp.svg)
+![stable-diffusion.cpp — health radar](../../../assets/health/stable-diffusion-cpp.svg)
 
 ## When to use
 
 You are building a desktop app, a game-asset pipeline or a self-hosted service that needs image generation, and the target machines are not yours: some are Windows boxes with a 6 GB AMD card, some are M-series Macs, one is a CPU-only server. Shipping ComfyUI or the AUTOMATIC1111 WebUI there means shipping a Python runtime and a multi-gigabyte PyTorch wheel per GPU vendor, and the first bug report is `torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB` on a card that should have been big enough.
 
-Reach for stable-diffusion.cpp when the deciding factor is **deployment footprint and hardware reach**, not workflow richness. It is the diffusion counterpart of [llama.cpp](../llm-inference/local-runtimes/llama-cpp.md): plain C/C++ over ggml, MIT-licensed, prebuilt binaries for CPU/CUDA/Vulkan/ROCm/macOS, GGUF quantization (Flux-dev at q4_0 is documented at ~6.4 GB instead of ~12 GB at q8_0), and a C API you can link into your own process or call through Python/Go/C#/Rust bindings. Choose it over [ComfyUI](comfyui.md) and [Stable Diffusion WebUI](stable-diffusion-webui.md) when you need an embeddable engine rather than a GUI with an extension ecosystem, and over Diffusers when you cannot or will not carry a Python/PyTorch stack.
+Reach for stable-diffusion.cpp when the deciding factor is **deployment footprint and hardware reach**, not workflow richness. It is the diffusion counterpart of [llama.cpp](../../llm-inference/local-runtimes/llama-cpp.md): plain C/C++ over ggml, MIT-licensed, prebuilt binaries for CPU/CUDA/Vulkan/ROCm/macOS, GGUF quantization (Flux-dev at q4_0 is documented at ~6.4 GB instead of ~12 GB at q8_0), and a C API you can link into your own process or call through Python/Go/C#/Rust bindings. Choose it over [ComfyUI](comfyui.md) and [Stable Diffusion WebUI](stable-diffusion-webui.md) when you need an embeddable engine rather than a GUI with an extension ecosystem, and over Diffusers when you cannot or will not carry a Python/PyTorch stack.
 
 ## How it works
 
 stable-diffusion.cpp re-implements each supported model family — the text encoder that turns your prompt into numbers, the diffusion network that repeatedly denoises a latent image, and the VAE that decodes the latent into pixels — directly in C++ on top of ggml, the same tensor library under llama.cpp. You hand it weight files you downloaded (`.safetensors`, `.ckpt` or `.gguf`); it detects the model family, can quantize the weights while loading (`--type q4_0` and friends — storing each number in fewer bits so it fits in less memory), and runs the whole pipeline on whichever backend the binary was built for. When the model does not fit in video memory it keeps weights in system RAM (or even re-reads them from disk) and moves each piece to the GPU only while it computes — slower, but it runs. What you own: picking and downloading the right weight files (big models need a separate VAE and text encoder), choosing flags, and choosing between the one-shot `sd-cli` and the long-running `sd-server`, which loads one model at startup and serves a web UI plus OpenAI-style (`/v1/images/generations`), WebUI-style (`/sdapi/v1/txt2img`) and native (`/sdcpp/v1/...`) HTTP APIs.
 
-![stable-diffusion-cpp — backbone user story](../../assets/flow/stable-diffusion-cpp.svg)
+![stable-diffusion-cpp — backbone user story](../../../assets/flow/stable-diffusion-cpp.svg)
 
 <!-- flow-steps:begin (generated from flows/stable-diffusion-cpp.json by tools/flow_card.py — do not edit) -->
 <details>

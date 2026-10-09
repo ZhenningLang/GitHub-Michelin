@@ -4,7 +4,7 @@ https://github.com/666ghj/MiroFish,mirofish,social-simulation,categories/social-
 https://github.com/9001/copyparty,copyparty,document-management,categories/document-management/copyparty.md
 https://github.com/AI4Finance-Foundation/FinRL,finrl,investment-finance,categories/investment-finance/finrl.md
 https://github.com/AUGMXNT/deccp,deccp,model-editing,categories/model-editing/deccp.md
-https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,on-device-ml,categories/on-device-ml/stable-diffusion-webui.md
+https://github.com/AUTOMATIC1111/stable-diffusion-webui,stable-diffusion-webui,local-image-generation,categories/on-device-ml/local-image-generation/stable-diffusion-webui.md
 https://github.com/Agents365-ai/drawio-skill,drawio-skill,visual-artifacts,categories/agent-skills/design/visual-artifacts/drawio-skill.md
 https://github.com/Aider-AI/aider,aider,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/aider.md
 https://github.com/AmElmo/pointa,pointa,ui-annotation,categories/agent-tooling/ui-annotation/pointa.md
@@ -27,7 +27,7 @@ https://github.com/ClickHouse/ClickHouse,clickhouse,database-engines,categories/
 https://github.com/CodebuffAI/freebuff,freebuff,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/freebuff.md
 https://github.com/ColeMurray/background-agents,background-agents,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md
 https://github.com/CollaboraOnline/online,collabora-online,office-editors,categories/office-editors/collabora-online.md
-https://github.com/Comfy-Org/ComfyUI,comfyui,on-device-ml,categories/on-device-ml/comfyui.md
+https://github.com/Comfy-Org/ComfyUI,comfyui,local-image-generation,categories/on-device-ml/local-image-generation/comfyui.md
 https://github.com/Cookee24/PairTranslate,pair-translate,reading-tools,categories/reading-tools/pair-translate.md
 https://github.com/CopilotKit/OpenBot,openbot,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/openbot.md
 https://github.com/CopilotKit/OpenDots,opendots,personal-assistants,categories/agent-frameworks/agent-runtimes/personal-assistants/opendots.md
@@ -540,7 +540,7 @@ https://github.com/langgenius/dify,dify,workflow-builders,categories/agent-frame
 https://github.com/larashero3-dotcom/lieflat-charts,lieflat-charts,visual-content,categories/agent-skills/visual-content/lieflat-charts.md
 https://github.com/larashero3-dotcom/lieflat-less-ai-tone,lieflat-less-ai-tone,de-ai-writing,categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md
 https://github.com/latex3/latex2e,latex,typesetting,categories/typesetting/latex.md
-https://github.com/leejet/stable-diffusion.cpp,stable-diffusion-cpp,on-device-ml,categories/on-device-ml/stable-diffusion-cpp.md
+https://github.com/leejet/stable-diffusion.cpp,stable-diffusion-cpp,local-image-generation,categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md
 https://github.com/lepture/captcha,lepture-captcha,captcha,categories/captcha/lepture-captcha.md
 https://github.com/letta-ai/claude-subconscious,claude-subconscious,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-subconscious.md
 https://github.com/letta-ai/letta,letta,app-memory,categories/agent-memory/app-memory/letta.md

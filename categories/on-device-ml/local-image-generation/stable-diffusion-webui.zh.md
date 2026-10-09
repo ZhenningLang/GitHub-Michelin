@@ -2,7 +2,7 @@
 name: Stable Diffusion WebUI
 slug: stable-diffusion-webui
 repo: https://github.com/AUTOMATIC1111/stable-diffusion-webui
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion-model, image-generation, gradio, pytorch, gpu, local-inference]
 language: Python
 license: AGPL-3.0
@@ -69,7 +69,7 @@ health:
 
 基于 Gradio 构建的 Stable Diffusion 图像生成 Web 界面，支持 txt2img、img2img、局部重绘、扩图、超分及丰富的插件生态，面向本地 GPU 推理。
 
-![Stable Diffusion WebUI — 健康度雷达](../../assets/health/stable-diffusion-webui.zh.svg)
+![Stable Diffusion WebUI — 健康度雷达](../../../assets/health/stable-diffusion-webui.zh.svg)
 
 ## 何时使用
 
@@ -79,7 +79,7 @@ health:
 
 WebUI 是一个 Python 网页应用，把 Stable Diffusion——一个从随机噪声出发、按提示词一步步“去噪”成图的模型——包在一个用 Gradio（把 Python 函数变成网页表单的库）做的分页浏览器界面后面。**安装的活由启动脚本替你干**：首次运行时它建虚拟环境、装 PyTorch 和其他依赖，如果 `models/Stable-diffusion/` 里还没有模型，就下载一个默认的 SD 1.5 checkpoint（几 GB 的权重文件），然后在 `http://127.0.0.1:7860` 起好界面。**你负责提供显卡、挑模型、写提示词和参数**；它在你的显卡上跑采样，并把生成参数写进每张图里，之后可以原样读回。txt2img 之外的功能——img2img、局部重绘、放大、ControlNet 之类的插件——都在同一组标签页里，或者是从界面里装的社区扩展；这是它的长处，也是升级时最容易出事的地方。
 
-![stable-diffusion-webui — 主干用户故事](../../assets/flow/stable-diffusion-webui.zh.svg)
+![stable-diffusion-webui — 主干用户故事](../../../assets/flow/stable-diffusion-webui.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/stable-diffusion-webui.json by tools/flow_card.py — do not edit) -->
 <details>

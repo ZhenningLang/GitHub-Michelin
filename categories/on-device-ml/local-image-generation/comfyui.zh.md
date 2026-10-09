@@ -2,7 +2,7 @@
 name: ComfyUI
 slug: comfyui
 repo: https://github.com/Comfy-Org/ComfyUI
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion, stable-diffusion, image-generation, video-generation, nodes, pytorch, gui, local-inference, workflow]
 language: Python
 license: GPL-3.0
@@ -73,7 +73,7 @@ health:
 
 提示词框只给你一张图，图是怎么生成的你一点也管不了：想换个放大器、加一张姿势参考、只重跑最后一步，都得从头再来。ComfyUI 把整条生成管线摊在画布上，变成一个个方块和连线——模型加载、文本编码、采样、解码——在你自己的显卡上跑，并把整张图存进每一张输出里，随时能重新载入、原样重跑。
 
-![ComfyUI — 健康度雷达](../../assets/health/comfyui.zh.svg)
+![ComfyUI — 健康度雷达](../../../assets/health/comfyui.zh.svg)
 
 ## 何时使用
 
@@ -85,7 +85,7 @@ health:
 
 ComfyUI 是一个 Python 服务端加一个浏览器前端。每个节点是一个 Python 类，接收有类型的输入（模型、条件、latent 图像——扩散模型内部处理的那种压缩表示），产出输出；你在画布上把它们连成一张图。排队执行时，服务端算出哪些节点需要跑，只执行自上次以来输入变了的节点，并替你管显存：在显存和系统内存之间流式搬运模型权重——大模型能在普通显卡上跑，靠的就是这个。输出文件里嵌着完整的图和随机种子；同一张图导出成 API 格式后，也可以从你自己的代码 POST 给本地服务（`http://127.0.0.1:8188/prompt`）。**ComfyUI 替你做的**：加载模型、调度、内存管理、缓存，以及对一长串图像、视频、音频、3D 模型的原生支持。**你要做的**：装好匹配显卡的 PyTorch、把模型权重下载进 `models/` 各子目录、搭建或挑选工作流，并审查你装的每一个自定义节点——它们是第三方 Python 包，以你的账户权限完整访问你的机器。
 
-![comfyui — 主干用户故事](../../assets/flow/comfyui.zh.svg)
+![comfyui — 主干用户故事](../../../assets/flow/comfyui.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/comfyui.json by tools/flow_card.py — do not edit) -->
 <details>

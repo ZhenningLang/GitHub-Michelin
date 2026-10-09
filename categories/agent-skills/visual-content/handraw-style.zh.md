@@ -103,7 +103,7 @@ health:
 
 - **要的是确定、可编辑的成品，不是 AI 成图。** handraw-style 交付给生图模型的只是提示词，像素每次 roll 都不同、无法回头改模板。若交付物是能做版本管理、能微调的卡片封面，用 [guizang-social-card](guizang-social-card.zh.md) 或 [html-anything](../../ai-design-generation/html-anything.zh.md)，它们走 HTML→PNG 渲染。
 - **要一套锁死的视觉标识贯穿全部内容。** 279 种画风的「广」正是品牌一致性的反面。要单一固定插画人格反复出场，选 [ian-xiaohei-illustrations](ian-illustrations.zh.md)；本页项目存在的意义恰恰是换着来。
-- **画风控制必须放进自己的管线。** 这里没有训练、没有 LoRA、没有节点图，skill 把提示词交给任何你粘贴的生图 AI，渲染完全外包。要批量化、自托管、管线可控的出图，用 [ComfyUI](../../on-device-ml/comfyui.zh.md)。
+- **画风控制必须放进自己的管线。** 这里没有训练、没有 LoRA、没有节点图，skill 把提示词交给任何你粘贴的生图 AI，渲染完全外包。要批量化、自托管、管线可控的出图，用 [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md)。
 - **要编号可复现。** 风格编号是可变内容：提交记录显示 `#257`、`#259`、`#260` 都在几周内被整体*替换*成别的风貌。你存下的「260 号提示词」下次更新后可能指向另一张脸——跨时间依赖编号前先锁版本或 fork。
 - **要商业上干净的画风。** 大量风格直接挂在具名画家身上（David Shrigley、Quentin Blake，在世与否仓库用 `attribution.json` 标了），参考图又是 `scrape_tweet.py` 从 X 帖子抓回的。MIT 只覆盖代码与提示词，覆盖不了打包的美术作品；模仿在世画家的商业风险由使用者自担，许可帮不了你。[推断]
 - **宿主不是 Codex 系。** 首轮会话初始化调用 Codex 专属 MCP 工具（`mcp__codex_app__open_in_codex`）打开画廊，其他 agent 会退化成手动点 `file://` 链接；另外克隆体积约 250 MB 的图片资产，整体语境也默认中文社媒。
@@ -115,7 +115,7 @@ health:
 | [ian-xiaohei-illustrations](ian-illustrations.zh.md) | ✅ | 要让一个固定手绘 IP 在整篇中文文章里稳定出场，选 ian；要每篇换画风、要编号化的图型与配色，选 handraw-style。 | 编号化的广度与可复现 vs. 单一 IP 的绝对一致性。 |
 | [Guizang Social Card Skill](guizang-social-card.zh.md) | ✅ | 交付物就是渲染好的卡片本身（HTML→PNG、不经过生图模型）时选 guizang。 | 确定可编辑的产物 vs. 每次 roll 都变、无法回改的 AI 成图。 |
 | [prompts.chat](../prompt-engineering/prompts-chat.zh.md) | ✅ | 要跨工具、社区投票、可自托管的通用提示词平台选 prompts.chat；handraw-style 是单一垂类的策展库，且带 agent skill 接线。 | 策展深度 + 逐模型激活数据 vs. 平台广度、无技能集成。 |
-| [ComfyUI](../../on-device-ml/comfyui.zh.md) | ✅ | 画风控制必须自托管、进管线（LoRA、ControlNet、批量）时选 ComfyUI；handraw-style 只出提示词，渲染全部外包。 | 对生成的完全控制 vs. 零运行时、随贴随用的提示词包。 |
+| [ComfyUI](../../on-device-ml/local-image-generation/comfyui.zh.md) | ✅ | 画风控制必须自托管、进管线（LoRA、ControlNet、批量）时选 ComfyUI；handraw-style 只出提示词，渲染全部外包。 | 对生成的完全控制 vs. 零运行时、随贴随用的提示词包。 |
 | Midjourney style reference（`sref`） | 非仓库 | 只在 Midjourney 里生活、要平台原生风格码时选它；handraw-style 跨宿主、双语，其隔离指令正是为了避开 `sref` 常见的内容串味。 | 平台原生便利 vs. 多模型覆盖；`sref` 是闭源服务的功能，不是可 fork 的仓库。 |
 
 ## 健康度与可持续性

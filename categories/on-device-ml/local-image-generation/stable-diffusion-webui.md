@@ -2,7 +2,7 @@
 name: Stable Diffusion WebUI
 slug: stable-diffusion-webui
 repo: https://github.com/AUTOMATIC1111/stable-diffusion-webui
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion-model, image-generation, gradio, pytorch, gpu, local-inference]
 language: Python
 license: AGPL-3.0
@@ -69,7 +69,7 @@ health:
 
 A web-based interface for Stable Diffusion image generation, built with Gradio, offering txt2img, img2img, inpainting, outpainting, upscaling, and a rich plugin ecosystem for local GPU inference.
 
-![Stable Diffusion WebUI — health radar](../../assets/health/stable-diffusion-webui.svg)
+![Stable Diffusion WebUI — health radar](../../../assets/health/stable-diffusion-webui.svg)
 
 ## When to use
 
@@ -79,7 +79,7 @@ You're a creator, researcher, or developer who wants to generate images from tex
 
 The WebUI is a Python web app that wraps Stable Diffusion — a model that turns random noise into an image step by step, steered by your prompt — behind a tabbed browser interface built with Gradio (a library that turns Python functions into web forms). **The launch script does the setup for you**: on first run it creates a virtual environment, installs PyTorch and the other dependencies, downloads a default SD 1.5 checkpoint (the multi-gigabyte weights file) unless you already put one in `models/Stable-diffusion/`, and serves the UI at `http://127.0.0.1:7860`. **You supply the GPU, choose checkpoints and write the prompt and settings**; it runs the sampler on your card and saves the generation parameters inside each image so you can reload them later. Everything beyond txt2img — img2img, inpainting, upscaling, ControlNet-style add-ons — lives in the same tabs or in community extensions you install from the UI, which is both its strength and its upgrade risk.
 
-![stable-diffusion-webui — backbone user story](../../assets/flow/stable-diffusion-webui.svg)
+![stable-diffusion-webui — backbone user story](../../../assets/flow/stable-diffusion-webui.svg)
 
 <!-- flow-steps:begin (generated from flows/stable-diffusion-webui.json by tools/flow_card.py — do not edit) -->
 <details>

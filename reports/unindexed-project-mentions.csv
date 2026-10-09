@@ -373,9 +373,9 @@ Depth Anything V1,categories/ml-research/vision-and-multimodal/depth-anything-v2
 Descript,categories/media-processing/video-audio/editing-and-cutting/auto-editor.md,,no
 Devicon,categories/web-ui/icon-libraries/thesvg.md,,no
 Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
-Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
-Diffusers (huggingface/diffusers),categories/on-device-ml/stable-diffusion-cpp.md,,no
-DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
+Diffusers (Hugging Face),categories/on-device-ml/local-image-generation/comfyui.md,,no
+Diffusers (huggingface/diffusers),categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md,,no
+DiffusionBee,categories/on-device-ml/local-image-generation/stable-diffusion-webui.md,,no
 Direct-to-S3 presigned (multipart) uploads,categories/object-storage/tusd.md,,no
 Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
 Distroless (GoogleContainerTools),categories/dev-utilities/ops-infra/slim.md,,no
@@ -447,7 +447,7 @@ Flyte,categories/workflow-orchestration/prefect.md,,no
 Follow (RSSNext),categories/reading-tools/horizon.md,,no
 Folo,categories/reading-tools/freshrss.md,,no
 FontForge,categories/dev-utilities/data-tools/fonttools.md,,no
-Fooocus,categories/on-device-ml/comfyui.md,,no
+Fooocus,categories/on-device-ml/local-image-generation/comfyui.md,,no
 Forme (`danmolitor/forme`),categories/pdf-tools/pdf-generation/pdfcn.md,,no
 Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
@@ -599,7 +599,7 @@ Inspect AI,categories/llm-eval/harvey-labs.md,,no
 Instaloader,categories/media-download/gallery-dl.md,,no
 IntelliJ IDEA,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 Internal skill marketplace,categories/agent-skills/personal-collections/knowledge-content/canghe-skills.md,,no
-InvokeAI,categories/on-device-ml/comfyui.md,,no
+InvokeAI,categories/on-device-ml/local-image-generation/comfyui.md,,no
 ipinfo CLI,categories/osint/ghosttrack.md,,no
 IT-Tools,categories/dev-utilities/data-tools/devtoys.md,,no
 itchat-uos (community fork),categories/im-automation/wechat/itchat.md,,no
@@ -688,7 +688,7 @@ Lobe Chat (`lobehub/lobe-chat`),categories/llm-chat-ui/librechat.md,,no
 lobe-icons,categories/web-ui/icon-libraries/thesvg.md,,no
 "Local RAG stacks (LlamaIndex / LangChain retrievers, etc.)",categories/agent-skills/context-engineering/notebooklm-skill.md,,no
 LocalAI,categories/llm-inference/local-runtimes/shimmy.md,,no
-LocalAI (mudler/LocalAI),categories/on-device-ml/stable-diffusion-cpp.md,,no
+LocalAI (mudler/LocalAI),categories/on-device-ml/local-image-generation/stable-diffusion-cpp.md,,no
 localForage (`mozilla/localForage`),categories/web-ui/state-management/tanstack-persist.md,,no
 lodash.debounce/throttle (`lodash/lodash`),categories/web-ui/scheduling/tanstack-pacer.md,,no
 Logitech G HUB (official),categories/peripherals/openlogi.md,,no
@@ -1155,7 +1155,7 @@ SpiceDB,categories/auth/openfga.md,,no
 Spring Batch,categories/task-queue/xxl-job.md,,no
 SQLite,categories/databases/database-engines/turso.md,,no
 SSDB,categories/databases/database-engines/pikiwidb.md,,no
-Stable Diffusion WebUI Forge,categories/on-device-ml/comfyui.md,,no
+Stable Diffusion WebUI Forge,categories/on-device-ml/local-image-generation/comfyui.md,,no
 Stagehand,categories/web-automation/agent-browser-tools/browser-use.md,,no
 StarRocks,categories/databases/database-engines/clickhouse.md,,no
 Starry Night (`wooorm/starry-night`),categories/markdown-tools/tanstack-highlight.md,,no

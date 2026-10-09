@@ -2,7 +2,7 @@
 name: ComfyUI
 slug: comfyui
 repo: https://github.com/Comfy-Org/ComfyUI
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion, stable-diffusion, image-generation, video-generation, nodes, pytorch, gui, local-inference, workflow]
 language: Python
 license: GPL-3.0
@@ -73,7 +73,7 @@ health:
 
 A prompt box gives you one image and no control over how it was made: you cannot swap the upscaler, add a pose reference, or re-run just the last step without starting over. ComfyUI lays the whole generation pipeline out as boxes and wires on a canvas — model loader, text encoder, sampler, decoder — runs it on your own GPU, and saves the graph inside every output so you can reload and rerun it exactly.
 
-![ComfyUI — health radar](../../assets/health/comfyui.svg)
+![ComfyUI — health radar](../../../assets/health/comfyui.svg)
 
 ## When to use
 
@@ -85,7 +85,7 @@ You reach for ComfyUI because the pipeline itself becomes the artifact: every st
 
 ComfyUI is a Python server with a browser front end. Each node is a Python class that takes typed inputs (a model, conditioning, a latent image — the compressed representation diffusion models work on) and returns outputs; you connect them into a graph on the canvas. When you queue the graph, the server works out which nodes need to run, executes only those whose inputs changed since the last run, and manages GPU memory for you by streaming model weights between VRAM and system RAM — which is how large models can run on modest cards. Outputs are saved with the full graph and seeds embedded, and the same graph exported in API format can be POSTed to the local server (`http://127.0.0.1:8188/prompt`) from your own code. **What ComfyUI does for you:** model loading, scheduling, memory management, caching, and native support for a long list of image, video, audio and 3D models. **What you do:** install the right PyTorch build for your GPU, download model weights into the `models/` folders, build or pick workflows, and vet any custom nodes you add — those are third-party Python packages that run with full access to your machine.
 
-![comfyui — backbone user story](../../assets/flow/comfyui.svg)
+![comfyui — backbone user story](../../../assets/flow/comfyui.svg)
 
 <!-- flow-steps:begin (generated from flows/comfyui.json by tools/flow_card.py — do not edit) -->
 <details>

@@ -2,7 +2,7 @@
 name: stable-diffusion.cpp
 slug: stable-diffusion-cpp
 repo: https://github.com/leejet/stable-diffusion.cpp
-category: on-device-ml
+category: local-image-generation
 tags: [diffusion, stable-diffusion, flux, image-generation, video-generation, ggml, gguf, quantization, cpp, local-inference]
 language: C++
 license: MIT
@@ -77,19 +77,19 @@ health:
 
 想在笔记本、Mac、AMD 显卡甚至没有显卡的机器上出图，结果每个 Stable Diffusion 工具第一步都要你装一套 Python 环境，还得挑一个和 CUDA 驱动对得上的 PyTorch 版本。stable-diffusion.cpp 是一个原生二进制（外加一个 C 库），直接读同样的模型文件——SD、SDXL、Flux、Qwen-Image、Wan 视频等——在 CPU、CUDA、Vulkan、Metal 或 ROCm 上跑，并用 llama.cpp 那套量化把模型压进小内存。
 
-![stable-diffusion.cpp — 健康度雷达](../../assets/health/stable-diffusion-cpp.zh.svg)
+![stable-diffusion.cpp — 健康度雷达](../../../assets/health/stable-diffusion-cpp.zh.svg)
 
 ## 何时使用
 
 你在做一个桌面应用、游戏素材流水线或自托管服务，需要内置出图能力，但目标机器不归你管：有的是插着 6 GB AMD 显卡的 Windows，有的是 M 系列 Mac，还有一台纯 CPU 服务器。把 ComfyUI 或 AUTOMATIC1111 WebUI 装到这些机器上，意味着要为每家显卡厂商各带一份 Python 运行时和几个 GB 的 PyTorch 包，而第一条用户反馈往往就是 `torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB`，出现在一张本该够用的卡上。
 
-当决定因素是**部署体积和硬件覆盖面**、而不是工作流有多丰富时，选 stable-diffusion.cpp。它是扩散模型领域的 [llama.cpp](../llm-inference/local-runtimes/llama-cpp.zh.md)：基于 ggml 的纯 C/C++，MIT 许可，提供 CPU/CUDA/Vulkan/ROCm/macOS 预编译包，支持 GGUF 量化（文档记录 Flux-dev 在 q4_0 下约 6.4 GB，q8_0 约 12 GB），还有可链接进自己进程的 C API，以及 Python、Go、C#、Rust 的绑定。需要一个可嵌入的引擎、而不是带插件生态的图形界面时，选它而不选 [ComfyUI](comfyui.zh.md) 或 [Stable Diffusion WebUI](stable-diffusion-webui.zh.md)；不能或不愿背一套 Python/PyTorch 时，选它而不选 Diffusers。
+当决定因素是**部署体积和硬件覆盖面**、而不是工作流有多丰富时，选 stable-diffusion.cpp。它是扩散模型领域的 [llama.cpp](../../llm-inference/local-runtimes/llama-cpp.zh.md)：基于 ggml 的纯 C/C++，MIT 许可，提供 CPU/CUDA/Vulkan/ROCm/macOS 预编译包，支持 GGUF 量化（文档记录 Flux-dev 在 q4_0 下约 6.4 GB，q8_0 约 12 GB），还有可链接进自己进程的 C API，以及 Python、Go、C#、Rust 的绑定。需要一个可嵌入的引擎、而不是带插件生态的图形界面时，选它而不选 [ComfyUI](comfyui.zh.md) 或 [Stable Diffusion WebUI](stable-diffusion-webui.zh.md)；不能或不愿背一套 Python/PyTorch 时，选它而不选 Diffusers。
 
 ## 怎么用起来
 
 stable-diffusion.cpp 把每个支持的模型家族在 C++ 里用 ggml（llama.cpp 底下的同一个张量库）重写了一遍：把提示词变成数字的文本编码器、反复给潜空间图像去噪的扩散网络、把潜空间解码成像素的 VAE。你把下载好的权重文件（`.safetensors`、`.ckpt` 或 `.gguf`）交给它；它识别模型家族，可以在加载时顺手量化（`--type q4_0` 之类——用更少的位数存每个数，好塞进更小的内存），然后在二进制编译时选定的后端上跑完整条流水线。模型塞不进显存时，它把权重留在内存里（甚至按需从磁盘重读），只在某一段要计算时才搬上 GPU——慢一些，但能跑。你要负责的是：挑对并下载权重文件（大模型还要另配 VAE 和文本编码器）、选参数，以及在一次性的 `sd-cli` 和常驻的 `sd-server` 之间做选择；后者启动时加载一个模型，提供网页界面和三套 HTTP 接口：OpenAI 风格（`/v1/images/generations`）、WebUI 风格（`/sdapi/v1/txt2img`）和原生接口（`/sdcpp/v1/...`）。
 
-![stable-diffusion-cpp — 主干用户故事](../../assets/flow/stable-diffusion-cpp.zh.svg)
+![stable-diffusion-cpp — 主干用户故事](../../../assets/flow/stable-diffusion-cpp.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/stable-diffusion-cpp.json by tools/flow_card.py — do not edit) -->
 <details>
