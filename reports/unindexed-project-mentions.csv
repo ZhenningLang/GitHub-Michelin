@@ -454,6 +454,7 @@ Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 fp-ts,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
 Framework upload handling (Django/Rails/Express),categories/object-storage/tusd.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
+Friction,categories/media-processing/video-editing/effectcraft.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
 FullCalendar (`fullcalendar/fullcalendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
 FunctionGemma (Google),categories/function-calling/functionary.md,,no
@@ -790,6 +791,7 @@ Native `<template>` / hand-written DOM,categories/web-ui/frameworks/view-framewo
 native `ssh -L` / `autossh`,categories/networking/sshtunnel.md,,no
 "Native agent memory (`CLAUDE.md`, Cursor rules, Codex `AGENTS.md`)",categories/agent-tooling/work-state/planning-with-files.md,,no
 Native Query DSL,categories/databases/database-clients/elasticsearch-sql.md,,no
+Natron,categories/media-processing/video-editing/effectcraft.md,,no
 NATS / Redis Streams (direct),categories/task-queue/kombu.md,,no
 NeMo (NVIDIA),categories/speech/speechbrain.md,,no
 NeMo RL (NVIDIA-NeMo/RL),categories/llm-training/miles.md,,no

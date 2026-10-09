@@ -18,7 +18,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | Raphire/Win11Debloat | add | done | categories/disk-cleanup/win11debloat.md |  | raphire/win11debloat |
 | storytold/deckcraft | add | running |  |  | storytold/deckcraft |
 | storytold/designcraft | add | done | categories/design-editors/designcraft.md |  | storytold/designcraft |
-| storytold/effectcraft | add | running |  |  | storytold/effectcraft |
+| storytold/effectcraft | add | done | categories/media-processing/video-editing/effectcraft.md |  | storytold/effectcraft |
 | storytold/lightcraft | add | done | categories/photo-editing/lightcraft.md |  | storytold/lightcraft |
 | storytold/pdfcraft | add | done | categories/pdf-tools/pdf-transform-signing/pdfcraft.md |  | storytold/pdfcraft |
 | storytold/photocraft | add | done | categories/media-processing/image-processing/photocraft.md |  | storytold/photocraft |

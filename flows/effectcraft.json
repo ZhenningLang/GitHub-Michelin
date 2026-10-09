@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "EffectCraft does",
+    "zh": "EffectCraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install a signed release, or build and open the app (with the demo project)",
+      "zh": "装一个签名发行版，或自己编译后打开应用（可带演示工程）",
+      "code": "cargo run --release -p effectcraft"
+    },
+    {
+      "lane": "them",
+      "en": "Opens After Effects-style panels: Project, Composition, Timeline, Effect Controls",
+      "zh": "打开仿 After Effects 的面板：项目、合成、时间线、效果控件",
+      "component": {
+        "en": "egui desktop / web app",
+        "zh": "egui 桌面／网页应用"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Build a comp: add layers, set keyframes, stack effects, type expressions",
+      "zh": "搭一个合成：加图层、打关键帧、叠效果、写表达式"
+    },
+    {
+      "lane": "them",
+      "en": "Interpolates keyframes and composites each frame, most effects on the GPU",
+      "zh": "插值关键帧，逐帧合成，多数效果在 GPU 上算",
+      "component": {
+        "en": "render + gpu crates",
+        "zh": "render 与 gpu crate"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Queue the comp in the Render Queue, or export it as Lottie",
+      "zh": "把合成放进渲染队列，或导出为 Lottie",
+      "code": "File ▸ Export ▸ Lottie JSON…"
+    },
+    {
+      "lane": "them",
+      "en": "Encodes MP4/ProRes/WebM with its own Rust encoders, or writes Lottie and flags what got lost",
+      "zh": "用自带的 Rust 编码器出视频，或写出 Lottie 并标出丢失项",
+      "component": {
+        "en": "export + FilmCraft codecs",
+        "zh": "export 与 FilmCraft 编解码"
+      }
+    }
+  ],
+  "value": {
+    "en": "After Effects-style motion graphics without a subscription or FFmpeg, saved as diffable JSON",
+    "zh": "不用订阅、不装 FFmpeg 就能做 After Effects 式动态图形，工程还是能 diff 的 JSON"
+  },
+  "sources": [
+    "https://github.com/storytold/effectcraft README 'Get started' (cargo run --release -p effectcraft, `-- --demo`), 'Animate' (panels, keyframes, expressions), 'Export' (Render Queue, File ▸ Export ▸ Lottie JSON…, lists anything Lottie cannot express, no FFmpeg)",
+    "ROADMAP.md M9/M12 (306 effects, 280 on the GPU) and CLAUDE.md (egui UI, everything is a command)",
+    "Cargo.toml workspace members (crates/render, crates/gpu, crates/export) and filmcraft-* git dependencies"
+  ]
+}
