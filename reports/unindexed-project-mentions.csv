@@ -467,6 +467,7 @@ GeoServer,categories/geospatial/qgis.md,,no
 GEPA,categories/ml-research/research-automation/rrsi.md,,no
 Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 Ghostty,categories/agent-frameworks/coding-agents/orchestration-and-review/cmux.md,,no
+GIMP,categories/media-processing/image-processing/photocraft.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 git submodule / manual `cp`,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
 git-imerge,categories/agent-tooling/concurrent-editing/weave.md,,no
@@ -509,6 +510,7 @@ Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 Grafana Alloy,categories/observability/opentelemetry-collector.md,,no
 Grafana Tempo,categories/observability/jaeger.md,,no
 GraphicsMagick,categories/media-processing/image-processing/imagemagick.md,,no
+Graphite,categories/media-processing/image-processing/photocraft.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-intelligence/code-review-graph.md,,no
 Graphviz,categories/diagramming/INDEX.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no
@@ -630,6 +632,7 @@ Kitty,categories/terminal-ui/alacritty.md,,no
 KKKKhazix/human-writing,categories/agent-skills/ai-writing/de-ai-writing/lieflat-less-ai-tone.md,,no
 Kode-CLI,categories/agent-dev-methodology/study-and-experiments/learn-claude-code.md,,no
 KrakenD,categories/api-gateway/apisix.md,,no
+Krita,categories/media-processing/image-processing/photocraft.md,,no
 Krita + AI Diffusion plugin,categories/ai-design-generation/sdpaint.md,,no
 KServe,categories/llm-inference/serving-engines/bentoml.md,,no
 KServe (kserve/kserve),categories/llm-inference/serving-engines/llm-d.md,,no

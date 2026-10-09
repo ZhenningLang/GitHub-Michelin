@@ -21,7 +21,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | storytold/effectcraft | add | running |  |  | storytold/effectcraft |
 | storytold/lightcraft | add | running |  |  | storytold/lightcraft |
 | storytold/pdfcraft | add | running |  |  | storytold/pdfcraft |
-| storytold/photocraft | add | running |  |  | storytold/photocraft |
+| storytold/photocraft | add | done | categories/media-processing/image-processing/photocraft.md |  | storytold/photocraft |
 | storytold/vectorcraft | add | running |  |  | storytold/vectorcraft |
 | trymirai/uzu | add | done | categories/on-device-ml/uzu.md |  | trymirai/uzu |
 | xpzouying/xiaohongshu-mcp | add | done | categories/social-media-management/xiaohongshu-mcp.md |  | xpzouying/xiaohongshu-mcp |
