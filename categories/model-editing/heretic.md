@@ -156,7 +156,7 @@ The subtraction is not one fixed strength. A weight "kernel" decides how hard ea
 
 ## Health & viability
 
-- **Maintenance — active (as of 2026-09-23).** Created 2025-09-21; last push 2026-09-22; 200 commits; releases from v1.0.1 (2025-11) through v1.4.0 (2026-06-14); `master` carries 2.0.0.dev0. Dense cadence, but a real backlog (86 open issues, 37 open PRs).
+- **Maintenance — active (as of 2026-09-23).** Created 2025-09-21; last default-branch commit 2026-09-05 (the 2026-09-22 `pushed_at` was not a commit to `master`); 200 commits; releases from v1.0.1 (2025-11) through v1.4.0 (2026-06-14); `master` carries 2.0.0.dev0. Dense cadence, but a real backlog (86 open issues, 37 open PRs).
 - **Governance / bus factor — single maintainer.** The repo is owned by a GitHub User (`p-e-w`, Philipp Emanuel Weidmann); the contributors API shows `p-e-w` at 110 commits, `dependabot[bot]` at 22, and a long tail (`anrp` 8, `Vinay-Umrethe` 7, …). The roadmap is one person's, so the bus factor is low [推断].
 - **Backing & Lindy — young but strongly adopted.** About one year old, with 32.2k stars and 3.6k forks; the README claims 5000+ community-published Heretic models on Hugging Face and cites independent Reddit benchmarks favoring it over competing abliterations [未验证]. Age cuts against a Lindy prior, but adoption has cleared the "is anyone using this" bar [推断].
 - **Adoption & ecosystem.** PyPI package `heretic-llm`; a docs site (heretic-project.org); Discord and Matrix channels; a Codeberg mirror; and thousands of downstream model packs.

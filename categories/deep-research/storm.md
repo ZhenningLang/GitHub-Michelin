@@ -3,12 +3,12 @@ name: STORM
 slug: storm
 repo: https://github.com/stanford-oval/storm
 category: deep-research
-tags: [deep-research, storm, app]
+tags: [deep-research, storm, library]
 language: Python
 license: MIT
 maturity: knowledge-storm 1.1.1 on PyPI (2025-09-29), GitHub release v1.1.0 (2025-01), no commits since 2025-09-30, ~31.6k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: app
+type: library
 upstream:
   pushed_at: 2025-09-30T18:07:21Z
   default_branch: main
@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:17:54Z
+  computed_at: 2026-10-09T08:13:22Z
   overall: C
-  overall_score: 2.4
+  overall_score: 2.2
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 373
+        last_commit_age_days: 374
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -37,12 +37,12 @@ health:
       raw:
         median_ttfr_hours: 3.5
         qualifying_issues: 20
-        band: relaxed_solo
+        band: default
         window_offset_days: 2
         source: pr
         inferred: false
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: pypi.org
         canonical_package: knowledge-storm
@@ -51,17 +51,13 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
-        docker_pulls: 9339551
-        docker_image: library/storm
-        docker_tier: C
-        signal_basis: docker
-        tier_source: docker
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 928
-        last_commit_age_days: 373
-        cohort: app
+        repo_age_days: 929
+        last_commit_age_days: 374
+        cohort: library
     governance:
       grade: "?"
       raw: {}
@@ -153,7 +149,7 @@ STORM splits writing into two stages, the way a journalist interviews before dra
 - **Maintenance (2026-10): coasting toward abandoned.** Last commit 2025-09-30 (loosening requirement pins); last PyPI release 1.1.1 on 2025-09-29; last GitHub release v1.1.0 (2025-01). 111 open issues; new PRs through 2026-10 sit unmerged. The scorer grades maintenance and longevity D — the radar reflects a year of silence, not a lack of interest from users.
 - **Governance / bus factor.** Owned by Stanford's OVAL lab; two PhD-student authors (shaoyijia, Yucheng-Jiang) wrote most of the code. The roadmap follows the research agenda, and the code is best treated as the artifact of two papers (NAACL 2024, EMNLP 2024). The scorer could not attribute governance (`?`).
 - **Age × Lindy.** Created 2024-03 (~2.5 years) and quiet for the last year, so the Lindy prior does not help. The method will persist in the literature even if the repository does not.
-- **Adoption.** ~31.6k stars and ~3k forks, but only 1,238 PyPI downloads in the last month — attention far exceeds package use. The scorer's adoption grade (C) rests on Docker pulls of `library/storm`, which is the official **Apache Storm** image, not this project; discount that grade.
+- **Adoption.** ~31.6k stars and ~3k forks, but only 1,238 PyPI downloads in the last month — attention far exceeds package use. The scorer now reads the `knowledge-storm` PyPI package and grades adoption D (2026-10-09), which matches that gap.
 - **Risk flags.** MIT license, no relicense history. Practical risks are the exact `dspy_ai` pin, an alpha classifier, and a quick-start built on a retired search API.
 
 ## Caveats (unverified)
@@ -162,5 +158,4 @@ STORM splits writing into two stages, the way a journalist interviews before dra
 - [推断] "Dozens of LLM and search calls per article" is inferred from the pipeline shape (perspectives × conversation turns, plus outline/article/polish); per-run cost was not measured.
 - [推断] Installing `sentence-transformers` normally pulls PyTorch, which is what makes the install heavy; not measured for this package.
 - [未验证] Whether `knowledge-storm` 1.1.1 still works unpatched with current litellm releases and current model names was not tested; open issues and PRs (e.g. Claude model support, 2026-10) suggest friction.
-- [推断] The adoption-grade misattribution (`library/storm` = Apache Storm, confirmed from the Docker Hub description) means the scorer's adoption axis for this page is unreliable until the scorer is fixed.
 - [未验证] Co-STORM's claim that its mind map "reduce[s] the mental load" in long sessions is the authors' paper claim, not independently checked.

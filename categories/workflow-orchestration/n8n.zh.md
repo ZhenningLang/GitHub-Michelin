@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:32:28Z
+  computed_at: 2026-10-09T09:05:03Z
   overall: A
   overall_score: 3.5
   scored_axes: 4
@@ -39,21 +39,21 @@ health:
       grade: C
       raw:
         registry: npmjs.org
-        canonical_package: "@n8n/utils"
-        dependent_repos_count: 0
-        downloads_last_month: 457343
-        graph_tier: E
+        canonical_package: n8n
+        dependent_repos_count: 124
+        downloads_last_month: 408701
+        graph_tier: C
         volume_tier: C
         cross_check_divergence: null
-        release_downloads: 6206
-        release_assets: 272
+        release_downloads: 6205
+        release_assets: 273
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2665
+        repo_age_days: 2666
         last_commit_age_days: 0
         cohort: app
     governance:
@@ -151,7 +151,7 @@ n8n 是一个 Node.js 应用：提供浏览器里的编辑器，把工作流和�
 
 - **维护活跃度**：Grade A——最近 13 周每周都有提交，2026-10-08 重算当天仍有提交；稳定版每周发布好几次，1.x 线也还在和 2.x 并行出补丁（2026-10-08 发布 1.123.84）。
 - **响应速度**：无法计算——本次评分器没有找到可用的近期 issue/PR 响应窗口（`no_window_signal`）。
-- **采用广度**：Grade C——评分器读到每月 457,343 次 npm 下载，但取自 `@n8n/utils` 子包而非 `n8n` 主包，而大多数安装走的是它不统计的 Docker 镜像；约 20.7 万 GitHub stars、约 6.1 万 fork（2026-10）说明实际用量远大于这个档位。
+- **采用广度**：Grade C——评分器现在读的是 npm 上的 `n8n` 主包（2026-10-09：上月下载 408,701 次，124 个依赖它的仓库），但大多数安装走的是它不统计的 Docker 镜像；约 20.7 万 GitHub stars、约 6.1 万 fork（2026-10）说明实际用量远大于这个档位。
 - **长青度**：Grade A——仓库已创建 2665 天（2019-06，约 7.3 年），至今每天都在提交：年头够长、也够活跃，Lindy 先验扎实。
 - **治理集中度**：Grade A——过去 12 个月 197 位活跃贡献者，前三占比 12.3%；但路线图归一家公司 n8n GmbH 所有，它同时在卖云服务和企业版。
 - **许可风险**：无法计算——Sustainable Use License 不是 SPDX 许可证（`license_unparsed`）。这正是最大的风险信号：源码可见，商业用户仅限内部使用，企业功能（`.ee` 文件）要付费许可。
@@ -161,6 +161,6 @@ n8n 是一个 Node.js 应用：提供浏览器里的编辑器，把工作流和�
 - [未验证] “1500 多个集成”“9,000 多个模板”是 2026-10 README 给出的数字，其中包括质量和维护水平参差不齐的社区节点与模板。
 - [未验证] n8n 3.0 的发布日期和最终范围（只支持 Docker 自托管、移除哪些节点）来自发布前的破坏性变更页面，正式发布前可能变化。
 - [推断] 3.0 发布后 1.x 线还会出多久补丁，所读来源没有说明。
-- [推断] 采用广度档位低估了真实用量：评分器的 npm 信号取自一个子包，也没有统计 Docker 拉取量。
+- [推断] 采用广度档位低估了真实用量：评分器只统计了 npm 包，没有统计 n8n 镜像的 Docker 拉取量。
 - [未验证] 本页对 Node-RED 的描述（GitHub API 显示 Apache-2.0；npm 安装；节点目录偏设备和物联网、由社区维护）本次没有重读其文档核实。
 - [推断] n8n GmbH 的云服务定价、社区版与企业版的功能划分，可能随公司追求营收而调整。

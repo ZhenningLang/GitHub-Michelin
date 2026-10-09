@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:32Z
+  computed_at: 2026-10-09T08:17:48Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 16.6
-        qualifying_issues: 35
+        median_ttfr_hours: 5.8
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: bun-types
-        dependent_repos_count: 3705
-        downloads_last_month: 66142679
-        graph_tier: B
+        canonical_package: bun
+        dependent_repos_count: 21486
+        downloads_last_month: 16383903
+        graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.08
-        homebrew_installs_90d: 18434
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 18512
         homebrew_tier: A
-        release_downloads: 126369044
+        release_downloads: 127091598
         release_assets: 2128
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,7 +61,7 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2003
+        repo_age_days: 2004
         last_commit_age_days: 0
         cohort: tool
     governance:
@@ -69,7 +69,7 @@ health:
       raw:
         active_maintainers_12mo: 61
         top1_share: 0.577
-        top3_share: 0.855
+        top3_share: 0.854
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,8 +154,8 @@ Bun 是单个可执行文件：一个基于 JavaScriptCore（Safari 里的 JS �
 ## 健康度与可持续性
 
 - **维护活跃度**：Grade A——过去一个季度每周都有提交；v1.4.0（2026-08-20）之后接连发布 v1.4.1 和 v1.4.2（2026-09-05）。
-- **响应速度**：Grade A——35 个 qualifying issues/PRs 的中位首次响应时间 16.6 小时，但仍有 9,389 个 issue 未关闭。
-- **采用广度**：Grade A——`bun-types` 在 npm 上月下载 66,142,679 次，release 资产下载 126,369,044 次，Homebrew 90 天安装 18,434 次；Claude Code 这类大型应用就跑在它上面。
+- **响应速度**：Grade A——14 个符合条件的 issue 中位首次响应时间 5.8 小时（2026-10-09），但仍有 9,389 个 issue 未关闭。
+- **采用广度**：Grade A——按评分器 2026-10-09 的读数，npm 上的 `bun` 包上月下载 16,383,903 次、有 21,486 个依赖它的仓库，release 资产下载 127,091,598 次，Homebrew 90 天安装 18,512 次；Claude Code 这类大型应用就跑在它上面。
 - **长青度**：Grade A——仓库已存在 2,003 天（2021-04-14 创建），2023 年进入 1.x，如今已换到第二种实现语言；Lindy 先验中等。
 - **治理集中度**：Grade B——过去 12 个月有 61 位活跃提交者，但前三名占 85.5%，创始人一人占 57.7%；路线图属于已并入 Anthropic 的 Oven，延续性取决于这家公司的优先级，而不是基金会。
 - **许可风险**：`?`（license_unparsed）——GitHub 显示 `NOASSERTION`，因为 `LICENSE.md` 是一份复合文件：Bun 本体是 MIT，静态链接的 JavaScriptCore/WebKit 是 LGPL-2，只有在你分发修改过的 Bun 时才多出“允许用户重新链接”的义务。

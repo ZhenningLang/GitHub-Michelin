@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:31:19Z
+  computed_at: 2026-10-09T09:06:44Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 142
+        last_commit_age_days: 143
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -39,18 +39,18 @@ health:
       grade: B
       raw:
         registry: npmjs.org
-        canonical_package: "@reactour/utils"
-        dependent_repos_count: 59
-        downloads_last_month: 849988
+        canonical_package: "@reactour/tour"
+        dependent_repos_count: 65
+        downloads_last_month: 849104
         graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.08
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 3492
-        last_commit_age_days: 142
+        repo_age_days: 3493
+        last_commit_age_days: 143
         cohort: library
     governance:
       grade: D
@@ -144,7 +144,7 @@ Reactour is three small components and one state holder. **It handles the visual
 - **Maintenance (2026-10): B.** Last npm release `@reactour/tour` 3.8.0 on 2025-05-07; the default branch was last touched 2026-05-19 after a burst of test, tooling and bug-fix commits. Alive but bursty, and unreleased work can sit for months. GitHub release tags stopped at 3.0.0 (2022), so watch npm, not the Releases page.
 - **Governance: D.** A single maintainer on a personal account: the author has 677 commits, the next contributor 11, and all activity in the last 12 months is theirs. The roadmap is one person's spare time.
 - **Longevity: B.** Created 2017-03 (3,492 days, about 9.5 years) and still committed to in 2026 — age and continued activity together give it a reasonable Lindy prior for a small UI library.
-- **Adoption: B.** 849,988 npm downloads in the last month for `@reactour/utils`, which every `@reactour/tour` install pulls in (the tour package itself is at about 849k), plus about 290k for the legacy `reactour` package; about 4.1k GitHub stars. Real use, but well behind react-joyride.
+- **Adoption: B.** 849,104 npm downloads in the last month and 65 dependent repositories for `@reactour/tour` (scorer, 2026-10-09), plus about 290k for the legacy `reactour` package; about 4.1k GitHub stars. Real use, but well behind react-joyride.
 - **Risk / license: A.** MIT, no relicensing history. The main risk is the bus factor, not the license.
 
 ## Caveats (unverified)

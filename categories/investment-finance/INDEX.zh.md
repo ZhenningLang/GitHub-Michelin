@@ -13,7 +13,7 @@
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | B（6/6） | [→](qlib.zh.md) |
 | **backtrader** | Python Backtesting library for trading strategies | D（4/6） | [→](backtrader.zh.md) |
 | **yfinance** | Download market data from Yahoo! Finance's API | A（6/6） | [→](yfinance.zh.md) |
-| **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股行情、财报、指数/基金/期货数据，CLI、MCP、REST、Python 四种入口，长历史落本地 DuckDB | B（6/6） | [→](financial-api.zh.md) |
+| **HiThink Financial-API** | 一把 API Key 取同花顺官方 A 股数据（CLI、MCP、REST、Python，长历史落本地 DuckDB）——但 GitHub 仓库已于 2026-10 消失，客户端代码只剩冻结的 Gitee 镜像，npm CLI 和托管服务仍可用 | "?"（1/6） | [→](financial-api.zh.md) |
 | **AKShare** | 免 Key 的 Python 库，把中国市场的公开财经页面封装成一次调用返回 pandas DataFrame | A（6/6） | [→](akshare.zh.md) |
 | **Tushare** | Python SDK 加托管 tushare.pro 服务，凭 token 与积分档取 A 股数据 | D（5/6） | [→](tushare.zh.md) |
 
@@ -28,7 +28,7 @@
 | [qlib](qlib.zh.md) | ✅ | B（6/6） | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. |
 | [backtrader](backtrader.zh.md) | ✅ | D（4/6） | Python Backtesting library for trading strategies |
 | [yfinance](yfinance.zh.md) | ✅ | A（6/6） | Download market data from Yahoo! Finance's API |
-| [financial-api](financial-api.zh.md) | ✅ | B（6/6） | 同花顺官方 A 股数据客户端——CLI、MCP、REST、Python 共用一把 API Key，另有本地 DuckDB 存市场历史 |
+| [financial-api](financial-api.zh.md) | ✅ | "?"（1/6） | 同花顺官方 A 股数据客户端，共用一把 API Key；GitHub 仓库 2026-10 起已消失（Gitee 镜像停在 2026-09-22），npm CLI 与托管服务仍在 |
 | [akshare](akshare.zh.md) | ✅ | A（6/6） | 免费、免 Key 的 A 股/期货/宏观数据抓取库；接口随上游改版失效 |
 | [tushare](tushare.zh.md) | ✅ | D（5/6） | token 加积分档的托管 A 股数据，分钟/新闻/港美股另购；GitHub 仓库 2020 年起冻结 |
 

@@ -98,7 +98,7 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 
 - **Primary language:** Python per GitHub metadata.
 - **Repository shape:** `mementum/backtrader`; this first-pass page has not exhaustively read every dependency manifest.
-- **Default branch snapshot:** last pushed `2024-08-19T17:47:36Z`; archived `false`.
+- **Default branch snapshot:** last commit 2023-04-19; archived `false`. (GitHub's `pushed_at`, `2024-08-19T17:47:36Z`, records a later push that did not land on the default branch.)
 
 ## Dependencies
 
@@ -113,7 +113,7 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 
 ## Health & viability
 
-- **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2024-08-19T17:47:36Z`.
+- **Maintenance snapshot (2026-07-16):** GitHub reports `archived=false` and `pushed_at=2024-08-19T17:47:36Z`, but the last commit on the default branch is 2023-04-19 — no code has landed there for over three years.
 - **Adoption snapshot:** ~22,458 GitHub stars as of 2026-07; this is a noisy signal and low-star projects are still included when the repository is real and relevant.
 - **License snapshot:** `NOASSERTION` from GitHub metadata; manual license-file review remains required when license matters.
 - **Lindy / governance:** not fully reviewed in this intake pass. Check age, owner type, contributor concentration, releases, and issue response before long-term adoption.

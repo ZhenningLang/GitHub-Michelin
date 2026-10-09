@@ -98,7 +98,7 @@ List of awesome resources for machine learning-based algorithmic trading
 
 - **主要语言：** GitHub 元数据返回为 Unknown。
 - **仓库形态：** `cbailes/awesome-deep-trading`；本首版页面尚未穷尽读取所有依赖清单。
-- **默认分支快照：** 最后 push `2023-08-08T19:55:49Z`，archived 为 `false`。
+- **默认分支快照：** 最后一次提交在 2021-01-01，archived 为 `false`。（GitHub 的 `pushed_at` 是 `2023-08-08T19:55:49Z`，记录的是之后一次没有落到默认分支上的推送。）
 
 ## 依赖
 
@@ -113,7 +113,7 @@ List of awesome resources for machine learning-based algorithmic trading
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2023-08-08T19:55:49Z`。
+- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2023-08-08T19:55:49Z`，但默认分支最后一次提交在 2021-01-01——这份清单五年多没有更新。
 - **采用快照：** 2026-07 约 2,011 个 GitHub stars；这是有噪声的信号，低 star 项目只要是真实且相关，也会被纳入。
 - **许可证快照：** GitHub 元数据返回 `NOASSERTION`；许可证关键时仍需人工核验许可证文件。
 - **Lindy / 治理：** 本次 intake 未完整复核。长期采用前，请继续检查项目年龄、owner 类型、贡献者集中度、release 和 issue 响应。

@@ -108,7 +108,7 @@ The retired V1 server was a REST API service (Python, PostgreSQL or SQLite) that
 
 ## When NOT to use
 
-- **Do not deploy this repository's code — it is retired (archived to the `archive` branch on 2026-08-16).** The maintainers state the V1 server, its old Python server packages and the `letta/letta` Docker images get no fixes or security updates. For Letta itself use Letta Code (not indexed); for a maintained self-hosted memory service use [Hindsight](hindsight.md) or [Supermemory](supermemory.md); for an embeddable library use [Mem0](mem0.md).
+- **Do not deploy this repository's code — it is retired (archived to the `archive` branch on 2026-08-16).** The maintainers state the V1 server, its old Python server packages and the `letta/letta` Docker images get no fixes or security updates. For Letta itself use [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.md); for a maintained self-hosted memory service use [Hindsight](hindsight.md) or [Supermemory](supermemory.md); for an embeddable library use [Mem0](mem0.md).
 - **Do not benchmark or compare against the old server.** Its `AGENTS.md` explicitly prohibits using the archive for benchmarks or comparisons with other memory systems, because results would describe retired code. Evaluate current Letta Code, or compare [Mem0](mem0.md) / [Hindsight](hindsight.md) directly.
 - **You want memory inside your own agent loop.** Letta wants to be the runtime. If you keep your own LangGraph, OpenAI Agents or plain-SDK loop, use [LangMem](langmem.md) (LangGraph) or [Mem0](mem0.md) / [Memori](memori.md) (any framework) instead, because they add memory without handing over control of the loop.
 - **You need a Python-first stack.** Current Letta is TypeScript/Node: the CLI is an npm package and the new Agent SDK is TypeScript (the older V1 Python client targets the V1 API). Use [Mem0](mem0.md) or [LangMem](langmem.md) instead when Python embedding is a hard requirement.
@@ -119,7 +119,7 @@ The retired V1 server was a REST API service (Python, PostgreSQL or SQLite) that
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| Letta Code (`letta-ai/letta-code`) | not indexed | If you want Letta at all, pick Letta Code — it is where the maintainers moved every live feature; treat this repo only as a historical pointer. | Agents own and rewrite their memory blocks with git-tracked history; you accept a TypeScript runtime that defaults to Letta Cloud. |
+| [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.md) | ✅ | If you want Letta at all, pick Letta Code — it is where the maintainers moved every live feature; treat this repo only as a historical pointer. | Agents own and rewrite their memory blocks with git-tracked history; you accept a TypeScript runtime that defaults to Letta Cloud. |
 | [Mem0](mem0.md) | ✅ | Pick Mem0 when you want to add memory to your own agent in Python or TypeScript and keep control of the loop; pick Letta Code when you want the runtime to own memory and identity. | Mem0 is a library plus optional hosted API with frequent releases; it does not give the agent self-editing memory blocks. |
 | [Hindsight](hindsight.md) | ✅ | Pick Hindsight when you need a maintained, self-hosted memory server that several apps call — the role many teams used the Letta V1 server for. | One more service to run, but no dependence on a retired codebase or a vendor cloud default. |
 | [LangMem](langmem.md) | ✅ | Pick LangMem when you are on LangGraph and want the model to save and search memories through tools in your own graph. | Stays inside LangGraph's store; it is coasting at 0.0.x and has no agent-identity or dreaming layer. |
@@ -144,7 +144,7 @@ The retired V1 server was a REST API service (Python, PostgreSQL or SQLite) that
 ## Health & viability
 
 - **This repository is retired; the radar overstates it.** Maintenance B (last commit 28 days before scoring) and longevity B (1093 days old) count commits to a landing page — spam guards, policy text — not server development. The code's maintainers declared it unsupported in August 2026; treat this repo as frozen. The radar's overall **B** should not be read as "safe to adopt".
-- **The project behind it is active.** Letta (the company) moved development to `letta-ai/letta-code`, which released v0.34.5 on 2026-10-08 and pushes daily. Judge Letta's viability by that repository, which this index has not yet scored.
+- **The project behind it is active.** Letta (the company) moved development to `letta-ai/letta-code`, which released v0.34.5 on 2026-10-08 and pushes daily. Judge Letta's viability by that repository — see the [Letta Code page](../../agent-frameworks/coding-agents/terminal-agents/letta-code.md) for its own radar.
 - **Governance A, responsiveness B — historical team signal.** 23 active maintainers in the trailing 12 months and a 59.2-hour median first response on qualifying issues reflect the team that built V1; they say the vendor has capacity, not that this code gets fixes.
 - **Adoption C.** 1,032,185 pulls of the now-retired `letta/letta` Docker image — an install base that now has to migrate.
 - **Risk flags:** Apache-2.0, no relicense; abrupt product-generation change (V1 server → Letta Code; AgentFile `.af` import/export removed from Letta Code); the current product defaults to a vendor cloud.
@@ -152,6 +152,5 @@ The retired V1 server was a REST API service (Python, PostgreSQL or SQLite) that
 ## Caveats (unverified)
 
 - [未验证] The migration path from a V1 server's data to Letta Code / the App Server was not exercised; whether existing agents and memories carry over cleanly is unconfirmed.
-- [推断] Letta Code's own health (release cadence, bus factor) is read from its repo metadata only; it has not been scored by this index.
 - [未验证] Whether the older V1 client SDKs (`letta-client`) will keep working against Letta Cloud long-term is not documented in the sources read.
 - [推断] The Letta Cloud default may change product terms or pricing over time; self-hosting via `letta server` is the hedge, but its feature parity with the cloud was not verified.

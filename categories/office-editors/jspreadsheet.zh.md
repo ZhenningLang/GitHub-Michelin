@@ -80,7 +80,7 @@ health:
 
 ## 何时使用
 
-你在做管理后台、ERP 界面或科研录入工具，网格是*众多输入界面之一*、不是产品的灵魂。需求恰好是它 README 的那句推销——原生类型列（`dropdown`、`calendar`、`checkbox`、带 mask 的 `numeric`、`color`、`image`）、Excel 式复制粘贴、小体积——而约束是硬的：**商用零授权费**（MIT，经仓库许可元数据核实），这时你该想到 Jspreadsheet。对比 [Fortune Sheets](fortune-sheets.zh.md)：你用表格式 Excel 语义（合并区、条件格式、公式栏）换一个仍在被推送的项目（2026-09-21 对 Fortune 的 2025-12-15）；对比 [Handsontable](handsontable.zh.md)：用 15 年企业级打磨换 $0。它自己的发布卫生是承诺前必须读的星号：*GitHub* 最新 release 停在 4.15.0（2024-12-18），npm 已是 5.0.4（2025-08-25），且 CE 仓库同时是厂商付费版 Jspreadsheet Pro 的引流入口——你能接受这些事实就用，采购不能接受就致命。
+你在做管理后台、ERP 界面或科研录入工具，网格是*众多输入界面之一*、不是产品的灵魂。需求恰好是它 README 的那句推销——原生类型列（`dropdown`、`calendar`、`checkbox`、带 mask 的 `numeric`、`color`、`image`）、Excel 式复制粘贴、小体积——而约束是硬的：**商用零授权费**（MIT，经仓库许可元数据核实），这时你该想到 Jspreadsheet。对比 [Fortune Sheets](fortune-sheets.zh.md)：你用表格式 Excel 语义（合并区、条件格式、公式栏）换一个仍有提交的项目（默认分支最后一次提交 2026-09-21 对 Fortune 的 2025-11-06）；对比 [Handsontable](handsontable.zh.md)：用 15 年企业级打磨换 $0。它自己的发布卫生是承诺前必须读的星号：*GitHub* 最新 release 停在 4.15.0（2024-12-18），npm 已是 5.0.4（2025-08-25），且 CE 仓库同时是厂商付费版 Jspreadsheet Pro 的引流入口——你能接受这些事实就用，采购不能接受就致命。
 
 ## 怎么用起来
 
@@ -118,7 +118,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | [Handsontable](handsontable.zh.md) | ✅ | 网格关乎营收、15 年厂商的测试/CI/无障碍投入值这张发票时选 Handsontable；MIT 零成本是硬约束、且「类型列+Excel 粘贴」已覆盖需求时选 Jspreadsheet。 | Handsontable 花钱买纵深与支持；Jspreadsheet 买自由与轻，但单人维护、且是 Pro 的漏斗。 |
-| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 要有人维护的轻量*表控件*、带类型列，选 Jspreadsheet；这个组件必须表现得像 Excel*那张表*（合并、条件格式、op 流）且接受其 2025-12 后静默，选 Fortune Sheets。 | Fortune：更多表语义、仓库停摆。Jspreadsheet：更少语义、仓库活着、同为 MIT。 |
+| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 要有人维护的轻量*表控件*、带类型列，选 Jspreadsheet；这个组件必须表现得像 Excel*那张表*（合并、条件格式、op 流）且接受其 2025-11 后静默，选 Fortune Sheets。 | Fortune：更多表语义、仓库停摆。Jspreadsheet：更少语义、仓库活着、同为 MIT。 |
 | [Univer](univer.zh.md) | ✅ | 电子表格本身就是产品（工作簿模型、Canvas 性能、公式引擎、无头 Node、agent API）选 Univer；CRUD 应用里一张表单网格、Univer 的架构纯属空转开销时选 Jspreadsheet。 | Univer：以装配成本换编辑器框架；Jspreadsheet：以天花板成本换即插网格。 |
 | AG Grid | `未收录` | 需求其实是分析级行数+排序过滤、单元格编辑很轻、根本不要电子表格操作，先评估 AG Grid；`未收录` 是有意跳过（通用网格，超出本批「编辑界面」范围）。 | AG Grid 买虚拟化规模与生态；Jspreadsheet 买电子表格形状的编辑交互。 |
 

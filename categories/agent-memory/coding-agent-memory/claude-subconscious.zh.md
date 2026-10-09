@@ -121,7 +121,7 @@ Claude Code 每个会话之间都会失忆，同一套偏好和决定你要一�
 |---|---|---|---|
 | [Mem0](../app-memory/mem0.zh.md) | ✅ | 可移植的应用内嵌记忆比 Claude Code 插件更重要时，选 Mem0。 | 框架无关、可嵌进你自己 agent 的记忆**库/API**（Python/TS，任意 LLM）；不是 Claude Code 插件、也不是后台“低语”agent。要可移植、偏生产的记忆选它。 |
 | [Memori](../app-memory/memori.zh.md) | ✅ | 需要 SQL 原生记忆后端而非 Claude Code hook 时，选 Memori。 | SQL 原生的开源 agent 记忆引擎；同样 LLM/框架无关、可自托管。形态不同：是记忆后端，不是绑定 Claude Code 的插件。 |
-| Letta Code | 未收录 | 想要同团队完整编码 agent 产品而不是这个 demo 时，选 Letta Code。 | 同团队的生产版本——Letta 平台上的完整编码 agent。README 明确推荐用它替代本 demo 做真实使用。 |
+| [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.zh.md) | ✅ | 想要同团队完整编码 agent 产品而不是这个 demo 时，选 Letta Code。 | 同团队的生产版本——Letta 平台上的完整编码 agent。README 明确推荐用它替代本 demo 做真实使用。 |
 | CLAUDE.md（内置） | 未收录 | 手动、确定的项目记忆已经足够时，选 CLAUDE.md。 | 手动、确定、零依赖的项目记忆。没有后台学习、没有跨项目大脑；靠你手工维护。Claude Subconscious 刻意不写这里。 |
 | [Cipher](https://github.com/campfirein/cipher) | 未收录 | 跨 IDE/CLI 的 MCP 记忆层比 Claude-only hook 更重要时，选 Cipher。 | 基于 MCP 的编码 agent 记忆层（经 MCP 跨 IDE/CLI 通用）；客户端支持比单工具插件更广。 |
 

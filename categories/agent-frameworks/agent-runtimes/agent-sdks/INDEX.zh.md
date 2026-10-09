@@ -8,7 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **AgentScope** | 要把多智能体 LLM 应用作为生产服务交付，需要沙箱工具、权限闸门、tracing 和人工介入时。 | B（6/6） | [→](agentscope.zh.md) |
-| **AutoGen** | 当你已有跑在 AutoGen AgentChat 或 Core 运行时上的 Python／.NET 多 agent 系统、重写的风险更大时留着用它——但它已进入维护模式，新项目请从 Microsoft Agent Framework 起步。 | B（6/6） | [→](autogen.zh.md) |
+| **AutoGen** | 当你已有跑在 AutoGen AgentChat 或 Core 运行时上的 Python／.NET 多 agent 系统、重写的风险更大时留着用它——但它已进入维护模式，新项目请从 Microsoft Agent Framework 起步。 | B（5/6） | [→](autogen.zh.md) |
 | **CrewAI** | 当一件知识型工作天然按角色拆分（研究员、分析师、写手），而你宁愿声明智能体和任务、不想亲手连图时用它——但交接由提示词决定，核心包一装就拉进一大串依赖。 | A（6/6） | [→](crewai.zh.md) |
 | **LangGraph** | 当智能体要跑几分钟甚至几天，中途得等人审批、或者要扛过重启接着跑时用它——但循环要一个节点一个节点地拼，官方自托管生产服务器还需要 LangSmith 许可证。 | A（6/6） | [→](langgraph.zh.md) |
 | **Microsoft Agent Framework** | 想要微软对 AutoGen + Semantic Kernel 的接班品：先给会自己循环的 agent，生产需要时再上带类型的图工作流和 .NET 对等支持。 | A（6/6） | [→](agent-framework.zh.md) |

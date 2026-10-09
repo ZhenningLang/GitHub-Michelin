@@ -110,7 +110,7 @@ LangMem is a set of building blocks, not a server: there is nothing to deploy. *
 - **Write failures must not be silent.** An open issue (2026-10-08) reports that `MemoryStoreManager.invoke()` reports success when store writes or deletes fail, and another that the local `ReflectionExecutor` drops the store injected by a LangGraph entrypoint. If losing a memory silently is unacceptable, use [Hindsight](hindsight.md) (a memory server with its own API surface) or verify writes yourself, because the background path is where these bugs live.
 - **You need relationships and "what was true when".** LangMem stores memories as documents in a namespace; it does not build an entity graph or track validity windows. Use [Graphiti](../graph-memory/graphiti.md) or [Cognee](../graph-memory/cognee.md) instead when "who reports to whom, as of March" is the question.
 - **You want memory as a shared service for several apps or languages.** LangMem runs inside your Python process. Use [Hindsight](hindsight.md) or [Supermemory](supermemory.md) instead when a TypeScript frontend, a second agent, and a batch job all need the same memory over HTTP.
-- **You want the agent runtime to own memory end to end.** Use Letta Code (not indexed; the old Letta server is retired — see the [Letta page](letta.md)) when the agent should edit its own persistent memory blocks without you designing namespaces and tools.
+- **You want the agent runtime to own memory end to end.** Use [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.md) (the old Letta server is retired — see the [Letta page](letta.md)) when the agent should edit its own persistent memory blocks without you designing namespaces and tools.
 
 ## Comparison
 

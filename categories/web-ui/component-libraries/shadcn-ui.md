@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T09:58:55Z
+  computed_at: 2026-10-09T09:26:45Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 29.1
-        qualifying_issues: 30
+        median_ttfr_hours: 25.8
+        qualifying_issues: 28
         band: default
         window_offset_days: 10
         source: issue
@@ -45,17 +45,17 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@shadcn/react"
+        canonical_package: shadcn
         dependent_repos_count: 0
-        downloads_last_month: 9931380
+        downloads_last_month: 42548414
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.05
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1373
+        repo_age_days: 1374
         last_commit_age_days: 0
         cohort: library
     governance:
@@ -159,7 +159,7 @@ shadcn/ui is two things: a collection of component source files (a *registry* �
 
 - [推断] The governance verdict (single creator steering) is based on the changelog's first-person authorship and public project history, not a governance document; the commit-share numbers (top contributor 78.3%) support concentration but not who sets direction.
 - [未验证] ~125.3k GitHub stars as of 2026-10-08; star counts are approximate and time-sensitive.
-- [未验证] The scorer's adoption axis measures `@shadcn/react`, a newer package; the CLI package `shadcn` is the better proxy for real usage, and its figures were read separately from npm's download API.
+- [未验证] The scorer's adoption axis measures the CLI package `shadcn` (42,548,414 downloads last month, 2026-10-09); copied components never touch a registry, so real usage is likely higher.
 - [推断] Merging upstream changes into already-copied components remains manual; the CLI helps preview and migrate specific changes but does not three-way merge your edits.
 - [推断] Large organizations may struggle with consistency across teams that each copy and modify components; a private registry mitigates this but is your system to run.
 - [推断] While the underlying primitives are accessible, the final accessibility of your app depends on how you modify and compose the copied components.

@@ -106,7 +106,7 @@ health:
 |---|---|---|---|
 | NGINX `client_body_*` 缓冲 + 应用处理 | 未收录 | 第一方配置比把 multipart 解析从应用卸载出去更重要时，选 NGINX 内置缓冲。 | 更容易长期可用，但应用仍要解析上传，卸载程度不如本模块。 |
 | 直传 S3 预签名上传 | 未收录 | 上传字节可以完全绕过你的服务器时，选 S3 预签名直传。 | 扩展性和持久性更好，但会把对象存储和客户端上传逻辑推给产品。 |
-| [tusd](tusd.zh.md) | ✅ | 稳健续传上传和 SDK 生态比留在 NGINX 内更重要时，选 tusd。 | 它是独立服务而非 NGINX 模块，但更适合完整 tus 工作流。 |
+| [tusd](../object-storage/tusd.zh.md) | ✅ | 稳健续传上传和 SDK 生态比留在 NGINX 内更重要时，选 tusd。 | 它是独立服务而非 NGINX 模块，但更适合完整 tus 工作流。 |
 | [lua-nginx-module](lua-nginx-module.zh.md) | ✅ | 只有当你需要通用 OpenResty 脚本，而不是专用流式 multipart 接收器时，才选 lua-nginx-module。 | 它是可编程边缘运行时，不是专门的上传卸载模块。 |
 | 应用框架的上传处理 | 未收录 | 上传足够小，零额外基础设施比边缘卸载更重要时，选应用框架上传处理。 | Django/Rails/Express 能处理，但应用服务器要吸收慢客户端成本。 |
 

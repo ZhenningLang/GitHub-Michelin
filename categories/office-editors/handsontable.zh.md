@@ -120,7 +120,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
 | [Jspreadsheet CE](jspreadsheet.zh.md) | ✅ | 承载营收的 B2B 工具，买一张 15 年店龄、带厂商支持的网格更稳，选 Handsontable；同一张工单必须零授权费、且「Excel 式粘贴+类型列」已覆盖九成需求时，选 Jspreadsheet。 | Handsontable 用发票买功能纵深与支持；Jspreadsheet 用 MIT 换自由，但面更薄、且是 Pro 的引流口。 |
-| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 要有人维护、有商业背书的网格选 Handsontable；要在一个 MIT 组件里拿满 Excel*表*语义（合并、条件格式、公式栏）且接受仓库自 2025-12-15 无提交，选 Fortune Sheets。 | Handsontable：支持到位、不像 Excel 的表、不免费。Fortune：更「表」、无支持、停摆。 |
+| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 要有人维护、有商业背书的网格选 Handsontable；要在一个 MIT 组件里拿满 Excel*表*语义（合并、条件格式、公式栏）且接受仓库默认分支自 2025-11-06 无提交，选 Fortune Sheets。 | Handsontable：支持到位、不像 Excel 的表、不免费。Fortune：更「表」、无支持、停摆。 |
 | [Univer](univer.zh.md) | ✅ | 交付物是一个用户（或 agent）驱动的工作簿体验——标签页、文档、无头 Node——且 Apache-2.0 要紧时选 Univer；产品里要的是一张绑定自有 schema 的可编辑表、与其装配编辑器框架不如配置网格时选 Handsontable。 | Univer：框架广度、免费许可、更年轻。Handsontable：组件简单、交互成熟、收费。 |
 | [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md) | ✅ | 用户必须从自己的存储里打开并协同编辑真实 .xlsx/.docx 时选 ONLYOFFICE；数据活在*你的*表里、电子表格只是输入控件而不是文档时，Handsontable 才成立。 | ONLYOFFICE：一容器整套套件，AGPL，有服务器要养。Handsontable：npm 级足迹，但文件保真不是它的职责。 |
 | HyperFormula | `未收录` | 如果全部需求就是「服务器上算公式、不要任何 UI」，先评估 HyperFormula（同厂商）再决定是否连网格都引进；`未收录` 因为本批收的是编辑界面，不收计算库。 | 买来纯 JS 公式求值；没有网格，且继承同一家厂商的开放核心姿态。 |

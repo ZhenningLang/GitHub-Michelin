@@ -97,7 +97,7 @@ health:
 |---|---|---|---|
 | [OASIS](oasis.zh.md) | ✅ | 当你要用代码自建社交媒体模拟、需要规模化（号称最高百万 agent）和实测成本模型时选 OASIS；当你要一个上传即出报告的成品时选 MiroFish。 | MiroFish 就建在 OASIS 之上——你拿可编程性和许可证自由换了完整流水线和 UI。 |
 | [AgentSociety](agentsociety.zh.md) | ✅ | 需要回放、分布式执行和可发表严谨性的社会科学实验选 AgentSociety；要快速、产品化的「如果……会怎样」彩排选 MiroFish。 | AgentSociety 是 Apache-2.0 且科研工具齐全，但实验要自己组装。 |
-| [generative_agents](generative-agents.zh.md) | ✅ | 只有为研究或教学 2023 年原版 Smallville 架构才选 generative_agents；任何打算认真跑的东西都选 MiroFish（仍在维护、已产品化）。 | generative_agents 是该领域的开创性参考实现，但 2024-08 起停止维护。 |
+| [generative_agents](generative-agents.zh.md) | ✅ | 只有为研究或教学 2023 年原版 Smallville 架构才选 generative_agents；任何打算认真跑的东西都选 MiroFish（仍在维护、已产品化）。 | generative_agents 是该领域的开创性参考实现，但 2023-08 起停止维护。 |
 
 ## 技术栈
 
@@ -118,7 +118,7 @@ health:
 
 ## 健康度与可持续性
 
-- **维护——活跃（截至 2026-09）。** 最近 push 2026-09-16；2025-12 以来打了三个 tag（最新 v0.1.2，2026-03）。
+- **维护——活跃（截至 2026-09）。** 默认分支最后一次提交在 2026-09-03（GitHub 显示的 2026-09-16 `pushed_at` 不是它上面的提交）；2025-12 以来打了三个 tag（最新 v0.1.2，2026-03）。
 - **治理/bus factor——单作者主导。** 666ghj 占已统计约 305 次提交中的 266 次（约 87%）（2026-09）。README 称获盛大集团战略支持/孵化并留了 shanda.com 招聘邮箱，但没有基金会或多组织治理；backing 能否转化为持续提交产能 [未验证]。
 - **年龄与 Lindy——极年轻、爆发式走红。** 创建于 2025-11-26，约 10 个月就有 73.9k stars（2026-09）：正是 Lindy 先验要打折的「年轻+爆火」画像；star 数本身不是耐久性证据 [推断]。
 - **采用。** 没有 PyPI/npm 包——源码或 Docker 安装；生产采用者未知。

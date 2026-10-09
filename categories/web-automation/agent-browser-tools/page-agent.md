@@ -152,7 +152,7 @@ page-agent is a browser-side library. You `npm install page-agent` (or load a si
 ## Health & viability
 
 - **Responsiveness**: Grade A — median first-response time 60 hours across 20 qualifying issues/PRs (scorer, 2026-09-28).
-- **Maintenance (2026-09)** — last pushed 2026-09-21, not archived; 39 releases through v1.12.4 (2026-09-06, GitHub releases API) with a continued commit flow: a maintained, fast-iterating project, not a coasting one. `[推断]`
+- **Maintenance (2026-09)** — last default-branch commit 2026-09-06 (GitHub's 2026-09-21 `pushed_at` is not a commit to it), not archived; 39 releases through v1.12.4 (2026-09-06, GitHub releases API) with a continued commit flow: a maintained, fast-iterating project, not a coasting one. `[推断]`
 - **Governance & backing** — an Alibaba-owned (`Organization`) repo, so it's **vendor-backed** rather than a single hobbyist: that's a bus-factor cushion, but the radar's governance axis grades D because one contributor carries ~93% of commits — in practice a small core team inside a vendor, with the roadmap following Alibaba's interest in it. A big vendor can deprioritize a side project. `[推断]`
 - **Age & Lindy** — created 2025-09-23, ~1 year old (2026-09): **young and unproven** on the Lindy axis. Vendor backing offsets some of the abandonment risk, but it has no long track record and the "survives HTML changes" robustness claim is unbenchmarked. `[推断]`
 - **Risk flags** — MIT-licensed (no relicense/open-core flag seen). The structural risk is **external-LLM dependency + DOM-text egress**, not licensing — treat sensitive-app use as a compliance question. The README's one-line CDN demo routes to Alibaba's free testing LLM API (terms apply) — don't ship that path to production.

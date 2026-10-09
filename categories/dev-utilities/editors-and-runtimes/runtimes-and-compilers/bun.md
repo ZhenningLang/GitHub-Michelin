@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:32Z
+  computed_at: 2026-10-09T08:17:48Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 16.6
-        qualifying_issues: 35
+        median_ttfr_hours: 5.8
+        qualifying_issues: 14
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: bun-types
-        dependent_repos_count: 3705
-        downloads_last_month: 66142679
-        graph_tier: B
+        canonical_package: bun
+        dependent_repos_count: 21486
+        downloads_last_month: 16383903
+        graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.08
-        homebrew_installs_90d: 18434
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 18512
         homebrew_tier: A
-        release_downloads: 126369044
+        release_downloads: 127091598
         release_assets: 2128
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,7 +61,7 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 2003
+        repo_age_days: 2004
         last_commit_age_days: 0
         cohort: tool
     governance:
@@ -69,7 +69,7 @@ health:
       raw:
         active_maintainers_12mo: 61
         top1_share: 0.577
-        top3_share: 0.855
+        top3_share: 0.854
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,8 +154,8 @@ Bun is a single executable: a JavaScript runtime built on JavaScriptCore (the en
 ## Health & viability
 
 - **Maintenance**: Grade A — commits every week of the last quarter; v1.4.0 (2026-08-20) then v1.4.1 and v1.4.2 (2026-09-05).
-- **Responsiveness**: Grade A — median first response 16.6 hours across 35 qualifying issues/PRs, though 9,389 issues remain open.
-- **Adoption**: Grade A — 66,142,679 monthly npm downloads of `bun-types`, 126,369,044 release-asset downloads, 18,434 Homebrew installs in 90 days; large applications such as Claude Code run on it.
+- **Responsiveness**: Grade A — median first response 5.8 hours across 14 qualifying issues (2026-10-09), though 9,389 issues remain open.
+- **Adoption**: Grade A — on the scorer's 2026-10-09 reading the `bun` npm package had 16,383,903 downloads last month and 21,486 dependent repositories, plus 127,091,598 release-asset downloads and 18,512 Homebrew installs in 90 days; large applications such as Claude Code run on it.
 - **Longevity**: Grade A — 2,003 days old (created 2021-04-14), 1.x since 2023, and now on its second implementation language; a moderate Lindy prior.
 - **Governance**: Grade B — 61 active committers in 12 months but the top three hold 85.5% and the founder alone 57.7%; the roadmap belongs to Oven, which is now part of Anthropic, so continuity depends on that company's priorities rather than a foundation.
 - **Risk / License**: `?` (license_unparsed) — GitHub shows `NOASSERTION` because `LICENSE.md` is a composite file: Bun itself is MIT, while the statically linked JavaScriptCore/WebKit is LGPL-2, which only adds relinking obligations if you redistribute a modified Bun.

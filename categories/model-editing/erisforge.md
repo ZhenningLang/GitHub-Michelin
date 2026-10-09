@@ -6,7 +6,7 @@ category: model-editing
 tags: [abliteration, activation-steering, refusal-removal, pytorch, layer-surgery]
 language: Python
 license: MIT (declared in README/pyproject; no LICENSE file)
-maturity: "v1.1.0 (2025-02); last push 2026-03; 280 stars (as of 2026-09)"
+maturity: "v1.1.0 (2025-02); last default-branch commit 2025-02 (pushed_at 2026-03 is a side branch); 280 stars (as of 2026-09)"
 last_verified: 2026-09-24
 type: library
 upstream:
@@ -99,7 +99,7 @@ ErisForge wraps a Hugging Face `transformers` model. You load the model and toke
 - **You want the refusal/quality tradeoff optimized for you.** ErisForge applies the direction you hand it; there is no parameter search, so choose [Heretic](heretic.md) when you want the best refusal-vs-KL point found automatically.
 - **You work in TransformerLens.** If your experiments use TransformerLens hooks and activation caching, [abliterator](abliterator.md) fits that stack better.
 - **You need current-model coverage.** Its pins target an older `torch`/`transformers` pair (`torch~=2.5.1`, `transformers~=4.46.2`), so very new architectures may need dependency work first; for a fast-moving pipeline use [Heretic](heretic.md).
-- **You want a maintained project with a team behind it.** The repo is essentially one author (81 commits) with a last push in 2026-03; plan to own any breakage.
+- **You want a maintained project with a team behind it.** The repo is essentially one author (81 commits) with no default-branch commit since 2025-02-17; plan to own any breakage.
 
 ## Comparison
 
@@ -129,7 +129,7 @@ ErisForge wraps a Hugging Face `transformers` model. You load the model and toke
 
 ## Health & viability
 
-- **Maintenance — lightly maintained.** Last push 2026-03-02 (about six months before this review); two releases, most recently v1.1.0 on 2025-02-18.
+- **Maintenance — dormant.** The last default-branch commit is 2025-02-17, the v1.1.0 version bump (about 19 months before this review); GitHub's 2026-03-02 `pushed_at` came from a side branch that was never merged. Two releases, most recently v1.1.0 on 2025-02-18.
 - **Governance / bus factor — single author.** `Tsadoq` accounts for all 81 contributions in the contributors API; GitHub User-owned.
 - **Adoption & Lindy — small and young.** 280 stars, 21 forks, 3 open issues; created 2024-10. It is cited in its own README as building on [remove-refusals-with-transformers](remove-refusals-with-transformers.md), [deccp](deccp.md) and [abliterator](abliterator.md), so it is a downstream synthesis rather than an origin.
 - **Risk flags.** No `LICENSE` file despite MIT claims in README and `pyproject.toml` (verified 2026-09-24); single maintainer; dependency pins that already lag current `transformers`.

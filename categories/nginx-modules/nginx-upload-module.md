@@ -106,7 +106,7 @@ The module sits inside NGINX and reads the upload body itself, so the slow part 
 |---|---|---|---|
 | NGINX `client_body_*` buffering + app handling | 未收录 | Choose built-in NGINX buffering when first-party config matters more than offloading multipart parsing from the app. | Simpler to keep working, but the app still parses uploads and gets less offload than this module provides. |
 | Direct-to-S3 presigned uploads | 未收录 | Choose direct-to-S3 when upload bytes can bypass your servers entirely. | Best scalability and durability, but pushes object-storage and client-upload logic into the product. |
-| [tusd](tusd.md) | ✅ | Choose tusd when robust resumable uploads and SDK ecosystem matter more than staying inside NGINX. | Separate service rather than an NGINX module, but better suited to full tus workflows. |
+| [tusd](../object-storage/tusd.md) | ✅ | Choose tusd when robust resumable uploads and SDK ecosystem matter more than staying inside NGINX. | Separate service rather than an NGINX module, but better suited to full tus workflows. |
 | [lua-nginx-module](lua-nginx-module.md) | ✅ | Choose lua-nginx-module only if general OpenResty scripting is what you need, not a purpose-built streaming multipart receiver. | Programmable edge runtime, not a specialized upload-offload module. |
 | Application framework upload handlers | 未收录 | Choose framework upload handlers when uploads are small enough that zero extra infrastructure beats edge offload. | Django/Rails/Express can handle it, but the app server absorbs the slow-client cost. |
 

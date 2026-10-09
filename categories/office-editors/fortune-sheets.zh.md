@@ -7,7 +7,7 @@ category: office-editors
 tags: [spreadsheet, excel-like, react, luckysheet-fork, typescript, data-grid, op-stream, collab-primitives]
 language: TypeScript
 license: MIT
-maturity: "v1.0.4 (released 2025-11-06), STALLED (last push 2025-12-15, ~9 months before verification); 3.7k stars, created 2022-03-31; npm @fortune-sheet/react ~312k downloads/month (API/registry-verified 2026-09-27)"
+maturity: "v1.0.4 (released 2025-11-06), STALLED (last default-branch commit 2025-11-06, ~11 months before verification; pushed_at 2025-12-15 is a non-default-branch push); 3.7k stars, created 2022-03-31; npm @fortune-sheet/react ~312k downloads/month (API/registry-verified 2026-09-27)"
 last_verified: 2026-09-27
 type: library
 upstream:
@@ -106,7 +106,7 @@ Fortune Sheets 是为现代工具链重造的 Luckysheet：去掉 jQuery，换�
 
 ## 何时不用
 
-- **你不能背一个无人维护的依赖** → 末次推送 2025-12-15、末次发布 2025-11-06（2026-09-27 API 核实）：约 9 个月的停滞，而月下载还有约 30 万。安全修补将落到你头上。要 Luckysheet *亲团队*的活跃后继，用 [Univer](univer.zh.md)；要网格的付费支持，用 [Handsontable](handsontable.zh.md)。
+- **你不能背一个无人维护的依赖** → 默认分支末次提交和末次发布都在 2025-11-06（2026-09-27 API 核实；GitHub 之后显示的 `pushed_at` 2025-12-15 不是默认分支上的提交）：约 11 个月的停滞，而月下载还有约 30 万。安全修补将落到你头上。要 Luckysheet *亲团队*的活跃后继，用 [Univer](univer.zh.md)；要网格的付费支持，用 [Handsontable](handsontable.zh.md)。
 - **原生 xlsx 往返是硬需求** → 导入导出在第三方插件里（[fortuneexcel](https://github.com/corbe30/fortuneexcel)，`未收录`——单人社区插件仓库，有意不加，依赖前须自行核验）。格式保真得靠 [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md)。
 - **网格里要透视表/图表** → README roadmap 上的未勾选项（2026-09）。今天就要透视+图表产品的：当应用用 [Grist](grist.zh.md)，当组件/套件用 Univer Pro 或 ONLYOFFICE。
 - **要开箱即用的服务端权威协同** → op 是*原料*不是同步引擎：没有 CRDT、在线状态、权限模型。ONLYOFFICE/Collabora 三样都有。
@@ -137,7 +137,7 @@ TypeScript + React（`@fortune-sheet/react`），immer 管状态，公式走 for
 
 ## 健康度与可持续性
 
-- **维护：停摆，有测量。** 末次推送 2025-12-15；末次发布 v1.0.4 于 2025-11-06（2026-09-27 API 核实）。2025-11 扎堆发了三个版本然后沉默——这就是「滑向休眠」的转折点，有日期。
+- **维护：停摆，有测量。** 默认分支末次提交和末次发布 v1.0.4 都在 2025-11-06（2026-09-27 API 核实）；2025-12-15 的 `pushed_at` 是默认分支之外的推送。2025-11 扎堆发了三个版本然后沉默——这就是「滑向休眠」的转折点，有日期。
 - **治理：小队 + 公司徽章。** org `ruilisi`；README 挂「maintained by xiemala」徽章；头号贡献者 zyc9012 277 次，其后 186/125——真实但单薄（contributors API，2026-09-27）。没有公开路线图承诺机制（未勾选的 roadmap 清单就是路线图）。
 - **背书与寿命** ——仓库约 4.5 年（2022-03-31 创建），血统是 2020 年代的；Lindy 双向切：*设计*在 Luckysheet 规模上久经考验，*仓库*没人在喂。[推断]
 - **采纳：仍在流入。** 健康雷达记录 `@fortune-sheet/react` 月下载 212,825（dependent repos 5）；同日 registry 直读同一窗口为 311,677——无论取哪个口径，安装量都还在对着一个安静下来的仓库流入，[推断] 多半因为它是 Luckysheet 家族里仅剩的 MIT 即用品。

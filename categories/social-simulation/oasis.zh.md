@@ -106,7 +106,7 @@ CAMEL-AI 出品的可规模化开源社交媒体模拟器：LLM agent（号称�
 |---|---|---|---|
 | [MiroFish](mirofish.zh.md) | ✅ | 想要打包好的「上传→报告」成品选 MiroFish；需要自己编程控制模拟、避开 MiroFish 的 AGPL-3.0 或甩掉它的 Zep Cloud 依赖时选 OASIS。 | OASIS 是 Apache-2.0 且自包含；代价是 MiroFish 白送的流水线要你自己搭。 |
 | [AgentSociety](agentsociety.zh.md) | ✅ | 城市尺度或需要实验管理（Ray 分布式、回放、科研技能）的社会科学研究选 AgentSociety；社交媒体特定动力学（带推荐系统）选 OASIS。 | OASIS 更窄（媒体平台），但把 AgentSociety 不侧重的信息流推荐算法建了出来。 |
-| [generative_agents](generative-agents.zh.md) | ✅ | 只有为研究 2023 年原版架构才选 generative_agents；今天要在大规模上跑的东西都选 OASIS。 | generative_agents 自 2024-08 停止维护，且硬编码在 25 agent 小镇上。 |
+| [generative_agents](generative-agents.zh.md) | ✅ | 只有为研究 2023 年原版架构才选 generative_agents；今天要在大规模上跑的东西都选 OASIS。 | generative_agents 自 2023-08 停止维护，且硬编码在 25 agent 小镇上。 |
 
 ## 技术栈
 

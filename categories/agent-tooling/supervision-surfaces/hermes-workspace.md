@@ -6,7 +6,7 @@ category: supervision-surfaces
 tags: [agent-web-ui, control-plane, swarm-orchestration, self-hosted, pwa, terminal, tmux, hermes-agent]
 language: JavaScript
 license: MIT
-maturity: v2.3.0 (latest GitHub release 2026-05-08), main pushed 2026-09-10, 6.6k stars (as of 2026-09)
+maturity: v2.3.0 (latest GitHub release 2026-05-08), main last commit 2026-08-22, 6.6k stars (as of 2026-09)
 last_verified: 2026-09-21
 type: app
 upstream:
@@ -144,7 +144,7 @@ The v2 pitch is *zero-fork*: the workspace does not patch hermes-agent, it front
 
 ## Health & viability
 
-- **Maintenance (2026-09).** Created 2026-03-16; 2,030 commits and last `pushed_at` 2026-09-10 — main is clearly active. The flip side: latest tagged GitHub release is v2.3.0 (2026-05-08), a ~4-month release gap, with 60 open issues and 103 open PRs at check time — trunk runs ahead of the release process.
+- **Maintenance (2026-09).** Created 2026-03-16; 2,030 commits, the last on `main` on 2026-08-22 (about a month before this check; the 2026-09-10 `pushed_at` came from another branch) — main is active. The flip side: latest tagged GitHub release is v2.3.0 (2026-05-08), a ~4-month release gap, with 60 open issues and 103 open PRs at check time — trunk runs ahead of the release process.
 - **Governance / bus factor.** `owner.type` is **User** ("Eric", account created 2025-03, 19 public repos). Measured 12-month contribution spread puts the top author at 35% of commits across 69 listed contributors (health scorer, 2026-09) — spread wider than a pure solo repo, but still no foundation and no GOVERNANCE/CODEOWNERS found; SECURITY.md routes reports to the owner's X handle. Single-person roadmap risk is real. [推断]
 - **Backing & the upstream bet.** The workspace itself has no institutional backing, but its *substrate* does: [hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.md) showed 247,693 stars and a same-day push (2026-09-21 via GitHub API) — the workspace's viability is largely a derivative bet on that upstream's endpoint contract and continued momentum. [推断]
 - **Age × Lindy (2026-09).** ~6 months old with 6.6k stars: high heat, zero Lindy credit; the v1→v2 zero-fork pivot already broke one deployment model (fork-based installs deprecated). Treat stability claims as unproven. [推断]

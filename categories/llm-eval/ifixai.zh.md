@@ -117,7 +117,7 @@ iFixAi 是一个 Python 命令行工具（`ifixai`），把你的 agent 当黑�
 |---|---|---|---|
 | [promptfoo](promptfoo.zh.md) | ✅ | 如果你清楚自家应用该说什么、不该说什么，想在每个 PR 上强制执行，选 promptfoo；如果你想要一张现成的治理检查清单（角色、工具权限、诚实度）和跨厂商的字母等级，又不想自己写用例，选 iFixAi。 | promptfoo：断言自己写，有确定性选项，CI 方案成熟，但覆盖面要你自己设计。iFixAi：60 项固定检查加加权等级开箱即用，但靠大模型判分，不写代码无法扩展，而且很年轻。 |
 | [garak](garak.zh.md) | ✅ | 要用大量探针家族扫一个模型端点的越狱、泄露和有害输出，选 garak；要问的是 agent 守不守它被配置的角色和工具，选 iFixAi。 | garak 衡量模型对攻击的易感性；iFixAi 通过夹具衡量已部署 agent 的治理行为，攻击只覆盖得很薄。 |
-| [Giskard OSS](giskard.zh.md) | ✅ | 想要一个 Python 库扫描你的 LLM 应用或 RAG 流水线的问题、并逐步攒出自己的测试集，选 Giskard；想要一个评分细则固定且公开、能拿给相关方看等级的命令行审计，选 iFixAi。 | Giskard 嵌进你的代码和测试流程[推断]；iFixAi 待在代码之外、对着端点说话，上手更简单，但测什么你能控制的更少。 |
+| [Giskard OSS](giskard.zh.md) | ✅ | 想要一个 Python 库对你的 agent 跑自动生成的红队扫描和 RAG 质量扫描、并逐步攒出自己的场景测试，选 Giskard；想要一个评分细则固定且公开、能拿给相关方看等级的命令行审计，选 iFixAi。 | Giskard 跑在你的测试进程里，直接调用你的 agent 函数（v3，要求 Python ≥ 3.12）；iFixAi 待在代码之外、对着端点说话，上手更简单，但测什么你能控制的更少。 |
 | Inspect AI | 未收录 | 要自己设计 agent 评测（solver、scorer、沙箱），并留下能在审计中站得住的日志，选 Inspect AI；想今天就用别人的检查清单拿到答案，选 iFixAi。 | Inspect AI 是英国 AI 安全研究所的框架，灵活度高，但不自带治理检查清单；iFixAi 是固定清单，灵活度低。本批 tab 收录未添加。 |
 | [agent-governance-toolkit](../agent-governance/agent-governance-toolkit.zh.md) | ✅ | 生产环境里必须拦住违规工具调用时，选 agent-governance-toolkit；要在上线前后量一量 agent 会有多少次越界，选 iFixAi。 | AGT 是运行时强制执行，坐在你的请求链路里，需要集成；iFixAi 是链路之外的一次测试运行，什么都不用部署，但也什么都拦不住。 |
 
@@ -156,7 +156,7 @@ iFixAi 是一个 Python 命令行工具（`ifixai`），把你的 agent 当黑�
 - [未验证] 一次完整运行约 10–18 美元评委费用、约 2,000 次评委调用，是 README 按 2026 年年中 OpenRouter 标价做的估算；本页没有做付费运行（需要两家厂商的 API 密钥）。
 - [未验证] 仓库简介里“120 秒内给出答案”没有计时验证；README 自己的 mock 运行约 1 秒，真实运行取决于厂商延迟和套件大小。
 - [推断] `litellm`（也就是接本地或内网评委的途径）在 `docs/testing-your-agent.md` 里只列为 Python API 可用；带本地评委的完全离线运行能否端到端跑通，没有测试。
-- [推断] Giskard 的定位（嵌在代码里的库、自建测试集）来自它的公开介绍和本索引里的占位页，不是对比实测。
+- [推断] Giskard 的定位（嵌在代码里的库、自建测试集）来自它的 v3 README 和本索引里重核过的 Giskard 页（2026-10-09 核对），不是对比实测。
 - [未验证] `docs/inspections.md` 提到的“更大的商业套件”规模和内容没有公开。
 - [推断] 运维难度“低到中”是根据安装路径、夹具编写指南和密钥要求做出的判断，不是实测部署。
 - [未验证] 案例研究（Pizza Hut、Instagram 等）是作者根据公开报道重建的夹具，并不是对这些公司系统的测试；它们的等级说明不了真实部署的情况。

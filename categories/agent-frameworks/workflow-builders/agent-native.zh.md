@@ -121,7 +121,7 @@ health:
 - **你只想在现有 React 应用里加一个聊天面板。** `<AgentSidebar>` 确实能塞进去，但它仍然假定后端在跑它自己的 agent-chat 插件；如果应用、鉴权和 agent loop 本来就是你的，那么只用界面库（Vercel AI SDK 或 assistant-ui，均未收录）更轻。只有当你同时想要它带来的持久 agent 状态时，才考虑旁挂模式。
 - **你需要稳定的 API 或语义化版本纪律。** `@agent-native/core` 在大约半年里从 0.1.0 走到 0.186.0，依赖里的 Nitro 是 beta 构建，发布一天好几次（按包做 changeset）。要锁版本、并把升级当作日常维护；如果稳定契约比脚手架更重要，选更沉淀的框架。
 - **商用分发前要求许可明确无歧义。** README 和 npm 包写的是 MIT，但仓库里**没有 `LICENSE` 文件**，根 `package.json` 写的是 `ISC`——三个口径、没有权威正文。先过法务，或选一个许可可核查的仓库。这是最硬的一条否决项。[未验证]
-- **你想要无代码或可视化编排。** 能力存在于你要审查的 TypeScript 里；如果团队的入口必须是画布，用 [Dify](dify.zh.md)、[Langflow](langflow.zh.md) 或 Flowise。
+- **你想要无代码或可视化编排。** 能力存在于你要审查的 TypeScript 里；如果团队的入口必须是画布，用 [Dify](dify.zh.md) 或 [Langflow](langflow.zh.md)；别选 [Flowise](flowise.zh.md)，它已在 2026-08-13 归档、2026-08-31 停止支持。
 - **你今天就要把长期平台押在它上面。** 创建于 2026-03，约半年；参照健康度一节看待 Lindy 先验，并留好退路。
 
 ## 横向对比

@@ -8,7 +8,7 @@ language: Rust
 license: MIT
 maturity: v4.0.4 (2026-10-07), active, ~141k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T03:25:57Z
   default_branch: main
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T08:21:19Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
@@ -40,24 +40,24 @@ health:
       raw:
         registry: null
         canonical_package: null
-        homebrew_installs_90d: 24550
+        homebrew_installs_90d: 24212
         homebrew_tier: A
-        release_downloads: 20357660
-        release_assets: 814
+        release_downloads: 20447347
+        release_assets: 837
         release_tier: A
         signal_basis: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 430
+        repo_age_days: 431
         last_commit_age_days: 0
-        cohort: framework
+        cohort: tool
     governance:
       grade: D
       raw:
         active_maintainers_12mo: 97
-        top1_share: 0.818
-        top3_share: 0.878
+        top1_share: 0.817
+        top3_share: 0.876
         window_source: stats_contributors
         carve_out: null
     risk_license:

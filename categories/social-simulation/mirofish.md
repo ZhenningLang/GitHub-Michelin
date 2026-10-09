@@ -97,7 +97,7 @@ Pick MiroFish over its substitutes when the deciding tradeoff is **packaged prod
 |---|---|---|---|
 | [OASIS](oasis.md) | ✅ | Choose OASIS when you're building your own social-media simulation in code and need scale (up to a claimed 1M agents) and a measured cost model; choose MiroFish when you want a finished upload-to-report product. | MiroFish is built on OASIS — you trade programmability and license freedom for a complete pipeline and UI. |
 | [AgentSociety](agentsociety.md) | ✅ | Choose AgentSociety for social-science experiments that need replay, distributed execution, and publishable rigor; choose MiroFish for fast, productized what-if rehearsal. | AgentSociety is Apache-2.0 and research-tooled, but you assemble the experiment yourself. |
-| [generative_agents](generative-agents.md) | ✅ | Choose generative_agents only to study or teach the original 2023 Smallville architecture; for anything you intend to run seriously, choose MiroFish (maintained, packaged). | generative_agents is the field's founding reference but unmaintained since 2024-08. |
+| [generative_agents](generative-agents.md) | ✅ | Choose generative_agents only to study or teach the original 2023 Smallville architecture; for anything you intend to run seriously, choose MiroFish (maintained, packaged). | generative_agents is the field's founding reference but unmaintained since 2023-08. |
 
 ## Tech stack
 
@@ -118,7 +118,7 @@ Pick MiroFish over its substitutes when the deciding tradeoff is **packaged prod
 
 ## Health & viability
 
-- **Maintenance — active (as of 2026-09).** Last push 2026-09-16; three tagged releases since 2025-12 (latest v0.1.2, 2026-03).
+- **Maintenance — active (as of 2026-09).** Last default-branch commit 2026-09-03 (GitHub's `pushed_at` of 2026-09-16 is not a commit to it); three tagged releases since 2025-12 (latest v0.1.2, 2026-03).
 - **Governance / bus factor — single-author dominant.** 666ghj accounts for 266 of ~305 counted commits (~87%) (2026-09). The README states Shanda Group strategic backing/incubation and lists a shanda.com hiring contact, but there is no foundation or multi-org governance; whether backing converts into commit throughput is [未验证].
 - **Age & Lindy — very young, extremely hyped.** Created 2025-11-26, ~10 months old with 73.9k stars (2026-09): exactly the fast-growth profile the Lindy prior discounts; the star count alone is not evidence of durability [推断].
 - **Adoption.** No PyPI/npm package — installed from source or Docker; production adopters unknown.

@@ -419,6 +419,20 @@ class AdoptionEvidenceGateTest(unittest.TestCase):
                                      "downloads_last_month: 900000"])
         self.assertEqual(self.errors_for(block, "matches neither"), [])
 
+    def test_canonical_package_named_by_the_override_table_is_allowed(self) -> None:
+        """shadcn-ui/ui ships the CLI as `shadcn`: neither the repo name nor the owner
+        scope, but a human recorded it in tools/health_package_overrides.json."""
+        block = adoption_block("A", ["registry: npmjs.org", "canonical_package: shadcn",
+                                     "downloads_last_month: 900000"])
+        table = {"example/demo": {"registry": "npmjs.org", "name": "shadcn", "reason": "t"}}
+        with mock.patch("lint._load_package_overrides", return_value=table):
+            self.assertEqual(self.errors_for(block, "matches neither"), [])
+        # The table vouches for one registry + name, not for anything on that repo.
+        other = adoption_block("A", ["registry: nuget.org", "canonical_package: shadcn",
+                                     "downloads_last_month: 900000"])
+        with mock.patch("lint._load_package_overrides", return_value=table):
+            self.assertTrue(self.errors_for(other, "matches neither"))
+
     def test_absent_canonical_package_is_not_flagged(self) -> None:
         block = adoption_block("B", ["canonical_package: null",
                                      "homebrew_installs_90d: 4000"])

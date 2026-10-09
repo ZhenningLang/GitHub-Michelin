@@ -6,7 +6,7 @@ category: supervision-surfaces
 tags: [agent-web-ui, control-plane, swarm-orchestration, self-hosted, pwa, terminal, tmux, hermes-agent]
 language: JavaScript
 license: MIT
-maturity: v2.3.0 (latest GitHub release 2026-05-08), main pushed 2026-09-10, 6.6k stars (as of 2026-09)
+maturity: v2.3.0 (latest GitHub release 2026-05-08), main last commit 2026-08-22, 6.6k stars (as of 2026-09)
 last_verified: 2026-09-21
 type: app
 upstream:
@@ -144,7 +144,7 @@ v2 的卖点是 *zero-fork*：workspace 不改 hermes-agent，只做它的前端
 
 ## 健康度与可持续性
 
-- **维护（2026-09）。** 2026-03-16 创建；2,030 commits、最近 `pushed_at` 2026-09-10——main 显然活着。反面：最新 GitHub Release 停在 v2.3.0（2026-05-08），约 4 个月发布空窗，检查时点挂着 60 个 open issues、103 个 open PRs——trunk 跑在发布流程前面。
+- **维护（2026-09）。** 2026-03-16 创建；2,030 commits，`main` 上最后一次提交是 2026-08-22（距本次核对约一个月；2026-09-10 的 `pushed_at` 来自别的分支）——main 仍活跃。反面：最新 GitHub Release 停在 v2.3.0（2026-05-08），约 4 个月发布空窗，检查时点挂着 60 个 open issues、103 个 open PRs——trunk 跑在发布流程前面。
 - **治理/bus factor。** `owner.type` 是 **User**（"Eric"，账号 2025-03 注册，19 个公开仓库）。12 个月贡献分布的实测值是头部作者占 35%、共 69 名列出的贡献者（health 评分器，2026-09）——比纯单人仓库分散，但依然无基金会、未发现 GOVERNANCE/CODEOWNERS；SECURITY.md 把漏洞上报引到 owner 的 X 私信。单人路线图风险真实存在。[推断]
 - **背书与上游赌注。** workspace 本身无机构背书，但其*底座*有：[hermes-agent](../../agent-frameworks/agent-runtimes/personal-assistants/hermes-agent.zh.md) 显示 247,693 stars 且当天有 push（2026-09-21，GitHub API 查询）——workspace 的可持续性在很大程度上是对该上游端点约定与持续势头的衍生赌注。[推断]
 - **年龄 × Lindy（2026-09）。** 约 6 个月、6.6k stars：高热、零 Lindy 信用；v1→v2 零 fork 转向已击穿一种部署模型（fork 安装被废弃）。稳定性主张视为未证实。[推断]

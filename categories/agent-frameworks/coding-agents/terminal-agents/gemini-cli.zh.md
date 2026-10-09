@@ -8,7 +8,7 @@ language: TypeScript
 license: Apache-2.0
 maturity: v0.63.0 (2026-10-06), pre-1.0 with weekly stable releases, very active, ~107k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T01:35:49Z
   default_branch: main
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T08:23:56Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -36,8 +36,8 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 6
-        band: default
+        qualifying_issues: 4
+        band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
@@ -47,11 +47,11 @@ health:
         registry: npmjs.org
         canonical_package: "@google/gemini-cli"
         dependent_repos_count: 0
-        downloads_last_month: 1630541
+        downloads_last_month: 1703850
         graph_tier: E
         volume_tier: B
         cross_check_divergence: 1.0
-        release_downloads: 10489
+        release_downloads: 11014
         release_assets: 288
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 539
+        repo_age_days: 540
         last_commit_age_days: 0
-        cohort: framework
+        cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 79
+        active_maintainers_12mo: 80
         top1_share: 0.083
-        top3_share: 0.201
+        top3_share: 0.2
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,7 +156,7 @@ Gemini CLI 是一个带交互式终端界面的 Node.js 程序。你输入请求
 - **响应度：**现在可以测量了，而且表现很好——本次刷新里雷达图的响应度一轴从“无法评分”变成 A，总评也从 B 升到 A。
 - **治理与 bus factor：**路线图归 Google，但提交历史分布很广（过去一年 79 位活跃贡献者，前三名约占 20%），并在公开路线图下接受外部 PR。
 - **背书与长期性：**仓库约 18 个月（创建于 2025-04），Lindy 先验很弱。Google 有下线开发者产品的前科，但这个命令行和它的 Gemini Code Assist 产品绑在一起。[推断]
-- **采用度与风险：**约 10.7 万 star，上月 npm 下载 1,630,541 次；Apache-2.0，没有改过许可。主要风险是免费额度的条款和配额由 Google 说了算，随时可能变。
+- **采用度与风险：**约 10.7 万 star，上月 npm 下载 1,703,850 次（2026-10-09）；Apache-2.0，没有改过许可。主要风险是免费额度的条款和配额由 Google 说了算，随时可能变。
 
 ## 存疑（未验证）
 

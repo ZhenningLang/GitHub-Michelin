@@ -8,7 +8,7 @@ language: TypeScript
 license: MIT
 maturity: v1.18.35 (2026-10-06), very active (several releases/week); ~212k stars (2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T08:06:50Z
   default_branch: dev
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T09:20:18Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -38,26 +38,20 @@ health:
     adoption:
       grade: A
       raw:
-        registry: npmjs.org
-        canonical_package: "@opencode/schema"
-        dependent_repos_count: 0
-        downloads_last_month: 694874
-        graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 1.0
-        homebrew_installs_90d: 89710
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 88990
         homebrew_tier: A
-        release_downloads: 91326410
+        release_downloads: 91946158
         release_assets: 3588
         release_tier: A
         signal_basis: homebrew+releases
-        tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 526
-        last_commit_age_days: 0
-        cohort: framework
+        repo_age_days: 527
+        last_commit_age_days: 1
+        cohort: tool
     governance:
       grade: A
       raw:
@@ -152,7 +146,7 @@ health:
 ## 健康度与可持续性
 - **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。
 - **响应速度**：无法计算——no_traffic。
-- **采用广度**：Grade A——npmjs.org 上月下载量 694,874（包名：@opencode/schema）。
+- **采用广度**：Grade A——release 资产下载 91,946,158 次，Homebrew 90 天安装 88,990 次（评分器，2026-10-09）。npm 上的 CLI 包 `opencode-ai` 在注册表索引里没有链接到本仓库，所以没有计入。
 - **长青度**：Grade C——仓库已创建 526 天。
 - **治理集中度**：Grade A——前三贡献者占比 41.3%（过去 12 个月内 429 位活跃维护者）。
 - **许可风险**：Grade A——MIT 许可证。
@@ -163,6 +157,6 @@ health:
 - [未验证] 截至 2026-10-08 的 GitHub API 仓库事实：2025-04-30 创建，默认分支 `dev`，最后推送 2026-10-08，未归档，约 212k star、约 28.3k fork，MIT，TypeScript，owner 为 `anomalyco`（Organization）；最新版本 v1.18.35，发布于 2026-10-06。一个 17 个月大的仓库 star 涨这么快，既是采用信号，也是炒作信号。
 - [推断] “原 SST 团队”的依据是 `sst/opencode` 跳转到 `anomalyco/opencode`，且仓库仍带 `sst.config.ts`；没有读到正式公告。
 - [推断] “没有内置 OS 沙箱”是根据权限文档（只有 allow / ask / deny 规则）以及文档只在第三方生态插件里提到沙箱推断的；未对照源码确认。
-- [未验证] 采用度这一轴是按 npm 包 `@opencode/schema` 打分的，而不是 CLI 包 `opencode-ai`；响应速度一轴报 `no_traffic`，可仓库有几千个未关闭 issue——两者看起来都是打分器的偏差，这两项评级只能当粗略参考。
+- [未验证] 响应速度一轴没能打分（`no_window_signal`），可仓库有几千个未关闭 issue，看起来是打分器的偏差；采用度没有计入 `opencode-ai` 的 npm 安装量，要说偏差也只会是低估。
 - [未验证] Anthropic 禁止第三方使用 Pro/Max 以及 v1.3.0 移除插件，出自 OpenCode 的 provider 文档；未阅读 Anthropic 自己的条款。
 - [未验证] Go 版 `opencode-ai/opencode` → Charm Crush 的传承关系出自那个已归档仓库的 README。

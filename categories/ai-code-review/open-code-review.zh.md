@@ -115,7 +115,7 @@ Open Code Review 就是一个你对着 diff 调用的二进制。在任何模型
 
 ## 何时不用
 
-- **你想让工具自己把评论贴回 PR/MR。** CLI 只输出到 stdout（文本或 JSON），它自己不会去调 GitHub／GitLab 的接口。仓库现在提供了开箱可抄的 CI 配方，里面含回贴脚本，但写权限 token 和这一步的维护仍然是你的。想要开箱即用的回贴，应该选 [PR-Agent（Qodo）](pr-agent.zh.md) 或 CodeRabbit。`[推断]`
+- **你想让工具自己把评论贴回 PR/MR。** CLI 只输出到 stdout（文本或 JSON），它自己不会去调 GitHub／GitLab 的接口。仓库现在提供了开箱可抄的 CI 配方，里面含回贴脚本，但写权限 token 和这一步的维护仍然是你的。想要开箱即用的回贴，应该选 [PR-Agent](pr-agent.zh.md)（已从 Qodo 移交社区组织 `The-PR-Agent`）或 CodeRabbit。`[推断]`
 - **你需要高召回 / 「全都找出来」式的审计。** 它刻意以精确率换召回率（项目自己的说法是「Recall 低于通用 agent——一个刻意的取舍」）。如果你想要一张能捞出每一处可疑味道的大网，应该改用通用编程 agent（比如 Claude Code 配一个 review skill），并接受随之而来的误报。
 - **你专门追安全漏洞。** 自带规则触及了几类安全问题（XSS、SQL 注入），但没有污点分析、也没有精选 CWE 目录——要把关安全就该用 [claude-code-security-review](claude-code-security-review.zh.md) 或 Semgrep（未收录）。
 - **你的文件不在允许清单里。** 可审的扩展名约 113 个，其中 53 类文件/语言有专门规则；其余会落到通用的 `default.md` 规则上，数据文件和 DSL 密集的代码拿不到语言级指导——这类文件应该改用对应 DSL 的专用 linter。可以用 `ocr rules check <file>` 看你的文件实际解析成了什么。
@@ -127,7 +127,7 @@ Open Code Review 就是一个你对着 diff 调用的二进制。在任何模型
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [claude-code-security-review](claude-code-security-review.zh.md) | ✅ | 只要安全这一道闸、且必须跑成 Claude 原生的 GitHub Action，就选 claude-code-security-review；同一个 PR 还想要通用质量发现时，选 Open Code Review。 | 安全专用且 PR 原生，对比通用 review——也覆盖少量安全类，但不是扫描器。 |
-| [PR-Agent（Qodo）](pr-agent.zh.md) | ✅ | 想要一个开箱就把摘要、问答、行内评论贴到 GitHub／GitLab MR 的 bot，选 PR-Agent；更看重行级精度和确定性筛选层、愿意自己在 CI 里跑回贴配方时，选 Open Code Review。 | PR-Agent 管住了 MR 集成面；Open Code Review 管住了定位流水线，但止步于 JSON。 |
+| [PR-Agent](pr-agent.zh.md)（The-PR-Agent 社区组织，原属 Qodo） | ✅ | 想要一个开箱就把摘要、问答、行内评论贴到 GitHub／GitLab MR 的 bot，选 PR-Agent；更看重行级精度和确定性筛选层、愿意自己在 CI 里跑回贴配方时，选 Open Code Review。 | PR-Agent 管住了 MR 集成面；Open Code Review 管住了定位流水线，但止步于 JSON。 |
 | [react-doctor](react-doctor.zh.md) | ✅ | 代码库是 React、需要可重复的框架专属规则目录时选 react-doctor；需要在多语言仓库里做语言无关的语义判断时选 Open Code Review。 | 固定的 React 规则，对比跨约 113 类文件的 LLM 判断。 |
 | CodeRabbit | 未收录 | 想要托管 SaaS 自动评论、召回广且零流水线胶水时选 CodeRabbit；要求 diff 不出自己的 runner、模型和规则都想自己掌控时选 Open Code Review。 | 托管、广召回、自动回贴，对比自托管、偏精确率、输出 JSON。 |
 | Semgrep | 未收录 | 闸门必须是无 LLM 参与的确定性 AST/规则匹配、且不接受按次 token 成本时选 Semgrep；需要的是对意图的自然语言推理时选 Open Code Review。 | 单次快且免 token 的模式匹配，对比每次 review 都要花 token 的 agent 推理。 |

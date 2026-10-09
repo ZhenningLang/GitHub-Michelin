@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:29:53Z
+  computed_at: 2026-10-09T09:30:31Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.83
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,38 +29,32 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.3
-        qualifying_issues: 21
+        median_ttfr_hours: 7.4
+        qualifying_issues: 24
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: A
+      grade: B
       raw:
-        registry: npmjs.org
-        canonical_package: react-tools
-        dependent_repos_count: 15664
-        downloads_last_month: 110356
-        graph_tier: A
-        volume_tier: C
-        cross_check_divergence: 1.05
-        release_downloads: 2279404
+        registry: null
+        canonical_package: null
+        release_downloads: 2280333
         release_assets: 256
         release_tier: B
         signal_basis: releases
-        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4885
-        last_commit_age_days: 1
+        repo_age_days: 4886
+        last_commit_age_days: 2
         cohort: library
     governance:
       grade: A
@@ -160,7 +154,7 @@ React 是一个把**组件**变成真实 DOM 的库。组件就是普通的 Java
 - **维护（2026-10）。** 非常活跃：v19.3.0 于 2026-09-09 发布（ViewTransition、Fragment refs、transition 独立渲染），19.0/19.1/19.2 三条线在 2026 年 7 月仍收到 RSC 补丁版本。几乎每天都有提交；雷达的维护和响应两轴都是 A。
 - **治理与背书：2026 年有变化。** 自 2026-02-24 起，React、React Native 和 JSX 归 React Foundation 所有，该基金会由 Linux 基金会托管，有八家白金成员（Amazon、Callstack、Expo、Huawei、Meta、Microsoft、Software Mansion、Vercel）。技术方向仍由维护者决定，与董事会相互独立；截至 2026-10-08，仓库仍在 `facebook/react` 下，迁移尚在进行。贡献面很广（12 个月内 46 位活跃贡献者，头号贡献者占 21% 的提交）。
 - **年龄与 Lindy。** 2013 年开源（约 13 年），至今仍是市场第一的 UI 库，是本类目里最强的 Lindy 先验，而且现在已不再绑在一家公司的优先级上。
-- **采用度。** 最大的前端生态：组件库、元框架（Next.js、React Router、Expo）和 React Native 都建在它之上；本次重新打分后，雷达的采用度轴从 B 升到 A。
+- **采用度。** 最大的前端生态：组件库、元框架（Next.js、React Router、Expo）和 React Native 都建在它之上。雷达的采用度轴是 B（2026-10-09），只依据 GitHub release 资产下载量（2,280,333 次）：评分器使用的注册表索引没有把 npm 上的 `react` 包链接到本仓库，所以 React 真正的分发渠道——npm 安装量——没有计入，这个档位低估了实际采用。
 - **风险标记。** MIT 协议，没有改协议的历史。主要风险已转到服务端：RSC 相关包在 2025 年底出过一个严重的远程代码执行漏洞（CVE-2025-55182），而 RSC 与框架的分工意味着服务端特性在 Next.js 里演进得最快。
 
 ## 存疑（未验证）
@@ -171,3 +165,4 @@ React 是一个把**组件**变成真实 DOM 的库。组件就是普通的 Java
 - [推断] React Compiler 在真实代码库里能省掉多少手写记忆化因项目而异；有人报告过细微的行为变化，本页没有复现。
 - [推断] 招聘池和生态规模领先是从行业调查和包数量推断的，不是普查结果。
 - [未验证] 截至 2026-10-08 约 25.1 万 GitHub star；star 数会变。
+- [推断] 采用度 B 低估了 React：ecosyste.ms 没有把 npm 上的 `react` 包和 `facebook/react` 对应起来，评分器读不到 npm 下载量，只能按 release 资产打分。

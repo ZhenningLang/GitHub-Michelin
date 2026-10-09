@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:10:15Z
+  computed_at: 2026-10-09T09:25:46Z
   overall: B
-  overall_score: 2.83
-  scored_axes: 6
+  overall_score: 2.8
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 184
+        last_commit_age_days: 185
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -42,21 +42,13 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: B
-      raw:
-        registry: nuget.org
-        canonical_package: autogen.core
-        dependent_repos_count: 0
-        downloads_last_month: 224307
-        graph_tier: E
-        volume_tier: B
-        cross_check_divergence: null
-        tier_source: registry
+      grade: "?"
+      raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 1147
-        last_commit_age_days: 184
+        repo_age_days: 1148
+        last_commit_age_days: 185
         cohort: framework
     governance:
       grade: D
@@ -73,6 +65,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: CC-BY-4.0
+  unknowns:
+    adoption: { reason: ambiguous }
 ---
 # AutoGen
 
@@ -150,7 +144,7 @@ AutoGen is a library you import, not a service you run. It comes in three layers
 - **Maintenance (2026-10):** upstream declared maintenance mode — bug fixes, security patches and docs only, "community managed going forward". Last default-branch commit 2026-04-06 (a README banner update), last release python-v0.7.5 on 2025-09-30. The radar's maintenance B leans on a mature-library carve-out; read it as "stable and frozen", not "active".
 - **Governance / bus factor:** only one active maintainer in the scorer's 12-month window (governance D); Microsoft moved the teams to Microsoft Agent Framework. Responsiveness is still A (median first response 28.4 h) [推断] on a shrinking group of people.
 - **Backing & Lindy:** a Microsoft Research project, created 2023-08 (~3 years). Age does not rescue it here: the backer itself named a successor and stopped feature work, so the Lindy prior applies to MAF's continuity, not to AutoGen's code (longevity C).
-- **Adoption:** ~61k stars and a large body of tutorials and papers; the adoption axis is measured from NuGet `autogen.core` downloads (224,307 last month), i.e. the .NET package, not PyPI.
+- **Adoption:** ~61k stars and a large body of tutorials and papers; the radar leaves adoption unscored (`?`, 2026-10-09): the Python packages `autogen-agentchat` / `autogen-core` declare no repository link, so the registry index does not tie them to this repo, and the .NET NuGet packages it does tie to it do not represent the Python mainline.
 - **Risk flags:** the risk is deprecation, not licensing — docs are CC-BY-4.0 and code is MIT (`LICENSE-CODE`). Plan the MAF migration; Microsoft publishes an AutoGen → MAF migration guide.
 
 ## Caveats (unverified)
@@ -159,5 +153,5 @@ AutoGen is a library you import, not a service you run. It comes in three layers
 - [未验证] MAF's distributed execution status: as of the AutoGen → MAF migration guide (updated 2026-08) it was "planned"; it may have shipped since — re-check before using that as the reason to stay.
 - [推断] Responsiveness A is measured on issue first-response time; with one active maintainer, how long that holds is a guess.
 - [未验证] AG2's API lineage (continuing the 0.2 style) is from its self-description "formerly AutoGen"; this page did not read AG2's code.
-- [未验证] The adoption axis uses NuGet `autogen.core` downloads; PyPI download volume for `autogen-agentchat` was not checked.
+- [未验证] Adoption is unmeasured (`?`) because the scorer only counts packages the registry index links to this repo, and the Python packages `autogen-agentchat` / `autogen-core` declare no repository link; their PyPI download volume was not checked by hand either, so this page gives no adoption figure.
 - [未验证] Star count ~61k as of 2026-10; stars are a noisy signal.

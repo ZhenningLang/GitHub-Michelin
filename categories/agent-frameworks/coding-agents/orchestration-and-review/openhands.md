@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
-  overall: A
-  overall_score: 3.67
+  computed_at: 2026-10-09T08:55:50Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -36,38 +36,38 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 6.1
-        qualifying_issues: 9
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: B
+      grade: D
       raw:
-        registry: pypi.org
-        canonical_package: openhands-ai
+        registry: npmjs.org
+        canonical_package: "@openhands/agent-canvas"
         dependent_repos_count: 0
-        downloads_last_month: 435732
+        downloads_last_month: 17583
         graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 1.06
-        release_downloads: 25032
-        release_assets: 76
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 25397
+        release_assets: 80
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 939
+        repo_age_days: 940
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 51
-        top1_share: 0.315
-        top3_share: 0.554
+        active_maintainers_12mo: 49
+        top1_share: 0.314
+        top3_share: 0.552
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -155,7 +155,7 @@ Three pieces run together. The **Agent Server** (from the separate `OpenHands/so
 - **Maintenance (2026-10-08):** very active — pushed today, releases v1.21.0–v1.25.0 between 2026-09-22 and 2026-10-06. Velocity is high because the product was rebuilt in July 2026; treat that churn as a stability cost, not only as a health signal.
 - **Governance / bus factor:** owned by the `OpenHands` organization (the company behind OpenHands Cloud/Enterprise); about 50 active contributors in the past year and no single person dominates. The roadmap is the company's, and the system is split across several repos (`software-agent-sdk`, `automation`, `enterprise`).
 - **Age / Lindy:** the repo dates from 2024-03 (it started as OpenDevin), but the current Agent Canvas codebase only moved in at the end of July 2026. The repo's age says the *team* lasts; it says little about this *product's* stability.
-- **Adoption:** ~90k stars, largely earned by the earlier agent app. The radar's adoption axis is scored from PyPI downloads of `openhands-ai` (435,732 last month), a package frozen since 2026-07 — read that grade with care.
+- **Adoption:** ~90k stars, largely earned by the earlier agent app. Since 2026-10-09 the radar scores adoption from `@openhands/agent-canvas`, the npm package this repo now ships (17,583 downloads last month, grade D); the frozen `openhands-ai` PyPI package still draws about 461k a month from legacy installs. The current product is early in adoption even though the name is well known.
 - **Risk flags:** MIT `LICENSE` in this repo; commercial Cloud/Enterprise tiers sit alongside (open-core shape). A product pivot within a single repo has already happened once, so pin versions.
 
 ## Caveats (unverified)
@@ -163,5 +163,5 @@ Three pieces run together. The **Agent Server** (from the separate `OpenHands/so
 - [未验证] Whether every Agent Canvas feature works fully offline from OpenHands Cloud was not tested; the docs list Cloud APIs as an optional runtime service.
 - [未验证] `posthog-js` is a frontend dependency; whether telemetry is on by default and how to disable it was not checked.
 - [推断] The Agent Server's LLM access goes through LiteLLM-style model settings, inferred from the "use with any LLM" docs link and OpenHands' history; not read in `software-agent-sdk` source.
-- [推断] The radar's adoption grade reflects the frozen `openhands-ai` PyPI package rather than `@openhands/agent-canvas` on npm, so it may misstate current adoption.
+- [推断] The radar's adoption grade counts only `@openhands/agent-canvas` on npm; Agent Canvas users who run it some other way (a hosted service or a container image) are not counted, so the D may understate current use.
 - [未验证] The ~90k star count and contributor figures are from the GitHub API on 2026-10-08 and include the pre-pivot history.

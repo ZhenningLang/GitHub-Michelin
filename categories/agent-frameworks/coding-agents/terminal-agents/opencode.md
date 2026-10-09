@@ -8,7 +8,7 @@ language: TypeScript
 license: MIT
 maturity: v1.18.35 (2026-10-06), very active (several releases/week); ~212k stars (2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T08:06:50Z
   default_branch: dev
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T09:20:18Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
@@ -38,26 +38,20 @@ health:
     adoption:
       grade: A
       raw:
-        registry: npmjs.org
-        canonical_package: "@opencode/schema"
-        dependent_repos_count: 0
-        downloads_last_month: 694874
-        graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 1.0
-        homebrew_installs_90d: 89710
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 88990
         homebrew_tier: A
-        release_downloads: 91326410
+        release_downloads: 91946158
         release_assets: 3588
         release_tier: A
         signal_basis: homebrew+releases
-        tier_source: homebrew+releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 526
-        last_commit_age_days: 0
-        cohort: framework
+        repo_age_days: 527
+        last_commit_age_days: 1
+        cohort: tool
     governance:
       grade: A
       raw:
@@ -152,7 +146,7 @@ Running `opencode` starts two things: a local HTTP server that owns the sessions
 ## Health & viability
 - **Maintenance**: Grade A — 13/13 active weeks in trailing 13; last commit 0 days ago.
 - **Responsiveness**: Cannot be scored — no_traffic.
-- **Adoption**: Grade A — 694,874 monthly downloads via npmjs.org (package: @opencode/schema).
+- **Adoption**: Grade A — 91,946,158 release-asset downloads and 88,990 Homebrew installs in 90 days (scorer, 2026-10-09). The npm CLI package `opencode-ai` is not linked to this repo in the registry index, so it is not counted.
 - **Longevity**: Grade C — 526 days old.
 - **Governance**: Grade A — top-3 contributor share 41.3% (429 active maintainers in the trailing 12 months).
 - **Risk / License**: Grade A — MIT license.
@@ -163,6 +157,6 @@ Running `opencode` starts two things: a local HTTP server that owns the sessions
 - [未验证] Repo facts as of 2026-10-08 via GitHub API: created 2025-04-30, default branch `dev`, last push 2026-10-08, not archived, ~212k stars, ~28.3k forks, MIT, TypeScript, owner `anomalyco` (Organization); latest release v1.18.35 on 2026-10-06. Star growth this fast on a 17-month-old repo is a hype signal as much as an adoption one.
 - [推断] "Formerly SST" rests on `sst/opencode` redirecting to `anomalyco/opencode` and the repo still carrying `sst.config.ts`; no announcement was read.
 - [推断] "No built-in OS sandbox" is inferred from the permissions docs (allow/ask/deny rules only) and the docs mentioning sandboxing only for third-party ecosystem plugins; not confirmed against source.
-- [未验证] The adoption axis was scored on the npm package `@opencode/schema`, not the CLI package `opencode-ai`; the responsiveness axis reported `no_traffic` despite thousands of open issues — both look like scorer artifacts, so treat those two grades as rough.
+- [未验证] The responsiveness axis could not be scored (`no_window_signal`) despite thousands of open issues, which looks like a scorer artifact; adoption leaves out npm installs of `opencode-ai`, so if anything it understates use.
 - [未验证] The Anthropic Pro/Max restriction and the v1.3.0 plugin removal are as stated in OpenCode's provider docs; Anthropic's own terms were not read here.
 - [未验证] The Go `opencode-ai/opencode` → Charm Crush lineage is from that archived repo's README.

@@ -11,7 +11,7 @@
 | **Get Shit Done (GSD)** | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 | D（6/6） | [→](get-shit-done.zh.md) |
 | **PURE** | 当 coding-agent intent lineage 必须落进 Git 跟踪的 spec、schema、registry、phase gate 和带测试 Shell 脚本时用它；它仍是单维护者的早期 v0.1 框架。 | C（5/6） | [→](pure-agentic.zh.md) |
 | **Spec-Anchored Agentic Development** | 当永久 capability spec 和持续 spec-to-code conformance 比广泛 harness 支持更重要时用它；bundle 仅面向 Claude Code，而且项目只有十多天历史。 | B（3/5） | [→](spec-anchored-agentic-development.zh.md) |
-| **Spec Kit** | 当团队把功能代码交给 Copilot、Claude Code、Codex 或 Cursor 写，又想让每个功能先留下 spec → 方案 → 任务清单这条可评审的线索时用它——但 20 行的小修用它不划算，1.x 的 CLI 也几乎每周都在变。 | A（5/6） | [→](spec-kit.zh.md) |
+| **Spec Kit** | 当团队把功能代码交给 Copilot、Claude Code、Codex 或 Cursor 写，又想让每个功能先留下 spec → 方案 → 任务清单这条可评审的线索时用它——但 20 行的小修用它不划算，1.x 的 CLI 也几乎每周都在变。 | A（6/6） | [→](spec-kit.zh.md) |
 | **USDAD** | 当你要可编辑、文字优先的 planner／adversary／architect／executor 方法论原稿时用它；它是单提交文档工件，不是可安装 runtime 或强制执行的工作流。 | C（4/5） | [→](usdad.zh.md) |
 | **BMAD Method** | 当你要的是角色驱动的端到端 agent 方法（analyst、PM、架构、UX、开发、复核），而不是薄薄的 spec 管线时用它——并把飞快的涨星曲线当成未经验证。 | B（4/6） | [→](bmad-method.zh.md) |
 | **Improve** | 当你想让昂贵模型只读地审计仓库、再为便宜执行模型写出自包含计划时用它——它从不亲自实现任何东西。 | B（4/5） | [→](improve.zh.md) |
@@ -25,7 +25,7 @@
 | [Get Shit Done (GSD)](get-shit-done.zh.md) | ✅ | D（6/6） | 当你靠 coding agent 写代码、想要一条规格驱动、每阶段全新上下文、对抗 context rot 的构建流水线时用它。 |
 | [PURE](pure-agentic.zh.md) | ✅ | C（5/6） | 原生存入 Git 的 intent、schema、registry、handoff 与 phase-gate 机制；比纯文字方法更可执行，但仍很早期。 |
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.zh.md) | ✅ | B（3/5） | 永久 capability spec 加持续 spec-to-code conformance，但 bundle 仅面向 Claude Code，几乎没有采用历史。 |
-| [Spec Kit](spec-kit.zh.md) | ✅ | A（5/6） | 换来一条与智能体无关、`specify init` 一键装好的先写 spec 循环；代价是每个功能六次技能调用加三份 Markdown，还得锁定一个变化很快的 CLI 版本。 |
+| [Spec Kit](spec-kit.zh.md) | ✅ | A（6/6） | 换来一条与智能体无关、`specify init` 一键装好的先写 spec 循环；代价是每个功能六次技能调用加三份 Markdown，还得锁定一个变化很快的 CLI 版本。 |
 | [USDAD](usdad.zh.md) | ✅ | C（4/5） | 可编辑的 planner／adversary／architect／executor 方法论文档，不是可安装 runtime，也不会机械执行流程。 |
 | [BMAD Method](bmad-method.zh.md) | ✅ | B（4/6） | 重角色的端到端方法（analyst／PM／架构／UX／开发／复核），以 skills 与 agent persona 交付；项目很年轻，涨星曲线快到可疑。 |
 | [Improve](improve.zh.md) | ✅ | B（4/5） | 只读顾问：审计完九个类别后，为便宜执行器写出可交接的计划——与规格优先或角色优先的方法不同，它从不亲自实现。 |

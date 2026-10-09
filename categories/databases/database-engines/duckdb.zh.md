@@ -8,7 +8,7 @@ language: C++
 license: MIT
 maturity: active, v1.5.6 (2026-09-28; v1.4 LTS line; v2.0.0 scheduled 2026-10-21), ~41,976 stars (as of 2026-10)
 last_verified: 2026-10-08
-type: service
+type: library
 upstream:
   pushed_at: 2026-10-08T08:31:56Z
   default_branch: v2.0-cyanoptera
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:17:01Z
+  computed_at: 2026-10-09T09:18:21Z
   overall: A
   overall_score: 4.0
   scored_axes: 5
@@ -38,35 +38,26 @@ health:
     adoption:
       grade: A
       raw:
-        registry: pypi.org
-        canonical_package: duckdb-cli
-        dependent_repos_count: 0
-        downloads_last_month: 80617
-        graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
-        homebrew_installs_90d: 13871
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 14053
         homebrew_tier: A
-        release_downloads: 8563723
+        release_downloads: 8626545
         release_assets: 1218
         release_tier: B
-        docker_pulls: 229338
-        docker_image: duckdb/duckdb
-        docker_tier: D
-        signal_basis: homebrew+releases+docker
-        tier_source: homebrew+releases+docker
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3026
+        repo_age_days: 3027
         last_commit_age_days: 0
-        cohort: service
+        cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 227
-        top1_share: 0.261
-        top3_share: 0.397
+        active_maintainers_12mo: 228
+        top1_share: 0.259
+        top3_share: 0.394
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,7 +145,7 @@ DuckDB 是一个库：整个数据库引擎链接进你的进程，就像 SQLite
 - **维护（截至 2026-10-08）：** 非常活跃。v1.5.6 于 2026-09-28 发布，补丁版本大约每月一次，有公开的发布日历，v2.0.0 计划在 2026-10-21 发布。每隔一个小版本就是一个 LTS，享有一年社区支持；超出后由 DuckDB Labs 提供付费支持。
 - **治理/巴士因子：** 代码版权归 Stichting DuckDB Foundation（荷兰的非营利基金会），核心团队在 DuckDB Labs 工作。过去 12 个月有 227 名活跃贡献者；头号贡献者约占近期提交的四分之一——是真正的团队，但有一位明确的主导维护者。
 - **背书与长期性：** 仓库建于 2018-06（约 8 年），一直持续活跃，基金会持有知识产权、公司出资开发——作为分析引擎，Lindy 先验扎实。
-- **采用度：** 约 4.2 万 star、约 3.9 千 fork、release 资产约 860 万次下载，被大量数据工具嵌入。打分器的注册表信号（PyPI 上 `duckdb-cli` 包上月 80,617 次下载）仍给了 A，但低估了主包 `duckdb` 的使用量。
+- **采用度：** 约 4.2 万 star、约 3.9 千 fork、release 资产约 860 万次下载，被大量数据工具嵌入。雷达上的 A 依据的是 release 资产下载和 Homebrew 安装（90 天 14,053 次，2026-10-09）：PyPI 上的主包 `duckdb` 现在链接到单独的 duckdb-python 仓库，所以评分器不再给这个仓库读注册表包。
 - **风险信号：** MIT 许可证，没有改许可证的历史。本轮没能给响应度打分（打分器的时间窗口内没有符合条件的 issue；上一轮只基于 4 个 issue 打了 B），应理解为“未知”而不是“差”。近期最大的变更风险是即将到来的 v2.0 大版本。
 
 ## 存疑（未验证）
@@ -162,6 +153,5 @@ DuckDB 是一个库：整个数据库引擎链接进你的进程，就像 SQLite
 - [未验证] 没有核实 DuckDB v2.0 是否改变磁盘存储格式或破坏客户端 API；发布日历注明日期是暂定的。
 - [推断] 向量化列式执行、只从 Parquet 读取需要的列，是 DuckDB 文档中的设计，这里是概括，本次同步没有重读内部实现文档。
 - [推断] 对比表里对 Polars、Spark、pandas 的描述来自对这些项目的一般了解，本页没有重新阅读它们的资料。
-- [未验证] 健康度打分器的采用度注册表信号用的是 PyPI 上的 `duckdb-cli` 包（约 8.1 万次/月），很可能低估了主包 `duckdb` 的使用量；采用度等级没有人工修正。
+- [推断] 采用度没有计入 PyPI 上 `duckdb` 包的下载量，而这是最常见的安装方式，因为该包从 duckdb/duckdb-python 发布；不算它，采用度也已经是 A。
 - [未验证] “头号贡献者约占四分之一”是打分器的 `top1_share`（0.261），不是独立统计。
-- [推断] 本页沿用首版收录时的 `type: service`，尽管 DuckDB 主要是一个进程内库；没有改 type，是因为健康分的 longevity 分组由它决定。

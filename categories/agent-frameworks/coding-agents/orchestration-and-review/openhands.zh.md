@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
-  overall: A
-  overall_score: 3.67
+  computed_at: 2026-10-09T08:55:50Z
+  overall: B
+  overall_score: 3.33
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -36,38 +36,38 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 6.1
-        qualifying_issues: 9
+        qualifying_issues: 5
         band: relaxed_solo
         window_offset_days: 2
         source: issue
         inferred: false
     adoption:
-      grade: B
+      grade: D
       raw:
-        registry: pypi.org
-        canonical_package: openhands-ai
+        registry: npmjs.org
+        canonical_package: "@openhands/agent-canvas"
         dependent_repos_count: 0
-        downloads_last_month: 435732
+        downloads_last_month: 17583
         graph_tier: E
-        volume_tier: B
-        cross_check_divergence: 1.06
-        release_downloads: 25032
-        release_assets: 76
+        volume_tier: D
+        cross_check_divergence: null
+        release_downloads: 25397
+        release_assets: 80
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 939
+        repo_age_days: 940
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 51
-        top1_share: 0.315
-        top3_share: 0.554
+        active_maintainers_12mo: 49
+        top1_share: 0.314
+        top3_share: 0.552
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -155,7 +155,7 @@ health:
 - **维护（2026-10-08）：**非常活跃——今天还有 push，2026-09-22 到 2026-10-06 之间发了 v1.21.0–v1.25.0。速度快是因为产品在 2026 年 7 月重做过；这种变动要算作稳定性成本，不只是健康信号。
 - **治理与 bus factor：**归 `OpenHands` 组织所有（也就是做 OpenHands Cloud/Enterprise 的公司）；过去一年约 50 位活跃贡献者，没有哪一个人占绝对多数。路线图由公司掌握，整个系统拆在多个仓库里（`software-agent-sdk`、`automation`、`enterprise`）。
 - **年龄与 Lindy：**仓库创建于 2024-03（最早叫 OpenDevin），但现在的 Agent Canvas 代码 2026 年 7 月底才搬进来。仓库年龄说明*团队*能持续，却说明不了*这个产品*的稳定性。
-- **采用度：**约 9 万 star，大部分是早期 agent 应用积累的。雷达图的采用度一轴按 `openhands-ai` 的 PyPI 下载量（上月 435,732）打分，而这个包自 2026-07 起就不再更新——看这个分数要打折。
+- **采用度：**约 9 万 star，大部分是早期 agent 应用积累的。从 2026-10-09 起，雷达图的采用度一轴改按本仓库现在发布的 npm 包 `@openhands/agent-canvas` 打分（上月下载 17,583 次，D）；已冻结的 PyPI 包 `openhands-ai` 靠旧安装每月仍有约 46.1 万次下载。名字虽然响，当前这代产品的采用还在早期。
 - **风险信号：**本仓库 `LICENSE` 是 MIT；旁边有商业的 Cloud/Enterprise 版本（开源核心 + 商业版的形态）。同一个仓库里已经发生过一次产品转向，所以要锁定版本。
 
 ## 存疑（未验证）
@@ -163,5 +163,5 @@ health:
 - [未验证] 没有实测 Agent Canvas 的所有功能能否完全脱离 OpenHands Cloud 运行；文档把 Cloud API 列为可选运行时服务。
 - [未验证] `posthog-js` 是前端依赖；遥测是否默认开启、怎么关闭，没有核实。
 - [推断] Agent Server 的大模型接入走 LiteLLM 风格的模型配置，这是根据“可用任意大模型”的文档链接和 OpenHands 的历史推断的，没有去读 `software-agent-sdk` 的源码。
-- [推断] 雷达图的采用度分数反映的是已冻结的 `openhands-ai` PyPI 包，而不是 npm 上的 `@openhands/agent-canvas`，可能和当前的真实采用情况不符。
+- [推断] 雷达图的采用度只统计 npm 上的 `@openhands/agent-canvas`；通过其他方式（托管服务或容器镜像）使用 Agent Canvas 的人不在其中，所以 D 可能低估了当前使用量。
 - [未验证] 约 9 万 star 和贡献者数字取自 2026-10-08 的 GitHub API，包含转向之前的历史。

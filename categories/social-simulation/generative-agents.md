@@ -6,7 +6,7 @@ category: social-simulation
 tags: [generative-agents, smallville, research-prototype, llm-agents, memory-stream, embodied-simulation]
 language: Python
 license: Apache-2.0
-maturity: "research prototype; unmaintained since 2024-08; 22.1k stars (as of 2026-09)"
+maturity: "research prototype; unmaintained since 2023-08; 22.1k stars (as of 2026-09)"
 last_verified: 2026-09-18
 type: app
 upstream:
@@ -74,7 +74,7 @@ Choose it over the substitutes only when the deciding factor is **historical and
 
 ## When NOT to use
 
-- **Anything you intend to run seriously or build on.** No commits since 2024-08-05 (as of 2026-09), and the pins are paper-era (`openai==0.27.0`, `Django==2.2`) — the old OpenAI client API alone forces porting. For a maintained base use [OASIS](oasis.md) or [AgentSociety](agentsociety.md).
+- **Anything you intend to run seriously or build on.** No default-branch commits since 2023-08-11 (as of 2026-09), and the pins are paper-era (`openai==0.27.0`, `Django==2.2`) — the old OpenAI client API alone forces porting. For a maintained base use [OASIS](oasis.md) or [AgentSociety](agentsociety.md).
 - **Scale beyond a demo.** 25 agents in one small town is the design point; for thousands-to-million-agent social-media simulation use [OASIS](oasis.md).
 - **A productized prediction/report workflow.** It produces a replayable simulation, not reports; use [MiroFish](mirofish.md).
 - **A modern LLM stack.** Expect dependency archaeology and no test safety net; for anything production-adjacent, treat this as a pattern source and reimplement on a maintained framework.
@@ -106,7 +106,7 @@ Choose it over the substitutes only when the deciding factor is **historical and
 
 ## Health & viability
 
-- **Maintenance — dormant.** Last push 2024-08-05 (as of 2026-09): over two years without commits; not archived, but effectively frozen; 146 open issues (2026-09) without responses.
+- **Maintenance — dormant.** Last default-branch commit 2023-08-11 (GitHub's `pushed_at` of 2024-08-05 is not a commit; as of 2026-09): over three years without commits; not archived, but effectively frozen; 146 open issues (2026-09) without responses.
 - **Governance / bus factor.** Personal research repo (`joonspk-research`, 26 of ~31 counted commits, 2026-09); the authors moved on after the UIST'23 publication.
 - **Age & Lindy — old enough to judge, and the verdict is "landmark, not infrastructure".** Created 2023-07; 22.1k stars (2026-09) driven by the paper's fame. Its lasting value is as the field's reference implementation, not as a maintained dependency [推断].
 - **Risk flags.** Frozen dependency pins and no security maintenance — do not expose a deployment to the internet; the 2D-world code paths were written for a demo, not hardening.

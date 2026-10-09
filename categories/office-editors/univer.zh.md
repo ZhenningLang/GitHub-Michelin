@@ -127,7 +127,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 任何新的嵌入式表格选 Univer——它是同一条维护中的后继线（与 Luckysheet 同团队，Fortune 的上游），有真公式引擎与 Node 无头；只有当 MIT 许可（相对 Apache-2.0 的专利授权，通常无所谓）或 Luckysheet 兼容 JSON 成为决定项时才选 Fortune，因为它自 2025-12-15 无提交。 | Univer 换来引擎深度与活跃的 1.0 发布线；Fortune 换来零配置即插即用，代价是停更的仓库与需要另装的 xlsx 读写。 |
+| [Fortune Sheets](fortune-sheets.zh.md) | ✅ | 任何新的嵌入式表格选 Univer——它是同一条维护中的后继线（与 Luckysheet 同团队，Fortune 的上游），有真公式引擎与 Node 无头；只有当 MIT 许可（相对 Apache-2.0 的专利授权，通常无所谓）或 Luckysheet 兼容 JSON 成为决定项时才选 Fortune，因为它的默认分支自 2025-11-06 无提交。 | Univer 换来引擎深度与活跃的 1.0 发布线；Fortune 换来零配置即插即用，代价是停更的仓库与需要另装的 xlsx 读写。 |
 | [Handsontable](handsontable.zh.md) | ✅ | 交付物是一张表格*应用*（大表 Canvas 性能、公式栏、文档模块、agent API）、且 Apache-2.0 是硬条件时选 Univer；只需要表单里一张录入网格、愿为 15 年 DOM 网格成熟度付费时选 Handsontable。 | Univer：整套编辑器 Kit、许可免费、代码库更年轻。Handsontable：网格交互成熟，但商用要买授权。 |
 | [ONLYOFFICE Docs](onlyoffice-documentserver.zh.md) | ✅ | 编辑器必须融化进你自己的 UI 与数据流时选 Univer；「点文件→熟悉的完整 Office 编辑器带协同」本身就是需求时选 ONLYOFFICE——在 Univer 里复刻它意味着买 Pro 或自写服务端。 | Univer = 白牌 SDK，OSS 核心不含协同；ONLYOFFICE = 固定但完整的编辑器，AGPL，存储归你。 |
 | [Grist](grist.zh.md) | ✅ | 团队今天要一个能用的结构化数据成品（类型化列、Python 公式、行级权限、webhook）选 Grist；*你*在出货一个产品、没有可嵌入的 Grist 外壳这回事时选 Univer。 | Grist 以运维成本给成品应用；Univer 以工程成本给你造应用的零件。 |

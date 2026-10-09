@@ -2,7 +2,7 @@
 name: tusd
 slug: tusd
 repo: https://github.com/tus/tusd
-category: nginx-modules
+category: object-storage
 tags: [upload, resumable-upload, tus-protocol, go, server, file-transfer, http, chunking]
 language: Go
 license: MIT
@@ -114,7 +114,7 @@ tus 是一个用于断点续传的开放 HTTP 协议：客户端先 `POST` 创�
 - **客户端可以直传存储桶。** 如果每个客户端都能用 S3/GCS 预签名 URL 和云 SDK 的分块上传，字节就完全绕开你的基础设施；那就直传，别再加一跳 tusd。tusd 的价值在于多种客户端平台共用一个协议，或者存储可以替换。
 - **你打算多实例横向扩展，又没有粘性路由。** tusd 的锁要么是本地磁盘上的 PID 文件，要么是进程内互斥锁（S3/GCS/Azure 的默认），文档明说目前没有内置分布式锁。放在轮询负载均衡后面，客户端的续传请求可能打到另一个实例，而前一个实例还在写，上传可能被写坏。用粘性会话、单独维护的 `tusd-etcd3-locker`，或者把 handler 嵌进 Go 服务、自己提供锁实现。
 - **你需要一个服务器按租户或文件大小写到不同后端。** tusd 二进制启动时只加载一个存储后端，不能动态切换；要在多个后端间路由，就把 `github.com/tus/tusd/v2/pkg/handler` 嵌进自己的 Go 服务、建多个 handler，或者跑多个 tusd 实例。
-- **你需要 NGINX 自己在边缘接住上传。** tusd 是独立 HTTP 服务器，不是 NGINX 模块；它作为代理目标坐在 NGINX 后面（要关掉请求缓冲）。如果硬要求是“NGINX 直接把请求体落盘、不加别的服务”，用 [nginx-upload-module](nginx-upload-module.zh.md)——代价是没有断点续传。
+- **你需要 NGINX 自己在边缘接住上传。** tusd 是独立 HTTP 服务器，不是 NGINX 模块；它作为代理目标坐在 NGINX 后面（要关掉请求缓冲）。如果硬要求是“NGINX 直接把请求体落盘、不加别的服务”，用 [nginx-upload-module](../nginx-modules/nginx-upload-module.zh.md)——代价是没有断点续传。
 - **你的技术栈没有 Go，想把上传服务器放进 Node 应用里。** tus 组织还维护 `@tus/server`（tus-node-server），可以挂进 Express/Fastify/Next.js；用它，而不是另外运维一个 Go 二进制。
 - **没有运维带宽再管一个服务。** 即便只是一个二进制，tusd 也要部署、配 TLS、监控（它暴露 `/metrics`）、清理被放弃的上传、做升级。
 
@@ -122,7 +122,7 @@ tus 是一个用于断点续传的开放 HTTP 协议：客户端先 `POST` 创�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [nginx-upload-module](nginx-upload-module.zh.md) | ✅ | 必须让 NGINX 自己把 multipart 上传流式落盘、不加额外服务时，选 nginx-upload-module；中断的上传必须能续传时，选 tusd。 | 不用额外服务，但它是低活跃的第三方 C 模块，没有 tus 续传协议。 |
+| [nginx-upload-module](../nginx-modules/nginx-upload-module.zh.md) | ✅ | 必须让 NGINX 自己把 multipart 上传流式落盘、不加额外服务时，选 nginx-upload-module；中断的上传必须能续传时，选 tusd。 | 不用额外服务，但它是低活跃的第三方 C 模块，没有 tus 续传协议。 |
 | tus-node-server（`@tus/server`） | 未收录 | 后端是 Node.js、想把 tus 服务器挂进应用里时，选 tus-node-server；想要一个与应用语言无关的独立二进制时，选 tusd。 | 同一个组织出的同一协议、同类存储，但它跑在你的 Node 进程里，而不是旁边。 |
 | 直传 S3 预签名（分块）上传 | 未收录 | 所有客户端都能直连同一家云的对象存储时，选预签名上传、省掉服务器这一跳；需要跨多种客户端平台的厂商中立协议时，选 tusd。 | 扩展性最好，也不用运维上传层，但客户端代码绑定某一家的分块上传 API。 |
 | 应用框架上传处理（Django/Rails/Express） | 未收录 | 上传又小又少、运维时间才是硬约束时，留在框架里处理；一旦大文件加不稳定网络让重传代价变高，换 tusd。 | 不加任何基础设施，但慢客户端占着应用 worker，上传失败就得从零重来。 |

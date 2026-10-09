@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:26Z
+  computed_at: 2026-10-09T08:54:03Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -38,32 +38,26 @@ health:
     adoption:
       grade: B
       raw:
-        registry: npmjs.org
-        canonical_package: "@theia/vscode-builtin-vb"
-        dependent_repos_count: 1
-        downloads_last_month: 2136
-        graph_tier: D
-        volume_tier: D
-        cross_check_divergence: null
-        homebrew_installs_90d: 1092
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1093
         homebrew_tier: B
         release_downloads: 810
         release_assets: 3
         release_tier: D
         signal_basis: homebrew+releases
-        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4052
+        repo_age_days: 4054
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 143
-        top1_share: 0.133
-        top3_share: 0.225
+        top1_share: 0.135
+        top3_share: 0.227
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -153,7 +147,7 @@ health:
 - **维护（2026-10-08）：** 极其活跃——每天都有提交，近 13 周 13 周都有提交；至少从 2026-05 起，几乎每周发一个新的次版本（2026-05-28 的 1.122 到 2026-10-07 的 1.141），尽管 README 里还写着“每月更新”。
 - **治理：** 由微软拥有并投入人力；工作分布很广（12 个月内 143 位活跃提交者，前三贡献者占比 22.5%——雷达 A）。路线图由微软制定，以迭代计划的形式发布在 wiki 上。
 - **背书与 Lindy：** 2015-09 创建，约 11 年，背后是微软的开发者工具部门——年龄乘以活跃度的信号很强。
-- **采用：** 属于使用最广的代码编辑器之一；雷达上采用一轴只有 B，是低估——桌面应用的安装量，包注册表和 GitHub release 计数器都看不到（它被匹配到的代理包是一个无关的 Theia 构件）。
+- **采用：** 属于使用最广的代码编辑器之一；雷达上采用一轴只有 B，是低估——桌面应用的安装量，包注册表和 GitHub release 计数器都看不到。从 2026-10-09 起，评分器不再给它读注册表包（这个仓库名下的 npm 候选都是第三方 Theia 的转包），只按它能看到的 Homebrew 和 release 下载信号打分。
 - **风险信号：** 源码是 MIT，但你下载的二进制适用带遥测的专有产品许可，扩展市场的条款也把扩展限制在微软产品内使用。AI 功能（Copilot）正越来越多地进入核心；客户端代码是开源的，但服务需要 GitHub Copilot 订阅，所以预计产品方向会继续偏向微软自家服务。
 
 ## 存疑（未验证）

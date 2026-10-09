@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "Letta Code does", "zh": "Letta Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the CLI and start it in your project folder", "zh": "装上 CLI，在项目目录里启动", "code": "npm install -g @letta-ai/letta-code · letta"},
+    {"lane": "you", "en": "Choose Letta Cloud or local state, then connect your model keys", "zh": "选 Letta Cloud 还是本地存状态，再连上模型 key", "code": "/connect"},
+    {"lane": "you", "en": "Ask it to study the repo and bootstrap its memory", "zh": "让它读一遍仓库，初始化记忆", "code": "/init"},
+    {"lane": "them", "en": "Saves what it learned as git-versioned memory files pinned into its own prompt", "zh": "把学到的东西存成用 git 记版本的记忆文件，钉进自己的提示词", "component": {"en": "MemFS", "zh": "MemFS"}},
+    {"lane": "you", "en": "Give it coding tasks, and correct it when it gets your conventions wrong", "zh": "派编码任务给它，它弄错你的约定时纠正它", "code": "/remember"},
+    {"lane": "them", "en": "Does the work with file, shell and git tools, and commits the lesson to memory", "zh": "用文件、shell、git 工具把活干完，把教训提交进记忆", "component": {"en": "agent loop", "zh": "agent 循环"}},
+    {"lane": "them", "en": "Next session, in the terminal, desktop app or a chat channel, the same agent resumes with that memory", "zh": "下次会话，无论终端、桌面端还是聊天渠道，同一个 agent 带着记忆接着干"}
+  ],
+  "value": {
+    "en": "You stop re-explaining your repo and habits every session: one agent remembers them, in files you can diff",
+    "zh": "你不用每次开会话都重新交代仓库和习惯：同一个 agent 记得它们，而且记在你能 diff 的文件里"
+  },
+  "sources": [
+    "README.md, Get started (npm install -g @letta-ai/letta-code; navigate to your project directory and run letta; Letta Cloud is the default, first launch asks to sign in or proceed locally; letta backend cloud / letta backend local; /connect configures your own LLM API keys)",
+    "README.md, Feature Overview (memory blocks, skill learning, /sleeptime dreaming, MemFS tracks all context via git, CLI / desktop app / chat.letta.com / Telegram / Slack / Discord channels)",
+    "docs.letta.com/configuration/memory (2026-10-09: /init bootstraps memory for the current project by inspecting the repository; /remember always use pnpm in this repo; the agent commits the update to MemFS; dreaming uses background subagents)",
+    "docs.letta.com/platform/cli (2026-10-09: cd your-project; letta; ask the agent to explore your codebase or run /init)",
+    "src/tools/descriptions/ (Bash, Edit, ApplyPatch, Read, Grep, Glob, EnterWorktree, WatchPR, Memory tool definitions)"
+  ]
+}

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:12:19Z
+  computed_at: 2026-10-09T08:15:15Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 28
+        qualifying_issues: 29
         band: default
         window_offset_days: 1
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: pydantic-ai-slim
+        canonical_package: pydantic-ai
         dependent_repos_count: 0
-        downloads_last_month: 23908854
+        downloads_last_month: 5383780
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: null
-        release_downloads: 5
+        cross_check_divergence: 1.0
+        release_downloads: 16
         release_assets: 5
         release_tier: D
         signal_basis: releases
@@ -59,13 +59,13 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 839
-        last_commit_age_days: 0
+        repo_age_days: 840
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 71
+        active_maintainers_12mo: 70
         top1_share: 0.329
         top3_share: 0.695
         window_source: stats_contributors
@@ -153,12 +153,12 @@ Pydantic AI 是一个库，不是一个服务：`uv add pydantic-ai`（需要 Py
 - **维护（2026-10-08）：** 非常活跃——几天一个版本（v2.54.0 发布于 2026-10-03），V1 分支在安全修复窗口内仍在出补丁版本（v1.107.7 发布于 2026-09-30）。
 - **治理与背书：** 归 Pydantic Services Inc. 所有，也就是 Pydantic 本身背后的公司；核心团队是公司员工，巴士因子健康（治理集中度 A，前三位贡献者占提交不到 70%）。公司收入来自 README 里推广的 Logfire 和 AI Gateway，但两者都是可选的，埋点用的是标准 OpenTelemetry。
 - **年龄 / Lindy：** 仓库约 2 年 4 个月（839 天，2024-06 创建），单看自身长青度只有 C；但母项目 Pydantic 历史长、被大半个 Python AI 生态依赖，这个先验比本仓库的年龄更有分量。
-- **采用：** 约 2.05 万 star，`pydantic-ai-slim` 每月 PyPI 下载量 23,908,854（采用广度 A）。
+- **采用：** 约 2.05 万 star；按评分器 2026-10-09 的读数，元包 `pydantic-ai` 每月 PyPI 下载 5,383,780 次（采用广度 A），它包着的核心包 `pydantic-ai-slim` 下载量还要高出好几倍。
 - **风险信号：** MIT，无改许可历史；主要风险是 API 演进快（V1 到 V2 只隔 9 个月），而不是被弃置。
 
 ## 存疑（未验证）
 
-- [推断] `pydantic-ai-slim` 的 PyPI 下载量很可能包含被其他框架间接拉进来的安装，会高估直接采用。
+- [推断] `pydantic-ai-slim` 的 PyPI 下载量（上一轮读数为每月 23,908,854 次）很可能包含被其他框架间接拉进来的安装；雷达现在用的元包 `pydantic-ai` 下载量更接近直接采用。
 - [未验证] 对 Google ADK 和 OpenAI Agents SDK 的对比判断部分参考了 Pydantic 自己写的对比文档，作者是利益相关方。
 - [未验证] 没有逐一核对每个厂商适配器是否支持全部功能（原生结构化输出、实时语音、图像生成）；README 说明各厂商的支持情况写在文档里。
 - [推断] “Production/Stable”只是包的分类器标注；V2 能力模型在大规模生产中的表现没有独立核实。

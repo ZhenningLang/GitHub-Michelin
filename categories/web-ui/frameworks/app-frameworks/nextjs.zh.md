@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:29:24Z
-  overall: B
-  overall_score: 3.4
+  computed_at: 2026-10-09T09:15:48Z
+  overall: A
+  overall_score: 4.0
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -36,20 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@vercel/devlow-bench"
-        dependent_repos_count: 0
-        downloads_last_month: 10618
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
+        canonical_package: next
+        dependent_repos_count: 345645
+        downloads_last_month: 246347357
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.08
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3654
+        repo_age_days: 3655
         last_commit_age_days: 0
         cohort: framework
     governance:
@@ -160,12 +160,12 @@ Next.js 是包在 React 外面的一层框架：你写组件，它决定组件�
 - **响应速度：** 这一轮没能评分（评分器拿不到可用的 issue 响应窗口）；仓库挂着 3,500 多个未关闭的 issue 和 PR，小众 bug 别指望很快有人回。[推断]
 - **治理与背书：** 按贡献者分布，治理评级 A——几十位活跃维护者，没有一家独大的提交者——但这是单一厂商治理：Vercel 雇用核心团队、掌握路线图。Vercel 资金充足，Next.js 是它的旗舰项目。
 - **年龄与 Lindy：** 2016 年开源，至今仍在发大版本——大约十年，长期性评级 A；它挺过了 Pages→App Router、webpack→Turbopack 两次大转向。
-- **采用度：** 雷达上的采用评级 D 是评分器的误判——它把项目对应到了 monorepo 里一个内部基准测试包 `@vercel/devlow-bench`，而不是 `next` 包。按真实的包算，Next.js 在 npm 上是遥遥领先的 React 元框架；雷达的整体分因此被低估了。
+- **采用度（A）：** 按评分器 2026-10-09 的读数，`next` 包上月 npm 下载 246,347,357 次，有 345,645 个依赖它的仓库——在 npm 上是遥遥领先的 React 元框架。
 - **风险信号：** MIT，没有改协议的历史。眼下真正的风险是 2026 年的安全公告数量和围绕厂商设计的默认配置，而不是许可证或弃坑。
 
 ## 存疑（未验证）
 
-- [未验证] npm 下载量 API 显示 `next` 在 2026-09-05 → 2026-10-04 期间下载 253,413,359 次（2026-10-08 读取）；这才是评分器本该使用的数字。
+- [未验证] npm 下载量 API 显示 `next` 在 2026-09-05 → 2026-10-04 期间下载 253,413,359 次（2026-10-08 读取）；评分器 2026-10-09 的读数（246,347,357）来自 ecosyste.ms，统计窗口略有不同。
 - [未验证] 安全公告数量（2026 年 41 条，3 条严重、14 条高危）来自 2026-10-08 的 GitHub 仓库安全公告 API；严重级别以 Vercel 发布的为准。
 - [推断] 最新功能在 Vercel 平台上“先落地、效果最好”的程度，是从默认配置和文档侧重推出来的，没有做过基准对比。
 - [未验证] 截至 2026-10-08 约 14.32 万 GitHub star；star 数是近似值，会随时间变化。

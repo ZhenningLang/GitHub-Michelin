@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:32:08Z
+  computed_at: 2026-10-09T08:19:14Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 99.7
-        qualifying_issues: 20
+        median_ttfr_hours: 68.9
+        qualifying_issues: 21
         band: default
         window_offset_days: 0
         source: issue
@@ -51,7 +51,7 @@ health:
         graph_tier: C
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 5825
+        release_downloads: 5835
         release_assets: 584
         release_tier: D
         signal_basis: releases
@@ -59,14 +59,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3083
+        repo_age_days: 3084
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 89
-        top1_share: 0.314
+        top1_share: 0.315
         top3_share: 0.5
         window_source: stats_contributors
         carve_out: null
@@ -156,7 +156,7 @@ health:
 - **治理：** 归 Dagster Labs 所有，这家公司销售 Dagster+；贡献者基础广——近 12 个月有 89 位活跃维护者，头号贡献者约占 31% 的提交——日常层面的总线因子不错，但路线图由一家厂商决定。
 - **年龄 / Lindy：** 2018-04 创建，约 8 年，仍在稳定的 1.x 线上——Lindy 先验扎实，只是比 Airflow 年轻。
 - **采纳度：** 近一个月 PyPI 下载 7,886,605 次（评分器快照），在数据编排器里很强。
-- **响应速度：** 新 issue 首次响应的中位数 99.7 小时（B），比它的提交节奏慢；未关闭 issue 2500 多个。
+- **响应速度：** 新 issue 首次响应的中位数 68.9 小时（B，2026-10-09），比它的提交节奏慢；未关闭 issue 2500 多个。
 - **风险信号：** Apache-2.0，无改许可历史；开放核心（open-core）的划分——文档里告警、Insights、RBAC/单点登录、分支部署都只在 Dagster+ 提供——是要盯的地方，看会不会有更多功能挪到付费那一侧。
 
 ## 存疑（未验证）

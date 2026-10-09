@@ -120,7 +120,7 @@ dae 是一个 Go 守护进程，加上它装进你内核的 eBPF 程序。启动
 - **你需要图形界面或网页面板。** dae 只有配置文件加 `systemctl`／`dae reload`。配套面板 [daed](https://github.com/daeuniverse/daed)（未收录）截至 2026-09-28 在 GitHub 上被标为**已归档**，尽管 2026-09-24 还有一次发版构建提交。需要持续维护的网页界面，同一批作者更早的 [v2rayA](https://github.com/v2rayA/v2rayA)（未收录）是选项；OpenWrt 上常见做法是 mihomo／sing-box 的 LuCI 插件（如 OpenClash，未收录）。
 - **你依赖 fake-IP 或让 DNS 绕开这台机器。** 域名规则要求 DNS 应答经过 dae（或在默认 30 毫秒窗口内嗅探到 SNI）；不支持 fake-IP（issue #895 仍开着），客户端若用加密 DNS，域名分流会悄悄变弱。网络设计离不开 fake-IP 时，用 mihomo 或 sing-box。
 - **机器是一台同时提供 UDP 服务的公网 VPS。** README 明确提醒：出站 UDP——包括你自己 Shadowsocks／Hysteria 服务端回给客户端的包——可能被路由到代理，必须加 `sport(...) -> must_direct` 规则。服务端机器应单独跑服务端程序，或把 [Xray-core](https://github.com/XTLS/Xray-core)（未收录）／sing-box 当服务端用，不要再叠一个客户端透明代理。
-- **AGPL-3.0 与你的分发方式冲突。** 把 dae 塞进你要出货的固件或设备，会带上 AGPL 义务；mihomo 的 `main` 分支在 GitHub API 上显示为 MIT [未验证]，sing-box 是 GPL-3.0-or-later 外加命名限制条款。
+- **AGPL-3.0 与你的分发方式冲突。** 把 dae 塞进你要出货的固件或设备，会带上 AGPL 义务，而常见替代品同样是 copyleft：mihomo 的代理代码（`Meta` 发布分支、`Alpha` 开发分支以及各发布 tag）是 GPL-3.0——GitHub 给这个仓库显示的 MIT 来自默认的 `main` 分支，那里放的是一个无关的 Python 项目；sing-box 是 GPL-3.0-or-later 外加命名限制条款。需要宽松许可证时，看 [Xray-core](https://github.com/XTLS/Xray-core)（MPL-2.0，未收录）或 [v2ray-core](https://github.com/v2fly/v2ray-core)（MIT，未收录），两者都是用户态代理，没有 dae 那种内核内分流。
 - **你要一个冻结、保守的网络栈。** v2 系列在配置不变的情况下改了默认值（`sniffing_timeout` 从 100 毫秒降到 30 毫秒、自动设置 `so_mark_from_dae`、默认 `bootstrap_resolver` 指向中国大陆的 DNS），v2.1.1 又合入了数据面／控制面的整体重写；每次升级前都要读 `CHANGELOGS.md`，或者锁定版本。
 
 ## 横向对比
@@ -164,7 +164,7 @@ dae 是一个 Go 守护进程，加上它装进你内核的 eBPF 程序。启动
 
 - [未验证] “高性能”、直连几乎零损耗的说法来自 README 链接的一张 Google 表格基准；本页没有打开或复现它，与 mihomo／sing-box 的实际 CPU 差距取决于硬件和流量构成。
 - [未验证] daed 为何归档，没找到任何说明；该仓库 2026-09-24 仍有提交，归档标记可能是刚加的或临时的。
-- [未验证] mihomo 的许可证是从 GitHub API 读到的 `main` 分支结果（MIT）；该仓库其他分支的许可证可能不同。
+- [未验证] mihomo 的许可证（GPL-3.0）读自 `Meta`、`Alpha` 两个分支和 `v1.19.32` tag 上的 `LICENSE` 文件，以及 `Meta` 分支的 README（2026-10-09）；默认的 `main` 分支放的是一个无关的 MIT 许可 Python 包，所以 GitHub API 报 MIT。Xray-core、v2ray-core 是否适合某种透明代理部署没有核对，只从 GitHub API 读了它们的许可证。
 - [推断] “深层 eBPF 知识集中在少数人手里”是从数据面 PR 的提交作者推出来的，并非维护者的表态。
 - [推断] 导语和“何时使用”里的 CPU 症状，是 README 所描述机制（直连流量绕过代理进程）的推论，不是在具体硬件上测出的结果。
 - [推断] 绕过审查的法律风险随司法辖区而异，本页没有逐国调研。

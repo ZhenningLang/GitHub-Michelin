@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:32:08Z
+  computed_at: 2026-10-09T08:19:14Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 99.7
-        qualifying_issues: 20
+        median_ttfr_hours: 68.9
+        qualifying_issues: 21
         band: default
         window_offset_days: 0
         source: issue
@@ -51,7 +51,7 @@ health:
         graph_tier: C
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 5825
+        release_downloads: 5835
         release_assets: 584
         release_tier: D
         signal_basis: releases
@@ -59,14 +59,14 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3083
+        repo_age_days: 3084
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 89
-        top1_share: 0.314
+        top1_share: 0.315
         top3_share: 0.5
         window_source: stats_contributors
         carve_out: null
@@ -156,7 +156,7 @@ You write ordinary Python functions and decorate each with `@dg.asset`; the func
 - **Governance:** owned by Dagster Labs, the company selling Dagster+; broad contributor base — 89 maintainers active in 12 months, top contributor at about 31% of commits — so day-to-day bus factor is good, while the roadmap is one vendor's.
 - **Age / Lindy:** created 2018-04, about 8 years old and still on a steady 1.x line — a solid Lindy prior, though younger than Airflow.
 - **Adoption:** 7,886,605 PyPI downloads in the last month (scorer snapshot), strong for a data orchestrator.
-- **Responsiveness:** median first response to new issues 99.7 hours (B), slower than its commit pace; 2,500+ open issues.
+- **Responsiveness:** median first response to new issues 68.9 hours (B, 2026-10-09), slower than its commit pace; 2,500+ open issues.
 - **Risk flags:** Apache-2.0 with no relicense; the open-core split (alerts, Insights, RBAC/SSO, branch deployments are Dagster+-only in the docs) is the thing to watch if more features move behind it.
 
 ## Caveats (unverified)

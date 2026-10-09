@@ -111,9 +111,6 @@ health:
 </details>
 <!-- flow-steps:end -->
 
-<!-- flow-steps:begin (generated from flows/vmaf.json by tools/flow_card.py — do not edit) -->
-<!-- flow-steps:end -->
-
 ## 何时不用
 
 - **无参考 / 在线质量监控。** VMAF 是**全参考**的——它需要原始无损源与失真视频逐帧对齐地并排。对于你拿不到参考的实际线上流，它不适用（无参考指标是另一族）。

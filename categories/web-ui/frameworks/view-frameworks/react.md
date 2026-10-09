@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:29:53Z
+  computed_at: 2026-10-09T09:30:31Z
   overall: A
-  overall_score: 4.0
+  overall_score: 3.83
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -29,38 +29,32 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 2
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 7.3
-        qualifying_issues: 21
+        median_ttfr_hours: 7.4
+        qualifying_issues: 24
         band: default
         window_offset_days: 0
         source: issue
         inferred: false
     adoption:
-      grade: A
+      grade: B
       raw:
-        registry: npmjs.org
-        canonical_package: react-tools
-        dependent_repos_count: 15664
-        downloads_last_month: 110356
-        graph_tier: A
-        volume_tier: C
-        cross_check_divergence: 1.05
-        release_downloads: 2279404
+        registry: null
+        canonical_package: null
+        release_downloads: 2280333
         release_assets: 256
         release_tier: B
         signal_basis: releases
-        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4885
-        last_commit_age_days: 1
+        repo_age_days: 4886
+        last_commit_age_days: 2
         cohort: library
     governance:
       grade: A
@@ -160,7 +154,7 @@ React is a library for turning **components** — plain JavaScript functions tha
 - **Maintenance (2026-10).** Very active: v19.3.0 released 2026-09-09 (ViewTransition, Fragment refs, independent transitions), and the 19.0/19.1/19.2 lines still received RSC patch releases in July 2026. Commits land almost daily; the radar's maintenance and responsiveness axes are A.
 - **Governance & backing — changed in 2026.** Since 2026-02-24 React, React Native and JSX are owned by the React Foundation, hosted by the Linux Foundation, with eight platinum members (Amazon, Callstack, Expo, Huawei, Meta, Microsoft, Software Mansion, Vercel). Technical direction stays with the maintainers, independent of the board; the repository is still under `facebook/react` as of 2026-10-08 while the transfer is in progress. Contribution is broad (46 active contributors in 12 months, top contributor 21% of commits).
 - **Age & Lindy.** Open-sourced 2013 (~13 years) and still the market-leading UI library — the strongest Lindy prior in this category, now no longer tied to one company's priorities.
-- **Adoption.** The largest frontend ecosystem: component libraries, meta-frameworks (Next.js, React Router, Expo) and React Native all build on it; the radar's adoption axis moved from B to A in this rescore.
+- **Adoption.** The largest frontend ecosystem: component libraries, meta-frameworks (Next.js, React Router, Expo) and React Native all build on it. The radar's adoption axis reads B (2026-10-09) from GitHub release-asset downloads only (2,280,333): the npm `react` package is not linked to this repo in the registry index the scorer uses, so npm installs — React's real channel — are not counted, and the grade understates adoption.
 - **Risk flags.** MIT, no relicense history. The main risk has shifted to the server side: RSC packages carried a critical RCE (CVE-2025-55182) in late 2025, and the RSC/framework split means server features evolve fastest inside Next.js.
 
 ## Caveats (unverified)
@@ -171,3 +165,4 @@ React is a library for turning **components** — plain JavaScript functions tha
 - [推断] How much manual memoization React Compiler removes in a real codebase varies; reports of subtle breakages exist and were not reproduced.
 - [推断] Hiring-pool and ecosystem-size leadership is inferred from industry surveys and package counts, not a census.
 - [未验证] ~251k GitHub stars as of 2026-10-08; star counts drift.
+- [推断] The adoption grade B undercounts React: ecosyste.ms does not tie the npm `react` package to `facebook/react`, so the scorer cannot read npm downloads and grades from release assets alone.

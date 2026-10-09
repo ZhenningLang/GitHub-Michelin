@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:28:56Z
+  computed_at: 2026-10-09T09:13:41Z
   overall: A
-  overall_score: 3.5
+  overall_score: 4.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -42,16 +42,16 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
-        registry: nuget.org
+        registry: npmjs.org
         canonical_package: antd
-        dependent_repos_count: 0
-        downloads_last_month: 7513
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
-        release_downloads: 4285
+        dependent_repos_count: 113307
+        downloads_last_month: 15539584
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.06
+        release_downloads: 4303
         release_assets: 74
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4185
+        repo_age_days: 4186
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 76
-        top1_share: 0.193
-        top3_share: 0.478
+        top1_share: 0.192
+        top3_share: 0.477
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -159,7 +159,7 @@ Ant Design 是一个 React 组件的 npm 包（`antd`），底下一层是负责
 - **响应速度（A）：** 近期 46 个 issue 的首次响应中位数是 0.5 小时，机器人加维护者几乎立刻分诊。
 - **治理（A）：** 过去一年有 76 名活跃贡献者，前三名只占近期提交的 47.8%。`ant-design` GitHub 组织由源自蚂蚁集团/阿里巴巴的核心团队运营，并有 OpenCollective 赞助。蚂蚁内部产品对路线图有多大影响，没有公开说明。
 - **存续（A）与 Lindy：** 2015-04 创建，仓库 4185 天，经历三次大改（v4 → v5 CSS-in-JS → v6）仍保持势头。Lindy 先验很强。
-- **采用（雷达上是 D，属于评分器误判）：** 评分器匹配到的是 NuGet 上一个同名 `antd` 包（7513 次下载），不是 npm 包。真正的 npm `antd` 在截至 2026-10-04 的 30 天里下载约 1550 万次，仓库约 9.97 万 star，实际采用是顶级的。把这个 D 当作数据错误，不是信号。
+- **采用（A）：** 按评分器 2026-10-09 的读数，npm 上的 `antd` 上月下载 15,539,584 次，有 113,307 个依赖它的仓库，仓库约 9.97 万 star——采用是顶级的。
 - **风险/许可（A）：** MIT，没有改过许可，`antd` 本身没有付费档。主要风险是大版本之间的升级成本。
 
 ## 存疑（未验证）
@@ -169,4 +169,4 @@ Ant Design 是一个 React 组件的 npm 包（`antd`），底下一层是负责
 - [未验证] 各组件的无障碍情况（ARIA、键盘支持）没有审计，Table、Cascader 这类复杂组件可能需要手动补。
 - [推断] v6 发布后 antd 5 还会修多久，本页读过的文档没有写明。npm 上能看到的最后一个 5.x 是 5.29.3（2025-12-18）。
 - [推断] 超大应用里频繁动态换主题时 CSS-in-JS 的运行时开销没有做基准测试。v6 的 CSS 变量和 `zeroRuntime` 模式就是为了降低这部分开销。
-- [推断] 采用轴的 D 来自健康评分器把 `antd` 解析到了 nuget.org。上面的 npm 数字取自 2026-10-08 的 npm 下载 API，雷达数据块本身没有改动。
+- [未验证] 下载量和依赖仓库数来自健康度评分器（ecosyste.ms 数据），包含 CI 和镜像流量，只说明量级，不等于用户数。
