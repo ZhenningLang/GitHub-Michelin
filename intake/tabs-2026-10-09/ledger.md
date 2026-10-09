@@ -19,7 +19,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | storytold/deckcraft | add | running |  |  | storytold/deckcraft |
 | storytold/designcraft | add | running |  |  | storytold/designcraft |
 | storytold/effectcraft | add | running |  |  | storytold/effectcraft |
-| storytold/lightcraft | add | running |  |  | storytold/lightcraft |
+| storytold/lightcraft | add | done | categories/photo-editing/lightcraft.md |  | storytold/lightcraft |
 | storytold/pdfcraft | add | running |  |  | storytold/pdfcraft |
 | storytold/photocraft | add | done | categories/media-processing/image-processing/photocraft.md |  | storytold/photocraft |
 | storytold/vectorcraft | add | running |  |  | storytold/vectorcraft |

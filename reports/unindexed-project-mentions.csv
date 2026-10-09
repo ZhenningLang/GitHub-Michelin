@@ -18,6 +18,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
+[darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
 [Fish Speech](https://github.com/fishaudio/fish-speech),categories/speech/index-tts.md,,no
 [FlClash](https://github.com/chen08209/FlClash),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
@@ -40,6 +41,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
+[RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [sing-box](https://github.com/SagerNet/sing-box),categories/networking/dae.md,,no
 [spcfox/amnezia-wg-easy](https://github.com/spcfox/amnezia-wg-easy),categories/networking/amneziawg-installer.md,,no
@@ -346,6 +348,7 @@ CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 Czkawka,categories/disk-cleanup/mangodisk.md,,no
 Dagger,categories/workflow-orchestration/gaia.md,,no
+darktable · RawTherapee,categories/photo-editing/INDEX.md,,no
 Darts,categories/ml-research/nlp-and-time-series/lstm-time-series.md,,no
 Datadog / Sentry / commercial APM,categories/task-queue/flower.md,,no
 date-fns (`date-fns/date-fns`),categories/web-ui/component-libraries/tanstack-time.md,,no

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "LightCraft does", "zh": "LightCraft 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install a release build, or run it from source on a folder of photos", "zh": "装好发布版，或从源码直接对一个照片文件夹运行", "code": "cargo run --release -p lightcraft -- ~/Pictures/trip", "component": {"en": "desktop app", "zh": "桌面应用"}},
+    {"lane": "them", "en": "Imports in place, skips duplicates, shows camera previews while it decodes the raws", "zh": "原地导入、跳过重复，边解码 RAW 边先显示相机预览", "component": {"en": "catalog + Rust raw decoders", "zh": "图库 + Rust RAW 解码器"}},
+    {"lane": "you", "en": "Cull the shoot with flags and star ratings", "zh": "用旗标和星级挑片", "code": "P · X · U", "component": {"en": "library grid", "zh": "图库网格"}},
+    {"lane": "you", "en": "Open Edit or Masking and drag the sliders", "zh": "进入编辑或蒙版视图，拖动滑块", "code": "E · M", "component": {"en": "develop panels", "zh": "冲洗面板"}},
+    {"lane": "them", "en": "Logs each change as an edit instruction and re-renders on the GPU; originals untouched", "zh": "把每次改动记成编辑指令，在 GPU 上重渲染，原片不动", "component": {"en": "wgpu develop pipeline", "zh": "wgpu 冲洗流水线"}},
+    {"lane": "you", "en": "Export the picks with size, format and naming settings", "zh": "按尺寸、格式和命名规则导出选中的照片", "component": {"en": "export dialog", "zh": "导出对话框"}},
+    {"lane": "them", "en": "Writes JPEG, PNG, TIFF, WebP, AVIF or DNG files with output sharpening and metadata policy", "zh": "写出 JPEG／TIFF／WebP／AVIF／DNG 等，带输出锐化", "component": {"en": "exporter", "zh": "导出器"}}
+  ],
+  "value": {"en": "Lightroom-style cull, develop and export on your own machine — no subscription, no account, no cloud catalog", "zh": "在自己电脑上完成 Lightroom 式的挑片、冲洗和导出：不用订阅，不要账号，图库不上云"},
+  "sources": [
+    "README.md: Quick start (cargo run --release -p lightcraft -- ~/Pictures/trip; folders are scanned, duplicates skipped)",
+    "README.md: Organize everything (flag with P / X / U, rate 0–5) and Keyboard (E edit, M masking)",
+    "README.md: Fast, native, private (embedded camera preview, wgpu pipeline, append-only op log) and Feature status (Export formats)",
+    "ROADMAP.md: Where we stand (2026-10-08)"
+  ]
+}

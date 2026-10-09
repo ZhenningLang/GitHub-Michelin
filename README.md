@@ -1457,3 +1457,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **Dembrandt** | Use it when the only source of a design system is a live URL and you need its real colours, type and spacing as DTCG/Tailwind/DESIGN.md tokens — or a CI gate that fails when they drift — not when you already author the tokens or fear layout regressions. | MIT | C (5/6) | [EN](categories/design-tokens/dembrandt.md) · [中](categories/design-tokens/dembrandt.zh.md) |
+
+### photo-editing
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **LightCraft** | Use it when you want Lightroom's cull-develop-export workflow locally without a subscription, and want an agent to drive it over MCP/CLI — accepting a nine-day-old pre-1.0 app with estimated camera colour and thin raw-format coverage. | MIT OR Apache-2.0 | B (5/6) | [EN](categories/photo-editing/lightcraft.md) · [中](categories/photo-editing/lightcraft.zh.md) |

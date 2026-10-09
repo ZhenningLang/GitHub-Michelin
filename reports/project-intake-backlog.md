@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1307
+- Named-but-unindexed alternatives: 1310
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -41,6 +41,7 @@ shape and are deliberately excluded here.
 | [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
+| [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
 | [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [LTX-Video](https://github.com/Lightricks/LTX-Video) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [MeshCentral](https://github.com/Ylianst/MeshCentral) | `categories/dev-utilities/ops-infra/rustdesk.md` |
 | [mihomo](https://github.com/MetaCubeX/mihomo) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
-| [neomutt](https://github.com/neomutt/neomutt) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
