@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "them": {"en": "cmux does", "zh": "cmux 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the Mac app; your Ghostty config carries over", "zh": "装上 Mac 应用，Ghostty 配置直接沿用", "code": "brew tap manaflow-ai/cmux · brew install --cask cmux"},
+    {"lane": "you", "en": "Wire your agent CLIs into cmux once", "zh": "一次性把 agent 命令行接进 cmux", "code": "cmux hooks setup"},
+    {"lane": "them", "en": "Writes hook entries into each agent's config so its hooks call cmux notify", "zh": "往各 agent 配置写 hook，让它们调用 cmux notify", "component": {"en": "cmux CLI", "zh": "cmux 命令行"}},
+    {"lane": "you", "en": "Open a workspace per task, split panes, launch agents as usual", "zh": "每个任务开一个工作区，分屏，照常启动 agent", "code": "⌘ N · ⌘ D"},
+    {"lane": "them", "en": "Sidebar tab shows branch, PR, cwd, ports and the latest agent message", "zh": "侧边标签显示分支、PR、目录、端口和 agent 最新消息", "component": {"en": "sidebar", "zh": "侧边栏"}},
+    {"lane": "them", "en": "When an agent waits for you, rings its pane and badges its tab", "zh": "agent 等你时，给它的窗格套光圈、标签加角标"},
+    {"lane": "you", "en": "Jump straight to the agent that needs you", "zh": "直接跳到需要你的那个 agent", "code": "⌘ ⇧ U"}
+  ],
+  "value": {
+    "en": "No more cycling through tabs to find which agent is stuck on \"Claude is waiting for your input\" — the one that needs you is lit",
+    "zh": "不用再挨个翻标签找哪个 agent 卡在“等待输入”——需要你的那个自己亮起来"
+  },
+  "sources": [
+    "README 'Install > Homebrew' (brew tap manaflow-ai/cmux; brew install --cask cmux) and 'Ghostty compatible' bullet (reads ~/.config/ghostty/config)",
+    "README 'Session restore' and docs/agent-hooks.md (cmux hooks setup; installed files per agent such as ~/.codex/hooks.json; Claude Code via the cmux wrapper)",
+    "docs/notifications.md 'CLI Usage' (cmux notify --title ...)",
+    "README 'Keyboard Shortcuts' tables (⌘ N new workspace, ⌘ D split right, ⌘ ⇧ U jump to latest unread)",
+    "README 'Why cmux?' (sidebar shows git branch, linked PR status/number, working directory, listening ports, latest notification text; blue ring and tab lights up when an agent is waiting)"
+  ]
+}
