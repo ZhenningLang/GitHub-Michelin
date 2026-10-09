@@ -877,6 +877,7 @@ PaddleNLP / ERNIE,categories/ml-research/nlp-and-time-series/senta.md,,no
 "Paid proxy providers (Bright Data, Oxylabs, …)",categories/proxy-pool/haipproxy.md,,no
 Paid proxy services (Bright Data / Decodo),categories/proxy-pool/proxy-pool.md,,no
 paid residential proxies,categories/proxy-pool/INDEX.md,,no
+"PAL MCP Server (BeehiveInnovations/pal-mcp-server, formerly zen-mcp-server)",categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md,,no
 pandas,categories/databases/database-engines/duckdb.md,,no
 pandas-datareader,categories/web-scraping/crawling-tools/gopup.md,,no
 pandoc + pager,categories/terminal-ui/terminal-markdown-viewer.md,,no

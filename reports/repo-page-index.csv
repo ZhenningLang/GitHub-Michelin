@@ -645,6 +645,7 @@ https://github.com/open-telemetry/opentelemetry-collector,opentelemetry-collecto
 https://github.com/open-webui/open-webui,open-webui,llm-chat-ui,categories/llm-chat-ui/open-webui.md
 https://github.com/openai/CLIP,clip,vision-and-multimodal,categories/ml-research/vision-and-multimodal/clip.md
 https://github.com/openai/codex,codex,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/codex.md
+https://github.com/openai/codex-plugin-cc,codex-plugin-cc,orchestration-and-review,categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md
 https://github.com/openai/openai-agents-python,openai-agents-sdk,agent-sdks,categories/agent-frameworks/agent-runtimes/agent-sdks/openai-agents-sdk.md
 https://github.com/openai/symphony,symphony,agent-services,categories/agent-frameworks/agent-runtimes/agent-services/symphony.md
 https://github.com/openai/whisper,whisper,speech-and-subtitles,categories/media-processing/video-audio/speech-and-subtitles/whisper.md

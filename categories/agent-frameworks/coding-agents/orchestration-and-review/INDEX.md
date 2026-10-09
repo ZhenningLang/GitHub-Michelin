@@ -19,6 +19,7 @@
 | **herdr** | Use it when you supervise several coding agents in parallel and want the multiplexer itself to badge blocked/working/done and let agents drive each other via `herdr agent wait/prompt` — but it's 6 months old, pre-1.0, and effectively single-maintainer. | B (6/6) | [→](herdr.md) |
 | **TUIOS** | Use it when you supervise several coding agents from one terminal and want a tiling window manager whose daemon tracks each agent's state and gathers every waiting approval or question into one Inbox — but it's 13 months old, pre-1.0 with protocol breaks, one maintainer, and panes default to full control. | B (6/6) | [→](tuios.md) |
 | **GitHub Agentic Workflows (gh-aw)** | Use it when you want coding agents doing unattended chores on a GitHub repo — issue triage, CI-failure digging, reports, docs PRs — written as Markdown and compiled into Actions workflows where the agent runs read-only and firewalled and only declared writes are applied — but it's GitHub-only, Public Preview, and ships weekly with 11 security advisories in 7 weeks. | B (4/6) | [→](gh-aw.md) |
+| **Codex plugin for Claude Code** | Use it when you live in Claude Code, already have a Codex login, and want OpenAI's Codex to review your diff or take over a stuck task without leaving the session — but it is one vendor, write-by-default on rescue, leaks broker processes, and nothing has been merged since 2026-07. | B (5/6) | [→](codex-plugin-cc.md) |
 
 ## What belongs here
 
