@@ -8,7 +8,7 @@
 | 项目 | 何时用 | 健康度 | 页面 |
 | --- | --- | --- | --- |
 | **awesome-deep-trading** | List of awesome resources for machine learning-based algorithmic trading | D（4/6） | [→](awesome-deep-trading.zh.md) |
-| **OpenBB** | Open Data Platform for analysts, quants and AI agents. | B（5/6） | [→](openbb.zh.md) |
+| **OpenBB** | 每个行情、宏观、公告数据源只封装一次，同时供 Python、REST、MCP 智能体和 Workspace 使用；V5（Apache-2.0）删掉了 yfinance/FMP，安装很重 | B（5/6） | [→](openbb.zh.md) |
 | **FinRL** | FinRL®:  Financial Reinforcement Learning. 🔥 | B（5/6） | [→](finrl.zh.md) |
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | B（6/6） | [→](qlib.zh.md) |
 | **backtrader** | Python Backtesting library for trading strategies | D（4/6） | [→](backtrader.zh.md) |
@@ -23,7 +23,7 @@
 | 选项 | 是否收录 | 健康度 | 一句话取舍 |
 | --- | --- | --- | --- |
 | [awesome-deep-trading](awesome-deep-trading.zh.md) | ✅ | D（4/6） | List of awesome resources for machine learning-based algorithmic trading |
-| [OpenBB](openbb.zh.md) | ✅ | B（5/6） | Open Data Platform for analysts, quants and AI agents. |
+| [OpenBB](openbb.zh.md) | ✅ | B（5/6） | 美国和国际官方数据源上的一层带类型数据层，自带 REST 和 MCP；安装重、大版本间删数据源、提交集中在一位维护者 |
 | [FinRL](finrl.zh.md) | ✅ | B（5/6） | FinRL®:  Financial Reinforcement Learning. 🔥 |
 | [qlib](qlib.zh.md) | ✅ | B（6/6） | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. |
 | [backtrader](backtrader.zh.md) | ✅ | D（4/6） | Python Backtesting library for trading strategies |

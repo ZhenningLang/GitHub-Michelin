@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "OpenBB does",
+    "zh": "OpenBB 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the metapackage with the routers extra — without it there is no obb.equity",
+      "zh": "安装元包并带上 routers 可选依赖，不带就没有 obb.equity",
+      "code": "pip install \"openbb[routers]\"",
+      "component": {
+        "en": "PyPI packages",
+        "zh": "PyPI 包"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Builds the obb interface from the installed provider and router extensions",
+      "zh": "按已安装的数据源扩展和路由扩展生成 obb 接口",
+      "component": {
+        "en": "openbb-core",
+        "zh": "openbb-core"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Call a standard command",
+      "zh": "调用一条标准命令",
+      "code": "obb.equity.price.historical(\"AAPL\").to_dataframe()",
+      "component": {
+        "en": "Python SDK",
+        "zh": "Python SDK"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Routes to a provider (keyless CBOE for US equity history) and returns a validated OBBject",
+      "zh": "路由到数据源（美股历史走免 Key 的 CBOE），返回校验过的 OBBject",
+      "component": {
+        "en": "provider extension",
+        "zh": "数据源扩展"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Serve the same commands to other consumers",
+      "zh": "把同一套命令提供给其他使用方",
+      "code": "openbb-api   # or: openbb-mcp",
+      "component": {
+        "en": "platform-api / mcp-server",
+        "zh": "platform-api / mcp-server"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "Exposes them as REST at 127.0.0.1:6900 plus widgets.json for Workspace, or as MCP tools",
+      "zh": "提供成 REST（含 widgets.json）或 MCP 工具",
+      "component": {
+        "en": "FastAPI / FastMCP",
+        "zh": "FastAPI / FastMCP"
+      }
+    }
+  ],
+  "value": {
+    "en": "One integration per source, consumed from Python, REST, Workspace and agents — the price is a heavy install and providers dropped between majors",
+    "zh": "每个数据源只对接一次，Python、REST、Workspace 和智能体都能用——代价是安装很重，大版本之间会删数据源"
+  },
+  "sources": [
+    "https://github.com/openbq-org/OpenBB README.md (pip install openbb; obb.equity.price.historical(\"AAPL\"); openbb-api at 127.0.0.1:6900; Workspace 'Connect backend')",
+    "openbb_platform/pyproject.toml (openbb 5.0.0 dependencies; router extensions only in the `routers` extra)",
+    "local run 2026-10-09: openbb==5.0.0 without [routers] -> AttributeError: 'App' object has no attribute 'equity'; with [routers] -> provider cboe, AAPL daily bars; openbb-api served /widgets.json (971 widgets) and /api/v1/equity/price/historical",
+    "openbb_platform/extensions/mcp_server/README.md (openbb-mcp, uvx --from openbb-mcp-server --with openbb openbb-mcp; tool discovery)",
+    "release openbb-v5.0.0 notes (16 providers removed, AGPL-3.0-only -> Apache-2.0 in #7677)"
+  ]
+}

@@ -8,7 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **awesome-deep-trading** | List of awesome resources for machine learning-based algorithmic trading | D (4/6) | [→](awesome-deep-trading.md) |
-| **OpenBB** | Open Data Platform for analysts, quants and AI agents. | B (5/6) | [→](openbb.md) |
+| **OpenBB** | Wrap each market/macro/filings source once as a Python extension and serve it to Python, REST, MCP agents and Workspace; V5 (Apache-2.0) dropped yfinance/FMP and installs heavy | B (5/6) | [→](openbb.md) |
 | **FinRL** | FinRL®:  Financial Reinforcement Learning. 🔥 | B (5/6) | [→](finrl.md) |
 | **qlib** | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. | B (6/6) | [→](qlib.md) |
 | **backtrader** | Python Backtesting library for trading strategies | D (4/6) | [→](backtrader.md) |
@@ -23,7 +23,7 @@
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [awesome-deep-trading](awesome-deep-trading.md) | ✅ | D (4/6) | List of awesome resources for machine learning-based algorithmic trading |
-| [OpenBB](openbb.md) | ✅ | B (5/6) | Open Data Platform for analysts, quants and AI agents. |
+| [OpenBB](openbb.md) | ✅ | B (5/6) | One typed data layer over US/international official sources with REST + MCP attached; heavy install, providers pruned between majors, one-maintainer stream |
 | [FinRL](finrl.md) | ✅ | B (5/6) | FinRL®:  Financial Reinforcement Learning. 🔥 |
 | [qlib](qlib.md) | ✅ | B (6/6) | Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process. |
 | [backtrader](backtrader.md) | ✅ | D (4/6) | Python Backtesting library for trading strategies |

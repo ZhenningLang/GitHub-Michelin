@@ -395,6 +395,7 @@ DSSIM,categories/media-processing/quality-metrics/ssimulacra2.md,,no
 E2B / Daytona (agent sandboxes),categories/desktop-automation/cua.md,,no
 Each agent's built-in skills / slash commands,categories/agent-skills/engineering/addyosmani-agent-skills.md,,no
 Ebook Translator Calibre Plugin (`bookfere/Ebook-Translator-Calibre-Plugin`),categories/reading-tools/translate-books-with-llms.md,,no
+edgartools,categories/investment-finance/openbb.md,,no
 Eigent (`eigent-ai/eigent`),categories/agent-frameworks/agent-runtimes/personal-assistants/openworker.md,,no
 Elastic-Job (ShardingSphere ElasticJob),categories/task-queue/xxl-job.md,,no
 Elasticsearch,categories/databases/database-engines/clickhouse.md,,no
