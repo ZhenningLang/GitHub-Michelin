@@ -26,6 +26,11 @@
     "none": true,
     "reason": "The specify-cli PyPI package declares no repository link, so it is not among the candidates; spec-kit-redist is a third-party redistribution. The Homebrew formula carries adoption."
   },
+  "keycloak/keycloak": {
+    "registry": "repo1.maven.org",
+    "name": "org.keycloak:keycloak-core",
+    "reason": "keycloak-core is the server's core Maven artifact that integrations depend on (1,153 dependent repos vs 90 for the JS admin client the automatic pick lands on once the lookup reads every candidate); it represents adoption of Keycloak itself, not of one client library."
+  },
   "microsoft/autogen": {
     "none": true,
     "reason": "Python mainline autogen-agentchat / autogen-core register no repo link; the remaining candidates are the .NET NuGet packages and autogenstudio, none of them represents the mainline."
