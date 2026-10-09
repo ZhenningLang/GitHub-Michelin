@@ -27,3 +27,5 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | xpzouying/xiaohongshu-mcp | add | done | categories/social-media-management/xiaohongshu-mcp.md |  | xpzouying/xiaohongshu-mcp |
 | zerobrewhq/zerobrew | add | done | categories/dev-utilities/package-managers/zerobrew.md |  | zerobrewhq/zerobrew |
 | ZhenningLang/cpu-gpu-basic | skip | skipped |  | owner 是 ZhenningLang，标签不动 | zhenninglang/cpu-gpu-basic |
+| nullmoth/nvidia-macos-driver | add | done | categories/hackintosh/nvidia-macos-driver.md |  | nullmoth/nvidia-macos-driver |
+| yang0/handraw-style | sync | done | categories/agent-skills/visual-content/handraw-style.md | fresh: last_verified 2026-09-28 ≤ 90 天，无改动 | yang0/handraw-style |

@@ -30,11 +30,13 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[NVIDIA open-gpu-kernel-modules](https://github.com/NVIDIA/open-gpu-kernel-modules) on Linux,categories/hackintosh/nvidia-macos-driver.md,,no
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
+[OpenCore Legacy Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher),categories/hackintosh/nvidia-macos-driver.md,,no
 [Operit](https://github.com/AAswordman/Operit),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Passbolt](https://github.com/passbolt/passbolt_api),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Patchright](https://github.com/Kaliiiiiiiiii-Vinyzu/patchright),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
@@ -129,6 +131,8 @@ alass,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,
 Alfred,categories/dev-utilities/data-tools/flashlight.md,,no
 alive-progress,categories/dev-utilities/data-tools/tqdm.md,,no
 Altcha,categories/captcha/capjs.md,,no
+AMD Radeon + WhateverGreen,categories/hackintosh/INDEX.md,,no
+AMD Radeon card + [WhateverGreen](https://github.com/acidanthera/WhateverGreen),categories/hackintosh/nvidia-macos-driver.md,,no
 Angular CDK scrolling (`angular/components`),categories/web-ui/virtualization/tanstack-virtual.md,,no
 Ansible / Salt / Puppet,categories/dev-utilities/ops-infra/cockpit.md,,no
 "Anthropic ""Building effective agents"" guide",categories/agent-dev-methodology/spec-driven-development/12-factor-agents.md,,no
@@ -862,6 +866,7 @@ OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-fr
 OpenAI Whisper,categories/media-processing/video-audio/speech-and-subtitles/ffsubsync.md,,no
 openai/codex-action,categories/agent-frameworks/coding-agents/orchestration-and-review/gh-aw.md,,no
 OpenCLIP,categories/ml-research/vision-and-multimodal/clip.md,,no
+OpenCore Legacy Patcher,categories/hackintosh/INDEX.md,,no
 OpenCV,categories/media-processing/video-audio/editing-and-cutting/moviepy.md,,no
 OpenDocMan,categories/document-management/paperless-ngx.md,,no
 OpenGrok,categories/rag-retrieval/code-intelligence/sourcegraph.md,,no
