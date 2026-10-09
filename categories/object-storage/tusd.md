@@ -2,7 +2,7 @@
 name: tusd
 slug: tusd
 repo: https://github.com/tus/tusd
-category: nginx-modules
+category: object-storage
 tags: [upload, resumable-upload, tus-protocol, go, server, file-transfer, http, chunking]
 language: Go
 license: MIT
@@ -114,7 +114,7 @@ tus is an open HTTP protocol for resumable uploads: the client first `POST`s to 
 - **Your clients can upload straight to the bucket.** If every client can use S3/GCS presigned URLs and the cloud SDK's multipart upload, the bytes skip your infrastructure entirely; use that instead of adding a tusd hop. tusd earns its place when you need one protocol across many client platforms or storage you can swap.
 - **You plan to scale out across several instances without sticky routing.** tusd's locks are either PID files on local disk or in-process mutexes (the default for S3/GCS/Azure), and the docs state there is no built-in distributed lock yet. Behind a round-robin load balancer, a client's resume can hit another instance while the first is still writing, risking corrupted uploads. Use sticky sessions, the separately maintained `tusd-etcd3-locker`, or embed the handler in a Go service where you supply your own locker.
 - **You need one server writing to different backends per tenant or file size.** The tusd binary loads one storage backend at startup and cannot switch dynamically; route between backends by embedding `github.com/tus/tusd/v2/pkg/handler` in your own Go service with several handlers, or run several tusd instances.
-- **You need NGINX itself to take the upload at the edge.** tusd is a standalone HTTP server, not an NGINX module; it sits behind NGINX as a proxy target (with request buffering off). If the requirement is that NGINX writes the body to disk without another service, use [nginx-upload-module](nginx-upload-module.md) — at the cost of resumability.
+- **You need NGINX itself to take the upload at the edge.** tusd is a standalone HTTP server, not an NGINX module; it sits behind NGINX as a proxy target (with request buffering off). If the requirement is that NGINX writes the body to disk without another service, use [nginx-upload-module](../nginx-modules/nginx-upload-module.md) — at the cost of resumability.
 - **Your stack has no Go and you want the upload server inside your Node app.** tus also maintains `@tus/server` (tus-node-server), which mounts into Express/Fastify/Next.js; use it rather than operating a separate Go binary.
 - **No ops bandwidth for another service.** Even as a single binary, tusd needs deploying, TLS, monitoring (it exposes `/metrics`), cleanup of abandoned uploads, and upgrades.
 
@@ -122,7 +122,7 @@ tus is an open HTTP protocol for resumable uploads: the client first `POST`s to 
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [nginx-upload-module](nginx-upload-module.md) | ✅ | When NGINX itself must stream multipart uploads to disk with no extra service, pick nginx-upload-module; when interrupted uploads must resume, pick tusd. | No separate service, but a low-activity third-party C module without the tus resume protocol. |
+| [nginx-upload-module](../nginx-modules/nginx-upload-module.md) | ✅ | When NGINX itself must stream multipart uploads to disk with no extra service, pick nginx-upload-module; when interrupted uploads must resume, pick tusd. | No separate service, but a low-activity third-party C module without the tus resume protocol. |
 | tus-node-server (`@tus/server`) | not indexed | When your backend is Node.js and you want the tus server mounted inside it, pick tus-node-server; pick tusd for a standalone binary independent of your app's language. | Same protocol and store types from the same organization, but runs in your Node process instead of beside it. |
 | Direct-to-S3 presigned (multipart) uploads | not indexed | When all clients can talk to one cloud's object storage, pick presigned uploads and skip the server hop; pick tusd when you need a vendor-neutral protocol across many client platforms. | Best scalability and no upload tier to run, but client code is tied to one provider's multipart API. |
 | Framework upload handling (Django/Rails/Express) | not indexed | When uploads are small and rare and ops time is the binding constraint, keep them in the framework; pick tusd once large files and flaky networks make restarts costly. | Zero extra infrastructure, but slow clients occupy app workers and a failed upload restarts from zero. |

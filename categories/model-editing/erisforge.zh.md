@@ -6,7 +6,7 @@ category: model-editing
 tags: [abliteration, activation-steering, refusal-removal, pytorch, layer-surgery]
 language: Python
 license: MIT (declared in README/pyproject; no LICENSE file)
-maturity: "v1.1.0 (2025-02); last push 2026-03; 280 stars (as of 2026-09)"
+maturity: "v1.1.0 (2025-02); last default-branch commit 2025-02 (pushed_at 2026-03 is a side branch); 280 stars (as of 2026-09)"
 last_verified: 2026-09-24
 type: library
 upstream:
@@ -99,7 +99,7 @@ ErisForge 包在一个 Hugging Face `transformers` 模型外面。你加载模�
 - **你想让别人替你把拒答与质量的取舍调好。** ErisForge 只施加你给的方向，没有参数搜索；想要自动找到最优的拒答／KL 点，选 [Heretic](heretic.zh.md)。
 - **你的工作在 TransformerLens 里。** 如果你的实验用 TransformerLens 的 hook 和激活缓存，[abliterator](abliterator.zh.md) 更贴合。
 - **你需要覆盖最新模型。** 它的依赖钉在偏旧的 `torch`／`transformers` 组合（`torch~=2.5.1`、`transformers~=4.46.2`），很新的架构可能要先处理依赖；快速迭代的流水线用 [Heretic](heretic.zh.md)。
-- **你想要一个有团队、持续维护的项目。** 这个仓库基本是一位作者（81 次提交），最后推送是 2026-03；破损得你自己负责。
+- **你想要一个有团队、持续维护的项目。** 这个仓库基本是一位作者（81 次提交），2025-02-17 之后默认分支再没有提交；破损得你自己负责。
 
 ## 横向对比
 
@@ -129,7 +129,7 @@ ErisForge 包在一个 Hugging Face `transformers` 模型外面。你加载模�
 
 ## 健康度与可持续性
 
-- **维护——轻度维护。** 最后推送 2026-03-02（距本次核查约六个月）；两个 release，最近的是 2025-02-18 的 v1.1.0。
+- **维护——休眠。** 默认分支最后一次提交是 2025-02-17 的 v1.1.0 版本号提升（距本次核查约 19 个月）；GitHub 显示的 2026-03-02 `pushed_at` 来自一个从未合并的侧分支。两个 release，最近的是 2025-02-18 的 v1.1.0。
 - **治理／巴士系数——单一作者。** 贡献者 API 里 `Tsadoq` 一个人占了全部 81 次提交；归 GitHub 个人账号。
 - **采用度与 Lindy——小而年轻。** 280 star、21 fork、3 个开 issue；创建于 2024-10。它的 README 自认建立在前述 [remove-refusals-with-transformers](remove-refusals-with-transformers.zh.md)、[deccp](deccp.zh.md) 与 [abliterator](abliterator.zh.md) 之上，属于下游的综合，而非源头。
 - **风险信号。** README 与 `pyproject.toml` 都声称 MIT，但仓库里没有 `LICENSE` 文件（2026-09-24 核实）；单一维护者；依赖钉版已落后于当前 `transformers`。

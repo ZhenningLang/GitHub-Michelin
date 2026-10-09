@@ -125,7 +125,7 @@ health:
 | LangSmith | 未收录 | 当你要托管的 LangChain 中心 eval 和可观测性时，选 LangSmith；当开源、local-first 运行和框架无关 provider 是硬要求时，选 promptfoo。 | 托管的 LangChain 评测/可观测性 SaaS;LangChain 集成深、看板托管，但闭源、以云为中心。promptfoo 开源、local-first、框架无关。 |
 | Braintrust | 未收录 | 当商业实验平台、托管打分、日志和打磨过的团队流程值得引入托管依赖时，选 Braintrust；当你要开放、自跑的 CLI 时，选 promptfoo。 | 商业评测/实验平台，托管打分与日志；团队 UX 打磨好。promptfoo 用开放、自跑的 CLI 换掉这套托管平台。 |
 | [Garak](garak.zh.md) | ✅ | 当任务只是专门的 Python 红队扫描时，选 Garak；当红队检查需要和通用 eval 断言放在同一工作流里时，选 promptfoo。 | 专门的 LLM 漏洞扫描器（只做红队，Python）。与 promptfoo 的 `redteam` 范围重叠，但不是通用评测/断言 harness。 |
-| [Giskard](giskard.zh.md) | ✅ | 当你要更广的 ML+LLM 测试和 Python 中心扫描报告模型时，选 Giskard；当 prompt 和 CI 回归工作流是中心时，选 promptfoo。 | 面向 ML+LLM 的开源测试/红队，扫描-报告模式；ML 范围更广、以 Python 为中心。promptfoo 更聚焦 prompt/CI 工作流。 |
+| [Giskard](giskard.zh.md) | ✅ | 当你希望测试就是直接调用 agent 函数的 Python 代码（带 LLM 评审检查的场景，加上自动生成的红队扫描）时，选 Giskard；当以 YAML 矩阵驱动的 prompt 和 CI 回归工作流是中心时，选 promptfoo。 | Giskard v3（2026 年重写，2026-08 正式发布）面向 LLM agent，要求 Python ≥ 3.12；它对表格／传统 ML 模型的自动扫描只留在 v2，而 v2 已不再维护。promptfoo 是 Node CLI，不进你的 Python 环境，更聚焦 prompt／CI 工作流。 |
 
 ## 技术栈
 
@@ -162,4 +162,4 @@ health:
 - [未验证] 采用数字——创始人的博客口径（35 万+ 开发者、月活 13 万、25%+ 财富 500）与 README 口径（「1000 万+ 用户」「被 OpenAI 和 Anthropic 使用」）——均为厂商营销表述，未经独立证实。
 - [推断] `pip install promptfoo` 这条路是 Node 包的薄包装；真正的引擎和 `engines` 约束都是 Node——若纯 Python 部署很关键，请对照当前文档确认。
 - [推断] 具体红队攻击类别（OWASP-LLM 覆盖、越狱/PII 插件）和支持的 provider 列表随版本变动；依赖某具体攻击或 provider 前请核对当前文档。
-- [未验证] 许可证依仓库元数据读作 MIT（GitHub API，2026-09-28）；对比表（DeepEval/Langfuse/LangSmith/Braintrust/Garak/Giskard 的定位）是基于通用认知的判断，非逐项实测对比。
+- [未验证] 许可证依仓库元数据读作 MIT（GitHub API，2026-09-28）；对比表（DeepEval/Langfuse/LangSmith/Braintrust/Garak 的定位）是基于通用认知的判断，非逐项实测对比；Giskard 一行已对照 Giskard 页和它的 v3 README 核过（2026-10-09），同样没做实测对比。

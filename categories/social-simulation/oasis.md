@@ -106,7 +106,7 @@ Pick OASIS over substitutes when the deciding tradeoff is **social-media fidelit
 |---|---|---|---|
 | [MiroFish](mirofish.md) | ✅ | Choose MiroFish when you want the packaged upload→report product; choose OASIS when you need to program the simulation yourself, avoid MiroFish's AGPL-3.0, or drop its Zep Cloud dependency. | OASIS is Apache-2.0 and self-contained; in exchange you build the pipeline MiroFish gives you for free. |
 | [AgentSociety](agentsociety.md) | ✅ | Choose AgentSociety for city-scale or experiment-managed social science (Ray distribution, replay, research skills); choose OASIS for social-media-specific dynamics with recommendation systems. | OASIS is narrower (media platforms) but models the feed algorithms AgentSociety doesn't center on. |
-| [generative_agents](generative-agents.md) | ✅ | Choose generative_agents only to study the original 2023 architecture; choose OASIS for anything runnable at scale today. | generative_agents is unmaintained since 2024-08 and hard-coded to its 25-agent town. |
+| [generative_agents](generative-agents.md) | ✅ | Choose generative_agents only to study the original 2023 architecture; choose OASIS for anything runnable at scale today. | generative_agents is unmaintained since 2023-08 and hard-coded to its 25-agent town. |
 
 ## Tech stack
 

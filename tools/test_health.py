@@ -648,6 +648,161 @@ class CanonicalSelectionTest(unittest.TestCase):
         self.assertEqual(health._name_variants("flask"), ["flask"])
 
 
+class PackageOverrideTest(unittest.TestCase):
+    """The hand-kept repo -> package table outranks automatic selection.
+
+    Each shape below is one the automatic rules got wrong on a shipped page (2026-10-09):
+    an exact name on a foreign registry (nuget `antd`), a third-party package listed
+    under the repo (VS Code), a legacy package carrying the exact name (`reactour`).
+    """
+
+    WRONG_PICK = {"name": "demo", "downloads": 900_000, "dependent_repos_count": 0,
+                  "registry": "nuget.org"}
+    RIGHT_PICK = {"name": "demo-js", "downloads": 50_000, "dependent_repos_count": 12,
+                  "registry": "npmjs.org"}
+
+    def _overrides(self, table: dict):
+        tmp = Path(self._tmpdir.name) / "overrides.json"
+        tmp.write_text(json.dumps(table), encoding="utf-8")
+        return mock.patch("health.PACKAGE_OVERRIDES_PATH", tmp)
+
+    def setUp(self) -> None:
+        import tempfile
+        self._tmpdir = tempfile.TemporaryDirectory()
+
+    def tearDown(self) -> None:
+        self._tmpdir.cleanup()
+
+    def _dispatch(self, candidates):
+        def dispatch(url, **kw):
+            if "packages/lookup" in url:
+                return (200, candidates)
+            return (404, None)
+        return dispatch
+
+    def test_override_hit_wins_over_automatic_selection(self) -> None:
+        candidates = [self.WRONG_PICK, self.RIGHT_PICK]
+        # Precondition: left alone, the scorer picks the foreign exact name.
+        self.assertEqual(health._select_canonical(candidates, "owner", "demo")["registry"],
+                         "nuget.org")
+        table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js",
+                                "reason": "test"}}
+        with self._overrides(table), no_install_signals(), \
+                mock.patch("health.http_get_json", side_effect=self._dispatch(candidates)):
+            axis = health.axis_adoption(FakeRepo("library"))
+        self.assertEqual(axis.raw["registry"], "npmjs.org")
+        self.assertEqual(axis.raw["canonical_package"], "demo-js")
+
+    def test_override_key_is_case_insensitive(self) -> None:
+        table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js", "reason": "t"}}
+        with self._overrides(table):
+            hit, pkg = health._override_canonical([self.WRONG_PICK, self.RIGHT_PICK], "Owner/Demo")
+        self.assertTrue(hit)
+        self.assertEqual(pkg["name"], "demo-js")
+
+    def test_override_none_skips_registry_and_uses_install_signals(self) -> None:
+        candidates = [self.WRONG_PICK, self.RIGHT_PICK]
+        table = {"owner/demo": {"none": True, "reason": "ships installers, not a package"}}
+        install = health.Axis("B", {"registry": None, "canonical_package": None,
+                                    "signal_basis": "homebrew"}, evidence="install -> B")
+        with self._overrides(table), \
+                mock.patch("health._adoption_from_install_signals", return_value=install), \
+                mock.patch("health._lookup_by_name") as by_name, \
+                mock.patch("health.http_get_json", side_effect=self._dispatch(candidates)):
+            axis = health.axis_adoption(FakeRepo("app"))
+        self.assertEqual(axis.grade, "B")
+        self.assertIsNone(axis.raw["canonical_package"])
+        by_name.assert_not_called()
+
+    def test_override_none_without_install_signals_is_unknown_not_e(self) -> None:
+        # `none` says no package represents the project; it is not evidence of zero
+        # adoption, so an empty result must stay `?` rather than become a measured E.
+        table = {"owner/demo": {"none": True, "reason": "t"}}
+        for candidates in ([], [self.WRONG_PICK]):
+            with self.subTest(n=len(candidates)), self._overrides(table), no_install_signals(), \
+                    mock.patch("health.http_get_json", side_effect=self._dispatch(candidates)):
+                axis = health.axis_adoption(FakeRepo("framework"))
+            self.assertEqual(axis.grade, "?")
+            self.assertIn("override", axis.evidence)
+
+    def test_override_package_missing_from_candidates_fails_closed(self) -> None:
+        table = {"owner/demo": {"registry": "pypi.org", "name": "demo-py", "reason": "t"}}
+        with self._overrides(table), no_install_signals(), \
+                mock.patch("health.http_get_json",
+                           side_effect=self._dispatch([self.WRONG_PICK, self.RIGHT_PICK])):
+            with self.assertRaises(health.PackageOverrideError) as ctx:
+                health.axis_adoption(FakeRepo("library"))
+            # _safe must not swallow it into a `?`: a silent fallback would ship the
+            # very mis-pick the override exists to prevent.
+            with self.assertRaises(health.PackageOverrideError):
+                health._safe(health.axis_adoption, FakeRepo("library"), "adoption",
+                             "registry_no_counts")
+        self.assertIn("pypi.org:demo-py", str(ctx.exception))
+
+    def test_override_target_beyond_first_page_is_found_by_requery(self) -> None:
+        # facebook/react: the default lookup page stops at 100 entries and `react` is
+        # not among them; asking for per_page=500 returned 334, `react` included.
+        first_page = [self.WRONG_PICK]
+        full_list = [self.WRONG_PICK, self.RIGHT_PICK]
+        seen: list[str] = []
+
+        def dispatch(url, **kw):
+            seen.append(url)
+            if "packages/lookup" in url:
+                return (200, full_list if "per_page=1000" in url else first_page)
+            return (404, None)
+        table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js", "reason": "t"}}
+        with self._overrides(table), no_install_signals(), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            axis = health.axis_adoption(FakeRepo("library"))
+        self.assertEqual(axis.raw["canonical_package"], "demo-js")
+        self.assertTrue(any("per_page=1000" in u for u in seen))
+
+    def test_requery_failure_is_lookup_failure_not_override_error(self) -> None:
+        def dispatch(url, **kw):
+            if "packages/lookup" in url:
+                return (503, None) if "per_page=1000" in url else (200, [self.WRONG_PICK])
+            return (404, None)
+        table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js", "reason": "t"}}
+        with self._overrides(table), no_install_signals(), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            axis = health.axis_adoption(FakeRepo("library"))
+        self.assertEqual(axis.grade, "?")
+        self.assertEqual(axis.reason, "registry_lookup_failed")
+
+    def test_no_override_never_requeries(self) -> None:
+        seen: list[str] = []
+
+        def dispatch(url, **kw):
+            seen.append(url)
+            if "packages/lookup" in url:
+                return (200, [self.RIGHT_PICK])
+            return (404, None)
+        with self._overrides({}), no_install_signals(), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            health.axis_adoption(FakeRepo("library"))
+        self.assertFalse(any("per_page" in u for u in seen))
+
+    def test_repo_without_override_keeps_automatic_selection(self) -> None:
+        with self._overrides({}):
+            hit, pkg = health._override_canonical([self.RIGHT_PICK], "owner/demo")
+        self.assertFalse(hit)
+        self.assertIsNone(pkg)
+
+    def test_shipped_override_table_is_well_formed(self) -> None:
+        table = json.loads(health.PACKAGE_OVERRIDES_PATH.read_text(encoding="utf-8"))
+        for key, entry in table.items():
+            with self.subTest(repo=key):
+                self.assertEqual(key, key.lower())
+                self.assertEqual(key.count("/"), 1)
+                self.assertTrue(entry.get("reason"))
+                if entry.get("none"):
+                    self.assertNotIn("name", entry)
+                else:
+                    self.assertTrue(entry.get("registry"))
+                    self.assertTrue(entry.get("name"))
+
+
 class RegistryLinkBackTest(unittest.TestCase):
     """By-name hits whose ecosyste.ms record has no repository_url.
 

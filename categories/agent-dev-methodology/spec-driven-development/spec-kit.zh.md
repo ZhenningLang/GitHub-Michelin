@@ -8,7 +8,7 @@ language: Python
 license: MIT
 maturity: "v1.1.2 (2026-10-07), active, ~140.6k stars (as of 2026-10-08)"
 last_verified: 2026-10-08
-type: skill-pack
+type: tool
 upstream:
   pushed_at: 2026-10-07T22:48:11Z
   default_branch: main
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:10:15Z
+  computed_at: 2026-10-09T09:19:17Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,38 +29,38 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 4.9
+        qualifying_issues: 25
+        band: relaxed_solo
+        window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
-        registry: pypi.org
-        canonical_package: spec-kit-redist
-        dependent_repos_count: 0
-        downloads_last_month: 1919
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
-        homebrew_installs_90d: 4520
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 4486
         homebrew_tier: A
         signal_basis: homebrew
-        tier_source: homebrew
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 412
-        last_commit_age_days: 0
-        cohort: skill-pack
+        repo_age_days: 413
+        last_commit_age_days: 1
+        cohort: tool
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 92
-        top1_share: 0.233
-        top3_share: 0.515
+        top1_share: 0.234
+        top3_share: 0.516
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,8 +70,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: type_na }
 ---
 
 # Spec Kit
@@ -130,11 +128,28 @@ Spec Kit 由两部分组成：一个 Python 命令行工具 `specify`，负责�
 | [BMAD Method](bmad-method.zh.md) | ✅ | 想让分析师、产品经理、架构师、Scrum Master 等角色分工产出 PRD 和架构文档，选 BMAD；只要一条更短的单角色 spec → 方案 → 任务循环，选 Spec Kit。 | BMAD 覆盖更多产品生命周期，仪式也更多；Spec Kit 更窄，每个功能上手更快。 |
 | [12-Factor Agents](12-factor-agents.zh.md) | ✅ | 在设计一个大模型驱动产品的架构时读 12-Factor Agents；需要一套用编码智能体做任意功能的流程时用 Spec Kit。 | 12-Factor 是原则、没有工具；Spec Kit 是工具，附带一套有主见的流程。 |
 
+## 技术栈
+
+- **CLI：** Python 3.11+，在 PyPI 上以 `specify-cli` 发布（命令是 `specify`），基于 Typer、Click 和 Rich，另依赖 Pydantic、PyYAML、json5；`mcp` SDK 支撑一个实验性的、只报版本号的 `specify mcp` stdio 服务器。
+- **装进你项目里的东西：** Markdown 模板（constitution、spec、plan、tasks、checklist），`.specify/` 和各智能体自己配置目录下的技能或命令文件，以及智能体按技能执行时调用的 Bash、PowerShell、Python 辅助脚本。
+- **随包附带的模块：** wheel 里带着核心模板和官方扩展（`git`、`agent-context`、`bug`、`assess`、`github`）、预设（`lean`、`constitution-sync`）、工作流和离线目录快照，所以 `specify init` 不联网也能跑。
+
+## 依赖
+
+- **每台开发机上要有 Python 3.11+ 和 `uv`**（README 的安装命令是 `uv tool install specify-cli`）；文档里另有 Homebrew 公式和固定版本安装方式。
+- **一个受支持的 AI 编程智能体**（Copilot、Claude Code、Codex、Cursor、Gemini CLI 等约 40 种）。写东西全靠它；Spec Kit 自己从不调用模型，也不需要自己的 API key。
+- **Git**——前提是保留默认的 `git` 扩展：它的钩子会在 `/speckit-specify` 之前初始化仓库并建一个带编号的功能分支。
+- **Bash 或 PowerShell**，用来跑技能调用的辅助脚本。没有服务器、数据库或后台进程。
+
+## 运维难度
+
+**部署低，跟版本中等。** 没有东西要常驻运行：CLI 一次性写好文件，剩下的交给智能体。真正的活是升级——1.0.0 之后七周发了 16 个版本，中途还废弃过参数——所以团队应固定一个版本，有计划地重跑 `specify init` 或走升级流程，并把重新生成的模板和技能放进 PR 里审，因为它们改的是团队里每个智能体收到的指令。
+
 ## 健康度与可持续性
 
-- **维护（2026-10-08）**：非常活跃，最近 13 周每周都有提交，几天一个版本（1.0.0 于 2026-08-21，1.1.2 于 2026-10-07）。反面是变动频繁，见“何时不用”。
+- **维护（2026-10-08）**：非常活跃，最近 13 周每周都有提交，几天一个版本（1.0.0 于 2026-08-21，1.1.2 于 2026-10-07）。反面是变动频繁，见“何时不用”。issue 回得很快：雷达测得 25 个 issue 的首次响应中位数是 4.9 小时（2026-10-09）。
 - **治理与背书**：仓库归 `github` 组织所有；过去 12 个月有 92 名贡献者活跃，头号贡献者约占 23% 的提交，项目不系于一个人。路线图仍由 GitHub 决定，没有基金会托管。
-- **年龄 / Lindy**：创建于 2025-08-21，约 14 个月。活跃且在增长，但太年轻，Lindy 先验说明不了多少；长期是否延续取决于 GitHub 的产品决策。
+- **年龄 / Lindy**：创建于 2025-08-21，约 14 个月。活跃且在增长，但太年轻，Lindy 先验说明不了多少（按 tool 类的年龄门槛，雷达给长期性 C）；长期是否延续取决于 GitHub 的产品决策。
 - **采用度**：约 140.6k star、约 12.6k fork（2026-10-08），Homebrew 公式 90 天约 4.5k 次安装，社区有扩展、预设和 bundle 目录。star 数被 GitHub 品牌放大，不能当成生产采用量。
 - **风险信号**：MIT 许可，没有改许可的历史。主要风险是快速迭代的 1.x CLI 带来的破坏性变更，而不是许可。
 

@@ -11,7 +11,7 @@
 | **Get Shit Done (GSD)** | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. | D (6/6) | [→](get-shit-done.md) |
 | **PURE** | Use it when coding-agent intent lineage must live in Git-tracked specs, schemas, registries, phase gates, and tested Shell scripts; it is an early single-maintainer v0.1 framework. | C (5/6) | [→](pure-agentic.md) |
 | **Spec-Anchored Agentic Development** | Use it when permanent capability specs and continuous spec-to-code conformance matter more than broad harness support; the bundle is Claude Code-specific and only days old. | B (3/5) | [→](spec-anchored-agentic-development.md) |
-| **Spec Kit** | Use it when your team lets Copilot, Claude Code, Codex or Cursor write features and you want each to leave a reviewable spec → plan → tasks trail before code — but it is overkill for 20-line fixes, and its 1.x CLI changes almost weekly. | A (5/6) | [→](spec-kit.md) |
+| **Spec Kit** | Use it when your team lets Copilot, Claude Code, Codex or Cursor write features and you want each to leave a reviewable spec → plan → tasks trail before code — but it is overkill for 20-line fixes, and its 1.x CLI changes almost weekly. | A (6/6) | [→](spec-kit.md) |
 | **USDAD** | Use it when you want editable, prose-first planner/adversary/architect/executor methodology source; it is a one-commit document artifact, not an installable runtime or enforced workflow. | C (4/5) | [→](usdad.md) |
 | **BMAD Method** | Use it when you want a role-driven end-to-end agentic method (analyst, PM, architect, UX, dev, review) rather than a thin spec pipeline — and treat its very fast star curve as unproven. | B (4/6) | [→](bmad-method.md) |
 | **Improve** | Use it when you want an expensive model to audit your repo read-only and write self-contained plans for cheaper executor models — it never implements anything itself. | B (4/5) | [→](improve.md) |
@@ -25,7 +25,7 @@
 | [Get Shit Done (GSD)](get-shit-done.md) | ✅ | D (6/6) | Use it when you build through a coding agent and want a spec-driven, fresh-context phase pipeline that fights context rot. |
 | [PURE](pure-agentic.md) | ✅ | C (5/6) | Git-native intent, schema, registry, handoff, and phase-gate machinery; more executable than prose-only methods, but still early. |
 | [Spec-Anchored Agentic Development](spec-anchored-agentic-development.md) | ✅ | B (3/5) | Permanent capability specs and continuous spec-to-code conformance, with a Claude Code-specific bundle and almost no adoption history. |
-| [Spec Kit](spec-kit.md) | ✅ | A (5/6) | Buys one agent-agnostic, spec-first loop installed by `specify init`; costs six skill invocations and three Markdown artifacts per feature, plus pinning a fast-moving CLI. |
+| [Spec Kit](spec-kit.md) | ✅ | A (6/6) | Buys one agent-agnostic, spec-first loop installed by `specify init`; costs six skill invocations and three Markdown artifacts per feature, plus pinning a fast-moving CLI. |
 | [USDAD](usdad.md) | ✅ | C (4/5) | Editable planner/adversary/architect/executor methodology documents, not an installable runtime or mechanically enforced workflow. |
 | [BMAD Method](bmad-method.md) | ✅ | B (4/6) | Role-heavy end-to-end method (analyst/PM/architect/UX/dev/review) delivered as skills and agent personas; very young with a suspiciously fast star curve. |
 | [Improve](improve.md) | ✅ | B (4/5) | Read-only advisor: audits nine categories, then writes handoff plans a cheap executor runs — unlike spec-first or role-first methods, it never implements. |

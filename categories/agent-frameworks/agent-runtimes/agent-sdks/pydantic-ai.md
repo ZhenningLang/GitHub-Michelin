@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:12:19Z
+  computed_at: 2026-10-09T08:15:15Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 28
+        qualifying_issues: 29
         band: default
         window_offset_days: 1
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: pydantic-ai-slim
+        canonical_package: pydantic-ai
         dependent_repos_count: 0
-        downloads_last_month: 23908854
+        downloads_last_month: 5383780
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: null
-        release_downloads: 5
+        cross_check_divergence: 1.0
+        release_downloads: 16
         release_assets: 5
         release_tier: D
         signal_basis: releases
@@ -59,13 +59,13 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 839
-        last_commit_age_days: 0
+        repo_age_days: 840
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 71
+        active_maintainers_12mo: 70
         top1_share: 0.329
         top3_share: 0.695
         window_source: stats_contributors
@@ -153,12 +153,12 @@ Pydantic AI is a library, not a service: you `uv add pydantic-ai` (Python 3.11+)
 - **Maintenance (2026-10-08):** very active — releases every few days (v2.54.0 on 2026-10-03), with the V1 line still receiving patch releases (v1.107.7 on 2026-09-30) during its security-fix window.
 - **Governance & backing:** owned by Pydantic Services Inc., the company behind Pydantic itself; the core team are company employees and the bus factor is healthy (governance grade A, top-3 contributors under 70% of commits). The company's revenue comes from Logfire and the AI Gateway, which the README promotes, but both are optional and instrumentation is plain OpenTelemetry.
 - **Age / Lindy:** about 2⅓ years old (839 days; repo created 2024-06), so longevity is only grade C on its own; the parent project Pydantic is long-lived and is a dependency of most of the Python AI ecosystem, which is a stronger prior than this repo's age.
-- **Adoption:** ~20.5k stars and 23,908,854 monthly PyPI downloads of `pydantic-ai-slim` (adoption grade A).
+- **Adoption:** ~20.5k stars and 5,383,780 monthly PyPI downloads of the `pydantic-ai` meta-package on the scorer's 2026-10-09 reading (adoption grade A); the `pydantic-ai-slim` core it wraps is downloaded several times more.
 - **Risk flags:** MIT with no relicense history; fast API evolution (V1→V2 in 9 months) is the main risk, not abandonment.
 
 ## Caveats (unverified)
 
-- [推断] PyPI downloads of `pydantic-ai-slim` likely include transitive installs pulled in by other frameworks, so they overstate direct adoption.
+- [推断] PyPI downloads of `pydantic-ai-slim` (the previous reading was 23,908,854 a month) likely include transitive installs pulled in by other frameworks; the `pydantic-ai` meta-package count the radar now uses is the closer measure of direct adoption.
 - [未验证] The comparison judgments against Google ADK and the OpenAI Agents SDK draw partly on Pydantic's own comparison docs, which are written by an interested party.
 - [未验证] Whether every provider adapter supports every feature (native structured output, realtime, image generation) was not checked; the README marks support per provider in the docs.
 - [推断] "Production/Stable" is the package classifier; how large production deployments behave under V2's capability model was not independently verified.

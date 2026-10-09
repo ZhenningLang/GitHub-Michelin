@@ -151,10 +151,10 @@ Pyxel is a Python package whose heavy lifting is done by a Rust core (`pyxel-cor
 
 ## Health & viability
 
-- **Maintenance (2026-10-05).** Very active: v2.9.9 on 2026-08-12, ten releases between 2026-04 and 2026-08, last push 2026-09-28, and recent changelogs full of crash and robustness fixes. Only 12 open issues/PRs.
+- **Maintenance (2026-10-05).** Active, in release bursts: v2.9.9 on 2026-08-12, ten releases between 2026-04 and 2026-08, and recent changelogs full of crash and robustness fixes. The last default-branch commit before this check was 2026-08-12 (the release itself; the next one landed 2026-10-08), so the 2026-09-28 "push" GitHub reports was not a commit to `main`. Only 12 open issues/PRs.
 - **Governance / bus factor.** A one-person project by Takashi Kitao (User-owned repo; contributors API: kitao 7,348 commits, next 12). The README itself says it is "developed by one person". External PRs exist but several were closed unmerged (e.g. #676 `resize`, whose feature then shipped from the author's own code) or left open for months — the roadmap is his. Bus factor is 1.
 - **Backing & Lindy.** No company or foundation; funded through GitHub Sponsors and Ko-fi, with a Japanese official guidebook published in 2025. Age ~7.3 years (repo created 2018-06) × still very active ⇒ a solid Lindy prior for a hobby engine, discounted by the single maintainer.
-- **Adoption.** 18.4k stars and 963 forks (2026-10), ~10.5k PyPI downloads in the last month and 85 dependent repositories (the radar's adoption axis reads the PyPI package `pyxel` since 2026-10-08 and grades it D), a curated user-examples gallery, Discord servers in English and Japanese. Strong among education and hobbyists; there is no sign of commercial titles at scale. [推断]
+- **Adoption.** 18.4k stars and 963 forks (2026-10), 10,540 PyPI downloads in the last month and 85 dependent repositories (the radar's adoption axis reads the PyPI package `pyxel` since 2026-10-08 and grades it D), a curated user-examples gallery, Discord servers in English and Japanese. Strong among education and hobbyists; there is no sign of commercial titles at scale. [推断]
 - **Risk flags.** MIT license from the start (LICENSE file; GitHub's API shows `NOASSERTION` only because the file has an extra project line). Breaking API changes across minor versions (2.4 sound/MML) and a pinned nightly Rust toolchain are the real risks, not licensing.
 
 ## Caveats (unverified)

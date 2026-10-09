@@ -542,6 +542,7 @@ https://github.com/leejet/stable-diffusion.cpp,stable-diffusion-cpp,on-device-ml
 https://github.com/lepture/captcha,lepture-captcha,captcha,categories/captcha/lepture-captcha.md
 https://github.com/letta-ai/claude-subconscious,claude-subconscious,coding-agent-memory,categories/agent-memory/coding-agent-memory/claude-subconscious.md
 https://github.com/letta-ai/letta,letta,app-memory,categories/agent-memory/app-memory/letta.md
+https://github.com/letta-ai/letta-code,letta-code,terminal-agents,categories/agent-frameworks/coding-agents/terminal-agents/letta-code.md
 https://github.com/lewislulu/html-ppt-skill,html-ppt-skill,slides-ppt,categories/agent-skills/slides-ppt/html-ppt-skill.md
 https://github.com/lexiforest/curl_cffi,curl-cffi,python-tooling,categories/python-tooling/curl-cffi.md
 https://github.com/lexmount/moli,moli,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/moli.md
@@ -777,7 +778,7 @@ https://github.com/trycua/cua,cua,desktop-automation,categories/desktop-automati
 https://github.com/tsinghua-fib-lab/AgentSociety,agentsociety,social-simulation,categories/social-simulation/agentsociety.md
 https://github.com/tt-a1i/archify,archify,visual-artifacts,categories/agent-skills/design/visual-artifacts/archify.md
 https://github.com/tursodatabase/turso,turso,database-engines,categories/databases/database-engines/turso.md
-https://github.com/tus/tusd,tusd,nginx-modules,categories/nginx-modules/tusd.md
+https://github.com/tus/tusd,tusd,object-storage,categories/object-storage/tusd.md
 https://github.com/tw93/Waza,waza,engineering,categories/agent-skills/engineering/waza.md
 https://github.com/typst/typst,typst,typesetting,categories/typesetting/typst.md
 https://github.com/ultrafunkamsterdam/nodriver,nodriver,browser-driver-frameworks,categories/web-automation/browser-driver-frameworks/nodriver.md

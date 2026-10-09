@@ -10,7 +10,7 @@
 | **CC Switch** | 当你在 Claude Code、Codex、Gemini CLI、OpenCode 等几个编码 CLI 之间来回换厂商，想用一个桌面应用替你改写它们的配置、MCP 服务器和技能时用它——但它是单用户图形应用，无界面服务器上用不了，也当不了团队网关。 | B（5/6） | [→](cc-switch.zh.md) |
 | **Claude Octopus** | 一个 Claude Code 插件：把单个任务扇出给至多约 8 个其他 AI 模型（Codex、Gemini、Perplexity、Ollama、OpenRouter 等），用它们之间的分歧作为盲点 / 共识闸门，全部由 `/octo:*` 斜杠命令驱动。 | C（6/6） | [→](claude-octopus.zh.md) |
 | **oh-my-claudecode** | 架在 Anthropic Claude Code CLI 之上的多智能体编排层：把一队专职 agent 按阶段串成流水线（plan → prd → exec → verify → fix），为每个子任务路由到更便宜或更强的模型，并在 tmux 下跑并行 worker——以 Claude Code 插件形式安装，或通过 `oh-my-claude-sisyphus` npm 包安装。 | B（6/6） | [→](oh-my-claudecode.zh.md) |
-| **OpenHands** | 当你想用一个自托管的浏览器控制台，在指定机器上跑 OpenHands、Claude Code、Codex 或 Gemini CLI 会话，再加上定时或 webhook 触发的 agent 任务时用它——但这个仓库 2026 年 7 月才改成 beta 版 Agent Canvas，经典的 `openhands-ai` agent 已不在这里。 | A（6/6） | [→](openhands.zh.md) |
+| **OpenHands** | 当你想用一个自托管的浏览器控制台，在指定机器上跑 OpenHands、Claude Code、Codex 或 Gemini CLI 会话，再加上定时或 webhook 触发的 agent 任务时用它——但这个仓库 2026 年 7 月才改成 beta 版 Agent Canvas，经典的 `openhands-ai` agent 已不在这里。 | B（6/6） | [→](openhands.zh.md) |
 | **SWE-agent** | 当你必须复现已发表的 SWE-agent 结果、用一份 YAML 配置在 Docker 沙箱里批量让模型修仓库 issue 时用它——但维护者已声明它被 mini-swe-agent 取代，新工作别再从它起步。 | B（5/6） | [→](swe-agent.zh.md) |
 | **Background Agents（Open-Inspect）** | 当一个可信组织需要自托管的后台 coding-agent 沙箱、集成和自动化时用它。 | B（5/6） | [→](background-agents.zh.md) |
 | **SwarmForge** | 当你想要一个自托管的角色流水线（spec→code→clean→architect→harden→QA）跑在自己的仓库上、每个角色一个 git worktree、以 commit 交接时用它——但它没有许可证，也没有 tagged release。 | D（5/6） | [→](swarm-forge.zh.md) |

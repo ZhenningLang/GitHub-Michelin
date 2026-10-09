@@ -19,7 +19,7 @@
 | [MiroFish](mirofish.md) | ✅ | C (5/6) | Finished product (upload→report) but AGPL-3.0 + Zep Cloud dependency + unvalidated prediction claims. |
 | [OASIS](oasis.md) | ✅ | B (6/6) | Apache-2.0 engine with social-media feed fidelity and published cost model; you build the pipeline yourself. |
 | [AgentSociety](agentsociety.md) | ✅ | B (5/6) | Research-grade replay/distribution for experiments; heavier stack, framework-only. |
-| [generative_agents](generative-agents.md) | ✅ | D (3/6) | The field's founding reference, frozen since 2024-08; teaching/study value only. |
+| [generative_agents](generative-agents.md) | ✅ | D (3/6) | The field's founding reference, frozen since 2023-08; teaching/study value only. |
 
 ## What belongs here
 

@@ -88,7 +88,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [book-to-skill](book-to-skill.zh.md) | ✅ | 材料是某个人的痕迹、你要的是行为与语气规则时选 Distilly；材料是一本技术书、你要的是 agent 按需加载的参考内容时选 book-to-skill。 | Distilly 多出采集流水线、分家族的分析提示词和多 harness 安装器；book-to-skill 覆盖更多文档格式、是无状态 CLI，但不产行为层。 |
+| [book-to-skill](book-to-skill.zh.md) | ✅ | 材料是某个人的痕迹、你要的是行为与语气规则时选 Distilly；材料是一本书、一个 `docs/` 目录或一摞规范、你要的是 agent 按章节加载的参考笔记时选 book-to-skill。 | Distilly 多出聊天／邮件采集流水线和分家族的分析提示词；book-to-skill 覆盖更多文档格式（PDF、EPUB、DOCX、MOBI 等），和 Distilly 一样是由你自己 agent 的模型执行的技能（它的 Python 部分只负责抽文本），但产出的是章节笔记、术语表和速查表，不产行为层。 |
 | [awesome-claude-code-subagents](subagent-collections/awesome-claude-code-subagents.zh.md) | ✅ | 必须从私有材料建模一个真实具体的人时选 Distilly；今天就要宽覆盖的角色、且零配置时选这个 subagent 合集。 | 合集是 Claude Code 原生、几秒装好；Distilly 要跑多步流水线加平台凭据，每轮只覆盖一个人。 |
 | [wshobson/agents](subagent-collections/wshobson-agents.zh.md) | ✅ | 目标是某个具名的人而不是某个角色时选 Distilly；想要一份持续维护、为六个 harness 生成的岗位目录时选 wshobson/agents。 | wshobson/agents 赢在覆盖面与维护度；Distilly 赢在专指性和「每条规则都能指回来源材料」。 |
 | [Agency-Agents](subagent-collections/agency-agents.zh.md) | ✅ | 建模一个个体时选 Distilly；任务是给项目配齐一堆角色而不是复现某个人时选 Agency-Agents。 | Agency-Agents 提供体量和约十二个 harness 的部署脚本；Distilly 提供逐条来源可溯，代价是更慢、更依赖材料质量。 |

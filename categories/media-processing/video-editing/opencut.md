@@ -85,7 +85,7 @@ OpenCut is a TypeScript editor for web, desktop, and mobile. As of 2026-09-19 it
 
 - **You need an editor to adopt today for actual work.** This repository ships nothing usable while the rewrite is in progress and the newest tagged release is v0.3.0 (2026-04-15). Use [Concat](concat.md) for a runnable native beta, or the archived `opencut-classic` if you specifically want the browser version and accept that it is frozen.
 - **You want to send a pull request.** The README states the project is not set up to take outside contributions yet; contribute to a project with an open review process, or wait until the architecture is declared stable.
-- **You need a dependable release cadence or a stable extension API.** The Editor API, plugin system, MCP server, and headless mode are all "coming" in the README, and GitHub's commit-activity stats record no default-branch commits in the 13 weeks to 2026-09-13 [推断].
+- **You need a dependable release cadence or a stable extension API.** The Editor API, plugin system, MCP server, and headless mode are all "coming" in the README, and the last default-branch commit before this check was 2026-08-01, a scaffold for the rewrite's desktop shell, with no tagged release since v0.3.0 (2026-04-15).
 - **Your editor must run fully offline on modest hardware.** OpenCut renders in the browser through a WASM compositor and deploys its web app through OpenNext; if you need a native binary with bundled codecs and no browser, use [Concat](concat.md).
 - **You only need programmatic, deterministic video from code.** A timeline editor is the wrong layer — use [Remotion](../../video-production/remotion.md) for React compositions rendered in CI, or [MLT](../video-audio/editing-and-cutting/mlt.md) if you are building the editor yourself.
 
@@ -119,7 +119,7 @@ OpenCut is a TypeScript editor for web, desktop, and mobile. As of 2026-09-19 it
 
 ## Health & viability
 
-- **Maintenance (2026-09):** stalled on the default branch. GitHub's commit-activity stats record no commits in the 13 weeks to 2026-09-13, the last push is 2026-08-10, and the newest tagged release is v0.3.0 of 2026-04-15.
+- **Maintenance (2026-09):** slow and mid-rewrite. The last default-branch commit before this check is 2026-08-01 (a burst of rewrite scaffolding in late July, then about seven quiet weeks); the newest tagged release is v0.3.0 of 2026-04-15. GitHub's `pushed_at` of 2026-08-10 is not a default-branch commit.
 - **Governance / bus factor:** organisation-owned (`OpenCut-app`) with sponsors including fal.ai, but heavily concentrated — the top contributor (`mazeincoding`) holds 1,058 commits against 71 for the next; outside contributions are intentionally disabled during the rewrite.
 - **Backing & Lindy — large attention, no current output.** Created 2025-06-22, so ~15 months old with 89.8k stars and 8.9k forks; the adoption is real, but the "still active" half of the age × still-active prior does not hold right now.
 - **Adoption & ecosystem:** the largest community in this niche — Discord, 378 open issues, a hosted service. Note that the deployed service runs the archived classic build, not this repository's work.
@@ -127,9 +127,9 @@ OpenCut is a TypeScript editor for web, desktop, and mobile. As of 2026-09-19 it
 
 ## Caveats (unverified)
 
-- [未验证] Whether development resumed after the recorded last push (2026-08-10); repository state checked 2026-09-19.
+- [未验证] Whether development resumed after the last default-branch commit (2026-08-01); repository state checked 2026-09-19.
 - [未验证] v0.3.0's release notes describe a Rust/wgpu WASM compositor, `MediaTime`, and a GPUI desktop shell; no build was performed to confirm them.
 - [推断] The 89.8k stars are legacy of the pre-split project: the split-out `opencut-classic` repository holds only 251 stars, which suggests this repository retained the original history and audience.
 - [未验证] That opencut.app still serves the classic version is taken from this repository's README, not from inspecting the deployment.
 - [未验证] Star, fork and issue counts (89,808 / 8,871 / 378 open) are point-in-time GitHub figures from 2026-09-19.
-- [推断] "No commits in 13 weeks" is read from GitHub's commit-activity endpoint, which can lag or exclude non-default-branch work; `pushed_at` is 2026-08-10.
+- [推断] An earlier read of GitHub's commit-activity endpoint showed no commits in the 13 weeks to 2026-09-13, but the default-branch commit list (re-read 2026-10-09) has commits on 2026-07-24 and 2026-08-01; the activity endpoint lags or caches, so this page uses the commit list.

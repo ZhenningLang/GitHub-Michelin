@@ -83,7 +83,7 @@ health:
 
 你是双语读者或语言学习者，想要的不是弹窗词典，而是像开源沉浸式翻译一样工作的浏览器扩展。你读文章、文档和视频时，希望学习场景下原文和译文并排，赶进度时又能只看译文。碰到 *it's not my cup of tea* 这种句子，直译毫无用处，你要的是按你的水平讲清楚。你还想带自己的服务商账号：OpenAI、DeepSeek、Claude、Gemini、Grok、Groq、Mistral、Ollama，或 OpenAI-compatible／自定义端点，都在扩展内配置，而不是走某个厂商内置额度。它还有划词工具栏上的自定义 AI 动作（自己写 prompt 和输出字段），以及带间隔重复复习的生词卡片。
 
-在这组项目里，Read Frog 是高功能候选：当你需要 Chrome／Edge／Firefox 商店分发、双语网页翻译、划词解释、YouTube 字幕、TTS、批量请求和更大的社区时，选它而不是 Margin Read；当语言学习功能和更广的 AI provider 接线比更简洁的沉浸式翻译体验更重要时，选它而不是 FluentRead。代价是它更年轻、采用 GPL／商业双授权、权限面更宽，部件也更多。
+在这组项目里，Read Frog 是高功能候选：当你需要 Chrome／Edge／Firefox 商店分发、双语网页翻译、划词解释、YouTube 字幕、TTS、批量请求和更大的社区时，选它而不是 Margin Read；当语言学习功能（按水平讲解、间隔复习闪卡）和自定义 AI 动作比 FluentRead 更宽的阅读覆盖面（PDF／ePub、OCR、浏览器内本地模型、免密钥免费接口）和免账号使用更重要时，选它而不是 [FluentRead](fluentread.zh.md)。代价是它更年轻、采用 GPL／商业双授权、权限面更宽，部件也更多。
 
 ## 怎么用起来
 
@@ -111,7 +111,7 @@ Read Frog 是浏览器扩展，活都在你正在读的页面里干：**它找�
 - **你需要宽松许可的再分发或闭源嵌入。** 改用 [Margin Read](margin-read.zh.md)：Read Frog 是 GPL-3.0，并带商业双授权说明，贡献条款还要求把 GPLv3 与商业许可权授予 FEELIO TECHNOLOGIES LTD。
 - **你要 fork 并再分发一个完全自由的构建。** 改用 [Pair Translate](pair-translate.zh.md)（GPL-3.0，依赖全部公开）或 [Margin Read](margin-read.zh.md)（MIT）。2026-09-28 起 Read Frog 依赖 npm 包 `@read-frog/layout-engine`，它的 LICENSE 写明归 FEELIO 所有（“All rights reserved”，只允许作为 Read Frog 产品的未修改部分分发），源码所在的 monorepo 也不公开；它负责渲染自定义 AI 动作的结果，fork 要么去掉这项功能，要么拿到授权。
 - **你想要默认只发送所选片段、隐私边界更窄的翻译器。** 改用 [Margin Read](margin-read.zh.md)；Read Frog 的上下文感知翻译可把页面标题和 Markdown 化页面内容提供给已配置的 AI provider，能力更强但数据面更宽。
-- **你只需要轻量双语覆盖层，不需要语言学习附加功能。** 如果简单网页／划词翻译足够，选 [Pair Translate](pair-translate.zh.md)；如果想要中文生态更友好的沉浸式翻译器，选 [FluentRead](fluentread.zh.md)。
+- **你只需要轻量双语覆盖层，不需要语言学习附加功能。** 如果简单网页／划词翻译足够，选 [Pair Translate](pair-translate.zh.md)。[FluentRead](fluentread.zh.md) 不是更轻的选项：它已长成和 Read Frog 一样大的套件（文档、OCR、字幕、TTS、浏览器内本地模型）。
 - **你不能接受宽泛扩展权限。** 改用浏览器内置翻译／阅读模式，或更窄的划词工具；Read Frog 的 WXT manifest 包含 `*://*/*` host permissions，以及 `cookies`、`identity`、`scripting`、`tabs`、`webNavigation` 等权限。
 - **你需要很长的 Lindy 历史。** 改用更老的浏览器翻译扩展或浏览器内置翻译；Read Frog 活跃且受欢迎，但仓库创建于 2025 年，长期耐久性还没有被时间证明。
 - **你不想默认就上报使用数据。** 改用 [Margin Read](margin-read.zh.md) 或 [Pair Translate](pair-translate.zh.md)；Read Frog 带 `posthog-js`，源码里 **Chrome／Edge 构建默认开启统计**，Firefox 默认关闭（manifest 把它声明为可选数据收集）。它还带 `better-auth` 和 Google 登录，用于 Notebase 等账号功能。
@@ -120,7 +120,7 @@ Read Frog 是浏览器扩展，活都在你正在读的页面里干：**它找�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FluentRead](fluentread.zh.md) | ✅ | 当你想要更聚焦、支持许多翻译引擎的开源沉浸式翻译扩展时，选 FluentRead；当语言学习、TTS、YouTube 字幕、批量请求和 provider 广度是决定因素时，选 Read Frog。 | FluentRead 更简洁且历史更长；Read Frog 功能更丰富、更新更活跃，但更年轻，权限和 provider 面也更宽。 |
+| [FluentRead](fluentread.zh.md) | ✅ | 想要免账号、免密钥免费接口、浏览器内本地模型和文档／OCR 翻译时，选 FluentRead；语言学习功能（按水平讲解、间隔复习闪卡）、自定义 AI 动作和批量请求是决定因素时，选 Read Frog。 | FluentRead 历史更长（2023-12），阅读覆盖面更宽，但几乎全部代码出自一位维护者；Read Frog（2025-04）贡献者更分散，但 Chrome／Edge 版默认开启统计、笔记本绑定账号，还依赖一个专有排版包。 |
 | [Margin Read](margin-read.zh.md) | ✅ | 当 BYOK、本地 OpenAI-compatible 端点、隐私文档和 MIT 许可是硬约束时，选 Margin Read；当你需要更成熟的商店分发功能集时，选 Read Frog。 | Margin Read 透明且宽松许可，但仍是早期 Chrome／Chromium MVP；Read Frog 功能更完整且跨商店，但 GPL／商业双授权。 |
 | [Pair Translate](pair-translate.zh.md) | ✅ | 当较轻量的双语翻译器和许多 provider 模板已经足够时，选 Pair Translate；当语言学习流程和字幕／TTS 更重要时，选 Read Frog。 | Pair Translate 范围更小、权限更简单；Read Frog 带来更多功能和社区，也带来更多复杂度。 |
 | Immersive Translate 官方仓库 | 未收录 | 不要把官方 Immersive Translate 仓库当作开源源码候选；它只适合作为产品标杆，因为 README 说明该仓库不包含扩展源码。 | Immersive Translate 是熟悉的产品类别，但公开仓库更像 releases／issues，而不是可审计源码。 |

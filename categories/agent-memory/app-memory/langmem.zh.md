@@ -110,7 +110,7 @@ LangMem 是一组积木，不是服务器：没有要部署的东西。**它替�
 - **写入失败不能静默。** 一个 2026-10-08 的未关闭 issue 报告 `MemoryStoreManager.invoke()` 在存储写入或删除失败时仍报告成功，另一个报告本地 `ReflectionExecutor` 会丢掉 LangGraph 入口注入的存储。如果悄悄丢一条记忆不可接受，改用 [Hindsight](hindsight.zh.md)（有自己 API 的记忆服务器），或者自己校验写入结果，因为这些问题都出在后台路径上。
 - **你需要关系和“当时什么是真的”。** LangMem 把记忆当作命名空间里的文档存，不建实体图，也不记录有效期。当问题是“三月份谁向谁汇报”时，改用 [Graphiti](../graph-memory/graphiti.zh.md) 或 [Cognee](../graph-memory/cognee.zh.md)。
 - **你要把记忆做成多个应用、多种语言共用的服务。** LangMem 跑在你的 Python 进程里。当 TypeScript 前端、第二个 agent 和一个批处理任务都要通过 HTTP 访问同一份记忆时，改用 [Hindsight](hindsight.zh.md) 或 [Supermemory](supermemory.zh.md)。
-- **你想让 agent 运行时全权管理记忆。** 当 agent 应该自己改写持久的记忆块、而不用你去设计命名空间和工具时，改用 Letta Code（未收录；旧的 Letta 服务器已退役，见 [Letta 页面](letta.zh.md)）。
+- **你想让 agent 运行时全权管理记忆。** 当 agent 应该自己改写持久的记忆块、而不用你去设计命名空间和工具时，改用 [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.zh.md)（旧的 Letta 服务器已退役，见 [Letta 页面](letta.zh.md)）。
 
 ## 横向对比
 

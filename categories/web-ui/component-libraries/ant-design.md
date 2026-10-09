@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:28:56Z
+  computed_at: 2026-10-09T09:13:41Z
   overall: A
-  overall_score: 3.5
+  overall_score: 4.0
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -42,16 +42,16 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: D
+      grade: A
       raw:
-        registry: nuget.org
+        registry: npmjs.org
         canonical_package: antd
-        dependent_repos_count: 0
-        downloads_last_month: 7513
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
-        release_downloads: 4285
+        dependent_repos_count: 113307
+        downloads_last_month: 15539584
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.06
+        release_downloads: 4303
         release_assets: 74
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4185
+        repo_age_days: 4186
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 76
-        top1_share: 0.193
-        top3_share: 0.478
+        top1_share: 0.192
+        top3_share: 0.477
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -159,7 +159,7 @@ Ant Design is an npm package of React components (`antd`) built on a layer of lo
 - **Responsiveness (A):** median first response 0.5 hours across 46 recent issues. A bot plus maintainers triage almost immediately.
 - **Governance (A):** 76 active contributors in the trailing year, and the top three account for 47.8% of recent commits. The `ant-design` GitHub org is run by a core team that originated at Ant Group / Alibaba, with OpenCollective sponsorship. Roadmap influence from Ant Group's internal products is not documented.
 - **Longevity (A) and Lindy:** created 2015-04, 4185 days old, three major rewrites (v4 → v5 CSS-in-JS → v6) without losing momentum. A strong Lindy prior.
-- **Adoption (D on the radar, a scorer misfire):** the scorer matched a NuGet package named `antd` (7513 downloads) instead of the npm package. The real npm `antd` had about 15.5 million downloads in the 30 days to 2026-10-04, and the repo has ~99.7k stars, so real adoption is top-tier. Read the D as a data error, not a signal.
+- **Adoption (A):** the npm `antd` package had 15,539,584 downloads in the last month and 113,307 dependent repositories on the scorer's 2026-10-09 reading, and the repo has ~99.7k stars — top-tier adoption.
 - **Risk / License (A):** MIT, no relicense, no paid tier inside `antd` itself. The main risk is upgrade churn between majors.
 
 ## Caveats (unverified)
@@ -169,4 +169,4 @@ Ant Design is an npm package of React components (`antd`) built on a layer of lo
 - [未验证] Per-component accessibility (ARIA, keyboard support) was not audited. Complex components such as Table and Cascader may need manual fixes.
 - [推断] How long antd 5 keeps receiving fixes after v6 is not stated in the docs read here. The last 5.x release seen on npm is 5.29.3 (2025-12-18).
 - [推断] Runtime CSS-in-JS cost in very large apps with many dynamic theme changes was not benchmarked. v6's CSS variables and `zeroRuntime` mode exist to reduce it.
-- [推断] The adoption-axis D comes from the health scorer resolving `antd` to nuget.org. The npm figure above came from the npm downloads API on 2026-10-08, and the radar block itself was not changed.
+- [未验证] Download and dependent counts come from the health scorer (ecosyste.ms data); they include CI and mirror traffic and indicate scale, not user counts.

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:48Z
+  computed_at: 2026-10-09T08:06:12Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 12
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 29.3
-        qualifying_issues: 21
+        qualifying_issues: 25
         band: default
         window_offset_days: 10
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: llama-index-instrumentation
-        dependent_repos_count: 0
-        downloads_last_month: 4634294
-        graph_tier: E
+        canonical_package: llama-index
+        dependent_repos_count: 1464
+        downloads_last_month: 2937852
+        graph_tier: B
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 1702
+        release_downloads: 1705
         release_assets: 98
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 1436
-        last_commit_age_days: 2
+        repo_age_days: 1437
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.292
-        top3_share: 0.489
+        active_maintainers_12mo: 29
+        top1_share: 0.293
+        top3_share: 0.491
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,12 +154,12 @@ You point LlamaIndex at your data and choose which model and storage to use; it 
 - **Governance: one company, broad core team.** Owned by `run-llama` (LlamaIndex, Inc.); the core-package maintainers listed in `pyproject.toml` are company staff. Contribution is spread rather than single-person (top contributor ~29% of the last year's commits per the scorer).
 - **Backing: a strategic shift away from the framework.** The README states the company's primary focus is now LlamaParse and its parsing benchmarks. Expect the framework to be maintained, but treat new orchestration features as lower priority than before. [推断]
 - **Age & Lindy: ~3.9 years and still active.** Created 2022-11 and still shipping, which is a reasonable prior for an LLM-era framework, tempered by the pivot above.
-- **Adoption: large.** About 52.4k stars and 8.3k forks; 4,634,294 PyPI downloads in the last month on the scorer's reading (package `llama-index-instrumentation`, which every install pulls in).
+- **Adoption: large.** About 52.4k stars and 8.3k forks; on the scorer's 2026-10-09 reading the `llama-index` starter package had 2,937,852 PyPI downloads in the last month and 1,464 dependent repositories.
 - **Risk flags.** MIT, no relicense history. The risk is open-core gravity: the best parsing sits in a paid hosted product, and the README's calls to action point there.
 
 ## Caveats (unverified)
 
 - [推断] "Lower priority for new orchestration features" is read from the README's focus statement and the slowing release cadence, not from a published roadmap.
-- [未验证] The health scorer's adoption reading uses `llama-index-instrumentation` as the canonical package; downloads of the `llama-index` / `llama-index-core` packages themselves were not separately checked.
+- [推断] The health scorer reads the `llama-index` starter package; projects that install `llama-index-core` plus individual integrations directly are not counted there, so the reading likely undercounts total use.
 - [未验证] How well the default `SimpleDirectoryReader` PDF path handles tables and scans was not tested; the claim that hard documents need a dedicated parser follows the README's own routing to LlamaParse.
 - [未验证] Haystack's integration count and current company focus were not re-read for this page; it is named as the closest unindexed pipeline-style substitute.

@@ -133,7 +133,7 @@ A.I.G 的触发场景，是审计面覆盖**整个 AI 资产清单**而不是单
 |---|---|---|---|
 | [garak](garak.zh.md) | 已收录 | 目标是单个模型端点、想在 Python／CI 里跑可编程探针时选 garak；要在一个界面里审整套自托管栈（服务 CVE、MCP server、Skill）时选 A.I.G。 | garak 是一条命令行，零运维，但眼里只有模型；A.I.G 看得见模型周围的基础设施，代价是 Docker 部署和半数扫描要烧 LLM key。 |
 | [promptfoo](promptfoo.zh.md) | 已收录 | 给自己应用的发布设 YAML 断言和红队门禁时选 promptfoo；定期给应用周围的基础设施和第三方 agent 资产做安全自查时选 A.I.G。 | promptfoo 是本地优先的命令行，有断言模型，但没有资产清单和 CVE 比对；A.I.G 有持久报告库和界面，却没有应用回归测试模型。 |
-| [Giskard](giskard.zh.md) | 已收录 | 在 Python 开发循环里测 ML／LLM 应用行为时选 Giskard；问题是「我们基础设施上躺着哪些已知 CVE 和恶意 Skill」而不是「模型行为是否异常」时选 A.I.G。 | Giskard 测的是模型／应用行为，贴合 Python 工作流；A.I.G 做的是部署中服务的指纹识别和供应链资产审计，这块 Giskard 不覆盖。 |
+| [Giskard](giskard.zh.md) | 已收录 | 在 Python 开发循环里给 LLM agent 的行为写场景测试、跑自动生成的红队扫描时选 Giskard；问题是「我们基础设施上躺着哪些已知 CVE 和恶意 Skill」而不是「模型行为是否异常」时选 A.I.G。 | Giskard 测的是应用／agent 行为，贴合 Python 工作流（v3 是 2026 年的重写版，面向 agent，要求 Python ≥ 3.12）；A.I.G 做的是部署中服务的指纹识别和供应链资产审计，这块 Giskard 不覆盖。 |
 | PyRIT | 未收录 | 想用代码编排多轮越狱攻击时选 PyRIT（微软的 Python 风险识别工具箱）；A.I.G 把同类攻击（PAIR、GOAT、ActorAttack）装进了界面，但它是平台，不是编程工具箱。 | 本批次未收录（控制范围只写一篇，记为 backlog）。PyRIT 提供库级的灵活度和编排原语，但没有基础设施 CVE 扫描、没有 Web 界面、没有报告管理。 |
 | mcp-scan（Invariant Labs） | 未收录 | 只想快速查 MCP 配置和工具劫持、什么都不想部署时选它；MCP 扫描只是一长串 AI 资产审计清单里的一项时选 A.I.G。 | 本批次未收录（同上记为 backlog）。mcp-scan 是单一用途命令行，几分钟跑完、零运维；A.I.G 的 MCP 扫描是 LLM 驱动、平台集成的，所以要付出一次部署加一个 API key。 |
 

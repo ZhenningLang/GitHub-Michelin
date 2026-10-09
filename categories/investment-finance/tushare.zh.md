@@ -109,7 +109,7 @@ health:
 ## 何时不用
 
 - **今晚就要免 Key、零仪式感的数据。** 注册、积分、配额就是它的产品模式。免费无契约路线选 [AKShare](akshare.zh.md)，美股/全球标的选 [yfinance](yfinance.zh.md)。
-- **你以为 GitHub 仓库是活的项目本体。** master 最后一次提交停在 2020-03；767 个 open issue 基本无人应答；SDK 在 PyPI 上发版（最新 1.4.29，2026-03）却没有对应的公开提交。你无法审计现行 SDK 的源码，报 bug 走的是 QQ/微信群（「高级」群是付费会员制）而不是 GitHub。要一个结构相近、仓库公开的对照物，看 [HiThink Financial-API](financial-api.zh.md)。 [推断]
+- **你以为 GitHub 仓库是活的项目本体。** master 最后一次提交停在 2020-03；767 个 open issue 基本无人应答；SDK 在 PyPI 上发版（最新 1.4.29，2026-03）却没有对应的公开提交。你无法审计现行 SDK 的源码，报 bug 走的是 QQ/微信群（「高级」群是付费会员制）而不是 GitHub。如果你需要能审计的客户端源码和公开的 issue 区，用 [AKShare](akshare.zh.md)，它的仓库仍然活跃——代价是数据靠爬取、没有字段契约。[HiThink Financial-API](financial-api.zh.md) 已经不再是这样的对照物：它的 GitHub 仓库在 2026-10 消失，只剩一个停在 2026-09-22 的 Gitee 镜像，不过 npm 上的 CLI 和托管服务仍然可用。 [推断]
 - **你要机构问责或 SLA。** 一个按积分经济学运营、机构价十倍的社区服务不是签合同的数商；受监管的通路属于商业终端（Wind/iFinD/Choice——非仓库）或券商、交易所行情。
 - **预算严丝合缝只剩免费档。** 120 积分只到非复权日线（每分钟 50 次、每天 8000 行）；复权、财报全量、特色数据从付费档开始，分钟/新闻/港美股按年单独授权。定架构前先核积分频次表。
 - **你打算在老接口上写新代码。** 仓库 README 里的爬虫时代 API 早于 Pro，数据源早已变迁；新代码只应面向 Pro 面。
@@ -120,7 +120,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [AKShare](akshare.zh.md) | 已收录 | 零成本、零注册是硬约束时选 AKShare；字段有文档、历史够深、要唯一可追责运营方时选 Tushare，代价是 token 和档位。 | AKShare 免费但骑在会变的公开页面上；Tushare 的契约按积分计价——120 免费积分只到非复权日线。 |
-| [HiThink Financial-API](financial-api.zh.md) | 已收录 | 要供应商官方口径、打包的公开期货期权目录和一个公开仓库时选官方服务；十年特色数据与按需付费深度（分钟线、新闻、港美股）更对口时选 Tushare。 | 两者都是 token 门槛的托管服务、都有 MCP/Skills 面；真正的轴是社区运营对供应商官方，以及哪家的付费目录匹配工作负载。 |
+| [HiThink Financial-API](financial-api.zh.md) | 已收录 | 要供应商官方口径和打包的公开期货期权目录时选官方服务；十年特色数据与按需付费深度（分钟线、新闻、港美股）更对口时选 Tushare。 | 两者都是 token 门槛的托管服务、都有 MCP/Skills 面；真正的轴是社区运营对供应商官方，以及哪家的付费目录匹配工作负载。两者都已没有活着的公开仓库：官方服务的 GitHub 仓库在 2026-10 消失，只剩停在 2026-09-22 的 Gitee 镜像，npm CLI 和托管服务仍可用。 |
 | [yfinance](yfinance.zh.md) | 已收录 | 免 Key 的美股/全球日线选 yfinance；工作对象是 A 股财报、指数成分和中国特色数据集时选 Tushare——带上 token 和预算。 | yfinance 免费且非官方；Tushare 卖的正是 yfinance 缺的中国深度。 |
 | Wind / 同花顺 iFinD / 东方财富 Choice | 非仓库 | tick/Level-2、跨市场机构覆盖和支持合同不可谈判时选终端；Tushare 把个人定价拉进了中间档。 | 终端按席位收费；Tushare 按积分收费——问责与 SLA 都只是终端的一个零头。 |
 

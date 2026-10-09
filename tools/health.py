@@ -1071,6 +1071,80 @@ def _is_vcs_pseudo(entry: dict) -> bool:
     return reg == "proxy.golang.org"
 
 
+# Hand-kept repo -> package table, consulted BEFORE _select_canonical. The automatic rules
+# below pick by name match and volume, and some repos defeat every such rule: the real
+# package's name is unrelated to the repo (`next` for vercel/next.js), a foreign registry
+# carries the exact name (nuget `antd`), or the exact name is a legacy package (`reactour`
+# v1). Each entry is checked by hand against the ecosyste.ms candidate list and states its
+# reason, so the table is the place a wrong adoption reading gets fixed, not the page.
+PACKAGE_OVERRIDES_PATH = Path(__file__).with_name("health_package_overrides.json")
+
+
+class PackageOverrideError(RuntimeError):
+    """An override names a package the ecosyste.ms lookup did not return.
+
+    Deliberately fail-closed: falling back to automatic selection would quietly write the
+    very mis-pick the override exists to prevent, and fetching the package from elsewhere
+    would score it off data no other page is scored from. _safe re-raises it, so the run
+    aborts and the entry gets re-checked.
+    """
+
+
+def _load_package_overrides() -> dict[str, dict]:
+    if not PACKAGE_OVERRIDES_PATH.exists():
+        return {}
+    table = json.loads(PACKAGE_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    return {k.lower(): v for k, v in table.items()}
+
+
+class _OverrideRequeryFailed(Exception):
+    """The full-list re-query for an override failed in transport — a lookup failure
+    (`?`), not evidence that the override is stale."""
+
+
+# The default `packages/lookup` page stops at 100 entries and nothing marks the list as
+# truncated: facebook/react returns 100 by default and 334 with per_page=1000, and npm
+# `antd` / `next` appear only in the full lists of ant-design (188) and next.js (161)
+# (2026-10-09). Automatic selection still reads the first page only — a known flaw,
+# left for a separate change,
+# because paging every lookup would move every page's reading at once. Overrides re-query
+# so a named package is never reported missing merely for sitting past entry 100.
+OVERRIDE_REQUERY_PER_PAGE = 1000
+
+
+def _override_canonical(candidates: list[dict], repo_full: str,
+                        requery=None) -> tuple[bool, dict | None]:
+    """(overridden, package). (False, None): no entry, select automatically.
+    (True, None): the entry says the project ships no representative package.
+    (True, pkg): the candidate matching the entry's registry + name.
+
+    `requery()` returns the full candidate list (or None on a transport failure); it is
+    called only when the named package is absent from `candidates`."""
+    entry = _load_package_overrides().get(repo_full.lower())
+    if entry is None:
+        return False, None
+    if entry.get("none"):
+        return True, None
+    want_reg, want_name = entry["registry"], entry["name"]
+
+    def match(pool):
+        return next((c for c in pool
+                     if _registry_name(c) == want_reg and c.get("name") == want_name), None)
+
+    hit = match(candidates)
+    if hit is None and requery is not None:
+        full = requery()
+        if full is None:
+            raise _OverrideRequeryFailed(repo_full)
+        candidates = full
+        hit = match(candidates)
+    if hit is not None:
+        return True, hit
+    raise PackageOverrideError(
+        f"{repo_full}: package override {want_reg}:{want_name} is not among the "
+        f"{len(candidates)} ecosyste.ms candidates — fix {PACKAGE_OVERRIDES_PATH.name}")
+
+
 def _select_canonical(candidates: list[dict], repo_owner: str, repo_name: str,
                       repo_language: str | None = None) -> dict | None:
     """Canonical = strongest repo claim, then max downloads (spec §2.3).
@@ -1679,17 +1753,28 @@ def axis_adoption(repo: RepoData) -> Axis:
         return Axis.unknown("registry_lookup_failed", evidence=f"? ecosyste.ms lookup HTTP {status}")
 
     candidates = data if isinstance(data, list) else []
-    canonical = _select_canonical(candidates, repo.owner, repo.name,
-                                  (repo.core.json or {}).get("language")
-                                  if isinstance(repo.core.json, dict) else None)
+    # The override table outranks automatic selection (see PACKAGE_OVERRIDES_PATH).
+    def requery():
+        st, full = http_get_json(f"{url}&per_page={OVERRIDE_REQUERY_PER_PAGE}", retries=2)
+        return full if st == 200 and isinstance(full, list) else None
+    try:
+        overridden, canonical = _override_canonical(candidates, repo.full, requery)
+    except _OverrideRequeryFailed:
+        return Axis.unknown("registry_lookup_failed",
+                            evidence="? ecosyste.ms full-list re-query for the package override failed")
+    if not overridden:
+        canonical = _select_canonical(candidates, repo.owner, repo.name,
+                                      (repo.core.json or {}).get("language")
+                                      if isinstance(repo.core.json, dict) else None)
 
     # Secondary discovery before conceding: ecosyste.ms's repo -> package mapping has a
     # long tail of gaps, and a gap there is not evidence of an unpackaged project.
     # The repo's own manifest names extend the search for packages published under an
     # unrelated name (`oh-my-claudecode` -> `oh-my-claude-sisyphus`); a manifest hit is
     # only trusted through the same repository-link verification as every other.
+    # Skipped under a `none` override: a human already decided no package represents it.
     manifest_extra: list[str] = []
-    if canonical is None:
+    if canonical is None and not overridden:
         manifest_extra = _manifest_names(repo)
         canonical = _lookup_by_name(
             repo.owner, repo.name,
@@ -1732,6 +1817,12 @@ def axis_adoption(repo: RepoData) -> Axis:
                     evidence=f"type {repo.type}: copied, not installed — no install event exists to count")
             return Axis.unknown("no_package_structural",
                                 evidence=f"type {repo.type} & no canonical package or install signal")
+        # A `none` override says no package represents the project, which is not evidence
+        # of zero adoption: neither the E below nor "none clears the noise filter" holds.
+        if overridden:
+            return Axis.unknown("ambiguous",
+                                evidence="? package override: no representative registry "
+                                         "package, and no install signal -> unmeasured")
         # A successful empty lookup for package-relevant types is measurably unadopted -> E (spec §2.3).
         if candidates:
             return Axis.unknown("ambiguous",
@@ -2685,6 +2776,10 @@ def _safe(fn, repo: RepoData, axis_name: str, default_reason: str) -> Axis:
     """Run an axis function; any uncaught exception degrades to ? (never crash)."""
     try:
         return fn(repo)
+    except PackageOverrideError:
+        # The one exception that must not degrade to `?`: a stale override is a data
+        # error in this repo, and `?` would hide it (see PackageOverrideError).
+        raise
     except Exception as e:  # noqa: BLE001 — graceful degradation is the contract
         return Axis.unknown(default_reason,
                             evidence=f"? {axis_name} raised {type(e).__name__}: {e}")
@@ -2824,7 +2919,10 @@ def main() -> int:
     args = ap.parse_args()
 
     owner, name, ptype, declared_license, page = resolve_target(args)
-    agg, axes, computed_at, needs_review = score_repo(owner, name, ptype, declared_license)
+    try:
+        agg, axes, computed_at, needs_review = score_repo(owner, name, ptype, declared_license)
+    except PackageOverrideError as e:
+        sys.exit(f"error: {e}")
     block = emit_health_yaml(agg, axes, computed_at, needs_review)
 
     if args.write:

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:32:28Z
+  computed_at: 2026-10-09T09:05:03Z
   overall: A
   overall_score: 3.5
   scored_axes: 4
@@ -39,21 +39,21 @@ health:
       grade: C
       raw:
         registry: npmjs.org
-        canonical_package: "@n8n/utils"
-        dependent_repos_count: 0
-        downloads_last_month: 457343
-        graph_tier: E
+        canonical_package: n8n
+        dependent_repos_count: 124
+        downloads_last_month: 408701
+        graph_tier: C
         volume_tier: C
         cross_check_divergence: null
-        release_downloads: 6206
-        release_assets: 272
+        release_downloads: 6205
+        release_assets: 273
         release_tier: D
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2665
+        repo_age_days: 2666
         last_commit_age_days: 0
         cohort: app
     governance:
@@ -151,7 +151,7 @@ n8n is one Node.js application that serves a browser editor, stores workflows an
 
 - **Maintenance**: Grade A — commits in all 13 of the last 13 weeks, last commit the day of the 2026-10-08 re-score; stable releases land several times a week, and the 1.x line still receives patch releases (1.123.84 on 2026-10-08) alongside 2.x.
 - **Responsiveness**: Cannot be scored — the scorer found no usable recent issue/PR response window this run (`no_window_signal`).
-- **Adoption**: Grade C — the scorer read 457,343 monthly npm downloads, but from the `@n8n/utils` sub-package rather than the `n8n` package, and most installs are Docker pulls it does not count; ~207k GitHub stars and ~61k forks (2026-10) point to a much larger footprint than the grade suggests.
+- **Adoption**: Grade C — the scorer now reads the `n8n` npm package (408,701 downloads last month, 124 dependent repositories, 2026-10-09), but most installs are Docker pulls it does not count; ~207k GitHub stars and ~61k forks (2026-10) point to a much larger footprint than the grade suggests.
 - **Longevity**: Grade A — 2665 days old (created 2019-06, ~7.3 years) and shipping daily: old enough and active enough for a solid Lindy prior.
 - **Governance**: Grade A — 197 active contributors in the trailing 12 months, top-3 share 12.3%; the roadmap is owned by a single company, n8n GmbH, which also sells the cloud and enterprise editions.
 - **Risk / License**: Cannot be scored — the Sustainable Use License is not an SPDX license (`license_unparsed`). It is the main risk flag: source-available, internal-use-only for commercial users, with enterprise features (`.ee` files) behind a paid license.
@@ -161,6 +161,6 @@ n8n is one Node.js application that serves a browser editor, stores workflows an
 - [未验证] The "1500+ integrations" and "9,000+ templates" figures are the 2026-10 README's; they include community nodes and templates whose quality and maintenance vary.
 - [未验证] n8n 3.0's date and final scope (Docker-only self-hosting, removed nodes) are from the pre-release breaking-changes page; they may change before release.
 - [推断] How long the 1.x line keeps receiving patch releases after 3.0 ships is not stated in the sources read.
-- [推断] The Adoption grade understates real usage because the scorer's npm signal came from a sub-package and Docker pulls were not counted.
+- [推断] The Adoption grade understates real usage because Docker pulls of the n8n image were not counted; only the npm package was.
 - [未验证] Node-RED's description here (Apache-2.0 per the GitHub API; npm install; an IoT/device-leaning, community-maintained node catalog) was not re-read from its docs for this sync.
 - [推断] n8n GmbH's cloud pricing and the split between community and enterprise features may shift as the company pursues revenue.

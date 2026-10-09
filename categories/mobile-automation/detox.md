@@ -155,7 +155,7 @@ Detox is two cooperating pieces: a test runner you write against (Jest by defaul
 
 ## Health & viability
 
-- **Maintenance (2026-09).** Active but slower than its peers: last push 2026-09-07; npm latest v20.51.4 (2026-06-16) after 20.51.3 (2026-05-30) and 20.50.2 (2026-04-21) — roughly monthly-to-quarterly releases.
+- **Maintenance (2026-09).** Active but slowing, and slower than its peers: the last default-branch commit is 2026-06-16, the v20.51.4 release, about 100 days before this check (GitHub's `pushed_at` of 2026-09-07 is a push outside `master`); npm latest v20.51.4 (2026-06-16) after 20.51.3 (2026-05-30) and 20.50.2 (2026-04-21) — roughly monthly-to-quarterly releases.
 - **Governance / bus factor.** Under the **wix** organization with a broad, long-running contributor base (`asafkorem` 1124, `LeoNatan` 816, `rotemmiz` 742, `noomorph` 672, `d4vidi` 634) — not a single-maintainer project, and backed by Wix, whose mobile team still uses it.
 - **Backing & longevity.** Created **2016** and still active ⇒ a strong **Lindy** signal; the framework has survived multiple React Native architecture shifts.
 - **Adoption.** ~12k stars, 1911 forks, 351 watchers, and 1,857,806 `detox` npm installs in the last month — the default E2E framework in the React Native ecosystem.

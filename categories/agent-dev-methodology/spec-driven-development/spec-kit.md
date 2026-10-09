@@ -8,7 +8,7 @@ language: Python
 license: MIT
 maturity: "v1.1.2 (2026-10-07), active, ~140.6k stars (as of 2026-10-08)"
 last_verified: 2026-10-08
-type: skill-pack
+type: tool
 upstream:
   pushed_at: 2026-10-07T22:48:11Z
   default_branch: main
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:10:15Z
+  computed_at: 2026-10-09T09:19:17Z
   overall: A
-  overall_score: 3.8
-  scored_axes: 5
+  overall_score: 3.67
+  scored_axes: 6
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,38 +29,38 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
-      grade: "?"
-      raw: {}
+      grade: A
+      raw:
+        median_ttfr_hours: 4.9
+        qualifying_issues: 25
+        band: relaxed_solo
+        window_offset_days: 9
+        source: issue
+        inferred: false
     adoption:
       grade: A
       raw:
-        registry: pypi.org
-        canonical_package: spec-kit-redist
-        dependent_repos_count: 0
-        downloads_last_month: 1919
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
-        homebrew_installs_90d: 4520
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 4486
         homebrew_tier: A
         signal_basis: homebrew
-        tier_source: homebrew
     longevity:
-      grade: B
+      grade: C
       raw:
-        repo_age_days: 412
-        last_commit_age_days: 0
-        cohort: skill-pack
+        repo_age_days: 413
+        last_commit_age_days: 1
+        cohort: tool
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 92
-        top1_share: 0.233
-        top3_share: 0.515
+        top1_share: 0.234
+        top3_share: 0.516
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -70,8 +70,6 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
-  unknowns:
-    responsiveness: { reason: type_na }
 ---
 
 # Spec Kit
@@ -130,11 +128,28 @@ Spec Kit is two things: a Python CLI (`specify`) that scaffolds a project, and a
 | [BMAD Method](bmad-method.md) | ✅ | If you want role-played agile personas (analyst, PM, architect, scrum master) producing PRD and architecture docs, pick BMAD; pick Spec Kit for a shorter, single-role spec → plan → tasks loop. | BMAD covers more of the product lifecycle with more ceremony; Spec Kit is narrower and quicker to adopt per feature. |
 | [12-Factor Agents](12-factor-agents.md) | ✅ | Read 12-Factor Agents when you are designing an LLM-powered product's architecture; use Spec Kit when you need a procedure for building any feature with a coding agent. | 12-Factor is principles with no tooling; Spec Kit is tooling with an opinionated procedure. |
 
+## Tech stack
+
+- **CLI:** Python 3.11+, packaged on PyPI as `specify-cli` (command `specify`), built with Typer, Click and Rich, plus Pydantic, PyYAML and json5; the `mcp` SDK backs an experimental, version-only `specify mcp` stdio server.
+- **What it installs into your project:** Markdown templates (constitution, spec, plan, tasks, checklist), per-agent skill or command files under `.specify/` and the agent's own config folder, and helper scripts in Bash, PowerShell and Python that the agent runs while following a skill.
+- **Bundled modules:** the wheel carries the core templates plus first-party extensions (`git`, `agent-context`, `bug`, `assess`, `github`), presets (`lean`, `constitution-sync`), workflows and offline catalog snapshots, so `specify init` works without network access.
+
+## Dependencies
+
+- **Python 3.11+ and `uv`** on each developer machine (the README's install is `uv tool install specify-cli`); a Homebrew formula and pinned-version installs are documented alternatives.
+- **A supported AI coding agent** (Copilot, Claude Code, Codex, Cursor, Gemini CLI and ~40 others). It does all the writing; Spec Kit never calls a model and needs no API key of its own.
+- **Git** if you keep the default `git` extension: its hooks initialize the repo and create a numbered feature branch before `/speckit-specify`.
+- **Bash or PowerShell** to run the helper scripts the skills invoke. No server, database or background process.
+
+## Ops difficulty
+
+**Low to deploy, medium to keep current.** There is nothing to run: the CLI writes files once and the agent does the rest. The work is upgrades — 16 releases in the seven weeks after 1.0.0, with flags deprecated along the way — so a team should pin one version, re-run `specify init` or the upgrade path deliberately, and review the regenerated templates and skills in a pull request, because they change what every agent on the team is told to do.
+
 ## Health & viability
 
-- **Maintenance (2026-10-08)**: very active — commits in every one of the last 13 weeks and a release roughly every few days (1.0.0 on 2026-08-21, 1.1.2 on 2026-10-07). The flip side is churn, covered under When NOT to use.
+- **Maintenance (2026-10-08)**: very active — commits in every one of the last 13 weeks and a release roughly every few days (1.0.0 on 2026-08-21, 1.1.2 on 2026-10-07). The flip side is churn, covered under When NOT to use. Issues get answered fast: the radar measured a 4.9-hour median first response across 25 issues (2026-10-09).
 - **Governance & backing**: owned by the `github` organization; 92 distinct contributors were active in the past 12 months and the top contributor accounts for about 23% of commits, so the project does not hinge on one person. The roadmap is still GitHub's, not a foundation's.
-- **Age / Lindy**: created 2025-08-21, about 14 months old. Active and growing, but too young for the Lindy prior to say much; treat long-term continuity as GitHub's product decision.
+- **Age / Lindy**: created 2025-08-21, about 14 months old. Active and growing, but too young for the Lindy prior to say much (the radar grades longevity C against the tool age bars); treat long-term continuity as GitHub's product decision.
 - **Adoption**: ~140.6k stars and ~12.6k forks (2026-10-08), a Homebrew formula with ~4.5k installs in 90 days, and a community catalog of extensions, presets and bundles. Star count is inflated by GitHub branding and should not be read as production adoption.
 - **Risk flags**: MIT license, no relicense history. The main risk is breaking changes in a fast-moving 1.x CLI, not licensing.
 

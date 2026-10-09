@@ -1,0 +1,56 @@
+{
+  "anomalyco/opencode": {
+    "none": true,
+    "reason": "The opencode-ai npm package declares no repository link, so it is not among the candidates (even with per_page=1000); the @opencode/* entries are internal sub-packages. Homebrew and release downloads carry adoption."
+  },
+  "ant-design/ant-design": {
+    "registry": "npmjs.org",
+    "name": "antd",
+    "reason": "antd on npm is the package users install; it sits past entry 100 of the lookup, so automatic selection only saw the nuget antd with the same name."
+  },
+  "duckdb/duckdb": {
+    "none": true,
+    "reason": "PyPI duckdb now links to duckdb/duckdb-python, so it is not among this repo's candidates; what remains are bindings, the duckdb-cli wrapper and a conda mirror, none representative. Release and Homebrew downloads carry adoption."
+  },
+  "elrumordelaluz/reactour": {
+    "registry": "npmjs.org",
+    "name": "@reactour/tour",
+    "reason": "The exact-name reactour package is the legacy v1 line on the v1 branch; current releases ship as @reactour/tour."
+  },
+  "facebook/react": {
+    "none": true,
+    "reason": "npm react is not linked to facebook/react in ecosyste.ms; among the 334 candidates returned with per_page=1000 the only one named react is a NuGet package. The old reading, react-tools, is a deprecated package and cannot represent this project."
+  },
+  "github/spec-kit": {
+    "none": true,
+    "reason": "The specify-cli PyPI package declares no repository link, so it is not among the candidates; spec-kit-redist is a third-party redistribution. The Homebrew formula carries adoption."
+  },
+  "microsoft/autogen": {
+    "none": true,
+    "reason": "Python mainline autogen-agentchat / autogen-core register no repo link; the remaining candidates are the .NET NuGet packages and autogenstudio, none of them represents the mainline."
+  },
+  "microsoft/vscode": {
+    "none": true,
+    "reason": "VS Code ships as installers and a Homebrew cask; every npm candidate under this repo is a third-party repackage (@theia/*, @typefox/*), so adoption must come from release and Homebrew signals."
+  },
+  "n8n-io/n8n": {
+    "registry": "npmjs.org",
+    "name": "n8n",
+    "reason": "n8n is the application package users install; internal monorepo packages such as @n8n/utils and n8n-workflow outrank it on downloads because every install pulls them in."
+  },
+  "openhands/openhands": {
+    "registry": "npmjs.org",
+    "name": "@openhands/agent-canvas",
+    "reason": "The repo was cleared for the Agent Canvas migration on 2026-07-27 and the PyPI openhands-ai package stops at 1.11.0 (2026-07); its larger download count measures the frozen legacy app, not what this repo ships now."
+  },
+  "shadcn-ui/ui": {
+    "registry": "npmjs.org",
+    "name": "shadcn",
+    "reason": "shadcn is the CLI users install (about 4x the downloads of @shadcn/react); automatic selection preferred @shadcn/react because its scope matches the owner."
+  },
+  "vercel/next.js": {
+    "registry": "npmjs.org",
+    "name": "next",
+    "reason": "next is the framework package; it sits past entry 100 of the lookup and its name does not contain the repo name, so automatic selection fell to @vercel/devlow-bench."
+  }
+}

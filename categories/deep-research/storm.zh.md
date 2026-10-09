@@ -3,12 +3,12 @@ name: STORM
 slug: storm
 repo: https://github.com/stanford-oval/storm
 category: deep-research
-tags: [deep-research, storm, app]
+tags: [deep-research, storm, library]
 language: Python
 license: MIT
 maturity: knowledge-storm 1.1.1 on PyPI (2025-09-29), GitHub release v1.1.0 (2025-01), no commits since 2025-09-30, ~31.6k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: app
+type: library
 upstream:
   pushed_at: 2025-09-30T18:07:21Z
   default_branch: main
@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:17:54Z
+  computed_at: 2026-10-09T08:13:22Z
   overall: C
-  overall_score: 2.4
+  overall_score: 2.2
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -29,7 +29,7 @@ health:
       grade: D
       raw:
         archived: false
-        last_commit_age_days: 373
+        last_commit_age_days: 374
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -37,12 +37,12 @@ health:
       raw:
         median_ttfr_hours: 3.5
         qualifying_issues: 20
-        band: relaxed_solo
+        band: default
         window_offset_days: 2
         source: pr
         inferred: false
     adoption:
-      grade: C
+      grade: D
       raw:
         registry: pypi.org
         canonical_package: knowledge-storm
@@ -51,17 +51,13 @@ health:
         graph_tier: E
         volume_tier: D
         cross_check_divergence: null
-        docker_pulls: 9339551
-        docker_image: library/storm
-        docker_tier: C
-        signal_basis: docker
-        tier_source: docker
+        tier_source: registry
     longevity:
       grade: D
       raw:
-        repo_age_days: 928
-        last_commit_age_days: 373
-        cohort: app
+        repo_age_days: 929
+        last_commit_age_days: 374
+        cohort: library
     governance:
       grade: "?"
       raw: {}
@@ -153,7 +149,7 @@ STORM 把写作拆成两个阶段，就像记者先采访、再成稿。**动笔
 - **维护（2026-10）：在吃老本，正滑向废弃。** 最后一次提交 2025-09-30（放宽依赖版本约束）；最后一个 PyPI 版本 1.1.1 发于 2025-09-29；最后一个 GitHub release 是 v1.1.0（2025-01）。111 个 open issue；直到 2026-10 仍有新 PR 提交、无人合并。评分器把维护和长寿度都评为 D——雷达反映的是一年的沉默，而不是用户不感兴趣。
 - **治理／bus factor。** 归斯坦福 OVAL 实验室所有；大部分代码出自两位博士生作者（shaoyijia、Yucheng-Jiang）。路线图跟着研究议程走，代码最好看作两篇论文（NAACL 2024、EMNLP 2024）的产物。评分器无法归因治理轴（`?`）。
 - **年龄 × Lindy。** 2024-03 创建（约 2.5 年），且最近一年没有动静，Lindy 先验帮不上忙。即使仓库不再活跃，这个方法也会留在文献里。
-- **采用度。** 约 3.16 万 star、约 3 千 fork，但 PyPI 最近一个月下载只有 1,238 次——关注度远超实际装包量。评分器给的采用度 C 依据的是 `library/storm` 的 Docker 拉取量，而那是官方的 **Apache Storm** 镜像，不是本项目；这一项要打折看。
+- **采用度。** 约 3.16 万 star、约 3 千 fork，但 PyPI 最近一个月下载只有 1,238 次——关注度远超实际装包量。评分器现在读的是 PyPI 上的 `knowledge-storm` 包，采用度给 D（2026-10-09），与这个落差一致。
 - **风险标记。** MIT 许可，无改许可历史。实际风险是精确钉死的 `dspy_ai`、Alpha 分类标注，以及建在已停用搜索 API 上的快速上手示例。
 
 ## 存疑（未验证）
@@ -162,5 +158,4 @@ STORM 把写作拆成两个阶段，就像记者先采访、再成稿。**动笔
 - [推断] “每篇文章几十次 LLM 和搜索调用”是从流水线结构（视角数 × 对话轮数，再加大纲／正文／润色）推出来的，单次运行成本没有实测。
 - [推断] 安装 `sentence-transformers` 通常会拉进 PyTorch，这是安装沉重的原因；没有针对本包实测。
 - [未验证] `knowledge-storm` 1.1.1 在当前 litellm 版本和当前模型名下能否不打补丁直接运行，没有测试；open issue 和 PR（如 2026-10 的 Claude 模型支持）显示存在摩擦。
-- [推断] 采用度轴归因错误（`library/storm` 是 Apache Storm，已从 Docker Hub 描述确认），意味着在评分器修好之前，本页的采用度评分不可靠。
 - [未验证] Co-STORM 关于思维导图能在长对话中“减轻认知负担”的说法来自作者论文，没有独立核实。

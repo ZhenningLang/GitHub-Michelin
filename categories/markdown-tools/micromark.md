@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:21:34Z
+  computed_at: 2026-10-09T08:16:33Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 12
+        last_commit_age_days: 13
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -45,18 +45,18 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: micromark-util-symbol
-        dependent_repos_count: 49751
-        downloads_last_month: 291441560
+        canonical_package: micromark
+        dependent_repos_count: 151327
+        downloads_last_month: 245406015
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.06
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2886
-        last_commit_age_days: 12
+        repo_age_days: 2887
+        last_commit_age_days: 13
         cohort: library
     governance:
       grade: D
@@ -150,7 +150,7 @@ micromark reads your Markdown as a state machine — a reader that moves through
 - **Responsiveness — fast.** Pull requests get a first response almost immediately in the scorer's window (responsiveness A, up from B).
 - **Governance — effectively one maintainer.** Titus Wormer (`wooorm`) wrote about 636 of the commits; others contribute single digits (governance D). It sits in the unified collective, funded through OpenCollective and GitHub Sponsors, so the backing is a collective but the bus factor is one person.
 - **Age & Lindy — ~8 years and still active.** Created 2018-11 and now the engine under remark and markdownlint; age × still-active is solid.
-- **Adoption — very high, mostly indirect.** Its packages see hundreds of millions of npm downloads a month (the scorer's 2026-10-08 figure for `micromark-util-symbol` is 291,441,560), almost all pulled in through remark, MDX and markdownlint; the ~2.2k stars understate this.
+- **Adoption — very high, mostly indirect.** Its packages see hundreds of millions of npm downloads a month (the scorer's 2026-10-09 figures for the `micromark` package itself are 245,406,015 downloads in the last month and 151,327 dependent repositories), almost all pulled in through remark, MDX and markdownlint; the ~2.2k stars understate this.
 - **Risk flags.** MIT, no relicensing, semver since 3.0.0.
 
 ## Caveats (unverified)
@@ -158,5 +158,5 @@ micromark reads your Markdown as a state machine — a reader that moves through
 - [未验证] "~14 kB" and "smallest CommonMark parser" are the README's own claims; bundle size was not measured here.
 - [推断] Consuming events through the mdast utilities rather than micromark's API is inferred from the README's API section (only `micromark` and `stream` are documented exports) and remark's design.
 - [未验证] TanStack Markdown's streaming extension as a substitute for incremental AI output rests on that page's description; the two were not benchmarked against each other.
-- [未验证] The download figure is for one utility package and is counted by the health scorer; downloads of the `micromark` package itself were not checked separately.
+- [未验证] The download and dependent counts come from the health scorer (ecosyste.ms data), not from a separate check against npm.
 - [推断] The "rather complex to write" extension judgment is the authors' own; how it compares to writing a markdown-it rule depends on the syntax.

@@ -8,7 +8,7 @@ language: TypeScript
 license: Apache-2.0
 maturity: v0.63.0 (2026-10-06), pre-1.0 with weekly stable releases, very active, ~107k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T01:35:49Z
   default_branch: main
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T08:23:56Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -36,8 +36,8 @@ health:
       grade: A
       raw:
         median_ttfr_hours: 0.0
-        qualifying_issues: 6
-        band: default
+        qualifying_issues: 4
+        band: relaxed_solo
         window_offset_days: 13
         source: issue
         inferred: false
@@ -47,11 +47,11 @@ health:
         registry: npmjs.org
         canonical_package: "@google/gemini-cli"
         dependent_repos_count: 0
-        downloads_last_month: 1630541
+        downloads_last_month: 1703850
         graph_tier: E
         volume_tier: B
         cross_check_divergence: 1.0
-        release_downloads: 10489
+        release_downloads: 11014
         release_assets: 288
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 539
+        repo_age_days: 540
         last_commit_age_days: 0
-        cohort: framework
+        cohort: tool
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 79
+        active_maintainers_12mo: 80
         top1_share: 0.083
-        top3_share: 0.201
+        top3_share: 0.2
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,7 +156,7 @@ Gemini CLI is a Node.js program with an interactive terminal UI. You type a requ
 - **Responsiveness:** now measurable and strong — the radar's responsiveness axis moved from unscored to A in this refresh, and the overall grade rose from B to A.
 - **Governance / bus factor:** Google-owned roadmap, but the commit history is broad (79 active contributors in the past year; the top three hold about 20%), and the project accepts outside PRs under a public roadmap.
 - **Backing & longevity:** the repo is about 18 months old (created 2025-04), so the Lindy prior is weak. Google has a record of retiring developer products, but this CLI is tied to its Gemini Code Assist offering. [推断]
-- **Adoption & risk:** ~107k stars and 1,630,541 npm downloads last month; Apache-2.0 with no relicense. The main risk is free-tier terms and quotas changing at Google's discretion.
+- **Adoption & risk:** ~107k stars and 1,703,850 npm downloads last month (2026-10-09); Apache-2.0 with no relicense. The main risk is free-tier terms and quotas changing at Google's discretion.
 
 ## Caveats (unverified)
 

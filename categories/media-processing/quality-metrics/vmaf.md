@@ -111,9 +111,6 @@ You also use it when you need *more than one* metric from a single, optimized im
 </details>
 <!-- flow-steps:end -->
 
-<!-- flow-steps:begin (generated from flows/vmaf.json by tools/flow_card.py — do not edit) -->
-<!-- flow-steps:end -->
-
 ## When NOT to use
 
 - **No-reference / live quality monitoring.** VMAF is **full-reference** — it needs the pristine source alongside the distorted video, frame-aligned. For in-the-wild streams where you don't have the reference, it doesn't apply (no-reference metrics are a different family).

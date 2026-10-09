@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:29:24Z
-  overall: B
-  overall_score: 3.4
+  computed_at: 2026-10-09T09:15:48Z
+  overall: A
+  overall_score: 4.0
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -36,20 +36,20 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: D
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@vercel/devlow-bench"
-        dependent_repos_count: 0
-        downloads_last_month: 10618
-        graph_tier: E
-        volume_tier: D
-        cross_check_divergence: null
+        canonical_package: next
+        dependent_repos_count: 345645
+        downloads_last_month: 246347357
+        graph_tier: A
+        volume_tier: A
+        cross_check_divergence: 1.08
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 3654
+        repo_age_days: 3655
         last_commit_age_days: 0
         cohort: framework
     governance:
@@ -160,12 +160,12 @@ Next.js is a framework around React: you write components, and it decides where 
 - **Responsiveness:** could not be scored this round (no usable issue-response window in the scorer); the repo carries 3,500+ open issues and pull requests, so do not expect quick answers on niche bugs. [推断]
 - **Governance & backing:** governance grade A on contributor spread — dozens of active maintainers and no single dominant committer — but it is single-vendor governance: Vercel employs the core team and owns the roadmap. Vercel is well funded and Next.js is its flagship.
 - **Age & Lindy:** open-sourced in 2016 and still shipping majors — about ten years, longevity grade A; it has survived the Pages→App Router and webpack→Turbopack shifts.
-- **Adoption:** the radar's adoption grade D is a scorer artifact — it resolved the project to `@vercel/devlow-bench`, an internal benchmarking package in the monorepo, instead of the `next` package. On the real package, Next.js is the most-used React meta-framework on npm by a wide margin; the overall radar score is understated as a result.
+- **Adoption (A):** the `next` package had 246,347,357 npm downloads in the last month and 345,645 dependent repositories on the scorer's 2026-10-09 reading — the most-used React meta-framework on npm by a wide margin.
 - **Risk flags:** MIT with no relicense history. The live risks are the 2026 security-advisory volume and vendor-shaped defaults, not license or abandonment.
 
 ## Caveats (unverified)
 
-- [未验证] npm reported 253,413,359 downloads of `next` for 2026-09-05 → 2026-10-04 (npm downloads API, read 2026-10-08); this is the figure the scorer should have used.
+- [未验证] npm reported 253,413,359 downloads of `next` for 2026-09-05 → 2026-10-04 (npm downloads API, read 2026-10-08); the scorer's 2026-10-09 figure (246,347,357) comes from ecosyste.ms and covers a slightly different window.
 - [未验证] Advisory counts (41 in 2026, 3 critical, 14 high) come from GitHub's repository security advisories API on 2026-10-08; severity is as published by Vercel.
 - [推断] The degree to which the newest features land first or best on Vercel's platform is inferred from defaults and docs emphasis; it has not been benchmarked.
 - [未验证] ~143.2k GitHub stars as of 2026-10-08; star counts are approximate and time-sensitive.

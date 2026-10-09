@@ -122,7 +122,7 @@ Choose Dedoc over MarkItDown when logical hierarchy, table metadata, annotations
 
 ## Health & viability
 
-- **Maintenance, 2026-07:** the repository was not archived, the default branch was pushed on 2026-07-16, and v2.7 was released on 2026-06-25 after several releases during 2025.
+- **Maintenance, 2026-07:** the repository was not archived, the last default-branch (`master`) commit is the v2.7 release on 2026-06-25 (GitHub's 2026-07-16 `pushed_at` came from another branch), after several releases during 2025.
 - **Governance:** the repository is owned by the `ispras` organization; the manifest names a team and three maintainers, and GitHub's contributor list showed several substantial contributors rather than one account holding all visible history.
 - **Age and Lindy:** created in 2020 and still releasing in 2026, Dedoc has a stronger age-times-activity signal than newly launched document parsers. [推断]
 - **Adoption:** 715 GitHub stars and published PyPI/Docker artifacts indicate a real but comparatively specialized user base; stars alone do not establish parsing quality.

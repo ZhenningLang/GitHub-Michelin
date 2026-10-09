@@ -8,7 +8,7 @@ language: C++
 license: MIT
 maturity: active, v1.5.6 (2026-09-28; v1.4 LTS line; v2.0.0 scheduled 2026-10-21), ~41,976 stars (as of 2026-10)
 last_verified: 2026-10-08
-type: service
+type: library
 upstream:
   pushed_at: 2026-10-08T08:31:56Z
   default_branch: v2.0-cyanoptera
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:17:01Z
+  computed_at: 2026-10-09T09:18:21Z
   overall: A
   overall_score: 4.0
   scored_axes: 5
@@ -38,35 +38,26 @@ health:
     adoption:
       grade: A
       raw:
-        registry: pypi.org
-        canonical_package: duckdb-cli
-        dependent_repos_count: 0
-        downloads_last_month: 80617
-        graph_tier: E
-        volume_tier: C
-        cross_check_divergence: null
-        homebrew_installs_90d: 13871
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 14053
         homebrew_tier: A
-        release_downloads: 8563723
+        release_downloads: 8626545
         release_assets: 1218
         release_tier: B
-        docker_pulls: 229338
-        docker_image: duckdb/duckdb
-        docker_tier: D
-        signal_basis: homebrew+releases+docker
-        tier_source: homebrew+releases+docker
+        signal_basis: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 3026
+        repo_age_days: 3027
         last_commit_age_days: 0
-        cohort: service
+        cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 227
-        top1_share: 0.261
-        top3_share: 0.397
+        active_maintainers_12mo: 228
+        top1_share: 0.259
+        top3_share: 0.394
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,7 +145,7 @@ DuckDB is a library: the entire database engine is linked into your process, the
 - **Maintenance (as of 2026-10-08):** very active. v1.5.6 shipped 2026-09-28, patch releases roughly monthly, a published release calendar, and v2.0.0 scheduled for 2026-10-21. Every other minor release is an LTS with a year of community support; DuckDB Labs sells support beyond that.
 - **Governance / bus factor:** the code is copyrighted to the Stichting DuckDB Foundation (a Dutch non-profit foundation), while the core team works at DuckDB Labs. 227 contributors were active in the last 12 months; the top contributor carries roughly a quarter of recent commits — a real team, though with an identifiable lead maintainer.
 - **Backing & longevity:** repo created 2018-06 (about 8 years) and continuously active, with a foundation holding the IP and a company funding development — a solid Lindy prior for an analytical engine.
-- **Adoption:** ~42k stars, ~3.9k forks, ~8.6M release-asset downloads and broad embedding in data tools. The scorer's registry signal (80,617 downloads last month of the `duckdb-cli` PyPI package) still grades A but undercounts the main `duckdb` package.
+- **Adoption:** ~42k stars, ~3.9k forks, ~8.6M release-asset downloads and broad embedding in data tools. The radar's A rests on release-asset and Homebrew installs (14,053 in 90 days, 2026-10-09): the main `duckdb` PyPI package now links to the separate duckdb-python repo, so the scorer reads no registry package for this one.
 - **Risk flags:** MIT license, no relicense history. The responsiveness axis was not scorable in this run (no qualifying issues in the scorer's window; the previous run graded it B on only 4 issues), so read it as unknown rather than poor. The imminent v2.0 major release is the main near-term change risk.
 
 ## Caveats (unverified)
@@ -162,6 +153,5 @@ DuckDB is a library: the entire database engine is linked into your process, the
 - [未验证] Whether DuckDB v2.0 changes the on-disk storage format or breaks client APIs was not checked; the release calendar marks dates as tentative.
 - [推断] Vectorized, columnar execution and reading only needed columns from Parquet are DuckDB's documented design, summarised here without re-reading the internals docs for this sync.
 - [推断] Characterisations of Polars, Spark and pandas in the comparison come from general knowledge of those projects, not re-read for this page.
-- [未验证] The health scorer's adoption registry signal uses the `duckdb-cli` PyPI package (~81k downloads/month), which likely understates use of the main `duckdb` package; the adoption grade was not hand-corrected.
+- [推断] The adoption grade leaves out PyPI downloads of `duckdb`, the most common way to install it, because that package is published from duckdb/duckdb-python; the grade is already A without them.
 - [未验证] "Top contributor ≈ a quarter of recent commits" is the scorer's `top1_share` (0.261), not an independent count.
-- [推断] The page keeps `type: service` from the original intake, although DuckDB is primarily an in-process library; the type was not changed because the health score's longevity cohort is derived from it.

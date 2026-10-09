@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:26Z
+  computed_at: 2026-10-09T08:54:03Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -38,32 +38,26 @@ health:
     adoption:
       grade: B
       raw:
-        registry: npmjs.org
-        canonical_package: "@theia/vscode-builtin-vb"
-        dependent_repos_count: 1
-        downloads_last_month: 2136
-        graph_tier: D
-        volume_tier: D
-        cross_check_divergence: null
-        homebrew_installs_90d: 1092
+        registry: null
+        canonical_package: null
+        homebrew_installs_90d: 1093
         homebrew_tier: B
         release_downloads: 810
         release_assets: 3
         release_tier: D
         signal_basis: homebrew+releases
-        tier_source: homebrew+releases
     longevity:
       grade: A
       raw:
-        repo_age_days: 4052
+        repo_age_days: 4054
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 143
-        top1_share: 0.133
-        top3_share: 0.225
+        top1_share: 0.135
+        top3_share: 0.227
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -153,7 +147,7 @@ The repository is "Code - OSS": MIT-licensed source that Microsoft builds into t
 - **Maintenance (2026-10-08):** extremely active — commits every day, 13 of the last 13 weeks active, and since at least 2026-05 a new minor release roughly every week (1.122 on 2026-05-28 through 1.141 on 2026-10-07), even though the README still says "updated monthly".
 - **Governance:** owned and staffed by Microsoft; work is spread widely (143 active committers in 12 months, top-3 contributors at 22.5% of commits — radar A). The roadmap is Microsoft's, published as iteration plans in the wiki.
 - **Backing & Lindy:** created 2015-09, about 11 years old, with Microsoft's developer-tools division behind it — strong age-times-activity signal.
-- **Adoption:** among the most widely used code editors; the radar's adoption axis (B) understates it because a desktop app's installs are not visible to package-registry or GitHub-release counters (its proxy package is an unrelated Theia artefact).
+- **Adoption:** among the most widely used code editors; the radar's adoption axis (B) understates it because a desktop app's installs are not visible to package-registry or GitHub-release counters. Since 2026-10-09 the scorer no longer reads a registry package for it (the npm candidates under this repo are third-party Theia repackages) and grades only the Homebrew and release-download signals it can see.
 - **Risk flags:** source is MIT, but the binary you download is under a proprietary product licence with telemetry, and the marketplace terms restrict extensions to Microsoft products. AI features (Copilot) are increasingly built into the core; the client code is open, but the service needs a GitHub Copilot plan, so expect product direction to keep favouring Microsoft services.
 
 ## Caveats (unverified)

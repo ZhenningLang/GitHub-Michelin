@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T09:58:55Z
+  computed_at: 2026-10-09T09:26:45Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 29.1
-        qualifying_issues: 30
+        median_ttfr_hours: 25.8
+        qualifying_issues: 28
         band: default
         window_offset_days: 10
         source: issue
@@ -45,17 +45,17 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@shadcn/react"
+        canonical_package: shadcn
         dependent_repos_count: 0
-        downloads_last_month: 9931380
+        downloads_last_month: 42548414
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
+        cross_check_divergence: 1.05
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1373
+        repo_age_days: 1374
         last_commit_age_days: 0
         cohort: library
     governance:
@@ -159,7 +159,7 @@ shadcn/ui 是两样东西：一套组件源码（一个“注册表”，即描�
 
 - [推断] 治理判断（由创建者一人掌舵）依据的是更新日志的第一人称写法和公开的项目历史，不是治理文档；提交占比（第一名 78.3%）能说明集中，但说明不了方向由谁定。
 - [未验证] 截至 2026-10-08 约 12.53 万 GitHub star；star 数是近似值，会随时间变化。
-- [未验证] 评分器的采用轴量的是较新的 `@shadcn/react` 包；CLI 包 `shadcn` 更能代表真实使用量，它的数字是另外从 npm 下载量 API 读到的。
+- [未验证] 评分器的采用轴量的是 CLI 包 `shadcn`（2026-10-09 读数：上月下载 42,548,414 次）；复制进项目的组件不经过任何注册表，真实使用量很可能更高。
 - [推断] 把上游改动合进已经拷贝过来的组件仍然要手工做；CLI 能预览和迁移特定变更，但不会对你的修改做三方合并。
 - [推断] 大组织里每个团队各自拷贝、修改组件，可能难以保持一致；私有注册表能缓解，但那是你自己要运营的系统。
 - [推断] 底层原语是无障碍的，但应用最终的无障碍程度取决于你怎么修改和组合拷贝来的组件。

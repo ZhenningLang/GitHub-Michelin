@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:21:34Z
+  computed_at: 2026-10-09T08:16:33Z
   overall: B
   overall_score: 3.33
   scored_axes: 6
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 12
+        last_commit_age_days: 13
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -45,18 +45,18 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: micromark-util-symbol
-        dependent_repos_count: 49751
-        downloads_last_month: 291441560
+        canonical_package: micromark
+        dependent_repos_count: 151327
+        downloads_last_month: 245406015
         graph_tier: A
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.06
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2886
-        last_commit_age_days: 12
+        repo_age_days: 2887
+        last_commit_age_days: 13
         cohort: library
     governance:
       grade: D
@@ -150,7 +150,7 @@ micromark 用状态机读你的 Markdown——像一个阅读者，一次一个�
 - **响应——很快。** 在评分器的统计窗口里，PR 几乎立刻得到首次回复（响应度 A，由 B 上调）。
 - **治理——实际上只有一位维护者。** Titus Wormer（`wooorm`）贡献了约 636 次提交，其他人都是个位数（治理 D）。它属于 unified 集体，经 OpenCollective 和 GitHub Sponsors 筹款，所以有集体背书，但 bus factor 是一个人。
 - **年龄与 Lindy——约 8 年且仍活跃。** 2018-11 创建，如今是 remark 和 markdownlint 的引擎；年龄 × 仍活跃的信号扎实。
-- **采用——非常广，且多为间接。** 它的各个包每月有数亿次 npm 下载（评分器 2026-10-08 对 `micromark-util-symbol` 的数字是 291,441,560），几乎都是经 remark、MDX、markdownlint 拉进来的；约 2.2k 的 star 数严重低估了这一点。
+- **采用——非常广，且多为间接。** 它的各个包每月有数亿次 npm 下载（评分器 2026-10-09 对 `micromark` 包本身的读数是上月下载 245,406,015 次、依赖它的仓库 151,327 个），几乎都是经 remark、MDX、markdownlint 拉进来的；约 2.2k 的 star 数严重低估了这一点。
 - **风险信号。** MIT 许可，无改许可证历史，3.0.0 起遵循语义化版本。
 
 ## 存疑（未验证）
@@ -158,5 +158,5 @@ micromark 用状态机读你的 Markdown——像一个阅读者，一次一个�
 - [未验证] “约 14 kB”和“最小的 CommonMark 解析器”是 README 自己的说法，本页没有实测包体积。
 - [推断] 通过 mdast 工具包而不是 micromark 自身 API 消费事件，是从 README 的 API 章节（只文档化了 `micromark` 和 `stream` 两个导出）和 remark 的设计推出来的。
 - [未验证] 用 TanStack Markdown 的 streaming 扩展替代增量 AI 输出，依据是那个页面的描述，两者没有做过对比测试。
-- [未验证] 下载量是评分器统计的单个工具包的数字，`micromark` 包本身的下载量没有单独核对。
+- [未验证] 下载量和依赖仓库数来自健康度评分器（ecosyste.ms 数据），没有另外对照 npm 核对。
 - [推断] 扩展“写起来相当复杂”是作者自己的评价；和写一条 markdown-it 规则相比难多少，取决于具体语法。

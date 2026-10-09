@@ -8,7 +8,7 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **AgentScope** | Shipping a production multi-agent LLM service needing sandboxed tools, permissions, tracing, and human-in-the-loop. | B (6/6) | [→](agentscope.md) |
-| **AutoGen** | Use it when you already ship a Python or .NET multi-agent system on AutoGen's AgentChat or Core runtime and rewriting is the bigger risk — but it is in maintenance mode; start new projects on Microsoft Agent Framework. | B (6/6) | [→](autogen.md) |
+| **AutoGen** | Use it when you already ship a Python or .NET multi-agent system on AutoGen's AgentChat or Core runtime and rewriting is the bigger risk — but it is in maintenance mode; start new projects on Microsoft Agent Framework. | B (5/6) | [→](autogen.md) |
 | **CrewAI** | Use it when a knowledge-work job splits naturally into roles (researcher, analyst, writer) and you would rather declare agents and tasks than wire a graph — but hand-offs are decided by prompts, and the core package pulls in a heavy dependency set. | A (6/6) | [→](crewai.md) |
 | **LangGraph** | Use it when an agent runs for minutes or days and must pause for human approval or survive a restart mid-run — but you assemble the loop node by node, and the official self-hosted production server needs a LangSmith license. | A (6/6) | [→](langgraph.md) |
 | **Microsoft Agent Framework** | You want Microsoft's successor to AutoGen + Semantic Kernel: self-looping agents first, typed graph workflows and .NET parity when production needs them. | A (6/6) | [→](agent-framework.md) |

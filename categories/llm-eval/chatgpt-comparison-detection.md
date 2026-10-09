@@ -82,7 +82,7 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 
 - **You need a deeply reviewed atlas page today.** Prefer an older in-index page from the comparison table until this entry has had a full semantic review.
 - **License is a hard constraint.** GitHub reported `NOASSERTION`; inspect the repository license files before commercial use, redistribution, or vendoring.
-- **You need a maintained, current AI-text detector benchmark.** The repository is not archived, but the last push in the health snapshot is 2023-12; use a maintained eval runner or build a current benchmark if your detector must cover newer model families.
+- **You need a maintained, current AI-text detector benchmark.** The repository is not archived, but its last default-branch commit is from 2023-06-27 (GitHub's `pushed_at` of 2023-12 is a later push, not a commit to the default branch); use a maintained eval runner or build a current benchmark if your detector must cover newer model families.
 - **Maintenance risk is unacceptable.** If the project is young, single-maintainer, low-star, unversioned, or quiet, choose a more established substitute in the same category.
 - **Your task needs a narrower substitute.** If another page's `When NOT to use` section names your exact constraint, prefer that page over this first-pass entry.
 - **You cannot verify the upstream workflow.** Do not install, run, or vendor this repo before checking its README, scripts, dependencies, and any external API requirements.
@@ -114,8 +114,8 @@ This is a first-pass intake page for a user-requested backlog item. Use it to ro
 
 ## Health & viability
 
-- **Overall verdict (2026-07-16): E.** The health block caps the page because the repo has no parsed license (`spdx_id: NONE`) and the last push is from 2023-12; treat it as a stale research/dataset reference until a deeper license and maintenance review says otherwise.
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2023-12-01T16:03:51Z`; health scores maintenance as E.
+- **Overall verdict (2026-07-16): E.** The health block caps the page because the repo has no parsed license (`spdx_id: NONE`) and the last default-branch commit is from 2023-06; treat it as a stale research/dataset reference until a deeper license and maintenance review says otherwise.
+- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2023-12-01T16:03:51Z`, but the last commit on the default branch is 2023-06-27; health scores maintenance as E.
 - **Adoption snapshot:** ~1,413 GitHub stars as of 2026-07, but no package/download signal was found by the health scorer, so adoption is E. Star count alone should not outweigh stale maintenance and license uncertainty.
 - **License snapshot:** `NOASSERTION` from GitHub metadata, and health parsed `spdx_id: NONE`; manual license-file review is a hard gate before reuse or redistribution.
 - **Lindy / governance:** longevity is E because the project is old but not recently active; governance is unknown/unattributable in the health block.

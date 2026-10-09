@@ -7,7 +7,7 @@ category: office-editors
 tags: [spreadsheet, excel-like, react, luckysheet-fork, typescript, data-grid, op-stream, collab-primitives]
 language: TypeScript
 license: MIT
-maturity: "v1.0.4 (released 2025-11-06), STALLED (last push 2025-12-15, ~9 months before verification); 3.7k stars, created 2022-03-31; npm @fortune-sheet/react ~312k downloads/month (API/registry-verified 2026-09-27)"
+maturity: "v1.0.4 (released 2025-11-06), STALLED (last default-branch commit 2025-11-06, ~11 months before verification; pushed_at 2025-12-15 is a non-default-branch push); 3.7k stars, created 2022-03-31; npm @fortune-sheet/react ~312k downloads/month (API/registry-verified 2026-09-27)"
 last_verified: 2026-09-27
 type: library
 upstream:
@@ -106,7 +106,7 @@ Fortune Sheets is Luckysheet rebuilt for a modern toolchain: jQuery out, React +
 
 ## When NOT to use
 
-- **You cannot carry an unmaintained dependency** → last push 2025-12-15 and last release 2025-11-06 (API-verified 2026-09-27): a ~9-month stall with ~300k monthly users still on it. Security fixes will be yours. For an active successor from Luckysheet's *own* team, use [Univer](univer.md); for paid support on a grid, [Handsontable](handsontable.md).
+- **You cannot carry an unmaintained dependency** → last default-branch commit and last release both 2025-11-06 (API-verified 2026-09-27; GitHub's later `pushed_at` of 2025-12-15 is not a commit to the default branch): an ~11-month stall with ~300k monthly users still on it. Security fixes will be yours. For an active successor from Luckysheet's *own* team, use [Univer](univer.md); for paid support on a grid, [Handsontable](handsontable.md).
 - **Native xlsx round-trip is a requirement** → import/export lives in a third-party plugin ([fortuneexcel](https://github.com/corbe30/fortuneexcel), `未收录` — single-community-member plugin repo, deliberately not added; verify it independently before depending on it). Format fidelity needs [ONLYOFFICE Docs](onlyoffice-documentserver.md).
 - **Pivot tables / charts in the grid** → unchecked roadmap boxes in the README (2026-09). A pivot-and-chart product today is [Grist](grist.md) (as an app) or Univer Pro / ONLYOFFICE (as components/suite).
 - **Server-authoritative collaboration out of the box** → ops are a *primitive*, not a sync engine: no CRDT, no presence, no permission model ships with it. ONLYOFFICE/Collabora ship all three.
@@ -137,7 +137,7 @@ Client-only for editing: a React app and a sized container div (the README warns
 
 ## Health & viability
 
-- **Maintenance: stalled, measured.** Last push 2025-12-15; last release v1.0.4 2025-11-06 (API-verified 2026-09-27). Three releases clustered in Nov-2025 then silence — that is the "coasting→dormant" transition, dated.
+- **Maintenance: stalled, measured.** Last default-branch commit and last release v1.0.4 both 2025-11-06 (API-verified 2026-09-27); the 2025-12-15 `pushed_at` is a push outside the default branch. Three releases clustered in Nov-2025 then silence — that is the "coasting→dormant" transition, dated.
 - **Governance: small team + company badge.** Org `ruilisi`; README carries a "maintained by xiemala" badge; top contributor zyc9012 with 277, then 186/125 — real but thin breadth (contributors API, 2026-09-27). No public roadmap commitment mechanism (unchecked roadmap boxes are the roadmap).
 - **Backing & longevity** — repo ~4.5 years old (created 2022-03-31) on a 2020-era lineage; Lindy cuts both ways: the *design* is battle-tested at Luckysheet scale, the *repo* is not being fed. [推断]
 - **Adoption: still flowing.** The health radar measures 212,825 monthly npm downloads for `@fortune-sheet/react` (5 dependent repos); a same-day direct registry read gives 311,677 for the same window — either way installs continue against a quiet repo, [推断] mostly because it's the only MIT drop-in left in the Luckysheet family.

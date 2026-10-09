@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:48Z
+  computed_at: 2026-10-09T08:06:12Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
-        active_weeks_13: 12
+        last_commit_age_days: 0
+        active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
         median_ttfr_hours: 29.3
-        qualifying_issues: 21
+        qualifying_issues: 25
         band: default
         window_offset_days: 10
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: llama-index-instrumentation
-        dependent_repos_count: 0
-        downloads_last_month: 4634294
-        graph_tier: E
+        canonical_package: llama-index
+        dependent_repos_count: 1464
+        downloads_last_month: 2937852
+        graph_tier: B
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 1702
+        release_downloads: 1705
         release_assets: 98
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 1436
-        last_commit_age_days: 2
+        repo_age_days: 1437
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 30
-        top1_share: 0.292
-        top3_share: 0.489
+        active_maintainers_12mo: 29
+        top1_share: 0.293
+        top3_share: 0.491
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,12 +154,12 @@ health:
 - **治理：单一公司，但核心团队较宽。** 归 `run-llama`（LlamaIndex, Inc.）所有；`pyproject.toml` 里列出的核心包维护者都是公司员工。贡献分散，不依赖某一个人（评分器读数：过去一年头号贡献者约占 29% 的提交）。
 - **背书：公司战略正从框架移开。** README 写明公司的主要精力已转向 LlamaParse 及其解析基准。预计框架会继续维护，但新的编排功能优先级会比以前低。[推断]
 - **年龄与 Lindy：约 3.9 岁且仍活跃。** 2022-11 创建，至今仍在发版；对一个大模型时代的框架来说是不错的先验，但要打上面那次转向的折扣。
-- **采用：规模大。** 约 52.4k star、8.3k fork；按评分器读数，PyPI 上月下载 4,634,294 次（统计的包是每次安装都会带上的 `llama-index-instrumentation`）。
+- **采用：规模大。** 约 52.4k star、8.3k fork；按评分器 2026-10-09 的读数，入门包 `llama-index` 在 PyPI 上月下载 2,937,852 次，有 1,464 个依赖它的仓库。
 - **风险信号。** MIT 许可，没有改许可证的历史。风险在开源核心的引力：最好的解析能力放在收费托管产品里，README 的引导也都指向那里。
 
 ## 存疑（未验证）
 
 - [推断] “新的编排功能优先级降低”是从 README 的重心声明和放慢的发版节奏推出来的，不是来自公开路线图。
-- [未验证] 健康度评分器的采用度读数把 `llama-index-instrumentation` 当成主包；`llama-index` / `llama-index-core` 本身的下载量没有单独核查。
+- [推断] 健康度评分器读的是入门包 `llama-index`；直接装 `llama-index-core` 加单个集成包的项目不计入这个数，所以读数很可能低估了总体使用量。
 - [未验证] 默认 `SimpleDirectoryReader` 的 PDF 路径处理表格和扫描件的效果没有实测；“难文档需要专门解析器”这一判断沿用了 README 自己把难文档引向 LlamaParse 的说法。
 - [未验证] Haystack 的集成数量和公司当前重心这次没有重读；它在这里只是作为最接近的未收录管道式替代品出现。

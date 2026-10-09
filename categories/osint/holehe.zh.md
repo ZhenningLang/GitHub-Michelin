@@ -82,11 +82,11 @@ health:
 
 你是安全研究员或红队成员，正在执行一个明确授权的委托（查自己的数字足迹，或客户的交战规则允许 OSINT），需要知道一个邮箱地址碰过哪些服务。你运行 `holehe target@example.com`，它对 120+ 个站点模块做异步并发探测，逐站返回该邮箱是否有账户，以及找回密码流程泄露的打码恢复邮箱/手机号。不需要 API key，不会通知目标。
 
-当广度比维护状态更重要时，你选 holehe 而不是 [socialscan](socialscan.zh.md)：120+ 个邮箱模块对 socialscan 的约 7 个邮箱平台。当你手里的输入是邮箱而不是用户名时，你选它而不是 [Maigret](maigret.zh.md) / [Sherlock](sherlock.zh.md)。鉴于项目已停滞（最后 push 是 2024-09），2026 年它最有价值的用法是当**模式来源**：那张逐站点方法表（register / login / password recovery / other，附限流标记）是一份逆向验证过的知识库，你可以照着它对活着的端点重写探测层，并用 holehe 统一的模块契约（`{name, rateLimit, exists, emailrecovery, phoneNumber, others}`）做 schema。
+当广度比一套小而可复验的模块更重要时，你选 holehe 而不是 [socialscan](socialscan.zh.md)：120+ 个邮箱模块对 socialscan 的约 7 个邮箱平台（两者都已无人维护，socialscan 默认分支最后一次提交在 2024-01）。当你手里的输入是邮箱而不是用户名时，你选它而不是 [Maigret](maigret.zh.md) / [Sherlock](sherlock.zh.md)。鉴于项目已停滞（最后 push 是 2024-09），2026 年它最有价值的用法是当**模式来源**：那张逐站点方法表（register / login / password recovery / other，附限流标记）是一份逆向验证过的知识库，你可以照着它对活着的端点重写探测层，并用 holehe 统一的模块契约（`{name, rateLimit, exists, emailrecovery, phoneNumber, others}`）做 schema。
 
 ## 何时不用
 
-- **你需要一个可靠、有人维护的邮箱存在性检查器。** 改用 [socialscan](socialscan.zh.md)——覆盖窄（约 11 个平台）但仍有提交（2026-08）和 2024 年的发版；或者 fork holehe，逐模块重新验证后再信任结果。
+- **你需要一个可靠、有人维护的邮箱存在性检查器。** 索引里没有仍在维护的。[socialscan](socialscan.zh.md) 同样休眠（默认分支最后一次提交和最后发版都在 2024-01），但它只有约 11 个注册端点模块，少到可以手动复验；否则 fork holehe，逐模块重新验证后再信任结果。
 - **你的输入是用户名，不是邮箱。** 要完整档案用 [Maigret](maigret.zh.md)（3000+ 站点、ID 提取、递归），要快速核查用 [Sherlock](sherlock.zh.md)。
 - **目标是 Google 账户且你需要深度信息，不只是存在性。** 用 [GHunt](ghunt.zh.md)——holehe 的 google/office365 模块只报存在性和打码恢复信息。
 - **你需要生产级可靠性。** 仓库没有 GitHub release、没有测试套件（根目录树无 tests 目录）、2024-01 以来只有 5 个 commit；站点端点会漂移，今天 120+ 模块中有未知比例已失效。[推断]
@@ -98,7 +98,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [socialscan](socialscan.zh.md) | 已收录 | 今天就要在主流平台上拿到可用的「存在/不存在」准确判定时选 socialscan；只有需要 120+ 站点广度或恢复信息泄露方法时，才选 holehe（或其 fork）。 | socialscan 用覆盖面换维护中的正确性（约 11 个平台的注册端点直查）；holehe 用维护换广度。 |
+| [socialscan](socialscan.zh.md) | 已收录 | 要在主流平台上拿到准确的「存在/不存在」判定、并能自己复验它约 11 个模块时选 socialscan；只有需要 120+ 站点广度或恢复信息泄露方法时，才选 holehe（或其 fork）。 | socialscan 用覆盖面换干净信号（约 11 个平台的注册端点直查），但它同样自 2024-01 起休眠；holehe 给的广度要保持可信得花多得多的复验工夫。 |
 | [Maigret](maigret.zh.md) | 已收录 | 手里的标识符是用户名、且要带报告的完整档案时选 Maigret；只有邮箱、只要存在性信号时选 holehe。 | Maigret 维护活跃且深得多，但从用户名出发——holehe 从邮箱出发，还能捞到恢复标识符，反过来喂给 Maigret。 |
 | [Sherlock](sherlock.zh.md) | 已收录 | 要在 480+ 网络快速核查用户名时选 Sherlock；只有邮箱键控探测需求时才选 holehe。 | 输入键完全不同；Sherlock 是组织治理且活跃，holehe 是单人且停滞。 |
 | [GHunt](ghunt.zh.md) | 已收录 | 要对单个 Google 账户做认证式深挖时选 GHunt；要低成本测一个邮箱在 Google/Office365 等 120+ 站点是否存在时选 holehe。 | GHunt 用你的会话 cookie 深挖单一生态（ToS 风险高）；holehe 无认证、浅而广。 |

@@ -123,7 +123,7 @@ OpenScreen 是一个 Electron 桌面应用，但重活刻意不放在 Electron �
 | Cap (CapSoftware/Cap) | 未收录 | 想要一个仍在活跃维护、围绕即时分享链接（Loom 式工作流）构建的开源录屏，选 Cap；交付物是一个要自己收尾的文件、还要自动缩放、背景和本地字幕时，选 OpenScreen——因为 Cap 的内置剪辑更轻，且流程要经过 Cap 的云。 | 本批次 tab-intake 未收录。Cap：Rust 写的，约 22.9k 星，2026-09-28 仍在推送；license 在 GitHub API 显示 NOASSERTION，采用前先读。OpenScreen：时间线更全、纯本地、上游已归档。 |
 | OBS Studio | 未收录 | 要直播、场景和画面源合成，选 OBS；交付物是一个自动加工好的演示文件时，选 OpenScreen——因为 OBS 只录不剪，缩放和光标美化得在别处手动做。 | 本批次 tab-intake 未收录。OBS：GPL-2.0、约 76.7k 星、跨平台、插件生态庞大、零自动美化。OpenScreen：一个应用里从采集到成品导出，但没有直播。 |
 | ShareX | 未收录 | 你在 Windows 上想要一个轻巧、可深度定制的抓屏工具，GIF／短片段工作流快，选 ShareX；当跟随光标的缩放美化和跨平台一致性更重要时，选 OpenScreen——因为 ShareX 只有 Windows，且不自动剪辑。 | 本批次 tab-intake 未收录。ShareX：GPL-3.0、约 39.8k 星、活跃；强在截屏区域和热键深度而非编辑器。OpenScreen：编辑器才是重点。 |
-| Kap | 未收录 | 想要极简的 macOS 开源录屏、快速导出小片段，Kap 的形态对口——但它的仓库自 2024 年 11 月起就没动静了，所以需要自动美化流水线、需要项目今天还能构建时，选 OpenScreen（或其社区分支）。 | 本批次 tab-intake 未收录。Kap：MIT、约 19.4k 星、休眠中（API 读到 pushed_at 为 2024-11-12，2026-09-28）；插件友好但没有自动缩放／光标处理。 |
+| Kap | 未收录 | 想要极简的 macOS 开源录屏、快速导出小片段，Kap 的形态对口——但它的默认分支自 2024 年 2 月起就没有提交了，所以需要自动美化流水线、需要项目今天还能构建时，选 OpenScreen（或其社区分支）。 | 本批次 tab-intake 未收录。Kap：MIT、约 19.4k 星、休眠中（默认分支最后一次提交在 2024-02-14；`pushed_at` 2024-11-12 是之后一次非默认分支推送；2026-10-09 读 API）；插件友好但没有自动缩放／光标处理。 |
 
 ## 技术栈
 

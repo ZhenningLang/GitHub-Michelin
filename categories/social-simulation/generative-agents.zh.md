@@ -6,7 +6,7 @@ category: social-simulation
 tags: [generative-agents, smallville, research-prototype, llm-agents, memory-stream, embodied-simulation]
 language: Python
 license: Apache-2.0
-maturity: "research prototype; unmaintained since 2024-08; 22.1k stars (as of 2026-09)"
+maturity: "research prototype; unmaintained since 2023-08; 22.1k stars (as of 2026-09)"
 last_verified: 2026-09-18
 type: app
 upstream:
@@ -62,7 +62,7 @@ health:
 
 # generative_agents
 
-斯坦福「Generative Agents: Interactive Simulacra of Human Behavior」（UIST'23）的原版研究原型：25 个带 memory stream、reflection、planning 架构的 LLM agent 在一个 2D 小镇（Smallville）里生活。LLM agent 社会这个领域的开创性参考实现——自 2024-08 起冻结。
+斯坦福「Generative Agents: Interactive Simulacra of Human Behavior」（UIST'23）的原版研究原型：25 个带 memory stream、reflection、planning 架构的 LLM agent 在一个 2D 小镇（Smallville）里生活。LLM agent 社会这个领域的开创性参考实现——自 2023-08 起冻结。
 
 ![generative_agents — 健康度雷达](../../assets/health/generative-agents.zh.svg)
 
@@ -74,7 +74,7 @@ health:
 
 ## 何时不用
 
-- **任何打算认真跑或在上面盖楼的场景。** 自 2024-08-05 起没有提交（截至 2026-09），依赖锁死在论文年代（`openai==0.27.0`、`Django==2.2`）——光是旧版 OpenAI 客户端 API 就逼着你要做移植。要在维护的底座用 [OASIS](oasis.zh.md) 或 [AgentSociety](agentsociety.zh.md)。
+- **任何打算认真跑或在上面盖楼的场景。** 自 2023-08-11 起默认分支没有提交（截至 2026-09），依赖锁死在论文年代（`openai==0.27.0`、`Django==2.2`）——光是旧版 OpenAI 客户端 API 就逼着你要做移植。要在维护的底座用 [OASIS](oasis.zh.md) 或 [AgentSociety](agentsociety.zh.md)。
 - **超过 demo 的规模。** 25 个 agent 一个小镇就是设计目标；数千到百万 agent 的社交媒体模拟用 [OASIS](oasis.zh.md)。
 - **产品化的预测/报告工作流。** 它产出的是可回放的模拟，不是报告；用 [MiroFish](mirofish.zh.md)。
 - **现代 LLM 技术栈。** 预期要做依赖考古，且没有测试安全网；任何接近生产的用途都把它当设计模式来源、在维护中的框架上重新实现。
@@ -84,7 +84,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OASIS](oasis.zh.md) | ✅ | 在维护、可规模化的代码级社交媒体模拟选 OASIS；generative_agents 留给研究原版 memory/reflection/planning 设计。 | OASIS 是有规模的框架；generative_agents 是固定的、冻结的小镇 demo。 |
-| [AgentSociety](agentsociety.zh.md) | ✅ | 需要回放和分布式的实验管理型社会科学模拟选 AgentSociety；generative_agents 只用于经典 Smallville 场景。 | AgentSociety 科研工具齐全且活跃；generative_agents 自 2024-08 零维护。 |
+| [AgentSociety](agentsociety.zh.md) | ✅ | 需要回放和分布式的实验管理型社会科学模拟选 AgentSociety；generative_agents 只用于经典 Smallville 场景。 | AgentSociety 科研工具齐全且活跃；generative_agents 自 2023-08 零维护。 |
 | [MiroFish](mirofish.zh.md) | ✅ | 想要「上传→模拟→报告」成品而非研究原型时选 MiroFish。 | MiroFish 产品化且活跃，但 AGPL-3.0，且远离论文的极简主义。 |
 
 ## 技术栈
@@ -106,7 +106,7 @@ health:
 
 ## 健康度与可持续性
 
-- **维护——休眠。** 最近 push 2024-08-05（截至 2026-09）：超过两年无提交；未归档但等同冻结；146 个 open issue（2026-09）无人回应。
+- **维护——休眠。** 默认分支最后一次提交在 2023-08-11（GitHub 显示的 `pushed_at` 2024-08-05 不是提交；截至 2026-09）：超过三年无提交；未归档但等同冻结；146 个 open issue（2026-09）无人回应。
 - **治理/bus factor。** 个人研究仓库（`joonspk-research`，约 31 次已统计提交中占 26 次，2026-09）；作者在 UIST'23 论文发表后已转向。
 - **年龄与 Lindy——老到可以下结论了，结论是「里程碑，不是基础设施」。** 创建于 2023-07；22.1k stars（2026-09）由论文声望驱动。它的持久价值是作为领域参考实现，而不是可依赖的维护中组件 [推断]。
 - **风险信号。** 依赖锁定冻结、无安全维护——别把部署暴露到公网；2D 世界的代码路径是为 demo 写的，没做过加固。

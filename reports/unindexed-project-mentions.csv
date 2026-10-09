@@ -369,7 +369,7 @@ Devin / Cognition (hosted),categories/agent-frameworks/agent-runtimes/agent-serv
 Diffusers (Hugging Face),categories/on-device-ml/comfyui.md,,no
 Diffusers (huggingface/diffusers),categories/on-device-ml/stable-diffusion-cpp.md,,no
 DiffusionBee,categories/on-device-ml/stable-diffusion-webui.md,,no
-Direct-to-S3 presigned (multipart) uploads,categories/nginx-modules/tusd.md,,no
+Direct-to-S3 presigned (multipart) uploads,categories/object-storage/tusd.md,,no
 Direct-to-S3 presigned uploads,categories/nginx-modules/nginx-upload-module.md,,no
 Distroless (GoogleContainerTools),categories/dev-utilities/ops-infra/slim.md,,no
 Django built-in permissions,categories/auth/django-rules.md,,no
@@ -444,7 +444,7 @@ Forme (`danmolitor/forme`),categories/pdf-tools/pdf-generation/pdfcn.md,,no
 Formik (`jaredpalmer/formik`),categories/web-ui/forms/tanstack-form.md,,no
 Foundry Anvil,categories/blockchain-dev-infrastructure/INDEX.md,,no
 fp-ts,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
-Framework upload handling (Django/Rails/Express),categories/nginx-modules/tusd.md,,no
+Framework upload handling (Django/Rails/Express),categories/object-storage/tusd.md,,no
 FreeType,categories/dev-utilities/data-tools/fonttools.md,,no
 FriendlyCaptcha,categories/captcha/capjs.md,,no
 FullCalendar (`fullcalendar/fullcalendar`),categories/web-ui/component-libraries/tanstack-time.md,,no
@@ -639,8 +639,6 @@ Lean Startup / other startup frameworks,categories/agent-skills/personal-collect
 LegalBench,categories/llm-eval/harvey-labs.md,,no
 Legend-State (`LegendApp/legend-state`),categories/web-ui/data-fetching/tanstack-db.md,,no
 lego,categories/dev-utilities/ops-infra/certbot.md,,no
-Letta Code,categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
-Letta Code (`letta-ai/letta-code`),categories/agent-memory/app-memory/letta.md,,no
 libav (avconv),categories/media-processing/video-audio/transcoding-and-pipelines/ffmpeg.md,,no
 LibreCAD / QCAD,categories/cad/freecad.md,,no
 LibreOffice,categories/office-editors/collabora-online.md,,no
@@ -1037,7 +1035,7 @@ requests-oauthlib / oauthlib,categories/auth/authomatic.md,,no
 ReShade,categories/media-processing/image-processing/magpie.md,,no
 Restate,categories/workflow-orchestration/temporal.md,,no
 resty.redis via OpenResty bundle,categories/nginx-modules/lua-resty-redis.md,,no
-Resumable.js,categories/nginx-modules/tusd.md,,no
+Resumable.js,categories/object-storage/tusd.md,,no
 reveal.js (`hakimel/reveal.js`),categories/ai-design-generation/open-slide.md,,no
 rich.progress,categories/dev-utilities/data-tools/tqdm.md,,no
 RipMe,categories/media-download/gallery-dl.md,,no
@@ -1197,7 +1195,7 @@ tRPC,categories/web-ui/frameworks/app-frameworks/tanstack-bling.md,,no
 TruLens,categories/llm-eval/ragas.md,,no
 tsdown (`rolldown/tsdown`),categories/dev-utilities/editors-and-runtimes/tanstack-tooling/tanstack-config.md,,no
 Tubular (`polymorphicshade/Tubular`),categories/streaming-clients/pipepipe.md,,no
-tus-node-server (`@tus/server`),categories/nginx-modules/tusd.md,,no
+tus-node-server (`@tus/server`),categories/object-storage/tusd.md,,no
 Twenty (twentyhq/twenty),categories/team-chat/macro.md,,no
 Tyk,categories/api-gateway/apisix.md,,no
 Tyk / KrakenD / New API,categories/api-gateway/INDEX.md,,no
@@ -1209,7 +1207,7 @@ UiPath / Automation Anywhere (RPA),categories/web-automation/agent-browser-tools
 Unmanic,categories/media-processing/video-audio/transcoding-and-pipelines/handbrake.md,,no
 unoserver (`unoconv/unoserver`),categories/office-automation/dsh-libreoffice-kit.md,,no
 unstructured.io,categories/document-parsing/docling.md,,no
-Uppy,categories/nginx-modules/tusd.md,,no
+Uppy,categories/object-storage/tusd.md,,no
 urql (`urql-graphql/urql`),categories/web-ui/data-fetching/tanstack-query.md,,no
 urwid,categories/terminal-ui/asciimatics.md,,no
 use-local-storage-state (`astoilkov/use-local-storage-state`),categories/web-ui/state-management/tanstack-persist.md,,no

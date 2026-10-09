@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:31:19Z
+  computed_at: 2026-10-09T09:06:44Z
   overall: B
   overall_score: 2.8
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 142
+        last_commit_age_days: 143
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -39,18 +39,18 @@ health:
       grade: B
       raw:
         registry: npmjs.org
-        canonical_package: "@reactour/utils"
-        dependent_repos_count: 59
-        downloads_last_month: 849988
+        canonical_package: "@reactour/tour"
+        dependent_repos_count: 65
+        downloads_last_month: 849104
         graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.04
+        cross_check_divergence: 1.08
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 3492
-        last_commit_age_days: 142
+        repo_age_days: 3493
+        last_commit_age_days: 143
         cohort: library
     governance:
       grade: D
@@ -144,7 +144,7 @@ Reactour 由三个小组件和一个状态容器组成。**画面和步骤状态
 - **维护（2026-10）：B。** npm 上 `@reactour/tour` 最后一次发布是 2025-05-07 的 3.8.0；默认分支最后一次改动在 2026-05-19，之前有一批测试、工具链和修复提交。还活着但是一阵一阵的，没发布的改动可能放好几个月。GitHub 的 release 标签停在 3.0.0（2022），要看 npm，别看 Releases 页面。
 - **治理：D。** 个人账号、单一维护者：作者 677 次提交，第二名 11 次，近 12 个月的活动全部是作者本人。路线图取决于一个人的业余时间。
 - **长青度：B。** 2017-03 创建（3,492 天，约 9 年半），2026 年仍有提交——年龄加上仍在活动，对一个小型 UI 库来说是不错的 Lindy 先验。
-- **采用度：B。** 评分用的 `@reactour/utils` 近一个月下载 849,988 次（每次装 `@reactour/tour` 都会带上它，tour 包本身约 84.9 万），旧的 `reactour` 包另有约 29 万；GitHub 约 4.1k star。有真实用户，但远不及 react-joyride。
+- **采用度：B。** 评分用的 `@reactour/tour` 近一个月下载 849,104 次、有 65 个依赖它的仓库（评分器，2026-10-09），旧的 `reactour` 包另有约 29 万；GitHub 约 4.1k star。有真实用户，但远不及 react-joyride。
 - **风险/许可：A。** MIT，没有改许可证的历史。主要风险是巴士因子，不是许可证。
 
 ## 存疑（未验证）

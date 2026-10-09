@@ -79,7 +79,7 @@ import flow_card
 # Reuse the scorer's own name matcher rather than reimplementing it: the gate's whole
 # point is to re-check what health.py wrote, and a second copy of the rule would drift
 # from the one that produced the data. Import-only — health.py does no work at import.
-from health import _match_quality
+from health import _load_package_overrides, _match_quality
 
 REQUIRED_KEYS = ["name", "slug", "repo", "category", "tags", "language", "license", "maturity", "last_verified", "type"]
 ALLOWED_TYPES = {"tool", "library", "app", "framework", "service", "model", "skill-pack"}
@@ -501,8 +501,14 @@ def check_adoption_evidence(path: Path, fmtext: str, block: str, rep: Report) ->
             # `oh-my-claudecode` ships as `oh-my-claude-sisyphus`) is allowed only when
             # the block records how the scorer tied the registry record to this repo
             # (`package_link`, written solely after the repository link was checked).
+            # Likewise a package named in tools/health_package_overrides.json: a human
+            # tied that exact registry + name to this repo (`shadcn` for shadcn-ui/ui).
             link = raw.get("package_link", "null")
+            entry = _load_package_overrides().get(f"{owner}/{name}".lower()) or {}
             if link and link != "null":
+                pass
+            elif (entry.get("name") == pkg.strip("\"'")
+                  and entry.get("registry") == raw.get("registry", "").strip("\"'")):
                 pass
             elif _match_quality({"name": pkg.strip("\"'")}, owner, name) == 0:
                 rep.error(path, f"health: adoption canonical_package '{pkg}' matches neither "

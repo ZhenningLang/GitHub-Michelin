@@ -111,13 +111,13 @@ asciimatics 交给你一个 `Screen` 对象，底下按操作系统换引擎：L
 - **你只想要漂亮的静态输出、表格、进度条或标记。** `rich` 更适合带样式的非全屏输出——asciimatics 会接管整个屏幕，给日志上色或画进度条属于杀鸡用牛刀。
 - **你要的是拿来即印的横幅字符串，不是接管整屏。** asciimatics 能做 figlet 风格文字（`FigletText`）也能把图片转 ASCII，但它的 renderer 是把画面画到全屏 `Screen` 上，不会交给你一段可随处打印的字符串——要可打印的横幅请用 [art](art.zh.md) 或 `pyfiglet`；要独立的图片转 ASCII 请用 `jp2a`、[asciify](asciify.zh.md) 这类转换器。
 - **发布版落后 master 好几年。** PyPI 上最新是 1.15.0（2023-10）；master 此后又加了鼠标滚轮、字素簇 Unicode 处理和类型标注（1.15.1 已于 2026-07 打 tag，但截至 2026-09 未发 PyPI）。急着要修复就得从源码装——或者干脆改追 Textual 的发布节奏。
-- **路线图系于一人。** 过去 12 个月有 3 位活跃提交者，但头号贡献者约占六成的窗口提交——对长期生产依赖是集中的 bus-factor（见健康度）。要厂商背书就选 Textual。[推断]
+- **路线图系于一人。** 过去 12 个月有 3 位活跃提交者，但头号贡献者约占六成的窗口提交——对长期生产依赖是集中的 bus-factor（见健康度）。换成 [Textual](textual.zh.md) 也换不来厂商背书了：背后的公司 Textualize 已在 2025 年结束运营，Textual 现在基本也是一人维护；urwid 和 prompt_toolkit 同样各由一人主导（看 2025-10 以来的提交作者）。在 Python TUI 里，对策是把 UI 层做薄、便于替换，而不是换一个库。[推断]
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [Textual](textual.zh.md) | ✅ | 需要现代异步、CSS 样式、鼠标优先的 TUI 框架时，选 Textual。 | 现代异步、CSS 样式、鼠标优先的 TUI 框架（Textualize）；widget/样式模型丰富得多、背书活跃，但更重，编程模型也与 asciimatics 类 curses 的 API 不同。 |
+| [Textual](textual.zh.md) | ✅ | 需要现代异步、CSS 样式、鼠标优先的 TUI 框架时，选 Textual。 | 现代异步、CSS 样式、鼠标优先的 TUI 框架；widget/样式模型丰富得多、发版活跃，但背后的公司 Textualize 已在 2025 年结束运营，只剩一位维护者，而且更重，编程模型也与 asciimatics 类 curses 的 API 不同。 |
 | urwid | 未收录 | 需要老牌 Python 控制台 UI 库和灵活 widget/布局系统时，选 urwid。 | 老牌 Python 控制台 UI 库，widget/布局系统灵活；偏 Unix（Windows 支持弱），且无动画引擎。 |
 | [rich](rich.zh.md) | ✅ | 需要表格、标记、进度、语法高亮等带样式终端*输出*时，选 rich。 | 带样式的终端*输出*（表格、标记、进度、语法）——不是全屏 UI/事件循环；与之互补，不能替代交互屏。 |
 | blessed / curses（标准库） | 未收录 | 需要更底层的终端控制，而不是 widget/动画框架时，选 blessed 或 curses。 | 更底层的终端控制；`curses` 仅 Unix，`blessed` 是更友好的封装——两者都不带 widget 或动画框架。 |
@@ -154,3 +154,4 @@ asciimatics 交给你一个 `Screen` 对象，底下按操作系统换引擎：L
 - [推断] GitHub 上打了 1.15.1 而 PyPI 上没有，暗示后续还会发版；但没有公开路线图，时间点纯属推测。
 - [推断] “单人主导、头号贡献者约六成”是 12 个月提交统计窗口，而非治理文档。
 - [未验证] Textual/urwid“更丰富”是对其特性集的概括，而非对 asciimatics 逐项功能审计。
+- [推断] “Textual、urwid、prompt_toolkit 基本都是一人维护”来自 2025-10 以来的 GitHub 提交作者（urwid：100 次提交中 94 次出自同一账号；prompt_toolkit：主维护者 22 次中占 7 次，其余是一次性贡献者）和 Textual 页（2026-10-09 核对），而非治理文档。

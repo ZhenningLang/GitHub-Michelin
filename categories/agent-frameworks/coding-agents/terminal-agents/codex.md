@@ -8,7 +8,7 @@ language: Rust
 license: Apache-2.0
 maturity: v0.161.0 (2026-10-07), pre-1.0 with near-daily releases, very active, ~128k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: framework
+type: tool
 upstream:
   pushed_at: 2026-10-08T06:32:11Z
   default_branch: main
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T08:22:38Z
   overall: A
   overall_score: 3.6
   scored_axes: 5
@@ -44,20 +44,20 @@ health:
         downloads_last_month: 91144251
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
-        homebrew_installs_90d: 335382
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 335231
         homebrew_tier: A
-        release_downloads: 5454339
-        release_assets: 17742
+        release_downloads: 5752240
+        release_assets: 18026
         release_tier: B
         signal_basis: homebrew+releases
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 543
+        repo_age_days: 544
         last_commit_age_days: 0
-        cohort: framework
+        cohort: tool
     governance:
       grade: A
       raw:

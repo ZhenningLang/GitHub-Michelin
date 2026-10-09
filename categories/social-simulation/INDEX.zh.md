@@ -19,7 +19,7 @@
 | [MiroFish](mirofish.zh.md) | ✅ | C（5/6） | 成品（上传→报告），但 AGPL-3.0 + Zep Cloud 依赖 + 预测能力未经验证。 |
 | [OASIS](oasis.zh.md) | ✅ | B（6/6） | Apache-2.0 引擎，社交媒体信息流保真、公布成本模型；流水线要自己搭。 |
 | [AgentSociety](agentsociety.zh.md) | ✅ | B（5/6） | 科研级回放/分布式实验能力；技术栈更重、纯框架。 |
-| [generative_agents](generative-agents.zh.md) | ✅ | D（3/6） | 领域开创性参考实现，2024-08 起冻结；只剩教学/研究价值。 |
+| [generative_agents](generative-agents.zh.md) | ✅ | D（3/6） | 领域开创性参考实现，2023-08 起冻结；只剩教学/研究价值。 |
 
 ## 什么该放这里
 

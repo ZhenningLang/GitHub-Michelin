@@ -108,7 +108,7 @@ agent 每次见你都像第一次见面——MemGPT 当年要解决的就是这�
 
 ## 何时不用
 
-- **不要部署这个仓库的代码——它已退役（2026-08-16 挪到 `archive` 分支）。** 维护者声明 V1 服务器、旧的 Python 服务端包和 `letta/letta` Docker 镜像都不再有修复和安全更新。要用 Letta 本身，改用 Letta Code（未收录）；要一个仍在维护的自托管记忆服务，改用 [Hindsight](hindsight.zh.md) 或 [Supermemory](supermemory.zh.md)；要一个可嵌入的库，改用 [Mem0](mem0.zh.md)。
+- **不要部署这个仓库的代码——它已退役（2026-08-16 挪到 `archive` 分支）。** 维护者声明 V1 服务器、旧的 Python 服务端包和 `letta/letta` Docker 镜像都不再有修复和安全更新。要用 Letta 本身，改用 [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.zh.md)；要一个仍在维护的自托管记忆服务，改用 [Hindsight](hindsight.zh.md) 或 [Supermemory](supermemory.zh.md)；要一个可嵌入的库，改用 [Mem0](mem0.zh.md)。
 - **不要拿旧服务器做基准测试或对比。** 它的 `AGENTS.md` 明确禁止用归档代码做基准测试或与其他记忆系统对比，因为结果描述的是已退役的代码。要评估就评估现在的 Letta Code，或者直接对比 [Mem0](mem0.zh.md) / [Hindsight](hindsight.zh.md)。
 - **你想把记忆放进自己的 agent 循环。** Letta 要当运行时本身。如果你保留自己的 LangGraph、OpenAI Agents 或裸 SDK 循环，改用 [LangMem](langmem.zh.md)（LangGraph）或 [Mem0](mem0.zh.md) / [Memori](memori.zh.md)（任意框架），因为它们只加记忆，不接管循环。
 - **你需要 Python 优先的技术栈。** 现在的 Letta 是 TypeScript / Node：CLI 是 npm 包，新的 Agent SDK 是 TypeScript（较老的 V1 Python 客户端对接的是 V1 API）。当必须在 Python 里嵌入时，改用 [Mem0](mem0.zh.md) 或 [LangMem](langmem.zh.md)。
@@ -119,7 +119,7 @@ agent 每次见你都像第一次见面——MemGPT 当年要解决的就是这�
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| Letta Code（`letta-ai/letta-code`） | 未收录 | 只要你想用 Letta，就选 Letta Code——维护者把所有还活着的功能都搬过去了；本仓库只当历史指路牌。 | agent 自己持有并改写记忆块，历史用 git 跟踪；代价是 TypeScript 运行时，且默认走 Letta Cloud。 |
+| [Letta Code](../../agent-frameworks/coding-agents/terminal-agents/letta-code.zh.md) | 已收录 | 只要你想用 Letta，就选 Letta Code——维护者把所有还活着的功能都搬过去了；本仓库只当历史指路牌。 | agent 自己持有并改写记忆块，历史用 git 跟踪；代价是 TypeScript 运行时，且默认走 Letta Cloud。 |
 | [Mem0](mem0.zh.md) | 已收录 | 想在 Python 或 TypeScript 里给自己的 agent 加记忆、并保留对循环的控制时选 Mem0；想让运行时全权管记忆和身份时选 Letta Code。 | Mem0 是库加可选的托管 API，发版频繁；它不提供 agent 自己改写的记忆块。 |
 | [Hindsight](hindsight.zh.md) | 已收录 | 需要一个仍在维护、可自托管、供多个应用调用的记忆服务器时选 Hindsight——这正是很多团队当初用 Letta V1 服务器的角色。 | 多运维一个服务，但不依赖已退役的代码库，也没有厂商云的默认值。 |
 | [LangMem](langmem.zh.md) | 已收录 | 在 LangGraph 上、想让模型通过工具在你自己的图里存取记忆时选 LangMem。 | 留在 LangGraph 的存储里；但它停在 0.0.x 滑行，没有 agent 身份或“做梦”这一层。 |
@@ -144,7 +144,7 @@ agent 每次见你都像第一次见面——MemGPT 当年要解决的就是这�
 ## 健康度与可持续性
 
 - **这个仓库已退役，雷达高估了它。** 维护度 B（评分时最后一次提交在 28 天前）和寿命 B（1093 天）数的是落地页的提交——防垃圾 issue、政策文本——不是服务器开发。代码的维护者在 2026 年 8 月宣布它不再支持；应把这个仓库当作已冻结。雷达总评 **B** 不能读成“可以放心采用”。
-- **背后的项目是活跃的。** Letta（公司）把开发搬到了 `letta-ai/letta-code`，它在 2026-10-08 发布了 v0.34.5，几乎每天都有推送。判断 Letta 的可持续性要看那个仓库，本索引还没给它评分。
+- **背后的项目是活跃的。** Letta（公司）把开发搬到了 `letta-ai/letta-code`，它在 2026-10-08 发布了 v0.34.5，几乎每天都有推送。判断 Letta 的可持续性要看那个仓库——它自己的雷达见 [Letta Code 页面](../../agent-frameworks/coding-agents/terminal-agents/letta-code.zh.md)。
 - **治理 A、响应 B——历史团队信号。** 过去 12 个月 23 位活跃维护者，合格 issue 的首次响应中位数 59.2 小时，反映的是做出 V1 的那支团队；说明厂商有人手，不说明这份代码还会被修。
 - **采用度 C。** 已退役的 `letta/letta` Docker 镜像拉取 1,032,185 次——这批装机量现在都得迁移。
 - **风险信号：** Apache-2.0，无改许可历史；产品代际突变（V1 服务器 → Letta Code；Letta Code 已移除 AgentFile `.af` 导入导出）；现行产品默认走厂商云。
@@ -152,6 +152,5 @@ agent 每次见你都像第一次见面——MemGPT 当年要解决的就是这�
 ## 存疑（未验证）
 
 - [未验证] 没有实测从 V1 服务器数据迁到 Letta Code / App Server 的路径；现有 agent 和记忆能否干净地迁过去未确认。
-- [推断] Letta Code 自身的健康度（发版节奏、巴士因子）只看了仓库元数据，本索引尚未评分。
 - [未验证] 读过的资料没有说明较老的 V1 客户端 SDK（`letta-client`）能否长期继续对接 Letta Cloud。
 - [推断] Letta Cloud 作为默认可能随时间改变产品条款或定价；用 `letta server` 自托管是对冲手段，但它与云端的功能对等没有核实。

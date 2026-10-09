@@ -9,7 +9,7 @@ language: TypeScript
 license: Elastic-2.0
 maturity: "archived (observed 2026-10-08); last release v3.16.1 (2026-05-27), last commit 2026-06-25; ~5.0k stars (as of 2026-10)"
 last_verified: 2026-10-08
-type: library
+type: tool
 upstream:
   pushed_at: 2026-06-25T17:00:57Z
   default_branch: main
@@ -17,7 +17,7 @@ upstream:
   archived: true
 health:
   schema: 1
-  computed_at: 2026-10-08T08:14:18Z
+  computed_at: 2026-10-09T08:26:05Z
   overall: D
   overall_score: 0.83
   scored_axes: 6
@@ -30,7 +30,7 @@ health:
       grade: E
       raw:
         archived: true
-        last_commit_age_days: 105
+        last_commit_age_days: 106
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -38,7 +38,7 @@ health:
       raw:
         median_ttfr_hours: null
         qualifying_issues: 0
-        band: default
+        band: relaxed_solo
         window_offset_days: 12
     adoption:
       grade: D
@@ -55,9 +55,9 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 475
-        last_commit_age_days: 105
-        cohort: library
+        repo_age_days: 476
+        last_commit_age_days: 106
+        cohort: tool
     governance:
       grade: A
       raw:

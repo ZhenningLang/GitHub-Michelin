@@ -82,7 +82,7 @@ Human ChatGPT Comparison Corpus (HC3), Detectors, and more! 🔥
 
 - **你今天就需要深度审过的 atlas 页面。** 在本页完成完整语义复核前，优先选横向对比表里更早收录、约束更清楚的页面。
 - **许可证是硬约束。** GitHub 返回 `NOASSERTION`；商用、再分发或 vendoring 前必须检查仓库内许可证文件。
-- **你需要维护中、覆盖当前模型的 AI 文本检测 benchmark。** 健康度快照显示仓库未归档，但最后 push 是 2023-12；如果检测器必须覆盖更新模型族，请改用维护中的 eval runner 或自建当前 benchmark。
+- **你需要维护中、覆盖当前模型的 AI 文本检测 benchmark。** 仓库未归档，但默认分支最后一次提交在 2023-06-27（GitHub 的 `pushed_at` 显示 2023-12，那是之后的一次推送，不是默认分支上的提交）；如果检测器必须覆盖更新模型族，请改用维护中的 eval runner 或自建当前 benchmark。
 - **维护风险不可接受。** 如果项目很年轻、单人维护、star 少、没有版本线或长期安静，请选同分类里更成熟的替代品。
 - **你的任务需要更窄的替代品。** 如果另一个页面的“何时不用”已经点名你的约束，优先用那个页面，而不是这个首版入口。
 - **你无法核验上游工作流。** 在检查 README、脚本、依赖和外部 API 要求前，不要安装、运行或 vendor 这个仓库。
@@ -114,8 +114,8 @@ Human ChatGPT Comparison Corpus (HC3), Detectors, and more! 🔥
 
 ## 健康度与可持续性
 
-- **总体判断（2026-07-16）：E。** health block 因为没有解析到许可证（`spdx_id: NONE`）且最后 push 在 2023-12，把该页封顶为 E；在更深许可证和维护复核前，把它当作过期研究 / 数据集参考。
-- **维护快照：** GitHub 返回 `archived=false`，`pushed_at=2023-12-01T16:03:51Z`；health 将维护评为 E。
+- **总体判断（2026-07-16）：E。** health block 因为没有解析到许可证（`spdx_id: NONE`）且默认分支最后一次提交在 2023-06，把该页封顶为 E；在更深许可证和维护复核前，把它当作过期研究 / 数据集参考。
+- **维护快照：** GitHub 返回 `archived=false`，`pushed_at=2023-12-01T16:03:51Z`，但默认分支最后一次提交是 2023-06-27；health 将维护评为 E。
 - **采用快照：** 2026-07 约 1,413 个 GitHub stars，但 health 没找到 package / download 信号，所以采用度是 E。star 数不应盖过维护停滞和许可证不确定。
 - **许可证快照：** GitHub 元数据返回 `NOASSERTION`，health 解析为 `spdx_id: NONE`；复用或再分发前，人工核验许可证文件是硬门槛。
 - **Lindy / 治理：** 项目虽然不新，但近期不活跃，longevity 为 E；governance 在 health block 中仍是 unknown / unattributable。

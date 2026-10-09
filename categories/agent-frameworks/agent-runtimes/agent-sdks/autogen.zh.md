@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:10:15Z
+  computed_at: 2026-10-09T09:25:46Z
   overall: B
-  overall_score: 2.83
-  scored_axes: 6
+  overall_score: 2.8
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 184
+        last_commit_age_days: 185
         active_weeks_13: 0
         carve_out: mature_library_lindy
     responsiveness:
@@ -42,21 +42,13 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: B
-      raw:
-        registry: nuget.org
-        canonical_package: autogen.core
-        dependent_repos_count: 0
-        downloads_last_month: 224307
-        graph_tier: E
-        volume_tier: B
-        cross_check_divergence: null
-        tier_source: registry
+      grade: "?"
+      raw: {}
     longevity:
       grade: C
       raw:
-        repo_age_days: 1147
-        last_commit_age_days: 184
+        repo_age_days: 1148
+        last_commit_age_days: 185
         cohort: framework
     governance:
       grade: D
@@ -73,6 +65,8 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: CC-BY-4.0
+  unknowns:
+    adoption: { reason: ambiguous }
 ---
 # AutoGen
 
@@ -150,7 +144,7 @@ AutoGen 是你 import 的库，不是要部署的服务。它分三层：**Core*
 - **维护（2026-10）：** 上游已宣布进入维护模式——只做 bug 修复、安全补丁和文档，“community managed going forward”。默认分支最后一次提交在 2026-04-06（改 README 横幅），最新版本是 2025-09-30 的 python-v0.7.5。雷达上维护 B 靠的是成熟库豁免；应理解为“稳定且冻结”，而不是“活跃”。
 - **治理与 bus factor：** 评分器的 12 个月窗口里只有一位活跃维护者（治理 D）；微软已把团队转去做 Microsoft Agent Framework。响应速度仍是 A（首次回复中位数 28.4 小时）[推断]，但撑着它的人在变少。
 - **背书与 Lindy：** 出自微软研究院，创建于 2023-08（约 3 年）。年龄在这里救不了它：背书方自己指定了继任者并停止功能开发，所以 Lindy 先验落在 MAF 的延续性上，而不是 AutoGen 的代码上（寿命 C）。
-- **采用度：** 约 61k star，教程和论文很多；采用度这根轴取的是 NuGet 上 `autogen.core` 的下载量（上月 224,307 次），也就是 .NET 包，而不是 PyPI。
+- **采用度：** 约 61k star，教程和论文很多；雷达没给采用度打分（`?`，2026-10-09）：Python 包 `autogen-agentchat` / `autogen-core` 没有登记仓库链接，注册表索引没把它们挂到这个仓库，而挂上来的 .NET NuGet 包代表不了 Python 主线。
 - **风险标记：** 风险在于停止演进，不在许可证——文档是 CC-BY-4.0，代码是 MIT（`LICENSE-CODE`）。请规划迁去 MAF；微软发布了 AutoGen → MAF 的迁移指南。
 
 ## 存疑（未验证）
@@ -159,5 +153,5 @@ AutoGen 是你 import 的库，不是要部署的服务。它分三层：**Core*
 - [未验证] MAF 分布式执行的状态：截至 AutoGen → MAF 迁移指南（2026-08 更新）仍是“计划中”，之后可能已经发布——拿它当留下来的理由之前请重查。
 - [推断] 响应速度 A 是按 issue 首次回复时间算的；只剩一位活跃维护者时这个数还能保持多久，只能靠猜。
 - [未验证] AG2 延续 0.2 API 谱系，依据只是它自称“formerly AutoGen”；本页没有读 AG2 的代码。
-- [未验证] 采用度轴用的是 NuGet `autogen.core` 下载量；没有核对 `autogen-agentchat` 在 PyPI 的下载量。
+- [未验证] 采用度测不了（`?`）：评分器只统计注册表索引链接到本仓库的包，而 Python 包 `autogen-agentchat` / `autogen-core` 没有登记仓库链接；它们在 PyPI 的下载量也没有人工核对，所以本页没有采用数字。
 - [未验证] Star 约 61k（截至 2026-10）；star 只是噪声很大的信号。
