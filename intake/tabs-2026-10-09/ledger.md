@@ -15,14 +15,14 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | monid-ai/monid | add | running |  |  | monid-ai/monid |
 | openai/codex-plugin-cc | add | done | categories/agent-frameworks/coding-agents/orchestration-and-review/codex-plugin-cc.md |  | openai/codex-plugin-cc |
 | OpenBMB/MiniCPM | add | done | categories/on-device-ml/minicpm.md |  | openbmb/minicpm |
-| Raphire/Win11Debloat | add | running |  |  | raphire/win11debloat |
-| storytold/deckcraft | add | pending |  |  | storytold/deckcraft |
-| storytold/designcraft | add | pending |  |  | storytold/designcraft |
-| storytold/effectcraft | add | pending |  |  | storytold/effectcraft |
-| storytold/lightcraft | add | pending |  |  | storytold/lightcraft |
-| storytold/pdfcraft | add | pending |  |  | storytold/pdfcraft |
-| storytold/photocraft | add | pending |  |  | storytold/photocraft |
-| storytold/vectorcraft | add | pending |  |  | storytold/vectorcraft |
+| Raphire/Win11Debloat | add | done | categories/disk-cleanup/win11debloat.md |  | raphire/win11debloat |
+| storytold/deckcraft | add | running |  |  | storytold/deckcraft |
+| storytold/designcraft | add | running |  |  | storytold/designcraft |
+| storytold/effectcraft | add | running |  |  | storytold/effectcraft |
+| storytold/lightcraft | add | running |  |  | storytold/lightcraft |
+| storytold/pdfcraft | add | running |  |  | storytold/pdfcraft |
+| storytold/photocraft | add | running |  |  | storytold/photocraft |
+| storytold/vectorcraft | add | running |  |  | storytold/vectorcraft |
 | trymirai/uzu | add | done | categories/on-device-ml/uzu.md |  | trymirai/uzu |
 | xpzouying/xiaohongshu-mcp | add | running |  |  | xpzouying/xiaohongshu-mcp |
 | zerobrewhq/zerobrew | add | done | categories/dev-utilities/package-managers/zerobrew.md |  | zerobrewhq/zerobrew |

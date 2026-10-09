@@ -61,10 +61,12 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `bdeansrowe/ltbl-force`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `bdeansrowe/ltbl-ignorance`,categories/agent-dev-methodology/study-and-experiments/ltbl-experiment.md,,no
 `cake` / SQM (OpenWrt),categories/networking/wondershaper.md,,no
+`ChrisTitusTech/winutil`,categories/disk-cleanup/win11debloat.md,,no
 `DeviceFarmer/stf`,categories/mobile-automation/tapflow.md,,no
 `diffusers` (Hugging Face),categories/ml-research/vision-and-multimodal/pytorch-gan.md,,no
 `dig` / `drill` / `kdig` (CLI),categories/networking/dnspython.md,,no
 `elasticsearch` (elasticsearch-py),categories/databases/database-clients/elasticsearch-dsl-py.md,,no
+`farag2/Sophia-Script-for-Windows`,categories/disk-cleanup/win11debloat.md,,no
 `getdns` Python bindings,categories/networking/dnspython.md,,no
 `hesreallyhim/awesome-claude-code`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `iOfficeAI/AionUi`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
@@ -72,6 +74,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `MEMORY USAGE` / `MEMORY DOCTOR`,categories/databases/database-clients/rdr.md,,no
 `nesquena/hermes-webui`,categories/agent-tooling/supervision-surfaces/ekko-studio.md,,no
 `NetrisTV/ws-scrcpy`,categories/mobile-automation/tapflow.md,,no
+`ntdevlabs/tiny11builder`,categories/disk-cleanup/win11debloat.md,,no
 `OpenHands/software-agent-sdk`,categories/agent-frameworks/coding-agents/orchestration-and-review/openhands.md,,no
 `openilink-sdk-node`,categories/im-automation/openilink-sdk-go.md,,no
 `openilink-sdk-php`,categories/im-automation/openilink-sdk-go.md,,no
@@ -86,6 +89,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 `subprocess` + system `ssh`,categories/networking/paramiko.md,,no
 `tcconfig` (Python),categories/networking/wondershaper.md,,no
 `trickle`,categories/networking/wondershaper.md,,no
+`undergroundwires/privacy.sexy`,categories/disk-cleanup/win11debloat.md,,no
 `woff2`/`sfnt2woff` CLIs,categories/dev-utilities/data-tools/fonttools.md,,no
 `ykdojo/claude-code-tips`,categories/agent-dev-methodology/study-and-experiments/claude-code-best-practice.md,,no
 `zkCli.sh` (built-in),categories/databases/database-clients/prettyzoo.md,,no

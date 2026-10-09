@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "Win11Debloat does", "zh": "Win11Debloat 做的"},
+  "steps": [
+    {"lane": "you", "en": "Paste the one-line launcher into PowerShell and accept the UAC prompt", "zh": "把一行启动命令贴进 PowerShell，同意 UAC 提权", "code": "& ([scriptblock]::Create((irm \"https://debloat.raphi.re/\")))"},
+    {"lane": "them", "en": "Downloads the latest release to %TEMP% and relaunches itself as admin in Windows PowerShell 5.1", "zh": "把最新发布版下到临时目录，以管理员身份重新启动", "component": {"en": "Get.ps1 launcher", "zh": "Get.ps1 启动器"}},
+    {"lane": "you", "en": "Tick the apps to remove and the tweaks to apply, or pick Default Mode", "zh": "勾选要删的应用和要改的设置，或直接选 Default Mode"},
+    {"lane": "them", "en": "Backs up the registry values it will touch; Default Mode also makes a restore point", "zh": "先备份要改动的注册表值，默认模式还会建还原点", "component": {"en": "registry backup", "zh": "注册表备份"}},
+    {"lane": "them", "en": "Removes apps via Appx/WinGet, imports its .reg files, restarts Explorer", "zh": "用 Appx/WinGet 卸应用、导入自带的 .reg 文件、重启资源管理器", "component": {"en": "Regfiles + Appx/WinGet", "zh": "Regfiles + Appx/WinGet"}}
+  ],
+  "value": {"en": "Preinstalled apps, ads, Copilot and telemetry are gone without hunting through Settings page by page — with a registry backup to roll back from", "zh": "不用一页页翻设置、一个个卸应用，预装软件、广告、Copilot 和遥测就清掉了，还留着注册表备份可以回滚"},
+  "sources": [
+    "https://github.com/Raphire/Win11Debloat README — Usage / Quick method (& ([scriptblock]::Create((irm \"https://debloat.raphi.re/\"))))",
+    "https://github.com/Raphire/Win11Debloat Scripts/Get.ps1 (downloads releases/latest zipball to $env:TEMP\\Win11Debloat, Start-Process powershell.exe -Verb RunAs)",
+    "https://debloat.raphi.re/ — 301 to https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1 (checked 2026-10-09)",
+    "https://github.com/Raphire/Win11Debloat/wiki/Default-Settings (Default Mode, -RunDefaults); Config/DefaultSettings.json (CreateRestorePoint: true)",
+    "https://github.com/Raphire/Win11Debloat/wiki/Reverting-Changes (registry backup before applying changes since 2026.05.10)",
+    "https://github.com/Raphire/Win11Debloat .github/CONTRIBUTING.md — High-Level Architecture (Regfiles, Appx / WinGet); wiki Command-line-Interface (-SkipExplorerRestart: script restarts Explorer by default)"
+  ]
+}

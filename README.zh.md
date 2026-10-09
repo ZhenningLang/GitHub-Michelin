@@ -1392,6 +1392,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | 项目 | 何时用 | 许可证 | 健康度 | 页面 |
 | --- | --- | --- | --- | --- |
 | **MangoDisk** | 一个清理工具要同时覆盖 macOS、Windows 和 Linux，而且你想读懂每条被删路径背后的规则时用它——代价是永久删除、代码库只有两个月、只有一位维护者。 | GPL-3.0-only | C（6/6） | [中](categories/disk-cleanup/mangodisk.zh.md) · [EN](categories/disk-cleanup/mangodisk.md) |
+| **Win11Debloat** | 要在一台不受管的 Windows 10／11 电脑上，用一张清单清掉预装应用、广告、Copilot 和遥测，并留注册表备份可撤回时用它——不适合域管理的机器群、镜像瘦身或 PowerShell 被锁定的环境。 | MIT | B（6/6） | [中](categories/disk-cleanup/win11debloat.zh.md) · [EN](categories/disk-cleanup/win11debloat.md) |
 
 ### 3d-reconstruction
 

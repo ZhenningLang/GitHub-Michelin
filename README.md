@@ -1410,6 +1410,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **MangoDisk** | Use it when one cleaner must cover macOS, Windows and Linux and you want to read the rule behind every deleted path — accepting permanent deletion, a two-month-old codebase and a single maintainer. | GPL-3.0-only | C (6/6) | [EN](categories/disk-cleanup/mangodisk.md) · [中](categories/disk-cleanup/mangodisk.zh.md) |
+| **Win11Debloat** | Use it to strip preinstalled apps, ads, Copilot and telemetry from an unmanaged Windows 10/11 PC from one checklist, with a registry backup to undo — not for domain-managed fleets, image slimming or locked-down PowerShell. | MIT | B (6/6) | [EN](categories/disk-cleanup/win11debloat.md) · [中](categories/disk-cleanup/win11debloat.zh.md) |
 
 ### 3d-reconstruction
 
