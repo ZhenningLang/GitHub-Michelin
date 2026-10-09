@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "them": {"en": "The driver does", "zh": "驱动做的"},
+  "steps": [
+    {"lane": "you", "en": "Get macOS 15 booting through OpenCore on the PC first, with the NVIDIA card installed",
+     "zh": "先让这台装着 N 卡的 PC 经 OpenCore 跑起 macOS 15"},
+    {"lane": "you", "en": "Add the driver's boot-args, SIP value and BAR quirks to OpenCore config.plist",
+     "zh": "在 config.plist 里加启动参数、SIP 值和 BAR 设置",
+     "code": "nvfb=1 nvaccel=1 nvfbheads=4 -nvkmsnosmooth amfi_get_out_of_my_way=0x1 amfi=0x80",
+     "component": {"en": "OpenCore config.plist", "zh": "OpenCore 配置文件"}},
+    {"lane": "you", "en": "Unpack the release package, check its hashes, run the installer as root",
+     "zh": "解开发布包，校验哈希，用 root 跑安装脚本",
+     "code": "sudo ./install.sh",
+     "component": {"en": "package/install.sh", "zh": "package/install.sh"}},
+    {"lane": "them", "en": "Copies four kexts and the Metal bundles into place, rebuilds the Auxiliary Kernel Collection",
+     "zh": "把四个内核扩展和 Metal 驱动包放到位，重建辅助内核集合"},
+    {"lane": "you", "en": "Reboot; approve the extensions in Privacy & Security when asked, then reboot again",
+     "zh": "重启；按提示在“隐私与安全性”里允许扩展，再重启一次",
+     "code": "sudo shutdown -r now"},
+    {"lane": "them", "en": "At boot, NVRM loads NVIDIA's GSP firmware and brings the GPU up; NVRMFB lights the displays",
+     "zh": "开机时 NVRM 载入 GSP 固件拉起 GPU，NVRMFB 点亮屏幕",
+     "component": {"en": "NVRM.kext · NVRMFB.kext", "zh": "NVRM.kext · NVRMFB.kext"}},
+    {"lane": "them", "en": "Metal calls go through the plugin: shaders are translated to SPIR-V and run by NVK on the card",
+     "zh": "Metal 调用走插件：着色器转成 SPIR-V，由 NVK 在显卡上执行",
+     "component": {"en": "NVMTLDriver.bundle", "zh": "NVMTLDriver.bundle"}}
+  ],
+  "value": {"en": "The desktop and Metal apps run on a GeForce RTX card that macOS has had no driver for since High Sierra",
+            "zh": "桌面和 Metal 应用跑在一张 macOS 自 High Sierra 之后就没有驱动的 GeForce RTX 卡上"},
+  "sources": [
+    "README.md 'Install — prebuilt (recommended)' (tar -xzf, shasum -a 256 -c SHA256SUMS, sudo ./install.sh, sudo shutdown -r now; allow the extensions in Privacy & Security)",
+    "README.md 'Wiring into an existing OpenCore setup' (boot-args value, csr-active-config <430A0000>, ResizeGpuBars 13, ResizeAppleGpuBars -1, IONDRVSupport Exclude, SecureBootModel Disabled)",
+    "docs/HOW-IT-WORKS.md sections 1-3 (NVRM loads GSP firmware from /Users/Shared/nvfw and boots the GPU; NVRMFB is the IOFramebuffer; NVMTLDriver.bundle -> translator AIR to SPIR-V -> NVK)",
+    "package/install.sh (copies NVMTLDriver.bundle, NVIDIAShared.bundle, nvmtl and firmware; rebuilds the kernel collection)"
+  ]
+}

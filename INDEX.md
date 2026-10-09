@@ -94,6 +94,7 @@
 | **healthcare-ai** | Clinical text intelligence you run yourself — medical entity extraction and PHI/PII de-identification on your own hardware, for data that cannot leave the network. | [→](categories/healthcare-ai/INDEX.md) |
 | **design-tokens** | Get a site's real design tokens (colours, type, spacing, radii) out of the rendered page, export them as DTCG/Tailwind/DESIGN.md, and fail CI when they drift. | [→](categories/design-tokens/INDEX.md) |
 | **photo-editing** | Edit your own photographs — raw development, photo libraries for culling and non-destructive edits, and raster image editing you run locally instead of renting Lightroom or Photoshop. | [→](categories/photo-editing/INDEX.md) |
+| **hackintosh** | Run macOS on PC hardware Apple never sold — OpenCore boot setup, and the kexts and drivers that make unsupported hardware (GPUs first of all) work under it. | [→](categories/hackintosh/INDEX.md) |
 
 
 

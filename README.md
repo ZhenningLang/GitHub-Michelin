@@ -1469,3 +1469,9 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | Project | Use when | License | Health | Page |
 | --- | --- | --- | --- | --- |
 | **LightCraft** | Use it when you want Lightroom's cull-develop-export workflow locally without a subscription, and want an agent to drive it over MCP/CLI — accepting a nine-day-old pre-1.0 app with estimated camera colour and thin raw-format coverage. | MIT OR Apache-2.0 | B (5/6) | [EN](categories/photo-editing/lightcraft.md) · [中](categories/photo-editing/lightcraft.zh.md) |
+
+### hackintosh
+
+| Project | Use when | License | Health | Page |
+| --- | --- | --- | --- | --- |
+| **NullMoth NVIDIA Driver for macOS** | Use it when an OpenCore PC on macOS 15 has only a Turing-or-later GeForce card and keeping that card matters more than stability — accepting a two-day-old single-author kernel driver validated on one RTX 5060, SIP/AMFI/Secure Boot relaxed, and a noncommercial license. | PolyForm-Noncommercial-1.0.0 + LGPL-3.0-or-later + MIT | D (4/6) | [EN](categories/hackintosh/nvidia-macos-driver.md) · [中](categories/hackintosh/nvidia-macos-driver.zh.md) |
