@@ -2,7 +2,7 @@
 name: PhotoCraft
 slug: photocraft
 repo: https://github.com/storytold/photocraft
-category: image-processing
+category: photo-editing
 tags: [image-editor, photoshop-alternative, psd, raster-graphics, rust, wgpu, mcp, desktop-app, webassembly]
 language: Rust
 license: MIT OR Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 别人发来一个带调整图层、蒙版和可编辑文字的分层 `.psd`，能打开又不把图层拍平的只有你没订阅的 Photoshop。PhotoCraft 是一个免费桌面图像编辑器（macOS、Windows、Linux、浏览器都能跑），照搬 Photoshop 的菜单和快捷键，原生读写这些图层——但它只有九天历史，自己的 README 也说还不能拿来做日常专业工作。
 
-![PhotoCraft — 健康度雷达](../../../assets/health/photocraft.zh.svg)
+![PhotoCraft — 健康度雷达](../../assets/health/photocraft.zh.svg)
 
 ## 何时使用
 
@@ -92,7 +92,7 @@ health:
 
 PhotoCraft 是一个分层组织的 Rust 程序：最底下是纯数据的文档模型（图层、蒙版、调整和效果参数），中间是**命令引擎**，登记了 500 多条具名命令（`filter.sharpen.smartSharpen`、`layer.newAdjustmentLayer.curves` 等），最上面是用 egui 画的一层薄界面。每个菜单项、工具和对话框都只是去调一条命令，所以图形界面、`photocraft-cli` 命令行、带令牌保护的本地控制通道和 MCP 服务器能做的事完全一样——可以把界面看成四个遥控器里的一个。像素存放在 256×256 的写时复制图块里（某块只有被编辑碰到时才复制一份，撤销因此很便宜）；两个合成器负责把图层叠成你看到的画面：一个跑在 CPU 上当参照标准，一个跑在 wgpu 上（wgpu：Rust 对 Metal、Vulkan、DirectX 12 和 WebGPU 的统一封装）负责画布，二者互相对拍测试。PSD 读写是一个按 Adobe 公开规范独立实现的 crate，读不懂的部分在保存时原样带过去而不丢弃。你提供文件和编辑操作；它负责文档模型、渲染和格式保真——至于某个功能只是“接上了”（菜单项存在）还是行为真的一致，要你用了才知道。
 
-![photocraft — 主干用户故事](../../../assets/flow/photocraft.zh.svg)
+![photocraft — 主干用户故事](../../assets/flow/photocraft.zh.svg)
 
 <!-- flow-steps:begin (generated from flows/photocraft.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ PhotoCraft 是一个分层组织的 Rust 程序：最底下是纯数据的文档
 - **你的流程依赖 Photoshop 插件、ExtendScript／UXP 脚本或 `.atn` 动作。** 这些都加载不了；PhotoCraft 用的是自己的沙箱化 WebAssembly 插件和自己的动作 JSON。继续用 **Photoshop**，或者有计划地把自动化迁到 PhotoCraft 的命令行上。
 - **主要工作是绘画和插画。** PhotoCraft 有画笔引擎，但 macOS 的压感“尚未在数位板硬件上验证”，原生 Wayland 笔输入仍未解决（#79）。用 **Krita**，它围绕绘画设计，数位板支持做了很多年。
 - **你今天要的是最稳的免费编辑器，而不是最像 Photoshop 的那个。** 一个九天大的代码库，约 350 个未关闭 issue，一两天发一个版本，本身就意味着频繁变动。稳定性比 PSD 保真更重要时，用 **GIMP**（几十年历史，GPL）。
-- **在服务器或 CI 里做无界面的批量转码或缩略图。** `photocraft-cli batch` 存在，但它要拉进一个七百多个 crate 的桌面编辑器工程，而且才几天大。shell 流水线用 [ImageMagick](imagemagick.zh.md)，Node.js 进程内用 [sharp](sharp.zh.md)，二者在这件事上都久经考验。
+- **在服务器或 CI 里做无界面的批量转码或缩略图。** `photocraft-cli batch` 存在，但它要拉进一个七百多个 crate 的桌面编辑器工程，而且才几天大。shell 流水线用 [ImageMagick](../media-processing/image-processing/imagemagick.zh.md)，Node.js 进程内用 [sharp](../media-processing/image-processing/sharp.zh.md)，二者在这件事上都久经考验。
 - **眼下在 Linux Wayland 桌面上用。** 拖进窗口的文件打不开（winit 0.30 不支持 Wayland 拖放，#386），压感也要绕道 Xwayland。按 README 的说明在 XWayland 下运行，或者原生用 **GIMP／Krita**。
 - **把控制通道或 MCP 服务器开放给其他用户。** TCP 通道需要一个 256 位令牌，但持有令牌的人就能用全部命令——没有按工具的权限划分，也没有审计日志（见 SECURITY.md）。只在回环地址上给一个本地 agent 用，不要挂到共享端点后面。
 - **你想 fork 后换成自己的品牌发布。** 代码是 MIT／Apache-2.0，但 ArtCraft 名称和标志是商标，fork 必须删掉；它引用的共享工程规范（`craftrules`）是私有仓库。要为换品牌、以及在没有这些规范的情况下读懂代码留出成本。

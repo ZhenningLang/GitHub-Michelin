@@ -8,12 +8,14 @@
 | Project | Use when | Health | Page |
 | --- | --- | --- | --- |
 | **LightCraft** | Use it when you want Lightroom's cull-develop-export workflow locally without a subscription, and want an agent to drive it over MCP/CLI — accepting a nine-day-old pre-1.0 app with estimated camera colour and thin raw-format coverage. | B (5/6) | [→](lightcraft.md) |
+| **PhotoCraft** | Use it when a layered PSD must be edited offline without a Photoshop seat — adjustment layers, masks and type stay live, and a CLI/MCP drives the same engine — but it is a 9-day-old, agent-written early alpha its own team rates ~25–35% ready for daily pro work. | B (6/6) | [→](photocraft.md) |
 
 ## Comparison matrix
 
 | Option | Indexed | Health | One-line tradeoff |
 | --- | --- | --- | --- |
 | [LightCraft](lightcraft.md) | ✅ | B (5/6) | MIT OR Apache-2.0, pure-Rust Lightroom-style library + raw developer with an MCP/CLI command surface; young, AI-agent-built, no measured colour calibration and partial CR3 support. |
+| [PhotoCraft](photocraft.md) | ✅ | B (6/6) | Offline, Photoshop-shaped Rust editor with native PSD layers and a CLI/MCP surface; paid for with extreme youth, a release every day or two, no AI/plug-in compatibility, and an unverifiable clean-room claim. |
 | darktable · RawTherapee | 未收录 | — | Mature GPL-3.0 raw developers with far wider camera coverage and colour science, but unfamiliar workflows and no agent interface — weighed in LightCraft's comparison, not yet indexed. |
 | Adobe Lightroom · Photoshop | 非仓库 | — | Closed subscription products — out of scope by shape, named as substitutes inside the pages. |
 

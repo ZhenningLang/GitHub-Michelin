@@ -2,7 +2,7 @@
 name: PhotoCraft
 slug: photocraft
 repo: https://github.com/storytold/photocraft
-category: image-processing
+category: photo-editing
 tags: [image-editor, photoshop-alternative, psd, raster-graphics, rust, wgpu, mcp, desktop-app, webassembly]
 language: Rust
 license: MIT OR Apache-2.0
@@ -80,7 +80,7 @@ health:
 
 Someone sends you a layered `.psd` with adjustment layers, masks and live type, and the only tool that opens it without flattening is a Photoshop subscription you don't have. PhotoCraft is a free desktop editor (macOS, Windows, Linux, browser) that copies Photoshop's menus and shortcuts and reads and writes those layers natively — but it is nine days old and its own README says it is not yet fit for daily professional work.
 
-![PhotoCraft — health radar](../../../assets/health/photocraft.svg)
+![PhotoCraft — health radar](../../assets/health/photocraft.svg)
 
 ## When to use
 
@@ -92,7 +92,7 @@ That is PhotoCraft's trigger: an **offline, native, Photoshop-shaped editor whos
 
 PhotoCraft is one Rust program split into layers: a pure-data document model (layers, masks, adjustment and effect settings), a **command engine** that holds 500+ named commands (`filter.sharpen.smartSharpen`, `layer.newAdjustmentLayer.curves`…), and a thin UI drawn with egui on top. Every menu item, tool and dialog just calls a command, so the GUI, the `photocraft-cli` binary, a token-protected local control channel and the MCP server all do exactly the same things — think of the UI as one remote control among four. Pixels live in 256×256 copy-on-write tiles (a tile is copied only when an edit touches it, which keeps undo cheap), and two compositors stack the layers into the picture you see: a CPU one used as the reference and a wgpu one (wgpu: a Rust layer over Metal, Vulkan, DirectX 12 and WebGPU) that draws the canvas, tested against each other. PSD reading and writing is a standalone crate written from Adobe's public spec; anything it does not understand is carried through on save rather than discarded. You supply the file and the edits; it supplies the model, the rendering and the format fidelity — and where a feature is only "wired" (a menu item exists) but not behaviourally faithful, you find out by using it.
 
-![photocraft — backbone user story](../../../assets/flow/photocraft.svg)
+![photocraft — backbone user story](../../assets/flow/photocraft.svg)
 
 <!-- flow-steps:begin (generated from flows/photocraft.json by tools/flow_card.py — do not edit) -->
 <details>
@@ -117,7 +117,7 @@ PhotoCraft is one Rust program split into layers: a pure-data document model (la
 - **Your workflow depends on Photoshop plug-ins, ExtendScript/UXP scripts or `.atn` actions.** None of those load; PhotoCraft uses its own sandboxed WebAssembly plug-ins and its own action JSON. Stay on **Photoshop**, or port the automation to PhotoCraft's CLI deliberately.
 - **Painting and illustration is the main job.** PhotoCraft's brush engine exists, but macOS pen pressure is "not yet verified on tablet hardware" and native Wayland pen input is open (#79). Use **Krita**, which is built around painting and has years of tablet support.
 - **You need the most stable free editor today, not the most Photoshop-like one.** A 9-day-old codebase with ~350 open issues and a release every one or two days is churn by definition. Use **GIMP** (decades old, GPL) when stability beats PSD fidelity.
-- **Headless batch conversion or thumbnailing in a server or CI job.** `photocraft-cli batch` exists, but it pulls in a 700-crate desktop editor workspace and is days old. Use [ImageMagick](imagemagick.md) for shell pipelines or [sharp](sharp.md) inside Node.js, both proven at that job.
+- **Headless batch conversion or thumbnailing in a server or CI job.** `photocraft-cli batch` exists, but it pulls in a 700-crate desktop editor workspace and is days old. Use [ImageMagick](../media-processing/image-processing/imagemagick.md) for shell pipelines or [sharp](../media-processing/image-processing/sharp.md) inside Node.js, both proven at that job.
 - **Linux Wayland desktop, today.** Files dropped on the window do not open (winit 0.30 has no Wayland drag and drop, #386) and pen pressure goes through Xwayland. Run it under XWayland as the README describes, or use **GIMP/Krita** natively.
 - **Exposing the control channel or MCP server to other users.** The TCP channel needs a 256-bit token but grants the whole command surface to anyone holding it — no per-tool capabilities, no audit log (SECURITY.md). Keep it on loopback for one local agent; do not put it behind a shared endpoint.
 - **You want to fork and ship it under your own brand.** The code is MIT/Apache-2.0, but the ArtCraft name and logos are trademarks that forks must remove, and the shared engineering standards it cites (`craftrules`) are a private repo. Budget for rebranding and for reading the code without those standards.
