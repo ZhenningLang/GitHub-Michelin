@@ -1091,6 +1091,7 @@ scrapy-rotating-proxies / proxy middlewares,categories/proxy-pool/proxybroker.md
 ScrapydWeb,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
 ScrapydWeb / Gerapy,categories/web-scraping/crawling-tools/scrapyd.md,,no
 Screenpipe,categories/meeting-intelligence/call-md.md,,no
+Scribus,categories/design-editors/designcraft.md,,no
 Seafile,categories/document-management/copyparty.md,,no
 seccomp / AppArmor / SELinux hardening,categories/sandboxing/gvisor.md,,no
 Security MCP servers (e.g. tool-wrapping SIEM/scanner MCPs),categories/agent-skills/security/anthropic-cybersecurity-skills.md,,no
