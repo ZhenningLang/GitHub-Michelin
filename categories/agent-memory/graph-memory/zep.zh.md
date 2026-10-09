@@ -3,12 +3,12 @@ name: Zep
 slug: zep
 repo: https://github.com/getzep/zep
 category: graph-memory
-tags: [agent-memory, knowledge-graph, zep, service]
+tags: [agent-memory, knowledge-graph, zep, hosted-service]
 language: Python
 license: Apache-2.0
 maturity: active examples/integrations repo for hosted Zep Cloud; Community Edition deprecated (2025); ~4.9k stars (as of 2026-10)
 last_verified: 2026-10-08
-type: service
+type: library
 upstream:
   pushed_at: 2026-10-08T05:17:23Z
   default_branch: main
@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:14:35Z
+  computed_at: 2026-10-09T10:32:35Z
   overall: A
-  overall_score: 3.75
+  overall_score: 3.5
   scored_axes: 4
   applicable_axes: 6
   capped: false
@@ -29,7 +29,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 3
+        last_commit_age_days: 1
         active_weeks_13: 9
         carve_out: null
     responsiveness:
@@ -39,17 +39,17 @@ health:
       grade: "?"
       raw: {}
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 1258
-        last_commit_age_days: 3
-        cohort: service
+        repo_age_days: 1259
+        last_commit_age_days: 1
+        cohort: library
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 7
-        top1_share: 0.417
-        top3_share: 0.835
+        top1_share: 0.41
+        top3_share: 0.838
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -61,7 +61,7 @@ health:
         content_license: null
   unknowns:
     responsiveness: { reason: issues_disabled }
-    adoption: { reason: no_package_structural }
+    adoption: { reason: ambiguous }
 ---
 # Zep
 
