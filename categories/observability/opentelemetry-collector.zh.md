@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:23:57Z
+  computed_at: 2026-10-09T16:05:09Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.67
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -42,32 +42,32 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: proxy.golang.org
-        canonical_package: github.com/open-telemetry/opentelemetry-collector
-        dependent_repos_count: 9
+        canonical_package: go.opentelemetry.io/collector
+        dependent_repos_count: 1033
         downloads_last_month: null
-        graph_tier: D
+        graph_tier: B
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 411562
+        release_downloads: 411707
         release_assets: 133
         release_tier: C
         signal_basis: releases
-        tier_source: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2709
+        repo_age_days: 2710
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 35
-        top1_share: 0.308
-        top3_share: 0.494
+        top1_share: 0.307
+        top3_share: 0.491
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,7 +156,7 @@ Collector 是一个 Go 二进制，由三类可插拔组件拼成。**接收器�
 - **治理与背书：**OpenTelemetry 旗下项目，归 **CNCF**，由 Collector SIG 运作，维护者和审批者来自 Grafana Labs、Snowflake、Splunk、Dynatrace、Datadog、Elastic、Microsoft——多厂商共治，没有哪一家公司独掌路线图。
 - **年龄与 Lindy（2019-05 创建，约 7.4 年）：**成熟且仍活跃；如今大多数可观测性厂商要么直接接收它的数据，要么把它打包成自己的发行版——先验很强。
 - **响应速度：**这次评为 B——新 issue 首次响应中位数 64.2 小时（之前因 GitHub 数据不可用而未评分）。
-- **采用：**雷达的采用轴只有 C，因为它统计的是 Go 模块依赖方和 GitHub release 下载量；大多数用户拉的是 `otel/*` 容器镜像或厂商发行版，所以这个分数低估了实际使用量。
+- **采用：**雷达的采用轴是 B：有 1,033 个仓库依赖 `go.opentelemetry.io/collector` 这个 Go 模块（2026-10-09；之前的 C 读的是依赖方少得多的 `github.com/open-telemetry/opentelemetry-collector` 模块路径）。它仍然只统计 Go 模块依赖方和 GitHub release 下载量；大多数用户拉的是 `otel/*` 容器镜像或厂商发行版，所以这个分数低估了实际使用量。
 - **风险信号：**Apache-2.0，没有改许可的历史。主要风险是变动频繁：二进制还没到 1.0，配置和组件经常弃用。
 
 ## 存疑（未验证）
@@ -165,4 +165,4 @@ Collector 是一个 Go 二进制，由三类可插拔组件拼成。**接收器�
 - [未验证] OpenTelemetry 在 CNCF 的确切成熟度等级（孵化还是毕业）这次同步没有重新核对。
 - [推断] contrib 里“一百来种”接收器是按 contrib 仓库 `receiver/` 目录列表估算的；组件数量和稳定性等级每个版本都在变。
 - [推断] 与 Vector、Fluent Bit、Grafana Alloy 的对比基于它们的一般定位，没有为本页重新读它们的仓库。
-- [推断] 雷达采用轴的 C 反映的是评分器能测到的东西（Go 模块依赖方、release 下载量），不含容器镜像拉取量；实际采用度很可能高得多。
+- [推断] 雷达采用轴的 B 反映的是评分器能测到的东西（Go 模块依赖方、release 下载量），不含容器镜像拉取量；实际采用度很可能高得多。

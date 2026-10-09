@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T15:59:12Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -36,21 +36,21 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@openclaw/codex"
+        canonical_package: openclaw
         dependent_repos_count: 0
-        downloads_last_month: 649552
+        downloads_last_month: 15774646
         graph_tier: E
-        volume_tier: B
+        volume_tier: A
         cross_check_divergence: 1.0
-        homebrew_installs_90d: 2953
+        homebrew_installs_90d: 2951
         homebrew_tier: B
-        release_downloads: 1023671
-        release_assets: 400
+        release_downloads: 1040075
+        release_assets: 423
         release_tier: B
-        docker_pulls: 276223
+        docker_pulls: 283623
         docker_image: openclaw/openclaw
         docker_tier: D
         signal_basis: homebrew+releases+docker
@@ -58,14 +58,14 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 318
+        repo_age_days: 319
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 486
-        top1_share: 0.56
+        top1_share: 0.561
         top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
@@ -155,7 +155,7 @@ OpenClaw is a TypeScript application that runs on Node.js; the installer provisi
 - **Maintenance (2026-10-08):** extremely active — daily commits, date-versioned stable releases several times a week (v2026.9.8 on 2026-10-03) and a beta channel (2026.10.1 betas).
 - **Governance:** developed by the OpenClaw Foundation, an independent 501(c)(3) that employs the core team and signs releases; donors include OpenAI, Amazon, Red Hat and others, none of which own the project. The governance grade is B: the creator, Peter Steinberger, still authors about 56% of the commits (top-3 share 74.6% across 486 active maintainers in the trailing 12 months).
 - **Age / Lindy:** about 10½ months old (318 days; created 2025-11), longevity C — the foundation structure is a stronger longevity signal than the repo's age.
-- **Adoption:** ~392k stars and ~82k forks. The radar's adoption grade is B because the scorer measured the `@openclaw/codex` plugin package (649,552 monthly npm downloads); the main `openclaw` package had about 15.6M npm downloads in the month to 2026-10-04, so real adoption is higher than the grade suggests.
+- **Adoption:** ~392k stars and ~82k forks. The radar's adoption grade is A: since the 2026-10-09 re-score it measures the main `openclaw` npm package (15,774,646 monthly downloads). The earlier B came from the `@openclaw/codex` plugin package, picked while the scorer read only the first 100 package candidates.
 - **Risk / license:** MIT (copyright OpenClaw Foundation), now parsed correctly as grade A; incorporated third-party code is listed in `THIRD_PARTY_NOTICES.md`.
 - **Overall:** radar grade B; responsiveness is not scored (`?`).
 

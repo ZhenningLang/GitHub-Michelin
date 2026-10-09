@@ -8,6 +8,11 @@
     "name": "antd",
     "reason": "antd on npm is the package users install; it sits past entry 100 of the lookup, so automatic selection only saw the nuget antd with the same name."
   },
+  "burntsushi/ripgrep": {
+    "registry": "crates.io",
+    "name": "ripgrep",
+    "reason": "ripgrep is the CLI crate users install; the crates.io grep library is carved out of the same repo and outranks it once the lookup reads past entry 100, but its downloads count reuse of the search code, not ripgrep installs."
+  },
   "duckdb/duckdb": {
     "none": true,
     "reason": "PyPI duckdb now links to duckdb/duckdb-python, so it is not among this repo's candidates; what remains are bindings, the duckdb-cli wrapper and a conda mirror, none representative. Release and Homebrew downloads carry adoption."

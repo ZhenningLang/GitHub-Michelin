@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:11Z
+  computed_at: 2026-10-09T15:59:12Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -36,21 +36,21 @@ health:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@openclaw/codex"
+        canonical_package: openclaw
         dependent_repos_count: 0
-        downloads_last_month: 649552
+        downloads_last_month: 15774646
         graph_tier: E
-        volume_tier: B
+        volume_tier: A
         cross_check_divergence: 1.0
-        homebrew_installs_90d: 2953
+        homebrew_installs_90d: 2951
         homebrew_tier: B
-        release_downloads: 1023671
-        release_assets: 400
+        release_downloads: 1040075
+        release_assets: 423
         release_tier: B
-        docker_pulls: 276223
+        docker_pulls: 283623
         docker_image: openclaw/openclaw
         docker_tier: D
         signal_basis: homebrew+releases+docker
@@ -58,14 +58,14 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 318
+        repo_age_days: 319
         last_commit_age_days: 0
         cohort: app
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 486
-        top1_share: 0.56
+        top1_share: 0.561
         top3_share: 0.746
         window_source: stats_contributors
         carve_out: null
@@ -155,7 +155,7 @@ OpenClaw 是跑在 Node.js 上的 TypeScript 应用；安装脚本会准备合�
 - **维护（2026-10-08）：** 极其活跃——每天都有提交，按日期编号的稳定版一周好几个（v2026.9.8 发布于 2026-10-03），另有测试通道（2026.10.1 的 beta）。
 - **治理：** 由 OpenClaw 基金会开发，这是一家独立的 501(c)(3) 非营利机构，雇佣核心团队并签署发布；捐助方包括 OpenAI、Amazon、Red Hat 等，都不拥有项目。治理集中度 B：创始人 Peter Steinberger 仍贡献了约 56% 的提交（过去 12 个月 486 位活跃维护者中，前三贡献者占比 74.6%）。
 - **年龄 / Lindy：** 约 10 个半月（318 天，2025-11 创建），长青度 C——基金会架构比仓库年龄更能说明它能活多久。
-- **采用：** 约 39.2 万 star、8.2 万 fork。雷达的采用广度是 B，因为评分器取的是 `@openclaw/codex` 插件包（npm 月下载 649,552）；主包 `openclaw` 在截至 2026-10-04 的一个月里下载约 1560 万次，真实采用比这个等级高。
+- **采用：** 约 39.2 万 star、8.2 万 fork。雷达的采用广度是 A：2026-10-09 重算后，评分器测的是主包 `openclaw`（npm 月下载 15,774,646）。之前的 B 来自 `@openclaw/codex` 插件包，那时评分器只读前 100 个候选包。
 - **许可风险：** MIT（版权归 OpenClaw 基金会），这次已被正确识别为 A；收编的第三方代码列在 `THIRD_PARTY_NOTICES.md` 里。
 - **总评：** 雷达总评 B；响应速度未评分（`?`）。
 

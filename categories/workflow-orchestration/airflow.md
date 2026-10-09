@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:46:11Z
+  computed_at: 2026-10-09T16:08:57Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.5
-        qualifying_issues: 37
+        median_ttfr_hours: 5.0
+        qualifying_issues: 24
         band: default
         window_offset_days: 5
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: apache-airflow-core
-        dependent_repos_count: 0
-        downloads_last_month: 2682704
-        graph_tier: E
+        canonical_package: apache-airflow
+        dependent_repos_count: 1554
+        downloads_last_month: 7196244
+        graph_tier: B
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 83214
+        release_downloads: 83890
         release_assets: 924
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4186
+        repo_age_days: 4197
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 210
-        top1_share: 0.121
-        top3_share: 0.227
+        active_maintainers_12mo: 212
+        top1_share: 0.12
+        top3_share: 0.221
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,11 +154,11 @@ You write each pipeline as a Python file: a DAG whose nodes are *operators* — 
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 3.5 hours across 37 qualifying issues/PRs (re-scored 2026-09-28).
+- **Responsiveness**: Grade A — median first-response time 5.0 hours across 24 qualifying issues/PRs (re-scored 2026-10-09).
 - **Maintenance (2026-09)** — pushed daily, latest release 3.3.2 on 2026-09-17 (GitHub API); one of the busiest data-infra repos, clearly **active**, not coasting. The ~1.7k open issues (2026-06 reading) read as scale-of-traffic, not neglect. `[推断]`
 - **Governance & bus factor** — an **Apache Software Foundation** top-level project (`Organization`-owned under `apache/`): foundation governance with a PMC and 200+ active committers in the last year is about the strongest bus-factor profile open source offers — no single vendor owns the roadmap.
 - **Age & Lindy** — created 2015-04, ~11.5 years old and still actively developed: a **strong-Lindy** bet (long-lived *and* active), and the default orchestration layer much of data engineering already runs on.
-- **Adoption & ecosystem** — huge production footprint (~2.7M PyPI downloads/month for `apache-airflow-core` and ~47k stars as of the 2026-09-28 re-score), a large operator/provider catalog, and managed offerings from multiple clouds; ecosystem depth is a real moat, not hype.
+- **Adoption & ecosystem** — huge production footprint (7,196,244 PyPI downloads/month for `apache-airflow` at the 2026-10-09 re-score, ~47k stars), a large operator/provider catalog, and managed offerings from multiple clouds; ecosystem depth is a real moat, not hype.
 - **Risk flags** — Apache-2.0 under ASF (no relicense/open-core risk — foundation IP policy precludes a vendor rug-pull); the real cost is **operational weight** (multi-service distributed system) and the v2→v3 migration upheaval, not licensing or abandonment.
 
 ## Caveats (unverified)

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:16:06Z
+  computed_at: 2026-10-09T16:02:42Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.4
-        qualifying_issues: 21
+        median_ttfr_hours: 2.6
+        qualifying_issues: 25
         band: default
         window_offset_days: 0
         source: issue
@@ -44,33 +44,33 @@ health:
     adoption:
       grade: B
       raw:
-        registry: repo1.maven.org
-        canonical_package: "org.keycloak:launcher"
-        dependent_repos_count: 27
-        downloads_last_month: null
+        registry: npmjs.org
+        canonical_package: "@keycloak/keycloak-admin-client"
+        dependent_repos_count: 90
+        downloads_last_month: 1463584
         graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
-        release_downloads: 4911995
+        volume_tier: B
+        cross_check_divergence: 1.07
+        release_downloads: 4923268
         release_assets: 3852
         release_tier: B
-        docker_pulls: 18459944
+        docker_pulls: 18502580
         docker_image: keycloak/keycloak
         docker_tier: B
         signal_basis: releases+docker
-        tier_source: releases+docker
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4846
+        repo_age_days: 4847
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 164
-        top1_share: 0.113
-        top3_share: 0.213
+        active_maintainers_12mo: 166
+        top1_share: 0.112
+        top3_share: 0.212
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,10 +156,10 @@ Keycloak is a standalone Java server with its own database; your applications ne
 
 ## Health & viability
 
-- **Maintenance (2026-10-08):** very active — 26.8.0 shipped 2026-10-01 and 26.7.5 the day before; the radar measures a median first response on issues of about 1.4 hours. ~3.2k open issues reflect its size, not neglect.
+- **Maintenance (2026-10-08):** very active — 26.8.0 shipped 2026-10-01 and 26.7.5 the day before; the radar measures a median first response on issues of 2.6 hours (2026-10-09). ~3.2k open issues reflect its size, not neglect.
 - **Governance & bus factor:** 11 listed maintainers, 9 of them at IBM (which now carries the former Red Hat team), plus Bosch, Hitachi and Identity Tailor; the project lead is Stian Thorgersen. Contributions are broad (radar: 164 active contributors in 12 months, top contributor ~11%), but the roadmap is vendor-driven.
 - **Backing & Lindy:** created 2013-07 (about 13 years) and continuously active, now a CNCF project (README links CNCF Slack, Code of Conduct and CLOMonitor); a commercial Red Hat build funds the core team. One of the strongest age-and-still-active cases in this category.
-- **Adoption:** ~37.2k stars, 18,459,944 Docker Hub pulls (radar, 2026-10-08) plus Quay.io distribution, and a Kubernetes Operator on OperatorHub/Artifact Hub; it is the default self-hosted IdP many other projects document integrations for.
+- **Adoption:** ~37.2k stars, 18,502,580 Docker Hub pulls (radar, 2026-10-09) plus Quay.io distribution, and a Kubernetes Operator on OperatorHub/Artifact Hub; it is the default self-hosted IdP many other projects document integrations for.
 - **Risk flags:** Apache-2.0 with no relicense history; the risks are upgrade churn (security fixes only on the latest minor) and dependence on one vendor's staffing decisions.
 
 ## Caveats (unverified)
