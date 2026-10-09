@@ -2,7 +2,7 @@
 name: TUIOS
 slug: tuios
 repo: https://github.com/Gaurav-Gosain/tuios
-category: orchestration-and-review
+category: agent-multiplexers
 tags: [terminal-multiplexer, tiling-window-manager, agent-orchestration, coding-agents, tui, session-persistence, mcp]
 language: Go
 license: MIT
@@ -125,7 +125,7 @@ TUIOS 是用 Go 写在 Charm 的 Bubble Tea 之上的客户端/服务端终端�
 - **你不希望有工具改写 agent 的配置。** `tuios integration install` 会改 `~/.claude/settings.json`、`~/.codex/hooks.json`、opencode/Kilo 的插件目录等等。如果这些文件另有归属（dotfiles 仓库、公司策略），就别装集成——状态会退回到屏幕和进程识别，准确度更弱——或者用什么都不碰的 tmux。
 - **Windows 是你的主力系统。** 虽然有 Windows 的发布包，但文档写明工作目录捕获和对端 pid 校验在那里都不可用；[Pebrel](../../../terminal-ui/pebrel.zh.md) 就是为同一个“哪个 AI CLI 在等我”的问题、以 Windows 优先打造的。
 - **你的输入链路比较特殊。** TUIOS 自带 VT 模拟器并实现了 kitty 键盘协议，它的 bug 也集中在这里：在 Claude Code 里输入中文标点出错（#255，2026-09-29 当天修复），detach/attach 之后出现空行（#123，自 2026-08-16 起未关）。如果你的输入法或终端比较少见、一个错乱的按键代价很高，tmux 几十年打磨的输入处理更稳妥。
-- **你要的是任务路由，而不是盯梢。** 要分阶段的 plan→exec→verify 流水线加模型路由，用 [oh-my-claudecode](oh-my-claudecode.zh.md)；要一个把 issue 分发给多个 agent、并回灌 CI 反馈的桌面应用，用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)。TUIOS 给你的是 pane、状态和 Inbox，工作流仍然要你自己定。
+- **你要的是任务路由，而不是盯梢。** 要分阶段的 plan→exec→verify 流水线加模型路由，用 [oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.zh.md)；要一个把 issue 分发给多个 agent、并回灌 CI 反馈的桌面应用，用 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)。TUIOS 给你的是 pane、状态和 Inbox，工作流仍然要你自己定。
 
 ## 横向对比
 

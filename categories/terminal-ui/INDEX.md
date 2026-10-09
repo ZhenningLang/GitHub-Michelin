@@ -39,4 +39,4 @@
 
 ## What belongs here
 
-Libraries that **render UI in the terminal** — colors, TUIs, ASCII art, styled output — and terminal **multiplexers** (session/pane keepers like tmux, Zellij; agent-aware ones like [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.md) live under `agent-frameworks/coding-agents/orchestration-and-review`).
+Libraries that **render UI in the terminal** — colors, TUIs, ASCII art, styled output — and terminal **multiplexers** (session/pane keepers like tmux, Zellij; agent-aware ones like [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.md) live under `agent-frameworks/coding-agents/orchestration-and-review`).

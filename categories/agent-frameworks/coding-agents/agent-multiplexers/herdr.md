@@ -2,7 +2,7 @@
 name: herdr
 slug: herdr
 repo: https://github.com/herdrdev/herdr
-category: orchestration-and-review
+category: agent-multiplexers
 tags: [terminal-multiplexer, agent-orchestration, coding-agents, tui, session-persistence, ssh-federation]
 language: Rust
 license: Apache-2.0
@@ -119,7 +119,7 @@ herdr is a client/server terminal multiplexer in the tmux lineage: a background 
 ## When NOT to use
 
 - **You need a bet you can make for a decade.** herdr shipped v0.1.0 on 2026-03-27 and is at v0.9.1 — 6 months old, and the docs themselves mark live handoff as experimental. If the multiplexer is infrastructure your team can't churn, use [tmux](../../../terminal-ui/tmux.md) — ~20 years of behavior you can cite — or [zellij](../../../terminal-ui/zellij.md) for a 6-year-old human-first workspace. herdr's agent-layer payoff is only worth taking if you accept pre-1.0 API churn.
-- **Your agents' harness already owns orchestration.** If parallel workers are managed via tmux panes scripted by your own control plane (an [oh-my-claudecode](oh-my-claudecode.md)-style pipeline), or you want a desktop app that isolates each agent in a worktree and routes CI feedback ([Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.md)), herdr is a second control plane to learn, not a gap-filler — it pays off when supervision and agent-to-agent waiting are the pain, not when task routing is.
+- **Your agents' harness already owns orchestration.** If parallel workers are managed via tmux panes scripted by your own control plane (an [oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.md)-style pipeline), or you want a desktop app that isolates each agent in a worktree and routes CI feedback ([Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.md)), herdr is a second control plane to learn, not a gap-filler — it pays off when supervision and agent-to-agent waiting are the pain, not when task routing is.
 - **You want a browser/phone cockpit.** herdr's UI is a TUI inside a real terminal (plus remote attach over SSH); if your story is "drive sessions from my phone's browser," [CloudCLI](../../../agent-tooling/supervision-surfaces/claudecodeui.md) or [Hermes Workspace](../../../agent-tooling/supervision-surfaces/hermes-workspace.md) serve a web console; zellij also ships a built-in authenticated web client. herdr does not run a web server.
 - **Screen-based detection can be fooled and must keep up.** State badges come from screen manifests and process detection; when a CLI agent redesigns its TUI, herdr's detection lags until a manifest/integration update ships, and `unknown` state (which waits must be told to accept explicitly) becomes the honest answer. If a wrong "idle" badge has real cost for you, plain [tmux](../../../terminal-ui/tmux.md) plus your own verification has a smaller failure surface. [推断]
 - **You run mostly non-agent terminals.** For shells, builds and log tails with zero interest in agent state, tmux/zellij are the boring, complete tools; herdr's extra machinery (integrations, manifests, session references) buys you nothing there.

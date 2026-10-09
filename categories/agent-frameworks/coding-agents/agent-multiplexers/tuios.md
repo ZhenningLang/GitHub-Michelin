@@ -2,7 +2,7 @@
 name: TUIOS
 slug: tuios
 repo: https://github.com/Gaurav-Gosain/tuios
-category: orchestration-and-review
+category: agent-multiplexers
 tags: [terminal-multiplexer, tiling-window-manager, agent-orchestration, coding-agents, tui, session-persistence, mcp]
 language: Go
 license: MIT
@@ -125,7 +125,7 @@ TUIOS is a client/server terminal multiplexer written in Go on Charm's Bubble Te
 - **You do not want a tool writing into your agents' config.** `tuios integration install` edits `~/.claude/settings.json`, `~/.codex/hooks.json`, opencode/Kilo plugin dirs and more. If those files are managed elsewhere (a dotfiles repo, a policy), skip the integrations — state then falls back to screen and process detection, which is weaker — or use tmux, which touches nothing.
 - **Windows is your daily driver.** Release archives exist for Windows, but the docs note that working-directory capture and peer-pid checks do not work there; [Pebrel](../../../terminal-ui/pebrel.md) is built Windows-first for the same "which AI CLI is waiting" problem.
 - **Your input path is exotic.** TUIOS runs its own VT emulator and the kitty keyboard protocol, and that is where its bugs cluster: CJK punctuation typed into Claude Code (#255, fixed the same day, 2026-09-29) and empty lines after detach/attach (#123, open since 2026-08-16). If your IME or terminal is unusual and a garbled keystroke is costly, tmux's decades of input handling are the safer choice.
-- **What you want is task routing, not supervision.** For staged plan→exec→verify pipelines with model routing, [oh-my-claudecode](oh-my-claudecode.md); for a desktop app that fans issues out to agents with CI feedback, [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.md). TUIOS gives you panes, state and an Inbox; the workflow is still yours.
+- **What you want is task routing, not supervision.** For staged plan→exec→verify pipelines with model routing, [oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.md); for a desktop app that fans issues out to agents with CI feedback, [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.md). TUIOS gives you panes, state and an Inbox; the workflow is still yours.
 
 ## Comparison
 

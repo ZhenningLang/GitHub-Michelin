@@ -39,4 +39,4 @@
 
 ## 什么该放这里
 
-在**终端里渲染 UI** 的库——着色、TUI、ASCII art、样式化输出——以及终端**多路复用器**（管 session/pane 存活的东西，如 tmux、Zellij；感知 agent 的那类，如 [herdr](../agent-frameworks/coding-agents/orchestration-and-review/herdr.zh.md)，归在 `agent-frameworks/coding-agents/orchestration-and-review`）。
+在**终端里渲染 UI** 的库——着色、TUI、ASCII art、样式化输出——以及终端**多路复用器**（管 session/pane 存活的东西，如 tmux、Zellij；感知 agent 的那类，如 [herdr](../agent-frameworks/coding-agents/agent-multiplexers/herdr.zh.md)，归在 `agent-frameworks/coding-agents/orchestration-and-review`）。

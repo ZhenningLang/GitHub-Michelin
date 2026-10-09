@@ -285,7 +285,7 @@ claude-diary,categories/agent-memory/coding-agent-memory/backpass.md,,no
 claude-flow,categories/agent-frameworks/coding-agents/orchestration-and-review/oh-my-claudecode.md,,no
 claude-reflect,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 claude-seo (AgriciDaniel/claude-seo),categories/agent-skills/ai-writing/marketing-seo/opc-skills.md,,no
-claude-squad,categories/agent-frameworks/coding-agents/orchestration-and-review/tuios.md,,no
+claude-squad,categories/agent-frameworks/coding-agents/agent-multiplexers/tuios.md,,no
 CLAUDE.md (built-in),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 Claudeception,categories/agent-memory/coding-agent-memory/autoharness.md,,no
 click.style (Click),categories/terminal-ui/colorama.md,,no
@@ -470,7 +470,7 @@ GeoPandas / Shapely,categories/geospatial/qgis.md,,no
 GeoServer,categories/geospatial/qgis.md,,no
 GEPA,categories/ml-research/research-automation/rrsi.md,,no
 Gerapy,categories/web-scraping/crawling-tools/spiderkeeper.md,,no
-Ghostty,categories/agent-frameworks/coding-agents/orchestration-and-review/cmux.md,,no
+Ghostty,categories/agent-frameworks/coding-agents/agent-multiplexers/cmux.md,,no
 GIMP,categories/media-processing/image-processing/photocraft.md,,no
 git grep,categories/dev-utilities/data-tools/ripgrep.md,,no
 git submodule / manual `cp`,categories/agent-tooling/harness-extensions/vercel-skills.md,,no
@@ -491,7 +491,7 @@ glow,categories/terminal-ui/terminal-markdown-viewer.md,,no
 GluonTS,categories/ml-research/nlp-and-time-series/lstm-time-series.md,,no
 Glyphs / RoboFont,categories/dev-utilities/data-tools/fonttools.md,,no
 GNU grep,categories/dev-utilities/data-tools/ripgrep.md,,no
-GNU Screen,categories/agent-frameworks/coding-agents/orchestration-and-review/herdr.md,,no
+GNU Screen,categories/agent-frameworks/coding-agents/agent-multiplexers/herdr.md,,no
 Go Playground / `go run`,categories/python-tooling/gophernotes.md,,no
 go-mysql (library),categories/databases/data-sync/go-mysql-elasticsearch.md,,no
 Godot,categories/game-dev/kaplay.md,,no

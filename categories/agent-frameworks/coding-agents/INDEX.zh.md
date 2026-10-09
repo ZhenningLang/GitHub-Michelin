@@ -10,6 +10,7 @@
 | **terminal-agents** | 终端优先的 coding agent 与 CLI 结对编程工具。 | [→](terminal-agents/INDEX.zh.md) |
 | **ide-agents** | 集成在 IDE 或编辑器里的 coding agent。 | [→](ide-agents/INDEX.zh.md) |
 | **orchestration-and-review** | coding agent 控制平面、多 agent 执行器，以及评审/自动化包装层。 | [→](orchestration-and-review/INDEX.zh.md) |
+| **agent-multiplexers** | 专为同时监管多个编程 agent 的终端和复用器，显示每个 agent 卡住、在干活还是已完成。 | [→](agent-multiplexers/INDEX.zh.md) |
 
 ## 什么该放这里
 

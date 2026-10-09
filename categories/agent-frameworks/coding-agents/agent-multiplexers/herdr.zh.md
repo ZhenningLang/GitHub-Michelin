@@ -2,7 +2,7 @@
 name: herdr
 slug: herdr
 repo: https://github.com/herdrdev/herdr
-category: orchestration-and-review
+category: agent-multiplexers
 tags: [terminal-multiplexer, agent-orchestration, coding-agents, tui, session-persistence, ssh-federation]
 language: Rust
 license: Apache-2.0
@@ -119,7 +119,7 @@ herdr 是 tmux 血统的 client/server 终端多路复用器：后台 server 掌
 ## 何时不用
 
 - **你要的是能押十年的基建。** herdr 首个版本 v0.1.0 发布于 2026-03-27，现在 v0.9.1——6 个月大，文档自己把 live handoff 标为实验性。如果多路复用器是全团队不能折腾的底座，用 [tmux](../../../terminal-ui/tmux.zh.md)——约 20 年可以引用的行为——或者要人本位工作区就用 6 岁的 [zellij](../../../terminal-ui/zellij.zh.md)。herdr 的 agent 层收益，只有你接受 pre-1.0 API 动荡时才值。
-- **你的编排层已经 own 了调度。** 如果并行 worker 已经由你自己的控制面在 tmux pane 里脚本化管理（[oh-my-claudecode](oh-my-claudecode.zh.md) 那类流水线），或者你要的是把每个 agent 关进 worktree、把 CI/评审反馈路由回来的桌面应用（[Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)），herdr 是第二套要学的控制面，不是补缺口的——它的甜点是“看住 agent、等 agent”这个痛点，不是任务路由。
+- **你的编排层已经 own 了调度。** 如果并行 worker 已经由你自己的控制面在 tmux pane 里脚本化管理（[oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.zh.md) 那类流水线），或者你要的是把每个 agent 关进 worktree、把 CI/评审反馈路由回来的桌面应用（[Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)），herdr 是第二套要学的控制面，不是补缺口的——它的甜点是“看住 agent、等 agent”这个痛点，不是任务路由。
 - **你要浏览器/手机驾驶舱。** herdr 的界面是真实终端里的 TUI（外加 SSH 远程附着）；如果诉求就是“在手机浏览器里开会话”，[CloudCLI](../../../agent-tooling/supervision-surfaces/claudecodeui.zh.md)、[Hermes Workspace](../../../agent-tooling/supervision-surfaces/hermes-workspace.zh.md) 提供 web 控制台，zellij 也自带鉴权 web client。herdr 不跑 web 服务。
 - **屏幕检测会被骗、也必须追版本。** 状态标记来自屏幕 manifest 和进程检测；某个 CLI agent 改版 TUI 后，herdr 的检测要等下一次 manifest/集成更新才跟上，期间 `unknown`（等待命令要显式声明才接受它）才是诚实答案。如果“错误地显示 idle”对你代价很大，纯 [tmux](../../../terminal-ui/tmux.zh.md) 加自己的核验，故障面更小。[推断]
 - **你跑的大多是普通终端。** shell、构建、日志这类不关心 agent 状态的负载，tmux/zellij 是无聊但完整的工具；herdr 的额外机器（集成、manifest、会话引用）在这里一分钱收益都不买。

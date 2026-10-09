@@ -2,7 +2,7 @@
 name: cmux
 slug: cmux
 repo: https://github.com/manaflow-ai/cmux
-category: orchestration-and-review
+category: agent-multiplexers
 tags: [terminal, macos, coding-agents, agent-notifications, terminal-multiplexer, embedded-browser, libghostty, session-restore]
 language: Swift
 license: GPL-3.0-or-later (macOS app, CLI, cmux-tui) + BUSL-1.1 (web/, workers and relay services; production use needs a commercial license)
@@ -117,7 +117,7 @@ cmux 是一个 Swift/AppKit 应用，内嵌 libghostty——Ghostty 终端的渲
 
 - **你不在 macOS 上。** 应用是 Swift + AppKit 写的，README 的 FAQ 写着“macOS only, for now”。仓库里另有一个 Rust 写的 `cmux-tui` 多路复用器，但一个未关闭的 issue（#17040，2026-10-02）记录了一位 Linux 用户说它“basically unusable”。在 Linux 或纯 SSH 环境下，用能跑在任何终端里的 [herdr](herdr.zh.md) 或 [TUIOS](tuios.zh.md)；如果并不在乎 agent 感知，就用 [tmux](../../../terminal-ui/tmux.zh.md)。
 - **agent 跑在远程机器上，终端得在你合上笔记本后继续活着。** cmux 重开后能恢复布局和 agent 会话，但不会保住任意进程；要真正保活，得主动用 `cmux local-tmux`（注销、重启就没了）或 `cmux ssh-tmux` / `mosh-tmux`。如果硬性要求是“Mac 合上了 agent 也照跑”，就在服务器上跑 [tmux](../../../terminal-ui/tmux.zh.md) 或 [herdr](herdr.zh.md)，本地终端只当查看器。
-- **你想让工具替你规划和分发任务。** cmux 不会为每个任务建 worktree，不会把 CI 失败回传给 agent，也不会合并结果——它让你看见 agent，但不管理 agent。要按 worktree 隔离分发并回传反馈，选 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)；要 harness 层面的流水线，选 [oh-my-claudecode](oh-my-claudecode.zh.md)。
+- **你想让工具替你规划和分发任务。** cmux 不会为每个任务建 worktree，不会把 CI 失败回传给 agent，也不会合并结果——它让你看见 agent，但不管理 agent。要按 worktree 隔离分发并回传反馈，选 [Agent Orchestrator](../../../agent-tooling/supervision-surfaces/agent-orchestrator.zh.md)；要 harness 层面的流水线，选 [oh-my-claudecode](../orchestration-and-review/oh-my-claudecode.zh.md)。
 - **你要给团队一台台机器配一个稳定、无聊的终端。** 它从 2026 年 1 月起一直是 v0.x，截至 2026-10-09 的 30 天里有约 6.6k 次提交，未关闭 issue 1,655 个，其中包括内存涨到数 GB 的报告（#2962、#11627）。如果终端是不能频繁变动的基础设施，继续用 Ghostty 本体，或 [Alacritty](../../../terminal-ui/alacritty.zh.md) + [tmux](../../../terminal-ui/tmux.zh.md)，提醒交给 agent 自己的 hook。
 - **你不能接受默认开启的遥测，或一个会替你往 agent 里打字的应用。** `app.sendAnonymousTelemetry` 默认是 `true`（可在设置里关，或用 MDM 的 `DisableTelemetry`）；`automation.agentAutoResume` 默认是 `true`，遇到可重试的上游错误时会给 cmux 启动的 agent 发 `continue`；重开时恢复会话也会自动重跑 agent 命令。三项都能关，但在受管控或要审计的环境里必须有意识地关掉——或者用什么都不做的 [tmux](../../../terminal-ui/tmux.zh.md)。
 - **你打算自托管或转卖服务端。** 应用、CLI 和 `cmux-tui` 是 GPL-3.0-or-later，但 `web/`、Cloudflare workers 和 relay 服务是 BUSL-1.1，且没有额外使用授权——生产使用或自托管需要向 Manaflow 买商业许可；外部贡献还要签 CLA。要一个能嵌进产品或分叉的宽松许可 agent 多路复用器，选 [herdr](herdr.zh.md)（Apache-2.0）或 [TUIOS](tuios.zh.md)（MIT）。
