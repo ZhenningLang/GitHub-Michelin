@@ -12,6 +12,7 @@
 | **Google AI Edge Gallery** | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 | B（6/6） | [→](ai-edge-gallery.zh.md) |
 | **TimesFM** | 当你需要在本地 CPU/GPU 上对时间序列做零样本预测、又不想逐数据集训练时用它。 | A（5/6） | [→](timesfm.zh.md) |
 | **MiniCPM-V** | 当你需要小体积、可在端侧/边缘运行的多模态（图像+视频）理解时用它——注意逐权重许可。 | A（4/6） | [→](minicpm-v.zh.md) |
+| **MiniCPM** | 当聊天、编码或调工具的助手必须以 1–2B 体量离线跑在笔记本、手机或 CPU 盒子上时用它（MiniCPM5，Apache-2.0，GGUF 0.66–1.56GB）——但 4 bit 版要调采样参数，并选能解析其 XML 工具调用的运行时。 | B（5/6） | [→](minicpm.zh.md) |
 | **Stable Diffusion WebUI** | 当你想在 NVIDIA GPU 上用一个标签页式本地 Web UI、完整调参并借用庞大的 A1111 扩展生态做 SD 1.5/SDXL 出图时用它——但核心自 2024-07 起再无提交，新模型家族请用 ComfyUI。 | D（4/6） | [→](stable-diffusion-webui.zh.md) |
 | **ComfyUI** | 当你在自己的 GPU 上用开放权重模型生成图像或视频，需要一张可复现的节点图（ControlNet、LoRA、局部重绘、放大），并且只重算改动过的部分时用它——但它没有登录、配额和租户隔离。 | B（5/6） | [→](comfyui.zh.md) |
 | **MLX / mlx-lm** | 当你在 Apple 芯片的 Mac 上试 Hugging Face 新模型，想用一个 Python 包完成生成、量化和 LoRA 微调、不必先转 GGUF 时用它——但 mlx_lm.server 不适合生产或多用户服务。 | B（6/6） | [→](mlx-mlx-lm.zh.md) |
@@ -29,6 +30,7 @@
 | [Google AI Edge Gallery](ai-edge-gallery.zh.md) | ✅ | B（6/6） | 当你想在真机上先体验和基准测试端侧 Gemma LLM、为是否自建集成去风险时用它。 |
 | [TimesFM](timesfm.zh.md) | ✅ | A（5/6） | 当你需要在本地 CPU/GPU 上对时间序列做零样本预测、又不想逐数据集训练时用它。 |
 | [MiniCPM-V](minicpm-v.zh.md) | ✅ | A（4/6） | 当你需要小体积、可在端侧/边缘运行的多模态（图像+视频）理解时用它——注意逐权重许可。 |
+| [MiniCPM](minicpm.zh.md) | ✅ | B（5/6） | Apache-2.0 的 1–2B 文本模型，配逐运行时手册、agent 技能和公开训练数据；比起 Qwen/Gemma 少了更大的生态和 JSON 工具调用格式，换来部署全有文档，4 bit 版不调采样会复读。 |
 | [Stable Diffusion WebUI](stable-diffusion-webui.zh.md) | ✅ | D（4/6） | 换来经典 SD 工作流里最大的扩展生态和教程积累；代价是核心冻结、AGPL-3.0 网络 copyleft、没有多用户隔离，以及要自己打理的 Python/CUDA 安装。 |
 | [ComfyUI](comfyui.zh.md) | ✅ | B（5/6） | 整条管线尽在掌控、图随每张输出保存，新开放模型支持得快；代价是节点图的学习门槛、需要一块能用的 GPU，路线图由卖 Comfy Cloud 的一家公司掌握。 |
 | [Needle](needle.zh.md) | ✅ | B（4/6） | 英语专用的端侧工具调用/抽取/嵌入模型（29–121M、2-bit），解码受 grammar 约束；基座模型在否定、越界取值与域外请求上会失手。 |

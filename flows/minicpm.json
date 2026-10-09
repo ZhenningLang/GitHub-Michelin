@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "MiniCPM does", "zh": "MiniCPM 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the quantized 2B build (1.56 GB) from the official GGUF repo", "zh": "从官方 GGUF 仓库下载 2B 的量化版（1.56GB）", "code": "huggingface-cli download openbmb/MiniCPM5-2B-GGUF MiniCPM5-2B-Q4_K_M.gguf"},
+    {"lane": "you", "en": "Serve it with stock llama.cpp — no custom kernels or model-code fork", "zh": "用原版 llama.cpp 起服务，不需要自定义算子或改模型代码", "code": "llama-server -m MiniCPM5-2B-Q4_K_M.gguf --port 8080 -ngl 99 -c 8192 --jinja"},
+    {"lane": "them", "en": "Loads as a standard Llama-architecture model on your CPU or laptop GPU", "zh": "以标准 Llama 架构加载，跑在你的 CPU 或笔记本显卡上", "component": {"en": "MiniCPM5-2B weights", "zh": "MiniCPM5-2B 权重"}},
+    {"lane": "you", "en": "Send chat requests with the recommended sampling (temperature 1.0, top_p 0.95, min_p 0)", "zh": "按推荐采样参数发对话请求（min_p 要设成 0）", "code": "http://localhost:8080/v1/chat/completions"},
+    {"lane": "them", "en": "Answers with step-by-step thinking and XML-style tool calls, all on the device", "zh": "带分步思考作答、按 XML 格式发出工具调用，全程不出本机", "component": {"en": "built-in chat template", "zh": "内置对话模板"}}
+  ],
+  "value": {"en": "A 2B text model that reasons, codes and calls tools offline on a laptop — no per-call API bill, no prompt leaving the machine", "zh": "一个 2B 文本模型在笔记本上离线推理、写代码、调工具——没有按次计费，提示词也不出本机"},
+  "sources": [
+    "docs/deployment/llama_cpp.md main @ 2026-10-09: released GGUF table (MiniCPM5-2B-Q4_K_M.gguf 1.56 GB); TL;DR huggingface-cli download openbmb/MiniCPM5-2B-GGUF MiniCPM5-2B-Q4_K_M.gguf --local-dir ./minicpm5; OpenAI-compatible server llama-server -m MiniCPM5-2B-Q4_K_M.gguf --port 8080 -ngl 99 -c 8192 --jinja; curl http://localhost:8080/v1/chat/completions",
+    "README.md main @ 2026-10-09: MiniCPM5-2B Quickstart sampling (temperature=1.0, top_p=0.95, min_p=0.0); 'standard LlamaForCausalLM architecture … no custom kernels, no model-code fork'; Tool Calling (XML-style tool calls, SGLang minicpm5 parser)"
+  ]
+}

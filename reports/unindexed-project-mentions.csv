@@ -454,6 +454,7 @@ FunctionGemma (Google) / cloud tool APIs,categories/function-calling/INDEX.md,,n
 Fusion 360 · Onshape · SolidWorks,categories/cad/INDEX.md,,no
 fx,categories/dev-utilities/data-tools/jq.md,,no
 GDAL/OGR,categories/geospatial/qgis.md,,no
+Gemma (google-deepmind/gemma),categories/on-device-ml/minicpm.md,,no
 Generic LLM business-coaching prompts,categories/agent-skills/personal-collections/knowledge-content/dbskill.md,,no
 Generic LLM chat / hand-written prompt,categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Geoffrey Huntley's original Ralph (`while :; claude -p ...`),categories/agent-tooling/work-state/ralph-claude-code.md,,no
@@ -982,6 +983,7 @@ Quartz,categories/task-queue/INDEX.md,,no
 Quasar,categories/web-ui/frameworks/app-frameworks/nuxt.md,,no
 Qwen Code,categories/agent-frameworks/coding-agents/terminal-agents/gemini-cli.md,,no
 Qwen-VL / Qwen3.5 small line (Alibaba),categories/on-device-ml/minicpm-v.md,,no
+Qwen3.5 small models (QwenLM),categories/on-device-ml/minicpm.md,,no
 qwerty472123/wxappUnpacker (upstream),categories/im-automation/wechat/wxappunpacker.md,,no
 "RAG / vector memory stores (e.g. Mem0, Letta)",categories/agent-tooling/work-state/context-mode.md,,no
 RAG_Techniques (NirDiamant),categories/learning-resources/ai-engineering-hub.md,,no
@@ -1111,6 +1113,7 @@ Slidev (`slidevjs/slidev`),categories/ai-design-generation/open-slide.md,,no
 Slidev / Marp,categories/agent-skills/slides-ppt/INDEX.md,,no
 slime (THUDM/slime),categories/llm-training/miles.md,,no
 SmartTube (`yuliskov/SmartTube`),categories/streaming-clients/pipepipe.md,,no
+SmolLM (huggingface/smollm),categories/on-device-ml/minicpm.md,,no
 SmolVLM (Hugging Face),categories/on-device-ml/minicpm-v.md,,no
 SnowNLP / cnsenti,categories/ml-research/nlp-and-time-series/senta.md,,no
 Snyk Code,categories/ai-code-review/claude-code-security-review.md,,no
