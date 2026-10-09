@@ -8,7 +8,7 @@ propose = 读过之后判断不适合收录，标签保留，等用户定。
 | cactus-compute/needle | sync | done | categories/on-device-ml/needle.md | fresh: last_verified 2026-09-22 ≤ 90 天，无改动 | cactus-compute/needle |
 | CursorTouch/Windows-MCP | add | done | categories/desktop-automation/windows-mcp.md |  | cursortouch/windows-mcp |
 | DietrichGebert/ponytail | sync | done | categories/agent-skills/engineering/ponytail.md | fresh: last_verified 2026-09-28 ≤ 90 天，无改动 | dietrichgebert/ponytail |
-| Edge0-AI/Edge0 | add | running |  |  | edge0-ai/edge0 |
+| Edge0-AI/Edge0 | add | done | categories/llm-inference/local-runtimes/edge0.md |  | edge0-ai/edge0 |
 | funstory-ai/BabelDOC | sync | done | categories/pdf-tools/pdf-translation/babeldoc.md | fresh: last_verified 2026-09-27 ≤ 90 天，无改动 | funstory-ai/babeldoc |
 | manaflow-ai/cmux | add | running |  |  | manaflow-ai/cmux |
 | MDX-Tom/gpt-instruct | propose | proposed |  | 主体是去除 GPT/Codex 拒答的破甲系统提示词（3 个版本 zip），README 建议用日抛账号规避封号；可复用部分只有围绕破甲率的评测脚本。写成选型页等于给 agent 推荐绕过模型安全策略的方案，交用户定 | mdx-tom/gpt-instruct |

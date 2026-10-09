@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "Edge0 does",
+    "zh": "Edge0 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "On an Apple-silicon Mac, install the Python package from a clone",
+      "zh": "在 Apple 芯片的 Mac 上，从克隆的仓库安装 Python 包",
+      "code": "python3.12 -m venv .venv && .venv/bin/pip install -e '.[dev,fetch]'"
+    },
+    {
+      "lane": "you",
+      "en": "Download one of the two published tiers into a local directory",
+      "zh": "把两个已发布档位之一下载到本地目录",
+      "code": ".venv/bin/python scripts/fetch_models.py --tier edge0-35b --target-dir models"
+    },
+    {
+      "lane": "them",
+      "en": "Lands one ready-to-run directory: int4 base checkpoint plus its trained LoRA and prerouter files",
+      "zh": "落地一个即可运行的目录：int4 底座加配套训练好的 LoRA 和预路由文件",
+      "component": {
+        "en": "Hugging Face model repo",
+        "zh": "Hugging Face 模型仓库"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Point the tier name at that directory and start the server",
+      "zh": "把档位名指向这个目录，启动服务",
+      "code": "export EDGE0_35B_MODEL=$PWD/models/edge0-35b · edge0 serve edge0-35b"
+    },
+    {
+      "lane": "them",
+      "en": "Maps expert weights on the SSD instead of loading them, attaches both adapters, serves on 127.0.0.1:8000",
+      "zh": "专家权重留在固态硬盘上按需映射，挂上两个适配器，在本机 8000 端口提供服务",
+      "component": {
+        "en": "edge0 serve (AutoEngine)",
+        "zh": "edge0 serve（AutoEngine）"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Send chat requests from any OpenAI-style client",
+      "zh": "用任意 OpenAI 风格的客户端发聊天请求",
+      "code": "http://127.0.0.1:8000/v1/chat/completions"
+    },
+    {
+      "lane": "them",
+      "en": "Per token, predicts the next layer's experts one step early so SSD reads overlap compute",
+      "zh": "每生成一个词，提前一步预测下一层要用的专家，读盘与计算重叠",
+      "component": {
+        "en": "prerouter + streaming expert pool",
+        "zh": "预路由头加流式专家池"
+      }
+    }
+  ],
+  "value": {
+    "en": "A 35B MoE model answers on a 24 GB Mac inside about 3 GiB of peak active memory, without holding the 23 GB checkpoint in RAM",
+    "zh": "35B 的 MoE 模型在 24 GB 的 Mac 上作答，峰值活跃内存约 3 GiB，23 GB 的检查点不必装进内存"
+  },
+  "sources": [
+    "README.md Getting Started > Python: 1) Install (python3.12 -m venv .venv && .venv/bin/pip install -e '.[dev,fetch]'), 2) Download a model (.venv/bin/python scripts/fetch_models.py --tier edge0-35b --target-dir models; directory holds config/model safetensors + lora_edge0_35b.safetensors + prerouter_edge0_35b.safetensors), 3) Point edge0 at it (export EDGE0_35B_MODEL=$PWD/models/edge0-35b), 4) Run (edge0 serve edge0-35b; curl http://127.0.0.1:8000/v1/chat/completions)",
+    "README.md About > Core mechanisms (SSD expert offload, prerouter predicts routing one step ahead, Recover-LoRA unmerged) and Benchmark (2.9 GiB peak active memory, Mac mini M4 Pro 24 GB)",
+    "python/src/edge0/cli.py serve parser (--host default 127.0.0.1, --port default 8000)",
+    "docs/prerouter.md (layer N head predicts layer N+1 routing at token t-1; staged set == routed set)"
+  ]
+}
