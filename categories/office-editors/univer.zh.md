@@ -17,7 +17,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T14:07:53Z
+  computed_at: 2026-10-09T16:07:54Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -36,8 +36,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.4
-        qualifying_issues: 46
+        median_ttfr_hours: 17.2
+        qualifying_issues: 45
         band: default
         window_offset_days: 4
         source: issue
@@ -46,25 +46,25 @@ health:
       grade: B
       raw:
         registry: npmjs.org
-        canonical_package: "@univerjs/protocol"
-        dependent_repos_count: 0
-        downloads_last_month: 1538478
-        graph_tier: E
+        canonical_package: "@univerjs/core"
+        dependent_repos_count: 2
+        downloads_last_month: 2792870
+        graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.16
+        cross_check_divergence: 1.1
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1459
+        repo_age_days: 1471
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 28
-        top1_share: 0.305
-        top3_share: 0.831
+        active_maintainers_12mo: 31
+        top1_share: 0.308
+        top3_share: 0.835
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -150,7 +150,7 @@ TypeScript monorepo（`@univerjs/*`，pnpm + Turbo + Vitest）。渲染是自研
 - **维护：当下极其活跃。** v1.0.0–v1.0.2 全部发布于 2026-09-24；2026-09-27 仍有推送；5,809 次提交。发布线年龄在校验当天是*三天*——年轻的是版本号不是仓库。
 - **治理：单一厂商、org 所有。** 版权归 DreamNum Co., Ltd.；前三贡献者（jikkai 1,177／DR-Univer 624／wzhudev 574）占约 41% 提交（2026-09-27 API 核实）。团队宽度健康，但路线图和 OSS/Pro 分界归一家公司。
 - **背书与寿命** ——创建于 2022-09-29（约 4 年），且带着真实血统：Univer 是 Luckysheet（2020 年，17k stars，现已被*同团队*归档）的 TS 重写，前身用户盘是采纳通道不只是历史。Lindy：4 年活跃 < ONLYOFFICE（2014）/Handsontable（2011），相应打折。[推断]
-- **采纳：有测量、量级可观。** 健康雷达记录的 npm 月下载为 1,538,478（canonical 包解析到 `@univerjs/protocol`；旗舰包 `@univerjs/core` 同日直读为 1,898,528）——与 Handsontable 同量级、远在 Fortune Sheets 与 Jspreadsheet 之上；19.9k stars，106 个未关 issue。
+- **采纳：有测量、量级可观。** 健康雷达记录的旗舰包 `@univerjs/core` npm 月下载为 2,792,870（2026-10-09）——与 Handsontable 同量级、远在 Fortune Sheets 与 Jspreadsheet 之上；19.9k stars，106 个未关 issue。
 - **风险信号** ——开放核心闸门是结构性的、厂商说了算（协同/导入导出/图表/透视 = Pro）；Slides/Bases/PDF 是路线图不是产品；1.0 过渡刚发生，API 稳定性承诺（仓库里有 API_STABILITY.md 政策）还没经过一次大版本战的检验。
 
 ## 存疑（未验证）

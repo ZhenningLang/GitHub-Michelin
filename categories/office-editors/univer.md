@@ -17,7 +17,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-27T14:07:53Z
+  computed_at: 2026-10-09T16:07:54Z
   overall: A
   overall_score: 3.5
   scored_axes: 6
@@ -36,8 +36,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.4
-        qualifying_issues: 46
+        median_ttfr_hours: 17.2
+        qualifying_issues: 45
         band: default
         window_offset_days: 4
         source: issue
@@ -46,25 +46,25 @@ health:
       grade: B
       raw:
         registry: npmjs.org
-        canonical_package: "@univerjs/protocol"
-        dependent_repos_count: 0
-        downloads_last_month: 1538478
-        graph_tier: E
+        canonical_package: "@univerjs/core"
+        dependent_repos_count: 2
+        downloads_last_month: 2792870
+        graph_tier: D
         volume_tier: B
-        cross_check_divergence: 1.16
+        cross_check_divergence: 1.1
         tier_source: registry
     longevity:
       grade: B
       raw:
-        repo_age_days: 1459
+        repo_age_days: 1471
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 28
-        top1_share: 0.305
-        top3_share: 0.831
+        active_maintainers_12mo: 31
+        top1_share: 0.308
+        top3_share: 0.835
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -150,7 +150,7 @@ In the browser: a bundler supporting package `exports` (Vite/esbuild/Webpack 5) 
 - **Maintenance: exceptional right now.** v1.0.0–v1.0.2 all shipped 2026-09-24; pushed 2026-09-27; 5,809 commits. Release-line age is *three days* at verification — the version number, not the repo, is that young.
 - **Governance: single-vendor, org-owned.** DreamNum Co., Ltd. holds copyright; top 3 contributors (jikkai 1,177 / DR-Univer 624 / wzhudev 574) hold ~41% of commits (API-verified 2026-09-27). Healthy team breadth, but one company owns the roadmap and the OSS/Pro line.
 - **Backing & longevity** — created 2022-09-29 (~4 years old), and it carries a real lineage: Univer is the TypeScript rewrite of Luckysheet (2020, 17k stars, now archived *by the same team*), so the predecessor's user base is an adoption channel, not just history. Lindy: 4 active years < ONLYOFFICE (2014)/Handsontable (2011); discount accordingly. [推断]
-- **Adoption: measured, substantial.** The health radar's registry signal is 1,538,478 monthly npm downloads (canonical package resolved as `@univerjs/protocol`; the flagship `@univerjs/core` reads 1,898,528 on a same-day registry check) — same order of magnitude as Handsontable and well above Fortune Sheets or Jspreadsheet; 19.9k stars, 106 open issues.
+- **Adoption: measured, substantial.** The health radar's registry signal is 2,792,870 monthly npm downloads of the flagship `@univerjs/core` (2026-10-09) — same order of magnitude as Handsontable and well above Fortune Sheets or Jspreadsheet; 19.9k stars, 106 open issues.
 - **Risk flags** — open-core gating is structural and vendor-decided (collab/import-export/charts/pivot = Pro); Slides/Bases/PDF are roadmap, not product; the pre-1.0→1.0 transition just happened, so long-term API-stability claims (there is an API_STABILITY.md policy) are so far untested by a major-version war.
 
 ## Caveats (unverified)

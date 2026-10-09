@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:45Z
+  computed_at: 2026-10-09T16:01:07Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.1
-        qualifying_issues: 20
+        median_ttfr_hours: 1.0
+        qualifying_issues: 16
         band: default
         window_offset_days: 6
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: langchain-core
-        dependent_repos_count: 168
-        downloads_last_month: 144826657
-        graph_tier: C
+        canonical_package: langchain
+        dependent_repos_count: 18663
+        downloads_last_month: 170457766
+        graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 1878
+        release_downloads: 1834
         release_assets: 198
         release_tier: D
         signal_basis: releases
@@ -59,14 +59,14 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 1452
-        last_commit_age_days: 0
+        repo_age_days: 1454
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 38
-        top1_share: 0.49
+        top1_share: 0.488
         top3_share: 0.748
         window_source: stats_contributors
         carve_out: null
@@ -153,10 +153,10 @@ health:
 ## 健康度与可持续性
 
 - **维护活跃度**：Grade A——最近 13 周中 13 周有提交；最后提交距今 0 天。各包每周发版（`langchain-core` 1.6.7 于 2026-10-06，`langchain` 1.4.3 于 2026-09-28）。
-- **响应速度**：Grade A——中位首次响应时间 1.1 小时，基于 20 个 qualifying issues/PRs（2026-10-08 重算时首次可计分）。
+- **响应速度**：Grade A——中位首次响应时间 1.0 小时，基于 16 个 qualifying issues/PRs（2026-10-09 重算）。
 - **治理集中度**：Grade B——前三贡献者占比 74.8%（过去 12 个月内 38 位活跃维护者）；路线图由一家公司掌握，即 LangChain（LangSmith 背后的厂商）。
 - **长青度**：Grade B——仓库已创建 1452 天（2022-10），且每天都有活动，在这个年轻领域里是不错的先验。
-- **采用广度**：Grade A——pypi.org 上月下载量 144,826,657（包名：langchain-core），约 147.6k star。
+- **采用广度**：Grade A——pypi.org 上月下载量 170,457,766（包名：langchain；18,663 个依赖仓库），约 147.6k star。
 - **风险信号**：MIT 许可，没有改许可证。公司在卖 LangSmith（可观测性、评测、部署），部署和 tracing 能力会被拉向收费产品。0.x → 1.0 时老 chain 被整体挪进 `langchain-classic`；下一个大版本时预计还会有类似的重组。
 
 ## 存疑（未验证）

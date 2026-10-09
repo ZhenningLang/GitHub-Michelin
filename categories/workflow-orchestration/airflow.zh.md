@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:46:11Z
+  computed_at: 2026-10-09T16:08:57Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 3.5
-        qualifying_issues: 37
+        median_ttfr_hours: 5.0
+        qualifying_issues: 24
         band: default
         window_offset_days: 5
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: apache-airflow-core
-        dependent_repos_count: 0
-        downloads_last_month: 2682704
-        graph_tier: E
+        canonical_package: apache-airflow
+        dependent_repos_count: 1554
+        downloads_last_month: 7196244
+        graph_tier: B
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 83214
+        release_downloads: 83890
         release_assets: 924
         release_tier: D
         signal_basis: releases
@@ -59,15 +59,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4186
+        repo_age_days: 4197
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 210
-        top1_share: 0.121
-        top3_share: 0.227
+        active_maintainers_12mo: 212
+        top1_share: 0.12
+        top3_share: 0.221
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,11 +154,11 @@ health:
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应 3.5 小时，基于 37 个 qualifying issues/PRs（2026-09-28 重算）。
+- **响应速度**：Grade A——中位首次响应 5.0 小时，基于 24 个 qualifying issues/PRs（2026-10-09 重算）。
 - **维护（2026-09）** —— 每天都在收推送，最新 release 3.3.2 发布于 2026-09-17（GitHub API）；是数据基础设施里最繁忙的仓库之一，显然**活跃**而非停滞滑行。约 1.7k 个 open issue（2026-06 的观察）反映的是流量规模，而非疏于维护。`[推断]`
 - **治理与 bus factor** —— 一个 **Apache 软件基金会**顶级项目（在 `apache/` 下、`Organization` 所有）：带 PMC、过去一年 200 多位活跃贡献者的基金会治理，是开源能提供的最强 bus-factor 画像之一——没有单一厂商掌控路线图。
 - **年龄与 Lindy** —— 2015-04 创建，约 11 岁半且仍在积极开发：一个**强 Lindy** 下注（既长寿*又*活跃），也是大量数据工程已经在跑的默认编排层。
-- **采用与生态** —— 巨大的生产装机量（`apache-airflow-core` 在 PyPI 月下载约 270 万，star 约 47k，均为 2026-09-28 重算口径）、庞大的 operator/provider 目录、多家云厂商的托管方案；生态深度是真正的护城河，而非炒作。
+- **采用与生态** —— 巨大的生产装机量（2026-10-09 重算时 `apache-airflow` 在 PyPI 月下载 7,196,244，star 约 47k）、庞大的 operator/provider 目录、多家云厂商的托管方案；生态深度是真正的护城河，而非炒作。
 - **风险标记** —— ASF 下的 Apache-2.0（无 relicense / open-core 风险——基金会 IP 政策排除了厂商「抽地毯」）；真正的成本在于**运维重量**（多服务分布式系统）和 v2→v3 迁移的折腾，而非许可证或弃坑。
 
 ## 存疑（未验证）

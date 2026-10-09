@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:23:57Z
+  computed_at: 2026-10-09T16:05:09Z
   overall: A
-  overall_score: 3.5
+  overall_score: 3.67
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -42,32 +42,32 @@ health:
         source: issue
         inferred: false
     adoption:
-      grade: C
+      grade: B
       raw:
         registry: proxy.golang.org
-        canonical_package: github.com/open-telemetry/opentelemetry-collector
-        dependent_repos_count: 9
+        canonical_package: go.opentelemetry.io/collector
+        dependent_repos_count: 1033
         downloads_last_month: null
-        graph_tier: D
+        graph_tier: B
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 411562
+        release_downloads: 411707
         release_assets: 133
         release_tier: C
         signal_basis: releases
-        tier_source: releases
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2709
+        repo_age_days: 2710
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
         active_maintainers_12mo: 35
-        top1_share: 0.308
-        top3_share: 0.494
+        top1_share: 0.307
+        top3_share: 0.491
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,7 +156,7 @@ The Collector is a Go binary assembled from three kinds of plug-in components. *
 - **Governance / backing:** an OpenTelemetry project under the **CNCF**, run by the Collector SIG with maintainers and approvers from Grafana Labs, Snowflake, Splunk, Dynatrace, Datadog, Elastic and Microsoft — multi-vendor governance, no single company owns the roadmap.
 - **Age & Lindy (created 2019-05, ~7.4 years):** mature and still active; the default telemetry pipeline that most observability vendors now accept or ship as their own distribution — a strong prior.
 - **Responsiveness:** now scored B — a median first response of 64.2 hours on new issues (previously unscored because GitHub data was unavailable).
-- **Adoption:** the radar's adoption axis is only C because it counts Go-module dependents and GitHub release downloads; most users pull the `otel/*` container images or vendor distributions instead, so this underestimates real use.
+- **Adoption:** the radar's adoption axis is B: 1,033 repos depend on the `go.opentelemetry.io/collector` Go module (2026-10-09; the earlier C read the much smaller `github.com/open-telemetry/opentelemetry-collector` module path). It still counts only Go-module dependents and GitHub release downloads; most users pull the `otel/*` container images or vendor distributions instead, so this underestimates real use.
 - **Risk flags:** Apache-2.0, no relicense history. The main risk is churn: pre-1.0 binary versioning and frequent config/component deprecations.
 
 ## Caveats (unverified)
@@ -165,4 +165,4 @@ The Collector is a Go binary assembled from three kinds of plug-in components. *
 - [未验证] The exact CNCF maturity level of OpenTelemetry (incubating vs graduated) was not re-checked during this sync.
 - [推断] "About a hundred" contrib receivers is an approximation from the contrib repository's `receiver/` directory listing; component counts and stability levels change every release.
 - [推断] The comparisons with Vector, Fluent Bit and Grafana Alloy are based on their general positioning, not on a fresh reading of their repositories for this page.
-- [推断] The radar's adoption grade C reflects what the scorer can measure (Go-module dependents, release downloads), not container-image pulls; real adoption is likely much higher.
+- [推断] The radar's adoption grade B reflects what the scorer can measure (Go-module dependents, release downloads), not container-image pulls; real adoption is likely much higher.

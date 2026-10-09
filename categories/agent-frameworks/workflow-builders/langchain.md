@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:13:45Z
+  computed_at: 2026-10-09T16:01:07Z
   overall: A
   overall_score: 3.67
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 0
+        last_commit_age_days: 1
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.1
-        qualifying_issues: 20
+        median_ttfr_hours: 1.0
+        qualifying_issues: 16
         band: default
         window_offset_days: 6
         source: issue
@@ -45,13 +45,13 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: langchain-core
-        dependent_repos_count: 168
-        downloads_last_month: 144826657
-        graph_tier: C
+        canonical_package: langchain
+        dependent_repos_count: 18663
+        downloads_last_month: 170457766
+        graph_tier: A
         volume_tier: A
         cross_check_divergence: 1.0
-        release_downloads: 1878
+        release_downloads: 1834
         release_assets: 198
         release_tier: D
         signal_basis: releases
@@ -59,14 +59,14 @@ health:
     longevity:
       grade: B
       raw:
-        repo_age_days: 1452
-        last_commit_age_days: 0
+        repo_age_days: 1454
+        last_commit_age_days: 1
         cohort: framework
     governance:
       grade: B
       raw:
         active_maintainers_12mo: 38
-        top1_share: 0.49
+        top1_share: 0.488
         top3_share: 0.748
         window_source: stats_contributors
         carve_out: null
@@ -153,10 +153,10 @@ You write tools as ordinary Python functions; the docstring becomes the descript
 ## Health & viability
 
 - **Maintenance**: Grade A — 13/13 active weeks in the trailing 13; last commit 0 days ago. Packages release weekly (`langchain-core` 1.6.7 on 2026-10-06, `langchain` 1.4.3 on 2026-09-28).
-- **Responsiveness**: Grade A — median first-response time 1.1 hours across 20 qualifying issues/PRs (newly scorable on the 2026-10-08 re-score).
+- **Responsiveness**: Grade A — median first-response time 1.0 hours across 16 qualifying issues/PRs (2026-10-09 re-score).
 - **Governance**: Grade B — top-3 contributor share 74.8% (38 active maintainers in the trailing 12 months); the roadmap is owned by one company, LangChain (the vendor behind LangSmith).
 - **Longevity**: Grade B — 1452 days old (created 2022-10) and active daily, a solid prior for this young field.
-- **Adoption**: Grade A — 144,826,657 monthly downloads via pypi.org (package: langchain-core), ~147.6k stars.
+- **Adoption**: Grade A — 170,457,766 monthly downloads via pypi.org (package: langchain; 18,663 dependent repos), ~147.6k stars.
 - **Risk flags**: MIT, no relicense. The company sells LangSmith (observability, evals, deployment), so deployment and tracing features are pulled toward the paid product. The 0.x → 1.0 transition moved the legacy chains into `langchain-classic`; expect such reorganisations again at the next major.
 
 ## Caveats (unverified)

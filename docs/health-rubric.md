@@ -433,6 +433,7 @@ so failing to find the number is our gap, not a statement that the question does
 **Data source / exact calls**
 ```
 GET https://packages.ecosyste.ms/api/v1/packages/lookup?repository_url=https://github.com/{o}/{r}   # discover + filter typosquats
+    # &per_page=1000&page=N until a page returns <1000 (default page is 100, unmarked truncation; any failed page = lookup failed)
 GET https://packages.ecosyste.ms/api/v1/registries/{registry}/packages/{name}
     # fields: .dependent_repos_count (PRIMARY), .downloads, .downloads_period, .dependent_packages_count
     # registry ∈ {npmjs.org,pypi.org,crates.io,rubygems.org,packagist.org,proxy.golang.org,repo1.maven.org}; anon 5000/hr

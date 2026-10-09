@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:36Z
+  computed_at: 2026-10-09T16:04:10Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -29,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 3
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.2
+        median_ttfr_hours: 26.0
         qualifying_issues: 20
         band: relaxed_solo
         window_offset_days: 1
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: crates.io
-        canonical_package: deno_ops
-        dependent_repos_count: 316
-        downloads_last_month: 7922831
+        canonical_package: deno_core
+        dependent_repos_count: 396
+        downloads_last_month: 8282100
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 4.28
-        homebrew_installs_90d: 129957
+        cross_check_divergence: 4.36
+        homebrew_installs_90d: 128182
         homebrew_tier: A
-        release_downloads: 38746514
+        release_downloads: 39095833
         release_assets: 2628
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,8 +61,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3068
-        last_commit_age_days: 2
+        repo_age_days: 3070
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: A
@@ -153,8 +153,8 @@ Deno is a single binary that embeds V8 (the JavaScript engine from Chrome) insid
 ## Health & viability
 
 - **Maintenance**: Grade A — commits every week of the last quarter; patch releases roughly every one to three weeks (v2.9.7 on 2026-09-17).
-- **Responsiveness**: Grade A — median first response 19.2 hours across 20 qualifying issues/PRs.
-- **Adoption**: Grade A — 7,922,831 monthly crates.io downloads of `deno_core` and 38,746,514 release-asset downloads; Supabase Edge Functions run on Deno.
+- **Responsiveness**: Grade A — median first response 26.0 hours across 20 qualifying issues/PRs (2026-10-09).
+- **Adoption**: Grade A — 8,282,100 monthly crates.io downloads of `deno_core` and 39,095,833 release-asset downloads; Supabase Edge Functions run on Deno.
 - **Longevity**: Grade A — 3,068 days old (created 2018-05-15), past a 2.0 release that made npm and Node compatibility first-class, and still shipping; a solid Lindy prior.
 - **Governance**: Grade A — 92 active committers in 12 months with the top three at 61.2%; the roadmap is owned by Deno Land Inc., a venture-backed company that also sells the Deno Deploy hosting service.
 - **Risk / License**: Grade A — MIT, no relicense in the last 36 months. The commercial pull is toward Deno Deploy, not the runtime's license.

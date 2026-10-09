@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:16:06Z
+  computed_at: 2026-10-09T16:02:42Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 1.4
-        qualifying_issues: 21
+        median_ttfr_hours: 2.6
+        qualifying_issues: 25
         band: default
         window_offset_days: 0
         source: issue
@@ -44,33 +44,33 @@ health:
     adoption:
       grade: B
       raw:
-        registry: repo1.maven.org
-        canonical_package: "org.keycloak:launcher"
-        dependent_repos_count: 27
-        downloads_last_month: null
+        registry: npmjs.org
+        canonical_package: "@keycloak/keycloak-admin-client"
+        dependent_repos_count: 90
+        downloads_last_month: 1463584
         graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
-        release_downloads: 4911995
+        volume_tier: B
+        cross_check_divergence: 1.07
+        release_downloads: 4923268
         release_assets: 3852
         release_tier: B
-        docker_pulls: 18459944
+        docker_pulls: 18502580
         docker_image: keycloak/keycloak
         docker_tier: B
         signal_basis: releases+docker
-        tier_source: releases+docker
+        tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 4846
+        repo_age_days: 4847
         last_commit_age_days: 0
         cohort: service
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 164
-        top1_share: 0.113
-        top3_share: 0.213
+        active_maintainers_12mo: 166
+        top1_share: 0.112
+        top3_share: 0.212
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -156,10 +156,10 @@ Keycloak 是一个带自己数据库的独立 Java 服务，你的应用永远�
 
 ## 健康度与可持续性
 
-- **维护（2026-10-08）：** 非常活跃——26.8.0 于 2026-10-01 发布，前一天还发了 26.7.5；雷达测得 issue 首次响应中位时间约 1.4 小时。约 3,200 个未关闭 issue 反映的是体量，不是疏于维护。
+- **维护（2026-10-08）：** 非常活跃——26.8.0 于 2026-10-01 发布，前一天还发了 26.7.5；雷达测得 issue 首次响应中位时间 2.6 小时（2026-10-09）。约 3,200 个未关闭 issue 反映的是体量，不是疏于维护。
 - **治理与单点风险：** 列出的 11 名维护者里有 9 名在 IBM（原 Red Hat 团队如今在其名下），另有 Bosch、Hitachi 和 Identity Tailor；项目负责人是 Stian Thorgersen。贡献面很广（雷达：12 个月内 164 名活跃贡献者，头号贡献者约占 11%），但路线图由厂商主导。
 - **背书与 Lindy：** 2013-07 创建（约 13 年），一直活跃，现为 CNCF 项目（README 链接了 CNCF 的 Slack、行为准则和 CLOMonitor）；商业版 Red Hat build 为核心团队提供资金。这是本分类里“年头长且仍活跃”最强的例子之一。
-- **采用：** 约 3.72 万 stars，Docker Hub 拉取 18,459,944 次（雷达，2026-10-08），另有 Quay.io 分发，Kubernetes Operator 上架 OperatorHub 和 Artifact Hub；很多项目都会为它写集成文档，是事实上的默认自托管身份服务。
+- **采用：** 约 3.72 万 stars，Docker Hub 拉取 18,502,580 次（雷达，2026-10-09），另有 Quay.io 分发，Kubernetes Operator 上架 OperatorHub 和 Artifact Hub；很多项目都会为它写集成文档，是事实上的默认自托管身份服务。
 - **风险信号：** Apache-2.0，没有换许可证的历史；风险在于升级负担（安全修复只给最新小版本），以及依赖单一厂商的人员安排。
 
 ## 存疑（未验证）

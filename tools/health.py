@@ -1097,29 +1097,40 @@ def _load_package_overrides() -> dict[str, dict]:
     return {k.lower(): v for k, v in table.items()}
 
 
-class _OverrideRequeryFailed(Exception):
-    """The full-list re-query for an override failed in transport — a lookup failure
-    (`?`), not evidence that the override is stale."""
-
-
 # The default `packages/lookup` page stops at 100 entries and nothing marks the list as
 # truncated: facebook/react returns 100 by default and 334 with per_page=1000, and npm
 # `antd` / `next` appear only in the full lists of ant-design (188) and next.js (161)
-# (2026-10-09). Automatic selection still reads the first page only — a known flaw,
-# left for a separate change,
-# because paging every lookup would move every page's reading at once. Overrides re-query
-# so a named package is never reported missing merely for sitting past entry 100.
-OVERRIDE_REQUERY_PER_PAGE = 1000
+# (2026-10-09). The API caps per_page at 1000 (per_page=5000 is served as 1000) and pages
+# with `&page=N`, so the lookup reads pages of 1000 until a short one. More than
+# ECOSYSTE_LOOKUP_MAX_PAGES full pages is reported as a failed lookup rather than selected
+# from a list known to be cut off.
+ECOSYSTE_LOOKUP_PER_PAGE = 1000
+ECOSYSTE_LOOKUP_MAX_PAGES = 10
 
 
-def _override_canonical(candidates: list[dict], repo_full: str,
-                        requery=None) -> tuple[bool, dict | None]:
+def _ecosyste_lookup_all(url: str) -> tuple[int, list | None, str]:
+    """(status, every candidate, failure note). Any failed page fails the whole lookup:
+    a partial list is the truncation this function exists to remove."""
+    out: list = []
+    for page in range(1, ECOSYSTE_LOOKUP_MAX_PAGES + 1):
+        status, data = http_get_json(f"{url}&per_page={ECOSYSTE_LOOKUP_PER_PAGE}&page={page}",
+                                     retries=2)
+        if status == 0 or status >= 400:
+            return status, None, f"HTTP {status}" + (f" on page {page}" if page > 1 else "")
+        if not isinstance(data, list):
+            if page == 1:
+                return status, [], ""  # same reading as before paging: an unparsable 200 is no candidates
+            return status, None, f"unparsable page {page}"
+        out.extend(data)
+        if len(data) < ECOSYSTE_LOOKUP_PER_PAGE:
+            return status, out, ""
+    return 200, None, f"more than {ECOSYSTE_LOOKUP_MAX_PAGES * ECOSYSTE_LOOKUP_PER_PAGE} candidates"
+
+
+def _override_canonical(candidates: list[dict], repo_full: str) -> tuple[bool, dict | None]:
     """(overridden, package). (False, None): no entry, select automatically.
     (True, None): the entry says the project ships no representative package.
-    (True, pkg): the candidate matching the entry's registry + name.
-
-    `requery()` returns the full candidate list (or None on a transport failure); it is
-    called only when the named package is absent from `candidates`."""
+    (True, pkg): the candidate matching the entry's registry + name."""
     entry = _load_package_overrides().get(repo_full.lower())
     if entry is None:
         return False, None
@@ -1127,17 +1138,8 @@ def _override_canonical(candidates: list[dict], repo_full: str,
         return True, None
     want_reg, want_name = entry["registry"], entry["name"]
 
-    def match(pool):
-        return next((c for c in pool
-                     if _registry_name(c) == want_reg and c.get("name") == want_name), None)
-
-    hit = match(candidates)
-    if hit is None and requery is not None:
-        full = requery()
-        if full is None:
-            raise _OverrideRequeryFailed(repo_full)
-        candidates = full
-        hit = match(candidates)
+    hit = next((c for c in candidates
+                if _registry_name(c) == want_reg and c.get("name") == want_name), None)
     if hit is not None:
         return True, hit
     raise PackageOverrideError(
@@ -1746,22 +1748,15 @@ def _adoption_from_install_signals(repo: RepoData, archived: bool) -> Axis | Non
 def axis_adoption(repo: RepoData) -> Axis:
     url = ECOSYSTE_LOOKUP + urllib.parse.quote(
         f"https://github.com/{repo.full}", safe="")
-    status, data = http_get_json(url, retries=2)
+    status, data, failure = _ecosyste_lookup_all(url)
     archived = bool(repo.core.json.get("archived")) if isinstance(repo.core.json, dict) else False
 
-    if status == 0 or status >= 400:
-        return Axis.unknown("registry_lookup_failed", evidence=f"? ecosyste.ms lookup HTTP {status}")
+    if data is None:
+        return Axis.unknown("registry_lookup_failed", evidence=f"? ecosyste.ms lookup {failure}")
 
-    candidates = data if isinstance(data, list) else []
+    candidates = data
     # The override table outranks automatic selection (see PACKAGE_OVERRIDES_PATH).
-    def requery():
-        st, full = http_get_json(f"{url}&per_page={OVERRIDE_REQUERY_PER_PAGE}", retries=2)
-        return full if st == 200 and isinstance(full, list) else None
-    try:
-        overridden, canonical = _override_canonical(candidates, repo.full, requery)
-    except _OverrideRequeryFailed:
-        return Axis.unknown("registry_lookup_failed",
-                            evidence="? ecosyste.ms full-list re-query for the package override failed")
+    overridden, canonical = _override_canonical(candidates, repo.full)
     if not overridden:
         canonical = _select_canonical(candidates, repo.owner, repo.name,
                                       (repo.core.json or {}).get("language")

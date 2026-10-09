@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:18:36Z
+  computed_at: 2026-10-09T16:04:10Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -29,13 +29,13 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 2
+        last_commit_age_days: 3
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 19.2
+        median_ttfr_hours: 26.0
         qualifying_issues: 20
         band: relaxed_solo
         window_offset_days: 1
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: crates.io
-        canonical_package: deno_ops
-        dependent_repos_count: 316
-        downloads_last_month: 7922831
+        canonical_package: deno_core
+        dependent_repos_count: 396
+        downloads_last_month: 8282100
         graph_tier: C
         volume_tier: A
-        cross_check_divergence: 4.28
-        homebrew_installs_90d: 129957
+        cross_check_divergence: 4.36
+        homebrew_installs_90d: 128182
         homebrew_tier: A
-        release_downloads: 38746514
+        release_downloads: 39095833
         release_assets: 2628
         release_tier: A
         signal_basis: homebrew+releases
@@ -61,8 +61,8 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 3068
-        last_commit_age_days: 2
+        repo_age_days: 3070
+        last_commit_age_days: 3
         cohort: tool
     governance:
       grade: A
@@ -153,8 +153,8 @@ Deno 是单个二进制：一个 Rust 程序里嵌着 V8（Chrome 的 JavaScript
 ## 健康度与可持续性
 
 - **维护活跃度**：Grade A——过去一个季度每周都有提交；补丁版大约每一到三周一发（2026-09-17 发布 v2.9.7）。
-- **响应速度**：Grade A——20 个 qualifying issues/PRs 的中位首次响应时间 19.2 小时。
-- **采用广度**：Grade A——`deno_core` 在 crates.io 上月下载 7,922,831 次，release 资产下载 38,746,514 次；Supabase Edge Functions 就跑在 Deno 上。
+- **响应速度**：Grade A——20 个 qualifying issues/PRs 的中位首次响应时间 26.0 小时（2026-10-09）。
+- **采用广度**：Grade A——`deno_core` 在 crates.io 上月下载 8,282,100 次，release 资产下载 39,095,833 次；Supabase Edge Functions 就跑在 Deno 上。
 - **长青度**：Grade A——仓库已存在 3,068 天（2018-05-15 创建），已经过让 npm 和 Node 兼容成为一等公民的 2.0 版本，仍在持续发版；Lindy 先验扎实。
 - **治理集中度**：Grade A——过去 12 个月有 92 位活跃提交者，前三名占 61.2%；路线图由风投支持的 Deno Land Inc. 掌握，这家公司同时售卖 Deno Deploy 托管服务。
 - **许可风险**：Grade A——MIT，过去 36 个月没有改许可。商业上的牵引力在 Deno Deploy，而不在运行时的许可证。
