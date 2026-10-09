@@ -187,13 +187,23 @@ def main() -> int:
     else:
         sys.exit("provide --page categories/<cat>/<slug>.md or --all")
     any_changed = False
+    gone = False
     for page in pages:
-        if args.check:
-            changed = compare_snapshot(page, root)
-        else:
-            changed = process_page(page, root, args.apply)
+        try:
+            if args.check:
+                changed = compare_snapshot(page, root)
+            else:
+                changed = process_page(page, root, args.apply)
+        except RuntimeError as exc:
+            if "404" not in str(exc) and "Not Found" not in str(exc):
+                raise
+            # A vanished repo used to end the run with a traceback (financial-api, 2026-10-09).
+            print(f"gone_upstream {page.relative_to(root)}: GitHub 404 — run "
+                  f"tools/repo_moves.py --page {page.relative_to(root)} to probe for a move")
+            gone = True
+            continue
         any_changed = any_changed or changed
-    return 1 if args.check and any_changed else 0
+    return 1 if gone or (args.check and any_changed) else 0
 
 
 if __name__ == "__main__":

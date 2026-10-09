@@ -1,7 +1,7 @@
 ---
 name: React
 slug: react
-repo: https://github.com/facebook/react
+repo: https://github.com/react/react
 category: view-frameworks
 tags: [ui-library, react, components, frontend, javascript, typescript, virtual-dom, jsx, facebook]
 language: JavaScript (Flow-typed; compiler in TypeScript)
@@ -152,17 +152,17 @@ React is a library for turning **components** — plain JavaScript functions tha
 ## Health & viability
 
 - **Maintenance (2026-10).** Very active: v19.3.0 released 2026-09-09 (ViewTransition, Fragment refs, independent transitions), and the 19.0/19.1/19.2 lines still received RSC patch releases in July 2026. Commits land almost daily; the radar's maintenance and responsiveness axes are A.
-- **Governance & backing — changed in 2026.** Since 2026-02-24 React, React Native and JSX are owned by the React Foundation, hosted by the Linux Foundation, with eight platinum members (Amazon, Callstack, Expo, Huawei, Meta, Microsoft, Software Mansion, Vercel). Technical direction stays with the maintainers, independent of the board; the repository is still under `facebook/react` as of 2026-10-08 while the transfer is in progress. Contribution is broad (46 active contributors in 12 months, top contributor 21% of commits).
+- **Governance & backing — changed in 2026.** Since 2026-02-24 React, React Native and JSX are owned by the React Foundation, hosted by the Linux Foundation, with eight platinum members (Amazon, Callstack, Expo, Huawei, Meta, Microsoft, Software Mansion, Vercel). Technical direction stays with the maintainers, independent of the board; the repository has moved from `facebook/react` to `react/react` (GitHub redirects the old name; checked 2026-10-09). Contribution is broad (46 active contributors in 12 months, top contributor 21% of commits).
 - **Age & Lindy.** Open-sourced 2013 (~13 years) and still the market-leading UI library — the strongest Lindy prior in this category, now no longer tied to one company's priorities.
 - **Adoption.** The largest frontend ecosystem: component libraries, meta-frameworks (Next.js, React Router, Expo) and React Native all build on it. The radar's adoption axis reads B (2026-10-09) from GitHub release-asset downloads only (2,280,333): the npm `react` package is not linked to this repo in the registry index the scorer uses, so npm installs — React's real channel — are not counted, and the grade understates adoption.
 - **Risk flags.** MIT, no relicense history. The main risk has shifted to the server side: RSC packages carried a critical RCE (CVE-2025-55182) in late 2025, and the RSC/framework split means server features evolve fastest inside Next.js.
 
 ## Caveats (unverified)
 
-- [未验证] The repository transfer from `facebook/react` to a React Foundation org had not happened as of 2026-10-08; the timing of transfer and the final technical-governance structure were not confirmed.
+- [未验证] The repository moved from `facebook/react` to `react/react` by 2026-10-09 (GitHub redirect); the `react` organization's metadata names no owner, so that it is run by the React Foundation, and the final technical-governance structure, were not confirmed.
 - [未验证] CVE-2025-55182 affected versions (19.0, 19.1.0, 19.1.1, 19.2.0 of `react-server-dom-webpack/parcel/turbopack`; fixed in 19.0.1, 19.1.2, 19.2.1) come from Vercel and security-vendor advisories, not re-checked against the GitHub advisory text.
 - [推断] Bundle-size and update-performance gaps versus Svelte, Preact and Solid depend on the app; no benchmark was run for this page.
 - [推断] How much manual memoization React Compiler removes in a real codebase varies; reports of subtle breakages exist and were not reproduced.
 - [推断] Hiring-pool and ecosystem-size leadership is inferred from industry surveys and package counts, not a census.
 - [未验证] ~251k GitHub stars as of 2026-10-08; star counts drift.
-- [推断] The adoption grade B undercounts React: ecosyste.ms does not tie the npm `react` package to `facebook/react`, so the scorer cannot read npm downloads and grades from release assets alone.
+- [推断] The adoption grade B undercounts React: ecosyste.ms does not tie the npm `react` package to the repository (`react/react`, formerly `facebook/react`), so the scorer cannot read npm downloads and grades from release assets alone.

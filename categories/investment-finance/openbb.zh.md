@@ -1,7 +1,7 @@
 ---
 name: OpenBB
 slug: openbb
-repo: https://github.com/OpenBB-finance/OpenBB
+repo: https://github.com/openbq-org/OpenBB
 category: investment-finance
 tags: [investment-finance, openbb, framework]
 language: Python
@@ -107,7 +107,7 @@ Open Data Platform for analysts, quants and AI agents.
 ## 技术栈
 
 - **主要语言：** GitHub 元数据返回为 Python。
-- **仓库形态：** `OpenBB-finance/OpenBB`；本首版页面尚未穷尽读取所有依赖清单。
+- **仓库形态：** `openbq-org/OpenBB`（2026-10-09 前已从 `OpenBB-finance/OpenBB` 迁来）；本首版页面尚未穷尽读取所有依赖清单。
 - **默认分支快照：** 最后 push `2026-07-16T03:54:27Z`，archived 为 `false`。
 
 ## 依赖
@@ -134,3 +134,4 @@ Open Data Platform for analysts, quants and AI agents.
 - [未验证] 本页依据公开 GitHub 元数据和用户提供的 intake 清单生成；上游 README、文档、示例、release 和依赖清单仍需深度复核。
 - [未验证] 许可证、安装命令、支持的 harness 和运行时要求可能与 GitHub 元数据不同；使用前请在仓库中核验。
 - [推断] 横向对比表先从邻近 atlas 分类出发，并不是完整替代品综述；读完上游项目和相邻方案后应继续细化。
+- [推断] 仓库已从 `OpenBB-finance` 转到 `openbq-org`。这个组织建于 2026-09-11，没有填写资料；长期核心维护者仍在那里提交，组织下还有一个 `openbb-brightquery` 仓库，所以这次迁移多半和 BrightQuery 的合作有关。`OpenBB-finance` 组织仍在，名下还有 45 个其他仓库；迁移原因没有确认。

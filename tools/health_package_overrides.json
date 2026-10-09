@@ -17,10 +17,6 @@
     "name": "@reactour/tour",
     "reason": "The exact-name reactour package is the legacy v1 line on the v1 branch; current releases ship as @reactour/tour."
   },
-  "facebook/react": {
-    "none": true,
-    "reason": "npm react is not linked to facebook/react in ecosyste.ms; among the 334 candidates returned with per_page=1000 the only one named react is a NuGet package. The old reading, react-tools, is a deprecated package and cannot represent this project."
-  },
   "github/spec-kit": {
     "none": true,
     "reason": "The specify-cli PyPI package declares no repository link, so it is not among the candidates; spec-kit-redist is a third-party redistribution. The Homebrew formula carries adoption."
@@ -42,6 +38,10 @@
     "registry": "npmjs.org",
     "name": "@openhands/agent-canvas",
     "reason": "The repo was cleared for the Agent Canvas migration on 2026-07-27 and the PyPI openhands-ai package stops at 1.11.0 (2026-07); its larger download count measures the frozen legacy app, not what this repo ships now."
+  },
+  "react/react": {
+    "none": true,
+    "reason": "npm react is not linked to this repo (react/react, formerly facebook/react) in ecosyste.ms; among the 334 candidates returned with per_page=1000 the only one named react is a NuGet package. The old reading, react-tools, is a deprecated package and cannot represent this project."
   },
   "shadcn-ui/ui": {
     "registry": "npmjs.org",

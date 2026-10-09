@@ -11,9 +11,9 @@
   ],
   "value": {"en": "N coding agents stay in their own lanes, and only work that truly needs you comes back to you", "zh": "N 个编码 agent 各走各的车道，只有真正需要你的活才会回到你面前"},
   "sources": [
-    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Install' (per-platform installer files incl. agent-orchestrator-darwin-arm64.dmg; 'The desktop app runs the daemon for you, so no CLI is required')",
-    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Workers execute focused tasks' + 'One workflow, from idea to merge' (New task; agent+model choice; per-worker branch+worktree; feedback to owning agent)",
-    "https://github.com/Untrivial-ai/agent-orchestrator README.md 'Supported agents' (28 coding agents) + 'The Kanban keeps the system legible' (Working / Needs you / In review / Ready to merge)",
-    "https://github.com/Untrivial-ai/agent-orchestrator docs/architecture.md (local HTTP daemon on 127.0.0.1)"
+    "https://github.com/OrchestratorInc/agent-orchestrator README.md 'Install' (per-platform installer files incl. agent-orchestrator-darwin-arm64.dmg; 'The desktop app runs the daemon for you, so no CLI is required')",
+    "https://github.com/OrchestratorInc/agent-orchestrator README.md 'Workers execute focused tasks' + 'One workflow, from idea to merge' (New task; agent+model choice; per-worker branch+worktree; feedback to owning agent)",
+    "https://github.com/OrchestratorInc/agent-orchestrator README.md 'Supported agents' (28 coding agents) + 'The Kanban keeps the system legible' (Working / Needs you / In review / Ready to merge)",
+    "https://github.com/OrchestratorInc/agent-orchestrator docs/architecture.md (local HTTP daemon on 127.0.0.1)"
   ]
 }

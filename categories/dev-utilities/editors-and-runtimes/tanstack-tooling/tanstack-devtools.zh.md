@@ -123,7 +123,7 @@ health:
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 | --- | --- | --- | --- |
-| React Developer Tools（`facebook/react` 的 `packages/react-devtools*`） | ✅ [React](../../../web-ui/frameworks/view-frameworks/react.zh.md) | 查 React 组件树、props、hooks 和性能分析，就用 React DevTools，TanStack Devtools 替代不了它；只有要在页面里承载库面板（请求缓存、路由状态、你自己的 store）时才选 TanStack Devtools。 | React DevTools 能看到任何用户态面板都够不着的 React 内部，但它活在浏览器扩展（或独立应用）里，不懂你的库状态；TanStack 的外壳只看得到插件发出来的东西，好处是不用装扩展。 |
+| React Developer Tools（`react/react` 的 `packages/react-devtools*`） | ✅ [React](../../../web-ui/frameworks/view-frameworks/react.zh.md) | 查 React 组件树、props、hooks 和性能分析，就用 React DevTools，TanStack Devtools 替代不了它；只有要在页面里承载库面板（请求缓存、路由状态、你自己的 store）时才选 TanStack Devtools。 | React DevTools 能看到任何用户态面板都够不着的 React 内部，但它活在浏览器扩展（或独立应用）里，不懂你的库状态；TanStack 的外壳只看得到插件发出来的东西，好处是不用装扩展。 |
 | Vue DevTools（`vuejs/devtools`） | 未收录 | Vue 应用里，Vue DevTools（扩展或它的 Vite 插件浮层）是组件、Pinia、路由的官方调试器；只有同时用了需要宿主的 TanStack 库面板时，才再加 TanStack Devtools。 | Vue DevTools 深而专；TanStack 的 Vue 适配包很新（`@tanstack/vue-devtools` 周下载约 6.3k，2026-09-27），它承载面板，不检查 Vue 本身。本批次（标签页收录）未添加。 |
 | Nuxt DevTools（`nuxt/devtools`） | 未收录 | 在 Nuxt 里选 Nuxt DevTools，它是同样的页内、可插拔标签页设计，并与 Nuxt 模块和服务端集成；没有元框架的纯 Vite/React/Solid/Vue 应用要同样体验时，选 TanStack Devtools。 | Nuxt DevTools 拿得到框架级钩子、历史更长，但只能用于 Nuxt；TanStack 的与框架无关，但还是 alpha。本批次（标签页收录）未添加。 |
 | Redux DevTools（`reduxjs/redux-devtools`） | 未收录 | 用 Redux（或任何接入其扩展协议的 store）且要时间旅行、动作回放、状态差异时，选 Redux DevTools；想给自家 store 做一个页内定制面板、并愿意自己写界面时，选 TanStack Devtools。 | Redux DevTools 通过浏览器扩展给你一整套时间旅行界面；TanStack 给你带类型的传输和宿主外壳，但没有任何针对具体 store 的视图。本批次（标签页收录）未添加。 |

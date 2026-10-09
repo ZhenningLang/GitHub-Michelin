@@ -1,7 +1,7 @@
 ---
 name: Agent Orchestrator
 slug: agent-orchestrator
-repo: https://github.com/Untrivial-ai/agent-orchestrator
+repo: https://github.com/OrchestratorInc/agent-orchestrator
 category: supervision-surfaces
 tags: [parallel-agents, agentic-ide, git-worktrees, feedback-loops, desktop-app, electron, go-daemon, agent-adapters, tmux, claude-code]
 language: Go
@@ -46,7 +46,7 @@ health:
       grade: C
       raw:
         registry: proxy.golang.org
-        canonical_package: github.com/untrivial-ai/agent-orchestrator
+        canonical_package: github.com/OrchestratorInc/agent-orchestrator
         dependent_repos_count: 0
         downloads_last_month: null
         graph_tier: E

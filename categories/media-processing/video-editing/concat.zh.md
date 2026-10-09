@@ -1,7 +1,7 @@
 ---
 name: Concat
 slug: concat
-repo: https://github.com/jub0t/Concat
+repo: https://github.com/jub0t/concat
 category: video-editing
 tags: [video-editor, nle, capcut-alternative, rust, slint, offline, cross-platform, automation]
 language: Rust
