@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-09T16:02:42Z
+  computed_at: 2026-10-09T16:52:26Z
   overall: A
   overall_score: 3.83
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 2.6
-        qualifying_issues: 25
+        median_ttfr_hours: 2.8
+        qualifying_issues: 26
         band: default
         window_offset_days: 0
         source: issue
@@ -44,17 +44,17 @@ health:
     adoption:
       grade: B
       raw:
-        registry: npmjs.org
-        canonical_package: "@keycloak/keycloak-admin-client"
-        dependent_repos_count: 90
-        downloads_last_month: 1463584
-        graph_tier: D
-        volume_tier: B
-        cross_check_divergence: 1.07
-        release_downloads: 4923268
+        registry: repo1.maven.org
+        canonical_package: "org.keycloak:keycloak-core"
+        dependent_repos_count: 1153
+        downloads_last_month: null
+        graph_tier: B
+        volume_tier: "?"
+        cross_check_divergence: null
+        release_downloads: 4923604
         release_assets: 3852
         release_tier: B
-        docker_pulls: 18502580
+        docker_pulls: 18503644
         docker_image: keycloak/keycloak
         docker_tier: B
         signal_basis: releases+docker
