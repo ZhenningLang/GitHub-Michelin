@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "them": {"en": "Monid's compiler and engine do", "zh": "Monid 的编译器和引擎做的"},
+  "steps": [
+    {"lane": "you", "en": "Describe the vendor API declaratively: auth, request, input schema, usage model", "zh": "用声明式写法描述厂商 API：鉴权、请求、输入 schema、计费模型", "code": "defineProvider · defineEndpoint", "component": {"en": "connectors/<name>/", "zh": "connectors/<name>/"}},
+    {"lane": "you", "en": "Record one real response as a fixture, then pass the replay tests offline", "zh": "录一份真实响应当 fixture，再离线跑通回放测试", "code": "deno task record · deno task test", "component": {"en": "shared/testing", "zh": "shared/testing"}},
+    {"lane": "them", "en": "Compiles every definition into flat JSON docs with hash-referenced functions", "zh": "把所有定义编译成扁平 JSON 文档，函数按内容哈希引用", "component": {"en": "compiler", "zh": "编译器"}},
+    {"lane": "you", "en": "Run one endpoint with your own vendor key exported in the environment", "zh": "把自己的厂商 key 放进环境变量，跑一个端点", "code": "deno task engine:run 'tinyfish#search'", "component": {"en": "engine:run CLI", "zh": "engine:run 命令"}},
+    {"lane": "them", "en": "Validates the input, builds the request and injects the key inside the transport", "zh": "校验输入、构造请求，在传输层内部注入 key", "component": {"en": "connector engine", "zh": "连接器引擎"}},
+    {"lane": "them", "en": "Settles usage on the raw response, then maps and validates the output", "zh": "先在原始响应上结算用量，再映射并校验输出", "component": {"en": "connector engine", "zh": "连接器引擎"}}
+  ],
+  "value": {"en": "Every vendor API is called through one declared contract — same validation, metering and error shape — instead of one hand-written client per vendor", "zh": "每家厂商 API 都走同一份声明好的契约——校验、计量、错误形态一致——不用再给每家手写一个客户端"},
+  "sources": [
+    "https://github.com/monid-ai/monid README 'The shape' (defineProvider / defineEndpoint, connectors/tinyfish/), 'Quickstart' (deno task check && deno task test; export TINYFISH_CREDENTIALS_API_KEY; deno task engine:run 'tinyfish#search' --query-params ...), steps 1-5 (deno task record)",
+    "DEVELOPMENT.md 'Concepts: defs → docs → bundle → sealed unit', 'Compiler', 'Engine' pipeline (validate input → toRequest → transport.execute with credential injection → usage.consolidate on raw envelope → fromResponse → validate output), CLI reference",
+    "scripts/run.ts header (JIT compile, sealUnit, Engine.load with directTransport, credentials from env)"
+  ]
+}

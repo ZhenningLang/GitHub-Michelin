@@ -168,6 +168,7 @@ Apple Core ML / Foundation Models,categories/on-device-ml/litert-lm.md,,no
 Application framework upload handlers,categories/nginx-modules/nginx-upload-module.md,,no
 Appwrite,categories/databases/database-engines/supabase.md,,no
 Arcade,categories/game-dev/pygame.md,,no
+Arcade MCP,categories/api-gateway/monid.md,,no
 ArcGIS / GRASS GIS / gvSIG,categories/geospatial/INDEX.md,,no
 ArcGIS Pro (Esri),categories/geospatial/qgis.md,,no
 Arize Phoenix,categories/llm-eval/langfuse.md,,no
@@ -306,6 +307,7 @@ Commercial Kubernetes placement / cost-optimization platforms,categories/dev-uti
 "Commercial patent SaaS (智慧芽 PatSnap, incoPat, 专利之星)",categories/agent-skills/personal-collections/knowledge-content/patent-disclosure-skill.md,,no
 Commercial solving services (打码平台),categories/captcha/text-select-captcha.md,,no
 "Companion collections (AI product design, UX program mgmt, design leadership, inclusive design)",categories/agent-skills/design/ui-taste/designer-skills.md,,no
+Composio,categories/api-gateway/monid.md,,no
 CompreFace (exadel-inc/CompreFace),categories/computer-vision/deepface.md,,no
 Computer-use agents (Anthropic computer use / OpenAI Operator),categories/web-automation/agent-browser-tools/page-agent.md,,no
 Conda / Mamba,categories/python-tooling/uv.md,,no
@@ -781,6 +783,7 @@ MUI X Data Grid (`mui/mui-x`),categories/web-ui/component-libraries/tanstack-tab
 Multi-stage / hand-optimized Dockerfile,categories/dev-utilities/ops-infra/slim.md,,no
 Multica (multica-ai/multica),categories/agent-tooling/supervision-surfaces/paperclip.md,,no
 mypyc,categories/python-tooling/cython.md,,no
+Nango,categories/api-gateway/monid.md,,no
 nano-banana / gpt-image prompt packs,categories/agent-skills/visual-content/ian-illustrations.md,,no
 nanobot (`HKUDS/nanobot`),categories/agent-frameworks/agent-runtimes/personal-assistants/raven.md,,no
 nanobrew (`justrach/nanobrew`),categories/dev-utilities/package-managers/zerobrew.md,,no

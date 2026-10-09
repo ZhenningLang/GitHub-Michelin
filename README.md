@@ -457,6 +457,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **TokenHub** | Governance-first self-hosted AI gateway in Go: project keys, quotas, routing policy, audit and provider-bill reconciliation — very young (v0.9.x, created 2026-06) and author-dominated. | Apache-2.0 | B (6/6) | [EN](categories/api-gateway/tokenhub.md) · [中](categories/api-gateway/tokenhub.zh.md) |
 | **Magpie (yetone)** | A menu-bar model switcher for ~28 coding agents plus a local gateway translating between Anthropic and OpenAI APIs, with subscription logins as providers — about a week old and single-maintainer. | MIT | C (5/6) | [EN](categories/api-gateway/magpie-model-router.md) · [中](categories/api-gateway/magpie-model-router.zh.md) |
 | **vLLM Semantic Router** | Envoy ExtProc decision layer that picks the model per request from its content — domain, difficulty, jailbreak, PII signals from its own classifiers — by YAML policy; pre-1.0 (v0.4, created 2025-08) and needs a gateway for keys and rate limits. | Apache-2.0 | B (5/6) | [EN](categories/api-gateway/vllm-semantic-router.md) · [中](categories/api-gateway/vllm-semantic-router.zh.md) |
+| **Monid** | Open connector standard and engine for an "OpenRouter for agent tools": ~700 data and media vendor endpoints as declarative files with per-call usage metering — the `discover` routing, single key and pricing are hosted and closed; about six weeks old. | MIT | B (6/6) | [EN](categories/api-gateway/monid.md) · [中](categories/api-gateway/monid.zh.md) |
 
 ### geospatial
 

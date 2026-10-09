@@ -454,6 +454,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **TokenHub** | 治理优先的自托管 Go AI 网关：项目 key、配额、路由策略、审计和供应商账单核对——非常年轻（v0.9.x，建于 2026-06）且作者主导。 | Apache-2.0 | B（6/6） | [中](categories/api-gateway/tokenhub.zh.md) · [EN](categories/api-gateway/tokenhub.md) |
 | **Magpie (yetone)** | 给约 28 个 coding agent 用的菜单栏模型切换器，外加在 Anthropic 与 OpenAI 接口间翻译的本地网关，订阅登录也能当 provider——只有约一周历史，单人维护。 | MIT | C（5/6） | [中](categories/api-gateway/magpie-model-router.zh.md) · [EN](categories/api-gateway/magpie-model-router.md) |
 | **vLLM Semantic Router** | 挂在 Envoy ExtProc 上的决策层，用自带分类器算出的领域、难度、越狱、PII 信号，按 YAML 策略逐请求选模型；还没到 1.0（v0.4，建于 2025-08），密钥和限流仍要靠网关。 | Apache-2.0 | B（5/6） | [中](categories/api-gateway/vllm-semantic-router.zh.md) · [EN](categories/api-gateway/vllm-semantic-router.md) |
+| **Monid** | “工具版 OpenRouter”的开源连接器标准和引擎：约 700 个数据和媒体厂商端点写成声明式文件，自带按次用量计量——`discover` 路由、单一 key 和定价在闭源托管侧；仓库约六周大。 | MIT | B（6/6） | [中](categories/api-gateway/monid.zh.md) · [EN](categories/api-gateway/monid.md) |
 
 ### geospatial
 
