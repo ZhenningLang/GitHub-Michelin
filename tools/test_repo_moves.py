@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -107,8 +108,47 @@ class RepoMovesTest(unittest.TestCase):
         root = self.make_tree("acme/demo")
         argv = ["repo_moves.py", "--root", str(root)]
         with mock.patch.object(sys, "argv", argv), \
+             mock.patch.object(repo_moves, "prefetch", return_value={}), \
              mock.patch.object(repo_moves, "classify", side_effect=RuntimeError("gh: Server Error (HTTP 502)")):
             self.assertEqual(repo_moves.main(), 1)
+
+    def test_prefetch_batches_names_and_leaves_unresolved_ones_to_rest(self):
+        queries: list[str] = []
+
+        def gql(query: str) -> dict:
+            queries.append(query)
+            if "batch-two" in query:
+                raise RuntimeError("gh: HTTP 502")
+            data = {}
+            for alias, owner, repo in re.findall(r'(r\d+): repository\(owner: "([^"]+)", name: "([^"]+)"\)', query):
+                if repo != "gone":
+                    data[alias] = {"nameWithOwner": "react/react" if repo == "react" else f"{owner}/{repo}"}
+                else:
+                    data[alias] = None
+            return data
+
+        resolved = repo_moves.prefetch(["facebook/react", "acme/gone", "acme/demo", "acme/demo", "z/batch-two"],
+                                       gql, batch=3)
+        self.assertEqual(len(queries), 2)  # 4 unique names, batches of 3
+        self.assertEqual(resolved, {"facebook/react": "react/react", "acme/demo": "acme/demo"})
+
+    def test_main_uses_prefetched_names_and_rest_only_for_the_rest(self):
+        from unittest import mock
+        root = self.make_tree("facebook/react")
+        rest_calls: list[str] = []
+
+        def rest(path):
+            rest_calls.append(path)
+            return None
+
+        argv = ["repo_moves.py", "--root", str(root), "--json", str(root / "out.json")]
+        with mock.patch.object(sys, "argv", argv), \
+             mock.patch.object(repo_moves, "prefetch", return_value={"facebook/react": "react/react"}), \
+             mock.patch.object(repo_moves, "gh_api", side_effect=rest):
+            self.assertEqual(repo_moves.main(), 1)  # an unapplied move is pending work
+        self.assertEqual(rest_calls, [])
+        rows = json.loads((root / "out.json").read_text())
+        self.assertEqual([(r["status"], r["now"]) for r in rows], [("moved", "react/react")])
 
     def test_apply_rewrites_links_repo_field_and_override_key_but_not_lookalikes(self):
         body = ("See [React](https://github.com/facebook/react/blob/main/README.md) and "

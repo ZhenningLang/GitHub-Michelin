@@ -1,0 +1,37 @@
+name: repo-moves
+
+# Monthly: find indexed repos that were renamed, transferred or deleted upstream (a rename
+# keeps redirecting, so nothing else notices) and file them as one rolling issue.
+on:
+  schedule:
+    - cron: "23 2 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: repo-moves
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan every page (exit 1 just means findings; the issue step decides)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/repo_moves.py --json "$RUNNER_TEMP/moves.json" || true
+      - name: Create / update / close the rolling issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/repo_moves_issue.py "$RUNNER_TEMP/moves.json"
+          --repo "$GITHUB_REPOSITORY"
+          --run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

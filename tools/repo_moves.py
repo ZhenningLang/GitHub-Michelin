@@ -19,6 +19,12 @@ Statuses:
            a fork or a re-upload carries the same history (financial-api has exactly such
            a personal re-upload), so a `gone` page is never rewritten automatically.
 
+A full scan resolves the names in GraphQL batches of 100 first (GraphQL follows the same
+redirects, and a batch costs one point where per-repo REST calls would spend most of a
+`GITHUB_TOKEN`'s 1000 requests an hour); only names the batch did not resolve go through
+REST. `.github/workflows/repo-moves.yml` runs it monthly and files the result as an issue
+(`tools/repo_moves_issue.py`).
+
 `--apply --yes` for `moved` / `case` rewrites the `repo:` field and every
 `github.com/<old>` link (case-insensitive, whole path segment only, so `facebook/react`
 never touches `facebook/react-native`) in pages, flows, INDEX/README and the health
@@ -59,6 +65,45 @@ def gh_api(path: str) -> object:
             break
         time.sleep(5 * (attempt + 1))  # transient GitHub 5xx (a 502 ended a full scan, 2026-10-09)
     raise RuntimeError(proc.stderr.strip() or f"gh api {path} failed")
+
+
+def gh_graphql(query: str) -> dict:
+    """`gh api graphql` data. gh exits non-zero when any alias is NOT_FOUND but still prints
+    the partial data, so stdout is parsed before the exit code is looked at."""
+    proc = subprocess.run(["gh", "api", "graphql", "-f", f"query={query}"],
+                          capture_output=True, text=True, timeout=120)
+    try:
+        data = json.loads(proc.stdout or "null")
+    except json.JSONDecodeError:
+        data = None
+    if isinstance(data, dict) and isinstance(data.get("data"), dict):
+        return data["data"]
+    raise RuntimeError(proc.stderr.strip() or "gh api graphql failed")
+
+
+def prefetch(names: list[str], gql: Callable[[str], dict] = gh_graphql, batch: int = 100) -> dict[str, str]:
+    """Recorded name -> current `owner/name`, for every name GraphQL resolves.
+
+    Unresolved names (NOT_FOUND, any other error, a failed batch) are simply absent, so they
+    fall through to the REST path in `classify`, which owns the 404 / candidate logic."""
+    resolved: dict[str, str] = {}
+    unique = sorted(set(names))
+    for start in range(0, len(unique), batch):
+        chunk = unique[start:start + batch]
+        fields = []
+        for i, name in enumerate(chunk):
+            owner, repo = name.split("/", 1)
+            fields.append(f"r{i}: repository(owner: {json.dumps(owner)}, name: {json.dumps(repo)}) {{ nameWithOwner }}")
+        try:
+            data = gql("{ " + " ".join(fields) + " }")
+        except RuntimeError as exc:
+            print(f"note: GraphQL batch {start // batch} failed, falling back to REST: {exc}")
+            continue
+        for i, name in enumerate(chunk):
+            node = data.get(f"r{i}")
+            if isinstance(node, dict) and node.get("nameWithOwner"):
+                resolved[name] = node["nameWithOwner"]
+    return resolved
 
 
 def repo_from_page(text: str) -> str | None:
@@ -144,14 +189,22 @@ def main() -> int:
     if args.apply and not args.yes:
         sys.exit("refusing to write without --yes")
     root = Path(args.root).resolve()
+    pages = [(page, page.read_text(encoding="utf-8")) for page in discover(root, args.page)]
+    resolved = prefetch([n for _, text in pages if (n := repo_from_page(text))])
+
+    def gh(path: str) -> object:
+        name = path.removeprefix("repos/")
+        if name in resolved:
+            return {"full_name": resolved[name]}
+        return gh_api(path)
+
     report = []
-    for page in discover(root, args.page):
-        text = page.read_text(encoding="utf-8")
+    for page, text in pages:
         full_name = repo_from_page(text)
         if full_name is None:
             continue
         try:
-            status, now, candidates = classify(full_name, snapshot_sha(text))
+            status, now, candidates = classify(full_name, snapshot_sha(text), gh)
         except RuntimeError as exc:
             status, now, candidates = "error", None, []
             print(f"error {page.relative_to(root)} {full_name}: {exc}")
