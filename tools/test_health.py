@@ -739,38 +739,72 @@ class PackageOverrideTest(unittest.TestCase):
                              "registry_no_counts")
         self.assertIn("pypi.org:demo-py", str(ctx.exception))
 
-    def test_override_target_beyond_first_page_is_found_by_requery(self) -> None:
-        # facebook/react: the default lookup page stops at 100 entries and `react` is
-        # not among them; asking for per_page=500 returned 334, `react` included.
-        first_page = [self.WRONG_PICK]
-        full_list = [self.WRONG_PICK, self.RIGHT_PICK]
+    def test_lookup_reads_every_page_so_auto_selection_sees_past_entry_100(self) -> None:
+        # facebook/react: the default lookup page stops at 100 entries and `react` is not
+        # among them (334 in all, 2026-10-09). Pages of 1000 are read until a short one.
+        per = health.ECOSYSTE_LOOKUP_PER_PAGE
+        filler = [dict(self.WRONG_PICK, name=f"noise-{i}", downloads=0) for i in range(per)]
         seen: list[str] = []
 
         def dispatch(url, **kw):
             seen.append(url)
             if "packages/lookup" in url:
-                return (200, full_list if "per_page=1000" in url else first_page)
+                return (200, filler if url.endswith("&page=1") else [self.RIGHT_PICK])
+            return (404, None)
+        with self._overrides({}), no_install_signals(), \
+                mock.patch("health.http_get_json", side_effect=dispatch):
+            axis = health.axis_adoption(FakeRepo("library"))
+        self.assertEqual(axis.raw["canonical_package"], "demo-js")
+        lookups = [u for u in seen if "packages/lookup" in u]
+        self.assertEqual([u.rsplit("&", 2)[-2:] for u in lookups],
+                         [[f"per_page={per}", "page=1"], [f"per_page={per}", "page=2"]])
+
+    def test_override_target_beyond_first_page_is_found(self) -> None:
+        per = health.ECOSYSTE_LOOKUP_PER_PAGE
+        filler = [dict(self.WRONG_PICK, name=f"noise-{i}") for i in range(per)]
+
+        def dispatch(url, **kw):
+            if "packages/lookup" in url:
+                return (200, filler if url.endswith("&page=1") else [self.RIGHT_PICK])
             return (404, None)
         table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js", "reason": "t"}}
         with self._overrides(table), no_install_signals(), \
                 mock.patch("health.http_get_json", side_effect=dispatch):
             axis = health.axis_adoption(FakeRepo("library"))
         self.assertEqual(axis.raw["canonical_package"], "demo-js")
-        self.assertTrue(any("per_page=1000" in u for u in seen))
 
-    def test_requery_failure_is_lookup_failure_not_override_error(self) -> None:
+    def test_failed_later_page_fails_the_lookup_instead_of_selecting_from_a_partial_list(self) -> None:
+        per = health.ECOSYSTE_LOOKUP_PER_PAGE
+        filler = [dict(self.WRONG_PICK, name=f"noise-{i}") for i in range(per)]
+
         def dispatch(url, **kw):
             if "packages/lookup" in url:
-                return (503, None) if "per_page=1000" in url else (200, [self.WRONG_PICK])
+                return (200, filler) if url.endswith("&page=1") else (503, None)
             return (404, None)
         table = {"owner/demo": {"registry": "npmjs.org", "name": "demo-js", "reason": "t"}}
-        with self._overrides(table), no_install_signals(), \
+        for overrides in ({}, table):
+            with self.subTest(override=bool(overrides)), self._overrides(overrides), no_install_signals(), \
+                    mock.patch("health.http_get_json", side_effect=dispatch):
+                axis = health.axis_adoption(FakeRepo("library"))
+            self.assertEqual(axis.grade, "?")
+            self.assertEqual(axis.reason, "registry_lookup_failed")
+            self.assertIn("HTTP 503 on page 2", axis.evidence)
+
+    def test_lookup_past_the_page_cap_is_a_failed_lookup(self) -> None:
+        per = health.ECOSYSTE_LOOKUP_PER_PAGE
+        filler = [dict(self.WRONG_PICK, name=f"noise-{i}") for i in range(per)]
+        seen: list[str] = []
+
+        def dispatch(url, **kw):
+            seen.append(url)
+            return (200, filler) if "packages/lookup" in url else (404, None)
+        with self._overrides({}), no_install_signals(), \
                 mock.patch("health.http_get_json", side_effect=dispatch):
             axis = health.axis_adoption(FakeRepo("library"))
-        self.assertEqual(axis.grade, "?")
         self.assertEqual(axis.reason, "registry_lookup_failed")
+        self.assertEqual(sum("packages/lookup" in u for u in seen), health.ECOSYSTE_LOOKUP_MAX_PAGES)
 
-    def test_no_override_never_requeries(self) -> None:
+    def test_short_first_page_is_one_request(self) -> None:
         seen: list[str] = []
 
         def dispatch(url, **kw):
@@ -781,7 +815,7 @@ class PackageOverrideTest(unittest.TestCase):
         with self._overrides({}), no_install_signals(), \
                 mock.patch("health.http_get_json", side_effect=dispatch):
             health.axis_adoption(FakeRepo("library"))
-        self.assertFalse(any("per_page" in u for u in seen))
+        self.assertEqual(sum("packages/lookup" in u for u in seen), 1)
 
     def test_repo_without_override_keeps_automatic_selection(self) -> None:
         with self._overrides({}):
