@@ -1365,6 +1365,7 @@ python3 tools/quality_scan.py --fail-on-gated   # 确定性 triage 分类
 | --- | --- | --- | --- | --- |
 | **OpenPencil** | 需要打开已有的 Figma `.fig` 文件并对它做脚本化处理——查看结构、检查、转换、导出成 JSX——或者想要一个 local-first、AI 原生、没有服务器、没有账号、不上传的编辑器时用它。 | MIT | B（6/6） | [中](categories/design-editors/open-pencil.zh.md) · [EN](categories/design-editors/open-pencil.md) |
 | **Penpot** | 一个团队必须在你自己控制的服务器上编辑同一份设计文件——浏览器编辑器、实时多人协作、组件/变体、原型和 design token——而按席位租托管 SaaS 不可行时用它。 | MPL-2.0 | B（5/6） | [中](categories/design-editors/penpot.zh.md) · [EN](categories/design-editors/penpot.md) |
+| **VectorCraft** | 想要 Illustrator 的布局和快捷键又不想付订阅——在 Linux、FreeBSD 或浏览器里——打开 `.ai`/PDF/EPS/Affinity 文件，或者让 agent 通过它的 CLI/MCP 命令接口画图并导出矢量图时用它；项目才几天大，赶工期的活别用。 | MIT OR Apache-2.0 | C（5/6） | [中](categories/design-editors/vectorcraft.zh.md) · [EN](categories/design-editors/vectorcraft.md) |
 
 ### learning-resources
 

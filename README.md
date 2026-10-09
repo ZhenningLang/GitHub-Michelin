@@ -1383,6 +1383,7 @@ own licenses; the CC BY 4.0 grant covers only the original analysis here.
 | --- | --- | --- | --- | --- |
 | **OpenPencil** | Use it when you must open existing Figma `.fig` files and script them — inspect, lint, convert, export to JSX — or you want a local-first AI-native editor with no server, no account and no upload. | MIT | B (6/6) | [EN](categories/design-editors/open-pencil.md) · [中](categories/design-editors/open-pencil.zh.md) |
 | **Penpot** | Use it when a team must edit one design file on servers you control — browser editor, real-time multiplayer, components/variants, prototypes and design tokens — and per-seat hosted SaaS is off the table. | MPL-2.0 | B (5/6) | [EN](categories/design-editors/penpot.md) · [中](categories/design-editors/penpot.zh.md) |
+| **VectorCraft** | Use it when you want Illustrator's layout and shortcuts without the subscription — on Linux, FreeBSD or in a browser — to open `.ai`/PDF/EPS/Affinity files, or to let an agent draw and export vector art over its CLI/MCP command surface; days old, so not for deadline work. | MIT OR Apache-2.0 | C (5/6) | [EN](categories/design-editors/vectorcraft.md) · [中](categories/design-editors/vectorcraft.zh.md) |
 
 ### learning-resources
 

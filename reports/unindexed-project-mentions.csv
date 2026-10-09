@@ -513,7 +513,7 @@ Grafana + Prometheus,categories/dev-utilities/ops-infra/cockpit.md,,no
 Grafana Alloy,categories/observability/opentelemetry-collector.md,,no
 Grafana Tempo,categories/observability/jaeger.md,,no
 GraphicsMagick,categories/media-processing/image-processing/imagemagick.md,,no
-Graphite,categories/media-processing/image-processing/photocraft.md,,no
+Graphite,categories/design-editors/vectorcraft.md,,no
 GraphRAG (Microsoft),categories/rag-retrieval/code-intelligence/code-review-graph.md,,no
 Graphviz,categories/diagramming/INDEX.md,,no
 Graphviz / DOT,categories/diagramming/mermaid.md,,no
@@ -590,6 +590,7 @@ Immersive Translate official repo,categories/reading-tools/pair-translate.md,,no
 Infinity (michaelfeil/infinity),categories/llm-inference/serving-engines/sie.md,,no
 Infisical,categories/secrets-management/openbao.md,,no
 InfluxDB,categories/observability/prometheus.md,,no
+Inkscape,categories/design-editors/vectorcraft.md,,no
 Inngest (`inngest/inngest`),categories/workflow-orchestration/tanstack-workflow.md,,no
 InsightFace (deepinsight/insightface),categories/computer-vision/deepface.md,,no
 InsightFace / face_recognition / CompreFace / facenet-pytorch,categories/computer-vision/INDEX.md,,no

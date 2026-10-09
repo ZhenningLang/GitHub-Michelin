@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "VectorCraft does",
+    "zh": "VectorCraft 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the signed build for your OS",
+      "zh": "装上对应系统的签名安装包",
+      "code": "vectorcraft-<ver>-macos-universal.dmg · vectorcraft-<ver>-windows-x64.msi",
+      "component": {
+        "en": "desktop app",
+        "zh": "桌面应用"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Open the SVG, PDF or .ai file you were sent",
+      "zh": "打开别人发来的 SVG、PDF 或 .ai 文件"
+    },
+    {
+      "lane": "them",
+      "en": "Imports it as editable layers and paths, listing what did not come in",
+      "zh": "导入成可编辑的图层和路径，并列出没进来的部分",
+      "component": {
+        "en": "format importers",
+        "zh": "格式导入器"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Edit with the Pen, Pathfinder and Appearance panels you know",
+      "zh": "用熟悉的钢笔、路径查找器和外观面板编辑"
+    },
+    {
+      "lane": "them",
+      "en": "Runs each edit as an undoable command and renders off the UI thread",
+      "zh": "每次编辑都作为可撤销命令执行，在后台线程渲染",
+      "component": {
+        "en": "engine command registry",
+        "zh": "引擎命令注册表"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Save As or export",
+      "zh": "另存为或导出"
+    },
+    {
+      "lane": "them",
+      "en": "Writes SVG, PDF, EPS or PNG",
+      "zh": "写出 SVG、PDF、EPS 或 PNG",
+      "component": {
+        "en": "format exporters",
+        "zh": "格式导出器"
+      }
+    }
+  ],
+  "value": {
+    "en": "Illustrator-style editing of the files you receive, with no subscription and the same commands open to scripts",
+    "zh": "用 Illustrator 的方式编辑收到的文件，不用订阅，同一套命令还能给脚本调用"
+  },
+  "sources": [
+    "README.md Downloads: per-OS file names vectorcraft-<ver>-macos-universal.dmg, vectorcraft-<ver>-windows-x64.msi",
+    "README.md Why VectorCraft / Status: Illustrator layout and panels (Pen, Direct Selection, Pathfinder, Appearance), SVG/PDF/PDF-compatible .ai import and export, import warnings",
+    "AGENTS.md 'Everything is a command': user-visible behaviour is a command in crates/engine/src/cmd; README: multithreaded rendering off the UI thread",
+    "vectorcraft-cli 0.7.0 --help and `run --cmd document.formats` (run 2026-10-09): writable formats include svg/pdf/eps/png, .ai is read-only; headless run export of examples/ribbons.vectorcraft to PDF/SVG/PNG"
+  ]
+}
