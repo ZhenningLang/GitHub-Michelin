@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "them": {"en": "PdfCraft does", "zh": "PdfCraft 做的"},
+  "steps": [
+    {"lane": "you", "en": "Download the build for your OS from a GitHub release and install it", "zh": "从 GitHub release 下载对应系统的安装包并装上", "code": "pdfcraft-<ver>-windows-x64.msi · pdfcraft-<ver>-macos-universal.dmg","component": {"en": "pdfcraft desktop app", "zh": "pdfcraft 桌面应用"}},
+    {"lane": "you", "en": "Open a PDF and pick a tool: Organize pages, Combine files, a comment or a form field", "zh": "打开 PDF，选一个工具：整理页面、合并文件、加批注或填表单"},
+    {"lane": "them", "en": "Parses and repairs the file, decrypts it if protected, and renders pages in tiles", "zh": "解析并修复文件，受保护的先解密，再分块渲染页面", "component": {"en": "cos parser + hayro renderer", "zh": "cos 解析器 + hayro 渲染器"}},
+    {"lane": "them", "en": "Keeps every edit as an undoable step in memory, autosaving every minute", "zh": "每次修改都作为可撤销的一步留在内存里，每分钟自动保存", "component": {"en": "pdfcraft-engine", "zh": "pdfcraft-engine"}},
+    {"lane": "you", "en": "Save the document", "zh": "保存文档"},
+    {"lane": "them", "en": "Appends an incremental update atomically; original bytes and encryption stay as they were", "zh": "以原子写入追加一次增量更新，原有字节和加密方式保持不变"}
+  ],
+  "value": {"en": "Acrobat-style organize, comment, fill and protect on your own machine, with no account, subscription or upload", "zh": "在自己电脑上完成 Acrobat 式的整理、批注、填表和加密，不用账号、不用订阅、不用上传"},
+  "sources": [
+    "https://github.com/storytold/pdfcraft#downloads (release file names for Windows MSI, macOS DMG, Linux AppImage)",
+    "https://github.com/storytold/pdfcraft#organize-pages-like-cards-on-a-table (Organize pages, undo, incremental + atomic saves, autosave every minute)",
+    "https://github.com/storytold/pdfcraft#combine-and-split-without-losing-a-thing (Combine files, Extract, Split)",
+    "https://github.com/storytold/pdfcraft#how-its-built (crate table: pdfcraft-cos parsing/repair, pdfcraft-engine sessions/undo/saving)",
+    "https://github.com/storytold/pdfcraft/blob/main/CLAUDE.md (pdfcraft-render renders through hayro; bootstrap debt)"
+  ]
+}
