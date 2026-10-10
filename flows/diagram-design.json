@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "them": {
+    "en": "diagram-design does",
+    "zh": "diagram-design 做的"
+  },
+  "steps": [
+    {
+      "lane": "you",
+      "en": "Install the skill into your agent",
+      "zh": "把 skill 装进你的 agent",
+      "code": "npx skills add cathrynlavery/diagram-design",
+      "phase": {
+        "en": "Once per brand",
+        "zh": "每个品牌一次"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "On the first diagram in a project, sees the style guide is still default and stops to ask",
+      "zh": "项目里第一次出图时，发现样式表还是默认值，先停下来问你"
+    },
+    {
+      "lane": "you",
+      "en": "Point it at your site",
+      "zh": "把你的网站地址给它",
+      "code": "onboard diagram-design to https://yoursite.com"
+    },
+    {
+      "lane": "them",
+      "en": "Extracts palette and fonts, shows a diff, writes the tokens into its style guide",
+      "zh": "抽出配色和字体，给你看 diff，再把 token 写进样式表"
+    },
+    {
+      "lane": "you",
+      "en": "Ask for a diagram in plain words",
+      "zh": "用大白话要一张图",
+      "code": "Make me an architecture diagram of my app",
+      "phase": {
+        "en": "Every diagram",
+        "zh": "每张图"
+      }
+    },
+    {
+      "lane": "them",
+      "en": "States type, size and cuts, then writes one self-contained HTML file with inline SVG in your brand",
+      "zh": "先报图型、尺寸和删减，再写出套好品牌、内嵌 SVG 的单个 HTML"
+    }
+  ],
+  "value": {
+    "en": "A publishable diagram that matches your site, without a Figma session or the generic rounded-box look",
+    "zh": "不用开 Figma 磨半小时，也不再是千篇一律的圆角框：拿到就能发、和你网站一个调性的图"
+  },
+  "sources": [
+    "https://github.com/cathrynlavery/diagram-design README.md 'Install' (npx skills add cathrynlavery/diagram-design)",
+    "https://github.com/cathrynlavery/diagram-design README.md 'Onboarding' flow block and 'First-run gate' (onboard diagram-design to https://yoursite.com)",
+    "https://github.com/cathrynlavery/diagram-design README.md opening prompts (Make me an architecture diagram of my app: frontend, backend, database, Redis cache.)",
+    "https://github.com/cathrynlavery/diagram-design README.md 'It's working if…' (agent states type, pattern, size and planned cuts, then renders one .html)",
+    "local run 2026-10-10 in a shallow clone: python3 skills/diagram-design/scripts/self_check.py assets/example-architecture-delta.html -> OK"
+  ]
+}
