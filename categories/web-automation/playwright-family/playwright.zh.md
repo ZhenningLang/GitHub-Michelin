@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-10-08T08:28:17Z
+  computed_at: 2026-10-10T02:33:14Z
   overall: A
   overall_score: 4.0
   scored_axes: 5
@@ -41,23 +41,23 @@ health:
         registry: npmjs.org
         canonical_package: playwright
         dependent_repos_count: 9850
-        downloads_last_month: 406318954
+        downloads_last_month: 443017639
         graph_tier: B
         volume_tier: A
-        cross_check_divergence: 1.03
+        cross_check_divergence: 1.05
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2519
+        repo_age_days: 2520
         last_commit_age_days: 0
         cohort: library
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 96
-        top1_share: 0.253
-        top3_share: 0.669
+        active_maintainers_12mo: 97
+        top1_share: 0.257
+        top3_share: 0.67
         window_source: stats_contributors
         carve_out: null
     risk_license:

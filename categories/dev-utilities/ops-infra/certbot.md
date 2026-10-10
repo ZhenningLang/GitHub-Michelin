@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T05:59:27Z
+  computed_at: 2026-10-10T02:36:55Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 18
-        active_weeks_13: 10
+        last_commit_age_days: 2
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 60.0
-        qualifying_issues: 13
+        median_ttfr_hours: 46.1
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: certbot-dns-cloudflare
-        dependent_repos_count: 41
-        downloads_last_month: 476384
-        graph_tier: D
+        canonical_package: certbot
+        dependent_repos_count: 470
+        downloads_last_month: 451623
+        graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 5132
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 6070
         homebrew_tier: A
-        release_downloads: 410837
+        release_downloads: 413800
         release_assets: 487
         release_tier: C
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4338
-        last_commit_age_days: 18
+        repo_age_days: 4350
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 22
-        top1_share: 0.364
-        top3_share: 0.83
+        active_maintainers_12mo: 23
+        top1_share: 0.341
+        top3_share: 0.821
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -149,7 +149,7 @@ Certbot automates the whole ACME dance (the certificate-authority protocol stand
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 60.0 hours across 13 qualifying issues/PRs (scorer, 2026-09-28).
+- **Responsiveness**: Grade A — median first-response time 46.1 hours across 12 qualifying issues/PRs (scorer, 2026-10-10).
 - **Maintenance (2026-09).** Last pushed 2026-09; v5.8.0 shipped 2026-09-01 after v5.7.0 (2026-07-21) — a steady ~monthly-to-bimonthly minor cadence, **active**, not coasting. Not archived. [推断]
 - **Governance / bus factor.** Owned by an **Organization** and developed in the open by EFF, now under ISRG (Let's Encrypt's nonprofit) stewardship — **nonprofit, team/foundation-backed governance, low bus-factor**. This is the reference client for the CA that issues most of the web's free certs, so it has institutional reasons to stay maintained. [推断]
 - **Backing & Lindy.** Created 2014-11 (~12 years) and **still actively shipping** ⇒ a **strong Lindy** signal: a long-lived, battle-proven client, not a hyped newcomer. The nonprofit backing (EFF/ISRG) further lowers abandonment risk versus a single-vendor commercial tool. [推断]

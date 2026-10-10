@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:04:40Z
+  computed_at: 2026-10-10T02:38:29Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 20.5
-        qualifying_issues: 41
+        median_ttfr_hours: 23.1
+        qualifying_issues: 47
         band: default
         window_offset_days: 1
         source: issue
@@ -44,32 +44,32 @@ health:
     adoption:
       grade: A
       raw:
-        registry: nuget.org
-        canonical_package: selenium.webdriver
-        dependent_repos_count: 0
-        downloads_last_month: 187243102
-        graph_tier: E
+        registry: pypi.org
+        canonical_package: selenium
+        dependent_repos_count: 62210
+        downloads_last_month: 27604052
+        graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
-        homebrew_installs_90d: 950
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 970
         homebrew_tier: B
-        release_downloads: 33608657
-        release_assets: 684
+        release_downloads: 33925641
+        release_assets: 688
         release_tier: A
         signal_basis: homebrew+releases
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5004
+        repo_age_days: 5016
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 39
-        top1_share: 0.361
-        top3_share: 0.609
+        active_maintainers_12mo: 40
+        top1_share: 0.378
+        top3_share: 0.618
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,11 +154,11 @@ Selenium has two halves. On your side, a small language binding exposes one `Web
 
 ## Health & viability
 
-- **Responsiveness**: Grade A — median first-response time 20.5 hours across 41 qualifying issues/PRs (scorer, 2026-09-28).
+- **Responsiveness**: Grade A — median first-response time 23.1 hours across 47 qualifying issues/PRs (scorer, 2026-10-10).
 - **Maintenance (2026-09)** — pushed 2026-09-28 and not archived, shipping the v4.x line continuously (v4.45.0 in June → v4.49.0 on 2026-09-09, GitHub releases API); a project tracking evolving browser/WebDriver targets, i.e. **active**, not coasting.
 - **Governance & bus factor** — lives under the **SeleniumHQ** org (`Organization`-owned) and is hosted by the **Software Freedom Conservancy** non-profit (docs site footer and contact address `selenium@sfconservancy.org`, 2026-09), a long-standing community/multi-contributor project rather than one person or a single vendor's product; the W3C-standard WebDriver protocol it anchors further de-risks any single-owner dependency.
 - **Age & Lindy** — created 2013-01-14, so ~13.7 years old (2026-09) and still actively shipping: a textbook **strong-Lindy** bet — long-lived *and* still-active, with deep ecosystem inertia (cloud grids, CI integrations, years of Q&A) that makes it the safe default. The docs banner even headlines the joint Selenium + Appium 2026 conference — the community event layer is alive. [推断]
-- **Adoption & ecosystem** — the dependent graph still reads E (0 dependent repos recorded), but that metric undercounts a multi-language WebDriver ecosystem whose usage is spread across bindings, browser drivers, hosted grids, and CI integrations. Download volume says the opposite and now carries the axis to A: ~187M NuGet downloads a month. Human review should treat Selenium as deeply entrenched; the package graph is the wrong instrument here. [推断]
+- **Adoption & ecosystem** — Selenium has one binding per language and no canonical package, so the scorer is pinned to the largest, the Python `selenium` package: 27,604,052 downloads in the last month and 62,210 dependent repos (2026-10-10), A on both. The npm `selenium-webdriver` binding alone has 622,782 dependent repos, so any single binding undercounts the whole ecosystem.
 - **Risk flags** — Apache-2.0, no relicense/open-core history seen; the practical risk is **flakiness without disciplined waits** and **Grid ops burden**, not project viability.
 
 ## Caveats (unverified)

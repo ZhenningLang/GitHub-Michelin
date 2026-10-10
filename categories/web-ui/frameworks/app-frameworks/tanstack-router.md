@@ -17,7 +17,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T13:26:38Z
+  computed_at: 2026-10-10T02:35:36Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -30,14 +30,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 6.7
-        qualifying_issues: 32
+        median_ttfr_hours: 6.6
+        qualifying_issues: 35
         band: default
         window_offset_days: 0
         source: issue
@@ -46,25 +46,25 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@tanstack/router-core"
-        dependent_repos_count: 16
-        downloads_last_month: 85508552
+        canonical_package: "@tanstack/react-router"
+        dependent_repos_count: 28
+        downloads_last_month: 92969241
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.07
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2814
-        last_commit_age_days: 1
+        repo_age_days: 2826
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.248
-        top3_share: 0.665
+        active_maintainers_12mo: 38
+        top1_share: 0.244
+        top3_share: 0.668
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -152,12 +152,12 @@ You describe routes as files: `posts.$postId.tsx` under `src/routes` declares `/
 - **Maintenance — very active (verified 2026-09-28).** `pushed_at` 2026-09-28T09:38:57Z; release tag `release-2026-09-27-1408` with per-package tags the same day; `@tanstack/react-router` 1.170.40 published 2026-09-27. Cadence is changeset-driven, near-daily, 943 stable releases since 1.0.0 (2023-12-23).
 - **Governance / bus factor — founder-led org with a small deep core.** The repo belongs to the `TanStack` organization; all-time contributions concentrate on `tannerlinsley` (3,271) and `schiller-manuel` (823), then a band around 300 (SeanCassiere, Sheraff, birkskyum). Roadmap influence sits with TanStack's founder; `CONTRIBUTING.md` requires maintainer sign-off for API changes.
 - **Backing & Lindy — split signal, be precise about which "age" counts.** The repo was created 2019-01-14 (~7.7 years), but the current v1 line of the router dates from 2023-12 — a rewrite, not the same codebase as the 2019 `react-location` era [推断: version history read from npm (first stable 1.0.0 2023-12-23) and the repo's own release tags; the rename lineage is widely described but was not traced commit-by-commit]. Backing is bootstrapped: docs state TanStack is "100% open source… TanStack LLC… privately held, 100% bootstrapped and self-funded", funded via GitHub Sponsors and tanstack.com partners (README shows CodeRabbit, Cloudflare, Netlify).
-- **Adoption — large and still climbing.** The health scorer resolves the registry signal to `@tanstack/router-core` at **85,508,552 downloads in the last month**; my own npm query put `@tanstack/react-router` at 81,399,975 in the 2026-08-29..2026-09-27 window [未验证: registry counts include CI mirrors/caching, so treat both as upper bounds]. GitHub shows ~15.1k stars / ~1.9k forks — an order of magnitude below Next.js; strong, not dominant.
+- **Adoption — large and still climbing.** The health scorer reads `@tanstack/react-router`, the package applications install: **92,969,241 downloads in the last month** (2026-10-10) [未验证: registry counts include CI mirrors/caching, so treat this as an upper bound]. GitHub shows ~15.1k stars / ~1.9k forks — an order of magnitude below Next.js; strong, not dominant.
 - **Risk flags — Start is not v1 yet, churn is real, and the comparison is self-graded.** Start is Release Candidate per its docs (2026-09-28); near-daily micro releases over a large API surface mean upgrades are never "done"; the repo's `comparison.md` is maintainer-written, so read it as their claims; the README opens with a `static.scarf.sh` tracking pixel (render-time analytics, not a library runtime dependency). GitHub's 686 open-issue count [推断: GitHub's counter includes open pull requests, so it overstates open bugs] is a triage-lag question, not an abandonment signal, given the same-day release activity.
 
 ## Caveats (unverified)
 
-- `[未验证]` **npm download figures (81.4M/94-day-window month for the router package)** are registry-reported and include CI mirrors and cached installs; no independent install-rate source was checked.
+- `[未验证]` **npm download figures (~93M a month for the router package)** are registry-reported and include CI mirrors and cached installs; no independent install-rate source was checked.
 - `[未验证]` **The lineage claim that today's router is a rewrite of the 2019 `react-location` repo** rests on npm version history and repo tags, not on a traced rename record.
 - `[推断]` **686 "open issues" overstates open bugs** because GitHub's `open_issues_count` includes open PRs; the responsiveness grade from `health.py` is the better signal.
 - `[未验证]` **Runtime route manipulation / parallel-route support** is read from the repo's own `docs/router/comparison.md` (dated 2026-09-28); no code-level confirmation was attempted.

@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T05:59:27Z
+  computed_at: 2026-10-10T02:36:55Z
   overall: A
   overall_score: 3.8
   scored_axes: 5
@@ -29,14 +29,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 18
-        active_weeks_13: 10
+        last_commit_age_days: 2
+        active_weeks_13: 11
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 60.0
-        qualifying_issues: 13
+        median_ttfr_hours: 46.1
+        qualifying_issues: 12
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -45,15 +45,15 @@ health:
       grade: A
       raw:
         registry: pypi.org
-        canonical_package: certbot-dns-cloudflare
-        dependent_repos_count: 41
-        downloads_last_month: 476384
-        graph_tier: D
+        canonical_package: certbot
+        dependent_repos_count: 470
+        downloads_last_month: 451623
+        graph_tier: C
         volume_tier: B
-        cross_check_divergence: 1.02
-        homebrew_installs_90d: 5132
+        cross_check_divergence: 1.0
+        homebrew_installs_90d: 6070
         homebrew_tier: A
-        release_downloads: 410837
+        release_downloads: 413800
         release_assets: 487
         release_tier: C
         signal_basis: homebrew+releases
@@ -61,15 +61,15 @@ health:
     longevity:
       grade: A
       raw:
-        repo_age_days: 4338
-        last_commit_age_days: 18
+        repo_age_days: 4350
+        last_commit_age_days: 2
         cohort: tool
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 22
-        top1_share: 0.364
-        top3_share: 0.83
+        active_maintainers_12mo: 23
+        top1_share: 0.341
+        top3_share: 0.821
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -149,7 +149,7 @@ Certbot 把整套 ACME 流程（证书颁发机构协议，标准化为 RFC 8555
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 60.0 小时，基于 13 个 qualifying issues/PRs（评分器，2026-09-28）。
+- **响应速度**：Grade A——中位首次响应时间 46.1 小时，基于 12 个 qualifying issues/PRs（评分器，2026-10-10）。
 - **维护（2026-09）。** 最后 push 于 2026-09；v5.8.0 于 2026-09-01 发布，前作 v5.7.0 在 2026-07-21——大致每月到两月一个小版本的稳定节奏——处于**活跃**而非吃老本。未归档。[推断]
 - **治理 / bus factor。** 归属一个 **Organization**，由 EFF 公开开发，现由 ISRG（Let's Encrypt 的非营利机构）托管——**非营利、团队/基金会背书的治理，bus-factor 低**。它是签发了网上大部分免费证书的那个 CA 的参考客户端，因此有制度性的理由保持维护。[推断]
 - **背书与 Lindy。** 2014-11 创建（约 12 年）且**仍在活跃发布**⇒ **强 Lindy** 信号：一个久经实战、长寿的客户端，而非被炒作的新秀。非营利背书（EFF/ISRG）相比单一厂商的商业工具进一步降低了弃坑风险。[推断]
