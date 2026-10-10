@@ -6,18 +6,18 @@ category: engineering
 tags: [yagni, over-engineering, behavior-ruleset, agent-skill, multi-harness, token-cost]
 language: JavaScript
 license: MIT
-maturity: v4.10.0, active, ~147k stars (as of 2026-09)
-last_verified: 2026-09-28
+maturity: v5.1.0 (Ponytail 5 rewrite, 2026-10-08), active, ~160k stars (as of 2026-10)
+last_verified: 2026-10-10
 type: skill-pack
 homepage: https://ponytail.dev
 upstream:
-  pushed_at: 2026-09-14T14:34:56Z
+  pushed_at: 2026-10-08T16:19:55Z
   default_branch: main
-  default_branch_sha: e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156
+  default_branch_sha: 9cc65d03aa2da1db7121b912d03596409ee340b8
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:09:30Z
+  computed_at: 2026-10-10T02:36:11Z
   overall: B
   overall_score: 3.0
   scored_axes: 5
@@ -30,7 +30,7 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 14
+        last_commit_age_days: 1
         active_weeks_13: 7
         carve_out: null
     responsiveness:
@@ -42,7 +42,7 @@ health:
         registry: npmjs.org
         canonical_package: "@dietrichgebert/ponytail"
         dependent_repos_count: 0
-        downloads_last_month: 57036
+        downloads_last_month: 80139
         graph_tier: E
         volume_tier: C
         cross_check_divergence: null
@@ -50,15 +50,15 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 108
-        last_commit_age_days: 14
+        repo_age_days: 120
+        last_commit_age_days: 1
         cohort: skill-pack
     governance:
       grade: B
       raw:
-        active_maintainers_12mo: 72
-        top1_share: 0.524
-        top3_share: 0.601
+        active_maintainers_12mo: 98
+        top1_share: 0.497
+        top3_share: 0.568
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -74,19 +74,25 @@ health:
 
 # Ponytail
 
-You ask your coding agent for a date picker and it returns flatpickr, a wrapper component, and a stylesheet. Ponytail installs the reflex of the laziest senior dev you've ever met as an always-on ruleset: before writing code the agent must walk a seven-rung ladder (should this exist? does it already? stdlib? native feature?) and hand back the smallest diff that works, with validation, security, and error handling explicitly off the chopping block.
+You ask your coding agent for a date picker and it installs a library or hand-builds a 335-line calendar, when the repo already had an `Input` component and every browser ships `type="date"`. Ponytail installs the reflex of the laziest senior dev you've ever met as an always-on ruleset. Before writing, the agent lists everything the change must reach. It then takes the first rung of a short ladder that works (skip it, reuse it, stdlib, installed dependency, one line), and ends each reply with what it skipped or did not check. Validation, security and error handling are never on the chopping block.
 
 ![Ponytail — health radar](../../../assets/health/ponytail.svg)
 
 ## When to use
 
-You drive Claude Code, Codex, Copilot CLI, or one of the ~20 other hosts ponytail ships adapters for, and the failure you keep hitting is bloat, not process: the agent adds a dependency where the standard library had it, writes a cache class where `@lru_cache` would do, and leaves a 400-line diff for a 20-line task. You reach for Ponytail when you want a behavior overlay that only *subtracts* code — installable with two slash commands, with intensity levels (`lite/full/ultra/off`), subagent injection you can scope by regex, and a `/ponytail-review` command that hands you a delete-list for an over-engineered diff.
+You drive Claude Code, Codex, Copilot CLI, or one of the ~20 other hosts Ponytail ships adapters for. The failure you keep hitting is bloat, not process: the agent adds a dependency where the standard library had it, writes a cache class where `@lru_cache` would do, and leaves a 400-line diff for a 20-line task. Reach for Ponytail when you want a behavior overlay that writes the smallest *complete* change. It installs with two slash commands and has intensity levels (`lite/full/ultra/off`). Since 5.0 (2026-10-08) it adds `/ponytail-review` (a full review of the current change: bugs, security, load, missing tests, speed, what to cut) and `/ponytail-audit` (the same checks over the whole repo, ranked).
 
-The reason to install a pack instead of writing your own "YAGNI, write one-liners" line: in the author's agentic benchmark the bare prompt is erratic (near or above baseline on several tasks) and was the only arm that dropped a safety guard, while the packaged ruleset landed every run at a claimed 100% safety floor [未验证：作者自建基准，未独立复现，见 benchmarks/results/2026-06-18-agentic.md]. The pack also keeps the discipline coherent across ~20 host adapters via a shared instruction builder, where your hand-rolled rules would drift per editor.
+Why install a pack instead of writing your own "YAGNI, write one-liners" line? In the author's June benchmark the bare prompt was erratic and was the only arm that dropped a safety guard [未验证：作者自建基准，未独立复现，见 benchmarks/results/2026-06-18-agentic.md]. The pack also keeps one ruleset aligned across ~20 host adapters with a CI check, where hand-rolled rules drift per editor.
 
 ## How it works
 
-You install it once — as a plugin (Claude Code, Codex, Copilot CLI, Grok, Devin, Hermes…) or by copying `AGENTS.md` / the matching rules file on instruction-only hosts (Cursor rules, Windsurf, Cline, Copilot Chat, Aider, Kiro, Zed, Qoder, Amp, Jules). What the project then does for you: its lifecycle hooks — small Node scripts the host runs at session start, on each submitted prompt, and when a subagent spawns — inject the ruleset into the context, track `/ponytail lite|full|ultra|off` level switches (and re-inject on change), and can scope subagent injection via the `PONYTAIL_SUBAGENT_MATCHER` regex. The ruleset itself is prose, not enforcement: the seven-rung ladder (YAGNI → reuse existing code → stdlib → native platform feature → already-installed dependency → one line → minimum that works), run *after* the agent has read the code it touches, plus explicit carve-outs (trust-boundary validation, data-loss error handling, security, accessibility, anything requested), a rule that non-trivial logic leaves one runnable check behind, and a `ponytail:` comment convention that marks deliberate shortcuts with their ceiling and upgrade path. Five companion skills (`/ponytail-review`, `-audit`, `-debt`, `-gain`, `-help`) reuse the same text; an optional MCP server (`ponytail-mcp`) serves the identical ruleset for hosts whose only injection point is the prompt menu. It changes what the agent writes; it does not gate what the agent may ship.
+You install it once. Hosts with plugins (Claude Code, Codex, Copilot CLI, OpenCode, Gemini, Grok, Devin, Hermes…) get the plugin. Instruction-only hosts (Cursor rules, Windsurf, Cline, Copilot Chat, Kiro…) get a copy of `AGENTS.md` or the matching rules file. Lifecycle hooks then do the work: small Node scripts the host runs at session start, on each prompt, and when a subagent spawns. They inject the ruleset, track `/ponytail lite|full|ultra|off` switches, and scope subagent injection when you set the `PONYTAIL_SUBAGENT_MATCHER` regex.
+
+New in 5.0, the session-start hook also appends a **codebase map**: the top-level functions, classes and exports of the repo's source files, one line per folder, within a 2,000-character budget. It is built from `git ls-files` plus a per-language regex, with no model involved. The point is that "reuse first" costs no search. `PONYTAIL_MAP=0` turns it off.
+
+The ruleset itself is prose, not enforcement. The agent first reads the code and lists every caller, test, fixture and config the change must reach. Then it takes the first option that fully works: skip it, reuse what the codebase has, stdlib or platform feature, an installed dependency, one readable line, else the minimum. It keeps explicit carve-outs: trust-boundary validation, data-loss error handling, security, accessibility, and anything the user asked for. New non-trivial logic leaves one small test or assert. A known shortcut gets a `shortcut: <limit>, <when to upgrade>` comment; this neutral marker replaced the branded `ponytail:` in 5.1. Every reply ends with what was skipped and any risk.
+
+`/ponytail-debt` harvests those comments into a ledger. It changes what the agent writes; it does not gate what the agent may ship.
 
 ![ponytail — backbone user story](../../../assets/flow/ponytail.svg)
 
@@ -96,48 +102,52 @@ You install it once — as a plugin (Claude Code, Codex, Copilot CLI, Grok, Devi
 
 1. **You**: Add ponytail's plugin marketplace — `/plugin marketplace add DietrichGebert/ponytail`
 2. **You**: Install the plugin — as a second, separate prompt — `/plugin install ponytail@ponytail`
-3. **Ponytail**: Hooks inject the ruleset at session start and into every spawned subagent — component: `lifecycle hooks`
-4. **You**: Ask for the feature exactly as you always would — `Add a cache for these API responses.`
-5. **Ponytail**: Before writing code it stops at the first rung that holds: exist? reuse? stdlib? native? one line? — component: `seven-rung ladder`
-6. **Ponytail**: Hands back the minimal diff: deliberate corner-cuts marked, one runnable check left behind — `# ponytail: global lock, per-account locks if throughput matters`
+3. **Ponytail**: At session start, hooks inject the ruleset and a map of the repo's existing code; subagents get it too — component: `lifecycle hooks + codebase map`
+4. **You**: Ask for the feature exactly as you always would — `Add a date picker to the frontend.`
+5. **Ponytail**: Lists the callers, tests and config the change must reach, then takes the first rung that works — component: `smallest complete change`
+6. **Ponytail**: Hands back the minimal diff, a test for real logic, and a closing line on what it skipped — `shortcut: <the limit>, <when to upgrade>`
 
-**Value**: You stop reviewing 400-line diffs for code the task never asked for — ~54% less code on the author's agentic benchmark, safety guards kept
+**Value**: You stop reviewing 300-line diffs nobody asked for: ~53% less code on the author's Opus 5.5 benchmark, tests on 98% of logic that needs one
 
 </details>
 <!-- flow-steps:end -->
 
+<!-- flow-steps:begin -->
+<!-- flow-steps:end -->
+
 ## When NOT to use
 
-- **You want the agent to follow a whole development process** (brainstorm → plan → TDD → verify), not just write less: use [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) instead — Ponytail installs no workflow, no phases, no subagent pipeline; it only bends what counts as "done code".
-- **Your pain is the agent's verbosity, not its volume of code**: pair it with or use [caveman](caveman.md) or [i-have-adhd](i-have-adhd.md) — Ponytail explicitly "governs what you build, not how you talk", and the author's own benchmark shows the terse-prose arm (caveman) cut only −20% LOC and actually *raised* tokens/cost/time on feature tasks.
-- **You are on OpenCode 2**: as of 2026-09-28 the plugin implements only the V1 plugin API and silently does nothing on V2 (open issue #863) — copy `AGENTS.md` into your project for instruction-tier behavior, or wait for the V2 entrypoint.
-- **You need a deterministic guarantee that over-engineered code won't ship**: this is context-injected persuasion; compliance is model-dependent, and there is no lint-style hard gate — if you need enforcement with evidence, put a line-level CI reviewer such as [Open Code Review](../../ai-code-review/open-code-review.md) in front of the merge, on top of or instead of Ponytail.
-- **Cost-sensitivity on deliberative reasoning models**: the README itself warns a terse reasoning model that spends thinking tokens weighing each ladder rung can go the *other* way on cost (it names GPT-5.5) [未验证：作者自述，未复现] — if measured cost matters, run your own comparison before making it always-on, and use `lite` (suggest-only) rather than `full`/`ultra`.
-- **Your tasks are already minimal** (CRUD over an existing template): the author's benchmark shows arms converging on irreducible code, so the overlay buys ~0 there while still occupying context every turn — an instruction-only `AGENTS.md` copy, or nothing, is honest.
+- **You want the agent to follow a whole development process** (brainstorm → plan → TDD → verify), not just write less: use [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) or [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) instead. Ponytail installs no workflow, no phases and no subagent pipeline; it only bends what counts as "done code".
+- **Your pain is the agent's verbosity, not its volume of code**: pair it with, or use, [caveman](caveman.md) or [i-have-adhd](i-have-adhd.md). Ponytail governs what gets built. In the author's June benchmark the terse-prose arm (caveman) cut only −20% LOC and *raised* tokens and cost on feature tasks.
+- **You open repos you don't trust, or work from slow or huge filesystems, with the hook plugin**: set `PONYTAIL_MAP=0`. The 5.0 codebase map copies names straight out of the opened repo into hidden session context. A crafted export list or folder name reaches the model as if it were plugin instructions, and a tracked symlink to `/dev/zero` hangs the hook until timeout (issue #1071). On a slow mount the map can blow the 5-second SessionStart timeout before any rules are emitted (#1079). Both were open on 2026-10-10.
+- **Your project shell pins Node below 15** (an old `.nvmrc` in a monorepo): the 5.1 hook launchers call `replaceAll` and fail on every run, so the rules silently stop reaching the model (#1072, open 2026-10-10). Use the `AGENTS.md` copy instead of the plugin until that is fixed.
+- **You need a deterministic guarantee that bloated or unsafe code won't ship**: this is context-injected persuasion, and compliance is model-dependent. `/ponytail-review` is a model-run review you call by hand, not a merge gate. For enforcement with evidence, put a line-level CI reviewer such as [Open Code Review](../../ai-code-review/open-code-review.md) in front of the merge.
+- **Your host or model is not Claude Code + Opus**: the v5 numbers come from that one combination. An earlier README warned that a deliberative reasoning model can spend *more* thinking tokens weighing each rung (it named GPT-5.5) [未验证：作者自述，未复现]. If cost matters, measure on your own stack first, and start with `lite`.
+- **Your tasks are already minimal** (CRUD over an existing template): in the author's per-task table the arms converge on irreducible code (e.g. 9 / 9 / 9 lines on `reuse-money`). The overlay buys little there while occupying context every turn.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [caveman](caveman.md) | ✅ | Pair rather than pick: caveman shrinks what the agent says, Ponytail shrinks what it writes — and if you can fix only one axis first, fix the code, because their shared benchmark shows terse prose alone cut little code and raised token spend (+7%) and cost (+3%) on feature tasks. | Stacking two always-on overlays costs context each turn; caveman's optional proxy layer is BSL-1.1 source-available while Ponytail is MIT end to end. |
-| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | When the agent's failure is process — skipped plans, unverified "done" — pick Superpowers; when the failure is bloat and your process already works, pick Ponytail, which subtracts code without taking over how you work. | Superpowers installs a full methodology (commands, subagents, worktrees) you adopt wholesale; Ponytail installs one behavioral rule with an off-switch and a measured scoreboard. |
-| [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) | ✅ | Pick ECC when you want a batteries-included Claude Code kit (agents, hooks, memory, security scan) as the platform; pick Ponytail when you want to change exactly one failure mode of a working setup — over-engineering — with intensity you can dial. | ECC grows your installed surface and you own the integration; Ponytail stays small but its benefit ceiling is code size and cost, per its own benchmark ("huge where there's bloat to cut, nothing where there isn't"). |
-| A bare "write one-liners / YAGNI" line in your AGENTS.md | not a repo | Copying one sentence is free and Ponytail's README admits the honest claim is smaller than the marketing one; the pack earns its install because the packaged ladder is consistent every run and keeps the named safety carve-outs, while the bare prompt arm in the author's benchmark was erratic and the only arm to drop a guard. | Zero install and zero always-on injection vs a plugin, hooks that need `node` on PATH, and prose you hand-maintain instead of the versioned ruleset. |
+| [caveman](caveman.md) | ✅ | Pair rather than pick: caveman shrinks what the agent says, Ponytail shrinks what it writes. If you can fix only one first, fix the code: their shared June benchmark shows terse prose alone cut little code and raised token spend (+7%) and cost (+3%) on feature tasks. | Stacking two always-on overlays costs context each turn. Caveman's optional proxy layer is BSL-1.1 source-available; Ponytail is MIT end to end. |
+| [Superpowers](../../agent-dev-methodology/coding-agent-harnesses/superpowers.md) | ✅ | When the agent's failure is process (skipped plans, unverified "done"), pick Superpowers. When the failure is bloat and your process already works, pick Ponytail, which trims code without taking over how you work. | Superpowers installs a full methodology (commands, subagents, worktrees) that you adopt wholesale. Ponytail installs one behavioral rule with an off-switch and a measured scoreboard. |
+| [ECC](../../agent-dev-methodology/coding-agent-harnesses/ecc.md) | ✅ | Pick ECC when you want a batteries-included Claude Code kit (agents, hooks, memory, security scan) as the platform. Pick Ponytail when you want to change exactly one failure mode of a working setup, over-engineering, with intensity you can dial. | ECC grows your installed surface and you own the integration. Ponytail stays small, but its benefit ceiling is code size and cost; per-task gains vanish where there is nothing to cut. |
+| A bare "write one-liners / YAGNI" line in your AGENTS.md | not a repo | Copying one sentence is free, and the v5 `AGENTS.md` is only ~30 lines you could paste yourself. The plugin earns its install with the codebase map, level switching, subagent injection and the review/audit commands. In the June benchmark the bare prompt was erratic and the only arm to drop a guard; the v5 run had no bare-prompt arm. | Zero install, zero hooks and no repo text in hidden context, vs plugin conveniences that need `node` ≥15 on PATH and a ruleset you get versioned instead of hand-maintained. |
 
 ## Health & viability
 
-- **Maintenance** (verified 2026-09-28 via GitHub API): latest release v4.10.0 on 2026-09-14, same day as the last push; ~10 releases from 2026-06-12 to 2026-09-14, pace slowing versus the June sprint. 310 open issues; earlier hot issues (#126, #65, #97) were engaged and mostly closed, so responsiveness exists but backlog is large for a 3.5-month-old repo.
-- **Governance / bus factor**: single personal account (owner type `User`); the top-15 contributor list shows the author at ~114 of ~171 visible contributions [推断：按 contributors API 前 15 名计算，未遍历全部提交], remainder drive-by PRs. No org, no GOVERNANCE/CODEOWNERS/CONTRIBUTING files in the tree; CI does exist (test.yml, publish.yml) with a script that keeps the ~20 rule copies aligned — a real drift control for a ruleset this wide.
-- **Backing & longevity**: created 2026-06-12 — too young for any Lindy credit. Funded via GitHub Sponsors plus one visible sponsor (GreenPT logo in README), and the README carries a ponytail.dev waitlist banner reading "Something's coming" [推断：由横幅与域名推断，将出商业产品], so open-core/relicense risk is watch-listed, not observed. MIT license file confirmed by reading `LICENSE` (2026-09-28).
-- **Adoption & ecosystem** (dated 2026-09-28): ~147k stars but only ~352 watchers — a virality shape, not a usage shape; verifiable adoption is npm `@dietrichgebert/ponytail` v4.10.0 at ~57k downloads/month (npm API, window 2026-08-28→09-26) and ~20 listed host adapters incl. OpenClaw/ClawHub publishing. Benchmark harness is open and reproducible (`benchmarks/`, promptfoo config), which is above the norm for prompt packs.
-- **Risk flags**: the original headline number (80–94% less code) was conceded inflated by a chatty baseline and re-measured (issue #126) — good faith, but it means marketing claims need the benchmark page, not the README hero line. Open as of 2026-09-27: OpenCode 2 no-op (#863); Codex false-positive policy flags (#764) reported by users [未验证：仅见 issue 报告，未复现]. Model-compliance dependence and PATH-sensitive Node hooks are structural, not bugs.
+- **Maintenance** (verified 2026-10-10 via GitHub API): latest release v5.1.0 on 2026-10-08. There were eight releases between 2026-10-02 and 10-08, including the 5.0 rewrite of the rules, review and audit (PR #1061). Open counts are 17 issues and 27 PRs, down from 310 open on 2026-09-28: 129 issues were closed after 09-28, 58 of them as not planned. That is a bulk triage, so "17 open" says more about the cleanup than about responsiveness.
+- **Governance / bus factor**: a single personal account (owner type `User`). Per the contributors API, the author has 145 commits and the next contributor has 12. `.github/CONTRIBUTING.md` sets a real gate: a change to the ruleset merges only with a three-arm benchmark (no skill / `main` / the branch) on the same task and model, and new skills come only from the maintainer. CI (test.yml, publish.yml) includes a script that keeps the ~20 rule copies aligned.
+- **Backing & longevity**: created 2026-06-12, too young for Lindy credit. Funding is GitHub Sponsors plus one visible sponsor (GreenPT). The README still carries a ponytail.dev "Something's coming" waitlist banner and now an "Already built with Ponytail" showcase. Open-core or relicense risk is watch-listed, not observed. The `LICENSE` file is still MIT.
+- **Adoption & ecosystem** (dated 2026-10-10): ~159.7k stars against 365 watchers, a virality shape. Stars rose ~12k between 09-28 and 10-10, alongside the 10-05 Spanish/Korean/Simplified-Chinese/Japanese READMEs, the Kimi Code adapter and the 10-08 Ponytail 5 launch [推断：时间相关，非因果核实]. Verifiable usage: npm `@dietrichgebert/ponytail` ~94k downloads in the 30 days to 10-08 (vs ~57k a month earlier). The benchmark harness is open (`benchmarks/agentic/`), above the norm for prompt packs, though the test-sorting and mutation tools behind the v5 test numbers are "not in this repo yet".
+- **Risk flags**: the original 80–94% headline was conceded inflated and re-measured (issue #126). The v5 headline (−53% code, −26% cost) comes with confidence intervals and a limits section, but it is still the author measuring the author's tool. 5.0 added a hook that copies repo text into hidden context (#1071) and can stall startup (#1079), and 5.1 hooks break on Node <15 (#1072); all three were open on 2026-10-10. Fixed since the last check: the OpenCode 2 no-op (#863, closed 10-02, now `opencode plugin add`) and a v4.10.2 regression that loaded Codex/VS Code/Qwen hook-less (fixed in v4.11.0).
 
 ## Caveats (unverified)
 
-- [未验证：未独立复现] All benchmark figures (−54% LOC, −20% cost, −27% time, 100% safe rate; caveman +7% tokens) come from the author's own harness on one repo (full-stack-fastapi-template), one model (Haiku 4.5), n=4; the writeup itself lists these limitations.
-- [未验证：作者自述] That deliberative reasoning models (README names GPT-5.5) can end up spending *more* thinking tokens on the ladder — no third-party reproduction found.
-- [未验证：未在 OpenCode 2 环境复现] OpenCode 2 plugin no-op claim rests on open issue #863 (created 2026-09-13, still open and active 2026-09-27) and its reporter's fork; not retested here.
-- [推断：由 stars 147k vs watchers 352、Trendshift 徽章、发布 3.5 个月推断] Star growth is spike/hype-driven rather than sustained-use growth; treat adoption grade cautiously.
-- [推断：仅由 README waitlist 横幅与 ponytail.dev 域名] A commercial product is planned; possible future open-core gating or relicensing — no evidence of either today.
-- [推断：contributors API 前 15 名，2026-09-28] Author's commit share ≈ 2/3 → effective single-maintainer bus factor.
-- [未验证：仅在 docs/agent-portability.md 数出 ~20+ 适配器条目，未逐一安装测试] The "works with 20 agents" support surface is documented, not independently verified per host.
+- [未验证：未独立复现] All v5 benchmark figures come from the author's harness: −53% LOC, −41% time, −26% cost, −45% output tokens, a test on 98% of logic that needs one (vs 68%), and 87/90 vs 86/90 hidden checks. The setup is one host (Claude Code), one model (Opus 5.5), n=5, with Bash disabled so agents never ran their code. The writeup lists these limits itself.
+- [未验证：作者自建基准] The blind reply judge (Sonnet 5.5) preferred Ponytail 5 over v4.13 (110:67) but leaned slightly to the *no-skill* replies (82:106, p=0.09). The "ends with what it skipped" habit beats the old Ponytail, not a plain agent.
+- [未验证：作者自述] Deliberative reasoning models (an earlier README named GPT-5.5) may spend *more* thinking tokens on the ladder. The v5 README no longer says this, and no third-party reproduction was found.
+- [未验证：仅读 issue 复现步骤，未在本地跑] Codebase-map injection, the symlink hang (#1071), the slow-filesystem timeout (#1079) and the Node <15 crash (#1072) rest on the reporters' reproductions.
+- [推断：由 star/watcher 比与发版时间线推断] Star growth is launch- and translation-driven rather than sustained-use growth; npm downloads are the steadier signal.
+- [推断：仅由 waitlist 横幅与 ponytail.dev 域名推断] A commercial product is planned; there is no evidence of open-core gating or relicensing today.
+- [未验证：仅按 README 徽章与 INSTALL.md 清点，未逐一装测] The "works with 20 agents" support surface is documented, not verified per host.

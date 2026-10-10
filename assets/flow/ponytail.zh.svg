@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="712" viewBox="0 0 880 712" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="693" viewBox="0 0 880 693" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px 'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -30,11 +30,11 @@
 @media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="712" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="576" rx="10"/>
+<rect class="bg" width="880" height="693" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="557" rx="10"/>
 <rect class="pillY" x="42" y="40" width="74.8" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">你做的</text>
-<rect class="laneT" x="460" y="28" width="392" height="576" rx="10"/>
+<rect class="laneT" x="460" y="28" width="392" height="557" rx="10"/>
 <rect class="pillT" x="474" y="40" width="141.9" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">ponytail 做的</text>
 <path class="edge" d="M62,164 L62,188" marker-end="url(#a)"/>
@@ -59,31 +59,30 @@
 <rect class="accT" x="472" y="226" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="250" r="10"/>
 <text class="num" x="494" y="254" text-anchor="middle">3</text>
-<text class="t" x="514" y="255">hook 在会话启动时注入规则，子 agent </text>
-<text class="t" x="514" y="277">也同样注入</text>
-<text class="comp" x="514" y="305">组件：生命周期 hook</text>
+<text class="t" x="514" y="255">会话启动时 hook 注入规则和仓库现有代码的简</text>
+<text class="t" x="514" y="277">图，子 agent 同样注入</text>
+<text class="comp" x="514" y="305">组件：生命周期 hook + 代码地图</text>
 <rect class="card" x="40" y="289" width="368" height="73" rx="8"/>
 <rect class="accY" x="40" y="289" width="4" height="73" rx="2"/>
 <circle class="accY" cx="62" cy="313" r="10"/>
 <text class="num" x="62" y="317" text-anchor="middle">4</text>
 <text class="t" x="82" y="318">照常提需求，不用改说法</text>
-<text class="c" x="82" y="342">Add a cache for these API responses.</text>
+<text class="c" x="82" y="342">Add a date picker to the frontend.</text>
 <rect class="cardT" x="472" y="349" width="368" height="97" rx="8"/>
 <rect class="accT" x="472" y="349" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="373" r="10"/>
 <text class="num" x="494" y="377" text-anchor="middle">5</text>
-<text class="t" x="514" y="378">动手前先停在该停的那级：该不该存在、有没有</text>
-<text class="t" x="514" y="400">现成、标准库、原生特性、一行</text>
-<text class="comp" x="514" y="428">组件：七级阶梯</text>
-<rect class="cardT" x="472" y="472" width="368" height="114" rx="8"/>
-<rect class="accT" x="472" y="472" width="4" height="114" rx="2"/>
+<text class="t" x="514" y="378">先列出改动要波及的调用方、测试和配置，再停</text>
+<text class="t" x="514" y="400">在第一级可行的阶梯</text>
+<text class="comp" x="514" y="428">组件：最小完整改动</text>
+<rect class="cardT" x="472" y="472" width="368" height="95" rx="8"/>
+<rect class="accT" x="472" y="472" width="4" height="95" rx="2"/>
 <circle class="accT" cx="494" cy="496" r="10"/>
 <text class="num" x="494" y="500" text-anchor="middle">6</text>
-<text class="t" x="514" y="501">只交回最小 diff：刻意简写留了上限标记，另</text>
-<text class="t" x="514" y="523">附一个能跑的自检</text>
-<text class="c" x="514" y="547"># ponytail: global lock, per-account locks</text>
-<text class="c" x="514" y="566">if throughput matters</text>
-<rect class="val" x="28" y="618" width="824" height="66" rx="10"/>
-<text class="valK" x="48" y="642">价值</text>
-<text class="valT" x="48" y="666">你不用再审那些任务根本没要的包装代码——作者基准里约少 54%，护栏不砍</text>
+<text class="t" x="514" y="501">交回最小 diff，实质逻辑附测试，结尾交代跳</text>
+<text class="t" x="514" y="523">过了什么</text>
+<text class="c" x="514" y="547">shortcut: &lt;the limit&gt;, &lt;when to upgrade&gt;</text>
+<rect class="val" x="28" y="599" width="824" height="66" rx="10"/>
+<text class="valK" x="48" y="623">价值</text>
+<text class="valT" x="48" y="647">你不用再审任务根本没要的几百行代码：作者用 Opus 5.5 测得代码约少 53%，需要测试的逻辑 98% 带了测试</text>
 </svg>
