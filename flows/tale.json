@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Tale does", "zh": "Tale 做的"},
+  "steps": [
+    {"lane": "you", "en": "Deploy Tale and configure model credentials and agent capacity", "zh": "部署 Tale，配置模型凭证和 agent 容量"},
+    {"lane": "you", "en": "Add task inputs, choose the project agent and reviewer, and start the task", "zh": "填写任务输入，选择项目 agent 与审核人并启动"},
+    {"lane": "them", "en": "Provide task context to the selected runtime in the agent's persistent workspace", "zh": "在 agent 的持久工作目录中向所选运行程序提供任务上下文"},
+    {"lane": "them", "en": "Attach the agent's report and produced files to the task for review", "zh": "把 agent 报告和生成的文件挂回任务，等待审核"},
+    {"lane": "you", "en": "Inspect the deliverables and accept the result or request changes", "zh": "检查交付物，接受结果或要求修改"}
+  ],
+  "value": {"en": "The brief, agent output, and review decision remain together on one task", "zh": "需求、agent 产物与审核决定保留在同一任务里"},
+  "sources": [
+    "https://docs.tale.dev/self-hosted/install/quickstart (read 2026-10-08): Docker/Compose startup, owner account, model provider credentials",
+    "https://docs.tale.dev/platform/projects/task-automation (read 2026-10-08): choose Assignee and Reviewer, Start agent, report comment and deliverables, accept or request changes",
+    "https://docs.tale.dev/platform/agents/harnesses (read 2026-10-08): runtime ownership and persistent agent workspaces"
+  ]
+}

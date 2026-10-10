@@ -16,6 +16,7 @@
 | **OpenFang** | 想用单个自托管 Rust 二进制、让自治智能体按计划 7×24 无人值守干活时。 | C（5/6） | [→](openfang.zh.md) |
 | **Parlant** | 当你要构建一个必须靠行为准则严格守规的对客 agent 时用它——简单或自由式 agent 用它过重。 | C（5/6） | [→](parlant.zh.md) |
 | **Symphony** | 你的 Linear 待办和 Codex agent 需要一个自托管编排器、按 issue 跑隔离自治实现运行时。 | C（5/6） | [→](symphony.zh.md) |
+| **Tale** | 团队成员与编码 agent 需要把需求、持久工作文件、交付物和审核放进同一任务记录，并且你能维护多服务部署时使用。 | B（5/6） | [→](tale.zh.md) |
 
 ## 对比矩阵
 
@@ -30,6 +31,7 @@
 | [OpenFang](openfang.zh.md) | ✅ | C（5/6） | 想用单个自托管 Rust 二进制、让自治智能体按计划 7×24 无人值守干活时。 |
 | [Parlant](parlant.zh.md) | ✅ | C（5/6） | 当你要构建一个必须靠行为准则严格守规的对客 agent 时用它——简单或自由式 agent 用它过重。 |
 | [Symphony](symphony.zh.md) | ✅ | C（5/6） | 你的 Linear 待办和 Codex agent 需要一个自托管编排器、按 issue 跑隔离自治实现运行时。 |
+| [Tale](tale.zh.md) | ✅ | B（5/6） | 团队成员与编码 agent 需要把需求、持久工作文件、交付物和审核放进同一任务记录，并且你能维护多服务部署时使用。 |
 
 ## 什么该放这里
 
