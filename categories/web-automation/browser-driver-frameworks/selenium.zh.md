@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T09:04:40Z
+  computed_at: 2026-10-10T02:38:29Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -35,8 +35,8 @@ health:
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 20.5
-        qualifying_issues: 41
+        median_ttfr_hours: 23.1
+        qualifying_issues: 47
         band: default
         window_offset_days: 1
         source: issue
@@ -44,32 +44,32 @@ health:
     adoption:
       grade: A
       raw:
-        registry: nuget.org
-        canonical_package: selenium.webdriver
-        dependent_repos_count: 0
-        downloads_last_month: 187243102
-        graph_tier: E
+        registry: pypi.org
+        canonical_package: selenium
+        dependent_repos_count: 62210
+        downloads_last_month: 27604052
+        graph_tier: A
         volume_tier: A
-        cross_check_divergence: null
-        homebrew_installs_90d: 950
+        cross_check_divergence: 1.02
+        homebrew_installs_90d: 970
         homebrew_tier: B
-        release_downloads: 33608657
-        release_assets: 684
+        release_downloads: 33925641
+        release_assets: 688
         release_tier: A
         signal_basis: homebrew+releases
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 5004
+        repo_age_days: 5016
         last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 39
-        top1_share: 0.361
-        top3_share: 0.609
+        active_maintainers_12mo: 40
+        top1_share: 0.378
+        top3_share: 0.618
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -154,11 +154,11 @@ Selenium 分两半。你这一侧是一个小的语言绑定，对外暴露同�
 
 ## 健康度与可持续性
 
-- **响应速度**：Grade A——中位首次响应时间 20.5 小时，基于 41 个 qualifying issues/PRs（评分器，2026-09-28）。
+- **响应速度**：Grade A——中位首次响应时间 23.1 小时，基于 47 个 qualifying issues/PRs（评分器，2026-10-10）。
 - **维护（2026-09）** —— 2026-09-28 仍在推送、未归档，v4.x 线持续交付（6 月的 v4.45.0 → 2026-09-09 的 v4.49.0，GitHub releases API）；一个紧跟浏览器/WebDriver 目标演进、持续发版的项目，即**活跃**而非停滞滑行。
 - **治理与 bus factor** —— 归属 **SeleniumHQ** 组织（`Organization` 所有），并由非营利组织 **Software Freedom Conservancy** 托管（文档站页脚与联系地址 `selenium@sfconservancy.org`，2026-09），是历史悠久的社区/多贡献者项目，而非某一个人或单一厂商的产品；它所锚定的 W3C 标准 WebDriver 协议进一步降低了任何单一所有者依赖的风险。
 - **年龄与 Lindy** —— 创建于 2013-01-14，到 2026-09 约 13.7 岁且仍在积极发版：教科书式的**强 Lindy**下注——既长寿*又*仍活跃，叠加深厚的生态惯性（云 Grid、CI 集成、多年问答），使它成为稳妥默认项。文档站横幅还在推 Selenium 与 Appium 的 2026 联合大会——社区活动层是活的。`[推断]`
-- **采用与生态** —— 依赖图仍然读作 E（记录到 0 个依赖仓库），但这个口径会低估分散在多语言绑定、浏览器驱动、托管 Grid 和 CI 集成里的 WebDriver 生态。下载量给出了相反的结论，并且把这一轴拉到了 A：每月约 1.87 亿次 NuGet 下载。人工阅读时应把 Selenium 视为深度扎根的生态；在这里包依赖图是用错了的量具。`[推断]`
+- **采用与生态** —— Selenium 每种语言一个绑定，没有哪个包能代表整体，所以评分器固定取最大的 Python 包 `selenium`：最近一个月下载 27,604,052 次，依赖仓库 62,210 个（2026-10-10），两项都是 A。光 npm 的 `selenium-webdriver` 一个绑定就有 622,782 个依赖仓库，所以只看任何一个绑定都会低估整个生态。
 - **风险标记** —— Apache-2.0，未见 relicense / open-core 历史；实际风险在于**不写规范等待就抖动**和 **Grid 运维负担**，而非项目可持续性。
 
 ## 存疑（未验证）

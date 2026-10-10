@@ -1,4 +1,9 @@
 {
+  "angular/angular": {
+    "registry": "npmjs.org",
+    "name": "@angular/core",
+    "reason": "@angular/core is the framework package every Angular app depends on; automatic selection picked @angular/compiler, a build-time sibling."
+  },
   "anomalyco/opencode": {
     "none": true,
     "reason": "The opencode-ai npm package declares no repository link, so it is not among the candidates (even with per_page=1000); the @opencode/* entries are internal sub-packages. Homebrew and release downloads carry adoption."
@@ -13,9 +18,19 @@
     "name": "ripgrep",
     "reason": "ripgrep is the CLI crate users install; the crates.io grep library is carved out of the same repo and outranks it once the lookup reads past entry 100, but its downloads count reuse of the search code, not ripgrep installs."
   },
+  "certbot/certbot": {
+    "registry": "pypi.org",
+    "name": "certbot",
+    "reason": "certbot is the client itself; the page had recorded certbot-dns-cloudflare, one of its DNS plugins. Pinned so the pick cannot drift back to a plugin."
+  },
   "duckdb/duckdb": {
     "none": true,
     "reason": "PyPI duckdb now links to duckdb/duckdb-python, so it is not among this repo's candidates; what remains are bindings, the duckdb-cli wrapper and a conda mirror, none representative. Release and Homebrew downloads carry adoption."
+  },
+  "earendil-works/pi": {
+    "registry": "npmjs.org",
+    "name": "@earendil-works/pi-coding-agent",
+    "reason": "pi-coding-agent is the package users install to get the Pi agent; pi-tui and pi-ai are libraries it pulls in, so their larger download counts are transitive, and automatic selection alternated between them run to run."
   },
   "elrumordelaluz/reactour": {
     "registry": "npmjs.org",
@@ -31,9 +46,19 @@
     "name": "org.keycloak:keycloak-core",
     "reason": "keycloak-core is the server's core Maven artifact that integrations depend on (1,153 dependent repos vs 90 for the JS admin client the automatic pick lands on once the lookup reads every candidate); it represents adoption of Keycloak itself, not of one client library."
   },
+  "microsoft/agent-framework": {
+    "registry": "pypi.org",
+    "name": "agent-framework-core",
+    "reason": "Every install path pulls agent-framework-core: the agent-framework meta-package the README installs depends on it, and slim installs take core plus chosen connectors directly. Core therefore counts each user once (1.0M downloads a month on 2026-10-10), while the meta-package (190k) misses the slim installs. Unlike playwright-core, no unrelated project reuses it. Pinned because automatic selection picks the meta-package."
+  },
   "microsoft/autogen": {
     "none": true,
     "reason": "Python mainline autogen-agentchat / autogen-core register no repo link; the remaining candidates are the .NET NuGet packages and autogenstudio, none of them represents the mainline."
+  },
+  "microsoft/playwright": {
+    "registry": "npmjs.org",
+    "name": "playwright",
+    "reason": "playwright is the package users install (alongside @playwright/test); playwright-core, which automatic selection picks, is the shared internal dependency of both, so its downloads double-count every install."
   },
   "microsoft/vscode": {
     "none": true,
@@ -53,10 +78,20 @@
     "none": true,
     "reason": "npm react is not linked to this repo (react/react, formerly facebook/react) in ecosyste.ms; among the 334 candidates returned with per_page=1000 the only one named react is a NuGet package. The old reading, react-tools, is a deprecated package and cannot represent this project."
   },
+  "seleniumhq/selenium": {
+    "registry": "pypi.org",
+    "name": "selenium",
+    "reason": "Selenium ships one binding per language with no canonical package; the Python binding has the largest monthly downloads (27.6M on 2026-10-10, vs 8.5M for npm selenium-webdriver). Automatic selection alternated between NuGet and RubyGems."
+  },
   "shadcn-ui/ui": {
     "registry": "npmjs.org",
     "name": "shadcn",
     "reason": "shadcn is the CLI users install (about 4x the downloads of @shadcn/react); automatic selection preferred @shadcn/react because its scope matches the owner."
+  },
+  "tanstack/router": {
+    "registry": "npmjs.org",
+    "name": "@tanstack/react-router",
+    "reason": "@tanstack/react-router is the package applications install; automatic selection picked @tanstack/router, the deprecated pre-1.0 name (24,893 downloads a month), and the page previously recorded @tanstack/router-core, an internal dependency of every framework binding."
   },
   "vercel/next.js": {
     "registry": "npmjs.org",

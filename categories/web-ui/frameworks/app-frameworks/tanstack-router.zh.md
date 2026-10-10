@@ -17,7 +17,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-28T13:26:38Z
+  computed_at: 2026-10-10T02:35:36Z
   overall: A
   overall_score: 4.0
   scored_axes: 6
@@ -30,14 +30,14 @@ health:
       grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
+        last_commit_age_days: 0
         active_weeks_13: 13
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 6.7
-        qualifying_issues: 32
+        median_ttfr_hours: 6.6
+        qualifying_issues: 35
         band: default
         window_offset_days: 0
         source: issue
@@ -46,25 +46,25 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@tanstack/router-core"
-        dependent_repos_count: 16
-        downloads_last_month: 85508552
+        canonical_package: "@tanstack/react-router"
+        dependent_repos_count: 28
+        downloads_last_month: 92969241
         graph_tier: D
         volume_tier: A
-        cross_check_divergence: 1.01
+        cross_check_divergence: 1.07
         tier_source: registry
     longevity:
       grade: A
       raw:
-        repo_age_days: 2814
-        last_commit_age_days: 1
+        repo_age_days: 2826
+        last_commit_age_days: 0
         cohort: framework
     governance:
       grade: A
       raw:
-        active_maintainers_12mo: 40
-        top1_share: 0.248
-        top3_share: 0.665
+        active_maintainers_12mo: 38
+        top1_share: 0.244
+        top3_share: 0.668
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -152,12 +152,12 @@ health:
 - **维护——非常活跃（2026-09-28 核实）。** `pushed_at` 为 2026-09-28T09:38:57Z；发布标签 `release-2026-09-27-1408` 与同日的分包标签；`@tanstack/react-router` 1.170.40 发布于 2026-09-27。节奏是 changeset 驱动的接近逐日发布，自 1.0.0（2023-12-23）以来 943 个稳定版。
 - **治理／巴士因子——创始人主导的组织，核心小而深。** 仓库属 `TanStack` 组织；历史贡献集中在 `tannerlinsley`（3,271）与 `schiller-manuel`（823），随后是 300 上下一档（SeanCassiere、Sheraff、birkskyum）。路线图话语权在 TanStack 创始人一侧；`CONTRIBUTING.md` 要求 API 变更先经维护者在 issue 上认可。
 - **背书与 Lindy——信号分裂，先想清楚哪个「年龄」才算数。** 仓库创建于 2019-01-14（约 7.7 年），但当前 v1 线路由始于 2023-12——是一次重写，而非 2019 年 `react-location` 时期的同一代码库 [推断：依据是 npm 版本史（首个稳定版 1.0.0 于 2023-12-23）与仓库发布标签；改名沿革广为人知，但未逐 commit 追溯]。背书为自筹：文档自述 TanStack「100% 开源……TanStack LLC……私有、100% 自筹、无风投」，资金来自 GitHub Sponsors 与 tanstack.com 合作伙伴（README 展示 CodeRabbit、Cloudflare、Netlify）。
-- **采用度——大且仍在爬。** 健康度打分器把注册表信号解析到 `@tanstack/router-core`，**上月下载 85,508,552 次**；我实测 npm 口径 `@tanstack/react-router` 在 2026-08-29 至 2026-09-27 窗口下载 81,399,975 次 [未验证：注册表计数含 CI 镜像与缓存，两个数都应视作上界]；GitHub 约 15.1k stars／1.9k forks，比 Next.js 低一个数量级——强势，但谈不上统治级。
+- **采用度——大且仍在爬。** 健康度打分器读的是应用实际安装的 `@tanstack/react-router`：**上月下载 92,969,241 次**（2026-10-10）[未验证：注册表计数含 CI 镜像与缓存，应视作上界]；GitHub 约 15.1k stars／1.9k forks，比 Next.js 低一个数量级——强势，但谈不上统治级。
 - **风险信号——Start 未 v1、变更频繁、对比表自卖自夸。** Start 按文档（2026-09-28）仍是 Release Candidate；大 API 面配接近逐日的 micro 发版意味着升级永远「没做完」；仓库的 `comparison.md` 出自维护者之手，当他们的说法读；README 开头挂着 `static.scarf.sh` 追踪像素（渲染期统计，不是库的运行期依赖）。GitHub 的 686 条 open issues [推断：该计数含未关闭 PR，高估了未决 bug 数] 在同日仍在发版的背景下更像分诊滞后，而非弃维护信号。
 
 ## 存疑（未验证）
 
-- `[未验证]` **npm 下载数（路由包单月 8,140 万）**为注册表口径，包含 CI 镜像与缓存安装；未找到独立安装量来源交叉验证。
+- `[未验证]` **npm 下载数（路由包单月约 9,300 万）**为注册表口径，包含 CI 镜像与缓存安装；未找到独立安装量来源交叉验证。
 - `[未验证]` **「当前路由是 2019 年 `react-location` 仓库的重写」这一沿革**只依据 npm 版本史与仓库标签，没有追溯改名记录。
 - `[推断]` **686 条「open issues」高估了未决 bug**，因为 GitHub 的 `open_issues_count` 含未关闭 PR；`health.py` 的响应度分级是更好的信号。
 - `[未验证]` **运行时路由操纵／并行路由的支持状态**读自仓库自己的 `docs/router/comparison.md`（2026-09-28），未做代码级确认。

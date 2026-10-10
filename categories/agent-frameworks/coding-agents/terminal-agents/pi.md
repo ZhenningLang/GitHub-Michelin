@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T10:51:08Z
+  computed_at: 2026-10-10T02:32:27Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -39,29 +39,29 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@earendil-works/pi-ai"
+        canonical_package: "@earendil-works/pi-coding-agent"
         dependent_repos_count: 0
-        downloads_last_month: 16404021
+        downloads_last_month: 13959626
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
-        release_downloads: 395633
-        release_assets: 643
+        cross_check_divergence: 1.13
+        release_downloads: 575809
+        release_assets: 688
         release_tier: C
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 410
+        repo_age_days: 427
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: C
+      grade: B
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.6
-        top3_share: 0.771
+        top1_share: 0.578
+        top3_share: 0.774
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -162,15 +162,15 @@ Pi is a TypeScript program that owns one agent loop and exposes it through sever
 
 - **Maintenance:** Grade A — `v0.87.1` published 2026-09-22, four releases between 2026-09-19 and 2026-09-22, the default branch pushed the same day, and 13 of 13 active weeks.
 - **Responsiveness:** Not scored (`?`, no window signal) — the index found no qualifying issue set to measure. The auto-close policy for new contributors is a plausible cause of that shape, not a measured one.
-- **Adoption:** Grade A — measured on 2026-09-23, `@earendil-works/pi-ai` records 16,404,021 npm downloads in the last month and the CLI package 9,369,096, alongside ~108.8k stars and ~13.8k forks. Very high for its age, and consistent with the CLI being driven by scripts and other tools, not only by humans.
+- **Adoption:** Grade A — measured on 2026-10-10 on the CLI package `@earendil-works/pi-coding-agent`: 13,959,626 npm downloads in the last month (the `pi-tui` and `pi-ai` libraries it pulls in read higher, but those counts are transitive), alongside ~108.8k stars and ~13.8k forks. Very high for its age, and consistent with the CLI being driven by scripts and other tools, not only by humans.
 - **Longevity:** Grade C — 410 days old (created 2025-08-09). Still-active, not long-lived.
-- **Governance:** Grade C — 98 active maintainers over 12 months on paper, but top-1 share 60.0% and top-3 77.1%: commits concentrate in two well-known authors. An independent org (`earendil-works`), so there is no foundation behind the roadmap.
+- **Governance:** Grade B — 98 active maintainers over 12 months on paper, but top-1 share 57.8% and top-3 77.4%: commits concentrate in two well-known authors. An independent org (`earendil-works`), so there is no foundation behind the roadmap.
 - **Risk / License:** Grade A — MIT, no relicense in 36 months, and supply-chain discipline (exact pins, `min-release-age=2`, a shipped shrinkwrap, a scheduled `npm audit`) that is unusually strong for the age. The deliberate risks sit elsewhere: no built-in permission system, and new-contributor issues and pull requests auto-closed.
 
 ## Caveats (unverified)
 
 - [未验证] That nothing besides project trust gates tool execution: the "no built-in permission system" claim comes from the README and the security/containerization docs, not from reading the tool implementations.
-- [未验证] What fraction of the ~9.4M monthly npm downloads for the CLI are CI, mirrors or automated installs rather than people using it interactively.
+- [未验证] What fraction of the ~14M monthly npm downloads for the CLI are CI, mirrors or automated installs rather than people using it interactively.
 - [推断] The high fork-to-star ratio (about 13% on 2026-09-23) may include mirrors and one-off forks rather than a downstream ecosystem.
 - [推断] Star count and watcher count diverge sharply (334 subscribers for ~108.8k stars), which is more consistent with attention than with a large resident user base.
 - [推断] Auto-closing new-contributor submissions is likely to suppress first-time contributors; the effect on maintainer response times was not measured.

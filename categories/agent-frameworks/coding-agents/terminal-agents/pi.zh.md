@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T10:51:08Z
+  computed_at: 2026-10-10T02:32:27Z
   overall: B
-  overall_score: 3.2
+  overall_score: 3.4
   scored_axes: 5
   applicable_axes: 6
   capped: false
@@ -39,29 +39,29 @@ health:
       grade: A
       raw:
         registry: npmjs.org
-        canonical_package: "@earendil-works/pi-ai"
+        canonical_package: "@earendil-works/pi-coding-agent"
         dependent_repos_count: 0
-        downloads_last_month: 16404021
+        downloads_last_month: 13959626
         graph_tier: E
         volume_tier: A
-        cross_check_divergence: 1.0
-        release_downloads: 395633
-        release_assets: 643
+        cross_check_divergence: 1.13
+        release_downloads: 575809
+        release_assets: 688
         release_tier: C
         signal_basis: releases
         tier_source: registry
     longevity:
       grade: C
       raw:
-        repo_age_days: 410
+        repo_age_days: 427
         last_commit_age_days: 0
         cohort: tool
     governance:
-      grade: C
+      grade: B
       raw:
         active_maintainers_12mo: 98
-        top1_share: 0.6
-        top3_share: 0.771
+        top1_share: 0.578
+        top3_share: 0.774
         window_source: stats_contributors
         carve_out: null
     risk_license:
@@ -162,15 +162,15 @@ Pi 是一个 TypeScript 程序，拥有唯一一个 agent 循环，并用几种�
 
 - **维护：** 评级 A——`v0.87.1` 发布于 2026-09-22，2026-09-19 到 09-22 这四天里连发四个版本，默认分支当天还有推送，13 周里 13 周活跃。
 - **响应：** 无法评分（`?`，无窗口信号）——索引找不到可用于测量的有效 issue 集合。新贡献者提交被自动关闭是这种形态的一个可能原因，但没有实测。
-- **采用：** 评级 A——2026-09-23 实测，`@earendil-works/pi-ai` 最近一个月 npm 下载 16,404,021 次，CLI 包 9,369,096 次，另有约 10.88 万星、约 1.38 万 fork。对这个年龄来说非常高，也与“CLI 不只被人用、还被脚本和其他工具驱动”相符。
+- **采用：** 评级 A——2026-10-10 按 CLI 包 `@earendil-works/pi-coding-agent` 实测，最近一个月 npm 下载 13,959,626 次（它依赖的 `pi-tui`、`pi-ai` 两个库数字更高，但那是跟着 CLI 一起装进来的），另有约 10.88 万星、约 1.38 万 fork。对这个年龄来说非常高，也与“CLI 不只被人用、还被脚本和其他工具驱动”相符。
 - **寿命：** 评级 C——410 天（建于 2025-08-09）。仍然活跃，但不算久经考验。
-- **治理：** 评级 C——纸面上 12 个月有 98 位活跃维护者，但第一贡献者占 60.0%、前三占 77.1%：提交集中在两位知名作者身上。背后是一个独立组织（`earendil-works`），路线图后面没有基金会。
+- **治理：** 评级 B——纸面上 12 个月有 98 位活跃维护者，但第一贡献者占 57.8%、前三占 77.4%：提交集中在两位知名作者身上。背后是一个独立组织（`earendil-works`），路线图后面没有基金会。
 - **风险与许可：** 评级 A——MIT，36 个月内没有换许可；供应链纪律（精确钉版、`min-release-age=2`、随包发布 shrinkwrap、定时 `npm audit`）对这个年龄来说异常扎实。有意的风险在别处：没有内置权限系统，以及新贡献者的 issue 与 PR 被自动关闭。
 
 ## 存疑（未验证）
 
 - [未验证] 除项目信任之外确实没有别的东西把住工具执行：这一说法来自 README 和安全、容器化文档，没有读工具实现来核。
-- [未验证] CLI 那每月约 940 万次 npm 下载里，CI、镜像、自动化安装各占多少，有多少是真的有人在交互使用。
+- [未验证] CLI 那每月约 1,400 万次 npm 下载里，CI、镜像、自动化安装各占多少，有多少是真的有人在交互使用。
 - [推断] 偏高的 fork 与 star 比（2026-09-23 约 13%）可能含镜像和一次性 fork，而不是下游生态。
 - [推断] 星数与关注者数差距很大（约 10.88 万星对 334 个订阅者），这更像注意力而不是庞大的常住用户群。
 - [推断] 自动关闭新贡献者提交很可能压低首次贡献意愿；对维护者响应时间的影响没有实测。
