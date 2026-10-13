@@ -4,7 +4,7 @@ help:
 	@echo "GitHub-Michelin make targets:"
 	@echo "  make lint           run the index linter (tools/lint.py)"
 	@echo "  make cards          regenerate ALL health radar SVGs from frontmatter (offline)"
-	@echo "  make flows          regenerate ALL How-it-works flow SVGs + page step lists from flows/*.json (offline)"
+	@echo "  make flows          regenerate ALL Quick-start flow SVGs + page step lists (v1 headings supported; offline)"
 	@echo "  make health PAGE=…  (re)score one page via GitHub/registry APIs and write its health: block"
 	@echo "                      e.g. make health PAGE=categories/python-tooling/memory-analyzer.md"
 	@echo "  make health-audit   offline audit of all '?' radar axes (reason distribution + flags)"

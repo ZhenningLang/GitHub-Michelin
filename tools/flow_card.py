@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a page's BACKBONE USER-STORY flow (the `How it works` / `怎么用起来` section).
+"""Render the BACKBONE USER-STORY flow in Quick start / 快速上手 (v1: How it works / 怎么用起来).
 
 PURE / OFFLINE. The SSOT is a structured spec, one per project, language-neutral structure
 with per-step bilingual text:
@@ -53,6 +53,7 @@ import re
 import sys
 from html import escape
 from pathlib import Path
+from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
 FLOWS = ROOT / "flows"
@@ -67,7 +68,10 @@ MAX_LEN = {"en": 110, "zh": 40, "code": 80, "value_en": 160, "value_zh": 60, "th
 MAX_PHASES = 3            # a backbone stages into at most three stages, or it is a checklist
 PHASE_LH = 17             # the phase label's own line inside a card (only when the spec uses phases)
 
-SECTION = {"en": "## How it works", "zh": "## 怎么用起来"}
+SECTION = {
+    "v1": {"en": "## How it works", "zh": "## 怎么用起来"},
+    "v2": {"en": "## Quick start", "zh": "## 快速上手"},
+}
 YOU_LABEL = {"en": "You do", "zh": "你做的"}
 VALUE_LABEL = {"en": "VALUE", "zh": "价值"}
 ALT = {"en": "backbone user story", "zh": "主干用户故事"}
@@ -485,9 +489,190 @@ def steps_block(spec: dict, lang: str, stem: str, name: str) -> str:
     return "\n".join(lines)
 
 
-def section_bounds(text: str, lang: str) -> tuple[int, int] | None:
-    """(start, end) character span of the How-it-works section body, or None."""
-    m = re.search(r"(?m)^" + re.escape(SECTION[lang]) + r"\s*$", text)
+class H2Section(NamedTuple):
+    heading: str
+    start: int
+    body_start: int
+    end: int
+    exact: bool
+    reason: str = ""
+
+
+class H2Scan(list[H2Section]):
+    def __init__(self, sections: list[H2Section], errors: list[str]) -> None:
+        super().__init__(sections)
+        self.errors = errors
+
+
+ATX_RE = re.compile(r"(#{1,6})(?:[ \t]+(.*)|$)")
+ATX_CLOSER_RE = re.compile(r"[ \t]+#+[ \t]*$")
+FENCE_OPEN_RE = re.compile(r"(`{3,}|~{3,})(.*)$")
+FENCE_CLOSE_RE = re.compile(r"(`{3,}|~{3,})[ \t]*$")
+HTML_LITERAL_RE = re.compile(r"<(pre|script|style|textarea)(?:[ \t>]|$)", re.I)
+HTML_LITERAL_END_RE = re.compile(r"</(?:pre|script|style|textarea)[ \t]*>", re.I)
+SETEXT_RE = re.compile(r"[ \t]*(?:-+|=+)[ \t]*$")
+PHYSICAL_LINE_RE = re.compile(r"[^\r\n]*(?:\r\n|\r|\n)|[^\r\n]+$")
+C0_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
+class LiteralBlock(NamedTuple):
+    kind: str
+    token: str
+    width: int
+    line: int
+
+
+def strip_source_prefix(line: str) -> str:
+    """Linear lexical preflight only: no container state or depth-dependent regex."""
+    pos, size = 0, len(line)
+    while pos < size:
+        while pos < size and line[pos] in " \t":
+            pos += 1
+        if pos == size:
+            break
+        if line[pos] == ">":
+            pos += 1
+            continue
+        if line[pos] in "-*+" and (pos + 1 == size or line[pos + 1] in " \t"):
+            pos += 1
+            continue
+        end = pos
+        while end < size and "0" <= line[end] <= "9":
+            end += 1
+        if end > pos and end < size and line[end] in ".)" and (end + 1 == size or line[end + 1] in " \t"):
+            pos = end + 1
+            continue
+        break
+    return line[pos:]
+
+
+def literal_closed(block: LiteralBlock, payload: str) -> bool:
+    if block.kind == "fence":
+        close = FENCE_CLOSE_RE.fullmatch(payload)
+        return bool(close and close[1][0] == block.token and len(close[1]) >= block.width)
+    if block.kind == "comment":
+        return "-->" in payload
+    return bool(HTML_LITERAL_END_RE.search(payload))
+
+
+def scan_h2_sections(text: str) -> H2Scan:
+    """One v2 source format, not Markdown inference. Only CR/LF are physical line breaks.
+
+    Prefix-stripped delimiters/headings are rejected; no quote/list scope is constructed.
+    Exact H2s also need a preceding blank line (or the frontmatter boundary).
+    """
+    found: list[tuple[str, int, int, bool, str]] = []
+    errors: list[str] = []
+    frontmatter = text.startswith("---\n")
+    literal: LiteralBlock | None = None
+    previous: tuple[str, int] | None = None
+    previous_blank = True
+    for n, match in enumerate(PHYSICAL_LINE_RE.finditer(text), 1):
+        raw = match[0]
+        start, offset = match.span()
+        line = raw.rstrip("\r\n")
+        bad = C0_RE.search(line)
+        if bad:
+            errors.append(f"C0 control character U+{ord(bad[0]):04X} on line {n}: use a printable escape, not a control byte")
+        if frontmatter:
+            if n > 1 and line == "---":
+                frontmatter = False
+            continue
+        stripped = strip_source_prefix(line)
+        prefixed = stripped != line
+        stripped_fence = FENCE_OPEN_RE.fullmatch(stripped)
+        stripped_atx = ATX_RE.fullmatch(stripped)
+        if prefixed and stripped_fence:
+            errors.append(f"line {n}: fences must open/close at column zero（围栏必须顶格开关）; remove indentation/container prefixes")
+        if prefixed and stripped.startswith(("<!--", "-->")):
+            errors.append(f"line {n}: comments must open/close at column zero（注释必须顶格开关）; use a root comment")
+        if prefixed and stripped_atx:
+            hint = "rewrite as column-zero ATX（改成顶格 ATX）; do not indent or prefix # lines"
+            if literal is None and len(stripped_atx[1]) == 2:
+                heading = "## " + ATX_CLOSER_RE.sub("", stripped_atx[2] or "").strip()
+                found.append((heading, start, offset, False, hint))
+            else:
+                errors.append(f"line {n}: {hint}")
+        # Root literal contents are never reinterpreted as container syntax or chapters.
+        if literal:
+            if literal.kind == "comment" and "-->" in line and not line.startswith("-->"):
+                errors.append(f"line {n}: comments must open/close at column zero; move --> to a root closing line")
+            else:
+                if literal_closed(literal, line):
+                    literal = None
+            previous = None
+            previous_blank = not line.strip(" \t")
+            continue
+        opening = FENCE_OPEN_RE.fullmatch(line)
+        if opening and not (opening[1][0] == "`" and "`" in opening[2]):
+            literal = LiteralBlock("fence", opening[1][0], len(opening[1]), n)
+            previous = None
+            previous_blank = False
+            continue
+        html = HTML_LITERAL_RE.match(line)
+        if line.startswith("<!--") or html:
+            block = (LiteralBlock("html", html[1].lower(), 0, n) if html else
+                     LiteralBlock("comment", "-->", 0, n))
+            literal = None if literal_closed(block, line) else block
+            previous = None
+            previous_blank = False
+            continue
+        if prefixed and (stripped_fence or stripped_atx or stripped.startswith(("<!--", "-->"))):
+            previous = None
+            previous_blank = False
+            continue
+        atx = ATX_RE.fullmatch(line)
+        if atx:
+            if len(atx[1]) == 2:
+                heading = "## " + ATX_CLOSER_RE.sub("", atx[2] or "").strip()
+                exact = line.rstrip(" \t") == heading and previous_blank
+                reason = "" if previous_blank else "H2 must follow a blank line（章节前须空行）; separate raw HTML/examples from chapters"
+                found.append((heading, start, offset, exact, reason))
+            previous = None
+            previous_blank = False
+            continue
+        if previous and SETEXT_RE.fullmatch(line):
+            title, heading_start = previous
+            hint = "setext underline is forbidden（不用下划线标题）; use root ATX, or leave a blank line before a separator"
+            if line.lstrip(" \t").startswith("-"):
+                found.append(("## " + title.strip(), heading_start, offset, False, hint))
+            else:
+                errors.append(f"line {n}: {hint}")
+            previous = None
+            previous_blank = False
+            continue
+        previous_blank = not line.strip(" \t")
+        previous = (line, start) if not previous_blank and "|" not in line and not prefixed else None
+    if literal:
+        errors.append(f"unclosed root {literal.kind} opened on line {literal.line}: add a column-zero closing delimiter")
+    sections: list[H2Section] = []
+    end = len(text)
+    for heading, start, body_start, exact, reason in reversed(found):
+        sections.append(H2Section(heading, start, body_start, end, exact, reason))
+        if exact:
+            end = start
+    return H2Scan(list(reversed(sections)), errors)
+
+
+def section_bounds(text: str, lang: str, *, version: str | None = None,
+                   sections: list[H2Section] | None = None) -> tuple[int, int] | None:
+    """Body span. Renderer prefers v2 then v1; lint can require its dated version."""
+    versions = (version,) if version else ("v2", "v1")
+    m = None
+    for v in versions:
+        if v == "v2":
+            chapters = scan_h2_sections(text) if sections is None else sections
+            chapter = next((h for h in chapters if h.exact and h.heading == SECTION[v][lang]), None)
+            if chapter:
+                if getattr(chapters, "errors", ()):
+                    return None  # Never rewrite an invalid v2 page's generated block.
+                return chapter.body_start, chapter.end
+            continue
+        # Preserve the legacy locator's whitespace handling on the v1 path.
+        trailing = r"\s*$" if v == "v1" else r"[ \t]*$"
+        m = re.search(r"(?m)^" + re.escape(SECTION[v][lang]) + trailing, text)
+        if m:
+            break
     if not m:
         return None
     nxt = re.search(r"(?m)^##[ \t]+\S", text[m.end():])
@@ -504,7 +689,7 @@ def sync_page(page: Path, root: Path, spec: dict, stem: str) -> bool:
     """Rewrite the generated steps block inside an existing section. Returns True if changed.
 
     Only touches pages that already have the section and the begin/end markers or an embedded card;
-    authoring the mechanism paragraph is the writer's job, not this tool's.
+    authoring the usage paragraph (v1: mechanism) is the writer's job, not this tool's.
     """
     lang = "zh" if page.name.endswith(ZH_SUFFIX) else "en"
     text = page.read_text(encoding="utf-8")

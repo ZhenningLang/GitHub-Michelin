@@ -302,6 +302,14 @@ verdict — do not act on it. Fill it from the sources (`sync-entry`) before thi
 **UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
 verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
+"""
+    return frontmatter(item, sha) + f"""
+# {name}
+
+{desc}
+
+{card_line(item, False)}
+
 ## When to use
 
 <!-- oss-atlas:unresearched -->
@@ -317,6 +325,14 @@ verdict — do not act on it. Fill it from the sources (`sync-entry`) before thi
 ## Comparison
 
 {comparison_en(item)}
+
+## Quick start
+
+<!-- oss-atlas:unresearched -->
+
+## Key techniques
+
+<!-- oss-atlas:unresearched -->
 {extra_sections}
 
 ## Health & viability
@@ -358,6 +374,14 @@ def page_zh(item: dict, sha: str) -> str:
 <!-- oss-atlas:unresearched -->
 **未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
+"""
+    return frontmatter(item, sha) + f"""
+# {name}
+
+{desc}
+
+{card_line(item, True)}
+
 ## 何时使用
 
 <!-- oss-atlas:unresearched -->
@@ -371,6 +395,14 @@ def page_zh(item: dict, sha: str) -> str:
 ## 横向对比
 
 {comparison_zh(item)}
+
+## 快速上手
+
+<!-- oss-atlas:unresearched -->
+
+## 技术要点
+
+<!-- oss-atlas:unresearched -->
 {extra_sections}
 
 ## 健康度与可持续性

@@ -29,7 +29,7 @@ page's required sections are evidence-backed — not when you've read everything
    real sample (`examples/`, `samples/`, `demo/`, an integration test, or the docs "getting
    started"). Extract: install/deploy command, the one hook/API/config the user writes, what the
    project does on its own afterwards, and where the value lands. This is the evidence for the
-   page's `How it works` backbone flow — every command or annotation you put in that flow must come
+   page's `Quick start` backbone flow — every command or annotation you put in that flow must come
    from here verbatim, never from memory of similar projects.
 4. **Repo layout & entry points** — the file tree, `src/`/package layout, the CLI/lib entry, the
    dependency manifest (`package.json` / `pyproject.toml` / `go.mod` / `Cargo.toml`). This tells you
@@ -40,14 +40,16 @@ page's required sections are evidence-backed — not when you've read everything
    `NOASSERTION`; relicense history matters: Grafana→AGPL, Redis→SSPL, Elastic, etc.).
 6. **Tests & examples** — presence/shape of tests and examples corroborates production-readiness and
    reveals intended use. Skim, don't audit.
-7. **Source — only as needed** — read source to *settle a specific question* a claim raised (does it
+7. **Source — for Key techniques and specific questions** — every v2 page needs source-backed
+   distinguishing implementation techniques and their limits, even a skill-pack (read its prompts,
+   workflow or scripts). Also read source to *settle a specific question* a claim raised (does it
    really do X offline? is there a hidden service dependency / egress? is the parallelism real?).
    Read the relevant module, not the repo. If you couldn't confirm, label `[未验证]`, don't assert.
 
 ## How deep is enough
 
-- **Light** (most pages): metadata + README + manifest + a glance at layout/releases. Enough for a
-  clear-cut tool with honest docs.
+- **Light** (most pages): metadata + README + manifest + a glance at layout/releases, plus the
+  specific source paths needed for v2 Key techniques. Enough for a clear-cut tool with honest docs.
 - **Medium**: + read CONTRIBUTING/governance + skim 1–2 source modules to verify a load-bearing
   claim or a suspected limitation.
 - **Deep** (only when it decides the page): a contested capability, a suspicious popularity signal,
@@ -58,9 +60,17 @@ unverified claim. Don't deep-read for its own sake.
 
 ## Turn reading into the page
 
-- **Usage path → `How it works`** — a plain-language mechanism paragraph that draws the line between
+- **Usage path → `Quick start` / `快速上手`** — developer install/configure/call steps that draw the line between
   *what the project does for you* and *what you do*, plus the backbone flow spec (`flows/<slug>.json`,
   rendered by `tools/flow_card.py`). See `tools/schema.md` §2.
+- **Implementation source → `Key techniques` / `技术要点`** — concrete internal techniques,
+  evidence locations and limitations, not an install tutorial or another tech-stack list. Move
+  technical questions here from Q&A; keep only genuinely leftover questions, or record `no leftover Q&A`.
+- **v2 structure** — When to use → When NOT → Comparison → optional Q&A → Quick start →
+  Key techniques → type-adaptive extras → Health → Caveats. `last_verified >= 2026-10-13`
+  selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM` overrides); Quick start follows the independent FLOW rules.
+  v1 compatibility only: untouched older pages retain `How it works` / `怎么用起来` and old order;
+  re-verification manually migrates before bumping the date.
 - **Facts → frontmatter** (`maturity`, dated) and **Health & viability** bullets (also dated).
 - **Disqualifiers → `When NOT to use`** — the sharpest section. Sources of real "don'ts": scale
   ceilings in issues, license/relicense traps in LICENSE, single-maintainer/abandonment from
@@ -74,7 +84,7 @@ unverified claim. Don't deep-read for its own sake.
 ## Anti-patterns
 
 - Paraphrasing the README's pitch as if verified. Marketing ≠ facts.
-- Writing a `How it works` flow from how *similar* projects work. If the command isn't in this
+- Writing a `Quick start` flow from how *similar* projects work. If the command isn't in this
   repo's docs/samples, it doesn't go in the flow.
 - Reading lots of source to look thorough while leaving `When NOT to use` thin. Wrong budget.
 - Asserting maintenance/health from stars alone — high stars on a young or stale repo is a *risk
