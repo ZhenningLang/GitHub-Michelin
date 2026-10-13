@@ -121,7 +121,7 @@ The [README installation section](https://github.com/blockpanda/any2html/blob/4a
 ## Health & viability
 
 - **Maintenance (2026-10-13):** unarchived, no GitHub releases; main last changed 2026-04-26. The 173-day-old repository has gone 171 days without a main commit, so popularity does not establish active development.
-- **Machine profile:** overall D (4/5 scored axes); maintenance/longevity C, governance D and license risk E. Responsiveness remains unknown under the skill-pack `type_na` rule; adoption is N/A because there is no counted install channel. These are scorer type decisions, not a successful issue-response or adoption measurement.
+- **Machine profile:** overall D (4/5 scored axes); maintenance/longevity C, governance D and license risk E. Responsiveness remains unknown under the skill-pack `type_na` rule; adoption is N/A because there is no counted install channel. These are scorer type decisions, not a successful issue-response or adoption measurement. The existing skill-pack exemption also removes the former no-license overall cap (`capped: true` → `false`); risk remains E and no reuse permission is added.
 - **Backing / adoption:** personal repository with one measured active maintainer and 33 stars; no independent foundation/vendor support was identified in its three-file tree. [推断：short age, quiet main and one-maintainer evidence] Use it as a template lead rather than a durable publishing dependency.
 - **Permission and output risk:** no LICENSE or declared reuse grant was found. The ECharts conflict and model-driven capacity estimates need review; hiding overflow is not proof of complete rendering.
 

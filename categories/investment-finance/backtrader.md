@@ -89,7 +89,7 @@ You have historical price files and want to model a strategy's sequence of signa
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | not indexed | Choose its compact documented strategy API for a small experiment; keep Backtrader when existing callbacks, feeds and broker behavior are decisive. | A smaller experiment surface versus Backtrader's broader simulation API and dormant-maintenance burden; Backtesting.py is AGPL. |
-| [vectorbt](https://github.com/polakowo/vectorbt) | not indexed | Choose vectorbt for matrix-based parameter/asset sweeps; choose Backtrader for order/state transitions controlled through Python callbacks. | Vectorized exploration versus event semantics; check current Fair Code terms and community/PRO feature boundaries. |
+| [vectorbt](https://github.com/polakowo/vectorbt) | not indexed | Choose vectorbt for matrix-based parameter/asset sweeps; choose Backtrader for callback-controlled order/state transitions, with indicators batch-precomputed by default. | Multi-configuration matrix exploration versus callback strategies with batched indicators; check current Fair Code terms and community/PRO feature boundaries. |
 | [LEAN](https://github.com/QuantConnect/Lean) | not indexed | Evaluate LEAN for a new backtest/live platform with Apache-2.0 licensing; keep Backtrader for local or inherited research code whose smaller runtime outweighs upstream inactivity. | A C#/Python engine and Docker/CLI ecosystem versus a self-contained Python library; data/broker integration remains your responsibility. |
 
 ## Quick start
@@ -116,10 +116,9 @@ Install with `pip install backtrader` as in [README:126–140](https://github.co
 
 ## Key techniques
 
-- **Advance feeds on a common simulated clock.** [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639) orders feeds by timeframe/compression, selects the earliest delivered time and rewinds feeds that are ahead, then processes timers, broker notifications and strategy callbacks. This supports mixed feeds without treating every array row as simultaneous; cheat/replay/live modes still change timing assumptions.
+- **Precompute indicators by default, then advance per-bar strategies.** [`cerebro.py:275–276`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L275-L276) defaults to `preload=True` and `runonce=True`. The batch path in [`cerebro.py:1649–1704`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1649-L1704) calls `_once()` for indicator precomputation, then uses `advance_peek()` and the minimum next timestamp to advance feeds and invoke per-bar strategy callbacks, without rewinding ahead feeds; [`lineiterator.py:293–318`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/lineiterator.py#L293-L318) shows the indicator work. In stepwise next mode, [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639) can rewind feeds that are ahead; live/replay/exactbars settings or disabling preload/runonce select that route through [`cerebro.py:1062–1079`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1062-L1079) and [`cerebro.py:1294–1303`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1294-L1303). Data alignment and cheat-mode timing still need deliberate review.
 - **Share the time-series buffer idiom between data and indicators.** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125) defines the active item at index zero and selects an unbounded numeric array or a bounded deque for reduced memory. The actual lookup is [`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163). Indicators can share cursor-based values, but available history and lookahead discipline remain part of strategy correctness.
 - **Model fills explicitly from bar prices and slippage.** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919) distinguishes market/close/limit fills using open/high/low/close and order timing; [`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038) applies percentage/fixed slippage and range policies. This makes assumptions inspectable, not exchange-realistic by default; cheat flags and allowed outside-bar prices need deliberate review.
-
 
 ## Tech stack
 
@@ -135,7 +134,6 @@ Install with `pip install backtrader` as in [README:126–140](https://github.co
 ## Ops difficulty
 
 **Low for a local experiment, high for maintained/live deployment.** The library needs no daemon, but reproducibility requires pinned environments and realistic fills/costs/data. Upstream inactivity shifts compatibility/security fixes to you or a reviewed fork. Live trading adds broker credentials, connectivity, risk limits and recovery; none is verified by a successful historical simulation.
-
 
 ## Health & viability
 
