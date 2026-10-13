@@ -6,19 +6,19 @@ category: fiction
 tags: [claude-code, novel-writing, long-form-writing, rag, continuity, story-memory]
 language: Python
 license: GPL-3.0
-maturity: v6.2.1, active, 5.6k stars (as of 2026-07)
-last_verified: 2026-07-13
+maturity: master v6.2.1 critical-bug maintenance only; v8 separate stable branch, 7467 stars (as of 2026-10-13)
+last_verified: 2026-10-13
 type: tool
 upstream:
-  pushed_at: 2026-07-07T06:06:39Z
+  pushed_at: 2026-10-12T07:25:52Z
   default_branch: master
-  default_branch_sha: 59654ccaa17f240c5ae41fe51db9443284f8ca1f
+  default_branch_sha: 0af0c0b2fc2e4104e8a12c1d62136c6595a6a983
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:42:28Z
+  computed_at: 2026-10-13T17:08:29Z
   overall: C
-  overall_score: 2.0
+  overall_score: 2.33
   scored_axes: 6
   applicable_axes: 6
   capped: false
@@ -26,17 +26,17 @@ health:
   needs_human_review: false
   axes:
     maintenance:
-      grade: B
+      grade: A
       raw:
         archived: false
-        last_commit_age_days: 1
-        active_weeks_13: 5
+        last_commit_age_days: 6
+        active_weeks_13: 7
         carve_out: null
     responsiveness:
       grade: A
       raw:
-        median_ttfr_hours: 13.3
-        qualifying_issues: 6
+        median_ttfr_hours: 7.5
+        qualifying_issues: 13
         band: relaxed_solo
         window_offset_days: 0
         source: issue
@@ -46,21 +46,21 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 42
-        release_assets: 7
+        release_downloads: 1175
+        release_assets: 61
         release_tier: D
         signal_basis: releases
     longevity:
       grade: C
       raw:
-        repo_age_days: 263
-        last_commit_age_days: 1
+        repo_age_days: 284
+        last_commit_age_days: 6
         cohort: tool
     governance:
-      grade: D
+      grade: C
       raw:
-        active_maintainers_12mo: 1
-        top1_share: 1.0
+        active_maintainers_12mo: 2
+        top1_share: 0.997
         top3_share: 1.0
         window_source: stats_contributors
         carve_out: null
@@ -75,7 +75,7 @@ health:
 
 # Webnovel Writer
 
-一个运行在 Claude Code 内的长篇中文网文创作插件：把故事事实、章节提交、检索、审查和只读面板串成连续性工作流，而非一次性续写提示词。
+写到第 80 章，助手忘了第 12 章埋下的伏笔，新提示词又拼不回整本书的事实。Webnovel Writer 的 Claude Code 分支记录每章事实，派生可检索的连续性状态，不只依靠聊天历史。
 
 ![Webnovel Writer — 健康度雷达](../../../../assets/health/webnovel-writer.zh.svg)
 
@@ -83,14 +83,15 @@ health:
 
 你是已在 Claude Code 写连载小说的作者，写到几十章后模型开始让人物动机、时间线、世界规则和伏笔互相矛盾。你需要每章都经过上下文准备、起草、审查、事实提取、章节提交，以及派生状态、索引和摘要投影。此时选 Webnovel Writer，而不是通用写作提示词，因为它在项目内保存可追溯的故事系统和可查询的连续性状态，不会把每章当成孤立对话。
 
-你接受 Claude Code 插件式流程，初始化一本书后用 `init`、`plan`、`write`、`review`、`query`、`learn`、`dashboard` 和 `doctor` 推进连载。语义 RAG 是可选项：没有 embedding 凭据时会回退到 BM25，仍可走本地关键词检索。
+本页源码复核覆盖默认 `master` 分支，即 v6 Claude Code 插件。[版本政策](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L21-L29) 已改为 v6 只修致命 bug、v7 冻结，另一个 DeepSeek Harness v8 分支才是当前正式工作台。已有 Claude Code 书稿需要这套事实链时才选 v6，不把它当成持续开发的新产品；文档没有经过验证的旧书直接迁移到 v8 方案。语义检索可选，README 记录了缺少 embedding 凭据时的 BM25 关键词路径。
 
 ## 何时不用
 
 - **你需要独立桌面小说编辑器，或根本不用 Claude Code。**改选 [novelWriter](https://github.com/vkbo/novelWriter) 或 [Manuskript](https://github.com/olivierkes/manuskript)：它们面向独立长篇写作，而本项目是 Claude Code 插件。
 - **你只写短篇、单篇文章或一次性营销文案。**改用聚焦的起草提示词或小型写作技能；故事合同、章节提交、SQLite 索引、投影与审查闸门只有在“连贯性”真是核心问题时才值得这份配置成本。
 - **你的政策不允许正文上下文发送给外部 embedding 或 rerank API。**改用纯本地检索栈，或接受本项目的 BM25 回退；其文档里的语义 RAG 配置使用兼容接口的外部 embedding 和 rerank 端点。
-- **你要分发未经 GPL 评估的专有组合衍生品。**改选宽松许可的替代品，或先取得法务意见；本仓库是 GPL-3.0。
+- **你要分发未经 GPL 评估的专有组合衍生品。**改选宽松许可替代品或先取得法务意见。所读 LICENSE 是 GPL-3.0，分发受覆盖副本时触发源码披露义务，不套用 AGPL 的网络使用披露规则。健康字段 `strong_network_copyleft` 是评分器现有的“强 copyleft／网络 copyleft”合并桶，不代表项目使用 AGPL。
+- **你需要持续新增功能，或自动迁移到当前工作台。**新 DeepSeek Harness 工作流应评估同仓库的 v8 分支，独立编辑器则选 novelWriter；master v6 现在只修致命 bug，v6/v8 的安装与书稿迁移不能混用。
 - **你需要独立基准证明它能处理某个具体篇幅。**把项目宣称的 200 万字体量标为未验证，并用代表性书稿试跑；本次调研未发现公开基准。
 
 ## 横向对比
@@ -101,6 +102,34 @@ health:
 | [Baoyu Skills](../content-production/baoyu-skills.zh.md) | ✅ | 要小说专用、带状态的连载流程时选 Webnovel Writer；要宽泛的写作与排版技能集合时选 Baoyu Skills。 | 聚焦插件带来合同、索引与审查开销；通用技能包更轻，但不提供小说连续性系统。 |
 | novelWriter | 未收录 | 必须使用跨平台、本地桌面编辑器时选 novelWriter；希望 Claude Code 主动规划、起草并核对连载时选本页项目。 | novelWriter 避开模型、提供商和插件耦合；Webnovel Writer 加入 agent 驱动的检索与审查。 |
 | Manuskript | 未收录 | 想要独立大纲与写作应用时选 Manuskript；章节事实必须进入 agent 可读状态系统时选本页项目。 | Manuskript 保持桌面作者工作流；Webnovel Writer 依赖 Claude Code 与 Python 工具。 |
+
+## 快速上手
+
+针对所读 v6 分支，在 Claude Code 执行 `claude plugin marketplace add lingfengQAQ/webnovel-writer --scope user`，再执行 `claude plugin install webnovel-writer@webnovel-writer-marketplace --scope user`，并按 [master README](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/README.md#L129-L199) 安装 Python 依赖。运行 `/webnovel-init` 回答书籍设定问题，插件创建大纲、正文目录和故事状态文件。用 `/webnovel-plan 1` 规划首卷，再用 `/webnovel-write 1` 写首章，查看保存的章节和审查输出。插件整理上下文、审查和事实投影，你决定剧情、裁决阻断问题、保留备份，并承担 Claude Code 和模型费用。可选语义检索会把正文送到你配置的 embedding、rerank 端点；BM25 是关键词排序，不表示任意 API 故障都会静默回退。这些是 v6 命令，不是 v8 安装方式或已验证的迁移流程。
+
+![webnovel-writer — 主干用户故事](../../../../assets/flow/webnovel-writer.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/webnovel-writer.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装 v6 Claude Code 插件和 Python 依赖
+2. **你**：初始化书籍，提供设定和大纲 — `/webnovel-init`
+3. **Webnovel Writer**：创建故事合同和书稿项目文件
+4. **你**：规划首卷后请求写首章 — `/webnovel-write 1`
+5. **Webnovel Writer**：准备上下文、起草审查章节，再记录已接受事实 — 组件：`写章技能和 Python 闸门`
+6. **Webnovel Writer**：保存章节，派生可查询的连续性状态
+
+**价值**：下一章可查询已保存的故事事实，不只依赖聊天历史
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **先接受事实，再派生视图。**[`webnovel-writer/scripts/data_modules/chapter_commit_service.py:33–190`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/chapter_commit_service.py#L33-L190) 校验审查、大纲履行、消歧和事实提取产物。阻断问题、遗漏节点或待处理歧义让提交进入 rejected；已接受事件才供给状态、索引、摘要、记忆和向量写入器。每路投影分别保存状态，因此提交文件存在不等于所有投影成功；审查和提取仍依赖助手给出可信产物。
+- **大索引只对候选集做向量工作。**[`webnovel-writer/scripts/data_modules/rag_adapter.py:1156–1280`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/scripts/data_modules/rag_adapter.py#L1156-L1280) 对小索引全表扫描，对大索引先合并 BM25 候选和近期片段，再评分向量，按名次倒数融合后调用重排序。候选过滤用部分召回换取有界工作量；大索引分支的查询 embedding 失败会返回空结果，不能把 README 的无 key 关键词路径当成通用故障恢复。
+- **提示词流程与可执行闸门分工。**[`webnovel-writer/skills/webnovel-write/SKILL.md:22–26,120–168,214–220`](https://github.com/lingfengQAQ/webnovel-writer/blob/0af0c0b2fc2e4104e8a12c1d62136c6595a6a983/webnovel-writer/skills/webnovel-write/SKILL.md#L120-L168) 把上下文、审查、提取交给不同助手，再调用 Python 提交前检查读取它们的产物。`--minimal` 模式明确写“未审查”产物，不伪称审查发生过；这是有绕过模式的工作流，不是独立文学质量检测器。
 
 ## 技术栈
 
@@ -122,14 +151,14 @@ health:
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-13）：**未归档，且仍在活跃更新；`v6.2.1` 和默认分支均于 2026-07-07 更新。
-- **治理与 bus factor：**GitHub contributor API 显示一位人类贡献者加自动化账号。项目自述为业余维护，因此单维护者中断是实质风险。[推断]
-- **年龄与 Lindy：**创建于 2026-01，约六个月的历史不足以建立长期耐久性信号，即使早期关注度很高。
-- **采用与风险：**约 5.6k stars、981 forks 只说明关注度，不能证明其连续性或规模宣称对特定书稿有效。GPL-3.0 是衍生分发时的决定性法律约束。
+- **维护快照（2026-10-13）：**未归档，master 提交 `0af0c0b` 来自 2026-10-07。master 版本政策明确 v6 只修致命 bug，仓库最新发布属于另一 v8 工作台；维护轴 A 不能覆盖这条支持政策。
+- **治理与 bus factor：**当前机器块测得两位活跃维护者，但几乎全部提交来自一人。README 自述业余维护并列出赞助，不等于基金会支持保证。[推断：依据是贡献集中和既定维护政策，关键维护者风险仍在]
+- **年龄与 Lindy：**创建于 2026-01，不到一年；持续提交有价值，但不能证明长期耐久性。
+- **采用与风险：**7467 stars 说明关注度，不证明实际书稿规模性能。GPL-3.0 是分发约束；许可风险 D 保留现有“强 copyleft／网络 copyleft”合并桶，不向 GPL 增添 AGPL 的网络使用披露义务。
 
 ## 存疑（未验证）
 
-- [未验证] “支持 200 万字体量连载”的说法来自项目描述；本次未发现独立压测或公开基准。
-- [未验证] 当前发布说明中“774 个测试通过”的说法来自维护者，未在本地复跑。
-- [未验证] 向量、rerank 和图混合检索的实际质量取决于所选外部服务和书稿；本次只从资料核对到 BM25 回退路径。
-- [推断] 贡献者列表由一位作者主导且项目不足一年，因此为长篇书稿采用它时，fork 能力和本地备份比 star 数更重要。
+- [未验证：没有运行代表性书稿] 200 万字体量的连续性、写作质量和外部检索性能未做基准测试，插件及提供商没有端到端运行。
+- [未验证：所读版本政策没有验证过的迁移流程] v6/v8 安装不同，本次没有证明已有书稿可直接迁移。
+- [推断：评分器与规则合并 GPL、AGPL 分类] `strong_network_copyleft` 桶名有歧义。保留 D 分数不代表 GPL 有网络使用披露义务，分发受覆盖副本的约束应以实际 GPL 文本判断。
+- [推断：依据是贡献集中和致命 bug 支持政策] 已有连载应保留本地备份和固定、可 fork 的 v6 副本，不以 stars 当耐久性保证。
