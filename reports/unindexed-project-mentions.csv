@@ -14,6 +14,8 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi),categories/on-device-ml/birdnet-go.md,,no
 [Bitwarden server](https://github.com/bitwarden/server),categories/dev-utilities/ops-infra/vaultwarden.md,,no
+[Cedar](https://github.com/cedar-policy/cedar),categories/agent-governance/agent-governance-toolkit.md,,no
+[Cedarling (Janssen)](https://github.com/JanssenProject/jans),categories/agent-governance/agent-governance-toolkit.md,,no
 [Cipher](https://github.com/campfirein/cipher),categories/agent-memory/coding-agent-memory/claude-subconscious.md,,no
 [Clash Nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
@@ -34,6 +36,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Official Codex (openai/codex)](https://github.com/openai/codex),categories/agent-tooling/harness-extensions/codex-chatgpt-web.md,,no
 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex),categories/agent-frameworks/coding-agents/terminal-agents/oh-my-openagent.md,,no
 [OmniVoice](https://github.com/k2-fsa/OmniVoice),categories/speech/voicestudio.md,,no
+[Open Policy Agent](https://github.com/open-policy-agent/opa),categories/agent-governance/agent-governance-toolkit.md,,no
 [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [openclaw/agent-skills](https://github.com/openclaw/agent-skills),categories/agent-skills/personal-collections/engineering-workflows/agent-scripts.md,,no
 [OpenCore Legacy Patcher](https://github.com/dortania/OpenCore-Legacy-Patcher),categories/hackintosh/nvidia-macos-driver.md,,no
@@ -254,7 +257,6 @@ capture-website-cli,categories/media-processing/image-processing/INDEX.md,,no
 CC Switch CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md,,no
 ccusage (ccusage/ccusage),categories/agent-tooling/work-state/token-optimizer.md,,no
 ccusage / token-cost CLIs,categories/agent-tooling/session-history/agentsview.md,,no
-Cedar / Cedarling,categories/agent-governance/agent-governance-toolkit.md,,no
 Celery `events`/`inspect` CLI,categories/task-queue/flower.md,,no
 Cerbos,categories/auth/casbin.md,,no
 cffi / ctypes,categories/python-tooling/cython.md,,no
@@ -303,7 +305,6 @@ cmark (commonmark/cmark),categories/markdown-tools/commonmark.md,,no
 code-server,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
-Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
 Colab MCP server (`googlecolab/colab-mcp`),categories/python-tooling/google-colab-cli.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
@@ -343,7 +344,6 @@ Custom editorial workflow,categories/agent-skills/ai-writing/content-production/
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
 Custom implementation,categories/document-parsing/any2html.md,,no
 Custom marketing playbook,categories/agent-skills/ai-writing/marketing-seo/marketingskills.md,,no
-Custom middleware,categories/agent-governance/agent-governance-toolkit.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
@@ -484,7 +484,6 @@ git-imerge,categories/agent-tooling/concurrent-editing/weave.md,,no
 GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/code-intelligence/graphify.md,,no
 GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
-GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md,,no
 GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
@@ -859,7 +858,6 @@ One-off summary prompt,categories/agent-skills/context-engineering/cangjie-skill
 ONLYOFFICE Desktop Editors (`ONLYOFFICE/DesktopEditors`),categories/office-editors/deckcraft.md,,no
 ONNX Runtime (+ GenAI / Mobile),categories/on-device-ml/litert-lm.md,,no
 OPA (Open Policy Agent),categories/auth/casbin.md,,no
-Open Policy Agent,categories/agent-governance/agent-governance-toolkit.md,,no
 OpenAI / Anthropic official prompting docs,categories/agent-skills/prompt-engineering/prompt-engineering-guide.md,,no
 OpenAI / Cohere embedding APIs,categories/rag-retrieval/vector-search/text2vec.md,,no
 OpenAI Agents SDK for JavaScript (`openai/openai-agents-js`),categories/agent-frameworks/agent-runtimes/agent-sdks/tanstack-ai.md,,no
@@ -976,7 +974,6 @@ Private voice guide,categories/agent-skills/ai-writing/de-ai-writing/de-ai-promp
 progressbar2,categories/dev-utilities/data-tools/tqdm.md,,no
 Project Wallace css-analyzer,categories/design-tokens/dembrandt.md,,no
 Prometheus + node_exporter,categories/dev-utilities/ops-infra/telegraf.md,,no
-Prompt-only safety rules,categories/agent-governance/agent-governance-toolkit.md,,no
 prompt_toolkit,categories/terminal-ui/asciimatics.md,,no
 PromptBreeder / APE / OPRO,categories/agent-frameworks/workflow-builders/skillopt.md,,no
 PromptLayer,categories/llm-eval/pezzo.md,,no

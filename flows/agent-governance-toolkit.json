@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "AGT does", "zh": "AGT 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the full Python package set", "zh": "安装完整 Python 包组合", "code": "pip install \"agent-governance-toolkit[full]\""},
+    {"lane": "you", "en": "Write policy rules and register the wrapped tool instead of the original", "zh": "写策略规则，注册包装后的工具而非原函数", "code": "safe_tool = govern(my_tool, policy=\"policy.yaml\")"},
+    {"lane": "you", "en": "Call the wrapped tool with the policy's action context", "zh": "带着策略所需动作上下文调用包装工具"},
+    {"lane": "them", "en": "Evaluate policy and record the decision before tool execution", "zh": "在工具执行前评估策略并记录决定", "component": {"en": "GovernedCallable", "zh": "GovernedCallable"}},
+    {"lane": "them", "en": "Reject forbidden calls or invoke the permitted tool", "zh": "拒绝违规调用，或执行被允许的工具"}
+  ],
+  "value": {"en": "Tool execution follows explicit application policy rather than prompt-only requests", "zh": "工具执行服从明确的应用策略，不只靠提示词请求"},
+  "sources": [
+    "https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/README.md",
+    "https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py"
+  ]
+}
