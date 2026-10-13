@@ -153,5 +153,5 @@ Follow the reviewed [deployment guide](https://github.com/ColeMurray/background-
 
 ## Caveats (unverified)
 
-- [未验证：未部署云基础设施] Sandbox backends, AWS/Cloudflare deployment and subscription login were source-reviewed, not independently run or security-audited.
-- [推断：依据是共享安装、shadow 默认与快照凭据边界] Start with a restricted internal pilot rather than broad repository access; source inspection alone cannot establish production isolation.
+- [未验证：cloud infrastructure was not deployed] Sandbox backends, AWS/Cloudflare deployment and subscription login were source-reviewed, not independently run or security-audited.
+- [推断：shared installation, shadow defaults and snapshot credential boundaries] Start with a restricted internal pilot rather than broad repository access; source inspection alone cannot establish production isolation.

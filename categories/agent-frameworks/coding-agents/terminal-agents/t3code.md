@@ -157,11 +157,11 @@ Install and authenticate a provider on the machine containing your project; for 
 ## Health & viability
 
 - **Maintenance snapshot (2026-10-13):** unarchived, with active main and frequent nightlies; GitHub reports 27350 stars, an attention signal rather than adoption proof.
-- **Release discipline:** stable `v0.0.45` was published 2026-10-02; newest listed releases are `v0.0.46` nightly prereleases. Active release automation does not equal a stable compatibility contract. [推断：依据是仍为 0.0.x 且稳定版和 nightly 分轨]
+- **Release discipline:** stable `v0.0.45` was published 2026-10-02; newest listed releases are `v0.0.46` nightly prereleases. Active release automation does not equal a stable compatibility contract. [推断：0.0.x versions and separate stable/nightly channels]
 - **Governance / bus factor:** the repo belongs to the `pingdotgg` organization and has many contributors, but reported contributions are strongly concentrated in one maintainer and external contribution intake is deliberately restricted.
 - **Age / Lindy:** created 2026-02, so its high early interest has not had time to become a long-term reliability signal. MIT is low-friction legally.
 
 ## Caveats (unverified)
 
-- [未验证：未运行提供商或远程客户端] Provider authentication, desktop/mobile compatibility and remote connections were source-reviewed, not tested end to end.
-- [推断：依据是 0.0.x 版本与高频 nightly] Pin and test a release before rollout; active releases and stars do not establish a stable compatibility contract.
+- [未验证：providers and remote clients were not run] Provider authentication, desktop/mobile compatibility and remote connections were source-reviewed, not tested end to end.
+- [推断：0.0.x versions and frequent nightlies] Pin and test a release before rollout; active releases and stars do not establish a stable compatibility contract.
