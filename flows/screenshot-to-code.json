@@ -1,22 +1,55 @@
 {
   "schema": 1,
-  "them": {"en": "screenshot-to-code does", "zh": "screenshot-to-code 做的"},
+  "them": {
+    "en": "screenshot-to-code does",
+    "zh": "screenshot-to-code 做的"
+  },
   "steps": [
-    {"lane": "you", "en": "Put a model key in backend/.env, start the backend and the frontend", "zh": "把模型 key 写进 backend/.env，启动后端和前端", "code": "poetry run uvicorn main:app --reload --port 7001 · pnpm dev"},
-    {"lane": "you", "en": "Drop in a screenshot and pick a stack (HTML + Tailwind, React, Vue…)", "zh": "拖进一张截图，选技术栈（HTML + Tailwind、React、Vue 等）"},
-    {"lane": "them", "en": "Runs four model variants in parallel, each an agent writing one HTML file", "zh": "并行跑四个模型版本，每个都是写单个 HTML 文件的 agent", "component": {"en": "variant agents", "zh": "版本 agent"}},
-    {"lane": "them", "en": "Crops the real logos and images out of your screenshot by bounding box", "zh": "按定位框从你的截图里裁出真实的 logo 和图片", "component": {"en": "extract_assets (Gemini)", "zh": "extract_assets（Gemini）"}},
-    {"lane": "them", "en": "Renders its page in headless Chromium, compares the shots by eye, patches the gaps", "zh": "用无头 Chromium 渲染自己的页面，目测对比后修补差异", "component": {"en": "screenshot_preview (Playwright)", "zh": "截图自检（Playwright）"}},
-    {"lane": "you", "en": "Pick the closest variant, refine a clicked element, export", "zh": "挑最像的版本，点选元素提修改，导出"}
+    {
+      "lane": "you",
+      "en": "Put a model key in backend/.env, start the backend and the frontend",
+      "zh": "把模型 key 写进 backend/.env，启动后端和前端",
+      "code": "poetry run uvicorn main:app --reload --port 7001 · pnpm dev"
+    },
+    {
+      "lane": "you",
+      "en": "Upload a screenshot or recording, or paste a URL, and pick a stack",
+      "zh": "上传截图或录屏，或粘贴网址，选好技术栈"
+    },
+    {
+      "lane": "them",
+      "en": "Streams four variants side by side, with your real images cropped in",
+      "zh": "并排流式给出四个版本，用的是从原图裁出的真实图片",
+      "component": {
+        "en": "FastAPI backend",
+        "zh": "FastAPI 后端"
+      }
+    },
+    {
+      "lane": "you",
+      "en": "Type a change, or click an element in select mode to scope it",
+      "zh": "打字提修改，或在选择模式下点中元素限定范围"
+    },
+    {
+      "lane": "them",
+      "en": "Patches only what you asked and returns two fresh variants",
+      "zh": "只改你要求的部分，返回两个新版本"
+    },
+    {
+      "lane": "you",
+      "en": "Copy the code, or Download Code as a ZIP with the images bundled",
+      "zh": "复制代码，或下载打包了图片的 ZIP"
+    }
   ],
-  "value": {"en": "A runnable single-file replica with your real images — no hand-slicing the layout or the assets", "zh": "拿到一份带真实图片、能直接打开的单文件复刻页——不用手工切图、手写布局"},
+  "value": {
+    "en": "A runnable single-file replica with your real images, refined by chat — no hand-slicing the layout or the assets",
+    "zh": "拿到一份带真实图片、能直接打开、可对话修改的单文件复刻页——不用手工切图、手写布局"
+  },
   "sources": [
-    "https://github.com/abi/screenshot-to-code#-getting-started (backend/.env keys, `poetry run uvicorn main:app --reload --port 7001`, `pnpm dev`, supported stacks)",
-    "backend/config.py@a813977 (NUM_VARIANTS = 4)",
-    "backend/agent/tools/definitions.py@a813977 (create_file, edit_file, extract_assets, screenshot_preview, retrieve_option)",
-    "backend/asset_extraction.py@a813977 (Gemini box_2d normalized 0-1000, crop from source image)",
-    "backend/agent/tools/screenshot_preview.py@a813977 (desktop + mobile full-page screenshots returned to the model)",
-    "backend/prompts/system_prompt.py@a813977 (call screenshot_preview after create/edit; targeted element edits)",
-    "backend/routes/export.py@a813977 (ZIP export bundling referenced assets)"
+    "https://github.com/abi/screenshot-to-code#-getting-started (backend/.env keys, `poetry run uvicorn main:app --reload --port 7001`, `pnpm dev`, Docker, supported stacks)",
+    "frontend/src/components/unified-input/tabs/{UploadTab,UrlTab,TextTab,ImportTab}.tsx@a813977 (four input modes; URL needs a ScreenshotOne key; Figma URLs refused)",
+    "backend/config.py@a813977 (NUM_VARIANTS = 4) and backend/routes/generate_code.py@a813977 (2 variants on update)",
+    "frontend/src/components/select-and-edit/@a813977 and backend/prompts/system_prompt.py@a813977 (targeted element edits)",
+    "frontend/src/components/preview/download.ts@a813977 and backend/routes/export.py@a813977 (Download Code → ZIP bundling referenced assets; Copy Code; Open in new tab)"
   ]
 }

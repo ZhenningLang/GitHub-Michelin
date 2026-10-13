@@ -84,6 +84,9 @@ Reach for screenshot-to-code when the input is pixels and the goal is a close vi
 
 ## Q&A
 
+**What are its core technical points?**
+Four, stacked. (1) It is a tool-calling agent, not one prompt: the model writes the page once with `create_file`, then may only change it by exact string replacement (`edit_file`), so a later fix cannot quietly rewrite parts that were already right. (2) Real images come from your screenshot: Gemini returns a bounding box for each logo or photo — four numbers marking the rectangle, scaled 0–1000 — and the backend crops it out of the original; only what cannot be cropped (an occluded photo, a background) is generated through Replicate. (3) A self-check: `screenshot_preview` renders the page in headless Chromium — a real browser with no window — at desktop and mobile widths and hands both images back to the model to patch what it sees wrong. (4) Four variants from different providers run in parallel and you pick. Think of a forger who traces the stamps from the original letter, then holds the copy next to it under the lamp — by eye, with no ruler.
+
 **How does it guarantee a perfect replica?**
 It does not. As of commit `a813977` (2026-10-09) there is no pixel diff, SSIM or other similarity score anywhere in the backend. Fidelity comes from four layers stacked: the prompt says to copy text verbatim; images are cropped from the original, not generated; the model renders its page and compares it to the screenshot by eye; and four variants run in parallel so a human picks the closest.
 
@@ -92,7 +95,7 @@ Yes, but a weak one. The judge is the same model that wrote the code, comparing 
 
 ## How it works
 
-It is an agent with tools, not a single prompt. Each variant starts a tool-calling loop: the model writes the whole page once with `create_file`, then may only change it with `edit_file` (exact string replacement), so a later fix cannot quietly rewrite parts that were already right. For images it calls `extract_assets`: Gemini returns a bounding box for each logo or photo you describe — four numbers marking the rectangle, scaled 0–1000 — and the backend crops that rectangle out of your original screenshot and serves it locally. Only what cannot be cropped (an occluded photo, a background) is generated through Replicate. Then `screenshot_preview` renders the page in headless Chromium — a real browser with no window — at desktop and mobile widths and hands both full-page images back to the model, which patches what it sees wrong. Think of a forger who traces the stamps from the original letter, then holds the copy next to it under the lamp — but by eye, with no ruler. What it does for you: the layout, the copy, the cropped assets, four variants and the self-check. What stays yours: the model keys and their bill, picking the winning variant, and turning a single CDN-loaded file into code that fits your project.
+You run it as a local web app: put at least one model key in `backend/.env` (or in the settings dialog), start the FastAPI backend and the Vite frontend — or `docker-compose up -d --build` — and open `http://localhost:5173`. Input comes four ways: upload one or more screenshots or a screen recording; paste a URL, which is screenshotted through a ScreenshotOne key you supply (a paid screenshot API; Figma links are refused — export the frame as an image instead); describe the page in text; or import existing HTML to keep editing it. You pick an output stack, the app decides which models to run from the keys you have, and four variants — alternative versions of the page — stream in side by side. From there it works like a chat: type a change, or switch to select mode and click an element so the edit touches only that element; each round returns two fresh variants. When one is right, copy the code, open it in a new tab, or Download Code — a ZIP that bundles the cropped images, which otherwise live on your backend. What it does for you: the first draft, the image crops, the variants and the targeted patches. What stays yours: the keys and their bill, choosing the variant, and porting a single CDN-loaded file into your real project. How it gets close to the screenshot internally is in Q&A.
 
 ![screenshot-to-code — backbone user story](../../assets/flow/screenshot-to-code.svg)
 
@@ -101,13 +104,13 @@ It is an agent with tools, not a single prompt. Each variant starts a tool-calli
 <summary>Text version of the flow</summary>
 
 1. **You**: Put a model key in backend/.env, start the backend and the frontend — `poetry run uvicorn main:app --reload --port 7001 · pnpm dev`
-2. **You**: Drop in a screenshot and pick a stack (HTML + Tailwind, React, Vue…)
-3. **screenshot-to-code**: Runs four model variants in parallel, each an agent writing one HTML file — component: `variant agents`
-4. **screenshot-to-code**: Crops the real logos and images out of your screenshot by bounding box — component: `extract_assets (Gemini)`
-5. **screenshot-to-code**: Renders its page in headless Chromium, compares the shots by eye, patches the gaps — component: `screenshot_preview (Playwright)`
-6. **You**: Pick the closest variant, refine a clicked element, export
+2. **You**: Upload a screenshot or recording, or paste a URL, and pick a stack
+3. **screenshot-to-code**: Streams four variants side by side, with your real images cropped in — component: `FastAPI backend`
+4. **You**: Type a change, or click an element in select mode to scope it
+5. **screenshot-to-code**: Patches only what you asked and returns two fresh variants
+6. **You**: Copy the code, or Download Code as a ZIP with the images bundled
 
-**Value**: A runnable single-file replica with your real images — no hand-slicing the layout or the assets
+**Value**: A runnable single-file replica with your real images, refined by chat — no hand-slicing the layout or the assets
 
 </details>
 <!-- flow-steps:end -->
@@ -148,7 +151,7 @@ It is an agent with tools, not a single prompt. Each variant starts a tool-calli
 
 ## Ops difficulty
 
-**Low to medium.** Two processes (FastAPI on 7001, Vite on 5173) or one `docker-compose up`, plus API keys and a Chromium install. The real ongoing cost is the model bill: up to four variants per screenshot, each capped at $3 (`GENERATION_MAX_COST_USD`), and unpriced models are not capped. Nothing in the setup adds authentication, so keep the backend on localhost.
+**Low to medium.** Two processes (FastAPI on 7001, Vite on 5173) or one `docker-compose up -d --build`, plus API keys and a Chromium install. The real ongoing cost is the model bill: up to four variants per screenshot, each capped at $3 (`GENERATION_MAX_COST_USD`), and unpriced models are not capped. Nothing in the setup adds authentication, so keep the backend on localhost.
 
 ## Health & viability
 
