@@ -6,17 +6,17 @@ category: speech-and-subtitles
 tags: [video-audio, video-understanding, agent-skill, app]
 language: Python
 license: MIT
-maturity: active, ~8,688 stars (as of 2026-07)
-last_verified: 2026-07-16
+maturity: v0.3.2, main updated 2026-09-25, 18489 stars (as of 2026-10)
+last_verified: 2026-10-13
 type: app
 upstream:
-  pushed_at: 2026-07-01T01:26:49Z
+  pushed_at: 2026-09-25T01:25:54Z
   default_branch: main
-  default_branch_sha: 83da59fa78c3eee9e20f515fe75c438bb5166efd
+  default_branch_sha: 03ceb42f7fa2c4439aca01752118044baabffb8f
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:38:05Z
+  computed_at: 2026-10-13T22:47:50Z
   overall: C
   overall_score: 2.17
   scored_axes: 6
@@ -29,14 +29,14 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 84
-        active_weeks_13: 2
+        last_commit_age_days: 19
+        active_weeks_13: 3
         carve_out: null
     responsiveness:
       grade: B
       raw:
-        median_ttfr_hours: 220.5
-        qualifying_issues: 23
+        median_ttfr_hours: 223.7
+        qualifying_issues: 16
         band: relaxed_solo
         window_offset_days: 4
         source: issue
@@ -46,15 +46,15 @@ health:
       raw:
         registry: null
         canonical_package: null
-        release_downloads: 20475
-        release_assets: 5
+        release_downloads: 21358
+        release_assets: 8
         release_tier: D
         signal_basis: releases
     longevity:
       grade: D
       raw:
-        repo_age_days: 151
-        last_commit_age_days: 84
+        repo_age_days: 173
+        last_commit_age_days: 19
         cohort: app
     governance:
       grade: D
@@ -74,33 +74,58 @@ health:
 ---
 # claude-video
 
-Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.
+编程 agent 只看文件名无法解释录屏；Watch 把视频整理成带时间戳的图像与语音证据，交给 agent 阅读。
 
 ![claude-video — 健康度雷达](../../../../assets/health/claude-video.zh.svg)
 
 ## 何时使用
 
-你需要 agent 回答关于视频的问题，而不是生成或剪辑视频。Claude / Codex / Cursor 需要拿到视频 URL 或本地文件，抽帧、获取字幕或转录，并把视觉 / 音频证据交给模型来回答时，选 claude-video。
+你在排查录屏中的界面故障，想问本地编程 agent“2:30 有什么变化”。Watch 将视频提取、字幕和带时间戳的帧路径打包成技能，让 agent 查看证据，而非仅凭转录猜画面。需要现成的 agent 证据和有界抽帧时选它；要自定义媒体管线控制时选原始 FFmpeg。
 
-它适合分析发布视频、总结课程、从屏幕录制诊断 bug、把 playlist 变成笔记，或询问“2:30 发生了什么”。上游 `/watch` 命令封装了 `yt-dlp`、`ffmpeg`、字幕提取、可选 Whisper fallback、frame budget、去重，以及 skill / plugin 安装路径。
+用可执行 shell 的 Claude Code、Codex 或其它 Agent Skills 宿主。本地提取要明确选 `--engine local`；默认 `auto` 只要解析到 Gemini key 就选 Gemini。本地提取不等于私密回答：宿主仍可能把图像与转录发给模型供应商。
 
 ## 何时不用
 
 - **你需要视频生成、剪辑、转码或生产流水线。** 用 [MoviePy](../editing-and-cutting/moviepy.zh.md)、[FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md)、[MLT](../editing-and-cutting/mlt.zh.md) 或视频生产工具；claude-video 是视频理解 helper。
 - **你只需要纯转录。** 画面不重要时，[OpenAI Whisper](whisper.zh.md)、原生字幕或专用 ASR pipeline 更简单。
-- **你不能运行 shell 工具或安装 `yt-dlp` / `ffmpeg`。** 工作流依赖本地命令执行；claude.ai web 也需要启用 code execution / file creation。
-- **视频源禁止下载或权限不清。** `yt-dlp` 支持不等于你拥有访问、下载或再分发权限。
-- **你要对长视频全程做密集视觉回忆。** capped modes 会稀疏覆盖；上游建议用 `--start` / `--end` 聚焦重跑，或用成本更高的 uncapped `token-burner`。
+- **你在用 Claude Chat 或 Cowork。** 本版不支持两者；改用 Claude Code 会话或独立 FFmpeg/Whisper 工作流。云端 Code 也有独立安装与网络限制。
+- **全部内容必须留在设备上。** 用本地 FFmpeg/Whisper 和获准本地模型宿主；Watch 的本地提取不能限制回答 agent 的外传。Gemini 上传本地文件，Groq/OpenAI 回退上传音频。
+- **源站阻止获准下载。** 用合法本地导出和 FFmpeg，不绕访问限制；yt-dlp 支持不授予访问或再分发权。
+- **每个微小编辑和瞬间都必须可见。** 用专门的密集 FFmpeg 提取管线。Watch 的聚焦运行和 `--no-dedup` 有帮助，但场景选择与缩略图去重会漏细小文本变化；无数量上限的 `token-burner` 也不等于源视频每一帧。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 需要底层解码、转码、滤镜控制时选 FFmpeg。 | FFmpeg 是引擎；claude-video 把媒体提取包装成 agent 可用的视频理解流程。 |
-| [OpenAI Whisper](whisper.zh.md) | ✅ | 任务只有 speech-to-text 时选 Whisper。 | Whisper 处理音频文字；claude-video 把 transcript、frames 和 agent prompt 组合起来。 |
-| [MoviePy](../editing-and-cutting/moviepy.zh.md) | ✅ | 需要程序化剪辑 / 合成时选 MoviePy。 | MoviePy 产出编辑后的视频；claude-video 读取视频做分析。 |
-| 自写 yt-dlp + ffmpeg 脚本 | 未收录 | 不需要 agent skill packaging，只要固定 ingestion pipeline 时自写。 | 自写脚本更小、更确定；claude-video 已处理 agent-facing UX 和 frame budget。 |
+| [FFmpeg](../transcoding-and-pipelines/ffmpeg.zh.md) | ✅ | 要在自己的管线里精确提取或转码选 FFmpeg；要现成 agent 证据和时间戳问答选 Watch。 | FFmpeg 暴露媒体引擎，没有 agent 编排；Watch 增加抽样与宿主集成，但视觉覆盖不完整。 |
+| [OpenAI Whisper](whisper.zh.md) | ✅ | 最终只要可搜索语音文本时选 Whisper；答案还依赖屏幕画面时选 Watch。 | Whisper 提供本地语音推理，没有视觉证据；Watch 组合模态，也可能增加云端费用。 |
+| [MoviePy](../editing-and-cutting/moviepy.zh.md) | ✅ | 用 Python 制作剪辑选 MoviePy；理解现有录屏而不制作编辑结果选 Watch。 | MoviePy 提供片段与图层 API 并渲染视频；Watch 提供抽样证据，回答交给宿主。 |
 
+## 快速上手
+
+在本地 Claude Code 会话里依次输入 `/plugin marketplace add bradautomates/claude-video` 和 `/plugin install watch@claude-video`，如激活要求则开新会话（[README.md:91–112](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/README.md#L91-L112)）。共享含短视频的本地目录，请 watch 技能按时间戳总结该文件，明确选择本地引擎、balanced 细节和仅字幕（`none`）回退。技能检查 Python 与媒体工具、提取选定帧，并给 agent 图像路径和可用转录；关闭语音回退的本地文件没有语音转录。Agent 查看图像再回答，你负责提供获准媒体、批准缺失工具安装，并按时间戳核答案。这条路径不调用 Gemini 或转录 API，但仍消耗宿主的图像与模型预算，也可能向其供应商外传证据；禁止外传时须用获准本地宿主。
+
+![claude-video — 主干用户故事](../../../../assets/flow/claude-video.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/claude-video.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：在本地 Claude Code 安装 Watch 并批准媒体工具准备 — `/plugin install watch@claude-video`
+2. **你**：给技能短本地视频与问题，选本地且关闭语音回退 — `--engine local · --no-whisper`
+3. **claude-video**：按预算提取带时间戳的帧并报告可用证据 — 组件：`watch.py + frames.py`
+4. **你**：让宿主查看所列图像并据时间戳回答
+
+**价值**：根据可见证据回答视频问题，并明确证据缺口
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **明确选路，避免暗中换引擎。** [skills/watch/scripts/config.py:112–129](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/config.py#L112-L129) 解析 Gemini key 与引擎；[skills/watch/scripts/watch.py:33–91](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L33-L91) 发送 YouTube URL 或上传其它媒体，失败后报告而不转本地。删除失败会产生警告，不证明立即擦除；临时目录清理也忽略文件系统错误。
+- **先找完整区间候选，再压到预算。** [skills/watch/scripts/frames.py:517–581](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L517-L581) 不限候选数地检测场景，再均匀抽到预算，场景稀少时改均匀采样。[skills/watch/scripts/frames.py:486–514](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/frames.py#L486-L514) 用 16×16 RGB 差异删除近重复帧。它避免只留下前段，却仍是稀疏证据而非完整事件覆盖；缩略图失败会跳过去重，细小编辑可能被丢弃。
+- **保留可用模态，同时暴露缺口。** [skills/watch/scripts/watch.py:183–209](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/watch.py#L183-L209) 先取字幕，再下载媒体；[skills/watch/scripts/whisper.py:301–333](https://github.com/bradautomates/claude-video/blob/03ceb42f7fa2c4439aca01752118044baabffb8f/skills/watch/scripts/whisper.py#L301-L333) 记录失败音频块的区间，并将成功块恢复为源时间。报告可以只带部分证据；退出 0 不代表每种模态或每段区间成功。
 
 ## 技术栈
 
@@ -111,25 +136,26 @@ Give Claude the ability to watch any video. /watch downloads, extracts frames, t
 ## 依赖
 
 - **本地 shell 执行**，用于 `yt-dlp`、`ffmpeg`、Python 脚本和临时工作目录。
-- **可选 Whisper API key**——上游偏好 Groq `whisper-large-v3`，OpenAI `whisper-1` 是替代；很多公开视频可用原生字幕避免付费转录。
+- **Python 3.10+ 与媒体工具**——本地路径需要 FFmpeg/ffprobe 和当前 yt-dlp；YouTube 另需受支持的 JavaScript/EJS 配置。技能不捆绑这些工具。
+- **可选语音后端**——`none` 只读字幕；托管 WhisperX 用独立 Python 3.12 环境与模型（上游要求 3 GB 磁盘、8 GB RAM）。Groq/OpenAI 要各自 key 并上传音频；旧 `auto` 先找 Groq 再找 OpenAI，不是本地 WhisperX。
+- **可选 Gemini 引擎**——需 Google key，向 Google 发送 YouTube URL 并上传其它视频；云额度、定价与保留策略独立于本地管线。引擎失败不会自动换路。
 - **Agent image-reading context**——抽出的 frames 会进 Claude / agent 上下文，所以成本和 context budget 随帧数、分辨率增长。
 - **平台 package manager**——首次 setup 可能在 macOS 调 Homebrew，或在 Linux / Windows 打印安装命令。
 
 ## 运维难度
 
-**个人使用低，团队工作流中等。** plugin / skills 安装不复杂，但团队稳定使用需要 PATH / 工具安装、API key 处理、临时文件清理、frame / image token 成本控制，以及视频源权限策略。
+**个人低中，团队中等。** 安装插件不等于准备好运行环境。要维护媒体工具、引擎与回退偏好、私密 key 文件、模型缓存和帧预算。本地运行产物会留到宿主执行技能的清理指令；Gemini 会尝试删除，失败会报告。不能从“本地”二字推得自动清理或供应商隐私保证。
 
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2026-07-01T01:26:49Z`；health 将 maintenance 评为 B、responsiveness 评为 B。
-- **采用快照：** 2026-07 约 8,688 个 GitHub stars；作为年轻 repo 关注度很强，但 health scorer 没有可用的 package-download 轴。
-- **许可证快照：** 已人工核验根目录 `LICENSE` 为 MIT；当前 health block 将 `risk_license` 评为 `A`，与人工核验一致。
-- **Lindy / 治理：** 项目很年轻，health 中 longevity 为 D；治理因单维护者集中为 D。
-- **风险信号：** 依赖第三方视频源行为、本地媒体工具、可选转录供应商和多模态 token 成本。
+- **判断日期 2026-10-13：** 有用的年轻集成，不是长期成熟基础设施。默认分支与最新 v0.3.2 release 均为 2026-09-25；仓库包含离线测试和跨平台 CI。旧英文正文的响应 A 与许可未知断言和自己的块不符，已删除。
+- **采用与支持：** 18489 stars 和技能发布包表示关注，不保证部署质量。个人账号项目、维护者集中，没有基金会或厂商支持承诺。
+- **年龄、Lindy 与许可：** 创建于 2026-04-24，不足六个月，历史耐久性未建立。根 MIT 许可已核；媒体来源权限和供应商条款另计。
+- **运行风险：** 源站变化、稀疏帧、可选云上传与模型费用，比 star 数更影响选型。让评审者看见引擎选择和证据缺口。
 
 ## 存疑（未验证）
 
-- [未验证] README 中的 extraction timing benchmark 本次没有本地复现。
-- [未验证] URL 支持依赖 `yt-dlp` 和源站行为，后者可能变化。
-- [推断] 它更适合 agent-assisted video understanding；如果主需求是确定性的媒体 ingestion / storage pipeline，自写管线可能更合适。
+- [未验证：本次未运行上游管线或调用模型] README 耗时、源站支持和平台安装方案没有复现；本次复核只读源码与发布元数据。
+- [未验证：未取得宿主与供应商隐私配置] 本地提取不证明回答 agent 会向哪里发送图像与转录，也不证明供应商保留策略；处理私密媒体前核宿主和选路。
+- [推断：源码采用抽样与缩略图去重] 成功报告仍会漏短暂事件或细小屏幕编辑；提取成功不能推出完整覆盖或答案准确。
