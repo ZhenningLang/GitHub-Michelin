@@ -1233,9 +1233,11 @@ labeled (`[未验证]` / `[推断]`), never asserted as eternal truth.
 | Section (EN / 中) | Required for | What it carries |
 |---|---|---|
 | `When to use` / `何时使用` | all types | the **trigger scenario** — when you should think of this project, and why it beats substitutes there |
-| `How it works` / `怎么用起来` | all types (backfilling) | the **backbone user story** — a plain-language mechanism + a generated two-lane flow card (you do / it does) |
 | `When NOT to use` / `何时不用` | all types | the decisive filter: anti-patterns, scale ceilings, lock-in, maintenance risk |
 | `Comparison` / `横向对比` | all types | a table vs real substitutes (`未收录` when an alternative isn't indexed yet) |
+| `Q&A` / `快问快答` | optional section, required decision | leftover questions; move material with a required-section home there first, or record `no leftover Q&A`; never pad |
+| `Quick start` / `快速上手` | all types when FLOW requires it | developer usage: install/configure/call, your work vs its work, plus the generated two-lane backbone flow card |
+| `Key techniques` / `技术要点` | all v2 types | non-empty source-backed implementation techniques and their limits |
 | `Tech stack` / `技术栈` | non-`skill-pack` | languages, frameworks, datastores it's built on |
 | `Dependencies` / `依赖` | non-`skill-pack` | runtime/infra you must run (db, services, hardware) |
 | `Ops difficulty` / `运维难度` | non-`skill-pack` | low / medium / high + why |
@@ -1244,6 +1246,11 @@ labeled (`[未验证]` / `[推断]`), never asserted as eternal truth.
 
 The full contract is [tools/schema.md](tools/schema.md); the linter ([tools/lint.py](tools/lint.py))
 enforces this shape (sections, bilingual parity, fullwidth Chinese punctuation, README parity).
+The table is v2, selected by `last_verified >= 2026-10-13` (`OSS_ATLAS_SECTIONS_V2_FROM`
+overrides): H2s must be in this set, unique and ordered. Older v1 pages retain their old order and
+`How it works` / `怎么用起来` until re-verification, when the maintainer manually reorders/renames
+and researches Key techniques before bumping the date. The independent FLOW date (default
+`2026-09-20`) and `OSS_ATLAS_REQUIRE_FLOW=1` govern Quick start; the generated flow text is unchanged.
 
 ## Freshness
 

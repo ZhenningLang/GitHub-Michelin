@@ -91,18 +91,32 @@ The schema is the contract: **`tools/schema.md`**. In short:
   sections are required.
 - Required body sections — **all types**: `When to use`, `When NOT to use`, `Comparison` (Chinese:
   `何时使用`, `何时不用`, `横向对比`). `When to use` is the *trigger scenario* (when to think of it);
-  `How it works` / `怎么用起来` (between those two; backfill in progress) is the *backbone user story* —
-  plain-language mechanism + a flow card generated from `flows/<stem>.json` by `tools/flow_card.py`. **Non-`skill-pack` types also require**: `Tech stack`,
+  v2 order is When to use → When NOT → Comparison → optional Q&A → `Quick start` / `快速上手` →
+  `Key techniques` / `技术要点` → type-adaptive extras → Health → Caveats. Quick start is developer
+  usage (install/configure/call, your work vs its work) + the backbone flow card generated from
+  `flows/<stem>.json` by `tools/flow_card.py`; Key techniques is required, non-empty source-backed
+  implementation insight, not another install path. **Non-`skill-pack` types also require**: `Tech stack`,
   `Dependencies`, `Ops difficulty` (`技术栈`, `依赖`, `运维难度`). A `skill-pack` (prompt/skill
   collection) omits those three — don't pad them with "N/A". **Every page (all types) also has a**
   `Health & viability` / `健康度与可持续性` **section** — a dated, labeled viability verdict
   (maintenance, governance/bus-factor, backing, **age/Lindy**, adoption, risk flags; see schema §7)
   — **and ends with a** `Caveats (unverified)` / `存疑（未验证）` **ledger** — the uncertainty list.
-  `Q&A` / `快问快答` (after When to use, before How it works) — the human's questions from the
+  `Q&A` / `快问快答` (v2: after Comparison, before Quick start, or Key techniques if Quick start is absent) — the human's questions from the
   reading conversation, and short versions of the agent's answers. A **required decision, optional
   section**: write it, or record `no leftover Q&A` in the change summary — never omit silently,
-  never pad. Both siblings must match, and a later conversation about a published page re-opens
+  never pad. Move questions with a required-section home there first. Both siblings must match, and a later conversation about a published page re-opens
   the decision (see schema §2).
+- **Dated sections:** `last_verified >= 2026-10-13` selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM`
+  overrides); all H2s must be in the prescribed set and strictly ordered, with no duplicates.
+  Older v1 pages keep their old order and `How it works` / `怎么用起来`; untouched pages stay unchanged.
+  Re-verification manually reorders/renames and researches Key techniques before bumping the date.
+  Quick start follows the independent FLOW cutoff (`2026-09-20` by default) and
+  `OSS_ATLAS_REQUIRE_FLOW=1`; generated flow text stays byte-identical. New two-section scaffolds
+  retain the unresearched marker and cannot merge. The v2 title cannot be used on a v1 date or vice versa.
+  v2 has one source format: H2s are column-zero ATX with a preceding blank line; fences/comments
+  open and close at column zero. Prefixed/indented delimiters and #1–6 heading-like lines are errors,
+  as are setext underlines and C0 controls except tab/CR/LF. Use flat root examples, not nested
+  Markdown recovery; only CR/LF/CRLF count as physical line boundaries.
 - **Bilingual**: the two files are monolingual mirrors — do NOT mix languages inside one file.
 - **Truth labeling**: anything not confirmed from a source is `[未验证]` / `[推断]`. Date your
   facts (`maturity`, `last_verified`) — **dates are UTC**, and the gate compares `last_verified`
@@ -219,7 +233,7 @@ None of the three catches a *single* page of fluent, project-agnostic prose; tha
 `intake-stub-page-reverified`, `duplicated-section-prose-reverified`, `zh-lead-not-chinese-reverified`);
 run it without the flag for
 the full report-only triage. Neither can judge whether `When to use` is a real
-trigger scenario, whether `How it works` matches how the project is really used, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
+trigger scenario, whether `Quick start` matches developer usage, whether `Key techniques` is source-backed, whether `Comparison` compares real substitutes, or whether prose is accurate — a clean
 run ≠ content reviewed. Those remain agent/human judgment per `tools/schema.md`.
 
 ## Conventions

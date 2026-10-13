@@ -27,8 +27,18 @@ The fastest path is the `add-project` skill (`.claude/skills/add-project/`). By 
    plus a `Caveats (unverified)` / `存疑（未验证）` ledger on every page.
 3. Each file is **monolingual** — English page uses the English headings, Chinese page the Chinese
    ones. The `When to use` section is the **trigger scenario** (second-person: when to think of it);
-   `How it works` is the **backbone user story** — a plain-language mechanism paragraph + a flow card
-   generated from `flows/<slug>.json` by `tools/flow_card.py` (see tools/schema.md).
+   `Quick start` / `快速上手` is developer usage — install/configure/call, your work vs its work —
+   plus a backbone flow card generated from `flows/<slug>.json` by `tools/flow_card.py`.
+   `Key techniques` / `技术要点` is non-empty, source-backed implementation insight for every v2 type.
+   The v2 H2 order is When to use → When NOT → Comparison → optional Q&A → Quick start →
+   Key techniques → type-adaptive extras → Health → Caveats; unknown or duplicate H2s fail.
+   Q&A is a required decision, not required padding: move material with a required-section home
+   there, and record `no leftover Q&A` if none remains; keep both languages aligned.
+   `last_verified >= 2026-10-13` selects v2 (`OSS_ATLAS_SECTIONS_V2_FROM` overrides).
+   v1 pages retain their old order and `How it works` / `怎么用起来` until re-verification;
+   manually reorder, rename and research Key techniques before bumping the date. FLOW remains
+   independent (`OSS_ATLAS_FLOW_REQUIRED_FROM`, default `2026-09-20`; `OSS_ATLAS_REQUIRE_FLOW=1`),
+   and requires Quick start in v2. Never hand-edit the generated flow text.
 4. **Separate facts from judgment.** Label anything unverified `[未验证]` / `[推断]` — but keep inline
    labels to the load-bearing few (≤3 before the Caveats ledger; the linter WARNs above that) and
    collect every unverified fact as a bullet in the page's final `Caveats (unverified)` ledger. The

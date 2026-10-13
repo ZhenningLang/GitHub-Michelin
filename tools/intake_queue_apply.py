@@ -194,6 +194,26 @@ def page_en(item: dict, sha: str, cat_dir: Path) -> str:
     desc = esc(gh.get("description")) or f"{item['name']} is an open-source repository in the {Path(item['category_path']).name} category."
     archived = " It is archived on GitHub, so treat it as a legacy or pattern-source option rather than a default for new production work." if gh.get("archived") else ""
     card = rel_health(cat_dir, item["slug"], False)
+    extra_sections = "" if item["type"] == "skill-pack" else f"""
+## Tech stack
+
+- **Primary language:** {gh.get('language') or 'Unknown'} per GitHub metadata.
+- **Repository:** `{gh.get('full_name')}`.
+- **Project shape:** categorized as `{item['type']}` for atlas routing; verify upstream architecture before treating this as a stable API contract.
+- **Upstream state:** default branch `{gh.get('default_branch')}`, last pushed `{gh.get('pushed_at')}`, archived `{str(bool(gh.get('archived'))).lower()}`.
+
+## Dependencies
+
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
+
+## Ops difficulty
+
+<!-- oss-atlas:unresearched -->
+**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
+verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
+"""
     return frontmatter(item, sha) + f"""
 # {item['name']}
 
@@ -217,24 +237,14 @@ verdict — do not act on it. Fill it from the sources (`sync-entry`) before thi
 
 {comparison_en(item, cat_dir)}
 
-## Tech stack
-
-- **Primary language:** {gh.get('language') or 'Unknown'} per GitHub metadata.
-- **Repository:** `{gh.get('full_name')}`.
-- **Project shape:** categorized as `{item['type']}` for atlas routing; verify upstream architecture before treating this as a stable API contract.
-- **Upstream state:** default branch `{gh.get('default_branch')}`, last pushed `{gh.get('pushed_at')}`, archived `{str(bool(gh.get('archived'))).lower()}`.
-
-## Dependencies
+## Quick start
 
 <!-- oss-atlas:unresearched -->
-**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
-verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
 
-## Ops difficulty
+## Key techniques
 
 <!-- oss-atlas:unresearched -->
-**UNRESEARCHED.** Nobody has read the upstream sources for this section. This is a hole, not a
-verdict — do not act on it. Fill it from the sources (`sync-entry`) before this page can merge.
+{extra_sections}
 
 ## Health & viability
 
@@ -255,6 +265,24 @@ def page_zh(item: dict, sha: str, cat_dir: Path) -> str:
     desc = esc(gh.get("description")) or f"{item['name']} 是 `{Path(item['category_path']).name}` 分类下的开源仓库。"
     archived = " GitHub 将它标为 archived，因此新生产项目不应把它当默认方案，而应先当作遗留或模式参考。" if gh.get("archived") else ""
     card = rel_health(cat_dir, item["slug"], True)
+    extra_sections = "" if item["type"] == "skill-pack" else f"""
+## 技术栈
+
+- **主要语言：** GitHub 元数据返回为 {gh.get('language') or 'Unknown'}。
+- **仓库：** `{gh.get('full_name')}`。
+- **项目形态：** atlas 路由暂归为 `{item['type']}`；把它当稳定 API 契约前，请复核上游架构。
+- **上游状态：** 默认分支 `{gh.get('default_branch')}`，最后 push `{gh.get('pushed_at')}`，archived 为 `{str(bool(gh.get('archived'))).lower()}`。
+
+## 依赖
+
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
+
+## 运维难度
+
+<!-- oss-atlas:unresearched -->
+**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
+"""
     return frontmatter(item, sha) + f"""
 # {item['name']}
 
@@ -276,22 +304,14 @@ def page_zh(item: dict, sha: str, cat_dir: Path) -> str:
 
 {comparison_zh(item, cat_dir)}
 
-## 技术栈
-
-- **主要语言：** GitHub 元数据返回为 {gh.get('language') or 'Unknown'}。
-- **仓库：** `{gh.get('full_name')}`。
-- **项目形态：** atlas 路由暂归为 `{item['type']}`；把它当稳定 API 契约前，请复核上游架构。
-- **上游状态：** 默认分支 `{gh.get('default_branch')}`，最后 push `{gh.get('pushed_at')}`，archived 为 `{str(bool(gh.get('archived'))).lower()}`。
-
-## 依赖
+## 快速上手
 
 <!-- oss-atlas:unresearched -->
-**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
 
-## 运维难度
+## 技术要点
 
 <!-- oss-atlas:unresearched -->
-**未研究。** 还没有人为这一节读过上游资料。这里是一个空洞，不是结论——不要据此判断。请先读源头把它补上（`sync-entry`），这个页面才能合并。
+{extra_sections}
 
 ## 健康度与可持续性
 

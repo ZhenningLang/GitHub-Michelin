@@ -101,10 +101,11 @@ its own contract. Then the required `##` sections below — **which ones are req
 | English page (`<slug>.md`) | Chinese page (`<slug>.zh.md`) | Required for | What goes here |
 |---|---|---|---|
 | `## When to use` | `## 何时使用` | **all types** | the **trigger scenario** (see below) — the concrete situation in which you should think of this project, and why it beats its substitutes there |
-| `## Q&A` | `## 快问快答` | **all types** — section optional, **decision required** | leftover from the reading conversation: the human's questions, and short versions of the agent's answers. Write it, or record "no leftover Q&A" in the change summary — never omit silently, never pad |
-| `## How it works` | `## 怎么用起来` | **all types** (backfill in progress — see below) | the **backbone user story**: a plain-language mechanism paragraph + a generated two-lane flow card (you do / it does) — how you actually put it to work once chosen |
 | `## When NOT to use` | `## 何时不用` | **all types** | anti-patterns, scale ceilings, lock-in, maintenance risk — **the most valuable section** |
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
+| `## Q&A` | `## 快问快答` | **all types** — section optional, **decision required** | leftover questions from the reading conversation; move questions with a required-section home there first; write the rest, or record "no leftover Q&A" in the change summary — never pad |
+| `## Quick start` | `## 快速上手` | **all types** when FLOW requires it (see below) | developer usage after choosing it: install/configure/call, what you do vs what it does, plus the generated two-lane backbone flow card |
+| `## Key techniques` | `## 技术要点` | **all types in v2** | source-backed implementation techniques that explain how this project achieves its result, with constraints and source locations |
 | `## Tech stack` | `## 技术栈` | non-`skill-pack` | languages, frameworks, datastores it is built on |
 | `## Dependencies` | `## 依赖` | non-`skill-pack` | runtime/infra a user must run (db, services, hardware) |
 | `## Ops difficulty` | `## 运维难度` | non-`skill-pack` | low / medium / high + why; deploy + maintain burden |
@@ -112,13 +113,39 @@ its own contract. Then the required `##` sections below — **which ones are req
 | `## Caveats (unverified)` | `## 存疑（未验证）` | **all types** | a bulleted **ledger**: one `[未验证]`/`[推断]` bullet per unverified fact — the page's single uncertainty list |
 
 **Type-adaptive sections.** `skill-pack` entries (prompt/skill collections, harness configs) require
-`When to use / When NOT to use / Comparison` **+ `Health & viability`** — a bag of prompts has no
+`When to use / When NOT to use / Comparison / Key techniques` **+ `Health & viability`** in v2 — a bag of prompts has no
 meaningful tech-stack / dependencies / ops, so those three are omitted rather than padded with
 "N/A", but viability (is it maintained? backed? Lindy?) still matters. All other types
-(`tool/library/app/framework/service/model`) require **all seven** content sections.
+(`tool/library/app/framework/service/model`) require the three extra sections too.
 `Health & viability` and `Caveats` are required for **every** type. The linter enforces the right set
 per `type` — and for `skill-pack` it **ERRORs if any of the three forbidden sections
 (`Tech stack / Dependencies / Ops difficulty`) is present** (omit, do not include them).
+
+**Dated dual track.** The table is the v2 order. `last_verified >= 2026-10-13` selects v2
+(`OSS_ATLAS_SECTIONS_V2_FROM` overrides the cutoff): every H2 must belong to this table, occur once,
+and follow its order; Caveats retains tolerant prefix matching and must be last. Key techniques is
+required, non-empty (not just whitespace), and its presence must match the bilingual sibling.
+Q&A is optional; Quick start is optional only when neither the FLOW date nor the force flag requires
+it. Older v1 pages keep their existing checks and order: When to use → optional Q&A →
+`How it works` / `怎么用起来` (if present) → When NOT → Comparison → type-adaptive extras →
+Health → Caveats. Do not migrate untouched old pages. A v2 page must rename the old flow heading;
+a v1 page must not use Quick start or Key techniques without re-verifying and updating its date.
+Re-verification means **manual** reorder/rename and researching Key techniques **before** bumping
+the date; there is no automatic section-reorder tool. Dates remain UTC, never future dates.
+
+**v2 fixed source syntax (fail closed).** Only column-zero ATX `## Title` headings count as
+chapters, with a blank line before the H2 (the immediate frontmatter boundary is also allowed).
+Fences (` ``` ` / `~~~`) and HTML comments open and close at column zero only; one-line root
+comments such as generated flow markers remain valid. Any prefixed/indented delimiter or comment
+opener is ERROR, even if Markdown might recover it. After removing whitespace and quote/list
+prefixes, any non-root `#{1,6}` + space line is ERROR (including four-space/tab indentation).
+Keep such examples flat or use printable/inline escapes rather than nested delimiter syntax.
+Setext underlines (`===` / `---` immediately after a nonempty paragraph, excluding table separators)
+are ERROR; use ATX or leave a blank line before a thematic break. C0 control characters except
+tab/CR/LF are ERROR. Only CR/LF/CRLF define line boundaries; NEL/Unicode separators remain content.
+Root literal contents never supply chapters or interpret container prefixes. Explicit raw
+`<pre>` / `<script>` / `<style>` / `<textarea>` blocks are literal; unclosed root blocks are ERROR.
+This is a fixed source protocol, not a GFM parser or a container-scope simulator.
 
 **Caveats is required — it is the uncertainty ledger.** Every page ends with
 `## Caveats (unverified)` (EN) / `## 存疑（未验证）` (ZH): a bulleted list where each unverified or
@@ -131,10 +158,11 @@ versions of the agent's answers. The section is optional because a reading conve
 may produce nothing leftover — but that outcome has to be *decided*, not defaulted into: when there
 is nothing, record `no leftover Q&A` in the change summary (commit or PR), so a reader can tell a
 considered "none" from an agent that never looked. Never pad it. An empty heading, a transcript,
-and anything already covered by When to use / How it works / When NOT / Comparison / Health do not
+and anything already covered by When to use / Quick start / Key techniques / When NOT / Comparison / Health do not
 belong. Uncertain claims still get a Caveats ledger bullet. If present, both siblings carry the
-heading (`## Q&A` / `## 快问快答`), the body is non-empty, and the section sits after When to use and
-before How it works (or before When NOT, if How it works is still missing). A conversation about an
+heading (`## Q&A` / `## 快问快答`), the body is non-empty, and in v2 it sits immediately after Comparison
+and before Quick start (or Key techniques when Quick start is absent). In v1 only, it remains after
+When to use and before the old flow section (or When NOT when that section is absent). A conversation about an
 already-published page that yields such questions re-opens the decision — fold them in and refresh
 both siblings in one change. The linter cannot gate this: it validates shape only when the section
 is present, so it can never distinguish a skipped decision from a genuine "none" — the recorded
@@ -166,7 +194,7 @@ Rules:
   a category definition, not a lead.
 - **Jargon costs a gloss.** A term the reader must already know (`constrained decoding`, `logits`,
   `reconciliation loop`, `CRDT`) either gets glossed in the same sentence or does not appear here.
-  Save the precise vocabulary for `Tech stack` and `How it works`.
+  Save the precise vocabulary for `Tech stack` and `Key techniques`.
 - **Both languages are authored, neither is a copy.** The `.zh.md` lead is written in Chinese, not
   translated word-for-word from the English — and never left in English.
 
@@ -183,7 +211,7 @@ Worked example — the same project, before and after (`xgrammar`):
 ### "When to use" is the trigger scenario
 
 This section answers **"when should I think of this project?"** — the *pre-selection* angle. (How you
-actually use it after choosing it is `How it works`, below; keep the two apart.) Write it as a
+actually use it after choosing it is `Quick start`, below; keep the two apart.) Write it as a
 concrete, second-person scenario, not a feature list:
 
 - WHO you are (a believable role / persona)
@@ -199,7 +227,7 @@ opening with "You're a …" and 264/511 ZH pages with "你是…", while reading
 literal form was never the load-bearing part.) The persona/scenario is illustrative, but the tool's
 role in it must be accurate — never invent capabilities the page doesn't otherwise support.
 "When NOT to use" stays a sharp bulleted list (it's the decisive filter); only "When to use" and the
-`How it works` mechanism paragraph are narrative.
+`Quick start` usage paragraph are narrative.
 
 **Crucially, the scenario must define the choice against alternatives** — explain *why you pick
 this over its closest substitutes*, stating the deciding tradeoff (e.g. model-agnostic vs.
@@ -213,27 +241,25 @@ that fails, the number that is too big. One line of it is enough, and it is what
 between a reader who agrees and a reader who recognizes their own situation.
 
 
-### "How it works" is the backbone user story
+### "Quick start" is developer usage and the backbone user story
 
 This section answers **"I've chosen it — how do I put it to work, and what does it do for me?"** —
 the *post-selection* angle, and the one a reader cannot get from `When to use`. It has exactly two
-authored parts, in this order, placed **between `When to use` (or `Q&A` / `快问快答`, if
-present) and `When NOT to use`**:
+authored parts, in this order, placed **between `Comparison` (or `Q&A` / `快问快答`, if
+present) and `Key techniques`** in v2:
 
-1. **A plain-language mechanism paragraph** (3–6 sentences). Explain how it works underneath in the
-   simplest terms. It **must draw the line between what the project does for you and what you do** —
-   that boundary is what a developer actually wants to know. Example: "The door *and* a whole set of
-   ready-made plugins ship with Kong — you only declare which route gets which plugins."
-   Two habits keep this paragraph readable by someone outside the field:
-   - **Gloss every term on first use, in place.** Not "masks the logits" but "masks the logits — the
-     raw scores the model assigns to each possible next word". A paragraph that uses `token`,
-     `sampling`, `mask` and `state machine` without glossing any of them is written for people who
-     did not need the paragraph. This is the most-violated rule on the page; check it explicitly
-     before you commit.
-   - **An analogy is worth a paragraph of precision.** One concrete comparison to something outside
-     software ("not proofreading the essay afterwards — the keyboard just won't type the bad
-     sentence") lands the mechanism faster than another accurate clause. Optional, but reach for it
-     whenever the mechanism is inherently abstract.
+1. **A developer usage paragraph** (3–6 sentences). State the source-verified install/start path,
+   the configuration/API/input the developer supplies, and the result they receive. It **must draw
+   the line between what the project does for you and what you do**, including costs and integration
+   responsibilities. Example: deploy Kong, declare a route and its plugins, send a request; Kong
+   applies the plugin chain while you operate the service. Do not explain its internals here — that
+   belongs in Key techniques. Keep this paragraph readable by someone outside the field:
+   - **Gloss every term on first use, in place.** For example, "configure an endpoint — the address
+     your application sends requests to". Explain user-facing options and operations without
+     assuming the reader already knows the ecosystem; leave decoding algorithms and internal
+     state machines to Key techniques. Check this explicitly before you commit.
+   - Use concrete operations and outputs rather than an abstract account of internals. Put an
+     explanatory implementation analogy in Key techniques if it helps the reader.
 2. **The flow card**, embedded as `![<slug> — backbone user story](<rel>/assets/flow/<stem>.svg)`
    (ZH: `主干用户故事`, `<stem>.zh.svg`). Directly under it, `tools/flow_card.py` writes a collapsed,
    agent-readable text twin between `<!-- flow-steps:begin … -->` and `<!-- flow-steps:end -->` —
@@ -276,7 +302,7 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
     handoff, not a checklist.
   - **One backbone, not two paths.** A project you can enter two ways — see-it-run vs. build-with-it,
     a customer surface vs. an operator surface, a library's CLI vs. its embedded API — still gets
-    **one** card. Keep the path that reaches the core *value*; move the other into the mechanism
+    **one** card. Keep the path that reaches the core *value*; move the other into the usage
     paragraph above the card. The test: if your steps split into two groups with different goals
     ("run the demo" beside "wire it into my system"), you have two flows — as one card it reads as a
     checklist and the handoff is lost.
@@ -293,11 +319,11 @@ Rules (the linter + `validate_spec` enforce the mechanical ones):
     tells the reader nothing the two columns did not; the lint WARNs (`flow_card.advisories`). A
     `phase` earns its line only when a stage **spans** the handoff — "Build" covering your setup
     *and* its registration, then "Every turn" covering the loop. Otherwise say the timing in the
-    mechanism paragraph and drop the field. `commerce-agents` currently trips this warning: it is
+    usage paragraph and drop the field. `commerce-agents` currently trips this warning: it is
     the open example, not the model to copy.
 - **`code`** (optional, language-neutral) is **what the user types or writes**: a command, an
   annotation, a config key or path, an API call, a package coordinate. It is **not** an internal
-  symbol — a function name, class or module path the reader never types is mechanism-paragraph
+  symbol — a function name, class or module path the reader never types is Key-techniques
   material, not card material (`setProfileMapping` in someone's `ui/backend.py` tells a user nothing).
   Two or three tokens of the **same kind** may share one value — alternatives, or a pair that is
   typed together — separated by a space-padded middot: `brew install typst · cargo install --locked typst-cli`,
@@ -328,11 +354,25 @@ request time), `xxl-job` (framework — maven dep + annotated hook, it calls you
 uses `phase` (Build once, then Every turn) — read it as the open question above, not as a golden
 example: its stage boundary sits exactly on its lane boundary.
 
-**Backfill status.** Pages written or re-verified under this contract — `last_verified` on/after
+**FLOW backfill status (independent of v2).** Pages written or re-verified under this contract — `last_verified` on/after
 `OSS_ATLAS_FLOW_REQUIRED_FROM` (default `2026-09-20`) — **must** have the section: missing is an
 ERROR. Older pages are the backfill backlog: one aggregate lint WARNING until they are filled in.
 Once a page has the section, every rule above is an ERROR regardless of date. `OSS_ATLAS_REQUIRE_FLOW=1`
 requires it everywhere (the default flips when the backfill finishes).
+FLOW requires Quick start in v2 and the old flow section in v1; new/old titles are never interchangeable
+for lint, although the renderer locates both. Card SVGs and generated flow-steps are unchanged by renaming.
+
+### "Key techniques" explains the source-backed implementation
+
+Required and non-empty for every v2 type, including skill-pack. Read the relevant source paths and
+describe the few concrete techniques that distinguish this project: what each does, why it matters,
+and its limits. Keep source locations or links close to the claims; explain unfamiliar terms and
+use an analogy where it genuinely helps. A skill-pack's techniques may live in prompts, workflow
+rules or scripts rather than a runtime. This is not another Tech stack list, install tutorial, or
+generic description that survives replacing the project name with a competitor's. Move technical
+questions from Q&A here; re-open the leftover-Q&A decision afterwards. Unsupported claims still get
+a Caveats ledger entry. Unresearched scaffolds keep `<!-- oss-atlas:unresearched -->` in both new
+sections and cannot merge; never delete the marker without researching and writing the section.
 
 ### "When NOT to use" names substitutes
 
