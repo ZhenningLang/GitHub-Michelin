@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "points": [
+    {"anchor": "U-DEC-1", "kind": "decide", "prompt": "门槛日期定 10 月 13 日（今天）还是你之前说的 14 日，你定"},
+    {"anchor": "U-DEC-2", "kind": "decide", "prompt": "新页里多出规定之外的大标题，报错还是放行，你定"},
+    {"anchor": "U-DEC-3", "kind": "decide", "prompt": "要不要加一个复核旧页时一键重排章节的工具，你定"},
+    {"anchor": "U-DEC-4", "kind": "decide", "prompt": "技术要点的“和别的页面几乎一样”检查，现在就加还是攒够样本再说，你定"},
+    {"anchor": "U-BEH-7", "kind": "assumption", "prompt": "以后复核任何旧页都要顺带多写一节技术要点，复核会变贵，这个代价你接受吗"},
+    {"anchor": "U-SPK-2", "kind": "assumption", "prompt": "我假设流程卡改认新标题后旧页生成内容一字不变，实现后会全量重生成核对，这样处置够吗"}
+  ]
+}
