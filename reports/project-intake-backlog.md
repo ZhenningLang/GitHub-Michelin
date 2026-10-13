@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1326
+- Named-but-unindexed alternatives: 1328
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -35,6 +35,7 @@ shape and are deliberately excluded here.
 | [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [Backtesting.py](https://github.com/kernc/backtesting.py) | `categories/investment-finance/backtrader.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
+| [Binoculars](https://github.com/ahans30/Binoculars) | `categories/llm-eval/chatgpt-comparison-detection.md` |
 | [birda](https://github.com/tphakala/birda) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi) | `categories/on-device-ml/birdnet-go.md` |
@@ -46,9 +47,8 @@ shape and are deliberately excluded here.
 | [CosyVoice](https://github.com/QwenAudio/CosyVoice) | `categories/speech/index-tts.md` |
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
+| [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | `categories/llm-eval/chatgpt-comparison-detection.md` |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
 | [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
 | [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
-| [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
-| [KeePassXC](https://github.com/keepassxreboot/keepassxc) | `categories/dev-utilities/ops-infra/vaultwarden.md` |

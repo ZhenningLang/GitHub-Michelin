@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "HC3 provides", "zh": "HC3 提供的"},
+  "steps": [
+    {"lane": "you", "en": "Check permissions and choose one language and data split", "zh": "核许可并选定语言与数据切分"},
+    {"lane": "them", "en": "Links human and ChatGPT answers plus prepared research splits", "zh": "给出人类与 ChatGPT 回答及研究切分入口", "component": {"en": "HC3/README.md", "zh": "HC3/README.md"}},
+    {"lane": "you", "en": "Download the chosen split and compare answer examples", "zh": "下载所选切分并比较回答样本"},
+    {"lane": "them", "en": "Provides a fixed bilingual corpus for your detector experiment", "zh": "提供可固定使用的双语检测实验语料"}
+  ],
+  "value": {"en": "Comparable human/generated answers instead of an ad hoc mixed sample", "zh": "用可比较的人类与生成回答代替临时拼凑的样本"},
+  "sources": [
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/README.md#L22-L55",
+    "https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/README.md#L26-L33"
+  ]
+}

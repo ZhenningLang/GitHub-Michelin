@@ -6,8 +6,8 @@ category: llm-eval
 tags: [llm-eval, ai-text-detection, dataset, detector]
 language: Python
 license: NOASSERTION
-maturity: active, ~1,413 stars (as of 2026-07)
-last_verified: 2026-07-16
+maturity: research snapshot, main last changed 2023-06-27, 1479 stars (as of 2026-10)
+last_verified: 2026-10-13
 type: tool
 upstream:
   pushed_at: 2023-12-01T16:03:51Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-23T07:45:49Z
+  computed_at: 2026-10-13T22:41:00Z
   overall: E
   overall_score: 0.0
   scored_axes: 4
@@ -29,7 +29,7 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1184
+        last_commit_age_days: 1205
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: E
       raw:
-        repo_age_days: 1355
-        last_commit_age_days: 1184
+        repo_age_days: 1376
+        last_commit_age_days: 1205
         cohort: tool
     governance:
       grade: "?"
@@ -68,62 +68,82 @@ health:
 ---
 # chatgpt-comparison-detection
 
-Human ChatGPT Comparison Corpus (HC3), Detectors, and more! 🔥
+You need human and early ChatGPT answers to the same questions, not unrelated text samples; HC3 supplies bilingual comparison data and detector-training scripts.
 
 ![chatgpt-comparison-detection — health radar](../../assets/health/chatgpt-comparison-detection.svg)
 
 ## When to use
 
-You're evaluating a task in the `llm-eval` area and want a real repository in the GitHub-Michelin shortlist rather than an untracked name from a backlog. Reach for chatgpt-comparison-detection when the upstream description matches the job, when its license and maintenance profile are acceptable after verification, and when adopting a public project is preferable to writing a local one-off.
+You are reproducing an early AI-text-detection study and your spreadsheet mixes human answers from one topic with generated answers from another. HC3 gives you English and Chinese question-answer material, full-answer and sentence splits, and filtered versions that remove obvious identifying phrases. Choose it for a historically comparable, bilingual supervised baseline rather than a current universal detector.
 
-This is a first-pass intake page for a user-requested backlog item. Use it to route selection and compare nearby options, then reread the upstream README, license, examples, and release history before relying on it for high-stakes work.
+The corpus, model links and research scripts are separate artifacts. The repository's main branch last changed on 2023-06-27, and its Python code has no root license grant. Resolve the relevant source-data, model and code permissions before reuse; the dataset copyright paragraph does not license every artifact.
 
 ## When NOT to use
 
-- **You need a deeply reviewed atlas page today.** Prefer an older in-index page from the comparison table until this entry has had a full semantic review.
-- **License is a hard constraint.** GitHub reported `NOASSERTION`; inspect the repository license files before commercial use, redistribution, or vendoring.
-- **You need a maintained, current AI-text detector benchmark.** The repository is not archived, but its last default-branch commit is from 2023-06-27 (GitHub's `pushed_at` of 2023-12 is a later push, not a commit to the default branch); use a maintained eval runner or build a current benchmark if your detector must cover newer model families.
-- **Maintenance risk is unacceptable.** If the project is young, single-maintainer, low-star, unversioned, or quiet, choose a more established substitute in the same category.
-- **Your task needs a narrower substitute.** If another page's `When NOT to use` section names your exact constraint, prefer that page over this first-pass entry.
-- **You cannot verify the upstream workflow.** Do not install, run, or vendor this repo before checking its README, scripts, dependencies, and any external API requirements.
+- **You need generalization across generators, genres and attacks.** Use RAID as a broader evaluation corpus; HC3 is an early ChatGPT question-answer snapshot, not evidence about today's generators.
+- **You want detection without training on labeled HC3 examples.** Compare Binoculars or Fast-DetectGPT instead; their scoring-model approaches trade supervised fitting for larger model inference and calibration work.
+- **You want to punish a student or reject an applicant from a detector label.** Use documented provenance and human review instead, not another automatic detector; the scripts offer classification metrics, not proof of authorship.
+- **You require a clear code redistribution grant.** Consider RAID's MIT code after separately reviewing its data terms; HC3 has no LICENSE file, and its data table includes Unknown, None and noncommercial restrictions.
+- **You need a supported installation with regression coverage.** Start from RAID's package interface rather than these unversioned research scripts. In particular, `ml_train.py` reads training CSVs from `hc3/` but test CSVs from `c3/`; resolve that inconsistency before reproducing its linguistic baseline.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [promptfoo](promptfoo.md) | ✅ | Choose promptfoo when you need maintained YAML evals and red-team checks in CI. | promptfoo is an active eval runner; chatgpt-comparison-detection is a corpus/detector resource that looks stale and needs dataset/license review. |
-| [Giskard OSS](giskard.md) | ✅ | Choose Giskard when you need an evaluation/testing library for LLM agents. | Giskard is a maintained testing workflow; HC3/detectors are useful as research material but not a general eval platform. |
-| Custom detector benchmark | 未收录 | Build your own benchmark when you need current model families, private data, or reproducible detector metrics. | Custom benchmarks fit your threat model but require dataset governance and reproducibility work. |
+| [RAID](https://github.com/liamdugan/raid) | not indexed | Choose RAID for multi-generator and adversarial evaluation; choose HC3 for reproducing early bilingual question-answer comparisons. | RAID supplies a package and broader evaluation slices; HC3 supplies the particular historical paired corpus. Neither proves present-day authorship. |
+| [Binoculars](https://github.com/ahans30/Binoculars) | not indexed | Choose Binoculars for zero-shot scoring without an HC3 training split; choose HC3 when you need labeled human/generated answers for supervised experiments. | Binoculars loads two scoring models and warns against unsupervised consumer use; HC3 adds data-permission and training responsibilities. |
+| [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | not indexed | Choose Fast-DetectGPT to study conditional-probability scoring; choose HC3 to compare paired answers and train classifiers on that corpus. | Fast-DetectGPT needs sampling/scoring model inference; HC3 needs dataset preparation and has stale, unlicensed code. |
 
+## Quick start
+
+Use the corpus path first: open the English or Chinese dataset links in [README.md:22–32](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/README.md#L22-L32), and check the source-specific permissions before downloading. For the paper's prepared training/test data, follow [HC3/README.md:26–33](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/README.md#L26-L33) and select one language plus full-answer or sentence data, with or without identifying-phrase filtering. Read the corresponding human/generated answer examples and keep the chosen split fixed when comparing your detector. HC3 supplies the comparison material and research baselines; you implement evaluation, check false positives and retain provenance and permission records. Dataset access uses external Hugging Face, ModelScope or Drive services; this reading path does not call a paid model, while later local training requires your compute and separate model-permission review.
+
+![chatgpt-comparison-detection — backbone user story](../../assets/flow/chatgpt-comparison-detection.svg)
+
+<!-- flow-steps:begin (generated from flows/chatgpt-comparison-detection.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Check permissions and choose one language and data split
+2. **chatgpt-comparison-detection**: Links human and ChatGPT answers plus prepared research splits — component: `HC3/README.md`
+3. **You**: Download the chosen split and compare answer examples
+4. **chatgpt-comparison-detection**: Provides a fixed bilingual corpus for your detector experiment
+
+**Value**: Comparable human/generated answers instead of an ad hoc mixed sample
+
+</details>
+<!-- flow-steps:end -->
+
+## Key techniques
+
+- **Remove easy identity clues before measuring detection.** [HC3/demo_indicating_words.ipynb:98–127](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/HC3/demo_indicating_words.ipynb#L98-L127) splits answers into sentences, removes any sentence containing a listed identifying phrase, and normalizes a Chinese form of address. This tests whether a detector relies on obvious phrases rather than broader writing patterns; the fixed lists can also remove substantive content and cannot eliminate every shortcut.
+- **Switch between answer-only and paired-question classification.** [detect/dl_train.py:53–98](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/dl_train.py#L53-L98) reads local CSV splits, can combine full answers and sentences, then tokenizes either the answer or question plus answer with truncation. The question supplies context, but the length limit drops longer material; `--all-train` explicitly merges test data into training and must not be mistaken for held-out evaluation.
+- **Turn token predictability into small classifier inputs.** [detect/ml_train.py:45–81](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L45-L81) counts tokens in four GPT-2 probability-rank buckets; [detect/ml_train.py:241–262](https://github.com/Hello-SimpleAI/chatgpt-comparison-detection/blob/1f8c15c28f87e09a5abfd86ee6e15005dc7d2119/detect/ml_train.py#L241-L262) fits logistic regression with repeated stratified cross-validation. This separates feature extraction from classification, but inherits the scoring model and corpus biases, and cross-validation does not establish performance on unseen generators.
 
 ## Tech stack
 
-- **Python** — GitHub metadata reports Python as the primary language.
-- **Corpus and detector resources** — HC3-style human/ChatGPT comparison data and detector code according to the repository description.
-- **Evaluation artifacts** — treat it as an AI-text detection/evaluation resource rather than an agent skill.
+- Python research scripts; PyTorch and Transformers for sequence classification and GPT-2 feature extraction.
+- Hugging Face Datasets, pandas, NumPy and scikit-learn for CSV preparation and metrics; NLTK/regular expressions for sentence handling. No service or database is provided.
 
 ## Dependencies
 
-- **Python environment** — exact packages are not verified in this taxonomy pass; inspect upstream manifests before running detectors.
-- **Datasets / model artifacts** — verify upstream download paths and licenses before redistribution or benchmarking.
-- **No agent harness dependency** — it is not indexed as a SKILL.md-style agent skill.
+- The corpus-reading path needs network access and a reader for the downloaded data; there is no packaged installer or requirements manifest in the tree.
+- Training imports `datasets`, `evaluate`, pandas, NumPy, torch and Transformers; the old installation comment pins torch 1.12.1 but omits some imports. Build and pin your own compatible environment rather than assuming it is complete.
+- Supply the expected CSV columns (`id`, `question`, `answer`, `source`, `label`) and externally hosted model weights. GPU/CPU requirements depend on the selected baseline, batch and length settings.
 
 ## Ops difficulty
 
-**Medium for reproducible evaluation.** The repo may be easy to inspect, but reliable detector benchmarking needs pinned datasets, model versions, and evaluation splits.
+**Low to browse, medium/high to reproduce.** Reading downloaded examples needs no server. Reproduction requires reconciling script paths, fixing package versions, acquiring permitted data and model weights, and managing checkpoints and held-out splits; the tree does not supply an automated supported deployment.
 
 ## Health & viability
 
-- **Overall verdict (2026-07-16): E.** The health block caps the page because the repo has no parsed license (`spdx_id: NONE`) and the last default-branch commit is from 2023-06; treat it as a stale research/dataset reference until a deeper license and maintenance review says otherwise.
-- **Maintenance snapshot:** GitHub reports `archived=false` and `pushed_at=2023-12-01T16:03:51Z`, but the last commit on the default branch is 2023-06-27; health scores maintenance as E.
-- **Adoption snapshot:** ~1,413 GitHub stars as of 2026-07, but no package/download signal was found by the health scorer, so adoption is E. Star count alone should not outweigh stale maintenance and license uncertainty.
-- **License snapshot:** `NOASSERTION` from GitHub metadata, and health parsed `spdx_id: NONE`; manual license-file review is a hard gate before reuse or redistribution.
-- **Lindy / governance:** longevity is E because the project is old but not recently active; governance is unknown/unattributable in the health block.
-- **Risk flags:** stale detector benchmarks can become misleading as model families change, and no-license/source-available status can block practical reuse.
+- **Verdict, 2026-10-13:** a historical research reference, not a maintained production detector. Main last changed on 2023-06-27, GitHub has no Releases, and code has no LICENSE file; the machine NONE/E cap remains appropriate.
+- **Adoption and backing:** 1479 stars show research attention, not deployment evidence. README names a university/company research team, but this is not a foundation or support commitment; the scorer has no attributable current governance signal.
+- **Age/Lindy:** the repository dates from January 2023, but more than three years without a main-branch change defeats an active-maintenance Lindy argument. Corpus age does not validate detection of newer generators.
+- **Permission boundary:** README's data rule follows stricter source licenses, otherwise CC-BY-SA; several listed sources are Unknown/None or noncommercial. Hugging Face's CC-BY-SA-4.0 dataset tag does not replace that table, a code grant, or individual model terms.
 
 ## Caveats (unverified)
 
-- [未验证] This page is generated from public GitHub metadata plus the user-provided intake list; upstream README, docs, examples, releases, and dependency manifests still need deeper review.
-- [未验证] License, install commands, supported harnesses, and runtime requirements may differ from GitHub metadata; verify them in the repository before use.
-- [推断] The comparison table starts from nearby atlas categories rather than a complete substitute survey; refine it after reading the full upstream project and adjacent alternatives.
-- [推断] Because the last push predates many newer LLM releases, detector conclusions may be outdated for current AI-text detection tasks.
+- [未验证：未运行上游训练或下载数据] Current package compatibility, Drive availability and end-to-end reproducibility were not tested; commands and implementation were inspected at the linked SHA.
+- [未验证：无统一代码许可与部分来源授权] The dataset copyright notice does not settle code or all underlying data/model reuse rights; obtain the necessary grants before redistribution.
+- [推断：只有历史语料与脚本，没有本次跨模型测试] Results on HC3 alone cannot establish reliability on current generators or justify individual authorship decisions.
