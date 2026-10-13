@@ -13,6 +13,7 @@
 | **Impeccable** | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 | B（6/6） | [→](impeccable.zh.md) |
 | **open-slide** | 想让编码 agent 在固定 1920×1080 画布上写 React 幻灯片、你靠点选元素留言来改稿时用它——deck 要作为可编辑 PowerPoint 文件流转、或要在 CI 里无头导出时不适合。 | C（6/6） | [→](open-slide.zh.md) |
 | **SdPaint** | 当你已在跑带 ControlNet 的 AUTOMATIC1111、想让每一笔涂鸦实时变成生成图时用它——但它自身不带模型，且自 2024-04 起停滞。 | D（3/6） | [→](sdpaint.zh.md) |
+| **screenshot-to-code** | 手里只有一张截图、想自建部署拿到一个带原图素材的单文件 HTML 复刻页时用它——产出不是工程化组件，也没有还原度指标。 | B（5/6） | [→](screenshot-to-code.zh.md) |
 
 ## 对比矩阵
 
@@ -24,6 +25,7 @@
 | [Impeccable](impeccable.zh.md) | ✅ | B（6/6） | 当你的 AI agent 总是产出同质化前端「AI 味」、需要确定性检测加设计 critique 时使用。 |
 | [open-slide](open-slide.zh.md) | ✅ | C（6/6） | 想让编码 agent 在固定 1920×1080 画布上写 React 幻灯片、你靠点选元素留言来改稿时用它——deck 要作为可编辑 PowerPoint 文件流转、或要在 CI 里无头导出时不适合。 |
 | [SdPaint](sdpaint.zh.md) | ✅ | D（3/6） | 换来在自己 GPU 上“靠画不靠写 prompt”的迭代循环；代价是得先搭好 A1111 加 ControlNet，而客户端无人维护，可能与后端 API 渐行渐远。 |
+| [screenshot-to-code](screenshot-to-code.zh.md) | ✅ | B（5/6） | 换来现成的复刻流水线（裁原图素材、四版本并行、自渲染检查）；代价是每张截图都要付模型 API 费用，产出是要返工的 CDN 单文件。 |
 | [Guizang PPT Skill](../agent-skills/slides-ppt/guizang-ppt.zh.md) | ✅ | C（4/5） | 可移植的 deck 生成 skill；因为消费单元是 skill pack，已迁到 agent-skills。 |
 | [Guizang Social Card Skill](../agent-skills/visual-content/guizang-social-card.zh.md) | ✅ | D（3/5） | 可移植的社交卡片 skill；因为它装进 agent harness，已迁到 agent-skills。 |
 | [ian-xiaohei-illustrations](../agent-skills/visual-content/ian-illustrations.zh.md) | ✅ | B（4/5） | 可移植的文章配图 skill；因为它作为 skill 被选择，已迁到 agent-skills。 |
