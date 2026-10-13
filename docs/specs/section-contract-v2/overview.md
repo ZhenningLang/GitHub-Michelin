@@ -1,5 +1,5 @@
 Audience:   P3 实现 agent
-Scope:      选型页章节契约 v2：新顺序、怎么用起来改名快速上手、新增技术要点，lint 按 last_verified 门槛双轨 / Non-scope: 迁移已有 864 对页面、给技术要点定重复度阈值
+Scope:      选型页章节契约 v2：新顺序、怎么用起来改名快速上手、新增技术要点，lint 按 last_verified 门槛双轨 / Non-scope: 迁移已有页面（除第二段抽样的 20 对）
 State:      in-review
 Genre:      G-SPEC
 Code-Root:  /Users/zhenninglang/Projects/oss-atlas-wt-sections
@@ -8,6 +8,8 @@ Prefixes:   U-DEC, U-BEH, U-GATE, U-SPK, U-ACC, U-NG, U-DEP, U-CTR, U-DIAG
 # section-contract-v2 · G-SPEC 机器版 spec
 
 Planned at: fd9126dc · 2026-10-13
+
+开发路线：/dev-long-run，分三段（owner 2026-10-13 选定）。
 
 ## 术语表
 
@@ -55,19 +57,23 @@ Planned at: fd9126dc · 2026-10-13
 
 [U-BEH-6|6b25] 两个批量生成器（tools/intake_queue_apply.py、tools/agent_skills_intake.py）按 v2 顺序产出页面骨架，快速上手与技术要点两节放 `<!-- oss-atlas:unresearched -->` 标记。它们写 `last_verified: {TODAY}`，产出必然是 v2 页。
 
-[U-BEH-7|e154] sync-entry 复核旧页即把它升到 v2：bump `last_verified` 前必须按新顺序重排、改标题、写技术要点。复核一页的工作量因此增加一节研究。
+[U-BEH-7|9f3c] sync-entry 复核旧页即把它升到 v2：bump `last_verified` 前必须手工按新顺序重排、改标题、写技术要点（不提供自动重排工具，见 U-DEC-3 裁决）。复核一页的工作量因此增加一节研究。
 
 [U-BEH-8|d840] v2 页出现规定集合之外的 H2 标题报 ERROR（按 U-DEC-2 的推荐写）。
 
+[U-BEH-9|8223] 第二段把 20 对旧页复核成 v2：按顶层分类分散挑选（每个顶层分类最多 2 对），同分类里挑 `last_verified` 最早的，类型尽量覆盖 tool / library / app / service / framework；每对按 sync-entry 全流程复核（事实重核、快速上手按开发者用法重写、技术要点从源码研究后写、健康度重算）。挑选清单与理由写进本目录 `sample-pages.md`。
+
+[U-BEH-10|a2d5] 第三段把 `Key techniques` / `技术要点` 加入 tools/quality_scan.py 的 `DUP_SECTIONS`：对 21 对 v2 页两两计算该节相似度，中英文各取实测最大值之上的阈值（与现有各节阈值的定法相同，tools/quality_scan.py:55-70 注释），并在注释里写明样本数、实测最大值与日期。
+
 ## 待决策
 
-[U-DEC-1|afa0] 门槛日期取 2026-10-13 还是 2026-10-14。2026-10-14 在今天（UTC 2026-10-13）是未来日期，screenshot-to-code 写不进去（lint 对未来日期报 ERROR，见 U-CTR-1），只能等到明天才能合并首个 v2 页。
+[U-DEC-1|faa5] 门槛日期取 2026-10-13 还是 2026-10-14。2026-10-14 在今天（UTC 2026-10-13）是未来日期，screenshot-to-code 写不进去（lint 对未来日期报 ERROR，见 U-CTR-1），只能等到明天才能合并首个 v2 页。 裁决（2026-10-13）：门槛日期定在 10 月 13 日。
 
-[U-DEC-2|7b0a] v2 页出现规定集合之外的 H2（如 `## Install`、`## Notes`）是报错还是放行。
+[U-DEC-2|7a9e] v2 页出现规定集合之外的 H2（如 `## Install`、`## Notes`）是报错还是放行。 裁决（2026-10-13）：规定之外的大标题报错。
 
-[U-DEC-3|ac9d] 是否新增确定性重排脚本 `tools/section_order.py`（只搬动章节、改标题，不改内容），供 sync-entry 复核旧页时一键转 v2 骨架，技术要点留 unresearched 标记待写。
+[U-DEC-3|6ab9] 是否新增确定性重排脚本 `tools/section_order.py`（只搬动章节、改标题，不改内容），供 sync-entry 复核旧页时一键转 v2 骨架，技术要点留 unresearched 标记待写。 裁决（2026-10-13）：不加自动重排工具，复核旧页时手工搬章节。
 
-[U-DEC-4|6323] 技术要点是否立刻加入 quality_scan.py 的 `DUP_SECTIONS` 重复度检查。阈值需要研究过的页面样本来定，目前只有 1 页。
+[U-DEC-4|0a83] 技术要点是否立刻加入 quality_scan.py 的 `DUP_SECTIONS` 重复度检查。阈值需要研究过的页面样本来定，目前只有 1 页。 裁决（2026-10-13）：抽取 20 个项目补写技术要点（按分类分散、优先挑最久没复核的），用这批真实样本定技术要点的查重阈值并加入查重检查。
 
 ## 不可逆动作
 
@@ -95,7 +101,7 @@ Planned at: fd9126dc · 2026-10-13
 
 [U-NG-1|6157] 不迁移已有 864 对页面；它们保持旧顺序与旧标题，直到下次复核。
 
-[U-NG-2|8a3e] 不给技术要点写重复度阈值（若 U-DEC-4 按推荐不加）。
+[U-NG-2|bd88] 第一段、第二段不定技术要点的查重阈值；阈值只在第三段用 20 对样本加 screenshot-to-code 共 21 对定。
 
 [U-NG-3|8661] 不改 select-oss 公开技能的读页流程；它按 `When NOT to use` 等标题读，顺序变化不影响（skills/select-oss/SKILL.md:70）。
 
@@ -106,6 +112,8 @@ Planned at: fd9126dc · 2026-10-13
 [U-SPK-1|74ff] 假设：全库只有 screenshot-to-code 一对页面 `last_verified >= 2026-10-13`。已验证：`grep -rl "^last_verified: 2026-10-1[3-9]" categories` 返回 2 个文件，均为 screenshot-to-code；`gh pr list --state open` 为空，没有在途分支会带进同日期旧结构页面。
 
 [U-SPK-2|86fa] 假设：改动 flow_card 章节定位不会改变任何已有页面的生成产物。验证方式：实现后跑 `python3 tools/flow_card.py --all` 再 `git status --porcelain categories assets flows`，除 screenshot-to-code 外必须为空。
+
+[U-SPK-3|85c3] 假设：20 对页面的健康度重算能拿到完整数据。已知风险：并发查询外部数据源时 health.py 会写出 “?”（2026-09 实录）。处置：第二段健康度重算一律串行；出现 “?” 先撤回该页改动，等接口恢复再算。
 
 ## 场景化推演
 
@@ -129,7 +137,8 @@ Planned at: fd9126dc · 2026-10-13
 - 版本判定 — 停在第 2 级：照抄 `flow_required()`（tools/lint.py:600）。
 - 章节定位 — 停在第 2 级：复用 `flow_card.section_bounds` 与 `section_after_heading`（tools/lint.py:701）。
 - H2 列表 — 停在第 2 级：复用 check_qa 里已有的 `re.finditer(r"(?m)^##[ \t]+\S.*$", text)`。
-- 重排脚本（若 U-DEC-3 批准）— 停在第 7 级：仓库没有章节搬动工具；用标准库 `re` 切分 H2 块再按顺序拼回，约 60 行。
+- 重排脚本 — 停在第 1 级：不做（U-DEC-3 裁决手工搬）。
+- 相似度计算 — 停在第 2 级：复用 quality_scan.py 现有 `duplicated-section-prose` 的比较函数，只加章节名与阈值。
 - 新增依赖：无。
 
 ## 改动范围
@@ -144,9 +153,8 @@ Planned at: fd9126dc · 2026-10-13
  ├── test_flow_card.py     # 新标题定位用例
  ├── intake_queue_apply.py # 骨架改 v2 顺序 + 两节标记
  ├── agent_skills_intake.py# 同上
-+├── section_order.py      # U-DEC-3 批准才建
-+├── test_section_order.py # 同上
- ├── quality_scan.py       # 仅当 U-DEC-4 改为加入时才改
+ ├── quality_scan.py       # 第三段：DUP_SECTIONS 加技术要点
+ ├── test_quality_scan.py  # 第三段：对应用例（文件不存在则新建）
  └── schema.md             # §2 表格、快速上手与技术要点两节写法、v1/v2 双轨说明
  AGENTS.md                 # 章节描述
  CONTRIBUTING.md           # 第 30 行附近
@@ -157,12 +165,14 @@ Planned at: fd9126dc · 2026-10-13
  .claude/skills/read-repo/SKILL.md
  .claude/skills/intake-tabs/SKILL.md  # 引用快速问答位置处
  categories/ai-design-generation/screenshot-to-code{.md,.zh.md}
- docs/specs/section-contract-v2/      # 本 spec
+ categories/<20 对抽样页>              # 第二段
+ flows/<20 对抽样页>.json             # 第二段，只在流程卡需要重写时
+ docs/specs/section-contract-v2/      # 本 spec + sample-pages.md
 ```
 
 看着相关但别碰：
 
-- `categories/` 下除 screenshot-to-code 外的任何页面 — 旧页不迁移（U-NG-1）。
+- `categories/` 下除 screenshot-to-code 与第二段抽样页外的任何页面 — 旧页不迁移（U-NG-1）。
 - `flows/*.json` 与 `assets/flow/*.svg` — 内容不随标题改名而变（U-CTR-2）。
 - `skills/select-oss/` — 读页流程不依赖顺序（U-NG-3）。
 - `tools/health.py`、`tools/sync-health-to-body.py` — 只碰健康度节，与本次无关。
@@ -184,13 +194,24 @@ def check_v2_order(path, text, zh, ptype, rep) -> None: ...
 
 ## 实施步骤
 
+### 第一段：契约与检查脚本（一个 commit）
+
 1. tools/lint.py 与 tools/flow_card.py — 加 `sections_v2`、`check_v2_order`、新旧标题互斥、技术要点检查；v1 路径保持原样；v2 页跳过 check_qa 的 v1 位置分支，改走新位置规则 — 验证：`make test`。
-2. tools/test_lint.py、tools/test_flow_card.py — 补用例（见验收承诺）— 验证：`python3 -m unittest tools.test_lint tools.test_flow_card`。
-3. 两个生成器 — 改骨架 — 验证：对生成器已有单测跑 `make test`，并用 `--dry-run`（若有）产出一页目测顺序。
-4. tools/section_order.py（若批准）— 验证：对一份 v1 样例页运行后再跑 lint，只剩“技术要点含 unresearched 标记”一条 ERROR。
-5. schema.md、AGENTS.md、CONTRIBUTING.md、README 两份、Makefile、四个技能 — 措辞 — 验证：`grep -rn "how it works underneath"` 为空；人工读一遍。
-6. screenshot-to-code 两页 — 按 v2 重排、改标题、把快问快答第一问移成技术要点、`last_verified` 保持 2026-10-13 — 验证：`make gates`。
-7. 全量回归 — `python3 tools/flow_card.py --all` 后除 screenshot-to-code 外无产物变化 — 验证：`git status --porcelain`。
+2. tools/test_lint.py、tools/test_flow_card.py — 补用例（见 U-ACC-2）— 验证：`python3 -m unittest tools.test_lint tools.test_flow_card`。
+3. 两个生成器 — 改骨架 — 验证：`make test`，并产出一页目测顺序。
+4. schema.md、AGENTS.md、CONTRIBUTING.md、README 两份、Makefile、四个技能 — 措辞；sync-entry 写明手工升 v2 的步骤 — 验证：`grep -rn "how it works underneath"` 为空。
+5. screenshot-to-code 两页 — 按 v2 重排、改标题、把快问快答第一问移成技术要点 — 验证：`make gates`。
+6. 全量回归 — `python3 tools/flow_card.py --all` 后除 screenshot-to-code 外无产物变化 — 验证：`git status --porcelain`。
+
+### 第二段：20 对抽样页复核成 v2（每对一个 commit）
+
+7. 按 U-BEH-9 写 `sample-pages.md`（20 行：页面路径、顶层分类、类型、原 last_verified、挑选理由）— 验证：人工核对每个顶层分类不超过 2 对。
+8. 逐对跑 sync-entry 全流程升 v2 — 验证：每对提交前 `make gates` 零 error。健康度重算串行跑，不并发（U-SPK-3）。
+
+### 第三段：技术要点查重阈值（一个 commit）
+
+9. 对 21 对 v2 页两两算技术要点相似度，记录中英文最大值 — 验证：脚本输出贴进 commit message。
+10. tools/quality_scan.py 加阈值与注释，补测试 — 验证：`make test` 与 `python3 tools/quality_scan.py --fail-on-gated`。
 
 ## 验收承诺
 
@@ -198,20 +219,25 @@ def check_v2_order(path, text, zh, ptype, rep) -> None: ...
 
 [U-ACC-2|52bd] 单测逐条覆盖：v2 缺技术要点报错；v2 技术要点为空报错；v2 顺序错报错（例：横向对比排在快速上手之后）；v2 用旧标题报错；v1 页用新标题报错；v1 旧结构照常通过（零 error）；双语一方缺技术要点报错；v2 快速问答放在何时使用之后报错、放在横向对比之后通过；v2 skill-pack 省略技术栈三节通过；flow_card 在 `## Quick start` 下定位流程卡。
 
-[U-ACC-3|d235] 除 screenshot-to-code 外，`categories/`、`flows/`、`assets/` 无任何文件变化（`git diff --stat origin/main -- categories flows assets` 只列 screenshot-to-code 相关文件）。
+[U-ACC-3|301b] 第一段：除 screenshot-to-code 外，`categories/`、`flows/`、`assets/` 无任何文件变化（`git diff --stat origin/main -- categories flows assets` 只列 screenshot-to-code 相关文件）。
 
 [U-ACC-4|2b52] screenshot-to-code 两页按 v2 通过 lint，且 `## 技术要点` 含原快问快答第一问的全部事实。
+
+[U-ACC-5|2375] 第二段：`sample-pages.md` 列出 20 对；这 20 对页面全部 `last_verified >= 2026-10-13`、按 v2 通过 lint，每对的技术要点写的是该项目源码里看得到的做法（reviewer 抽查至少 5 对，逐条对源码）。
+
+[U-ACC-6|c416] 第三段：`DUP_SECTIONS` 含技术要点中英文阈值，注释写明样本 21 对、实测最大值与日期；`quality_scan.py --fail-on-gated` 通过；新增测试证明两段雷同的技术要点会被报出。
 
 ```yaml
 # spec-contract
 checks:
   - "make gates 与 make test 退出码 0"
   - "test_lint 新增用例覆盖 U-ACC-2 列出的 10 个场景"
-  - "git diff --stat origin/main -- categories flows assets 只含 screenshot-to-code 相关文件"
+  - "第二段 20 对页面按 v2 通过 lint"
+  - "第三段 DUP_SECTIONS 含技术要点阈值且注释写明样本数与实测最大值"
+  - "第一段 commit 里 categories flows assets 只含 screenshot-to-code 相关文件"
   - "grep -rn 'how it works underneath' tools AGENTS.md CONTRIBUTING.md .claude 为空"
 non_goals:
   - "迁移已有 864 对页面"
-  - "给技术要点定重复度阈值"
   - "改 select-oss 读页流程"
 validation_commands:
   - "make test"
@@ -220,7 +246,9 @@ validation_commands:
 locked_decisions:
   - "v2 顺序：何时使用→何时不用→横向对比→快问快答(可选)→快速上手→技术要点→技术栈→依赖→运维难度→健康度→存疑"
   - "怎么用起来改名快速上手，内容为开发者用法，流程卡留在此节"
-  - "技术要点 v2 页必写，旧页不迁移"
+  - "技术要点 v2 页必写，旧页不迁移（第二段抽样 20 对除外）"
+  - "门槛日期 2026-10-13；规定之外的 H2 报错；不做自动重排工具"
+  - "第二段抽 20 对：按顶层分类分散、优先最久没复核"
 derisk_spikes:
   - type: "4 数据形态边界"
     question: "门槛日期之后是否只有 screenshot-to-code 一对页面"
