@@ -133,7 +133,7 @@ health:
 
 ## 技术要点
 
-- **先记录意图，再执行外部工作。**[`apps/server/src/orchestration-v2/EventSink.ts:240–261,527–592`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/EventSink.ts#L527-L592) 在同一个 SQL 事务里预留命令 ID、追加事件、更新投影并排队副作用，然后发布已提交事件。重用 ID 直接返回旧回执，不再次提交。因此持久化的接受意图与提供商执行分开；收到确认不代表工具操作已经完成。
+- **先记录意图，再执行外部工作。**[`apps/server/src/orchestration-v2/EventSink.ts:240–261`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/EventSink.ts#L240-L261) 界定提交与发布边界；[`EventSink.ts:527–592`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/EventSink.ts#L527-L592) 在同一个 SQL 事务里预留命令 ID、追加事件、更新投影并排队副作用，然后发布已提交事件。重用 ID 直接返回旧回执，不再次提交。因此持久化的接受意图与提供商执行分开；收到确认不代表工具操作已经完成。
 - **限制重连成本，不一次回放全部历史。**[`apps/server/src/orchestration-v2/ThreadStream.ts:14–124`](https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/apps/server/src/orchestration-v2/ThreadStream.ts#L14-L124) 将会话回放限制在 128 个事件和 1 MiB 编码数据，检查原始载荷安全性；游标无效或回放超预算时改发有界快照。客户端拿历史游标继续分页，而不是一次传无界对话；快照送达不表示全部旧历史已加载。
 
 ## 技术栈

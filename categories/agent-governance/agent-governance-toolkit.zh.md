@@ -107,7 +107,6 @@ health:
 | [Cedarling（Janssen）](https://github.com/JanssenProject/jans) | 未收录 | 身份系统需要 Cedar 策略决定点时选 Cedarling；需要助手集成全栈时选 AGT，也可使用它的 Cedarling 适配器。 | Cedarling 属于真实的多组件 IAM 仓库，是决定后端，不代替动作调度接线。 |
 | 自研中间件 | 非仓库 | 单服务只有少量工具时自己写小调度器；可复用策略、审批和审计设施抵消包复杂度时选 AGT。 | 这是实现策略，不是未收录仓库；失败语义和审计完整性都由你负责。 |
 
-
 ## 快速上手
 
 [README](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/README.md#L59-L129) 用 `pip install "agent-governance-toolkit[full]"` 安装；基础 wheel 提供合规工具，不含全部包装器模块，所读 main 的 core manifest 要求 Python 3.11 以上。从 `agentmesh.governance` 导入 `govern`，在 `policy.yaml` 写明确规则，用 `safe_tool = govern(my_tool, policy="policy.yaml")` 替换实际注册的工具。调用包装器时传入策略所需动作和上下文；它先评估、记录决定，再允许执行，否则默认抛 `GovernanceDenied`。异步函数使用文档记录的 `acall()` 路径；记录要在进程退出后保留，必须配置 `audit_file` 和审计签名密钥。你负责接好全部调度入口、保守的默认策略、审批处理、密钥管理和结果校验；本地基本包装器不要求 Azure 账号或模型 API，可选云、模型适配器另有费用。固定兼容包组合并核实际安装 API，本文所读源码与最新 GitHub 发布版不是同一个版本号。
@@ -131,7 +130,7 @@ health:
 
 ## 技术要点
 
-- **先决定和审计，再调用工具。**[`agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505) 在构造时加载策略，再构建调用上下文、检查配置的权限环、评估策略、记录决定，最后才调用 `_fn`。拒绝默认抛 `GovernanceDenied`，也可交给调用方的拒绝回调处理。可选建议式检查在确定性允许后执行，普通分类器错误会放行，待审标记也不阻断。这只保护经过包装器的调用，不覆盖进程里的任意活动。
+- **先决定和审计，再调用工具。**[`agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py:319–505`](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L319-L505) 在构造时加载策略，再构建调用上下文、检查配置的权限环、评估策略、记录决定，最后才调用 `_fn`。拒绝默认抛 `GovernanceDenied`，也可交给调用方的拒绝回调处理。可选建议式检查在确定性允许后执行；[`govern.py:965–1004`](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L965-L1004) 显示普通分类器错误会放行。待审标记也不阻断。这只保护经过包装器的调用，不覆盖进程里的任意活动。
 - **协调审批绑定到确切动作。**[`govern.py:780–917`](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/agent-governance-python/agent-mesh/src/agentmesh/governance/govern.py#L780-L917) 构造规范动作绑定，记录请求 ID、策略版本、审批链版本和到期时间。协调器路径在执行前重校动作摘要，并写入审计关联；过期、身份未授权或未到最终允许状态都拒绝。这条更强路径需要配置，不能据此推导所有旧审批处理器都有相同语义。
 - **决定不会自动执行，宿主要接好分支。**[`examples/acs-email-tool/run.py:27–52`](https://github.com/microsoft/agent-governance-toolkit/blob/47abed7446d47e74cfa76d01a5913bb873ffcad9/examples/acs-email-tool/run.py#L27-L52) 调用 `pre_tool_call`，拒绝时不执行就返回，转换决定则在工具调用前替换参数。示例用占位邮件函数演示决定到副作用的交接，不是实际邮件送达测试；宿主必须为每个相关动作接好这个分支。
 
@@ -152,13 +151,12 @@ health:
 
 **中到高。** `pip install agent-governance-toolkit[full]` 和两行 `govern()` 很容易试，但生产 rollout 需要定义 policy、enforcement point、audit retention、identity / trust model、framework adapter，以及 OS / container 边界。
 
-
 ## 健康度与可持续性
 
 - **维护快照（2026-10-13）：**未归档，main 提交 `47abed7` 来自当天。维护和响应轴为 A；最新 GitHub Release 是 2026-06-09 的 `v4.1.0`，所读 main core manifest 则为 `5.0.0`。
 - **采用快照：**6423 stars；本次评分测得 `agent_governance_toolkit` 过去一个月 125645 次 PyPI 下载，采用轴 C。stars 和下载量不证明应用中的执行覆盖完整。
 - **许可证快照：** 只读上游核验确认 GitHub metadata 和根目录 `LICENSE` 均为 MIT。
-- **Lindy 与治理：**创建于 2026-03-02，225 天时寿命轴为 C，不是 D。Microsoft 所有的仓库公开治理、维护者文档，列出 Microsoft 和其它组织；贡献统计给出治理 A。基金会风格章程措辞不等于独立确认已被基金会托管或有支持 SLA。
+- **Lindy 与治理：**创建于 2026-03-02，225 天时长青度为 C，不是 D。Microsoft 所有的仓库公开治理、维护者文档，列出 Microsoft 和其它组织；贡献统计给出治理 A。基金会风格章程措辞不等于独立确认已被基金会托管或有支持 SLA。
 - **风险信号：** Public Preview 状态、宽 package surface 和 middleware-level security boundary 是主要实践风险。
 
 ## 存疑（未验证）
