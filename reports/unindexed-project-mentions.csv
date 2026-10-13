@@ -484,7 +484,6 @@ git-imerge,categories/agent-tooling/concurrent-editing/weave.md,,no
 GitHub `code2graph` / tree-sitter scripts,categories/rag-retrieval/code-intelligence/graphify.md,,no
 GitHub Actions + agent CLI (DIY),categories/agent-frameworks/agent-runtimes/agent-services/symphony.md,,no
 GitHub Actions / GitLab CI,categories/workflow-orchestration/gaia.md,,no
-GitHub Actions plus an agent CLI,categories/agent-frameworks/coding-agents/orchestration-and-review/background-agents.md,,no
 GitHub CodeQL,categories/ai-code-review/claude-code-security-review.md,,no
 GitHub Issues (+ `gh` CLI),categories/agent-tooling/work-state/beads.md,,no
 GitHub Projects / Issues + `gh` by hand,categories/agent-tooling/work-state/ccpm.md,,no
