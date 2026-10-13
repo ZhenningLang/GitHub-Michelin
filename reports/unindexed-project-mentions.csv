@@ -10,6 +10,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
+[Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [birda](https://github.com/tphakala/birda),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
@@ -29,6 +30,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/vibevoice.md,,no
+[LEAN](https://github.com/QuantConnect/Lean),categories/investment-finance/backtrader.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [Machine Learning for Trading](https://github.com/stefan-jansen/machine-learning-for-trading),categories/investment-finance/awesome-deep-trading.md,,no
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
@@ -60,6 +62,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [tldraw](https://github.com/tldraw/tldraw),categories/diagramming/excalidraw.md,,no
 [v2rayA](https://github.com/v2rayA/v2rayA),categories/networking/dae.md,,no
 [v2rayN](https://github.com/2dust/v2rayN),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
+[vectorbt](https://github.com/polakowo/vectorbt),categories/investment-finance/backtrader.md,,no
 [Wan2.2](https://github.com/Wan-Video/Wan2.2),categories/ml-research/vision-and-multimodal/open-sora.md,,no
 [wasmtime](https://github.com/bytecodealliance/wasmtime) (WASI CPython),categories/sandboxing/monty.md,,no
 [wg-easy](https://github.com/wg-easy/wg-easy),categories/networking/amneziawg-installer.md,,no
@@ -346,7 +349,7 @@ Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,n
 Custom editorial checklist,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md,,no
 Custom editorial workflow,categories/agent-skills/ai-writing/content-production/writing-agent.md,,no
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
-Custom implementation,categories/investment-finance/backtrader.md,,no
+Custom implementation,categories/investment-finance/finrl.md,,no
 Custom marketing playbook,categories/agent-skills/ai-writing/marketing-seo/marketingskills.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no

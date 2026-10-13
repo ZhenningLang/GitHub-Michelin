@@ -3,11 +3,11 @@ name: backtrader
 slug: backtrader
 repo: https://github.com/mementum/backtrader
 category: investment-finance
-tags: [investment-finance, backtrader, library]
+tags: [investment-finance, event-driven-backtesting, trading-strategies, broker-simulation]
 language: Python
-license: NOASSERTION
-maturity: active, ~22,458 stars (as of 2026-07)
-last_verified: 2026-07-16
+license: GPL-3.0-or-later
+maturity: v1.9.78.123, dormant main since 2023-04-19, 23469 stars (as of 2026-10-13)
+last_verified: 2026-10-13
 type: library
 upstream:
   pushed_at: 2024-08-19T17:47:36Z
@@ -16,9 +16,9 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:23:07Z
+  computed_at: 2026-10-13T21:36:20Z
   overall: D
-  overall_score: 1.0
+  overall_score: 0.75
   scored_axes: 4
   applicable_axes: 6
   capped: false
@@ -29,28 +29,28 @@ health:
       grade: E
       raw:
         archived: false
-        last_commit_age_days: 1252
+        last_commit_age_days: 1273
         active_weeks_13: 0
         carve_out: null
     responsiveness:
       grade: "?"
       raw: {}
     adoption:
-      grade: B
+      grade: C
       raw:
         registry: pypi.org
         canonical_package: backtrader
         dependent_repos_count: 231
-        downloads_last_month: 293691
+        downloads_last_month: 173743
         graph_tier: C
-        volume_tier: B
+        volume_tier: C
         cross_check_divergence: null
         tier_source: registry
     longevity:
       grade: E
       raw:
-        repo_age_days: 4273
-        last_commit_age_days: 1252
+        repo_age_days: 4295
+        last_commit_age_days: 1273
         cohort: library
     governance:
       grade: "?"
@@ -68,59 +68,84 @@ health:
 ---
 # backtrader
 
-Python Backtesting library for trading strategies
+你的交易规则要逐根价格柱响应，还要跟踪订单、持仓和现金，不能只画买卖信号列。Backtrader 提供 Python 模拟循环，但上游已停滞，维护和交易假设核验要由你承担。
 
 ![backtrader — 健康度雷达](../../assets/health/backtrader.zh.svg)
 
 ## 何时使用
 
-你正在评估 `investment-finance` 方向的任务，需要把一个真实仓库纳入 GitHub-Michelin 候选，而不是只在 backlog 里看到一个名字。当上游描述贴合任务、许可证和维护画像经核验后可接受，并且采用公共项目比自写一次性方案更合适时，可以把 backtrader 纳入候选。
-
-这是用户指定 backlog 的首版 intake 页面。用它来完成路由和邻近方案对比；在高风险场景依赖它之前，请重新阅读上游 README、许可证、示例和 release 历史。
+你有历史价格文件，要模拟信号、订单和成交的先后顺序，可能还要跨数据流／周期，并用 Python 查看现金、交易和分析器结果。需要回调驱动模拟或维护已有 Backtrader 策略时选它，而不是把每个实验写成向量化信号矩阵。核心自包含，但 main 自 2023 年没变；新建长期平台应先衡量维护成本，再采用其宽 API。
 
 ## 何时不用
 
-- **你今天就需要深度审过的 atlas 页面。** 在本页完成完整语义复核前，优先选横向对比表里更早收录、约束更清楚的页面。
-- **许可证是硬约束。** GitHub 返回 `NOASSERTION`；商用、再分发或 vendoring 前必须检查仓库内许可证文件。
-- **维护风险不可接受。** 如果项目很年轻、单人维护、star 少、没有版本线或长期安静，请选同分类里更成熟的替代品。
-- **你的任务需要更窄的替代品。** 如果另一个页面的“何时不用”已经点名你的约束，优先用那个页面，而不是这个首版入口。
-- **你无法核验上游工作流。** 在检查 README、脚本、依赖和外部 API 要求前，不要安装、运行或 vendor 这个仓库。
+- **新生产系统需要上游修复和当前券商连接。** 评估 [LEAN](https://github.com/QuantConnect/Lean) 或审过的维护中替代品。main 自 2023-04-19 没提交，GitHub issue 已关闭；旧 IB／Oanda 适配器不证明今天还能实盘用。
+- **你要把成千上万组参数／资产组合做成数组。** 评估 [vectorbt](https://github.com/polakowo/vectorbt) 的矩阵实验方式，同时核当前 Fair Code／PRO 边界。Backtrader 的事件／策略对象更侧重时间控制。
+- **你只做小型单策略实验。** 评估 [Backtesting.py](https://github.com/kernc/backtesting.py) 的精简文档 API。它的 AGPL 不构成绕开 Backtrader GPL 的宽松许可替代。
+- **你分发专有组合产品，无法接受 GPL 义务。** 先核 GPL 适用性，或法务审核后选 Apache-2.0 的 LEAN。Backtrader 源码授权 GPLv3 或后续版；分发／源码义务不是 AGPL 特有的网络使用披露义务。
+- **你要交易所精确执行或盈利证明。** 用市场专属执行模型、独立验证数据和模拟交易。OHLC 成交、可配置滑点及作弊模式不重建交易所订单簿，也不证明样本外收益。
 
 ## 横向对比
 
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
-| 本分类已收录项目 | ✅ | 如果成熟页面覆盖同一任务且依赖与不用场景更清楚，优先选现有页面。 | 本页补入 backlog 候选；深审完成前，现有页面可能更安全。 |
-| 自写实现 | 未收录 | 只有范围很小、长期维护成本低于引入仓库时才自写。 | 少一个依赖，但失去上游修复、文档和生态信号。 |
+| [Backtesting.py](https://github.com/kernc/backtesting.py) | 未收录 | 小实验选其紧凑策略 API；已有回调、数据源和模拟券商行为决定取舍时保留 Backtrader。 | 小实验表面对比宽模拟 API 及停滞上游维护负担；Backtesting.py 为 AGPL。 |
+| [vectorbt](https://github.com/polakowo/vectorbt) | 未收录 | 矩阵式参数／资产扫描选 vectorbt；通过 Python 回调控制订单／状态转换时选 Backtrader。 | 向量化探索对比事件语义；须核当前 Fair Code 条款和社区／PRO 功能边界。 |
+| [LEAN](https://github.com/QuantConnect/Lean) | 未收录 | 新回测／实盘平台且要 Apache-2.0 时评估 LEAN；本地或继承研究代码更看重小运行栈时保留 Backtrader。 | C#／Python 引擎与 Docker／CLI 生态，对比自包含 Python 库；数据／券商集成仍归你负责。 |
+
+## 快速上手
+
+按 [README:126–140](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/README.rst#L126-L140) 用 `pip install backtrader` 安装，并固定你测过的 Python／包版本。先用本地 CSV，不依赖 README 的旧 Yahoo 下载示例；[CSV 加载器](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/feeds/btcsv.py#L30-L59) 读取日期、开高低收价格、成交量和未平仓量，可另有时间列。按 [本地策略选择示例](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/samples/strategy-selection/strategy-selection.py#L29-L68) 定义指标／信号，将 `BacktraderCSVData` 加到 `bt.Cerebro()`，注册策略与 Returns 分析器，调用运行方法后查看 `get_analysis()`。Backtrader 推进模拟并跟踪券商／策略状态，你负责干净且时间对齐的数据、仓位、费用／滑点和留出时段验证。画图可选，另需 matplotlib；本地文件模拟不需要模型 API 或券商账户。本次只读源码，没有执行回测，也没有证明当前 Python、绘图包或实盘 API 兼容。
+
+![backtrader — 主干用户故事](../../assets/flow/backtrader.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/backtrader.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装固定环境，准备本地历史价格文件 — `pip install backtrader`
+2. **你**：定义信号策略，注册数据流和分析器 — `bt.Cerebro() · bt.feeds.BacktraderCSVData`
+3. **你**：按选定费用和仓位运行历史模拟 — `cerebro.run()`
+4. **backtrader**：推进数据时钟，调用策略回调 — 组件：`Cerebro`
+5. **backtrader**：模拟成交，更新现金／持仓并收集分析结果 — 组件：`BackBroker 与分析器`
+6. **你**：查看分析结果，核验交易假设 — `strat.analyzers.returns.get_analysis()`
+
+**价值**：策略决策有可查模拟订单和组合状态，不等于实盘盈利证明
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **让数据流服从共同模拟时钟。** [`cerebro.py:1498–1639`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/cerebro.py#L1498-L1639) 按周期／压缩排列数据流，取最早送达时间并回退超前数据，再处理定时器、券商通知和策略回调。多流不必把数组同一行当同时发生；作弊／重放／实时模式仍会改变时间假设。
+- **让数据与指标共享时间序列缓冲接口。** [`linebuffer.py:50–125`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L50-L125) 用零下标表示当前项，并可选无界数值数组或节省内存的有界队列，实际取值在 [`linebuffer.py:162–163`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/linebuffer.py#L162-L163)。指标共享游标值，但历史是否可读与避免偷看未来仍是策略正确性的一部分。
+- **从价格柱和滑点明确模拟成交。** [`bbroker.py:853–919`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L853-L919) 按开高低收和订单时间区分市价／收盘／限价成交；[`bbroker.py:994–1038`](https://github.com/mementum/backtrader/blob/b853d7c90b6721476eb5a5ea3135224e33db1f14/backtrader/brokers/bbroker.py#L994-L1038) 应用百分比／固定滑点和区间策略。假设因此可查，不代表默认贴合交易所；作弊选项与允许柱外价格都需明确审核。
 
 
 ## 技术栈
 
-- **主要语言：** GitHub 元数据返回为 Python。
-- **仓库形态：** `mementum/backtrader`；本首版页面尚未穷尽读取所有依赖清单。
-- **默认分支快照：** 最后一次提交在 2023-04-19，archived 为 `false`。（GitHub 的 `pushed_at` 是 `2024-08-19T17:47:36Z`，记录的是之后一次没有落到默认分支上的推送。）
+- **Python：** Cerebro 编排、策略／信号、指标线缓冲、数据源、券商模拟、仓位计算与分析器；main 版本为 1.9.78.123。
+- **打包：** setuptools／PyPI 与 `btrun` CLI；绘图额外安装 matplotlib。核心 setup 没有必需外部运行包。
 
 ## 依赖
 
-- **运行时依赖：** 本次 intake 未穷尽核验；生产使用前请检查上游依赖清单和文档。
-- **外部服务：** 本次 intake 未穷尽核验；请确认是否需要 API key、数据供应商、浏览器、模型供应商、GPU、数据库或队列。
-- **运维输入：** 至少依赖该 GitHub 仓库及其发布和更新流程。
+- 本地模拟只需 Python 和历史数据。README 的 Python 3.2 最低值与旧分类是历史文档，不是当前解释器的已验证兼容承诺。
+- 绘图可选 matplotlib；pandas／TA-Lib 或券商 SDK 取决于所选集成。旧 SDK 名和 Yahoo API 备注都要重新验证。
+- 固定数据快照、时区／交易日历、费用／滑点，以及匹配预载／历史／优化设置的内存；本地文件测试不需要数据库或远端服务。
 
 ## 运维难度
 
-**深度复核前按未知到中等处理。** 请把本页当作有 intake 依据的起点，而不是完整 runbook。library 可能容易试用但仍要 pin 版本；app / framework 可能隐藏数据、服务和部署要求。
+**本地实验低，长期／实盘部署高。** 库不需要守护服务，但可重复结果需要固定环境和真实费用／数据／成交假设。上游停滞把兼容／安全修复转移给你或审过的 fork。实盘另需券商凭据、连接、风险限额与恢复；一次历史模拟成功不能验证这些。
 
 
 ## 健康度与可持续性
 
-- **维护快照（2026-07-16）：** GitHub 返回 `archived=false`，`pushed_at=2024-08-19T17:47:36Z`，但默认分支最后一次提交在 2023-04-19——三年多没有代码合入。
-- **采用快照：** 2026-07 约 22,458 个 GitHub stars；这是有噪声的信号，低 star 项目只要是真实且相关，也会被纳入。
-- **许可证快照：** GitHub 元数据返回 `NOASSERTION`；许可证关键时仍需人工核验许可证文件。
-- **Lindy / 治理：** 本次 intake 未完整复核。长期采用前，请继续检查项目年龄、owner 类型、贡献者集中度、release 和 issue 响应。
-- **风险信号：** 本页来自 2026-07-16 backlog 的首版生成；语义对比和依赖复核刻意保守。
+- **维护（2026-10-13）：** 未归档但停滞，main 最后提交于 2023-04-19，距今 1273 天。无 GitHub release；PyPI 1.9.78.123 在 2023-04-19 上传，与源版本相同。2024 年 push 不表示新主线提交。
+- **机器画像：** 综合 D（4/6 轴有分），维护／长青度 E，采用 C，许可风险 D。响应未知因为 GitHub issue 已关闭，治理未知因为近期窗口没有可归属活跃维护者。
+- **采用与年龄：** 23469 个 star，本轮 PyPI 月下载 173743 次、依赖仓库 231 个。创建于 2015-01-10，已有 4295 天；[推断：依据是长寿但主线停滞 1273 天] 历史使用足迹真实，但年龄不给仍在维护的长青优势。
+- **许可：** LICENSE、源头声明、setup 和 PyPI 确认 GPLv3 或后续版。现有评分器把 GitHub 的 `GPL-3.0` 放入合并的 `strong_network_copyleft` 桶；桶名不让它变成 AGPL 网络披露许可。应按实际集成评估分发相关源码义务。
 
 ## 存疑（未验证）
 
-- [未验证] 本页依据公开 GitHub 元数据和用户提供的 intake 清单生成；上游 README、文档、示例、release 和依赖清单仍需深度复核。
-- [未验证] 许可证、安装命令、支持的 harness 和运行时要求可能与 GitHub 元数据不同；使用前请在仓库中核验。
-- [推断] 横向对比表先从邻近 atlas 分类出发，并不是完整替代品综述；读完上游项目和相邻方案后应继续细化。
+- [未验证：未执行库或示例] 当前 Python／matplotlib 兼容、本地结果及今日券商／Yahoo 集成未实测；源码例子不能单独证明。
+- [推断：依据是 1273 天停滞与 issue 关闭] 新长期／实盘系统应预留独立维护成本，或评估维护中的引擎，不依赖历史采用量。
+- [推断：依据是现有评分器明确合并 GPL／AGPL 分类] 风险桶是评分分类，不是 AGPL 网络义务证据；实际复用／分发须核 GPLv3 或后续版。
