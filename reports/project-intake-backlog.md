@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1321
+- Named-but-unindexed alternatives: 1323
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -32,6 +32,7 @@ shape and are deliberately excluded here.
 | @xstate/store (`statelyai/xstate`) | `categories/web-ui/state-management/tanstack-store.md` |
 | [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client) | `categories/networking/amneziawg-installer.md` |
 | [angristan/wireguard-install](https://github.com/angristan/wireguard-install) | `categories/networking/amneziawg-installer.md` |
+| [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant) | `categories/investment-finance/awesome-deep-trading.md` |
 | [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
 | [birda](https://github.com/tphakala/birda) | `categories/on-device-ml/birdnet-go.md` |
 | [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) | `categories/on-device-ml/birdnet-go.md` |
@@ -51,4 +52,3 @@ shape and are deliberately excluded here.
 | [HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | `categories/ml-research/vision-and-multimodal/open-sora.md` |
 | [KeePassXC](https://github.com/keepassxreboot/keepassxc) | `categories/dev-utilities/ops-infra/vaultwarden.md` |
 | [Kokoro](https://github.com/hexgrad/kokoro) | `categories/speech/vibevoice.md` |
-| [LTX-Video](https://github.com/Lightricks/LTX-Video) | `categories/ml-research/vision-and-multimodal/open-sora.md` |

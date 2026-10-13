@@ -9,6 +9,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 @xstate/store (`statelyai/xstate`),categories/web-ui/state-management/tanstack-store.md,,no
 [Amnezia VPN app](https://github.com/amnezia-vpn/amnezia-client),categories/networking/amneziawg-installer.md,,no
 [angristan/wireguard-install](https://github.com/angristan/wireguard-install),categories/networking/amneziawg-installer.md,,no
+[Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
 [birda](https://github.com/tphakala/birda),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
@@ -29,6 +30,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [KeePassXC](https://github.com/keepassxreboot/keepassxc),categories/dev-utilities/ops-infra/vaultwarden.md,,no
 [Kokoro](https://github.com/hexgrad/kokoro),categories/speech/vibevoice.md,,no
 [LTX-Video](https://github.com/Lightricks/LTX-Video),categories/ml-research/vision-and-multimodal/open-sora.md,,no
+[Machine Learning for Trading](https://github.com/stefan-jansen/machine-learning-for-trading),categories/investment-finance/awesome-deep-trading.md,,no
 [MeshCentral](https://github.com/Ylianst/MeshCentral),categories/dev-utilities/ops-infra/rustdesk.md,,no
 [mihomo](https://github.com/MetaCubeX/mihomo),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [neomutt](https://github.com/neomutt/neomutt),categories/agent-tooling/harness-extensions/hey-cli.md,,no
@@ -344,7 +346,7 @@ Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,n
 Custom editorial checklist,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md,,no
 Custom editorial workflow,categories/agent-skills/ai-writing/content-production/writing-agent.md,,no
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
-Custom implementation,categories/investment-finance/awesome-deep-trading.md,,no
+Custom implementation,categories/investment-finance/backtrader.md,,no
 Custom marketing playbook,categories/agent-skills/ai-writing/marketing-seo/marketingskills.md,,no
 Custom persona prompt,categories/agent-skills/context-engineering/nuwa-skill.md,,no
 Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cyberchef.md,,no
