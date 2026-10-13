@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "SkillSpector does", "zh": "SkillSpector 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the scanner and select an uninstalled skill directory", "zh": "安装扫描器，选一个尚未安装的技能目录", "code": "uv tool install git+https://github.com/NVIDIA/skillspector.git"},
+    {"lane": "you", "en": "Request a static JSON scan with an incomplete-analysis gate", "zh": "请求静态 JSON 扫描，并拒绝不完整分析", "code": "skillspector scan ./my-skill/ --no-llm --fail-on-incomplete --format json"},
+    {"lane": "them", "en": "Inventory files and run the available analyzers without executing the skill", "zh": "清点文件并运行可用分析器，不执行技能", "component": {"en": "LangGraph analyzer workflow", "zh": "LangGraph 分析流程"}},
+    {"lane": "them", "en": "Return findings, risk and completeness; fail the gate for incomplete analysis", "zh": "返回发现、风险与完整性；分析不全则闸门失败"},
+    {"lane": "you", "en": "Review the evidence and decide whether to install under restricted permissions", "zh": "审查证据，再决定是否在受限权限下安装"}
+  ],
+  "value": {"en": "An install decision has inspectable findings and coverage gaps, not only a low risk score", "zh": "安装决策有可查的发现和覆盖缺口，不只看低风险分"},
+  "sources": [
+    "https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/README.md#L34-L47",
+    "https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/cli.py#L850-L888",
+    "https://github.com/NVIDIA/SkillSpector/blob/b07f181d9138878c3827de0947a9fd2c6a84a66c/src/skillspector/graph.py#L46-L87"
+  ]
+}
