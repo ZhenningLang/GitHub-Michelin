@@ -6,8 +6,8 @@ category: spec-driven-development
 tags: [intent-driven, spec-driven, phase-gates, agent-registry, knowledge-blocks, a2a, shell]
 language: Shell
 license: MIT
-maturity: v0.1.0, early experimental framework, 0 stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v0.1.0, main last changed 2026-05-26, experimental, 0 stars (as of 2026-10)
+last_verified: 2026-10-13
 type: framework
 upstream:
   pushed_at: 2026-05-26T18:33:55Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:29:32Z
+  computed_at: 2026-10-13T22:52:27Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 119
+        last_commit_age_days: 140
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 126
-        last_commit_age_days: 119
+        repo_age_days: 147
+        last_commit_age_days: 140
         cohort: framework
     governance:
       grade: D
@@ -73,7 +73,7 @@ health:
 
 # PURE
 
-An intent-anchored coding-agent framework that combines thin specs, phase gates, knowledge blocks, agent and skill registries, JSON schemas, and tested Shell utilities in a file-based workflow.
+Your next coding-agent session forgets which requirement was approved; PURE records intent, spec and phase handoffs in files, with small scripts to check parts of that trail.
 
 ![PURE — health radar](../../../assets/health/pure-agentic.svg)
 
@@ -85,12 +85,12 @@ You choose PURE over a prose-only methodology when you want those rules embodied
 
 ## When NOT to use
 
-- **You need a mature framework with multi-year adoption evidence.** Use [Superpowers](../coding-agent-harnesses/superpowers.md) or [Spec Kit](spec-kit.md) instead; PURE is a one-week public code history with a v0.1.0 release and one maintainer.
+- **You need a maintained entry point and wider adoption evidence.** Compare [Superpowers](../coding-agent-harnesses/superpowers.md) or [Spec Kit](spec-kit.md); PURE's latest main change is 2026-05-26, with one v0.1.0 release and no independent adoption signal. That is not a claim that its substitutes have multi-year histories.
 - **You want only design principles, not repository machinery.** Use [12-Factor Agents](12-factor-agents.md) or [USDAD](usdad.md) instead; PURE adds intents, specs, sessions, registries, schemas, hooks, scripts, and archive conventions.
 - **You need a vendor-supported spec CLI and generated project scaffolding.** Use [Spec Kit](spec-kit.md) instead; PURE's integration layer is plain files and Shell scripts that you wire into your chosen harness.
-- **You need a Claude Code-specific, batteries-included harness with broader security and memory tooling.** Use [ECC](../coding-agent-harnesses/ecc.md) instead; PURE is narrower and prioritizes intent traceability and open handoff formats.
-- **Your environment cannot depend on Bash and common Unix utilities.** Use Spec Kit or a native workflow for your platform instead; PURE's operational controls and test suite are Shell-first, and Windows portability is not demonstrated.
-- **You are building the production runtime for an end-user AI agent.** Use LangGraph, PydanticAI, or AgentScope instead; PURE governs how coding work is specified and handed off, not model execution, queues, deployment, or runtime observability.
+- **You expect scripts to prove that an agent obeyed every human gate.** Use your project's tests/permission controls alongside a workflow such as Spec Kit; PURE's Markdown rules are instructions, while its executable checks inspect file budgets and selected data, not agent obedience.
+- **Your environment only has stock macOS/BSD utilities or no Bash.** Prefer Spec Kit's appropriate platform helpers, or adapt PURE deliberately; `new-intent.sh` uses `grep -P`, and freshness checking uses `mapfile`, which is absent in Apple's old Bash. The plain copy recipe is not a portability guarantee.
+- **You need shared learning or a signed enterprise registry already running.** Start with ordinary reviewed Git files and Spec Kit rather than treating PURE's Tier 2/3 sketches as deployed services; its higher tiers require your own implementation and integration.
 
 ## Comparison
 
@@ -98,9 +98,34 @@ You choose PURE over a prose-only methodology when you want those rules embodied
 |---|---|---|---|
 | [Superpowers](../coding-agent-harnesses/superpowers.md) | ✅ | Choose Superpowers when installable cross-harness SDLC skills matter more than explicit intent and knowledge-block schemas; choose PURE when the auditable file protocol is the deciding requirement. | Superpowers is easier to activate and has broader mindshare; PURE exposes more project state as versioned data but requires repository adoption. |
 | [Spec Kit](spec-kit.md) | ✅ | Choose Spec Kit when a vendor-backed CLI and generated spec workflow are preferred; choose PURE when provider-neutral registries, A2A handoffs, and phase records matter more. | Spec Kit brings a larger ecosystem and polished entry point; PURE is more transparent and decentralized but much younger. |
-| [ECC](../coding-agent-harnesses/ecc.md) | ✅ | Choose ECC when you want a broad Claude Code harness with agents, hooks, memory, and security utilities; choose PURE when you want a smaller lifecycle centered on intent lineage. | ECC provides more ready-made capabilities and stronger platform coupling; PURE provides a narrower open file contract with less integration depth. |
-| [Get Shit Done](get-shit-done.md) | ✅ | Choose GSD when fresh-context phase planning and command-driven execution are the main need, but account for the indexed upstream's archival; choose PURE when schemas and handoff records outweigh orchestration breadth. | GSD automates a larger delivery loop; PURE is smaller and still live at this URL, but has far less adoption evidence. |
 | [USDAD](usdad.md) | ✅ | Choose USDAD when you want a readable historical spec-first methodology to tailor manually; choose PURE when scripts, schemas, tests, and registries must accompany the method. | USDAD has less machinery and lower setup cost; PURE offers executable checks at the cost of more repository structure. |
+
+## Quick start
+
+Clone the actual `JonB32/pure-agentic` repository into a staging directory, then review and merge its context files, registry, templates, role/skill files and scripts into your project without overwriting existing agent rules. The names `your-org` and `pure-approach` in upstream examples are placeholders, not another required dependency; keep the `intents/`, `specs/`, `sessions/` directories and `schemas/` as well, because the minimal copy recipe omits files the checks consume. For a first intent, copy `templates/intent.yaml` into `intents/INT-0001.yaml`, fill the desired result, constraints and exclusions, and record your approval. Load the reviewed `AGENTS.md` in your coding harness, ask for UNIFY, review the generated spec, then explicitly approve LAUNCH ([QUICKSTART.md:22–65](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/QUICKSTART.md#L22-L65)). The protocol directs your agent to write specs and phase knowledge blocks; you supply the agent/model, pay its usage costs, approve gates and wire real project tests and checks into CI. This is file-based workflow adoption, not a running model service or a guaranteed autonomous delivery engine.
+
+![pure-agentic — backbone user story](../../../assets/flow/pure-agentic.svg)
+
+<!-- flow-steps:begin (generated from flows/pure-agentic.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Review and merge the file workflow into your project and load its agent context — `AGENTS.md`
+2. **You**: Fill and approve one intent with its outcome and constraints — `templates/intent.yaml`
+3. **PURE**: Follows UNIFY instructions to draft a spec and execution plan — component: `your coding agent`
+4. **You**: Review the spec and explicitly approve LAUNCH
+5. **PURE**: Follows the phase protocol and writes intent-linked knowledge blocks — component: `sessions/`
+
+**Value**: The next agent can resume from an approved intent and a stored phase record
+
+</details>
+<!-- flow-steps:end -->
+
+## Key techniques
+
+- **Separate reusable rules from project context budgets.** [scripts/context-check.sh:71–103](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L103) counts lines outside marked project-context blocks, enforcing 80-line role/context and 50-line spec budgets elsewhere in the script. This keeps reusable scaffolding short, but the excluded block can still become large; line budgets do not measure relevance or actual model tokens.
+- **Validate stored shapes, with an explicit dependency gap.** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243) parses YAML intents/knowledge blocks and applies JSON Schema validators, collecting file-level failures. Missing Python packages cause schema validation to be skipped, and missing schema files return no schema; exit 0 must therefore not be read as proof that every schema or gate was checked.
+- **Detect spec drift on named impact files.** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104) reads the UNIFY block's base SHA, finds its spec, extracts Impact Zones and compares those paths to current HEAD. This catches committed changes after planning; an empty parsed zone list only warns and exits 0, and the comparison does not inspect unstaged edits or prove semantic freshness.
 
 ## Tech stack
 
@@ -111,7 +136,7 @@ You choose PURE over a prose-only methodology when you want those rules embodied
 
 ## Dependencies
 
-- **Required local tools:** Bash, Git, and common Unix commands used by the scripts, including `awk`, `grep`, `find`, `wc`, `mktemp`, and standard text utilities.
+- **Required local tools:** compatible Bash (freshness uses `mapfile`), Git and Unix tools; automatic intent IDs use PCRE-enabled `grep -P`, not stock BSD grep. Scripts assume project-state directories already exist.
 - **Schema validation:** Python 3 with `PyYAML` and `jsonschema`; `context-check.sh` skips schema validation if these packages are absent.
 - **Agent harness:** any coding-agent environment capable of loading `AGENTS.md` and role or skill Markdown files. The repository does not install or run an LLM itself.
 - **Optional higher tiers:** shared storage, message transport, vector or graph persistence, and signing infrastructure are described for Tier 2/3 but are not bundled as complete services.
@@ -122,16 +147,14 @@ You choose PURE over a prose-only methodology when you want those rules embodied
 
 ## Health & viability
 
-- **Maintenance, as of 2026-07:** seven commits landed between 2026-05-20 and 2026-05-26, with one v0.1.0 release and 16 closed repository issues. There has been no push for roughly seven weeks, so the current signal is an early burst rather than a demonstrated cadence.
-- **Implementation substance:** this is not only a methodology essay. The repository contains working Shell utilities, JSON schemas, examples, and tests for context checks, intent creation, status, freshness detection, and archival.
+- **Verdict, 2026-10-13:** experimental process material, not a proven maintenance train. Main last changed on 2026-05-26; the sole v0.1.0 release is from 2026-05-20. No new default-branch development has appeared for nearly five months.
+- **Implementation substance:** Shell utilities, schemas, examples, tests and CI are present. Their existence supports inspectability, not a claim that this review ran them or verified every platform.
 - **Governance and bus factor:** a single user owns the repository and is the only recorded contributor. No foundation, company backing, co-maintainer policy, or governance document is published.
-- **Age and Lindy:** the repository is about two months old and has 0 stars. It has no longevity prior or external adoption signal; evaluate the artifacts on current fit and expect contract changes.
+- **Age and Lindy:** created 2026-05-20, under five months old, with 0 stars. A young repository followed by a quiet period has little durability evidence; choose it for inspectable current artifacts, not a longevity bet.
 - **Risk posture:** MIT is permissive and the core dependency surface is small. The larger risk is incomplete scope: Tier 2/3 capabilities are partly examples or architecture descriptions, and prompt-level agent behavior remains harness-dependent.
 
 ## Caveats (unverified)
 
-- [未验证] The README install example still uses `github.com/your-org/pure-agentic`, while `QUICKSTART.md` refers to a `pure-approach` source directory; users must substitute the actual clone path.
-- [未验证] Provider, model, and harness agnosticism is a design claim. This review did not execute the workflow across multiple agents to verify equivalent behavior.
-- [未验证] Tier 2/3 descriptions mention shared stores, learning engines, signed registries, MCP, A2A, and ATF alignment; several are stubs, examples, or design guidance rather than integrated production components.
-- [推断] Markdown rules and phase gates can improve traceability, but an LLM can still ignore or misapply them unless the surrounding harness adds enforcement; behavior is not guaranteed.
-- [推断] Closed issues show concentrated initial development rather than established community responsiveness because the issue activity and commits come from the same short launch window.
+- [未验证：未执行上游脚本或跨宿主试验] Runtime compatibility and equivalent provider/harness behavior were not exercised; source inspection is not an installation success report.
+- [未验证：高阶集成未部署] Tier 2/3 architecture and stubs do not establish functioning shared learning, signed routing or enterprise compliance in your environment.
+- [推断：提示词门与文件校验分离] Typed records can improve traceability, but no read script establishes that an LLM obeys every gate or that generated code meets its intent.

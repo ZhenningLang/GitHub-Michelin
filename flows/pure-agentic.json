@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "PURE-guided agent does", "zh": "PURE 指引的 agent 做的"},
+  "steps": [
+    {"lane": "you", "en": "Review and merge the file workflow into your project and load its agent context", "zh": "评审并合并文件工作流，在宿主加载上下文", "code": "AGENTS.md"},
+    {"lane": "you", "en": "Fill and approve one intent with its outcome and constraints", "zh": "填写并批准一个意图、结果和约束", "code": "templates/intent.yaml"},
+    {"lane": "them", "en": "Follows UNIFY instructions to draft a spec and execution plan", "zh": "按 UNIFY 指令起草规格和执行计划", "component": {"en": "your coding agent", "zh": "你的编程 agent"}},
+    {"lane": "you", "en": "Review the spec and explicitly approve LAUNCH", "zh": "评审规格并明确批准 LAUNCH"},
+    {"lane": "them", "en": "Follows the phase protocol and writes intent-linked knowledge blocks", "zh": "按阶段协议执行并写关联意图的知识块", "component": {"en": "sessions/", "zh": "sessions/"}}
+  ],
+  "value": {"en": "The next agent can resume from an approved intent and a stored phase record", "zh": "下一轮 agent 能从已批意图与存储阶段记录续接"},
+  "sources": [
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/QUICKSTART.md#L11-L79",
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/templates/intent.yaml#L1-L27",
+    "https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/AGENTS.md#L35-L71"
+  ]
+}
