@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "Spec-Anchored protocol does", "zh": "Spec-Anchored 协议做的"},
+  "steps": [
+    {"lane": "you", "en": "Review and merge the bundle; wire Python, project tests and host skills", "zh": "评审合并 bundle，接通 Python、项目测试和宿主技能"},
+    {"lane": "you", "en": "Shape one capability and request its durable spec", "zh": "梳理一个能力并要求写永久规格", "code": "shape · to-spec"},
+    {"lane": "them", "en": "Guides your agent to write rules, acceptance IDs and reference values", "zh": "指引你的 agent 写规则、验收编号与参考值", "component": {"en": "capability-spec.md", "zh": "capability-spec.md"}},
+    {"lane": "you", "en": "Ratify the spec, start a supervised slice, and approve its exact plan", "zh": "批准规格，启动受监督切片并批准确切计划", "code": "implement-feature"},
+    {"lane": "them", "en": "Guides implementation, checks and two authoring hardeners with Owner dispositions", "zh": "指引实现、检查和两个加固 agent，由 Owner 裁决", "component": {"en": "implementation-protocol.md", "zh": "implementation-protocol.md"}},
+    {"lane": "them", "en": "Delivers the verified candidate as a PR awaiting human review", "zh": "将已验证候选交付为等待人工评审的 PR"}
+  ],
+  "value": {"en": "A durable business contract and an explicit evidence trail for a human-reviewed change", "zh": "为人工评审的改动保留业务契约与明确证据链"},
+  "sources": [
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/INSTALL.md#L7-L23",
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/README.md#L102-L140",
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/spec-templates/capability-spec.md#L15-L94",
+    "https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/.agents/protocols/implementation-protocol.md#L141-L223"
+  ]
+}
