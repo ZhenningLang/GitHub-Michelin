@@ -84,7 +84,7 @@ health:
 ## 何时不用
 
 - **你需要多租户 SaaS，或按个人 GitHub 权限授权。**改用逐组织独立部署或明确隔离租户的平台。Open-Inspect 已有团队、仓库授权和会话级 GitHub 凭据，但仍共享 App 安装、不比较个人 GitHub 权限，团队读取控制默认是 `shadow`，已签发令牌不能立即撤销。见所读版本的[安全模型](https://github.com/ColeMurray/background-agents/blob/31d199996e4cc33fcc1f80c08785820db2f05537/README.md#security-model-single-tenant-only)。
-- **你是个人开发者，或只需终端结对编程。**改选 [OpenCode](../terminal-agents/opencode.zh.md)；Cloudflare、Terraform、GitHub App、OAuth、沙箱基础设施和凭据的成本，对本地工作流不成比例。
+- **你是个人开发者，或只需终端结对编程。**改选 [OpenCode](../terminal-agents/opencode.zh.md)；Terraform、GitHub App、OAuth、云控制面和沙箱凭据的成本，对本地工作流不成比例。
 - **你的政策禁止云沙箱提供商。**改用 OpenCode 这类本地 agent，或评估自管的 [OpenHands](openhands.zh.md)；文档中的沙箱路径使用 Modal、Daytona、Vercel Sandbox、OpenComputer 或 E2B。AWS 托管可去掉 Cloudflare 依赖，不能去掉沙箱提供商的运维责任。
 - **你只需一个可审计的 CI 事件产生补丁。**改用 GitHub Actions 加 OpenCode；会话平台的凭据缓存、快照、secret 作用域、机器人和定时任务增加了需要管理的访问路径。
 - **你需要有长期版本线和正式发布的生产平台。**改选更成熟的托管或自管方案；本项目较新，审查时没有 GitHub Releases，workspace 版本为 `0.1.0`。
@@ -94,7 +94,7 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [OpenCode](../terminal-agents/opencode.zh.md) | ✅ | 本地由开发者操作的 coding agent 选 OpenCode；可信团队的后台会话和集成足以证明云控制面成本合理时选 Open-Inspect。 | OpenCode 避开基础设施和共享凭据；Open-Inspect 加入沙箱调度、集成和多仓库自动化。 |
-| [OpenHands](openhands.zh.md) | ✅ | 需要更宽泛的自托管 coding-agent 平台时评估 OpenHands；只有接受 Open-Inspect 明确的单租户 GitHub App 模型时才选本页项目。 | 两者都有较高运维成本；Open-Inspect 明确规定 Cloudflare 加沙箱架构和严格的信任边界。 |
+| [OpenHands](openhands.zh.md) | ✅ | 个人或小团队想从本地后端开始时选 OpenHands 的 Agent Canvas；组织级沙箱生命周期和可归属的后台工作足以证明单租户配置成本合理时选 Open-Inspect。 | Agent Canvas 从一台机器开始，再加远程和自动化后端；Open-Inspect 从云基础设施和共享 GitHub App 信任边界开始。 |
 | GitHub Actions 加 agent CLI | 非仓库 | 窄而可审计的事件流足够时选 CI 触发的 agent 脚本；需要交互会话、实时协作和可复用沙箱生命周期时选 Open-Inspect。 | 这是组合模式，不是单个仓库；脚本的控制面更小，但会话界面与沙箱复用要自行实现。 |
 | [CC Switch](cc-switch.zh.md) | ✅ | 一个人在桌面管理已安装 agent 时选 CC Switch；组织级云端执行与异步自动化时选 Open-Inspect。 | CC Switch 是低运维、本地工具；Open-Inspect 引入凭据、沙箱、数据平面运维和共享信任边界。 |
 

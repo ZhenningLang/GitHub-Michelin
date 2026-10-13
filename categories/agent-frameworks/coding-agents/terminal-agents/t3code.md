@@ -107,7 +107,7 @@ Use it when a browser, desktop or mobile control surface is worth the added loca
 |---|---|---|---|
 | [OpenCode](opencode.md) | ✅ | Choose OpenCode when a model-flexible terminal agent is sufficient; choose T3 Code when its GUI must coordinate an already installed OpenCode alongside other agents. | OpenCode is an agent runtime; T3 Code is an interface layer and adds local UI complexity. |
 | [Codex CLI](codex.md) | ✅ | Choose Codex CLI when OpenAI's terminal workflow is all you need; choose T3 Code only to unify it with other authenticated providers. | Native CLI has fewer moving parts; T3 Code provides cross-provider session UX. |
-| Claude Code | not indexed | Choose Claude Code when Anthropic's native workflow is the desired standard; choose T3 Code when switching to Codex, Cursor, or OpenCode in one GUI matters more. | Claude Code has focused vendor integration; T3 Code trades that focus for a multi-provider shell. |
+| Claude Code vendor client | not a repo | Choose Claude Code when Anthropic's native workflow is the desired standard; choose T3 Code when switching to Codex, Cursor, or OpenCode in one GUI matters more. | This row refers to the proprietary client, not its public documentation repository; its [license](https://github.com/anthropics/claude-code/blob/main/LICENSE.md) reserves all rights. T3 Code adds a multi-provider interface rather than replacing that runtime. |
 | [CC Switch](../orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for a desktop manager of agent configurations and providers; choose T3 Code for a session-oriented GUI around agent runs. | Both add a meta-layer; CC Switch focuses on tool management, while T3 Code hosts coding-agent interactions. |
 
 ## Quick start

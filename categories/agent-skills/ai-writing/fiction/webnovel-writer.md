@@ -87,7 +87,7 @@ This page's source review covers default branch `master`, the v6 Claude Code plu
 
 ## When NOT to use
 
-- **You need an independent desktop novel editor or do not use Claude Code.** Pick [novelWriter](https://github.com/vkbo/novelWriter) or [Manuskript](https://github.com/olivierkes/manuskript) instead; both target standalone long-form writing, while this project is a Claude Code plugin.
+- **You need an independent desktop novel editor or do not use Claude Code.** Pick [novelWriter](https://github.com/saga-soft/novelWriter) or [Manuskript](https://github.com/olivierkes/manuskript) instead; both target standalone long-form writing, while this project's reviewed master branch is a Claude Code plugin.
 - **You are drafting a short story, one article, or one-off marketing copy.** Use a focused drafting prompt or a smaller writing skill instead; story contracts, chapter commits, SQLite indexes, projections, and review gates add setup that only pays off when continuity is the real problem.
 - **Your policy forbids prose context from reaching external embedding or reranking APIs.** Use a fully local retrieval stack or accept this project's BM25 fallback; its documented semantic-RAG setup uses compatible external embedding and rerank endpoints.
 - **You need to distribute a combined proprietary derivative without a GPL review.** Choose a permissively licensed alternative or obtain legal advice first. The reviewed LICENSE is GPL-3.0: distributing covered copies triggers source-disclosure obligations, not AGPL's network-use disclosure rule. The health field `strong_network_copyleft` is the scorer's combined strong/network-copyleft bucket, not evidence that this project is AGPL.

@@ -87,7 +87,7 @@ health:
 
 ## 何时不用
 
-- **你需要独立桌面小说编辑器，或根本不用 Claude Code。**改选 [novelWriter](https://github.com/vkbo/novelWriter) 或 [Manuskript](https://github.com/olivierkes/manuskript)：它们面向独立长篇写作，而本项目是 Claude Code 插件。
+- **你需要独立桌面小说编辑器，或根本不用 Claude Code。**改选 [novelWriter](https://github.com/saga-soft/novelWriter) 或 [Manuskript](https://github.com/olivierkes/manuskript)：它们面向独立长篇写作，本次所读 master 分支则是 Claude Code 插件。
 - **你只写短篇、单篇文章或一次性营销文案。**改用聚焦的起草提示词或小型写作技能；故事合同、章节提交、SQLite 索引、投影与审查闸门只有在“连贯性”真是核心问题时才值得这份配置成本。
 - **你的政策不允许正文上下文发送给外部 embedding 或 rerank API。**改用纯本地检索栈，或接受本项目的 BM25 回退；其文档里的语义 RAG 配置使用兼容接口的外部 embedding 和 rerank 端点。
 - **你要分发未经 GPL 评估的专有组合衍生品。**改选宽松许可替代品或先取得法务意见。所读 LICENSE 是 GPL-3.0，分发受覆盖副本时触发源码披露义务，不套用 AGPL 的网络使用披露规则。健康字段 `strong_network_copyleft` 是评分器现有的“强 copyleft／网络 copyleft”合并桶，不代表项目使用 AGPL。

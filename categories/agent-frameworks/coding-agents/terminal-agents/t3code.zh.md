@@ -107,7 +107,7 @@ health:
 |---|---|---|---|
 | [OpenCode](opencode.zh.md) | ✅ | 只需模型灵活的终端 agent 时选 OpenCode；必须用 GUI 协调已安装的 OpenCode 与其他 agent 时选 T3 Code。 | OpenCode 是 agent runtime；T3 Code 是界面层，会增加本地 UI 复杂度。 |
 | [Codex CLI](codex.zh.md) | ✅ | 只需 OpenAI 的终端工作流时选 Codex CLI；只有在要和其他已认证提供商统一时才选 T3 Code。 | 原生 CLI 的运行部件更少；T3 Code 提供跨提供商会话体验。 |
-| Claude Code | 未收录 | Anthropic 原生工作流是团队标准时选 Claude Code；在一个 GUI 里切换 Codex、Cursor、OpenCode 更重要时选 T3 Code。 | Claude Code 的厂商整合更聚焦；T3 Code 以多提供商外壳换取这种聚焦。 |
+| Claude Code 厂商客户端 | 非仓库 | Anthropic 原生工作流是团队标准时选 Claude Code；在一个 GUI 里切换 Codex、Cursor、OpenCode 更重要时选 T3 Code。 | 本行指专有客户端，不指其公开文档仓库；[许可证](https://github.com/anthropics/claude-code/blob/main/LICENSE.md) 保留全部权利。T3 Code 增加多提供商界面，不替换该运行时。 |
 | [CC Switch](../orchestration-and-review/cc-switch.zh.md) | ✅ | 要管理 agent 配置与提供商的桌面工具时选 CC Switch；要围绕 agent 实际运行建立会话 GUI 时选 T3 Code。 | 两者都会增加元管理层；CC Switch 偏工具管理，T3 Code 承载编程 agent 交互。 |
 
 ## 快速上手
