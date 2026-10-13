@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "T3 Code does", "zh": "T3 Code 做的"},
+  "steps": [
+    {"lane": "you", "en": "Authenticate a provider and start the local web app", "zh": "认证提供商，启动本地网页", "code": "npx t3@latest"},
+    {"lane": "you", "en": "Enable the provider, open a project and submit a task in a thread", "zh": "启用提供商，打开项目并在会话提交任务"},
+    {"lane": "them", "en": "Run the provider in the project's server environment", "zh": "在项目所属服务端环境运行提供商", "component": {"en": "server", "zh": "服务端"}},
+    {"lane": "them", "en": "Show agent responses and workspace changes in the shared UI", "zh": "在统一界面显示助手响应和工作区改动"},
+    {"lane": "you", "en": "Review the resulting code diff", "zh": "审查得到的代码 diff"}
+  ],
+  "value": {"en": "Control coding-agent work without juggling provider terminals", "zh": "不必切换各提供商终端，即可控制编程助手工作"},
+  "sources": [
+    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/README.md",
+    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/docs/user/install.md",
+    "https://github.com/pingdotgg/t3code/blob/8d7523248964ec7b37cc08f91e15122def171821/docs/internals/overview.md"
+  ]
+}

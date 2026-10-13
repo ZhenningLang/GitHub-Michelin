@@ -303,7 +303,6 @@ cmark (commonmark/cmark),categories/markdown-tools/commonmark.md,,no
 code-server,categories/dev-utilities/editors-and-runtimes/code-editors/vscode.md,,no
 CodeRabbit,categories/ai-code-review/open-code-review.md,,no
 CodeRabbit / Greptile,categories/ai-code-review/INDEX.md,,no
-Codex CLI,categories/agent-frameworks/coding-agents/terminal-agents/t3code.md,,no
 Colab MCP server (`googlecolab/colab-mcp`),categories/python-tooling/google-colab-cli.md,,no
 collectd,categories/dev-utilities/ops-infra/telegraf.md,,no
 COLMAP · Meshroom,categories/3d-reconstruction/INDEX.md,,no
