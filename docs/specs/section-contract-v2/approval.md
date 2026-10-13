@@ -1,7 +1,7 @@
 Audience:   P1 审批 owner
 Scope:      选型页章节契约 v2 的审批投影——四件事已拍完，分三段做，会变的行为与验收
 Non-scope:  实现细节（见 overview.md）
-State:      in-review
+State:      approved
 Genre:      G-APPROVAL
 Code-Root:  /Users/zhenninglang/Projects/oss-atlas-wt-sections
 Prefixes:   U-DEC, U-BEH, U-GATE, U-SPK, U-ACC, U-NG, U-DEP, U-CTR, U-DIAG

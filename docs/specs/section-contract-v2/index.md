@@ -1,6 +1,6 @@
 Audience:   P1 审批 owner
 Scope:      章节契约 v2 评审包导航 / Non-scope: 不含任何事实，只指路
-State:      in-review
+State:      approved
 Genre:      G-NAV
 Code-Root:  none
 Prefixes:   none

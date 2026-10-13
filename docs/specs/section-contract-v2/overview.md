@@ -1,6 +1,6 @@
 Audience:   P3 实现 agent
 Scope:      选型页章节契约 v2：新顺序、怎么用起来改名快速上手、新增技术要点，lint 按 last_verified 门槛双轨 / Non-scope: 迁移已有页面（除第二段抽样的 20 对）
-State:      in-review
+State:      approved
 Genre:      G-SPEC
 Code-Root:  /Users/zhenninglang/Projects/oss-atlas-wt-sections
 Prefixes:   U-DEC, U-BEH, U-GATE, U-SPK, U-ACC, U-NG, U-DEP, U-CTR, U-DIAG
