@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="773" viewBox="0 0 880 773" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="628" viewBox="0 0 880 628" role="img">
 <style>
 .bg{fill:#ffffff}.lane{fill:#f6f8fa}.laneT{fill:#fbf7ec}
 .hdr{font:600 13px -apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
@@ -30,18 +30,18 @@
 @media (prefers-color-scheme: dark){.comp{fill:#a371f7}}
 </style>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-<rect class="bg" width="880" height="773" rx="12"/>
-<rect class="lane" x="28" y="28" width="392" height="615" rx="10"/>
+<rect class="bg" width="880" height="628" rx="12"/>
+<rect class="lane" x="28" y="28" width="392" height="470" rx="10"/>
 <rect class="pillY" x="42" y="40" width="83.2" height="24" rx="12"/>
 <text class="hdr hY" x="56" y="57">You do</text>
-<rect class="laneT" x="460" y="28" width="392" height="615" rx="10"/>
+<rect class="laneT" x="460" y="28" width="392" height="470" rx="10"/>
 <rect class="pillT" x="474" y="40" width="239.5" height="24" rx="12"/>
 <text class="hdr hT" x="488" y="57">screenshot-to-code does</text>
 <path class="edge" d="M62,186 L62,210" marker-end="url(#a)"/>
 <path class="hand" d="M408,248.0 C439.0,248.0 439.0,272 470,272" marker-end="url(#a)"/>
-<path class="edge" d="M494,345 L494,369" marker-end="url(#a)"/>
-<path class="edge" d="M494,468 L494,492" marker-end="url(#a)"/>
-<path class="hand" d="M472,553.5 C441.0,553.5 441.0,577 410,577" marker-end="url(#a)"/>
+<path class="hand" d="M472,296.5 C441.0,296.5 441.0,334 410,334" marker-end="url(#a)"/>
+<path class="hand" d="M408,346.0 C439.0,346.0 439.0,395 470,395" marker-end="url(#a)"/>
+<path class="hand" d="M472,407.0 C441.0,407.0 441.0,432 410,432" marker-end="url(#a)"/>
 <rect class="card" x="40" y="72" width="368" height="114" rx="8"/>
 <rect class="accY" x="40" y="72" width="4" height="114" rx="2"/>
 <circle class="accY" cx="62" cy="96" r="10"/>
@@ -54,38 +54,35 @@
 <rect class="accY" x="40" y="212" width="4" height="72" rx="2"/>
 <circle class="accY" cx="62" cy="236" r="10"/>
 <text class="num" x="62" y="240" text-anchor="middle">2</text>
-<text class="t" x="82" y="241">Drop in a screenshot and pick a stack</text>
-<text class="t" x="82" y="263">(HTML + Tailwind, React, Vue…)</text>
+<text class="t" x="82" y="241">Upload a screenshot or recording, or</text>
+<text class="t" x="82" y="263">paste a URL, and pick a stack</text>
 <rect class="cardT" x="472" y="248" width="368" height="97" rx="8"/>
 <rect class="accT" x="472" y="248" width="4" height="97" rx="2"/>
 <circle class="accT" cx="494" cy="272" r="10"/>
 <text class="num" x="494" y="276" text-anchor="middle">3</text>
-<text class="t" x="514" y="277">Runs four model variants in parallel,</text>
-<text class="t" x="514" y="299">each an agent writing one HTML file</text>
-<text class="comp" x="514" y="327">component: variant agents</text>
-<rect class="cardT" x="472" y="371" width="368" height="97" rx="8"/>
-<rect class="accT" x="472" y="371" width="4" height="97" rx="2"/>
+<text class="t" x="514" y="277">Streams four variants side by side,</text>
+<text class="t" x="514" y="299">with your real images cropped in</text>
+<text class="comp" x="514" y="327">component: FastAPI backend</text>
+<rect class="card" x="40" y="310" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="310" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="334" r="10"/>
+<text class="num" x="62" y="338" text-anchor="middle">4</text>
+<text class="t" x="82" y="339">Type a change, or click an element in</text>
+<text class="t" x="82" y="361">select mode to scope it</text>
+<rect class="cardT" x="472" y="371" width="368" height="72" rx="8"/>
+<rect class="accT" x="472" y="371" width="4" height="72" rx="2"/>
 <circle class="accT" cx="494" cy="395" r="10"/>
-<text class="num" x="494" y="399" text-anchor="middle">4</text>
-<text class="t" x="514" y="400">Crops the real logos and images out of</text>
-<text class="t" x="514" y="422">your screenshot by bounding box</text>
-<text class="comp" x="514" y="450">component: extract_assets (Gemini)</text>
-<rect class="cardT" x="472" y="494" width="368" height="119" rx="8"/>
-<rect class="accT" x="472" y="494" width="4" height="119" rx="2"/>
-<circle class="accT" cx="494" cy="518" r="10"/>
-<text class="num" x="494" y="522" text-anchor="middle">5</text>
-<text class="t" x="514" y="523">Renders its page in headless Chromium,</text>
-<text class="t" x="514" y="545">compares the shots by eye, patches the</text>
-<text class="t" x="514" y="567">gaps</text>
-<text class="comp" x="514" y="595">component: screenshot_preview (Playwright)</text>
-<rect class="card" x="40" y="553" width="368" height="72" rx="8"/>
-<rect class="accY" x="40" y="553" width="4" height="72" rx="2"/>
-<circle class="accY" cx="62" cy="577" r="10"/>
-<text class="num" x="62" y="581" text-anchor="middle">6</text>
-<text class="t" x="82" y="582">Pick the closest variant, refine a</text>
-<text class="t" x="82" y="604">clicked element, export</text>
-<rect class="val" x="28" y="657" width="824" height="88" rx="10"/>
-<text class="valK" x="48" y="681">VALUE</text>
-<text class="valT" x="48" y="705">A runnable single-file replica with your real images — no hand-slicing the layout or the</text>
-<text class="valT" x="48" y="727">assets</text>
+<text class="num" x="494" y="399" text-anchor="middle">5</text>
+<text class="t" x="514" y="400">Patches only what you asked and</text>
+<text class="t" x="514" y="422">returns two fresh variants</text>
+<rect class="card" x="40" y="408" width="368" height="72" rx="8"/>
+<rect class="accY" x="40" y="408" width="4" height="72" rx="2"/>
+<circle class="accY" cx="62" cy="432" r="10"/>
+<text class="num" x="62" y="436" text-anchor="middle">6</text>
+<text class="t" x="82" y="437">Copy the code, or Download Code as a</text>
+<text class="t" x="82" y="459">ZIP with the images bundled</text>
+<rect class="val" x="28" y="512" width="824" height="88" rx="10"/>
+<text class="valK" x="48" y="536">VALUE</text>
+<text class="valT" x="48" y="560">A runnable single-file replica with your real images, refined by chat — no hand-slicing the</text>
+<text class="valT" x="48" y="582">layout or the assets</text>
 </svg>
