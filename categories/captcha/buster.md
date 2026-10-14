@@ -126,7 +126,6 @@ Install Buster from one of the browser-store links in [README.md:6–21](https:/
 
 ## Tech stack
 
-
 - **Extension:** modern JavaScript ES modules using WebExtension APIs for Chrome, Edge, Firefox, and Opera.
 - **Interface:** Vue 3 and Vuetify for setup, contribution, and options surfaces.
 - **Recognition:** `@huggingface/transformers` and `onnxruntime-web` for browser-local models, with optional Wit.ai, Google, IBM, and Microsoft speech APIs.
@@ -157,7 +156,6 @@ Install Buster from one of the browser-store links in [README.md:6–21](https:/
 
 - [未验证：抽样窗口无合格首响] Responsiveness has natural `no_window_signal` in the trailing 90-day window ending 1 day before 2026-10-14 scoring. Actual support speed remains unknown; the original A is not retained as current evidence.
 - [未验证：未安装或运行扩展] This entry verifies source routes, not browser-model readiness, release-package behavior or actual audio network destinations. Managed remote fallback is visible in source; validate installed options before sensitive use.
-
 - [未验证] Recognition success varies with reCAPTCHA, language, browser, IP reputation, and the selected local or remote speech model; no independently verified success rate was found.
 - [未验证] The separate Buster Client repository, binary update path, and native-messaging security model were not fully audited in this entry.
 - [未验证] Managed-service defaults and audio data destinations can change; verify the installed version's options and network behavior before handling sensitive sessions.
