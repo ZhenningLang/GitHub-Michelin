@@ -122,12 +122,13 @@ health:
 ## 技术要点
 
 - **当前分发是模型到文件与文档的映射，不是可见代理代码。** [README.md:14–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31) 给 Kimi 单独 EXE，其它四模型标题共用另一 EXE，每项各有文章链接。它组织选择与获取，但不证明共用 EXE 如何选模型。**当前代理程序的内部机制无源码可查**；协议转换、鉴权和凭据存储仍未知，不能从文件名推断。
-- **历史 WebSocket 客户端打印微信消息，已下线，不是当前代理。** [funtool/client.js:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24) 连接本地 WebSocket 并定义消息编号；[funtool/client.js:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49) 注册回调、打印收到的数据。它展示旧客户端事件面，不是 WebSocket 服务器或任何 NVIDIA/Claude 适配器；[README.md:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12) 明确微信工具下线。历史端口不是当前代理配置值。
+- **历史 WebSocket 残留文件不能作为客户端运行。** [funtool/client.js:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24) 写有本地 WebSocket 构造调用和消息编号常量；[funtool/client.js:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49) 写有回调与打印骨架，但第 47–49 行括号不配对。仅检查语法的 `node --check` 在第 47 行失败，提交的文件无法加载，只能作为旧事件接口残留参考，不证明连接成功、收到消息或任何 NVIDIA/Claude 适配。[README.md:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12) 明确微信工具下线；历史端口不是当前代理配置值。
 - **历史 HTTP 例子组装消息请求，已下线，不是当前产品 API。** [funtool/http.js:35–67](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67) POST 带微信用户 ID 的文本或图片 JSON；[funtool/http.js:74–115](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115) 定义成员与昵称请求，并调用发送文本例子。这是客户端示例，不是服务器实现，也不证明当前 EXE 的模型路由、访问控制或兼容性。
 
 ## 技术栈
 
 - **当前产物：** 已提交的 Windows EXE，对应 README 点名的 NVIDIA/Claude Code CLI 路线；已查源码树没有公开它们的实现语言、库或构建过程。
+- **README 链接以外的留存产物：** 树中共有 6 份二进制，不止列出的两份代理 EXE。`funtool/` 还保留 `nvidia-llm-proxy.exe`、`funtool-4.0.0.26-receive-message.exe`、`funtool.4.0.0.26.disable.auto.update.exe` 和 `funtool_4.0.0.26_only_printlog.exe.zip`，后三份带旧 Funtool 名称。工具下线不等于文件移除；它们的内容、用途与兼容性没有核验，不用未列明文件替换有说明入口的产物。
 - **历史源码：** Node.js 风格的 JavaScript，导入 `ws` 与 `request-promise`，用于已下线微信客户端示例。GitHub 的 JavaScript 主语言字段描述可见旧文件，不描述当前 EXE。
 - **交付：** Markdown 下载与文章链接、Git 跟踪的二进制；没有包清单或当前代理构建教程。GitHub 的 954186 KiB 仓库大小是历史与存储信号，不是实测浅克隆下载量。
 
@@ -154,3 +155,4 @@ health:
 - [未验证：当前代理没有对应源码，且未执行或逆向EXE] 协议转换、鉴权、凭据存储、内置依赖、遥测、更新行为和运行结果均未确认。
 - [未验证：根MIT没有单独说明当前二进制授权范围] Binaryify 声明不能解决当前 EXE 权利与来源问题；再分发或商业依赖前须取得说明。
 - [未验证：未核NVIDIA服务账号条款和额度] README 的免费模型说法不证明你的账号持续可用、资格、限流或费用。
+- [未验证：README未说明额外四份二进制，且未执行或逆向] 未列明的代理命名 EXE 与三份旧 Funtool 命名 EXE/ZIP 仍可从源码树下载，但内容与当前用途未知。

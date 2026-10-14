@@ -93,7 +93,7 @@ health:
 
 ## 快速上手
 
-在暂存克隆中评审 bundle，再合并 `AGENTS.md`、`.agents/`、`agents/`、`policy/`、`scripts/`、测试和所需模板，不替换现有仓库权威规则（[INSTALL.md:7–23](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/INSTALL.md#L7-L23)）。准备 Python 3 与 PyYAML，分别接通 bundle 检查及应用测试、golden 参考值、mutation/fuzz 工具和 CI。先做一个能力规格：按宿主显式技能语法调用 `shape` 与 `to-spec`，让人用单独 PR 批准规格后再实现（[README.md:131–140](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/README.md#L131-L140)）。人在场时用 `implement-feature` 做一个已批切片，先审计划与批准指纹——标识那份完整批准包的哈希——再允许改码。你的 agent 按共享协议调用两个内部加固 agent 并记录交接；结果是等待人工评审的 PR，不是自动合并。真实测试、外部评审、环境验证、模型费用与凭据由你负责；安装提示词与脚本并不提供这些服务。
+在暂存克隆中评审 bundle，再合并 `AGENTS.md`、`.agents/`、`agents/`、`policy/`、`scripts/`、测试和所需模板，不替换现有仓库权威规则（[INSTALL.md:7–23](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/INSTALL.md#L7-L23)）。准备 Python 3 与 PyYAML，再调用一次 `prep` 建立项目验证接口与基线，分别接通 bundle 检查及应用测试、golden 参考值、mutation/fuzz 工具和 CI。先做一个能力规格：按宿主显式技能语法调用 `shape` 与 `to-spec`，让人用单独 PR 批准规格后再实现（[README.md:131–140](https://github.com/w00fx/spec-anchored-agentic-development/blob/4f8a13e757f0f2ae8e3c5abfe128f1adb6d0e782/README.md#L131-L140)）。人在场时用 `implement-feature` 做一个已批切片，先审计划与批准指纹——标识那份完整批准包的哈希——再允许改码。你的 agent 按共享协议调用两个内部加固 agent 并记录交接；结果是等待人工评审的 PR，不是自动合并。真实测试、外部评审、环境验证、模型费用与凭据由你负责；安装提示词与脚本并不提供这些服务。
 
 ![spec-anchored-agentic-development — 主干用户故事](../../../assets/flow/spec-anchored-agentic-development.zh.svg)
 
