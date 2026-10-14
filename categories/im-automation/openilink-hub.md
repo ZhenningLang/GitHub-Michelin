@@ -6,8 +6,8 @@ category: im-automation
 tags: [wechat, ilink, im-gateway, app-marketplace, webhook, websocket, self-hosted]
 language: Go
 license: MIT
-maturity: v0.1.36, active, 1.5k stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v0.1.36, 1589 stars, no default-branch update since 2026-06 (as of 2026-10-14)
+last_verified: 2026-10-14
 type: app
 upstream:
   pushed_at: 2026-06-18T17:22:25Z
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:19:32Z
-  overall: B
-  overall_score: 2.67
-  scored_axes: 6
+  computed_at: 2026-10-14T07:20:59Z
+  overall: C
+  overall_score: 2.4
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,18 +29,12 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 96
+        last_commit_age_days: 118
         active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 102.8
-        qualifying_issues: 3
-        band: relaxed_solo
-        window_offset_days: 13
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: B
       raw:
@@ -51,10 +45,10 @@ health:
         graph_tier: B
         volume_tier: "?"
         cross_check_divergence: null
-        release_downloads: 1708
+        release_downloads: 1793
         release_assets: 199
         release_tier: D
-        docker_pulls: 13532
+        docker_pulls: 16148
         docker_image: openilink/openilink-hub
         docker_tier: D
         signal_basis: releases+docker
@@ -62,8 +56,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 185
-        last_commit_age_days: 96
+        repo_age_days: 206
+        last_commit_age_days: 118
         cohort: app
     governance:
       grade: D
@@ -80,11 +74,13 @@ health:
         permissiveness: permissive
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # OpeniLink Hub
 
-A young self-hosted Go/React control plane for iLink-connected WeChat bots, combining multi-bot management, message tracing, WebSocket/Webhook delivery, an App Registry, and SQLite or PostgreSQL persistence; the project explicitly disclaims affiliation with or endorsement by iLink's official team.
+Several WeChat bots forward messages to different services and you cannot see which handoff failed; OpeniLink Hub centralizes their routing and traces, but adds a sensitive management plane without official iLink affiliation.
 
 ![OpeniLink Hub — health radar](../../assets/health/openilink-hub.svg)
 
@@ -109,9 +105,37 @@ Choose OpeniLink Hub over `openilink-sdk-go` or a focused relay when the managem
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
 | [openilink-sdk-go](openilink-sdk-go.md) | ✅ | When you need iLink transport inside an existing Go service, choose the SDK; choose OpeniLink Hub when users, multiple bots, traces, Apps, and a web control plane are requirements rather than code you want to build. | The SDK keeps the process and trust boundary small but leaves persistence, auth, routing, and operations to you; Hub supplies those layers and makes them your operational responsibility. |
-| `openilink-tg` | not indexed | When the job is only a focused WeChat-to-Telegram relay, choose `openilink-tg`; choose Hub when several destinations, installable Apps, and central administration justify a platform. | A focused bridge is easier to audit and run but cannot match Hub's routing and marketplace breadth; Hub is more capable and materially more complex. |
+| [openilink-tg](https://github.com/openilink/openilink-tg) | not indexed | Choose it when an existing client speaks Telegram-Bot-style HTTP and must send text through iLink; choose Hub for users, multiple bots and installable Apps. | Its documented initial scope is an HTTP compatibility adapter, not a complete WeChat-to-Telegram conversation relay. Hub has a much broader administration boundary. |
 | [WeChat Bot](wechat/wechat-bot.md) | ✅ | When you want a developer-operated CLI that sends IM messages directly to several LLM backends and channels, choose WeChat Bot; choose OpeniLink Hub when persistent multi-user administration and App distribution matter more. | WeChat Bot is a lighter assistant application but uses an unofficial Wechaty personal-account path; Hub has a broader control plane and iLink dependency, with more database and auth surface. |
-| WeCom / Official WeChat APIs | not indexed | When official support, enterprise identity, and a documented production contract decide the choice, use WeCom or another official API; choose Hub only when its iLink bot behavior and self-hosted App plane outweigh the lack of official affiliation. | Official APIs cover different enterprise or public-account workflows and may restrict personal-bot behavior; Hub offers more flexible self-hosted routing but inherits protocol, bootstrap, and ecosystem risk. |
+| WeCom / Official WeChat APIs | not a repo | When an official enterprise or public-account contract decides the choice, evaluate the official API surface rather than assuming Hub is endorsed. | These are platform API offerings, not one open-source repository; they cover different account and messaging workflows. |
+
+## Quick start
+
+Obtain a pinned release binary, or use the frontend build and `go build -o oih .` sequence in [README.md:334–339](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/README.md#L334-L339), then run `oih`. Set `LISTEN` to a private/loopback boundary and claim the first administrator before exposing it: the documented default listens on `:9800`, and first registration grants `superadmin`; configure `RP_ORIGIN` and `RP_ID` for the address your browser actually uses. In an authorized account workflow, bind the bot, create or install a reviewed App, and supply its Webhook—your service's HTTP callback—or WebSocket connection. An incoming message is routed to matching Apps with a trace, and an immediate Webhook result can be sent back through the bot using stored context. Hub does the management and delivery plumbing; you own account permission, App services, recipient deduplication, retention and the 24-hour reply window, which reminders cannot silently renew. For App development without an account, the README also documents `cmd/appmock`; this entry ran neither it nor a real binding.
+
+![OpeniLink Hub — backbone user story](../../assets/flow/openilink-hub.svg)
+
+<!-- flow-steps:begin (generated from flows/openilink-hub.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Run a pinned build privately, claim admin and bind an authorized bot — `oih` — component: `Go server / web console`
+2. **You**: Configure a reviewed App with your service's Webhook
+3. **OpeniLink Hub**: Route an incoming bot message to matching Apps with trace context — component: `App dispatcher`
+4. **You**: Return an immediate reply from your receiving service
+5. **OpeniLink Hub**: Send that reply through the bot with its stored context token — component: `bot manager / iLink provider`
+
+**Value**: A managed, traceable message round-trip; account policy and delivery guarantees remain yours
+
+</details>
+<!-- flow-steps:end -->
+
+## Key techniques
+
+- **Route specific mentions before generic events, while keeping channels independent.** [app_dispatch.go:25–70](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L70) tries mention and command routing before matching subscribed events. [app_dispatch.go:120–199](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L120-L199) independently sends through WebSocket, a builtin handler and Webhook when each is configured, attaching trace data. This exposes which handoff failed, but multiple active channels can deliver the same event; recipients still need deduplication.
+- **Retry Webhook delivery in memory, not as a durable guarantee.** [retry.go:14–69](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/app/retry.go#L14-L69) attempts once synchronously, then schedules two goroutine retries after 10 and 60 seconds. This avoids blocking the first caller on all retries, but process restarts lose that scheduled work. [app_dispatch.go:259–290](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L290) handles the immediate result with a stored context token; retry success is not proof that the same reply path ran.
+- **Cache registry discovery and tolerate stale results.** [client.go:79–108](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L79-L108) combines sources while skipping partial failures. [client.go:130–183](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/registry/client.go#L130-L183) normalizes the registry URL, bounds reads and returns cached manifests on fetch/parse failures. Availability improves, but a listed App can be stale; discovery is not an audit of its remote endpoints, tools or scopes.
+- **Bootstrap authority from user count.** [auth_password.go:37–61](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/auth_password.go#L37-L61) makes the first password registrant a superadministrator, while [config_handler.go:236–243](https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/api/config_handler.go#L236-L243) permits registration unless the stored value is explicitly false. This simplifies first setup, not public hardening; claiming the instance privately is essential.
 
 ## Tech stack
 
@@ -137,13 +161,17 @@ Choose OpeniLink Hub over `openilink-sdk-go` or a focused relay when the managem
 
 ## Health & viability
 
-- **Maintenance, as of 2026-07:** the repository was created in 2026-03, released `v0.1.36` on 2026-06-18, and its default branch head matches that release. The visible release sequence from `v0.1.32` to `v0.1.36` shows active iteration rather than a launch-only repository.
-- **Adoption:** GitHub reports about 1.5k stars and 123 forks after only a few months. That is meaningful interest, but production adoption, scale, and upgrade success are not established by stars.
+- **Measured signals (2026-10-14):** C/?/B/C/D/A, overall C with 5/6 axes scored, down from B. Responsiveness changed from A to natural `no_window_signal`: the 90-day window ending 13 days before scoring has traffic but no qualifying response; no API failure was reported.
+- **Maintenance:** created in 2026-03, latest release v0.1.36 on 2026-06-18, and no default-branch change since then. At 118 days since the last commit, early release history is not evidence of current active iteration.
+- **Adoption:** 1589 stars show attention, not deployment success. The machine's B adoption combines a registry-dependent signal with D release/container install signals; do not turn its 1200 dependent-repository count into a count of operating Hub instances.
 - **Governance:** the repository is under an organization and has several contributors, but GitHub contribution counts are heavily dominated by one maintainer. There is no foundation governance or long operating record to reduce bus-factor risk yet.
-- **Age and Lindy:** this is a young project on a newly exposed protocol surface. Current activity is positive, but age × continued maintenance cannot be evaluated after only months; treat the rapid `v0.1.x` cadence as evidence of motion, not stability.
+- **Age and Lindy:** measured age 206 days, with recent silence. The short public record and v0.1.x line do not establish long-lived protocol or upgrade stability.
 - **Risk posture:** the decisive risks are the project's explicit non-affiliation disclaimer, the 24-hour send window, first-user-superadmin bootstrap, public-registration default, WebAuthn origin configuration, remote App Registry trust, and the amount of sensitive message and credential state centralized in one service.
 
 ## Caveats (unverified)
+
+- [未验证：抽样窗口无合格首响] Current support speed is unknown in the 90-day window ending 13 days before 2026-10-14 scoring. Keep natural `no_window_signal`, not the old A, under the explicit phase ruling.
+- [未验证：未运行App或绑定微信] Delivery retry/restart behavior, receiving-service deduplication and current account compatibility were not exercised; source-visible traces and retries are not an end-to-end delivery guarantee.
 
 - [未验证] No independent production deployment, sustained throughput test, disaster-recovery exercise, or multi-version upgrade test was performed for this page.
 - [未验证] The current policy stability and long-term availability of the underlying iLink surface were not verified from an official protocol specification; the repository itself disclaims official affiliation or endorsement.
