@@ -6,8 +6,8 @@ category: spec-driven-development
 tags: [intent-driven, spec-driven, phase-gates, agent-registry, knowledge-blocks, a2a, shell]
 language: Shell
 license: MIT
-maturity: v0.1.0, early experimental framework, 0 stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v0.1.0, main last changed 2026-05-26, experimental, 0 stars (as of 2026-10)
+last_verified: 2026-10-13
 type: framework
 upstream:
   pushed_at: 2026-05-26T18:33:55Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T17:29:32Z
+  computed_at: 2026-10-13T22:52:27Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 119
+        last_commit_age_days: 140
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: D
       raw:
-        repo_age_days: 126
-        last_commit_age_days: 119
+        repo_age_days: 147
+        last_commit_age_days: 140
         cohort: framework
     governance:
       grade: D
@@ -73,7 +73,7 @@ health:
 
 # PURE
 
-一套以 intent 为锚点的 coding-agent 框架，把薄 spec、phase gate、knowledge block、agent/skill registry、JSON Schema 和带测试的 Shell 工具组合成文件式工作流。
+下一轮编程 agent 忘了哪些要求已获批准；PURE 用文件记录意图、规格和阶段交接，并以小脚本检查其中一部分。
 
 ![PURE — 健康度雷达](../../../assets/health/pure-agentic.zh.svg)
 
@@ -85,12 +85,12 @@ health:
 
 ## 何时不用
 
-- **你需要有多年采用证据的成熟框架。** 改用 [Superpowers](../coding-agent-harnesses/superpowers.zh.md) 或 [Spec Kit](spec-kit.zh.md)；PURE 的公开代码历史只有一周左右，版本为 v0.1.0，且只有一个维护者。
+- **需要维护中的入口与更广采用证据。** 比较 [Superpowers](../coding-agent-harnesses/superpowers.zh.md) 或 [Spec Kit](spec-kit.zh.md)；PURE 默认分支最后更新于 2026-05-26，只有一个 v0.1.0 release，没有独立采用信号。这不表示替代品已有多年历史。
 - **你只要设计原则，不想引入仓库机制。** 改用 [12-Factor Agents](12-factor-agents.zh.md) 或 [USDAD](usdad.zh.md)；PURE 会增加 intents、specs、sessions、registry、schemas、hooks、scripts 和归档约定。
 - **你需要厂商支持的 spec CLI 与自动生成项目脚手架。** 改用 [Spec Kit](spec-kit.zh.md)；PURE 的集成层是普通文件与 Shell 脚本，需要自己接入选定 harness。
-- **你需要 Claude Code 专用、能力更全的 harness。** 改用 [ECC](../coding-agent-harnesses/ecc.zh.md)；它已有更广的 security、memory、agents 和 hooks，而 PURE 更窄，重心是 intent 追溯与开放交接格式。
-- **你的环境不能依赖 Bash 与常见 Unix 工具。** 改用 Spec Kit 或平台原生工作流；PURE 的运维控制和测试套件以 Shell 为先，尚未证明 Windows 可移植性。
-- **你正在构建面向终端用户的生产 agent runtime。** 改用 LangGraph、PydanticAI 或 AgentScope；PURE 管的是 coding work 如何被规格化与交接，不提供模型执行、队列、部署或运行时观测。
+- **期待脚本证明 agent 遵守全部人工门。** 在 Spec Kit 等工作流之外保留项目测试与权限控制；PURE 的 Markdown 是指令，可执行检查只查文件预算和部分数据，不证明 agent 服从。
+- **只有系统自带 macOS/BSD 工具或没有 Bash。** 优先用 Spec Kit 对应平台辅助工具，或明确改造 PURE；`new-intent.sh` 使用 `grep -P`，freshness 检查使用苹果旧 Bash 没有的 `mapfile`。直接复制不保证可移植。
+- **要求共享学习或企业签名注册表已经可用。** 从普通经评审 Git 文件和 Spec Kit 起步，别把 PURE 的 Tier 2/3 草图当运行中的服务；高阶层要自行实现和集成。
 
 ## 横向对比
 
@@ -98,9 +98,34 @@ health:
 |---|---|---|---|
 | [Superpowers](../coding-agent-harnesses/superpowers.zh.md) | 已收录 | 如果可安装、跨 harness 的 SDLC skills 比显式 intent 与 knowledge-block schema 更重要，选 Superpowers；如果可审计的文件协议是决定条件，选 PURE。 | Superpowers 更容易启用，采用面也更广；PURE 把更多项目状态暴露成版本化数据，但要求项目接受它的目录结构。 |
 | [Spec Kit](spec-kit.zh.md) | 已收录 | 如果偏好厂商支持的 CLI 与自动生成规格流程，选 Spec Kit；如果 provider-neutral registry、A2A handoff 和阶段记录更重要，选 PURE。 | Spec Kit 有更大生态和更完整入口；PURE 更透明、更分散，但年轻得多。 |
-| [ECC](../coding-agent-harnesses/ecc.zh.md) | 已收录 | 如果要带 agents、hooks、memory 和安全工具的完整 Claude Code harness，选 ECC；如果只要围绕 intent lineage 的较小生命周期，选 PURE。 | ECC 提供更多现成能力，也更绑定平台；PURE 的开放文件 contract 更窄，集成深度也更低。 |
-| [Get Shit Done](get-shit-done.zh.md) | 已收录 | 如果主要需要 fresh-context 规划与命令驱动执行，选 GSD，但要考虑本索引上游已归档；如果 schema 和交接记录更重要，选 PURE。 | GSD 自动化了更大的交付循环；PURE 在当前 URL 仍未归档，却几乎没有采用证据。 |
 | [USDAD](usdad.zh.md) | 已收录 | 如果要一套可手工裁剪的历史 spec-first 方法原稿，选 USDAD；如果方法必须配套脚本、schema、测试和 registry，选 PURE。 | USDAD 机制更少、接入成本更低；PURE 多了可执行检查，也多了仓库结构负担。 |
+
+## 快速上手
+
+将真实 `JonB32/pure-agentic` 仓库克隆到暂存目录，先评审再合并上下文文件、registry、模板、角色与技能文件和脚本，不覆盖项目原有 agent 规则。上游例子里的 `your-org` 与 `pure-approach` 是占位名称，不是额外依赖；也要保留 `intents/`、`specs/`、`sessions/` 和 `schemas/`，因为最小复制例子漏掉了检查所需文件。首次使用时，把 `templates/intent.yaml` 复制到 `intents/INT-0001.yaml`，填写希望得到的结果、约束与排除项，并记录人工批准。在编程宿主加载经评审的 `AGENTS.md`，要求 UNIFY，读生成规格后再明确批准 LAUNCH（[QUICKSTART.md:22–65](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/QUICKSTART.md#L22-L65)）。协议指引你的 agent 写规格和阶段知识块；你提供 agent 与模型、承担用量费用、批准各门，并将真实项目测试与检查接入 CI。这是文件式工作流接入，不是模型服务，也不保证自动交付成功。
+
+![pure-agentic — 主干用户故事](../../../assets/flow/pure-agentic.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/pure-agentic.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：评审并合并文件工作流，在宿主加载上下文 — `AGENTS.md`
+2. **你**：填写并批准一个意图、结果和约束 — `templates/intent.yaml`
+3. **PURE**：按 UNIFY 指令起草规格和执行计划 — 组件：`你的编程 agent`
+4. **你**：评审规格并明确批准 LAUNCH
+5. **PURE**：按阶段协议执行并写关联意图的知识块 — 组件：`sessions/`
+
+**价值**：下一轮 agent 能从已批意图与存储阶段记录续接
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **将复用规则与项目上下文预算分开。** [scripts/context-check.sh:71–103](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L71-L103) 统计标记项目上下文块以外的行数，脚本其它部分执行角色与上下文 80 行、规格 50 行预算。它让复用骨架短小，但排除块仍能变大；行数不衡量相关性或真实模型词元。
+- **检查存储结构，但明确依赖缺口。** [scripts/context-check.sh:167–243](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/context-check.sh#L167-L243) 解析 YAML 意图与知识块，应用 JSON Schema 校验器并汇集文件级错误。缺 Python 包会跳过校验，缺 schema 文件会返回空 schema；退出 0 不能解释为所有 schema 或门都查过。
+- **对规格点名文件检测漂移。** [scripts/freshness-check.sh:32–104](https://github.com/JonB32/pure-agentic/blob/ddadf731f1f6cff5c9761cd4c09408c0a5b82d22/scripts/freshness-check.sh#L32-L104) 从 UNIFY 知识块读 base SHA、找规格、提取 Impact Zones，并将这些路径与当前 HEAD 比较。它能发现规划后的已提交改动；解析不到影响文件只警告并退出 0，比较也不查未暂存编辑或证明语义仍新鲜。
 
 ## 技术栈
 
@@ -111,7 +136,7 @@ health:
 
 ## 依赖
 
-- **必需本地工具：** Bash、Git，以及脚本调用的常见 Unix 命令，包括 `awk`、`grep`、`find`、`wc`、`mktemp` 和标准文本工具。
+- **必需本地工具：** 兼容 Bash（freshness 使用 `mapfile`）、Git 和 Unix 工具；自动意图编号需要支持 PCRE 的 `grep -P`，不是系统自带 BSD grep。脚本假定项目状态目录已经存在。
 - **Schema 校验：** Python 3 加 `PyYAML` 与 `jsonschema`；缺少这些包时，`context-check.sh` 会跳过 schema validation。
 - **Agent harness：** 任何能加载 `AGENTS.md` 和角色或 skill Markdown 的 coding-agent 环境。仓库自身不安装或运行 LLM。
 - **可选高阶层：** Tier 2/3 描述了共享存储、消息传输、向量或图持久化与签名设施，但没有把它们作为完整服务打包。
@@ -122,16 +147,14 @@ health:
 
 ## 健康度与可持续性
 
-- **维护，截至 2026-07：** 七个提交集中在 2026-05-20 至 2026-05-26，并发布一个 v0.1.0；仓库有 16 个 closed issue。约七周没有新的 push，因此当前更像一次早期集中开发，而非已证明的稳定节奏。
-- **实现含量：** 它不只是方法论文章。仓库包含可运行 Shell 工具、JSON Schema、示例，以及 context check、intent creation、status、freshness detection、archive 的测试。
+- **判断日期 2026-10-13：** 实验性流程材料，不是已证明的稳定维护线。默认分支最后更新于 2026-05-26；唯一 v0.1.0 release 发布于 2026-05-20。近五个月没有默认分支开发。
+- **实现含量：** 有 Shell 工具、schema、示例、测试和 CI。它们支持可检查性，不表示本次运行了工具或验证了所有平台。
 - **治理与 bus factor：** 一个用户拥有仓库，也是唯一记录到的贡献者。没有基金会、公司支持、共同维护政策或治理文档。
-- **年龄与 Lindy：** 仓库约两个月大，0 star。没有寿命先验或外部采用信号；应按当前适配度评估，并预期 contract 仍会变化。
+- **年龄与 Lindy：** 创建于 2026-05-20，不足五个月，0 star。年轻仓库随后安静，耐久证据很弱；按当前可检查产物的适配度选，不把它当长寿押注。
 - **风险姿态：** MIT 许可宽松，核心依赖面也很小。更大的风险是范围不完整：Tier 2/3 能力部分只是示例或架构说明，agent 的提示词行为仍取决于 harness。
 
 ## 存疑（未验证）
 
-- [未验证] README 的安装示例仍写着 `github.com/your-org/pure-agentic`，而 `QUICKSTART.md` 使用 `pure-approach` 源目录名；用户必须替换成实际 clone 路径。
-- [未验证] 不绑定 provider、model 和 harness 是项目设计主张；本次没有在多种 agent 上实际执行流程来核验行为是否等价。
-- [未验证] Tier 2/3 提到 shared store、learning engine、signed registry、MCP、A2A 与 ATF；其中若干部件只是 stub、示例或设计指引，并非集成完成的生产组件。
-- [推断] Markdown 规则和 phase gate 可以改善追溯性，但若外围 harness 不加约束，LLM 仍可能忽略或错误执行；行为不受保证。
-- [推断] Closed issue 反映的是发布窗口内的集中开发，不能直接当作长期社区响应速度，因为 issue 与提交都来自同一短周期。
+- [未验证：未执行上游脚本或跨宿主试验] 没有实测运行兼容性及不同供应商与宿主的行为等价；读源不等于安装成功。
+- [未验证：高阶集成未部署] Tier 2/3 的架构和桩代码不证明你的环境已有可用共享学习、签名路由或企业合规。
+- [推断：提示词门与文件校验分离] 类型化记录可以改善追溯，但已读脚本不能证明 LLM 遵守每个门，或生成代码符合意图。

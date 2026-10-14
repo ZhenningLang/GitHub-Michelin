@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "them": {"en": "Funtool repository provides", "zh": "Funtool 仓库提供的"},
+  "steps": [
+    {"lane": "you", "en": "Read the offline-WeChat notice and choose the Kimi K2.5 entry", "zh": "读微信下线提示，选择 Kimi K2.5 入口"},
+    {"lane": "them", "en": "Maps the chosen model heading to an executable and a separate instructions URL", "zh": "将所选模型标题映射到 EXE 与独立说明 URL", "component": {"en": "README.md", "zh": "README.md"}},
+    {"lane": "you", "en": "Follow its file link to the download entry and retain the matching instructions URL", "zh": "沿文件链接找到下载入口，保留匹配说明 URL", "code": "funtool/claude-nvidia-proxy-kimi25.exe"}
+  ],
+  "value": {"en": "The selected artifact and its instructions entry are located, not verified or executed", "zh": "找到所选产物与说明入口，不表示已验证或执行"},
+  "sources": ["https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L31"]
+}

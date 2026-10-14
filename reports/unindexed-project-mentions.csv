@@ -12,6 +12,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [Awesome Quant](https://github.com/wilsonfreitas/awesome-quant),categories/investment-finance/awesome-deep-trading.md,,no
 [Backtesting.py](https://github.com/kernc/backtesting.py),categories/investment-finance/backtrader.md,,no
 [basecamp/hey-sdk](https://github.com/basecamp/hey-sdk),categories/agent-tooling/harness-extensions/hey-cli.md,,no
+[Binoculars](https://github.com/ahans30/Binoculars),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [birda](https://github.com/tphakala/birda),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer),categories/on-device-ml/birdnet-go.md,,no
 [BirdNET-Pi (Nachtzuster fork)](https://github.com/Nachtzuster/BirdNET-Pi),categories/on-device-ml/birdnet-go.md,,no
@@ -23,6 +24,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [CosyVoice](https://github.com/QwenAudio/CosyVoice),categories/speech/index-tts.md,,no
 [daed](https://github.com/daeuniverse/daed),categories/networking/dae.md,,no
 [darktable](https://github.com/darktable-org/darktable),categories/photo-editing/lightcraft.md,,no
+[Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [Fish Speech](https://github.com/fishaudio/fish-speech),categories/speech/index-tts.md,,no
 [FlClash](https://github.com/chen08209/FlClash),categories/dev-utilities/ops-infra/clash-verge-rev.md,,no
 [fortuneexcel](https://github.com/corbe30/fortuneexcel),categories/office-editors/fortune-sheets.md,,no
@@ -51,6 +53,7 @@ alternative,first_page,indexed_hits,resolves_to_indexed
 [PocketPal AI](https://github.com/a-ghorbani/pocketpal-ai),categories/agent-frameworks/agent-runtimes/personal-assistants/openminis.md,,no
 [Pyodide](https://github.com/pyodide/pyodide),categories/sandboxing/monty.md,,no
 [pyVideoTrans](https://github.com/jianchang512/pyvideotrans),categories/speech/voicestudio.md,,no
+[RAID](https://github.com/liamdugan/raid),categories/llm-eval/chatgpt-comparison-detection.md,,no
 [RawTherapee](https://github.com/RawTherapee/RawTherapee),categories/photo-editing/lightcraft.md,,no
 [rebrowser-patches](https://github.com/rebrowser/rebrowser-patches),categories/web-automation/agent-browser-tools/playwright-bot-bypass.md,,no
 [Semgrep](https://github.com/semgrep/semgrep),categories/agent-governance/skillspector.md,,no
@@ -345,7 +348,6 @@ crystal / claude-squad,categories/agent-frameworks/coding-agents/orchestration-a
 CSS `@keyframes` / transitions,categories/frontend-animation/anime.md,,no
 Custom creator toolkit,categories/agent-skills/ai-writing/content-production/huashu-skills.md,,no
 Custom DataForSEO scripts,categories/agent-skills/ai-writing/marketing-seo/open-seo.md,,no
-Custom detector benchmark,categories/llm-eval/chatgpt-comparison-detection.md,,no
 Custom editorial checklist,categories/agent-skills/ai-writing/de-ai-writing/stop-slop.md,,no
 Custom editorial workflow,categories/agent-skills/ai-writing/content-production/writing-agent.md,,no
 Custom founder coach prompts,categories/agent-skills/personal-collections/knowledge-content/slavingia-skills.md,,no
@@ -356,7 +358,6 @@ Custom scripts (`openssl`/`xxd`/Python),categories/dev-utilities/data-tools/cybe
 Custom site scraper skill,categories/agent-skills/engineering/browser-act-skills.md,,no
 Custom unpack scripts,categories/im-automation/wechat/wxappunpacker.md,,no
 Custom voice guide,categories/agent-skills/ai-writing/de-ai-writing/INDEX.md,,no
-Custom yt-dlp + ffmpeg script,categories/media-processing/video-audio/speech-and-subtitles/claude-video.md,,no
 CyberChef-server,categories/dev-utilities/data-tools/cyberchef.md,,no
 Cypress,categories/web-automation/browser-driver-frameworks/selenium.md,,no
 Czkawka,categories/disk-cleanup/mangodisk.md,,no
@@ -818,7 +819,7 @@ NestJS,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effe
 Nethereum.Faucet,categories/blockchain-dev-infrastructure/INDEX.md,,no
 Neutralinojs,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/tauri.md,,no
 neverthrow,categories/dev-utilities/editors-and-runtimes/runtimes-and-compilers/effect.md,,no
-New API,categories/api-gateway/funtool.md,,no
+New API,categories/api-gateway/tokenhub.md,,no
 NewPipe (`TeamNewPipe/NewPipe`),categories/streaming-clients/pipepipe.md,,no
 NewsBlur,categories/reading-tools/netnewswire.md,,no
 newspaper4k (`AndyTheFactory/newspaper4k`),categories/web-scraping/article-extraction/newspaper.md,,no
