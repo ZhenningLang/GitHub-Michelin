@@ -483,7 +483,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **pytorch-captcha-recognition** | 想要一份可读的定长文字验证码教学基线（每个字符位一个 CNN 分类头）时用它——但它是 2020 年冻结的教程，PyTorch API 需要现代化改造，准确率数字也只来自它自己的合成数据。 | Apache-2.0 | D（4/6） | [中](categories/captcha/pytorch-captcha-recognition.zh.md) · [EN](categories/captcha/pytorch-captcha-recognition.md) |
 | **captcha (lepture)** | 当 Python 表单需要一个自托管、不调第三方的图片或语音验证码，而存储、过期和校验你打算自己写时用它——但扭曲文字挡不住廉价 OCR，只能当减速带，算不上机器人防护。 | BSD-3-Clause | B（5/6） | [中](categories/captcha/lepture-captcha.zh.md) · [EN](categories/captcha/lepture-captcha.md) |
 | **NopeCHA** | 只用于已授权、需无人值守覆盖多类验证码的自动化——持续维护的实现闭源，并依赖托管 API。 | MIT | B（6/6） | [中](categories/captcha/nopecha-extension.zh.md) · [EN](categories/captcha/nopecha-extension.md) |
-| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（6/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
+| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（5/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
 
 ### blockchain-dev-infrastructure
 

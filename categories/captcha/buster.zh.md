@@ -6,8 +6,8 @@ category: captcha
 tags: [captcha, accessibility, browser-extension, recaptcha, speech-recognition, webextension]
 language: JavaScript
 license: GPL-3.0-only
-maturity: v3.4.0, active, 9.2k stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v3.4.0, 9336 stars, last default-branch update 2026-06 (as of 2026-10-14)
+last_verified: 2026-10-14
 type: tool
 upstream:
   pushed_at: 2026-06-27T11:49:18Z
@@ -16,10 +16,10 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:00:49Z
+  computed_at: 2026-10-14T05:47:50Z
   overall: C
-  overall_score: 2.17
-  scored_axes: 6
+  overall_score: 1.6
+  scored_axes: 5
   applicable_axes: 6
   capped: false
   cap_reason: null
@@ -29,38 +29,26 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 87
-        active_weeks_13: 1
+        last_commit_age_days: 109
+        active_weeks_13: 0
         carve_out: null
     responsiveness:
-      grade: A
-      raw:
-        median_ttfr_hours: 95.3
-        qualifying_issues: 4
-        band: relaxed_solo
-        window_offset_days: 1
-        source: issue
-        inferred: false
+      grade: "?"
+      raw: {}
     adoption:
       grade: D
       raw:
-        registry: proxy.golang.org
-        canonical_package: github.com/dessant/buster
-        dependent_repos_count: 1
-        downloads_last_month: null
-        graph_tier: D
-        volume_tier: "?"
-        cross_check_divergence: null
-        release_downloads: 67142
+        registry: null
+        canonical_package: null
+        release_downloads: 68285
         release_assets: 111
         release_tier: D
         signal_basis: releases
-        tier_source: registry
     longevity:
-      grade: A
+      grade: B
       raw:
-        repo_age_days: 2865
-        last_commit_age_days: 87
+        repo_age_days: 2887
+        last_commit_age_days: 109
         cohort: tool
     governance:
       grade: D
@@ -77,11 +65,13 @@ health:
         permissiveness: strong_network_copyleft
         relicense_36mo: false
         content_license: null
+  unknowns:
+    responsiveness: { reason: no_window_signal }
 ---
 
 # Buster
 
-一个通过语音识别帮助真人完成 reCAPTCHA 音频挑战的开源浏览器扩展；只应用于无障碍辅助或明确授权的测试，不能拿来规避第三方访问控制。
+你看不清 reCAPTCHA 的图片题；Buster 增加一个由你点击的按钮，转写音频题并填入答案，但不保证验证通过。
 
 ![Buster 健康度雷达](../../assets/health/buster.zh.svg)
 
@@ -94,7 +84,7 @@ health:
 ## 何时不用
 
 - **你没有第三方系统的自动化访问授权。** 不要把 Buster、NopeCHA 或其他 solver 变成批量访问绕过工具；改用站点官方 API、提供方测试密钥，或所有者批准的测试环境。
-- **你需要无人值守地处理多类验证码。** 在明确授权的环境中评估 NopeCHA；只有目标明确是 hCaptcha 时才使用 hcaptcha-challenger。Buster 的核心流程是由真人点击按钮处理 reCAPTCHA 音频。
+- **你需要无人值守地处理多类验证码。** 在明确授权的环境中评估 NopeCHA；Buster 的核心流程是由真人点击按钮处理 reCAPTCHA 音频。
 - **你需要确定性的端到端测试。** 用 Playwright 配合 reCAPTCHA 测试密钥或 mock 验证响应；实时音频挑战和语音模型不适合作为稳定 CI 判定器。
 - **音频绝不能发送到远端服务。** 明确配置并验证 Buster 的本地模型路径，或改用人工无障碍测试；没有审查数据边界前，不要启用托管远端识别。
 - **你不能安装浏览器扩展或可选的 native input client。** 用专用测试浏览器配合 Playwright fixture，或直接测试服务端验证契约。
@@ -105,9 +95,34 @@ health:
 | 替代品 | 是否收录 | 我们的评价 | 取舍 |
 |---|---|---|---|
 | [NopeCHA](nopecha-extension.zh.md) | 已收录 | 需要真人触发、源码可审计的 reCAPTCHA 音频辅助时选 Buster；只有在已授权且要无人值守覆盖多类验证码时，才选 NopeCHA。 | Buster 更窄且开源；NopeCHA 更广，但持续维护的实现闭源并依赖托管服务。 |
-| hcaptcha-challenger | 未收录 | 已授权目标是 hCaptcha，并且需要程序化本地管线时，选 hcaptcha-challenger。 | 它不提供 Buster 的 reCAPTCHA 无障碍交互；Buster 也不覆盖 hCaptcha 的图像挑战族。 |
 | 2captcha-python | 未收录 | 后端脚本需要识别服务 API 时，选 2captcha-python；应由用户在浏览器中明确触发辅助时，选 Buster。 | API 客户端适合自动化，但增加外部服务和计费依赖；Buster 留在浏览器内，也可以使用本地识别。 |
 | [Text_select_captcha](text-select-captcha.zh.md) | 已收录 | 已授权场景需要中文点选文字识别时，选 Text_select_captcha；需要 reCAPTCHA 音频无障碍辅助时，选 Buster。 | 两者处理不同挑战形态；Text_select_captcha 还缺少许可授权。 |
+
+## 快速上手
+
+从 [README.md:6–21](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/README.md#L6-L21) 链接的浏览器商店安装，在自有或明确授权的无障碍测试专用配置中使用。打开扩展选项，选择语音识别路径；核对的迁移把托管本地和远端都启用，音频不能外发时须关闭远端处理。本地模型未就绪时先准备模型；本地识别仍要联网下载模型并取得题目音频。打开授权的 reCAPTCHA 挑战，点击 Buster 按钮，它切到音频题、请求转写、填入答案并提交。授权、浏览器权限和数据边界由你负责；独立原生客户端是可选项，目标系统仍可拒绝答案。
+
+![Buster — 主干用户故事](../../assets/flow/buster.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/buster.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装扩展，选择允许的语音识别路径 — 组件：`浏览器扩展与选项`
+2. **你**：在授权的 reCAPTCHA 挑战中点击按钮
+3. **Buster**：切换音频题，经所选路径请求转写 — 组件：`组件脚本与后台`
+4. **Buster**：填入取得的文本，交目标系统验证 — 组件：`组件脚本`
+
+**价值**：由用户触发音频答案提交，不必手动辨认图片题
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **有条件先本地，不等于仅本地。** [background/main.js:663–748](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L748) 获取并裁剪音频，浏览器 Prompt API 可用时先用它，API 不可用时尝试已缓存的 Transformers 识别。无本地答案时，启用的托管远端识别仍可运行。[20260617113244_add_managed_services.js:8–14](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/storage/revisions/local/20260617113244_add_managed_services.js#L8-L14) 同时启用两条路径；扩展能跑本地模型，不代表已经建立禁止外发的边界。
+- **量化浏览器转写先检查就绪。** [models.js:101–115](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/utils/models.js#L101-L115) 选择 WASM 与 q8 权重的 Whisper tiny。[offscreen/main.js:21–37](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/offscreen/main.js#L21-L37) 在 MV3 服务工作线程之外处理音频，仅在缓存管线可用时转写。计算留在浏览器，但模型未就绪会没有文本，不保证返回答案。
+- **转写与组件操作分离。** [base/main.js:368–407](https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L368-L407) 向后台索取文本，再直接填写或发送原生输入命令后提交。交互路径明确可审查，但依赖 reCAPTCHA 的网页选择器，不能证明服务端接受答案。
 
 ## 技术栈
 
@@ -130,13 +145,17 @@ health:
 
 ## 健康度与可持续性
 
-- **维护情况（2026-07）：** 项目未归档，2026-06 仍有 push，并在 2026 年 6 月发布了 v3.1.4 至 v3.4.0。发布线活跃，也持续应对浏览器和识别变化。
+- **实测信号（2026-10-14）：** C/?/D/B/D/D，整体 C，覆盖 5/6 轴。响应由 A 变为 `?`／`no_window_signal`：有流量，但截止评分前 1 天的固定 90 天窗口没有合格首响；不是接口失败，也没有实测为慢响应。
+- **维护情况：** 核对分支从 2026-06 起未变，v3.4.0 于 2026-06-20 发布。仓库未归档，但 109 天没有提交不能称当前快速迭代。
 - **治理：** 仓库属于个人账号，贡献历史高度集中在 `dessant`，因此维护和安全响应很依赖单人。
-- **年龄与 Lindy：** 项目创建于 2018 年，2026 年仍在发版；对一个处于快速变化领域的浏览器扩展来说，年龄与活跃度组合形成较强信号。
-- **采用信号：** 约 9.2k star，并在多个浏览器商店分发，说明它长期有人关注，但不能证明无障碍质量或识别成功率。
+- **年龄与 Lindy：** 创建于 2018 年，实测年龄 2887 天，2026 年仍有发布；近期沉默使长青度由 A 降为 B。年龄是正向先验，不保证未来兼容性。
+- **采用信号：** 9336 star 和多商店链接说明关注度，不是成功率。发布安装信号实测为 D；旧 Go 注册表误匹配不能当作这个 JavaScript 扩展的使用量。
 - **风险标记：** bus factor 低、依赖 reCAPTCHA 实时行为、可选远端音频处理、可选原生输入控制，以及 GPL-3.0-only 的再分发义务。
 
 ## 存疑（未验证）
+
+- [未验证：抽样窗口无合格首响] 响应轴在截止 2026-10-14 评分前 1 天的 90 天窗口出现自然 `no_window_signal`；实际支持速度未知，原 A 不再当作当前证据。
+- [未验证：未安装或运行扩展] 本页核对源码路径，没有验证浏览器模型就绪、发布包行为或实际音频外发目标。源码可见托管远端回退，敏感使用前仍须核对安装版选项。
 
 - [未验证] 识别效果会随 reCAPTCHA、语言、浏览器、IP 信誉，以及选用的本地或远端语音模型变化；不保证任何成功率。
 - [未验证] 本条目没有完整审计独立的 Buster Client 仓库、二进制更新路径和 native messaging 安全模型。

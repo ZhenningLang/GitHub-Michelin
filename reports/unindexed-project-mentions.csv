@@ -568,7 +568,7 @@ Haystack,categories/agent-frameworks/workflow-builders/llamaindex.md,,no
 Haystack / django-elasticsearch-dsl,categories/databases/database-clients/elasticsearch-dsl-py.md,,no
 hCaptcha,categories/captcha/capjs.md,,no
 hCaptcha / Cloudflare Turnstile / Friendly Captcha / Altcha,categories/captcha/INDEX.md,,no
-hcaptcha-challenger,categories/captcha/buster.md,,no
+hcaptcha-challenger,categories/captcha/nopecha-extension.md,,no
 hcxdumptool (`ZerBea/hcxdumptool`),categories/pentest/wifit3.md,,no
 Headless Chrome/Chromium + Puppeteer,categories/web-automation/browser-driver-frameworks/phantomjs.md,,no
 Headless UI,categories/web-ui/component-libraries/radix-ui.md,,no

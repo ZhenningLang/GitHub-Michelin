@@ -486,7 +486,7 @@ The complete index, grouped by category. Each project has an English page (`<slu
 | **pytorch-captcha-recognition** | Use it as a readable teaching baseline for fixed-length text CAPTCHAs, one CNN head per character — but it is a frozen 2020 tutorial whose PyTorch APIs need modernizing, and its accuracy claims come from its own synthetic data. | Apache-2.0 | D (4/6) | [EN](categories/captcha/pytorch-captcha-recognition.md) · [中](categories/captcha/pytorch-captcha-recognition.zh.md) |
 | **captcha (lepture)** | Use it when a Python web form needs a self-hosted image or audio CAPTCHA with no third-party call and you will write storage, expiry and verification yourself — but distorted text falls to cheap OCR, so it is a speed bump, not bot defense. | BSD-3-Clause | B (5/6) | [EN](categories/captcha/lepture-captcha.md) · [中](categories/captcha/lepture-captcha.zh.md) |
 | **NopeCHA** | Use it only for authorized unattended automation across several CAPTCHA families — the maintained implementation is closed and depends on a hosted API. | MIT | B (6/6) | [EN](categories/captcha/nopecha-extension.md) · [中](categories/captcha/nopecha-extension.zh.md) |
-| **Buster** | Use it for human-triggered reCAPTCHA audio accessibility or authorized testing — source-auditable and local-capable, but narrow and nondeterministic. | GPL-3.0-only | C (6/6) | [EN](categories/captcha/buster.md) · [中](categories/captcha/buster.zh.md) |
+| **Buster** | Use it for human-triggered reCAPTCHA audio accessibility or authorized testing — source-auditable and local-capable, but narrow and nondeterministic. | GPL-3.0-only | C (5/6) | [EN](categories/captcha/buster.md) · [中](categories/captcha/buster.zh.md) |
 
 ### blockchain-dev-infrastructure
 

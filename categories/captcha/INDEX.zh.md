@@ -12,7 +12,7 @@
 | **pytorch-captcha-recognition** | 想要一份可读的定长文字验证码教学基线（每个字符位一个 CNN 分类头）时用它——但它是 2020 年冻结的教程，PyTorch API 需要现代化改造，准确率数字也只来自它自己的合成数据。 | D（4/6） | [→](pytorch-captcha-recognition.zh.md) |
 | **captcha (lepture)** | 当 Python 表单需要一个自托管、不调第三方的图片或语音验证码，而存储、过期和校验你打算自己写时用它——但扭曲文字挡不住廉价 OCR，只能当减速带，算不上机器人防护。 | B（5/6） | [→](lepture-captcha.zh.md) |
 | **NopeCHA** | 仅在明确授权的浏览器自动化需要无人值守覆盖多类验证码时使用；它依赖托管服务，持续维护的扩展源码也已关闭。 | B（6/6） | [→](nopecha-extension.zh.md) |
-| **Buster** | 当真人需要源码可审计的 reCAPTCHA 音频辅助，或你在做明确授权的无障碍测试时用它；它由人工触发且只覆盖 reCAPTCHA，不适合作为确定性 CI 或广泛无人值守识别。 | C（6/6） | [→](buster.zh.md) |
+| **Buster** | 当真人需要源码可审计的 reCAPTCHA 音频辅助，或你在做明确授权的无障碍测试时用它；它由人工触发且只覆盖 reCAPTCHA，不适合作为确定性 CI 或广泛无人值守识别。 | C（5/6） | [→](buster.zh.md) |
 
 ## 对比矩阵
 
@@ -23,7 +23,7 @@
 | [pytorch-captcha-recognition](pytorch-captcha-recognition.zh.md) | ✅ | D（4/6） | 换来在学 CTC 或 seq2seq 之前最简单的多头设计范例；代价是不支持变长或扭曲验证码，也没有在维护、可安装的 API。 |
 | [captcha (lepture)](lepture-captcha.zh.md) | ✅ | B（5/6） | 换来一个只依赖 Pillow、挑战生命周期全由你掌控的渲染器；代价是状态与校验全得自己写，且毫无对抗鲁棒性。 |
 | [NopeCHA](nopecha-extension.zh.md) | ✅ | B（6/6） | 面向明确授权的多类验证码无人值守浏览器识别；覆盖广，但依赖托管服务，持续维护的扩展源码也已关闭。 |
-| [Buster](buster.zh.md) | ✅ | C（6/6） | 真人触发、源码可审计的 reCAPTCHA 音频辅助；比识别服务更窄，也不适合作为确定性 CI 判定器。 |
+| [Buster](buster.zh.md) | ✅ | C（5/6） | 真人触发、源码可审计的 reCAPTCHA 音频辅助；比识别服务更窄，也不适合作为确定性 CI 判定器。 |
 | hCaptcha / Cloudflare Turnstile / Friendly Captcha / Altcha | 未收录 | — | 页面里点到的其他 CAPTCHA / 机器人检测服务。 |
 
 ## 什么该放这里
