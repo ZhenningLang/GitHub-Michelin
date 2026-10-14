@@ -69,6 +69,10 @@ DUP_SECTIONS = {
     "何时使用": 0.55, "何时不用": 0.55,
     "Dependencies": 0.65, "Ops difficulty": 0.65, "依赖": 0.65, "运维难度": 0.65,
     "Q&A": 0.40, "快问快答": 0.55,
+    # Key techniques calibration: 21 pairs (21 EN / 21 ZH), 2026-10-14 UTC.
+    # Exact directed maxima EN 6/101=0.0594059405940594 (t3code -> openilink-hub),
+    # ZH 4/46=0.08695652173913043 (any2html -> hallmark); strictly next 0.05 grid.
+    "Key techniques": 0.10, "技术要点": 0.10,
 }
 # Phrase blacklists only ever catch boilerplate someone already wrote. What makes boilerplate
 # boilerplate is not its wording but that it repeats: prose written without reading THIS project
