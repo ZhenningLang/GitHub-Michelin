@@ -12,7 +12,7 @@ shape and are deliberately excluded here.
 
 ## Summary
 
-- Named-but-unindexed alternatives: 1327
+- Named-but-unindexed alternatives: 1329
 - `full` mislabels (whole row indexed but marked 未收录, must be 0): 0
 - `partial` rows (mixed indexed/unindexed, clean up the indexed names): 0
 - Raw machine list: `reports/unindexed-project-mentions.csv`
@@ -48,7 +48,7 @@ shape and are deliberately excluded here.
 | [daed](https://github.com/daeuniverse/daed) | `categories/networking/dae.md` |
 | [darktable](https://github.com/darktable-org/darktable) | `categories/photo-editing/lightcraft.md` |
 | [Fast-DetectGPT](https://github.com/baoguangsheng/fast-detect-gpt) | `categories/llm-eval/chatgpt-comparison-detection.md` |
+| [FaucETH](https://github.com/komputing/FaucETH) | `categories/blockchain-dev-infrastructure/powfaucet.md` |
 | [Fish Speech](https://github.com/fishaudio/fish-speech) | `categories/speech/index-tts.md` |
 | [FlClash](https://github.com/chen08209/FlClash) | `categories/dev-utilities/ops-infra/clash-verge-rev.md` |
 | [fortuneexcel](https://github.com/corbe30/fortuneexcel) | `categories/office-editors/fortune-sheets.md` |
-| [google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp) | `categories/agent-tooling/harness-extensions/hey-cli.md` |
