@@ -6,8 +6,8 @@ category: api-gateway
 tags: [claude-code, nvidia, llm-proxy, windows, binary-only]
 language: JavaScript
 license: MIT
-maturity: binary-only current artifacts, 2.5k stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: binary-only proxy distribution, master last changed 2026-02-09, 2520 stars (as of 2026-10)
+last_verified: 2026-10-14
 type: tool
 upstream:
   pushed_at: 2026-02-09T06:38:04Z
@@ -16,7 +16,7 @@ upstream:
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T15:58:36Z
+  computed_at: 2026-10-14T01:52:24Z
   overall: C
   overall_score: 1.8
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: C
       raw:
         archived: false
-        last_commit_age_days: 225
+        last_commit_age_days: 247
         active_weeks_13: 0
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 2409
-        last_commit_age_days: 225
+        repo_age_days: 2431
+        last_commit_age_days: 247
         cohort: tool
     governance:
       grade: D
@@ -73,62 +73,84 @@ health:
 
 # Funtool
 
-A Windows-only Claude Code proxy for NVIDIA-hosted models, despite the repository name `wechat-bot`; the current proxy artifacts are opaque executables rather than auditable source.
+You followed a WeChat-bot repository looking for code, but that tool is offline; Funtool now lists NVIDIA model-proxy EXEs and separate setup articles, without the current proxy source.
 
 ![Funtool — health radar](../../assets/health/funtool.svg)
 
 ## When to use
 
-You're a Windows developer who wants to point Claude Code at the NVIDIA model route documented by Funtool and values a prepackaged executable over assembling a proxy stack yourself. You can dedicate a disposable or low-trust workstation to the tool, you accept that the current implementation cannot be reviewed from source, and the external WeChat Official Account documentation matches the workflow you need.
+You are evaluating the specific NVIDIA-backed Claude Code CLI routes named in this repository and want to locate their packaged Windows executable rather than build a proxy. The README groups Kimi K2.5, GLM 4.7, Qwen3 Coder, Step-3.5-Flash and DeepSeek V3.2 under download and external-documentation links. Treat Funtool as a distribution lead only, and consider it over an inspectable router only after you independently obtain matching instructions and accept binary trust.
 
-You choose Funtool over LiteLLM or claude-code-router only when this exact Windows + Claude Code + NVIDIA path is the deciding constraint. If auditability, cross-platform deployment, team administration, or provider breadth matters more than a turnkey binary, one of the alternatives below is the safer selection.
+The WeChat tool is explicitly offline. This review obtained the repository README and historical JS, not the linked WeChat article bodies; it does not establish a working current proxy configuration, credential safety or a free-service entitlement. If those are hard requirements, start from the inspectable alternatives below.
 
 ## When NOT to use
 
-- **You must audit the proxy, pin dependencies, or rebuild it from source.** Use LiteLLM instead; Funtool's current core is an opaque EXE, so the repository does not expose the implementation you would need for code review or reproducible builds.
-- **You need a cross-platform Claude Code routing layer controlled by text configuration.** Use claude-code-router instead; Funtool is tied to a Windows binary and an externally documented workflow.
-- **You need to expose or normalize several CLI credentials behind an OpenAI-compatible API.** Use CLIProxyAPI instead; Funtool is focused on the documented Claude Code and NVIDIA route rather than a general CLI-account gateway.
-- **You need multi-user administration, quotas, channel management, or a shared web control plane.** Use New API instead; Funtool is a local binary workflow, not a governed team gateway.
-- **You only need to switch coding-agent providers and credentials from a desktop UI.** Use [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) instead; it manages agent configurations, while Funtool inserts a model-proxy executable into the request path.
+- **You must inspect credential handling, dependencies or rebuilds.** Use [LiteLLM](litellm.md) or [Claude Code Router](claude-code-router.md); the current NVIDIA proxy EXEs are closed-source distributions in this tree, not reviewable implementations. Historical WeChat JS does not close that gap.
+- **You need a verified install/configuration path now.** Choose Claude Code Router's published configuration workflow; Funtool's repository supplies download links, not current ports, arguments or Claude configuration, and its external article bodies were not obtained here.
+- **You need a shared gateway with budgets and access control.** Use LiteLLM; Funtool's README does not establish those controls or an operated team service.
+- **You only need a desktop provider/configuration switcher.** Use [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md); choose its direct mode when you do not need an extra proxy. Funtool distributes an opaque request-path program instead.
+- **You need a broader maintainer/support bench.** Evaluate LiteLLM's vendor-backed gateway, including its commercial boundaries; this repository's measured active-author concentration is one person, and you cannot maintain the current binary from the published source.
+- **You want the old WeChat bot.** Do not adopt the retained JS as a supported product: README marks that tool offline. For the model-routing task this page now covers, use Claude Code Router rather than repurposing old message-client examples.
 
 ## Comparison
 
 | Alternative | In index | Our verdict | Tradeoff |
 |---|---|---|---|
-| [LiteLLM](litellm.md) | ✅ | For a reviewable, provider-agnostic team proxy, choose LiteLLM; choose Funtool only when its packaged Windows route to NVIDIA models is more important than source access. | LiteLLM adds Python deployment and configuration work but exposes the gateway logic and supports a much broader provider surface; Funtool reduces setup for its narrow path at the cost of binary trust. |
-| [claude-code-router](claude-code-router.md) | ✅ | For cross-platform, configuration-driven Claude Code routing, choose claude-code-router; choose Funtool only for the exact Windows binary workflow described by its external documentation. | claude-code-router is easier to inspect and automate, while Funtool packages more of the target workflow but cannot be independently rebuilt from the published repository. |
-| [CLIProxyAPI](cliproxyapi.md) | ✅ | For turning multiple CLI accounts into a reusable API facade, choose CLIProxyAPI; choose Funtool when the task is specifically Claude Code access to the supported NVIDIA route. | CLIProxyAPI covers a broader account-to-API problem and carries more server configuration; Funtool is narrower and desktop-oriented. |
-| New API | not indexed | For a shared gateway with users, quotas, channels, and administrative controls, choose New API; choose Funtool only for a single-machine Windows setup that does not need governance. | New API has a larger service and database operations surface but supports team controls; Funtool has less visible infrastructure and far less operational transparency. |
-| [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | For visually switching coding-agent providers and credentials, choose CC Switch; choose Funtool only when traffic must pass through its NVIDIA proxy path. | CC Switch is a configuration manager rather than an API gateway; Funtool changes request routing but introduces an opaque executable into the trust boundary. |
+| [LiteLLM](litellm.md) | ✅ | Choose LiteLLM for a source-reviewable team gateway with budgets; consider Funtool only for locating its exact NVIDIA executable after resolving instructions and binary trust. | LiteLLM adds Python/server operations and an enterprise feature boundary; Funtool gives file links without current implementation or comparable governance evidence. |
+| [Claude Code Router](claude-code-router.md) | ✅ | Choose Router for inspectable, configuration-driven coding-agent routing; consider Funtool only if the listed prebuilt NVIDIA route is the deciding constraint. | Router adds a Node/Electron and configuration surface; Funtool offers EXEs whose operation cannot be rebuilt or confirmed from this tree alone. |
+| [CC Switch](../agent-frameworks/coding-agents/orchestration-and-review/cc-switch.md) | ✅ | Choose CC Switch for visual provider switching, especially direct configuration without a proxy; consider Funtool only when evaluating the listed proxy artifacts themselves. | CC Switch has inspectable desktop code and optional routing mode; Funtool has a narrower distribution list with unavailable setup article bodies in this review. |
+
+## Quick start
+
+Open the pinned [README.md:12–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L31) and first note that the WeChat tool is offline. Select one listed model route: Kimi K2.5 points to `funtool/claude-nvidia-proxy-kimi25.exe`, while the other four headings point to the same `funtool/claude-nvidia-proxy.exe` path. Follow the corresponding file link to its GitHub download entry and retain the matching external-documentation URL; this is an acquisition/selection path, not a verified launch recipe. The repository supplies those entries, while you must obtain readable instructions and verify artifact provenance, authorization and credential handling before running anything. The linked WeChat article bodies were not obtained, so this page supplies no current port, command-line arguments, configuration or promised output. README calls the upstream models free, but quotas, account eligibility and continuing cost were not verified; no EXE, login or model call was executed in this review.
+
+![funtool — backbone user story](../../assets/flow/funtool.svg)
+
+<!-- flow-steps:begin (generated from flows/funtool.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>Text version of the flow</summary>
+
+1. **You**: Read the offline-WeChat notice and choose the Kimi K2.5 entry
+2. **Funtool**: Maps the chosen model heading to an executable and a separate instructions URL — component: `README.md`
+3. **You**: Follow its file link to the download entry and retain the matching instructions URL — `funtool/claude-nvidia-proxy-kimi25.exe`
+
+**Value**: The selected artifact and its instructions entry are located, not verified or executed
+
+</details>
+<!-- flow-steps:end -->
+
+## Key techniques
+
+- **Current distribution is a model-to-file/document map, not visible proxy code.** [README.md:14–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31) gives one distinct Kimi executable and four model headings sharing another executable, each with a separate article link. This organizes selection and acquisition, but does not prove how that shared EXE selects models. **The current proxy program's internal mechanisms have no source to inspect in this tree**; protocol conversion, authentication and credential storage remain unknown, not inferred from the filenames.
+- **Historical WebSocket client prints WeChat messages; it is offline, not the current proxy.** [funtool/client.js:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24) opens a loopback WebSocket and declares message codes; [funtool/client.js:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49) registers callbacks and logs incoming data. It demonstrates the old client event surface, not a WebSocket server or any NVIDIA/Claude adapter; [README.md:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12) marks the WeChat tool offline. Its historical port is not a current proxy setup value.
+- **Historical HTTP examples assemble message requests; they are offline, not current product APIs.** [funtool/http.js:35–67](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67) posts text/picture JSON with a WeChat user ID; [funtool/http.js:74–115](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115) defines member/nickname requests and invokes a text-send example. These are client-side examples, not the server implementation or evidence of the current EXEs' model-routing, access control or compatibility.
 
 ## Tech stack
 
-- **Repository metadata:** GitHub identifies JavaScript as the primary language, but the current functional release is distributed as an executable rather than corresponding reviewable source.
-- **Current product surface:** a Windows tool for routing Claude Code requests to the documented NVIDIA model path; it is not currently a WeChat bot despite the repository name.
-- **Distribution:** GitHub reports the repository at roughly 932 MiB, largely reflecting accumulated binary history. The two current NVIDIA proxy executables in `funtool/` are about 4.9 MiB and 8.3 MiB; their implementation cannot be inspected from this repository.
-- **Documentation:** operational instructions live outside the repository in WeChat Official Account content, separating the executable, documentation, and version history across different surfaces.
+- **Current artifacts:** committed Windows EXEs for README-named NVIDIA/Claude Code CLI routes; their implementation language, libraries and build process are not published in the inspected tree.
+- **Historical source:** Node.js-style JavaScript importing `ws` and `request-promise`, for the offline WeChat client examples. GitHub's JavaScript primary-language field describes visible historical files, not the current EXEs.
+- **Delivery:** Markdown download/article links and Git-tracked binaries; no package manifest or current proxy build recipe. GitHub's 954186 KiB repository-size metadata is a history/storage signal, not a measured shallow-download size.
 
 ## Dependencies
 
-- A supported Windows environment capable of running the distributed EXE.
-- Claude Code and access credentials or account configuration for the targeted NVIDIA model service.
-- Network access to the model endpoint and to the external documentation needed to configure the tool.
-- Trust in the prebuilt release artifact; the repository does not provide the current core source needed to replace that artifact with a locally reviewed build.
+- Browsing/acquisition needs GitHub access and readable instructions matching the chosen artifact; those external article bodies are absent from this review.
+- README targets Claude Code CLI and NVIDIA model service access, but does not specify current credentials, runtime libraries, supported Windows versions, endpoint configuration or launch arguments. Do not fill those gaps from a similar proxy.
+- If you proceed independently, provide an approved execution environment and private credential policy. Installing the historical JS packages is not an installation path for the current EXEs.
 
 ## Ops difficulty
 
-**Low to launch, high to assure.** A packaged Windows executable can reduce initial setup, but the operational burden moves into artifact provenance, endpoint and credential handling, version matching with external documentation, and incident diagnosis without source. The roughly 932 MiB repository history also makes cloning and archival heavier than a small source-based proxy, although the current proxy executables themselves are much smaller. Treat it as a workstation tool behind a narrow trust boundary, not as transparent shared infrastructure.
+**Low to locate, high to assure; launch effort is unknown.** README makes files easy to find, but it does not establish a safe or working setup. You must resolve instructions, provenance, private credential handling, update/version matching and incident diagnosis without the proxy source. Historical JS does not reduce that burden; keep executable evaluation outside trusted production credentials until those requirements are independently met.
 
 ## Health & viability
 
-- **Artifact posture, as of 2026-07:** GitHub exposes no Releases for this repository; usable proxy artifacts are committed directly to the default branch. Continued operation therefore depends on upstream publishing compatible Windows binaries rather than on users rebuilding or maintaining the code themselves.
-- **Adoption signal:** about 2.5k GitHub stars as of 2026-07 show attention, but stars do not resolve the auditability, licensing, or release-provenance questions.
-- **License risk:** GitHub recognizes the root repository license as MIT. Whether that grant was intended to cover the current opaque executables is not established by source, build metadata, or a separate binary notice.
-- **Lindy and governance:** project age, release continuity, and maintainer redundancy are not established by the supplied release surface. [推断] The binary-only distribution is therefore a weak durability bet for long-lived shared infrastructure even if the current workflow is convenient.
+- **Verdict, 2026-10-14:** a source-opaque artifact catalog, not an auditable gateway. Master last changed on 2026-02-09, the repository is not archived, and GitHub Releases is empty; files are distributed through branch commits.
+- **Governance and adoption:** a personal-account upstream and 1 measured active maintainer concentrate continuity; 2520 stars are attention, not evidence of a safe installation or successful current model requests.
+- **Age/Lindy:** created 2020-02-17, about 6.7 years old, but the former WeChat product is offline and current proxy code is absent. Repository age does not transfer into demonstrated durability of the replacement EXEs.
+- **License boundary:** root MIT text names Binaryify and 2013–2016; the scorer's permissive-license grade is about that recognized text, not a binary audit or confirmation of the current EXEs' licensing/provenance.
 
 ## Caveats (unverified)
 
-- [未验证] The repository's MIT text may not cover the current opaque executables; obtain explicit upstream clarification before redistribution or commercial reliance.
-- [未验证] The source corresponding to the current EXE is not available for auditing, so its embedded dependencies, credential handling, telemetry, and update behavior cannot be independently verified from the repository.
-- [未验证] The external WeChat Official Account documentation is maintained separately from the committed binary artifacts; exact version alignment between instructions and the current EXE is not established here.
-- [推断] A roughly 932 MiB repository with accumulated opaque binaries creates more cloning, supply-chain, and incident-response burden than a small source-built proxy, but this page did not perform binary analysis.
+- [未验证：公众号正文未取得] Current setup instructions, article/artifact version alignment, ports, arguments and Claude configuration remain unknown; no external article was opened in this re-verification.
+- [未验证：当前代理没有对应源码，且未执行或逆向EXE] Protocol conversion, authentication, credential storage, embedded dependencies, telemetry, update behavior and runtime results were not established.
+- [未验证：根MIT没有单独说明当前二进制授权范围] The Binaryify notice does not settle current EXE rights or provenance; obtain clarification before redistribution or commercial reliance.
+- [未验证：未核NVIDIA服务账号条款和额度] README's free-model wording does not establish ongoing availability, eligibility, rate limits or cost for your account.
