@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "them": {"en": "NopeCHA distribution offers", "zh": "NopeCHA 分发提供的"},
+  "steps": [
+    {"lane": "you", "en": "Authorize the test and choose Chrome or Firefox with permitted data egress", "zh": "确认测试授权，选择浏览器与允许的数据外发"},
+    {"lane": "them", "en": "Provide the corresponding extension-store entry and published builds", "zh": "提供对应扩展商店入口与发布构建", "component": {"en": "public README / distribution", "zh": "公开文档与分发"}},
+    {"lane": "you", "en": "Install a pinned current artifact instead of the unsupported legacy build", "zh": "安装固定的当前产物，不用已停支持的历史构建"},
+    {"lane": "them", "en": "Document automatic supported-page handling and IP-counted no-key quota", "zh": "说明支持网页的自动处理与按 IP 计数的无密钥额度", "component": {"en": "documented vendor service", "zh": "文档声明的厂商服务"}}
+  ],
+  "value": {"en": "A documented current acquisition path; closed implementation and service guarantees remain unaudited", "zh": "取得文档可核的当前分发路径；闭源实现和服务保证仍未审查"},
+  "sources": [
+    "https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L100-L118",
+    "https://github.com/NopeCHALLC/nopecha-extension/blob/5b198e1c256afddfc6ae4b01544d357e79ee4544/README.md#L160-L173"
+  ]
+}
