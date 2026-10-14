@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "them": {"en": "Bella Domify does", "zh": "Bella Domify 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the library and register your image storage with OCR disabled", "zh": "安装库，注册自有图片存储并关闭 OCR", "code": "pip install bella-domify", "component": {"en": "Python library / ParserConfig", "zh": "Python 库与解析配置"}},
+    {"lane": "you", "en": "Pass PDF bytes to its converter and request a document tree", "zh": "把 PDF 字节交给转换器，请求文档树", "code": "PDFConverter(stream=stream) · dom_tree_parse()"},
+    {"lane": "them", "en": "Parse pages and relationships, then handle images through your provider", "zh": "解析页面与关系，经你的适配器处理图片", "component": {"en": "PDF converter / image provider", "zh": "PDF 转换器与图片适配器"}},
+    {"lane": "them", "en": "Build hierarchy and Markdown, return the document-tree model", "zh": "重建层级与 Markdown，返回文档树模型", "component": {"en": "PDFDomTreeParser", "zh": "PDF 文档树解析器"}}
+  ],
+  "value": {"en": "Structured blocks and inferred hierarchy for downstream ingestion, not a complete RAG system", "zh": "取得结构块与推断层级供后续摄取，不是完整检索系统"},
+  "sources": [
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/README.md#L55-L85",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/context.py#L13-L23",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/converter.py#L182-L197",
+    "https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L164"
+  ]
+}

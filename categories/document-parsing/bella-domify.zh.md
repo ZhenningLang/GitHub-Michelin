@@ -6,17 +6,17 @@ category: document-parsing
 tags: [document-parsing, pdf, office, dom-tree, markdown, table-extraction, vision-ocr, fastapi]
 language: Python
 license: GPL-2.0-only
-maturity: v0.1.6.8 package metadata, no GitHub releases, 86 stars (as of 2026-07)
-last_verified: 2026-07-17
+maturity: v0.1.6.8 package metadata, no GitHub releases, 92 stars (as of 2026-10-14)
+last_verified: 2026-10-14
 type: library
 upstream:
-  pushed_at: 2025-11-27T08:52:23Z
+  pushed_at: 2026-08-17T07:33:36Z
   default_branch: main
-  default_branch_sha: d154bada09ca08331498e24d8875c9df8f651293
+  default_branch_sha: d81f784e6cb398a7f229d0182878fb41f1b1824c
   archived: false
 health:
   schema: 1
-  computed_at: 2026-09-22T16:17:23Z
+  computed_at: 2026-10-14T07:04:04Z
   overall: C
   overall_score: 1.6
   scored_axes: 5
@@ -29,7 +29,7 @@ health:
       grade: B
       raw:
         archived: false
-        last_commit_age_days: 36
+        last_commit_age_days: 58
         active_weeks_13: 2
         carve_out: null
     responsiveness:
@@ -49,8 +49,8 @@ health:
     longevity:
       grade: C
       raw:
-        repo_age_days: 401
-        last_commit_age_days: 36
+        repo_age_days: 422
+        last_commit_age_days: 58
         cohort: library
     governance:
       grade: C
@@ -73,7 +73,7 @@ health:
 
 # Bella Domify
 
-一个从 pdf2docx 衍生的 Python 文档解析器，为 PDF 和常见 Office 格式提供 layout 与 DOM tree 解析，并带可选视觉模型 OCR 和基于 Kafka/S3 的服务模式。
+PDF 摊平成文本后，表格和所属标题分了家；Bella Domify 用规则重建文档树，但你须实现图片存储适配器，并处理许可和运行时声明冲突。
 
 ![Bella Domify — 健康度雷达](../../assets/health/bella-domify.zh.svg)
 
@@ -88,11 +88,11 @@ health:
 ## 何时不用
 
 - **商业分发需要无歧义许可证。** 请改用 [Docling](docling.zh.md) 或 [Unstructured](unstructured.zh.md)；Bella Domify 的 GPL v2 许可证文件与 `setup.py` 中 GPL v3 声明冲突。
-- **包括图片 OCR 在内的所有处理都必须离线。** 请改用 [Docling](docling.zh.md)、[Marker](marker.zh.md) 或自托管 OCR；Bella Domify 启用图片 OCR 后，会把图片 URL 发给 OpenAI-compatible vision endpoint。
-- **需要有 tag、release 和更长公开稳定记录的解析器。** 请改用 [Docling](docling.zh.md) 或 [Unstructured](unstructured.zh.md)；Bella Domify 没有 GitHub release 或 tag，最后观察到的默认分支 push 在 2025-11。
+- **所有文档处理必须离线。** 优先配置本地 [Docling](docling.zh.md) 管线。关闭 Bella 的 OCR 不会移除图片存储调用；存储独立调用，启用的 OCR 还把图片网址发送给视觉端点。
+- **需要发布标签与更长公开稳定记录。** 使用 [Docling](docling.zh.md) 或 [Unstructured](unstructured.zh.md)；Bella Domify 没有 GitHub 发布，最后观察到的主分支更新在 2026-08，不是旧页的 2025-11。
 - **不想实现存储/模型 provider，也不想运维服务基础设施。** 简单转换请用 [MarkItDown](markitdown.zh.md)，进程内解析可用 [Docling](docling.zh.md)；Bella Domify 的 library 配置要求 image provider，service 路径还连接 S3、Kafka 和 File API。
 - **只需要快速 Office 转 Markdown。** 请改用 [MarkItDown](markitdown.zh.md)；Bella Domify 会安装 PyMuPDF、OpenCV、数据库、Kafka、云 SDK 和服务依赖，对更窄的任务没有必要。
-- **选型前必须拿到可独立复现的准确率。** 请在自己的语料上对 [Docling](docling.zh.md)、[Marker](marker.zh.md) 和 Bella Domify 做 benchmark；仓库对比图基于有限内部评测集，本次没有复现。
+- **选型前必须取得可复现准确率。** 在自己的语料上比较 Docling 和 Bella Domify；仓库图表基于有限内部评测集，本轮未复现。
 
 ## 横向对比
 
@@ -101,8 +101,32 @@ health:
 | [Docling](docling.zh.md) | ✅ | 许可证清晰、release 更成熟、本地模型解析和标准 RAG 集成最重要时选 Docling；pdf2docx 衍生 DOM 模型和 provider 式服务集成正好匹配现有 Bella 风格技术栈时选 Bella Domify。 | Docling 更成熟且为 MIT；Bella Domify 暴露详细 PDF 内部结构与服务 hook，但许可证冲突且公开历史更短。 |
 | [Unstructured](unstructured.zh.md) | ✅ | 需要生产文档 ETL、connector、partition 和 enrichment 时选 Unstructured；需要较窄的 Python parser、自定义 DOM tree 和贝壳式 service adapter 时选 Bella Domify。 | Unstructured 的 ingestion 生态更广；Bella Domify 提供更偏应用的 provider 与 worker 代码，代价是基础设施耦合。 |
 | [MarkItDown](markitdown.zh.md) | ✅ | 需要小型转换依赖和可预期 Markdown 输出时选 MarkItDown；PDF 版面、table object、section 和 image handling 值得引入重栈时选 Bella Domify。 | MarkItDown 易安装但版面感知弱；Bella Domify 结构更丰富，运维也重得多。 |
-| [Marker](marker.zh.md) | ✅ | 本地模型驱动 PDF 转 Markdown 保真度是核心时选 Marker；多种 Office 格式和明确 DOM-tree API 更重要时选 Bella Domify。 | Marker 聚焦 PDF 转换与 ML 依赖；Bella Domify 结合规则型 PDF 内部结构、Office adapter 和可选远程视觉 OCR。 |
-| [olmOCR](olmocr.zh.md) | ✅ | 需要 GPU 处理视觉困难 PDF 时选 olmOCR；不想采用 GPU VLM 部署架构，而需要服务集成的多格式解析时选 Bella Domify。 | olmOCR 的 GPU/模型体积大，但复杂 PDF 定位更清晰；Bella Domify 把复杂度分散到 Python 包、provider 和基础设施。 |
+
+## 快速上手
+
+文档库路径从 `pip install bella-domify` 开始（[README.md:55–85](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/README.md#L55-L85)），部署前先解决 GPL 与 Python 下限冲突。实现 `ImageStorageProvider`——你负责保存抽取图片字节的适配器——再用 `parser_context.register_all_config` 注册 `ParserConfig`；README 的抽象类 `ImageStorageProvider()` 是示意，不能直接实例化。初次选带文本层的 PDF 路径，设 `ocr_enable=False`，由你控制图片存储；只关闭 OCR 不等于全离线。把 PDF 字节交给 `PDFConverter(stream=stream)`，调用 `dom_tree_parse(remove_watermark=True, parse_stream_table=False)` 取得文档树模型。解析器重建块与层级；存储、错误检查、后续检索，以及将来视觉模型的账号、费用和图片外发策略都由你负责。本段描述源码可见路径，不宣称已成功执行安装。
+
+![Bella Domify — 主干用户故事](../../assets/flow/bella-domify.zh.svg)
+
+<!-- flow-steps:begin (generated from flows/bella-domify.json by tools/flow_card.py — do not edit) -->
+<details>
+<summary>流程文字版</summary>
+
+1. **你**：安装库，注册自有图片存储并关闭 OCR — `pip install bella-domify` — 组件：`Python 库与解析配置`
+2. **你**：把 PDF 字节交给转换器，请求文档树 — `PDFConverter(stream=stream) · dom_tree_parse()`
+3. **Bella Domify**：解析页面与关系，经你的适配器处理图片 — 组件：`PDF 转换器与图片适配器`
+4. **Bella Domify**：重建层级与 Markdown，返回文档树模型 — 组件：`PDF 文档树解析器`
+
+**价值**：取得结构块与推断层级供后续摄取，不是完整检索系统
+
+</details>
+<!-- flow-steps:end -->
+
+## 技术要点
+
+- **用版面规则推断层级，不把内容全摊平。** [domtree.py:68–146](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/domtree/domtree.py#L68-L146) 结合目录、标题、字号、粗体和列表类型判断父子关系；[domtree_parser.py:123–164](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L123-L164) 合并连续段落，并通过父节点栈生成 Markdown。输出保留推断分组，但这些启发式不能保证每种版面的阅读顺序正确。
+- **图片存储与 OCR 分成两段。** [domtree_parser.py:43–64](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/domtree_parser.py#L43-L64) 把图片处理交给八线程池；[image_provider.py:47–60](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/provider/image_provider.py#L47-L60) 先上传和取回图片，再请求可选 OCR。它允许定制存储，但存储失败可变成空 OCR 文本；抽象接口声明的下载字节与调用方按网址使用的关系，也须按版本验证。
+- **可选模型调用设条件，使用统计另行上报。** [ocr.py:13–27](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L13-L27) 检查 OCR 开关、模型、用户和图片网址；[ocr.py:39–96](https://github.com/LianjiaTech/bella-domify/blob/d81f784e6cb398a7f229d0182878fb41f1b1824c/doc_parser/dom_parser/parsers/pdf/common/ocr.py#L39-L96) 把网址交给对话补全，单次超时 30 秒，限流最多尝试三次，并调用使用量上报。这只约束一条调用路径，不代表包无其他网络活动；耗尽失败返回失败标记，不是可信抽取文本。
 
 ## 技术栈
 
@@ -126,13 +150,17 @@ health:
 
 ## 健康度与可持续性
 
-- **维护，2026-07：** 仓库未归档，但最后观察到的默认分支 push 是 2025-11-27，没有 GitHub release 或 tag。
+- **实测信号（2026-10-14）：** B/?/E/C/C/D，整体 C，覆盖 5/6 轴。原 `no_window_signal` 保留：截止评分前 9 天的 90 天响应窗口有流量却无合格首响；不是接口失败，也不能据此认定支持慢。
+- **维护：** 未归档，当前主分支更新于 2026-08，距评分 58 天。没有 GitHub 发布；0.1.6.8 是包元数据回退值，不是已验证发布产物。
 - **治理：** 仓库属于 LianjiaTech 组织，近期 commit 来自多个账号。Contributor 总量部分继承自 pdf2docx 衍生历史，不能干净地表示 Bella Domify 当前 bus factor。
-- **年龄与 Lindy：** 2025-08 创建，公开历史不足一年；即使初始开发期有多个贡献者，Lindy 先验仍然偏弱。[推断]
-- **采用度：** 86 个 star 说明有早期兴趣，但已读来源里还没有广泛 release 或 dependent-project 信号。
+- **年龄与 Lindy：** 创建于 2025-08，实测年龄 422 天，已超过一年，不再是旧页所称的不足一年；但对解析依赖而言公开记录仍短。
+- **采用度：** 92 star 表示有限关注；评分器找到 0 个生态包，给 E。README 的安装命令不能独立证明发布轮子能在你的环境工作。
 - **风险标记：** GPL v2/GPL v3 冲突会阻断许可证敏感选型。已提交的 Compose 与生产 INI 还包含环境特定 endpoint 和类似凭据的示例值，不能当作生产默认值。
 
 ## 存疑（未验证）
+
+- [未验证：抽样窗口无合格首响] 实际支持速度未知：截止 2026-10-14 评分前 9 天的 90 天窗口为 `no_window_signal`；没有用人工档位替代缺失测量。
+- [未验证：未运行库或服务] 存储接口的网址／字节行为、导入与配置顺序、安装轮子的依赖导入及有效 Python 下限都需运行核对。关闭 OCR 不会移除存储调用；视觉模型和使用量上报的外发取决于你的配置。
 
 - [未验证] 上游法律意图尚未解决：`LICENSE` 是 GPL version 2 正文，`setup.py` 却声明 GPL v3。本页按实际许可证文件记录 `GPL-2.0-only`，但没有解决冲突。
 - [未验证] 仓库有限评测集上的准确率图和对比没有被复现或独立审计。
