@@ -483,7 +483,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **pytorch-captcha-recognition** | 想要一份可读的定长文字验证码教学基线（每个字符位一个 CNN 分类头）时用它——但它是 2020 年冻结的教程，PyTorch API 需要现代化改造，准确率数字也只来自它自己的合成数据。 | Apache-2.0 | D（4/6） | [中](categories/captcha/pytorch-captcha-recognition.zh.md) · [EN](categories/captcha/pytorch-captcha-recognition.md) |
 | **captcha (lepture)** | 当 Python 表单需要一个自托管、不调第三方的图片或语音验证码，而存储、过期和校验你打算自己写时用它——但扭曲文字挡不住廉价 OCR，只能当减速带，算不上机器人防护。 | BSD-3-Clause | B（5/6） | [中](categories/captcha/lepture-captcha.zh.md) · [EN](categories/captcha/lepture-captcha.md) |
 | **NopeCHA** | 只用于已授权、需无人值守覆盖多类验证码的自动化——持续维护的实现闭源，并依赖托管 API。 | MIT | B（6/6） | [中](categories/captcha/nopecha-extension.zh.md) · [EN](categories/captcha/nopecha-extension.md) |
-| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（6/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
+| **Buster** | 用于真人触发的 reCAPTCHA 音频无障碍辅助或已授权测试——源码可审计、可走本地模型，但覆盖窄且结果不确定。 | GPL-3.0-only | C（5/6） | [中](categories/captcha/buster.zh.md) · [EN](categories/captcha/buster.md) |
 
 ### blockchain-dev-infrastructure
 
@@ -924,7 +924,7 @@ skills 从 `raw.githubusercontent.com/ZhenningLang/GitHub-Michelin/main/` 拉取
 | **Douyin-Bot** | 仅当你想读一个用 Python 经 ADB 驱动安卓真机（截屏、打分、滑动／点击）的小巧示例时用它——它自 2020 年起已死，硬编码 2018 年抖音界面坐标，依赖的腾讯人脸 API 也已下线，切勿部署。 | MIT | D（3/6） | [中](categories/im-automation/douyin-bot.zh.md) · [EN](categories/im-automation/douyin-bot.md) |
 | **WeChat Bot** | 当一个 Node CLI 必须把微信、飞书、Telegram 与 WhatsApp 接到多个 LLM 时用它——个人微信仍走非官方通道，并伴随账号风险。 | MIT | B（5/6） | [中](categories/im-automation/wechat/wechat-bot.zh.md) · [EN](categories/im-automation/wechat/wechat-bot.md) |
 | **ChatGPT-wechat-bot** | 仅把它当作 2022 至 2023 年 Wechaty 与 ChatGPT 的小型参考代码——项目已停滞、默认配置过时，不适合作为生产底座。 | MIT | D（3/6） | [中](categories/im-automation/wechat/chatgpt-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/chatgpt-wechat-bot.md) |
-| **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | B（6/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
+| **OpeniLink Hub** | 当多个 iLink 微信 Bot 需要自托管管理、trace、Webhook 和 App 时用它——项目年轻且无官方关联，还扩大了认证与 Registry 信任边界。 | MIT | C（5/6） | [中](categories/im-automation/openilink-hub.zh.md) · [EN](categories/im-automation/openilink-hub.md) |
 | **Dify Enterprise WeChat Bot** | 仅用于维持固定 Windows 企业微信到 Dify 的桌面集成——项目已停滞、包含闭源 helper，Workflow 支持也未完成。 | NOASSERTION | C（3/6） | [中](categories/im-automation/wechat/dify-enterprise-wechat-bot.zh.md) · [EN](categories/im-automation/wechat/dify-enterprise-wechat-bot.md) |
 | **Wechaty** | 许多个人号机器人背后的多语言可复用框架：adapter 与命令层要自己掌控，押注某条通道前先确认各 provider 现状。 | Apache-2.0 | C（5/6） | [中](categories/im-automation/wechat/wechaty.zh.md) · [EN](categories/im-automation/wechat/wechaty.md) |
 | **CowAgent** | Python-first、多通道、模型后端可插拔的助手；即更名后的 `zhayujie/chatgpt-on-wechat`，通道已换成 iLink，而非被删除的个人号路径。 | MIT | B（5/6） | [中](categories/im-automation/wechat/cowagent.zh.md) · [EN](categories/im-automation/wechat/cowagent.md) |

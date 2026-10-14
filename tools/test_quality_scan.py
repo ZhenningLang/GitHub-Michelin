@@ -120,6 +120,110 @@ def run_quality_scan_cli(root: Path, *args: str) -> subprocess.CompletedProcess[
     )
 
 
+class KeyTechniquesTest(unittest.TestCase):
+    def test_fresh_identical_techniques_are_gated_in_both_languages(self) -> None:
+        for suffix, title, body in (
+            (".md", "Key techniques", "The event dispatcher records a durable cursor before releasing the worker. Separate leases constrain retries and each consumer validates its own acknowledgment boundary. " * 4),
+            (".zh.md", "技术要点", "事件调度器先保存持久游标，再释放工作线程。独立租约约束重试，各消费端检查自己的确认边界。重启恢复依赖游标记录，不把接收成功当作所有操作已经执行。" * 4),
+        ):
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (body, body), fresh=True)
+                result = quality_scan.scan(root)
+                duplicates = [finding for finding in result.findings if finding.category == "duplicated-section-prose-reverified"]
+                self.assertEqual(len(duplicates), 2)
+                self.assertTrue(all(f"`{title}`" in finding.message for finding in duplicates))
+
+    def technique_pair(self, root: Path, title: str, suffix: str, bodies: tuple[str, str], *, fresh: bool = False) -> list[Path]:
+        pages = []
+        for slug, body in zip(("first", "second"), bodies):
+            page = write_page(root, f"categories/demo/{slug}{suffix}", f"## {title}\n\n{body}\n")
+            if fresh:
+                page.write_text(page.read_text().replace("last_verified: 2026-07-04", "last_verified: 2026-10-14"))
+            pages.append(page)
+        return pages
+
+    def cases(self) -> tuple[tuple[str, str, str, str], ...]:
+        return (
+            ("Key techniques", ".md",
+             "Astronomical catalog alignment projects stellar coordinates onto a calibrated celestial sphere. Observatory clocks anchor the exposure timestamps; orbital ephemerides compensate apparent motion before linking detections. " * 4,
+             "Font shaping traverses Unicode grapheme clusters and selects glyph substitutions from typographic tables. Kerning adjusts adjacent outlines while rasterization fills pixel coverage. Ligature boundaries preserve the original cursor positions. " * 4),
+            ("技术要点", ".zh.md",
+             "天文观测先校准恒星坐标，再投影到球面星图。观测站时钟记录曝光时间，轨道星历补偿视运动，最后关联不同夜晚的探测结果。云层遮挡会减少可用观测，不能补出没有收到的光子。" * 4,
+             "字体排版先拆分字符簇，再查字形替换表。相邻轮廓通过字距调整，栅格化计算像素覆盖，连字仍保留原始光标位置。缺少目标字体时必须回退，不能把替代字形当作原始设计。" * 4),
+        )
+
+    def test_different_techniques_are_not_reported_in_both_languages(self) -> None:
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (first, second), fresh=True)
+                result = quality_scan.scan(root)
+                self.assertFalse([f for f in result.findings if f.category.startswith("duplicated-section-prose")])
+
+    def test_old_near_duplicate_is_report_only_in_both_languages(self) -> None:
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                self.technique_pair(root, title, suffix, (first, first + second[:80]))
+                result = quality_scan.scan(root)
+                duplicates = [f for f in result.findings if f.category.startswith("duplicated-section-prose")]
+                self.assertEqual(len(duplicates), 2)
+                self.assertEqual({f.category for f in duplicates}, {"duplicated-section-prose"})
+
+    def test_scoped_technique_scan_finds_an_unscanned_twin(self) -> None:
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, (first, first), fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                duplicates = [f for f in result.findings if f.category == "duplicated-section-prose-reverified"]
+                self.assertEqual([f.path for f in duplicates], [pages[0].relative_to(root).as_posix()])
+                self.assertIn(pages[1].relative_to(root).as_posix(), duplicates[0].message)
+
+    def test_technique_minimum_length_boundary_is_unchanged(self) -> None:
+        for title, suffix, _, _ in self.cases():
+            for length, count in ((119, 0), (120, 2)):
+                with self.subTest(title=title, length=length), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, ("c" * length, "c" * length), fresh=True)
+                    result = quality_scan.scan(root)
+                    self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), count)
+
+    def test_real_cli_fresh_old_and_different_techniques(self) -> None:
+        for title, suffix, first, second in self.cases():
+            for scenario, fresh, bodies, exit_code, category in (
+                ("fresh", True, (first, first), 1, "duplicated-section-prose-reverified"),
+                ("old", False, (first, first), 0, "duplicated-section-prose"),
+                ("different", True, (first, second), 0, None),
+            ):
+                with self.subTest(title=title, scenario=scenario), tempfile.TemporaryDirectory() as td:
+                    root = Path(td)
+                    self.technique_pair(root, title, suffix, bodies, fresh=fresh)
+                    result = run_quality_scan_cli(root, "--fail-on-gated")
+                    self.assertEqual(result.returncode, exit_code, result.stdout + result.stderr)
+                    if category:
+                        self.assertIn(f"`{category}`", result.stdout)
+                        self.assertIn(f"`{title}`", result.stdout)
+                    else:
+                        self.assertNotIn("is 100% the same text", result.stdout)
+
+    def test_real_cli_threshold_scale_still_clamps_at_one(self) -> None:
+        import os
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                pages = self.technique_pair(root, title, suffix, (first, first + second), fresh=True)
+                normal = run_quality_scan_cli(root, "--scope", str(pages[1]), "--fail-on-gated")
+                self.assertEqual(normal.returncode, 1, normal.stdout + normal.stderr)
+                scaled = subprocess.run(
+                    [sys.executable, str(Path(quality_scan.__file__).resolve()), "--root", str(root), "--scope", str(pages[1]), "--fail-on-gated"],
+                    env=dict(os.environ, OSS_ATLAS_DUP_THRESHOLD_SCALE="20"), text=True, capture_output=True,
+                )
+                self.assertEqual(scaled.returncode, 0, scaled.stdout + scaled.stderr)
+                self.assertNotIn(f"`duplicated-section-prose-reverified`", scaled.stdout)
+
+
 class QualityScanTest(unittest.TestCase):
     def test_scope_file_limits_findings_to_scoped_page(self) -> None:
         with tempfile.TemporaryDirectory() as td:

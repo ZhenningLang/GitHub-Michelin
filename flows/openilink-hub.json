@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "them": {"en": "OpeniLink Hub does", "zh": "OpeniLink Hub 做的"},
+  "steps": [
+    {"lane": "you", "en": "Run a pinned build privately, claim admin and bind an authorized bot", "zh": "私有启动固定构建，认领管理员并绑定授权机器人", "code": "oih", "component": {"en": "Go server / web console", "zh": "Go 服务与网页控制台"}},
+    {"lane": "you", "en": "Configure a reviewed App with your service's Webhook", "zh": "配置审过的 App，提供服务的 Webhook"},
+    {"lane": "them", "en": "Route an incoming bot message to matching Apps with trace context", "zh": "带追踪上下文，把入站消息路由到匹配 App", "component": {"en": "App dispatcher", "zh": "App 调度器"}},
+    {"lane": "you", "en": "Return an immediate reply from your receiving service", "zh": "由接收服务返回即时回复"},
+    {"lane": "them", "en": "Send that reply through the bot with its stored context token", "zh": "用保存的上下文令牌，经机器人发送回复", "component": {"en": "bot manager / iLink provider", "zh": "机器人管理器与 iLink 适配器"}}
+  ],
+  "value": {"en": "A managed, traceable message round-trip; account policy and delivery guarantees remain yours", "zh": "取得可管理、可追踪的消息往返；账号政策和投递保证仍由你负责"},
+  "sources": [
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/README.md#L34-L51",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/README.md#L219-L234",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L25-L70",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L179-L199",
+    "https://github.com/openilink/openilink-hub/blob/1df2ebebb69a5099e94b3f254f069aca5e272eed/internal/bot/app_dispatch.go#L259-L308"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "them": {"en": "Buster does", "zh": "Buster 做的"},
+  "steps": [
+    {"lane": "you", "en": "Install the extension and choose an allowed speech-recognition route", "zh": "安装扩展，选择允许的语音识别路径", "component": {"en": "browser extension / options", "zh": "浏览器扩展与选项"}},
+    {"lane": "you", "en": "Click its button in your authorized reCAPTCHA challenge", "zh": "在授权的 reCAPTCHA 挑战中点击按钮"},
+    {"lane": "them", "en": "Switch to audio and request transcription through the selected route", "zh": "切换音频题，经所选路径请求转写", "component": {"en": "widget script / background", "zh": "组件脚本与后台"}},
+    {"lane": "them", "en": "Fill available text and submit it for the target to verify", "zh": "填入取得的文本，交目标系统验证", "component": {"en": "widget script", "zh": "组件脚本"}}
+  ],
+  "value": {"en": "A user-triggered audio answer submission instead of manually reading image puzzles", "zh": "由用户触发音频答案提交，不必手动辨认图片题"},
+  "sources": [
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/README.md#L55-L58",
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/base/main.js#L272-L407",
+    "https://github.com/dessant/buster/blob/4f6fa9f26321fd645401e2f96e00cea4f8532e1a/src/background/main.js#L663-L748"
+  ]
+}
