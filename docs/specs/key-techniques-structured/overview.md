@@ -100,7 +100,7 @@ Planned at: c0f548ab · 2026-10-15
 
 [U-BEH-7|c964] 文档同步：tools/schema.md 的 Key techniques 一节改成上面的形状、写法说明与一个完整示例（用 screenshot-to-code）；tools/schema.md:108 表格行补「机制图 + 每招四行」；AGENTS.md 的技术要点描述同步；`.claude/skills/add-project`、`sync-entry`、`read-repo` 三个技能补「写 mechanisms/<stem>.json → 跑 mechanism_card.py」一步；Makefile 加 `mechanisms` 目标，`make test` 加 `tools/test_mechanism_card.py`。
 
-[U-BEH-8|ad24] 改写 21 对页面：每对先跑 `python3 tools/upstream_snapshot.py --page <page>` 对比上游；上游没变则沿用已核实的事实，只重写技术要点；上游变了就按 sync-entry 全流程复核这一对。技术要点按页面里已有链接钉住的 commit 重读源码，拆成 2–6 招，画机制图；每行一两句白话，术语第一次出现时解释。改完把两页 `last_verified` 更新为改写当天（UTC）。
+[U-BEH-8|ad5d] 改写 21 对页面：每对先跑 `python3 tools/upstream_snapshot.py --page <page> --check` 对比上游（退出 0 `unchanged_upstream`；退出 1 `changed_upstream`；`gone_upstream` 或接口报错则 BLOCKED 交 owner）；上游没变则沿用已核实的事实，只重写技术要点；上游变了就按 sync-entry 全流程复核这一对（按 U-DEC-4 裁决，健康度、流程卡、INDEX、README、reports 可随之改）。2026-10-15 实测 7 对上游有新提交：background-agents、t3code、webnovel-writer、agent-governance-toolkit、skillspector、deeptutor、powfaucet；openilink-hub 接口报错待重查。技术要点按页面里已有链接钉住的 commit 重读源码，拆成 2–6 招，画机制图；每行一两句白话，术语第一次出现时解释。改完把两页 `last_verified` 更新为改写当天（UTC）。
 
 ## 待决策
 
@@ -110,6 +110,8 @@ Planned at: c0f548ab · 2026-10-15
 
 [U-DEC-3|b15b] CI 怎么判断图是否过期：图里盖源文件哈希、CI 只比哈希；还是 CI 安装 d2 后重新渲染比对。 裁决（2026-10-15）：选 A，图里记下底稿版本，检查时只比记号。
 
+[U-DEC-4|13c6] 上游有新提交的页面（2026-10-15 实测 7 对）怎么改：完整复核并放宽改动白名单，还是只改技术要点、源码钉在旧提交，还是本轮跳过。 裁决（2026-10-15）：完整复核，放宽白名单。
+
 ## 不可逆动作
 
 [U-GATE-1|a0dc] 无。全部改动在 git 里，可整体 revert；843 对 v1 页不动。
@@ -118,7 +120,7 @@ Planned at: c0f548ab · 2026-10-15
 
 [U-CTR-1|dd55] `last_verified` 晚于 UTC 今天是 ERROR（tools/lint.py `today_utc()`，2026-09-22 UTC+8 午夜后写页被 CI 拒的事故）。门槛日期 2026-10-15 等于今天 UTC，可写。
 
-[U-CTR-2|a881] 快速上手的流程卡与 flow-steps 区块不变：`python3 tools/flow_card.py --all` 之后 `git status --porcelain flows assets/flow categories` 除本 run 改写的页面外必须为空。
+[U-CTR-2|962f] 快速上手的流程卡生成器 `tools/flow_card.py` 与卡片格式不变；flow-steps 区块仍由生成器产出、不手改。流程卡内容只在 U-DEC-4 的上游变化全流程复核里随 sync-entry 改；其余页面 `python3 tools/flow_card.py --all` 之后 `git status --porcelain flows assets/flow categories` 必须为空。
 
 [U-CTR-3|f178] `<!-- oss-atlas:unresearched -->` 标记仍让 lint 报 ERROR，生成器骨架照旧带标记，不因结构检查多报一串错。
 
@@ -140,7 +142,7 @@ Planned at: c0f548ab · 2026-10-15
 
 [U-NG-3|d77b] CI 不安装 d2，不在 CI 里渲染图。
 
-[U-NG-4|52f3] 不改快速上手流程卡的生成器、格式与内容。
+[U-NG-4|8e0f] 不改快速上手流程卡的生成器与格式；内容只在上游变化的全流程复核里随 sync-entry 改（U-DEC-4）。
 
 [U-NG-5|866a] 不处理 BACKLOG 里「短技术要点按去链接前长度判定」的政策问题，只在第三段校准时记录新数据。
 
@@ -219,7 +221,7 @@ Planned at: c0f548ab · 2026-10-15
 
 看着相关但别碰：
 
-- `tools/flow_card.py` 与 `flows/`、`assets/flow/` — 快速上手流程卡不变（U-NG-4、U-CTR-2），只 import 它的 stem 与定位函数。
+- `tools/flow_card.py` — 生成器不变（U-NG-4、U-CTR-2），只 import 它的 stem 与定位函数；`flows/`、`assets/flow/` 只在上游变化的全流程复核里随 sync-entry 改（U-DEC-4）。
 - `.github/workflows/lint.yml` — 不加 d2（U-NG-3）。
 - 21 对以外的 `categories/` 页面 — U-NG-1。
 - `tools/intake_queue_apply.py`、`tools/agent_skills_intake.py` — 骨架照旧只放待研究标记（U-CTR-3）。
@@ -238,7 +240,7 @@ Planned at: c0f548ab · 2026-10-15
 
 [U-ACC-6|37bf] quality_scan.py 的技术要点阈值注释更新为 21 对改写后的实测：样本数、最大值及来自哪两页、日期；新增测试证明两段四行结构相同但正文不同的技术要点不会被判重复，正文雷同的仍会被判重复。
 
-[U-ACC-7|5903] 相对 `c0f548ab` 的改动只落在「改动范围」列出的路径里（验收脚本用 `git diff --name-only` 比对白名单）。
+[U-ACC-7|1b50] 相对 `c0f548ab` 的改动只落在白名单里（验收脚本用 `git diff --name-only` 比对）：「改动范围」列出的路径，加上 21 对页面的 sync-entry 派生文件（`flows/<stem>.json`、`assets/flow/<stem>*`、`assets/health/<stem>*`、所在类目 `INDEX.md`/`INDEX.zh.md`、`README.md`/`README.zh.md`、`reports/*`），见 U-DEC-4。
 
 ## 实施步骤
 
