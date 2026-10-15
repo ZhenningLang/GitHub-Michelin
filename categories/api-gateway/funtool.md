@@ -7,7 +7,7 @@ tags: [claude-code, nvidia, llm-proxy, windows, binary-only]
 language: JavaScript
 license: MIT
 maturity: binary-only proxy distribution, master last changed 2026-02-09, 2520 stars (as of 2026-10)
-last_verified: 2026-10-14
+last_verified: 2026-10-15
 type: tool
 upstream:
   pushed_at: 2026-02-09T06:38:04Z
@@ -121,9 +121,53 @@ Open the pinned [README.md:12–31](https://github.com/cixingguangming55555/wech
 
 ## Key techniques
 
-- **Current distribution is a model-to-file/document map, not visible proxy code.** [README.md:14–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31) gives one distinct Kimi executable and four model headings sharing another executable, each with a separate article link. This organizes selection and acquisition, but does not prove how that shared EXE selects models. **The current proxy program's internal mechanisms have no source to inspect in this tree**; protocol conversion, authentication and credential storage remain unknown, not inferred from the filenames.
-- **Historical WebSocket remnants do not form a runnable client.** [funtool/client.js:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24) contains a loopback WebSocket constructor call and message-code constants; [funtool/client.js:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49) contains callback/logging skeletons, but the closing brackets at lines 47–49 are malformed. A syntax-only `node --check` fails at line 47, so this committed file cannot load and is only a remnant of the old event interface, not evidence of a working connection, received messages or any NVIDIA/Claude adapter. [README.md:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12) marks the WeChat tool offline; its historical port is not a current proxy setup value.
-- **Historical HTTP examples assemble message requests; they are offline, not current product APIs.** [funtool/http.js:35–67](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67) posts text/picture JSON with a WeChat user ID; [funtool/http.js:74–115](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115) defines member/nickname requests and invokes a text-send example. These are client-side examples, not the server implementation or evidence of the current EXEs' model-routing, access control or compatibility.
+![Funtool — mechanism diagram](../../assets/mechanism/funtool.svg)
+
+<!-- mechanism:begin (generated from mechanisms/funtool.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Current README distribution map①
+- Kimi EXE: internals not public①
+- Four headings share one EXE: internals not public①
+- Separate article per heading: bodies not obtained①
+- Historical WeChat tool: explicitly offline
+- client.js: constructor, codes and callbacks②
+- Syntax error at line 47: cannot load②
+- http.js: old client examples, not server③
+- POST shapes: text, picture, member, nickname③
+
+- Current README distribution map① → Kimi EXE: internals not public① (Kimi K2.5 file link)
+- Current README distribution map① → Four headings share one EXE: internals not public① (GLM / Qwen / Step / DeepSeek file links)
+- Current README distribution map① → Separate article per heading: bodies not obtained① (documentation links only)
+- Historical WeChat tool: explicitly offline → client.js: constructor, codes and callbacks②
+- client.js: constructor, codes and callbacks② → Syntax error at line 47: cannot load② (syntax-only check; no execution)
+- Historical WeChat tool: explicitly offline → http.js: old client examples, not server③
+- http.js: old client examples, not server③ → POST shapes: text, picture, member, nickname③ (definitions and text-send invocation, not run)
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Map model names to artifacts without pretending the proxy is inspectable
+
+- **Problem:** A model heading alone does not tell you which executable or instructions belong to it.
+- **How:** The README maps Kimi K2.5 to its own EXE, while GLM, Qwen3 Coder, Step and DeepSeek headings share a second EXE path; each heading has a separate article link. This is a distribution map, not visible request-routing logic.
+- **Limits:** The current proxy has no public source in this tree: model selection inside the shared EXE, protocol conversion, authentication and credential storage cannot be verified from filenames. The articles and binary internals were not inspected or executed.
+- **Source:** No public proxy source; [distribution entries:14–31](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L14-L31).
+
+### 2. Keep the old event-interface sketch separate from a working client
+
+- **Problem:** Readers tracing the former WeChat message interface need its event vocabulary, not an invented current adapter.
+- **How:** Historical `client.js` contains a loopback WebSocket constructor — a persistent message connection to the same machine — message-code constants, and open/close/message callbacks with logging. These show the shape of the old event interface.
+- **Limits:** `node --check` fails at line 47 because the closing brackets are malformed, so this committed file cannot load or prove connection/message success. README marks WeChat offline; its old port is not current NVIDIA/Claude proxy configuration.
+- **Source:** [Constructor and codes:4–24](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L4-L24), [callbacks and malformed ending:32–49](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/client.js#L32-L49), [offline notice:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L12).
+
+### 3. Show historical message-request shapes, not a current gateway API
+
+- **Problem:** A retained request example can be mistaken for the server or the replacement proxy's API.
+- **How:** Historical `http.js` assembles text/picture POST requests with a WeChat user ID in JSON, defines member/nickname requests, and invokes the text-send example from `main`. It demonstrates what an old client would submit, not how a server handles it.
+- **Limits:** These are client-side examples for the offline WeChat tool, not evidence of current EXE model routing, access control or compatibility; no example request was executed.
+- **Source:** [Text/picture requests:35–67](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L35-L67), [member/nickname and invocation:74–115](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/funtool/http.js#L74-L115), [offline notice:12](https://github.com/cixingguangming55555/wechat-bot/blob/2afcb9d8d527a49cf684f9ba33853f23aa722e7b/README.md#L12-L12).
 
 ## Tech stack
 
