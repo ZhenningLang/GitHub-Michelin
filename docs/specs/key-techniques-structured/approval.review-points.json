@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "points": [
+    {"anchor": "技术要点结构化-·-审批页", "kind": "unclear", "prompt": "开头这张图能一眼看出三件要拍的事各落在哪吗"},
+    {"anchor": "U-DEC-1", "kind": "decide", "prompt": "中英两张图从一份底稿出，还是各写一份，你定"},
+    {"anchor": "U-DEC-2", "kind": "decide", "prompt": "没有代码可链的三对页面，照样画图拆招还是写理由免画，你定"},
+    {"anchor": "U-DEC-3", "kind": "decide", "prompt": "检查只比图里的底稿记号，还是装画图工具重画再比，你定"},
+    {"anchor": "U-BEH-1", "kind": "alternative", "prompt": "13、14 日的散文页先放行、本轮改完，这个过渡你接受吗，还是要从 13 日起就硬拦"},
+    {"anchor": "U-SPK-2", "kind": "assumption", "prompt": "我假设 GitHub 上看图中文能显示，第一段推上去再实看，这样处理可以吗"}
+  ]
+}
