@@ -123,6 +123,18 @@ It prints `unchanged_upstream` or `changed_upstream`, writes nothing, exits `0` 
     sections, place remaining Q&A between Comparison and Quick start (or Key techniques if Quick start
     is absent), or record `no leftover Q&A`. Keep the generated flow block byte-identical when only
     renaming/moving it. No automatic reorder tool. FLOW cutoff and force flag still apply independently.
+    **Structured techniques cutoff:** for v2 with UTC `last_verified >= 2026-10-15`
+    (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides), use a mechanism diagram + generated text
+    before 2–6 continuous `### n. Title` techniques, each exactly four non-empty ordered items:
+    `- **Problem:**` / `How:` / `Limits:` / `Source:` (ZH `解决：` / `做法：` / `边界：` / `源码：`).
+    Indented continuations only; Source needs a Markdown link. Fewer than 2 is ERROR, more than 6 WARNING.
+    Read implementation → write `mechanisms/<stem>.json` (bilingual, 3–12 nodes, every technique
+    mapped; flow_card stem) → run `python3 tools/mechanism_card.py <page>` (all: `make mechanisms`).
+    Author-local d2 (`brew install d2`); missing d2 exits 2 without writes. `--check-spec <json>`
+    and CI source-hash/text checks need no d2. Never hand-edit generated text; full contract/example
+    in `tools/schema.md` Key techniques. Closed/list-only pages link actual docs/artifacts, not invented
+    code. Earlier prose v2 and untouched v1 stay unchanged until re-verification. The section's
+    unresearched marker keeps its existing ERROR while skipping cascading structure errors.
 7. **Update `upstream` and bump `last_verified` to UTC today.** Only after actually re-checking and
     completing 6a — including on unchanged upstream — never
    bump blindly.

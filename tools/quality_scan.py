@@ -20,6 +20,8 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
+import mechanism_card
+
 
 ZH_SUFFIX = ".zh.md"
 ZERO_SHA = "0000000000000000000000000000000000000000"
@@ -334,6 +336,10 @@ def technique_prose(body: str) -> str:
     # ceiling: flat citation labels/backtick code/ASCII bare URLs, not a Markdown renderer.
     # Extend only for observed richer syntax; do not delete malformed visible prose.
     # Recognized legal titles are hover metadata, not prose; raw-MD readers can still see them.
+    body = mechanism_card.BLOCK_RE.sub("", body)
+    body = re.sub(r"(?m)^!\[[^\r\n]*\]\([^\r\n]*\)[ \t]*$", "", body)
+    body = re.sub(r"(?m)^###[ \t]+[^\r\n]*$", "", body)
+    body = re.sub(r"(?m)^- \*\*(?:Problem:|How:|Limits:|Source:|解决：|做法：|边界：|源码：)\*\*[ \t]*", "", body)
     body = _technique_inline_links(body)
     body = re.sub(r"<https?://[^\s<>]+>", "", body)
     return _technique_bare_urls(body)

@@ -118,6 +118,22 @@ The schema is the contract: **`tools/schema.md`**. In short:
   as are setext underlines and C0 controls except tab/CR/LF. Use flat root examples, not nested
   Markdown recovery; only CR/LF/CRLF count as physical line boundaries.
 - **Bilingual**: the two files are monolingual mirrors — do NOT mix languages inside one file.
+- **Structured Key techniques:** v2 pages with UTC `last_verified >= 2026-10-15`
+  (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides) need one mechanism image + generated text
+  before 2–6 continuous `### n. Title` techniques. Each has exactly four non-empty ordered items:
+  EN `Problem:` / `How:` / `Limits:` / `Source:`; ZH `解决：` / `做法：` / `边界：` / `源码：`,
+  written as `- **Label** value`. Indented continuations are allowed, other top-level content is not;
+  Source needs a Markdown link. Fewer than 2 is ERROR, more than 6 WARNING. Read sources → write
+  `mechanisms/<stem>.json` (schema=1, bilingual labels, 3–12 nodes, numbered technique coverage,
+  stem from `flow_card.flow_stem`) → run `python3 tools/mechanism_card.py <page>` (or `make mechanisms`).
+  Both siblings/SVGs are generated with local `d2 --layout elk`; no d2 exits 2 with `brew install d2`
+  and no writes. `--check-spec <json>` needs no d2. CI/lint never render: they compare the source
+  hash stamp (canonical JSON + RENDER_VERSION) and `text_block`; never hand-edit generated text.
+  Full contract/example: `tools/schema.md` Key techniques. Closed/list-only pages cite actual docs
+  or artifacts, never invented code. Earlier prose v2 and untouched v1 pages stay unchanged;
+  Quick start/FLOW remain separate. A section's unresearched marker still blocks merge but skips
+  cascading structure errors. Only complete generated mechanism blocks are punctuation-exempt;
+  the four authored items are checked. Re-open Q&A after moving technical questions here.
 - **Truth labeling**: anything not confirmed from a source is `[未验证]` / `[推断]`. Date your
   facts (`maturity`, `last_verified`) — **dates are UTC**, and the gate compares `last_verified`
   against UTC today, so a local date ahead of UTC (writing just after midnight at UTC+8) is an

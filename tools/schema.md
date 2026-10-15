@@ -105,7 +105,7 @@ its own contract. Then the required `##` sections below — **which ones are req
 | `## Comparison` | `## 横向对比` | **all types** | horizontal table vs real substitutes (see below) |
 | `## Q&A` | `## 快问快答` | **all types** — section optional, **decision required** | leftover questions from the reading conversation; move questions with a required-section home there first; write the rest, or record "no leftover Q&A" in the change summary — never pad |
 | `## Quick start` | `## 快速上手` | **all types** when FLOW requires it (see below) | developer usage after choosing it: install/configure/call, what you do vs what it does, plus the generated two-lane backbone flow card |
-| `## Key techniques` | `## 技术要点` | **all types in v2** | source-backed implementation techniques that explain how this project achieves its result, with constraints and source locations |
+| `## Key techniques` | `## 技术要点` | **all types in v2** | source-backed internals; structured cutoff 2026-10-15: one mechanism diagram + generated text + 2–6 numbered techniques, each with four labeled items (problem/how/limits/source) |
 | `## Tech stack` | `## 技术栈` | non-`skill-pack` | languages, frameworks, datastores it is built on |
 | `## Dependencies` | `## 依赖` | non-`skill-pack` | runtime/infra a user must run (db, services, hardware) |
 | `## Ops difficulty` | `## 运维难度` | non-`skill-pack` | low / medium / high + why; deploy + maintain burden |
@@ -364,15 +364,173 @@ for lint, although the renderer locates both. Card SVGs and generated flow-steps
 
 ### "Key techniques" explains the source-backed implementation
 
-Required and non-empty for every v2 type, including skill-pack. Read the relevant source paths and
-describe the few concrete techniques that distinguish this project: what each does, why it matters,
-and its limits. Keep source locations or links close to the claims; explain unfamiliar terms and
-use an analogy where it genuinely helps. A skill-pack's techniques may live in prompts, workflow
-rules or scripts rather than a runtime. This is not another Tech stack list, install tutorial, or
-generic description that survives replacing the project name with a competitor's. Move technical
-questions from Q&A here; re-open the leftover-Q&A decision afterwards. Unsupported claims still get
-a Caveats ledger entry. Unresearched scaffolds keep `<!-- oss-atlas:unresearched -->` in both new
-sections and cannot merge; never delete the marker without researching and writing the section.
+Required and non-empty for every v2 type, including skill-pack. Read the implementation paths,
+then explain what distinguishes this project, why each technique matters, and where it stops working.
+Explain unfamiliar terms on first use; use an analogy only if it helps. Internals belong here,
+not in Quick start's developer install/configure/call path or another Tech stack list. A skill-pack's
+implementation may be prompts, workflow rules or scripts. Move technical questions from Q&A here,
+then re-open the leftover-Q&A decision. Unsupported claims still need a Caveats ledger entry.
+
+**Independent structured cutoff.** A v2 page with `last_verified >= 2026-10-15` must use the
+shape below (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides; lint's
+`TECHNIQUES_STRUCTURED_FROM` / `techniques_structured` also require v2). Earlier 2026-10-13/14
+v2 pages may retain researched prose; untouched v1 pages stay unchanged. All dates are UTC;
+never bump a date merely to select a format. This does not change FLOW's independent cutoff.
+
+**Shape:** one mechanism image and one generated `mechanism:begin` / `mechanism:end` text
+block, both **before** the first technique. Then `### 1. Title`, `### 2. Title`, etc., continuous
+from 1. Aim for **2–6** techniques: fewer than 2 is ERROR, more than 6 is WARNING, not truncation.
+Every technique has exactly four items, in order, with non-empty values:
+
+- EN: `- **Problem:**`, `- **How:**`, `- **Limits:**`, `- **Source:**`.
+- ZH: `- **解决：**`, `- **做法：**`, `- **边界：**`, `- **源码：**` (fullwidth colon).
+- Indented continuation lines are allowed after an item; no other top-level content inside a
+  technique. Keep each value to one or two plain-language sentences when possible.
+- Source must contain a Markdown link. Pin actual code paths/line ranges to the reviewed commit.
+  For a closed distribution or a list-only repository, still draw the mechanism and split techniques,
+  but cite real docs, prompts, release artifacts or list entries; distinguish observable behavior
+  from unavailable internals. **Never invent code or implementation evidence.**
+  Source values, including continuations, must be plain prose with inline links; HTML comments
+  do not count, and lines beginning with `<` or `>` after list indentation are ERRORs.
+
+**One bilingual graph source:** `mechanisms/<stem>.json`, where `<stem>` reuses
+`flow_card.flow_stem` (duplicate slugs get their category path prefix). Schema `1`, direction
+`right` or `down`, **3–12 nodes**, unique non-empty string ids, non-empty `en`/`zh` labels;
+node `kind` is `input | step | output | external`, omitted means `step`. Optional `technique`
+is an array of positive page technique numbers; no out-of-range number and every technique
+must have a node. Edges reference existing `from`/`to` ids, may have non-empty **both** `en`/`zh`
+labels, and may set `style: "dashed"` for optional/fallback paths. `sources` is optional graph
+metadata: when provided, a list of non-empty evidence references; an empty list is allowed.
+This does not waive each technique's required Source item and real evidence link.
+No implicit acyclicity or single-path constraint.
+
+Write the four items from sources → write `mechanisms/<stem>.json` → run:
+
+```bash
+python3 tools/mechanism_card.py --check-spec mechanisms/<stem>.json
+python3 tools/mechanism_card.py categories/<category>/<slug>.md
+# Either sibling implies both. All projects with graph sources:
+make mechanisms
+```
+
+The generator inserts/refreshes the image and generated text **only inside Key techniques**,
+and writes `assets/mechanism/<stem>.svg` plus `<stem>.zh.svg`. It preserves authored techniques
+and other sections. It builds quoted d2 strings with numbered node labels (①②…), renders with
+local `d2 --layout elk`, and declares Chinese font fallbacks in the ZH SVG. Install locally with
+`brew install d2`; missing d2 exits **2** with no page/image writes. `--check-spec` only checks JSON
+shape, without d2 or writes; lint also cross-checks technique numbers against actual pages.
+
+**CI never installs or invokes d2.** The SVG records `<!-- mechanism-src sha256=<hex> -->`.
+The hash is SHA-256 of UTF-8
+`json.dumps(spec, sort_keys=True, ensure_ascii=False) + RENDER_VERSION` (including default JSON
+separators; no extra delimiter). Lint recomputes this hash and the pure-Python
+`mechanism_card.text_block(spec, lang, stem)`; it does not re-render SVG bytes. Changing graph
+content or renderer version requires regeneration. A retained valid stamp does not authenticate
+hand-edited image contents. Never hand-edit generated text: it lists all nodes, then every edge
+in JSON order, with translated labels and technique badges.
+
+Lint ERRORs on missing images/files/blocks, text drift, stale/missing stamps, invalid/missing JSON,
+bad numbering/items/sources, mapping failures and unequal bilingual technique counts. The complete
+mechanism text block and fenced code are exempt from Chinese punctuation, not the four authored
+items. Unresearched scaffolds keep `<!-- oss-atlas:unresearched -->` and cannot merge; when it is
+inside this section, structure checks skip cascaded errors, **not** the original marker ERROR.
+Never delete a marker without researching and writing its section. Quality scan removes generated
+blocks, image lines, H3 titles and these four label prefixes, **not their prose values**;
+the duplicate-prose gate remains active (threshold recalibration is a separate corpus task).
+
+**Complete minimal fictional example — not a real project or factual evidence.** The `example.org`
+URLs below are illustrative placeholders, not verified sources. Replace every one with evidence
+before publishing a real page. Phase 02 replaces this example with the researched screenshot-to-code
+sample. Fictional `mechanisms/demo.json`:
+
+```json
+{
+  "schema": 1,
+  "direction": "right",
+  "nodes": [
+    {"id": "in", "en": "Input", "zh": "输入", "kind": "input"},
+    {"id": "parse", "en": "Parse", "zh": "解析", "technique": [1]},
+    {"id": "save", "en": "Save", "zh": "保存", "kind": "output", "technique": [2]}
+  ],
+  "edges": [
+    {"from": "in", "to": "parse"},
+    {"from": "parse", "to": "save", "en": "valid", "zh": "有效", "style": "dashed"}
+  ],
+  "sources": ["https://example.org/design"]
+}
+```
+
+EN subsection (at `categories/demo/demo.md`; block shown exactly as generated):
+
+```markdown
+## Key techniques
+
+![Demo — mechanism diagram](../../assets/mechanism/demo.svg)
+
+<!-- mechanism:begin (generated from mechanisms/demo.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>Text version of the mechanism</summary>
+
+- Input
+- Parse①
+- Save②
+
+- Input → Parse①
+- Parse① → Save② (valid) [optional/fallback]
+
+</details>
+<!-- mechanism:end -->
+
+### 1. Parse before saving
+
+- **Problem:** Invalid input must not become stored data.
+- **How:** Parse the input and pass only validated records onward.
+- **Limits:** Syntactic validity does not prove the record is true.
+- **Source:** [Fictional design reference](https://example.org/design#parse).
+
+### 2. Save valid records
+
+- **Problem:** A validated record would otherwise disappear when the process exits.
+- **How:** The optional save path persists the record.
+- **Limits:** Persistence alone does not coordinate concurrent writers.
+- **Source:** [Fictional design reference](https://example.org/design#save).
+```
+
+ZH sibling subsection (at `categories/demo/demo.zh.md`):
+
+```markdown
+## 技术要点
+
+![Demo — 机制图](../../assets/mechanism/demo.zh.svg)
+
+<!-- mechanism:begin (generated from mechanisms/demo.json by tools/mechanism_card.py; do not edit) -->
+<details>
+<summary>机制文字版</summary>
+
+- 输入
+- 解析①
+- 保存②
+
+- 输入 → 解析①
+- 解析① → 保存②（有效）〔可选／兜底〕
+
+</details>
+<!-- mechanism:end -->
+
+### 1. 先解析再保存
+
+- **解决：** 不让无效输入变成已存数据。
+- **做法：** 解析输入，只把通过校验的记录传给后续步骤。
+- **边界：** 格式正确不代表记录内容真实。
+- **源码：** [虚构设计引用](https://example.org/design#parse)。
+
+### 2. 保存有效记录
+
+- **解决：** 通过校验的记录不能随进程退出而消失。
+- **做法：** 可选的保存路径把记录持久化。
+- **边界：** 单纯保存不能协调并发写入者。
+- **源码：** [虚构设计引用](https://example.org/design#save)。
+```
 
 ### "When NOT to use" names substitutes
 

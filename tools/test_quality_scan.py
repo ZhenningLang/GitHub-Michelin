@@ -136,6 +136,65 @@ def run_quality_scan_cli(root: Path, *args: str) -> subprocess.CompletedProcess[
 
 
 class KeyTechniquesTest(unittest.TestCase):
+    def test_structured_cleanup_preserves_phase01_gating_policy(self):
+        self.assertEqual(quality_scan.DUP_SECTIONS["Key techniques"], 0.15)
+        self.assertEqual(quality_scan.DUP_SECTIONS["技术要点"], 0.15)
+        self.assertEqual(quality_scan.DUP_MIN_CHARS, 120)
+        self.assertEqual(quality_scan.GATED_DETERMINISTIC_CATEGORIES, {
+            "generic-comparison-template", "indexed-page-marked-non-repo",
+            "indexed-page-marked-not-indexed", "composite-alternative-partly-indexed",
+            "truncation-fragment", "zh-link-to-english-sibling", "intake-stub-page-reverified",
+            "duplicated-section-prose-reverified", "zh-lead-not-chinese-reverified",
+        })
+
+    @staticmethod
+    def structured(body, zh=False, title="Shared title", image="same.svg"):
+        labels = ("解决：", "做法：", "边界：", "源码：") if zh else ("Problem:", "How:", "Limits:", "Source:")
+        block = "<!-- mechanism:begin (generated) -->\n" + ("Shared generated node → edge " * 80) + "\n<!-- mechanism:end -->"
+        return f"![mechanism]({image})\n\n{block}\n\n### 1. {title}\n\n" + "\n".join(
+            f"- **{label}** {body if i < 3 else '[reference](https://example.org/design)'}" for i, label in enumerate(labels))
+
+    def test_structured_template_removed_values_and_continuations_retained(self):
+        for zh in (False, True):
+            text = self.structured("Distinct prose\n  continued", zh)
+            normalized = quality_scan.technique_prose(text)
+            self.assertNotIn("Shared generated", normalized)
+            self.assertNotIn("Shared title", normalized)
+            self.assertNotIn("mechanism]", normalized)
+            self.assertNotIn("**", normalized)
+            self.assertEqual(normalized.count("Distinct prose\n  continued"), 3)
+            self.assertIn("reference", normalized)
+
+    def test_structured_different_prose_not_duplicate_full_scoped_cli(self):
+        for title, suffix, first, second in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = tuple(self.structured(body, suffix == ".zh.md") for body in (first, second))
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                for scope in (None, [pages[0]]):
+                    result = quality_scan.scan(root, scope_paths=scope)
+                    self.assertFalse([f for f in result.findings if f.category.startswith("duplicated-section-prose")])
+                result = run_quality_scan_cli(root, "--fail-on-gated")
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_structured_copy_still_gated_with_different_titles_and_images(self):
+        for title, suffix, first, _ in self.cases():
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                bodies = (self.structured(first, suffix == ".zh.md"), self.structured(first, suffix == ".zh.md", "Other title", "other.svg"))
+                pages = self.technique_pair(root, title, suffix, bodies, fresh=True)
+                result = quality_scan.scan(root, scope_paths=[pages[0]])
+                self.assertEqual(len([f for f in result.findings if f.category == "duplicated-section-prose-reverified"]), 1)
+                cli = run_quality_scan_cli(root, "--fail-on-gated")
+                self.assertEqual(cli.returncode, 1, cli.stdout + cli.stderr)
+
+    def test_malformed_generated_blocks_do_not_swallow_prose(self):
+        for seed in ("<!-- mechanism:begin -->\nkept正文", '<!-- mechanism:begin "\nkept正文',
+                     "<!-- mechanism:begin -->\n" * 1000 + "kept正文", "\ufffd<!-- mechanism:begin -->\nkept正文"):
+            normalized = quality_scan.technique_prose(seed)
+            self.assertIn("kept正文", normalized)
+            self.assertLessEqual(len(normalized), len(seed))
+
     def test_conservative_title_escape_cannot_skip_line_breaks(self) -> None:
         # Multiline titles are deliberately unsupported here: retaining raw prose is conservative.
         for visible in ("visible prose", "可见正文（备注）"):

@@ -82,7 +82,18 @@ Author one conformant selection page. The contract is `tools/schema.md`; read it
      your responsibilities vs the project's work (§2); its backbone flow card is generated in step 5.
    - **Key techniques / 技术要点** — required, non-empty for every v2 type: read the source
      paths that implement the project's distinguishing techniques, explain each and its limits.
-     Internals belong here, not in Quick start. Keep both siblings aligned.
+     For UTC `last_verified >= 2026-10-15` (`OSS_ATLAS_TECHNIQUES_STRUCTURED_FROM` overrides),
+     write one mechanism diagram + generated text before 2–6 continuous `### n. Title` techniques,
+     each with `- **Problem:**` / `How:` / `Limits:` / `Source:` (ZH `解决：` / `做法：` / `边界：` / `源码：`).
+     Four ordered non-empty items; indented continuations only; Source needs a Markdown link.
+     Fewer than 2 is ERROR, more than 6 WARNING. Read sources → write `mechanisms/<stem>.json`
+     (bilingual graph, 3–12 nodes, every technique mapped; stem reuses flow_card) → run
+     `python3 tools/mechanism_card.py <page>` (all: `make mechanisms`). Local d2 only (`brew install d2`);
+     missing d2 exits 2 without writes. `--check-spec <json>` and CI hash/text checks need no d2;
+     never hand-edit generated text. See `tools/schema.md` Key techniques for the full contract.
+     No code to link? Cite real docs/release/list artifacts, never invent implementation.
+     Internals belong here, not in Quick start. Keep both siblings aligned. Earlier prose v2 and
+     untouched v1 stay unchanged; an unresearched marker still blocks merge, not replaced by boilerplate.
    - **When NOT to use** — the strongest section; each anti-pattern names a substitute (§2
      `"When NOT to use" names substitutes`).
    - **Comparison** — 3–5 real substitutes; status per §2 `Status vocabulary` — `未收录` means a
