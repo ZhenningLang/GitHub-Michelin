@@ -143,20 +143,20 @@ health:
 - 截图初稿选择四个模型槽位④
 - 每槽位独立的工具调用 agent
 - Gemini 定位框换算后裁原图②
-- Replicate 生成替代图②
+- 按需用 Replicate 生成替代图②
 - HTML 状态：整页创建或精确替换①
-- Chromium 桌面与手机截图③
+- 可选 Chromium 桌面与手机截图③
 - 供人挑选的方案；无机器评分④
 
 - 原始截图 → 截图初稿选择四个模型槽位④
 - 截图初稿选择四个模型槽位④ → 每槽位独立的工具调用 agent（并发任务）
 - 原始截图 → Gemini 定位框换算后裁原图②（请求裁图时）〔可选／兜底〕
 - Gemini 定位框换算后裁原图② → 每槽位独立的工具调用 agent（裁图 URL 与预览）〔可选／兜底〕
-- 每槽位独立的工具调用 agent → Replicate 生成替代图②（指令建议的兜底，非自动触发）〔可选／兜底〕
-- Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → 按需用 Replicate 生成替代图②〔可选／兜底〕
+- 按需用 Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
 - 每槽位独立的工具调用 agent → HTML 状态：整页创建或精确替换①（工具结果进入下一模型轮次）
-- HTML 状态：整页创建或精确替换① → Chromium 桌面与手机截图③（仅在工具可用且模型调用时）〔可选／兜底〕
-- Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
+- HTML 状态：整页创建或精确替换① → 可选 Chromium 桌面与手机截图③〔可选／兜底〕
+- 可选 Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
 - HTML 状态：整页创建或精确替换① → 供人挑选的方案；无机器评分④（各版本输出）
 
 </details>
@@ -165,14 +165,14 @@ health:
 ### 1. 用工具补丁修改，不反复重写整页
 
 - **解决：** 为了修一个间距重写整页，容易连已经对齐的部分一起改坏。
-- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent 执行工具调用，把结果交给模型继续下一轮。
+- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent（会选择并执行工具的模型）把工具结果送入下一轮。
 - **边界：** 精确匹配只约束补丁如何应用，不保证改得对或改得少；运行时不禁止再次调用 `create_file`，“只写一次”是指令，不是硬保证。
 - **源码：** [工具指令第 15–19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19)、[创建与替换第 101–257 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257)、[工具结果循环第 278–325 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325)。
 
 ### 2. 先裁原图素材，再按需生成替代图
 
 - **解决：** 模型编出的 logo 或照片，会让布局已接近的复刻仍显得不像。
-- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 通过 Replicate 生成替代图。
+- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 调用 Replicate（托管图像生成模型的服务）生成替代图。
 - **边界：** 这是模型选择的工具路径，不是裁图失败就自动生成；裁图需要 Gemini 和可用静态图，生成图片则要功能已启用且有 Replicate key。
 - **源码：** [素材指令第 21–25 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25)、[坐标换算与裁图第 293–343 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343)、[Replicate 生成第 259–294 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294)、[裁图可用条件第 336–351 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351)。
 
@@ -186,7 +186,7 @@ health:
 ### 4. 并行跑独立版本，不只押一个初稿
 
 - **解决：** 同一个模型自检时，可能继续看不出自己初稿里的视觉偏差。
-- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位，每个槽位启动一个独立 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
+- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位（四份独立生成任务），每个槽位启动一个 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
 - **边界：** 可用模型少时，多个槽位会重复同一模型；修改和录屏只跑两个版本，不是四个。备选多不等于像素级还原已获证明。
 - **源码：** [四槽位默认值第 3–4 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4)、[选择与模式边界第 417–499 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499)、[并发任务第 589–611 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611)。
 

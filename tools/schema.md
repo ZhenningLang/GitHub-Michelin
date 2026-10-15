@@ -438,8 +438,9 @@ Never delete a marker without researching and writing its section. Quality scan 
 blocks, image lines, H3 titles and these four label prefixes, **not their prose values**;
 the duplicate-prose gate remains active (threshold recalibration is a separate corpus task).
 
-**Complete researched example — screenshot-to-code.** Source and page excerpts below
-are the actual Phase 02 sample, pinned to the reviewed upstream commit.
+**Complete researched example — screenshot-to-code.** This is a frozen Phase 02
+sample (2026-10-15), based on upstream commit `a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc`.
+Later page re-verifications do not update this teaching snapshot automatically.
 `mechanisms/screenshot-to-code.json`:
 
 ```json
@@ -451,9 +452,9 @@ are the actual Phase 02 sample, pinned to the reviewed upstream commit.
     {"id": "variants", "en": "Select four model slots for a screenshot draft", "zh": "截图初稿选择四个模型槽位", "technique": [4]},
     {"id": "agent", "en": "Independent tool-calling agent per slot", "zh": "每槽位独立的工具调用 agent"},
     {"id": "crop", "en": "Gemini boxes to original-image crops", "zh": "Gemini 定位框换算后裁原图", "technique": [2]},
-    {"id": "gen", "en": "Replicate image generation", "zh": "Replicate 生成替代图", "kind": "external", "technique": [2]},
+    {"id": "gen", "en": "Optional Replicate image generation", "zh": "按需用 Replicate 生成替代图", "kind": "external", "technique": [2]},
     {"id": "html", "en": "HTML state: create_file or exact edit_file", "zh": "HTML 状态：整页创建或精确替换", "kind": "output", "technique": [1]},
-    {"id": "preview", "en": "Chromium desktop and mobile screenshots", "zh": "Chromium 桌面与手机截图", "technique": [3]},
+    {"id": "preview", "en": "Optional Chromium desktop and mobile screenshots", "zh": "可选 Chromium 桌面与手机截图", "technique": [3]},
     {"id": "pick", "en": "Alternatives for human selection; no machine score", "zh": "供人挑选的方案；无机器评分", "kind": "output", "technique": [4]}
   ],
   "edges": [
@@ -461,10 +462,10 @@ are the actual Phase 02 sample, pinned to the reviewed upstream commit.
     {"from": "variants", "to": "agent", "en": "parallel tasks", "zh": "并发任务"},
     {"from": "shot", "to": "crop", "en": "if extraction is requested", "zh": "请求裁图时", "style": "dashed"},
     {"from": "crop", "to": "agent", "en": "crop URLs and previews", "zh": "裁图 URL 与预览", "style": "dashed"},
-    {"from": "agent", "to": "gen", "en": "prompted fallback, not automatic", "zh": "指令建议的兜底，非自动触发", "style": "dashed"},
+    {"from": "agent", "to": "gen", "style": "dashed"},
     {"from": "gen", "to": "agent", "en": "image URLs", "zh": "图片 URL", "style": "dashed"},
     {"from": "agent", "to": "html", "en": "tool results feed next model turn", "zh": "工具结果进入下一模型轮次"},
-    {"from": "html", "to": "preview", "en": "only if the model calls the available tool", "zh": "仅在工具可用且模型调用时", "style": "dashed"},
+    {"from": "html", "to": "preview", "style": "dashed"},
     {"from": "preview", "to": "agent", "en": "same model inspects and may patch", "zh": "同一模型目测后可修补", "style": "dashed"},
     {"from": "html", "to": "pick", "en": "per-variant output", "zh": "各版本输出"}
   ],
@@ -472,7 +473,14 @@ are the actual Phase 02 sample, pinned to the reviewed upstream commit.
     "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L68-L90",
     "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/extract_assets.py#L1-L190",
     "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L25",
-    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611"
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/screenshot_preview.py#L10-L99",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/providers/factory.py#L25-L39",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L218-L325",
+    "https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343"
   ]
 }
 ```
@@ -492,20 +500,20 @@ EN subsection (at `categories/ai-design-generation/screenshot-to-code.md`; gener
 - Select four model slots for a screenshot draft④
 - Independent tool-calling agent per slot
 - Gemini boxes to original-image crops②
-- Replicate image generation②
+- Optional Replicate image generation②
 - HTML state: create_file or exact edit_file①
-- Chromium desktop and mobile screenshots③
+- Optional Chromium desktop and mobile screenshots③
 - Alternatives for human selection; no machine score④
 
 - Original screenshot → Select four model slots for a screenshot draft④
 - Select four model slots for a screenshot draft④ → Independent tool-calling agent per slot (parallel tasks)
 - Original screenshot → Gemini boxes to original-image crops② (if extraction is requested) [optional/fallback]
 - Gemini boxes to original-image crops② → Independent tool-calling agent per slot (crop URLs and previews) [optional/fallback]
-- Independent tool-calling agent per slot → Replicate image generation② (prompted fallback, not automatic) [optional/fallback]
-- Replicate image generation② → Independent tool-calling agent per slot (image URLs) [optional/fallback]
+- Independent tool-calling agent per slot → Optional Replicate image generation② [optional/fallback]
+- Optional Replicate image generation② → Independent tool-calling agent per slot (image URLs) [optional/fallback]
 - Independent tool-calling agent per slot → HTML state: create_file or exact edit_file① (tool results feed next model turn)
-- HTML state: create_file or exact edit_file① → Chromium desktop and mobile screenshots③ (only if the model calls the available tool) [optional/fallback]
-- Chromium desktop and mobile screenshots③ → Independent tool-calling agent per slot (same model inspects and may patch) [optional/fallback]
+- HTML state: create_file or exact edit_file① → Optional Chromium desktop and mobile screenshots③ [optional/fallback]
+- Optional Chromium desktop and mobile screenshots③ → Independent tool-calling agent per slot (same model inspects and may patch) [optional/fallback]
 - HTML state: create_file or exact edit_file① → Alternatives for human selection; no machine score④ (per-variant output)
 
 </details>
@@ -514,14 +522,14 @@ EN subsection (at `categories/ai-design-generation/screenshot-to-code.md`; gener
 ### 1. Patch the page through tools instead of regenerating it
 
 - **Problem:** Rewriting an entire page to fix one gap can disturb parts that already match.
-- **How:** The prompt asks for one `create_file` call with the full HTML, then `edit_file` calls that replace exact old text; an unmatched edit returns an error to the model. The agent executes tool calls and feeds their results into the next model turn.
+- **How:** The prompt asks for one `create_file` call with the full HTML, then `edit_file` calls that replace exact old text; an unmatched edit returns an error to the model. The agent — a model that selects and runs tools — feeds tool results into its next turn.
 - **Limits:** Exact matching constrains a patch, not its correctness or size; the runtime does not prevent another `create_file` call, so “write once” is an instruction, not a guarantee.
 - **Source:** [Tool instructions:15–19](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19), [file creation and replacement:101–257](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257), [tool-result loop:278–325](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325).
 
 ### 2. Crop original assets before asking for substitutes
 
 - **Problem:** Invented logos or photos make an otherwise close replica look wrong.
-- **How:** Gemini locates a requested asset with four rectangle coordinates on a 0–1000 scale; the backend converts these to pixels and crops the original image. For obscured photos or backgrounds that cannot be isolated, the prompt asks the agent to generate a substitute through Replicate.
+- **How:** Gemini locates a requested asset with four rectangle coordinates on a 0–1000 scale; the backend converts these to pixels and crops the original image. For obscured photos or backgrounds that cannot be isolated, the prompt asks the agent to use Replicate, a hosted image-generation service, to generate a substitute.
 - **Limits:** This is a model-chosen tool path, not an automatic crop-failure fallback; extraction needs Gemini and a usable still image, while generation must be enabled and have a Replicate key.
 - **Source:** [Asset instructions:21–25](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25), [box-to-pixel crop:293–343](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343), [Replicate generation:259–294](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294), [extraction availability:336–351](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351).
 
@@ -535,7 +543,7 @@ EN subsection (at `categories/ai-design-generation/screenshot-to-code.md`; gener
 ### 4. Run independent variants instead of trusting one draft
 
 - **Problem:** One model's visual blind spots can survive its own self-check.
-- **How:** Screenshot creation selects four model slots from providers for which keys are present, then starts a separate agent task per slot concurrently. The user chooses among the resulting alternatives rather than a machine score choosing a winner.
+- **How:** Screenshot creation selects four model slots — four independent generation jobs — from providers for which keys are present, then starts an agent task per slot concurrently. The user chooses among the resulting alternatives rather than a machine score choosing a winner.
 - **Limits:** Slots can repeat a model when fewer are configured; edits and video use two variants, not four. More alternatives do not establish pixel-level fidelity.
 - **Source:** [Four-slot default:3–4](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4), [selection and mode limits:417–499](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499), [parallel tasks:589–611](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611).
 ```
@@ -555,20 +563,20 @@ ZH subsection (at `categories/ai-design-generation/screenshot-to-code.zh.md`; ge
 - 截图初稿选择四个模型槽位④
 - 每槽位独立的工具调用 agent
 - Gemini 定位框换算后裁原图②
-- Replicate 生成替代图②
+- 按需用 Replicate 生成替代图②
 - HTML 状态：整页创建或精确替换①
-- Chromium 桌面与手机截图③
+- 可选 Chromium 桌面与手机截图③
 - 供人挑选的方案；无机器评分④
 
 - 原始截图 → 截图初稿选择四个模型槽位④
 - 截图初稿选择四个模型槽位④ → 每槽位独立的工具调用 agent（并发任务）
 - 原始截图 → Gemini 定位框换算后裁原图②（请求裁图时）〔可选／兜底〕
 - Gemini 定位框换算后裁原图② → 每槽位独立的工具调用 agent（裁图 URL 与预览）〔可选／兜底〕
-- 每槽位独立的工具调用 agent → Replicate 生成替代图②（指令建议的兜底，非自动触发）〔可选／兜底〕
-- Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
+- 每槽位独立的工具调用 agent → 按需用 Replicate 生成替代图②〔可选／兜底〕
+- 按需用 Replicate 生成替代图② → 每槽位独立的工具调用 agent（图片 URL）〔可选／兜底〕
 - 每槽位独立的工具调用 agent → HTML 状态：整页创建或精确替换①（工具结果进入下一模型轮次）
-- HTML 状态：整页创建或精确替换① → Chromium 桌面与手机截图③（仅在工具可用且模型调用时）〔可选／兜底〕
-- Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
+- HTML 状态：整页创建或精确替换① → 可选 Chromium 桌面与手机截图③〔可选／兜底〕
+- 可选 Chromium 桌面与手机截图③ → 每槽位独立的工具调用 agent（同一模型目测后可修补）〔可选／兜底〕
 - HTML 状态：整页创建或精确替换① → 供人挑选的方案；无机器评分④（各版本输出）
 
 </details>
@@ -577,14 +585,14 @@ ZH subsection (at `categories/ai-design-generation/screenshot-to-code.zh.md`; ge
 ### 1. 用工具补丁修改，不反复重写整页
 
 - **解决：** 为了修一个间距重写整页，容易连已经对齐的部分一起改坏。
-- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent 执行工具调用，把结果交给模型继续下一轮。
+- **做法：** 提示词要求先用一次 `create_file` 写完整 HTML，再用 `edit_file` 精确替换旧文字；匹配不到就向模型报错。agent（会选择并执行工具的模型）把工具结果送入下一轮。
 - **边界：** 精确匹配只约束补丁如何应用，不保证改得对或改得少；运行时不禁止再次调用 `create_file`，“只写一次”是指令，不是硬保证。
 - **源码：** [工具指令第 15–19 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19)、[创建与替换第 101–257 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257)、[工具结果循环第 278–325 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325)。
 
 ### 2. 先裁原图素材，再按需生成替代图
 
 - **解决：** 模型编出的 logo 或照片，会让布局已接近的复刻仍显得不像。
-- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 通过 Replicate 生成替代图。
+- **做法：** Gemini 用四个数标出素材的矩形位置，坐标统一缩放到 0–1000，后端换算成像素后裁原图。遇到被遮挡的照片、无法单独裁出的背景，提示词要求 agent 调用 Replicate（托管图像生成模型的服务）生成替代图。
 - **边界：** 这是模型选择的工具路径，不是裁图失败就自动生成；裁图需要 Gemini 和可用静态图，生成图片则要功能已启用且有 Replicate key。
 - **源码：** [素材指令第 21–25 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25)、[坐标换算与裁图第 293–343 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343)、[Replicate 生成第 259–294 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294)、[裁图可用条件第 336–351 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351)。
 
@@ -598,7 +606,7 @@ ZH subsection (at `categories/ai-design-generation/screenshot-to-code.zh.md`; ge
 ### 4. 并行跑独立版本，不只押一个初稿
 
 - **解决：** 同一个模型自检时，可能继续看不出自己初稿里的视觉偏差。
-- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位，每个槽位启动一个独立 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
+- **做法：** 截图初稿从有 key 的厂商中选出四个模型槽位（四份独立生成任务），每个槽位启动一个 agent 任务并发生成。最后由用户挑方案，不是机器按分数选冠军。
 - **边界：** 可用模型少时，多个槽位会重复同一模型；修改和录屏只跑两个版本，不是四个。备选多不等于像素级还原已获证明。
 - **源码：** [四槽位默认值第 3–4 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4)、[选择与模式边界第 417–499 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499)、[并发任务第 589–611 行](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611)。
 ```

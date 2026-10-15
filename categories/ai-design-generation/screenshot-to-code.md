@@ -143,20 +143,20 @@ You run it as a local web app: put at least one model key in `backend/.env` (or 
 - Select four model slots for a screenshot draft④
 - Independent tool-calling agent per slot
 - Gemini boxes to original-image crops②
-- Replicate image generation②
+- Optional Replicate image generation②
 - HTML state: create_file or exact edit_file①
-- Chromium desktop and mobile screenshots③
+- Optional Chromium desktop and mobile screenshots③
 - Alternatives for human selection; no machine score④
 
 - Original screenshot → Select four model slots for a screenshot draft④
 - Select four model slots for a screenshot draft④ → Independent tool-calling agent per slot (parallel tasks)
 - Original screenshot → Gemini boxes to original-image crops② (if extraction is requested) [optional/fallback]
 - Gemini boxes to original-image crops② → Independent tool-calling agent per slot (crop URLs and previews) [optional/fallback]
-- Independent tool-calling agent per slot → Replicate image generation② (prompted fallback, not automatic) [optional/fallback]
-- Replicate image generation② → Independent tool-calling agent per slot (image URLs) [optional/fallback]
+- Independent tool-calling agent per slot → Optional Replicate image generation② [optional/fallback]
+- Optional Replicate image generation② → Independent tool-calling agent per slot (image URLs) [optional/fallback]
 - Independent tool-calling agent per slot → HTML state: create_file or exact edit_file① (tool results feed next model turn)
-- HTML state: create_file or exact edit_file① → Chromium desktop and mobile screenshots③ (only if the model calls the available tool) [optional/fallback]
-- Chromium desktop and mobile screenshots③ → Independent tool-calling agent per slot (same model inspects and may patch) [optional/fallback]
+- HTML state: create_file or exact edit_file① → Optional Chromium desktop and mobile screenshots③ [optional/fallback]
+- Optional Chromium desktop and mobile screenshots③ → Independent tool-calling agent per slot (same model inspects and may patch) [optional/fallback]
 - HTML state: create_file or exact edit_file① → Alternatives for human selection; no machine score④ (per-variant output)
 
 </details>
@@ -165,14 +165,14 @@ You run it as a local web app: put at least one model key in `backend/.env` (or 
 ### 1. Patch the page through tools instead of regenerating it
 
 - **Problem:** Rewriting an entire page to fix one gap can disturb parts that already match.
-- **How:** The prompt asks for one `create_file` call with the full HTML, then `edit_file` calls that replace exact old text; an unmatched edit returns an error to the model. The agent executes tool calls and feeds their results into the next model turn.
+- **How:** The prompt asks for one `create_file` call with the full HTML, then `edit_file` calls that replace exact old text; an unmatched edit returns an error to the model. The agent — a model that selects and runs tools — feeds tool results into its next turn.
 - **Limits:** Exact matching constrains a patch, not its correctness or size; the runtime does not prevent another `create_file` call, so “write once” is an instruction, not a guarantee.
 - **Source:** [Tool instructions:15–19](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L15-L19), [file creation and replacement:101–257](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L101-L257), [tool-result loop:278–325](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L278-L325).
 
 ### 2. Crop original assets before asking for substitutes
 
 - **Problem:** Invented logos or photos make an otherwise close replica look wrong.
-- **How:** Gemini locates a requested asset with four rectangle coordinates on a 0–1000 scale; the backend converts these to pixels and crops the original image. For obscured photos or backgrounds that cannot be isolated, the prompt asks the agent to generate a substitute through Replicate.
+- **How:** Gemini locates a requested asset with four rectangle coordinates on a 0–1000 scale; the backend converts these to pixels and crops the original image. For obscured photos or backgrounds that cannot be isolated, the prompt asks the agent to use Replicate, a hosted image-generation service, to generate a substitute.
 - **Limits:** This is a model-chosen tool path, not an automatic crop-failure fallback; extraction needs Gemini and a usable still image, while generation must be enabled and have a Replicate key.
 - **Source:** [Asset instructions:21–25](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/prompts/system_prompt.py#L21-L25), [box-to-pixel crop:293–343](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/asset_extraction.py#L293-L343), [Replicate generation:259–294](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/tools/runtime.py#L259-L294), [extraction availability:336–351](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/agent/engine.py#L336-L351).
 
@@ -186,7 +186,7 @@ You run it as a local web app: put at least one model key in `backend/.env` (or 
 ### 4. Run independent variants instead of trusting one draft
 
 - **Problem:** One model's visual blind spots can survive its own self-check.
-- **How:** Screenshot creation selects four model slots from providers for which keys are present, then starts a separate agent task per slot concurrently. The user chooses among the resulting alternatives rather than a machine score choosing a winner.
+- **How:** Screenshot creation selects four model slots — four independent generation jobs — from providers for which keys are present, then starts an agent task per slot concurrently. The user chooses among the resulting alternatives rather than a machine score choosing a winner.
 - **Limits:** Slots can repeat a model when fewer are configured; edits and video use two variants, not four. More alternatives do not establish pixel-level fidelity.
 - **Source:** [Four-slot default:3–4](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/config.py#L3-L4), [selection and mode limits:417–499](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L417-L499), [parallel tasks:589–611](https://github.com/abi/screenshot-to-code/blob/a8139779f7c5ae231b7f2a86fa7f83ddc5f7badc/backend/routes/generate_code.py#L589-L611).
 
